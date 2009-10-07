@@ -346,6 +346,13 @@ $messages['gl'] = array(
 	'fundraiserportal-tourmaline-close' => 'Agochar isto de agora en diante',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'fundraiserportal' => 'Πύλη Χρηματικοῦ Ἐράνου',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -425,8 +432,11 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'fundraiserportal' => 'Adománygyűjtési portál',
+	'fundraiserportal-desc' => '„Kérlek adakozz” portál hozzáadása az oldalsáv tetejére.',
 	'fundraiserportal-plain-button' => 'Támogasd a Wikipédiát!',
 	'fundraiserportal-ruby-button' => 'Adakozz most!',
 	'fundraiserportal-rubytext-button' => 'Adakozz most!',
@@ -666,6 +676,20 @@ $messages['pms'] = array(
 	'fundraiserportal-tourmaline-close' => 'Stërma sòn-sì da adess an peui',
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'fundraiserportal-plain-button' => 'Ajude a Wikipédia!',
+	'fundraiserportal-ruby-button' => 'Faça doação agora',
+	'fundraiserportal-rubytext-button' => 'Faça doação agora',
+	'fundraiserportal-rubytext-close' => 'Esconder isto a partir de agora',
+	'fundraiserportal-sapphire-button' => 'Faça doação agora',
+	'fundraiserportal-tourmaline-button' => 'Faça doação agora',
+	'fundraiserportal-tourmaline-message' => 'Cada doação ajuda-nos a manter a Wikipédia livre para toda a gente.',
+	'fundraiserportal-tourmaline-close' => 'Esconder isto a partir de agora',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author Giro720
@@ -810,6 +834,34 @@ $messages['vec'] = array(
 	'fundraiserportal-tourmaline-button' => 'Dona desso',
 	'fundraiserportal-tourmaline-message' => 'Ogni donassion la ne juta a tegner Wikipedia lìbara, par tuti quanti.',
 	'fundraiserportal-tourmaline-close' => 'Scondi da desso in avanti',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'fundraiserportal' => 'Lahjoičendan Portal',
+	'fundraiserportal-ruby-button' => "Lahjoiče nügüd'",
+	'fundraiserportal-rubytext-button' => "Lahjoiče nügüd'",
+	'fundraiserportal-sapphire-button' => "Lahjoiče nügüd'",
+	'fundraiserportal-tourmaline-button' => "Lahjoiče nügüd'",
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'fundraiserportal' => 'Cổng Vận động gây quỹ',
+	'fundraiserportal-desc' => 'Thêm liên kết “xin hãy quyên góp” vào phần trên của thanh bên.',
+	'fundraiserportal-plain-button' => 'Hỗ trợ Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Quyên góp ngay',
+	'fundraiserportal-rubytext-button' => 'Quyên góp ngay',
+	'fundraiserportal-rubytext-message' => 'Mỗi khoản quyên góp giúp chúng tôi tiếp tục cung cấp Wikipedia tự do cho mọi người.',
+	'fundraiserportal-rubytext-close' => 'Ẩn phần này từ nay',
+	'fundraiserportal-sapphire-button' => 'Quyên góp ngay',
+	'fundraiserportal-tourmaline-button' => 'Quyên góp ngay',
+	'fundraiserportal-tourmaline-message' => 'Mỗi khoản quyên góp giúp chúng tôi tiếp tục cung cấp Wikipedia tự do cho mọi người.',
+	'fundraiserportal-tourmaline-close' => 'Ẩn phần này từ nay',
 );
 
 /** Yue (粵語)

@@ -35,27 +35,35 @@ $wgAutoloadClasses['SpecialCite'] = $dir . 'SpecialCite_body.php';
 
 function wfSpecialCiteNav( &$skintemplate, &$nav_urls, &$oldid, &$revid ) {
 	wfLoadExtensionMessages( 'SpecialCite' );
-	if ( $skintemplate->mTitle->isContentPage() && $revid !== 0 )
+	// check whether we’re in the right namespace, the $revid has the correct type and is not empty 
+	// (what would mean that the current page doesn’t exist)
+	if ( $skintemplate->mTitle->isContentPage() && $revid !== 0 && !empty( $revid ) )
 		$nav_urls['cite'] = array(
-			'text' => wfMsg( 'cite_article_link' ),
-			'href' => $skintemplate->makeSpecialUrl( 'Cite', "page=" . wfUrlencode( "{$skintemplate->thispage}" ) . "&id=$revid" )
+			'args'   => "page=" . wfUrlencode( "{$skintemplate->thispage}" ) . "&id=$revid"
 		);
 
 	return true;
 }
 
+/**
+ * add the cite link to the toolbar
+ */
 function wfSpecialCiteToolbox( &$skin ) {
-	wfLoadExtensionMessages( 'SpecialCite' );
-	if ( isset( $skin->data['nav_urls']['cite'] ) )
-		if ( $skin->data['nav_urls']['cite']['href'] == '' ) {
-			?><li id="t-iscite"><?php echo $skin->msg( 'cite_article_link' ); ?></li><?php
-		} else {
-			?><li id="t-cite"><?php
-				?><a href="<?php echo htmlspecialchars( $skin->data['nav_urls']['cite']['href'] ) ?>"><?php
-					echo $skin->msg( 'cite_article_link' );
-				?></a><?php
-			?></li><?php
-		}
+	if ( isset( $skin->data['nav_urls']['cite'] ) ) {
+		wfLoadExtensionMessages( 'SpecialCite' );
+		echo Xml::tags( 
+			'li', 
+			array( 'id' => 't-cite' ), 
+			$skin->skin->link(
+				SpecialPage::getTitleFor( 'Cite' ),
+				wfMsg( 'cite_article_link' ),
+				array(
+					'title' => wfMsg( 'cite_article_link_title' )
+				),
+				$skin->data['nav_urls']['cite']['args']
+			)
+		);
+	}
 
 	return true;
 }

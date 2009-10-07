@@ -565,7 +565,7 @@ $messages['frp'] = array(
 	'gadgets-desc' => 'Pèrmèt ux utilisators de chouèsir des [[Special:Gadgets|outils CSS et JavaScript]] pèrsonalisâs dens lors [[Special:Preferences|prèferences]].',
 	'prefs-gadgets' => 'Outils',
 	'gadgets-prefstext' => 'Vê-que una lista d’outils que vos pouede activar por voutron compto.
-Font apèl a JavaScript, que dêt vêr étre activâ sur voutron navigator Malyâjo por que fonccionont.
+Font apèl a JavaScript, que dêt vêr étre activâ sur voutron navigator por que fonccionont.
 Notâd que celos outils ont gins de rèsultat sur ceta pâge de prèferences.
 
 Notâd asse-ben que celos outils spèciâls sont pas du tot avouéc la programeria MediaWiki, et pués que sont en g·ènèral dèvelopâs et mantegnus per des utilisators sur voutron vouiqui local.
@@ -798,6 +798,7 @@ Forritin eru ekki hluti af MediaWiki-hugbúnaðinum heldur eru skrifuð og viðh
  * @author BrokenArrow
  * @author Darth Kule
  * @author Melos
+ * @author Nemo bis
  */
 $messages['it'] = array(
 	'gadgets-desc' => 'Consente agli utenti di selezionare [[Special:Gadgets|accessori CSS e JavaScript]] nelle proprie [[Special:Preferences|preferenze]]',
@@ -808,7 +809,7 @@ La maggior parte di questi accessori è basata su JavaScript, è quindi necessar
 Inoltre, si noti che questi accessori speciali non sono compresi nel software MediaWiki e vengono di solito realizzati e gestiti dagli utenti di ciascun sito wiki. Gli amministratori del sito possono modificare la lista degli accessori disponibili tramite le pagine delle [[MediaWiki:Gadgets-definition|definizioni]] e delle [[Special:Gadgets|descrizioni]].",
 	'gadgets' => 'Accessori',
 	'gadgets-title' => 'Accessori',
-	'gadgets-pagetext' => "Di seguito viene presentato un elenco di accessori (''gadget'') che gli utenti possono abilitare sulla propria pagina delle [[Special:Preferences|preferenze]], seguendo le [[MediaWiki:Gadgets-definition|definizioni]]. Questa panoramica fornisce un comodo meccanismo per accedere ai messaggi di sistema nei quali sono definiti la descrizione e il codice di ciascun accessorio.",
+	'gadgets-pagetext' => "Di seguito sono elencati gli accessori (''gadget'') che gli utenti possono abilitare sulla propria pagina delle [[Special:Preferences|preferenze]], seguendo le [[MediaWiki:Gadgets-definition|definizioni]]. Questa panoramica fornisce un comodo meccanismo per accedere ai messaggi di sistema nei quali sono definiti la descrizione e il codice di ciascun accessorio.",
 	'gadgets-uses' => 'Utilizza',
 );
 
@@ -1051,22 +1052,23 @@ $messages['lv'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'gadgets-desc' => 'Им дозволува на корисниците да одберат свои сопствеи [[Special:Gadgets|CSS и JavaScript алатки]] во нивните [[Special:Preferences|нагодувања]]',
+	'gadgets-desc' => 'Овозможува на корисниците да одберат свои сопствени [[Special:Gadgets|CSS и JavaScript додатоци]] во нивните [[Special:Preferences|нагодувања]]',
 	'prefs-gadgets' => 'Додатоци',
-	'gadgets-prefstext' => 'Еве листа на специјални алатки кои можете да ги активирате за вашата сметка.
-Овие алатки главно се базираат на JavaScript, па затоа морате да имате овозможено JavaScript на вашито прелистувач за да можат да работат.
-Имајте в предвид дека овие алатки нема да имаат никаков ефект врз оваа страница за нагодување.
+	'gadgets-prefstext' => 'Листа на специјални додатоци кои можете да ги активирате за вашата корисничка сметка.
+Овие додатоци главно се базираат на JavaScript, па затоа морате да имате овозможено JavaScript на вашиот прелистувач за да можат да работат.
+Имајте в предвид дека овие додатоци нема да имаат никаков ефект врз оваа страница за нагодување.
 
-Исто така имајте на ум дека овие специјални алатки не се дел од МедијаВики софтверот, и обично истите се развиени и се одржуват од корисници на вашето локално вики.
-Локалните администратори можат да ги уредуваат и прилагодуваат алатките на располагање користејќи [[MediaWiki:Gadgets-definition|дефиниции]] и [[Special:Gadgets|описи]].',
+Исто така имајте на ум дека овие специјални додатоци не се дел од MediaWiki софтверот и обично истите се развиени и се одржуват од корисници на вашето локално вики.
+Локалните администратори можат да ги уредуваат и прилагодуваат додатоците користејќи се со [[MediaWiki:Gadgets-definition|дефиниции]] и [[Special:Gadgets|описи]].',
 	'gadgets' => 'Додатоци',
 	'gadgets-title' => 'Додатоци',
-	'gadgets-pagetext' => 'Еве листа на специјални алатки кои корисниците можат да ги активираат на нивните [[Special:Preferences|страници за нагодување]], според топлкувањата на [[MediaWiki:Gadgets-definition|дефинициите]].
-Овој преглед дава лесен пристап до системските пораки кои го дефинираат описот и кодот на секоја алатка.',
+	'gadgets-pagetext' => 'Листа на специјални додатоци кои корисниците можат да ги активираат на нивните [[Special:Preferences|страници за нагодување]], наведени во [[MediaWiki:Gadgets-definition|дефинициите]].
+Овој преглед дава лесен пристап до системските пораки кои го дефинираат описот и кодот на секој додаток.',
 	'gadgets-uses' => 'Користи',
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -1074,7 +1076,7 @@ $messages['ml'] = array(
 	'prefs-gadgets' => 'ഗാഡ്ജറ്റ്',
 	'gadgets' => 'ഗാഡ്ജറ്റ്',
 	'gadgets-title' => 'ഗാഡ്ജറ്റ്',
-	'gadgets-pagetext' => 'ഉപയോക്താക്കള്‍ക്ക് അവരുടെ ക്രമീകരണങ്ങള്‍ താള്‍ ഉപയോഗിച്ച് പ്രാപ്തമാകാവുന്ന ഗാഡ്ജറ്റുകളുടെ ([[MediaWiki:Gadgets-definition]] പ്രകാരം നിര്‍‌വചിച്ചിരിക്കുന്നത്) പട്ടിക താഴെ പ്രദര്‍ശിപ്പിച്ചിരിക്കുന്നു  
+	'gadgets-pagetext' => 'ഉപയോക്താക്കൾക്ക് അവരുടെ [[Special:Preferences|ക്രമീകരണങ്ങൾ താളിൽ]] നിന്നും സജ്ജമാക്കാവുന്ന ഗാഡ്ജറ്റുകളുടെ പട്ടിക [[MediaWiki:Gadgets-definition|അവ നിർവ്വചിക്കപ്പെട്ട പ്രകാരം]] താഴെ കൊടുത്തിരിക്കുന്നു.
 ഓരോ ഗാഡ്ജറ്റിന്റേയും വിവരണവും കോഡും ഉള്ള സന്ദേശ താളുകളിലേക്കു പോകാനുള്ള എളുപ്പവഴി ഈ പട്ടിക നല്‍കുന്നു.',
 	'gadgets-uses' => 'ഉപയോഗങ്ങള്‍',
 );
@@ -1639,6 +1641,7 @@ Sta panoramica la fornisse un comodo mecanismo par accédar ai messagi de sistem
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'prefs-gadgets' => 'Gadžetad',
 	'gadgets' => 'Gadžetad:',
 	'gadgets-title' => 'Gadžetad',
 	'gadgets-uses' => 'Kävutab',

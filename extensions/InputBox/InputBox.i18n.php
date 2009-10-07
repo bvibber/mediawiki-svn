@@ -273,14 +273,14 @@ $messages['co'] = array(
  * @author Alessandro
  */
 $messages['crh-latn'] = array(
-	'createarticle' => 'Saifeni yañart',
+	'createarticle' => 'Saifeni yarat',
 );
 
 /** Crimean Turkish (Cyrillic) (Qırımtatarca (Cyrillic))
  * @author Alessandro
  */
 $messages['crh-cyrl'] = array(
-	'createarticle' => 'Саифени янъарт',
+	'createarticle' => 'Саифени ярат',
 );
 
 /** Czech (Česky)
@@ -531,7 +531,7 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'inputbox-desc' => 'Permitir a inclusión de formularios predefinidos de HTML',
-	'inputbox-error-no-type' => 'Non se especificou o tipo de caixa de entrada para crear.',
+	'inputbox-error-no-type' => 'Non especificou o tipo de caixa de entrada que quere crear.',
 	'inputbox-error-bad-type' => 'O tipo de caixa de entrada "$1" non foi recoñecido.
 Por favor, especifique "create", "comment", "search", "search2" ou "fulltext".',
 	'tryexact' => 'Buscar coincidencias exactas',
@@ -994,12 +994,13 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'inputbox-desc' => 'നിര്‍‌വചിക്കപ്പെട്ടു വെച്ചിരിക്കുന്ന HTML ഫോമുകള്‍ ഉള്‍പ്പെടുത്താന്‍ അനുവദിക്കുക',
 	'inputbox-error-no-type' => 'സൃഷ്ടിക്കേണ്ട ഇന്‍‌പുട്ട് ബോക്സിന്റെ തരം നിഷ്കര്‍ഷിച്ചിട്ടില്ല',
-	'inputbox-error-bad-type' => '"$1" എന്ന ഇന്‍പുട്ട് ബോക്സ് തരം തിരിച്ചറിഞ്ഞില്ല.
+	'inputbox-error-bad-type' => 'ഇന്‍പുട്ട് ബോക്സ് "$1" ഏതു തരം എന്നു തിരിച്ചറിയാൻ കഴിഞ്ഞില്ല.
 ദയവു ചെയ്ത് "create", "comment", "search", "search2" ഇവയിലൊന്നു നിഷ്കര്‍ഷിക്കുക',
 	'tryexact' => 'കൃത്യമായി യോജിക്കുന്ന ഫലങ്ങള്‍ ഉണ്ടോയെന്നു പരിശോധിക്കുക',
 	'searchfulltext' => 'ടെക്സ്റ്റ് മൊത്തമായി തിരയുക',
@@ -1280,6 +1281,10 @@ $messages['roa-rup'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'inputbox-desc' => "Permette l'inglusione de module predefinite de HTML",
+	'inputbox-error-no-type' => "Tu non g'è specificate 'u tipe de scatele de input da ccrejà.",
+	'inputbox-error-bad-type' => '\'U tipe d\'a scatele de input "$1" non g\'è corrette.
+Pe piacere mitte "create", "comment", "search", "search2" o "fulltext".',
 	'tryexact' => "Pruève cu 'u combronde satte-satte",
 	'searchfulltext' => "Cirche jndr'à tutte 'u teste",
 	'createarticle' => "Ccreje 'a vôsce",

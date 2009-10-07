@@ -1713,7 +1713,7 @@ Pane tähele, et kasutajanime ei saa sisestada.',
 	'globalblocking-block-alreadyblocked' => 'IP-aadress $1 on juba globaalselt blokeeritud.
 Sa saad [[Special:GlobalBlockList|globaalsete blokeeringute nimekirjas]] olemasolevat blokeeringut vaatada või selle vormi taasesitamisega olemasoleva blokeeringu seadeid muuta.',
 	'globalblocking-list-intro' => 'Siin on loetletud globaalsed blokeeringud, mis on praegu jõus.
-Mõned blokeeringud on märgitud kui siin vikis välja lülitatud – see tähendab, et blokeering kehtib teistes vikides, aga siinne ülem on otsustanud, et siin pole vastavat blokeeringut vaja.',
+Mõned blokeeringud on märgitud kui siin vikis välja lülitatud – see tähendab, et blokeering kehtib teistes vikides, aga siinne administraator on otsustanud, et siin pole vastavat blokeeringut vaja.',
 	'globalblocking-list' => 'Globaalselt blokeeritud IP-aadresside loend',
 	'globalblocking-search-legend' => 'Globaalse blokeeringu otsimine',
 	'globalblocking-search-ip' => 'IP-aadress:',
@@ -2489,8 +2489,7 @@ $messages['hi'] = array(
 	'globalblocking-block-expiry-otherfield' => 'अन्य समय:',
 	'globalblocking-block-legend' => 'एक सदस्य को ग्लोबली ब्लॉक करें',
 	'globalblocking-block-options' => 'विकल्प',
-	'globalblocking-block-errors' => 'ब्लॉक अयशस्वी हुआ, कारण:
-$1',
+	'globalblocking-block-errors' => 'ब्लॉक अयशस्वी हुआ, कारण:',
 	'globalblocking-block-ipinvalid' => 'आपने दिया हुआ आईपी एड्रेस ($1) अवैध हैं।
 कृपया ध्यान दें आप सदस्यनाम नहीं दे सकतें!',
 	'globalblocking-block-expiryinvalid' => 'आपने दिया हुआ समाप्ती समय ($1) अवैध हैं।',
@@ -2775,8 +2774,7 @@ $messages['ht'] = array(
 	'globalblocking-block-expiry-otherfield' => 'Lòt tan:',
 	'globalblocking-block-legend' => 'Bloke yon itilizatè globalman',
 	'globalblocking-block-options' => 'Opsyon yo',
-	'globalblocking-block-errors' => 'Blokaj sa pa reyisi, paske:  
-$1',
+	'globalblocking-block-errors' => 'Blokaj sa pa reyisi, paske:',
 	'globalblocking-block-ipinvalid' => 'Adrès IP sa ($1) ou te antre a envalid.
 Souple note ke ou pa kapab antre yon non itlizatè!',
 	'globalblocking-block-expiryinvalid' => 'Expirasyon ($1) ou te antre a envalid.',
@@ -3561,7 +3559,7 @@ $messages['ko'] = array(
 	'globalblocking-search-submit' => '차단 찾기',
 	'globalblocking-list-ipinvalid' => '당신이 입력한 IP 주소 ($1)가 잘못되었습니다.
 유효한 IP 주소를 입력해주세요.',
-	'globalblocking-search-errors' => '검색에 실패했습니다. 아래의 원인를 확인해주세요.',
+	'globalblocking-search-errors' => '검색에 실패했습니다. 아래의 {{PLURAL:$1|원인}}를 확인해주세요.',
 	'globalblocking-list-blockitem' => '$1: <span class="plainlinks">\'\'\'$2\'\'\'</span> ($3) 이(가) [[Special:Contributions/$4|$4]] 을(를) 전체 위키에서 차단하였습니다. ($5)',
 	'globalblocking-list-expiry' => '기한 $1',
 	'globalblocking-list-anononly' => '익명 사용자만',
@@ -3732,6 +3730,14 @@ Dobei donn se ävver och för hee dat Wiki wirke.
 	'right-globalunblock' => 'En Sperr fun alle Wiki ophevve',
 	'right-globalblock-whitelist' => 'En Sperr för en IP-Address en alle Wikis ophevve, ävver nur för hee dat Wiki',
 	'right-globalblock-exempt' => 'Jemeinsam Sperre ömjonn',
+);
+
+/** Latin (Latina)
+ * @author UV
+ */
+$messages['la'] = array(
+	'globalblocking-whitelist' => 'Status localis obstructionum globalium',
+	'globalblockstatus' => 'Status localis obstructionum globalium',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -3991,6 +3997,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -4001,8 +4008,7 @@ $messages['ml'] = array(
 	'globalblocking-block-expiry-other' => 'മറ്റ് കാലാവധി',
 	'globalblocking-block-expiry-otherfield' => 'മറ്റ് കാലാവധി:',
 	'globalblocking-block-legend' => 'ഒരു ഉപയോക്താവിനെ ആഗോളമായി തടയുക',
-	'globalblocking-block-errors' => 'തടയല്‍ പരാജയപ്പെട്ടു, കാരണം: 
-$1',
+	'globalblocking-block-errors' => 'തടയല്‍ പരാജയപ്പെട്ടു, താഴെ പറയുന്ന {{PLURAL:$1|കാരണത്താൽ|കാരണങ്ങളാൽ}}:',
 	'globalblocking-block-ipinvalid' => 'താങ്കള്‍ കൊടുത്ത ഐപി വിലാസം ($1) അസാധുവാണ്‌. 
 താങ്കള്‍ക്കു ഇവിടെ ഒരു ഉപയോക്തൃനാമം കൊടുക്കുവാന്‍ പറ്റില്ല എന്നതു പ്രത്യേകം ശ്രദ്ധിക്കുക.',
 	'globalblocking-block-expiryinvalid' => 'താങ്കള്‍ കൊടുത്ത കാലാവധി ($1) അസാധുവാണ്‌.',
@@ -4033,7 +4039,7 @@ $1',
 	'globalblocking-whitelist-whitelisted' => "'''$1''' എന്ന ഐപി വിലാസത്തിന്റെ #$2 എന്ന ആഗോളബ്ലോക്ക് {{SITENAME}} സം‌രംഭത്തില്‍ വിജയകരമായി പ്രവര്‍ത്തനരഹിതമാക്കിയിരിക്കുന്നു",
 	'globalblocking-whitelist-dewhitelisted' => "'''$1''' എന്ന ഐപി വിലാസത്തിന്റെ #$2 എന്ന ആഗോളബ്ലോക്ക് {{SITENAME}} സം‌രംഭത്തില്‍ വിജയകരമായി പ്രവര്‍ത്തനയോഗ്യമാക്കിയിരിക്കുന്നു.",
 	'globalblocking-whitelist-successsub' => 'പ്രാദേശിക സ്ഥിതി വിജയകരമായി മാറ്റിയിരിക്കുന്നു',
-	'globalblocking-blocked' => "താങ്കളുടെ ഐപി വിലാസം എല്ലാ വിക്കിമീഡിയ സം‌രംഭങ്ങളിലും '''\$1''' (''\$2'') തടഞ്ഞിരിക്കുന്നു. അതിനു സൂചിപ്പിച്ച കാരണം ''\"\$3\"'' ആണ്‌. ബ്ലോക്കിന്റെ കാലാവധി തീരുന്നത് ''\$4''.",
+	'globalblocking-blocked' => "താങ്കളുടെ ഐപി വിലാസം എല്ലാ വിക്കിമീഡിയ സം‌രംഭങ്ങളിലും '''\$1''' (''\$2'') തടഞ്ഞിരിക്കുന്നു. അതിനു സൂചിപ്പിച്ച കാരണം ''\"\$3\"'' ആണ്‌. ബ്ലോക്കിന്റെ കാലാവധി ''\$4''.",
 	'globalblocking-logpage' => 'ആഗോള തടയലിന്റെ പ്രവര്‍ത്തനരേഖ',
 	'globalblocking-block-logentry' => '[[$1]]നെ $2 കാലവധിയോടെ ആഗോള ബ്ലോക്ക് ചെയ്തിരിക്കുന്നു.',
 	'globalblocking-unblock-logentry' => '[[$1]]നു മേലുള്ള ആഗോള ബ്ലോക്ക് ഒഴിവാക്കിയിരിക്കുന്നു',
@@ -4065,8 +4071,7 @@ $messages['mr'] = array(
 	'globalblocking-block-expiry-otherfield' => 'इतर वेळ:',
 	'globalblocking-block-legend' => 'एक सदस्य वैश्विक पातळीवर ब्लॉक करा',
 	'globalblocking-block-options' => 'विकल्प',
-	'globalblocking-block-errors' => 'ब्लॉक अयशस्वी झालेला आहे, कारण:
-$1',
+	'globalblocking-block-errors' => 'ब्लॉक अयशस्वी झालेला आहे, कारण:',
 	'globalblocking-block-ipinvalid' => 'तुम्ही दिलेला आयपी अंकपत्ता ($1) अयोग्य आहे.
 कृपया नोंद घ्या की तुम्ही सदस्य नाव देऊ शकत नाही!',
 	'globalblocking-block-expiryinvalid' => 'तुम्ही दिलेली समाप्तीची वेळ ($1) अयोग्य आहे.',
@@ -4912,6 +4917,7 @@ Wszystkie aktywne globalne blokady można zobaczyć w [[Special:GlobalBlockList|
  */
 $messages['ps'] = array(
 	'globalblocking-block-expiry-otherfield' => 'بل وخت:',
+	'globalblocking-block-options' => 'خوښنې:',
 	'globalblocking-search-ip' => 'IP پته:',
 	'globalblocking-list-whitelist' => 'سيمه ايز دريځ',
 	'globalblocking-unblock-reason' => 'سبب:',
@@ -5141,6 +5147,7 @@ Para ver todos os bloqueios globais, poderá consultar a [[Special:GlobalBlockLi
 $messages['qu'] = array(
 	'globalblocking-list' => "Sapsita hark'asqa IP tiyaykuna",
 	'globalblocking-whitelist' => "Sapsi hark'asqakunap kayllapi kachkaynin",
+	'globalblocking-block2-logentry' => "sapsilla hark'an [[$1]] sutiyuqta ($2)",
 );
 
 /** Romanian (Română)
@@ -5929,6 +5936,7 @@ $messages['te'] = array(
 	'globalblocking-block-expiry-otherfield' => 'ఇతర సమయం:',
 	'globalblocking-block-options' => 'ఎంపికలు:',
 	'globalblocking-search-ip' => 'IP చిరునామా:',
+	'globalblocking-search-errors' => 'ఈ క్రింది {{PLURAL:$1|కారణం|కారణాల}} వల్ల, మీ అన్వేషణ విఫలమైంది:',
 	'globalblocking-list-unblock' => 'తొలగించు',
 	'globalblocking-list-whitelist' => 'స్థానిక స్థితి',
 	'globalblocking-unblock-reason' => 'కారణం:',
@@ -6032,8 +6040,7 @@ $messages['th'] = array(
 	'globalblocking-desc' => '[[Special:GlobalBlock|อนุญาต]]ให้คุณสามารถบล็อกผู้ใช้ที่เป็น ไอพี [[Special:GlobalBlockList|ในหลาย ๆ วิกิ]]ในครั้งเดียวได้',
 	'globalblocking-block-reason' => 'เหตุผลสำหรับการบล็อก:',
 	'globalblocking-block-expiry' => 'หมดอายุ:',
-	'globalblocking-block-errors' => 'การบล็อกครั้งนี้ไม่สำเร็จ เนื่องจาก :
-$1',
+	'globalblocking-block-errors' => 'การบล็อกครั้งนี้ไม่สำเร็จ เนื่องจาก :',
 	'globalblocking-search-ip' => 'หมายเลขไอพี:',
 	'globalblocking-unblock-reason' => 'เหตุผล:',
 );
@@ -6443,6 +6450,7 @@ Par védar tuti i blochi globali ativi, varda l'[[Special:GlobalBlockList|elenco
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'globalblocking-block-reason' => 'Necen blokiruindan sü:',
 	'globalblocking-block-expiry-otherfield' => 'Toine aig:',
 	'globalblocking-search-ip' => 'IP-adres:',
 	'globalblocking-list-unblock' => 'Heitta blokiruind',

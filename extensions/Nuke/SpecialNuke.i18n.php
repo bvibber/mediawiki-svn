@@ -210,9 +210,15 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'nuke' => "Diverkañ a-vloc'h",
+	'nuke-desc' => "Reiñ a ra an tu d'ar verourien da [[Special:Nuke|ziverkañ pajennoù a-vras]]",
 	'nuke-nopages' => "Pajenn nevez ebet bet krouet gant [[Special:Contributions/$1|$1]] er c'hemmoù diwezhañ.",
+	'nuke-list' => "Nevez zo eo bet krouet ar pajennoù da-heul gant [[Special:Contributions/$1|$1]];
+Merkañ un tamm notenn ha klikañ war ar bouton d'o diverkañ.",
+	'nuke-defaultreason' => 'Diverkañ a-vras ar pajennoù bet ouzhpennet gant $1',
+	'nuke-tools' => "Talvezout a ra an ostilh-mañ da ziverkañ a-vras pajennoù bet ouzhpennet nevez zo gant un implijer enrollet pe gant ur chomlec'h IP. Merkañ ar c'homlec'h IP pe anv an implijer a-benn kaout roll ar pajennoù da ziverkañ :",
 	'nuke-submit-user' => 'Mont',
 	'nuke-submit-delete' => 'Diverkañ diuzet',
+	'right-nuke' => 'Diverkañ pajennoù a-vras',
 );
 
 /** Bosnian (Bosanski)
@@ -261,6 +267,7 @@ $messages['ch'] = array(
  * @author Danny B.
  * @author Li-sung
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'nuke' => 'Hromadné mazání',
@@ -268,7 +275,8 @@ $messages['cs'] = array(
 	'nuke-nopages' => 'V posledních změnách nejsou žádné nové stránky od uživatele [[Special:Contributions/$1|$1]].',
 	'nuke-list' => 'Následující stránky nedávno vytvořil uživatel [[Special:Contributions/$1|$1]]; vyplňte komentář a všechny smažte kliknutím na tlačítko.',
 	'nuke-defaultreason' => 'Hromadné odstranění stránek, které vytvořil $1',
-	'nuke-tools' => 'Tento nástroj umožňuje hromadné smazání stránek nedávno vytvořených zadaným uživatelem na IP adresou. Zadejte uživatelské jméno nebo IP adresu, jejichž seznam stránek ke smazání chcete zobrazit:',
+	'nuke-tools' => 'Tento nástroj umožňuje hromadné smazání stránek nedávno vytvořených zadaným uživatelem nebo IP adresou.
+Zadejte uživatelské jméno nebo IP adresu, zobrazí se seznam stránek ke smazání.',
 	'nuke-submit-user' => 'Provést',
 	'nuke-submit-delete' => 'Smazat vybrané',
 	'right-nuke' => 'Hromadné mazání stránek',
@@ -480,7 +488,7 @@ $messages['frp'] = array(
 	'nuke-list' => 'Cetes pâges ont étâ fêtes dèrriérement per [[Special:Contributions/$1|$1]] ;
 buchiéd un comentèro et pués clicâd sur lo boton por les suprimar.',
 	'nuke-defaultreason' => 'Suprèssion en massa de les pâges apondues per $1',
-	'nuke-tools' => 'Ceti outil ôtorise les suprèssions en massa de les pâges apondues dèrriérement per un utilisator enregistrâ ou ben per una adrèce IP.
+	'nuke-tools' => 'Ceti outil ôtorise les suprèssions en massa de les pâges apondues dèrriérement per un utilisator encartâ ou ben per una adrèce IP.
 Buchiéd lo nom d’utilisator ou ben l’adrèce IP por avêr la lista de les pâges a suprimar :',
 	'nuke-submit-user' => 'Validar',
 	'nuke-submit-delete' => 'Suprèssion chouèsia',
@@ -860,6 +868,7 @@ $messages['lb'] = array(
 /** Limburgish (Limburgs)
  * @author Matthias
  * @author Ooswesthoesbes
+ * @author Pahles
  */
 $messages['li'] = array(
 	'nuke' => 'Massaal verwijdere',
@@ -868,7 +877,7 @@ $messages['li'] = array(
 	'nuke-list' => "De onderstaonde pagina's zien recentelijk aangemaakt door [[Special:Contributions/$1|$1]]; voer 'n rede in en klik op de knop om ze te verwijdere/",
 	'nuke-defaultreason' => "Massaal verwijdere van pagina's van $1",
 	'nuke-tools' => "Dit hulpmiddel maakt 't meugelik massaal pagina's te wisse die recentelijk zien aangemaakt door 'n gebroeker of IP-adres. Voer de gebroekersnaam of 't IP-adres in veur 'n lijst van te wisse pagina's:",
-	'nuke-submit-user' => 'Gao',
+	'nuke-submit-user' => 'Gank',
 	'nuke-submit-delete' => 'Geslecteerd wisse',
 	'right-nuke' => "Massaal pagina's verwi'jdere",
 );
@@ -904,6 +913,7 @@ $messages['lzh'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -916,6 +926,7 @@ $messages['ml'] = array(
 	'nuke-tools' => 'ഏതെങ്കിലും ഒരു ഉപയോക്താവോ ഐപിയോ സമീപകാലത്തു സൃഷ്ടിച്ച താളുകള്‍ കൂട്ടമായി മായ്ക്കാനുള്ള സൗകര്യം ഈ സം‌വിധാനം നല്‍കുന്നു. താളുകള്‍ മായ്കപ്പെടേണ്ട ഉപയോക്തൃനാമമോ ഐപി വിലാസമോ ഇവിടെ കൊടുക്കുക:',
 	'nuke-submit-user' => 'പോകൂ',
 	'nuke-submit-delete' => 'തിരഞ്ഞെടുത്തവ മായ്ക്കുക',
+	'right-nuke' => 'താളുകൾ കൂട്ടത്തോടെ മായ്ക്കുക',
 );
 
 /** Marathi (मराठी)
@@ -1431,6 +1442,7 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'nuke' => 'Massine heitmine',
 	'nuke-submit-user' => 'Mäne',
 	'nuke-submit-delete' => 'Čuta valitud',
 );

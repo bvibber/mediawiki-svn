@@ -60,6 +60,16 @@ $messages['sxu'] = array(
 	'contact' => 'Gondagd',
 );
 
+/** Lazuri Nena (Lazuri Nena)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'contactpage-fromname' => 'Skani coxo: *',
+	'contactpage-fromaddress' => 'Skani e-mail: **',
+	'contactpage-fromname-required' => 'Skani coxo:',
+	'contactpage-fromaddress-required' => 'Skani e-mail:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -1045,16 +1055,6 @@ $messages['lt'] = array(
 	'contactpage-captcha-failed' => 'Captcha testas nepavyko! ([[Special:Captcha/help|daugiau informacijos]])',
 );
 
-/** Lazuri Nena (Lazuri Nena)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'contactpage-fromname' => 'Skani coxo: *',
-	'contactpage-fromaddress' => 'Skani e-mail: **',
-	'contactpage-fromname-required' => 'Skani coxo:',
-	'contactpage-fromaddress-required' => 'Skani e-mail:',
-);
-
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
@@ -1088,16 +1088,25 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'contact' => 'ബന്ധപ്പെടാനുള്ള താൾ',
+	'contactpage' => 'ബന്ധപ്പെടാനുള്ള താൾ',
+	'contactpage-desc' => '[[Special:Contact|സന്ദർശകർക്ക് ബന്ധപ്പെടാനുള്ള ഫോം]]',
 	'contactpage-title' => 'വിലാസം',
+	'contactpage-pagetext' => 'ഞങ്ങളെ ബന്ധപ്പെടാൻ ദയവായി താഴെ കൊടുത്തിരിക്കുന്ന ഫോം ഉപയോഗിക്കുക.',
+	'contactpage-legend' => 'ഇമെയിൽ അയയ്ക്കുക',
 	'contactpage-defsubject' => 'ബന്ധപ്പെടാനുള്ള സന്ദേശം',
 	'contactpage-subject-and-sender' => '$1 ($2 ല്‍ നിന്ന്)',
-	'contactpage-fromname' => 'നിങ്ങളുടെ പേര്‌ *',
-	'contactpage-fromaddress' => 'നിങ്ങളുടെ ഇമെയില്‍ വിലാസം **',
+	'contactpage-fromname' => 'താങ്കളുടെ പേര്‌: *',
+	'contactpage-fromaddress' => 'താങ്കളുടെ ഇമെയില്‍ വിലാസം: **',
 	'contactpage-formfootnotes' => '* നിര്‍‌ബന്ധമില്ല<br />
 ** നിര്‍‌ബന്ധമില്ല, പക്ഷെ താങ്കള്‍ക്ക് മറുപടി വേണമെങ്കില്‍ ഇതു ആവശ്യമാണ്‌',
+	'contactpage-fromname-required' => 'താങ്കളുടെ പേര്:',
+	'contactpage-fromaddress-required' => 'താങ്കളുടെ ഇമെയിൽ:',
+	'contactpage-formfootnotes-required' => 'എല്ലാ ഫീൽഡുകളും പൂരിപ്പിച്ചിരിക്കണം.',
 	'contactpage-captcha' => 'സന്ദേശം അയക്കാന്‍, ദയവായി Captcha നിര്‍ദ്ധാരണം ചെയ്യുക. [[Special:Captcha/help|കൂടുതല്‍ വിവരം]]',
 	'contactpage-captcha-failed' => 'Captcha പരീക്ഷണം പരാജയപ്പെട്ടു! ([[Special:Captcha/help|കൂടുതല്‍ വിവരം]])',
 );
@@ -1360,11 +1369,14 @@ $messages['ps'] = array(
 	'contactpage-desc' => '[[Special:Contact|د کتونکو لپاره د اړيکو فورمه]]',
 	'contactpage-title' => 'اړيکه ټينګول',
 	'contactpage-pagetext' => 'زمونږ سره د اړيکو ټينګولو لپاره، لاندينۍ فورمه وکاروۍ.',
+	'contactpage-legend' => 'برېښليک لېږل',
 	'contactpage-subject-and-sender' => '$1 (د $2 لخوا )',
-	'contactpage-fromname' => 'ستاسو نوم *',
-	'contactpage-fromaddress' => 'ستاسو برېښليک **',
+	'contactpage-fromname' => 'ستاسې نوم: *',
+	'contactpage-fromaddress' => 'ستاسې برېښليک: **',
 	'contactpage-formfootnotes' => '* ستاسو د خوښې کړنه<br />
 ** دا ستاسو د خوښې کړنه ده خو که چېرته تاسو يو ځواب غواړی نو بيا پکار ده چې ډک شي',
+	'contactpage-fromname-required' => 'ستاسې نوم:',
+	'contactpage-fromaddress-required' => 'ستاسې برېښليک:',
 );
 
 /** Portuguese (Português)

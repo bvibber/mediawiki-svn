@@ -43,6 +43,20 @@ $messages['bs'] = array(
 	'mwreleases-desc' => 'Dodaje [[Mediawiki:Mwreleases-list|spisak]] podržanih izdanja, dostupnih preko API',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'mwreleases-desc' => 'Poskytuje [[Mediawiki:Mwreleases-list|seznam]] podporovaných vydání, dostupný pomocí API',
+);
+
+/** German (Deutsch)
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'mwreleases-desc' => 'Fügt eine [[Mediawiki:Mwreleases-list|Liste]] unterstützter Veröffentlichungen hinzu, die über die API erreichbar ist',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -217,6 +231,20 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'mwreleases-desc' => 'Pridáva [[Mediawiki:Mwreleases-list|zoznam]] podporovaných vydaní prístupných prostredníctvom API',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'mwreleases-desc' => 'Desteklenen sürümlerin bir [[Mediawiki:Mwreleases-list|listesini]] ekler, API ile erişilebilir',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'mwreleases-desc' => 'Thêm [[Mediawiki:Mwreleases-list|danh sách]] phiên bản được hỗ trợ, có thể truy cập qua API.',
 );
 
 $messages['yue'] = array(

@@ -566,6 +566,40 @@ $messages['hsb'] = array(
 	'slippymap_clicktoactivate' => 'Kliknyć, zo by so karta aktiwizowała',
 );
 
+/** Hungarian (Magyar)
+ * @author City-busz
+ * @author Dani
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'slippymap_desc' => '<tt>&lt;slippymap&gt;</tt> tag statikus és dinamikus térképek beágyazására. Több térképszolgáltatót támogat, beleértve az [http://openstreetmap.org OpenStreetMap]-et és a NASA Worldwind-et',
+	'slippymap_error' => '$1 hiba: $2',
+	'slippymap_errors' => '$1 hiba:',
+	'slippymap_error_tag_content_given' => 'A(z) <tt>&lt;$1&gt;</tt> címke csak attribútum argumentumokat fogad (&lt;$1 [...]/&gt;), beviteli szöveget nem (&lt;$1&gt; ... &lt;/$1&gt;)',
+	'slippymap_error_missing_arguments' => 'Nem szolgáltattál attribútumokat a(z) &lt;$1&gt; címkéhez. Lásd a [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax usage information] webcímet, hogy hogyan kell meghívni.',
+	'slippymap_error_missing_attribute_lat' => 'Hiányzó <tt>lat</tt> attribútum (a földrajzi szélességhez).',
+	'slippymap_error_missing_attribute_lon' => 'Hiányzó <tt>lon</tt> attribútum (a földrajzi hosszúsághoz).',
+	'slippymap_error_missing_attribute_zoom' => 'Hiányzó <tt>zoom</tt> attribútum (a nagyítási szinthez).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>lat</tt> (latitude) attribútumnak, a megadott értéknek egy érvényes számnak kell lennie.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>lon</tt> (longitude) attribútumnak, a megadott értéknek egy érvényes számnak kell lennie.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>zoom</tt> attribútumnak, a megadott értéknek egy érvényes számnak kell lennie.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>width</tt> attribútumnak, a megadott értéknek egy érvényes számnak kell lennie.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>height</tt> attribútumnak, a megadott értéknek egy érvényes számnak kell lennie.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>mode</tt> attribútumhoz, érvényes értékek: $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>layer</tt> attribútumhoz, érvényes rétegek: $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>marker</tt> attribútumhoz, érvényes jelölők: $2.',
+	'slippymap_error_unknown_attribute' => 'A(z) <tt>$1</tt> attribútum ismeretlen.',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>lat</tt> (latitude) attribútumhoz. A földrajzi szélességnek -90 és 90 fok között kell lennie.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>lon</tt> (longitude) attribútumhoz. A földrajzi hosszúságnak -180 és 180 fok között kell lennie.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>zoom</tt> attribútumnak. A nagyítási szintnek $2 és $3 között kell lennie.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>width</tt> attribútumhoz. A szélességnek $2 és $3 között kell lennie.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>height</tt> attribútumhoz. A magasságnak $2 és $3 között kell lennie.',
+	'slippymap_code' => 'Ennek a térképnézetnek a wikikódja:',
+	'slippymap_button_code' => 'Wikikód megjelenítése',
+	'slippymap_resetview' => 'Nézet alaphelyzetbe állítása',
+	'slippymap_clicktoactivate' => 'Kattints a térkép aktiválásához',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -624,6 +658,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Mage Whopper
  */
 $messages['ja'] = array(
 	'slippymap_desc' => '静的または動的な地図を埋め込めるようにする <tt>&lt;slippymap&gt;</tt> タグを追加する。[http://openstreetmap.org OpenStreetMap] や NASA World Wind を含む、複数の地図サービスに対応する',
@@ -631,15 +666,15 @@ $messages['ja'] = array(
 	'slippymap_errors' => '$1 のエラー:',
 	'slippymap_error_tag_content_given' => '<tt>&lt;$1&gt;</tt> タグは引数として属性を受け付けるのみで (<$1 [...]/>)、テキストは受け付けません (&lt;$1&gt; ... &lt;/$1&gt;)',
 	'slippymap_error_missing_arguments' => '&lt;$1&gt; タグに属性が1つも与えられていません。このタグの[http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax 使い方]を参照してください。',
-	'slippymap_error_missing_attribute_lat' => '<tt>lat</tt> 属性(緯度)がありません。',
-	'slippymap_error_missing_attribute_lon' => '<tt>lon</tt> 属性(経度)がありません。',
-	'slippymap_error_missing_attribute_zoom' => '<tt>zoom</tt> 属性(拡大度)がありません。',
-	'slippymap_error_invalid_attribute_lat_value_nan' => '値「<tt>$1</tt>」は <tt>lat</tt> 属性(緯度)として妥当な値ではありません。妥当な数値を指定してください。',
-	'slippymap_error_invalid_attribute_lon_value_nan' => '値「<tt>$1</tt>」は <tt>lon</tt> 属性(経度)として妥当な値ではありません。妥当な数値を指定してください。',
-	'slippymap_error_invalid_attribute_zoom_value_nan' => '値「<tt>$1</tt>」は <tt>zoom</tt> 属性として妥当な値ではありません。妥当な数値を指定してください。',
-	'slippymap_error_invalid_attribute_width_value_nan' => '値「<tt>$1</tt>」は <tt>width</tt> 属性として妥当な値ではありません。妥当な数値を指定してください。',
-	'slippymap_error_invalid_attribute_height_value_nan' => '値「<tt>$1</tt>」は <tt>height</tt> 属性として妥当な値ではありません。妥当な数値を指定してください。',
-	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => '値「<tt>$1</tt>」は <tt>mode</tt> 属性として有効な値ではありません。有効なモードは $2 です。',
+	'slippymap_error_missing_attribute_lat' => '<tt>lat</tt> 緯度の属性がありません。',
+	'slippymap_error_missing_attribute_lon' => '<tt>lon</tt> 経度の属性がありません。',
+	'slippymap_error_missing_attribute_zoom' => '<tt>zoom</tt> 拡大度の属性がありません。',
+	'slippymap_error_invalid_attribute_lat_value_nan' => '値「<tt>$1</tt>」は緯度 (<tt>lat</tt>) に妥当な値ではありません。妥当な数値を指定してください。',
+	'slippymap_error_invalid_attribute_lon_value_nan' => '値「<tt>$1</tt>」は経度 (<tt>lon</tt>) に妥当な値ではありません。妥当な数値を指定してください。',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => '値「<tt>$1</tt>」はズームレベル (<tt>zoom</tt>) として妥当な値ではありません。妥当な数値を指定してください。',
+	'slippymap_error_invalid_attribute_width_value_nan' => '値「<tt>$1</tt>」は幅 (<tt>width</tt>) に妥当な値ではありません。妥当な数値を指定してください。',
+	'slippymap_error_invalid_attribute_height_value_nan' => '値「<tt>$1</tt>」は高さ (<tt>height</tt>) に妥当な値ではありません。妥当な数値を指定してください。',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => '値「<tt>$1</tt>」はモード (<tt>mode</tt>) には無効な値です。有効なモードは $2 です。',
 	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => '値「<tt>$1</tt>」は <tt>layer</tt> 属性として有効な値ではありません。有効なレイヤーは $2 です。',
 	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => '値「<tt>$1</tt>」は <tt>marker</tt> 属性として有効な値ではありません。有効なマーカーは $2 です。',
 	'slippymap_error_unknown_attribute' => '属性 <tt>$1</tt> は不明です。',
@@ -1034,11 +1069,40 @@ $messages['tl'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'slippymap_desc' => 'Thêm thẻ <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> để nhúng bản đồ trơn OpenLayers. Các bản đồ do [http://openstreetmap.org openstreetmap.org] cung cấp.',
+	'slippymap_desc' => 'Thêm thẻ <tt><nowiki><slippymap></nowiki></tt> để nhúng bản đồ OpenLayers tĩnh và động. Hỗ trợ một số dịch vụ bản đồ, bao gồm [http://www.openstreetmap.org/ OpenStreetMap] và NASA World Wind.',
+	'slippymap_error' => 'Lỗi $1: $2',
+	'slippymap_errors' => '$1 lỗi:',
+	'slippymap_error_tag_content_given' => 'Thẻ <tt><nowiki>$1</nowiki></tt> chỉ nhận được các tham số thuộc tính (<nowiki><$1 […]/></nowiki>), chứ không phải nội dung (<nowiki><$1> … </$1></nowiki>)',
+	'slippymap_error_missing_arguments' => 'Bạn chưa cung cấp tham số cho thẻ <nowiki><$1></nowiki>. Hãy xem [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax hướng dẫn] để biết cách sử dụng nó.',
+	'slippymap_error_missing_attribute_lat' => 'Thiếu thuộc tính <tt>lat</tt> (tức là vĩ độ).',
+	'slippymap_error_missing_attribute_lon' => 'Thiếu thuộc tính <tt>lon</tt> (tức là kinh độ).',
+	'slippymap_error_missing_attribute_zoom' => 'Thiếu thuộc tính <tt>zoom</tt> (tức là độ phóng/thu).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>lat</tt> (vĩ độ). Giá trị phải là số hợp lệ.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>lon</tt> (kinh độ). Giá trị phải là số hợp lệ.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>zoom</tt> (độ thu/phóng). Giá trị phải là số hợp lệ.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>width</tt> (chiều ngang). Giá trị phải là số hợp lệ.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>height</tt> (chiều cao). Giá trị phải là số hợp lệ.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>mode</tt> (chế độ). Các giá trị hợp lệ là $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>layer</tt> (lớp). Các lớp hợp lệ là $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>marker</tt>. Các dấu chú thích hợp lệ là $2.',
+	'slippymap_error_unknown_attribute' => 'Không hiểu thuộc tính <tt>$1</tt>.',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>lat</tt> (vĩ độ). Vĩ độ cần phải nằm giữa -90 và 90 độ.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>lon</tt> (kinh độ). Kinh độ cần phải nằm giữa -180 và 180 độ.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>zoom</tt>. Độ thu/phóng cần phải nằm giữa $2 và $3.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>width</tt>. Chiều ngang cần phải nằm giữa $2 và $3.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>height</tt>. Chiều cao cần phải nằm giữa $2 và $3.',
 	'slippymap_code' => 'Mã wiki để nhúng phần bản đồ này:',
 	'slippymap_button_code' => 'Xem mã wiki',
 	'slippymap_resetview' => 'Mặc định lại bản đồ',
 	'slippymap_clicktoactivate' => 'Nhấn để khởi động bản đồ',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'slippymap_error' => '$1 גרײַז: $2',
+	'slippymap_errors' => '$1 גרײַזן:',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

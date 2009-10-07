@@ -38,7 +38,7 @@ class RatedPages extends SpecialPage
 		global $wgOut, $wgScript, $wgFeedbackNamespaces;
 		$form = Xml::openElement( 'form',
 			array( 'name' => 'reviewedpages', 'action' => $wgScript, 'method' => 'get' ) );
-		$form .= "<fieldset><legend>".wfMsgHtml('ratedpages-leg')."</legend>\n";
+		$form .= Xml::fieldset( wfMsg( 'ratedpages-leg' ) );
 		$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBKey() );
 		$form .= ReaderFeedbackXML::getRatingTierMenu($this->tier) . '&nbsp;';
 		if( count($wgFeedbackNamespaces) > 1 ) {
@@ -47,8 +47,10 @@ class RatedPages extends SpecialPage
 		if( count( ReaderFeedback::getFeedbackTags() ) > 0 ) {
 			$form .= ReaderFeedbackXML::getTagMenu( $this->tag );
 		}
-		$form .= " ".Xml::submitButton( wfMsg( 'go' ) );
-		$form .= "</fieldset></form>\n";
+		$form .= " " . Xml::submitButton( wfMsg( 'go' ) ) .
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' ) . "\n";
+
 		$wgOut->addHTML( $form );
 	}
 
@@ -80,9 +82,10 @@ class RatedPages extends SpecialPage
 					$wgLang->formatNum( $size ) ) . '</small>';
 		}
 		$ratinghist = SpecialPage::getTitleFor( 'RatingHistory' );
-		$graph = $this->skin->makeKnownLinkObj( $ratinghist, wfMsg('ratedpages-graphs'), 
+		$graph = $this->skin->makeKnownLinkObj( $ratinghist, wfMsgHtml('ratedpages-graphs'), 
 			'target='.$title->getPrefixedUrl().'&period=93' );
-		return "<li>$link $stxt ($hist) ($graph)</li>";
+		$count = wfMsgExt( 'ratedpages-count', array( 'parsemag', 'escape' ), $wgLang->formatNum( $row->rfp_count ) );
+		return "<li>$link $stxt ($hist) ($graph) ($count)</li>";
 	}
 }
 
@@ -128,7 +131,7 @@ class RatedPagesPager extends AlphabeticPager {
 		$conds[] = 'rfp_count >= '.ReaderFeedback::getFeedbackSize();
 		return array(
 			'tables'  => array('reader_feedback_pages','page'),
-			'fields'  => 'page_namespace,page_title,page_len,rfp_ave_val',
+			'fields'  => 'page_namespace,page_title,page_len,rfp_ave_val,rfp_count',
 			'conds'   => $conds,
 			'options' => array( 'USE INDEX' => array('reader_feedback_pages' => 'rfp_tag_val_page') )
 		);

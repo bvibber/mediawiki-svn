@@ -134,6 +134,16 @@ $aliases['gu'] = array(
 	'ReaderFeedback' => array( 'વાચકનોફીડબેક' ),
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+	'LikedPages' => array( 'דפים_מקושרים' ),
+	'ProblemPages' => array( 'דפים_בעייתיים' ),
+	'RatingHistory' => array( 'היסטוריית_הדירוג' ),
+	'ReaderFeedback' => array( 'משוב_קוראים' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'LikedPages' => array( 'Kwalitne strony' ),

@@ -132,6 +132,13 @@ Pšosym pócakaj wokognuśe a klikni pótom na 'Znowego' we swójom wobglědowak
 	'acct_creation_global_soft_throttle_hit-desc' => 'Załoženje wužywarskich kontow wobgranicowaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'acct_creation_global_soft_throttle_hit-desc' => 'Παρεμπόδιση δημιουργίας χρηστών',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -212,6 +219,17 @@ $messages['hsb'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'Wutworjenje wužiwarskich kontow bu za něšto wokomikow dla přewšo wysokeje ličby přizjewjenskich pospytow zastajene. Prošu počakaj něšto mjeńšin a spytaj hišće raz.',
 	'acct_creation_global_hard_throttle_hit' => "Wutworjenje wužiwarskich kontow bu za něšto sekundow zastajene, zo by so nawal registrowanjow redukował. Prošu počakaj wokomik a klikń na 'Znowa' we swojim wobhladowaku, zo by hišće raz spytał.",
 	'acct_creation_global_soft_throttle_hit-desc' => 'Haćenje wutworjenja wužiwarskich kontow',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'A felhasználói fiókok létrehozása automatikusan szüneteltetve pár percig, a szokatlanul nagy számú hibás bejelentkezési kísérlet miatt.
+Légyszíves várj pár percet, majd próbáld újra.',
+	'acct_creation_global_hard_throttle_hit' => 'Felhasználói fiókok készítése automatikusan szüneteltetve pár másodpercig, hogy csökkentsük a tömeges regisztrációs támadásokat.
+Kérlek várj egy percet, majd nyomd meg az „újratöltés” gombot a böngésződben az újbóli elküldéshez.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Felhasználói fiókok készítésének szabályozása',
 );
 
 /** Interlingua (Interlingua)

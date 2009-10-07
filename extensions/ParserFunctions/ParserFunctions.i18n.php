@@ -325,6 +325,7 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Qllach
  * @author SMP
  */
 $messages['ca'] = array(
@@ -346,6 +347,7 @@ $messages['ca'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Valor no vàlid per a ln: <= 0',
 	'pfunc_expr_unknown_error' => "Error de l'expressió: Desconegut ($1)",
 	'pfunc_expr_not_a_number' => 'A $1: el resultat no és un nombre',
+	'pfunc_string_too_long' => 'Error: La cadena és $1 caràcters massa llarga',
 );
 
 /** Czech (Česky)
@@ -691,6 +693,13 @@ $messages['gl'] = array(
 	'pfunc_expr_unknown_error' => 'Erro de expresión: erro descoñecido ($1)',
 	'pfunc_expr_not_a_number' => 'En $1: o resultado non é un número',
 	'pfunc_string_too_long' => 'Erro: a cadea excede o límite de $1 caracteres',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'pfunc_expr_division_by_zero' => 'Διαίρεσις διὰ τοῦ μηδενός',
 );
 
 /** Swiss German (Alemannisch)
@@ -1079,7 +1088,7 @@ $messages['ksh'] = array(
 	'pfunc_desc' => 'Deit em Wiki Funxione för Entscheidunge un esu dobei.',
 	'pfunc_time_error' => 'Fähler: Onjöltijje Zick.',
 	'pfunc_time_too_long' => 'Fähler: <code>#time</code> weed zo öff jebruch.',
-	'pfunc_rel2abs_invalid_depth' => 'Fähler: Zo fill „retuur“ em Pahd „$1“ — mer wöre wigger wi för der Aanfang zeröck jejange.',
+	'pfunc_rel2abs_invalid_depth' => 'Fähler: Zo fill „retuur“ em Pahdt „$1“ — mer wöre wigger wi för der Aanfang zeröck jejange.',
 	'pfunc_expr_stack_exhausted' => 'Fähler en enem Ußdrock: Dä löht der <i lang="en">stack</i> övverloufe.',
 	'pfunc_expr_unexpected_number' => 'Fähler en enem Ußdrock: En Zahl dom_mer nit äwaade.',
 	'pfunc_expr_preg_match_failure' => 'Fähler en enem Ußdrock: Esu ene Fähler en „<i lang="en">preg_match</i>“ dum_mer nit äwade.',
@@ -1420,11 +1429,28 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'pfunc_desc' => 'Mijora ël parse con funsion lògiche',
 	'pfunc_time_error' => 'Eror: temp nen bon',
 	'pfunc_time_too_long' => 'Eror: #time a ven ciamà tròpe vire',
 	'pfunc_rel2abs_invalid_depth' => 'Eror: profondità nen bon-a ant ël përcors: "$1" (a l\'é provasse a ciamé un grop dzora a la rèis)',
+	'pfunc_expr_stack_exhausted' => "Eror ëd l'espression: stach esaurìa",
+	'pfunc_expr_unexpected_number' => "Eror ëd l'espression: nùmer pa spetà",
+	'pfunc_expr_preg_match_failure' => "Eror ëd l'espression: eror pa spetà an preg_match",
+	'pfunc_expr_unrecognised_word' => 'Eror ëd l\'espression: paròla "$1" pa arconossùa',
+	'pfunc_expr_unexpected_operator' => "Eror ëd l'espression: operator $1 pa spetà",
+	'pfunc_expr_missing_operand' => "Eror ëd l'espression: Operand për $1 mancant",
+	'pfunc_expr_unexpected_closing_bracket' => "Eror ëd l'espression: paréntesi pa sarà",
+	'pfunc_expr_unrecognised_punctuation' => 'Eror ëd l\'espression: caràter ëd puntegiadura "$1" pa arconossù',
+	'pfunc_expr_unclosed_bracket' => "Eror ëd l'espression: paréntesi pa sarà",
+	'pfunc_expr_division_by_zero' => 'Division për zero',
+	'pfunc_expr_invalid_argument' => 'Argoment pa bon për $1: < -1 o > 1',
+	'pfunc_expr_invalid_argument_ln' => 'Argoment pa bon për ln: <= 0',
+	'pfunc_expr_unknown_error' => "Eror ëd l'espression: Eror pa conossù ($1)",
+	'pfunc_expr_not_a_number' => "An $1: l'arzultà a l'é pa un nùmer",
+	'pfunc_string_too_long' => 'Eror: la stringa a passa ël lìmit ëd $1 caràter',
 );
 
 /** Pashto (پښتو)
@@ -1953,6 +1979,13 @@ $messages['vec'] = array(
 	'pfunc_expr_unknown_error' => "Eror ne l'espression: eror sconossiùo ($1)",
 	'pfunc_expr_not_a_number' => "In $1: el risultato no'l xe mìa un nùmaro",
 	'pfunc_string_too_long' => 'Eròr: la stringa la va fora dal limite de {{PLURAL:$1|1 caràtere|$1 caràteri}}',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'pfunc_time_error' => 'Petuz: vär aig',
 );
 
 /** Vietnamese (Tiếng Việt)

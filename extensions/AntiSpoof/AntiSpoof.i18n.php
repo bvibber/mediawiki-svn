@@ -455,6 +455,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Cvmontuy
  * @author Icvav
+ * @author Locos epraix
  * @author Platonides
  * @author Remember the dot
  * @author Sanbec
@@ -463,7 +464,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'antispoof-desc' => 'Previene la creación de cuentas de usuario nuevas que tengan nombres confusos, similares a nombres existentes, o con alfabetos mixtos.',
 	'antispoof-conflict-top' => 'El nombre «$1» es muy similar al de {{PLURAL:$2|la siguiente cuenta|las siguientes $2 cuentas}}:',
-	'antispoof-conflict-bottom' => 'Elije otro nombre, por favor.',
+	'antispoof-conflict-bottom' => 'Elige otro nombre, por favor.',
 	'antispoof-name-illegal' => 'El nombre «$1» no está permitido para evitar nombres de usuario confusos o suplantaciones: $2. Por favor, elige otro nombre.',
 	'antispoof-badtype' => 'Tipo de dato erróneo',
 	'antispoof-empty' => 'Texto vacío',
@@ -593,7 +594,7 @@ $messages['frc'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'antispoof-desc' => 'Bloque, avouéc un script mècllo, la crèacion des comptos per des noms d’utilisator semblâblos ou povent prétar a confusion.',
+	'antispoof-desc' => 'Bloque la crèacion des comptos qu’utilisont un mouél d’ècritures avouéc des noms d’utilisator semblâblos ou ben povent prétar a confusion.',
 	'antispoof-conflict-bottom' => 'Volyéd chouèsir un ôtro nom.',
 	'antispoof-name-illegal' => 'Lo nom d’utilisator « $1 » est pas ôtorisâ por empachiér de confondre ou d’utilisar lo nom « $2 ». Volyéd chouèsir/cièrdre un ôtro nom.',
 	'antispoof-badtype' => 'Crouyo tipo de balyês',
@@ -602,7 +603,7 @@ $messages['frp'] = array(
 	'antispoof-combining' => 'Comence avouéc una mârca combinâ.',
 	'antispoof-unassigned' => 'Contint un caractèro pas assignê ou ben dèpassâ.',
 	'antispoof-noletters' => 'Contint gins de lètra.',
-	'antispoof-mixedscripts' => 'Contint un mouél de scripts que vont pas avouéc.',
+	'antispoof-mixedscripts' => 'Contint un mouél d’ècritures que vont pas avouéc.',
 	'antispoof-tooshort' => 'Nom canonico trop côrt',
 );
 
@@ -631,6 +632,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'antispoof-conflict-bottom' => 'Ἐπίλεξαι ἕτερον ὄνομα.',
 	'antispoof-badtype' => 'Κακὸς τύπος δεδομένων',
 	'antispoof-empty' => 'Κενὴ συμβολοσειρά',
 	'right-override-antispoof' => 'Ὑπερκάλυψις τῶν ἐλέγχων ἐξαπατήσεως',
@@ -1115,11 +1117,12 @@ $messages['lt'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'antispoof-desc' => 'സങ്കര ലിപി, തെറ്റിദ്ധാരണ ഉളവാക്കുന്ന നാമം, ഒരേ തരത്തിലുള്ള ഉപയോക്തൃനാമം എന്നിവ ഉപയോഗിച്ചുള്ള അക്കൗണ്ട് സൃഷ്ടിക്കല്‍ തടയുന്നു',
-	'antispoof-name-illegal' => 'ഉപയോക്തൃനാമത്തിലെ തെറ്റിദ്ധാരണയും സ്പൂഫിങ്ങും ഒഴിവാക്കാന്‍ "$1" എന്ന ഉപയോക്തൃനാമം അനുവദനീയമല്ല.
+	'antispoof-name-illegal' => 'ഉപയോക്തൃനാമത്തിലെ തെറ്റിദ്ധാരണയും സ്പൂഫിങ്ങും ഒഴിവാക്കാന്‍ "$1" എന്ന ഉപയോക്തൃനാമം അനുവദനീയമല്ല: $2.
 ദയവായി മറ്റൊരു നാമം തിരഞ്ഞെടുക്കുക.',
 	'antispoof-empty' => 'ശൂന്യമായ സ്ട്രിംങ്ങ്',
 	'antispoof-blacklisted' => 'കരിമ്പട്ടികയില്‍ പെട്ട അക്ഷരങ്ങളുണ്ട്',
@@ -1829,6 +1832,8 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'antispoof-desc' => 'בלאקירט שאפֿן קאנטעס מיט געמישטע שריפֿטן, פֿארפלאנטערטע און ענלעכע באניצער נעמען',
+	'antispoof-conflict-bottom' => 'ביטע קלויבט אויס אן אנדער נאָמען.',
 	'antispoof-badtype' => 'שלעכטער דאַטן טיפ',
 	'antispoof-empty' => 'ליידיג שנירל',
 	'antispoof-blacklisted' => "כולל א געאסר'טן צייכן",

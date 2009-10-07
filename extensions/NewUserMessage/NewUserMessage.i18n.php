@@ -66,6 +66,14 @@ $messages['ast'] = array(
 	'newuseredit-summary' => "Añadiendo [[{{int:newusermessage-template}}|mensaxe de bienvenida]] a la nueva páxina d'alderique d'usuariu",
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'newusermessage-desc' => 'Fügt auf de Benutza-Diskussionsseitn vu neich ãngmöidte Benutza a Nåchricht ei',
+	'newuseredit-summary' => 'Begrüßt an neichn Benutza auf seina Diskussionsseitn mid ana [[{{int:newusermessage-template}}|Begriaßungsbotschåft]]',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -422,7 +430,7 @@ $messages['ms'] = array(
  */
 $messages['mt'] = array(
 	'newusermessage-desc' => "Iżżid messaġġ fil-paġna ta' diskussjoni ta' utent li għadu kif irreġistra",
-	'newuseredit-summary' => "Iżżid [[{{MediaWiki:Newusermessage-template}}|messaġġ ta' merħba]] fil-paġna ta' diskussjoni tal-utent il-ġdid",
+	'newuseredit-summary' => "Iżżid [[{{int:newusermessage-template}}|messaġġ ta' merħba]] fil-paġna ta' diskussjoni ta' utent ġdid",
 );
 
 /** Low German (Plattdüütsch)

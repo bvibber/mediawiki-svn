@@ -65,7 +65,7 @@ Revert this change first.',
 Releasing this information can result in permanent loss of Oversight privileges.',
 	'oversight-legend'     => 'Search revision hiding log',
 	'oversight-oversighter' => 'Oversighter:',
-	'oversight-offender'   => 'Offender:',
+	'oversight-offender'   => 'Revision author:',
 );
 
 /** Message documentation (Message documentation)
@@ -97,7 +97,7 @@ $2 = revision status',
 ----
 {{Identical|Details}}',
 	'oversight-oversighter' => "Option of fieldset in Special:Oversight. ''Overisight'' is the user who has hidden revision",
-	'oversight-offender' => "Option of fieldset in Special:Oversight. ''Offender'' is the author of the hidden revision",
+	'oversight-offender' => 'Option of fieldset in Special:Oversight.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -203,7 +203,7 @@ $messages['ar'] = array(
 إفشاء هذه المعلومات يمكن أن ينتج عنه فقد دائم لصلاحيات الأوفرسايت.',
 	'oversight-legend' => 'بحث في سجل إخفاء المراجعات',
 	'oversight-oversighter' => 'ناظر:',
-	'oversight-offender' => 'مسيء:',
+	'oversight-offender' => 'مؤلف المراجعة:',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -401,7 +401,7 @@ $messages['be-tarask'] = array(
 Распаўсюджаньне гэтай інфармацыі можа прывесьці да пазбаўленьня правоў рэвізора.',
 	'oversight-legend' => 'Пошук вэрсыяў у журнале хаваньняў',
 	'oversight-oversighter' => 'Рэвізор:',
-	'oversight-offender' => 'Парушальнік:',
+	'oversight-offender' => 'Аўтар вэрсіі:',
 );
 
 /** Bulgarian (Български)
@@ -548,13 +548,14 @@ Vratite najprije ovu promjenu.',
 Otkrivanje ovih informacija može rezultirati stalnim gubitkom privilegija nazdornika.',
 	'oversight-legend' => 'Pretraži zapis sakrivanja revizija',
 	'oversight-oversighter' => 'Nadzornik:',
-	'oversight-offender' => 'Napasnik:',
+	'oversight-offender' => 'Autor revizije:',
 );
 
 /** Catalan (Català)
  * @author Aleator
  * @author Iradigalesc
  * @author Paucabot
+ * @author Qllach
  * @author SMP
  * @author Toniher
  */
@@ -601,7 +602,7 @@ Revertiu aquest canvi abans.",
 Difondre aquesta informació pot resultar en una pèrdua permanent dels privilegis de Supervisió.',
 	'oversight-legend' => "Cerca al registre d'ocultació de revisions",
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Ofensor:',
+	'oversight-offender' => 'Autor de la revisió:',
 );
 
 /** Corsican (Corsu) */
@@ -659,14 +660,15 @@ Odstraněné položky nebude moci prostřednictvím webové stránky vidět nikd
 	'oversight-header' => 'Níže je seznam revizí, které byly nedávno trvale skryty z veřejné historie. Šíření těchto informací může mít za důsledek trvalou ztrátu práv dozorce (oversight).',
 	'oversight-legend' => 'Hledat v záznamu skrývání revizí',
 	'oversight-oversighter' => 'Dozorce:',
-	'oversight-offender' => 'Provinilec:',
+	'oversight-offender' => 'Autor revize:',
 );
 
 /** Danish (Dansk)
+ * @author Byrial
  * @author Jan Friberg
  */
 $messages['da'] = array(
-	'right-hiderevision' => 'Gense og gendan versioner skjult for administratorer',
+	'right-hiderevision' => 'Skjule versioner for administratorer',
 );
 
 /** German (Deutsch)
@@ -683,7 +685,7 @@ $messages['de'] = array(
 	'group-oversight' => 'Oversighter',
 	'group-oversight-member' => 'Oversighter',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
-	'right-oversight' => 'Ansehen einer zuvor verborgenen Version',
+	'right-oversight' => 'Zuvor verborgene Version ansehen',
 	'right-hiderevision' => 'Versionen vor Administratoren verbergen',
 	'hiderevision-prompt' => 'Zu entfernende Versionsnummer:',
 	'hiderevision-continue' => 'Weiter',
@@ -720,7 +722,7 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
 	'oversight-legend' => 'Logbuch durchsuchen',
 	'oversight-oversighter' => 'Oversight-Berechtigter:',
-	'oversight-offender' => 'Benutzer:',
+	'oversight-offender' => 'Autor der Version:',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -776,13 +778,14 @@ Anulěruj do togo toś tu změnu.',
 	'oversight-header' => 'Slědujo lisćina wersijow, kótarež su tuchylu na pśecej ze zjawnego naglěda wuzamknjone. Wózjawjenje toś tych informacijow móžo trajne zgubjenje doglědowańskich pšawow zawinowaś.',
 	'oversight-legend' => 'Protokol wó schowanju wersijow pśepytaś',
 	'oversight-oversighter' => 'Doglědowaŕ:',
-	'oversight-offender' => 'Njestatkaŕ:',
+	'oversight-offender' => 'Awtor wersije:',
 );
 
 /** Greek (Ελληνικά)
  * @author Badseed
  * @author Consta
  * @author Dead3y3
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -828,7 +831,7 @@ $messages['el'] = array(
 Η απελευθέρωση αυτών των πληροφοριών μπορεί να έχει ως αποτέλεσμα την μόνιμη απώλεια των προνομίων Επιτήρησης.',
 	'oversight-legend' => 'Αναζήτηση αρχείου καταγραφής απόκρυψης αναθεωρήσεων',
 	'oversight-oversighter' => 'Επιτηρητής:',
-	'oversight-offender' => 'Υπαίτιος:',
+	'oversight-offender' => 'Δημιουργός αναθεώρησης:',
 );
 
 /** Esperanto (Esperanto)
@@ -877,7 +880,7 @@ Malfaru ĉi tiun ŝanĝon antaŭe.',
 Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-rajtoj.',
 	'oversight-legend' => 'Serĉi protokolon pri revizia kaŝado',
 	'oversight-oversighter' => 'Zorganto:',
-	'oversight-offender' => 'Ofendanto:',
+	'oversight-offender' => 'Aŭtoro de revizio:',
 );
 
 /** Spanish (Español)
@@ -932,7 +935,7 @@ Revierte antes el cambio.',
 Hacer pública esta información puede provocar la pérdida definitiva de los privilegios de supervisión.',
 	'oversight-legend' => 'Registro de búsqueda de revisiones ocultas',
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Contraventor:',
+	'oversight-offender' => 'Autor de revisión:',
 );
 
 /** Estonian (Eesti)
@@ -945,7 +948,7 @@ $messages['et'] = array(
 	'group-oversight-member' => 'järelevaataja',
 	'grouppage-oversight' => '{{ns:project}}:Järelevaatajad',
 	'right-oversight' => 'Vaadata eelnevalt peidetud redaktsioone',
-	'right-hiderevision' => 'Peita redaktsioone ülemate eest',
+	'right-hiderevision' => 'Peida redaktsioone administraatorite eest',
 	'hiderevision-continue' => 'Jätka',
 	'hiderevision-submit' => 'Peida need andmed jäädavalt',
 	'hiderevision-link' => 'peidetud kaastööd',
@@ -957,6 +960,8 @@ $messages['et'] = array(
 Kõigepealt eemalda see.',
 	'oversight-log-hiderev' => 'eemaldas muudatuste leheküljelt $1',
 	'oversight-view' => 'üksikasjad',
+	'oversight-hidden' => 'Peidetud redaktsioon',
+	'oversight-offender' => 'Redaktsiooni tegija:',
 );
 
 /** Basque (Euskara) */
@@ -989,6 +994,7 @@ Ezabatutakoak ezin izango inork ikusi, baina akats bat eginez gero ezabaketak go
 
 /** Persian (فارسی)
  * @author Huji
+ * @author Ladsgroup
  */
 $messages['fa'] = array(
 	'hiderevision' => 'پنهان کردن همیشگی نسخه‌ها',
@@ -997,7 +1003,7 @@ $messages['fa'] = array(
 	'group-oversight-member' => 'ناظر',
 	'grouppage-oversight' => '{{ns:project}}:ناظر',
 	'right-oversight' => 'مشاهدهٔ نسخه‌ای که قبلاً پنهان شده',
-	'right-hiderevision' => 'بازبینی و احیای نسخه‌هایی که از مدیران پنهان شده‌است',
+	'right-hiderevision' => 'پنهان کردن نسخه از مدیران',
 	'hiderevision-prompt' => 'شماره نسخه‌ای که حذف می‌شود:',
 	'hiderevision-continue' => 'ادامه',
 	'hiderevision-text' => "این قابلیت '''فقط''' در موارد زیر باید استفاده شود:
@@ -1034,7 +1040,7 @@ $messages['fa'] = array(
 منتشر کردن این اطلاعات می‌تواند به از دست دادن همیشگی اختیارات شما بینجامد.',
 	'oversight-legend' => 'جستجو در سیاهه پنهان‌سازی نسخه‌ها',
 	'oversight-oversighter' => 'ناظر:',
-	'oversight-offender' => 'متخلف:',
+	'oversight-offender' => 'نویسنده نسخه',
 );
 
 /** Finnish (Suomi)
@@ -1085,7 +1091,7 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'oversight-header' => 'Alla on lista pysyvästi piilotetuista versioista, jotka eivät näy julkisesti. Näiden tietojen julkaiseminen voi johtaa tämän työkalun käyttöoikeuksien menetykseen.',
 	'oversight-legend' => 'Etsi häivytyslokista',
 	'oversight-oversighter' => 'Häivyttäjä:',
-	'oversight-offender' => 'Käyttäjä:',
+	'oversight-offender' => 'Version tekijä:',
 );
 
 /** Faroese (Føroyskt)
@@ -1109,8 +1115,8 @@ $messages['fo'] = array(
 $messages['fr'] = array(
 	'hiderevision' => 'Cacher définitivement les révisions',
 	'hiderevision-desc' => 'Masque les modifications individuelles de tous les utilisateurs pour des motifs légaux, etc.',
-	'group-oversight' => 'Superviseurs',
-	'group-oversight-member' => 'Superviseur',
+	'group-oversight' => 'Oversighters',
+	'group-oversight-member' => 'Oversighter',
 	'grouppage-oversight' => '{{ns:project}}:Oversighter',
 	'right-oversight' => 'Voir les versions cachées par oversight',
 	'right-hiderevision' => 'Masquer des révisions aux administrateurs',
@@ -1148,7 +1154,7 @@ Annulez d’abord cette modification en rétablissant la version précédente.',
 	'oversight-header' => 'Ci-dessous figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges de {{MediaWiki:Oversight}}.',
 	'oversight-legend' => 'Journal des recherches des versions cachées',
 	'oversight-oversighter' => 'Oversighter :',
-	'oversight-offender' => 'Diffamateur :',
+	'oversight-offender' => 'Auteur de la révision :',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1166,12 +1172,12 @@ $messages['frp'] = array(
 	'hiderevision-continue' => 'Continuar',
 	'hiderevision-text' => "Ceta fonccionalitât dêt étre utilisâ '''ren que''' dens cetos câs :
 * Enformacions a sè que vont pas avouéc :
-*: ''adrèce et numerô de tèlèfono, numerô de sècuritât sociâla, ...''
+*: ''adrèce a sè et numerô de tèlèfono, numerô de sècuritât sociâla, ...''
 
 '''L’abus de ceta fonccionalitât porterat a consèquence la pèrta de celos privilèjos.'''
 
-Les vèrsions suprimâs sont pas més visibles dens ceti seto, mas celes suprèssions sont enregistrâs et pôvont étre refêtes a la man per un administrator de la bâsa de balyês se vos éd fêt una èrror.",
-	'hiderevision-reason' => 'Rêson (serat enregistrâ châcuna a pârt) :',
+Les vèrsions suprimâs sont pas més visibles dens ceti seto vouèbe, mas celes suprèssions sont encartâs et pôvont étre refêtes a la man per un administrator de la bâsa de balyês se vos éd fêt una èrror.",
+	'hiderevision-reason' => 'Rêson (serat encartâ châcuna a pârt) :',
 	'hiderevision-submit' => 'Cachiér ceta vèrsion por de bon',
 	'hiderevision-tab' => 'Cachiér la vèrsion',
 	'hiderevision-link' => 'Contribucions cachiês a l’utilisator',
@@ -1266,7 +1272,7 @@ Desfaga esta modificación primeiro.',
 Á liberación desta información pode resultar na perda permanente dos privilexios de Supervisión.',
 	'oversight-legend' => 'Rexistro de procura de revisións agochadas',
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Delincuente:',
+	'oversight-offender' => 'Autor da revisión:',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1325,7 +1331,7 @@ Versione, wu usegnuh wore sin, chenne vu niemerem meh iber d Website aagluegt w�
 	'oversight-header' => 'Do chunnt e Lischt mit dr Versione, wu fir immer usegnuh wore sin zum effentli aaluege. D Vereffentlichung vu däne Informatione cha bedyte, ass eim fir immer d Oversight-Rächt ewäggnuh wäre.',
 	'oversight-legend' => 'Logbuech dursueche',
 	'oversight-oversighter' => 'Oversight-Berächtigter:',
-	'oversight-offender' => 'Benutzer:',
+	'oversight-offender' => 'Versionsautor:',
 );
 
 /** Hebrew (עברית)
@@ -1520,12 +1526,13 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 	'oversight-header' => 'Slěduje lisćina wersijow na stajnje schowanych za zjawnosć. Wozjewjenje tutych informacijow móže k stajnemu zhubjenju prawow za Oversight wjesć.',
 	'oversight-legend' => 'Protokol za schowanje wersijow přepytać',
 	'oversight-oversighter' => 'Dohladowar:',
-	'oversight-offender' => 'Njedušnik:',
+	'oversight-offender' => 'Awtor wersije:',
 );
 
 /** Hungarian (Magyar)
  * @author Dani
  * @author Dorgan
+ * @author Glanthor Reviol
  * @author KossuthRad
  */
 $messages['hu'] = array(
@@ -1537,7 +1544,7 @@ $messages['hu'] = array(
 	'right-oversight' => 'korábban elrejtett változatok megtekintése',
 	'right-hiderevision' => 'változatok elrejtése az adminisztrátorok elől',
 	'hiderevision-prompt' => 'Eltávolítandó változat:',
-	'hiderevision-continue' => 'Folytatódik',
+	'hiderevision-continue' => 'Folytatás',
 	'hiderevision-text' => "Ez az eszköz '''csak''' az alábbi esetekben használható:
 * nem ide illő személyi információk
 *: ''otthoni címek, telefonszámok és társadalombiztosítási számok stb.''
@@ -1572,7 +1579,7 @@ adatbázis-adminisztrátor, ha hibát vétesz.",
 Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elvesztését is jelentheti.',
 	'oversight-legend' => 'Keresés a változatelrejtési naplóban',
 	'oversight-oversighter' => 'Adatvédelmi biztos:',
-	'oversight-offender' => 'IP-cím vagy felhasználói név:',
+	'oversight-offender' => 'Változat szerzője:',
 );
 
 /** Interlingua (Interlingua)
@@ -1621,7 +1628,7 @@ Reverte primo iste modification.',
 Le divulgation de iste informationes pote resultar in le perdita permanente del privilegios supervisorial.',
 	'oversight-legend' => 'Cercar in registro de celamento de versiones',
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Transgressor:',
+	'oversight-offender' => 'Autor del version:',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1675,7 +1682,7 @@ administrator basis data jika Anda membuat kesalahan.",
 Menyebarkan informasi ini dapat berakibat kepada hilangnya hak pengawas.',
 	'oversight-legend' => 'Cari log penyembunyian revisi',
 	'oversight-oversighter' => 'Penyembunyi suntingan:',
-	'oversight-offender' => 'Pelaku revisi:',
+	'oversight-offender' => 'Revisi penulis:',
 );
 
 /** Ido (Ido)
@@ -1745,7 +1752,7 @@ in caso di errori.",
 La divulgazione di tali informazioni può dar luogo alla rimozione permanente dei diritti di oversight.',
 	'oversight-legend' => 'Cerca i log delle revisioni nascoste',
 	'oversight-oversighter' => 'Autore della rimozione:',
-	'oversight-offender' => "Autore dell'azione rimossa:",
+	'oversight-offender' => 'Autore della versione:',
 );
 
 /** Japanese (日本語)
@@ -1797,7 +1804,7 @@ $messages['ja'] = array(
 	'oversight-header' => '下記は、最近非公開となった版の一覧です。ここで得られた情報を漏洩した場合、この閲覧権限を永久に失う事となるでしょう。',
 	'oversight-legend' => '版の秘匿記録の検索',
 	'oversight-oversighter' => '秘匿者:',
-	'oversight-offender' => '投稿者:',
+	'oversight-offender' => '特定版投稿者:',
 );
 
 /** Jutish (Jysk)
@@ -2088,7 +2095,7 @@ $messages['ko'] = array(
 이 정보를 공개할 경우 오버사이트 권한이 영구히 박탈될 수 있습니다.',
 	'oversight-legend' => '특정 판 숨기기 기록 찾기',
 	'oversight-oversighter' => '오버사이트',
-	'oversight-offender' => '편집자:',
+	'oversight-offender' => '판 작성자:',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -2143,7 +2150,7 @@ Wä di Enfomazione wigger jitt, weed dat Rääsch se aanzeloore,
 un wat domet zosamme hängk, flöck quitt.',
 	'oversight-legend' => 'Sök em Logboch fum Versione Versteche',
 	'oversight-oversighter' => 'Sigge-Versione-Verstecher:',
-	'oversight-offender' => 'Metmaacher:',
+	'oversight-offender' => 'Dä Väsjohn ier Schriever:',
 );
 
 /** Cornish (Kernewek)
@@ -2199,6 +2206,7 @@ Annulléiert dës Ännerung d'éischt.",
 Verbreedung vun dësen Informatiounen kann zum definitve Verloscht vun den ''Oversight''-Rechter féieren.",
 	'oversight-legend' => 'Lëscht vun de Recherche vu verstoppte Versiounen',
 	'oversight-oversighter' => 'Artikel-Kontroller:',
+	'oversight-offender' => 'Auteur vun der Versioun:',
 );
 
 /** Limburgish (Limburgs)
@@ -2287,8 +2295,8 @@ $messages['mk'] = array(
 	'group-oversight' => 'Надгледувачи',
 	'group-oversight-member' => 'надгледувач',
 	'grouppage-oversight' => '{{ns:project}}:Надгледувач',
-	'right-oversight' => 'Погледни претходно сокриени ревизии',
-	'right-hiderevision' => 'Сокриј ревизии од администратори',
+	'right-oversight' => 'Гледање на претходно сокриена ревизија',
+	'right-hiderevision' => 'Криење на ревизии од администратори',
 	'hiderevision-prompt' => 'Број на ревизија за бришење:',
 	'hiderevision-continue' => 'Продолжи',
 	'hiderevision-text' => "Ова треба да се користи '''само''' за следниве случаи:
@@ -2328,6 +2336,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -2335,7 +2344,7 @@ $messages['ml'] = array(
 	'group-oversight' => 'മേല്‍നോട്ടക്കാര്‍',
 	'group-oversight-member' => 'മേല്‍നോട്ടം',
 	'grouppage-oversight' => '{{ns:project}}:മേല്‍നോട്ടം',
-	'right-oversight' => 'മുന്‍പ് മറക്കപ്പെട്ട ഒരു പതിപ്പ് കാണുക',
+	'right-oversight' => 'മുന്‍പ് മറയ്ക്കപ്പെട്ട ഒരു പതിപ്പ് കാണുക',
 	'hiderevision-prompt' => 'ഒഴിവാക്കാനുള്ള പതിപ്പിന്റെ ഐഡി',
 	'hiderevision-continue' => 'തുടരുക',
 	'hiderevision-reason' => 'കാരണം (സ്വകാര്യമായി സൂക്ഷിക്കും):',
@@ -2584,7 +2593,7 @@ Draai de bewerking eerst terug.',
 Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten worden ingenomen.',
 	'oversight-legend' => 'Logboek verborgen versies doorzoeken',
 	'oversight-oversighter' => 'Oversightgebruiker:',
-	'oversight-offender' => 'Dader:',
+	'oversight-offender' => 'Auteur versie:',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -2721,7 +2730,7 @@ $messages['oc'] = array(
 	'oversight-header' => "Çaijós, figura la lista de las revisions amagadas de biais permanent al public. La divulgacion d'aquesta entresenha pòt aver coma consequéncia la descasença dels privilègis d’Oversight.",
 	'oversight-legend' => 'Jornal de las recèrcas de las versions amagadas',
 	'oversight-oversighter' => 'Supervisor :',
-	'oversight-offender' => 'Difamator :',
+	'oversight-offender' => 'Autor de la revision :',
 );
 
 /** Pangasinan (Pangasinan) */
@@ -2795,7 +2804,7 @@ Najpierw wycofaj ostatnią edycję.',
 Ujawnianie tych informacji może skutkować stałą utratą uprawnień Rewizora.',
 	'oversight-legend' => 'Szukaj ukrytych wersji w rejestrze',
 	'oversight-oversighter' => 'Rewizor',
-	'oversight-offender' => 'Autor usuniętej edycji',
+	'oversight-offender' => 'Autor edycji',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2840,7 +2849,7 @@ $messages['pms'] = array(
 	'oversight-header' => "Ambelessì sota a-i é na lista dle revision stërmà ch'a l'é nen vàire. Publiché st'anformassion-sì a peul ëmné a perde ël drit ëd dovré ël sistema ëd coression dle gafade.",
 	'oversight-legend' => 'Serca ël registr dle revision stërmà',
 	'oversight-oversighter' => 'Autor dla rimossion:',
-	'oversight-offender' => "Autor dl'ofèisa:",
+	'oversight-offender' => 'Autor ëd la revision:',
 );
 
 /** Pashto (پښتو)
@@ -2853,6 +2862,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Indech
  * @author Lijealso
  * @author Malafaya
  * @author Sir Lestaty de Lioncourt
@@ -2902,7 +2912,7 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
 	'oversight-legend' => 'Pesquisar registro de revisões ocultas',
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Ofensor:',
+	'oversight-offender' => 'Autor da revisão:',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -3042,7 +3052,7 @@ $messages['ru'] = array(
 Распространение данной информации может повлечь лишение прав ревизора.',
 	'oversight-legend' => 'Поиск по журналу сокрытия правок',
 	'oversight-oversighter' => 'Ревизор:',
-	'oversight-offender' => 'Нарушитель:',
+	'oversight-offender' => 'Автор версии страницы:',
 );
 
 /** Yakut (Саха тыла)
@@ -3089,7 +3099,7 @@ $messages['sah'] = array(
 Бу сибидиэнньэлэри тарҕатыы ырытааччы быраабын быһыыга тиэрдиэн сөп.',
 	'oversight-legend' => 'Уларытыыны кистиир сурунаалга көрдөөһүн',
 	'oversight-oversighter' => 'Ревизор:',
-	'oversight-offender' => 'Кэһээччи:',
+	'oversight-offender' => 'Барыл ааптара:',
 );
 
 /** Sicilian (Sicilianu)
@@ -3202,7 +3212,7 @@ administrátorom databázy v prípade, že spravíte chybu.",
 	'oversight-header' => 'Dolu je zoznam revízií, ktoré boli nedávno permanentne skryté pohľadu verejnosti. Šírenie týchto informácií môže mať za dôsledok permanentnú stratu práv Dozrcu (oversight).',
 	'oversight-legend' => 'Hľadať v zázname skrývania revízií',
 	'oversight-oversighter' => 'Dozorca:',
-	'oversight-offender' => 'Previnilec:',
+	'oversight-offender' => 'Autor revízie:',
 );
 
 /** Samoan (Gagana Samoa)
@@ -3661,7 +3671,7 @@ Silinmiş öğeler web sitesi boyunca kimseye görünür olmayacaktır, fakat si
 Bu bilgiyi yaymak, Gözetmen ayrıcalıklarının kalıcı olarak kaybıyla sonuçlanabilir.',
 	'oversight-legend' => 'Revizyon gizleme günlüğünü ara',
 	'oversight-oversighter' => 'Gözetmen:',
-	'oversight-offender' => 'Kabahatli:',
+	'oversight-offender' => 'Revizyon yazarı:',
 );
 
 /** Ukrainian (Українська)
@@ -3763,7 +3773,7 @@ in caso de erori.",
 La divulgazion di ste informassion la pol conportar la rimozion permanente dei diriti de supervisor.',
 	'oversight-legend' => 'Serca i registri de le revision sconte',
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Trasgressor:',
+	'oversight-offender' => 'Autor de la revision:',
 );
 
 /** Veps (Vepsan kel')
@@ -3771,7 +3781,8 @@ La divulgazion di ste informassion la pol conportar la rimozion permanente dei d
  */
 $messages['vep'] = array(
 	'oversight-view' => 'detalid',
-	'oversight-offender' => 'Abidoičii',
+	'oversight-hidden' => 'Peittud redakcii',
+	'oversight-offender' => 'Versijan avtor:',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -3822,7 +3833,7 @@ Không ai có thể dùng website để xem phiên bản sau khi nó được gi
 Nếu đưa ra thông tin này, bạn sẽ mất vĩnh viễn quyền giám sát.',
 	'oversight-legend' => 'Tìm kiếm trong nhật trình giấu phiên bản',
 	'oversight-oversighter' => 'Giám sát viên:',
-	'oversight-offender' => 'Người phạm lỗi:',
+	'oversight-offender' => 'Tác giả của phiên bản:',
 );
 
 /** Volapük (Volapük)

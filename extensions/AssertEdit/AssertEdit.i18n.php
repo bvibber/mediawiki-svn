@@ -627,6 +627,15 @@ $messages['scn'] = array(
 	'assert_edit_message' => "L'affirmazzioni nnicata ($1) non ariniscìu.",
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
+ */
+$messages['shi'] = array(
+	'assert_edit_title' => 'Ur ittuykkad',
+	'assert_edit_desc' => 'Zayd ukkd imbddeln s botn',
+	'assert_edit_message' => 'Tuwkid ($1) ur izri',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

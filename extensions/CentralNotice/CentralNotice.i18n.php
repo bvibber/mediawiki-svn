@@ -109,6 +109,7 @@ $messages['qqq'] = array(
 	'noticetemplate' => 'Title of Special:NoticeTemplate',
 	'centralnotice-desc' => 'Short description of the Centralnotice extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'centralnotice-summary' => 'Used in Special:CentralNotice',
+	'centralnotice-end-date' => '{{Identical|End date}}',
 	'centralnotice-enabled' => '{{Identical|Enabled}}',
 	'centralnotice-modify' => '{{Identical|Submit}}',
 	'centralnotice-preview' => '{{Identical|Preview}}',
@@ -118,7 +119,9 @@ $messages['qqq'] = array(
 	'centralnotice-translate' => '{{Identical|Translate}}',
 	'centralnotice-notice-exists' => 'Errore message displayed in Special:CentralNotice when trying to add a notice with the same name of another notice',
 	'centralnotice-template-exists' => 'Errore message displayed in Special:NoticeTemplate when trying to add a template with the same name of another template',
-	'centralnotice-start-date' => 'Used in Special:CentralNotice',
+	'centralnotice-start-date' => 'Used in Special:CentralNotice.
+
+{{Identical|Start date}}',
 	'centralnotice-start-time' => 'Used in Special:CentralNotice',
 	'centralnotice-available-templates' => 'Used in Special:NoticeTemplate',
 	'centralnotice-notice-is-locked' => 'Errore message displayed in Special:CentralNotice when trying to delete a locked notice',
@@ -884,6 +887,7 @@ $messages['da'] = array(
  * @author Metalhead64
  * @author Purodha
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'centralnotice' => 'Administrierung der zentralen Meldungen',
@@ -964,8 +968,8 @@ Füge eine hinzu.',
 	'centralnotice-clone' => 'Klon erstellen',
 	'centralnotice-clone-notice' => 'Erstelle eine Kopie der Vorlage',
 	'centralnotice-preview-all-template-translations' => 'Vorschau aller verfügbaren Übersetzungen einer Vorlage',
-	'right-centralnotice-admin' => 'Verwalten von zentralen Meldungen',
-	'right-centralnotice-translate' => 'Übersetzen von zentralen Meldungen',
+	'right-centralnotice-admin' => 'Zentrale Meldungen verwalten',
+	'right-centralnotice-translate' => 'Zentrale Meldungen übersetzen',
 	'action-centralnotice-admin' => 'Zentrale Seitennotiz verwalten',
 	'action-centralnotice-translate' => 'Zentrale Seitennotiz übersetzen',
 	'centralnotice-preferred' => 'Bevorzugt',
@@ -1426,6 +1430,7 @@ Lisa mõni!',
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  * @author Pi
  * @author Theklan
@@ -1468,6 +1473,8 @@ Ez da gehituko',
 	'centralnotice-start-date' => 'Hasiera data',
 	'centralnotice-start-time' => 'Hasiera ordua (UTC)',
 	'centralnotice-assigned-templates' => 'Ezarritako txantiloiak',
+	'centralnotice-preview-template' => 'Txantiloia aurreikusi',
+	'centralnotice-edit-template' => 'Txantiloia aldatu',
 	'centralnotice-message' => 'Mezua',
 );
 
@@ -2441,7 +2448,7 @@ $messages['id'] = array(
 Modul ini juga dapat digunakan untuk menambahkan atau menghapus pengumuman lama.',
 	'centralnotice-query' => 'Ubah pengumuman saat ini',
 	'centralnotice-notice-name' => 'Judul pengumuman',
-	'centralnotice-end-date' => 'Tanggal akhir',
+	'centralnotice-end-date' => 'Tanggal selesai',
 	'centralnotice-enabled' => 'Diaktifkan',
 	'centralnotice-modify' => 'Kirim',
 	'centralnotice-preview' => 'Pratayang',
@@ -2929,7 +2936,7 @@ $messages['ko'] = array(
 한 번 삭제하면 복구할 수 없습니다.',
 	'centralnotice-no-notices-exist' => '공지가 존재하지 않습니다. 공지를 추가해주세요.',
 	'centralnotice-no-templates-translate' => '번역해야 할 템플릿이 없습니다.',
-	'centralnotice-number-uses' => '사용',
+	'centralnotice-number-uses' => '사용 횟수',
 	'centralnotice-edit-template' => '틀 편집하기',
 	'centralnotice-message' => '메시지',
 	'centralnotice-message-not-set' => '메시지가 정의되지 않았습니다.',
@@ -2940,7 +2947,7 @@ $messages['ko'] = array(
 	'right-centralnotice-translate' => '중앙 공지 번역',
 	'action-centralnotice-admin' => '중앙 공지를 관리하기',
 	'action-centralnotice-translate' => '중앙 공지를 번역할',
-	'centralnotice-preferred' => '우선적으로',
+	'centralnotice-preferred' => '우선 사용',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -3033,12 +3040,13 @@ De kanns ävver welshe dobei don.',
 	'centralnotice-preferred' => 'Förjetrocke!',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
 	'centralnotice-english' => 'Sowsnek',
-	'centralnotice-day' => 'Dydh',
+	'centralnotice-day' => 'Dedh',
 	'centralnotice-year' => 'Bledhen',
 	'centralnotice-month' => 'Mis',
 	'centralnotice-edit-template' => 'Chanjya skantlyn',
@@ -3148,43 +3156,43 @@ $messages['lfn'] = array(
  * @author Pahles
  */
 $messages['li'] = array(
-	'centralnotice' => 'Beheer centrale sitenotice',
-	'noticetemplate' => 'Sjablone centrale citenotice',
-	'centralnotice-desc' => "Voegt 'n centrale sitemededeling toe",
-	'centralnotice-summary' => 'Mit dees moduul kinne centraal ingestelde sitenotices bewerk waere.
-De module kin ouch gebroek waere om sitenotices toe te voge of aaj te wisse.',
-	'centralnotice-query' => 'Hujig sitenotices angere',
-	'centralnotice-notice-name' => 'Sitenoticenaam',
+	'centralnotice' => 'Beheer centrale sitemitdeiling',
+	'noticetemplate' => 'Sjabloon centrale citemitdeiling',
+	'centralnotice-desc' => "Deit 'n centrale sitemededeling bie",
+	'centralnotice-summary' => 'Mit dees moduul kinne centraal ingestelde sitemitdeilinge bewirk waere.
+De module kin ouch gebroek waere om sitemitdeilinge bie te doon of eweg te sjaffe.',
+	'centralnotice-query' => 'Hujige sitemitdeilinge verangere',
+	'centralnotice-notice-name' => 'Naam mitdeiling',
 	'centralnotice-end-date' => 'Einddatum',
 	'centralnotice-enabled' => 'Aktief',
 	'centralnotice-modify' => 'Opslaon',
-	'centralnotice-preview' => 'Bekieke',
-	'centralnotice-add-new' => 'Nuuj centrale sitenotice toevoge',
+	'centralnotice-preview' => 'Betrachte',
+	'centralnotice-add-new' => 'Nuuj centrale sitemitdeiling biedoon',
 	'centralnotice-remove' => 'Wis',
 	'centralnotice-translate-heading' => 'Vertaling veur $1',
-	'centralnotice-manage' => 'Centrale sitenotice behere',
-	'centralnotice-add' => 'Toevoge',
-	'centralnotice-add-notice' => 'Sitenotice toevoge',
-	'centralnotice-add-template' => 'Sjabloon toevoge',
-	'centralnotice-show-notices' => 'Sitenotices waergaeve',
+	'centralnotice-manage' => 'Centrale sitemitdeiling behere',
+	'centralnotice-add' => 'Biedoon',
+	'centralnotice-add-notice' => 'Sitemitdeiling biedoon',
+	'centralnotice-add-template' => 'Sjabloon biedoon',
+	'centralnotice-show-notices' => 'Sitemitdeilinge waergaeve',
 	'centralnotice-list-templates' => 'Sjablone waergaeve',
-	'centralnotice-translations' => 'Vertalinger',
-	'centralnotice-translate-to' => 'Vertale nao',
-	'centralnotice-translate' => 'Vertale',
-	'centralnotice-english' => 'Ingelsj',
+	'centralnotice-translations' => 'Euverzèttinge',
+	'centralnotice-translate-to' => 'Euverzètte nao',
+	'centralnotice-translate' => 'Euverzètte',
+	'centralnotice-english' => 'Ingels',
 	'centralnotice-template-name' => 'Sjabloonnaam',
 	'centralnotice-templates' => 'Sjablone',
 	'centralnotice-weight' => 'Gewich',
-	'centralnotice-locked' => 'Aafgeslaote',
-	'centralnotice-notices' => 'Sitenotices',
-	'centralnotice-notice-exists' => 'De sitenotice besteit al.
-Deze wörd neet toegevoog.',
-	'centralnotice-template-exists' => "'t Sjabloon besteit al.
-Dit wörd neet toegevoog.",
-	'centralnotice-notice-doesnt-exist' => 'De sitenotice besteit neet.
-Nieks wörd gewis.',
-	'centralnotice-template-still-bound' => "'t Sjabloon is nag neet gekoppeld aan 'ne sitenotice.
-'t Wörd neet gewis.",
+	'centralnotice-locked' => 'Aafgesjlaote',
+	'centralnotice-notices' => 'Sitemitdeilinge',
+	'centralnotice-notice-exists' => 'De sitemitdeiling besjteit al.
+Deze weurt neet biegedoon.',
+	'centralnotice-template-exists' => "'t Sjabloon besjteit al.
+Dit weurt neet biegedoon.",
+	'centralnotice-notice-doesnt-exist' => 'De sitemitdeiling besjteit neet.
+Niks weurt eweggesjaf.',
+	'centralnotice-template-still-bound' => "'t Sjabloon is nog neet gekoppeld aan 'n sitemitdeiling.
+'t Weurt neet eweggesjaf.",
 	'centralnotice-template-body' => 'Sjablooninhoud:',
 	'centralnotice-day' => 'Daag',
 	'centralnotice-year' => 'Jaor',
@@ -3193,44 +3201,45 @@ Nieks wörd gewis.',
 	'centralnotice-min' => 'Menuut',
 	'centralnotice-project-lang' => 'Projektaal',
 	'centralnotice-project-name' => 'Projeknaam',
-	'centralnotice-start-date' => 'Startdatum',
-	'centralnotice-start-time' => 'Starttied (UTC)',
+	'centralnotice-start-date' => 'Sjtartdatum',
+	'centralnotice-start-time' => 'Sjtarttied (UTC)',
 	'centralnotice-assigned-templates' => 'Toegeweze sjablone',
-	'centralnotice-no-templates' => "d'r Zeen gein sjablone besjikber in t systeem",
-	'centralnotice-no-templates-assigned' => 'dr Zeen gein sjablone toegeweze-n aan de sitenotice.
-Die mós se toevoge.',
-	'centralnotice-available-templates' => 'Besjikber sjablone',
-	'centralnotice-template-already-exists' => "t Sjabloon is al gekoppeld aan 'n campaggne.
-t Wörd neet drbiegedaon.",
-	'centralnotice-preview-template' => 'Veurvetoeansjabloon',
-	'centralnotice-start-hour' => 'Starttied',
-	'centralnotice-change-lang' => 'Te vertale taal wiezige',
-	'centralnotice-weights' => 'Giwich',
+	'centralnotice-no-templates' => "Gein sjablone gevónje.
+Doog 'rs bie!",
+	'centralnotice-no-templates-assigned' => "D'r zeen gein sjablone toegeweze aan de sitemitdeiling.
+Doog 'rs bie!",
+	'centralnotice-available-templates' => 'Besjikbare sjablone',
+	'centralnotice-template-already-exists' => "'t Sjabloon is al gekoppeld aan 'n campagne.
+'t Weurt neet biegedoon.",
+	'centralnotice-preview-template' => 'Veursjouw sjabloon',
+	'centralnotice-start-hour' => 'Sjtarttied',
+	'centralnotice-change-lang' => 'Euver te zètte taal verangere',
+	'centralnotice-weights' => 'Gewichte',
 	'centralnotice-notice-is-locked' => 'De sitenotice is toe.
 Deze wörd neet gewis',
-	'centralnotice-overlap' => "De sitenotice euverlep mit 'n anger sitenotice.
-Deze wörd neet drbiegedaon",
-	'centralnotice-invalid-date-range' => 'Ongeldige datumreeks.
-Nieks biegewerk.',
-	'centralnotice-null-string' => 'De kins gein laeg teksveld toevoge.
-Nieks toegevoeg',
-	'centralnotice-confirm-delete' => 'Witse zeker detse dit item wils wisse?
-Dees henjiling is neet trök te drejje.',
-	'centralnotice-no-notices-exist' => "dr Zeen gein sitenotices.
-De kins dr hiejónger 'ne toevoge",
-	'centralnotice-no-templates-translate' => 'dr Zeen gein sjablone woveur vertalinge gemaak kinne waere',
+	'centralnotice-overlap' => "De sitemitdeiling euverlap mit 'n anger sitemitdeiling.
+Deze weurt neet biegedoon",
+	'centralnotice-invalid-date-range' => "Ongeljige datumreeks.
+D'r weurt niks biegewirk.",
+	'centralnotice-null-string' => "De kins gein laeg teksveld biedoon.
+D'r weurt niks biegedoon",
+	'centralnotice-confirm-delete' => 'Wèts doe zeker dats doe dit item wils ewegsjaffe?
+Dees hanjeling is neet trök te drieje.',
+	'centralnotice-no-notices-exist' => "D'r zeen gein sitemitdeilinge.
+De kins hiejónger ein biedoon.",
+	'centralnotice-no-templates-translate' => "D'r zeen gein sjablone woeveur euverzèttinge gemaak kinne waere",
 	'centralnotice-number-uses' => 'Gebroeke',
-	'centralnotice-edit-template' => 'Sjabloon bewerke',
+	'centralnotice-edit-template' => 'Sjabloon bewirke',
 	'centralnotice-message' => 'Berich',
-	'centralnotice-message-not-set' => 't Berich is neet ingesteld',
-	'centralnotice-clone' => 'Kopiere',
-	'centralnotice-clone-notice' => 'n Kopie ven t sjabloon make',
-	'centralnotice-preview-all-template-translations' => 'Alle besjikber vertalinge ven t sjabloon bekieke',
-	'right-centralnotice-admin' => 'Centrale sitenotices behieëre',
+	'centralnotice-message-not-set' => "'t Berich is neet ingesjtèld",
+	'centralnotice-clone' => 'Kopiëre',
+	'centralnotice-clone-notice' => "'n Kopie van 't sjabloon make",
+	'centralnotice-preview-all-template-translations' => "Alle besjikbare euverzèttinge van 't sjabloon betrachte",
+	'right-centralnotice-admin' => 'Centrale sitemitdeilinge behere',
 	'right-centralnotice-translate' => 'Centrale sitenotices vertale',
-	'action-centralnotice-admin' => 'behieër centrale sitenotice',
-	'action-centralnotice-translate' => 'vertaal centrale sitenotice',
-	'centralnotice-preferred' => 'Veurkäör',
+	'action-centralnotice-admin' => 'beheer centrale sitemitdeilinge',
+	'action-centralnotice-translate' => 'centrale sitemitdeilinge euverzètte',
+	'centralnotice-preferred' => 'Prifferensies',
 );
 
 /** Lithuanian (Lietuvių)
@@ -4109,6 +4118,7 @@ $messages['ps'] = array(
 	'centralnotice-desc' => 'يو مرکزي ويبځی-يادښت ورګډول',
 	'centralnotice-translate-heading' => 'د $1 لپاره ژباړه',
 	'centralnotice-add' => 'ورګډول',
+	'centralnotice-add-template' => 'يوه کينډۍ ورګډول',
 	'centralnotice-translations' => 'ژباړې',
 	'centralnotice-translate' => 'ژباړل',
 	'centralnotice-english' => 'انګرېزي',
@@ -4123,6 +4133,10 @@ $messages['ps'] = array(
 	'centralnotice-project-name' => 'د پروژې نوم',
 	'centralnotice-start-date' => 'د پيل نېټه',
 	'centralnotice-start-time' => 'د پيل وخت (UTC)',
+	'centralnotice-available-templates' => 'شته کينډۍ',
+	'centralnotice-start-hour' => 'د پيل وخت',
+	'centralnotice-change-lang' => 'د ژباړې ژبه بدلول',
+	'centralnotice-message' => 'پيغام',
 );
 
 /** Portuguese (Português)
@@ -5726,10 +5740,11 @@ Zónteghene una qua soto.',
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'centralnotice' => 'Quản lý các thông báo chung',
-	'noticetemplate' => 'Tiêu bản thông báo chung',
+	'noticetemplate' => 'Bản mẫu thông báo chung',
 	'centralnotice-desc' => 'Thêm thông báo ở đầu các trang tại hơn một wiki',
 	'centralnotice-summary' => 'Dùng phần này, bạn có thể sửa đổi các thông báo chung đã được thiết lập, cũng như thêm thông báo mới hoặc dời thông báo cũ.',
 	'centralnotice-query' => 'Sửa đổi các thông báo hiện hành',
@@ -5744,23 +5759,23 @@ $messages['vi'] = array(
 	'centralnotice-manage' => 'Quản lý thông báo chung',
 	'centralnotice-add' => 'Thêm',
 	'centralnotice-add-notice' => 'Thêm thông báo',
-	'centralnotice-add-template' => 'Thêm tiêu bản',
+	'centralnotice-add-template' => 'Thêm bản mẫu',
 	'centralnotice-show-notices' => 'Xem các thông báo',
-	'centralnotice-list-templates' => 'Liệt kê các tiêu bản',
+	'centralnotice-list-templates' => 'Liệt kê các bản mẫu',
 	'centralnotice-translations' => 'Bản dịch',
 	'centralnotice-translate-to' => 'Dịch ra',
 	'centralnotice-translate' => 'Biên dịch',
 	'centralnotice-english' => 'tiếng Anh',
-	'centralnotice-template-name' => 'Tên tiêu bản',
-	'centralnotice-templates' => 'Tiêu bản',
+	'centralnotice-template-name' => 'Tên bản mẫu',
+	'centralnotice-templates' => 'Bản mẫu',
 	'centralnotice-weight' => 'Mức ưu tiên',
 	'centralnotice-locked' => 'Bị khóa',
 	'centralnotice-notices' => 'Thông báo',
 	'centralnotice-notice-exists' => 'Không thêm được: thông báo đã tồn tại.',
-	'centralnotice-template-exists' => 'Không thêm được: tiêu bản đã tồn tại.',
+	'centralnotice-template-exists' => 'Không thêm được: bản mẫu đã tồn tại.',
 	'centralnotice-notice-doesnt-exist' => 'Không dời được: thông báo không tồn tại.',
-	'centralnotice-template-still-bound' => 'Không dời được: có thông báo dựa theo tiêu bản.',
-	'centralnotice-template-body' => 'Nội dung tiêu bản:',
+	'centralnotice-template-still-bound' => 'Không dời được: có thông báo dựa theo bản mẫu.',
+	'centralnotice-template-body' => 'Nội dung bản mẫu:',
 	'centralnotice-day' => 'Ngày',
 	'centralnotice-year' => 'Năm',
 	'centralnotice-month' => 'Tháng',
@@ -5770,12 +5785,13 @@ $messages['vi'] = array(
 	'centralnotice-project-name' => 'Tên dự án',
 	'centralnotice-start-date' => 'Ngày bắt đầu',
 	'centralnotice-start-time' => 'Lúc bắt đầu (UTC)',
-	'centralnotice-assigned-templates' => 'Tiêu bản được sử dụng',
-	'centralnotice-no-templates' => 'Hệ thống không chứa tiêu bản',
-	'centralnotice-no-templates-assigned' => 'Thông báo không dùng tiêu bản nào. Hãy chỉ định tiêu bản!',
-	'centralnotice-available-templates' => 'Tiêu bản có sẵn',
-	'centralnotice-template-already-exists' => 'Không chỉ định được: thông báo đã sử dụng tiêu bản.',
-	'centralnotice-preview-template' => 'Xem trước tiêu bản',
+	'centralnotice-assigned-templates' => 'Bản mẫu được sử dụng',
+	'centralnotice-no-templates' => 'Hệ thống không chứa bản mẫu.
+Hãy thêm vào!',
+	'centralnotice-no-templates-assigned' => 'Thông báo không dùng bản mẫu nào. Hãy chỉ định bản mẫu!',
+	'centralnotice-available-templates' => 'Bản mẫu có sẵn',
+	'centralnotice-template-already-exists' => 'Không chỉ định được: thông báo đã sử dụng bản mẫu.',
+	'centralnotice-preview-template' => 'Xem trước bản mẫu',
 	'centralnotice-start-hour' => 'Lúc bắt đầu',
 	'centralnotice-change-lang' => 'Thay đổi ngôn ngữ của bản dịch',
 	'centralnotice-weights' => 'Mức ưu tiên',
@@ -5785,14 +5801,14 @@ $messages['vi'] = array(
 	'centralnotice-null-string' => 'Không thêm được: chuỗi rỗng.',
 	'centralnotice-confirm-delete' => 'Bạn có chắc muốn xóa thông báo hoặc tiêu bản này không? Không thể phục hồi nó.',
 	'centralnotice-no-notices-exist' => 'Chưa có thông báo. Hãy thêm thông báo ở dưới.',
-	'centralnotice-no-templates-translate' => 'Không có tiêu bản để dịch',
+	'centralnotice-no-templates-translate' => 'Không có bản mẫu để dịch',
 	'centralnotice-number-uses' => 'Số thông báo dùng',
 	'centralnotice-edit-template' => 'Sửa đổi tiêu bản',
 	'centralnotice-message' => 'Thông báo',
 	'centralnotice-message-not-set' => 'Thông báo chưa được thiết lập',
 	'centralnotice-clone' => 'Sao',
-	'centralnotice-clone-notice' => 'Tạo bản sao của tiêu bản',
-	'centralnotice-preview-all-template-translations' => 'Xem trước các bản dịch có sẵn của tiêu bản',
+	'centralnotice-clone-notice' => 'Tạo bản sao của bản mẫu',
+	'centralnotice-preview-all-template-translations' => 'Xem trước các bản dịch có sẵn của bản mẫu',
 	'right-centralnotice-admin' => 'Quản lý thông báo chung',
 	'right-centralnotice-translate' => 'Dịch thông báo chung',
 	'action-centralnotice-admin' => 'quản lý thông báo chung',

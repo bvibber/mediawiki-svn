@@ -13,12 +13,15 @@ $messages['en'] = array(
 	'ratedpages-list'   => 'Below is a list of pages sorted by their reader feedback rating.',
 	'ratedpages-none'   => 'There are no pages in this list',
 	'ratedpages-graphs' => 'rating data',
+	'ratedpages-count'  => '$1 {{PLURAL:$1|review|reviews}}',
 );
 
 /** Message documentation (Message documentation)
+ * @author Mormegil
  * @author Pietrodn
  */
 $messages['qqq'] = array(
+	'ratedpages' => 'Title of [[Special:RatedPages]]',
 	'ratedpages-list' => '{{identical|flaggedrevs-pagelist}}',
 	'ratedpages-graphs' => '{{identical|flaggedrevs-graphs}}',
 );
@@ -60,15 +63,19 @@ $messages['be-tarask'] = array(
 	'ratedpages-list' => 'Ніжэй пададзены сьпіс старонак адсартаваных па іх адзнацы чытачамі.',
 	'ratedpages-none' => 'У гэтым сьпісе няма старонак',
 	'ratedpages-graphs' => 'зьвесткі пра адзнаку',
+	'ratedpages-count' => '$1 {{PLURAL:$1|адзнака|адзнакі|адзнакаў}}',
 );
 
 /** Breton (Brezhoneg)
  * @author Fulup
  */
 $messages['br'] = array(
+	'ratedpages' => 'Pajennoù burutellet gant al lennerien',
+	'ratedpages-leg' => "Kavout ar pajennoù burutellet gant un niver bras a-walc'h a briziadennoù",
 	'ratedpages-list' => 'A-is ez eus ur roll pajennoù urzhiet diouzh priziadenn al lennerien.',
 	'ratedpages-none' => "N'eus pajenn ebet war ar roll-mañ",
 	'ratedpages-graphs' => 'roadennoù priziañ',
+	'ratedpages-count' => '$1 {{PLURAL:$1|adweladenn}}',
 );
 
 /** Bosnian (Bosanski)
@@ -80,6 +87,19 @@ $messages['bs'] = array(
 	'ratedpages-list' => 'Ispod je spisak stranica poredanih po rejtingu poslanom od strane čitaoca.',
 	'ratedpages-none' => 'Nema stranica na ovom spisku',
 	'ratedpages-graphs' => 'podaci rejtinga',
+	'ratedpages-count' => '$1 {{PLURAL:$1|provjera|provjere|provjera}}',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'ratedpages' => 'Stránky hodnocené čtenáři',
+	'ratedpages-leg' => 'Najde stránky s větším počtem ohodnocení',
+	'ratedpages-list' => 'Toto je seznam stránek seřazený podle čtenářského hodnocení.',
+	'ratedpages-none' => 'V tomto seznamu nejsou žádné stránky',
+	'ratedpages-graphs' => 'hodnocení',
+	'ratedpages-count' => '$1 {{PLURAL:$1|hodnocení|hodnocení}}',
 );
 
 /** Danish (Dansk)
@@ -92,14 +112,18 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Metalhead64
  * @author Raimond Spekking
  * @author UV
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'ratedpages' => 'Von Lesern bewertete Seiten',
+	'ratedpages-leg' => 'Seiten mit vielen Bewertungen finden',
 	'ratedpages-list' => 'Es folgt eine Liste von Seiten, sortiert nach der Leserbewertung.',
 	'ratedpages-none' => 'Diese Liste enthält keine Seiten',
 	'ratedpages-graphs' => 'Bewertungsdaten',
+	'ratedpages-count' => '$1 {{PLURAL:$1|Bewertung|Bewertungen}}',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -111,13 +135,17 @@ $messages['dsb'] = array(
 	'ratedpages-list' => 'Slědujo lisćina bokow, sortěrowanych pó jich pógódnośenju wót cytarjow.',
 	'ratedpages-none' => 'Toś ta lisćina njewopśimujo boki',
 	'ratedpages-graphs' => 'Daty pógódnośenja',
+	'ratedpages-count' => '$1 {{PLURAL:$1|pógódnośenje|pógódnośeni|pógódnośenja|pógódnośenjow}}',
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'ratedpages' => 'Σελίδες αξιολογημένες από τους αναγνώστες',
 	'ratedpages-graphs' => 'δεδομένα βαθμολόγησης',
+	'ratedpages-count' => '$1 {{PLURAL:$1|επιθεώρηση|επιθεωρήσεις}}',
 );
 
 /** Esperanto (Esperanto)
@@ -133,6 +161,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'ratedpages' => 'Páginas valorizadas por lector',
 	'ratedpages-list' => 'Lo de abajo es una lista de páginas ordenadas por su valoración de retroalimentación de lector.',
 	'ratedpages-none' => 'No hay páginas en esta lista',
 	'ratedpages-graphs' => 'Datos de rating',
@@ -161,6 +190,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Peter17
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
@@ -169,6 +199,7 @@ $messages['fr'] = array(
 	'ratedpages-list' => 'Voici une liste des pages triées suivant leur évaluation par les lecteurs.',
 	'ratedpages-none' => 'Il n’y a aucune page dans cette liste',
 	'ratedpages-graphs' => "données d'évaluation",
+	'ratedpages-count' => '$1 {{PLURAL:$1|révision|révisions}}',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -189,6 +220,7 @@ $messages['gl'] = array(
 	'ratedpages-list' => 'Embaixo hai unha lista das páxinas ordenadas pola valoración da reacción dos seus lectores.',
 	'ratedpages-none' => 'Non hai páxinas nesta lista',
 	'ratedpages-graphs' => 'datos das valoracións',
+	'ratedpages-count' => '$1 {{PLURAL:$1|revisión|revisións}}',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -207,6 +239,7 @@ $messages['gsw'] = array(
 	'ratedpages-list' => 'Do het s Lischt vu Syte, wu no dr Bewärtig dur Läser sortiert sin.',
 	'ratedpages-none' => 'In däre Lischt het s keini Syte',
 	'ratedpages-graphs' => 'Bewärtigsdate',
+	'ratedpages-count' => '$1 {{PLURAL:$1|Bewärtig|Bewärtige}}',
 );
 
 /** Hebrew (עברית)
@@ -214,9 +247,12 @@ $messages['gsw'] = array(
  * @author Rotemliss
  */
 $messages['he'] = array(
+	'ratedpages' => 'דפים שדורגו על ידי הקוראים',
+	'ratedpages-leg' => 'מציאת דפים שדורגו מספר ניכר של פעמים',
 	'ratedpages-list' => 'להלן רשימת דפים, ממוינים לפי דירוג הקוראים.',
 	'ratedpages-none' => 'אין דפים ברשימה זו',
 	'ratedpages-graphs' => 'מידע הדירוג',
+	'ratedpages-count' => '{{PLURAL:$1|דירוג אחד|$1 דירוגים}}',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -228,6 +264,7 @@ $messages['hsb'] = array(
 	'ratedpages-list' => 'Slěduje lisćina stronow sortěrowanych po póhodnoćenju wot čitarjow',
 	'ratedpages-none' => 'W tutej lisćinje strony njejsu.',
 	'ratedpages-graphs' => 'Daty pohódnoćenja',
+	'ratedpages-count' => '$1 {{PLURAL:$1|pohódnocenje|pohódnoćeni|pohódnoćenja|pohódnoćenjow}}',
 );
 
 /** Hungarian (Magyar)
@@ -241,15 +278,19 @@ $messages['hu'] = array(
 	'ratedpages-list' => 'Alább a lapok olvasói értékelés szerint sorba tett listája látható.',
 	'ratedpages-none' => 'Nem található egyetlen lap sem a listában.',
 	'ratedpages-graphs' => 'értékelési adatok',
+	'ratedpages-count' => '{{PLURAL:$1|egy|$1}} értékelés',
 );
 
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'ratedpages' => 'Paginas evalutate per lectores',
+	'ratedpages-leg' => 'Cercar paginas con un numero de evalutationes assatis grande',
 	'ratedpages-list' => 'Infra es un lista de paginas ordinate per evaluation del lectores.',
 	'ratedpages-none' => 'Il non ha paginas in iste lista',
 	'ratedpages-graphs' => 'datos de evalutation',
+	'ratedpages-count' => '$1 {{PLURAL:$1|recension|recensiones}}',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -257,9 +298,12 @@ $messages['ia'] = array(
  * @author Rex
  */
 $messages['id'] = array(
+	'ratedpages' => 'Halaman dengan peringkat yang diberikan pembacanya',
+	'ratedpages-leg' => 'Cari halaman yang diberi peringkat dengan jumlah yang cukup',
 	'ratedpages-list' => 'Berikut adalah daftar halaman yang diurutkan menurut peringkat yang diberikan pembacanya.',
 	'ratedpages-none' => 'Tidak adalah halaman dalam daftar ini',
 	'ratedpages-graphs' => 'data pemeringkatan',
+	'ratedpages-count' => '$1 {{PLURAL:$1||}}tinjauan',
 );
 
 /** Italian (Italiano)
@@ -281,6 +325,7 @@ $messages['ja'] = array(
 	'ratedpages-list' => '以下ではページを読者による評価の順に整列して一覧します。',
 	'ratedpages-none' => '表示すべきページはありません',
 	'ratedpages-graphs' => '評価データ',
+	'ratedpages-count' => '$1件の評価',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -304,9 +349,12 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'ratedpages' => 'Sigge met Enschäzunge fum Lässer',
+	'ratedpages-leg' => 'Fengk Sigge met en öhnlijje Aanzahl affjejovve Enschäzunge',
 	'ratedpages-list' => 'Hee küt en Leß met Sigge. Se es donoh zotteet, wi joot de Lesser se enjeshtoof han.',
 	'ratedpages-none' => 'En dä Leß sin kei Sigge dren.',
 	'ratedpages-graphs' => 'Date vum Enshtoofe',
+	'ratedpages-count' => '{{PLURAL:$1|ein Version|$1 Versione|kein Version}}',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -319,6 +367,7 @@ $messages['lb'] = array(
 	'ratedpages-list' => 'Hei ass eng Lëscht vu Säiten déi no der Bewäertung vun de Lieser zortéiert sinn.',
 	'ratedpages-none' => 'Et gëtt keng Säiten op dëser Lëscht',
 	'ratedpages-graphs' => 'Bewertungsdaten',
+	'ratedpages-count' => '$1 {{PLURAL:$1|Bewertung|Bewertungen}}',
 );
 
 /** Malay (Bahasa Melayu)
@@ -346,6 +395,7 @@ $messages['nl'] = array(
 	'ratedpages-list' => "Hier staan pagina's gesorteerd naar de waardering die lezers hebben gegeven.",
 	'ratedpages-none' => "Er zijn geen pagina's weer te geven",
 	'ratedpages-graphs' => 'waarderingsgegevens',
+	'ratedpages-count' => '$1 {{PLURAL:$1|waardering|waarderingen}}',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -371,18 +421,25 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'ratedpages' => 'Paginas evaluadas pels lectors',
+	'ratedpages-leg' => "Trobar las paginas evaluadas amb un nombre d'evaluacions pro grand",
 	'ratedpages-list' => 'Vaquí, çaijós, una tièra de paginas triadas en foncion de la notacion de lors lectors.',
 	'ratedpages-none' => 'I a pas cap de pagina dins aquesta tièra',
 	'ratedpages-graphs' => 'donadas de notacion',
+	'ratedpages-count' => '$1 {{PLURAL:$1|revision|revisions}}',
 );
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'ratedpages' => 'Strony oceniane przez czytelników',
+	'ratedpages-leg' => 'Znajdź strony o liczbie ocen w zadanym przedziale',
 	'ratedpages-list' => 'Poniżej znajduje się lista stron posortowanych według ocen wystawionych przez czytelników.',
 	'ratedpages-none' => 'Na tej liście nie ma żadnych stron',
 	'ratedpages-graphs' => 'ocena danych',
+	'ratedpages-count' => '$1 {{PLURAL:$1|ocena|oceny|ocen}}',
 );
 
 /** Piedmontese (Piemontèis)
@@ -394,6 +451,7 @@ $messages['pms'] = array(
 	'ratedpages-list' => 'Sota a-i é na lista ëd pàgine ordinà për la soa valutassion dij letor.',
 	'ratedpages-none' => 'A-i é pa ëd pàgine an sta lista-sì',
 	'ratedpages-graphs' => 'dat ëd valutassion',
+	'ratedpages-count' => '$1 {{PLURAL:$1|revision|revision}}',
 );
 
 /** Portuguese (Português)
@@ -429,9 +487,12 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'ratedpages' => 'Pàggene cotate da le lettore',
+	'ratedpages-leg' => "Iacchie le pàggene vutate cu 'nu numere dimenzionabbele de pundegge",
 	'ratedpages-list' => "Sotte ste 'na liste de pàggene arrenghete pe 'u pundegge de le lore lettore.",
 	'ratedpages-none' => "Non ge stonne pàggene jndr'à sta liste",
 	'ratedpages-graphs' => "dete d'u puntegge",
+	'ratedpages-count' => '$1 {{PLURAL:$1|revisite|revisite}}',
 );
 
 /** Russian (Русский)
@@ -443,6 +504,19 @@ $messages['ru'] = array(
 	'ratedpages-list' => 'Ниже представлен список страниц, упорядоченный по их оценке читателями.',
 	'ratedpages-none' => 'Нет страниц в списке.',
 	'ratedpages-graphs' => 'данные об оценке',
+	'ratedpages-count' => '$1 {{PLURAL:$1|оценка|оценки|оценок}}',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'ratedpages' => 'Ааҕааччылар сыаналаабыт сирэйдэрэ',
+	'ratedpages-leg' => 'Элбэх сыаналааһыннаах сирэйдэри буларга',
+	'ratedpages-list' => 'Аллара сирэйдэр ааҕааччылар сыанабылларынан наардаммыт тиһиктэрэ көстөр.',
+	'ratedpages-none' => 'Тиһик кураанах.',
+	'ratedpages-graphs' => 'Сыанабыл дааннайдара',
+	'ratedpages-count' => '$1 сыанабыл',
 );
 
 /** Slovak (Slovenčina)
@@ -495,9 +569,12 @@ $messages['tl'] = array(
  * @author Joseph
  */
 $messages['tr'] = array(
+	'ratedpages' => 'Okuyucu dereceli sayfalar',
+	'ratedpages-leg' => 'Oldukça fazla sayıda derecelendirmeyle derecelendirilmiş sayfaları bul',
 	'ratedpages-list' => 'Aşağıdaki, kullanıcı dönütleri oranlarına göre sıralanmış sayfalar listesidir.',
 	'ratedpages-none' => 'Bu listede hiç sayfa yok',
 	'ratedpages-graphs' => 'veri derecelendiriliyor',
+	'ratedpages-count' => '$1 {{PLURAL:$1|inceleme|inceleme}}',
 );
 
 /** Ukrainian (Українська)
@@ -509,10 +586,19 @@ $messages['uk'] = array(
 	'ratedpages-graphs' => 'дані рейтингу',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'ratedpages-count' => '$1 {{PLURAL:$1|revision|revision}}',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'ratedpages' => 'Lugijoil arvosteldud lehtpoled',
+	'ratedpages-leg' => 'Ozutada lehtpoled, kudambil om enamb lugusanoid',
 	'ratedpages-list' => 'Lugijoil järgetud heiden arvsanoiden mödhe lehtpoled (nimikirjutez).',
 	'ratedpages-none' => 'Neciš nimikirjuteses ei ole lehtpolid',
 	'ratedpages-graphs' => 'andmused arvostelendas',
@@ -522,9 +608,12 @@ $messages['vep'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'ratedpages' => 'Trang được độc giả đánh giá',
+	'ratedpages-leg' => 'Tìm các trang có số lần đánh giá đáng kể',
 	'ratedpages-list' => 'Đây là danh sách các trang theo thứ tự đánh giá của độc giả.',
 	'ratedpages-none' => 'Danh sách này không có trang nào.',
 	'ratedpages-graphs' => 'dữ liệu đánh giá',
+	'ratedpages-count' => '$1 đánh giá',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

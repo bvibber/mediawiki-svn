@@ -162,6 +162,35 @@ Staj se pšosym z [[{{MediaWiki:Grouppage-sysop}}|administratorami sedła]] z p�
 Klikni na tłocašk "Slědk" we swójom wobglědowaku, aby wróśił se k wobźěłowańskemu woknoju.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'questycaptcha-addurl' => 'Η επεξεργασία σας περιέχει νέους εξωτερικούς συνδέσμους.
+Για να μας βοηθήσετε στην προστασία κατά των αυτοματοποιημένων σπαμ, παρακαλώ απαντήστε στην παρακάτω ερώτηση ([[Special:Captcha/help|περισσότερες πληροφορίες]]):',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'questycaptcha-addurl' => 'Tu edición incluye nuevos vínculos externos.
+Para ayudar a proteger contra spam automático, por favor responde la pregunta que aparece abajo ([[Special:Captcha/help|más información]]):',
+	'questycaptcha-badlogin' => 'Para ayudar a proteger contra craqueo de contraseña, por favor responde la pregunta que aparece abajo ([[Special:Captcha/help|más información]]):',
+	'questycaptcha-createaccount' => 'Para ayudar a proteger contra la creación automática de cuentas, por favor responde la pregunta que aparece abajo ([[Special:Captcha/help|más información]]):',
+	'questycaptcha-create' => 'Para crear la página, por favor responde la pregunta que aparece abajo ([[Special:Captcha/help|más información]]):',
+	'questycaptcha-edit' => 'Para editar esta página, por favor responde la pregunta que aparece abajo ([[Special:Captcha/help|más información]]):',
+	'questycaptchahelp-text' => "Sitios Web que aceptan contribuciones del público, como este wiki, son constantemente abusadas por enviadores de spam quienes usan herramientas automáticas para agregar sus enlaces a muchos sitios.
+Así estos enlaces spam puedan ser borrados, son una molestia significativa.
+
+A veces, especialmente cuando se agregan nuevos enlaces web a una página, el wiki puede pedirte que respondas a una pregunta.
+Ya que esta es una tarea que es difícil de automatizar, eso permitirá que más seres humanos reales hagan sus contribuciones mientras detiene a la mayor parte de enviadores de spam y otros atacantes robóticos.
+
+Por favor contacta a los [[{{MediaWiki:Grouppage-sysop}}|administradores del sitio]] para asistencia si esto está impidiéndote hacer contribuciones legítimas.
+
+Haz click en el botón 'atrás' en tu navegador para regresar al editor de página.",
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

@@ -16,10 +16,10 @@ $wgContributionReportingDBpassword = $wgDBpassword;
 $wgContributionReportingDBname = $wgDBname;
 
 // And now the tracking database
-$wgContributionReportingTrackingDBserver = $wgDBserver;
-$wgContributionReportingTrackingDBuser = $wgDBuser;
-$wgContributionReportingTrackingDBpassword = $wgDBpassword;
-$wgContributionReportingTrackingDBname = $wgDBname;
+$wgContributionTrackingDBserver = $wgDBserver;
+$wgContributionTrackingDBuser = $wgDBuser;
+$wgContributionTrackingDBpassword = $wgDBpassword;
+$wgContributionTrackingDBname = $wgDBname;
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
@@ -127,18 +127,18 @@ function efContributionReportingConnection() {
 	return $db;
 }
 
-function efContributionReportingTrackingConnection() {
-	global $wgContributionReportingTrackingDBserver, $wgContributionReportingTrackingDBname;
-	global $wgContributionReportingTrackingDBuser, $wgContributionReportingTrackingDBpassword;
+function efContributionTrackingConnection() {
+	global $wgContributionTrackingDBserver, $wgContributionTrackingDBname;
+	global $wgContributionTrackingDBuser, $wgContributionTrackingDBpassword;
 
 	static $db;
 
 	if ( !$db ) {
 		$db = new DatabaseMysql(
-			$wgContributionReportingTrackingDBserver,
-			$wgContributionReportingTrackingDBuser,
-			$wgContributionReportingTrackingDBpassword,
-			$wgContributionReportingTrackingDBname );
+			$wgContributionTrackingDBserver,
+			$wgContributionTrackingDBuser,
+			$wgContributionTrackingDBpassword,
+			$wgContributionTrackingDBname );
 		$db->query( "SET names utf8" );
 	}
 

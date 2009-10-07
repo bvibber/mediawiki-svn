@@ -38,6 +38,21 @@ $messages['qqq'] = array(
 * $2: number of votes',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'communityvoice' => 'Gemeenskapsstem',
+	'communityvoice-desc' => 'Hulpmiddele vir deelname deur die gemeenskap',
+	'communityvoice-ratings' => 'Waardering',
+	'communityvoice-ratings-scale-status-sending' => 'Stuur...',
+	'communityvoice-ratings-scale-status-error' => 'Fout met stuur!',
+	'communityvoice-ratings-scale-status-thanks' => 'Dankie dat u u mening met ons gedeel het!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|stem|stemme}} uitgebring)',
+	'communityvoice-ratings-error-no-category' => 'Kategorie ontbreek in die etiket.',
+	'communityvoice-ratings-error-no-title' => 'Titel ontbreek in die etiket.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -174,9 +189,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Dead3y3
+ * @author Omnipaedista
  */
 $messages['el'] = array(
-	'communityvoice' => 'Community Voice',
+	'communityvoice' => 'Φωνή της Κοινότητας',
 	'communityvoice-desc' => 'Εργαλεία συμμετοχής κοινότητας',
 	'communityvoice-ratings' => 'Αξιολογήσεις',
 	'communityvoice-ratings-scale-status-sending' => 'Στέλνεται...',
@@ -358,8 +374,8 @@ $messages['hu'] = array(
 	'communityvoice-ratings-scale-status-error' => 'Hiba a küldés közben!',
 	'communityvoice-ratings-scale-status-thanks' => 'Köszönjük, hogy szavaztál!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|egy|$2}} szavazat alapján)',
-	'communityvoice-ratings-error-no-category' => 'A kategória-attribútum hiányzik az értékelés tagben.',
-	'communityvoice-ratings-error-no-title' => 'A cím attribútum hiányzik az értékelés tagben.',
+	'communityvoice-ratings-error-no-category' => 'Az értékelés tagből hiányzik a kategória-attribútum.',
+	'communityvoice-ratings-error-no-title' => 'Az értékelés tagből hiányzik a cím attribútum.',
 );
 
 /** Interlingua (Interlingua)

@@ -65,6 +65,13 @@ $messages['ca'] = array(
 	'localisationupdate-desc' => 'Manté els missatges localitzats tan actualitzats com sigui possible',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'localisationupdate-desc' => 'Udržuje lokalizovaná hlášení co možná nejaktuálnější',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -301,6 +308,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'localisationupdate-desc' => 'Udržiava lokalizované správy čo najaktuálnejšie',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'localisationupdate-desc' => 'Yerelleştirilen mesajları mümkün olabildiğince güncel tutar',
 );
 
 /** Veps (Vepsan kel')

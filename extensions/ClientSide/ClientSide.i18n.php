@@ -286,6 +286,13 @@ $messages['sk'] = array(
 	'clientside-desc' => 'Poskytuje funkcie na tvorbu kódu v klientských formátoch ako HTML, CSS a JavaScript',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Обрадовић Горан
+ */
+$messages['sr-ec'] = array(
+	'clientside-desc' => 'Пружа функције за генерисање кода у форматима који раде на страни клијента као што су HTML, CSS и JavaScript',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

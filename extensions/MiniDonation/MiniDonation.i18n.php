@@ -515,6 +515,13 @@ $messages['vec'] = array(
 	'donationform-submit' => 'Dona tramite PayPal',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'donationform-submit' => "Lahjoita PayPal-an kal't",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
