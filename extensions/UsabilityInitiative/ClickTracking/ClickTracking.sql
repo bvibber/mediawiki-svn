@@ -4,7 +4,7 @@
 
 CREATE TABLE IF NOT EXISTS /*_*/click_tracking (
 	-- Timestamp
-	action_time timestamp NOT NULL default CURRENT_TIMESTAMP,
+	action_time timestamp NOT NULL,
 
 	-- session id
 	session_id varbinary(255) NOT NULL,
