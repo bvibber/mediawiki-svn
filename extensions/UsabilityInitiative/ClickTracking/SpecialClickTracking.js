@@ -47,27 +47,29 @@
 			}
 			
 			textDiv.append(mainCheckbox);
-			textDiv.text(""); //i18n txt here
+			textDiv.text(contribName); //i18n txt here
+			textDiv.css('display', 'inline');
+			initialDiv.append(mainCheckbox);
 			initialDiv.append(textDiv);
 			
-			var i=0;
-			for( var condition in conditionArray){
-				i++;
-				conditionDiv = $("<div>").attr("id", contribName + "_range_" + i + "_div");
+			
+			
+			var buildConditionDiv = function (condition, counter){
+				conditionDiv = $("<div>").attr("id", contribName + "_range_" + counter + "_div");
 				conditionDiv.addClass("checkbox_div");
 				conditionDiv.addClass("sub_option_div");
 
 				//initialDiv.append(conditionDiv);
-				cCheckbox = $("<input>").attr("id", contribName+"_"+i+"_checkbox");
+				cCheckbox = $("<input>").attr("id", contribName+"_"+counter+"_checkbox");
 				cCheckbox.attr("type", "checkbox");
 				cCheckbox.attr("checked", true);
 				cCheckbox.addClass("number_select_checkbox");
 				conditionDiv.append(cCheckbox);
 				
-				cSelect = $("<select>").attr("id", contribName+"_"+i+"_ltgt");
+				cSelect = $("<select>").attr("id", contribName+"_"+counter+"_ltgt");
 				cSelect.addClass("number_select_ltgt");
 				
-				cOpt1 = $("<option>").attr("id", contribName+"_"+i+"_lt");
+				cOpt1 = $("<option>").attr("id", contribName+"_"+counter+"_lt");
 				cOpt1.addClass("number_select_ltgt_opt");
 				cOpt1.attr("value", "lt");
 				cOpt1.text("<");
@@ -76,7 +78,7 @@
 				}
 				
 				
-				cOpt2 = $("<option>").attr("id", contribName+"_"+i+"_gt");
+				cOpt2 = $("<option>").attr("id", contribName+"_"+counter+"_gt");
 				cOpt2.addClass("number_select_ltgt_opt");
 				cOpt2.attr("value", "gt");
 				cOpt2.text(">");
@@ -84,7 +86,7 @@
 					cOpt2.attr("selected", true);
 				}
 				
-				cOpt3 = $("<option>").attr("id", contribName+"_"+i+"_lteq");
+				cOpt3 = $("<option>").attr("id", contribName+"_"+counter+"_lteq");
 				cOpt3.addClass("number_select_ltgt_opt");
 				cOpt3.attr("value", "lteq");
 				cOpt3.text("<=");
@@ -92,7 +94,7 @@
 					cOpt3.attr("selected", true);
 				}
 				
-				cOpt4 = $("<option>").attr("id", contribName+"_"+i+"_gteq");
+				cOpt4 = $("<option>").attr("id", contribName+"_"+counter+"_gteq");
 				cOpt4.addClass("number_select_ltgt_opt");
 				cOpt4.attr("value", "gteq");
 				cOpt4.text(">=");
@@ -106,13 +108,37 @@
 				cSelect.append(cOpt4);
 				conditionDiv.append(cSelect);
 				
-				cTextInput = $("<input>").attr("id", contribName+"_"+i+"_text");
+				cTextInput = $("<input>").attr("id", contribName+"_"+counter+"_text");
 				cTextInput.addClass("number_select_text");
-				cTextInput.text(condition["value"]);				
+				cTextInput.attr('value', condition["value"]);
 				conditionDiv.append(cTextInput);
+				return conditionDiv;
+			};
+			
+			
+			var i=0;
+			for( var condition in conditionArray){
+				i++;
+				var conditionDiv = buildConditionDiv(conditionArray[condition], i);
 				initialDiv.append(conditionDiv);
 			} //forloop
 			initialDiv.data("totalConditions", i);
+			addConditions = $("<div>").attr("id", contribName+"_addbutton");
+			addConditions.addClass("add_condition_button");
+			addConditions.text("+");
+			addConditions.click( function(){
+				i++;
+				var tmpCond = new Array();
+				tmpCond["operation"] = " ";
+				tmpCond["value"] = " ";
+				
+				initialDiv.append( buildConditionDiv(tmpCond, i) );
+				initialDiv.data("totalConditions", i);
+				
+				$(this).remove().appendTo( initialDiv); 
+				
+			});
+			initialDiv.append(addConditions);
 			return initialDiv;
 		}; //setcontribs
 		
@@ -394,7 +420,7 @@
 		}; //headername
 		
 		
-		loadHeaderInfo("beginner");
+		loadHeaderInfo("basic");
 		loadHeaderInfo("intermediate");
 		loadHeaderInfo("expert");
 		

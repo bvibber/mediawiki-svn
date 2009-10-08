@@ -112,7 +112,7 @@ class SpecialClickTracking extends SpecialPage {
 		$header_row["event_header"] = wfMsg( 'ct-event-name' );
 		$header_row["expert_header"] = wfMsg( 'ct-expert-header' );
 		$header_row["intermediate_header"] = wfMsg( 'ct-intermediate-header' );
-		$header_row["beginner_header"] = wfMsg( 'ct-beginner-header' );
+		$header_row["basic_header"] = wfMsg( 'ct-beginner-header' );
 		$header_row["total_header"] = wfMsg( 'ct-total-header' );
 		$outputTable .= Xml::buildTableRow( array( "class"=>"table_headers" ), $header_row );
 		
