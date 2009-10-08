@@ -174,6 +174,7 @@ class ClickTrackingHooks {
 
 		// Builds insert information
 		$data = array(
+			'action_time' => $dbw->timestamp(),
 			'session_id' => (string) $session_id,
 			'is_logged_in' => (bool) $is_logged_in,
 			'user_total_contribs' => ( $is_logged_in ? (int) $contribs : null ),
