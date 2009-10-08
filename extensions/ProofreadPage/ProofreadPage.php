@@ -1281,7 +1281,7 @@ function pr_OutputPageBeforeHTML( $out, $text ) {
 	}
 
 	# find the proofreading status of transclusions
-	$query = "SELECT COUNT(page_id) AS count FROM $templatelinks LEFT JOIN $page ON page_title=tl_title LEFT JOIN $catlinks ON cl_from=page_id where tl_from=$id and tl_namespace=$page_ns_index AND cl_to='###'";
+	$query = "SELECT COUNT(page_id) AS count FROM $templatelinks LEFT JOIN $page ON page_title=tl_title AND page_namespace=tl_namespace LEFT JOIN $catlinks ON cl_from=page_id where tl_from=$id and tl_namespace=$page_ns_index AND cl_to='###'";
 	$n0 = pr_query_count( $dbr, $query, 'proofreadpage_quality0_category' );
 	$n2 = pr_query_count( $dbr, $query, 'proofreadpage_quality2_category' );
 	$n3 = pr_query_count( $dbr, $query, 'proofreadpage_quality3_category' );
