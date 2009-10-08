@@ -1175,6 +1175,12 @@ class ShortTextEditor extends ScalarEditor {
 	}
 }
 
+class ShortTextNoEscapeEditor extends ShortTextEditor {
+	public function getViewHTML( IdStack $idPath, $value ) {
+		return $value ;
+	}
+}
+
 class LinkEditor extends ShortTextEditor {
 	public function getViewHTML( IdStack $idPath, $value ) {
 		$label = htmlspecialchars( $value->linkLabel );

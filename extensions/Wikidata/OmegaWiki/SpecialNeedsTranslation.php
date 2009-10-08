@@ -113,29 +113,29 @@
 
 				$definitionAttribute = new Attribute( "definition", wfMsg( "ow_Definition" ), "definition" );
 
-				$recordSet = new ArrayRecordSet( new Structure( $o->definedMeaningId, $o->expressionId, $o->definedMeaningReference, $definitionAttribute ), new Structure( $o->definedMeaningId, $o->expressionId ) );
+				$recordSet = new ArrayRecordSet( new Structure( $o->definedMeaningId, $o->expressionId, $o->expression, $definitionAttribute ), new Structure( $o->definedMeaningId, $o->expressionId ) );
 
 				while ( $row = $dbr->fetchObject( $queryResult ) ) {
-					$DMRecord = new ArrayRecord( $o->definedMeaningReferenceStructure );
-					$DMRecord->definedMeaningId = $row->source_defined_meaning_id ;
-					$DMRecord->definedMeaningLabel = $row->source_spelling ;
-					$DMRecord->definedMeaningDefiningExpression = $row->source_spelling ;
-					$DMRecord->language = $row->source_language_id;
+					$expressionRecord = new ArrayRecord( $o->expressionStructure );
+					$expressionRecord->language = $row->source_language_id;
+					$spellingAsLink = definedMeaningReferenceAsLink( $row->source_defined_meaning_id, $row->source_spelling, $row->source_spelling );
+					$expressionRecord->spelling = $spellingAsLink ;
 
-					$recordSet->addRecord( array( $row->source_defined_meaning_id, $row->source_expression_id, $DMRecord, getDefinedMeaningDefinition( $row->source_defined_meaning_id ) ) );
+					$definition = getDefinedMeaningDefinitionForLanguage( $row->source_defined_meaning_id, $row->source_language_id ) ;
+					if ( $definition == "" ) {
+						$definition = getDefinedMeaningDefinition( $row->source_defined_meaning_id ) ;
+					}
+
+					$recordSet->addRecord( array( $row->source_defined_meaning_id, $row->source_expression_id, $expressionRecord, $definition ) );
 				}
 
-				$expressionEditor = new RecordTableCellEditor( $o->definedMeaningReference );
+				$expressionEditor = new RecordTableCellEditor( $o->expression );
 				$expressionEditor->addEditor( new LanguageEditor( $o->language, new SimplePermissionController( false ), false ) );
-				$expressionEditor->addEditor( new DefinedMeaningEditor( $o->definedMeaningId, new SimplePermissionController( false ), false ) );
+				$expressionEditor->addEditor( new ShortTextNoEscapeEditor( $o->spelling, new SimplePermissionController( false ), false ) );
 
 				$editor = new RecordSetTableEditor( null, new SimplePermissionController( false ), new ShowEditFieldChecker( true ), new AllowAddController( false ), false, false, null );
 				$editor->addEditor( $expressionEditor );
 				$editor->addEditor( new TextEditor( $definitionAttribute, new SimplePermissionController( false ), false, true, 75 ) );
-
-				// cosmetics : changing the titles of the columns
-				$o->definedMeaningReference->name = wfMsgSc( "Expression" ) ;
-				$o->definedMeaningId->name = wfMsgSc( "Spelling" ) ;
 
 				global $wgOut;
 
@@ -146,4 +146,5 @@
 
 		SpecialPage::addPage( new SpecialNeedsTranslation );
 	}
+
 
