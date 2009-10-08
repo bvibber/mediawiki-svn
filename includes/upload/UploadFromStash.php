@@ -34,10 +34,9 @@ class UploadFromStash extends UploadBase {
 			 * them in the session on the server and just give
 			 * an opaque key to the user agent.
 			 */
-			 
-			$repo = RepoGroup::singleton()->getLocalRepo();
+			 			
 			parent::initialize( $name,
-				$repo->resolveVirtualUrl( $sessionData['mTempPath'] ),
+				$this->getRealPath( $sessionData['mTempPath'] ),
 				$sessionData['mFileSize'],
 				false
 			);
