@@ -3831,12 +3831,12 @@ Nos agradariá de saber çò que pensatz de nòstra interfàcia novèla, nos agr
 	'optin-survey-answer-changes-custom' => "Permet una màger personalizacion de l'interfàcia.",
 	'optin-survey-answer-changes-other' => 'Autre :',
 	'optin-improvements' => "== De qué es es estat melhorat ? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Captura d'ecran dels onglets novèls de navigacion]]
 ;Navigacion enriquida
 Lo sistèma de navigacion novèl vos permet de veire mau aisidament ont sètz e çò que fasètz, e mai ont podètz anar e cossí vos i rendre. Amb la bóstia de recèrca situada dins lo canton superior drech, la foncionalitat de recèrca es de melhor trobar e de melhor utilizar.
 <div style=\"clear:both;\"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Captura d'ecran de la barra d'espleches avançada]]
 ;Melhoraments de la barra d'espleches
 D'icòna tota novèlas clarifican l'accion efectuada per cada esplech. De seccions extensibles redusisson lo desòrdre tot en gardant l'accès als espleches utilizats mai raremant en un sol clic.
 La seccion d'ajuda provesís un accès rapid a la documentacion sus l'utilizacion correnta de las balisas wiki.
@@ -4787,7 +4787,7 @@ $messages['te'] = array(
 	'optin-success-feedback' => 'మీ అభిప్రాయానికి ధన్యవాదాలు!',
 	'optin-accept-short' => 'అలాగే చేద్దాం!',
 	'optin-accept-long' => 'బీటాని ప్రయత్నించండి',
-	'optin-accept-long-anon' => 'లాగిన్ అయ్యి బీటాను ప్రయత్నించండి',
+	'optin-accept-long-anon' => 'ప్రవేశించి బీటాను ప్రయత్నించండి',
 	'optin-deny-short' => 'వద్దు, ధన్యవాలు',
 	'optin-deny-long' => 'మునుపటి పేజీకి వెళ్ళండి.',
 	'optin-submit-out' => 'బీటాను విడిచి వెళ్ళు',
@@ -4845,6 +4845,20 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'optin-survey-yes' => 'Ҳа',
 	'optin-survey-no' => 'Не',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'optin-title-optedout' => 'Betany synap görüň',
+	'optin-intro' => 'Wikipedia Usability Initiative Wikipediýanyň oňaýlylygyny ýokarlandyrmak üçin tagalla baryny edýär.
+Betany synap göresiňiz gelýärmi?',
+	'optin-accept-short' => 'Elbetde!',
+	'optin-accept-long' => 'Betany synap gör',
+	'optin-deny-short' => 'Ýok, sag boluň',
+	'optin-deny-long' => 'Öňki sahypa gaýdyp bar',
+	'optin-submit-out' => 'Betadan çyk',
 );
 
 /** Turkish (Türkçe)

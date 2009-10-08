@@ -978,6 +978,13 @@ $messages['sl'] = array(
 	'clicktracking-desc' => 'Sledenje klikom, namenjeno odkrivanju dogodkov, ki preprečujejo osvežitev strani med urejanjem',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'ct-and' => 'మరియు',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */
