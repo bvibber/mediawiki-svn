@@ -6,12 +6,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class ExtTransliterator  {
 
-
     const FIRST = "\x1F"; // A character that will be appended when ^ should match at the start
-    const LAST = "\x1E"; // A character that will be appended when $ should match at the end
+    const LAST = "\x1E";  // A character that will be appended when $ should match at the end
     const CACHE_PREFIX = "extTransliterator.2"; // The prefix to use for cache items (the number should be incremented when the map format changes)
-    var $mPages = null;  // An Array of "transliterator:$mapname" => The database row for that template.
-    var $mMaps = array();// An Array of "$mapname" => The map parsed from that page.
+    var $mPages = null;   // An Array of "transliterator:$mapname" => The database row for that template.
+    var $mMaps = array(); // An Array of "$mapname" => The map parsed from that page.
 
     /**
      * Split a word into letters (not bytes or codepoints) implicitly in NFC due to MediaWiki.
@@ -46,20 +45,20 @@ class ExtTransliterator  {
     }
 
     /**
+     * Decides whether, for the purpose of edge-of-word detection, this letter should be
+     * included or excluded.
+     */
+    static function is_a_letter( $letter ) {
+        return preg_match( '/\pL/u', $letter ) || isset( $utfCombiningClass[$letter] );
+    }
+
+    /**
      * Given a codepoints or letters array returns a list that contains 1 for every
      * alphabetic character and accent, and 0 otherwise. This allows for edge-of-word
      * detection.
      */
     function alphamap( $letters ) {
-
-        $output = Array();
-        $count = count($letters);
-
-        for ($i = 0; $i < $count; $i++) {
-            $output[] =  preg_match( '/\pL/u', $letters[$i]) || isset( $utfCombiningClass[$letters[$i]] );
-        }
-
-        return $output;
+        return array_map( "ExtTransliterator::is_a_letter", $letters );
     }
 
     /**
@@ -98,8 +97,9 @@ class ExtTransliterator  {
         $wgMemc->set( wfMemcKey( self::CACHE_PREFIX, "__map_names__" ), $this->mPages );
         return $this->mPages;
     }
+
     /**
-     * Get a map function, either from the local cache or from the page,
+     * Get a parsed map, either from the local cache or from the page,
      */
     function getMap( $prefix, $mappage ) {
         global $wgMemc;
@@ -173,18 +173,18 @@ class ExtTransliterator  {
 
         // The first line can contain flags
         $firstLine = $lines[0];
-        if ( strpos( $firstLine, "=>") === FALSE ) {
+        if ( strpos( $firstLine, "=>") === false ) {
             // Or, could just signify that the message was blank
             if ( $firstLine == "<$mappage>")
                 return false;
             else if ( preg_replace( '/<(decompose|sensitive)>/', '', $firstLine ) != '')
                 return wfMsg( 'transliterator-error-syntax', $firstLine, $mappage );
 
-            if ( strpos( $firstLine, "<decompose>" ) !== FALSE ) {
+            if ( strpos( $firstLine, "<decompose>" ) !== false ) {
                 $map['__decompose__'] = true;
                 $decompose = true;
             }
-            if ( strpos( $firstLine, "<sensitive>" ) !== FALSE ) {
+            if ( strpos( $firstLine, "<sensitive>" ) !== false ) {
                 $map['__sensitive__'] = true;
             }
             array_shift( $lines );
@@ -266,19 +266,19 @@ class ExtTransliterator  {
             $letters =  $this->letters( $word );
         }
 
-        $alphamap = $this->alphamap( $letters );
+        $alphamap = false;                           // Lazily loaded if it looks like it might be needed.
 
         $sensitive = isset( $map["__sensitive__"] ); // Are we in case-sensitive mode, or not
         $ucfirst = false;                            // We are in case-sensitive mode and the first character of the current match was upper-case originally
-        $lastUpper = null;                          // We have lower-cased the current letter, but we need to keep track of the original (dotted I for example)
+        $lastUpper = null;                           // We have lower-cased the current letter, but we need to keep track of the original (dotted I for example)
 
         $output = "";               // The output
-        $lastMatch = 0;            // The position of the last character matched, or the first character of the current run
-        $lastTrans = null;         // The transliteration of the last character matched, or null if the first character of the current run
+        $lastMatch = 0;             // The position of the last character matched, or the first character of the current run
+        $lastTrans = null;          // The transliteration of the last character matched, or null if the first character of the current run
         $i = 0;                     // The current position in the string
         $count = count($letters);   // The total number of characters in the string
         $current = "";              // The substring that we are currently trying to find the longest match for.
-        $currentStart = 0;         // The position that $current starts at
+        $currentStart = 0;          // The position that $current starts at
 
         while ( $lastMatch < $count ) {
 
@@ -301,24 +301,32 @@ class ExtTransliterator  {
                 }
             }
 
-
             // If this match is at the end of a word, see whether we have a more specific rule
-            if ( $alphamap[$i-1] && ( $i == $count || !$alphamap[$i] ) ) {
+            if ( $i > 0 ) {
                 $try = $current . self::LAST;
                 if ( isset( $map[$try] ) ) {
-                    if ( is_string( $map[$try] ) ) {
-                        $lastTrans = $map[$try];
-                    }
-                    if ( isset( $map[$try . self::FIRST] ) ) {
-                        $current = $try;
+                    if ( $alphamap === false )
+                        $alphamap = $this->alphamap( $letters );
+
+                    if ( $alphamap[$i-1] && ( $i == $count || !$alphamap[$i] ) ) {
+                        if ( is_string( $map[$try] ) ) {
+                            $lastTrans = $map[$try];
+                        }
+                        if ( isset( $map[$try . self::FIRST] ) ) {
+                            $current = $try;
+                        }
                     }
                 }
             }
 
             // If this match is at the start of a word, see whether we have a more specific rule
-            if ( ( $currentStart == 0 || !$alphamap[$currentStart-1]) && $alphamap[$currentStart] ) {
-                $try = $current . self::FIRST;
-                if ( isset( $map[$try] ) && is_string( $map[$try] ) ) {
+            $try = $current . self::FIRST;
+            if ( isset( $map[$try] ) && is_string( $map[$try] ) ) {
+
+                if ( $alphamap === false )
+                    $alphamap = $this->alphamap( $letters );
+
+                if ( ( $currentStart == 0 || !$alphamap[$currentStart-1]) && $alphamap[$currentStart] ) {
                     $lastTrans = $map[$try];
                 }
             }
@@ -436,7 +444,8 @@ class ExtTransliterator  {
      * Called on ArticlePurge, ArticleDeleteComplete and NewRevisionFromEditComplete in order to purge cache
      */
     static function purgeArticle( &$article ) {
-        return self::purgeTitle( $article->getTitle() );
+        $title = $article->getTitle();
+        return self::purgeTitle( $title );
     }
 
     /**
