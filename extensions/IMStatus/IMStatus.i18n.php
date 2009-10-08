@@ -688,7 +688,7 @@ $messages['ia'] = array(
 	'imstatus_live_get_code' => 'tu ID del sito web Live Messenger: <strong>isto non es tu adresse de e-mail.</strong> Tu debe generar un ID per medio de
 <a href="$1">tu optiones de Live Messenger</a>.
 Le ID a fornir hic es le numeros e litteras inter "$2" e "$3".',
-	'imstatus_skype_nbstyle' => 'Nota: Si tu selige un stilo que es tamben un action, tu selection de action essera ultrapassate per le action correspondente a tu stilo seligite.',
+	'imstatus_skype_nbstyle' => 'Nota: Si tu selige un stilo que es tamben un action, tu selection de action essera supplantate per le action correspondente a tu stilo seligite.',
 	'imstatus_xfire_size' => 'le grandor del button, de $1 (le plus grande) a $2 (le plus parve).',
 	'imstatus_yahoo_style' => 'le stilo del button, de $1 (le plus parve) a $2 (le plus grande), $3 e $4 es pro le messages vocal.',
 );

@@ -1301,9 +1301,11 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Mpradeep
  * @author Veeven
  */
 $messages['te'] = array(
+	'amazonplus-desc' => 'అమెజాన్ అమ్మే వస్తువుల సమాచారం చూపించడానికి, వాడుకకు తగ్గట్లుగా ఎటువంటి మార్పులనయినా చేసుకోగలిగే ఒక పొడిగింపు',
 	'amazonplus-nores' => 'పొరపాటు: ఫలితాలేమీ లేవు!',
 	'amazonplus-noidres' => 'పొరపాటు: ఉత్పాదన ID కనబడలేదు!',
 	'amazonplus-fgcerr' => 'పొరపాటు: అమెజాన్ నుండి భోగట్టాని తేలేకపోయాం!',
@@ -1313,8 +1315,11 @@ $messages['te'] = array(
 	'amazonplus-french' => 'ఫ్రెంచి',
 	'amazonplus-japanese' => 'జపనీస్',
 	'amazonplus-amazon' => 'అమెజాన్ ధర',
+	'amazonplus-new' => 'కొత్తది',
 	'amazonplus-none' => 'దీని యొక్క కాపీలేమీ అమ్మకానికి లేవు.',
+	'amazonplus-cp-none' => 'ఏదీ కాదు',
 	'amazonplus-more' => 'మరిన్ని',
+	'amazonplus-less' => 'తక్కువ',
 );
 
 /** Tetum (Tetun)

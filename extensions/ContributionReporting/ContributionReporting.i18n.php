@@ -1936,13 +1936,17 @@ $messages['jv'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author Malafaya
  */
 $messages['ka'] = array(
 	'contrib-hist-name' => 'სახელი',
 	'contribstats-day' => 'დღე',
 	'contribstats-month' => 'თვე',
+	'contribstats-donations' => 'შეწირულობები',
 	'fundraiserstats-date' => 'თარიღი',
+	'fundraiserstats-contributions' => 'წვლილი',
+	'fundraiserstats-tab-contributions' => 'წვლილის ნომერი',
 );
 
 /** Khmer (ភាសាខ្មែរ)

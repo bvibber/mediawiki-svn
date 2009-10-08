@@ -137,17 +137,17 @@ $messages['be-tarask'] = array(
 	'editmsg-target' => 'Мэтавае паведамленьне:',
 	'editmsg-search' => 'Пошук',
 	'editmsg-show-list' => 'Паказ значэньняў для паведамленьня з назвай «$1»',
-	'editmsg-get-patch' => 'Стварыць патч',
+	'editmsg-get-patch' => 'Стварыць выпраўленьне',
 	'editmsg-new-search' => 'Новы пошук',
 	'editmsg-warning-parse1' => '* Назва паведамленьня не адпавядае рэгулярнаму выразу: $1',
 	'editmsg-warning-parse2' => '* Чакаецца сымбаль двукосься пасьля стрэлкі: $1',
 	'editmsg-warning-parse3' => '* Ня знойдзены канчатак радку: $1',
 	'editmsg-warning-file' => '* Памылка чытаньня {{PLURAL:$2|файла для наступнай мовы|файлаў для наступных моваў}}: $1',
 	'editmsg-warning-mismatch' => '* Арыгінальны тэкст ня мае чаканага значэньня для {{PLURAL:$2|мовы|моваў}}: $1',
-	'editmsg-apply-patch' => 'Ужыць файл',
+	'editmsg-apply-patch' => 'Ужыць выпраўленьне',
 	'editmsg-no-patch' => 'Немагчыма выканаць каманду «patch»',
 	'editmsg-patch-failed' => 'Каманду «patch» вярнула код памылкі $1',
-	'editmsg-patch-success' => 'Патч усталяваны.',
+	'editmsg-patch-success' => 'Выпраўленьне ўжытае пасьпяхова.',
 );
 
 /** Bulgarian (Български)

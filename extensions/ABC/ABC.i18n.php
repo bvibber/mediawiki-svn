@@ -392,6 +392,14 @@ $messages['li'] = array(
 	'abcdownload' => 'Downloade:',
 );
 
+/** Lumbaart (Lumbaart)
+ * @author Insübrich
+ */
+$messages['lmo'] = array(
+	'abcdesc' => 'A giunta el tag <tt>&lt;abc&gt;</tt> a la müsega in furmaa ABC',
+	'abcdownload' => 'Descarga:',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */

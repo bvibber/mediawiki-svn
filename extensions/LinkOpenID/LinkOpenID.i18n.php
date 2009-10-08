@@ -473,6 +473,13 @@ Detta låter dig använda din användarsida som en OpenID.',
 	'linkopenid-prefstext-v2url' => 'Server-URL för OpenID-version 2:',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'linkopenid-prefstext-openid' => 'మీ ఓపెన్ఐడీ:',
+);
+
 /** Tetum (Tetun)
  * @author MF-Warburg
  */

@@ -1882,6 +1882,13 @@ Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenen
 	'oversight-offender' => 'Panglanggar',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'oversight-view' => 'დეტალები',
+);
+
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)
  * @author AlefZet
  */
@@ -2291,7 +2298,7 @@ $messages['mdf'] = array(
  */
 $messages['mk'] = array(
 	'hiderevision' => 'Трајно сокриј ревизии',
-	'hiderevision-desc' => 'Сокриј индивидуални ревизии за сите други корисници поради правни причини, итн.',
+	'hiderevision-desc' => 'Сокривање на поединечни ревизии од останатите корисници поради правни и слични причини.',
 	'group-oversight' => 'Надгледувачи',
 	'group-oversight-member' => 'надгледувач',
 	'grouppage-oversight' => '{{ns:project}}:Надгледувач',
@@ -2332,7 +2339,7 @@ $messages['mk'] = array(
 Оддавањето на овие информации може да резултира со губење на надгледувачките привилегии.',
 	'oversight-legend' => 'Пребарување низ дневникот на скриени ревизија',
 	'oversight-oversighter' => 'Надгледувач:',
-	'oversight-offender' => 'Прекршител:',
+	'oversight-offender' => 'Автор на ревизија:',
 );
 
 /** Malayalam (മലയാളം)

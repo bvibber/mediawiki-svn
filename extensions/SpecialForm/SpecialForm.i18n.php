@@ -1341,6 +1341,7 @@ $messages['sw'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'form-desc' => 'కొత్త పేజీలను మొదలుపెట్టడానికి ఒక [[Special:Form|ఫారం]]',
 	'form' => 'ఫారం',
 	'formnoname' => 'ఫారం పేరు లేదు',
 	'formnonametext' => 'మీరు తప్పనిసరిగా ఫారానికి ఓ పేరు, "Special:Form/Nameofform" వంటిది ఇవ్వాలి.',

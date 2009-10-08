@@ -4289,7 +4289,7 @@ Det finns många [http://openid.net/get/ leverantörer av OpenID], och du kan re
  * @author Veeven
  */
 $messages['te'] = array(
-	'openidlogin' => 'ఓపెన్ ఐడీతో లాగిన్ అవ్వండి',
+	'openidlogin' => 'ఓపెన్ఐడీతో ప్రవేశించండి',
 	'openidpermission' => 'ఓపెన్ఐడీ అనుమతుల పొరపాటు',
 	'openidcancel' => 'తనిఖీ రద్దయింది',
 	'openidfailure' => 'తనిఖీ విఫలమైంది',

@@ -4006,10 +4006,19 @@ $messages['ka'] = array(
 	'code-notes' => 'ბოლო კომენტარები',
 	'code-authors' => 'ავტორები',
 	'code-field-author' => 'ავტორი',
+	'code-field-status' => 'სტატუსი',
 	'code-field-timestamp' => 'თარიღი',
+	'code-field-select' => 'არჩევა',
 	'code-rev-author' => 'ავტორი:',
 	'code-rev-date' => 'თარიღი:',
+	'code-rev-message' => 'კომენტარი:',
+	'code-rev-modified-a' => 'დაემატა',
+	'code-rev-modified-d' => 'წაშლილი',
+	'code-rev-diff' => 'განსხ',
 	'code-rev-diff-link' => 'განსხ.',
+	'code-status-new' => 'ახალი',
+	'code-rev-submit' => 'ცვლილებების შენახვა',
+	'codereview-reply-link' => 'პასუხი',
 );
 
 /** Khmer (ភាសាខ្មែរ)

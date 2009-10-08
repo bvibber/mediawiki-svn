@@ -1077,6 +1077,13 @@ $messages['sv'] = array(
 	'wah-loading' => 'laddar gränssnittet för Wiki@Home <blink>...</blink>',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'wah-menu-pref' => 'అభిరుచులు',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
  */

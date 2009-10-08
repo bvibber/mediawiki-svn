@@ -602,12 +602,14 @@ Chcete túto stránku okomentovať? Napíšte to sem alebo <span class="plainlin
 
 /** Telugu (తెలుగు)
  * @author Kiranmayee
+ * @author Veeven
  */
 $messages['te'] = array(
 	'commentbox-savebutton' => 'వ్యాఖ్యని భద్రపరచు',
 	'commentbox-name' => 'పేరు:',
 	'commentbox-log' => 'కొత్త వ్యాఖ్యలు',
 	'commentbox-first-comment-heading' => '== వ్యాఖ్యలు ==',
+	'commentbox-error-page-nonexistent' => 'ఈ పేజీ లేనే లేదు!',
 );
 
 /** Turkish (Türkçe)

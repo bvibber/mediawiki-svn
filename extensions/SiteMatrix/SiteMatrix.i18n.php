@@ -1039,9 +1039,13 @@ $messages['li'] = array(
 	'sitematrix-fishbowl' => 'beperk bewerke',
 );
 
-/** Lumbaart (Lumbaart) */
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
 $messages['lmo'] = array(
 	'sitematrix' => 'Lista di Wiki che fann part de Wikimedia',
+	'sitematrix-desc' => 'Mustra una [[Special:SiteMatrix|lista di sit de Wikimedia]]',
+	'sitematrix-language' => 'Lengua',
 );
 
 /** Lao (ລາວ) */

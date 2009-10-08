@@ -1739,6 +1739,9 @@ $messages['bs'] = array(
 	'importtsv' => 'Wikidata: Uvoz TSV',
 	'ow_importtsv_title1' => 'Uvoz TSV',
 	'ow_importtsv_title2' => 'Uvoz definicija i prevoda',
+	'ow_importtsv_header' => "<p>Uvoz definicija i prijevoda iz tabovima ograničenog teksta koji ste izvezli iz OpenOffice.org, Excel ili drugog tabličnog softvera.</p>
+<p>Format datoteke mora biti isti kao i datoteke koje ste izvezli preko [[Special:ExportTSV|ExportTSV]] stranice. Ako ste mijenjali nazive kolona, uvoz neće uspjeti. Ako ste mijenjali id definisanog izraza nekog definisanog značenja, ta linija će biti zanemarena. Ako ste dodavali kolone, one moraju biti u obliku  'definitions_iso' ili 'translations_iso', gdje je iso ISO 639-3 jezički kod.</p>
+<p>Ako je  'test run' označeno, svaka akcija koju ste izveli će biti zabilježena, ali ni jedna izmjena neće biti sačuvana. Savjetuje Vam se izvođenje probnih pokretanja prije stvarnog uvoza.</p>",
 	'ow_importtsv_not_allowed' => 'Nemate dopuštenja za TSV uvoz.',
 	'ow_importtsv_importing' => 'Uvozim TSV podatke',
 	'ow_importtsv_import_failed' => 'Uvoz nije uspjeo.',
@@ -1757,6 +1760,8 @@ gdje je iso kod jezika.</p>",
 Jezici moraju biti sa ISO 639-3 kodom jezika.</p>',
 	'exporttsv' => 'Wikipodaci: Izvoz TSV',
 	'ow_exporttsv_title' => 'Izvoz kolekcije u TSV',
+	'ow_exporttsv_header' => "<p>Izvoz kolekcije u odvojeni jezičak tekstualnog formata koji možete uvesti u OpenOffice.org, Excel ili drugi tablični softver.<br />
+Odaberite kolekciju za izvoz. U tekstualnoj kutiji jezika, unesite spisak odvojen zarezima ISO 639-3 jezičkih kodova. Počnite sa jezicima sa kojih ćete prevoditi  (izaberite koliko želite) a završite sa onim na koje će te prevodit. Zatim kliknite na  'Napravi' da napravite datoteku.</p>",
 	'ow_exporttsv_languages' => 'Jezici:',
 	'ow_exporttsv_not_allowed' => 'Nemate dopuštenja da izvršite TSV izvoz.',
 	'ow_exporttsv_export_failed' => 'Izvoz nije uspio',
