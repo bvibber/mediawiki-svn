@@ -63,7 +63,7 @@ class Threads {
 	static function loadFromResult( $res, $db ) {
 		$rows = array();
 		
-		while( $row = $db->fetchObject( $res ) ) {
+		while ( $row = $db->fetchObject( $res ) ) {
 			$rows[] = $row;
 		}
 		
@@ -78,7 +78,7 @@ class Threads {
 		$threads = Threads::loadFromResult( $res, $dbr );
 
 		foreach ( $threads as $thread ) {
-			if ($thread->root()) {
+			if ( $thread->root() ) {
 				self::$cache_by_root[$thread->root()->getID()] = $thread;
 			}
 			self::$cache_by_id[$thread->id()] = $thread;
@@ -94,7 +94,7 @@ class Threads {
 
 	private static function assertSingularity( $threads, $attribute, $value ) {
 		if ( count( $threads ) == 0 ) { return null; }
-		if ( count( $threads ) == 1 ) { return array_pop($threads); }
+		if ( count( $threads ) == 1 ) { return array_pop( $threads ); }
 		if ( count( $threads ) > 1 ) {
 			Threads::databaseError( "More than one thread with $attribute = $value." );
 			return null;
@@ -118,7 +118,7 @@ class Threads {
 		if ( array_key_exists( $post->getID(), self::$cache_by_root ) ) {
 			return self::$cache_by_root[$post->getID()];
 		}
-		$ts = Threads::where( array( 'thread.thread_root' => $post->getID() ) );
+		$ts = Threads::where( array( 'thread_root' => $post->getID() ) );
 		return self::assertSingularity( $ts, 'thread_root', $post->getID() );
 	}
 
@@ -132,7 +132,7 @@ class Threads {
 	}
 
 	static function withSummary( $article ) {
-		$ts = Threads::where( array( 'thread.thread_summary_page' => $article->getId() ) );
+		$ts = Threads::where( array( 'thread_summary_page' => $article->getId() ) );
 		return self::assertSingularity( $ts, 'thread_summary_page', $article->getId() );
 	}
 
@@ -143,7 +143,7 @@ class Threads {
 	  */
 	static function monthsWhereArticleHasThreads( $article ) {
 		// FIXME this probably performs absolutely horribly for pages with lots of threads.
-		
+
 		$threads = Threads::where( Threads::articleClause( $article ) );
 		$months = array();
 		
@@ -156,16 +156,24 @@ class Threads {
 		// Some code seems to assume that it's sorted by month, make sure it's true.
 		ksort( $months );
 		
-		return array_keys($months);
+		return array_keys( $months );
 	}
 
 	static function articleClause( $article ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		
-		$arr = array( 'thread_article_title' => $article->getTitle()->getDBKey(),
+		$titleCond = array( 'thread_article_title' => $article->getTitle()->getDBKey(),
 						'thread_article_namespace' => $article->getTitle()->getNamespace() );
+		$titleCond = $dbr->makeList( $titleCond, LIST_AND );
 		
-		return $dbr->makeList( $arr, LIST_AND );
+		$conds = array( $titleCond );
+		
+		if ( $article->getId() ) {
+			$idCond = array( 'thread_article_id' => $article->getId() );
+			$conds[] = $dbr->makeList( $idCond, LIST_AND );
+		}
+		
+		return $dbr->makeList( $conds, LIST_OR );
 	}
 
 	static function topLevelClause() {
@@ -176,14 +184,8 @@ class Threads {
 		return $dbr->makeList( $arr, LIST_OR );
 	}
 	
-	static function scratchTitle() {
-		$token = md5( uniqid( rand(), true ) );
-		return Title::newFromText( "Thread:$token" );
-	}
-	
 	static function newThreadTitle( $subject, $article ) {
 		wfLoadExtensionMessages( 'LiquidThreads' );
-		$subject = $subject ? $subject : wfMsg( 'lqt_nosubject' );
 		
 		$base = $article->getTitle()->getPrefixedText() . "/$subject";
 		
@@ -194,7 +196,7 @@ class Threads {
 		return self::incrementedTitle( $t->title()->getText(), NS_LQT_SUMMARY );
 	}
 	
-	static function newReplyTitle( $thread, $user) {
+	static function newReplyTitle( $thread, $user ) {
 		$topThread = $thread->topmostThread();
 		
 		$base = $topThread->title()->getText() . '/' . $user->getName();
@@ -209,7 +211,7 @@ class Threads {
 		
 		if ( is_callable( array( 'Title', 'getTitleInvalidRegex' ) ) ) {
 			$rxTc = Title::getTitleInvalidRegex();
-		} elseif (!$rxTc) { // Back-compat
+		} elseif ( !$rxTc ) { // Back-compat
 			$rxTc = '/' .
 				# Any character not allowed is forbidden...
 				'[^' . Title::legalChars() . ']' .
@@ -239,7 +241,7 @@ class Threads {
 		while ( !$t || $t->exists() ||
 				in_array( $t->getPrefixedDBkey(), self::$occupied_titles ) ) {
 			
-			if (!$t) {
+			if ( !$t ) {
 				throw new MWException( "Error in creating title for basename $basename" );
 			}
 			
@@ -247,5 +249,65 @@ class Threads {
 			$i++;
 		}
 		return $t;
-	}	
+	}
+	
+	// Called just before any function that might cause a loss of article association.
+	//  by breaking either a NS-title reference (by moving the article), or a page-id
+	//  reference (by deleting the article).
+	// Basically ensures that all subthreads have the two stores of article association
+	//  synchronised.
+	// Can also be called with a "limit" parameter to slowly convert old threads. This
+	//  is intended to be used by jobs created by move and create operations to slowly
+	//  propagate the change through the data set without rushing the whole conversion
+	//  when a second breaking change is made. If a limit is set and more rows require
+	//  conversion, this function will return false. Otherwise, true will be returned.
+	// If the queueMore parameter is set and rows are left to update, a job queue item
+	//  will then be added with the same limit, to finish the remainder of the update.
+	static function synchroniseArticleData( $article, $limit = false, $queueMore = false ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$title = $article->getTitle();
+		$id = $article->getId();
+		
+		$titleCond = array( 'thread_article_namespace' => $title->getNamespace(),
+				'thread_article_title' => $title->getDBkey() );
+		$titleCondText = $dbr->makeList( $titleCond, LIST_AND );
+		
+		$idCond = array( 'thread_article_id' => $id );
+		$idCondText = $dbr->makeList( $idCond, LIST_AND );
+		
+		$fixTitleCond = array( $idCondText, "NOT ($titleCondText)" );
+		$fixIdCond = array( $titleCondText, "NOT ($idCondText)" );
+		
+		// Try to hit the most recent threads first.
+		$options = array( 'LIMIT' => 500, 'ORDER BY' => 'thread_id DESC' );
+		
+		// Batch in 500s
+		if ( $limit ) $options['LIMIT'] = min( $limit, 500 );
+		
+		$rowsAffected = 0;
+		$roundRowsAffected = 1;
+		while ( ( !$limit || $rowsAffected < $limit ) && $roundRowsAffected > 0 ) {
+			$roundRowsAffected = 0;
+			
+			// Fix wrong title.
+			$res = $dbw->update( 'thread', $titleCond, $fixTitleCond, __METHOD__, $options );
+			$roundRowsAffected += $dbw->affectedRows();
+			
+			// Fix wrong ID
+			$res = $dbw->update( 'thread', $idCond, $fixIdCond, __METHOD__, $options );
+			$roundRowsAffected += $dbw->affectedRows();
+			
+			$rowsAffected += $roundRowsAffected;
+		}
+		
+		if ( $limit && ( $rowsAffected >= $limit ) && $queueMore ) {
+			$jobParams = array( 'limit' => $limit, 'cascade' => true );
+			$job = new SynchroniseThreadArticleDataJob( $article->getTitle(), $jobParams );
+			$job->insert();
+		}
+		
+		return $limit ? ( $rowsAffected < $limit ) : true;
+	}
 }

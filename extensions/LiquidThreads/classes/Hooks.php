@@ -1,22 +1,13 @@
 <?php
 
 class LqtHooks {
-	static function onPageMove( $movepage, $ot, $nt ) {
-		// Shortcut for non-LQT pages.
-		if ( !LqtDispatch::isLqtPage( $ot ) )
-			return true;
-		
-		// Move the threads on that page to the new page.
-		$threads = Threads::where( array( Threads::articleClause( new Article( $ot ) ),
-		                                  Threads::topLevelClause() ) );
-
-		foreach ( $threads as $t ) {
-			$t->moveToPage( $nt, false );
-		}
-
-		return true;
-	}
-
+	// Used to inform hooks about edits that are taking place.
+	public static $editType = null;
+	public static $editThread = null;
+	public static $editAppliesTo = null;
+	public static $editArticle = null;
+	public static $editView = null;
+	
 	static function customizeOldChangesList( &$changeslist, &$s, $rc ) {
 		if ( $rc->getTitle()->getNamespace() != NS_LQT_THREAD )
 			return true;
@@ -44,7 +35,7 @@ class LqtHooks {
 						array( 'class' => 'lqt_rc_ellipsis' ), array(), array( 'known' ) );
 			}
 			
-			$quote = htmlspecialchars($quote) . $link;
+			$quote = htmlspecialchars( $quote ) . $link;
 
 			if ( $thread->isTopmostThread() ) {
 				$message_name = 'lqt_rc_new_discussion';
@@ -62,7 +53,7 @@ class LqtHooks {
 			$offset = $dbr->timestamp( $offset );
 
 			$thread_link = $changeslist->skin->link( $tmp_title,
-				htmlspecialchars($thread->subjectWithoutIncrement()),
+				htmlspecialchars( $thread->subjectWithoutIncrement() ),
 				array(), array( 'offset' => $offset ), array( 'known' ) );
 
 			$talkpage_link = $changeslist->skin->link(
@@ -123,7 +114,7 @@ class LqtHooks {
 			// Yes, this is the correct field to join to. Weird naming.
 			$join_conds['page'] = array( 'LEFT JOIN', 'rc_cur_id=page_id' );
 		}
-		$conds[] = "page_namespace != " . $db->addQuotes(NS_LQT_THREAD);
+		$conds[] = "page_namespace != " . $db->addQuotes( NS_LQT_THREAD );
 	
 		$talkpage_messages = NewMessages::newUserMessages( $wgUser );
 		$tn = count( $talkpage_messages );
@@ -141,7 +132,7 @@ class LqtHooks {
 		
 		$sk = $wgUser->getSkin();
 		$link = $sk->link( $messages_title, $new_messages,
-								array( 'class' => 'lqt_watchlist_messages_notice' ) );
+					array( 'class' => 'lqt_watchlist_messages_notice' ) );
 		$wgOut->addHTML( $link );
 	
 		return true;
@@ -151,7 +142,15 @@ class LqtHooks {
 		global $wgEnableEmail;
 		wfLoadExtensionMessages( 'LiquidThreads' );
 		
-		if ($wgEnableEmail) {
+		// Whether or not to show user signatures
+		$preferences['lqtcustomsignatures'] =
+			array(
+				'type' => 'toggle',
+				'label-message' => 'lqt-preference-custom-signatures',
+				'section' => 'lqt',
+			);
+		
+		if ( $wgEnableEmail ) {
 			$preferences['lqtnotifytalk'] =
 				array(
 					'type' => 'toggle',
@@ -176,7 +175,6 @@ class LqtHooks {
 				'section' => 'lqt',
 			);
 			
-		// Display depth and count
 		$preferences['lqtdisplaycount'] =
 			array(
 				'type' => 'int',
@@ -212,7 +210,7 @@ class LqtHooks {
 			$threadInfo = "\n";
 			$attribs = array();
 			$attribs['ThreadSubject'] = $thread->subject();
-			if ($thread->hasSuperThread()) {
+			if ( $thread->hasSuperThread() ) {
 				$attribs['ThreadParent'] = $thread->superThread()->id();
 			}
 			$attribs['ThreadAncestor'] = $thread->topmostThread()->id();
@@ -225,8 +223,8 @@ class LqtHooks {
 			$attribs['ThreadEditStatus'] = $editedStati[$thread->editedness()];
 			$attribs['ThreadType'] = $threadTypes[$thread->type()];
 			
-			foreach( $attribs as $key => $value ) {
-				$threadInfo .= "\t".Xml::element( $key, null, $value ) . "\n";
+			foreach ( $attribs as $key => $value ) {
+				$threadInfo .= "\t" . Xml::element( $key, null, $value ) . "\n";
 			}
 			
 			$out .= Xml::tags( 'DiscussionThreading', null, $threadInfo ) . "\n";
@@ -248,11 +246,11 @@ class LqtHooks {
 			return true;
 		}
 		
-		$thread = Threads::withRoot( new Article($title) );
+		$thread = Threads::withRoot( new Article( $title ) );
 		$text = $thread->subject();
 		
 		$title = clone $thread->topmostThread()->title();
-		$title->setFragment( '#'.$thread->getAnchorName() );
+		$title->setFragment( '#' . $thread->getAnchorName() );
 		
 		return true;
 	}
@@ -283,8 +281,8 @@ class LqtHooks {
 		$namespaces = array( NS_LQT_THREAD, NS_LQT_SUMMARY );
 		
 		// Add odd namespaces
-		foreach( SearchEngine::searchableNamespaces() as $ns => $nsName ) {
-			if ($ns % 2 == 1) {
+		foreach ( SearchEngine::searchableNamespaces() as $ns => $nsName ) {
+			if ( $ns % 2 == 1 ) {
 				$namespaces[] = $ns;
 			}
 		}
@@ -328,8 +326,103 @@ class LqtHooks {
 		$wgExtNewFields[] = array( "thread", "thread_author_name", "$dir/schema-changes/store_subject-author.sql" );
 		$wgExtNewFields[] = array( "thread", "thread_sortkey", "$dir/schema-changes/new-sortkey.sql" );
 		$wgExtNewFields[] = array( 'thread', 'thread_replies', "$dir/schema-changes/store_reply_count.sql" );
+		$wgExtNewFields[] = array( 'thread', 'thread_article_id', "$dir/schema-changes/store_article_id.sql" );
 		
 		$wgExtNewIndexes[] = array( 'thread', 'thread_summary_page', '(thread_summary_page)' );
+		
+		return true;
+	}
+	
+	static function onArticleMoveComplete( &$form, &$ot, &$nt ) {
+		// Check if it's a talk page.
+		if ( !LqtDispatch::isLqtPage( $ot ) && !LqtDispatch::isLqtPage( $nt ) ) {
+			return true;
+		}
+		
+		// Synchronise the first 500 threads, in reverse order by thread id. If
+		// there are more threads to synchronise, the job queue will take over.
+		Threads::synchroniseArticleData( new Article( $nt ), 500, 'cascade' );
+		
+		return true;
+	}
+	
+	static function onArticleMove( $ot, $nt, $user, &$err, $reason ) {
+		// Synchronise article data so that moving the article doesn't break any
+		//  article association.
+		Threads::synchroniseArticleData( new Article( $ot ) );
+		
+		return true;
+	}
+	
+	static function userIsBlockedFrom( $user, $title, &$isBlocked, &$allowUserTalk ) {
+		// Limit applicability
+		if ( !( $isBlocked && $allowUserTalk && $title->getNamespace() == NS_LQT_THREAD ) ) {
+			return true;
+		}
+		
+		// Now we're dealing with blocked users with user talk editing allowed editing pages
+		//  in the thread namespace.
+
+		if ( $title->exists() ) {
+			// If the page actually exists, allow the user to edit posts on their own talk page.
+			$thread = Threads::withRoot( new Article( $title ) );
+			
+			if ( !$thread )
+				return true;
+			
+			$articleTitle = $thread->article()->getTitle();
+			
+			if ( $articleTitle->getNamespace() == NS_USER_TALK &&
+					$user->getName() == $title->getText() ) {
+				$isBlocked = false;
+				return true;
+			}
+		} else {
+			// Otherwise, it's a bit trickier. Allow creation of thread titles prefixed by the
+			//  user's talk page.
+
+			// Figure out if it's on the talk page
+			$talkPage = $user->getTalkPage();
+			$isOnTalkPage = ( self::$editThread &&
+				self::$editThread->article()->getTitle()->equals( $talkPage ) );
+			$isOnTalkPage = $isOnTalkPage || ( self::$editAppliesTo &&
+				self::$editAppliesTo->article()->getTitle()->equals( $talkPage ) );
+			$isOnTalkPage = $isOnTalkPage ||
+				( self::$editView->article->getTitle()->equals( $talkPage ) );
+			
+			if ( self::$editArticle->getTitle()->equals( $title ) && $isOnTalkPage ) {
+				$isBlocked = false;
+				return true;
+			}
+		}
+		
+		return true;
+	}
+	
+	static function onPersonalUrls( &$personal_urls, &$title ) {
+		global $wgUser, $wgLang;
+		
+		if ( $wgUser->isAnon() ) return true;
+		
+		wfLoadExtensionMessages( 'LiquidThreads' );
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		$newMessagesCount = NewMessages::newMessageCount( $wgUser );
+		
+		// Add new messages link.
+		$url = SpecialPage::getTitleFor( 'NewMessages' )->getLocalURL();
+		$msg = $newMessagesCount ? 'lqt-newmessages-n' : 'lqt_newmessages';
+		$newMessagesLink =
+			array(
+				'href' => $url,
+				'text' => wfMsg( $msg, $wgLang->formatNum( $newMessagesCount ) ),
+				'active' => $newMessagesCount > 0,
+			);
+		
+		$insertUrls = array( 'newmessages' => $newMessagesLink );
+		
+		$personal_urls = wfArrayInsertAfter( $personal_urls, $insertUrls, 'watchlist' );
 		
 		return true;
 	}

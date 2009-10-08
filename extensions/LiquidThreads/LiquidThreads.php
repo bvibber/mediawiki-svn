@@ -47,8 +47,6 @@ $wgHooks['ParserFirstCallInit'][] = 'lqtSetupParserFunctions';
 // Main dispatch hook
 $wgHooks['MediaWikiPerformAction'][] = 'LqtDispatch::tryPage';
 
-// Miscellaneous
-$wgHooks['SpecialMovepageAfterMove'][] = 'LqtHooks::onPageMove'; // Move threads to new loc
 // Customisation of recentchanges
 $wgHooks['OldChangesListRecentChangesLine'][] = 'LqtHooks::customizeOldChangesList';
 
@@ -56,6 +54,7 @@ $wgHooks['OldChangesListRecentChangesLine'][] = 'LqtHooks::customizeOldChangesLi
 $wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'LqtHooks::setNewtalkHTML';
 $wgHooks['SpecialWatchlistQuery'][] = 'LqtHooks::beforeWatchlist';
 $wgHooks['ArticleEditUpdateNewTalk'][] = 'LqtHooks::updateNewtalkOnEdit';
+$wgHooks['PersonalUrls'][] = 'LqtHooks::onPersonalUrls';
 
 // Preferences
 $wgHooks['GetPreferences'][] = 'LqtHooks::getPreferences';
@@ -69,6 +68,11 @@ $wgHooks['ArticleDeleteComplete'][] = 'LqtDeletionController::onArticleDeleteCom
 $wgHooks['ArticleRevisionUndeleted'][] = 'LqtDeletionController::onArticleRevisionUndeleted';
 $wgHooks['ArticleUndelete'][] = 'LqtDeletionController::onArticleUndelete';
 $wgHooks['ArticleConfirmDelete'][] = 'LqtDeletionController::onArticleConfirmDelete';
+$wgHooks['ArticleDelete'][] = 'LqtDeletionController::onArticleDelete';
+
+// Moving
+$wgHooks['SpecialMovepageAfterMove'][] = 'LqtHooks::onArticleMoveComplete';
+$wgHooks['AbortMove'][] = 'LqtHooks::onArticleMove';
 
 // Search
 $wgHooks['ShowSearchHitTitle'][] = 'LqtHooks::customiseSearchResultTitle';
@@ -82,6 +86,9 @@ $wgHooks['RenameUserSQL'][] = 'LqtHooks::onUserRename';
 
 // Edit-related
 $wgHooks['EditPageBeforeEditChecks'][] = 'LqtHooks::editCheckBoxes';
+
+// Blocking
+$wgHooks['UserIsBlockedFrom'][] = 'LqtHooks::userIsBlockedFrom';
 
 // Special pages
 $wgSpecialPages['MoveThread'] = 'SpecialMoveThread';
@@ -101,7 +108,8 @@ $wgAutoloadClasses['LiquidThreadsMagicWords'] = $dir . 'i18n/LiquidThreads.magic
 $wgAutoloadClasses['LqtParserFunctions'] = $dir . 'classes/ParserFunctions.php';
 $wgAutoloadClasses['LqtDeletionController'] = $dir . 'classes/DeletionController.php';
 $wgAutoloadClasses['LqtHooks'] = $dir . 'classes/Hooks.php';
-$wgAutoloadClasses['ThreadRevision'] = $dir."/classes/ThreadRevision.php";
+$wgAutoloadClasses['ThreadRevision'] = $dir . "/classes/ThreadRevision.php";
+$wgAutoloadClasses['SynchroniseThreadArticleDataJob'] = "$dir/classes/SynchroniseThreadArticleDataJob.php";
 
 // View classes
 $wgAutoloadClasses['TalkpageView'] = $dir . 'pages/TalkpageView.php';
@@ -123,6 +131,9 @@ $wgAutoloadClasses['SpecialNewMessages'] = $dir . 'pages/SpecialNewMessages.php'
 $wgAutoloadClasses['SpecialSplitThread'] = $dir . 'pages/SpecialSplitThread.php';
 $wgAutoloadClasses['SpecialMergeThread'] = $dir . 'pages/SpecialMergeThread.php';
 
+// Job queue
+$wgJobClasses['synchroniseThreadArticleData'] = 'SynchroniseThreadArticleDataJob';
+
 // Backwards-compatibility
 $wgAutoloadClasses['Article_LQT_Compat'] = $dir . 'compat/LqtCompatArticle.php';
 if ( version_compare( $wgVersion, '1.16', '<' ) ) {
@@ -140,6 +151,7 @@ $wgLogActionsHandlers['liquidthreads/move'] = 'lqtFormatMoveLogEntry';
 $wgDefaultUserOptions['lqtnotifytalk'] = true;
 $wgDefaultUserOptions['lqtdisplaydepth'] = 3;
 $wgDefaultUserOptions['lqtdisplaycount'] = 10;
+$wgDefaultUserOptions['lqtcustomsignatures'] = true;
 
 // API
 $wgAutoloadClasses['ApiQueryLQTThreads'] = "$dir/api/ApiQueryLQTThreads.php";
@@ -178,3 +190,6 @@ $wgLqtEnotif = true;
 	want to have to parse it on every page view */
 $wgThreadActionsNoBump = array( 3 /* Edited summary */, 10 /* Merged from */,
 								12 /* Split from */, 2 /* Edited root */, );
+
+/** Switch this on if you've migrated from a version before around May 2009 */
+$wgLiquidThreadsMigrate = false;

@@ -8,10 +8,7 @@ class TalkpageView extends LqtView {
 		// The arguments are passed in by reference.
 		unset( $content_actions['edit'] );
 		unset( $content_actions['viewsource'] );
-		unset( $content_actions['addsection'] );
 		unset( $content_actions['history'] );
-		unset( $content_actions['watch'] );
-		unset( $content_actions['move'] );
 		unset( $content_actions['delete'] );
 
 		return true;
@@ -50,7 +47,7 @@ class TalkpageView extends LqtView {
 			}
 			
 			$actions = '';
-			foreach( $actionLinks as $link ) {
+			foreach ( $actionLinks as $link ) {
 				$actions .= Xml::tags( 'li', null, "[$link]" ) . "\n";
 			}
 			$actions = Xml::tags( 'ul', array( 'class' => 'lqt_header_commands' ), $actions );
@@ -85,7 +82,7 @@ class TalkpageView extends LqtView {
 		$headerRow = '';
 		$headers = array( 'lqt_toc_thread_title', 'lqt_toc_thread_author',
 							'lqt_toc_thread_replycount', 'lqt_toc_thread_modified' );
-		foreach( $headers as $msg ) {
+		foreach ( $headers as $msg ) {
 			$headerRow .= Xml::tags( 'th', null, wfMsgExt( $msg, 'parseinline' ) );
 		}
 		$headerRow = Xml::tags( 'tr', null, $headerRow );
@@ -93,9 +90,9 @@ class TalkpageView extends LqtView {
 		
 		// Table body
 		$rows = array();
-		foreach( $threads as $thread ) {
+		foreach ( $threads as $thread ) {
 			$row = '';
-			$anchor = '#'.$this->anchorName( $thread );
+			$anchor = '#' . $this->anchorName( $thread );
 			$subject = Xml::element( 'a', array( 'href' => $anchor ), $thread->subject() );
 			$row .= Xml::tags( 'td', null, $subject );
 			
@@ -182,6 +179,17 @@ class TalkpageView extends LqtView {
 		$this->output->setPageTitle( $this->title->getPrefixedText() );
 		self::addJSandCSS();
 		
+		// Expose feed links.
+		global $wgFeedClasses, $wgScriptPath, $wgServer;
+		$apiParams = array( 'action' => 'feedthreads', 'type' => 'replies|newthreads',
+				'talkpage' => $this->title->getPrefixedText() );
+		$urlPrefix = wfScript( 'api' ) . '?';
+		foreach ( $wgFeedClasses as $format => $class ) {
+			$theseParams = $apiParams + array( 'feedformat' => $format );
+			$url = $urlPrefix . wfArrayToCGI( $theseParams );
+			$this->output->addFeedLink( $format, $url );
+		}
+		
 		$sk = $this->user->getSkin();
 		
 		$article = new Article( $this->title );
@@ -194,11 +202,11 @@ class TalkpageView extends LqtView {
 		// Search!
 		if ( $this->request->getCheck( 'lqt_search' ) ) {
 			$q = $this->request->getText( 'lqt_search' );
-			$q .= ' ondiscussionpage:'.$article->getTitle()->getPrefixedText();
+			$q .= ' ondiscussionpage:' . $article->getTitle()->getPrefixedText();
 			
 			$params = array( 'search' => $q,
 							 'fulltext' => 1,
-							 'ns'.NS_LQT_THREAD => 1,
+							 'ns' . NS_LQT_THREAD => 1,
 							);
 			
 			$t = SpecialPage::getTitleFor( 'Search' );
@@ -213,7 +221,7 @@ class TalkpageView extends LqtView {
 		$html = '';
 		
 		// Set up a per-page header for new threads, search box, and sorting stuff.
-		
+
 		$talkpageHeader = '';
 		
 		$newThreadText = wfMsgExt( 'lqt_new_thread', 'parseinline' );
@@ -246,7 +254,7 @@ class TalkpageView extends LqtView {
 		
 		$threads = $this->getPageThreads( $pager );
 
-		if ( count($threads) > 0 ) {
+		if ( count( $threads ) > 0 ) {
 			$html .= Xml::element( 'br', array( 'style' => 'clear: both;' ) );
 			$html .= $this->getTOC( $threads );
 		} else {
@@ -268,7 +276,7 @@ class TalkpageView extends LqtView {
 	
 	function getSearchBox() {
 		$html = '';
-		$html .= Xml::inputLabel( wfMsg('lqt-search-label'), 'lqt_search', 'lqt-search-box',
+		$html .= Xml::inputLabel( wfMsg( 'lqt-search-label' ), 'lqt_search', 'lqt-search-box',
 									45 );
 		
 		$html .= ' ' . Xml::submitButton( wfMsg( 'lqt-search-button' ) );
@@ -338,7 +346,7 @@ class LqtDiscussionPager extends IndexPager {
 					array(
 						Threads::articleClause( $this->article ),
 						Threads::topLevelClause(),
-						'thread_type != '. $this->mDb->addQuotes( Threads::TYPE_DELETED ),
+						'thread_type != ' . $this->mDb->addQuotes( Threads::TYPE_DELETED ),
 					),
 			);
 			
@@ -387,7 +395,7 @@ class LqtDiscussionPager extends IndexPager {
 			case LQT_NEWEST_THREADS:
 				return 'thread_created';
 			default:
-				throw new MWException( "Unknown sort order ".$this->orderType );
+				throw new MWException( "Unknown sort order " . $this->orderType );
 		}
 	}
 	
@@ -399,7 +407,7 @@ class LqtDiscussionPager extends IndexPager {
 			case LQT_OLDEST_THREADS:
 				return false; // Ascending
 			default:
-				throw new MWException( "Unknown sort order ".$this->orderType );
+				throw new MWException( "Unknown sort order " . $this->orderType );
 		}
 	}
 	
