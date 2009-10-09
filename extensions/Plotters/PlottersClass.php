@@ -99,17 +99,17 @@ class Plotters {
 		$this->parser->mOutput->mPlottersTag = true;
 
 		// Add renderer specific tag
-		$renderer = "mplotter-" . $this->argumentArray["renderer"];
-		$this->parser->mOutput->$renderer = true;
+		$renderer = $this->argumentArray["renderer"];
+		$this->parser->mOutput->mplotter["$renderer"] = true;
 
 		// Add preprocessor tags
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
-			$preprocessor = "mplotter-" . $preprocessor;
-			$this->parser->mOutput->$preprocessor = true;
+			$preprocessor = $preprocessor;
+			$this->parser->mOutput->mplotter["$preprocessor"] = true;
 		}
 
-		$script = "mplotter-" . $this->argumentArray["script"];
-		$this->parser->mOutput->$script = true;
+		$script = $this->argumentArray["script"];
+		$this->parser->mOutput->mplotter["$script"] = true;
 
 		// output
 		return $output;

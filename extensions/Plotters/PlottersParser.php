@@ -16,12 +16,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class PlottersParser {
 
+	var $arguments;
 	var $argumentArray;
 	var $dataArray;
 
-	function PlottersParser( $input, $argv, &$parser ) {
+	function PlottersParser( $input = "", $argv = Array() ) {
 		$this->parseArguments( $argv );
-		$this->parseData( $input, $parser );
+		$this->parseData( $input );
 	}
 
 	function getArguments() {
@@ -30,6 +31,10 @@ class PlottersParser {
 
 	function getData() {
 		return $this->dataArray;
+	}
+
+	function setData( $data ) {
+		$this->dataArray = $data;
 	}
 
 	function parseArguments( $argv ) {
@@ -127,7 +132,7 @@ class PlottersParser {
 		}
 	}
 
-	function parseData( $input, $parser ) {
+	function parseData( $input ) {
 		$this->dataArray = array();
 
 		Plotters::debug( 'plot script input: ', $this->argumentArray["scriptarguments"] );

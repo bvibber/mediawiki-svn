@@ -48,6 +48,8 @@ $wgExtensionAliasesFiles['Plotters'] = $dir . 'Plotters.alias.php';
 $wgAutoloadClasses['Plotters'] = $dir . 'PlottersClass.php';
 $wgAutoloadClasses['PlottersParser'] = $dir . 'PlottersParser.php';
 $wgAutoloadClasses['SpecialPlotters'] = $dir . 'SpecialPlotters.php';
+$smwgResultFormats['plot'] = 'SRFPlotters';
+$wgAutoloadClasses['SRFPlotters'] = $dir . 'SRF_Plotters.php';
 $wgSpecialPages['Plotters'] = 'SpecialPlotters';
 $wgSpecialPageGroups['Plotters'] = 'wiki';
 
@@ -208,7 +210,7 @@ function initPlottersPF( &$parser ) {
 }
 
 function initPlotters( $input, $argv, &$parser ) {
-	$pParser = new PlottersParser( $input, $argv, $parser );
+	$pParser = new PlottersParser( $input, $argv );
 	$pPlotter = new Plotters( $pParser, $parser );
 
 	$pPlotter->checkForErrors();
@@ -226,11 +228,11 @@ function initPlotters( $input, $argv, &$parser ) {
 function PlottersParserOutput( &$outputPage, &$parserOutput )  {
 	if ( !empty( $parserOutput->mPlottersTag ) ) {
 		// Output required javascript
-		$genericname = "mplotter-generic";
-		$plotkitname = "mplotter-plotkit";
-		if ( !empty( $parserOutput->$genericname ) ) {
+		$genericname = "generic";
+		$plotkitname = "plotkit";
+		if ( $parserOutput->mplotter["$genericname"] ) {
 			Plotters::setPlottersHeaders( $outputPage, 'generic' );
-		} else if ( !empty( $parserOutput->$plotkitname ) ) {
+		} else if ( $parserOutput->mplotter["$plotkitname"] ) {
 			Plotters::setPlottersHeaders( $outputPage, 'plotkit' );
 		}
 
@@ -241,8 +243,8 @@ function PlottersParserOutput( &$outputPage, &$parserOutput )  {
 		$done = array();
 
 		foreach ( $plotters as $pname => $code ) {
-			$tname = strtolower( "mplotter-$pname" );
-			if ( !empty( $parserOutput->$tname ) ) {
+			$tname = strtolower( "$pname" );
+			if ( $parserOutput->mplotter["$tname"] ) {
 				wfApplyPlotterCode( $code, $outputPage, $done );
 			}
 		}
