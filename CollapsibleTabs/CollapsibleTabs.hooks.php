@@ -9,29 +9,16 @@
 class CollapsibleTabsHooks {
 
 	/* Static Functions */
-
 	
 	/**
-	 * addCollapsibleTabs hook
+	 * intialize hook
 	 */
-	public static function addCollapsibleTabs( $out ) {
-		global $wgCollapsibleTabsStyleVersion, $wgScriptPath, $wgJsMimeType;
-		
-		$out->addScript( 
-			Xml::element(
-				'script',
-				array(
-					'type' => $wgJsMimeType,
-					'src' => $wgScriptPath .
-						"/extensions/UsabilityInitiative/" .
-						'CollapsibleTabs/CollapsibleTabs.js?'.
-							$wgCollapsibleTabsStyleVersion,
-				),
-				'',
-				false
-			)
+	public static function initialize( $out ) {
+		global $wgCollapsibleTabsStyleVersion;
+		UsabilityInitiativeHooks::initialize();
+		UsabilityInitiativeHooks::addScript(
+			'CollapsibleTabs/CollapsibleTabs.js', $wgCollapsibleTabsStyleVersion
 		);
-		
 		return true;
 	}
 	
