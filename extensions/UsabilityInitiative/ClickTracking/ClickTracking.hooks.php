@@ -114,9 +114,9 @@ class ClickTrackingHooks {
 	 * @return integer
 	 */
 	public static function getEventIDFromName( $event_name ){
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER ); //replication lag means sometimes a new event will not exist in the table yet
 
-		$id_num = $dbr->selectField(
+		$id_num = $dbw->selectField(
 			'click_tracking_events',
 			'id',
 			array( 
@@ -129,22 +129,12 @@ class ClickTrackingHooks {
 		// this will be incredibly rare as the whole database will only have a few hundred entries in it at most
 		// and getting DB_MASTER up top would be wasteful
 		if( $id_num === false ){
-			$dbw = wfGetDB( DB_MASTER );
 			$dbw->insert(
 				'click_tracking_events',
 				array( 'event_name' => (string) $event_name ),
 				__METHOD__
 			);
-
-			// should be inserted now...if not, we return zero later
-			$id_num = $dbr->selectField(
-				'click_tracking_events',
-				'id',
-				array(
-					'event_name' => $event_name
-				), 
-				__METHOD__
-			);
+			$id_num = $dbw->insertId();
 		}
 
 		if( $id_num === false ){
