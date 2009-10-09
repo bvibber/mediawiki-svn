@@ -34,9 +34,8 @@ $wgExtensionCredits['other'][] = array(
 // Includes parent extension
 require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
 
-
 // Adds Autoload Classes
 $wgAutoloadClasses['CollapsibleTabsHooks'] =
 	dirname( __FILE__ ) . '/CollapsibleTabs.hooks.php';
 
-$wgHooks['BeforePageDisplay'][] = 'CollapsibleTabsHooks::addCollapsibleTabs';
+$wgHooks['AjaxAddScript'][] = 'CollapsibleTabsHooks::initialize';
