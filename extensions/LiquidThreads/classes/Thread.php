@@ -256,8 +256,11 @@ class Thread {
 		
 		// Fix reply count.
 		$t = $this->superthread();
-		$t->decrementReplyCount();
-		$t->save();
+		
+		if ($t) {
+			$t->decrementReplyCount();
+			$t->save();
+		}
 	}
 	
 	function undelete( $reason ) {
@@ -266,8 +269,10 @@ class Thread {
 		
 		// Fix reply count.
 		$t = $this->superthread();
-		$t->incrementReplyCount( 1 );
-		$t->save();
+		if ($t) {
+			$t->incrementReplyCount( 1 );
+			$t->save();
+		}
 	}
 
 	function moveToPage( $title, $reason, $leave_trace ) {
@@ -283,18 +288,21 @@ class Thread {
 		
 		$new_articleNamespace = $title->getNamespace();
 		$new_articleTitle = $title->getDBkey();
+		$new_articleID = $title->getArticleID();
 		
 		// Update on *all* subthreads.
 		$dbr->update( 'thread',
 				array(
 					'thread_article_namespace' => $new_articleNamespace,
 					'thread_article_title' => $new_articleTitle,
+					'thread_article_id' => $new_articleID,
 				),
 				array( 'thread_ancestor' => $this->id() ),
 				__METHOD__ );
 
 		$this->articleNamespace = $new_articleNamespace;
 		$this->articleTitle = $new_articleTitle;
+		$this->articleId = $new_articleID;
 		$this->commitRevision( Threads::CHANGE_MOVED_TALKPAGE, null, $reason );
 		
 		# Log the move
@@ -335,7 +343,7 @@ class Thread {
 	
 	function incrementReplyCount( $val = 1 ) {
 		$thread = $this;
-		while ($thread) {
+		while ( $thread ) {
 			$thread->replyCount += $val;
 			$thread->save();
 			
@@ -1175,7 +1183,7 @@ class Thread {
 	}
 	
 	function setSortKey( $k = null ) {
-		if ( is_null($k) ) {
+		if ( is_null( $k ) ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$k = wfTimestampNow( TS_DB );
 		}

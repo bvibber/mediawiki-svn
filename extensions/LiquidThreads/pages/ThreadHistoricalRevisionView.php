@@ -11,7 +11,7 @@ class ThreadHistoricalRevisionView extends ThreadPermalinkView {
 	function postDivClass( $thread ) {
 		$changedObject = $this->mDisplayRevision->getChangeObject();
 		$is_changed_thread =  $changedObject &&
-								( $changedObject->id() == $thread->id() );
+					( $changedObject->id() == $thread->id() );
 		
 		$class = parent::postDivClass( $thread );
 		
@@ -50,12 +50,12 @@ class ThreadHistoricalRevisionView extends ThreadPermalinkView {
 
 		$html = '';
 		$html .= wfMsgExt( 'lqt_revision_as_of', 'parseinline',
-							array(
-								$wgLang->timeanddate( $this->mDisplayRevision->getTimestamp() ),
-								$wgLang->date( $this->mDisplayRevision->getTimestamp() ),
-								$wgLang->time( $this->mDisplayRevision->getTimestamp() )
-							)
-						);
+			array(
+				$wgLang->timeanddate( $this->mDisplayRevision->getTimestamp() ),
+				$wgLang->date( $this->mDisplayRevision->getTimestamp() ),
+				$wgLang->time( $this->mDisplayRevision->getTimestamp() )
+			)
+		);
 		
 		$html .= '<br/>';
 
@@ -64,8 +64,8 @@ class ThreadHistoricalRevisionView extends ThreadPermalinkView {
 		$msg = '';
 		if ( $ct == Threads::CHANGE_EDITED_ROOT ) {
 			$diff_link = $this->diffPermalink( $this->thread,
-												wfMsgExt( 'diff', 'parseinline' ),
-												$this->mDisplayRevision );
+							wfMsgExt( 'diff', 'parseinline' ),
+							$this->mDisplayRevision );
 			$msg = wfMsgExt( 'lqt_change_edited_root', 'parseinline' ) .
 					" [$diff_link]";
 		} else {
@@ -91,7 +91,25 @@ class ThreadHistoricalRevisionView extends ThreadPermalinkView {
 		$this->thread = $this->mDisplayRevision->getThreadObj();
 		
 		$this->showHistoryInfo();
-		parent::show();
+
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array( $this, 'customizeTabs' );
+
+		if ( !$this->thread ) {
+			$this->showMissingThreadPage();
+			return false;
+		}
+
+		self::addJSandCSS();
+		$this->output->setSubtitle( $this->getSubtitle() );
+		
+		$changedObject = $this->mDisplayRevision->getChangeObject();
+
+		$this->showThread( $this->thread, 1, 1,
+			array( 'maxDepth' => - 1, 'maxCount' => - 1,
+				'mustShowThreads' => array( $changedObject->id() ) ) );
+		
+		$this->output->setPageTitle( $this->thread->subject() );
 		return false;
 	}
 }
