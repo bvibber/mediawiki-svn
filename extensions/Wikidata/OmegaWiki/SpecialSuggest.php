@@ -118,10 +118,11 @@ function getSuggestions() {
 	if ( $search != '' ) {
 		if ( $query == 'transaction' )
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "%$search%" );
+		else if ( $query == 'class' )
+			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "$search%" );
 		else if ( $query == 'language' )
 			$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes( "$search%" );
 		else if ( $query == 'relation-type' or
-			$query == 'class' or
 			$query == 'option-attribute' or
 			$query == 'translated-text-attribute' or
 			$query == 'text-attribute' or
