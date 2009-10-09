@@ -2279,7 +2279,7 @@ fn: {
 			var position = wikitext.indexOf( text, offset );
 			// Update offset to avoid stumbling on duplicate headings
 			if ( position >= offset ) {
-				offset = position + 1;
+				offset = position + text.length;
 			} else if ( position == -1 ) {
 				// Not sure this is possible, or what should happen
 				continue;
