@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS /*_*/click_tracking (
 	session_id varbinary(255) NOT NULL,
 
 	-- true if the user is logged in
-	is_logged_in boolean NOT NULL,
+	is_logged_in tinyint NOT NULL,
 
 	-- total user contributions
 	user_total_contribs integer,
