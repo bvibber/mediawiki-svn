@@ -58,6 +58,85 @@ $wgExtensionCredits['media'][] = array(
 	'description'    => 'Enables distributing transcoding & flattening video jobs to clients using firefogg.',
 	'descriptionmsg' => 'wah-desc',
 );
+/******************* CONFIGURATION STARTS HERE **********************/
+
+//ffmpeg2theora path: enables us to get basic source file information
+$wgffmpeg2theora = '/usr/bin/ffmpeg2theora';
+
+//the oggCat path enables server side concatenation of encoded "chunks"
+$wgOggCat =  '/usr/local/bin/oggCat';
+
+//with oggCat installed then we can do jobs in "chunks"
+//and assemble on the server: (this way large encode jobs happen ~fast~)
+// $wgChunkDuration is set in seconds: (setting this too low will result in bad encodes)
+// $wgChunkDuration is only used if we have a valid $wgOggCat install
+$wgJobTypeConfig = array(
+	'transcode' => array(
+		//set chunk duration to zero to not split the file
+		'chunkDuration'=> 0,
+		// if the api should assign the job on the Special:WikiAtHome page
+		// (or via other external api scripts)
+		'assignAtHome' 	=> true,
+		'assignInternal'=> true
+	),
+	'flatten'=> array(
+		'chunkDuration'=> 10,
+		'assignAtHome' => true,
+		'assignInternal' => false
+	)
+);
+
+//time interval in seconds between clients asking the server for jobs.
+$wgClientSearchInterval = 60;
+
+//how long before considering a job ready to be assigned to others
+//note first "in" wins & if once time is up we decrement set_c
+$wgJobTimeOut = 60*10; //10 min
+
+//this sets how many copies of any given stream we should send out as part of a job
+$wgNumberOfClientsPerJobSet = 25;
+
+//what to encode to:
+$wgEnabledDerivatives = array(
+	WikiAtHome::ENC_SAVE_BANDWITH,
+	WikiAtHome::ENC_WEB_STREAM,
+	WikiAtHome::ENC_HQ_STREAM
+);
+
+//these params are set via firefogg encode options see:
+//http://firefogg.org/dev/index.html
+//if you want to re-derive things you should change its key above in the WikiAtHome class
+$wgDerivativeSettings[ WikiAtHome::ENC_SAVE_BANDWITH ] =
+		array(
+			'videoBitrate'		=> '128',
+			'audioBitrate'		=> '32',
+			'samplerate'		=> '22050',
+			'framerate'			=> '15',
+			'channels'			=> '1',
+			'maxSize'			=> '200',
+			'noUpscaling'		=> 'true',
+			'twopass'			=> 'true',
+			'keyframeInterval'	=> '64',
+			'bufDelay'			=> '128'
+		);
+$wgDerivativeSettings[ WikiAtHome::ENC_WEB_STREAM ] =
+		array(
+			'maxSize'			=> '400',
+			'videoBitrate'		=> '512',
+			'audioBitrate'		=> '96',
+			'noUpscaling'		=> 'true',
+			'twopass'			=> 'true',
+			'keyframeInterval'	=> '128',
+			'bufDelay'			=> '256'
+		);
+
+$wgDerivativeSettings[ WikiAtHome::ENC_HQ_STREAM ] =
+		array(
+			'maxSize' 		=> '1080',
+			'videoQuality'	=> 6,
+			'audioQuality'	=> 3,
+			'noUpscaling'	=> 'true'
+		);
 
 
 /*
@@ -189,7 +268,7 @@ function wahGetMediaJsonMeta( $path ){
 	wfProfileIn( 'ffmpeg2theora' );
 	$json_meta_str = wfShellExec( $cmd );
 	wfProfileOut( 'ffmpeg2theora' );
-	$objMeta = json_decode( $json_meta_str );
+	$objMeta = FormatJson::decode( $json_meta_str );
 	//if we return the same string then json_decode has failed in php < 5.2.6
 	//workaround for bug http://bugs.php.net/bug.php?id=45989
 	if( $objMeta == $json_meta_str )
@@ -216,84 +295,3 @@ function wahDoOggCat( $destFile, $oggList ){
 	}
 	return true;
 }
-
-/******************* CONFIGURATION STARTS HERE **********************/
-
-//ffmpeg2theora path: enables us to get basic source file information
-$wgffmpeg2theora = '/usr/bin/ffmpeg2theora';
-
-//the oggCat path enables server side concatenation of encoded "chunks"
-$wgOggCat =  '/usr/local/bin/oggCat';
-
-//with oggCat installed then we can do jobs in "chunks"
-//and assemble on the server: (this way no single slow client slows down
-//a video job)
-// $wgChunkDuration is set in seconds: (setting this too low will result in bad encodes)
-// $wgChunkDuration is only used if we have a valid $wgOggCat install
-$wgJobTypeConfig = array(
-	'transcode' => array(
-		//set chunk duration to zero to not split the file
-		'chunkDuration'=> 0,
-		// if the api should assign the job on the Special:WikiAtHome page
-		// (or via other external api scripts)
-		'assignAtHome' 	=> true,
-		'assignInternal'=> true
-	),
-	'flatten'=> array(
-		'chunkDuration'=> 10,
-		'assignAtHome' => true,
-		'assignInternal' => false
-	)
-);
-
-//time interval in seconds between clients asking the server for jobs.
-$wgClientSearchInterval = 60;
-
-//how long before considering a job ready to be assigned to others
-//note first "in" wins & if once time is up we decrement set_c
-$wgJobTimeOut = 60*10; //10 min
-
-//this sets how many copies of any given stream we should send out as part of a job
-$wgNumberOfClientsPerJobSet = 25;
-
-//what to encode to:
-$wgEnabledDerivatives = array(
-	WikiAtHome::ENC_SAVE_BANDWITH,
-	WikiAtHome::ENC_WEB_STREAM,
-	WikiAtHome::ENC_HQ_STREAM
-);
-
-//these params are set via firefogg encode options see:
-//http://firefogg.org/dev/index.html
-//if you want to re-derive things you should change its key above in the WikiAtHome class
-$wgDerivativeSettings[ WikiAtHome::ENC_SAVE_BANDWITH ] =
-		array(
-			'videoBitrate'		=> '128',
-			'audioBitrate'		=> '32',
-			'samplerate'		=> '22050',
-			'framerate'			=> '15',
-			'channels'			=> '1',
-			'maxSize'			=> '200',
-			'noUpscaling'		=> 'true',
-			'twopass'			=> 'true',
-			'keyframeInterval'	=> '64',
-			'bufDelay'			=> '128'
-		);
-$wgDerivativeSettings[ WikiAtHome::ENC_WEB_STREAM ] =
-		array(
-			'maxSize'			=> '400',
-			'videoBitrate'		=> '512',
-			'audioBitrate'		=> '96',
-			'noUpscaling'		=> 'true',
-			'twopass'			=> 'true',
-			'keyframeInterval'	=> '128',
-			'bufDelay'			=> '256'
-		);
-
-$wgDerivativeSettings[ WikiAtHome::ENC_HQ_STREAM ] =
-		array(
-			'maxSize' 		=> '1080',
-			'videoQuality'	=> 6,
-			'audioQuality'	=> 3,
-			'noUpscaling'	=> 'true'
-		);

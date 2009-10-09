@@ -53,7 +53,7 @@ function doJobLoop(){
 	}
 
 	$jobSet = WahJobManager ::getJobSetById( $job->job_set_id );
-	$jobDetails = json_decode( $job->job_json ) ;
+	$jobDetails = FormatJson::decode( $job->job_json ) ;
 
 	//get the title (so we can access the source file)
 	$fTitle = Title::newFromText( $job->title, $job->ns );

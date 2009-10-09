@@ -354,7 +354,7 @@ class WahJobManager {
 				array(
 					'job_set_id' 	=> $this->sId,
 					'job_order_id'	=> 0,
-					'job_json'	 	=> wfJsonEncode( $jobJsonAry )
+					'job_json'	 	=> FormatJson::encode( $jobJsonAry )
 				);
 		}else{
 			for( $i=0 ; $i < $set_job_count; $i++ ){
@@ -366,7 +366,7 @@ class WahJobManager {
 					array(
 						'job_set_id' 	=> $this->sId,
 						'job_order_id'	=> $i,
-						'job_json'	 	=> wfJsonEncode( $jobJsonAry )
+						'job_json'	 	=> FormatJson::encode( $jobJsonAry )
 					);
 			}
 		}

@@ -60,7 +60,7 @@ class ApiWikiAtHome extends ApiBase {
 		}else{
 			$job4Client = array();
 			//unpack the $job_json
-			$job4Client['job_json'] 	= json_decode( $job->job_json ) ;
+			$job4Client['job_json'] 	= FormatJson::decode( $job->job_json ) ;
 			//we set the job key to job_id _ sha1
 			$job4Client['job_key'] 		= $job->job_id . '_'. sha1( $job->job_json );
 			$job4Client['job_title']	= $job->title;
