@@ -1057,7 +1057,7 @@ class DefinedMeaningHeaderEditor extends ScalarEditor {
 		$escapedDefinition = htmlspecialchars( $definition );
 
 		if ( $this->truncate && strlen( $definition ) > $this->truncateAt )
-			$escapedDefinition = '<span title="' . $escapedDefinition . '">' . htmlspecialchars( mb_substr( $definition, 0, $this->truncateAt ) ) . '...</span>' . EOL;
+			$escapedDefinition = '<span title="' . $escapedDefinition . '">' . htmlspecialchars( mb_substr( $definition, 0, $this->truncateAt ) ) . wfMsg( 'ellipsis' ) . '</span>' . EOL;
 			
 		return $definedMeaningAsLink . ": " . $escapedDefinition;
 	}
@@ -1108,7 +1108,7 @@ class TextEditor extends ScalarEditor {
 		if ( !$this->truncate || strlen( $value ) <= $this->truncateAt )
 			return $escapedValue;// $parserOutput->getText();
 		else
-			return '<span title="' . $escapedValue . '">' . htmlspecialchars( substr( $value, 0, $this->truncateAt ) ) . '...</span>' . EOL;
+			return '<span title="' . $escapedValue . '">' . htmlspecialchars( substr( $value, 0, $this->truncateAt ) ) . wfMsg( 'ellipsis' ) . '</span>' . EOL;
 	}
 
 	public function getEditHTML( IdStack $idPath, $value ) {
