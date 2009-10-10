@@ -27,7 +27,7 @@ loadGM({
 	"wah-uploadfail" : "Uploading failed",
 	"wah-doneuploading" : "Upload complete. Thank you for your contribution.",
 
-	"wah-needs-firefogg": "To participate in Wiki@Home you need to install Firefogg."
+	"wah-needs-firefogg": "To participate in Wiki@Home you need to install Firefogg.",
 
 	"wah-api-error" : "There has been an error with the API. Please try back later."
 
