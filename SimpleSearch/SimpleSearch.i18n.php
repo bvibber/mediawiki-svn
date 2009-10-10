@@ -71,10 +71,12 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author DCLXVI
  * @author Spiritia
  */
 $messages['bg'] = array(
 	'simplesearch' => 'Просто търсене',
+	'simplesearch-search' => 'Търсене',
 );
 
 /** Bengali (বাংলা)
