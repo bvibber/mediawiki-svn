@@ -4,7 +4,7 @@
 loadGM({
 	"wah-menu-jobs" : "Jobs",
 	"wah-menu-stats": "Stats",
-	"wah-menu-pref" : "Prefrences",
+	"wah-menu-pref" : "Preferences",
 	"wah-loading" : "loading Wiki@Home interface <blink>...</blink>",
 
 	"wah-lookingforjob" : "Looking For a job <blink>...</blink>",
@@ -94,7 +94,7 @@ var WikiAtHome = {
 						if(_this.assinedJob){
 							_this.proccessJob();
 						}else{
-							//update interface that nothing is avalible (look again in 60 seconds)
+							//update interface that nothing is available (look again in 60 seconds)
 						}
 					}
 				}
@@ -116,7 +116,7 @@ var WikiAtHome = {
 		listHtml+='</ul>';
 		contHtml+='</div>';
 		$j( _this.wah_container ).html( listHtml +  contHtml );
-		//apply bidings
+		//apply bindings
 		$j('#wah-tabs').tabs({
 			select: function(event, ui) {
 				//_this.selectTab( $j(ui.tab).attr('id').replace('rsd_tab_', '') );
@@ -126,14 +126,14 @@ var WikiAtHome = {
 		//set pref initial layout
 		$j('#tab-pref').html(
 			'<h2>' + gM('wah-menu-pref') + '</h2>' +
-			'<i>These prefrences are not yet active</i>' +
+			'<i>These preferences are not yet active</i>' +
 			'<ul>' +
 				'<li><input type="checkbox">' + gM('wah-start-on-visit') + '</li>' +
 				'<li><input type="checkbox">' + gM('wah-jobs-while-away') + '</li>' +
 			'</ul>'
 		);
 
-		//set the initail stats layout
+		//set the initial stats layout
 		$j('#tab-stats').html(
 			'<h2>Some Cool Visual Stats Go here!</h2>'
 		)
@@ -142,7 +142,7 @@ var WikiAtHome = {
 		$j('#tab-jobs').html(
 			'<h2 class="wah-gen-status"></h2>' +
 			'<div class="progress-bar" style="width:400px;height:20px;"></div>' +
-			'<div class="prograss-status" ></div>'
+			'<div class="progress-status" ></div>'
 		 );
 
 		//make sure we have firefogg
@@ -158,12 +158,12 @@ var WikiAtHome = {
 
 			//if we don't have 3.5 firefox update link:
 			if(!($j.browser.mozilla && $j.browser.version >= '1.9.1')) {
-				$j('#tab-jobs .prograss-status').html(
+				$j('#tab-jobs .progress-status').html(
 					gM('fogg-use_latest_fox')
 				);
 			}else{
 				//do firefogg install links:
-				$j('#tab-jobs .prograss-status').html(
+				$j('#tab-jobs .progress-status').html(
 					gM('fogg-please_install', _this.myFogg.getOSlink() )
 				);
 			}
@@ -230,7 +230,7 @@ var WikiAtHome = {
 		//set the jobKey:
 		_this.jobKey = job.job_key;
 
-		//start proccessing the work flow based on work type
+		//start processing the work flow based on work type
 		if( job.job_json.jobType == 'transcode' ){
 			//download the source footage
 			_this.doTranscodeJob( job );
@@ -263,7 +263,7 @@ var WikiAtHome = {
 					//loop update:
 					setTimeout(updateDownloadState, 100);
 				}else if( _this.fogg.state == 'downloaded'){
-						js_log('downloaded is done, run encode:' + JSON.stringify( job.job_json.encodeSettings ) );
+						js_log('download is done, run encode:' + JSON.stringify( job.job_json.encodeSettings ) );
 						//we can now issue the encode call
 						_this.fogg.encode(
 							JSON.stringify(
@@ -301,7 +301,7 @@ var WikiAtHome = {
 				}else if( _this.fogg.state == 'encoding failed'){
 					js_log('encoding failed');
 					//maybe its time to refresh the window?
-					$j('#tab-jobs .prograss-status').html(
+					$j('#tab-jobs .progress-status').html(
 						gM( 'wah-encoding-fail' )
 					);
 					return false;
@@ -322,16 +322,17 @@ var WikiAtHome = {
 							   js_log("could not parse uploadstatus / could not get responseText");
 						   }
 					}
+					js_log("got upload response:: " + response_text);
 					//see if we can parse the result
 					try{
 						resultObj = JSON.parse( response_text );
 					}catch(e){
 						js_log("could not parse result of upload :: " +response_text);
 					}
-
+					
 
 					//congratulate the user and issue new job request
-					$j('#tab-jobs .prograss-status').html(
+					$j('#tab-jobs .progress-status').html(
 						gM( 'wah-doneuploading' )
 					);
 					//reset the progress bar:
@@ -340,12 +341,12 @@ var WikiAtHome = {
 					var getNextTranscodeJob = function(){
 						_this.lookForJob( job.job_set_id );
 					}
-					//display the msg for 3 seconds
-					setTimeout(getNextTranscodeJob, 3000);
+					//display the msg for 10 seconds
+					setTimeout(getNextTranscodeJob, 10000);
 
 					return true;
-				}else if( _this.fogg.state == 'uplaod failed'){
-					$j('#tab-jobs .prograss-status').html(
+				}else if( _this.fogg.state == 'upload failed'){
+					$j('#tab-jobs .progress-status').html(
 						gM( 'wah-uploadfail' )
 					);
 				}
@@ -357,7 +358,7 @@ var WikiAtHome = {
 		//for transcode jobs we have to download (unless we already have the file)
 
 	},
-	updateProgress: function(perc, msgKey){
+	updateProgress: function( perc, msgKey ){
 		//get percent done with 2 decimals
 		var percDone = (perc == 0 ) ? '0': Math.round(perc * 10000) /100;
 		//update progress bar
@@ -366,7 +367,7 @@ var WikiAtHome = {
 			Math.round( percDone )
 		);
 		//update status
-		$j('#tab-jobs .prograss-status').html(
+		$j('#tab-jobs .progress-status').html(
 			gM(msgKey, percDone)
 		);
 	}
