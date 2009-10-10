@@ -21,6 +21,7 @@ body.skin-modern div#p-DONATE div.pBody {
 /* Vector Style */
 body.skin-vector div#p-DONATE {
 	padding-top: 0;
+	margin-bottom: 0.6em;
 }
 body.skin-vector div#p-DONATE h5 {
 	display: none;
