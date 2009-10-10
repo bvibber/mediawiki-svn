@@ -371,12 +371,15 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author DCLXVI
  * @author Spiritia
  */
 $messages['bg'] = array(
 	'optin-title-optedout' => 'Изпробвайте Бета',
 	'optin-accept-long' => 'Изпробвайте Бета',
 	'optin-accept-long-anon' => 'Влезте в системата и изпробвайте Бета',
+	'optin-survey-yes' => 'Да',
+	'optin-survey-no' => 'Не',
 	'optin-survey-intro' => 'Благодарим ви, че изпробвахте Бета. Бихме искали да знаем какво мислите за новия ни интерфейс и ще се радваме, ако решите да отговорите на въпросите от проучването по-долу, като щракнете на връзката "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-question-likedislike' => 'Какво ви допадна в Бета? Какво не ви хареса?',
 	'optin-survey-question-whyoptout' => 'Защо излизате от Бета? (Моля, изберете всички подходящи отговори.)',
@@ -3269,7 +3272,7 @@ $messages['ml'] = array(
 == എപ്രകാരം പങ്കെടുക്കാം ==
 പദ്ധതിയെക്കുറിച്ച് കൂടുതൽ അറിയാനും, പങ്കാളിത്ത സാധ്യത ആരായാനും ദയവായി [http://usability.wikimedia.org യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് വിക്കി] സന്ദർശിക്കുക. അവിടെ ഞങ്ങളുടെ പണസ്രോതസ്സുകൾ, ഗവേഷണങ്ങൾ, രൂപകല്പനയും + വികസിപ്പിക്കലും, പതിപ്പുകൾ തുടങ്ങിയവയുടെ വിവരങ്ങൾ ലഭ്യമാണ്. ചോദ്യങ്ങൾ ചോദിക്കാനോ, സാധാരണ അഭിപ്രായം അറിയിക്കാനോ ദയവായി ഞങ്ങളുടെ [http://usability.wikimedia.org/wiki/Talk:Prototype പ്രോട്ടോടൈപ്പ് സംവാദം താൾ] ഉപയോഗിക്കുക. എന്തെങ്കിലും പ്രത്യേക കാര്യത്തെ കുറിക്കാൻ ബന്ധപ്പെട്ട സംവാദം താൾ ഉപയോഗിക്കുക. താങ്കൾ ബഗ്ഗ് വല്ലതും കണ്ടെത്തിയാൽ ദയവായി [http://usability.wikimedia.org/wiki/Talk:Releases/Acai അകായ് റിലീസ് സം‌‌വാദം താളിൽ] നൽകുക, അല്ലങ്കിൽ [https://bugzilla.wikimedia.org ബഗ്സില്ല] ഉപയോഗിക്കുക.
 
-നന്ദി, താങ്കളുടെ അഭിപ്രായം അറിയാൻ ഞങ്ങൾ കാത്തിരിക്കുന്നു!',
+താങ്കളുടെ അഭിപ്രായം അറിയാൻ ഞങ്ങൾ കാത്തിരിക്കുന്നു! നന്ദി.',
 );
 
 /** Mongolian (Монгол)
@@ -3949,22 +3952,22 @@ Chcielibyśmy poznać Twoją opinię dotyczącą nowego interfejsu, w związku z
 	'optin-survey-answer-changes-predictability' => 'Poprawienie przewidywalności zmian.',
 	'optin-survey-answer-changes-custom' => 'Umożliwienie lepszego dostosowania do indywidualnych potrzeb użytkownika.',
 	'optin-survey-answer-changes-other' => 'Inne',
-	'optin-improvements' => '== Co zostało poprawione? ==
-[[File:UsabilityNavigation.png|left|link=]]
-;Poprawiono nawigację
-Nowy sposób nawigacji umożliwia łatwiejsze zorientowanie się w aktualnym położeniu oraz wykonywanej czynności, jak również gdzie można się udać i jak tam dotrzeć. Umieszczenie wyszukiwania w prawym górnym rogu strony ułatwiło i przyspieszyło do niego dostęp.
+	'optin-improvements' => '== Co poprawiliśmy? ==
+[[File:UsabilityNavigation.png|left|link=|Widok ekranu przedstawiający nowe zakładki nawigacyjne]]
+;Rozbudowana nawigacja
+Nowy sposób nawigacji umożliwia łatwiejsze zorientowanie się w aktualnym położeniu oraz wykonywanej czynności, jak również gdzie można się udać i jak tam dotrzeć. Umieszczenie wyszukiwania w prawym górnym rogu strony ułatwiło i przyspieszyło do niej dostęp.
 <div style="clear:both;"></div> 
 
-[[File:UsabilityToolbar.png|left|link=]]
-;Poprawiono pasek narzędzi edycyjnych
-Nowe ikony, czytelniejsze i lepiej dopasowane do narzędzi. Rozwijalny kliknięciem pasek narzędzi zmniejsza bałagan ukrywając ikony rzadko wykorzystywanych narzędzi.
-Sekcja pomocy  umożliwia szybki dostęp do pomocy kontekstowej dla często wykorzystywanych znaczników wiki.
+[[File:UsabilityToolbar.png|left|link=|Widok ekranu przedstawiający nową belkę narzędzi edycyjnych]]
+;Nowe funkcjonalności belki narzędzi edycyjnych
+Nowe ikony, czytelniejsze i lepiej dopasowane do narzędzi. Rozwijana kliknięciem sekcja paska narzędzi zmniejsza bałagan ukrywając ikony rzadko wykorzystywanych narzędzi.
+Narzędzie pomocy  umożliwia szybki dostęp do pomocy kontekstowej dla często wykorzystywanych znaczników wiki.
 <div style="clear:both;"></div>
 
-== Jak można pomóc? ==
+== Jak możesz pomóc? ==
 Aby dowiedzieć się więcej o projekcie lub wziąć w nim udział odwiedź witrynę [http://usability.wikimedia.org projektu użyteczności wiki]. Odnajdziesz tam informacje o tym jak nas wesprzeć finansowo, w badaniach, projektowaniu, rozwoju oraz wydawaniu wersji. Pytania można zadawać poprzez ogólny system opiniowania, używając [http://usability.wikimedia.org/wiki/Talk:Prototype prototypowej strony dyskusji]. Konkretne problemy należy poruszać na powiązanych stronach dyskusji. Odnalezione błędy należy zgłaszać pozostawiając komentarz na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai stronie dyskusji wersji Acai] lub korzystając z [https://bugzilla.wikimedia.org Bugzilli].
 
-Dziękujemy i zapraszamy!',
+Dziękujemy i czekamy na Twoje komentarze!',
 );
 
 /** Pashto (پښتو)
@@ -4775,7 +4778,7 @@ $messages['te'] = array(
 	'optin-title-justoptedout' => 'బీటాను ప్రయత్నిస్తున్నందుకు ధన్యవాదాలు',
 	'optin-title-feedback' => 'బీటా పై అభిప్రాయాలు',
 	'optin-needlogin' => 'బీటాను ప్రయత్నించడం కోసం [$1 log in] కావాలి',
-	'optin-intro' => 'వికీపీడీయా వాడుక సౌలభ్యాన్ని పెంచేందుకు కొన్ని ప్రయత్నాలు జరుగుతున్నాయి. దానికి సంబంధించిన బీటాను ప్రయత్నిస్తారా?',
+	'optin-intro' => 'వికీపీడీయా యొక్క ఉపయోగశీలతను మెరుగుపరిచేందుకు కొన్ని ప్రయత్నాలు జరుగుతున్నాయి. దానికి సంబంధించిన బీటాను ప్రయత్నిస్తారా?',
 	'optin-feedback-intro' => 'బీటాను ప్రయత్నించినందుకు ధన్యవాదాలు.
 ఈ కొత్త ఇంటర్‌ఫేస్ గురించి మీ అభిప్రాయాలేమిటో మేము తెలుసుకొనదలచాము. క్రిందనున్న అభిప్రాయ సేకరణలో పాలుపంచుకోండి.',
 	'optin-feedback-back' => 'మీకు ఈ అభిప్రాయ సేకరణలో పాలుపంచుకోవడం ఇష్టం లేకపోతే $1 కి తిరిగి వెళ్ళవచ్చు.',

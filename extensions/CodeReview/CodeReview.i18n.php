@@ -319,7 +319,7 @@ $4',
 	'repoadmin-edit-path' => "Camín d'o reposte",
 	'repoadmin-edit-bug' => 'Camín de Bugzilla:',
 	'repoadmin-edit-view' => 'Camín de ViewVC:',
-	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-button' => "D'alcuerdo",
 	'repoadmin-edit-sucess' => 'O reposte "[[Special:Code/$1|$1]]" s\'ha modificato correutament.',
 	'right-repoadmin' => 'Chestionar repostes de codigo',
 	'right-codereview-add-tag' => 'Adibir nuebas etiquetas a las bersions',
@@ -4003,6 +4003,7 @@ $4',
  * @author Malafaya
  */
 $messages['ka'] = array(
+	'code-old-status' => 'ძველი სტატუსი',
 	'code-notes' => 'ბოლო კომენტარები',
 	'code-authors' => 'ავტორები',
 	'code-field-author' => 'ავტორი',
@@ -4014,10 +4015,12 @@ $messages['ka'] = array(
 	'code-rev-message' => 'კომენტარი:',
 	'code-rev-modified-a' => 'დაემატა',
 	'code-rev-modified-d' => 'წაშლილი',
+	'code-rev-status' => 'სტატუსი:',
 	'code-rev-diff' => 'განსხ',
 	'code-rev-diff-link' => 'განსხ.',
 	'code-status-new' => 'ახალი',
 	'code-rev-submit' => 'ცვლილებების შენახვა',
+	'code-batch-status' => 'სტატუსის შეცვლა:',
 	'codereview-reply-link' => 'პასუხი',
 );
 
@@ -5669,9 +5672,11 @@ $messages['pt'] = array(
 	'code-no-repo' => 'Nenhum repositório configurado!',
 	'code-load-diff' => 'A carregar diferenças…',
 	'code-notes' => 'comentários recentes',
+	'code-statuschanges' => 'alterações de estado',
 	'code-authors' => 'autores',
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
+	'code-tests' => 'Baterias de testes',
 	'code-authors-text' => 'Abaixo encontra-se uma lista de autores do repositório por ordem das efectivações recentes. Contas do wiki locais são mostrados entre parênteses.',
 	'code-author-haslink' => 'Este autor está associado ao utilizador de wiki $1',
 	'code-author-orphan' => 'Este autor não está associado a nenhuma conta wiki',
@@ -5753,6 +5758,14 @@ $4',
 URL completo: $3
 
 Sumário da submissão: $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Testes automáticos detetaram regressão',
+	'codereview-email-body3' => 'Testes automáticos revelaram uma regressão devido às alterações em r$1.
+
+URL completa: $2
+
+Sumário de efetivação:
+
+$3',
 	'repoadmin' => 'Administração de Repositório',
 	'repoadmin-new-legend' => 'Criar um novo repositório',
 	'repoadmin-new-label' => 'Nome do repositório:',

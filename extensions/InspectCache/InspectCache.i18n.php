@@ -63,6 +63,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'inspectcache-ok' => "D'alcuerdo",
+	'inspectcache-delete' => 'Borrar',
 );
 
 /** Arabic (العربية)

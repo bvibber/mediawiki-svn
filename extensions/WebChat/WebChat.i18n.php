@@ -71,6 +71,14 @@ $messages['be-tarask'] = array(
 	'right-webchat' => 'карыстаньне [[Special:WebChat|ўэб-чатам]]',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'webchat' => 'Уеб чат',
+	'webchat-desc' => 'Добавя [[Special:WebChat|специална страница]], която се използва за чат в реално време с другите потребители на уикито',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

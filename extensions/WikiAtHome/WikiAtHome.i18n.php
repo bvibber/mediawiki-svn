@@ -178,10 +178,13 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author DCLXVI
  * @author Spiritia
  */
 $messages['bg'] = array(
 	'wah-transcode-working' => 'Видеото се обработва. Моля, опитайте пак по-късно.',
+	'wah-javascript-off' => 'За да участвате в Wiki@Home е необходимо браузърът ви да е с включена поддръжка на Джаваскрипт.',
+	'wah-loading' => 'зареждане на интерфейса на Wiki@Home <blink>...</blink>',
 	'wah-notoken-login' => 'Влязохте ли в системата? Ако не, моля, първо влезте с потребителското си име.',
 	'wah-downloading' => 'Свалянето на файла <i>$1%</i> завърши',
 	'wah-encoding' => 'Кодирането на файла <i>$1%</i> завърши',

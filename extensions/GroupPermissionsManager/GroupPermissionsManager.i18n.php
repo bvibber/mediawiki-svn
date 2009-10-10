@@ -137,6 +137,13 @@ $messages['am'] = array(
 	'grouppermissions-comment' => 'ማጠቃለያ፦',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'grouppermissions-sp-save' => 'Alzar',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

@@ -192,6 +192,7 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'ajax-se-desc' => "Yn dangos i ddefnyddwyr sydd wrthi'n golygu enwau'r rhai eraill sydd hefyd yn golygu'r un dudalen",
 	'ajax-se-title' => "Wrthi'n golygu:",
 	'ajax-se-idling' => '($1 eiliad yn ôl)',
 	'ajax-se-pagedoesnotexist' => "nid yw'r dudalen ar gael",

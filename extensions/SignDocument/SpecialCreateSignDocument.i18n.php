@@ -782,6 +782,8 @@ $messages['hu'] = array(
 	'createsigndoc-create' => 'Létrehozás',
 	'createsigndoc-error-generic' => 'Hiba: $1',
 	'createsigndoc-error-pagenoexist' => 'Hiba: nincs [[$1]] nevű lap.',
+	'createsigndoc-success' => 'A dokumentum aláírása sikeresen engedélyezve itt: [[$1]].
+[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} Tesztelheted].',
 	'createsigndoc-error-alreadycreated' => 'A(z) „$1” dokumentum-aláírás már létezik.
 Ezt nem lehet újból megtenni.',
 );

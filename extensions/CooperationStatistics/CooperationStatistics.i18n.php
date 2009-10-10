@@ -521,6 +521,16 @@ Varda ëdcò le [[Special:MostRevisors|'''pàgine con pì revisor''']] e le [[Sp
 	'cooperationstatistics-legendmore' => 'o pì autor.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'cooperationstatistics-tablearticle' => 'Número de páginas',
+	'cooperationstatistics-tablevalue' => 'Número de editores',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|página|páginas}}',
+	'cooperationstatistics-legendmore' => 'ou mais editores.',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

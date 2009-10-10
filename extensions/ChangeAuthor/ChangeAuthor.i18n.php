@@ -1584,7 +1584,11 @@ $messages['pms'] = array(
 	'changeauthor-pagenameform-go' => 'Va',
 	'changeauthor-comment' => 'Coment:',
 	'changeauthor-changeauthors-multi' => 'Cambia {{PLURAL:$1|autor|autor}}',
+	'changeauthor-explanation-multi' => 'Con sta forma-sì it peule cambié j\'autor ëd la revision.
+Cambia un o pì nòm utent ant la lista sota, gionta un coment (opsional) e sgnaca ël boton "Cambia autor".',
 	'changeauthor-changeauthors-single' => 'Cambia autor',
+	'changeauthor-explanation-single' => 'Con sta forma-sì it peule cambié l\'autor ëd na revision.
+Cambia ël nòm utent sota, gionta un coment (opsional) e sgnaca ël boton "Cambia autor".',
 );
 
 /** Pashto (پښتو)

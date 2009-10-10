@@ -272,6 +272,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'usagestatistics-desc' => 'Показване на статистика за отделни потребители или за цялото уики',
 	'usagestatisticsinterval' => 'Интервал:',
+	'usagestatisticsnamespace' => 'Именно пространство:',
 	'usagestatisticstype' => 'Вид',
 	'usagestatisticsstart' => 'Начална дата:',
 	'usagestatisticsend' => 'Крайна дата:',

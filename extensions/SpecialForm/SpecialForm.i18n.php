@@ -72,6 +72,13 @@ $messages['af'] = array(
 	'formsave' => 'Stoor',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'formsave' => 'Alzar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

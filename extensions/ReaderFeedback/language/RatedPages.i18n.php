@@ -557,6 +557,13 @@ $messages['sv'] = array(
 	'ratedpages-graphs' => 'betygsdata',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'ratedpages-count' => '$1 {{PLURAL:$1|సమీక్ష|సమీక్షలు}}',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

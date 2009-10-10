@@ -327,6 +327,7 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'navigabletoc' => 'Nawigacyjny spis treści',
 	'navigabletoc-desc' => 'Przewija tekst w formularzu edycji, jeśli zostanie kliknięty kliknięty tytuł sekcji w dodanym do formularza spisie treści',
+	'navigabletoc-preference' => 'Włącz umożliwiający nawigację spis treści',
 );
 
 /** Piedmontese (Piemontèis)

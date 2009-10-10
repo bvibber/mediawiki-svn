@@ -1272,6 +1272,23 @@ $messages['mk'] = array(
 	'specialpages-group-feedback' => 'Мислења од гледачите',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'readerfeedback-completeness' => 'പൂർണ്ണത',
+	'readerfeedback-npov' => 'നിഷ്പക്ഷത',
+	'readerfeedback-presentation' => 'പ്രദർശനഗുണം',
+	'readerfeedback-overall' => 'എല്ലാംകൂടി',
+	'readerfeedback-level-none' => '(ഉറപ്പില്ല)',
+	'readerfeedback-level-0' => 'ദരിദ്രം',
+	'readerfeedback-level-1' => 'മോശം',
+	'readerfeedback-level-2' => 'കൊള്ളാം',
+	'readerfeedback-level-3' => 'ഉന്നതം',
+	'readerfeedback-level-4' => 'ഒന്നാന്തരം',
+	'readerfeedback-submit' => 'സമർപ്പിക്കുക',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */
@@ -1479,9 +1496,9 @@ $messages['pl'] = array(
 	'readerfeedback-level-4' => 'bardzo dobrze',
 	'readerfeedback-submit' => 'Oznacz',
 	'readerfeedback-main' => 'Tylko strony z treścią mogą być oceniane.',
-	'readerfeedback-success' => "'''Dziękujemy za ocenę tej strony!''' ([$3 Komentarze lub pytania?]).",
-	'readerfeedback-voted' => "'''Tę stronę prawdopodobnie już oceniałeś''' ([$3 Komentarze lub pytania?]).",
-	'readerfeedback-error' => "'''Podczas oceniania tej strony wystąpił błąd''' ([$3 komentarze lub pytania?]).",
+	'readerfeedback-success' => "'''Dziękujemy za ocenę strony!''' ([$2 wyniki]) ([$3 uwagi lub pytania]).",
+	'readerfeedback-voted' => "'''Tę stronę prawdopodobnie już oceniałeś''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
+	'readerfeedback-error' => "'''Podczas oceniania strony wystąpił błąd''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-submitting' => 'Zapisywanie...',
 	'readerfeedback-finished' => 'Dziękujemy!',
 	'readerfeedback-tagfilter' => 'Znacznik',

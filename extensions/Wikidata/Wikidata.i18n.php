@@ -483,7 +483,8 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'datasearch' => 'Wikidata: Mirar datos',
-	'ow_dm_OK' => 'OK',
+	'ow_save' => 'Alzar',
+	'ow_dm_OK' => "D'alcuerdo",
 );
 
 /** Arabic (العربية)

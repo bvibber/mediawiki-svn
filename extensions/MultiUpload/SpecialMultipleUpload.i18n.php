@@ -278,7 +278,13 @@ Nevhodné soubory budou okmažitě smazány, vizte [[{{MediaWiki:Multipleupload-
 $messages['cy'] = array(
 	'multipleupload' => 'Uwchlwytho nifer o ffeiliau',
 	'multipleupload-desc' => 'Yn galluogi defnyddiwr i [[Special:MultipleUpload|uwchlwytho nifer o ffeiliau ar unwaith]]',
+	'multipleupload-ignoreallwarnings' => "Anwybydder '''pob rhybudd''' gan roi'r ffeiliau ar gadw beth bynnag.",
 	'multipleupload-saveallfiles' => "Rhoi'r holl ffeiliau ar gadw",
+	'multipleupload-page' => '{{ns:project}}:Polisi dileu ffeiliau',
+	'multiupload-fileuploaded' => 'Uwchlwythwyd ffeil.',
+	'multiupload-toolbox' => 'Uwchlwytho nifer o ffeiliau ar y tro',
+	'multiupload-no-files' => "Dewiswch o leiaf un ffeil i'w huwchlwytho",
+	'multiupload-blank' => 'Heb ddewis unrhyw ffeiliau',
 );
 
 /** Danish (Dansk)

@@ -439,6 +439,13 @@ $messages['ja'] = array(
 	'communityvoice-ratings-error-no-title' => 'rating タグに title 属性が欠けています。',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'იგზავნება...',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author វ័ណថារិទ្ធ
  */

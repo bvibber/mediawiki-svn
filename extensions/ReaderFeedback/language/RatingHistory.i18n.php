@@ -1716,6 +1716,8 @@ Skala: '''[1]''' - Mycket dålig; '''[2]''' - Dålig; '''[3]''' - Okej; '''[4]''
  */
 $messages['te'] = array(
 	'ratinghistory' => 'పేజీ రేటింగు చరిత్ర',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">ఈ పేజీని సమీక్షించడానికి సమయం వెచ్చించినందుకు ధన్యవాదాలు!</font>''",
+	'ratinghistory-period' => 'కాల వ్యవధి:',
 	'ratinghistory-month' => 'గత నెల',
 	'ratinghistory-3months' => 'గత 3 నెలలు',
 	'ratinghistory-year' => 'గత సంవత్సరం',

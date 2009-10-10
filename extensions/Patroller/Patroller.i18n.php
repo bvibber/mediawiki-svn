@@ -89,12 +89,13 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'patrol' => 'تعديلات مراجعة',
 	'patrol-desc' => 'واجهة مراجعة محسنة مع تشارك ضغط العمل',
 	'patrol-endorse' => 'تأكيد',
-	'patrol-revert' => 'استرجاع',
+	'patrol-revert' => 'استرجع',
 	'patrol-revert-reason' => 'السبب:',
 	'patrol-skip' => 'تجاهل',
 	'patrol-reverting' => 'استرجاع: $1',

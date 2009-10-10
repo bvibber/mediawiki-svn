@@ -192,6 +192,13 @@ $messages['am'] = array(
 	'openidlanguage' => 'ቋንቋ',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'openid-urls-delete' => 'Borrar',
+);
+
 /** Arabic (العربية)
  * @author ;Hiba;1
  * @author Meno25
@@ -3546,7 +3553,10 @@ Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua c
 
 Existems vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de OpenID], e você poderá já ter uma conta ativada para OpenID noutro serviço.',
 	'openidupdateuserinfo' => 'Atualizar a minha informação pessoal',
+	'openiddelete' => 'Eliminar OpenID',
 	'openiddelete-button' => 'Confirmar',
+	'openiddelete-sucess' => 'O OpenID foi removido da sua conta com sucesso.',
+	'openiddelete-error' => 'Ocorreu um erro ao remover o OpenID da sua conta.',
 	'openid-prefstext' => 'Preferências do [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Esconder o seu OpenID na sua página de utilizador, se se autenticar com OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Atualizar a seguinte informação a partir da minha "persona" OpenID de cada vez que me autentico:',

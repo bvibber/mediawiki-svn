@@ -216,6 +216,7 @@ $messages['cs'] = array(
 $messages['de'] = array(
 	'clicktracking' => 'Benutzerfreundlichkeitsinitiative Klickverfolgung',
 	'clicktracking-desc' => 'Klickverfolgung, gedacht für die Aufzeichnung von Aktionen, die nicht zu einer Seitenaktualisierung führen',
+	'ct-title' => 'Gesamtsumme aller Benutzerklicks',
 	'ct-event-name' => 'Ereignisname',
 	'ct-expert-header' => 'Expertenklicks',
 	'ct-intermediate-header' => 'Klicks von Mittleren',
@@ -223,6 +224,7 @@ $messages['de'] = array(
 	'ct-total-header' => 'Gesamtklicks',
 	'ct-start-date' => 'Start (JJJJMMTT)',
 	'ct-end-date' => 'Ende (JJJJMMTT)',
+	'ct-increment-by' => 'Anzahl der Tage, die von jedem Datenpunkt repräsentiert werden',
 	'ct-change-graph' => 'Grafik ändern',
 	'ct-beginner' => 'Anfänger',
 	'ct-intermediate' => 'Mittlere',
@@ -948,6 +950,9 @@ $messages['sah'] = array(
 	'ct-beginner' => 'Саҥа кыттааччы',
 	'ct-intermediate' => 'Бороохтуйбут кыттааччы',
 	'ct-expert' => 'Эксперт',
+	'ct-date-range' => 'Күн-дьыл диапазона',
+	'ct-anon-users' => 'Ааттамматах кыттааччылар',
+	'ct-and' => 'уонна',
 );
 
 /** Slovak (Slovenčina)
@@ -982,6 +987,10 @@ $messages['sl'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'ct-total-header' => 'మొత్తం నొక్కులు',
+	'ct-start-date' => 'ప్రారంభ తేదీ (YYYYMMDD)',
+	'ct-end-date' => 'ముగింపు తేదీ (YYYYMMDD)',
+	'ct-anon-users' => 'అజ్ఞాత వాడుకరులు',
 	'ct-and' => 'మరియు',
 );
 

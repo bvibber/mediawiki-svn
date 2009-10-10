@@ -414,10 +414,21 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'security' => 'Biztonsági napló',
+	'security-desc' => 'Kiterjeszti a MediaWiki lapvédelem funkcióját, lehetővé teszi a lapok olvasásának korlátozását',
 	'security-logpage' => 'Biztonsági napló',
+	'security-logpagetext' => 'Azon műveletek naplója, amelyeket a [http://www.mediawiki.org/wiki/Extension:SimpleSecurity SimpleSecurity kiterjesztés] blokkolt.',
+	'badaccess-read' => "'''Figyelmeztetés:''' „$1” ide hivatkozott, de nincs jogosultságod a lap olvasására.",
+	'security-info' => '$1 vannak ezen a lapon',
 	'security-info-toggle' => 'biztonsági megkötések',
+	'security-inforestrict' => '$1 korlátozva a(z) $2 tagjaira',
+	'security-desc-LS' => '(érvényes, mivel ez a lap a(z) „$2 $1” része)',
+	'security-desc-PR' => '(beállítva a „lapvédelem” fülről)',
+	'security-infosysops' => 'Nincsenek érvényben levő korlátozások, mert tagja vagy a „sysop” csoportnak',
+	'security-manygroups' => '$1 és $2 csoportok',
+	'security-unchain' => 'Műveletek módosítása egyenként',
 	'security-type-category' => 'kategória',
 	'security-type-namespace' => 'névtér',
+	'security-restricttogroup' => 'A tartalom megjelenítése a(z) „$1” csoport tagjaira van korlátozva',
 );
 
 /** Interlingua (Interlingua)

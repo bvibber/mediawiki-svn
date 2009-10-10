@@ -97,6 +97,13 @@ $messages['af'] = array(
 	'recordadmin-actions' => 'Aksies',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'recordadmin-buttonsave' => 'Alzar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda

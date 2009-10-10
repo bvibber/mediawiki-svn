@@ -1940,10 +1940,17 @@ $messages['jv'] = array(
  * @author Malafaya
  */
 $messages['ka'] = array(
+	'contributionhistory' => 'წვლილის ისტორია',
 	'contrib-hist-name' => 'სახელი',
+	'contrib-hist-date' => 'დრო და თარიღი',
 	'contribstats-day' => 'დღე',
 	'contribstats-month' => 'თვე',
+	'contribstats-contributions' => 'წვლილი',
+	'contribstats-total' => 'ტოტალური (USD)',
+	'contribstats-avg' => 'საშუალო (USD)',
+	'contribstats-max' => 'მაქსიმუმი (USD)',
 	'contribstats-donations' => 'შეწირულობები',
+	'contribstats-template' => 'თარგი',
 	'fundraiserstats-date' => 'თარიღი',
 	'fundraiserstats-contributions' => 'წვლილი',
 	'fundraiserstats-tab-contributions' => 'წვლილის ნომერი',
@@ -3216,6 +3223,7 @@ $messages['te'] = array(
 	'contribstats-total-ytd' => 'మొత్తం (YTD)',
 	'contribstats-week' => 'వారం',
 	'contribstats-donations' => 'విరాళాలు',
+	'contribstats-template' => 'మూస',
 	'fundraiserstats-date' => 'తేదీ',
 	'fundraiserstats-total' => 'మొత్తం (USD)',
 	'fundraiserstats-avg' => 'సగటు (USD)',

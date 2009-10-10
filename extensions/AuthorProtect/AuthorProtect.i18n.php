@@ -267,6 +267,7 @@ $messages['cy'] = array(
 	'authorprotect-notauthor' => 'Nid chi yw awdur y dudalen hon',
 	'authorprotect-confirm' => 'Newid lefelau diogelu',
 	'authorprotect-edit' => "Cyfyngu'r gallu i olygu i'r awduron",
+	'authorprotect-move' => "Cyfyngu'r gallu i symud tudalen i'r awduron",
 	'authorprotect-expiry' => 'Cyfnod',
 	'authorprotect-reason' => 'Rheswm',
 	'authorprotect-success' => 'Llwyddodd y diogelu!',

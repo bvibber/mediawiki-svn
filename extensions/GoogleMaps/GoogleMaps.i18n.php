@@ -246,6 +246,13 @@ $wgGoogleMapsMessages['am'] = array(
 	'gm-moon' => 'ጨረቃ',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$wgGoogleMapsMessages['an'] = array(
+	'gm-save-path' => 'Alzar',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

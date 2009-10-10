@@ -140,6 +140,13 @@ $messages['am'] = array(
 	'tasks_search_form_title' => 'ፍለጋ',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'tasks_delete' => 'Borrar',
+);
+
 /** Arabic (العربية)
  * @author Ciphers
  * @author Meno25

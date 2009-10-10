@@ -54,6 +54,13 @@ $messages['be-tarask'] = array(
 	'prefs-experimental' => 'Экспэрымэнтальныя магчымасьці',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'usabilityinitiative' => 'Инициатива по ползваемост',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  * @author Jayantanth
@@ -395,7 +402,7 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'usabilityinitiative' => 'Inicjatywa Użyteczności',
 	'usabilityinitiative-desc' => 'Funkcje rozwijane przez Inicjatywę Użyteczności Wikipedii w celu poszerzenia przydatności oprogramowania MediaWiki',
-	'prefs-experimental' => 'Testowe narzędzia',
+	'prefs-experimental' => 'Narzędzia wersji testowej',
 );
 
 /** Piedmontese (Piemontèis)
