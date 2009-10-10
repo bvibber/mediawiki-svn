@@ -247,7 +247,7 @@ var WikiAtHome = {
 				'iiprop': 'url'
 			}
 		},function(data){
-			for(var i in data.query.pages){
+				for(var i in data.query.pages){
 				_this.source_url = data.query.pages[i].imageinfo[0].url;
 			}
 			//have firefogg download the file:
@@ -330,19 +330,27 @@ var WikiAtHome = {
 						js_log("could not parse result of upload :: " +response_text);
 					}
 					
-
-					//congratulate the user and issue new job request
-					$j('#tab-jobs .progress-status').html(
-						gM( 'wah-doneuploading' )
-					);
-					//reset the progress bar:
-					$j('#tab-jobs .progress-bar').progressbar( 'value', 0 );
-
-					var getNextTranscodeJob = function(){
-						_this.lookForJob( job.job_set_id );
+					if( resultObj['wikiathome'] && resultObj['wikiathome']['chunkaccepted']){
+						//congratulate the user and issue new job request
+						$j('#tab-jobs .progress-status').html(
+							gM( 'wah-doneuploading' )
+						);
+						//reset the progress bar:
+						$j('#tab-jobs .progress-bar').progressbar( 'value', 0 );
+	
+						var getNextTranscodeJob = function(){
+							_this.lookForJob( job.job_set_id );
+						}
+						//display the msg for 10 seconds
+						setTimeout(getNextTranscodeJob, 10000);
+					}else{
+						//check for parseable error: 
+						if( resultObj['error'] && resultObj['error']['info'] && resultObj['error']['code']);
+						$j('#tab-jobs .progress-status').html(
+							resultObj['error']['info'] + ' ' + resultObj['error']['code']
+						);
 					}
-					//display the msg for 10 seconds
-					setTimeout(getNextTranscodeJob, 10000);
+					
 
 					return true;
 				}else if( _this.fogg.state == 'upload failed'){

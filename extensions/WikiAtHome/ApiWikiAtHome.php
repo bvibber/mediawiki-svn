@@ -227,16 +227,22 @@ class ApiWikiAtHome extends ApiBase {
 				//else add it to the combine list:
 				$fileList[] = "{$thumbPath}/{$i}.ogg";
 			}
-
-			//do merge request
-			//@@todo do this in a background shell task
-			//( if the files are very large video could take longer than 30 seconds to concatenate )
-			global $wgOggCat;
 			$finalDestTarget = "{$thumbPath}.ogg";
-			wahDoOggCat( $finalDestTarget, $fileList);
-
+			//make sure we have a set of thumbs to merge:
+			if( count( $fileList )  > 1 ){
+				//do merge request
+				//@@todo do this in a background shell task
+				//( if the files are very large video could take longer than 30 seconds to concatenate )
+				wahDoOggCat( $finalDestTarget, $fileList);
+			}else{
+				//rename to $finalDestTarget
+				$curThumbPath = current( $fileList );
+				rename($curThumbPath, $finalDestTarget);
+			}
 			//if the file got created tag the jobset as done:
 			if( is_file( $finalDestTarget )){
+				//@@do some more checks (like length is accurate and is ogg video)
+
 				//update jobSet done:
 				WahJobManager :: updateSetDone( $jobSet );
 				//send out stream done
@@ -263,7 +269,7 @@ class ApiWikiAtHome extends ApiBase {
 					)
 				);
 				//send join failed
-				return $this->dieUsage("Concatenation Failed", 'catfail');
+				return $this->dieUsage("Concatenation Failed: $curThumbPath to $finalDestTarget" . count( $fileList ) . ' ' .print_r( $fileList ), 'catfail');
 
 
 			}

@@ -269,10 +269,7 @@ function wahGetMediaJsonMeta( $path ){
 	$json_meta_str = wfShellExec( $cmd );
 	wfProfileOut( 'ffmpeg2theora' );
 	$objMeta = FormatJson::decode( $json_meta_str );
-	//if we return the same string then json_decode has failed in php < 5.2.6
-	//workaround for bug http://bugs.php.net/bug.php?id=45989
-	if( $objMeta == $json_meta_str )
-		return false;
+
 	return $objMeta;
 }
 
