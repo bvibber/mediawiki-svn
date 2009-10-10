@@ -96,6 +96,7 @@ abstract class Installer {
 	 * @protected
 	 */
 	var $envChecks = array( 
+		'envLatestVersion',
 		'envCheckDB', 
 		'envCheckRegisterGlobals', 
 		'envCheckMagicQuotes', 
@@ -311,6 +312,25 @@ abstract class Installer {
 			&& is_callable( 'dl' )
 			&& wfIniGetBool( 'enable_dl' )
 			&& !wfIniGetBool( 'safe_mode' );
+	}
+	
+	/** Check if we're installing the latest version */
+	function envLatestVersion() {
+		global $wgVersion;
+		$latestInfo = Http::get( 'http://www.mediawiki.org/w/api.php?action=mwreleases&format=php' );
+		if( !$latestInfo ) {
+			return;
+		}
+		$latestInfo = unserialize($latestInfo);
+		foreach( $latestInfo['mwreleases'] as $rel ) {
+			if( isset( $rel['current'] ) )
+				$currentVersion = $rel['version'];
+		}
+		if( version_compare( $wgVersion, $currentVersion, '<' ) ) {
+			$this->showMessage( 'config-env-latest-old' );
+			$this->showHelpBox( 'config-env-latest-help', $wgVersion, $currentVersion ); 
+		}
+		$this->showMessage( 'config-env-latest-ok' );
 	}
 
 	/** Environment check for DB types */

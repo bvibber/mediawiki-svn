@@ -4072,6 +4072,10 @@ You should have received <doclink href=Copying>a copy of the GNU General Public 
 * [http://www.mediawiki.org/wiki/Manual:Contents Administrator's Guide]
 * [http://www.mediawiki.org/wiki/Manual:FAQ FAQ]
 ",
+'config-env-latest-ok' => 'You are installing the latest version of Mediawiki',
+'config-env-latest-old' => "'''Warning''': You are installing an outdated version of Mediawiki",
+'config-env-latest-help' => 'You are installing version $1, but the latest version is $2.
+You are advised to use the latest release, which can be downloaded from [http://www.mediawiki.org/wiki/Download Mediawiki.org]',
 'config-env-good' => '<span class="success-message">Environment checked. You can install MediaWiki.</span>',
 'config-env-bad' => 'Cannot install MediaWiki.',
 'config-env-php' => 'PHP $1 installed',
