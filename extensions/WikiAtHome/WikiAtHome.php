@@ -8,7 +8,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $exDir = dirname(__FILE__);
 //setup autoloader php:
 $wgAutoloadClasses[ 'NonFreeVideoHandler' ] 	= "$exDir/NonFreeVideoHandler.php";
-$wgAutoloadClasses[ 'MediaQueueTransformOutput']="$exDir/NonFreeVideoHandler.php";
+$wgAutoloadClasses[ 'MediaQueueTransformOutput']= "$exDir/NonFreeVideoHandler.php";
 
 $wgAutoloadClasses[ 'WahJobManager' ] 			= "$exDir/WahJobManager.php";
 $wgAutoloadClasses[ 'ApiWikiAtHome' ]			= "$exDir/ApiWikiAtHome.php";

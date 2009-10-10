@@ -370,4 +370,4 @@ var WikiAtHome = {
 			gM(msgKey, percDone)
 		);
 	}
-}
+};
