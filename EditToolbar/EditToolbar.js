@@ -839,7 +839,9 @@ js2AddOnloadHook( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
 			// Build tabs
-			$j( '#edittoolbar-link-tabs' ).tabs();
+			mvJsLoader.doLoad( [ '$j.ui', '$j.ui.tabs' ], function() {
+				$j( '#edittoolbar-link-tabs' ).tabs();
+			});
 			// Automatically copy the value of the internal link page title field to the link text field unless the user
 			// has changed the link text field - this is a convience thing since most link texts are going to be the
 			// the same as the page title
