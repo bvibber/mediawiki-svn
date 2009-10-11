@@ -59,7 +59,7 @@ div#fundraiserportal-box div div {
 }
 div#fundraiserportal-box div#fundraiserportal-message {
 	background: none;
-	font-size: 0.9em;
+	font-size: 0.8em;
 	color: #333333;
 	margin: 0;
 	margin-bottom: 0.5em;
@@ -114,6 +114,7 @@ div#fundraiserportal-button div div div div div div div div a {
 	padding: 0.4em;
 	color: white;
 	font-weight: bold;
+	font-size: 0.9em;
 	text-align: center;
 }
 div#fundraiserportal-button a:hover {
