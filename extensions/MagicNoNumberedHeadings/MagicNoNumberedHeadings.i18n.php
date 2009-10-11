@@ -13,6 +13,13 @@ $messages['qqq'] = array(
 	'magicnonumberedheadings-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'magicnonumberedheadings-desc' => 'Voeg die magiese woord "<nowiki>__NONUMBEREDHEADINGS__</nowiki>" by',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

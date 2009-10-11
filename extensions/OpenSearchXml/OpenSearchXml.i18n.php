@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'opensearchxml-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-koppelvlak wat teks-ekstrakte lewer',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

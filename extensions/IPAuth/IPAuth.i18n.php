@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'ipauth-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'ipauth-desc' => "Outomatiese aanteken vanaf 'n vaste IP-adres",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

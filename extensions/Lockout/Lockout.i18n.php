@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'lockout-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'lockout-desc' => 'Sorg dat geblokkeerde gebruikers nie kan aanteken nie',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

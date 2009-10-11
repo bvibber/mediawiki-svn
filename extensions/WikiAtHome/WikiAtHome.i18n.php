@@ -264,6 +264,12 @@ $messages['de'] = array(
 	'wah-transcode-fail' => 'Diese Datei konnte nicht transkodiert werden.',
 	'wah-javascript-off' => 'Du musst JavaScript aktiviert haben, um bei Wiki@Home teilnehmen zu können',
 	'wah-loading' => 'Lade Wiki@Home-Benutzeroberfläche <blink>…</blink>',
+	'wah-menu-pref' => 'Einstellungen',
+	'wah-notoken-login' => 'Hast du dich bereits angemeldet? Falls nicht, hole dies bitte zuerst nach.',
+	'wah-downloading' => 'Herunterladen der Datei zu <i>$1 %</i> abgeschlossen.',
+	'wah-uploading' => '<i>$1</i> wurde erfolgreich hochgeladen.',
+	'wah-uploadfail' => 'Hochladen nicht erfolgreich',
+	'wah-doneuploading' => 'Hochladen erfolgreich. Vielen Dank für deinen Beitrag.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

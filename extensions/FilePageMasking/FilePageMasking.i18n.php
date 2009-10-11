@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'filepagemasking-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'filepagemasking-desc' => 'Herskryf ".xxx" na "_xxx" in skakels na die lêerbeskrywingsblad.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

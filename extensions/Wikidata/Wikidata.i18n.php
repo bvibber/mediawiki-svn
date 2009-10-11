@@ -7590,6 +7590,11 @@ $messages['mt'] = array(
  * @author Malafaya
  */
 $messages['mwl'] = array(
+	'datasearch_language' => 'Lhéngua:',
+	'ow_Collection' => 'Coleçon',
+	'ow_Collection_colon' => 'Coleçon:',
+	'ow_Definition' => 'Definiçon',
+	'ow_Expression' => 'Spresson',
 	'ow_Language' => 'Lhéngua',
 );
 
@@ -9034,8 +9039,8 @@ $messages['pt'] = array(
 	'datasearch_meaning' => 'Significado',
 	'datasearch_ext_identifier' => 'Identificador externo',
 	'datasearch_search_text' => 'Texto a pesquisar:',
-	'datasearch_within_words' => 'Dentre as palavras:',
-	'datasearch_within_ext_ids' => 'Dentre identificadores externos:',
+	'datasearch_within_words' => 'Dentro de palavras:',
+	'datasearch_within_ext_ids' => 'Dentro de identificadores externos:',
 	'datasearch_showing_only' => 'A mostrar apenas um máximo de $1 {{PLURAL:$1|resultado|resultados}}.',
 	'datasearch_match_ext_ids' => 'Identificadores externos correspondendo a <i>$1</i>',
 	'datasearch_match_words' => 'Palavras correspondendo a <i>$1</i> e significados associados',

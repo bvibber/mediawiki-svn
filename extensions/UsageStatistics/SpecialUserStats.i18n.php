@@ -475,6 +475,7 @@ $messages['da'] = array(
  * @author Gnu1742
  * @author Katharina Wolkwitz
  * @author Melancholie
+ * @author Pill
  * @author Purodha
  * @author Revolus
  * @author Umherirrender
@@ -486,6 +487,8 @@ $messages['de'] = array(
 	'usagestatisticsfor' => '<h2>Nutzungs-Statistik für [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Nutzungs-Statistik für alle Benutzer</h2>',
 	'usagestatisticsinterval' => 'Zeitraum:',
+	'usagestatisticsnamespace' => 'Namensraum:',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Weiterleitungsseiten]] werden nicht berücksichtigt.',
 	'usagestatisticstype' => 'Berechnungsart',
 	'usagestatisticsstart' => 'Start-Datum:',
 	'usagestatisticsend' => 'End-Datum:',

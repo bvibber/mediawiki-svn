@@ -20,6 +20,13 @@ $messages['qqq'] = array(
 	'interlanguage-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'interlanguage-desc' => "Gryp tussentaalskakels vanaf 'n ander wiki",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

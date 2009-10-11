@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'gnuplot-desc' => 'Shown in [[Special:Version]].',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'gnuplot-desc' => 'Voeg die <nowiki><gnuplot></nowiki>-etiket by om van Gnuplot gebruik te maak',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'localisationupdate-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'localisationupdate-desc' => 'Hou die gelokaliseerde boodskappe so op datum as moontlik',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -432,6 +432,7 @@ $messages['ee'] = array(
  * @author Consta
  * @author Crazymadlover
  * @author Dead3y3
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -448,6 +449,7 @@ $messages['el'] = array(
 	'expand_templates_xml_output' => 'Έξοδος XML',
 	'expand_templates_ok' => 'Εντάξει',
 	'expand_templates_remove_comments' => 'Αφαίρεση σχολίων',
+	'expand_templates_remove_nowiki' => 'Απόκρυψη της ετικέτας <nowiki> στο αποτέλεσμα',
 	'expand_templates_generate_xml' => 'Εμφάνιση δέντρου συντακτικής ανάλυσης XML',
 	'expand_templates_preview' => 'Προεπισκόπηση',
 );

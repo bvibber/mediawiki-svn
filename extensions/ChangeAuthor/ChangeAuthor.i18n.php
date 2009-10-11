@@ -1589,6 +1589,10 @@ Cambia un o pì nòm utent ant la lista sota, gionta un coment (opsional) e sgna
 	'changeauthor-changeauthors-single' => 'Cambia autor',
 	'changeauthor-explanation-single' => 'Con sta forma-sì it peule cambié l\'autor ëd na revision.
 Cambia ël nòm utent sota, gionta un coment (opsional) e sgnaca ël boton "Cambia autor".',
+	'changeauthor-invalid-username' => 'Stranòm "$1" pa bon.',
+	'changeauthor-nosuchuser' => 'Pa gnun utent "$1".',
+	'changeauthor-revview' => 'Revision #$1 ëd $2',
+	'changeauthor-nosuchtitle' => 'A-i é pa gnun-e pàgine ciamà "$1".',
 );
 
 /** Pashto (پښتو)

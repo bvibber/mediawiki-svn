@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'emailaddressimage-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'emailaddressimage-desc' => "Voeg <tt>&lt;email&gt;</tt> by om 'n e-posadres as 'n beeld te wys",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

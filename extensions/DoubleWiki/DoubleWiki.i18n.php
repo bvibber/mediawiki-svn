@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'doublewiki-desc' => 'Extension description displayed on [[Special:Version]]',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'doublewiki-desc' => "Vertoon 'n bladsy met sy vertaling vanaf 'n ander wiki in twee kolomme op dieselfde bladsy.",
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

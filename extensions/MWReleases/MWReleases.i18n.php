@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'mwreleases-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'mwreleases-desc' => "Voeg 'n [[Mediawiki:Mwreleases-list|lys]] van ondersteunde MediaWiki-weergawes by, toeganklik via die API",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

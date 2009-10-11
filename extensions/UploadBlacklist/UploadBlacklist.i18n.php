@@ -312,6 +312,13 @@ $messages['tr'] = array(
 	'uploadblacklist-desc' => 'Bir yükleme karalistesi işlevselliği ekler',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'uploadblacklist-desc' => 'Дозволяє створення чорного списку завантажуваних файлів',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
