@@ -37,11 +37,11 @@ $wgFundraiserPortalTemplates = array(
 				);
 
 // Set this to the public path where your js is pulled from
-$wgFundraiserPortalPath = 'http://192.168.250.128/sandbox';
+$wgFundraiserPortalPath = '';
 
 // Set this to the systme path location that the button js file will be written to
 // Must be reachable by the address in $wgNoticeProjectPath
-$wgFundraiserPortalDirectory = '/var/www/sandbox';
+$wgFundraiserPortalDirectory = '';
 
 // Only running this on wikipedia for now
 $wgFundraiserPortalProject = 'wikipedia';

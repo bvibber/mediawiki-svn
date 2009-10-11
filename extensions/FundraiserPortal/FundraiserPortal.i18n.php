@@ -589,6 +589,22 @@ $messages['mk'] = array(
 	'fundraiserportal-tourmaline-close' => 'Отсега криј го ова',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'fundraiserportal-desc' => 'സൈഡ്ബാറിനു മുകളിലായി "സംഭാവന നൽകുക" എന്നതു ചേർക്കുന്നു.',
+	'fundraiserportal-plain-button' => 'വിക്കിപീഡിയയ്ക്കു പിന്തുണയേകുക!',
+	'fundraiserportal-ruby-button' => 'സംഭാവന നൽകുക',
+	'fundraiserportal-rubytext-button' => 'സംഭാവന നൽകുക',
+	'fundraiserportal-rubytext-message' => 'വിക്കിപീഡിയ സൗജ്യന്യമായി എല്ലാവരിലുമെത്താൻ എല്ലാ സംഭാവനകളും ഞങ്ങളെ സഹായിക്കുന്നു.',
+	'fundraiserportal-rubytext-close' => 'ഇതിനി കാണിക്കേണ്ട',
+	'fundraiserportal-sapphire-button' => 'സംഭാവന നൽകുക',
+	'fundraiserportal-tourmaline-button' => 'സംഭാവന നൽകുക',
+	'fundraiserportal-tourmaline-message' => 'വിക്കിപീഡിയ സൗജ്യന്യമായി എല്ലാവരിലുമെത്താൻ എല്ലാ സംഭാവനകളും ഞങ്ങളെ സഹായിക്കുന്നു.',
+	'fundraiserportal-tourmaline-close' => 'ഇതിനി കാണിക്കേണ്ട',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand
