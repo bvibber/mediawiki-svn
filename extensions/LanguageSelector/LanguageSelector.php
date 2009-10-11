@@ -55,6 +55,11 @@ $wgLanguageSelectorLanguages = NULL;
 */
 $wgLanguageSelectorShowCode = false;
 
+/**
+ * Show all languages defined, not only those with a language files (Language::getLanguageNames( <true/false> ))
+ */
+$wgLanguageSelectorShowAll = false;
+
 define( 'LANGUAGE_SELECTOR_MANUAL',    0 ); #don't place anywhere
 define( 'LANGUAGE_SELECTOR_AT_TOP_OF_TEXT', 1 ); #put at the top of page content
 define( 'LANGUAGE_SELECTOR_IN_TOOLBOX',  2 ); #put into toolbox
@@ -88,7 +93,7 @@ function wfLanguageSelectorSetHook() {
 
 function wfLanguageSelectorExtension() {
 	wfLoadExtensionMessages( 'LanguageSelector' );
-	global $wgLanguageSelectorLanguages, $wgLanguageSelectorDetectLanguage, $wgLanguageSelectorRequestedLanguage, $wgLanguageSelectorLocation;
+	global $wgLanguageSelectorLanguages, $wgLanguageSelectorDetectLanguage, $wgLanguageSelectorRequestedLanguage, $wgLanguageSelectorLocation, $wgLanguageSelectorShowAll;
 	global $wgUser, $wgLang, $wgRequest, $wgCookiePrefix, $wgCookiePath, $wgOut, $wgJsMimeType, $wgHooks;
 
 	$wgHooks['ParserFirstCallInit'][] = 'wfLanguageSelectorSetHook';
@@ -98,7 +103,7 @@ function wfLanguageSelectorExtension() {
 	}
 
 	if ( $wgLanguageSelectorLanguages === NULL ) {
-		$wgLanguageSelectorLanguages = array_keys( Language::getLanguageNames( true ) );
+		$wgLanguageSelectorLanguages = array_keys( Language::getLanguageNames( !$wgLanguageSelectorShowAll ) );
 		sort( $wgLanguageSelectorLanguages );
 	}
 
