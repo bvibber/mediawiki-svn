@@ -1000,6 +1000,7 @@ $messages['te'] = array(
 $messages['tr'] = array(
 	'clicktracking' => 'Kullanılabilirlik Girişimi tıklama izleme',
 	'clicktracking-desc' => 'Tıklama izleme, bir sayfa yenilemesine sebep olmadan olayları izleme amaçlı',
+	'ct-title' => 'Kümeli kullanıcı tıklamaları',
 	'ct-event-name' => 'Olay adı',
 	'ct-expert-header' => '"Deneyimli" tıklamaları',
 	'ct-intermediate-header' => '"Orta düzeyde" tıklamaları',
@@ -1016,6 +1017,7 @@ $messages['tr'] = array(
 	'ct-editing' => 'Şuanda değiştiriyor:',
 	'ct-anon-users' => 'Anonim kullanıcılar',
 	'ct-user-contribs' => 'Toplam kullanıcı katkıları',
+	'ct-user-span' => 'Zaman içerisindeki kullanıcı katkıları',
 	'ct-and' => 've',
 );
 
