@@ -381,6 +381,7 @@ $messages['af'] = array(
 	'configure-throttle-action-edit' => 'Wysig',
 	'configure-throttle-action-move' => 'Skuif',
 	'configure-throttle-action-rollback' => 'Terugrol',
+	'configure-throttle-group' => 'Tipe',
 	'configure-condition-operator-or' => 'Of',
 	'configure-condition-operator-and' => 'En',
 	'configure-condition-name-3' => 'E-posadres is bevestig',

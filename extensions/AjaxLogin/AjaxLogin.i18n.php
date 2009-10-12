@@ -820,6 +820,9 @@ Bu sizi, bu değişiklik sayfasından götürür ve mevcut değişikliğinizi ka
 	'ajaxLogin2' => 'Emin misiniz?
 Eğer bu sayfadan şimdi çıkarsanız sayfaya yaptığınız değişiklikleri kaybedebilirsiniz.',
 	'ajaxlogin-create' => 'Bir hesap oluşturun',
+	'al-nosuchuser' => '"$1" adında bir kullanıcı yok.
+Kullanıcı adları büyük-küçük harf duyarlıdır.
+Yazımınızı kontrol edin.',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

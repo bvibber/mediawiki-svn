@@ -838,6 +838,18 @@ $messages['te'] = array(
 	'optin-feedback' => 'బీటాపై అభిప్రాయాలు',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'optin-try' => 'Betany synap gör',
+	'tooltip-pt-optin-try' => 'Täze funksiýalary synap gör',
+	'optin-leave' => 'Betadan çyk',
+	'tooltip-pt-optin-leave' => 'Täze funksiýalary ýap',
+	'optin-feedback' => 'Beta seslenmesi',
+	'tooltip-pt-optin-feedback' => 'Täze funksiýalardaky tejribeleriňiz barada seslenme ýazyň',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

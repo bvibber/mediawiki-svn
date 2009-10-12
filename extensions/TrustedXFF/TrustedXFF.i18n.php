@@ -272,6 +272,13 @@ $messages['mk'] = array(
 	'trustedxff-desc' => 'Ракување со листа на прокси адреси од доверба ([http://meta.wikimedia.org/wiki/XFF_project проект XFF])',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'trustedxff-desc' => 'വിശ്വസനീയമായ പ്രോക്സി വിലാസങ്ങളുടെ പട്ടികയുടെ കൈകാര്യം ([http://meta.wikimedia.org/wiki/XFF_project എക്സ്.എഫ്.എഫ്. പദ്ധതി])',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

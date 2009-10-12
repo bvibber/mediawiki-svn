@@ -746,7 +746,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'readerfeedback' => 'Què pensâd-vos de ceta pâge ?',
-	'readerfeedback-text' => "''Volyéd consacrar un moment por èstimar ceta pâge ce-desot. Voutres emprèssions ont de valor et pués nos édont a mèlyorar noutron seto Malyâjo.''",
+	'readerfeedback-text' => "''Volyéd consacrar un moment por èstimar ceta pâge ce-desot. Voutres emprèssions ont de valor et pués nos édont a mèlyorar noutron seto vouèbe.''",
 	'readerfeedback-reliability' => 'Fiabilitât',
 	'readerfeedback-completeness' => 'Entegritât',
 	'readerfeedback-npov' => 'Netralitât',
@@ -1033,9 +1033,9 @@ $messages['id'] = array(
 	'readerfeedback-level-4' => 'Baik sekali',
 	'readerfeedback-submit' => 'Kirim',
 	'readerfeedback-main' => 'Hanya halaman isi yang dapat diberi nilai.',
-	'readerfeedback-success' => "'''Terima kasih telah meninjau halaman ini!''' ([$3 Komentar atau pertanyaan?])",
-	'readerfeedback-voted' => "'''Tampaknya Anda sudah memberikan peringkat untuk halaman ini'''. ([$3 Komentar atau pertanyaan?])",
-	'readerfeedback-error' => "'''Terdapat kesalahan selagi mereting halaman ini'''  ([$3 komentar atau pertanyaan?]).",
+	'readerfeedback-success' => "'''Terima kasih telah meninjau halaman ini!''' ([$2 lihat hasil]) ([$3 Komentar atau pertanyaan?])",
+	'readerfeedback-voted' => "'''Tampaknya Anda sudah memberikan peringkat untuk halaman ini''' ([$2 lihat hasil])  ([$3 Komentar atau pertanyaan?])",
+	'readerfeedback-error' => "'''Terdapat kesalahan selagi mereting halaman ini'''  ([$2 lihat hasil])  ([$3 komentar atau pertanyaan?]).",
 	'readerfeedback-submitting' => 'Mengirimkan...',
 	'readerfeedback-finished' => 'Terima kasih!',
 	'readerfeedback-tagfilter' => 'Tag:',
@@ -1162,7 +1162,7 @@ $messages['ko'] = array(
 	'readerfeedback-level-3' => '높음',
 	'readerfeedback-level-4' => '우수',
 	'readerfeedback-submit' => '제출',
-	'readerfeedback-success' => "'''이 문서를 평가해 주셔서 감사합니다!''' ([$3 질문이나 의견이 있으신가요?])",
+	'readerfeedback-success' => "'''이 문서를 평가해 주셔서 감사합니다!''' ([$2 결과 보기]) ([$3 질문이나 의견이 있으신가요?])",
 	'readerfeedback-submitting' => '제출하는 중...',
 	'readerfeedback-finished' => '감사합니다!',
 	'readerfeedback-tagfilter' => '태그:',
@@ -1276,6 +1276,10 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'readerfeedback-desc' => 'വർഗ്ഗീകൃത നിലവാരമളക്കൽ പോലെ വായനക്കാർക്ക് അവരുടെ അഭിപ്രായം വഴി താൾ മൂല്യനിർണ്ണയം ചെയ്യാനുള്ള അവസരം നൽകുന്നു.',
+	'readerfeedback' => 'ഈ താളിനെ കുറിച്ച് താങ്കൾ എന്തു കരുതുന്നു?',
+	'readerfeedback-text' => "''ഈ താളിന്റെ നിലവാരം കണ്ടെത്താൻ ഒരു നിമിഷമെടുക്കൂ. താങ്കളുടെ അഭിപ്രായങ്ങൾ വിലയേറിയതും വെബ്‌‌സൈറ്റ് മെച്ചപ്പെടുത്താൻ ഞങ്ങളെ സഹായിക്കുന്നതുമാണ്.''",
+	'readerfeedback-reliability' => 'വിശ്വാസയോഗ്യത',
 	'readerfeedback-completeness' => 'പൂർണ്ണത',
 	'readerfeedback-npov' => 'നിഷ്പക്ഷത',
 	'readerfeedback-presentation' => 'പ്രദർശനഗുണം',
@@ -1287,6 +1291,19 @@ $messages['ml'] = array(
 	'readerfeedback-level-3' => 'ഉന്നതം',
 	'readerfeedback-level-4' => 'ഒന്നാന്തരം',
 	'readerfeedback-submit' => 'സമർപ്പിക്കുക',
+	'readerfeedback-main' => 'ഉള്ളടക്ക താളുകളുടെ മാറ്റം നിലവാരമളന്നാൽ മതി.',
+	'readerfeedback-success' => "'''ഈ താൾ സംശോധനം ചെയ്തതിനു നന്ദി അറിയിക്കുന്നു!''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലങ്കിൽ ചോദ്യങ്ങൾ?]).",
+	'readerfeedback-voted' => "'''ഈ താളിന്റെ മൂല്യനിർണ്ണയം താങ്കൾ നേരത്തേ ചെയ്തിട്ടുണ്ടെന്നു കാണുന്നു''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലങ്കിൽ ചോദ്യങ്ങൾ?]).",
+	'readerfeedback-error' => "'''ഈ താളിന്റെ മൂല്യനിർണ്ണയത്തിനിടയ്ക്ക് പിശക് സംഭവിച്ചിരിക്കുന്നു''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലങ്കിൽ ചോദ്യങ്ങൾ?]).",
+	'readerfeedback-submitting' => 'സമർപ്പിക്കുന്നു …',
+	'readerfeedback-finished' => 'നന്ദി!',
+	'readerfeedback-tagfilter' => 'റ്റാഗ്:',
+	'readerfeedback-tierfilter' => 'മതിപ്പ് നിലവാരം:',
+	'readerfeedback-tier-high' => 'ഉന്നതം',
+	'readerfeedback-tier-medium' => 'സാമാന്യം',
+	'readerfeedback-tier-poor' => 'മോശം',
+	'tooltip-ca-ratinghist' => 'വായനക്കാർ ഈ താളിനു നൽകിയ നിലവാരം',
+	'specialpages-group-feedback' => 'വായനക്കാരുടെ അഭിപ്രായം',
 );
 
 /** Malay (Bahasa Melayu)
@@ -1899,7 +1916,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'readerfeedback' => 'Що ви думаєте про цю сторінку?',
-	'readerfeedback-text' => "''Будь ласка, дайте оцінку цій сторінці нижче. Ваші відгуки дуже цінні для нас, вони допомагають нам працювати над покращенням сайту.''",
+	'readerfeedback-text' => "''Будь ласка, оцініть цю сторінку. Ваші відгуки дуже цінні для нас, вони допомагають нам працювати над покращенням сайту.''",
 	'readerfeedback-reliability' => 'Достовірність',
 	'readerfeedback-completeness' => 'Повнота',
 	'readerfeedback-npov' => 'Нейтральність',

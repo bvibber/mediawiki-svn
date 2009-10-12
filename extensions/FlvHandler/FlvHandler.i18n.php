@@ -183,6 +183,14 @@ $messages['oc'] = array(
 	'flv-long-desc' => '(Vidèo flash, $1 × $2 pixèls, talha del fichièr : $3)',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'flvhandler_desc' => 'Umożliwia dodanie jako standardowych plików w formacie Flash Video (np. <nowiki>[[Plik:Film.flv]]</nowiki>)',
+	'flv-long-desc' => '(Flash Video, $1 × $2 pikseli, wielkość pliku $3)',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

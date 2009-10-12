@@ -1181,13 +1181,28 @@ $1',
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'inplace_access_disabled' => 'A szolgáltatáshoz való hozzáférés letiltva az összes kliens számára.',
 	'inplace_access_denied' => 'Ez a szolgáltatás korlátozott a kliensek IP címe alapján.',
+	'inplace_scaler_no_temp' => 'Nincs érvényes ideiglenes könyvtár megadva.
+Állítsd a $wgLocalTmpDirectory változót egy írható könyvtárra.',
 	'inplace_scaler_not_enough_params' => 'Nincs elegendő paraméter.',
+	'inplace_scaler_invalid_image' => 'Érvénytelen kép, nem lehet meghatározni a méretét.',
+	'inplace_scaler_failed' => 'Hiba történt a kép átméretezése közben: $1',
+	'inplace_scaler_no_handler' => 'Ehhez a MIME-típushoz nincs hozzárendelve kezelő',
+	'inplace_scaler_no_output' => 'Nem készült átalakított kimeneti fájl.',
+	'inplace_scaler_zero_size' => 'Az átalakítás során nulla méretű kimeneti fájl jött létre.',
+	'webstore-desc' => 'Csak webalapú (nem NFS) fájltároló köztesréteg',
 	'webstore_access' => 'Ez a szolgáltatás korlátozott kliens IP-címek alapján.',
 	'webstore_path_invalid' => 'A fájlnév érvénytelen volt.',
+	'webstore_dest_mkdir' => 'Nem sikerült létrehozni a(z) „$1” célkönyvtárat.',
+	'webstore_archive_lock' => 'Nem sikerült zárolni a(z) „$1” archívumfájlt.',
+	'webstore_archive_mkdir' => 'Nem sikerült a(z) „$1” archívumkönyvtár létrehozása.',
 	'webstore_src_open' => 'A(z) „$1” forrásfájl nem nyitható meg.',
 	'webstore_src_close' => 'Hiba a(z) „$1” forrásfájl bezárásakor.',
 	'webstore_src_delete' => 'Hiba a(z) „$1” forrásfájl törlésekor.',
+	'webstore_rename' => 'Hiba a fájl átnevezésekor („$1” → „$2”).',
+	'webstore_lock_open' => 'Hiba a(z) „$1” zárolófájl megnyitásakor.',
+	'webstore_lock_close' => 'Hiba a(z) „$1” zárolófájl bezárásakor.',
 	'webstore_temp_close' => 'Hiba a(z) „$1” ideiglenes fájl bezárása közben.',
 	'webstore_no_file' => 'Nem lett fájl feltöltve.',
 	'webstore_invalid_zone' => 'Érvénytelen zóna: „$1”.',
@@ -1202,6 +1217,7 @@ $1',
 
 $1',
 	'webstore_php_error' => 'PHP hibák történtek:',
+	'webstore_no_handler' => 'Nincs kezelő ennek a MIME-típusnak az átalakításához',
 );
 
 /** Interlingua (Interlingua)

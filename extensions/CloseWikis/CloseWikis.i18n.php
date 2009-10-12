@@ -1651,6 +1651,7 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
@@ -1661,6 +1662,10 @@ $messages['tr'] = array(
 	'closewikis-page-reopen-wiki' => 'Viki:',
 	'closewikis-page-reopen-reason' => 'Nedeni:',
 	'closewikis-list-header-wiki' => 'Viki',
+	'closewikis-log-close' => '$2 vikisini kapattı',
+	'closewikis-log-reopen' => '$2 vikisini tekrar açtı',
+	'right-editclosedwikis' => 'Kapalı vikileri değiştir',
+	'right-closewikis' => 'Vikileri kapat',
 );
 
 /** Veps (Vepsan kel')

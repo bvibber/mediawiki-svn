@@ -89,6 +89,7 @@ $messages['ang'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'createsigndocument' => 'فعل توقيع الوثيقة',
@@ -113,7 +114,7 @@ $messages['ar'] = array(
 	'createsigndoc-introtext' => 'مقدمة:',
 	'createsigndoc-hidden' => 'مخفية',
 	'createsigndoc-optional' => 'اختياري',
-	'createsigndoc-create' => 'إنشاء',
+	'createsigndoc-create' => 'أنشئ',
 	'createsigndoc-error-generic' => 'خطأ: $1',
 	'createsigndoc-error-pagenoexist' => 'خطأ: الصفحة [[$1]] غير موجودة.',
 	'createsigndoc-success' => 'توقيع الوثيقة تم تفعيله بنجاح في [[$1]].

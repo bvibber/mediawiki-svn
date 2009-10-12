@@ -2414,6 +2414,14 @@ YouTube, возможно, будет некоторое время обраба
 	'youtubeauthsub_jserror_nodesc' => 'Пожалуйста, введите описание видео.',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'youtubeauthsub' => 'YouTube-ка видео хачайдааһын',
+	'youtubeauthsub_category' => 'Категория',
+);
+
 /** Sardinian (Sardu)
  * @author Marzedu
  */

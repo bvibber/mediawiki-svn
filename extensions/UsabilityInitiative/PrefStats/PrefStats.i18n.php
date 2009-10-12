@@ -308,6 +308,8 @@ $messages['cu'] = array(
 $messages['cy'] = array(
 	'prefstats' => 'Ystadegau dewisiadau',
 	'prefstats-title' => 'Ystadegau dewisiadau',
+	'prefstats-list-intro' => 'Ar hyn o bryd, dilynir hynt y dewisiadau canlynol.
+Cliciwch ar un i weld yr ystadegau amdano.',
 	'prefstats-xaxis' => 'Parhad (oriau)',
 	'prefstats-factors' => 'Cyfnod y blociau ar y graff: $1',
 	'prefstats-factor-hour' => 'awr',
@@ -1078,11 +1080,13 @@ $messages['kn'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  */
 $messages['ko'] = array(
 	'prefstats' => '환경 설정 통계',
 	'prefstats-desc' => '각 환경 설정에 대한 사용자 비율 통계',
 	'prefstats-title' => '환경 설정 통계',
+	'prefstats-factor-fourweeks' => '4주',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -1229,6 +1233,19 @@ $messages['mk'] = array(
 	'prefstats-factor-default' => 'врати основно зададен размер',
 	'prefstats-legend-out' => 'Пристапил',
 	'prefstats-legend-in' => 'Напуштил',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'prefstats-xaxis' => 'കാലയളവ് (മണിക്കൂർ)',
+	'prefstats-factor-hour' => 'മണിക്കൂർ',
+	'prefstats-factor-sixhours' => 'ആറു മണിക്കൂർ',
+	'prefstats-factor-day' => 'ദിവസം',
+	'prefstats-factor-week' => 'ആഴ്ച്ച',
+	'prefstats-factor-twoweeks' => 'രണ്ട് ആഴ്ച്ച',
+	'prefstats-factor-fourweeks' => 'നാല് ആഴ്‌‌ച്ച',
 );
 
 /** Malay (Bahasa Melayu)

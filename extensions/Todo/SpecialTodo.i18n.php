@@ -852,13 +852,36 @@ $4',
  */
 $messages['hu'] = array(
 	'todo' => 'Tennivalók listája',
+	'todo-desc' => 'Kísérleti személyes [[Special:Todo|feladatlista]] kiterjesztés',
 	'todo-tab' => 'tennivalók',
 	'todo-new-queue' => 'új',
+	'todo-mail-subject' => 'Elvégzett feladat $1 teendőlistáján',
+	'todo-mail-body' => 'E-mail értesítést kértél $1 online feladatlistájára küldött teendő elvégzéséről.
+
+Feladat: $2
+Elküldve: $3
+
+Ezt a feladatot késznek jelölték, a következő megjegyzéssel:
+$4',
+	'todo-invalid-item' => 'Hiányzó vagy érvénytelen feladat',
+	'todo-update-else-item' => 'Valaki másnak a teendőit próbálod frissíteni',
+	'todo-unrecognize-type' => 'Ismeretlen típus',
+	'todo-user-invalide' => 'A feladatot érvénytelen, nem létező vagy feladatlistával nem rendelkező felhasználó kapta.',
+	'todo-item-list' => 'Saját feladataid',
+	'todo-no-item' => 'Nincsenek feladatok.',
+	'todo-invalid-owner' => 'Érvénytelen tulajdonos ennél a feladatnál',
+	'todo-add-queue' => 'Várakozási sor hozzáadása…',
+	'todo-move-queue' => 'Áthelyezés várakozási sorba…',
 	'todo-list-for' => '$1 feladatlistája',
 	'todo-list-change' => 'Változtatás',
 	'todo-list-cancel' => 'Mégse',
+	'todo-new-item' => 'Új teendő',
+	'todo-issue-summary' => 'Ügy összefoglalója:',
 	'todo-form-details' => 'Részletek:',
+	'todo-form-email' => 'Ha szeretnél értesítést kapni e-mailben a feladat lezárásakor, add meg a címedet:',
 	'todo-form-submit' => 'Lekérdezés elküldése',
+	'right-todo' => 'van feladatlistája',
+	'right-todosubmit' => 'feladatlista jogosultsága korlátozva',
 );
 
 /** Interlingua (Interlingua)

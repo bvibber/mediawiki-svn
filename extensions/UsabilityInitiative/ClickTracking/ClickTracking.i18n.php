@@ -731,6 +731,16 @@ $messages['mk'] = array(
 	'clicktracking-desc' => 'Следење на кликнувања, наменето за следење на постапки кои не предизвикуваат превчитување на страницата',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'ct-anon-users' => 'അജ്ഞാത ഉപയോക്താക്കൾ',
+	'ct-user-contribs' => 'ഉപയോക്താവിന്റെ ആകെ സേവനങ്ങൾ',
+	'ct-user-span' => 'ഉപയോക്താവിന്റെ സേവനങ്ങൾ സമയക്രമത്തിൽ',
+	'ct-and' => 'ഒപ്പം',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Kurniasan
  */

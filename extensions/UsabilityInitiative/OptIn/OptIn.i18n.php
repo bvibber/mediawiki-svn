@@ -2805,12 +2805,12 @@ $messages['ko'] = array(
 	'optin-survey-answer-changes-custom' => '더 많은 부분을 사용자가 설정할 수 있도록 해 주세요.',
 	'optin-survey-answer-changes-other' => '기타:',
 	'optin-improvements' => '== 어떤 부분이 향상되었나요? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|새 둘러보기 탭의 스크린샷]]
 ;디자인 구성이 바뀌었습니다
 새로운 디자인을 통해 현재 어떤 문서를 보고 있는지, 어떤 동작을 하고 있는지, 어떤 문서를 어떻게 갈 수 있는지 등을 파악하기가 쉬워졌습니다. 또한, 검색 상자를 오른쪽 위로 옮겨 더욱 사용하기 편리해졌습니다.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|향상된 편집 툴바의 모습]]
 ;편집 툴바가 더 편리해졌습니다
 툴바 버튼이 더 직관적인 모습으로 바뀌었습니다. 자주 쓰지 않는 기능은 숨겨 두어 더 사용하기 쉬워졌고, 숨겨진 기능은 클릭 한 번으로 꺼낼 수 있습니다.
 또한 위키 문법을 사용하기 쉽도록 도움말 링크를 추가했습니다.
@@ -2818,7 +2818,9 @@ $messages['ko'] = array(
 == 참여하기 ==
 
 위키미디어 사용성 향상 프로젝트에 참여하려면 [http://usability.wikimedia.org 프로젝트 위키](영어)에 방문해주세요. 프로젝트에서 만든 연구 결과, 디자인, 개발 제품 등을 볼 수 있습니다. 일반적인 질문이나 조언이 있다면 [http://usability.wikimedia.org/wiki/Talk:Prototype 스킨 토론란](영어)를 이용해주시면 됩니다. 특정 주제에 대해서는 해당 토론란을 이용해주세요.
-버그를 발견했다면  [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai 토론란](영어)나 [https://bugzilla.wikimedia.org Bugzilla](영어)에 해당 사실을 알려주시면 됩니다.',
+버그를 발견했다면  [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai 토론란](영어)나 [https://bugzilla.wikimedia.org Bugzilla](영어)에 해당 사실을 알려주시면 됩니다.
+
+우리는 당신의 의견에 귀기울일 것입니다. 감사합니다.',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -2827,41 +2829,41 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'optin' => 'Op de <i lang="en">Usability Initiative</i> ier Verschöönerunge jon.',
-	'optin-desc' => 'Määt et müjjelesch för de Metmaacher, <i lang="en">Beta</i>, de <i lang="en">Usability Initiative</i> ier neuste Verschöönerunge ußzeprobeere.',
-	'optin-title-optedout' => '<i lang="en">Beta</i> ußprobeere',
-	'optin-title-optedin' => '<i lang="en">Beta</i> verlohße',
-	'optin-title-justoptedin' => 'Wellkumme bei <i lang="en">Beta</i>',
-	'optin-title-justoptedout' => 'Merßi, datt De <i lang="en">Beta</i> ußprobeere deihß.',
+	'optin-desc' => 'Määt et müjjelesch för de Metmaacher, de <i lang="en">Usability Initiative</i> ier neuste Verschöönerunge ußzeprobeere.',
+	'optin-title-optedout' => 'Verschöönerunge ußprobeere',
+	'optin-title-optedin' => 'De Verschöönerunge nimmieh ußprobeere',
+	'optin-title-justoptedin' => 'Wellkumme beim Verschöönerunge Ußprobeere',
+	'optin-title-justoptedout' => 'Merßi, datt De de Verschöönerunge ußprobeere deihß.',
 	'optin-title-feedback' => 'Röckmäldunge',
-	'optin-needlogin' => 'Do mööts alld [$1 enjelogg senn], öm <i lang="en">Beta</i> för Desch enschallde ze künne.',
+	'optin-needlogin' => 'Do mööts alld [$1 enjelogg senn], öm de Verschöönerunge zom Ußprobeere för Desch enschallde ze künne.',
 	'optin-intro' => 'De <i lang="en">Usability Initiative</i> vun de Wikipedia hät kräftesch jet draan jeärbeit, öm de Wikipedia besser zom Bedeene ze maache för de Metmaacher.
-Wells De <i lang="en">Beta</i> ußprobeere?',
+Wells De de Verschöönerunge ußprobeere?',
 	'optin-feedback-intro' => 'Merci för et Ußprobeere.
-Mer wolle jähn weße, wat De vun uns <i lang="en">Beta</i> häls,
+Mer wolle jähn weße, wat De vun uns Verschöönerunge häls,
 un mer sin Der dangkbaa, wann De op di Froore heh
 e paa Antwoote jävve dääts. Et koß nix, un verflich zoh nix.',
 	'optin-feedback-back' => 'Wann De nix ußfölle wells, kanns De och noh $1 zerök jonn.',
-	'optin-success-in' => 'Do bes jäz de <i lang="en">Beta</i> am ußprobeere.
+	'optin-success-in' => 'Do bes jäz de Verschöönerunge am ußprobeere.
 Do kanns doh emmer wider eruß kumme, endämm dat De op „{{int:optin-leave}}“ klecks.',
-	'optin-leave-cancel' => 'Wann De <i lang="en">Beta</i> wigger bruche wells, kanns De noh  $1 retuur jonn.',
-	'optin-success-out' => 'Do häß <i lang="en">Beta</i> verlohße.
+	'optin-leave-cancel' => 'Wann De de Verschöönerunge wigger bruche wells, kanns De noh $1 retuur jonn.',
+	'optin-success-out' => 'Do häß de Verschöönerunge verlohße.
 Do kanns emmer wider zerök kumme, endämm dat De op „{{int:optin-try}}“ klecks.',
 	'optin-success-feedback' => 'Häzlijje Dangk för Ding Rökmäldung.',
 	'optin-accept-short' => 'Lom_mer dat donn!',
-	'optin-accept-long' => '<i lang="en">Beta</i> ußprobeere',
-	'optin-accept-long-anon' => 'Enlogge un de <i lang="en">Beta</i> ußprobeere',
+	'optin-accept-long' => 'Verschöönerunge ußprobeere',
+	'optin-accept-long-anon' => 'Enlogge, un de Verschöönerunge ußprobeere',
 	'optin-deny-short' => 'Nää, dat wulle mer nit',
 	'optin-deny-long' => 'retuur op de vörijje Sigg',
-	'optin-submit-out' => '<i lang="en">Beta</i> verlohße',
+	'optin-submit-out' => 'De Verschöönerunge zom Ußprobeere verlohße',
 	'optin-submit-feedback' => 'Rökmäldunge jävve',
 	'optin-survey-yes' => 'Joh',
 	'optin-survey-no' => 'Nää',
-	'optin-survey-intro' => 'Mer bedangke uns doför, dat De <i lang="en">Beta</i> ußprobeere deihß.
+	'optin-survey-intro' => 'Mer bedangke uns doför, dat De de Verschöönerunge ußprobeere deihß.
 
 Mer dääte jähn weße wat De övver uns neu Ovverflääsch meins. Dröm dääte mer uns freue, wann De unge op e paa kleine Froore antwoote dääts, ih dat De op „[[#leave|{{int:optin-submit-out}}]]“ klecks.',
-	'optin-survey-question-likedislike' => 'Wat hät Der aam <i lang="en">Beta</i> jefalle?
-Wat hät Der aam <i lang="en">Beta</i> nit jefalle?',
-	'optin-survey-question-whyoptout' => 'Woröm deihß De <i lang="en">Beta</i> nit (mieh) bruche? (Beß esu joot, un jif alles aan, wat för Desch shtemme deiht)',
+	'optin-survey-question-likedislike' => 'Wat hät Der aam dä Verschöönerunge zom Ußprobeere jefalle?
+Wat hät Der aam dä Verschöönerunge zom Ußprobeere nit jefalle?',
+	'optin-survey-question-whyoptout' => 'Woröm deihß De de Verschöönerunge zom Ußprobeere nit (mieh) bruche? (Beß esu joot, un jif alles aan, wat för Desch shtemme deiht)',
 	'optin-survey-answer-whyoptout-hard' => 'Et woh mer ze schwiiresch met ömzejonn.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Et hät nit öhndlesch jeflup, wi et sullt.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Wat eruß kütt, kam_mer förheer nit weßße.',
@@ -2875,7 +2877,7 @@ Wat hät Der aam <i lang="en">Beta</i> nit jefalle?',
 	'optin-survey-question-usedtoolbar' => 'Deihß De de neue, ußklappbaa Wärkzüschreih beim Sigge Änndere bruche?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Wann Joh, wat hät Der doh draan jefalle? Wat nit?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Wann nää, woröm dat? Weeß De_t en de Zohkunnf donn? Beß esu joot, un donn dat jet jenouer expleziere.',
-	'optin-survey-question-different' => 'Wat künnte mer anders maache, domet De uns <i lang="en">Beta</i> wigger bruche wells?',
+	'optin-survey-question-different' => 'Wat künnte mer anders maache, domet De uns Verschöönerunge wigger bruche wells?',
 	'optin-survey-question-feedback' => 'Beß esu joot un loß uns Ding Röckmeldunge han:',
 	'optin-survey-question-browser' => 'Wat för ene Brauser bes De am bruche?',
 	'optin-survey-answer-browser-ie5' => 'De Version 5 vum <i lang="en">Internet Explorer</i>',
@@ -4855,13 +4857,21 @@ $messages['tg-cyrl'] = array(
  */
 $messages['tk'] = array(
 	'optin-title-optedout' => 'Betany synap görüň',
+	'optin-title-optedin' => 'Betadan çyk',
+	'optin-title-justoptedin' => 'Beta hoş geldiňiz',
+	'optin-title-justoptedout' => 'Betany synap görendigiňiz üçin sag boluň',
+	'optin-title-feedback' => 'Beta seslenmesi',
 	'optin-intro' => 'Wikipedia Usability Initiative Wikipediýanyň oňaýlylygyny ýokarlandyrmak üçin tagalla baryny edýär.
 Betany synap göresiňiz gelýärmi?',
+	'optin-success-feedback' => 'Seslenmäňiz üçin sag boluň!',
 	'optin-accept-short' => 'Elbetde!',
 	'optin-accept-long' => 'Betany synap gör',
 	'optin-deny-short' => 'Ýok, sag boluň',
 	'optin-deny-long' => 'Öňki sahypa gaýdyp bar',
 	'optin-submit-out' => 'Betadan çyk',
+	'optin-submit-feedback' => 'Seslenme ýazyň',
+	'optin-survey-yes' => 'Hawa',
+	'optin-survey-no' => 'Ýok',
 );
 
 /** Turkish (Türkçe)

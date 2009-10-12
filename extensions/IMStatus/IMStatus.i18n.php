@@ -1038,6 +1038,7 @@ $messages['pl'] = array(
 	'imstatus_details_saa' => 'Aby uzyskać więcej informacji na temat wszystkich stylów i działania, zobacz $1.',
 	'imstatus_your_name' => 'Twoja $1 nazwa',
 	'imstatus_aim_presence' => '$1 pokazuje Twój status oraz link który uruchamia AIM przesyłając mu Twój identyfikator jeśli użytkownik ma zainstalowany program komunikatora.',
+	'imstatus_aim_api' => '$1 pokazuje status z linkiem uruchamiającym w <b>przeglądarce</b> wersję JavaScript komunikatora AIM do wysyłania wiadomości błyskawicznych.',
 	'imstatus_gtalk_code' => 'kod komunikatora google',
 	'imstatus_gtalk_get_code' => 'kod komunikatora google – uzyskaj go z $1.',
 	'imstatus_gtalk_height' => 'wysokość okna w pikselach.',
@@ -1045,6 +1046,8 @@ $messages['pl'] = array(
 	'imstatus_icq_id' => 'identyfikator ICQ',
 	'imstatus_icq_style' => 'liczba z zakresu od 0 do 26 (tak, jest aż 27 dostępnych stylów...).',
 	'imstatus_live_code' => 'Twój identyfikator webowy Live Messengera',
+	'imstatus_live_get_code' => 'Twój identyfikator witryny Live Messanger – <strong>nie jest to Twój adres e‐mailowy</strong>; identyfikator musisz wygenerować w <a href="$1">opcjach swojego Live Messengera</a>.
+Identyfikator jest ciągiem liter i cyfr umieszczonych pomiędzy „$2” a „$3”.',
 	'imstatus_skype_nbstyle' => 'Uwaga: Jeśli wybierzesz styl, który jest związany z jakąś akcją, wybrane działanie zostanie nadpisane domyślną akcją odpowiadającą wybranemu stylowi.',
 	'imstatus_xfire_size' => 'wielkość przycisku od $1 (największy) do $2 (najmniejszy).',
 	'imstatus_yahoo_style' => 'styl przycisku od $1 (najmniejszy) do $2 (największy), $3 i $4 dla poczty głosowej.',

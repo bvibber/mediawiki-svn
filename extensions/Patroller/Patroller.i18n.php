@@ -323,6 +323,14 @@ $messages['de-formal'] = array(
 	'patrol-resume' => 'Klicken Sie hier zum Fortsetzen.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'group-patroller' => 'dewriyeyi',
+	'group-patroller-member' => 'dewriye',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -543,9 +551,9 @@ $messages['gl'] = array(
 * Ver a páxina de conversa',
 	'patrol-another' => 'Mostrar outra edición, se existe.',
 	'patrol-stopped' => 'Optou por non patrullar outra edición. $1',
-	'patrol-resume' => 'Prema aquí para recomezar.',
+	'patrol-resume' => 'Prema aquí para continuar.',
 	'group-patroller' => 'Patrulleiros',
-	'group-patroller-member' => 'Patrulleiro',
+	'group-patroller-member' => 'patrulleiro',
 	'grouppage-patroller' => '{{ns:project}}:Patrulleiro',
 	'right-patroller' => 'Patrullar páxinas',
 );

@@ -5462,6 +5462,7 @@ APC çalışıyor gibi görünmüyor.',
 	'viewapc-insertrate' => 'Ekleme oranı',
 	'viewapc-cachefull' => '"Bellek tam dolu" sayısı',
 	'viewapc-rps' => 'Saniyede $1 istek',
+	'viewapc-info-runtime' => 'Çalışma zamanı bilgisi',
 	'viewapc-info-memory' => 'Sunucu durumu diyagramları',
 	'viewapc-memory-usage-detailed' => 'Hafıza kullanımı<br />
 (çoklu dilimler bölümleri belirtir)',

@@ -233,6 +233,13 @@ $messages['ru'] = array(
 	'mwreleases-desc' => 'Добавляет [[Mediawiki:Mwreleases-list|список]] поддерживаемых выпусков, доступных через API',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'mwreleases-desc' => 'API көмөтүнэн аһыллар таһаарыылар [[Mediawiki:Mwreleases-list|тиһиктэрин]] эбэр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
