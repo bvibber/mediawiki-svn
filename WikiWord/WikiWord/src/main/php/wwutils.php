@@ -424,6 +424,44 @@ class WWUtils {
 	return $list;
     }
 
+    function queryTemplatesOnImagePage($lang, $image) {
+	global $wwTablePrefix, $wwThesaurusDataset, $wwCommonsTablePrefix;
+	$page_table = $this->getWikiTableName($lang, "page");
+	$templatelinks_table = $this->getWikiTableName($lang, "templatelinks");
+
+	$sql = "/* queryTemplatesOnImagePage(" . $this->quote($lang) . ", " . $this->quote($image) . ") */ ";
+
+	$sql .= " SELECT tl_title as template FROM $templatelinks_table as T ";
+	$sql .= " JOIN $page_table as P on P.page_id = T.tl_from AND T.tl_namespace = " . NS_TEMPLATE . " ";
+
+	$sql .= " WHERE P.page_title = " . $this->quote($image);
+	$sql .= " AND P.page_namespace = " . NS_IMAGE;
+
+	return $this->queryWiki($lang, $sql);
+    }
+
+    function getTemplatesOnImagePage($lang, $image) {
+	$rs = $this->queryTemplatesOnImagePage($lang, $image);
+	$list = WWUtils::slurpList($rs, "template");
+	mysql_free_result($rs);
+	return $list;
+    }
+
+    function getTemplateScores($templates, $values = NULL) {
+	global $wwWikiServerName;
+	if ($values === NULL) $values = $wwTemplateScores;
+
+	if (!$values) return 0;
+
+	$score = 0;
+	foreach ($templates as $t) {
+	    $v = @$values[$t];
+	    if ($v) $score += $v;
+	}
+
+	return $score;
+    }
+
     function getRelevantImagesOnPage($lang, $ns, $title, $commonsOnly = false) {
 	$img = $this->getImagesOnPage($lang, 0, $title, true);
 	$timg = $this->getImagesOnPageTemplates($lang, 0, $title, true);
