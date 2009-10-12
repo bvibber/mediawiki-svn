@@ -3106,6 +3106,7 @@ $wgMessageStructure = array(
 		'config-env-bad',
 		'config-env-php',
 		'config-env-latest-ok',
+		'config-env-latest-new',
 		'config-env-latest-old',
 		'config-env-latest-help',
 		'config-no-db',

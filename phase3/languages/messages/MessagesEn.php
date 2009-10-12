@@ -4073,6 +4073,7 @@ You should have received <doclink href=Copying>a copy of the GNU General Public 
 * [http://www.mediawiki.org/wiki/Manual:FAQ FAQ]
 ",
 'config-env-latest-ok' => 'You are installing the latest version of Mediawiki',
+'config-env-latest-new' => "'''Note:''' You are installing a development version of Mediawiki",
 'config-env-latest-old' => "'''Warning''': You are installing an outdated version of Mediawiki",
 'config-env-latest-help' => 'You are installing version $1, but the latest version is $2.
 You are advised to use the latest release, which can be downloaded from [http://www.mediawiki.org/wiki/Download Mediawiki.org]',
