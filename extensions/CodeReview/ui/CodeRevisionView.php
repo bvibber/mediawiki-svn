@@ -7,8 +7,14 @@ class CodeRevisionView extends CodeView {
 		global $wgRequest;
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
-		$this->mRev = $this->mRepo ? $this->mRepo->getRevision( intval( ltrim( $rev, 'r' ) ) ) : null;
+		$this->mRev = $this->mRepo ?
+			$this->mRepo->getRevision( intval( ltrim( $rev, 'r' ) ) ) : null;
 		$this->mPreviewText = false;
+		# Search path for navigation links
+		$this->mPath = htmlspecialchars( trim( $wgRequest->getVal( 'path' ) ) );
+		if ( strlen( $this->mPath ) && $this->mPath[0] !== '/' ) {
+			$this->mPath = "/{$this->mPath}"; // make sure this is a valid path
+		}
 		# URL params...
 		$this->mAddTags = $wgRequest->getText( 'wpTag' );
 		$this->mRemoveTags = $wgRequest->getText( 'wpRemoveTag' );
@@ -74,7 +80,12 @@ class CodeRevisionView extends CodeView {
 		);
 		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mRev->getId() );
 
-		$html = Xml::openElement( 'form', array( 'action' => $special->getLocalUrl(), 'method' => 'post' ) );
+		$html = '';
+		if( $this->mPath != '' ) {
+			$html .= wfMsgExt( 'code-browsing-path', 'parse', $this->mPath );
+		}
+		# Output form
+		$html .= Xml::openElement( 'form', array( 'action' => $special->getLocalUrl(), 'method' => 'post' ) );
 
 		if ( $this->canPostComments() ) {
 			$html .= $this->addActionButtons();
@@ -134,15 +145,16 @@ class CodeRevisionView extends CodeView {
 		global $wgLang;
 
 		$rev = $this->mRev->getId();
-		$prev = $this->mRev->getPrevious();
-		$next = $this->mRev->getNext();
+		$prev = $this->mRev->getPrevious( $this->mPath );
+		$next = $this->mRev->getNext( $this->mPath );
 		$repo = $this->mRepo->getName();
 
 		$links = array();
 
 		if ( $prev ) {
 			$prevTarget = SpecialPage::getTitleFor( 'Code', "$repo/$prev" );
-			$links[] = '&lt;&nbsp;' . $this->mSkin->link( $prevTarget, "r$prev" );
+			$links[] = '&lt;&nbsp;' . $this->mSkin->link( $prevTarget, "r$prev",
+				array(), array('path' => $this->mPath) );
 		}
 
 		$revText = "<b>r$rev</b>";
@@ -156,7 +168,8 @@ class CodeRevisionView extends CodeView {
 
 		if ( $next ) {
 			$nextTarget = SpecialPage::getTitleFor( 'Code', "$repo/$next" );
-			$links[] = $this->mSkin->link( $nextTarget, "r$next" ) . '&nbsp;&gt;';
+			$links[] = $this->mSkin->link( $nextTarget, "r$next",
+				array(), array('path' => $this->mPath) ) . '&nbsp;&gt;';
 		}
 
 		return $wgLang->pipeList( $links );
@@ -608,6 +621,7 @@ class CodeRevisionView extends CodeView {
 		return '<div class="mw-codereview-post-comment">' .
 			$preview .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
+			Xml::hidden( 'path', $this->mPath ) .
 			( $parent ? Xml::hidden( 'wpParent', $parent ) : '' ) .
 			'<div>' .
 			Xml::openElement( 'textarea', array(

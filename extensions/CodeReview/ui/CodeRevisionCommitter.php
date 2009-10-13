@@ -53,9 +53,10 @@ class CodeRevisionCommitter extends CodeRevisionView {
 		$dbw->commit();
 
 		// Return to rev page
-		if ( !$redirTitle ) {
+		if ( !$redirTarget ) {
 			if ( $this->jumpToNext ) {
-				if ( $next = $this->mRev->getNextUnresolved() ) {
+				$next = $this->mRev->getNextUnresolved( $this->mPath );
+				if ( $next ) {
 					$redirTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $next );
 				} else {
 					$redirTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );
@@ -65,7 +66,7 @@ class CodeRevisionCommitter extends CodeRevisionView {
 				$redirTitle = $redirTarget ? $redirTarget : $this->revLink();
 			}
 		}
-		$wgOut->redirect( $redirTitle->getFullUrl() );
+		$wgOut->redirect( $redirTitle->getFullUrl( array('path' => $this->mPath) ) );
 	}
 
 	public function validPost( $permission ) {

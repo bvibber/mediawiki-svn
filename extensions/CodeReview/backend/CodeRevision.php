@@ -629,28 +629,24 @@ class CodeRevision {
 		return $out;
 	}
 
-	public function getPrevious() {
-		// hack!
-		if ( $this->mId > 1 ) {
-			return $this->mId - 1;
-		} else {
-			return false;
-		}
-	}
-
-	public function getNext() {
+	public function getPrevious( $path = '' ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$encId = $dbr->addQuotes( $this->mId );
-		$row = $dbr->selectRow( 'code_rev',
-			'cr_id',
-			array(
-				'cr_repo_id' => $this->mRepoId,
-				"cr_id > $encId" ),
+		$tables = array( 'code_rev' );
+		if ( $path != '' ) {
+			$conds = $this->getPathConds( $path );
+			$order = 'cp_rev_id DESC';
+			$tables[] = 'code_paths';
+		} else {
+			$conds = array( 'cr_repo_id' => $this->mRepoId );
+			$order = 'cr_id DESC';
+		}
+		$conds[] = "cr_id < $encId";
+		$row = $dbr->selectRow( $tables, 'cr_id',
+			$conds,
 			__METHOD__,
-			array(
-				'ORDER BY' => 'cr_repo_id, cr_id',
-				'LIMIT' => 1 ) );
-
+			array( 'ORDER BY' => $order )
+		);
 		if ( $row ) {
 			return intval( $row->cr_id );
 		} else {
@@ -658,19 +654,62 @@ class CodeRevision {
 		}
 	}
 
-	public function getNextUnresolved() {
+	public function getNext( $path = '' ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$encId = $dbr->addQuotes( $this->mId );
-		$row = $dbr->selectRow( 'code_rev',
-			'cr_id',
-			array(
-				'cr_repo_id' => $this->mRepoId,
-				"cr_id > $encId",
-				'cr_status' => array( 'new', 'fixme' ) ),
+		$tables = array( 'code_rev' );
+		if ( $path != '' ) {
+			$conds = $this->getPathConds( $path );
+			$order = 'cp_rev_id ASC';
+			$tables[] = 'code_paths';
+		} else {
+			$conds = array( 'cr_repo_id' => $this->mRepoId );
+			$order = 'cr_id ASC';
+		}
+		$conds[] = "cr_id > $encId";
+		$row = $dbr->selectRow( $tables, 'cr_id',
+			$conds,
 			__METHOD__,
-			array(
-				'ORDER BY' => 'cr_repo_id, cr_id',
-				'LIMIT' => 1 )
+			array( 'ORDER BY' => $order )
+		);
+		if ( $row ) {
+			return intval( $row->cr_id );
+		} else {
+			return false;
+		}
+	}
+
+	protected function getPathConds( $path ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		return array(
+			'cp_repo_id' => $this->mRepoId,
+			'cp_path LIKE ' . $dbr->addQuotes( $dbr->escapeLike( $path ) . '%' ),
+			// performance
+			'cp_rev_id > ' . $this->mRepo->getLastStoredRev() - 20000,
+			// join conds
+			'cr_repo_id = cp_repo_id',
+			'cr_id = cp_rev_id'
+		);
+	}
+
+	public function getNextUnresolved( $path = '' ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$encId = $dbr->addQuotes( $this->mId );
+		$tables = array( 'code_rev' );
+		if ( $path != '' ) {
+			$conds = $this->getPathConds( $path );
+			$order = 'cp_rev_id ASC';
+			$tables[] = 'code_paths';
+		} else {
+			$conds = array( 'cr_repo_id' => $this->mRepoId );
+			$order = 'cr_id ASC';
+		}
+		$conds[] = "cr_id > $encId";
+		$conds['cr_status'] = array( 'new', 'fixme' );
+		$row = $dbr->selectRow( $tables, 'cr_id',
+			$conds,
+			__METHOD__,
+			array( 'ORDER BY' => $order )
 		);
 		if ( $row ) {
 			return intval( $row->cr_id );
