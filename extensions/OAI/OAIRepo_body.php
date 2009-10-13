@@ -571,28 +571,30 @@ class OAIRepo {
 	}
 
 	function fetchRecord( $pageid ) {
-		extract( $this->_db->tableNames( 'updates', 'page', 'revision', 'text' ) );
-		$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
-			page_namespace,
-			page_title,
-			old_text,
-			old_flags,
-			rev_id,
-			rev_deleted,
-			rev_comment,
-			rev_user,
-			rev_user_text,
-			rev_timestamp,
-			page_restrictions,
-			rev_minor_edit
-			FROM $updates,$page,$revision,$text
-			WHERE up_page=" . IntVal( $pageid ) . '
-			AND page_id=up_page
-			AND page_latest=rev_id
-			AND rev_text_id=old_id
-			LIMIT 1';
+		$db = $this->_db;
+		
+		$tables = array( 'updates', 'page', 'revision', 'text' );
+		$fields = array( 'page_namespace', 'page_title', 'old_text', 'old_flags',
+				'rev_id', 'rev_deleted', 'rev_comment', 'rev_user',
+				'rev_user_text', 'rev_timestamp', 'page_restrictions',
+				'rev_minor_edit', 'page_is_redirect', 'up_sequence',
+				'page_id', 'up_timestamp', 'up_action', 'up_page',
+				'page_len', 'page_touched', 'page_counter', 'page_latest',);
+		$conds = array();
+		$options = array();
+		$join_conds = array( 'page' => array( 'LEFT JOIN', 'page_id=up_page' ),
+				'revision' => array( 'LEFT JOIN', 'page_latest=rev_id' ),
+				'text' => array( 'LEFT JOIN', 'rev_text_id=old_id' ) );
+				
+		$conds['up_page'] = $pageid;
+		
+		$options['LIMIT'] = 1;
+		
+		wfRunHooks( 'OAIFetchRecordQuery', array( &$tables, &$fields, &$conds,
+						&$options, &$join_conds ) );
 
-		return $this->_db->resultObject( $this->_db->query( $sql ) );
+		return $db->select( $tables, $fields, $conds, __METHOD__,
+					$options, $join_conds );
 	}
 
 	function fetchRows( $from, $until, $chunk, $token = null ) {
