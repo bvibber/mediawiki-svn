@@ -180,6 +180,15 @@ $messages['de-formal'] = array(
 	'tooltip-pt-optin-feedback' => 'Feedback über Ihre Erfahrungen mit den neuen Features abgeben',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'tooltip-pt-optin-try' => 'xususano neweyani tesel bıker/bıcerebın',
+	'tooltip-pt-optin-leave' => 'xususano neweyan bıqefelen',
+	'tooltip-pt-optin-feedback' => 'pê xususano neweyan derheqê tecrubeyanê xo de malumat bıde',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

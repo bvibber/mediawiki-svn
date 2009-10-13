@@ -123,6 +123,14 @@ $messages['de'] = array(
 	'prefs-experimental' => 'Experimentelle Optionen',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'usabilityinitiative' => 'teşebbusê şuxulnayişi',
+	'prefs-experimental' => 'xususê teselkerdışi/cerebnayişi',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -474,6 +482,7 @@ $messages['si'] = array(
 $messages['sk'] = array(
 	'usabilityinitiative' => 'Iniciatíva použiteľnosti',
 	'usabilityinitiative-desc' => 'Vlastnosti na rozšírenie použiteľnosti MediaWiki vyvinuté v rámci Iniciatívy použiteľnosti Wikipédie',
+	'prefs-experimental' => 'Experimentálne vlastnosti',
 );
 
 /** Slovenian (Slovenščina)

@@ -169,6 +169,16 @@ $messages['de-formal'] = array(
 Wenn Sie angemeldet sind, können Sie das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich Ihrer Einstellungen abschalten.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'editwarning' => 'hişyariyê vurnayişi',
+	'editwarning-warning' => 'ihtimal o ke wexta şıma peli ra bıveci, vurnayiş o ke şıma kerdo, hewna şiyêro .
+eke şıma kewtê hesabê xo, no hişyari tercihanê xo ra şıma eşkeni "{{int:prefs-editing}}" bıvındarnî .',
+	'editwarning-preference' => 'wexta ke ez pelo nêqeydbiyaye ra veciyaya mı hişyar bıker',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -409,8 +419,8 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'editwarning' => '편집 주의',
 	'editwarning-desc' => '저장하지 않고 화면을 닫을 때 경고를 표시해 줍니다.',
-	'editwarning-warning' => '이 창을 떠나면 저장하지 않은 편집이 모두 사라집니다.
-이 경고를 환경 설정의 "{{int:prefs-editing}}"에서 비활성화 할 수 있습니다.',
+	'editwarning-warning' => '이 창에서 벗어나면 저장하지 않은 편집이 모두 사라집니다.
+로그인한 경우, 환경 설정 ‘{{int:prefs-editing}}’란에서 이 경고창을 띄우지 않도록 설정할 수 있습니다.',
 	'editwarning-preference' => '수정한 내용을 저장하지 않고 편집 양식을 닫거나 다른 페이지로 이동할 때 알림',
 );
 
@@ -605,7 +615,7 @@ $messages['sk'] = array(
 	'editwarning' => 'Upozornenie pri úprave',
 	'editwarning-desc' => 'Zobrazí upozornenie, keď sa používateľ pokúsi opustiť formulár na úpravy bez uloženia',
 	'editwarning-warning' => 'Ak opustíte túto stránku, môžete tým stratiť všetky vykonané zmeny.
-Toto upozornenie môžete vypnúť v sekcii „{{int:prefs-editing}}“ svojich nastavení.',
+Ak ste prihlásený, toto upozornenie môžete vypnúť v sekcii „{{int:prefs-editing}}“ svojich nastavení.',
 	'editwarning-preference' => 'Upozorniť ma, keď opúšťam upravovaciu stránku s neuloženými zmenami',
 );
 

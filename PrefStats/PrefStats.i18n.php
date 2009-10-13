@@ -41,6 +41,7 @@ Configure $wgPrefStatsTrackPrefs to track preferences.',
 );
 
 /** Message documentation (Message documentation)
+ * @author GerardM
  * @author Purodha
  * @author Siebrand
  * @author Umherirrender
@@ -392,6 +393,34 @@ Klicke auf eine, um Statistiken darüber zu erhalten.',
 $messages['de-formal'] = array(
 	'prefstats-list-intro' => 'Derzeit werden die folgenden Einstellungen aufgezeichnet.
 Klicken Sie auf eine, um Statistiken darüber zu erhalten.',
+);
+
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'prefstats' => 'istatiskê tercihi',
+	'prefstats-title' => 'istatiskê tercihi',
+	'prefstats-list-intro' => 'nıka tercihê cêrıni seyr beni.
+qey vinayişê istatiskê elaqedar biyayeyani bıtıknê',
+	'prefstats-noprefs' => 'nıka tercihi seyr nêbeni
+qey seyrkerdışê tercihani no $wgPrefStatsTrackPrefs\'i ronê/vırazê.',
+	'prefstats-counters' => '* aktif biyayişê istatiskê tercihani ra nat $1 no/na {{PLURAL:$1|karber/e|karber/e}} no tercih kerdo/a aktif.
+** $2 {{PLURAL:$2|karber/e|karber/e}} hema zi bı aktif şuxulneno/a
+** $3 {{PLURAL:$3|karber/e|karber/e}} heta nıka pasif verdayo/a',
+	'prefstats-counters-expensive' => '*aktif biyayişê istatiskê tercihani ra nat $1 no/na karber/e no tercih kerdo/a aktif. 
+**$2 karber/e hema zi bı aktif şuxulneno/a 
+**$3 karber/e heta nıka pasif verdayo/a 
+*pêro piya, ındek/honde $4 {{PLURAL:$4|karber/e|karber/e}} no tercihi eyar kerd',
+	'prefstats-xaxis' => 'wext (saat)',
+	'prefstats-factors' => 'amarê ra motışi: $1',
+	'prefstats-factor-hour' => 'saat',
+	'prefstats-factor-sixhours' => 'şeş seet',
+	'prefstats-factor-day' => 'roc',
+	'prefstats-factor-week' => 'hefte',
+	'prefstats-factor-twoweeks' => 'dı hefte',
+	'prefstats-factor-fourweeks' => 'çar hefte',
+	'prefstats-legend-out' => 'cay o ke diyo kışt',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1505,6 +1534,7 @@ Clique numa para ver as estatísticas sobre ela.',
 	'prefstats-factor-week' => 'semana',
 	'prefstats-factor-twoweeks' => 'duas semanas',
 	'prefstats-factor-fourweeks' => 'quatro semanas',
+	'prefstats-factor-default' => 'repor a escala padrão',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
