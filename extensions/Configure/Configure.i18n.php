@@ -4352,6 +4352,9 @@ $messages['id'] = array(
 	'configure-js-remove' => 'Hapus',
 	'configure-js-biglist-show' => '[tampilkan rincian]',
 	'configure-js-biglist-hide' => '[sembunyikan rincian]',
+	'configure-js-search-prompt' => '
+
+Kueri:',
 	'configure-old' => 'Versi lama',
 	'configure-old-changes' => 'ubah',
 	'configure-old-summary' => '$1 oleh $2 $4 $3',
@@ -4395,6 +4398,7 @@ $messages['id'] = array(
 	'configure-throttle-action-edit' => 'Sunting',
 	'configure-throttle-action-move' => 'Pindahkan',
 	'configure-throttle-action-rollback' => 'Kembalikan',
+	'configure-throttle-summary' => '$1 aksi dalam $2 detik.',
 	'configure-condition-operator' => 'Operator:',
 	'configure-condition-operator-or' => 'Or',
 	'configure-condition-operator-and' => 'And',
@@ -4406,6 +4410,12 @@ $messages['id'] = array(
 	'configure-condition-description-3' => 'Surel terkonfirmasi',
 	'configure-condition-description-5' => 'Alamat IP pengguna adalah $1',
 	'configure-condition-description-6' => 'Alamat IP pengguna pada rentang $1',
+	'configure-boolop-description-or' => 'Setidaknya satu kondisi yang harus benar',
+	'configure-boolop-description-xor' => 'Tepat satu kondisi yang harus benar',
+	'configure-boolop-description-not' => 'Tidak ada kondisi yang harus benar',
+	'configure-farmer-settings' => '[[Special:Configure|Konfigurasi wiki ini]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Konfigurasi ekstensi untuk wiki ini]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Daftar ekstensi tersedia untuk wiki ini]].',
 );
 
 /** Ido (Ido)
@@ -4767,8 +4777,8 @@ $messages['ja'] = array(
 	'configure-throttle-action-mailpassword' => 'パスワードリマインダーを送信',
 	'configure-throttle-action-emailuser' => 'メール送信',
 	'configure-throttle-group-anon' => '匿名の利用者すべて',
-	'configure-throttle-group-user' => 'ユーザーアカウントにつき',
-	'configure-throttle-group-newbie' => '新規ユーザーアカウントにつき',
+	'configure-throttle-group-user' => '利用者アカウントにつき',
+	'configure-throttle-group-newbie' => '新規利用者アカウントにつき',
 	'configure-throttle-group-ip' => 'IPアドレスにつき',
 	'configure-throttle-group-subnet' => 'クラス C サブネットにつき',
 	'configure-throttle-count' => '許可された操作数:',

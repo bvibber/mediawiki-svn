@@ -471,6 +471,16 @@ $messages['mk'] = array(
 	'right-whatismyip' => 'Погледајте ја [[Special:WhatIsMyIP|вашата IP адреса]]',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'whatismyip' => 'എന്റെ ഐ.പി. എന്താണ്?',
+	'whatismyip-desc' => 'ഈ ഉപയോക്താവിന്റെ [[Special:WhatIsMyIP|ഐ.പി. വിലാസം]] പ്രദർശിപ്പിക്കുക',
+	'whatismyip-out' => 'താങ്കളുടെ ഐ.പി. വിലാസം:',
+	'right-whatismyip' => '[[Special:WhatIsMyIP|സ്വന്തം ഐ.പി. വിലാസം]] കാണുക',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

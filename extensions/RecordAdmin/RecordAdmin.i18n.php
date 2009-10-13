@@ -883,6 +883,7 @@ $messages['hu'] = array(
 	'recordadmin-buttoncreate' => 'Létrehozás',
 	'recordadmin-buttonreset' => 'Alaphelyzet',
 	'recordadmin-searchresult' => 'Keresési eredmények',
+	'recordadmin-updatesuccess' => '$1 frissítve',
 	'recordadmin-buttonsave' => 'Mentés',
 	'recordadmin-newcreated' => 'Új $1 létrehozva nyilvános űrlap alapján',
 	'recordadmin-summary-typecreated' => 'Új $1 létrehozva',

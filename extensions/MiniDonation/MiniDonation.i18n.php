@@ -92,6 +92,15 @@ $messages['ca'] = array(
 	'donationform-submit' => 'Donació via PayPal',
 );
 
+/** Czech (Česky)
+ * @author Mercy
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'donationform-desc' => 'Přidává značku <tt>&lt;donateform&gt;</tt> pro možnost přispívání prostřednictvím PayPalu',
+	'donationform-submit' => 'Darovat prostřednictvím služby PayPal',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

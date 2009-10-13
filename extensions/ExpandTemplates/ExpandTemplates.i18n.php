@@ -1623,6 +1623,7 @@ samotného MediaWiki.',
 	'expand_templates_xml_output' => 'XML výstup',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Odstrániť komentáre',
+	'expand_templates_remove_nowiki' => 'Potlačiť značky <nowiki> vo výsledku',
 	'expand_templates_generate_xml' => 'Zobraziť strom XML',
 	'expand_templates_preview' => 'Náhľad',
 );

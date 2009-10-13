@@ -957,10 +957,19 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'povwatch' => 'POV-figyelő',
 	'povwatch_no_session' => 'Hiba: nem lehet elküldeni az űrlap adatait a munkamenetadatok hiánya miatt.',
+	'povwatch_already_subscribed' => 'Már előfizettél a POV-figyelőre',
+	'povwatch_subscribed' => 'Előfizettél a POV-figyelőre',
+	'povwatch_not_subscribed' => 'Nem vagy a POV-figyelő előfizetője, így nem is tudsz leiratkozni róla.',
 	'povwatch_invalid_title' => 'A megadott cím érvénytelen',
+	'povwatch_subscriber_list_intro' => '<strong>Előfizetők</strong>',
 	'povwatch_unknown_subpage' => 'Ismeretlen allap.',
+	'povwatch_push' => 'Hozzáfűz',
 	'povwatch_title' => 'Cím:',
+	'povwatch_comment' => 'Naplómegjegyzés:',
+	'povwatch_no_log' => 'Nincsenek naplóbejegyzések.',
+	'povwatch_no_subscribers' => 'Nincsenek előfizetők.',
 	'povwatch_unsubscribe' => 'Leiratkozás',
 	'povwatch_subscribe' => 'Feliratkozás',
 	'povwatch_added' => 'hozzáadva',

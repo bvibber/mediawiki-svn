@@ -2053,6 +2053,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -2078,7 +2079,7 @@ $messages['ml'] = array(
 	'whitelistnewtablereview' => 'സം‌ശോധനം',
 	'whitelistpagelist' => '{{SITENAME}} സം‌രംഭത്തില്‍ $1ന്റെ താളുകള്‍',
 	'whitelistnever' => 'ഒരിക്കലും അരുത്:',
-	'whitelistnummatches' => ' - $1 യോജിച്ച ഫലങ്ങള്‍',
+	'whitelistnummatches' => '- {{PLURAL:$1|ഒരു പൊരുത്തം|$1 പൊരുത്തങ്ങൾ}}',
 );
 
 /** Marathi (मराठी)

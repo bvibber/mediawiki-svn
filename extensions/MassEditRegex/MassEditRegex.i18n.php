@@ -149,6 +149,13 @@ $messages['bs'] = array(
 	'masseditregex-tooltip-execute' => 'Primijeni ove izmjene na svaku stranicu',
 );
 
+/** German (Deutsch)
+ * @author Tbleher
+ */
+$messages['de'] = array(
+	'masseditregex-badregex' => 'Ungültiger regulärer Ausdruck:',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -1534,6 +1534,7 @@ $messages['hu'] = array(
 	'tasks_title' => '„$1” feladatai',
 	'tasks_form_new' => 'Új feladat létrehozása',
 	'tasks_form_comment' => 'Megjegyzés',
+	'tasks_ok1' => 'Az új feladat létrehozva!',
 	'tasks_existing_header' => 'Meglevő feladatok',
 	'tasks_assign_me' => 'Saját magam hozzárendelése',
 	'tasks_close' => 'Feladat lezárása',

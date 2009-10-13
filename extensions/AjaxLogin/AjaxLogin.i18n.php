@@ -763,6 +763,7 @@ Mogli biste da izgubite sve nesnimljene izmene na ovoj strani ako je sada napust
 /** Swedish (Svenska)
  * @author Grillmannen
  * @author Najami
+ * @author Per
  */
 $messages['sv'] = array(
 	'ajaxlogin-desc' => 'En dynamisk box som låter användare logga in och komma ihåg lösenord',
@@ -771,6 +772,9 @@ Detta kommer att föra dig bort från den här redigeringssidan och du kan komma
 	'ajaxLogin2' => 'Är du säker?
 Du kan förlora din redigering om du lämnar den här sidan nu.',
 	'ajaxlogin-create' => 'Skapa ett konto',
+	'al-nosuchuser' => 'Det finns ingen användare men namnet "$1".
+Användarnamn skiljer på versaler och gemener.
+Kontrollera din stavning.',
 );
 
 /** Telugu (తెలుగు)

@@ -3079,6 +3079,7 @@ $messages['sk'] = array(
 	'contribstats-donations' => 'Príspevky',
 	'contribstats-conversion' => 'Konverzný kurz (%)',
 	'contribstats-template' => 'Šablóna',
+	'contribstats-nodata' => 'Neboli poskytnuté žiadne údaje',
 	'fundraiserstatistics' => 'Štatistika fundraisingu',
 	'fundraiserstats-date' => 'Dátum',
 	'fundraiserstats-day' => 'Deň $1 z $2',

@@ -1159,6 +1159,25 @@ $messages['mk'] = array(
 	'ratinghistory-none' => 'Нема доволно податоци од оценувачите за исцртување на графиконот во овој момент.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'ratinghistory' => 'താളിന്റെ നിലവാരമളക്കലിന്റെ നാൾവഴി',
+	'ratinghistory-tab' => 'നിലവാരമളക്കൽ',
+	'ratinghistory-link' => 'താളിന്റെ നിലവാരം',
+	'ratinghistory-period' => 'കാലയളവ്:',
+	'ratinghistory-month' => 'കഴിഞ്ഞ മാസം',
+	'ratinghistory-3months' => 'കഴിഞ്ഞ 3 മാസം',
+	'ratinghistory-year' => 'കഴിഞ്ഞ വർഷം',
+	'ratinghistory-3years' => 'കഴിഞ്ഞ 3 വർഷം',
+	'ratinghistory-ave' => 'ശരാശരി: $1',
+	'ratinghistory-table' => 'വായനക്കാർ നൽകിയ മതിപ്പ് നിലവാരത്തിന്റെ പൊതു അവലോകനം',
+	'ratinghistory-users' => 'നിലവാരമിട്ട ഉപയോക്താക്കൾ',
+	'ratinghistory-table-rating' => 'നിലവാരം കണ്ടെത്തൽ',
+	'ratinghistory-table-votes' => 'വോട്ടുകൾ',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

@@ -469,6 +469,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'simpleantispam' => 'താങ്കളുടെ തിരുത്തൽ സ്പാം വിരുദ്ധ തന്ത്രത്തെ ഉണർത്തിയിരിക്കുന്നു',
 	'simpleantispam-label' => "സ്പാം വിരുദ്ധ പരിശോധന.
 ഇത് '''പൂരിപ്പിക്കരുത്'''",
 );

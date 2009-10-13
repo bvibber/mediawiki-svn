@@ -1087,6 +1087,7 @@ $messages['lv'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -1099,6 +1100,7 @@ $messages['ml'] = array(
 	'sitematrix-total' => "'''മൊത്തം എണ്ണം: $1'''",
 	'sitematrix-sitetotal' => 'മൊത്തം',
 	'sitematrix-private' => 'സ്വകാര്യം',
+	'sitematrix-fishbowl' => 'തിരുത്തൽ പരിമിതപ്പെടുത്തിയിരിക്കുന്നു',
 );
 
 /** Marathi (मराठी)

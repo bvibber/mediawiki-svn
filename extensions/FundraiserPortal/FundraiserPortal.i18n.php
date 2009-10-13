@@ -193,6 +193,23 @@ $messages['de'] = array(
 	'fundraiserportal-tourmaline-close' => 'Von nun an verbergen',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'fundraiserportal' => 'Portalê pere arîdayîşî',
+	'fundraiserportal-desc' => '"Destekê pere bide" portal ke ser de ey rê de bike.',
+	'fundraiserportal-plain-button' => 'Wîkîpedîya rê destek bide!',
+	'fundraiserportal-ruby-button' => 'Yardimê Pere Bike',
+	'fundraiserportal-rubytext-button' => 'Yardimê Pere Bike',
+	'fundraiserportal-rubytext-message' => 'Destekê pere şima ma ra zaf yardim kenî ke ma eşkenî Wîkîpedîya herkesî rê beleş biyar.',
+	'fundraiserportal-rubytext-close' => 'Îtîya ra beni hin ena binumne',
+	'fundraiserportal-sapphire-button' => 'Yardimê Pere Bike',
+	'fundraiserportal-tourmaline-button' => 'Yardimê Pere Bike',
+	'fundraiserportal-tourmaline-message' => 'Destekê pere şima ma ra zaf yardim kenî ke ma eşkenî Wîkîpedîya herkesî rê beleş biyar.',
+	'fundraiserportal-tourmaline-close' => 'Îtîya rê penî ra binumne',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

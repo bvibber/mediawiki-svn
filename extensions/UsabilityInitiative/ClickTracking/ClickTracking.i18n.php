@@ -505,11 +505,13 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Mvrban
  * @author Suradnik13
  */
 $messages['hr'] = array(
 	'clicktracking' => 'Praćenje klikova u Inicijativi za uporabljivosti',
 	'clicktracking-desc' => 'Praćenje klikova, napravljeno za praćenje događaja koji ne dovode do osvježavanja stanice',
+	'ct-start-date' => 'Početni datum (DDMMYYYY)',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -667,6 +669,14 @@ $messages['km'] = array(
 	'ct-start-date' => 'កាលបរិច្ឆេទ​ចាប់ផ្ដើម (YYYYMMDD)',
 	'ct-end-date' => 'កាលបរិច្ឆេទ​បញ្ចប់ (YYYYMMDD)',
 	'ct-and' => 'និង​',
+);
+
+/** Korean (한국어)
+ * @author Klutzy
+ */
+$messages['ko'] = array(
+	'clicktracking' => 'Usability Initiative 사용자 클릭 추적기',
+	'clicktracking-desc' => '마우스 클릭 이벤트 중에서 웹 페이지 새로고침과 관계없는 것들을 추적합니다.',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -971,6 +981,7 @@ $messages['sah'] = array(
 $messages['sk'] = array(
 	'clicktracking' => 'Sledovanie kliknutí pre Iniciatívu použiteľnosti',
 	'clicktracking-desc' => 'Sledovanie kliknutí, na sledovanie udalostí, ktoré nespôsobujú opätovné načítanie stránky',
+	'ct-title' => 'Agregovaných kliknutí',
 	'ct-event-name' => 'Názov udalosti',
 	'ct-expert-header' => 'Kliknutia „expertov“',
 	'ct-intermediate-header' => 'Kliknutia „pokročilých“',
@@ -983,6 +994,12 @@ $messages['sk'] = array(
 	'ct-beginner' => 'Začiatočník',
 	'ct-intermediate' => 'Pokročilý',
 	'ct-expert' => 'Expert',
+	'ct-date-range' => 'Rozsah dátumov',
+	'ct-editing' => 'Momentálne upravuje:',
+	'ct-anon-users' => 'Anonymní používatelia',
+	'ct-user-contribs' => 'Používateľských príspevkov celkom',
+	'ct-user-span' => 'Používateľských príspevkov za obdobie',
+	'ct-and' => 'a',
 );
 
 /** Slovenian (Slovenščina)

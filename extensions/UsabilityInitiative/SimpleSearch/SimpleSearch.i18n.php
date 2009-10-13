@@ -148,6 +148,15 @@ $messages['de'] = array(
 	'simplesearch-containing' => 'enthält …',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'simplesearch' => 'cıgêrayişo basit',
+	'simplesearch-search' => 'cıgêr',
+	'simplesearch-containing' => 'tede yo ke esto...',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -300,12 +309,14 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Mvrban
  * @author Suradnik13
  */
 $messages['hr'] = array(
 	'simplesearch' => 'Jednostavno pretraživanje',
 	'simplesearch-desc' => 'Dodaje dodatne mogućnosti Vectorovom pojednostavljenom pretraživanju',
 	'simplesearch-search' => 'Traži',
+	'simplesearch-containing' => 'sadrži....',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

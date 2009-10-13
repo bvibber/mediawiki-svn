@@ -984,6 +984,82 @@ Wir möchten gerne erfahren, was Sie über unsere neue Benutzeroberfläche denke
 	'optin-survey-question-changes' => 'Welche Änderungen an der Beta würden Sie gerne in Zukunft sehen (wählen Sie alles Zutreffende aus)?',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'optin-title-optedin' => 'Beta ra vec',
+	'optin-title-justoptedin' => 'şıma xeyr ameyî Betayi',
+	'optin-title-justoptedout' => 'şıma Beta tesel kerd/cerebna, ma zaf tşk keni',
+	'optin-needlogin' => "qey cerebnayişê Beta'yi [$1 şıma gani cıkewê].",
+	'optin-intro' => 'Wikipediya zaf xebıtyena qey aver şiyayişi.
+şıma qayili Beta tesel bıkeri / bıcerebi?',
+	'optin-feedback-intro' => 'qey cerebnayişê Betayi ma tşk keni.
+Cêr de anketê ma esto, Beta ser çı pêşniyazê şıma  esto ma re bışawe.',
+	'optin-feedback-back' => 'eke şıma qayil niyê anket de keri şıma eşkeni agêrê no pel $1',
+	'optin-success-in' => 'Şıma nıka Beta cerebneni.
+şıma key qayil bi tera bıveci, ser ekran de gureyê "{{int:optin-leave}}"yi bıtıknê u bıvecê.',
+	'optin-leave-cancel' => 'eke şıma qayili Beta bışuxulnî tede bımanî, şıma eşkeni agêri no $1 peli',
+	'optin-success-out' => 'şıma beta ra bı serkewte veciyê.
+serê ekrani de hetê raşt de gıreyê "{{int:optin-try}}" i esto, şıma key qayil bi dekewe Betayi tiya bnıtıknê.',
+	'optin-accept-short' => 'Hayde bêrê ma bıkerî',
+	'optin-accept-long' => 'Try Beta bıcerebın/tesel bıker',
+	'optin-accept-long-anon' => 'cıkewê u Beta ışuxulnê',
+	'optin-deny-short' => 'nê tşk kena',
+	'optin-deny-long' => 'agêr pelo verin',
+	'optin-submit-out' => 'Beta ra vec',
+	'optin-submit-feedback' => 'feedback bıde',
+	'optin-survey-yes' => 'e/belê/ya/heya',
+	'optin-survey-no' => 'nê',
+	'optin-survey-intro' => 'qey cerebnayişê Betayi ma tşk keni.
+Beta ser çı pêşniyazê şıma  esto ma re bışawe. seba anketi:
+ "[[#leave|{{int:optin-submit-out}}]]"',
+	'optin-survey-question-likedislike' => 'şıma çıtayê/çiyê Betayi ra hes keni? çıtayê ey ra hes nêkeni?',
+	'optin-survey-question-whyoptout' => 'şıma çıra Beta ra veceni? (kerem kerê çıtayê/çiyê ey şıma re weş o, nişane bıkerê)',
+	'optin-survey-answer-whyoptout-hard' => 'xebıtnayiş zaf zehmet o',
+	'optin-survey-answer-whyoptout-didntwork' => 'raşt/rınd nêxebıtyena',
+	'optin-survey-answer-whyoptout-notpredictable' => 'qeydeyek o xebıtyena, kes nêzano texmin bıkero',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'aseyişê/esayişê aye rınd niya',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'nizam u fesalê aye rınd niyo',
+	'optin-survey-answer-whyoptout-other' => 'sebebo bin:',
+	'optin-survey-question-explain' => 'kerem kerê cewabê xo derg u dıla eşkera kerê:',
+	'optin-survey-question-techfail' => 'wexta şıma Beta xebıtnayene çı arızaya tekni bı nê nıbı?',
+	'optin-survey-question-techfail-ifyes' => 'eke cewabê şıma e/belê yo, kerem kerê derg u dıla eşkera kerê:',
+	'optin-survey-question-usedtoolbar-ifyes' => 'eke e/belê yo, şıma çıta/çı ra heskerd, çı ra hes nêkerd?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Eğer hayırsa, neden? Gelecekte kullanacak mısınız? Lütfen açıklayın.eke nê yo, çıra? şıma reyna xebıtneni, kerem kerê eşkera bıkerê',
+	'optin-survey-question-different' => 'ma se bıkerdene şıma dewamê Betayi kerdenê?',
+	'optin-survey-question-feedback' => 'feedback bıde:',
+	'optin-survey-question-browser' => 'şıma kam yew/kanci cıgêrayoxi şuxulneni?',
+	'optin-survey-answer-browser-other' => 'cıgêrayoxê bini:',
+	'optin-survey-question-os' => 'şıma kanci/kam yew sistemê xebıtnayiê kompiteri xebıtnenî?',
+	'optin-survey-answer-os-other' => 'sitemê xebıtnayişê kompiteri yê bini',
+	'optin-survey-question-res' => 'ramotışê (resolution) ekranê şıma seyin o?',
+	'optin-survey-question-changes' => 'Şıma Beta de kam yew/kanci vurnayişani qayili bıvini (çıta yo/çi yo ke şıma re munasib o nişan bıkerê)?',
+	'optin-survey-answer-changes-nav' => 'tedegêrayişê keyepeli rehet/asan kerê',
+	'optin-survey-answer-changes-edittools' => 'hacetê nizamdayişi ziyed kerê u dewlemend kerê',
+	'optin-survey-answer-changes-upload' => 'bakerdışê medyayi dewlemend kerê',
+	'optin-survey-answer-changes-lookfeel' => 'esayişê keyepeli rocane kerê',
+	'optin-survey-answer-changes-predictability' => 'performans o ke texmin beno, dewlemend kerê',
+	'optin-survey-answer-changes-custom' => 'xususi kerdışê karberani re destur bıdi',
+	'optin-survey-answer-changes-other' => 'ey bin:',
+	'optin-improvements' => '== çıta/çınay dewlemend bı? ==
+[[File:UsabilityNavigation.png|left|gıre=|esayişê hacetê gêrayişi]]
+;gêrayişê dewlemendkerde yê neweyi
+sistemê gêrayiş ê neweyi, gureyê şıma zaf rehet u asan keno. ca yo ke şıma tede yi mocneno, kar o ke şıma kerdo mocneno, ca yo ke şıma qayili şiyeri cı mocneno, ray mocneno şıma. ser de hetê raşt de yew qutiya neweye niyaro /roniya u pê ına quti cıgêrayiş zaf rehet, asan u pêt o.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|gıre=|esayişê ekranê çuyaya hacetê vurnayişan]]
+;çuyaya hacetê vurnayişan a dewlemend biyayeyan
+simgeya newe u dewlemendbiyayeyan wezifeya her hacetan hewl/rınd mocnena. 
+qısmê ardımi de, qey fesaldayişê wiki re yew çıme ra imkanê gırewtış dano.
+<div style="clear:both;"></div>
+
+== kes seyin daxil beno ==
+derheqê proje de malumat gırewtış u semedê daxil biyayişi kerem kerê[http://usability.wikimedia.org teşebbusê şuxuliyayiş ê wikiyi] ziyaret bıkerê. uca de, zaf çeşit malumati esti. qey persayiş u cewab gırewtışi, kerem kerê [http://usability.wikimedia.org/wiki/Talk:Prototype pelê werê-ameyişi yê prototipi] bıxebıtnê. şıma çı mesela ra behs keni ey pelê werê-ameyişan bıxebıtnê. eke şıma xeta di, kerem kerê  [http://usability.wikimedia.org/wiki/Talk:Releases/pelê werê-ameyişê acai acai de] mışore bıkerê cewabê xo bınusê ya zi [https://bugzilla.wikimedia.org Bugzilla]\'yi bıxebıtnê.
+
+ma teşekkur keni, ma paweyê/pabeyê şımayi!',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -4482,12 +4558,12 @@ Chceli by sme vedieť, čo si myslíte o novom rozhraní, takže by sme ocenili 
 	'optin-survey-answer-changes-custom' => 'Umožniť používateľom väčšiu prispôsobiteľnosť',
 	'optin-survey-answer-changes-other' => 'Iné:',
 	'optin-improvements' => '== Čo bolo zlepšené? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Snímka nových navigačných záložiek]]
 ;Rozšírená navigácia
 Vďaka novému navigačnému systému je jednoduchšie rozlíšiť, kde sa nachádzate a tiež kam a ako sa môžete dostať. Vďaka vyhľadávaciemu poľu v pravom hornom rohu je prístup jednoduchší a vyhľadávanie rýchlejšie.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Snímka vylepšeného panelu úprav]]
 ;Vylepšenia panelu úprav
 Nové a vylepšené ikony vyjasňujú čo ktorý nástroj robí.
 Rozbaliteľné časti skrývajú zriedka používané nástroje, pričom sú stále len o jedno kliknutie ďalej.

@@ -2495,23 +2495,88 @@ Móžeš [{{fullurl:{{FULLPAGENAME}}|action=delvote}} swoje schwalenje abo znap�
 $messages['hu'] = array(
 	'deletequeue-desc' => '[[Special:DeleteQueue|Várakozási soron alapuló rendszer a törlések kezelésére]]',
 	'deletequeue-action-queued' => 'Törlés',
+	'deletequeue-action' => 'Törlés javasolása',
+	'deletequeue-action-title' => '„$1” törlésre javasolása',
+	'deletequeue-action-text' => "Ezen a wikin több menete is lehet a lapok törlésének:
+* ha úgy hiszed, hogy indokolt, akkor [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} javasolhatod ''azonanli törlés''re],
+* ha nem indokolt az azonnali törlés, de a ''lap törlése várhatóan nem lesz vita tárgya'', [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} ajánld egyértelmű törlésre],
+* ha pedig egy lap törlése ''várhatóan vitatható'', akkor [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} nyiss róla megbeszélést].",
+	'deletequeue-action-text-queued' => 'Ebben a törlési ügyben releváns lapok:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} aktuális jóváhagyások és ellenvetések megjelenítése],
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} lap törlésének jóváhagyása vagy ellenzése].',
+	'deletequeue-permissions-noedit' => 'Képesnek kell lenned szerkeszteni egy lapot, hogy befolyásolni tudd a törlési állapotát.',
+	'deletequeue-generic-reasons' => '* Általános indokok
+** Vandalizmus
+** Spam
+** Karbantartás
+** Nem a projekthez kapcsolódó',
 	'deletequeue-nom-alreadyqueued' => 'Ez a lap már a törlési várakozási sorban van.',
+	'deletequeue-speedy-title' => '„$1” jelölése azonnali törlésre',
+	'deletequeue-speedy-text' => 'Ezen az űrlapon jelölheted a(z) „$1” lapot azonnali törlésre.
+
+Egy adminisztrátor megvizsgálja a kérésed, és ha megalapozott, törölni fogja a lapot.
+Ki kell választanod egy okot a törlésre a lenti legördülő listából alább, és adj meg minden további releváns információt.',
+	'deletequeue-prod-title' => '„$1” ajánlása törlésre',
+	'deletequeue-prod-text' => "Ezen az űrlapon ajánlhatod a(z) „'''$1'''” lapot törlésre.
+
+Ha öt nap után sem vonta kétségbe a törlést, egy végső ellenőrzés során eltávolítja valamelyik adminisztrátor.",
+	'deletequeue-delnom-reason' => 'A jelölés oka:',
 	'deletequeue-delnom-otherreason' => 'Más indok',
 	'deletequeue-delnom-extra' => 'További információ:',
+	'deletequeue-delnom-submit' => 'Jelölés elküldése',
+	'deletequeue-log-nominate' => '[[$1]] törlésre jelölve vár a(z) „$2” várakozási sorban',
+	'deletequeue-log-rmspeedy' => 'elutasította [[$1]] azonnali törlését.',
+	'deletequeue-log-requeue' => 'áthelyezte a(z) [[$1]] lapot egy másik várakozási sorba? „$2” → „$3”',
+	'deletequeue-log-dequeue' => 'eltávolította a(z) [[$1]] lapot a következő várakozási sorból: „$2”.',
+	'right-speedy-nominate' => 'lapok jelölése azonnali törlésre',
+	'right-speedy-review' => 'azonnali törlésre jelölések elbírálása',
+	'right-prod-nominate' => 'lap törlésének ajánlása',
+	'right-prod-review' => 'egyértelmű törlési ajánlások elbírálása',
 	'right-deletediscuss-nominate' => 'Törlési megbeszélések elkezdése',
 	'right-deletediscuss-review' => 'Törlési megbeszélések lezárása',
+	'right-deletequeue-vote' => 'törlések jóváhagyása vagy ellenzése',
 	'deletequeue-queue-speedy' => 'Azonnali törlés',
 	'deletequeue-queue-prod' => 'Javasolt törlés',
 	'deletequeue-queue-deletediscuss' => 'Törlési megbeszélés',
+	'deletequeue-page-speedy' => "Ezt a lapot jelölték azonnali törlésre.
+A megadott indoklás a következő: ''$1''.",
+	'deletequeue-page-prod' => "Ezt a lapot törlésre ajánlották.
+Indoklás: ''$1''.
+Ha a javaslatot nem vitatják eddig: ''$2'', akkor a lapot töröljük.
+Megkérdőjelezheted a lap törlését, [{{fullurl:{{FULLPAGENAME}}|action=delvote}} ha itt ellenzed azt].",
+	'deletequeue-page-deletediscuss' => "Ezt a lapot ajánlották törlésre, és az ajánlást vitatják.
+Indoklás: ''$1''.
+Folyamatban lévő megbeszélés: [[$5]], lezárás: ''$2''.",
+	'deletequeue-notqueued' => 'A kiválasztott lap jelenleg nem vár törlésre',
 	'deletequeue-review-action' => 'Elvégzendő művelet:',
 	'deletequeue-review-delete' => 'A lap törlése.',
+	'deletequeue-review-change' => 'Lap törlése más indokkal.',
+	'deletequeue-review-requeue' => 'Lap áthelyezése a következő várakozási sorba:',
+	'deletequeue-review-dequeue' => 'Nincs művelet, és a lap eltávolítása a törlési várakozási sorból.',
 	'deletequeue-review-reason' => 'Megjegyzések:',
 	'deletequeue-review-newreason' => 'Új indok:',
 	'deletequeue-review-newextra' => 'További információ:',
+	'deletequeue-review-submit' => 'Bírálat mentése',
+	'deletequeue-review-original' => 'Jelölés indoklása',
+	'deletequeue-actiondisabled-involved' => 'A következő művelet letiltva, mivel már részt vettél ebben a törlési ügyben mint $1:',
+	'deletequeue-actiondisabled-notexpired' => 'A következő művelet letiltva, mivel a törlésre jelölés még nem járt le:',
+	'deletequeue-review-badaction' => 'Érvénytelen műveletet adtál meg',
+	'deletequeue-review-actiondenied' => 'A művelet letiltva ezen a lapon',
+	'deletequeue-reviewspeedy-tab' => 'Azonnali törlés elbírálása',
+	'deletequeue-reviewspeedy-title' => '„$1” azonnali törlésre jelölésének elbírálása',
+	'deletequeue-reviewprod-tab' => 'Törlési ajánlás elbírálása',
+	'deletequeue-reviewprod-title' => '„$1” ajánlott törlésének elbírálása',
+	'deletequeue-reviewprod-text' => "Az űrlap segítségével elbírálhatod a(z) „'''$1'''” törlésének egyértelmű jelölését.",
+	'deletequeue-reviewdeletediscuss-tab' => 'Törlés elbírálása',
 	'deletequeue-vote-tab' => 'Szavazás a törlésen',
 	'deletequeue-vote-action' => 'Javaslat:',
 	'deletequeue-vote-reason' => 'Megjegyzések:',
 	'deletequeue-vote-submit' => 'Elküldés',
+	'deletequeue-showvotes-restrict-endorse' => 'Csak a jóváhagyások megjelenítése',
+	'deletequeue-showvotes-restrict-object' => 'Csak az ellenvetések megjelenítése',
+	'deletequeue-showvotes-restrict-none' => 'Az összes jóváhagyás és ellenvetés megjelenítése',
+	'deletequeue-showvotes-showingonly-endorse' => 'Csak a jóváhagyások mutatása',
+	'deletequeue-showvotes-showingonly-object' => 'Csak az ellenvetések mutatása',
 	'deletequeue' => 'Törlési várakozási sor',
 	'deletequeue-list-search-legend' => 'Lapok keresése',
 	'deletequeue-list-queue' => 'Várakozási sor:',

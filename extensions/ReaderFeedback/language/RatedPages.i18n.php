@@ -529,6 +529,7 @@ $messages['sk'] = array(
 	'ratedpages-list' => 'Toto je zoznam stránok zoradený podľa hodnotenia čitateľov.',
 	'ratedpages-none' => 'V tomto zozname sa nenachádzajú žiadne stránky',
 	'ratedpages-graphs' => 'údaje o hodnotení',
+	'ratedpages-count' => '$1 {{PLURAL:$1|hodnotenie|hodnotenia|hodnotení}}',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

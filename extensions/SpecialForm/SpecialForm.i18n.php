@@ -633,6 +633,7 @@ $messages['hu'] = array(
 	'formnoname' => 'Nincs űrlapnév',
 	'formbadname' => 'Hibás űrlapnév',
 	'formbadnametext' => 'Nincs ilyen nevű űrlap.',
+	'formtitlepattern' => 'Új $1 hozzáadása',
 	'formsave' => 'Mentés',
 	'formarticleexists' => 'A lap már létezik',
 	'formbadpagename' => 'Hibás lapnév',

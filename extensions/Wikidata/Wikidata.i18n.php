@@ -7431,6 +7431,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -7457,6 +7458,18 @@ $messages['ml'] = array(
 	'ow_Value' => 'മൂല്യം',
 	'ow_meaningsoftitle' => '"$1"ന്റെ അര്‍ത്ഥങ്ങള്‍',
 	'ow_Permission_denied' => '<h2>പ്രവേശനം നിഷേധിച്ചിരിക്കുന്നു</h2>',
+	'ow_needs_xlation_source_lang' => 'സ്രോതസ് ഭാഷ:',
+	'ow_needs_xlation_dest_lang' => 'ലക്ഷ്യ ഭാഷ:',
+	'ow_needs_xlation_no_dest_lang' => 'ദയവായി ഒരു ലക്ഷ്യ ഭാഷ വ്യക്തമാക്കുക.',
+	'ow_show' => 'പ്രദർശിപ്പിക്കുക',
+	'ow_upload' => 'അപ്‌‌ലോഡ്',
+	'ow_create' => 'സൃഷ്ടിക്കുക',
+	'ow_suggest_previous' => 'മുമ്പ്',
+	'ow_suggest_next' => 'അടുത്തത്',
+	'ow_suggest_clear' => 'ശുദ്ധമാക്കുക',
+	'ow_nstab_definedmeaning' => 'നിർവചിക്കപ്പെട്ട അർത്ഥം',
+	'ow_nstab_edit_copy' => 'പകർപ്പ് തിരുത്തുക',
+	'right-addlanguage' => 'ഭാഷാ ക്രമീകരണങ്ങൾ ചേർക്കുക മാറ്റംവരുത്തുക',
 );
 
 /** Mongolian (Монгол)
@@ -10856,6 +10869,7 @@ $messages['su'] = array(
  * @author M.M.S.
  * @author Micke
  * @author Najami
+ * @author Per
  * @author Rotsee
  * @author Sannab
  */
@@ -11086,6 +11100,7 @@ Var god kontakta serveroperatören eller systemadministratören.',
 	'ow_nstab_definedmeaning' => 'definierad betydelse',
 	'ow_nstab_edit_copy' => 'redigera kopia',
 	'right-addlanguage' => 'Lägg till och ändra språkinställningar',
+	'ow_shown_datasets' => 'Visade datauppsättningar',
 );
 
 /** Silesian (Ślůnski)
