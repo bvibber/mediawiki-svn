@@ -839,9 +839,7 @@ js2AddOnloadHook( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
 			// Build tabs
-			mvJsLoader.doLoad( [ '$j.ui', '$j.ui.tabs' ], function() {
-				$j( '#edittoolbar-link-tabs' ).tabs();
-			});
+			$j( '#edittoolbar-link-tabs' ).tabs();
 			// Automatically copy the value of the internal link page title field to the link text field unless the user
 			// has changed the link text field - this is a convience thing since most link texts are going to be the
 			// the same as the page title
@@ -985,8 +983,9 @@ js2AddOnloadHook( function() {
 							var escTarget = escapeExternalTarget( target );
 							var escText = escapeExternalText( text );
 							whitespace = $j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace' );
-							if ( !target.match( /^[a-z]+:\/\/./ ) ) {
+							if ( target == '' || target == 'http://' ) {
 								// Refuse to add links to invalid URLs
+								// TODO: More elaborate regex here?
 								alert( gM( 'edittoolbar-tool-link-ext-invalid' ) );
 								return;
 							}
@@ -1068,7 +1067,6 @@ js2AddOnloadHook( function() {
 							$j(this)
 								.find( 'button:first' )
 								.click();
-							e.preventDefault();
 						}
 					});
 				}
@@ -1086,14 +1084,23 @@ js2AddOnloadHook( function() {
 			</tr></table><table><tr>\
 				<td class="label"><label for="edittoolbar-table-dimensions-columns"\
 					rel="edittoolbar-tool-table-dimensions-columns"></label></td>\
-				<td><input type="text" id="edittoolbar-table-dimensions-columns" size="4" /></td>\
+				<td><input type="text" id="edittoolbar-table-dimensions-columns" size="2" /></td>\
 				<td class="label"><label for="edittoolbar-table-dimensions-rows"\
 					rel="edittoolbar-tool-table-dimensions-rows"></label></td>\
-				<td><input type="text" id="edittoolbar-table-dimensions-rows" size="4" /></td>\
+				<td><input type="text" id="edittoolbar-table-dimensions-rows" size="2" /></td>\
 			</tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
+			});
+			// Execute the action associated with the first button
+			// when the user presses Enter
+			$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+				if ( ( e.keyCode || e.which ) == 13 ) {
+					$j(this)
+						.find( 'button:first' )
+						.click();
+				}
 			});
 			$j( '#edittoolbar-table-dimensions-rows' ).val( 2 );
 			$j( '#edittoolbar-table-dimensions-columns' ).val( 2 );
@@ -1101,12 +1108,10 @@ js2AddOnloadHook( function() {
 		dialog: {
 			buttons: {
 				'edittoolbar-tool-table-insert': function() {
-					var rowsVal = $j( '#edittoolbar-table-dimensions-rows' ).val();
-					var colsVal = $j( '#edittoolbar-table-dimensions-columns' ).val();
-					var rows = parseInt( rowsVal, 10 );
-					var cols = parseInt( colsVal, 10 );
+					var rows = parseInt( $j( '#edittoolbar-table-dimensions-rows' ).val() );
+					var cols = parseInt( $j( '#edittoolbar-table-dimensions-columns' ).val() );
 					var header = Math.min( 1, $j( '#edittoolbar-table-dimensions-header:checked' ).size() );
-					if ( isNaN( rows ) || isNaN( cols ) || rows != rowsVal  || cols != colsVal ) {
+					if ( isNaN( rows ) || isNaN( cols ) ) {
 						alert( gM( 'edittoolbar-tool-table-invalidnumber' ) );
 						return;
 					}
@@ -1139,9 +1144,9 @@ js2AddOnloadHook( function() {
 					$j.wikiEditor.modules.toolbar.fn.doAction(
 						$j(this).data( 'context' ),
 						{
-							type: 'replace',
+							type: 'encapsulate',
 							options: {
-								pre: "{| class=\"wikitable\"\n",
+								pre: "{|\n",
 								peri: table,
 								post: "|}",
 								ownline: true
@@ -1166,7 +1171,6 @@ js2AddOnloadHook( function() {
 							$j(this)
 								.find( 'button:first' )
 								.click();
-							e.preventDefault();
 						}
 					});
 				}
@@ -1180,8 +1184,6 @@ js2AddOnloadHook( function() {
 			<div id="edittoolbar-replace-message">\
 				<div id="edittoolbar-replace-nomatch" rel="edittoolbar-tool-replace-nomatch"></div>\
 				<div id="edittoolbar-replace-success"></div>\
-				<div id="edittoolbar-replace-emptysearch" rel="edittoolbar-tool-replace-emptysearch"></div>\
-				<div id="edittoolbar-replace-invalidregex"></div>\
 			</div>\
 			<fieldset><table><tr>\
 				<td><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label></td>\
@@ -1200,15 +1202,20 @@ js2AddOnloadHook( function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
+			// Execute the action associated with the first button
+			// when the user presses Enter
+			$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+				if ( ( e.keyCode || e.which ) == 13 ) {
+					$j(this)
+						.find( 'button:first' )
+						.click();
+				}
+			});
 			
 			// TODO: Find a cleaner way to share this function
 			$j(this).data( 'replaceCallback', function( mode ) {
-				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch, #edittoolbar-replace-invalidregex' ).hide();
+				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
 				var searchStr = $j( '#edittoolbar-replace-search' ).val();
-				if ( searchStr == '' ) {
-					$j( '#edittoolbar-replace-emptysearch' ).show();
-					return;
-				}
 				var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
 				var flags = '';
 				var matchCase = $j( '#edittoolbar-replace-case' ).is( ':checked' );
@@ -1222,38 +1229,20 @@ js2AddOnloadHook( function() {
 				if ( !isRegex ) {
 					searchStr = RegExp.escape( searchStr );
 				}
-				try {
-					var regex = new RegExp( searchStr, flags );
-				} catch( e ) {
-					$j( '#edittoolbar-replace-invalidregex' )
-						.text( gM( 'edittoolbar-tool-replace-invalidregex',
-							e.message ) )
-						.show();
-					return;
-				}
+				var regex = new RegExp( searchStr, flags );
 				var $textarea = $j(this).data( 'context' ).$textarea;
 				var text = $j.wikiEditor.fixOperaBrokenness( $textarea.val() );
-				var matches = false;
-				if ( mode != 'replaceAll' )
-					matches = text.substr( $j(this).data( 'offset' ) ).match( regex );
-				if ( !matches )
-					// Search hit BOTTOM, continuing at TOP
-					matches = text.match( regex );
-				
-				if ( !matches )
+				var matches = text.match( regex );
+				if ( !matches ) {
 					$j( '#edittoolbar-replace-nomatch' ).show();
-				else if ( mode == 'replaceAll' ) {
+				} else if ( mode == 'replaceAll' ) {
 					// Prepare to select the last match
 					var start = text.lastIndexOf( matches[matches.length - 1] );
 					var end = start + replaceStr.length;
-					
-					// Calculate how much the last match will move
-					var replaced = text.replace( regex, replaceStr );
-					var corr = replaced.length - text.length - replaceStr.length + matches[matches.length - 1].length;
+					var corr = ( matches.length - 1 ) * ( replaceStr.length - searchStr.length ); 
 					$textarea
-						.val( replaced )
+						.val( $textarea.val().replace( regex, replaceStr ) )
 						.change()
-						.focus()
 						.setSelection( start + corr, end + corr )
 						.scrollToCaretPosition();
 					
@@ -1269,7 +1258,7 @@ js2AddOnloadHook( function() {
 						start = text.indexOf( matches[0] );
 					var end = start + matches[0].length;
 					var newEnd = start + replaceStr.length;
-					$textarea.focus().setSelection( start, end );
+					$textarea.setSelection( start, end );
 					if ( mode == 'replace' ) {
 						$textarea
 							.encapsulateSelection( '', replaceStr, '', false, true )
@@ -1282,52 +1271,36 @@ js2AddOnloadHook( function() {
 		},
 		dialog: {
 			buttons: {
-				'edittoolbar-tool-replace-button-findnext': function( e ) {
-					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
+				'edittoolbar-tool-replace-button-findnext': function() {
 					$j(this).data( 'replaceCallback' ).call( this, 'find' );
 				},
-				'edittoolbar-tool-replace-button-replacenext': function( e ) {
-					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
+				'edittoolbar-tool-replace-button-replacenext': function() {
 					$j(this).data( 'replaceCallback' ).call( this, 'replace' );
 				},
-				'edittoolbar-tool-replace-button-replaceall': function( e ) {
-					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
+				'edittoolbar-tool-replace-button-replaceall': function() {
 					$j(this).data( 'replaceCallback' ).call( this, 'replaceAll' );
 				},
 				'edittoolbar-tool-replace-close': function() {
 					$j(this).dialog( 'close' );
+					$j(this).data( 'context' ).$textarea.focus();
 				}
 			},
 			open: function() {
 				$j(this).data( 'offset', 0 );
 				$j( '#edittoolbar-replace-search' ).focus();
-				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch, #edittoolbar-replace-invalidregex' ).hide();
+				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );
 					// Execute the action associated with the first button
 					// when the user presses Enter
 					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
 						if ( ( e.keyCode || e.which ) == 13 ) {
-							var button = $j(this).data( 'dialogaction' ) || $j(this).find( 'button:first' );
-							button.click();
-							e.preventDefault();
+							$j(this)
+								.find( 'button:first' )
+								.click();
 						}
 					});
 				}
-				var dialog = $j(this).closest( '.ui-dialog' );
-				$j(this).data( 'context' ).$textarea.bind( 'keypress.srdialog', function( e ) {
-					if ( ( e.keyCode || e.which ) == 13 ) {
-						var button = dialog.data( 'dialogaction' ) || dialog.find( 'button:first' );
-						button.click();
-						e.preventDefault();
-					}
-				});
-			},
-			close: function() {
-				$j(this).data( 'context' ).$textarea
-						.unbind( 'keypress.srdialog' )
-						.focus();
-				$j(this).closest( '.ui-dialog' ).data( 'dialogaction', false );
 			}
 		}
 	}

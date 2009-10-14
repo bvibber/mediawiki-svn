@@ -210,7 +210,7 @@ js2AddOnloadHook( function() {
 			}
 			var messages = [ 'Running tests for wikiEditor API' ];
 			var $target = $j( textareaId );
-			var $ui = $target.data( 'wikiEditor-context' ).$ui;
+			var $ui = $target.data( 'context' ).$ui;
 			var passes = 0;
 			var tests = 0;
 			for ( test in wikiEditorTests ) {

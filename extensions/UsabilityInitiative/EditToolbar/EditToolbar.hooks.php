@@ -120,8 +120,6 @@ class EditToolbarHooks {
 					'edittoolbar-tool-replace-close',
 					'edittoolbar-tool-replace-nomatch',
 					'edittoolbar-tool-replace-success',
-					'edittoolbar-tool-replace-emptysearch',
-					'edittoolbar-tool-replace-invalidregex',
 					/* Special Characters Section */
 					'edittoolbar-section-characters',
 					'edittoolbar-characters-page-latin',

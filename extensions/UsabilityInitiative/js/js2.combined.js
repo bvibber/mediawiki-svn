@@ -9504,6 +9504,3 @@ $j = jQuery.noConflict();
 function js2AddOnloadHook( func ) {
 	$j(document).ready( func );
 }
-
-// Define a dummy mvJsLoader.doLoad() function
-mvJsLoader = { doLoad: function( deps, callback ) { callback(); } };

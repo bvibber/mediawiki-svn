@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'edittoolbar' => 'Editing toolbar',
 	'edittoolbar-desc' => 'Edit page toolbar with enhanced usability',
 	'edittoolbar-preference' => 'Enable enhanced editing toolbar',
-	'edittoolbar-cgd-preference' => 'Enable dialogs for inserting links, tables and more',
+	'edittoolbar-cgd-preference' => 'Enable help for adding advanced wiki text',
 	'edittoolbar-loading' => 'Loading...',
 	/* Main Section */
 	'edittoolbar-tool-bold' => 'Bold',
@@ -114,8 +114,6 @@ $messages['en'] = array(
 	'edittoolbar-tool-replace-close' => 'Cancel',
 	'edittoolbar-tool-replace-nomatch' => 'Your search did not match anything.',
 	'edittoolbar-tool-replace-success' => '$1 replacement(s) made.',
-	'edittoolbar-tool-replace-emptysearch' => 'You did not enter anything to search for.',
-	'edittoolbar-tool-replace-invalidregex' => 'The regular expression you entered is invalid: $1',
 	/* Special characters Section */
 	'edittoolbar-section-characters' => 'Special characters',
 	'edittoolbar-characters-page-latin' => 'Latin',
@@ -250,7 +248,6 @@ This message does not support PLURAL on $1.',
 	'edittoolbar-tool-replace-close' => '{{Identical|Cancel}}',
 	'edittoolbar-tool-replace-success' => '[[file:Bulbgraph.png|left|22px]]
 This message does not support PLURAL on $1.',
-	'edittoolbar-tool-replace-invalidregex' => '$1 is a browser-supplied error message, probably in English, possibly in the browser language.',
 	'edittoolbar-characters-page-latin' => 'This is the name of a script, or alphabet, not a language',
 	'edittoolbar-characters-page-ipa' => 'IPA means a script: "international phonetic alphabet" here, and not "international phonetic association", the organization behind it.',
 	'edittoolbar-characters-page-greek' => 'This is the name of a script, or alphabet, not a language.',

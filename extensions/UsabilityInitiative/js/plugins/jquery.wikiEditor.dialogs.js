@@ -43,63 +43,60 @@ fn: {
 			$.wikiEditor.modules.dialogs.modules[module] = config[module];
 		}
 		// Build out modules immediately
-		mvJsLoader.doLoad( ['$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
-			for ( module in $.wikiEditor.modules.dialogs.modules ) {
-				var module = $.wikiEditor.modules.dialogs.modules[module];
-				// Only create the dialog if it doesn't exist yet
-				if ( $( '#' + module.id ).size() == 0 ) {
-					var configuration = module.dialog;
-					// Add some stuff to configuration
-					configuration.bgiframe = true;
-					configuration.autoOpen = false;
-					configuration.modal = true;
-					configuration.title = $.wikiEditor.autoMsg( module, 'title' );
-					// Transform messages in keys
-					// Stupid JS won't let us do stuff like
-					// foo = { gM ('bar'): baz }
-					configuration.newButtons = {};
-					for ( msg in configuration.buttons )
-						configuration.newButtons[gM( msg )] = configuration.buttons[msg];
-					configuration.buttons = configuration.newButtons;
-					// Create the dialog <div>
-					$( '<div /> ' )
-						.attr( 'id', module.id )
-						.html( module.html )
-						.data( 'context', context )
-						.appendTo( $( 'body' ) )
-						.each( module.init )
-						.dialog( configuration )
-						.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
-						.find( '.ui-tabs' ).bind( 'tabsshow', function() {
-							$(this).closest( '.ui-dialog-content' ).each(
-								$.wikiEditor.modules.dialogs.fn.resize );
-						});
-					
-					// Add tabindexes to dialog form elements
-					// Find the highest tabindex in use
-					var maxTI = 0;
-					$j( '[tabindex]' ).each( function() {
-						var ti = parseInt( $j(this).attr( 'tabindex' ) );
-						if ( ti > maxTI )
-							maxTI = ti;
+		for ( module in $.wikiEditor.modules.dialogs.modules ) {
+			var module = $.wikiEditor.modules.dialogs.modules[module];
+			// Only create the dialog if it doesn't exist yet
+			if ( $( '#' + module.id ).size() == 0 ) {
+				var configuration = module.dialog;
+				// Add some stuff to configuration
+				configuration.bgiframe = true;
+				configuration.autoOpen = false;
+				configuration.modal = true;
+				configuration.title = $.wikiEditor.autoMsg( module, 'title' );
+				// Transform messages in keys
+				// Stupid JS won't let us do stuff like
+				// foo = { gM ('bar'): baz }
+				configuration.newButtons = {};
+				for ( msg in configuration.buttons )
+					configuration.newButtons[gM( msg )] = configuration.buttons[msg];
+				configuration.buttons = configuration.newButtons;
+				// Create the dialog <div>
+				$( '<div /> ' )
+					.attr( 'id', module.id )
+					.html( module.html )
+					.data( 'context', context )
+					.appendTo( $( 'body' ) )
+					.each( module.init )
+					.dialog( configuration )
+					.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
+					.find( '.ui-tabs' ).bind( 'tabsshow', function() {
+						$(this).closest( '.ui-dialog-content' ).each(
+							$.wikiEditor.modules.dialogs.fn.resize );
 					});
-					
-					var tabIndex = maxTI + 1;
-					$j( '.ui-dialog input, .ui-dialog button' )
-						.not( '[tabindex]' )
-						.each( function() {
-							$j(this).attr( 'tabindex', tabIndex++ );
-						});
-				}
+				
+				// Add tabindexes to dialog form elements
+				// Find the highest tabindex in use
+				var maxTI = 0;
+				$j( '[tabindex]' ).each( function() {
+					var ti = parseInt( $j(this).attr( 'tabindex' ) );
+					if ( ti > maxTI )
+						maxTI = ti;
+				});
+				
+				var tabIndex = maxTI + 1;
+				$j( '.ui-dialog input, .ui-dialog button' )
+					.not( '[tabindex]' )
+					.each( function() {
+						$j(this).attr( 'tabindex', tabIndex++ );
+					});
 			}
-		});
+		}
 	},
 	
 	/**
 	 * Resize a dialog so its contents fit
 	 *
 	 * Usage: dialog.each( resize ); or dialog.bind( 'blah', resize );
-	 * NOTE: This function assumes $j.ui.dialog has already been loaded
 	 */
 	resize: function() {
 		var wrapper = $(this).closest( '.ui-dialog' );
