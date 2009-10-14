@@ -54,19 +54,20 @@ class CodeRevisionCommitter extends CodeRevisionView {
 
 		// Return to rev page
 		if ( !$redirTarget ) {
+			// Was "next & unresolved" clicked?
 			if ( $this->jumpToNext ) {
 				$next = $this->mRev->getNextUnresolved( $this->mPath );
 				if ( $next ) {
-					$redirTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $next );
+					$redirTarget = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $next );
 				} else {
-					$redirTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );
+					$redirTarget = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );
 				}
 			} else {
 				# $redirTarget already set for comments
-				$redirTitle = $redirTarget ? $redirTarget : $this->revLink();
+				$redirTarget = $this->revLink();
 			}
 		}
-		$wgOut->redirect( $redirTitle->getFullUrl( array('path' => $this->mPath) ) );
+		$wgOut->redirect( $redirTarget->getFullUrl( array('path' => $this->mPath) ) );
 	}
 
 	public function validPost( $permission ) {
