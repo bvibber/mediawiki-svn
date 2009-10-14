@@ -560,7 +560,7 @@ class CodeRevisionView extends CodeView {
 
 		if ( $comment->id === 0 ) {
 			$linkId = 'cpreview';
-			$permaLink = "<b>Preview:</b> ";
+			$permaLink = '<strong>'.wfMsgHtml('code-rev-inline-preview').'</strong> ';
 		} else {
 			$linkId = 'c' . intval( $comment->id );
 			$permaLink = $this->mSkin->link( $this->commentLink( $comment->id ), "#" );

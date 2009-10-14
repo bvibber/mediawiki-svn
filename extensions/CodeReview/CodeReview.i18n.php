@@ -72,6 +72,7 @@ $messages['en'] = array(
 	'code-rev-comment-by' => 'Comment by $1',
 	'code-rev-comment-submit' => 'Submit comment',
 	'code-rev-comment-preview' => 'Preview',
+	'code-rev-inline-preview' => 'Preview:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
 	'code-rev-purge-link' => 'purge',
