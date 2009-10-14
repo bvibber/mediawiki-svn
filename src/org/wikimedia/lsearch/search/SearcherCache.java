@@ -223,6 +223,9 @@ public class SearcherCache {
 	/** deployment has been tried at least once for these */
 	protected static Set<String> initialWarmup = Collections.synchronizedSet(new HashSet<String>());
 	
+	/** hosts excluded in lsearch.conf - don't use these unless they are the only ones */
+	protected static Set<String> excludedHosts = Collections.synchronizedSet(new HashSet<String>());
+	
 	protected boolean initialDeploymentRunning = false;
 	
 	/** Number of threads to use for initial deployment */
@@ -336,6 +339,9 @@ public class SearcherCache {
 			HashSet<String> hosts = new HashSet<String>();
 			hosts.addAll(pools.keySet());
 			hosts.removeAll(hostsDeploying.keySet());
+			// remove the hosts excluded by configuration
+			if(!hosts.equals(excludedHosts))
+				hosts.removeAll(excludedHosts);
 			// get hosts for which this index is out of rotation
 			Set<String> takenOut = outOfRotation.get(iid.toString());
 			if(takenOut != null)
@@ -623,6 +629,12 @@ public class SearcherCache {
 				if(parts.length == 2)
 					specialPoolSizes.put( parts[0].trim(), new Integer(parts[1].trim()));
 			}
+		}
+		String[] excluded = config.getArray("SearcherPool", "excludedHosts");
+		if(excluded != null){
+			for(String s : excluded)
+				excludedHosts.add(s.trim());
+			log.info("Excluding hosts: "+excludedHosts);
 		}
 		initialDeploymentThreads = config.getInt("SearcherPool", "initThreads",1);
 		if(initialize){
