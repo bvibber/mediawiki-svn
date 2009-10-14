@@ -626,11 +626,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 	
 	public void prepareMassProcessing() throws PersistenceException {
-		try {
-				database.enableKeys();
-		} catch (SQLException e) {
-			throw new PersistenceException(e);
-		}
+		this.enableKeys();
 
 		if (propertyStore!=null) {
 			propertyStore.prepareMassProcessing();
@@ -673,15 +669,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 		
 	public void preparePostProcessing() throws PersistenceException {
-		try {
 			flush();
-			if (beginTask("DatabaseLocalConceptStore.preparePostProcessing", "enableKeys")) {
-				database.enableKeys();
-				endTask("DatabaseLocalConceptStore.preparePostProcessing", "enableKeys");
-			}
-		} catch (SQLException e) {
-			throw new PersistenceException(e);
-		} 
+			enableKeys();
 
 		if (propertyStore!=null && beginTask("preparePostProcessing", "propertyStore.preparePostProcessing")) {
 			propertyStore.preparePostProcessing();
@@ -877,6 +866,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 	
 	public void finishIdReferences() throws PersistenceException {
+		   enableKeys();
+		
 			if (idManager==null && beginTask("finishIdReferences", "buildIdLinks:about")) {
 				int n = buildIdLinks(aboutTable, "concept_name", "concept", 1);     
 				endTask("finishIdReferences", "buildIdLinks:about", n+" references");
@@ -927,6 +918,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 	
 	public void finishAliases() throws PersistenceException {
+		   enableKeys();
+			
 			if (beginTask("finishAliases", "resolveRedirects:link")) {
 				//XXX: SLOW!
 				//TODO: smaller chunks? chunk on target table, not alias table? force index? 

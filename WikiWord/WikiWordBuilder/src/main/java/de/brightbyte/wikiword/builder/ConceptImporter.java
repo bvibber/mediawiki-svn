@@ -116,8 +116,13 @@ public class ConceptImporter extends AbstractImporter {
 	}
 	
 	protected void deleteDataAfter(int delAfter) throws PersistenceException {
-		((IncrementalStoreBuilder)store).deleteDataAfter(delAfter, false); //FIXME: make sure we are not off by one!
-		if (propertyStore!=null && storeProperties) ((IncrementalStoreBuilder)propertyStore).deleteDataAfter(delAfter, false); //FIXME: make sure we are not off by one!
+		super.deleteDataAfter(delAfter);
+		
+		if (propertyStore!=null && storeProperties) {
+			((IncrementalStoreBuilder)propertyStore).prepareMassProcessing(); 
+			((IncrementalStoreBuilder)propertyStore).deleteDataAfter(delAfter, false); 
+			((IncrementalStoreBuilder)propertyStore).prepareMassInsert(); 
+		}
 	}
 	
 	protected void storeSuffixInfo(WikiPage analyzerPage, int rcId, int conceptId, String conceptName) throws PersistenceException {

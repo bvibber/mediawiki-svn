@@ -89,8 +89,12 @@ public class PropertyImporter extends ConceptImporter {
 	}
 	
 	protected void deleteDataAfter(int delAfter) throws PersistenceException {
-		if (buildConcepts) ((IncrementalStoreBuilder)store).deleteDataAfter(delAfter, false); 
-		((IncrementalStoreBuilder)propertyStore).deleteDataAfter(delAfter, false); 
+		if (buildConcepts) super.deleteDataAfter(delAfter);
+		else {
+			((IncrementalStoreBuilder)propertyStore).prepareMassProcessing(); 
+			((IncrementalStoreBuilder)propertyStore).deleteDataAfter(delAfter, false); 
+			((IncrementalStoreBuilder)propertyStore).prepareMassInsert(); 
+		}
 	}
 		
 	@Override 

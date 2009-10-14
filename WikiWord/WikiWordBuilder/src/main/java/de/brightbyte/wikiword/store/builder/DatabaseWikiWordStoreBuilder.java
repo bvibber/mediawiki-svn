@@ -211,6 +211,14 @@ public class DatabaseWikiWordStoreBuilder
 			database.error("failed to store warning!", e);
 		}
 	}
+		
+	protected void enableKeys() throws PersistenceException {
+		try {
+			database.enableKeys();
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
 	
 	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeWarning(int, java.lang.String, java.lang.String)
@@ -266,11 +274,19 @@ public class DatabaseWikiWordStoreBuilder
 		String sql;
 		
 		if (via!=null) {
+			DatabaseKey k = via.findKeyForField(viaField);
+			String forceCIndex = k==null ? null : k.getSQLName();
+
+			k = rel.findKeyForField(field);
+			String forceTIndex = k==null ? null : k.getSQLName();
+			
 			sql = "DELETE ";
 			if (deleteVia) sql += " T, C FROM "; 
 			else sql += " FROM T USING ";
 			sql += rel.getSQLName()+" AS T ";
+			if (forceTIndex!=null) sql += " FORCE INDEX(" + forceTIndex  + ") ";
 			sql += " LEFT JOIN "+via.getSQLName()+" AS C";
+			if (forceCIndex!=null) sql += " FORCE INDEX(" + forceCIndex  + ") ";
 			sql += " ON T."+field+" = C."+viaJoinField+" ";
 			sql += " WHERE C."+viaField+" "+op+" "+rcId;
 		}
@@ -298,14 +314,22 @@ public class DatabaseWikiWordStoreBuilder
 		sql += " )";
 		*/
 		
+		DatabaseKey k = table.findKeyForField(field);
+		String forceEIndex = k==null ? null : k.getSQLName();
+
+		k = ref.findKeyForField(refField);
+		String forceRIndex = k==null ? null : k.getSQLName();
+		
 		sql = "DELETE FROM E ";
 		sql += " USING " + table.getSQLName() + " AS E ";
+		if (forceEIndex!=null) sql += " FORCE INDEX(" + forceEIndex  + ") ";
 		sql += " LEFT JOIN " + ref.getSQLName() + " AS R ";
+		if (forceRIndex!=null) sql += " FORCE INDEX(" + forceRIndex  + ") ";
 		sql += "       ON R." + refField + " = E." + field;
 		sql += " WHERE R." + refField + " IS NULL;";
 		
 		long t = System.currentTimeMillis();
-		int c = executeUpdate("deleteDataFrom", sql);
+		int c = executeUpdate("deleteOrphansFrom", sql);
 		trace("deleted "+c+" orphan rows from "+table.getName()+" where no reference exists from "+ref.getSQLName()+"."+refField+", took "+(System.currentTimeMillis()-t)/1000+" sec");
 	}
 	
@@ -498,12 +522,12 @@ public class DatabaseWikiWordStoreBuilder
 		
 		if (forceRIndex==null) {
 			DatabaseKey k = table.findKeyForField(relIdField);
-			forceRIndex = k==null ? null : k.getName();
+			forceRIndex = k==null ? null : k.getSQLName();
 		}
 		
 		if (forceRIndex==null && relIdField==null) {
 			DatabaseKey k = table.findKeyForField(relNameField);
-			forceRIndex = k==null ? null : k.getName();
+			forceRIndex = k==null ? null : k.getSQLName();
 		}
 		
 		if (forceRIndex!=null && table.getKey(forceRIndex)==null) throw new IllegalArgumentException("unknown key: "+forceRIndex);
