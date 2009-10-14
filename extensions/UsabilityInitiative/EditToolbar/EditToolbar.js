@@ -985,9 +985,8 @@ js2AddOnloadHook( function() {
 							var escTarget = escapeExternalTarget( target );
 							var escText = escapeExternalText( text );
 							whitespace = $j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace' );
-							if ( target == '' || target == 'http://' ) {
+							if ( !target.match( /^[a-z]+:\/\/./ ) ) {
 								// Refuse to add links to invalid URLs
-								// TODO: More elaborate regex here?
 								alert( gM( 'edittoolbar-tool-link-ext-invalid' ) );
 								return;
 							}
@@ -1142,7 +1141,7 @@ js2AddOnloadHook( function() {
 						{
 							type: 'replace',
 							options: {
-								pre: "{|\n",
+								pre: "{| class=\"wikitable\"\n",
 								peri: table,
 								post: "|}",
 								ownline: true
@@ -1182,6 +1181,7 @@ js2AddOnloadHook( function() {
 				<div id="edittoolbar-replace-nomatch" rel="edittoolbar-tool-replace-nomatch"></div>\
 				<div id="edittoolbar-replace-success"></div>\
 				<div id="edittoolbar-replace-emptysearch" rel="edittoolbar-tool-replace-emptysearch"></div>\
+				<div id="edittoolbar-replace-invalidregex"></div>\
 			</div>\
 			<fieldset><table><tr>\
 				<td><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label></td>\
@@ -1203,7 +1203,7 @@ js2AddOnloadHook( function() {
 			
 			// TODO: Find a cleaner way to share this function
 			$j(this).data( 'replaceCallback', function( mode ) {
-				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch' ).hide();
+				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch, #edittoolbar-replace-invalidregex' ).hide();
 				var searchStr = $j( '#edittoolbar-replace-search' ).val();
 				if ( searchStr == '' ) {
 					$j( '#edittoolbar-replace-emptysearch' ).show();
@@ -1222,7 +1222,15 @@ js2AddOnloadHook( function() {
 				if ( !isRegex ) {
 					searchStr = RegExp.escape( searchStr );
 				}
-				var regex = new RegExp( searchStr, flags );
+				try {
+					var regex = new RegExp( searchStr, flags );
+				} catch( e ) {
+					$j( '#edittoolbar-replace-invalidregex' )
+						.text( gM( 'edittoolbar-tool-replace-invalidregex',
+							e.message ) )
+						.show();
+					return;
+				}
 				var $textarea = $j(this).data( 'context' ).$textarea;
 				var text = $j.wikiEditor.fixOperaBrokenness( $textarea.val() );
 				var matches = false;
@@ -1288,16 +1296,12 @@ js2AddOnloadHook( function() {
 				},
 				'edittoolbar-tool-replace-close': function() {
 					$j(this).dialog( 'close' );
-					$j(this).data( 'context' ).$textarea
-						.unbind( 'keypress.srdialog' )
-						.focus();
-					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', false );
 				}
 			},
 			open: function() {
 				$j(this).data( 'offset', 0 );
 				$j( '#edittoolbar-replace-search' ).focus();
-				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch' ).hide();
+				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch, #edittoolbar-replace-invalidregex' ).hide();
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );
 					// Execute the action associated with the first button
@@ -1318,6 +1322,12 @@ js2AddOnloadHook( function() {
 						e.preventDefault();
 					}
 				});
+			},
+			close: function() {
+				$j(this).data( 'context' ).$textarea
+						.unbind( 'keypress.srdialog' )
+						.focus();
+				$j(this).closest( '.ui-dialog' ).data( 'dialogaction', false );
 			}
 		}
 	}
