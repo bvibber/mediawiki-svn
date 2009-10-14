@@ -12,6 +12,7 @@ body.rtl .wikiEditor-ui-text {
 	float: right;
 	padding: 0;
 	overflow: auto;
+	overflow-x: hidden;
 }
 body.rtl .wikiEditor-ui-toc {
 	right: auto;
@@ -22,6 +23,10 @@ body.rtl .wikiEditor-ui-toc {
 	padding: 0;
 	margin: 0.5em 1em;
 	list-style: none;
+	/* IE needs to be told in great detail how to act, or it misbehaves */
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
 }
 .wikiEditor-ui-toc ul ul {
 	padding: 0;

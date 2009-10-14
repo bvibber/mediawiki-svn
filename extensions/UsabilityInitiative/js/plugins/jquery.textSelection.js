@@ -118,9 +118,9 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
  * Get the position (in resolution of bytes not nessecarily characters)
  * in a textarea 
  */
- getCaretPosition: function() {
+ getCaretPosition: function( startAndEnd ) {
 	function getCaret( e ) {
-		var caretPos = 0;
+		var caretPos = 0, endPos = 0;
 		if ( $.browser.msie ) {
 			// IE Support
 			var postFinished = false;
@@ -190,11 +190,13 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 				}
 			} while ( ( !postFinished || !periFinished || !postFinished ) );
 			caretPos = rawPreText.replace( /\r\n/g, "\n" ).length;
+			endPos = caretPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
 		} else if ( e.selectionStart || e.selectionStart == '0' ) {
 			// Firefox support
 			caretPos = e.selectionStart;
+			endPos = e.selectionEnd;
 		}
-		return caretPos;
+		return startAndEnd ? [ caretPos, endPos ] : caretPos;
 	}
 	return getCaret( this.get( 0 ) );
 },
@@ -203,8 +205,16 @@ setSelection: function( start, end ) {
 		end = start;
 	return this.each( function() {
 		if ( this.selectionStart || this.selectionStart == '0' ) {
-			this.selectionStart = start;
-			this.selectionEnd = end;
+			// Opera 9.0 doesn't allow setting selectionStart past
+			// selectionEnd; any attempts to do that will be ignored
+			// Make sure to set them in the right order
+			if ( start > this.selectionEnd ) {
+				this.selectionEnd = end;
+				this.selectionStart = start;
+			} else {
+				this.selectionStart = start;
+				this.selectionEnd = end;
+			}
 		} else if ( document.body.createTextRange ) {
 			var selection = document.body.createTextRange();
 			selection.moveToElementText( this );
@@ -272,7 +282,6 @@ scrollToCaretPosition: function( force ) {
 		return ( $.os.name == 'mac' ? 13 : ( $.os.name == 'linux' ? 15 : 16 ) ) * row;
 	}
 	return this.each(function() {
-		$(this).focus();
 		if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla
 			var scroll = getCaretScrollPosition( this );

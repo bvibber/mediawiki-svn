@@ -23,10 +23,11 @@ fn: {
 		if ( '$toc' in context.modules ) {
 			return;
 		}
-		context.modules.$toc = $( '<div></div>' )
+		context.modules.$toc = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toc' )
 			.attr( 'id', 'wikiEditor-ui-toc' );
-		$.wikiEditor.modules.toc.fn.build( context, config );
+		// If we ask for this later (after we insert the TOC) then in IE this measurement will be incorrect
+		var height = context.$ui.find( '.wikiEditor-ui-bottom' ).height()
 		context.$ui.find( '.wikiEditor-ui-bottom' )
 			.append( context.modules.$toc );
 		context.modules.$toc.height(
@@ -34,13 +35,11 @@ fn: {
 		);
 		// Make some css modifications to make room for the toc on the right...
 		// Perhaps this could be configurable?
-		context.modules.$toc
-			.css( 'width', '12em' )
-			.css( 'marginTop', -( context.$ui.find( '.wikiEditor-ui-bottom' ).height() ) );
+		context.modules.$toc.css( { 'width': '12em', 'marginTop': -( height ) } );
 		context.$ui.find( '.wikiEditor-ui-text' )
 			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
 		// Add the TOC to the document
-		$.wikiEditor.modules.toc.fn.build( context );
+		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$textarea
 			.delayedBind( 1000, 'keyup encapsulateSelection change',
 				function( event ) {
@@ -146,17 +145,18 @@ fn: {
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
-			var list = $( '<ul></ul>' );
+			var list = $( '<ul />' );
 			for ( i in structure ) {
-				var item = $( '<li></li>' )
+				var item = $( '<li />' )
 					.append(
-						$( '<a></a>' )
+						$( '<a />' )
 							.attr( 'href', '#' )
 							.addClass( 'section-' + structure[i].index )
 							.data( 'textbox', context.$textarea )
 							.data( 'position', structure[i].position )
 							.click( function( event ) {
 								$(this).data( 'textbox' )
+									.focus()
 									.setSelection( $(this).data( 'position' ) )
 									.scrollToCaretPosition( true );
 								event.preventDefault();
@@ -172,23 +172,22 @@ fn: {
 		}
 		// Build outline from wikitext
 		var outline = [];
-		var wikitext = '\n' + $.wikiEditor.fixOperaBrokenness( context.$textarea.val() ) + '\n';
+		var wikitext = $.wikiEditor.fixOperaBrokenness( context.$textarea.val() );
 		var headings = wikitext.match( /^={1,6}.+={1,6}\s*$/gm );
 		var offset = 0;
 		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {
-			text = headings[h];
+			text = $.trim( headings[h] );
 			// Get position of first occurence
 			var position = wikitext.indexOf( text, offset );
 			// Update offset to avoid stumbling on duplicate headings
-			if ( position > offset ) {
-				offset = position + 1;
+			if ( position >= offset ) {
+				offset = position + text.length;
 			} else if ( position == -1 ) {
 				// Not sure this is possible, or what should happen
 				continue;
 			}
-			// Trim off whitespace
-			text = $.trim( text );
+			
 			// Detect the starting and ending heading levels
 			var startLevel = 0;
 			for ( var c = 0; c < text.length; c++ ) {
@@ -237,7 +236,15 @@ fn: {
 		if ( $( 'input[name=wpSection]' ).val() == '' )
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
 		context.modules.$toc.html( buildList( structure ) );
-		context.modules.$toc.find( 'ul a' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
+		
+		context.modules.$toc.find( 'ul' ).css( 'width', '10em' );
+		
+		var links = context.modules.$toc.find( 'ul a' );
+		// Highlighted links are wider; autoEllipse links in
+		// highlighted state
+		links.addClass( 'currentSelection' );
+		links.autoEllipse( { 'position': 'right', 'tooltip': true } );
+		links.removeClass( 'currentSelection' );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}

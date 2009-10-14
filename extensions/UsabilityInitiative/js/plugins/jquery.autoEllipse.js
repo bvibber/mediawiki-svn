@@ -15,13 +15,24 @@ $.fn.autoEllipse = function( options ) {
 		if ( $text.outerWidth() > $(this).innerWidth() ) {
 			switch ( options.position ) {
 				case 'right':
-					var l = text.length;
-					while ( $text.outerWidth() > $(this).innerWidth() && l > 0 ) {
-						$text.text( text.substr( 0, l ) + '...' );
-						l--;
-					}
+					// Use binary search-like technique for
+					// efficiency
+					var l = 0, r = text.length;
+					var ow, iw;
+					do {
+						var m = Math.ceil( ( l + r ) / 2 );
+						$text.text( text.substr( 0, m ) + '...' );
+						ow = $text.outerWidth();
+						iw = $(this).innerWidth();
+						if ( ow > iw )
+							// Text is too long
+							r = m - 1;
+						else
+							l = m;
+					} while ( l < r );
 					break;
 				case 'center':
+					// TODO: Use binary search like for 'right'
 					var i = [Math.round( text.length / 2 ), Math.round( text.length / 2 )];
 					var side = 1; // Begin with making the end shorter
 					while ( $text.outerWidth() > ( $(this).innerWidth() ) && i[0] > 0 ) {
@@ -39,6 +50,7 @@ $.fn.autoEllipse = function( options ) {
 					}
 					break;
 				case 'left':
+					// TODO: Use binary search like for 'right'
 					var r = 0;
 					while ( $text.outerWidth() > $(this).innerWidth() && r < text.length ) {
 						$text.text( '...' + text.substr( r ) );

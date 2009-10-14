@@ -93,13 +93,24 @@ $.fn.autoEllipse = function( options ) {
 		if ( $text.outerWidth() > $(this).innerWidth() ) {
 			switch ( options.position ) {
 				case 'right':
-					var l = text.length;
-					while ( $text.outerWidth() > $(this).innerWidth() && l > 0 ) {
-						$text.text( text.substr( 0, l ) + '...' );
-						l--;
-					}
+					// Use binary search-like technique for
+					// efficiency
+					var l = 0, r = text.length;
+					var ow, iw;
+					do {
+						var m = Math.ceil( ( l + r ) / 2 );
+						$text.text( text.substr( 0, m ) + '...' );
+						ow = $text.outerWidth();
+						iw = $(this).innerWidth();
+						if ( ow > iw )
+							// Text is too long
+							r = m - 1;
+						else
+							l = m;
+					} while ( l < r );
 					break;
 				case 'center':
+					// TODO: Use binary search like for 'right'
 					var i = [Math.round( text.length / 2 ), Math.round( text.length / 2 )];
 					var side = 1; // Begin with making the end shorter
 					while ( $text.outerWidth() > ( $(this).innerWidth() ) && i[0] > 0 ) {
@@ -117,6 +128,7 @@ $.fn.autoEllipse = function( options ) {
 					}
 					break;
 				case 'left':
+					// TODO: Use binary search like for 'right'
 					var r = 0;
 					while ( $text.outerWidth() > $(this).innerWidth() && r < text.length ) {
 						$text.text( '...' + text.substr( r ) );
@@ -930,9 +942,9 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
  * Get the position (in resolution of bytes not nessecarily characters)
  * in a textarea 
  */
- getCaretPosition: function() {
+ getCaretPosition: function( startAndEnd ) {
 	function getCaret( e ) {
-		var caretPos = 0;
+		var caretPos = 0, endPos = 0;
 		if ( $.browser.msie ) {
 			// IE Support
 			var postFinished = false;
@@ -1002,11 +1014,13 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 				}
 			} while ( ( !postFinished || !periFinished || !postFinished ) );
 			caretPos = rawPreText.replace( /\r\n/g, "\n" ).length;
+			endPos = caretPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
 		} else if ( e.selectionStart || e.selectionStart == '0' ) {
 			// Firefox support
 			caretPos = e.selectionStart;
+			endPos = e.selectionEnd;
 		}
-		return caretPos;
+		return startAndEnd ? [ caretPos, endPos ] : caretPos;
 	}
 	return getCaret( this.get( 0 ) );
 },
@@ -1015,8 +1029,16 @@ setSelection: function( start, end ) {
 		end = start;
 	return this.each( function() {
 		if ( this.selectionStart || this.selectionStart == '0' ) {
-			this.selectionStart = start;
-			this.selectionEnd = end;
+			// Opera 9.0 doesn't allow setting selectionStart past
+			// selectionEnd; any attempts to do that will be ignored
+			// Make sure to set them in the right order
+			if ( start > this.selectionEnd ) {
+				this.selectionEnd = end;
+				this.selectionStart = start;
+			} else {
+				this.selectionStart = start;
+				this.selectionEnd = end;
+			}
 		} else if ( document.body.createTextRange ) {
 			var selection = document.body.createTextRange();
 			selection.moveToElementText( this );
@@ -1084,7 +1106,6 @@ scrollToCaretPosition: function( force ) {
 		return ( $.os.name == 'mac' ? 13 : ( $.os.name == 'linux' ? 15 : 16 ) ) * row;
 	}
 	return this.each(function() {
-		$(this).focus();
 		if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla
 			var scroll = getCaretScrollPosition( this );
@@ -1136,9 +1157,38 @@ scrollToCaretPosition: function( force ) {
 $.wikiEditor = {
 	'modules': {},
 	'instances': [],
-	'supportedBrowsers': {
-		'ltr': { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 },
-		'rtl': { 'msie': 8, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 }
+	/**
+	 * For each browser name, an array of conditions that must be met are supplied in [operaton, value] form where
+	 * operation is a string containing a JavaScript compatible binary operator and value is either a number to be
+	 * compared with $.browser.versionNumber or a string to be compared with $.browser.version
+	 */
+	'browsers': {
+		'ltr': {
+			'msie': [['>=', 7]],
+			'firefox': [
+				['>=', 2],
+				['!=', '2.0'],
+				['!=', '2.0.0.1'],
+				['!=', '2.0.0.2'],
+				['!=', '2.0.0.3'],
+				['!=', '2.0.0.4']
+			],
+			'opera': [['>=', 9.6]],
+			'safari': [['>=', 3.1]]
+		},
+		'rtl': {
+			'msie': [['>=', 8]],
+			'firefox': [
+				['>=', 2],
+				['!=', '2.0'],
+				['!=', '2.0.0.1'],
+				['!=', '2.0.0.2'],
+				['!=', '2.0.0.3'],
+				['!=', '2.0.0.4']
+			],
+			'opera': [['>=', 9.6]],
+			'safari': [['>=', 3.1]]
+		}
 	},
 	/**
 	 * Path to images - this is a bit messy, and it would need to change if
@@ -1149,14 +1199,28 @@ $.wikiEditor = {
 };
 
 $.wikiEditor.isSupportKnown = function() {
-	return ( function( supportedBrowsers ) {
-		return $.browser.name in supportedBrowsers;
-	} )( $.wikiEditor.supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
+	return $.browser.name in $.wikiEditor.browsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'];
 };
 $.wikiEditor.isSupported = function() {
-	return ( function( supportedBrowsers ) {
-		return $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name];
-	} )( $.wikiEditor.supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
+	if ( !$.wikiEditor.isSupportKnown ) {
+		// Assume good faith :)
+		return true;
+	}
+	var browser = $.wikiEditor.browsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'][$.browser.name];
+	for ( condition in browser ) {
+		var op = browser[condition][0];
+		var val = browser[condition][1];
+		if ( typeof val == 'string' ) {
+			if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
+				return false;
+			}
+		} else if ( typeof val == 'number' ) {
+			if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
+				return false;
+			}
+		}
+	}
+	return true;
 };
 // Wraps gM from js2, but allows raw text to supercede
 $.wikiEditor.autoMsg = function( object, property ) {
@@ -1191,7 +1255,7 @@ $.wikiEditor.fixOperaBrokenness = function( s ) {
 			.height( 0 )
 			.width( 0 )
 			.insertBefore( $.wikiEditor.instances[0] );
-		var textarea = $( '<textarea></textarea' )
+		var textarea = $( '<textarea />' )
 			.height( 0 )
 			.appendTo( div )
 			.val( "foo\r\nbar" );
@@ -1201,10 +1265,10 @@ $.wikiEditor.fixOperaBrokenness = function( s ) {
 		textarea.select();
 		textarea.setSelection( index, index + 3 );
 		textarea.encapsulateSelection( '', 'BAR', '', false, true );
-		if ( textarea.val().substr( -1 ) == 'R' )
+		if ( textarea.val().substr( -4 ) != 'BARr' )
 			$.isOperaBroken = false;
 		else
-			$.isOperaBroken = true; 
+			$.isOperaBroken = true;
 		div.remove();
 	}
 	if ( $.isOperaBroken )
@@ -1238,6 +1302,19 @@ if ( typeof context == 'undefined' ) {
 	context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 	// Attach a container in the top
 	context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ).attr( 'id', 'wikiEditor-ui-top' ) );
+	
+	// Some browsers don't restore the cursor position on refocus properly
+	// Do it for them
+	$(this)
+		.focus( function() {
+			var pos = $(this).data( 'wikiEditor-cursor' );
+			if ( pos )
+				$(this).setSelection( pos[0], pos[1] );
+			$(this).data( 'wikiEditor-cursor', false );
+		})
+		.blur( function() {
+			$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
+		});
 	
 	// Create a set of standard methods for internal and external use
 	context.api = {
@@ -1347,60 +1424,63 @@ fn: {
 			$.wikiEditor.modules.dialogs.modules[module] = config[module];
 		}
 		// Build out modules immediately
-		for ( module in $.wikiEditor.modules.dialogs.modules ) {
-			var module = $.wikiEditor.modules.dialogs.modules[module];
-			// Only create the dialog if it doesn't exist yet
-			if ( $( '#' + module.id ).size() == 0 ) {
-				var configuration = module.dialog;
-				// Add some stuff to configuration
-				configuration.bgiframe = true;
-				configuration.autoOpen = false;
-				configuration.modal = true;
-				configuration.title = $.wikiEditor.autoMsg( module, 'title' );
-				// Transform messages in keys
-				// Stupid JS won't let us do stuff like
-				// foo = { gM ('bar'): baz }
-				configuration.newButtons = {};
-				for ( msg in configuration.buttons )
-					configuration.newButtons[gM( msg )] = configuration.buttons[msg];
-				configuration.buttons = configuration.newButtons;
-				// Create the dialog <div>
-				$( '<div /> ' )
-					.attr( 'id', module.id )
-					.html( module.html )
-					.data( 'context', context )
-					.appendTo( $( 'body' ) )
-					.each( module.init )
-					.dialog( configuration )
-					.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
-					.find( '.ui-tabs' ).bind( 'tabsshow', function() {
-						$(this).closest( '.ui-dialog-content' ).each(
-							$.wikiEditor.modules.dialogs.fn.resize );
+		mvJsLoader.doLoad( ['$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
+			for ( module in $.wikiEditor.modules.dialogs.modules ) {
+				var module = $.wikiEditor.modules.dialogs.modules[module];
+				// Only create the dialog if it doesn't exist yet
+				if ( $( '#' + module.id ).size() == 0 ) {
+					var configuration = module.dialog;
+					// Add some stuff to configuration
+					configuration.bgiframe = true;
+					configuration.autoOpen = false;
+					configuration.modal = true;
+					configuration.title = $.wikiEditor.autoMsg( module, 'title' );
+					// Transform messages in keys
+					// Stupid JS won't let us do stuff like
+					// foo = { gM ('bar'): baz }
+					configuration.newButtons = {};
+					for ( msg in configuration.buttons )
+						configuration.newButtons[gM( msg )] = configuration.buttons[msg];
+					configuration.buttons = configuration.newButtons;
+					// Create the dialog <div>
+					$( '<div /> ' )
+						.attr( 'id', module.id )
+						.html( module.html )
+						.data( 'context', context )
+						.appendTo( $( 'body' ) )
+						.each( module.init )
+						.dialog( configuration )
+						.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
+						.find( '.ui-tabs' ).bind( 'tabsshow', function() {
+							$(this).closest( '.ui-dialog-content' ).each(
+								$.wikiEditor.modules.dialogs.fn.resize );
+						});
+					
+					// Add tabindexes to dialog form elements
+					// Find the highest tabindex in use
+					var maxTI = 0;
+					$j( '[tabindex]' ).each( function() {
+						var ti = parseInt( $j(this).attr( 'tabindex' ) );
+						if ( ti > maxTI )
+							maxTI = ti;
 					});
-				
-				// Add tabindexes to dialog form elements
-				// Find the highest tabindex in use
-				var maxTI = 0;
-				$j( '[tabindex]' ).each( function() {
-					var ti = parseInt( $j(this).attr( 'tabindex' ) );
-					if ( ti > maxTI )
-						maxTI = ti;
-				});
-				
-				var tabIndex = maxTI + 1;
-				$j( '.ui-dialog input, .ui-dialog button' )
-					.not( '[tabindex]' )
-					.each( function() {
-						$j(this).attr( 'tabindex', tabIndex++ );
-					});
+					
+					var tabIndex = maxTI + 1;
+					$j( '.ui-dialog input, .ui-dialog button' )
+						.not( '[tabindex]' )
+						.each( function() {
+							$j(this).attr( 'tabindex', tabIndex++ );
+						});
+				}
 			}
-		}
+		});
 	},
 	
 	/**
 	 * Resize a dialog so its contents fit
 	 *
 	 * Usage: dialog.each( resize ); or dialog.bind( 'blah', resize );
+	 * NOTE: This function assumes $j.ui.dialog has already been loaded
 	 */
 	resize: function() {
 		var wrapper = $(this).closest( '.ui-dialog' );
@@ -1477,6 +1557,11 @@ api : {
 						$tabs.append(
 							$.wikiEditor.modules.toolbar.fn.buildTab( context, section, data[type][section] )
 						);
+						// Update visibility of section
+						$section = $sections.find( '.section:visible' );
+						if ( $section.size() ) {
+							$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+						}
 					}
 					break;
 				case 'groups':
@@ -1880,40 +1965,44 @@ fn : {
 		}
 	},
 	buildTab : function( context, id, section ) {
-		var selected = $
-		.cookie( 'wikiEditor-' + context.instance + '-toolbar-section' );
+		var selected = $.cookie( 'wikiEditor-' + context.instance + '-toolbar-section' );
 		return $( '<span />' )
-		.attr( { 'class' : 'tab tab-' + id, 'rel' : id } )
-		.append(
-			$( '<a />' )
-				.addClass( selected == id ? 'current' : null )
-				.attr( 'href', '#' )
-				.text( $.wikiEditor.autoMsg( section, 'label' ) )
-				.data( 'context', context )
-				.click( function() {
-					var $section =
-						$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
-					$(this).blur();
-					var show = $section.css( 'display' ) == 'none';
-					$section.parent().children().hide("fast");
-					$(this).parent().parent().find( 'a' ).removeClass( 'current' );
-					if ( show ) {
-						$section.show("fast");
-						$(this).addClass( 'current' );
-					}
-					
-					//click tracking
-					if($.trackAction != undefined){
-						$.trackAction($section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
-					}
-					
-					$.cookie(
-						'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
-						show ? $section.attr( 'rel' ) : null
-					);
-					return false;
-				} )
-		);
+			.attr( { 'class' : 'tab tab-' + id, 'rel' : id } )
+			.append(
+				$( '<a />' )
+					.addClass( selected == id ? 'current' : null )
+					.attr( 'href', '#' )
+					.text( $.wikiEditor.autoMsg( section, 'label' ) )
+					.data( 'context', context )
+					.click( function() {
+						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
+						var $section =
+							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
+						$(this).blur();
+						var show = $section.css( 'display' ) == 'none';
+						$previousSections = $section.parent().find( '.section:visible' );
+						$previousSections.css( 'position', 'absolute' );
+						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
+						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
+						if ( show ) {
+							$section.fadeIn( 'fast' );
+							$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+							$(this).addClass( 'current' );
+						} else {
+							$sections.animate( { 'height': 0 } );
+						}
+						// Click tracking
+						if($.trackAction != undefined){
+							$.trackAction($section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
+						}
+						//
+						$.cookie(
+							'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
+							show ? $section.attr( 'rel' ) : null
+						);
+						return false;
+					} )
+			);
 	},
 	buildSection : function( context, id, section ) {
 		context.$textarea.trigger( 'wikiEditor-toolbar-buildSection-' + id, [section] );
@@ -1950,7 +2039,8 @@ fn : {
 				break;
 		}
 		if ( $section !== null && id !== 'main' ) {
-			$section.css( 'display', selected == id ? 'block' : 'none' );
+			var show = selected == id;
+			$section.css( 'display', show ? 'block' : 'none' );
 		}
 		return $section;
 	},
@@ -1998,6 +2088,10 @@ fn : {
 			},
 			'loop' : function( i, s ) {
 				s.$sections.append( $.wikiEditor.modules.toolbar.fn.buildSection( s.context, s.id, s.config ) );
+				var $section = s.$sections.find( '.section:visible' );
+				if ( $section.size() ) {
+					$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+				}
 			}
 		} );
 	}
@@ -2029,10 +2123,11 @@ fn: {
 		if ( '$toc' in context.modules ) {
 			return;
 		}
-		context.modules.$toc = $( '<div></div>' )
+		context.modules.$toc = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toc' )
 			.attr( 'id', 'wikiEditor-ui-toc' );
-		$.wikiEditor.modules.toc.fn.build( context, config );
+		// If we ask for this later (after we insert the TOC) then in IE this measurement will be incorrect
+		var height = context.$ui.find( '.wikiEditor-ui-bottom' ).height()
 		context.$ui.find( '.wikiEditor-ui-bottom' )
 			.append( context.modules.$toc );
 		context.modules.$toc.height(
@@ -2040,13 +2135,11 @@ fn: {
 		);
 		// Make some css modifications to make room for the toc on the right...
 		// Perhaps this could be configurable?
-		context.modules.$toc
-			.css( 'width', '12em' )
-			.css( 'marginTop', -( context.$ui.find( '.wikiEditor-ui-bottom' ).height() ) );
+		context.modules.$toc.css( { 'width': '12em', 'marginTop': -( height ) } );
 		context.$ui.find( '.wikiEditor-ui-text' )
 			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
 		// Add the TOC to the document
-		$.wikiEditor.modules.toc.fn.build( context );
+		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$textarea
 			.delayedBind( 1000, 'keyup encapsulateSelection change',
 				function( event ) {
@@ -2152,17 +2245,18 @@ fn: {
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
-			var list = $( '<ul></ul>' );
+			var list = $( '<ul />' );
 			for ( i in structure ) {
-				var item = $( '<li></li>' )
+				var item = $( '<li />' )
 					.append(
-						$( '<a></a>' )
+						$( '<a />' )
 							.attr( 'href', '#' )
 							.addClass( 'section-' + structure[i].index )
 							.data( 'textbox', context.$textarea )
 							.data( 'position', structure[i].position )
 							.click( function( event ) {
 								$(this).data( 'textbox' )
+									.focus()
 									.setSelection( $(this).data( 'position' ) )
 									.scrollToCaretPosition( true );
 								event.preventDefault();
@@ -2178,23 +2272,22 @@ fn: {
 		}
 		// Build outline from wikitext
 		var outline = [];
-		var wikitext = '\n' + $.wikiEditor.fixOperaBrokenness( context.$textarea.val() ) + '\n';
+		var wikitext = $.wikiEditor.fixOperaBrokenness( context.$textarea.val() );
 		var headings = wikitext.match( /^={1,6}.+={1,6}\s*$/gm );
 		var offset = 0;
 		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {
-			text = headings[h];
+			text = $.trim( headings[h] );
 			// Get position of first occurence
 			var position = wikitext.indexOf( text, offset );
 			// Update offset to avoid stumbling on duplicate headings
-			if ( position > offset ) {
-				offset = position + 1;
+			if ( position >= offset ) {
+				offset = position + text.length;
 			} else if ( position == -1 ) {
 				// Not sure this is possible, or what should happen
 				continue;
 			}
-			// Trim off whitespace
-			text = $.trim( text );
+			
 			// Detect the starting and ending heading levels
 			var startLevel = 0;
 			for ( var c = 0; c < text.length; c++ ) {
@@ -2243,7 +2336,15 @@ fn: {
 		if ( $( 'input[name=wpSection]' ).val() == '' )
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
 		context.modules.$toc.html( buildList( structure ) );
-		context.modules.$toc.find( 'ul a' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
+		
+		context.modules.$toc.find( 'ul' ).css( 'width', '10em' );
+		
+		var links = context.modules.$toc.find( 'ul a' );
+		// Highlighted links are wider; autoEllipse links in
+		// highlighted state
+		links.addClass( 'currentSelection' );
+		links.autoEllipse( { 'position': 'right', 'tooltip': true } );
+		links.removeClass( 'currentSelection' );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}
