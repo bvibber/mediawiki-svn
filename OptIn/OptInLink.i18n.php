@@ -184,8 +184,11 @@ $messages['de-formal'] = array(
  * @author Aspar
  */
 $messages['diq'] = array(
+	'optin-try' => 'Beta tesel/cereb bıker',
 	'tooltip-pt-optin-try' => 'xususano neweyani tesel bıker/bıcerebın',
-	'tooltip-pt-optin-leave' => 'xususano neweyan bıqefelen',
+	'optin-leave' => 'acai beta ra vec',
+	'tooltip-pt-optin-leave' => 'xususano neweyan bıqefeln',
+	'optin-feedback' => 'feedback bıde',
 	'tooltip-pt-optin-feedback' => 'pê xususano neweyan derheqê tecrubeyanê xo de malumat bıde',
 );
 

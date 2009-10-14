@@ -237,6 +237,31 @@ $messages['de'] = array(
 	'ct-and' => 'und',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'clicktracking' => 'tıknayiş u temaşakerdışê teşebbusê şuxul biyayişi',
+	'ct-event-name' => 'nameyê meselayi',
+	'ct-expert-header' => 'tıknayişê "tecrubeyınan"',
+	'ct-intermediate-header' => 'tıknayişê "seviyeya weseti"',
+	'ct-beginner-header' => 'tıknayişê "ecemiyani"',
+	'ct-total-header' => 'heme tıknayişi',
+	'ct-start-date' => 'tarixê destpêkerdışi (YYYYMMDD)',
+	'ct-end-date' => 'tarixê qediyayişi (YYYYMMDD)',
+	'ct-increment-by' => 'Number of days each data point represents',
+	'ct-change-graph' => 'Grafiki bıvurnê',
+	'ct-beginner' => 'ecemi',
+	'ct-intermediate' => 'seviyeya weseti',
+	'ct-expert' => 'tecrubeyın',
+	'ct-date-range' => 'tarix de',
+	'ct-editing' => 'nıka vurneno',
+	'ct-anon-users' => 'karberê anonimi',
+	'ct-user-contribs' => 'heme ardimê karberi',
+	'ct-user-span' => 'ardimê karberi',
+	'ct-and' => 'u',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
