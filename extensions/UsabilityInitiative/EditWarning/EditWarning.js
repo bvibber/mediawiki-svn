@@ -24,6 +24,7 @@ js2AddOnloadHook( function() {
 		if(
 			$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val()
 			|| $j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
+			|| $j( '#wikiPreview' ).size() != 0
 		) {
 			// Return our message
 			return gM( 'editwarning-warning' );
