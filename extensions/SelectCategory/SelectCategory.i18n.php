@@ -183,13 +183,14 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Jean-Frédéric
  * @author Marius Engler <marius.engler@coop.ch>
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'selectcategory-title' => 'Choix de catégories',
 	'selectcategory-desc' => 'Permet à l’utilisateur de sélectionner des catégories existantes lors de l’édition d’une page',
-	'selectcategory-subtitle' => 'Maj+click afin de (dé)sélectionner plusieurs catégories d’affilée, Ctrl+click afin de (dé)sélectionner des catégories individuellement.',
+	'selectcategory-subtitle' => 'Maj+clic afin de (dé)sélectionner plusieurs catégories d’affilée, Ctrl+clic afin de (dé)sélectionner des catégories individuellement.',
 );
 
 /** Galician (Galego)

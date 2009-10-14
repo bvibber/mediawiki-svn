@@ -769,6 +769,12 @@ To njeda so druhi raz činić.',
  */
 $messages['hu'] = array(
 	'createsigndocument' => 'Dokumentumok aláírásának engedélyezése',
+	'createsigndoc-head' => "Ezzel az űrlappal egy „Dokumentum aláírása” lapot készíthetsz a megadott laphoz, így a felhasználók képesek lesznek [[Special:SignDocument|aláírni azt]].
+Kérlek add meg, melyik lapon szeretnéd engedélyezni a digitális aláírást, melyik felhasználói csoport tagjai írhatják alá, mely mezők legyenek láthatóak a felhasználóknak és melyek legyenek opcionálisak, az aláíráshoz szükséges életkort (nem lesz minimális életkor, ha kihagyod); valamint egy rövid bevezetőt, ami leírja a dokumentumot és útmutatást ad a felhasználóknak.
+
+<b>Jelenleg semmilyen módon nem lehet törölni vagy módosítani aláírás dokumentumokat elkészültük után</b> közvetlen adatbázis-hozzáférés nélkül. Ráadásul az aláírás lapon megjelenített lapszöveg a lap ''aktuális'' tartalma lesz, függetlenül az esetleges későbbi módosításoktól.
+Légy abszolút biztos benne, hogy a dokumentum stabil állapotban van az aláíráshoz.
+Végül bizonyosodj meg róla, hogy minden mezőt megfelelően kitöltöttél ''még mielőtt elküldöd az űrlapot''.",
 	'createsigndoc-pagename' => 'Lap:',
 	'createsigndoc-allowedgroup' => 'Engedélyezett csoport:',
 	'createsigndoc-email' => 'E-mail cím:',

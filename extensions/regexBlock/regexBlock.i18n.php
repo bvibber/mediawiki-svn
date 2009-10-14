@@ -2769,6 +2769,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'regexblock-form-reason' => 'אורזאַך:',
+	'regexblock-view-all' => 'אַלע',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

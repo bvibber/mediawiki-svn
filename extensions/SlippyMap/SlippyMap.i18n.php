@@ -377,11 +377,12 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'slippymap_desc' => 'Mahdollistaa <tt><nowiki>&lt;slippymap&gt;</nowiki></tt>-elementin käytön OpenLayers slippy map -kartan näyttämiseen. Kartat ovat osoitteesta [http://openstreetmap.org openstreetmap.org].',
+	'slippymap_desc' => 'Lisää <tt>&lt;slippymap&gt;</tt>-elementin, joka mahdollistaa karttojen upottamisen. Tukee lukuisia karttapalveluita, mukaan lukien [http://openstreetmap.org OpenStreetMap] ja NASA Worldwind.',
 	'slippymap_error' => 'Laajennuksen $1 virhe: $2',
 	'slippymap_errors' => 'Laajennuksen $1 virheet',
 	'slippymap_code' => 'Wikikoodi tälle karttanäkymälle:',

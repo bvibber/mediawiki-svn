@@ -5008,6 +5008,7 @@ $messages['su'] = array(
  * @author M.M.S.
  * @author Najami
  * @author Njaelkies Lea
+ * @author Per
  * @author Rotsee
  * @author StefanB
  */
@@ -5098,7 +5099,7 @@ Försäkra dig om att följa konsensus i diskussionen.",
 	'deletequeue-review-success' => 'Du har nu handlagt raderingen av den här sidan.',
 	'deletequeue-review-success-title' => 'Granskningen genomförd',
 	'deletequeue-deletediscuss-discussionpage' => 'Detta är diskussionssidan om den förslagna raderingen av [[$1]].
-$2 användare bifaller raderingsförslaget, och $3 motsätter sig det.
+$2 {{PLURAL:$2|användare}} bifaller raderingsförslaget, och $3 {{PLURAL:$3|motsätter}} sig det.
 Du kan [{{fullurl:$1|action=delvote}} bifalla eller invända] mot radering, eller [{{fullurl:$1|action=delviewvotes}} studera alla synpunkter].',
 	'deletequeue-discusscreate-summary' => 'Skapar diskussion för raderingen av [[$1]].',
 	'deletequeue-discusscreate-text' => 'Radering föreslagen på grund av följande anledning: $2',

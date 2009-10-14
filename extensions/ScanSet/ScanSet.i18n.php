@@ -284,6 +284,22 @@ $messages['de'] = array(
 	'scanset_prev' => '← Vorheriger',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'scanset-desc' => 'resmê peli yo cıgêriyayeyan setê Andreas Grosz CD/DVD de ramocn',
+	'scanset_no_name' => 'xeta: şıma gani pê yew nameyê setê cıgêrayişi dekewe, misal, &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'xeta: setê cıgêrayişo kem ya zi şaş',
+	'scanset_unrecognised_index_format' => 'xeta: formatê endexsi yo mechul',
+	'scanset_opendir_error' => 'xeta: rêza $1 a nêbena',
+	'scanset_no_files' => 'xeta: rêz a ke nişan biya tede dosya nêasena',
+	'scanset_no_volumes' => 'Hata: rêza cildi nêasena',
+	'scanset_missing_index_file' => 'xeta: dosyaya endexsi $1 nêasena',
+	'scanset_index_file_error' => 'xeta: $1. satır de formatê dosyaya endexsi de xeta esto',
+	'scanset_invalid_volume' => 'xeta: cilda şaş',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

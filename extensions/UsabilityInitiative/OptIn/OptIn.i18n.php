@@ -988,9 +988,11 @@ Wir möchten gerne erfahren, was Sie über unsere neue Benutzeroberfläche denke
  * @author Aspar
  */
 $messages['diq'] = array(
+	'optin-title-optedout' => 'Beta tesel bıker/bıcerebın',
 	'optin-title-optedin' => 'Beta ra vec',
 	'optin-title-justoptedin' => 'şıma xeyr ameyî Betayi',
 	'optin-title-justoptedout' => 'şıma Beta tesel kerd/cerebna, ma zaf tşk keni',
+	'optin-title-feedback' => 'feedback bıde',
 	'optin-needlogin' => "qey cerebnayişê Beta'yi [$1 şıma gani cıkewê].",
 	'optin-intro' => 'Wikipediya zaf xebıtyena qey aver şiyayişi.
 şıma qayili Beta tesel bıkeri / bıcerebi?',
@@ -1002,6 +1004,7 @@ Cêr de anketê ma esto, Beta ser çı pêşniyazê şıma  esto ma re bışawe.
 	'optin-leave-cancel' => 'eke şıma qayili Beta bışuxulnî tede bımanî, şıma eşkeni agêri no $1 peli',
 	'optin-success-out' => 'şıma beta ra bı serkewte veciyê.
 serê ekrani de hetê raşt de gıreyê "{{int:optin-try}}" i esto, şıma key qayil bi dekewe Betayi tiya bnıtıknê.',
+	'optin-success-feedback' => 'qey feedbacki ma tşk keni',
 	'optin-accept-short' => 'Hayde bêrê ma bıkerî',
 	'optin-accept-long' => 'Try Beta bıcerebın/tesel bıker',
 	'optin-accept-long-anon' => 'cıkewê u Beta ışuxulnê',
@@ -1021,12 +1024,14 @@ Beta ser çı pêşniyazê şıma  esto ma re bışawe. seba anketi:
 	'optin-survey-answer-whyoptout-notpredictable' => 'qeydeyek o xebıtyena, kes nêzano texmin bıkero',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'aseyişê/esayişê aye rınd niya',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'nizam u fesalê aye rınd niyo',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'mı çuyaya haceti ya neweyi ra hes nêkerd',
 	'optin-survey-answer-whyoptout-other' => 'sebebo bin:',
 	'optin-survey-question-explain' => 'kerem kerê cewabê xo derg u dıla eşkera kerê:',
 	'optin-survey-question-techfail' => 'wexta şıma Beta xebıtnayene çı arızaya tekni bı nê nıbı?',
 	'optin-survey-question-techfail-ifyes' => 'eke cewabê şıma e/belê yo, kerem kerê derg u dıla eşkera kerê:',
+	'optin-survey-question-usedtoolbar' => 'qey vurnayişê yew peli, şıma çuyaya haceti ya dewlemendbiyayeyi çe şuxulna?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'eke e/belê yo, şıma çıta/çı ra heskerd, çı ra hes nêkerd?',
-	'optin-survey-question-usedtoolbar-ifno' => 'Eğer hayırsa, neden? Gelecekte kullanacak mısınız? Lütfen açıklayın.eke nê yo, çıra? şıma reyna xebıtneni, kerem kerê eşkera bıkerê',
+	'optin-survey-question-usedtoolbar-ifno' => 'eke nê yo, çıra? şıma reyna xebıtneni, kerem kerê eşkera bıkerê',
 	'optin-survey-question-different' => 'ma se bıkerdene şıma dewamê Betayi kerdenê?',
 	'optin-survey-question-feedback' => 'feedback bıde:',
 	'optin-survey-question-browser' => 'şıma kam yew/kanci cıgêrayoxi şuxulneni?',
@@ -1038,6 +1043,7 @@ Beta ser çı pêşniyazê şıma  esto ma re bışawe. seba anketi:
 	'optin-survey-answer-changes-nav' => 'tedegêrayişê keyepeli rehet/asan kerê',
 	'optin-survey-answer-changes-edittools' => 'hacetê nizamdayişi ziyed kerê u dewlemend kerê',
 	'optin-survey-answer-changes-upload' => 'bakerdışê medyayi dewlemend kerê',
+	'optin-survey-answer-changes-richtext' => 'Develop editing tools similar to rich-text editors.',
 	'optin-survey-answer-changes-lookfeel' => 'esayişê keyepeli rocane kerê',
 	'optin-survey-answer-changes-predictability' => 'performans o ke texmin beno, dewlemend kerê',
 	'optin-survey-answer-changes-custom' => 'xususi kerdışê karberani re destur bıdi',
@@ -2292,10 +2298,14 @@ Köszönjük, és várjuk a visszajelzésedet!',
 );
 
 /** Armenian (Հայերեն)
+ * @author Teak
  * @author Xelgen
  */
 $messages['hy'] = array(
-	'optin-title-justoptedin' => 'Բատրի Գալուստ Բետա',
+	'optin' => 'Օգտագործելիության նախաձեռնության մասնակցություն',
+	'optin-title-optedout' => 'Փորձել Բետա տարբերակը',
+	'optin-title-optedin' => 'Ելնել Բետայից',
+	'optin-title-justoptedin' => 'Բարի Գալուստ Բետա',
 	'optin-title-justoptedout' => 'Շնորհակալություն Բետա տարբերակը փորձելու համար',
 	'optin-title-feedback' => 'Կարծիք հայտնել Բետայի մասին',
 );

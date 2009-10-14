@@ -359,6 +359,9 @@ To će Vas odvesti s ove stranice i mogli biste izgubiti sve nesačuvane izmjene
 	'ajaxLogin2' => 'Jeste li sigurni?
 Mogli biste izgubiti sve izmjene na ovoj stranici ukoliko je sada zatvorite.',
 	'ajaxlogin-create' => 'Stvorite račun',
+	'al-nosuchuser' => 'Ne postoji suradnik pod imenom "$1".
+Suradnička imena razlikuju velika i mala slova.
+Provjerite Vaš unos.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

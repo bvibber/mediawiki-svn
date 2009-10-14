@@ -1069,6 +1069,7 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Fluff
+ * @author Per
  */
 $messages['sv'] = array(
 	'wah-short-audio' => '$1-ljudfil, $2',
@@ -1084,6 +1085,12 @@ $messages['sv'] = array(
 	'wah-transcode-fail' => 'Kunde inte konvertera den här filen.',
 	'wah-javascript-off' => 'Du måste ha JavaScript aktiverat för att delta i Wiki@Home',
 	'wah-loading' => 'laddar gränssnittet för Wiki@Home <blink>...</blink>',
+	'wah-notoken-login' => 'Har du loggat in? Om inte, vänligen logga in först.',
+	'wah-uploading' => 'Uppladdning av fil <i>$1</i> är komplett',
+	'wah-uploadfail' => 'Uppladdningen falerade',
+	'wah-doneuploading' => 'Uppladdningen komplett. Tack för ditt bidrag.',
+	'wah-needs-firefogg' => 'För att delta i Wiki@Home måste du installera <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Det är ett fel i API:et. Försök igen senare.',
 );
 
 /** Telugu (తెలుగు)
@@ -1091,6 +1098,19 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'wah-menu-pref' => 'అభిరుచులు',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'wah-short-audio' => '$1 קול טעקע, $2',
+	'wah-short-video' => '$1 ווידעא טעקע, $2',
+	'wah-short-general' => '$1 מעדיע טעקע, $2',
+	'wah-long-audio' => '($1 קול טעקע, לענג $2, $3)',
+	'wah-long-video' => '($1 ווידעא טעקע, לענג $2, $4×$5 פיקסעלן, $3)',
+	'wah-menu-pref' => 'פרעפֿערענצן',
+	'wah-uploadfail' => 'אַרויפֿלאָדן דורכגעפֿאַלן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

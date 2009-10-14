@@ -420,7 +420,9 @@ qey seyrkerdışê tercihani no $wgPrefStatsTrackPrefs\'i ronê/vırazê.',
 	'prefstats-factor-week' => 'hefte',
 	'prefstats-factor-twoweeks' => 'dı hefte',
 	'prefstats-factor-fourweeks' => 'çar hefte',
+	'prefstats-factor-default' => 'agêr peymawıtışo hesebyaye',
 	'prefstats-legend-out' => 'cay o ke diyo kışt',
+	'prefstats-legend-in' => 'musteşrik',
 );
 
 /** Lower Sorbian (Dolnoserbski)

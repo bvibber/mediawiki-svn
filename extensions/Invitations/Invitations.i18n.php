@@ -614,8 +614,12 @@ Zo by softwaru za jednotliwu funkciju zrjadował, klikń na jeje mjeno.',
  */
 $messages['hu'] = array(
 	'invite-logpage' => 'Meghívások naplója',
+	'invite-logpagetext' => 'Felhasználók naplója, akik meghívták egymást különböző programfunkciók használatára.',
 	'invite-logentry' => 'meghívta $1 szerkesztőt a <i>$2</i> funkció használatára.',
+	'invitations' => 'Meghívók kezelése különböző programfunkciókhoz',
+	'invitations-pagetitle' => 'Csak meghívással elérhető programfunkciók',
 	'invitations-uninvitedlist-description' => 'Nincs hozzáférésed ezekhez ezen egyéb csak meghívásos programfunkciókhoz.',
+	'invitations-feature-pagetitle' => 'Meghívókezelés – $1',
 	'invitations-inviteform-title' => 'Szerkesztő meghívása $1 használatára',
 	'invitations-inviteform-username' => 'Meghívandó szerkesztő',
 	'invitations-inviteform-submit' => 'Meghívás',

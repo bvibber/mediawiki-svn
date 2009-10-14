@@ -1879,7 +1879,7 @@ Balèkna suntingan iki dhisik.',
 Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenengan dijabel.",
 	'oversight-legend' => 'Nggolèki log pandhelikan révisi',
 	'oversight-oversighter' => "Pangawas (''Oversighter'')",
-	'oversight-offender' => 'Panglanggar',
+	'oversight-offender' => 'Revisi penulis:',
 );
 
 /** Georgian (ქართული)

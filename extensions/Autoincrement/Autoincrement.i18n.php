@@ -154,6 +154,13 @@ $messages['ksh'] = array(
 	'autoincrement-desc' => 'Ene Hooke, dä de automattesch huhjezallte Varijaable <nowiki>{{AUTOINCREMENT}}</nowiki> en et Wiki brängk.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'autoincrement-desc' => 'Eng Variabel <nowiki>{{AUTOINCREMENT}}</nowiki>  déi sech op all Opruf nach eng Kéier derbäisetzt',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

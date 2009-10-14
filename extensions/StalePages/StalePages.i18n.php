@@ -133,11 +133,12 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'stalepages' => 'Seisahtaneet sivut',
+	'stalepages' => 'Huomiotta jääneet sivut',
 	'stalepages-desc' => 'Luo [[Special:Stalepages|luettelon sivuista]], joita ei ole muokattu hetkeen.',
 	'stalepages-summary' => 'Tämän listan sivuja ei ole muokattu viimeiseen $1 päivään.',
 );

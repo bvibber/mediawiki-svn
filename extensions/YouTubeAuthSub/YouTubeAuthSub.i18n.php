@@ -1143,6 +1143,19 @@ $messages['hi'] = array(
 	'youtubeauthsub_submit' => 'भेजें',
 );
 
+/** Croatian (Hrvatski)
+ * @author Mvrban
+ */
+$messages['hr'] = array(
+	'youtubeauthsub_title' => 'Naslov',
+	'youtubeauthsub_description' => 'Opis',
+	'youtubeauthsub_password' => 'YouTube lozinka',
+	'youtubeauthsub_username' => 'YouTube korisničko ime',
+	'youtubeauthsub_keywords' => 'Ključne riječi',
+	'youtubeauthsub_category' => 'Kategorija',
+	'youtubeauthsub_submit' => 'Pošalji',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

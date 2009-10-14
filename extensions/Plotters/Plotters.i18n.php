@@ -317,14 +317,22 @@ Tutón přehlad dodawa lochki přistup na strony systemowych zdźělenkow, kotre
  */
 $messages['hu'] = array(
 	'plotters-desc' => 'Megengedi egyéni JavaScript használatát a jsplot tagekben',
+	'plotters' => 'Diagramrajzolók',
+	'plotters-title' => 'Diagramrajzolók',
+	'plotters-uses' => 'Használatai',
 	'plotters-missing-script' => 'Nem volt szkript megadva.',
 	'plotters-missing-arguments' => 'Nincsenek argumentumok megadva.',
 	'plotters-excessively-long-scriptname' => 'A szkript neve túl hosszú.
 Adj meg egy szkriptet, amelynek a neve maximum 255 karakter hosszú lehet.',
 	'plotters-excessively-long-preprocessorname' => 'Az előfeldolgozó neve túl hosszú.
 Adj meg egy előfeldolgozót, amelynek a neve maximum 255 karakter hosszú lehet.',
+	'plotters-excessively-long-name' => 'A diagram neve túl hosszú.
+Kérlek legfeljebb 255 karakter hosszú diagramnevet adj meg.',
+	'plotters-excessively-long-tableclass' => 'A táblázatosztály neve túl hosszú.
+Kérlek legfeljebb 255 karakter hosszú táblázatosztályt adj meg.',
 	'plotters-no-data' => 'Nem volt adat megadva.',
 	'plotters-invalid-renderer' => 'Érvénytelen megjelenítőmotor lett kiválasztva.',
+	'plotters-errors' => 'Diagramrajzoló {{PLURAL:$1|hiba|hibák}}:',
 );
 
 /** Interlingua (Interlingua)

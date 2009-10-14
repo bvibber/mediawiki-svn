@@ -1714,6 +1714,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author Per
  */
 $messages['sv'] = array(
 	'expandtemplates' => 'Expandera mallar',
@@ -1725,6 +1726,7 @@ $messages['sv'] = array(
 	'expand_templates_xml_output' => 'XML-kod',
 	'expand_templates_ok' => 'Expandera',
 	'expand_templates_remove_comments' => 'Ta bort kommentarer',
+	'expand_templates_remove_nowiki' => 'Undertryck <nowiki> taggar i resultatet',
 	'expand_templates_generate_xml' => 'Visa parseträd som XML',
 	'expand_templates_preview' => 'Förhandsvisning',
 );

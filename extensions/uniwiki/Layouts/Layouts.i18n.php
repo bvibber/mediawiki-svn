@@ -857,6 +857,13 @@ $messages['vo'] = array(
 	'layouts_unknown' => 'Nesevädik',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'layouts_unknown' => 'אומבאַוואוסט',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Liangent

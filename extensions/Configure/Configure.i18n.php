@@ -2691,7 +2691,7 @@ Laajennoksen käyttäminen edellyttää, että PHP:lla on kirjoitusoikeudet hake
 	'configure-section-output' => 'Ulostulo',
 	'configure-select-wiki' => 'Wikin valinta',
 	'configure-select-wiki-desc' => 'Valitse wiki, jonka asetuksia haluat muuttaa.',
-	'configure-select-wiki-view-desc' => 'Valitse wiki, jonka versiot haluat nähdä.',
+	'configure-select-wiki-view-desc' => 'Valitse wiki, jonka asetusversiot haluat nähdä.',
 	'configure-select-wiki-view-all' => 'Kaikki wikit',
 	'configure-select-wiki-view-specific' => 'Tietty wiki:',
 	'configure-select-wiki-submit' => 'Valitse',

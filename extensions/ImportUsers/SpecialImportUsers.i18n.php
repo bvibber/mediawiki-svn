@@ -1842,6 +1842,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'importusers-form-button' => 'אימפארט',
+	'importusers-log-summary-all' => 'אַלע',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

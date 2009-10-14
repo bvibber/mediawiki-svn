@@ -457,9 +457,12 @@ $messages['hu'] = array(
 	'indexfunc-desc' => 'Elemzőfüggvény átirányítások és egyértelműsítő lapok automatikus készítésére',
 	'indexfunc-badtitle' => 'Érvénytelen cím: „$1”',
 	'indexfunc-index-exists' => 'A(z) „$1” lap már létezik',
+	'index' => 'Index keresés',
+	'index-legend' => 'Keresés az indexben',
 	'index-search' => 'Keresés:',
 	'index-submit' => 'Elküldés',
 	'index-hide-detail' => 'Lapok listájának elrejtése',
+	'index-no-results' => 'A keresés nem hozott eredményt',
 );
 
 /** Interlingua (Interlingua)

@@ -3392,6 +3392,7 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'whitelisttablemodifyall' => 'אַלע',
 	'whitelisttablemodifynone' => 'גארנישט',
 );
 
