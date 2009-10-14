@@ -302,7 +302,7 @@ class OggHandler extends MediaHandler {
 				' ' . wfEscapeShellArg( $file->getPath() ) . ' 2>&1';
 			$returnText = wfShellExec( $cmd, $retval );
 			//check if it was successful or if we should try ffmpeg:
-			if ( ! $this->removeBadFile( $dstPath, $retval ) ) {
+			if ( !$this->removeBadFile( $dstPath, $retval ) ) {
 				return true;
 			}
 		}
@@ -642,7 +642,7 @@ class OggTransformOutput extends MediaTransformOutput {
 		$showDescIcon = false;
 
 		//check if outputing to video tag or oggHandler
-		if( $wgJs2VideoTagOut	&& $wgEnableJS2system){
+		if( $wgJs2VideoTagOut	&& $wgEnableJS2system ){
 			//video tag output:
 			if ( $this->isVideo ) {
 				$playerHeight = $height;
@@ -668,12 +668,12 @@ class OggTransformOutput extends MediaTransformOutput {
 					'startOffset' => $offset,
 					'linkback' => $linkAttribs['href']
 		    );
-
 		    if( $wgEnableTemporalOggUrls )
 		        $videoAttr['URLTimeEncoding'] = 'true';
 
 			$s = Xml::tags( 'video', $videoAttr,
 					Xml::tags('div', array(
+							'class'=>'videonojs',
 							'style'=>"overflow:hidden;".
 								"width:{$width}px;height:{$playerHeight}px;".
 								"border:solid thin black;padding:5px;"
@@ -687,7 +687,6 @@ class OggTransformOutput extends MediaTransformOutput {
 
 		}else{
 			//oggHandler output:
-
 			if ( $this->isVideo ) {
 				$msgStartPlayer = wfMsg( 'ogg-play-video' );
 				$imgAttribs = array(
