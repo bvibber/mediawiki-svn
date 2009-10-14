@@ -13,7 +13,8 @@ $utils->debug = true;
 if (!isset($argv[1])) die("usage: wwtest <id>\n");
 
 $id = $argv[1];
+$max = @$argv[2];
 
-$images = $utils->getImagesAbout($id);
+$images = $utils->getImagesAbout($id, $max);
 
 print_r($images);

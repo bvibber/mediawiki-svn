@@ -3,6 +3,9 @@
 if (!defined('NS_IMAGE'))
     define('NS_IMAGE', 6);
 
+if (!defined('NS_TEMPLATE'))
+    define('NS_TEMPLATE', 10);
+
 class ImageCollection {
 
     function __construct() {
@@ -10,7 +13,11 @@ class ImageCollection {
     }
 
     static function compareRecords($a, $b) {
-	return $b['score'] - $a['score']; //NOTE: descending
+	$d = (float)$b['score'] - (float)$a['score']; //NOTE: descending
+
+	if ( $d > 0 ) return 1; 
+	else if ( $d < 0 ) return -1; 
+	else return 0;
     }
 
     function size() {
@@ -28,7 +35,7 @@ class ImageCollection {
 	if (!isset($this->images[$image])) {
 	    $rec = array(
 		"name" => $image,
-		"score" => 0
+		"score" => 0,
 	    );
 	} else {
 	  $rec = $this->images[$image];
@@ -45,6 +52,26 @@ class ImageCollection {
     function addImages($images, $key, $usage = "page", $weight = 1) {
 	foreach ($images as $image) {
 	    $this->addImage($image, $key, $usage, $weight);
+	}
+    }
+
+    function addTags($image, $tags, $prefix = "") {
+	global $wwTagScores;
+
+	if (isset($this->images[$image])) {
+	    foreach ($tags as $tag => $weight) {
+		if (is_int($tag)) {
+		    $tag = $prefix.$weight;
+
+		    if (isset($wwTagScores[$tag])) $weight = $wwTagScores[$tag];
+		    else continue;
+		} else {
+		    $tag = $prefix.$tag;
+		}
+
+		$this->images[$image]['score'] += $weight;
+		$this->images[$image]['tags'][] = $tag;
+	    }
 	}
     }
 
@@ -107,7 +134,7 @@ class WWUtils {
     }
 
     function getWikiInfo($lang) {
-	global $wwWikiInfoTable, $wwWikiDbName, $wwWikiServerName;
+	global $wwWikiInfoTable, $wwWikiDbName, $wwWikiServerName, $wwCommonsServerName;
 
 	$db = str_replace('{lang}', $lang, $wwWikiDbName);
 
@@ -121,6 +148,8 @@ class WWUtils {
 
 	if (!$info) $info = false;
 	else $info['server'] = str_replace('{num}', $info['server'], $wwWikiServerName);
+
+	if ($lang == "commons" && $wwCommonsServerName) $info['server'] = $wwCommonsServerName;
 
 	return $info;
     }
@@ -447,6 +476,29 @@ class WWUtils {
 	return $list;
     }
 
+    function queryCategoriesOfImagePage($lang, $image) {
+	global $wwTablePrefix, $wwThesaurusDataset, $wwCommonsTablePrefix;
+	$page_table = $this->getWikiTableName($lang, "page");
+	$categorylinks_table = $this->getWikiTableName($lang, "categorylinks");
+
+	$sql = "/* queryCategoriesOfImagePage(" . $this->quote($lang) . ", " . $this->quote($image) . ") */ ";
+
+	$sql .= " SELECT cl_to as category FROM $categorylinks_table as C ";
+	$sql .= " JOIN $page_table as P on P.page_id = C.cl_from ";
+
+	$sql .= " WHERE P.page_title = " . $this->quote($image);
+	$sql .= " AND P.page_namespace = " . NS_IMAGE;
+
+	return $this->queryWiki($lang, $sql);
+    }
+
+    function getCategoriesOfImagePage($lang, $image) {
+	$rs = $this->queryCategoriesOfImagePage($lang, $image);
+	$list = WWUtils::slurpList($rs, "category");
+	mysql_free_result($rs);
+	return $list;
+    }
+
     function getTemplateScores($templates, $values = NULL) {
 	global $wwWikiServerName;
 	if ($values === NULL) $values = $wwTemplateScores;
@@ -470,7 +522,7 @@ class WWUtils {
     }
 
     function getImagesAbout($id, $max = 0) {
-	global $wwFakeCommonsConcepts, $wwFakeCommonsPlural;
+	global $wwFakeCommonsConcepts, $wwFakeCommonsPlural, $wwLanguages;
 
 	$concepts = $this->getLocalConcepts($id);
 
@@ -482,13 +534,16 @@ class WWUtils {
 	
 	foreach ($concepts as $lang => $title) {
 	    if ($lang == "commons") continue;
+	    if (!isset($wwLanguages[$lang])) continue;
 
 	    $img = $this->getRelevantImagesOnPage($lang, 0, $title, true); //FIXME: resource mapping
 	    $images->addImages($img, $lang . ":" . $title, "article", 1);
 	}
 
-	if ($max && $images->size()>$max) 
+	if ($max && $images->size()>$max) {
+	    $this->addImageTags($images);
 	    return $images->listImages($max);
+	}
 
 	if (isset($concepts['commons'])) {
 	    $title = $concepts['commons'];
@@ -496,19 +551,35 @@ class WWUtils {
 	    $img = $this->getRelevantImagesOnPage("commons", 0, $title, false); //FIXME: resource mapping
 	    $images->addImages($img, "commons:" . $title, "gallery", 0.8);
 
-	    if ($max && $images->size()>$max) 
+	    if ($max && $images->size()>$max) {
+		$this->addImageTags($images);
 		return $images->listImages($max);
+	    }
 
 	    $img = $this->getImagesInCategory("commons", $title); //FIXME: resource mapping
-	    $images->addImages($img, "commons:category:" . $title, "category", 0.5);
+	    if ($img) $images->addImages($img, "commons:category:" . $title, "category", 0.5);
+	    else if ($wwFakeCommonsConcepts && $wwFakeCommonsPlural && !preg_match('/s$/', $title)) {
+		$cname = $title."s";
 
-	    if ($wwFakeCommonsConcepts && $wwFakeCommonsPlural) {
-		$img = $this->getImagesInCategory("commons", $title."s"); //FIXME: resource mapping
-		$images->addImages($img, "commons:category:" . $title."s", "category(pl)", 0.5);
+		$img = $this->getImagesInCategory("commons", $cname); //FIXME: resource mapping
+		$images->addImages($img, "commons:category:" . $cname, "category(pl)", 0.5);
 	    }
 	}
 
+	$this->addImageTags($images);
 	return $images->listImages($max);
+    }
+
+    function addImageTags($images) {
+	foreach ($images->images as $image) {
+		$image = $image['name'];
+
+		$tags = $this->getTemplatesOnImagePage('commons', $image);
+		$images->addTags($image, $tags, "Template:");
+
+		$cats = $this->getCategoriesOfImagePage('commons', $image);
+		$images->addTags($image, $cats, "Category:");
+	}
     }
 
     function getThumbnailURL($image, $width = 120, $height = NULL) {
@@ -550,11 +621,18 @@ class WWUtils {
 
 	if (!@$title) $title = $name;
 
+	$tags = "";
+	if (isset($image['tags'])) {
+	    foreach ($image['tags'] as $tag) {
+		$tags .= "tag-" . str_replace(":", "-", $tag) . " ";
+	    }
+	}
+
 	$html= "<img src=\"" . htmlspecialchars($thumb) . "\" alt=\"" . htmlspecialchars($title) . "\" border=\"0\"/>";
-	$html= "<a href=\"" . htmlspecialchars($page) . "\" title=\"" . htmlspecialchars($title) . "\">$html</a>";
+	$html= "<a href=\"" . htmlspecialchars($page) . "\" title=\"" . htmlspecialchars($title) . " (score " . htmlspecialchars($image['score']) . ")\" class=\"thumb-link $tags\">$html</a>";
 
 	if (is_array($image)) {
-	    $html .= "<!-- " . htmlspecialchars( str_replace("--", "~~", var_export( $image, true ) ) ) . " -->";
+	    $html .= "<!-- " . str_replace("--", "~~", var_export( $image, true ) ) . " -->";
 	}
 
 	return $html;
