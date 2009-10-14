@@ -20,17 +20,17 @@ class UsabilityInitiativeHooks {
 			'raw' => array(
 				array( 'src' => 'css/suggestions.css', 'version' => 6 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 4 ),
-				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 5 ),
+				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 6 ),
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 2 ),
-				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 5 ),
+				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 6 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 9 ),
+				array( 'src' => 'css/combined.css', 'version' => 11 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 9 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 11 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 		)
@@ -44,39 +44,37 @@ class UsabilityInitiativeHooks {
 		'no_js2' => array(
 			'raw' => array(
 				array( 'src' => 'js/js2/jquery-1.3.2.js', 'version' => '1.3.2' ),
-				array( 'src' => 'js/js2/js2.js', 'version' => 3 ),
+				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2y' ),
+				array( 'src' => 'js/js2/js2.js', 'version' => 4 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/js2.combined.js', 'version' => 6 ),
+				array( 'src' => 'js/js2.combined.js', 'version' => 7 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/js2.combined.min.js', 'version' => 6 ),
+				array( 'src' => 'js/js2.combined.min.js', 'version' => 7 ),
 			),
 		),
 		// Core functionality of extension
 		'base_sets' => array(
 			'raw' => array(
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.autoEllipse.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.autoEllipse.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 4 ),
-				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 14 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 8 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 4 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 15 ),
-				// FIXME: jQuery UI doesn't belong here, should move to no_js2
-				// once we figure out how to do jQuery UI properly in JS2 
-				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2y' ),
+				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 16 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 12 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 12 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 5 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 19 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 36 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 43 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 36 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 43 ),
 			),
 		),
 	);

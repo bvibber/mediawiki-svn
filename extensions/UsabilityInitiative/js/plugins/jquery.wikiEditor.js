@@ -15,9 +15,38 @@
 $.wikiEditor = {
 	'modules': {},
 	'instances': [],
-	'supportedBrowsers': {
-		'ltr': { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 },
-		'rtl': { 'msie': 8, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 }
+	/**
+	 * For each browser name, an array of conditions that must be met are supplied in [operaton, value] form where
+	 * operation is a string containing a JavaScript compatible binary operator and value is either a number to be
+	 * compared with $.browser.versionNumber or a string to be compared with $.browser.version
+	 */
+	'browsers': {
+		'ltr': {
+			'msie': [['>=', 7]],
+			'firefox': [
+				['>=', 2],
+				['!=', '2.0'],
+				['!=', '2.0.0.1'],
+				['!=', '2.0.0.2'],
+				['!=', '2.0.0.3'],
+				['!=', '2.0.0.4']
+			],
+			'opera': [['>=', 9.6]],
+			'safari': [['>=', 3.1]]
+		},
+		'rtl': {
+			'msie': [['>=', 8]],
+			'firefox': [
+				['>=', 2],
+				['!=', '2.0'],
+				['!=', '2.0.0.1'],
+				['!=', '2.0.0.2'],
+				['!=', '2.0.0.3'],
+				['!=', '2.0.0.4']
+			],
+			'opera': [['>=', 9.6]],
+			'safari': [['>=', 3.1]]
+		}
 	},
 	/**
 	 * Path to images - this is a bit messy, and it would need to change if
@@ -28,14 +57,28 @@ $.wikiEditor = {
 };
 
 $.wikiEditor.isSupportKnown = function() {
-	return ( function( supportedBrowsers ) {
-		return $.browser.name in supportedBrowsers;
-	} )( $.wikiEditor.supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
+	return $.browser.name in $.wikiEditor.browsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'];
 };
 $.wikiEditor.isSupported = function() {
-	return ( function( supportedBrowsers ) {
-		return $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name];
-	} )( $.wikiEditor.supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
+	if ( !$.wikiEditor.isSupportKnown ) {
+		// Assume good faith :)
+		return true;
+	}
+	var browser = $.wikiEditor.browsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'][$.browser.name];
+	for ( condition in browser ) {
+		var op = browser[condition][0];
+		var val = browser[condition][1];
+		if ( typeof val == 'string' ) {
+			if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
+				return false;
+			}
+		} else if ( typeof val == 'number' ) {
+			if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
+				return false;
+			}
+		}
+	}
+	return true;
 };
 // Wraps gM from js2, but allows raw text to supercede
 $.wikiEditor.autoMsg = function( object, property ) {
@@ -70,7 +113,7 @@ $.wikiEditor.fixOperaBrokenness = function( s ) {
 			.height( 0 )
 			.width( 0 )
 			.insertBefore( $.wikiEditor.instances[0] );
-		var textarea = $( '<textarea></textarea' )
+		var textarea = $( '<textarea />' )
 			.height( 0 )
 			.appendTo( div )
 			.val( "foo\r\nbar" );
@@ -80,10 +123,10 @@ $.wikiEditor.fixOperaBrokenness = function( s ) {
 		textarea.select();
 		textarea.setSelection( index, index + 3 );
 		textarea.encapsulateSelection( '', 'BAR', '', false, true );
-		if ( textarea.val().substr( -1 ) == 'R' )
+		if ( textarea.val().substr( -4 ) != 'BARr' )
 			$.isOperaBroken = false;
 		else
-			$.isOperaBroken = true; 
+			$.isOperaBroken = true;
 		div.remove();
 	}
 	if ( $.isOperaBroken )
@@ -117,6 +160,19 @@ if ( typeof context == 'undefined' ) {
 	context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 	// Attach a container in the top
 	context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ).attr( 'id', 'wikiEditor-ui-top' ) );
+	
+	// Some browsers don't restore the cursor position on refocus properly
+	// Do it for them
+	$(this)
+		.focus( function() {
+			var pos = $(this).data( 'wikiEditor-cursor' );
+			if ( pos )
+				$(this).setSelection( pos[0], pos[1] );
+			$(this).data( 'wikiEditor-cursor', false );
+		})
+		.blur( function() {
+			$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
+		});
 	
 	// Create a set of standard methods for internal and external use
 	context.api = {

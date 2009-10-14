@@ -105,6 +105,7 @@ border-left:solid silver 1px;
 float:right;
 padding:0;
 overflow:auto;
+overflow-x:hidden;
 }
 body.rtl .wikiEditor-ui-toc{
 right:auto;
@@ -115,6 +116,9 @@ border-left:none;
 padding:0;
 margin:0.5em 1em;
 list-style:none;
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
 }
 .wikiEditor-ui-toc ul ul{
 padding:0;
@@ -147,6 +151,8 @@ width:100%;
 float:left;
 width:100%;
 clear:both;
+height:0;
+overflow:hidden;
 }
 body.rtl .wikiEditor-ui-toolbar .sections{
 float:right;

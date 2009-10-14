@@ -34,6 +34,11 @@ api : {
 						$tabs.append(
 							$.wikiEditor.modules.toolbar.fn.buildTab( context, section, data[type][section] )
 						);
+						// Update visibility of section
+						$section = $sections.find( '.section:visible' );
+						if ( $section.size() ) {
+							$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+						}
 					}
 					break;
 				case 'groups':
@@ -437,40 +442,44 @@ fn : {
 		}
 	},
 	buildTab : function( context, id, section ) {
-		var selected = $
-		.cookie( 'wikiEditor-' + context.instance + '-toolbar-section' );
+		var selected = $.cookie( 'wikiEditor-' + context.instance + '-toolbar-section' );
 		return $( '<span />' )
-		.attr( { 'class' : 'tab tab-' + id, 'rel' : id } )
-		.append(
-			$( '<a />' )
-				.addClass( selected == id ? 'current' : null )
-				.attr( 'href', '#' )
-				.text( $.wikiEditor.autoMsg( section, 'label' ) )
-				.data( 'context', context )
-				.click( function() {
-					var $section =
-						$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
-					$(this).blur();
-					var show = $section.css( 'display' ) == 'none';
-					$section.parent().children().hide("fast");
-					$(this).parent().parent().find( 'a' ).removeClass( 'current' );
-					if ( show ) {
-						$section.show("fast");
-						$(this).addClass( 'current' );
-					}
-					
-					//click tracking
-					if($.trackAction != undefined){
-						$.trackAction($section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
-					}
-					
-					$.cookie(
-						'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
-						show ? $section.attr( 'rel' ) : null
-					);
-					return false;
-				} )
-		);
+			.attr( { 'class' : 'tab tab-' + id, 'rel' : id } )
+			.append(
+				$( '<a />' )
+					.addClass( selected == id ? 'current' : null )
+					.attr( 'href', '#' )
+					.text( $.wikiEditor.autoMsg( section, 'label' ) )
+					.data( 'context', context )
+					.click( function() {
+						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
+						var $section =
+							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
+						$(this).blur();
+						var show = $section.css( 'display' ) == 'none';
+						$previousSections = $section.parent().find( '.section:visible' );
+						$previousSections.css( 'position', 'absolute' );
+						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
+						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
+						if ( show ) {
+							$section.fadeIn( 'fast' );
+							$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+							$(this).addClass( 'current' );
+						} else {
+							$sections.animate( { 'height': 0 } );
+						}
+						// Click tracking
+						if($.trackAction != undefined){
+							$.trackAction($section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
+						}
+						//
+						$.cookie(
+							'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
+							show ? $section.attr( 'rel' ) : null
+						);
+						return false;
+					} )
+			);
 	},
 	buildSection : function( context, id, section ) {
 		context.$textarea.trigger( 'wikiEditor-toolbar-buildSection-' + id, [section] );
@@ -507,7 +516,8 @@ fn : {
 				break;
 		}
 		if ( $section !== null && id !== 'main' ) {
-			$section.css( 'display', selected == id ? 'block' : 'none' );
+			var show = selected == id;
+			$section.css( 'display', show ? 'block' : 'none' );
 		}
 		return $section;
 	},
@@ -555,6 +565,10 @@ fn : {
 			},
 			'loop' : function( i, s ) {
 				s.$sections.append( $.wikiEditor.modules.toolbar.fn.buildSection( s.context, s.id, s.config ) );
+				var $section = s.$sections.find( '.section:visible' );
+				if ( $section.size() ) {
+					$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+				}
 			}
 		} );
 	}
