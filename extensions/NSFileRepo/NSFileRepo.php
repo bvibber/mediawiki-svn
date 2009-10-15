@@ -10,6 +10,8 @@
  * @url http://www.mediawiki.org/wiki/Manual:Extension:NSFileRepo
  * @licence GNU General Public Licence 2.0 or later
  *
+ * Version 1.2 - Fixes reupload error and adds lockdown security to archives, deleted, thumbs
+ *
  * This extension extends and is dependent on extension Lockdown - see http://www.mediawiki.org/wiki/Extension:Lockdown
  * It must be included(required) after Lockdown!  Also, $wgHashedUploadDirectory must be true and cannot be changed once repository has files in it
  */
@@ -31,7 +33,7 @@ $wgExtensionCredits['media'][] = array(
 	'path' => __FILE__,
 	'name' => 'NSFileRepo',
 	'author' => 'Jack D. Pond',
-	'version' => '1.1',
+	'version' => '1.2',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:NSFileRepo',
 	'description' => 'Provide namespace-based access restriction features to uploaded files/images',
 	'descriptionmsg' => 'nsfilerepo-desc'
@@ -110,6 +112,46 @@ class NSLocalFile extends LocalFile
 		$filename = $bits[count($bits)-1];
 		return $this->getHashPath() . rawurlencode( $filename );
 	}
+	/**
+	 * This function overrides the LocalFile because the archive name should not contain the namespace in the
+	 * filename.  Otherwise the function would have worked.  This only affects reuploads
+	 *
+	 * Move or copy a file to its public location. If a file exists at the
+	 * destination, move it to an archive. Returns the archive name on success
+	 * or an empty string if it was a new file, and a wikitext-formatted
+	 * WikiError object on failure.
+	 *
+	 * The archive name should be passed through to recordUpload for database
+	 * registration.
+	 *
+	 * @param string $sourcePath Local filesystem path to the source image
+	 * @param integer $flags A bitwise combination of:
+	 *     File::DELETE_SOURCE    Delete the source file, i.e. move
+	 *         rather than copy
+	 * @return FileRepoStatus object. On success, the value member contains the
+	 *     archive name, or an empty string if it was a new file.
+	 */
+	function publish( $srcPath, $flags = 0 ) {
+		$this->lock();
+		$dstRel = $this->getRel();
+/* This is the part that changed from LocalFile */
+		$bits=explode(':',$this->getName());
+		$archiveName = gmdate( 'YmdHis' ) . '!'.$bits[count($bits)-1];
+/* End of changes */
+		$archiveRel = 'archive/' . $this->getHashPath() . $archiveName;
+		$flags = $flags & File::DELETE_SOURCE ? LocalRepo::DELETE_SOURCE : 0;
+		$status = $this->repo->publish( $srcPath, $dstRel, $archiveRel, $flags );
+		if ( $status->value == 'new' ) {
+			$status->value = '';
+		} else {
+			$status->value = $archiveName;
+		}
+		$this->unlock();
+		return $status;
+	}
+
+
+
 	/** Instantiating this class using "self"
 	 * If you're reading this, you're problably wondering why on earth are the following static functions, which are copied
 	 * verbatim from the original extended class "LocalFIle" included here?
@@ -143,11 +185,14 @@ class NSLocalFile extends LocalFile
 }
 class NSOldLocalFile extends OldLocalFile
 {
-	function getRel( $name, $levels ) {
-		return(NSLocalFile::getRel());
+	function getRel( $name, $levels) {
+		return(NSLocalFile::getRel( $name, $levels ));
 	}
 	function getUrlRel( $name, $levels ) {
-		return(NSLocalFile::getUrlRel());
+		return(NSLocalFile::getUrlRel( $name, $levels ));
+	}
+	function publish( $srcPath, $flags = 0 ) {
+		return NSLocalFile::publish( $srcPath, $flags );
 	}
 
 	/** See comment about Instantiating this class using "self", above */
@@ -217,8 +262,9 @@ function NSFileRepoImgAuthCheck($title, $path, $name, $result) {
 # See if stored in a NS path
 
 	$subdirs = explode('/',$path);
-	if (strlen($subdirs[1]) == 3 && is_numeric($subdirs[1]) && $subdirs[1] >= 100)  {
-		$title = Title::makeTitleSafe( NS_FILE, $wgContLang->getNsText($subdirs[1]).":".$name );
+	$x = (strlen($subdirs[$x]) <> 3 && ($subdirs[1] == "archive" || $subdirs[1] == "deleted" || $subdirs[1] == "thumb")) ? 2 : 1;
+	if (strlen($subdirs[$x]) == 3 && is_numeric($subdirs[$x]) && $subdirs[$x] >= 100)  {
+		$title = Title::makeTitleSafe( NS_FILE, $wgContLang->getNsText($subdirs[$x]).":".$name );
 		if( !$title instanceof Title ) {
 			$result = array('img-auth-accessdenied','img-auth-badtitle',$name);
 			return false;
