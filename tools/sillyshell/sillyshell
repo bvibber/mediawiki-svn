@@ -33,4 +33,4 @@ if len(sys.argv) > 3:
 if sys.argv[2] != "svnserve -t":
 	restricted("Only svnserve -t is allowed.")
 
-os.execv(conf['svnserve'], ['-t'])
+os.execv(conf['svnserve'], [conf['svnserve'], '-t'])
