@@ -36,42 +36,34 @@ class ClickTrackingHooks {
 	 * @return unknown_type
 	 */
 	public static function parserTestTables( &$tables ) {
-    	$tables[] = 'click_tracking';
-    	$tables[] = 'click_tracking_events';
-    	return true;
+		$tables[] = 'click_tracking';
+		$tables[] = 'click_tracking_events';
+		return true;
 	}
 	
 	/*
 	 * check to see if user is throttled
 	 */
-	public static function isUserThrottled(){
+	public static function isUserThrottled() {
 		global $wgClickTrackThrottle;
-		if( ( $wgClickTrackThrottle >= 0 )  && ( rand() % $wgClickTrackThrottle == 0 )  ){
-			return 'false';
-		}
-		else {
-			return 'true';
-		}
+		return !( $wgClickTrackThrottle >= 0 && rand() % $wgClickTrackThrottle == 0 );
 	}
 	
 	
 	/**
 	 * Adds JavaScript
 	 */
-	public static function addJS(){
+	public static function addJS() {
 		global $wgOut;
 		
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js' );
 		UsabilityInitiativeHooks::addVariables(
-			array( 
+			array(
 				'wgTrackingToken' => ClickTrackingHooks::get_session_id()
+				'wgClickTrackingIsThrottled' => ClickTrackingHooks::isUserThrottled()
 			)
 		);
-		//need a literal false, not "false" to be output, to work prperly
-		$userThrottle = ClickTrackingHooks::isUserThrottled();
-		$wgOut->addScript("<script> var wgClickTrackingIsThrottled = $userThrottle; </script>");
-		
 		return true;
 		
 	}
@@ -80,7 +72,7 @@ class ClickTrackingHooks {
 	 * Gets the session ID...we just want a unique random ID for the page load
 	 * @return session ID
 	 */
-	public static function get_session_id(){
+	public static function get_session_id() {
 		global $wgUser;
 		return wfGenerateToken( array( $wgUser->getName(), time() ) );
 	}
@@ -90,7 +82,7 @@ class ClickTrackingHooks {
 	 * @param $ts beginning timestamp
 	 * @return number of revsions this user has made
 	 */
-	public static function getEditCountSince( $ts ){
+	public static function getEditCountSince( $ts ) {
 		global $wgUser;
 
 		// convert to just the day
@@ -109,7 +101,7 @@ class ClickTrackingHooks {
 		);
 
 		// user hasn't made any edits in whatever amount of time
-		if( $edits == null ){
+		if ( $edits == null ) {
 			$edits = 0;
 		}
 
@@ -122,22 +114,23 @@ class ClickTrackingHooks {
 	 * @param $event_name String: name of the event to get
 	 * @return integer
 	 */
-	public static function getEventIDFromName( $event_name ){
+	public static function getEventIDFromName( $event_name ) {
 		$dbw = wfGetDB( DB_MASTER ); //replication lag means sometimes a new event will not exist in the table yet
 
 		$id_num = $dbw->selectField(
 			'click_tracking_events',
 			'id',
-			array( 
+			array(
 				'event_name' => $event_name
-			), 
+			),
 			__METHOD__
 		);
 
 		// if this entry doesn't exist...
 		// this will be incredibly rare as the whole database will only have a few hundred entries in it at most
 		// and getting DB_MASTER up top would be wasteful
-		if( $id_num === false ){
+		// FIXME: Use replace() instead of this selectField --> insert or update logic
+		if( $id_num === false ) {
 			$dbw->insert(
 				'click_tracking_events',
 				array( 'event_name' => (string) $event_name ),
@@ -165,8 +158,8 @@ class ClickTrackingHooks {
 	 * @param $contribs_in_timespan3 Integer: number of contributions user has made in timespan of granularity 3 (defined by ClickTracking/$wgClickTrackContribGranularity3)
 	 * @return true if the event was stored in the DB
 	 */
-	public static function trackEvent( $session_id, $is_logged_in, $namespace, $event_id, $contribs = 0, 
-									   $contribs_in_timespan1 = 0, $contribs_in_timespan2 = 0, $contribs_in_timespan3 = 0 ){
+	public static function trackEvent( $session_id, $is_logged_in, $namespace, $event_id, $contribs = 0,
+						$contribs_in_timespan1 = 0, $contribs_in_timespan2 = 0, $contribs_in_timespan3 = 0 ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->begin();
