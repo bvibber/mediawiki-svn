@@ -55,6 +55,8 @@ $messages['en'] = array(
 	'recordadmin-editwithform' => 'Edit with form',
 	'recordadmin-typeinfo' => '$1 record',
 	'right-recordadmin' => 'Find and edit record pages',
+	'recrodadmin-export-csv' => 'CSV',
+	'recrodadmin-export-pdf' => 'PDF',
 );
 
 /** Message documentation (Message documentation)

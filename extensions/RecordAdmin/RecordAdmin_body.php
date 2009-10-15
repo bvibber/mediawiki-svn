@@ -403,32 +403,48 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( $quid = $wgRequest->getText( 'quid' ) ) {
 			global $wgOut;
 			$wgOut->disable();
-			header("Content-Type: text/html");
-			header("Content-Disposition: attachment; filename=\"$quid.csv\"");
-			preg_match_all( "|<td.*?>\s*(.*?)\s*</td>|s", $table, $data );
-			$cols = $cols ? $cols : array_keys( $th );
-			$csv = join( "\t", $cols );
-			foreach ( $data[1] as $i => $cell ) {
-				if ( $i % count( $cols ) == 0 ) {
-					$csv .= "\n";
-					$sep = "";
-				} else $sep = "\t";
-				$cell = preg_replace( "|<!--.+?-->|s", "", $cell );
-				if ( preg_match( "|<p>\s*(.+?)\s*</p>|s", $cell, $m ) ) $cell = $m[1];
-				$cell = preg_replace( "/[\\r\\n]+/m", "\\n", $cell );
-				$csv .= "$sep$cell";
+
+			if ( $wgRequest->getText( 'format' ) == 'pdf' ) {
+				global $wgUploadDirectory;
+				$file = "$wgUploadDirectory/" . uniqid( 'recordadmin' );
+				$table = str_replace( '<table', '<table border', $table );
+				file_put_contents( $file, $table );
+				header("Content-Type: application/pdf");
+				header( "Content-Disposition: attachment; filename=\"$quid.pdf\"" );
+				putenv( "HTMLDOC_NOCGI=1" );
+				$options = "--left 1cm --right 1cm --top 1cm --bottom 1cm --header ... --footer ... --bodyfont Arial --fontsize 8";
+				passthru( "htmldoc -t pdf --format pdf14 $options --webpage $file" );
+				@unlink( $file );
 			}
-			print $csv;
+
+			else {
+				header("Content-Type: text/html");
+				header("Content-Disposition: attachment; filename=\"$quid.csv\"");
+				preg_match_all( "|<td.*?>\s*(.*?)\s*</td>|s", $table, $data );
+				$cols = $cols ? $cols : array_keys( $th );
+				$csv = join( "\t", $cols );
+				foreach ( $data[1] as $i => $cell ) {
+					if ( $i % count( $cols ) == 0 ) {
+						$csv .= "\n";
+						$sep = "";
+					} else $sep = "\t";
+					$cell = preg_replace( "|<!--.+?-->|s", "", $cell );
+					if ( preg_match( "|<p>\s*(.+?)\s*</p>|s", $cell, $m ) ) $cell = $m[1];
+					$cell = preg_replace( "/[\\r\\n]+/m", "\\n", $cell );
+					$csv .= "$sep$cell";
+				}
+				print $csv;
+			}
 			$table = '';
 		}
 
-		# Otherwise add an export link
+		# Otherwise add export links
 		else {
 			$qs = "wpType=$type&wpFind=1&quid={$this->quid}";
 			foreach ( $this->filter as $k => $v ) $qs .= "&ra_$k=" . urlencode( $v );
 			$url = $wgTitle->getLocalURL( $qs );
-			$anchor = wfMsg( 'export-submit' );
-			$table .= "\n<a class=\"recordadmin-export\" href=\"$url\">$anchor</a>";
+			$table .= "\n<a class=\"recordadmin-export\" href=\"$url\">" . wfMsg( 'recrodadmin-export-csv' ) . "</a>";
+			$table .= "\n<a class=\"recordadmin-export\" href=\"$url&format=pdf\">" . wfMsg( 'recrodadmin-export-pdf' ) . "</a>";
 		}
 
 		return $table;
