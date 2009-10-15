@@ -13,6 +13,8 @@ class SpecialRecordAdmin extends SpecialPage {
 	var $orderBy   = '';
 	var $desc      = false;
 	var $guid      = '';
+	var $quid      = '';
+	var $filter    = array();
 
 	function __construct() {
 		# Name to use for creating a new record either via RecordAdmin or a public form
@@ -48,6 +50,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		# Get posted form values if any
 		$posted = array();
 		foreach ( $_REQUEST as $k => $v ) if ( preg_match( '|^ra_(\\w+)|', $k, $m ) ) $posted[$m[1]] = is_array( $v ) ? join( "\n", $v ) : $v;
+		$this->filter = $posted;
 
 		# Read in and prepare the form for this record type if one has been selected
 		if ( $type ) $this->preProcessForm( $type );
@@ -238,6 +241,13 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Return an array of records given type and other criteria
 	 */
 	function getRecords( $type, $posted, $wpTitle = '', $invert = false, $orderby = 'created desc' ) {
+		global $wgRequest;
+
+		# Generate a unique id for this set of parameters
+		$this->quid = md5( var_export( array( $type, $posted ), true ) );
+		
+		# If an export has been requested but not for this query-id, then bail with empty set
+		if ( ( $export = $wgRequest->getText( 'quid' ) ) && $export != $this->quid ) return array();
 
 		# First get all the articles using the type's template
 		$records = array();
@@ -294,7 +304,6 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( $this->desc = eregi( ' +desc *$', $orderby ) ) $orderby = eregi_replace( ' +desc *$', '', $orderby );
 		$this->orderBy = $orderby;
 		usort( $records, array( $this, 'sortCallback' ) );
-
 		return $records;
 	}
 
@@ -312,7 +321,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
 	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect' ) {
-		global $wgParser, $wgTitle;
+		global $wgParser, $wgTitle, $wgRequest;
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 
 		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
@@ -389,6 +398,39 @@ class SpecialRecordAdmin extends SpecialPage {
 			$table .= "</tr>\n";
 		}
 		$table .= "</table>\n";
+
+		# If export requested convert the table to csv and disable output etc
+		if ( $quid = $wgRequest->getText( 'quid' ) ) {
+			global $wgOut;
+			$wgOut->disable();
+			header("Content-Type: text/html");
+			header("Content-Disposition: attachment; filename=\"$quid.csv\"");
+			preg_match_all( "|<td.*?>\s*(.*?)\s*</td>|s", $table, $data );
+			$cols = $cols ? $cols : array_keys( $th );
+			$csv = join( "\t", $cols );
+			foreach ( $data[1] as $i => $cell ) {
+				if ( $i % count( $cols ) == 0 ) {
+					$csv .= "\n";
+					$sep = "";
+				} else $sep = "\t";
+				$cell = preg_replace( "|<!--.+?-->|s", "", $cell );
+				if ( preg_match( "|<p>\s*(.+?)\s*</p>|s", $cell, $m ) ) $cell = $m[1];
+				$cell = preg_replace( "/[\\r\\n]+/m", "\\n", $cell );
+				$csv .= "$sep$cell";
+			}
+			print $csv;
+			$table = '';
+		}
+
+		# Otherwise add an export link
+		else {
+			$qs = "wpType=$type&wpFind=1&quid={$this->quid}";
+			foreach ( $this->filter as $k => $v ) $qs .= "&ra_$k=" . urlencode( $v );
+			$url = $wgTitle->getLocalURL( $qs );
+			$anchor = wfMsg( 'export-submit' );
+			$table .= "\n<a class=\"recordadmin-export\" href=\"$url\">$anchor</a>";
+		}
+
 		return $table;
 	}
 
@@ -664,6 +706,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Render a record search in a parser-function
 	 */
 	function expandTableMagic( &$parser, $type ) {
+		global $wgTitle;
 		$parser->mOutput->mCacheTime = -1;
 		$filter   = array();
 		$title    = '';
@@ -688,11 +731,13 @@ class SpecialRecordAdmin extends SpecialPage {
 				else $filter[$match[1]] = $match[2];
 			}
 		}
+		$this->filter = $filter;
 		$this->preProcessForm( $type );
 		$this->examineForm();
 		$records = $this->getRecords( $type, $filter, $title, $invert, $orderby );
 		if ( $count ) while ( count( $records ) > $count ) array_pop( $records );
 		$table = $this->renderRecords( $records, $cols, $sortable, $template, $name );
+
 		return array( $table, 'noparse' => true, 'isHTML' => true );
 	}
 
