@@ -344,7 +344,7 @@ function wfLanguageSelectorDetectLanguage( $mode ) {
 	return $contLang;
 }
 
-function wfLanguageSelectorAbortNewAccount( &$u ) { //FIXME: doesn't quite work it seems :(
+function wfLanguageSelectorAbortNewAccount( $u ) { //FIXME: doesn't quite work it seems :(
 	global $wgUser;
 
 	//inherit language;
