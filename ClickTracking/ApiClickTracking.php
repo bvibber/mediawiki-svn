@@ -12,7 +12,7 @@ class ApiClickTracking extends ApiBase {
 	 * runs when the API is called with "clicktracking", takes in "eventid" and an edit token given to the user, "token"
 	 * @see includes/api/ApiBase#execute()
 	 */
-	public function execute(){
+	public function execute() {
 		global $wgUser, $wgTitle, $wgClickTrackContribGranularity1, $wgClickTrackContribGranularity2, $wgClickTrackContribGranularity3;
 
 		$params = $this->extractRequestParams();
@@ -25,17 +25,14 @@ class ApiClickTracking extends ApiBase {
 
 		$is_logged_in = $wgUser->isLoggedIn();
 		$now = time();
-		$granularity1 = $is_logged_in? 
-						ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity1 )
-						: 0;
+		$granularity1 = $is_logged_in ?
+			ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity1 ) : 0;
 		
-		$granularity2 = $is_logged_in?
-						ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity2 )
-						: 0;
+		$granularity2 = $is_logged_in ?
+			ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity2 ) : 0;
 		
-		$granularity3 = $is_logged_in?
-						ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity3 )
-						: 0;
+		$granularity3 = $is_logged_in ?
+			ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity3 ) : 0;
 
 		ClickTrackingHooks::trackEvent(
 			$session_id,  // randomly generated session ID
@@ -88,7 +85,7 @@ class ApiClickTracking extends ApiBase {
 
 	// TODO: create a more useful 'version number'
 	public function getVersion() {
-		return __CLASS__ . ': $Id: $';
+		return __CLASS__ . ': $Id$';
 	}
 
 }

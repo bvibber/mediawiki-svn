@@ -25,7 +25,7 @@ $wgClickTrackThrottle = -1;
 
 // set the time window for what we consider 'recent' contributions, in days
 $wgClickTrackContribGranularity1 = 60 * 60 * 24 * 365 / 2; // half a year
-$wgClickTrackContribGranularity2 =60 * 60 * 24 * 365 / 4;  // 1/4 a year (3 months approx)
+$wgClickTrackContribGranularity2 = 60 * 60 * 24 * 365 / 4;  // 1/4 a year (3 months approx)
 $wgClickTrackContribGranularity3 = 60 * 60 * 24 * 30;  //30 days (1 month approx)
 
 // Credits
