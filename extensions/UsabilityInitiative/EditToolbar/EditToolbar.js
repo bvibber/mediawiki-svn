@@ -1309,12 +1309,9 @@ js2AddOnloadHook( function() {
 				},
 				'edittoolbar-tool-replace-close': function() {
 					$j(this).dialog( 'close' );
-<<<<<<< .working
 					$j(this).data( 'context' ).$textarea
 						.unbind( 'keypress.srdialog' )
 						.focus();
-=======
->>>>>>> .merge-right.r57707
 				}
 			},
 			open: function() {
