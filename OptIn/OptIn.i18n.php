@@ -988,6 +988,8 @@ Wir möchten gerne erfahren, was Sie über unsere neue Benutzeroberfläche denke
  * @author Aspar
  */
 $messages['diq'] = array(
+	'optin' => 'Kullanılabilirlik Girişimi katılım',
+	'optin-desc' => 'teselkerdışê /cerebnayişê şuxulnayişê betayi re destur dano u verdeno dewlemend kero',
 	'optin-title-optedout' => 'Beta tesel bıker/bıcerebın',
 	'optin-title-optedin' => 'Beta ra vec',
 	'optin-title-justoptedin' => 'şıma xeyr ameyî Betayi',

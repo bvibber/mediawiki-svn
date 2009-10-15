@@ -519,6 +519,15 @@ $messages['tr'] = array(
 	'prefs-experimental' => 'Deneysel özellikler',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'usabilityinitiative' => 'Ініціатива Ефективності',
+	'usabilityinitiative-desc' => 'Можливості рушія MediaWiki, розроблені в рамках Ініціативи Ефективності Вікіпедії (Wikipedia Usability Initiative) і направлені на поліпшення його зручності і простоти використання',
+	'prefs-experimental' => 'Експериментальні можливості',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

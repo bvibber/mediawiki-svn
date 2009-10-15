@@ -242,6 +242,7 @@ $messages['de'] = array(
  */
 $messages['diq'] = array(
 	'clicktracking' => 'tıknayiş u temaşakerdışê teşebbusê şuxul biyayişi',
+	'ct-title' => 'tıknayişê karberê kombiyayeyi',
 	'ct-event-name' => 'nameyê meselayi',
 	'ct-expert-header' => 'tıknayişê "tecrubeyınan"',
 	'ct-intermediate-header' => 'tıknayişê "seviyeya weseti"',
