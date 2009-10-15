@@ -1514,63 +1514,9 @@ class FlaggedArticle extends Article {
 				'id' => 'fr-rating-controls') );
 			$toggle = array();
 		}
-		$size = count(FlaggedRevs::getDimensions(),1) - count(FlaggedRevs::getDimensions());
-
+		# Add main checkboxes/selects
 		$form .= Xml::openElement( 'span', array('id' => 'mw-ratingselects') );
-		# Loop through all different flag types
-		foreach( FlaggedRevs::getDimensions() as $quality => $levels ) {
-			$label = array();
-			$selected = ( isset($flags[$quality]) && $flags[$quality] > 0 ) ?
-				$flags[$quality] : 1;
-			# Disabled form? Set the selected item label
-			if( $disabled ) {
-				$label[$selected] = $levels[$selected];
-			# Collect all quality levels of a flag current user can set
-			} else {
-				foreach( $levels as $i => $name ) {
-					if( !RevisionReview::userCan($quality,$i,$config) ) {
-						if( $selected == $i ) $selected++; // bump default
-						continue; // skip this level
-					}
-					$label[$i] = $name;
-				}
-			}
-			$quantity = count( $label );
-			$form .= Xml::openElement( 'span', array('class' => 'fr-rating-options') ) . "\n";
-			$form .= "<b>" . Xml::tags( 'label', array( 'for' => "wp$quality" ), FlaggedRevs::getTagMsg( $quality ) ) . ":</b>\n";
-			# If the sum of qualities of all flags is above 6, use drop down boxes
-			# 6 is an arbitrary value choosen according to screen space and usability
-			if( $size > 6 ) {
-				$attribs = array( 'name' => "wp$quality", 'id' => "wp$quality", 'onchange' => "updateRatingForm()" ) + $toggle;
-				$form .= Xml::openElement( 'select', $attribs );
-				foreach( $label as $i => $name ) {
-					$optionClass = array( 'class' => "fr-rating-option-$i" );
-					$form .= Xml::option( FlaggedRevs::getTagMsg($name), $i, ($i == $selected), $optionClass )."\n";
-				}
-				$form .= Xml::closeElement('select')."\n";
-			# If there are more than two qualities (none, 1 and more) current user gets radio buttons
-			} elseif( $quantity > 2 ) {
-				foreach( $label as $i => $name ) {
-					$attribs = array( 'class' => "fr-rating-option-$i", 'onchange' => "updateRatingForm()" );
-					$form .= Xml::radioLabel( FlaggedRevs::getTagMsg($name), "wp$quality", $i, "wp$quality".$i,
-						($i == $selected), $attribs ) . "\n";
-				}
-			# Otherwise make checkboxes (two qualities available for current user
-			# and disabled fields in case we are below the magic 6)
-			} else {
-				$i = $disabled ? $selected : 1;
-				$attribs = array( 'class' => "fr-rating-option-$i", 'onchange' => "updateRatingForm()" ) + $toggle;
-				$form .= Xml::checkLabel( wfMsg( "revreview-$label[$i]" ), "wp$quality", "wp$quality",
-					($selected == $i), $attribs ) . "\n";
-			}
-			$form .= Xml::closeElement( 'span' );
-		}
-		# If there were none, make one checkbox to approve/unapprove
-		if( FlaggedRevs::dimensionsEmpty() ) {
-			$form .= Xml::openElement( 'span', array('class' => 'fr-rating-options') ) . "\n";
-			$form .= Xml::checkLabel( wfMsg( "revreview-approved" ), "wpApprove", "wpApprove", 1 ) . "\n";
-			$form .= Xml::closeElement( 'span' );
-		}
+		$form .= FlaggedRevsXml::ratingInputs( $flags, $config, $disabled );
 		$form .= Xml::closeElement( 'span' );
 
 		if( FlaggedRevs::allowComments() && $wgUser->isAllowed( 'validate' ) ) {
