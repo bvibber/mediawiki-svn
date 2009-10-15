@@ -1,11 +1,8 @@
 #!/usr/bin/python
 
 conf = {
-	#"admin": "brion@pobox.com",
 	"admin": "root@localhost", # customize me
-	"commands": {
-		"svnserve": "/usr/local/bin/svnserve"
-	},
+	"svnserve": "/usr/local/bin/svnserve"
 }
 
 import os
@@ -17,80 +14,6 @@ def restricted(message):
 	print "contact the system administrator at %s." % conf["admin"]
 	sys.exit(-1)
 
-class ArgError(Exception): pass
-
-def filterArgs(command):
-	cSingle = "'"
-	cDouble = '"'
-	cBackslash = "\\"
-	cVerboten = ("|", "&", "(", ")", ";", "`", "$", "<", ">")
-	cQuotedVerboten = ("$", "`")
-	cQuotable = ('"', "\\", "$", "`")
-	cWhitespace = (" ", "\t", "\n")
-	
-	(sPlain, sWhitespace,
-	 sBackslash, sQuotedBackslash,
-	 sDouble, sSingle) = range(0, 6)
-	
-	args = []
-	state = sWhitespace
-	build = None
-	
-	for c in command:
-		if state == sWhitespace:
-			assert build is None
-			
-			if c in cWhitespace: continue
-			else: build = []
-			
-			if c == cBackslash: state = sBackslash
-			elif c == cDouble: state = sDouble
-			elif c == cSingle: state = sSingle
-			elif c in cVerboten:
-				raise ArgError("Forbidden character in restricted shell.")
-			else:
-				build.append(c)
-				state = sPlain
-		elif state == sPlain:
-			assert build is not None
-			if c in cWhitespace:
-				args.append("".join(build))
-				build = None
-				state = sWhitespace
-			elif c == cBackslash: state = sBackslash
-			elif c == cDouble: state = sDouble
-			elif c == cSingle: state = sSingle
-			elif c in cVerboten:
-				raise ArgError("Forbidden character in restricted shell.")
-			else: build.append(c)
-		elif state == sBackslash:
-			assert build is not None
-			build.append(c)
-			state = sPlain
-		elif state == sQuotedBackslash:
-			assert build is not None
-			if c not in cQuotable:
-				build.append(cBackslash)
-			build.append(c)
-			state = sDouble
-		elif state == sDouble:
-			assert build is not None
-			if c == cDouble: state = sPlain
-			elif c == cBackslash: state = sQuotedBackslash
-			elif c in cQuotedVerboten:
-				raise ArgError("Forbidden character in restricted shell.")
-			else: build.append(c)
-		elif state == sSingle:
-			assert build is not None
-			if c == cSingle: state = sPlain
-			else: build.append(c)
-	if state == sWhitespace:
-		pass
-	elif state == sPlain:
-		args.append("".join(build))
-	else:
-		raise ArgError("Invalid command line quoting.")
-	return args
 
 # No interactive shells! Only accept piped commands.
 if sys.stdin.isatty():
@@ -106,19 +29,8 @@ if len(sys.argv) < 3:
 if len(sys.argv) > 3:
 	restricted("Too many args to shell.")
 
-try:
-	args = filterArgs(sys.argv[2])
-except ArgError:
-	restricted("Invalid quoting.")
+# Only allow svnserve -t
+if sys.argv[2] != "svnserve -t":
+	restricted("Only svnserve -t is allowed.")
 
-if len(args) < 1:
-	restricted("Empty command line.")
-
-command = args[0]
-if command in conf["commands"]:
-	safeCommand = conf["commands"][command]
-	args[0] = safeCommand
-else:
-	restricted("Command not allowed.")
-
-os.execv(safeCommand, args)
+os.execv(conf['svnserve'], ['-t'])
