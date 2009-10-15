@@ -1226,6 +1226,13 @@ $messages['vo'] = array(
 	'deletebatch-select-yourself' => 'ol',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'deletebatch-delete' => 'אויסמעקן',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

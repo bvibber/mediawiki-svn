@@ -1763,6 +1763,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'dt_xml_name' => 'נאָמען',
+	'dt_xml_title' => 'טיטל',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

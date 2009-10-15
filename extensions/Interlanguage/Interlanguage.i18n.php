@@ -252,6 +252,13 @@ $messages['sk'] = array(
 	'interlanguage-desc' => 'Získa medzijazykové odkazy z inej wiki',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'interlanguage-desc' => 'Hämtar språklänkar från andra wikis',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  */

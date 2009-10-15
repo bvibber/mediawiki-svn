@@ -1460,6 +1460,13 @@ No cödolös keblünanis bai redakaminum onsik.",
 	'countedits-nocontribs' => 'Keblünots nonik pedunons vüke at.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'countedits-username' => 'באַניצער נאָמען:',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

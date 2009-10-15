@@ -1745,6 +1745,13 @@ $messages['vo'] = array(
 	'bookinfo-provider' => 'Nüns pesedons se: $1',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'bookinfo-result-title' => 'טיטל:',
+);
+
 /** Yue (粵語) */
 $messages['yue'] = array(
 	'bookinfo-header' => '書籍資料',

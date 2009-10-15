@@ -2311,6 +2311,41 @@ $messages['mk'] = array(
 	'specialpages-group-contribution' => 'Придонеси/Обезб. средства',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'contributiontotal' => 'ആകെ സംഭാവനകൾ',
+	'contributionhistory' => 'സംഭാവനകളുടെ നാൾവഴി',
+	'contrib-hist-name' => 'പേര്',
+	'contrib-hist-date' => 'സമയവും തീയതിയും',
+	'contrib-hist-amount' => 'തുക',
+	'contrib-hist-next' => 'മുൻ സംഭാവനകൾ',
+	'contrib-hist-anonymous' => 'അജ്ഞാതം',
+	'contributionstatistics' => 'സംഭാവനകളുടെ സ്ഥിതിവിവരക്കണക്ക്',
+	'contribstats-desc' => 'വിക്കിമീഡിയ ഫൗണ്ടേഷനു ലഭ്യമായ സംഭാവനകളുടെ സ്ഥിതിവിവരക്കണക്ക് കാട്ടുന്നു',
+	'contribstats-day' => 'ദിവസം',
+	'contribstats-month' => 'മാസം',
+	'contribstats-currency' => 'നാണയം',
+	'contribstats-amount' => 'തുക (USD)',
+	'contribstats-contributions' => 'സംഭാവനകൾ',
+	'contribstats-total' => 'ആകെ (USD)',
+	'contribstats-avg' => 'ശരാശരി (USD)',
+	'contribstats-max' => 'കൂടുതൽ (USD)',
+	'contribstats-percentage-ytd' => 'ശതമാനം (YTD)',
+	'contribstats-total-ytd' => 'ആകെ (YTD)',
+	'contribstats-day-totals' => 'ഇന്ന് ആകെ',
+	'contribstats-week' => 'ആഴ്‌‌ച',
+	'fundraiserstats-date' => 'തീയതി',
+	'fundraiserstats-contributions' => 'സംഭാവനകൾ',
+	'fundraiserstats-total' => 'ആകെ (USD)',
+	'fundraiserstats-avg' => 'ശരാശരി (USD)',
+	'fundraiserstats-max' => 'അങ്ങേയറ്റം (USD)',
+	'fundraiserstats-tab-totals' => 'ആകെ (USD)',
+	'fundraiserstats-tab-contributions' => 'സംഭാവനകളുടെ എണ്ണം',
+	'fundraiserstats-tab-averages' => 'ശരാശരികൾ (USD)',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  * @author Izzudin
@@ -3153,6 +3188,7 @@ $messages['sr-el'] = array(
  * @author Boivie
  * @author Fluff
  * @author Najami
+ * @author Per
  */
 $messages['sv'] = array(
 	'contributionreporting-desc' => 'Liverapportering av Wikimedias insamling',
@@ -3188,6 +3224,7 @@ $messages['sv'] = array(
 	'contribstats-value-under' => 'Under $1',
 	'contribstats-value-from' => 'Från $1 - $2',
 	'contribstats-value-over' => 'Över $1',
+	'contributiontrackingstatistics' => 'Bidragsstatistik',
 	'contribstats-day-totals' => 'Summa för idag',
 	'contribstats-week' => 'Vecka',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Totalt den här veckan|Veckototaler för de senaste $1 veckorna}}',
@@ -3195,6 +3232,7 @@ $messages['sv'] = array(
 	'contribstats-donations' => 'Donationer',
 	'contribstats-conversion' => 'Konverteringsgrad (%)',
 	'contribstats-template' => 'Mall',
+	'contribstats-nodata' => 'Ingen data tillgänglig',
 	'fundraiserstatistics' => 'Insamlingsstatistik',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dag $1 av $2',

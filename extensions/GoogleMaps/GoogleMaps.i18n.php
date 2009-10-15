@@ -5790,6 +5790,7 @@ $wgGoogleMapsMessages['vo'] = array(
  * @author פוילישער
  */
 $wgGoogleMapsMessages['yi'] = array(
+	'gm-balloon-title' => 'טיטל:',
 	'gm-searching' => 'זוכנדיג…',
 	'gm-no-zoom-control' => 'קיין',
 	'gm-search' => 'זוכן',

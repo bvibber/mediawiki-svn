@@ -63,6 +63,7 @@ $messages['en'] = array(
  * @author CERminator
  * @author EugeneZelenko
  * @author Purodha
+ * @author Raymond
  * @author Siebrand
  * @author Umherirrender
  */
@@ -83,6 +84,8 @@ Do not translate or change tag names, or link anchors.',
 	'recordadmin-actions' => '{{Identical|Action}}',
 	'recordadmin-typeinfo' => '$1 is a record type. Could be read as "A record of type $1"',
 	'right-recordadmin' => '{{doc-right|recordadmin}}',
+	'recrodadmin-export-csv' => '{{Optional}}',
+	'recrodadmin-export-pdf' => '{{Optional}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1811,6 +1814,7 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'recordadmin-buttonsearch' => 'זוכן',
+	'recordadmin-buttonsave' => 'אויפֿהיטן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

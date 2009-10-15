@@ -92,6 +92,13 @@ $messages['de'] = array(
 	'titlekey-desc' => 'Hintergrundprozess für die Titelsuche',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'titlekey-desc' => 'pêşniyazê pêşkeşwani, cıgêrayişê prefixê sernameyi',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -1964,6 +1964,13 @@ Hãy nhấn vào một tùy chọn để xem thống kê về nó.',
 	'prefstats-legend-in' => 'Dùng thử',
 );
 
+/** Mingrelian (მარგალური)
+ * @author Lika2672
+ */
+$messages['xmf'] = array(
+	'prefstats-factor-day' => 'დღა',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

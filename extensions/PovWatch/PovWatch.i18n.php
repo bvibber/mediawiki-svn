@@ -46,6 +46,7 @@ Click the button below to subscribe.',
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Meno25
@@ -54,6 +55,9 @@ Click the button below to subscribe.',
 $messages['qqq'] = array(
 	'povwatch_desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'povwatch_title' => '{{Identical|Title}}',
+	'povwatch_comment' => '',
+	'povwatch_unsubscribe' => '{{Identical|Unsubscribe}}',
+	'povwatch_subscribe' => '{{Identical|Subscribe}}',
 	'povwatch_added' => '{{Identical|Added}}',
 	'right-povwatch_admin' => '{{doc-right}}',
 	'right-povwatch_user' => '{{doc-right|povwatch user}}',
@@ -2317,6 +2321,13 @@ Nhấn vào nút phía dưới để đăng ký.',
  */
 $messages['vo'] = array(
 	'povwatch_title' => 'Tiäd:',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'povwatch_title' => 'טיטל:',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

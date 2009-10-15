@@ -2678,6 +2678,7 @@ $wgCustomToolbarMessages['vo'] = array(
  */
 $wgCustomToolbarMessages['yi'] = array(
 	'ct_user_user' => 'באַניצער',
+	'ct_user_sample' => 'באַניצער נאָמען',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

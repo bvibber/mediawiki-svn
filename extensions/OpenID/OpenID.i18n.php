@@ -4850,6 +4850,7 @@ kanol välön bali sökölas.',
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'openidchoosepassword' => 'פאַסווארט:',
 	'openid-urls-delete' => 'אויסמעקן',
 );
 

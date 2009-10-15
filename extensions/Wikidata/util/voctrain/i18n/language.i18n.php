@@ -3714,6 +3714,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'voctrain_logout' => 'אַרויסלאגירן',
+	'voctrain_User_name' => 'באַניצער נאָמען',
 	'voctrain_Login' => 'אַרײַנלאגירן',
 	'voctrain_Log_in' => 'אַרײַנלאגירן',
 	'voctrain_other' => 'אנדער',

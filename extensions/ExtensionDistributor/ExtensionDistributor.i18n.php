@@ -1503,6 +1503,7 @@ $messages['ml'] = array(
 	'extdist-no-such-version' => '"$2" പതിപ്പിൽ "$1" എന്നൊരു അനുബന്ധം ഇല്ല.',
 	'extdist-choose-extension' => 'താങ്കൾക്ക് ഡൗൺലോഡ് ചെയ്യേണ്ട അനുബന്ധം തിരഞ്ഞെടുക്കുക:',
 	'extdist-submit-extension' => 'തുടരുക',
+	'extdist-current-version' => 'വികസനഘട്ടത്തിലുള്ള പതിപ്പ് (ട്രങ്ക്)',
 	'extdist-choose-version' => '<big>താങ്കൾ <b>$1</b> എന്ന അനുബന്ധം ഡൗൺലോഡ് ചെയ്യുകയാണ്.</big>
 
 താങ്കളുടെ മീഡിയവിക്കി പതിപ്പ് തിരഞ്ഞെടുക്കുക.

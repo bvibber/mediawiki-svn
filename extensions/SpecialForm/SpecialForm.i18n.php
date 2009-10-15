@@ -1482,6 +1482,13 @@ Fulükolös oni.',
 	'formsaveerrortext' => 'Pöl nesevädik ejenon dü dakip pada: „$1“.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'formsave' => 'אויפֿהיטן',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Liangent

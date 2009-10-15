@@ -1490,6 +1490,13 @@ $messages['vo'] = array(
 	'contributors-nosuchpage' => 'Pad: $1 no dabinon.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'contributors-target' => 'טיטל:',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

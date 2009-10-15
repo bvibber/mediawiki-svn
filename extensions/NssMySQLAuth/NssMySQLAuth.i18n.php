@@ -1021,6 +1021,13 @@ $messages['vo'] = array(
 	'nss-welcome-mail-subject' => 'Kalijafam',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'am-username' => 'באַניצער נאָמען',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
  */

@@ -3029,6 +3029,7 @@ $messages['yi'] = array(
 	'grouppermissions-dologin' => 'אַרײַנלאגירן',
 	'grouppermissions-dosearch' => 'גיין',
 	'grouppermissions-searchlabel' => 'זוכן גרופע',
+	'grouppermissions-sp-save' => 'אויפֿהיטן',
 	'right-search' => 'זוכן אין וויקי',
 );
 

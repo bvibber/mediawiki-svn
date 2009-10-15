@@ -1843,6 +1843,7 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'importusers-form-button' => 'אימפארט',
 	'importusers-log-summary-all' => 'אַלע',
+	'importusers-password' => 'פאַסווארט',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

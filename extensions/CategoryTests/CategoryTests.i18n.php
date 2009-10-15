@@ -281,6 +281,13 @@ $messages['sk'] = array(
 	'categorytests-desc' => 'Funkcie na testovanie kategórie',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'categorytests-desc' => 'Funktioner för test av kategorier',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  */

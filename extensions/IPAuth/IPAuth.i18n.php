@@ -198,6 +198,13 @@ $messages['ru'] = array(
 	'ipauth-desc' => 'Автоматический вход с постоянных IP адресов',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'ipauth-desc' => 'Automatisk inloggning från fasta IP adresser',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

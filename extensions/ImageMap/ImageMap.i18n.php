@@ -985,11 +985,13 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'imagemap_no_image' => 'Error: ഒന്നാമത്തെ വരിയില്‍ ഒരു ചിത്രത്തിന്റെ പേരു വേണം',
 	'imagemap_invalid_image' => 'Error: ചിത്രം അസാധുവാണ്‌ അല്ലെങ്കില്‍ നിലവിലില്ല',
+	'imagemap_bad_image' => 'പിശക്: ഈ താളിൽ ചിത്രം കരിമ്പട്ടികയിലാണ്',
 	'imagemap_no_link' => 'Error: $1-മത്തെ വരിയുടെ അവസാനം സാധുവായ കണ്ണി കാണുന്നില്ല',
 	'imagemap_invalid_title' => 'Error: $1-മത്തെ വരിയില്‍ അസാധുവായ തലക്കെട്ട്',
 	'imagemap_missing_coord' => 'Error: $1-മത്തെ വരിയില്‍ രൂപത്തിനുള്ള നിര്‍ദ്ദേശാങ്കങ്ങള്‍ നിര്‍‌വചിച്ചിട്ടില്ല.',

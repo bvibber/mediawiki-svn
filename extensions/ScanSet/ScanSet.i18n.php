@@ -294,10 +294,12 @@ $messages['diq'] = array(
 	'scanset_unrecognised_index_format' => 'xeta: formatê endexsi yo mechul',
 	'scanset_opendir_error' => 'xeta: rêza $1 a nêbena',
 	'scanset_no_files' => 'xeta: rêz a ke nişan biya tede dosya nêasena',
-	'scanset_no_volumes' => 'Hata: rêza cildi nêasena',
+	'scanset_no_volumes' => 'xeta: rêza cildi nêasena',
 	'scanset_missing_index_file' => 'xeta: dosyaya endexsi $1 nêasena',
 	'scanset_index_file_error' => 'xeta: $1. satır de formatê dosyaya endexsi de xeta esto',
 	'scanset_invalid_volume' => 'xeta: cilda şaş',
+	'scanset_next' => 'ver şo &gt;',
+	'scanset_prev' => '&lt; Pey şo',
 );
 
 /** Lower Sorbian (Dolnoserbski)

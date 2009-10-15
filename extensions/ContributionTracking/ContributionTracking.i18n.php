@@ -566,6 +566,18 @@ $messages['mk'] = array(
 	'contrib-tracking-button' => 'Продолжи',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'contributiontracking' => 'സംഭാവനകൾ പിന്തുടരൽ',
+	'contrib-tracking-error' => 'പിശക്',
+	'contrib-tracking-error-text' => 'ഫോം സമർപ്പണം അസാധുവായ വിധത്തിലാണ്',
+	'contrib-tracking-submitting' => 'പണമടയ്ക്കാനായി സമർപ്പിക്കുന്നു...',
+	'contrib-tracking-continue' => 'താങ്കൾ സ്വതവേ തിരിച്ചുവിടപ്പെട്ടില്ലങ്കിൽ, പേയ്‌‌പാൽ വഴിയുള്ള താങ്കളുടെ സംഭാവന പൂർത്തിയാക്കാനായി ബട്ടൺ ഞെക്കുക.',
+	'contrib-tracking-button' => 'തുടരുക',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

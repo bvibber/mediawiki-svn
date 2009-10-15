@@ -5246,6 +5246,7 @@ $messages['hu'] = array(
 	'ow_noedit_title' => 'Nincs jogosultságod szerkeszteni',
 	'ow_uipref_datasets' => 'Alapértelmezett nézet:',
 	'ow_uiprefs' => 'Wikiadat',
+	'ow_none_selected' => 'nincs kijelölés',
 	'transaction' => 'Wikiadat: tranzakciós napló',
 	'ow_transaction_from_transaction' => 'Ettől a tranzakciótól:',
 	'ow_transaction_count' => 'Darabszám:',
@@ -5253,16 +5254,22 @@ $messages['hu'] = array(
 	'ow_transaction_show_rollback' => 'Visszagörgetési vezérlők megjelenítése:',
 	'ow_transaction_rollback_button' => 'Visszagörgetés',
 	'ow_transaction_rollback_header' => 'Visszagörgetés',
+	'ow_transaction_no_action' => 'ne történjen semmi',
 	'ow_transaction_previous_version' => 'Előző verzió',
 	'ow_transaction_restore' => 'Visszaállítás',
 	'ow_transaction_remove' => 'Eltávolítás',
 	'ow_transaction_operation' => 'Művelet',
+	'ow_transaction_is_latest' => 'legutolsó',
 	'ow_transaction_class_member' => 'Osztálytag',
 	'ow_transaction_object' => 'Objektum',
 	'ow_transaction_first_dm' => 'Első definiált jelentés',
 	'ow_transaction_second_dm' => 'Második definiált jelentés',
 	'ow_transaction_summary' => 'Összefoglaló',
+	'conceptmapping' => 'Wikiadat: fogalom-hozzárendelés',
+	'ow_conceptmapping_title' => 'Fogalom-hozzárendelés',
 	'ow_dm_OK' => 'OK',
+	'ow_dm_not_present' => 'nincs megadva',
+	'ow_dm_not_found' => 'nem található az adatbázisban vagy nem megfelelő',
 	'ow_AlternativeDefinitions' => 'Más definíciók',
 	'ow_Annotation' => 'Jegyzetek',
 	'ow_ApproximateMeanings' => 'Megközelítő jelentések',
@@ -12149,7 +12156,9 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'ow_save' => 'אויפֿהיטן',
 	'ow_history' => 'היסטאריע',
+	'ow_transaction_user' => 'באַניצער נאָמען:',
 	'ow_User' => 'באַניצער',
 );
 

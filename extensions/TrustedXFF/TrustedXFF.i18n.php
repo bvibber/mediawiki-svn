@@ -75,6 +75,13 @@ $messages['de'] = array(
 	'trustedxff-desc' => 'Verarbeitung einer Liste vertrauenswürdiger Proxyadressen ([http://meta.wikimedia.org/wiki/XFF_project XFF-Projekt])',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'trustedxff-desc' => "tehqiqatê listeya adresê proxya bawerbiyayeyan ([http://meta.wikimedia.org/wiki/XFF_project projeyê XFF'i])",
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
