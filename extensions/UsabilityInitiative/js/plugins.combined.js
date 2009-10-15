@@ -2259,6 +2259,8 @@ fn: {
 									.focus()
 									.setSelection( $(this).data( 'position' ) )
 									.scrollToCaretPosition( true );
+								if ( typeof $.trackAction != 'undefined' )
+									$.trackAction( 'ntoc.heading' );
 								event.preventDefault();
 							} )
 							.text( structure[i].text )
