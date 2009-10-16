@@ -149,7 +149,7 @@ js2AddOnloadHook( function() {
 								action: {
 									type: 'encapsulate',
 									options: {
-										pre: "==", 
+										pre: "==",
 										periMsg: 'edittoolbar-tool-heading-example',
 										post: "=="
 									}
