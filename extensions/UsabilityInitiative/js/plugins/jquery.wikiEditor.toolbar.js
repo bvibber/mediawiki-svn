@@ -326,25 +326,23 @@ fn : {
 			.text( label )
 			.attr( 'rel', id )
 			.data( 'context', context )
-			.click(
-				function() {
-					
-					$(this).parent().parent().find( '.page' ).hide();
-					$(this).parent().parent().find( '.page-' + $(this).attr( 'rel' ) ).show();
-					$(this).siblings().removeClass( 'current' );
-					$(this).addClass( 'current' );
-					var section = $(this).parent().parent().attr( 'rel' );
-					
-					//click tracking
-					if($.trackAction != undefined){
-						$.trackAction(section + '.' + $(this).attr('rel'));
-					}
-					
-					$.cookie(
-						'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
-						$(this).attr( 'rel' )
-					);
-				} );
+			.bind( 'mousedown', function() {
+				$(this).parent().parent().find( '.page' ).hide();
+				$(this).parent().parent().find( '.page-' + $(this).attr( 'rel' ) ).show();
+				$(this).siblings().removeClass( 'current' );
+				$(this).addClass( 'current' );
+				var section = $(this).parent().parent().attr( 'rel' );
+				
+				//click tracking
+				if($.trackAction != undefined){
+					$.trackAction(section + '.' + $(this).attr('rel'));
+				}
+				
+				$.cookie(
+					'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
+					$(this).attr( 'rel' )
+				);
+			} );
 	},
 	buildPage : function( context, id, page ) {
 		var $page = $( '<div />' ).attr( {
@@ -451,7 +449,7 @@ fn : {
 					.attr( 'href', '#' )
 					.text( $.wikiEditor.autoMsg( section, 'label' ) )
 					.data( 'context', context )
-					.click( function() {
+					.bind( 'mousedown', function() {
 						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
 						var $section =
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
