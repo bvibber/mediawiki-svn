@@ -107,9 +107,46 @@ class LqtView {
 		return $sk->link( $title, $text, $attribs, $query );
 	}
 	
+	static function linkInContextData( $thread, $contextType = 'page' ) {
+		$query = array();
+		
+		if ( $contextType == 'page' ) {
+			$title = clone $thread->article()->getTitle();
+			
+			$dbr = wfGetDB( DB_SLAVE );
+			$offset = $thread->topmostThread()->sortkey();
+			$offset = wfTimestamp( TS_UNIX, $offset ) + 1;
+			$offset = $dbr->timestamp( $offset );
+			$query['offset'] = $offset;
+		} else {
+			$title = clone $thread->title();
+		}
+		
+		$query['lqt_mustshow'] = $thread->id();
+		
+		$title->setFragment( '#'.$thread->getAnchorName() );
+		
+		return array( $title, $query );
+	}
+	
+	static function linkInContext( $thread, $contextType = 'page', $text = null ) {
+		list( $title, $query ) = self::linkInContextData( $thread, $contextType );
+		
+		global $wgUser;
+		$sk = $wgUser->getSkin();
+		
+		return $sk->link( $title, $text, array(), $query );
+	}
+	
+	static function linkInContextURL( $thread, $contextType = 'page' ) {
+		list( $title, $query ) = self::linkInContextData( $thread, $contextType );
+		
+		return $title->getFullURL( $query );
+	}
+	
 	static function diffQuery( $thread, $revision ) {
 		$changed_thread = $revision->getChangeObject();
-		$curr_rev_id = $revision->getThreadObj()->rootRevision();
+		$curr_rev_id = $changed_thread->rootRevision();
 		$curr_rev = Revision::newFromId( $curr_rev_id );
 		$prev_rev = $curr_rev->getPrevious();
 		$oldid = $prev_rev ? $prev_rev->getId() : "";
@@ -304,27 +341,16 @@ class LqtView {
 		} elseif ( !$thread ) {
 			$t = null;
 			
-			$title_subject = $subject;
-			while ( !$t ) {
-				try {
-					if ( $edit_type == 'new' && $title_subject ) {
-						$t = $this->newThreadTitle( $title_subject );
-					} elseif ( $edit_type == 'reply' ) {
-						$t = $this->newReplyTitle( $title_subject, $edit_applies_to );
-					}
-					
-					if ( $t )
-						break;
-				} catch ( Exception $e ) { }
-				
-				$title_subject = md5( mt_rand() ); // Just a random title
+			$subjectOk = Thread::validateSubject( $subject, &$t,
+							$edit_applies_to, $this->article );
+			if ( ! $subjectOk ) {
 				$subject = false;
 			}
-		
+			
 			if ( !$subject && $subject_expected ) {
 				// Dodgy title
 				$valid_subject = false;
-			} else {
+			} elseif ( ! $t ) {
 				try {
 					if ( $edit_type == 'new' ) {
 						$t = $this->newThreadTitle( $subject );
@@ -341,11 +367,12 @@ class LqtView {
 			$article = $thread->root();
 		}
 		
+		LqtHooks::$editTalkpage = $edit_type == 'new'
+					? $this->article : $edit_applies_to->article();
 		LqtHooks::$editArticle = $article;
 		LqtHooks::$editThread = $thread;
 		LqtHooks::$editType = $edit_type;
 		LqtHooks::$editAppliesTo = $edit_applies_to;
-		LqtHooks::$editView = $this;
 
 		$e = new EditPage( $article );
 		
@@ -424,7 +451,8 @@ class LqtView {
 		if ( $e->didSave ) {
 			$thread = self::postEditUpdates(
 					$edit_type, $edit_applies_to, $article,
-					$this->article,	$subject, $e->summary, $thread
+					$this->article,	$subject, $e->summary, $thread,
+					$e->textbox1
 				);
 		}
 
@@ -444,7 +472,7 @@ class LqtView {
 	}
 	
 	static function postEditUpdates( $edit_type, $edit_applies_to, $edit_page, $article,
-					$subject, $edit_summary, $thread ) {
+					$subject, $edit_summary, $thread, $new_text ) {
 		// Update metadata - create and update thread and thread revision objects as
 		//  appropriate.
 
@@ -466,8 +494,13 @@ class LqtView {
 				// $this->renameThread( $thread, $subject, $e->summary );
 			}
 			
+			// Use a separate type if the content is blanked.
+			$type = strlen( trim( $new_text ) )
+					? Threads::CHANGE_EDITED_ROOT
+					: Threads::CHANGE_ROOT_BLANKED;
+			
 			// Add the history entry.
-			$thread->commitRevision( Threads::CHANGE_EDITED_ROOT, $thread, $edit_summary );
+			$thread->commitRevision( $type, $thread, $edit_summary );
 		} else {
 			$thread = Threads::newThread( $edit_page, $article, null,
 							Threads::TYPE_NORMAL, $subject );
@@ -685,9 +718,6 @@ class LqtView {
 	*************************/
 
 	static function addJSandCSS() {
-		// Changed this to be static so that we can call it from
-		// wfLqtBeforeWatchlistHook.
-
 		if ( self::$stylesAndScriptsDone ) {
 			return;
 		}
@@ -1077,15 +1107,28 @@ class LqtView {
 	}
 	
 	function getMustShowThreads( $threads = array() ) {
-		if ( $this->request->getVal( 'lqt_operand' ) ) {
+		if ( $this->request->getCheck( 'lqt_operand' ) ) {
 			$operands = explode( ',', $this->request->getVal( 'lqt_operand' ) );
 			$threads = array_merge( $threads, $operands );
+		}
+		
+		if ( $this->request->getCheck( 'lqt_mustshow' ) ) {
+			// Check for must-show in the request
+			$specifiedMustShow = $this->request->getVal( 'lqt_mustshow' );
+			$specifiedMustShow = explode( ',', $specifiedMustShow );
+			
+			$threads = array_merge( $threads, $specifiedMustShow );
 		}
 		
 		foreach ( $threads as $walk_thread ) {
 			do {
 				if ( !is_object( $walk_thread ) ) {
+					$old_walk_thread = $walk_thread;
 					$walk_thread = Threads::withId( $walk_thread );
+				}
+				
+				if (!is_object( $walk_thread ) ) {
+					continue;
 				}
 				
 				$threads[$walk_thread->id()] = $walk_thread;
@@ -1165,7 +1208,10 @@ class LqtView {
 		
 		$mustShowThreads = $cascadeOptions['mustShowThreads'];
 		
-		foreach ( $thread->subthreads() as $st ) {
+		$replies = $thread->subthreads();
+		usort( $replies, array( 'Thread', 'createdSortCallback' ) );
+		
+		foreach ( $replies as $st ) {
 			++$i;
 			
 			// Only show undeleted threads that are above our 'startAt' index.

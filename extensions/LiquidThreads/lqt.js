@@ -88,6 +88,14 @@ var liquidThreads = {
 			// Add toolbar
 			mwSetupToolbar();
 			
+			currentFocused = $j(container).find('#wpTextbox1');
+			$j(container).find('#wpTextbox1,#wpSummary').focus(
+				function() {
+					currentFocused = this;
+				} );
+			
+			document.editform = $j(container).find('#editform');
+			
 			// Check for live preview
 			if ( $j('#wpLivePreview').length ) {
 				$j.getScript( stylepath+'/common/preview.js',
@@ -414,9 +422,9 @@ var liquidThreads = {
 		replies.before( loader );
 		
 		var apiParams = { 'action' : 'query', 'list' : 'threads', 'thid' : threadId,
-							'format' : 'json', 'thrender' : '1', 'thprop' : 'id' };
+					'format' : 'json', 'thrender' : '1', 'thprop' : 'id' };
 		
-		$j.get( wgScriptPath+'/api.php', apiParams,
+		$j.get( wgScriptPath+'/api'+wgScriptExtension, apiParams,
 			function(data) {
 				// Interpret
 				var content = data.query.threads[0].content;
@@ -460,8 +468,8 @@ var liquidThreads = {
 		
 		// API request
 		var apiParams = { 'action' : 'query', 'list' : 'threads', 'thid' : threadId,
-							'format' : 'json', 'thrender' : '1', 'thprop' : 'id',
-							'threnderstartrepliesat' : startAt };
+					'format' : 'json', 'thrender' : '1', 'thprop' : 'id',
+					'threnderstartrepliesat' : startAt };
 		
 		$j.get( wgScriptPath+'/api.php', apiParams,
 			function(data) {

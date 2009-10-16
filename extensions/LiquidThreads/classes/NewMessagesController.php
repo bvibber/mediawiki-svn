@@ -45,7 +45,7 @@ class NewMessages {
 		
 		wfDebugLog( 'LiquidThreads', 'Doing notifications' );
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		$tpTitle = $t->article()->getTitle();
 		$root_t = $t->topmostThread()->root()->getTitle();
@@ -137,7 +137,7 @@ class NewMessages {
 			$name = $t->article()->getTitle()->getText();
 			
 			$user = User::newFromName( $name );
-			if ( $user && $user->getId() != $changeUser->getId() ) {
+			if ( $user && $user->getName() != $changeUser->getName() ) {
 				$user->setNewtalk( true );
 				
 				$insert_rows[] = array( 'ums_user' => $user->getId(),
