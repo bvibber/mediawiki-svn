@@ -463,10 +463,10 @@ fn : {
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 						if ( show ) {
 							$section.fadeIn( 'fast' );
-							$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2 );
 							$(this).addClass( 'current' );
 						} else {
-							$sections.animate( { 'height': 0 } );
+							$sections.animate( { 'height': 0 }, $section.outerHeight() * 2 );
 						}
 						// Click tracking
 						if($.trackAction != undefined){
@@ -567,7 +567,7 @@ fn : {
 				s.$sections.append( $.wikiEditor.modules.toolbar.fn.buildSection( s.context, s.id, s.config ) );
 				var $section = s.$sections.find( '.section:visible' );
 				if ( $section.size() ) {
-					$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2 );
 				}
 			}
 		} );
