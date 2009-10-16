@@ -1,6 +1,4 @@
-/**
- * TOC Module for wikiEditor
- */
+/* TOC Module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.toc = {
 
 /**
@@ -71,7 +69,7 @@ fn: {
 	},
  
 	unhighlight: function( context ) {
-		context.modules.$toc.find( 'a' ).removeClass( 'currentSelection' );
+		context.modules.$toc.find( 'div' ).removeClass( 'current' );
 	},
 	/**
 	 * Highlight the section the cursor is currently within
@@ -95,8 +93,8 @@ fn: {
 				}
 				section = Math.max( 0, section );
 			}
-			var sectionLink = context.modules.$toc.find( 'a.section-' + section );
-			sectionLink.addClass( 'currentSelection' );
+			var sectionLink = context.modules.$toc.find( 'div.section-' + section );
+			sectionLink.addClass( 'current' );
 			
 			// Scroll the highlighted link into view if necessary
 			var relTop = sectionLink.offset().top - context.modules.$toc.offset().top;
@@ -145,16 +143,16 @@ fn: {
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
-			var list = $( '<ul />' );
+			var list = $( '<ul></ul>' );
 			for ( i in structure ) {
-				var item = $( '<li />' )
+				var item = $( '<li></li>' )
 					.append(
-						$( '<a />' )
+						$( '<div></div>' )
 							.attr( 'href', '#' )
 							.addClass( 'section-' + structure[i].index )
 							.data( 'textbox', context.$textarea )
 							.data( 'position', structure[i].position )
-							.click( function( event ) {
+							.bind( 'mousedown', function( event ) {
 								$(this).data( 'textbox' )
 									.focus()
 									.setSelection( $(this).data( 'position' ) )
@@ -235,18 +233,11 @@ fn: {
 		// Recursively build the structure and add special item for
 		// section 0, if needed
 		var structure = buildStructure( outline );
-		if ( $( 'input[name=wpSection]' ).val() == '' )
+		if ( $( 'input[name=wpSection]' ).val() == '' ) {
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
+		}
 		context.modules.$toc.html( buildList( structure ) );
-		
-		context.modules.$toc.find( 'ul' ).css( 'width', '10em' );
-		
-		var links = context.modules.$toc.find( 'ul a' );
-		// Highlighted links are wider; autoEllipse links in
-		// highlighted state
-		links.addClass( 'currentSelection' );
-		links.autoEllipse( { 'position': 'right', 'tooltip': true } );
-		links.removeClass( 'currentSelection' );
+		context.modules.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}

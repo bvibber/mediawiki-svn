@@ -93,27 +93,24 @@ $.fn.autoEllipse = function( options ) {
 		if ( $text.outerWidth() > $(this).innerWidth() ) {
 			switch ( options.position ) {
 				case 'right':
-					// Use binary search-like technique for
-					// efficiency
+					// Use binary search-like technique for efficiency
 					var l = 0, r = text.length;
-					var ow, iw;
 					do {
 						var m = Math.ceil( ( l + r ) / 2 );
 						$text.text( text.substr( 0, m ) + '...' );
-						ow = $text.outerWidth();
-						iw = $(this).innerWidth();
-						if ( ow > iw )
+						if ( $text.outerWidth() > $(this).width() ) {
 							// Text is too long
 							r = m - 1;
-						else
+						} else {
 							l = m;
+						}
 					} while ( l < r );
 					break;
 				case 'center':
 					// TODO: Use binary search like for 'right'
 					var i = [Math.round( text.length / 2 ), Math.round( text.length / 2 )];
 					var side = 1; // Begin with making the end shorter
-					while ( $text.outerWidth() > ( $(this).innerWidth() ) && i[0] > 0 ) {
+					while ( $text.outerWidth() > ( $(this).width() ) && i[0] > 0 ) {
 						$text.text( text.substr( 0, i[0] ) + '...' + text.substr( i[1] ) );
 						// Alternate between trimming the end and begining
 						if ( side == 0 ) {
@@ -130,7 +127,7 @@ $.fn.autoEllipse = function( options ) {
 				case 'left':
 					// TODO: Use binary search like for 'right'
 					var r = 0;
-					while ( $text.outerWidth() > $(this).innerWidth() && r < text.length ) {
+					while ( $text.outerWidth() > $(this).width() && r < text.length ) {
 						$text.text( '...' + text.substr( r ) );
 						r++;
 					}
@@ -1986,10 +1983,10 @@ fn : {
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 						if ( show ) {
 							$section.fadeIn( 'fast' );
-							$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2 );
 							$(this).addClass( 'current' );
 						} else {
-							$sections.animate( { 'height': 0 } );
+							$sections.animate( { 'height': 0 }, $section.outerHeight() * 2 );
 						}
 						// Click tracking
 						if($.trackAction != undefined){
@@ -2090,7 +2087,7 @@ fn : {
 				s.$sections.append( $.wikiEditor.modules.toolbar.fn.buildSection( s.context, s.id, s.config ) );
 				var $section = s.$sections.find( '.section:visible' );
 				if ( $section.size() ) {
-					$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2 );
 				}
 			}
 		} );
@@ -2098,9 +2095,7 @@ fn : {
 }
 
 }; } )( jQuery );
-/**
- * TOC Module for wikiEditor
- */
+/* TOC Module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.toc = {
 
 /**
@@ -2171,7 +2166,7 @@ fn: {
 	},
  
 	unhighlight: function( context ) {
-		context.modules.$toc.find( 'a' ).removeClass( 'currentSelection' );
+		context.modules.$toc.find( 'div' ).removeClass( 'current' );
 	},
 	/**
 	 * Highlight the section the cursor is currently within
@@ -2195,8 +2190,8 @@ fn: {
 				}
 				section = Math.max( 0, section );
 			}
-			var sectionLink = context.modules.$toc.find( 'a.section-' + section );
-			sectionLink.addClass( 'currentSelection' );
+			var sectionLink = context.modules.$toc.find( 'div.section-' + section );
+			sectionLink.addClass( 'current' );
 			
 			// Scroll the highlighted link into view if necessary
 			var relTop = sectionLink.offset().top - context.modules.$toc.offset().top;
@@ -2245,16 +2240,16 @@ fn: {
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
-			var list = $( '<ul />' );
+			var list = $( '<ul></ul>' );
 			for ( i in structure ) {
-				var item = $( '<li />' )
+				var item = $( '<li></li>' )
 					.append(
-						$( '<a />' )
+						$( '<div></div>' )
 							.attr( 'href', '#' )
 							.addClass( 'section-' + structure[i].index )
 							.data( 'textbox', context.$textarea )
 							.data( 'position', structure[i].position )
-							.click( function( event ) {
+							.bind( 'mousedown', function( event ) {
 								$(this).data( 'textbox' )
 									.focus()
 									.setSelection( $(this).data( 'position' ) )
@@ -2335,18 +2330,11 @@ fn: {
 		// Recursively build the structure and add special item for
 		// section 0, if needed
 		var structure = buildStructure( outline );
-		if ( $( 'input[name=wpSection]' ).val() == '' )
+		if ( $( 'input[name=wpSection]' ).val() == '' ) {
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
+		}
 		context.modules.$toc.html( buildList( structure ) );
-		
-		context.modules.$toc.find( 'ul' ).css( 'width', '10em' );
-		
-		var links = context.modules.$toc.find( 'ul a' );
-		// Highlighted links are wider; autoEllipse links in
-		// highlighted state
-		links.addClass( 'currentSelection' );
-		links.autoEllipse( { 'position': 'right', 'tooltip': true } );
-		links.removeClass( 'currentSelection' );
+		context.modules.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}
