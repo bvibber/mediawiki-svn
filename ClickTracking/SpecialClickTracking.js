@@ -78,11 +78,11 @@
 		
 		var setContribs = function(conditionArray, contribName){
 			
-			initialDiv = $("<div>").attr("id", contribName +"_div");
+			initialDiv = $("<div></div>").attr("id", contribName +"_div");
 			initialDiv.addClass("checkbox_div");
 			initialDiv.addClass("control_div");
 			
-			textDiv = $("<div>").attr("id", contribName +"_text_div");
+			textDiv = $("<div></div>").attr("id", contribName +"_text_div");
 			mainCheckbox = $("<input>").attr("id", contribName +"_checkbox");
 			mainCheckbox.attr("type", "checkbox");
 			mainCheckbox.addClass("user_def_checkbox");
@@ -100,12 +100,12 @@
 			
 			
 			var buildConditionDiv = function (condition, counter, isChecked){
-				conditionDiv = $("<div>").attr("id", contribName + "_range_" + counter + "_div");
+				conditionDiv = $("<div></div>").attr("id", contribName + "_range_" + counter + "_div");
 				conditionDiv.addClass("checkbox_div");
 				conditionDiv.addClass("sub_option_div");
 
 				//initialDiv.append(conditionDiv);
-				cCheckbox = $("<input>").attr("id", contribName+"_"+counter+"_checkbox");
+				cCheckbox = $("<input></input>").attr("id", contribName+"_"+counter+"_checkbox");
 				cCheckbox.attr("type", "checkbox");
 				if(isChecked){
 					cCheckbox.attr("checked", true);
@@ -113,10 +113,10 @@
 				cCheckbox.addClass("number_select_checkbox");
 				conditionDiv.append(cCheckbox);
 				
-				cSelect = $("<select>").attr("id", contribName+"_"+counter+"_ltgt");
+				cSelect = $("<select></select>").attr("id", contribName+"_"+counter+"_ltgt");
 				cSelect.addClass("number_select_ltgt");
 				
-				cOpt1 = $("<option>").attr("id", contribName+"_"+counter+"_lt");
+				cOpt1 = $("<option></option>").attr("id", contribName+"_"+counter+"_lt");
 				cOpt1.addClass("number_select_ltgt_opt");
 				cOpt1.attr("value", "lt");
 				cOpt1.text("<");
@@ -125,7 +125,7 @@
 				}
 				
 				
-				cOpt2 = $("<option>").attr("id", contribName+"_"+counter+"_gt");
+				cOpt2 = $("<option></option>").attr("id", contribName+"_"+counter+"_gt");
 				cOpt2.addClass("number_select_ltgt_opt");
 				cOpt2.attr("value", "gt");
 				cOpt2.text(">");
@@ -133,7 +133,7 @@
 					cOpt2.attr("selected", true);
 				}
 				
-				cOpt3 = $("<option>").attr("id", contribName+"_"+counter+"_lteq");
+				cOpt3 = $("<option></option>").attr("id", contribName+"_"+counter+"_lteq");
 				cOpt3.addClass("number_select_ltgt_opt");
 				cOpt3.attr("value", "lteq");
 				cOpt3.text("<=");
@@ -141,7 +141,7 @@
 					cOpt3.attr("selected", true);
 				}
 				
-				cOpt4 = $("<option>").attr("id", contribName+"_"+counter+"_gteq");
+				cOpt4 = $("<option></option>").attr("id", contribName+"_"+counter+"_gteq");
 				cOpt4.addClass("number_select_ltgt_opt");
 				cOpt4.attr("value", "gteq");
 				cOpt4.text(">=");
@@ -155,7 +155,7 @@
 				cSelect.append(cOpt4);
 				conditionDiv.append(cSelect);
 				
-				cTextInput = $("<input>").attr("id", contribName+"_"+counter+"_text");
+				cTextInput = $("<input></input>").attr("id", contribName+"_"+counter+"_text");
 				cTextInput.addClass("number_select_text");
 				cTextInput.attr('value', condition["value"]);
 				conditionDiv.append(cTextInput);
@@ -170,7 +170,7 @@
 				initialDiv.append(conditionDiv);
 			} //forloop
 			initialDiv.data("totalConditions", i);
-			addConditions = $("<div>").attr("id", contribName+"_addbutton");
+			addConditions = $("<div></div>").attr("id", contribName+"_addbutton");
 			addConditions.data("contribName", contribName);
 			addConditions.addClass("add_condition_button");
 			addConditions.text("+");
@@ -293,6 +293,7 @@
 	$.colorizeTable = function (){
 			//expert
 			
+			
 			//get totals
 			var expert_total = 0;
 			
@@ -367,37 +368,42 @@
 	$.updateTable = function(){
 		
 		var processTableJSON = function(data, status){
-			$("#clicktrack_data_table").empty();
+			
+			//clear
+			$(".table_data_row").each(function(){ $(this).remove();});
+			
 			var row_count = 0;
-			for( var row in data['tablevals']['vals']){
+			for( var row_iter in data['tablevals']['vals']){
+				var row = data['tablevals']['vals'][row_iter]; //really, JS?
 				row_count++;
-				var outputRow = $("<tr>");
+				
+				var outputRow = $("<tr></tr>");
 				outputRow.addClass("table_data_row");
 				
-				var cell =$("<td>").attr("id", "event_name_" + row_count);
+				var cell =$("<td></td>").attr("id", "event_name_" + row_count);
 				cell.addClass("event_name");
 				cell.attr("value", row['event_id']);
-				cell.append(row['event_name']);
-				
+				cell.text(row['event_name']);
 				outputRow.append(cell);
 				
 				var createClassCell = function(userclass){
-					var newcell = $("<td>").attr("id", "event_"+userclass+"_" + row_count);
+					var newcell = $("<td></td>").attr("id", "event_"+userclass+"_" + row_count);
 					newcell.addClass("event_data");
 					newcell.addClass(userclass+"_data");
-					newcell.append(row[userclass]);
+					newcell.text(row[userclass]);
+					newcell.attr("value", row[userclass]);
 					outputRow.append(newcell);
+					
 				};
 				
 				createClassCell("expert");
 				createClassCell("intermediate");
 				createClassCell("basic");
 				createClassCell("total");
-				
 				$("#clicktrack_data_table").append(outputRow);
 			}
-			$.colorizeTable();
 			
+			$.colorizeTable();
 		};
 		
 		
