@@ -11,7 +11,7 @@ $messages = array();
  * @author Adam Nielsen <malvineous@shikadi.net>
  */
 $messages['en'] = array(
-	'flvhandler_desc'   => 'Allow Flash Video (.flv) files to be added as standard files (e.g. <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flvhandler_desc'   => 'Allow Flash Video (.flv) files to be added as standard files (e.g. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
 	'flv-long-desc'     => '(Flash Video, $1 × $2 pixels, file size: $3)'
 );
 
