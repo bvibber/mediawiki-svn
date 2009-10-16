@@ -587,7 +587,7 @@ EOT
 			return true; //continue normal if iframes are "off" (maybe throw a warning in the future)
 
 		//make sure we are in the right namespace and iframe=true was called:
-		if(	$wgTitle->getNamespace() == NS_FILE  &&
+		if(	is_object( $wgTitle ) && $wgTitle->getNamespace() == NS_FILE  &&
 			$wgRequest->getVal('iframe') == 'true' &&
 			$wgEnableIframeEmbed &&
 			$doOutput ){
