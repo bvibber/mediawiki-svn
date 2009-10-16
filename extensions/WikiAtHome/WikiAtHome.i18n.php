@@ -33,15 +33,15 @@ $messages['en'] = array(
 	'wah-transcode-fail' => 'This file failed to transcode.',
 
 	'wah-javascript-off' => 'You must have JavaScript enabled to participate in Wiki@Home',
-	'wah-loading' => 'loading Wiki@Home interface <blink>...</blink>',
+	'wah-loading' => 'loading Wiki@Home interface ...',
 
 	/* javascript msgs WikiAtHome.js */
 	"wah-menu-jobs"	=> "Jobs",
 	"wah-menu-stats" => "Stats",
 	"wah-menu-pref"	=> "Preferences",
-	"wah-loading"	=> "loading Wiki@Home interface <blink>...</blink>",
+	"wah-loading"	=> "loading Wiki@Home interface ...",
 
-	"wah-lookingforjob"	=> "Looking for a job <blink>...</blink>",
+	"wah-lookingforjob"	=> "Looking for a job ...",
 
 	"wah-start-on-visit" => "Start up Wiki@Home any time I visit this site.",
 	"wah-jobs-while-away"=> "Only run jobs when I have been away from my browser for 20 minutes.",
@@ -122,7 +122,7 @@ Probeer later weer.',
 	'wah-transcode-helpout' => 'U kan help om die lêer te transkodeer deur na [[Special:WikiAtHome|Wiki@Home]] te gaan',
 	'wah-transcode-fail' => 'Die transkodering van die lêer het misluk.',
 	'wah-javascript-off' => 'JavaScript moet geaktiveer wees om aan Wiki@Home deel te neem',
-	'wah-loading' => 'Die Wiki@Home-koppelvlak is besig om te laai <blink>...</blink>',
+	'wah-loading' => 'Die Wiki@Home-koppelvlak is besig om te laai ...',
 );
 
 /** Arabic (العربية)
@@ -156,11 +156,11 @@ $messages['be-tarask'] = array(
 	'wah-transcode-helpout' => 'Вы можаце дапамагчы перакадаваць гэты відэа-файл наведаўшы [[Special:WikiAtHome|Wiki@Home]].',
 	'wah-transcode-fail' => 'Немагчыма перакадаваць гэты файл.',
 	'wah-javascript-off' => 'У Вас павінен быць уключаны JavaScript для ўдзелу ў Wiki@Home',
-	'wah-loading' => 'загрузка інтэрфэйсу Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'загрузка інтэрфэйсу Wiki@Home ...',
 	'wah-menu-jobs' => 'Заданьні',
 	'wah-menu-stats' => 'Статыстыка',
 	'wah-menu-pref' => 'Устаноўкі',
-	'wah-lookingforjob' => 'Пошук заданьняў <blink>...</blink>',
+	'wah-lookingforjob' => 'Пошук заданьняў ...',
 	'wah-start-on-visit' => 'Запускаць Wiki@Home у любы час, калі я наведваю гэты сайт.',
 	'wah-jobs-while-away' => 'Запускаць заданьні толькі пасьля таго, як я не карыстаюся браўзэрам болей 20 хвілінаў.',
 	'wah-nojobfound' => 'Заданьні ня знойдзеныя. Паўтор спробы ў $1.',
@@ -184,7 +184,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'wah-transcode-working' => 'Видеото се обработва. Моля, опитайте пак по-късно.',
 	'wah-javascript-off' => 'За да участвате в Wiki@Home е необходимо браузърът ви да е с включена поддръжка на Джаваскрипт.',
-	'wah-loading' => 'зареждане на интерфейса на Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'зареждане на интерфейса на Wiki@Home ...',
 	'wah-notoken-login' => 'Влязохте ли в системата? Ако не, моля, първо влезте с потребителското си име.',
 	'wah-downloading' => 'Свалянето на файла <i>$1%</i> завърши',
 	'wah-encoding' => 'Кодирането на файла <i>$1%</i> завърши',
@@ -213,10 +213,10 @@ $messages['br'] = array(
 	'wah-transcode-helpout' => "Skoazellañ da dreuzkodañ ar video-mañ a c'hallit ober en ur vont war [[Special:WikiAtHome|Wiki@Home]]",
 	'wah-transcode-fail' => "C'hwitet eo treuzkodañ ar restr.",
 	'wah-javascript-off' => 'Rekis eo bezañ gweredekaet JavaScript evit kemer perzh e Wiki@Home',
-	'wah-loading' => 'o kargañ etrefas Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'o kargañ etrefas Wiki@Home ...',
 	'wah-menu-stats' => 'Stadegoù',
 	'wah-menu-pref' => 'Penndibaboù',
-	'wah-lookingforjob' => 'O klask un tamm labour <blink>...</blink>',
+	'wah-lookingforjob' => 'O klask un tamm labour ...',
 );
 
 /** Bosnian (Bosanski)
@@ -237,7 +237,7 @@ $messages['bs'] = array(
 	'wah-transcode-helpout' => 'Možete pomoći pri transkodiranju ovog videa ako posjetite [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Ova datoteka se nije uspjela transkodirati.',
 	'wah-javascript-off' => 'Morate imati omogućenu JavaScript za učestvovanje u Wiki@Home',
-	'wah-loading' => 'učitavam interfejs Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'učitavam interfejs Wiki@Home ...',
 	'wah-menu-jobs' => 'Poslovi',
 	'wah-menu-stats' => 'Statistike',
 	'wah-menu-pref' => 'Postavke',
@@ -263,7 +263,7 @@ $messages['de'] = array(
 	'wah-transcode-helpout' => 'Du kannst dabei helfen dieses Video zu verarbeiten, indem du [[Special:WikiAtHome|Wiki@Home]] besuchst',
 	'wah-transcode-fail' => 'Diese Datei konnte nicht transkodiert werden.',
 	'wah-javascript-off' => 'Du musst JavaScript aktiviert haben, um bei Wiki@Home teilnehmen zu können',
-	'wah-loading' => 'Lade Wiki@Home-Benutzeroberfläche <blink>…</blink>',
+	'wah-loading' => 'Lade Wiki@Home-Benutzeroberfläche …',
 	'wah-menu-pref' => 'Einstellungen',
 	'wah-notoken-login' => 'Hast du dich bereits angemeldet? Falls nicht, hole dies bitte zuerst nach.',
 	'wah-downloading' => 'Herunterladen der Datei zu <i>$1 %</i> abgeschlossen.',
@@ -298,11 +298,11 @@ $messages['dsb'] = array(
 	'wah-transcode-helpout' => 'Móžoš pomagaś toś te wideo pśekoděrowaś, z tym až woglědujoš k [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Toś ta dataja njejo se dała pśekoděrowaś.',
 	'wah-javascript-off' => 'Musyš JavaScript zmóžniś, aby se na Wiki@Home wobźělił',
-	'wah-loading' => 'Pówjerch Wiki@Home se zacytujo <blink>...</blink>',
+	'wah-loading' => 'Pówjerch Wiki@Home se zacytujo ...',
 	'wah-menu-jobs' => 'Źěła',
 	'wah-menu-stats' => 'Statistika',
 	'wah-menu-pref' => 'Nastajenja',
-	'wah-lookingforjob' => 'Pyta se źěło <blink>...</blink>',
+	'wah-lookingforjob' => 'Pyta se źěło ...',
 	'wah-start-on-visit' => 'Wiki@Home kuždy raz startowaś, gaž woglědujom se k toś tomu sedłoju.',
 	'wah-jobs-while-away' => 'Źěła jano wuwjasć, gaž som 20 minutow wót swójogo wobglědowaka pšec.',
 	'wah-nojobfound' => 'Žadne źěło namakane. Nowy wopyt za $1.',
@@ -355,7 +355,7 @@ $messages['es'] = array(
 	'wah-transcode-helpout' => 'Ud. puede ayudar a convertir este video visitando [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Falló la conversión del archivo.',
 	'wah-javascript-off' => 'Ud. debe tener JavaScript activo para participar en Wiki@Home',
-	'wah-loading' => 'cargando interfaz Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'cargando interfaz Wiki@Home ...',
 );
 
 /** Basque (Euskara)
@@ -389,7 +389,7 @@ $messages['fi'] = array(
 	'wah-transcode-working' => 'Tätä videota käsitellään parhaillaan, yritä myöhemmin uudelleen',
 	'wah-transcode-fail' => 'Tämä tiedosto ei transkoodautunut.',
 	'wah-javascript-off' => 'JavaScriptin on oltava käytössä, jotta voit osallistua Wiki@Homeen',
-	'wah-loading' => 'ladataan Wiki@Home-käyttöliittymää <blink>...</blink>',
+	'wah-loading' => 'ladataan Wiki@Home-käyttöliittymää ...',
 );
 
 /** French (Français)
@@ -412,11 +412,11 @@ $messages['fr'] = array(
 	'wah-transcode-helpout' => 'Vous pouvez aider à transcoder cette vidéo en visitant [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => "Ce fichier n'a pas pu être transcodé.",
 	'wah-javascript-off' => 'Vous devez activer JavaScript pour participer à Wiki@Home',
-	'wah-loading' => "chargement de l'interface Wiki@Home <blink>...</blink>",
+	'wah-loading' => "chargement de l'interface Wiki@Home ...",
 	'wah-menu-jobs' => 'Tâches',
 	'wah-menu-stats' => 'Statistiques',
 	'wah-menu-pref' => 'Préférences',
-	'wah-lookingforjob' => 'Recherche de tâche <blink>...</blink>',
+	'wah-lookingforjob' => 'Recherche de tâche ...',
 	'wah-start-on-visit' => 'Démarrer Wiki@Home à chaque fois que je visite ce site.',
 	'wah-jobs-while-away' => 'Lancer un tâche seulement quand je ne me suis pas servi de mon navigateur pendant 20 minutes.',
 	'wah-nojobfound' => 'Pas de tâche trouvée. Ré-essai en $1.',
@@ -451,11 +451,11 @@ $messages['gl'] = array(
 	'wah-transcode-helpout' => 'Pode axudar na transcodificación deste vídeo visitando [[Special:WikiAtHome|Wiki@Home]].',
 	'wah-transcode-fail' => 'Fallou a transcodificación do ficheiro.',
 	'wah-javascript-off' => 'Debe ter o Javascript activado para participar no Wiki@Home',
-	'wah-loading' => 'cargando a interface do Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'cargando a interface do Wiki@Home ...',
 	'wah-menu-jobs' => 'Tarefas',
 	'wah-menu-stats' => 'Estatísticas',
 	'wah-menu-pref' => 'Preferencias',
-	'wah-lookingforjob' => 'Procurando unha tarefa<blink>...</blink>',
+	'wah-lookingforjob' => 'Procurando unha tarefa...',
 	'wah-start-on-visit' => 'Iniciar o Wiki@Home cada vez que visite este sitio.',
 	'wah-jobs-while-away' => 'Executar só as tarefas cando non use o meu navegador durante 20 minutos.',
 	'wah-nojobfound' => 'Non se atopou ningunha tarefa. Volverase intentar en $1.',
@@ -490,11 +490,11 @@ $messages['gsw'] = array(
 	'wah-transcode-helpout' => 'Du chasch hälfe des Video z verarbeite, indäm Du [[Special:WikiAtHome|Wiki@Home]] bsuechsch',
 	'wah-transcode-fail' => 'Die Datei het nit chenne transkodiert wäre.',
 	'wah-javascript-off' => 'Du muesch JavaScript megli mache go bi Wiki@Home mitmache',
-	'wah-loading' => 'Am Lade vu dr Wiki@Home-Benutzeroberflächi <blink>…</blink>',
+	'wah-loading' => 'Am Lade vu dr Wiki@Home-Benutzeroberflächi …',
 	'wah-menu-jobs' => 'Uftreg',
 	'wah-menu-stats' => 'Statischtike',
 	'wah-menu-pref' => 'Yystellige',
-	'wah-lookingforjob' => 'Am Sueche noch eme Uftrag <blink>...</blink>',
+	'wah-lookingforjob' => 'Am Sueche noch eme Uftrag ...',
 	'wah-start-on-visit' => 'Wiki@Home jedes Mol starte, wänn ich uf die Syte gang.',
 	'wah-jobs-while-away' => 'Uftreg nume laufe loo, wänn ich fir meh wie 20 Minute myy Browser nit brucht haa.',
 	'wah-nojobfound' => 'Kei Uftrag gfunde. Neje Versuech: $1.',
@@ -530,7 +530,7 @@ $messages['he'] = array(
 	'wah-transcode-helpout' => 'ניתן לעזור בקידוד הווידאו הזה על ידי ביקור בדף [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'קידוד קובץ זה נכשל.',
 	'wah-javascript-off' => 'עליכם להפעיל את תכונת ה־JavaScript כדי לקחת חלק ב־Wiki@Home',
-	'wah-loading' => 'ממשק Wiki@Home נטען כעת <blink>...</blink>',
+	'wah-loading' => 'ממשק Wiki@Home נטען כעת ...',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -551,11 +551,11 @@ $messages['hsb'] = array(
 	'wah-transcode-helpout' => 'Móžeš pomhać tute widejo přez wopyt na [[Special:WikiAtHome|Wiki@Home]] překodować',
 	'wah-transcode-fail' => 'Njeje so poradźiło tutu dataju překodować.',
 	'wah-javascript-off' => 'Dyrbiš JavaScript zmóžnić, zo by so na Wiki@Home wobdźělił',
-	'wah-loading' => 'Začitanje powjercha Wik@Home <blink> ... </blink>',
+	'wah-loading' => 'Začitanje powjercha Wik@Home  ... ',
 	'wah-menu-jobs' => 'Dźěła',
 	'wah-menu-stats' => 'Statistika',
 	'wah-menu-pref' => 'Nastajenja',
-	'wah-lookingforjob' => 'Pyta so dźěło <blink>...</blink>',
+	'wah-lookingforjob' => 'Pyta so dźěło ...',
 	'wah-start-on-visit' => 'Wiki@Home kóždy raz startować, hdyž tute sydło wopytuju.',
 	'wah-jobs-while-away' => 'Dźěła jenož wuwjesć, hdyž sym hižo 20 mjeńšin wot swojeho wobhladowaka preč.',
 	'wah-nojobfound' => 'Žane dźěło namakane. Nowy pospyt budźe za $1.',
@@ -591,7 +591,7 @@ $messages['hu'] = array(
 	'wah-transcode-helpout' => 'Segíthetsz a videó átkódolásában a [[Special:WikiAtHome|Wiki@Home]] lap felkeresésével.',
 	'wah-transcode-fail' => 'A fájl átkódolása meghiúsult.',
 	'wah-javascript-off' => 'A Wiki@Home-ban való részvételhez engedélyezned kell a JavaScriptet',
-	'wah-loading' => 'Wiki@Home interfész betöltése <blink>…</blink>',
+	'wah-loading' => 'Wiki@Home interfész betöltése …',
 	'wah-menu-stats' => 'Statisztikák',
 	'wah-menu-pref' => 'Beállítások',
 	'wah-uploadfail' => 'Sikertelen feltöltés',
@@ -615,11 +615,11 @@ $messages['ia'] = array(
 	'wah-transcode-helpout' => 'Tu pote adjutar a transcodificar iste video per visitar [[Special:WikiAtHome|Wiki@Home]].',
 	'wah-transcode-fail' => 'Le transcodification de iste file ha fallite.',
 	'wah-javascript-off' => 'Tu debe activar JavaScript pro participar in Wiki@Home.',
-	'wah-loading' => 'carga interfacie de Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'carga interfacie de Wiki@Home ...',
 	'wah-menu-jobs' => 'Cargas',
 	'wah-menu-stats' => 'Statisticas',
 	'wah-menu-pref' => 'Preferentias',
-	'wah-lookingforjob' => 'Recerca de un carga <blink>...</blink>',
+	'wah-lookingforjob' => 'Recerca de un carga ...',
 	'wah-start-on-visit' => 'Mitter Wiki@Home in action cata vice que io visita iste sito.',
 	'wah-jobs-while-away' => 'Executar cargas solmente quando io ha essite absente de mi navigator durante 20 minutas.',
 	'wah-nojobfound' => 'Nulle carga trovate. Reprobara in $1.',
@@ -657,7 +657,7 @@ Memungkinkan mendistribusikan pekerjaan video transcoding untuk klien yang mengg
 	'wah-transcode-helpout' => 'Anda dapat membantu video transcode ini dengan mengunjungi [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Berkas ini gagal untuk di transcode.',
 	'wah-javascript-off' => 'Anda harus mengaktifkan JavaScript agar dapat berpartisipasi di Wiki@Home',
-	'wah-loading' => 'Memuat Antarmuka Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'Memuat Antarmuka Wiki@Home ...',
 );
 
 /** Japanese (日本語)
@@ -679,11 +679,11 @@ $messages['ja'] = array(
 	'wah-transcode-helpout' => '[[Special:WikiAtHome|Wiki@Home]] を使用すると、この動画のトランスコードをあなたが手伝うことができます',
 	'wah-transcode-fail' => 'このファイルはトランスコードに失敗しました。',
 	'wah-javascript-off' => 'Wiki@Home に参加するには JavaScript を有効にする必要があります',
-	'wah-loading' => 'Wiki@Home のインタフェースを読み込み中<blink>…</blink>',
+	'wah-loading' => 'Wiki@Home のインタフェースを読み込み中…',
 	'wah-menu-jobs' => 'ジョブ',
 	'wah-menu-stats' => '統計',
 	'wah-menu-pref' => '設定',
-	'wah-lookingforjob' => 'ジョブを探しています<blink>...</blink>',
+	'wah-lookingforjob' => 'ジョブを探しています...',
 	'wah-start-on-visit' => 'サイトを訪れたら常にWiki@Homeを開始する',
 	'wah-jobs-while-away' => '20分以上ブラウザから離れた時にだけ、ジョブを行なう。',
 	'wah-nojobfound' => 'ジョブが見つかりませんでした、$1にリトライします。',
@@ -730,11 +730,11 @@ $messages['ksh'] = array(
 	'wah-transcode-helpout' => 'Do kanns beim Ömkodeere hellfe för heh dä Viddejo, jangk doför noh de Sigg [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Di Dattei lehß sesch ömkodeere.',
 	'wah-javascript-off' => 'Dinge Brauser moß JavaSkrep künne un ennjeschalldt han, domet De bei Wiki@Home metmaache kanns.',
-	'wah-loading' => 'Ben wiki@home sing Schnetshtëll aam laade<blink>{{int:ellipsis}}</blink>',
+	'wah-loading' => 'Ben wiki@home sing Schnetshtëll aam laade{{int:ellipsis}}',
 	'wah-menu-jobs' => 'Aufjabe',
 	'wah-menu-stats' => 'Statißtike',
 	'wah-menu-pref' => 'Ennshtellunge',
-	'wah-lookingforjob' => 'Op en Aufjab aam waade&nbsp;<blink>{{int:ellipsis}}</blink>',
+	'wah-lookingforjob' => 'Op en Aufjab aam waade&nbsp;{{int:ellipsis}}',
 	'wah-start-on-visit' => 'Donn Wiki@Home jeedes Mohl aanwerfe, wann esch op heh di Webßaijt kummen.',
 	'wah-jobs-while-away' => 'Nur dann Aufjabe beärbeide, wann esch 20 Mennutte lang fott jewääse ben vum Brauser.',
 	'wah-nojobfound' => 'Kein Aufjab jevonge. Wider versöhke en $1.',
@@ -770,7 +770,7 @@ $messages['lb'] = array(
 	'wah-transcode-helpout' => 'Dir kënnt hëllefen dëse Video ze transcodéiere wann Dir [[Special:WikiAtHome|Wiki@Home]] besicht',
 	'wah-transcode-fail' => 'Dëse Fichier konnt net ëmgeschriwwe ginn.',
 	'wah-javascript-off' => 'Dir musst JavaScript zouloossen fir bäi Wiki@Doheem matzemaachen',
-	'wah-loading' => 'wiki@home Interface lueden <blink>...</blink>',
+	'wah-loading' => 'wiki@home Interface lueden ...',
 	'wah-menu-jobs' => 'Aarbechten',
 	'wah-menu-stats' => 'Statistiken',
 	'wah-menu-pref' => 'Astellungen',
@@ -794,7 +794,7 @@ $messages['mk'] = array(
 	'wah-transcode-helpout' => 'Можете да помогнете со транскодирање на оваа видеоснимка ако ја посетите страницата [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Оваа податотека не успеа да се транскодира.',
 	'wah-javascript-off' => 'Мора да имате овозможено JavaScript за да учествувате во Wiki@Home',
-	'wah-loading' => 'се вчитува интерфејсот на Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'се вчитува интерфејсот на Wiki@Home ...',
 );
 
 /** Dutch (Nederlands)
@@ -817,11 +817,11 @@ Probeer het later nog eens.',
 	'wah-transcode-helpout' => 'U kunt helpen dit bestand te transcoderen door naar [[Special:WikiAtHome|Wiki@Home]] te gaan',
 	'wah-transcode-fail' => 'Het transcoderen van dit bestand is mislukt.',
 	'wah-javascript-off' => 'JavaScript moet ingeschakeld zijn om deel te nemen aan Wiki@Home',
-	'wah-loading' => 'Wiki@Home-interface aan het laden <blink>...</blink>',
+	'wah-loading' => 'Wiki@Home-interface aan het laden ...',
 	'wah-menu-jobs' => 'Taken',
 	'wah-menu-stats' => 'Statistieken',
 	'wah-menu-pref' => 'Voorkeuren',
-	'wah-lookingforjob' => 'Op zoek naar een taak <blink>...</blink>',
+	'wah-lookingforjob' => 'Op zoek naar een taak ...',
 	'wah-start-on-visit' => 'Wiki@Home starten als ik deze site bezoek.',
 	'wah-jobs-while-away' => 'Alleen aan taken werken als ik meer dan 20 minuten mijn browser niet gebruik.',
 	'wah-nojobfound' => 'Er is geen taak gevonden. Wordt opnieuw geprobeerd over $1.',
@@ -867,11 +867,11 @@ $messages['oc'] = array(
 	'wah-transcode-helpout' => 'Podètz ajudar a transcodar aquesta vidèo en visitant [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Aqueste fichièr a pas pogut èsser transcodat.',
 	'wah-javascript-off' => 'Vos cal activar JavaScript per participar a Wiki@Home',
-	'wah-loading' => "cargament de l'interfàcia Wiki@Home <blink>...</blink>",
+	'wah-loading' => "cargament de l'interfàcia Wiki@Home ...",
 	'wah-menu-jobs' => 'Prètzfaches',
 	'wah-menu-stats' => 'Estatisticas',
 	'wah-menu-pref' => 'Preferéncias',
-	'wah-lookingforjob' => 'Recèrca de prètzfach <blink>...</blink>',
+	'wah-lookingforjob' => 'Recèrca de prètzfach ...',
 	'wah-start-on-visit' => 'Aviar Wiki@Home a cada còp que visiti aqueste site.',
 	'wah-jobs-while-away' => 'Aviar un prètzfach solament quand me soi pas servit de mon navigador pendent 20 minutas.',
 	'wah-nojobfound' => 'Cap de prètzfach pas trobat. Tornatz ensajar en $1.',
@@ -907,7 +907,7 @@ $messages['pl'] = array(
 	'wah-transcode-helpout' => 'Możesz pomóc w przekodowywaniu wideo, odwiedzając stronę [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Nie udało się przekodować tego pliku.',
 	'wah-javascript-off' => 'Musisz mieć włączony JavaScript, aby brać udział w Wiki@Home',
-	'wah-loading' => 'ładowanie interfejsu Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'ładowanie interfejsu Wiki@Home ...',
 );
 
 /** Piedmontese (Piemontèis)
@@ -928,7 +928,7 @@ $messages['pms'] = array(
 	'wah-transcode-helpout' => 'It peule giuté a trascodifiché sto video-sì an visitand [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => "Sto file-sì a l'é pa podusse trascodifiché.",
 	'wah-javascript-off' => 'It deuve avèj JavaScript abilità për partessipé an Wiki@Home',
-	'wah-loading' => "carié l'antërfassa ëd Wiki@Home <blink>...</blink>",
+	'wah-loading' => "carié l'antërfassa ëd Wiki@Home ...",
 );
 
 /** Portuguese (Português)
@@ -957,7 +957,7 @@ $messages['pt-br'] = array(
 	'wah-transcode-helpout' => 'Você pode ajudar a transcodificar este vídeo visitando [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Falha na transcodificação do arquivo',
 	'wah-javascript-off' => 'Você precisa ter habilitado JavaScript para participar de Wiki@Home',
-	'wah-loading' => 'carregando interface Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'carregando interface Wiki@Home ...',
 );
 
 /** Romanian (Română)
@@ -992,11 +992,11 @@ $messages['ru'] = array(
 	'wah-transcode-helpout' => 'Вы можете помочь перекодировать это видео, посетите [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Не удалось перекодировать этот файл.',
 	'wah-javascript-off' => 'У вас должен быть включён JavaScript, для возможности участия в Wiki@Home',
-	'wah-loading' => 'Загрузка интерфейса Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'Загрузка интерфейса Wiki@Home ...',
 	'wah-menu-jobs' => 'Задания',
 	'wah-menu-stats' => 'Статистика',
 	'wah-menu-pref' => 'Настройка',
-	'wah-lookingforjob' => 'Поиск задания <blink>…</blink>',
+	'wah-lookingforjob' => 'Поиск задания …',
 	'wah-start-on-visit' => 'Запускать Wiki@Home всегда, когда я посещаю этот сайт.',
 	'wah-jobs-while-away' => 'Запускать задания только когда я не пользовался браузером более 20 минут.',
 	'wah-nojobfound' => 'Задание не найдено. Повтор будет произведён $1.',
@@ -1031,7 +1031,7 @@ $messages['sk'] = array(
 	'wah-transcode-helpout' => 'Môžete pomôcť s prekódovaním tohto videa po navštívení [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Tento súbor sa nepodarilo prekódovať.',
 	'wah-javascript-off' => 'Aby ste sa mohli zúčastniť Wiki@Home musíte mať zapnutý JavaScript',
-	'wah-loading' => 'načítava sa rozhranie Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'načítava sa rozhranie Wiki@Home ...',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -1048,7 +1048,7 @@ $messages['sr-ec'] = array(
 	'wah-long-error' => '(ffmpeg није могао да прочита овај фајл: $1)',
 	'wah-transcode-working' => 'Овај видео се тренутно обрађује, и готово је $1% посла',
 	'wah-javascript-off' => 'Морате омогућити JavaScript, да бисте учествовали у Wiki@Home',
-	'wah-loading' => 'учитавање Wiki@Home интерфејса <blink>...</blink>',
+	'wah-loading' => 'учитавање Wiki@Home интерфејса ...',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -1064,7 +1064,7 @@ $messages['sr-el'] = array(
 	'wah-long-general' => '(medija-fajl, trajanje $2, $3)',
 	'wah-long-error' => '(ffmpeg nije mogao da pročita ovaj fajl: $1)',
 	'wah-javascript-off' => 'Morate omogućiti JavaScript, da biste učestvovali u Wiki@Home',
-	'wah-loading' => 'učitavanje Wiki@Home interfejsa <blink>...</blink>',
+	'wah-loading' => 'učitavanje Wiki@Home interfejsa ...',
 );
 
 /** Swedish (Svenska)
@@ -1084,7 +1084,7 @@ $messages['sv'] = array(
 	'wah-transcode-helpout' => 'Du kan hjälpa till att konvertera den här videon genom att besöka [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Kunde inte konvertera den här filen.',
 	'wah-javascript-off' => 'Du måste ha JavaScript aktiverat för att delta i Wiki@Home',
-	'wah-loading' => 'laddar gränssnittet för Wiki@Home <blink>...</blink>',
+	'wah-loading' => 'laddar gränssnittet för Wiki@Home ...',
 	'wah-notoken-login' => 'Har du loggat in? Om inte, vänligen logga in först.',
 	'wah-uploading' => 'Uppladdning av fil <i>$1</i> är komplett',
 	'wah-uploadfail' => 'Uppladdningen falerade',
@@ -1127,7 +1127,7 @@ $messages['zh-hans'] = array(
 	'wah-transcode-working' => '这个视频正在被处理，请稍后再试',
 	'wah-transcode-fail' => '这个文件转码失败',
 	'wah-javascript-off' => '你必须启用JavaScript以参与Wiki@Home',
-	'wah-loading' => '正在载入Wiki@Home界面<blink>……</blink>',
+	'wah-loading' => '正在载入Wiki@Home界面……',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -1135,6 +1135,6 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'wah-transcode-working' => '本影片正在處理中，請稍後再試',
-	'wah-loading' => '正在載入Wiki@Home介面<blink>...</blink>',
+	'wah-loading' => '正在載入Wiki@Home介面...',
 );
 

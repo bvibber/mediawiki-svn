@@ -133,7 +133,7 @@ function mv_do_load_wiz(){
         body_elm.innerHTML = body_elm.innerHTML + ''+        
             '<div id="modalbox" style="background:#DDD;border:3px solid #666666;font-size:115%;'+
                 'top:30px;left:20px;right:20px;bottom:30px;position:fixed;z-index:100;">'+            
-                'loading external media wizard<blink>...</blink>'+            
+                'loading external media wizard...'+            
             '</div>'+        
             '<div id="mv_overlay" style="background:#000;cursor:wait;height:100%;left:0;position:fixed;'+
                 'top:0;width:100%;z-index:5;filter:alpha(opacity=60);-moz-opacity: 0.6;'+
