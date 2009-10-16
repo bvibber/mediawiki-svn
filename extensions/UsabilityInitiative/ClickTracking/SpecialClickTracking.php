@@ -13,13 +13,12 @@ class SpecialClickTracking extends SpecialPage {
 	private $normalize_top_results = false;
 	private $normalize_results = false;
 	private $end_timeframe = '20090902';
-	private static $minimum_date = '20090815'; //YYYYMMDD (+1 for today)
+	private static $minimum_date = '20091009'; //YYYYMMDD (+1 for today)
 	
 	private static $userTypes = array("basic" => 0, "intermediate" => 1, "expert" => 2);
 	private $user_defs = array();
 	
 	//array of event_id => event_name
-	public static $join_conds = " LEFT JOIN click_tracking_events ON event_id=click_tracking_events.id";
 	public static $expert_user_conds = "user_total_contribs > 10 ";
 	public static $intermediate_user_conds = "user_total_contribs < 10 AND user_total_contribs > 1 ";
 	public static $basic_user_conds = "user_total_contribs <= 1";
@@ -173,26 +172,7 @@ class SpecialClickTracking extends SpecialPage {
 		if($isUserDefsJSON){
 			$userDefs = json_decode($userDefs, true);
 		}
-		
-		$userDefQueries = array();
-		
-		foreach ($userDefs as $name => $def){
-				if(!isset($def['total_contribs'])){
-					$def['total_contribs'] = array();
-				}
-				if(!isset($def['contrib_1'])){
-					$def['contrib_1'] = array();
-				}
-				if(!isset($def['contrib_2'])){
-					$def['contrib_2'] = array();
-				}
-				if(!isset($def['contrib_3'])){
-					$def['contrib_3'] = array();
-				}
-				$userDefQueries["$name"] = self::buildUserDefQuery($def['anonymous'], $def['total_contribs'], $def['contrib_1'], $def['contrib_2'], $def['contrib_3']);
-		}
-		
-		
+				
 		$basicUserData = array();
 		$intermediateUserData = array();
 		$expertUserData = array();
@@ -202,10 +182,13 @@ class SpecialClickTracking extends SpecialPage {
 		
 		while( $currEndDate->format( "U" )  < $endDate->format( "U" )  ){
 			$currEndDate->modify( "+$increment day$plural" );
-			$time_constraints_statement = self::getTimeConstraintsStatement( $currBeginDate->format("Ymd"), $currEndDate->format("Ymd") );
-			$basicUserData[] = self::getTableValue( $event_id, $userDefQueries['basic'], $time_constraints_statement );
-			$intermediateUserData[] = self::getTableValue( $event_id, $userDefQueries['intermediate'], $time_constraints_statement );
-			$expertUserData[] = self::getTableValue( $event_id, $userDefQueries['expert'], $time_constraints_statement );
+			
+			$minDate = $currBeginDate->format("Ymd");
+			$maxDate = $currEndDate->format("Ymd");
+			
+			$basicUserData[] = self::getTableValue( $event_id, $userDefs['basic'], $minDate, $maxDate );
+			$intermediateUserData[] = self::getTableValue( $event_id, $userDefs['intermediate'], $minDate, $maxDate );
+			$expertUserData[] = self::getTableValue( $event_id, $userDefs['expert'], $minDate, $maxDate );
 			$currBeginDate->modify( "+$increment day$plural" );
 		}
 		return array("expert" => $expertUserData, "basic" => $basicUserData, "intermediate" => $intermediateUserData);
@@ -309,70 +292,6 @@ class SpecialClickTracking extends SpecialPage {
 	}
 	
 	
-	function buildUserDefDialog(){
-		$control = "";
-		$control .= Xml::openElement("div", array("id" => "user_def_dialog", "class" => "dialog"));
-		
-		//currently editing...----|
-		$control .= Xml::openElement("form", array("id" => "user_definition_form", "class" => "user_def_form"));
-		$control .= Xml::openElement("fieldset", array("id" => "user_def_alter_fieldset"));
-		$control .= Xml::openElement("legend", array("id" => "user_def_alter_legend"));
-		$control .= wfMsg( "ct-editing" );
-		$control .= Xml::closeElement("legend");
-		
-		//[] anonymous users?
-		$control .= Xml::openElement("div", array("id" => "anon_users_div", "class" => "checkbox_div control_div"));
-		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "anon_users_checkbox", "class" => "user_def_checkbox"));
-		$control .= Xml::closeElement("input");
-		$control .= wfMsg("ct-anon-users");
-		$control .= Xml::closeElement("div");
-		
-		// ----------------
-		$control .= Xml::openElement("hr");
-		$control .= Xml::closeElement("hr");
-		$control .= Xml::openElement("div", array("id" => "contrib_opts_container"));
-		
-		// [] users with contributions [>=V] [n    ]
-		$control .= Xml::openElement("div", array("id" => "total_users_contrib_div", "class" => "checkbox_div control_div"));
-		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_checkbox", "class" => "user_def_checkbox"));
-		$control .= Xml::closeElement("input");
-		$control .= wfMsg("ct-user-contribs");
-		
-		$control .= Xml::openElement("div", array("id" => "contrib_sub_div", "class" => "checkbox_div sub_option_div"));
-		$control .= $this->buildUserDefNumberSelect(false, false, "contrib_sub");
-		$control .= Xml::closeElement("div");
-		
-		$control .= Xml::closeElement("div");
-		
-		// [] contributions in timespan 1
-		//    []     [>=V] [n    ]
-		//    [] AND [>=V] [n    ]
-		$control .= Xml::openElement("div", array("id" => "contrib_span_1_div", "class" => "checkbox_div control_div"));
-		
-		$control .= Xml::openElement("div", array("id" => "contrib_span_1_text_div", "class" => "checkbox_div"));
-		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_span_1_checkbox", "class" => "user_def_checkbox"));
-		$control .= Xml::closeElement("input");
-		$control .= wfMsg("ct-user-span") . " 1";
-		$control .= Xml::closeElement("div");
-		
-		$control .= Xml::openElement("div", array("id" => "contrib_span_1_range_1_div", "class" => "checkbox_div sub_option_div"));
-		$control .= $this->buildUserDefNumberSelect(true, false, "contrib_span_1_1");
-		$control .= Xml::closeElement("div");
-		
-		$control .= Xml::openElement("div", array("id" => "contrib_span_1_range_2_div", "class" => "checkbox_div sub_option_div"));
-		$control .= $this->buildUserDefNumberSelect(true, true, "contrib_span_1_2");
-		$control .= Xml::closeElement("div");
-		
-		$control .= Xml::closeElement("div");
-		
-		$control .= Xml::closeElement("div");//close contrib opts
-		
-		$control .= Xml::closeElement("fieldset");
-		$control .= Xml::closeElement("form");	
-		$control .= Xml::closeElement("div");
-		return $control;
-	}
-	
 	
 	function buildUserDefNumberSelect($include_checkbox, $include_and, $ids){
 		$control = "";
@@ -458,7 +377,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::closeElement("td");
 		
 		$control .= Xml::openElement("td", array("id" => "start_date_textarea"));
-		$control .= Xml::openElement("input", array("type" => "text", "id" => "start_date", "class" => "date_range_input", "value" => self::$minimum_date));
+		$control .= Xml::openElement("input", array("type" => "text", "id" => "start_date", "class" => "date_range_input"));
 		$control .= Xml::closeElement("input");
 		$control .= Xml::closeElement("td");
 		
@@ -479,6 +398,19 @@ class SpecialClickTracking extends SpecialPage {
 		
 		$control .= Xml::closeElement("tr");
 		
+
+		$control .= Xml::openElement("tr", array("id" => "update_row"));
+		
+		$control .= Xml::openElement("td");
+		$control .= Xml::closeElement("td");
+		
+		$control .= Xml::openElement("td", array("id" => "update_table_button_td"));
+		$control .= Xml::openElement("input", array("type" => "button", "id" => "update_table_button", "class" => "update_button", "value" =>wfMsg("ct-update-table")));
+		$control .= Xml::closeElement("input");
+		$control .= Xml::closeElement("td");
+		
+		$control .= Xml::closeElement("tr");
+		
 		$control .= Xml::closeElement("tbody");
 		$control .= Xml::closeElement("table");
 		$control .= Xml::closeElement("fieldset");
@@ -489,95 +421,43 @@ class SpecialClickTracking extends SpecialPage {
 	}
 	
 	
-	function buildControlBox(){
-		
-		$control = Xml::openElement("form", array("id" => "control_box_form"));
-		$control .= Xml::openElement("table", array("id" => "control_box_table"));
-		$control .= Xml::openElement("tbody", array("id" => "control_box_tbody"));
-		
-		
-		$control .= Xml::openElement("tr", array("id" => "start_date_row"));
-		
-		$control .= Xml::openElement("td", array("id" => "start_date_label", "class" => "control_box_label"));
-		$control .= wfMsg( "ct-start-date" );
-		$control .= Xml::closeElement("td");
-		
-		$control .= Xml::openElement("td", array("id" => "start_date_textarea"));
-		$control .= Xml::openElement("input", array("type" => "text", "id" => "start_date", "class" => "control_box_input"));
-		$control .= Xml::closeElement("input");
-		$control .= Xml::closeElement("td");
-		
-		$control .= Xml::closeElement("tr");
 
+	public static function buildRowArray($minTime, $maxTime, $userDefs, $is_JSON= true){
 		
 		
-		$control .= Xml::openElement("tr", array("id" => "end_date_row"));
+		if($minTime == 0){
+			$minTime = self::$minimum_date;
+		}
+		if($maxTime == 0){
+			$maxTime = gmdate("Ymd",time());  //today
+		}
 		
-		$control .= Xml::openElement("td", array("id" => "end_date_label", "class" => "control_box_label"));
-		$control .= wfMsg( "ct-end-date" );
-		$control .= Xml::closeElement("td");
-		
-		$control .= Xml::openElement("td", array("id" => "end_date_textarea"));
-		$control .= Xml::openElement("input", array("type" => "text", "id" => "end_date", "class" => "control_box_input"));
-		$control .= Xml::closeElement("input");
-		$control .= Xml::closeElement("td");
-		
-		$control .= Xml::closeElement("tr");
+		if($is_JSON){
+			$userDefs = json_decode($userDefs, true);
+		}
 		
 		
+		$events = self::getTopEvents($minTime, $maxTime);
 		
-		$control .= Xml::openElement("tr", array("id" => "increment_date_row"));
+		$returnArray = array();
 		
-		$control .= Xml::openElement("td", array("id" => "increment_date_label", "class" => "control_box_label"));
-		$control .= wfMsg( "ct-increment-by" );
-		$control .= Xml::closeElement("td");
+		while(($data_result = $events->fetchRow()) != null){
+			$outputArray = array();
+			$outputArray['event_name'] = $data_result['event_name'];
+			$outputArray['event_id'] = $data_result['event_id'];
+			$outputArray['expert'] = self::getTableValue($data_result['event_id'], $userDefs["expert"]);
+			$outputArray['intermediate'] = self::getTableValue($data_result['event_id'], $userDefs["intermediate"]);
+			$outputArray['basic'] = self::getTableValue($data_result['event_id'], $userDefs["basic"]);
+			$outputArray['total'] = $data_result["totalevtid"];
+			$returnArray[] = $outputArray;
+		}
 		
-		$control .= Xml::openElement("td", array("id" => "increment_date_textarea"));
-		$control .= Xml::openElement("input", array("type" => "text", "id" => "increment_date", "class" => "control_box_input"));
-		$control .= Xml::closeElement("input");
-		$control .= Xml::closeElement("td");
-		
-		$control .= Xml::closeElement("tr");
-		
-		
-		
-		$control .= Xml::openElement("tr", array("id" => "change_graph_row"));
-		$control .= Xml::openElement("td", array("id" => "change_graph_cell", "colspan" => 2));
-		
-		$control .= Xml::openElement("input", array("type" => "button", "id" => "change_graph", "value" => wfMsg( "ct-change-graph" ) )  );
-		$control .= Xml::closeElement("input");
-		$control .= Xml::closeElement("td");
-		
-		$control .= Xml::closeElement("tr");
+		return $returnArray;
 				
-		$control .= Xml::closeElement("tbody");
-		$control .= Xml::closeElement("table");
-		$control .= Xml::closeElement("form");
-		
-		return $control;
 	}
-	
-
 	
 	function buildRow($data_result, $row_count, $userDefs){
 			
-			$userDefQueries = array();
-			foreach ($userDefs as $name => $def){
-				if(!isset($def['total_contribs'])){
-					$def['total_contribs'] = array();
-				}
-				if(!isset($def['contrib_1'])){
-					$def['contrib_1'] = array();
-				}
-				if(!isset($def['contrib_2'])){
-					$def['contrib_2'] = array();
-				}
-				if(!isset($def['contrib_3'])){
-					$def['contrib_3'] = array();
-				}
-				$userDefQueries["$name"] = self::buildUserDefQuery($def['anonymous'], $def['total_contribs'], $def['contrib_1'], $def['contrib_2'], $def['contrib_3']);
-			}
-		
 			$outputRow = Xml::openElement("tr", array("class" => "table_data_row"));
 			
 			//event name
@@ -587,7 +467,7 @@ class SpecialClickTracking extends SpecialPage {
 			$outputRow .=Xml::closeElement("td");
 			
 			//advanced users
-			$cellValue = self::getTableValue($data_result['event_id'], $userDefQueries["expert"]);
+			$cellValue = self::getTableValue($data_result['event_id'], $userDefs["expert"]);
 			$outputRow .=Xml::openElement("td", 
 									array("class" => "event_data expert_data", "id" => "event_expert_$row_count",
 										"value" => $cellValue));
@@ -595,7 +475,7 @@ class SpecialClickTracking extends SpecialPage {
 			$outputRow .=Xml::closeElement("td");
 			
 			//intermediate users
-			$cellValue = self::getTableValue($data_result['event_id'], $userDefQueries["intermediate"]);
+			$cellValue = self::getTableValue($data_result['event_id'], $userDefs["intermediate"]);
 			$outputRow .=Xml::openElement("td", 
 									array("class" => "event_data intermediate_data", "id" => "event_intermediate_$row_count", 
 										"value" => $cellValue));
@@ -603,7 +483,7 @@ class SpecialClickTracking extends SpecialPage {
 			$outputRow .=Xml::closeElement("td");
 			
 			//basic users
-			$cellValue = self::getTableValue($data_result['event_id'], $userDefQueries["basic"]);
+			$cellValue = self::getTableValue($data_result['event_id'], $userDefs["basic"]);
 			$outputRow .=Xml::openElement("td", 
 									array("class" => "event_data basic_data", "id" => "event_basic_$row_count",
 									"value" => $cellValue));
@@ -611,7 +491,7 @@ class SpecialClickTracking extends SpecialPage {
 			$outputRow .=Xml::closeElement("td");
 			
 			//totals
-			$cellValue = $data_result["count(event_id)"];
+			$cellValue = $data_result["totalevtid"];
 			$outputRow .=Xml::openElement("td", 
 									array("class" => "event_data total_data", "id" => "total_$row_count",
 									"value" => $cellValue));
@@ -636,7 +516,8 @@ class SpecialClickTracking extends SpecialPage {
 			return '';		
 		}
 		else {
-			return "WHERE action_time >= $minTime AND action_time <= $maxTime";	
+			
+			return "WHERE `action_time` >= '$minTime' AND `action_time` <= '$maxTime'";	
 		}
 		
 	}
@@ -648,16 +529,22 @@ class SpecialClickTracking extends SpecialPage {
 	 * @return unknown_type
 	 * NOTE: once some of the constraints have been finalized, this will use more of the Database functions and not raw SQL
 	 */
-	function getTopEvents($time_constraint_statement=''){
+	public static function getTopEvents($minTime = "", $maxTime = "", $normalize_top_results = false){
+		
 		$normalize = "click_tracking";
+		//escaped
+		
+		$time_constraint_statement = self::getTimeConstraintsStatement($minTime,$maxTime);
 		$time_constraint = $time_constraint_statement;
-		if($this->normalize_top_results){
+		
+		if($normalize_top_results){
 			$normalize = "(select distinct session_id, event_id from click_tracking $time_constraint_statement) as t1";
 			$time_constraint = "";
 		}
-		$limit = $this->top_results;
-		$join = self::$join_conds;
-		$sql = "select count(event_id), event_id,event_name from $normalize $join $time_constraint group by event_id order by count(event_id) desc limit $limit";
+		$join = " ";
+		$sql = "select count(event_id) as totalevtid, event_id,event_name from $normalize" .
+		 " LEFT JOIN click_tracking_events ON event_id=click_tracking_events.id".
+		 " $time_constraint group by event_id order by totalevtid desc";
 		
 		//returns count(event_id),event_id, event_name, top one first
 		$dbr = wfGetDB( DB_SLAVE );
@@ -670,26 +557,29 @@ class SpecialClickTracking extends SpecialPage {
 	 * Gets a table value for a given User ID
 	 * NOTE: once some of the constraints have been finalized, this will use more of the Database functions and not raw SQL
 	 */
-	static function getTableValue($event_id, $user_conditions, $time_constraint_statement = '', $normalize_results=false){
+	static function getTableValue($event_id, $userDef, $minTime = '', $maxTime = '', $normalize_results = false){
 		
 		$normalize = "click_tracking";
+		//escaped
+		$time_constraint_statement = self::getTimeConstraintsStatement($minTime,$maxTime); 
 		$time_constraint = $time_constraint_statement;
 		if($normalize_results){
 			$normalize = "(select distinct session_id, event_id, user_total_contribs, user_contribs_span1, user_contribs_span2, user_contribs_span3, is_logged_in from click_tracking $time_constraint_statement) as t1";
 			$time_constraint = "";
 		}
 		
+		$user_conditions = SpecialClickTracking::buildUserDefQuery($userDef);
 		
 		$where = ($time_constraint == "" ? "where" : "");
 		
 		$and = ($time_constraint == "" ? "": "and");
 		
-		$sql ="select count(*) from $normalize $where $time_constraint $and ($user_conditions) and event_id=$event_id";
+		$sql ="select count(*) as totalcount from $normalize $where $time_constraint $and ($user_conditions) and event_id=$event_id";
 		
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->query($sql);
 		$resRow = $result->fetchRow();
-		return $resRow["count(*)"];
+		return $resRow["totalcount"];
 	}
 	
 	/**
@@ -701,35 +591,42 @@ class SpecialClickTracking extends SpecialPage {
 	 * @param $contrib_3 array, nonempty AND conditions for user_contribs_1
 	 * @return unknown_type query
 	 */
-	static function buildUserDefQuery($include_anon_users, $total_contribs, $contrib_1, $contrib_2, $contrib_3){
+	public static function buildUserDefQuery($def){
+		
+		$include_anon_users = (empty($def['anonymous'])?array():$def['anonymous']);
+		$total_contribs = (empty($def['total_contribs'])?array():$def['total_contribs']);
+		$contrib_1 = (empty($def['contrib_1'])?array():$def['contrib_1']);
+		$contrib_2 = (empty($def['contrib_2'])?array():$def['contrib_2']);
+		$contrib_3 = (empty($def['contrib_3'])?array():$def['contrib_3']);
+		
 		$or_conds = array();
 		$and_conds = array();
 		$sql = "";
 		
+			
 		if( (boolean)$include_anon_users ){
 			$or_conds[] = array("field" => "is_logged_in", "operation" => "=", "value" =>"0");
 		}
 		
 		if(!empty($total_contribs)){
 			foreach($total_contribs as $contribs){
-				$and_conds[] = array("field" => "user_total_contribs", "operation" => $contribs["operation"], "value" => $contribs["value"]);
+				$and_conds[] = array("field" => "user_total_contribs", "operation" => SpecialClickTracking::validate_oper($contribs["operation"]), "value" => intval($contribs["value"]));
 			}
 		}
 		
-		
 		if(!empty($contrib_1)){
 			foreach($contrib_1 as $contribs){
-				$and_conds[] = array("field" => "user_contribs_span1", "operation" => $contribs["operation"], "value" => $contribs["value"]);
+				$and_conds[] = array("field" => "user_contribs_span1", "operation" => SpecialClickTracking::validate_oper($contribs["operation"]), "value" => intval($contribs["value"]));
 			}
 		}
 		if(!empty($contrib_2)){
 			foreach($contrib_2 as $contribs){
-				$and_conds[] = array("field" => "user_contribs_span2", "operation" => $contribs["operation"], "value" => $contribs["value"]);
+				$and_conds[] = array("field" => "user_contribs_span2", "operation" => SpecialClickTracking::validate_oper($contribs["operation"]), "value" => intval($contribs["value"]));
 			}
 		}
 		if(!empty($contrib_3)){
 			foreach($contrib_3 as $contribs){
-				$and_conds[] = array("field" => "user_contribs_span3", "operation" => $contribs["operation"], "value" => $contribs["value"]);
+				$and_conds[] = array("field" => "user_contribs_span3", "operation" => SpecialClickTracking::validate_oper($contribs["operation"]), "value" => intval($contribs["value"]));
 			}
 		}
 		
@@ -749,6 +646,19 @@ class SpecialClickTracking extends SpecialPage {
 		return $sql;
 	}
 	
+	public static function validate_oper($operation){
+		$o_trim = trim($operation);
+		switch($o_trim){ //valid operations
+			case ">":
+			case "<":
+			case "<=":
+			case ">=":
+			case "=":
+				return $o_trim;
+			default:
+				return "=";
+		}
+	}
 	
 	
 }

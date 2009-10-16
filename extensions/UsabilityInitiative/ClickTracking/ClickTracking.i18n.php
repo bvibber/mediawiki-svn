@@ -33,6 +33,7 @@ $messages['en'] = array(
 	'ct-user-contribs' => 'Total user contributions',
 	'ct-user-span' => 'User contributions in timespan',
 	'ct-and' => 'and',
+	'ct-update-table' => 'Update Table',
 );
 
 /** Message documentation (Message documentation)

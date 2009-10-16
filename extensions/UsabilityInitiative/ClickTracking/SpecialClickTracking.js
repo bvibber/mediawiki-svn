@@ -25,6 +25,51 @@
 	
 	
 	
+	$.getUserDefsFromDialog = function(){
+		var currUserDefs = new Array();
+		if($("#anon_users_checkbox").is(":checked")){
+			currUserDefs["anonymous"] = 1;
+		}
+		else{
+			currUserDefs["anonymous"] = 0;
+		}
+		
+		var getCheckBoxData = function(contribName){
+			if($("#"+ contribName +"_checkbox").is(":checked")){
+				currUserDefs[contribName] = new Array();
+			}
+			else{ return;}
+			var totalConds = $("#" + contribName +"_div").data("totalConditions");
+			var i;
+			
+			for(i = 1; i <= totalConds; i++){
+				if($("#"+contribName+"_"+i+"_checkbox").is(":checked")){
+					$("#"+contribName+"_"+i+"_ltgt").children().each(function(){
+						if($(this).is(":selected")){
+							var currentCond = new Array();
+							switch($(this).attr("value")){
+								case 'lt': currentCond["operation"] = "<"; break;
+								case 'lteq': currentCond["operation"] = "<="; break;
+								case 'gt': currentCond["operation"] = ">"; break;
+								case 'gteq' : currentCond["operation"] = ">="; break;
+								default: currentCond["operation"] = "<"; break;
+							}
+							currentCond["value"] = $("#"+contribName+"_"+i+"_text").val();
+							currUserDefs[contribName].push(currentCond);
+						}
+					});
+				} //ifchecked
+			}//forloop
+		};
+		
+		
+		getCheckBoxData("total_contribs");
+		getCheckBoxData("contribs_span_1");
+		getCheckBoxData("contribs_span_2");
+		getCheckBoxData("contribs_span_3");
+		wgClickTrackUserDefs[$("#user_def_alter_legend").data("currentlyEditing")] = currUserDefs;
+	};
+	
 	$.renderUserDefDialogWith = function (userDef, defName){
 		//change name
 		$("#user_def_alter_legend").text($("#user_def_alter_legend").data("defaultChangeText") + " " + defName);
@@ -54,7 +99,7 @@
 			
 			
 			
-			var buildConditionDiv = function (condition, counter){
+			var buildConditionDiv = function (condition, counter, isChecked){
 				conditionDiv = $("<div>").attr("id", contribName + "_range_" + counter + "_div");
 				conditionDiv.addClass("checkbox_div");
 				conditionDiv.addClass("sub_option_div");
@@ -62,7 +107,9 @@
 				//initialDiv.append(conditionDiv);
 				cCheckbox = $("<input>").attr("id", contribName+"_"+counter+"_checkbox");
 				cCheckbox.attr("type", "checkbox");
-				cCheckbox.attr("checked", true);
+				if(isChecked){
+					cCheckbox.attr("checked", true);
+				}
 				cCheckbox.addClass("number_select_checkbox");
 				conditionDiv.append(cCheckbox);
 				
@@ -119,26 +166,30 @@
 			var i=0;
 			for( var condition in conditionArray){
 				i++;
-				var conditionDiv = buildConditionDiv(conditionArray[condition], i);
+				var conditionDiv = buildConditionDiv(conditionArray[condition], i, true);
 				initialDiv.append(conditionDiv);
 			} //forloop
 			initialDiv.data("totalConditions", i);
 			addConditions = $("<div>").attr("id", contribName+"_addbutton");
+			addConditions.data("contribName", contribName);
 			addConditions.addClass("add_condition_button");
 			addConditions.text("+");
+			initialDiv.append(addConditions);
 			addConditions.click( function(){
-				i++;
+				var initDiv = $("#" + $(this).data('contribName') +"_div");
+				var totalConds = initDiv.data('totalConditions');
+				totalConds++;
+				initDiv.data('totalConditions', totalConds);
 				var tmpCond = new Array();
 				tmpCond["operation"] = " ";
 				tmpCond["value"] = " ";
-				
-				initialDiv.append( buildConditionDiv(tmpCond, i) );
-				initialDiv.data("totalConditions", i);
-				
-				$(this).remove().appendTo( initialDiv); 
+
+				buildConditionDiv(tmpCond, totalConds).insertBefore($(this));
+				initDiv.data("totalConditions", totalConds, false);
+
 				
 			});
-			initialDiv.append(addConditions);
+			
 			return initialDiv;
 		}; //setcontribs
 		
@@ -168,53 +219,21 @@
 		setup_set_contribs("contribs_span_2");
 		setup_set_contribs("contribs_span_3");
 		
+		//OK button
+		var okButton = $("<input>").attr("id", "ok_button");
+		okButton.attr("type", "button");
+		okButton.attr("value", "ok");
+		okButton.click(function(){
+			$.getUserDefsFromDialog();
+			$("#user_def_dialog").dialog('close');
+			
+		});
+		$("#contrib_opts_container").append(okButton);
+		
 	}; //renderUserDefDialogWith
 	
 	
-	
-	$.getUserDefsFromDialog = function(){
-		var currUserDefs = new Array();
-		if($("#anon_users_checkbox").is(":checked")){
-			currUserDefs["anonymous"] = 1;
-		}
-		else{
-			currUserDefs["anonymous"] = 0;
-		}
-		
-		var getCheckBoxData = function(contribName){
-			if($("#"+ contribName +"_checkbox").is(":checked")){
-				currUserDefs[contribName] = new Array();
-			}
-			else{ return;}
-			var totalConds = $("#" + contribName +"_div").data("totalConditions");
-			var i;
-			for(i = 0; i <= totalConds; i++){
-				if($(contribName+"_"+i+"_checkbox").is(":checked")){
-					$(contribName+"_"+i+"_ltgt").children().each(function(){
-						if($(this).is(":selected")){
-							var currentCond = new Array();
-							switch($(this).attr("value")){
-								case 'lt': currentCond["operation"] = "<"; break;
-								case 'lteq': currentCond["operation"] = "<="; break;
-								case 'gt': currentCond["operation"] = ">"; break;
-								case 'gteq' : currentCond["operation"] = ">="; break;
-								default: currentCond["operation"] = "<"; break;
-							}
-							currentCond["value"] = $("#"+contribName+"_"+i+"_text").val();
-							currUserDefs[contribName].push(currentCond);
-						}
-					});
-				} //ifchecked
-			}//forloop
-		};
-		
-		
-		getCheckBoxData("total_contribs");
-		getCheckBoxData("contribs_span_1");
-		getCheckBoxData("contribs_span_2");
-		getCheckBoxData("contribs_span_3");
-		wgClickTrackUserDefs[$("#user_def_alter_legend").data("currentlyEditing")] = currUserDefs;
-	};
+
 	
 	//functions
 	$.updateChart = function(){
@@ -269,9 +288,7 @@
 				'startdate': start_date, 'enddate':end_date, 'userdefs': $.json_encode(wgClickTrackUserDefs) } , processChartJSON, "json");
 	};
 	
-	
-	
-	
+		
 	//pretty colors for the table
 	$.colorizeTable = function (){
 			//expert
@@ -345,8 +362,62 @@
 				$(this).css("background-color", rgbString);
 			});
 			
-	};
+	};//colorize
 	
+	$.updateTable = function(){
+		
+		var processTableJSON = function(data, status){
+			$("#clicktrack_data_table").empty();
+			var row_count = 0;
+			for( var row in data['tablevals']['vals']){
+				row_count++;
+				var outputRow = $("<tr>");
+				outputRow.addClass("table_data_row");
+				
+				var cell =$("<td>").attr("id", "event_name_" + row_count);
+				cell.addClass("event_name");
+				cell.attr("value", row['event_id']);
+				cell.append(row['event_name']);
+				
+				outputRow.append(cell);
+				
+				var createClassCell = function(userclass){
+					var newcell = $("<td>").attr("id", "event_"+userclass+"_" + row_count);
+					newcell.addClass("event_data");
+					newcell.addClass(userclass+"_data");
+					newcell.append(row[userclass]);
+					outputRow.append(newcell);
+				};
+				
+				createClassCell("expert");
+				createClassCell("intermediate");
+				createClassCell("basic");
+				createClassCell("total");
+				
+				$("#clicktrack_data_table").append(outputRow);
+			}
+			$.colorizeTable();
+			
+		};
+		
+		
+		start_date = $("#start_date").val();
+		if($("#start_date").hasClass("hidden")){
+			start_date = '0';
+		}
+		
+		end_date = $("#end_date").val();
+		if($("#end_date").hasClass("hidden")){
+			end_date = '0';
+		}
+		
+		//post relevant info
+		$j.post( wgScriptPath + '/api.php', 
+				{ 'action': 'specialclicktracking', 'format': 'json', 
+				'eventid': 1, 'increment': $("#chart_increment").val(), 
+				'startdate': start_date, 'enddate':end_date, 'userdefs': $.json_encode(wgClickTrackUserDefs), 'tabledata': 1 } , processTableJSON, "json");
+		
+	};//updateTable
 	
 	$.setUIControls = function(){
 		
@@ -358,7 +429,8 @@
 			$(this).datepicker();
 			$(this).datepicker('option', 'dateFormat', 'yymmdd');
 		});
-		$('#start_date').datepicker('option', 'defaultDate', '-3m');
+		var startDate = new Date();
+		$('#start_date').val("20091009"); //click_tracking start date as default
 		
 		var toggleDateInput = function(tableRow){
 			var checked= false;
@@ -385,6 +457,9 @@
 			toggleDateInput($(this).closest("tr"));
 		});
 		
+		//update table
+		$('#update_table_button').click($.updateTable);
+		
 		//CHART DIALOG
 		$("#chart_dialog").dialog({ autoOpen: false, width: 400 });
 		$("#chart_img").css("cursor","pointer");
@@ -406,7 +481,7 @@
 		});
 		
 		//CHANGE USER INFO DIALOG
-		$("#user_def_dialog").dialog({ autoOpen: true, width: 400 });
+		$("#user_def_dialog").dialog({ autoOpen: false, width: 400 });
 		$("#user_def_alter_legend").data("defaultChangeText", $("#user_def_alter_legend").text());
 		
 		
