@@ -262,7 +262,7 @@ function NSFileRepoImgAuthCheck($title, $path, $name, $result) {
 # See if stored in a NS path
 
 	$subdirs = explode('/',$path);
-	$x = (strlen($subdirs[$x]) <> 3 && ($subdirs[1] == "archive" || $subdirs[1] == "deleted" || $subdirs[1] == "thumb")) ? 2 : 1;
+	$x = (strlen($subdirs[1]) <> 3 && ($subdirs[1] == "archive" || $subdirs[1] == "deleted" || $subdirs[1] == "thumb")) ? 2 : 1;
 	if (strlen($subdirs[$x]) == 3 && is_numeric($subdirs[$x]) && $subdirs[$x] >= 100)  {
 		$title = Title::makeTitleSafe( NS_FILE, $wgContLang->getNsText($subdirs[$x]).":".$name );
 		if( !$title instanceof Title ) {
