@@ -51,7 +51,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/js2.combined.js', 'version' => 7 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/js2.combined.min.js', 'version' => 7 ),
+				array( 'src' => 'js/js2.combined.min.js', 'version' => 8 ),
 			),
 		),
 		// Core functionality of extension
