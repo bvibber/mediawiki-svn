@@ -100,7 +100,7 @@ $.suggestions = {
 	 * @param {Mixed} value Value to set property with
 	 */
 	configure: function( context, property, value ) {
-		// Validate ccontextration using fallback values
+		// Validate creation using fallback values
 		switch( property ) {
 			case 'fetch':
 			case 'cancel':
@@ -113,8 +113,9 @@ $.suggestions = {
 				context.config[property] = value;
 				// Update suggestions
 				if ( typeof context.data !== 'undefined'  ) {
-					if ( context.config.suggestions.length == 0 ) {
-						// Hide the dive when no suggestion exist
+					if ( typeof context.config.suggestions == 'undefined' ||
+							context.config.suggestions.length == 0 ) {
+						// Hide the div when no suggestion exist
 						context.data.$container.hide();
 					} else {
 						// Rebuild the suggestions list
@@ -150,7 +151,7 @@ $.suggestions = {
 				context.config[property] = Math.max( 1, Math.min( 100, value ) );
 				break;
 			case 'delay':
-				context.config[property] = Math.max( 0, Math.min( 12000, value ) );
+				context.config[property] = Math.max( 0, Math.min( 1200, value ) );
 				break;
 			case 'submitOnClick':
 				context.config[property] = value ? true : false;
@@ -264,7 +265,7 @@ $.fn.suggestions = function() {
 					'$region': $(this),
 					'suggestions': [],
 					'maxRows': 7,
-					'delay': 1200,
+					'delay': 120,
 					'submitOnClick': false
 				}
 			};
