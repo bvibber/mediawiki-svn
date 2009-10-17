@@ -320,7 +320,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
-	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect' ) {
+	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect', $export = true ) {
 		global $wgParser, $wgTitle, $wgRequest;
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 
@@ -404,6 +404,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			global $wgOut;
 			$wgOut->disable();
 
+			# PDF export
 			if ( $wgRequest->getText( 'format' ) == 'pdf' ) {
 				global $wgUploadDirectory;
 				$file = "$wgUploadDirectory/" . uniqid( 'recordadmin' );
@@ -417,6 +418,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				@unlink( $file );
 			}
 
+			# CSV export
 			else {
 				header("Content-Type: text/html");
 				header("Content-Disposition: attachment; filename=\"$quid.csv\"");
@@ -428,8 +430,7 @@ class SpecialRecordAdmin extends SpecialPage {
 						$csv .= "\n";
 						$sep = "";
 					} else $sep = "\t";
-					$cell = preg_replace( "|<!--.+?-->|s", "", $cell );
-					if ( preg_match( "|<p>\s*(.+?)\s*</p>|s", $cell, $m ) ) $cell = $m[1];
+					$cell = strip_tags( $cell );
 					$cell = preg_replace( "/[\\r\\n]+/m", "\\n", $cell );
 					$csv .= "$sep$cell";
 				}
@@ -439,12 +440,17 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 
 		# Otherwise add export links
-		else {
+		elseif ( $export ) {
+			$export = $export === true ? array( 'pdf', 'csv' ) : preg_split( "/\s*,\s*/", strtolower( $export ) );
 			$qs = "wpType=$type&wpFind=1&quid={$this->quid}";
 			foreach ( $this->filter as $k => $v ) $qs .= "&ra_$k=" . urlencode( $v );
 			$url = $wgTitle->getLocalURL( $qs );
-			$table .= "\n<a class=\"recordadmin-export\" href=\"$url\">" . wfMsg( 'recrodadmin-export-csv' ) . "</a>";
-			$table .= "\n<a class=\"recordadmin-export\" href=\"$url&format=pdf\">" . wfMsg( 'recrodadmin-export-pdf' ) . "</a>";
+			if ( in_array( 'csv', $export ) ) {
+				$table .= "\n<a class=\"recordadmin-export-csv\" href=\"$url\">" . wfMsg( 'recrodadmin-export-csv' ) . "</a>";
+			}
+			if ( in_array( 'pdf', $export ) ) {
+				$table .= "\n<a class=\"recordadmin-export-pdf\" href=\"$url&format=pdf\">" . wfMsg( 'recrodadmin-export-pdf' ) . "</a>";
+			}
 		}
 
 		return $table;
@@ -733,6 +739,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$sortable = true;
 		$template = false;
 		$count    = false;
+		$export   = false;
 		foreach ( func_get_args() as $arg ) if ( !is_object( $arg ) ) {
 			if ( preg_match( "|^(.+?)\s*=\s*(.+)$|i", $arg, $match ) ) {
 				list( , $k, $v ) = $match;
@@ -744,6 +751,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				elseif ( $k == 'sortable' ) $sortable = eregi( '1|yes|true|on', $v );
 				elseif ( $k == 'template' ) $template = $v;
 				elseif ( $k == 'count' )    $count    = $v;
+				elseif ( $k == 'export' )   $export   = $v;
 				else $filter[$match[1]] = $match[2];
 			}
 		}
@@ -752,7 +760,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$this->examineForm();
 		$records = $this->getRecords( $type, $filter, $title, $invert, $orderby );
 		if ( $count ) while ( count( $records ) > $count ) array_pop( $records );
-		$table = $this->renderRecords( $records, $cols, $sortable, $template, $name );
+		$table = $this->renderRecords( $records, $cols, $sortable, $template, $name, $export );
 
 		return array( $table, 'noparse' => true, 'isHTML' => true );
 	}
