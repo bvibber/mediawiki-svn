@@ -36,12 +36,14 @@ class CodeTestSuite {
 		$breakage = false;
 		// Email test case breakers
 		$runPrev = $this->getRun( $revId - 1 ); // previous results
-		$oldPassed = $runPrev->getResults( true ); // tests that passed before
-		foreach( $oldPassed as $test ) {
-			// If this test is still there, worked before, and failed now...we have a problem
-			if( array_key_exists($test->caseName,$results) && !$results[$test->caseName] ) {
-				$breakage = true;
-				break;
+		if( $runPrev ) {
+			$oldPassed = $runPrev->getResults( true ); // tests that passed before
+			foreach( $oldPassed as $test ) {
+				// If this test is still there, worked before, and failed now...we have a problem
+				if( array_key_exists($test->caseName,$results) && !$results[$test->caseName] ) {
+					$breakage = true;
+					break;
+				}
 			}
 		}
 		// Email the committer of the broken revision
