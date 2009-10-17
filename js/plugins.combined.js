@@ -508,7 +508,7 @@ $.suggestions = {
 	 * @param {Mixed} value Value to set property with
 	 */
 	configure: function( context, property, value ) {
-		// Validate ccontextration using fallback values
+		// Validate creation using fallback values
 		switch( property ) {
 			case 'fetch':
 			case 'cancel':
@@ -521,8 +521,9 @@ $.suggestions = {
 				context.config[property] = value;
 				// Update suggestions
 				if ( typeof context.data !== 'undefined'  ) {
-					if ( context.config.suggestions.length == 0 ) {
-						// Hide the dive when no suggestion exist
+					if ( typeof context.config.suggestions == 'undefined' ||
+							context.config.suggestions.length == 0 ) {
+						// Hide the div when no suggestion exist
 						context.data.$container.hide();
 					} else {
 						// Rebuild the suggestions list
@@ -558,7 +559,7 @@ $.suggestions = {
 				context.config[property] = Math.max( 1, Math.min( 100, value ) );
 				break;
 			case 'delay':
-				context.config[property] = Math.max( 0, Math.min( 12000, value ) );
+				context.config[property] = Math.max( 0, Math.min( 1200, value ) );
 				break;
 			case 'submitOnClick':
 				context.config[property] = value ? true : false;
@@ -672,7 +673,7 @@ $.fn.suggestions = function() {
 					'$region': $(this),
 					'suggestions': [],
 					'maxRows': 7,
-					'delay': 1200,
+					'delay': 120,
 					'submitOnClick': false
 				}
 			};
@@ -1846,25 +1847,23 @@ fn : {
 			.text( label )
 			.attr( 'rel', id )
 			.data( 'context', context )
-			.click(
-				function() {
-					
-					$(this).parent().parent().find( '.page' ).hide();
-					$(this).parent().parent().find( '.page-' + $(this).attr( 'rel' ) ).show();
-					$(this).siblings().removeClass( 'current' );
-					$(this).addClass( 'current' );
-					var section = $(this).parent().parent().attr( 'rel' );
-					
-					//click tracking
-					if($.trackAction != undefined){
-						$.trackAction(section + '.' + $(this).attr('rel'));
-					}
-					
-					$.cookie(
-						'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
-						$(this).attr( 'rel' )
-					);
-				} );
+			.bind( 'mousedown', function() {
+				$(this).parent().parent().find( '.page' ).hide();
+				$(this).parent().parent().find( '.page-' + $(this).attr( 'rel' ) ).show();
+				$(this).siblings().removeClass( 'current' );
+				$(this).addClass( 'current' );
+				var section = $(this).parent().parent().attr( 'rel' );
+				
+				//click tracking
+				if($.trackAction != undefined){
+					$.trackAction(section + '.' + $(this).attr('rel'));
+				}
+				
+				$.cookie(
+					'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
+					$(this).attr( 'rel' )
+				);
+			} );
 	},
 	buildPage : function( context, id, page ) {
 		var $page = $( '<div />' ).attr( {
@@ -1971,7 +1970,7 @@ fn : {
 					.attr( 'href', '#' )
 					.text( $.wikiEditor.autoMsg( section, 'label' ) )
 					.data( 'context', context )
-					.click( function() {
+					.bind( 'mousedown', function() {
 						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
 						var $section =
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );

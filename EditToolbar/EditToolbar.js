@@ -752,30 +752,39 @@ js2AddOnloadHook( function() {
 		titleMsg: 'edittoolbar-tool-link-title',
 		id: 'edittoolbar-link-dialog',
 		html: '\
-			<div id="edittoolbar-link-tabs">\
-				<ul>\
-					<li><a href="#edittoolbar-link-dialog-tab-int" rel="edittoolbar-tool-link-int"></a></li>\
-					<li><a href="#edittoolbar-link-dialog-tab-ext" rel="edittoolbar-tool-link-ext"></a></li>\
-				</ul>\
-				<div id="edittoolbar-link-dialog-tab-int"><fieldset><table><tr>\
-					<td><label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label></td>\
-					<td>\
-						<input type="text" id="edittoolbar-link-int-target" size="50" />\
-						<div id="edittoolbar-link-int-target-status" style="display: inline;"></div>\
-					</td>\
-				</tr><tr>\
-					<td><label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label></td>\
-					<td><input type="text" id="edittoolbar-link-int-text" size="50" /></td>\
-				</table></fieldset></div>\
-				<div id="edittoolbar-link-dialog-tab-ext"><fieldset><table><tr>\
-					<td><label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label></td>\
-					<td><input type="text" id="edittoolbar-link-ext-target" size="50" /></td>\
-				</tr><tr>\
-					<td><label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label></td>\
-					<td><input type="text" id="edittoolbar-link-ext-text" size="50" /></td>\
-				</table></fieldset></div>\
-			</div>',
+			<fieldset><table style="width: 100%;"><tr>\
+				<td>\
+					<label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label><br />\
+					<input type="text" id="edittoolbar-link-int-target" style="width: 100%;" />\
+				</td><td style="width: 48px;">\
+					<div id="edittoolbar-link-int-target-status" style="display: inline;"></div>\
+				</td>\
+			</tr><tr>\
+				<td>\
+					<label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label><br />\
+					<input type="text" id="edittoolbar-link-int-text" style="width: 100%;" />\
+				</td>\
+			</tr><tr>\
+				<td colspan="2">\
+					<div style="float: left; margin-right: 2em;">\
+						<input type="radio" id="edittoolbar-link-type-int" name="edittoolbar-link-type" selected />\
+						<label for="edittoolbar-link-type-int" rel="edittoolbar-tool-link-int"></label>\
+					</div><div style="float: left;">\
+						<input type="radio" id="edittoolbar-link-type-ext" name="edittoolbar-link-type" />\
+						<label for="edittoolbar-link-type-ext" rel="edittoolbar-tool-link-ext"></label>\
+					</div>\
+				</td>\
+			</tr>\
+			</table></fieldset>',
 		init: function() {
+			function isExternalLink( s ) {
+				// The following things are considered to be external links:
+				// * Starts with one or more letters followed by ://
+				// * Starts with www.
+				// * Ends with a . followed by two or more letters
+				// * Contains a . followed by two or more letters followed by /
+				return s.match( /(^[a-z]+:\/\/)|(^www\.)|([^.]\.[a-z]{2,}($|\/))/i );
+			}
 			// Updates the UI to show if the page title being inputed by the user exists or not
 			function updateExistence() {
 				function updateWidget( status ) {
@@ -797,6 +806,10 @@ js2AddOnloadHook( function() {
 				if ( target == '' ) {
 					// Hide the widget when the textbox is empty
 					$j( '#edittoolbar-link-int-target-status' ).children().hide();
+					return;
+				}
+				if ( isExternalLink( target ) ) {
+					updateWidget( 'external' );
 					return;
 				}
 				if ( target.indexOf( '|' ) != -1 ) {
@@ -838,31 +851,32 @@ js2AddOnloadHook( function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
-			// Build tabs
-			mvJsLoader.doLoad( [ '$j.ui', '$j.ui.tabs' ], function() {
-				$j( '#edittoolbar-link-tabs' ).tabs();
-			});
 			// Automatically copy the value of the internal link page title field to the link text field unless the user
 			// has changed the link text field - this is a convience thing since most link texts are going to be the
 			// the same as the page title
+			// Also change the internal/external radio button accordingly
 			$j( '#edittoolbar-link-int-target' ).bind( 'change keypress paste cut', function() {
 				// $j(this).val() is the old value, before the keypress
-				if ( $j( '#edittoolbar-link-int-text' ).data( 'untouched' ) )
-					// Defer this until $j(this).val() has been updated
-					setTimeout( function() {
+				// Defer this until $j(this).val() has been updated
+				setTimeout( function() {
+					if ( isExternalLink( $j( '#edittoolbar-link-int-target' ).val() ) )
+						$j( '#edittoolbar-link-type-ext' ).attr( 'checked', 'checked' );
+					else
+						$j( '#edittoolbar-link-type-int' ).attr( 'checked', 'checked' );
+
+					if ( $j( '#edittoolbar-link-int-text' ).data( 'untouched' ) )
 						$j( '#edittoolbar-link-int-text' ).val( $j( '#edittoolbar-link-int-target' ).val() );
-					}, 0 );
+				}, 0 );
 			});
 			$j( '#edittoolbar-link-int-text' ).bind( 'change keypress paste cut', function() {
 				$j(this).data( 'untouched', false );
 			});
-			// Set the initial value of the external link field to start out as a real URL
-			$j( '#edittoolbar-link-ext-target' ).val( 'http://' );
 			// Add images to the page existence widget, which will be shown mutually exclusively to communicate if the
 			// page exists, does not exist or the title is invalid (like if it contains a | character)
 			var existsMsg = gM( 'edittoolbar-tool-link-int-target-status-exists' );
 			var notexistsMsg = gM( 'edittoolbar-tool-link-int-target-status-notexists' );
 			var invalidMsg = gM( 'edittoolbar-tool-link-int-target-status-invalid' );
+			var externalMsg = gM( 'edittoolbar-tool-link-int-target-status-external' );
 			var loadingMsg = gM( 'edittoolbar-tool-link-int-target-status-loading' );
 			$j( '#edittoolbar-link-int-target-status' )
 				.append( $j( '<img />' ).attr( {
@@ -884,6 +898,12 @@ js2AddOnloadHook( function() {
 					'title': invalidMsg
 				} ) )
 				.append( $j( '<img />' ).attr( {
+					'id': 'edittoolbar-link-int-target-status-external',
+					'src': $j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-external.png',
+					'alt': externalMsg,
+					'title': externalMsg
+				} ) )
+				.append( $j( '<img />' ).attr( {
 					'id': 'edittoolbar-link-int-target-status-loading',
 					'src': $j.wikiEditor.imgPath + 'dialogs/loading.gif',
 					'alt': loadingMsg,
@@ -899,8 +919,8 @@ js2AddOnloadHook( function() {
 						clearTimeout( $j(this).data( 'timerID' ) );
 					}
 					// Delay fetch for a while
-					// FIXME: Make 250 configurable elsewhere
-					var timerID = setTimeout( updateExistence, 250 );
+					// FIXME: Make 120 configurable elsewhere
+					var timerID = setTimeout( updateExistence, 120 );
 					$j(this).data( 'timerID', timerID );
 				} )
 				.change( function() {
@@ -917,6 +937,11 @@ js2AddOnloadHook( function() {
 				fetch: function( query ) {
 					var that = this;
 					var title = $j(this).val();
+					
+					if ( isExternalLink( title ) || title.indexOf( '|' ) != -1  || title == '') {
+						$j(this).suggestions( 'suggestions', [] );
+						return;
+					}
 					
 					var cache = $j(this).data( 'suggcache' );
 					if ( typeof cache[title] != 'undefined' ) {
@@ -935,6 +960,7 @@ js2AddOnloadHook( function() {
 						},
 						dataType: 'json',
 						success: function( data ) {
+							cache[title] = data[1];
 							$j(that).suggestions( 'suggestions', data[1] );
 						}
 					});
@@ -948,6 +974,7 @@ js2AddOnloadHook( function() {
 			});
 		},
 		dialog: {
+			width: 500,
 			buttons: {
 				'edittoolbar-tool-link-insert': function() {
 					function escapeInternalText( s ) {
@@ -961,42 +988,35 @@ js2AddOnloadHook( function() {
 						return s.replace( /(]+)/g, '<nowiki>$1</nowiki>' );
 					}
 					var insertText = '';
-					var whitespace = [ '', '' ];
-					switch ( $j( '#edittoolbar-link-tabs' ).tabs( 'option', 'selected' ) ) {
-						case 0: // Internal link
-							var target = $j( '#edittoolbar-link-int-target' ).val();
-							var text = $j( '#edittoolbar-link-int-text' ).val();
-							// FIXME: Exactly how fragile is this?
-							if ( $j( '#edittoolbar-link-int-target-status-invalid' ).is( ':visible' )  ||
-									target == '' ) {
-								// Refuse to add links to invalid titles
-								alert( gM( 'edittoolbar-tool-link-int-invalid' ) );
-								return;
-							}
-							whitespace = $j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace' );
-							if ( target == text )
-								insertText = '[[' + target + ']]';
-							else
-								insertText = '[[' + target + '|' + escapeInternalText( text ) + ']]';
-						break;
-						case 1:
-							var target = $j( '#edittoolbar-link-ext-target' ).val();
-							var text = $j( '#edittoolbar-link-ext-text' ).val();
-							var escTarget = escapeExternalTarget( target );
-							var escText = escapeExternalText( text );
-							whitespace = $j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace' );
-							if ( !target.match( /^[a-z]+:\/\/./ ) ) {
-								// Refuse to add links to invalid URLs
-								alert( gM( 'edittoolbar-tool-link-ext-invalid' ) );
-								return;
-							}
-							if ( escTarget == escText )
-								insertText = escTarget;
-							else if ( text == '' )
-								insertText = '[' + escTarget + ']';
-							else
-								insertText = '[' + escTarget + ' ' + escText + ']';
-						break;
+					var whitespace = $j( '#edittoolbar-link-dialog' ).data( 'whitespace' );
+					var target = $j( '#edittoolbar-link-int-target' ).val();
+					var text = $j( '#edittoolbar-link-int-text' ).val();
+					if ( $j( '#edittoolbar-link-type-int' ).is( ':checked' ) ) {
+						// FIXME: Exactly how fragile is this?
+						if ( $j( '#edittoolbar-link-int-target-status-invalid' ).is( ':visible' )  ||
+								target == '' ) {
+							// Refuse to add links to invalid titles
+							alert( gM( 'edittoolbar-tool-link-int-invalid' ) );
+							return;
+						}
+						
+						if ( target == text )
+							insertText = '[[' + target + ']]';
+						else
+							insertText = '[[' + target + '|' + escapeInternalText( text ) + ']]';
+					} else {
+						var escTarget = escapeExternalTarget( target );
+						var escText = escapeExternalText( text );
+						// Prepend http:// if there is no protocol
+						if ( !escTarget.match( /^[a-z]+:\/\/./ ) ) {
+							escTarget = 'http://' + escTarget;
+						}
+						if ( escTarget == escText )
+							insertText = escTarget;
+						else if ( text == '' )
+							insertText = '[' + escTarget + ']';
+						else
+							insertText = '[' + escTarget + ' ' + escText + ']';
 					}
 					// Preserve whitespace in selection when replacing
 					insertText = whitespace[0] + insertText + whitespace[1];
@@ -1013,46 +1033,37 @@ js2AddOnloadHook( function() {
 				}
 			},
 			open: function() {
-				$j( '#edittoolbar-link-int-target, #edittoolbar-link-ext-target' )
-					.filter( ':visible' )
-					.focus();
+				$j( '#edittoolbar-link-int-target' ).focus();
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.getSelection();
-				$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ '', '' ] );
-				$j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace', [ '', '' ] );
+				$j( '#edittoolbar-link-dialog' ).data( 'whitespace', [ '', '' ] );
 				if ( selection != '' ) {
-					var intText, intTarget, extText, extTarget;
+					var target, text, type;
 					var matches;
-					var tab = -1;
 					if ( ( matches = selection.match( /^(\s*)\[\[([^\]\|]+)(\|([^\]\|]*))?\]\](\s*)$/ ) ) ) {
 						// [[foo|bar]] or [[foo]]
-						intTarget = matches[2];
-						intText = ( matches[4] ? matches[4] : matches[2] );
-						tab = 0;
+						target = matches[2];
+						text = ( matches[4] ? matches[4] : matches[2] );
+						type = 'int';
 						// Preserve whitespace when replacing
-						$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ matches[1], matches[5] ] );
+						$j( '#edittoolbar-link-dialog' ).data( 'whitespace', [ matches[1], matches[5] ] );
 					} else if ( ( matches = selection.match( /^(\s*)\[([^\] ]+)( ([^\]]+))?\](\s*)$/ ) ) ) {
 						// [http://www.example.com foo] or [http://www.example.com]
-						extTarget = matches[2];
-						extText = ( matches[4] ? matches[4] : '' );
-						tab = 1;
+						target = matches[2];
+						text = ( matches[4] ? matches[4] : '' );
+						type = 'ext';
 						// Preserve whitespace when replacing
-						$j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace', [ matches[1], matches[5] ] );
+						$j( '#edittoolbar-link-dialog' ).data( 'whitespace', [ matches[1], matches[5] ] );
 					} else {
-						intTarget = intText = extText = selection;
-						extTarget = 'http://';
+						target = text = selection;
 					}
 					// Change the value by calling val() doesn't trigger the change event, so let's do that ourselves
-					if ( typeof intText != 'undefined' )
-						$j( '#edittoolbar-link-int-text' ).val( intText ).change();
-					if ( typeof intTarget != 'undefined' )
-						$j( '#edittoolbar-link-int-target' ).val( intTarget ).change();
-					if ( typeof extText != 'undefined' )
-						$j( '#edittoolbar-link-ext-text' ).val( extText ).change();
-					if ( typeof extTarget != 'undefined' )
-						$j( '#edittoolbar-link-ext-target' ).val( extTarget ).change();
-					if ( tab != -1 )
-						$j( '#edittoolbar-link-tabs' ).tabs( 'select', tab );
+					if ( typeof text != 'undefined' )
+						$j( '#edittoolbar-link-int-text' ).val( text ).change();
+					if ( typeof target != 'undefined' )
+						$j( '#edittoolbar-link-int-target' ).val( target ).change();
+					if ( typeof type != 'undefined' )
+						$j( '#edittoolbar-link-' + type ).attr( 'checked', 'checked' );
 				}
 				$j( '#edittoolbar-link-int-text' ).data( 'untouched',
 					$j( '#edittoolbar-link-int-text' ).val() == $j( '#edittoolbar-link-int-target' ).val()

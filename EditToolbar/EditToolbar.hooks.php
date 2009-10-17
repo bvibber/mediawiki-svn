@@ -59,7 +59,6 @@ class EditToolbarHooks {
 					'edittoolbar-tool-link-int-target-status-invalid',
 					'edittoolbar-tool-link-int-target-status-loading',
 					'edittoolbar-tool-link-int-invalid',
-					'edittoolbar-tool-link-ext-invalid',
 					'edittoolbar-tool-file',
 					'edittoolbar-tool-file-pre',
 					'edittoolbar-tool-file-example',

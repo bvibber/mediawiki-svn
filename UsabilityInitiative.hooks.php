@@ -64,7 +64,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.collapsibleTabs.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
-				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 4 ),
+				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 5 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 16 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 12 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 12 ),
@@ -72,10 +72,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 20 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 44 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 45 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 44 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 45 ),
 			),
 		),
 	);
