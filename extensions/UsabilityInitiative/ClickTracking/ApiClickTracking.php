@@ -27,10 +27,10 @@ class ApiClickTracking extends ApiBase {
 		$now = time();
 		$granularity1 = $is_logged_in ?
 			ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity1 ) : 0;
-		
+
 		$granularity2 = $is_logged_in ?
 			ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity2 ) : 0;
-		
+
 		$granularity3 = $is_logged_in ?
 			ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity3 ) : 0;
 

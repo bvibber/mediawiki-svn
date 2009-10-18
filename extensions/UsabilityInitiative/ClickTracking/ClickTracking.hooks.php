@@ -40,22 +40,21 @@ class ClickTrackingHooks {
 		$tables[] = 'click_tracking_events';
 		return true;
 	}
-	
-	/*
-	 * check to see if user is throttled
+
+	/**
+	 * Check to see if user is throttled
 	 */
 	public static function isUserThrottled() {
 		global $wgClickTrackThrottle;
 		return !( $wgClickTrackThrottle >= 0 && rand() % $wgClickTrackThrottle == 0 );
 	}
-	
-	
+
 	/**
 	 * Adds JavaScript
 	 */
 	public static function addJS() {
 		global $wgOut;
-		
+
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js' );
 		UsabilityInitiativeHooks::addVariables(
@@ -64,8 +63,8 @@ class ClickTrackingHooks {
 				'wgClickTrackingIsThrottled' => ClickTrackingHooks::isUserThrottled()
 			)
 		);
+
 		return true;
-		
 	}
 
 	/**
@@ -108,14 +107,13 @@ class ClickTrackingHooks {
 		return $edits;
 	}
 
-
 	/**
 	 * Get event ID from name
 	 * @param $event_name String: name of the event to get
 	 * @return integer
 	 */
 	public static function getEventIDFromName( $event_name ) {
-		$dbw = wfGetDB( DB_MASTER ); //replication lag means sometimes a new event will not exist in the table yet
+		$dbw = wfGetDB( DB_MASTER ); // replication lag means sometimes a new event will not exist in the table yet
 
 		$id_num = $dbw->selectField(
 			'click_tracking_events',
