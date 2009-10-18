@@ -76,12 +76,20 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'ct-event-name' => 'اسم الحدث',
+	'ct-expert-header' => 'نقرات "الخبراء"',
+	'ct-intermediate-header' => 'نقرات "المتوسطين"',
+	'ct-beginner-header' => 'نقرات "المبتدئين"',
+	'ct-total-header' => 'مجموع النقرات',
 	'ct-beginner' => 'مبتدئ',
 	'ct-intermediate' => 'متوسط',
 	'ct-expert' => 'خبير',
 	'ct-date-range' => 'نطاق التاريخ',
+	'ct-editing' => 'يحرر حاليًا:',
+	'ct-anon-users' => 'المستخدمون المجهولون',
+	'ct-user-contribs' => 'مجموع مساهمات المستخدم',
 	'ct-user-span' => 'مساهمات المستخدم في فترة زمنية',
 	'ct-and' => 'و',
+	'ct-update-table' => 'حدّث الجدول',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -111,6 +119,7 @@ $messages['be-tarask'] = array(
 	'ct-user-contribs' => 'Агульны ўнёсак удзельніка',
 	'ct-user-span' => 'Унёсак удзельніка за адлегласьць часу',
 	'ct-and' => 'і',
+	'ct-update-table' => 'Абнавіць табліцу',
 );
 
 /** Bengali (বাংলা)
@@ -236,6 +245,7 @@ $messages['de'] = array(
 	'ct-user-contribs' => 'Gesamte Benutzerbeiträge',
 	'ct-user-span' => 'Benutzerbeiträge in Zeitspanne',
 	'ct-and' => 'und',
+	'ct-update-table' => 'Tabelle aktualisieren',
 );
 
 /** Zazaki (Zazaki)
@@ -262,6 +272,7 @@ $messages['diq'] = array(
 	'ct-user-contribs' => 'heme ardimê karberi',
 	'ct-user-span' => 'ardimê karberi',
 	'ct-and' => 'u',
+	'ct-update-table' => 'tabloya rocaneyi',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -289,6 +300,7 @@ $messages['dsb'] = array(
 	'ct-user-contribs' => 'Wužywarske pśinoski dogromady',
 	'ct-user-span' => 'Wužywarske pśinoski w casowem wótrězku',
 	'ct-and' => 'a',
+	'ct-update-table' => 'Tabelu aktualizěrowaś',
 );
 
 /** Greek (Ελληνικά)
@@ -413,6 +425,8 @@ $messages['fi'] = array(
 	'ct-title' => 'Käyttäjän napsautuksien yhteenlaskettu määrä',
 	'ct-event-name' => 'Tapahtuman nimi',
 	'ct-total-header' => 'Napsautuksia yhteensä',
+	'ct-start-date' => 'Alkamispäivä (VVVVKKPP)',
+	'ct-end-date' => 'Lopetuspäivä (VVVVKKPP)',
 	'ct-beginner' => 'Aloittelija',
 	'ct-intermediate' => 'Keskitaso',
 	'ct-expert' => 'Asiantuntija',
@@ -446,6 +460,7 @@ $messages['fr'] = array(
 	'ct-user-contribs' => 'Contributions totales des utilisateurs',
 	'ct-user-span' => "Contributions de l'utilisateur sur la durée",
 	'ct-and' => 'et',
+	'ct-update-table' => 'Mettre à jour la table',
 );
 
 /** Galician (Galego)
@@ -473,6 +488,7 @@ $messages['gl'] = array(
 	'ct-user-contribs' => 'Contribucións totais do usuario',
 	'ct-user-span' => 'Contribucións do usuario nun período de tempo',
 	'ct-and' => 'e',
+	'ct-update-table' => 'Actualizar a táboa',
 );
 
 /** Swiss German (Alemannisch)
@@ -500,6 +516,7 @@ $messages['gsw'] = array(
 	'ct-user-contribs' => 'Gsamti Benutzerbyytreg',
 	'ct-user-span' => 'Benutzerbyytreg in Zytspanne',
 	'ct-and' => 'un',
+	'ct-update-table' => 'Tabälle aktualisiere',
 );
 
 /** Hebrew (עברית)
@@ -566,6 +583,7 @@ $messages['hsb'] = array(
 	'ct-user-contribs' => 'Wužiwarske přinoški dohromady',
 	'ct-user-span' => 'Wužiwarske přinoški w časowym wotrězku',
 	'ct-and' => 'a',
+	'ct-update-table' => 'Tabelu aktualizować',
 );
 
 /** Hungarian (Magyar)
@@ -622,6 +640,7 @@ $messages['ia'] = array(
 	'ct-user-contribs' => 'Total de contributiones de usatores',
 	'ct-user-span' => 'Contributiones de usatores in intervallo de tempore',
 	'ct-and' => 'e',
+	'ct-update-table' => 'Actualisar tabella',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -650,6 +669,7 @@ $messages['id'] = array(
 	'ct-user-contribs' => 'Total kontribusi pengguna',
 	'ct-user-span' => 'Kontribusi pengguna dalam rentang waktu',
 	'ct-and' => 'dan',
+	'ct-update-table' => 'Pemutahiran tabel',
 );
 
 /** Japanese (日本語)
@@ -678,6 +698,7 @@ $messages['ja'] = array(
 	'ct-user-contribs' => '利用者投稿の合計',
 	'ct-user-span' => '期間ごとの利用者投稿',
 	'ct-and' => 'および',
+	'ct-update-table' => 'テーブルを更新',
 );
 
 /** Georgian (ქართული)
@@ -758,6 +779,7 @@ $messages['lb'] = array(
 	'ct-user-contribs' => 'Total vun de Benotzer-Kontributiounen',
 	'ct-user-span' => 'Benotzerkontributiounen am Zäitraum',
 	'ct-and' => 'an',
+	'ct-update-table' => 'Tabell aktualiséieren',
 );
 
 /** Macedonian (Македонски)
@@ -772,10 +794,15 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'ct-start-date' => 'തുടങ്ങുന്ന തീയതി (YYYYMMDD)',
+	'ct-end-date' => 'അവസാനിക്കുന്ന തീയതി (YYYYMMDD)',
+	'ct-change-graph' => 'ഗ്രാഫിൽ മാറ്റംവരുത്തുക',
+	'ct-editing' => 'ഇപ്പോൾ തിരുത്തുന്നത്:',
 	'ct-anon-users' => 'അജ്ഞാത ഉപയോക്താക്കൾ',
 	'ct-user-contribs' => 'ഉപയോക്താവിന്റെ ആകെ സേവനങ്ങൾ',
 	'ct-user-span' => 'ഉപയോക്താവിന്റെ സേവനങ്ങൾ സമയക്രമത്തിൽ',
 	'ct-and' => 'ഒപ്പം',
+	'ct-update-table' => 'പട്ടിക പുതുക്കുക',
 );
 
 /** Malay (Bahasa Melayu)
@@ -811,6 +838,7 @@ $messages['nl'] = array(
 	'ct-user-contribs' => 'Totaal aantal gebruikersbijdragen',
 	'ct-user-span' => 'Gebruikersbijdragen in periode',
 	'ct-and' => 'en',
+	'ct-update-table' => 'Tabel bijwerken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -875,6 +903,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -899,6 +928,7 @@ $messages['pl'] = array(
 	'ct-user-contribs' => 'Ogółem wkład użytkownika',
 	'ct-user-span' => 'Wkład użytkownika w przedziale czasu',
 	'ct-and' => 'i',
+	'ct-update-table' => 'Uaktualnij tabelę',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1099,6 +1129,7 @@ $messages['vec'] = array(
 	'ct-anon-users' => 'Utenti anonimi',
 	'ct-user-contribs' => 'Contributi utente totali',
 	'ct-and' => 'e',
+	'ct-update-table' => 'Ajorna tabèla',
 );
 
 /** Veps (Vepsan kel')

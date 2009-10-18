@@ -1040,8 +1040,8 @@ $messages['ja'] = array(
 	'prefstats-factor-twoweeks' => '2週間',
 	'prefstats-factor-fourweeks' => '4週間',
 	'prefstats-factor-default' => 'デフォルトの縮尺に戻る',
-	'prefstats-legend-out' => '不参加',
-	'prefstats-legend-in' => '参加',
+	'prefstats-legend-out' => '無効化',
+	'prefstats-legend-in' => '有効化',
 );
 
 /** Javanese (Basa Jawa)
@@ -1117,6 +1117,7 @@ $messages['ko'] = array(
 	'prefstats' => '환경 설정 통계',
 	'prefstats-desc' => '각 환경 설정에 대한 사용자 비율 통계',
 	'prefstats-title' => '환경 설정 통계',
+	'prefstats-xaxis' => '기간(단위: 시간)',
 	'prefstats-factor-fourweeks' => '4주',
 );
 
