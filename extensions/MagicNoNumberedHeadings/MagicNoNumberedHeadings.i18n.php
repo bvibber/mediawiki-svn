@@ -181,6 +181,13 @@ $messages['mk'] = array(
 	'magicnonumberedheadings-desc' => 'Го додава волшебниот збор „<nowiki>__NONUMBEREDHEADINGS__</nowiki>“',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'magicnonumberedheadings-desc' => 'Voeg \'t magische woord "<nowiki>__NONUMBEREDHEADINGS__</nowiki>" toe',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

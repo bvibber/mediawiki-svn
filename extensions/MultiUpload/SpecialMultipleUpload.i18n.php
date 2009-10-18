@@ -1609,6 +1609,8 @@ $messages['uk'] = array(
 Невідповідні файли будуть вилучені негайно, глядіть [[{{MediaWiki:Multipleupload-page}}|правила вилучення файлів]].",
 	'multiupload-fileuploaded' => 'Файл завантажено.',
 	'multiupload-toolbox' => 'Завантаження декількох файлів',
+	'multiupload-no-files' => 'Будь ласка, виберіть принаймні один файл для завантаження',
+	'multiupload-blank' => 'Нема вибраних файлів',
 );
 
 /** Vèneto (Vèneto)

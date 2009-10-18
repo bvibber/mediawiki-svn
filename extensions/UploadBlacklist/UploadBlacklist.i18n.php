@@ -72,6 +72,13 @@ $messages['de'] = array(
 	'uploadblacklist-desc' => 'Fügt eine schwarze Liste für die Hochladen-Funktion hinzu',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'uploadblacklist-desc' => 'Yew funksiyonê bar kerdişi de keno',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

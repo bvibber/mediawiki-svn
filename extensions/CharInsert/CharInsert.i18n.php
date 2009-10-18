@@ -360,6 +360,13 @@ $messages['nds'] = array(
 	'charinsert-desc' => 'Verlöövt dat Opstellen vun en mit JavaScript stüürt Liest för dat [[MediaWiki:Edittools|Infögen vun Sünnerteken]]',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'charinsert-desc' => 'Hiermee ku-j [[MediaWiki:Edittools|neet-standardkarakters]] invoeren vanuut een deelvienster via JavaScript',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

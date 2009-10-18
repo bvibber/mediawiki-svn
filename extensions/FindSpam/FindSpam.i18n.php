@@ -1011,6 +1011,7 @@ $messages['uk'] = array(
 	'findspam-ip' => 'IP-адреса:',
 	'findspam-ok' => 'Гаразд',
 	'findspam-notextfound' => 'Не знайдено внеску',
+	'right-findspam' => 'Пошук недавно розміщеного спаму',
 );
 
 /** Vèneto (Vèneto)

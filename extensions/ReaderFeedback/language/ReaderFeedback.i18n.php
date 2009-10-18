@@ -464,6 +464,39 @@ $messages['de-formal'] = array(
 	'readerfeedback-voted' => "'''Sie haben offenbar bereits eine Bewertung für diese Seite abgegeben.''' ([$2 Ergebnisse anschauen]) ([$3 Kommentare oder Fragen?]).",
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'readerfeedback' => 'derheqê no pelî de çi fikrê şima esto?',
+	'readerfeedback-text' => "''kerem kerê qey reydayişê no peli re bıne wextê xo bıde. ma qıymet danî cewabê şima.''",
+	'readerfeedback-reliability' => 'pawıtışi',
+	'readerfeedback-completeness' => 'temam biyayişi',
+	'readerfeedback-npov' => 'bêterefi',
+	'readerfeedback-presentation' => 'pêşkeşkerdış',
+	'readerfeedback-overall' => 'pêro',
+	'readerfeedback-level-none' => '(bêqerar)',
+	'readerfeedback-level-0' => 'zeyif',
+	'readerfeedback-level-1' => 'kêm',
+	'readerfeedback-level-2' => 'adil',
+	'readerfeedback-level-3' => 'berz',
+	'readerfeedback-level-4' => 'mukemmel',
+	'readerfeedback-submit' => 'bıerşaw/bıruşn',
+	'readerfeedback-main' => 'têna pelê muhtewayi rey bênî',
+	'readerfeedback-success' => "'''qey çımçarnayiş3e şıma ma tşk keni!''' ([$2 neticeyan bıvin]) ([$3 persi ya zi mışoreyi?]).",
+	'readerfeedback-voted' => "'''wina aseno ke şıma cıwa ver rey dayo no pel''' ([$2 neticeyan bıvin]) ([$3 persi ya zi mışoreyi?]).",
+	'readerfeedback-error' => "'''wexta ke şıma no pel derece kerdenê xeta vıraziya''' ([$2 neticeyan bıvin]) ([$3 persi ya zi mışoreyi?]).",
+	'readerfeedback-submitting' => 'erşawiyeno/ruşiyeno',
+	'readerfeedback-finished' => 'sipas!',
+	'readerfeedback-tagfilter' => 'etiket:',
+	'readerfeedback-tierfilter' => 'derecekerdış:',
+	'readerfeedback-tier-high' => 'berz',
+	'readerfeedback-tier-medium' => 'weset',
+	'readerfeedback-tier-poor' => 'zeyif',
+	'tooltip-ca-ratinghist' => 'derecekerdışê peli yo ziyaretkerdoxi',
+	'specialpages-group-feedback' => 'fikrê temaşawanî',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  * @author Nepl1

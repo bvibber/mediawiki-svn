@@ -371,6 +371,15 @@ $messages['lb'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|Bewertung|Bewertungen}}',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'ratedpages' => 'വായനക്കാർ നിലവാരമിട്ട താളുകൾ',
+	'ratedpages-none' => 'ഈ ലിസ്റ്റിൽ താളുകളൊന്നുമില്ല',
+	'ratedpages-count' => '{{PLURAL:$1|ഒരു സംശോധനം|$1 സംശോധനങ്ങൾ}}',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

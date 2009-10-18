@@ -374,6 +374,25 @@ $messages['de-formal'] = array(
 	'ratinghistory-thanks' => "''<font color=\"darkred\">Danke, dass Sie sich für die Bewertung dieser Seite einen Moment Zeit genommen haben!</font>''",
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'ratinghistory' => 'tarixê derecekerdışê peli',
+	'ratinghistory-leg' => 'qey ıney [[:$1|$1]] tarixê datayê derecekerdışi',
+	'ratinghistory-tab' => 'derecekerdış',
+	'ratinghistory-link' => 'derecekerdışê peli',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">ma zaf tşk keni şıma çımçarna no pel!</font>''",
+	'ratinghistory-period' => 'periyodê zemani:',
+	'ratinghistory-month' => 'aşma peyin',
+	'ratinghistory-3months' => 'hirê aşma peyin',
+	'ratinghistory-year' => 'serra peyin',
+	'ratinghistory-3years' => 'hirê serra peyin',
+	'ratinghistory-ave' => 'Ort: $1',
+	'ratinghistory-chart' => 'Zaman içindeki kullanıcı değerlendirmesi',
+	'ratinghistory-purge' => 'hafızaya verıni veng ker',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -1164,8 +1183,10 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'ratinghistory' => 'താളിന്റെ നിലവാരമളക്കലിന്റെ നാൾവഴി',
+	'ratinghistory-leg' => '[[:$1|$1]] താളിലെ വിവരങ്ങൾക്ക് നൽകിയ നിലവാര മതിപ്പിന്റെ ചരിത്രം',
 	'ratinghistory-tab' => 'നിലവാരമളക്കൽ',
 	'ratinghistory-link' => 'താളിന്റെ നിലവാരം',
+	'ratinghistory-thanks' => '<font color="darkred">ഈ താൾ സംശോധനം ചെയ്യുവാൻ സമയം കണ്ടെത്തിയതിനു നന്ദി!</font>',
 	'ratinghistory-period' => 'കാലയളവ്:',
 	'ratinghistory-month' => 'കഴിഞ്ഞ മാസം',
 	'ratinghistory-3months' => 'കഴിഞ്ഞ 3 മാസം',
@@ -1174,8 +1195,19 @@ $messages['ml'] = array(
 	'ratinghistory-ave' => 'ശരാശരി: $1',
 	'ratinghistory-table' => 'വായനക്കാർ നൽകിയ മതിപ്പ് നിലവാരത്തിന്റെ പൊതു അവലോകനം',
 	'ratinghistory-users' => 'നിലവാരമിട്ട ഉപയോക്താക്കൾ',
+	'ratinghistory-graph' => '$2 ഗണത്തിലെ "$3" ({{PLURAL:$1|ഒരു സംശോധനം|$1 സംശോധനങ്ങൾ}})',
+	'ratinghistory-svg' => 'എസ്.വി.ജി. ആയി പ്രദർശിപ്പിക്കുക',
 	'ratinghistory-table-rating' => 'നിലവാരം കണ്ടെത്തൽ',
 	'ratinghistory-table-votes' => 'വോട്ടുകൾ',
+	'ratinghistory-none' => 'ഒരു ഗ്രാഫ് വരയ്ക്കാനാവശ്യമായത്ര വിവരങ്ങൾ ഇപ്പോൾ വായനക്കാരുടെ പക്കൽ നിന്ന് ലഭിച്ചിട്ടില്ല.',
+	'ratinghistory-ratings' => "'''സൂചന:''' '''(1)''' - ദരിദ്രം; '''(2)''' - മോശം; '''(3)''' - കൊള്ളാം; '''(4)''' - ഉന്നതം; '''(5)''' - ഒന്നാന്തരം;",
+	'ratinghistory-legend' => "'''ദിവസേനയുള്ള സംശോധനങ്ങളുടെ എണ്ണം''' <font color=\"red\">''(ചുവപ്പ്)''</font>, '''ദിവസേനയുള്ള ശരാശരി മതിപ്പ്''' <font color=\"blue\">''(നീല)''</font>,
+'''ഇപ്പോഴുള്ള ശരാശരി മതിപ്പ്''' <font color=\"green\">''(പച്ച)''</font> എന്നിവ തീയതിയനുസരിച്ച് താഴെ കൊടുത്തിരിക്കുന്നു.
+'''ഇപ്പോഴുള്ള ശരാശരി മതിപ്പ്''' എന്നത് ദിവസംപ്രതി ''ഈ സമയത്തുള്ള'' നിലവാരമതിപ്പിന്റെ ശരാശരിയാണ്.
+നിലവാര മതിപ്പുകൾ താഴെ കൊടുക്കുന്നു:
+
+'''(1)''' - ദരിദ്രം; '''(2)''' - മോശം; '''(3)''' - കൊള്ളാം; '''(4)''' - ഉന്നതം; '''(5)''' - ഒന്നാന്തരം;",
+	'right-feedback' => 'താളിനു നിലവാരമിടാനായി അഭിപ്രായമറിയിക്കാനുള്ള ഫോം ഉപയോഗിക്കുക',
 );
 
 /** Malay (Bahasa Melayu)

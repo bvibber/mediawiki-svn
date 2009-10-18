@@ -390,6 +390,7 @@ $messages['ar'] = array(
 	'edittoolbar' => 'شريط أدوات التحرير',
 	'edittoolbar-desc' => 'شريط تحرير الصفحات مع تحسين الاستخدامية',
 	'edittoolbar-preference' => 'مكّن شريط أدوات التحرير المُحسّن',
+	'edittoolbar-cgd-preference' => 'مكّن حوارات إدراج الوصلات والجداول وغيرها',
 	'edittoolbar-loading' => 'تحميل...',
 	'edittoolbar-tool-bold' => 'عريض',
 	'edittoolbar-tool-bold-example' => 'نص عريض',
@@ -412,8 +413,8 @@ $messages['ar'] = array(
 	'edittoolbar-tool-link-int-target-status-exists' => 'الصفحة موجودة',
 	'edittoolbar-tool-link-int-target-status-notexists' => 'الصفحة غير موجودة',
 	'edittoolbar-tool-link-int-target-status-invalid' => 'عنوان غير صحيح',
+	'edittoolbar-tool-link-int-target-status-loading' => 'التماس وجود الصفحة...',
 	'edittoolbar-tool-link-int-invalid' => 'العنوان الذي اخترته غير صالح.',
-	'edittoolbar-tool-link-ext-invalid' => 'المسار الذي حدّدته غير صالح.',
 	'edittoolbar-tool-file' => 'ملف مضمّن',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'مرجع',
@@ -460,6 +461,7 @@ $messages['ar'] = array(
 | صف 2، خلية 1
 | صف 2، خلية 2
 | صف 2، خلية 3',
+	'edittoolbar-tool-table-example' => 'الصف $1، الخلية $2',
 	'edittoolbar-tool-table-example-header' => 'الصف $1، الخلية $2 (ترويسة)',
 	'edittoolbar-tool-table-title' => 'إدراج جدول',
 	'edittoolbar-tool-table-dimensions' => 'الأبعاد',
@@ -482,6 +484,8 @@ $messages['ar'] = array(
 	'edittoolbar-tool-replace-close' => 'ألغِ',
 	'edittoolbar-tool-replace-nomatch' => 'بحثك لم يطابق أي شيء.',
 	'edittoolbar-tool-replace-success' => 'أجري $1 استبدال(ات).',
+	'edittoolbar-tool-replace-emptysearch' => 'لم تكتب شيئًا لتبحث عنه.',
+	'edittoolbar-tool-replace-invalidregex' => 'التعبير النمطي الذي أدخلته غير صالح: $1',
 	'edittoolbar-section-characters' => 'محارف خاصة',
 	'edittoolbar-characters-page-latin' => 'اللاتينية',
 	'edittoolbar-characters-page-latinextended' => 'مد لاتيني',
@@ -619,7 +623,6 @@ $messages['be-tarask'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Няслушная назва',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Ідзе праверка існаваньня старонкі…',
 	'edittoolbar-tool-link-int-invalid' => 'Назва, якую Вы пазначылі, — няслушная.',
-	'edittoolbar-tool-link-ext-invalid' => 'Вы пазначылі няслушны URL-адрас.',
 	'edittoolbar-tool-file' => 'Укладзены файл',
 	'edittoolbar-tool-file-example' => 'Прыклад.jpg',
 	'edittoolbar-tool-reference' => 'Зноска',
@@ -1616,7 +1619,6 @@ $messages['cs'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Neplatný název',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Zjišťování existence stránky…',
 	'edittoolbar-tool-link-int-invalid' => 'Vámi zadaný název je neplatný.',
-	'edittoolbar-tool-link-ext-invalid' => 'Uvedené URL je neplatné.',
 	'edittoolbar-tool-file' => 'Vložený soubor',
 	'edittoolbar-tool-file-example' => 'Příklad.jpg',
 	'edittoolbar-tool-reference' => 'Poznámky',
@@ -2138,7 +2140,6 @@ $messages['de'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Ungültiger Titel',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Prüfe, ob Seite existiert …',
 	'edittoolbar-tool-link-int-invalid' => 'Der von dir angegebene Seitenname ist ungültig.',
-	'edittoolbar-tool-link-ext-invalid' => 'Die angegebene URL ist ungültig.',
 	'edittoolbar-tool-file' => 'Eingebettete Datei',
 	'edittoolbar-tool-file-example' => 'Beispiel.jpg',
 	'edittoolbar-tool-reference' => 'Quellennachweis',
@@ -2327,7 +2328,6 @@ $messages['diq'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'sername meqbul niyo',
 	'edittoolbar-tool-link-int-target-status-loading' => 'mewcudiyetê peli konrol beno',
 	'edittoolbar-tool-link-int-invalid' => 'sername yo ke şıma nişan kerdo meqbul niyo',
-	'edittoolbar-tool-link-ext-invalid' => 'URl yo ke şıma nişan dayo meqbul niyo',
 	'edittoolbar-tool-file' => 'dosyaya  wedarteyi/weradaye',
 	'edittoolbar-tool-file-example' => 'misal.jpg',
 	'edittoolbar-tool-reference' => 'çıme',
@@ -2457,7 +2457,7 @@ $messages['diq'] = array(
 	'edittoolbar-help-content-olist-description' => 'listeya numreyın',
 	'edittoolbar-help-content-olist-syntax' => '# unsurê listeyi<br /># unsurê listeyi',
 	'edittoolbar-help-content-olist-result' => '<ol><li>unsurê listeyi</li><li>unsurê listeyi</li></ol>',
-	'edittoolbar-help-content-file-description' => 'listeya weradaye/nımıte',
+	'edittoolbar-help-content-file-description' => 'dosyaya weradaye/nımıte',
 	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>metnê resmi</div></div>",
 	'edittoolbar-help-content-reference-description' => 'çıme/referans',
 	'edittoolbar-help-content-reference-syntax' => 'metnê peli.&lt;ref name="tesel kerdış/cerebnayiş"&gt;[http://www.misal.org metnê gıreyi], zeylê metni.&lt;/ref&gt;',
@@ -2507,7 +2507,6 @@ $messages['dsb'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Njepłaśiwy titel',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Eksistenca boka se pśekontrolěrujo...',
 	'edittoolbar-tool-link-int-invalid' => 'Titel, kótaryž sy pódał, jo njepłaśiwy.',
-	'edittoolbar-tool-link-ext-invalid' => 'URL, kótaryž sy pódał, jo njepłaśiwy.',
 	'edittoolbar-tool-file' => 'Zasajźona dataja',
 	'edittoolbar-tool-file-example' => 'Psikład.jpg',
 	'edittoolbar-tool-reference' => 'Referenca',
@@ -2659,6 +2658,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Geraki
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -2690,7 +2690,6 @@ $messages['el'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Άκυρος τίτλος',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Έλεγχος ύπαρξης σελίδας...',
 	'edittoolbar-tool-link-int-invalid' => 'Ο τίτλος που καθορίσατε είναι μη έγκυρος.',
-	'edittoolbar-tool-link-ext-invalid' => 'Το URL που καθορίσατε είναι μη έγκυρο.',
 	'edittoolbar-tool-file' => 'Ενσωματωμένο αρχείο',
 	'edittoolbar-tool-file-example' => 'Paradeigma.jpg',
 	'edittoolbar-tool-reference' => 'Παραπομπή',
@@ -2725,6 +2724,18 @@ $messages['el'] = array(
 {{ns:file}}:Example.jpg|Λεζάντα2',
 	'edittoolbar-tool-newline' => 'Νέα γραμμή',
 	'edittoolbar-tool-table' => 'Πίνακας',
+	'edittoolbar-tool-table-example-old' => '-
+! κεφαλίδα 1
+! κεφαλίδα 2
+! κεφαλίδα 3
+|-
+| γραμμή 1, κελί 1
+| γραμμή 1, κελί 2
+| γραμμή 1, κελί 3
+|-
+| γραμμή 2, κελί 1
+| γραμμή 2, κελί 2
+| γραμμή 2, κελί 3',
 	'edittoolbar-tool-table-example' => 'Σειρά $1, κελί $2',
 	'edittoolbar-tool-table-example-header' => 'Σειρά $1, κελί $2 (επικεφαλίδα)',
 	'edittoolbar-tool-table-title' => 'Εισαγωγή πίνακα',
@@ -3791,7 +3802,6 @@ $messages['fr'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Titre invalide',
 	'edittoolbar-tool-link-int-target-status-loading' => "Vérification de l'existence de la page...",
 	'edittoolbar-tool-link-int-invalid' => 'Le titre que vous avez spécifié est incorrect.',
-	'edittoolbar-tool-link-ext-invalid' => "L'URL que vous avez spécifiée est invalide.",
 	'edittoolbar-tool-file' => 'Fichier inséré',
 	'edittoolbar-tool-file-example' => 'Exemple.jpg',
 	'edittoolbar-tool-reference' => 'Référence',
@@ -4046,7 +4056,6 @@ $messages['gl'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Título non válido',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Comprobando a existencia da páxina...',
 	'edittoolbar-tool-link-int-invalid' => 'O título que especificou non é válido.',
-	'edittoolbar-tool-link-ext-invalid' => 'O enderezo URL que especificou é incorrecto.',
 	'edittoolbar-tool-file' => 'Ficheiro embelecido',
 	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referencia',
@@ -4118,6 +4127,7 @@ $messages['gl'] = array(
 	'edittoolbar-tool-replace-nomatch' => 'A súa busca non atopou nada.',
 	'edittoolbar-tool-replace-success' => 'Fixéronse $1 substitucións.',
 	'edittoolbar-tool-replace-emptysearch' => 'Non inseriu nada que procurar.',
+	'edittoolbar-tool-replace-invalidregex' => 'A expresión regular que inseriu non é válida: $1',
 	'edittoolbar-section-characters' => 'Caracteres especiais',
 	'edittoolbar-characters-page-latin' => 'Latín',
 	'edittoolbar-characters-page-latinextended' => 'Latín estendido',
@@ -4323,7 +4333,6 @@ $messages['gsw'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Nit giltige Titel',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Am Priefe, eb s Syte git ...',
 	'edittoolbar-tool-link-int-invalid' => 'Dr Titel, wu Du aagee hesch, isch nit giltig.',
-	'edittoolbar-tool-link-ext-invalid' => 'D URL, wu Duu aagee hesch, isch nit giltig.',
 	'edittoolbar-tool-file' => 'Yygfiegti Datei',
 	'edittoolbar-tool-file-example' => 'Byschpil.jpg',
 	'edittoolbar-tool-reference' => 'Quälle',
@@ -4922,7 +4931,6 @@ $messages['hsb'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Njepłaćiwy titul',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Eksistenca strony so přepruwuje...',
 	'edittoolbar-tool-link-int-invalid' => 'Titul, kotryž sy podał, je njepłaćiwy.',
-	'edittoolbar-tool-link-ext-invalid' => 'URL, kotryž sy podał, je njepłaćiwy.',
 	'edittoolbar-tool-file' => 'Zasadźena dataja',
 	'edittoolbar-tool-file-example' => 'Přikład.jpg',
 	'edittoolbar-tool-reference' => 'Referenca',
@@ -5396,7 +5404,6 @@ $messages['ia'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Titulo invalide',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Verifica existentia del pagina...',
 	'edittoolbar-tool-link-int-invalid' => 'Le titulo que tu specificava es invalide.',
-	'edittoolbar-tool-link-ext-invalid' => 'Le URL que tu specificava es invalide.',
 	'edittoolbar-tool-file' => 'File incastrate',
 	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referentia',
@@ -5921,7 +5928,6 @@ $messages['ja'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'ページ名として無効です',
 	'edittoolbar-tool-link-int-target-status-loading' => 'ページの存在を確認中…',
 	'edittoolbar-tool-link-int-invalid' => '指定したページ名は無効です。',
-	'edittoolbar-tool-link-ext-invalid' => 'あなたが指定した URL は無効です。',
 	'edittoolbar-tool-file' => '埋め込みファイル',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => '注釈',
@@ -6769,7 +6775,6 @@ $messages['lb'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Net valabelen Titel',
 	'edittoolbar-tool-link-int-target-status-loading' => "Et gëtt nogekuckt ob et d'Säit gëtt...",
 	'edittoolbar-tool-link-int-invalid' => 'Den Titel deen Dir uginn hutt ass net valabel.',
-	'edittoolbar-tool-link-ext-invalid' => "D'URL déi Dir uginn hutt as net valabel.",
 	'edittoolbar-tool-file' => 'Agebonnene Fichier',
 	'edittoolbar-tool-file-example' => 'Beispill.jpg',
 	'edittoolbar-tool-reference' => 'Referenz',
@@ -6841,6 +6846,7 @@ $messages['lb'] = array(
 	'edittoolbar-tool-replace-nomatch' => 'Är Sich hat kee Resultat.',
 	'edittoolbar-tool-replace-success' => '$1 mol ersat.',
 	'edittoolbar-tool-replace-emptysearch' => 'Dir hutt näisch aginn nodeem Dir siche wëllt.',
+	'edittoolbar-tool-replace-invalidregex' => 'De regulären Ausdrock deen Dir aginn hutt ass net valabel: $1',
 	'edittoolbar-section-characters' => 'Spezialzeechen',
 	'edittoolbar-characters-page-latin' => 'Laténgesch',
 	'edittoolbar-characters-page-latinextended' => 'Laténgesch, erweidert',
@@ -8057,7 +8063,6 @@ $messages['nl'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Ongeldige paginanaam',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Bezig met controleren of de pagina al bestaat...',
 	'edittoolbar-tool-link-int-invalid' => 'De opgegeven pagina is ongeldig.',
-	'edittoolbar-tool-link-ext-invalid' => 'De opgegeven URL is ongeldig.',
 	'edittoolbar-tool-file' => 'Ingebed bestand',
 	'edittoolbar-tool-file-example' => 'Voorbeeld.jpg',
 	'edittoolbar-tool-reference' => 'Referentie',
@@ -8716,7 +8721,6 @@ $messages['pl'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Nieprawidłowy tytuł',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Sprawdzanie czy strona istnieje…',
 	'edittoolbar-tool-link-int-invalid' => 'Wprowadzony tytuł jest nieprawidłowy.',
-	'edittoolbar-tool-link-ext-invalid' => 'Podano nieprawidłowy adres URL.',
 	'edittoolbar-tool-file' => 'Plik osadzony',
 	'edittoolbar-tool-file-example' => 'Przykład.jpg',
 	'edittoolbar-tool-reference' => 'Przypis',
@@ -8788,6 +8792,7 @@ $messages['pl'] = array(
 	'edittoolbar-tool-replace-nomatch' => 'Wyszukiwanego wzorca nie odnaleziono.',
 	'edittoolbar-tool-replace-success' => 'Wykonano $1 zamian.',
 	'edittoolbar-tool-replace-emptysearch' => 'Nie określiłeś niczego do wyszukania.',
+	'edittoolbar-tool-replace-invalidregex' => 'Wyrażenie regularne jest nieprawidłowe – $1',
 	'edittoolbar-section-characters' => 'Znaki specjalne',
 	'edittoolbar-characters-page-latin' => 'Łacińskie',
 	'edittoolbar-characters-page-latinextended' => 'Łacińskie – rozszerzony',
@@ -9438,7 +9443,6 @@ $messages['ru'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Недопустимое название',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Проверка существования страницы…',
 	'edittoolbar-tool-link-int-invalid' => 'Указанное название недопустимо.',
-	'edittoolbar-tool-link-ext-invalid' => 'Указан ошибочный URL.',
 	'edittoolbar-tool-file' => 'Встроенный файл',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'Примечание',
@@ -10975,7 +10979,6 @@ $messages['tr'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Geçersiz başlık',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Sayfanın mevcudiyeti kontrol ediliyor...',
 	'edittoolbar-tool-link-int-invalid' => 'Belirttiğiniz başlık geçersiz.',
-	'edittoolbar-tool-link-ext-invalid' => 'Belirttiğiniz URL geçersiz.',
 	'edittoolbar-tool-file' => 'Gömülü dosya',
 	'edittoolbar-tool-file-example' => 'Örnek.jpg',
 	'edittoolbar-tool-reference' => 'Kaynakça',
@@ -11047,6 +11050,7 @@ $messages['tr'] = array(
 	'edittoolbar-tool-replace-nomatch' => 'Aramanız hiçbir şeyle uyuşmuyor.',
 	'edittoolbar-tool-replace-success' => '$1 değiştirme yapıldı.',
 	'edittoolbar-tool-replace-emptysearch' => 'Aramak için herhangi birşey girmediniz.',
+	'edittoolbar-tool-replace-invalidregex' => 'Girdiğiniz düzenli ifade geçersiz: $1',
 	'edittoolbar-section-characters' => 'Özel karakter',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Genişletilmiş Latince',
@@ -11130,6 +11134,7 @@ $messages['uk'] = array(
 	'edittoolbar' => 'Панель засобів редагування',
 	'edittoolbar-desc' => 'Панель засобів редагування з покращеною ужитковістю',
 	'edittoolbar-preference' => 'Увімкнути покращену панель засобів редагування',
+	'edittoolbar-cgd-preference' => 'Включити діалоги для вставляння посилань, таблиць та іншого',
 	'edittoolbar-loading' => 'Завантаження…',
 	'edittoolbar-tool-bold' => 'Жирний',
 	'edittoolbar-tool-bold-example' => 'Жирний текст',
@@ -11139,11 +11144,22 @@ $messages['uk'] = array(
 	'edittoolbar-tool-ilink-example' => 'Заголовок посилання',
 	'edittoolbar-tool-xlink' => "Зовнішнє посилання (пам'ятайте про префікс http://)",
 	'edittoolbar-tool-xlink-example' => 'http://www.example.com заголовок посилання',
+	'edittoolbar-tool-link' => 'Посилання',
+	'edittoolbar-tool-link-title' => 'Вставити посилання',
+	'edittoolbar-tool-link-int' => 'На вікі-сторінку',
+	'edittoolbar-tool-link-int-target' => 'Заголовок сторінки:',
+	'edittoolbar-tool-link-int-text' => 'Текст посилання:',
+	'edittoolbar-tool-link-ext' => 'На зовнішню веб-сторінку',
+	'edittoolbar-tool-link-ext-target' => 'URL-адреса посилання:',
+	'edittoolbar-tool-link-ext-text' => 'Текст посилання:',
+	'edittoolbar-tool-link-insert' => 'Вставити посилання',
+	'edittoolbar-tool-link-cancel' => 'Відміна',
 	'edittoolbar-tool-file' => 'Вкладений файл',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'Виноска',
 	'edittoolbar-tool-reference-example' => 'Вставте сюди текст виноски',
 	'edittoolbar-tool-signature' => 'Підпис з датою',
+	'edittoolbar-section-advanced' => 'Додатково',
 	'edittoolbar-tool-heading' => 'Заголовки',
 	'edittoolbar-tool-heading-1' => '1 рівень',
 	'edittoolbar-tool-heading-2' => '2 рівень',
@@ -11168,6 +11184,9 @@ $messages['uk'] = array(
 	'edittoolbar-tool-subscript-example' => 'Підрядковий текст',
 	'edittoolbar-tool-gallery' => 'Галерея',
 	'edittoolbar-tool-newline' => 'Новий рядок',
+	'edittoolbar-tool-table' => 'Таблиця',
+	'edittoolbar-tool-table-cancel' => 'Скасувати',
+	'edittoolbar-tool-replace-close' => 'Скасувати',
 	'edittoolbar-section-characters' => 'Спеціальні символи',
 	'edittoolbar-characters-page-latin' => 'Латинські',
 	'edittoolbar-characters-page-symbols' => 'Символи',
@@ -11636,6 +11655,13 @@ $messages['vi'] = array(
 	'edittoolbar-help-content-indent-description' => 'Tăng lề',
 	'edittoolbar-help-content-indent-syntax' => 'Văn bản thường<br />:Văn bản được tăng lề<br />::Văn bản được tăng lề',
 	'edittoolbar-help-content-indent-result' => 'Văn bản thường<dl><dd>Văn bản được tăng lề<dl><dd>Văn bản được tăng lề</dd></dl></dd></dl>',
+);
+
+/** Mingrelian (მარგალური)
+ * @author Lika2672
+ */
+$messages['xmf'] = array(
+	'edittoolbar-characters-page-ipa' => 'IPA',
 );
 
 /** Yiddish (ייִדיש)

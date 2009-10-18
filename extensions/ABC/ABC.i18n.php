@@ -480,6 +480,14 @@ $messages['nds'] = array(
 	'abcdownload' => 'Dalladen:',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'abcdesc' => 'Voeg de tag <tt>&lt;abc&gt;</tt> veur de opmaak van ABC-meziek',
+	'abcdownload' => 'Binnenhaolen:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

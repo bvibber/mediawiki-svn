@@ -511,6 +511,13 @@ $messages['lt'] = array(
 	'communityvoice-ratings-scale-status-thanks' => 'Ačiū, kad balsavote!',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'communityvoice-ratings-scale-status-thanks' => 'വോട്ട് ചെയ്തിതിനു നന്ദി!',
+);
+
 /** Dutch (Nederlands)
  * @author Fryed-peach
  * @author Siebrand

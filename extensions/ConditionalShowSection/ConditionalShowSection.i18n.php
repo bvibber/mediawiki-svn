@@ -50,6 +50,13 @@ $messages['ca'] = array(
 	'conditionalshowsection-desc' => "Afegint l'etiqueta <cshow> per mostrar o amagar condicionadament una secció de Viquitext.",
 );
 
+/** German (Deutsch)
+ * @author PasO
+ */
+$messages['de'] = array(
+	'conditionalshowsection-desc' => 'Ergänzt das <cshow>-Tag zur bedingten Anzeige eines Wikitext-Abschnitts',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

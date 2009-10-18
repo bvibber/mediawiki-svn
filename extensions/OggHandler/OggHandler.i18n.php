@@ -177,8 +177,8 @@ $messages['ar'] = array(
 	'ogg-play-video' => 'عرض الفيديو',
 	'ogg-play-sound' => 'عرض الصوت',
 	'ogg-no-player' => 'معذرة ولكن يبدو أنه لا يوجد لديك برنامج عرض مدعوم. من فضلك ثبت <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">الجافا</a>.',
-	'ogg-no-player-js' => 'عذرًا، جافاسكربت معطلة في نظامك أو أنه لا يحتوي أي مشغّل مدعوم.<br />
-تستطيع <a href="$1">تنزيل المقطع</a><br />أو<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">تنزيل مشغّل</a> لتشغيل المقطع في متصفحك.',
+	'ogg-no-player-js' => 'عذرًا، جافاسكربت معطلة في نظامك أو أن نظامك لا يحتوي أي مشغّل مدعوم.<br />
+تستطيع <a href="$1">تنزيل المقطع</a><br /> أو <br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">تنزيل مشغّل</a> لتشغيل المقطع في متصفحك.',
 	'ogg-no-xiphqt' => 'لا يبدو أنك تملك مكون XiphQT لكويك تايم.
 كويك تايم لا يمكنه عرض ملفات Ogg بدون هذا المكون.
 من فضلك <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">حمل XiphQT</a> أو اختر برنامجا آخر.',
@@ -676,6 +676,22 @@ $messages['de-formal'] = array(
 	'ogg-no-player-js' => 'Entschuldigung, auf Ihrem System ist JavaScript deaktiviert oder es ist keine unterstützte Abspielsoftware vorhanden.<br />
 Sie können <a href="$1">den Clip herunterladen</a> oder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
 	'ogg-no-xiphqt' => 'Ihr System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laden Sie XiphQT</a> oder wählen Sie eine andere Abspielsoftware.',
+);
+
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'ogg-player-videoElement' => 'destekê cıgêrayoxê mehelliyi',
+	'ogg-player-oggPlugin' => 'zeylê cıgêrayoxi',
+	'ogg-player-thumbnail' => 'hema têna resm o.',
+	'ogg-player-soundthumb' => 'player çino',
+	'ogg-player-selected' => '(vıciyaye)',
+	'ogg-use-player' => 'player bışuxuln:',
+	'ogg-more' => 'hema....',
+	'ogg-dismiss' => 'bıqefeln',
+	'ogg-download' => 'dosya biyar war',
+	'ogg-desc-link' => 'derheqê dosyayi de',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -2007,6 +2023,8 @@ $messages['ml'] = array(
 	'ogg-play-video' => 'വീഡിയോ പ്രവര്‍ത്തിപ്പിക്കുക',
 	'ogg-play-sound' => 'ശബ്ദം പ്രവര്‍ത്തിപ്പിക്കുക',
 	'ogg-no-player' => 'ക്ഷമിക്കണം. നിങ്ങളുടെ കമ്പ്യൂട്ടറില്‍ ഓഗ് ഫയല്‍ പ്രവര്‍ത്തിപ്പിക്കാനാവശ്യമായ സോഫ്റ്റ്‌ഫെയര്‍ ഇല്ല. ദയവു ചെയ്ത് ഒരു പ്ലെയര്‍ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ഡൗണ്‍ലോഡ് ചെയ്യുക</a>.',
+	'ogg-no-player-js' => 'ക്ഷമിക്കുക, താങ്കളുടെ കമ്പ്യൂട്ടറിൽ ജാവാസ്ക്രിപ്റ്റ് സജ്ജമല്ലായിരിക്കാം അല്ലങ്കിൽ പിന്തുണയുള്ള ഒരു പ്ലേയർ ഇല്ലായിരിക്കാം.<br />
+താങ്കൾക്ക് <a href="$1">ക്ലിപ് ഡൗൺലോഡ് ചെയ്യാവുന്നതാണ്</a> അല്ലങ്കിൽ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ഒരു പ്ലേയർ ഡൗൺലോഡ് ചെയ്ത്</a> ബ്രൗസറിൽ തന്നെ ക്ലിപ്പ് കാണാവുന്നതാണ്.',
 	'ogg-player-videoElement' => 'ബ്രൗസറിൽ സ്വതവേയുള്ള പിന്തുണ',
 	'ogg-player-oggPlugin' => 'ബ്രൗസർ പ്ലഗിൻ',
 	'ogg-player-thumbnail' => 'നിശ്ചല ചിത്രം മാത്രം',
@@ -2141,13 +2159,37 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
+	'ogg-desc' => 'Haandelt veur Ogg Theora- en Vorbisbestanen, mit JavaScriptmediaspeuler',
+	'ogg-short-audio' => 'Ogg $1 geluudsbestaand, $2',
+	'ogg-short-video' => 'Ogg $1 videobestaand, $2',
+	'ogg-short-general' => 'Ogg $1 mediabestaand, $2',
+	'ogg-long-audio' => '(Ogg $1 geluudsbestaand, lengte $2, $3)',
+	'ogg-long-video' => '(Ogg $1 videobestaand, lengte $2, $4×$5 pixels, $3)',
+	'ogg-long-multiplexed' => '(Ogg emultiplexed geluuds-/videobestaand, $1, lengte $2, $4×$5 pixels, $3 totaal)',
+	'ogg-long-general' => '(Ogg-mediabestaand, lengte $2, $3)',
+	'ogg-long-error' => '(Ongeldig ogg-bestaand: $1)',
 	'ogg-play' => 'Ofspeulen',
 	'ogg-pause' => 'Pauze',
 	'ogg-stop' => 'Stop',
 	'ogg-play-video' => 'Video ofspeulen',
 	'ogg-play-sound' => 'Geluud ofspeulen',
+	'ogg-no-player' => 'Joew system hef gien ondersteunende mediaspeulers.
+Instelleer een <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">mediaspeuler</a>.',
+	'ogg-no-player-js' => 'Joew system hef JavaScript uutstaon of der is gien ondersteunende mediaspeuler.<br />
+Je kunnen <a href="$1">de clip binnenhaolen</a> of <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">een mediaspeuler instelleren</a> um de clip in de webkieker of te speulen.',
+	'ogg-no-xiphqt' => '\'t Liek derop da-j de compenent XiphQT veur QuickTime neet hemmen.
+QuickTime kan Ogg-bestanen neet ofspeulen zonder disse compenent.
+Instelleer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT</a> of kies een aandere mediaspeuler.',
+	'ogg-player-videoElement' => 'Standardondersteuning in webkieker',
+	'ogg-player-oggPlugin' => 'Webkiekeruutbreiding',
+	'ogg-player-thumbnail' => 'Allinnig stilstaond beeld',
+	'ogg-player-soundthumb' => 'Gien mediaspeuler',
+	'ogg-player-selected' => '(ekeuzen)',
+	'ogg-use-player' => 'Gebruuk mediaspeuler:',
 	'ogg-more' => 'Meer...',
 	'ogg-dismiss' => 'Sluten',
+	'ogg-download' => 'Bestaand binnenhaolen',
+	'ogg-desc-link' => 'Over dit bestaand',
 );
 
 /** Dutch (Nederlands)

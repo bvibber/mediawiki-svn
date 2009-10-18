@@ -129,12 +129,38 @@ Probeer later weer.',
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'wah-desc' => 'يساعد في توزيع مهمات تحويل الفيديو على العملاء باستخدام Fireogg.',
+	'wah-user-desc' => 'يمكن أعضاء المجتمع من التبرع بدوائر المعالج الشاغرة للمساعدة في العمليات المستهلكة للموارد',
 	'wah-short-audio' => 'ملف صوتي $1، $2',
 	'wah-short-video' => 'ملف فيديو $1، $2',
 	'wah-short-general' => 'ملف وسائط $1، $2',
+	'wah-long-audio' => '(ملف صوتي، طوله $2، $3 $1)',
+	'wah-long-video' => '(ملف فيديو، طوله $2، $4×$5 بكسل، $3 $1)',
 	'wah-long-general' => '(ملف وسائط طوله $2، $3)',
 	'wah-long-error' => '(لم يتمكن ffmpeg من قراءة هذا الملف: $1)',
 	'wah-transcode-working' => 'تتم الآن معالجة الفيديو، من فضلك حاول لاحقًا مرة أخرى',
+	'wah-transcode-helpout' => 'تستطيع المساعدة في تحويل هذا الفيديو بزيارة [[Special:WikiAtHome|ويكي@المنزل]].',
+	'wah-transcode-fail' => 'فشل تحويل الملف.',
+	'wah-javascript-off' => 'يجب أن تمكن جافاسكربت لتنضم ويكي@المنزل',
+	'wah-loading' => 'يحمّل واجهة ويكي@المنزل...',
+	'wah-menu-jobs' => 'مهام',
+	'wah-menu-stats' => 'إحصاءات',
+	'wah-menu-pref' => 'تفضيلات',
+	'wah-lookingforjob' => 'يبحث عن مهمة...',
+	'wah-start-on-visit' => 'ابدأ ويكي@المنزل كل مرة أزور فيها هذا الموقع.',
+	'wah-jobs-while-away' => 'شغّل المهمات فقط عندما أبتعد عن متصفحي ل20 دقيقة.',
+	'wah-nojobfound' => 'لم أجد أية مهمة. سوف أحاول مرة أخرى خلال $1.',
+	'wah-notoken-login' => 'أأنت والج؟ إن لم تكن كذلك، فلُج أولا من فضلك.',
+	'wah-apioff' => 'يبدو أن واجهة ويكي@المنزل البرمجية مُطفأة. من فضلك اتصل بمدير الويكي.',
+	'wah-doing-job' => 'المهمة: <i>$1</i> على: <i>$2</i>',
+	'wah-downloading' => 'اكتمل تنزيل الملف <i>$1%</i>',
+	'wah-encoding' => 'اكتمل ترميز الملف <i>$1%</i>',
+	'wah-encoding-fail' => 'فشل الترميز. من فضلك أعد تحميل هذه الصفحة أو حاول مرة أخرى لاحقًا.',
+	'wah-uploading' => 'اكتمل رفع الملف <i>$1%</i>',
+	'wah-uploadfail' => 'فشل الرفع',
+	'wah-doneuploading' => 'اكتمل الرفع. شكرا لمساهمتك.',
+	'wah-needs-firefogg' => 'يتعين عليك تثبيت <a href="http://firefogg.org">Firefogg</a> للانضمام إلى ويكي@المنزل.',
+	'wah-api-error' => 'وُجد خطأ في الواجهة البرمجية. من فضلك حاول مرة أخرى لاحقًا.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -244,6 +270,7 @@ $messages['bs'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Pill
  * @author Sebastian Wallroth
  * @author Umherirrender
@@ -264,8 +291,15 @@ $messages['de'] = array(
 	'wah-transcode-fail' => 'Diese Datei konnte nicht transkodiert werden.',
 	'wah-javascript-off' => 'Du musst JavaScript aktiviert haben, um bei Wiki@Home teilnehmen zu können',
 	'wah-loading' => 'Lade Wiki@Home-Benutzeroberfläche …',
+	'wah-menu-jobs' => 'Aufgaben',
+	'wah-menu-stats' => 'Statistiken',
 	'wah-menu-pref' => 'Einstellungen',
+	'wah-start-on-visit' => 'Wiki@Home bei jedem Besuch dieser Seite aufrufen.',
+	'wah-jobs-while-away' => 'Aufgaben nur ausführen, wenn ich mindestens 20 Minuten keine Browseraktivität hatte',
+	'wah-nojobfound' => 'Keine Aufgabe gefunden. Versuche die Prozedur erneut in $1.',
 	'wah-notoken-login' => 'Hast du dich bereits angemeldet? Falls nicht, hole dies bitte zuerst nach.',
+	'wah-apioff' => 'Die Wiki@Home-API scheint abgeschaltet zu sein. Bitte kontaktiere den Administrator des Wikis.',
+	'wah-doing-job' => 'Aufgabe: <i>$1</i> auf: <i>$2</i>',
 	'wah-downloading' => 'Herunterladen der Datei zu <i>$1 %</i> abgeschlossen.',
 	'wah-uploading' => '<i>$1</i> wurde erfolgreich hochgeladen.',
 	'wah-uploadfail' => 'Hochladen nicht erfolgreich',
@@ -273,11 +307,13 @@ $messages['de'] = array(
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author ChrisiPK
  * @author Imre
  */
 $messages['de-formal'] = array(
 	'wah-transcode-helpout' => 'Sie können dabei helfen dieses Video zu verarbeiten, indem Sie [[Special:WikiAtHome|Wiki@Home]] besuchen',
 	'wah-javascript-off' => 'Sie müssen JavaScript aktiviert haben, um bei Wiki@Home teilnehmen zu können',
+	'wah-apioff' => 'Die Wiki@Home-API scheint abgeschaltet zu sein. Bitte kontaktieren Sie den Administrator des Wikis.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -389,7 +425,8 @@ $messages['fi'] = array(
 	'wah-transcode-working' => 'Tätä videota käsitellään parhaillaan, yritä myöhemmin uudelleen',
 	'wah-transcode-fail' => 'Tämä tiedosto ei transkoodautunut.',
 	'wah-javascript-off' => 'JavaScriptin on oltava käytössä, jotta voit osallistua Wiki@Homeen',
-	'wah-loading' => 'ladataan Wiki@Home-käyttöliittymää ...',
+	'wah-loading' => 'ladataan Wiki@Home-käyttöliittymää...',
+	'wah-menu-pref' => 'Asetukset',
 );
 
 /** French (Français)
@@ -451,7 +488,7 @@ $messages['gl'] = array(
 	'wah-transcode-helpout' => 'Pode axudar na transcodificación deste vídeo visitando [[Special:WikiAtHome|Wiki@Home]].',
 	'wah-transcode-fail' => 'Fallou a transcodificación do ficheiro.',
 	'wah-javascript-off' => 'Debe ter o Javascript activado para participar no Wiki@Home',
-	'wah-loading' => 'cargando a interface do Wiki@Home ...',
+	'wah-loading' => 'cargando a interface do Wiki@Home...',
 	'wah-menu-jobs' => 'Tarefas',
 	'wah-menu-stats' => 'Estatísticas',
 	'wah-menu-pref' => 'Preferencias',
@@ -551,7 +588,7 @@ $messages['hsb'] = array(
 	'wah-transcode-helpout' => 'Móžeš pomhać tute widejo přez wopyt na [[Special:WikiAtHome|Wiki@Home]] překodować',
 	'wah-transcode-fail' => 'Njeje so poradźiło tutu dataju překodować.',
 	'wah-javascript-off' => 'Dyrbiš JavaScript zmóžnić, zo by so na Wiki@Home wobdźělił',
-	'wah-loading' => 'Začitanje powjercha Wik@Home  ... ',
+	'wah-loading' => 'Začitanje powjercha Wik@Home  ...',
 	'wah-menu-jobs' => 'Dźěła',
 	'wah-menu-stats' => 'Statistika',
 	'wah-menu-pref' => 'Nastajenja',

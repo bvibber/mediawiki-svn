@@ -28,6 +28,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Jon Harald Søby
  * @author McDutchie
  * @author Purodha
@@ -37,6 +38,7 @@ $messages['qqq'] = array(
 	'passwordreset-badtoken' => '{{Identical|Invalid edit token}}',
 	'passwordreset-username' => '{{Identical|Username}}',
 	'passwordreset-newpass' => '{{Identical|New password}}',
+	'passwordreset-confirmpass' => '{{Identical|Confirm password}}',
 	'passwordreset-submit' => '{{Identical|Reset password}}',
 	'right-passwordreset' => '{{doc-right}}',
 );
@@ -65,6 +67,7 @@ $messages['af'] = array(
 	'passwordreset-nopassmatch' => 'Die wagwoorde kom nie ooreen nie',
 	'passwordreset-username' => 'Gebruiker:',
 	'passwordreset-newpass' => 'Nuwe wagwoord:',
+	'passwordreset-confirmpass' => 'Bevestig wagwoord:',
 	'passwordreset-submit' => 'Herstel wagwoord',
 );
 

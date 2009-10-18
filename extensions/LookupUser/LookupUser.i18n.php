@@ -1356,6 +1356,7 @@ $messages['uk'] = array(
 	'lookupuser-touched' => 'Останнє оновлення запису користувача: $1',
 	'lookupuser-info-authenticated' => 'Аутентифікація по пошті: $1',
 	'lookupuser-useroptions' => 'Налаштування користувача:',
+	'right-lookupuser' => 'Перегляд налаштувань користувачів',
 );
 
 /** Vèneto (Vèneto)

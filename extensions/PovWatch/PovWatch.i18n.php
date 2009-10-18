@@ -72,6 +72,8 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'povwatch_title' => 'Titel:',
 	'povwatch_comment' => 'Boekstaaf opmerking:',
+	'povwatch_unsubscribe' => 'Kanselleer subskripsie',
+	'povwatch_subscribe' => 'Inskryf',
 	'povwatch_added' => 'bygevoeg',
 );
 

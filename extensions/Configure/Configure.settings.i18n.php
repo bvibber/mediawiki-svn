@@ -8750,6 +8750,7 @@ $messages['lb'] = array(
 	'configure-setting-wgDefaultUserOptions' => 'Standard Benotzer-Astellungen',
 	'configure-setting-wgDisableAnonTalk' => 'Diskussiounssäite fir anonym Benotzer (déi net ageloggt sinn) spären',
 	'configure-setting-wgHiddenPrefs' => 'Ausgeschalte Benotzerastellungen',
+	'configure-setting-wgInvalidUsernameCharacters' => 'Zeechen déi net zougelooss sinn beim Uleeë vun neie Benotzerkonten',
 	'configure-setting-wgMaxNameChars' => 'Maximal Byte-Längt vum Benotzernumm',
 	'configure-setting-wgMinimalPasswordLength' => 'Mindest Längt vun de Passwieder',
 	'configure-setting-wgNewUserLog' => 'e Logbuch vun den neie Benotzer ënnerhalen',
@@ -8780,6 +8781,7 @@ $messages['lb'] = array(
 	'configure-setting-wgRCShowChangedSize' => 'Zuel vun de geännerten Zeechen an de rezenten Ännerunge weisen',
 	'configure-setting-wgRC2UDPOmitBots' => ' Ännerungen duerch Botten Bäi de rezenten Ännerungen vun den UDP-Noriichten ausloossen',
 	'configure-setting-wgBlockAllowsUTEdit' => "Engem gespaarte Benotzer erlaben seng eegen Diskussiounssäit z'änneren",
+	'configure-setting-wgSysopRangeBans' => 'Den Adminstrateuren erlaben fir IP-Beräicher ze spären',
 	'configure-setting-wgEnotifMinorEdits' => 'E-Mail Noriichten och fir "kleng Ännerungen" (Benotzer-Astellung gëtt gewisen an de Benotzer muss d\'Optioun aktivéieren)',
 	'configure-setting-wgUsersNotifiedOnAllChanges' => 'Benotzernimm deenen eng Noriicht per Mail geschéckt gëtt bäi all Ännerung op engem Wiki',
 );

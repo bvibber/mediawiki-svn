@@ -928,7 +928,9 @@ $4',
 $messages['id'] = array(
 	'todo-new-queue' => 'baru',
 	'todo-list-for' => 'Daftar tugas untuk $1',
+	'todo-list-change' => 'Berubah',
 	'todo-list-cancel' => 'Batalkan',
+	'todo-new-item' => 'Butir baru',
 	'todo-form-details' => 'Rincian:',
 	'todo-form-submit' => 'Kirim kueri',
 );

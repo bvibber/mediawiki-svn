@@ -298,8 +298,8 @@ $messages['diq'] = array(
 	'scanset_missing_index_file' => 'xeta: dosyaya endexsi $1 nêasena',
 	'scanset_index_file_error' => 'xeta: $1. satır de formatê dosyaya endexsi de xeta esto',
 	'scanset_invalid_volume' => 'xeta: cilda şaş',
-	'scanset_next' => 'ver şo &gt;',
-	'scanset_prev' => '&lt; Pey şo',
+	'scanset_next' => 'aver &gt;',
+	'scanset_prev' => '&lt; apey',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -755,13 +755,13 @@ $messages['km'] = array(
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'scanset-desc' => 'Andreas Grosz CD/DVD set을 이용해 이미지 자켓을 표시',
+	'scanset-desc' => 'Andreas Grosz CD/DVD set에서 그림 정보를 가져옵니다.',
 	'scanset_no_name' => '에러: 스캔셋 이름을 정해야 합니다. (예:&lt;scanset name="EB1911" /&gt;.)',
 	'scanset_invalid_name' => '오류: 스캔 세트가 잘못되었거나 없습니다.',
 	'scanset_unrecognised_index_format' => '오류: 알 수 없는 색인 형식',
 	'scanset_opendir_error' => '오류: $1 디렉토리를 열 수 없음',
 	'scanset_no_files' => '오류: 해당 디렉토리에 파일이 없습니다.',
-	'scanset_no_volumes' => '오류: 볼륨 디렉토리가 없음',
+	'scanset_no_volumes' => '오류: 데이터 디렉토리를 찾을 수 없습니다',
 	'scanset_missing_index_file' => '오류: 색인 파일 $1을(를) 찾을 수 없음',
 	'scanset_index_file_error' => '오류: $1번째 줄에 알 수 없는 색인 파일 형식',
 	'scanset_invalid_volume' => '오류: 잘못된 볼륨',

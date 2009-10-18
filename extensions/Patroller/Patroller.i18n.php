@@ -1692,6 +1692,7 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Ahonc
  */
 $messages['uk'] = array(
@@ -1701,6 +1702,8 @@ $messages['uk'] = array(
 	'patrol-revert-reason' => 'Причина:',
 	'patrol-skip' => 'Відкласти',
 	'patrol-reverting' => 'Відкіт: $1',
+	'group-patroller' => 'Патрульні',
+	'group-patroller-member' => 'патрульний',
 );
 
 /** Veps (Vepsan kel')

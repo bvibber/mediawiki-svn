@@ -100,6 +100,13 @@ $messages['de'] = array(
 	'oai-desc' => 'Stellt eine [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-Repositorium-Schnittstelle bereit',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] depo arayüzünü sağlar',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

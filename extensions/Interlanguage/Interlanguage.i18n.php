@@ -55,6 +55,13 @@ $messages['ca'] = array(
 	'interlanguage-desc' => "Recull interwikis d'una altra wiki",
 );
 
+/** German (Deutsch)
+ * @author PasO
+ */
+$messages['de'] = array(
+	'interlanguage-desc' => 'Holt Interlanguage-Links aus einem anderen Wiki',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

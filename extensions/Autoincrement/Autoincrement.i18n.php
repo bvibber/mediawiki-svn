@@ -168,6 +168,13 @@ $messages['mk'] = array(
 	'autoincrement-desc' => 'Повикувач на променливи кој ја додава автоинкрементирачката променлива <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'autoincrement-desc' => 'Voeg een variabele <nowiki>{{AUTOINCREMENT}}</nowiki> toe dee autematisch op-ehoog wönnen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -71,6 +71,7 @@ $messages['af'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'indexfunc-desc' => 'دالة تحليل تنشئ تحويلات وصفحات توضيح تلقائية',
 	'indexfunc-badtitle' => 'عنوان غير صالح: "$1"',
 	'indexfunc-editwarning' => 'تحذير:
 هذا العنوان عنوان فهرس {{PLURAL:$2||للصفحة التالية|للصفحتين التاليتين|للصفحات التالية}}:
@@ -456,11 +457,23 @@ Zapodaj najprjedy někotre znamješka a klikń na tłóčatko {{int:index-submit
 $messages['hu'] = array(
 	'indexfunc-desc' => 'Elemzőfüggvény átirányítások és egyértelműsítő lapok automatikus készítésére',
 	'indexfunc-badtitle' => 'Érvénytelen cím: „$1”',
+	'indexfunc-editwarning' => 'Figyelem:
+Ez a cím egy indexcím a következő {{PLURAL:$2|laphoz|lapokhoz}}:
+$1
+Bizonyosodj meg róla, hogy a lap amit készülsz létrehozni nem létezik-e már más cím alatt.
+Ha létrehozod a lapot, távolítsd el ezt a címet az <nowiki>{{#index:}}</nowiki>-ből a fenti {{PLURAL:$2|lapon|lapokon}}.',
 	'indexfunc-index-exists' => 'A(z) „$1” lap már létezik',
+	'indexfunc-movewarn' => 'Figyelem:
+A(z) „$1” egy indexcím a következő {{PLURAL:$3|laphoz|lapokhoz}}:
+$2
+Kérlek távolítsd el a(z) „$1” címet az <nowiki>{{#index:}}</nowiki>-ből a fenti {{PLURAL:$3|lapon|lapokon}}.',
 	'index' => 'Index keresés',
 	'index-legend' => 'Keresés az indexben',
 	'index-search' => 'Keresés:',
 	'index-submit' => 'Elküldés',
+	'index-disambig-start' => "A(z) '''$1''' számos lapra utalhat:",
+	'index-emptylist' => 'Nincsenek a(z) „$1” laphoz kapcsolódó lapok',
+	'index-expand-detail' => 'Mutasd az ilyen címmel indexelt lapokat',
 	'index-hide-detail' => 'Lapok listájának elrejtése',
 	'index-no-results' => 'A keresés nem hozott eredményt',
 );

@@ -281,6 +281,14 @@ $messages['nds'] = array(
 Maakt en inbunnen Version; besünners praktisch för Wikinews.',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'catfeed-desc' => "Gebruuk infermasie uut de leste wiezigingen.
+Maak een versie binnen een pagina, in 't biezunder hendig veur Wikiniejs",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

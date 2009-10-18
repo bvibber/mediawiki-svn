@@ -441,6 +441,14 @@ $messages['mt'] = array(
 	'absenteelandlord-desc' => 'Blokkar awtomatiku tad-database tal-wiki jekk l-amministraturi huma kollha inattivi għal ċertu żmien',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'absenteelandlord-reason' => 'De databanke is autematisch of-esleuten vanwegen inactiviteit van de beheerders.',
+	'absenteelandlord-desc' => 'Sluut de databanke autematisch as de beheerders allemaole inactief bin in een bepaolde tied',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

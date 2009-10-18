@@ -430,6 +430,18 @@ $messages['km'] = array(
 	'dplforum-toomany' => 'ចំណាត់ថ្នាក់ក្រុមច្រើនណាស់!',
 );
 
+/** Korean (한국어)
+ * @author ITurtle
+ */
+$messages['ko'] = array(
+	'dplforum-desc' => '동적 문서 목록(DPL) 기반 포럼 확장 기능',
+	'dplforum-by' => '$1 씀',
+	'dplforum-edited' => '- 최근에 고침',
+	'dplforum-never' => '없음',
+	'dplforum-toofew' => 'DPL 포럼: 분류가 너무 적습니다!',
+	'dplforum-toomany' => 'DPL 포럼: 분류가 너무 많습니다!',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

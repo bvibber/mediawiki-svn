@@ -109,6 +109,7 @@ $messages['ar'] = array(
 	'expand_templates_xml_output' => 'خرج XML',
 	'expand_templates_ok' => 'موافق',
 	'expand_templates_remove_comments' => 'أزل التعليقات',
+	'expand_templates_remove_nowiki' => 'أخفِ وسوم <nowiki> في الناتج',
 	'expand_templates_generate_xml' => 'اعرض شجرة XML parse',
 	'expand_templates_preview' => 'معاينة',
 );

@@ -925,6 +925,28 @@ $messages['nds'] = array(
 	'editmsg-new-search' => 'Ne’e Söök',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Web-ebaseerd bewarken]] van grote antallen Messages*.php-bestanen',
+	'editmessages' => 'Tiejigen bewarken',
+	'editmsg-target' => 'Doeltiejige',
+	'editmsg-search' => 'Zeuken',
+	'editmsg-show-list' => 'Laot de weerden veur tiejige "$1" zien',
+	'editmsg-get-patch' => 'Pad maken',
+	'editmsg-new-search' => 'Opniej zeuken',
+	'editmsg-warning-parse1' => '* Tiejigenaamregex neet toepassing: $1',
+	'editmsg-warning-parse2' => '* Apostrof verwach nao piele: $1',
+	'editmsg-warning-parse3' => '* Einde van weerdestring neet evunnen: $1',
+	'editmsg-warning-file' => "* Der bin fouten evunnen bie 't lezen van de volgende {{PLURAL:$2|taal|talen}}: $1",
+	'editmsg-warning-mismatch' => '* De oorspronkelijke tekse had neet de verwachen weerde veur de volgende {{PLURAL:$2|taal|talen}}: $1',
+	'editmsg-apply-patch' => 'Anpassingen uutvoeren',
+	'editmsg-no-patch' => '\'t Commando "pad" kan neet uut-evoerd wönnen',
+	'editmsg-patch-failed' => 'Anpassen is mislok mit as foutcode $1',
+	'editmsg-patch-success' => 'De anpassingen bin uut-evoerd.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

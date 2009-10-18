@@ -167,7 +167,7 @@ $messages['ar'] = array(
 	'dt_import_encodingtype' => 'نوع الترميز',
 	'dt_import_editsummary' => 'استيراد $1',
 	'dt_import_importing' => 'جاري الاستيراد...',
-	'dt_import_success' => '$1 {{PLURAL:$1|صفحة|صفحة}} سيتم استيرادها من ملف $2.',
+	'dt_import_success' => 'سوف تُنشأ {{PLURAL:$1||صفحة واحدة|صفحتين|$1 صفحات|$1 صفحة}} من ملف $2.',
 	'importcsv' => 'استورد CSV',
 	'right-datatransferimport' => 'استورد بيانات',
 );

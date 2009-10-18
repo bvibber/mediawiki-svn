@@ -54,6 +54,7 @@ $messages['af'] = array(
 	'authorprotect-failure' => 'Beskerming het nie geslaag nie',
 	'protect-level-author' => 'Beskerm teen nie-outeurs',
 	'restriction-level-author' => 'Kan slegs deur outeurs gewysig word',
+	'right-authorprotect' => 'Beveilig self opgedateerde bladsye',
 );
 
 /** Amharic (አማርኛ)

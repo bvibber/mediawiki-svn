@@ -181,6 +181,16 @@ $messages['de-formal'] = array(
 	'simpleantispam' => 'Ihre Bearbeitung hat den Spamschutz ausgelöst.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'simpleantispam' => 'vuriyayişê şıma mekanizmaya anti-spami herikna',
+	'simpleantispam-label' => "tehqiqatê Anti-spami.
+no '''de mekerê'''!",
+	'simpleantispam-desc' => 'Forman re tehqiqatê spami/bot dano',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -472,6 +482,7 @@ $messages['ml'] = array(
 	'simpleantispam' => 'താങ്കളുടെ തിരുത്തൽ സ്പാം വിരുദ്ധ തന്ത്രത്തെ ഉണർത്തിയിരിക്കുന്നു',
 	'simpleantispam-label' => "സ്പാം വിരുദ്ധ പരിശോധന.
 ഇത് '''പൂരിപ്പിക്കരുത്'''",
+	'simpleantispam-desc' => 'ഫോമുകൾക്കായുള്ള ലളിതമായ സ്പാം/ബോട്ട് പരിശോധന കൂട്ടിച്ചേർക്കുന്നു',
 );
 
 /** Marathi (मराठी)

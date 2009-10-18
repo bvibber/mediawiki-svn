@@ -1593,6 +1593,9 @@ Cambia ël nòm utent sota, gionta un coment (opsional) e sgnaca ël boton "Camb
 	'changeauthor-nosuchuser' => 'Pa gnun utent "$1".',
 	'changeauthor-revview' => 'Revision #$1 ëd $2',
 	'changeauthor-nosuchtitle' => 'A-i é pa gnun-e pàgine ciamà "$1".',
+	'changeauthor-weirderror' => "A l'é capitaje n'eror motobin dròlo.
+Për piasì arpet toa arcesta.
+Se sto eror-sì a continua a ess-ie, a peul esse che ël database a sia rompù.",
 );
 
 /** Pashto (پښتو)

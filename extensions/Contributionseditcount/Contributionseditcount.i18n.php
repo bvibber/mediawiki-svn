@@ -24,9 +24,10 @@ $messages['qqq'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
-	'contributionseditcount' => 'هذا المستخدم لديه $1 تعديل.',
+	'contributionseditcount' => '{{PLURAL:$1|{{GENDER:$2|هذا المستخدم|هذه المستخدمة}} ليس لديه أي تعديلات|{{GENDER:$2|هذا المستخدم لديه|هذه المستخدمة لديها}} تعديل واحد|{{GENDER:$2|هذا المستخدم لديه|هذه المستخدمة لديها}} تعديلان|{{GENDER:$2|هذا المستخدم لديه|هذه المستخدمة لديها}} $1 تعديلات|{{GENDER:$2|هذا المستخدم لديه|هذه المستخدمة لديها}} $1 تعديلًا|{{GENDER:$2|هذا المستخدم لديه|هذه المستخدمة لديها}} $1 تعديل}}.',
 	'contributionseditcount-desc' => 'يعرض عدد المساهمات في [[Special:Contributions|صفحة مساهمات المستخدم]]',
 );
 
@@ -403,6 +404,14 @@ $messages['nah'] = array(
  */
 $messages['nds'] = array(
 	'contributionseditcount' => 'Disse Bruker hett $1 Ännern.',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'contributionseditcount' => 'Disse gebruker hef {{PLURAL:$1|één bewarking|$1 bewarkingen}} edaon.',
+	'contributionseditcount-desc' => 'Laot een bewarkingsteller zien op de pagina [[Special:Contributions|gebrukersbiedragen]]',
 );
 
 /** Dutch (Nederlands)

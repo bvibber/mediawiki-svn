@@ -976,6 +976,23 @@ $messages['nds'] = array(
 	'contributors-nosuchpage' => 'Siet $1 gifft dat nich.',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'contributors' => 'Luui dee bie-edreugen hemmen',
+	'contributors-desc' => 'Geef een overzichte van de belangriekste schrievers van een pagina',
+	'contributors-toolbox' => 'Belangriekste schrievers',
+	'contributors-legend' => 'Laot de belangriekste schriever van een pagina zien',
+	'contributors-target' => 'Titel:',
+	'contributors-submit' => 'Bekieken',
+	'contributors-subtitle' => 'Belangriekste schriever van $1',
+	'contributors-others-long' => 'Der {{PLURAL:$1|is één aandere schriever|bin $1 aandere schrievers}} van disse pagina.',
+	'contributors-others' => 'en $1 {{PLURAL:$1|aandere|aanderen}}',
+	'contributors-badtitle' => 'Ongeldige titel.',
+	'contributors-nosuchpage' => 'De pagina $1 besteet neet.',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'ipauth-desc' => "Outomatiese aanteken vanaf 'n vaste IP-adres",
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'ipauth-desc' => 'ولوج تلقائي من عناوين آيبي معينة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -49,6 +56,13 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'ipauth-desc' => 'Automatska prijava sa stalnih IP adresa',
+);
+
+/** German (Deutsch)
+ * @author PasO
+ */
+$messages['de'] = array(
+	'ipauth-desc' => 'Automatische Anmeldung von statischen IP-Adressen',
 );
 
 /** Lower Sorbian (Dolnoserbski)

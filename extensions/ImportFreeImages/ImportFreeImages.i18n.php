@@ -1255,6 +1255,7 @@ $messages['uk'] = array(
 	'importfreeimages_filefromflickr' => '$1 авторства <b>[$2]</b> з Flickr. Оригінальний URL',
 	'importfreeimages_promptuserforfilename' => "Будь-ласка, введіть нове ім'я файлу:",
 	'importfreeimages_returntoform' => "Або натисніть <a href='$1'>тут</a>, щоб повернутися до ваших результатів пошуку.",
+	'importfreeimages_nophpflickr' => 'У вас не встановлено phpFlickr, встановіть $wgIFphpFlickr у вашому LocalSettings.php.',
 );
 
 /** Vèneto (Vèneto)

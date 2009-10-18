@@ -587,17 +587,25 @@ $messages['hu'] = array(
 	'refreshspecial' => 'Speciális lapok frissítése',
 	'refreshspecial-desc' => 'Lehetővé teszi a [[Special:RefreshSpecial|speciális lapok kézi frissítését]]',
 	'refreshspecial-title' => 'Speciális lapok frissítése',
+	'refreshspecial-help' => "Ez a speciális lap lehetőségeket biztosít más speciális lapok kézi frissítésére.
+Ha kiválasztottad az összes frissítendő lapot, kattints a „Kijelöltek frissítése” gombra alul a kiválasztott lapok aktualizálásához.
+'''Figyelem:''' a frissítés eltarthat egy ideig nagyobb wikiken.",
 	'refreshspecial-button' => 'Kiválasztottak frissítése',
+	'refreshspecial-fail' => 'Jelölj ki legalább egy speciális lapot frissítésre.',
 	'refreshspecial-refreshing' => 'speciális lapok frissítése',
+	'refreshspecial-skipped' => 'nem fontos, átugorva',
 	'refreshspecial-choice' => 'speciális lapok frissítése',
 	'refreshspecial-js-disabled' => '(<i>Nem tudod kijelölni az összes lapot, ha a JavaScript le van tiltva</i>)',
 	'refreshspecial-select-all-pages' => 'Összes lap kijelölése',
 	'refreshspecial-link-back' => 'Vissza a speciális lapra',
+	'refreshspecial-none-selected' => 'Nem jelöltél ki egy speciális lapot sem. Visszatérés az alapértelmezett kijelöléshez.',
 	'refreshspecial-db-error' => 'Sikertelen: adatbázishiba',
 	'refreshspecial-no-page' => 'Nincs ilyen speciális lap',
 	'refreshspecial-slave-lagged' => 'A slave lemaradt, várakozás…',
 	'refreshspecial-reconnected' => 'Újracsatlakozva.',
 	'refreshspecial-reconnecting' => 'A kapcsolat megszakadt, újracsatlakozás 10 másodperc múlva…',
+	'refreshspecial-page-result' => '$1 sort tartalmaz',
+	'refreshspecial-total-display' => '$1 lap frissítve, összesen $2 sor $3 idő alatt (a parancsfájl teljes futási ideje $4 volt)',
 	'right-refreshspecial' => 'Speciális lapok frissítése',
 );
 

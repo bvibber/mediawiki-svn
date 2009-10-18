@@ -404,10 +404,12 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'newusermessage-desc' => 'പുതിയ ഉപയോക്താക്കളുടെ സം‌വാദം താളില്‍  സന്ദേശം ചേര്‍ക്കുന്നു.',
+	'newuseredit-summary' => 'ഉപയോക്താവിന്റെ സംവാദം താളിൽ [[{{int:newusermessage-template}}|സ്വാഗത സന്ദേശം]] ചേർക്കുന്നു',
 );
 
 /** Marathi (मराठी)

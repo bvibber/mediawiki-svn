@@ -249,7 +249,7 @@ $messages['mk'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'mootools12core-desc' => 'Voeg [http://mootools.net mootools-1.2-core-yc.js] toe an elke pagina',
+	'mootools12core-desc' => 'Voeg [http://mootools.net mootools-1.2-core-yc.js],  een compak JavaScript-framework, toe an elke pagina',
 );
 
 /** Dutch (Nederlands)

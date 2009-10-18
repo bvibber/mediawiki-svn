@@ -360,6 +360,22 @@ $messages['de'] = array(
 	'sitematrix-fishbowl' => 'Bearbeitung eingeschränkt',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'sitematrix' => 'listeya wiki yê heme wikimediyayan',
+	'sitematrix-summary' => 'no pelo xas listeya wiki yê heme wikimedyayan liste keno',
+	'sitematrix-desc' => '[[Special:SiteMatrix|listeya wikiyê Wikimedyayan]] mocneno ra',
+	'sitematrix-language' => 'zıwan',
+	'sitematrix-project' => 'nameyê projeyi, gıreyê benateyê projeyan, wikiyan',
+	'sitematrix-others' => 'Projeyê Wîkîmedyayê binî',
+	'sitematrix-total' => "'''pêro amari: $1'''",
+	'sitematrix-sitetotal' => 'pêro piya',
+	'sitematrix-private' => 'mehrem',
+	'sitematrix-fishbowl' => 'vuriyayişi qedexe bı',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

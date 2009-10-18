@@ -101,6 +101,18 @@ $messages['bg'] = array(
 	'right-userrights-global' => 'Управление на глобалните потребителски права',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'globaluserrights' => 'Merañ ar gwirioù implijer hollek',
+	'gur-desc' => 'Merañ eeun ar [[Special:GlobalUserRights|gwirioù implijer hollek]]',
+	'gur-rightslog-name' => 'Marilh ar gwirioù hollek',
+	'gur-rightslog-header' => "Setu aze marilh ar c'hemmoù d'ar gwirioù hollek.",
+	'gur-rightslog-entry' => 'en deus kemmet gwirioù hollek $1 eus $2 da $3',
+	'right-userrights-global' => 'Merañ ar gwirioù implijer hollek',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

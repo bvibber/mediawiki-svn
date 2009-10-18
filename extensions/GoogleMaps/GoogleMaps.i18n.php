@@ -5485,10 +5485,12 @@ $wgGoogleMapsMessages['tt-cyrl'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Ahonc
  * @author Aleksandrit
  */
 $wgGoogleMapsMessages['uk'] = array(
+	'gm-desc' => 'Дозволяє легко створювати карти з допомогою вікі-позначок',
 	'gm-incompatible-browser' => 'Для перегляду карти скористайтеся сумісним браузером.',
 	'gm-incompatible-browser-link' => 'Натисніть тут, щоб побачити список підходящих браузерів.',
 	'gm-no-editor' => 'На жаль, ваш браузер на підтримує функцію створення інтерактивних карт. Скористайтеся останньою версією <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) або <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac і Linux).',
@@ -5510,6 +5512,7 @@ $wgGoogleMapsMessages['uk'] = array(
 	'gm-no-results' => 'На жаль, нічого не знайдено',
 	'gm-searching' => 'шукаємо…',
 	'gm-map' => 'Карта',
+	'gm-note' => 'Зауваження: перед натисканням "Завантажити карту", "Зберегти" чи "Попередній перегляд" перевірте чи ви скопіювали те, що хотіли до сторінки нижче!',
 	'gm-instructions' => 'Вікі-розмітка для створення карти.',
 	'gm-are-you-sure' => 'Ви впевнені?',
 	'gm-clear-all-points' => 'Видалити всі крапки',
@@ -5539,6 +5542,9 @@ $wgGoogleMapsMessages['uk'] = array(
 	'gm-show-path' => 'показати точки',
 	'gm-color-path' => 'змінити колір',
 	'gm-color-fill' => 'змінити колір заповнення',
+	'gm-add-fill' => 'зафарбувати територію',
+	'gm-remove-fill' => 'прибрати зафарбування',
+	'gm-fill-color' => 'Колір зафарбування',
 	'gm-line-color' => 'Колір лінії',
 	'gm-opacity' => 'Непрозорість',
 	'gm-line-width' => 'Ширина',

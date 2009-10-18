@@ -105,21 +105,25 @@ $messages['ca'] = array(
 
 /** German (Deutsch)
  * @author Metalhead64
+ * @author PasO
  */
 $messages['de'] = array(
 	'protectsection_desc' => 'Erlaubt berechtigten Benutzern, Teile einer Seite anhand des <tt>&lt;protect&gt;</tt>-Tags zu schützen.',
 	'protectsection_add_remove' => 'Du hast versucht, einen geschützten Abschnitt hinzuzufügen oder zu entfernen.',
 	'protectsection_modify' => 'Du hast versucht, einen geschützten Text zu bearbeiten.',
+	'protectsection_add_above' => 'Du hast versucht, Text vor einem geschützten Abschnitt einzufügen.',
 	'protectsection_forbidden' => 'Verboten',
 	'right-protectsection' => 'Abschnitte einer Seite schützen',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author PasO
  */
 $messages['de-formal'] = array(
 	'protectsection_add_remove' => 'Sie haben versucht, einen geschützten Abschnitt hinzuzufügen oder zu entfernen.',
 	'protectsection_modify' => 'Sie haben versucht, einen geschützten Text zu bearbeiten.',
+	'protectsection_add_above' => 'Sie haben versucht, Text vor einem geschützten Abschnitt einzufügen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

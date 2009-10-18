@@ -410,6 +410,15 @@ $messages['nds'] = array(
 	'advancedrandom' => 'Tofällige Sied (verbetert)',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'advancedrandom' => 'Willekeurige pagina (evorderd)',
+	'advancedrandom-desc' => 'Vraag een willekeurige overlegpagina of pagina uut de heufnaamruumte op dee verwies naor een op-egeven pagina.
+Kan gebruuk wönnen as [[{{#special:advancedrandom}}/{{ns:template}}:Uut-eloch/{{ns:talk}}]] um een willekeurig etelazie-artikel weer te geven of as [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] um een willekeurig GFDL-elicenseerd bestaand te bekieken',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

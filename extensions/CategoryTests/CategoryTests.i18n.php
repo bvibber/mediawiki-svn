@@ -204,6 +204,13 @@ $messages['mk'] = array(
 	'categorytests-desc' => 'Функции за тестирање на категории',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'categorytests-desc' => 'Functies veur kattegerietests',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

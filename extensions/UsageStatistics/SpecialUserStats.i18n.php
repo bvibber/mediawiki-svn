@@ -124,6 +124,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'specialuserstats' => 'إحصاءات الاستخدام',
@@ -134,6 +135,8 @@ $messages['ar'] = array(
 	'usagestatisticsinterval' => 'المدة:',
 	'usagestatisticsnamespace' => 'النطاق:',
 	'usagestatisticsexcluderedirects' => 'استثن التحويلات',
+	'usagestatistics-namespace' => 'هذه إحصاءات على نطاق [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|التحويلات]] لا تحسب.',
 	'usagestatisticstype' => 'نوع',
 	'usagestatisticsstart' => 'تاريخ البداية:',
 	'usagestatisticsend' => 'تاريخ النهاية:',

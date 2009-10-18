@@ -319,6 +319,8 @@ $messages['hu'] = array(
 	'plotters-desc' => 'Megengedi egyéni JavaScript használatát a jsplot tagekben',
 	'plotters' => 'Diagramrajzolók',
 	'plotters-title' => 'Diagramrajzolók',
+	'plotters-pagetext' => 'Alább azok a speciális diagramrajzolók láthatóak, amelyeket a felhasználók használhatnak a jsplot tag-jeikben, ahogy a [[MediaWiki:Plotters-definition]] definiálja.
+Ez az áttekintés könnyű hozzáférhetőséget biztosít a rendszerüzenet lapokhoz, amelyek megadják az egyes rajzolók leírását és kódját.',
 	'plotters-uses' => 'Használatai',
 	'plotters-missing-script' => 'Nem volt szkript megadva.',
 	'plotters-missing-arguments' => 'Nincsenek argumentumok megadva.',

@@ -48,12 +48,17 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'commentbox-savebutton' => 'حفظ التعليق',
 	'commentbox-name' => 'الاسم:',
 	'commentbox-log' => 'تعليقات جديدة',
 	'commentbox-first-comment-heading' => '== تعليقات ==',
+	'commentbox-regex' => '/\\n==\\s*نعليقات\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'خطأ أثناء إنشاء تعليق',
+	'commentbox-error-page-nonexistent' => 'هذه الصفحة غير موجودة!',
+	'commentbox-error-namespace' => 'لا يسمح بالتعليقات في هذه الصفحة!',
 	'commentbox-error-empty-comment' => 'التعليقات الفارغة غير مسموح بها!',
 );
 
@@ -177,6 +182,25 @@ Tienes un comentario a esta página? Agrégalo aquí o <span class="plainlinks">
 	'commentbox-error-page-nonexistent' => 'Esta página no existe!',
 	'commentbox-error-namespace' => 'Los comentarios no estan permitidos en este espacio de nombre!',
 	'commentbox-error-empty-comment' => 'Comentarios vacíos no están permitidos!',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'commentbox-desc' => 'Lisää tietyille sivuille kommenttilaatikon.',
+	'commentbox-intro' => '== Lisää kommentti... ==
+Onko sinulla kommentti tästä sivusta? Lisää se tänne tai <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} muokkaa sivua suoraan]</span>.',
+	'commentbox-savebutton' => 'Tallenna kommentti',
+	'commentbox-name' => 'Nimi',
+	'commentbox-name-explanation' => '<small>(Vinkki: Sinun ei tarvitse itse kirjoittaa nimeä, jos [[Special:UserLogin|kirjaudut sisään]].)</small>',
+	'commentbox-log' => 'Uudet kommentit',
+	'commentbox-first-comment-heading' => '== Kommentit ==',
+	'commentbox-regex' => '/\\n==\\s*Kommentit\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Virhe kommentin luomisessa',
+	'commentbox-error-page-nonexistent' => 'Tätä sivua ei ole.',
+	'commentbox-error-namespace' => 'Kommentit eivät ole sallittuja tässä nimiavaruudessa.',
+	'commentbox-error-empty-comment' => 'Tyhjät kommentit eivät ole sallittuja.',
 );
 
 /** French (Français)

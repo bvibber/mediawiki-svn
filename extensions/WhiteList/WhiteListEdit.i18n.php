@@ -1608,6 +1608,7 @@ Iste pagina es solmente applicabile al usatores restringite",
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Kandar
  * @author Rex
  */
@@ -1638,6 +1639,7 @@ $messages['id'] = array(
 	'whitelistnewtableprocess' => 'Proses',
 	'whitelistnewtablereview' => 'Tinjau',
 	'whitelistpagelist' => 'Halaman {{SITENAME}} untuk $1',
+	'whitelistoverviewcd' => "* Perubahan tanggal ke '''$1''' untuk [[:$2|$2]]",
 	'whitelistrequestconf' => 'Permintaan halaman baru telah dikirim ke $1',
 	'whitelistnever' => 'tidak pernah',
 	'group-restricted' => 'Kelompok pengguna terbatas',

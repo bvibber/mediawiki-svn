@@ -103,6 +103,13 @@ $messages['de'] = array(
 	'skinperpage-desc' => 'Ergänzt das <tt>&lt;skin&gt;</tt>-Tag, um pro Seite unterschiedliche Skins zu nutzen',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'skinperpage-desc' => 'Her pel de qey şuxulnayişê asyaişi <tt>&lt;skin&gt;</tt> etiket têare keno',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -302,6 +309,13 @@ $messages['li'] = array(
  */
 $messages['mk'] = array(
 	'skinperpage-desc' => 'Додава ознака <tt>&lt;skin&gt;</tt> за користење на различни маски по страница',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'skinperpage-desc' => 'ഓരോ താളിലും വ്യത്യസ്ത ദൃശ്യരൂപങ്ങൾ ഉപയോഗിക്കാനുള്ള <tt>&lt;skin&gt;</tt> എന്ന റ്റാഗ് കൂട്ടിച്ചേർക്കുന്നു',
 );
 
 /** Marathi (मराठी)

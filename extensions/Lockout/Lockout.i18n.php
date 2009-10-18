@@ -50,6 +50,13 @@ $messages['bs'] = array(
 	'lockout-desc' => 'Onemogućuje blokiranim korisnicima da se prijave',
 );
 
+/** German (Deutsch)
+ * @author PasO
+ */
+$messages['de'] = array(
+	'lockout-desc' => 'Gesperrte Benutzer davon abhalten, sich anzumelden',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

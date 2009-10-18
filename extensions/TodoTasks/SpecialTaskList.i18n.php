@@ -653,9 +653,11 @@ Le systema de notification de %s',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'tasklistincorrectuser' => 'Nama pengguna salah',
+	'tasklistprojdisp' => 'Tayangan',
 	'tasklistbyname' => '== Daftar tugas untuk %s ==',
 );
 
