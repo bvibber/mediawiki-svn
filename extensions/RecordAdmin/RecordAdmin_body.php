@@ -516,9 +516,6 @@ class SpecialRecordAdmin extends SpecialPage {
 		# If values are wikitext, convert to hash
 		if ( !is_array( $values ) ) $values = $this->valuesFromText( $values );
 
-		# Expand any double-brace expressions in the form content (even in its html)
-		#$this->form = preg_replace_callback( "|\{\{.+?\}\}|s", array( $this, 'parsePart' ), $this->form );
-
 		# Add the values into the form's HTML depending on their type
 		foreach( $this->types as $k => $type ) {
 
@@ -559,6 +556,23 @@ class SpecialRecordAdmin extends SpecialPage {
 			# Replace the element in the form with the modified html
 			$this->form = substr_replace( $this->form, $html, $pos, $len );
 		}
+
+		# Parse any brace structures
+		global $wgUser, $wgParser;
+		$options = ParserOptions::newFromUser( $wgUser );
+		$max = 25;
+		do {
+			$braces = false;
+			foreach ( $this->examineBraces( $this->form ) as $brace ) {
+				if ( $brace['DEPTH'] == 2 ) $braces = $brace;
+			}
+			if ( $braces ) {
+				$part = substr( $this->form, $braces['OFFSET'], $braces['LENGTH'] );
+				$html = $wgParser->parse( $part, $this->title, $options, true, true )->getText();
+				$this->form = substr_replace( $this->form, $html, $braces['OFFSET'], $braces['LENGTH'] );
+			}
+		} while ( --$max > 0 && $braces );
+
 	}
 
 	/**
