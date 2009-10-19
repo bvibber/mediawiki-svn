@@ -209,7 +209,7 @@ public class FastWikiTokenizerEngine {
 					addDecomposed = true;
 					continue; // skip 
 				}
-				if(!Character.isUpperCase(buffer[i]) && buffer[i]!='.' && buffer[i]!='\'')
+				if(!Character.isUpperCase(buffer[i]) && buffer[i]!='.' && !isApostrophe(buffer[i]))
 					allUpperCase = false;
 				if(i == 0 && !Character.isUpperCase(buffer[i]))
 					titleCase = false;
@@ -276,7 +276,7 @@ public class FastWikiTokenizerEngine {
 				} 
 				
 				// delete ' marks from words, add as aliases
-				if(cl=='\''){
+				if(isApostrophe(cl)){
 					addToTokenAlias("");
 					addToAlias = false;
 				}
@@ -438,6 +438,10 @@ public class FastWikiTokenizerEngine {
 			pos = Position.HEADING;		
 		return pos;
 	}
+	
+	private final boolean isApostrophe(char c){
+		return c == '\'' || c == '\u2019';
+	}
 
 	/** tidy the glue buffer, and return the token */
 	private final ExtToken makeGlueToken(){
@@ -484,7 +488,7 @@ public class FastWikiTokenizerEngine {
 						|| lc == '\n' || lc == '\r' || lc == '=' || (lc==';' && last=='\n'))
 					continue; // forbidden chars
 
-				if(lc == '\'' && (last == '\'' || (i<glueLength-1 && glueBuffer[i+1]=='\'')))
+				if(isApostrophe(lc) && (isApostrophe(last) || (i<glueLength-1 && isApostrophe(glueBuffer[i+1]))))
 					continue; // more than one '
 				
 				// always put spaces before/after |
@@ -590,7 +594,7 @@ public class FastWikiTokenizerEngine {
 		try{			
 			// add new character to buffer
 			if(Character.isLetter(c) || (!numberToken && length>0 && Character.isLetterOrDigit(c))
-					|| (c == '\'' && cur>0 && Character.isLetter(text[cur-1]) && cur+1<textLength && Character.isLetter(text[cur+1]) ) 
+					|| (isApostrophe(c) && cur>0 && Character.isLetter(text[cur-1]) && cur+1<textLength && Character.isLetter(text[cur+1]) ) 
 					|| (c == '.' && cur+1<textLength && Character.isLetter(text[cur+1]) && (length<2 || (length>=2 && buffer[length-1]!='.' && buffer[length-2]=='.')))
 					|| decomposer.isCombiningChar(c)){				
 				if(numberToken) // we were fetching a number
@@ -932,6 +936,7 @@ public class FastWikiTokenizerEngine {
 					addLetter();
 					continue;
 				case '\'':
+				case '\u2019':
 					if(cur + 1 < textLength ){
 						c1 = text[cur+1];
 						if(Character.isLetter(c1) && length>0 && Character.isLetter(buffer[length-1])){

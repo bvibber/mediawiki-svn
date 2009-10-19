@@ -90,6 +90,9 @@ public class FastWikiTokenizerTest extends WikiTestCase {
 		
 		assertEquals("1 [u2] 1 [heading1]",
 				tokens("u2 heading1"));
+		
+		assertEquals("1 [test] 1 [apostrophe's] 0 [apostrophes] 1 [and] 1 [other’s] 0 [others]",
+				tokens("Test apostrophe's and other\u2019s."));
 
 		
 	}
