@@ -1,5 +1,6 @@
 <?php
 
+//NOTE the wikiAtHome extension is dependent on oggHandler for defining some things like: $wgffmpeg2theoraPath
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo "This is the WikiAtHome extension. Please see the README file for installation instructions.\n";
 	exit( 1 );
@@ -60,8 +61,6 @@ $wgExtensionCredits['media'][] = array(
 );
 /******************* CONFIGURATION STARTS HERE **********************/
 
-//ffmpeg2theora path: enables us to get basic source file information
-$wgffmpeg2theora = '/usr/bin/ffmpeg2theora';
 
 //the oggCat path enables server side concatenation of encoded "chunks"
 $wgOggCat =  '/usr/local/bin/oggCat';
@@ -228,8 +227,8 @@ class WikiAtHome {
  * wahDoEncode issues an encode command to ffmpeg2theora
  */
 function wahDoEncode($source, $target, $encodeSettings ){
-	global $wgffmpeg2theora;
-	$cmd = wfEscapeShellArg( $wgffmpeg2theora ) . ' ' . wfEscapeShellArg( $source );
+	global $wgffmpeg2theoraPath;
+	$cmd = wfEscapeShellArg( $wgffmpeg2theoraPath ) . ' ' . wfEscapeShellArg( $source );
 	$wah = new WikiAtHome();
 	foreach($encodeSettings as $key=>$val){
 		if( isset( $wah->foggMap[$key] ) ){
@@ -256,21 +255,6 @@ function wahDoEncode($source, $target, $encodeSettings ){
 		return false;
 	}
 	return true;
-}
-
-/*
- * gets the json metadata from a given file (also validates it as a valid file)
- */
-function wahGetMediaJsonMeta( $path ){
-	global $wgffmpeg2theora, $wahFFmpeg2theoraFoggMap;
-
-	$cmd = wfEscapeShellArg( $wgffmpeg2theora ) . ' ' . wfEscapeShellArg ( $path ). ' --info';
-	wfProfileIn( 'ffmpeg2theora' );
-	$json_meta_str = wfShellExec( $cmd );
-	wfProfileOut( 'ffmpeg2theora' );
-	$objMeta = FormatJson::decode( $json_meta_str );
-
-	return $objMeta;
 }
 
 /*
