@@ -35,7 +35,7 @@ js2AddOnloadHook( function() {
 		});
 	};
 	*/
-	
+	if($j("#p-cactions li").length==0) $j("#p-cactions").removeClass("emptyPortlet").addClass("filledPortlet");
 	$j('#p-views ul').collapsibleTabs().bind("beforeTabCollapse", function(){
 		$j("#p-cactions").removeClass("emptyPortlet").addClass("filledPortlet");
 	}).bind("beforeTabExpand", function(){
