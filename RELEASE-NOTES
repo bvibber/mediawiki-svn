@@ -241,6 +241,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   called after a user's email has been successfully confirmed or invalidated.
 * (bug 19741) Moved the XCF files out of the main MediaWiki distribution, for 
   a smaller subversion checkout.
+* Added $wgRateLimitsExcludedIPs, to allow specific IPs to be whitelisted from
+  rate limits.
 
 
 === Bug fixes in 1.16 ===
