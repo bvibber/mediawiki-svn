@@ -1008,6 +1008,7 @@ $messages['ru'] = array(
 	'ct-user-contribs' => 'Общий вклад участников',
 	'ct-user-span' => 'Вклад участников за период',
 	'ct-and' => 'и',
+	'ct-update-table' => 'Обновить таблицу',
 );
 
 /** Yakut (Саха тыла)
@@ -1166,6 +1167,7 @@ $messages['vi'] = array(
 	'ct-user-contribs' => 'Tổng số lần đóng góp',
 	'ct-user-span' => 'Số lần đóng góp trong thời gian',
 	'ct-and' => 'và',
+	'ct-update-table' => 'Cập nhật bảng',
 );
 
 /** Yue (粵語)

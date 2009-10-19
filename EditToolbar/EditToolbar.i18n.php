@@ -2660,6 +2660,7 @@ $messages['dsb'] = array(
  * @author Crazymadlover
  * @author Geraki
  * @author Omnipaedista
+ * @author Raymond
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -5586,7 +5587,6 @@ $messages['id'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Judul tidak sah',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Memeriksa keberadaan halaman...',
 	'edittoolbar-tool-link-int-invalid' => 'Judul yang Anda berikan tidak sah.',
-	'edittoolbar-tool-link-ext-invalid' => 'URL yang anda berikan tidak sah.',
 	'edittoolbar-tool-file' => 'Sisipkan berkas',
 	'edittoolbar-tool-file-example' => 'Contoh.jpg',
 	'edittoolbar-tool-reference' => 'Referensi',
@@ -5658,6 +5658,7 @@ $messages['id'] = array(
 	'edittoolbar-tool-replace-nomatch' => 'Pencarian Anda tidak membuahkan hasil.',
 	'edittoolbar-tool-replace-success' => '$1 terjadi penggantian.',
 	'edittoolbar-tool-replace-emptysearch' => 'Anda tidak memasukan apapun untuk di pencarian.',
+	'edittoolbar-tool-replace-invalidregex' => 'Kalimat biasa yang Anda masukkan tidak sah: $1',
 	'edittoolbar-section-characters' => 'Karakter spesial',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Ekstensi Latin',
@@ -9111,7 +9112,6 @@ $messages['pt-br'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Título inválido',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Verificando existência da página...',
 	'edittoolbar-tool-link-int-invalid' => 'O título que você especificou é inválido.',
-	'edittoolbar-tool-link-ext-invalid' => 'A URL que você especificou é inválida.',
 	'edittoolbar-tool-file' => 'Arquivo embutido',
 	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referência',
@@ -9145,19 +9145,31 @@ $messages['pt-br'] = array(
 	'edittoolbar-tool-gallery-example' => '{{ns:file}}:Exemplo1.jpg|Legenda1',
 	'edittoolbar-tool-newline' => 'Nova linha',
 	'edittoolbar-tool-table' => 'Tabela',
+	'edittoolbar-tool-table-example-old' => '-
+! cabeçalho 1
+! cabeçalho 2
+! cabeçalho 3
+|-
+| linha 1, célula 1
+| linha 1, célula 2
+| linha 1, célula 3
+|-
+| linha 2, célula 1
+| linha 2, célula 2
+| linha 2, célula 3',
 	'edittoolbar-tool-table-title' => 'Inserir tabela',
 	'edittoolbar-tool-table-dimensions' => 'Dimensões',
 	'edittoolbar-tool-table-dimensions-rows' => 'Linhas',
 	'edittoolbar-tool-table-dimensions-columns' => 'Colunas',
 	'edittoolbar-tool-table-insert' => 'Inserir',
 	'edittoolbar-tool-table-cancel' => 'Cancelar',
-	'edittoolbar-tool-replace' => 'Substituir',
+	'edittoolbar-tool-replace' => 'Localizar e substituir',
 	'edittoolbar-tool-replace-title' => 'Localizar e substituir',
 	'edittoolbar-tool-replace-search' => 'Localizar:',
 	'edittoolbar-tool-replace-replace' => 'Substituir por:',
 	'edittoolbar-tool-replace-case' => 'Coincidir maiúsculas e minúsculas',
 	'edittoolbar-tool-replace-regex' => "Tratar ''string'' da pesquisa como uma expressão regular",
-	'edittoolbar-tool-replace-close' => 'Fechar',
+	'edittoolbar-tool-replace-close' => 'Cancelar',
 	'edittoolbar-tool-replace-nomatch' => 'Não houve coincidências para a sua pesquisa.',
 	'edittoolbar-section-characters' => 'Caracteres especiais',
 	'edittoolbar-characters-page-latin' => 'Latino',
@@ -9838,7 +9850,6 @@ $messages['si'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'වලංගු මාතෘකාවක් නොවේ',
 	'edittoolbar-tool-link-int-target-status-loading' => 'පිටුවේ පැවැත්ම පරීක්ෂා කරමින් පවතී...',
 	'edittoolbar-tool-link-int-invalid' => 'ඔබ සඳහන් කළ මාතෘකාව වලංගු නොවේ.',
-	'edittoolbar-tool-link-ext-invalid' => 'ඔබ සඳහන් කළ URL වලංගු නොවේ.',
 	'edittoolbar-tool-file' => 'කා වැද්දූ ගොනුව',
 	'edittoolbar-tool-file-example' => 'උදාහරණ.jpg',
 	'edittoolbar-tool-reference' => 'යොමුව',
@@ -9885,8 +9896,8 @@ $messages['si'] = array(
 | 2 පේළිය,1 කොටුව
 | 2 පේළිය,2 කොටුව
 | 2 පේළිය,3 කොටුව',
-	'edittoolbar-tool-table-example' => '1 පේළිය,2 කොටුව',
-	'edittoolbar-tool-table-example-header' => '1 පේළිය,2 කොටුව(ශීර්ෂකය)',
+	'edittoolbar-tool-table-example' => '$1 පේළිය,$2 කොටුව',
+	'edittoolbar-tool-table-example-header' => '$1 පේළිය,$2 කොටුව(ශීර්ෂකය)',
 	'edittoolbar-tool-table-title' => 'වගුවක් ඇතුල් කිරීම',
 	'edittoolbar-tool-table-dimensions' => 'මාන',
 	'edittoolbar-tool-table-dimensions-rows' => 'පේළි',
@@ -9894,7 +9905,7 @@ $messages['si'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'ශීර්ෂ පේළියක් ඇතුල් කරන්න',
 	'edittoolbar-tool-table-insert' => 'ඇතුල් කරන්න',
 	'edittoolbar-tool-table-cancel' => 'අත් හරින්න',
-	'edittoolbar-tool-table-toomany' => 'මෙහිදී එක් කොටුවකට වඩා ඇති වගුවක් ඇතුල් කිරීම කළ නොහැකිය.',
+	'edittoolbar-tool-table-toomany' => 'මෙහිදී $1 කොටුවකට වඩා ඇති වගුවක් ඇතුල් කිරීම කළ නොහැකිය.',
 	'edittoolbar-tool-table-invalidnumber' => 'ඔබ පේළි හෝ තීරු ගණන සඳහා වලංගු අගයක් ඇතුළත් කර නැත.',
 	'edittoolbar-tool-table-zero' => 'ඔබට පේළි හෝ තීරු ශුන්‍ය වන වගුවක් ඇතුල් කළ නොහැක.',
 	'edittoolbar-tool-replace' => 'සෙවීම හා ප්‍රතිස්ථාපනය',
@@ -9908,8 +9919,9 @@ $messages['si'] = array(
 	'edittoolbar-tool-replace-button-replaceall' => 'සියල්ලම ප්‍රතිස්ථාපනය කරන්න',
 	'edittoolbar-tool-replace-close' => 'අත් හරින්න',
 	'edittoolbar-tool-replace-nomatch' => 'ඔබේ සෙවීම කිසිදු පදයක් හා නොගැළපේ.',
-	'edittoolbar-tool-replace-success' => 'එක් ප්‍රතිස්ථාපනයක් සිදු කරන ලදී.',
+	'edittoolbar-tool-replace-success' => ' ප්‍රතිස්ථාපන $1ක් සිදු කරන ලදී.',
 	'edittoolbar-tool-replace-emptysearch' => 'ඔබ සෙවීම සඳහා කිසිවක් ඇතුල් කර නැත.',
+	'edittoolbar-tool-replace-invalidregex' => 'ඔබ ඇතුළත් කළ නිත්‍ය ප්‍රකාශනය වලංගු නොවේ:$1',
 	'edittoolbar-section-characters' => 'විශේෂ අනු ලකුණු',
 	'edittoolbar-characters-page-latin' => 'ලතින් අක්ෂර',
 	'edittoolbar-characters-page-latinextended' => 'දීර්ඝ කළ ලතින් අක්ෂර',
@@ -10752,11 +10764,13 @@ $messages['te'] = array(
 	'edittoolbar-tool-link-int' => 'ఒక వికీ పేజీకి',
 	'edittoolbar-tool-link-int-target' => 'పేజీ శీర్షిక:',
 	'edittoolbar-tool-link-int-text' => 'లంకె పాఠ్యం:',
+	'edittoolbar-tool-link-ext-target' => 'లంకె URL:',
 	'edittoolbar-tool-link-ext-text' => 'లంకె పాఠ్యం:',
 	'edittoolbar-tool-link-insert' => 'లంకె కలుపు',
 	'edittoolbar-tool-link-cancel' => 'రద్దు',
 	'edittoolbar-tool-link-int-target-status-exists' => 'పేజీ ఉంది',
 	'edittoolbar-tool-link-int-target-status-notexists' => 'పేజీ ఉనికిలో లేదు',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'తప్పుడు శీర్షిక',
 	'edittoolbar-tool-reference' => 'సాక్ష్యాలు',
 	'edittoolbar-tool-signature' => 'టైంస్టాంపుతో సహా మీ సంతకం',
 	'edittoolbar-section-advanced' => 'ఉన్నత',
@@ -10773,6 +10787,10 @@ $messages['te'] = array(
 	'edittoolbar-tool-big-example' => 'బొద్దు పాఠ్యం',
 	'edittoolbar-tool-small' => 'చిన్న',
 	'edittoolbar-tool-small-example' => 'వాలు పాఠ్యం',
+	'edittoolbar-tool-superscript' => 'శీర్షాక్షరాలు',
+	'edittoolbar-tool-superscript-example' => 'శీర్షాక్షర పాఠ్యం',
+	'edittoolbar-tool-subscript' => 'పాదాక్షరాలు',
+	'edittoolbar-tool-subscript-example' => 'పాదాక్షర పాఠ్యం',
 	'edittoolbar-group-insert' => 'చేర్చు',
 	'edittoolbar-tool-gallery' => 'చిత్రమాలిక',
 	'edittoolbar-tool-newline' => 'కొత్త లైను',
@@ -10790,6 +10808,7 @@ $messages['te'] = array(
 	'edittoolbar-section-help' => 'సహాయం',
 	'edittoolbar-help-heading-description' => 'వివరణ',
 	'edittoolbar-help-heading-syntax' => 'మీరు టైపు చేసేది',
+	'edittoolbar-help-heading-result' => 'మీరు ఏం పొందుతారు',
 	'edittoolbar-help-page-link' => 'లంకెలు',
 	'edittoolbar-help-page-heading' => 'శీర్షికలు',
 	'edittoolbar-help-page-list' => 'జాబితాలు',
@@ -10806,7 +10825,10 @@ $messages['te'] = array(
 	'edittoolbar-help-content-bolditalic-syntax' => "'''''బొద్దు &amp; వాలు పాఠ్యం'''''",
 	'edittoolbar-help-content-bolditalic-result' => '<strong><em>బొద్దు &amp; వాలు పాఠ్యం</em></strong>',
 	'edittoolbar-help-content-ilink-description' => 'అంతర్గత లింకు',
+	'edittoolbar-help-content-ilink-syntax' => '[[పేజీ శీర్షిక|లింకు పాఠ్యం]]<br />[[పేజీ శీర్షిక]]',
+	'edittoolbar-help-content-ilink-result' => "<a href='#'>లింకు పాఠ్యం</a><br /><a href='#'>పేజీ శీర్షిక</a>",
 	'edittoolbar-help-content-xlink-description' => 'బయటి లింకు',
+	'edittoolbar-help-content-xlink-syntax' => '[http://www.example.org లింకుపాఠ్యం]<br />[http://www.example.org]<br />http://www.example.org',
 	'edittoolbar-help-content-heading1-description' => '1వ స్థాయి శీర్షిక',
 	'edittoolbar-help-content-heading1-syntax' => '= శీర్షిక పాఠ్యం =',
 	'edittoolbar-help-content-heading1-result' => '<h1>శీర్షిక పాఠ్యం</h1>',
@@ -10823,10 +10845,14 @@ $messages['te'] = array(
 	'edittoolbar-help-content-heading5-syntax' => '===== శీర్షిక పాఠ్యం =====',
 	'edittoolbar-help-content-heading5-result' => '<h5>శీర్షిక పాఠ్యం</h5>',
 	'edittoolbar-help-content-olist-description' => 'సంఖ్యానుగుణ జాబితా',
+	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|వివరణ పాఠ్యం]]',
 	'edittoolbar-help-content-reference-description' => 'సాక్ష్యాలు',
 	'edittoolbar-help-content-reference-result' => "పేజీ పాఠ్యం.<sup><a href='#'>[1]</a></sup>",
 	'edittoolbar-help-content-rereference-result' => "పేజీ పాఠ్యం.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-signaturetimestamp-description' => 'సమయముద్రతో సంతకం',
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>వాడుకరిపేరు</a> (<a href='#' title='{{#special:mytalk}}'>చర్చ</a>) 15:54, 10 జూన్ 2009 (UTC)",
 	'edittoolbar-help-content-signature-description' => 'సంతకం',
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>వాడుకరిపేరు</a> (<a href='#' title='{{#special:mytalk}}'>చర్చ</a>)",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -11478,6 +11504,7 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Raymond
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -11509,7 +11536,6 @@ $messages['vi'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Tựa sai',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Kiểm tra trang đã tồn tại chưa...',
 	'edittoolbar-tool-link-int-invalid' => 'Tựa trang chỉ định không hợp lệ.',
-	'edittoolbar-tool-link-ext-invalid' => 'URL không đúng.',
 	'edittoolbar-tool-file' => 'Chèn tập tin',
 	'edittoolbar-tool-file-example' => 'Ví dụ.jpg',
 	'edittoolbar-tool-reference' => 'Chú thích tham khảo',
@@ -11581,6 +11607,7 @@ $messages['vi'] = array(
 	'edittoolbar-tool-replace-nomatch' => 'Không tìm thấy',
 	'edittoolbar-tool-replace-success' => 'Đã thực hiện $1 thay thế.',
 	'edittoolbar-tool-replace-emptysearch' => 'Bạn chưa nhập gì để tìm kiếm.',
+	'edittoolbar-tool-replace-invalidregex' => 'Biểu thức chính quy do bạn nhập vào không hợp lệ: $1',
 	'edittoolbar-section-characters' => 'Ký tự đặc biệt',
 	'edittoolbar-characters-page-latin' => 'La tinh',
 	'edittoolbar-characters-page-latinextended' => 'La tinh mở rộng',
