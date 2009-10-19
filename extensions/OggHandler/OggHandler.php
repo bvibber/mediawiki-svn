@@ -62,6 +62,9 @@ $wgEnableIframeEmbed = true;
 //Location of oggThumb binary (used over the ffmpeg version)
 $wgOggThumbLocation = '/usr/bin/oggThumb';
 
+//the location of ffmpeg2theora
+$wgffmpeg2theoraPath ='/usr/bin/ffmpeg2theora';
+
 // Location of the FFmpeg binary
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
 

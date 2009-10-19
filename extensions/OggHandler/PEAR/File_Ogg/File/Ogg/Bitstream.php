@@ -61,7 +61,7 @@ class File_Ogg_Bitstream
      * @var     int
      * @access  private
      */
-    var $_lastGranulePos;    
+    var $_lastGranulePos;
 
     /**
      * Constructor for a generic logical stream.
@@ -110,7 +110,7 @@ class File_Ogg_Bitstream
     {
         return ($this->_streamSerial);
     }
-    
+
     /**
      * Gives the size (in bits) of this stream.
      *
