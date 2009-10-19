@@ -18,7 +18,7 @@
 
 /* Configuration */
 // Bump the version number every time you change any of the .css/.js files
-$wgCollapsibleTabsStyleVersion = 2;
+$wgCollapsibleTabsStyleVersion = 3;
 
 /* Setup */
 
