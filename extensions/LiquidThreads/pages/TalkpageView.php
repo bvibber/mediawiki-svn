@@ -81,7 +81,7 @@ class TalkpageView extends LqtView {
 		// Header row
 		$headerRow = '';
 		$headers = array( 'lqt_toc_thread_title', 'lqt_toc_thread_author',
-							'lqt_toc_thread_replycount', 'lqt_toc_thread_modified' );
+				'lqt_toc_thread_replycount', 'lqt_toc_thread_modified' );
 		foreach ( $headers as $msg ) {
 			$headerRow .= Xml::tags( 'th', null, wfMsgExt( $msg, 'parseinline' ) );
 		}
@@ -91,7 +91,7 @@ class TalkpageView extends LqtView {
 		// Table body
 		$rows = array();
 		foreach ( $threads as $thread ) {
-			if ( !$thread->root()->getContent() &&
+			if ( $thread->root() && !$thread->root()->getContent() &&
 				    !LqtView::threadContainsRepliesWithContent( $thread ) ) {
 				continue;
 			}
