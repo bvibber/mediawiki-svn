@@ -263,7 +263,7 @@ $.collapsibleTabs = {
 		collapsible: 'li.collapsible',
 		shifting: false,
 		expandCondition: function(eleWidth) {
-			return ( $('#left-navigation').position().left + $('#left-navigation').width() + 4) 
+			return ( $('#left-navigation').position().left + $('#left-navigation').width() - 4) 
 				< ($('#right-navigation').position().left - eleWidth);
 		},
 		collapseCondition: function() {
