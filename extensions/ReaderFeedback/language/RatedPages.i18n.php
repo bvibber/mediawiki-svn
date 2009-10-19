@@ -126,6 +126,18 @@ $messages['de'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|Bewertung|Bewertungen}}',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'ratedpages' => 'pelê derecebiyayeyi yo wendoxi',
+	'ratedpages-leg' => 'pelê ke bızêd derecekerdışi derece biyê bıvin',
+	'ratedpages-list' => 'listeya ke cêr de ya bı goreyê feedbackê karberi rêz biyê.',
+	'ratedpages-none' => 'na liste de pel çino.',
+	'ratedpages-graphs' => 'data derece bena',
+	'ratedpages-count' => '$1 {{PLURAL:$1|tehqiqat|tehqiqat}}',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

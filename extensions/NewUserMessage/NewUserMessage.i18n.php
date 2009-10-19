@@ -158,6 +158,14 @@ $messages['de-ch'] = array(
 	'newuseredit-summary' => 'Begrüsst einen neuen Benutzer auf seiner Diskussionsseite mit einer [[{{int:newusermessage-template}}|Willkommensnachricht]]',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'newusermessage-desc' => 'karbero ke pelê werêameyişê ey newe vıraziyayo cı re yew mesaj erzeno',
+	'newuseredit-summary' => 'pelê werêameyişê karberi yo newe re mesajê [[{{int:newusermessage-template}}|ti xêr ameyi]] erzeno',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

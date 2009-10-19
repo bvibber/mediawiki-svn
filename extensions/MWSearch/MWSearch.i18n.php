@@ -124,6 +124,13 @@ $messages['de'] = array(
 	'mwsearch-desc' => 'Hintergrundprozess für die Lucene-Suchmaschine',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'mwsearch-desc' => 'zeylê MWSearchi',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -115,6 +115,13 @@ $messages['de'] = array(
 	'charinsert-desc' => 'Erlaubt die Erstellung einer JavaScript gesteuerten Leiste zum [[MediaWiki:Edittools|Einfügen von Sonderzeichen]]',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'charinsert-desc' => 'Qe [[MediaWiki:Edittools|de kerdişê karektaranê ne-standardî]] viraziyayîşê quti yê JavaScriptî ra destur dano',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

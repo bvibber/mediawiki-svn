@@ -560,11 +560,14 @@ $messages['hu'] = array(
 	'errorhandler-error-warning' => 'Figyelmeztetés',
 	'errorhandler-error-parse' => 'Elemző hiba',
 	'errorhandler-error-notice' => 'Megjegyzés',
+	'errorhandler-error-core-error' => 'Központi hiba',
 	'errorhandler-error-user-error' => 'Felhasználói hiba',
 	'errorhandler-error-user-warning' => 'Felhasználói figyelmeztetés',
 	'errorhandler-error-user-notice' => 'Felhasználói megjegyzés',
 	'errorhandler-error-strict' => 'Szigorú szabványok',
+	'errorhandler-error-recoverable' => 'Elkapható végzetes hiba',
 	'errorhandler-trace-line' => '$1 ($2. sor): $3',
+	'errorhandler-trace-line-internal' => '[belső függvény]: $1',
 );
 
 /** Interlingua (Interlingua)

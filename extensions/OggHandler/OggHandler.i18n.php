@@ -682,6 +682,26 @@ Sie können <a href="$1">den Clip herunterladen</a> oder <a href="http://www.med
  * @author Aspar
  */
 $messages['diq'] = array(
+	'ogg-short-audio' => 'Ogg $1 dosyaya vengi, $2',
+	'ogg-short-video' => 'Ogg $1 dosyaya filmi, $2',
+	'ogg-short-general' => 'Ogg $1 dosyaya medyayi, $2',
+	'ogg-long-audio' => '(Ogg $1 dosyaya medyayi,  mudde $2, $3)',
+	'ogg-long-video' => '(Ogg $1 dosyaya filmi, mudde $2, $4×$5 piksel, $3)',
+	'ogg-long-multiplexed' => '(Ogg dosyaya filmi/vengi yo multiexed, $1, mudde $2, $4×$5 piksel, $3 bıumumi)',
+	'ogg-long-general' => '(Ogg dosyaya medyayi, mudde $2, $3)',
+	'ogg-long-error' => '(dosyaya oggi yo nemeqbul: $1)',
+	'ogg-play' => "bıd' kaykerdış",
+	'ogg-pause' => 'vındarn',
+	'ogg-stop' => 'vındarn',
+	'ogg-play-video' => "video bıd' kaykerdış",
+	'ogg-play-sound' => "veng bıd' kaykerdış",
+	'ogg-no-player' => 'ma meluli, wina aseno ke sistemê şıma wayirê softwareyi yo player niyo.
+kerem kerê <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">yew player biyare war</a>.',
+	'ogg-no-player-js' => 'ma meluli, sistemê şıma de ya JavaScript battal o ya zi yew player çino.<br />
+<a href="$1">şıma eşkeni klib biyari war</a> ya zi şıma eşkeni cıgêrayoxê xo de klib bıdi kaykerdış, qey xebıtnayişi <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">şıma eşkeni yew player biyari war</a>.',
+	'ogg-no-xiphqt' => 'qey QuickTimeyi wina aseno ke şıma wayirê parçeyê XiphQTi niyê.
+heta ke parçeyê QuickTimeyi çinibi dosyayê Oggyi nêxebıtiyeni.
+kerem kerê<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT\'i biyar war</a> ya zi yewna player bıvıcinê.',
 	'ogg-player-videoElement' => 'destekê cıgêrayoxê mehelliyi',
 	'ogg-player-oggPlugin' => 'zeylê cıgêrayoxi',
 	'ogg-player-thumbnail' => 'hema têna resm o.',

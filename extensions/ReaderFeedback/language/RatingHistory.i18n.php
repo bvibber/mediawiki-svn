@@ -391,6 +391,22 @@ $messages['diq'] = array(
 	'ratinghistory-ave' => 'Ort: $1',
 	'ratinghistory-chart' => 'Zaman içindeki kullanıcı değerlendirmesi',
 	'ratinghistory-purge' => 'hafızaya verıni veng ker',
+	'ratinghistory-table' => 'Kullanıcı değerlendirmelerine genel bakış',
+	'ratinghistory-users' => 'karberê ke derecekerdışi dayi',
+	'ratinghistory-graph' => '"$3" de $2 ($1 {{PLURAL:$1|çımçarnayiş|çımçarnayiş}})',
+	'ratinghistory-svg' => 'bı SVG ramocın',
+	'ratinghistory-table-rating' => 'derecekerdışi',
+	'ratinghistory-table-votes' => 'reyî',
+	'ratinghistory-none' => 'qey grafiki nıka dataya feedback ê wendoxi çino.',
+	'ratinghistory-ratings' => "'''qistas:''' '''(1)''' - zeyif; '''(2)''' - kêm; '''(3)''' - adil; '''(4)''' - berz; '''(5)''' - Mukemmel;",
+	'ratinghistory-legend' => "'''bınızdi çımçarnayişê yew roci''' <font color=\"red\">''(sûr)''</font>, '''bınızdî derecekerdışê yew roci''' <font color=\"blue\">''(kewe)''</font>
+u '''bınızdi derecekerdışê xebati''' <font color=\"green\">''(kesk/aşıl)''</font> cêr de goreyê tarixi xet bı.
+''''''bınızdi derecekerdışê xebati''', istatiskê derecekerdışê qey her yew roci yo.
+Derecekerdış zey cêrın o:
+
+'''(1)''' - zayif; '''(2)''' - kêm; '''(3)''' - adil; '''(4)''' - berz; '''(5)''' - mukemmel;",
+	'ratinghistory-graph-scale' => "'''çımçarnayişê roceyi''' no qistas de <font color=\"red\">''(sûr)''</font> ''1:\$1'' ramociyeno.",
+	'right-feedback' => 'qey derecekerdışê yew peli formê cêrıni bışuxulnê',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1193,6 +1209,7 @@ $messages['ml'] = array(
 	'ratinghistory-year' => 'കഴിഞ്ഞ വർഷം',
 	'ratinghistory-3years' => 'കഴിഞ്ഞ 3 വർഷം',
 	'ratinghistory-ave' => 'ശരാശരി: $1',
+	'ratinghistory-purge' => 'കാഷെ ശുദ്ധമാക്കുക',
 	'ratinghistory-table' => 'വായനക്കാർ നൽകിയ മതിപ്പ് നിലവാരത്തിന്റെ പൊതു അവലോകനം',
 	'ratinghistory-users' => 'നിലവാരമിട്ട ഉപയോക്താക്കൾ',
 	'ratinghistory-graph' => '$2 ഗണത്തിലെ "$3" ({{PLURAL:$1|ഒരു സംശോധനം|$1 സംശോധനങ്ങൾ}})',

@@ -74,6 +74,13 @@ $messages['de'] = array(
 	'clientside-desc' => 'Stellt Funktionen zur Erzeugung von Code in clientseitigen Formaten wie HTML, CSS und JavaScript bereit',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'clientside-desc' => 'Qe viraştîşê kodan, fonkisyonan sey HTML, CSS u JavaScript dano',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -1424,6 +1424,32 @@ $3',
 	'specialpages-group-developer' => 'Entwicklerwerkzeuge',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'codereview-email-subj2' => '[$1] [r$2]: Vurnayîşan kontrol bike',
+	'codereview-email-subj3' => '[$1] [r$2]: Regression otomatik test keno',
+	'repoadmin' => 'Îdarê Kerdîşê Arşîvî',
+	'repoadmin-new-legend' => 'Yew arşîvê newî viraze',
+	'repoadmin-new-label' => 'Nameyê arşîvî:',
+	'repoadmin-new-button' => 'Biviraz',
+	'repoadmin-edit-legend' => 'Arşîvê $1î mofifiye kerdişî',
+	'repoadmin-edit-path' => 'Patikayê arşîvî:',
+	'repoadmin-edit-bug' => 'Patikayê bugzillayî:',
+	'repoadmin-edit-view' => 'Patikayê ViewVCyî:',
+	'repoadmin-edit-button' => 'Temam',
+	'repoadmin-edit-sucess' => 'Arşîvê "[[Special:Code/$1|$1]]"î vurne.',
+	'right-repoadmin' => 'Arşîvê kodî îdare bike',
+	'right-codereview-use' => 'Kar kerdişê xasî: Kod',
+	'right-codereview-add-tag' => 'Revîzyonî ra etîketanê newî de keno',
+	'right-codereview-remove-tag' => 'Revîzyonî ra etîketan de keno',
+	'right-codereview-post-comment' => 'Revîzyonî rê xulasa de keno',
+	'right-codereview-set-status' => 'Statuyê revîzyonî vurneno',
+	'right-codereview-link-user' => 'Nuştekarî, karberanê wîkî rê link keno',
+	'specialpages-group-developer' => 'Xacetanê raverberdoğî',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -4739,6 +4765,7 @@ $messages['ml'] = array(
 	'code-status-verified' => 'പരിശോധിച്ചിരിക്കുന്നു',
 	'code-pathsearch-path' => 'പഥം:',
 	'code-rev-submit' => 'മാറ്റങ്ങൾ സേവ് ചെയ്യുക',
+	'code-batch-status' => 'സ്ഥിതിയിൽ മാറ്റം വരുത്തുക:',
 	'codereview-batch-submit' => 'സമർപ്പിക്കുക',
 	'codereview-reply-link' => 'മറുപടി',
 	'repoadmin-new-button' => 'സൃഷ്ടിക്കുക',

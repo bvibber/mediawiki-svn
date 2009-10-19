@@ -733,6 +733,55 @@ $messages['de-formal'] = array(
 	'hiderevision-error-current' => 'Die letzte Bearbeitung einer Seite kann nicht entfernt werden. Setzen Sie die Bearbeitung erst zurück.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'hiderevision' => 'Revizyonan bıhetanê hetan bınım/pinani bıker',
+	'hiderevision-desc' => 'heme karberan ra her yew revizyon bınımn/wedar, qey sebebê qanûniyi ûsb.',
+	'group-oversight' => 'çımsernayoxi',
+	'group-oversight-member' => 'çımsernayox',
+	'grouppage-oversight' => '{{ns:project}}: çımsernayox',
+	'right-oversight' => 'revizyono ke cıwa ver pinani biyo nımiyayo ramocın',
+	'right-hiderevision' => 'revizyonan karberan ra bınımn',
+	'hiderevision-prompt' => 'numreyo revizyoni yo ke wedariyeno/wera diyeno:',
+	'hiderevision-continue' => 'Dewam',
+	'hiderevision-text' => "no '''têna''' qey halê cêrıni gani bışuxuliyo:
+* malumatê şexsiyo ke munasib niyo
+*: '' adresê keyeyi u numreyê telefoni, numreyê pawıtışê sosyali usb''
+
+'''kam ke no sistem bıxırabi bışuxuln imtiyazê ey destê ey ra veciyeni.'''
+
+unsurê ke hewna biyê heta ke website bıbo nêmociyeno çew (kes) re labele roceyê hewnakerdışi bınê qeyd de yo. keyo ke şıma yew xeta bıkeri serkarê databaseyi eşkeno bıaçarno halê verıni.",
+	'hiderevision-reason' => 'Sebep (bınımtıki roceyê ey muhefeze beno):',
+	'hiderevision-submit' => 'data bıheta heta bınım / pinani bıker',
+	'hiderevision-tab' => 'reviyon bınımn',
+	'hiderevision-link' => 'mışoreyê karberi yo pinani/nımiyaye',
+	'hiderevision-norevisions' => 'qey hewnakerdışi yew revizyon nêweçiya',
+	'hiderevision-noreason' => 'qey wedarıtışi gani şıma yew sebeb bıdi',
+	'hiderevision-status' => 'Revizyon $1: $2',
+	'hiderevision-success' => 'bıserkewte arşiw bı u hewna bı',
+	'hiderevision-error-missing' => 'database de nêasa',
+	'hiderevision-error-current' => 'yew pel de vuriyayişo peyin hewna nêbeno.
+ewwil no vuriyayiş açarnê.',
+	'hiderevision-error-delete' => 'arşiw nêbı; eceba cıwa ver çı hewna biyo?',
+	'hiderevision-archive-status' => '$1 tarixi ra pey revizyon hewna bı: $2',
+	'oversight-nodiff' => 'no pel cıwa ver çı revizyon nêbiyo u no semed ra vuriyayişê peli temaşa nêbeni. Ya:
+*pel hewna biyo
+*no revizyono pinani revizyono ewwil o',
+	'oversight-log-hiderev' => '$1 tarixi ra yew vurnayiş veciya',
+	'oversight' => 'çımsernayox',
+	'oversight-view' => 'teferruati',
+	'oversight-difference' => '(ferqo ke revizyono verin ra mendo)',
+	'oversight-prev' => 'Last previous revision',
+	'oversight-hidden' => 'revizyono nımiyaye',
+	'oversight-header' => "listeya cêrın,listeya revizyonana ke nazarê umumiyi ra wedariyayê/wera diyayi.
+kam no malumat eşkera bıkero imtiyaziyê çımsernayoxiyi ra men' beno.",
+	'oversight-legend' => 'bıgêr roceyê revizyonê nımnayişi',
+	'oversight-oversighter' => 'çımsernayox',
+	'oversight-offender' => 'nuştoxê revizyoni',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -2357,6 +2406,7 @@ $messages['ml'] = array(
 	'hiderevision-reason' => 'കാരണം (സ്വകാര്യമായി സൂക്ഷിക്കും):',
 	'hiderevision-submit' => 'ഈ ഡാറ്റ സ്ഥിരമായി മറയ്ക്കുക',
 	'hiderevision-tab' => 'പതിപ്പ് മറയ്ക്കുക',
+	'hiderevision-link' => 'മറയ്ക്കപ്പെട്ട ഉപയോക്തൃ സേവനങ്ങൾ',
 	'hiderevision-norevisions' => 'മായ്ക്കുവാന്‍ വേണ്ടി പതിപ്പുകളൊന്നും തിരഞ്ഞെടുത്തിട്ടില്ല.',
 	'hiderevision-noreason' => 'ഇതു ഒഴിവാക്കുന്നതിനു സാധുവായ ഒരു കാരണം രേഖപ്പെടുത്തേണ്ടതാണ്‌.',
 	'hiderevision-status' => 'പതിപ്പ് $1: $2',
@@ -2925,6 +2975,7 @@ Liberar tais dados poderá resultar na perda em definitivo dos privilégios de o
 /** Brazilian Portuguese (Português do Brasil)
  * @author Carla404
  * @author Eduardo.mps
+ * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'hiderevision' => 'Ocultar revisões permanentemente',
@@ -2968,7 +3019,7 @@ Os itens removidos não mais estarão visíveis para o público neste website, m
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de Supervisão.',
 	'oversight-legend' => 'Pesquisar registro de revisões ocultas',
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Ofensor:',
+	'oversight-offender' => 'Autor da revisão:',
 );
 
 /** Quechua (Runa Simi)

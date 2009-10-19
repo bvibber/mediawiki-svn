@@ -87,6 +87,13 @@ $messages['de'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-XML-Schnittstelle für Textauszüge',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML arayüzü metin aktarımını sağlar',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

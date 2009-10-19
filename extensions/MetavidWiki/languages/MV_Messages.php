@@ -1318,6 +1318,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Embanner meta-roadennoù video & Klask Media]',
+	'metavid' => 'Pajenn MetaVid',
 	'specialpages-group-mv_group' => 'Pajennoù dibar MetaVidWiki',
 	'mv_move_delete_msg' => 'kaset da $1',
 	'mv_path_type_label' => 'seurt hent',
@@ -1354,6 +1355,8 @@ $messages['br'] = array(
 	'mv_viewprevnext' => 'Gwelet ($1) ($2)',
 	'mediasearch' => 'Klask media',
 	'mv_search_sel_t' => 'Dibab ar mod klask',
+	'mv_results_for' => "Disoc'hoù evit $1",
+	'mv_video_search' => 'Klask video',
 );
 
 /** Bosnian (Bosanski)

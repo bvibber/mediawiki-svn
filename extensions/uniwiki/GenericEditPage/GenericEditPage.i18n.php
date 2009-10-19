@@ -1460,6 +1460,14 @@ $messages['vo'] = array(
 	'gep-nocategories' => 'Välolös kladi pu bali bü dakip',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'gep-addcategorybutton' => 'צולייגן',
+	'gep-addsectionbutton' => 'צולייגן',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong

@@ -123,6 +123,13 @@ $messages['de'] = array(
 	'poem-desc' => 'Fügt das <tt>&lt;poem&gt;</tt>-Tag zur Formatierung von Gedichten hinzu',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'poem-desc' => 'qey fesaldayişê şiiri etiketê <tt>&lt;poem&gt;</tt>i têarê keno',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
