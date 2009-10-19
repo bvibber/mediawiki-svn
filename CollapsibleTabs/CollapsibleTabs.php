@@ -18,7 +18,7 @@
 
 /* Configuration */
 // Bump the version number every time you change any of the .css/.js files
-$wgCollapsibleTabsStyleVersion = 4;
+$wgCollapsibleTabsStyleVersion = 5;
 
 /* Setup */
 
@@ -27,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CollapsibleTabs',
 	'author' => 'Adam Miller',
-	'version' => '0.0.4',
+	'version' => '0.0.5',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CollapsibleTabs',
 	'descriptionmsg' => 'collapsibletabs-desc',
 );
