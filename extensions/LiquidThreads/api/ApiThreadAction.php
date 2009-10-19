@@ -12,9 +12,9 @@ class ApiThreadAction extends ApiBase {
 			'markunread' => 'actionMarkUnread',
 			'split' => 'actionSplit',
 			'merge' => 'actionMerge',
-//			'reply', // Not implemented
+			'reply' => 'actionReply', // Not implemented
 			'newthread' => 'actionNewThread',
-//			'setsubject',
+			'setsubject' => 'actionSetSubject',
 		);
 	}
 	
@@ -260,6 +260,7 @@ class ApiThreadAction extends ApiBase {
 	public function actionNewThread( $threads, $params ) {
 		global $wgUser;
 		
+		// Validate talkpage parameters
 		if ( empty( $params['talkpage'] ) ) {
 			$this->dieUsage( 'You must specify a talk-page to post the thread to',
 				'missing-param' );
@@ -276,6 +277,8 @@ class ApiThreadAction extends ApiBase {
 		}
 		$talkpage = new Article( $talkpageTitle );
 		
+		
+		// Validate subject, generate a title
 		if ( empty( $params['subject'] ) ) {
 			$this->dieUsage( 'You must specify a thread subject',
 				'missing-param' );
@@ -292,21 +295,20 @@ class ApiThreadAction extends ApiBase {
 			
 			return;
 		}
+		$article = new Article( $title );
 		
+		// Check for text
 		if ( empty( $params['text'] ) ) {
 			$this->dieUsage( 'You must include text in your post', 'no-text' );
 			return;
 		}
-		
-		$summary = wfMsg( 'lqt-newpost-summary', $subject );
-		
-		if ( !empty( $params['summary'] ) ) {
-			$summary = $params['summary'];
-		}
-		
 		$text = $params['text'];
 		
-		$article = new Article( $title );
+		// Generate or pull summary
+		$summary = wfMsg( 'lqt-newpost-summary', $subject );
+		if ( !empty( $params['reason'] ) ) {
+			$summary = $params['reason'];
+		}
 		
 		// Inform hooks what we're doing
 		LqtHooks::$editTalkpage = $talkpage;
@@ -353,6 +355,150 @@ class ApiThreadAction extends ApiBase {
 			'thread-id' => $thread->id(),
 			'thread-title' => $thread->title()->getPrefixedText(),
 		);
+		
+		$result = array( 'thread' => $result );
+		
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+	
+	public function actionReply( $threads, $params ) {
+		global $wgUser;
+		
+		// Validate thread parameter
+		if ( count($threads) > 1 ) {
+			$this->dieUsage( 'You may only reply to one thread at a time',
+					'too-many-threads' );
+			return;
+		} elseif ( count($threads) < 1 ) {
+			$this->dieUsage( 'You must specify a thread to reply to',
+					'no-specified-threads' );
+			return;
+		}
+		$replyTo = array_pop( $threads );
+		
+		// Validate text parameter
+		if ( empty( $params['text'] ) ) {
+			$this->dieUsage( 'You must include text in your post', 'no-text' );
+			return;
+		}
+		
+		$text = $params['text'];
+		
+		// Generate/pull summary
+		$summary = wfMsg( 'lqt-reply-summary', $replyTo->subject(),
+				$replyTo->title()->getPrefixedText() );
+		
+		if ( !empty( $params['reason'] ) ) {
+			$summary = $params['reason'];
+		}
+		
+		// Grab data from parent
+		$talkpage = $replyTo->article();
+		$subject = $replyTo->subject();
+		
+		// Generate a reply title.
+		$title = Threads::newReplyTitle( $replyTo, $wgUser );
+		$article = new Article( $title );
+		
+		// Inform hooks what we're doing
+		LqtHooks::$editTalkpage = $talkpage;
+		LqtHooks::$editArticle = $article;
+		LqtHooks::$editThread = null;
+		LqtHooks::$editType = 'reply';
+		LqtHooks::$editAppliesTo = $replyTo;
+		
+		// Pull token in
+		$token = $params['token'];
+		
+		// All seems in order. Construct an API edit request
+		$requestData = array(
+			'action' => 'edit',
+			'title' => $title->getPrefixedText(),
+			'text' => $text,
+			'summary' => $summary,
+			'token' => $token,
+			'basetimestamp' => wfTimestampNow(),
+			'format' => 'json',
+		);
+		
+		$editReq = new FauxRequest( $requestData, true );
+		$internalApi = new ApiMain( $editReq, true );
+		$internalApi->execute();
+		
+		$editResult = $internalApi->getResultData();
+		
+		if ( $editResult['edit']['result'] != 'Success' ) {
+			$result = array( 'result' => 'EditFailure', 'details' => $editResult );
+			$this->getResult()->addValue( null, $this->getModuleName(), $result );
+			return;
+		}
+		
+		$articleId = $editResult['edit']['pageid'];
+		
+		// Reload article data
+		$article = Article::newFromId( $articleId );
+		
+		$thread = LqtView::postEditUpdates( 'reply', $replyTo, $article, $talkpage,
+					$subject, $summary, null, $text );
+					
+		$result = array(
+			'action' => 'reply',
+			'result' => 'Success',
+			'thread-id' => $thread->id(),
+			'thread-title' => $thread->title()->getPrefixedText(),
+			'parent-id' => $replyTo->id(),
+			'parent-title' => $replyTo->title()->getPrefixedText(),
+			'ancestor-id' => $replyTo->topmostThread()->id(),
+			'ancestor-title' => $replyTo->topmostThread()->title()->getPrefixedText(),
+		);
+		
+		$result = array( 'thread' => $result );
+		
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+	
+	public function actionSetSubject( $threads, $params ) {
+		// Validate thread parameter
+		if ( count($threads) > 1 ) {
+			$this->dieUsage( 'You may only change the subject of one thread at a time',
+					'too-many-threads' );
+			return;
+		} elseif ( count($threads) < 1 ) {
+			$this->dieUsage( 'You must specify a thread to change the subject of',
+					'no-specified-threads' );
+			return;
+		}
+		$thread = array_pop( $threads );
+		
+		// Validate subject
+		if ( empty( $params['subject'] ) ) {
+			$this->dieUsage( 'You must specify a thread subject',
+				'missing-param' );
+			return;
+		}
+		
+		$subject = $params['subject'];
+		$title = null;
+		$subjectOk = Thread::validateSubject( $subject, &$title, null, $talkpage );
+		
+		if ( !$subjectOk ) {
+			$this->dieUsage( 'The subject you specified is not valid',
+				'invalid-subject' );
+			
+			return;
+		}
+		
+		$thread->setSubject( $subject );
+		
+		$result = array(
+			'action' => 'setsubject',
+			'result' => 'success',
+			'thread-id' => $thread->id(),
+			'thread-title' => $thread->title(),
+			'new-subject' => $subject,
+		);
+		
+		$result = array( 'thread' => $result );
 		
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
