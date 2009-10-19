@@ -2362,7 +2362,7 @@ fn: {
 		// Build outline from wikitext
 		var outline = [];
 		var wikitext = $.wikiEditor.fixOperaBrokenness( context.$textarea.val() );
-		var headings = wikitext.match( /^={1,6}.+={1,6}\s*$/gm );
+		var headings = wikitext.match( /^={1,6}[^=\n][^\n]*={1,6}\s*$/gm );
 		var offset = 0;
 		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {
