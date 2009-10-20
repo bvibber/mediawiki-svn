@@ -31,29 +31,26 @@ class SpecialOptIn extends SpecialPage {
 		}
 		return true;
 	}
+	
+	public static function checkToken() {
+		global $wgRequest, $wgUser;
+		return $wgUser->matchEditToken( $wgRequest->getVal( 'token' ) );
+	}
 
 	public static function optIn( $user ) {
-		global $wgOptInPrefs, $wgUser, $wgRequest;
-		
-		// Don't allow anything to actually change without a matching token
-		if ( $wgUser->matchEditToken( $wgRequest->getVal( 'token' ) ) ) {
-			foreach ( $wgOptInPrefs as $pref => $value ) {
-				$user->setOption( $pref, $value );
-			}
-			$user->saveSettings();
+		global $wgOptInPrefs;
+		foreach ( $wgOptInPrefs as $pref => $value ) {
+			$user->setOption( $pref, $value );
 		}
+		$user->saveSettings();
 	}
 
 	public static function optOut( $user ) {
-		global $wgOptInPrefs, $wgUser, $wgRequest;
-		
-		// Don't allow anything to actually change without a matching token
-		if ( $wgUser->matchEditToken( $wgRequest->getVal( 'token' ) ) ) {
-			foreach ( $wgOptInPrefs as $pref => $value ) {
-				$user->setOption( $pref, null );
-			}
-			$user->saveSettings();
+		global $wgOptInPrefs;
+		foreach ( $wgOptInPrefs as $pref => $value ) {
+			$user->setOption( $pref, null );
 		}
+		$user->saveSettings();
 	}
 	
 	/* Functions */
@@ -106,19 +103,23 @@ class SpecialOptIn extends SpecialPage {
 		
 		if ( $wgRequest->getCheck( 'opt' ) ) {
 			if ( $wgRequest->getVal( 'opt' ) === 'in' ) {
-				self::optIn( $wgUser );
-				$wgOut->addWikiMsg( 'optin-success-in' );
-				
-				global $wgJsMimeType, $wgOptInStyleVersion;
-				UsabilityInitiativeHooks::initialize();
-				UsabilityInitiativeHooks::addScript( 'OptIn/OptIn.js',
-					$wgOptInStyleVersion );
-				
-				$url = $this->getTitle()->getLinkUrl();
-				$wgOut->addHTML( Xml::tags( 'script',
-					array( 'type' => $wgJsMimeType ),
-					'js2AddOnloadHook( function() { $j.post( "' . $url . '", optInGetPOSTData() ); } );'
-				) );
+				if ( self::checkToken() ) {
+					self::optIn( $wgUser );
+					$wgOut->addWikiMsg( 'optin-success-in' );
+					
+					global $wgJsMimeType, $wgOptInStyleVersion;
+					UsabilityInitiativeHooks::initialize();
+					UsabilityInitiativeHooks::addScript( 'OptIn/OptIn.js',
+						$wgOptInStyleVersion );
+					
+					$url = $this->getTitle()->getLinkUrl();
+					$wgOut->addHTML( Xml::tags( 'script',
+						array( 'type' => $wgJsMimeType ),
+						'js2AddOnloadHook( function() { $j.post( "' . $url . '", optInGetPOSTData() ); } );'
+					) );
+				} else
+					$this->showForm( self::isOptedIn( $wgUser ) ?
+						'out' : 'in' );
 			} else if ( $wgRequest->getVal( 'opt' ) == 'feedback' ) {
 				if ( $wgRequest->wasPosted() ) {
 					$this->saveSurvey( $wgOptInFeedBackSurvey,
@@ -130,9 +131,13 @@ class SpecialOptIn extends SpecialPage {
 				$this->saveSurvey( $wgOptInBrowserSurvey, 'in' );
 				$wgOut->disable();
 			} else {
-				self::optOut( $wgUser );
-				$this->saveSurvey( $wgOptInSurvey, 'out' );
-				$wgOut->addWikiMsg( 'optin-success-out' );
+				if ( self::checkToken() ) {
+					self::optOut( $wgUser );
+					$this->saveSurvey( $wgOptInSurvey, 'out' );
+					$wgOut->addWikiMsg( 'optin-success-out' );
+				} else
+					$this->showForm( self::isOptedIn( $wgUser ) ?
+						'out' : 'in' );
 			}
 			if ( $this->mOriginTitle )
 				$wgOut->addHTML( wfMsg( 'returnto',
