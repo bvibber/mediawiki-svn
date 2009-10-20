@@ -125,7 +125,7 @@ class Http {
 
 		// run the background download request:
 		$cmd = $wgPhpCli . ' ' . $IP . "/maintenance/http_session_download.php " . 
-			"--sid {$session_id} --usk {$upload_session_key}";
+			"--sid {$session_id} --usk {$upload_session_key} --wiki " . wfWikiId();
 		$pid = wfShellBackgroundExec( $cmd );
 		// the pid is not of much use since we won't be visiting this same apache any-time soon.
 		if( !$pid )
