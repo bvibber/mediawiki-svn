@@ -540,9 +540,11 @@ public class WikiQueryParser {
 			} else if(fieldLevel != -1 && level>fieldLevel)
 				continue;
 			
-			if(isTermChar(c) && text[cur]!='-'){
+			// include exclusion/inclusion marks
+			if(isTermChar(c) && text[cur]!='-' && text[cur]!='+'){
 				int start = cur;
 				tokenType = fetchToken(inPhrase);
+				// ignore excluded words
 				if(tokenType == TokenType.WORD && (start==0 || text[start-1]!='-')){
 					String type = "word";
 					if(bufferIsWildCard())

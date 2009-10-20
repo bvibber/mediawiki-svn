@@ -1,9 +1,11 @@
 package org.wikimedia.lsearch.analyzers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.Token;
 import org.apache.lucene.search.Query;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
@@ -128,6 +130,12 @@ public class WikiQueryParserTest extends WikiTestCase {
 			
 			q = parser.parseRaw("something (intitle:[2]:tests) out");
 			assertEquals("+contents:something +(title:tests title:test^0.5) +contents:out",q.toString());
+			
+			ArrayList<Token> tokens = parser.tokenizeForSpellCheck("+incategory:\"zero\" a:b incategory:c +incategory:d [1]:20");
+			assertEquals("[(a,19,20), (b,21,22), (c,34,35), (d,48,49), (20,54,56)]", tokens.toString());
+			
+			tokens = parser.tokenizeForSpellCheck("+incategory:\"Suspension bridges in the United States\"");
+			assertEquals("[]", tokens.toString());
 
 			
 		} catch(Exception e){
