@@ -2,11 +2,11 @@ js2AddOnloadHook( function() {
 	
 	//Overloading the moveToCollapsed function to animate the transition 
 	$j.collapsibleTabs.moveToCollapsed = function( ele ) {
-		$moving = $j(ele);
+		var $moving = $j(ele);
 		$j($moving.data('collapsibleTabsSettings').expandedContainer).data('collapsibleTabsSettings').shifting = true;
-		data = $moving.data('collapsibleTabsSettings');
+		var data = $moving.data('collapsibleTabsSettings');
 		// Remove the element from where it's at and put it in the dropdown menu
-		target = $moving.data('collapsibleTabsSettings').collapsedContainer;
+		var target = $moving.data('collapsibleTabsSettings').collapsedContainer;
 		// $moving.hide(500);
 		$moving.css("position", "relative").css('right',0);
 		$moving.animate({width: '1px'},"normal",function(){
@@ -15,23 +15,24 @@ js2AddOnloadHook( function() {
 			$j(this).remove().prependTo(target).data('collapsibleTabsSettings', data);
 			$j(this).attr('style', '');
 			$j($j(ele).data('collapsibleTabsSettings').expandedContainer).data('collapsibleTabsSettings').shifting = false;
+			$j.collapsibleTabs.handleResize();
 		});
 	};
 	
 	// Overloading the moveToExpanded function to animate the transition
 	$j.collapsibleTabs.moveToExpanded = function( ele ) {
-		$moving = $j(ele);
+		var $moving = $j(ele);
 		$j($moving.data('collapsibleTabsSettings').expandedContainer).data('collapsibleTabsSettings').shifting = true;
-		data = $moving.data('collapsibleTabsSettings');
+		var data = $moving.data('collapsibleTabsSettings');
 		// remove this element from where it's at and put it in the dropdown menu
-		target = $moving.data('collapsibleTabsSettings').prevElement;
-		expandedWidth = $moving.data('collapsibleTabsSettings').expandedWidth;
+		var target = $moving.data('collapsibleTabsSettings').prevElement;
+		var expandedWidth = $moving.data('collapsibleTabsSettings').expandedWidth;
 		$moving.css("position", "relative").css('left',0).css('width','1px');
 		$moving.remove().css('width','1px').insertAfter(target).data('collapsibleTabsSettings', data)
 			.animate({width: expandedWidth+"px"}, "normal", function(){
 			$j(this).attr('style', '');
 			$j($moving.data('collapsibleTabsSettings').expandedContainer).data('collapsibleTabsSettings').shifting = false;
-
+			$j.collapsibleTabs.handleResize();
 		});
 	};
 	

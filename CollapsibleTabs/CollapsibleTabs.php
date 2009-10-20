@@ -13,7 +13,7 @@
  *
  * @author Adam Miller <amiller@wikimedia.org>
  * @license GPL v2 or later
- * @version 0.0.2
+ * @version 0.0.6
  */
 
 /* Configuration */
@@ -27,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CollapsibleTabs',
 	'author' => 'Adam Miller',
-	'version' => '0.0.5',
+	'version' => '0.0.6',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CollapsibleTabs',
 	'descriptionmsg' => 'collapsibletabs-desc',
 );
