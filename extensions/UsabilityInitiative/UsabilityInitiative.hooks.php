@@ -68,7 +68,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 16 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 12 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 12 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 5 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 21 ),
 			),
 			'combined' => array(

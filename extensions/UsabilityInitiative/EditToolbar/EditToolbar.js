@@ -1005,12 +1005,35 @@ js2AddOnloadHook( function() {
 						else
 							insertText = '[[' + target + '|' + escapeInternalText( text ) + ']]';
 					} else {
+						// Prepend http:// if there is no protocol
+						if ( !target.match( /^[a-z]+:\/\/./ ) )
+							target = 'http://' + target;
+						
+						// Detect if this is really an internal link in disguise
+						var match = target.match( $j(this).data( 'articlePathRegex' ) );
+						if ( match && !$j(this).data( 'ignoreLooksInternal' ) ) {
+							var buttons = { };
+							var that = this;
+							buttons[ gM( 'edittoolbar-tool-link-lookslikeinternal-int' ) ] = function() {
+								$j( '#edittoolbar-link-int-target' ).val( match[1] ).change();
+								$j(this).dialog( 'close' );
+							};
+							buttons[ gM( 'edittoolbar-tool-link-lookslikeinternal-ext' ) ] = function() {
+								$j(that).data( 'ignoreLooksInternal', true );
+								$j(that).closest( '.ui-dialog' ).find( 'button:first' ).click();
+								$j(that).data( 'ignoreLooksInternal', false );
+								$j(this).dialog( 'close' );
+							};
+							$j.wikiEditor.modules.dialogs.quickDialog(
+								gM( 'edittoolbar-tool-link-lookslikeinternal', match[1] ),
+								{ buttons: buttons }
+							);
+							return;
+						}
+
 						var escTarget = escapeExternalTarget( target );
 						var escText = escapeExternalText( text );
-						// Prepend http:// if there is no protocol
-						if ( !escTarget.match( /^[a-z]+:\/\/./ ) ) {
-							escTarget = 'http://' + escTarget;
-						}
+						
 						if ( escTarget == escText )
 							insertText = escTarget;
 						else if ( text == '' )
@@ -1033,6 +1056,12 @@ js2AddOnloadHook( function() {
 				}
 			},
 			open: function() {
+				// Cache the articlepath regex
+				$j(this).data( 'articlePathRegex', new RegExp(
+					'^' + RegExp.escape( wgServer + wgArticlePath )
+						.replace( /\\\$1/g, '(.*)' ) + '$'
+				) );
+				
 				$j( '#edittoolbar-link-int-target' ).focus();
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.getSelection();
