@@ -137,6 +137,16 @@ fn: {
 		});
 	}
 },
-'modules': {}
+modules: {},
+quickDialog: function( body, settings ) {
+	$( '<div />' )
+		.text( body )
+		.appendTo( $( 'body' ) )
+		.dialog( $.extend( {
+			bgiframe: true,
+			modal: true
+		}, settings ) )
+		.dialog( 'open' );
+}
 
 }; } ) ( jQuery );

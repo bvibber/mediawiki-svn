@@ -263,11 +263,11 @@ $.collapsibleTabs = {
 		collapsible: 'li.collapsible',
 		shifting: false,
 		expandCondition: function(eleWidth) {
-			return ( $('#left-navigation').position().left + $('#left-navigation').width() - 4) 
+			return ( $('#left-navigation').position().left + $('#left-navigation').width()) 
 				< ($('#right-navigation').position().left - eleWidth);
 		},
 		collapseCondition: function() {
-			return ( $('#left-navigation').position().left + $('#left-navigation').width() + 4)
+			return ( $('#left-navigation').position().left + $('#left-navigation').width())
 				> $('#right-navigation').position().left;
 		}
 	},
@@ -1609,7 +1609,17 @@ fn: {
 		});
 	}
 },
-'modules': {}
+modules: {},
+quickDialog: function( body, settings ) {
+	$( '<div />' )
+		.text( body )
+		.appendTo( $( 'body' ) )
+		.dialog( $.extend( {
+			bgiframe: true,
+			modal: true
+		}, settings ) )
+		.dialog( 'open' );
+}
 
 }; } ) ( jQuery );
 /**
