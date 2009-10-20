@@ -1104,6 +1104,7 @@ $messages['tr'] = array(
 	'ct-user-contribs' => 'Toplam kullanıcı katkıları',
 	'ct-user-span' => 'Zaman içerisindeki kullanıcı katkıları',
 	'ct-and' => 've',
+	'ct-update-table' => 'Tabloyu güncelle',
 );
 
 /** Vèneto (Vèneto)

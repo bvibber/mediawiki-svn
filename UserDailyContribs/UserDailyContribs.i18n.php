@@ -269,3 +269,10 @@ $messages['vi'] = array(
 	'userdailycontribs-desc' => 'Đóng góp hàng ngày của thành viên dành cho bộ mở rộng theo dõi nhấn chuột',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Shizhao
+ */
+$messages['zh-hans'] = array(
+	'userdailycontribs-desc' => '点击跟踪扩展的用户每日贡献',
+);
+
