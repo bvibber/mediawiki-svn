@@ -1097,6 +1097,27 @@ $messages['hu'] = array(
 	'extdist-submit-version' => 'Folytatás',
 	'extdist-svn-error' => 'A Subversion hibával tért vissza: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Az „svn info” által visszaadott XML-t nem sikerült feldolgozni: <pre>$1</pre>',
+	'extdist-created' => "A(z) <b>$1</b> MediaWiki <b>$3</b> kiterjesztés <b>$2</b> verziójának pillanatfelvétele elkészült. A letöltés automatikusan megkezdődik 5 másodpercen belül.
+
+A pillanatfelvétel URL-je:
+:$4
+Használható a szerverről való azonnali letöltésre, de kérlek ne tedd el a könyvjelzőid közé, mert a tartalma nem fog frissülni, és lehet hogy később törölve lesz.
+
+A tar tömörítvényt a kiterjesztéseid könyvtárába kell kicsomagolni. Példa unix-szerű operációs rendszeren:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Windowson használhatod a [http://www.7-zip.org/ 7-zip]-et a fájlok kibontásához.
+
+Ha a wikid egy távoli szerveren van, bontsd ki a fájlokat egy ideiglenes könyvtárba a helyi számítógépeden, majd tölds fel '''az összes''' kitömörített fájlt a szerver kiterjesztések könyvtárába.
+
+Néhány kiterjesztésnek szüksége van egy ExtensionFunctions.php nevű fájlra, amelynek elérési útja: <tt>extensions/ExtensionFunctions.php</tt>, azaz az aktuális kiterjesztés ''szülő'' könyvtára. Ezeknek a kiterejsztéseknek a pillanatfelvétele tarbomb-ként tartalmazza ezt a fájlt, a ./ExtensionFunctions.php mappába kibontva. Ne felejtsd el feltölteni ezt a fájlt a távoli szerverre.
+
+Miután kibontottad a fájlokat, regisztrálnod kell a kiterjesztést a LocalSettings.php-ben. Erről a kiterjesztés dokumentációjának kell bővebb útmutatást adnia.
+
+Ha bármi kérdésed van a kiterjesztésterjesztő rendszerrel kapcsolatban, keresd fel az [[Extension talk:ExtensionDistributor]] lapot.",
 	'extdist-want-more' => 'Másik kiterjesztés letöltése',
 );
 

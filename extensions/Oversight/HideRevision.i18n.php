@@ -2401,6 +2401,7 @@ $messages['ml'] = array(
 	'group-oversight-member' => 'മേല്‍നോട്ടം',
 	'grouppage-oversight' => '{{ns:project}}:മേല്‍നോട്ടം',
 	'right-oversight' => 'മുന്‍പ് മറയ്ക്കപ്പെട്ട ഒരു പതിപ്പ് കാണുക',
+	'right-hiderevision' => 'കാര്യനിർവാഹകരിൽ നിന്ന് നാൾപ്പതിപ്പുകൾ മറയ്ക്കുക',
 	'hiderevision-prompt' => 'ഒഴിവാക്കാനുള്ള പതിപ്പിന്റെ ഐഡി',
 	'hiderevision-continue' => 'തുടരുക',
 	'hiderevision-reason' => 'കാരണം (സ്വകാര്യമായി സൂക്ഷിക്കും):',
@@ -3515,7 +3516,7 @@ Borttagna objekt kommer inte att vara synliga för någon genom webbplatsen, men
 Användare som sprider den här informationen vidare kan få sina censorrättigheter permanent borttagna.',
 	'oversight-legend' => 'Sök i versionsborttagningsloggen',
 	'oversight-oversighter' => 'Censor:',
-	'oversight-offender' => 'Syndare:',
+	'oversight-offender' => 'Versionens författare:',
 );
 
 /** Swahili (Kiswahili)

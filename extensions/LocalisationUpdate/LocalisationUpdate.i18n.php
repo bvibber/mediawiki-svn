@@ -107,6 +107,13 @@ $messages['el'] = array(
 	'localisationupdate-desc' => 'Διατηρεί τις μεταφράσεις μηνυμάτων όσο πιο ενημερωμένες γίνεται',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'localisationupdate-desc' => 'Ĝisdatigas la asimilitajn mesaĝojn tiom eble',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

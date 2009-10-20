@@ -476,6 +476,11 @@ Kérlek távolítsd el a(z) „$1” címet az <nowiki>{{#index:}}</nowiki>-ből
 	'index-expand-detail' => 'Mutasd az ilyen címmel indexelt lapokat',
 	'index-hide-detail' => 'Lapok listájának elrejtése',
 	'index-no-results' => 'A keresés nem hozott eredményt',
+	'index-search-explain' => 'Ez a lap előtag szerinti keresést használ.
+
+Írd be az első néhány karaktert, és kattints az elküldés gombra azon lapcímek és indexbejegyzések kereséséhez, amelyek a megadott karakterekkel kezdődnek',
+	'index-details-explain' => 'A nyíllal jelölt sorok indexbejegyzések.
+Kattints a nyílra minden azon a címen indexelt lap megjelenítéséhez.',
 );
 
 /** Interlingua (Interlingua)

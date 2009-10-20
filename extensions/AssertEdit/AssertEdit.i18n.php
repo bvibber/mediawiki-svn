@@ -147,6 +147,13 @@ $messages['de'] = array(
 	'assert_edit_message' => 'Der angegebene Anspruch ($1) ist fehlgeschlagen.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'assert_edit_title' => 'Bar bibiyo',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

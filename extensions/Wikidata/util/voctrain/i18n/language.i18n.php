@@ -3523,6 +3523,7 @@ $messages['tr'] = array(
 	'voctrain_User_added' => 'Kullanıcı eklendi',
 	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Merhaba, %username, omega dil eğitmenine hoşgeldiniz',
 	'voctrain_continue' => 'devam et',
+	'voctrain_Languages' => 'Diller',
 	'voctrain_other' => 'diğer',
 );
 

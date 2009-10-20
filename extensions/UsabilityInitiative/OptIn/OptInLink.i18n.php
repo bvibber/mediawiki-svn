@@ -946,11 +946,13 @@ $messages['yue'] = array(
  * @author Liangent
  * @author PhiLiP
  * @author Shinjiman
+ * @author Shizhao
  */
 $messages['zh-hans'] = array(
 	'optin-try' => '试用测试版',
 	'optin-leave' => '离开测试版',
 	'optin-feedback' => '测试版反馈',
+	'tooltip-pt-optin-feedback' => '提供你对新功能的反馈意见',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

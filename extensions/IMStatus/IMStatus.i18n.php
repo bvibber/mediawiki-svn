@@ -641,6 +641,7 @@ ID, kotryž dyrbiš podać, su ličby a pismiki mjez "$2" a "$3".',
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'imstatus-desc' => 'Tagek különböző azonnali üzenetküldő szolgáltatások bejelentkezési állapotának megjelenítésére (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Szintaxis',
 	'imstatus_default' => 'Alapértelmezett',
 	'imstatus_example' => 'Példa',
@@ -650,14 +651,22 @@ $messages['hu'] = array(
 	'imstatus_or' => 'vagy',
 	'imstatus_style' => 'állapotjelző stílusa',
 	'imstatus_action' => 'művelet a gombra való kattintáskor',
+	'imstatus_details_saa' => 'További részletekért az összes stílusról és műveletről lásd a következő lapot: $1.',
 	'imstatus_your_name' => '$1-azonosító',
+	'imstatus_aim_presence' => 'A(z) $1 megjeleníti az állapotodat egy hivatkozással, ami elindítja az AIM programot hogy azonnali üzenetet küldjenek neked (ha a felhasználónak telepítve van).',
+	'imstatus_aim_api' => 'A(z) $1 megjeleníti a bejelentkezési állapotodat egy hivatkozással, ami elindít egy <b>böngészőt</b> az AIM javascript-es változatával, hogy azonnali üzenetet küldjenek neked.',
 	'imstatus_gtalk_code' => 'a google talk kódod',
+	'imstatus_gtalk_get_code' => 'a Google Talk kódodat a(z) $1 címen tudhatod meg.',
 	'imstatus_gtalk_height' => 'a doboz magassága, képpontban.',
 	'imstatus_gtalk_width' => 'a doboz szélessége, pixelekben.',
 	'imstatus_icq_id' => 'az ICQ-azonosítód',
 	'imstatus_icq_style' => '0-tól 26-ig terjedő szám (igen, 27 stílus van)',
 	'imstatus_live_code' => 'a Live Messenger weboldal azonosítód',
+	'imstatus_live_get_code' => 'a Live Messenger weboldal azonosítód: <strong>ez nem az e-mail címed</strong>, készítened kell egyet a <a href="$1">Live Messenger beállításaidnál</a>.
+Az azonosító amit meg kell adnod az "$2" és "$3" közti számok és betűk.',
+	'imstatus_skype_nbstyle' => 'Megjegyzés: ha olyan stílust választasz, ami egyben művelet is, az egyébként választott műveletet felül fogja bírálni a stílushoz tartozó.',
 	'imstatus_xfire_size' => 'a gomb mérete, a legnagyobbtól ($1) a legkisebbig ($2).',
+	'imstatus_yahoo_style' => 'a gomb stílusa a legkisebbtől ($1) a legnagyobbig ($2), $3 és $4 pedig a hangpostához.',
 );
 
 /** Interlingua (Interlingua)

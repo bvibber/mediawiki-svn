@@ -515,6 +515,7 @@ $messages['lt'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'അയയ്ക്കുന്നു...',
 	'communityvoice-ratings-scale-status-thanks' => 'വോട്ട് ചെയ്തിതിനു നന്ദി!',
 );
 

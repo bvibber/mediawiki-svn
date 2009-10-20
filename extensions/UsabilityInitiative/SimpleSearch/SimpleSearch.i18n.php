@@ -808,11 +808,13 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author PhiLiP
+ * @author Shizhao
  */
 $messages['zh-hans'] = array(
 	'simplesearch' => '简易搜索',
 	'simplesearch-desc' => '向Vector的简易搜索中添加附加功能',
 	'simplesearch-search' => '搜索',
+	'simplesearch-containing' => '含有...',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
