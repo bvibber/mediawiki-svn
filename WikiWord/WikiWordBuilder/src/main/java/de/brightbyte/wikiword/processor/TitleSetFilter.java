@@ -16,7 +16,7 @@ import de.brightbyte.wikiword.builder.NameMaps;
 public class TitleSetFilter extends PageTitleFilter {
 	
 	protected static Set<String> slurpCursor(DataCursor<String> titleCursor) throws PersistenceException {
-		Map<String, Integer> map = NameMaps.newMap();
+		Map<String, Integer> map = NameMaps.newMap("hash");
 		
 		final Integer ONE = new Integer(1);
 		

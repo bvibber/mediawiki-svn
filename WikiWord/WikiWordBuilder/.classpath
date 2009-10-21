@@ -15,5 +15,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="var" path="M2_REPO/org/javolution/javolution/5.2.6/javolution-5.2.6.jar"/>
+	<classpathentry kind="lib" path="lib/jzlib-1.0.7.jar" sourcepath="/home/daniel/src/jzlib-1.0.7"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

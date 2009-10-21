@@ -173,7 +173,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 				log("storing ID mappings in "+f);
 				int bsz = tweaks.getTweak("dbstore.idManager.bufferSize", 16*1024);
 				
-				Map<String, Integer> map = NameMaps.newMap();
+				Map<String, Integer> map = NameMaps.newMap(tweaks.getTweak("dbstore.idManager.mapType", "hash"));
 				idManager = new PersistentIdManager(map, f, "UTF-8", bsz);
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
