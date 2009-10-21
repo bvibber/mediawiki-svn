@@ -567,8 +567,11 @@ $messages['lv'] = array(
  */
 $messages['mk'] = array(
 	'optin-try' => 'Пробај ја Бета',
+	'tooltip-pt-optin-try' => 'Испробајте нови алатки',
 	'optin-leave' => 'Напушти ја Бета',
+	'tooltip-pt-optin-leave' => 'Исклучи нови алатки',
 	'optin-feedback' => 'Мислења за Бета',
+	'tooltip-pt-optin-feedback' => 'Искажете мислење за вашето искуство со новите алатки',
 );
 
 /** Malayalam (മലയാളം)

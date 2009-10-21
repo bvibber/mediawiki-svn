@@ -82,6 +82,7 @@ $wgGoogleMapsMessages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Lloffiwr
@@ -117,7 +118,8 @@ This is the text next to an input box which allows the map-maker to add a captio
 
 {{Identical|Sorry, no results}}',
 	'gm-searching' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
-	'gm-map' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-map' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+{{Identical|Map}}',
 	'gm-note' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-instructions' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-are-you-sure' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
@@ -209,6 +211,7 @@ $wgGoogleMapsMessages['af'] = array(
 	'gm-balloon-title' => 'Titel:',
 	'gm-remove' => 'skrap',
 	'gm-no-results' => 'Jammer, geen resultate',
+	'gm-map' => 'Kaart',
 	'gm-width' => 'Wydte',
 	'gm-height' => 'Hoogte',
 	'gm-overview-control' => 'Oorsig',

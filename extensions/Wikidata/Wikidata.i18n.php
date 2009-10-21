@@ -3678,6 +3678,8 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
 	'ow_none_selected' => 'Ei yhtään valittu',
 	'ow_transaction_count' => 'Määrä:',
 	'ow_transaction_user' => 'Käyttäjätunnus:',
+	'ow_transaction_rollback_button' => 'Palauta',
+	'ow_transaction_rollback_header' => 'Palauta',
 	'ow_transaction_no_action' => 'Älä tee mitään',
 	'ow_transaction_previous_version' => 'Edellinen versio',
 	'ow_transaction_restore' => 'Palauta',

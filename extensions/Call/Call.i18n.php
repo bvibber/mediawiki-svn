@@ -672,6 +672,15 @@ $messages['mg'] = array(
 	'call-save-success' => "Voatahiry any amin'ny pejy <big>[[$1]]</big> io lahatsoratra io.",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'call' => 'Повик',
+	'call-desc' => 'Создајте хиперврска до шаблон (или нормална вики-страница) со предавање на параметри.
+Може да се користи во командниот ред на прелистувачот, или пак во вики-текст',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

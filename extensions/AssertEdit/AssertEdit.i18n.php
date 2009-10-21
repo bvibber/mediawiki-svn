@@ -152,6 +152,8 @@ $messages['de'] = array(
  */
 $messages['diq'] = array(
 	'assert_edit_title' => 'Bar bibiyo',
+	'assert_edit_desc' => 'Pê botî ra assertionê vurnayîşî de keno',
+	'assert_edit_message' => 'Assertionşê ($1) ke ti specife kerd ay nihebitiyeno.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

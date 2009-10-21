@@ -185,6 +185,13 @@ $messages['li'] = array(
 	'userdailycontribs-desc' => 'Dagelikse gebroekersbiedrage veur de oetbreijing óm gebroekerskliks mit te volge',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'userdailycontribs-desc' => 'Дневни придонеси од корисници за проширувањето „Следење на кликови“',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

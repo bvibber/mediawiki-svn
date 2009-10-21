@@ -62,12 +62,14 @@ $wgCustomToolbarMessages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $wgCustomToolbarMessages['qqq'] = array(
 	'ct-desc' => '{{desc}}',
+	'ct_external_caption' => '{{Identical|External link}}',
 	'ct_upload' => '* $1 comes from the HTTP request parameter "type"',
 	'ct_submit' => '{{Identical|Go}}',
 	'ct_user_user' => '{{Identical|User}}',
@@ -79,6 +81,7 @@ $wgCustomToolbarMessages['qqq'] = array(
  */
 $wgCustomToolbarMessages['af'] = array(
 	'ct_italic_sample' => 'Skuins teks',
+	'ct_external_caption' => 'Eksterne skakel',
 	'ct_nowiki_caption' => 'Geen wikiteks',
 	'ct_submit' => 'OK',
 	'ct_close' => 'Sluit venster',

@@ -2184,6 +2184,32 @@ Czekaj.',
 	'youtubeauthsub_jserror_nodesc' => 'Wprowadź opis materiału wideo.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ */
+$messages['pms'] = array(
+	'youtubeauthsub' => 'Caria un filmà YouTube',
+	'youtubeauthsub-desc' => "A lassa che j'utent a [[Special:YouTubeAuthSub|cario dij filmà]] diret su You Tube",
+	'youtubeauthsub_info' => "Për carié un filmà su YouTube për anserilo an na pàgina, ch'a daga j'anformassion sì-dapress:",
+	'youtubeauthsub_title' => 'Tìtol',
+	'youtubeauthsub_description' => 'Descrission',
+	'youtubeauthsub_password' => 'Soa ciav su YouTube',
+	'youtubeauthsub_username' => 'Sò stranòm su YouTube',
+	'youtubeauthsub_keywords' => 'Paròle ciav',
+	'youtubeauthsub_category' => 'Categorìa',
+	'youtubeauthsub_submit' => 'Manda',
+	'youtubeauthsub_clickhere' => 'Sgnaché ambelessì për rintré an YouTube',
+	'youtubeauthsub_tokenerror' => "Eror durant l'arcesta d'autorisassion, sërché d'agiorné la pàgina",
+	'youtubeauthsub_success' => "Congratulassion!<br>
+Sò filmà a l'é carià.<br>
+<a href='http://www.youtube.com/watch?v=$1'>Ch'a bèica sò filmà</a>.<br>
+Peul desse che YouTube a l'abia damanca d'un pòch ëd temp për livré la procedura su sò filmà, a l'é donca possìbil ch'a sia ancor nen disponìbil.<br>
+
+Për anserì sò filmà an na pàgina dla wiki, ch'a buta ël còdes sì-dapress ant la pàgina:<br>
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Për carié un filmà, a-j sarà prima ciamà ëd rintré su YouTube.',
+);
+
 /** Pontic (Ποντιακά)
  * @author Omnipaedista
  * @author Sinopeus

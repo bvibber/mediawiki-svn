@@ -189,6 +189,17 @@ $messages['de-formal'] = array(
 	'intersection_noincludecats' => 'Fehler: Sie müssen mindestens eine Kategorie einbinden oder einen Namensraum angeben!',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'intersection-desc' => 'yew kategori de, ya zi unsurê ke yew ra zêd pêgınayişê kategoriyan de esti, listeya maddeya nişanbiyayeyanê ıney unsuran vırazeno',
+	'intersection_toomanycats' => 'xeta: kategoriyi zaf zêd ê!',
+	'intersection_toofewcats' => 'xeta: kategoriyi zaf tay ê!',
+	'intersection_noresults' => 'xeta: netice çina!',
+	'intersection_noincludecats' => 'xeta: tewr tay yew kategori gani têarê bıbo ya zi yew mıntıqaya nameyi diyare bıkerê!',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

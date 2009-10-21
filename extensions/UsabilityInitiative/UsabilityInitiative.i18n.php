@@ -348,6 +348,7 @@ $messages['lt'] = array(
 $messages['mk'] = array(
 	'usabilityinitiative' => 'Иницијатива за употребливост',
 	'usabilityinitiative-desc' => 'Алатки и можности изработени од Иницијативата за употребливост на Википедија со цел да се подобри употребливоста на МедијаВики',
+	'prefs-experimental' => 'Експериментални алатки',
 );
 
 /** Malayalam (മലയാളം)

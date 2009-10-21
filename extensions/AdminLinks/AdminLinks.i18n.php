@@ -831,6 +831,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'adminlinks' => 'Gleecher fer Verwalter',
 	'adminlinks_users' => 'Yuuser',
 );
 

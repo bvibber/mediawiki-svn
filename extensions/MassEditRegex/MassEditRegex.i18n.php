@@ -619,6 +619,15 @@ $messages['oc'] = array(
 	'masseditregex-hint-toappend' => "Inserís de tèxte a la fin de l'article - practic per apondre las paginas a de categorias",
 	'masseditregex-hint-remove' => 'Levar de tèxte de totas las paginas de la lista',
 	'masseditregex-hint-removecat' => "Suprimís totas las categorias de l'article (notatz que los croquets dins lo wikicòde son escapats.) Las valors de remplaçament devon pas èsser escapadas.",
+	'masseditregex-listtype-intro' => 'Vaquí una lista de :',
+	'masseditregex-listtype-pagenames' => 'Nom de las paginas (editar aquestas paginas)',
+	'masseditregex-listtype-pagename-prefixes' => 'Prefix dels noms de paginas (editar las paginas que los noms començan per aqueste tèxte)',
+	'masseditregex-listtype-categories' => "Nom de las categorias (editar cada pagina presenta dins aquestas categorias ; la seleccion de l'espaci de noms es ignorada)",
+	'masseditregex-listtype-backlinks' => 'Paginas ligadas (editar las paginas que contenon un ligam cap a aquelas)',
+	'masseditregex-namespace-intro' => 'Totas aquestas paginas son dins aqueste espaci de noms :',
+	'masseditregex-exprnomatch' => 'L\'expression "$1" es pas estada trobada dins cap de pagina.',
+	'masseditregex-badregex' => 'Regex invalid :',
+	'masseditregex-editfailed' => "Error al moment de l'edicion :",
 	'masseditregex-tooltip-execute' => 'Aplicar aquestes cambiaments a cada pagina',
 );
 

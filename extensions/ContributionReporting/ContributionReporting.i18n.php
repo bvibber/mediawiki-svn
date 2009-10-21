@@ -2339,7 +2339,9 @@ $messages['ml'] = array(
 	'contribstats-total-ytd' => 'ആകെ (YTD)',
 	'contribstats-day-totals' => 'ഇന്ന് ആകെ',
 	'contribstats-week' => 'ആഴ്‌‌ച',
+	'contribstats-donations' => 'സംഭാവനകൾ',
 	'fundraiserstats-date' => 'തീയതി',
+	'fundraiserstats-day' => '$2-വിൽ $1 ദിനം',
 	'fundraiserstats-contributions' => 'സംഭാവനകൾ',
 	'fundraiserstats-total' => 'ആകെ (USD)',
 	'fundraiserstats-avg' => 'ശരാശരി (USD)',
@@ -2347,6 +2349,7 @@ $messages['ml'] = array(
 	'fundraiserstats-tab-totals' => 'ആകെ (USD)',
 	'fundraiserstats-tab-contributions' => 'സംഭാവനകളുടെ എണ്ണം',
 	'fundraiserstats-tab-averages' => 'ശരാശരികൾ (USD)',
+	'fundraiserstats-tab-maximums' => 'പരമാവധികൾ (USD)',
 );
 
 /** Malay (Bahasa Melayu)

@@ -468,6 +468,7 @@ $messages['mk'] = array(
 	'simplesearch' => 'Едноставно пребарување',
 	'simplesearch-desc' => 'Додава додатна функција на упростеното пребарување на Вектор',
 	'simplesearch-search' => 'Пребарување',
+	'simplesearch-containing' => 'содржи...',
 );
 
 /** Malayalam (മലയാളം)

@@ -811,6 +811,8 @@ $messages['lb'] = array(
 	'wah-menu-jobs' => 'Aarbechten',
 	'wah-menu-stats' => 'Statistiken',
 	'wah-menu-pref' => 'Astellungen',
+	'wah-downloading' => "D'Erofluede vum Fichier <i>$1%</i> ass fäerdeg",
+	'wah-uploadfail' => 'Eroplueden hue tnet fonctionnéiert',
 );
 
 /** Macedonian (Македонски)

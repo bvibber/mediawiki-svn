@@ -98,6 +98,13 @@ $messages['de'] = array(
 	'antibot-desc' => 'Einfaches Framework für Spambot-Prüfungen',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'antibot-desc' => 'Qe kontrolanê spambotî u payloodan rê yew çerçuveyê asanî',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
