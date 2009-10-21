@@ -779,11 +779,14 @@ js2AddOnloadHook( function() {
 		init: function() {
 			function isExternalLink( s ) {
 				// The following things are considered to be external links:
-				// * Starts with one or more letters followed by ://
+				// * Starts a URL protocol
 				// * Starts with www.
 				// * Ends with a . followed by two or more letters
 				// * Contains a . followed by two or more letters followed by /
-				return s.match( /(^[a-z]+:\/\/)|(^www\.)|([^.]\.[a-z]{2,}($|\/))/i );
+				if ( typeof arguments.callee.regex == 'undefined' )
+					// Cache the regex
+					arguments.callee.regex = new RegExp( "(^(" + urlprotocols + "))|(^www\\.)|([^.]\\.[a-z]{2,}($|\\/))", 'i');
+				return s.match( arguments.callee.regex );
 			}
 			// Updates the UI to show if the page title being inputed by the user exists or not
 			function updateExistence() {
