@@ -54,8 +54,10 @@ class ClickTrackingHooks {
 	 */
 	public static function addJS() {
 		global $wgOut;
-
-		UsabilityInitiativeHooks::initialize();
+		
+		// For now, ClickTracking only makes sense when other usability
+		// extensions are enabled
+		//UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js' );
 		UsabilityInitiativeHooks::addVariables(
 			array(
