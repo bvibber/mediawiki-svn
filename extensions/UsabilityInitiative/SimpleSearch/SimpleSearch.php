@@ -8,6 +8,9 @@
  * This file contains the include file for the SimpleSearch portion of the
  * UsabilityInitiative extension of MediaWiki.
  *
+ * This extension requires $wgEnableOpenSearchSuggest = true; (default)
+ * and recommends $wgEnableMWSuggest = false; (default)
+ * 
  * Usage: Include the following line in your LocalSettings.php
  * require_once( "$IP/extensions/UsabilityInitiative/SimpleSearch/SimpleSearch.php" );
  *
