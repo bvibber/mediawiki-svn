@@ -24,9 +24,26 @@ class EditToolbarHooks {
 			// Add JS and CSS
 			global $wgEditToolbarStyleVersion;
 			UsabilityInitiativeHooks::initialize();
-			UsabilityInitiativeHooks::addScript(
-				'EditToolbar/EditToolbar.js', $wgEditToolbarStyleVersion
-			);
+			UsabilityInitiativeHooks::addModuleScripts( array(
+				'raw' => array(
+					array(
+						'src' => 'EditToolbar/EditToolbar.js',
+						'version' => $wgEditToolbarStyleVersion
+					)
+				),
+				'combined' => array(
+					array(
+						'src' => 'EditToolbar/EditToolbar.js',
+						'version' => $wgEditToolbarStyleVersion
+					)
+				),
+				'minified' => array(
+					array(
+						'src' => 'EditToolbar/EditToolbar.min.js',
+						'version' => $wgEditToolbarStyleVersion
+					)
+				)
+			) );
 			UsabilityInitiativeHooks::addVariables( array(
 				'wgEditToolbarCGD' => $wgEditToolbarCGDGlobalEnable || ( $wgEditToolbarCGDUserEnable && $wgUser->getOption( 'usebetatoolbar-cgd' ) )
 			) );

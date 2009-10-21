@@ -40,6 +40,11 @@ class UsabilityInitiativeHooks {
 		'tests' => array(
 			array( 'src' => 'js/tests/wikiEditor.toolbar.js', 'version' => 0 )
 		),
+		'modules' => array(
+			'raw' => array(),
+			'combined' => array(),
+			'minfied' => array()
+		),
 		// Code to include when js2 is not present
 		'no_js2' => array(
 			'raw' => array(
@@ -83,38 +88,6 @@ class UsabilityInitiativeHooks {
 	/* Static Functions */
 	
 	public static function initialize() {
-		global $wgUsabilityInitiativeResourceMode;
-		global $wgEnableJS2system, $wgEditToolbarRunTests;
-		
-		// Only do this the first time!
-		if ( !self::$doOutput ) {
-			// Default to raw
-			$mode = $wgUsabilityInitiativeResourceMode; // Just an alias
-			if ( !isset( self::$scriptFiles['base_sets'][$mode] ) ) {
-				$mode = 'raw';
-			}
-			// Provide enough support to make things work, even when js2 is not
-			// in use (eventually it will be standard, but right now it's not)
-			if ( !$wgEnableJS2system ) {
-				self::$scripts = array_merge(
-					self::$scripts, self::$scriptFiles['no_js2'][$mode]
-				);
-			}
-			// Inlcude base-set of scripts
-			self::$scripts = array_merge(
-				self::$scripts, self::$scriptFiles['base_sets'][$mode]
-			);
-			// Inlcude base-set of styles
-			self::$styles = array_merge(
-				self::$styles, self::$styleFiles['base_sets'][$mode]
-			);
-			if ( $wgEditToolbarRunTests ) {
-				// Include client side tests
-				self::$scripts = array_merge(
-					self::$scripts, self::$scriptFiles['tests']
-				);
-			}
-		}
 		self::$doOutput = true;
 	}
 	
@@ -124,10 +97,40 @@ class UsabilityInitiativeHooks {
 	 */
 	public static function addResources( $out ) {
 		global $wgScriptPath, $wgJsMimeType;
+		global $wgUsabilityInitiativeResourceMode;
+		global $wgEnableJS2system, $wgEditToolbarRunTests;
 		
 		if ( !self::$doOutput )
 			return true;
 		
+		// Default to raw
+		$mode = $wgUsabilityInitiativeResourceMode; // Just an alias
+		if ( !isset( self::$scriptFiles['base_sets'][$mode] ) ) {
+			$mode = 'raw';
+		}
+		// Include base-set of scripts
+		self::$scripts = array_merge(
+			self::$scriptFiles['base_sets'][$mode],
+			self::$scriptFiles['modules'][$mode],
+			self::$scripts
+		);
+		// Provide enough support to make things work, even when js2 is not
+		// in use (eventually it will be standard, but right now it's not)
+		if ( !$wgEnableJS2system ) {
+			self::$scripts = array_merge(
+				self::$scriptFiles['no_js2'][$mode], self::$scripts
+			);
+		}
+		// Include base-set of styles
+		self::$styles = array_merge(
+			self::$styleFiles['base_sets'][$mode], self::$styles
+		);
+		if ( $wgEditToolbarRunTests ) {
+			// Include client side tests
+			self::$scripts = array_merge(
+				self::$scripts, self::$scriptFiles['tests']
+			);
+		}
 		// Loops over each script
 		foreach ( self::$scripts as $script ) {
 			// Add javascript to document
@@ -219,5 +222,14 @@ class UsabilityInitiativeHooks {
 	 */
 	public static function addVariables( $variables ) {
 		self::$variables = array_merge( self::$variables, $variables );
+	}
+	
+	/**
+	 * Adds scripts for modules
+	 * @param $scripts array with 'raw', 'combined' and 'minified' keys
+	 */
+	public static function addModuleScripts( $scripts ) {
+		self::$scriptFiles['modules'] = array_merge(
+			self::$scriptFiles['modules'], $scripts );
 	}
 }
