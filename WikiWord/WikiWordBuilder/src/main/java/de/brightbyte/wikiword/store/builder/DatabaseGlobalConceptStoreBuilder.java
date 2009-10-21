@@ -233,7 +233,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		DatabaseTable langlinkTable = database.getTable("langlink");
 		String lang = localdb.getCorpus().getLanguage();
 		
-		String sql = "UPDATE IGNORE "+langlinkTable.getSQLName()+" as R JOIN "+aboutTable.getSQLName()+" as A "
+		String sql = "UPDATE IGNORE "+langlinkTable.getSQLName()+" as R force index(language_target) "
+					+ " JOIN "+aboutTable.getSQLName()+" as A force index(resource_name) "
 					+ " ON R.language = "+database.quoteString(lang)+" "
 					+ " AND R.target = A.resource_name "
 					+ " SET R.target = A.concept_name ";
