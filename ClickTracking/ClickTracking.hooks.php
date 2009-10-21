@@ -53,12 +53,12 @@ class ClickTrackingHooks {
 	 * Adds JavaScript
 	 */
 	public static function addJS() {
-		global $wgOut;
+		global $wgOut, $wgClickTrackingStyleVersion;
 		
 		// For now, ClickTracking only makes sense when other usability
 		// extensions are enabled
 		//UsabilityInitiativeHooks::initialize();
-		UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js' );
+		UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js', $wgClickTrackingStyleVersion );
 		UsabilityInitiativeHooks::addVariables(
 			array(
 				'wgTrackingToken' => ClickTrackingHooks::get_session_id(),
