@@ -37,7 +37,8 @@ all: \
 	js/js2.combined.js\
 	js/js2.combined.min.js\
 	js/plugins.combined.js\
-	js/plugins.combined.min.js
+	js/plugins.combined.min.js\
+	EditToolbar/EditToolbar.min.js
 
 css/combined.css: $(CSS)
 	cat $(CSS) > css/combined.css
@@ -56,9 +57,14 @@ js/plugins.combined.min.js : js/plugins.combined.js jsmin
 	if [ -e ./jsmin ]; then ./jsmin < js/plugins.combined.js > js/plugins.combined.min.js;\
 	else jsmin < js/plugins.combined.js > js/plugins.combined.min.js; fi
 
+EditToolbar/EditToolbar.min.js: EditToolbar/EditToolbar.js
+	if [ -e ./jsmin ]; then ./jsmin < EditToolbar/EditToolbar.js > EditToolbar/EditToolbar.min.js;\
+	else jsmin < EditToolbar/EditToolbar.js > EditToolbar/EditToolbar.min.js; fi
+
 css/combined.min.css : css/combined.css
 	cat css/combined.css | sed -e 's/^[ 	]*//g; s/[ 	]*$$//g; s/\([:{;,]\) /\1/g; s/ {/{/g; s/\/\*.*\*\///g; /^$$/d'\
 	> css/combined.min.css
+
 
 jsmin:
 	type -P jsmin &>/dev/null || ( wget http://www.crockford.com/javascript/jsmin.c; gcc jsmin.c -o jsmin )
