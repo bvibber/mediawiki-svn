@@ -546,6 +546,7 @@ $messages['he'] = array(
 	'ct-user-contribs' => 'סך כל תרומות המשתמשים',
 	'ct-user-span' => 'תרומות המשתמשים לאורך הזמן',
 	'ct-and' => 'וגם',
+	'ct-update-table' => 'עדכון הטבלה',
 );
 
 /** Croatian (Hrvatski)
@@ -900,6 +901,7 @@ $messages['oc'] = array(
 	'ct-user-contribs' => 'Contribucions totalas dels utilizaires',
 	'ct-user-span' => "Contribucions de l'utilizaire sus la durada",
 	'ct-and' => 'e',
+	'ct-update-table' => 'Metre a jorn la taula',
 );
 
 /** Polish (Polski)

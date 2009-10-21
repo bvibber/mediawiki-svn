@@ -285,6 +285,7 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'navigabletoc' => 'Содржина со навигација',
 	'navigabletoc-desc' => 'Додава содржина на статијата во образецот за уредување која ја поместува кутијата за текст кога ќе се кликне на пасус',
+	'navigabletoc-preference' => 'Овозможи навигабилна табела и содржина',
 );
 
 /** Malay (Bahasa Melayu)
