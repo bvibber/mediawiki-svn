@@ -43,7 +43,7 @@ class UsabilityInitiativeHooks {
 		'modules' => array(
 			'raw' => array(),
 			'combined' => array(),
-			'minfied' => array()
+			'minified' => array()
 		),
 		// Code to include when js2 is not present
 		'no_js2' => array(
