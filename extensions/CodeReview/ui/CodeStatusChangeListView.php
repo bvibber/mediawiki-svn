@@ -54,9 +54,9 @@ class CodeStatusChangeTablePager extends SvnTablePager {
 			'cpc_user_text' => wfMsg( 'code-field-user' ),
 			'cpc_rev_id' => wfMsg( 'code-field-id' ),
 			'cr_message' => wfMsg( 'code-field-message' ),
-			'cr_status' => wfMsg( 'code-field-status' ),
 			'cpc_removed' => wfMsg( 'code-old-status' ),
 			'cpc_added' => wfMsg( 'code-new-status' ),
+			'cr_status' => wfMsg( 'code-field-status' ),
 		);
 	}
 
