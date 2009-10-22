@@ -416,6 +416,11 @@ class LqtView {
 			$this->perpetuate( 'lqt_operand', 'hidden' ) .
 			Xml::hidden( 'lqt_nonce', wfGenerateToken() ) .
 			Xml::hidden( 'offset', $offset );
+		
+		$e->editFormTextAfterContent .=
+			Xml::tags( 'p', null, $this->getSignature( $this->user ) );
+		$e->previewTextAfterContent .=
+			Xml::tags( 'p', null, $this->getSignature( $this->user ) );
 			
 		// Add a one-time random string to a hidden field. Store the random string
 		//  in memcached on submit and don't allow the edit to go ahead if it's already
@@ -424,13 +429,11 @@ class LqtView {
 		if ( $submitted_nonce ) {
 			global $wgMemc;
 			
-			$key = wfMemcKey( 'lqt-nonce', $submitted_nonce, $this->user->getName() );
-			if ( $wgMemc->get( $key ) ) {
+			$nonce_key = wfMemcKey( 'lqt-nonce', $submitted_nonce, $this->user->getName() );
+			if ( $wgMemc->get( $nonce_key ) ) {
 				$this->output->redirect( $this->article->getTitle()->getFullURL() );
 				return;
 			}
-			
-			$wgMemc->set( $key, 1, 3600 );
 		}
 
 		if ( $subject_expected ) {
@@ -455,11 +458,26 @@ class LqtView {
 		$this->output->setArticleFlag( false );
 		
 		if ( $e->didSave ) {
+			// Move the thread and replies if subject changed.
+			if ( $edit_type == 'editExisting' && $subject &&
+					$subject != $thread->subject() ) {
+				$thread->setSubject( $subject );
+				$thread->commitRevision( Threads::CHANGE_EDITED_SUBJECT,
+							$thread, $e->summary );
+				
+				// Disabled page-moving for now.
+				// $this->renameThread( $thread, $subject, $e->summary );
+			}
+			
 			$thread = self::postEditUpdates(
 					$edit_type, $edit_applies_to, $article,
 					$this->article,	$subject, $e->summary, $thread,
 					$e->textbox1
 				);
+			
+			if ( $submitted_nonce && $nonce_key ) {
+				$wgMemc->set( $nonce_key, 1, 3600 );
+			}
 		}
 
 		// A redirect without $e->didSave will happen if the new text is blank (EditPage::attemptSave).
@@ -495,14 +513,6 @@ class LqtView {
 			$edit_applies_to->commitRevision( Threads::CHANGE_EDITED_SUMMARY,
 							$edit_applies_to, $edit_summary );
 		} elseif ( $edit_type == 'editExisting' ) {
-			// Move the thread and replies if subject changed.
-			if ( $subject && $subject != $thread->subjectWithoutIncrement() ) {
-				$thread->setSubject( $subject );
-				
-				// Disabled page-moving for now.
-				// $this->renameThread( $thread, $subject, $e->summary );
-			}
-			
 			// Use a separate type if the content is blanked.
 			$type = strlen( trim( $new_text ) )
 					? Threads::CHANGE_EDITED_ROOT
@@ -956,12 +966,20 @@ class LqtView {
 	}
 	
 	function threadSignature( $thread ) {
-		global $wgUser;
+		global $wgUser, $wgLang;
 		$sk = $wgUser->getSkin();
 		
 		$author = $thread->author();
 		
 		$signature = $this->getSignature( $author );
+		$signature = Xml::tags( 'span', array( 'class' => 'lqt-thread-user-signature' ),
+					$signature );
+					
+ 		$timestamp = $wgLang->timeanddate( $thread->created(), true );
+		$signature .= Xml::element( 'span',
+					array( 'class' => 'lqt-thread-toolbar-timestamp' ),
+					$timestamp );
+		
 		$signature = Xml::tags( 'div', array( 'class' => 'lqt-thread-signature' ),
 					$signature );
 		
@@ -974,11 +992,6 @@ class LqtView {
 		$sk = $wgUser->getSkin();
 		
 		$infoElements = array();
-		
-		$timestamp = $wgLang->timeanddate( $thread->created(), true );
-		$infoElements[] = Xml::element( 'div',
-					array( 'class' => 'lqt-thread-toolbar-timestamp' ),
-					$timestamp );
 									
 		// Check for edited flag.
 		$editedFlag = $thread->editedness();
@@ -991,6 +1004,10 @@ class LqtView {
 			$infoElements[] = Xml::element( 'div', array( 'class' =>
 						'lqt-thread-toolbar-edited-' . $editedBy ),
 						$editedNotice );
+		}
+		
+		if ( ! count($infoElements) ) {
+			return '';
 		}
 		
 		return Xml::tags( 'div', array( 'class' => 'lqt-thread-info-panel' ),
@@ -1054,13 +1071,16 @@ class LqtView {
 		$author = $thread->author();
 		$sig = $sk->userLink( $author->getID(), $author->getName() ) .
 			   $sk->userToolLinks( $author->getID(), $author->getName() );
+		$newTalkpage = $thread->article()->getTitle();
 			   
 		$html =
-			wfMsgExt( 'lqt_move_placeholder', array( 'parseinline', 'replaceafter' ),
+			wfMsgExt( 'lqt_move_placeholder',
+				array( 'parseinline', 'replaceafter' ),
 				$sk->link( $target ),
 				$sig,
 				$wgLang->date( $thread->modified() ),
-				$wgLang->time( $thread->modified() )
+				$wgLang->time( $thread->modified() ),
+				$sk->link($newTalkpage)
 			);
 		
 		$this->output->addHTML( $html );

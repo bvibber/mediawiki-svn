@@ -469,3 +469,11 @@ table.lqt-new-messages {
 .lqt-thread-link-title {
 	font-family: monospace;
 }
+
+.lqt-thread-signature span {
+	padding-right: 1em;
+}
+
+.lqt-command {
+	line-height: 2em;
+}
