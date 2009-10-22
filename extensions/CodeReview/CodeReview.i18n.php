@@ -3019,6 +3019,10 @@ $messages['he'] = array(
 	'code-release-badrange' => 'הטווח גדול מדי!',
 	'codereview-subtitle' => 'עבור $1',
 	'codereview-reply-link' => 'תגובה',
+	'codereview-tests-succeeded' => 'בדיקות שהצליחו',
+	'codereview-tests-failed'  => 'בדיקות שנכשלו:',
+	'codereview-tests-running' => 'הבדיקות רצות כעת...',
+	'codereview-tests-aborted' => 'הבדיקות הופסקו.',
 	'codereview-email-subj' => '[$1] [גרסה $2]: נוספה הערה חדשה',
 	'codereview-email-body' => 'המשתמש "$1" פרסם הערה אודות r$3.
 
