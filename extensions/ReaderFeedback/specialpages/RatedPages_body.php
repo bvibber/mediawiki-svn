@@ -25,11 +25,16 @@ class RatedPages extends SpecialPage
 		if( wfReadOnly() ) {
 			return $wgOut->readOnlyPage();
 		}
+		// Purge expired entries on one in every 10 queries
+		if( 0 == mt_rand( 0, 10 ) ) {
+			ReaderFeedback::purgeExpiredAverages();
+		}
 		$this->skin = $wgUser->getSkin();
 		# Check if there is a featured level
 		$this->namespace = $wgRequest->getInt( 'namespace' );
 		$this->tag = $wgRequest->getVal( 'ratingtag' );
 		$this->tier = $wgRequest->getInt( 'ratingtier' );
+
 		$this->showForm();
 		$this->showPageList();
 	}

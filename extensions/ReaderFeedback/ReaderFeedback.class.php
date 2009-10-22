@@ -101,6 +101,18 @@ class ReaderFeedback {
 	}
 	
 	/**
+	 * Purge outdated page average data
+	 * @returns bool
+	 */	
+	public static function purgeExpiredAverages() {
+		global $wgFeedbackAge;
+		$dbw = wfGetDB( DB_MASTER );
+		$cutoff = $dbw->addQuotes( $dbw->timestamp( time() - $wgFeedbackAge ) );
+		$dbw->delete( 'reader_feedback_pages', array("rfp_touched < $cutoff"), __METHOD__ );
+		return ( $dbw->affectedRows() != 0 );
+	}
+	
+	/**
 	* Is this page in rateable namespace?
 	* @param Title, $title
 	* @return bool

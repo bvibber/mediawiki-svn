@@ -341,6 +341,10 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		if( $wgUser->getId() ) {
 			$this->page->invalidateCache();
 		}
+		# Prune expired page aggregate data
+		if( 0 == mt_rand( 0, 99 ) ) {
+			ReaderFeedback::purgeExpiredAverages();
+		}
 		return self::REVIEW_OK;
 	}
 }
