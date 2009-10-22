@@ -1074,9 +1074,11 @@ $messages['sl'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'ct-event-name' => 'ఘటన పేరు',
 	'ct-total-header' => 'మొత్తం నొక్కులు',
 	'ct-start-date' => 'ప్రారంభ తేదీ (YYYYMMDD)',
 	'ct-end-date' => 'ముగింపు తేదీ (YYYYMMDD)',
+	'ct-editing' => 'ప్రస్తుతం మారుస్తున్నారు:',
 	'ct-anon-users' => 'అజ్ఞాత వాడుకరులు',
 	'ct-and' => 'మరియు',
 );
