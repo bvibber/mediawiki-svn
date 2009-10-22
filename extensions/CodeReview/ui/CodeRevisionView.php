@@ -317,8 +317,10 @@ class CodeRevisionView extends CodeView {
 					$success = $run->countSuccess;
 					$failed = $total - $success;
 					if( $failed ) {
-						$html .= "<p><span class='mw-codereview-success'>$success</span> succeeded tests, " .
-							"<span class='mw-codereview-fail'>$failed</span> failed tests:</p>";
+						$html .= "<p><span class='mw-codereview-success'>$success</span> ".
+							wfMsgHtml('codereview-tests-succeeded').", " .
+							"<span class='mw-codereview-fail'>$failed</span> ".
+							wfMsgHtml('codereview-tests-failed')."</p>";
 						
 						$tests = $run->getResults( false );
 						$html .= "<ul>\n";
@@ -327,13 +329,14 @@ class CodeRevisionView extends CodeView {
 						}
 						$html .= "</ul>\n";
 					} else {
-						$html .= "<p><span class='mw-codereview-success'>$success</span> succeeded tests.</p>";
+						$html .= "<p><span class='mw-codereview-success'>$success</span> ".
+							wfMsgHtml('codereview-tests-succeeded')."</p>";
 					
 					}
 				} elseif( $run->status == "running" ) {
-					$html .= "<p>Test cases are running...</p>";
+					$html .= wfMsgExt('codereview-tests-running','parse');
 				} elseif( $run->status == "abort" ) {
-					$html .= "<p>Test run aborted.</p>";
+					$html .= wfMsgExt('codereview-tests-aborted','parse');
 				} else {
 					// Err, this shouldn't happen?
 				}

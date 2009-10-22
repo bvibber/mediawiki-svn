@@ -102,6 +102,11 @@ $messages['en'] = array(
 	'codereview-subtitle' => 'For $1',
 
 	'codereview-reply-link' => 'reply',
+	
+	'codereview-tests-succeeded' => 'succeeded tests',
+	'codereview-tests-failed'  => 'failed tests:',
+	'codereview-tests-running' => 'Test cases are running...',
+	'codereview-tests-aborted' => 'Test run aborted.',
 
 	'codereview-email-subj' => '[$1] [r$2]: New comment added',
 	'codereview-email-body' => 'User "$1" posted a comment on r$3.
