@@ -2200,12 +2200,12 @@ $messages['pms'] = array(
 	'youtubeauthsub_submit' => 'Manda',
 	'youtubeauthsub_clickhere' => 'Sgnaché ambelessì për rintré an YouTube',
 	'youtubeauthsub_tokenerror' => "Eror durant l'arcesta d'autorisassion, sërché d'agiorné la pàgina",
-	'youtubeauthsub_success' => "Congratulassion!<br>
-Sò filmà a l'é carià.<br>
-<a href='http://www.youtube.com/watch?v=$1'>Ch'a bèica sò filmà</a>.<br>
-Peul desse che YouTube a l'abia damanca d'un pòch ëd temp për livré la procedura su sò filmà, a l'é donca possìbil ch'a sia ancor nen disponìbil.<br>
+	'youtubeauthsub_success' => "Congratulassion!
+Sò filmà a l'é carià.
+<a href='http://www.youtube.com/watch?v=$1'>Ch'a bèica sò filmà</a>.
+Peul desse che YouTube a l'abia damanca d'un pòch ëd temp për livré la procedura su sò filmà, a l'é donca possìbil ch'a sia ancor nen disponìbil.
 
-Për anserì sò filmà an na pàgina dla wiki, ch'a buta ël còdes sì-dapress ant la pàgina:<br>
+Për anserì sò filmà an na pàgina dla wiki, ch'a buta ël còdes sì-dapress ant la pàgina:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Për carié un filmà, a-j sarà prima ciamà ëd rintré su YouTube.',
 );

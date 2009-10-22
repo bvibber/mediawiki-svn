@@ -326,6 +326,25 @@ $messages['de'] = array(
 	'imagemap_poly_odd' => 'Fehler: Polygon mit ungerader Anzahl an Koordinaten in Zeile $1',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'imagemap_desc' => 'pê şuxulnayişê etiketê <tt><nowiki><imagemap></nowiki></tt>i destur dano gırewtox xeritayê resmi bıtıkın',
+	'imagemap_no_image' => 'xeta: şıma gani satıro ewwil de yew resm nişan bıkeri',
+	'imagemap_invalid_image' => 'xeta: resım ya çino ya zi meqbul niyo',
+	'imagemap_bad_image' => 'xeta: resın no pel de biyo qereliste',
+	'imagemap_no_link' => 'xeta: peyniyê satıro $1. de yew gıreyo meqbul çino.',
+	'imagemap_invalid_title' => 'xeta:satıro $1. de gıre de sernameyo nemeqbul esto.',
+	'imagemap_missing_coord' => 'xeta:satıro $1. de qey şekli koordinat tayê',
+	'imagemap_unrecognised_shape' => 'xeta:satıro $1. de şeklo netemam esto, her satır gani pê her yew ninan destpêbıkero: default, rect, cirle ya zi poly',
+	'imagemap_no_areas' => 'xeta: tewr tay gani yew mıntıqa diyari bıbo.',
+	'imagemap_invalid_coord' => 'xeta: satıro $1. de koordinato nemeqbul, gani yew amar bıbo',
+	'imagemap_invalid_desc' => 'xeta: diyarikerdışê desci yo nemeqbul, gani ninan ra yew bıbo: <tt>$1</tt>',
+	'imagemap_description' => 'Derheqê resım de',
+	'imagemap_poly_odd' => 'xeta: satıro $1. de poliyo ke wayirê yew koordinat diya',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

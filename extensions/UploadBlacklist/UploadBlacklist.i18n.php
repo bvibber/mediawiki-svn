@@ -228,6 +228,13 @@ $messages['mk'] = array(
 	'uploadblacklist-desc' => 'Додава функција за црна листа на подигања',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'uploadblacklist-desc' => 'അപ്‌ലോഡ് കരിമ്പട്ടിക സൌകര്യം ചേർക്കുന്നു',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

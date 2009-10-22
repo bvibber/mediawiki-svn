@@ -89,6 +89,13 @@ $messages['de'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Anzahl der durch einer IP-Adresse ausgelöster aktueller Ereignisse, gemäß dem „Honey Pot“-Projekt',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Project Honey Pot'a göre, IP adresinin tetiklediği son olayların sayısı",
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

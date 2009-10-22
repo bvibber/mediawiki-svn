@@ -628,6 +628,8 @@ $messages['he'] = array(
 * נסיון של חדשים
 * ראו בדף השיחה',
 	'patrol-resume' => 'לחצו כאן להמשך.',
+	'group-patroller' => 'בודקי עריכות',
+	'group-patroller-member' => 'בודק עריכות',
 );
 
 /** Hindi (हिन्दी)

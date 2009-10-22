@@ -1090,13 +1090,27 @@ $messages['hu'] = array(
 	'extensiondistributor' => 'MediaWiki-kigészítők letöltése',
 	'extdist-desc' => 'Kiegészítő kiegészítőcsomagok terjesztéséhez',
 	'extdist-not-configured' => 'Kérlek állítsd be a $wgExtDistTarDir és a $wgExtDistWorkingCopy értékeit',
+	'extdist-wc-missing' => 'A beállított másolat munkakönyvtár nem létezik!',
 	'extdist-no-such-extension' => 'Nincs „$1” nevű kiegészítő',
+	'extdist-no-such-version' => 'A(z) „$1” kiterjesztés nem létezik a(z) „$2” verzióban.',
 	'extdist-choose-extension' => 'Válaszd ki, melyik kiterjesztést szeretnéd letölteni:',
+	'extdist-wc-empty' => 'A beállított másolat munkakönyvtárban nincsenek terjeszthető kiterjesztések!',
 	'extdist-submit-extension' => 'Folytatás',
 	'extdist-current-version' => 'Fejlesztői verzió (trunk)',
+	'extdist-choose-version' => '
+<big>Éppen a(z) <b>$1</b> kiterjesztést töltöd le.</big>
+
+Válaszd ki a MediaWiki verziót.
+
+A legtöbb kiterjesztés működik a MediaWiki több verziójával, így ha az általad használt MediaWiki verzió nincs itt, vagy ha szükséged van a kiterjesztés legújabb funkcióira, próbáld az aktuális verziót használni.',
+	'extdist-no-versions' => 'A választott kiterjesztés ($1) nem érhető el semmilyen verzióban!',
 	'extdist-submit-version' => 'Folytatás',
+	'extdist-no-remote' => 'Nem sikerült kapcsolódni a távoli Subversion klienshez.',
+	'extdist-remote-error' => 'Hiba a távoli Subversion klienstől: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Érvénytelen válasz a távoli Subversion klienstől.',
 	'extdist-svn-error' => 'A Subversion hibával tért vissza: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Az „svn info” által visszaadott XML-t nem sikerült feldolgozni: <pre>$1</pre>',
+	'extdist-tar-error' => 'A tar által adott visszatérési kód $1:',
 	'extdist-created' => "A(z) <b>$1</b> MediaWiki <b>$3</b> kiterjesztés <b>$2</b> verziójának pillanatfelvétele elkészült. A letöltés automatikusan megkezdődik 5 másodpercen belül.
 
 A pillanatfelvétel URL-je:
