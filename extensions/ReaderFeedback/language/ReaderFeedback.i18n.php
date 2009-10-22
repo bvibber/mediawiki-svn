@@ -16,6 +16,7 @@ $messages = array();
  */
 
 $messages['en'] = array(
+	'readerfeedback-desc'          => 'Page validation allows for readers to give feedback in the form of categorical ratings',
 	'readerfeedback'               => 'What do you think of this page?',
 	'readerfeedback-text'          => '\'\'Please take a moment to rate this page below. Your feedback is valuable and helps us improve our website.\'\'',
 	'readerfeedback-reliability'   => 'Reliability',
@@ -42,6 +43,7 @@ $messages['en'] = array(
 	'readerfeedback-tier-medium'   => 'Moderate',
 	'readerfeedback-tier-poor'     => 'Poor',
 	'tooltip-ca-ratinghist'        => 'Reader ratings of this page',
+	'specialpages-group-feedback'  => 'Viewer opinion',
 );
 
 /** Message documentation (Message documentation)
@@ -61,6 +63,7 @@ $messages['en'] = array(
  * @author Tgr
  */
 $messages['qqq'] = array(
+	'readerfeedback-desc' => '{{desc}}',
 	'readerfeedback-submit' => '{{Identical|Submit}}',
 	'readerfeedback-main' => '{{Identical|Content page}}',
 	'readerfeedback-submitting' => '{{flaggedrevs}}
@@ -130,6 +133,14 @@ $messages['ar'] = array(
 	'readerfeedback-tier-medium' => 'متوسط',
 	'readerfeedback-tier-poor' => 'فقير',
 	'tooltip-ca-ratinghist' => 'تقييمات القراء لهذه الصفحة',
+	'specialpages-group-feedback' => 'رأي المشاهد',
+);
+
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'readerfeedback-finished' => 'ܬܘܕܝ!',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -198,6 +209,7 @@ $messages['bcc'] = array(
  * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
+	'readerfeedback-desc' => 'Праверка старонак дазваляе чытачам даваць водгукі ў форме безумоўных адзнакаў',
 	'readerfeedback' => 'Што Вы мяркуеце пра гэтую старонку?',
 	'readerfeedback-text' => "''Калі ласка, знайдзіце хвіліну для адзнакі гэтай старонкі. Вашы водгукі вельмі каштоўныя і дапамагаюць паляпшаць {{GRAMMAR:вінавальны|{{SITENAME}}}}.''",
 	'readerfeedback-reliability' => 'Пэўнасьць',
@@ -224,6 +236,7 @@ $messages['be-tarask'] = array(
 	'readerfeedback-tier-medium' => 'Сярэдняя',
 	'readerfeedback-tier-poor' => 'Нізкая',
 	'tooltip-ca-ratinghist' => 'Адзнакі гэтай старонкі чытачамі',
+	'specialpages-group-feedback' => 'Меркаваньні чытачоў',
 );
 
 /** Bulgarian (Български)
@@ -242,6 +255,7 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'readerfeedback-desc' => "Kadarnaat ar pennadoù a ro an tu d'al lennerien da reiñ o soñj e stumm burutelladennoù dre rummad.",
 	'readerfeedback' => 'Petra a soñjit eus ar bajenn-mañ ?',
 	'readerfeedback-text' => "''Tapit un tamm amzer da briziañ ar bajenn a-is mar plij. Talvoudus eo deomp ho soñj pa skoazell ac'hanomp da wellaat hol lec'hienn web.''",
 	'readerfeedback-reliability' => 'Fiziuster :',
@@ -268,12 +282,14 @@ $messages['br'] = array(
 	'readerfeedback-tier-medium' => 'Etre',
 	'readerfeedback-tier-poor' => 'Dister',
 	'tooltip-ca-ratinghist' => 'Priziadenn ar bajenn-mañ gant al lennerien',
+	'specialpages-group-feedback' => 'Soñj al lenner',
 );
 
 /** Bosnian (Bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
+	'readerfeedback-desc' => 'Ocjenjivanje stranica omogućuje čitaocima da ostave povratne informacije u obliku kategorisanih rejtinga',
 	'readerfeedback' => 'Šta mislite o ovoj stranici?',
 	'readerfeedback-text' => "''Molimo odvojite trenutak vremena i ocijenite stranicu ispod. Vaša povratna informacija je korisna i pomaže nam da poboljšamo našu web stranicu.''",
 	'readerfeedback-reliability' => 'Pouzdanost',
@@ -300,6 +316,7 @@ $messages['bs'] = array(
 	'readerfeedback-tier-medium' => 'Umjeren',
 	'readerfeedback-tier-poor' => 'Slab',
 	'tooltip-ca-ratinghist' => 'Ocjene čitaoca ove stranice',
+	'specialpages-group-feedback' => 'Mišljenje čitaoca',
 );
 
 /** Catalan (Català)
@@ -364,8 +381,38 @@ $messages['cs'] = array(
 	'specialpages-group-feedback' => 'Názory čtenářů',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'readerfeedback-desc' => 'Sidebedømmelse giver mulighed for læserne til at gve tilbagemeldinger i form af bedømmelse inden for et antal kategprier',
+	'readerfeedback' => 'Hvad synes du om denne side?',
+	'readerfeedback-text' => "''Brug gerne et øjeblik til at vurdere denne side nedenfor. Din tilbagemelding er værdifuld og hjælper os med at forbedre vores websider.''",
+	'readerfeedback-reliability' => 'Pålidelighed',
+	'readerfeedback-completeness' => 'Fuldstændighed',
+	'readerfeedback-npov' => 'Neutralitet',
+	'readerfeedback-presentation' => 'Præsentation',
+	'readerfeedback-overall' => 'Helhedsindtryk',
+	'readerfeedback-level-none' => '(ved ikke)',
+	'readerfeedback-level-0' => 'Meget dårlig',
+	'readerfeedback-level-1' => 'Dårlig',
+	'readerfeedback-level-2' => 'Middel',
+	'readerfeedback-level-3' => 'God',
+	'readerfeedback-level-4' => 'Meget god',
+	'readerfeedback-submit' => 'Indsend',
+	'readerfeedback-main' => 'Kun indholdssider kan bedømmes.',
+	'readerfeedback-success' => "'''Tak for at du bedømte denne side!''' ([$3 Kommentarer eller spørgsmål?])",
+	'readerfeedback-voted' => "'''Det ser ud til at du allerede har bedømt denne side.''' ([$3 Kommentarer eller spørgsmål?])",
+	'readerfeedback-submitting' => 'Indsender …',
+	'readerfeedback-finished' => 'Tak!',
+	'readerfeedback-tagfilter' => 'Bedømmelseskategori:',
+	'tooltip-ca-ratinghist' => 'Læserbedømmelser af denne side',
+	'specialpages-group-feedback' => 'Læserbedømmelse',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Imre
  * @author MF-Warburg
  * @author Melancholie
  * @author Merlissimo
@@ -377,6 +424,7 @@ $messages['cs'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'readerfeedback-desc' => 'Ergänzt eine Möglichkeit, die dem Leser erlaubt eine Rückmeldung in Form von vorgegebenen Bewertungen über die Seite zu geben',
 	'readerfeedback' => 'Was denkst du über diese Seite?',
 	'readerfeedback-text' => "''Bitte nimm dir einen Moment Zeit und bewerte diese Seite. Deine Rückmeldung ist wertvoll und hilft uns, das Angebot zu verbessern.''",
 	'readerfeedback-reliability' => 'Zuverlässigkeit',
@@ -403,6 +451,7 @@ $messages['de'] = array(
 	'readerfeedback-tier-medium' => 'Mittelmäßig',
 	'readerfeedback-tier-poor' => 'Schlecht',
 	'tooltip-ca-ratinghist' => 'Leserbewertungen dieser Seite',
+	'specialpages-group-feedback' => 'Meinung der Betrachter',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -411,8 +460,41 @@ $messages['de'] = array(
 $messages['de-formal'] = array(
 	'readerfeedback' => 'Was denken Sie über diese Seite?',
 	'readerfeedback-text' => "''Bitte nehmen Sie sich einen Moment Zeit und bewerten diese Seite. Ihre Rückmeldung ist wertvoll und hilft uns, das Angebot zu verbessern.''",
-	'readerfeedback-success' => "'''Danke für Ihre Bewertung dieser Seite.''' ([$2 siehe Ergebnisse]) ([$3 Kommentare oder Fragen?]).",
-	'readerfeedback-voted' => "'''Sie haben scheinbar bereits eine Bewertung für diese Seite abgegeben.''' ([$2 siehe Ergebnisse]) ([$3 Kommentare oder Fragen?]).",
+	'readerfeedback-success' => "'''Danke für Ihre Bewertung dieser Seite.''' ([$2 Ergebnisse anschauen]) ([$3 Kommentare oder Fragen?]).",
+	'readerfeedback-voted' => "'''Sie haben offenbar bereits eine Bewertung für diese Seite abgegeben.''' ([$2 Ergebnisse anschauen]) ([$3 Kommentare oder Fragen?]).",
+);
+
+/** Zazaki (Zazaki)
+ * @author Aspar
+ */
+$messages['diq'] = array(
+	'readerfeedback' => 'derheqê no pelî de çi fikrê şima esto?',
+	'readerfeedback-text' => "''kerem kerê qey reydayişê no peli re bıne wextê xo bıde. ma qıymet danî cewabê şima.''",
+	'readerfeedback-reliability' => 'pawıtışi',
+	'readerfeedback-completeness' => 'temam biyayişi',
+	'readerfeedback-npov' => 'bêterefi',
+	'readerfeedback-presentation' => 'pêşkeşkerdış',
+	'readerfeedback-overall' => 'pêro',
+	'readerfeedback-level-none' => '(bêqerar)',
+	'readerfeedback-level-0' => 'zeyif',
+	'readerfeedback-level-1' => 'kêm',
+	'readerfeedback-level-2' => 'adil',
+	'readerfeedback-level-3' => 'berz',
+	'readerfeedback-level-4' => 'mukemmel',
+	'readerfeedback-submit' => 'bıerşaw/bıruşn',
+	'readerfeedback-main' => 'têna pelê muhtewayi rey bênî',
+	'readerfeedback-success' => "'''qey çımçarnayiş3e şıma ma tşk keni!''' ([$2 neticeyan bıvin]) ([$3 persi ya zi mışoreyi?]).",
+	'readerfeedback-voted' => "'''wina aseno ke şıma cıwa ver rey dayo no pel''' ([$2 neticeyan bıvin]) ([$3 persi ya zi mışoreyi?]).",
+	'readerfeedback-error' => "'''wexta ke şıma no pel derece kerdenê xeta vıraziya''' ([$2 neticeyan bıvin]) ([$3 persi ya zi mışoreyi?]).",
+	'readerfeedback-submitting' => 'erşawiyeno/ruşiyeno',
+	'readerfeedback-finished' => 'sipas!',
+	'readerfeedback-tagfilter' => 'etiket:',
+	'readerfeedback-tierfilter' => 'derecekerdış:',
+	'readerfeedback-tier-high' => 'berz',
+	'readerfeedback-tier-medium' => 'weset',
+	'readerfeedback-tier-poor' => 'zeyif',
+	'tooltip-ca-ratinghist' => 'derecekerdışê peli yo ziyaretkerdoxi',
+	'specialpages-group-feedback' => 'fikrê temaşawanî',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -420,6 +502,7 @@ $messages['de-formal'] = array(
  * @author Nepl1
  */
 $messages['dsb'] = array(
+	'readerfeedback-desc' => 'Pśekontrolěrowanje nastawkow zmóžnja cytarjam w formje kategoriskich pógódnośenjow jich měnjenje zwurazniś',
 	'readerfeedback' => 'Co źaržyš wó toś tom boku?',
 	'readerfeedback-text' => "''Pšosym wzij wokognuśe casa a pógódnoś toś ten bok. Twójo měnjenje jo gódne a pomaga nam našo websedło pólěpšyś.''",
 	'readerfeedback-reliability' => 'Spušćobnosć',
@@ -446,6 +529,7 @@ $messages['dsb'] = array(
 	'readerfeedback-tier-medium' => 'Srědny',
 	'readerfeedback-tier-poor' => 'Špatny',
 	'tooltip-ca-ratinghist' => 'Pógódnośenja cytarjow za toś ten bok',
+	'specialpages-group-feedback' => 'Měnjenje wobglědowarja',
 );
 
 /** Greek (Ελληνικά)
@@ -506,6 +590,7 @@ $messages['eo'] = array(
 	'readerfeedback-voted' => "'''Verŝajne vi jam taksis ĉi tiun paĝon.''' ([$2 vidi rezultojn]) ([$3 Ĉu komentoj aŭ demandoj?]).",
 	'readerfeedback-submitting' => 'Sendante...',
 	'readerfeedback-finished' => 'Dankon!',
+	'readerfeedback-tagfilter' => 'Etikedo:',
 	'readerfeedback-tierfilter' => 'Taksado:',
 	'readerfeedback-tier-high' => 'Bonkvalita',
 	'readerfeedback-tier-medium' => 'Mezkvalita',
@@ -514,6 +599,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  * @author Drini
  * @author Imre
@@ -538,16 +624,18 @@ $messages['es'] = array(
 	'readerfeedback-level-4' => 'Excelente',
 	'readerfeedback-submit' => 'Enviar',
 	'readerfeedback-main' => 'Solamente páginas de contenido pueden ser valoradas.',
-	'readerfeedback-success' => "'''Gracias por revisar esta página!''' ([$3 Comentarios o preguntas?]).",
-	'readerfeedback-voted' => "'''Parece que ya valoraste esta página''' ([$3 comentarios o preguntas?]).",
-	'readerfeedback-error' => "'''Un error ha ocurrido cuando se valorizaba esta página''' ([$3 comentarios o preguntas?]).",
+	'readerfeedback-success' => "'''Gracias por revisar esta página!''' ([$2 ver resultados]) ([$3 Comentarios o preguntas?]).",
+	'readerfeedback-voted' => "'''Parece que ya valoraste esta página''' ([$2 ver resultados]) ([$3 comentarios o preguntas?]).",
+	'readerfeedback-error' => "'''Un error ha ocurrido cuando se valorizaba esta página''' ([$2 ver resultados]) ([$3 comentarios o preguntas?]).",
 	'readerfeedback-submitting' => 'Enviando...',
 	'readerfeedback-finished' => '¡Gracias!',
+	'readerfeedback-tagfilter' => 'Etiqueta:',
 	'readerfeedback-tierfilter' => 'Valorización:',
 	'readerfeedback-tier-high' => 'Alta',
 	'readerfeedback-tier-medium' => 'Moderada',
 	'readerfeedback-tier-poor' => 'Pobre',
 	'tooltip-ca-ratinghist' => 'Valoraciones de los lectores de esta página',
+	'specialpages-group-feedback' => 'Opinión del espectador',
 );
 
 /** Basque (Euskara)
@@ -609,7 +697,9 @@ $messages['fa'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'readerfeedback-desc' => 'Sivun tarkistaminen mahdollistaa lukijoiden antaa palautteensa luokkakohtaisten arvosanojen muodossa.',
 	'readerfeedback' => 'Mitä mieltä olet tästä sivusta?',
+	'readerfeedback-text' => "''Käytäthän hetken arvioidaksesi alla olevan sivun. Palautteesi on arvokas ja auttaa parantamaan verkkosivustoamme.''",
 	'readerfeedback-reliability' => 'Luettavuus',
 	'readerfeedback-completeness' => 'Täydellisyys',
 	'readerfeedback-npov' => 'Neutraalius',
@@ -620,18 +710,20 @@ $messages['fi'] = array(
 	'readerfeedback-level-1' => 'Alhainen',
 	'readerfeedback-level-2' => 'Kohtalainen',
 	'readerfeedback-level-3' => 'Hyvä',
-	'readerfeedback-level-4' => 'Todella mainio',
+	'readerfeedback-level-4' => 'Erinomainen',
 	'readerfeedback-submit' => 'Lähetä',
 	'readerfeedback-main' => 'Vain sisältösivuja voi arvioida.',
 	'readerfeedback-success' => "'''Kiitos tämän sivun arvioimisesta.''' ([$2 näytä tulokset]) ([$3 kommentteja tai kysymyksiä?]).",
 	'readerfeedback-voted' => "'''Näyttää siltä, että olet jo arvioinut tämän sivun''' ([$2 näytä tulokset]) ([$3 kommentteja tai kysymyksiä?]).",
 	'readerfeedback-submitting' => 'Lähetetään…',
 	'readerfeedback-finished' => 'Kiitos!',
+	'readerfeedback-tagfilter' => 'Merkintä:',
 	'readerfeedback-tierfilter' => 'Arvostelu',
 	'readerfeedback-tier-high' => 'Korkea',
 	'readerfeedback-tier-medium' => 'Kohtalainen',
 	'readerfeedback-tier-poor' => 'Heikko',
 	'tooltip-ca-ratinghist' => 'Lukijoiden arviot tästä sivusta',
+	'specialpages-group-feedback' => 'Katsojan mielipide',
 );
 
 /** French (Français)
@@ -652,6 +744,7 @@ $messages['fi'] = array(
  * @author Zetud
  */
 $messages['fr'] = array(
+	'readerfeedback-desc' => 'La validation d’articles permet aux lecteurs de rendre leur avis sous forme d’évaluations par catégorie',
 	'readerfeedback' => 'Que pensez-vous de cette page ?',
 	'readerfeedback-text' => "''Veuillez consacrer un instant pour évaluer cette page ci-dessous. Vos impressions sont précieuses et nous aident à améliorer notre site web.''",
 	'readerfeedback-reliability' => 'Fiabilité',
@@ -678,6 +771,7 @@ $messages['fr'] = array(
 	'readerfeedback-tier-medium' => 'Moyenne',
 	'readerfeedback-tier-poor' => 'Mauvaise',
 	'tooltip-ca-ratinghist' => 'Évaluations de cette page par les lecteurs',
+	'specialpages-group-feedback' => 'Opinion du lecteur',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -685,7 +779,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'readerfeedback' => 'Què pensâd-vos de ceta pâge ?',
-	'readerfeedback-text' => "''Volyéd consacrar un moment por èstimar ceta pâge ce-desot. Voutres emprèssions ont de valor et pués nos édont a mèlyorar noutron seto Malyâjo.''",
+	'readerfeedback-text' => "''Volyéd consacrar un moment por èstimar ceta pâge ce-desot. Voutres emprèssions ont de valor et pués nos édont a mèlyorar noutron seto vouèbe.''",
 	'readerfeedback-reliability' => 'Fiabilitât',
 	'readerfeedback-completeness' => 'Entegritât',
 	'readerfeedback-npov' => 'Netralitât',
@@ -712,6 +806,7 @@ $messages['frp'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
+	'readerfeedback-desc' => 'A validación de páxinas permite que os lectores dean a súa opinión en forma de valoracións categóricas',
 	'readerfeedback' => 'Que pensa sobre esta páxina?',
 	'readerfeedback-text' => "''Por favor, tome un momento para valorar esta páxina. A súa impresión é valiosa e axúdanos a mellorar a nosa páxina web.''",
 	'readerfeedback-reliability' => 'Fiabilidade',
@@ -738,6 +833,7 @@ $messages['gl'] = array(
 	'readerfeedback-tier-medium' => 'Media',
 	'readerfeedback-tier-poor' => 'Baixa',
 	'tooltip-ca-ratinghist' => 'Valoracións dos lectores desta páxina',
+	'specialpages-group-feedback' => 'Opinión do lector',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -766,6 +862,7 @@ $messages['grc'] = array(
  * @author Melancholie
  */
 $messages['gsw'] = array(
+	'readerfeedback-desc' => 'Sytevalidierig macht s Läser megli e Ruckmäldig z gee in Form vu kategorisierte Note',
 	'readerfeedback' => 'Was dänksch iber die Syte?',
 	'readerfeedback-text' => "''Bitte nimm Der e Momänt derzyt un bewärt die Syte. Dyyni Ruckmäldig isch wärtvoll un hilft is, s Aagebot z verbessere.''",
 	'readerfeedback-reliability' => 'Zueverlässigkeit',
@@ -792,6 +889,7 @@ $messages['gsw'] = array(
 	'readerfeedback-tier-medium' => 'Mittel',
 	'readerfeedback-tier-poor' => 'Nider',
 	'tooltip-ca-ratinghist' => 'Läserwärtige vu däre Syte',
+	'specialpages-group-feedback' => 'Meinig vum Läser',
 );
 
 /** Hebrew (עברית)
@@ -800,9 +898,11 @@ $messages['gsw'] = array(
  * @author Ori229
  * @author Rotemliss
  * @author StuB
+ * @author YaronSh
  * @author דניאל ב.
  */
 $messages['he'] = array(
+	'readerfeedback-desc' => 'אימות דפים המאפשר לקוראים לתת משוב באמצעות טופס לדירוג לפי קטגוריה',
 	'readerfeedback' => 'מה אתם חושבים על הדף הזה?',
 	'readerfeedback-text' => "'''אנא השקיעו רגע מזמנכם כדי לדרג דף זה. למשוב שתתנו יש ערך רב והוא יעזור לנו לשפר את האתר.'''",
 	'readerfeedback-reliability' => 'מהמינות',
@@ -823,11 +923,13 @@ $messages['he'] = array(
 	'readerfeedback-error' => "'''ארעה שגיאה בעת דירוג דף זה''' ([$2 לתוצאות]) ([$3 הערות או שאלות?]).",
 	'readerfeedback-submitting' => 'נשלח...',
 	'readerfeedback-finished' => 'תודה!',
+	'readerfeedback-tagfilter' => 'תגית:',
 	'readerfeedback-tierfilter' => 'דירוג:',
 	'readerfeedback-tier-high' => 'גבוה',
 	'readerfeedback-tier-medium' => 'בינוני',
 	'readerfeedback-tier-poor' => 'גרוע',
 	'tooltip-ca-ratinghist' => 'דירוג קוראים לדף זה',
+	'specialpages-group-feedback' => 'דעת הצופה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -835,6 +937,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'readerfeedback-desc' => 'Přepruwowanje nastawkow zmóžnja čitarjam we formje kategoriskich pohodnoćenjow jich měnjenje zwuraznić',
 	'readerfeedback' => 'Što mysliš wo tutej stronje?',
 	'readerfeedback-text' => "''Prošu bjer sej wokomik čas, zo by tutu stronu pohódnoćił. Twoja wotmołwa je hódnotna a pomha nam naše websydło polěpšić.''",
 	'readerfeedback-reliability' => 'Spušćomnosć',
@@ -861,6 +964,7 @@ $messages['hsb'] = array(
 	'readerfeedback-tier-medium' => 'Srěni',
 	'readerfeedback-tier-poor' => 'Špatny',
 	'tooltip-ca-ratinghist' => 'Pohódnoćenja čitarjow tuteje strony',
+	'specialpages-group-feedback' => 'Měnjenje wobhladowarja',
 );
 
 /** Hungarian (Magyar)
@@ -910,6 +1014,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'readerfeedback-desc' => 'Le validation de paginas permitte que lectores da lor opinion in forma de evalutationes per categoria',
 	'readerfeedback' => 'Que pensa tu de iste pagina?',
 	'readerfeedback-text' => "''Dedica un momento a judicar iste pagina. Tu opinion es importante e nos adjuta a meliorar nostre sito web.''",
 	'readerfeedback-reliability' => 'Accuratessa',
@@ -936,6 +1041,7 @@ $messages['ia'] = array(
 	'readerfeedback-tier-medium' => 'Medie',
 	'readerfeedback-tier-poor' => 'Mal',
 	'tooltip-ca-ratinghist' => 'Evalutationes de iste pagina per le lectores',
+	'specialpages-group-feedback' => 'Opinion del lector',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -944,6 +1050,7 @@ $messages['ia'] = array(
  * @author Rex
  */
 $messages['id'] = array(
+	'readerfeedback-desc' => 'Validasi halaman memungkinkan pengguna untuk memberikan umpan balik dalam bentuk peringkat berkategori',
 	'readerfeedback' => 'Bagaimana menurut Anda halaman ini?',
 	'readerfeedback-text' => "''Silakan menilai halaman di bawah ini. Umpan balik Anda sangat berharga dan membantu meningkatkan situs web ini.''",
 	'readerfeedback-reliability' => 'Reliabilitas',
@@ -959,9 +1066,9 @@ $messages['id'] = array(
 	'readerfeedback-level-4' => 'Baik sekali',
 	'readerfeedback-submit' => 'Kirim',
 	'readerfeedback-main' => 'Hanya halaman isi yang dapat diberi nilai.',
-	'readerfeedback-success' => "'''Terima kasih telah meninjau halaman ini!''' ([$3 Komentar atau pertanyaan?])",
-	'readerfeedback-voted' => "'''Tampaknya Anda sudah memberikan peringkat untuk halaman ini'''. ([$3 Komentar atau pertanyaan?])",
-	'readerfeedback-error' => "'''Terdapat kesalahan selagi mereting halaman ini'''  ([$3 komentar atau pertanyaan?]).",
+	'readerfeedback-success' => "'''Terima kasih telah meninjau halaman ini!''' ([$2 lihat hasil]) ([$3 Komentar atau pertanyaan?])",
+	'readerfeedback-voted' => "'''Tampaknya Anda sudah memberikan peringkat untuk halaman ini''' ([$2 lihat hasil])  ([$3 Komentar atau pertanyaan?])",
+	'readerfeedback-error' => "'''Terdapat kesalahan selagi mereting halaman ini'''  ([$2 lihat hasil])  ([$3 komentar atau pertanyaan?]).",
 	'readerfeedback-submitting' => 'Mengirimkan...',
 	'readerfeedback-finished' => 'Terima kasih!',
 	'readerfeedback-tagfilter' => 'Tag:',
@@ -970,6 +1077,7 @@ $messages['id'] = array(
 	'readerfeedback-tier-medium' => 'Menengah',
 	'readerfeedback-tier-poor' => 'Jelek',
 	'tooltip-ca-ratinghist' => 'Penilaian pembaca atas halaman ini:',
+	'specialpages-group-feedback' => 'Opini pembaca',
 );
 
 /** Italian (Italiano)
@@ -1011,6 +1119,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
+	'readerfeedback-desc' => '読者が尺度別評価式フィードバックによるページ評価ができるようにする',
 	'readerfeedback' => 'このページをどう思いますか',
 	'readerfeedback-text' => "''このページの評価にぜひご協力ください。貴重なご意見が私たちのウェブサイト改善に役立ちます。''",
 	'readerfeedback-reliability' => '信頼度',
@@ -1037,6 +1146,16 @@ $messages['ja'] = array(
 	'readerfeedback-tier-medium' => '中',
 	'readerfeedback-tier-poor' => 'ひどい',
 	'tooltip-ca-ratinghist' => 'このページの読者による評価',
+	'specialpages-group-feedback' => '読者の意見',
+);
+
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'readerfeedback-level-1' => 'დაბალი',
+	'readerfeedback-level-3' => 'მაღალი',
+	'readerfeedback-finished' => 'გმადლობთ!',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1076,7 +1195,7 @@ $messages['ko'] = array(
 	'readerfeedback-level-3' => '높음',
 	'readerfeedback-level-4' => '우수',
 	'readerfeedback-submit' => '제출',
-	'readerfeedback-success' => "'''이 문서를 평가해 주셔서 감사합니다!''' ([$3 질문이나 의견이 있으신가요?])",
+	'readerfeedback-success' => "'''이 문서를 평가해 주셔서 감사합니다!''' ([$2 결과 보기]) ([$3 질문이나 의견이 있으신가요?])",
 	'readerfeedback-submitting' => '제출하는 중...',
 	'readerfeedback-finished' => '감사합니다!',
 	'readerfeedback-tagfilter' => '태그:',
@@ -1087,6 +1206,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'readerfeedback-desc' => 'Määt et müjjelesch för der Lesser, noh sing Enschäzung för Sigge beshtemmpte Zoote vun Note ze verdeile.',
 	'readerfeedback' => 'Wat dengkß De övver hee di Sigg?',
 	'readerfeedback-text' => "''Beß esu joot un donn Der ene Momang nämme, öm dä Sigg hee dronge Note ze jävve. Ding Enschäzung hät iere Wäät un hellef met, de Websigge hee bäßer ze maache.''",
 	'readerfeedback-reliability' => 'De Zohverläßeschkeit',
@@ -1113,6 +1233,7 @@ $messages['ksh'] = array(
 	'readerfeedback-tier-medium' => 'Meddelmääßesch',
 	'readerfeedback-tier-poor' => 'Mau',
 	'tooltip-ca-ratinghist' => 'Wi de Lesser hee di Sigg ennschäze un wat se ier för Note jävve',
+	'specialpages-group-feedback' => 'Enschäzunge vum Lesser',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1120,6 +1241,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'readerfeedback-desc' => 'Page validation erlaabt de Liser e Feedback a Form vun enger Bewertung mat kategorien ze ginn',
 	'readerfeedback' => 'Wat haalt Dir vun dëser Säit?',
 	'readerfeedback-text' => "''Huelt Iech w.e.g. e Moment fir dës Säit ze bewerten. Äre Feedback ass wertvoll an hëlleft eis eisen Internet-Site ze verbesseren.''",
 	'readerfeedback-reliability' => 'Zouverlässigkeet',
@@ -1146,6 +1268,7 @@ $messages['lb'] = array(
 	'readerfeedback-tier-medium' => 'Duerchschnëttlech',
 	'readerfeedback-tier-poor' => 'Aarmséileg',
 	'tooltip-ca-ratinghist' => 'Lieserbewertunge vun dëser Säit',
+	'specialpages-group-feedback' => 'Meenung vun deem dee kuckt',
 );
 
 /** Macedonian (Македонски)
@@ -1153,7 +1276,9 @@ $messages['lb'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
+	'readerfeedback-desc' => 'Потврдувањето на страницата им дава можност на читателите да искажат свое мислење во облик на категорични оценки',
 	'readerfeedback' => 'Што мислите за оваа страница?',
+	'readerfeedback-text' => "''Ве молиме одвојте малку време да ја оцените страницава подолу. Вашите мислења се значајни и ни помагаат да ја подобриме страницата.''",
 	'readerfeedback-reliability' => 'Доверливост',
 	'readerfeedback-completeness' => 'Комплетност',
 	'readerfeedback-npov' => 'Неутралност',
@@ -1171,11 +1296,47 @@ $messages['mk'] = array(
 	'readerfeedback-voted' => "'''Изгледа дека веќе ја имате оценувано оваа страница''' ([$3 Коментари или прашања?]).",
 	'readerfeedback-submitting' => 'Зачување...',
 	'readerfeedback-finished' => 'Ви благодариме!',
+	'readerfeedback-tagfilter' => 'Ознака:',
 	'readerfeedback-tierfilter' => 'Оценка:',
 	'readerfeedback-tier-high' => 'Високо',
 	'readerfeedback-tier-medium' => 'Средно',
 	'readerfeedback-tier-poor' => 'Слабо',
 	'tooltip-ca-ratinghist' => 'Оценки на читателите за оваа страница',
+	'specialpages-group-feedback' => 'Мислења од гледачите',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'readerfeedback-desc' => 'വർഗ്ഗീകൃത നിലവാരമളക്കൽ പോലെ വായനക്കാർക്ക് അവരുടെ അഭിപ്രായം വഴി താൾ മൂല്യനിർണ്ണയം ചെയ്യാനുള്ള അവസരം നൽകുന്നു.',
+	'readerfeedback' => 'ഈ താളിനെ കുറിച്ച് താങ്കൾ എന്തു കരുതുന്നു?',
+	'readerfeedback-text' => "''ഈ താളിന്റെ നിലവാരം കണ്ടെത്താൻ ഒരു നിമിഷമെടുക്കൂ. താങ്കളുടെ അഭിപ്രായങ്ങൾ വിലയേറിയതും വെബ്‌‌സൈറ്റ് മെച്ചപ്പെടുത്താൻ ഞങ്ങളെ സഹായിക്കുന്നതുമാണ്.''",
+	'readerfeedback-reliability' => 'വിശ്വാസയോഗ്യത',
+	'readerfeedback-completeness' => 'പൂർണ്ണത',
+	'readerfeedback-npov' => 'നിഷ്പക്ഷത',
+	'readerfeedback-presentation' => 'പ്രദർശനഗുണം',
+	'readerfeedback-overall' => 'എല്ലാംകൂടി',
+	'readerfeedback-level-none' => '(ഉറപ്പില്ല)',
+	'readerfeedback-level-0' => 'ദരിദ്രം',
+	'readerfeedback-level-1' => 'മോശം',
+	'readerfeedback-level-2' => 'കൊള്ളാം',
+	'readerfeedback-level-3' => 'ഉന്നതം',
+	'readerfeedback-level-4' => 'ഒന്നാന്തരം',
+	'readerfeedback-submit' => 'സമർപ്പിക്കുക',
+	'readerfeedback-main' => 'ഉള്ളടക്ക താളുകളുടെ മാറ്റം നിലവാരമളന്നാൽ മതി.',
+	'readerfeedback-success' => "'''ഈ താൾ സംശോധനം ചെയ്തതിനു നന്ദി അറിയിക്കുന്നു!''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലങ്കിൽ ചോദ്യങ്ങൾ?]).",
+	'readerfeedback-voted' => "'''ഈ താളിന്റെ മൂല്യനിർണ്ണയം താങ്കൾ നേരത്തേ ചെയ്തിട്ടുണ്ടെന്നു കാണുന്നു''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലങ്കിൽ ചോദ്യങ്ങൾ?]).",
+	'readerfeedback-error' => "'''ഈ താളിന്റെ മൂല്യനിർണ്ണയത്തിനിടയ്ക്ക് പിശക് സംഭവിച്ചിരിക്കുന്നു''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലങ്കിൽ ചോദ്യങ്ങൾ?]).",
+	'readerfeedback-submitting' => 'സമർപ്പിക്കുന്നു …',
+	'readerfeedback-finished' => 'നന്ദി!',
+	'readerfeedback-tagfilter' => 'റ്റാഗ്:',
+	'readerfeedback-tierfilter' => 'മതിപ്പ് നിലവാരം:',
+	'readerfeedback-tier-high' => 'ഉന്നതം',
+	'readerfeedback-tier-medium' => 'സാമാന്യം',
+	'readerfeedback-tier-poor' => 'മോശം',
+	'tooltip-ca-ratinghist' => 'വായനക്കാർ ഈ താളിനു നൽകിയ നിലവാരം',
+	'specialpages-group-feedback' => 'വായനക്കാരുടെ അഭിപ്രായം',
 );
 
 /** Malay (Bahasa Melayu)
@@ -1230,6 +1391,7 @@ $messages['nah'] = array(
  * @author Tvdm
  */
 $messages['nl'] = array(
+	'readerfeedback-desc' => 'Paginavalidatie laat lezers terugkoppeling geven in de vorm van categoriale beoordelingen',
 	'readerfeedback' => 'Wat vindt u van deze pagina?',
 	'readerfeedback-text' => "''Neem de moeite om deze pagina hieronder te waarderen.
 Uw terugkoppeling is waardevol en helpt ons deze website te verbeteren.''",
@@ -1257,6 +1419,7 @@ Uw terugkoppeling is waardevol en helpt ons deze website te verbeteren.''",
 	'readerfeedback-tier-medium' => 'Gemiddeld',
 	'readerfeedback-tier-poor' => 'Laag',
 	'tooltip-ca-ratinghist' => 'Waardering van deze pagina door lezers',
+	'specialpages-group-feedback' => 'Mening van de lezer',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1324,8 +1487,9 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'readerfeedback-desc' => 'La validacion d’articles permet als lectors de balhar lor vejaire jos forma d’evaluacions per categoria',
 	'readerfeedback' => "Qué pensatz d'aquesta pagina ?",
-	'readerfeedback-text' => "''Consacratz un moment per notar aquesta pagina çaijós. Vòstras impressions son preciosas e nos ajudan a melhorar nòstre sit internet.''",
+	'readerfeedback-text' => "''Consacratz un moment per notar aquesta pagina çaijós. Vòstras impressions son preciosas e nos ajudan a melhorar nòstre site internet.''",
 	'readerfeedback-reliability' => 'Fisabilitat',
 	'readerfeedback-completeness' => 'Estat complet',
 	'readerfeedback-npov' => 'Neutralitat',
@@ -1339,17 +1503,18 @@ $messages['oc'] = array(
 	'readerfeedback-level-4' => 'Excellent',
 	'readerfeedback-submit' => 'Sometre',
 	'readerfeedback-main' => 'Sol lo contengut de las paginas pòt èsser notat.',
-	'readerfeedback-success' => "'''Mercés per la revision d'aquesta pagina ! ''' ([$3 De questions o de comentaris ? ]).",
-	'readerfeedback-voted' => "'''Apareis que ja avètz notat aquesta pagina'''. ([$3 De questions o de comentaris ?]).",
-	'readerfeedback-error' => "'''Una error s'es producha al moment de l'evaluacion d'aquesta pagina''' ([$3 remarcas o questions ?]).",
+	'readerfeedback-success' => "'''Mercés per a aver relegit aquesta pagina ! ''' ([$2 veire los resultats]) ([$3 De questions o de comentaris ? ]).",
+	'readerfeedback-voted' => "'''Sembla que ja avètz evalorat aquesta pagina''' ([$2 veire los resultats]) ([$3 De questions o de comentaris ?]).",
+	'readerfeedback-error' => "'''Una error s'es producha al moment de l'avaloracion d'aquesta pagina''' ([$2 veire los resultats]) ([$3 remarcas o questions ?]).",
 	'readerfeedback-submitting' => 'Somission…',
 	'readerfeedback-finished' => 'Mercés !',
 	'readerfeedback-tagfilter' => 'Balisa :',
-	'readerfeedback-tierfilter' => 'Evaluacion :',
+	'readerfeedback-tierfilter' => 'Avaloracion :',
 	'readerfeedback-tier-high' => 'Bona',
 	'readerfeedback-tier-medium' => 'Mejana',
 	'readerfeedback-tier-poor' => 'Marrida',
 	'tooltip-ca-ratinghist' => "Apreciacions dels lectors d'aquesta pagina",
+	'specialpages-group-feedback' => 'Opinion del lector',
 );
 
 /** Polish (Polski)
@@ -1365,6 +1530,7 @@ $messages['oc'] = array(
  * @author ToSter
  */
 $messages['pl'] = array(
+	'readerfeedback-desc' => 'Ocenianie stron pozwala czytelnikom przedstawić swoją opinię w formie kategoryzacji',
 	'readerfeedback' => 'Co myślisz o tej stronie?',
 	'readerfeedback-text' => "''Poświęć chwilę, aby ocenić tę stronę. Twoja opinia jest ważna i pomoże nam w ulepszeniu naszej witryny.''",
 	'readerfeedback-reliability' => 'Solidność',
@@ -1380,9 +1546,9 @@ $messages['pl'] = array(
 	'readerfeedback-level-4' => 'bardzo dobrze',
 	'readerfeedback-submit' => 'Oznacz',
 	'readerfeedback-main' => 'Tylko strony z treścią mogą być oceniane.',
-	'readerfeedback-success' => "'''Dziękujemy za ocenę tej strony!''' ([$3 Komentarze lub pytania?]).",
-	'readerfeedback-voted' => "'''Tę stronę prawdopodobnie już oceniałeś''' ([$3 Komentarze lub pytania?]).",
-	'readerfeedback-error' => "'''Podczas oceniania tej strony wystąpił błąd''' ([$3 komentarze lub pytania?]).",
+	'readerfeedback-success' => "'''Dziękujemy za ocenę strony!''' ([$2 wyniki]) ([$3 uwagi lub pytania]).",
+	'readerfeedback-voted' => "'''Tę stronę prawdopodobnie już oceniałeś''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
+	'readerfeedback-error' => "'''Podczas oceniania strony wystąpił błąd''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-submitting' => 'Zapisywanie...',
 	'readerfeedback-finished' => 'Dziękujemy!',
 	'readerfeedback-tagfilter' => 'Znacznik',
@@ -1391,6 +1557,7 @@ $messages['pl'] = array(
 	'readerfeedback-tier-medium' => 'umiarkowana',
 	'readerfeedback-tier-poor' => 'słaba',
 	'tooltip-ca-ratinghist' => 'Oceny czytelników tej strony',
+	'specialpages-group-feedback' => 'Opinia czytelnika',
 );
 
 /** Pashto (پښتو)
@@ -1474,6 +1641,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'readerfeedback-desc' => "Pàgene de validazione ca permette a le letture de dà 'nu retorne jndr'à 'u module de le pundegge de categorije",
 	'readerfeedback' => 'Ce pinze de sta pàgene?',
 	'readerfeedback-text' => "''Pe piacere pigghiate 'nu mumende pe dà 'nu pundegge a 'a pàgene d'aqquà sotte. 'A valutazione toje jè 'mbortande e 'n'aiute a aggiustà 'u site.''",
 	'readerfeedback-reliability' => 'Affedabbeletà',
@@ -1500,6 +1668,7 @@ $messages['roa-tara'] = array(
 	'readerfeedback-tier-medium' => 'Medie',
 	'readerfeedback-tier-poor' => 'Povere',
 	'tooltip-ca-ratinghist' => 'Pundegge de le letture de sta pàgene',
+	'specialpages-group-feedback' => "Visitatore de l'opiniune",
 );
 
 /** Russian (Русский)
@@ -1516,6 +1685,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'readerfeedback-desc' => 'Проверка страниц позволяет читателям оставлять отзывы в форме оценок по категориям',
 	'readerfeedback' => 'Что вы думаете об этой странице?',
 	'readerfeedback-text' => "''Пожалуйста, дайте оценку этой странице. Ваши отзывы очень ценны для нас, они помогают работать над улучшением сайта.''",
 	'readerfeedback-reliability' => 'Достоверность',
@@ -1542,6 +1712,7 @@ $messages['ru'] = array(
 	'readerfeedback-tier-medium' => 'Средняя',
 	'readerfeedback-tier-poor' => 'Низкая',
 	'tooltip-ca-ratinghist' => 'Читательская оценка этой страницы',
+	'specialpages-group-feedback' => 'Мнение читателей',
 );
 
 /** Yakut (Саха тыла)
@@ -1589,6 +1760,7 @@ $messages['sh'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'readerfeedback-desc' => 'Overenie stránky umožňuje čitateľom poslať komentáre vo formulári kategorických hodnotení',
 	'readerfeedback' => 'Čo si myslíte o tejto stránke?',
 	'readerfeedback-text' => "''Prosím, venujte chvíľu ohodnoteniu tejto stránky. Ceníme si vaše pripomienky, pomáhajú nám zlepšiť našu webstránku''",
 	'readerfeedback-reliability' => 'Spoľahlivosť',
@@ -1604,9 +1776,9 @@ $messages['sk'] = array(
 	'readerfeedback-level-4' => 'Vynikajúca',
 	'readerfeedback-submit' => 'Odoslať',
 	'readerfeedback-main' => 'Je možné hodnotiť iba stránky s obsahom.',
-	'readerfeedback-success' => "'''Ďakujeme za kontrolu tejto stránky!''' Máte [$3 komentár alebo otázku?].",
-	'readerfeedback-voted' => "'''Zdá sa, že ste túto stránku už ohodnotili.''' Máte [$3 komentár alebo otázku?].",
-	'readerfeedback-error' => "'''Pri hodnotení tejto stránky sa vyskytla chyba''' ([$3 komentáre alebo otázky?]).",
+	'readerfeedback-success' => "'''Ďakujeme za ohodnotenie tejto stránky!''' ([$2 zobraziť výsledky]) (Máte [$3 komentár alebo otázku?]).",
+	'readerfeedback-voted' => "'''Zdá sa, že ste túto stránku už ohodnotili.''' ([$2 zobraziť výsledky]) (Máte [$3 komentár alebo otázku?]).",
+	'readerfeedback-error' => "'''Pri hodnotení tejto stránky sa vyskytla chyba''' ([$2 zobraziť výsledky]) (Máte [$3 komentár alebo otázku?]).",
 	'readerfeedback-submitting' => 'Odosiela sa...',
 	'readerfeedback-finished' => 'Ďakujeme!',
 	'readerfeedback-tagfilter' => 'Značka:',
@@ -1615,9 +1787,10 @@ $messages['sk'] = array(
 	'readerfeedback-tier-medium' => 'Stredné',
 	'readerfeedback-tier-poor' => 'Nízke',
 	'tooltip-ca-ratinghist' => 'Hodnotenie tejto stránky čitateľmi',
+	'specialpages-group-feedback' => 'Názor čitateľa',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -1640,7 +1813,7 @@ $messages['sr-ec'] = array(
 	'tooltip-ca-ratinghist' => 'Оцене стране од стране читалаца.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1776,7 +1949,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'readerfeedback' => 'Що ви думаєте про цю сторінку?',
-	'readerfeedback-text' => "''Будь ласка, дайте оцінку цій сторінці нижче. Ваші відгуки дуже цінні для нас, вони допомагають нам працювати над покращенням сайту.''",
+	'readerfeedback-text' => "''Будь ласка, оцініть цю сторінку. Ваші відгуки дуже цінні для нас, вони допомагають нам працювати над покращенням сайту.''",
 	'readerfeedback-reliability' => 'Достовірність',
 	'readerfeedback-completeness' => 'Повнота',
 	'readerfeedback-npov' => 'Нейтральність',
@@ -1879,9 +2052,9 @@ $messages['vi'] = array(
 	'readerfeedback-level-4' => 'Tốt',
 	'readerfeedback-submit' => 'Đệ trình',
 	'readerfeedback-main' => 'Chỉ đánh giá được những trang nội dung.',
-	'readerfeedback-success' => "'''Cám ơn bạn vì đã duyệt trang này!''' ([$3 Ghi chú hoặc câu hỏi?]).",
-	'readerfeedback-voted' => "'''Dường như bạn đã xếp hạng trang này rồi''' ([$3 Ghi chú hoặc câu hỏi?]).",
-	'readerfeedback-error' => "'''Xảy ra lỗi khi đang xếp hạng trang này''' ([$3 bình luận hoặc câu hỏi?]).",
+	'readerfeedback-success' => "'''Cám ơn bạn vì đã duyệt trang này!''' ([$2 Xem kết quả]&nbsp;– [$3 Bình luận hoặc câu hỏi?])",
+	'readerfeedback-voted' => "'''Dường như bạn đã xếp hạng trang này rồi.''' ([$2 Xem kết quả]&nbsp;– [$3 Bình luận hoặc câu hỏi?])",
+	'readerfeedback-error' => "'''Xảy ra lỗi khi đang xếp hạng trang này.''' ([$2 Xem kết quả]&nbsp;– [$3 Bình luận hoặc câu hỏi?])",
 	'readerfeedback-submitting' => 'Đang gửi…',
 	'readerfeedback-finished' => 'Cám ơn!',
 	'readerfeedback-tagfilter' => 'Thẻ:',
