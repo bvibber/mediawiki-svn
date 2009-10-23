@@ -13,13 +13,13 @@
  *
  * @author Trevor Parscal <tparscal@wikimedia.org>, Roan Kattouw <roan.kattouw@gmail.com>
  * @license GPL v2 or later
- * @version 0.1.1
+ * @version 0.1.2
  */
 
 /* Configuration */
 
 // Bump the version number every time you change any of the .css/.js files
-$wgEditToolbarStyleVersion = 61;
+$wgEditToolbarStyleVersion = 62;
 
 // Set this to true to simply override the stock toolbar for everyone
 $wgEditToolbarGlobalEnable = false;
@@ -48,7 +48,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'EditToolbar',
 	'author' => 'Trevor Parscal',
-	'version' => '0.1.1',
+	'version' => '0.1.2',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'edittoolbar-desc',
 );
