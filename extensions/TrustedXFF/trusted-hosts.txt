@@ -1202,12 +1202,12 @@ cache-out-1.inet.fi.
 195.229.242.58
 
 # Proxies for Bolt Browser (via email, XFF confirmed)
-us1.boltbrowser.com has address 174.132.56.156
-us2.boltbrowser.com has address 174.132.56.140
-us3.boltbrowser.com has address 174.132.56.148
-us4.boltbrowser.com has address 174.132.56.164
-us5.boltbrowser.com has address 174.132.109.84
-us11.boltbrowser.com has address 174.132.127.186
-us12.boltbrowser.com has address 174.132.127.162
-us13.boltbrowser.com has address 174.132.127.178
+us1.boltbrowser.com
+us2.boltbrowser.com
+us3.boltbrowser.com
+us4.boltbrowser.com
+us5.boltbrowser.com
+us11.boltbrowser.com
+us12.boltbrowser.com
+us13.boltbrowser.com
 
