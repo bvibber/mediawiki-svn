@@ -103,8 +103,8 @@ $messages['en'] = array(
 
 	'codereview-reply-link' => 'reply',
 	
-	'codereview-tests-succeeded' => 'succeeded tests',
-	'codereview-tests-failed'  => 'failed tests:',
+	'codereview-tests-succeeded2' => '$1 succeeded {{PLURAL:$2|test|tests}}',
+	'codereview-tests-failed2'  => '$1 succeeded {{PLURAL:$2|test|tests}}, $3 failed {{PLURAL:$4|test|tests}}:',
 	'codereview-tests-running' => 'Test cases are running...',
 	'codereview-tests-aborted' => 'Test run aborted.',
 
