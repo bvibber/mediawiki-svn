@@ -222,6 +222,17 @@ js2AddOnloadHook( function() {
 								ownline: true
 							}
 						}
+					}	,
+					'indent': {
+						labelMsg: 'edittoolbar-tool-indent',
+						type: 'button',
+						icon: 'format-indent.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: ":",
+							}
+						}
 					}
 				}
 			},
