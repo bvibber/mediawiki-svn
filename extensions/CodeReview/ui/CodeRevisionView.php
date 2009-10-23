@@ -313,21 +313,22 @@ class CodeRevisionView extends CodeView {
 			foreach( $runs as $run ) {
 				$html .= "<h3>" . htmlspecialchars( $run->suite->name ) . "</h3>\n";
 				if( $run->status == 'complete' ) {
+					global $wgLang;
+
 					$total = $run->countTotal;
 					$success = $run->countSuccess;
 					$failed = $total - $success;
-					$success_tests = "<span class='mw-codereview-success'>$success</span>";
+					$success_tests = "<span class='mw-codereview-success'>" . $wgLang->formatNum( $success ) . "</span>";
 					if( $failed ) {
-						$failed_tests = "<span class='mw-codereview-fail'>$failed</span>";
-						$html .= "<p>" .
-							wfMsgExt(
-								'codereview-tests-failed2',
-								'parseinline',
-								$success_tests,
-								$success,
-								$failed_tests,
-								$failed
-							) . "</p>";
+						$failed_tests = "<span class='mw-codereview-fail'>" . $wgLang->formatNum( $failed ) . "</span>";
+						$html .= wfMsgExt(
+							'codereview-tests-failed2',
+							'parse',
+							$success_tests,
+							$success,
+							$failed_tests,
+							$failed
+						);
 
 						$tests = $run->getResults( false );
 						$html .= "<ul>\n";
@@ -336,13 +337,12 @@ class CodeRevisionView extends CodeView {
 						}
 						$html .= "</ul>\n";
 					} else {
-						$html .= "<p>" .
-							wfMsgExt(
-								'codereview-tests-succeeded2',
-								'parseinline',
-								$success_tests,
-								$success
-							) . "</p>";
+						$html .= wfMsgExt(
+							'codereview-tests-succeeded2',
+							'parseinline',
+							$success_tests,
+							$success
+						);
 					}
 				} elseif( $run->status == "running" ) {
 					$html .= wfMsgExt('codereview-tests-running','parse');
