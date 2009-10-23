@@ -964,21 +964,37 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
  */
 $messages['hu'] = array(
 	'povwatch' => 'POV-figyelő',
+	'povwatch_desc' => 'Kiterjesztés [[Special:PovWatch|lapok felvételéhez más felhasználók figyelőlistájára]]',
 	'povwatch_no_session' => 'Hiba: nem lehet elküldeni az űrlap adatait a munkamenetadatok hiánya miatt.',
+	'povwatch_not_allowed_push' => 'Nem vagy POV-figyelő adminisztrátor, nem vehetsz fel lapokat mások figyelőlistájára.',
 	'povwatch_already_subscribed' => 'Már előfizettél a POV-figyelőre',
 	'povwatch_subscribed' => 'Előfizettél a POV-figyelőre',
 	'povwatch_not_subscribed' => 'Nem vagy a POV-figyelő előfizetője, így nem is tudsz leiratkozni róla.',
+	'povwatch_unsubscribed' => 'Leiratkoztál a POV-figyelőről.',
 	'povwatch_invalid_title' => 'A megadott cím érvénytelen',
+	'povwatch_pushed' => 'A(z) [[$1]] lap sikeresen felkerült $2 {{PLURAL:$2|felhasználó figyelőlistájára|felhasználók figyelőlistáira}}.',
+	'povwatch_intro' => 'A POV-figyelő egy szolgáltatás, ami lehetővé teszi vitás lapok diszkrét hozzáadását a feliratkozott adminisztrátorok figyelőlistáira.
+
+A legutóbb figyelőlistára tett lapok naplója: [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'Elérhető a [[Special:PovWatch/subscribers|feliratkozottak listája]].',
 	'povwatch_subscriber_list_intro' => '<strong>Előfizetők</strong>',
+	'povwatch_not_allowed_subscribers' => 'Nincs jogosultságod megnézni a POV-figyelőre feliratkozottak listáját.',
 	'povwatch_unknown_subpage' => 'Ismeretlen allap.',
 	'povwatch_push' => 'Hozzáfűz',
+	'povwatch_push_intro' => 'Használd az alábbi űrlapot lapok felvételéhez a feliratkozott felhasználók figyelőlistáira.
+Kérlek figyelmesen írd be a címet: nem létező lapok is hozzáadhatóak, és nincs mód utólag eltávolítani a lapot a figyelőlistákról.',
 	'povwatch_title' => 'Cím:',
 	'povwatch_comment' => 'Naplómegjegyzés:',
 	'povwatch_no_log' => 'Nincsenek naplóbejegyzések.',
 	'povwatch_no_subscribers' => 'Nincsenek előfizetők.',
+	'povwatch_unsubscribe_intro' => 'Feliratkoztál a POV-figyelőre.
+Leiratkozáshoz kattints a lenti gombra.',
 	'povwatch_unsubscribe' => 'Leiratkozás',
+	'povwatch_subscribe_intro' => 'Nem vagy feliratkozva a POV-figyelőre.
+Kattints a lenti gombra a feliratkozáshoz.',
 	'povwatch_subscribe' => 'Feliratkozás',
 	'povwatch_added' => 'hozzáadva',
+	'right-povwatch_admin' => 'felhasználói jogosultságok kezelése lapok hozzáadásához más felhasználók figyelőlistáira',
 	'right-povwatch_user' => 'lapok hozzáadása más szerkesztők figyelőlistájához',
 	'action-povwatch_admin' => 'a PovWatchhoz tartozó jogosultságok kezelése',
 	'action-povwatch_user' => 'lap hozzáadása egy másik szerkesztő figyelőlistájához',

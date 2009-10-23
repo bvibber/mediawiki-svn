@@ -249,6 +249,7 @@ $messages['ar'] = array(
 	'contribstats-donations' => 'تبرعات',
 	'contribstats-conversion' => 'نسبة التحويل (%)',
 	'contribstats-template' => 'قالب',
+	'contribstats-nodata' => 'لا معلومات مُعطاة',
 	'fundraiserstatistics' => 'إحصاءات جمع التبرعات',
 	'fundraiserstats-date' => 'تاريخ',
 	'fundraiserstats-day' => 'اليوم $1 من $2',

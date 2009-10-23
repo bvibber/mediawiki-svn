@@ -86,6 +86,19 @@ $messages['af'] = array(
 	'masseditregex-hint-remove' => 'Verwyder teks uit al die bladsye in die lys',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'masseditregex-matchtxt' => 'ابحث عن:',
+	'masseditregex-replacetxt' => 'استبدل بـ:',
+	'masseditregex-executebtn' => 'شغّل',
+	'masseditregex-err-nopages' => 'يجب أن تحدّد صفحة واحدة على الأقل لتغييرها.',
+	'masseditregex-hint-headreplace' => 'استبدل',
+	'masseditregex-listtype-intro' => 'هذه قائمة بـ:',
+	'masseditregex-badregex' => 'عبارة منطقية غير صالحة:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

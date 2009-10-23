@@ -631,13 +631,24 @@ $messages['hu'] = array(
 	'form-desc' => '[[Special:Form|Űrlap interfész]] új lapok létrehozásához',
 	'form' => 'Űrlap',
 	'formnoname' => 'Nincs űrlapnév',
+	'formnonametext' => 'Meg kell adnod egy űrlapnevet, mint például „{{#special:Form}}/Űrlapneve”',
 	'formbadname' => 'Hibás űrlapnév',
 	'formbadnametext' => 'Nincs ilyen nevű űrlap.',
+	'formpattern' => '$1 űrlap',
 	'formtitlepattern' => 'Új $1 hozzáadása',
 	'formsave' => 'Mentés',
+	'formindexmismatch-title' => 'A név minta és a sablon nem egyezik',
+	'formindexmismatch' => 'Ez az űrlap nem egyező névmintákat és sablonokat tartalmaz, a $1 indextől kezdve.',
 	'formarticleexists' => 'A lap már létezik',
+	'formarticleexiststext' => 'A(z) [[$1]] lap már létezik.',
 	'formbadpagename' => 'Hibás lapnév',
+	'formbadrecaptcha' => 'Helytelen értékek a reCaptchához. Próbáld újra.',
+	'formbadpagenametext' => 'A beírt űrlapadat hibás lapcímet generál: „$1”.',
+	'formrequiredfielderror' => 'A {{PLURAL:$2|$1 mező|$1 mezők}} kitöltése kötelező ennél az űrlapnál.
+Kérlek {{PLURAL:$2|töltsd ki|töltsd ki őket}}.',
+	'formsavesummary' => 'Új lap a(z) [[Special:Form/$1|$1 űrlap]] használatával',
 	'formsaveerror' => 'Hiba az űrlap mentésekor',
+	'formsaveerrortext' => 'A(z) „$1” lap mentésekor ismeretlen hiba történt.',
 );
 
 /** Interlingua (Interlingua)

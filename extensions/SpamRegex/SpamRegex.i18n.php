@@ -720,13 +720,26 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'spamregex' => 'Spam reguláris kifejezés',
+	'spamregex-desc' => 'Nemkívánatos kifejezések [[Special:SpamRegex|kiszűrése]] a szerkesztett lapokról, reguláris kifejezések alapján',
+	'spamregex-error-unblocking' => 'Hiba a(z) „$1” blokkolásának feloldásakor. Valószínűleg nincs ilyen minta.',
 	'spamregex-summary' => 'Szövegtalálat a lap összefoglalójában.',
+	'spamregex-intro' => 'Használd ezt az űrlapot kifejezések lapszövegbe mentésének hatékony blokkolásához.
+Ha a szöveg tartalmazza a megadott kifejezést, a változtatás nem kerül mentésre és egy magyarázat jelenik meg a felhasználónak, aki menteni próbálta a lapot.
+Javasolt az óvatosság, a kifejezések nem lehetnek túl rövidek vagy túl gyakoriak.',
+	'spamregex-page-title' => 'Nem kívánatos kifejezések blokkolása',
 	'spamregex-currently-blocked' => "'''Jelenleg blokkolt kifejezések:'''",
+	'spamregex-move' => 'A megadott indoklás blokkolt kifejezést tartalmazott.',
 	'spamregex-no-currently-blocked' => "'''Nincsenek blokkolt kifejezések.'''",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 eltávolítás]) hozzáadta $5 ekkor: $6 $7",
+	'spamregex-page-title-1' => 'Kifejezés blokkolása reguláris kifejezések használatával',
 	'spamregex-unblock-success' => 'A blokk feloldása sikerült',
+	'spamregex-unblock-message' => "A(z) '''$1''' kifejezés blokkolása feloldva a szerkesztésből.",
+	'spamregex-page-title-2' => 'Kifejezések blokkolása mentés előtt reguláris kifejezések használatával',
 	'spamregex-block-success' => 'A blokkolás sikerült',
+	'spamregex-block-message' => "A(z) '''$1''' kifejezés blokkolva.",
 	'spamregex-warning-1' => 'Adj meg egy blokkolandó kifejezést.',
 	'spamregex-error-1' => 'Érvénytelen reguláris kifejezés.',
+	'spamregex-warning-2' => 'Kérlek válassz legalább egy blokkolási módot.',
 	'spamregex-already-blocked' => '„$1” már blokkolva van',
 	'spamregex-phrase-block' => 'Blokkolandó kifejezés:',
 	'spamregex-phrase-block-text' => 'kifejezés blokklása a lap szövegében',

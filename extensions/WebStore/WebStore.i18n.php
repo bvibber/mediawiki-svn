@@ -83,8 +83,12 @@ Shown in [[Special:Version]].',
  */
 $messages['af'] = array(
 	'inplace_scaler_not_enough_params' => 'Nie genoeg parameters nie.',
+	'webstore_curl' => 'Fout vanaf Curl: $1',
 	'webstore_404' => 'Lêer nie gevind nie.',
+	'webstore_php_warning' => 'PHP-waarskuwing: $1',
+	'webstore_metadata_not_found' => 'Lêer is nie gevind nie: $1',
 	'webstore_no_response' => 'Geen antwoord van die bediener',
+	'webstore_php_error' => 'PHP-foute het voorgekom:',
 );
 
 /** Amharic (አማርኛ)
@@ -1194,6 +1198,8 @@ $messages['hu'] = array(
 	'webstore-desc' => 'Csak webalapú (nem NFS) fájltároló köztesréteg',
 	'webstore_access' => 'Ez a szolgáltatás korlátozott kliens IP-címek alapján.',
 	'webstore_path_invalid' => 'A fájlnév érvénytelen volt.',
+	'webstore_dest_open' => 'Nem lehet megnyitni a(z) „$1” célfájlt.',
+	'webstore_dest_lock' => 'Nem sikerült zárolni a(z) „$1” célfájlt.',
 	'webstore_dest_mkdir' => 'Nem sikerült létrehozni a(z) „$1” célkönyvtárat.',
 	'webstore_archive_lock' => 'Nem sikerült zárolni a(z) „$1” archívumfájlt.',
 	'webstore_archive_mkdir' => 'Nem sikerült a(z) „$1” archívumkönyvtár létrehozása.',
@@ -1203,12 +1209,23 @@ $messages['hu'] = array(
 	'webstore_rename' => 'Hiba a fájl átnevezésekor („$1” → „$2”).',
 	'webstore_lock_open' => 'Hiba a(z) „$1” zárolófájl megnyitásakor.',
 	'webstore_lock_close' => 'Hiba a(z) „$1” zárolófájl bezárásakor.',
+	'webstore_dest_exists' => 'Hiba, a(z) „$1” célfájl létezik.',
+	'webstore_temp_open' => 'Hiba a(z) „$1” ideiglenes fájl megnyitásakor.',
+	'webstore_temp_copy' => 'Hiba a(z) „$1” ideiglenes fájl „$2” célfájlba másolásakor.',
 	'webstore_temp_close' => 'Hiba a(z) „$1” ideiglenes fájl bezárása közben.',
+	'webstore_temp_lock' => 'Hiba a(z) „$1” ideiglenes fájl zárolásakor.',
+	'webstore_no_archive' => 'A célfájl létezik és nincs archívum megadva.',
 	'webstore_no_file' => 'Nem lett fájl feltöltve.',
+	'webstore_move_uploaded' => 'Hiba a(z) „$1” feltöltött fájl áthelyezésekor a(z) „$2” ideiglenes helyre.',
 	'webstore_invalid_zone' => 'Érvénytelen zóna: „$1”.',
+	'webstore_no_deleted' => 'Nincs megadva archívumkönyvtár a törölt fájlokhoz.',
+	'webstore_curl' => 'Hiba a cURL-ből: $1',
 	'webstore_404' => 'A fájl nem található.',
 	'webstore_php_warning' => 'PHP figyelmeztetés: $1',
 	'webstore_metadata_not_found' => 'A fájl nem található: $1',
+	'webstore_postfile_not_found' => 'A feltöltendő fájl nem található.',
+	'webstore_scaler_empty_response' => 'A képméretező üres választ adott 200-as válaszkóddal.
+Ez lehet végzetes PHP hiba miatt a méretezőben.',
 	'webstore_invalid_response' => 'Érvénytelen válasz a szervertől:
 
 $1',

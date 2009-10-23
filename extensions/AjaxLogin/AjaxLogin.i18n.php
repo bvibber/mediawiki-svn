@@ -462,6 +462,7 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
@@ -469,6 +470,9 @@ $messages['ko'] = array(
 	'ajaxLogin1' => '로그인을 하기 위해서는 비밀번호를 입력해주세요. 로그인을 할 경우 현재 입력창에서 벗어나게 되어 저장하지 않은 편집이 사라질 수 있습니다.',
 	'ajaxLogin2' => '현재 창에서 벗어납니다. 저장하지 않은 편집을 모두 잃을 수 있습니다.',
 	'ajaxlogin-create' => '새 계정 만들기',
+	'al-nosuchuser' => '"$1"이라는 이름을 가진 사용자가 없습니다.
+계정 이름은 대소문자를 구별합니다.
+철자를 다시 확인해보십시오.',
 );
 
 /** Ripoarisch (Ripoarisch)

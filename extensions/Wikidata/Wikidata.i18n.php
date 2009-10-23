@@ -4198,7 +4198,7 @@ Seleccione unha colección a exportar. Na caixa de texto das linguas, insira unh
 Por favor, vexa [[{{MediaWiki:Ow editing policy url}}|a nosa política de edición]].',
 	'ow_uipref_datasets' => 'Vista por defecto:',
 	'ow_uiprefs' => 'Wikidatos',
-	'ow_none_selected' => 'Ningún seleccionado',
+	'ow_none_selected' => 'Ningunha selección',
 	'transaction' => 'Wikidata: Rexistro de transaccións',
 	'ow_transaction_from_transaction' => 'Desde a transacción:',
 	'ow_transaction_count' => 'Conta:',

@@ -275,6 +275,17 @@ $messages['lb'] = array(
 	'transliterator-error-rulesize' => "D'Regel <code>$1</code> huet méi wéi $3 {{PLURAL:$3|Zeeche|Zeeche}} lenks a [[MediaWiki:$2]]",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'transliterator-desc' => 'Овозможува прилагодлива парсер функција за транслитерација',
+	'transliterator-error-ambiguous' => 'Двосмислено правило <code>$1</code> iво [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Грешна синтакса <code>$1</code> во [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Над $1 {{PLURAL:$1|правило|правила}} во [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Правилото <code>$1</code> содржи повеќе од $3 {{PLURAL:$3|знак|знаци}} лево од [[MediaWiki:$2]]',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

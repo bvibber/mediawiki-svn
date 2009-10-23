@@ -43,6 +43,7 @@ $4",
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
@@ -57,6 +58,7 @@ $messages['qqq'] = array(
 * $3 is a timestamp
 * $4 is a reason (free text)',
 	'todo-list-for' => '{{Identical|Todo list for}}',
+	'todo-list-change' => '{{Identical|Change}}',
 	'todo-list-cancel' => '{{Identical|Cancel}}',
 	'todo-form-details' => '{{Identical|Details}}',
 	'todo-form-submit' => '{{Identical|Submit query}}',
@@ -91,6 +93,7 @@ $messages['niu'] = array(
  */
 $messages['af'] = array(
 	'todo-new-queue' => 'nuut',
+	'todo-list-change' => 'Wysig',
 	'todo-list-cancel' => 'Kanselleer',
 	'todo-form-details' => 'Details:',
 );

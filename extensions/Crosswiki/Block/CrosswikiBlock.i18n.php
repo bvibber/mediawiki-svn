@@ -1065,13 +1065,33 @@ Légyszíves ellenőrizd, hogy megteheted-e ezt a másik wikin, és megfelel-e m
 	'crosswikiblock-nocreate' => 'Új regisztráció megakadályozása',
 	'crosswikiblock-autoblock' => 'A szerkesztő utolsó IP-címének automatikus blokkolása, és minden további IP-címé amelyről szerkeszteni próbál',
 	'crosswikiblock-noemail' => 'E-mail küldés tiltása a szerkesztőnél',
+	'crosswikiunblock' => 'Felhasználó blokkjának feloldása másik wikin',
+	'crosswikiunblock-header' => 'Ennek a lapnak a segítségével feloldhatod egy felhasználó blokkját másik wikin.
+Kérlek ellenőrizd, hogy szabad-e ezt tenned azon a wikin, és a blokk feloldása összhangban van az összes vonatkozó irányelvvel.',
+	'crosswikiunblock-user' => 'Felhasználónév, IP-cím vagy blokk-azonosító és cél wiki:',
 	'crosswikiunblock-reason' => 'Indoklás:',
+	'crosswikiunblock-submit' => 'Felhasználó blokkjának feloldása',
+	'crosswikiunblock-success' => "'''$1''' felhasználó blokkja sikeresen feloldva.
+
+Visszalépés ide:
+* [[Special:CrosswikiBlock|Blokkolás űrlap]]
+* [[$2]]",
 	'crosswikiblock-nousername' => 'Nincs szerkesztői név megadva',
 	'crosswikiblock-local' => 'A helyi blokkok nem támogatottak ezen a lapon. Használd a [[Special:BlockIP|{{int:blockip}}]] speciális lapot',
+	'crosswikiblock-dbnotfound' => 'A(z) $1 adatbázis nem létezik',
+	'crosswikiblock-noname' => 'A(z) „$1” nem érvényes felhasználónév.',
+	'crosswikiblock-nouser' => '„$3” felhasználó nem található.',
 	'crosswikiblock-noexpiry' => 'Érvénytelen lejárat: $1.',
+	'crosswikiblock-noreason' => 'Nincs indoklás megadva.',
 	'crosswikiblock-notoken' => 'Érvénytelen szerkesztési token.',
 	'crosswikiblock-alreadyblocked' => '$3 már blokkolva van.',
 	'crosswikiblock-noblock' => 'Ez a szerkesztő nincs blokkolva.',
+	'crosswikiblock-success' => "'''$3''' felhasználó sikeresen blokkolva.
+
+Visszalépés ide:
+* [[Special:CrosswikiBlock|Blokkolás űrlap]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'A helyi blokk-feloldások nem támogatottak ezen a felületen. Használd a [[Special:IPBlockList|{{int:ipblocklist}}]]-t',
 	'right-crosswikiblock' => 'szerkesztők blokkolása és a blokkok feloldása más wikiken',
 );
 

@@ -297,7 +297,7 @@ $messages['diq'] = array(
 	'scanset_no_volumes' => 'xeta: rêza cildi nêasena',
 	'scanset_missing_index_file' => 'xeta: dosyaya endexsi $1 nêasena',
 	'scanset_index_file_error' => 'xeta: $1. satır de formatê dosyaya endexsi de xeta esto',
-	'scanset_invalid_volume' => 'xeta: cilda şaş',
+	'scanset_invalid_volume' => 'xeta: cildo şaş',
 	'scanset_next' => 'aver &gt;',
 	'scanset_prev' => '&lt; apey',
 );

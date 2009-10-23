@@ -20,6 +20,13 @@ $messages['af'] = array(
 	'magicnonumberedheadings-desc' => 'Voeg die magiese woord "<nowiki>__NONUMBEREDHEADINGS__</nowiki>" by',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'magicnonumberedheadings-desc' => 'يضيف الكلمة السحرية "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

@@ -834,21 +834,36 @@ Prošu čakaj, doniž eksistowaca akcija njeje so skónčena.',
  */
 $messages['hu'] = array(
 	'taggedimages' => 'Felcímkézett képek',
+	'imagetagging-desc' => 'Lehetővé teszi a felhasználóknak, hogy egy beágyazott kép egyes területeit kijelöljék és hivatkozást készítsenek velük lapokra',
 	'imagetagging-addimagetag' => 'Kép felcímkézése',
 	'imagetagging-article' => 'Lap:',
 	'imagetagging-articletotag' => 'Felcímkézendő lap',
+	'imagetagging-canteditothermessage' => 'Nem szerkesztheted ezt a lapot, vagy nincs jogosultságod hozzá, vagy a lap zárolva van más okokból.',
 	'imagetagging-imghistory' => 'Történet',
 	'imagetagging-images' => 'képek',
 	'imagetagging-inthisimage' => 'Ezen a képen: $1',
+	'imagetagging-logentry' => '$2 eltávolította a(z) [[$1]] lapra hivatkozó címkét',
+	'imagetagging-log-tagged' => '$4 felcímkézte a(z) [[$1|$2]] képet a(z) [[$3]] lapra hivatkozva',
+	'imagetagging-new' => '<sup><span style="color:red">Új!</span></sup>',
 	'imagetagging-removetag' => 'címke eltávolítása',
 	'imagetagging-done-button' => 'Címkézés kész',
 	'imagetagging-tag-button' => 'Felcímkéz',
 	'imagetagging-tagcancel-button' => 'Mégse',
+	'imagetagging-tagging-instructions' => 'Kattints emberekre vagy tárgyakra a képen a felcímkézésükhöz.',
 	'imagetagging-addingtag' => 'Címke hozzáadása…',
 	'imagetagging-removingtag' => 'Címke eltávolítása…',
 	'imagetagging-addtagsuccess' => 'Címke hozzáadva.',
 	'imagetagging-removetagsuccess' => 'Címke eltávolítva.',
+	'imagetagging-canteditneedloginmessage' => 'Nem szerkesztheted ezt a lapot.
+Lehet hogy azért, mert a képek felcímkézéséhez be kell jelentkezned.
+Szeretnél bejelentkezni?',
+	'imagetagging-oneactionatatimemessage' => 'Egyszerre csak egy címkézési művelet engedélyezett.
+Várj a folyamatban levő művelet befejezésére.',
+	'imagetagging-oneuniquetagmessage' => 'Ezen a képen már van címke ilyen névvel.',
+	'imagetagging-imagetag-seemoreimages' => 'Több kép megjelenítése tőle: „$1” ($2)',
+	'imagetagging-taggedimages-title' => '„$1” képei',
 	'tag-logpagename' => 'Címkézési napló',
+	'tag-logpagetext' => 'Kép-címkék hozzáadásának hozzáadásának és eltávolításának naplója.',
 );
 
 /** Interlingua (Interlingua)

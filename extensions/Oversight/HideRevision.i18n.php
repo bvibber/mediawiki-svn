@@ -2612,6 +2612,7 @@ $messages['ne'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Erwin
  * @author Meursault2004
  * @author SPQRobin
  * @author Siebrand
@@ -2638,7 +2639,7 @@ teruggezet worden door databasebeheerders als u een fout maakt.",
 	'hiderevision-reason' => 'Reden (wordt discreet opgeslagen):',
 	'hiderevision-submit' => 'Deze gegevens permanent verbergen',
 	'hiderevision-tab' => 'Versie verbergen',
-	'hiderevision-link' => 'Verborgen gebruikersbijdragen',
+	'hiderevision-link' => 'verborgen gebruikersbijdragen',
 	'hiderevision-norevisions' => 'Er zijn geen te verwijderen versies opgegeven.',
 	'hiderevision-noreason' => 'U moet een reden opgeven voor het verwijderen.',
 	'hiderevision-status' => 'Versie $1: $2',

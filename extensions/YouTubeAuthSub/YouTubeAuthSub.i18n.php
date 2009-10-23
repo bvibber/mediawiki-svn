@@ -2208,6 +2208,18 @@ Peul desse che YouTube a l'abia damanca d'un pòch ëd temp për livré la proce
 Për anserì sò filmà an na pàgina dla wiki, ch'a buta ël còdes sì-dapress ant la pàgina:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Për carié un filmà, a-j sarà prima ciamà ëd rintré su YouTube.',
+	'youtubeauthsub_uploadhere' => "Carié sò filmà d'ambelessì:",
+	'youtubeauthsub_uploadbutton' => 'Carié',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Beiché cost filmà]',
+	'youtubeauthsub_summary' => 'Carié un filmà YouTube',
+	'youtubeauthsub_uploading' => "Sò filmà a l'é an camin ch'as caria.
+Për piasì, ch'a l'abia passiensa",
+	'youtubeauthsub_viewpage' => 'Dësnò, a peul [[$1|beiché sò filmà]].',
+	'youtubeauthsub_jserror_nokeywords' => "Për piasì, ch'a buta un-a o pì paròle ciav.",
+	'youtubeauthsub_jserror_notitle' => "Për piasì, ch'a buta un tìtol al filmà.",
+	'youtubeauthsub_jserror_nodesc' => "Për piasì, ch'a buta na descrission për ël filmà.",
 );
 
 /** Pontic (Ποντιακά)

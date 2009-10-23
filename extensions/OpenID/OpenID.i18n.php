@@ -2806,6 +2806,96 @@ $messages['mhr'] = array(
 	'openidchoosepassword' => 'шолыпмут:',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'openid-desc' => 'Најавувајте се на викито со [http://openid.net/ OpenID], и најавувајте се со други OpenID-поддржни страници со вики-корисничка сметка',
+	'openidlogin' => 'Најавување со OpenID',
+	'openidserver' => 'OpenID сервер',
+	'openidxrds' => 'Yadis податотека',
+	'openidconvert' => 'OpenID претворач',
+	'openiderror' => 'Грешка при потврдувањето',
+	'openiderrortext' => 'Настана грешка при потврдувањето на URL адресата на OpenID.',
+	'openidconfigerror' => 'Грешка со конфигурацијата на OpenID',
+	'openidconfigerrortext' => 'Складишната конфигурација на OpenID за ова вики е погрешна.
+Консултирајте се со [[Special:ListUsers/sysop|администратор]].',
+	'openidpermission' => 'Грешка при дозволување на OpenID',
+	'openidpermissiontext' => 'На внесениот OpenID не му е дозволено најавување на овој сервер.',
+	'openidcancel' => 'Потврдувањето е откажано',
+	'openidcanceltext' => 'Потврдувањето на URL адресата на OpenID беше откажана.',
+	'openidfailure' => ' Потврдувањето не успеа',
+	'openidfailuretext' => 'Потврдувањето на URL адресата на OpenID не успеа. Извештај за грешката:',
+	'openidsuccess' => 'Потврдувањето успеа',
+	'openidsuccesstext' => 'Потврдувањето на URL адресата на OpenID беше успешно.',
+	'openidusernameprefix' => 'OpenIDКорисник',
+	'openidserverlogininstructions' => 'Внесете ја лозинката подолу за да се најавите на $3 како корисник $2 (корисничка страница $1).',
+	'openidtrustinstructions' => 'Штиклирајте ако сакате да споделувате податоци со $1.',
+	'openidallowtrust' => 'Дозволи му на $1 да ѝ верува на оваа корисничка сметка.',
+	'openidnopolicy' => 'Страницата нема назначено правила за приватност.',
+	'openidpolicy' => 'Погледајте го <a target="_new" href="$1">правилникот за приватност</a> за повеќе информации.',
+	'openidoptional' => 'Изборно',
+	'openidrequired' => 'Задолжително',
+	'openidnickname' => 'Прекар',
+	'openidfullname' => 'Полно име',
+	'openidemail' => 'Е-поштенска адреса',
+	'openidlanguage' => 'Јазик',
+	'openidtimezone' => 'Часовна зона',
+	'openidnotavailable' => 'Вашиот зададен прекар ($1) веќе го користи друг корисник.',
+	'openidnotprovided' => 'Вашиот OpenID сервер не даде прекар (или бидејќи не може, или затоа што вие сте му наредиле да не дава)',
+	'openidchooseinstructions' => 'Сите корисници треба да имаат прекар;
+можете да изберете едно од долунаведените предлози:',
+	'openidchoosefull' => 'Вашето полно име ($1)',
+	'openidchooseurl' => 'Име преземено од вашиот OpenID ($1)',
+	'openidchooseauto' => 'Автоматски создадено име ($1)',
+	'openidchoosemanual' => 'Име по избор:',
+	'openidchooseexisting' => 'Постоечка сметка на ова вики:',
+	'openidchoosepassword' => 'лозинка:',
+	'openidconvertinstructions' => 'Овој образец ви овозможува да ја промените вашата корисничка сметка за да користи OpenID URL адреса или да додавате уште OpenID URL адреси',
+	'openidconvertoraddmoreids' => 'Претворете во OpenID или додајте друга OpenID URL адреса',
+	'openidconvertsuccess' => 'Претворањето во OpenID е успешно',
+	'openidconvertsuccesstext' => 'Успешно го претворивте вашиот OpenID во $1.',
+	'openidconvertyourstext' => 'Ова веќе е  вашиот OpenID.',
+	'openidconvertothertext' => 'Тоа е туѓ OpenID.',
+	'openidalreadyloggedin' => "'''Веќе сте најавени, $1!'''
+
+Ако сакате во иднина да користите OpenID за најавување, можете да [[Special:OpenIDConvert|ја претворите вашата сметка за да користи OpenID]].",
+	'openidnousername' => 'Нема назначено корисничко име.',
+	'openidbadusername' => 'Беше назначено грешно име.',
+	'openidautosubmit' => 'На оваа страница стои образец кој треба да се поднесе автоматски ако имате овозможено JavaScript.
+Ако ова не се случи, притиснете на копчето "Continue" (Продолжи).',
+	'openidclientonlytext' => 'Не можете да користите сметки од ова вики како OpenID за друга стрнаица.',
+	'openidloginlabel' => 'OpenID URL адреса',
+	'openidlogininstructions' => '{{SITENAME}} го поддржува [http://openid.net/ OpenID] стандардот за една сметка помеѓу веб-страници.
+OpenID ви овозможува да се најавувате на многу различни веб-страници без да ви треба различна лозинка за секоја поединечно.
+(Погледаје ја [http://mk.wikipedia.org/wiki/OpenID статијата за OpenID на Википедија] за повеќе информации.)
+
+Доколку веќе имате сметка на  {{SITENAME}}, можете да [[Special:UserLogin|се најавите]] со корисничкото име и лозинката по нормална постапка.
+За да користите OpenID во иднина, можете да [[Special:OpenIDConvert|ја претворите сметката во OpenID]] откога ќе се најавите нормално.
+
+Постојат многу [http://openid.net/get/ OpenID услужители], и вие можеби веќе да имате OpenID-овозможена сметка на друга служба.',
+	'openidupdateuserinfo' => 'Ажурирање на моите лични информации',
+	'openiddelete' => 'Избриши го овој OpenID',
+	'openiddelete-text' => 'Со кликнување на копчето „{{int:openiddelete-button}}“ ќе го отстраните OpenID $1 од вашата сметка.
+Повеќе нема да можете да се најавувате со овој OpenID.',
+	'openiddelete-button' => 'Потврди',
+	'openiddelete-sucess' => 'Овој OpenID е успешно отстранет од вашата сметка.',
+	'openiddelete-error' => 'Настана грешка при отстранувањето на OpenID од вашата сметка.',
+	'openid-prefstext' => '[http://openid.net/ OpenID] нагодувања',
+	'openid-pref-hide' => 'Скријте ја вашата OpenID URL адреса на вашата корисничката страница, ако се најавувате со OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Ажурирајте ги следниве информации од OpenID секојпат кога ќе се најавам:',
+	'openid-urls-desc' => 'OpenID поврзани со вашата сметка:',
+	'openid-urls-action' => 'Дејство',
+	'openid-urls-delete' => 'Избриши',
+	'openid-add-url' => 'Додај нов OpenID',
+	'openidsigninorcreateaccount' => 'Најавете се или создајте сметка',
+	'openid-provider-label-openid' => 'Внесете ја вашата OpenID URL адреса',
+	'openid-provider-label-google' => 'Најавете се со вашата Google сметка',
+	'openid-provider-label-yahoo' => 'Најавете се со вашата Yahoo сметка',
+	'openid-provider-label-aol' => 'Внесете го вашето име на AOL',
+	'openid-provider-label-other-username' => 'Внесете го вашето $1 корисничко име',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

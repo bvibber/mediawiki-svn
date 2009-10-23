@@ -617,14 +617,26 @@ $messages['hu'] = array(
 	'invite-logpagetext' => 'Felhasználók naplója, akik meghívták egymást különböző programfunkciók használatára.',
 	'invite-logentry' => 'meghívta $1 szerkesztőt a <i>$2</i> funkció használatára.',
 	'invitations' => 'Meghívók kezelése különböző programfunkciókhoz',
+	'invitations-desc' => '[[Special:Invitations|Új funkciók kezelése]] meghívó alapú rendszerre korlátozásukkal',
+	'invitations-invitedlist-description' => 'Az alább felsorolt csak meghívásos alapon elérhető szoftverfunkciókhoz van hozzáférésed.
+Egy egyedi funkció meghívóinak kezeléséhez kattints a nevére.',
+	'invitations-invitedlist-none' => 'Még nem hívtak meg egyetlen csak meghívásos alapon elérhető programfunkció használatára sem.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|egy|$1}} elérhető meghívó)',
 	'invitations-pagetitle' => 'Csak meghívással elérhető programfunkciók',
 	'invitations-uninvitedlist-description' => 'Nincs hozzáférésed ezekhez ezen egyéb csak meghívásos programfunkciókhoz.',
+	'invitations-uninvitedlist-none' => 'Jelenleg nincs más programfunkció, ami csak meghívásos alapon elérhető.',
 	'invitations-feature-pagetitle' => 'Meghívókezelés – $1',
+	'invitations-feature-access' => 'Jelenleg van hozzáférésed használni a következőt: <i>$1</i>.',
+	'invitations-feature-numleft' => 'Még van {{PLURAL:$2|egy meghívód|<b>$1</b> meghívód a $2 darabból}}.',
+	'invitations-feature-noneleft' => 'Elhasználtad az összes kiosztott meghívódat ehhez a funkcióhoz',
+	'invitations-feature-noneyet' => 'Még nem kaptad meg a kiosztott meghívóidat ehhez a funkcióhoz.',
+	'invitations-feature-notallowed' => 'Nincs hozzáférésed használni a következőt: <i>$1</i>.',
 	'invitations-inviteform-title' => 'Szerkesztő meghívása $1 használatára',
 	'invitations-inviteform-username' => 'Meghívandó szerkesztő',
 	'invitations-inviteform-submit' => 'Meghívás',
 	'invitations-error-baduser' => 'Úgy tűnik, hogy az általad megadott szerkesztő  nem létezik.',
 	'invitations-error-alreadyinvited' => 'Az általad megadott szerkesztőnek már van hozzáférése ehhez a funkcióhoz!',
+	'invitations-invite-success' => 'Sikeresen meghívtad $1 felhasználót ennek a funkciónak a használatára!',
 );
 
 /** Interlingua (Interlingua)

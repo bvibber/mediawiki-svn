@@ -168,6 +168,7 @@ $3',
  * @author Mormegil
  * @author Nike
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'code-comments' => '{{Identical|Comments}}',
@@ -198,6 +199,14 @@ $messages['qqq'] = array(
 ----
 $1 = Repository name',
 	'codereview-reply-link' => '{{Identical|Reply}}',
+	'codereview-tests-succeeded2' => 'Parameters:
+* $1 is a formatted form of the number succeeded tests (has a span)
+* $2 is the number of succeeded tests',
+	'codereview-tests-failed2' => 'Parameters:
+* $1 is a formatted form of the number succeeded tests (has a span)
+* $2 is the number of succeeded tests
+* $3 is a formatted form of the number failed tests (has a span)
+* $4 is the number of failed tests',
 	'codereview-email-subj2' => 'Subject of an e-mail sent to a user whose revision has been followed upon.
 * <code>$1</code> – Repository name
 * <code>$2</code> – Number of the original revision (which has been followed upon)',
@@ -1385,8 +1394,8 @@ $messages['de'] = array(
 	'code-release-badrange' => 'Der Bereich ist zu groß!',
 	'codereview-subtitle' => 'Für $1',
 	'codereview-reply-link' => 'antworten',
-	'codereview-tests-succeeded' => 'erfolgreiche Tests',
-	'codereview-tests-failed' => 'fehlgeschlagende Tests:',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|erfolgreicher Test|erfolgreiche Tests}}',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|erfolgreicher Test|erfolgreiche Tests}}, $3 {{PLURAL:$4|fehlgeschlagender Test|fehlgeschlagende Tests}}:',
 	'codereview-tests-running' => 'Testfälle sind am laufen …',
 	'codereview-tests-aborted' => 'Testlauf ist abgebrochen.',
 	'codereview-email-subj' => '[$1] [r$2]: Neuer Kommentar hinzugefügt',
@@ -1525,6 +1534,8 @@ $messages['diq'] = array(
 	'code-release-badrange' => 'Menzil zaf derg o!',
 	'codereview-subtitle' => 'Qe $1',
 	'codereview-reply-link' => 'cewab bide',
+	'codereview-tests-running' => 'Test ho hebiyeno...',
+	'codereview-tests-aborted' => 'Test iptel biyo.',
 	'codereview-email-subj' => '[$1] [r$2]: Xulasayê newî de biyo',
 	'codereview-email-subj2' => '[$1] [r$2]: Vurnayîşan kontrol bike',
 	'codereview-email-subj3' => '[$1] [r$2]: Regression otomatik test keno',
@@ -1641,8 +1652,6 @@ $messages['dsb'] = array(
 	'code-release-badrange' => 'Wobłuk jo pśewjeliki!',
 	'codereview-subtitle' => 'Za $1',
 	'codereview-reply-link' => 'wótegroniś',
-	'codereview-tests-succeeded' => 'raźone testy',
-	'codereview-tests-failed' => 'njeraźone testy:',
 	'codereview-tests-running' => 'Testowe pady běže...',
 	'codereview-tests-aborted' => 'Testowy běg pśetergnjony.',
 	'codereview-email-subj' => '[$1] [r$2]: Nowy komentar pśidany',
@@ -2537,8 +2546,6 @@ $messages['fr'] = array(
 	'code-release-badrange' => 'La portée est trop grande !',
 	'codereview-subtitle' => 'Pour $1',
 	'codereview-reply-link' => 'répondre',
-	'codereview-tests-succeeded' => 'tests réussis',
-	'codereview-tests-failed' => 'tests échoués :',
 	'codereview-tests-running' => 'Tests en cours...',
 	'codereview-tests-aborted' => 'Exécution du test interrompue.',
 	'codereview-email-subj' => '[$1] [r$2] : nouveau commentaire ajouté',
@@ -2935,6 +2942,8 @@ $messages['gsw'] = array(
 	'code-release-badrange' => 'Dr Beryych isch z groß!',
 	'codereview-subtitle' => 'Fir $1',
 	'codereview-reply-link' => 'Antwort gee',
+	'codereview-tests-running' => 'Teschtfäll sin am Laufe ...',
+	'codereview-tests-aborted' => 'Teschtlauf abbroche.',
 	'codereview-email-subj' => '[$1] [r$2]: Neije Kommentar zuegfiegt',
 	'codereview-email-body' => 'Benutzer „$1“ het r$3 kommentiert:
 
@@ -3080,8 +3089,6 @@ $messages['he'] = array(
 	'code-release-badrange' => 'הטווח גדול מדי!',
 	'codereview-subtitle' => 'עבור $1',
 	'codereview-reply-link' => 'תגובה',
-	'codereview-tests-succeeded' => 'בדיקות שהצליחו',
-	'codereview-tests-failed' => 'בדיקות שנכשלו:',
 	'codereview-tests-running' => 'הבדיקות רצות כעת...',
 	'codereview-tests-aborted' => 'הבדיקות הופסקו.',
 	'codereview-email-subj' => '[$1] [גרסה $2]: נוספה הערה חדשה',
@@ -3342,8 +3349,6 @@ $messages['hsb'] = array(
 	'code-release-badrange' => 'Wobłuk přewulki!',
 	'codereview-subtitle' => 'Za $1',
 	'codereview-reply-link' => 'wotmołwić',
-	'codereview-tests-succeeded' => 'poradźene testy',
-	'codereview-tests-failed' => 'njeporadźene testy:',
 	'codereview-tests-running' => 'Testowe pady běža...',
 	'codereview-tests-aborted' => 'Testowy běh přetorhnjeny.',
 	'codereview-email-subj' => '[$1] [r$2]: Nowy komentar přidaty',
@@ -3619,6 +3624,8 @@ $messages['ia'] = array(
 	'code-release-badrange' => 'Intervallo troppo grande!',
 	'codereview-subtitle' => 'Pro $1',
 	'codereview-reply-link' => 'responder',
+	'codereview-tests-running' => 'Le casos de test es executate...',
+	'codereview-tests-aborted' => 'Execution del test interrumpite.',
 	'codereview-email-subj' => '[$1] [v$2]: Nove commento addite',
 	'codereview-email-body' => 'Le usator "$1" publicava un commento in v$3.
 
@@ -4029,6 +4036,10 @@ $messages['ja'] = array(
 	'code-release-badrange' => '範囲が広すぎます！',
 	'codereview-subtitle' => '$1',
 	'codereview-reply-link' => '返信',
+	'codereview-tests-succeeded2' => '$1件の{{PLURAL:$2|テスト}}が成功',
+	'codereview-tests-failed2' => '$1件の{{PLURAL:$2|テスト}}が成功し、$3件の{{PLURAL:$4|テスト}}が失敗:',
+	'codereview-tests-running' => 'テストケース実行中…',
+	'codereview-tests-aborted' => 'テスト実行中止。',
 	'codereview-email-subj' => '[$1] [r$2]: 新規コメント追加',
 	'codereview-email-body' => '利用者「$1」が r$3 にコメントをつけました。
 
@@ -4890,8 +4901,6 @@ $messages['ml'] = array(
 	'code-releasenotes' => 'പുറത്തിറക്കൽ കുറിപ്പുകൾ',
 	'code-release-badrange' => 'വളരെ വലിയ പരിധി!',
 	'codereview-reply-link' => 'മറുപടി',
-	'codereview-tests-succeeded' => 'വിജയമായ പരീക്ഷണങ്ങൾ',
-	'codereview-tests-failed' => 'പരാജയപ്പെട്ട പരീക്ഷണങ്ങൾ:',
 	'repoadmin-new-button' => 'സൃഷ്ടിക്കുക',
 	'repoadmin-edit-bug' => 'ബഗ്‌സില്ല പഥം:',
 	'repoadmin-edit-button' => 'ശരി',
@@ -5259,6 +5268,10 @@ Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'code-release-badrange' => 'De reeks is te groot.',
 	'codereview-subtitle' => 'Voor $1',
 	'codereview-reply-link' => 'antwoorden',
+	'codereview-tests-succeeded2' => '$1 geslaagde {{PLURAL:$2|test|tests}}',
+	'codereview-tests-failed2' => '$1 geslaagde {{PLURAL:$2|test|tests}}, $3 gefaalde {{PLURAL:$4|test|tests}}:',
+	'codereview-tests-running' => 'De tests worden uitgevoerd...',
+	'codereview-tests-aborted' => 'Het testen is afgebroken.',
 	'codereview-email-subj' => '[$1] [r$2]: Nieuwe opmerking toegevoegd',
 	'codereview-email-body' => 'Gebruiker "$1" heeft een opmerking toegevoegd aan r$3:
 
@@ -6345,8 +6358,6 @@ $messages['ru'] = array(
 	'code-release-badrange' => 'Слишком большой диапазон!',
 	'codereview-subtitle' => 'для $1',
 	'codereview-reply-link' => 'ответить',
-	'codereview-tests-succeeded' => 'успешные проверки',
-	'codereview-tests-failed' => 'неудавшиеся проверки:',
 	'codereview-tests-running' => 'Выполнение контрольных примеров…',
 	'codereview-tests-aborted' => 'Выполнение проверки прервано.',
 	'codereview-email-subj' => '[$1] [r$2]: Добавлен новый комментарий',
@@ -7554,6 +7565,8 @@ $messages['tr'] = array(
 	'code-release-badrange' => 'Aralık çok büyük!',
 	'codereview-subtitle' => '$1 için',
 	'codereview-reply-link' => 'yanıtla',
+	'codereview-tests-running' => 'Test durumları çalışıyor...',
+	'codereview-tests-aborted' => 'Test çalıştırması durduruldu.',
 	'codereview-email-subj' => '[$1] [r$2]: Yeni yorum eklendi',
 	'codereview-email-body' => 'r$3\'de "$1" kullanıcısı bir yorum yolladı.
 
