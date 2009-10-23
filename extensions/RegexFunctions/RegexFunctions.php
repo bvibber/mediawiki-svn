@@ -17,7 +17,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'RegexFunctions',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:RegexFunctions',
-	'version'        => '1.4',
+	'version'        => '1.4.1',
 	'description'    => 'Regular Expression parser functions',
 	'descriptionmsg' => 'regexfunctions-desc',
 );
@@ -81,7 +81,7 @@ class ExtRegexFunctions {
 
 	function rsplit ( &$parser, $string = '', &$pattern = '', $piece = 0 ) {
 		global $wgRegexFunctionsPerPage, $wgRegexFunctionsAllowModifiers, $wgRegexFunctionsLimit, $wgRegexFunctionsDisable;
-		if(in_array('rmatch', $wgRegexFunctionsDisable))
+		if(in_array('rsplit', $wgRegexFunctionsDisable))
 			return;
 		$this->num++;
 		if($this->num > $wgRegexFunctionsPerPage)
@@ -102,7 +102,7 @@ class ExtRegexFunctions {
 
 	function rreplace ( &$parser, $string = '', &$pattern = '', &$replace = '' ) {
 		global $wgRegexFunctionsPerPage, $wgRegexFunctionsAllowModifiers, $wgRegexFunctionsAllowE, $wgRegexFunctionsLimit, $wgRegexFunctionsDisable;
-		if(in_array('rmatch', $wgRegexFunctionsDisable))
+		if(in_array('rreplace', $wgRegexFunctionsDisable))
 			return;
 		$this->num++;
 		if($this->num > $wgRegexFunctionsPerPage)
