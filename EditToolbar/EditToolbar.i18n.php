@@ -92,13 +92,15 @@ $messages['en'] = array(
 | row 2, cell 1
 | row 2, cell 2
 | row 2, cell 3",
-	'edittoolbar-tool-table-example' => 'Row $1, cell $2',
-	'edittoolbar-tool-table-example-header' => 'Row $1, cell $2 (header)',
+	'edittoolbar-tool-table-example' => 'Cell text',
+	'edittoolbar-tool-table-example-header' => 'Header text',
 	'edittoolbar-tool-table-title' => 'Insert table',
-	'edittoolbar-tool-table-dimensions' => 'Dimensions',
 	'edittoolbar-tool-table-dimensions-rows' => 'Rows',
 	'edittoolbar-tool-table-dimensions-columns' => 'Columns',
 	'edittoolbar-tool-table-dimensions-header' => 'Include header row',
+	'edittoolbar-tool-table-wikitable' => 'Style with borders',
+	'edittoolbar-tool-table-sortable' => 'Make table sortable',
+	'edittoolbar-tool-table-preview' => 'Preview',
 	'edittoolbar-tool-table-insert' => 'Insert',
 	'edittoolbar-tool-table-cancel' => 'Cancel',
 	'edittoolbar-tool-table-toomany' => 'Inserting a table with more than $1 cells is not possible with this dialog.',

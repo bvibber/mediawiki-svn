@@ -1132,25 +1132,104 @@ js2AddOnloadHook( function() {
 	'insert-table': {
 		titleMsg: 'edittoolbar-tool-table-title',
 		id: 'edittoolbar-table-dialog',
+		// FIXME: All kinds of uglinesses and styling issues
+		// FIXME: Rows are identical so sorting has no effect
+		// FIXME: Localize 'x'?
 		html: '\
-			<fieldset><legend rel="edittoolbar-tool-table-dimensions"></legend><table><tr>\
-				<td><input type="checkbox" id="edittoolbar-table-dimensions-header" value="1" /></td>\
-				<td class="label"><label for="edittoolbar-table-dimensions-header"\
-					rel="edittoolbar-tool-table-dimensions-header"></label></td>\
-			</tr></table><table><tr>\
-				<td class="label"><label for="edittoolbar-table-dimensions-columns"\
-					rel="edittoolbar-tool-table-dimensions-columns"></label></td>\
-				<td><input type="text" id="edittoolbar-table-dimensions-columns" size="4" /></td>\
-				<td class="label"><label for="edittoolbar-table-dimensions-rows"\
-					rel="edittoolbar-tool-table-dimensions-rows"></label></td>\
-				<td><input type="text" id="edittoolbar-table-dimensions-rows" size="4" /></td>\
-			</tr></table></fieldset>',
+			<fieldset><table><tr><td colspan="3">\
+				<input type="checkbox" id="edittoolbar-table-dimensions-header" checked />\
+				<label for="edittoolbar-table-dimensions-header"\
+					rel="edittoolbar-tool-table-dimensions-header"></label>\
+			</td><td rowspan="4">\
+				<span rel="edittoolbar-tool-table-preview"></span>\
+				<table id="edittoolbar-table-preview" class="edittoolbar-table-preview wikitable">\
+					<tr class="edittoolbar-table-preview-header">\
+						<th rel="edittoolbar-tool-table-example-header"></th>\
+						<th rel="edittoolbar-tool-table-example-header"></th>\
+						<th rel="edittoolbar-tool-table-example-header"></th>\
+					</tr><tr class="edittoolbar-table-preview-hidden" style="display: none;">\
+						<td rel="edittoolbar-tool-table-example"></td>\
+						<td rel="edittoolbar-tool-table-example"></td>\
+						<td rel="edittoolbar-tool-table-example"></td>\
+					</tr><tr>\
+						<td rel="edittoolbar-tool-table-example"></td>\
+						<td rel="edittoolbar-tool-table-example"></td>\
+						<td rel="edittoolbar-tool-table-example"></td>\
+					</tr><tr>\
+						<td rel="edittoolbar-tool-table-example"></td>\
+						<td rel="edittoolbar-tool-table-example"></td>\
+						<td rel="edittoolbar-tool-table-example"></td>\
+					</tr><tr>\
+						<td rel="edittoolbar-tool-table-example"></td>\
+						<td rel="edittoolbar-tool-table-example"></td>\
+						<td rel="edittoolbar-tool-table-example"></td>\
+					</tr>\
+				</table>\
+			</td></tr><tr><td colspan="3">\
+				<input type="checkbox" id="edittoolbar-table-wikitable" checked />\
+				<label for="edittoolbar-table-wikitable" rel="edittoolbar-tool-table-wikitable"></label>\
+			</td></tr><tr><td colspan="3">\
+				<input type="checkbox" id="edittoolbar-table-sortable" />\
+				<label for="edittoolbar-table-sortable" rel="edittoolbar-tool-table-sortable"></label>\
+			</td></tr><tr><td>\
+				<label for="edittoolbar-table-dimensions-rows"\
+					rel="edittoolbar-tool-table-dimensions-rows"></label><br />\
+				<input type="text" id="edittoolbar-table-dimensions-rows" size="4" />\
+			</td><td>\
+				<br />x\
+			</td><td>\
+				<label for="edittoolbar-table-dimensions-columns"\
+					rel="edittoolbar-tool-table-dimensions-columns"></label><br />\
+				<input type="text" id="edittoolbar-table-dimensions-columns" size="4" />\
+			</td></tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
-			$j( '#edittoolbar-table-dimensions-rows' ).val( 2 );
-			$j( '#edittoolbar-table-dimensions-columns' ).val( 2 );
+			$j( '#edittoolbar-table-dimensions-rows' ).val( 4 );
+			$j( '#edittoolbar-table-dimensions-columns' ).val( 3 );
+			$j( '#edittoolbar-table-wikitable' ).click( function() {
+				$j( '.edittoolbar-table-preview' ).toggleClass( 'wikitable' );
+			});
+			
+			// Hack for sortable preview: dynamically adding
+			// sortable class doesn't work, so we use a clone
+			// FIXME: Relies on sortable table internals
+			$j( '#edittoolbar-table-preview' )
+				.clone()
+				.attr( 'id', 'edittoolbar-table-preview2' )
+				.addClass( 'sortable' )
+				.insertAfter( $j( '#edittoolbar-table-preview' ) )
+				.hide();
+			if ( typeof ts_makeSortable == 'function' )
+				ts_makeSortable( $j( '#edittoolbar-table-preview2' ).get( 0 ) );
+			$j( '#edittoolbar-table-sortable' ).click( function() {
+				// Swap the currently shown one clone with the other one
+				$j( '#edittoolbar-table-preview' )
+					.hide()
+					.attr( 'id', 'edittoolbar-table-preview3' );
+				$j( '#edittoolbar-table-preview2' )
+					.attr( 'id', 'edittoolbar-table-preview' )
+					.show();
+				$j( '#edittoolbar-table-preview3' ).attr( 'id', 'edittoolbar-table-preview2' );
+			});
+			
+			$j( '#edittoolbar-table-dimensions-header' ).click( function() {
+				// Instead of show/hiding, switch the HTML around
+				// We do this because the sortable tables script styles the first row,
+				// visible or not
+				var headerHTML = $j( '.edittoolbar-table-preview-header' ).html();
+				var hiddenHTML = $j( '.edittoolbar-table-preview-hidden' ).html();
+				$j( '.edittoolbar-table-preview-header' ).html( hiddenHTML );
+				$j( '.edittoolbar-table-preview-hidden' ).html( headerHTML );
+				if ( typeof ts_makeSortable == 'function' )
+					ts_makeSortable(
+     						$j( '#edittoolbar-table-preview, #edittoolbar-table-preview2' )
+							.filter( '.sortable' )
+							.get( 0 )
+					);
+			});
+
 		},
 		dialog: {
 			buttons: {
@@ -1172,6 +1251,8 @@ js2AddOnloadHook( function() {
 						alert( gM( 'edittoolbar-tool-table-toomany', 1000 ) );
 						return;
 					}
+					var headerText = gM( 'edittoolbar-tool-table-example-header' );
+					var normalText = gM( 'edittoolbar-tool-table-example' );
 					var table = "";
 					for ( var r = 0; r < rows + header; r++ ) {
 						table += "|-\n";
@@ -1181,23 +1262,26 @@ js2AddOnloadHook( function() {
 							if ( c > 0 ) {
 								delim += delim;
 							}
-							table += delim + ' ' + gM(
-								isHeader ? 'edittoolbar-tool-table-example-header' : 'edittoolbar-tool-table-example',
-								[ r + 1, c + 1 ]
-							) + ' ';
+							table += delim + ' ' + ( isHeader ? headerText : normalText ) + ' ';
 						}
 						// Replace trailing space by newline
 						// table[table.length - 1] is read-only
 						table = table.substr( 0, table.length - 1 ) + "\n";
 					}
+					var classes = [];
+					if ( $j( '#edittoolbar-table-wikitable' ).is( ':checked' ) )
+						classes.push( 'wikitable' );
+					if ( $j( '#edittoolbar-table-sortable' ).is( ':checked' ) )
+						classes.push( 'sortable' );
+					var classStr = classes.length > 0 ? ' class="' + classes.join( ' ' ) + '"' : '';
 					$j.wikiEditor.modules.toolbar.fn.doAction(
 						$j(this).data( 'context' ),
 						{
 							type: 'replace',
 							options: {
-								pre: "{| class=\"wikitable\"\n",
+								pre: '{|' + classStr + "\n",
 								peri: table,
-								post: "|}",
+								post: '|}',
 								ownline: true
 							}
 						},
@@ -1210,7 +1294,7 @@ js2AddOnloadHook( function() {
 				}
 			},
 			open: function() {
-				$j( '#edittoolbar-table-dimensions-columns' ).focus();
+				$j( '#edittoolbar-table-dimensions-rows' ).focus();
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );
 					// Execute the action associated with the first button
