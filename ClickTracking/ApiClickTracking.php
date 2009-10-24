@@ -44,6 +44,15 @@ class ApiClickTracking extends ApiBase {
 			$granularity2, //contributions made in granularity 2 time frame
 			$granularity3  //contributions made in granularity 3 time frame
 		);
+		
+		// For links that go off the page, redirect the user
+		// FIXME: The API should have a proper infrastructure for this
+		if ( !is_null( $params['redirectto'] ) ) {
+			global $wgOut;
+			$wgOut->enable();
+			$wgOut->redirect( $params['redirectto'] );
+			$wgOut->output();
+		}
 	}
 
 	/**
@@ -62,7 +71,8 @@ class ApiClickTracking extends ApiBase {
 	public function getParamDescription() {
 		return array(
 			'eventid' => 'string of eventID',
-			'token'  => 'unique edit ID for this edit session'
+			'token'  => 'unique edit ID for this edit session',
+			'redirectto' => 'URL to redirect to (only used for links that go off the page)'
 		);
 	}
 
@@ -74,16 +84,12 @@ class ApiClickTracking extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-			'eventid' => array(
-				ApiBase::PARAM_TYPE => 'string'
-			),
-			'token' => array(
-				ApiBase::PARAM_TYPE => 'string'
-			)
+			'eventid' => null,
+			'token' => null,
+			'redirectto' => null
 		);
 	}
 
-	// TODO: create a more useful 'version number'
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}

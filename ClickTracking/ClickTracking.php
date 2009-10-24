@@ -19,7 +19,7 @@
 /* Configuration */
 
 // Increment this value when you change ClickTracking.js
-$wgClickTrackingStyleVersion = 0;
+$wgClickTrackingStyleVersion = 1;
 
 // click throttle, should be seen as "1 out of every $wgClickTrackThrottle users will have it enabled"
 // setting this to 1 means all users will have it enabled
@@ -53,7 +53,7 @@ $wgAutoloadClasses['ApiSpecialClickTracking'] = $dir .'ApiSpecialClickTracking.p
 
 // Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::schema';
-$wgHooks['EditPage::showEditForm:initial'][] = 'ClickTrackingHooks::addJS';
+$wgHooks['AjaxAddScript'][] = 'ClickTrackingHooks::addJS';
 $wgHooks['ParserTestTables'][] = 'ClickTrackingHooks::parserTestTables';
 
 // Set up the new API module
