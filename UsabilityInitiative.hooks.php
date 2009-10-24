@@ -48,15 +48,13 @@ class UsabilityInitiativeHooks {
 		// Code to include when js2 is not present
 		'no_js2' => array(
 			'raw' => array(
-				array( 'src' => 'js/js2/jquery-1.3.2.js', 'version' => '1.3.2' ),
-				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2y' ),
-				array( 'src' => 'js/js2/js2.js', 'version' => 4 ),
+				array( 'src' => '../../js2/js2stopgap.js' )
 			),
 			'combined' => array(
-				array( 'src' => 'js/js2.combined.js', 'version' => 7 ),
+				array( 'src' => '../../js2/js2stopgap.js' )
 			),
 			'minified' => array(
-				array( 'src' => 'js/js2.combined.min.js', 'version' => 7 ),
+				array( 	'src' => '../../js2/js2stopgap.min.js' )
 			),
 		),
 		// Core functionality of extension
@@ -99,6 +97,7 @@ class UsabilityInitiativeHooks {
 		global $wgScriptPath, $wgJsMimeType;
 		global $wgUsabilityInitiativeResourceMode;
 		global $wgEnableJS2system, $wgEditToolbarRunTests;
+		global $wgStyleVersion;
 		
 		if ( !self::$doOutput )
 			return true;
@@ -134,14 +133,14 @@ class UsabilityInitiativeHooks {
 		// Loops over each script
 		foreach ( self::$scripts as $script ) {
 			// Add javascript to document
+			$src = "$wgScriptPath/extensions/UsabilityInitiative/{$script['src']}";
+			$version = isset( $script['version'] ) ? $script['version'] : $wgStyleVersion;
 			$out->addScript(
 				Xml::element(
 					'script',
 					array(
 						'type' => $wgJsMimeType,
-						'src' => $wgScriptPath .
-							"/extensions/UsabilityInitiative/" .
-								"{$script['src']}?{$script['version']}",
+						'src' => "$src?$version",
 					),
 					'',
 					false
