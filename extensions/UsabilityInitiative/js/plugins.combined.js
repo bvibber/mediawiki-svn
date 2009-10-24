@@ -2238,7 +2238,7 @@ fn: {
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$textarea
-			.delayedBind( 1000, 'keyup encapsulateSelection change',
+			.delayedBind( 250, 'mouseup scrollToPosition focus keyup encapsulateSelection change',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -2250,19 +2250,10 @@ fn: {
 					} );
 				}
 			)
-			.bind( 'mouseup scrollToPosition focus keyup encapsulateSelection change',
-				function( event ) {
-					var context = $(this).data( 'wikiEditor-context' );
-					$(this).eachAsync( {
-						bulk: 0,
-						loop: function() {
-							$.wikiEditor.modules.toc.fn.update( context );
-						}
-					} );
-				}
-			)
 			.blur( function() {
 				var context = $(this).data( 'wikiEditor-context' );
+				context.$textarea.delayedBindCancel( 250,
+					'mouseup scrollToPosition focus keyup encapsulateSelection change' );
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
 	},
