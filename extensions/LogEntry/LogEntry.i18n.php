@@ -331,6 +331,17 @@ $messages['lb'] = array(
 	'logentry-invalidpage' => 'Net valabel Säit',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'logentry-parserhook-desc' => 'Оваа ознака-проширување дава форма за додавање н записи на почетокот или крајот на дневнички страници',
+	'logentry-specialpage-desc' => 'Оваа ознака-проширување овозможува обработка за придодавање на дневнички страници',
+	'logentry' => 'СтавкаВоДневникот',
+	'logentry-invalidpage' => 'Неправилна страница',
+	'logentry-invalidtoken' => 'Неправилен жетон',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

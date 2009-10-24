@@ -61,6 +61,13 @@ $messages['bg'] = array(
 	'didyoumean-desc' => 'Добавя препратки към страници със „подобни” заглавия',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'didyoumean-desc' => '"একই" রকম শিরোনামের পাতাগুলোর লিঙ্ক যোগ করো',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

@@ -570,6 +570,24 @@ $messages['lb'] = array(
 	'postcomment_nopostingtoadd' => 'Kee Message fir derbäizesetzen.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'postcomment_desc' => 'Му овозможува на корисникот да праќа коментари директно во страниците за разговор.',
+	'postcomment_discussionprotected' => 'Оваа страница за разговор е заштитена за понатамошни коментари.',
+	'postcomment_notloggedin' => 'Не сте најавени.',
+	'postcomment_youareloggedinas' => 'Најавени сте како $1',
+	'postcomment_addcommentdiscussionpage' => 'Додајте го својот коментар на ова страница за разговор',
+	'postcomment_leavemessagefor' => 'Остави порака за $1',
+	'postcomment_post' => 'Испрати',
+	'postcomment_on' => 'На',
+	'postcomment_said' => 'рече',
+	'postcomment_invalidrequest' => 'Грешно барање.',
+	'postcomment_replyto' => 'Одговори на $1',
+	'postcomment_nopostingtoadd' => 'Нема коментар за додавање.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

@@ -629,8 +629,10 @@ $messages['hu'] = array(
 	'wah-transcode-fail' => 'A fájl átkódolása meghiúsult.',
 	'wah-javascript-off' => 'A Wiki@Home-ban való részvételhez engedélyezned kell a JavaScriptet',
 	'wah-loading' => 'Wiki@Home interfész betöltése …',
+	'wah-menu-jobs' => 'Feladatok',
 	'wah-menu-stats' => 'Statisztikák',
 	'wah-menu-pref' => 'Beállítások',
+	'wah-lookingforjob' => 'Feladatra várok…',
 	'wah-uploadfail' => 'Sikertelen feltöltés',
 );
 

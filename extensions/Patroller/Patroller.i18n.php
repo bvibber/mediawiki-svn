@@ -1708,6 +1708,14 @@ $messages['uk'] = array(
 	'group-patroller-member' => 'патрульний',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'group-patroller' => 'Patujadori',
+	'group-patroller-member' => 'patujador',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

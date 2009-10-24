@@ -75,6 +75,7 @@ $messages['af'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'clicktracking' => 'تتبع نقرات مبادرة الاستخدامية',
 	'ct-event-name' => 'اسم الحدث',
 	'ct-expert-header' => 'نقرات "الخبراء"',
 	'ct-intermediate-header' => 'نقرات "المتوسطين"',
@@ -614,6 +615,7 @@ $messages['hu'] = array(
 	'ct-user-contribs' => 'Összes szerkesztői közreműködés',
 	'ct-user-span' => 'A szerkesztő közreműködései az időszakon  belül',
 	'ct-and' => 'és',
+	'ct-update-table' => 'Táblázat frissítése',
 );
 
 /** Interlingua (Interlingua)

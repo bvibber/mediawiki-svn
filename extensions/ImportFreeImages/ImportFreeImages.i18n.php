@@ -745,6 +745,26 @@ $messages['lfn'] = array(
 	'importfreeimages_owner' => 'Autor',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'importfreeimages' => 'Увоз на слободни слики',
+	'importfreeimages-desc' => 'Овозможува начин на [[Special:ImportFreeImages|увезување на соодветно лиценцирани слики]] од [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'Оваа страница ви овозможува да пребарувате соодветно лиценцирани слики од Flickr и да ги увезувате во вашето вики.',
+	'importfreeimages_noapikey' => 'Немате конфигурирано ваш Flickr API-клуч.
+За таа цел ќе ви треба API-клуч, кој [http://www.flickr.com/services/api/misc.api_keys.html ќе го добиете овде], а потоа наместете го $wgFlickrAPIKey во ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => 'Нема пронајдено слики по вашиот критериум на пребарување „$1“. Обидете се повторно.',
+	'importfreeimages_invalidurl' => 'Адресата „$1“ не е важечка слика во Flickr.',
+	'importfreeimages_owner' => 'Автор',
+	'importfreeimages_importthis' => 'увези го ова',
+	'importfreeimages_next' => 'Следен $1',
+	'importfreeimages_filefromflickr' => '$1 од корисникот <b>[$2]</b> од Flickr. Изворна адреса',
+	'importfreeimages_promptuserforfilename' => 'Внесете целно име на податотеката:',
+	'importfreeimages_returntoform' => "Или кликнете <a href='$1'>тука</a> за да се вратите на резултатите од пребарувањето",
+	'importfreeimages_nophpflickr' => 'Немате инсталирано phpFlickr, наместете го $wgIFphpFlickr во вашиот LocalSettings.php.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

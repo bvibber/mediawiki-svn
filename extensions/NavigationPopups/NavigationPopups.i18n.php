@@ -37,6 +37,13 @@ $messages['be-tarask'] = array(
 	'navigationpopups-desc' => 'Загружае скрыпты навігацыі Lupin ў MediaWiki',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'navigationpopups-desc' => 'মিডিয়াউইকি তে লুপিনের নেভিগেশন স্ক্রিপ্ট পপআপ লোড করো',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

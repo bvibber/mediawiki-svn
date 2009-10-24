@@ -868,6 +868,23 @@ $messages['mhr'] = array(
 	'countedits-ok' => 'Йӧра',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'countedits' => 'Броење на уредувања',
+	'countedits-desc' => '[[Special:CountEdits|Специјална страница]] која брои кориснички уредувања и дава листа на 10-те најголеми присонесувачи',
+	'countedits-warning' => "'''Предупредување:''' Не судете ја книгата по корицата.
+Не судете ги уредувачите по нивниот број на уредувања.",
+	'countedits-username' => 'Корисник:',
+	'countedits-ok' => 'ОК',
+	'countedits-nosuchuser' => 'Не постои корисник по име $1.',
+	'countedits-resultheader' => 'Резултати за $1',
+	'countedits-resulttext' => '$1 има направено $2 {{PLURAL:$2|уредување|уредувања}}',
+	'countedits-mostactive' => 'Најактивни уредувачи',
+	'countedits-nocontribs' => 'Нема придонеси за ова вики.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Praveenp
  * @author Shijualex

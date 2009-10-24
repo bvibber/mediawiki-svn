@@ -51,12 +51,14 @@ Please wait for the existing action to complete.',
  * @author Jon Harald Søby
  * @author M.M.S.
  * @author Purodha
+ * @author Tgr
  */
 $messages['qqq'] = array(
 	'imagetagging-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'imagetagging-article' => '{{Identical|Page}}',
 	'imagetagging-imghistory' => '{{Identical|History}}',
 	'imagetagging-tagcancel-button' => '{{Identical|Cancel}}',
+	'imagetagging-imagetag-seemoreimages' => 'Shown in articles; $1 is the name of the article, $2 is the number of images which have a region tagged with this article.',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -860,8 +862,9 @@ Szeretnél bejelentkezni?',
 	'imagetagging-oneactionatatimemessage' => 'Egyszerre csak egy címkézési művelet engedélyezett.
 Várj a folyamatban levő művelet befejezésére.',
 	'imagetagging-oneuniquetagmessage' => 'Ezen a képen már van címke ilyen névvel.',
-	'imagetagging-imagetag-seemoreimages' => 'Több kép megjelenítése tőle: „$1” ($2)',
-	'imagetagging-taggedimages-title' => '„$1” képei',
+	'imagetagging-imagetag-seemoreimages' => 'Több kép megjelenítése innen: „$1” ($2)',
+	'imagetagging-taggedimages-title' => '„$1” kép',
+	'imagetagging-taggedimages-displaying' => '$1 – $2 kép megjelenítése innen: „$4” (összesen $3)',
 	'tag-logpagename' => 'Címkézési napló',
 	'tag-logpagetext' => 'Kép-címkék hozzáadásának hozzáadásának és eltávolításának naplója.',
 );

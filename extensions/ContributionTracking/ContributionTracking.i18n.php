@@ -176,6 +176,18 @@ $messages['de-formal'] = array(
 	'contrib-tracking-continue' => 'Wenn Sie nicht automatisch weitergeleitet werden, klicken Sie bitte auf „Weiter“, um Ihre Spende über PayPal abzuschließen.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'contributiontracking-desc' => 'Yardimê peteyî tekip kerdoğ qe Wîkîmediya pere berz kerdoğî',
+	'contributiontracking' => 'Yardimê peteyî tekip kerdoğ',
+	'contrib-tracking-error' => 'Ğelet',
+	'contrib-tracking-error-text' => 'Ena form raşt niyo',
+	'contrib-tracking-submitting' => 'Processor de pere teslim keno...',
+	'contrib-tracking-button' => 'Dewam bike',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -146,6 +146,13 @@ $messages['lb'] = array(
 	'filepagemasking-desc' => 'Ersetzt ".xxx" duerch "_xxx" an de Linke vun der Säit vun der Beschreiwung vum Fichier',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'filepagemasking-desc' => 'Го менува „.xxx“ во „_xxx“ во врските на страницата за опис на податотека',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

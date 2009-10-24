@@ -172,6 +172,21 @@ $messages['de-formal'] = array(
 	'communityvoice-ratings-scale-status-thanks' => 'Danke, dass Sie abgestimmt haben!',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'communityvoice' => 'Vengê Cemeatî',
+	'communityvoice-desc' => 'Xacetanê îştirake yê cemeatî',
+	'communityvoice-ratings' => 'Reytingî',
+	'communityvoice-ratings-scale-status-sending' => 'Ho şiraveno...',
+	'communityvoice-ratings-scale-status-error' => 'Şiravtişî de ğelet biyo!',
+	'communityvoice-ratings-scale-status-thanks' => 'Ma rey xo rê zaf teşekur ken!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|rey|reyî}} da)',
+	'communityvoice-ratings-error-no-category' => 'Etiketê reytingî de attributeyê kategorî vin biyo.',
+	'communityvoice-ratings-error-no-title' => 'Etiketê reytingî de attributeyê titleyî vin biyo.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -516,6 +531,7 @@ $messages['lt'] = array(
  */
 $messages['ml'] = array(
 	'communityvoice' => 'സമൂഹ ശബ്ദം',
+	'communityvoice-desc' => 'സമൂഹ പങ്കാളിത്ത ഉപകരണങ്ങൾ',
 	'communityvoice-ratings-scale-status-sending' => 'അയയ്ക്കുന്നു...',
 	'communityvoice-ratings-scale-status-thanks' => 'വോട്ട് ചെയ്തിതിനു നന്ദി!',
 );

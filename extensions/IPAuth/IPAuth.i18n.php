@@ -163,6 +163,13 @@ $messages['lb'] = array(
 	'ipauth-desc' => 'Automatesch alogge vu fixen IP-Adressen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'ipauth-desc' => 'Автоматско најавување од фиксни IP адреси',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

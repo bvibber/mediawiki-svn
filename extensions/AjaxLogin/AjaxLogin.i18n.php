@@ -277,9 +277,9 @@ Vérifiez l'orthographe.",
 $messages['frp'] = array(
 	'ajaxlogin-desc' => 'Formulèro dinamico que pèrmèt ux utilisators de sè branchiér et pués retegnir lor mot de pâssa.',
 	'ajaxLogin1' => 'Por complètar voutron branchement, vos dête buchiér un novél mot de pâssa.
-Cen vos farat quitar ceta pâge et pués vos porriâd pèrdre voutros changements en cors.',
+Cen vos farat quitar ceta pâge et pués vos porriâd pèrdre voutros changements que sont aprés étre fêts.',
 	'ajaxLogin2' => 'Éte-vos de sûr ?
-Vos porriâd pèrdre voutros changements en cors sur ceta pâge se vos la quitâd ora.',
+Vos porriâd pèrdre voutros changements que sont aprés étre fêts sur ceta pâge se vos la quitâd ora.',
 	'ajaxlogin-create' => 'Fâre un compto',
 );
 

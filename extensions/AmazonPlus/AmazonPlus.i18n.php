@@ -706,7 +706,7 @@ $messages['ja'] = array(
 	'amazonplus-amazon' => 'アマゾン価格',
 	'amazonplus-new' => '新品',
 	'amazonplus-none' => 'この商品は在庫・出品がありません。',
-	'amazonplus-cp-none' => '無し',
+	'amazonplus-cp-none' => 'なし',
 	'amazonplus-more' => '続き',
 	'amazonplus-less' => '省略',
 );

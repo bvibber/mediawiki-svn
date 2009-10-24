@@ -88,6 +88,14 @@ $messages['bg'] = array(
 	'selectcategory-subtitle' => 'Shift + ляв бутон на мишката за избор на множество последователни записи, Ctrl + ляв бутон на мишката за избор на непоследователни записи.',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'selectcategory-title' => 'বিষয়শ্রেণী নির্বাচন',
+	'selectcategory-desc' => 'পাতা সম্পাদনার সময় ব্যবহারকারীকে বিদ্যমান বিষয়শ্রেণী থেকে তা নির্বাচনের অনুমতি',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

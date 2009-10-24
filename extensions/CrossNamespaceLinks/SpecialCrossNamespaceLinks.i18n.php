@@ -196,6 +196,13 @@ $messages['de'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Link zeigt|Links zeigen}} in den $3-Namensraum',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|linkan}} rê $3î',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

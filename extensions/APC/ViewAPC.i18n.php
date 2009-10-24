@@ -931,11 +931,12 @@ Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
  * @author Purodha
  * @author Raimond Spekking
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'viewapc' => 'APC-Informationen',
 	'viewapc-desc' => 'APC-Cache mit MediaWiki [[Special:ViewAPC|einsehen und bearbeiten]]',
-	'right-apc' => 'Kann alle Funktionen von [[Special:ViewAPC|ViewAPC]] verwenden',
+	'right-apc' => 'Alle Funktionen von [[Special:ViewAPC|ViewAPC]] verwenden',
 	'viewapc-apc-not-available' => 'Keine Cache-Informationen verfügbar.
 APC wird scheinbar nicht ausgeführt.',
 	'viewapc-clear-confirm' => 'Möchtest du den Cache leeren?',

@@ -695,13 +695,12 @@ $messages['frp'] = array(
 	'ratinghistory-table-rating' => 'Èstimacion',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'Por lo moment, y at pas prod d’avis èxprimâs per des liésors por fâre vêre des diagramos.',
-	'ratinghistory-legend' => "L’'''èstimacion moyena de tôs los jorns''' <font color=\"blue\">''(blu)''</font> et
-l’'''èstimacion moyena en cors''' <font color=\"green\">''(vèrd)''</font> sont reprèsentâs desot fôrma de diagramo ce-desot, per dâta.
-L’'''èstimacion moyena en cors''' est simplament la moyena de totes les èstimacions de tôs los jorns ''dens'' lo temps chouèsi.
+	'ratinghistory-legend' => "Lo '''nombro de rèvisions per jorn''' <font color=\"red\">''(rojo)''</font>, l’'''èstimacion moyena per jorn''' <font color=\"blue\">''(blu)''</font>
+et l’'''èstimacion moyena por lo temps chouèsi''' <font color=\"green\">''(vèrd)''</font> sont reprèsentâs desot fôrma de diagramo ce-desot, per dâta.
+L’'''èstimacion moyena por lo temps chouèsi''' est simplament la moyena de totes les èstimacions de tôs los jorns ''dedens'' lo temps chouèsi.
+Les èstimacions sont cetes :
 
-Èchiéla : '''[1]''' - Crouyo ; '''[2]''' - Prod moyen ; '''[3]''' - Moyen ; '''[4]''' - Bon ; '''[5]''' - Famox.
-
-Lo '''nombro de rèvisions per jorn''' <font color=\"red\">''(rojo)''</font> est montrâ sur lo diagramo ce-desot, avouéc una èchiéla ''1:\$1''.",
+'''(1)''' - Crouyo ; '''(2)''' - Prod moyen ; '''(3)''' - Moyen ; '''(4)''' - Bon ; '''(5)''' - Famox.",
 	'right-feedback' => 'Utilisar lo formulèro de retôrn d’enformacions por èstimar una pâge',
 );
 

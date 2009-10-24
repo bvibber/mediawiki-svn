@@ -593,7 +593,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'fundraiserportal' => 'Портал „Обезбедување средства“ (Fundraiser Portal)',
+	'fundraiserportal' => 'Портал „Собирање средства“ (Fundraiser Portal)',
 	'fundraiserportal-desc' => 'Додава портал „ве молиме донирајте“ на врвот на страничната лента.',
 	'fundraiserportal-plain-button' => 'Поддржете ја Википедија!',
 	'fundraiserportal-ruby-button' => 'Донирајте сега',
