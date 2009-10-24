@@ -69,9 +69,9 @@ import org.wikimedia.lsearch.util.Localization;
 public class SearchEngine {
 	static org.apache.log4j.Logger log = Logger.getLogger(SearchEngine.class);
 
-	protected final int MAXLINES = 1000;
-	protected final int MAXPREFIX = 50;
-	protected final int MAXOFFSET = 100000;
+	protected static int maxlimit = 1000;
+	protected static int maxoffset = 100000;
+	protected final int MAXPREFIX = 50;	
 	protected static GlobalConfiguration global = null;
 	protected static Configuration config = null;
 	protected static SearcherCache cache = null;
@@ -84,8 +84,11 @@ public class SearchEngine {
 	public SearchEngine(){
 		if(config == null)
 			config = Configuration.open();
-		if(global == null)
+		if(global == null){
 			global = GlobalConfiguration.getInstance();
+			maxlimit = global.getMaxSearchLimit();
+			maxoffset = global.getMaxSearchOffset();
+		}	
 		if(cache == null)
 			cache = SearcherCache.getInstance();
 		if(udpLogger == null)
@@ -104,11 +107,11 @@ public class SearchEngine {
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
-				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXLINES);
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlimit);
 			if (query.containsKey("iwoffset"))
 				iwoffset = Math.max(Integer.parseInt((String)query.get("iwoffset")), 0);
 			if (query.containsKey("iwlimit"))
-				iwlimit = Math.min(Integer.parseInt((String)query.get("iwlimit")), MAXLINES);
+				iwlimit = Math.min(Integer.parseInt((String)query.get("iwlimit")), maxlimit);
 			if (query.containsKey("case") && global.exactCaseIndex(iid.getDBname()) && ((String)query.get("case")).equalsIgnoreCase("exact"))
 				exactCase = true;
 			if(query.containsKey("searchonly"))
@@ -147,11 +150,11 @@ public class SearchEngine {
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
-				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXLINES);
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlimit);
 			if (query.containsKey("iwoffset"))
 				iwoffset = Math.max(Integer.parseInt((String)query.get("iwoffset")), 0);
 			if (query.containsKey("iwlimit"))
-				iwlimit = Math.min(Integer.parseInt((String)query.get("iwlimit")), MAXLINES);
+				iwlimit = Math.min(Integer.parseInt((String)query.get("iwlimit")), maxlimit);
 			if (query.containsKey("case") && global.exactCaseIndex(iid.getDBname()) && ((String)query.get("case")).equalsIgnoreCase("exact"))
 				exactCase = true;
 			if(query.containsKey("searchall"))
@@ -181,7 +184,7 @@ public class SearchEngine {
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
-				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXLINES);
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlimit);
 			return searchRelated(iid, searchterm, offset, limit);
 		} else if(what.equals("similar")){
 			NamespaceFilter nsf = null;
@@ -194,7 +197,7 @@ public class SearchEngine {
 			else
 				nsf = iid.getDefaultNamespace();
 			if (query.containsKey("limit"))
-				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXLINES);
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlimit);
 			return searchSimilar(iid,searchterm,nsf,dist,limit);
 		} else if(what.equals("suggest")){
 			NamespaceFilter nsf = null;
@@ -920,13 +923,13 @@ public class SearchEngine {
 		res.setNumHits(numhits);
 		logRequest(iid,"search",searchterm, q, numhits, searchStart, s);
 		
-		int size = min(limit+offset,MAXOFFSET,numhits) - offset;
+		int size = min(limit+offset,maxoffset,numhits) - offset;
 		if( size < 0 )
 			size = 0;
 		int[] docids = new int[size]; 
 		float[] scores = new float[size];
 		// fetch documents
-		for(int i=offset, j=0 ; i<limit+offset && i<MAXOFFSET && i<numhits; i++, j++){
+		for(int i=offset, j=0 ; i<limit+offset && i<maxoffset && i<numhits; i++, j++){
 			docids[j] = hits.scoreDocs[i].doc;
 			scores[j] = hits.scoreDocs[i].score;
 		}
@@ -956,11 +959,11 @@ public class SearchEngine {
 		res.setNumHits(numhits);
 		logRequest(iid,"search",searchterm, q, numhits, searchStart, s);
 		
-		int size = min(limit+offset,MAXOFFSET,numhits) - offset;
+		int size = min(limit+offset,maxoffset,numhits) - offset;
 		int[] docids = new int[size]; 
 		float[] scores = new float[size];
 		// fetch documents
-		for(int i=offset, j=0 ; i<limit+offset && i<MAXOFFSET && i<numhits; i++, j++){
+		for(int i=offset, j=0 ; i<limit+offset && i<maxoffset && i<numhits; i++, j++){
 			docids[j] = hits.scoreDocs[i].doc;
 			scores[j] = hits.scoreDocs[i].score;
 		}

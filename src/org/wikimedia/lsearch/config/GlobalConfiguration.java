@@ -121,7 +121,9 @@ public class GlobalConfiguration {
 	
 	/** All the lang codes we encountered, used for "smart interwiki" */
 	protected HashSet<String> smartInterwikiCodes = new HashSet<String>();
-	protected boolean useSmartInterwiki = false; 
+	protected boolean useSmartInterwiki = false;
+	protected int maxSearchLimit;
+	protected int maxSearchOffset; 
 	
 	/** Wether to report warnings and info */
 	protected static boolean verbose = true;
@@ -431,6 +433,8 @@ public class GlobalConfiguration {
 					this.additionalRank = getArrayProperty("AdditionalRank.suffix");
 					this.useSmartInterwiki = globalProperties.getProperty("Database.smartInterwiki","false").equalsIgnoreCase("true");
 					this.commonsWiki = globalProperties.getProperty("Commons.wiki");
+					this.maxSearchOffset = Integer.parseInt(globalProperties.getProperty("Search.maxoffset", "100000"));
+					this.maxSearchLimit = Integer.parseInt(globalProperties.getProperty("Search.maxlimit", "1000"));
 					// try reading intialisesettings
 					String initset = globalProperties.getProperty("WMF.InitialiseSettings");
 					if(initset != null)
@@ -1564,6 +1568,16 @@ public class GlobalConfiguration {
 		}
 		return hosts;
 	}
+
+	public int getMaxSearchLimit() {
+		return maxSearchLimit;
+	}
+
+
+	public int getMaxSearchOffset() {
+		return maxSearchOffset;
+	}
+
 	
 
 }
