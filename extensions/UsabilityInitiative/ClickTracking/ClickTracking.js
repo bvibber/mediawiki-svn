@@ -7,13 +7,13 @@
 		
 		// Clicktrack the left sidebar links
 		$(document).ready( function() {
-			$( '#p-logo a, #p-navigation a, #p-tb a' ).each( function() {
+			$( '#p-logo a, #p-navigation a, #p-tb a' ).click( function() {
 				var id = 'leftnav-' + skin + '-' +
 					( $(this).attr( 'id' ) || $(this).parent().attr( 'id' ) );
-				$(this).attr( 'href', wgScriptPath +
+				window.location =  wgScriptPath +
 					'/api.php?action=clicktracking&eventid=' + id + '&token=' +
 					wgTrackingToken +
-					'&redirectto=' + escape( $(this).attr( 'href' ) ) );
+					'&redirectto=' + escape( $(this).attr( 'href' ) );
 			});
 		});
 	}
