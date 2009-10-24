@@ -11,11 +11,6 @@ CSS := \
 	css/wikiEditor.toc.css\
 	css/wikiEditor.toolbar.css
 
-JS2 := \
-	js/js2/jquery-1.3.2.js\
-	js/js2/jquery-ui-1.7.2.js\
-	js/js2/js2.js
-
 PLUGINS := \
 	js/plugins/jquery.async.js\
 	js/plugins/jquery.autoEllipse.js\
@@ -34,8 +29,6 @@ PLUGINS := \
 all: \
 	css/combined.css\
 	css/combined.min.css\
-	js/js2.combined.js\
-	js/js2.combined.min.js\
 	js/plugins.combined.js\
 	js/plugins.combined.min.js\
 	EditToolbar/EditToolbar.min.js
@@ -43,15 +36,9 @@ all: \
 css/combined.css: $(CSS)
 	cat $(CSS) > css/combined.css
 
-js/js2.combined.js: $(JS2)
-	cat $(JS2) > js/js2.combined.js
 
 js/plugins.combined.js: $(PLUGINS)
 	cat $(PLUGINS) > js/plugins.combined.js
-
-js/js2.combined.min.js : js/js2.combined.js jsmin
-	if [ -e ./jsmin ]; then ./jsmin < js/js2.combined.js > js/js2.combined.min.js;\
-	else jsmin < js/js2.combined.js > js/js2.combined.min.js; fi
 
 js/plugins.combined.min.js : js/plugins.combined.js jsmin 
 	if [ -e ./jsmin ]; then ./jsmin < js/plugins.combined.js > js/plugins.combined.min.js;\
@@ -74,6 +61,5 @@ distclean: clean
 	rm -rf jsmin.c
 
 clean:
-	rm -f js/js2.combined.*
 	rm -f js/plugins.combined.*
 	rm -f css/combined.*
