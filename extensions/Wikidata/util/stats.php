@@ -28,16 +28,6 @@ function stopwatch() {
    return ( (float)$usec + (float)$sec );
 }
 
-/*
-$result = mysql_query("SELECT 
-uw_defined_meaning.defined_meaning_id , uw_expression.spelling
-FROM uw_defined_meaning, uw_expression
-where uw_defined_meaning.defined_meaning_id=1446
-and uw_defined_meaning.expression_id=uw_expression.expression_id
-limit 0,40")or die ("error ".mysql_error());
-
-*/
-
 $start = stopwatch();
 
 echo"<center>
@@ -45,11 +35,11 @@ echo"<center>
 <hr width=950 size=1 noshade><br />
 ";
 
-$expressions_r = mysql_query( "SELECT  COUNT(*) FROM uw_expression WHERE remove_transaction_id IS NULL" );
+$expressions_r = mysql_query( "SELECT  COUNT(*) FROM uw_expression WHERE expression_id IN (SELECT DISTINCT expression_id FROM uw_syntrans WHERE remove_transaction_id IS NULL)" );
 $expressions_a = mysql_fetch_row( $expressions_r );
 $expressions = $expressions_a[0];
 
-$defined_meanings_r = mysql_query( "SELECT  COUNT(*) FROM uw_defined_meaning WHERE remove_transaction_id IS NULL" );
+$defined_meanings_r = mysql_query( "SELECT  COUNT(DISTINCT uw_syntrans.defined_meaning_id) FROM uw_syntrans, uw_expression WHERE uw_syntrans.remove_transaction_id IS NULL AND uw_expression.remove_transaction_id IS NULL AND uw_syntrans.expression_id = uw_expression.expression_id" );
 $defined_meanings_a = mysql_fetch_row( $defined_meanings_r );
 $defined_meanings = $defined_meanings_a[0];
 echo"<br />\n";
