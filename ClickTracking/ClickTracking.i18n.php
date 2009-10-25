@@ -149,12 +149,16 @@ $messages['br'] = array(
 	'clicktracking' => 'Heuliañ klikoù an intrudu implijadusted',
 	'clicktracking-desc' => "Heuliañ klikoù, talvezout a ra da heuliañ an darvoudoù na vez ket adkarget ur bajenn d'ho heul",
 	'ct-title' => "Sammad ar c'hlikoù implijerien",
+	'ct-event-name' => 'Anv an darvoud',
 	'ct-total-header' => "Hollad ar c'hlikoù",
+	'ct-start-date' => 'Deiziad kregiñ (AAAAMMJJ)',
+	'ct-end-date' => 'Deiziad echuiñ (AAAAMMJJ)',
 	'ct-beginner' => 'Deraouad',
 	'ct-intermediate' => 'Etre',
 	'ct-expert' => 'Mailh',
 	'ct-editing' => "Oc'h aozañ er mare-mañ :",
 	'ct-anon-users' => 'implijerien dizanv',
+	'ct-and' => 'ha(g)',
 );
 
 /** Bosnian (Bosanski)
@@ -251,9 +255,11 @@ $messages['de'] = array(
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
 	'clicktracking' => 'tıknayiş u temaşakerdışê teşebbusê şuxul biyayişi',
+	'clicktracking-desc' => 'Eka yew pele ke reciwane nibeno, ay ser gocekê trackingî rê bitekne',
 	'ct-title' => 'tıknayişê karberê kombiyayeyi',
 	'ct-event-name' => 'nameyê meselayi',
 	'ct-expert-header' => 'tıknayişê "tecrubeyınan"',
@@ -353,6 +359,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author Dalton2
  * @author Locos epraix
+ * @author Translationista
  */
 $messages['es'] = array(
 	'clicktracking' => 'Iniciativa de usabilidad de seguimiento mediante clics',
@@ -376,6 +383,7 @@ $messages['es'] = array(
 	'ct-user-contribs' => 'Total de contribuciones de los usuarios',
 	'ct-user-span' => 'Contribuciones de usuario en lapso de tiempo',
 	'ct-and' => 'y',
+	'ct-update-table' => 'Actualizar tabla',
 );
 
 /** Estonian (Eesti)
@@ -724,10 +732,20 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  */
 $messages['ko'] = array(
 	'clicktracking' => 'Usability Initiative 사용자 클릭 추적기',
 	'clicktracking-desc' => '마우스 클릭 이벤트 중에서 웹 페이지 새로고침과 관계없는 것들을 추적합니다.',
+	'ct-event-name' => '이벤트 이름',
+	'ct-start-date' => '시작 날짜 (YYYYMMDD)',
+	'ct-end-date' => '마지막 날짜 (YYYYMMDD)',
+	'ct-beginner' => '초보자',
+	'ct-intermediate' => '중급 사용자',
+	'ct-expert' => '전문가',
+	'ct-date-range' => '날짜 범위',
+	'ct-and' => '그리고',
+	'ct-update-table' => '표 업데이트',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -1156,6 +1174,7 @@ $messages['vec'] = array(
 	'ct-editing' => 'En corso de modìfega:',
 	'ct-anon-users' => 'Utenti anonimi',
 	'ct-user-contribs' => 'Contributi utente totali',
+	'ct-user-span' => "Contributi de l'utente su la durata",
 	'ct-and' => 'e',
 	'ct-update-table' => 'Ajorna tabèla',
 );

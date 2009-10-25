@@ -397,9 +397,11 @@ Klicken Sie auf eine, um Statistiken darüber zu erhalten.',
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
 	'prefstats' => 'istatiskê tercihi',
+	'prefstats-desc' => 'Ser çend tene karber kamci terichan a kerdê înan ra îstatistikan mucneno',
 	'prefstats-title' => 'istatiskê tercihi',
 	'prefstats-list-intro' => 'nıka tercihê cêrıni seyr beni.
 qey vinayişê istatiskê elaqedar biyayeyani bıtıknê',
@@ -1117,8 +1119,28 @@ $messages['ko'] = array(
 	'prefstats' => '환경 설정 통계',
 	'prefstats-desc' => '각 환경 설정에 대한 사용자 비율 통계',
 	'prefstats-title' => '환경 설정 통계',
+	'prefstats-list-intro' => '다음 설정의 통계를 구하고 있습니다.
+통계를 보려면 다음 중 하나를 클릭하십시오.',
+	'prefstats-noprefs' => '통계를 내고 있는 설정이 없습니다.
+환경 설정의 통계를 구하려면 $wgPrefStatsTrackPrefs를 설정하십시오.',
+	'prefstats-counters' => '* 이 환경 설정에 대한 통계가 활성화된 이후로 $1명의 사용자가 이 설정을 사용하였습니다.
+** $2명의 사용자가 계속 이 설정을 사용하고 있습니다.
+** $3명의 사용자가 나중에 이 설정을 비활성화하였습니다.',
+	'prefstats-counters-expensive' => '* 이 환경 설정에 대한 통계가 활성화된 이후로 $1명의 사용자가 이 설정을 사용하였습니다.
+** $2명의 사용자가 계속 이 설정을 사용하고 있습니다.
+** $3명의 사용자가 나중에 이 설정을 비활성화하였습니다.
+* 총 $4명의 사용자가 이 설정을 설정하였습니다.',
 	'prefstats-xaxis' => '기간(단위: 시간)',
+	'prefstats-factors' => '시간 단위로 보기: $1',
+	'prefstats-factor-hour' => '1시간',
+	'prefstats-factor-sixhours' => '6시간',
+	'prefstats-factor-day' => '1일',
+	'prefstats-factor-week' => '1주',
+	'prefstats-factor-twoweeks' => '2주',
 	'prefstats-factor-fourweeks' => '4주',
+	'prefstats-factor-default' => '기본값',
+	'prefstats-legend-out' => '비활성화한 사용자 수',
+	'prefstats-legend-in' => '활성화한 사용자 수',
 );
 
 /** Ripoarisch (Ripoarisch)

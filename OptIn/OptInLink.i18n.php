@@ -504,8 +504,11 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'optin-try' => '베타 버전 체험하기',
+	'tooltip-pt-optin-try' => '새 기능 체험하기',
 	'optin-leave' => '베타 버전 체험 종료하기',
+	'tooltip-pt-optin-leave' => '새 기능을 끄기',
 	'optin-feedback' => '피드백 남기기',
+	'tooltip-pt-optin-feedback' => '새로운 기능에 대한 당신의 의견을 남겨주세요',
 );
 
 /** Ripoarisch (Ripoarisch)

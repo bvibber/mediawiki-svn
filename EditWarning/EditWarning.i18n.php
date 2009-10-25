@@ -35,7 +35,7 @@ $messages['ar'] = array(
 	'editwarning' => 'تحذير تحريري',
 	'editwarning-desc' => 'أظهر تحذيرًا عندما ياحول مستخدم مغادرة نموذج تحرير قبل الحفظ',
 	'editwarning-warning' => 'قد تتسبب مغادرة هذه الصفحة بخسارتك لأي تغييرات قمت بها.
-يمكنك تعطيل هذا التحذير في قسم "{{int:prefs-editing}}" في تفضيلاتك.',
+يمكنك تعطيل هذا التحذير إذا كنت والجلًا في قسم "{{int:prefs-editing}}" في تفضيلاتك.',
 	'editwarning-preference' => 'حذّرني عندما أغادر تحرير صفحة ذات تغييرات غير محفوظة',
 );
 
@@ -171,9 +171,11 @@ Wenn Sie angemeldet sind, können Sie das Anzeigen dieser Warnung im „{{int:pr
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
 	'editwarning' => 'hişyariyê vurnayişi',
+	'editwarning-desc' => 'Çi wext yew karber vurnayişê xo bêqeydi ra vecyen o, yew îkaz bimocne',
 	'editwarning-warning' => 'ihtimal o ke wexta şıma peli ra bıveci, vurnayiş o ke şıma kerdo, hewna şiyêro .
 eke şıma kewtê hesabê xo, no hişyari tercihanê xo ra şıma eşkeni "{{int:prefs-editing}}" bıvındarnî .',
 	'editwarning-preference' => 'wexta ke ez pelo nêqeydbiyaye ra veciyaya mı hişyar bıker',

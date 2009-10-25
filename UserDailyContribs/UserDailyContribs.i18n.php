@@ -66,6 +66,13 @@ $messages['de'] = array(
 	'userdailycontribs-desc' => 'Benutzertagesbeiträge für die Klickverfolgungs-Erweiterung',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'userdailycontribs-desc' => 'Yew roc de îştriakanê karberî qe extensiyonê click tracking',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
