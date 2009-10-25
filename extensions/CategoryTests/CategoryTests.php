@@ -15,7 +15,7 @@ $wgExtensionFunctions[] = 'wfCategoryTests';
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Category Tests',
-	'version' => '1.3',
+	'version' => '1.4',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryTests',
 	'author' => 'Ryan Schmidt',
 	'description' => 'Functions for category testing',
@@ -45,12 +45,15 @@ Class ExtCategoryTests {
 			$ns = $title->getNamespace();
 		} else {
 			$title = Title::newFromText( $pagename );
-			if ( !$title->exists() )
+			if ( !($title instanceOf Title) || !$title->exists() )
 				return $else;
 			$page = $title->getDBkey();
 			$ns = $title->getNamespace();
 		}
 		$cattitle = Title::makeTitleSafe( NS_CATEGORY, $category );
+		if(!($cattitle instanceOf Title)) {
+			return $else;
+		}
 		$catkey = $cattitle->getDBkey();
 		$db = wfGetDB( DB_SLAVE );
 		$res = $db->select( array( 'page', 'categorylinks' ), 'cl_from', array(
@@ -71,7 +74,7 @@ Class ExtCategoryTests {
 			$ns = $title->getNamespace();
 		} else {
 			$title = Title::newFromText( $pagename );
-			if ( !$title->exists() )
+			if ( !($title instanceOf Title) || !$title->exists() )
 				return $then;
 			$page = $title->getDBkey();
 			$ns = $title->getNamespace();
