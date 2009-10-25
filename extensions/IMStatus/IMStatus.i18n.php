@@ -386,6 +386,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Translationista
  */
 $messages['es'] = array(
 	'imstatus_syntax' => 'Sintaxis',
@@ -404,6 +405,8 @@ $messages['es'] = array(
 	'imstatus_gtalk_height' => 'altura de la tabla, en pixeles.',
 	'imstatus_gtalk_width' => 'ancho de la tabla, en pixeles.',
 	'imstatus_icq_id' => 'Tu ICQ ID',
+	'imstatus_icq_style' => 'un número del 0 al 26 (sí, hay 27 estilos disponibles).',
+	'imstatus_skype_nbstyle' => 'Observación: Si elige un estilo que sea también una acción, la acción elegida previamente será invalidada por la acción concordante con el estilo que elija.',
 	'imstatus_xfire_size' => 'el tamaño del botón, de $1 (mayor) a $2 (menor).',
 	'imstatus_yahoo_style' => 'el estilo del botón, de $1 (mayor) a $2 (menor), $3 y $4 son para correo de voz.',
 );

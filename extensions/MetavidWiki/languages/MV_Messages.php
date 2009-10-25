@@ -2312,6 +2312,7 @@ $messages['eo'] = array(
  * @author Jatrobat
  * @author Locos epraix
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'metavid' => 'Página MetaVid',
@@ -2372,7 +2373,9 @@ o puedes desear <a href="$3">Agregar el stream</a>.',
 	'mv_watch_clip' => 'Ver clip',
 	'mv_close_clip' => 'Cerrar clip',
 	'mv_improve_transcript' => 'Mejorar transcripción',
+	'mv_people_matches' => 'Coincidencias en personas',
 	'mv_category_matches' => 'Coincidencias de título de categoría',
+	'mv_interest_group_matches' => 'Coincidencias en grupos de interés',
 	'mv_click_to_edit' => 'hacer click para editar',
 	'ht_en' => 'Transcribir',
 	'anno_en' => 'Anotaciones y categorías',

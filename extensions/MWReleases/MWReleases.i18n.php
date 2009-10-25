@@ -64,6 +64,13 @@ $messages['de'] = array(
 	'mwreleases-desc' => 'Fügt eine [[Mediawiki:Mwreleases-list|Liste]] unterstützter Veröffentlichungen hinzu, die über die API erreichbar ist',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'mwreleases-desc' => 'Yew [[Mediawiki:Mwreleases-list|list]]eyê releaseyan de keno, pê API a beno',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -175,6 +182,13 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'mwreleases-desc' => 'Setzt eng [[Mediawiki:Mwreleases-list|Lëscht]] vun ënnerstetzte Versiounen derbäi, déi iwwer den API zougänglech sinn',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'mwreleases-desc' => 'Додава [[Mediawiki:Mwreleases-list|листа]] на поддржани верзии, достапни преку API',
 );
 
 /** Dutch (Nederlands)

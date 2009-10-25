@@ -386,6 +386,7 @@ $messages['mk'] = array(
 	'protectsection_desc' => 'Овоможува потврдени корисници да заштитуваат делови од страници користејќи ја ознаката <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Се обидовте да додадете или отстраните заштитен пасус',
 	'protectsection_modify' => 'Се обидовте да измените заштитен текст',
+	'protectsection_add_above' => 'Се обидовте да вметнете текст пред заштитен дел',
 	'protectsection_forbidden' => 'Забрането',
 	'right-protectsection' => 'Заштитување на делови од страници',
 );

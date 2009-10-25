@@ -375,6 +375,7 @@ $messages['el'] = array(
  * @author Antur
  * @author Crazymadlover
  * @author Imre
+ * @author Translationista
  */
 $messages['es'] = array(
 	'wah-desc' => 'Permitir la distribución de videos convertidos a los clientes utilizando firefogg',
@@ -392,6 +393,18 @@ $messages['es'] = array(
 	'wah-transcode-fail' => 'Falló la conversión del archivo.',
 	'wah-javascript-off' => 'Ud. debe tener JavaScript activo para participar en Wiki@Home',
 	'wah-loading' => 'cargando interfaz Wiki@Home ...',
+	'wah-menu-jobs' => 'Trabajos',
+	'wah-menu-stats' => 'Estadísticas',
+	'wah-menu-pref' => 'Preferencias',
+	'wah-lookingforjob' => 'En busca de trabajo',
+	'wah-nojobfound' => 'No se ha encontrado trabajos. Se volverá a intentar en $1.',
+	'wah-downloading' => 'Descarga del archivo <i>$1%</i> completada',
+	'wah-encoding' => 'Codificación del archivo <i>$1%</i> completada',
+	'wah-encoding-fail' => 'Codificación fallida. Por favor, cargue esta página de nuevo o inténtelo más tarde.',
+	'wah-uploading' => 'Subida del archivo <i>$1</i> completada',
+	'wah-uploadfail' => 'Subida fallida',
+	'wah-doneuploading' => 'Subida completada. Gracias por su colaboración.',
+	'wah-api-error' => 'Ha habido un error con el API. Por favor, inténtelo de nuevo más tarde.',
 );
 
 /** Basque (Euskara)
@@ -633,7 +646,20 @@ $messages['hu'] = array(
 	'wah-menu-stats' => 'Statisztikák',
 	'wah-menu-pref' => 'Beállítások',
 	'wah-lookingforjob' => 'Feladatra várok…',
+	'wah-start-on-visit' => 'Wiki@Home elindítása minden alkalommal, amikor ellátogatok az oldalra.',
+	'wah-jobs-while-away' => 'Csak akkor futtasd a feladatokat, ha már 20 perce távol vagyok a böngészőtől.',
+	'wah-nojobfound' => 'Nem található feladat. Újrapróbálom ekkor: $1.',
+	'wah-notoken-login' => 'Be vagy jelentkezve? Ha nem, kérlek előbb tedd meg.',
+	'wah-apioff' => 'Úgy tűnik, hogy a Wiki@Home API nincs bekapcsolva. Lépj kapcsolatba a wiki adminisztrátorával.',
+	'wah-doing-job' => 'Feladat típusa: <i>$1</i>, neve: <i>$2</i>',
+	'wah-downloading' => 'A fájl letöltésének <i>$1%</i>-a kész',
+	'wah-encoding' => 'A fájl átkódolásának <i>$1%</i>-a kész',
+	'wah-encoding-fail' => 'Az átkódolás nem sikerült. Kérlek frissítsd a lapot, vagy nézz vissza később.',
+	'wah-uploading' => 'A(z) <i>$1</i> fájl feltöltése kész',
 	'wah-uploadfail' => 'Sikertelen feltöltés',
+	'wah-doneuploading' => 'A feltöltés kész. Köszönjük a közreműködésed.',
+	'wah-needs-firefogg' => 'Hogy közreműködj a Wiki@Home-ban, fel kell telepítened a <a href="http://firefogg.org">Firefogg</a>-ot.',
+	'wah-api-error' => 'Hiba történt az API-val. Kérlek nézz vissza később.',
 );
 
 /** Interlingua (Interlingua)

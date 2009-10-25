@@ -855,6 +855,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Whym
  */
 $messages['ja'] = array(
 	'createsigndocument' => '文書署名の有効化',
@@ -871,7 +872,7 @@ $messages['ja'] = array(
 	'createsigndoc-minage' => '最低年齢:',
 	'createsigndoc-introtext' => '序文:',
 	'createsigndoc-hidden' => '非表示',
-	'createsigndoc-optional' => '任意',
+	'createsigndoc-optional' => '省略可能',
 	'createsigndoc-create' => '作成',
 	'createsigndoc-error-generic' => 'エラー: $1',
 	'createsigndoc-error-pagenoexist' => 'エラー: ページ [[$1]] は存在しません。',

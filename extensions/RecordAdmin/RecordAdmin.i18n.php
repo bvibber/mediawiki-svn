@@ -879,17 +879,34 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'recordadmin' => 'Rekord adminisztráció',
+	'recordadmin-desc' => '[[Special:RecordAdmin|Speciális lap]] rekord oldalak kereséséhez és szerkesztéséhez űrlap segítségével',
+	'recordadmin-categoryempty' => 'Jelenleg nincsenek rekordtípusok. Kérlek kategorizáld be a rekord sablonokat ide: [[:$1|$1]].',
 	'recordadmin-select' => 'Kijelölés',
+	'recordadmin-createtype' => 'Add meg az új rekordtípus nevét a létrehozásához',
+	'recordadmin-recordtype' => 'rekordtípus',
+	'recordadmin-newsearch' => 'Új $1 keresés',
+	'recordadmin-newrecord' => 'Válassz másik rekordtípust',
 	'recordadmin-submit' => 'Elküldés',
+	'recordadmin-create' => '„$1” rekordok keresése vagy létrehozása',
+	'recordadmin-alreadyexist' => 'Bocsánat, a(z) „$1” már létezik!',
 	'recordadmin-createsuccess' => '$1 létrehozva',
+	'recordadmin-createerror' => 'Hiba történt a(z) $1 létrehozása közben!',
 	'recordadmin-badtitle' => 'Rossz cím!',
+	'recordadmin-recordid' => 'Rekordazonosító/név:',
 	'recordadmin-invert' => 'Kijelölés megfordítása',
 	'recordadmin-buttonsearch' => 'Keresés',
 	'recordadmin-buttoncreate' => 'Létrehozás',
 	'recordadmin-buttonreset' => 'Alaphelyzet',
 	'recordadmin-searchresult' => 'Keresési eredmények',
+	'recordadmin-nomatch' => 'Nem található egyező rekord!',
+	'recordadmin-edit' => 'A(z) $2 típusú „$1” rekord szerkesztése',
+	'recordadmin-typeupdated' => '$1 tulajdonságai frissítve',
 	'recordadmin-updatesuccess' => '$1 frissítve',
+	'recordadmin-updateerror' => 'Hiba történt a frissítés közben',
 	'recordadmin-buttonsave' => 'Mentés',
+	'recordadmin-noform' => 'Nincs a(z) „$1” rekordokkal kapcsolatban levő űrlap!',
+	'recordadmin-createlink' => 'hozz létre egyet',
 	'recordadmin-newcreated' => 'Új $1 létrehozva nyilvános űrlap alapján',
 	'recordadmin-summary-typecreated' => 'Új $1 létrehozva',
 	'recordadmin-viewlink' => 'megjelenítés',
@@ -899,6 +916,8 @@ $messages['hu'] = array(
 	'recordadmin-actions' => 'Műveletek',
 	'recordadmin-needscontent' => 'Tartalom hozzáadása…',
 	'recordadmin-editwithform' => 'Szerkesztés űrlappal',
+	'recordadmin-typeinfo' => '$1 rekord',
+	'right-recordadmin' => 'Rekord lapok keresése és szerkesztése',
 );
 
 /** Interlingua (Interlingua)

@@ -1161,6 +1161,10 @@ $messages['cs'] = array(
 	'code-release-badrange' => 'Rozsah je příliš velký!',
 	'codereview-subtitle' => 'Pro $1',
 	'codereview-reply-link' => 'odpovědět',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|úspěšný test|úspěšné testy|úspěšných testů}}',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|úspěšný test|úspěšné testy|úspěšných testů}}, $3 {{PLURAL:$4|neúspěšný test|neúspěšné testy|neúspěšných testů}}:',
+	'codereview-tests-running' => 'Testy se právě provádějí…',
+	'codereview-tests-aborted' => 'Provádění testů bylo přerušeno.',
 	'codereview-email-subj' => '[$1] [r$2]: Přidán nový komentář',
 	'codereview-email-body' => 'Uživatel „$1“ přidal komentář k r$3.
 
@@ -1466,6 +1470,7 @@ $messages['diq'] = array(
 	'code-status' => 'merheleyan',
 	'code-tags' => 'Etîketan',
 	'code-tests' => 'Caseyan test bike',
+	'code-authors-text' => 'Bin de yew listeyê repo nuştekaran esto. Wîkîyanê lokalî îtaya de benate parantez de mucnayo.',
 	'code-author-haslink' => 'Nuştekar, karberê $1î ra link biyo',
 	'code-author-orphan' => 'Ena karber yew hesabê wîkî rê lînk nibiyo',
 	'code-author-dolink' => 'Ena karber yew hesabê wîkî rê lînk bike:',
@@ -1534,11 +1539,34 @@ $messages['diq'] = array(
 	'code-release-badrange' => 'Menzil zaf derg o!',
 	'codereview-subtitle' => 'Qe $1',
 	'codereview-reply-link' => 'cewab bide',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|test|testan}} ke biyo',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test|testan}} ke biyo, $3 {{PLURAL:$4|test|testan}} nibiyo:',
 	'codereview-tests-running' => 'Test ho hebiyeno...',
 	'codereview-tests-aborted' => 'Test iptel biyo.',
 	'codereview-email-subj' => '[$1] [r$2]: Xulasayê newî de biyo',
+	'codereview-email-body' => 'Karberê "$1"î yew xulasa se r$3 rê nuşt. 
+
+Full URL: $2
+
+Xulasa:
+
+$4',
 	'codereview-email-subj2' => '[$1] [r$2]: Vurnayîşan kontrol bike',
+	'codereview-email-body2' => 'Karberê "$1"î,  r$2  vurna. 
+
+Full URL: $3
+
+Xulasa:
+
+$4',
 	'codereview-email-subj3' => '[$1] [r$2]: Regression otomatik test keno',
+	'codereview-email-body3' => 'Qe vurnayîşê r$1î otomatik test yew regression mucna. 
+
+Full URL: $2
+
+Xulasa:
+
+$3',
 	'repoadmin' => 'Îdarê Kerdîşê Arşîvî',
 	'repoadmin-new-legend' => 'Yew arşîvê newî viraze',
 	'repoadmin-new-label' => 'Nameyê arşîvî:',
@@ -2705,6 +2733,10 @@ $messages['gl'] = array(
 	'code-release-badrange' => 'O rango é longo de máis!',
 	'codereview-subtitle' => 'De $1',
 	'codereview-reply-link' => 'resposta',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|proba exitosa|probas exitosas}}',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|proba exitosa|probas exitosas}}, $3 {{PLURAL:$4|proba errada|probas erradas}}:',
+	'codereview-tests-running' => 'As probas están en curso...',
+	'codereview-tests-aborted' => 'Interrompeuse a execución da proba.',
 	'codereview-email-subj' => '[$1] [r$2]: Engadido un novo comentario',
 	'codereview-email-body' => 'O usuario "$1" deixou un comentario en r$3.
 
@@ -3632,6 +3664,8 @@ $messages['ia'] = array(
 	'code-release-badrange' => 'Intervallo troppo grande!',
 	'codereview-subtitle' => 'Pro $1',
 	'codereview-reply-link' => 'responder',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|test|tests}} succedite',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test|tests}} succedite, $3 {{PLURAL:$4|test|tests}} fallite:',
 	'codereview-tests-running' => 'Le casos de test es executate...',
 	'codereview-tests-aborted' => 'Execution del test interrumpite.',
 	'codereview-email-subj' => '[$1] [v$2]: Nove commento addite',
@@ -4866,6 +4900,7 @@ $messages['ml'] = array(
 	'code-change-added' => 'കൂട്ടിച്ചേർത്തു:',
 	'code-old-status' => 'പഴയ സ്ഥിതി',
 	'code-new-status' => 'പുതിയ സ്ഥിതി',
+	'code-no-repo' => 'റെപ്പോസിറ്ററികളൊന്നും ക്രമീകരിച്ചിട്ടില്ല!',
 	'code-load-diff' => 'വ്യത്യാസം ശേഖരിക്കുന്നു...',
 	'code-statuschanges' => 'സ്ഥിതിയിൽ വ്യത്യാസമുണ്ടായി',
 	'code-authors' => 'രചയിതാക്കൾ',
@@ -4883,6 +4918,7 @@ $messages['ml'] = array(
 	'code-field-select' => 'തിരഞ്ഞെടുക്കുക',
 	'code-rev-author' => 'രചയിതാവ്:',
 	'code-rev-date' => 'തീയതി:',
+	'code-rev-repo' => 'റെപ്പോസിറ്ററി:',
 	'code-rev-rev' => 'നാൾപ്പതിപ്പ്:',
 	'code-rev-paths' => 'മാറ്റം വരുത്തിയ പഥങ്ങൾ:',
 	'code-rev-modified-a' => 'കൂട്ടിച്ചേർത്തു',
@@ -4914,6 +4950,7 @@ $messages['ml'] = array(
 	'repoadmin-edit-bug' => 'ബഗ്‌സില്ല പഥം:',
 	'repoadmin-edit-button' => 'ശരി',
 	'right-codereview-link-user' => 'രചയിതാക്കളെ വിക്കി ഉപയോക്താക്കളുമായി കണ്ണി ചേർക്കുക',
+	'specialpages-group-developer' => 'വികസന ഉപകരണങ്ങൾ',
 );
 
 /** Mongolian (Монгол)

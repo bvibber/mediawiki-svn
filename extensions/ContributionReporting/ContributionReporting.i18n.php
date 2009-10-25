@@ -2358,6 +2358,7 @@ $messages['mk'] = array(
 	'contribstats-donations' => 'Донации',
 	'contribstats-conversion' => 'Стапка на придобивање на придонесувачи (%)',
 	'contribstats-template' => 'Шаблон',
+	'contribstats-nodata' => 'Нема внесено податоци',
 	'fundraiserstatistics' => 'Статистики за собирањето на средства',
 	'fundraiserstats-date' => 'Датум',
 	'fundraiserstats-day' => 'Ден $1 од $2',

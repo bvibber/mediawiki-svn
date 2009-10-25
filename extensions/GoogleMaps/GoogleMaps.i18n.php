@@ -2698,6 +2698,7 @@ $wgGoogleMapsMessages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Whym
  */
 $wgGoogleMapsMessages['ja'] = array(
 	'gm-desc' => 'ラベルにウィキリンクのついた地図を簡単に作成する',
@@ -2705,7 +2706,7 @@ $wgGoogleMapsMessages['ja'] = array(
 	'gm-incompatible-browser-link' => '互換性のあるブラウザの一覧を確認するには、ここをクリックしてください。',
 	'gm-no-editor' => '残念ですが、あなたのブラウザは対話的な地図作成機能に対応していません。<a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) か <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows、Mac、Linux) の最新バージョンを試してください。',
 	'gm-balloon-title' => 'タイトル:',
-	'gm-balloon-link-article' => 'このページにリンクする (任意):',
+	'gm-balloon-link-article' => 'このページにリンクする (省略可能):',
 	'gm-make-marker' => 'キャプション (ウィキマークアップも可能):',
 	'gm-remove' => '削除',
 	'gm-caption' => 'キャプション',

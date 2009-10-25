@@ -787,6 +787,17 @@ $messages['vo'] = array(
 	'unicodeconverter-newtext' => 'Vödem fomätü Unicode:',
 );
 
+/** Kalmyk (Хальмг)
+ * @author Huuchin
+ */
+$messages['xal'] = array(
+	'unicodeconverter' => 'Юникодин орчулдгч',
+	'unicodeconverter-desc' => 'Амр көдлхнә халхин хүв үлгүрнь. [[Special:UnicodeConverter|UTF-8 кодлт мөр]] HTML дүрт ISO 8859-1 веб халхин төлә орчулсмн.',
+	'unicodeconverter-ok' => 'Чик',
+	'unicodeconverter-oldtext' => 'Булг бичг:',
+	'unicodeconverter-newtext' => 'Кесн бичг:',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

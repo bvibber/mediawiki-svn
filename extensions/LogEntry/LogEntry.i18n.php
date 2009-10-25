@@ -83,6 +83,18 @@ $messages['be-tarask'] = array(
 	'logentry-invalidtoken' => 'Няслушны сымбаль',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'logentry-append' => 'Ouzhpennañ',
+	'logentry-parserhook-desc' => "Ouzhpennañ a ra an astenn-mañ ur valizenn a bourchas ur furmskrid da ouzhpennañ/rakproseziñ testennoù d'ar pajennoù marilh",
+	'logentry-specialpage-desc' => 'Porvezañ a ra an astenn balizennoù-mañ un argerzh evit ober ouzhpennadennoù da bajennoù ar marilhoù',
+	'logentry' => 'Marilh ar monedoù',
+	'logentry-invalidpage' => 'Pajenn direizh',
+	'logentry-invalidtoken' => 'Fichenn direizh',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -335,6 +347,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'logentry-append' => 'Додај',
 	'logentry-parserhook-desc' => 'Оваа ознака-проширување дава форма за додавање н записи на почетокот или крајот на дневнички страници',
 	'logentry-specialpage-desc' => 'Оваа ознака-проширување овозможува обработка за придодавање на дневнички страници',
 	'logentry' => 'СтавкаВоДневникот',

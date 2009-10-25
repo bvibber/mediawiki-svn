@@ -701,6 +701,24 @@ $messages['mg'] = array(
 	'right-adminlinks' => "Hijery ny rohy any amin'ny [[Special:AdminLinks|rohy ampiasain'ny mpandrindra]]",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'adminlinks' => 'Администраторски врски',
+	'adminlinks-desc' => 'Додава [[Special:AdminLinks|специјална страница]] која содржи корисни врски за администратори.',
+	'adminlinks_documentation' => 'Документација за $1',
+	'adminlinks_general' => 'Општо',
+	'adminlinks_editsidebar' => 'Уреди странична лента',
+	'adminlinks_editcss' => 'Уреди ја CSS податотеката',
+	'adminlinks_editmainpagename' => 'Уредување на името на главната страница',
+	'adminlinks_users' => 'Корисници',
+	'adminlinks_createuser' => 'Создај корисник',
+	'adminlinks_browsesearch' => 'Прелистување и пребарување',
+	'adminlinks_importexport' => 'Увоз и извоз',
+	'right-adminlinks' => 'Приказ на врската до [[Special:AdminLinks|Администраторските врски]]',
+);
+
 /** Malayalam (മലയാളം)
  * @author Sadik Khalid
  */

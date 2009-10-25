@@ -219,6 +219,7 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'masseditregex' => 'Edición en masa usando expresiones regulares',
@@ -233,6 +234,8 @@ $messages['es'] = array(
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|página|páginas}} editadas',
 	'masseditregex-view-full-summary' => 'Ver resumen de edición completo',
 	'masseditregex-hint-headreplace' => 'Reemplazar',
+	'masseditregex-listtype-intro' => 'Esta es una lista de:',
+	'masseditregex-tooltip-execute' => 'Aplicar estos cambios a cada página',
 );
 
 /** French (Français)

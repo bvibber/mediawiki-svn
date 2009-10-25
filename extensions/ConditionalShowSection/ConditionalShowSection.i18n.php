@@ -155,6 +155,13 @@ $messages['lb'] = array(
 	'conditionalshowsection-desc' => 'Den Tag <cshow> derbäisetzen fir en Abschnitt vum Wikitext ënner gewësse Konditionen ze weisen oder ze verstoppen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'conditionalshowsection-desc' => 'Додавање наознаката <cshow> за условен приказ/сокривање на дел од вики-текст',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

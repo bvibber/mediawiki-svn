@@ -82,6 +82,18 @@ $messages['bg'] = array(
 	'purgecache-button' => 'Изчистване',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'purgecache' => 'Riñsañ ar grubuilh',
+	'purgecache-desc' => "[[Special:PurgeCache|Pajenn dibar]] da c'houllonderiñ an daolenn OBJECTCACHE",
+	'purgecache-warning' => 'Riñset e vo taolennoù ar grubuilh gant se',
+	'purgecache-purged' => 'Riñset eo bet ar grubuilh',
+	'purgecache-button' => 'Riñsañ',
+	'right-purgecache' => 'Goullonderiñ an daolenn OBJECTCACHE',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

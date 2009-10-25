@@ -155,6 +155,13 @@ $messages['lb'] = array(
 	'lockout-desc' => 'Gespaarte Benotzer dovun ofhale sech anzeloggen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'lockout-desc' => 'Не им дозолува на блокираните корисници да се најавуваат',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

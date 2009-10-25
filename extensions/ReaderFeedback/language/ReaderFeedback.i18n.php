@@ -466,8 +466,10 @@ $messages['de-formal'] = array(
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
+	'readerfeedback-desc' => 'Pê pele testik kerdişî, wendekaran eşkeno ser nuşteyan feedback bido',
 	'readerfeedback' => 'derheqê no pelî de çi fikrê şima esto?',
 	'readerfeedback-text' => "''kerem kerê qey reydayişê no peli re bıne wextê xo bıde. ma qıymet danî cewabê şima.''",
 	'readerfeedback-reliability' => 'pawıtışi',
@@ -1292,8 +1294,9 @@ $messages['mk'] = array(
 	'readerfeedback-level-4' => 'Одлично',
 	'readerfeedback-submit' => 'Зачувај',
 	'readerfeedback-main' => 'Само енциклопедиски страници може да се оценуваат.',
-	'readerfeedback-success' => "'''Благодариме за оценувањето на оваа страница!''' ([$3 Коментари или прашања?]).",
-	'readerfeedback-voted' => "'''Изгледа дека веќе ја имате оценувано оваа страница''' ([$3 Коментари или прашања?]).",
+	'readerfeedback-success' => "'''Ви благодариме што ја оценивте страницата!''' ([$2 видете резултати]) ([$3 коментари или прашања?]).",
+	'readerfeedback-voted' => "'''Изгледа дека веќе сте ја оцениле оваа страница''' ([$2 видете резултати]) ([$3 коментари и прашања?]).",
+	'readerfeedback-error' => "'''Настана грешка при оценувањето наоваа страница''' ([$2 видете резултати]) ([$3 коментари и прашања?]).",
 	'readerfeedback-submitting' => 'Зачување...',
 	'readerfeedback-finished' => 'Ви благодариме!',
 	'readerfeedback-tagfilter' => 'Ознака:',

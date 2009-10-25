@@ -150,11 +150,13 @@ $messages['de'] = array(
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
 	'simplesearch' => 'cıgêrayişo basit',
+	'simplesearch-desc' => 'Cigêreyişê Vectorî ra extra xacetî de keno',
 	'simplesearch-search' => 'cıgêr',
-	'simplesearch-containing' => 'tede yo ke esto...',
+	'simplesearch-containing' => 'tede esto...',
 );
 
 /** Lower Sorbian (Dolnoserbski)

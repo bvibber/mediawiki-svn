@@ -371,12 +371,16 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'refreshspecial' => 'Refrescar páginas especiales',
 	'refreshspecial-desc' => 'Permite [[Special:RefreshSpecial|refrescamiento de paginas especiales manualmente]] de paginas especiales',
 	'refreshspecial-title' => 'Refrescar páginas especiales',
-	'refreshspecial-button' => 'Refrescar seleccionados',
+	'refreshspecial-help' => "Esta página especial provee las herramientas necesarias para volver a cargar páginas especiales manualmente.
+Después de elegir todas las páginas que desee volver a cargar, haga click en el botón \"actualizar selección\" mostrado abajo para volver a cargar las páginas especiales seleccionadas.
+'''Advertencia:''' La actualización puede tardar un poco en wikis más extensos.",
+	'refreshspecial-button' => 'Actualizar selección',
 	'refreshspecial-fail' => 'Por favor chequee al menos una página especial a refrescar.',
 	'refreshspecial-refreshing' => 'refrescando páginas especiales',
 	'refreshspecial-skipped' => 'ordinario, omitido',

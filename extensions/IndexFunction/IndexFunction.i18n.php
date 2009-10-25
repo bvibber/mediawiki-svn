@@ -273,6 +273,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'indexfunc-desc' => 'Función analizadora para crear redirecciones y páginas de desambiguación',
@@ -284,6 +285,9 @@ $messages['es'] = array(
 	'index-submit' => 'Enviar',
 	'index-disambig-start' => "'''$1''' puede referir a varias páginas:",
 	'index-emptylist' => 'No hay páginas asociadas con "$1"',
+	'index-expand-detail' => 'Mostrar páginas indexadas bajo este título',
+	'index-hide-detail' => 'Esconder el listado de páginas',
+	'index-no-results' => 'La búsqueda no ha devuelto resultados',
 );
 
 /** Basque (Euskara)

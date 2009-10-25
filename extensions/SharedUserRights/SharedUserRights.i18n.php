@@ -84,6 +84,18 @@ $messages['bg'] = array(
 	'gblrights-rights-entry' => 'промени членството в глобална група за $1 от $2 на $3',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'shareduserrights' => 'Merañ ar Gwirioù Implijer Rannet',
+	'gblrights-desc' => '[[Special:SharedUserRights|Merañ eeun ar gwirioù implijer hollek]]',
+	'gblrights-logpage' => 'Marilh ar Gwirioù Rannet',
+	'gblrights-pagetext' => 'Setu aze marilh an holl gemmoù graet da daolenn gwirioù rannet ar familh wiki',
+	'gblrights-rights-entry' => 'en deus kemmet ar perzh $1 er strolladoù hollek eus $2 da $3',
+	'right-userrights-shared' => 'Merañ ar gwirioù implijer rannet',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

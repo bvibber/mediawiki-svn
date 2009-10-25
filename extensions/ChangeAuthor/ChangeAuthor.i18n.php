@@ -1596,6 +1596,7 @@ Cambia ël nòm utent sota, gionta un coment (opsional) e sgnaca ël boton "Camb
 	'changeauthor-weirderror' => "A l'é capitaje n'eror motobin dròlo.
 Për piasì arpet toa arcesta.
 Se sto eror-sì a continua a ess-ie, a peul esse che ël database a sia rompù.",
+	'changeauthor-logpagename' => "Registr dij cambi dj'àutor",
 );
 
 /** Pashto (پښتو)

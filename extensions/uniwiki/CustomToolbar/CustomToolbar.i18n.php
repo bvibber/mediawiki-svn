@@ -1345,6 +1345,7 @@ $wgCustomToolbarMessages['it'] = array(
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Whym
  */
 $wgCustomToolbarMessages['ja'] = array(
 	'ct-desc' => '拡張可能なツールバーを追加する',
@@ -1379,8 +1380,8 @@ $wgCustomToolbarMessages['ja'] = array(
 	'ct_horizontal_caption' => '水平線',
 	'ct_upload' => '$1をアップロード',
 	'ct_select' => 'アップロードする$1を選択:',
-	'ct_caption' => 'キャプションを追加 (任意):',
-	'ct_link' => 'リンク名を追加 (任意):',
+	'ct_caption' => 'キャプションを追加 (省略可能):',
+	'ct_link' => 'リンク名を追加 (省略可能):',
 	'ct_submit' => '挿入',
 	'ct_close' => 'ウィンドウを閉じる',
 	'ct_success' => 'ファイルのアップロードに成功しました！',

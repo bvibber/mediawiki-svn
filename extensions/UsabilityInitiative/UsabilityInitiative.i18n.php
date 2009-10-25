@@ -125,9 +125,11 @@ $messages['de'] = array(
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
 	'usabilityinitiative' => 'teşebbusê şuxulnayişi',
+	'usabilityinitiative-desc' => 'Xacetî ke Wikipedia Usability Initiative viraşt, programê MediaWikiyî asan keno',
 	'prefs-experimental' => 'xususê teselkerdışi/cerebnayişi',
 );
 
@@ -310,10 +312,12 @@ $messages['ka'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  */
 $messages['ko'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => '위키백과 Usability Initiative에서 제작한, 미디어위키 사용성을 높여 주는 기능',
+	'prefs-experimental' => '실험 중인 기능',
 );
 
 /** Ripoarisch (Ripoarisch)

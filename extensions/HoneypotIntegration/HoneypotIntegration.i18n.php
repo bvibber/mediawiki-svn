@@ -91,8 +91,10 @@ $messages['de'] = array(
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
+	'honeypot-desc' => '[http://projecthoneypot.org/ Project Honey Pot] u sîteyanê MediyaWîkî integrasyon dano',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Project Honey Pot'a göre, IP adresinin tetiklediği son olayların sayısı",
 );
 

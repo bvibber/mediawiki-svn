@@ -5946,6 +5946,7 @@ Non è stata eseguita l'operazione di copia.",
  * @author Fryed-peach
  * @author Hosiryuhosi
  * @author JtFuruhata
+ * @author Whym
  */
 $messages['ja'] = array(
 	'wikidata-desc' => '様々な種類のコンテンツに対するウィキ風のデータベースを追加する',
@@ -5961,7 +5962,7 @@ $messages['ja'] = array(
 	'langman_iso639-3' => 'ISO 639-3 コード:',
 	'langman_iso639-2' => 'ISO 639-2 コード:',
 	'langman_wikimedia' => 'ウィキメディア・コード:',
-	'langman_field_optional' => '(任意)',
+	'langman_field_optional' => '(省略可能)',
 	'langman_addlang' => '言語を追加',
 	'importlangnames' => 'ウィキデータ: 言語名の取り込み',
 	'importlangnames_title' => '言語名の取り込み',

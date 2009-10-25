@@ -458,6 +458,13 @@ $messages['sah'] = array(
 	'breadcrumbs-desc' => 'Кыттааччылар биики устун хамсыылларын көрдөрөр.',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
+ */
+$messages['shi'] = array(
+	'breadcrumbs-desc' => 'Ar immala aɣaras imsxdamn ɣ wiki',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

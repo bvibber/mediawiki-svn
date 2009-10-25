@@ -127,6 +127,17 @@ $messages['bn'] = array(
 	'randomincategory-submit' => 'যাও',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'randomincategory' => 'Ur bajenn dre zegouezh er rummad',
+	'randomincategory-desc' => '[[Special:Randomincategory|Pajenn dibar]] da gaout ur bajenn dre zegouezh er rummad',
+	'randomincategory-nocategory' => "Goullo eo ar rummad $1 pe n'eus ket anezhañ",
+	'randomincategory-label' => 'Rummad :',
+	'randomincategory-submit' => 'Mont',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

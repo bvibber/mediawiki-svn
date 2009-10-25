@@ -680,8 +680,10 @@ Sie können <a href="$1">den Clip herunterladen</a> oder <a href="http://www.med
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
+	'ogg-desc' => 'Qe dosyayanê Ogg Theora u Vorbisî pê JavaScriptî qulp',
 	'ogg-short-audio' => 'Ogg $1 dosyaya vengi, $2',
 	'ogg-short-video' => 'Ogg $1 dosyaya filmi, $2',
 	'ogg-short-general' => 'Ogg $1 dosyaya medyayi, $2',

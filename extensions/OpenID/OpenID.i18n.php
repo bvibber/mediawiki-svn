@@ -2414,6 +2414,7 @@ Non si potrà più effettuare il login con questo OpenID.',
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Whym
  */
 $messages['ja'] = array(
 	'openid-desc' => '[http://openid.net/ OpenID]によるウィキへのログインを可能にし、ウィキユーザーアカウントを他のOpenID対応サイトにログインすることを可能にする。',
@@ -2439,7 +2440,7 @@ $messages['ja'] = array(
 	'openidallowtrust' => '$1 がこの利用者アカウントを信用するのを許可する。',
 	'openidnopolicy' => 'サイトはプライバシーに関する方針を明記していません。',
 	'openidpolicy' => 'より詳しくは<a target="_new" href="$1">プライバシーに関する方針</a>を確認してください。',
-	'openidoptional' => '任意',
+	'openidoptional' => '省略可能',
 	'openidrequired' => '必須',
 	'openidnickname' => 'ニックネーム',
 	'openidfullname' => 'フルネーム',

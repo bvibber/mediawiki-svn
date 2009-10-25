@@ -341,7 +341,7 @@ $messages['diq'] = array(
 	'imagemap_no_areas' => 'xeta: tewr tay gani yew mıntıqa diyari bıbo.',
 	'imagemap_invalid_coord' => 'xeta: satıro $1. de koordinato nemeqbul, gani yew amar bıbo',
 	'imagemap_invalid_desc' => 'xeta: diyarikerdışê desci yo nemeqbul, gani ninan ra yew bıbo: <tt>$1</tt>',
-	'imagemap_description' => 'Derheqê resım de',
+	'imagemap_description' => 'Derheqê resmi de',
 	'imagemap_poly_odd' => 'xeta: satıro $1. de poliyo ke wayirê yew koordinat diya',
 );
 

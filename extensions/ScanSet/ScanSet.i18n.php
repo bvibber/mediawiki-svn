@@ -764,7 +764,7 @@ $messages['ko'] = array(
 	'scanset_no_volumes' => '오류: 데이터 디렉토리를 찾을 수 없습니다',
 	'scanset_missing_index_file' => '오류: 색인 파일 $1을(를) 찾을 수 없음',
 	'scanset_index_file_error' => '오류: $1번째 줄에 알 수 없는 색인 파일 형식',
-	'scanset_invalid_volume' => '오류: 잘못된 볼륨',
+	'scanset_invalid_volume' => '오류: 잘못된 권수',
 	'scanset_next' => '다음 &gt;',
 	'scanset_prev' => '&lt; 이전',
 );

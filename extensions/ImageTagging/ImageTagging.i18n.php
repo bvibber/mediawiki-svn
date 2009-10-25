@@ -495,6 +495,7 @@ Eble tial vi devas ensaluti por aldoni etikedojn al bildoj.
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Translationista
  */
 $messages['es'] = array(
 	'taggedimages' => 'imágenes etiquetadas',
@@ -513,6 +514,11 @@ $messages['es'] = array(
 	'imagetagging-removingtag' => 'Removiendo etiqueta...',
 	'imagetagging-addtagsuccess' => 'Etiqueta agregada.',
 	'imagetagging-removetagsuccess' => 'Etiqueta removida.',
+	'imagetagging-canteditneedloginmessage' => 'No puede editar esta página.
+Es posible que se deba a que tenga que acceder para etiquetar imágenes.
+¿Desea acceder ahora?',
+	'imagetagging-oneactionatatimemessage' => 'Sólo se permite un etiquetado a la vez.
+Por favor, espere hasta que se complete la acción que se está ejecutando.',
 	'imagetagging-oneuniquetagmessage' => 'Esta imagen ya tiene una etiqueta con este nombre.',
 	'imagetagging-imagetag-seemoreimages' => 'Ver más imágenes de "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Imágenes de "$1"',

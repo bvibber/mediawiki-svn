@@ -691,6 +691,7 @@ Verŝajne ne estas uzanto kun tiu nomo.',
  * @author Imre
  * @author Jatrobat
  * @author Piolinfax
+ * @author Translationista
  */
 $messages['es'] = array(
 	'regexblock-already-blocked' => '"$1" ya está bloqueado.',
@@ -698,6 +699,13 @@ $messages['es'] = array(
 	'regexblock-block-success' => 'Bloqueo fue un éxito',
 	'regexblock-currently-blocked' => 'Direcciones actualmente bloqueadas:',
 	'regexblock-expire-duration' => '1 hora,2 horas,4 horas,6 horas,1 día,3 días,1 semana,2 semanas,1 mes,3 meses,6 meses,1 año,infinito',
+	'regexblock-help' => 'Utilice el formulario de abajo para bloquear acceso de escritura de un usuario o dirección IP específicos.
+Esto se deberá hacer para prevenir actos vandálicos y en concordancia con la política.
+\'\'ESta página le permite bloquear usuarios no existentes inclusive, y también bloqueará usuarios con nombres similares al introducido. Por ejemplo: "Prueba" se bloqueará en conjunto con "Prueba 2", etc.
+También puede bloquear direcciones completas de IP, con lo que nadie que acceda al sistema desde ahí pueda editar páginas.
+Observación: Las direcciones parciales de IP serán tratadas como nombres de usuario en la determinación de bloqueos.
+Si no se especifica razones, se utilizará una razón genérica predeterminada.\'\'',
+	'regexblock-page-title-1' => 'Bloquear direcciones por medio de expresiones regulares',
 	'regexblock-reason-ip' => 'Esta dirección IP está prevenida de editar a causa de vandalismo u otra desorganización tuya o pde alguien que comparte tu dirección IP.
 Si crees que esto es un error, por favor [[$1|contactanos]]',
 	'regexblock-reason-name' => 'Este nombre de usuario está prevenido de editar a causa de vandalismo u otra desorganización.
@@ -1246,10 +1254,23 @@ $messages['hu'] = array(
 	'regexblock-block-log' => "A(z) '''$1''' felhasználónév vagy IP-cím blokkolva.",
 	'regexblock-block-success' => 'A blokk sikeres',
 	'regexblock-currently-blocked' => 'Jelenleg blokkolt címek:',
+	'regexblock-desc' => 'Kiterjesztés felhasználói nevek és IP-címek blokkolására reguláris kifejezések segítségével. Tartalmazza a blokkolási mechanizmust és egy [[Special:Regexblock|speciális lapot]] a blokkok kezelésére',
 	'regexblock-expire-duration' => '1 óra:1 hour,2 óra:2 hours,4 óra:4 hours,6 óra:6 hours,1 nap:1 day,3 nap:3 days,1 hét:1 week,2 hét:2 weeks,1 hónap:1 month,3 hónap:3 months,6 hónap:6 months,1 év:1 year,végtelen:infinite',
 	'regexblock-page-title' => 'Név blokkolása reguláris kifejezés segítségével',
 	'regexblockstats' => 'Reguláris kifejezés alapú blokkok statisztikája',
+	'regexblock-help' => "Használd az alábbi űrlapot egy megadott IP-cím vagy felhasználónév írási jogosultságának blokkolására.
+Ezt csak vandalizmus megelőzése céljából szabad használni, összhangban az irányelvekkel.
+''Ezen a lapon akár nem létező felhasználókat is blokkolhatsz, és a blokk érinteni fogja a megadotthoz hasonló felhasználóneveket is. Azaz „teszt” blokkolva lesz „teszt 2”-vel együtt, stb.
+Blokkolhatsz teljes IP-címeket is, ami azt jelenti, hogy azokról bejelentkezve senki nem fog tudni szerkeszteni.
+Megjegyzés: részleges IP-címek felhasználónévként lesznek értelmezve a blokk feldolgozásánál.
+Ha nem adsz meg indoklást, általános ok lesz feltüntetve.''",
 	'regexblock-page-title-1' => 'Cím blokkolása reguláris kifejezések segítségével',
+	'regexblock-reason-ip' => 'Ezen IP-cím szerkesztési jogosultsága blokkolva van vandalizmus vagy más káros tevékenység miatt, amit te, vagy valaki veled azonos IP-címet használó követett el.
+Ha úgy gondolod, hogy hiba történt, [[$1|vedd fel velünk a kapcsolatot]]',
+	'regexblock-reason-name' => 'Ezen felhasználónév szerkesztési jogosultsága blokkolva van vandalizmus vagy más káros tevékenység miatt.
+Ha úgy gondolod, hogy hiba történt, [[$1|vedd fel velünk a kapcsolatot]]',
+	'regexblock-reason-regex' => 'Ezen IP-cím szerkesztési jogosultsága blokkolva van vandalizmus vagy más káros tevékenység miatt, amit hasonló nevű felhasználó követett el.
+Kérlek regisztrálj más néven, vagy [[$1|vedd fel velünk a kapcsolatot]]',
 	'regexblock-form-username' => 'IP-cím vagy felhasználói név:',
 	'regexblock-form-reason' => 'Indoklás:',
 	'regexblock-form-expiry' => 'Lejárat:',
@@ -1263,9 +1284,11 @@ $messages['hu'] = array(
 	'regexblock-nodata-found' => 'Nem található adat',
 	'regexblock-stats-title' => 'Reguláris kifejezés blokk statisztika',
 	'regexblock-unblock-success' => 'A blokk feloldása sikerült',
+	'regexblock-unblock-log' => "A(z) '''$1''' felhasználónév vagy IP-cím blokkja feloldva.",
 	'regexblock-unblock-error' => 'Hiba $1 blokkjának feloldásakor.
 Lehetséges hogy nincs ilyen felhasználó.',
 	'regexblock-regex-filter' => ' vagy reguláris kifejezés:',
+	'regexblock-view-blocked' => 'Blokkok megtekintése a blokkot kiosztó felhasználó szerint:',
 	'regexblock-view-all' => 'Mind',
 	'regexblock-view-go' => 'Menj',
 	'regexblock-view-match' => '(pontos találat)',
@@ -1277,6 +1300,7 @@ Lehetséges hogy nincs ilyen felhasználó.',
 	'regexblock-view-block-by' => 'blokkolta:',
 	'regexblock-view-block-unblock' => 'blokkolás feloldása',
 	'regexblock-view-stats' => 'statisztikák',
+	'regexblock-view-empty' => 'A blokkolt felhasználónevek és IP-címek listája üres.',
 	'regexblock-view-time' => 'ekkor: $1',
 	'right-regexblock' => 'Felhasználók blokkolása az wikifarmon található összes wikin',
 );

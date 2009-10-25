@@ -1999,6 +1999,13 @@ $messages['scn'] = array(
 	'badimages-log-remove' => 'rimovìu [[$1]] dâ lista dê file discutibbili',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
+ */
+$messages['shi'] = array(
+	'badimages' => 'Umuɣ n tisnatin xcnnin',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

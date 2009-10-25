@@ -154,6 +154,13 @@ $messages['lb'] = array(
 	'semanticinternalobjects-desc' => 'Astellung vun internen Objeten a Semantic MediaWiki',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'semanticinternalobjects-desc' => 'Поставање на внатрешни објекти во Semantic MediaWiki',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

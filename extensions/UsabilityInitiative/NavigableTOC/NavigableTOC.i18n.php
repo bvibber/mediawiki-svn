@@ -18,10 +18,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Mormegil
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'navigabletoc-desc' => '{{desc}}',
+	'navigabletoc-preference' => "Option at [[Special:Preferences]], tab ''{{int:prefs-editing}}''",
 );
 
 /** Afrikaans (Afrikaans)
@@ -33,9 +35,12 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'navigabletoc' => 'فهرس محتويات قابل للإبحار',
+	'navigabletoc-desc' => 'يضيف جدول محتويات لنموذج التحرير يلف صندوق النص عندما يُنقر القسم.',
+	'navigabletoc-preference' => 'مكن جدول المحتويات القابل للتصفح',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -82,6 +87,7 @@ $messages['bs'] = array(
 $messages['cs'] = array(
 	'navigabletoc' => 'Navigovatelný obsah',
 	'navigabletoc-desc' => 'Přidává na editační stránku obsah, pomocí kterého se lze pohybovat v editovaném textu',
+	'navigabletoc-preference' => 'Zapnout navigovatelný obsah',
 );
 
 /** Welsh (Cymraeg)
@@ -258,6 +264,15 @@ $messages['ja'] = array(
 $messages['ka'] = array(
 	'navigabletoc' => 'მართვადი სარჩევი',
 	'navigabletoc-desc' => 'ამატებს სარჩევს რედაქტირების ფორმას, რომელიც ტექსტის დაფის ამოძრავების საშუალებას იძლევა განყოფილებაზე დაწკაპუნებით',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'navigabletoc' => '편집용 목차',
+	'navigabletoc-desc' => '특정 단락을 클릭하면 편집상자의 해당 단락으로 이동할 수 있도록 편집상자에 목차를 추가',
+	'navigabletoc-preference' => '편집용 목차를 활성화',
 );
 
 /** Ripoarisch (Ripoarisch)
