@@ -2390,6 +2390,7 @@ $messages['ml'] = array(
 	'contribstats-desc' => 'വിക്കിമീഡിയ ഫൗണ്ടേഷനു ലഭ്യമായ സംഭാവനകളുടെ സ്ഥിതിവിവരക്കണക്ക് കാട്ടുന്നു',
 	'contribstats-daily-totals' => '{{PLURAL:$1|ഇന്ന് ആകെ|കഴിഞ്ഞ $1 ദിവസങ്ങളിൽ ഓരോ ദിവസവും ആകെയുള്ളത്}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|ഈ മാസം ആകെ|കഴിഞ്ഞ $1 മാസങ്ങളിൽ ഓരോ മാസവും ആകെയുള്ളത്}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|ഒരു മാസത്തിലാകെ|$1 മാസങ്ങളിൽ ഓരോ മാസവുമാകെ}}',
 	'contribstats-day' => 'ദിവസം',
 	'contribstats-month' => 'മാസം',
 	'contribstats-currency' => 'നാണയം',

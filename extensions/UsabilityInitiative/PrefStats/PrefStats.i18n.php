@@ -921,6 +921,14 @@ Kattints rá valamelyikre a róla gyűjtött adatok megtekintéséhez.',
 	'prefstats-legend-in' => 'Bekapcsolások',
 );
 
+/** Armenian (Հայերեն)
+ * @author Xelgen
+ */
+$messages['hy'] = array(
+	'prefstats' => 'Նախընտրությունների վիճակագրություն',
+	'prefstats-title' => 'Նախընտրությունների վիճակագրություն',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

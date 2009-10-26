@@ -503,11 +503,13 @@ $messages['eo'] = array(
  * @author Antur
  * @author Crazymadlover
  * @author Imre
+ * @author Translationista
  */
 $messages['es'] = array(
 	'recordadmin-select' => 'Seleccionar el tipo de registro a gestionar',
 	'recordadmin-createtype' => 'Ingrese el nombre de un nuevo tipo de registro para crear',
 	'recordadmin-recordtype' => 'tipo de registro',
+	'recordadmin-newsearch' => 'Nueva búsqueda $1',
 	'recordadmin-newrecord' => 'Seleccionar otro tipo de registro',
 	'recordadmin-submit' => 'Enviar',
 	'recordadmin-create' => 'Encontrar o crear "$1" registros',

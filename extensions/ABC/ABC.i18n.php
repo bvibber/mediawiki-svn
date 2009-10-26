@@ -484,7 +484,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'abcdesc' => 'Voeg de tag <tt>&lt;abc&gt;</tt> veur de opmaak van ABC-meziek',
+	'abcdesc' => 'Voeg de tag <tt>&lt;abc&gt;</tt> toe veur de opmaak van ABC-meziek',
 	'abcdownload' => 'Binnenhaolen:',
 );
 

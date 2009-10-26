@@ -3102,13 +3102,14 @@ Neniu kopia operacio okazis.',
  * @author Kobazulo
  * @author McDutchie
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'wikidata-desc' => 'Agrega base de datos tipo wiki para varios tipos de contenido',
 	'wikidata-handler-namespace-move-error' => 'Las páginas en el espacio de nombres manejado por la extensión Wikidata no pueden trasladarse',
 	'languages' => 'Wikidata: Gestor de lenguas',
 	'langman-desc' => 'Agregue y cambie configuraciones de lenguaje con [[Special:Languages]]',
-	'langman_title' => 'Gestor de lenguas',
+	'langman_title' => 'Gestor de idiomas',
 	'langman_not_allowed' => 'Usted no tiene permiso para cambiar la configuración de lenguaje.',
 	'langman_header' => 'Escriba debajo el código de lenguaje y su nombre en inglés:',
 	'langman_req_fields' => 'Nombre de lenguaje y Código ISO 639-3, ambos, son requeridos:',
@@ -3155,7 +3156,7 @@ Las columnas deberían ser nombradas 'definition_iso' o 'translations_iso',
 donde iso es el código del lenguaje.</p>",
 	'ow_importtsv_test_run_title' => 'Corre examen para la importación de datos TSV',
 	'ow_importtsv_nothing_added' => 'Nada se ha añadido.',
-	'ow_importtsv_nothing_added_test' => 'Nada se ha añadido (hiciste correr examen).',
+	'ow_importtsv_nothing_added_test' => 'Nada se ha añadido (hiciste una ejecución de prueba).',
 	'ow_importtsv_results' => 'Se ha añadido $1 {{PLURAL:$1|definicion|definiciones}} y {{PLURAL:$2|traducción|traducciones}}.',
 	'ow_impexptsv_unknown_lang' => '<p>Lenguaje incorrecto o desconocido: $1.<br />
 El lenguaje debe utilizar código ISO 639-3.</p>',

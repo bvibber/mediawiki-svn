@@ -263,6 +263,13 @@ $messages['hu'] = array(
 	'prefs-experimental' => 'Kísérleti lehetőségek',
 );
 
+/** Armenian (Հայերեն)
+ * @author Xelgen
+ */
+$messages['hy'] = array(
+	'prefs-experimental' => 'Փորձնական հնարավորություններ',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

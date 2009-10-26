@@ -458,6 +458,58 @@ Bitte wählen Sie ihre MediaWiki-Version.
 Die meisten Erweiterungen arbeiten mit vielen MediaWiki-Versionen zusammen. Wenn Ihre MediaWiki-Version hier nicht aufgeführt ist oder Sie die neuesten Fähigkeiten der Erweiterung nutzen möchtest, versuche es mit der aktuellen Version.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'extensiondistributor' => 'Extensiyonê MediyaWikiyî bar bike',
+	'extdist-desc' => 'Ekstensiyon ke ser ekstesiyonê vila kerdişî arşivê snapshotî',
+	'extdist-not-configured' => 'Ma rica keno ke $wgExtDistTarDir u $wgExtDistWorkingCopy konfigure bike',
+	'extdist-wc-missing' => 'Direktorê kopyayî yê konfigure çini yo!',
+	'extdist-no-such-extension' => 'Ekstensiyonê "$1"î çini yo',
+	'extdist-no-such-version' => 'Versiyonê "$2"î de ekstensiyonê "$1"î çini yo',
+	'extdist-choose-extension' => 'Ekstensiyon ke ti wazeno bar bike ey weçine:',
+	'extdist-wc-empty' => 'Direktorê kopyayî yê konfigure ekstensiyon xo çini yo!',
+	'extdist-submit-extension' => 'Dewam bıker',
+	'extdist-current-version' => 'versiyonê dewlemend kerdışi (trunk)',
+	'extdist-choose-version' => 'parçeya <big><b>$1</b>i ani war.</big>
+
+Versiyonê MedyaVikiyi bıweçinê.
+
+zafi parçeyi versiyonê MedyaVikiyi de xebıtyeni, eke versiyonê MedyaVikiyi yê şıma tiya de çino, versiyonê rocaneyi bısehnê.',
+	'extdist-no-versions' => 'Ektensiyonan ($1) ke ti weçina versiyanan bînan de çini yo!',
+	'extdist-submit-version' => 'dewam bıker',
+	'extdist-no-remote' => 'Nieşkeno muşteriyê subvert ê durî ra kontak bike.',
+	'extdist-remote-error' => 'Muşteriyê subvert ê durî ra yew ğelet biyo: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Cevabê muşteriyê subvert ê durî raşt niyo.',
+	'extdist-svn-error' => 'Subversiyon de yew ğelet biyo: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Formê XML î "svn info", nieşkeno process biko: <pre>$1</pre>',
+	'extdist-tar-error' => 'Kodê tar return exitî $1:',
+	'extdist-created' => "qey yew lehza esayişê parçeyê <b>$1</b>i u versiyonê <b>$2</b>i MediaWiki <b>$3</b> vıraziya. gani war ardışê şıma zerreyê panc deqiqe de bı otomatik destpêbıkero.
+
+esayişê URLyi yê lehzayek:
+:$4
+no, qey war ardışê pêşkeşwaneki şuxuliyeno labele muhtewa rocane nêbena u ihtimalê hewnakerdışi zi esto nê sebeban ra işaretê cayan têarê mekerê.
+
+arşiwê tari gani bıveciyo parçeya rêzbiyayişi. misal, sistemê karkerdışê tipê unix'an de:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Windows de, qey vetışê dosyayan şıma eşkêni [http://www.7-zip.org/ 7-zip] bışuxulni.
+
+Eke wikiya şıma yew pêşkeşwano dûr de ya, dosyayanê xo compiterê xo u dıma '''heme''' dosyayê veteyan parçeya rêzkerdışê compiteri de kopya bıkerê.
+
+tayê parçeyan de extiyaciyê na dosya ExtensionFunctions.php esta, <tt>extensions/ExtensionFunctions.php</tt> de, rêzkerdışo ''bıngeyın'' de yo. veciyayo ExtensionFunctions.php.
+
+badê vetışê dosyayan, parçe LocalSettings.php'de gani qeyd bıbo. dokumantasyonê parçeyi raye mocnena şıma.
+
+Eke no sistem de yew problemê şıma bıbo, kerem kerê şêrê [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'Yewna ekstensiyon bigere',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

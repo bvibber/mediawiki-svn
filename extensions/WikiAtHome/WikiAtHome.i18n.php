@@ -397,13 +397,18 @@ $messages['es'] = array(
 	'wah-menu-stats' => 'Estadísticas',
 	'wah-menu-pref' => 'Preferencias',
 	'wah-lookingforjob' => 'En busca de trabajo',
+	'wah-start-on-visit' => 'Iniciar Wiki@Home cada vez que visite este sitio.',
+	'wah-jobs-while-away' => 'Ejecutar trabajos sólo cuando haya estado inactivo en mi navegador por al menos 20 minutos.',
 	'wah-nojobfound' => 'No se ha encontrado trabajos. Se volverá a intentar en $1.',
+	'wah-notoken-login' => '¿Has accedido? Si no, accede primero.',
+	'wah-doing-job' => 'Trabajo: <i>$1</i> en: <i>$2</i>',
 	'wah-downloading' => 'Descarga del archivo <i>$1%</i> completada',
 	'wah-encoding' => 'Codificación del archivo <i>$1%</i> completada',
 	'wah-encoding-fail' => 'Codificación fallida. Por favor, cargue esta página de nuevo o inténtelo más tarde.',
 	'wah-uploading' => 'Subida del archivo <i>$1</i> completada',
 	'wah-uploadfail' => 'Subida fallida',
 	'wah-doneuploading' => 'Subida completada. Gracias por su colaboración.',
+	'wah-needs-firefogg' => 'Para participar en Wiki@Home, necesitas instalar <a href="http://firefogg.org">Firefogg</a>',
 	'wah-api-error' => 'Ha habido un error con el API. Por favor, inténtelo de nuevo más tarde.',
 );
 
@@ -839,7 +844,9 @@ $messages['lb'] = array(
 	'wah-menu-jobs' => 'Aarbechten',
 	'wah-menu-stats' => 'Statistiken',
 	'wah-menu-pref' => 'Astellungen',
+	'wah-lookingforjob' => 'No enger Aarbecht sichen ...',
 	'wah-downloading' => "D'Erofluede vum Fichier <i>$1%</i> ass fäerdeg",
+	'wah-uploading' => 'De Fichier <i>$1</i> gouf komplett eropgelueden',
 	'wah-uploadfail' => 'Eroplueden hue tnet fonctionnéiert',
 );
 

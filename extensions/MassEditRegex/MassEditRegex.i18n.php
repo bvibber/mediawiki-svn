@@ -224,6 +224,7 @@ $messages['el'] = array(
 $messages['es'] = array(
 	'masseditregex' => 'Edición en masa usando expresiones regulares',
 	'masseditregex-pagelisttxt' => 'Páginas a editar (no usar un espacio de nombre: prefijo):',
+	'masseditregex-matchtxt' => 'Buscar:',
 	'masseditregex-replacetxt' => 'Reemplazar con:',
 	'masseditregex-executebtn' => 'Ejecutar',
 	'masseditregex-err-nopages' => 'Debes especificar al menos una página a cambiar.',
@@ -233,8 +234,16 @@ $messages['es'] = array(
 	'masseditregex-page-not-exists' => '$1 no existe',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|página|páginas}} editadas',
 	'masseditregex-view-full-summary' => 'Ver resumen de edición completo',
+	'masseditregex-hint-headmatch' => 'Coincidencia',
 	'masseditregex-hint-headreplace' => 'Reemplazar',
+	'masseditregex-hint-headeffect' => 'Efecto',
 	'masseditregex-listtype-intro' => 'Esta es una lista de:',
+	'masseditregex-listtype-pagenames' => 'Nombres de página (edita estas páginas)',
+	'masseditregex-listtype-pagename-prefixes' => 'Prefijos de nombre de página (edita páginas con nombres que comienzan con este texto)',
+	'masseditregex-listtype-categories' => 'Nombres de categorías (editar cada página incluida en estas categorías; se ignora la selección del espacio de nombre)',
+	'masseditregex-namespace-intro' => 'Todas estas páginas están en este espacio de nombre:',
+	'masseditregex-exprnomatch' => 'La expresión $1 no coincidió con ninguna página.',
+	'masseditregex-editfailed' => 'Edición fallida:',
 	'masseditregex-tooltip-execute' => 'Aplicar estos cambios a cada página',
 );
 

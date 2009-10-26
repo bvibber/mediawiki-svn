@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'icon-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'icon-badwidth' => 'Onjuiste breedte',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author ترجمان05

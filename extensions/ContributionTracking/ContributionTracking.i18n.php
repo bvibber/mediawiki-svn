@@ -185,6 +185,7 @@ $messages['diq'] = array(
 	'contrib-tracking-error' => 'Ğelet',
 	'contrib-tracking-error-text' => 'Ena form raşt niyo',
 	'contrib-tracking-submitting' => 'Processor de pere teslim keno...',
+	'contrib-tracking-continue' => 'Eka ti otomatik redirekt nibiyo, goceki rê bitexne u yardîmê pere xo ser PayPalî ra biker.',
 	'contrib-tracking-button' => 'Dewam bike',
 );
 

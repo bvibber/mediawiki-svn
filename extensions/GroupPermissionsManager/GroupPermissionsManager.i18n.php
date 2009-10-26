@@ -744,6 +744,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author Imre
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'grouppermissions' => 'Administrar permisos de grupo',
@@ -751,6 +752,8 @@ $messages['es'] = array(
 	'removeunusedgroups' => 'Remover grupos no usados',
 	'grouppermissions-desc' => 'Administrar permisos de grupo a traves de una [[Special:GroupPermissions|pagina especial]]',
 	'grouppermissions-desc2' => 'Sistema de permisos extendido',
+	'grouppermissions-desc3' => 'Permite adaptar las acciones de contenido (pestañas)',
+	'grouppermissions-desc4' => 'Permite la adición de objetos adicionales a la Caja de Herramientas',
 	'grouppermissions-desc-nsm' => 'Gestionar nombres de espacio a través de una página especial',
 	'grouppermissions-search' => 'Grupo:',
 	'grouppermissions-dologin' => 'Entrar',
@@ -783,8 +786,10 @@ $messages['es'] = array(
 	'grouppermissions-sp-sort' => 'Ordenar permisos',
 	'grouppermissions-sp-save' => 'Guardar',
 	'grouppermissions-sp-success' => 'Permisos han sido exitosamente ordenados',
+	'grouppermissions-sp-addtype' => 'Añadir tipo de orden',
 	'grouppermissions-sp-addperm' => 'Agregar permiso',
 	'grouppermissions-sp-remove' => 'remover',
+	'grouppermissions-sp-deltype' => 'Borrar tipo de orden',
 	'grouppermissions-rug-header' => 'Puedes usar esta página para remover usuarios de grupos no usados (borrados)',
 	'grouppermissions-rug-success' => 'usuarios removidos exitosamente de grupos no usados!',
 	'grouppermissions-rug-confirm' => 'Remover usurios de grupos no usados',

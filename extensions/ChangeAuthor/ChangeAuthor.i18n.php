@@ -1573,6 +1573,7 @@ Jeśli błąd wystąpi ponownie, prawdopodobnie uszkodzona jest baza danych.',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -1596,7 +1597,7 @@ Cambia ël nòm utent sota, gionta un coment (opsional) e sgnaca ël boton "Camb
 	'changeauthor-weirderror' => "A l'é capitaje n'eror motobin dròlo.
 Për piasì arpet toa arcesta.
 Se sto eror-sì a continua a ess-ie, a peul esse che ël database a sia rompù.",
-	'changeauthor-logpagename' => "Registr dij cambi dj'àutor",
+	'changeauthor-logpagename' => "Registr dij cangiament fàit da l'autor",
 );
 
 /** Pashto (پښتو)

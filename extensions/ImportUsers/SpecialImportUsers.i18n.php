@@ -432,6 +432,7 @@ $messages['eo'] = array(
  * @author Imre
  * @author Locos epraix
  * @author Piolinfax
+ * @author Translationista
  */
 $messages['es'] = array(
 	'importusers' => 'Importar usuarios',
@@ -439,6 +440,12 @@ $messages['es'] = array(
 	'importusers-form-replace-present' => 'Reemplazar usuarios existentes',
 	'importusers-form-button' => 'Importar',
 	'importusers-user-added' => "Usuario '''$1''' ha sido agregado.",
+	'importusers-user-present-update' => "El usuario '''$1''' ya existe.
+Actualizado.",
+	'importusers-user-present-not-update' => "El usuario '''$1''' ya existe.
+No se ha actualizado.",
+	'importusers-user-invalid-format' => 'Los datos del usuario en la línea #$1 tiene un formato inválido o está en blanco.
+Omitido.',
 	'importusers-log' => 'Importar registro de usuarios',
 	'importusers-log-summary' => 'Sumario',
 	'importusers-log-summary-all' => 'Todos',

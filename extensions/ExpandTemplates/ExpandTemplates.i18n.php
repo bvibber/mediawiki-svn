@@ -404,6 +404,28 @@ $messages['de'] = array(
 	'expand_templates_preview' => 'Vorschau',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'expandtemplates' => 'şablonan hêra ker',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Templateyan, parser fonsksiyonan and vunayîşan gird bike]] ke wikitext u pel renderî verqeyd bike',
+	'expand_templates_intro' => 'no pelo xususi metın geno u şablonê ke tedeyê reyna reyna hêra keno.
+U hem zi nê fonksiyonan hêra keno
+<nowiki>{{</nowiki>#if:…}}, u zey nê parametreyan
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;',
+	'expand_templates_title' => 'sernameyê weziyeti, misal qey {{PAGENAME}}.:',
+	'expand_templates_input' => 'sernameyê cıkewtışi:',
+	'expand_templates_output' => 'netice',
+	'expand_templates_xml_output' => 'XML vıraştış',
+	'expand_templates_ok' => 'temam',
+	'expand_templates_remove_comments' => 'mışoreyan hewna ker',
+	'expand_templates_remove_nowiki' => 'neticeyan de etiketê <nowiki> yan çap bıker',
+	'expand_templates_generate_xml' => 'dara arêdayoxi XML ramocın',
+	'expand_templates_preview' => 'pêş-seyrkerdış',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

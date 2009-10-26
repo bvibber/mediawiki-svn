@@ -131,6 +131,13 @@ $messages['de'] = array(
 	'doublewiki-desc' => 'Zeigt eine Seite und ihre Übersetzung aus einem anderen Wiki zweispaltig auf derselben Seite an',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'doublewiki-desc' => 'Wîkîyê bîn de yew pel u çarnayişê ey mucneno',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -417,9 +417,10 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author Sanbec
  * @author Titoxd
+ * @author Translationista
  */
 $messages['es'] = array(
-	'patrol' => 'Revisar ediciones',
+	'patrol' => 'Revisión de ediciones',
 	'patrol-desc' => 'Interface de patrullaje mejorado con comparticion de carga de trabajo',
 	'patrol-endorse' => 'Aprovar',
 	'patrol-revert' => 'Revertir',

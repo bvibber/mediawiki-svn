@@ -24,13 +24,6 @@ The word "dismiss" (or "close") should be in the infinitive mood.',
 	'sitenotice-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
-/** Kirmanjki (Kirmanjki)
- * @author Mirzali
- */
-$messages['kiu'] = array(
-	'sitenotice_close' => 'def ke',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -202,6 +195,14 @@ $messages['da'] = array(
 $messages['de'] = array(
 	'sitenotice_close' => 'Schließen',
 	'sitenotice-desc' => 'Erlaubt Benutzern das Schließen der Sitenotice',
+);
+
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'sitenotice_close' => 'vinî bike',
+	'sitenotice-desc' => 'Karberan rê destur dano ke înan sitenotice biqefilnê',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -469,6 +470,13 @@ $messages['ka'] = array(
  */
 $messages['kaa'] = array(
 	'sitenotice_close' => 'jasırıw',
+);
+
+/** Kirmanjki (Kirmanjki)
+ * @author Mirzali
+ */
+$messages['kiu'] = array(
+	'sitenotice_close' => 'def ke',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */

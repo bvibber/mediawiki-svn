@@ -200,6 +200,9 @@ $messages['de'] = array(
  * @author Xoser
  */
 $messages['diq'] = array(
+	'crossnamespacelinks' => 'Linkanê cross-cayênameyî',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|lînkanê cayenameyan liste keno]] ke gani {{SITENAME}} biyo',
+	'crossnamespacelinks-summary' => 'Ena pel yew listeye linkan ke yew cayename de ke cayenameyan bina ra link beno inan mucneno (feqat namecayane {{ns:special}}, {{ns:talk}}, {{ns:project}}, u {{ns:template}} nimucneno)',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|linkan}} rê $3î',
 );
 
