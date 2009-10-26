@@ -459,12 +459,13 @@ fn : {
 						$previousSections.css( 'position', 'absolute' );
 						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
+						$sections.css('overflow', 'hidden');
 						if ( show ) {
 							$section.fadeIn( 'fast' );
-							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2 );
+							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() { $(this).css('overflow', 'visible'); } );
 							$(this).addClass( 'current' );
 						} else {
-							$sections.animate( { 'height': 0 }, $section.outerHeight() * 2 );
+							$sections.animate( { 'height': 0 }, $section.outerHeight() * 2, function() { $(this).css('overflow', 'visible'); } );
 						}
 						// Click tracking
 						if($.trackAction != undefined){

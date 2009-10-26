@@ -20,17 +20,17 @@ class UsabilityInitiativeHooks {
 			'raw' => array(
 				array( 'src' => 'css/suggestions.css', 'version' => 6 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 4 ),
-				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 6 ),
+				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 7 ),
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 2 ),
 				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 6 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 11 ),
+				array( 'src' => 'css/combined.css', 'version' => 12 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 11 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 12 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 		)
@@ -70,7 +70,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 5 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 16 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 12 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 12 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 13 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 22 ),
 			),
