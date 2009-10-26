@@ -11,7 +11,6 @@ js2AddOnloadHook( function() {
 		var target = $moving.data('collapsibleTabsSettings').collapsedContainer;
 		$moving.css("position", "relative").css( ( rtl ? 'left' : 'right'), 0 );
 		$moving.animate({width: '1px'},"normal",function(){
-			//$j(this).remove().prependTo(target).data('collapsibleTabsSettings', data).show();
 			$j(this).hide();
 			// add the placeholder
 			$j('<span class="placeholder" style="display:none;"></span>').insertAfter(this);

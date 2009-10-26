@@ -191,7 +191,6 @@ body.rtl .wikiEditor-ui-toc {
 	width: 100%;
 	clear: both;
 	height: 0;
-	overflow: hidden;
 }
 body.rtl .wikiEditor-ui-toolbar .sections {
 	float: right;
