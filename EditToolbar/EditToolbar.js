@@ -222,7 +222,7 @@ js2AddOnloadHook( function() {
 								ownline: true
 							}
 						}
-					}	,
+					},
 					'indent': {
 						labelMsg: 'edittoolbar-tool-indent',
 						type: 'button',
@@ -230,7 +230,7 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: ":",
+								pre: ":"
 							}
 						}
 					}
