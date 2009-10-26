@@ -347,6 +347,17 @@ Ha be vagy jelentkezve letilthatod ezt a figyelmeztetést a beállításaid „{
 	'editwarning-preference' => 'Figyelmeztessen, ha szerkesztéskor a módosítások mentése nélkül akarom elhagyni a lapot',
 );
 
+/** Armenian (Հայերեն)
+ * @author Xelgen
+ */
+$messages['hy'] = array(
+	'editwarning' => 'Խմբագրման զգուշացում',
+	'editwarning-desc' => 'Ցույց տալ զջուշացում երբ օգտագործողը փորձում է լքել խմբագրման պատուհանը, առանց փոփոխությունները հիշելու։',
+	'editwarning-warning' => 'Այս էջը լքելով դուք կարող եք կորցնել ձեր կատարած փոփոխությունները։
+Եթե դուք գրանցված եք համակարգում, կարող եք անջատել այս նախազգուշացումը ձեր նախընրությունների «{{int:prefs-editing}}» բաժնում։',
+	'editwarning-preference' => 'Զգուշացնել ինձ, երբ ես լքում եմ խմբագրման էջը առանց կատարած փոփոխությունները հիշելու։',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
