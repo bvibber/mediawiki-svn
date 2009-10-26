@@ -39,7 +39,7 @@ $expressions_r = mysql_query( "SELECT  COUNT(*) FROM uw_expression WHERE express
 $expressions_a = mysql_fetch_row( $expressions_r );
 $expressions = $expressions_a[0];
 
-$defined_meanings_r = mysql_query( "SELECT  COUNT(DISTINCT uw_syntrans.defined_meaning_id) FROM uw_syntrans, uw_expression WHERE uw_syntrans.remove_transaction_id IS NULL AND uw_expression.remove_transaction_id IS NULL AND uw_syntrans.expression_id = uw_expression.expression_id" );
+$defined_meanings_r = mysql_query( "SELECT  COUNT(DISTINCT defined_meaning_id) FROM uw_syntrans WHERE remove_transaction_id IS NULL" );
 $defined_meanings_a = mysql_fetch_row( $defined_meanings_r );
 $defined_meanings = $defined_meanings_a[0];
 echo"<br />\n";
