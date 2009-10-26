@@ -1,5 +1,7 @@
 js2AddOnloadHook( function() {
 	
+	var rtl = $j( 'body.rtl' ).size() ? true : false;
+	
 	//Overloading the moveToCollapsed function to animate the transition 
 	$j.collapsibleTabs.moveToCollapsed = function( ele ) {
 		var $moving = $j(ele);
@@ -7,11 +9,12 @@ js2AddOnloadHook( function() {
 		var data = $moving.data('collapsibleTabsSettings');
 		// Remove the element from where it's at and put it in the dropdown menu
 		var target = $moving.data('collapsibleTabsSettings').collapsedContainer;
-		// $moving.hide(500);
-		$moving.css("position", "relative").css('right',0);
+		$moving.css("position", "relative").css( ( rtl ? 'left' : 'right'), 0 );
 		$moving.animate({width: '1px'},"normal",function(){
 			//$j(this).remove().prependTo(target).data('collapsibleTabsSettings', data).show();
 			$j(this).hide();
+			// add the placeholder
+			$j('<span class="placeholder" style="display:none;"></span>').insertAfter(this);
 			$j(this).remove().prependTo(target).data('collapsibleTabsSettings', data);
 			$j(this).attr('style', '');
 			$j($j(ele).data('collapsibleTabsSettings').expandedContainer).data('collapsibleTabsSettings').shifting = false;
@@ -24,16 +27,16 @@ js2AddOnloadHook( function() {
 		var $moving = $j(ele);
 		$j($moving.data('collapsibleTabsSettings').expandedContainer).data('collapsibleTabsSettings').shifting = true;
 		var data = $moving.data('collapsibleTabsSettings');
-		// remove this element from where it's at and put it in the dropdown menu
-		var target = $moving.data('collapsibleTabsSettings').prevElement;
+		// grab the next appearing placeholder so we can use it for replacing
+		var $target = $j($moving.data('collapsibleTabsSettings').expandedContainer).find('span.placeholder:first');
 		var expandedWidth = $moving.data('collapsibleTabsSettings').expandedWidth;
-		$moving.css("position", "relative").css('left',0).css('width','1px');
-		$moving.remove().css('width','1px').insertAfter(target).data('collapsibleTabsSettings', data)
+		$moving.css("position", "relative").css( ( rtl ? 'right' : 'left'), 0 ).css('width','1px');
+		$target.replaceWith($moving.remove().css('width','1px').data('collapsibleTabsSettings', data)
 			.animate({width: expandedWidth+"px"}, "normal", function(){
 			$j(this).attr('style', '');
 			$j($moving.data('collapsibleTabsSettings').expandedContainer).data('collapsibleTabsSettings').shifting = false;
 			$j.collapsibleTabs.handleResize();
-		});
+		}));
 	};
 	
 	// Bind callback functions to animate our drop down menu in and out
@@ -47,6 +50,24 @@ js2AddOnloadHook( function() {
 		$j("#p-cactions h5").animate({'width':'1px'},370, function(){
 			$j(this).attr('style','').parent().addClass("emptyPortlet").removeClass("filledPortlet");
 		});
-	}).collapsibleTabs();
-	
+	}).collapsibleTabs({
+		expandCondition: function(eleWidth) {
+			if( rtl ){
+				return ( $j('#right-navigation').position().left + $j('#right-navigation').width()) 
+					< ($j('#left-navigation').position().left - eleWidth);
+			} else {
+				return ( $j('#left-navigation').position().left + $j('#left-navigation').width()) 
+					< ($j('#right-navigation').position().left - eleWidth);
+			}
+		},
+		collapseCondition: function() {
+			if( rtl ){
+				return ( $j('#right-navigation').position().left + $j('#right-navigation').width())
+					> $j('#left-navigation').position().left;
+			} else {
+				return ( $j('#left-navigation').position().left + $j('#left-navigation').width())
+					> $j('#right-navigation').position().left;
+			}
+		}
+	});
 });

@@ -13,12 +13,12 @@
  *
  * @author Adam Miller <amiller@wikimedia.org>
  * @license GPL v2 or later
- * @version 0.0.6
+ * @version 0.0.7
  */
 
 /* Configuration */
 // Bump the version number every time you change any of the .css/.js files
-$wgCollapsibleTabsStyleVersion = 6;
+$wgCollapsibleTabsStyleVersion = 7;
 
 /* Setup */
 
@@ -27,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CollapsibleTabs',
 	'author' => 'Adam Miller',
-	'version' => '0.0.6',
+	'version' => '0.0.7',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CollapsibleTabs',
 	'descriptionmsg' => 'collapsibletabs-desc',
 );
