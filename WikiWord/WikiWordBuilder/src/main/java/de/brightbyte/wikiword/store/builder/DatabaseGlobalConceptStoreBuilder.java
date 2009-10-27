@@ -251,7 +251,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		String lang = localdb.getCorpus().getLanguage();
 		
 		String sql = "DELETE FROM R "
-					+ " USING "+langlinkTable.getSQLName()+" as R JOIN "+aboutTable.getSQLName()+" as A "
+					+ " USING "+langlinkTable.getSQLName()+" as R force index(language_target) " 
+					+ " JOIN "+aboutTable.getSQLName()+" as A force index(resource_name) "
 					+ " ON R.language = "+database.quoteString(lang)+" "
 					+ " AND R.target = A.resource_name ";
 		
@@ -401,7 +402,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 				"		R.global_concept, " +
 				"       1 " +
 				" FROM "+langlinkTable.getSQLName()+" as LL " +
-				" JOIN "+originTable.getSQLName()+" as R ON R.lang = LL.language AND R.local_concept_name = LL.target";
+				" JOIN "+originTable.getSQLName()+" as R force index(lang_name) " +
+				" ON R.lang = LL.language AND R.local_concept_name = LL.target";
 		
 		String suffix = " WHERE LL.concept != R.global_concept "
 			+" ON DUPLICATE KEY UPDATE langref = langref + VALUES(langref)";
