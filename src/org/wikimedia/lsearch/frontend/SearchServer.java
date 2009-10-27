@@ -107,7 +107,7 @@ public class SearchServer extends Thread {
 				}
 
 				int threadCount = SearchDaemon.getOpenCount();
-				if (threadCount > maxThreads) {
+				if (threadCount >= maxThreads) {
 					stats.add(false, 0, threadCount);
 					log.error("too many connections, skipping a request");
 					// be sure to close all sockets
