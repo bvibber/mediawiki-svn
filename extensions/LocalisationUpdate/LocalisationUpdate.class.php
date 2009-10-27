@@ -298,13 +298,14 @@ class LocalisationUpdate {
 
 		$new_messages = self::readFile( $langcode );
 		foreach ( $changedStrings as $key => $value ) {
-			// If this message wasn't changed in English, and is in fact set
-			if ( !isset( $forbiddenKeys[$key] ) && isset( $compare_messages[$key] ) ) {
+			// If this message wasn't changed in English
+			if ( !isset( $forbiddenKeys[$key] ) ) {
 				$new_messages[$key] = $base_messages[$key];
 				
 				// Output extra logmessages when needed
 				if ( $verbose ) {
-					self::myLog( "Updated message {$key} from '{$compare_messages[$key]}' to '{$base_messages[$key]}'" );
+					$oldmsg = isset( $compare_messages[$key] ) ? "'{$compare_messages[$key]}'" : 'not set';
+					self::myLog( "Updated message {$key} from $oldmsg to '{$base_messages[$key]}'" );
 				}
 
 				// Update the counter
