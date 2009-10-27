@@ -4,16 +4,20 @@
  */
 package org.wikimedia.lsearch.frontend;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.Socket;
 import java.net.URLEncoder;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map.Entry;
+
+import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
 
 import org.wikimedia.lsearch.beans.LocalIndex;
 import org.wikimedia.lsearch.beans.ResultSet;
@@ -33,6 +37,7 @@ import org.wikimedia.lsearch.search.UpdateThread;
 import org.wikimedia.lsearch.search.Warmup;
 import org.wikimedia.lsearch.search.WikiSearcher;
 import org.wikimedia.lsearch.spell.SuggestQuery;
+import org.wikimedia.lsearch.util.FSUtils;
 import org.wikimedia.lsearch.util.QueryStringMap;
 
 /**
@@ -62,13 +67,17 @@ public class SearchDaemon extends HttpHandler {
 		if (path.equals("/robots.txt")) {
 			robotsTxt();
 			return;
-		}
-		if (path.equals("/stats")) {
+		} else if (path.equals("/stats")) {
 			showStats();
 			return;
-		}
-		if (path.equals("/status")) {
+		} else  if (path.equals("/status")) {
 			showStatus();
+			return;
+		} else  if (path.equals("/monitor")) {
+			showMonitorStatus();
+			return;
+		} else  if (path.equals("/clear")) {
+			clearUnusedIndexes();
 			return;
 		}
 		
@@ -194,6 +203,45 @@ public class SearchDaemon extends HttpHandler {
 			e.printStackTrace();
 			sendError(500,"Server error","Error opening index.");
 		}
+	}
+
+
+	private void clearUnusedIndexes() {
+		contentType = "text/plain";
+		sendHeaders(200, "OK");
+		String base = GlobalConfiguration.getInstance().getIndexPath()+Configuration.PATH_SEP;
+		for(String dir : new String[] {"update", "search"}){
+			File updates = new File(base+dir);
+			ArrayList<File> files = new ArrayList<File>(Arrays.asList(updates.listFiles()));
+			Collections.sort(files, new Comparator<File>(){
+				public int compare(File o1, File o2) {
+					return o1.getName().toString().compareTo(o2.getName().toString());
+				}
+			});
+			
+			for(File f : files){
+				try{
+					IndexId.get(f.getName());
+					// using it, do nothing
+				} catch(RuntimeException e){
+					try{
+						sendOutputLine("Deleting "+f.getAbsolutePath());	
+						FSUtils.deleteRecursive(f);
+					} catch(Exception ee){
+						sendOutputLine("Deletion of "+f.getAbsolutePath()+" failed");
+						log.error("Error deleting "+f.getAbsolutePath(), ee);
+					}
+				}
+			}
+		}
+	}
+
+
+	protected void showMonitorStatus() {
+		contentType = "text/plain";
+		sendHeaders(200, "OK");
+		for(String line : monitor.printReport().split("\n"))
+			sendOutputLine(line);
 	}
 
 

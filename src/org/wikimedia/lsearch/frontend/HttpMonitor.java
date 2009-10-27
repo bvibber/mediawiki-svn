@@ -1,6 +1,10 @@
 package org.wikimedia.lsearch.frontend;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -57,6 +61,29 @@ public class HttpMonitor extends Thread {
 	/** Mark http request end */
 	public void requestEnd(HttpHandler thread){
 		startTimes.remove(thread);
+	}
+	
+	public String printReport(){
+		StringBuilder sb = new StringBuilder();
+		
+		Hashtable<HttpHandler,Long> times = (Hashtable<HttpHandler, Long>) startTimes.clone(); // clone to avoid sync
+		ArrayList<Entry<HttpHandler, Long>> sorted = new ArrayList<Entry<HttpHandler,Long>>(times.entrySet()); 
+		Collections.sort(sorted, new Comparator<Entry<HttpHandler,Long>>() {
+			@Override
+			public int compare(Entry<HttpHandler, Long> o1,
+					Entry<HttpHandler, Long> o2) {
+				return (int) (o2.getValue() - o1.getValue());
+			}
+		});
+		
+		long cur = System.currentTimeMillis();
+		
+		for(Entry<HttpHandler,Long> e : sorted){
+			long timeWait = cur - e.getValue();
+			sb.append("[ "+timeWait+" ms ] "+ e.getKey().rawUri +"\n");
+		}
+		
+		return sb.toString();
 	}
 	
 }

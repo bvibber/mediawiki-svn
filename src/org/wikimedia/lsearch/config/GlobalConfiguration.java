@@ -1577,6 +1577,10 @@ public class GlobalConfiguration {
 	public int getMaxSearchOffset() {
 		return maxSearchOffset;
 	}
+	
+	public String getIndexPath(){
+		return indexPath;
+	}
 
 	
 
