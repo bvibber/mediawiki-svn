@@ -258,11 +258,11 @@ class memcached
       $this->_cache_sock = array();
       $this->_host_dead = array();
 
-      $this->_timeout_seconds = 1;
-      $this->_timeout_microseconds = 0;
+      $this->_timeout_seconds = 0;
+      $this->_timeout_microseconds = 50000;
 
       $this->_connect_timeout = 0.01;
-      $this->_connect_attempts = 3;
+      $this->_connect_attempts = 2;
    }
 
    // }}}
@@ -704,15 +704,6 @@ class memcached
       $timeout = $this->_connect_timeout;
       $errno = $errstr = null;
       for ($i = 0; !$sock && $i < $this->_connect_attempts; $i++) {
-         if ($i > 0) {
-            # Sleep until the timeout, in case it failed fast
-            $elapsed = microtime(true) - $t;
-            if ( $elapsed < $timeout ) {
-               usleep(($timeout - $elapsed) * 1e6);
-            }
-            $timeout *= 2;
-         }
-         $t = microtime(true);
          if ($this->_persistant == 1)
          {
             $sock = @pfsockopen($ip, $port, $errno, $errstr, $timeout);
@@ -746,6 +737,11 @@ class memcached
    function _dead_sock ($sock)
    {
       $host = array_search($sock, $this->_cache_sock);
+      $this->_dead_host($host);
+   }
+
+   function _dead_host ($host)
+   {
       @list ($ip, /* $port */) = explode(":", $host);
       $this->_host_dead[$ip] = time() + 30 + intval(rand(0, 10));
       $this->_host_dead[$host] = $this->_host_dead[$ip];
@@ -853,7 +849,6 @@ class memcached
       if (!$this->_safe_fwrite($sock, "$cmd $key $amt\r\n"))
          return $this->_dead_sock($sock);
 
-      stream_set_timeout($sock, 1, 0);
       $line = fgets($sock);
       $match = array();
       if (!preg_match('/^(\d+)/', $line, $match))
@@ -1014,7 +1009,7 @@ class memcached
          return null;
 
       if (!$this->_connect_sock($sock, $host))
-         return $this->_dead_sock($host);
+         return $this->_dead_host($host);
 
       // Do not buffer writes
       stream_set_write_buffer($sock, 0);
