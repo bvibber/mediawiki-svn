@@ -164,7 +164,7 @@ $.suggestions = {
 	 * @param updateTextbox If true, put the suggestion in the textbox
 	 */
 	highlight: function( context, result, updateTextbox ) {
-		var selected = context.data.$container.find( '.suggestions-result-current' )
+		var selected = context.data.$container.find( '.suggestions-result-current' );
 		if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
 			if ( result == 'prev' ) {
 				result = selected.prev();
@@ -233,6 +233,12 @@ $.suggestions = {
 			case 13:
 				context.data.$container.hide();
 				preventDefault = wasVisible;
+				if ( typeof context.config.result.select == 'function' ) {
+					context.config.result.select.call(
+						context.data.$container.find( '.suggestions-result-current' ),
+						context.data.$textbox
+					);
+				}
 				break;
 			default:
 				$.suggestions.update( context, true );

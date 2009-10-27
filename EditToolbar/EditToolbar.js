@@ -147,10 +147,12 @@ js2AddOnloadHook( function() {
 							'heading-2' : {
 								labelMsg: 'edittoolbar-tool-heading-2',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
 										pre: "==",
 										periMsg: 'edittoolbar-tool-heading-example',
+										periRegex: /^(={1,6})(.*?)\1\s*$/,
+										periRegexReplace: "\$2",
 										post: "=="
 									}
 								}
@@ -158,9 +160,11 @@ js2AddOnloadHook( function() {
 							'heading-3' : {
 								labelMsg: 'edittoolbar-tool-heading-3',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
-										pre: "===", 
+										pre: "===",
+										periRegex: /^(={1,6})(.*?)\1\s*$/,
+										periRegexReplace: "\$2",
 										periMsg: 'edittoolbar-tool-heading-example',
 										post: "==="
 									}
@@ -169,9 +173,11 @@ js2AddOnloadHook( function() {
 							'heading-4' : {
 								labelMsg: 'edittoolbar-tool-heading-4',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
-										pre: "====", 
+										pre: "====",
+										periRegex: /^(={1,6})(.*?)\1\s*$/,
+										periRegexReplace: "\$2",
 										periMsg: 'edittoolbar-tool-heading-example',
 										post: "===="
 									}
@@ -180,9 +186,11 @@ js2AddOnloadHook( function() {
 							'heading-5' : {
 								labelMsg: 'edittoolbar-tool-heading-5',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
-										pre: "=====", 
+										pre: "=====",
+										periRegex: /^(={1,6})(.*?)\1\s*$/,
+										periRegexReplace: "\$2",
 										periMsg: 'edittoolbar-tool-heading-example',
 										post: "====="
 									}
@@ -794,6 +802,9 @@ js2AddOnloadHook( function() {
 				// * Starts with www.
 				// * Ends with a . followed by two or more letters
 				// * Contains a . followed by two or more letters followed by /
+				// All of these are potentially valid titles, and the latter three
+				// categories match about 6300 titles in enwiki's ns0. Out of 6.9M
+				// titles, that's 0.09%
 				if ( typeof arguments.callee.regex == 'undefined' )
 					// Cache the regex
 					arguments.callee.regex = new RegExp( "(^(" + urlprotocols + "))|(^www\\.)|([^.]\\.[a-z]{2,}($|\\/))", 'i');
@@ -847,14 +858,17 @@ js2AddOnloadHook( function() {
 							'format': 'json'
 						},
 						success: function( data ) {
-							// TODO: What happens if data.query.pageids is undefined?
-							var page = data.query.pages[data.query.pageids[0]];
-							var status = 'exists';
-							if ( typeof page.missing != 'undefined' )
-								status = 'notexists';
-							else if ( typeof page.invalid != 'undefined' )
+							var status;
+							if ( typeof data.query == 'undefined' ) {
 								status = 'invalid';
-							
+							} else {
+								var page = data.query.pages[data.query.pageids[0]];
+								status = 'exists';
+								if ( typeof page.missing != 'undefined' )
+									status = 'notexists';
+								else if ( typeof page.invalid != 'undefined' )
+									status = 'invalid';
+							}
 							cache[target] = status;
 							updateWidget( status );
 						}
@@ -1005,10 +1019,13 @@ js2AddOnloadHook( function() {
 					var whitespace = $j( '#edittoolbar-link-dialog' ).data( 'whitespace' );
 					var target = $j( '#edittoolbar-link-int-target' ).val();
 					var text = $j( '#edittoolbar-link-int-text' ).val();
+					if ( text == '' ) {
+						alert( gM( 'edittoolbar-tool-link-empty' ) );
+						return;
+					}
 					if ( $j( '#edittoolbar-link-type-int' ).is( ':checked' ) ) {
 						// FIXME: Exactly how fragile is this?
-						if ( $j( '#edittoolbar-link-int-target-status-invalid' ).is( ':visible' )  ||
-								target == '' ) {
+						if ( $j( '#edittoolbar-link-int-target-status-invalid' ).is( ':visible' ) ) {
 							// Refuse to add links to invalid titles
 							alert( gM( 'edittoolbar-tool-link-int-invalid' ) );
 							return;
@@ -1321,12 +1338,12 @@ js2AddOnloadHook( function() {
 				<div id="edittoolbar-replace-emptysearch" rel="edittoolbar-tool-replace-emptysearch"></div>\
 				<div id="edittoolbar-replace-invalidregex"></div>\
 			</div>\
-			<fieldset><table><tr>\
+			<fieldset><table style="width: 100%;"><tr>\
 				<td><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label></td>\
-				<td><input type="text" id="edittoolbar-replace-search" /></td>\
+				<td><input type="text" id="edittoolbar-replace-search" style="width: 100%;" /></td>\
 			</tr><tr>\
 				<td><label for="edittoolbar-replace-replace" rel="edittoolbar-tool-replace-replace"></label></td>\
-				<td><input type="text" id="edittoolbar-replace-replace" /></td>\
+				<td><input type="text" id="edittoolbar-replace-replace" style="width: 100%;" /></td>\
 			</tr></table><table><tr>\
 				<td><input type="checkbox" id="edittoolbar-replace-case" /></td>\
 				<td><label for="edittoolbar-replace-case" rel="edittoolbar-tool-replace-case"></label></td>\

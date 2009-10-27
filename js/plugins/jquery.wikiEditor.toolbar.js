@@ -222,6 +222,13 @@ fn : {
 						parts[part] = ( action.options[part] || '' )
 					}
 				}
+				if ( 'periRegex' in action.options && 'periRegexReplace' in action.options ) {
+					var selection = context.$textarea.getSelection();
+					if ( selection != '' ) {
+						parts.peri = selection.replace( action.options.periRegex,
+							action.options.periRegexReplace );
+					}
+				}
 				context.$textarea.encapsulateSelection(
 					parts.pre, parts.peri, parts.post, action.options.ownline, action.type == 'replace'
 				);
