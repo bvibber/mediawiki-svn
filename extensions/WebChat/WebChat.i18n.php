@@ -468,11 +468,17 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  * @author Lijealso
  */
 $messages['pt'] = array(
 	'webchat' => 'Bate-papo',
+	'webchat-desc' => 'Adiciona uma [[Special:WebChat|página especial]] usada para conversar em tempo real com outros utilizadores da wiki',
+	'webchat-header' => "Esta página especial permite-lhe colaborar em tempo real com outros utilizadores da wiki.
+Para ligar, clique o botão ''\"Connect\"''.
+Se entrou na wiki, o seu nome no ''chat'' já estará devidamente preenchido.
+Utilizadores anónimos recebem um nome gerado automaticamente, que pode ser alterado.",
 	'right-webchat' => 'Permitido o uso de [[Special:WebChat|web chat]]',
 );
 

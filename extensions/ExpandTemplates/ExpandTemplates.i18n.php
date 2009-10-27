@@ -1311,7 +1311,13 @@ Dorto warrt de nödigen Parser-Phasen in MediaWiki direkt opropen.',
  */
 $messages['nds-nl'] = array(
 	'expandtemplates' => 'Mallen substitueren',
-	'expand_templates_intro' => 'Op disse speciale pagina kan tekse in-evoerd wonnen en alle mallen derin wonnen recursief esubstitueerd. Oek parserfuncties zoas <nowiki>{{</nowiki>#if:...}} en variabelen zoas <nowiki>{{</nowiki>CURRENTDAY}} wonnen esubstitueerd - eigenlijks alles wat tussen dubbele krulhaken steet. Dit wonnen edaon deur de betreffende parserfuncties op te reupen vanuut de MediaWiki-pregrammetuur.',
+	'expand_templates_intro' => 'Op disse speciale pagina kan tekse in-evoerd wönnen en alle mallen derin wönnen recursief esubstitueerd. Oek parserfuncties zoas <nowiki>{{</nowiki>#if:...}} en variabelen zoas <nowiki>{{</nowiki>CURRENTDAY}} wönnen esubstitueerd - eigenlijks alles wat tussen dubbele krulhaken steet. Dit wönnen edaon deur de betreffende parserfuncties op te reupen vanuut de MediaWiki-pregrammetuur.',
+	'expand_templates_title' => 'Titel, veur {{PAGENAME}}, enz.:',
+	'expand_templates_input' => 'Invoertekse:',
+	'expand_templates_output' => 'Risseltaot',
+	'expand_templates_ok' => 'Oké',
+	'expand_templates_remove_comments' => 'Opmarking vorthaolen',
+	'expand_templates_preview' => 'Naokieken',
 );
 
 /** Dutch (Nederlands)

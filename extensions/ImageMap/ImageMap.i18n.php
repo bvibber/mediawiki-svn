@@ -938,6 +938,7 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Matthias
  * @author Ooswesthoesbes
  */
@@ -950,7 +951,7 @@ $messages['li'] = array(
 	'imagemap_invalid_title' => 'Error: er staat een ongeldige titel in de verwijzing op regel $1',
 	'imagemap_missing_coord' => 'Error: neet genoeg coördinaten veur vorm in regel $1',
 	'imagemap_unrecognised_shape' => "Error: neet herkende vorm in regel $1, iedere regel mot beginne met éin van de commando's: default, rect, circle of poly",
-	'imagemap_no_areas' => 'Error: er moet tenminste één gebied gespecificeerd worde',
+	'imagemap_no_areas' => 'Error: Dao  moet tenminste ein gebied gespecificeerd waere',
 	'imagemap_invalid_coord' => 'Error: ongeldige coördinaten in regel $1, moet een getal zien',
 	'imagemap_invalid_desc' => 'Error: ongeldige beschrijvingsspecificatie, dit moet er één zijn uit de volgende lijst: $1',
 	'imagemap_description' => 'Euver deze aafbeelding',
@@ -1083,6 +1084,22 @@ $messages['nds'] = array(
 	'imagemap_invalid_desc' => 'Error: Beschrieven nich bi de Reeg, mutt een vun disse wesen: <tt>$1</tt>',
 	'imagemap_description' => 'Över dit Bild',
 	'imagemap_poly_odd' => 'Fehler: Polygon mit unevene Tall Koordinaten in Reeg $1',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'imagemap_no_image' => 'Fout: geef een ofbeelding op in de eerste regel',
+	'imagemap_invalid_image' => 'Fout: ofbeelding is ongeldig of besteet neet',
+	'imagemap_no_link' => "Fout: der is gien geldige verwiezing evunnen an 't einde van regel $1",
+	'imagemap_invalid_title' => 'Fout: ongeldige titel in de verwiezing op regel $1',
+	'imagemap_missing_coord' => 'Fout: neet genog coördinaoten veur vorm op regel $1',
+	'imagemap_unrecognised_shape' => 'Fout: onherkenbaore vorm op regel $1, elke regel mut beginnen mit één van de volgende vormen: standard, dreehoek, cirkel of een veulhoek',
+	'imagemap_no_areas' => 'Fout: der mut tenminsen een gebied especeficeerd wönnen',
+	'imagemap_invalid_coord' => 'Fout: ongeldige coördinaot in regel $1, mut een getal ween',
+	'imagemap_invalid_desc' => 'Fout: ongeldige beschrievingsspeceficasie, mut een van: <tt>$1</tt> ween',
+	'imagemap_description' => 'Over disse ofbeelding',
 );
 
 /** Nepali (नेपाली) */

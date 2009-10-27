@@ -186,6 +186,7 @@ $messages['bs'] = array(
 	'ct-user-contribs' => 'Ukupni doprinosi korisnika',
 	'ct-user-span' => 'Korisnički doprinosi u vremenskom periodu',
 	'ct-and' => 'i',
+	'ct-update-table' => 'Ažuriranje tabele',
 );
 
 /** Catalan (Català)

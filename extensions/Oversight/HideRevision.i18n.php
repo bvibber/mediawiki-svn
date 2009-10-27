@@ -2266,6 +2266,7 @@ Verbreedung vun dësen Informatiounen kann zum definitve Verloscht vun den ''Ove
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Matthias
  * @author Ooswesthoesbes
  */
@@ -2278,7 +2279,7 @@ $messages['li'] = array(
 	'right-oversight' => 'Verbórge versies bekieke',
 	'right-hiderevision' => 'Versies verbèrge veur admins',
 	'hiderevision-prompt' => 'Te verwijdere versienummer:',
-	'hiderevision-continue' => 'Doorguuen',
+	'hiderevision-continue' => 'Doorgaon',
 	'hiderevision-text' => "Dit deent '''allein''' gebroek te waere in de volgende gevalle:
 * Ontoelaotbare perseunlike informatie
 *: ''woonadresse en telefoonnommers, sofinommers, enzovoort''
@@ -2288,21 +2289,21 @@ $messages['li'] = array(
 Verwiederde versies zeen neet veur edereen zichbaar via de website,
 meh verwiederde objecte waere in logbeuk biegehaje en kinnen handjmaotig
 trökgezat waere door databasebeheerders es geer 'n fout maak.",
-	'hiderevision-reason' => 'Ree (wordt discreet opgeslage):',
-	'hiderevision-submit' => 'Deze gegaeves permanent verberge',
+	'hiderevision-reason' => 'Rae (wordt discreet opgeslage):',
+	'hiderevision-submit' => 'Dees gegaeves permanent verberge',
 	'hiderevision-tab' => 'Verberg versie',
 	'hiderevision-link' => 'Vebórge biedraag',
 	'hiderevision-norevisions' => "d'r Zeen gein te wisse versies opgegaeve.",
-	'hiderevision-noreason' => "Doe mós 'n ree opgaeve veur 't wisse.",
+	'hiderevision-noreason' => "Doe mós 'n rae opgaeve veur 't wisse.",
 	'hiderevision-status' => 'Versie $1: $2',
 	'hiderevision-success' => 'Archiveren en verwijderen geslaagd.',
 	'hiderevision-error-missing' => 'Niet gevonden in database.',
-	'hiderevision-error-current' => 'De laatste bewerkin van een pagina kan niet verwijderd worden. Draai de bewerking eerst terug.',
+	'hiderevision-error-current' => "De lètste bewirking van 'n pagina kènt neet weggegoejd waere. Drièj de bewirking iers truk..",
 	'hiderevision-error-delete' => 'Archiveren mislukt; waren de gegevens al verwijderd?',
 	'hiderevision-archive-status' => 'Verwijder versie van $1: $2',
-	'oversight-nodiff' => 'Neet in staat om de wijziginge weer te gaeve omdat er gein eerdere versie van de pagina aanwezig is, omdat:
-*De pagina waar gewis
-*Deze verborge versie de eerste versie waar',
+	'oversight-nodiff' => "Neet in sjtaot um wieziginge te laote zeen ómdat d'r gein ierder verseie van dees pagina besjteit, ómdat:
+*De pagina waor gewis
+*Dees verborge versie de ierste versie waor",
 	'oversight-log-hiderev' => "wiste 'n bewerking oet $1",
 	'oversight' => 'Oversight',
 	'oversight-view' => 'details',
@@ -2594,12 +2595,32 @@ Disse Daten annere togänglich to maken, kann dor för sorgen, dat di de Oversig
  * @author Servien
  */
 $messages['nds-nl'] = array(
+	'hiderevision' => 'Versies veurgoed verbargen',
+	'hiderevision-desc' => 'Verbarg bewarkingen veur alle gebrukers um juridische redens, enz.',
 	'group-oversight' => 'toezichhouwers',
 	'group-oversight-member' => 'toezichouwer',
 	'grouppage-oversight' => '{{ns:project}}:Toezichhouwer',
 	'right-hiderevision' => 'Versies oek veur beheerders verbargen',
-	'hiderevision-reason' => 'Rejen:',
-	'hiderevision-noreason' => 'Beschrief eers de rejen waorumme disse pagina vort mut.',
+	'hiderevision-prompt' => 'Versienummer dee vort mut:',
+	'hiderevision-continue' => 'Gao veurdan',
+	'hiderevision-text' => "Disse optie mag '''allinnig''' gebruuk wönnen in de volgende gevallen:
+* Ontoepasselijke persoonlijke infermasie
+*: ''huusadres en tillefoonnummers, sofi-nummer, enz.''
+
+'''Misbruuk van disse optie, hef as gevolg da-j de staotus van beheerder kwiet zullen raken.'''
+
+Infermasie dee-j vortdoon zal neet zichbaor ween veur meensen van de webstee, mar de infermasie wönnen beweerd en kan weerummezet wönnen deur een databankebeheerder, veur 't geval dat der iets verkeerd geet.",
+	'hiderevision-reason' => 'Reden:',
+	'hiderevision-submit' => 'Disse gegevens veurgoed verbargen',
+	'hiderevision-tab' => 'Versie verbargen',
+	'hiderevision-norevisions' => 'Gien versies ekeuzen dee vort mutten.',
+	'hiderevision-noreason' => 'Beschrief eers de reden waorumme disse pagina vort mut.',
+	'hiderevision-success' => 'Archiveren en vortdoon succesvol uut-evoerd.',
+	'hiderevision-error-missing' => 'Neet evunnen in de databanke.',
+	'hiderevision-error-current' => 'Kon de leste bewarking op disse pagina neet vortdoon. 
+Drei eers disse bewarking weerumme.',
+	'hiderevision-error-delete' => "Kon neet archiveren; is 't eerder al vort-edaon?",
+	'hiderevision-archive-status' => 'Vort-edaone versie van $1: $2',
 );
 
 /** Nepali (नेपाली) */

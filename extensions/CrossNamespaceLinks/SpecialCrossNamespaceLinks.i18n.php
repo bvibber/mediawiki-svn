@@ -716,6 +716,16 @@ $messages['nds'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Lenk|Lenken}} na $3',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'crossnamespacelinks' => "Pagina's mit verwiezingen naor aandere naamruumtes",
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Laot verwiezingen zien tussen naamruumtes]] dee neet zollen mutten bestaon in {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Disse pagina verstrek een lieste mit verwiezingen van een pagina in de encyclopedienaamruumte naor een pagina in een aandere naamruumte (behalven de naamruumtes: {{ns:special}}, {{ns:talk}}, {{ns:project}} en {{ns:template}}), je wönnen an-eraojen um disse naamruumtes neet te gebruken.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|verwiezing|verwiezingen}} naor $3',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

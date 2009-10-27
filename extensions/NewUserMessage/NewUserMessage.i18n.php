@@ -387,10 +387,11 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'newusermessage-desc' => "Voeg 'n berich toe aan de euverlegpagina van nuuj gebroekers",
+	'newusermessage-desc' => "Voeg 'n berich toe aan de euverlèkpagina van nuuj gebroekers",
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Welkomsberich]] toegevoeg aan de euverlekpagina van de nuuje gebroeker',
 );
 

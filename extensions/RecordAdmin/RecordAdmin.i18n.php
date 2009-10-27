@@ -506,6 +506,8 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'recordadmin' => 'Administración de registros',
+	'recordadmin-categoryempty' => 'Actualmente no hay tipos de registro. Por favor, organice por categorías las plantillas de registros en [[:$1|$1]]',
 	'recordadmin-select' => 'Seleccionar el tipo de registro a gestionar',
 	'recordadmin-createtype' => 'Ingrese el nombre de un nuevo tipo de registro para crear',
 	'recordadmin-recordtype' => 'tipo de registro',

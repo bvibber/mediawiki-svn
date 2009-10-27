@@ -36,6 +36,7 @@ riddler|Riddler",
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Lloffiwr
  * @author Purodha
@@ -48,7 +49,9 @@ Shown in [[Special:Version]].',
 	'vote-submit' => '{{Identical|Vote}}',
 	'vote-results-count' => '{{Identical|Count}}',
 	'vote-login' => '$1 is the link to the log-in page.',
-	'right-vote' => '{{doc-right|vote}}',
+	'right-vote' => '{{doc-right|vote}}
+
+{{Identical|Vote}}',
 	'right-voteadmin' => '{{doc-right|voteadmin}}',
 );
 

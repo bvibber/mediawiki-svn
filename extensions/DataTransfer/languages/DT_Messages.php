@@ -1061,10 +1061,11 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Remember the dot
  */
 $messages['li'] = array(
-	'dt_xml_page' => 'Pazjena',
+	'dt_xml_page' => 'Pagina',
 );
 
 /** Lithuanian (Lietuvių)

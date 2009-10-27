@@ -2233,6 +2233,7 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
@@ -2241,7 +2242,7 @@ $messages['li'] = array(
 	'contributionhistory' => 'Giftegesjiedenès',
 	'contrib-hist-header' => 'Ópmèrkinger ven donore vanoet de ganse welt',
 	'contrib-hist-name' => 'Naam',
-	'contrib-hist-date' => 'Datum èn tied',
+	'contrib-hist-date' => 'Datum en tied',
 	'contrib-hist-amount' => 'Bedraag',
 	'contrib-hist-next' => 'Ieëder gifte',
 	'contrib-hist-previous' => 'Later gifte',
@@ -2270,7 +2271,7 @@ $messages['li'] = array(
 	'contribstats-value-from' => 'Tösje $1 en $2',
 	'contribstats-value-over' => 'Meer es $1',
 	'fundraiserstatistics' => 'Fónswèrvindstattistieker',
-	'fundraiserstats-date' => 'Datom',
+	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Daag $1 ven $2',
 	'fundraiserstats-contributions' => 'Gifte',
 	'fundraiserstats-total' => 'Totaal (in USD)',

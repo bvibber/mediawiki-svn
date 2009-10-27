@@ -401,6 +401,7 @@ $messages['es'] = array(
 	'wah-jobs-while-away' => 'Ejecutar trabajos sólo cuando haya estado inactivo en mi navegador por al menos 20 minutos.',
 	'wah-nojobfound' => 'No se ha encontrado trabajos. Se volverá a intentar en $1.',
 	'wah-notoken-login' => '¿Has accedido? Si no, accede primero.',
+	'wah-apioff' => 'La API de Wiki@Home parece estar desactivada. Por favor, contacte al administrador del wiki.',
 	'wah-doing-job' => 'Trabajo: <i>$1</i> en: <i>$2</i>',
 	'wah-downloading' => 'Descarga del archivo <i>$1%</i> completada',
 	'wah-encoding' => 'Codificación del archivo <i>$1%</i> completada',

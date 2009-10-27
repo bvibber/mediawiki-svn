@@ -133,6 +133,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'randomincategory' => 'Ur bajenn dre zegouezh er rummad',
 	'randomincategory-desc' => '[[Special:Randomincategory|Pajenn dibar]] da gaout ur bajenn dre zegouezh er rummad',
+	'randomincategory-toolbox' => 'Pajenn dre zegouezh',
 	'randomincategory-nocategory' => "Goullo eo ar rummad $1 pe n'eus ket anezhañ",
 	'randomincategory-label' => 'Rummad :',
 	'randomincategory-submit' => 'Mont',

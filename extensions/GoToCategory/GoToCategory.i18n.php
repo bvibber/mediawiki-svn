@@ -194,10 +194,11 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'gotocategory-desc' => "Doorzeuk ouch de naamrummdje Category: veur zeuktèrm óm 'nao paasj gaon' meugelik tö make",
+	'gotocategory-desc' => "Doorzeuk ouch de naamruumde Category: veur zeukterm óm 'nao pagina gaon' meugelik te make",
 );
 
 /** Macedonian (Македонски)

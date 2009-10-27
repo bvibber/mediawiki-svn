@@ -3471,6 +3471,7 @@ $messages['hu'] = array(
 	'code-author-link' => 'hozzátársítod?',
 	'code-author-unlink' => 'megszünteted a társítást?',
 	'code-author-unlinksuccess' => '$1 hozzátársítása megszüntetve',
+	'code-browsing-path' => "Változatok böngészése ebben: '''$1'''",
 	'code-field-id' => 'Változat',
 	'code-field-author' => 'Szerző',
 	'code-field-user' => 'Hozzászóló',
@@ -3502,6 +3503,7 @@ $messages['hu'] = array(
 	'code-rev-comment-by' => '$1 hozzászólása',
 	'code-rev-comment-submit' => 'Hozzászólás elküldése',
 	'code-rev-comment-preview' => 'Előnézet',
+	'code-rev-inline-preview' => 'Előnézet:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
 	'code-rev-purge-link' => 'frissítés',
@@ -3527,6 +3529,10 @@ $messages['hu'] = array(
 	'code-release-badrange' => 'A tartomány túl nagy!',
 	'codereview-subtitle' => '$1 részére',
 	'codereview-reply-link' => 'válasz',
+	'codereview-tests-succeeded2' => '$1 sikeres {{PLURAL:$2|teszt|teszt}}',
+	'codereview-tests-failed2' => '$1 sikeres {{PLURAL:$2|teszt|teszt}}, $3 sikertelen {{PLURAL:$4|teszt|teszt}}:',
+	'codereview-tests-running' => 'A tesztesetek futnak…',
+	'codereview-tests-aborted' => 'Tesztfutás megszakítva.',
 	'codereview-email-subj' => '[$1] [r$2]: Új hozzászólás',
 	'codereview-email-body' => '„$1” új hozzászólást fűzött az r$3 változathoz.
 
@@ -4645,6 +4651,7 @@ $messages['lb'] = array(
 	'code-rev-comment-by' => 'Bemierkung vum $1',
 	'code-rev-comment-submit' => 'Bemierkung fortschécken',
 	'code-rev-comment-preview' => 'Kucken ouni ze späicheren',
+	'code-rev-inline-preview' => 'Kucken ouni ze späicheren:',
 	'code-rev-diff' => 'Ënnerscheed',
 	'code-rev-diff-link' => 'Diff',
 	'code-rev-purge-link' => 'botzen (vum Cache)',
@@ -4712,6 +4719,7 @@ $messages['lfn'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Ooswesthoesbes
  * @author Pahles
  */
@@ -4762,11 +4770,11 @@ $messages['li'] = array(
 	'code-rev-paths' => 'Angerdje bestenj:',
 	'code-rev-modified-a' => 'toegevoeg',
 	'code-rev-modified-r' => 'vervank',
-	'code-rev-modified-d' => 'gewösj',
-	'code-rev-modified-m' => 'angerdj',
+	'code-rev-modified-d' => 'weggegoejd',
+	'code-rev-modified-m' => 'veranderd',
 	'code-rev-imagediff' => 'Angeringe in aafbeilding',
 	'code-rev-status' => 'Staat:',
-	'code-rev-status-set' => 'Angeringsstaat',
+	'code-rev-status-set' => 'Veranderde status',
 	'code-rev-tags' => 'Labels:',
 	'code-rev-tag-add' => 'Voeg labels toe:',
 	'code-rev-tag-remove' => 'Labels wösje:',

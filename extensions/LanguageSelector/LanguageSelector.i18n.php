@@ -543,11 +543,12 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
 	'languageselector' => 'Taal',
-	'languageselector-desc' => 'Taalseleksie op edere pazjena, ouch veur gebroekers die neet aangemeldj zeen',
+	'languageselector-desc' => 'Taalselectie op eder pagina, ouch veur gebroekers die neet aangemeld zin',
 	'languageselector-setlang' => 'instèlle',
 );
 

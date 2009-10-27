@@ -699,6 +699,8 @@ $messages['es'] = array(
 	'regexblock-block-success' => 'Bloqueo fue un éxito',
 	'regexblock-currently-blocked' => 'Direcciones actualmente bloqueadas:',
 	'regexblock-expire-duration' => '1 hora,2 horas,4 horas,6 horas,1 día,3 días,1 semana,2 semanas,1 mes,3 meses,6 meses,1 año,infinito',
+	'regexblock-page-title' => 'Bloque de nombre de expresiones regulares',
+	'regexblockstats' => 'Estadísticas del bloque de expresiones regulares',
 	'regexblock-help' => 'Utilice el formulario de abajo para bloquear acceso de escritura de un usuario o dirección IP específicos.
 Esto se deberá hacer para prevenir actos vandálicos y en concordancia con la política.
 \'\'ESta página le permite bloquear usuarios no existentes inclusive, y también bloqueará usuarios con nombres similares al introducido. Por ejemplo: "Prueba" se bloqueará en conjunto con "Prueba 2", etc.
@@ -723,14 +725,17 @@ Por favor crea un nombre alternativo o [[$1|contactanos]] acerca del problema',
 	'regexblock-form-submit-expiry' => 'Por favor especifique un periodo de expiración.',
 	'regexblock-match-stats-record' => "$1 bloqueado '$2' en '$3' en '$4', iniciando sesión desde dirección '$5'",
 	'regexblock-nodata-found' => 'Sin datos encontrados',
+	'regexblock-stats-title' => 'Estadísticas del bloque de expresiones regulares',
 	'regexblock-unblock-success' => 'Desbloqueo fue un éxito',
 	'regexblock-unblock-log' => "Nombre de usuario o dirección IP '''$1''' ha sido bloqueada.",
 	'regexblock-unblock-error' => 'Error desbloqueando $1.
 Probablemente no existe tal usuario.',
+	'regexblock-regex-filter' => 'o valor de expresión regular:',
 	'regexblock-view-blocked' => 'Ver bloqueos por:',
 	'regexblock-view-all' => 'Todos',
 	'regexblock-view-go' => 'Ir',
 	'regexblock-view-match' => '(coincidencia exacta)',
+	'regexblock-view-regex' => '(coincidencia de expresión regular)',
 	'regexblock-view-account' => '(bloqueo de creación de cuenta)',
 	'regexblock-view-reason' => 'Motivo: $1',
 	'regexblock-view-reason-default' => 'razón genérica',
@@ -740,6 +745,7 @@ Probablemente no existe tal usuario.',
 	'regexblock-view-stats' => 'Estadísticas',
 	'regexblock-view-empty' => 'La lista de nombres y direcciones bloqueadas está vacía',
 	'regexblock-view-time' => 'en $1',
+	'right-regexblock' => 'Bloquea el permiso de usuario de editar en todas las wikis de la granja wiki',
 );
 
 /** Estonian (Eesti)

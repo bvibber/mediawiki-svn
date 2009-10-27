@@ -811,11 +811,12 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Matthias
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'scanset-desc' => "Maakt 't mogelijk gescande aafbeeldinge van de cd's/dvd's van Andreas Grosz te bekijke",
+	'scanset-desc' => "Maakt 't meugelik gescande aafbeeldinge van de cd's/dvd's van Andreas Grosz te bekieke",
 	'scanset_no_name' => 'Error: geer mót \'ne naam veure scanset opgaeve, wie beveurbeild &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Error: óngeljige of missende scanset',
 	'scanset_unrecognised_index_format' => 'Error: indeksopmaak wuuertj neet herkintj',

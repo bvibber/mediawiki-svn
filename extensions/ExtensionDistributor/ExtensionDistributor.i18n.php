@@ -1531,6 +1531,7 @@ Déi meescht Erweiderungen fonctionnéieren mat verschiddene Versioune vu MediaW
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
@@ -1539,7 +1540,7 @@ $messages['li'] = array(
 	'extdist-not-configured' => 'Maak de instellinge veur $wgExtDistTarDir en $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'De instelde werkmap besteit neet!',
 	'extdist-no-such-extension' => 'De uitbreiding "$1" besteit neet',
-	'extdist-no-such-version' => 'De uitbreiding "$1" besteit neet in de versie "$2".',
+	'extdist-no-such-version' => 'De oetbreiing "$1" besteit neet in de versie "$2".',
 	'extdist-choose-extension' => 'Selekteer de extensie dae se wils downloade:',
 	'extdist-wc-empty' => 'De ingestelde werkmap bevat gein te distributere extensies!',
 	'extdist-submit-extension' => 'Doorgaon',

@@ -1685,6 +1685,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -1698,6 +1699,8 @@ $messages['pt'] = array(
 	'usagestatisticsinterval' => 'Intervalo:',
 	'usagestatisticsnamespace' => 'Domínio:',
 	'usagestatisticsexcluderedirects' => 'Excluir redireccionamentos',
+	'usagestatistics-namespace' => 'Estas são as estatísticas do espaço nominal [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Redireccionamentos]] não são levados em conta.',
 	'usagestatisticstype' => 'Tipo',
 	'usagestatisticsstart' => 'Data de início:',
 	'usagestatisticsend' => 'Data de fim:',

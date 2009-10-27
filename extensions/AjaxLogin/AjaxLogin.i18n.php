@@ -505,11 +505,12 @@ Kuckt no ob Dir den Numm richteg geschriwwen hutt.',
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Pahles
  */
 $messages['li'] = array(
-	'ajaxlogin-desc' => 'Dynamisch vinster veur aanmelje en wachwoordherinneringe',
-	'ajaxLogin1' => "Veur 'n nuuj wachwoord in um 't aanmelje aaf te make.
+	'ajaxlogin-desc' => 'Dynamisch vinster veur aanmelde en wachwoordherinneringe',
+	'ajaxLogin1' => "Veur 'n nuuj wachwoord in um 't aanmelde aaf te make.
 Hiedoor waers doe weggeleid van dees pagina, en verlus doe mäögelik dien hujige bewirkinge.",
 	'ajaxLogin2' => 'Wils doe wiejergaon?
 Doe verlus mäögelik dien hujige bewirkinge es doe dees pagina noe verleuts.',

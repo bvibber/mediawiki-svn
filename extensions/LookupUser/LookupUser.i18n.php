@@ -37,6 +37,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'lookupuser-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'lookupuser-id' => '{{Identical|User ID}}',
 	'lookupuser-no-email' => '{{Identical|Notprovided}}',
 	'right-lookupuser' => '{{doc-right}}',
 );
@@ -45,6 +46,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'lookupuser-id' => 'Gebruiker-ID: <tt>#$1</tt>',
 	'lookupuser-no-email' => 'nie verskaf nie',
 );
 

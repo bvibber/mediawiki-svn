@@ -3572,10 +3572,10 @@ Je kunnen disse instellingen altied weer uutzetten deur op de knoppe "{{int:opti
 	'optin-success-out' => 'Je hemmen Beta uut-ezet.
 Je kunnen disse functionaliteit altied weer anzetten deur op de knoppe {{int:optin-submit-in}} te klikken.',
 	'optin-success-feedback' => 'Bedank veur joew commetaar',
-	'optin-accept-short' => "Lao-w 't mar doon!",
+	'optin-accept-short' => "Lao-w 't mar doon",
 	'optin-accept-long' => 'Beta uutpreberen',
 	'optin-accept-long-anon' => 'Anmelden en Beta uutpreberen',
-	'optin-deny-short' => 'Nee, dank je',
+	'optin-deny-short' => 'Nee, do mar neet',
 	'optin-deny-long' => 'Weerumme naor de veurige pagina',
 	'optin-submit-out' => 'Beta uutzetten',
 	'optin-submit-feedback' => 'Versturen',
@@ -3615,26 +3615,22 @@ Wie willen grege weten wa-jie van de nieje vormgeving vienen, \'t zol dus mooi w
 	'optin-survey-answer-changes-custom' => 'Meer gebrukersanpassingen meugelijk maken.',
 	'optin-survey-answer-changes-other' => 'Overig:',
 	'optin-improvements' => "== Wat is der verbeterd?==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Scharmofdrok van de nieje navigasietabblaojen]]
 ;Navigasie is verbeterd
-'t Nieje navigasiesysteem maak 't makkelijker um te zien waor of da-j bin en wa-j doon, en oek waor of da-j hinnegaon kunnen en ho um der te koemen.
-Mit 't zeukvakjen in de rechterbovenhoek is de zeukfunctie makkelijker te vienen en vlogger te gebruken.
+'t Nieje navigasiesysteem maak 't makkelijker um te zien waor of da-j bin en wa-j doon, en oek waor of da-j hinnegaon kunnen en ho um der te koemen. Mit 't zeukvakjen in de rechterbovenhoek is de zeukfunctie makkelijker te vienen en vlogger te gebruken.
 <div style=\"clear:both;\"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Scharmofdrok van de verbeteren bewarkingsbalke]]
 ;Bewarkingsbalke is verbeterd
-Nieje en verbeteren pictogrammen maken 't dudelijker wat elk hulpmiddel dut.
-Uutklapbaore onderdelen verminderen een rommelig uterlijk, terwiel functies dee minder vake gebruuk wonnen wel bereikbaor blieven.
+Nieje en verbeteren pictogrammen maken 't dudelijker wat elk hulpmiddel dut. Uutklapbaore onderdelen laoten 't der minder sloerig uutzien, terwiel functies dee minder vake gebruuk wönnen wel bereikbaor blieven.
 De hulpfunctie biejt vlogge toegang tot uutleg over veelgebruken functies van de wikiopmaaktaal.
 <div style=\"clear:both;\"></div>
-== Hoe kan-k meedoon ==
-Um meer over 't prejek te weten te koemen, of um mee te doon, ku-j naor de [http://usability.wikimedia.org wiki van 't Bruukbaorheidsinitiatief] gaon.
-Daor vie-j infermasie over schenking, 't onderzeuk, ontwarp en ontwikkeling en de uutkomsten.
-Veur vragen of commetaar, ku-j de [http://usability.wikimedia.org/wiki/Talk:Prototype overlegpagina over 't prototype] gebruken.
-Um specefieke punten an de orde te stellen, ku-j de biebeheurende overlegpagina's gebruken.
-A-j fouten in de pregrammetuur vienen, maak dan gebruuk van de [http://usability.wikimedia.org/wiki/Talk:Releases/Acai overlegpagina voor Açai] of gebruuk [https://bugzilla.wikimedia.org Bugzilla].
+== Ho kan-k meedoon ==
+Um meer over 't prejek te weten te koemen, of um mee te doon, ku-j naor de [http://usability.wikimedia.org wiki van 't Bruukbaorheidsinitiatief] gaon. Daor vie-j infermasie over schenking, 't onderzeuk, ontwarp en ontwikkeling en de uutkomsten. Veur vragen of opmarkingen, ku-j de [http://usability.wikimedia.org/wiki/Talk:Prototype overlegpagina over 't prototype] gebruken.
+Um bepaolde punten an de orde te stellen, ku-j de biebeheurende overlegpagina's gebruken.
+A-j fouten in de pregrammetuur vienen, maak dan gebruuk van de [http://usability.wikimedia.org/wiki/Talk:Releases/Acai overlegpagina veur Açai] of gebruuk [https://bugzilla.wikimedia.org Bugzilla].
 
-Bedank en we kieken uut naor joew mening!",
+Bedank en we zien uut naor joew mening!",
 );
 
 /** Dutch (Nederlands)

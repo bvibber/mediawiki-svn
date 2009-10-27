@@ -537,14 +537,15 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Matthias
  */
 $messages['li'] = array(
 	'intersection-desc' => 'Geeft als uitvoer een ongenummerde lijst met de meest recent toegevoegde items in een categorie, of een combinatie van categorieë',
-	'intersection_toomanycats' => 'Error: Te veel categorieë!',
+	'intersection_toomanycats' => 'Error: Te väöl categorieë!',
 	'intersection_toofewcats' => 'Error: Te weinig categorieë!',
 	'intersection_noresults' => 'Error: Gein resultate!',
-	'intersection_noincludecats' => 'Error: U moet tenminste een categorie of een naamruimte opgeve!',
+	'intersection_noincludecats' => 'Error: Geer moet tenminste ein categorie of ein naamruumde opgeve!',
 );
 
 /** Lithuanian (Lietuvių)

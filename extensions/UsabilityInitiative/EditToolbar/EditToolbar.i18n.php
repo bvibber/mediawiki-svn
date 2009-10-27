@@ -1212,6 +1212,8 @@ $messages['bs'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Nevaljan naslov',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Provjeravam postojanje stranice...',
 	'edittoolbar-tool-link-int-invalid' => 'Naslov koji ste unijeli je nevaljan.',
+	'edittoolbar-tool-link-lookslikeinternal-int' => 'Unutrašnji link',
+	'edittoolbar-tool-link-lookslikeinternal-ext' => 'Vanjski link',
 	'edittoolbar-tool-file' => 'Uklopljena datoteka',
 	'edittoolbar-tool-file-example' => 'Primjer.jpg',
 	'edittoolbar-tool-reference' => 'Reference',
@@ -1258,8 +1260,8 @@ $messages['bs'] = array(
 | red 2, ćelija 1
 | red 2, ćelija 2
 | red 2, ćelija 3',
-	'edittoolbar-tool-table-example' => 'Red $1, ćelija $2',
-	'edittoolbar-tool-table-example-header' => 'Red $1, ćelija $2 (naslov)',
+	'edittoolbar-tool-table-example' => 'Tekst ćelije',
+	'edittoolbar-tool-table-example-header' => 'Tekst zaglavlja',
 	'edittoolbar-tool-table-title' => 'Ubaci tabelu',
 	'edittoolbar-tool-table-dimensions-rows' => 'Redovi',
 	'edittoolbar-tool-table-dimensions-columns' => 'Kolone',
@@ -2365,6 +2367,7 @@ $messages['diq'] = array(
 	'edittoolbar-tool-link-lookslikeinternal' => 'URLyo ke şıma nişan kerdo, pelê yewna wikiyi re gıre biyo aseno. şıma wazeni no gıre yew gıreyo daxili bıbo?',
 	'edittoolbar-tool-link-lookslikeinternal-int' => 'gıreyo zerreyi',
 	'edittoolbar-tool-link-lookslikeinternal-ext' => 'gıreyo teberi',
+	'edittoolbar-tool-link-empty' => 'Ti hama yew link nieşt.',
 	'edittoolbar-tool-file' => 'dosyaya  wedarteyi/weradaye',
 	'edittoolbar-tool-file-example' => 'misal.jpg',
 	'edittoolbar-tool-reference' => 'çıme',
@@ -3140,7 +3143,7 @@ $messages['es'] = array(
 | fila 2, celda 1
 | fila 2, celda 2
 | fila 2, celda 3',
-	'edittoolbar-tool-table-example' => 'Fila $1, celda $2',
+	'edittoolbar-tool-table-example' => 'Texto de celda',
 	'edittoolbar-tool-table-example-header' => 'Texto de encabezado',
 	'edittoolbar-tool-table-title' => 'Inserte tabla',
 	'edittoolbar-tool-table-dimensions-rows' => 'Filas',
@@ -4112,6 +4115,7 @@ $messages['gl'] = array(
 	'edittoolbar-tool-link-lookslikeinternal' => 'O enderezo URL que especificou semella ser unha ligazón cara a outra páxina do wiki. Quere converter ese enderezo nunha ligazón interna?',
 	'edittoolbar-tool-link-lookslikeinternal-int' => 'Ligazón interna',
 	'edittoolbar-tool-link-lookslikeinternal-ext' => 'Ligazón externa',
+	'edittoolbar-tool-link-empty' => 'Non inseriu nada co que ligar.',
 	'edittoolbar-tool-file' => 'Ficheiro embelecido',
 	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referencia',
@@ -4806,6 +4810,7 @@ $messages['hif-latn'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author CERminator
  * @author Mvrban
  * @author Suradnik13
  */
@@ -4837,6 +4842,7 @@ $messages['hr'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Nevaljani naslov',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Provjera postoji li stranica...',
 	'edittoolbar-tool-link-int-invalid' => 'Naslov koji ste naveli je nevažeći.',
+	'edittoolbar-tool-link-lookslikeinternal-int' => 'Unutarnja poveznica',
 	'edittoolbar-tool-file' => 'Uložena datoteka',
 	'edittoolbar-tool-file-example' => 'Primjer.jpg',
 	'edittoolbar-tool-reference' => 'Bilješke',
@@ -5338,6 +5344,10 @@ $messages['hu'] = array(
  * @author Xelgen
  */
 $messages['hy'] = array(
+	'edittoolbar' => 'Խմբագրման վահանակ',
+	'edittoolbar-desc' => 'Բարձրացրած հարմարավետությամբ խմբագրման վահանակ',
+	'edittoolbar-preference' => 'Ակտիվացնել բարելավված խմբագրման վահանակը',
+	'edittoolbar-cgd-preference' => 'Ակտիվացնել երկխոսությունները հղումների, աղյուսակների և այլնի համար',
 	'edittoolbar-loading' => 'Բեռնում…',
 	'edittoolbar-tool-bold' => 'Թավատառ',
 	'edittoolbar-tool-bold-example' => 'Թավատառ տեքստ',
@@ -5349,8 +5359,17 @@ $messages['hy'] = array(
 	'edittoolbar-tool-xlink-example' => 'http://www.example.com հղման վերնագիրը',
 	'edittoolbar-tool-link' => 'Հղում',
 	'edittoolbar-tool-link-title' => 'Ավելացնել հղում',
-	'edittoolbar-tool-link-int' => 'վիքիի էջին',
-	'edittoolbar-tool-link-ext' => 'արտաքին վեբ էջին',
+	'edittoolbar-tool-link-int' => 'Վիքիի էջին',
+	'edittoolbar-tool-link-int-target' => 'Էջի վերնագիր․',
+	'edittoolbar-tool-link-int-text' => 'Հղման տեսքստ․',
+	'edittoolbar-tool-link-ext' => 'Արտաքին վեբ էջին',
+	'edittoolbar-tool-link-ext-target' => 'Հղման URL․',
+	'edittoolbar-tool-link-ext-text' => 'Հղման տեքստ․',
+	'edittoolbar-tool-link-insert' => 'Ավելացնել հղում',
+	'edittoolbar-tool-link-cancel' => 'Բեկանել',
+	'edittoolbar-tool-link-int-target-status-exists' => 'Էջը գոյություն ունի',
+	'edittoolbar-tool-link-int-target-status-notexists' => 'Էջը գոյություն չունի',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'Սխալ վերնագիր',
 	'edittoolbar-tool-link-lookslikeinternal-int' => 'Ներքին հղում',
 	'edittoolbar-tool-link-lookslikeinternal-ext' => 'Արտաքին հղում',
 	'edittoolbar-tool-file' => 'Ներդրված ֆայլ',
@@ -5374,6 +5393,7 @@ $messages['hy'] = array(
 	'edittoolbar-tool-big-example' => 'Խոշոր տեքստ',
 	'edittoolbar-tool-small' => 'Մանր',
 	'edittoolbar-tool-small-example' => 'Մանր տեքստ',
+	'edittoolbar-group-baseline' => 'Տողահիմք',
 	'edittoolbar-tool-superscript' => 'Վերտողային',
 	'edittoolbar-tool-superscript-example' => 'Վերտողային տեքստ',
 	'edittoolbar-tool-subscript' => 'Ենթատողային',
@@ -5401,6 +5421,8 @@ $messages['hy'] = array(
 	'edittoolbar-tool-table-title' => 'Ավելացնել աղյուսակ',
 	'edittoolbar-tool-table-dimensions-rows' => 'Տողեր',
 	'edittoolbar-tool-table-dimensions-columns' => 'Սյուներ',
+	'edittoolbar-tool-table-preview' => 'Նախադիտել',
+	'edittoolbar-tool-table-insert' => 'Ավելացնել',
 	'edittoolbar-section-characters' => 'Հատուկ նշաններ',
 	'edittoolbar-characters-page-latin' => 'Լատիներեն',
 	'edittoolbar-characters-page-latinextended' => 'Լատիներեն ընդլայնված',
@@ -5455,6 +5477,7 @@ $messages['hy'] = array(
 	'edittoolbar-help-content-file-description' => 'Ներդրված ֆայլ',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Նկարագրություն]]',
 	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Նկարագրություն' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Ընդարձակել' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Նկարագրություն</div></div>",
+	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>Հղման տեքստ</a>, հավելյալ տեքստ։</li></ol>",
 	'edittoolbar-help-content-signaturetimestamp-description' => 'Ստորագրությունը ամսաթվով',
 	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Մասնակցի Անուն</a> (<a href='#' title='{{#special:mytalk}}'>քննարկում</a>) 15:54, 29 հունիս 2009 (UTC)",
 	'edittoolbar-help-content-signature-description' => 'Ստորագրություն',
@@ -7476,12 +7499,15 @@ $messages['mk'] = array(
 | ред 2, ќелија 1
 | ред 2, ќелија 2
 | ред 2, ќелија 3',
-	'edittoolbar-tool-table-example' => 'Ред $1, ќелија $2',
-	'edittoolbar-tool-table-example-header' => 'Ред $1, ќелија $2 (наслов)',
+	'edittoolbar-tool-table-example' => 'Текст на ќелијата',
+	'edittoolbar-tool-table-example-header' => 'Текст на наслов',
 	'edittoolbar-tool-table-title' => 'Вметни табела',
 	'edittoolbar-tool-table-dimensions-rows' => 'Редови',
 	'edittoolbar-tool-table-dimensions-columns' => 'Колони',
 	'edittoolbar-tool-table-dimensions-header' => 'Вклучи насловен ред',
+	'edittoolbar-tool-table-wikitable' => 'Стил со граници',
+	'edittoolbar-tool-table-sortable' => 'Подредлива табела',
+	'edittoolbar-tool-table-preview' => 'Преглед',
 	'edittoolbar-tool-table-insert' => 'Вметни',
 	'edittoolbar-tool-table-cancel' => 'Откажи',
 	'edittoolbar-tool-table-toomany' => 'Не можете да вметнувате табела со повеќе од $1 ќелии со овој дијалог.',
@@ -9124,6 +9150,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Crazymadlover
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author McDutchie
@@ -9203,8 +9230,8 @@ $messages['pt'] = array(
 | linha 2, coluna 1
 | linha 2, coluna 2
 | linha 2, coluna 3',
-	'edittoolbar-tool-table-example' => 'Linha $1, célula $2',
-	'edittoolbar-tool-table-example-header' => 'Linha $1, coluna $2 (cabeçalho)',
+	'edittoolbar-tool-table-example' => 'Texto da célula',
+	'edittoolbar-tool-table-example-header' => 'Texto do cabeçalho',
 	'edittoolbar-tool-table-title' => 'Inserir tabela',
 	'edittoolbar-tool-table-dimensions-rows' => 'Linhas',
 	'edittoolbar-tool-table-dimensions-columns' => 'Colunas',
@@ -9863,6 +9890,7 @@ $messages['sah'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Сатаммат бас',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Сирэй баарын тургутуу...',
 	'edittoolbar-tool-link-int-invalid' => 'Суруллубут аат туттуллара сатаммат.',
+	'edittoolbar-tool-link-lookslikeinternal-ext' => 'Тас сигэ',
 	'edittoolbar-tool-file' => 'Иһинээҕи билэ',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'Быһаарыы',
@@ -9909,12 +9937,14 @@ $messages['sah'] = array(
 | строка 2, ячейка 1
 | строка 2, ячейка 2
 | строка 2, ячейка 3',
-	'edittoolbar-tool-table-example' => 'Устуруока $1, ячейка $2',
-	'edittoolbar-tool-table-example-header' => 'Устуруока $1, ячейка $2 (баһа)',
+	'edittoolbar-tool-table-example' => 'Тиэкис хараҕа',
+	'edittoolbar-tool-table-example-header' => 'Баһын аата',
 	'edittoolbar-tool-table-title' => 'Табылыыссаны угуу',
 	'edittoolbar-tool-table-dimensions-rows' => 'Устуруоката',
 	'edittoolbar-tool-table-dimensions-columns' => 'Колуонката',
 	'edittoolbar-tool-table-dimensions-header' => 'Бас устуруоканы эбии',
+	'edittoolbar-tool-table-wikitable' => 'Хаймыылаах истиил',
+	'edittoolbar-tool-table-preview' => 'Эрдэ көрүү',
 	'edittoolbar-tool-table-insert' => 'Киллэрэргэ',
 	'edittoolbar-tool-table-cancel' => 'Бигэргэтимэ',
 	'edittoolbar-tool-table-toomany' => 'Бу диалог $1 килиэккэттэн ордугу угары көҥүллээбэт.',

@@ -87,6 +87,13 @@ $messages['el'] = array(
 	'replaceset-error-regexbadmodifier' => "Ο τροποποιητής τακτικής έκφρασης '$1' δεν είναι έγκυρος.",
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'replaceset-error-regexnoend' => 'Al patrón de expresión regular "$1" le falta el delimitador final \'$2\'',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  * @author Verdy p

@@ -3125,6 +3125,7 @@ $wgGoogleMapsMessages['lfn'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Pahles
  */
 $wgGoogleMapsMessages['li'] = array(
@@ -3135,7 +3136,7 @@ $wgGoogleMapsMessages['li'] = array(
 	'gm-balloon-title' => 'Titel:',
 	'gm-balloon-link-article' => 'Verwiezing nao dees pagina (optioneel):',
 	'gm-make-marker' => 'Besjrieving (wikiopmaak toegesjtange):',
-	'gm-remove' => 'ewegsjaffe',
+	'gm-remove' => 'weggoeje',
 	'gm-caption' => 'Umsjrieving',
 	'gm-tab-title' => 'Tabblaadtitel',
 	'gm-tab' => 'Tab',

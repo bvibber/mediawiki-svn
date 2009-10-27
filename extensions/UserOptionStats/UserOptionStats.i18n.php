@@ -525,15 +525,18 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'useroptionstats' => 'Estatísticas de opções de usuário',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Página especial]] para reportar a utilização de opções de utilizador na MediaWiki',
 	'uos-warn' => 'PHPlot não está instalado!',
 	'uos-choose' => 'Escolha uma das seguintes opções de usuário: $1',
 	'uos-unknown' => '*Padrão',
 	'uos-other' => '*Outro',
+	'uos-title' => 'Distribuição de valores da opção de utilizador $1',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

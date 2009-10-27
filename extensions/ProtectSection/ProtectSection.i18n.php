@@ -81,6 +81,13 @@ $messages['bg'] = array(
 	'protectsection_forbidden' => 'Забранен достъп',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'protectsection_forbidden' => 'Difennet',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
