@@ -81,6 +81,7 @@
 		$("#user_def_alter_legend").text($("#user_def_alter_legend").data("defaultChangeText") + " " + defName);
 		$("#user_def_alter_legend").data("currentlyEditing", defName);
 
+		
 		var setContribs = function( conditionArray, contribName ) {
 			initialDiv = $("<div></div>").attr('id', contribName + '_div');
 			initialDiv.addClass('checkbox_div');
@@ -106,15 +107,18 @@
 				conditionDiv.addClass( 'checkbox_div' );
 				conditionDiv.addClass( 'sub_option_div' );
 
+				
 				//initialDiv.append(conditionDiv);
-				cCheckbox = $("<input></input>").attr('id', contribName + '_' + counter + '_checkbox');
-				cCheckbox.attr('type', 'checkbox');
+				cCheckbox = $("<input type=\"checkbox\"></input>").attr('id', contribName + '_' + counter + '_checkbox');
+				//cCheckbox.attr('type', 'checkbox');
 				if( isChecked ) {
 					cCheckbox.attr( 'checked', true );
 				}
+				
 				cCheckbox.addClass( 'number_select_checkbox' );
 				conditionDiv.append( cCheckbox );
-
+	
+				
 				cSelect = $("<select></select>").attr('id', contribName + '_' + counter + '_ltgt');
 				cSelect.addClass( 'number_select_ltgt' );
 
@@ -126,6 +130,7 @@
 					cOpt1.attr( 'selected', true );
 				}
 
+				
 				cOpt2 = $("<option></option>").attr('id', contribName + '_' + counter + '_gt');
 				cOpt2.addClass( 'number_select_ltgt_opt' );
 				cOpt2.attr( 'value', 'gt' );
@@ -160,6 +165,7 @@
 				cTextInput.addClass( 'number_select_text' );
 				cTextInput.attr( 'value', condition['value'] );
 				conditionDiv.append( cTextInput );
+				
 				return conditionDiv;
 			};
 
@@ -169,6 +175,7 @@
 				var conditionDiv = buildConditionDiv( conditionArray[condition], i, true );
 				initialDiv.append( conditionDiv );
 			} // forloop
+			
 			initialDiv.data( 'totalConditions', i );
 			addConditions = $("<div></div>").attr('id', contribName + '_addbutton');
 			addConditions.data( 'contribName', contribName );

@@ -34,8 +34,8 @@ class SpecialClickTracking extends SpecialPage {
 		$this->user_defs["intermediate"] = array(
 			"anonymous" => "0",
 			"total_contribs" => array(
-				array("operation" => "<", "value" => "400"),
-				array("operation" => ">", "value" => "10"),
+				array("operation" => "<", "value" => "10"),
+				array("operation" => ">", "value" => "400"),
 			),
 		);
 		
@@ -202,14 +202,14 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("form", array("id" => "user_definition_form", "class" => "user_def_form"));
 		$control .= Xml::openElement("fieldset", array("id" => "user_def_alter_fieldset"));
 		$control .= Xml::openElement("legend", array("id" => "user_def_alter_legend"));
-		$control .= wfMsg( "editing" );
+		$control .= wfMsg( "ct-editing" );
 		$control .= Xml::closeElement("legend");
 		
 		//[] anonymous users?
 		$control .= Xml::openElement("div", array("id" => "anon_users_div", "class" => "checkbox_div control_div"));
 		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "anon_users_checkbox", "class" => "user_def_checkbox"));
 		$control .= Xml::closeElement("input");
-		$control .= wfMsg("anon-users");
+		$control .= wfMsg("ct-anon-users");
 		$control .= Xml::closeElement("div");
 		
 		// ----------------
@@ -221,7 +221,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("div", array("id" => "total_users_contrib_div", "class" => "checkbox_div control_div"));
 		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_checkbox", "class" => "user_def_checkbox"));
 		$control .= Xml::closeElement("input");
-		$control .= wfMsg("user-contribs");
+		$control .= wfMsg("ct-user-contribs");
 		
 		
 		$control .= Xml::closeElement("div");
@@ -232,7 +232,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("div", array("id" => "contrib_span_1_text_div", "class" => "checkbox_div"));
 		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_span_1_checkbox", "class" => "user_def_checkbox"));
 		$control .= Xml::closeElement("input");
-		$control .= wfMsg("user-span") . " 1";
+		$control .= wfMsg("ct-user-span") . " 1";
 		$control .= Xml::closeElement("div");
 		$control .= Xml::closeElement("div");
 		
@@ -242,7 +242,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("div", array("id" => "contrib_span_2_text_div", "class" => "checkbox_div"));
 		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_span_2_checkbox", "class" => "user_def_checkbox"));
 		$control .= Xml::closeElement("input");
-		$control .= wfMsg("user-span") . " 2";
+		$control .= wfMsg("ct-user-span") . " 2";
 		$control .= Xml::closeElement("div");
 		$control .= Xml::closeElement("div");
 		
@@ -252,7 +252,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("div", array("id" => "contrib_span_3_text_div", "class" => "checkbox_div"));
 		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_span_3_checkbox", "class" => "user_def_checkbox"));
 		$control .= Xml::closeElement("input");
-		$control .= wfMsg("user-span") . " 3";
+		$control .= wfMsg("ct-user-span") . " 3";
 		$control .= Xml::closeElement("div");
 		$control .= Xml::closeElement("div");
 		
@@ -419,7 +419,6 @@ class SpecialClickTracking extends SpecialPage {
 			$userDefs = json_decode($userDefs, true);
 		}
 		
-		
 		$events = self::getTopEvents($minTime, $maxTime);
 		
 		$returnArray = array();
@@ -500,7 +499,8 @@ class SpecialClickTracking extends SpecialPage {
 		}
 		else {
 			
-			return "WHERE `action_time` >= '$minTime' AND `action_time` <= '$maxTime'";	
+			return "WHERE `action_time` >= '$minTime' AND `action_time` <= '$maxTime'";
+			
 		}
 		
 	}
@@ -524,10 +524,9 @@ class SpecialClickTracking extends SpecialPage {
 			$normalize = "(select distinct session_id, event_id from click_tracking $time_constraint_statement) as t1";
 			$time_constraint = "";
 		}
-		$join = " ";
 		$sql = "select count(event_id) as totalevtid, event_id,event_name from $normalize" .
 		 " LEFT JOIN click_tracking_events ON event_id=click_tracking_events.id".
-		 " $time_constraint group by event_id order by totalevtid desc";
+		 " $time_constraint  group by event_id order by totalevtid desc";
 		
 		//returns count(event_id),event_id, event_name, top one first
 		$dbr = wfGetDB( DB_SLAVE );
