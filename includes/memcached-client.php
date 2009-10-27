@@ -259,7 +259,7 @@ class memcached
       $this->_host_dead = array();
 
       $this->_timeout_seconds = 0;
-      $this->_timeout_microseconds = 50000;
+      $this->_timeout_microseconds = 100000;
 
       $this->_connect_timeout = 0.01;
       $this->_connect_attempts = 2;
