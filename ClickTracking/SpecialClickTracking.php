@@ -34,8 +34,8 @@ class SpecialClickTracking extends SpecialPage {
 		$this->user_defs["intermediate"] = array(
 			"anonymous" => "0",
 			"total_contribs" => array(
-				array("operation" => "<", "value" => "10"),
-				array("operation" => ">", "value" => "400"),
+				array("operation" => "<", "value" => "400"),
+				array("operation" => ">", "value" => "10"),
 			),
 		);
 		
