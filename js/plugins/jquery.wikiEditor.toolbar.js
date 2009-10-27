@@ -470,11 +470,14 @@ fn : {
 						if ( show ) {
 							$section.fadeIn( 'fast' );
 							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() { 
-								$(this).css('overflow', 'visible'); } );
+								$(this).css('overflow', 'visible').css('height', 'auto'); 
+							} );
 							$(this).addClass( 'current' );
 						} else {
-							$sections.animate( { 'height': 0 }, $section.outerHeight() * 2, function() { 
-								$(this).css('overflow', 'visible'); } );
+							$sections.css('height', $section.outerHeight() )
+								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() { 
+									$(this).css('overflow', 'visible'); 
+								} );
 						}
 						// Click tracking
 						if($.trackAction != undefined){
