@@ -221,8 +221,10 @@ public class SearchDaemon extends HttpHandler {
 			
 			for(File f : files){
 				try{
-					IndexId.get(f.getName());
-					// using it, do nothing
+					IndexId iid = IndexId.get(f.getName());
+					// check if we are searching this
+					if(!iid.isMySearch())
+						throw new RuntimeException("unused index");
 				} catch(RuntimeException e){
 					try{
 						sendOutputLine("Deleting "+f.getAbsolutePath());	
