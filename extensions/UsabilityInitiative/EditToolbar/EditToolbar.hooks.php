@@ -79,6 +79,7 @@ class EditToolbarHooks {
 					'edittoolbar-tool-link-lookslikeinternal',
 					'edittoolbar-tool-link-lookslikeinternal-int',
 					'edittoolbar-tool-link-lookslikeinternal-ext',
+					'edittoolbar-tool-link-empty',
 					'edittoolbar-tool-file',
 					'edittoolbar-tool-file-pre',
 					'edittoolbar-tool-file-example',
