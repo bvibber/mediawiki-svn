@@ -1552,6 +1552,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1560,6 +1561,15 @@ $messages['pt'] = array(
 	'prefstats-title' => 'Estatísticas de preferências',
 	'prefstats-list-intro' => 'Atualmente, as seguintes preferência estão a ser monitorizadas.
 Clique numa para ver as estatísticas sobre ela.',
+	'prefstats-noprefs' => 'As preferências não estão a ser monitorizadas.
+Para monitorizá-las configure $wgPrefStatsTrackPrefs.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|utilizador activou|utilizadores activaram}} esta preferência desde que são coligidas estatísticas de preferências
+** $2 {{PLURAL:$2|utilizador mantém|utilizadores mantêm}} esta preferência activa
+** $3 {{PLURAL:$3|utilizador desactivou-a|utilizadores desactivaram-na}} desde então',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|utilizador activou|utilizadores activaram}} esta preferência desde que são coligidas estatísticas de preferências
+** $2 {{PLURAL:$2|utilizador mantém|utilizadores mantêm}} esta preferência activa
+** $3 {{PLURAL:$3|utilizador desactivou-a|utilizadores desactivaram-na}} desde então
+* No total, $4 {{PLURAL:$4|utilizador tem|utilizadores têm}} esta preferência activada',
 	'prefstats-xaxis' => 'Duração (horas)',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'seis horas',
