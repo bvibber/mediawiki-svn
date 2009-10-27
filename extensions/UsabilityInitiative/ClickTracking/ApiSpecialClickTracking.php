@@ -105,10 +105,10 @@ class ApiSpecialClickTracking extends ApiBase {
 				ApiBase::PARAM_MIN => 1
 			),
 			'startdate' => array(
-				ApiBase::PARAM_TYPE => 'timestamp'
+				ApiBase::PARAM_TYPE => 'integer'
 			),
 			'enddate' => array(
-				ApiBase::PARAM_TYPE => 'timestamp'
+				ApiBase::PARAM_TYPE => 'integer'
 			),
 			'increment' => array(
 				ApiBase::PARAM_TYPE => 'integer',
