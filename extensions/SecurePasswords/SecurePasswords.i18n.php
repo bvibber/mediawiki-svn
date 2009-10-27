@@ -10,6 +10,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'securepasswords-desc' => 'Creates more secure password hashes and adds a password strength checker',
+	'securepasswords-invalid' => '', #dummy value, never shown to user, DO NOT TRANSLATE
 	'securepasswords-valid' => 'Your password is invalid or too short.
 It must:',
 	'securepasswords-minlength' => 'be at least $1 {{PLURAL:$1|character|characters}} long',
