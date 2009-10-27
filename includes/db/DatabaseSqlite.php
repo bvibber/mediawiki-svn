@@ -97,6 +97,20 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 
 	/**
+	 * Returns version of currently supported SQLite fulltext search module or false if none present.
+	 * @return String
+	 */
+	function fulltextSearchEngine() {
+		$table = 'dummy_search_test';
+		$this->query( "DROP TABLE IF EXISTS $table", __METHOD__ );
+		if ( $this->query( "CREATE VIRTUAL TABLE $table USING FTS3(dummy_field)", __METHOD__, true ) ) {
+			$this->query( "DROP TABLE IF EXISTS $table", __METHOD__ );
+			return 'FTS3';
+		}
+		return false;
+	}
+
+	/**
 	 * SQLite doesn't allow buffered results or data seeking etc, so we'll use fetchAll as the result
 	 */
 	function doQuery( $sql ) {
@@ -460,7 +474,7 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 	
 	public function getSearchEngine() {
-		return "SearchEngineDummy";
+		return "SearchEngineSqlite";
 	}
 
 	/**
