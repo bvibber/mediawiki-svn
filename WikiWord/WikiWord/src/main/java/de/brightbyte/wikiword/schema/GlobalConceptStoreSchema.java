@@ -206,7 +206,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		String[] ll = listPrefixes("resource");
 		if (ll.length>32) throw new IllegalArgumentException("only up to 32 languages are supported! found "+ll.length+" prefixes: "+Arrays.toString(ll));
 
-		Arrays.sort(ll);
+		Arrays.sort(ll); //FIXME: sort by size!
 		Corpus[] cc = new Corpus[ll.length];
 		
 		int i = 0;

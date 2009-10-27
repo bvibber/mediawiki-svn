@@ -273,7 +273,6 @@ public class DatabaseWikiWordStore implements WikiWordStore {
 		}
 	}
 
-	@Deprecated
 	protected void log(String msg) {
 		database.info(msg);
 	}

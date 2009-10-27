@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 import javax.sql.DataSource;
 
 import de.brightbyte.application.Agenda;
+import de.brightbyte.application.Agenda.Record;
 import de.brightbyte.data.ChunkyBitSet;
 import de.brightbyte.db.DatabaseAccess;
 import de.brightbyte.db.DatabaseField;
@@ -159,6 +160,20 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		return ((id / idOffsetGranularity) +1) * idOffsetGranularity;
 	}
 
+	protected int deletePendingConceptsAfter(int id) throws PersistenceException {
+		try {
+			String sql = "DELETE FROM "+conceptTable.getSQLName()+" WHERE id > "+id;
+			Integer n = (Integer)database.executeUpdate("deleteConceptsAfter", sql);
+
+			sql = "DELETE FROM "+mergeTable.getSQLName()+" WHERE new > "+id;
+			database.executeUpdate("deleteConceptsAfter", sql);
+			
+			return n;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
+	
 	public int getMaxConceptId() throws PersistenceException {
 		try {
 			flush();
@@ -401,7 +416,7 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 				" SELECT LL.concept, " +
 				"		R.global_concept, " +
 				"       1 " +
-				" FROM "+langlinkTable.getSQLName()+" as LL " +
+				" FROM "+langlinkTable.getSQLName()+" as LL force index(concept_language_target) " +
 				" JOIN "+originTable.getSQLName()+" as R force index(lang_name) " +
 				" ON R.lang = LL.language AND R.local_concept_name = LL.target";
 		
@@ -464,11 +479,39 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 			return name;
 		}
 		
-		public int executeUpdate(int chunk, long first, long end) throws PersistenceException {
-			//FIXME: for a clean continuation, we weould need to delete merged concepts
-			//       created during the last inclomplete chunk, somilar to the safepoint recovery
-			//       in the import loop!
+		public void cleanupDirtyStep(Record rec) throws PersistenceException {
+			if (rec.parameters.get("lastConceptId_")!=null) {
+				int lastId = (Integer)rec.parameters.get("lastConceptId_");
+				log(context+"::"+name+"#FindMergeCandidatesQuery continues in dirty step, deleting pending concepts from id > "+lastId);
+				deletePendingConceptsAfter(lastId);
+				conceptId = lastId +1;
+			}  else {
+				int lastId = getMaxConceptId();
+				warning(0, context+"::"+name+"#FindMergeCandidatesQuery continues in dirty step, no lastConceptId_", "getMaxConceptId() = "+lastId, null);
+				conceptId = lastId +1;
+			}
 			
+			String sql = "SELECT old, new FROM " + mergeTable.getSQLName();
+			ResultSet res = DatabaseGlobalConceptStoreBuilder.this.executeQuery(context+"::"+name+"#cleanupDirtyStep.stop", sql);
+		
+			try {
+				while (res.next()) { //TODO: progress? safepoint?
+					int leftId = res.getInt("old");
+					int rightId = res.getInt("new");
+					stop.set(leftId, true);
+					stop.set(rightId, true);
+				}			
+				res.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e);
+			}
+		}
+
+		public String getQueryState() {
+			return "lastConceptId_=I"+conceptId;
+		}
+		
+		public int executeUpdate(int chunk, long first, long end) throws PersistenceException {
 			String sql = "SELECT " +
 					" L.id as concept1_id, " +
 					" L.name as concept1_name, " +
@@ -482,10 +525,10 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 					" R.language_bits as concept2_language_bits, " +
 					" R.language_count as concept2_language_count, " +
 					" R.random as concept2_random " +
-				" FROM "+relationTable.getSQLName()+" as J1 "+
-				" JOIN "+relationTable.getSQLName()+" as J2 ON J2.concept1 = J1.concept2 "+
-				" JOIN "+conceptTable.getSQLName()+" as L ON L.id = J1.concept1 " +
-				" JOIN "+conceptTable.getSQLName()+" as R ON R.id = J2.concept1 " +
+				" FROM "+relationTable.getSQLName()+" as J1 force index(PRIMARY) "+
+				" JOIN "+relationTable.getSQLName()+" as J2  force index(PRIMARY) ON J2.concept1 = J1.concept2 "+
+				" JOIN "+conceptTable.getSQLName()+" as L force index(PRIMARY) ON L.id = J1.concept1 " +
+				" JOIN "+conceptTable.getSQLName()+" as R force index(PRIMARY) ON R.id = J2.concept1 " +
 				" WHERE (L.language_bits & R.language_bits) = 0 " +
 				" AND (J1.concept1 >= "+first+" AND J1.concept1 < "+end+")" +
 				" AND (J1.langref >= 1 AND J2.langref >= 1) " +
@@ -633,6 +676,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 				//NOTE: allow agenda to override offset
 				Agenda.Record rec = getAgenda().getCurrentRecord();
 				ofs = (Integer)rec.parameters.get("offset_");
+				
+				//NOTE: don't call deletePendingConceptsAfter(ofs) here, do cleanup per chunk!
 				
 				int c = findMergeCandidates(ofs);
 				flush();
