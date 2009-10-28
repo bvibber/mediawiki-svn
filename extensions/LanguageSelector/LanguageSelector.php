@@ -72,7 +72,7 @@ define( 'LANGUAGE_SELECTOR_INTO_CATLINKS', 14 ); #put after catlinks text
 $wgLanguageSelectorLocation = LANGUAGE_SELECTOR_AT_TOP_OF_TEXT;
 
 ///// hook it up /////////////////////////////////////////////////////
-$wgHooks['AbortNewAccount'][] = 'wfLanguageSelectorAbortNewAccount'; //abuse hook to inject default language option //FIXME: doesn't quite work it seems :(
+$wgHooks['AddNewAccount'][] = 'wfLanguageSelectorAddNewAccount';
 $wgHooks['BeforePageDisplay'][] = 'wfLanguageSelectorBeforePageDisplay';
 $wgHooks['GetCacheVaryCookies'][] = 'wfLanguageSelectorGetCacheVaryCookies';
 
@@ -343,14 +343,15 @@ function wfLanguageSelectorDetectLanguage( $mode ) {
 	return $contLang;
 }
 
-function wfLanguageSelectorAbortNewAccount( $u ) { //FIXME: doesn't quite work it seems :(
-	global $wgUser;
+function wfLanguageSelectorAddNewAccount( $u ) {
+	global $wgUser, $wgLang;
 
 	//inherit language;
-	//if $wgUser->isAnon, this means remembering what the user selected
+	//if $wgUser is the created user this means remembering what the user selected
 	//otherwise, it would mean inheriting the language from the user creating the account.
-	if ($wgUser->isAnon()) {
-		$u->setOption('language', $wgUser->getOption('language'));
+	if ( $wgUser === $u ) {
+		$u->setOption( 'language', $wgLang->getCode() );
+		$u->saveSettings();
 	}
 
 	return true;
