@@ -68,6 +68,13 @@ $messages['ar'] = array(
 	'importfreeimages_nophpflickr' => 'لم تثبّت phpFlickr، من فضلك اضبط $wgIFphpFlickr في LocalSettings.php.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'importfreeimages_owner' => 'ܣܝܘܡܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

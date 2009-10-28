@@ -217,17 +217,17 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
-	'grouppermissions-search' => 'ܟܢܘܫܝܐ:',
+	'grouppermissions-search' => 'ܟܢܘܫܬܐ:',
 	'grouppermissions-dologin' => 'ܥܘܠ',
 	'grouppermissions-dosearch' => 'ܙܠ',
-	'grouppermissions-searchlabel' => 'ܒܨܝ ܥܠ ܟܢܘܫܝܐ',
-	'grouppermissions-deletelabel' => 'ܫܘܦ ܟܢܘܫܝܐ',
-	'grouppermissions-add' => 'ܐܘܣܦ ܟܢܘܫܝܐ',
-	'grouppermissions-delete' => 'ܫܘܦ ܟܢܘܫܝܐ',
+	'grouppermissions-searchlabel' => 'ܒܨܝ ܥܠ ܟܢܘܫܬܐ',
+	'grouppermissions-deletelabel' => 'ܫܘܦ ܟܢܘܫܬܐ',
+	'grouppermissions-add' => 'ܐܘܣܦ ܟܢܘܫܬܐ',
+	'grouppermissions-delete' => 'ܫܘܦ ܟܢܘܫܬܐ',
 	'grouppermissions-never' => 'ܠܐ ܡܡܬܘܡ',
 	'grouppermissions-sort-edit' => 'ܫܚܠܦܬܐ',
 	'grouppermissions-sort-admin' => 'ܡܕܒܪܢܘܬܐ',
-	'grouppermissions-log-name' => 'ܣܓܠܐ ܕܦܣܣ̈ܐ ܕܟܢܘܫܝܐ',
+	'grouppermissions-log-name' => 'ܣܓܠܐ ܕܦܣܣ̈ܐ ܕܟܢܘܫܬܐ',
 	'grouppermissions-sp-save' => 'ܠܒܘܟ',
 	'grouppermissions-sp-addperm' => 'ܐܘܣܦ ܦܣܣܐ',
 	'right-history' => 'ܚܙܝ ܦܐܬܐ ܕܬܫܥܝܬ̈ܐ',

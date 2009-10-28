@@ -1308,6 +1308,7 @@ $messages['ml'] = array(
 	'prefstats-factor-week' => 'ആഴ്ച്ച',
 	'prefstats-factor-twoweeks' => 'രണ്ട് ആഴ്ച്ച',
 	'prefstats-factor-fourweeks' => 'നാല് ആഴ്‌‌ച്ച',
+	'prefstats-factor-default' => 'സ്വതവേയുള്ള അളവിലേയ്ക്ക് മടങ്ങുക',
 );
 
 /** Malay (Bahasa Melayu)

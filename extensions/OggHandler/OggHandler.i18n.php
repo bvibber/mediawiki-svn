@@ -2878,6 +2878,7 @@ $messages['su'] = array(
  * @author Jon Harald Søby
  * @author Lejonel
  * @author Rotsee
+ * @author Skalman
  */
 $messages['sv'] = array(
 	'ogg-desc' => 'Stöder filtyperna Ogg Theora och Ogg Vorbis med en JavaScript-baserad mediaspelare',
@@ -2895,8 +2896,8 @@ $messages['sv'] = array(
 	'ogg-play-video' => 'Spela upp video',
 	'ogg-play-sound' => 'Spela upp ljud',
 	'ogg-no-player' => 'Tyvärr verkar det inte finnas någon mediaspelare som stöds installerad i ditt system. Det finns <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">spelare att ladda ner</a>.',
-	'ogg-no-player-js' => 'Du kan inte spela upp det här klippet, antingen för att du har Javascript avslaget, eller för att du saknar en mediespelare som kan spela den här filen.<br />
-Du kan antingen <a href="$1">ladda ner mediefilen</a><br />eller<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ladda ner en mediespelare</a> så att du kan se klippet i webbläsaren.',
+	'ogg-no-player-js' => 'Tyvärr, ditt system har antingen JavaScript avslaget eller så saknas en mediaspelare som kan spela den här filen.<br />
+Du kan antingen <a href="$1">ladda ner mediefilen</a> eller <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ladda ner en mediespelare</a> så att du kan se klippet i webbläsaren.',
 	'ogg-no-xiphqt' => 'Du verkar inte ha XiphQT-komponenten för QuickTime. Utan den kan inte QuickTime spela upp ogg-filer.Du kan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ladda ner XiphQT</a> eller välja någon annan spelare.',
 	'ogg-player-videoElement' => '<video>-element',
 	'ogg-player-oggPlugin' => 'Ogg-plugin',

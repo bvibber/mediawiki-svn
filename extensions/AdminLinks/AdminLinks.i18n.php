@@ -29,12 +29,14 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Bennylin
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'adminlinks-desc' => '{{desc}}',
-	'adminlinks_documentation' => 'The label for a link to documentation for a certain extension, whose name is passed in.',
+	'adminlinks_documentation' => 'The label for a link to documentation for a certain extension, whose name is passed in.
+{{Identical|Documentation}}',
 	'adminlinks_users' => '{{Identical|User}}',
 	'right-adminlinks' => '{{doc-right}}',
 );
@@ -50,6 +52,7 @@ $messages['lzz'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'adminlinks_documentation' => 'Dokumentasie vir $1',
 	'adminlinks_users' => 'Gebruikers',
 );
 

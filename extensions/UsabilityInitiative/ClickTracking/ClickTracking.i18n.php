@@ -64,10 +64,22 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'ct-event-name' => 'Gebeurtenis',
+	'ct-expert-header' => '"Deskundige"-klieks',
+	'ct-intermediate-header' => '"Gemiddeld"-klieks',
+	'ct-beginner-header' => '"Beginner"-klieks',
+	'ct-total-header' => 'Totaal klieke',
 	'ct-start-date' => 'Begindatum (JJJJMMDD)',
 	'ct-end-date' => 'Einddatum (JJJJMMDD)',
+	'ct-beginner' => 'Beginner',
+	'ct-intermediate' => 'Gemiddeld',
+	'ct-expert' => 'Deskundige',
 	'ct-date-range' => 'Periode',
+	'ct-editing' => 'Tans besig met redigering:',
+	'ct-anon-users' => 'Anonieme gebruikers',
+	'ct-user-contribs' => 'Totaal aantal gebruikersbydraes',
 	'ct-and' => 'en',
+	'ct-update-table' => 'Opdateer tabel',
 );
 
 /** Arabic (العربية)

@@ -1842,6 +1842,7 @@ $messages['sr-el'] = array(
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
+ * @author Skalman
  */
 $messages['sv'] = array(
 	'readerfeedback' => 'Vad tycker du om den här sidan?',
@@ -1859,8 +1860,8 @@ $messages['sv'] = array(
 	'readerfeedback-level-4' => 'Mycket bra',
 	'readerfeedback-submit' => 'Skicka',
 	'readerfeedback-main' => 'Endast innehållssidor kan granskas.',
-	'readerfeedback-success' => "'''Tack för att du granskade den här sidan!''' ([$3 Kommentarer eller frågor?]).",
-	'readerfeedback-voted' => "'''Det verkar som att du redan betygsatt den här sidan'''. ([$3 Kommentarer eller frågor?]).",
+	'readerfeedback-success' => "'''Tack för att du granskade den här sidan!''' ([$2 visa resultat]) ([$3 kommentarer eller frågor?])",
+	'readerfeedback-voted' => "'''Det verkar som att du redan har betygsatt den här sidan.''' ([$2 visa resultat]) ([$3 kommentarer eller frågor?])",
 	'readerfeedback-submitting' => 'Skickar...',
 	'readerfeedback-finished' => 'Tack!',
 	'tooltip-ca-ratinghist' => 'Användarbetyg för den här sidan',

@@ -207,8 +207,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Imre
+ * @author Translationista
  */
 $messages['es'] = array(
+	'mostrevisors' => 'Páginas con más revisores',
 	'mostrevisors-limitlinks' => 'Mostrar hasta $1 páginas',
 	'mostrevisors-namespace' => 'Espacio de nombres:',
 	'mostrevisors-submit' => 'Ir',

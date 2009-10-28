@@ -40,6 +40,7 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'layouts_title' => "Skep 'n bladsy",
 	'layouts_continue' => 'Volgende',
+	'layouts_unknown' => 'Onbekend',
 );
 
 /** Arabic (العربية)

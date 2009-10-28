@@ -57,6 +57,7 @@ $messages['qqq'] = array(
 	'imagetagging-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'imagetagging-article' => '{{Identical|Page}}',
 	'imagetagging-imghistory' => '{{Identical|History}}',
+	'imagetagging-images' => '{{Identical|Image}}',
 	'imagetagging-tagcancel-button' => '{{Identical|Cancel}}',
 	'imagetagging-imagetag-seemoreimages' => 'Shown in articles; $1 is the name of the article, $2 is the number of images which have a region tagged with this article.',
 );

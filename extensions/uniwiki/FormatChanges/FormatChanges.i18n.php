@@ -315,7 +315,7 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'formatchanges-desc' => '[[Special:RecentChanges|最近の更新]]を再フォーマットする',
+	'formatchanges-desc' => '[[Special:RecentChanges|最近の更新]]の形式を変更する',
 	'formatchanges-anonymous' => '匿名',
 	'formatchanges-createdby' => '$1 - $2 による作成 ($3)',
 	'formatchanges-editedby' => '$1 - $2 による編集 ($3)',

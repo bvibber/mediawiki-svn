@@ -290,6 +290,7 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'configure-section-users' => '{{Identical|User}}',
 	'configure-section-extension' => '{{Identical|Extensions}}',
 	'configure-section-search' => '{{Identical|Search}}',
+	'configure-section-copyright' => '{{Identical|Copyright}}',
 	'configure-section-htcp' => 'See Wikipedia articles on [[:wikipedia:HTCP|HTCP]] and [[:wikipedia:multicast|multicast]].',
 	'configure-select-wiki-view-desc' => 'The extensions "Configure" makes it possible to administer wiki configuration settings for multiple wikis, and keep different versions of it. This versies can be viewed.',
 	'configure-select-wiki-submit' => '{{Identical|Select}}',
@@ -375,6 +376,7 @@ $messages['af'] = array(
 	'configure-section-users' => 'Gebruikers',
 	'configure-section-extension' => 'Uitbreidings',
 	'configure-section-search' => 'Soek',
+	'configure-section-copyright' => 'Kopiereg',
 	'configure-select-wiki-view-desc' => 'Kies die wiki waarvoor u die weergawes van die instellings wil sien.',
 	'configure-select-wiki-submit' => 'Kies',
 	'configure-view' => 'Wys',
@@ -612,7 +614,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
-	'configure-desc-group' => 'ܟܢܘܫܝܐ',
+	'configure-desc-group' => 'ܟܢܘܫܬܐ',
 	'configure-desc-key' => 'ܩܠܝܕܐ',
 	'configure-desc-ns' => 'ܚܩܠܐ',
 	'configure-desc-val' => 'ܛܝܡܐ',
