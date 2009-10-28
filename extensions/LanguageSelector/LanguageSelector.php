@@ -58,7 +58,6 @@ $wgLanguageSelectorShowCode = false;
 /**
  * Show all languages defined, not only those with a language file (Language::getLanguageNames( <true/false> ))
  */
-if( !isset ( $wgLanguageSelectorShowAll ) )
 $wgLanguageSelectorShowAll = false;
 
 define( 'LANGUAGE_SELECTOR_MANUAL',    0 ); #don't place anywhere
