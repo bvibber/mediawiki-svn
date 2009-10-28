@@ -474,7 +474,7 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 	
 	public function getSearchEngine() {
-		return "SearchEngineSqlite";
+		return "SearchSqlite";
 	}
 
 	/**

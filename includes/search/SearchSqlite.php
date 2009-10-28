@@ -112,7 +112,7 @@ class SearchSqlite extends SearchEngine {
 
 		$searchon = $this->db->strencode( $searchon );
 		$field = $this->getIndexField( $fulltext );
-		return " MATCH($field) AGAINST('$searchon' IN BOOLEAN MODE) ";
+		return " $field MATCH '$searchon' ";
 	}
 	
 	function regexTerm( $string, $wildcard ) {
@@ -247,9 +247,6 @@ class SearchSqlite extends SearchEngine {
 
 	/**
 	 * Get the base part of the search query.
-	 * The actual match syntax will depend on the server
-	 * version; MySQL 3 and MySQL 4 have different capabilities
-	 * in their fulltext search indexes.
 	 *
 	 * @param $filteredTerm String
 	 * @param $fulltext Boolean
@@ -259,7 +256,7 @@ class SearchSqlite extends SearchEngine {
 		$match = $this->parseQuery( $filteredTerm, $fulltext );
 		$page        = $this->db->tableName( 'page' );
 		$searchindex = $this->db->tableName( 'searchindex' );
-		return 'SELECT $searchindex.rowid, page_namespace, page_title ' .
+		return "SELECT $searchindex.rowid, page_namespace, page_title " .
 			"FROM $page,$searchindex " .
 			"WHERE page_id=$searchindex.rowid AND $match";
 	}
