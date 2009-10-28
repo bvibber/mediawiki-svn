@@ -11,6 +11,6 @@ $messages = array();
  * @author Bryan Tong Minh
  */
 $messages['en'] = array(
-	'uploadfromcommons' => 'Quickly upload an image from Commons. Shows how to extend the new upload system',
+	'uploadfromcommons-desc' => 'Quickly upload an image from Commons. Shows how to extend the new upload system',
 	'uploadfromcommons-source' => 'Commons filename:',
 );

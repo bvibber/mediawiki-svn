@@ -41,7 +41,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'UploadFromCommons',
 	'author' => 'Bryan Tong Minh',
 	'description' => 'Quickly upload an image from Commons',
-	'descriptionmsg' => 'uploadfromcommons',
+	'descriptionmsg' => 'uploadfromcommons-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UploadFromCommons',
 	'version' => '1.0',
 );
