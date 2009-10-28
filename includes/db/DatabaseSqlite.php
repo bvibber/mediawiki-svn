@@ -100,7 +100,7 @@ class DatabaseSqlite extends DatabaseBase {
 	 * Returns version of currently supported SQLite fulltext search module or false if none present.
 	 * @return String
 	 */
-	function fulltextSearchModule() {
+	function getFulltextSearchModule() {
 		$table = 'dummy_search_test';
 		$this->query( "DROP TABLE IF EXISTS $table", __METHOD__ );
 		if ( $this->query( "CREATE VIRTUAL TABLE $table USING FTS3(dummy_field)", __METHOD__, true ) ) {

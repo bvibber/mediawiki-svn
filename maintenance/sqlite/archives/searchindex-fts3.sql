@@ -5,7 +5,8 @@
 DROP TABLE IF EXISTS /*_*/searchindex;
 CREATE VIRTUAL TABLE /*_*/searchindex USING FTS3(
   -- Key to page_id
-  si_page INTEGER NOT NULL,
+  -- Disabled, instead we use the built-in rowid column
+  -- si_page INTEGER NOT NULL,
 
   -- Munged version of title
   si_title,

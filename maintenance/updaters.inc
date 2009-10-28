@@ -1286,7 +1286,7 @@ function sqlite_initial_indexes() {
 
 function sqlite_setup_searchindex() {
 	global $wgDatabase;
-	$module = $wgDatabase->fulltextSearchModule();
+	$module = $wgDatabase->getFulltextSearchModule();
 	$fts3tTable = update_row_exists( 'fts3' );
 	if ( $fts3tTable &&  !$module ) {
 		wfOut( '...PHP is missing FTS3 support, downgrading tables...' );

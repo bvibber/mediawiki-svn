@@ -12,7 +12,8 @@ DROP TABLE IF EXISTS /*_*/searchindex_segments;
 
 CREATE TABLE /*_*/searchindex (
   -- Key to page_id
-  si_page INTEGER NOT NULL,
+  -- Disabled, instead we use the built-in rowid column
+  -- si_page INTEGER NOT NULL,
 
   -- Munged version of title
   si_title TEXT,

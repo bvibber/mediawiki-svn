@@ -263,9 +263,9 @@ class SearchSqlite extends SearchEngine {
 		$match = $this->parseQuery( $filteredTerm, $fulltext );
 		$page        = $this->db->tableName( 'page' );
 		$searchindex = $this->db->tableName( 'searchindex' );
-		return "SELECT si_page, page_namespace, page_title " .
+		return "SELECT $searchindex.rowid, page_namespace, page_title " .
 			"FROM $page,$searchindex " .
-			"WHERE page_id=si_page AND $match";
+			"WHERE page_id=$searchindex.rowid AND $match";
 	}
 
 	function getCountQuery( $filteredTerm, $fulltext ) {
@@ -274,7 +274,7 @@ class SearchSqlite extends SearchEngine {
 		$searchindex = $this->db->tableName( 'searchindex' );
 		return "SELECT COUNT(*) AS c " .
 			"FROM $page,$searchindex " .
-			"WHERE page_id=si_page AND $match" .
+			"WHERE page_id=$searchindex.rowid AND $match" .
 			$this->queryRedirect() . ' ' .
 			$this->queryNamespaces();
 	}
@@ -288,11 +288,15 @@ class SearchSqlite extends SearchEngine {
 	 * @param $text String
 	 */
 	function update( $id, $title, $text ) {
+		// @todo: find a method to do it in a single request,
+		// couldn't do it so far due to typelessness of FTS3 tables.
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->replace( 'searchindex',
-			array( 'si_page' ),
+
+		$dbw->delete( 'searchindex', array( 'rowid' => $id ), __METHOD__ );
+		
+		$dbw->insert( 'searchindex',
 			array(
-				'si_page' => $id,
+				'rowid' => $id,
 				'si_title' => $title,
 				'si_text' => $text
 			), __METHOD__ );
@@ -309,8 +313,8 @@ class SearchSqlite extends SearchEngine {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->update( 'searchindex',
+			array( 'rowid'  => $id ),
 			array( 'si_title' => $title ),
-			array( 'si_page'  => $id ),
 			__METHOD__ );
 	}
 }
