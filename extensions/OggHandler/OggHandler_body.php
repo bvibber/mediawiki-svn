@@ -503,10 +503,10 @@ class OggHandler extends MediaHandler {
 					$size += $stream['size'];
 			}
 		}
-		if( $size != 0 ){
-			$bitrate = $length == 0 ? 0 : $size / $length * 8;
-		}else{
+		if( isset( $unpacked['bitrate'] ) ){
 			$bitrate = $unpacked['bitrate'];
+		}else{
+			$bitrate = $length == 0 ? 0 : $size / $length * 8;
 		}
 		return wfMsg( $msg, implode( '/', $streamTypes ),
 			$wgLang->formatTimePeriod( $length ),
