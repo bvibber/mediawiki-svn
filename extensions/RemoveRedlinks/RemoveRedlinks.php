@@ -21,11 +21,20 @@ $wgExtensionCredits['other'][] = array(
 	'author'		=> '[mailto:innocentkiller@gmail.com Chad Horohoe]',
 );
 
+// Restrict link removal to anons only
+$wgRRAnonOnly = false;
+
 // Hook Registering
 $wgHooks['LinkBegin'][] = 'efRemoveRedlinks';
 
 // And the function
 function efRemoveRedlinks( $skin, $target, &$text, &$customAttribs, &$query, &$options, &$ret ) {
+	global $wgRRAnonOnly, $wgUser;
+	
+	// return possibly if we're not an anon
+	if( $wgRRAnonOnly && $wgUser->isLoggedIn() ) {
+		return true;
+	}
 	// return immediately if we know it's real
 	if ( in_array( 'known', $options ) ) {
 		return true; 
