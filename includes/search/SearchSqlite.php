@@ -28,7 +28,10 @@
 class SearchSqlite extends SearchEngine {
 	var $strictMatching = true;
 
-	/** @todo document */
+	/**
+	 * Creates an instance of this class
+	 * @param $db DatabaseSqlite: database object
+	 */
 	function __construct( $db ) {
 		$this->db = $db;
 	}
@@ -208,11 +211,12 @@ class SearchSqlite extends SearchEngine {
 	}
 
 	/**
-	 * Return a LIMIT clause to limit results on the query.
+	 * Returns a query with limit for number of results set.
+	 * @param $sql String: 
 	 * @return String
 	 */
-	function queryLimit() {
-		return $this->db->limitResult( '', $this->limit, $this->offset );
+	function limitResult( $sql ) {
+		return $this->db->limitResult( $sql, $this->limit, $this->offset );
 	}
 
 	/**
@@ -231,11 +235,12 @@ class SearchSqlite extends SearchEngine {
 	 * @param $fulltext Boolean
 	 */
 	function getQuery( $filteredTerm, $fulltext ) {
-		return $this->queryMain( $filteredTerm, $fulltext ) . ' ' .
+		return $this->limitResult(
+			$this->queryMain( $filteredTerm, $fulltext ) . ' ' .
 			$this->queryRedirect() . ' ' .
 			$this->queryNamespaces() . ' ' .
-			$this->queryRanking( $filteredTerm, $fulltext ) . ' ' .
-			$this->queryLimit();
+			$this->queryRanking( $filteredTerm, $fulltext )
+		);
 	}
 	
 	/**
@@ -306,8 +311,7 @@ class SearchSqlite extends SearchEngine {
 		$dbw->update( 'searchindex',
 			array( 'si_title' => $title ),
 			array( 'si_page'  => $id ),
-			__METHOD__,
-			array( $dbw->lowPriorityOption() ) );
+			__METHOD__ );
 	}
 }
 
