@@ -40,16 +40,6 @@ var liquidThreads = {
 		liquidThreads.currentReplyThread = 0;
 	},
 	
-	'handleEditLink' : function(e) {
-		e.preventDefault();
-		
-		// Grab the container.
-		var container = $j(this).closest('.lqt-post-wrapper');
-		var query='&lqt_method=edit&lqt_operand='+container.data('thread-id');
-		
-		liquidThreads.injectEditForm( query, container );
-	},
-	
 	'injectEditForm' : function(query, container, preload) {
 		var url = wgServer+wgScript+'?lqt_inline=1&title='+encodeURIComponent(wgPageName)+
 					query
@@ -248,10 +238,6 @@ var liquidThreads = {
 		var menuContainer = post.find( '.lqt-thread-toolbar-menu' );
 		menu.remove().appendTo( menuContainer );
 		menuContainer.find('.lqt-thread-toolbar-command-list').hide();
-		
-		// Add handler for edit link
-		var editLink = menu.find('.lqt-command-edit > a');
-		editLink.click( liquidThreads.handleEditLink );
 
 		var trigger = menuContainer.find( '.lqt-thread-actions-trigger' )	
 
@@ -293,11 +279,6 @@ var liquidThreads = {
 			threadModifiedTS[threadID] = oldTS;
 			threads.push(threadID);
 		} );
-		
-		// Optimisation: if no threads are to be checked, do not check.
-		if ( ! threads.length ) {
-			return;
-		}
 		
 		var getData = { 'action' : 'query', 'list' : 'threads', 'thid' : threads.join('|'),
 						'format' : 'json', 'thprop' : 'id|subject|parent|modified' };

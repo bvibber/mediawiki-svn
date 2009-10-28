@@ -191,13 +191,8 @@ class Threads {
 	}
 	
 	// This will attempt to replace invalid characters and sequences in a title with
-	//  a safe replacement (_, currently). Before doing this, it will parse any wikitext
-	//  and strip the HTML, before converting HTML entities back into their corresponding
-	//  characters.
+	//  a safe replacement (_, currently).
 	public static function makeTitleValid( $text ) {
-		$text = self::stripWikitext( $text );
-		$text = html_entity_decode( $text, ENT_QUOTES, 'UTF-8' );
-	
 		static $rxTc;
 		
 		if ( is_callable( array( 'Title', 'getTitleInvalidRegex' ) ) ) {
@@ -217,16 +212,6 @@ class Threads {
 		}
 		
 		$text = preg_replace( $rxTc, '_', $text );
-		
-		return $text;
-	}
-	
-	// This will strip wikitext of its formatting.
-	public static function stripWikitext( $text ) {
-		global $wgOut;
-		$text = $wgOut->parseInline( $text );
-		
-		$text = StringUtils::delimiterReplace( '<', '>', '', $text );
 		
 		return $text;
 	}

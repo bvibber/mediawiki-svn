@@ -4,16 +4,9 @@ liquidThreads.doMarkRead =
 		e.preventDefault();
 		
 		var button = $j(this);
-		var type = 'one';
 		
 		// Find the operand.
 		var form = button.closest('form.lqt_newmessages_read_button');
-		
-		if (!form.length) {
-			form = button.closest( 'form.lqt_newmessages_read_all_button' );
-			type = 'all';
-		}
-		
 		var operand = form.find('input[name=lqt_operand]').val();
 		var threads = operand.replace( /\,/g, '|' );
 		
@@ -28,21 +21,6 @@ liquidThreads.doMarkRead =
 		
 		var spinner = $j('<div class="mw-ajax-loader"/>');
 		$j(button).before( spinner );
-		
-		var doneCallback =
-			function(reply) {
-				if ( type == 'one' ) {
-					var row = button.closest('tr');
-					row.fadeOut( 'slow',
-						function() { row.remove(); } );
-				} else {
-					var tables = $j('table.lqt-new-messages');
-					tables.fadeOut( 'slow',
-						function() { tables.remove(); } );
-				}
-				
-				spinner.remove();
-			}
 		
 		$j.get( wgScriptPath+'/api'+wgScriptExtension, getTokenParams,
 			function( data ) {
@@ -59,7 +37,12 @@ liquidThreads.doMarkRead =
 				
 				$j.post( wgScriptPath+'/api'+wgScriptExtension,
 					markReadParameters,
-					doneCallback, 'json' );
+					function(reply) {
+						var row = button.closest('tr');
+						row.fadeOut( 'slow',
+							function() { row.remove(); } );
+						spinner.remove();
+					}, 'json' );
 			}, 'json' );
 	}
 

@@ -329,7 +329,7 @@ class NewMessages {
 				__METHOD__, array(),
 				array(
 					'user_message_state' =>
-						array( 'RIGHT JOIN', $joinClause )
+						array( 'LEFT OUTER JOIN', $joinClause )
 				) );
 							
 		return Threads::loadFromResult( $res, $dbr );

@@ -40,11 +40,6 @@ class LqtView {
 		$this->user_colors = array();
 		$this->user_color_index = 1;
 	}
-	
-	static function getView() {
-		global $wgOut, $wgArticle, $wgTitle, $wgUser, $wgRequest;
-		return new LqtView( $wgOut, $wgArticle, $wgTitle, $wgUser, $wgRequest );
-	}
 
 	function setHeaderLevel( $int ) {
 		$this->headerLevel = $int;
@@ -319,8 +314,6 @@ class LqtView {
 			$this->showReplyForm( $thread );
 		} elseif ( $method == 'talkpage_new_thread' ) {
 			$this->showNewThreadForm();
-		} elseif ( $method == 'edit' ) {
-			$this->showPostEditingForm( $thread );
 		}
 		
 		$this->output->setArticleBodyOnly( true );
