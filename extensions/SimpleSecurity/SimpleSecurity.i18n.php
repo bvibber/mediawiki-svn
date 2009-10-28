@@ -155,7 +155,7 @@ $messages['de'] = array(
 	'security-desc' => 'Erweitert den MediaWiki-Seitenschutz, um das Ansehen von Seiteninhalt zu begrenzen',
 	'security-logpage' => 'Sicherheits-Logbuch',
 	'security-logpagetext' => 'Dies ist ein Logbuch von geblockten Aktionen der [http://www.mediawiki.org/wiki/Extension:SimpleSecurity Extension „SimpleSecurity“].',
-	'badaccess-read' => 'Warnung: „$1“ verweißt hierher, aber du hast keine ausreichende Berechtigung um die Seite zu sehen.',
+	'badaccess-read' => 'Warnung: „$1“ verweist hierher, aber du hast keine ausreichende Berechtigung um die Seite zu sehen.',
 	'security-info' => 'Auf dieser Seite sind $1',
 	'security-info-toggle' => 'Sicherheitsbegrenzungen',
 	'security-inforestrict' => '$1 ist begrenzt auf $2',
@@ -173,7 +173,7 @@ $messages['de'] = array(
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'badaccess-read' => 'Warnung: „$1“ verweißt hierher, aber Sie haben keine ausreichende Berechtigung um die Seite zu sehen.',
+	'badaccess-read' => 'Warnung: „$1“ verweist hierher, aber Sie haben keine ausreichende Berechtigung um die Seite zu sehen.',
 	'security-infosysops' => 'Für Sie sind keine Begrenzungen aktiv, weil Sie der Gruppe „Administratoren“ angehören',
 );
 
