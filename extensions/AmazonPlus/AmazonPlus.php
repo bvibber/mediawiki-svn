@@ -4,7 +4,7 @@
  * AmazonPlus extension for MediaWiki -- a highly customizable extension to display Amazon information
  * Documentation is available at http://www.mediawiki.org/wiki/Extension:AmazonPlus
  *
- * Copyright (c) 2008 Ryan Schmidt (Skizzerz)
+ * Copyright (c) 2008-2009 Ryan Schmidt (Skizzerz)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,18 +22,29 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+if( !function_exists( 'wfIniGetBool' ) ) {
+	#perhaps GlobalFunctions wasn't loaded?
+	require_once( "$IP/includes/GlobalFunctions.php" );
+	if( !function_exists( 'wfIniGetBool' ) ) {
+		#unsupported MediaWiki version, exit early so we don't get fatals or whatnot
+		echo '<html><head><title>Error</title></head><body>The AmazonPlus extension does not support your version of MediaWiki.
+		Please either upgrade MediaWiki or uninstall the AmazonPlus extension.</body></html>';
+		die( 1 );
+	}
+}
+
 # make sure that everything that needs to be set/loaded is that way
 $err = '';
-if ( !wfIniGetBool( 'allow_url_fopen' ) && !extension_loaded( 'curl' ) ) {
+if( !wfIniGetBool( 'allow_url_fopen' ) && !extension_loaded( 'curl' ) ) {
 	# we need allow_url_fopen or curl to be on in order for the Http::get() call to work on the amazon url
 	$err .= "\n<li>allow_url_fopen or curl must be enabled in php.ini</li>";
 }
-if ( !extension_loaded( 'simplexml' ) ) {
+if( !extension_loaded( 'simplexml' ) ) {
 	# we need the simplexml extension loaded to parse the xml string
 	$err .= "\n<li>The SimpleXML extension for PHP must be loaded</li>";
 }
 # if there were errors found, die with the messages
-if ( $err ) {
+if( $err ) {
 	$html = '<html><head><title>Error</title></head><body>
 	The following errors were discovered with the AmazonPlus extension for MediaWiki:
 	<ul>' . $err . '</ul></body></html>';
@@ -46,19 +57,25 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'AmazonPlus',
 	'description'    => 'A highly customizable extension to display Amazon information',
 	'descriptionmsg' => 'amazonplus-desc',
-	'version'        => '0.4.0',
+	'version'        => '0.5.2',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:AmazonPlus',
 	'author'         => 'Ryan Schmidt',
 );
 
 $wgExtensionMessagesFiles['AmazonPlus'] = dirname( __FILE__ ) . '/AmazonPlus.i18n.php';
 
-$wgHooks['ParserFirstCallInit'][] = 'efAmazonPlusSetup';
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'efAmazonPlusSetup';
+} else {
+	$wgExtensionFunctions[] = 'efAmazonPlusSetup';
+}
+
 $wgHooks['BeforePageDisplay'][] = 'efAmazonPlusJavascript';
 
 $wgAmazonPlusJSVersion = 1; # Bump the version number every time you change AmazonPlus.js
 $wgAmazonPlusAWS = ''; # Amazon AWS Id. Required
-$wgAmazonPlusAssociates = array(); # Amazon Associates IDs, per locale.Example: array( 'us' => 'myamazonid', 'fr' => 'myfrenchid' ); Required
+$wgAmazonPlusSecretKey = ''; # Amazon Secret Key. Required
+$wgAmazonPlusAssociates = array(); # Amazon Associates IDs, per locale. Example: array( 'us' => 'myamazonid', 'fr' => 'myfrenchid' ); Required
 $wgAmazonPlusDefaultSearch = 'Books'; # Default search type, can be Books, DVDs, etc.
 $wgAmazonPlusDecimal = '.'; # What to seperate the decimals with in currency. e.g. 15.43 or 12,72
 
@@ -69,8 +86,9 @@ define( 'AMAZONPLUS_NEW', 2 );
 define( 'AMAZONPLUS_USED', 3 );
 
 # Set up the tag extension
-function efAmazonPlusSetup( &$parser ) {
-	$parser->setHook( 'amazon', 'efAmazonPlusRender' );
+function efAmazonPlusSetup() {
+	global $wgParser;
+	$wgParser->setHook( 'amazon', 'efAmazonPlusRender' );
 	wfLoadExtensionMessages( 'AmazonPlus' );
 	return true;
 }
@@ -122,7 +140,6 @@ class AmazonPlus {
 	var $locale, $request, $response, $xml, $input, $error, $valid, $token, $title, $shortReview;
 
 	function __construct( $title, $args, $input ) {
-		global $wgAmazonPlusAWS, $wgAmazonPlusAssociates;
 		$this->valid = array( 'us', 'gb', 'ca', 'de', 'fr', 'jp' );
 		$this->currencies = array();
 		$this->token = array( 'priceSelect' => rand() . '1', 'shortReview' => rand() . '2' );
@@ -139,10 +156,8 @@ class AmazonPlus {
 		$this->input = $input;
 		$this->request = array(
 			'Service'        => 'AWSECommerceService',
-			'AssociateTag'   => $wgAmazonPlusAssociates[$this->locale],
-			'AWSAccessKeyId' => $wgAmazonPlusAWS,
 			'Operation'      => 'ItemLookup',
-			'Version'        => '2008-08-19',
+			'Version'        => '2009-10-01',
 			'ItemId'         => $id,
 			'ResponseGroup'  => 'Large',
 		);
@@ -159,41 +174,44 @@ class AmazonPlus {
 	function getLocale() { return $this->locale; }
 
 	function getId( $title, $args ) {
-		global $wgAmazonPlusAWS, $wgAmazonPlusAssociates, $wgAmazonPlusDefaultSearch;
+		global $wgAmazonPlusDefaultSearch;
 		$kw = ( isset( $args['keywords'] ) ) ? $args['keywords'] : $title->getText();
 		$si = ( isset( $args['search'] ) ) ? $args['search'] : $wgAmazonPlusDefaultSearch;
 		$this->request = array(
 			'Service'       => 'AWSECommerceService',
 			'Operation'     => 'ItemSearch',
 			'ResponseGroup' => 'ItemIds',
-			'Version'       => '2008-08-19',
+			'Version'       => '2009-10-01',
 			'Keywords'      => $kw,
-			'AWSAccessKeyId' => $wgAmazonPlusAWS,
 			'SearchIndex'   => $si,
-			'AssociateTag'  => $wgAmazonPlusAssociates[$this->locale],
 		);
 		$this->doRequest();
-		if ( !$this->xml->Items->TotalResults ) {
+		if( !$this->xml || !$this->xml->Items->TotalResults ) {
 			return false;
 		}
 		return $this->xml->Items->Item[0]->ASIN;
 	}
 
 	function doRequest() {
+		global $wgAmazonPlusSecretKey, $wgAmazonPlusAWS, $wgAmazonPlusAssociates;
 		$tld = $this->localeString();
-		$str = "http://ecs.amazonaws.{$tld}/onca/xml";
+		$urlstr = "http://ecs.amazonaws.{$tld}/onca/xml";
 		$i = false;
-		foreach ( $this->request as $key => $value ) {
-			if ( $i ) {
-				$str .= '&';
-			} else {
-				$str .= '?';
-				$i = true;
-			}
-			$str .= wfUrlencode( $key ) . '=' . wfUrlencode( $value );
+		// generate the Signature
+		$this->request['Timestamp'] = wfTimestamp( TS_ISO_8601, time() );
+		$this->request['AWSAccessKeyId'] = $wgAmazonPlusAWS;
+		$this->request['AssociateTag'] = $wgAmazonPlusAssociates[$this->locale];
+		ksort( $this->request );
+		$prestr = "GET\necs.amazonaws.{$tld}\n/onca/xml\n";
+		$str = '';
+		foreach( $this->request as $key => $value ) {
+			$str .= $this->encode( $key ) . '=' . $this->encode( $value ) . '&';
 		}
-
-		$this->response = Http::get( $str );
+		$str = rtrim( $str, '&' );
+		$signature = $this->encode( base64_encode( hash_hmac( 'sha256', $prestr . $str, $wgAmazonPlusSecretKey, true ) ) );
+		$urlstr .= '?' . $str . '&Signature=' . $signature;
+		// do the query
+		$this->response = Http::get( $urlstr );
 		if ( !$this->response ) {
 			return 'amazonplus-fgcerr';
 		}
@@ -207,6 +225,10 @@ class AmazonPlus {
 			return false;
 		}
 		return true;
+	}
+	
+	function encode( $str ) {
+		return str_ireplace( '%7E', '~', rawurlencode( $str ) );
 	}
 
 	function getResult() {
@@ -280,6 +302,7 @@ class AmazonPlus {
 			'publishedyear'   => $this->parseDate( $attr->PublicationDate, 0 ),
 			'publishedmonth'  => $this->parseDate( $attr->PublicationDate, 1 ),
 			'publishedday'    => $this->parseDate( $attr->PublicationDate, 2 ),
+			'publisher'       => $attr->Publisher,
 			'detailslink'     => $links['Technical Details'],
 			/* IDENTIFICATION */
 			'isbn'            => $attr->ISBN,
