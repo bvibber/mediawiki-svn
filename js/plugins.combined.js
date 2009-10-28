@@ -2118,8 +2118,8 @@ fn : {
 							'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
 							show ? $section.attr( 'rel' ) : null
 						);
-						return false;
 					} )
+					.click( function() { return false; } )
 			);
 	},
 	buildSection : function( context, id, section ) {
