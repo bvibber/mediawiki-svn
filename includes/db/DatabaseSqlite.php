@@ -333,15 +333,15 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 
 	function wasDeadlock() {
-		return $this->lastErrno() == SQLITE_BUSY;
+		return $this->lastErrno() == 5; // SQLITE_BUSY
 	}
 
 	function wasErrorReissuable() {
-		return $this->lastErrno() ==  SQLITE_SCHEMA;
+		return $this->lastErrno() ==  17; // SQLITE_SCHEMA;
 	}
 
 	function wasReadOnlyError() {
-		return $this->lastErrno() == SQLITE_READONLY;
+		return $this->lastErrno() == 8; // SQLITE_READONLY;
 	}
 
 	/**
