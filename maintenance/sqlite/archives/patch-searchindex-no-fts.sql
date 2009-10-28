@@ -4,9 +4,15 @@
 -- to environment without it.
 
 DROP TABLE IF EXISTS /*_*/searchindex;
+
+-- These are pieces of FTS3-enabled searchindex
+DROP TABLE IF EXISTS /*_*/searchindex_content;
+DROP TABLE IF EXISTS /*_*/searchindex_segdir;
+DROP TABLE IF EXISTS /*_*/searchindex_segments;
+
 CREATE TABLE /*_*/searchindex (
   -- Key to page_id
-  si_page INTEGER NOT NULL,
+  -- si_page INTEGER NOT NULL,
 
   -- Munged version of title
   si_title TEXT,
@@ -14,3 +20,5 @@ CREATE TABLE /*_*/searchindex (
   -- Munged version of body text
   si_text TEXT
 );
+
+DELETE FROM /*_*/updatelog WHERE ul_key='fts3';
