@@ -28,12 +28,28 @@
 class SearchSqlite extends SearchEngine {
 	var $strictMatching = true;
 
+	// Cached because SearchUpdate keeps recreating our class
+	private static $fulltextSupported = NULL;
+
 	/**
 	 * Creates an instance of this class
 	 * @param $db DatabaseSqlite: database object
 	 */
 	function __construct( $db ) {
 		$this->db = $db;
+	}
+
+	/**
+	 * Whether fulltext search is supported by current schema
+	 * @return Boolean
+	 */
+	function fulltextSearchSupported() {
+		if ( self::$fulltextSupported === NULL ) {
+			$res = $this->db->selectField( 'updatelog', 'ul_key', array( 'ul_key' => 'fts3' ), __METHOD__ );
+			self::$fulltextSupported = $res && $this->db->numRows( $res ) > 0;
+		}
+		wfDebug( "*************************************************************" . self::$fulltextSupported . "****************\n" );
+		return self::$fulltextSupported;
 	}
 
 	/** 
@@ -165,7 +181,11 @@ class SearchSqlite extends SearchEngine {
 	
 	protected function searchInternal( $term, $fulltext ) {
 		global $wgSearchMySQLTotalHits;
-		
+
+		if ( !$this->fulltextSearchSupported() ) {
+			return null;
+		}
+
 		$filteredTerm = $this->filter( $term );
 		$resultSet = $this->db->query( $this->getQuery( $filteredTerm, $fulltext ) );
 		
@@ -288,6 +308,9 @@ class SearchSqlite extends SearchEngine {
 	 * @param $text String
 	 */
 	function update( $id, $title, $text ) {
+		if ( !$this->fulltextSearchSupported() ) {
+			return;
+		}
 		// @todo: find a method to do it in a single request,
 		// couldn't do it so far due to typelessness of FTS3 tables.
 		$dbw = wfGetDB( DB_MASTER );
@@ -310,6 +333,9 @@ class SearchSqlite extends SearchEngine {
 	 * @param $title String
 	 */
     function updateTitle( $id, $title ) {
+		if ( !$this->fulltextSearchSupported() ) {
+			return;
+		}
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->update( 'searchindex',
