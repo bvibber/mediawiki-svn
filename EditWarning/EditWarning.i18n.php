@@ -647,12 +647,13 @@ To opozorilo lahko onemogočite v razdelku »{{int:prefs-editing}}« svojih nast
  * @author Fluff
  * @author Najami
  * @author Rotsee
+ * @author Skalman
  */
 $messages['sv'] = array(
 	'editwarning' => 'Redigeringsvarning',
 	'editwarning-desc' => 'Visar en varning när en användare försöker att lämna redigeringsformuläret utan att spara',
 	'editwarning-warning' => 'Om du lämnar den här sidan kommer du att förlora alla ändringar du har gjort.
-Du kan slå av den här varningen under "{{int:prefs-editing}}" i dina inställningar.',
+Om du är inloggad kan du slå av den här varningen under "{{int:prefs-editing}}" i dina inställningar.',
 	'editwarning-preference' => 'Varna mig om jag lämnar en redigeringssida där jag gjort ändringar men inte sparat.',
 );
 

@@ -4770,6 +4770,7 @@ $messages['su'] = array(
  * @author Hannibal
  * @author Micke
  * @author Rotsee
+ * @author Skalman
  */
 $messages['sv'] = array(
 	'optin' => "Delta i ''Wikipedias initiativ för användarvänlighet''",
@@ -4837,19 +4838,19 @@ Du kan prova betaversionen igen när som helst genom att klicka på "{{int:optin
 	'optin-survey-answer-changes-custom' => 'Tillåt mer skräddarsydda inställningar.',
 	'optin-survey-answer-changes-other' => "Övrigt ''(endast engelska)'':",
 	'optin-improvements' => '== Vad har förbättrats? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Skärmdump över det nya navigeringsflikarna]]
 ;Förbättrad navigering
 Det nya navigationssystemet gör det enklare att se var du är och vad du gör, liksom vart du kan bege dig och hur du kan komma dit. Med sökrutan i det övre högra hörnet så är sökfunktionen lättare att hitta och går snabbare att använda. (Observera att bilderna till vänster inte använder den svenska översättningen som finns.)
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Skärmdump över de förbättrade redigeringsverktygen]]
 ;Förbättringar i verktygsraden
 Nya och förbättrade ikoner gör det tydligare vilken funktion varje verktyg är kopplad till. Utfällbara sektioner minskar rörigheten, men gör att verktyg som sällan används ändå finns nära till hands.
-Hjälpavsnittet ger snabbt förklaringar till vanlig koder i wikitext.
+Hjälpavsnittet ger snabbt förklaringar till vanliga koder i wikitext.
 <div style="clear:both;"></div>
 
 == Hur du kan engagera dig ==
-För att få mer information om projektet eller för att engagera dig, besök [http://usability.wikimedia.org Wikipedias initiativ för användbarhets wiki].  Där finns mer information om vårt stipendium, forskning, design, utveckling och kommande utgåvor. För att ställa frågor eller lämna allmänna kommentarer, använd vår [http://usability.wikimedia.org/wiki/Talk:Prototype prototyp till diskussionssida]. För att ta upp specifika ämnen, använd respektive diskussionssidorna. Om du hittar buggar så kan du påtala det på [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acaiutgåvans diskussionssida] eller använd [https://bugzilla.wikimedia.org Bugzilla].
+För att få mer information om projektet eller för att engagera dig, besök [http://usability.wikimedia.org wikin för användbarhetsinitiativet]. Där finns mer information om vårt stipendium, forskning, design, utveckling och kommande utgåvor. För att ställa frågor eller lämna allmänna kommentarer, använd vår [http://usability.wikimedia.org/wiki/Talk:Prototype diskussionssida för prototypen]. För att ta upp specifika ämnen, använd motsvarande diskussionssida. Om du hittar buggar så är vi tacksamma om du kommenterar det på [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acaiutgåvans diskussionssida] eller på [https://bugzilla.wikimedia.org Bugzilla].
 
 Tack så mycket, vi ser fram emot att höra av dig!',
 );

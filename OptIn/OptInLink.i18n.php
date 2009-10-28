@@ -838,11 +838,15 @@ $messages['su'] = array(
  * @author Hannibal
  * @author Micke
  * @author Rotsee
+ * @author Skalman
  */
 $messages['sv'] = array(
 	'optin-try' => 'Prova betaversion',
+	'tooltip-pt-optin-try' => 'Pröva de nya funktionerna',
 	'optin-leave' => 'Lämna betatest',
+	'tooltip-pt-optin-leave' => 'Stäng av de nya funktionerna',
 	'optin-feedback' => 'Feedback för betaversionen',
+	'tooltip-pt-optin-feedback' => 'Ge feedback om hur du upplever de nya funktionerna',
 );
 
 /** Telugu (తెలుగు)
@@ -852,6 +856,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'optin-try' => 'బీటాను ప్రయత్నించండి',
+	'tooltip-pt-optin-try' => 'కొత్త విశేషాలను ప్రయత్నించండి',
 	'optin-leave' => 'బీటాను విడిచి వెళ్ళు',
 	'optin-feedback' => 'బీటాపై అభిప్రాయాలు',
 );

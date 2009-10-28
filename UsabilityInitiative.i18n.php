@@ -32,6 +32,7 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'usabilityinitiative' => 'Bruikbaarheid-inisiatief',
 	'usabilityinitiative-desc' => 'Funksionaliteit wat deur Wikipedia se Bruikbaarheid-inisiatief ontwikkel is om MediaWiki meer bruikbaarheid te maak',
+	'prefs-experimental' => 'Eksperimentele funksies',
 );
 
 /** Arabic (العربية)
