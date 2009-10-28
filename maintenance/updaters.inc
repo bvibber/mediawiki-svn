@@ -1290,11 +1290,11 @@ function sqlite_setup_searchindex() {
 	$fts3tTable = update_row_exists( 'fts3' );
 	if ( $fts3tTable &&  !$module ) {
 		wfOut( '...PHP is missing FTS3 support, downgrading tables...' );
-		$wgDatabase->sourceFile( archive( 'patch-searchindex-no-fts.sql' ) );
+		$wgDatabase->sourceFile( archive( 'searchindex-no-fts.sql' ) );
 		wfOut( "done\n" );
 	} elseif ( !$fts3tTable && $module == 'FTS3' ) {
 		wfOut( '...adding FTS3 search capabilities...' );
-		$wgDatabase->sourceFile( archive( 'patch-fts3-searchindex.sql' ) );
+		$wgDatabase->sourceFile( archive( 'searchindex-fts3.sql' ) );
 		wfOut( "done\n" );
 	} else {
 		wfOut( "...fulltext search table appears to be in order.\n" );

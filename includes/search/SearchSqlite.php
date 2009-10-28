@@ -1,4 +1,6 @@
 <?php
+# SQLite search backend, based upon SearchMysql
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
@@ -256,9 +258,9 @@ class SearchSqlite extends SearchEngine {
 		$match = $this->parseQuery( $filteredTerm, $fulltext );
 		$page        = $this->db->tableName( 'page' );
 		$searchindex = $this->db->tableName( 'searchindex' );
-		return "SELECT $searchindex.rowid, page_namespace, page_title " .
+		return "SELECT si_page, page_namespace, page_title " .
 			"FROM $page,$searchindex " .
-			"WHERE page_id=$searchindex.rowid AND $match";
+			"WHERE page_id=si_page AND $match";
 	}
 
 	function getCountQuery( $filteredTerm, $fulltext ) {
@@ -267,7 +269,7 @@ class SearchSqlite extends SearchEngine {
 		$searchindex = $this->db->tableName( 'searchindex' );
 		return "SELECT COUNT(*) AS c " .
 			"FROM $page,$searchindex " .
-			"WHERE page_id=$searchindex.rowid AND $match" .
+			"WHERE page_id=si_page AND $match" .
 			$this->queryRedirect() . ' ' .
 			$this->queryNamespaces();
 	}
@@ -283,9 +285,9 @@ class SearchSqlite extends SearchEngine {
 	function update( $id, $title, $text ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->replace( 'searchindex',
-			array( 'rowid' ),
+			array( 'si_page' ),
 			array(
-				'rowid' => $id,
+				'si_page' => $id,
 				'si_title' => $title,
 				'si_text' => $text
 			), __METHOD__ );
@@ -303,7 +305,7 @@ class SearchSqlite extends SearchEngine {
 
 		$dbw->update( 'searchindex',
 			array( 'si_title' => $title ),
-			array( 'rowid'  => $id ),
+			array( 'si_page'  => $id ),
 			__METHOD__,
 			array( $dbw->lowPriorityOption() ) );
 	}
