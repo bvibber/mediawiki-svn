@@ -257,7 +257,7 @@ class SiteMatrixPage extends SpecialPage {
 			if( isset( $localLanguageNames[$lang] ) ) {
 				$attribs['title'] = $localLanguageNames[$lang];
 			}
-			$s .= '<td>' . $anchor . Xml::element( 'strong', $attribs ) . $wgLanguageNames[$lang] . '</strong></td>';
+			$s .= '<td>' . $anchor . Xml::element( 'strong', $attribs, $wgLanguageNames[$lang] ) . '</td>';
 			$langhost = str_replace( '_', '-', $lang );
 			foreach ( $matrix->getNames() as $site => $name ) {
 				$url = $matrix->getUrl( $lang, $site );
