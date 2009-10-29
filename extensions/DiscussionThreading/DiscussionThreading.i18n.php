@@ -32,8 +32,11 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'discussionthreading-desc' => 'Voeg "threading" by vir besprekingsbladsye',
 	'discussionthreading-replysection' => 'antwoord',
+	'discussionthreading-replysectionhint' => 'Beantwoord hierdie opmerking',
 	'discussionthreading-threadnewsection' => 'nuut',
+	'discussionthreading-threadnewsectionhint' => "Begin 'n nuwe onderwerp",
 );
 
 /** Old English (Anglo-Saxon)

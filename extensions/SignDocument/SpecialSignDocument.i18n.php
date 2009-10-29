@@ -111,6 +111,7 @@ $messages['qqq'] = array(
 	'sign-email' => '{{Identical|E-mail address}}',
 	'sign-submit' => '{{Identical|Sign document}}',
 	'sign-viewfield-realname' => '{{Identical|Name}}',
+	'sign-viewfield-address' => '{{Identical|Address}}',
 	'sign-viewfield-city' => '{{Identical|City}}',
 	'sign-viewfield-state' => '{{Identical|State}}',
 	'sign-viewfield-country' => '{{Identical|Country}}',
@@ -149,6 +150,7 @@ $messages['af'] = array(
 	'sign-email' => 'E-posadres:',
 	'sign-submit' => 'Onderteken dokument',
 	'sign-viewfield-realname' => 'Naam',
+	'sign-viewfield-address' => 'Adres',
 	'sign-viewfield-city' => 'Stad',
 	'sign-viewfield-state' => 'Staat',
 	'sign-viewfield-country' => 'Land',
@@ -1020,6 +1022,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Dferg
  * @author Imre
  */
 $messages['es'] = array(
@@ -1100,6 +1103,7 @@ $1',
 	'sign-viewfield-reviewcomment' => 'Comentario',
 	'sign-detail-uniquequery' => 'Entidades similares',
 	'sign-detail-uniquequery-run' => 'Ejecutar consulta',
+	'sign-detail-strike' => 'Tachar firma',
 	'sign-reviewsig' => 'Revisar firma',
 	'sign-review-comment' => 'Comentario',
 	'sign-submitreview' => 'Enviar revisión',

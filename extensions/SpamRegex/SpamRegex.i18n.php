@@ -417,15 +417,18 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Dferg
  * @author Imre
  */
 $messages['es'] = array(
+	'spamregex' => 'Spam regex',
 	'spamregex-desc' => '[[Special:SpamRegex|Filtrar]] frases no deseadas en páginas editadas, basadas en expresiones regulares',
 	'spamregex-error-unblocking' => 'Error desbloqueando "$1". Probablemente no existe tal ruta.',
 	'spamregex-summary' => 'El texto fue encontrado en el resumen de página.',
 	'spamregex-intro' => 'Use este formulario para evitar la inclusión de expresiones en el texto de una página.
 Si el texto contiene la expresion dada, no se grabará el cambio y se mostrará una explicación al usuario que intenta guardar la página.
 Sea cuidadoso, las expresiones a prohibir no deberían ser muy cortas o muy comunes.',
+	'spamregex-page-title' => 'Bloqueo de expresiones no deseadas spam regex',
 	'spamregex-currently-blocked' => "'''Frases actualmente bloqueadas:'''",
 	'spamregex-move' => 'La razón que ha ingresado contiene una frase bloqueada.',
 	'spamregex-no-currently-blocked' => "'''No hay frases bloqueadas.'''",

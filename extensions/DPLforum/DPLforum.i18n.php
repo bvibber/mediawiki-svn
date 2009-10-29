@@ -44,7 +44,12 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'dplforum-desc' => 'Forumuitbreiding gebaseerd op DPL',
+	'dplforum-by' => 'deur $1',
+	'dplforum-edited' => '- Laaste wysiging',
 	'dplforum-never' => 'Nooit',
+	'dplforum-toofew' => 'DPL Forum: te min kategorieë!',
+	'dplforum-toomany' => 'DPL Forum: te veel kategorieë!',
 );
 
 /** Arabic (العربية)

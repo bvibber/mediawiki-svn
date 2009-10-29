@@ -2199,7 +2199,7 @@ $messages['nds-nl'] = array(
 Instelleer een <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">mediaspeuler</a>.',
 	'ogg-no-player-js' => 'Joew system hef JavaScript uutstaon of der is gien ondersteunende mediaspeuler.<br />
 Je kunnen <a href="$1">de clip binnenhaolen</a> of <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">een mediaspeuler instelleren</a> um de clip in de webkieker of te speulen.',
-	'ogg-no-xiphqt' => '\'t Liek derop da-j de compenent XiphQT veur QuickTime neet hemmen.
+	'ogg-no-xiphqt' => '\'t Lik derop da-j de compenent XiphQT veur QuickTime neet hemmen.
 QuickTime kan Ogg-bestanen neet ofspeulen zonder disse compenent.
 Instelleer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT</a> of kies een aandere mediaspeuler.',
 	'ogg-player-videoElement' => 'Standardondersteuning in webkieker',

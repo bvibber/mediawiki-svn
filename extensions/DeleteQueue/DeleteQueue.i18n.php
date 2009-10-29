@@ -2798,6 +2798,7 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  * @author Kandar
  * @author Rex
  */
@@ -2809,7 +2810,7 @@ $messages['id'] = array(
 	'deletequeue-delnom-otherreason' => 'Alasan lain',
 	'deletequeue-delnom-extra' => 'Informasi tambahan:',
 	'deletequeue-delnom-submit' => 'Kirimkan usulan',
-	'deletequeue-log-nominate' => "mengusulkan penghapusan [[$1]] pada antrian '$2'.",
+	'deletequeue-log-nominate' => "mengusulkan penghapusan [[$1]] pada antrean '$2'.",
 	'right-speedy-nominate' => 'Usulkan halaman untuk penghapusan segera',
 	'right-prod-nominate' => 'Usulkan penghapusan halaman',
 	'right-deletediscuss-nominate' => 'Mulai pembicaraan penghapusan',
@@ -2830,11 +2831,11 @@ $messages['id'] = array(
 	'deletequeue-showvotes-restrict-endorse' => 'Tampilkan dukungan saja',
 	'deletequeue-showvotes-restrict-object' => 'Tampilkan penolakan saja',
 	'deletequeue-showvotes-restrict-none' => 'Tampilkan semua dukungan dan penolakan',
-	'deletequeue-list-queue' => 'Antrian:',
+	'deletequeue-list-queue' => 'Antrean:',
 	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Cari',
 	'deletequeue-list-header-page' => 'Halaman',
-	'deletequeue-list-header-queue' => 'Antrian',
+	'deletequeue-list-header-queue' => 'Antrean',
 	'deletequeue-list-header-expiry' => 'Kadaluwarsa',
 	'deletequeue-case-page' => 'Halaman:',
 	'deletequeue-case-reason' => 'Alasan:',

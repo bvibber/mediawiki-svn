@@ -232,6 +232,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Dferg
  */
 $messages['es'] = array(
 	'security' => 'Registro de seguridad',
@@ -243,6 +244,7 @@ $messages['es'] = array(
 	'security-info-toggle' => 'restricciones de seguridad',
 	'security-inforestrict' => '$1 está restringido a $2',
 	'security-desc-LS' => '(aplica porque esta página está en el "$2 $1")',
+	'security-desc-PR' => '(aplicar desde la pestaña "proteger")',
 	'security-infosysops' => 'No tiene restricciones activas porque Ud. es miembro del grupo "administradores".',
 	'security-manygroups' => 'grupos $1 y $2',
 	'security-unchain' => 'modificar acciones individualmente',

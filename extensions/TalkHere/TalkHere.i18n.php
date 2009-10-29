@@ -434,8 +434,10 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
+ * @author Mnalis
  */
 $messages['hr'] = array(
+	'talkhere-desc' => 'Ubaci stranicu za razgovor na ovu stranicu',
 	'talkhere-foottext' => 'Gornje komentare su vjerojatno ostavili posjetitelji.
 
 Operatori ovih stranica ne mogu preuzeti odgovornost za sadržaj takvih komentara.',

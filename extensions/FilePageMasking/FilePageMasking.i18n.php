@@ -209,3 +209,10 @@ $messages['ru'] = array(
 	'filepagemasking-desc' => 'Меняет «.xxx» на «_xxx» в ссылках на страницы описания файлов',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'filepagemasking-desc' => 'Prepisuje „.xxx“ na „_xxx“ v odkazoch na popisných stránkach súborov',
+);
+

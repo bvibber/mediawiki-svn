@@ -169,6 +169,13 @@ $messages['hil'] = array(
 	'substall-desc' => 'Nagahimo sang <nowiki><substall></nowiki> tag nga nagapadaku sang tanan nga templates sa wikisyntax',
 );
 
+/** Croatian (Hrvatski)
+ * @author Mnalis
+ */
+$messages['hr'] = array(
+	'substall-desc' => 'Kreira <nowiki><substall></nowiki> oznaku koja proširuje sve predloške u wikisyntax',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

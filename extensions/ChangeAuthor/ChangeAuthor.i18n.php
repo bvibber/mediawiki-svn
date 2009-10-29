@@ -1597,7 +1597,11 @@ Cambia ël nòm utent sota, gionta un coment (opsional) e sgnaca ël boton "Camb
 	'changeauthor-weirderror' => "A l'é capitaje n'eror motobin dròlo.
 Për piasì arpet toa arcesta.
 Se sto eror-sì a continua a ess-ie, a peul esse che ël database a sia rompù.",
+	'changeauthor-invalidform' => 'Për piasì dòvra la forma dàita da la [[Special:ChangeAuthor|special page]] nopà ëd na forma përsonalisà.',
+	'changeauthor-success' => "Toa arcesta a l'é stàita tratà da bin.",
+	'changeauthor-logentry' => 'Cambi autor ëd $2 ëd $1 da $3 a $4',
 	'changeauthor-logpagename' => "Registr dij cangiament fàit da l'autor",
+	'right-changeauthor' => "Cambia l'autor ëd na revision",
 );
 
 /** Pashto (پښتو)

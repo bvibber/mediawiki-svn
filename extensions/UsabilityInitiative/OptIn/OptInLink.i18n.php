@@ -861,6 +861,18 @@ $messages['te'] = array(
 	'optin-feedback' => 'బీటాపై అభిప్రాయాలు',
 );
 
+/** Thai (ไทย)
+ * @author Ans
+ */
+$messages['th'] = array(
+	'optin-try' => 'ลองใช้รุ่นทดสอบ',
+	'tooltip-pt-optin-try' => 'ทดลองใช้ฟีเจอร์ใหม่',
+	'optin-leave' => 'ออกจากรุ่นทดสอบ',
+	'tooltip-pt-optin-leave' => 'ปิดฟีเจอร์ใหม่',
+	'optin-feedback' => 'ตอบรับการใช้รุ่นทดสอบ',
+	'tooltip-pt-optin-feedback' => 'แจ้งผลการใช้งานฟีเจอร์ใหม่',
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */

@@ -114,6 +114,13 @@ $messages['he'] = array(
 	'ipauth-desc' => 'כניסה אוטומטית לחשבון מכתובות IP קבועות',
 );
 
+/** Croatian (Hrvatski)
+ * @author Mnalis
+ */
+$messages['hr'] = array(
+	'ipauth-desc' => 'Automatska prijava sa stalne IP adrese',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -217,6 +224,13 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'ipauth-desc' => 'Автоматический вход с постоянных IP адресов',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'ipauth-desc' => 'Automatické prihlásenie z pevných IP adries',
 );
 
 /** Swedish (Svenska)

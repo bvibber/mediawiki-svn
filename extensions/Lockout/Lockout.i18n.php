@@ -211,6 +211,13 @@ $messages['ru'] = array(
 	'lockout-desc' => 'Не позволяет заблокированным участникам представляться системе',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'lockout-desc' => 'Zabrániť prihlásenie zablokovaným používateľom',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

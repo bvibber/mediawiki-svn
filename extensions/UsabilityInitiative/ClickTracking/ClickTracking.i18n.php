@@ -848,9 +848,11 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'ct-total-header' => 'ആകെ ഞെക്കലുകൾ',
 	'ct-start-date' => 'തുടങ്ങുന്ന തീയതി (YYYYMMDD)',
 	'ct-end-date' => 'അവസാനിക്കുന്ന തീയതി (YYYYMMDD)',
 	'ct-change-graph' => 'ഗ്രാഫിൽ മാറ്റംവരുത്തുക',
+	'ct-date-range' => 'തീയതിയുടെ പരിധി',
 	'ct-editing' => 'ഇപ്പോൾ തിരുത്തുന്നത്:',
 	'ct-anon-users' => 'അജ്ഞാത ഉപയോക്താക്കൾ',
 	'ct-user-contribs' => 'ഉപയോക്താവിന്റെ ആകെ സേവനങ്ങൾ',
@@ -1011,6 +1013,7 @@ $messages['pms'] = array(
 	'ct-user-contribs' => "Contribussion totaj ëd l'utent",
 	'ct-user-span' => "Contribussion ëd l'utent ant l'interval",
 	'ct-and' => 'e',
+	'ct-update-table' => 'Modìfica tàula',
 );
 
 /** Portuguese (Português)
@@ -1113,6 +1116,7 @@ $messages['sk'] = array(
 	'ct-user-contribs' => 'Používateľských príspevkov celkom',
 	'ct-user-span' => 'Používateľských príspevkov za obdobie',
 	'ct-and' => 'a',
+	'ct-update-table' => 'Aktualizovať tabuľku',
 );
 
 /** Slovenian (Slovenščina)

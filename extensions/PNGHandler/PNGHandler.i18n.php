@@ -162,6 +162,13 @@ $messages['hil'] = array(
 	'pnghandler-desc' => 'Islan ang kadaku-on PNGs gamit sang pngds',
 );
 
+/** Croatian (Hrvatski)
+ * @author Mnalis
+ */
+$messages['hr'] = array(
+	'pnghandler-desc' => 'Promijeni veličinu PNGova koristeći pngds',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -322,6 +322,13 @@ $messages['nds'] = array(
 	'oai-desc' => 'Stellt en [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-Repositorium-Sniddstell bereit',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'oairepository' => 'OAI-beweerstee',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

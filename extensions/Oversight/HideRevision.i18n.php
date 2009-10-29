@@ -2621,6 +2621,17 @@ Infermasie dee-j vortdoon zal neet zichbaor ween veur meensen van de webstee, ma
 Drei eers disse bewarking weerumme.',
 	'hiderevision-error-delete' => "Kon neet archiveren; is 't eerder al vort-edaon?",
 	'hiderevision-archive-status' => 'Vort-edaone versie van $1: $2',
+	'oversight-nodiff' => "Je kunnen 't verschil neet bekieken umdat der gien eerdere versie van de pagina is, umdat:	
+*De pagina vort-edaon is
+*Disse verbörgen versie de eerste versie is",
+	'oversight-log-hiderev' => 'een bewarking vort-edaon van $1',
+	'oversight' => 'Toezichhouwers',
+	'oversight-difference' => '(Verschillen mit de veurige zichbaore versie)',
+	'oversight-prev' => 'Leste veurige versie',
+	'oversight-hidden' => 'Verbörgen versie',
+	'oversight-header' => "Hieronder steet een lieste mit versies dee veurgoed verbörgen bin veur iederene.
+'t Vriegeven van disse infermasie kan tot gevolg hemmen dat toezichrechen in-etrökken wönnen.",
+	'oversight-oversighter' => 'Toezichhouwers',
 );
 
 /** Nepali (नेपाली) */

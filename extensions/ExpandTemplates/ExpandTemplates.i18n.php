@@ -1203,10 +1203,12 @@ $messages['mhr'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'expandtemplates' => 'ഫലകങ്ങള്‍ വിപുലീകരിക്കുക',
+	'expand_templates_title' => '{{PAGENAME}} താളിന്റെ ഉള്ളടക്ക തലക്കെട്ട് മുതലായവ.:',
 	'expand_templates_input' => 'ഇന്‍പുട്ട് ടെക്സ്റ്റ്:',
 	'expand_templates_output' => 'ഫലം',
 	'expand_templates_xml_output' => 'XML ഔട്ട്പുട്ട്',

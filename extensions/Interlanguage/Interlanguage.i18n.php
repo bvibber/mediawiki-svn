@@ -126,6 +126,13 @@ $messages['hil'] = array(
 	'interlanguage-desc' => 'Gakuha sang interlengwahe halin sa lain nga wiki',
 );
 
+/** Croatian (Hrvatski)
+ * @author Mnalis
+ */
+$messages['hr'] = array(
+	'interlanguage-desc' => 'Dohvati međujezične veze sa drugog wikija',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

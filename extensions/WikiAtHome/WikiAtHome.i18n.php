@@ -1004,6 +1004,7 @@ $messages['pms'] = array(
 	'wah-transcode-fail' => "Sto file-sì a l'é pa podusse trascodifiché.",
 	'wah-javascript-off' => 'It deuve avèj JavaScript abilità për partessipé an Wiki@Home',
 	'wah-loading' => "carié l'antërfassa ëd Wiki@Home ...",
+	'wah-menu-jobs' => 'Travaj',
 );
 
 /** Portuguese (Português)
@@ -1107,6 +1108,24 @@ $messages['sk'] = array(
 	'wah-transcode-fail' => 'Tento súbor sa nepodarilo prekódovať.',
 	'wah-javascript-off' => 'Aby ste sa mohli zúčastniť Wiki@Home musíte mať zapnutý JavaScript',
 	'wah-loading' => 'načítava sa rozhranie Wiki@Home ...',
+	'wah-menu-jobs' => 'Úlohy',
+	'wah-menu-stats' => 'Štatistiky',
+	'wah-menu-pref' => 'Nastavenie',
+	'wah-lookingforjob' => 'Hľadá sa úloha...',
+	'wah-start-on-visit' => 'Spustiť Wiki@Home vždy, keď navštívim túto stránku.',
+	'wah-jobs-while-away' => 'Spúšťať úlohy iba keď som prehliadač nepoužíval viac ako 20 minút.',
+	'wah-nojobfound' => 'Nebola nájdená žiadna úloha. Opätovný pokus o $1.',
+	'wah-notoken-login' => 'Ste prihlásený? Ak nie, najprv sa prihláste.',
+	'wah-apioff' => 'Zdá sa, že API Wiki@Home nebeží. Prosím, kontaktujte správcu lokality.',
+	'wah-doing-job' => 'Úloha: <i>$1</i>: <i>$2</i>',
+	'wah-downloading' => 'Sťahovanie súboru <i>$1%</i> dokončené',
+	'wah-encoding' => 'Kódovanie súboru <i>$1%</i> dokončené',
+	'wah-encoding-fail' => 'Kódovanie sa nepodarilo. Prosím, znova načítajte túto stránku alebo to skúste znova neskôr.',
+	'wah-uploading' => 'Nahrávanie súboru <i>$1</i> dokončené',
+	'wah-uploadfail' => 'Nahrávanie sa nepodarilo',
+	'wah-doneuploading' => 'Nahrávanie dokončené. Ďakujeme vám za príspevok.',
+	'wah-needs-firefogg' => 'Aby ste sa mohli zúčastniť Wiki@Home, musíte si nainštalovať <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Nastala chyba týkajúca sa API. Skúste to prosím znova neskôr.',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
