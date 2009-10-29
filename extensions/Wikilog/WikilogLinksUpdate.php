@@ -28,10 +28,8 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 class WikilogLinksUpdate
 {
-
 	private $mId;
 	private $mTitle;
 	private $mDb;
@@ -104,7 +102,7 @@ class WikilogLinksUpdate
 	private function getAuthorInsertions( $existing = array() ) {
 		$arr = array();
 		$diffs = array_diff_key( $this->mAuthors, $existing );
-		foreach( $diffs as $author_text => $author ) {
+		foreach ( $diffs as $author_text => $author ) {
 			$arr[] = array(
 				'wla_page'			=> $this->mId,
 				'wla_author'		=> $author,
@@ -117,7 +115,7 @@ class WikilogLinksUpdate
 	private function getTagInsertions( $existing = array() ) {
 		$arr = array();
 		$diffs = array_diff_key( $this->mTags, $existing );
-		foreach( $diffs as $tag => $dummy ) {
+		foreach ( $diffs as $tag => $dummy ) {
 			$arr[] = array(
 				'wlt_page'   => $this->mId,
 				'wlt_tag'    => $tag
@@ -157,10 +155,10 @@ class WikilogLinksUpdate
 	}
 
 
-	###
-	##  MediaWiki hooks.
+	/**
+	 *  MediaWiki hooks.
+	 */
 	#
-
 	static function LinksUpdate( &$lupd ) {
 		if ( isset( $lupd->mParserOutput->mExtWikilog ) ) {
 			$u = new WikilogLinksUpdate( $lupd, $lupd->mParserOutput->mExtWikilog );
@@ -168,6 +166,4 @@ class WikilogLinksUpdate
 		}
 		return true;
 	}
-
 }
-

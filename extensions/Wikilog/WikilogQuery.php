@@ -28,27 +28,25 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * Wikilog post SQL query driver.
  * This class drives queries for wikilog posts, given the fields to filter.
  */
 class WikilogItemQuery
 {
-
 	# Valid filter values for publish status.
-	const PS_ALL       = 0;		///< Return all items
-	const PS_PUBLISHED = 1;		///< Return only published items
-	const PS_DRAFTS    = 2;		///< Return only drafts
+	const PS_ALL       = 0;		// /< Return all items
+	const PS_PUBLISHED = 1;		// /< Return only published items
+	const PS_DRAFTS    = 2;		// /< Return only drafts
 
 	# Local variables.
-	private $mWikilogTitle = NULL;			///< Filter by wikilog.
-	private $mPubStatus = self::PS_ALL;		///< Filter by published status.
-	private $mCategory = false;				///< Filter by category.
-	private $mAuthor = false;				///< Filter by author.
-	private $mTag = false;					///< Filter by tag.
-	private $mDate = false;					///< Filter by date.
-	private $mNeedWikilogParam = false;		///< Need wikilog param in queries.
+	private $mWikilogTitle = NULL;			// /< Filter by wikilog.
+	private $mPubStatus = self::PS_ALL;		// /< Filter by published status.
+	private $mCategory = false;				// /< Filter by category.
+	private $mAuthor = false;				// /< Filter by author.
+	private $mTag = false;					// /< Filter by tag.
+	private $mDate = false;					// /< Filter by date.
+	private $mNeedWikilogParam = false;		// /< Need wikilog param in queries.
 
 	# Options
 	/** Query options. */
@@ -66,7 +64,7 @@ class WikilogItemQuery
 
 		# If constructed without a title (from Special:Wikilog), it means that
 		# the listing is global, and needs wikilog parameter to filter.
-		$this->mNeedWikilogParam = ($wikilogTitle == NULL);
+		$this->mNeedWikilogParam = ( $wikilogTitle == NULL );
 	}
 
 	/**
@@ -150,9 +148,9 @@ class WikilogItemQuery
 	 *   during the whole month or year.
 	 */
 	public function setDate( $year, $month = false, $day = false ) {
-		$year  = ($year  > 0 && $year  <= 9999) ? $year  : false;
-		$month = ($month > 0 && $month <=   12) ? $month : false;
-		$day   = ($day   > 0 && $day   <=   31) ? $day   : false;
+		$year  = ( $year  > 0 && $year  <= 9999 ) ? $year  : false;
+		$month = ( $month > 0 && $month <=   12 ) ? $month : false;
+		$day   = ( $day   > 0 && $day   <=   31 ) ? $day   : false;
 
 		if ( $year || $month ) {
 			if ( !$year ) {
@@ -160,13 +158,13 @@ class WikilogItemQuery
 				if ( $month > intval( gmdate( 'n' ) ) ) $year--;
 			}
 
-			$date_end = str_pad( $year+1, 4, '0', STR_PAD_LEFT );
+			$date_end = str_pad( $year + 1, 4, '0', STR_PAD_LEFT );
 			$date_start = str_pad( $year, 4, '0', STR_PAD_LEFT );
 			if ( $month ) {
-				$date_end = $date_start . str_pad( $month+1, 2, '0', STR_PAD_LEFT );
+				$date_end = $date_start . str_pad( $month + 1, 2, '0', STR_PAD_LEFT );
 				$date_start = $date_start . str_pad( $month, 2, '0', STR_PAD_LEFT );
 				if ( $day ) {
-					$date_end = $date_start . str_pad( $day+1, 2, '0', STR_PAD_LEFT );
+					$date_end = $date_start . str_pad( $day + 1, 2, '0', STR_PAD_LEFT );
 					$date_start = $date_start . str_pad( $day, 2, '0', STR_PAD_LEFT );
 				}
 			}
@@ -247,46 +245,46 @@ class WikilogItemQuery
 
 		# Customizations.
 
-		## Filter by wikilog name.
+		# # Filter by wikilog name.
 		if ( $this->mWikilogTitle !== NULL ) {
 			$q_conds['wlp_parent'] = $this->mWikilogTitle->getArticleId();
 		}
 
-		## Filter by published status.
+		# # Filter by published status.
 		if ( $this->mPubStatus === self::PS_PUBLISHED ) {
 			$q_conds['wlp_publish'] = 1;
 		} else if ( $this->mPubStatus === self::PS_DRAFTS ) {
 			$q_conds['wlp_publish'] = 0;
 		}
 
-		## Filter by category.
+		# # Filter by category.
 		if ( $this->mCategory ) {
 			$q_tables[] = 'categorylinks';
 			$q_joins['categorylinks'] = array( 'JOIN', 'wlp_page = cl_from' );
 			$q_conds['cl_to'] = $this->mCategory->getDBkey();
 		}
 
-		## Filter by author.
+		# # Filter by author.
 		if ( $this->mAuthor ) {
 			$q_tables[] = 'wikilog_authors';
 			$q_joins['wikilog_authors'] = array( 'JOIN', 'wlp_page = wla_page' );
 			$q_conds['wla_author_text'] = $this->mAuthor->getDBkey();
 		}
 
-		## Filter by tag.
+		# # Filter by tag.
 		if ( $this->mTag ) {
 			$q_tables[] = 'wikilog_tags';
 			$q_joins['wikilog_tags'] = array( 'JOIN', 'wlp_page = wlt_page' );
 			$q_conds['wlt_tag'] = $this->mTag;
 		}
 
-		## Filter by date.
+		# # Filter by date.
 		if ( $this->mDate ) {
 			$q_conds[] = 'wlp_pubdate >= ' . $db->addQuotes( $this->mDate->start );
 			$q_conds[] = 'wlp_pubdate < ' . $db->addQuotes( $this->mDate->end );
 		}
 
-		## Add last comment timestamp, used in syndication feeds.
+		# # Add last comment timestamp, used in syndication feeds.
 		if ( $opts['last-comment-timestamp'] ) {
 			$q_tables[] = 'wikilog_comments';
 			$q_fields[] = 'MAX(wlc_updated) AS _wlp_last_comment_timestamp';
@@ -363,7 +361,4 @@ class WikilogItemQuery
 			return self::PS_PUBLISHED;
 		}
 	}
-
 }
-
-

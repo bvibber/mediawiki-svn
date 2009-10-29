@@ -28,7 +28,6 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * Singleton class that provides an interface to Captchas implemented
  * through the ConfirmEdit extension. Only Captchas derived from
@@ -36,7 +35,6 @@ if ( !defined( 'MEDIAWIKI' ) )
  */
 class WlCaptcha
 {
-
 	public static $instance = NULL;
 	public static $initialized = false;
 
@@ -49,8 +47,8 @@ class WlCaptcha
 					self::$instance = new WlCaptchaAdapter( $captcha );
 				} else {
 					$classname = get_class( $captcha );
-					trigger_error( "Only captchas derived from SimpleCaptcha ".
-						"are compatible with Wikilog. The current captcha, ".
+					trigger_error( "Only captchas derived from SimpleCaptcha " .
+						"are compatible with Wikilog. The current captcha, " .
 						"{$classname}, isn't compatible.", E_USER_WARNING );
 				}
 			}
@@ -78,7 +76,6 @@ class WlCaptcha
 
 }
 
-
 /**
  * Adapter for SimpleCaptcha derived classes.
  *
@@ -91,7 +88,6 @@ class WlCaptcha
  */
 class WlCaptchaAdapter
 {
-
 	public $mCaptcha;
 
 	public function __construct( &$captcha ) {
@@ -103,7 +99,7 @@ class WlCaptchaAdapter
 	}
 
 	private function doConfirmEdit( $title, $newText, $oldText = NULL ) {
-		if( $this->shouldCheck( $title, $newText, $oldText ) ) {
+		if ( $this->shouldCheck( $title, $newText, $oldText ) ) {
 			return $this->mCaptcha->passCaptcha();
 		} else {
 			wfDebug( "WlCaptchaAdapter: no need to show captcha.\n" );
@@ -115,12 +111,12 @@ class WlCaptchaAdapter
 		global $wgUser, $wgCaptchaWhitelistIP, $wgCaptchaRegexes;
 		global $wgEmailAuthentication, $ceAllowConfirmedEmail;
 
-		if( $wgUser->isAllowed( 'skipcaptcha' ) ) {
+		if ( $wgUser->isAllowed( 'skipcaptcha' ) ) {
 			wfDebug( "WlCaptchaAdapter: user group allows skipping captcha\n" );
 			return false;
 		}
 
-		if( !empty( $wgCaptchaWhitelistIP ) ) {
+		if ( !empty( $wgCaptchaWhitelistIP ) ) {
 			$ip = wfGetIp();
 			foreach ( $wgCaptchaWhitelistIP as $range ) {
 				if ( IP::isInRange( $ip, $range ) ) {
@@ -129,13 +125,13 @@ class WlCaptchaAdapter
 			}
 		}
 
-		if( $wgEmailAuthentication && $ceAllowConfirmedEmail &&
+		if ( $wgEmailAuthentication && $ceAllowConfirmedEmail &&
 			$wgUser->isEmailConfirmed() ) {
 			wfDebug( "WlCaptchaAdapter: user has confirmed mail, skipping captcha\n" );
 			return false;
 		}
 
-		if( $this->captchaTriggers( $title, 'edit' ) ) {
+		if ( $this->captchaTriggers( $title, 'edit' ) ) {
 			$this->mCaptcha->trigger = sprintf( "Edit trigger by '%s' at [[%s]]",
 				$wgUser->getName(), $title->getPrefixedText() );
 			$this->mCaptcha->action = 'edit';
@@ -143,7 +139,7 @@ class WlCaptchaAdapter
 			return true;
 		}
 
-		if( $this->captchaTriggers( $title, 'create' ) && is_null( $oldText ) ) {
+		if ( $this->captchaTriggers( $title, 'create' ) && is_null( $oldText ) ) {
 			$this->mCaptcha->trigger = sprintf( "Create trigger by '%s' at [[%s]]",
 				$wgUser->getName(), $title->getPrefixedText() );
 			$this->mCaptcha->action = 'create';
@@ -151,13 +147,13 @@ class WlCaptchaAdapter
 			return true;
 		}
 
-		if( $this->captchaTriggers( $title, 'addurl' ) ) {
+		if ( $this->captchaTriggers( $title, 'addurl' ) ) {
 			$oldLinks = $this->findLinks( $title, $oldText );
 			$newLinks = $this->findLinks( $title, $newText );
 			$unknownLinks = array_filter( $newLinks, array( &$this->mCaptcha, 'filterLink' ) );
 			$addedLinks = array_diff( $unknownLinks, $oldLinks );
 			$numLinks = count( $addedLinks );
-			if( $numLinks > 0 ) {
+			if ( $numLinks > 0 ) {
 				$this->mCaptcha->trigger = sprintf( "%dx url trigger by '%s' at [[%s]]: %s",
 					$numLinks, $wgUser->getName(), $title->getPrefixedText(),
 					implode( ", ", $addedLinks ) );
@@ -166,15 +162,15 @@ class WlCaptchaAdapter
 			}
 		}
 
-		if( !empty( $wgCaptchaRegexes ) ) {
-			foreach( $wgCaptchaRegexes as $regex ) {
+		if ( !empty( $wgCaptchaRegexes ) ) {
+			foreach ( $wgCaptchaRegexes as $regex ) {
 				$newMatches = array();
-				if( preg_match_all( $regex, $newtext, $newMatches ) ) {
+				if ( preg_match_all( $regex, $newtext, $newMatches ) ) {
 					$oldMatches = array();
 					preg_match_all( $regex, $oldtext, $oldMatches );
 					$addedMatches = array_diff( $newMatches[0], $oldMatches[0] );
 					$numHits = count( $addedMatches );
-					if( $numHits > 0 ) {
+					if ( $numHits > 0 ) {
 						$this->mCaptcha->trigger = sprintf( "%dx %s trigger by '%s' at [[%s]]: %s",
 							$numHits, $regex, $wgUser->getName(), $title->getPrefixedText(),
 							implode( ", ", $addedMatches ) );
@@ -209,11 +205,9 @@ class WlCaptchaAdapter
 
 	public function getCaptchaForm() {
 		global $wgOut;
-		return '<div class="captcha">'.
-			$wgOut->parse( $this->mCaptcha->getMessage( $this->mCaptcha->action ) ).
-			$this->mCaptcha->getForm().
+		return '<div class="captcha">' .
+			$wgOut->parse( $this->mCaptcha->getMessage( $this->mCaptcha->action ) ) .
+			$this->mCaptcha->getForm() .
 			'</div>';
 	}
-
 }
-

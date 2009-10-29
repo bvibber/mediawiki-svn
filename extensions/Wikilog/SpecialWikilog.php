@@ -28,7 +28,6 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * Special:Wikilog special page.
  * The primary function of this special page is to list all wikilog articles
@@ -40,7 +39,6 @@ if ( !defined( 'MEDIAWIKI' ) )
 class SpecialWikilog
 	extends IncludableSpecialPage
 {
-
 	/** Alternate views. */
 	protected static $views = array( 'summary', 'archives' );
 
@@ -52,7 +50,7 @@ class SpecialWikilog
 	 */
 	function __construct( ) {
 		parent::__construct( 'Wikilog' );
-		wfLoadExtensionMessages('Wikilog');
+		wfLoadExtensionMessages( 'Wikilog' );
 	}
 
 	/**
@@ -311,7 +309,7 @@ class SpecialWikilog
 
 		$align = $wgContLang->isRtl() ? 'left' : 'right';
 		$fields = self::getQueryFormFields( $opts );
-		$columns = array_chunk( $fields, (count( $fields ) + 1) / 2, true );
+		$columns = array_chunk( $fields, ( count( $fields ) + 1 ) / 2, true );
 
 		$out = Xml::openElement( 'table', array( 'width' => '100%' ) ) .
 				Xml::openElement( 'tr' );
@@ -434,5 +432,4 @@ class SpecialWikilog
 			return false;
 		}
 	}
-
 }

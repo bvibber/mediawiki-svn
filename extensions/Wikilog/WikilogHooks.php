@@ -28,13 +28,11 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * General wikilog hooks.
  */
 class WikilogHooks
 {
-
 	/**
 	 * ArticleEditUpdates hook handler function.
 	 * Performs post-edit updates if article is a wikilog article.
@@ -194,7 +192,7 @@ class WikilogHooks
 		if ( $oldwl && $newwl ) {
 			# Moving title between wikilog namespaces.
 			# Update wikilog data.
-			wfDebug( __METHOD__ . ": Moving title between wikilog namespaces ".
+			wfDebug( __METHOD__ . ": Moving title between wikilog namespaces " .
 				"($oldns, $newns). Updating wikilog data.\n" );
 
 			$wi = Wikilog::getWikilogInfo( $newtitle );
@@ -210,14 +208,14 @@ class WikilogHooks
 		} else if ( $newwl ) {
 			# Moving from normal namespace to wikilog namespace.
 			# Create wikilog data.
-			wfDebug( __METHOD__ . ": Moving from another namespace to wikilog ".
+			wfDebug( __METHOD__ . ": Moving from another namespace to wikilog " .
 				"namespace ($oldns, $newns). Creating wikilog data.\n" );
 			# FIXME: This needs a reparse of the wiki text in order to
 			# populate wikilog metadata. Or forbid this action.
 		} else if ( $oldwl ) {
 			# Moving from wikilog namespace to normal namespace.
 			# Purge wikilog data.
-			wfDebug( __METHOD__ . ": Moving from wikilog namespace to another ".
+			wfDebug( __METHOD__ . ": Moving from wikilog namespace to another " .
 				"namespace ($oldns, $newns). Purging wikilog data.\n" );
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->delete( 'wikilog_wikilogs', array( 'wlw_page'   => $pageid ) );
@@ -265,14 +263,14 @@ class WikilogHooks
 	static function ExtensionSchemaUpdates() {
 		global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables;
 
-		$dir = dirname(__FILE__) . '/';
+		$dir = dirname( __FILE__ ) . '/';
 
-		if( $wgDBtype == 'mysql' ) {
+		if ( $wgDBtype == 'mysql' ) {
 			$wgExtNewTables[] = array( "wikilog_wikilogs", "{$dir}wikilog-tables.sql" );
 		} else {
-			/// TODO: PostgreSQL, SQLite, etc...
-			print "\n".
-				"Warning: There are no table structures for the Wikilog\n".
+			// / TODO: PostgreSQL, SQLite, etc...
+			print "\n" .
+				"Warning: There are no table structures for the Wikilog\n" .
 				"extension other than for MySQL at this moment.\n\n";
 		}
 		return true;
@@ -289,5 +287,4 @@ class WikilogHooks
 		}
 		return true;
 	}
-
 }

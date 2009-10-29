@@ -28,14 +28,12 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * Syndication feed driver. Creates feeds from a list of wikilog articles,
  * given a format and a query object.
  */
 class WikilogFeed
 {
-
 	/**
 	 * Feed title (i.e., not Wikilog title). For Special:Wikilog, 'wikilog'
 	 * system message should be used.
@@ -143,7 +141,7 @@ class WikilogFeed
 			# Try to load the feed from our cache.
 			$cached = $this->loadFromCache( $feed->getUpdated(), $timekey, $feedkey );
 
-			if( is_string( $cached ) ) {
+			if ( is_string( $cached ) ) {
 				wfDebug( "Wikilog: Outputting cached feed\n" );
 				$feed->httpHeaders();
 				echo $cached;
@@ -394,7 +392,7 @@ class WikilogFeed
 				}
 				if ( $row->wlw_authors ) {
 					$authors = unserialize( $row->wlw_authors );
-					foreach( $authors as $user => $userid ) {
+					foreach ( $authors as $user => $userid ) {
 						$usertitle = Title::makeTitle( NS_USER, $user );
 						$feed->addAuthor( $user, $usertitle->getFullUrl() );
 					}
@@ -439,17 +437,17 @@ class WikilogFeed
 			$age = time() - wfTimestamp( TS_UNIX, $tsCache );
 
 			if ( $age < $wgFeedCacheTimeout ) {
-				wfDebug( "Wikilog: loading feed from cache -- ".
-					"too young: age ($age) < timeout ($wgFeedCacheTimeout) ".
+				wfDebug( "Wikilog: loading feed from cache -- " .
+					"too young: age ($age) < timeout ($wgFeedCacheTimeout) " .
 					"($feedkey; $tsCache; $tsData)\n" );
 				return $messageMemc->get( $feedkey );
 			} else if ( $tsCache >= $tsData ) {
-				wfDebug( "Wikilog: loading feed from cache -- ".
-					"not modified: cache ($tsCache) >= data ($tsData)".
+				wfDebug( "Wikilog: loading feed from cache -- " .
+					"not modified: cache ($tsCache) >= data ($tsData)" .
 					"($feedkey)\n" );
 				return $messageMemc->get( $feedkey );
 			} else {
-				wfDebug( "Wikilog: cached feed timestamp check failed -- ".
+				wfDebug( "Wikilog: cached feed timestamp check failed -- " .
 					"cache ($tsCache) < data ($tsData)\n" );
 			}
 		}
@@ -481,7 +479,7 @@ class WikilogFeed
 			$wgOut->addWikiMsg( 'feed-unavailable' );
 			return false;
 		}
-		if( !isset( $wgWikilogFeedClasses[$this->mFormat] ) ) {
+		if ( !isset( $wgWikilogFeedClasses[$this->mFormat] ) ) {
 			wfHttpError( 500, "Internal Server Error", "Unsupported feed type." );
 			return false;
 		}
@@ -535,5 +533,4 @@ class WikilogFeed
 			return $title->getFullUrl();
 		}
 	}
-
 }

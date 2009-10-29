@@ -7,21 +7,18 @@
 
 $messages = array();
 
-
 /** English
  * @author Juliano F. Ravasi
  */
 $messages['en'] = array(
 	# Extension description
-	'wlfeed-desc'				=> 'Enhanced feed generation classes.',
+	'wlfeed-desc' => 'Enhanced feed generation classes',
 );
-
 
 /** Portuguese
  * @author Juliano F. Ravasi
  */
 $messages['pt'] = array(
 	# Extension description
-	'wlfeed-desc'				=> 'Classes aprimoradas para geração de feeds.',
+	'wlfeed-desc' => 'Classes aprimoradas para geração de feeds',
 );
-

@@ -28,12 +28,10 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 class WikilogMainPage
 	extends Article
 	implements WikilogCustomAction
 {
-
 	/**
 	 * Alternate views.
 	 */
@@ -337,6 +335,4 @@ class WikilogMainPage
 	public static function getWikilogDataFromId( $dbr, $id ) {
 		return self::getWikilogData( $dbr, array( 'wlw_page' => $id ) );
 	}
-
 }
-

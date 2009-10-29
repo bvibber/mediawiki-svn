@@ -28,28 +28,26 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * Wikilog article database entry.
  */
 class WikilogItem
 {
-
 	/**
 	 * General data about the article.
 	 */
-	public    $mID          = NULL;		///< Article ID.
-	public    $mName        = NULL;		///< Article title text (as in DB).
-	public    $mTitle       = NULL;		///< Article Title object.
-	public    $mParent      = NULL;		///< Parent wikilog article ID.
-	public    $mParentName  = NULL;		///< Parent wikilog title text.
-	public    $mParentTitle = NULL;		///< Parent wikilog Title object.
-	public    $mPublish     = NULL;		///< Article is published.
-	public    $mPubDate     = NULL;		///< Date the article was published.
-	public    $mUpdated     = NULL;		///< Date the article was last updated.
-	public    $mAuthors     = array();	///< Array of authors.
-	public    $mTags        = array();	///< Array of tags.
-	public    $mNumComments = NULL;		///< Cached number of comments.
+	public    $mID          = NULL;		// /< Article ID.
+	public    $mName        = NULL;		// /< Article title text (as in DB).
+	public    $mTitle       = NULL;		// /< Article Title object.
+	public    $mParent      = NULL;		// /< Parent wikilog article ID.
+	public    $mParentName  = NULL;		// /< Parent wikilog title text.
+	public    $mParentTitle = NULL;		// /< Parent wikilog Title object.
+	public    $mPublish     = NULL;		// /< Article is published.
+	public    $mPubDate     = NULL;		// /< Date the article was published.
+	public    $mUpdated     = NULL;		// /< Date the article was last updated.
+	public    $mAuthors     = array();	// /< Array of authors.
+	public    $mTags        = array();	// /< Array of tags.
+	public    $mNumComments = NULL;		// /< Cached number of comments.
 
 	/**
 	 * Constructor.
@@ -173,7 +171,7 @@ class WikilogItem
 		}
 
 		$comments = array();
-		foreach( $result as $row ) {
+		foreach ( $result as $row ) {
 			$comment = WikilogComment::newFromRow( $this, $row );
 			if ( $row->page_latest ) {
 				$rev = Revision::newFromId( $row->page_latest );
@@ -278,8 +276,8 @@ class WikilogItem
 		extract( $dbr->tableNames( 'wikilog_posts', 'page' ) );
 		return array(
 			'tables' =>
-				"{$wikilog_posts} ".
-				"LEFT JOIN {$page} AS w ON (w.page_id = wlp_parent) ".
+				"{$wikilog_posts} " .
+				"LEFT JOIN {$page} AS w ON (w.page_id = wlp_parent) " .
 				"LEFT JOIN {$page} AS p ON (p.page_id = wlp_page) ",
 			'fields' => array(
 				'wlp_page',
@@ -298,5 +296,4 @@ class WikilogItem
 			)
 		);
 	}
-
 }

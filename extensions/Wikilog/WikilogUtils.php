@@ -34,7 +34,6 @@ if ( !defined( 'MEDIAWIKI' ) )
  */
 class WikilogUtils
 {
-
 	/**
 	 * Retrieves an article parsed output either from parser cache or by
 	 * parsing it again. If parsing again, stores it back into parser cache.
@@ -130,20 +129,20 @@ class WikilogUtils
 		$fh_diff = array_diff_key( $wgParser->mFunctionHooks, $newparser->mFunctionHooks );
 
 		if ( !empty( $th_diff ) || !empty( $tt_diff ) || !empty( $fh_diff ) ) {
-			wfDebug("*** Wikilog WARNING: Detected broken extensions installed. "
+			wfDebug( "*** Wikilog WARNING: Detected broken extensions installed. "
 				  . "A second instance of the parser is not properly initialized. "
-				  . "The following hooks are missing:\n");
+				  . "The following hooks are missing:\n" );
 			if ( !empty( $th_diff ) ) {
 				$hooks = implode( ', ', array_keys( $th_diff ) );
-				wfDebug("***    Tag hooks: $hooks.\n");
+				wfDebug( "***    Tag hooks: $hooks.\n" );
 			}
 			if ( !empty( $tt_diff ) ) {
 				$hooks = implode( ', ', array_keys( $tt_diff ) );
-				wfDebug("***    Transparent tag hooks: $hooks.\n");
+				wfDebug( "***    Transparent tag hooks: $hooks.\n" );
 			}
 			if ( !empty( $fh_diff ) ) {
 				$hooks = implode( ', ', array_keys( $fh_diff ) );
-				wfDebug("***    Function hooks: $hooks.\n");
+				wfDebug( "***    Function hooks: $hooks.\n" );
 			}
 			return false;
 		} else {
@@ -282,7 +281,7 @@ class WikilogUtils
 		$rows = array();
 		foreach ( $fields as $field ) {
 			if ( is_array( $field ) ) {
-				$row = Xml::tags( 'td', array( 'class' => 'mw-label' ), $field[0] ).
+				$row = Xml::tags( 'td', array( 'class' => 'mw-label' ), $field[0] ) .
 					Xml::tags( 'td', array( 'class' => 'mw-input' ), $field[1] );
 			} else {
 				$row = Xml::tags( 'td', array( 'class' => 'mw-input',
@@ -294,5 +293,4 @@ class WikilogUtils
 			implode( "\n", $rows ) );
 		return $form;
 	}
-
 }

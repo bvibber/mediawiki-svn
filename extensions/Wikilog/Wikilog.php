@@ -28,7 +28,6 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /*
  * General extension information.
  */
@@ -41,17 +40,15 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url'				=> 'http://www.mediawiki.org/wiki/Extension:Wikilog',
 );
 
-
 /*
  * Dependencies.
  */
-require_once( dirname(__FILE__) . '/WlFeed.php' );
-
+require_once( dirname( __FILE__ ) . '/WlFeed.php' );
 
 /*
  * Messages.
  */
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['Wikilog'] = $dir . 'Wikilog.i18n.php';
 
 /*
@@ -117,7 +114,7 @@ $wgHooks['TitleMoveComplete'][]			= 'WikilogHooks::TitleMoveComplete';
 $wgHooks['LanguageGetSpecialPageAliases'][]
 										= 'WikilogHooks::LanguageGetSpecialPageAliases';
 $wgHooks['LanguageGetMagic'][]			= 'WikilogHooks::LanguageGetMagic';
-$wgHooks['LoadExtensionSchemaUpdates'][]= 'WikilogHooks::ExtensionSchemaUpdates';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'WikilogHooks::ExtensionSchemaUpdates';
 $wgHooks['UnknownAction'][]				= 'WikilogHooks::UnknownAction';
 
 // WikilogLinksUpdate hooks
@@ -156,7 +153,7 @@ $wgLogActions['wikilog/c-reject'] = 'wikilog-log-cmt-reject';
 /*
  * Default settings.
  */
-require_once( dirname(__FILE__) . '/WikilogDefaultSettings.php' );
+require_once( dirname( __FILE__ ) . '/WikilogDefaultSettings.php' );
 
 
 /**
@@ -165,8 +162,8 @@ require_once( dirname(__FILE__) . '/WikilogDefaultSettings.php' );
  */
 class Wikilog
 {
-	###
-	##  Setup functions.
+	# ##
+	# #  Setup functions.
 	#
 
 	/**
@@ -180,12 +177,12 @@ class Wikilog
 		global $wgExtraNamespaces, $wgWikilogNamespaces;
 
 		if ( $ns < 100 ) {
-			echo "Wikilog setup: custom namespaces should start ".
+			echo "Wikilog setup: custom namespaces should start " .
 				 "at 100 to avoid conflict with standard namespaces.\n";
 			die( 1 );
 		}
-		if ( ($ns % 2) != 0 ) {
-			echo "Wikilog setup: given namespace ($ns) is not a ".
+		if ( ( $ns % 2 ) != 0 ) {
+			echo "Wikilog setup: given namespace ($ns) is not a " .
 				 "subject namespace (even number).\n";
 			die( 1 );
 		}
@@ -197,12 +194,12 @@ class Wikilog
 		}
 
 		$wgExtraNamespaces[$ns  ] = $name;
-		$wgExtraNamespaces[$ns^1] = $talk;
+		$wgExtraNamespaces[$ns ^ 1] = $talk;
 		$wgWikilogNamespaces[] = $ns;
 	}
 
-	###
-	##  MediaWiki hooks.
+	# ##
+	# #  MediaWiki hooks.
 	#
 
 	/**
@@ -220,7 +217,7 @@ class Wikilog
 		# Find assigned namespaces and make sure they have subpages
 		foreach ( $wgWikilogNamespaces as $ns ) {
 			$wgNamespacesWithSubpages[$ns  ] = true;
-			$wgNamespacesWithSubpages[$ns^1] = true;
+			$wgNamespacesWithSubpages[$ns ^ 1] = true;
 		}
 
 		# Work around bug in MediaWiki 1.13 when '?action=render'.
@@ -292,7 +289,7 @@ class Wikilog
 		if ( $target->isTalkPage() && !in_array( 'known', $options ) ) {
 			$wi = self::getWikilogInfo( $target );
 			if ( $wi && $wi->isItem() && !$wi->getTrailing() && $wi->getItemTitle()->exists() ) {
-				if ( ($i = array_search( 'broken', $options )) !== false ) {
+				if ( ( $i = array_search( 'broken', $options ) ) !== false ) {
 					array_splice( $options, $i, 1 );
 				}
 				$options[] = 'known';
@@ -312,7 +309,7 @@ class Wikilog
 			$wi = self::getWikilogInfo( $title );
 			if ( $wi && $wi->isItem() && $wi->getItemTitle()->exists() ) {
 				$query = '';
-				if ( ($i = array_search( 'new', $classes )) !== false ) {
+				if ( ( $i = array_search( 'new', $classes ) ) !== false ) {
 					array_splice( $classes, $i, 1 );
 				}
 			}
@@ -333,8 +330,8 @@ class Wikilog
 			$action = $wgRequest->getText( 'action' );
 			if ( $wi->isMain() && $skin->mTitle->quickUserCan( 'edit' ) ) {
 				$contentActions['wikilog'] = array(
-					'class' => ($action == 'wikilog') ? 'selected' : false,
-					'text' => wfMsg('wikilog-tab'),
+					'class' => ( $action == 'wikilog' ) ? 'selected' : false,
+					'text' => wfMsg( 'wikilog-tab' ),
 					'href' => $skin->mTitle->getLocalUrl( 'action=wikilog' )
 				);
 			}
@@ -347,8 +344,8 @@ class Wikilog
 		return true;
 	}
 
-	###
-	##  Other global wikilog functions.
+	# ##
+	# #  Other global wikilog functions.
 	#
 
 	/**
@@ -369,9 +366,7 @@ class Wikilog
 			return NULL;
 		}
 	}
-
 }
-
 
 /**
  * Wikilog information class.
@@ -381,14 +376,14 @@ class Wikilog
  */
 class WikilogInfo
 {
-	public $mWikilogName;		///< Wikilog title (textual string).
-	public $mWikilogTitle;		///< Wikilog main article title object.
-	public $mItemName;			///< Wikilog post title (textual string).
-	public $mItemTitle;			///< Wikilog post title object.
-	public $mItemTalkTitle;		///< Wikilog post talk title object.
+	public $mWikilogName;		// /< Wikilog title (textual string).
+	public $mWikilogTitle;		// /< Wikilog main article title object.
+	public $mItemName;			// /< Wikilog post title (textual string).
+	public $mItemTitle;			// /< Wikilog post title object.
+	public $mItemTalkTitle;		// /< Wikilog post talk title object.
 
-	public $mIsTalk;			///< Constructed using a talk page title.
-	public $mTrailing = NULL;	///< Trailing subpage title.
+	public $mIsTalk;			// /< Constructed using a talk page title.
+	public $mTrailing = NULL;	// /< Trailing subpage title.
 
 	/**
 	 * Constructor.
@@ -436,9 +431,7 @@ class WikilogInfo
 	function getItemTalkTitle() { return $this->mItemTitle->getTalkPage(); }
 
 	function getTrailing() { return $this->mTrailing; }
-
 }
-
 
 /**
  * Interface used by article derived classes that implement the "wikilog"
@@ -448,4 +441,3 @@ interface WikilogCustomAction
 {
 	public function wikilog();
 }
-

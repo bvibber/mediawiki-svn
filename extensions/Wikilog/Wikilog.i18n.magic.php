@@ -4,8 +4,8 @@
  * @addtogroup Extensions
  */
 
+// FIXME: Use $wgExtensionMessagesFiles[] and $magicWords. See f.e. extension ParserFunctions.
 $words = array();
-
 
 /**
  * English.
@@ -24,7 +24,6 @@ $words['en'] = array(
 	'wlk-hidden'	=> array( 0, 'hidden'       ),
 );
 
-
 /**
  * Portuguese.
  * @author Juliano F. Ravasi
@@ -42,7 +41,6 @@ $words['pt'] = array(
 	'wlk-hidden'	=> array( 0, 'oculto',      'hidden'       ),
 );
 
-
 /**
  * Brazilian Portuguese.
  * @author Juliano F. Ravasi
@@ -59,4 +57,3 @@ $words['pt-br'] = array(
 	'wlk-summary'	=> array( 1, 'resumo',      'summary'      ),
 	'wlk-hidden'	=> array( 0, 'oculto',      'hidden'       ),
 );
-

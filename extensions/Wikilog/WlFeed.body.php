@@ -28,14 +28,12 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * Syndication base class. This class shares common metadata for both feeds
  * (RSS channels) and entries (RSS items).
  */
 abstract class WlSyndicationBase
 {
-
 	/**
 	 * A permanent, universally unique identifier for an entry or feed.
 	 * Required. Corresponds to atom:id and rss:guid (entries only).
@@ -146,7 +144,7 @@ abstract class WlSyndicationBase
 	function getLinks( $rel = null ) {
 		return is_null( $rel ) ? $this->mLinks : $this->mLinks[$rel];
 	}
-	
+
 	function setAuthors( $value ) { $this->mAuthors = $value; }
 	function getAuthors() { return $this->mAuthors; }
 
@@ -264,7 +262,6 @@ abstract class WlSyndicationBase
 
 }
 
-
 /**
  * Syndication feed class. This class represents a feed (Atom) or channel
  * (RSS).
@@ -272,7 +269,6 @@ abstract class WlSyndicationBase
 abstract class WlSyndicationFeed
 	extends WlSyndicationBase
 {
-
 	/**
 	 * A text construct that conveys a human-readable description or subtitle
 	 * for the feed. Optional. Corresponds to atom:subtitle and rss:description
@@ -433,7 +429,7 @@ abstract class WlSyndicationFeed
 		if ( in_array( 'sniff', $this->mQuirks ) ) {
 			echo "<!--\n" . str_repeat( self::QUIRK_SNIFF_STR, 10 ) . "-->\n";
 		}
-		
+
 		if ( !in_array( 'style', $this->mQuirks ) ) {
 			echo '<?xml-stylesheet type="text/css" href="' .
 				htmlspecialchars( wfExpandUrl( "$wgStylePath/common/feed.css?$wgStyleVersion" ) ) .
@@ -486,9 +482,7 @@ abstract class WlSyndicationFeed
 			return NULL;
 		}
 	}
-
 }
-
 
 /**
  * Syndication entry class. This class represents individual entries (Atom) or
@@ -497,7 +491,6 @@ abstract class WlSyndicationFeed
 class WlSyndicationEntry
 	extends WlSyndicationBase
 {
-
 	/**
 	 * A date value indicating an instant in time when the entry was published.
 	 */
@@ -569,17 +562,15 @@ class WlSyndicationEntry
 	/*@}*/
 }
 
-
 /**
  * A text construct, contains human-readable text and is language-sensitive.
  * May contain plain text, HTML or XHTML.
  */
 class WlTextConstruct
 {
-
-	const T_TEXT  = 'text';				///< Plain text, no markup.
-	const T_HTML  = 'html';				///< Contains HTML markup.
-	const T_XHTML = 'xhtml';			///< Contains XHTML markup.
+	const T_TEXT  = 'text';				// /< Plain text, no markup.
+	const T_HTML  = 'html';				// /< Contains HTML markup.
+	const T_XHTML = 'xhtml';			// /< Contains XHTML markup.
 
 	/**
 	 * Content language tag.
@@ -675,9 +666,7 @@ class WlTextConstruct
 		}
 		return $content;
 	}
-
 }
-
 
 /**
  * Atom feed class.
@@ -685,7 +674,6 @@ class WlTextConstruct
 class WlAtomFeed
 	extends WlSyndicationFeed
 {
-
 	/**
 	 * Returns the default content type for Atom feeds.
 	 */
@@ -842,9 +830,7 @@ class WlAtomFeed
 	function outFooter() {
 		echo Xml::closeElement( 'feed' ) . "\n";
 	}
-
 }
-
 
 /**
  * RSS feed class.
@@ -852,7 +838,6 @@ class WlAtomFeed
 class WlRSSFeed
 	extends WlSyndicationFeed
 {
-
 	/**
 	 * Returns the default content type for RSS feeds.
 	 */
@@ -935,7 +920,7 @@ class WlRSSFeed
 		echo Xml::element( 'language', NULL, $this->getLanguage() ) . "\n";
 		echo Xml::element( 'lastBuildDate', NULL, $this->formatTime( $this->getUpdated() ) ) . "\n";
 		echo $this->formatTextData( 'copyright', $this->getRights() );
-		
+
 		$gtor = $this->getGenerator();
 		echo Xml::element( 'generator', NULL, "{$gtor['content']} {$gtor['attribs']['version']}" ) . "\n";
 	}
@@ -1022,7 +1007,7 @@ class WlRSSFeed
 		} else if ( $entry->getContent() ) {
 			$description = $entry->getContent();
 		}
-		
+
 		if ( $description ) {
 			if ( $description instanceof WlTextConstruct ) {
 				echo Xml::element( 'description', NULL, $description->getHTML() );
@@ -1049,14 +1034,11 @@ class WlRSSFeed
 		echo Xml::closeElement( 'channel' ) . "\n";
 		echo Xml::closeElement( 'rss' ) . "\n";
 	}
-
 }
-
 
 /**
  * MediaWiki compatibility classes.
  */
-
 class WlFeedItemCompat
 	extends WlSyndicationEntry
 {

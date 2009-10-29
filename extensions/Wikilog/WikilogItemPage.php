@@ -28,7 +28,6 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * Wikilog article namespace handler class.
  *
@@ -38,7 +37,6 @@ if ( !defined( 'MEDIAWIKI' ) )
 class WikilogItemPage
 	extends Article
 {
-
 	/**
 	 * Wikilog article item object.
 	 */
@@ -82,7 +80,7 @@ class WikilogItemPage
 
 			# Display draft notice.
 			if ( !$this->mItem->getIsPublished() ) {
-				$wgOut->addHtml( wfMsgWikiHtml( 'wikilog-reading-draft' ) );
+				$wgOut->wrapWikiMsg( '<div class="mw-warning">$1</div>', array( 'wikilog-reading-draft' ) );
 			}
 
 			# Item page header.
@@ -130,7 +128,7 @@ class WikilogItemPage
 			# Add feed links.
 			$links = array();
 			if ( $wgFeed ) {
-				foreach( $wgWikilogFeedClasses as $format => $class ) {
+				foreach ( $wgWikilogFeedClasses as $format => $class ) {
 					$wgOut->addLink( array(
 						'rel' => 'alternate',
 						'type' => "application/{$format}+xml",
@@ -188,6 +186,4 @@ class WikilogItemPage
 
 		return parent::preSaveTransform( $text );
 	}
-
 }
-

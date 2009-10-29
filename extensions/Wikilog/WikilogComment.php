@@ -28,19 +28,17 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * Wikilog article comment database entry.
  */
 class WikilogComment
 {
-
 	/**
 	 * Comment statuses.
 	 */
-	const S_OK				= 'OK';			///< Comment is published.
-	const S_PENDING			= 'PENDING';	///< Comment is pending moderation.
-	const S_DELETED			= 'DELETED';	///< Comment was removed.
+	const S_OK				= 'OK';			// /< Comment is published.
+	const S_PENDING			= 'PENDING';	// /< Comment is pending moderation.
+	const S_DELETED			= 'DELETED';	// /< Comment was removed.
 
 	/**
 	 * Mapping of comment statuses to readable messages. System messages are
@@ -60,19 +58,19 @@ class WikilogComment
 	/**
 	 * General data about the comment.
 	 */
-	public  $mID			= NULL;		///< Comment ID.
-	public  $mParent		= NULL;		///< Parent comment ID.
-	public  $mThread		= NULL;		///< Comment thread.
-	public  $mUserID		= NULL;		///< Comment author user id.
-	public  $mUserText		= NULL;		///< Comment author user name.
-	public  $mAnonName		= NULL;		///< Comment anonymous author name.
-	public  $mStatus		= NULL;		///< Comment status.
-	public  $mTimestamp		= NULL;		///< Date the comment was published.
-	public  $mUpdated		= NULL;		///< Date the comment was last updated.
-	public  $mCommentPage	= NULL;		///< Comment page id.
-	public  $mCommentTitle  = NULL;		///< Comment page title.
-	public  $mCommentRev	= NULL;		///< Comment revision id.
-	public  $mText			= NULL;		///< Comment text.
+	public  $mID			= NULL;		// /< Comment ID.
+	public  $mParent		= NULL;		// /< Parent comment ID.
+	public  $mThread		= NULL;		// /< Comment thread.
+	public  $mUserID		= NULL;		// /< Comment author user id.
+	public  $mUserText		= NULL;		// /< Comment author user name.
+	public  $mAnonName		= NULL;		// /< Comment anonymous author name.
+	public  $mStatus		= NULL;		// /< Comment status.
+	public  $mTimestamp		= NULL;		// /< Date the comment was published.
+	public  $mUpdated		= NULL;		// /< Date the comment was last updated.
+	public  $mCommentPage	= NULL;		// /< Comment page id.
+	public  $mCommentTitle  = NULL;		// /< Comment page title.
+	public  $mCommentRev	= NULL;		// /< Comment revision id.
+	public  $mText			= NULL;		// /< Comment text.
 
 	/**
 	 * Whether the text was changed, and thus a database update is required.
@@ -258,7 +256,7 @@ class WikilogComment
 	public function getAutoSummary() {
 		global $wgContLang;
 		$user = $this->mUserID ? $this->mUserText : $this->mAnonName;
-		$summ = $wgContLang->truncate( str_replace("\n", ' ', $this->mText),
+		$summ = $wgContLang->truncate( str_replace( "\n", ' ', $this->mText ),
 			max( 0, 200 - strlen( wfMsgForContent( 'wikilog-comment-autosumm' ) ) ),
 			'...' );
 		return wfMsgForContent( 'wikilog-comment-autosumm', $user, $summ );
@@ -483,7 +481,7 @@ class WikilogComment
 		extract( $dbr->tableNames( 'wikilog_comments', 'page' ) );
 		return array(
 			'tables' =>
-				"{$wikilog_comments} ".
+				"{$wikilog_comments} " .
 				"LEFT JOIN {$page} ON (page_id = wlc_comment_page)",
 			'fields' => array(
 				'wlc_id',
@@ -503,5 +501,4 @@ class WikilogComment
 			)
 		);
 	}
-
 }

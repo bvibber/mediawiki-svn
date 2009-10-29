@@ -28,14 +28,12 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * This class holds the parser functions that hooks into the Parser in order
  * to collect Wikilog metadata.
  */
 class WikilogParser
 {
-
 	/**
 	 * True if parsing articles with feed output specific settings.
 	 * This is an horrible hack needed because of many MediaWiki misdesigns.
@@ -138,13 +136,12 @@ class WikilogParser
 		global $wgServer;
 		if ( self::$expandingUrls ) {
 			$l = strlen( $wgServer );
-			if ( substr( $url, 0, 2*$l ) == $wgServer.$wgServer ) {
+			if ( substr( $url, 0, 2 * $l ) == $wgServer . $wgServer ) {
 				$url = substr( $url, $l );
 			}
 		}
 		return true;
 	}
-
 
 	###
 	## Parser tags and functions
@@ -307,7 +304,6 @@ class WikilogParser
 				return '';
 		}
 	}
-
 
 	###
 	## Wikilog parser settings.
@@ -529,9 +525,7 @@ class WikilogParser
 			return NULL;
 		}
 	}
-
 }
-
 
 /**
  * Wikilog parser output. This class is first attached to the Parser as
@@ -540,7 +534,6 @@ class WikilogParser
  */
 class WikilogParserOutput
 {
-
 	/* Item and Wikilog metadata */
 	public $mSummary = false;
 	public $mAuthors = array();
@@ -557,9 +550,7 @@ class WikilogParserOutput
 	/* Acessor functions, lacking... */
 	public function getAuthors() { return $this->mAuthors; }
 	public function getTags() { return $this->mTags; }
-
 }
-
 
 /**
  * Since wikilog parses articles with specific options in order to be
@@ -571,7 +562,6 @@ class WikilogParserOutput
 class WikilogParserCache
 	extends ParserCache
 {
-
 	public static function &singleton() {
 		static $instance;
 		if ( !isset( $instance ) ) {
@@ -582,7 +572,7 @@ class WikilogParserCache
 	}
 
 	public function getKey( &$article, $popts ) {
-		if( $popts instanceof User )	// API change in MediaWiki 1.15.
+		if ( $popts instanceof User )	// API change in MediaWiki 1.15.
 			$popts = ParserOptions::newFromUser( $popts );
 
 		$user = $popts->mUser;
@@ -591,5 +581,4 @@ class WikilogParserCache
 		$key = wfMemcKey( 'wlcache', 'idhash', "$pageid-$hash" );
 		return $key;
 	}
-
 }

@@ -28,7 +28,6 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * Common wikilog pager interface.
  */
@@ -37,7 +36,6 @@ interface WikilogPager
 	function including( $x = NULL );
 	function getNavigationBar( $class = 'wl-navbar-any' );
 }
-
 
 /**
  * Summary pager.
@@ -55,13 +53,12 @@ class WikilogSummaryPager
 	extends ReverseChronologicalPager
 	implements WikilogPager
 {
-
 	# Override default limits.
 	public $mLimitsShown = array( 5, 10, 20, 50 );
 
 	# Local variables.
-	protected $mQuery = NULL;			///< Wikilog item query data
-	protected $mIncluding = false;		///< If pager is being included
+	protected $mQuery = NULL;			// /< Wikilog item query data
+	protected $mIncluding = false;		// /< If pager is being included
 
 	/**
 	 * Constructor.
@@ -126,7 +123,7 @@ class WikilogSummaryPager
 	}
 
 	function getEmptyBody() {
-		return wfMsgExt( 'wikilog-pager-empty', array( 'parsemag' ) );
+		return '<div class="wl-empty">' . wfMsgExt( 'wikilog-pager-empty', array( 'parsemag' ) ) . "</div>";
 	}
 
 	function getNavigationBar( $class = 'wl-navbar-any' ) {
@@ -185,7 +182,7 @@ class WikilogSummaryPager
 
 		# Title heading, with link.
 		$heading = $skin->makeKnownLinkObj( $item->mTitle, $item->mName .
-			( $item->getIsPublished() ? '' : ' '. wfMsgForContent( 'wikilog-draft-title-mark' ) ) );
+			( $item->getIsPublished() ? '' : ' ' . wfMsgForContent( 'wikilog-draft-title-mark' ) ) );
 		$result .= "<h2>{$heading}</h2>\n";
 
 		# Item header.
@@ -261,13 +258,11 @@ class WikilogSummaryPager
 	 */
 	private function editLink( $title ) {
 		$skin = $this->getSkin();
-		$url = $skin->makeKnownLinkObj( $title, wfMsg('wikilog-edit-lc'), 'action=edit' );
+		$url = $skin->makeKnownLinkObj( $title, wfMsg( 'wikilog-edit-lc' ), 'action=edit' );
 		$result = wfMsg( 'editsection-brackets', $url );
 		return "<span class=\"editsection\">$result</span>";
 	}
-
 }
-
 
 /**
  * Template pager.
@@ -292,7 +287,6 @@ class WikilogSummaryPager
 class WikilogTemplatePager
 	extends WikilogSummaryPager
 {
-
 	protected $mTemplate, $mTemplateTitle;
 
 	/**
@@ -369,9 +363,7 @@ class WikilogTemplatePager
 
 		return $this->parse( $text );
 	}
-
 }
-
 
 /**
  * Archives pager.
@@ -384,10 +376,9 @@ class WikilogArchivesPager
 	extends TablePager
 	implements WikilogPager
 {
-
 	# Local variables.
-	protected $mQuery = NULL;			///< Wikilog item query data
-	protected $mIncluding = false;		///< If pager is being included
+	protected $mQuery = NULL;			// /< Wikilog item query data
+	protected $mIncluding = false;		// /< If pager is being included
 
 	/**
 	 * Constructor.
@@ -539,7 +530,7 @@ class WikilogArchivesPager
 		$fields = array();
 
 		$fields['wlp_pubdate']			= wfMsgHtml( 'wikilog-published' );
-// 		$fields['wlp_updated']			= wfMsgHtml( 'wikilog-updated' );
+ 		// $fields['wlp_updated']			= wfMsgHtml( 'wikilog-updated' );
 		$fields['wlp_authors']			= wfMsgHtml( 'wikilog-authors' );
 
 		if ( !$this->mQuery->isSingleWikilog() )
@@ -590,9 +581,7 @@ class WikilogArchivesPager
 	 */
 	private function editLink( $title ) {
 		$skin = $this->getSkin();
-		$url = $skin->makeKnownLinkObj( $title, wfMsg('wikilog-edit-lc'), 'action=edit' );
+		$url = $skin->makeKnownLinkObj( $title, wfMsg( 'wikilog-edit-lc' ), 'action=edit' );
 		return wfMsg( 'wikilog-brackets', $url );
 	}
-
 }
-

@@ -28,25 +28,23 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /*
  * General extension information.
  */
 $wgExtensionCredits['other'][] = array(
-	'name'				=> 'WlFeed',
-	'version'			=> '1.0.0',
-	'author'			=> 'Juliano F. Ravasi',
-	'description'		=> 'Enhanced feed generation classes.',
-	'descriptionmsg'	=> 'wlfeed-desc',
-	'url'				=> 'http://www.mediawiki.org/wiki/Extension:Wikilog',
+	'name'           => 'WlFeed',
+	'version'        => '1.0.0',
+	'author'         => 'Juliano F. Ravasi',
+	'description'    => 'Enhanced feed generation classes.',
+	'descriptionmsg' => 'wlfeed-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Wikilog',
 );
-
 
 /*
  * Module autoload information.
  */
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['WlFeed'] = $dir . 'WlFeed.i18n.php';
 
@@ -61,7 +59,6 @@ $wgAutoloadClasses += array(
 	'WlAtomFeedCompat'		=> $dir . 'WlFeed.body.php',
 	'WlRSSFeedCompat'		=> $dir . 'WlFeed.body.php'
 );
-
 
 /*
  * Extension setup.
@@ -110,5 +107,4 @@ class WlFeed
 			}
 		}
 	}
-
 }

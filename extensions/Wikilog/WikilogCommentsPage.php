@@ -28,7 +28,6 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-
 /**
  * Wikilog comments namespace handler class.
  *
@@ -48,17 +47,17 @@ class WikilogCommentsPage
 	extends Article
 	implements WikilogCustomAction
 {
-	protected $mSkin;				///< Skin used for rendering the page.
-	protected $mFormOptions;		///< Post comment form fields.
-	protected $mUserCanPost;		///< User is allowed to post.
-	protected $mUserCanModerate;	///< User is allowed to moderate.
-	protected $mPostedComment;		///< Posted comment, from HTTP post data.
-	protected $mCaptchaForm;		///< Captcha form fields, when saving comment.
-	protected $mTrailing;			///< Trailing text in comments title page.
+	protected $mSkin;				// /< Skin used for rendering the page.
+	protected $mFormOptions;		// /< Post comment form fields.
+	protected $mUserCanPost;		// /< User is allowed to post.
+	protected $mUserCanModerate;	// /< User is allowed to moderate.
+	protected $mPostedComment;		// /< Posted comment, from HTTP post data.
+	protected $mCaptchaForm;		// /< Captcha form fields, when saving comment.
+	protected $mTrailing;			// /< Trailing text in comments title page.
 
-	public    $mItem;				///< Wikilog item the page is associated with.
-	public    $mTalkTitle;			///< Main talk page title.
-	public    $mSingleComment;		///< Used when viewing a single comment.
+	public    $mItem;				// /< Wikilog item the page is associated with.
+	public    $mTalkTitle;			// /< Main talk page title.
+	public    $mSingleComment;		// /< Used when viewing a single comment.
 
 	/**
 	 * Constructor.
@@ -224,7 +223,7 @@ class WikilogCommentsPage
 		}
 
 		# Initialize a session, when an anonymous post a comment...
-		if( session_id() == '' ) {
+		if ( session_id() == '' ) {
 			wfSetupSession();
 		}
 
@@ -292,12 +291,12 @@ class WikilogCommentsPage
 		$html = Xml::openElement( 'div', array( 'class' => 'wl-threads' ) );
 
 		foreach ( $comments as $comment ) {
-			while ( $top > 0 && $comment->mParent != $stack[$top-1] ) {
+			while ( $top > 0 && $comment->mParent != $stack[$top - 1] ) {
 				$html .= Xml::closeElement( 'div' );
 				array_pop( $stack ); $top--;
 			}
 
-			$html .= Xml::openElement( 'div', array( 'class' => 'wl-thread' ) ).
+			$html .= Xml::openElement( 'div', array( 'class' => 'wl-thread' ) ) .
 				$this->formatComment( $comment );
 
 			if ( $comment->mID == $replyTo && $this->mUserCanPost ) {
@@ -351,7 +350,7 @@ class WikilogCommentsPage
 			$meta = $this->formatCommentMetadata( $comment );
 			$text = $wgOut->parse( $comment->getText() );  // TODO: Optimize this.
 			$html =
-				Xml::tags( 'div', array( 'class' => 'wl-comment-meta' ), $meta ).
+				Xml::tags( 'div', array( 'class' => 'wl-comment-meta' ), $meta ) .
 				Xml::tags( 'div', array( 'class' => 'wl-comment-text' ), $text );
 		}
 
@@ -368,13 +367,13 @@ class WikilogCommentsPage
 		if ( $comment->mUserID ) {
 			$by = wfMsgExt( 'wikilog-comment-by-user',
 				array( 'parseinline', 'replaceafter' ),
-				$this->mSkin->userLink( $comment->mUserID, $comment->mUserText ),
+				'<span class="wl-comment-author">' . $this->mSkin->userLink( $comment->mUserID, $comment->mUserText ) . '</span>',
 				$this->mSkin->userTalkLink( $comment->mUserID, $comment->mUserText )
 			);
 		} else {
 			$by = wfMsgExt( 'wikilog-comment-by-anon',
 				array( 'parseinline', 'replaceafter' ),
-				$this->mSkin->userLink( $comment->mUserID, $comment->mUserText ),
+				'<span class="wl-comment-author">' . $this->mSkin->userLink( $comment->mUserID, $comment->mUserText ) . '</span>',
 				$this->mSkin->userTalkLink( $comment->mUserID, $comment->mUserText ),
 				htmlspecialchars( $comment->mAnonName )
 			);
@@ -500,7 +499,7 @@ class WikilogCommentsPage
 		$opts = $this->mFormOptions;
 
 		$preview = '';
-		if ( $comment && $comment->mParent == $parent) {
+		if ( $comment && $comment->mParent == $parent ) {
 			$check = $this->validateComment( $comment );
 			if ( $check ) {
 				$preview = Xml::wrapClass( wfMsg( $check ), 'mw-warning', 'div' );
@@ -512,9 +511,9 @@ class WikilogCommentsPage
 		}
 
 		$form =
-			Xml::hidden( 'title', $this->getTitle()->getPrefixedText() ).
-			Xml::hidden( 'action', 'wikilog' ).
-			Xml::hidden( 'wpEditToken', $wgUser->editToken() ).
+			Xml::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
+			Xml::hidden( 'action', 'wikilog' ) .
+			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
 			( $parent ? Xml::hidden( 'wlParent', $parent ) : '' );
 
 		$fields = array();
@@ -532,7 +531,7 @@ class WikilogCommentsPage
 			$fields[] = array(
 				Xml::label( wfMsg( 'wikilog-form-name' ), 'wl-name' ),
 				Xml::input( 'wlAnonName', 25, $opts->consumeValue( 'wlAnonName' ),
-					array( 'id' => 'wl-name', 'maxlength' => 255 ) ).
+					array( 'id' => 'wl-name', 'maxlength' => 255 ) ) .
 					"<p>{$message}</p>"
 			);
 		}
@@ -552,7 +551,7 @@ class WikilogCommentsPage
 		}
 
 		$fields[] = array( '',
-			Xml::submitbutton( wfMsg( 'wikilog-submit' ), array( 'name' => 'wlActionCommentSubmit' ) ) .'&nbsp;'.
+			Xml::submitbutton( wfMsg( 'wikilog-submit' ), array( 'name' => 'wlActionCommentSubmit' ) ) . '&nbsp;' .
 			Xml::submitbutton( wfMsg( 'wikilog-preview' ), array( 'name' => 'wlActionCommentPreview' ) )
 		);
 
@@ -704,5 +703,4 @@ class WikilogCommentsPage
 
 		return false;
 	}
-
 }
