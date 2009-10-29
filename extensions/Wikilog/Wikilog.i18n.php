@@ -96,7 +96,7 @@ $messages['en'] = array(
 	'wikilog-comment-approve' => 'Approve this comment (immediate action)',
 	'wikilog-comment-reject' => 'Reject this comment (immediate action)',
 	'wikilog-newtalk-text' => '<!-- blank page created by Wikilog -->',
-	'wikilog-newtalk-summary' => 'created automatically by wikilog',
+	'wikilog-newtalk-summary' => 'created automatically by Wikilog',
 
 	# Atom and RSS feeds
 	'wikilog-feed-title' => '{{SITENAME}} - $1 [$2]', # $1 = title, $2 = content language
@@ -166,12 +166,11 @@ The comment will only appear after it is reviewed by a moderator.',
 	'wikilog-summary' => '',			# Special page summary
 	'wikilog-backlink' => '← $1',
 	'wikilog-brackets' => '[$1]',
-	'wikilog-navigation-bar' =>
-		'<div class="$6 visualClear">' .
-		'<div style="float:left">$1 • $2</div>' .
-		'<div style="float:right">$3 • $4</div>' .
-		'<div style="text-align:center">$5</div>' .
-		'</div>',
+	'wikilog-navigation-bar' => '<div class="$6 visualClear">
+<div style="float:left">$1 • $2</div>
+<div style="float:right">$3 • $4</div>
+<div style="text-align:center">$5</div>
+</div>',
 );
 
 /** German (Deutsch)
