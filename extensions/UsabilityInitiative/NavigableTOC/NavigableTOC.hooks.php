@@ -16,7 +16,7 @@ class NavigableTOCHooks {
 	 */
 	 public static function addTOC( &$toolbar ) {
 		global $wgNavigableTOCStyleVersion, $wgUser;
-		global $wgNavigableTOCGlobalEnable, $wgNavigableTOCUserEnable;
+		global $wgNavigableTOCGlobalEnable, $wgNavigableTOCUserEnable, $wgNavigableTOCCollapseEnable;
 		
 		if ( $wgNavigableTOCGlobalEnable || ( $wgNavigableTOCUserEnable && $wgUser->getOption( 'usenavigabletoc' ) ) ) {		
 			// Adds script to document
@@ -24,6 +24,11 @@ class NavigableTOCHooks {
 			UsabilityInitiativeHooks::addScript(
 				'NavigableTOC/NavigableTOC.js', $wgNavigableTOCStyleVersion
 			);
+			UsabilityInitiativeHooks::addVariables(
+  			array(
+  				'wgNavigableTOCCollapseEnable' => $wgNavigableTOCCollapseEnable
+  			)
+  		);
 		}
 		return true;
 	}
