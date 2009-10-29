@@ -1,0 +1,302 @@
+<?php
+/**
+ * MediaWiki Wikilog extension
+ * Copyright © 2008, 2009 Juliano F. Ravasi
+ * http://www.mediawiki.org/wiki/Extension:Wikilog
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+/**
+ * @addtogroup Extensions
+ * @author Juliano F. Ravasi < dev juliano info >
+ */
+
+if ( !defined( 'MEDIAWIKI' ) )
+	die();
+
+
+/**
+ * Wikilog article database entry.
+ */
+class WikilogItem
+{
+
+	/**
+	 * General data about the article.
+	 */
+	public    $mID          = NULL;		///< Article ID.
+	public    $mName        = NULL;		///< Article title text (as in DB).
+	public    $mTitle       = NULL;		///< Article Title object.
+	public    $mParent      = NULL;		///< Parent wikilog article ID.
+	public    $mParentName  = NULL;		///< Parent wikilog title text.
+	public    $mParentTitle = NULL;		///< Parent wikilog Title object.
+	public    $mPublish     = NULL;		///< Article is published.
+	public    $mPubDate     = NULL;		///< Date the article was published.
+	public    $mUpdated     = NULL;		///< Date the article was last updated.
+	public    $mAuthors     = array();	///< Array of authors.
+	public    $mTags        = array();	///< Array of tags.
+	public    $mNumComments = NULL;		///< Cached number of comments.
+
+	/**
+	 * Constructor.
+	 */
+	public function __construct( ) {
+	}
+
+	/**
+	 * Returns the wikilog article id.
+	 */
+	public function getID() {
+		return $this->mID;
+	}
+
+	/**
+	 * Checks for the existence of the article in the database.
+	 */
+	public function exists() {
+		return $this->getID() != 0;
+	}
+
+	/**
+	 * Returns whether the article is published.
+	 */
+	public function getIsPublished() {
+		return $this->mPublish;
+	}
+
+	/**
+	 * Returns the publication date of the article.
+	 */
+	public function getPublishDate() {
+		return $this->mPubDate;
+	}
+
+	/**
+	 * Returns the last update date of the article.
+	 */
+	public function getUpdatedDate() {
+		return $this->mUpdated;
+	}
+
+	/**
+	 * Returns the number of comments in the article.
+	 */
+	public function getNumComments() {
+		$this->updateNumComments();
+		return $this->mNumComments;
+	}
+
+	/**
+	 * Saves article data in the database.
+	 */
+	public function saveData() {
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->replace(
+			'wikilog_posts',
+			'wlp_page',
+			array(
+				'wlp_page'    => $this->mID,
+				'wlp_parent'  => $this->mParent,
+				'wlp_title'   => $this->mName,
+				'wlp_publish' => $this->mPublish,
+				'wlp_pubdate' => $this->mPubDate ? $dbw->timestamp( $this->mPubDate ) : '',
+				'wlp_updated' => $this->mUpdated ? $dbw->timestamp( $this->mUpdated ) : '',
+				'wlp_authors' => serialize( $this->mAuthors ),
+				'wlp_tags'    => serialize( $this->mTags ),
+			),
+			__METHOD__
+		);
+	}
+
+	/**
+	 * Deletes article data from the database.
+	 */
+	public function deleteData() {
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete( 'wikilog_posts', array( 'wlp_page' => $this->getID() ), __METHOD__ );
+	}
+
+	/**
+	 * Updates the number of article comments.
+	 */
+	public function updateNumComments( $force = false ) {
+		if ( $force || is_null( $this->mNumComments ) ) {
+			$dbw = wfGetDB( DB_MASTER );
+
+			# Retrieve estimated number of comments
+			$count = $dbw->selectField( 'wikilog_comments', 'COUNT(*)',
+				array( 'wlc_post' => $this->getID() ), __METHOD__ );
+
+			# Update wikilog_posts cache
+			$dbw->update( 'wikilog_posts',
+				array( 'wlp_num_comments' => $count ),
+				array( 'wlp_page' => $this->getID() ),
+				__METHOD__
+			);
+
+			$this->mNumComments = $count;
+		}
+	}
+
+	/**
+	 * Resets the article id.
+	 */
+	public function resetID( $id ) {
+		$this->mTitle->resetArticleID( $id );
+		$this->mID = $id;
+	}
+
+	/**
+	 * Returns an array with all published comments.
+	 */
+	public function getComments( $thread = NULL ) {
+		$dbr = wfGetDB( DB_SLAVE );
+
+		if ( $thread ) {
+			$result = WikilogComment::fetchAllFromItemThread( $dbr, $this->mID, $thread );
+		} else {
+			$result = WikilogComment::fetchAllFromItem( $dbr, $this->mID );
+		}
+
+		$comments = array();
+		foreach( $result as $row ) {
+			$comment = WikilogComment::newFromRow( $this, $row );
+			if ( $row->page_latest ) {
+				$rev = Revision::newFromId( $row->page_latest );
+				$comment->setText( $rev->getText() );
+			}
+			$comments[] = $comment;
+		}
+		$result->free();
+		return $comments;
+	}
+
+	/**
+	 * Creates a new wikilog article object from a database row.
+	 * @param $row Row from database.
+	 * @return New WikilogItem object.
+	 */
+	public static function newFromRow( $row ) {
+		$item = new WikilogItem();
+		$item->mID          = intval( $row->wlp_page );
+		$item->mName        = strval( $row->wlp_title );
+		$item->mTitle       = Title::makeTitle( $row->page_namespace, $row->page_title );
+		$item->mParent      = intval( $row->wlp_parent );
+		$item->mParentName  = str_replace( '_', ' ', $row->wlw_title );
+		$item->mParentTitle = Title::makeTitle( $row->wlw_namespace, $row->wlw_title );
+		$item->mPublish     = intval( $row->wlp_publish );
+		$item->mPubDate     = $row->wlp_pubdate ? wfTimestamp( TS_MW, $row->wlp_pubdate ) : NULL;
+		$item->mUpdated     = $row->wlp_updated ? wfTimestamp( TS_MW, $row->wlp_updated ) : NULL;
+		$item->mNumComments = $row->wlp_num_comments;
+		$item->mAuthors     = unserialize( $row->wlp_authors );
+		$item->mTags        = unserialize( $row->wlp_tags );
+		if ( !is_array( $item->mAuthors ) ) {
+			$item->mAuthors = array();
+		}
+		if ( !is_array( $item->mTags ) ) {
+			$item->mTags = array();
+		}
+		return $item;
+	}
+
+	/**
+	 * Creates a new wikilog article object from an existing article id.
+	 * Data is fetched from the database.
+	 * @param $id Article id.
+	 * @return New WikilogItem object, or NULL if article doesn't exist.
+	 */
+	public static function newFromID( $id ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = self::loadFromID( $dbr, $id );
+		if ( $row ) {
+			return self::newFromRow( $row );
+		}
+		return NULL;
+	}
+
+	/**
+	 * Creates a new wikilog article object from a wikilog info object.
+	 * Data is fetched from the database.
+	 * @param $wi WikilogItem object.
+	 * @return New WikilogItem object, or NULL if article doesn't exist.
+	 */
+	public static function newFromInfo( WikilogInfo &$wi ) {
+		$itemTitle = $wi->getItemTitle();
+		if ( $itemTitle ) {
+			return self::newFromID( $itemTitle->getArticleID() );
+		} else {
+			return NULL;
+		}
+	}
+
+	/**
+	 * Load information about a wikilog article from the database given a set
+	 * of conditions.
+	 * @param $dbr Database connection object.
+	 * @param $conds Conditions.
+	 * @return Database row, or false.
+	 */
+	private static function loadFromConds( $dbr, $conds ) {
+		extract( self::selectInfo( $dbr ) );	// $tables, $fields
+		$row = $dbr->selectRow( $tables, $fields, $conds, __METHOD__, array( ) );
+		return $row;
+	}
+
+	/**
+	 * Load information about a wikilog article from the database given an
+	 * article id.
+	 * @param $dbr Database connection object.
+	 * @param $id Article id.
+	 * @return Database row, or false.
+	 */
+	private static function loadFromID( $dbr, $id ) {
+		return self::loadFromConds( $dbr, array( 'wlp_page' => $id ) );
+	}
+
+	/**
+	 * Returns the tables and fields used for database queries for wikilog
+	 * article objects.
+	 * @param $dbr Database connection object.
+	 * @return Array(2) with the description of the tables and fields to be
+	 *   used in database queries.
+	 */
+	private static function selectInfo( $dbr ) {
+		extract( $dbr->tableNames( 'wikilog_posts', 'page' ) );
+		return array(
+			'tables' =>
+				"{$wikilog_posts} ".
+				"LEFT JOIN {$page} AS w ON (w.page_id = wlp_parent) ".
+				"LEFT JOIN {$page} AS p ON (p.page_id = wlp_page) ",
+			'fields' => array(
+				'wlp_page',
+				'wlp_parent',
+				'w.page_namespace AS wlw_namespace',
+				'w.page_title AS wlw_title',
+				'p.page_namespace AS page_namespace',
+				'p.page_title AS page_title',
+				'wlp_title',
+				'wlp_publish',
+				'wlp_pubdate',
+				'wlp_updated',
+				'wlp_authors',
+				'wlp_tags',
+				'wlp_num_comments'
+			)
+		);
+	}
+
+}

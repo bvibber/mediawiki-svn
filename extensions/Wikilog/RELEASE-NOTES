@@ -1,0 +1,45 @@
+= Wikilog release notes =
+
+== Wikilog 1.0.0 ==
+
+Oct 29, 2009
+
+First stable release of the Wikilog extension.
+
+=== General notes ===
+
+Database patch archives were reset in the transition to version 1.0.0.  If
+were using a Wikilog version before 0.8.0, you should first upgrade to the
+last 0.8.x version and then upgrade to the latest version.  The database
+schema of 1.0.0 is the same of 0.8.x.
+
+
+== Wikilog 0.8.2 ==
+
+Oct 29, 2009
+
+=== New features in 0.8.2 ===
+
+* Users with edit and createtalk rights are allowed to use the post comment
+  interface.
+
+=== Bug fixes in 0.8.2 ===
+
+* Fix missing global in WikilogFeed::checkFeedOutput().
+* Various MediaWiki 1.16alpha compatibility fixes.
+
+
+== Wikilog 0.8.1 ==
+
+Sep 15, 2009
+
+=== Bug fixes in 0.8.1 ===
+
+* Fix regression that caused the template pager to damage the parser state.
+
+
+== Wikilog 0.8.0 ==
+
+Sep 12, 2009
+
+This is the first pre-stable release of the extension.

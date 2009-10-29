@@ -1,0 +1,120 @@
+/*
+ * Wikilog extension styles.
+ * Copyright © 2008, 2009 Juliano F. Ravasi
+ * http://www.mediawiki.org/wiki/Extension:Wikilog
+ *
+ * Lincensed under the GNU General Public License version 2.
+ */
+
+div.wl-description {
+	border: 1px solid #CCCCCC;
+	background-color: #EEEEEE;
+	color: #000000;
+	padding: 0.25em;
+}
+
+div.wl-description div.wl-title {
+	font-size: 110%;
+	font-weight: bold;
+}
+
+div.wl-description div.wl-subtitle p {
+	line-height: inherit;
+	margin: 0;
+}
+
+tr.wl-draft {
+	font-style: italic;
+}
+
+div.wl-draft {
+	border: 1px solid #CCCC99;
+	background-color: #FFFFEE;
+	color: #999999;
+	padding: 0.25em 0.75em;
+}
+
+.wl-navbar {
+	background-color: #EEEEEE;
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	color: black;
+	margin: 0.5em 0;
+	padding: 0.25em 0.75em;
+}
+
+div.wl-thread {
+}
+
+div.wl-thread div.wl-thread {
+	padding-left: 2.0em;
+}
+
+div.wl-comment {
+	margin: 0.25em 0;
+	padding: 0.5em 0;
+}
+
+div.wl-comment-meta {
+	background-color: #EEEEEE;
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	color: black;
+	margin: 0 0;
+	padding: 0 0.75em;
+}
+
+div.wl-comment-pending .wl-comment-meta {
+	background-color: #FFFFCC;
+}
+
+div.wl-comment-meta .wl-comment-status {
+/* 	font-style: italic; */
+	font-weight: bold;
+	margin: 0;
+	padding: 0 1em;
+}
+
+div.wl-comment-meta .wl-comment-edited {
+/* 	font-style: italic; */
+	margin: 0;
+	padding: 0 1em;
+}
+
+div.wl-comment-text {
+	padding: 0.25em 0.75em;
+}
+
+div.wl-comment-pending .wl-comment-text,
+div.wl-comment-deleted .wl-comment-text {
+	background-color: #FFFFFF;
+	color: #999999;
+}
+
+div.wl-comment-by-author .wl-comment-author {
+	font-weight: bold;
+}
+
+div.wl-comment-placeholder {
+	background-color: #EEEEEE;
+	border: 1px solid #CCCCCC;
+	color: #999999;
+	font-style: italic;
+	padding: 0.5em;
+	text-align: center;
+}
+
+div.wl-comment-error-box {
+	background-color: #FFEEEE;
+	border: 1px solid #FFCCCC;
+	color: #990000;
+	font-weight: bold;
+	padding: 0.5em;
+	text-align: center;
+}
+
+.TablePager_col_wlp_num_comments {
+	text-align: center;
+}
+
+/* kate: indent-mode normal; space-indent off; tab-width 4; */
