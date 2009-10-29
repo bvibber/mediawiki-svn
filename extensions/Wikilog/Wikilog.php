@@ -376,14 +376,14 @@ class Wikilog
  */
 class WikilogInfo
 {
-	public $mWikilogName;		// /< Wikilog title (textual string).
-	public $mWikilogTitle;		// /< Wikilog main article title object.
-	public $mItemName;			// /< Wikilog post title (textual string).
-	public $mItemTitle;			// /< Wikilog post title object.
-	public $mItemTalkTitle;		// /< Wikilog post talk title object.
+	public $mWikilogName;		///< Wikilog title (textual string).
+	public $mWikilogTitle;		///< Wikilog main article title object.
+	public $mItemName;			///< Wikilog post title (textual string).
+	public $mItemTitle;			///< Wikilog post title object.
+	public $mItemTalkTitle;		///< Wikilog post talk title object.
 
-	public $mIsTalk;			// /< Constructed using a talk page title.
-	public $mTrailing = NULL;	// /< Trailing subpage title.
+	public $mIsTalk;			///< Constructed using a talk page title.
+	public $mTrailing = NULL;	///< Trailing subpage title.
 
 	/**
 	 * Constructor.

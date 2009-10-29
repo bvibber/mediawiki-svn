@@ -47,17 +47,17 @@ class WikilogCommentsPage
 	extends Article
 	implements WikilogCustomAction
 {
-	protected $mSkin;				// /< Skin used for rendering the page.
-	protected $mFormOptions;		// /< Post comment form fields.
-	protected $mUserCanPost;		// /< User is allowed to post.
-	protected $mUserCanModerate;	// /< User is allowed to moderate.
-	protected $mPostedComment;		// /< Posted comment, from HTTP post data.
-	protected $mCaptchaForm;		// /< Captcha form fields, when saving comment.
-	protected $mTrailing;			// /< Trailing text in comments title page.
+	protected $mSkin;				///< Skin used for rendering the page.
+	protected $mFormOptions;		///< Post comment form fields.
+	protected $mUserCanPost;		///< User is allowed to post.
+	protected $mUserCanModerate;	///< User is allowed to moderate.
+	protected $mPostedComment;		///< Posted comment, from HTTP post data.
+	protected $mCaptchaForm;		///< Captcha form fields, when saving comment.
+	protected $mTrailing;			///< Trailing text in comments title page.
 
-	public    $mItem;				// /< Wikilog item the page is associated with.
-	public    $mTalkTitle;			// /< Main talk page title.
-	public    $mSingleComment;		// /< Used when viewing a single comment.
+	public    $mItem;				///< Wikilog item the page is associated with.
+	public    $mTalkTitle;			///< Main talk page title.
+	public    $mSingleComment;		///< Used when viewing a single comment.
 
 	/**
 	 * Constructor.

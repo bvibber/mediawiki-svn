@@ -268,7 +268,7 @@ class WikilogHooks
 		if ( $wgDBtype == 'mysql' ) {
 			$wgExtNewTables[] = array( "wikilog_wikilogs", "{$dir}wikilog-tables.sql" );
 		} else {
-			// / TODO: PostgreSQL, SQLite, etc...
+			// TODO: PostgreSQL, SQLite, etc...
 			print "\n" .
 				"Warning: There are no table structures for the Wikilog\n" .
 				"extension other than for MySQL at this moment.\n\n";

@@ -568,9 +568,9 @@ class WlSyndicationEntry
  */
 class WlTextConstruct
 {
-	const T_TEXT  = 'text';				// /< Plain text, no markup.
-	const T_HTML  = 'html';				// /< Contains HTML markup.
-	const T_XHTML = 'xhtml';			// /< Contains XHTML markup.
+	const T_TEXT  = 'text';				///< Plain text, no markup.
+	const T_HTML  = 'html';				///< Contains HTML markup.
+	const T_XHTML = 'xhtml';			///< Contains XHTML markup.
 
 	/**
 	 * Content language tag.

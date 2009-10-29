@@ -35,18 +35,18 @@ if ( !defined( 'MEDIAWIKI' ) )
 class WikilogItemQuery
 {
 	# Valid filter values for publish status.
-	const PS_ALL       = 0;		// /< Return all items
-	const PS_PUBLISHED = 1;		// /< Return only published items
-	const PS_DRAFTS    = 2;		// /< Return only drafts
+	const PS_ALL       = 0;		///< Return all items
+	const PS_PUBLISHED = 1;		///< Return only published items
+	const PS_DRAFTS    = 2;		///< Return only drafts
 
 	# Local variables.
-	private $mWikilogTitle = NULL;			// /< Filter by wikilog.
-	private $mPubStatus = self::PS_ALL;		// /< Filter by published status.
-	private $mCategory = false;				// /< Filter by category.
-	private $mAuthor = false;				// /< Filter by author.
-	private $mTag = false;					// /< Filter by tag.
-	private $mDate = false;					// /< Filter by date.
-	private $mNeedWikilogParam = false;		// /< Need wikilog param in queries.
+	private $mWikilogTitle = NULL;			///< Filter by wikilog.
+	private $mPubStatus = self::PS_ALL;		///< Filter by published status.
+	private $mCategory = false;				///< Filter by category.
+	private $mAuthor = false;				///< Filter by author.
+	private $mTag = false;					///< Filter by tag.
+	private $mDate = false;					///< Filter by date.
+	private $mNeedWikilogParam = false;		///< Need wikilog param in queries.
 
 	# Options
 	/** Query options. */

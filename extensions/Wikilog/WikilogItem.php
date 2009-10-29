@@ -36,18 +36,18 @@ class WikilogItem
 	/**
 	 * General data about the article.
 	 */
-	public    $mID          = NULL;		// /< Article ID.
-	public    $mName        = NULL;		// /< Article title text (as in DB).
-	public    $mTitle       = NULL;		// /< Article Title object.
-	public    $mParent      = NULL;		// /< Parent wikilog article ID.
-	public    $mParentName  = NULL;		// /< Parent wikilog title text.
-	public    $mParentTitle = NULL;		// /< Parent wikilog Title object.
-	public    $mPublish     = NULL;		// /< Article is published.
-	public    $mPubDate     = NULL;		// /< Date the article was published.
-	public    $mUpdated     = NULL;		// /< Date the article was last updated.
-	public    $mAuthors     = array();	// /< Array of authors.
-	public    $mTags        = array();	// /< Array of tags.
-	public    $mNumComments = NULL;		// /< Cached number of comments.
+	public    $mID          = NULL;		///< Article ID.
+	public    $mName        = NULL;		///< Article title text (as in DB).
+	public    $mTitle       = NULL;		///< Article Title object.
+	public    $mParent      = NULL;		///< Parent wikilog article ID.
+	public    $mParentName  = NULL;		///< Parent wikilog title text.
+	public    $mParentTitle = NULL;		///< Parent wikilog Title object.
+	public    $mPublish     = NULL;		///< Article is published.
+	public    $mPubDate     = NULL;		///< Date the article was published.
+	public    $mUpdated     = NULL;		///< Date the article was last updated.
+	public    $mAuthors     = array();	///< Array of authors.
+	public    $mTags        = array();	///< Array of tags.
+	public    $mNumComments = NULL;		///< Cached number of comments.
 
 	/**
 	 * Constructor.

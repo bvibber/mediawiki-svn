@@ -57,8 +57,8 @@ class WikilogSummaryPager
 	public $mLimitsShown = array( 5, 10, 20, 50 );
 
 	# Local variables.
-	protected $mQuery = NULL;			// /< Wikilog item query data
-	protected $mIncluding = false;		// /< If pager is being included
+	protected $mQuery = NULL;			///< Wikilog item query data
+	protected $mIncluding = false;		///< If pager is being included
 
 	/**
 	 * Constructor.
@@ -377,8 +377,8 @@ class WikilogArchivesPager
 	implements WikilogPager
 {
 	# Local variables.
-	protected $mQuery = NULL;			// /< Wikilog item query data
-	protected $mIncluding = false;		// /< If pager is being included
+	protected $mQuery = NULL;			///< Wikilog item query data
+	protected $mIncluding = false;		///< If pager is being included
 
 	/**
 	 * Constructor.
