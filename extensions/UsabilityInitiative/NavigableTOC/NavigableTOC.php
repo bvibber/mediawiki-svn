@@ -26,6 +26,9 @@ $wgNavigableTOCGlobalEnable = false;
 // will not do anything)
 $wgNavigableTOCUserEnable = true;
 
+// Set this to true to make the NavigableTOC collapsible
+$wgNavigableTOCCollapseEnable = true;
+
 // Bump the version number every time you change any of the .css/.js files
 $wgNavigableTOCStyleVersion = 4;
 
