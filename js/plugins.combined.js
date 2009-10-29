@@ -1601,8 +1601,16 @@ fn: {
 		$(this).css( 'white-space', 'nowrap' );
 		
 		if ( wrapper.width() <= $(this).get(0).scrollWidth ) {
-			$(this).width( $(this).get(0).scrollWidth );
-			wrapper.width( wrapper.get(0).scrollWidth );
+			var thisWidth = $(this).data( 'thisWidth' ) ? $(this).data( 'thisWidth' ) : 0;
+			thisWidth = Math.max( $(this).get(0).scrollWidth, thisWidth );
+			$(this).width( thisWidth );
+			$(this).data( 'thisWidth', thisWidth );
+			
+			var wrapperWidth = $(this).data( 'wrapperWidth' ) ? $(this).data( 'wrapperWidth' ) : 0;
+			wrapperWidth = Math.max( wrapper.get(0).scrollWidth, wrapperWidth );
+			wrapper.width( wrapperWidth );
+			$(this).data( 'wrapperWidth', wrapperWidth );
+			
 			$(this).dialog( { 'width': wrapper.width() } );
 			wrapper.css( 'left',
 				parseInt( wrapper.css( 'left' ) ) -
@@ -1613,6 +1621,7 @@ fn: {
 		oldHidden.each( function() {
 			$(this).attr( 'style', $(this).data( 'oldstyle' ) );
 		});
+		
 	}
 },
 modules: {},
