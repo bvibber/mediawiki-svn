@@ -1019,9 +1019,14 @@ js2AddOnloadHook( function() {
 					var whitespace = $j( '#edittoolbar-link-dialog' ).data( 'whitespace' );
 					var target = $j( '#edittoolbar-link-int-target' ).val();
 					var text = $j( '#edittoolbar-link-int-text' ).val();
-					if ( text == '' ) {
+					if ( target == '' ) {
 						alert( gM( 'edittoolbar-tool-link-empty' ) );
 						return;
+					}
+					if ( $j.trim( text ) == '' ) {
+						// [[Foo| ]] creates an invisible link
+						// Instead, generate [[Foo|]]
+						text = '';
 					}
 					if ( $j( '#edittoolbar-link-type-int' ).is( ':checked' ) ) {
 						// FIXME: Exactly how fragile is this?
