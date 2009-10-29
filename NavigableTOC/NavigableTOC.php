@@ -27,7 +27,7 @@ $wgNavigableTOCGlobalEnable = false;
 $wgNavigableTOCUserEnable = true;
 
 // Bump the version number every time you change any of the .css/.js files
-$wgNavigableTOCStyleVersion = 3;
+$wgNavigableTOCStyleVersion = 4;
 
 /* Setup */
 

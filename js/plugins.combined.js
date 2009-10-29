@@ -2260,9 +2260,9 @@ fn: {
 		);
 		// Make some css modifications to make room for the toc on the right...
 		// Perhaps this could be configurable?
-		context.modules.$toc.css( { 'width': '12em', 'marginTop': -( height ) } );
+		context.modules.$toc.css( { 'width': $.wikiEditor.modules.toc.defaults.width, 'marginTop': -( height ) } );
 		context.$ui.find( '.wikiEditor-ui-text' )
-			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
+			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), $.wikiEditor.modules.toc.defaults.width );
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$textarea
@@ -2388,6 +2388,40 @@ fn: {
 			}
 			return list;
 		}
+		function buildCollapseBar() {
+			var $collapseBar = $( '<div />' )
+				.addClass( 'wikiEditor-ui-toc-collapse-open' )
+				.attr( 'id', 'wikiEditor-ui-toc-collapse' )
+				.data( 'oWidth', $.wikiEditor.modules.toc.defaults.width)
+				.bind('mouseup', function(){
+					var $e = $(this);
+					var close = $e.hasClass('wikiEditor-ui-toc-collapse-open');
+					if(close) {
+						$e.parent()
+							.animate( {'width': $e.outerWidth()}, 'fast', function() {
+									$(this).find('ul:first').hide();
+								} )
+							.prev()
+							.animate( {'marginRight': $e.outerWidth()+1}, 'fast', function(){
+								$('#wikiEditor-ui-toc-collapse')
+									.removeClass('wikiEditor-ui-toc-collapse-open')
+									.addClass('wikiEditor-ui-toc-collapse-closed');
+							});
+					} else {
+						$e.siblings().show()
+						.parent()
+							.animate( {'width': $e.data('oWidth')}, 'fast' )
+							.prev()
+							.animate( {'marginRight': $e.data('oWidth')}, 'fast', function(){
+								$('#wikiEditor-ui-toc-collapse')
+									.removeClass('wikiEditor-ui-toc-collapse-closed')
+									.addClass('wikiEditor-ui-toc-collapse-open');
+							});
+					}
+					
+				});
+			return $collapseBar;	
+		}
 		// Build outline from wikitext
 		var outline = [];
 		var wikitext = $.wikiEditor.fixOperaBrokenness( context.$textarea.val() );
@@ -2455,10 +2489,15 @@ fn: {
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
 		}
 		context.modules.$toc.html( buildList( structure ) );
+		if(wgNavigableTOCCollapseEnable) context.modules.$toc.append( buildCollapseBar() );
 		context.modules.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}
 }
 
-}; } ) ( jQuery );
+}; 
+$.wikiEditor.modules.toc.defaults = {
+	width: "13em"
+}
+} ) ( jQuery );

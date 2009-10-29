@@ -166,6 +166,26 @@ padding-top:0.5em;
 padding-bottom:0.5em;
 border-bottom:solid 1px #DDDDDD;
 }
+.wikiEditor-ui-toc ul{
+width:132px;
+float:left;
+}
+.wikiEditor-ui-toc ul ul{
+float:none;
+width:auto;
+}
+#wikiEditor-ui-toc-collapse{
+height:100%;
+width:18px;
+float:left;
+}
+.wikiEditor-ui-toc-collapse-open{
+background:#f3f3f3 url(../images/wikiEditor/toc/close.png) 4px 50% no-repeat;
+border-left:1px solid #DDDDDD;
+}
+.wikiEditor-ui-toc-collapse-closed{
+background:#f3f3f3 url(../images/wikiEditor/toc/open.png) 4px 50% no-repeat;
+}
 .wikiEditor-ui-toolbar{
 position:relative;
 width:100%;
