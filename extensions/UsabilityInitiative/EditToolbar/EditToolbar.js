@@ -1085,6 +1085,10 @@ js2AddOnloadHook( function() {
 							pre: insertText
 						}
 					}, $j(this) );
+					
+					// Blank form
+					$j( '#edittoolbar-link-int-target, #edittoolbar-link-int-text' ).val( '' );
+					$j( '#edittoolbar-link-type-int, #edittoolbar-link-type-ext' ).attr( 'checked', '' );
 					$j(this).dialog( 'close' );
 				},
 				'edittoolbar-tool-link-cancel': function() {
@@ -1309,7 +1313,20 @@ js2AddOnloadHook( function() {
 						},
 						$j(this)
 					);
+					
+					// Restore form state
+						$j( '#edittoolbar-table-dimensions-rows' ).val( 4 );
+						$j( '#edittoolbar-table-dimensions-columns' ).val( 3 );
+					// Simulate clicks instead of setting values, so the according
+					// actions are performed
+						if ( !$j( '#edittoolbar-table-dimensions-header' ).is( ':checked' ) )
+							$j( '#edittoolbar-table-dimensions-header' ).click();
+						if ( !$j( '#edittoolbar-table-wikitable' ).is( ':checked' ) )
+							$j( '#edittoolbar-table-wikitable' ).click();
+						if ( $j( '#edittoolbar-table-sortable' ).is( ':checked' ) )
+							$j( '#edittoolbar-table-sortable' ).click();
 					$j(this).dialog( 'close' );
+
 				},
 				'edittoolbar-tool-table-cancel': function() {
 					$j(this).dialog( 'close' );
