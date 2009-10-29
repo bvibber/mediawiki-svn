@@ -1370,7 +1370,7 @@ js2AddOnloadHook( function() {
 					return;
 				}
 				var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
-				var flags = '';
+				var flags = 'm';
 				var matchCase = $j( '#edittoolbar-replace-case' ).is( ':checked' );
 				var isRegex = $j( '#edittoolbar-replace-regex' ).is( ':checked' );
 				if ( !matchCase ) {
