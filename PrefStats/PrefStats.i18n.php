@@ -1873,6 +1873,19 @@ $messages['tg-cyrl'] = array(
 	'prefstats-factor-week' => 'ҳафта',
 );
 
+/** Thai (ไทย)
+ * @author Ans
+ */
+$messages['th'] = array(
+	'prefstats-factors' => 'เปิดดูทุกๆ: $1',
+	'prefstats-factor-hour' => 'ชั่วโมง',
+	'prefstats-factor-sixhours' => 'หกชั่วโมง',
+	'prefstats-factor-day' => 'วัน',
+	'prefstats-factor-week' => 'สัปดาห์',
+	'prefstats-factor-twoweeks' => 'สองสัปดาห์',
+	'prefstats-factor-fourweeks' => 'สี่สัปดาห์',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

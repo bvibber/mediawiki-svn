@@ -674,6 +674,15 @@ $messages['te'] = array(
 	'editwarning' => 'దిద్దుబాటు ఘర్షణ',
 );
 
+/** Thai (ไทย)
+ * @author Ans
+ */
+$messages['th'] = array(
+	'editwarning' => 'คำเตือนการแก้ไข',
+	'editwarning-desc' => 'แสดงคำเตือนเมื่อคุณกำลังจะออกจากการแก้ไขโดยไม่ได้บันทึก',
+	'editwarning-preference' => 'เตือนฉัน เมื่อฉันกำลังจะออกจากหน้าแก้ไขโดยมีข้อมูลที่ยังไม่ได้บันทึก',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

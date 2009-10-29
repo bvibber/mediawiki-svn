@@ -3591,12 +3591,12 @@ Wie willen grege weten wa-jie van de nieje vormgeving vienen, \'t zol dus mooi w
 	'optin-survey-answer-whyoptout-didntlike-look' => "'t Zag der neet uut.",
 	'optin-survey-answer-whyoptout-didntlike-layout' => "Ik vunne 't mar niks dee nieje tabblaojen en vormgeving.",
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => "Ik vunne 't mar niks dee warkbalke.",
-	'optin-survey-answer-whyoptout-other' => 'Aandere rejen:',
-	'optin-survey-question-explain' => 'Wat is der gebeurd dà?',
+	'optin-survey-answer-whyoptout-other' => 'Aandere reden:',
+	'optin-survey-question-explain' => 'Wat is der gebeurd dan?',
 	'optin-survey-question-techfail' => 'Bi-j fouten tegen-ekeumen mit Beta?',
-	'optin-survey-question-techfail-ifyes' => 'Zo ja, wat dà?',
+	'optin-survey-question-techfail-ifyes' => 'Zo ja, wat dan?',
 	'optin-survey-question-usedtoolbar' => "He-j de nieje uutklapbaore warkbalke uut-eprebeerd bie 't bewarken van een pagina?",
-	'optin-survey-question-usedtoolbar-ifyes' => 'Zo ja, wat vu-j der goed à, en wat neet?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Zo ja, wat vu-j der goed al, en wat neet?',
 	'optin-survey-question-usedtoolbar-ifno' => "Zo nee, waorum neet dà? Meschien laoter? Wie heuren grege waorumme of dat 't is.",
 	'optin-survey-question-different' => 'Wat konnen we aanders edaon hemmen um derveur te zörgen da-j Beta an-ehuilen hannen?',
 	'optin-survey-question-feedback' => 'Laot effen weten wa-j dervan vienen:',
@@ -4941,6 +4941,23 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'optin-survey-yes' => 'Ҳа',
 	'optin-survey-no' => 'Не',
+);
+
+/** Thai (ไทย)
+ * @author Ans
+ */
+$messages['th'] = array(
+	'optin-title-optedout' => 'ลองใช้รุ่นทดสอบ',
+	'optin-title-optedin' => 'ออกจากรุ่นทดสอบ',
+	'optin-title-justoptedin' => 'ยินดีต้อนรับสู่รุ่นทดสอบ',
+	'optin-title-justoptedout' => 'ขอบคุณสำหรับการทดลองใช้รุ่นทดสอบของเรา',
+	'optin-title-feedback' => 'ตอบรับการใช้รุ่นทดสอบ',
+	'optin-feedback-back' => 'ถ้าคุณไม่ต้องการกรอกผลสำรวจ คุณสามารถกลับไปยัง $1',
+	'optin-leave-cancel' => 'ถ้าคุณต้องการใช้รุ่นทดสอบต่อไป คุณสามารถกลับไปยัง $1',
+	'optin-survey-answer-whyoptout-other' => 'เหตุผลอื่น:',
+	'optin-survey-question-os' => 'คุณใช้ระบบปฏิบัติการอะไร',
+	'optin-survey-answer-os-other' => 'ระบบปฏิบัติการอื่น',
+	'optin-survey-question-res' => 'คุณใช้หน้าจอความละเอียดเท่าไร',
 );
 
 /** Turkmen (Türkmençe)
