@@ -390,9 +390,13 @@ class WikilogCommentsPage
 			$meta .= "<div class=\"wl-comment-status\">{$status}</div>";
 		}
 		if ( $comment->mUpdated != $comment->mTimestamp ) {
-			$updated = wfMsg( 'wikilog-comment-edited',
+			$updated = wfMsg(
+				'wikilog-comment-edited',
 				$wgLang->timeanddate( $comment->mUpdated, true ),
-				$this->getCommentHistoryLink( $comment ) );
+				$this->getCommentHistoryLink( $comment ),
+				$wgLang->date( $comment->mUpdated, true ),
+				$wgLang->time( $comment->mUpdated, true )
+			);
 			$meta .= "<div class=\"wl-comment-edited\">{$updated}</div>";
 		}
 

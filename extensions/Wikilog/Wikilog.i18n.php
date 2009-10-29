@@ -86,7 +86,7 @@ $messages['en'] = array(
 	'wikilog-comment-by-anon' => 'Comment by $3 (anonymous)',
 	'wikilog-comment-pending' => 'This comment is awaiting approval.',
 	'wikilog-comment-deleted' => 'This comment was deleted.',
-	'wikilog-comment-edited' => 'This comment was last edited on $1 ($2).', # $1 = date and time, $2 = history link
+	'wikilog-comment-edited' => 'This comment was last edited on $3 at $4 ($2).',
 	'wikilog-comment-autosumm' => 'New comment by $1: $2',
 	'wikilog-reply-to-comment' => 'Post a reply to this comment',
 	'wikilog-comment-page' => "Go to this comment's page",
