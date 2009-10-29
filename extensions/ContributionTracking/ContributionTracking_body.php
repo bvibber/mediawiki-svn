@@ -19,8 +19,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 		$this->setHeaders();
 		
 		$gateway = $wgRequest->getText( 'gateway' );
-		if( !$wgRequest->wasPosted() ||
-			!in_array( $gateway, array( 'paypal', 'moneybookers' ) ) ) {
+		if( !in_array( $gateway, array( 'paypal', 'moneybookers' ) ) ) {
 			$wgOut->showErrorPage( 'contrib-tracking-error', 'contrib-tracking-error-text' );
 			return;
 		}
@@ -32,11 +31,11 @@ class ContributionTracking extends UnlistedSpecialPage {
 		$tracked_contribution = array(
 			'note' => $wgRequest->getText('comment', NULL),
 			'referrer' => $wgRequest->getText('referrer', NULL),
-			'anonymous' => ($wgRequest->getCheck('comment-option', 0) ? 0 : 1),
+			'anonymous' => $wgRequest->getText('comment-option', 0),
 			'utm_source' => $wgRequest->getText('utm_source', NULL),
 			'utm_medium' => $wgRequest->getText('utm_medium', NULL),
 			'utm_campaign' => $wgRequest->getText('utm_campaign', NULL),
-			'optout' => ($wgRequest->getCheck('email', 0) ? 0 : 1),
+			'optout' => $wgRequest->getText('email', 0),
 			'language' => $wgRequest->getText('language', NULL),
 			'ts' => $ts,
 		);
