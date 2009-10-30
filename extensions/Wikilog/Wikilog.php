@@ -51,7 +51,7 @@ require_once( dirname( __FILE__ ) . '/WlFeed.php' );
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['Wikilog'] = $dir . 'Wikilog.i18n.php';
 $wgExtensionMessagesFiles['WikilogMagic'] = $dir . 'Wikilog.i18n.magic.php';
-$wgExtensionAliasesFiles['WikilogAlias'] = $dir . 'Wikilog.i18n.alias.php';
+$wgExtensionMessagesFiles['WikilogAlias'] = $dir . 'Wikilog.i18n.alias.php';
 
 /*
  * Autoloaded classes.
