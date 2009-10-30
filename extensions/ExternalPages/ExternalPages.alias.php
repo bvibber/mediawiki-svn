@@ -1,9 +1,9 @@
 <?php
-  /**
-   * Aliases for Special:ExternalPages
-   *
-   * @addtogroup Extensions
-   */
+/**
+ * Aliases for Special:ExternalPages
+ *
+ * @addtogroup Extensions
+ */
 
 $aliases = array();
 
@@ -18,5 +18,3 @@ $aliases['en'] = array(
 $aliases['el'] = array(
 	'ExternalPages' => array( 'ΕξωτερικέςΣελίδες' ),
 );
-
-?>

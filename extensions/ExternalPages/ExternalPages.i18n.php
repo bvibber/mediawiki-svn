@@ -1,9 +1,9 @@
 <?php
-  /**
-   * Internationalizations for extension ExternalPages.
-   *
-   * @addtogroup Extensions
-   */
+/**
+ * Internationalizations for extension ExternalPages.
+ *
+ * @addtogroup Extensions
+ */
 
 $messages = array();
 
@@ -17,8 +17,6 @@ $messages['en'] = array(
 	'externalpages-bad-page'            => 'Bad page specified',
 	'externalpages-no-page'             => 'No page specified',
 	'externalpages-error-generic'       => 'Error encountered',
-	'externalpages-bad-url'             => 'Failed to retrieve url',
+	'externalpages-bad-url'             => 'Failed to retrieve URL',
 	'externalpages-bad-url-data'        => 'Failed to retrieve page contents',
 );
-
-?>
