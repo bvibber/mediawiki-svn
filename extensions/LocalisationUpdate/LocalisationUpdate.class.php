@@ -192,7 +192,7 @@ class LocalisationUpdate {
 		// Get the languagecode
 		$m = array();
 		preg_match( '/Messages([A-Z][a-z_]+)\.php$/', $basefile, $m );
-		$langcode = strtolower( $m[1] );
+		$langcode = str_replace( '_', '-', strtolower( $m[1] ) );
 
 		$basefilecontents = self::getFileContents( $basefile );
 		if ( $basefilecontents === false || $basefilecontents === "" ) return array(); // Failed
