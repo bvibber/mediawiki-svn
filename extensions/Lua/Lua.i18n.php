@@ -110,6 +110,13 @@ $messages['bg'] = array(
 	'lua_error_internal' => 'Вътрешна грешка',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'lua_error_internal' => 'Fazi diabarzh',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

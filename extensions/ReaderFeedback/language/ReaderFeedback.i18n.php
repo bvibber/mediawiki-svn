@@ -1882,6 +1882,31 @@ $messages['te'] = array(
 	'specialpages-group-feedback' => 'వీక్షకుల అభిప్రాయం',
 );
 
+/** Thai (ไทย)
+ * @author Ans
+ */
+$messages['th'] = array(
+	'readerfeedback' => 'คุณคิดอย่างไรกับหน้านี้',
+	'readerfeedback-reliability' => 'ความน่าเชื่อถือ',
+	'readerfeedback-completeness' => 'ความสมบูรณ์',
+	'readerfeedback-npov' => 'ความเป็นกลาง',
+	'readerfeedback-presentation' => 'การนำเสนอ',
+	'readerfeedback-overall' => 'ภาพรวม',
+	'readerfeedback-level-none' => '(ไม่แน่ใจ)',
+	'readerfeedback-level-0' => 'แย่มาก',
+	'readerfeedback-level-1' => 'แย่',
+	'readerfeedback-level-2' => 'พอใช้',
+	'readerfeedback-level-3' => 'ดี',
+	'readerfeedback-level-4' => 'ดีมาก',
+	'readerfeedback-main' => 'สามารถจัดอันดับได้เฉพาะหน้าเนื้อหาเท่านั้น',
+	'readerfeedback-tierfilter' => 'อันดับ:',
+	'readerfeedback-tier-high' => 'ดี',
+	'readerfeedback-tier-medium' => 'ปานกลาง',
+	'readerfeedback-tier-poor' => 'แย่',
+	'tooltip-ca-ratinghist' => 'การจัดอันดับโดยผู้อ่านของหน้านี้',
+	'specialpages-group-feedback' => 'ความคิดเห็นจากผู้เข้าชม',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

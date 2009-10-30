@@ -1360,10 +1360,14 @@ $messages['mk'] = array(
 	'usagestatistics-desc' => 'Приказ на статистики на користење поединечно за корисник и за целото вики',
 	'usagestatisticsfor' => '<h2>Статистики на користење за [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Статистики на користење за сите корисници</h2>',
-	'usagestatisticsinterval' => 'Интервал',
+	'usagestatisticsinterval' => 'Интервал:',
+	'usagestatisticsnamespace' => 'Именски простор:',
+	'usagestatisticsexcluderedirects' => 'Без пренасочувања',
+	'usagestatistics-namespace' => 'Ова се статистики за именскиот простор [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Пренасочувањата]] не се земаат во предвид.',
 	'usagestatisticstype' => 'Тип',
-	'usagestatisticsstart' => 'Почетен датум',
-	'usagestatisticsend' => 'Краен датум',
+	'usagestatisticsstart' => 'Почетен датум:',
+	'usagestatisticsend' => 'Краен датум:',
 	'usagestatisticssubmit' => 'Генерирање на статистики',
 	'usagestatisticsnostart' => 'Специфицирајте почетен датум',
 	'usagestatisticsnoend' => 'Специфицирајте краен датум',
@@ -2055,11 +2059,12 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Ans
  * @author Manop
  */
 $messages['th'] = array(
-	'usagestatisticsstart' => 'วันที่เริ่มต้น',
-	'usagestatisticsend' => 'วันที่สิ้นสุด',
+	'usagestatisticsstart' => 'วันที่เริ่มต้น:',
+	'usagestatisticsend' => 'วันที่สิ้นสุด:',
 	'usagestatisticsintervalday' => 'วัน',
 	'usagestatisticsintervalweek' => 'อาทิตย์',
 	'usagestatisticsintervalmonth' => 'เดือน',
@@ -2176,23 +2181,37 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'specialuserstats' => 'Thống kê sử dụng',
 	'usagestatistics' => 'Thống kê sử dụng',
+	'usagestatistics-desc' => 'Hiển thị thông kế sử dụng của từng cá nhân và toàn wiki',
 	'usagestatisticsfor' => '<h2>Thống kê sử dụng về [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Thống kê sử dụng của mọi người dùng</h2>',
+	'usagestatisticsinterval' => 'Khoảng thời gian:',
 	'usagestatisticsnamespace' => 'Không gian tên:',
 	'usagestatisticsexcluderedirects' => 'Trừ trang đổi hướng',
+	'usagestatistics-namespace' => 'Đây là những số liệu thống kê trong không gian tên [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => 'Không tính [[Special:ListRedirects|trang đổi hướng]].',
 	'usagestatisticstype' => 'Loại',
 	'usagestatisticsstart' => 'Ngày đầu:',
 	'usagestatisticsend' => 'Ngày cùng:',
 	'usagestatisticssubmit' => 'Tính ra thống kê',
+	'usagestatisticsnostart' => 'Xin ghi rõ ngày bắt đầu',
 	'usagestatisticsnoend' => 'Xin hãy định rõ ngày kết thúc',
 	'usagestatisticsbadstartend' => '<b>Ngày <i>bắt đầu</i> và/hoặc <i>kết thúc</i> không hợp lệ!</b>',
 	'usagestatisticsintervalday' => 'Ngày',
 	'usagestatisticsintervalweek' => 'Tuần',
 	'usagestatisticsintervalmonth' => 'Tháng',
+	'usagestatisticsincremental' => 'Tăng dần',
+	'usagestatisticsincremental-text' => 'tăng dần',
+	'usagestatisticscumulative' => 'Tổng cộng',
+	'usagestatisticscumulative-text' => 'tổng cộng',
 	'usagestatisticscalselect' => 'Chọn',
+	'usagestatistics-editindividual' => 'Thống kê sửa đổi $1 của cá nhân người dùng',
+	'usagestatistics-editpages' => 'Thống kê trang $1 của cá nhân người dùng',
+	'right-viewsystemstats' => 'Xem [[Special:UserStats|thống kê sử dụng wiki]]',
 );
 
 /** Volapük (Volapük)

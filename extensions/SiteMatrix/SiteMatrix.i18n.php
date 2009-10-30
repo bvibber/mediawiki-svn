@@ -1205,7 +1205,10 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
+	'sitematrix' => "Lieste van Wikimedia-wiki's",
 	'sitematrix-language' => 'Taal',
+	'sitematrix-project' => "Naam van 't prejek, interprejekverwiezing en interwikiverwiezing",
+	'sitematrix-others' => 'Aandere prejekken van Wikimedia',
 	'sitematrix-sitetotal' => 'Alles samen',
 	'sitematrix-private' => 'beteunde toegang',
 );

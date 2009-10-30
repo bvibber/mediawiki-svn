@@ -271,6 +271,16 @@ $messages['pms'] = array(
 	'delaydef-error-redef' => 'Eror: tentà la ridefinission ëd $1.',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'delaydef-desc' => 'Adiciona &lt;define&gt; e &lt;display&gt; para permitir o reposicionamento do código',
+	'delaydef-error-missing-def' => 'Erro: Não foi encontrada a definição necessária para &lt;display name="$1"&gt;.',
+	'delaydef-error-no-name' => 'Erro: Não foi especificado o parâmetro do nome.',
+	'delaydef-error-redef' => 'Erro: Tentativa de redefinição de $1.',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

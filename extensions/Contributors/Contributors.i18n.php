@@ -1134,6 +1134,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1142,7 +1143,7 @@ $messages['pt'] = array(
 	'contributors-toolbox' => 'Principais contribuidores',
 	'contributors-legend' => 'Listagem dos principais contribuidores de um artigo',
 	'contributors-target' => 'Título:',
-	'contributors-submit' => 'Exibir',
+	'contributors-submit' => 'Mostrar',
 	'contributors-subtitle' => 'Principais contribuidores de $1',
 	'contributors-others-long' => '{{PLURAL:$1|Ainda há outro contribuidor|Existem ainda outros $1 contribuidores}} para esta página.',
 	'contributors-others' => 'e {{PLURAL:$1|um outro|$1 outros}}',

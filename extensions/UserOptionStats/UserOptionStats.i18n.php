@@ -425,8 +425,14 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'useroptionstats' => 'Статистики за корисничките прилагодувања',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Специјална страница]] за известување на прилагодувањата на МедијаВики',
+	'uos-warn' => 'PHPlot не е инсталиран!',
+	'uos-choose' => 'Одберете една од следниве кориснички можности: $1',
 	'uos-unknown' => '*По основно',
 	'uos-other' => '*Друго',
+	'uos-title' => 'Распределба на вредности за користењето на кориснички прилагодувања, можност
+$1',
 );
 
 /** Mongolian (Монгол)

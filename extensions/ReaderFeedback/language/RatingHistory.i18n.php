@@ -1792,6 +1792,18 @@ $messages['te'] = array(
 	'ratinghistory-ave' => 'సగటు: $1',
 );
 
+/** Thai (ไทย)
+ * @author Ans
+ */
+$messages['th'] = array(
+	'ratinghistory-month' => 'เดือนที่แล้ว',
+	'ratinghistory-3months' => '3 เดือนที่แล้ว',
+	'ratinghistory-year' => 'ปีที่แล้ว',
+	'ratinghistory-3years' => '3 ปีที่แล้ว',
+	'ratinghistory-ave' => 'เฉลี่ย: $1',
+	'ratinghistory-users' => 'ผู้ใช้ที่มีส่วนร่วมจัดอันดับ',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

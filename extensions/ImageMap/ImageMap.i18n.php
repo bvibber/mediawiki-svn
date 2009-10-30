@@ -1009,6 +1009,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'imagemap_desc' => '<tt><nowiki><imagemap></nowiki></tt> റ്റാഗ് ഉപയോഗിച്ച് ക്ലയന്റിൽ ക്ലിക്ക് ചെയ്യാവുന്ന ചിത്രസഞ്ചയം അനുവദിക്കുന്നു',
 	'imagemap_no_image' => 'Error: ഒന്നാമത്തെ വരിയില്‍ ഒരു ചിത്രത്തിന്റെ പേരു വേണം',
 	'imagemap_invalid_image' => 'Error: ചിത്രം അസാധുവാണ്‌ അല്ലെങ്കില്‍ നിലവിലില്ല',
 	'imagemap_bad_image' => 'പിശക്: ഈ താളിൽ ചിത്രം കരിമ്പട്ടികയിലാണ്',

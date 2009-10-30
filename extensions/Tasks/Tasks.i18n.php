@@ -415,6 +415,15 @@ $messages['bg'] = array(
 	'tasks_logentry' => 'За „[[$1]]“',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'tasks_here' => 'amañ',
+	'tasks_table_header_page' => 'Pajenn',
+	'tasks_status_open' => 'Digor',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

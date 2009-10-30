@@ -2409,6 +2409,7 @@ $messages['ml'] = array(
 	'contribstats-value-over' => '$1-ൽ അധികം',
 	'contribstats-day-totals' => 'ഇന്ന് ആകെ',
 	'contribstats-week' => 'ആഴ്‌‌ച',
+	'contribstats-clicks' => 'ഞെക്കലുകൾ',
 	'contribstats-donations' => 'സംഭാവനകൾ',
 	'contribstats-template' => 'ഫലകം',
 	'contribstats-nodata' => 'വിവരങ്ങളൊന്നും ലഭിച്ചില്ല',

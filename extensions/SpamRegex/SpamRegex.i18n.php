@@ -238,6 +238,13 @@ $messages['bn'] = array(
 	'spamregex-summary-log' => '(সারাংশ)',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'spamregex-text' => '(Testenn)',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -1877,6 +1877,7 @@ $messages['tg-cyrl'] = array(
  * @author Ans
  */
 $messages['th'] = array(
+	'prefstats-xaxis' => 'ช่วงเวลา (ชั่วโมง)',
 	'prefstats-factors' => 'เปิดดูทุกๆ: $1',
 	'prefstats-factor-hour' => 'ชั่วโมง',
 	'prefstats-factor-sixhours' => 'หกชั่วโมง',

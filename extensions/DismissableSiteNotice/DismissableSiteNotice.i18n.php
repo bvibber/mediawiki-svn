@@ -602,6 +602,13 @@ $messages['nds'] = array(
 	'sitenotice-desc' => 'Verlöövt Brukers dat Sluten vun de Sitenotice',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'sitenotice_close' => 'verbargen',
+);
+
 /** Nepali (नेपाली) */
 $messages['ne'] = array(
 	'sitenotice_close' => 'खारेज',
