@@ -50,6 +50,8 @@ require_once( dirname( __FILE__ ) . '/WlFeed.php' );
  */
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['Wikilog'] = $dir . 'Wikilog.i18n.php';
+$wgExtensionMessagesFiles['WikilogMagic'] = $dir . 'Wikilog.i18n.magic.php';
+$wgExtensionMessagesFiles['WikilogAlias'] = $dir . 'Wikilog.i18n.alias.php';
 
 /*
  * Autoloaded classes.
@@ -111,9 +113,6 @@ $wgHooks['SkinTemplateTabs'][]			= 'Wikilog::SkinTemplateTabs';
 $wgHooks['ArticleEditUpdates'][]		= 'WikilogHooks::ArticleEditUpdates';
 $wgHooks['ArticleDeleteComplete'][]		= 'WikilogHooks::ArticleDeleteComplete';
 $wgHooks['TitleMoveComplete'][]			= 'WikilogHooks::TitleMoveComplete';
-$wgHooks['LanguageGetSpecialPageAliases'][]
-										= 'WikilogHooks::LanguageGetSpecialPageAliases';
-$wgHooks['LanguageGetMagic'][]			= 'WikilogHooks::LanguageGetMagic';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'WikilogHooks::ExtensionSchemaUpdates';
 $wgHooks['UnknownAction'][]				= 'WikilogHooks::UnknownAction';
 
@@ -127,6 +126,12 @@ $wgHooks['ParserBeforeInternalParse'][]	= 'WikilogParser::BeforeInternalParse';
 $wgHooks['ParserAfterTidy'][]			= 'WikilogParser::AfterTidy';
 $wgHooks['GetLocalURL'][]				= 'WikilogParser::GetLocalURL';
 $wgHooks['GetFullURL'][]				= 'WikilogParser::GetFullURL';
+
+if ( !defined( 'MW_SUPPORTS_LOCALISATIONCACHE' ) ) {
+	/* pre Mw1.16 compatibility */
+	$wgHooks['LanguageGetMagic'][] = 'WikilogHooks::LanguageGetMagic';
+	$wgHooks['LanguageGetSpecialPageAliases'][] = 'WikilogHooks::LanguageGetSpecialPageAliases';
+}
 
 /*
  * Added rights.

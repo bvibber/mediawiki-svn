@@ -4,14 +4,13 @@
  * @addtogroup Extensions
  */
 
-// FIXME: Use $wgExtensionMessagesFiles[] and $magicWords. See f.e. extension ParserFunctions.
-$words = array();
+$magicWords = array();
 
 /**
  * English.
  * @author Juliano F. Ravasi
  */
-$words['en'] = array(
+$magicWords['en'] = array(
 	'wl-settings'	=> array( 0, 'wl-settings'  ),
 	'wl-publish'	=> array( 0, 'wl-publish'   ),
 	'wl-author'		=> array( 0, 'wl-author'    ),
@@ -28,7 +27,7 @@ $words['en'] = array(
  * Portuguese.
  * @author Juliano F. Ravasi
  */
-$words['pt'] = array(
+$magicWords['pt'] = array(
 	'wl-settings'	=> array( 0, 'wl-configs',  'wl-settings'  ),
 	'wl-publish'	=> array( 0, 'wl-publicar', 'wl-publish'   ),
 	'wl-author'		=> array( 0, 'wl-autor',    'wl-author'    ),
@@ -45,7 +44,7 @@ $words['pt'] = array(
  * Brazilian Portuguese.
  * @author Juliano F. Ravasi
  */
-$words['pt-br'] = array(
+$magicWords['pt-br'] = array(
 	'wl-settings'	=> array( 0, 'wl-configs',  'wl-settings'  ),
 	'wl-publish'	=> array( 0, 'wl-publicar', 'wl-publish'   ),
 	'wl-author'		=> array( 0, 'wl-autor',    'wl-author'    ),

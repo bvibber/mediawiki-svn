@@ -232,6 +232,8 @@ class WikilogHooks
 	/**
 	 * LanguageGetSpecialPageAliases hook handler function.
 	 * Adds language aliases for special pages.
+	 * @note Deprecated in MediaWiki 1.16.
+	 * @todo Remove this in Wikilog 1.1.0, along with support for Mw < 1.16.
 	 */
 	static function LanguageGetSpecialPageAliases( &$specialPageAliases, $lang ) {
 		wfLoadExtensionMessages( 'Wikilog' );
@@ -243,13 +245,15 @@ class WikilogHooks
 	/**
 	 * LanguageGetMagic hook handler function.
 	 * Adds language aliases for magic words.
+	 * @note Deprecated in MediaWiki 1.16.
+	 * @todo Remove this in Wikilog 1.1.0, along with support for Mw < 1.16.
 	 */
-	static function LanguageGetMagic( &$magicWords, $lang ) {
+	static function LanguageGetMagic( &$words, $lang ) {
 		require( 'Wikilog.i18n.magic.php' );
-		if ( $lang == 'en' || !isset( $words[$lang] ) ) {
-			$magicWords += $words['en'];
+		if ( $lang == 'en' || !isset( $magicWords[$lang] ) ) {
+			$words += $magicWords['en'];
 		} else {
-			$magicWords += array_merge( $words['en'], $words[$lang] );
+			$words += array_merge( $magicWords['en'], $magicWords[$lang] );
 		}
 		return true;
 	}

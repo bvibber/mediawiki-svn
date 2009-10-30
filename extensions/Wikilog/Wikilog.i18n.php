@@ -19,7 +19,7 @@ $messages['en'] = array(
 
 	# Special:Wikilog
 	'wikilog' => 'Wikilogs', # Page title
-	'wikilog-specialwikilog' => 'Wikilog', # Special page name
+	'wikilog-specialwikilog' => 'Wikilog', # Special page name (DEPRECATED AFTER MW1.16)
 
 	# Logs
 	'wikilog-log-pagename' => 'Wikilog actions log',
@@ -103,8 +103,8 @@ $messages['en'] = array(
 	'wikilog-feed-description' => 'Read the most recent posts in this feed.',
 
 	# Item and comments page titles
-	'wikilog-title-item-full' => '$1 - $2',	# 1 = article title, $2 wikilog title
-	'wikilog-title-comments' => 'Comments - $1', # 1 = article title
+	'wikilog-title-item-full' => '$1 - $2', # $1 = article title, $2 wikilog title
+	'wikilog-title-comments' => 'Comments - $1', # $1 = article title
 
 	# Warning and error messages
 	'wikilog-error-msg' => 'Wikilog: $1',
@@ -182,7 +182,6 @@ $messages['de'] = array(
 	'right-wl-postcomment' => 'Poste Kommentare zu Wikilog-Beiträgen',
 	'right-wl-moderation' => 'Moderation von Kommentaren zu wikilog-Beiträgen',
 	'wikilog'					=> 'Wikilogs',	# Page title
-	'wikilog-specialwikilog' => 'Wikilog',	# Special page name
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Wikilog Aktionen',
 	'wikilog-information' => 'Wikilog Information',
@@ -235,7 +234,7 @@ $messages['de'] = array(
 	'wikilog-newtalk-summary' => 'automatisch erzeugt durch Wikilog',
 	'wikilog-feed-title' => '{{SITENAME}} - $1 [$2]', # $1 = title, $2 = content language
 	'wikilog-feed-description' => 'Lese die neuesten Beiträge in diesem Feed.',
-	'wikilog-title-item-full' => '$1 - $2',	# 1 = article title, $2 wikilog title
+	'wikilog-title-item-full' => '$1 - $2',	# $1 = article title, $2 wikilog title
 	'wikilog-error-msg' => 'Wikilog: $1',
 	'wikilog-error-title' => 'Wikilog Fehler',
 	'wikilog-invalid-param' => 'Ungültiger Parameter: $1.',
@@ -294,7 +293,6 @@ $messages['pt'] = array(
 	'right-wl-postcomment' => 'Postar comentários em artigos wikilog',
 	'right-wl-moderation' => 'Moderação de comentários de artigos wikilog',
 	'wikilog' => 'Wikilogs',
-	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Registro de ações wikilog',
 	'wikilog-log-pagetext' => 'Abaixo está uma lista das ações wikilog.',
 	'wikilog-log-cmt-approve' => 'aprovou o comentário [[$1]]',
@@ -357,8 +355,8 @@ $messages['pt'] = array(
 	'wikilog-newtalk-summary' => 'criado automaticamente pelo wikilog',
 	'wikilog-feed-title' => '{{SITENAME}} - $1 [$2]', # $1 = title, $2 = content language
 	'wikilog-feed-description' => 'Leia as postagens mais recentes neste feed.',
-	'wikilog-title-item-full' => '$1 - $2',	# 1 = article title, $2 wikilog title
-	'wikilog-title-comments' => 'Comentários - $1', # 1 = article title
+	'wikilog-title-item-full' => '$1 - $2', # $1 = article title, $2 wikilog title
+	'wikilog-title-comments' => 'Comentários - $1', # $1 = article title
 	'wikilog-error-msg' => 'Wikilog: $1',
 	'wikilog-invalid-param' => 'Parâmetro inválido: $1.',
 	'wikilog-invalid-author' => 'Autor inválido: $1.',
