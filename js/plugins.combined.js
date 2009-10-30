@@ -2363,24 +2363,24 @@ fn: {
 		function buildList( structure ) {
 			var list = $( '<ul></ul>' );
 			for ( i in structure ) {
-				var item = $( '<li></li>' )
-					.append(
-						$( '<div></div>' )
-							.attr( 'href', '#' )
-							.addClass( 'section-' + structure[i].index )
-							.data( 'textbox', context.$textarea )
-							.data( 'position', structure[i].position )
-							.bind( 'mousedown', function( event ) {
-								$(this).data( 'textbox' )
-									.focus()
-									.setSelection( $(this).data( 'position' ) )
-									.scrollToCaretPosition( true );
-								if ( typeof $.trackAction != 'undefined' )
-									$.trackAction( 'ntoc.heading' );
-								event.preventDefault();
-							} )
-							.text( structure[i].text )
-					);
+				var div = $( '<div></div>' )
+					.attr( 'href', '#' )
+					.addClass( 'section-' + structure[i].index )
+					.data( 'textbox', context.$textarea )
+					.data( 'position', structure[i].position )
+					.bind( 'mousedown', function( event ) {
+						$(this).data( 'textbox' )
+							.focus()
+							.setSelection( $(this).data( 'position' ) )
+							.scrollToCaretPosition( true );
+						if ( typeof $.trackAction != 'undefined' )
+							$.trackAction( 'ntoc.heading' );
+						event.preventDefault();
+					} )
+					.text( structure[i].text );
+				if ( structure[i].text == '' )
+					div.html( '&nbsp;' );
+				var item = $( '<li></li>' ).append( div );
 				if ( structure[i].sections !== undefined ) {
 					item.append( buildList( structure[i].sections ) );
 				}
@@ -2402,7 +2402,7 @@ fn: {
 									$(this).find('ul:first').hide();
 								} )
 							.prev()
-							.animate( {'marginRight': $e.outerWidth()+1}, 'fast', function(){
+							.animate( {'marginRight': $e.outerWidth() + 1 }, 'fast', function(){
 								$('#wikiEditor-ui-toc-collapse')
 									.removeClass('wikiEditor-ui-toc-collapse-open')
 									.addClass('wikiEditor-ui-toc-collapse-closed');
