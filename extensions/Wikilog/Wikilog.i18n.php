@@ -413,3 +413,130 @@ $messages['pt'] = array(
 	'wikilog-history-lc' => 'histórico',		# noun
 	'wikilog-doc-import-comment' => "Documentação Wikilog importada",
 );
+
+/** Swedish
+ * @author Elias Bröms
+ */
+$messages['sv'] = array(
+	'wikilog-desc'				=> 'Lägger till bloggfunktioner, skapar en wiki-blogg-hybrid.',
+	'wikilog-auto'				=> 'Wikilog Auto',	# reserved username
+	'right-wl-postcomment'		=> 'Skriv kommentarer till wikilog-artiklar',
+	'right-wl-moderation'		=> 'Moderering av wikilog-artikelkommentarer',
+	'wikilog'					=> 'Wikilog-bloggar',	# Page title
+	'wikilog-log-pagename'		=> 'Wikilog händelselogg',
+	'wikilog-log-pagetext'		=> 'Nedan är en lista över wikilog-händelser.',
+	'wikilog-log-cmt-approve'	=> 'godkände kommentar [[$1]]',
+	'wikilog-log-cmt-reject'	=> 'avslog kommentar [[$1]]',
+	'wikilog-log-cmt-rejdel'	=> 'Avslog wikilog-kommentar från [[Special:Contributions/$1|$1]]',
+	'wikilog-tab'				=> 'Wikilog',
+	'wikilog-tab-title'			=> 'Wikilog-hantering',
+	'wikilog-information'		=> 'Wikilog-information',
+	'wikilog-post-count-published'	=> 'Det finns $1 {{PLURAL:$1|publicerad artikel|publicerade artiklar}} i denna wikilog,',
+	'wikilog-post-count-drafts'	=> 'plus $1 {{PLURAL:$1|opublicerad (utkast) artikel|opublicerade (utkast) artiklar}},',
+	'wikilog-post-count-all'	=> 'vilket ger totalt $1 {{PLURAL:$1|artikel|artiklar}}.',
+	'wikilog-new-item'			=> 'Skapa en ny wikilog-artikel',
+	'wikilog-new-item-go'		=> 'Skapa',
+	'wikilog-item-name'			=> 'Artikelnamn:',
+	'wikilog-published'			=> 'Publicerad',
+	'wikilog-updated'			=> 'Uppdaterad',
+	'wikilog-draft'				=> 'Utkast',
+	'wikilog-authors'			=> 'Författare',
+	'wikilog-wikilog'			=> 'Wikilog',
+	'wikilog-title'				=> 'Titel',
+	'wikilog-actions'			=> 'Hantera',
+	'wikilog-comments'			=> 'Kommentarer',
+	'wikilog-replies'			=> 'Svar',
+	'wikilog-view-archives'		=> 'Arkiv',
+	'wikilog-view-summary'		=> 'Sammanfattning',
+	'wikilog-draft-title-mark'	=> '(utkast)',
+	'wikilog-anonymous-mark'	=> '(anonym)',
+	'wikilog-pager-newer-n'		=> '← senare $1',	# $1 = number of items
+	'wikilog-pager-older-n'		=> 'förra $1 →',	# $1 = number of items
+	'wikilog-pager-newest'		=> '←← senaste',
+	'wikilog-pager-oldest'		=> 'äldsta →→',
+	'wikilog-pager-prev'		=> '← föregående',
+	'wikilog-pager-next'		=> 'nästa →',
+	'wikilog-pager-first'		=> '←← första',
+	'wikilog-pager-last'		=> 'sista →→',
+	'wikilog-pager-empty'		=> '(inga inlägg)',
+	'wikilog-no-comments'		=> 'inga kommentarer',
+	'wikilog-has-comments'		=> '{{PLURAL:$1|en kommentar|$1 kommentarer}}',
+	'wikilog-item-brief-header'	=> ': <i><small>av $5, från bloggen [[$1|$2]], $6, $7.</small></i>',
+	'wikilog-item-brief-footer'	=> '',
+	'wikilog-item-more'			=> '[[$3|→ fortsätt läsa...]]',
+	'wikilog-item-sub'			=> '',
+	'wikilog-item-header'		=> '',
+	'wikilog-item-footer'		=> ': <i>&mdash; $5 &#8226; $6 &#8226; $7</i>',
+	'wikilog-author-signature'	=> '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|diskussion]])',
+	'wikilog-comment-by-user'	=> 'Kommentar av $1 ($2)',
+	'wikilog-comment-by-anon'	=> 'Kommentar av $3 (anonym)',
+	'wikilog-comment-pending'	=> 'Denna kommentar väntar på godkännande.',
+	'wikilog-comment-deleted'	=> 'Denna kommentar har raderats.',
+	'wikilog-comment-edited'	=> 'Denna kommentar redigerades senast $1 ($2).', # $1 = date and time, $2 = history link
+	'wikilog-comment-autosumm'	=> 'Ny kommentar av $1: $2',
+	'wikilog-reply-to-comment'	=> 'Skriv ett svar till denna kommentar',
+	'wikilog-comment-page'		=> 'Gå till denna kommentars sida',
+	'wikilog-comment-edit'		=> 'Redigera denna kommentar',
+	'wikilog-comment-delete'	=> 'Radera denna kommentar',
+	'wikilog-comment-history'	=> 'Se kommentarshistoria',
+	'wikilog-comment-approve'	=> 'Godkänn denna kommentar (omedelbart utfört)',
+	'wikilog-comment-reject'	=> 'Avslå denna kommentar (omedelbart utfört)',
+	'wikilog-newtalk-text'		=> '<!-- tom sida skapad av Wikilog -->',
+	'wikilog-newtalk-summary'	=> 'skapad automatiskt av Wikilog',
+	'wikilog-feed-title'		=> '{{SITENAME}} - $1 [$2]', # $1 = title, $2 = content language
+	'wikilog-feed-description'	=> 'Läs de senaste inläggen i denna feed.',
+	'wikilog-title-item-full'	=> '$1 - $2',	# $1 = article title, $2 wikilog title
+	'wikilog-title-comments'	=> 'Kommentarer - $1', # $1 = article title
+	'wikilog-error-msg'			=> 'Wikilog: $1',
+	'wikilog-error-title'		=> 'Wikilog fel',
+	'wikilog-invalid-param'		=> 'Felaktig parameter: $1.',
+	'wikilog-invalid-author'	=> 'Felaktig författare: $1.',
+	'wikilog-invalid-date'		=> 'Felaktigt datum: $1.',
+	'wikilog-invalid-tag'		=> 'Felaktig tagg: $1.',
+	'wikilog-invalid-file'		=> 'Felaktig fil: $1.',
+	'wikilog-file-not-found'	=> 'Ickeexisterande fil: $1.',
+	'wikilog-not-an-image'		=> 'Filen är inte en bild: $1.',
+	'wikilog-out-of-context'	=>
+			'Varning: Wikilog-taggar används utanför kontext. ' .
+			'De ska endast användas i artiklar inom Wikilog-namnrymden.',
+	'wikilog-too-many-authors'	=> 'Varning: För många författare listas i detta wikilog-inlägg.',
+	'wikilog-too-many-tags'		=> 'Varning: För många taggar listas i detta wikilog-inlägg.',
+	'wikilog-comment-is-empty'	=> 'Kommentaren är tom.',
+	'wikilog-comment-too-long'	=> 'Kommentaren är för lång.',
+	'wikilog-comment-invalid-name' => 'Namnet godkänns inte.',
+	'wikilog-no-such-article' => 'Den efterfrågade wikilog-artikeln finns inte.',
+	'wikilog-reading-draft'		=> 'Denna wikilog-artikel är ett utkast, den har ännu inte pulicerats.',
+	'wikilog-posting-anonymously' =>	# $1 = "login" link
+			'Du är för närvarande inte inloggad; din kommentar kommer att skickas ' .
+			'anonymt, identifierad av din internetanslutningsadress. ' .
+			'Du bör antingen ange en psudonym ovan för att identifiera din ' .
+			'kommentar eller $1 för att den ska kopplas till dig korrekt.',
+	'wikilog-anonymous-moderated' =>
+			'Efter att du har skickat din kommentar kommer den inte att synas omedelbart ' .
+			'på den här sidan. Kommentaren syns först när den har godkänts av en ' .
+			'moderator.',
+	'wikilog-post-comment'		=> 'Skriv en ny kommentar',
+	'wikilog-post-reply'		=> 'Skriv ett nytt svar',
+	'wikilog-form-legend'		=> 'Sök efter wikilog-inlägg',
+	'wikilog-form-wikilog'		=> 'Wikilog:',
+	'wikilog-form-category'		=> 'Kategori:',
+	'wikilog-form-name'			=> 'Namn:',
+	'wikilog-form-author'		=> 'Författare:',
+	'wikilog-form-tag'			=> 'Tagg:',
+	'wikilog-form-date'			=> 'Datum:',
+	'wikilog-form-status'		=> 'Status:',
+	'wikilog-form-preview'		=> 'Förhandsgranska:',
+	'wikilog-form-comment'		=> 'Kommentar:',
+	'wikilog-show-all'			=> 'Alla inlägg',
+	'wikilog-show-published'	=> 'Publicerade',
+	'wikilog-show-drafts'		=> 'Utkast',
+	'wikilog-submit'			=> 'Spara',
+	'wikilog-preview'			=> 'Förhandsgranska',	# verb
+	'wikilog-edit-lc'			=> 'redigera',		# verb
+	'wikilog-reply-lc'			=> 'svara',		# verb
+	'wikilog-delete-lc'			=> 'radera',	# verb
+	'wikilog-approve-lc'		=> 'godkänn',	# verb
+	'wikilog-reject-lc'			=> 'avslå',	# verb
+	'wikilog-page-lc'			=> 'sida',		# noun
+	'wikilog-history-lc'		=> 'historia',	# noun
+);
