@@ -1,9 +1,14 @@
 package de.brightbyte.wikiword.analyzer;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
+import de.brightbyte.data.Pair;
 import de.brightbyte.wikiword.analyzer.mangler.Mangler;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
 
@@ -60,6 +65,21 @@ public class LanguageConfiguration {
 	public Pattern wordPattern;
 
 	protected String languageName;
+
+	/**
+	 * List of stopwords, that is, words that are too frequent to be useful for searches.
+	 */
+	public Set<String> stopwords;
+
+	/**
+	 * Symbols that break a phrase, like most punctuation would
+	 */
+	public Pattern phraseBreakerPattern;
+
+	/**
+	 * pairs of matching parantecies 
+	 */
+	public Collection<Pair<String, String>> parentacies;
 	
 	public LanguageConfiguration() {
 		this(null);
@@ -77,7 +97,7 @@ public class LanguageConfiguration {
 		return languageName;
 	}
 	
-	public void defaults() {
+	public void defaults() throws IOException {
 		if (this.wordPattern==null) this.wordPattern = Pattern.compile("\\p{L}+|\\p{Nd}+"); 
 
 		this.sentenceManglers.add( new RegularExpressionMangler("\\s+\\(.*?\\)", "", 0) ); //strip parentacized blocks 
@@ -85,6 +105,17 @@ public class LanguageConfiguration {
 		this.sentencePattern = Pattern.compile("(\\r\\n|\\n|\\r)|\\.[\\s\\r\\n]"); //TODO: check what happens if we allow single newlines in sentences! Breaking on single newlines causes truncated definitions. 
 		this.sentenceTailGluePattern = Pattern.compile("(^|\\s)([VIX]+|\\d{1,2})$");
 		this.sentenceFollowGluePattern = Pattern.compile("^\\p{Ll}");
+
+		this.stopwords = new HashSet<String>();
+		List<String> stop = AuxilliaryWikiProperties.loadList("Stopwords", languageName);
+		if (stop!=null) this.stopwords.addAll(stop);
+		
+		this.phraseBreakerPattern = Pattern.compile("[,;:]\\s|\"");
+		this.parentacies = new ArrayList<Pair<String, String>>();
+		this.parentacies.add( new Pair<String, String>("(", ")") );
+		this.parentacies.add( new Pair<String, String>("[", "]") );
+		this.parentacies.add( new Pair<String, String>("{", "}") );
+		this.parentacies.add( new Pair<String, String>("\"", "\"") );
 	}
 
 	public void merge(LanguageConfiguration with) {
@@ -92,8 +123,12 @@ public class LanguageConfiguration {
 		if (with.sentenceTailGluePattern!=null) sentenceTailGluePattern = with.sentenceTailGluePattern;
 		if (with.sentenceFollowGluePattern!=null) sentenceFollowGluePattern = with.sentenceFollowGluePattern;
 		
-		sentenceManglers.addAll(with.sentenceManglers);
+		if (with.sentenceManglers!=null) sentenceManglers.addAll(with.sentenceManglers);
 
 		if (with.wordPattern!=null) wordPattern = with.wordPattern;
+		if (with.phraseBreakerPattern!=null) phraseBreakerPattern = with.phraseBreakerPattern;
+		
+		if (with.stopwords!=null) stopwords.addAll(with.stopwords);
+		if (with.parentacies!=null) parentacies.addAll(with.parentacies);
 	}	
 }

@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.analyzer;
 
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -24,7 +25,7 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 	protected class TestPlainTextAnalyzer extends PlainTextAnalyzer {
 		//TODO: check coverage!
 
-		public TestPlainTextAnalyzer(Corpus corpus) {
+		public TestPlainTextAnalyzer(Corpus corpus) throws IOException {
 			super(corpus);
 		}
 		
@@ -79,7 +80,7 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 	protected TestPlainTextAnalyzer testAnalyzer;
 	
 	@Override
-	public void setUp() throws URISyntaxException {
+	public void setUp() throws URISyntaxException, IOException {
 		LanguageConfiguration config = new LanguageConfiguration();
 		
 		corpus = new Corpus("TEST", "generic", "generic", "generic", "generic", "xx", "generic", null);
