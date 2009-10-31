@@ -63,6 +63,7 @@ $wfPolyglotFollowRedirects = false;
 
 ///// hook it up /////////////////////////////////////////////////////
 $wgHooks['ArticleFromTitle'][] = 'wfPolyglotArticleFromTitle';
+$wgHooks['LinkBegin'][] = 'wfPolyglotLinkBegin';
 $wgHooks['ParserAfterTidy'][] = 'wfPolyglotParserAfterTidy';
 $wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'wfPolyglotSkinTemplateOutputPageBeforeExec';
 
@@ -82,7 +83,7 @@ function wfPolyglotExtension() {
 
 function wfPolyglotArticleFromTitle( &$title, &$article ) {
 	global $wfPolyglotExcemptNamespaces, $wfPolyglotExcemptTalkPages, $wfPolyglotFollowRedirects;
-	global $wgLang, $wgRequest;
+	global $wgLang, $wgContLang, $wgRequest;
 
 	if ($wgRequest->getVal( 'redirect' ) == 'no') {
 		return true;
@@ -98,17 +99,27 @@ function wfPolyglotArticleFromTitle( &$title, &$article ) {
 
 	$n = $title->getDBkey();
 	$nofollow = false;
+	$force = false;
 
 	//TODO: when user-defined language links start working (see below),
 	//      we need to look at the langlinks table here.
-
-	if (!$title->exists() && strlen($n)>1 && preg_match('!/$!', $n)) {
-		$t = Title::makeTitle($ns, substr($n, 0, strlen($n)-1));
-		$nofollow = true;
+	if ( !$title->exists() && strlen( $n ) > 1 ) {
+		$escContLang = preg_quote( $wgContLang->getCode(),  '!' );
+		if ( preg_match( '!/$!', $n ) ) {
+			$force = true;
+			$remove = 1;
+		} elseif ( preg_match( "!/{$escContLang}$!", $n ) ) {
+			$force = true;
+			$remove = strlen( $wgContLang->getCode() ) + 1;
+		}
 	}
-	else {
+
+	if ( $force ) {
+		$t = Title::makeTitle( $ns, substr( $n, 0, strlen( $n ) - $remove ) );
+		$nofollow = true;
+	} else {
 		$lang = $wgLang->getCode();
-		$t = Title::makeTitle($ns, $n . '/' . $lang);
+		$t = Title::makeTitle( $ns, $n . '/' . $lang );
 	}
 
 	if (!$t->exists()) {
@@ -155,6 +166,42 @@ function wfPolyglotArticleFromTitle( &$title, &$article ) {
 
 	$article = new PolyglotRedirect( $title, $t ); //trigger redirect to lovcalized page
 	
+	return true;
+}
+
+function wfPolyglotLinkBegin( $linker, $target, &$text, &$customAttribs, &$query, &$options, &$ret ) {
+	global $wfPolyglotExcemptNamespaces, $wfPolyglotExcemptTalkPages, $wgContLang;
+
+	$ns = $target->getNamespace();
+
+	if ( $ns < 0 
+		|| in_array( $ns, $wfPolyglotExcemptNamespaces ) 
+		|| ( $wfPolyglotExcemptTalkPages && MWNamespace::isTalk( $ns ) ) ) {
+		return true;
+	}
+
+	$dbKey = $target->getDBkey();
+
+	if ( !$target->exists() && strlen( $dbKey ) > 1 ) {
+		$escContLang = preg_quote( $wgContLang->getCode(),  '!' );
+		if ( preg_match( '!/$!', $dbKey ) ) {
+			$remove = 1;
+		} elseif ( preg_match( "!/{$escContLang}$!", $dbKey ) ) {
+			$remove = strlen( $wgContLang->getCode() ) + 1;
+		} else {
+			return true;
+		}
+	} else {
+		return true;
+	}
+
+	$t = Title::makeTitle( $ns, substr( $dbKey, 0, strlen( $dbKey ) - $remove ) );
+
+	if ( $t->exists() ) {
+		$options = array_diff( $options, array( 'broken' ) );
+		$options []= 'known';
+	}
+
 	return true;
 }
 
