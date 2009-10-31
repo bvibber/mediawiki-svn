@@ -462,11 +462,13 @@ Wann Dir ageloggt sidd, kënnt Dir dës Warnung an der Sektioun "{{int:prefs-edi
 
 /** Lithuanian (Lietuvių)
  * @author Matasg
+ * @author Pėstininkas
  */
 $messages['lt'] = array(
 	'editwarning' => 'Redagavimo pranešimas',
 	'editwarning-desc' => 'Rodyti pranešimą kai naudotojas bando palikti redagavimo langą neišsaugojęs',
 	'editwarning-warning' => 'Palikdamas šį puslapį jūs prarasite visus padarytus pakeitimus.',
+	'editwarning-preference' => 'Perspėti mane, kai palieku redagavimo puslapį, o jame yra neišsaugotų pakeitimų',
 );
 
 /** Macedonian (Македонски)

@@ -91,10 +91,12 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'usabilityinitiative' => "''Usability Initiative''",
 	'usabilityinitiative-desc' => "Funcions desenvolupades per la ''Wikipedia Usability Initiative'' per millorar la usabilitat del Mediawiki",
+	'prefs-experimental' => 'Característiques experimentals',
 );
 
 /** Czech (Česky)
