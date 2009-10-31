@@ -15,7 +15,7 @@ js2AddOnloadHook( function() {
 			// add the placeholder
 			$j('<span class="placeholder" style="display:none;"></span>').insertAfter(this);
 			$j(this).remove().prependTo(target).data('collapsibleTabsSettings', data);
-			$j(this).attr('style', '');
+			$j(this).attr('style', 'display:list-item;');
 			$j($j(ele).data('collapsibleTabsSettings').expandedContainer).data('collapsibleTabsSettings').shifting = false;
 			$j.collapsibleTabs.handleResize();
 		});
@@ -32,7 +32,7 @@ js2AddOnloadHook( function() {
 		$moving.css("position", "relative").css( ( rtl ? 'right' : 'left'), 0 ).css('width','1px');
 		$target.replaceWith($moving.remove().css('width','1px').data('collapsibleTabsSettings', data)
 			.animate({width: expandedWidth+"px"}, "normal", function(){
-			$j(this).attr('style', '');
+			$j(this).attr('style', 'display:block;');
 			$j($moving.data('collapsibleTabsSettings').expandedContainer).data('collapsibleTabsSettings').shifting = false;
 			$j.collapsibleTabs.handleResize();
 		}));
