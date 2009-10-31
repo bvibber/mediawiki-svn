@@ -14,7 +14,8 @@ $aliases['en'] = array(
 	'ExternalPages' => array( 'ExternalPages' ),
 );
 
-/** Greek */
+/** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'ExternalPages' => array( 'ΕξωτερικέςΣελίδες' ),
 );
+

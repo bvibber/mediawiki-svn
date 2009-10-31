@@ -231,6 +231,16 @@ $messages['lb'] = array(
 	'delaydef-error-redef' => 'Feeler: Vesichten nei Definitioun vu(n) $1.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'delaydef-desc' => 'Додава &lt;define&gt; и &lt;display&gt; за да овозможи преместување на кодот',
+	'delaydef-error-missing-def' => 'Грешка: Определувањето потребно за &lt;display name="$1"&gt; не е најдено.',
+	'delaydef-error-no-name' => 'Грешка: Нема назначен параметар за име (name).',
+	'delaydef-error-redef' => 'Грешка: Обид за преопределување на $1.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

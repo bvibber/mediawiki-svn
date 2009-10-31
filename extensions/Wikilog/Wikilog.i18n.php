@@ -186,6 +186,7 @@ $messages['qqq'] = array(
 	'right-wl-moderation' => '{{doc-right|wl-moderation}}',
 	'wikilog-specialwikilog' => 'This is a special page name',
 	'wikilog-new-item-go' => '{{Identical|Create}}',
+	'wikilog-draft' => '{{Identical|Draft}}',
 	'wikilog-authors' => '{{Identical|Author}}',
 	'wikilog-title' => '{{Identical|Title}}',
 	'wikilog-actions' => '{{Identical|Action}}',
@@ -239,9 +240,15 @@ Parameters:
 * $1 is the input that is not an image',
 	'wikilog-posting-anonymously' => 'Parameters:
 * $1 is a link to the login page with {{msg-mw|loginreqlink}} as link label',
+	'wikilog-form-category' => '{{Identical|Category}}',
 	'wikilog-form-name' => '{{Identical|Name}}',
+	'wikilog-form-date' => '{{Identical|Date}}',
+	'wikilog-form-status' => '{{Identical|Status}}',
+	'wikilog-form-preview' => '{{Identical|Preview}}',
 	'wikilog-form-comment' => '{{Identical|Comment}}',
-	'wikilog-preview' => 'Verb',
+	'wikilog-show-drafts' => '{{Identical|Draft}}',
+	'wikilog-preview' => 'Verb
+{{Identical|Preview}}',
 	'wikilog-edit-lc' => 'Verb',
 	'wikilog-reply-lc' => 'Verb',
 	'wikilog-delete-lc' => 'Verb',
@@ -261,7 +268,11 @@ $messages['af'] = array(
 	'wikilog-actions' => 'Aksies',
 	'wikilog-view-archives' => 'Argiewe',
 	'wikilog-draft-title-mark' => '(werkweergawe)',
+	'wikilog-has-comments' => '{{PLURAL:$1|een opmerking|$1 opmerkings}}',
+	'wikilog-form-date' => 'Datum:',
+	'wikilog-form-preview' => 'Voorskou:',
 	'wikilog-form-comment' => 'Opmerking:',
+	'wikilog-preview' => 'Voorskou',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -269,14 +280,31 @@ $messages['af'] = array(
  */
 $messages['be-tarask'] = array(
 	'wikilog-new-item-go' => 'Стварыць',
+	'wikilog-draft' => 'Чарнавік',
 	'wikilog-authors' => 'Аўтары',
 	'wikilog-title' => 'Назва',
 	'wikilog-actions' => 'Дзеяньні',
 	'wikilog-comments' => 'Камэнтары',
 	'wikilog-view-archives' => 'Архівы',
 	'wikilog-draft-title-mark' => '(чарнавік)',
+	'wikilog-has-comments' => '$1 {{PLURAL:$1|камэнтар|камэнтары|камэнтараў}}',
+	'wikilog-comment-deleted' => 'Гэты камэнтар быў выдалены.',
+	'wikilog-comment-page' => 'Перайсьці на старонку гэтага камэнтара',
+	'wikilog-comment-edit' => 'Рэдагаваць гэты камэнтар',
+	'wikilog-comment-delete' => 'Выдаліць гэты камэнтар',
+	'wikilog-comment-history' => 'Паказаць гісторыю камэнтара',
+	'wikilog-title-comments' => 'Камэнтары — $1',
+	'wikilog-invalid-param' => 'Няслушны парамэтар: $1.',
+	'wikilog-invalid-date' => 'Няслушная дата: $1.',
+	'wikilog-invalid-file' => 'Няслушны файл: $1.',
+	'wikilog-form-category' => 'Катэгорыя:',
 	'wikilog-form-name' => 'Назва:',
+	'wikilog-form-date' => 'Дата:',
+	'wikilog-form-status' => 'Статус:',
+	'wikilog-form-preview' => 'Папярэдні прагляд:',
 	'wikilog-form-comment' => 'Камэнтар:',
+	'wikilog-show-drafts' => 'Чарнавікі',
+	'wikilog-preview' => 'Папярэдні прагляд',
 );
 
 /** Breton (Brezhoneg)
@@ -287,18 +315,28 @@ $messages['br'] = array(
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-new-item-go' => 'Krouiñ',
+	'wikilog-item-name' => 'Anv ar pennad :',
+	'wikilog-published' => 'Embannet',
+	'wikilog-draft' => 'Brouilhed',
 	'wikilog-title' => 'Titl',
+	'wikilog-replies' => 'Respontoù',
+	'wikilog-view-archives' => 'Dielloù',
 	'wikilog-post-reply' => 'Embann ur respont nevez',
 	'wikilog-form-wikilog' => 'Wikilog :',
 	'wikilog-form-category' => 'Rummad :',
 	'wikilog-form-name' => 'Anv :',
+	'wikilog-form-author' => 'Aozer :',
 	'wikilog-form-date' => 'Deiziad :',
 	'wikilog-form-preview' => 'Rakwelet :',
+	'wikilog-preview' => 'Rakwelet',
 	'wikilog-edit-lc' => 'kemmañ',
+	'wikilog-reply-lc' => 'respont',
+	'wikilog-delete-lc' => 'diverkañ',
 );
 
 /** German (Deutsch)
  * @author Erkan Yilmaz
+ * @author Tbleher
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -350,6 +388,8 @@ $messages['de'] = array(
 	'wikilog-comment-deleted' => 'Dieser Kommentar wurde gelöscht.',
 	'wikilog-comment-autosumm' => 'Neuer Kommentar von $1: $2',
 	'wikilog-reply-to-comment' => 'Poste eine Antwort auf diesen Kommentar',
+	'wikilog-comment-edit' => 'Bearbeite diesen Kommentar',
+	'wikilog-comment-delete' => 'Lösche diesen Kommentar',
 	'wikilog-newtalk-text' => '<!-- leere Seite erzeugt durch Wikilog -->',
 	'wikilog-newtalk-summary' => 'automatisch erzeugt durch Wikilog',
 	'wikilog-feed-title' => '{{SITENAME}} - $1 [$2]',
@@ -392,6 +432,14 @@ Sie sollten nur in Beiträgen im Wikilog-Namensraum benutzt werden.',
 	'wikilog-preview' => 'Vorher betrachten',
 	'wikilog-edit-lc' => 'bearbeiten',
 	'wikilog-reply-lc' => 'antworten',
+);
+
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'wikilog-log-cmt-approve' => 'comentario aprobado [[$1]]',
+	'wikilog-log-cmt-reject' => 'comentario rechazado [[$1]]',
 );
 
 /** French (Français)
@@ -525,6 +573,13 @@ $messages['hsb'] = array(
 	'wikilog-log-pagetext' => 'Deleka je lisćina wikilogowych akcijow.',
 	'wikilog-log-cmt-approve' => 'schawli komentar [[$1]]',
 	'wikilog-log-cmt-reject' => 'wotpokaza komentar [[$1]]',
+	'wikilog-log-cmt-rejdel' => 'Wotpokazany wikilogowy komentar wot [[Special:Contributions/$1|$1]]',
+	'wikilog-tab' => 'Wikilog',
+	'wikilog-tab-title' => 'Akcije wikiloga',
+	'wikilog-information' => 'Informacije wikiloga',
+	'wikilog-post-count-published' => 'W tutym wikilogu {{PLURAL:$1|je jedyn wozjewjeny přinošk|stej $1 wozjewjenej přinoškaj|su $1 wozjewjene přinoški|je $1 wozjewjenych přinoškow}},',
+	'wikilog-post-count-drafts' => 'W tutym wikilogu {{PLURAL:$1|je jedyn njewozjewjeny přinošk (naćisk)|stej $1 njewozjewjenej přinoškaj (naćiskaj)|su $1 njewozjewjene přinoški (naćiski)|je $1 njewozjewjenych přinoškow (naćiskow)}},',
+	'wikilog-post-count-all' => 'Dohromady {{PLURAL:$1|je jedyn přinošk|stej $1 přinoškaj|su $1 přinoški|je $1 přinoškow}}.',
 	'wikilog-new-item' => 'Nowy wikilogowy přinošk wutowrić',
 	'wikilog-new-item-go' => 'Wutworić',
 	'wikilog-item-name' => 'Mjeno přinoška:',
@@ -552,6 +607,73 @@ $messages['hsb'] = array(
 	'wikilog-pager-empty' => '(žane zapiski)',
 	'wikilog-no-comments' => 'žane komentary',
 	'wikilog-has-comments' => '{{PLURAL:$1|jedyn komentar|$1 komentaraj|$1 komentary|$1 komentarow}}',
+	'wikilog-item-brief-header' => ': <i><small>wot $5, z [[$1|$2]], $6, $7.</small></i>',
+	'wikilog-item-more' => '[[$3|→ dale čitać...]]',
+	'wikilog-comment-by-user' => 'Komentar wot $1 ($2)',
+	'wikilog-comment-by-anon' => 'Komentar wot $3 (anonymny)',
+	'wikilog-comment-pending' => 'Tutón komentar na schwalenje čaka.',
+	'wikilog-comment-deleted' => 'Tutón komentar bu zničeny.',
+	'wikilog-comment-edited' => 'Tutón komentar je so $3 $4 wobdźěłał ($2).',
+	'wikilog-comment-autosumm' => 'Nowy komentar wot $1: $2',
+	'wikilog-reply-to-comment' => 'Wotmołwu na tutón komentar pósłać',
+	'wikilog-comment-page' => 'Ke komentarowej stronje',
+	'wikilog-comment-edit' => 'Tutón komentar wobdźěłać',
+	'wikilog-comment-delete' => 'Tutón komentar zničić',
+	'wikilog-comment-history' => 'Historiju sej wobhladać',
+	'wikilog-comment-approve' => 'Tutón komentar schwalić (hnydomniša akcija)',
+	'wikilog-comment-reject' => 'Tutón komentar wotpokazać (hnydomniša akcija)',
+	'wikilog-newtalk-text' => '<!-- prózdna strona wutworjena wot Wikiloga -->',
+	'wikilog-newtalk-summary' => 'awtomatisce přez Wikilog wutworjeny',
+	'wikilog-feed-description' => 'Čitaj najnowše přinoški w tutym kanalu.',
+	'wikilog-title-comments' => 'Komentary - $1',
+	'wikilog-error-msg' => 'Wikiprotokol: $1',
+	'wikilog-error-title' => 'Wikiprotokolowy zmylk',
+	'wikilog-invalid-param' => 'Njepłaćiwy parameter: $1.',
+	'wikilog-invalid-author' => 'Njepłaćiwy awtor: $1',
+	'wikilog-invalid-date' => 'Njepłaćiwy datum: $1',
+	'wikilog-invalid-tag' => 'Njepłaćiwa taflička: $1',
+	'wikilog-invalid-file' => 'Njepłaćiwa dataja: $1',
+	'wikilog-file-not-found' => 'Njeeksistowaca dataja: $1',
+	'wikilog-not-an-image' => 'Dataja njeje wobraz: $1.',
+	'wikilog-out-of-context' => 'Warnowanje: Wikilogowe taflički wužiwaja so zwonka konteksta.
+Měli so jenož w přinoškach we mjenowym rumje Wikilog wužiwać.',
+	'wikilog-too-many-authors' => 'Warnowanje: Přewjele watorow je w tutym wikilogowym přinošku podate.',
+	'wikilog-too-many-tags' => 'Warnowanje: Přewjele tafličkow je w tutym wikilogowym přinošku podate.',
+	'wikilog-comment-is-empty' => 'Wotpósłany komentar je prózdny.',
+	'wikilog-comment-too-long' => 'Wotpósłany komentar je předołhi.',
+	'wikilog-comment-invalid-name' => 'Podate mjeno je njepłaćiwe.',
+	'wikilog-no-such-article' => 'Požadany wikilogowy přinošk njeeksistuje.',
+	'wikilog-reading-draft' => 'Wikilogowy přinošk je naćisk, dotal njeje wozjewjeny.',
+	'wikilog-posting-anonymously' => 'Tuchwilu njejsy přizjewjeny;
+twój komentar budźe so anonymnje słać a so přez internetnu zwiskowu adresu identifikować.
+Ty měł pak horjeka pseudonym podać, zo by swój komentar identifikował, pak so $1, zo by so porjadnje připokazał.',
+	'wikilog-anonymous-moderated' => 'Po tym zo sy swój komentar wotpósłał, njebudźe hnydom widźomny na stronje.
+Komentar budźe hakle jewić, po tym zo moderator je jón přepruwował.',
+	'wikilog-post-comment' => 'Nowy komentar pósłać',
+	'wikilog-post-reply' => 'Nowu wotmołwu pósłać',
+	'wikilog-form-legend' => 'Wikilogowe přinoški pytać',
+	'wikilog-form-wikilog' => 'Wikilog:',
+	'wikilog-form-category' => 'Kategorija:',
+	'wikilog-form-name' => 'Mjeno:',
+	'wikilog-form-author' => 'Awtor:',
+	'wikilog-form-tag' => 'Taflička:',
+	'wikilog-form-date' => 'Datum:',
+	'wikilog-form-status' => 'Status:',
+	'wikilog-form-preview' => 'Přehlad:',
+	'wikilog-form-comment' => 'Komentar:',
+	'wikilog-show-all' => 'Wšě přinoški',
+	'wikilog-show-published' => 'Wozjewjeny',
+	'wikilog-show-drafts' => 'Naćiski',
+	'wikilog-submit' => 'Wotpósłać',
+	'wikilog-preview' => 'Přehlad',
+	'wikilog-edit-lc' => 'wobdźěłać',
+	'wikilog-reply-lc' => 'wotmołwić',
+	'wikilog-delete-lc' => 'zničić',
+	'wikilog-approve-lc' => 'schwalić',
+	'wikilog-reject-lc' => 'wotpokazać',
+	'wikilog-page-lc' => 'strona',
+	'wikilog-history-lc' => 'historija',
+	'wikilog-doc-import-comment' => 'Importowana dokumentacija wo Wikilogu',
 );
 
 /** Hungarian (Magyar)
@@ -644,14 +766,64 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog' => 'Wikilog',
+	'wikilog-tab' => 'Wikilog',
+	'wikilog-new-item' => 'Neie Wikilog-Artikel uleeën',
+	'wikilog-new-item-go' => 'Uleeën',
+	'wikilog-item-name' => 'Numm vum Artikel:',
+	'wikilog-published' => 'Verëffentlecht',
 	'wikilog-updated' => 'Aktualiséiert',
 	'wikilog-draft' => 'Virbereedung',
+	'wikilog-authors' => 'Auteuren',
+	'wikilog-wikilog' => 'Wikilog',
 	'wikilog-title' => 'Titel',
+	'wikilog-actions' => 'Aktiounen',
+	'wikilog-comments' => 'Bemierkungen',
+	'wikilog-replies' => 'Äntwerten',
 	'wikilog-view-archives' => 'Archiven',
 	'wikilog-view-summary' => 'Resumé',
+	'wikilog-draft-title-mark' => '(Virbereedung)',
+	'wikilog-anonymous-mark' => '(anonym)',
+	'wikilog-pager-newer-n' => '← $1 méi rezent',
+	'wikilog-pager-older-n' => 'vireg $1 →',
+	'wikilog-pager-newest' => '←← neist',
+	'wikilog-pager-oldest' => 'eelzt →→',
+	'wikilog-pager-prev' => '← vireg',
+	'wikilog-pager-next' => 'nächst →',
+	'wikilog-pager-first' => '←← éischt',
+	'wikilog-pager-last' => 'lescht →→',
+	'wikilog-pager-empty' => '(keng Objeten)',
+	'wikilog-no-comments' => 'Keng Bemierkungen',
+	'wikilog-item-more' => '[[$3|→ weiderliesen ...]]',
 	'wikilog-comment-by-user' => 'Bemierkung vum $1 ($2)',
+	'wikilog-comment-by-anon' => 'Bemierkung vum $3 (anonym)',
+	'wikilog-comment-deleted' => 'Dës Bemierkung gouf geläscht.',
+	'wikilog-comment-autosumm' => 'Nei Bemierkung vum $1: $2',
+	'wikilog-comment-page' => "Op d'Säit vun dëser Bemierkung goen",
+	'wikilog-comment-edit' => 'Dës Bemierkung änneren',
+	'wikilog-comment-delete' => 'Dës Bemierkung läschen',
 	'wikilog-title-comments' => 'Bemierkungen - $1',
+	'wikilog-error-msg' => 'Wikilog: $1',
+	'wikilog-error-title' => 'Wikilog-Feeler',
+	'wikilog-not-an-image' => 'De Fichier ass kee Bild: $1',
+	'wikilog-form-wikilog' => 'Wikilog:',
+	'wikilog-form-category' => 'Kategorie:',
+	'wikilog-form-name' => 'Numm:',
+	'wikilog-form-author' => 'Auteur:',
+	'wikilog-form-date' => 'Datum:',
+	'wikilog-form-preview' => 'Kucken ouni ze späicheren:',
+	'wikilog-form-comment' => 'Bemierkung:',
+	'wikilog-show-published' => 'Verëffentlecht',
+	'wikilog-show-drafts' => 'Virbereedungen',
+	'wikilog-preview' => 'Kucken ouni ze späicheren',
+	'wikilog-edit-lc' => 'änneren',
+	'wikilog-reply-lc' => 'äntwerten',
+	'wikilog-delete-lc' => 'läschen',
+	'wikilog-reject-lc' => 'refüséieren',
+	'wikilog-page-lc' => 'Säit',
 	'wikilog-history-lc' => 'Versiounen',
+	'wikilog-doc-import-comment' => 'Importéiert Wikilog-Dokumentatioun',
 );
 
 /** Dutch (Nederlands)
@@ -914,6 +1086,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
+ * @author EugeneZelenko
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -960,7 +1133,7 @@ $messages['ru'] = array(
 	'wikilog-pager-last' => 'последняя →→',
 	'wikilog-pager-empty' => '(нет элементов)',
 	'wikilog-no-comments' => 'нет комментариев',
-	'wikilog-has-comments' => '{{PLURAL:$1|$1 комментарий|$1 комментария|$1 комментариев}}',
+	'wikilog-has-comments' => '$1 {{PLURAL:$1|комментарий|комментария|комментариев}}',
 	'wikilog-item-brief-header' => ': <i><small>$5 для [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ продолжить чтение…]]',
 	'wikilog-comment-by-user' => 'Комментарии от $1 ($2)',

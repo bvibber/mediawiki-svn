@@ -206,6 +206,14 @@ $messages['bg'] = array(
 	'right-closewikis' => 'Затваряне на уикита',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'closewikis-page-close-wiki' => 'Wiki :',
+	'closewikis-list-header-wiki' => 'Wiki',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

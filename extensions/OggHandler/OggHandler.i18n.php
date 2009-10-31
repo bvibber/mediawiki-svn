@@ -466,6 +466,7 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'ogg-long-error' => '(Restr ogg direizh : $1)',
 	'ogg-play' => 'Lenn',
 	'ogg-pause' => 'Ehan',
 	'ogg-stop' => 'Paouez',
@@ -473,6 +474,7 @@ $messages['br'] = array(
 	'ogg-play-sound' => 'Lenn ar son',
 	'ogg-player-videoElement' => 'Skor ar merdeer orin',
 	'ogg-player-soundthumb' => 'Lenner ebet',
+	'ogg-player-selected' => '(diuzet)',
 	'ogg-use-player' => 'Ober gant al lenner :',
 	'ogg-more' => "Muioc'h...",
 	'ogg-dismiss' => 'Serriñ',

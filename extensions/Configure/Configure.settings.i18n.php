@@ -2227,6 +2227,7 @@ $messages['br'] = array(
 	'configure-setting-wgExemptFromUserRobotsControl' => 'Esaouennoù anv na aotreont ket ober gant <nowiki>__INDEX__</nowiki> ha <nowiki>__NOINDEX__</nowiki>',
 	'configure-setting-wgExtraLanguageNames-key' => 'Kod yezh',
 	'configure-setting-wgExtraLanguageNames-value' => 'Anv ar yezh',
+	'configure-setting-wgMaxArticleSize' => 'Ment vrasañ ar pajennoù (e kB)',
 	'configure-setting-wgNoFollowLinks' => 'Ouzhpennañ rel="nofollow" d\'al liammoù',
 	'configure-setting-wgPageShowWatchingUsers' => 'Diskwel an implijerien a heuilh ur bajenn bennak',
 	'configure-setting-wgStyleVersion' => 'Stumm restroù CSS/JS MediaWiki',

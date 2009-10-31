@@ -1105,12 +1105,13 @@ $messages['br'] = array(
 | linenn 2, kellig 1
 | linenn 2, kellig 2
 | linenn 2, kellig 3',
-	'edittoolbar-tool-table-example' => 'Linenn $1, kellig $2',
-	'edittoolbar-tool-table-example-header' => 'Linenn $1, kellig $2 (talbenn)',
+	'edittoolbar-tool-table-example' => 'Tenstenn er gellig',
+	'edittoolbar-tool-table-example-header' => 'Testenn an talbenn',
 	'edittoolbar-tool-table-title' => "Ensoc'hañ un daolenn",
 	'edittoolbar-tool-table-dimensions-rows' => 'Linennoù',
 	'edittoolbar-tool-table-dimensions-columns' => 'Bannoù',
 	'edittoolbar-tool-table-dimensions-header' => 'Lakaat  al linenn dalbenn e-barzh',
+	'edittoolbar-tool-table-preview' => 'Rakwelet',
 	'edittoolbar-tool-table-insert' => "Ensoc'hañ",
 	'edittoolbar-tool-table-cancel' => 'Nullañ',
 	'edittoolbar-tool-replace' => "Klask hag erlec'hiañ",
@@ -1448,11 +1449,25 @@ $messages['ca'] = array(
 {{ns:file}}:Example.jpg|Peu2',
 	'edittoolbar-tool-newline' => 'Nova línia',
 	'edittoolbar-tool-table' => 'Taula',
-	'edittoolbar-tool-table-example' => 'Fila $1, cel·la $2',
-	'edittoolbar-tool-table-example-header' => 'Fila $1, ceŀla $2 (encapçalament)',
+	'edittoolbar-tool-table-example-old' => '-
+! capçalera 1
+! capçalera 2
+! capçalera 3
+|-
+| fila 1, cel·la 1 
+| fila 1, cel·la 2 
+| fila 1, cel·la 3 
+|- 
+| fila 2, cel·la 1 
+| fila 2, cel·la 2 
+| fila 2, cel·la 3',
+	'edittoolbar-tool-table-example' => 'Text de cel·la',
+	'edittoolbar-tool-table-example-header' => 'Text de capçalera',
 	'edittoolbar-tool-table-title' => 'Insereix taula',
 	'edittoolbar-tool-table-dimensions-rows' => 'Files',
 	'edittoolbar-tool-table-dimensions-columns' => 'Columnes',
+	'edittoolbar-tool-table-dimensions-header' => 'Inclou-hi una fila de capçalera',
+	'edittoolbar-tool-table-preview' => 'Previsualització',
 	'edittoolbar-tool-table-insert' => 'Insereix',
 	'edittoolbar-tool-table-cancel' => 'Canceŀla',
 	'edittoolbar-tool-replace' => 'Cerca i reemplaça',
@@ -1461,8 +1476,13 @@ $messages['ca'] = array(
 	'edittoolbar-tool-replace-replace' => 'Reemplaça per:',
 	'edittoolbar-tool-replace-case' => 'Distingeix majúscules/minúscules',
 	'edittoolbar-tool-replace-regex' => 'Tracta la cadena de cerca com una expressió regular',
+	'edittoolbar-tool-replace-button-findnext' => 'Cerca següent',
+	'edittoolbar-tool-replace-button-replacenext' => 'Substitueix següent',
+	'edittoolbar-tool-replace-button-replaceall' => 'Substitueix-ho tot',
 	'edittoolbar-tool-replace-close' => 'Anul·la',
 	'edittoolbar-tool-replace-nomatch' => 'La vostra cerca no ha trobat cap coincidència.',
+	'edittoolbar-tool-replace-success' => "S'han fet $1 substitucions.",
+	'edittoolbar-tool-replace-emptysearch' => 'No heu introduït res per a cercar.',
 	'edittoolbar-section-characters' => 'Caràcters especials',
 	'edittoolbar-characters-page-latin' => 'Llatí',
 	'edittoolbar-characters-page-ipa' => 'AFI',
@@ -2193,6 +2213,7 @@ $messages['de'] = array(
 	'edittoolbar-tool-link-lookslikeinternal' => 'Die angegebene URL sieht so aus, als ob sie auf eine andere Wikiseite verlinken würde. Möchtest du daraus einen internen Link machen?',
 	'edittoolbar-tool-link-lookslikeinternal-int' => 'Interner Link',
 	'edittoolbar-tool-link-lookslikeinternal-ext' => 'Externer Link',
+	'edittoolbar-tool-link-empty' => 'Du hast nichts zum Verlinken angegeben.',
 	'edittoolbar-tool-file' => 'Eingebettete Datei',
 	'edittoolbar-tool-file-example' => 'Beispiel.jpg',
 	'edittoolbar-tool-reference' => 'Quellennachweis',
@@ -2575,6 +2596,7 @@ $messages['dsb'] = array(
 	'edittoolbar-tool-link-lookslikeinternal' => 'URL, kótaryž sy pódał, wuglěda, ako by był za wótkaz k drugemu wikibokoju. Coš jen do internego wótkaza psétwóriś?',
 	'edittoolbar-tool-link-lookslikeinternal-int' => 'Interny wótkaz',
 	'edittoolbar-tool-link-lookslikeinternal-ext' => 'Eksterny wótkaz',
+	'edittoolbar-tool-link-empty' => 'Njejsy nic za wótkazowanje pódał.',
 	'edittoolbar-tool-file' => 'Zasajźona dataja',
 	'edittoolbar-tool-file-example' => 'Psikład.jpg',
 	'edittoolbar-tool-reference' => 'Referenca',

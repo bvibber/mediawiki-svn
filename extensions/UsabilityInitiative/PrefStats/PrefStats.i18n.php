@@ -185,6 +185,17 @@ $messages['br'] = array(
 	'prefstats' => 'Stadegoù war ar penndibaboù',
 	'prefstats-desc' => 'Stadegoù war an niver a implijerien o deus diuzet penndibaboù zo',
 	'prefstats-title' => 'Stadegoù war ar penndibaboù',
+	'prefstats-list-intro' => "Evit a rpoent ec'h heulier an dibaboù-mañ.
+Klikit war unan anezho da welet ar stadegoù stag outañ",
+	'prefstats-noprefs' => 'Ne heulier dibab ebet evit ar mare. 
+Kefluniañ $wgPrefStatsTrackPrefs evit heuliañ an dibaboù.',
+	'prefstats-counters' => "* $1 {{PLURAL:$1|implijer en deus|implijer o deus}} gweredekaet an dibab-mañ abaoe m'eo bet gweredekaet ar stadegoù
+** $2 {{PLURAL:$2|implijer en deus|implijer o deus}} gweredekaet an dibab-mañ
+** $3 {{PLURAL:$3|implijer en deus|implijer o deus}} diweredekaet an dibab-mañ",
+	'prefstats-counters-expensive' => "* $1 {{PLURAL:$1|implijer en deus|implijer o deus}} gweredekaet an dibab-mañ abaoe m'eo bet gweredekaet ar stadegoù
+** $2 {{PLURAL:$2|implijer en deus|implijer o deus}} gweredekaet an dibab-mañ
+** $3 {{PLURAL:$3|implijer en deus|implijer o deus}} diweredekaet an dibab-mañ
+* En holl, $4 {{PLURAL:$4|implijer en deus|implijer o deus}} spisaet an dibab-mañ",
 	'prefstats-xaxis' => 'Pad (eurvezhioù)',
 	'prefstats-factors' => 'Diskouez dre : $1',
 	'prefstats-factor-hour' => 'eur',
@@ -194,6 +205,8 @@ $messages['br'] = array(
 	'prefstats-factor-twoweeks' => 'pemzektez',
 	'prefstats-factor-fourweeks' => 'peder sizhun',
 	'prefstats-factor-default' => "distreiñ d'ar skeul dre ziouer",
+	'prefstats-legend-out' => 'Na venn ket kemer perzh ken',
+	'prefstats-legend-in' => 'A venn kemer perzh',
 );
 
 /** Bosnian (Bosanski)

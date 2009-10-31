@@ -500,6 +500,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'hiderevision-continue' => "Kenderc'hel",
+	'oversight-view' => 'munudoù',
 );
 
 /** Bosnian (Bosanski)

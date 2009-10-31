@@ -383,6 +383,18 @@ $messages['lb'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|Bewertung|Bewertungen}}',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'ratedpages' => 'Страници оценети од читатели',
+	'ratedpages-leg' => 'Пронајди страници со значителен број на оценки',
+	'ratedpages-list' => 'Еве листа од страници сортирани по дадена оцена од корисниците',
+	'ratedpages-none' => 'Нема страници на оваа листа',
+	'ratedpages-graphs' => 'податоци за оценувањето',
+	'ratedpages-count' => '$1 {{PLURAL:$1|оцена|оцени}}',
+);
+
 /** Malayalam (മലയാളം)
  * @author Praveenp
  */

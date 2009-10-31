@@ -258,6 +258,13 @@ $messages['bg'] = array(
 	'extdist-svn-error' => 'Възникна грешка в Subversion: <pre>$1</pre>',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'extdist-submit-extension' => "Kenderc'hel",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

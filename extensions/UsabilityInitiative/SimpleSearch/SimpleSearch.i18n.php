@@ -500,6 +500,13 @@ $messages['ms'] = array(
 	'simplesearch-search' => 'Cari',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'simplesearch-search' => 'Zeuken',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

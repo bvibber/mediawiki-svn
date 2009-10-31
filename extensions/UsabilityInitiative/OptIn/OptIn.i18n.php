@@ -3144,11 +3144,12 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Homo
  * @author Matasg
  */
 $messages['lt'] = array(
 	'optin' => 'Įjungti naudojimo iniciatyvą',
-	'optin-desc' => 'Leisti vartotojams pabandyti Beta, naudojimo iniciatyvos didinimą.',
+	'optin-desc' => 'Leidžia naudotojams išbandyti Beta, patobulintą naudotojo sąsają.',
 	'optin-title-optedout' => 'Pabandykite Beta',
 	'optin-title-optedin' => 'Palikite Beta',
 	'optin-title-justoptedin' => 'Sveiki atvykę į Beta',
@@ -3159,8 +3160,8 @@ Norite pabandyti Açai beta versiją?',
 	'optin-success-in' => 'Dabar bandote Beta. 
 Galite grįžti bet kuriuo metu, paspaudę "{{int:optin-leave}}" viršutiniame dešiniajame ekrano kampe.',
 	'optin-leave-cancel' => 'Jei norite toliau naudoti Beta, galite grįžti į $1',
-	'optin-success-out' => 'Jūs sėkmingai paliko Beta.
-Galite išmėginti Beta vėl, bet kuriuo metu paspaudę "{{int:optin-try}}" viršutiniame dešiniajame ekrano kampe.',
+	'optin-success-out' => 'Jūs sėkmingai palikote Beta.
+Galite vėl išmėginti Beta, bet kuriuo metu paspaudę "{{int:optin-try}}" viršutiniame dešiniajame ekrano kampe.',
 	'optin-accept-short' => 'Padarykime tai!',
 	'optin-accept-long' => 'Išbandykite Beta',
 	'optin-deny-short' => 'Ne, ačiū',
@@ -3168,22 +3169,22 @@ Galite išmėginti Beta vėl, bet kuriuo metu paspaudę "{{int:optin-try}}" vir�
 	'optin-submit-out' => 'Palikti Beta',
 	'optin-survey-yes' => 'Taip',
 	'optin-survey-no' => 'Ne',
-	'optin-survey-intro' => 'Dėkojame, kad bandote Beta.
-Mes norėtume sužinoti, ką manote apie mūsų naująją vartotojo sąsają, todėl būtume labai dėkingi, jei užpildyti neprivalomą tyrimo apklausą žemiau, prieš paspausdami "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-intro' => 'Dėkojame, kad išbandėte Beta.
+Norėtume sužinoti, ką manote apie mūsų naująją vartotojo sąsają, todėl būtume labai dėkingi, jei užpildytumėte žemiau pateiktą neprivalomą tyrimo apklausą, prieš paspausdami "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-question-likedislike' => 'Kas jums patiko Betoje? Kas jums nepatiko Betoje?',
 	'optin-survey-question-whyoptout' => 'Kodėl paliekate Beta? (Pasirinkite visus, kurie tinka).',
 	'optin-survey-answer-whyoptout-hard' => 'Buvo pernelyg sunku redaguoti puslapį.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Ji nefunkcionavo tinkamai.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Neatitiko to, ko tikėjausi.',
-	'optin-survey-answer-whyoptout-didntlike-look' => 'Man nepatiko, kaip atrodė.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Man nepatiko išvaizda.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Man nepatiko nauji skirtukai ir išdėstymas.',
-	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Man nepatiko nauja įrankių juosta.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Man nepatiko naujoji įrankių juosta.',
 	'optin-survey-answer-whyoptout-other' => 'Kita priežastis:',
-	'optin-survey-question-explain' => 'Prašome paaiškinti, ar detalizuoti savo atsakymą:',
-	'optin-survey-question-techfail' => 'Ar patyrėte techninių gedimų naudojant Beta?',
+	'optin-survey-question-explain' => 'Prašome paaiškinti arba detalizuoti savo atsakymą:',
+	'optin-survey-question-techfail' => 'Ar naudodamiesi Beta patyrėte techninių nesklandumų?',
 	'optin-survey-question-techfail-ifyes' => 'Jei taip, prašome paaiškinti:',
-	'optin-survey-question-usedtoolbar' => 'Ar naudojote naują įrankių juostą puslapių redagavimui?',
-	'optin-survey-question-usedtoolbar-ifyes' => 'Jei taip, ką norite apie ją? Kas jums nepatinka joje?',
+	'optin-survey-question-usedtoolbar' => 'Ar puslapiams redaguoti naudojote naująją įrankių juostą?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Jei taip, kas jums patiko Betoje? Kas nepatiko Betoje?',
 	'optin-survey-question-different' => 'Ką galėtume daryti kitaip, kad jūs naudotumėte Beta?',
 	'optin-survey-question-feedback' => 'Leiskite mums sužinoti jūsų nuomonę:',
 	'optin-survey-question-browser' => 'Kurią naršyklę naudojate?',

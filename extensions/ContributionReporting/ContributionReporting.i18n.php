@@ -450,6 +450,24 @@ $messages['bn'] = array(
 	'fundraiserstats-tab-maximums' => 'সর্বোচ্চ (USD)',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'contrib-hist-name' => 'Anv',
+	'contrib-hist-date' => 'Deiziad hag eur',
+	'contribstats-day' => 'Deiz',
+	'contribstats-month' => 'Miz',
+	'contribstats-currency' => 'Moneiz',
+	'contribstats-amount' => 'Sammad (dollaroù SUA)',
+	'contribstats-total' => 'Hollad (SUA)',
+	'contribstats-avg' => 'Keitat (SUA)',
+	'contribstats-percentage-ytd' => 'Dregantad (er bl.-mañ)',
+	'contribstats-week' => 'Sizhun',
+	'contribstats-clicks' => 'Klikoù',
+	'contribstats-template' => 'Patrom',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -2284,6 +2302,14 @@ $messages['li'] = array(
 	'specialpages-group-contribution' => 'Gifte/Fónswèrvingsaksie',
 );
 
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
+$messages['lmo'] = array(
+	'contribstats-week' => 'Semana',
+	'contribstats-donations' => 'Dunazión',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
@@ -3614,6 +3640,7 @@ $messages['vec'] = array(
 	'contribstats-donations' => 'Donassioni',
 	'contribstats-conversion' => 'Tasso de conversion (%)',
 	'contribstats-template' => 'Modèl',
+	'contribstats-nodata' => 'Nissun dato disponibile',
 	'fundraiserstatistics' => 'Statìsteghe de la racolta fondi',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Zorno $1 de $2',

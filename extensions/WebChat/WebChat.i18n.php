@@ -483,7 +483,7 @@ $messages['pt'] = array(
 Para ligar, clique o botão ''\"Connect\"''.
 Se entrou na wiki, o seu nome na ferramenta de conversação já estará devidamente preenchido.
 Utilizadores anónimos recebem um nome gerado automaticamente, que pode ser alterado.",
-	'right-webchat' => 'Permitido o uso de [[Special:WebChat|web chat]]',
+	'right-webchat' => 'Permitido o uso da [[Special:WebChat|conversação]]',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

@@ -538,6 +538,7 @@ OpenID позволява влизането в много различни са
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'openidoptional' => 'Diret',
@@ -548,6 +549,7 @@ $messages['br'] = array(
 	'openidlanguage' => 'Yezh',
 	'openidtimezone' => 'Takad eur :',
 	'openidchoosefull' => "Hoc'h anv klok ($1)",
+	'openidchoosepassword' => 'ger-tremen :',
 );
 
 /** Bosnian (Bosanski)

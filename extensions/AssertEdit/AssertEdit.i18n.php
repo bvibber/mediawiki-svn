@@ -454,7 +454,7 @@ $messages['lt'] = array(
  */
 $messages['mg'] = array(
 	'assert_edit_title' => 'Tsy nande ny assertion',
-	'assert_edit_desc' => "Manampy assertion ny fanovàna hoan'ny fampiasàna rindrankajy (bot)",
+	'assert_edit_desc' => "Manampy assertion ny fanovàna ho an'ny fampiasàna rindrankajy (bot)",
 );
 
 /** Macedonian (Македонски)

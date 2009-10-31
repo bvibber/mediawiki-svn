@@ -175,6 +175,16 @@ $messages['bg'] = array(
 	'invitations-invite-success' => 'Поканата на $1 за достъп до услугата беше изпратена успешно!',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'invite-logpage' => 'Marilh ar pedadennoù',
+	'invitations-inviteform-username' => 'Implijer da bediñ',
+	'invitations-inviteform-submit' => 'Pediñ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -117,6 +117,13 @@ $messages['be-tarask'] = array(
 	'framedvideo-desc' => 'Дазваляе убудоўваць відэа з розных сайтаў з дапамогай тэга <tt><nowiki><video></nowiki></tt>',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'framedvideo_helppage' => 'Help:Video',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

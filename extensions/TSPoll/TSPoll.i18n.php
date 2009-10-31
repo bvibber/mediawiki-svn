@@ -234,6 +234,15 @@ $messages['lb'] = array(
 	'tspoll-id-error' => 'Keng ID gouf uginn!',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'tspoll-desc' => 'Вклучи го [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] како HTML-ознака',
+	'tspoll-fetch-error' => 'Грешка при добавувањето на URL адресата!',
+	'tspoll-id-error' => 'Нема дадено ид. бр.!',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

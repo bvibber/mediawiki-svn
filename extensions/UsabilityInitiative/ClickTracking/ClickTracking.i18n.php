@@ -208,7 +208,12 @@ $messages['ca'] = array(
 	'ct-total-header' => 'Clics totals',
 	'ct-start-date' => "Data d'inici (AAAAMMDD)",
 	'ct-end-date' => 'Data de finalització (AAAAMMDD)',
+	'ct-beginner' => 'Principiant',
+	'ct-intermediate' => 'Intermedi',
+	'ct-expert' => 'Expert',
 	'ct-anon-users' => 'Usuaris anònims',
+	'ct-user-contribs' => "Total de contribucions de l'usuari",
+	'ct-and' => 'i',
 );
 
 /** Czech (Česky)

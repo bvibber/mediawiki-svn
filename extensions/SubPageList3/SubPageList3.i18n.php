@@ -302,6 +302,15 @@ $messages['lb'] = array(
 	'spl3_nosubpages' => '$1 huet keng Ënnersäite fir ze weisen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'spl3-desc' => 'Автоматски создава листа на потстраници на страница која ја користи ознаката <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Непозната вредност за параметарот $1.',
+	'spl3_nosubpages' => '$1 нема потстраници за наведување.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

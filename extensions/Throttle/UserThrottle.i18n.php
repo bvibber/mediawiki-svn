@@ -296,6 +296,17 @@ Waart w.e.g. een Ament an dréckt da 'reload' an ärem Browser fir et nach eml z
 	'acct_creation_global_soft_throttle_hit-desc' => 'Bremsen vun dem Uleeën vu Benotzerkonten',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Создавањето на сметки е беше автоматски запрено за кратко време заради необично големиот број на скорешни обиди за најава.
+Почекајте неколку минути, па обидете се повторно.',
+	'acct_creation_global_hard_throttle_hit' => 'Создавањето на сметки е беше автоматски запрено за неколку секунди за да се намалат нападите од масовни регистрации
+Почекајте малку, па притиснете го копчето за превчитување во прелистувачот за да се обидете повторно.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Ограничување на создавањето на корисници',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

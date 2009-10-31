@@ -22,11 +22,32 @@ $messages['qqq'] = array(
 	'wlfeed-desc' => '{{desc}}',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'wlfeed-desc' => 'Renkadoù genel lanvadoù gwellaet',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'wlfeed-desc' => 'Pólěpšone klase kanaloweje generacije',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'wlfeed-desc' => 'Classes de génération de flux améliorés',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'wlfeed-desc' => 'Clases de xeración de fontes de novas melloradas',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -48,6 +69,13 @@ $messages['hu'] = array(
  */
 $messages['ja'] = array(
 	'wlfeed-desc' => '強化されたフィード生成クラス',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'wlfeed-desc' => 'Подобрени класи на создавање на напојувања на новости',
 );
 
 /** Dutch (Nederlands)

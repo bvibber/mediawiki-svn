@@ -116,6 +116,13 @@ $messages['bg'] = array(
 	'postcomment_nopostingtoadd' => 'Няма коментар за добавяне.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'postcomment_said' => 'en deus lavaret',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

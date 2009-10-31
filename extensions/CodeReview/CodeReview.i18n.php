@@ -414,6 +414,7 @@ $messages['ar'] = array(
 	'code-rev-comment-by' => 'تعليق بواسطة $1',
 	'code-rev-comment-submit' => 'إرسال التعليق',
 	'code-rev-comment-preview' => 'عاين',
+	'code-rev-inline-preview' => 'معاينة:',
 	'code-rev-diff' => 'فرق',
 	'code-rev-diff-link' => 'فرق',
 	'code-rev-purge-link' => 'إفراغ الكاش',
@@ -845,6 +846,23 @@ $messages['bn'] = array(
 	'code-status-ok' => 'ঠিক আছে',
 	'repoadmin-new-button' => 'তৈরি',
 	'repoadmin-edit-button' => 'ঠিক আছে',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'code-change-added' => 'ouzhpennet :',
+	'code-authors' => 'aozerien',
+	'code-field-timestamp' => 'Deiziad',
+	'code-rev-date' => 'Deiziad :',
+	'code-rev-comment-preview' => 'Rakwelet',
+	'code-rev-inline-preview' => 'Rakwelet :',
+	'code-status-new' => 'nevez',
+	'code-status-ok' => 'mat eo',
+	'codereview-reply-link' => 'respont',
+	'repoadmin-edit-button' => 'Mat eo',
 );
 
 /** Bosnian (Bosanski)
@@ -7892,6 +7910,7 @@ $messages['vec'] = array(
 	'code-rev-comment-by' => 'Comento de $1',
 	'code-rev-comment-submit' => 'Invia comento',
 	'code-rev-comment-preview' => 'Anteprima',
+	'code-rev-inline-preview' => 'Anteprima:',
 	'code-rev-diff' => 'Dif',
 	'code-rev-diff-link' => 'dif',
 	'code-rev-purge-link' => 'netar',

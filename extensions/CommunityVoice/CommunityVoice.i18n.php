@@ -107,6 +107,13 @@ $messages['bg'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Изпращане...',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'O kas...',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -191,6 +191,14 @@ $messages['lb'] = array(
 	'flv-long-desc' => '(Flash Video, $1 × $2 Pixel, Gréisst vum Fichier: $3)',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'flvhandler_desc' => 'Дозволи додавање на Флеш-vидео (.flv) податотеки како стандардни податотеки (на пр. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => '(Флеш-видео, $1 × $2 пиксели, големина на податотеката: $3)',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

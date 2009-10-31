@@ -582,6 +582,14 @@ $messages['lb'] = array(
 	'randomincategory-submit' => 'Lass',
 );
 
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
+$messages['lmo'] = array(
+	'randomincategory-toolbox' => 'Una pagina a cas',
+	'randomincategory-nocategory' => "La categuria $1 o l'esista mia o l'è vöda",
+);
+
 /** Lithuanian (Lietuvių)
  * @author Homo
  */

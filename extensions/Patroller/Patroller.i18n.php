@@ -1098,6 +1098,14 @@ $messages['nah'] = array(
 	'patrol-revert-reason' => 'Īxtlamatiliztli:',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'group-patroller' => 'contreleurs',
+	'group-patroller-member' => 'contreleur',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

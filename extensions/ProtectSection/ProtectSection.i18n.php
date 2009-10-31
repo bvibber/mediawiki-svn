@@ -85,7 +85,12 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'protectsection_desc' => "Talvezout a ra d'an implijerien aotreet evit gwareziñ lodennoù eus ur bajenn dre ar valizenn <tt>&lt;protect&gt;</tt>",
+	'protectsection_add_remove' => "Klasket hoc'h eus ouzhpennañ pe lemel kuit ur rann warezet",
+	'protectsection_modify' => "Klasket hoc'h eus degas kemmoù en un destenn warezet",
+	'protectsection_add_above' => "Klasket hoc'h eus degas testennoù en ur rann warezet",
 	'protectsection_forbidden' => 'Difennet',
+	'right-protectsection' => 'Gwareziñ rannoù ar pajennoù',
 );
 
 /** Bosnian (Bosanski)

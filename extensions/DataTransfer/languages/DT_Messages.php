@@ -250,6 +250,16 @@ $messages['bg'] = array(
 	'dt_import_importing' => 'Внасяне...',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'dt_xml_pages' => 'Pajennoù',
+	'dt_xml_page' => 'Pajenn',
+	'dt_xml_name' => 'Anv',
+	'dt_xml_title' => 'Titl',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -117,6 +117,19 @@ $messages['bn'] = array(
 	'contrib-tracking-error' => 'ত্রুটি',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'contributiontracking-desc' => "Heuliañ an donezonoù evit dastumadeg arc'hant Wikimedia",
+	'contributiontracking' => 'Heuliañ an donezonoù',
+	'contrib-tracking-error' => 'Fazi',
+	'contrib-tracking-error-text' => 'Furmskrid kaset direizh',
+	'contrib-tracking-submitting' => "O kas d'ar reizhiad tretiñ ar paeamantoù...",
+	'contrib-tracking-continue' => 'Ma ne vezit ket adkaset ent emgefre, klikit war ar bouton-mañ evit kas da benn ho paeamant gant Paypal.',
+	'contrib-tracking-button' => "Kenderc'hel",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -572,10 +585,16 @@ $messages['mhr'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
+	'contributiontracking-desc' => 'Следење на донации во акцијата за собирање на средства на Викимедија',
+	'contributiontracking' => 'Следење на донации',
 	'contrib-tracking-error' => 'Грешка',
+	'contrib-tracking-error-text' => 'Неважечко поднесување на образецот',
+	'contrib-tracking-submitting' => 'Поднесувам на обработувачот на плаќања...',
+	'contrib-tracking-continue' => 'Ако не ве пренасочат автоматски, кликнете на копчето за да ја довршите донацијата на PayPal.',
 	'contrib-tracking-button' => 'Продолжи',
 );
 

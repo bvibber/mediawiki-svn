@@ -82,6 +82,13 @@ $messages['be-tarask'] = array(
 	'commentbox-error-empty-comment' => 'Пустыя камэнтары не дазволеныя!',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'commentbox-name' => 'Anv :',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

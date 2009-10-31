@@ -1155,8 +1155,25 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'configure-desc-group' => 'Strollad',
+	'configure-desc-key' => "Alc'hwez",
+	'configure-desc-ns' => 'Esaouenn anv',
+	'configure-desc-val' => 'Talvoudenn',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Astennoù',
+	'configure-ext-settings' => 'Arventennoù',
+	'configure-ext-use-extension' => 'Ober gant an astenn-mañ',
+	'configure-ext-use' => 'Implijout',
+	'configure-btn-save' => 'Enrollañ an arventennoù',
 	'configure-js-biglist-show' => '[diskouez dre ar munud]',
 	'configure-js-biglist-hide' => '[kuzhat ar munudoù]',
+	'configure-section-upload' => 'Enporzhiañ',
+	'configure-section-images' => 'Restroù',
+	'configure-section-specialpages' => 'Pajennoù dibar',
+	'configure-section-recentchanges' => 'Kemmoù diwezhañ',
+	'configure-section-users' => 'Implijerien',
+	'configure-section-extension' => 'Astennoù',
+	'configure-section-search' => 'Klask',
 	'configure-condition-operator-and' => 'Ha(g)',
 );
 
@@ -6042,6 +6059,13 @@ $messages['nds'] = array(
 	'configure-section-users' => 'Brukers',
 	'configure-section-search' => 'Söken',
 	'configure-section-misc' => 'Verscheden',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'extensions' => 'Uutbreidingen instellen',
 );
 
 /** Dutch (Nederlands)

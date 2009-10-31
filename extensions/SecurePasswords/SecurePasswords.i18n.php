@@ -87,6 +87,13 @@ $messages['be-tarask'] = array(
 	'securepasswords-word' => 'ня быць словам',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'securepasswords-username' => "bezañ disheñvel eus hoc'h anv implijer",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

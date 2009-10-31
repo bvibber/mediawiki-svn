@@ -255,7 +255,7 @@ In 't biezunjer henjig veur Wikinews",
  */
 $messages['mg'] = array(
 	'catfeed-desc' => "Mampiasa piesy avy amin'ny topa ny fanovàna farany.
-Manome fapitahana ampidirina anaty pejy, ilaina be hoan'ny Wikivao",
+Manome fapitahana ampidirina anaty pejy, ilaina be ho an'ny Wikivao",
 );
 
 /** Macedonian (Македонски)
