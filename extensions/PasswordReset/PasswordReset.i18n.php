@@ -993,10 +993,11 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
-	'passwordreset-username' => 'Isem l-utent',
+	'passwordreset-username' => 'Isem tal-utent:',
 	'passwordreset-submit' => 'Irrisettja l-password',
 );
 

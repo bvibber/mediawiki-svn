@@ -64,6 +64,20 @@ $messages['hu'] = array(
 	'wlfeed-desc' => 'Fejlett hírcsatorna-generáló osztályok',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'wlfeed-desc' => 'Classes meliorate pro le generation de syndicationes',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'wlfeed-desc' => 'Kelas penghasil umpan canggih',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -75,7 +89,7 @@ $messages['ja'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'wlfeed-desc' => 'Подобрени класи на создавање на напојувања на новости',
+	'wlfeed-desc' => 'Подобрени класи на создавање на емитувања на новости',
 );
 
 /** Dutch (Nederlands)

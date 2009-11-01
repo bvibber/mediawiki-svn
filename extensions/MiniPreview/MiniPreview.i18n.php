@@ -505,6 +505,25 @@ $messages['lt'] = array(
 	'minipreview-files_in_gallery' => '$1 iš viso failų šioje galerijoje.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'minipreview-desc' => 'МиниПреглед (MiniPreview) прикажува до една слика мали прегледи на други медии во истите категории или прикажани на истите страници',
+	'minipreview-files_in_category' => "Оваа категорија содржи '''$1''' {{PLURAL:$1|податотека|податотеки}}.",
+	'minipreview-files_in_gallery' => "Оваа галерија содржи '''$1''' {{PLURAL:$1|податотека|податотеки}}.",
+	'minipreview-no_more_files_here' => 'Нема повеќе податотеки во оваа насока.',
+	'minipreview-no_category_gallery' => 'Нема категории или галерии!',
+	'minipreview-ignore_categories' => 'Ова е листа на називи на категории или почетоци на називи.
+Овие категории нема да се прикажат на MiniPreview.
+На пример, „* PD-“ нема да ги прикаже сите категории кои започнуваат со „PD-“, како да речеме „PD-old“.
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

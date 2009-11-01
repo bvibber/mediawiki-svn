@@ -867,6 +867,7 @@ $messages['br'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Smooth O
  */
 $messages['bs'] = array(
 	'code' => 'Provjera koda',
@@ -932,6 +933,7 @@ $messages['bs'] = array(
 	'code-rev-comment-by' => 'Komentar od strane $1',
 	'code-rev-comment-submit' => 'Pošalji komentar',
 	'code-rev-comment-preview' => 'Pregled',
+	'code-rev-inline-preview' => 'Pregled:',
 	'code-rev-diff' => 'Razl',
 	'code-rev-diff-link' => 'razl',
 	'code-rev-purge-link' => 'obnoviti',
@@ -957,6 +959,10 @@ $messages['bs'] = array(
 	'code-release-badrange' => 'Raspon je prevelik!',
 	'codereview-subtitle' => 'Za $1',
 	'codereview-reply-link' => 'odgovor',
+	'codereview-tests-succeeded2' => '$1 uspješni {{PLURAL:$2|test|testovi}}',
+	'codereview-tests-failed2' => '$1 uspješnih {{PLURAL:$2|test|testova}}, $3 neuspješnih {{PLURAL:$4|test|testova}}:',
+	'codereview-tests-running' => 'Test je u toku...',
+	'codereview-tests-aborted' => 'Test je prekinut.',
 	'codereview-email-subj' => '[$1] [r$2]: Dodan novi komentar',
 	'codereview-email-body' => 'Korisnik "$1" je napravio komentar na r$3.
 
@@ -3739,6 +3745,7 @@ $3',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'code' => 'Kode Tinjauan',
@@ -3830,6 +3837,10 @@ $messages['id'] = array(
 	'code-release-badrange' => 'Interval terlalu besar!',
 	'codereview-subtitle' => 'Untuk $1',
 	'codereview-reply-link' => 'balas',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|tes|tes}} berhasil',
+	'codereview-tests-failed2' => '$1 berhasil {{PLURAL:$2|tes|tes}}, $3 gagal {{PLURAL:$4|tes|tes}}:',
+	'codereview-tests-running' => 'Kasus pengujian sedang dijalankan...',
+	'codereview-tests-aborted' => 'Pelaksaan pengujian dibatalkan.',
 	'codereview-email-subj' => '[$1] [r$2]: Komenter baru ditambahkan',
 	'codereview-email-body' => 'Pengguna "$1" berkomentar pada r$3.
 

@@ -265,6 +265,8 @@ $messages['eu'] = array(
 	'showprocesslist-id' => 'NA',
 	'showprocesslist-user' => 'Lankidea',
 	'showprocesslist-db' => 'Datu-basea',
+	'showprocesslist-time' => 'Ordua',
+	'showprocesslist-state' => 'Egoera',
 	'showprocesslist-info' => 'Info',
 );
 

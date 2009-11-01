@@ -400,6 +400,17 @@ $messages['lb'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Eng nei Bemierkung derbäisetzen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'discussionthreading-desc' => 'Додава ниски на страници за разговор',
+	'discussionthreading-replysection' => 'одговор',
+	'discussionthreading-replysectionhint' => 'Одговори на оваа порака',
+	'discussionthreading-threadnewsection' => 'нови',
+	'discussionthreading-threadnewsectionhint' => 'Започни нова нишка',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

@@ -573,6 +573,17 @@ $messages['mg'] = array(
 	'intersection_toomanycats' => 'DynamicPageList : Be laotra ny sokajy',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'intersection-desc' => 'Дава листа со потточки на најскорешните содржини во една категорија, или пак вкрстување на неколку категории.',
+	'intersection_toomanycats' => 'Грешка: Премногу категории!',
+	'intersection_toofewcats' => 'Грешка: Премалку категории!',
+	'intersection_noresults' => 'Грешка: Нема резултати!',
+	'intersection_noincludecats' => 'Грешка: Мора да вклучите барем една категорија, или пак да назначите именски простор!',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

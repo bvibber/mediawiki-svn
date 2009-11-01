@@ -62,6 +62,23 @@ $messages['fr'] = array(
 	'externalpages-bad-url-data' => 'Échec pour récupérer les données de la page',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'externalpages' => 'Páxinas externas',
+	'externalpages-desc' => 'Recupera e mostra as páxinas de sitios remotos con respecto á Fundación Wikimedia',
+	'externalpages-bad-year' => 'O ano especificado é incorrecto',
+	'externalpages-bad-language' => 'A lingua especificada é incorrecta',
+	'externalpages-bad-project' => 'O proxecto especificado é incorrecto',
+	'externalpages-no-project' => 'Non se especificou ningún proxecto',
+	'externalpages-bad-page' => 'A páxina especificada é incorrecta',
+	'externalpages-no-page' => 'Non se especificou ningunha páxina',
+	'externalpages-error-generic' => 'Atopouse un erro',
+	'externalpages-bad-url' => 'Non se puido recuperar o enderezo URL',
+	'externalpages-bad-url-data' => 'Non se puido recuperar o contido da páxina',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -96,11 +113,46 @@ $messages['hsb'] = array(
 	'externalpages-bad-url-data' => 'Wobsah strony njeda so wotwołać',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'externalpages' => 'Külső lapok',
+	'externalpages-desc' => 'Lapok lekérése és megjelenítése távoli WMF oldalakról',
+	'externalpages-bad-year' => 'A megadott év hibás',
+	'externalpages-bad-language' => 'A megadott nyelv hibás',
+	'externalpages-bad-project' => 'A megadott projekt hibás',
+	'externalpages-no-project' => 'Nincs megadva projekt',
+	'externalpages-bad-page' => 'A megadott lap hibás',
+	'externalpages-no-page' => 'Nincs megadott lap',
+	'externalpages-error-generic' => 'Hiba történt',
+	'externalpages-bad-url' => 'Nem sikerült lekérni az URL-t',
+	'externalpages-bad-url-data' => 'Nem sikerült lekérni a lap tartalmát',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'externalpages' => 'Halaman Eksternal',
+	'externalpages-desc' => 'Mengambil dan menampilkan halaman dari situs WMF jauh',
+	'externalpages-bad-year' => 'Tahun salah',
+	'externalpages-bad-language' => 'Bahasa salah',
+	'externalpages-bad-project' => 'Proyek salah',
+	'externalpages-no-project' => 'Proyek tak diberikan',
+	'externalpages-bad-page' => 'Halaman salah',
+	'externalpages-no-page' => 'Halaman tak diberikan',
+	'externalpages-error-generic' => 'Ditemukan kesalahan',
+	'externalpages-bad-url' => 'Gagal mengambil URL',
+	'externalpages-bad-url-data' => 'Gagal mengambil isi halaman',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'externalpages' => 'Extern Säiten',
+	'externalpages-desc' => 'Eriwwerhuelen a weise vu Säiten vu WMF-Siten déi op engem anere Server (remote) stinn',
 	'externalpages-bad-year' => 'Falscht Joer uginn',
 	'externalpages-bad-language' => 'Falsch Sprooch uginn',
 	'externalpages-bad-project' => 'Falsche Projet uginn',
@@ -109,6 +161,7 @@ $messages['lb'] = array(
 	'externalpages-no-page' => 'Keng Säit uginn',
 	'externalpages-error-generic' => 'Et ass e Feeler opgetrat',
 	'externalpages-bad-url' => 'Feeler beim recuperéiere vun der URL',
+	'externalpages-bad-url-data' => 'Et ass net gelong den Inhalt vun de Säiten eriwwerzehuelen',
 );
 
 /** Dutch (Nederlands)
@@ -143,5 +196,22 @@ $messages['pms'] = array(
 	'externalpages-error-generic' => 'Eror capità',
 	'externalpages-bad-url' => "Pa podù trové l'URL",
 	'externalpages-bad-url-data' => 'Pa podù trové ij contnù dla pàgina',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'externalpages' => 'Внешние страницы',
+	'externalpages-desc' => 'Извлекает и отображает страницы с других сайтов WMF',
+	'externalpages-bad-year' => 'Указан неправильный год',
+	'externalpages-bad-language' => 'Указан неправильный язык',
+	'externalpages-bad-project' => 'Указан неправильный проект',
+	'externalpages-no-project' => 'Не указан проект',
+	'externalpages-bad-page' => 'Указана неправильная страница',
+	'externalpages-no-page' => 'Не указана страница',
+	'externalpages-error-generic' => 'Произошла ошибка',
+	'externalpages-bad-url' => 'Не удалось получить URL',
+	'externalpages-bad-url-data' => 'Не удалось получить содержание страницы',
 );
 

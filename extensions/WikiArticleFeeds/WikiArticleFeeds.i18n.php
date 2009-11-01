@@ -219,8 +219,8 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'wikiarticlefeeds-desc' => 'Прави напојувања изведени од МедијаВики страници',
-	'wikiarticlefeeds_combined_description' => 'Ова е комбинирано напојување, со содржини од неколку напојни извори.',
+	'wikiarticlefeeds-desc' => 'Прави емитувања создадени од МедијаВики страници',
+	'wikiarticlefeeds_combined_description' => 'Ова е комбинирано емитување, со содржини од неколку напојни извори.',
 );
 
 /** Dutch (Nederlands)

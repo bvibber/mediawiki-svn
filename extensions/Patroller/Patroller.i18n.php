@@ -973,6 +973,14 @@ $messages['lb'] = array(
 	'right-patroller' => 'Sàiten iwwerkucken',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'group-patroller' => 'Mpitsidika',
+	'group-patroller-member' => 'Mpitsidika',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

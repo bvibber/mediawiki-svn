@@ -214,6 +214,16 @@ $messages['lb'] = array(
 	'replaceset-error-calllimit' => "D'Limit fir d'Opruffe vu ''ReplaceSet'' gouf erreecht.",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'replaceset-desc' => 'Додава <nowiki>{{#replaceset}}</nowiki> парсерска функција која се користи за заменување на делови од текстот со форматирани податоци',
+	'replaceset-error-calllimit' => 'Достигната е границата на повикувања ReplaceSet.',
+	'replaceset-error-regexnoend' => 'Во шемата „$1“ на регуларниот израз недостасува крајниот граничник „$2“',
+	'replaceset-error-regexbadmodifier' => 'Модификаторот „$1“ на регуларниот израз е неважечки.',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand

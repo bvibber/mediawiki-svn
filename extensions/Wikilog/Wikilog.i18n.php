@@ -249,13 +249,18 @@ Parameters:
 	'wikilog-show-drafts' => '{{Identical|Draft}}',
 	'wikilog-preview' => 'Verb
 {{Identical|Preview}}',
-	'wikilog-edit-lc' => 'Verb',
-	'wikilog-reply-lc' => 'Verb',
-	'wikilog-delete-lc' => 'Verb',
+	'wikilog-edit-lc' => 'Verb
+{{Identical|Edit}}',
+	'wikilog-reply-lc' => 'Verb
+{{Identical|Reply}}',
+	'wikilog-delete-lc' => 'Verb
+{{Identical|Delete}}',
 	'wikilog-approve-lc' => 'Verb',
 	'wikilog-reject-lc' => 'Verb',
-	'wikilog-page-lc' => 'Noun',
-	'wikilog-history-lc' => 'Noun',
+	'wikilog-page-lc' => 'Noun
+{{Identical|Page}}',
+	'wikilog-history-lc' => 'Noun
+{{Identical|History}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -273,6 +278,11 @@ $messages['af'] = array(
 	'wikilog-form-preview' => 'Voorskou:',
 	'wikilog-form-comment' => 'Opmerking:',
 	'wikilog-preview' => 'Voorskou',
+	'wikilog-edit-lc' => 'wysig',
+	'wikilog-reply-lc' => 'antwoord',
+	'wikilog-delete-lc' => 'skrap',
+	'wikilog-page-lc' => 'bladsy',
+	'wikilog-history-lc' => 'geskiedenis',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -305,6 +315,13 @@ $messages['be-tarask'] = array(
 	'wikilog-form-comment' => 'Камэнтар:',
 	'wikilog-show-drafts' => 'Чарнавікі',
 	'wikilog-preview' => 'Папярэдні прагляд',
+	'wikilog-edit-lc' => 'рэдагаваць',
+	'wikilog-reply-lc' => 'адказаць',
+	'wikilog-delete-lc' => 'выдаліць',
+	'wikilog-approve-lc' => 'зацьвердзіць',
+	'wikilog-reject-lc' => 'адхіліць',
+	'wikilog-page-lc' => 'старонка',
+	'wikilog-history-lc' => 'гісторыя',
 );
 
 /** Breton (Brezhoneg)
@@ -312,12 +329,14 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'wikilog' => 'Wikilogoù',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-new-item-go' => 'Krouiñ',
 	'wikilog-item-name' => 'Anv ar pennad :',
 	'wikilog-published' => 'Embannet',
 	'wikilog-draft' => 'Brouilhed',
+	'wikilog-wikilog' => 'Wikilog',
 	'wikilog-title' => 'Titl',
 	'wikilog-replies' => 'Respontoù',
 	'wikilog-view-archives' => 'Dielloù',
@@ -442,6 +461,78 @@ $messages['es'] = array(
 	'wikilog-log-cmt-reject' => 'comentario rechazado [[$1]]',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'wikilog-new-item-go' => 'Sortu',
+	'wikilog-item-name' => 'Artikuluaren izena:',
+	'wikilog-published' => 'Argitaratua',
+	'wikilog-updated' => 'Eguneratua',
+	'wikilog-draft' => 'Zirriborroa',
+	'wikilog-authors' => 'Egileak',
+	'wikilog-title' => 'Izenburua',
+	'wikilog-comments' => 'Iruzkinak',
+	'wikilog-view-summary' => 'Laburpena',
+	'wikilog-draft-title-mark' => '(zirriborroa)',
+	'wikilog-pager-newer-n' => '← berriago $1',
+	'wikilog-pager-older-n' => 'zaharrago $1 →',
+	'wikilog-pager-newest' => '←← berrienak',
+	'wikilog-pager-oldest' => 'zaharrenak →→',
+	'wikilog-pager-prev' => '← aurrekoa',
+	'wikilog-pager-next' => 'hurrengoa →',
+	'wikilog-pager-first' => '←← lehena',
+	'wikilog-pager-last' => 'azkena →→',
+	'wikilog-no-comments' => 'ez dago iruzkinik',
+	'wikilog-has-comments' => '{{PLURAL:$1|iruzkin bat|$1 iruzkin}}',
+	'wikilog-item-more' => '[[$3|→ jarraitu irakurtzen...]]',
+	'wikilog-comment-edit' => 'Iruzkin hau editatu',
+	'wikilog-comment-delete' => 'Iruzkin hau ezabatu',
+	'wikilog-title-comments' => 'Iruzkinak - $1',
+	'wikilog-comment-too-long' => 'Argitaratutako iruzkina luzeegia da.',
+	'wikilog-comment-invalid-name' => 'Emandako izena ez da zuzena.',
+	'wikilog-form-category' => 'Kategoria:',
+	'wikilog-form-name' => 'Izena:',
+	'wikilog-form-author' => 'Egilea:',
+	'wikilog-form-date' => 'Data:',
+	'wikilog-form-status' => 'Egoera:',
+	'wikilog-form-preview' => 'Aurrikuspena:',
+	'wikilog-form-comment' => 'Iruzkina:',
+	'wikilog-edit-lc' => 'aldatu',
+	'wikilog-reply-lc' => 'erantzun',
+	'wikilog-delete-lc' => 'ezabatu',
+	'wikilog-page-lc' => 'orrialdea',
+	'wikilog-history-lc' => 'historia',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'wikilog-new-item-go' => 'Luo',
+	'wikilog-draft' => 'Luonnos',
+	'wikilog-title' => 'Otsikko',
+	'wikilog-actions' => 'Toiminnot',
+	'wikilog-view-archives' => 'Arkistot',
+	'wikilog-view-summary' => 'Yhteenveto',
+	'wikilog-draft-title-mark' => '(luonnos)',
+	'wikilog-reply-to-comment' => 'Vastaa tähän kommenttiin',
+	'wikilog-comment-edit' => 'Muokkaa tätä kommenttia',
+	'wikilog-comment-delete' => 'Poista tämä kommentti',
+	'wikilog-title-comments' => 'Kommentit – $1',
+	'wikilog-show-drafts' => 'Luonnokset',
+	'wikilog-submit' => 'Lähetä',
+	'wikilog-preview' => 'Esikatselu',
+	'wikilog-edit-lc' => 'muokkaa',
+	'wikilog-reply-lc' => 'vastaa',
+	'wikilog-delete-lc' => 'poista',
+	'wikilog-approve-lc' => 'hyväksy',
+	'wikilog-reject-lc' => 'hylkää',
+	'wikilog-page-lc' => 'sivu',
+	'wikilog-history-lc' => 'historia',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */
@@ -557,6 +648,69 @@ Le commentaire n'apparaîtra qu'après avoir été vérifié par un modérateur.
 	'wikilog-page-lc' => 'page',
 	'wikilog-history-lc' => 'historique',
 	'wikilog-doc-import-comment' => 'Documentation importée de wikilog',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'wikilog-new-item-go' => 'Crear',
+	'wikilog-item-name' => 'Nome do artigo:',
+	'wikilog-published' => 'Publicado',
+	'wikilog-updated' => 'Actualizado',
+	'wikilog-draft' => 'Borrador',
+	'wikilog-authors' => 'Autores',
+	'wikilog-title' => 'Título',
+	'wikilog-actions' => 'Accións',
+	'wikilog-comments' => 'Comentarios',
+	'wikilog-replies' => 'Respostas',
+	'wikilog-view-archives' => 'Arquivos',
+	'wikilog-view-summary' => 'Resumo',
+	'wikilog-draft-title-mark' => '(borrador)',
+	'wikilog-anonymous-mark' => '(anónimo)',
+	'wikilog-pager-newer-n' => '← $1 máis novos',
+	'wikilog-pager-older-n' => '$1 máis antigos →',
+	'wikilog-pager-newest' => '←← os máis novos',
+	'wikilog-pager-oldest' => 'os máis antigos →→',
+	'wikilog-pager-prev' => '← anterior',
+	'wikilog-pager-next' => 'seguinte →',
+	'wikilog-pager-first' => '←← primeira',
+	'wikilog-pager-last' => 'última →→',
+	'wikilog-pager-empty' => '(sen elementos)',
+	'wikilog-no-comments' => 'sen comentarios',
+	'wikilog-has-comments' => '{{PLURAL:$1|un comentario|$1 comentarios}}',
+	'wikilog-item-more' => '[[$3|→ seguir lendo...]]',
+	'wikilog-comment-by-user' => 'Comentario de $1 ($2)',
+	'wikilog-comment-by-anon' => 'Comentario de $3 (anónimo)',
+	'wikilog-comment-pending' => 'Este comentario está á espera de aprobación.',
+	'wikilog-comment-deleted' => 'Este comentario foi borrado.',
+	'wikilog-comment-edited' => 'Este comentario foi editado por última vez o $3 ás $4 ($2).',
+	'wikilog-comment-autosumm' => 'Novo comentario de $1: $2',
+	'wikilog-comment-edit' => 'Editar este comentario',
+	'wikilog-comment-delete' => 'Borrar este comentario',
+	'wikilog-title-comments' => 'Comentarios - $1',
+	'wikilog-post-comment' => 'Publicar un novo comentario',
+	'wikilog-post-reply' => 'Publicar unha nova resposta',
+	'wikilog-form-category' => 'Categoría:',
+	'wikilog-form-name' => 'Nome:',
+	'wikilog-form-author' => 'Autor:',
+	'wikilog-form-tag' => 'Etiqueta:',
+	'wikilog-form-date' => 'Data:',
+	'wikilog-form-status' => 'Estado:',
+	'wikilog-form-preview' => 'Vista previa:',
+	'wikilog-form-comment' => 'Comentario:',
+	'wikilog-show-all' => 'Todos os comentarios',
+	'wikilog-show-published' => 'Publicados',
+	'wikilog-show-drafts' => 'Borradores',
+	'wikilog-submit' => 'Enviar',
+	'wikilog-preview' => 'Vista previa',
+	'wikilog-edit-lc' => 'editar',
+	'wikilog-reply-lc' => 'responder',
+	'wikilog-delete-lc' => 'borrar',
+	'wikilog-approve-lc' => 'aprobar',
+	'wikilog-reject-lc' => 'rexeitar',
+	'wikilog-page-lc' => 'páxina',
+	'wikilog-history-lc' => 'historial',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -755,11 +909,88 @@ $messages['hu'] = array(
 	'wikilog-doc-import-comment' => 'Importált Wikinapló dokumentáció',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'wikilog-desc' => 'Adde functionalitate de blog, creante un hybrido wiki-blog',
+	'wikilog-auto' => 'Wikilog Auto',
+	'right-wl-postcomment' => 'Lassar commentos in articulos wikilog',
+	'right-wl-moderation' => 'Moderation de commentos de articulos wikilog',
+	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog' => 'Wikilog',
+	'wikilog-log-pagename' => 'Registro de actiones wikilog',
+	'wikilog-log-pagetext' => 'Seque un lista de actiones wikilog.',
+	'wikilog-log-cmt-approve' => 'approbava le commento [[$1]]',
+	'wikilog-log-cmt-reject' => 'rejectava le commento [[$1]]',
+	'wikilog-log-cmt-rejdel' => 'Rejectava un commento wikilog de [[Special:Contributions/$1|$1]]',
+	'wikilog-tab' => 'Wikilog',
+	'wikilog-tab-title' => 'Actiones wikilog',
+	'wikilog-information' => 'Information wikilog',
+	'wikilog-post-count-published' => 'Il ha {{PLURAL:$1|un articulo|$1 articulos}} publicate in iste wikilog,',
+	'wikilog-post-count-drafts' => 'Il ha {{PLURAL:$1|un articulo|$1 articulos}} non publicate (provisori),',
+	'wikilog-post-count-all' => 'In total il ha {{PLURAL:$1|un articulo|$1 articulos}}.',
+	'wikilog-new-item' => 'Crear nove articulo wikilog',
+	'wikilog-new-item-go' => 'Crear',
+	'wikilog-item-name' => 'Nomine del articulo:',
+	'wikilog-published' => 'Publicate',
+	'wikilog-updated' => 'Actualisate',
+	'wikilog-draft' => 'Version provisori',
+	'wikilog-authors' => 'Autores',
+	'wikilog-wikilog' => 'Wikilog',
+	'wikilog-title' => 'Titulo',
+	'wikilog-actions' => 'Actiones',
+	'wikilog-comments' => 'Commentos',
+	'wikilog-replies' => 'Responsas',
+	'wikilog-view-archives' => 'Archivos',
+	'wikilog-view-summary' => 'Summario',
+	'wikilog-draft-title-mark' => '(version provisori)',
+	'wikilog-anonymous-mark' => '(anonyme)',
+	'wikilog-pager-newer-n' => '← $1 plus nove',
+	'wikilog-pager-older-n' => '$1 plus ancian →',
+	'wikilog-pager-newest' => '←← le plus nove',
+	'wikilog-pager-oldest' => 'le plus ancian →→',
+	'wikilog-pager-prev' => '← precedente',
+	'wikilog-pager-next' => 'sequente →',
+	'wikilog-pager-first' => '←← prime',
+	'wikilog-pager-last' => 'ultime →→',
+	'wikilog-pager-empty' => '(nulle entrata)',
+	'wikilog-no-comments' => 'nulle commento',
+	'wikilog-has-comments' => '{{PLURAL:$1|un commento|$1 commentos}}',
+	'wikilog-item-brief-header' => ': <i><small>per $5, de [[$1|$2]], $6, $7.</small></i>',
+	'wikilog-item-more' => '[[$3|→ continuar a leger...]]',
+	'wikilog-comment-by-user' => 'Commento per $1 ($2)',
+	'wikilog-comment-by-anon' => 'Commento per $3 (anonyme)',
+	'wikilog-comment-pending' => 'Iste commento attende approbation.',
+	'wikilog-comment-deleted' => 'Iste commento ha essite delite.',
+	'wikilog-comment-edited' => 'Iste commento esseva modificate pro le ultime vice le $3 a $4 ($2).',
+	'wikilog-comment-autosumm' => 'Nove commento per $1: $2',
+	'wikilog-reply-to-comment' => 'Publicar un responsa a iste commento',
+	'wikilog-comment-page' => 'Visitar le pagina de iste commento',
+	'wikilog-comment-edit' => 'Modificar iste commento',
+	'wikilog-comment-delete' => 'Deler iste commento',
+	'wikilog-comment-history' => 'Vider le historia de commentos',
+	'wikilog-comment-approve' => 'Approbar iste commento (action immediate)',
+	'wikilog-comment-reject' => 'Rejectar iste commento (action immediate)',
+	'wikilog-newtalk-text' => '<!-- pagina vacue create per Wikilog -->',
+	'wikilog-newtalk-summary' => 'create automaticamente per Wikilog',
+	'wikilog-feed-description' => 'Leger le articulos le plus recente in iste syndication.',
+	'wikilog-title-comments' => 'Commentos - $1',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'wikilog-desc' => 'ブログ機能を追加し、ウィキとブログのハイブリッドを作ります',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'wikilog-item-name' => 'Jeneng artikel:',
+	'wikilog-comment-history' => 'Nudhuhaké sajarah komentar',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -826,7 +1057,17 @@ $messages['lb'] = array(
 	'wikilog-doc-import-comment' => 'Importéiert Wikilog-Dokumentatioun',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'wikilog-new-item-go' => 'Amboary',
+	'wikilog-published' => 'Voatahiry',
+	'wikilog-actions' => 'Tao/asa',
+);
+
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -889,7 +1130,7 @@ $messages['nl'] = array(
 	'wikilog-comment-history' => 'Reactiegeschiedenis bekijken',
 	'wikilog-comment-approve' => 'Deze reactie goedkeuren (directe handeling)',
 	'wikilog-comment-reject' => 'Deze reactie afkeuren (directe handeling)',
-	'wikilog-newtalk-text' => '<!-- lege pagina; aangemaakt doot Wikilog -->',
+	'wikilog-newtalk-text' => '<!-- lege pagina; aangemaakt door Wikilog -->',
 	'wikilog-newtalk-summary' => 'automatisch aangemaakt door Wikilog',
 	'wikilog-feed-description' => 'De meest recente bijdragen in deze feed bekijken.',
 	'wikilog-title-comments' => 'Reacties - $1',

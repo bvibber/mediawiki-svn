@@ -1018,6 +1018,7 @@ $messages['eu'] = array(
 	'tasks_here' => 'hemen',
 	'tasks_help_page' => 'Eginkizunak',
 	'tasks_more_like_it' => 'gehiago',
+	'tasks_task_types' => '1:txukundu:Txukundu|2:wikitu:Wikitu|3:berridatzi:Berridatzi|4:ezabatu:Ezabatu|5:sortu:Sortu|6:idatzi:Idatzi|7:aztertu:Aztertu',
 	'tasks_table_header_page' => 'Orri',
 	'tasks_search_form_title' => 'Bilatu',
 	'tasks_search_tasks' => 'Eginkizunak',

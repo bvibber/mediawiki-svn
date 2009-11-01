@@ -211,6 +211,8 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'closewikis-page-close-wiki' => 'Wiki :',
+	'closewikis-page-reopen-wiki' => 'Wiki :',
+	'closewikis-page-reopen-reason' => 'Abeg :',
 	'closewikis-list-header-wiki' => 'Wiki',
 );
 

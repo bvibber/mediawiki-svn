@@ -414,6 +414,7 @@ $messages['es'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
@@ -425,6 +426,7 @@ $messages['eu'] = array(
 	'wah-long-general' => '(multimedia fitxategia, iraupena $2, $3)',
 	'wah-long-error' => '(ffmpeg-ek ezin du fitxategi hau irakurri: $1)',
 	'wah-transcode-working' => 'Bideo hau prozesatzen ari da, mesedez, saia zaitez beranduago',
+	'wah-menu-pref' => 'Hobespenak',
 );
 
 /** Finnish (Suomi)

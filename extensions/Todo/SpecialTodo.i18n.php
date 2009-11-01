@@ -562,6 +562,7 @@ $4',
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'todo' => 'Egitekoen zerrenda',
 	'todo-new-queue' => 'berria',
 	'todo-add-queue' => 'Ilarara gehitu...',
 	'todo-move-queue' => 'Ilarara mugitu...',

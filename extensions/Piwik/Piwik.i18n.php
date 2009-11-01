@@ -367,6 +367,17 @@ $messages['lb'] = array(
 	'right-viewpiwik' => '[[Special:Piwik|Piwik Statistike]] weisen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'piwik-desc' => 'Вметнува Piwik скрипта во МедијаВики страници за следење и додава [[Special:Piwik|некои статистики]]',
+	'piwik-lastvisits' => 'Последни посети',
+	'piwik-countries' => 'Земји',
+	'piwik-browsers' => 'Прелистувачи',
+	'right-viewpiwik' => 'Погледајте ги [[Special:Piwik|Piwik статистиките]]',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

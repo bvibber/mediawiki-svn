@@ -1806,7 +1806,7 @@ $messages['dsb'] = array(
 	'mv_flash_low_quality' => 'Webtšuga - wideo Flash',
 	'mv_archive_org_mp4' => 'Tšuga H.264 zakapslowana w archive.org MP4',
 	'mv_archive_org_link' => 'Wótkaze do originalow Archive.org MPEG-2',
-	'mv_error_stream_missing' => '<span class="error">Zmólka: Njejo wideodataja, kótaraž jo z toś tej tšugu zwězana.</span><br />
+	'mv_error_stream_missing' => '<span class="error">Zmólka: Njejo wideodataja, kótaraž jo z toś teju tšugu zwězana.</span><br />
 Pšosym staj se z [[{{MediaWiki:Grouppage-sysop}}|administratorom sedła]] do zwiska.',
 	'mv_stream_added' => 'Sy pśidał tšugu $1',
 	'mv_stream_meta' => 'Bok tšugi',

@@ -491,6 +491,13 @@ Le valores de reimplaciamento non debe esser escappate.',
 	'masseditregex-tooltip-execute' => 'Applicar iste modificationes a cata pagina',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'masseditregex-desc' => 'Menggunakan ekspresi reguler untuk [[Special:MassEditRegex|menyunting banyak halaman sekaligus]]',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

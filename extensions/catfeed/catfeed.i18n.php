@@ -262,7 +262,7 @@ Manome fapitahana ampidirina anaty pejy, ilaina be ho an'ny Wikivao",
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'catfeed-desc' => 'Кориснички делчиња од напојувања за скорешни промени.
+	'catfeed-desc' => 'Кориснички делчиња од емитувања за скорешни промени.
 Создава верзија во самата страница, особено корисно за Викивести',
 );
 

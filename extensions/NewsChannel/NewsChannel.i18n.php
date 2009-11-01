@@ -109,6 +109,19 @@ $messages['bg'] = array(
 	'newschannel_submit_button' => 'Създаване на емисия',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'newschannel' => 'Kanol geleier',
+	'newschannel-desc' => 'Emplementiñ a ra ur ganol geleier evel [[Special:NewsChannel|ur bajenn dibar]] dinamek',
+	'newschannel_format' => 'Furmad :',
+	'newschannel_limit' => 'Bevenn :',
+	'newschannel_include_category' => 'Rummad ouzhpenn :',
+	'newschannel_exclude_category' => 'Rummad lezet a-gostez :',
+	'newschannel_submit_button' => 'Krouiñ al lanvad',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -405,6 +418,19 @@ $messages['lb'] = array(
 	'newschannel_include_category' => 'Zousätzlech Kategorie:',
 	'newschannel_exclude_category' => 'Kategorie ausschléissen:',
 	'newschannel_submit_button' => 'Rubrik uleeën',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'newschannel' => 'Канал за вести',
+	'newschannel-desc' => 'Имплементира канал за вести како динамична [[Special:NewsChannel|специјална страница]]',
+	'newschannel_format' => 'Формат:',
+	'newschannel_limit' => 'Ограничување:',
+	'newschannel_include_category' => 'Дополнителна категорија:',
+	'newschannel_exclude_category' => 'Исклучи ја категоријата:',
+	'newschannel_submit_button' => 'Создај емитување',
 );
 
 /** Dutch (Nederlands)

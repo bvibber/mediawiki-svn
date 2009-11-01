@@ -373,7 +373,7 @@ Móžoš zapódaś opcionalne '''datajowe mě''' a '''Zespominanje''', kótarež
 Njegóźece se dataje budu se ned lašowaś, glědaj [[{{MediaWiki:Multipleupload-page}}|zasady lašowanja datajow]].",
 	'multiupload-fileuploaded' => 'Dataja nagrata.',
 	'multiupload-toolbox' => 'Někotare dataje nagraś',
-	'multiupload-no-files' => 'Pšsosym wubjeŕ nanejmjenjej jadnu dataju za nagraśe',
+	'multiupload-no-files' => 'Pšosym wubjeŕ nanejmjenjej jadnu dataju za nagraśe',
 	'multiupload-blank' => 'Žedna dataja wubrana',
 );
 
@@ -1020,7 +1020,7 @@ Fail-fail yang tidak sesuai akan dihapuskan serta-merta. Sila baca [[{{MediaWiki
  * @author Chrisportelli
  */
 $messages['mt'] = array(
-	'multipleupload' => "Tella' fajls multimedjali",
+	'multipleupload' => "Tella' fajls multipli",
 	'multipleupload-desc' => "Tippermetti lill-utenti biex [[Special:MultipleUpload|itellgħu diversi fajls f'daqqa]]",
 	'multipleupload-ignoreallwarnings' => "Injora '''kull twissija''' u salva xorta waħda l-fajl.",
 	'multipleupload-saveallfiles' => 'Salva l-fajls kollha',

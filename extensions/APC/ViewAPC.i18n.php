@@ -645,6 +645,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'viewapc' => 'Titouroù APC',
@@ -656,12 +657,17 @@ $messages['br'] = array(
 	'viewapc-start-time' => "Eur loc'hañ",
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|restr|restr}} ($2)',
 	'viewapc-misses' => 'Mankoù',
+	'viewapc-memory-free' => 'Dieub : $1 ($2)',
 	'viewapc-display-filename' => 'Anv ar restr',
 	'viewapc-display-info' => 'Anv',
+	'viewapc-display-creation_time' => 'Krouet',
 	'viewapc-display-mem_size' => 'Ment',
 	'viewapc-ls-header-name' => 'Anv',
 	'viewapc-ls-header-size' => 'Ment',
+	'viewapc-ls-header-modified' => 'Kemm diwezhañ',
+	'viewapc-ls-header-created' => 'Krouet',
 	'viewapc-ls-scope-deleted' => 'Diverket',
+	'viewapc-ls-scope-both' => 'An daou',
 	'viewapc-ls-sort-size' => 'Ment',
 	'viewapc-ls-sort-name' => 'Anv',
 	'viewapc-ls-sort-modified' => 'Kemmet da ziwezhañ',

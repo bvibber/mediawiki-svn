@@ -602,7 +602,7 @@ Pšosym napóraj druge wužywarske mě abo [[$1|informěruj nas]] wó toś tom p
 	'regexblock-stats-title' => 'Statistika blokěrowanjow pśez regularne wuraze',
 	'regexblock-unblock-success' => 'Pśipušćenje wuspěšnje',
 	'regexblock-unblock-log' => "Wužywarske mě abo IP-adrese '''$1''' jo se pśipušćiło.",
-	'regexblock-unblock-error' => 'Zm´plka pśi pśipušćanju $1.
+	'regexblock-unblock-error' => 'Zmólka pśi pśipušćanju $1.
 Nejskerjej taki wužywaŕ njejo.',
 	'regexblock-regex-filter' => 'abo gódnota regularnego wuraza:',
 	'regexblock-view-blocked' => 'Naglěd blokěrowany wót:',

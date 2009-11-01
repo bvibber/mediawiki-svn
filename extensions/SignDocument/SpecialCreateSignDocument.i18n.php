@@ -478,6 +478,7 @@ Esto puede no ser hecho por segunda vez.',
  */
 $messages['eu'] = array(
 	'createsigndoc-pagename' => 'Orri:',
+	'createsigndoc-allowedgroup' => 'Baimendutako taldea:',
 	'createsigndoc-email' => 'Email helbidea:',
 	'createsigndoc-address' => 'Helbidea:',
 	'createsigndoc-extaddress' => 'Udalerria, estatua, herrialdea:',
@@ -830,14 +831,28 @@ Isto non pote esser facite un secunde vice.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
+	'createsigndocument' => 'Aktifkan penandatanganan dokumen',
 	'createsigndoc-pagename' => 'Halaman:',
+	'createsigndoc-allowedgroup' => 'Grup yang diizinkan:',
 	'createsigndoc-email' => 'Alamat surel:',
+	'createsigndoc-address' => 'Alamat rumah:',
+	'createsigndoc-extaddress' => 'Kota, negara bagian, negara:',
 	'createsigndoc-phone' => 'Nomor telepon:',
+	'createsigndoc-bday' => 'Tanggal lahir:',
+	'createsigndoc-minage' => 'Umur minimum:',
+	'createsigndoc-introtext' => 'Pendahuluan:',
 	'createsigndoc-hidden' => 'Tersembunyi',
 	'createsigndoc-optional' => 'Manasuka',
 	'createsigndoc-create' => 'Buat',
+	'createsigndoc-error-generic' => 'Kesalahan: $1',
+	'createsigndoc-error-pagenoexist' => 'Kesalahan: Halaman [[$1]] tidak ada.',
+	'createsigndoc-success' => 'Penandatanganan dokumen telah berhasil diaktifkan pada [[$1]].
+Anda dapat [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} mengujinya].',
+	'createsigndoc-error-alreadycreated' => 'Penandatangan "$1" telah ada.
+Hal ini tidak dapat dilakukan dua kali.',
 );
 
 /** Icelandic (Íslenska) */

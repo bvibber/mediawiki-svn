@@ -3495,6 +3495,8 @@ $messages['eu'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Balio gabeko izenburua',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Orriaren existentzia egiaztatzen...',
 	'edittoolbar-tool-link-int-invalid' => 'Zehaztutako izenburua ez dago zuzen.',
+	'edittoolbar-tool-link-lookslikeinternal-int' => 'Barne lotura',
+	'edittoolbar-tool-link-lookslikeinternal-ext' => 'Kanpo lotura',
 	'edittoolbar-tool-file' => 'Txertatutako fitxategia',
 	'edittoolbar-tool-file-example' => 'Adibidea.jpg',
 	'edittoolbar-tool-reference' => 'Erreferentzia',
@@ -3541,8 +3543,8 @@ $messages['eu'] = array(
 | errenkada 2, gela 1
 | errenkada 2, gela 2
 | errenkada 2, gela 3',
-	'edittoolbar-tool-table-example' => 'Errenkada $1, gela $2',
-	'edittoolbar-tool-table-example-header' => 'Errenkada $1, gela $2 (goiburua)',
+	'edittoolbar-tool-table-example' => 'Gelatxo testua',
+	'edittoolbar-tool-table-example-header' => 'Goiburu testua',
 	'edittoolbar-tool-table-title' => 'Taula txertatu',
 	'edittoolbar-tool-table-dimensions-rows' => 'Errenkadak',
 	'edittoolbar-tool-table-dimensions-columns' => 'Zutabeak',
@@ -3553,6 +3555,9 @@ $messages['eu'] = array(
 	'edittoolbar-tool-replace-title' => 'Bilatu eta aldatu',
 	'edittoolbar-tool-replace-search' => 'Honakoa bilatu:',
 	'edittoolbar-tool-replace-replace' => 'Honegatik aldatu:',
+	'edittoolbar-tool-replace-button-findnext' => 'Hurrengoa bilatu',
+	'edittoolbar-tool-replace-button-replacenext' => 'Hurrengoa ordezkatu',
+	'edittoolbar-tool-replace-button-replaceall' => 'Denak ordezkatu',
 	'edittoolbar-tool-replace-close' => 'Ezeztatu',
 	'edittoolbar-tool-replace-nomatch' => 'Ez dago bilaketarekin bat egiten duten emaitzarik.',
 	'edittoolbar-tool-replace-success' => '$1 ordezkapen eginda.',
@@ -3763,9 +3768,11 @@ $messages['fi'] = array(
 | rivi 2, solu 2
 | rivi 2, solu 3',
 	'edittoolbar-tool-table-example' => 'Solun teksti',
+	'edittoolbar-tool-table-example-header' => 'Otsikkoteksti',
 	'edittoolbar-tool-table-title' => 'Lisää taulukko',
 	'edittoolbar-tool-table-dimensions-rows' => 'Rivit',
 	'edittoolbar-tool-table-dimensions-columns' => 'Sarakkeet',
+	'edittoolbar-tool-table-sortable' => 'Tee taulukosta lajiteltava',
 	'edittoolbar-tool-table-preview' => 'Esikatselu',
 	'edittoolbar-tool-table-insert' => 'Lisää',
 	'edittoolbar-tool-table-cancel' => 'Peruuta',
@@ -5767,6 +5774,7 @@ $messages['ia'] = array(
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
@@ -5798,6 +5806,10 @@ $messages['id'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Judul tidak sah',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Memeriksa keberadaan halaman...',
 	'edittoolbar-tool-link-int-invalid' => 'Judul yang Anda berikan tidak sah.',
+	'edittoolbar-tool-link-lookslikeinternal' => 'URL yang Anda berikan tampaknya merupakan pranala ke halaman wiki lain. Apakah Anda ingin membuatnya menjadi pranala internal?',
+	'edittoolbar-tool-link-lookslikeinternal-int' => 'Pranala internal',
+	'edittoolbar-tool-link-lookslikeinternal-ext' => 'Pranala luar',
+	'edittoolbar-tool-link-empty' => 'Anda tidak memasukkan apapun untuk ditautkan.',
 	'edittoolbar-tool-file' => 'Sisipkan berkas',
 	'edittoolbar-tool-file-example' => 'Contoh.jpg',
 	'edittoolbar-tool-reference' => 'Referensi',
@@ -5844,12 +5856,15 @@ $messages['id'] = array(
 | baris 2, sel 1
 | baris 2, sel 2
 | baris 2, sel 3',
-	'edittoolbar-tool-table-example' => 'Baris $1, sel $2',
-	'edittoolbar-tool-table-example-header' => 'Baris $1, sel $2 (kepala bagian)',
+	'edittoolbar-tool-table-example' => 'Teks sel',
+	'edittoolbar-tool-table-example-header' => 'Teks judul',
 	'edittoolbar-tool-table-title' => 'Masukkan tabel',
 	'edittoolbar-tool-table-dimensions-rows' => 'Baris',
 	'edittoolbar-tool-table-dimensions-columns' => 'Kolom',
 	'edittoolbar-tool-table-dimensions-header' => 'Sertakan baris',
+	'edittoolbar-tool-table-wikitable' => 'Gaya dengan bingkai',
+	'edittoolbar-tool-table-sortable' => 'Buat tabel dapat diurutkan',
+	'edittoolbar-tool-table-preview' => 'Pratayang',
 	'edittoolbar-tool-table-insert' => 'Masukkan',
 	'edittoolbar-tool-table-cancel' => 'Batalkan',
 	'edittoolbar-tool-table-toomany' => 'Anda tidak dapat membuat tabel dengan jumlah sel yang lebih dari $1',
@@ -8122,8 +8137,8 @@ $messages['mt'] = array(
 | filliera 2, ċellola 1
 | filliera 2, ċellola 2
 | filliera 2, ċellola 3',
-	'edittoolbar-tool-table-example' => 'Filliera $1, ċellola $2',
-	'edittoolbar-tool-table-example-header' => 'Filliera $1, ċellola $2 (ras)',
+	'edittoolbar-tool-table-example' => 'Test taċ-ċellola',
+	'edittoolbar-tool-table-example-header' => 'Test tar-ras',
 	'edittoolbar-tool-table-title' => 'Daħħal tabella',
 	'edittoolbar-tool-table-dimensions-rows' => 'Fillieri',
 	'edittoolbar-tool-table-dimensions-columns' => 'Kolonni',
@@ -11138,6 +11153,7 @@ $messages['te'] = array(
 	'edittoolbar-tool-link-int' => 'ఒక వికీ పేజీకి',
 	'edittoolbar-tool-link-int-target' => 'పేజీ శీర్షిక:',
 	'edittoolbar-tool-link-int-text' => 'లంకె పాఠ్యం:',
+	'edittoolbar-tool-link-ext' => 'బయటి వెబ్ పేజీకి',
 	'edittoolbar-tool-link-ext-target' => 'లంకె URL:',
 	'edittoolbar-tool-link-ext-text' => 'లంకె పాఠ్యం:',
 	'edittoolbar-tool-link-insert' => 'లంకె కలుపు',
@@ -11172,6 +11188,8 @@ $messages['te'] = array(
 	'edittoolbar-tool-gallery' => 'చిత్రమాలిక',
 	'edittoolbar-tool-newline' => 'కొత్త లైను',
 	'edittoolbar-tool-table' => 'పట్టిక',
+	'edittoolbar-tool-table-example-header' => 'శీర్షిక పాఠ్యం',
+	'edittoolbar-tool-table-title' => 'పట్టికని చేర్చండి',
 	'edittoolbar-tool-table-preview' => 'మునుజూపు',
 	'edittoolbar-tool-table-cancel' => 'రద్దు',
 	'edittoolbar-tool-replace-close' => 'రద్దుచేయి',
@@ -11228,6 +11246,7 @@ $messages['te'] = array(
 	'edittoolbar-help-content-ulist-syntax' => '* జాబితా అంశం<br />* జాబితా అంశం',
 	'edittoolbar-help-content-ulist-result' => '<ul><li>జాబితా అంశం</li><li>జాబితా అంశం</li></ul>',
 	'edittoolbar-help-content-olist-description' => 'సంఖ్యానుగుణ జాబితా',
+	'edittoolbar-help-content-olist-syntax' => '# జాబితా అంశం<br /># జాబితా అంశం',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|వివరణ పాఠ్యం]]',
 	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>వివరణ పాఠ్యం</div></div>",
 	'edittoolbar-help-content-reference-description' => 'సాక్ష్యాలు',

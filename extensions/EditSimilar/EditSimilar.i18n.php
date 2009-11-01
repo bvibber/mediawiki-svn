@@ -422,6 +422,20 @@ Dës {{PLURAL:$2|Säit kéint|Säite kéinten}} och vun ärer Hellëf profitéie
 	'tog-edit-similar' => 'Virschloe vun ähnleche Säiten aschalten',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'editsimilar-desc' => 'Им препорачува на корисниците да уредат слична страница по зачувувањето',
+	'editsimilar-thanks' => 'Ви благодариме на придонесот.
+{{PLURAL:$2|Видете ја оваа поврзана страница|Видете ги овие поврзани страници}}: $1.',
+	'editsimilar-thanks-notsimilar' => 'Ви благодариме на придонесите.
+Вашата помош е потребна и на {{PLURAL:$2|оваа страница|овие страници}}: $1.',
+	'editsimilar-thankyou' => 'Ви благодариме на придонесите, $1!',
+	'editsimilar-link-disable' => 'намести прилагодувања',
+	'tog-edit-similar' => 'Овозможи предлози за уредување на слични страници',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
