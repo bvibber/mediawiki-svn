@@ -56,12 +56,48 @@ class WWUtils {
 	$this->wikidbs = array();
     }
 
-    static function slurpList($rs, $field) {
+    function getRows($sql, $key = NULL) {
+	$rs = $this->query($sql);
+	$list = WWUtils::slurpRows($rs, $key);
+	mysql_free_result($rs);
+	return $list;
+    }
+
+    function getList($sql, $valueField, $key = NULL) {
+	$rs = $this->query($sql);
+	$list = WWUtils::slurpList($rs, $valueField, $key);
+	mysql_free_result($rs);
+	return $list;
+    }
+
+    static function slurpList($rs, $field, $key = null) {
 	if (is_string($rs)) $rs = $this->query($rs);
 
 	$list = array();
 	while ($row = mysql_fetch_assoc($rs)) {
-	    $list[] = $row[$field];
+	    $v = $row[$field];
+	    if ($key) {
+		$k = $row[$key];
+		$list[$k] = $v;
+	    } else {
+		$list[] = $v;
+	    }
+	}
+
+	return $list;
+    }
+
+    static function slurpRows($rs, $key = null) {
+	if (is_string($rs)) $rs = $this->query($rs);
+
+	$list = array();
+	while ($row = mysql_fetch_assoc($rs)) {
+	    if ($key) {
+		$k = $row[$key];
+		$list[$k] = $row;
+	    } else {
+		$list[] = $row;
+	    }
 	}
 
 	return $list;

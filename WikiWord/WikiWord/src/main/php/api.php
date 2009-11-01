@@ -12,8 +12,12 @@ if ( $query ) {
     $format = @$_REQUEST['format'];
     if ( !$format ) $format = 'phps';
 
+    if ($lang) {
+	$lang = preg_replace('[^\\w\\d_]', '', $lang);
+    }
+
     $result = array( 'query' => $query );
-    $start = microtime();
+    $start = microtime(true);
 
     try {
 	$thesaurus = new WWThesaurus();
@@ -26,12 +30,12 @@ if ( $query ) {
 	    $page = @$_REQUEST['page'];
 
 	    if ( $lang === null ) $result['error'] = array('code' => 150, 'message' => "missing parameter lang");
-	    else if ( $term !=== null ) {
+	    else if ( $term !== null ) {
 		$result['concepts'] = $thesaurus->getConceptsForTerm($lang, $term);
 		if ( $result['concepts'] === false || $result['concepts'] === null ) {
 		    $result['error'] = array('code' => 210, 'message' => "failed to retrieve concepts for term $langt:$term");
 		}
-	    } else if ( $page !=== null ) {
+	    } else if ( $page !== null ) {
 		$result['concepts'] = $thesaurus->getConceptsForPage($lang, $page);
 		if ( $result['concepts'] === false || $result['concepts'] === null ) {
 		    $result['error'] = array('code' => 250, 'message' => "failed to retrieve concepts for page $langt:$page");
@@ -39,7 +43,7 @@ if ( $query ) {
 	    } else {
 		$result['error'] = array('code' => 110, 'message' => "missing parameter term");
 	    }
-	} if ($query == 'properties') else {
+	} else if ($query == 'properties') {
 	    $gcid = @$_REQUEST['gcid'];
 	    $props = @$_REQUEST['props'];
 	    
@@ -49,7 +53,7 @@ if ( $query ) {
 		$props = preg_split('![\\s,;|/:]\\s*!', $props);
 
 		foreach ( $props as $p ) {
-		    $m = "get" . ucfist($p) . "ForConcept";
+		    $m = "get" . ucfirst($p) . "ForConcept";
 		    if ( !method_exists($thesaurus, $m) ) {
 			$result['error'] = array('code' => 190, 'message' => "unknown property: $p");
 			break;
@@ -66,11 +70,11 @@ if ( $query ) {
 	} else {
 	    $result['error'] = array('code' => 10, 'message' => "bad query: $query");
 	}
-    } catch (Exception e) {
+    } catch (Exception $e) {
 	$result['error'] = array('code' => 1000, 'message' => "unexpected exception: " . $e->getMessage());
     }
 
-    $result['time'] = (microtime() - $start) . "ms";
+    $result['time'] = (microtime(true) - $start) . " sec";
 
     if ( isset($result['error']) ) {
 	#TODO: HTTP error codce would be nice, but causes file_get_contents to swallow the data.
@@ -84,13 +88,13 @@ if ( $query ) {
 	$data = serialize($result);
 	echo $data;
     } else if ($format == 'php') {
-	header("Content-Type: text/php"); 
+	header("Content-Type: text/php; charset=UTF-8"); 
 	var_export($result);
     } else if ($format == 'text') {
-	header("Content-Type: text/plain"); 
+	header("Content-Type: text/plain; charset=UTF-8"); 
 	print_r($result);
     } else {
-	header("Content-Type: text/plain");
+	header("Content-Type: text/plain; charset=UTF-8");
 	header("Status: 400 Bad Request", true, 400);
 	echo "Bad format: $format";
     }
@@ -98,6 +102,6 @@ if ( $query ) {
     exit();
 }
 
-header("Content-Type: text/plain");
+header("Content-Type: text/plain; charset=UTF-8");
 ?>
 WikiWord REST API

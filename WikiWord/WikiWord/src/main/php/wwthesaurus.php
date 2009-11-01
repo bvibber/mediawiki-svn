@@ -3,19 +3,47 @@ require_once(dirname(__FILE__)."/wwutils.php");
 
 class WWThesaurus extends WWUTils {
 
-    function queryConceptsForTerm($lang, $term) {
+    function queryConceptsForTerm($lang, $term, $limit = 100) {
 	global $wwTablePrefix, $wwThesaurusDataset;
 
 	$term = trim($term);
 
-	$sql = "SELECT M.*, O.*, definition FROM {$wwTablePrefix}_{$lang}_meaning as M"
+	$sql = "SELECT O.global_concept as id, M.*, O.*, definition FROM {$wwTablePrefix}_{$lang}_meaning as M"
 	      . " LEFT JOIN {$wwTablePrefix}_{$lang}_definition as D ON M.concept = D.concept "
 	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND M.concept = O.local_concept "
 	      . " WHERE term_text = \"" . mysql_real_escape_string($term) . "\""
 	      . " ORDER BY freq DESC "
-	      . " LIMIT 100";
+	      . " LIMIT $limit";
 
 	return $this->query($sql);
+    }
+
+    function getConceptsForTerm($lang, $term, $limit = 100) {
+	$rs = $this->queryConceptsForTerm($lang, $term);
+	$list = WWUtils::slurpRows($rs);
+	mysql_free_result($rs);
+	return $list;
+    }
+
+    function queryConceptsForPage($lang, $page, $limit = 100) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	$page = trim($page);
+
+	$sql = "SELECT O.global_concept as id, O.* FROM {$wwTablePrefix}_{$lang}_resource as R "
+	      . " JOIN {$wwTablePrefix}_{$lang}_about as A ON A.resource = R.id "
+	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND A.concept = O.local_concept "
+	      . " WHERE R.name = \"" . mysql_real_escape_string($page) . "\""
+	      . " LIMIT $limit";
+
+	return $this->query($sql);
+    }
+
+    function getConceptsForPage($lang, $page, $limit = 100) {
+	$rs = $this->queryConceptsForPage($lang, $page);
+	$list = WWUtils::slurpRows($rs);
+	mysql_free_result($rs);
+	return $list;
     }
 
     function queryLocalConcepts($id) {
@@ -117,6 +145,123 @@ class WWThesaurus extends WWUTils {
 	mysql_free_result($res);
 
 	return $names;
+    }
+
+    /////////////////////////////////////////////////////////
+    function getPagesForConcept( $id, $lang, $limit = 100 ) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	#FIXME: if $lang is not given, collect *all* languages!
+	$sql = "SELECT R.name FROM {$wwTablePrefix}_{$lang}_resource as R "
+	      . " JOIN {$wwTablePrefix}_{$lang}_about as A ON A.resource = R.id "
+	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND A.concept = O.local_concept "
+	      . " WHERE O.global_concept = " . (int)$id
+	      . " LIMIT $limit";
+
+	$pages = $this->getList($sql, "name");
+	if ( $pages === false || $pages === null ) return false;
+
+	return array( $lang => $pages );
+    }
+
+    function getRelatedForConcept( $id, $lang = null, $limit = 100 ) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	$sql = "SELECT C.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
+	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_relation as R ON R.concept2 = C.id "
+	      . " WHERE R.concept1 = ".(int)$id
+	      . " AND ( R.bilink > 0 OR R.langref > 0 OR R.langmatch > 0 )"
+	      . " LIMIT $limit";
+
+	return $this->getRows($sql);
+    }
+
+    function getBroaderForConcept( $id, $lang = null, $limit = 100 ) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	$sql = "SELECT C.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
+	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_broader as R ON R.broad = C.id "
+	      . " WHERE R.narrow = ".(int)$id
+	      . " LIMIT $limit";
+
+	return $this->getRows($sql);
+    }
+
+    function getNarrowerForConcept( $id, $lang = null, $limit = 100 ) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	$sql = "SELECT C.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
+	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_broader as R ON R.narrow = C.id "
+	      . " WHERE R.broad = ".(int)$id
+	      . " LIMIT $limit";
+
+	return $this->getRows($sql);
+    }
+
+    function getTermsForConcept( $id, $lang , $limit = 100 ) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	#FIXME: if $lang is not given, collect *all* languages!
+	$sql = "SELECT M.term_text FROM {$wwTablePrefix}_{$lang}_meaning as M"
+	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND M.concept = O.local_concept "
+	      . " WHERE O.global_concept = " . (int)$id
+	      . " ORDER BY freq DESC "
+	      . " LIMIT $limit";
+
+	$terms = $this->getList($sql, "term_text");
+	if ( $terms === false || $terms === null ) return false;
+
+	return array( $lang => $terms );
+    }
+
+    function getDefinitionForConcept( $id, $lang, $limit = 100 ) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	#FIXME: if $lang is not given, collect *all* languages!
+	$sql = "SELECT D.definition FROM {$wwTablePrefix}_{$lang}_definition as D"
+	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND D.concept = O.local_concept "
+	      . " WHERE O.global_concept = " . (int)$id
+	      . " LIMIT $limit";
+
+	$definitions = $this->getList($sql, "definition");
+	if ( $definitions === false || $definitions === null ) return false;
+
+	return array( $lang => $definitions );
+    }
+
+    function getLinksForConcept( $id, $lang = null, $limit = 100 ) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	$sql = "SELECT C.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
+	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_link as L ON L.target = C.id "
+	      . " WHERE L.anchor = ".(int)$id
+	      . " LIMIT $limit";
+
+	return $this->getRows($sql);
+    }
+
+    function getReferencesForConcept( $id, $lang = null, $limit = 100 ) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	$sql = "SELECT C.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
+	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_link as L ON L.anchor = C.id "
+	      . " WHERE L.target = ".(int)$id
+	      . " LIMIT $limit";
+
+	return $this->getRows($sql);
+    }
+
+    function getScoresForConcept( $id, $lang = null ) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	$sql = "SELECT S.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_stats as S "
+	      . " WHERE S.concept = ".(int)$id
+	    ;
+
+	$r = $this->getRows($sql);
+	if ( !$r ) return false;
+
+	return $r;
     }
 
 }
