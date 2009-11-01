@@ -3,7 +3,10 @@
 $IP = dirname(__FILE__);
 
 require_once("$IP/config.php");
-require_once("$IP/wwutils.php");
+require_once("$IP/wwimages.php");
+
+if ($wwAPI) require_once("$IP/wwclient.php");
+else require_once("$IP/wwthesaurus.php");
 
 function printLocalConceptList($lang, $concepts) {
     global $utils;
@@ -257,7 +260,7 @@ $concept = @$_REQUEST['id'];
 $term = @$_REQUEST['term'];
 $lang = @$_REQUEST['lang'];
 $tolang = @$_REQUEST['tolang'];
-$images = @$_REQUEST['images'];
+$images = @$_REQUEST['images'] || $wwImageSearch;
 
 if (!isset($_REQUEST['translate'])) $tolang = NULL;
 if ($lang == $tolang) $tolang = NULL;
@@ -271,8 +274,14 @@ if ($lang && !isset($wwLanguages[$lang])) {
     $error = "bad language code: $lang";
 }
 
-$utils = new WWUtils();
-$utils->connect($wwDBServer, $wwDBUser, $wwDBPassword, $wwDBDatabase);
+if ($wwAPI) $thesaurus = new WWClient($wwAPI);
+else {
+  $thesaurus = new WWThesaurus();
+  $thesaurus->connect($wwDBServer, $wwDBUser, $wwDBPassword, $wwDBDatabase);
+}
+
+$utils = new WWImages( $thesaurus );
+if ( !$utils->db ) $utils->connect($wwDBServer, $wwDBUser, $wwDBPassword, $wwDBDatabase);
 
 if (@$_REQUEST['debug']) $utils->debug = true;
 
@@ -284,9 +293,10 @@ $gallery = NULL;
 if (!$error) {
   try {
       if ($lang && $concept) {
-	  $result = $utils->queryConceptInfo($concept, $lang);
+	  $result = $thesaurus->getConceptInfo($concept, $lang);
+	  if ( $result ) $result = array( $result ); //hack
       } else if ($lang && $term) {
-	  $result = $utils->queryConceptsForTerm($lang, $term, $limit);
+	  $result = $thesaurus->getConceptsForTerm($lang, $term, $limit);
       } else if ($concept && $images) {
 	  $gallery = $utils->getImagesAbout($concept);
       }
@@ -351,11 +361,14 @@ if (!$error) {
 	  <td>
 	    <input type="submit" name="go" value="go"/>
 	  </td>
+	  <?php if (!$wwImageSearch) { ?>
 	  <td>
 	    <label for="images">Images: </label>
 	    <input type="checkbox" name="images" value="Images" <?php print $images ? " checked=\"checked\"" : ""?>/>
 	  </td>
+	  <?php } ?>
 	</tr>
+	<?php if ($wwAllowTranslate) { ?>
 	<tr>
 	  <td>
 	    &nbsp;
@@ -368,6 +381,7 @@ if (!$error) {
 	    <input type="submit" name="translate" value="translate"/>
 	  </td>
 	</tr>
+	<?php } ?>
       </table>
       <p class="note">Note: this is a thesaurus lookup, not a full text search. Only exact matches are considered, matching is case-sensitive.</p>
     </form>
@@ -388,7 +402,7 @@ if ($result) {
     <table  border="0" class="results">
     <?php 
       $count = 0;
-      while ($row = mysql_fetch_assoc($result)) {
+      foreach ( $result as $row ) {
 	  $count += 1;
 
 	  if ($lang) {
@@ -411,8 +425,6 @@ if ($result) {
 
 	  if (!$continue) break;
       }
-
-      mysql_free_result($result);
     ?>
     </table>
 

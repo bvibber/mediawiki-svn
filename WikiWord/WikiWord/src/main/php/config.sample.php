@@ -1,5 +1,10 @@
 <?php
 
+#$wwAPI = "http://wikiword.wikimedia.de/api.php";
+$wwAPI = false;
+$wwAllowTranslate = false;
+$wwImageSearch = false;
+
 $wwDBServer = "localhost";
 $wwDBUser = "wikiword";
 $wwDBPassword = "xxxxxxxxxx";
@@ -16,8 +21,8 @@ $wwThumbSize = 120;
 $wwThumbnailURL = "http://toolserver.org/tsthumb/tsthumb?f={name}&domain=commons.wikimedia.org&w={width}&h={height}";
 $wwImagePageURL = "http://commons.wikimedia.org/wiki/File:{name}";
 
-$wwFakeCommonsConcepts = true;
-$wwFakeCommonsPlural = true;
+$wwFakeCommonsConcepts = false;
+$wwFakeCommonsPlural = false;
 $wwCommonsTablePrefix = "commonswiki_p.";
 
 $wwWikiInfoTable = "toolserver.wiki";

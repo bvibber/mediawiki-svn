@@ -72,11 +72,12 @@ class ImageCollection {
 
 }
 
-class WWImages extends WWUtils {
+class WWImages extends WWWikis {
     var $thesaurus;
 
     function __construct($thesaurus) {
 	$this->thesaurus = $thesaurus;
+	if ( !empty( $this->thesaurus->db ) ) $this->db = $thesaurus->db;
     }
 
     function queryImagesOnPage($lang, $ns, $title, $commonsOnly = false) {
@@ -238,7 +239,7 @@ class WWImages extends WWUtils {
     function getImagesAbout($id, $max = 0) {
 	global $wwFakeCommonsConcepts, $wwFakeCommonsPlural, $wwLanguages;
 
-	$concepts = $this->thesaurus->getLocalConcepts($id);
+	$concepts = $this->thesaurus->getPagesForConcept($id);
 
 	if ($wwFakeCommonsConcepts && isset($concepts['en'])) {
 	    $concepts['commons'] = @$concepts['en'];
@@ -246,12 +247,14 @@ class WWImages extends WWUtils {
 
 	$images = new ImageCollection();
 	
-	foreach ($concepts as $lang => $title) {
+	foreach ($concepts as $lang => $pages) {
 	    if ($lang == "commons") continue;
 	    if (!isset($wwLanguages[$lang])) continue;
 
-	    $img = $this->getRelevantImagesOnPage($lang, 0, $title, true); //FIXME: resource mapping
-	    $images->addImages($img, $lang . ":" . $title, "article", 1);
+	    foreach ($pages as $page) {
+		$img = $this->getRelevantImagesOnPage($lang, 0, $page, true); 
+		$images->addImages($img, $lang . ":" . $page, "article", 1);
+	    }
 	}
 
 	if ($max && $images->size()>$max) {
@@ -260,23 +263,25 @@ class WWImages extends WWUtils {
 	}
 
 	if (isset($concepts['commons'])) {
-	    $title = $concepts['commons'];
+	    $pages = $concepts['commons'];
 
-	    $img = $this->getRelevantImagesOnPage("commons", 0, $title, false); //FIXME: resource mapping
-	    $images->addImages($img, "commons:" . $title, "gallery", 0.8);
+	    foreach ($pages as $page) {
+		$img = $this->getRelevantImagesOnPage("commons", 0, $page, false); 
+		$images->addImages($img, "commons:" . $page, "gallery", 0.8);
 
-	    if ($max && $images->size()>$max) {
-		$this->addImageTags($images);
-		return $images->listImages($max);
-	    }
+		if ($max && $images->size()>$max) {
+		    $this->addImageTags($images);
+		    return $images->listImages($max);
+		}
 
-	    $img = $this->getImagesInCategory("commons", $title); //FIXME: resource mapping
-	    if ($img) $images->addImages($img, "commons:category:" . $title, "category", 0.5);
-	    else if ($wwFakeCommonsConcepts && $wwFakeCommonsPlural && !preg_match('/s$/', $title)) {
-		$cname = $title."s";
+		$img = $this->getImagesInCategory("commons", $page); //FIXME: resource mapping
+		if ($img) $images->addImages($img, "commons:category:" . $page, "category", 0.5);
+		else if ($wwFakeCommonsConcepts && $wwFakeCommonsPlural && !preg_match('/s$/', $page)) {
+		    $cname = $page."s";
 
-		$img = $this->getImagesInCategory("commons", $cname); //FIXME: resource mapping
-		$images->addImages($img, "commons:category:" . $cname, "category(pl)", 0.5);
+		    $img = $this->getImagesInCategory("commons", $cname); //FIXME: resource mapping
+		    $images->addImages($img, "commons:category:" . $cname, "category(pl)", 0.5);
+		}
 	    }
 	}
 

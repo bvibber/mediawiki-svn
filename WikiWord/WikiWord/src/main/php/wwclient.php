@@ -8,10 +8,10 @@ class WWClient {
 	$this->api = $api;
     }
 
-    function query( $param ) {
+    function query( $params ) {
 	$url = $this->api . '?format=phps';
 
-	for ( $params as $k => $v ) {
+	foreach ( $params as $k => $v ) {
 	    $url .= '&';
 	    $url .= urlencode( $k );
 	    $url .= '=';
@@ -24,8 +24,12 @@ class WWClient {
 	$data = unserialize($data);
 	if ( !$data ) throw new Exception("failed to unserialize data from $url");
 
-	if ( $data['error'] ) throw new Exception("API returned error ".$data['error']['code'].": ".$data['error']['message']);
+	if ( @$data['error'] ) throw new Exception("API returned error ".$data['error']['code'].": ".$data['error']['message']);
 	return $data;
+    }
+
+    function getLocalConcepts($id) { //NOTE: deprecated alias for backward compat
+	return getPagesForConcept($id);
     }
 
     function getPagesForConcept( $id, $lang = null ) {
@@ -71,6 +75,11 @@ class WWClient {
     function getScoresForConcept( $id, $lang = null ) {
 	$p = $this->getConceptProperties( $id, 'scores', $lang );
 	return $p['scores'];
+    }
+
+    function getConceptInfo( $id, $lang = null ) {
+	if ( $lang ) return $this->getConceptProperties( "definition,broader,narrower,related" );
+	else return $this->getConceptProperties( "broader,narrower,related" );
     }
 
     function getConceptProperties( $id, $props, $lang = null ) {
