@@ -119,6 +119,14 @@ $messages['ca'] = array(
 	'simplesearch-search' => 'Cerca',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'simplesearch' => 'گەڕانی ساکار',
+	'simplesearch-search' => 'گەڕان',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

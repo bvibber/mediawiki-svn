@@ -272,10 +272,13 @@ Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
+	'prefstats-xaxis' => 'درێژە (کاتژمێر)',
 	'prefstats-factor-hour' => 'کاتژمێر',
+	'prefstats-factor-sixhours' => 'شەش کاتژمێر',
 	'prefstats-factor-day' => 'ڕۆژ',
 	'prefstats-factor-week' => 'حەوتوو',
 	'prefstats-factor-twoweeks' => 'دوو حەوتوو',
+	'prefstats-factor-fourweeks' => 'چوار حەوتوو',
 );
 
 /** Czech (Česky)

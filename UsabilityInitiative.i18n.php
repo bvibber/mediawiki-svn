@@ -519,10 +519,12 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Ravichandra
+ * @author Veeven
  */
 $messages['te'] = array(
 	'usabilityinitiative' => 'వాడుక సౌలభ్యం కోసం ఒక ప్రయత్నం',
 	'usabilityinitiative-desc' => 'వికీపీడియా వాడుక సౌలభ్యాన్ని పెంచేందుకు వీలుగా కొన్ని నూతన ఫీచర్లు',
+	'prefs-experimental' => 'ప్రయోగాత్మక సౌలభ్యాలు',
 );
 
 /** Turkish (Türkçe)

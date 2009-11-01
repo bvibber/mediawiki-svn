@@ -439,6 +439,9 @@ $messages['eu'] = array(
 	'ct-beginner' => 'Hasiberria',
 	'ct-intermediate' => 'Maila ertainekoa',
 	'ct-expert' => 'Aditua',
+	'ct-anon-users' => 'Lankide anonimoak',
+	'ct-and' => 'eta',
+	'ct-update-table' => 'Taula eguneratu',
 );
 
 /** Finnish (Suomi)
@@ -451,14 +454,24 @@ $messages['fi'] = array(
 	'clicktracking-desc' => 'Klikkausten seuranta, tarkoituksena seurata tapahtumia, jotka eivät aiheuta sivun uudelleenlataamista.',
 	'ct-title' => 'Käyttäjän napsautuksien yhteenlaskettu määrä',
 	'ct-event-name' => 'Tapahtuman nimi',
+	'ct-expert-header' => '”Asiantuntija”-napsautukset',
+	'ct-intermediate-header' => '”Keskitaso”-napsautukset',
+	'ct-beginner-header' => '”Aloittelija”-napsautukset',
 	'ct-total-header' => 'Napsautuksia yhteensä',
 	'ct-start-date' => 'Alkamispäivä (VVVVKKPP)',
 	'ct-end-date' => 'Lopetuspäivä (VVVVKKPP)',
+	'ct-increment-by' => 'Päivien määrä, jota kukin tietopiste esittää',
+	'ct-change-graph' => 'Vaihda kuvaajaa',
 	'ct-beginner' => 'Aloittelija',
 	'ct-intermediate' => 'Keskitaso',
 	'ct-expert' => 'Asiantuntija',
+	'ct-date-range' => 'Aikaväli',
+	'ct-editing' => 'Tällä hetkellä muokkaamassa:',
 	'ct-anon-users' => 'Anonyymit käyttäjät',
+	'ct-user-contribs' => 'Käyttäjän kaikki muokkaukset',
+	'ct-user-span' => 'Käyttäjän muokkaukset aikavälillä',
 	'ct-and' => 'ja',
+	'ct-update-table' => 'Päivitä taulukko',
 );
 
 /** French (Français)

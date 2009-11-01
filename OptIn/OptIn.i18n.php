@@ -1540,12 +1540,12 @@ Nahi duzunean proba dezakezu berriro "{{int:optin-try}}" loturan klik eginda pan
 	'optin-survey-answer-changes-upload' => 'Edukiak eta artxiboen igoera hobetu.',
 	'optin-survey-answer-changes-other' => 'Bestelakoak:',
 	'optin-improvements' => '== Zer hobetu da? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Nabigazio-barra berriaren argazkia]]
 ;Nabigazioa hobetua
 Nabigazio sistema berriak non zauden ikusteko eta ezer egiten ari zaren jakiteko erraztasun handiagoa ematen du, hala nola nahi duzun lekura joan eta nahi duzuna lortzeko. Goian eskuinean dagoen bilaketa kutxarekin, bilaketak egitea errazagoa izango da.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Tresna-barra berriaren argazkia]]
 ;Editatzeko tresna-barrako hobekuntzak
 Ikono berria eta hobetuek erabili behar duzun tresna argiago erakusten dute. Gainera, gehien erabiltzen dituzun tresnak klik batera edukiko dituzu.
 Laguntza atalak tresna hauen erabilera amankomunetarako erreferentzia azkar batera eramango zaitu .
@@ -3301,7 +3301,7 @@ $messages['ml'] = array(
 	'optin-title-justoptedout' => 'ബീറ്റ പരീക്ഷിച്ചു നോക്കുന്നതിനു നന്ദി',
 	'optin-title-feedback' => 'ബീറ്റയെ കുറിച്ചുള്ള അഭിപ്രായം',
 	'optin-needlogin' => 'ബീറ്റ പരീക്ഷിക്കാൻ താങ്കൾ [$1 ലോഗിൻ] ചെയ്യേണ്ടതാണ്.',
-	'optin-intro' => 'വിക്കിപീഡിയയുടെ ഉപയോഗക്ഷമത വർദ്ധിപ്പിക്കാൻ വിക്കിപീഡീയ യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് കഠിനാധ്വാനം ചെയ്യുന്നുണ്ട്.
+	'optin-intro' => 'വിക്കിപീഡിയയുടെ ഉപയോഗക്ഷമത വർദ്ധിപ്പിക്കാൻ വിക്കിപീഡിയ യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് കഠിനാധ്വാനം ചെയ്യുന്നുണ്ട്.
 താങ്കൾ ബീറ്റ പരീക്ഷിച്ചു നോക്കാൻ ആഗ്രഹിക്കുന്നുവോ?',
 	'optin-feedback-intro' => 'ബീറ്റ പരീക്ഷിക്കുന്നതിനു നന്ദി.
 പുതിയ ദൃശ്യരൂപത്തെക്കുറിച്ച് താങ്കളെന്താണ് കരുതുന്നതെന്നറിയാൻ ഞങ്ങളാഗ്രഹിക്കുന്നു, അതുകൊണ്ട് ദയവായി താഴെ കൊടുത്തിരിക്കുന്ന സർവേയിൽ പങ്കെടുക്കാൻ താത്പര്യപ്പെടുന്നു.',
@@ -3525,13 +3525,13 @@ Nixtiequ nkunu nafu x'taħseb fuq din l-interfaċċa l-ġdida, fejn napprezzaw j
 	'optin-survey-answer-changes-other' => 'Oħrajn:',
 	'optin-improvements' => "== X'ġie mtejjeb ==
 [[File:UsabilityNavigation.png|left|link=]]
-;Navigazzjoni imsaħħha
+;Tisħiħ tan-navigazzjoni
 Is-sistema ġdida ta' navigazzjoni tagħmilha aktar faċli għalik biex tkun taf fejn int u x'qiegħed tagħmel, u kif ukoll fejn tista' tmur u kif tista' tmur. Bil-kaxxa tat-tfittxija pożizzjonata fuq il-lemin tan-naħa ta' fuq tal-paġna, il-funzjoni tat-tfittxija hi aktar faċli biex issibha u aktar veloċi biex tużaha.
 <div style=\"clear:both;\"></div>
 
 [[File:UsabilityToolbar.png|left|link=]]
 ;Titjib fil-kaxxa tal-għodda
-L-ikoni ġodda u mtejba jagħmluha aktar evidenti x'azzjonijiet li kull għodda tesegwixxi. Is-sezzjonijiet espandibbli jnaqqsu iktar il-konfunżjoni li tista' tinħoloq bil-ħafna għodda waqt li l-għodda l-aktar użati jibqgħu biss għafsa 'l bogħod.
+L-ikoni ġodda u mtejba jagħmluha aktar evidenti x'azzjonijiet li kull għodda tesegwixxi. Is-sezzjonijiet espandibbli jnaqqsu iktar il-konfużjoni li tista' tinħoloq bil-ħafna għodda waqt li l-għodda l-aktar użati jibqgħu biss għafsa 'l bogħod.
 Is-sezzjoni tal-għajnuna tipprovdi aċċess istantanju għal referenza tas-sintassi komuni tal-wiki.
 <div style=\"clear:both;\"></div>
 
