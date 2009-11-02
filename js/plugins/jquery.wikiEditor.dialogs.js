@@ -14,16 +14,16 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
  */
 api: {
 	addDialog: function( context, data ) {
-		$.wikiEditor.modules.dialogs.fn.create( context, { 'modules': data } )
+		$.wikiEditor.modules.dialogs.fn.create( context, data )
 	},
-	openDialog: function( context, data ) {
-		if ( data.dialog in $.wikiEditor.modules.dialogs.modules ) {
-			$( '#' + $.wikiEditor.modules.dialogs.modules[data.dialog].id ).dialog( 'open' );
+	openDialog: function( context, module ) {
+		if ( module in $.wikiEditor.modules.dialogs.modules ) {
+			$( '#' + $.wikiEditor.modules.dialogs.modules[module].id ).dialog( 'open' );
 		}
 	},
 	closeDialog: function( context, data ) {
-		if ( data.dialog in $.wikiEditor.modules.dialogs.modules ) {
-			$( '#' + $.wikiEditor.modules.dialogs.modules[data.dialog].id ).dialog( 'close' );
+		if ( module in $.wikiEditor.modules.dialogs.modules ) {
+			$( '#' + $.wikiEditor.modules.dialogs.modules[module].id ).dialog( 'close' );
 		}
 	}
 },
