@@ -78,10 +78,16 @@ body.rtl .wikiEditor-ui-toc {
 
 /* these first two should probably be conditionally applied */
 /* suggestions for doing that welcome */
-.wikiEditor-ui-toc ul {
-	width:132px;
-	float:left;
+.wikiEditor-ui-toc {
+	overflow-y:hidden;
+	position:relative;
 }
+.wikiEditor-ui-toc ul {
+	overflow-y:auto;
+	overflow-x:hidden;
+	height:100%;
+}
+
 .wikiEditor-ui-toc ul ul {
 	float:none;
 	width:auto;
@@ -89,7 +95,9 @@ body.rtl .wikiEditor-ui-toc {
 #wikiEditor-ui-toc-collapse {
 	height:100%;
 	width:18px;
-	float:left;	
+	position:absolute;
+	top:0;
+	left:0;
 }
 .wikiEditor-ui-toc-collapse-open {
 	background:#f3f3f3 url(../images/wikiEditor/toc/close.png) 4px 50% no-repeat;

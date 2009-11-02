@@ -30,7 +30,7 @@ $wgNavigableTOCUserEnable = true;
 $wgNavigableTOCCollapseEnable = true;
 
 // Bump the version number every time you change any of the .css/.js files
-$wgNavigableTOCStyleVersion = 4;
+$wgNavigableTOCStyleVersion = 5;
 
 /* Setup */
 
