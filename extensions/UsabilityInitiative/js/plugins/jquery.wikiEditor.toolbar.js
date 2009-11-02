@@ -456,6 +456,9 @@ fn : {
 					.attr( 'href', '#' )
 					.text( $.wikiEditor.autoMsg( section, 'label' ) )
 					.data( 'context', context )
+					.bind( 'mouseup', function( e ) {
+						$(this).blur();
+					} )
 					.bind( 'mousedown', function( e ) {
 						// Only act when the primary mouse button was pressed
 						if ( e.button !== 0 ) {
@@ -464,7 +467,6 @@ fn : {
 						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
 						var $section =
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
-						$(this).blur();
 						var show = $section.css( 'display' ) == 'none';
 						$previousSections = $section.parent().find( '.section:visible' );
 						$previousSections.css( 'position', 'absolute' );
