@@ -166,29 +166,31 @@ fn: {
 				.addClass( 'wikiEditor-ui-toc-collapse-open' )
 				.attr( 'id', 'wikiEditor-ui-toc-collapse' )
 				.data( 'oWidth', $.wikiEditor.modules.toc.defaults.width)
-				.bind('mouseup', function(){
+				.bind( 'mouseup', function() {
 					var $e = $(this);
-					var close = $e.hasClass('wikiEditor-ui-toc-collapse-open');
-					if(close) {
+					var close = $e.hasClass( 'wikiEditor-ui-toc-collapse-open' );
+					if( close ) {
+						$( '#wikiEditor-ui-toc-collapse' )
+							.removeClass( 'wikiEditor-ui-toc-collapse-open' );
 						$e.parent()
-							.animate( {'width': $e.outerWidth()}, 'fast', function() {
-									$(this).find('ul:first').hide();
+							.animate( { 'width': $e.outerWidth() }, 'fast', function() {
+									$(this).find( 'ul:first' ).hide();
 								} )
 							.prev()
-							.animate( {'marginRight': $e.outerWidth() + 1 }, 'fast', function(){
-								$('#wikiEditor-ui-toc-collapse')
-									.removeClass('wikiEditor-ui-toc-collapse-open')
-									.addClass('wikiEditor-ui-toc-collapse-closed');
+							.animate( { 'marginRight': $e.outerWidth() + 1 }, 'fast', function() {
+								$( '#wikiEditor-ui-toc-collapse' )
+									.addClass( 'wikiEditor-ui-toc-collapse-closed' );
 							});
 					} else {
+						$( '#wikiEditor-ui-toc-collapse' )
+							.removeClass( 'wikiEditor-ui-toc-collapse-closed' );
 						$e.siblings().show()
 						.parent()
-							.animate( {'width': $e.data('oWidth')}, 'fast' )
+							.animate( { 'width': $e.data('oWidth') }, 'fast' )
 							.prev()
-							.animate( {'marginRight': $e.data('oWidth')}, 'fast', function(){
-								$('#wikiEditor-ui-toc-collapse')
-									.removeClass('wikiEditor-ui-toc-collapse-closed')
-									.addClass('wikiEditor-ui-toc-collapse-open');
+							.animate( { 'marginRight': $e.data('oWidth') }, 'fast', function() {
+								$( '#wikiEditor-ui-toc-collapse' )
+									.addClass( 'wikiEditor-ui-toc-collapse-open' );
 							});
 					}
 					
