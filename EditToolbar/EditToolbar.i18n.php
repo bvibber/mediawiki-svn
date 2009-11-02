@@ -132,6 +132,8 @@ $messages['en'] = array(
 	'edittoolbar-characters-page-arabic' => 'Arabic',
 	'edittoolbar-characters-page-hebrew' => 'Hebrew',
 	'edittoolbar-characters-page-telugu' => 'Telugu',
+	'edittoolbar-characters-page-sinhala' => 'Sinhala',
+	'edittoolbar-characters-page-gujarati' => 'Gujarati',
 	/* Help Section */
 	'edittoolbar-section-help' => 'Help',
 	'edittoolbar-help-heading-description' => 'Description',
