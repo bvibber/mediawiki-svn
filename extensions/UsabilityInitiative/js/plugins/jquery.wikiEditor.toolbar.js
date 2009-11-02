@@ -239,7 +239,7 @@ fn : {
 				}
 				break;
 			case 'dialog':
-				context.$textarea.wikiEditor( 'openDialog', { 'dialog': action.module } );
+				context.$textarea.wikiEditor( 'openDialog', action.module );
 				break;
 			default: break;
 		}
