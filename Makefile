@@ -24,7 +24,9 @@ PLUGINS := \
 	js/plugins/jquery.wikiEditor.js\
 	js/plugins/jquery.wikiEditor.dialogs.js\
 	js/plugins/jquery.wikiEditor.toolbar.js\
-	js/plugins/jquery.wikiEditor.toc.js
+	js/plugins/jquery.wikiEditor.toc.js\
+	js/plugins/jquery.wikiEditor.code.js
+	
 
 all: \
 	css/combined.css\
