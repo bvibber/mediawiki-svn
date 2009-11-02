@@ -924,12 +924,17 @@ $.fn.suggestions = function() {
  */
 ( function( $ ) { $.fn.extend( {
 
+/**
+ * Get the currently selected text in this textarea. Will focus the textarea
+ * in some browsers (IE/Opera)
+ */
 getSelection: function() {
 	var e = this.jquery ? this[0] : this;
 	var retval = '';
 	if ( e.style.display == 'none' ) {
 		// Do nothing
 	} else if ( document.selection && document.selection.createRange ) {
+		e.focus();
 		var range = document.selection.createRange();
 		retval = range.text;
 	} else if ( e.selectionStart || e.selectionStart == '0' ) {
