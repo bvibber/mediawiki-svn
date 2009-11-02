@@ -1,8 +1,21 @@
 = Wikilog release notes =
 
+== Current development version ==
+
+=== New features ===
+
+* New parameters 'date', 'time', 'updatedDate', 'updatedTime' and 'hasMore'
+  for the template pager, used when embedding using templates. Old parameters
+  'pubdate' and 'updated' were deprecated, and should be removed on v1.2.0.
+
+=== Bug fixes ===
+
+* wikilogImportDocumentation.php updated to work with MediaWiki 1.16.
+
+
 == Wikilog 1.0.0 ==
 
-Oct 29, 2009
+Oct 30, 2009
 
 First stable release of the Wikilog extension.
 

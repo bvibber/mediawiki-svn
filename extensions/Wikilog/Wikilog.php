@@ -32,12 +32,12 @@ if ( !defined( 'MEDIAWIKI' ) )
  * General extension information.
  */
 $wgExtensionCredits['specialpage'][] = array(
-	'name'				=> 'Wikilog',
-	'version'			=> '1.0.0',
-	'author'			=> 'Juliano F. Ravasi',
-	'description'		=> 'Adds blogging features, creating a wiki-blog hybrid.',
-	'descriptionmsg'	=> 'wikilog-desc',
-	'url'				=> 'http://www.mediawiki.org/wiki/Extension:Wikilog',
+	'name'           => 'Wikilog',
+	'version'        => '1.0.0.1dev',
+	'author'         => 'Juliano F. Ravasi',
+	'description'    => 'Adds blogging features, creating a wiki-blog hybrid.',
+	'descriptionmsg' => 'wikilog-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Wikilog',
 );
 
 /*

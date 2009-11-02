@@ -319,6 +319,10 @@ class WikilogTemplatePager
 		return "</div>\n";
 	}
 
+	/**
+	 * @todo (On or after Wl 1.2.0) Remove {{{pubdate}}} and {{{updated}}}.
+	 * @todo (Req >= Mw 1.16) Remove bug 20431 workaround.
+	 */
 	function formatRow( $row ) {
 		global $wgParser, $wgContLang;
 
@@ -326,15 +330,28 @@ class WikilogTemplatePager
 		$item = WikilogItem::newFromRow( $row );
 		list( $article, $parserOutput ) = WikilogUtils::parsedArticle( $item->mTitle );
 		list( $summary, $content ) = WikilogUtils::splitSummaryContent( $parserOutput );
-		if ( !$summary ) $summary = $content;
+		if ( empty( $summary ) ) {
+			$summary = $content;
+			$hasMore = false;
+		} else {
+			$hasMore = true;
+		}
 
 		# Some general data.
 		$authors = WikilogUtils::authorList( array_keys( $item->mAuthors ) );
 		$tags = implode( wfMsgForContent( 'comma-separator' ), array_keys( $item->mTags ) );
-		$pubdate = $wgContLang->timeanddate( $item->getPublishDate(), true );
-		$updated = $wgContLang->timeanddate( $item->getUpdatedDate(), true );
 		$comments = WikilogUtils::getCommentsWikiText( $item );
 		$divclass = 'wl-entry' . ( $item->getIsPublished() ? '' : ' wl-draft' );
+
+		$itemPubdate = $item->getPublishDate();
+		$pubdate = $wgContLang->timeanddate( $itemPubdate, true );
+		$publishedDate = $wgContLang->date( $itemPubdate );
+		$publishedTime = $wgContLang->time( $itemPubdate );
+
+		$itemUpdated = $item->getUpdatedDate();
+		$updated = $wgContLang->timeanddate( $itemUpdated, true );
+		$updatedDate = $wgContLang->date( $itemUpdated );
+		$updatedTime = $wgContLang->time( $itemUpdated );
 
 		# Template parameters.
 		$vars = array(
@@ -346,9 +363,14 @@ class WikilogTemplatePager
 			'authors'       => $authors,
 			'tags'          => $tags,
 			'published'     => $item->getIsPublished() ? '*' : '',
-			'pubdate'       => $pubdate,
-			'updated'       => $updated,
+			'pubdate'       => $pubdate, # Deprecated, to be removed on Wl 1.2.0.
+			'date'          => $publishedDate,
+			'time'          => $publishedTime,
+			'updated'       => $updated, # Deprecated, to be removed on Wl 1.2.0.
+			'updatedDate'   => $updatedDate,
+			'updatedTime'   => $updatedTime,
 			'summary'       => $wgParser->insertStripItem( $summary ),
+			'hasMore'       => $hasMore ? '*' : '',
 			'comments'      => $comments
 		);
 
