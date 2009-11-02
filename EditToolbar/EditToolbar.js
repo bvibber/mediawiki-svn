@@ -944,6 +944,7 @@ js2AddOnloadHook( function() {
 			var externalMsg = gM( 'edittoolbar-tool-link-int-target-status-external' );
 			var loadingMsg = gM( 'edittoolbar-tool-link-int-target-status-loading' );
 			$j( '#edittoolbar-link-int-target-status' )
+				.before( $j( '<br />' ) )
 				.append( $j( '<img />' ).attr( {
 					'id': 'edittoolbar-link-int-target-status-exists',
 					'src': $j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-exists.png',
@@ -1137,7 +1138,7 @@ js2AddOnloadHook( function() {
 				$j(this).data( 'articlePathRegex', new RegExp(
 					'^' + RegExp.escape( wgServer + wgArticlePath )
 						.replace( /\\\$1/g, '(.*)' ) + '$'
-				) );
+				) );				
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.getSelection();
 				$j( '#edittoolbar-link-int-target' ).focus();

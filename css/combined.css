@@ -171,7 +171,6 @@ body.rtl .wikiEditor-ui-toc {
 .wikiEditor-ui-toc ul li div.current {
 	background-color: #FAFAFA;
 	color: #333333;
-	cursor: default;
 }
 .wikiEditor-ui-toc ul li div.section-0 {
 	font-size: 1em;
