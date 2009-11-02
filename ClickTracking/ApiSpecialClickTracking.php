@@ -55,10 +55,10 @@ class ApiSpecialClickTracking extends ApiBase {
 		}
 
 		// check start and end date are of proper format
-		if( $params['startdate'] != 0 && strptime( $this->space_out_date( $params['startdate'] ), "%Y %m %d" ) === false ) {
+		if( $params['startdate'] != 0 && strptime( SpecialClickTracking::space_out_date( $params['startdate'] ), "%Y %m %d" ) === false ) {
 			$this->dieUsage( "startdate not in YYYYMMDD format: <<{$params['startdate']}>>", 'badstartdate' );
 		}
- 		if( $params['enddate'] != 0 && strptime( $this->space_out_date( $params['enddate'] ), "%Y %m %d" ) === false ) {
+ 		if( $params['enddate'] != 0 && strptime( SpecialClickTracking::space_out_date( $params['enddate'] ), "%Y %m %d" ) === false ) {
 			$this->dieUsage( "enddate not in YYYYMMDD format:<<{$params['enddate']}>>", 'badenddate' );
 		}
 
@@ -72,14 +72,7 @@ class ApiSpecialClickTracking extends ApiBase {
 		}
 	}
 
-	/**
-	 * Space out the dates
-	 * @param $datewithnospaces date with no spaces
-	 * @return date with spaces
-	 */
-	public function space_out_date( $datewithnospaces ) {
-		return ( substr( $datewithnospaces, 0, 4 ) . ' ' .substr( $datewithnospaces, 4, 2 ) . ' ' . substr( $datewithnospaces, 6, 2 ) );
-	}
+
 
 	public function getParamDescription() {
 		return array(

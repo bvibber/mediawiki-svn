@@ -487,6 +487,16 @@ class SpecialClickTracking extends SpecialPage {
 			
 	}
 
+	/**
+	 * Space out the dates for date validation
+	 * @param $datewithnospaces date with no spaces
+	 * @return date with spaces
+	 */
+	public static function space_out_date( $datewithnospaces ) {
+		return ( substr( $datewithnospaces, 0, 4 ) . ' ' .substr( $datewithnospaces, 4, 2 ) . ' ' . substr( $datewithnospaces, 6, 2 ) );
+	}
+	
+	
 	/*
 	 * get time constraints
 	 * @param minTime minimum day (YYYYMMDD)
@@ -494,9 +504,13 @@ class SpecialClickTracking extends SpecialPage {
 	 * NOTE: once some of the constraints have been finalized, this will use more of the Database functions and not raw SQL
 	 */
 	static function getTimeConstraintsStatement( $minTime, $maxTime ){
-		if($minTime == 0 || $maxTime == 0){
-			return '';		
-		}
+		$minTime = addslashes($minTime);
+		$maxTime = addslashes($maxTime);
+		if( $minTime == 0 || $maxTime == 0 ||
+		 	( strptime( SpecialClickTracking::space_out_date( $minTime ), "%Y %m %d" ) === false ) ||
+		 	( strptime( SpecialClickTracking::space_out_date( $minTime ), "%Y %m %d" ) === false ) ) {
+		 		return '';
+		 	}
 		else {
 			
 			return "WHERE `action_time` >= '$minTime' AND `action_time` <= '$maxTime'";
@@ -514,17 +528,10 @@ class SpecialClickTracking extends SpecialPage {
 	 */
 	public static function getTopEvents($minTime = "", $maxTime = "", $normalize_top_results = false){
 		
-		$normalize = "click_tracking";
-		//escaped
-		
 		$time_constraint_statement = self::getTimeConstraintsStatement($minTime,$maxTime);
 		$time_constraint = $time_constraint_statement;
 		
-		if($normalize_top_results){
-			$normalize = "(select distinct session_id, event_id from click_tracking $time_constraint_statement) as t1";
-			$time_constraint = "";
-		}
-		$sql = "select count(event_id) as totalevtid, event_id,event_name from $normalize" .
+		$sql = "select count(event_id) as totalevtid, event_id,event_name from click_tracking" .
 		 " LEFT JOIN click_tracking_events ON event_id=click_tracking_events.id".
 		 " $time_constraint  group by event_id order by totalevtid desc";
 		
@@ -541,14 +548,8 @@ class SpecialClickTracking extends SpecialPage {
 	 */
 	static function getTableValue($event_id, $userDef, $minTime = '', $maxTime = '', $normalize_results = false){
 		
-		$normalize = "click_tracking";
-		//escaped
 		$time_constraint_statement = self::getTimeConstraintsStatement($minTime,$maxTime); 
 		$time_constraint = $time_constraint_statement;
-		if($normalize_results){
-			$normalize = "(select distinct session_id, event_id, user_total_contribs, user_contribs_span1, user_contribs_span2, user_contribs_span3, is_logged_in from click_tracking $time_constraint_statement) as t1";
-			$time_constraint = "";
-		}
 		
 		$user_conditions = SpecialClickTracking::buildUserDefQuery($userDef);
 		
@@ -556,7 +557,7 @@ class SpecialClickTracking extends SpecialPage {
 		
 		$and = ($time_constraint == "" ? "": "and");
 		
-		$sql ="select count(*) as totalcount from $normalize $where $time_constraint $and ($user_conditions) and event_id=$event_id";
+		$sql ="select count(*) as totalcount from click_tracking $where $time_constraint $and ($user_conditions) and event_id=$event_id";
 		
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->query($sql);
