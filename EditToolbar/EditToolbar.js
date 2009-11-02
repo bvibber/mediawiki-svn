@@ -1138,7 +1138,7 @@ js2AddOnloadHook( function() {
 				$j(this).data( 'articlePathRegex', new RegExp(
 					'^' + RegExp.escape( wgServer + wgArticlePath )
 						.replace( /\\\$1/g, '(.*)' ) + '$'
-				) );				
+				) );
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.getSelection();
 				$j( '#edittoolbar-link-int-target' ).focus();
@@ -1516,8 +1516,8 @@ js2AddOnloadHook( function() {
 				$j(this).data( 'offset', 0 );
 				$j( '#edittoolbar-replace-search' ).focus();
 				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch, #edittoolbar-replace-invalidregex' ).hide();
-				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
-					$j(this).data( 'dialogkeypressset', true );
+				if ( !( $j(this).data( 'onetimeonlystuff' ) ) ) {
+					$j(this).data( 'onetimeonlystuff', true );
 					// Execute the action associated with the first button
 					// when the user presses Enter
 					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
@@ -1526,6 +1526,11 @@ js2AddOnloadHook( function() {
 							button.click();
 							e.preventDefault();
 						}
+					});
+					// Make tabbing to a button and pressing
+					// Enter do what people expect
+					$j(this).closest( '.ui-dialog' ).find( 'button' ).focus( function() {
+						$j(this).closest( '.ui-dialog' ).data( 'dialogaction', this );
 					});
 				}
 				var dialog = $j(this).closest( '.ui-dialog' );
