@@ -456,7 +456,11 @@ fn : {
 					.attr( 'href', '#' )
 					.text( $.wikiEditor.autoMsg( section, 'label' ) )
 					.data( 'context', context )
-					.bind( 'mousedown', function() {
+					.bind( 'mousedown', function( e ) {
+						// Only act when the primary mouse button was pressed
+						if ( e.button !== 0 ) {
+							return true;
+						}
 						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
 						var $section =
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
