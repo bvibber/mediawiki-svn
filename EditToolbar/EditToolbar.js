@@ -1138,10 +1138,9 @@ js2AddOnloadHook( function() {
 					'^' + RegExp.escape( wgServer + wgArticlePath )
 						.replace( /\\\$1/g, '(.*)' ) + '$'
 				) );
-				
-				$j( '#edittoolbar-link-int-target' ).focus();
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.getSelection();
+				$j( '#edittoolbar-link-int-target' ).focus();
 				$j( '#edittoolbar-link-dialog' ).data( 'whitespace', [ '', '' ] );
 				if ( selection != '' ) {
 					var target, text, type;
