@@ -584,6 +584,43 @@ js2AddOnloadHook( function() {
 					"\u0c6e", "\u0c6f", "\u0c3d", "\u0c78", "\u0c79", "\u0c7a", "\u0c7b", "\u0c7c", "\u0c7d", "\u0c7e",
 					"\u0c7f"
 				]
+			},
+			'sinhala': {
+				'labelMsg': 'edittoolbar-characters-page-sinhala',
+				'language': 'si',
+				'layout': 'characters',
+				'characters': [
+					"\u0d85", "\u0d86", "\u0d87", "\u0d88", "\u0d89", "\u0d8a", "\u0d8b", "\u0d8c", "\u0d8d", "\u0d8e",
+					"\u0d8f", "\u0d90", "\u0d91", "\u0d92", "\u0d93", "\u0d94", "\u0d95", "\u0d96", "\u0d9a", "\u0d9b",
+					"\u0d9c", "\u0d9d", "\u0d9e", "\u0d9f", "\u0da0", "\u0da1", "\u0da2", "\u0da3", "\u0da4", "\u0da5",
+					"\u0da6", "\u0da7", "\u0da8", "\u0da9", "\u0daa", "\u0dab", "\u0dac", "\u0dad", "\u0dae", "\u0daf",
+					"\u0db0", "\u0db1", "\u0db3", "\u0db4", "\u0db5", "\u0db6", "\u0db7", "\u0db8", "\u0db9", "\u0dba",
+					"\u0dbb", "\u0dbd", "\u0dc0", "\u0dc1", "\u0dc2", "\u0dc3", "\u0dc4", "\u0dc5", "\u0dc6",
+					[ "\u25cc\u0dcf", "\u0dcf" ], [ "\u25cc\u0dd0", "\u0dd0" ], [ "\u25cc\u0dd1", "\u0dd1" ],
+					[ "\u25cc\u0dd2", "\u0dd2" ], [ "\u25cc\u0dd3", "\u0dd3" ], [ "\u25cc\u0dd4", "\u0dd4" ],
+					[ "\u25cc\u0dd6", "\u0dd6" ], [ "\u25cc\u0dd8", "\u0dd8" ], [ "\u25cc\u0df2", "\u0df2" ],
+					[ "\u25cc\u0ddf", "\u0ddf" ], [ "\u25cc\u0df3", "\u0df3" ], [ "\u25cc\u0dd9", "\u0dd9" ],
+					[ "\u25cc\u0dda", "\u0dda" ], [ "\u25cc\u0ddc", "\u0ddc" ], [ "\u25cc\u0ddd", "\u0ddd" ],
+					[ "\u25cc\u0dde", "\u0dde" ], [ "\u25cc\u0dca", "\u0dca" ]
+				]
+			},
+			'gujarati': {
+				'labelMsg': 'edittoolbar-characters-page-gujarati',
+				'language': 'gu',
+				'layout': 'characters',
+				'characters': [
+					"\u0ad0", "\u0a85", "\u0a86", "\u0a87", "\u0a88", "\u0a89", "\u0a8a", "\u0a8b", "\u0ae0", "\u0a8c",
+					"\u0ae1", "\u0a8d", "\u0a8f", "\u0a90", "\u0a91", "\u0a93", "\u0a94", "\u0a95", "\u0a96", "\u0a97",
+					"\u0a98", "\u0a99", "\u0a9a", "\u0a9b", "\u0a9c", "\u0a9d", "\u0a9e", "\u0a9f", "\u0aa0", "\u0aa1",
+					"\u0aa2", "\u0aa3", "\u0aa4", "\u0aa5", "\u0aa6", "\u0aa7", "\u0aa8", "\u0aaa", "\u0aab", "\u0aac",
+					"\u0aad", "\u0aae", "\u0aaf", "\u0ab0", "\u0ab2", "\u0ab5", "\u0ab6", "\u0ab7", "\u0ab8", "\u0ab9",
+					"\u0ab3", "\u0abd", [ "\u25cc\u0abe", "\u0abe" ], [ "\u25cc\u0abf", "\u0abf" ],
+					[ "\u25cc\u0ac0", "\u0ac0" ], [ "\u25cc\u0ac1", "\u0ac1" ], [ "\u25cc\u0ac2", "\u0ac2" ],
+					[ "\u25cc\u0ac3", "\u0ac3" ], [ "\u25cc\u0ac4", "\u0ac4" ], [ "\u25cc\u0ae2", "\u0ae2" ],
+					[ "\u25cc\u0ae3", "\u0ae3" ], [ "\u25cc\u0ac5", "\u0ac5" ], [ "\u25cc\u0ac7", "\u0ac7" ],
+					[ "\u25cc\u0ac8", "\u0ac8" ], [ "\u25cc\u0ac9", "\u0ac9" ], [ "\u25cc\u0acb", "\u0acb" ],
+					[ "\u25cc\u0acc", "\u0acc" ], [ "\u25cc\u0acd", "\u0acd" ]
+				]
 			}
 		}
 	},

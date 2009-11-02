@@ -155,6 +155,8 @@ class EditToolbarHooks {
 					'edittoolbar-characters-page-arabic',
 					'edittoolbar-characters-page-hebrew',
 					'edittoolbar-characters-page-telugu',
+					'edittoolbar-characters-page-sinhala',
+					'edittoolbar-characters-page-gujarati',
 					/* Help Section */
 					'edittoolbar-section-help',
 					'edittoolbar-help-heading-description',
