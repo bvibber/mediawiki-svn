@@ -1607,6 +1607,9 @@ $messages['ml'] = array(
 ബഹുഭൂരിപക്ഷം അനുബന്ധങ്ങളും മീഡിയവിക്കിയുടെ വിവിധ പതിപ്പുകളിൽ ഒരേപോലെ പ്രവർത്തിക്കാൻ പ്രാപ്തമാണ്, അതുകൊണ്ട് മീഡിയവിക്കി പതിപ്പ് ഇല്ലങ്കിൽ, അല്ലങ്കിൽ ഏറ്റവും പുതിയ അനുബന്ധ സവിശേഷതകളാണ് താങ്കൾക്ക് വേണ്ടതെങ്കിൽ, ഇപ്പോഴത്തെ പതിപ്പ് പരീക്ഷിക്കുക.',
 	'extdist-no-versions' => 'തിരഞ്ഞെടുത്ത അനുബന്ധം ($1) ഒരു പതിപ്പിലും ലഭ്യമല്ല!',
 	'extdist-submit-version' => 'തുടരുക',
+	'extdist-no-remote' => 'വിദൂര സ‌ബ്‌‌വേർഷൻ ക്ലയന്റുമായി ബന്ധപ്പെടാൻ കഴിഞ്ഞില്ല.',
+	'extdist-remote-error' => 'വിദൂര സബ്‌‌വേർഷൻ ക്ലയന്റിൽ നിന്നുണ്ടായ പിശക്: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'വിദൂര സബ്‌‌വേർഷൻ ക്ലയന്റ് അസാധുവായ പ്രതികരണമാണ് നൽകിയത്.',
 	'extdist-svn-error' => 'സബ്‌‌വേർഷൻ ഒരു പിശക് അഭിമുഖീകരിക്കുന്നു: <pre>$1</pre>',
 	'extdist-want-more' => 'മറ്റൊരു അനുബന്ധം നേടുക',
 );
@@ -2436,6 +2439,19 @@ Dosyaları çıkardıktan sonra, eklentiyi LocalSettings.php'de kaydetmelisiniz.
 
 Eğer bu eklenti dağıtım sistemi ile herhangi bir sorunuz varsa, lütfen [[Extension talk:ExtensionDistributor]]'a gidin.",
 	'extdist-want-more' => 'Başka eklenti al',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'extensiondistributor' => 'Завантажити MediaWiki розширення',
+	'extdist-desc' => 'Розширення для завантаження дистрибутивів розширень',
+	'extdist-not-configured' => 'Будь ласка, налаштуйте $wgExtDistTarDir і $wgExtDistWorkingCopy',
+	'extdist-choose-extension' => 'Виберіть розширення, яке ви хочете завантажити:',
+	'extdist-submit-extension' => 'Продовжити',
+	'extdist-submit-version' => 'Продовжити',
+	'extdist-want-more' => 'Завантажити інше розширення',
 );
 
 /** Vèneto (Vèneto)

@@ -755,6 +755,21 @@ $messages['mhr'] = array(
 	'edituser-dosearch' => 'Кычал',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'edituser-desc' => 'Им овозможува на привилегираните корисници да ги уредуваат нагодувањата на други корисници.',
+	'edituser' => 'Уреди го корисникот',
+	'edituser-logout' => 'Одјави го корисникот',
+	'edituser-username' => 'Име',
+	'edituser-dosearch' => 'Пребарај',
+	'edituser-nouser' => 'Назначениот корисник не постои',
+	'edituser-exempt' => 'Назначениот корисник не може да биде уреден',
+	'right-edituser' => 'Уредување на нагодувањата на други корисници',
+	'right-edituser-exempt' => 'Други не можат да ги уредуваат нагодувањата на овој корисник',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

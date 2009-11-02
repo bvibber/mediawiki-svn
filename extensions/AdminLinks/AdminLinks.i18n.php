@@ -1083,6 +1083,19 @@ $messages['ug-arab'] = array(
 	'right-adminlinks' => '[[Special:AdminLinks|باشقۇرغۇچى ئۇلاىمىسى]]نى كۆرۈڭ',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'adminlinks' => 'Посилання для адміністраторів',
+	'adminlinks-desc' => 'Додає [[Special:AdminLinks|спеціальні сторінку]], яка містить корисні посилання для адміністраторів',
+	'adminlinks_documentation' => 'документація $1',
+	'adminlinks_general' => 'Загальні',
+	'adminlinks_users' => 'Користувачі',
+	'adminlinks_createuser' => 'Створити обліковий запис',
+	'right-adminlinks' => 'Див. [[Special:AdminLinks|посилання для адміністраторів]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

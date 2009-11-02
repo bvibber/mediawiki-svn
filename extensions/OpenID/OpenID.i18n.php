@@ -3577,6 +3577,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -3624,6 +3625,7 @@ pode escolher uma das opções abaixo.',
 	'openidchooseexisting' => 'Uma conta existente neste wiki:',
 	'openidchoosepassword' => 'palavra-chave:',
 	'openidconvertinstructions' => 'Este formulário permite-lhe alterar a sua conta de utilizador para usar uma URL OpenID ou adicionar mais URLs OpenID.',
+	'openidconvertoraddmoreids' => 'Converter para OpenID ou adicionar outra URL OpenID',
 	'openidconvertsuccess' => 'Convertido para OpenID com sucesso',
 	'openidconvertsuccesstext' => 'Você converteu com sucesso o seu OpenID para $1.',
 	'openidconvertyourstext' => 'Esse já é o seu OpenID.',
@@ -3647,6 +3649,8 @@ Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua c
 Existems vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de OpenID], e você poderá já ter uma conta ativada para OpenID noutro serviço.',
 	'openidupdateuserinfo' => 'Atualizar a minha informação pessoal',
 	'openiddelete' => 'Eliminar OpenID',
+	'openiddelete-text' => 'Ao clicar o botão "{{int:openiddelete-button}}", irá eliminar o OpenID $1 da sua conta.
+Não poderá voltar a autenticar-se com este OpenID.',
 	'openiddelete-button' => 'Confirmar',
 	'openiddelete-sucess' => 'O OpenID foi removido da sua conta com sucesso.',
 	'openiddelete-error' => 'Ocorreu um erro ao remover o OpenID da sua conta.',

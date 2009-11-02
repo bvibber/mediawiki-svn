@@ -100,6 +100,7 @@ $messages['qqq'] = array(
 	'contrib-hist-date' => '{{Identical|Date}}',
 	'contribstats-currency-range-totals' => '* $1 is a start date
 * $2 is an end date',
+	'contribstats-currency' => '{{Identical|Currency}}',
 	'contribstats-conversion' => 'Click conversion rate, see [[:wikipedia:Conversion rate|Wikipedia article]].',
 	'contribstats-template' => '{{Identical|Template}}',
 	'fundraiserstats-date' => '{{Identical|Date}}',

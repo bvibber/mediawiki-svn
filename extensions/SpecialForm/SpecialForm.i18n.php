@@ -680,9 +680,30 @@ Per favor completa {{PLURAL:$2|lo|los}}.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
+ * @author IvanLanin
  */
 $messages['id'] = array(
+	'form-desc' => 'Suatu [[Special:Form|antarmuka formulir]] untuk membuat halaman baru',
+	'form' => 'Formulir',
+	'formnoname' => 'Nama formulir kosong',
+	'formnonametext' => 'Anda harus memasukkan nama formulir seperti "Special:Form/Namaformulir".',
+	'formbadname' => 'Nama formulir salah',
+	'formbadnametext' => 'Tidak ada formulir dengan nama itu.',
+	'formpattern' => '$1-form',
+	'formtitlepattern' => 'Tambah $1 baru',
 	'formsave' => 'Simpan',
+	'formindexmismatch-title' => 'Pola nama dan templat tidak cocok',
+	'formindexmismatch' => 'Formulir ini tidak cocok dengan pola nama dan templat dimulai dari indeks $1.',
+	'formarticleexists' => 'Halaman telah ada',
+	'formarticleexiststext' => 'Halaman [[$1]] telah ada.',
+	'formbadpagename' => 'Nama halaman salah',
+	'formbadrecaptcha' => 'Nilai reCaptcha salah. Coba lagi.',
+	'formbadpagenametext' => 'Data formulir yang Anda masukkan mengandung nama halaman yang salah, "$1".',
+	'formrequiredfielderror' => '{{PLURAL:$2|Isian $1|Isian $1}} diperlukan oleh formulir ini.
+Silakan masukkan {{PLURAL:$2|isian|isian}} itu.',
+	'formsavesummary' => 'Halaman baru menggunakan [[Special:Form/$1|formulir $1]]',
+	'formsaveerror' => 'Kesalahan penyimpanan formulir',
+	'formsaveerrortext' => "Terjadi kesalahan yang tak dikenal sewaktu menyimpan halaman '$1'.",
 );
 
 /** Icelandic (Íslenska)

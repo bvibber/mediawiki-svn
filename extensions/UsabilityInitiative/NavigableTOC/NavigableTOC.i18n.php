@@ -341,8 +341,8 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'navigabletoc' => 'Nawigacyjny spis treści',
-	'navigabletoc-desc' => 'Przewija tekst w formularzu edycji, jeśli zostanie kliknięty kliknięty tytuł sekcji w dodanym do formularza spisie treści',
+	'navigabletoc' => 'Włącz dynamiczny spis treści dla edytowanego tekstu',
+	'navigabletoc-desc' => 'Przewija tekst w formularzu edycji, jeśli zostanie kliknięty tytuł sekcji w spisie treści',
 	'navigabletoc-preference' => 'Włącz umożliwiający nawigację spis treści',
 );
 

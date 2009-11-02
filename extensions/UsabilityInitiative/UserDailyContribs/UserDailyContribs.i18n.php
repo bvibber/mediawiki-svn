@@ -164,6 +164,13 @@ $messages['id'] = array(
 	'userdailycontribs-desc' => 'Kontribusi harian pengguna untuk pengaya pelacak klik',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
+$messages['it'] = array(
+	'userdailycontribs-desc' => "Contributi utente giornalieri per l'estensione traccia-clic",
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -267,6 +274,13 @@ $messages['sk'] = array(
  */
 $messages['tr'] = array(
 	'userdailycontribs-desc' => 'Tıklama izleme eklentisi için günlük kullanıcı katkıları',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'userdailycontribs-desc' => 'Щоденний внесок користувачів для розширення відстеження кліків',
 );
 
 /** Veps (Vepsan kel')

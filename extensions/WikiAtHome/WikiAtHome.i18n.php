@@ -711,6 +711,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
+ * @author IvanLanin
  * @author Kandar
  */
 $messages['id'] = array(
@@ -731,6 +732,24 @@ Memungkinkan mendistribusikan pekerjaan video transcoding untuk klien yang mengg
 	'wah-transcode-fail' => 'Berkas ini gagal untuk di transcode.',
 	'wah-javascript-off' => 'Anda harus mengaktifkan JavaScript agar dapat berpartisipasi di Wiki@Home',
 	'wah-loading' => 'Memuat Antarmuka Wiki@Home ...',
+	'wah-menu-jobs' => 'Pekerjaan',
+	'wah-menu-stats' => 'Statistik',
+	'wah-menu-pref' => 'Preferensi',
+	'wah-lookingforjob' => 'Mencari pekerjaan ...',
+	'wah-start-on-visit' => 'Aktifkan Wiki@Home setiap kali saya mengunjungi situs ini.',
+	'wah-jobs-while-away' => 'Hanya jalankan pekerjaan ketika saya telah tidak menggunakan penjelajah saya selama 20 menit.',
+	'wah-nojobfound' => 'Tidak ada pekerjaan yang ditemukan. Akan mencoba lagi dalam $1.',
+	'wah-notoken-login' => 'Apakah Anda telah masuk log? Jika belum, silakan masuk log dulu.',
+	'wah-apioff' => 'API Wiki@Home tampaknya mati. Silakan hubungi pengelola wiki ini.',
+	'wah-doing-job' => 'Pekerjaan: <i>$1</i> pada: <i>$2</i>',
+	'wah-downloading' => 'Pengunduhan berkas <i>$1%</i> selesai',
+	'wah-encoding' => 'Pengkodean berkas <i>$1%</i> selesai',
+	'wah-encoding-fail' => 'Pengkodean gagal. Silakan muat ulang halaman atau coba lagi nanti.',
+	'wah-uploading' => 'Pengunggahan berkas <i>$1</i> selesai',
+	'wah-uploadfail' => 'Pengunggahan gagal',
+	'wah-doneuploading' => 'Pengunggahan selesai. Terima kasih atas kontribusi Anda.',
+	'wah-needs-firefogg' => 'Untuk berpartisipasi dalam Wiki@Home, Anda perlu menginstal <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Ada kesalahan pada API. Silakan coba lagi nanti.',
 );
 
 /** Japanese (日本語)
@@ -988,6 +1007,7 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -1007,23 +1027,23 @@ $messages['pms'] = array(
 	'wah-javascript-off' => 'It deuve avèj JavaScript abilità për partessipé an Wiki@Home',
 	'wah-loading' => "carié l'antërfassa ëd Wiki@Home ...",
 	'wah-menu-jobs' => 'Travaj',
-	'wah-menu-stats' => 'Stat',
+	'wah-menu-stats' => 'Statìstiche',
 	'wah-menu-pref' => 'Mè gust',
 	'wah-lookingforjob' => 'An sërcand un travaj ...',
-	'wah-start-on-visit' => "Fà parte Wiki@Home mica vira ch'i visit sto sit-sì.",
-	'wah-jobs-while-away' => 'Fà parte ij job mach quand che i son ëstàit lontan da mè browser për 20 minute.',
-	'wah-nojobfound' => 'Pa gnun travaj trovà. As arprovrà an $1.',
-	'wah-notoken-login' => 'It ses-to intrà? Se nò, për piasì, prima intra.',
-	'wah-apioff' => "L'API Wiki@Home a smija ch'a sia giù. Për piasì contata n'aministrador ëd la wiki.",
+	'wah-start-on-visit' => "Fà parte Wiki@Home minca vira ch'i vìsito sto sit-sì.",
+	'wah-jobs-while-away' => 'Fà parte ij travaj mach quand che i son ëstàit lontan da mè navigador për 20 minute.',
+	'wah-nojobfound' => 'Pa gnun travaj trovà. As provrà torna an $1.',
+	'wah-notoken-login' => 'Ses-to intrà? Se nò, për piasì, prima intra.',
+	'wah-apioff' => "L'API Wiki@Home a smija ch'a sia giù. Për piasì contata n'aministrator ëd la wiki.",
 	'wah-doing-job' => 'Travaj: <i>$1</i> dzora a: <i>$2</i>',
-	'wah-downloading' => 'Dëscaria dël file <i>$1%</i> completa',
-	'wah-encoding' => 'Codìfica dë file <i>$1%</i> completa',
+	'wah-downloading' => "Dëscaria dl'archivi <i>$1%</i> completa",
+	'wah-encoding' => "Codìfica dl'archivi <i>$1%</i> completa",
 	'wah-encoding-fail' => 'Codìfica falìa. Për piasì caria torna sta pàgina-sì o preuva torna pì tard.',
-	'wah-uploading' => 'Caria dël file <i>$1</i> completa',
+	'wah-uploading' => "Caria dl'archivi <i>$1</i> completa",
 	'wah-uploadfail' => 'Caria falìa',
 	'wah-doneuploading' => 'Caria finìa. Mersì për toa contribussion.',
-	'wah-needs-firefogg' => 'Për partessipé a Wiki@Home it deuve anstalé <a href="http://firefogg.org">Firefogg</a>.',
-	'wah-api-error' => "A l'é stàit-ie n'eror con l'API. Për piasì prova torna pì tard.",
+	'wah-needs-firefogg' => 'Për partessipé a Wiki@Home it deve anstalé <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => "A-i é staje n'eror con l'API. Për piasì preuva torna pì tard.",
 );
 
 /** Portuguese (Português)

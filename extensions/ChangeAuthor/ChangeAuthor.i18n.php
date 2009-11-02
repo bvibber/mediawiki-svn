@@ -1891,6 +1891,7 @@ Mun tetep éror, meureun pangkalan datana ruksak.',
 	'changeauthor-success' => 'Pamundut anjeun geus anggeus diolah.',
 	'changeauthor-logentry' => 'Panyusun $2 geus robah dina $1, ti $3 jadi $4',
 	'changeauthor-logpagename' => 'Log robahan panyusun',
+	'right-changeauthor' => 'Ngaganti panulis hiji révisi',
 );
 
 /** Swedish (Svenska)

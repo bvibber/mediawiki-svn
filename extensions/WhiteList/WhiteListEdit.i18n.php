@@ -1542,7 +1542,12 @@ Használd a * vagy % jeleket joker karakterként',
 	'whitelistnewtableprocess' => 'Folyamat',
 	'whitelistnewtablereview' => 'Ellenőrzés',
 	'whitelistselectrestricted' => '== Korlátozott felhasználó nevének kiválasztása ==',
+	'whitelistnocalendar' => "<font color='red' size=3>Úgy tűnik, hogy a [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics] – ami ennek a kiterjesztésnek előfeltétele – nincs megfelelően telepítve!</font>",
+	'whitelistrequestmsg' => '$1 hozzáférést kért a következő {{PLURAL:$3|laphoz|lapokhoz}}:
+
+$2',
 	'whitelistnever' => 'soha',
+	'whitelistnummatches' => '  – {{PLURAL:$1|egy|$1}} találat',
 	'right-editwhitelist' => 'létező felhasználók fehérlistáinak módosítása',
 	'right-restricttowhitelist' => 'csak a fehérlistán szereplő lapok megtekintése és szerkesztése',
 	'action-editwhitelist' => 'létező felhasználók fehérlistáinak módosítása',
@@ -1616,6 +1621,7 @@ Iste pagina es solmente applicabile al usatores restringite",
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  * @author Kandar
  * @author Rex
  */
@@ -1640,15 +1646,36 @@ $messages['id'] = array(
 	'whitelisttablesetedit' => 'Set ke sunting',
 	'whitelisttablesetview' => 'Set ke lihat',
 	'whitelisttableremove' => 'Hapus',
+	'whitelistnewpagesfor' => 'Tambahkan halaman baru untuk daftar putih <b>$1</b><br />
+Gunakan karakter kartu liar * atau %',
 	'whitelistnewtabledate' => 'Tanggal kadaluarsa:',
 	'whitelistnewtableedit' => 'Set ke sunting',
 	'whitelistnewtableview' => 'Set ke lihat',
+	'whitelistnowhitelistedusers' => 'Tidak ada pengguna dalam kelompok "{{MediaWiki:Group-restricted}}".
+Anda harus [[Special:UserRights|menambahkan pengguna dalam kelompok itu]] sebelum Anda dapat menambahkan halaman ke daftar putih seorang pengguna.',
 	'whitelistnewtableprocess' => 'Proses',
 	'whitelistnewtablereview' => 'Tinjau',
+	'whitelistselectrestricted' => '== Pilih nama pengguna yang dibatasi ==',
 	'whitelistpagelist' => 'Halaman {{SITENAME}} untuk $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Tampaknya [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], prasyarat bagi ekstensi ini tidak terinstal dengan benar!</font>",
+	'whitelistoverview' => '== Tinjauan perubahan untuk $1 ==',
 	'whitelistoverviewcd' => "* Perubahan tanggal ke '''$1''' untuk [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Mengatur akses terhadap '''$1''' untuk [[:$2|$2]]",
+	'whitelistoverviewrm' => '* Menghapus akses terhadap [[:$1|$1]]',
+	'whitelistoverviewna' => "* Menambahkan [[:$1|$1]] ke daftar putih dengan akses '''$2''' dan '''$3'''",
+	'whitelistrequest' => 'Minta akses ke lebih banyak halaman',
+	'whitelistrequestmsg' => '$1 telah meminta akses ke {{PLURAL:$3|halaman|halaman}} berikut:
+
+$2',
 	'whitelistrequestconf' => 'Permintaan halaman baru telah dikirim ke $1',
+	'whitelistnonrestricted' => "Pengguna '''$1''' bukanlah pengguna yang dibatasi.
+Halaman ini hanya dapat diterapkan pada pengguna yang dibatasi",
 	'whitelistnever' => 'tidak pernah',
+	'whitelistnummatches' => '- {{PLURAL:$1|yang cocok|yang cocok}}',
+	'right-editwhitelist' => 'Ubah daftar putih untuk pengguna yang ada',
+	'right-restricttowhitelist' => 'Menyunting dan menampilkan halaman pada daftar putih saja',
+	'action-editwhitelist' => 'mengubah daftar putih untuk pengguna yang ada',
+	'action-restricttowhitelist' => 'menyunting dan menampilkan halaman pada daftar putih saja',
 	'group-restricted' => 'Kelompok pengguna terbatas',
 	'group-restricted-member' => 'Pengguna terbatas',
 	'group-manager' => 'Kelompok manajer',

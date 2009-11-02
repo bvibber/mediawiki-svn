@@ -50,6 +50,13 @@ $messages['gl'] = array(
 	'wlfeed-desc' => 'Clases de xeración de fontes de novas melloradas',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'wlfeed-desc' => 'Klasse zum Aalege vu fortgschrittene Feeds',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

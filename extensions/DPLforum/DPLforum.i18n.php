@@ -478,6 +478,18 @@ $messages['mhr'] = array(
 	'dplforum-never' => 'Нигунам',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'dplforum-desc' => 'Форумско проширување на основа на DPL',
+	'dplforum-by' => 'од $1',
+	'dplforum-edited' => '- Последно уредено',
+	'dplforum-never' => 'Никогаш',
+	'dplforum-toofew' => 'DPL Форум: Премалку категории!',
+	'dplforum-toomany' => 'DPL Форум: Премногу категории!',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

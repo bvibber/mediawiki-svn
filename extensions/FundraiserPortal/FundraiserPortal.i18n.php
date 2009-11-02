@@ -265,9 +265,11 @@ $messages['eo'] = array(
  * @author Barcex
  * @author Crazymadlover
  * @author Imre
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'fundraiserportal' => 'Portal de recaudador de fondos',
+	'fundraiserportal-desc' => 'Añade un portal "por favor, dona" en la parte superior de la barra lateral.',
 	'fundraiserportal-plain-button' => '¡Apoya Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Dona Ahora',
 	'fundraiserportal-rubytext-button' => 'Dona Ahora',
@@ -610,6 +612,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'fundraiserportal' => 'സംഭാവന മെച്ചപ്പെടുത്തൽ കവാടം',
 	'fundraiserportal-desc' => 'സൈഡ്ബാറിനു മുകളിലായി "സംഭാവന നൽകുക" എന്നതു ചേർക്കുന്നു.',
 	'fundraiserportal-plain-button' => 'വിക്കിപീഡിയയ്ക്കു പിന്തുണയേകുക!',
 	'fundraiserportal-ruby-button' => 'സംഭാവന നൽകുക',

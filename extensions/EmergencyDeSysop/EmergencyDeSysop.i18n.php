@@ -888,6 +888,26 @@ $messages['tl'] = array(
 	'right-emergencydesysop' => 'Nagawang tanggalin na mula sa pagiging tagapagpaandar ng sistema ang isa pang tagagamit, pareho',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'emergencydesysop' => 'Аварійне позбавлення прав адміністратора',
+	'emergencydesysop-desc' => 'Дозволяє адміністратору пожертвувати власними привілеями з метою позбавлення прав іншого адміністратора',
+	'emergencydesysop-title' => 'Зняти права адміністратора з обох: поточного користувача та іншого адміністратора',
+	'emergencydesysop-otheradmin' => 'Інший адміністратор для позбавлення прав',
+	'emergencydesysop-reason' => 'Підстава позбавлення',
+	'emergencydesysop-submit' => 'Відправити',
+	'emergencydesysop-incomplete' => 'Необхідно заповнити всі поля форми, будь ласка, спробуйте ще раз.',
+	'emergencydesysop-notasysop' => 'Цільовий користувач не входить в групу адміністраторів.',
+	'emergencydesysop-nogroups' => 'Жодний',
+	'emergencydesysop-done' => 'Дія виконана, Ви і [[$1]] позбавлені прав адміністратора.',
+	'emergencydesysop-invalidtarget' => 'Цільового користувача не існує.',
+	'emergencydesysop-blocked' => 'Ви не можете отримати доступ до цієї сторінки під час блокування',
+	'emergencydesysop-noright' => 'У вас немає достатніх повноважень для доступу до цієї сторінки',
+	'right-emergencydesysop' => 'Зняття прав адміністратора іншому користувачеві, разом зі своїми',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

@@ -6938,7 +6938,7 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-section-enotif' => 'Powiadomienie e‐mail',
 	'configure-section-localization' => 'Lokalizacja',
 	'configure-section-timezone' => 'Strefa czasowa',
-	'configure-section-zh-conversion' => 'Konwersja dla Chińskiego',
+	'configure-section-zh-conversion' => 'Konwersja dla języka chińskiego',
 	'configure-section-debug' => 'Śledzenie',
 	'configure-section-profiling' => 'Profilowanie',
 	'configure-section-site' => 'Personalizacja witryny',

@@ -707,12 +707,35 @@ Le ID a fornir hic es le numeros e litteras inter "$2" e "$3".',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
+	'imstatus-desc' => 'Menambahkan tag untuk menampilkan status daring dari berbagai IM (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Sintaks',
 	'imstatus_default' => 'Baku',
+	'imstatus_example' => 'Contoh',
+	'imstatus_possible_val' => 'Nilai yang mungkin',
 	'imstatus_max' => 'maks',
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'atau',
+	'imstatus_style' => 'gaya indikator status',
+	'imstatus_action' => 'tindakan ketika tombol diklik',
+	'imstatus_details_saa' => 'Untuk informasi lebih rinci tentang semua gaya dan tindakan, lihat $1.',
+	'imstatus_your_name' => 'nama $1 Anda',
+	'imstatus_aim_presence' => '$1 menunjukkan status Anda dengan pranala yang akan menjalankan AIM untuk mengirim Anda pesan istan, asalkan pengguna telah menginstalnya.',
+	'imstatus_aim_api' => '$1 menunjukkan status Anda dengan pranala yang akan menjalankan suatu versi javascript <b>peramban</b> AIM untuk mengirimkan Anda pesan instan.',
+	'imstatus_gtalk_code' => 'kode google talk Anda',
+	'imstatus_gtalk_get_code' => 'kode google takl Anda: dapatkan di $1.',
+	'imstatus_gtalk_height' => 'tinggi kotak, dalam piksel.',
+	'imstatus_gtalk_width' => 'lebar kotak, dalam piksel',
+	'imstatus_icq_id' => 'ID ICQ Anda',
+	'imstatus_icq_style' => 'suatu angka berkisar antara 0 hingga 26 (ya, tersedia 27 gaya).',
+	'imstatus_live_code' => 'ID situs web Live Messenger Anda',
+	'imstatus_live_get_code' => 'ID situs web Live Messenger Anda: <strong>ini bukan alamat surel Anda</strong>, Anda perlu membuatnya di <a href="$1">opsi Live Messenger Anda</a>.
+ID yang perlu Anda berikan adalah angka dan huruf antara "$2" dan "$3".',
+	'imstatus_skype_nbstyle' => 'Catatan: Jika Anda memilih suatu gaya yang juga merupakan suatu tindakan, pilihan tindakan Anda akan diganti dengan tindakan yang cocok dengan gaya yang dipilih.',
+	'imstatus_xfire_size' => 'ukuran tombol, dari $1 (terbesar) hingga $2 (terkecil).',
+	'imstatus_yahoo_style' => 'gaya  tombol, dari $1 (terkecil) hingga $2 (terbesar), $3 dan $4 ditujukan untuk kotak suara.',
 );
 
 /** Italian (Italiano)

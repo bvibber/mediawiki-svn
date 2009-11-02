@@ -405,6 +405,18 @@ $messages['lb'] = array(
 	'eval_code' => 'Code',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'eval' => 'Пресметка',
+	'eval-desc' => 'Додава [[Special:Eval|интерфејс]] на функцијата <code>eval()</code>',
+	'eval_submit' => 'Пресметај',
+	'eval_escape' => 'Екранизирај ги излезните податоци',
+	'eval_out' => 'Излезни податоци',
+	'eval_code' => 'Код',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

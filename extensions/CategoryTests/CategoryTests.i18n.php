@@ -288,6 +288,13 @@ $messages['sk'] = array(
 	'categorytests-desc' => 'Funkcie na testovanie kategórie',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'categorytests-desc' => 'Fungsi pikeun nguji kategori',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

@@ -383,13 +383,14 @@ Jika Anda telah masuk log, Anda dapat mematikan peringatan ini lewat "{{int:pref
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Gianfranco
  * @author Melos
  */
 $messages['it'] = array(
 	'editwarning' => 'Avviso di modifica',
 	'editwarning-desc' => 'Visualizza un avviso quando un utente cerca di lasciare il modulo di modifica senza salvare',
-	'editwarning-warning' => 'Lasciare questa pagina potrebbe provocare la perdita di tutti i cambiamenti effettuati.
-È possibile disattivare questo avviso nella sezione "{{int:prefs-editing}}" delle proprie preferenze.',
+	'editwarning-warning' => 'Lasciare questa pagina potrebbe costarti la perdita di tutti i cambiamenti effettuati.
+Se sei loggato, puoi disattivare questo avviso nella sezione "{{int:prefs-editing}}" delle tue preferenze.',
 	'editwarning-preference' => 'Avvisa quando lascio una pagina di modifica con modifiche non salvate',
 );
 

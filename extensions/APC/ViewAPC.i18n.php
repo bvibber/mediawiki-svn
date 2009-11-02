@@ -4268,6 +4268,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -4281,7 +4282,7 @@ A APC não aparenta estar a correr.',
 	'viewapc-clear-code-cache' => 'Limpar cache de opcode',
 	'viewapc-mode-stats' => 'Ver estatísticas do anfitrião',
 	'viewapc-mode-system-cache' => 'Entradas da cache de sistema',
-	'viewapc-mode-system-cache-dir' => 'Entradas por directoria',
+	'viewapc-mode-system-cache-dir' => 'Entradas por directório',
 	'viewapc-mode-user-cache' => 'Entradas da cache de utilizadores',
 	'viewapc-mode-version-check' => 'Verificar versão',
 	'viewapc-info-general' => 'Informação geral',

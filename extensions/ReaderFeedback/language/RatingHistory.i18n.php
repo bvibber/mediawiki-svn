@@ -259,11 +259,13 @@ $messages['ca'] = array(
 );
 
 /** Czech (Česky)
+ * @author Beren
  * @author Mormegil
  */
 $messages['cs'] = array(
 	'ratinghistory' => 'Historie hodnocení stránky',
 	'ratinghistory-leg' => 'Časový průběh hodnocení stránky [[:$1|$1]]',
+	'ratinghistory-tab' => 'hodnocení',
 	'ratinghistory-link' => 'Hodnocení stránky',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">Děkujeme, že jste {{GENDER:|věnoval|věnovala|věnovali}} čas hodnocení této stránky!</font>''",
 	'ratinghistory-period' => 'Období:',
@@ -277,7 +279,7 @@ $messages['cs'] = array(
 	'ratinghistory-table' => 'Přehled hodnocení čtenáři',
 	'ratinghistory-users' => 'Uživatelé, kteří hodnotili',
 	'ratinghistory-graph' => '$2 stránky „$3“ ($1 {{PLURAL:$1|hodnocení|hodnocení}})',
-	'readerfeedback-svg' => 'Zobrazit jako SVG',
+	'ratinghistory-svg' => 'Zobrazit jako SVG',
 	'ratinghistory-table-rating' => 'Hodnocení',
 	'ratinghistory-table-votes' => 'Hlasů',
 	'ratinghistory-none' => 'V současné chvíli není pro grafy k dispozici dostatek ohodnocení.',

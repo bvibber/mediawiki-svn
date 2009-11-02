@@ -775,6 +775,23 @@ Tai gali papildomai apkrauti serverį, taigi naudokite šią funkciją atsakinga
 	'right-asksql' => 'Vykdyti SQL užklausas',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'asksql' => 'SQL барање',
+	'asksql-desc' => 'Поставувајте SQL барања преку [[Special:Asksql|специјална страница]]',
+	'asksqltext' => "Користете го образецот подолу за да поставувате директни барања до базата на податоци.
+Користете единечни наводници ('вака') за разграничување на низите. симболи.
+Овие барања честопати значително го преоптоваруваат серверот, и затоа бидете умерени со бројот и честотата на барањата.",
+	'sqlislogged' => 'Имајте на ум дека сите барања се заведуваат во дневник.',
+	'sqlquery' => 'Внесете го барањето',
+	'querybtn' => 'Поднеси барање',
+	'selectonly' => 'Дозволени се само барања за читање',
+	'querysuccessful' => 'Барањето е успешно',
+	'right-asksql' => 'Поставете SQL барања',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

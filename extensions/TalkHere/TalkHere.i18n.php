@@ -656,6 +656,22 @@ Déi Responsabel vum Site kënne keng Verantwortung fir den Inhalt vun esou Bemi
 	'talkhere-collapse' => 'Editeur verstoppen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'talkhere-desc' => 'Ја става страницата за разговор во страницата',
+	'talkhere-foottext' => 'Коментарите погоре може да се напишани од посетители.
+
+Раководителите на оваа веб-страна немаат одговорност за содржината на тие коментари.',
+	'talkhere-talkpage' => 'страница за разговор',
+	'talkhere-notalk' => "''(сè уште нема коментари)''",
+	'talkhere-addcomment' => 'додај коментар',
+	'talkhere-beforeinput' => 'Подолу можете да додадете коментар',
+	'talkhere-loading' => 'го вчитувам уредувачот...',
+	'talkhere-collapse' => 'сокриј уредувач',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

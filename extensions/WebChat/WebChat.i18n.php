@@ -525,6 +525,14 @@ Anonymní používatelia dostanú automaticky vytvorenú prezývku, ale možno j
 	'right-webchat' => 'Povolené používať [[Special:WebChat|webový chat]]',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'webchat' => 'Obrolan ramat',
+	'webchat-desc' => 'Nambahkeun [[Special:WebChat|kaca husus]] pikeun ngobrol saharita jeung pamaké wiki lianna',
+);
+
 /** Swedish (Svenska)
  * @author Skalman
  */

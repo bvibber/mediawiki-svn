@@ -3540,8 +3540,10 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'voctrain_continue' => 'продовжити',
 	'voctrain_Language' => 'Мова',
 );
 

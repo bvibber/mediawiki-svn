@@ -346,6 +346,7 @@ $messages['ca'] = array(
 );
 
 /** Czech (Česky)
+ * @author Beren
  * @author Danny B.
  * @author Li-sung
  * @author Matěj Grabovský
@@ -378,6 +379,7 @@ $messages['cs'] = array(
 	'readerfeedback-tier-high' => 'Vysoké',
 	'readerfeedback-tier-medium' => 'Střední',
 	'readerfeedback-tier-poor' => 'Nízké',
+	'tooltip-ca-ratinghist' => 'Hodnocení této stránky čtenáři',
 	'specialpages-group-feedback' => 'Názory čtenářů',
 );
 
@@ -611,6 +613,7 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
+	'readerfeedback-desc' => 'La validación de páginas permite a los lectores a dar respuesta en forma de valoraciones categóricas',
 	'readerfeedback' => '¿Qué opinas de esta página?',
 	'readerfeedback-text' => "''Por favor, toma un momento para calificar la página. Tu aportación es valiosa y nos ayuda a mejorar el sitio''",
 	'readerfeedback-reliability' => 'Confiabilidad',
@@ -1550,7 +1553,7 @@ $messages['pl'] = array(
 	'readerfeedback-submit' => 'Oznacz',
 	'readerfeedback-main' => 'Tylko strony z treścią mogą być oceniane.',
 	'readerfeedback-success' => "'''Dziękujemy za ocenę strony!''' ([$2 wyniki]) ([$3 uwagi lub pytania]).",
-	'readerfeedback-voted' => "'''Tę stronę prawdopodobnie już oceniałeś''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
+	'readerfeedback-voted' => "'''Tę stronę prawdopodobnie już {{GENDER:|oceniałeś|oceniałaś}}''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-error' => "'''Podczas oceniania strony wystąpił błąd''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-submitting' => 'Zapisywanie...',
 	'readerfeedback-finished' => 'Dziękujemy!',

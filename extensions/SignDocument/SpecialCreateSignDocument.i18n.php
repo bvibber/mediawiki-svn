@@ -835,6 +835,14 @@ Isto non pote esser facite un secunde vice.',
  */
 $messages['id'] = array(
 	'createsigndocument' => 'Aktifkan penandatanganan dokumen',
+	'createsigndoc-head' => "Gunakan formulir ini untuk membuat suatu 'Dokumen tanda tangan' untuk halaman yang diberikan, sehingga pengguna akan dapat [[Special:SignDocument|menandatanganinya]].
+Silakan tentukan nama halaman yang ingin Anda aktifkan penandatanganan digitalnya, anggota yang kelompok penggunanya diperbolehkan untuk menandatanganinya, isian-isian mana yang ingin Anda perlihatkan ke pengguna dan mana yang bersifat opsional, usia minimum untuk mengharuskan pengguna untuk menandatangani dokumen (tidak ada minimum jika diabaikan);
+serta teks pengantar singkat yang menjelaskan dokumen dan memberikan instruksi kepada pengguna.
+
+<b>Saat ini tidak ada cara untuk menghapus atau mengubah dokumen tanda tangan setelah dibuat</b> tanpa akses langsung ke basis data.
+Tambahan, teks halaman yang ditampilkan pada halaman tanda tangan akan menjadi teks ''terkini'' halaman, tanpa mempedulikan perubahan yang dibuat setelah ini.
+Harap pastikan bahwa dokumen ini sudah cukup stabil untuk ditandatangani.
+Harap pastikan juga bahwa Anda menentukan semua isian persis seperti yang seharusnya ''sebelum menyimpan formulir ini''.",
 	'createsigndoc-pagename' => 'Halaman:',
 	'createsigndoc-allowedgroup' => 'Grup yang diizinkan:',
 	'createsigndoc-email' => 'Alamat surel:',

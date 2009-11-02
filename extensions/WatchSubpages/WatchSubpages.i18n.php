@@ -513,6 +513,21 @@ Fir eng Sàit derbäizesetzen, klickt d\'Kescht nierwendrunn un, a klickt "Säit
 Fir méi Säite mateneen unzwielen oder ze desaktivéieren, kënnt Dir d\'Shift-Tast drécken fir méi Keschten hannereneen unzewielen an dann einfach déi éischt an déi lescht Kescht uklicken fir och all déi dertëschent matuzewielen.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'watchsubpages' => 'Набљудувај потстраници',
+	'watchsubpages-addedtowatchlist' => 'Следните страници беа додадени кон вашата листа на набљудувања.',
+	'watchsubpages-addtitles' => 'Додај страници',
+	'watchsubpages-addtitlestowatchlist' => 'Додај страници кон листата на набљудувања',
+	'watchsubpages-desc' => 'Брзо [[Special:WatchSubpages|додавање на сите потстраници]] на една страница кон листата на набљудувања',
+	'watchsubpages-form' => 'Изберете ги страниците за додавање кон вашата листата на набљудувања.
+За да додадете страница, штиклирајте ја кутијката до неа, и кликнете на „Додај страници“
+
+За да штиклирате или отштиклирате повеќе страници наеднаш последователно, држете Shift и кликнете на почетната и крајната кутијка на саканата низа страници.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

@@ -463,6 +463,22 @@ Et:',
 	'securepasswords-word' => 'däerf kee Wuert sinn',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'securepasswords-desc' => 'Создава повеќе тараби за безбедна лозинка и додава проверувач на јачината на лозинката',
+	'securepasswords-valid' => 'Вашата лозинка е неважечка или прекратка.
+Лозинката мора да:',
+	'securepasswords-minlength' => 'содржи барем  $1 {{PLURAL:$1|знак|знаци}}',
+	'securepasswords-lowercase' => 'содржи барем 1 мала буква',
+	'securepasswords-uppercase' => 'содржи барем 1 голема буква',
+	'securepasswords-digit' => 'содржи барем 1 цифра',
+	'securepasswords-special' => 'содржи барем 1 специјален знак (специјални знаци се: $1)',
+	'securepasswords-username' => 'се разликува од вашето корисничко име',
+	'securepasswords-word' => 'не биде збор',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

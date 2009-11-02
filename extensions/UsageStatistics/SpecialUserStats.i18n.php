@@ -1727,6 +1727,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'specialuserstats' => 'Estatísticas de uso',
@@ -1735,6 +1736,8 @@ $messages['pt-br'] = array(
 	'usagestatisticsfor' => '<h2>Estatísticas de utilização para [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Estatísticas de utilização para todos os utilizadores</h2>',
 	'usagestatisticsinterval' => 'Intervalo',
+	'usagestatisticsnamespace' => 'Domínio:',
+	'usagestatisticsexcluderedirects' => 'Excluir redirecionamentos',
 	'usagestatisticstype' => 'Tipo',
 	'usagestatisticsstart' => 'Data de Início',
 	'usagestatisticsend' => 'Data de Fim',

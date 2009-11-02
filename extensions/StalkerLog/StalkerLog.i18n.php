@@ -343,6 +343,17 @@ $messages['lb'] = array(
 	'stalkerlog-log-text' => 'Dëst ass eng Lëscht vun den Umellungen an Ofmellungen.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'stalkerlog-desc' => 'Додава [[Special:Log/stalkerlog|дневник]] на најавувањата и одјавувањата на корисниците.',
+	'stalkerlog-log-login' => ' се најави.',
+	'stalkerlog-log-logout' => 'се одјави.',
+	'stalkerlog-log-type' => 'Дневник на кориснички потврдувања',
+	'stalkerlog-log-text' => 'Ова е дневник на најавувањата и одјавувањата на корисниците.',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

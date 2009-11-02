@@ -625,10 +625,33 @@ Le file cargate debe continer in cata linea un nomine de pagina e un motivo facu
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
+	'deletebatch' => 'Menghapus sekelompok halaman',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Menghapus sekelompok halaman]]',
+	'deletebatch-help' => 'Menghapus sekelompok halaman.
+Anda dapat melakukan penghapusan sekaligus, atau menghapus halaman-halaman yang terdaftar dalam suatu berkas.
+Pilihlah pengguna yang akan ditampilkan pada log penghapusan.
+Berkas yang diunggah harus mengandung nama halaman dan alasan opsional, dipisahkan dengan suatu tanda "|" pada setiap barisnya.',
+	'deletebatch-caption' => 'Daftar halaman:',
+	'deletebatch-title' => 'Penghapusan kelompok',
+	'deletebatch-link-back' => 'Kembali ke halaman istimewa',
+	'deletebatch-as' => 'Jalankan skrip sebagai:',
+	'deletebatch-both-modes' => 'Silakan pilih suatu halaman tertentu atau suatu daftar halaman.',
 	'deletebatch-or' => '<b>atau</b>',
 	'deletebatch-delete' => 'Hapus',
+	'deletebatch-page' => 'Halaman yang akan dihapus:',
+	'deletebatch-processing-from-file' => 'menghapus halaman dari daftar berkas',
+	'deletebatch-processing-from-form' => 'menghapus halaman dari isian',
+	'deletebatch-omitting-nonexistant' => 'Mengabaikan halaman $1 yang tidak ada.',
+	'deletebatch-omitting-invalid' => 'Mengabaikan halaman $1 yang tidak valid.',
+	'deletebatch-file-bad-format' => 'Berkas harus berbentuk teks polos',
+	'deletebatch-file-missing' => 'Tidak dapat membaca berkas yang diberikan',
+	'deletebatch-select-script' => 'Skrip penghapusan halaman',
+	'deletebatch-select-yourself' => 'Anda',
+	'deletebatch-no-page' => 'Silakan berikan paling tidak satu halaman untuk dihapus atau pilih berkas yang berisi daftar halaman.',
+	'right-deletebatch' => 'Menghapus sekelompok halaman',
 );
 
 /** Italian (Italiano)
@@ -945,7 +968,10 @@ O ficheiro carregado deverá conter o nome da página e um motivo opcional, sepa
 	'deletebatch-as' => 'Executar o script como:',
 	'deletebatch-both-modes' => 'Por favor, escolha uma página especificada ou uma dada lista de páginas.',
 	'deletebatch-or' => '<b>ou</b>',
+	'deletebatch-delete' => 'Apagar',
 	'deletebatch-page' => 'Páginas a eliminar:',
+	'deletebatch-processing-from-file' => 'a apagar as páginas listadas no ficheiro',
+	'deletebatch-processing-from-form' => 'a apagar as páginas listadas no formulário',
 	'deletebatch-omitting-nonexistant' => 'A omitir página não existente $1.',
 	'deletebatch-omitting-invalid' => 'A omitir página inválida $1.',
 	'deletebatch-file-bad-format' => 'O ficheiro deve conter texto pleno',

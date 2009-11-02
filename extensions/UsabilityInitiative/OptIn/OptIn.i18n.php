@@ -4505,6 +4505,21 @@ $messages['scn'] = array(
 	'optin-accept-long-anon' => 'Accedi e prova a Beta',
 );
 
+/** Sinhala (සිංහල)
+ * @author චතුනි අලහප්පෙරුම
+ */
+$messages['si'] = array(
+	'optin-survey-yes' => 'ඔව්',
+	'optin-survey-no' => 'නැත',
+	'optin-survey-question-whyoptout' => 'ඔබ බීටා අනුවාදයෙන් ඉවත් වන්නේ ඇයි? (ගැලපෙන සියල්ල තෝරාගැනුමට කාරුණික වන්න.)',
+	'optin-survey-answer-whyoptout-hard' => 'එය භාවිතය ඉතා දුෂ්කර විය.',
+	'optin-survey-answer-whyoptout-didntwork' => 'එය හරි හැටි ක්‍රියාත්මක නොවීය.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'එය බලාපොරොත්තු වූ ලෙසින් ක්‍රියා නොකලේය.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'එහි පෙනුම මා සිත් ගත්තේ නැත.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'නව ටැබ හා වින්‍යාස සැලැස්ම මා සිත් ගත්තේ නැත.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'නව මෙවලම්-පටිය මා සිත් ගත්තේ නැත.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -5088,6 +5103,7 @@ $messages['tt-cyrl'] = array(
  * @author A1
  * @author AS
  * @author Ickis
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'optin' => 'Участь в ініціативі зручності',
@@ -5135,12 +5151,22 @@ $messages['uk'] = array(
 	'optin-survey-question-usedtoolbar' => 'Чи використали Ви нову розгортувану панель інструментів для редагування сторінок?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Якщо так, те, що вам у ній сподобалося? Що не сподобалося?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Якщо ні, то чому?  Чи збираєтеся в майбутньому? Будь ласка, поясніть.',
+	'optin-survey-question-different' => 'Щоб ми могли зробити по-іншому, щоб ви продовжили використання Beta?',
 	'optin-survey-question-feedback' => 'Будь ласка, висловіть своє судження:',
 	'optin-survey-question-browser' => 'Яким оглядачем ви користуєтесь?',
 	'optin-survey-answer-browser-other' => 'Інший:',
 	'optin-survey-question-os' => 'Якою операційною системою ви користуєтесь?',
 	'optin-survey-answer-os-other' => 'Інша операційна система:',
 	'optin-survey-question-res' => 'Яка роздільність вашого монітора?',
+	'optin-survey-question-changes' => 'Які зміни Ви хотіли б бачити в Beta в майбутньому (виберіть все, належне)?',
+	'optin-survey-answer-changes-nav' => 'Зробити загальну навігацію по сайту простішою у використанні.',
+	'optin-survey-answer-changes-edittools' => 'Розширити і удосконалити інструменти редагування.',
+	'optin-survey-answer-changes-upload' => 'Удосконалити завантаження контенту та медіа.',
+	'optin-survey-answer-changes-richtext' => 'Розробити інструменти редагування аналогічні багатофункціональним текстовим редакторам.',
+	'optin-survey-answer-changes-lookfeel' => 'Оновити "зовнішній вигляд" сайту.',
+	'optin-survey-answer-changes-predictability' => 'Підвищити передбачуваність роботи.',
+	'optin-survey-answer-changes-custom' => 'Дозволити більше користувацьких налаштувань.',
+	'optin-survey-answer-changes-other' => 'Інше:',
 );
 
 /** Vèneto (Vèneto)

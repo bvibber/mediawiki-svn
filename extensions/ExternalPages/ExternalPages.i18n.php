@@ -21,6 +21,13 @@ $messages['en'] = array(
 	'externalpages-bad-url-data'        => 'Failed to retrieve page contents',
 );
 
+/** Message documentation (Message documentation)
+ * @author Fryed-peach
+ */
+$messages['qqq'] = array(
+	'externalpages-desc' => '{{desc}}',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
@@ -130,6 +137,14 @@ $messages['hu'] = array(
 	'externalpages-bad-url-data' => 'Nem sikerült lekérni a lap tartalmát',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'externalpages' => 'Paginas externe',
+	'externalpages-desc' => 'Recupera e presenta paginas ex sitos WMF remote',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */
@@ -145,6 +160,23 @@ $messages['id'] = array(
 	'externalpages-error-generic' => 'Ditemukan kesalahan',
 	'externalpages-bad-url' => 'Gagal mengambil URL',
 	'externalpages-bad-url-data' => 'Gagal mengambil isi halaman',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'externalpages' => '外部ページ',
+	'externalpages-desc' => '他の WMF サイトのページを読み込み表示する',
+	'externalpages-bad-year' => '不正な年の指定',
+	'externalpages-bad-language' => '不正な言語の指定',
+	'externalpages-bad-project' => '不正なプロジェクトの指定',
+	'externalpages-no-project' => 'プロジェクトの指定なし',
+	'externalpages-bad-page' => '不正なページの指定',
+	'externalpages-no-page' => 'ページの指定なし',
+	'externalpages-error-generic' => 'エラー発生',
+	'externalpages-bad-url' => 'URL の読み込みに失敗',
+	'externalpages-bad-url-data' => 'ページ内容の読み込みに失敗',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -182,11 +214,12 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'externalpages' => 'Pàgine esterne',
-	'externalpages-desc' => 'A treuva e a visualisa dle pàgine da sit WMF remòt',
+	'externalpages-desc' => 'A treuva e a visualisa dle pàgine da sit WMF leugn',
 	'externalpages-bad-year' => 'Ann pa bon spessificà',
 	'externalpages-bad-language' => 'Lenga pa bon-a spessificà',
 	'externalpages-bad-project' => 'Proget pa bon spessificà',

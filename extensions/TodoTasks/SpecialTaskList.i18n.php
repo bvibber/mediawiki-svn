@@ -654,11 +654,33 @@ Le systema de notification de %s',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  */
 $messages['id'] = array(
+	'tasklist' => 'Daftar tugas',
+	'tasklist-parser-desc' => 'Menambahkan fungsi pemilah (parser functions) <nowiki>{{#todo:}}</nowiki> untuk memberikan tugas',
+	'tasklist-special-desc' => 'Menambah halaman istimewa untuk meninjau [[Special:TaskList|pemberian tugas]]',
+	'tasklistbyproject' => 'Daftar tugas menurut proyek',
+	'tasklistunknownproject' => 'Proyek tak dikenal',
+	'tasklistunspecuser' => 'Pengguna tak ditentukan',
 	'tasklistincorrectuser' => 'Nama pengguna salah',
+	'tasklistemail' => 'Dear %s',
+	'tasklistemailsubject' => '[%s] Perubahan daftar tugas',
+	'tasklistmytasks' => 'Tugas saya',
+	'tasklistbyprojectbad' => "Proyek '''%s''' bukanlah proyek yang valid.
+Untuk melihat daftar proyek yang valid, gunakan [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Penugasan untuk '''%s'''",
+	'tasklistchooseproj' => 'Pilih proyek:',
 	'tasklistprojdisp' => 'Tayangan',
 	'tasklistbyname' => '== Daftar tugas untuk %s ==',
+	'tasklistnoprojects' => "Kesalahan: Tampaknya Anda mengaktifkan '''\$wgUseProjects''', tapi tidak membuat [[MediaWiki:TodoTasksValidProjects]]. Lihat [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Petunjuk Instalasi] untuk detail lebih lanjut.",
+	'tasklistemailbody' => ',
+
+Seseorang telah memberikan suatu Tugas baru untuk Anda di %s.
+
+Untuk melihat Daftar Tugas lengkap Anda, tuju ke %s.
+
+Sistem notifikasi %s Anda yang bersahabat',
 );
 
 /** Italian (Italiano)

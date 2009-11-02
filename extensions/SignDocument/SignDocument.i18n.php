@@ -359,6 +359,18 @@ $messages['lb'] = array(
 	'right-createsigndocument' => 'Dokumenter uleeën déi ënnerschriwwe kënne ginn',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'signaturelogpage' => 'Днавник на потписи',
+	'signature-desc' => 'Овозможува [[Special:SignDocument|потпишување]] на документи',
+	'signaturelogpagetext' => 'Ова е дневник на [[Special:SignDocument|сите потписи додадени кон документи]].',
+	'signaturelogentry' => 'го потпиша документот $1',
+	'right-sigadmin' => 'Администраторство на потпишувањето на документи',
+	'right-createsigndocument' => 'Создавање на документи што можат да се потпишуваат',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

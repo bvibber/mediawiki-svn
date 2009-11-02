@@ -928,15 +928,40 @@ $4',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  */
 $messages['id'] = array(
+	'todo' => 'Daftar tugas',
+	'todo-desc' => 'Ekstensi [[Special:Todo|daftar tugas]] pribadi eksperimental',
+	'todo-tab' => 'tugas',
 	'todo-new-queue' => 'baru',
+	'todo-mail-subject' => 'Butir yang terselesaikan pada daftar tugas $1',
+	'todo-mail-body' => 'Anda meminta konfirmasi surel tentang penyelesaian suatu tugas yang Anda kirimkan pada daftar tugas daring milik $1.
+
+Tugas: $2
+Dikirim: $3
+
+Tugas ini telah ditandai selesai dengan komentar berikut:
+$4',
+	'todo-invalid-item' => 'Tugas tidak ditemukan atau tidak valid',
+	'todo-update-else-item' => 'Mencoba untuk memperbarui tugas orang lain',
+	'todo-unrecognize-type' => 'Tipe tak dikenal',
+	'todo-user-invalide' => 'Tugas yang diberikan tidak valid, tidak ditemukan, atau pengguna tidak dapat ditugasi',
+	'todo-item-list' => 'Tugas Anda',
+	'todo-no-item' => 'Tidak ada tugas.',
+	'todo-invalid-owner' => 'Pemilik tidak valid dari tugas ini',
+	'todo-add-queue' => 'Menambahkan antrean...',
+	'todo-move-queue' => 'Pindahkan ke antrean...',
 	'todo-list-for' => 'Daftar tugas untuk $1',
 	'todo-list-change' => 'Berubah',
 	'todo-list-cancel' => 'Batalkan',
 	'todo-new-item' => 'Butir baru',
+	'todo-issue-summary' => 'Ringkasan isu:',
 	'todo-form-details' => 'Rincian:',
+	'todo-form-email' => 'Untuk menerima pemberitahuan melalui surel ketika tugas tersebut ditutup, masukkan alamat Anda:',
 	'todo-form-submit' => 'Kirim kueri',
+	'right-todo' => 'Memiliki daftar tugas',
+	'right-todosubmit' => 'Membatasi hak daftar tugas pengguna',
 );
 
 /** Italian (Italiano)

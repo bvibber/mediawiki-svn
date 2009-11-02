@@ -423,6 +423,14 @@ $messages['mg'] = array(
 	'abcdownload' => 'Ampidino eto:',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Azim
+ */
+$messages['mhr'] = array(
+	'abcdesc' => 'ABC музыкым форматированийлан <tt>&lt;abc&gt;</tt> тегым ешара',
+	'abcdownload' => 'Опташ:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

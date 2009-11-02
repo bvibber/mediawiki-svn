@@ -4640,6 +4640,7 @@ $messages['lb'] = array(
 	'code-status' => 'Statussen',
 	'code-tags' => 'Tagen',
 	'code-tests' => 'Testfäll',
+	'code-authors-text' => 'ënnendrënner ass eng Lëscht vun de Repo-Auteuren an der Reiefolleg vun de rezenten Ännerungen. Lokal wikikonten ginn tëschent de Klammere gewisen.',
 	'code-author-haslink' => 'Dësen Auteur ass mam Wiki-Benotzer $1 verbonn',
 	'code-author-orphan' => 'Dëse Benotzer huet kee Link mat engem Wiki-Benotzerkont',
 	'code-author-dolink' => 'Dësen Auteur mat engem Wiki-Benotzer verbannen:',
@@ -4937,6 +4938,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'code' => 'കോഡ് സംശോധനം',
 	'code-change-removed' => 'നീക്കം ചെയ്തു:',
 	'code-change-added' => 'കൂട്ടിച്ചേർത്തു:',
 	'code-old-status' => 'പഴയ സ്ഥിതി',
@@ -4987,10 +4989,12 @@ $messages['ml'] = array(
 	'code-rev-diff' => 'വ്യത്യാസം',
 	'code-rev-diff-link' => 'വ്യത്യാസം',
 	'code-status-new' => 'പുതിയ',
+	'code-status-fixme' => 'എന്റെ പ്രശ്നം ശരിയാക്കുക',
 	'code-status-ok' => 'ശരി',
 	'code-status-verified' => 'പരിശോധിച്ചിരിക്കുന്നു',
 	'code-pathsearch-path' => 'പഥം:',
 	'code-rev-submit' => 'മാറ്റങ്ങൾ സേവ് ചെയ്യുക',
+	'code-rev-submit-next' => 'സേവ് ചെയ്യുക, പരിഹരിക്കാത്ത അടുത്തതിലേയ്ക്ക് പോവുക',
 	'code-batch-status' => 'സ്ഥിതിയിൽ മാറ്റം വരുത്തുക:',
 	'code-batch-tags' => 'റ്റാഗുകൾ മാറ്റുക:',
 	'codereview-batch-title' => 'തിരഞ്ഞെടുത്ത എല്ലാ നാൾപ്പതിപ്പുകളിലും മാറ്റം‌‌വരുത്തുക',
@@ -5011,7 +5015,11 @@ $messages['ml'] = array(
 
 $4',
 	'repoadmin' => 'റെപ്പോസിറ്ററി കാര്യനിർവഹണം',
+	'repoadmin-new-legend' => 'പുതിയ റെപ്പോസിറ്ററി സൃഷ്ടിക്കുക',
+	'repoadmin-new-label' => 'റെപ്പോസിറ്ററിയുടെ പേര്:',
 	'repoadmin-new-button' => 'സൃഷ്ടിക്കുക',
+	'repoadmin-edit-legend' => '"$1" റെപ്പോസിറ്ററിയിൽ വരുത്തിയ മെച്ചപ്പെടുത്തലുകൾ',
+	'repoadmin-edit-path' => 'റെപ്പോസിറ്ററിയുടെ പഥം:',
 	'repoadmin-edit-bug' => 'ബഗ്‌സില്ല പഥം:',
 	'repoadmin-edit-button' => 'ശരി',
 	'right-codereview-set-status' => 'നാൾപ്പതിപ്പുകളുടെ സ്ഥിതിയിൽ മാറ്റം വരുത്തുക',
@@ -7160,6 +7168,7 @@ $4',
  * @author Boivie
  * @author Fluff
  * @author Gabbe.g
+ * @author GameOn
  * @author Najami
  * @author Rotsee
  */
@@ -7226,6 +7235,7 @@ $messages['sv'] = array(
 	'code-rev-comment-by' => 'Kommentar av $1',
 	'code-rev-comment-submit' => 'Skicka kommentar',
 	'code-rev-comment-preview' => 'Förhandsgranska',
+	'code-rev-inline-preview' => 'Förhandsgranska:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
 	'code-rev-purge-link' => 'rensa',
@@ -7250,6 +7260,7 @@ $messages['sv'] = array(
 	'code-release-endrev' => 'Senaste revision:',
 	'codereview-subtitle' => 'För $1',
 	'codereview-reply-link' => 'svara',
+	'codereview-tests-aborted' => 'Testkörning avbruten',
 	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar tillagd',
 	'codereview-email-body' => 'Användaren "$1" postade en kommenter på r$3
 

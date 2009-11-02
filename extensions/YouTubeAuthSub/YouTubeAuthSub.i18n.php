@@ -2269,13 +2269,14 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'youtubeauthsub' => 'Carregar vídeo do YouTube',
-	'youtubeauthsub-desc' => 'Permitir aos usuários [[Special:YouTubeAuthSub|carregar vídeos]] directamente no TouTube',
+	'youtubeauthsub-desc' => 'Permite que os utilizadores [[Special:YouTubeAuthSub|carreguem vídeos]] directamente para o YouTube',
 	'youtubeauthsub_info' => 'Para carregar um vídeo para o YouTube para incluir numa página, preencha a informação seguinte:',
 	'youtubeauthsub_title' => 'Título',
 	'youtubeauthsub_description' => 'Descrição',

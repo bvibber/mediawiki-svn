@@ -97,6 +97,7 @@ $1',
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Siebrand
@@ -104,6 +105,7 @@ $1',
 $messages['qqq'] = array(
 	'signdocument' => '{{Identical|Sign document}}',
 	'sign-realname' => '{{Identical|Name}}',
+	'sign-address' => '{{Identical|Street}}',
 	'sign-city' => '{{Identical|City}}',
 	'sign-state' => '{{Identical|State}}',
 	'sign-country' => '{{Identical|Country}}',
@@ -143,6 +145,7 @@ $messages['niu'] = array(
 $messages['af'] = array(
 	'signdocument' => 'Onderteken dokument',
 	'sign-realname' => 'Naam:',
+	'sign-address' => 'Straat:',
 	'sign-city' => 'Stad:',
 	'sign-state' => 'Staat:',
 	'sign-country' => 'Land:',

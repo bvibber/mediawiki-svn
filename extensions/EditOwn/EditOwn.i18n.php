@@ -440,6 +440,13 @@ $messages['tr'] = array(
 	'editown-desc' => 'Hepsini değiştir yetkisi olmayan kullanıcılar sadece kendi oluşturdukları sayfaları değiştirebilirler',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'editown-desc' => 'Користувачі, що не мають editall-прав, можуть тільки редагувати сторінки, що вони створили',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

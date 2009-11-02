@@ -828,6 +828,13 @@ $messages['tr'] = array(
 	'layouts_tagline' => "Bu sayfa '''$1''' düzeni ile oluşturulmuştur.",
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'layouts_continue' => 'Продовжити',
+);
+
 /** Veps (Vepsan kel')
  * @author Triple-ADHD-AS
  * @author Игорь Бродский

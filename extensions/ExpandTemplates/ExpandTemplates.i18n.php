@@ -1901,6 +1901,7 @@ $messages['ug-latn'] = array(
  * @author AS
  * @author Ahonc
  * @author NickK
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'expandtemplates' => 'Розгортання шаблонів',
@@ -1916,6 +1917,7 @@ $messages['uk'] = array(
 	'expand_templates_xml_output' => 'XML-вивід',
 	'expand_templates_ok' => 'Гаразд',
 	'expand_templates_remove_comments' => 'Вилучити коментарі',
+	'expand_templates_remove_nowiki' => 'Ігнорувати теґи <nowiki> в результаті',
 	'expand_templates_generate_xml' => 'Показати дерево аналізу XML',
 	'expand_templates_preview' => 'Попередній перегляд',
 );

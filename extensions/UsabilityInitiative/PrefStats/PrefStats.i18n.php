@@ -1021,6 +1021,7 @@ $messages['io'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Gianfranco
  * @author Melos
  */
 $messages['it'] = array(
@@ -1030,6 +1031,9 @@ $messages['it'] = array(
 	'prefstats-list-intro' => 'Attualmente, le seguenti preferenze vengono seguite.
 Fare clic su una per vedere le statistiche su di essa.',
 	'prefstats-noprefs' => 'Nessuna preferenza è al momento monitorata. Configurare $wgPrefStatsTrackPrefs per monitorare le preferenze.',
+	'prefstats-counters' => "* $1 {{PLURAL:$1|l'utente ha|gli utenti hanno}} attivato questa preferenza dopo che le statistiche sulle preferenze erano state attivate
+** $2 {{PLURAL:$2|l'utente ce l'ha ancora|gli utenti ce l'hanno ancora}} attivata
+** $3 {{PLURAL:$3|l'utente la ha|gli utenti la hanno}} disattivata dal",
 	'prefstats-xaxis' => 'Durata (ore)',
 	'prefstats-factor-hour' => 'ora',
 	'prefstats-factor-sixhours' => 'sei ore',
@@ -1903,6 +1907,21 @@ $messages['th'] = array(
 	'prefstats-factor-fourweeks' => 'สี่สัปดาห์',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'prefstats' => 'Ileri tutma statistikalary',
+	'prefstats-title' => 'Ileri tutma statistikalary',
+	'prefstats-factors' => 'Görkeziş ýygylygy: $1',
+	'prefstats-factor-hour' => 'sagat',
+	'prefstats-factor-sixhours' => 'alty sagat',
+	'prefstats-factor-day' => 'gün',
+	'prefstats-factor-week' => 'hepde',
+	'prefstats-factor-twoweeks' => 'iki hepde',
+	'prefstats-factor-fourweeks' => 'dört hepde',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */
@@ -1949,6 +1968,7 @@ $messages['tt-cyrl'] = array(
 /** Ukrainian (Українська)
  * @author A1
  * @author AS
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'prefstats' => 'Статистика налаштувань',
@@ -1960,6 +1980,13 @@ $messages['uk'] = array(
 	'prefstats-factors' => 'Перегляд за: $1',
 	'prefstats-factor-hour' => 'годину',
 	'prefstats-factor-sixhours' => 'шість годин',
+	'prefstats-factor-day' => 'день',
+	'prefstats-factor-week' => 'тиждень',
+	'prefstats-factor-twoweeks' => 'два тижня',
+	'prefstats-factor-fourweeks' => 'чотири тижні',
+	'prefstats-factor-default' => 'назад до масштабу по замовчуванню',
+	'prefstats-legend-out' => 'Відключились',
+	'prefstats-legend-in' => 'Підключились',
 );
 
 /** Vèneto (Vèneto)
