@@ -294,11 +294,13 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Gianfranco
  * @author Nemo bis
  */
 $messages['it'] = array(
 	'usabilityinitiative' => 'Progetto usabilità',
 	'usabilityinitiative-desc' => "Caratteristiche sviluppate dal progetto usabilità di Wikipedia per migliorare l'usabilità di MediaWiki",
+	'prefs-experimental' => 'Funzioni sperimentali',
 );
 
 /** Japanese (日本語)

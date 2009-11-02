@@ -453,14 +453,18 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Gianfranco
  * @author Melos
  * @author Nemo bis
  * @author Stefano-c
  */
 $messages['it'] = array(
 	'optin-try' => 'Prova Beta',
+	'tooltip-pt-optin-try' => 'Prova le nuove funzioni',
 	'optin-leave' => 'Lascia Beta',
+	'tooltip-pt-optin-leave' => 'Disattiva le nuove funzioni',
 	'optin-feedback' => 'Feedback della Beta',
+	'tooltip-pt-optin-feedback' => 'Invia un riscontro (feedback) della tua esperienza con le nuove funzioni',
 );
 
 /** Japanese (日本語)
@@ -785,6 +789,18 @@ $messages['sah'] = array(
 	'tooltip-pt-optin-feedback' => 'Саҥаны туттубутуҥ туһунан кэпсээ',
 );
 
+/** Sinhala (සිංහල)
+ * @author චතුනි අලහප්පෙරුම
+ */
+$messages['si'] = array(
+	'optin-try' => 'බීටා අනුවාදය අත්හදා බලන්න',
+	'tooltip-pt-optin-try' => 'නවාංගයන් අත්හදා බලන්න',
+	'optin-leave' => 'බීටා අනුවාදය වෙතින් ඉවත් වන්න',
+	'tooltip-pt-optin-leave' => 'නවාංග අත්හදා බැලීමෙන් ඉවත් වන්න',
+	'optin-feedback' => 'බීටා අනුවාදය පිලිබඳ ප්‍රතිපෝෂණය',
+	'tooltip-pt-optin-feedback' => 'නවාංග භාවිතයෙහිදී ඔබ ලැබූ අත්දැකීම් පිළිබඳ ප්‍රතිපෝෂණය සපයන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -901,11 +917,15 @@ $messages['tr'] = array(
  * @author A1
  * @author AS
  * @author Ickis
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'optin-try' => 'Випробувати Бета-версію',
+	'tooltip-pt-optin-try' => 'Спробувати нові можливості',
 	'optin-leave' => 'Покинути Бета-версію',
+	'tooltip-pt-optin-leave' => 'Вимкнути нові можливості',
 	'optin-feedback' => 'Відправити відгук',
+	'tooltip-pt-optin-feedback' => 'Залишити відгук про свій досвід роботи з новими функціями',
 );
 
 /** Vèneto (Vèneto)

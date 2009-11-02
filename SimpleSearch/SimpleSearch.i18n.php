@@ -373,11 +373,13 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Gianfranco
  */
 $messages['it'] = array(
 	'simplesearch' => 'Ricerca semplice',
 	'simplesearch-desc' => 'Aggiunge funzionalità supplementari alla ricerca semplificata di Vector',
 	'simplesearch-search' => 'Ricerca',
+	'simplesearch-containing' => 'contenente...',
 );
 
 /** Japanese (日本語)
@@ -718,11 +720,13 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Fluff
+ * @author GameOn
  */
 $messages['sv'] = array(
 	'simplesearch' => 'Enkel sökning',
 	'simplesearch-desc' => 'Lägger till extra funktioner till Vectors förenklade sökning',
 	'simplesearch-search' => 'Sök',
+	'simplesearch-containing' => 'innehåller...',
 );
 
 /** Swahili (Kiswahili)
@@ -741,6 +745,14 @@ $messages['sw'] = array(
 $messages['te'] = array(
 	'simplesearch' => 'సాధారణ వెతుకులాట',
 	'simplesearch-search' => 'వెతుకు',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'simplesearch' => 'Ýönekeý gözleg',
+	'simplesearch-search' => 'Gözleg',
 );
 
 /** Turkish (Türkçe)
@@ -764,11 +776,13 @@ $messages['tt-cyrl'] = array(
 /** Ukrainian (Українська)
  * @author A1
  * @author Pavlo Shevelo
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'simplesearch' => 'Простий пошук',
 	'simplesearch-desc' => 'Додає більше функціональності до спрощеного пошуку Vector',
 	'simplesearch-search' => 'Пошук',
+	'simplesearch-containing' => 'що містять...',
 );
 
 /** Vèneto (Vèneto)

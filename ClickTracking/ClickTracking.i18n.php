@@ -714,6 +714,25 @@ $messages['id'] = array(
 	'ct-update-table' => 'Pemutahiran tabel',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
+$messages['it'] = array(
+	'ct-title' => 'Clic utente aggregati',
+	'ct-event-name' => "Nome dell'evento",
+	'ct-total-header' => 'Clic totali',
+	'ct-start-date' => 'Data Inizio (AAAAMMGG)',
+	'ct-end-date' => 'Data Fine (AAAAMMGG)',
+	'ct-increment-by' => 'Numero di giorni per ogni punto dati',
+	'ct-beginner' => 'Principiante',
+	'ct-intermediate' => 'Medio',
+	'ct-expert' => 'Esperto',
+	'ct-anon-users' => 'Utenti anonimi',
+	'ct-user-contribs' => 'Totale contributi utente',
+	'ct-and' => 'e',
+	'ct-update-table' => 'Aggiorna la tabella',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author 青子守歌
@@ -1145,6 +1164,21 @@ $messages['sl'] = array(
 	'clicktracking-desc' => 'Sledenje klikom, namenjeno odkrivanju dogodkov, ki preprečujejo osvežitev strani med urejanjem',
 );
 
+/** Swedish (Svenska)
+ * @author GameOn
+ */
+$messages['sv'] = array(
+	'ct-expert-header' => '"Expertklick"',
+	'ct-beginner-header' => '"Nybörjarklick"',
+	'ct-total-header' => 'Totala antalet klick',
+	'ct-start-date' => 'Startdatum (YYYYMMDD)',
+	'ct-end-date' => 'Slutdatum (YYYYMMDD)',
+	'ct-beginner' => 'Nybörjare',
+	'ct-expert' => 'Expert',
+	'ct-and' => 'och',
+	'ct-update-table' => 'Tppdatera tabell',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -1184,6 +1218,34 @@ $messages['tr'] = array(
 	'ct-user-span' => 'Zaman içerisindeki kullanıcı katkıları',
 	'ct-and' => 've',
 	'ct-update-table' => 'Tabloyu güncelle',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'clicktracking' => 'Відстеження кліків в рамках Ініціативи покращення зручності',
+	'clicktracking-desc' => 'Відстеження кліків для відстеження подій, які не викликають оновлення сторінки',
+	'ct-title' => 'Всього кліків користувачів',
+	'ct-event-name' => 'Назва події',
+	'ct-expert-header' => 'Кліків "експертів"',
+	'ct-intermediate-header' => 'Кліків "середніх користувачів"',
+	'ct-beginner-header' => 'Кліків "новачків"',
+	'ct-total-header' => 'Всього кліків',
+	'ct-start-date' => 'Дата початку (РРРРММДД)',
+	'ct-end-date' => 'Дата закінчення (РРРРММДД)',
+	'ct-increment-by' => 'Кількість днів, що відмічає кожна точка даних',
+	'ct-change-graph' => 'Змінити графік',
+	'ct-beginner' => 'Новачок',
+	'ct-intermediate' => 'Середній користувач',
+	'ct-expert' => 'Експерт',
+	'ct-date-range' => 'Діапазон дат',
+	'ct-editing' => 'Поточне редагування:',
+	'ct-anon-users' => 'Анонімні користувачі',
+	'ct-user-contribs' => 'Загальний внесок користувачів',
+	'ct-user-span' => 'Внесок користувачів за період',
+	'ct-and' => 'і',
+	'ct-update-table' => 'Оновити таблицю',
 );
 
 /** Vèneto (Vèneto)
