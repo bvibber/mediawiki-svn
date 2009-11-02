@@ -61,7 +61,7 @@ class UsabilityInitiativeHooks {
 		'base_sets' => array(
 			'raw' => array(
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.autoEllipse.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.autoEllipse.js', 'version' => 4 ),
 				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.collapsibleTabs.js', 'version' => 5 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
@@ -75,10 +75,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 25 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 58 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 59 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 58 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 59 ),
 			),
 		),
 	);

@@ -90,7 +90,7 @@ $.fn.autoEllipse = function( options ) {
 		var text = $(this).text();
 		var $text = $( '<span />' ).text( text ).css( 'whiteSpace', 'nowrap' );
 		$(this).empty().append( $text );
-		if ( $text.outerWidth() > $(this).innerWidth() ) {
+		if ( $text.width() > $(this).width() ) {
 			switch ( options.position ) {
 				case 'right':
 					// Use binary search-like technique for efficiency
@@ -98,13 +98,14 @@ $.fn.autoEllipse = function( options ) {
 					do {
 						var m = Math.ceil( ( l + r ) / 2 );
 						$text.text( text.substr( 0, m ) + '...' );
-						if ( $text.outerWidth() > $(this).width() ) {
+						if ( $text.width() > $(this).width() ) {
 							// Text is too long
 							r = m - 1;
 						} else {
 							l = m;
 						}
 					} while ( l < r );
+					$text.text( text.substr( 0, l ) + '...' );
 					break;
 				case 'center':
 					// TODO: Use binary search like for 'right'
