@@ -162,7 +162,7 @@ fn: {
 			return list;
 		}
 		function buildCollapseBar() {
-			$('.wikiEditor-ui-toc ul').css('width', '148px').css('margin-left', '19px').css('border-left', '1px solid #DDDDDD');
+			$('.wikiEditor-ui-toc ul:first').css('width', '147px').css('margin-left', '19px').css('border-left', '1px solid #DDDDDD');
 			var $collapseBar = $( '<div />' )
 				.addClass( 'wikiEditor-ui-toc-collapse-open' )
 				.attr( 'id', 'wikiEditor-ui-toc-collapse' )

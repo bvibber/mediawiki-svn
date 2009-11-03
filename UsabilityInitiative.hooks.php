@@ -22,15 +22,15 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/wikiEditor.css', 'version' => 4 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 7 ),
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 2 ),
-				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 9 ),
+				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 10 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 15 ),
+				array( 'src' => 'css/combined.css', 'version' => 16 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 15 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 16 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 		)
@@ -72,14 +72,14 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 12 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 18 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 8 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 26 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 27 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.code.js', 'version' => 1 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 59 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 60 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 59 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 60 ),
 			),
 		),
 	);
