@@ -177,6 +177,17 @@ $messages['bg'] = array(
 	'player-goto-file' => 'файл',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'player-file' => 'Anv ar restr',
+	'player-not-found' => "n'eo ket bet kavet ar restr",
+	'player-goto-page' => 'Pajenn',
+	'player-goto-file' => 'restr',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

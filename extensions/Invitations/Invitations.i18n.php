@@ -176,11 +176,13 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'invite-logpage' => 'Marilh ar pedadennoù',
+	'invitations-inviteform-title' => 'Pediñ un implijer da implijout $1',
 	'invitations-inviteform-username' => 'Implijer da bediñ',
 	'invitations-inviteform-submit' => 'Pediñ',
 );

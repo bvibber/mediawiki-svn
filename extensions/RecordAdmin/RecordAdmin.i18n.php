@@ -283,6 +283,26 @@ $messages['bn'] = array(
 	'recordadmin-badtitle' => 'মন্দ শিরোনাম!',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'recordadmin-select' => 'Diuzañ',
+	'recordadmin-submit' => 'Kas',
+	'recordadmin-createsuccess' => '$1 zo bet krouet',
+	'recordadmin-badtitle' => 'Titl fall !',
+	'recordadmin-buttonsearch' => 'Klask',
+	'recordadmin-buttoncreate' => 'Krouiñ',
+	'recordadmin-buttonsave' => 'Enrollañ',
+	'recordadmin-createlink' => 'krouiñ unan',
+	'recordadmin-viewlink' => 'gwelet',
+	'recordadmin-editlink' => 'aozañ',
+	'recordadmin-created' => 'Krouet',
+	'recordadmin-modified' => 'Kemmet',
+	'recordadmin-actions' => 'Oberoù',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -1788,6 +1808,13 @@ $messages['tr'] = array(
 	'recordadmin-buttoncreate' => 'Oluştur',
 	'recordadmin-buttonreset' => 'Sıfırla',
 	'recordadmin-buttonsave' => 'Kaydet',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'recordadmin-editlink' => 'ред.',
 );
 
 /** Veps (Vepsan kel')

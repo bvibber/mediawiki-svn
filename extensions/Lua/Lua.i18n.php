@@ -114,6 +114,7 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'lua_error' => 'Fazi el linenn $1',
 	'lua_error_internal' => 'Fazi diabarzh',
 );
 
@@ -668,6 +669,13 @@ $messages['vi'] = array(
 	'lua_overflow_recursion' => 'Quá hạn chế đệ quy',
 	'lua_overflow_loc' => 'Quá số dòng mã tối đa',
 	'lua_overflow_time' => 'Quá thời gian chạy tối đa',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'lua_error_internal' => 'Pöl ninik',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

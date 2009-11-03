@@ -1204,6 +1204,7 @@ Bu çoğu kez sunucuya oldukça yük ekler, bu yüzden lütfen bu fonksiyonu ted
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'asksql' => 'SQL-запит',
@@ -1214,7 +1215,7 @@ $messages['uk'] = array(
 	'sqlislogged' => 'Усі запити записуються до журналу.',
 	'sqlquery' => 'Введення запиту',
 	'querybtn' => 'Відправити запит',
-	'selectonly' => 'Дозволені тільки записи на читання.',
+	'selectonly' => 'Дозволені тільки запити на перегляд.',
 	'querysuccessful' => 'Запит виконано',
 );
 

@@ -855,6 +855,23 @@ $messages['tr'] = array(
 	'fundraiserportal-tourmaline-close' => 'Bunu hep gizle',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'fundraiserportal' => 'Портал збору коштів',
+	'fundraiserportal-desc' => 'Додає посилання "Будь ласка, зробіть внесок" порталу збору коштів до верхньої частини бічної панелі.',
+	'fundraiserportal-plain-button' => 'Підтримайте Вікіпедію!',
+	'fundraiserportal-ruby-button' => 'Зробити внесок зараз',
+	'fundraiserportal-rubytext-button' => 'Зробити внесок зараз',
+	'fundraiserportal-rubytext-message' => 'Кожна пожертва допомагає нам зберігати відкритість Вікіпедії для кожного.',
+	'fundraiserportal-rubytext-close' => 'Приховати',
+	'fundraiserportal-sapphire-button' => 'Зробити внесок зараз',
+	'fundraiserportal-tourmaline-button' => 'Зробити внесок зараз',
+	'fundraiserportal-tourmaline-message' => 'Кожна пожертва допомагає нам зберігати відкритість Вікіпедії для кожного.',
+	'fundraiserportal-tourmaline-close' => 'Приховати',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

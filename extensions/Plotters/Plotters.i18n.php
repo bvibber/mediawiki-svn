@@ -92,6 +92,13 @@ $messages['be-tarask'] = array(
 	'plotters-errors' => '{{PLURAL:$1|Памылка плотара|Памылкі плотара}}:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'plotters-no-data' => "N'eus bet pourchaset roadenn ebet.",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

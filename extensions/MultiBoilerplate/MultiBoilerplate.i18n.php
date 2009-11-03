@@ -85,6 +85,13 @@ $messages['bg'] = array(
 	'multiboilerplate-submit' => 'Зареждане',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'multiboilerplate-submit' => 'Kargañ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

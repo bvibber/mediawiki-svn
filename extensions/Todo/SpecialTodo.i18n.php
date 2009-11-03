@@ -254,9 +254,14 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
+	'todo-tab' => "d'ober",
+	'todo-new-queue' => 'nevez',
+	'todo-invalid-item' => 'Elfenn diank pe direizh',
 	'todo-list-change' => 'Kemmañ',
 	'todo-list-cancel' => 'Nullañ',
 	'todo-new-item' => 'Elfenn nevez',

@@ -626,7 +626,7 @@ $messages['arc'] = array(
 	'configure-section-general' => 'ܛܘܝܒ̈ܐ ܓܘܢܝ̈ܐ',
 	'configure-section-pages' => 'ܦܐܬܬ̈ܐ',
 	'configure-section-paths' => 'ܫܒܝܠ̈ܐ',
-	'configure-section-email' => 'ܒܝܠܕܪܐ ܐܠܟܬܪܘܢܝܐ',
+	'configure-section-email' => 'ܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
 	'configure-section-upload' => 'ܐܣܩ',
 	'configure-section-images' => 'ܠܦܦ̈ܐ',
 	'configure-select-wiki-view-all' => 'ܟܠ ܘܝܩܝ̈',
@@ -8833,6 +8833,7 @@ $messages['ug-latn'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'configure' => 'Конфігурувати вікі',
@@ -8898,6 +8899,7 @@ $messages['uk'] = array(
 	'configure-section-debug' => 'Налагодження',
 	'configure-section-profiling' => 'Профілювання',
 	'configure-section-css-js' => 'CSS і JavaScript',
+	'configure-throttle-action-edit' => 'Змінити',
 	'configure-condition-operator-xor' => 'Виключне АБО',
 );
 

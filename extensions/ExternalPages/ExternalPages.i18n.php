@@ -143,6 +143,15 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'externalpages' => 'Paginas externe',
 	'externalpages-desc' => 'Recupera e presenta paginas ex sitos WMF remote',
+	'externalpages-bad-year' => 'Anno invalide specificate',
+	'externalpages-bad-language' => 'Lingua invalide specificate',
+	'externalpages-bad-project' => 'Projecto invalide specificate',
+	'externalpages-no-project' => 'Nulle projecto specificate',
+	'externalpages-bad-page' => 'Pagina invalide specificate',
+	'externalpages-no-page' => 'Nulle pagina specificate',
+	'externalpages-error-generic' => 'Error incontrate',
+	'externalpages-bad-url' => 'Falleva de recuperar URL',
+	'externalpages-bad-url-data' => 'Falleva de recuperar contento de pagina',
 );
 
 /** Indonesian (Bahasa Indonesia)

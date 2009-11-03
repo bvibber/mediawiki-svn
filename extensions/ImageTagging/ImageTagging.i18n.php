@@ -251,6 +251,16 @@ $messages['bg'] = array(
 	'imagetagging-taggedimages-displaying' => 'Показване на $1 - $2 от $3 снимки на „$4“',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'imagetagging-article' => 'Pajenn :',
+	'imagetagging-images' => 'skeudennoù',
+	'imagetagging-tagcancel-button' => 'Nullañ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

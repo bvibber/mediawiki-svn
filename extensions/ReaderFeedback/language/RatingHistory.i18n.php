@@ -208,6 +208,15 @@ $messages['bn'] = array(
 	'ratinghistory-ave' => 'গড়: $1',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'ratinghistory-month' => 'miz diwezhañ',
+	'ratinghistory-year' => 'bloavezh diwezhañ',
+	'ratinghistory-ave' => 'Keidenn : $1',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -994,6 +1003,7 @@ Peringkatnya adalah sebagai berikut:
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Gianfranco
  * @author Pietrodn
  */
 $messages['it'] = array(
@@ -1013,15 +1023,14 @@ $messages['it'] = array(
 	'ratinghistory-table' => 'Panoramica dei voti dei lettori',
 	'ratinghistory-users' => 'Utenti che hanno dato un giudizio',
 	'ratinghistory-graph' => '$2 di "$3" ($1 {{PLURAL:$1|revisione|revisioni}})',
-	'readerfeedback-svg' => 'Visualizza come SVG',
+	'ratinghistory-svg' => 'Visualizza come SVG',
 	'ratinghistory-table-rating' => 'Giudizio',
 	'ratinghistory-table-votes' => 'Voti',
 	'ratinghistory-none' => 'Non sono disponibile sufficienti dati di feedback dei lettori per poter rappresentare dei grafici al momento.',
-	'ratinghistory-legend' => "I '''giudizi medi giornalieri''' <font color=\"blue\">''(blu)''</font> e gli '''intervalli dei giudizi medi''' selezionati <font color=\"green\">''(verde)''</font> sono rappresentati di seguito, in ordine di data. Gli '''intervalli dei giudizi medi''' sono semplicemente la media di tutti i giudizi giornalieri ''dentro'' questa finestra temporale per ogni giorno.
+	'ratinghistory-legend' => "Il '''numero giornaliero di valutazioni''' <font color=\"red\">''(rosso)''</font>, il '''giudizio medio giornaliero''' <font color=\"blue\">''(blu)''</font> ed i '''giudizi medi correnti''' <font color=\"green\">''(verde)''</font> sono rappresentati graficamente di seguito, in ordine di data. I '''giudizi medi correnti''' sono semplicemente la media di tutti i giudizi giornalieri ''all'interno'' di questo arco temporale per ciascun giorno.
+I giudizi sono i seguenti:
 
-Scala: '''[1]''' - Insufficiente; '''[2]''' - Mediocre; '''[3]''' - Discreto; '''[4]''' - Buono; '''[5]''' - Ottimo;
-
-Il '''numero di revisioni al giorno''' <font color=\"red\">''(rosso)''</font> è mostrato nel grafico di sotto, in scala ''1:\$1''.",
+Scala: '''[1]''' - Insufficiente; '''[2]''' - Mediocre; '''[3]''' - Discreto; '''[4]''' - Buono; '''[5]''' - Eccellente;",
 	'right-feedback' => 'Usa il modulo di feedback per giudicare una pagina',
 );
 
@@ -1210,6 +1219,7 @@ $messages['ml'] = array(
 	'ratinghistory-year' => 'കഴിഞ്ഞ വർഷം',
 	'ratinghistory-3years' => 'കഴിഞ്ഞ 3 വർഷം',
 	'ratinghistory-ave' => 'ശരാശരി: $1',
+	'ratinghistory-chart' => 'സമയാസമയങ്ങളിൽ വായനക്കാർ നൽകുന്ന നിലവാരമിടൽ',
 	'ratinghistory-purge' => 'കാഷെ ശുദ്ധമാക്കുക',
 	'ratinghistory-table' => 'വായനക്കാർ നൽകിയ മതിപ്പ് നിലവാരത്തിന്റെ പൊതു അവലോകനം',
 	'ratinghistory-users' => 'നിലവാരമിട്ട ഉപയോക്താക്കൾ',
@@ -1225,6 +1235,7 @@ $messages['ml'] = array(
 നിലവാര മതിപ്പുകൾ താഴെ കൊടുക്കുന്നു:
 
 '''(1)''' - ദരിദ്രം; '''(2)''' - മോശം; '''(3)''' - കൊള്ളാം; '''(4)''' - ഉന്നതം; '''(5)''' - ഒന്നാന്തരം;",
+	'ratinghistory-graph-scale' => "'''ദിവസവുമുള്ള സംശോധനങ്ങൾ''' <font color=\"red\">''(ചുവപ്പ്)''</font> ''1:\$1'' തോതിൽ കാട്ടുന്നു.",
 	'right-feedback' => 'താളിനു നിലവാരമിടാനായി അഭിപ്രായമറിയിക്കാനുള്ള ഫോം ഉപയോഗിക്കുക',
 );
 

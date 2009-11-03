@@ -128,6 +128,16 @@ $messages['bg'] = array(
 	'onlinestatus-toggle-online' => 'На линия',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'onlinestatus-tab' => 'Statud',
+	'onlinestatus-toggles-desc' => 'Ho statud :',
+	'onlinestatus-toggle-offline' => 'Ezlinenn',
+	'onlinestatus-toggle-online' => 'Enlinenn',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

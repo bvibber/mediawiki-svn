@@ -140,6 +140,18 @@ $messages['be-tarask'] = array(
 	'masseditregex-tooltip-execute' => 'Прыняць гэтыя зьмены для кожнай старонкі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'masseditregex-matchtxt' => 'Klask :',
+	'masseditregex-replacetxt' => "Erlec'hiañ gant :",
+	'masseditregex-before' => 'A-raok',
+	'masseditregex-after' => 'Goude',
+	'masseditregex-page-not-exists' => "N'eus ket eus $1",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

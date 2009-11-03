@@ -130,6 +130,17 @@ $messages['bn'] = array(
 	'profiling-ok' => 'ঠিক আছে',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'profiling-ok' => 'Mat eo',
+	'profiling-data-count' => 'Kontañ',
+	'profiling-data-time' => 'Padelezh (hollek)',
+	'profiling-data-average' => 'Padelezh (keidenn)',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

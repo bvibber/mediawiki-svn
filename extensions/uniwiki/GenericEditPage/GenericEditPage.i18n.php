@@ -1301,11 +1301,13 @@ Mäd do Reewen an ju Siede konnen wäkke bietouföiged wäide.',
 /** Swedish (Svenska)
  * @author Gabbe.g
  * @author Najami
+ * @author Poxnar
  */
 $messages['sv'] = array(
 	'gep-categories' => 'Kategorier',
 	'gep-addcategory' => 'Lägg till en kategori',
 	'gep-addcategorybutton' => 'Lägg till',
+	'gep-suggestcategory' => 'Föreslå en kategori',
 	'gep-sections' => 'Avsnitt',
 	'gep-addsection' => 'Lägg till ett avsnitt',
 	'gep-addsectionbutton' => 'Lägg till',

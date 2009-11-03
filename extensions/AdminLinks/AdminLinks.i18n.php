@@ -704,6 +704,24 @@ $messages['mg'] = array(
 	'right-adminlinks' => "Hijery ny rohy any amin'ny [[Special:AdminLinks|rohy ampiasain'ny mpandrindra]]",
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Azim
+ */
+$messages['mhr'] = array(
+	'adminlinks' => 'Сайтвиктарыше кылвер-влак',
+	'adminlinks-desc' => 'Сайтвиктарышышлан пайдале кылверым кучышо [[Special:AdminLinks|лӱмын ыштыме лаштыкым]] ешара',
+	'adminlinks_documentation' => '$1 документаций',
+	'adminlinks_general' => 'Тӱшкале',
+	'adminlinks_editsidebar' => 'Ӧрдыж аҥам тӧрлаташ',
+	'adminlinks_editcss' => 'CSS файлым тӧрлаташ',
+	'adminlinks_editmainpagename' => 'Тӱҥ лаштыкын лӱмжым тӧрлаташ',
+	'adminlinks_users' => 'Пайдаланыше-влак',
+	'adminlinks_createuser' => 'Пайдаланыше лияш',
+	'adminlinks_browsesearch' => 'Ончен налмаш да кычалмаш',
+	'adminlinks_importexport' => 'Импорт ден экспорт',
+	'right-adminlinks' => '[[Special:AdminLinks|Сайтвиктарыше кылвер-влакым]] ужаш',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

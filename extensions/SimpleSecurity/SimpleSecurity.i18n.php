@@ -113,6 +113,13 @@ $messages['bg'] = array(
 	'security-type-namespace' => 'именно пространство',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'security-type-category' => 'rummad',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

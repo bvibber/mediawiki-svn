@@ -68,6 +68,7 @@ $messages['qqq'] = array(
 	'readerfeedback-main' => '{{Identical|Content page}}',
 	'readerfeedback-submitting' => '{{flaggedrevs}}
 {{identical|submitting}}',
+	'readerfeedback-tagfilter' => '{{Identical|Tag}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1107,8 +1108,8 @@ $messages['it'] = array(
 	'readerfeedback-level-4' => 'Ottimo',
 	'readerfeedback-submit' => 'Invia',
 	'readerfeedback-main' => 'Solo le pagine di contenuto possono essere valutate.',
-	'readerfeedback-success' => "'''Grazie per aver visionato questa pagina!''' ([$3 Commenti o domande?])",
-	'readerfeedback-voted' => "'''Sembra che tu abbia già giudicato questa pagina.''' ([$3 Commenti o domande?])",
+	'readerfeedback-success' => "'''Grazie per aver verificato questa pagina!''' ([$2 vedi risultati]) ([$3 commenti o domande?]).",
+	'readerfeedback-voted' => "'''Sembra che tu abbia già valutato questa pagina.''' ([$2 vedi risultati]) ([$3 commenti o domande?]).",
 	'readerfeedback-submitting' => 'Invio in corso...',
 	'readerfeedback-finished' => 'Grazie!',
 	'readerfeedback-tagfilter' => 'Tag:',
@@ -1663,9 +1664,9 @@ $messages['roa-tara'] = array(
 	'readerfeedback-level-4' => "'A uerre proprie (Eccellende)",
 	'readerfeedback-submit' => 'Conferme',
 	'readerfeedback-main' => 'Sulamende le pàggene cu le condenute ponne essere valutete.',
-	'readerfeedback-success' => "'''Grazie pe avè reviste sta pàgene!''' ([$3 Commende o dumanne?]).",
-	'readerfeedback-voted' => "'''Pare proprie ca tu è già vutete pe sta pàgene''' ([$3 Commende o dumanne?]).",
-	'readerfeedback-error' => "'''<nowiki>'</nowiki>N errore sà verificate quanne ste votave sta pàgene''' ([$3 commende o domande?]).",
+	'readerfeedback-success' => "'''Grazie pe avè reviste sta pàgene!''' ([$2 vide le resultate]) ([$3 Commende o dumanne?]).",
+	'readerfeedback-voted' => "'''Pare proprie ca tu è già vutate pe sta pàgene''' ([$2 vide le resultate]) ([$3 Commende o dumanne?]).",
+	'readerfeedback-error' => "'''<nowiki>'</nowiki>N errore sà verificate quanne ste vutave sta pàgene''' ([$2 vide le resultate]) ([$3 commende o domande?]).",
 	'readerfeedback-submitting' => 'In conferme...',
 	'readerfeedback-finished' => "Grazie 'mbà",
 	'readerfeedback-tagfilter' => 'Tag:',
@@ -1978,6 +1979,7 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'readerfeedback' => 'Що ви думаєте про цю сторінку?',
@@ -1999,6 +2001,7 @@ $messages['uk'] = array(
 	'readerfeedback-voted' => "'''Схоже, ви вже оцінювали цю сторінку.''' ([$3 Є коментарі чи запитання?]).",
 	'readerfeedback-submitting' => 'Надсилання…',
 	'readerfeedback-finished' => 'Дякуємо!',
+	'readerfeedback-tagfilter' => 'Мітка:',
 	'tooltip-ca-ratinghist' => 'Читацька оцінка цієї сторінки',
 );
 

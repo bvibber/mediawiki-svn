@@ -537,10 +537,12 @@ OpenID позволява влизането в много различни са
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'openidxrds' => 'Restr Yadis',
 	'openidoptional' => 'Diret',
 	'openidrequired' => 'Rekis',
 	'openidnickname' => 'Lesanv',
@@ -549,7 +551,12 @@ $messages['br'] = array(
 	'openidlanguage' => 'Yezh',
 	'openidtimezone' => 'Takad eur :',
 	'openidchoosefull' => "Hoc'h anv klok ($1)",
+	'openidchoosemanual' => "Un anv dibabet ganeoc'h :",
 	'openidchoosepassword' => 'ger-tremen :',
+	'openiddelete' => 'Dilemel an OpenID',
+	'openid-urls-delete' => 'Dilemel',
+	'openid-add-url' => 'Ouzhpennañ un OpenID nevez',
+	'openid-provider-label-other-username' => "Ebarzhit hoc'h anv implijer $1",
 );
 
 /** Bosnian (Bosanski)

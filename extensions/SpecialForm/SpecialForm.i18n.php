@@ -205,10 +205,13 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
+	'form' => 'Furmskrid',
 	'formsave' => 'Enrollañ',
+	'formsaveerror' => 'Fazi en ur enrollañ ar furmskrid',
 );
 
 /** Bosnian (Bosanski)

@@ -573,6 +573,7 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
@@ -597,6 +598,7 @@ $messages['br'] = array(
 	'sign-viewfield-email' => 'Postel',
 	'sign-viewfield-age' => 'Oad',
 	'sign-viewfield-options' => 'Dibarzhioù',
+	'sign-signatures' => 'Sinadurioù',
 	'sign-closed' => 'serr',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] en deus kadarnaet [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
@@ -1809,6 +1811,7 @@ $1',
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Dorgan
  * @author Glanthor Reviol
  */
@@ -1825,6 +1828,8 @@ $messages['hu'] = array(
 	'sign-phone' => 'Telefonszám:',
 	'sign-bday' => 'Életkor:',
 	'sign-email' => 'E-mail cím:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> kötelező mező.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Megjegyzés: a nem listázott információk továbbra is láthatóak lesznek a moderátorok számára.</i></small>',
 	'sign-list-anonymous' => 'Megjelenítés névtelenül',
 	'sign-list-hideaddress' => 'Ne jelenítsd meg a címet',
 	'sign-list-hideextaddress' => 'Ne jelenítsd meg a várost, megyét, irányítószámot vagy országot',
@@ -1833,6 +1838,7 @@ $messages['hu'] = array(
 	'sign-list-hideemail' => 'Ne jelenítsd meg az e-mail címet',
 	'sign-submit' => 'Dokumentum aláírása',
 	'sig-success' => 'Sikeresen aláírtad a dokumentumot.',
+	'sign-view-selectfields' => '<b>Megjelenített mezők:</b>',
 	'sign-viewfield-entryid' => 'Bejegyzés azonosítója',
 	'sign-viewfield-timestamp' => 'Időbélyeg',
 	'sign-viewfield-realname' => 'Név',
@@ -1842,22 +1848,29 @@ $messages['hu'] = array(
 	'sign-viewfield-country' => 'Ország',
 	'sign-viewfield-zip' => 'Irányítószám',
 	'sign-viewfield-ip' => 'IP-cím',
+	'sign-viewfield-agent' => 'User agent',
 	'sign-viewfield-phone' => 'Telefonszám',
 	'sign-viewfield-email' => 'E-mail cím',
 	'sign-viewfield-age' => 'Kor',
 	'sign-viewfield-options' => 'Beállítások',
+	'sign-sigadmin-currentlyopen' => 'A dokumentum aláírása engedélyezett.',
 	'sign-sigadmin-close' => 'Aláírás letiltása',
+	'sign-sigadmin-currentlyclosed' => 'A dokumentum aláírása jelenleg nem engedélyezett.',
 	'sign-sigadmin-open' => 'Aláírás engedélyezése',
 	'sign-signatures' => 'Aláírások',
 	'sign-sigadmin-closesuccess' => 'Az aláírás sikeresen letiltva.',
 	'sign-sigadmin-opensuccess' => 'Az aláírás sikeresen engedélyezve.',
 	'sign-viewsignatures' => 'aláírások megtekintése',
 	'sign-closed' => 'lezárva',
+	'sig-anonymous' => '<i>Névtelen</i>',
 	'sig-private' => '<i>Privát</i>',
 	'sign-sigdetails' => 'Aláírás részletei',
 	'sign-viewfield-reviewcomment' => 'Megjegyzés',
+	'sign-detail-uniquequery' => 'Hasonló entitások',
 	'sign-detail-uniquequery-run' => 'Lekérdezés futtatása',
+	'sign-reviewsig' => 'Aláírás értékelése',
 	'sign-review-comment' => 'Megjegyzés',
+	'sign-submitreview' => 'Értékelés elküldése',
 	'sign-uniquequery-similarname' => 'Hasonló név',
 	'sign-uniquequery-similaraddress' => 'Hasonló cím',
 	'sign-uniquequery-similarphone' => 'Hasonló telefonszám',

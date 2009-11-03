@@ -1519,8 +1519,8 @@ Tuta strona je jenož na wobmjezowanych wužiwarjow nałožujomna.",
  */
 $messages['hu'] = array(
 	'whitelist-desc' => 'Korlátozott felhasználók hozzáférési jogosultságainak szerkesztése',
-	'whitelistedit' => 'Fehérlista-hozzáférés szerkesztő',
-	'whitelist' => 'Fehérlista lapok',
+	'whitelistedit' => 'Engedélylista-hozzáférés szerkesztő',
+	'whitelist' => 'Engedélylista-lapok',
 	'mywhitelistpages' => 'Lapjaim',
 	'whitelistfor' => '<center>Aktuális információk ehhez: <b>$1</b></center>',
 	'whitelisttablemodify' => 'Módosítás',
@@ -1539,13 +1539,20 @@ $messages['hu'] = array(
 	'whitelistnewpagesfor' => 'Új lapok hozzáadása <b>$1</b> fehérlistájához<br />
 Használd a * vagy % jeleket joker karakterként',
 	'whitelistnewtabledate' => 'Lejárat dátuma:',
+	'whitelistnowhitelistedusers' => 'Nincsenek felhasználók a(z) „{{MediaWiki:Group-restricted}}” csoportban.
+[[Special:UserRights|Felhasználókat kell adnod a csoporthoz]], mielőtt lapokat adhatnál a felhasználó engedélylistájához.',
 	'whitelistnewtableprocess' => 'Folyamat',
 	'whitelistnewtablereview' => 'Ellenőrzés',
 	'whitelistselectrestricted' => '== Korlátozott felhasználó nevének kiválasztása ==',
+	'whitelistpagelist' => '$1 {{SITENAME}}-lapjai',
 	'whitelistnocalendar' => "<font color='red' size=3>Úgy tűnik, hogy a [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics] – ami ennek a kiterjesztésnek előfeltétele – nincs megfelelően telepítve!</font>",
+	'whitelistrequest' => 'Hozzáférés kérése több laphoz',
 	'whitelistrequestmsg' => '$1 hozzáférést kért a következő {{PLURAL:$3|laphoz|lapokhoz}}:
 
 $2',
+	'whitelistrequestconf' => 'A kérelem az új lapok iránt el lett küldve $1 részére',
+	'whitelistnonrestricted' => "'''$1''' nem korlátozott felhasználó.
+Ez a lap csak korlátozott felhasználókra vonatkozik",
 	'whitelistnever' => 'soha',
 	'whitelistnummatches' => '  – {{PLURAL:$1|egy|$1}} találat',
 	'right-editwhitelist' => 'létező felhasználók fehérlistáinak módosítása',

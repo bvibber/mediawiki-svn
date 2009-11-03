@@ -191,6 +191,16 @@ $messages['bn'] = array(
 	'spamdifftool_confirm' => "স্প্যাম কালোতালিকায় এই ভুক্তিগুলি যোগ করার ব্যাপারটি নিশ্চিত করুন। (সমস্যা হলে <a href='$1' target='new'>এখানে</a> ক্লিক করুন।)",
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'spamdifftool_option_none' => 'netra',
+	'spamdifftool_block' => 'Stankañ :',
+	'spamdifftool_submit_buttom' => 'Kas',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

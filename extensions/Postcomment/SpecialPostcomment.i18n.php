@@ -117,10 +117,12 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Y-M D
  */
 $messages['br'] = array(
 	'postcomment_said' => 'en deus lavaret',
+	'postcomment_replyto' => 'Respont da $1',
 );
 
 /** Bosnian (Bosanski)

@@ -301,6 +301,13 @@ $messages['mk'] = array(
 	'oai-desc' => 'Дава интерфејс за [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] складот',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'oai-desc' => 'റെപ്പോസിറ്ററി ദൃശ്യമണ്ഡലമായ [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] നൽകുന്നു',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

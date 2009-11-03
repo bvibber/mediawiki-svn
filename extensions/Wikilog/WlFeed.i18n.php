@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'wlfeed-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'wlfeed-desc' => 'Палепшаныя клясы стварэньня стужак навінаў',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -106,6 +113,13 @@ $messages['nl'] = array(
 	'wlfeed-desc' => 'Klassen voor het aanmaken van verbeterde feeds',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'wlfeed-desc' => 'Classas de generacion de fluses melhorats',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  */
@@ -118,6 +132,13 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'wlfeed-desc' => 'Classes aprimoradas para geração de feeds',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wlfeed-desc' => 'Classe avanzate de generazione de feed',
 );
 
 /** Russian (Русский)

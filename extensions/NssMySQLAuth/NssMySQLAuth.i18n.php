@@ -143,6 +143,21 @@ $messages['bg'] = array(
 	'nss-welcome-mail' => 'Беше ви създадена сметка с потребителско име $1 и парола $2.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'am-username' => 'Anv implijer',
+	'am-email' => 'postel',
+	'am-active' => 'oberiant',
+	'nss-rights' => 'gwirioù',
+	'nss-save-changes' => "Enrollañ ar c'hemmoù",
+	'nss-create-account-header' => 'Krouiñ ur gont nevez',
+	'nss-create-account' => 'Krouiñ ar gont',
+	'nss-no-mail' => 'Chom hep kas ur postel',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -183,6 +183,15 @@ $messages['bg'] = array(
 	'refreshspecial-no-page' => 'Няма такава специална страница',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'refreshspecial-select-all-pages' => 'Diuzañ an holl bajennoù',
+	'refreshspecial-reconnected' => 'Adluget.',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

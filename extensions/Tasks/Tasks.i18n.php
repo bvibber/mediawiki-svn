@@ -416,12 +416,24 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Y-M D
  */
 $messages['br'] = array(
+	'tasks_noone' => 'hini ebet',
+	'tasks_delete' => 'Dilemel',
+	'tasks_no_task_delete_title' => 'Nann aotreet',
+	'tasks_closedby' => 'Serret gant $1',
 	'tasks_here' => 'amañ',
+	'tasks_more_like_it' => "muioc'h",
+	'tasks_event_on_creation' => 'gwiriañ',
 	'tasks_table_header_page' => 'Pajenn',
+	'tasks_search_status' => 'Statud',
+	'tasks_previous' => 'a-raok',
+	'tasks_next' => 'da heul',
+	'tasks_ascending' => 'Ar re goshañ da gentañ',
 	'tasks_status_open' => 'Digor',
+	'tasks_status_closed' => 'Serret',
 );
 
 /** Bosnian (Bosanski)
@@ -1535,6 +1547,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -1553,6 +1566,7 @@ $messages['hu'] = array(
 	'tasks_assign_to' => 'Hozzárendelés:',
 	'tasks_unassign_me' => 'A hozzárendelésem megszüntetése',
 	'tasks_close' => 'Feladat lezárása',
+	'tasks_wontfix' => 'Nem javítandó',
 	'tasks_delete' => 'Törlés',
 	'tasks_no_task_delete_title' => 'Nem engedélyezett',
 	'tasks_no_task_delete_texe' => 'Nincs jogosultságod feladatot törölni. Ilyet csak az adminisztrátorok tehetnek.',
@@ -1564,16 +1578,23 @@ $messages['hu'] = array(
 	'tasks_discussion_page_link' => 'Feladat vitalapja',
 	'tasks_closedby' => '$1 lezárta',
 	'tasks_sidebar_title' => 'Feladatok megnyitása',
-	'tasks_here' => 'itt',
+	'tasks_here' => 'ide',
+	'tasks_returnto' => 'A lap át lesz irányítva. Ha ez néhány másodpercen belül nem történik meg, kattints $1.',
+	'tasks_see_page_tasks' => '(a laphoz tartozó feladatok)',
+	'tasks_task_is_assigned' => '(hozzárendelve)',
+	'tasks_plain_text_only' => '(egyszerű szöveg, legfeljebb 256 karakter)',
 	'tasks_help_page' => 'Feladatok',
 	'tasks_more_like_it' => 'több',
+	'tasks_task_types' => '1:takarítás:Takarítás|2:wikisítés:Wikisítés|3:átdolgozás:Átdolgozás|4:törlés:Törlés|5:létrehozás:Létrehozás|6:írás:Írás|7:ellenőrzés:Ellenőrzés',
 	'tasks_event_on_creation' => 'ellenőrzés',
 	'tasks_event_on_creation_anon' => 'ellenőrzés',
+	'tasks_on_creation_comment' => 'Az oldal elkészülésekor automatikusan létrejött feladat',
 	'tasks_link_your_assignments' => 'hozzárendelések megnyitása',
 	'tasks_table_header_page' => 'Lap',
 	'tasks_search_form_title' => 'Keresés',
 	'tasks_search_tasks' => 'Feladatok',
 	'tasks_search_status' => 'Állapot',
+	'tasks_search_no_tasks_chosen_note' => '(Ha nem választasz ki semmit, akkor az összes feladattípusban történik a keresés.)',
 	'tasks_search_results' => 'Keresési eredmények',
 	'tasks_previous' => 'Előző',
 	'tasks_next' => 'Következő',
@@ -1582,10 +1603,15 @@ $messages['hu'] = array(
 	'tasks_status_open' => 'Megnyitás',
 	'tasks_status_assigned' => 'Hozzárendelve',
 	'tasks_status_closed' => 'Lezárva',
+	'tasks_status_wontfix' => 'Nem javítandó',
 	'tasks_action_open' => 'A(z) „$1” feladat megnyitva.',
 	'tasks_action_assigned' => 'A(z) „$1” feladat hozzárendelve.',
 	'tasks_action_closed' => 'A(z) „$1” feladat lezárva.',
+	'tasks_action_wontfix' => 'A(z) „$1” feladat nem javítandó.',
+	'tasks_sign_delete' => '<b>Kérték a lap törlését!</p>',
 	'tasks_logpage' => 'Feladatok naplója',
+	'tasks_logpagetext' => 'Ez a feladatokon végzett módosítások naplója',
+	'tasks-pref-showtaskcomments' => 'A feladat hozzászólásainak beilleszése.',
 );
 
 /** Interlingua (Interlingua)

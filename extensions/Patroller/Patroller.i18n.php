@@ -222,6 +222,16 @@ $messages['bn'] = array(
 	'patrol-skipped-ok' => 'সম্পাদনা উপেক্ষা করুন।',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'patrol-revert-reason' => 'Abeg :',
+	'group-patroller' => 'Patrouilherien',
+	'group-patroller-member' => 'patrouilher',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

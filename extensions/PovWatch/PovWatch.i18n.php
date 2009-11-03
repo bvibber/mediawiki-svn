@@ -248,6 +248,16 @@ $messages['bn'] = array(
 	'povwatch_title' => 'শিরোনাম:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_title' => 'Titl :',
+	'povwatch_added' => 'ouzhpennet',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

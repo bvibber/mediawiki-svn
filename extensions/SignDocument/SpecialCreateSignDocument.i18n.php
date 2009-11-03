@@ -231,6 +231,7 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
@@ -244,6 +245,7 @@ $messages['br'] = array(
 	'createsigndoc-minage' => 'Oad yaouankañ :',
 	'createsigndoc-introtext' => 'Digoradur :',
 	'createsigndoc-hidden' => 'Kuzhet',
+	'createsigndoc-create' => 'Krouiñ',
 	'createsigndoc-error-pagenoexist' => "Fazi : Ar bajenn [[$1]] n'eus ket anezhi.",
 );
 

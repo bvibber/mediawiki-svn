@@ -2448,8 +2448,13 @@ $messages['uk'] = array(
 	'extensiondistributor' => 'Завантажити MediaWiki розширення',
 	'extdist-desc' => 'Розширення для завантаження дистрибутивів розширень',
 	'extdist-not-configured' => 'Будь ласка, налаштуйте $wgExtDistTarDir і $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Вказаного в налаштуваннях каталогу робочої копії не існує!',
+	'extdist-no-such-extension' => 'Розширення "$1" не знайдено',
 	'extdist-choose-extension' => 'Виберіть розширення, яке ви хочете завантажити:',
+	'extdist-wc-empty' => 'Вказаний в налаштуваннях каталог робочої копії не містить дистрибутивів розширень!',
 	'extdist-submit-extension' => 'Продовжити',
+	'extdist-current-version' => 'Версія в розробці (trunk)',
+	'extdist-no-versions' => 'Обране розширення ($1) не доступне в будь-якій версії!',
 	'extdist-submit-version' => 'Продовжити',
 	'extdist-want-more' => 'Завантажити інше розширення',
 );

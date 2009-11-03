@@ -986,6 +986,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
  * @author Liangent
  * @author PhiLiP
  * @author Shinjiman
@@ -993,7 +994,9 @@ $messages['yue'] = array(
  */
 $messages['zh-hans'] = array(
 	'optin-try' => '试用测试版',
+	'tooltip-pt-optin-try' => '尝试新功能',
 	'optin-leave' => '离开测试版',
+	'tooltip-pt-optin-leave' => '关闭新功能',
 	'optin-feedback' => '测试版反馈',
 	'tooltip-pt-optin-feedback' => '提供你对新功能的反馈意见',
 );

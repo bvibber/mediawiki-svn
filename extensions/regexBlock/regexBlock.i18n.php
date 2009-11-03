@@ -385,6 +385,21 @@ $messages['bn'] = array(
 	'regexblock-view-go' => 'যাও',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'regexblock-form-reason' => 'Abeg :',
+	'regexblock-form-submit' => 'Stankañ an implijer-mañ',
+	'regexblock-view-all' => 'Pep tra',
+	'regexblock-view-reason' => 'abeg : $1',
+	'regexblock-view-block-by' => 'stanket gant :',
+	'regexblock-view-block-unblock' => 'distankañ',
+	'regexblock-view-stats' => 'stadegoù',
+	'regexblock-view-time' => "d'an $1",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

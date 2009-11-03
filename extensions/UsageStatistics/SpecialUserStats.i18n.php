@@ -1976,6 +1976,7 @@ $messages['stq'] = array(
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
+ * @author Poxnar
  * @author Sannab
  */
 $messages['sv'] = array(
@@ -1984,10 +1985,10 @@ $messages['sv'] = array(
 	'usagestatistics-desc' => 'Visar användningsstatistik för enskilda användare och för wikin som helhet',
 	'usagestatisticsfor' => '<h2>Användarstatistik för [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Användarstatistik för alla användare</h2>',
-	'usagestatisticsinterval' => 'Intervall',
+	'usagestatisticsinterval' => 'Intervall:',
 	'usagestatisticstype' => 'Typ',
-	'usagestatisticsstart' => 'Startdatum',
-	'usagestatisticsend' => 'Slutdatum',
+	'usagestatisticsstart' => 'Startdatum:',
+	'usagestatisticsend' => 'Slutdatum:',
 	'usagestatisticssubmit' => 'Visa statistik',
 	'usagestatisticsnostart' => 'Ange ett startdatum',
 	'usagestatisticsnoend' => 'Ange ett slutdatum',

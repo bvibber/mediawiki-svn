@@ -14,10 +14,10 @@ $aliases['en'] = array(
 	'Wikilog' => array( 'Wikilog', 'Wikilogs' ),
 );
 
-/**
- * Portuguese (Português)
+/** Portuguese (Português)
  * @author Juliano F. Ravasi
  */
 $aliases['pt'] = array(
 	'Wikilog' => array( 'Wikilog', 'Wikilogs' ),
 );
+

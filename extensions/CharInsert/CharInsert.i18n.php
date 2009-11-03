@@ -332,6 +332,13 @@ $messages['mk'] = array(
 	'charinsert-desc' => 'Дава можност за создавање на JavaScript кутија за [[MediaWiki:Edittools|вметнување на нестандардни знаци]]',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'charinsert-desc' => 'ജാവസ്ക്രിപ്റ്റ് പെട്ടിയിൽ [[MediaWiki:Edittools|സാധാരണമല്ലാത്ത ലിപികൾ ഉൾപ്പെടുത്താൻ]] ഉള്ള സൗകര്യം സൃഷ്ടിക്കാൻ അനുവദിക്കുന്നു.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

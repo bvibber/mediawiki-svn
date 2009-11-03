@@ -78,6 +78,7 @@ $messages['niu'] = array(
 $messages['af'] = array(
 	'importusers-uploadfile' => 'Laai lêer',
 	'importusers-form-button' => 'Importeer',
+	'importusers-log-summary' => 'Samevatting',
 	'importusers-log-summary-all' => 'Alle',
 	'importusers-log-summary-added' => 'Bygevoeg',
 	'importusers-log-summary-updated' => 'Opgedateer',
@@ -208,6 +209,18 @@ $messages['bg'] = array(
 	'importusers-password' => 'парола',
 	'importusers-email' => 'е-поща',
 	'importusers-realname' => 'истинско име',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'importusers' => 'Enporzhiañ implijerien',
+	'importusers-form-button' => 'Enporzhiañ',
+	'importusers-log-summary-added' => 'Ouzhpennet',
+	'importusers-log-summary-updated' => 'Hizivaet',
+	'importusers-password' => 'ger-tremen',
+	'importusers-realname' => 'gwir anv',
 );
 
 /** Bosnian (Bosanski)
@@ -1772,6 +1785,13 @@ $messages['ug-arab'] = array(
  */
 $messages['ug-latn'] = array(
 	'importusers-email' => 'élxet:',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'importusers-log-summary' => 'Всьго',
 );
 
 /** Veps (Vepsan kel')

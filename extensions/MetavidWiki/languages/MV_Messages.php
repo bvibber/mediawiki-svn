@@ -1314,7 +1314,9 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Embanner meta-roadennoù video & Klask Media]',
@@ -1329,6 +1331,10 @@ $messages['br'] = array(
 	'mv_tool_search' => 'Klask',
 	'mv_tool_navigate' => 'Merdeiñ',
 	'mv_tool_export' => 'Ezporzhiañ',
+	'mv_tool_mang_layers' => 'Merañ ar gwiskadoù',
+	'mv_update_layers' => 'Hizivaat ar gwiskadoù',
+	'mv_watch_clip' => "Sellet ar c'hlip video",
+	'mv_close_clip' => "Serriñ ar c'hlip",
 	'mv_click_to_edit' => 'klikañ evit kemmañ',
 	'ht_en' => 'Treuzskrivañ',
 	'anno_en' => 'Notadurioù ha rummadoù',
@@ -1345,6 +1351,7 @@ $messages['br'] = array(
 	'mv_adjust_preview_stop' => 'Paouez da rakwelet',
 	'mv_start_desc' => 'Pad en deroù',
 	'mv_end_desc' => 'Pad en dibenn',
+	'mv_edit_metadata' => 'Aozañ ar metaroadennoù',
 	'mv_advanced_edit' => 'Kemm araokaet',
 	'mv_basic_edit' => 'Kemm diazez',
 	'mv_remove_category' => 'Tennañ ar rummad kuit',
@@ -1357,6 +1364,20 @@ $messages['br'] = array(
 	'mv_search_sel_t' => 'Dibab ar mod klask',
 	'mv_results_for' => "Disoc'hoù evit $1",
 	'mv_video_search' => 'Klask video',
+	'mv_add_filter' => 'Ouzhpennañ ur sil',
+	'mv_search_match' => 'Klask an destenn',
+	'mv_search_categories' => 'Rummadoù',
+	'mv_search_category' => 'Rummad',
+	'mv_search_and' => 'hag',
+	'mv_search_or' => 'pe',
+	'mv_category' => 'rummad',
+	'mv_sequence_add' => 'Ouzhpennañ klipoù',
+	'mv_other_options' => 'Dibarzhioù all',
+	'mv_hours_singular' => '1 eurvezh',
+	'mv_minutes_singular' => '1 vunutenn',
+	'mv_seconds_singular' => '1 eilenn',
+	'mv_prev_cat' => 'Rummad kent : $1',
+	'mv_next_cat' => 'Rummad da-heul : $1',
 );
 
 /** Bosnian (Bosanski)

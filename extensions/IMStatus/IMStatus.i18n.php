@@ -182,6 +182,20 @@ $messages['bg'] = array(
 	'imstatus_or' => 'или',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'imstatus_syntax' => 'Ereadur',
+	'imstatus_default' => 'Dre ziouer',
+	'imstatus_example' => 'Skouer',
+	'imstatus_max' => 'max',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'pe',
+	'imstatus_your_name' => 'ho anv $1',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

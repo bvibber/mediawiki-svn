@@ -5208,12 +5208,14 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
  */
 $messages['hu'] = array(
 	'wikidata-desc' => 'Wiki-szerű adatbázist ad különböző típusú tartalmakhoz',
+	'wikidata-handler-namespace-move-error' => 'A Wikiadat kiterjesztés által kezelt névterek lapjai nem nevezhetőek át.',
 	'languages' => 'Wikidata: Nyelvkezelő',
 	'langman-desc' => 'Nyelvek hozzáadása és beállításaik módosítása a [[Special:Languages]] lapon',
 	'langman_title' => 'Nyelv kezelő',
 	'langman_not_allowed' => 'Nincs jogosultságod a nyelvek beállításainak módosításához.',
 	'langman_header' => 'Add meg alább a nyelv kódját és a nevét angolul:',
 	'langman_req_fields' => 'A nyelv nevét és az ISO 639-3-kódot kötelező megadni!',
+	'langman_adding' => '$1 nyelv hozzáadása $2 kóddal.',
 	'langman_langname' => 'Nyelv neve:',
 	'langman_iso639-3' => 'ISO 639-3-kód:',
 	'langman_iso639-2' => 'ISO 639-2-kód:',
@@ -5222,6 +5224,7 @@ $messages['hu'] = array(
 	'langman_addlang' => 'Nyelv hozzáadása',
 	'importlangnames' => 'Wikiadat: nyelvek neveinek importálása',
 	'importlangnames_title' => 'Nyelvek neveinek importálása',
+	'importlangnames_not_allowed' => 'Nincs jogosultságod nyelvek neveinek importálásához.',
 	'datasearch' => 'Wikiadat: adatkeresés',
 	'datasearch_language' => 'Nyelv:',
 	'datasearch_found_word' => 'Szó találat',
@@ -5243,12 +5246,15 @@ $messages['hu'] = array(
 	'exporttsv' => 'Wikiadat: TSV exportálása',
 	'ow_exporttsv_title' => 'Gyűjtemény exportálása TSV formátumba',
 	'ow_exporttsv_languages' => 'Nyelvek:',
+	'ow_exporttsv_not_allowed' => 'Nincs jogosultságod a TSV-exportáláshoz.',
 	'ow_exporttsv_export_failed' => 'Az exportálás nem sikerült',
 	'addcollection' => 'Wikiadat: gyűjtemény hozzáadása',
 	'ow_save' => 'Mentés',
 	'ow_history' => 'Történet',
 	'ow_datasets' => 'Adatkészlet kiválasztása',
 	'ow_noedit_title' => 'Nincs jogosultságod szerkeszteni',
+	'ow_noedit' => 'Nincs jogosultságod lapok szerkesztéséhez a(z) „$1” adathalmazban.
+Lásd a [[{{MediaWiki:Ow editing policy url}}|szerkesztési irányelveinket]].',
 	'ow_uipref_datasets' => 'Alapértelmezett nézet:',
 	'ow_uiprefs' => 'Wikiadat',
 	'ow_none_selected' => 'nincs kijelölés',
@@ -5276,6 +5282,8 @@ $messages['hu'] = array(
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'nincs megadva',
 	'ow_dm_not_found' => 'nem található az adatbázisban vagy nem megfelelő',
+	'ow_mapping_successful' => 'Az összes [OK]-val jelölt mező fel lett térképezve<br />',
+	'ow_will_insert' => 'Beilleszti a következőket:',
 	'ow_AddHint' => 'Add meg a hozzáadandó új sorokat',
 	'ow_AlternativeDefinition' => 'Alternatív definíció',
 	'ow_AlternativeDefinitions' => 'Más definíciók',
@@ -5344,13 +5352,21 @@ $messages['hu'] = array(
 	'ow_copy_help' => 'A súgó még nincs megvalósítva.',
 	'ow_please_proved_dmid' => 'Úgy tűnik, hiányzik egy „?dmid=<ID>” (dmid= Defined Meaning ID, definiált jelentés azonosító) abból, amit megadtál.<br />
 Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
+	'ow_copy_successful' => '<h2>Sikeres másolás</h2>
+Úgy tűnik, hogy az adatok sikeresen át lettek másolva.
+Ne felejtsd el még egyszer ellenőrizni!',
+	'ow_copy_unsuccessful' => '<h3>Sikertelen másolás</h3>
+Nem történt másolási művelet.',
 	'ow_history_transaction' => 'Tranzakció:',
 	'ow_class_attr_type_dm' => 'Definiált jelentés',
 	'ow_class_attr_type_xlate' => 'Lefordítható szöveg',
 	'ow_class_attr_type_plain' => 'Sima szöveg',
 	'ow_class_attr_type_link' => 'Hivatkozás',
+	'needstranslation' => 'Wikiadat: lefordítandó kifejezések',
+	'ow_needs_xlation_title' => 'Lefordítandó kifejezések',
 	'ow_needs_xlation_source_lang' => 'Forrásnyelv:',
 	'ow_needs_xlation_dest_lang' => 'Célnyelv:',
+	'ow_needs_xlation_no_dest_lang' => 'Add meg a célnyelvet.',
 	'ow_show' => 'Megjelenítés',
 	'ow_upload' => 'Feltöltés',
 	'ow_create' => 'Létrehozás',
@@ -5359,6 +5375,7 @@ Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
 	'ow_suggest_clear' => 'Törlés',
 	'ow_nstab_definedmeaning' => 'definiált jelentés',
 	'ow_nstab_edit_copy' => 'másolat szerkesztése',
+	'right-addlanguage' => 'nyelvi beállítások hozzáadása és módosítása',
 	'ow_shown_datasets' => 'Adatkészletek megjelenítése',
 );
 
@@ -11909,6 +11926,7 @@ $messages['ug-latn'] = array(
  * @author AS
  * @author Ahonc
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'languages' => 'Вікідані: Мовний менеджер',
@@ -11943,6 +11961,7 @@ $messages['uk'] = array(
 	'ow_uipref_datasets' => 'Звичайний вигляд:',
 	'ow_uiprefs' => 'Вікідані',
 	'ow_none_selected' => 'Нічого не обрано',
+	'ow_transaction_summary' => 'Опис',
 	'ow_conceptmapping_help' => '<p>можливі дії: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  вставити відповідність</li>
 <li>&action=get&concept=<concept_id>  зчитати відповідність</li>
@@ -12022,6 +12041,8 @@ $messages['uk'] = array(
 	'ow_please_proved_dc1' => "Схоже, що у вхідних даних відсутнє «?dc1=<щось>» (dc1 — контекст набору даних; набір даних, звідки копіювати)<br /> Будь ласка, зв'яжіться з адміністратором сервера.",
 	'ow_copy_unsuccessful' => '<h3>Копіювання невдале</h3>
 Не була виконана операція копіювання.',
+	'ow_suggest_previous' => 'Попередній',
+	'ow_suggest_next' => 'Наступний',
 );
 
 /** Veps (Vepsan kel')

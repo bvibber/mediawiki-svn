@@ -190,6 +190,16 @@ $messages['bg'] = array(
 	'disabledusers-summary' => 'Това е списък с потребителски сметки, които са били деактивирани чрез PasswordReset.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'passwordreset-username' => 'Anv implijer :',
+	'passwordreset-newpass' => 'Ger-tremen nevez :',
+	'passwordreset-confirmpass' => 'Kadarnaat ar ger-tremen nevez :',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

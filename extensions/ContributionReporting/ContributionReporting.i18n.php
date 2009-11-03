@@ -98,6 +98,7 @@ $messages['qqq'] = array(
 	'contrib-hist-header' => 'Title of Special:ContributionHistory. See http://wikimediafoundation.org/wiki/Special:ContributionHistory for example.',
 	'contrib-hist-name' => '{{Identical|Name}}',
 	'contrib-hist-date' => '{{Identical|Date}}',
+	'contrib-hist-amount' => '{{Identical|Amount}}',
 	'contribstats-currency-range-totals' => '* $1 is a start date
 * $2 is an end date',
 	'contribstats-currency' => '{{Identical|Currency}}',

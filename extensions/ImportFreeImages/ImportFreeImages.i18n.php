@@ -144,6 +144,15 @@ $messages['bg'] = array(
 	'importfreeimages_returntoform' => "Или щракнете <a href='$1'>тук</a> за да се върнете към резултати от търсенето си",
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'importfreeimages_owner' => 'Aozer',
+	'importfreeimages_next' => '$1 da heul',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

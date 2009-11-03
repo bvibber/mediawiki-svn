@@ -596,6 +596,13 @@ $messages['tr'] = array(
 	'discussionthreading-threadnewsection' => 'yeni',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'discussionthreading-replysection' => 'відповідь',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

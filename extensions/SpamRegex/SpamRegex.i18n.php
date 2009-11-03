@@ -1601,6 +1601,13 @@ $messages['tr'] = array(
 	'spamregex-summary-log' => '(Özet)',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'spamregex-summary-log' => '(опис)',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

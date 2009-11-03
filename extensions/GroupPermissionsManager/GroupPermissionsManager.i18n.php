@@ -419,6 +419,17 @@ $messages['bg'] = array(
 	'right-edit-new' => 'редактиране на страници',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'grouppermissions-dologin' => 'Lugañ',
+	'grouppermissions-true' => 'Gwir',
+	'grouppermissions-false' => 'Faos',
+	'grouppermissions-never' => 'Morse',
+	'right-search' => 'Klask ar wiki',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

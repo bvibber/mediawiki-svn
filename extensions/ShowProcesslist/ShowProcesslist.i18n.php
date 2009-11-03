@@ -108,6 +108,16 @@ $messages['bg'] = array(
 	'showprocesslist-info' => 'Информация',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'showprocesslist-user' => 'Implijer',
+	'showprocesslist-host' => 'Ostiz',
+	'showprocesslist-db' => 'Diaz roadennoù',
+	'showprocesslist-time' => 'Pad',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
