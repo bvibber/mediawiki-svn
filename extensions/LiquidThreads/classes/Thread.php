@@ -139,12 +139,15 @@ class Thread {
 		$this->root = null;
 	}
 
-	function commitRevision( $change_type, $change_object = null, $reason = "" ) {
+	function commitRevision( $change_type, $change_object = null, $reason = "",
+					$bump = null ) {
 		$this->dieIfHistorical();
 		global $wgUser;
 		
 		global $wgThreadActionsNoBump;
-		$bump = !in_array( $change_type, $wgThreadActionsNoBump );
+		if ( is_null($bump) ) {
+			$bump = !in_array( $change_type, $wgThreadActionsNoBump );
+		}
 		if ( $bump ) {
 			$this->sortkey = wfTimestampNow( TS_DB );
 		}
@@ -376,20 +379,35 @@ class Thread {
 	}
 	
 	function incrementReplyCount( $val = 1 ) {
-		$thread = $this;
-		while ( $thread ) {
-			$thread->replyCount += $val;
+		$this->replyCount += $val;
+		
+		wfDebug( "Incremented reply count for thread ".$this->id()." to ".$this->replyCount."\n" );
+	
+		$thread = $this->superthread();
+		
+		if ( $thread ) {
+			$thread->incrementReplyCount( $val );
+			wfDebug( "Saving Incremented thread ".$thread->id().
+				" with reply count ".$thread->replyCount."\n" );
 			$thread->save();
-			
-			$thread = $thread->superthread();
 		}
 	}
 	
 	function decrementReplyCount( $val = 1 ) {
 		$this->incrementReplyCount( - $val );
 	}
+	
+	static function newFromRow( $row ) {
+		$id = $row->thread_id;
+		
+		if ( isset( Threads::$cache_by_id[$id] ) ) {
+			return Threads::$cache_by_id[$id];
+		}
+		
+		return new Thread( $row );
+	}
 
-	function __construct( $line, $unused = null ) {
+	protected function __construct( $line, $unused = null ) {
 		/* SCHEMA changes must be reflected here. */
 		
 		if ( is_null( $line ) ) { // For Thread::create().
@@ -542,7 +560,7 @@ class Thread {
 		//  user talk pages to a link batch, cache the relevant user id/name pair, and
 		//  populate the reply cache.
 		foreach ( $all_thread_rows as $row ) {
-			$thread = new Thread( $row, null );
+			$thread = Thread::newFromRow( $row, null );
 			
 			if ( isset( $articlesById[$thread->rootId] ) )
 				$thread->root = $articlesById[$thread->rootId];
@@ -833,8 +851,27 @@ class Thread {
 		$this->decrementReplyCount( 1 + $threadObj->replyCount() );
 	}
 	
+	function checkReplies( $replies ) {
+		foreach( $replies as $reply ) {
+			if ( ! $reply->hasSuperthread() ) {
+				throw new MWException( "Post ".$this->id().
+				" has contaminated reply ".$reply->id()."\n" );
+			}
+			
+			if ( $reply->superthread()->id() != $this->id() ) {
+				throw new MWException( "Post ". $this->id() . 
+				" has contaminated reply ".$reply->id()."\n" );
+			}
+		}
+	}
+	
 	function replies() {
+		if ( !$this->id() ) {
+			return array();
+		}
+		
 		if ( !is_null( $this->replies ) ) {
+			$this->checkReplies( $this->replies );
 			return $this->replies;
 		}
 		
@@ -860,6 +897,8 @@ class Thread {
 		}
 		
 		$this->replies = Thread::bulkLoad( $rows );
+		
+		$this->checkReplies( $this->replies );
 		
 		return $this->replies;
 	}
@@ -1154,11 +1193,11 @@ class Thread {
 // 
 // 			// Insert a revision into the database.			
 // 			$rev = ThreadRevision::create( $historical_thread,
-// 											$historical_thread->changeType(),
-// 											$historical_thread->changeObject(),
-// 											$historical_thread->changeComment(),
-// 											$historical_thread->changeUser(),
-// 											$historical_thread->modified() );
+// 							$historical_thread->changeType(),
+// 							$historical_thread->changeObject(),
+// 							$historical_thread->changeComment(),
+// 							$historical_thread->changeUser(),
+// 							$historical_thread->modified() );
 // 		}
 	}
 	

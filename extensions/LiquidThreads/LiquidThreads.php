@@ -38,6 +38,7 @@ $wgExtraNamespaces[NS_LQT_SUMMARY_TALK] = 'Summary_talk';
 // Localisation
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['LiquidThreads'] = $dir . 'i18n/Lqt.i18n.php';
+$wgExtensionMessagesFiles['LiquidThreadsMagic'] = $dir . 'i18n/LiquidThreads.magic.php';
 $wgExtensionAliasesFiles['LiquidThreads'] = $dir . 'i18n/Lqt.alias.php';
 
 // Parser Function Setup
@@ -98,6 +99,7 @@ $wgSpecialPages['MoveThread'] = 'SpecialMoveThread';
 $wgSpecialPages['NewMessages'] = 'SpecialNewMessages';
 $wgSpecialPages['SplitThread'] = 'SpecialSplitThread';
 $wgSpecialPages['MergeThread'] = 'SpecialMergeThread';
+//$wgSpecialPages['HotTopics'] = 'SpecialHotTopics';
 $wgSpecialPageGroups['NewMessages'] = 'wiki';
 
 // Classes
@@ -107,7 +109,6 @@ $wgAutoloadClasses['HistoricalThread'] = $dir . 'classes/HistoricalThread.php';
 $wgAutoloadClasses['Thread'] = $dir . 'classes/Thread.php';
 $wgAutoloadClasses['Threads'] = $dir . 'classes/Threads.php';
 $wgAutoloadClasses['NewMessages'] = $dir . 'classes/NewMessagesController.php';
-$wgAutoloadClasses['LiquidThreadsMagicWords'] = $dir . 'i18n/LiquidThreads.magic.php';
 $wgAutoloadClasses['LqtParserFunctions'] = $dir . 'classes/ParserFunctions.php';
 $wgAutoloadClasses['LqtDeletionController'] = $dir . 'classes/DeletionController.php';
 $wgAutoloadClasses['LqtHooks'] = $dir . 'classes/Hooks.php';
@@ -115,6 +116,7 @@ $wgAutoloadClasses['ThreadRevision'] = $dir . "/classes/ThreadRevision.php";
 $wgAutoloadClasses['SynchroniseThreadArticleDataJob'] = "$dir/classes/SynchroniseThreadArticleDataJob.php";
 $wgAutoloadClasses['ThreadHistoryPager'] = "$dir/classes/ThreadHistoryPager.php";
 $wgAutoloadClasses['TalkpageHistoryView'] = "$dir/pages/TalkpageHistoryView.php";
+$wgAutoloadClasses['LqtHotTopicsController'] = "$dir/classes/HotTopics.php";
 
 // View classes
 $wgAutoloadClasses['TalkpageView'] = $dir . 'pages/TalkpageView.php';
@@ -135,6 +137,7 @@ $wgAutoloadClasses['SpecialMoveThread'] = $dir . 'pages/SpecialMoveThread.php';
 $wgAutoloadClasses['SpecialNewMessages'] = $dir . 'pages/SpecialNewMessages.php';
 $wgAutoloadClasses['SpecialSplitThread'] = $dir . 'pages/SpecialSplitThread.php';
 $wgAutoloadClasses['SpecialMergeThread'] = $dir . 'pages/SpecialMergeThread.php';
+$wgAutoloadClasses['SpecialHotTopics'] = "$dir/pages/SpecialHotTopics.php";
 
 // Job queue
 $wgJobClasses['synchroniseThreadArticleData'] = 'SynchroniseThreadArticleDataJob';

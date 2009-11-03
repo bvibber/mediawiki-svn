@@ -141,7 +141,7 @@ class NewMessages {
 			if ( $oldPrefCompat ) {
 				$decodedOptions = self::decodeUserOptions( $row->user_options );
 				
-				$wantsTalkNotification = ( is_null( $decodedOptions['lqtnotifytalk'] ) &&
+			$wantsTalkNotification = ( ( !isset( $decodedOptions['lqtnotifytalk'] ) || is_null( $decodedOptions['lqtnotifytalk'] ) ) &&
 						User::getDefaultOption( 'lqtnotifytalk' ) ) || $row->up_value;
 			} else {
 				$wantsTalkNotification =
@@ -221,7 +221,8 @@ class NewMessages {
 
 		global $wgVersion;
 		$tables = array( 'user' );
-		$fields = array( 'user.*' );
+		$dbr = wfGetDB( DB_SLAVE );
+		$fields = array( $dbr->tableName( 'user' ) . '.*' );
 		$join_conds = array();
 		$oldPreferenceFormat = false;
 		if ( version_compare( $wgVersion, '1.16', '<' ) ) {
@@ -250,13 +251,13 @@ class NewMessages {
 					);
 		}
 		
-		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( $tables, $fields,
 							array( 'user_id' => $watching_users ), __METHOD__, array(),
 							$join_conds
 						);
 						
 		// Set up one-time data.
+		global $wgPasswordSender;
 		$link_title = clone $t->article()->getTitle();
 		$link_title->setFragment( '#' . $t->getAnchorName() );
 		$permalink = $link_title->getFullURL();
@@ -303,8 +304,6 @@ class NewMessages {
 			$msg = wfMsgReal( $msgName, $params, true /* use DB */, $langCode,
 								true /*transform*/ );
 							
-			global $wgPasswordSender;
-							
 			$to   = new MailAddress( $u );
 			$subject = wfMsgReal( $subjectMsg, array( $threadSubject ), true /* use DB */,
 									$langCode, true /* transform */ );
@@ -329,7 +328,7 @@ class NewMessages {
 				__METHOD__, array(),
 				array(
 					'user_message_state' =>
-						array( 'LEFT OUTER JOIN', $joinClause )
+						array( 'RIGHT JOIN', $joinClause )
 				) );
 							
 		return Threads::loadFromResult( $res, $dbr );
