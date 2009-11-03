@@ -529,6 +529,15 @@ $messages['te'] = array(
 	'prefs-experimental' => 'ప్రయోగాత్మక సౌలభ్యాలు',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'usabilityinitiative' => 'Oňaýlylyk Başlangyjy',
+	'usabilityinitiative-desc' => 'MediaWikiniň oňaýlylygyny güýçlendirmek maksady bilen Oňaýlylyk Başlangyjy tarapyndan taýýarlanylan funksiýalar',
+	'prefs-experimental' => 'Eksperimental funksiýalar',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

@@ -462,6 +462,7 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
@@ -498,6 +499,7 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-question-browser' => 'Peseurt merdeer a rit gantañ ?',
 	'optin-survey-answer-browser-other' => 'Merdeer all :',
 	'optin-survey-question-os' => 'Peseurt reizhiad korvoiñ a rit gantañ ?',
+	'optin-survey-answer-os-other' => 'Reizhiad korvoiñ all :',
 	'optin-survey-question-res' => 'Petra eo spisder ho skramm ?',
 	'optin-survey-answer-changes-other' => 'Traoù all :',
 );
@@ -3351,6 +3353,7 @@ $messages['ml'] = array(
 	'optin-survey-answer-changes-upload' => 'ഉള്ളടക്കവും മീഡിയ അപ്‌‌ലോഡുകളും മെച്ചപ്പെടുത്തുക.',
 	'optin-survey-answer-changes-richtext' => 'റിച്ച് ടെക്സ്റ്റ് എഡിറ്ററുകളിൽ ലഭ്യമായ വിധത്തിലുള്ള തിരുത്തൽ ഉപകരണങ്ങൾ വികസിപ്പിക്കുക.',
 	'optin-survey-answer-changes-lookfeel' => 'സൈറ്റിന്റെ "ദൃശ്യാനുഭവം" കാലാനുസൃതമാക്കുക.',
+	'optin-survey-answer-changes-predictability' => "'പ്രതീക്ഷയ്ക്കനുസരിച്ചുള്ള പ്രവർത്തനരീതി പുലർത്തൽ' മെച്ചപ്പെടുത്തുക",
 	'optin-survey-answer-changes-custom' => 'ഉപയോക്താവിനു ഏറ്റവും കൂടുതൽ സജ്ജീകരിച്ചെടുക്കാവുന്ന വിധത്തിലാക്കുക.',
 	'optin-survey-answer-changes-other' => 'കൂടുതൽ:',
 	'optin-improvements' => '==എന്താണു മെച്ചപ്പെടുത്തിയത്?==
@@ -4986,22 +4989,46 @@ $messages['th'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'optin' => 'Oňaýlylyk Başlangyjyna goşulyş',
+	'optin-desc' => 'Ulanyjylara Oňaýlylyk Başlangyjynyň iň täze oňaýlylyk güýçlendirmelerinden ybarat bolan Betany synap görmeklige mümkinçilik berýär.',
 	'optin-title-optedout' => 'Betany synap görüň',
 	'optin-title-optedin' => 'Betadan çyk',
 	'optin-title-justoptedin' => 'Beta hoş geldiňiz',
 	'optin-title-justoptedout' => 'Betany synap görendigiňiz üçin sag boluň',
 	'optin-title-feedback' => 'Beta seslenmesi',
-	'optin-intro' => 'Wikipedia Usability Initiative Wikipediýanyň oňaýlylygyny ýokarlandyrmak üçin tagalla baryny edýär.
+	'optin-needlogin' => 'Betany synap görmek üçin [$1 sessiýa açmak zerur].',
+	'optin-intro' => 'Oňaýlylyk Başlangyjy Wikipediýanyň oňaýlylygyny ýokarlandyrmak üçin tagalla baryny edýär.
 Betany synap göresiňiz gelýärmi?',
+	'optin-feedback-intro' => 'Betany synap göreniňiz üçin sag boluň.
+Täze interfeýsimiz barada nähili pikiriňiziň bardygyny bilesimiz gelýär, şonuň üçinem aşakdaky soragnamany doldursaňyz minnetdar bolarys.',
+	'optin-feedback-back' => 'Eger-de soragnamany doldurasyňyz gelmese, onda $1 sahypasyna gaýdyp bilersiňiz.',
+	'optin-success-in' => 'Şu wagt Betany synap görýärsiňiz.
+Ekranyň ýokarky bölegindäki "{{int:optin-leave}}" çykgydyna basyp, islän wagtyňyz çykyp bilersiňiz.',
+	'optin-leave-cancel' => 'Eger Betany ulanmaga dowam etjek bolsaňyz, $1 sahypasyna gaýdyp bilersiňiz.',
+	'optin-success-out' => 'Betadan sag-aman çykdyňyz.
+Ekranyň ýokarky bölegindäki "{{int:optin-try}}" çykgydyna basyp, islän wagtyňyz gaýtadan synap bilersiňiz.',
 	'optin-success-feedback' => 'Seslenmäňiz üçin sag boluň!',
 	'optin-accept-short' => 'Elbetde!',
 	'optin-accept-long' => 'Betany synap gör',
+	'optin-accept-long-anon' => 'Sessiýa açyň we Betany synap görüň',
 	'optin-deny-short' => 'Ýok, sag boluň',
 	'optin-deny-long' => 'Öňki sahypa gaýdyp bar',
 	'optin-submit-out' => 'Betadan çyk',
 	'optin-submit-feedback' => 'Seslenme ýazyň',
 	'optin-survey-yes' => 'Hawa',
 	'optin-survey-no' => 'Ýok',
+	'optin-survey-intro' => 'Betany synap göreniňiz üçin sag boluň.
+Täze interfeýsimiz baradaky pikiriňizi bilesimiz gelýär, şonuň üçinem "[[#leave|{{int:optin-submit-out}}]]" düwmesine basmankaňyz aşakdaky islege bagly soragnamany doldursaňyz minnetdar bolarys.',
+	'optin-survey-question-likedislike' => 'Betada nämäni haladyňyz? Betada nämäni halamadyňyz?',
+	'optin-survey-question-whyoptout' => 'Betadan näme üçin çykýarsyňyz? (Belläp biläýjekleriňiziň ählisini belläň)',
+	'optin-survey-answer-whyoptout-hard' => 'Ulanmak örän kyn.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Bolmalysy ýaly işlemýär.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Nähili işlejekdigini çak edip bolmaýar.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Maňa onuň görünişi ýaranok.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Täze gural panelini halamadym.',
+	'optin-survey-answer-whyoptout-other' => 'Başga sebäp:',
+	'optin-survey-answer-browser-other' => 'Başga brauzer:',
+	'optin-survey-answer-changes-other' => 'Başga:',
 );
 
 /** Turkish (Türkçe)
@@ -5463,6 +5490,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
  * @author Liangent
  * @author PhiLiP
  * @author Shinjiman
@@ -5530,11 +5558,11 @@ $messages['zh-hans'] = array(
 	'optin-survey-answer-changes-custom' => '允许更加有弹性的用户自定义。',
 	'optin-survey-answer-changes-other' => '其他：',
 	'optin-improvements' => '== 有何改善？ ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|新导航栏截图]]
 ;增强导航功能
 新的导航系统会使您更容易地了解到您所处的位置与所做的事，以及您可以前往哪里和怎样前往。我们把搜索框移到了右上角，这样您将能更容易地找到并使用它的功能。<div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|新的编辑栏截图]]
 ;编辑栏改进
 新近改善的图标让您更加清楚每个工具的实际用途。可扩展的小节减少了混乱：不常用的工具被隐藏了起来，只需单击就可展开。新的帮助小节则提供了常用wiki语法的快速参考途径。
 <div style="clear:both;"></div>

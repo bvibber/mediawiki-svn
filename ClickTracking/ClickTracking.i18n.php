@@ -155,6 +155,7 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
@@ -171,6 +172,7 @@ $messages['br'] = array(
 	'ct-editing' => "Oc'h aozañ er mare-mañ :",
 	'ct-anon-users' => 'implijerien dizanv',
 	'ct-and' => 'ha(g)',
+	'ct-update-table' => 'Hizivaat an daolenn',
 );
 
 /** Bosnian (Bosanski)
@@ -885,10 +887,16 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'ct-expert-header' => '"വിദഗ്ദ്ധ" ഞെക്കലുകൾ',
+	'ct-intermediate-header' => '"മദ്ധ്യവർത്തി" ഞെക്കലുകൾ',
+	'ct-beginner-header' => '"പ്രാരംഭക" ഞെക്കലുകൾ',
 	'ct-total-header' => 'ആകെ ഞെക്കലുകൾ',
 	'ct-start-date' => 'തുടങ്ങുന്ന തീയതി (YYYYMMDD)',
 	'ct-end-date' => 'അവസാനിക്കുന്ന തീയതി (YYYYMMDD)',
 	'ct-change-graph' => 'ഗ്രാഫിൽ മാറ്റംവരുത്തുക',
+	'ct-beginner' => 'പ്രാരംഭക(ൻ)',
+	'ct-intermediate' => 'മദ്ധ്യവർത്തി',
+	'ct-expert' => 'വിദഗ്ദ്ധ(ൻ)',
 	'ct-date-range' => 'തീയതിയുടെ പരിധി',
 	'ct-editing' => 'ഇപ്പോൾ തിരുത്തുന്നത്:',
 	'ct-anon-users' => 'അജ്ഞാത ഉപയോക്താക്കൾ',
@@ -1190,6 +1198,14 @@ $messages['te'] = array(
 	'ct-editing' => 'ప్రస్తుతం మారుస్తున్నారు:',
 	'ct-anon-users' => 'అజ్ఞాత వాడుకరులు',
 	'ct-and' => 'మరియు',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'ct-start-date' => 'Başlangyç senesi (YYYYMMDD)',
+	'ct-end-date' => 'Gutaryş senesi (YYYYMMDD)',
 );
 
 /** Turkish (Türkçe)

@@ -752,7 +752,9 @@ $messages['te'] = array(
  */
 $messages['tk'] = array(
 	'simplesearch' => 'Ýönekeý gözleg',
+	'simplesearch-desc' => 'Ýönekeý Vector gözlegine goşmaça funksionallyk goşýar',
 	'simplesearch-search' => 'Gözleg',
+	'simplesearch-containing' => 'öz içine alýar...',
 );
 
 /** Turkish (Türkçe)

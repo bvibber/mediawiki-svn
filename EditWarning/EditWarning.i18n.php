@@ -750,6 +750,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
  * @author Jimmy xu wrk
  * @author PhiLiP
  * @author Shinjiman
@@ -757,7 +758,7 @@ $messages['yue'] = array(
 $messages['zh-hans'] = array(
 	'editwarning' => '编辑警告',
 	'editwarning-desc' => '当用户尝试离开未保存的编辑时显示警告',
-	'editwarning-warning' => '离开这个页面会令您遗失之前的所有更改。您可在您参数设置的“{{int:prefs-editing}}”节中关闭此警告。',
+	'editwarning-warning' => '离开这个页面会令您遗失之前的所有更改。若您已经登入，您可在您参数设置的“{{int:prefs-editing}}”节中关闭此警告。',
 	'editwarning-preference' => '当我在更改未保存时离开页面时警告我',
 );
 

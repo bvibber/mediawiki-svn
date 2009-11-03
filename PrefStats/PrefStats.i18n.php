@@ -1329,6 +1329,8 @@ $messages['ml'] = array(
 	'prefstats-factor-twoweeks' => 'രണ്ട് ആഴ്ച്ച',
 	'prefstats-factor-fourweeks' => 'നാല് ആഴ്‌‌ച്ച',
 	'prefstats-factor-default' => 'സ്വതവേയുള്ള അളവിലേയ്ക്ക് മടങ്ങുക',
+	'prefstats-legend-out' => 'ഐച്ഛിക ഒഴിവാക്കൽ',
+	'prefstats-legend-in' => 'ഐച്ഛിക ഉൾപ്പെടുത്തൽ',
 );
 
 /** Malay (Bahasa Melayu)
@@ -1912,7 +1914,20 @@ $messages['th'] = array(
  */
 $messages['tk'] = array(
 	'prefstats' => 'Ileri tutma statistikalary',
+	'prefstats-desc' => 'Belli-belli ileri tutmalaryň näçe ulanyjy tarapyndan açylandygy baradaky statistikalary yzarla',
 	'prefstats-title' => 'Ileri tutma statistikalary',
+	'prefstats-list-intro' => 'Häzirki wagtda aşakdaky ileri tutmalar yzarlanýar.
+Birini saýlaň-da ol baradaky statistikalary görüň.',
+	'prefstats-noprefs' => 'Häzirki wagtda hiç bir ileri tutma yzarlanmaýar.
+Ileri tutmalary yzarlamak üçin konfigurirläň: $wgPrefStatsTrackPrefs',
+	'prefstats-counters' => '* Ileri tutma statistikalary açylaly bäri $1 {{PLURAL:$1|ulanyjy|ulanyjy}} bu ileri tutmany açdy
+** $2 {{PLURAL:$2|ulanyjy|ulanyjy}} henizem işjeň peýdalanýar
+** $3 {{PLURAL:$3|ulanyjy|ulanyjy}} şondan bäri ýapyp goýdy',
+	'prefstats-counters-expensive' => '* Ileri tutma statistikalary açylaly bäri $1 {{PLURAL:$1|ulanyjy|ulanyjy}} bu ileri tutmany açdy
+** $2 {{PLURAL:$2|ulanyjy|ulanyjy}} henizem işjeň peýdalanýar
+** $3 {{PLURAL:$3|ulanyjy|ulanyjy}} şondan bäri ýapyp goýdy
+* Jemi, $4 {{PLURAL:$4|ulanyjy|ulanyjy}} bu ileri tutmany sazlady',
+	'prefstats-xaxis' => 'Dowamlylyk (sagat)',
 	'prefstats-factors' => 'Görkeziş ýygylygy: $1',
 	'prefstats-factor-hour' => 'sagat',
 	'prefstats-factor-sixhours' => 'alty sagat',
@@ -1920,6 +1935,9 @@ $messages['tk'] = array(
 	'prefstats-factor-week' => 'hepde',
 	'prefstats-factor-twoweeks' => 'iki hepde',
 	'prefstats-factor-fourweeks' => 'dört hepde',
+	'prefstats-factor-default' => 'gaýybana masştaba gaýdyp bar',
+	'prefstats-legend-out' => 'Çykan',
+	'prefstats-legend-in' => 'Goşulan',
 );
 
 /** Turkish (Türkçe)
@@ -1968,6 +1986,7 @@ $messages['tt-cyrl'] = array(
 /** Ukrainian (Українська)
  * @author A1
  * @author AS
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
@@ -1982,9 +2001,9 @@ $messages['uk'] = array(
 	'prefstats-factor-sixhours' => 'шість годин',
 	'prefstats-factor-day' => 'день',
 	'prefstats-factor-week' => 'тиждень',
-	'prefstats-factor-twoweeks' => 'два тижня',
+	'prefstats-factor-twoweeks' => 'два тижні',
 	'prefstats-factor-fourweeks' => 'чотири тижні',
-	'prefstats-factor-default' => 'назад до масштабу по замовчуванню',
+	'prefstats-factor-default' => 'назад до масштабу за замовчуванням',
 	'prefstats-legend-out' => 'Відключились',
 	'prefstats-legend-in' => 'Підключились',
 );
