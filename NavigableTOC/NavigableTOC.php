@@ -29,8 +29,11 @@ $wgNavigableTOCUserEnable = true;
 // Set this to true to make the NavigableTOC collapsible
 $wgNavigableTOCCollapseEnable = true;
 
+// Set this to true to make the NavigableTOC resizable
+$wgNavigableTOCResizable = true;
+
 // Bump the version number every time you change any of the .css/.js files
-$wgNavigableTOCStyleVersion = 6;
+$wgNavigableTOCStyleVersion = 7;
 
 /* Setup */
 

@@ -181,8 +181,6 @@ body.rtl .wikiEditor-ui-toc {
 
 /* Collapsing changes */
 
-/* these first two should probably be conditionally applied */
-/* suggestions for doing that welcome */
 .wikiEditor-ui-toc {
 	overflow-y:hidden;
 	position:relative;
@@ -191,6 +189,8 @@ body.rtl .wikiEditor-ui-toc {
 	overflow-y:auto;
 	overflow-x:hidden;
 	height:100%;
+	margin-bottom:0 !important;
+	
 }
 
 .wikiEditor-ui-toc ul ul {
@@ -210,7 +210,32 @@ body.rtl .wikiEditor-ui-toc {
 }
 .wikiEditor-ui-toc-collapse-closed {
 	background:#f3f3f3 url(../images/wikiEditor/toc/open.png) 4px 50% no-repeat;
-}/* wikiEditor toolbar module */
+}
+
+/* Resizing Changes */
+#wikiEditor-ui-toc-resize-vertical{
+	width:4px;
+	position:absolute;
+	top:0;
+	left:0;
+	height:100%;
+	cursor:ew-resize;
+}
+#wikiEditor-ui-toc-resize-horizontal{
+	width:9px;
+	height:16px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	cursor:ew-resize;
+	background:url(../images/wikiEditor/toc/grip.png) 2px 50% no-repeat #F3F3F3;
+}
+#wikiEditor-ui-toolbar .tab-toc{
+	float:right;
+	margin:3px 16px 3px 3px;
+	line-height:26px;
+}
+textarea:focus {outline:none;}/* wikiEditor toolbar module */
 
 .wikiEditor-ui-toolbar {
 	position: relative;

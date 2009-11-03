@@ -16,9 +16,9 @@ class NavigableTOCHooks {
 	 */
 	 public static function addTOC( &$toolbar ) {
 		global $wgNavigableTOCStyleVersion, $wgUser;
-		global $wgNavigableTOCGlobalEnable, $wgNavigableTOCUserEnable, $wgNavigableTOCCollapseEnable;
+		global $wgNavigableTOCGlobalEnable, $wgNavigableTOCUserEnable, $wgNavigableTOCCollapseEnable, $wgNavigableTOCResizable;
 		
-		if ( $wgNavigableTOCGlobalEnable || ( $wgNavigableTOCUserEnable && $wgUser->getOption( 'usenavigabletoc' ) ) ) {		
+		if ( $wgNavigableTOCGlobalEnable || ( $wgNavigableTOCUserEnable && $wgUser->getOption( 'usenavigabletoc' ) ) ) {
 			// Adds script to document
 			UsabilityInitiativeHooks::initialize();
 			UsabilityInitiativeHooks::addScript(
@@ -26,7 +26,8 @@ class NavigableTOCHooks {
 			);
 			UsabilityInitiativeHooks::addVariables(
   			array(
-  				'wgNavigableTOCCollapseEnable' => $wgNavigableTOCCollapseEnable
+  				'wgNavigableTOCCollapseEnable' => $wgNavigableTOCCollapseEnable,
+				'wgNavigableTOCResizable' => $wgNavigableTOCResizable
   			)
   		);
 		}
