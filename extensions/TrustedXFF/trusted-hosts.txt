@@ -1215,3 +1215,6 @@ us22.boltbrowser.com
 us23.boltbrowser.com
 
 
+# convex.com.br
+200.152.176.5
+
