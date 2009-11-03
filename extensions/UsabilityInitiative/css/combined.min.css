@@ -215,7 +215,10 @@ float:right;
 margin:3px 16px 3px 3px;
 line-height:26px;
 }
-textarea:focus{outline:none;}
+#wikiEditor-ui-text textarea{
+resize:none;
+}
+#wikiEditor-ui-text textarea:focus{outline:none;}
 .wikiEditor-ui-toolbar{
 position:relative;
 width:100%;
