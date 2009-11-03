@@ -12,11 +12,11 @@ class TemplateInfoHooks {
 
     // Initialization
     public static function register( &$parser ) {
-        // Register the hook with the parser
-        $parser->setHook( 'templateinfo', array( 'TemplateInfoHooks', 'render' ) );
+	// Register the hook with the parser
+	$parser->setHook( 'templateinfo', array( 'TemplateInfoHooks', 'render' ) );
 
-        // Continue
-        return true;
+	// Continue
+	return true;
     }
 
     // Render the displayed XML, if any
@@ -30,8 +30,8 @@ class TemplateInfoHooks {
 	// TODO: Do processing here, like parse to an array
 	$parser->getOutput()->setProperty( 'templateinfo', $input );
 
-        // Return output
-        $text = "<p>" . wfMsg( 'templateinfo-header' ) . "</p>\n";
+	// Return output
+	$text = "<p>" . wfMsg( 'templateinfo-header' ) . "</p>\n";
 	$text .= htmlspecialchars( $input, ENT_QUOTES );
 	return $text;
     }

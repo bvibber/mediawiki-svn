@@ -16,20 +16,20 @@
 
 // Check environment
 if ( !defined( 'MEDIAWIKI' ) ) {
-    echo( "This is an extension to the MediaWiki package and cannot be run standalone.\n" );
-    die( -1 );
+	echo( "This is an extension to the MediaWiki package and cannot be run standalone.\n" );
+	die( -1 );
 }
 
 /* Configuration */
 
 // Credits
 $wgExtensionCredits['parserhook'][] = array(
-    'path'           => __FILE__,
-    'name'           => 'TemplateInfo',
-    'author'         => array( 'Yaron Koren', 'Roan Kattouw' ),
-    'url'            => 'http://www.mediawiki.org/wiki/Extension:TemplateInfo',
-    'description'    => 'Supports templates defining their data structure via XML markup.',
-    'descriptionmsg' => 'templateinfo-desc',
+	'path'			=> __FILE__,
+	'name'			=> 'TemplateInfo',
+	'author'		=> array( 'Yaron Koren', 'Roan Kattouw' ),
+	'url'			=> 'http://www.mediawiki.org/wiki/Extension:TemplateInfo',
+	'description'		=> 'Supports templates defining their data structure via XML markup.',
+	'descriptionmsg'	=> 'templateinfo-desc',
 );
 
 // Shortcut to this extension directory
