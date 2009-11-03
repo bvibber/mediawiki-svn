@@ -25,7 +25,10 @@ class APIQueryTemplateInfo extends ApiQueryBase {
 		$titles = $this->getPageSet()->getGoodTitles();
 		$this->addTables( 'page_props' );
 		$this->addFields( array( 'pp_page', 'pp_value' ) );
-		$this->addWhere( array( 'pp_propname' => 'templateinfo' ) );
+		$this->addWhere( array(
+			'pp_page' => array_keys( $titles ),
+			'pp_propname' => 'templateinfo'
+		) );
 		if ( !is_null( $params['continue'] ) )
 		{
 			$fromid = intval( $params['continue'] );
