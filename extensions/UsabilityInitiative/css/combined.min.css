@@ -176,7 +176,7 @@ height:100%;
 }
 .wikiEditor-ui-toc ul ul{
 float:none;
-width:auto;
+height:auto;
 }
 #wikiEditor-ui-toc-collapse{
 height:100%;

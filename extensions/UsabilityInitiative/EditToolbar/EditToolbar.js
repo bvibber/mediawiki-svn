@@ -238,7 +238,9 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: ":"
+								pre: ":",
+								post: "",
+								ownline: true
 							}
 						}
 					}
