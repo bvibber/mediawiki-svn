@@ -1,3 +1,10 @@
+wikimedia-base (0.21) hardy; urgency=low
+
+  * Remove NTP configuration; this is now done by puppet (pmtpa) or not at all
+    (esams)
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 03 Nov 2009 15:32:54 +0000
+
 wikimedia-base (0.20) feisty; urgency=low
 
   * Changed dependency on ntp-simple to ntp since it replaced ntp-simple.

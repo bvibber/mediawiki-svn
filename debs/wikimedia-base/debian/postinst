@@ -28,11 +28,8 @@ case "$1" in
 	else
 		# FIXME: we can (need?) to do better than this
 		case $(hostname -d) in
-		knams.wikimedia.org)
-			CLUSTERNAME=knams
-			;;
-		yaseo.wikimedia.org)
-			CLUSTERNAME=yaseo
+		knams.wikimedia.org|esams.wikimedia.org)
+			CLUSTERNAME=esams
 			;;
 		pmtpa.wmnet|wikimedia.org)
 			CLUSTERNAME=pmtpa
@@ -55,22 +52,6 @@ case "$1" in
 	then
 		sed -i '/^# defoptions.*[= ]quiet /s/quiet //' /boot/grub/menu.lst
 		update-grub
-	fi
-
-	# Pick a closer NTP server
-	NTP_SERVER=""
-	case $CLUSTERNAME in
-	pmtpa)
-		NTP_SERVER=zwinger.wikimedia.org
-		;;
-	yaseo)
-		NTP_SERVER=amaryllis.yaseo.wikimedia.org
-		;;
-	esac
-	if [ -n "$NTP_SERVER" ] && ! grep -q "^server $NTP_SERVER" /etc/ntp.conf
-	then
-		sed -i -e "/^server ntp\.ubuntu\.com/s/ntp\.ubuntu\.com/$NTP_SERVER/" /etc/ntp.conf
-		invoke-rc.d ntp-server restart || invoke-rc.d ntp restart
 	fi
 
 	# Remote syslogging
