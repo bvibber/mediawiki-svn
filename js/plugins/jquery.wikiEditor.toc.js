@@ -202,9 +202,10 @@ fn: {
 		function drag( e ) {
 			var mR = e.pageX - $('#wikiEditor-ui-bottom').offset().left;
 			mR = $('#wikiEditor-ui-bottom').width() - mR;
-			if( mR < 26 || mR >  $('#wikiEditor-ui-bottom').width() - 250) return;
+			if( mR < 26 || mR >  $('#wikiEditor-ui-bottom').width() - 250) return false;
 			$('#wikiEditor-ui-text').css('marginRight', mR+'px');
 			$('#wikiEditor-ui-toc').css('width', mR+'px');
+			return false;
 		}
 		function stopDrag( e ) {
 			$()
@@ -215,7 +216,10 @@ fn: {
 			mR = $('#wikiEditor-ui-bottom').width() - mR;
 			if(mR < 50 && wgNavigableTOCCollapseEnable){
 				collapse();
+			}else{
+				$('#wikiEditor-ui-text textarea').trigger('mouseup');
 			}
+			return false;
 		}
 		
 		function collapse() {
@@ -243,9 +247,10 @@ fn: {
 			$('#wikiEditor-ui-toc')
 			.show()
 			.animate({'width': $('#wikiEditor-ui-toc').data('openWidth')+'px'}, 'fast', function() { 
-				context.modules.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } ); } )
+				$('#wikiEditor-ui-text textarea').trigger('mouseup');
+			} )
 			.prev()
-			.animate({'marginRight': $('#wikiEditor-ui-toc').data('openWidth')+'px'}, 'fast', function() {  } );
+			.animate({'marginRight': $('#wikiEditor-ui-toc').data('openWidth')+'px'}, 'fast' );
 		}
 		function buildResizeControls() {
 			var $resizeControlVertical = $( '<div />' )
