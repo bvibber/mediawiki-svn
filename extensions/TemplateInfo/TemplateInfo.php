@@ -26,7 +26,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
     'path'           => __FILE__,
     'name'           => 'TemplateInfo',
-    'author'         => 'Yaron Koren',
+    'author'         => array( 'Yaron Koren', 'Roan Kattouw' ),
     'url'            => 'http://www.mediawiki.org/wiki/Extension:TemplateInfo',
     'description'    => 'Supports templates defining their data structure via XML markup.',
     'descriptionmsg' => 'templateinfo-desc',
@@ -40,11 +40,10 @@ $wgExtensionMessagesFiles['TemplateInfo'] = $dir . 'TemplateInfo.i18n.php';
 
 // Register auto load for the special page class
 $wgAutoloadClasses['TemplateInfoHooks'] = $dir . 'TemplateInfo.hooks.php';
-$wgAutoloadClasses['TemplateInfo'] = $dir . 'TemplateInfo.classes.php';
-$wgAutoloadClasses['TemplateInfoAPI'] = $dir . 'TemplateInfo.API.php';
+$wgAutoloadClasses['ApiQueryTemplateInfo'] = $dir . 'ApiQueryTemplateInfo.php';
 
 // Register parser hook
 $wgHooks['ParserFirstCallInit'][] = 'TemplateInfoHooks::register';
 
 // Register API action
-$wgAPIModules['templateinfo'] = 'TemplateInfoAPI';
+$wgAPIPropModules['templateinfo'] = 'ApiQueryTemplateInfo';

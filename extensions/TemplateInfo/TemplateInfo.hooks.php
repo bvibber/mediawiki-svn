@@ -22,19 +22,17 @@ class TemplateInfoHooks {
     // Render the displayed XML, if any
     public static function render( $input, $args, $parser, $frame ) {
 	// if this call is contained in a transcluded page or template,
-	// display nothing
-	if ($frame->title->getFullText() != $parser->getTitle()->getFullText())
+	// or if the inpur is empty, display nothing
+	if ( !$frame->title->equals( $parser->getTitle() ) || $input == '' )
 		return;
-
-        // also display nothing if there are no contents
-	if (empty($input)) {
-		return;
-	}
+	
+	// Store XML in the page_props table
+	// TODO: Do processing here, like parse to an array
+	$parser->getOutput()->setProperty( 'templateinfo', $input );
 
         // Return output
-	global $egTemplateInfoXML;
-	$egTemplateInfoXML = $input;
-        $templateInfo = new TemplateInfo( $parser );
-        return $templateInfo->render($input);
+        $text = "<p>" . wfMsg( 'templateinfo-header' ) . "</p>\n";
+	$text .= htmlspecialchars( $input, ENT_QUOTES );
+	return $text;
     }
 }
