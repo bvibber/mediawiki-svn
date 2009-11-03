@@ -2504,6 +2504,8 @@ fn: {
 			var $resizeControlHorizontal = $( '<div />' )
 			.attr( 'id', 'wikiEditor-ui-toc-resize-horizontal')
 			.bind( 'mousedown', function() {
+				$('#wikiEditor-ui-toc')
+				.data('openWidth', $('#wikiEditor-ui-toc').width());
 				$()
 				.bind( 'mousemove', drag )
 				.bind( 'mouseup', stopDrag );
