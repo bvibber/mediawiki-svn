@@ -3,7 +3,7 @@
 #$wwAPI = "http://wikiword.wikimedia.de/api.php";
 $wwAPI = false;
 $wwAllowTranslate = false;
-$wwImageSearch = false;
+$wwImageSearch = null; //NOTE: trinary: true forces image searche, false disables it. null makes it optional.
 
 $wwDBServer = "localhost";
 $wwDBUser = "wikiword";

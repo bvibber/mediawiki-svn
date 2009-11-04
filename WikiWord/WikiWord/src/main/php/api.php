@@ -45,6 +45,8 @@ if ( $query ) {
 	    }
 	} else if ($query == 'properties') {
 	    $gcid = @$_REQUEST['gcid'];
+	    if (!$gcid) $gcid = @$_REQUEST['id'];
+
 	    $props = @$_REQUEST['props'];
 	    
 	    if ( $gcid === null ) $result['error'] = array('code' => 120, 'message' => "missing parameter gcid");
@@ -52,19 +54,29 @@ if ( $query ) {
 	    else {
 		$props = preg_split('![\\s,;|/:]\\s*!', $props);
 
-		foreach ( $props as $p ) {
-		    $m = "get" . ucfirst($p) . "ForConcept";
-		    if ( !method_exists($thesaurus, $m) ) {
-			$result['error'] = array('code' => 190, 'message' => "unknown property: $p");
-			break;
+		$info = $thesaurus->getConcept($gcid, $lang);
+
+		if ( !$info ) $result['error'] = array('code' => 100, 'message' => "concept not found: $gcid");
+		else {
+		    $result = array_merge($result, $info);
+
+		    foreach ( $props as $p ) {
+			$m = "get" . ucfirst($p) . "ForConcept";
+			if ( !method_exists($thesaurus, $m) ) {
+			    $result['error'] = array('code' => 190, 'message' => "unknown property: $p");
+			    break;
+			}
+
+			$result[$p] = $thesaurus->$m($gcid, $lang);
+
+			if ( $result[$p] === false || $result[$p] === null ) {
+			    $result['error'] = array('code' => 220, 'message' => "failed to retrieve property $p for concept $gcid");
+			    break;
+			}
 		    }
 
-		    $result[$p] = $thesaurus->$m($gcid, $lang);
-
-		    if ( $result[$p] === false || $result[$p] === null ) {
-			$result['error'] = array('code' => 220, 'message' => "failed to retrieve property $p for concept $gcid");
-			break;
-		    }
+		    if (!isset($result['id'])) $result['id'] = $gcid;
+		    if (!isset($result['lang'])) $result['lang'] = $lang;
 		}
 	    }
 	} else {

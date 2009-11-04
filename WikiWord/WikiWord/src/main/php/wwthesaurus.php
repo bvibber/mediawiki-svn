@@ -84,7 +84,7 @@ class WWThesaurus extends WWUTils {
     }*/
 
     function getConceptInfo( $id, $lang = null ) {
-	$result = array();
+	$result = $this->getConcept($id, $lang);
 
 	$result['broader'] = $this->getBroaderForConcept($id);
 	$result['narrower'] = $this->getNarrowerForConcept($id);
@@ -161,6 +161,22 @@ class WWThesaurus extends WWUTils {
     }
 
     /////////////////////////////////////////////////////////
+    function getConcept( $id, $lang = null, $limit = 100 ) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	if ($lang) $sql = "SELECT C.*, O.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
+		      . " LEFT JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O " 
+		      . " ON C.id = O.global_concept " . " AND O.lang = \"".mysql_real_escape_string($lang)."\""
+		      . " WHERE C.id = ".(int)$id ;
+	else $sql = "SELECT C.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
+		. " WHERE C.id = ".(int)$id;
+
+	$r = $this->getRows($sql);
+
+	if ( !$r ) return false;
+	else return $r[0];
+    }
+
     function getRelatedForConcept( $id, $lang = null, $limit = 100 ) {
 	global $wwTablePrefix, $wwThesaurusDataset;
 

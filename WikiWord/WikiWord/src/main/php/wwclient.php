@@ -32,6 +32,11 @@ class WWClient {
 	return getPagesForConcept($id);
     }
 
+    function getConcept( $id, $lang = null ) {
+	$p = $this->getConceptProperties( $id, '', $lang );
+	return $p['pages'];
+    }
+
     function getPagesForConcept( $id, $lang = null ) {
 	$p = $this->getConceptProperties( $id, 'pages', $lang );
 	return $p['pages'];
@@ -78,8 +83,8 @@ class WWClient {
     }
 
     function getConceptInfo( $id, $lang = null ) {
-	if ( $lang ) return $this->getConceptProperties( "definition,broader,narrower,related" );
-	else return $this->getConceptProperties( "broader,narrower,related" );
+	if ( $lang ) return $this->getConceptProperties( $id, "definition,broader,narrower,related", $lang );
+	else return $this->getConceptProperties( $id, "broader,narrower,related" );
     }
 
     function getConceptProperties( $id, $props, $lang = null ) {
@@ -92,6 +97,9 @@ class WWClient {
 	if ( $lang ) $param['lang'] = $lang;
 
 	$rs = $this->query( $param );
+
+	if (!isset($rs['id'])) $rs['id'] = $id;
+	if (!isset($rs['lang'])) $rs['lang'] = $lang;
 
 	return $rs;
     }

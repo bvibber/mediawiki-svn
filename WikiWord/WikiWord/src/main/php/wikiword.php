@@ -45,7 +45,7 @@ function printConceptImageList($id, $class = "terselist") {
 }
 
 function printLocalConceptLink($lang, $row) {
-    global $wwSelf;
+    global $wwSelf, $images;
 
     extract($row);
 
@@ -56,16 +56,21 @@ function printLocalConceptLink($lang, $row) {
     if (!isset($concept) && isset($id)) $concept = $id;
     if (!isset($concept)) $concept = NULL;
 
-    $wu = $concept_name ? "http://$lang.wikipedia.org/wiki/" . urlencode($concept_name) : NULL; 
+    if ($lang == 'commons') $domain = 'commons.wikimedia.org';
+    else $domain = "$lang.wikipedia.org";
+
+    $wu = $concept_name ? "http://$domain/wiki/" . urlencode($concept_name) : NULL; 
     $cu = "$wwSelf?id=" . urlencode($concept) . "&lang=" . urlencode($lang); 
+
+    if ($images) $cu .= "&images=1";
 
     ?>
     <li>
 	<?php if ($concept_name) { ?>
-	  <a href="<?php print htmlspecialchars($wu); ?>"><?php print htmlspecialchars($concept_name); ?></a>
+	  <a href="<?php print htmlspecialchars($cu); ?>"><?php print htmlspecialchars($concept_name); ?></a>
 	<?php } ?>
 	<?php if ($concept) { ?>
-	  (#<a href="<?php print htmlspecialchars($cu); ?>"><?php print htmlspecialchars($concept); ?></a>)
+	  (<a href="<?php print htmlspecialchars($wu); ?>" title="<?php print htmlspecialchars($concept_name); ?>">wiki page</a>)
 	<?php } ?>
     </li>
     <?php
@@ -116,7 +121,9 @@ function normalizeConceptRow($lang, $row) {
 
     if (!isset($row['weight']) && isset($row['freq'])) $row['weight'] = $row['freq'];
     if (!isset($row['weight']) && isset($row['conf'])) $row['weight'] = $row['conf'];
+    if (isset($row['local_concept_name'])) $row['concept_name'] = $row['local_concept_name'];
     if (!isset($row['concept_name']) && isset($row['name'])) $row['concept_name'] = $row['name'];
+    if (!isset($row['concept_name']) && isset($row['global_concept_name'])) $row['concept_name'] = $row['global_concept_name'];
     if (!isset($row['reference_id']) && isset($row['global_id'])) $row['reference_id'] = $row['global_id'];
     if (!isset($row['reference_id']) && isset($row['global_concept'])) $row['reference_id'] = $row['global_concept'];
     if (!isset($row['reference_id']) && isset($row['concept'])) $row['reference_id'] = $row['concept'];
@@ -144,8 +151,8 @@ function normalizeConceptRow($lang, $row) {
     return $row;
 }
 
-function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
-    global $wwSelf, $images;
+function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0, $images) {
+    global $wwSelf;
 
     $a_row = normalizeConceptRow($a_lang, $a_row);
     $b_row = normalizeConceptRow($b_lang, $b_row);
@@ -157,15 +164,13 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
     <tr class="row_item">
       <td class="cell_weight  <?php print "weight_$a_wclass"; ?>"><?php print htmlspecialchars($a_weight); ?></td>
       <td colspan="3" class="cell_name  <?php print "weight_$a_wclass"; ?>">
-	<a href="<?php print htmlspecialchars($a_wu); ?>"><?php print htmlspecialchars($a_concept_name); ?></a>
-	<span class="conceptref">(#<a href="<?php print htmlspecialchars($a_cu); ?>"><?php print htmlspecialchars($a_reference_id); ?></a>)</span>
-	<span class="galleryref">(<a href="<?php print htmlspecialchars($a_gu); ?>"><?php print htmlspecialchars("gallery"); ?></a>)</span>
+	<a href="<?php print htmlspecialchars($a_cu); ?>"><?php print htmlspecialchars($a_concept_name); ?></a>
+	<span class="conceptref">(<a href="<?php print htmlspecialchars($a_wu); ?>" title="<?php print htmlspecialchars($a_concept_name); ?>">wiki page</a>)</span>
       </td>
       <?php if ($b_row) { ?>
       <td colspan="3" class="cell_name  <?php print "weight_$b_wclass"; ?>">
-	<a href="<?php print htmlspecialchars($b_wu); ?>"><?php print htmlspecialchars($b_concept_name); ?></a>
-	<span class="conceptref">(#<a href="<?php print htmlspecialchars($b_cu); ?>"><?php print htmlspecialchars($b_reference_id); ?></a>)</span>
-	<span class="galleryref">(<a href="<?php print htmlspecialchars($a_gu); ?>"><?php print htmlspecialchars("gallery"); ?></a>)</span>
+	<a href="<?php print htmlspecialchars($b_cu); ?>"><?php print htmlspecialchars($b_concept_name); ?></a>
+	<span class="conceptref">(<a href="<?php print htmlspecialchars($b_wu); ?>" title="<?php print htmlspecialchars($b_concept_name); ?>">wiki page</a>)</span>
       </td>
       <?php } ?>
     </tr>
@@ -260,7 +265,7 @@ $concept = @$_REQUEST['id'];
 $term = @$_REQUEST['term'];
 $lang = @$_REQUEST['lang'];
 $tolang = @$_REQUEST['tolang'];
-$images = @$_REQUEST['images'] || $wwImageSearch;
+$images = (@$_REQUEST['images'] || $wwImageSearch === true ) && !($wwImageSearch === false);
 
 if (!isset($_REQUEST['translate'])) $tolang = NULL;
 if ($lang == $tolang) $tolang = NULL;
@@ -288,7 +293,6 @@ if (@$_REQUEST['debug']) $utils->debug = true;
 $limit = 20;
 
 $result = NULL;
-$gallery = NULL;
 
 if (!$error) {
   try {
@@ -297,9 +301,7 @@ if (!$error) {
 	  if ( $result ) $result = array( $result ); //hack
       } else if ($lang && $term) {
 	  $result = $thesaurus->getConceptsForTerm($lang, $term, $limit);
-      } else if ($concept && $images) {
-	  $gallery = $utils->getImagesAbout($concept);
-      }
+      } 
   } catch (Exception $e) {
       $error = $e->getMessage();
   }
@@ -361,7 +363,7 @@ if (!$error) {
 	  <td>
 	    <input type="submit" name="go" value="go"/>
 	  </td>
-	  <?php if (!$wwImageSearch) { ?>
+	  <?php if ($wwImageSearch === null) { ?>
 	  <td>
 	    <label for="images">Images: </label>
 	    <input type="checkbox" name="images" value="Images" <?php print $images ? " checked=\"checked\"" : ""?>/>
@@ -393,10 +395,59 @@ if ($error) {
 ?>    
 
 <?php
-if ($result) {
-    if ($concept) $title = "Concept #$concept";
-    else if ($tolang) $title = "$lang: $term -> $tolang";
-    else $title = "$lang: $term";
+if ($result && $concept) {
+    foreach ( $result as $row ) {
+	if (@$row['id']) $id = $row['id'];
+	else if (@$row['concept']) $id = $row['concept'];
+	else $id = "concept";
+
+	if (@$row['local_concept_name']) $title = $row['local_concept_name'];
+	else if (@$row['concept_name']) $title = $row['concept_name'];
+	else if (@$row['name']) $title = $row['name'];
+	else if ($id) $title = "Concept #$id";
+	else if ($concept) $title = "Concept #$concept";
+
+?>    
+    <div id="<?php print htmlspecialchars("concept-$id")?>">
+    <h2><?php print htmlspecialchars($title); ?></h2>
+
+    <?php
+    if ($images) $gallery = $utils->getImagesAbout($id);
+    else $images = NULL;
+
+    if ($gallery) {
+	$title = "Gallery #$concept";
+    ?>    
+	<h2><?php print htmlspecialchars($title); ?></h2>
+	<div  border="0" class="gallery">
+	<?php 
+	  printConceptImageList($gallery, "gallery");
+	?>
+	</div>
+
+	<p>Found <?php print count($gallery); ?> images.</p>
+
+    <?php
+    }
+    ?>
+
+    <table  border="0" class="results">
+    <?php 
+	  if ($lang) {
+	      $continue= printLocalConcept($lang, $row, NULL, NULL, 0, false);
+	  }
+	  //else $continue= printGlobalConcept($lang, $row, $count);
+
+	  if (!$continue) break;
+    ?>
+    </table>
+    </div>
+
+<?php
+      } #concept loop
+} else if ($result && $term) {
+    if ($tolang) $title = "$lang: $term -> $tolang";
+    else if ($term) $title = "$lang: $term";
 ?>    
     <h2><?php print htmlspecialchars($title); ?></h2>
     <table  border="0" class="results">
@@ -411,14 +462,14 @@ if ($result) {
 	      if ($tolang && isset($row['global_concept'])) {
 		  $toresult = $utils->queryConceptInfo($row['global_concept'], $tolang);
 		  while ($torow = mysql_fetch_assoc($toresult)) {
-		      $continue= printLocalConcept($lang, $row, $tolang, $torow, $count);
+		      $continue= printLocalConcept($lang, $row, $tolang, $torow, $count, $images);
 		      $show_single = false;
 		  }
 		  mysql_free_result($toresult);
 	      } 
 
 	      if ($show_single) {
-		  $continue= printLocalConcept($lang, $row, NULL, NULL, $count);
+		  $continue= printLocalConcept($lang, $row, NULL, NULL, $count, $images);
 	      }
 	  }
 	  //else $continue= printGlobalConcept($lang, $row, $count);
@@ -433,24 +484,6 @@ if ($result) {
 <?php
 }
 ?>
-
-<?php
-if ($gallery) {
-    $title = "Gallery #$concept";
-?>    
-    <h2><?php print htmlspecialchars($title); ?></h2>
-    <div  border="0" class="results">
-    <?php 
-      printConceptImageList($gallery, "gallery");
-    ?>
-    </div>
-
-    <p>Found <?php print count($gallery); ?> images.</p>
-
-<?php
-}
-?>
-
 
 <p class="footer">
 The WikiWord Navigator is part of the <a href="http://wikimedia.de">Wikimedia</a> project <a href="http://brightbyte.de/page/WikiWord">WikiWord</a>
