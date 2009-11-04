@@ -118,7 +118,7 @@ class ExtensionDistributorPage extends SpecialPage {
 				'action' => $this->getTitle()->getLocalUrl(),
 				'method' => 'POST' ) ) .
 			"<select name=\"extdist_extension\">\n" .
-			"<option value=''></option\n"
+			"<option value=''></option>\n"
 		);
 
 		foreach ( $extensions['trunk'] as $extension ) {
