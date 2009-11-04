@@ -222,6 +222,23 @@ $messages['nl'] = array(
 	'externalpages-bad-url-data' => 'Het was niet mogelijk de paginainhoud op te halen',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'externalpages' => 'Paginas extèrnas',
+	'externalpages-desc' => 'Recobrís e aficha las paginas dempuèi de sites distants de la WMF',
+	'externalpages-bad-year' => 'Annada indicada incorrècta',
+	'externalpages-bad-language' => 'Lenga indicada incorrècta',
+	'externalpages-bad-project' => 'Projècte indicat incorrècte',
+	'externalpages-no-project' => 'Cap de projècte pas indicat',
+	'externalpages-bad-page' => 'Pagina indicada incorrècta',
+	'externalpages-no-page' => 'Cap de pagina pas indicada',
+	'externalpages-error-generic' => 'Error rencontrada',
+	'externalpages-bad-url' => "Fracàs per recuperar l'URL",
+	'externalpages-bad-url-data' => 'Fracàs per recuperar las donadas de la pagina',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

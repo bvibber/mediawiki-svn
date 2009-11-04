@@ -118,9 +118,11 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
+	'framedvideo_errors' => "Meur a fazi zo c'hoarvezet !",
 	'framedvideo_helppage' => 'Help:Video',
 );
 

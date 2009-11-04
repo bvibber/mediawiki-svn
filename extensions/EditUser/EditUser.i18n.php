@@ -174,9 +174,11 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
+	'edituser' => 'Aozañ an implijer',
 	'edituser-username' => 'Anv',
 	'edituser-dosearch' => 'Klask',
 );

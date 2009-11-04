@@ -82,6 +82,21 @@ $messages['be-tarask'] = array(
 	'commentbox-error-empty-comment' => 'Пустыя камэнтары не дазволеныя!',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'commentbox-savebutton' => 'Съхраняване на коментара',
+	'commentbox-name' => 'Име:',
+	'commentbox-log' => 'Нови коментари',
+	'commentbox-first-comment-heading' => '== Коментари ==',
+	'commentbox-regex' => '/\\n==\\s*Коментари\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Грешка при създаване на коментар',
+	'commentbox-error-page-nonexistent' => 'Тази страница не съществува!',
+	'commentbox-error-namespace' => 'В това именно пространство не са позволени коментари!',
+	'commentbox-error-empty-comment' => 'Не са позволени празни коментари!',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */

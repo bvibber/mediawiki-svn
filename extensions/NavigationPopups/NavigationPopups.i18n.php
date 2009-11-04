@@ -267,7 +267,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'navigationpopups-desc' => 'Carga, dins mèdiawiki, los escripts de las fenèstras de navigacion de Lupin',
+	'navigationpopups-desc' => 'Carga, dins mediawiki, los escripts de las fenèstras de navigacion de Lupin',
 );
 
 /** Polish (Polski)

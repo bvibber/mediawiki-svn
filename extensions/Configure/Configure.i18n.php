@@ -1152,6 +1152,7 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
@@ -1174,6 +1175,7 @@ $messages['br'] = array(
 	'configure-section-users' => 'Implijerien',
 	'configure-section-extension' => 'Astennoù',
 	'configure-section-search' => 'Klask',
+	'configure-condition-operator-or' => 'Pe',
 	'configure-condition-operator-and' => 'Ha(g)',
 );
 

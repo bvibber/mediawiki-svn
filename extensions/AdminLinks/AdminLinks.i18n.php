@@ -148,6 +148,7 @@ $messages['bg'] = array(
 	'adminlinks_editmainpagename' => 'Редактиране името на началната страница',
 	'adminlinks_users' => 'Потребители',
 	'adminlinks_createuser' => 'Създаване на потребител',
+	'adminlinks_browsesearch' => 'Разглеждане и търсене',
 	'adminlinks_importexport' => 'Внасяне и изнасяне',
 );
 
@@ -1102,16 +1103,17 @@ $messages['ug-arab'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'adminlinks' => 'Посилання для адміністраторів',
-	'adminlinks-desc' => 'Додає [[Special:AdminLinks|спеціальні сторінку]], яка містить корисні посилання для адміністраторів',
+	'adminlinks-desc' => 'Додає [[Special:AdminLinks|спеціальну сторінку]], яка містить корисні посилання для адміністраторів',
 	'adminlinks_documentation' => 'документація $1',
 	'adminlinks_general' => 'Загальні',
 	'adminlinks_users' => 'Користувачі',
 	'adminlinks_createuser' => 'Створити обліковий запис',
-	'right-adminlinks' => 'Див. [[Special:AdminLinks|посилання для адміністраторів]]',
+	'right-adminlinks' => 'Бачити [[Special:AdminLinks|посилання для адміністраторів]]',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -191,6 +191,13 @@ $messages['mk'] = array(
 	'mwreleases-desc' => 'Додава [[Mediawiki:Mwreleases-list|листа]] на поддржани верзии, достапни преку API',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'mwreleases-desc' => 'എ.പി.ഐ. വഴി ലഭ്യമായ, പിന്തുണയുള്ള പുറത്തിറക്കലുകളുടെ [[Mediawiki:Mwreleases-list|പട്ടിക]] കൂട്ടിച്ചേർക്കുന്നു',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -266,6 +273,13 @@ $messages['sk'] = array(
  */
 $messages['tr'] = array(
 	'mwreleases-desc' => 'Desteklenen sürümlerin bir [[Mediawiki:Mwreleases-list|listesini]] ekler, API ile erişilebilir',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'mwreleases-desc' => 'Додає [[Mediawiki:Mwreleases-list|список]] підтримуваних релізів, доступних через API',
 );
 
 /** Vietnamese (Tiếng Việt)

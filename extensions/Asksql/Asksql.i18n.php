@@ -1204,6 +1204,7 @@ Bu çoğu kez sunucuya oldukça yük ekler, bu yüzden lütfen bu fonksiyonu ted
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
@@ -1215,7 +1216,7 @@ $messages['uk'] = array(
 	'sqlislogged' => 'Усі запити записуються до журналу.',
 	'sqlquery' => 'Введення запиту',
 	'querybtn' => 'Відправити запит',
-	'selectonly' => 'Дозволені тільки запити на перегляд.',
+	'selectonly' => 'Дозволені тільки запити на читання.',
 	'querysuccessful' => 'Запит виконано',
 );
 

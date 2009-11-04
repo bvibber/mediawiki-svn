@@ -441,10 +441,11 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'editown-desc' => 'Користувачі, що не мають editall-прав, можуть тільки редагувати сторінки, що вони створили',
+	'editown-desc' => 'Користувачі, які не мають editall-прав, можуть редагувати лише сторінки, створені ними',
 );
 
 /** Vèneto (Vèneto)

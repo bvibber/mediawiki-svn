@@ -259,10 +259,12 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Y-M D
  */
 $messages['br'] = array(
 	'extdist-submit-extension' => "Kenderc'hel",
+	'extdist-submit-version' => "Kenderc'hel",
 );
 
 /** Bosnian (Bosanski)
@@ -2442,19 +2444,20 @@ Eğer bu eklenti dağıtım sistemi ile herhangi bir sorunuz varsa, lütfen [[Ex
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'extensiondistributor' => 'Завантажити MediaWiki розширення',
+	'extensiondistributor' => 'Завантажити розширення MediaWiki',
 	'extdist-desc' => 'Розширення для завантаження дистрибутивів розширень',
 	'extdist-not-configured' => 'Будь ласка, налаштуйте $wgExtDistTarDir і $wgExtDistWorkingCopy',
-	'extdist-wc-missing' => 'Вказаного в налаштуваннях каталогу робочої копії не існує!',
-	'extdist-no-such-extension' => 'Розширення "$1" не знайдено',
+	'extdist-wc-missing' => 'Зазначеного в налаштуваннях каталогу робочої копії не існує!',
+	'extdist-no-such-extension' => 'Розширення «$1» не знайдено',
 	'extdist-choose-extension' => 'Виберіть розширення, яке ви хочете завантажити:',
-	'extdist-wc-empty' => 'Вказаний в налаштуваннях каталог робочої копії не містить дистрибутивів розширень!',
+	'extdist-wc-empty' => 'Зазначений в налаштуваннях каталог робочої копії не містить дистрибутивів розширень!',
 	'extdist-submit-extension' => 'Продовжити',
 	'extdist-current-version' => 'Версія в розробці (trunk)',
-	'extdist-no-versions' => 'Обране розширення ($1) не доступне в будь-якій версії!',
+	'extdist-no-versions' => 'Обране розширення ($1) не доступне в жодній версії!',
 	'extdist-submit-version' => 'Продовжити',
 	'extdist-want-more' => 'Завантажити інше розширення',
 );

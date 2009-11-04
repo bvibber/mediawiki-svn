@@ -807,6 +807,20 @@ $messages['bg'] = array(
 	'deletequeue-case-expiry' => 'Срок на изтичане:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'deletequeue-delnom-otherreason' => 'Abeg all',
+	'deletequeue-queue-speedy' => 'Dilamadenn brim',
+	'deletequeue-review-delete' => 'Dilemel ar bajenn.',
+	'deletequeue-vote-submit' => 'Kas',
+	'deletequeue-list-search-legend' => 'Klask pajennoù',
+	'deletequeue-list-header-page' => 'Pajenn',
+	'deletequeue-case-page' => 'Pajenn :',
+	'deletequeue-case-reason' => 'Abeg :',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

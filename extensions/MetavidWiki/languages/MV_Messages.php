@@ -1276,7 +1276,7 @@ $mvMVDTypeDefaultDisp павінна быць падмноствам $mvMVDTypeA
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'mv_duration_label' => 'продължителност',
+	'mv_duration_label' => 'Продължителност',
 	'mv_save_changes' => 'Съхранение на промените',
 	'mv_remove_reason' => 'Причина за изтриването:',
 	'mv_upload_file' => 'Качване на файл',

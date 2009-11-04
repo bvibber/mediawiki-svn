@@ -257,8 +257,10 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'imagetagging-article' => 'Pajenn :',
+	'imagetagging-imghistory' => 'Istor',
 	'imagetagging-images' => 'skeudennoù',
 	'imagetagging-tagcancel-button' => 'Nullañ',
+	'imagetagging-taggedimages-title' => 'Skeudennoù eus « $1 »',
 );
 
 /** Bosnian (Bosanski)

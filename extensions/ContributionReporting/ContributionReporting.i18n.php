@@ -453,11 +453,13 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
 	'contrib-hist-name' => 'Anv',
 	'contrib-hist-date' => 'Deiziad hag eur',
+	'contrib-hist-amount' => 'Sammad',
 	'contribstats-day' => 'Deiz',
 	'contribstats-month' => 'Miz',
 	'contribstats-currency' => 'Moneiz',
@@ -465,6 +467,8 @@ $messages['br'] = array(
 	'contribstats-total' => 'Hollad (SUA)',
 	'contribstats-avg' => 'Keitat (SUA)',
 	'contribstats-percentage-ytd' => 'Dregantad (er bl.-mañ)',
+	'contribstats-total-ytd' => 'Hollad (er bloaz-mañ)',
+	'contribstats-day-totals' => 'Hollad evit hiziv',
 	'contribstats-week' => 'Sizhun',
 	'contribstats-clicks' => 'Klikoù',
 	'contribstats-template' => 'Patrom',

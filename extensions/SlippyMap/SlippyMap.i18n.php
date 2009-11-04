@@ -638,11 +638,35 @@ $messages['ia'] = array(
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'slippymap_desc' => 'Menambahkan tag <tt>&lt;slippymap&gt;</tt> yang memungkinkan untuk melekatkan peta statis & dinamis . Mendukung beberapa layanan peta termasuk [http://openstreetmap.org OpenStreetMap] dan NASA Worldwind',
 	'slippymap_error' => 'Galat $1: $2',
 	'slippymap_errors' => 'Galat $1:',
+	'slippymap_error_tag_content_given' => 'Tag <tt>&lt;$1&gt;</tt> hanya menerima masukan atribut (&lt;$1 [...]/&gt;), tapi tidak masukan teks (&lt;$1&gt; ... &lt;/$1&gt;)',
+	'slippymap_error_missing_arguments' => 'Anda tidak memberikan atribut apapun untuk tag &lt;$1&gt;, lihat [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax informasi penggunaan]',
+	'slippymap_error_missing_attribute_lat' => 'Kurang atribut <tt>lat</tt> (untuk garis lintang).',
+	'slippymap_error_missing_attribute_lon' => 'Kurang atribut <tt>lon</tt> (untuk garis bujur).',
+	'slippymap_error_missing_attribute_zoom' => 'Kurang atribut <tt>zoom</tt> (untuk tingkat pembesaran).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>lat</tt> (garis lintang), nilai yang diberikan harus berupa angka.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>lon</tt> (garis bujur), nilai yang diberikan harus berupa angka.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>zoom</tt>, nilai yang diberikan harus berupa angka.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>width</tt> (lebar), nilai yang diberikan harus berupa angka.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>height</tt> (tinggi), nilai yang diberikan harus berupa angka.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>mode</tt>, mode yang valid adalah $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>layer</tt> (lapisan), nilai yang valid adalah $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>marker</tt> (penanda), nilai yang valid adalah $2.',
+	'slippymap_error_unknown_attribute' => 'Atribut <tt>$1</tt> tidak dikenal.',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>lat</tt> (garis lintang). Nilai yang valid berkisar antara -90 hingga 90 derajat.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>lon</tt> (garis bujur). Nilai yang valid berkisar antara -180 hingga 180 derajat.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>zoom</tt> (pembesaran). Nilai yang valid berkisar antara $2 hingga $3.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>width</tt> (lebar). Nilai yang valid berkisar antara $2 hingga $3.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'Nilai <tt>$1</tt> tidak valid untuk atribut <tt>height</tt> (tinggi). Nilai yang valid berkisar antara $2 hingga $3.',
+	'slippymap_code' => 'Kode wiki untuk tampilan peta ini:',
+	'slippymap_button_code' => 'Ambil kode wiki',
+	'slippymap_resetview' => 'Atur ulang tampilan',
+	'slippymap_clicktoactivate' => 'Klik untuk mengaktifkan peta',
 );
 
 /** Italian (Italiano)

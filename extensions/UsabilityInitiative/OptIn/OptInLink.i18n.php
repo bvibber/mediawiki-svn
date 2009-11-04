@@ -552,6 +552,14 @@ $messages['li'] = array(
 	'optin-feedback' => 'Trökkoppeling gaeve',
 );
 
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
+$messages['lmo'] = array(
+	'optin-try' => 'Pröva la Beta',
+	'optin-leave' => 'Va föra da Beta',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */

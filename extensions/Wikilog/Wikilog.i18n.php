@@ -307,6 +307,7 @@ $messages['af'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'wikilog-desc' => 'Дадае магчымасьці блёгаў для стварэньня гібрыду вікі-блёга',
@@ -316,9 +317,24 @@ $messages['be-tarask'] = array(
 	'wikilog' => 'Вікіблёгі',
 	'wikilog-specialwikilog' => 'Вікіблёг',
 	'wikilog-log-pagename' => 'Журнал дзеяньняў вікіблёгу',
+	'wikilog-log-pagetext' => 'Ніжэй пададзены сьпіс дзеяньняў вікіблёгу.',
+	'wikilog-log-cmt-approve' => 'зацьверджаны камэнтар [[$1]]',
+	'wikilog-log-cmt-reject' => 'адхілены камэнтар [[$1]]',
+	'wikilog-log-cmt-rejdel' => 'Адхілены камэнтар вікіблёгу ад [[Special:Contributions/$1|$1]]',
+	'wikilog-tab' => 'Вікіблёг',
+	'wikilog-tab-title' => 'Дзеяньні вікіблёгу',
+	'wikilog-information' => 'Інфармацыя пра вікіблёг',
+	'wikilog-post-count-published' => 'У гэтым вікіблёгу {{PLURAL:$1|апублікаваны $1 артыкул|апублікаваныя $1 артыкулы|апублікаваныя $1 артыкулаў}},',
+	'wikilog-post-count-drafts' => 'Ёсьць $1 {{PLURAL:$1|неапублікаваны чарнавік|неапублікаваных чарнавікі|неапублікаваных чарнавікоў}},',
+	'wikilog-post-count-all' => 'Усяго $1 {{PLURAL:$1|артыкул|артыкулы|артыкулаў}}.',
+	'wikilog-new-item' => 'Стварыць новы артыкул вікіблёгу',
 	'wikilog-new-item-go' => 'Стварыць',
+	'wikilog-item-name' => 'Назва артыкула:',
+	'wikilog-published' => 'Апублікаваны',
+	'wikilog-updated' => 'Абноўлены',
 	'wikilog-draft' => 'Чарнавік',
 	'wikilog-authors' => 'Аўтары',
+	'wikilog-wikilog' => 'Вікіблёг',
 	'wikilog-title' => 'Назва',
 	'wikilog-actions' => 'Дзеяньні',
 	'wikilog-comments' => 'Камэнтары',
@@ -353,6 +369,13 @@ $messages['be-tarask'] = array(
 	'wikilog-history-lc' => 'гісторыя',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'wikilog-actions' => 'Действия',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -363,6 +386,7 @@ $messages['br'] = array(
 	'wikilog' => 'Wikilogoù',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-tab' => 'Wikilog',
+	'wikilog-tab-title' => 'Oberoù wikilog',
 	'wikilog-information' => 'Titouroù war wikilog',
 	'wikilog-new-item' => 'Krouiñ ur pennad wikilog nevez',
 	'wikilog-new-item-go' => 'Krouiñ',
@@ -376,16 +400,19 @@ $messages['br'] = array(
 	'wikilog-actions' => 'Oberoù',
 	'wikilog-replies' => 'Respontoù',
 	'wikilog-view-archives' => 'Dielloù',
+	'wikilog-draft-title-mark' => '(brouilhed)',
 	'wikilog-anonymous-mark' => '(dizanv)',
 	'wikilog-pager-older-n' => '$1 koshañ →→',
 	'wikilog-pager-newest' => '←← nevesañ',
 	'wikilog-pager-oldest' => '',
 	'wikilog-pager-next' => 'da heul →',
 	'wikilog-error-msg' => 'Wikilog : $1',
+	'wikilog-error-title' => 'Fazi wikilog',
 	'wikilog-invalid-author' => 'Aozer direizh : $1.',
 	'wikilog-invalid-date' => 'Deiziad direizh : $1.',
 	'wikilog-invalid-tag' => 'Balizenn direizh : $1.',
 	'wikilog-invalid-file' => 'Restr direizh : $1.',
+	'wikilog-not-an-image' => "Ar restr n'eo ket ur skeudenn : $1.",
 	'wikilog-post-reply' => 'Embann ur respont nevez',
 	'wikilog-form-wikilog' => 'Wikilog :',
 	'wikilog-form-category' => 'Rummad :',
@@ -401,9 +428,21 @@ $messages['br'] = array(
 	'wikilog-edit-lc' => 'kemmañ',
 	'wikilog-reply-lc' => 'respont',
 	'wikilog-delete-lc' => 'diverkañ',
+	'wikilog-approve-lc' => 'aprouiñ',
 	'wikilog-reject-lc' => 'disteurel',
 	'wikilog-page-lc' => 'pajenn',
 	'wikilog-history-lc' => 'istor',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'wikilog-form-status' => 'Stanje:',
+	'wikilog-form-comment' => 'Komentar:',
+	'wikilog-delete-lc' => 'brisati',
+	'wikilog-reject-lc' => 'odbaciti',
+	'wikilog-history-lc' => 'historija',
 );
 
 /** German (Deutsch)
@@ -1455,6 +1494,13 @@ $messages['mg'] = array(
 	'wikilog-actions' => 'Tao/asa',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'wikilog-show-drafts' => 'Нацрти',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand
@@ -1635,10 +1681,65 @@ $messages['oc'] = array(
 	'wikilog-comment-edit' => 'Modificar aqueste comentari',
 	'wikilog-comment-delete' => 'Suprimir aqueste comentari',
 	'wikilog-comment-history' => "Veire l'istoric dels comentaris",
+	'wikilog-comment-approve' => 'Aprovar aqueste comentari (efièch immediat)',
+	'wikilog-comment-reject' => 'Regetar aqueste comentari (efièch immediat)',
+	'wikilog-newtalk-text' => '<!-- pagina vèrja creada per Wikilog -->',
+	'wikilog-newtalk-summary' => 'creat automaticament per Wikilog',
+	'wikilog-feed-description' => 'Legir los posts mai recents dins aqueste feed.',
+	'wikilog-title-comments' => 'Comentaris - $1',
+	'wikilog-error-msg' => 'Wikilog : $1',
+	'wikilog-error-title' => 'Error de wikilog',
+	'wikilog-invalid-param' => 'Paramètre invalid : $1.',
+	'wikilog-invalid-author' => 'Autor invalid : $1.',
+	'wikilog-invalid-date' => 'Data invalida : $1.',
+	'wikilog-invalid-tag' => 'Tag invalid : $1.',
+	'wikilog-invalid-file' => 'Fichièr invalid : $1.',
+	'wikilog-file-not-found' => 'Fichièr inexistent : $1.',
+	'wikilog-not-an-image' => 'Lo fichièr es pas un imatge : $1.',
+	'wikilog-out-of-context' => "Avertiment : de tags de wikilog son utilizats fòra contèxte.
+Deurián pas èsser utilizats que dins los articles de l'espaci de noms Wikilog.",
+	'wikilog-too-many-authors' => "Avertiment : Tròp d'autors listats dins le post de wikilog.",
+	'wikilog-too-many-tags' => 'Avertiment : Tròp de tags listats dins aqueste post de wikilog.',
+	'wikilog-comment-is-empty' => 'Lo comentari postat es void.',
+	'wikilog-comment-too-long' => 'Lo comentari postat es tròp long.',
+	'wikilog-comment-invalid-name' => 'Lo nom provesit es pas valid.',
+	'wikilog-no-such-article' => "L'article de wikilog esperat existís pas.",
+	'wikilog-reading-draft' => 'Aqueste article de wikilog es un borrolhon, es pas encara estat publicat.',
+	'wikilog-posting-anonymously' => 'Actualament, sètz pas connectat ;
+vòstre comentari serà postat anonimament, identificat per vòstra adreça de connexion a Internet.
+Vos caldriá especificar un pseudonim çaisús per identificar vòstre comentari, o $1 per que siá atribuit corrèctament.',
+	'wikilog-anonymous-moderated' => "Un còp que sometètz vòstre comentari, serà pas immediatament visible sus la pagina.
+Lo comentari apareisserà pas qu'aprèp verificacion per un moderator.",
+	'wikilog-post-comment' => 'Postar un comentari novèl',
+	'wikilog-post-reply' => 'Postar una responsa novèla',
+	'wikilog-form-legend' => 'Cercar de posts de wikilog',
+	'wikilog-form-wikilog' => 'Wikilog :',
+	'wikilog-form-category' => 'Categoria :',
+	'wikilog-form-name' => 'Nom :',
+	'wikilog-form-author' => 'Autor :',
+	'wikilog-form-tag' => 'Tag :',
+	'wikilog-form-date' => 'Data :',
+	'wikilog-form-status' => 'Estatut :',
+	'wikilog-form-preview' => 'Previsualizacion :',
+	'wikilog-form-comment' => 'Comentari :',
+	'wikilog-show-all' => 'Totes los posts',
+	'wikilog-show-published' => 'Publicats',
+	'wikilog-show-drafts' => 'Borrolhons',
+	'wikilog-submit' => 'Sometre',
+	'wikilog-preview' => 'Previsualizar',
+	'wikilog-edit-lc' => 'modificar',
+	'wikilog-reply-lc' => 'respondre',
+	'wikilog-delete-lc' => 'suprimir',
+	'wikilog-approve-lc' => 'aprovar',
+	'wikilog-reject-lc' => 'regetar',
+	'wikilog-page-lc' => 'pagina',
+	'wikilog-history-lc' => 'istoric',
+	'wikilog-doc-import-comment' => 'Documentacion importada de wikilog',
 );
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'wikilog-desc' => "A gionta dle fonsion dë scartari, creanda n'ìbrid wiki-scartari",
@@ -1721,6 +1822,37 @@ A dovrìo mach esse dovrà ant j'artìcoj dlë spassi nominal Wikilog.",
 	'wikilog-comment-too-long' => "Ël coment mandà a l'é tròp longh.",
 	'wikilog-comment-invalid-name' => "Ël nòm fornì a l'é pa bon.",
 	'wikilog-no-such-article' => "L'artìcol ëd wikilog ciamà a esist nen.",
+	'wikilog-reading-draft' => "Cost artìcol ëd wikilog a l'é në sbòss, a l'é pa ancora stàit publicà.",
+	'wikilog-posting-anonymously' => "A l'é pa ancor rintrà ant ël sistema;
+sò coment a sarà mandà ëd fasson anònima, identificà da soa adrëssa ëd conession a l'Aragnà.
+A dovrìa o fornì në stranòm si 'nsima për identifiché sò coment, opura \$1\$ për ch'a sia atribuì bin.",
+	'wikilog-anonymous-moderated' => "Na vira ch'a l'abia mandà sò coment, cost-sì a sarà pa visìbil dlongh.
+Ël coment a comparirà mach apress ch'a sia stàit verificà da 'n moderator.",
+	'wikilog-post-comment' => 'Mandé un coment neuv',
+	'wikilog-post-reply' => 'Mandé na réplica neuva',
+	'wikilog-form-legend' => "Sërché dj'artìcoj ëd wikilog",
+	'wikilog-form-wikilog' => 'Wikilog:',
+	'wikilog-form-category' => 'Categorìa:',
+	'wikilog-form-name' => 'Nòm:',
+	'wikilog-form-author' => 'Autor:',
+	'wikilog-form-tag' => 'Tichëtta:',
+	'wikilog-form-date' => 'Dàita:',
+	'wikilog-form-status' => 'Statù:',
+	'wikilog-form-preview' => 'Anteprima:',
+	'wikilog-form-comment' => 'Coment:',
+	'wikilog-show-all' => 'Tuti ij mëssagi',
+	'wikilog-show-published' => 'Publicà',
+	'wikilog-show-drafts' => 'Sbòss',
+	'wikilog-submit' => 'Mandé',
+	'wikilog-preview' => "Vëdde n'anteprima",
+	'wikilog-edit-lc' => 'modifiché',
+	'wikilog-reply-lc' => 'repliché',
+	'wikilog-delete-lc' => 'scancela',
+	'wikilog-approve-lc' => 'apreuva',
+	'wikilog-reject-lc' => 'scarta',
+	'wikilog-page-lc' => 'pàgina',
+	'wikilog-history-lc' => 'stòria',
+	'wikilog-doc-import-comment' => 'Documentassion Wikilog amportà',
 );
 
 /** Portuguese (Português)
@@ -2141,5 +2273,13 @@ $messages['uk'] = array(
 	'wikilog-form-tag' => 'Мітка:',
 	'wikilog-edit-lc' => 'редагувати',
 	'wikilog-reply-lc' => 'відповісти',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'wikilog-form-preview' => 'פֿאראויסשטעלונג:',
+	'wikilog-preview' => 'פֿאראויסשטעלונג',
 );
 

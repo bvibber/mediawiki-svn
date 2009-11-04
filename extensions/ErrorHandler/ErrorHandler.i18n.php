@@ -168,6 +168,13 @@ $messages['bg'] = array(
 	'errorhandler-trace-line-internal' => '[вътрешна функция]: $1',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'errorhandler-errors' => 'Fazioù :',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

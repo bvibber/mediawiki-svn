@@ -797,11 +797,38 @@ Caution avisate: le expressiones non debe esser troppo curte o troppo commun.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
+	'spamregex' => 'Regex spam',
+	'spamregex-desc' => '[[Special:SpamRegex|Menyaring]] frasa yang tak diinginkan di halaman yang disunting, didasarkan pada ekspresi regular (regex).',
+	'spamregex-error-unblocking' => 'Kesalahan menghapus blokir "$1". Mungkin pola tersebut tak ditemukan.',
+	'spamregex-summary' => 'Teks tersebut ditemukan di ringkasan halaman.',
+	'spamregex-intro' => 'Gunakan isian ini untuk secara efektif memblokir penyimpanan ekspresi ke teks halaman.
+Jika teks mengandung ekspresi tertentu, perubahan tidak akan disimpan dan penjelasan akan ditampilkan kepada pengguna yang mencoba untuk menyimpan halaman.
+Disarankan agar ekspresi tidak terlalu pendek atau terlalu umum.',
+	'spamregex-page-title' => 'Blok ekspresi yang tidak diinginkan spam regex',
+	'spamregex-currently-blocked' => "'''Frasa yang sedang diblokir:'''",
+	'spamregex-move' => 'Alasan yang Anda masukkan mengandung suatu frasa yang diblokir.',
+	'spamregex-no-currently-blocked' => "''Tidak ada frasa yang diblokir.'''",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 hapus]) ditambahkan oleh $5 pada $6 pukul $7",
+	'spamregex-page-title-1' => 'Blokir frasa dengan menggunakan ekspresi reguler',
+	'spamregex-unblock-success' => 'Pembukaan blokir berhasil',
+	'spamregex-unblock-message' => "Frasa '''$1''' telah dibuka blokirnya.",
+	'spamregex-page-title-2' => 'Blokir penyimpanan frasa dengan menggunakan ekspresi regular',
+	'spamregex-block-success' => 'Pemblokir berhasil',
+	'spamregex-block-message' => "Frasa '''$1''' telah diblokir.",
+	'spamregex-warning-1' => 'Berikan suatu frasa untuk diblokir',
+	'spamregex-error-1' => 'Ekspresi regular tidak valid.',
+	'spamregex-warning-2' => 'Silakan pilih paling tidak satu mode blokir.',
 	'spamregex-already-blocked' => '"$1" telah diblokir',
+	'spamregex-phrase-block' => 'Frasa untuk diblokir:',
+	'spamregex-phrase-block-text' => 'blokir frasa dalam teks halaman',
+	'spamregex-phrase-block-summary' => 'blokir frasa dalam ringkasan',
+	'spamregex-block-submit' => 'Blokirnbsp;frasa&nbsp;ini',
 	'spamregex-text' => '(Teks)',
 	'spamregex-summary-log' => '(Ringkasan)',
+	'right-spamregex' => 'Blokir frasa spam melalui [[Special:SpamRegex]]',
 );
 
 /** Icelandic (Íslenska)

@@ -298,6 +298,14 @@ $messages['bg'] = array(
 	'crosswikiunblock-local' => 'Локалните отблокирания не се поддържат от този интерфейс. Използва се [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'crosswikiblock-reason' => 'Abeg :',
+	'crosswikiblock-submit' => 'Stankañ an implijer-mañ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

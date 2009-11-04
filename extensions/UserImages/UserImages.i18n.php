@@ -436,7 +436,7 @@ $messages['lt'] = array(
  * @author Jagwar
  */
 $messages['mg'] = array(
-	'userimages-desc' => "Mamoaka gallerie nà sary nampidirin'ny mpikambana miarak-amin'ny <code><nowiki><userimage /></nowiki></code>",
+	'userimages-desc' => "Mamoaka gallerie-na sary nampidirin'ny mpikambana miaraka amin'ny <code><nowiki><userimage /></nowiki></code>",
 	'userimages-caption' => "Sary nampidirin'ny $1",
 	'userimages-noname' => "Tsy ampy na diso ny anaran'ny mpikambana.",
 	'userimages-noimages' => 'tsy nampiditra sary i $1',

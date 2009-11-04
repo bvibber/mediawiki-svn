@@ -2213,12 +2213,15 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'configure-setting-wgSitename' => "Anv al lec'hienn",
+	'configure-setting-wgActionPaths-key' => 'Ober',
 	'configure-setting-wgActionPaths-value' => 'Patrom URL',
+	'configure-setting-wgDBpassword' => 'Ger-tremen evit $wgDBuser',
 	'configure-setting-wgSharedTables' => 'Anv an taolennoù da rannañ',
 	'configure-setting-wgMediaHandlers-key' => 'Seurt MIME',
 	'configure-setting-wgFileCacheDirectory' => "Kavlec'h krubuilh ar restroù",
@@ -2236,6 +2239,7 @@ $messages['br'] = array(
 	'configure-setting-wgLogNames' => 'Anvioù ar marilhoù',
 	'configure-setting-wgSpecialPageGroups-key' => 'Strollad',
 	'configure-setting-wgAllowRealName' => 'Aotren an anvioù gwir',
+	'configure-setting-wgSecretKey' => "Alc'hwez kuzh",
 );
 
 /** Bosnian (Bosanski)

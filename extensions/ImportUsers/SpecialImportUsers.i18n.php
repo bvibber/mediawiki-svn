@@ -220,6 +220,7 @@ $messages['br'] = array(
 	'importusers-log-summary-added' => 'Ouzhpennet',
 	'importusers-log-summary-updated' => 'Hizivaet',
 	'importusers-password' => 'ger-tremen',
+	'importusers-email' => 'postel',
 	'importusers-realname' => 'gwir anv',
 );
 
@@ -1788,10 +1789,11 @@ $messages['ug-latn'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'importusers-log-summary' => 'Всьго',
+	'importusers-log-summary' => 'Всього',
 );
 
 /** Veps (Vepsan kel')

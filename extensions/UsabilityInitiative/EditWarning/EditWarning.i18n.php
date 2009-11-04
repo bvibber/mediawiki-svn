@@ -738,6 +738,17 @@ Nếu đã đăng nhập, bạn có thể tắt cảnh báo này tại mục “
 	'editwarning-preference' => 'Cảnh báo khi tôi thoát trang sửa đổi mà chưa lưu trang',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'editwarning' => 'רעדאַקטירן וואָרענונג',
+	'editwarning-desc' => 'ווײַזן א ווארענונג ווען א באניצער וויל איבערלאזן די רעדאקטירונג פֿארעם אן אויפֿהיטן',
+	'editwarning-warning' => 'איבערלאזן דעם בלאט קען גורם זײַן פֿארלירן אײַערע ענדערונגען.
+אויב איר זענט ארײַנלאגירט, קענט איר מבטל זײַן די דאזיגע ווארענונג אין דער "{{int:prefs-editing}}" אפטיילונג פון אײַערע פרעפערענצן.',
+	'editwarning-preference' => 'שטעלן א ווארענונג ווען איך לאז איבער א רעדאקטירונג בלאט מיט נישט אויפגעהיטענע ענדערונגען',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

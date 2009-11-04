@@ -306,6 +306,13 @@ $messages['mk'] = array(
 	'titlekey-desc' => 'Сугерирање при пребарувањето на префикс на наслови',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'titlekey-desc' => 'പിന്തുണയ്ക്കായി തലക്കെട്ടിന്റെ പൂർവ്വപദ തിരച്ചിൽ നിർദ്ദേശം',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

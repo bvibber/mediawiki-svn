@@ -108,10 +108,12 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Y-M D
  */
 $messages['br'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'O kas...',
+	'communityvoice-ratings-scale-status-error' => 'Fazi en ur gas !',
 );
 
 /** Bosnian (Bosanski)

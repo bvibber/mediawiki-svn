@@ -857,19 +857,40 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'code-change-added' => 'ouzhpennet :',
+	'code-old-status' => 'Statud kozh',
+	'code-new-status' => 'Statud nevez',
 	'code-authors' => 'aozerien',
+	'code-status' => 'stadoù',
+	'code-tags' => 'balizennoù',
+	'code-author-name' => 'Ebarzhit un anv-implijer :',
+	'code-author-link' => 'liammañ ?',
+	'code-field-author' => 'Aozer',
+	'code-field-status' => 'Statud',
 	'code-field-timestamp' => 'Deiziad',
+	'code-field-comments' => 'Notennoù',
+	'code-field-select' => 'Diuzañ',
+	'code-rev-author' => 'Aozer :',
 	'code-rev-date' => 'Deiziad :',
+	'code-rev-modified-a' => 'ouzhpennet',
+	'code-rev-modified-r' => "erlec'hiet",
+	'code-rev-modified-d' => 'dilamet',
+	'code-rev-modified-m' => 'kemmet',
+	'code-rev-status' => 'Statud :',
+	'code-rev-status-set' => 'Cheñch statud',
 	'code-rev-comment-preview' => 'Rakwelet',
 	'code-rev-inline-preview' => 'Rakwelet :',
 	'code-status-new' => 'nevez',
+	'code-status-resolved' => 'diskoulmet',
 	'code-status-ok' => 'mat eo',
+	'codereview-batch-submit' => 'Kas',
 	'codereview-reply-link' => 'respont',
+	'repoadmin-new-button' => 'Krouiñ',
 	'repoadmin-edit-button' => 'Mat eo',
 );
 
@@ -8270,6 +8291,8 @@ $messages['yi'] = array(
 	'code-field-author' => 'שרייבער',
 	'code-rev-modified-a' => 'צוגעלייגט',
 	'code-rev-modified-d' => 'אויסגעמעקט',
+	'code-rev-comment-preview' => 'פֿאראויסשטעלונג',
+	'code-rev-inline-preview' => 'פֿאראויסשטעלונג:',
 	'code-status-new' => 'נײַ',
 	'code-status-ok' => 'אויספֿירן',
 	'codereview-subtitle' => 'פֿאַר $1',

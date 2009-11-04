@@ -166,6 +166,14 @@ $messages['bg'] = array(
 	'deletebatch-file-missing' => 'Предоставеният файл не може да бъде прочетен',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'deletebatch-delete' => 'Dilemel',
+	'deletebatch-select-yourself' => "C'hwi",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

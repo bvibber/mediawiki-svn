@@ -1979,10 +1979,16 @@ $1',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
 	'signdocument' => 'Tandatangani dokumen',
+	'sign-nodocselected' => 'Silakan pilih dokumen yang ingin Anda tanda tangani.',
+	'sign-selectdoc' => 'Dokumen:',
+	'sign-docheader' => '<div class="noarticletext">Silakan gunakan formulir ini untuk menandatangani dokumen "[[$1]]," yang ditampilkan berikut.
+Baca keseluruhan dokumen, dan jika Anda ingin menunjukkan dukungan Anda terhadapnya, isi isian yang diminta untuk menandatanganinya</div>',
+	'sign-error-nosuchdoc' => 'Dokumen yang Anda minta ($1) tidak ada.',
 	'sign-realname' => 'Nama:',
 	'sign-address' => 'Alamat rumah:',
 	'sign-city' => 'Kota:',
@@ -1992,6 +1998,8 @@ $messages['id'] = array(
 	'sign-phone' => 'Nomor telepon:',
 	'sign-bday' => 'Usia:',
 	'sign-email' => 'Alamat surel:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> menunjukkan isian yang dibutuhkan.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Catatan: Informasi yang tidak didaftarkan masih dapat dilihat oleh moderator.</i></small>',
 	'sign-list-anonymous' => 'Daftarkan secara anonim',
 	'sign-list-hideaddress' => 'Jangan tampilkan alamat',
 	'sign-list-hideextaddress' => 'Jangan tampilkan kota, provinsi, kode pos, atau negara',
@@ -1999,7 +2007,16 @@ $messages['id'] = array(
 	'sign-list-hidebday' => 'Jangan tampilkan usia',
 	'sign-list-hideemail' => 'Jangan tampilkan surel',
 	'sign-submit' => 'Tandatangani dokumen',
+	'sign-information' => '<div class="noarticletext">Terima kasih telah meluangkan waktu untuk membaca keseluruhan dokumen ini.
+Jika Anda setuju dengan isinya, silakan tunjukkan dukungan Anda dengan mengisi kolom yang harus diisi di bawah ini dan mengklik "Tanda tangani dokumen".
+Harap pastikan bahwa informasi pribadi Anda sudah benar dan bahwa kami memiliki suatu cara untuk menghubungi Anda untuk memverifikasikan identitas Anda.
+Catat bahwa alamat IP Anda dan informasi identifikasi lain akan dicatat oleh isian ini dan digunakan oleh moderator untuk menghilangkan duplikat tanda tangan dan mengkonfirmasi kebenaran informasi pribadi Anda.
+Karena penggunaan proksi terbuka dan anonim menghambat kemampuan kami untuk melakukan tugas ini, tanda tangan dari proksi semacam itu cenderung tidak akan diperhitungkan.
+Jika Anda sedang tersambung melalui server proksi, silakan putuskan koneksi tersebut gunakan koneksi standar sewaktu menandatangani.</div>
+
+$1',
 	'sig-success' => 'Anda berhasil menandatangani dokumen.',
+	'sign-view-selectfields' => '<b>Isian yang akan ditampilkan:</b>',
 	'sign-viewfield-entryid' => 'ID Masukan',
 	'sign-viewfield-timestamp' => 'Stempel waktu',
 	'sign-viewfield-realname' => 'Nama',

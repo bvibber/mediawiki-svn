@@ -3145,6 +3145,13 @@ $messages['li'] = array(
 	'optin-survey-no' => 'Nei',
 );
 
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
+$messages['lmo'] = array(
+	'optin-title-justoptedin' => 'Benvegnüü denter a Beta',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Homo
  * @author Matasg
@@ -5130,6 +5137,7 @@ $messages['tt-cyrl'] = array(
  * @author A1
  * @author AS
  * @author Ickis
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
@@ -5178,19 +5186,19 @@ $messages['uk'] = array(
 	'optin-survey-question-usedtoolbar' => 'Чи використали Ви нову розгортувану панель інструментів для редагування сторінок?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Якщо так, те, що вам у ній сподобалося? Що не сподобалося?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Якщо ні, то чому?  Чи збираєтеся в майбутньому? Будь ласка, поясніть.',
-	'optin-survey-question-different' => 'Щоб ми могли зробити по-іншому, щоб ви продовжили використання Beta?',
+	'optin-survey-question-different' => 'Що б ми могли зробити по-іншому, щоб ви продовжили використання Beta?',
 	'optin-survey-question-feedback' => 'Будь ласка, висловіть своє судження:',
 	'optin-survey-question-browser' => 'Яким оглядачем ви користуєтесь?',
 	'optin-survey-answer-browser-other' => 'Інший:',
 	'optin-survey-question-os' => 'Якою операційною системою ви користуєтесь?',
 	'optin-survey-answer-os-other' => 'Інша операційна система:',
 	'optin-survey-question-res' => 'Яка роздільність вашого монітора?',
-	'optin-survey-question-changes' => 'Які зміни Ви хотіли б бачити в Beta в майбутньому (виберіть все, належне)?',
-	'optin-survey-answer-changes-nav' => 'Зробити загальну навігацію по сайту простішою у використанні.',
-	'optin-survey-answer-changes-edittools' => 'Розширити і удосконалити інструменти редагування.',
+	'optin-survey-question-changes' => 'Які зміни ви хотіли б бачити в Beta в майбутньому (виберіть все належне)?',
+	'optin-survey-answer-changes-nav' => 'Зробити загальну навігацію сайтом простішою у використанні.',
+	'optin-survey-answer-changes-edittools' => 'Розширити і вдосконалити інструменти редагування.',
 	'optin-survey-answer-changes-upload' => 'Удосконалити завантаження контенту та медіа.',
-	'optin-survey-answer-changes-richtext' => 'Розробити інструменти редагування аналогічні багатофункціональним текстовим редакторам.',
-	'optin-survey-answer-changes-lookfeel' => 'Оновити "зовнішній вигляд" сайту.',
+	'optin-survey-answer-changes-richtext' => 'Розробити інструменти редагування, аналогічні багатофункціональним текстовим редакторам.',
+	'optin-survey-answer-changes-lookfeel' => 'Оновити «зовнішній вигляд» сайту.',
 	'optin-survey-answer-changes-predictability' => 'Підвищити передбачуваність роботи.',
 	'optin-survey-answer-changes-custom' => 'Дозволити більше користувацьких налаштувань.',
 	'optin-survey-answer-changes-other' => 'Інше:',

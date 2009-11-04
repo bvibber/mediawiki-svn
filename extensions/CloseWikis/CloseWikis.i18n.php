@@ -207,13 +207,21 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Y-M D
  */
 $messages['br'] = array(
+	'closewikis-page' => 'Serriñ ar wiki',
+	'closewikis-page-close' => 'Serriñ ar wiki',
 	'closewikis-page-close-wiki' => 'Wiki :',
+	'closewikis-page-close-submit' => 'Serriñ',
+	'closewikis-page-close-success' => 'Serret eo ar wiki',
 	'closewikis-page-reopen-wiki' => 'Wiki :',
 	'closewikis-page-reopen-reason' => 'Abeg :',
 	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Serret gant',
+	'closewikis-log-close' => 'en deus serret $2',
+	'right-closewikis' => 'Serriñ ar wikioù',
 );
 
 /** Bosnian (Bosanski)

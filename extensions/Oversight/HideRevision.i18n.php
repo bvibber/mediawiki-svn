@@ -998,7 +998,7 @@ $messages['et'] = array(
 	'group-oversight-member' => 'järelevaataja',
 	'grouppage-oversight' => '{{ns:project}}:Järelevaatajad',
 	'right-oversight' => 'Vaadata eelnevalt peidetud redaktsioone',
-	'right-hiderevision' => 'Peida redaktsioone administraatorite eest',
+	'right-hiderevision' => 'Peita redaktsioone administraatorite eest',
 	'hiderevision-continue' => 'Jätka',
 	'hiderevision-submit' => 'Peida need andmed jäädavalt',
 	'hiderevision-link' => 'peidetud kaastööd',
@@ -1936,6 +1936,7 @@ Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenen
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'hiderevision-link' => 'მომხმარებლის დამალული წვლილი',
 	'oversight-view' => 'დეტალები',
 );
 
@@ -3781,6 +3782,7 @@ Bu bilgiyi yaymak, Gözetmen ayrıcalıklarının kalıcı olarak kaybıyla sonu
  * @author AS
  * @author Ahonc
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'hiderevision' => 'Приховати версії',
@@ -3825,7 +3827,7 @@ $messages['uk'] = array(
 Розповсюдження цієї інформації може спричинити позбавлення прав ревізора.',
 	'oversight-legend' => 'Пошук по журналі приховання редагувань',
 	'oversight-oversighter' => 'Ревізор:',
-	'oversight-offender' => 'Порушник:',
+	'oversight-offender' => 'Автор версії сторінки:',
 );
 
 /** Vèneto (Vèneto)

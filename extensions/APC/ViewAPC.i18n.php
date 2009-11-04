@@ -644,6 +644,7 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  * @author Y-M D
  */
@@ -657,15 +658,21 @@ $messages['br'] = array(
 	'viewapc-start-time' => "Eur loc'hañ",
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|restr|restr}} ($2)',
 	'viewapc-misses' => 'Mankoù',
+	'viewapc-rps' => '$1 reked dre eilenn',
 	'viewapc-memory-free' => 'Dieub : $1 ($2)',
+	'viewapc-memory-used' => 'Implijet : $1 ($2)',
 	'viewapc-display-filename' => 'Anv ar restr',
 	'viewapc-display-info' => 'Anv',
 	'viewapc-display-creation_time' => 'Krouet',
+	'viewapc-display-deletion_time' => 'Dilamet',
+	'viewapc-display-no-delete' => "N'eo ket dilamet",
 	'viewapc-display-mem_size' => 'Ment',
+	'viewapc-ls-options-legend' => 'Dibarzhioù',
 	'viewapc-ls-header-name' => 'Anv',
 	'viewapc-ls-header-size' => 'Ment',
 	'viewapc-ls-header-modified' => 'Kemm diwezhañ',
 	'viewapc-ls-header-created' => 'Krouet',
+	'viewapc-ls-header-deleted' => 'Dilamet',
 	'viewapc-ls-scope-deleted' => 'Diverket',
 	'viewapc-ls-scope-both' => 'An daou',
 	'viewapc-ls-sort-size' => 'Ment',

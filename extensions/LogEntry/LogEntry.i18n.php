@@ -83,6 +83,13 @@ $messages['be-tarask'] = array(
 	'logentry-invalidtoken' => 'Няслушны сымбаль',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'logentry-invalidpage' => 'Невалидна страница',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

@@ -140,6 +140,17 @@ $messages['be-tarask'] = array(
 	'masseditregex-tooltip-execute' => 'Прыняць гэтыя зьмены для кожнай старонкі',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'masseditregex-matchtxt' => 'Търсене за:',
+	'masseditregex-replacetxt' => 'Заместване с:',
+	'masseditregex-executebtn' => 'Изпълняване',
+	'masseditregex-before' => 'Преди',
+	'masseditregex-after' => 'След',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Y-M D

@@ -420,13 +420,16 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Y-M D
  */
 $messages['br'] = array(
+	'grouppermissions-search' => 'Strollad :',
 	'grouppermissions-dologin' => 'Lugañ',
 	'grouppermissions-true' => 'Gwir',
 	'grouppermissions-false' => 'Faos',
 	'grouppermissions-never' => 'Morse',
+	'grouppermissions-sp-save' => 'Enrollañ',
 	'right-search' => 'Klask ar wiki',
 );
 

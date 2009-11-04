@@ -116,6 +116,13 @@ $messages['be-tarask'] = array(
 	'right-emergencydesysop' => 'магчымасьць пазбаўленьня правоў адміністратара іншых удзельнікаў, коштам уласных правоў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'emergencydesysop-submit' => 'Kas',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -889,6 +896,7 @@ $messages['tl'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
@@ -897,15 +905,15 @@ $messages['uk'] = array(
 	'emergencydesysop-title' => 'Зняти права адміністратора з обох: поточного користувача та іншого адміністратора',
 	'emergencydesysop-otheradmin' => 'Інший адміністратор для позбавлення прав',
 	'emergencydesysop-reason' => 'Підстава позбавлення',
-	'emergencydesysop-submit' => 'Відправити',
+	'emergencydesysop-submit' => 'Виконати',
 	'emergencydesysop-incomplete' => 'Необхідно заповнити всі поля форми, будь ласка, спробуйте ще раз.',
 	'emergencydesysop-notasysop' => 'Цільовий користувач не входить в групу адміністраторів.',
-	'emergencydesysop-nogroups' => 'Жодний',
-	'emergencydesysop-done' => 'Дія виконана, Ви і [[$1]] позбавлені прав адміністратора.',
+	'emergencydesysop-nogroups' => 'Нема',
+	'emergencydesysop-done' => 'Дію виконано, ви та [[$1]] позбавлені прав адміністратора.',
 	'emergencydesysop-invalidtarget' => 'Цільового користувача не існує.',
 	'emergencydesysop-blocked' => 'Ви не можете отримати доступ до цієї сторінки під час блокування',
-	'emergencydesysop-noright' => 'У вас немає достатніх повноважень для доступу до цієї сторінки',
-	'right-emergencydesysop' => 'Зняття прав адміністратора іншому користувачеві, разом зі своїми',
+	'emergencydesysop-noright' => 'У вас немає прав для доступу до цієї сторінки',
+	'right-emergencydesysop' => 'Зняття прав адміністратора з іншого користувача, разом зі своїми',
 );
 
 /** Veps (Vepsan kel')

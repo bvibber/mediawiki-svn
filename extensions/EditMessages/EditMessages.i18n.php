@@ -171,9 +171,11 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
+	'editmessages' => 'Aozañ kemennadennoù',
 	'editmsg-search' => 'Klask',
 	'editmsg-new-search' => 'Klask nevez',
 );
@@ -1423,6 +1425,7 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'editmessages' => 'רעדאקטירן מעלדונגען',
 	'editmsg-search' => 'זוכן',
 	'editmsg-new-search' => 'ניי זוכן',
 );
