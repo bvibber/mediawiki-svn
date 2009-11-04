@@ -1,0 +1,17 @@
+/* CSS for wikiEditor preview plugin */
+.wikiEditor-tab-edit {
+	background: #f3f3f3 !important;
+	font-size: 1em;
+}
+
+.wikiEditor-ui .ui-widget-content .ui-state-default {
+	background: #ffffff;
+}
+
+.wikiEditor-ui .ui-widget-content .ui-state-hover {
+	background: #dadada;
+}
+
+.wikiEditor-ui .ui-widget-content .ui-state-active {
+	background: #f3f3f3;
+}

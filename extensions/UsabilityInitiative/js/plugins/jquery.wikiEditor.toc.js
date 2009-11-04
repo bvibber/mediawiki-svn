@@ -25,7 +25,7 @@ fn: {
 			.addClass( 'wikiEditor-ui-toc' )
 			.attr( 'id', 'wikiEditor-ui-toc' );
 		// If we ask for this later (after we insert the TOC) then in IE this measurement will be incorrect
-		var height = context.$ui.find( '.wikiEditor-ui-bottom' ).height()
+		var height = context.$ui.find( '.wikiEditor-ui-bottom' ).height();
 		context.$ui.find( '.wikiEditor-ui-bottom' )
 			.append( context.modules.$toc );
 		context.modules.$toc.height(

@@ -88,7 +88,8 @@ body.rtl .wikiEditor-ui {
 	position: relative;
 	width: 100%;
 	border-bottom: solid silver 1px;
-}/* wikiEditor dialogs module */
+}
+/* wikiEditor dialogs module */
 
 .ui-widget table {
 	margin-top: 0.75em;
@@ -572,4 +573,20 @@ body.rtl .wikiEditor-ui-toolbar .page-characters > div > a,
 	background-color: white;
 	text-decoration: none;
 	border-color: #a8d7f9;
+}/* CSS for wikiEditor preview plugin */
+.wikiEditor-tab-edit {
+	background: #f3f3f3 !important;
+	font-size: 1em;
+}
+
+.wikiEditor-ui .ui-widget-content .ui-state-default {
+	background: #ffffff;
+}
+
+.wikiEditor-ui .ui-widget-content .ui-state-hover {
+	background: #dadada;
+}
+
+.wikiEditor-ui .ui-widget-content .ui-state-active {
+	background: #f3f3f3;
 }
