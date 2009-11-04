@@ -43,8 +43,7 @@ function efDonateSetup( &$parser ) {
   $parser->setHook( 'donate', 'efDonateRender' );
 	       
 	 //process form
-	 wfRunHooks( 'MediaWikiPerformAction', array( $output, 
-$article, $title, $user, $request, $this));
+	// wfRunHooks( 'MediaWikiPerformAction', array( $output, $article, $title, $user, $request, $this));
 
   return true;
 }
