@@ -222,6 +222,13 @@ fn : {
 						parts[part] = ( action.options[part] || '' )
 					}
 				}
+				if ( 'periRegex' in action.options && 'periRegexReplace' in action.options ) {
+					var selection = context.$textarea.getSelection();
+					if ( selection != '' ) {
+						parts.peri = selection.replace( action.options.periRegex,
+							action.options.periRegexReplace );
+					}
+				}
 				context.$textarea.encapsulateSelection(
 					parts.pre, parts.peri, parts.post, action.options.ownline, action.type == 'replace'
 				);
@@ -326,25 +333,23 @@ fn : {
 			.text( label )
 			.attr( 'rel', id )
 			.data( 'context', context )
-			.click(
-				function() {
-					
-					$(this).parent().parent().find( '.page' ).hide();
-					$(this).parent().parent().find( '.page-' + $(this).attr( 'rel' ) ).show();
-					$(this).siblings().removeClass( 'current' );
-					$(this).addClass( 'current' );
-					var section = $(this).parent().parent().attr( 'rel' );
-					
-					//click tracking
-					if($.trackAction != undefined){
-						$.trackAction(section + '.' + $(this).attr('rel'));
-					}
-					
-					$.cookie(
-						'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
-						$(this).attr( 'rel' )
-					);
-				} );
+			.bind( 'mousedown', function() {
+				$(this).parent().parent().find( '.page' ).hide();
+				$(this).parent().parent().find( '.page-' + $(this).attr( 'rel' ) ).show();
+				$(this).siblings().removeClass( 'current' );
+				$(this).addClass( 'current' );
+				var section = $(this).parent().parent().attr( 'rel' );
+				
+				//click tracking
+				if($.trackAction != undefined){
+					$.trackAction(section + '.' + $(this).attr('rel'));
+				}
+				
+				$.cookie(
+					'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
+					$(this).attr( 'rel' )
+				);
+			} );
 	},
 	buildPage : function( context, id, page ) {
 		var $page = $( '<div />' ).attr( {
@@ -451,22 +456,34 @@ fn : {
 					.attr( 'href', '#' )
 					.text( $.wikiEditor.autoMsg( section, 'label' ) )
 					.data( 'context', context )
-					.click( function() {
+					.bind( 'mouseup', function( e ) {
+						$(this).blur();
+					} )
+					.bind( 'mousedown', function( e ) {
+						// Only act when the primary mouse button was pressed
+						if ( e.button !== 0 ) {
+							return true;
+						}
 						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
 						var $section =
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
-						$(this).blur();
 						var show = $section.css( 'display' ) == 'none';
 						$previousSections = $section.parent().find( '.section:visible' );
 						$previousSections.css( 'position', 'absolute' );
 						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
+						$sections.css('overflow', 'hidden');
 						if ( show ) {
 							$section.fadeIn( 'fast' );
-							$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() { 
+								$(this).css('overflow', 'visible').css('height', 'auto'); 
+							} );
 							$(this).addClass( 'current' );
 						} else {
-							$sections.animate( { 'height': 0 } );
+							$sections.css('height', $section.outerHeight() )
+								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() { 
+									$(this).css('overflow', 'visible'); 
+								} );
 						}
 						// Click tracking
 						if($.trackAction != undefined){
@@ -477,8 +494,8 @@ fn : {
 							'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
 							show ? $section.attr( 'rel' ) : null
 						);
-						return false;
 					} )
+					.click( function() { return false; } )
 			);
 	},
 	buildSection : function( context, id, section ) {
@@ -567,7 +584,7 @@ fn : {
 				s.$sections.append( $.wikiEditor.modules.toolbar.fn.buildSection( s.context, s.id, s.config ) );
 				var $section = s.$sections.find( '.section:visible' );
 				if ( $section.size() ) {
-					$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2 );
 				}
 			}
 		} );

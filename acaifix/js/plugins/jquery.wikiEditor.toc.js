@@ -1,6 +1,4 @@
-/**
- * TOC Module for wikiEditor
- */
+/* TOC Module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.toc = {
 
 /**
@@ -41,7 +39,7 @@ fn: {
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$textarea
-			.delayedBind( 1000, 'keyup encapsulateSelection change',
+			.delayedBind( 250, 'mouseup scrollToPosition focus keyup encapsulateSelection change',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -53,25 +51,16 @@ fn: {
 					} );
 				}
 			)
-			.bind( 'mouseup scrollToPosition focus keyup encapsulateSelection change',
-				function( event ) {
-					var context = $(this).data( 'wikiEditor-context' );
-					$(this).eachAsync( {
-						bulk: 0,
-						loop: function() {
-							$.wikiEditor.modules.toc.fn.update( context );
-						}
-					} );
-				}
-			)
 			.blur( function() {
 				var context = $(this).data( 'wikiEditor-context' );
+				context.$textarea.delayedBindCancel( 250,
+					'mouseup scrollToPosition focus keyup encapsulateSelection change' );
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
 	},
  
 	unhighlight: function( context ) {
-		context.modules.$toc.find( 'a' ).removeClass( 'currentSelection' );
+		context.modules.$toc.find( 'div' ).removeClass( 'current' );
 	},
 	/**
 	 * Highlight the section the cursor is currently within
@@ -95,8 +84,8 @@ fn: {
 				}
 				section = Math.max( 0, section );
 			}
-			var sectionLink = context.modules.$toc.find( 'a.section-' + section );
-			sectionLink.addClass( 'currentSelection' );
+			var sectionLink = context.modules.$toc.find( 'div.section-' + section );
+			sectionLink.addClass( 'current' );
 			
 			// Scroll the highlighted link into view if necessary
 			var relTop = sectionLink.offset().top - context.modules.$toc.offset().top;
@@ -145,26 +134,26 @@ fn: {
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
-			var list = $( '<ul />' );
+			var list = $( '<ul></ul>' );
 			for ( i in structure ) {
-				var item = $( '<li />' )
-					.append(
-						$( '<a />' )
-							.attr( 'href', '#' )
-							.addClass( 'section-' + structure[i].index )
-							.data( 'textbox', context.$textarea )
-							.data( 'position', structure[i].position )
-							.click( function( event ) {
-								$(this).data( 'textbox' )
-									.focus()
-									.setSelection( $(this).data( 'position' ) )
-									.scrollToCaretPosition( true );
-								if ( typeof $.trackAction != 'undefined' )
-									$.trackAction( 'ntoc.heading' );
-								event.preventDefault();
-							} )
-							.text( structure[i].text )
-					);
+				var div = $( '<div></div>' )
+					.attr( 'href', '#' )
+					.addClass( 'section-' + structure[i].index )
+					.data( 'textbox', context.$textarea )
+					.data( 'position', structure[i].position )
+					.bind( 'mousedown', function( event ) {
+						$(this).data( 'textbox' )
+							.focus()
+							.setSelection( $(this).data( 'position' ) )
+							.scrollToCaretPosition( true );
+						if ( typeof $.trackAction != 'undefined' )
+							$.trackAction( 'ntoc.heading' );
+						event.preventDefault();
+					} )
+					.text( structure[i].text );
+				if ( structure[i].text == '' )
+					div.html( '&nbsp;' );
+				var item = $( '<li></li>' ).append( div );
 				if ( structure[i].sections !== undefined ) {
 					item.append( buildList( structure[i].sections ) );
 				}
@@ -175,7 +164,7 @@ fn: {
 		// Build outline from wikitext
 		var outline = [];
 		var wikitext = $.wikiEditor.fixOperaBrokenness( context.$textarea.val() );
-		var headings = wikitext.match( /^={1,6}.+={1,6}\s*$/gm );
+		var headings = wikitext.match( /^={1,6}[^=\n][^\n]*={1,6}\s*$/gm );
 		var offset = 0;
 		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {
@@ -235,18 +224,11 @@ fn: {
 		// Recursively build the structure and add special item for
 		// section 0, if needed
 		var structure = buildStructure( outline );
-		if ( $( 'input[name=wpSection]' ).val() == '' )
+		if ( $( 'input[name=wpSection]' ).val() == '' ) {
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
+		}
 		context.modules.$toc.html( buildList( structure ) );
-		
-		context.modules.$toc.find( 'ul' ).css( 'width', '10em' );
-		
-		var links = context.modules.$toc.find( 'ul a' );
-		// Highlighted links are wider; autoEllipse links in
-		// highlighted state
-		links.addClass( 'currentSelection' );
-		links.autoEllipse( { 'position': 'right', 'tooltip': true } );
-		links.removeClass( 'currentSelection' );
+		context.modules.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}

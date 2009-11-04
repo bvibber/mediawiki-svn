@@ -147,10 +147,12 @@ js2AddOnloadHook( function() {
 							'heading-2' : {
 								labelMsg: 'edittoolbar-tool-heading-2',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
 										pre: "==", 
 										periMsg: 'edittoolbar-tool-heading-example',
+										periRegex: /^(={1,6})(.*?)\1\s*$/,
+										periRegexReplace: "\$2",
 										post: "=="
 									}
 								}
@@ -158,9 +160,11 @@ js2AddOnloadHook( function() {
 							'heading-3' : {
 								labelMsg: 'edittoolbar-tool-heading-3',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
-										pre: "===", 
+										pre: "===",
+										periRegex: /^(={1,6})(.*?)\1\s*$/,
+										periRegexReplace: "\$2",
 										periMsg: 'edittoolbar-tool-heading-example',
 										post: "==="
 									}
@@ -169,9 +173,11 @@ js2AddOnloadHook( function() {
 							'heading-4' : {
 								labelMsg: 'edittoolbar-tool-heading-4',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
-										pre: "====", 
+										pre: "====",
+										periRegex: /^(={1,6})(.*?)\1\s*$/,
+										periRegexReplace: "\$2",
 										periMsg: 'edittoolbar-tool-heading-example',
 										post: "===="
 									}
@@ -180,9 +186,11 @@ js2AddOnloadHook( function() {
 							'heading-5' : {
 								labelMsg: 'edittoolbar-tool-heading-5',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
-										pre: "=====", 
+										pre: "=====",
+										periRegex: /^(={1,6})(.*?)\1\s*$/,
+										periRegexReplace: "\$2",
 										periMsg: 'edittoolbar-tool-heading-example',
 										post: "====="
 									}
@@ -219,6 +227,19 @@ js2AddOnloadHook( function() {
 								pre: "# ", 
 								periMsg: 'edittoolbar-tool-olist-example',
 								post: "", 
+								ownline: true
+							}
+						}
+					},
+					'indent': {
+						labelMsg: 'edittoolbar-tool-indent',
+						type: 'button',
+						icon: 'format-indent.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: ":",
+								post: "",
 								ownline: true
 							}
 						}
@@ -820,14 +841,17 @@ js2AddOnloadHook( function() {
 							'format': 'json'
 						},
 						success: function( data ) {
-							// TODO: What happens if data.query.pageids is undefined?
-							var page = data.query.pages[data.query.pageids[0]];
-							var status = 'exists';
-							if ( typeof page.missing != 'undefined' )
-								status = 'notexists';
-							else if ( typeof page.invalid != 'undefined' )
+							var status;
+							if ( typeof data.query == 'undefined' ) {
 								status = 'invalid';
-							
+							} else {
+								var page = data.query.pages[data.query.pageids[0]];
+								status = 'exists';
+								if ( typeof page.missing != 'undefined' )
+									status = 'notexists';
+								else if ( typeof page.invalid != 'undefined' )
+									status = 'invalid';
+							}
 							cache[target] = status;
 							updateWidget( status );
 						}
@@ -1190,12 +1214,12 @@ js2AddOnloadHook( function() {
 				<div id="edittoolbar-replace-emptysearch" rel="edittoolbar-tool-replace-emptysearch"></div>\
 				<div id="edittoolbar-replace-invalidregex"></div>\
 			</div>\
-			<fieldset><table><tr>\
+			<fieldset><table style="width: 100%;"><tr>\
 				<td><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label></td>\
-				<td><input type="text" id="edittoolbar-replace-search" /></td>\
+				<td><input type="text" id="edittoolbar-replace-search" style="width: 100%;" /></td>\
 			</tr><tr>\
 				<td><label for="edittoolbar-replace-replace" rel="edittoolbar-tool-replace-replace"></label></td>\
-				<td><input type="text" id="edittoolbar-replace-replace" /></td>\
+				<td><input type="text" id="edittoolbar-replace-replace" style="width: 100%;" /></td>\
 			</tr></table><table><tr>\
 				<td><input type="checkbox" id="edittoolbar-replace-case" /></td>\
 				<td><label for="edittoolbar-replace-case" rel="edittoolbar-tool-replace-case"></label></td>\
@@ -1226,7 +1250,7 @@ js2AddOnloadHook( function() {
 					return;
 				}
 				var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
-				var flags = '';
+				var flags = 'm';
 				var matchCase = $j( '#edittoolbar-replace-case' ).is( ':checked' );
 				var isRegex = $j( '#edittoolbar-replace-regex' ).is( ':checked' );
 				if ( !matchCase ) {
@@ -1318,8 +1342,8 @@ js2AddOnloadHook( function() {
 				$j(this).data( 'offset', 0 );
 				$j( '#edittoolbar-replace-search' ).focus();
 				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch, #edittoolbar-replace-invalidregex' ).hide();
-				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
-					$j(this).data( 'dialogkeypressset', true );
+				if ( !( $j(this).data( 'onetimeonlystuff' ) ) ) {
+					$j(this).data( 'onetimeonlystuff', true );
 					// Execute the action associated with the first button
 					// when the user presses Enter
 					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
@@ -1327,6 +1351,11 @@ js2AddOnloadHook( function() {
 							$j(this).find( 'button:first' ).click();
 							e.preventDefault();
 						}
+					});
+					// Make tabbing to a button and pressing
+					// Enter do what people expect
+					$j(this).closest( '.ui-dialog' ).find( 'button' ).focus( function() {
+						$j(this).closest( '.ui-dialog' ).data( 'dialogaction', this );
 					});
 				}
 				var dialog = $j(this).closest( '.ui-dialog' );
