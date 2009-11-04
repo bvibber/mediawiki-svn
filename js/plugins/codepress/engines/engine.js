@@ -1,6 +1,6 @@
 gecko = false;
 if ( $.browser.safari || $.browser.mozilla ) {
-		gecko = true;
+	gecko = true;
 }
 
 WikiEditorEngine = {
