@@ -4,20 +4,19 @@
  * @addtogroup Extensions
  */
 
-$aliases = array();
+$specialPageAliases = array();
 
-/**
- * English.
+/** English.
  * @author Juliano F. Ravasi
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'Wikilog' => array( 'Wikilog', 'Wikilogs' ),
 );
 
 /** Portuguese (Português)
  * @author Juliano F. Ravasi
  */
-$aliases['pt'] = array(
+$specialPageAliases['pt'] = array(
 	'Wikilog' => array( 'Wikilog', 'Wikilogs' ),
 );
 
