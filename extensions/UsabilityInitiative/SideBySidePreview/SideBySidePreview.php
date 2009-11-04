@@ -38,7 +38,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Roan Kattouw',
 	'version' => '0.1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
-	'descriptionmsg' => 'sideBysidepreview-desc',
+	'descriptionmsg' => 'sidebysidepreview-desc',
 );
 
 // Includes parent extension
