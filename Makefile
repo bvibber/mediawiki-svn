@@ -9,7 +9,8 @@ CSS := \
 	css/wikiEditor.css\
 	css/wikiEditor.dialogs.css\
 	css/wikiEditor.toc.css\
-	css/wikiEditor.toolbar.css
+	css/wikiEditor.toolbar.css\
+	css/wikiEditor.preview.css
 
 PLUGINS := \
 	js/plugins/jquery.async.js\
@@ -25,7 +26,8 @@ PLUGINS := \
 	js/plugins/jquery.wikiEditor.dialogs.js\
 	js/plugins/jquery.wikiEditor.toolbar.js\
 	js/plugins/jquery.wikiEditor.toc.js\
-	js/plugins/jquery.wikiEditor.code.js
+	js/plugins/jquery.wikiEditor.code.js\
+	js/plugins/jquery.wikiEditor.preview.js
 	
 
 all: \
