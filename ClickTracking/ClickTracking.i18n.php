@@ -893,6 +893,7 @@ $messages['ml'] = array(
 	'ct-total-header' => 'ആകെ ഞെക്കലുകൾ',
 	'ct-start-date' => 'തുടങ്ങുന്ന തീയതി (YYYYMMDD)',
 	'ct-end-date' => 'അവസാനിക്കുന്ന തീയതി (YYYYMMDD)',
+	'ct-increment-by' => 'ഓരോ വിവര ബിന്ദുവും പ്രതിനിധീകരിക്കുന്ന ദിനങ്ങളുടെ എണ്ണം',
 	'ct-change-graph' => 'ഗ്രാഫിൽ മാറ്റംവരുത്തുക',
 	'ct-beginner' => 'പ്രാരംഭക(ൻ)',
 	'ct-intermediate' => 'മദ്ധ്യവർത്തി',
@@ -1237,20 +1238,21 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'clicktracking' => 'Відстеження кліків в рамках Ініціативи покращення зручності',
+	'clicktracking' => 'Відстеження кліків в рамках Ініціативи Ефективності',
 	'clicktracking-desc' => 'Відстеження кліків для відстеження подій, які не викликають оновлення сторінки',
 	'ct-title' => 'Всього кліків користувачів',
 	'ct-event-name' => 'Назва події',
-	'ct-expert-header' => 'Кліків "експертів"',
-	'ct-intermediate-header' => 'Кліків "середніх користувачів"',
-	'ct-beginner-header' => 'Кліків "новачків"',
+	'ct-expert-header' => 'Кліків «експертів»',
+	'ct-intermediate-header' => 'Кліків «середніх користувачів»',
+	'ct-beginner-header' => 'Кліків «новачків»',
 	'ct-total-header' => 'Всього кліків',
 	'ct-start-date' => 'Дата початку (РРРРММДД)',
 	'ct-end-date' => 'Дата закінчення (РРРРММДД)',
-	'ct-increment-by' => 'Кількість днів, що відмічає кожна точка даних',
+	'ct-increment-by' => 'Кількість днів, які позначає кожна точка даних',
 	'ct-change-graph' => 'Змінити графік',
 	'ct-beginner' => 'Новачок',
 	'ct-intermediate' => 'Середній користувач',
