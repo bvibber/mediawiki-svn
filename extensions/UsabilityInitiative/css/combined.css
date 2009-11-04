@@ -578,15 +578,31 @@ body.rtl .wikiEditor-ui-toolbar .page-characters > div > a,
 	background: #f3f3f3 !important;
 	font-size: 1em;
 }
-
+/*
 .wikiEditor-ui .ui-widget-content .ui-state-default {
 	background: #ffffff;
 }
-
 .wikiEditor-ui .ui-widget-content .ui-state-hover {
 	background: #dadada;
 }
-
 .wikiEditor-ui .ui-widget-content .ui-state-active {
 	background: #f3f3f3;
+}
+*/
+.wikiEditor-ui .ui-tabs .wikiEditor-tab-edit {
+	padding: 0;
+	margin: 0;
+}
+.wikiEditor-ui .ui-tabs-nav {
+	margin-bottom: 0 !important;
+}
+.wikiEditor-ui .ui-tabs {
+	padding: 0;
+}
+.wikiEditor-ui .ui-widget-content {
+	border-width: 0;
+}
+.wikiEditor-ui .ui-widget-header {
+	border-width: 0;
+	border-bottom-width: 1px;
 }

@@ -40,6 +40,13 @@ fn: {
 		};
 		// Make it happen!
 		$.wikiEditor.modules.code.fn.active( context, true );
+		
+		// Before the form is submitted, if in iframe mode, we need to sync the textarea and the iframe
+		context.$textarea.closest( 'form' ).submit( function() {
+			if ( context.modules.code.editor.active ) {
+				$.wikiEditor.modules.code.fn.active( context, false );
+			}
+		} );
 	},
 	// Set config / get config
 	config: function( context, config ) {
@@ -85,19 +92,32 @@ fn: {
 		if ( value !== undefined ) {
 			if ( value && !context.modules.code.editor.active ) {
 				context.$textarea.attr( 'disabled', true );
+				// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
+				// characters rather than actual HTML tags in the code editor container.
 				context.modules.code.editor.container.text( context.$textarea.val() );
 				context.$textarea.hide();
 				context.$iframe.show();
+				context.modules.code.editor.active = true;
 			} else if ( !value && context.modules.code.editor.active ) {
 				context.$textarea.attr( 'disabled', false );
-				context.$textarea.val( context.modules.code.editor.container.text() );
+				// To properly decode the HTML entities, we set the HTML rather than the val of the textarea - also, all
+				// of the text will have been properly escaped with HTML entities except the <br> tags which are in the
+				// place of end line characters - so we just swap those out.
+				context.$textarea.html( context.modules.code.editor.container.html().replace( /\<br\>/g, "\n" ) );
 				context.$textarea.show();
 				context.$iframe.hide();
+				context.modules.code.editor.active = false;
 			}
 		} else {
 			return context.modules.code.editor.active;
 		}
 	}
+	getCaretPosition: function( context ) {
+		
+	}
 }
 
 }; } ) ( jQuery );
+
+
+$j( '#wpTextbox1' ).wikiEditor( 'caretPosition' )
