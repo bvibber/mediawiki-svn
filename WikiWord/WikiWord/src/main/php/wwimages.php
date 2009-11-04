@@ -252,6 +252,7 @@ class WWImages extends WWWikis {
 	    if (!isset($wwLanguages[$lang])) continue;
 
 	    foreach ($pages as $page) {
+		//FIXME: detect namespace prefix?!
 		$img = $this->getRelevantImagesOnPage($lang, 0, $page, true); 
 		$images->addImages($img, $lang . ":" . $page, "article", 1);
 	    }
@@ -266,21 +267,27 @@ class WWImages extends WWWikis {
 	    $pages = $concepts['commons'];
 
 	    foreach ($pages as $page) {
-		$img = $this->getRelevantImagesOnPage("commons", 0, $page, false); 
-		$images->addImages($img, "commons:" . $page, "gallery", 0.8);
+		if ( $wwFakeCommonsConcepts || !preg_match('/^Category:(.*)$/', $page) ) {
+		    $img = $this->getRelevantImagesOnPage("commons", 0, $page, false); 
+		    $images->addImages($img, "commons:" . $page, "gallery", 0.8);
+		}
 
 		if ($max && $images->size()>$max) {
 		    $this->addImageTags($images);
 		    return $images->listImages($max);
 		}
 
-		$img = $this->getImagesInCategory("commons", $page); //FIXME: resource mapping
-		if ($img) $images->addImages($img, "commons:category:" . $page, "category", 0.5);
-		else if ($wwFakeCommonsConcepts && $wwFakeCommonsPlural && !preg_match('/s$/', $page)) {
-		    $cname = $page."s";
+		if ( $wwFakeCommonsConcepts || preg_match('/^Category:(.*)$/', $page, $m) ) {
+		    if ( @$m[1] ) $page = $m[1]; //hack
+		    $img = $this->getImagesInCategory("commons", $page); 
 
-		    $img = $this->getImagesInCategory("commons", $cname); //FIXME: resource mapping
-		    $images->addImages($img, "commons:category:" . $cname, "category(pl)", 0.5);
+		    if ($img) $images->addImages($img, "commons:category:" . $page, "category", 0.5);
+		    else if ($wwFakeCommonsConcepts && $wwFakeCommonsPlural && !preg_match('/s$/', $page)) {
+			$cname = $page."s";
+
+			$img = $this->getImagesInCategory("commons", $cname); 
+			$images->addImages($img, "commons:category:" . $cname, "category(pl)", 0.5);
+		    }
 		}
 	    }
 	}

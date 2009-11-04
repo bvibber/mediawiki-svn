@@ -180,10 +180,14 @@ class WWThesaurus extends WWUTils {
     function getRelatedForConcept( $id, $lang = null, $limit = 100 ) {
 	global $wwTablePrefix, $wwThesaurusDataset;
 
-	$sql = "SELECT C.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
-	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_relation as R ON R.concept2 = C.id "
-	      . " WHERE R.concept1 = ".(int)$id
+	$sql = "SELECT " . ($lang ? " C.*, O.* " : " C.* " ) . " FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
+	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_relation as R ON R.concept2 = C.id ";
+
+	if ( $lang ) $sql .= " LEFT JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND C.id = O.global_concept ";
+
+	$sql .= " WHERE R.concept1 = ".(int)$id
 	      . " AND ( R.bilink > 0 OR R.langref > 0 OR R.langmatch > 0 )"
+	      . " GROUP BY C.id "
 	      . " LIMIT " . (int)$limit;
 
 	return $this->getRows($sql);
@@ -192,9 +196,13 @@ class WWThesaurus extends WWUTils {
     function getBroaderForConcept( $id, $lang = null, $limit = 100 ) {
 	global $wwTablePrefix, $wwThesaurusDataset;
 
-	$sql = "SELECT C.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
-	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_broader as R ON R.broad = C.id "
-	      . " WHERE R.narrow = ".(int)$id
+	$sql = "SELECT " . ($lang ? " C.*, O.* " : " C.* " ) . " FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
+	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_broader as R ON R.broad = C.id ";
+
+	if ( $lang ) $sql .= " LEFT JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND C.id = O.global_concept ";
+
+	$sql .= " WHERE R.narrow = ".(int)$id
+	      . " GROUP BY C.id "
 	      . " LIMIT " . (int)$limit;
 
 	return $this->getRows($sql);
@@ -203,15 +211,19 @@ class WWThesaurus extends WWUTils {
     function getNarrowerForConcept( $id, $lang = null, $limit = 100 ) {
 	global $wwTablePrefix, $wwThesaurusDataset;
 
-	$sql = "SELECT C.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
-	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_broader as R ON R.narrow = C.id "
-	      . " WHERE R.broad = ".(int)$id
+	$sql = "SELECT " . ($lang ? " C.*, O.* " : " C.* " ) . "  FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
+	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_broader as R ON R.narrow = C.id ";
+
+	if ( $lang ) $sql .= " LEFT JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND C.id = O.global_concept ";
+
+	$sql .= " WHERE R.broad = ".(int)$id
+	      . " GROUP BY C.id "
 	      . " LIMIT " . (int)$limit;
 
 	return $this->getRows($sql);
     }
 
-    function getPagesForConcept( $id, $lang, $limit = 100 ) {
+    function getPagesForConcept( $id, $lang = null, $limit = 100 ) {
 	global $wwTablePrefix, $wwThesaurusDataset, $wwLanguages;
 
 	if ( !$lang ) $lang = array_keys( $wwLanguages );

@@ -47,6 +47,8 @@ function printConceptImageList($id, $class = "terselist") {
 function printLocalConceptLink($lang, $row) {
     global $wwSelf, $images;
 
+    $row = normalizeConceptRow($lang, $row);
+
     extract($row);
 
     if (!isset($weight) && isset($freq)) $weight = $freq;
@@ -117,17 +119,17 @@ function normalizeConceptRow($lang, $row) {
 
     if (!$row) return $row;
 
-    $row['lang'] = $lang;
-
+    if (!isset($row['lang'])) $row['lang'] = $lang;
     if (!isset($row['weight']) && isset($row['freq'])) $row['weight'] = $row['freq'];
     if (!isset($row['weight']) && isset($row['conf'])) $row['weight'] = $row['conf'];
-    if (isset($row['local_concept_name'])) $row['concept_name'] = $row['local_concept_name'];
+    if (!empty($row['local_concept_name'])) $row['concept_name'] = $row['local_concept_name'];
     if (!isset($row['concept_name']) && isset($row['name'])) $row['concept_name'] = $row['name'];
     if (!isset($row['concept_name']) && isset($row['global_concept_name'])) $row['concept_name'] = $row['global_concept_name'];
     if (!isset($row['reference_id']) && isset($row['global_id'])) $row['reference_id'] = $row['global_id'];
     if (!isset($row['reference_id']) && isset($row['global_concept'])) $row['reference_id'] = $row['global_concept'];
     if (!isset($row['reference_id']) && isset($row['concept'])) $row['reference_id'] = $row['concept'];
     if (!isset($row['reference_id']) && isset($row['id'])) $row['reference_id'] = $row['id'];
+    if (!empty($row['definition']) && is_array($row['definition'])) $row['definition'] = $row['definition'][$lang];
 
     #print "<pre>";
     #print_r($row);
@@ -151,8 +153,9 @@ function normalizeConceptRow($lang, $row) {
     return $row;
 }
 
-function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0, $images) {
-    global $wwSelf;
+function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0, $terse = true) {
+    global $wwSelf, $images, $utils;
+    global $wwMaxPreviewImages, $wwMaxGalleryImages;
 
     $a_row = normalizeConceptRow($a_lang, $a_row);
     $b_row = normalizeConceptRow($b_lang, $b_row);
@@ -164,13 +167,17 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0, $images) 
     <tr class="row_item">
       <td class="cell_weight  <?php print "weight_$a_wclass"; ?>"><?php print htmlspecialchars($a_weight); ?></td>
       <td colspan="3" class="cell_name  <?php print "weight_$a_wclass"; ?>">
+	<h3>
 	<a href="<?php print htmlspecialchars($a_cu); ?>"><?php print htmlspecialchars($a_concept_name); ?></a>
 	<span class="conceptref">(<a href="<?php print htmlspecialchars($a_wu); ?>" title="<?php print htmlspecialchars($a_concept_name); ?>">wiki page</a>)</span>
+	</h3>
       </td>
       <?php if ($b_row) { ?>
       <td colspan="3" class="cell_name  <?php print "weight_$b_wclass"; ?>">
+	<h3>
 	<a href="<?php print htmlspecialchars($b_cu); ?>"><?php print htmlspecialchars($b_concept_name); ?></a>
 	<span class="conceptref">(<a href="<?php print htmlspecialchars($b_wu); ?>" title="<?php print htmlspecialchars($b_concept_name); ?>">wiki page</a>)</span>
+	</h3>
       </td>
       <?php } ?>
     </tr>
@@ -196,6 +203,19 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0, $images) 
       <td class="cell_label">Terms:</td>
       <td class="cell_terms" colspan="2"><?php printTermList($b_lang, $b_terms); ?></td>
       <?php } ?>
+    </tr>
+    <?php } ?>
+
+    <?php if ($images) { ?>
+    <tr class="row_details row_images">
+      <td></td>
+      <td class="cell_label">Images:</td>
+      <td class="cell_broader" colspan="<?php $b_row ? 5 : 2 ?>">
+      <?php 
+	  $gallery = $utils->getImagesAbout($a_reference_id, $terse ? $wwMaxPreviewImages : $wwMaxGalleryImages );
+	  $c = printConceptImageList( $gallery, $terse ? "terselist" : "gallery" ); 
+      ?>
+      </td>
     </tr>
     <?php } ?>
 
@@ -247,15 +267,6 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0, $images) 
     </tr>
     <?php } ?>
 
-    <?php if ($images) { ?>
-    <tr class="row_details row_images">
-      <td></td>
-      <td class="cell_label">Images:</td>
-      <td class="cell_broader" colspan="<?php $b_row ? 5 : 2 ?>">
-      <?php printConceptImageList($a_reference_id); ?>
-      </td>
-    </tr>
-    <?php } ?>
     <?php
     if (isset($a_weight) && $a_weight && $a_weight<2 && $pos>=3) return false;
     else return true;
@@ -401,35 +412,8 @@ if ($result && $concept) {
 	else if (@$row['concept']) $id = $row['concept'];
 	else $id = "concept";
 
-	if (@$row['local_concept_name']) $title = $row['local_concept_name'];
-	else if (@$row['concept_name']) $title = $row['concept_name'];
-	else if (@$row['name']) $title = $row['name'];
-	else if ($id) $title = "Concept #$id";
-	else if ($concept) $title = "Concept #$concept";
-
 ?>    
     <div id="<?php print htmlspecialchars("concept-$id")?>">
-    <h2><?php print htmlspecialchars($title); ?></h2>
-
-    <?php
-    if ($images) $gallery = $utils->getImagesAbout($id);
-    else $images = NULL;
-
-    if ($gallery) {
-	$title = "Gallery #$concept";
-    ?>    
-	<h2><?php print htmlspecialchars($title); ?></h2>
-	<div  border="0" class="gallery">
-	<?php 
-	  printConceptImageList($gallery, "gallery");
-	?>
-	</div>
-
-	<p>Found <?php print count($gallery); ?> images.</p>
-
-    <?php
-    }
-    ?>
 
     <table  border="0" class="results">
     <?php 
@@ -462,14 +446,14 @@ if ($result && $concept) {
 	      if ($tolang && isset($row['global_concept'])) {
 		  $toresult = $utils->queryConceptInfo($row['global_concept'], $tolang);
 		  while ($torow = mysql_fetch_assoc($toresult)) {
-		      $continue= printLocalConcept($lang, $row, $tolang, $torow, $count, $images);
+		      $continue= printLocalConcept($lang, $row, $tolang, $torow, $count, true);
 		      $show_single = false;
 		  }
 		  mysql_free_result($toresult);
 	      } 
 
 	      if ($show_single) {
-		  $continue= printLocalConcept($lang, $row, NULL, NULL, $count, $images);
+		  $continue= printLocalConcept($lang, $row, NULL, NULL, $count, true);
 	      }
 	  }
 	  //else $continue= printGlobalConcept($lang, $row, $count);
