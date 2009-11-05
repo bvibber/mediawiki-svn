@@ -27,7 +27,7 @@ js2AddOnloadHook( function() {
 			|| $j( '#wikiPreview' ).is( ':visible' )
 		) {
 			// Return our message
-			return gM( 'editwarning-warning' );
+			return gM( 'vector-editwarning-warning' );
 		}
 	}
 	// Add form submission handler
