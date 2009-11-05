@@ -65,7 +65,6 @@ function efDonateRender( $input, $args, &$parser ) {
   // add JavaScript validation to <head>
   $wgOut->addScriptFile( $wgScriptPath . '/extensions/DonationInterface/donate_interface/donate_interface_validate_donation.js' );
  
-        
   //display form to gather data from user
   $output = fnDonateCreateOutput();
               
@@ -130,7 +129,7 @@ function fnDonateCreateOutput() {
     $currencyMenu .= Xml::option( $fullName, $value );
   }
     
-  $output = Xml::openElement( 'form', array( 'name' => "donate", 'method' => "post", 'action' => "", 'onsubmit' => '' )) .
+  $output = Xml::openElement( 'form', array( 'name' => "donate", 'method' => "post", 'action' => "", 'onsubmit' => 'return DonateValidateForm(this)' )) .
         Xml::openElement( 'div', array('id' => 'mw-donation-intro' )) .
         Xml::element( 'p', array( 'class' => 'mw-donation-intro-text' ), wfMsg( 'donate_interface-intro' )) .
         Xml::closeElement( 'div' );
@@ -165,7 +164,7 @@ function fnDonateCreateOutput() {
         if ( $code == $default_currency ) {
           $selected = ' selected="selected"';
         }
-      $currency_options .= '<option value="' . $code . '"' . $selected . '>' . $name . '</option>';
+      $currency_options .= '<option value="' . $code . '"' . $selected . '>' . wfMsg( 'donate_interface-' . $code ) . '</option>';
     }
       
   $currencyFields = Xml::openElement( 'select', array( 'name' => 'currency_code', 'id' => "input_currency_code" )) .
@@ -192,8 +191,7 @@ function fnDonateCreateOutput() {
         
   $output .= Xml::fieldset(wfMsg( 'donate_interface-comment-title' ), $publicComment, array( 'class' => 'mw-donation-public-comment'));
                 
-  $output .= Xml::hidden( 'process', '_yes_' ) .
-        Xml::submitButton(wfMsg( 'donate_interface-submit-button' ));
+  $output .= Xml::submitButton(wfMsg( 'donate_interface-submit-button' ));
        
         $output .= Xml::closeElement( 'form' );
                 
@@ -320,9 +318,9 @@ function fnProcessDonateForm( $output, $article, $title, $user, $request, $wiki 
       'comment-option' => '',
       'email' => '',
 	 );
-	
+
 	// if form has been submitted, assign data and redirect user to chosen payment gateway
-	if ( isset($_POST['process']) && $_POST['process'] == "_yes_" ) { 
+	if ( $wgRequest->wasPosted() ) { 
     //find out which amount option was chosen for amount, redefined buttons or text box
     if ( isset($_POST['amount']) && preg_match('/^\d+(\.(\d+)?)?$/', $wgRequest->getText('amount')) ) {
 		  $amount = number_format( $wgRequest->getText('amount'), 2 );
@@ -344,8 +342,8 @@ function fnProcessDonateForm( $output, $article, $title, $user, $request, $wiki 
         'utm_campaign' => $wgRequest->getText( 'utm_campaign', '' ),
         'language' => $wgRequest->getText( 'language', 'en' ),
         'comment' => $wgRequest->getText( 'comment', '' ),
-        'comment-option' => $wgRequest->getText( 'comment-option', '1' ),
-        'email' => $wgRequest->getText( 'opt', '1' ),
+        'comment-option' => $wgRequest->getText( 'comment-option', '0' ),
+        'email' => $wgRequest->getText( 'opt', '0' ),
   );
 	 
   // ask payment processor extensions for their URL/page title
@@ -364,4 +362,5 @@ function fnProcessDonateForm( $output, $article, $title, $user, $request, $wiki 
     
   return true;
 }
+
 
