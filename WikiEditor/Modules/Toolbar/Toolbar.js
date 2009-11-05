@@ -13,8 +13,8 @@ js2AddOnloadHook( function() {
 	if ( $j.wikiEditor != undefined && $j.wikiEditor.isSupported() || !$j.wikiEditor.isSupportKnown() ) {
 		// Remove the old toolbar
 		$j( '#toolbar' ).remove();
-		// Build a wikiEditor around the textarea
-		$j( 'textarea#wpTextbox1' ).wikiEditor( {
+// Add toolbar module
+$j( '#wpTextbox1' ).wikiEditor( 'addModule', {
 
 'toolbar': {
 	// Main section
@@ -849,9 +849,11 @@ js2AddOnloadHook( function() {
 				// All of these are potentially valid titles, and the latter three
 				// categories match about 6300 titles in enwiki's ns0. Out of 6.9M
 				// titles, that's 0.09%
-				if ( typeof arguments.callee.regex == 'undefined' )
+				if ( typeof arguments.callee.regex == 'undefined' ) {
 					// Cache the regex
-					arguments.callee.regex = new RegExp( "(^(" + urlprotocols + "))|(^www\\.)|([^.]\\.[a-z]{2,}($|\\/))", 'i');
+					arguments.callee.regex =
+						new RegExp( "(^(" + urlprotocols + "))|(^www\\.)|([^.]\\.[a-z]{2,}($|\\/))", 'i');
+				}
 				return s.match( arguments.callee.regex );
 			}
 			// Updates the UI to show if the page title being inputed by the user exists or not
@@ -1557,6 +1559,7 @@ js2AddOnloadHook( function() {
 			}
 		}
 	}
-}
+} } );
 
-} ); } } );
+} } );
+
