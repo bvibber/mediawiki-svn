@@ -132,6 +132,8 @@ $messages['bg'] = array(
  * @author Fohanno
  */
 $messages['br'] = array(
+	'onlinestatus-subtitle-offline' => 'Ezlinenn eo an implijer-mañ evit bremañ',
+	'onlinestatus-subtitle-online' => 'Enlinenn eo an implijer-mañ evit bremañ',
 	'onlinestatus-tab' => 'Statud',
 	'onlinestatus-toggles-desc' => 'Ho statud :',
 	'onlinestatus-toggle-offline' => 'Ezlinenn',

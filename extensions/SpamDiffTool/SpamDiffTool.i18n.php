@@ -196,6 +196,8 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'spamdifftool_no_urls_detected' => "N'eus bet dinoet url ebet.
+Klikit <a href='$1'>amañ</a> evit distreiñ.",
 	'spamdifftool_option_none' => 'netra',
 	'spamdifftool_block' => 'Stankañ :',
 	'spamdifftool_submit_buttom' => 'Kas',

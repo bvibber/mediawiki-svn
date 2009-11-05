@@ -2223,6 +2223,7 @@ $messages['br'] = array(
 	'configure-setting-wgActionPaths-value' => 'Patrom URL',
 	'configure-setting-wgDBpassword' => 'Ger-tremen evit $wgDBuser',
 	'configure-setting-wgSharedTables' => 'Anv an taolennoù da rannañ',
+	'configure-setting-wgAllowImageMoving' => 'Gweredekaat an adenvel restroù',
 	'configure-setting-wgMediaHandlers-key' => 'Seurt MIME',
 	'configure-setting-wgFileCacheDirectory' => "Kavlec'h krubuilh ar restroù",
 	'configure-setting-wgUseFileCache' => 'Ober gant krubuilh ar restr',
@@ -2238,8 +2239,19 @@ $messages['br'] = array(
 	'configure-setting-wgCheckFileExtensions' => 'Gwiriañ astennoù ar restr',
 	'configure-setting-wgLogNames' => 'Anvioù ar marilhoù',
 	'configure-setting-wgSpecialPageGroups-key' => 'Strollad',
+	'configure-setting-wgEnableAPI' => 'Gweredekaat an API',
+	'configure-setting-wgSMTP' => 'Servijer SMTP',
+	'configure-setting-wgDebugLogGroups-value' => 'Restr',
+	'configure-setting-wgCookieSecure' => 'Toupinoù suraet',
+	'configure-setting-wgSessionName' => "Anv an dalc'h",
+	'configure-setting-wgAvailableRights' => 'Roll ar gwirioù da gaout',
+	'configure-setting-wgAddGroups' => "Strolladoù a c'haller ouzhpennañ",
+	'configure-setting-wgValidSkinNames-key' => 'Anv diabarzh',
+	'configure-setting-wgValidSkinNames-value' => 'Anv diskwelet',
 	'configure-setting-wgAllowRealName' => 'Aotren an anvioù gwir',
 	'configure-setting-wgSecretKey' => "Alc'hwez kuzh",
+	'configure-setting-wgUseImageMagick' => 'Implijout ImageMagick',
+	'configure-setting-wgUseAjax' => 'Gweredekaat AJAX',
 );
 
 /** Bosnian (Bosanski)

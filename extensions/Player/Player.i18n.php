@@ -182,7 +182,10 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'player' => 'Lenner',
+	'player-playertitle' => 'Lenner : $1',
 	'player-file' => 'Anv ar restr',
+	'player-not-allowed' => 'furmad diaotreet',
 	'player-not-found' => "n'eo ket bet kavet ar restr",
 	'player-goto-page' => 'Pajenn',
 	'player-goto-file' => 'restr',

@@ -587,6 +587,11 @@ $messages['br'] = array(
 	'sign-phone' => 'Niverenn bellgomz :',
 	'sign-bday' => 'Oad :',
 	'sign-email' => "Chomlec'h postel :",
+	'sign-list-hideaddress' => "Chom hep menegiñ ar chomlec'h",
+	'sign-list-hidephone' => 'chom hep menegiñ an niverenn bellgomz',
+	'sign-list-hidebday' => 'Chom hep menegiñ an oad',
+	'sign-list-hideemail' => "Chom hep menegiñ ar chomlec'h postel",
+	'sign-view-selectfields' => '<b>Maeziennoù da ziskwel :</b>',
 	'sign-viewfield-realname' => 'Anv',
 	'sign-viewfield-address' => "Chomlec'h",
 	'sign-viewfield-city' => 'Kêr',
@@ -599,7 +604,11 @@ $messages['br'] = array(
 	'sign-viewfield-age' => 'Oad',
 	'sign-viewfield-options' => 'Dibarzhioù',
 	'sign-signatures' => 'Sinadurioù',
+	'sign-viewsignatures' => 'gwelet ar sinadurioù',
 	'sign-closed' => 'serr',
+	'sig-anonymous' => '<i>Dizanv</i>',
+	'sig-private' => '<i>Prevez</i>',
+	'sign-viewfield-reviewcomment' => 'Addispleg',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] en deus kadarnaet [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 

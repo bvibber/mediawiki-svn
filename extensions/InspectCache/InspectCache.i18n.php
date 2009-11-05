@@ -646,6 +646,22 @@ $messages['mhr'] = array(
 	'inspectcache-delete' => 'Шӧраш',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'inspectcache' => 'Прегледај кеш',
+	'inspectcache-desc' => 'Едноставна алатка за отстранување на грешки која дава увид (преглед) на содржината на заедничкиот кеш',
+	'inspectcache-ok' => 'ОК',
+	'inspectcache-general' => 'Општ кеш',
+	'inspectcache-parser' => 'Парсерски кеш',
+	'inspectcache-message' => 'Кеш од пораки',
+	'inspectcache-get' => 'Дај',
+	'inspectcache-delete' => 'Избриши',
+	'inspectcache-deleted' => 'Избришан кеш',
+	'inspectcache-list' => 'Листа',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

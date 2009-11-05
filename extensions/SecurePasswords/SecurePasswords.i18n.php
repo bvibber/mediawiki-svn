@@ -88,9 +88,12 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
+	'securepasswords-valid' => 'Direizh pe re verr eo ho ker-tremen.
+Ret eo dezhañ :',
 	'securepasswords-username' => "bezañ disheñvel eus hoc'h anv implijer",
 );
 

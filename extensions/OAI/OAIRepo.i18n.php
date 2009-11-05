@@ -478,10 +478,12 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'oai-desc' => 'Cung cấp giao diện lưu trữ [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oairepository' => 'Kho OAI',
 );
 
 /** Yue (粵語)

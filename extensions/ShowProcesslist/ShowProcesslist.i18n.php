@@ -112,10 +112,12 @@ $messages['bg'] = array(
  * @author Fohanno
  */
 $messages['br'] = array(
+	'showprocesslist' => 'Diskouez roll an argerzhoù',
 	'showprocesslist-user' => 'Implijer',
 	'showprocesslist-host' => 'Ostiz',
 	'showprocesslist-db' => 'Diaz roadennoù',
 	'showprocesslist-time' => 'Pad',
+	'showprocesslist-state' => 'Stad',
 );
 
 /** Bosnian (Bosanski)

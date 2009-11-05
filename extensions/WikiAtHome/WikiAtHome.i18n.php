@@ -222,6 +222,7 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
@@ -243,6 +244,9 @@ $messages['br'] = array(
 	'wah-menu-stats' => 'Stadegoù',
 	'wah-menu-pref' => 'Penndibaboù',
 	'wah-lookingforjob' => 'O klask un tamm labour ...',
+	'wah-notoken-login' => "Ha kevreet oc'h ? Ma n'oc'h ket, kevreit da gentañ, mar plij.",
+	'wah-uploading' => 'Echu eo kargañ ar restr <i>$1</i>',
+	'wah-uploadfail' => "C'hwitet eo ar gargadenn",
 );
 
 /** Bosnian (Bosanski)

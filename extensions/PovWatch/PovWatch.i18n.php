@@ -254,7 +254,12 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'povwatch' => 'PovWatch',
+	'povwatch_already_subscribed' => "Koumanantet oc'h da bPovWatch dija",
+	'povwatch_unknown_subpage' => 'Ispajenn dianav.',
 	'povwatch_title' => 'Titl :',
+	'povwatch_comment' => 'Addispleg evit an deizlevr :',
+	'povwatch_unsubscribe' => 'Digoumanantiñ',
+	'povwatch_subscribe' => 'Koumanantiñ',
 	'povwatch_added' => 'ouzhpennet',
 );
 

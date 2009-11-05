@@ -166,6 +166,16 @@ $messages['bn'] = array(
 	'talkhere-notalk' => "''(এখনও কোনো মন্তব্য নাই)''",
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'talkhere-talkpage' => 'pajenn kaozeal',
+	'talkhere-notalk' => '"(addispleg ebet evit poent)"',
+	'talkhere-loading' => 'o kargañ an aozer...',
+	'talkhere-collapse' => 'kuzhat an aozer',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

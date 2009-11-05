@@ -117,6 +117,9 @@ $messages['bg'] = array(
  * @author Fohanno
  */
 $messages['br'] = array(
+	'security-inforestrict' => '$1 zo strishaet da $2',
+	'security-manygroups' => 'strolladoù $1 ha $2',
+	'security-unchain' => 'Kemmañ an oberoù unan-hag-unan',
 	'security-type-category' => 'rummad',
 );
 

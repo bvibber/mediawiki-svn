@@ -543,7 +543,7 @@ $messages['ml'] = array(
 	'communityvoice-desc' => 'സമൂഹ പങ്കാളിത്ത ഉപകരണങ്ങൾ',
 	'communityvoice-ratings-scale-status-sending' => 'അയയ്ക്കുന്നു...',
 	'communityvoice-ratings-scale-status-error' => 'അയക്കുന്നതിൽ പിഴവ്!',
-	'communityvoice-ratings-scale-status-thanks' => 'വോട്ട് ചെയ്തിതിനു നന്ദി!',
+	'communityvoice-ratings-scale-status-thanks' => 'വോട്ട് ചെയ്തതിനു നന്ദി!',
 );
 
 /** Dutch (Nederlands)

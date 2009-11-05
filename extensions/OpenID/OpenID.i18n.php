@@ -545,7 +545,10 @@ OpenID позволява влизането в много различни са
  * @author Y-M D
  */
 $messages['br'] = array(
+	'openidlogin' => 'Kevreañ gant OpenID',
+	'openidserver' => 'Servijer OpenID',
 	'openidxrds' => 'Restr Yadis',
+	'openidfailure' => "C'hwitet eo ar gwiriadur",
 	'openidoptional' => 'Diret',
 	'openidrequired' => 'Rekis',
 	'openidnickname' => 'Lesanv',
@@ -555,10 +558,17 @@ $messages['br'] = array(
 	'openidtimezone' => 'Takad eur :',
 	'openidchoosefull' => "Hoc'h anv klok ($1)",
 	'openidchoosemanual' => "Un anv dibabet ganeoc'h :",
+	'openidchooseexisting' => 'Ur gont zo anezhi dija war ar wiki-mañ :',
 	'openidchoosepassword' => 'ger-tremen :',
+	'openidnousername' => "N'eus bet diferet anv implijer ebet.",
+	'openidloginlabel' => 'URL OpenID',
+	'openidupdateuserinfo' => 'Hizivaat ma zitouroù personel',
 	'openiddelete' => 'Dilemel an OpenID',
+	'openiddelete-button' => 'Kadarnaat',
+	'openid-urls-action' => 'Ober',
 	'openid-urls-delete' => 'Dilemel',
 	'openid-add-url' => 'Ouzhpennañ un OpenID nevez',
+	'openid-provider-label-openid' => "Ebarzhit hoc'h URL OpenID",
 	'openid-provider-label-other-username' => "Ebarzhit hoc'h anv implijer $1",
 );
 

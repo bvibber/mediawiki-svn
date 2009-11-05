@@ -74,6 +74,14 @@ $messages['hu'] = array(
 	'templateinfo-header' => 'A sablon XML-definíciója:',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'templateinfo-desc' => 'Supporta patronos que defini lor structura de datos per medio del notation XML',
+	'templateinfo-header' => 'Le definition XML pro iste patrono es:',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */
@@ -113,5 +121,13 @@ $messages['nl'] = array(
 $messages['pms'] = array(
 	'templateinfo-desc' => "A manten jë stamp ch'a definisso soa strutura dij dat via markup XML",
 	'templateinfo-header' => "La definission XML për sto stamp-sì a l'é:",
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'templateinfo-desc' => 'Поддерживает шаблоны с определением их структуры данных постредством XML-разметки',
+	'templateinfo-header' => 'XML-определение этого шаблона:',
 );
 

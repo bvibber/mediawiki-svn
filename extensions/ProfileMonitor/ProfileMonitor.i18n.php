@@ -135,7 +135,9 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'profiling-process' => 'Neudennad an argerzh :',
 	'profiling-ok' => 'Mat eo',
+	'profiling-data-process' => 'Argerzh',
 	'profiling-data-count' => 'Kontañ',
 	'profiling-data-time' => 'Padelezh (hollek)',
 	'profiling-data-average' => 'Padelezh (keidenn)',

@@ -420,20 +420,30 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'tasks_form_comment' => 'Addispleg',
 	'tasks_noone' => 'hini ebet',
+	'tasks_assign_to' => 'Deverkañ da',
 	'tasks_delete' => 'Dilemel',
 	'tasks_no_task_delete_title' => 'Nann aotreet',
+	'tasks_assignedto' => 'Deverket da $1',
+	'tasks_created_by' => 'Krouet gant $1',
 	'tasks_closedby' => 'Serret gant $1',
 	'tasks_here' => 'amañ',
+	'tasks_task_is_assigned' => '(deverket)',
+	'tasks_plain_text_only' => '(testenn blaen, 256 arouezenn hepken)',
 	'tasks_more_like_it' => "muioc'h",
 	'tasks_event_on_creation' => 'gwiriañ',
+	'tasks_event_on_creation_anon' => 'gwiriañ',
 	'tasks_table_header_page' => 'Pajenn',
+	'tasks_search_form_title' => 'Klask',
 	'tasks_search_status' => 'Statud',
 	'tasks_previous' => 'a-raok',
 	'tasks_next' => 'da heul',
+	'tasks_sort' => 'Urzhiañ',
 	'tasks_ascending' => 'Ar re goshañ da gentañ',
 	'tasks_status_open' => 'Digor',
 	'tasks_status_closed' => 'Serret',
+	'tasks_logentry' => 'Evit « [[$1]] »',
 );
 
 /** Bosnian (Bosanski)

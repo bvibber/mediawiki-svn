@@ -182,6 +182,7 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
@@ -190,6 +191,8 @@ $messages['br'] = array(
 	'slippymap_errors' => '$1 fazi :',
 	'slippymap_code' => 'Kod wiki evit gwelet ar gartenn-mañ :',
 	'slippymap_button_code' => "Tapout ar c'hod wiki",
+	'slippymap_resetview' => 'Adderaouekaat ar gwel',
+	'slippymap_clicktoactivate' => 'Klikañ evit gweredekaat ar gartenn',
 );
 
 /** Bosnian (Bosanski)

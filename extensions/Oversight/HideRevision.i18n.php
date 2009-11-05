@@ -975,8 +975,8 @@ Revierte antes el cambio.',
 	'oversight-nodiff' => 'Fue imposible seguir las modificaciones ya que no existe actualmente una revisión anterior de esta página. Puede que:
 *La página fuera borrada
 *Esta revisión oculta fuera la primera.',
-	'oversight-log-hiderev' => 'eliminada una edición de $1',
-	'oversight' => 'Supervisión',
+	'oversight-log-hiderev' => 'eliminó una edición de $1',
+	'oversight' => 'Registro de Oversight',
 	'oversight-view' => 'detalles',
 	'oversight-difference' => '(Diferencia de revisión anterior restante)',
 	'oversight-prev' => 'Última revisión anterior',

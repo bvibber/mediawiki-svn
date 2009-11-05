@@ -210,7 +210,12 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'form' => 'Furmskrid',
+	'formbadname' => 'Anv furmskrid fall',
+	'formpattern' => 'furmskrid-$1',
+	'formtitlepattern' => 'Ouzhpennañ un $1 nevez',
 	'formsave' => 'Enrollañ',
+	'formarticleexists' => 'Ar bajenn zo anezhi dija',
+	'formarticleexiststext' => 'Ar bajenn [[$1]] zo anezhi dija.',
 	'formsaveerror' => 'Fazi en ur enrollañ ar furmskrid',
 );
 

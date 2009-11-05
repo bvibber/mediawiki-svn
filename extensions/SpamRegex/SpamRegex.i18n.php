@@ -239,10 +239,16 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Y-M D
  */
 $messages['br'] = array(
+	'spamregex-block-success' => 'Graet eo ar stankadur',
+	'spamregex-block-message' => "Stanket eo bet ar frazenn '''$1'''",
+	'spamregex-warning-1' => 'Reiñ ur frazenn da stankañ.',
+	'spamregex-phrase-block' => 'Frazenn da stankañ :',
 	'spamregex-text' => '(Testenn)',
+	'spamregex-summary-log' => '(Diverradur)',
 );
 
 /** Bosnian (Bosanski)

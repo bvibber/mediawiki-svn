@@ -218,9 +218,13 @@ $messages['br'] = array(
 	'closewikis-page-close-success' => 'Serret eo ar wiki',
 	'closewikis-page-reopen-wiki' => 'Wiki :',
 	'closewikis-page-reopen-reason' => 'Abeg :',
+	'closewikis-page-reopen-submit' => 'Addigeriñ',
+	'closewikis-page-err-closed' => 'Serret eo ar wiki dija',
+	'closewikis-list' => 'Roll ar wikioù serret',
 	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-list-header-by' => 'Serret gant',
 	'closewikis-log-close' => 'en deus serret $2',
+	'right-editclosedwikis' => 'Aozañ ar wikioù serret',
 	'right-closewikis' => 'Serriñ ar wikioù',
 );
 

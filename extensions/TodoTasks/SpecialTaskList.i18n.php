@@ -183,10 +183,12 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'tasklistunspecuser' => "N'eo ket diferet an implijer",
 	'tasklistincorrectuser' => 'Anv implijer direizh',
 	'tasklistemail' => '%s ker',
 	'tasklistchooseproj' => 'Diuzañ ur raktres :',
 	'tasklistprojdisp' => 'Diskwel',
+	'tasklistbyname' => '== Roll an traoù da ober gant $s ==',
 );
 
 /** Bosnian (Bosanski)

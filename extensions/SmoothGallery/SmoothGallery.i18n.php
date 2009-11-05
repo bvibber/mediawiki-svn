@@ -132,6 +132,16 @@ $messages['bg'] = array(
 	'smoothgallery-javascript-disabled' => 'За правилно показване на галерията е необходим Javascript.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
+	'smoothgallery-not-found' => "N'eus bet ouzhpennet skeudenn ebet d'ar palier.
+Ouzhpennit ur skeudenn da nebeutañ, mar plij.",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

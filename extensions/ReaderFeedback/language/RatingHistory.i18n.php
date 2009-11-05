@@ -209,11 +209,14 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Y-M D
  */
 $messages['br'] = array(
 	'ratinghistory-month' => 'miz diwezhañ',
+	'ratinghistory-3months' => '3 miz diwezhañ',
 	'ratinghistory-year' => 'bloavezh diwezhañ',
+	'ratinghistory-3years' => 'tri bloaz diwezhañ',
 	'ratinghistory-ave' => 'Keidenn : $1',
 );
 

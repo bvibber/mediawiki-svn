@@ -188,6 +188,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'refreshspecial-title' => 'Freskaat ar pajennoù arbennik',
 	'refreshspecial-select-all-pages' => 'Diuzañ an holl bajennoù',
 	'refreshspecial-reconnected' => 'Adluget.',
 );

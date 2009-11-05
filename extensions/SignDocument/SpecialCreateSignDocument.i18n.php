@@ -245,7 +245,9 @@ $messages['br'] = array(
 	'createsigndoc-minage' => 'Oad yaouankañ :',
 	'createsigndoc-introtext' => 'Digoradur :',
 	'createsigndoc-hidden' => 'Kuzhet',
+	'createsigndoc-optional' => 'Diret',
 	'createsigndoc-create' => 'Krouiñ',
+	'createsigndoc-error-generic' => 'Fazi : $1',
 	'createsigndoc-error-pagenoexist' => "Fazi : Ar bajenn [[$1]] n'eus ket anezhi.",
 );
 

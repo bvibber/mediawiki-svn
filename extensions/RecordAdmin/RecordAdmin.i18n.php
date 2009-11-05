@@ -289,18 +289,24 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'recordadmin-select' => 'Diuzañ',
+	'recordadmin-newsearch' => 'Enklask nevez $1',
 	'recordadmin-submit' => 'Kas',
 	'recordadmin-createsuccess' => '$1 zo bet krouet',
 	'recordadmin-badtitle' => 'Titl fall !',
+	'recordadmin-invert' => 'Eilpennañ an diuzadenn',
 	'recordadmin-buttonsearch' => 'Klask',
 	'recordadmin-buttoncreate' => 'Krouiñ',
+	'recordadmin-typeupdated' => 'hizivaet eo perzhioù $1',
+	'recordadmin-updatesuccess' => 'Hizivaet eo $1',
 	'recordadmin-buttonsave' => 'Enrollañ',
 	'recordadmin-createlink' => 'krouiñ unan',
+	'recordadmin-summary-typecreated' => 'Krouet ez eus bet un $1 nevez',
 	'recordadmin-viewlink' => 'gwelet',
 	'recordadmin-editlink' => 'aozañ',
 	'recordadmin-created' => 'Krouet',
 	'recordadmin-modified' => 'Kemmet',
 	'recordadmin-actions' => 'Oberoù',
+	'recordadmin-editwithform' => 'Aozañ gant ur furmskrid',
 );
 
 /** Bosnian (Bosanski)

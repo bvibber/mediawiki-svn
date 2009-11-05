@@ -121,7 +121,11 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'postcomment_notloggedin' => "N'oc'h ket kevreet.",
+	'postcomment_youareloggedinas' => "Kevreet oc'h evel $1",
+	'postcomment_leavemessagefor' => 'Lezel ur gemennadenn da $1',
 	'postcomment_said' => 'en deus lavaret',
+	'postcomment_invalidrequest' => 'Reked direizh.',
 	'postcomment_replyto' => 'Respont da $1',
 );
 

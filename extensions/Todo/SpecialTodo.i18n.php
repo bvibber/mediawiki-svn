@@ -259,14 +259,18 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'todo' => 'Roll traoù da ober',
 	'todo-tab' => "d'ober",
 	'todo-new-queue' => 'nevez',
 	'todo-invalid-item' => 'Elfenn diank pe direizh',
+	'todo-unrecognize-type' => "Seurt n'eo ket bet anavezet",
+	'todo-list-for' => "Roll traoù d'ober gant $1",
 	'todo-list-change' => 'Kemmañ',
 	'todo-list-cancel' => 'Nullañ',
 	'todo-new-item' => 'Elfenn nevez',
 	'todo-issue-summary' => 'Diverrañ eus ar gudenn :',
 	'todo-form-details' => 'Munudoù :',
+	'todo-form-submit' => 'Kas ar reked',
 );
 
 /** Bosnian (Bosanski)

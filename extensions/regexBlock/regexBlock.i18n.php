@@ -390,10 +390,15 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'regexblock-already-blocked' => '$1 zo stanket dija.',
+	'regexblock-form-username' => "Chomlec'h IP pe anv implijer :",
 	'regexblock-form-reason' => 'Abeg :',
+	'regexblock-form-expiry' => 'Termen :',
+	'regexblock-form-match' => 'Klotadur rik',
 	'regexblock-form-submit' => 'Stankañ an implijer-mañ',
 	'regexblock-view-all' => 'Pep tra',
 	'regexblock-view-reason' => 'abeg : $1',
+	'regexblock-view-block-infinite' => 'stankadur pad',
 	'regexblock-view-block-by' => 'stanket gant :',
 	'regexblock-view-block-unblock' => 'distankañ',
 	'regexblock-view-stats' => 'stadegoù',
