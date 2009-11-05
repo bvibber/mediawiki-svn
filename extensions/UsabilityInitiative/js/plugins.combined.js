@@ -1346,6 +1346,7 @@ $.wikiEditor.autoMsg = function( object, property ) {
 };
 
 $.wikiEditor.fixOperaBrokenness = function( s ) {
+	/*
 	// This function works around Opera's
 	// broken newline handling in textareas.
 	// .val() has \n while selection functions
@@ -1358,11 +1359,10 @@ $.wikiEditor.fixOperaBrokenness = function( s ) {
 			.height( 0 )
 			.width( 0 )
 			.insertBefore( $.wikiEditor.instances[0] );
-		var textarea = $( '<textarea />' )
+		var textarea = $( '<textarea></textarea>' )
 			.height( 0 )
 			.appendTo( div )
 			.val( "foo\r\nbar" );
-		
 		// Try to search&replace bar --> BAR
 		var index = textarea.val().indexOf( 'bar' );
 		textarea.select();
@@ -1376,6 +1376,7 @@ $.wikiEditor.fixOperaBrokenness = function( s ) {
 	}
 	if ( $.isOperaBroken )
 		s = s.replace( /\n/g, "\r\n" );
+	*/
 	return s;
 };
 
@@ -2711,9 +2712,6 @@ fn: {
 			return context.modules.code.editor.active;
 		}
 	}
-	getCaretPosition: function( context ) {
-		
-	}
 }
 
 }; } ) ( jQuery );
@@ -2753,7 +2751,7 @@ fn: {
 			var tabList = context.$ui.children();
 			var editTab = tabList.children();
 			
-			var loadingMsg = gM( 'sidebysidepreview-loading' );
+			var loadingMsg = gM( 'wikieditor-preview-loading' );
 			var previewTab = $j( '<div />' )
 				.addClass( 'wikiEditor-tab-preview' )
 				.attr( 'id', 'wikiEditor-' + context.instance + '-tab-preview' )
@@ -2776,13 +2774,13 @@ fn: {
 					.append( $j( '<li />' )
 						.append( $j( '<a />' )
 							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-edit' )
-							.text( gM( 'sidebysidepreview-tab-edit' ) )
+							.text( gM( 'wikieditor-preview-tab-edit' ) )
 						)
 					)
 					.append( $j( '<li />' )
 						.append( $j( '<a />' )
 							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-preview' )
-							.text( gM( 'sidebysidepreview-tab-preview' ) )
+							.text( gM( 'wikieditor-preview-tab-preview' ) )
 						)
 					)
 				)
