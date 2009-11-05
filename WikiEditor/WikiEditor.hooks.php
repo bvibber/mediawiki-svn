@@ -286,13 +286,13 @@ class WikiEditorHooks {
 	 */
 	 public static function addModules( &$toolbar ) {
 		global $wgOut, $wgUser, $wgJsMimeType;
-		global $wgWikiEditorStyleVersion, $wgWikiEditorEnable, $wgUsabilityInitiativeResourceMode;
+		global $wgWikiEditorModules, $wgUsabilityInitiativeResourceMode;
 		
 		// Modules
 		$scripts = array();
 		$enabled = false;
 		$preferences = array();
-		foreach ( $wgWikiEditorEnable as $module => $enable ) {
+		foreach ( $wgWikiEditorModules as $module => $enable ) {
 			if (
 				$enable['global'] || (
 					$enable['user']
@@ -361,9 +361,9 @@ class WikiEditorHooks {
 	 * Add module-releated items to the preferences
 	 */
 	public static function addPreferences( $user, &$defaultPreferences ) {
-		global $wgWikiEditorEnable;
+		global $wgWikiEditorModules;
 		
-		foreach ( $wgWikiEditorEnable as $module => $enable ) {
+		foreach ( $wgWikiEditorModules as $module => $enable ) {
 			if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['preferences'] ) ) {
 				wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
 				foreach ( self::$modules[$module]['preferences'] as $preference ) {
