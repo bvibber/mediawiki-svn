@@ -15,7 +15,7 @@ js2AddOnloadHook( function() {
 	$j( 'div#simpleSearch > input#searchInput' )
 		.each( function() {
 			$j( '<label></label>' )
-				.text( gM( 'simplesearch-search' ) )
+				.text( gM( 'vector-simplesearch-search' ) )
 				.css({
 					'display': 'none',
 					'position' : 'absolute',
@@ -94,7 +94,7 @@ js2AddOnloadHook( function() {
 						$j(this).show();
 						$label = $j( '<div />' )
 							.addClass( 'special-label' )
-							.text( gM( 'simplesearch-containing' ) )
+							.text( gM( 'vector-simplesearch-containing' ) )
 							.appendTo( $j(this) );
 						$query = $j( '<div />' )
 							.addClass( 'special-query' )
