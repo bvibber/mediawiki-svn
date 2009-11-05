@@ -112,9 +112,6 @@ fn: {
 			return context.modules.code.editor.active;
 		}
 	}
-	getCaretPosition: function( context ) {
-		
-	}
 }
 
 }; } ) ( jQuery );
