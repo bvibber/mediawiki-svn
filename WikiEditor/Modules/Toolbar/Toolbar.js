@@ -2,8 +2,13 @@
 
 js2AddOnloadHook( function() {
 	// Only show content generation dialogs if enabled
-	if ( typeof wgEditToolbarCGD != 'undefined' && wgEditToolbarCGD )
-		$j( '#wpTextbox1' ).addClass( 'withCGD' );
+	if (
+		typeof wgWikiEditorPreferences !== 'undefined'
+		&& typeof wgWikiEditorPreferences.toolbar.dialogs !== 'undefined'
+		&& wgWikiEditorPreferences.toolbar.dialogs
+	) {
+		$j( '#wpTextbox1' ).addClass( 'toolbar-dialogs' );
+	}
 	
 	if ( $j.wikiEditor != undefined && $j.wikiEditor.isSupported() || !$j.wikiEditor.isSupportKnown() ) {
 		// Remove the old toolbar
@@ -55,7 +60,7 @@ js2AddOnloadHook( function() {
 						labelMsg: 'wikieditor-toolbar-tool-xlink',
 						type: 'button',
 						icon: 'insert-xlink.png',
-						filters: [ '#wpTextbox1:not(.withCGD)' ],
+						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -69,7 +74,7 @@ js2AddOnloadHook( function() {
 						labelMsg: 'wikieditor-toolbar-tool-ilink',
 						type: 'button',
 						icon: 'insert-ilink.png',
-						filters: [ '#wpTextbox1:not(.withCGD)' ],
+						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -83,7 +88,7 @@ js2AddOnloadHook( function() {
 						labelMsg: 'wikieditor-toolbar-tool-link',
 						type: 'button',
 						icon: 'insert-link.png',
-						filters: [ '#wpTextbox1.withCGD' ],
+						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
 							module: 'insert-link'
@@ -329,7 +334,7 @@ js2AddOnloadHook( function() {
 						labelMsg: 'wikieditor-toolbar-tool-table',
 						type: 'button',
 						icon: 'insert-table.png',
-						filters: [ '#wpTextbox1.withCGD' ],
+						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
 							module: 'insert-table'
@@ -339,7 +344,7 @@ js2AddOnloadHook( function() {
 						labelMsg: 'wikieditor-toolbar-tool-table',
 						type: 'button',
 						icon: 'insert-table.png',
-						filters: [ '#wpTextbox1:not(.withCGD)' ],
+						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -369,7 +374,7 @@ js2AddOnloadHook( function() {
 						labelMsg: 'wikieditor-toolbar-tool-replace',
 						type: 'button',
 						icon: 'search-replace.png',
-						filters: [ '#wpTextbox1.withCGD' ],
+						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
 							module: 'search-and-replace'

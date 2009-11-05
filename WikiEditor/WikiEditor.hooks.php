@@ -8,6 +8,9 @@
 
 class WikiEditorHooks {
 
+	static $scripts = array(
+		'raw' => array( 'src' => 'WikiEditor.js', 'version' => 1 ),
+	);
 	static $modules = array(
 		'highlight' => array(
 			'i18n' => 'WikiEditorHighlight',
@@ -22,7 +25,7 @@ class WikiEditorHooks {
 				),
 			),
 			'scripts' => array(
-				'raw' => array( 'src' => 'Modules/Preview/Preview.js', 'version' => 1 ),
+				'raw' => array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 1 ),
 			),
 		),
 		'preview' => array(
@@ -61,8 +64,8 @@ class WikiEditorHooks {
 			),
 			'variables' => array(
 				// These are probably only for testing purposes?
-  				'wgNavigableTOCCollapseEnable' => $wgNavigableTOCCollapseEnable,
-				'wgNavigableTOCResizable' => $wgNavigableTOCResizable
+  				'wgNavigableTOCCollapseEnable',
+				'wgNavigableTOCResizable'
 			),
 			'scripts' => array(
 				'raw' => array( 'src' => 'Modules/Toc/Toc.js', 'version' => 1 ),
@@ -282,10 +285,13 @@ class WikiEditorHooks {
 	 * Adds the modules to the edit form
 	 */
 	 public static function addModules( &$toolbar ) {
-		global $wgUser, $wgWikiEditorStyleVersion, $wgWikiEditorEnable, $wgUsabilityInitiativeResourceMode;
+		global $wgOut, $wgUser, $wgJsMimeType, $wgWikiEditorStyleVersion, $wgWikiEditorEnable, $wgUsabilityInitiativeResourceMode;
 		
+		// Modules
+		$scripts = array();
+		$enabled = false;
 		$preferences = array();
-		for ( $wgWikiEditorEnable as $module => $enable ) {
+		foreach ( $wgWikiEditorEnable as $module => $enable ) {
 			if (
 				$enable['global'] || (
 					$enable['user']
@@ -293,16 +299,14 @@ class WikiEditorHooks {
 					&& $wgUser->getOption( self::$modules[$module]['preferences']['enable']['key'] )
 				)
 			) {
+				$enabled = true;
 				UsabilityInitiativeHooks::initialize();
 				// Scripts
 				$mode = $wgUsabilityInitiativeResourceMode;
 				if ( !isset( self::$modules[$module]['scripts'][$mode] ) ) {
 					$mode = 'raw';
 				}
-				UsabilityInitiativeHooks::addScript(
-					self::$modules[$module]['scripts'][$mode]['src'],
-					self::$modules[$module]['scripts'][$mode]['version']
-				);
+				$scripts[] = self::$modules[$module]['scripts'][$mode];
 				// Messages
 				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {		
 					wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
@@ -310,37 +314,42 @@ class WikiEditorHooks {
 				}
 				// Variables
 				if ( isset( self::$modules[$module]['variables'] ) ) {
-					UsabilityInitiativeHooks::addVariables( self::$modules[$module]['variables'] );
+					$variables = array();
+					foreach ( self::$modules[$module]['variables'] as $variable ) {
+						global $$variable;
+						$variables[$variable] = $$variable;
+					}
+					UsabilityInitiativeHooks::addVariables( $variables );
 				}
 				// Preferences
-				$preferences[$module] = array();
 				if ( isset( self::$modules[$module]['preferences'] ) ) {
 					foreach ( self::$modules[$module]['preferences'] as $name => $preference ) {
-						if ( $name !== 'enable' ) {
-							$preferences[$module][$name] = $wgUser->getOption( $preference['key'] );
+						if ( !isset( $preferences[$module] ) ) {			
+							$preferences[$module] = array();
 						}
+						$preferences[$module][$name] = $wgUser->getOption( $preference['key'] );
 					}
 				}
 			}
 		}
-		/* Do something with these other preferences that makes them accessible to the wikiEditor code??
-		$preferencesList = array();
-		foreach ( $preferences as $module => $values ) {
-			$modulePreferences = array();
-			foreach ( $values as $key => $value ) {
-				$modulePreferences .= "'" . Xml::escapeJsString( $key ) . "':'" . Xml::escapeJsString( $key ) . "'";
-			}
-			$preferencesList[] =
-				"'" . Xml::escapeJsString( $module ) . "':{" . implode( ',', $modulePreferences ) . '}';
+		// Prepend global script
+		$mode = $wgUsabilityInitiativeResourceMode;
+		if ( !isset( self::$scripts[$mode] ) ) {
+			$mode = 'raw';
 		}
-		$out->addScript(
+		array_unshift( $scripts, self::$scripts[$mode] );
+		// Add all scripts
+		foreach ( $scripts as $script ) {
+			UsabilityInitiativeHooks::addScript( 'WikiEditor/' . $script['src'], $script['version'] );
+		}
+		// Preferences
+		$wgOut->addScript(
 			Xml::tags(
 				'script',
 				array( 'type' => $wgJsMimeType ),
-				'$.wikiEditor.config = {' . implode( ',', $preferencesList ) . '};'
+				'var wgWikiEditorPreferences = ' . FormatJson::encode( $preferences, true ) . ';'
 			)
 		);
-		*/
 		return true;
 	}
 	
