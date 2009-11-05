@@ -281,6 +281,11 @@ class WikiEditorHooks {
 	/* Static Functions */
 	
 	/**
+	 * From here down, with very little modification is a copy of what's found in Vector/Vector.hooks.php.
+	 * Perhaps we could find a clean way of eliminating this redundancy.
+	 */
+	
+	/**
 	 * EditPage::showEditForm:initial hook
 	 * Adds the modules to the edit form
 	 */
@@ -345,7 +350,7 @@ class WikiEditorHooks {
 				basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']
 			);
 		}
-		// Preferences
+		// Preferences (maybe the UsabilityInitiative class could do most of this for us?)
 		$wgOut->addScript(
 			Xml::tags(
 				'script',

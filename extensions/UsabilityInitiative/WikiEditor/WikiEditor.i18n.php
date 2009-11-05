@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation for Usability Initiative NavigableTOC extension
+ * Internationalisation for Usability Initiative WikiEditor extension
  *
  * @file
  * @ingroup Extensions
