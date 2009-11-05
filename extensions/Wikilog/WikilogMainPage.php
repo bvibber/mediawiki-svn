@@ -218,8 +218,15 @@ class WikilogMainPage
 	 */
 	private function formatPostCount( $skin, $elem, $type, $num ) {
 		global $wgWikilogFeedClasses;
-		$s = $skin->makeKnownLinkObj( $this->mTitle,
-			wfMsgExt( "wikilog-post-count-{$type}", array( 'parsemag' ), $num ),
+
+		// Uses messages 'wikilog-post-count-published', 'wikilog-post-count-drafts', 'wikilog-post-count-all'
+		$s = $skin->makeKnownLinkObj(
+			$this->mTitle,
+			wfMsgExt(
+				"wikilog-post-count-{$type}",
+				array( 'parsemag' ),
+				$num
+			),
 			"view=archives&show={$type}"
 		);
 		if ( !empty( $wgWikilogFeedClasses ) ) {
