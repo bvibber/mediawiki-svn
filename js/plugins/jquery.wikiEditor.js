@@ -101,6 +101,7 @@ $.wikiEditor.autoMsg = function( object, property ) {
 };
 
 $.wikiEditor.fixOperaBrokenness = function( s ) {
+	/*
 	// This function works around Opera's
 	// broken newline handling in textareas.
 	// .val() has \n while selection functions
@@ -113,11 +114,10 @@ $.wikiEditor.fixOperaBrokenness = function( s ) {
 			.height( 0 )
 			.width( 0 )
 			.insertBefore( $.wikiEditor.instances[0] );
-		var textarea = $( '<textarea />' )
+		var textarea = $( '<textarea></textarea>' )
 			.height( 0 )
 			.appendTo( div )
 			.val( "foo\r\nbar" );
-		
 		// Try to search&replace bar --> BAR
 		var index = textarea.val().indexOf( 'bar' );
 		textarea.select();
@@ -131,6 +131,7 @@ $.wikiEditor.fixOperaBrokenness = function( s ) {
 	}
 	if ( $.isOperaBroken )
 		s = s.replace( /\n/g, "\r\n" );
+	*/
 	return s;
 };
 
