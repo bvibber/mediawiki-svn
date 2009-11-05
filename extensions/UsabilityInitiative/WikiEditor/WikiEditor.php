@@ -19,7 +19,7 @@
 /* Configuration */
 
 // Each module may be configured individually to be globally on/off or user preference based
-$wgWikiEditorEnable = array(
+$wgWikiEditorModules = array(
 	'highlight' => array( 'global' => false, 'user' => true ),
 	'preview' => array( 'global' => false, 'user' => true ),
 	'toc' => array( 'global' => false, 'user' => true ),
