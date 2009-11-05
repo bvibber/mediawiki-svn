@@ -1,19 +1,19 @@
 <?php
 /**
- * Usability Initiative NavigableTOC extension
+ * Usability Initiative WikiEditor extension
  *
  * @file
  * @ingroup Extensions
  *
- * This file contains the include file for the NavigableTOC portion of the
- * UsabilityInitiative extension of MediaWiki.
+ * This file contains the include file for the WikiEditor portion of the UsabilityInitiative extension of MediaWiki.
  *
  * Usage: Include the following line in your LocalSettings.php
- * require_once( "$IP/extensions/UsabilityInitiative/NavigableTOC/NavigableTOC.php" );
+ * require_once( "$IP/extensions/UsabilityInitiative/WikiEditor/WikiEditor.php" );
  *
- * @author Roan Kattouw <roan.kattouw@gmail.com>
+ * @author Trevor Parscal <trevor@wikimedia.org>, Roan Kattouw <roan.kattouw@gmail.com>,
+ *         Nimish Goutam <nimish@wikimedia.org>, Adam Miller <amiller@wikimedia.org>
  * @license GPL v2 or later
- * @version 0.1.1
+ * @version 0.2.0
  */
 
 /* Configuration */
@@ -32,8 +32,8 @@ $wgWikiEditorModules = array(
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'WikiEditor',
-	'author' => 'Trevor Parscal, Roan Kattouw and Nimish Goutam',
-	'version' => '0.1.2',
+	'author' => 'Trevor Parscal, Roan Kattouw, Nimish Goutam and Adam Miller',
+	'version' => '0.2.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'wikieditor-desc',
 );
