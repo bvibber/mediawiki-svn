@@ -27,9 +27,9 @@ class SideBySidePreviewHooks {
 			// Internationalization
 			wfLoadExtensionMessages( 'SideBySidePreview' );
 			UsabilityInitiativeHooks::addMessages( array(
-				'sidebysidepreview-tab-edit',
-				'sidebysidepreview-tab-preview',
-				'sidebysidepreview-loading',
+				'wikieditor-preview-tab-edit',
+				'wikieditor-preview-tab-preview',
+				'wikieditor-preview-loading',
 			) );
 		}
 		return true;
@@ -48,7 +48,7 @@ class SideBySidePreviewHooks {
 			$defaultPreferences['sidebysidepreview'] =
 			array(
 				'type' => 'toggle',
-				'label-message' => 'sidebysidepreview-preference',
+				'label-message' => 'wikieditor-preview-preference',
 				'section' => 'editing/experimental',
 			);
 		}
