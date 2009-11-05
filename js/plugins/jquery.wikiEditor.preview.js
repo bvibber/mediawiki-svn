@@ -32,7 +32,7 @@ fn: {
 			var tabList = context.$ui.children();
 			var editTab = tabList.children();
 			
-			var loadingMsg = gM( 'sidebysidepreview-loading' );
+			var loadingMsg = gM( 'wikieditor-preview-loading' );
 			var previewTab = $j( '<div />' )
 				.addClass( 'wikiEditor-tab-preview' )
 				.attr( 'id', 'wikiEditor-' + context.instance + '-tab-preview' )
@@ -55,13 +55,13 @@ fn: {
 					.append( $j( '<li />' )
 						.append( $j( '<a />' )
 							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-edit' )
-							.text( gM( 'sidebysidepreview-tab-edit' ) )
+							.text( gM( 'wikieditor-preview-tab-edit' ) )
 						)
 					)
 					.append( $j( '<li />' )
 						.append( $j( '<a />' )
 							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-preview' )
-							.text( gM( 'sidebysidepreview-tab-preview' ) )
+							.text( gM( 'wikieditor-preview-tab-preview' ) )
 						)
 					)
 				)
