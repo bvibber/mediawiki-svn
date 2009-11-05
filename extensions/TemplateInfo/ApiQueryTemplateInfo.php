@@ -20,6 +20,39 @@ class APIQueryTemplateInfo extends ApiQueryBase {
 		parent :: __construct( $query, $moduleName, 'ti' );
 	}
 
+	private function validateXML( $xml ) {
+		$xmlDTD =<<<END
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE template [
+<!ELEMENT template (description?,params?,data*)>
+<!ELEMENT params (param|group)*>
+<!ELEMENT param (label?,description?,options?,type?,data*)>
+<!ATTLIST param id ID #REQUIRED>
+<!ELEMENT group (label?,description?,param*,data*)>
+<!ELEMENT label (#PCDATA|msg)*>
+<!ELEMENT description (#PCDATA|msg)*>
+<!ELEMENT options (option*)>
+<!ELEMENT option (#PCDATA|msg)*>
+<!ELEMENT type (field*)>
+<!ATTLIST type name CDATA #REQUIRED>
+<!ELEMENT field EMPTY>
+<!ATTLIST field name CDATA #REQUIRED>
+<!ATTLIST field value CDATA #REQUIRED>
+<!ELEMENT msg (#PCDATA)>
+<!ATTLIST msg lang CDATA #REQUIRED>
+<!ELEMENT data (field*)>
+<!ATTLIST data app CDATA #REQUIRED>
+]>
+
+END;
+		// we are using the SimpleXML library to do the XML validation
+		// for now - this may change later
+		// hide parsing warnings
+		libxml_use_internal_errors(true);
+		$xml_success = simplexml_load_string($xmlDTD . $xml);
+		return $xml_success;
+	}
+
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$titles = $this->getPageSet()->getGoodTitles();
@@ -39,7 +72,11 @@ class APIQueryTemplateInfo extends ApiQueryBase {
 		$res = $this->select(__METHOD__);
 		while ( $row = $this->getDB()->fetchObject( $res ) ) {
 			$vals = array( );
-			ApiResult::setContent( $vals, $row->pp_value );
+			if ($this->validateXML( $row->pp_value )) {
+				ApiResult::setContent( $vals, $row->pp_value );
+			} else {
+				ApiResult::setContent( $vals, "Error! Invalid XML" );
+			}
 			$fit = $this->addPageSubItems( $row->pp_page, $vals );
 			if( !$fit ) {
 				$this->setContinueEnumParameter( 'continue', $row->pp_page );
