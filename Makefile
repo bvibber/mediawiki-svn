@@ -35,7 +35,7 @@ all: \
 	css/combined.min.css\
 	js/plugins.combined.js\
 	js/plugins.combined.min.js\
-	EditToolbar/EditToolbar.min.js
+	WikiEditor/Modules/Toolbar/Toolbar.min.js
 
 css/combined.css: $(CSS)
 	cat $(CSS) > css/combined.css
@@ -48,9 +48,9 @@ js/plugins.combined.min.js : js/plugins.combined.js jsmin
 	if [ -e ./jsmin ]; then ./jsmin < js/plugins.combined.js > js/plugins.combined.min.js;\
 	else jsmin < js/plugins.combined.js > js/plugins.combined.min.js; fi
 
-EditToolbar/EditToolbar.min.js: EditToolbar/EditToolbar.js
-	if [ -e ./jsmin ]; then ./jsmin < EditToolbar/EditToolbar.js > EditToolbar/EditToolbar.min.js;\
-	else jsmin < EditToolbar/EditToolbar.js > EditToolbar/EditToolbar.min.js; fi
+WikiEditor/Modules/Toolbar/Toolbar.min.js: WikiEditor/Modules/Toolbar/Toolbar.js
+	if [ -e ./jsmin ]; then ./jsmin < WikiEditor/Modules/Toolbar/Toolbar.js > WikiEditor/Modules/Toolbar/Toolbar.min.js;\
+	else jsmin < WikiEditor/Modules/Toolbar/Toolbar.js > WikiEditor/Modules/Toolbar/Toolbar.min.js; fi
 
 css/combined.min.css : css/combined.css
 	cat css/combined.css | sed -e 's/^[ 	]*//g; s/[ 	]*$$//g; s/\([:{;,]\) /\1/g; s/ {/{/g; s/\/\*.*\*\///g; /^$$/d'\
