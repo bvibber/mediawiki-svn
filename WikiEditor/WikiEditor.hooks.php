@@ -285,7 +285,8 @@ class WikiEditorHooks {
 	 * Adds the modules to the edit form
 	 */
 	 public static function addModules( &$toolbar ) {
-		global $wgOut, $wgUser, $wgJsMimeType, $wgWikiEditorStyleVersion, $wgWikiEditorEnable, $wgUsabilityInitiativeResourceMode;
+		global $wgOut, $wgUser, $wgJsMimeType;
+		global $wgWikiEditorStyleVersion, $wgWikiEditorEnable, $wgUsabilityInitiativeResourceMode;
 		
 		// Modules
 		$scripts = array();
@@ -340,7 +341,9 @@ class WikiEditorHooks {
 		array_unshift( $scripts, self::$scripts[$mode] );
 		// Add all scripts
 		foreach ( $scripts as $script ) {
-			UsabilityInitiativeHooks::addScript( 'WikiEditor/' . $script['src'], $script['version'] );
+			UsabilityInitiativeHooks::addScript(
+				basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']
+			);
 		}
 		// Preferences
 		$wgOut->addScript(
