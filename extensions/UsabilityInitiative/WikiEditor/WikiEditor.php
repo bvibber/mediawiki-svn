@@ -20,9 +20,10 @@
 
 // Each module may be configured individually to be globally on/off or user preference based
 $wgWikiEditorEnable = array(
-	'toolbar' => array( 'global' => false, 'user' => true ),
+	'highlight' => array( 'global' => false, 'user' => true ),
+	'preview' => array( 'global' => false, 'user' => true ),
 	'toc' => array( 'global' => false, 'user' => true ),
-	'code' => array( 'global' => false, 'user' => true ),
+	'toolbar' => array( 'global' => false, 'user' => true ),
 );
 
 /* Setup */
@@ -37,15 +38,19 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'wikieditor-desc',
 );
 
-// Includes parent extension
+// Include parent extension
 require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
 
-// Adds Autoload Classes
+// Add Autoload Classes
 $wgAutoloadClasses['WikiEditorHooks'] = dirname( __FILE__ ) . '/WikiEditor.hooks.php';
 
-// Adds Internationalized Messages
+// Add Internationalized Messages
 $wgExtensionMessagesFiles['WikiEditor'] = dirname( __FILE__ ) . '/WikiEditor.i18n.php';
+$wgExtensionMessagesFiles['WikiEditorHighlight'] = dirname( __FILE__ ) . '/WikiEditor/Modules/Highlight/Highlight.i18n.php';
+$wgExtensionMessagesFiles['WikiEditorPreview'] = dirname( __FILE__ ) . '/WikiEditor/Modules/Preview/Preview.i18n.php';
+$wgExtensionMessagesFiles['WikiEditorToc'] = dirname( __FILE__ ) . '/WikiEditor/Modules/Toc/Toc.i18n.php';
+$wgExtensionMessagesFiles['WikiEditorToolbar'] = dirname( __FILE__ ) . '/WikiEditor/Modules/Toolbar/Toolbar.i18n.php';
 
-// Registers Hooks
+// Register Hooks
 $wgHooks['EditPageBeforeEditToolbar'][] = 'WikiEditorHooks::addModules';
 $wgHooks['GetPreferences'][] = 'WikiEditorHooks::addPreferences';
