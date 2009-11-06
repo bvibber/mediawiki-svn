@@ -278,7 +278,7 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Gets the currently selected text in the content
 		 */
-		'getSelection': function( context ) {
+		'getSelection': function() {
 			// ...
 		},
 		/**
@@ -291,7 +291,7 @@ if ( typeof context == 'undefined' ) {
 		 * @param ownline If true, put the inserted text is on its own line
 		 * @param replace If true, replaces any selected text with peri; if false, peri is ignored and selected text is left alone
 		 */
-		'encapsulateSelection': function( context, pre, peri, post, ownline, replace ) {
+		'encapsulateSelection': function( pre, peri, post, ownline, replace ) {
 			// ...
 			// Scroll the textarea to the inserted text
 			//?.scrollToCaretPosition();
@@ -304,7 +304,7 @@ if ( typeof context == 'undefined' ) {
 		 * @param startAndEnd Array of start and end character positions like [start, end] (is this better than just
 		 * using separate arguments)
 		 */
-		'getCaretPosition': function( context, startAndEnd ) {
+		'getCaretPosition': function( startAndEnd ) {
 			// ...
 			//reurn character position
 		},
@@ -314,7 +314,7 @@ if ( typeof context == 'undefined' ) {
 		 * @param start Character offset of selection start
 		 * @param end Character offset of selection end
 		 */
-		'setSelection': function( context, start, end ) {
+		'setSelection': function( start, end ) {
 			if ( typeof end == 'undefined' ) {
 				end = start;
 			}
@@ -326,7 +326,7 @@ if ( typeof context == 'undefined' ) {
 		 * @param force boolean Whether to force a scroll even if the caret position is already visible. Defaults to
 		 * false.
 		 */
-		'scrollToCaretPosition': function( context, force ) {
+		'scrollToCaretPosition': function( force ) {
 			// ...
 			//context.$textarea.trigger( 'scrollToPosition' );
 		}
