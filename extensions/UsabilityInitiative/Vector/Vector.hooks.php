@@ -8,7 +8,6 @@
 
 class VectorHooks {
 
-	static $scripts = null;
 	static $modules = array(
 		'collapsibletabs' => array(
 			'scripts' => array(
@@ -107,12 +106,6 @@ class VectorHooks {
 				}
 			}
 		}
-		// Prepend global script
-		$mode = $wgUsabilityInitiativeResourceMode;
-		if ( !isset( self::$scripts[$mode] ) ) {
-			$mode = 'raw';
-		}
-		array_unshift( $scripts, self::$scripts[$mode] );
 		// Add all scripts
 		foreach ( $scripts as $script ) {
 			UsabilityInitiativeHooks::addScript(
