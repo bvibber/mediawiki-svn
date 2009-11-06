@@ -57,7 +57,7 @@ class ExternalPages extends SpecialPage {
      * process parameters of the request
      */
     private function parseParams() {
-		global $wgRequest, $wgServer, $wgLegalTitleChars;
+		global $wgRequest, $wgServer;
       
 		if (!$wgRequest->getVal( 'EPyear') ) {
 			$this->mYear=false;
@@ -102,9 +102,8 @@ class ExternalPages extends SpecialPage {
 			return(false);
 		}
 		$this->mPage = $wgRequest->getVal( 'EPpage' );
-		$this->mPage = Sanitizer::decodeCharReferences( $this->mPage );
-		// strictly speaking this setting may differ between local and remote wiki, oh well
-		if ( preg_match( "/[^$wgLegalTitleChars]/", $this->mPage ) ) {
+		// strictly speaking this may behave differently on the local wiki, oh well
+		if ( ! Title::newFromText( $this->mPage ) ) {
 			ExternalPagesErrors::showError( 'externalpages-bad-page' );
 			return(false);
 		}
