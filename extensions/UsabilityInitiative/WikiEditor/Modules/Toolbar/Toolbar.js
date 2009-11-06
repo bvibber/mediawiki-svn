@@ -1,15 +1,20 @@
-/* JavaScript for EditToolbar extension */
+/* JavaScript for WikiEditor Toolbar module */
 
 js2AddOnloadHook( function() {
 	// Only show content generation dialogs if enabled
-	if ( typeof wgEditToolbarCGD != 'undefined' && wgEditToolbarCGD )
-		$j( '#wpTextbox1' ).addClass( 'withCGD' );
+	if (
+		typeof wgWikiEditorPreferences !== 'undefined'
+		&& typeof wgWikiEditorPreferences.toolbar.dialogs !== 'undefined'
+		&& wgWikiEditorPreferences.toolbar.dialogs
+	) {
+		$j( '#wpTextbox1' ).addClass( 'toolbar-dialogs' );
+	}
 	
 	if ( $j.wikiEditor != undefined && $j.wikiEditor.isSupported() || !$j.wikiEditor.isSupportKnown() ) {
 		// Remove the old toolbar
 		$j( '#toolbar' ).remove();
-		// Build a wikiEditor around the textarea
-		$j( 'textarea#wpTextbox1' ).wikiEditor( {
+// Add toolbar module
+$j( '#wpTextbox1' ).wikiEditor( 'addModule', {
 
 'toolbar': {
 	// Main section
@@ -19,14 +24,14 @@ js2AddOnloadHook( function() {
 			'format': {
 				tools: {
 					'bold': {
-						labelMsg: 'edittoolbar-tool-bold',
+						labelMsg: 'wikieditor-toolbar-tool-bold',
 						type: 'button',
 						icon: 'format-bold.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "'''", 
-								periMsg: 'edittoolbar-tool-bold-example',
+								periMsg: 'wikieditor-toolbar-tool-bold-example',
 								post: "'''"
 							}
 						}
@@ -35,14 +40,14 @@ js2AddOnloadHook( function() {
 						section: 'main',
 						group: 'format',
 						id: 'italic',
-						labelMsg: 'edittoolbar-tool-italic',
+						labelMsg: 'wikieditor-toolbar-tool-italic',
 						type: 'button',
 						icon: 'format-italic.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "''", 
-								periMsg: 'edittoolbar-tool-italic-example',
+								periMsg: 'wikieditor-toolbar-tool-italic-example',
 								post: "''"
 							}
 						}
@@ -52,59 +57,59 @@ js2AddOnloadHook( function() {
 			'insert': {
 				tools: {
 					'xlink': {
-						labelMsg: 'edittoolbar-tool-xlink',
+						labelMsg: 'wikieditor-toolbar-tool-xlink',
 						type: 'button',
 						icon: 'insert-xlink.png',
-						filters: [ '#wpTextbox1:not(.withCGD)' ],
+						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "[",
-								periMsg: 'edittoolbar-tool-xlink-example',
+								periMsg: 'wikieditor-toolbar-tool-xlink-example',
 								post: "]"
 							}
 						}
 					},
 					'ilink': {
-						labelMsg: 'edittoolbar-tool-ilink',
+						labelMsg: 'wikieditor-toolbar-tool-ilink',
 						type: 'button',
 						icon: 'insert-ilink.png',
-						filters: [ '#wpTextbox1:not(.withCGD)' ],
+						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "[[",
-								periMsg: 'edittoolbar-tool-ilink-example',
+								periMsg: 'wikieditor-toolbar-tool-ilink-example',
 								post: "]]"
 							}
 						}
 					},
 					'linkCGD': {
-						labelMsg: 'edittoolbar-tool-link',
+						labelMsg: 'wikieditor-toolbar-tool-link',
 						type: 'button',
 						icon: 'insert-link.png',
-						filters: [ '#wpTextbox1.withCGD' ],
+						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
 							module: 'insert-link'
 						}
 					},
 					'file': {
-						labelMsg: 'edittoolbar-tool-file',
+						labelMsg: 'wikieditor-toolbar-tool-file',
 						type: 'button',
 						icon: 'insert-file.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "[[", 
-								preMsg: 'edittoolbar-tool-file-pre',
-								periMsg: 'edittoolbar-tool-file-example',
+								preMsg: 'wikieditor-toolbar-tool-file-pre',
+								periMsg: 'wikieditor-toolbar-tool-file-example',
 								post: "]]"
 							}
 						}
 					},
 					'reference': {
-						labelMsg: 'edittoolbar-tool-reference',
+						labelMsg: 'wikieditor-toolbar-tool-reference',
 						filters: [ 'body.ns-subject' ],
 						type: 'button',
 						icon: 'insert-reference.png',
@@ -112,13 +117,13 @@ js2AddOnloadHook( function() {
 							type: 'encapsulate',
 							options: {
 								pre: "<ref>", 
-								periMsg: 'edittoolbar-tool-reference-example',
+								periMsg: 'wikieditor-toolbar-tool-reference-example',
 								post: "</ref>"
 							}
 						}
 					},
 					'signature': {
-						labelMsg: 'edittoolbar-tool-signature',
+						labelMsg: 'wikieditor-toolbar-tool-signature',
 						filters: [ 'body:not(.ns-0)' ],
 						type: 'button',
 						icon: 'insert-signature.png',
@@ -135,22 +140,22 @@ js2AddOnloadHook( function() {
 	},
 	// Format section
 	'advanced': {
-		labelMsg: 'edittoolbar-section-advanced',
+		labelMsg: 'wikieditor-toolbar-section-advanced',
 		type: 'toolbar',
 		groups: {
 			'heading': {
 				tools: {
 					'heading': {
-						labelMsg: 'edittoolbar-tool-heading',
+						labelMsg: 'wikieditor-toolbar-tool-heading',
 						type: 'select',
 						list: {
 							'heading-2' : {
-								labelMsg: 'edittoolbar-tool-heading-2',
+								labelMsg: 'wikieditor-toolbar-tool-heading-2',
 								action: {
 									type: 'replace',
 									options: {
 										pre: "==",
-										periMsg: 'edittoolbar-tool-heading-example',
+										periMsg: 'wikieditor-toolbar-tool-heading-example',
 										periRegex: /^(={1,6})(.*?)\1\s*$/,
 										periRegexReplace: "\$2",
 										post: "=="
@@ -158,40 +163,40 @@ js2AddOnloadHook( function() {
 								}
 							},
 							'heading-3' : {
-								labelMsg: 'edittoolbar-tool-heading-3',
+								labelMsg: 'wikieditor-toolbar-tool-heading-3',
 								action: {
 									type: 'replace',
 									options: {
 										pre: "===",
 										periRegex: /^(={1,6})(.*?)\1\s*$/,
 										periRegexReplace: "\$2",
-										periMsg: 'edittoolbar-tool-heading-example',
+										periMsg: 'wikieditor-toolbar-tool-heading-example',
 										post: "==="
 									}
 								}
 							},
 							'heading-4' : {
-								labelMsg: 'edittoolbar-tool-heading-4',
+								labelMsg: 'wikieditor-toolbar-tool-heading-4',
 								action: {
 									type: 'replace',
 									options: {
 										pre: "====",
 										periRegex: /^(={1,6})(.*?)\1\s*$/,
 										periRegexReplace: "\$2",
-										periMsg: 'edittoolbar-tool-heading-example',
+										periMsg: 'wikieditor-toolbar-tool-heading-example',
 										post: "===="
 									}
 								}
 							},
 							'heading-5' : {
-								labelMsg: 'edittoolbar-tool-heading-5',
+								labelMsg: 'wikieditor-toolbar-tool-heading-5',
 								action: {
 									type: 'replace',
 									options: {
 										pre: "=====",
 										periRegex: /^(={1,6})(.*?)\1\s*$/,
 										periRegexReplace: "\$2",
-										periMsg: 'edittoolbar-tool-heading-example',
+										periMsg: 'wikieditor-toolbar-tool-heading-example',
 										post: "====="
 									}
 								}
@@ -201,38 +206,38 @@ js2AddOnloadHook( function() {
 				}
 			},
 			'list': {
-				labelMsg: 'edittoolbar-group-list',
+				labelMsg: 'wikieditor-toolbar-group-list',
 				tools: {
 					'ulist': {
-						labelMsg: 'edittoolbar-tool-ulist',
+						labelMsg: 'wikieditor-toolbar-tool-ulist',
 						type: 'button',
 						icon: 'format-ulist.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "* ", 
-								periMsg: 'edittoolbar-tool-ulist-example',
+								periMsg: 'wikieditor-toolbar-tool-ulist-example',
 								post: "", 
 								ownline: true
 							}
 						}
 					},
 					'olist': {
-						labelMsg: 'edittoolbar-tool-olist',
+						labelMsg: 'wikieditor-toolbar-tool-olist',
 						type: 'button',
 						icon: 'format-olist.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "# ", 
-								periMsg: 'edittoolbar-tool-olist-example',
+								periMsg: 'wikieditor-toolbar-tool-olist-example',
 								post: "", 
 								ownline: true
 							}
 						}
 					},
 					'indent': {
-						labelMsg: 'edittoolbar-tool-indent',
+						labelMsg: 'wikieditor-toolbar-tool-indent',
 						type: 'button',
 						icon: 'format-indent.png',
 						action: {
@@ -247,30 +252,30 @@ js2AddOnloadHook( function() {
 				}
 			},
 			'size': {
-				labelMsg: 'edittoolbar-group-size',
+				labelMsg: 'wikieditor-toolbar-group-size',
 				tools: {
 					'big': {
-						labelMsg: 'edittoolbar-tool-big',
+						labelMsg: 'wikieditor-toolbar-tool-big',
 						type: 'button',
 						icon: 'format-big.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<big>", 
-								periMsg: 'edittoolbar-tool-big-example',
+								periMsg: 'wikieditor-toolbar-tool-big-example',
 								post: "</big>"
 							}
 						}
 					},
 					'small': {
-						labelMsg: 'edittoolbar-tool-small',
+						labelMsg: 'wikieditor-toolbar-tool-small',
 						type: 'button',
 						icon: 'format-small.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<small>", 
-								periMsg: 'edittoolbar-tool-small-example',
+								periMsg: 'wikieditor-toolbar-tool-small-example',
 								post: "</small>"
 							}
 						}
@@ -278,30 +283,30 @@ js2AddOnloadHook( function() {
 				}
 			},
 			'baseline': {
-				labelMsg: 'edittoolbar-group-baseline',
+				labelMsg: 'wikieditor-toolbar-group-baseline',
 				tools: {
 					'superscript': {
-						labelMsg: 'edittoolbar-tool-superscript',
+						labelMsg: 'wikieditor-toolbar-tool-superscript',
 						type: 'button',
 						icon: 'format-superscript.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<sup>", 
-								periMsg: 'edittoolbar-tool-superscript-example',
+								periMsg: 'wikieditor-toolbar-tool-superscript-example',
 								post: "</sup>"
 							}
 						}
 					},
 					'subscript': {
-						labelMsg: 'edittoolbar-tool-subscript',
+						labelMsg: 'wikieditor-toolbar-tool-subscript',
 						type: 'button',
 						icon: 'format-subscript.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<sub>", 
-								periMsg: 'edittoolbar-tool-subscript-example',
+								periMsg: 'wikieditor-toolbar-tool-subscript-example',
 								post: "</sub>"
 							}
 						}
@@ -309,49 +314,49 @@ js2AddOnloadHook( function() {
 				}
 			},
 			'insert': {
-				labelMsg: 'edittoolbar-group-insert',
+				labelMsg: 'wikieditor-toolbar-group-insert',
 				tools: {
 					'gallery': {
-						labelMsg: 'edittoolbar-tool-gallery',
+						labelMsg: 'wikieditor-toolbar-tool-gallery',
 						type: 'button',
 						icon: 'insert-gallery.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<gallery>\n", 
-								periMsg: 'edittoolbar-tool-gallery-example',
+								periMsg: 'wikieditor-toolbar-tool-gallery-example',
 								post: "\n</gallery>", 
 								ownline: true
 							}
 						}
 					},
 					'tableCGD': {
-						labelMsg: 'edittoolbar-tool-table',
+						labelMsg: 'wikieditor-toolbar-tool-table',
 						type: 'button',
 						icon: 'insert-table.png',
-						filters: [ '#wpTextbox1.withCGD' ],
+						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
 							module: 'insert-table'
 						}
 					},
 					'table': {
-						labelMsg: 'edittoolbar-tool-table',
+						labelMsg: 'wikieditor-toolbar-tool-table',
 						type: 'button',
 						icon: 'insert-table.png',
-						filters: [ '#wpTextbox1:not(.withCGD)' ],
+						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "{| class=\"wikitable\" border=\"1\"\n|",
-								periMsg: 'edittoolbar-tool-table-example-old',
+								periMsg: 'wikieditor-toolbar-tool-table-example-old',
 								post: "\n|}",
 								ownline: true
 							}
 						}
 					},
 					'newline': {
-						labelMsg: 'edittoolbar-tool-newline',
+						labelMsg: 'wikieditor-toolbar-tool-newline',
 						type: 'button',
 						icon: 'insert-newline.png',
 						action: {
@@ -366,10 +371,10 @@ js2AddOnloadHook( function() {
 			'search': {
 				tools: {
 					'replace': {
-						labelMsg: 'edittoolbar-tool-replace',
+						labelMsg: 'wikieditor-toolbar-tool-replace',
 						type: 'button',
 						icon: 'search-replace.png',
-						filters: [ '#wpTextbox1.withCGD' ],
+						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
 							module: 'search-and-replace'
@@ -380,11 +385,11 @@ js2AddOnloadHook( function() {
 		}
 	},
 	'characters': {
-		labelMsg: 'edittoolbar-section-characters',
+		labelMsg: 'wikieditor-toolbar-section-characters',
 		type: 'booklet',
 		pages: {
 			'latin': {
-				'labelMsg': 'edittoolbar-characters-page-latin',
+				'labelMsg': 'wikieditor-toolbar-characters-page-latin',
 				'layout': 'characters',
 				'characters': [
 					"\u00c1", "\u00e1", "\u00c0", "\u00e0", "\u00c2", "\u00e2", "\u00c4", "\u00e4", "\u00c3", "\u00e3",
@@ -410,7 +415,7 @@ js2AddOnloadHook( function() {
 				]
 			},
 			'latinextended': {
-				'labelMsg': 'edittoolbar-characters-page-latinextended',
+				'labelMsg': 'wikieditor-toolbar-characters-page-latinextended',
 				'layout': 'characters',
 				'characters': [
 					"\u1e00", "\u1e01", "\u1e9a", "\u1ea0", "\u1ea1", "\u1ea2", "\u1ea3", "\u1ea4", "\u1ea5", "\u1ea6",
@@ -442,7 +447,7 @@ js2AddOnloadHook( function() {
 				]
 			},
 			'ipa': {
-				labelMsg: 'edittoolbar-characters-page-ipa',
+				labelMsg: 'wikieditor-toolbar-characters-page-ipa',
 				layout: 'characters',
 				characters: [
 					"p", "t\u032a", "t", "\u0288", "c", "k", "q", "\u02a1", "\u0294", "b","d\u032a", "d", "\u0256",
@@ -475,7 +480,7 @@ js2AddOnloadHook( function() {
 				]
 			},
 			'symbols': {
-				'labelMsg': 'edittoolbar-characters-page-symbols',
+				'labelMsg': 'wikieditor-toolbar-characters-page-symbols',
 				'layout': 'characters',
 				'characters': [
 					"~", "|", "\u00a1", "\u00bf", "\u2020", "\u2021", "\u2194", "\u2191", "\u2193", "\u2022", "\u00b6",
@@ -496,7 +501,7 @@ js2AddOnloadHook( function() {
 				]
 			},
 			'greek': {
-				'labelMsg': 'edittoolbar-characters-page-greek',
+				'labelMsg': 'wikieditor-toolbar-characters-page-greek',
 				'layout': 'characters',
 				'language': 'hl',
 				'characters': [
@@ -510,7 +515,7 @@ js2AddOnloadHook( function() {
 				]
 			},
 			'cyrillic': {
-				'labelMsg': 'edittoolbar-characters-page-cyrillic',
+				'labelMsg': 'wikieditor-toolbar-characters-page-cyrillic',
 				'layout': 'characters',
 				'characters': [
 					"\u0410", "\u0430", "\u04d8", "\u04d9", "\u0411", "\u0431", "\u0412",  "\u0432", "\u0413", "\u0433",
@@ -528,7 +533,7 @@ js2AddOnloadHook( function() {
 				]
 			},
 			'arabic': {
-				'labelMsg': 'edittoolbar-characters-page-arabic',
+				'labelMsg': 'wikieditor-toolbar-characters-page-arabic',
 				'layout': 'characters',
 				'language': 'ar',
 				'direction': 'rtl',
@@ -541,7 +546,7 @@ js2AddOnloadHook( function() {
 				]
 			},
 			'hebrew': {
-				'labelMsg': 'edittoolbar-characters-page-hebrew',
+				'labelMsg': 'wikieditor-toolbar-characters-page-hebrew',
 				'layout': 'characters',
 				'direction': 'rtl',
 				'characters': [
@@ -571,7 +576,7 @@ js2AddOnloadHook( function() {
 				]
 			},
 			'telugu': {
-				'labelMsg': 'edittoolbar-characters-page-telugu',
+				'labelMsg': 'wikieditor-toolbar-characters-page-telugu',
 				'language': 'te',
 				'layout': 'characters',
 				'characters': [
@@ -588,7 +593,7 @@ js2AddOnloadHook( function() {
 				]
 			},
 			'sinhala': {
-				'labelMsg': 'edittoolbar-characters-page-sinhala',
+				'labelMsg': 'wikieditor-toolbar-characters-page-sinhala',
 				'language': 'si',
 				'layout': 'characters',
 				'characters': [
@@ -607,7 +612,7 @@ js2AddOnloadHook( function() {
 				]
 			},
 			'gujarati': {
-				'labelMsg': 'edittoolbar-characters-page-gujarati',
+				'labelMsg': 'wikieditor-toolbar-characters-page-gujarati',
 				'language': 'gu',
 				'layout': 'characters',
 				'characters': [
@@ -627,178 +632,178 @@ js2AddOnloadHook( function() {
 		}
 	},
 	'help': {
-		labelMsg: 'edittoolbar-section-help',
+		labelMsg: 'wikieditor-toolbar-section-help',
 		type: 'booklet',
 		pages: {
 			'format': {
-				labelMsg: 'edittoolbar-help-page-format',
+				labelMsg: 'wikieditor-toolbar-help-page-format',
 				layout: 'table',
 				headings: [
-					{ textMsg: 'edittoolbar-help-heading-description' },
-					{ textMsg: 'edittoolbar-help-heading-syntax' },
-					{ textMsg: 'edittoolbar-help-heading-result' }
+					{ textMsg: 'wikieditor-toolbar-help-heading-description' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-syntax' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-result' }
 				],
 				rows: [
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-italic-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-italic-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-italic-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-italic-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-italic-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-italic-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-bold-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-bold-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-bold-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-bold-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-bold-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-bold-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-bolditalic-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-bolditalic-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-bolditalic-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-bolditalic-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-bolditalic-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-bolditalic-result' }
 					}
 				]
 			},
 			'link': {
-				labelMsg: 'edittoolbar-help-page-link',
+				labelMsg: 'wikieditor-toolbar-help-page-link',
 				layout: 'table',
 				headings: [
-					{ textMsg: 'edittoolbar-help-heading-description' },
-					{ textMsg: 'edittoolbar-help-heading-syntax' },
-					{ textMsg: 'edittoolbar-help-heading-result' }
+					{ textMsg: 'wikieditor-toolbar-help-heading-description' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-syntax' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-result' }
 				],
 				rows: [
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-ilink-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-ilink-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-ilink-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-ilink-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-ilink-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-ilink-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-xlink-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-xlink-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-xlink-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-xlink-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-xlink-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-xlink-result' }
 					}
 				]
 			},
 			'heading': {
-				labelMsg: 'edittoolbar-help-page-heading',
+				labelMsg: 'wikieditor-toolbar-help-page-heading',
 				layout: 'table',
 				headings: [
-					{ textMsg: 'edittoolbar-help-heading-description' },
-					{ textMsg: 'edittoolbar-help-heading-syntax' },
-					{ textMsg: 'edittoolbar-help-heading-result' }
+					{ textMsg: 'wikieditor-toolbar-help-heading-description' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-syntax' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-result' }
 				],
 				rows: [
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-heading1-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-heading1-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-heading1-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-heading1-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-heading1-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-heading1-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-heading2-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-heading2-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-heading2-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-heading2-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-heading2-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-heading2-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-heading3-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-heading3-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-heading3-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-heading3-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-heading3-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-heading3-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-heading4-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-heading4-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-heading4-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-heading4-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-heading4-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-heading4-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-heading5-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-heading5-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-heading5-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-heading5-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-heading5-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-heading5-result' }
 					}
 				]
 			},
 			'list': {
-				labelMsg: 'edittoolbar-help-page-list',
+				labelMsg: 'wikieditor-toolbar-help-page-list',
 				layout: 'table',
 				headings: [
-					{ textMsg: 'edittoolbar-help-heading-description' },
-					{ textMsg: 'edittoolbar-help-heading-syntax' },
-					{ textMsg: 'edittoolbar-help-heading-result' }
+					{ textMsg: 'wikieditor-toolbar-help-heading-description' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-syntax' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-result' }
 				],
 				rows: [
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-ulist-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-ulist-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-ulist-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-ulist-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-ulist-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-ulist-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-olist-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-olist-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-olist-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-olist-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-olist-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-olist-result' }
 					}
 				]
 			},
 			'file': {
-				labelMsg: 'edittoolbar-help-page-file',
+				labelMsg: 'wikieditor-toolbar-help-page-file',
 				layout: 'table',
 				headings: [
-					{ textMsg: 'edittoolbar-help-heading-description' },
-					{ textMsg: 'edittoolbar-help-heading-syntax' },
-					{ textMsg: 'edittoolbar-help-heading-result' }
+					{ textMsg: 'wikieditor-toolbar-help-heading-description' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-syntax' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-result' }
 				],
 				rows: [
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-file-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-file-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-file-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-file-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-file-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-file-result' }
 					}
 				]
 			},
 			'reference': {
-				labelMsg: 'edittoolbar-help-page-reference',
+				labelMsg: 'wikieditor-toolbar-help-page-reference',
 				layout: 'table',
 				headings: [
-					{ textMsg: 'edittoolbar-help-heading-description' },
-					{ textMsg: 'edittoolbar-help-heading-syntax' },
-					{ textMsg: 'edittoolbar-help-heading-result' }
+					{ textMsg: 'wikieditor-toolbar-help-heading-description' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-syntax' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-result' }
 				],
 				rows: [
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-reference-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-reference-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-reference-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-reference-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-reference-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-reference-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-rereference-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-rereference-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-rereference-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-rereference-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-rereference-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-rereference-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-showreferences-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-showreferences-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-showreferences-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-showreferences-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-showreferences-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-showreferences-result' }
 					}
 				]
 			},
 			'discussion': {
-				labelMsg: 'edittoolbar-help-page-discussion',
+				labelMsg: 'wikieditor-toolbar-help-page-discussion',
 				layout: 'table',
 				headings: [
-					{ textMsg: 'edittoolbar-help-heading-description' },
-					{ textMsg: 'edittoolbar-help-heading-syntax' },
-					{ textMsg: 'edittoolbar-help-heading-result' }
+					{ textMsg: 'wikieditor-toolbar-help-heading-description' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-syntax' },
+					{ textMsg: 'wikieditor-toolbar-help-heading-result' }
 				],
 				rows: [
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-signaturetimestamp-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-signaturetimestamp-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-signaturetimestamp-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-signaturetimestamp-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-signaturetimestamp-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-signaturetimestamp-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-signature-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-signature-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-signature-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-signature-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-signature-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-signature-result' }
 					},
 					{
-						'description': { htmlMsg: 'edittoolbar-help-content-indent-description' },
-						'syntax': { htmlMsg: 'edittoolbar-help-content-indent-syntax' },
-						'result': { htmlMsg: 'edittoolbar-help-content-indent-result' }
+						'description': { htmlMsg: 'wikieditor-toolbar-help-content-indent-description' },
+						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-indent-syntax' },
+						'result': { htmlMsg: 'wikieditor-toolbar-help-content-indent-result' }
 					}
 				]
 			}
@@ -807,29 +812,29 @@ js2AddOnloadHook( function() {
 },
 'dialogs': {
 	'insert-link': {
-		titleMsg: 'edittoolbar-tool-link-title',
-		id: 'edittoolbar-link-dialog',
+		titleMsg: 'wikieditor-toolbar-tool-link-title',
+		id: 'wikieditor-toolbar-link-dialog',
 		html: '\
 			<fieldset><table style="width: 100%;"><tr>\
 				<td>\
-					<label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label><br />\
-					<input type="text" id="edittoolbar-link-int-target" style="width: 100%;" />\
+					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target"></label><br />\
+					<input type="text" id="wikieditor-toolbar-link-int-target" style="width: 100%;" />\
 				</td><td style="width: 48px;">\
-					<div id="edittoolbar-link-int-target-status" style="display: inline;"></div>\
+					<div id="wikieditor-toolbar-link-int-target-status" style="display: inline;"></div>\
 				</td>\
 			</tr><tr>\
 				<td>\
-					<label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label><br />\
-					<input type="text" id="edittoolbar-link-int-text" style="width: 100%;" />\
+					<label for="wikieditor-toolbar-link-int-text" rel="wikieditor-toolbar-tool-link-int-text"></label><br />\
+					<input type="text" id="wikieditor-toolbar-link-int-text" style="width: 100%;" />\
 				</td>\
 			</tr><tr>\
 				<td colspan="2">\
 					<div style="float: left; margin-right: 2em;">\
-						<input type="radio" id="edittoolbar-link-type-int" name="edittoolbar-link-type" selected />\
-						<label for="edittoolbar-link-type-int" rel="edittoolbar-tool-link-int"></label>\
+						<input type="radio" id="wikieditor-toolbar-link-type-int" name="wikieditor-toolbar-link-type" selected />\
+						<label for="wikieditor-toolbar-link-type-int" rel="wikieditor-toolbar-tool-link-int"></label>\
 					</div><div style="float: left;">\
-						<input type="radio" id="edittoolbar-link-type-ext" name="edittoolbar-link-type" />\
-						<label for="edittoolbar-link-type-ext" rel="edittoolbar-tool-link-ext"></label>\
+						<input type="radio" id="wikieditor-toolbar-link-type-ext" name="wikieditor-toolbar-link-type" />\
+						<label for="wikieditor-toolbar-link-type-ext" rel="wikieditor-toolbar-tool-link-ext"></label>\
 					</div>\
 				</td>\
 			</tr>\
@@ -844,32 +849,34 @@ js2AddOnloadHook( function() {
 				// All of these are potentially valid titles, and the latter three
 				// categories match about 6300 titles in enwiki's ns0. Out of 6.9M
 				// titles, that's 0.09%
-				if ( typeof arguments.callee.regex == 'undefined' )
+				if ( typeof arguments.callee.regex == 'undefined' ) {
 					// Cache the regex
-					arguments.callee.regex = new RegExp( "(^(" + urlprotocols + "))|(^www\\.)|([^.]\\.[a-z]{2,}($|\\/))", 'i');
+					arguments.callee.regex =
+						new RegExp( "(^(" + urlprotocols + "))|(^www\\.)|([^.]\\.[a-z]{2,}($|\\/))", 'i');
+				}
 				return s.match( arguments.callee.regex );
 			}
 			// Updates the UI to show if the page title being inputed by the user exists or not
 			function updateExistence() {
 				function updateWidget( status ) {
-					$j( '#edittoolbar-link-int-target-status' ).children().hide();
-					$j( '#edittoolbar-link-int-target-status-' + status ).show();
+					$j( '#wikieditor-toolbar-link-int-target-status' ).children().hide();
+					$j( '#wikieditor-toolbar-link-int-target-status-' + status ).show();
 				}
 				// Abort previous request
-				var request = $j( '#edittoolbar-link-int-target-status' ).data( 'request' );
+				var request = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'request' );
 				if ( request ) {
 					request.abort();
 				}
 				
-				var target = $j( '#edittoolbar-link-int-target' ).val();
-				var cache = $j( '#edittoolbar-link-int-target-status' ).data( 'existencecache' );
+				var target = $j( '#wikieditor-toolbar-link-int-target' ).val();
+				var cache = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'existencecache' );
 				if ( cache[target] ) {
 					updateWidget( cache[target] );
 					return;
 				}
 				if ( target == '' ) {
 					// Hide the widget when the textbox is empty
-					$j( '#edittoolbar-link-int-target-status' ).children().hide();
+					$j( '#wikieditor-toolbar-link-int-target-status' ).children().hide();
 					return;
 				}
 				if ( isExternalLink( target ) ) {
@@ -885,7 +892,7 @@ js2AddOnloadHook( function() {
 				// Show loading spinner while waiting for the API to respond
 				updateWidget( 'loading' );
 				// Call the API to check page status, saving the request object so it can be aborted if necessary
-				$j( '#edittoolbar-link-int-target-status' ).data(
+				$j( '#wikieditor-toolbar-link-int-target-status' ).data(
 					'request',
 					$j.ajax( {
 						url: wgScriptPath + '/api.php',
@@ -922,57 +929,57 @@ js2AddOnloadHook( function() {
 			// has changed the link text field - this is a convience thing since most link texts are going to be the
 			// the same as the page title
 			// Also change the internal/external radio button accordingly
-			$j( '#edittoolbar-link-int-target' ).bind( 'change keypress paste cut', function() {
+			$j( '#wikieditor-toolbar-link-int-target' ).bind( 'change keypress paste cut', function() {
 				// $j(this).val() is the old value, before the keypress
 				// Defer this until $j(this).val() has been updated
 				setTimeout( function() {
-					if ( isExternalLink( $j( '#edittoolbar-link-int-target' ).val() ) )
-						$j( '#edittoolbar-link-type-ext' ).attr( 'checked', 'checked' );
+					if ( isExternalLink( $j( '#wikieditor-toolbar-link-int-target' ).val() ) )
+						$j( '#wikieditor-toolbar-link-type-ext' ).attr( 'checked', 'checked' );
 					else
-						$j( '#edittoolbar-link-type-int' ).attr( 'checked', 'checked' );
+						$j( '#wikieditor-toolbar-link-type-int' ).attr( 'checked', 'checked' );
 
-					if ( $j( '#edittoolbar-link-int-text' ).data( 'untouched' ) )
-						$j( '#edittoolbar-link-int-text' ).val( $j( '#edittoolbar-link-int-target' ).val() );
+					if ( $j( '#wikieditor-toolbar-link-int-text' ).data( 'untouched' ) )
+						$j( '#wikieditor-toolbar-link-int-text' ).val( $j( '#wikieditor-toolbar-link-int-target' ).val() );
 				}, 0 );
 			});
-			$j( '#edittoolbar-link-int-text' ).bind( 'change keypress paste cut', function() {
+			$j( '#wikieditor-toolbar-link-int-text' ).bind( 'change keypress paste cut', function() {
 				$j(this).data( 'untouched', false );
 			});
 			// Add images to the page existence widget, which will be shown mutually exclusively to communicate if the
 			// page exists, does not exist or the title is invalid (like if it contains a | character)
-			var existsMsg = gM( 'edittoolbar-tool-link-int-target-status-exists' );
-			var notexistsMsg = gM( 'edittoolbar-tool-link-int-target-status-notexists' );
-			var invalidMsg = gM( 'edittoolbar-tool-link-int-target-status-invalid' );
-			var externalMsg = gM( 'edittoolbar-tool-link-int-target-status-external' );
-			var loadingMsg = gM( 'edittoolbar-tool-link-int-target-status-loading' );
-			$j( '#edittoolbar-link-int-target-status' )
+			var existsMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-exists' );
+			var notexistsMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-notexists' );
+			var invalidMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-invalid' );
+			var externalMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-external' );
+			var loadingMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-loading' );
+			$j( '#wikieditor-toolbar-link-int-target-status' )
 				.before( $j( '<br />' ) )
 				.append( $j( '<img />' ).attr( {
-					'id': 'edittoolbar-link-int-target-status-exists',
+					'id': 'wikieditor-toolbar-link-int-target-status-exists',
 					'src': $j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-exists.png',
 					'alt': existsMsg,
 					'title': existsMsg
 				} ) )
 				.append( $j( '<img />' ).attr( {
-					'id': 'edittoolbar-link-int-target-status-notexists',
+					'id': 'wikieditor-toolbar-link-int-target-status-notexists',
 					'src': $j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-notexists.png',
 					'alt': notexistsMsg,
 					'title': notexistsMsg
 				} ) )
 				.append( $j( '<img />' ).attr( {
-					'id': 'edittoolbar-link-int-target-status-invalid',
+					'id': 'wikieditor-toolbar-link-int-target-status-invalid',
 					'src': $j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-invalid.png',
 					'alt': invalidMsg,
 					'title': invalidMsg
 				} ) )
 				.append( $j( '<img />' ).attr( {
-					'id': 'edittoolbar-link-int-target-status-external',
+					'id': 'wikieditor-toolbar-link-int-target-status-external',
 					'src': $j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-external.png',
 					'alt': externalMsg,
 					'title': externalMsg
 				} ) )
 				.append( $j( '<img />' ).attr( {
-					'id': 'edittoolbar-link-int-target-status-loading',
+					'id': 'wikieditor-toolbar-link-int-target-status-loading',
 					'src': $j.wikiEditor.imgPath + 'dialogs/loading.gif',
 					'alt': loadingMsg,
 					'title': loadingMsg
@@ -980,7 +987,7 @@ js2AddOnloadHook( function() {
 				.data( 'existencecache', {} )
 				.children().hide();
 			
-			$j( '#edittoolbar-link-int-target' )
+			$j( '#wikieditor-toolbar-link-int-target' )
 				.bind( 'keypress paste cut', function() {
 					// Cancel the running timer if applicable
 					if ( typeof $j(this).data( 'timerID' ) != 'undefined' ) {
@@ -1001,7 +1008,7 @@ js2AddOnloadHook( function() {
 				} );
 			
 			// Title suggestions
-			$j( '#edittoolbar-link-int-target' ).data( 'suggcache', {} ).suggestions( {
+			$j( '#wikieditor-toolbar-link-int-target' ).data( 'suggcache', {} ).suggestions( {
 				fetch: function( query ) {
 					var that = this;
 					var title = $j(this).val();
@@ -1044,7 +1051,7 @@ js2AddOnloadHook( function() {
 		dialog: {
 			width: 500,
 			buttons: {
-				'edittoolbar-tool-link-insert': function() {
+				'wikieditor-toolbar-tool-link-insert': function() {
 					function escapeInternalText( s ) {
 						return s.replace( /(]{2,})/g, '<nowiki>$1</nowiki>' );
 					}
@@ -1056,11 +1063,11 @@ js2AddOnloadHook( function() {
 						return s.replace( /(]+)/g, '<nowiki>$1</nowiki>' );
 					}
 					var insertText = '';
-					var whitespace = $j( '#edittoolbar-link-dialog' ).data( 'whitespace' );
-					var target = $j( '#edittoolbar-link-int-target' ).val();
-					var text = $j( '#edittoolbar-link-int-text' ).val();
+					var whitespace = $j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace' );
+					var target = $j( '#wikieditor-toolbar-link-int-target' ).val();
+					var text = $j( '#wikieditor-toolbar-link-int-text' ).val();
 					if ( target == '' ) {
-						alert( gM( 'edittoolbar-tool-link-empty' ) );
+						alert( gM( 'wikieditor-toolbar-tool-link-empty' ) );
 						return;
 					}
 					if ( $j.trim( text ) == '' ) {
@@ -1068,11 +1075,11 @@ js2AddOnloadHook( function() {
 						// Instead, generate [[Foo|]]
 						text = '';
 					}
-					if ( $j( '#edittoolbar-link-type-int' ).is( ':checked' ) ) {
+					if ( $j( '#wikieditor-toolbar-link-type-int' ).is( ':checked' ) ) {
 						// FIXME: Exactly how fragile is this?
-						if ( $j( '#edittoolbar-link-int-target-status-invalid' ).is( ':visible' ) ) {
+						if ( $j( '#wikieditor-toolbar-link-int-target-status-invalid' ).is( ':visible' ) ) {
 							// Refuse to add links to invalid titles
-							alert( gM( 'edittoolbar-tool-link-int-invalid' ) );
+							alert( gM( 'wikieditor-toolbar-tool-link-int-invalid' ) );
 							return;
 						}
 						
@@ -1090,18 +1097,18 @@ js2AddOnloadHook( function() {
 						if ( match && !$j(this).data( 'ignoreLooksInternal' ) ) {
 							var buttons = { };
 							var that = this;
-							buttons[ gM( 'edittoolbar-tool-link-lookslikeinternal-int' ) ] = function() {
-								$j( '#edittoolbar-link-int-target' ).val( match[1] ).change();
+							buttons[ gM( 'wikieditor-toolbar-tool-link-lookslikeinternal-int' ) ] = function() {
+								$j( '#wikieditor-toolbar-link-int-target' ).val( match[1] ).change();
 								$j(this).dialog( 'close' );
 							};
-							buttons[ gM( 'edittoolbar-tool-link-lookslikeinternal-ext' ) ] = function() {
+							buttons[ gM( 'wikieditor-toolbar-tool-link-lookslikeinternal-ext' ) ] = function() {
 								$j(that).data( 'ignoreLooksInternal', true );
 								$j(that).closest( '.ui-dialog' ).find( 'button:first' ).click();
 								$j(that).data( 'ignoreLooksInternal', false );
 								$j(this).dialog( 'close' );
 							};
 							$j.wikiEditor.modules.dialogs.quickDialog(
-								gM( 'edittoolbar-tool-link-lookslikeinternal', match[1] ),
+								gM( 'wikieditor-toolbar-tool-link-lookslikeinternal', match[1] ),
 								{ buttons: buttons }
 							);
 							return;
@@ -1127,11 +1134,11 @@ js2AddOnloadHook( function() {
 					}, $j(this) );
 					
 					// Blank form
-					$j( '#edittoolbar-link-int-target, #edittoolbar-link-int-text' ).val( '' );
-					$j( '#edittoolbar-link-type-int, #edittoolbar-link-type-ext' ).attr( 'checked', '' );
+					$j( '#wikieditor-toolbar-link-int-target, #wikieditor-toolbar-link-int-text' ).val( '' );
+					$j( '#wikieditor-toolbar-link-type-int, #wikieditor-toolbar-link-type-ext' ).attr( 'checked', '' );
 					$j(this).dialog( 'close' );
 				},
-				'edittoolbar-tool-link-cancel': function() {
+				'wikieditor-toolbar-tool-link-cancel': function() {
 					$j(this).dialog( 'close' );
 				}
 			},
@@ -1143,8 +1150,8 @@ js2AddOnloadHook( function() {
 				) );
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.getSelection();
-				$j( '#edittoolbar-link-int-target' ).focus();
-				$j( '#edittoolbar-link-dialog' ).data( 'whitespace', [ '', '' ] );
+				$j( '#wikieditor-toolbar-link-int-target' ).focus();
+				$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [ '', '' ] );
 				if ( selection != '' ) {
 					var target, text, type;
 					var matches;
@@ -1154,29 +1161,29 @@ js2AddOnloadHook( function() {
 						text = ( matches[4] ? matches[4] : matches[2] );
 						type = 'int';
 						// Preserve whitespace when replacing
-						$j( '#edittoolbar-link-dialog' ).data( 'whitespace', [ matches[1], matches[5] ] );
+						$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [ matches[1], matches[5] ] );
 					} else if ( ( matches = selection.match( /^(\s*)\[([^\] ]+)( ([^\]]+))?\](\s*)$/ ) ) ) {
 						// [http://www.example.com foo] or [http://www.example.com]
 						target = matches[2];
 						text = ( matches[4] ? matches[4] : '' );
 						type = 'ext';
 						// Preserve whitespace when replacing
-						$j( '#edittoolbar-link-dialog' ).data( 'whitespace', [ matches[1], matches[5] ] );
+						$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [ matches[1], matches[5] ] );
 					} else {
 						target = text = selection;
 					}
 					// Change the value by calling val() doesn't trigger the change event, so let's do that ourselves
 					if ( typeof text != 'undefined' )
-						$j( '#edittoolbar-link-int-text' ).val( text ).change();
+						$j( '#wikieditor-toolbar-link-int-text' ).val( text ).change();
 					if ( typeof target != 'undefined' )
-						$j( '#edittoolbar-link-int-target' ).val( target ).change();
+						$j( '#wikieditor-toolbar-link-int-target' ).val( target ).change();
 					if ( typeof type != 'undefined' )
-						$j( '#edittoolbar-link-' + type ).attr( 'checked', 'checked' );
+						$j( '#wikieditor-toolbar-link-' + type ).attr( 'checked', 'checked' );
 				}
-				$j( '#edittoolbar-link-int-text' ).data( 'untouched',
-					$j( '#edittoolbar-link-int-text' ).val() == $j( '#edittoolbar-link-int-target' ).val()
+				$j( '#wikieditor-toolbar-link-int-text' ).data( 'untouched',
+					$j( '#wikieditor-toolbar-link-int-text' ).val() == $j( '#wikieditor-toolbar-link-int-target' ).val()
 				);
-				$j( '#edittoolbar-link-int-target' ).suggestions();
+				$j( '#wikieditor-toolbar-link-int-target' ).suggestions();
 				
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );
@@ -1195,101 +1202,101 @@ js2AddOnloadHook( function() {
 		}
 	},
 	'insert-table': {
-		titleMsg: 'edittoolbar-tool-table-title',
-		id: 'edittoolbar-table-dialog',
+		titleMsg: 'wikieditor-toolbar-tool-table-title',
+		id: 'wikieditor-toolbar-table-dialog',
 		// FIXME: All kinds of uglinesses and styling issues
 		// FIXME: Rows are identical so sorting has no effect
 		// FIXME: Localize 'x'?
 		html: '\
 			<fieldset><table><tr><td colspan="3">\
-				<input type="checkbox" id="edittoolbar-table-dimensions-header" checked />\
-				<label for="edittoolbar-table-dimensions-header"\
-					rel="edittoolbar-tool-table-dimensions-header"></label>\
+				<input type="checkbox" id="wikieditor-toolbar-table-dimensions-header" checked />\
+				<label for="wikieditor-toolbar-table-dimensions-header"\
+					rel="wikieditor-toolbar-tool-table-dimensions-header"></label>\
 			</td><td rowspan="4">\
-				<span rel="edittoolbar-tool-table-preview"></span>\
-				<table id="edittoolbar-table-preview" class="edittoolbar-table-preview wikitable">\
-					<tr class="edittoolbar-table-preview-header">\
-						<th rel="edittoolbar-tool-table-example-header"></th>\
-						<th rel="edittoolbar-tool-table-example-header"></th>\
-						<th rel="edittoolbar-tool-table-example-header"></th>\
-					</tr><tr class="edittoolbar-table-preview-hidden" style="display: none;">\
-						<td rel="edittoolbar-tool-table-example"></td>\
-						<td rel="edittoolbar-tool-table-example"></td>\
-						<td rel="edittoolbar-tool-table-example"></td>\
+				<span rel="wikieditor-toolbar-tool-table-preview"></span>\
+				<table id="wikieditor-toolbar-table-preview" class="wikieditor-toolbar-table-preview wikitable">\
+					<tr class="wikieditor-toolbar-table-preview-header">\
+						<th rel="wikieditor-toolbar-tool-table-example-header"></th>\
+						<th rel="wikieditor-toolbar-tool-table-example-header"></th>\
+						<th rel="wikieditor-toolbar-tool-table-example-header"></th>\
+					</tr><tr class="wikieditor-toolbar-table-preview-hidden" style="display: none;">\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
 					</tr><tr>\
-						<td rel="edittoolbar-tool-table-example"></td>\
-						<td rel="edittoolbar-tool-table-example"></td>\
-						<td rel="edittoolbar-tool-table-example"></td>\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
 					</tr><tr>\
-						<td rel="edittoolbar-tool-table-example"></td>\
-						<td rel="edittoolbar-tool-table-example"></td>\
-						<td rel="edittoolbar-tool-table-example"></td>\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
 					</tr><tr>\
-						<td rel="edittoolbar-tool-table-example"></td>\
-						<td rel="edittoolbar-tool-table-example"></td>\
-						<td rel="edittoolbar-tool-table-example"></td>\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
+						<td rel="wikieditor-toolbar-tool-table-example"></td>\
 					</tr>\
 				</table>\
 			</td></tr><tr><td colspan="3">\
-				<input type="checkbox" id="edittoolbar-table-wikitable" checked />\
-				<label for="edittoolbar-table-wikitable" rel="edittoolbar-tool-table-wikitable"></label>\
+				<input type="checkbox" id="wikieditor-toolbar-table-wikitable" checked />\
+				<label for="wikieditor-toolbar-table-wikitable" rel="wikieditor-toolbar-tool-table-wikitable"></label>\
 			</td></tr><tr><td colspan="3">\
-				<input type="checkbox" id="edittoolbar-table-sortable" />\
-				<label for="edittoolbar-table-sortable" rel="edittoolbar-tool-table-sortable"></label>\
+				<input type="checkbox" id="wikieditor-toolbar-table-sortable" />\
+				<label for="wikieditor-toolbar-table-sortable" rel="wikieditor-toolbar-tool-table-sortable"></label>\
 			</td></tr><tr><td>\
-				<label for="edittoolbar-table-dimensions-rows"\
-					rel="edittoolbar-tool-table-dimensions-rows"></label><br />\
-				<input type="text" id="edittoolbar-table-dimensions-rows" size="4" />\
+				<label for="wikieditor-toolbar-table-dimensions-rows"\
+					rel="wikieditor-toolbar-tool-table-dimensions-rows"></label><br />\
+				<input type="text" id="wikieditor-toolbar-table-dimensions-rows" size="4" />\
 			</td><td>\
 				<br />x\
 			</td><td>\
-				<label for="edittoolbar-table-dimensions-columns"\
-					rel="edittoolbar-tool-table-dimensions-columns"></label><br />\
-				<input type="text" id="edittoolbar-table-dimensions-columns" size="4" />\
+				<label for="wikieditor-toolbar-table-dimensions-columns"\
+					rel="wikieditor-toolbar-tool-table-dimensions-columns"></label><br />\
+				<input type="text" id="wikieditor-toolbar-table-dimensions-columns" size="4" />\
 			</td></tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
-			$j( '#edittoolbar-table-dimensions-rows' ).val( 4 );
-			$j( '#edittoolbar-table-dimensions-columns' ).val( 3 );
-			$j( '#edittoolbar-table-wikitable' ).click( function() {
-				$j( '.edittoolbar-table-preview' ).toggleClass( 'wikitable' );
+			$j( '#wikieditor-toolbar-table-dimensions-rows' ).val( 4 );
+			$j( '#wikieditor-toolbar-table-dimensions-columns' ).val( 3 );
+			$j( '#wikieditor-toolbar-table-wikitable' ).click( function() {
+				$j( '.wikieditor-toolbar-table-preview' ).toggleClass( 'wikitable' );
 			});
 			
 			// Hack for sortable preview: dynamically adding
 			// sortable class doesn't work, so we use a clone
 			// FIXME: Relies on sortable table internals
-			$j( '#edittoolbar-table-preview' )
+			$j( '#wikieditor-toolbar-table-preview' )
 				.clone()
-				.attr( 'id', 'edittoolbar-table-preview2' )
+				.attr( 'id', 'wikieditor-toolbar-table-preview2' )
 				.addClass( 'sortable' )
-				.insertAfter( $j( '#edittoolbar-table-preview' ) )
+				.insertAfter( $j( '#wikieditor-toolbar-table-preview' ) )
 				.hide();
 			if ( typeof ts_makeSortable == 'function' )
-				ts_makeSortable( $j( '#edittoolbar-table-preview2' ).get( 0 ) );
-			$j( '#edittoolbar-table-sortable' ).click( function() {
+				ts_makeSortable( $j( '#wikieditor-toolbar-table-preview2' ).get( 0 ) );
+			$j( '#wikieditor-toolbar-table-sortable' ).click( function() {
 				// Swap the currently shown one clone with the other one
-				$j( '#edittoolbar-table-preview' )
+				$j( '#wikieditor-toolbar-table-preview' )
 					.hide()
-					.attr( 'id', 'edittoolbar-table-preview3' );
-				$j( '#edittoolbar-table-preview2' )
-					.attr( 'id', 'edittoolbar-table-preview' )
+					.attr( 'id', 'wikieditor-toolbar-table-preview3' );
+				$j( '#wikieditor-toolbar-table-preview2' )
+					.attr( 'id', 'wikieditor-toolbar-table-preview' )
 					.show();
-				$j( '#edittoolbar-table-preview3' ).attr( 'id', 'edittoolbar-table-preview2' );
+				$j( '#wikieditor-toolbar-table-preview3' ).attr( 'id', 'wikieditor-toolbar-table-preview2' );
 			});
 			
-			$j( '#edittoolbar-table-dimensions-header' ).click( function() {
+			$j( '#wikieditor-toolbar-table-dimensions-header' ).click( function() {
 				// Instead of show/hiding, switch the HTML around
 				// We do this because the sortable tables script styles the first row,
 				// visible or not
-				var headerHTML = $j( '.edittoolbar-table-preview-header' ).html();
-				var hiddenHTML = $j( '.edittoolbar-table-preview-hidden' ).html();
-				$j( '.edittoolbar-table-preview-header' ).html( hiddenHTML );
-				$j( '.edittoolbar-table-preview-hidden' ).html( headerHTML );
+				var headerHTML = $j( '.wikieditor-toolbar-table-preview-header' ).html();
+				var hiddenHTML = $j( '.wikieditor-toolbar-table-preview-hidden' ).html();
+				$j( '.wikieditor-toolbar-table-preview-header' ).html( hiddenHTML );
+				$j( '.wikieditor-toolbar-table-preview-hidden' ).html( headerHTML );
 				if ( typeof ts_makeSortable == 'function' )
 					ts_makeSortable(
-     						$j( '#edittoolbar-table-preview, #edittoolbar-table-preview2' )
+     						$j( '#wikieditor-toolbar-table-preview, #wikieditor-toolbar-table-preview2' )
 							.filter( '.sortable' )
 							.get( 0 )
 					);
@@ -1298,26 +1305,26 @@ js2AddOnloadHook( function() {
 		},
 		dialog: {
 			buttons: {
-				'edittoolbar-tool-table-insert': function() {
-					var rowsVal = $j( '#edittoolbar-table-dimensions-rows' ).val();
-					var colsVal = $j( '#edittoolbar-table-dimensions-columns' ).val();
+				'wikieditor-toolbar-tool-table-insert': function() {
+					var rowsVal = $j( '#wikieditor-toolbar-table-dimensions-rows' ).val();
+					var colsVal = $j( '#wikieditor-toolbar-table-dimensions-columns' ).val();
 					var rows = parseInt( rowsVal, 10 );
 					var cols = parseInt( colsVal, 10 );
-					var header = Math.min( 1, $j( '#edittoolbar-table-dimensions-header:checked' ).size() );
+					var header = Math.min( 1, $j( '#wikieditor-toolbar-table-dimensions-header:checked' ).size() );
 					if ( isNaN( rows ) || isNaN( cols ) || rows != rowsVal  || cols != colsVal ) {
-						alert( gM( 'edittoolbar-tool-table-invalidnumber' ) );
+						alert( gM( 'wikieditor-toolbar-tool-table-invalidnumber' ) );
 						return;
 					}
 					if ( rows + header == 0 || cols == 0 ) {
-						alert( gM( 'edittoolbar-tool-table-zero' ) );
+						alert( gM( 'wikieditor-toolbar-tool-table-zero' ) );
 						return;
 					}
 					if ( rows * cols > 1000 ) {
-						alert( gM( 'edittoolbar-tool-table-toomany', 1000 ) );
+						alert( gM( 'wikieditor-toolbar-tool-table-toomany', 1000 ) );
 						return;
 					}
-					var headerText = gM( 'edittoolbar-tool-table-example-header' );
-					var normalText = gM( 'edittoolbar-tool-table-example' );
+					var headerText = gM( 'wikieditor-toolbar-tool-table-example-header' );
+					var normalText = gM( 'wikieditor-toolbar-tool-table-example' );
 					var table = "";
 					for ( var r = 0; r < rows + header; r++ ) {
 						table += "|-\n";
@@ -1334,9 +1341,9 @@ js2AddOnloadHook( function() {
 						table = table.substr( 0, table.length - 1 ) + "\n";
 					}
 					var classes = [];
-					if ( $j( '#edittoolbar-table-wikitable' ).is( ':checked' ) )
+					if ( $j( '#wikieditor-toolbar-table-wikitable' ).is( ':checked' ) )
 						classes.push( 'wikitable' );
-					if ( $j( '#edittoolbar-table-sortable' ).is( ':checked' ) )
+					if ( $j( '#wikieditor-toolbar-table-sortable' ).is( ':checked' ) )
 						classes.push( 'sortable' );
 					var classStr = classes.length > 0 ? ' class="' + classes.join( ' ' ) + '"' : '';
 					$j.wikiEditor.modules.toolbar.fn.doAction(
@@ -1354,25 +1361,25 @@ js2AddOnloadHook( function() {
 					);
 					
 					// Restore form state
-						$j( '#edittoolbar-table-dimensions-rows' ).val( 4 );
-						$j( '#edittoolbar-table-dimensions-columns' ).val( 3 );
+						$j( '#wikieditor-toolbar-table-dimensions-rows' ).val( 4 );
+						$j( '#wikieditor-toolbar-table-dimensions-columns' ).val( 3 );
 					// Simulate clicks instead of setting values, so the according
 					// actions are performed
-						if ( !$j( '#edittoolbar-table-dimensions-header' ).is( ':checked' ) )
-							$j( '#edittoolbar-table-dimensions-header' ).click();
-						if ( !$j( '#edittoolbar-table-wikitable' ).is( ':checked' ) )
-							$j( '#edittoolbar-table-wikitable' ).click();
-						if ( $j( '#edittoolbar-table-sortable' ).is( ':checked' ) )
-							$j( '#edittoolbar-table-sortable' ).click();
+						if ( !$j( '#wikieditor-toolbar-table-dimensions-header' ).is( ':checked' ) )
+							$j( '#wikieditor-toolbar-table-dimensions-header' ).click();
+						if ( !$j( '#wikieditor-toolbar-table-wikitable' ).is( ':checked' ) )
+							$j( '#wikieditor-toolbar-table-wikitable' ).click();
+						if ( $j( '#wikieditor-toolbar-table-sortable' ).is( ':checked' ) )
+							$j( '#wikieditor-toolbar-table-sortable' ).click();
 					$j(this).dialog( 'close' );
 
 				},
-				'edittoolbar-tool-table-cancel': function() {
+				'wikieditor-toolbar-tool-table-cancel': function() {
 					$j(this).dialog( 'close' );
 				}
 			},
 			open: function() {
-				$j( '#edittoolbar-table-dimensions-rows' ).focus();
+				$j( '#wikieditor-toolbar-table-dimensions-rows' ).focus();
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );
 					// Execute the action associated with the first button
@@ -1390,27 +1397,27 @@ js2AddOnloadHook( function() {
 		}
 	},
 	'search-and-replace': {
-		titleMsg: 'edittoolbar-tool-replace-title',
-		id: 'edittoolbar-replace-dialog',
+		titleMsg: 'wikieditor-toolbar-tool-replace-title',
+		id: 'wikieditor-toolbar-replace-dialog',
 		html: '\
-			<div id="edittoolbar-replace-message">\
-				<div id="edittoolbar-replace-nomatch" rel="edittoolbar-tool-replace-nomatch"></div>\
-				<div id="edittoolbar-replace-success"></div>\
-				<div id="edittoolbar-replace-emptysearch" rel="edittoolbar-tool-replace-emptysearch"></div>\
-				<div id="edittoolbar-replace-invalidregex"></div>\
+			<div id="wikieditor-toolbar-replace-message">\
+				<div id="wikieditor-toolbar-replace-nomatch" rel="wikieditor-toolbar-tool-replace-nomatch"></div>\
+				<div id="wikieditor-toolbar-replace-success"></div>\
+				<div id="wikieditor-toolbar-replace-emptysearch" rel="wikieditor-toolbar-tool-replace-emptysearch"></div>\
+				<div id="wikieditor-toolbar-replace-invalidregex"></div>\
 			</div>\
 			<fieldset><table style="width: 100%;"><tr>\
-				<td><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label></td>\
-				<td><input type="text" id="edittoolbar-replace-search" style="width: 100%;" /></td>\
+				<td><label for="wikieditor-toolbar-replace-search" rel="wikieditor-toolbar-tool-replace-search"></label></td>\
+				<td><input type="text" id="wikieditor-toolbar-replace-search" style="width: 100%;" /></td>\
 			</tr><tr>\
-				<td><label for="edittoolbar-replace-replace" rel="edittoolbar-tool-replace-replace"></label></td>\
-				<td><input type="text" id="edittoolbar-replace-replace" style="width: 100%;" /></td>\
+				<td><label for="wikieditor-toolbar-replace-replace" rel="wikieditor-toolbar-tool-replace-replace"></label></td>\
+				<td><input type="text" id="wikieditor-toolbar-replace-replace" style="width: 100%;" /></td>\
 			</tr></table><table><tr>\
-				<td><input type="checkbox" id="edittoolbar-replace-case" /></td>\
-				<td><label for="edittoolbar-replace-case" rel="edittoolbar-tool-replace-case"></label></td>\
+				<td><input type="checkbox" id="wikieditor-toolbar-replace-case" /></td>\
+				<td><label for="wikieditor-toolbar-replace-case" rel="wikieditor-toolbar-tool-replace-case"></label></td>\
 			</tr><tr>\
-				<td><input type="checkbox" id="edittoolbar-replace-regex" /></td>\
-				<td><label for="edittoolbar-replace-regex" rel="edittoolbar-tool-replace-regex"></label></td>\
+				<td><input type="checkbox" id="wikieditor-toolbar-replace-regex" /></td>\
+				<td><label for="wikieditor-toolbar-replace-regex" rel="wikieditor-toolbar-tool-replace-regex"></label></td>\
 			</tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
@@ -1419,16 +1426,16 @@ js2AddOnloadHook( function() {
 			
 			// TODO: Find a cleaner way to share this function
 			$j(this).data( 'replaceCallback', function( mode ) {
-				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch, #edittoolbar-replace-invalidregex' ).hide();
-				var searchStr = $j( '#edittoolbar-replace-search' ).val();
+				$j( '#wikieditor-toolbar-replace-nomatch, #wikieditor-toolbar-replace-success, #wikieditor-toolbar-replace-emptysearch, #wikieditor-toolbar-replace-invalidregex' ).hide();
+				var searchStr = $j( '#wikieditor-toolbar-replace-search' ).val();
 				if ( searchStr == '' ) {
-					$j( '#edittoolbar-replace-emptysearch' ).show();
+					$j( '#wikieditor-toolbar-replace-emptysearch' ).show();
 					return;
 				}
-				var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
+				var replaceStr = $j( '#wikieditor-toolbar-replace-replace' ).val();
 				var flags = 'm';
-				var matchCase = $j( '#edittoolbar-replace-case' ).is( ':checked' );
-				var isRegex = $j( '#edittoolbar-replace-regex' ).is( ':checked' );
+				var matchCase = $j( '#wikieditor-toolbar-replace-case' ).is( ':checked' );
+				var isRegex = $j( '#wikieditor-toolbar-replace-regex' ).is( ':checked' );
 				if ( !matchCase ) {
 					flags += 'i';
 				}
@@ -1441,8 +1448,8 @@ js2AddOnloadHook( function() {
 				try {
 					var regex = new RegExp( searchStr, flags );
 				} catch( e ) {
-					$j( '#edittoolbar-replace-invalidregex' )
-						.text( gM( 'edittoolbar-tool-replace-invalidregex',
+					$j( '#wikieditor-toolbar-replace-invalidregex' )
+						.text( gM( 'wikieditor-toolbar-tool-replace-invalidregex',
 							e.message ) )
 						.show();
 					return;
@@ -1457,7 +1464,7 @@ js2AddOnloadHook( function() {
 					matches = text.match( regex );
 				
 				if ( !matches )
-					$j( '#edittoolbar-replace-nomatch' ).show();
+					$j( '#wikieditor-toolbar-replace-nomatch' ).show();
 				else if ( mode == 'replaceAll' ) {
 					// Prepare to select the last match
 					var start = text.lastIndexOf( matches[matches.length - 1] );
@@ -1473,8 +1480,8 @@ js2AddOnloadHook( function() {
 						.setSelection( start + corr, end + corr )
 						.scrollToCaretPosition();
 					
-					$j( '#edittoolbar-replace-success' )
-						.text( gM( 'edittoolbar-tool-replace-success', matches.length ) )
+					$j( '#wikieditor-toolbar-replace-success' )
+						.text( gM( 'wikieditor-toolbar-tool-replace-success', matches.length ) )
 						.show();
 					$j(this).data( 'offset', 0 );
 				} else {
@@ -1498,26 +1505,26 @@ js2AddOnloadHook( function() {
 		},
 		dialog: {
 			buttons: {
-				'edittoolbar-tool-replace-button-findnext': function( e ) {
+				'wikieditor-toolbar-tool-replace-button-findnext': function( e ) {
 					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
 					$j(this).data( 'replaceCallback' ).call( this, 'find' );
 				},
-				'edittoolbar-tool-replace-button-replacenext': function( e ) {
+				'wikieditor-toolbar-tool-replace-button-replacenext': function( e ) {
 					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
 					$j(this).data( 'replaceCallback' ).call( this, 'replace' );
 				},
-				'edittoolbar-tool-replace-button-replaceall': function( e ) {
+				'wikieditor-toolbar-tool-replace-button-replaceall': function( e ) {
 					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
 					$j(this).data( 'replaceCallback' ).call( this, 'replaceAll' );
 				},
-				'edittoolbar-tool-replace-close': function() {
+				'wikieditor-toolbar-tool-replace-close': function() {
 					$j(this).dialog( 'close' );
 				}
 			},
 			open: function() {
 				$j(this).data( 'offset', 0 );
-				$j( '#edittoolbar-replace-search' ).focus();
-				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch, #edittoolbar-replace-invalidregex' ).hide();
+				$j( '#wikieditor-toolbar-replace-search' ).focus();
+				$j( '#wikieditor-toolbar-replace-nomatch, #wikieditor-toolbar-replace-success, #wikieditor-toolbar-replace-emptysearch, #wikieditor-toolbar-replace-invalidregex' ).hide();
 				if ( !( $j(this).data( 'onetimeonlystuff' ) ) ) {
 					$j(this).data( 'onetimeonlystuff', true );
 					// Execute the action associated with the first button
@@ -1552,6 +1559,7 @@ js2AddOnloadHook( function() {
 			}
 		}
 	}
-}
+} } );
 
-} ); } } );
+} } );
+
