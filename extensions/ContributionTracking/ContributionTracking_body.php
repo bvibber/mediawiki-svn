@@ -106,7 +106,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 		// Tracking
 		$repost['os0'] = $contribution_tracking_id;
 		
-		$wgOut->addWikiText( "<skin>Tomas</skin>{{2008/Donate-header/$language}}" );
+		$wgOut->addWikiText( "{{2009/Donate-banner/$language}}" );
 		$wgOut->addHTML( $this->msgWiki( 'contrib-tracking-submitting' ) );
 		
 		// Output the repost form
@@ -123,8 +123,6 @@ class ContributionTracking extends UnlistedSpecialPage {
 		$output .= '</form>';
 
 		$wgOut->addHTML( $output );
-
-		$wgOut->addWikiText( "{{2008/Donate-footer/$language}}\n" );
 
 		// Automatically post the form if the user has Javascript support
 		$wgOut->addHTML( '<script type="text/javascript">document.contributiontracking.submit();</script>' );
