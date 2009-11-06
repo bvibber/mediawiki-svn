@@ -57,7 +57,7 @@ class ExternalPages extends SpecialPage {
      * process parameters of the request
      */
     private function parseParams() {
-		global $wgRequest, $wgServer;
+		global $wgRequest, $wgServer, $wgLegalTitleChars;
       
 		if (!$wgRequest->getVal( 'EPyear') ) {
 			$this->mYear=false;
@@ -102,6 +102,12 @@ class ExternalPages extends SpecialPage {
 			return(false);
 		}
 		$this->mPage = $wgRequest->getVal( 'EPpage' );
+		$this->mPage = Sanitizer::decodeCharReferences( $this->mPage );
+		// strictly speaking this setting may differ between local and remote wiki, oh well
+		if ( preg_match( "/[^$wgLegalTitleChars]/", $this->mPage ) ) {
+			ExternalPagesErrors::showError( 'externalpages-bad-page' );
+			return(false);
+		}
 		return( true );
     }
 
@@ -127,6 +133,8 @@ class ExternalPages extends SpecialPage {
 		} else {
 			$wgRequest->response()->header( "Cache-Control: private, s-maxage=0, max-age=$maxage" );
 		}
+		$time = time() + self::EP_MAXAGE;
+		$wgRequest->response()->header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', $time ) . ' GMT' );
 		return( true );
     }
 
