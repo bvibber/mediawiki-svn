@@ -87,4 +87,4 @@ $wgEnableTemporalOggUrls = false;
 // as the uploaded media files or Java security rules will
 // prevent the applet from loading them.
 //
-$wgCortadoJarFile = "cortado-ovt-stripped-0.5.0.jar";
+$wgCortadoJarFile = "cortado-ovt-stripped-0.5.1.jar";
