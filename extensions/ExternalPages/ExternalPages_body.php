@@ -17,40 +17,48 @@ class ExternalPages extends SpecialPage {
     private $mLang = '';
     private $mProject = '';
     private $mPage = false;
-	
+    private $mPageURL = '';
+    private $mPageText = false;
+    private $mFromCache = false;
+
+	// adjust these as needed to change cache expiry 
+	const EP_SMAXAGE = 600;
+	const EP_MAXAGE = 600;
+	const EP_MEMCACHE_EXP = 600;
+
     function __construct() {
 		SpecialPage::SpecialPage( 'ExternalPages' );
 		wfLoadExtensionMessages( 'ExternalPages' );
-    }
-	
-	/*
-	 * entry point (retrieve parsed page, convert rel links to full
-	 * urls that direct to the remote site
-	 * $par would be the subpage. we don't need it 
-	 */
-	function execute( $par ) {
+    }	
+    /*
+     * entry point (retrieve parsed page, convert rel links to full
+     * urls that direct to the remote site
+     * $par would be the subpage. we don't need it 
+     */
+    function execute( $par ) {
 		global $wgUser, $wgRequest;
-		
+      
 		wfLoadExtensionMessages( 'ExternalPages' );
 		$this->setHeaders();
 		if ( ! $this->parseParams() ) {
-			return(false);
+			return( false );
 		}
 		if ( ! $this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();
-			return(false);
+			return( false );
 		}
-
-		$this->retrieveExternalPage( $this->constructURL() );
+      
+		$this->constructURL();
+		$this->retrieveExternalPage();
 		
-	}
-
-	/* 
-	 * process parameters of the request
-	 */
-	private function parseParams() {
+    }
+    
+    /* 
+     * process parameters of the request
+     */
+    private function parseParams() {
 		global $wgRequest, $wgServer;
-
+      
 		if (!$wgRequest->getVal( 'EPyear') ) {
 			$this->mYear=false;
 		}
@@ -59,25 +67,25 @@ class ExternalPages extends SpecialPage {
 			// if this code is still being used 50 years from now, replace it :-P
 			if (! (( $this->mYear > 2000 ) && ( $this->mYear < 2050 ))) { 
 				ExternalPagesErrors::showError( 'externalpages-bad-year' );
-				return(false);
+				return( false );
 			}
 		}
-		
+      
 		if ( !$wgRequest->getVal( 'EPlanguage' ) ) {
 			$this->mLang=false;
 		}
 		else {
 			$this->mLang = $wgRequest->getVal( 'EPlanguage' );
 			$knownLanguages = Language::getLanguageNames( false );
-			if ( !array_key_exists( $code, $knownLanguages ) ) {
+			if ( !array_key_exists( $this->mLang, $knownLanguages ) ) {
 				ExternalPagesErrors::showError( 'externalpages-bad-language' );
-				return(false);
+				return( false );
 			}
 		}
 
 		if ( !$wgRequest->getVal( 'EPproject' ) ) {
 			ExternalPagesErrors::showError( 'externalpages-no-project' );
-			return(false);
+			return( false );
 		}
 		else {
 			$this->mProject = $wgRequest->getVal( 'EPproject' );
@@ -94,41 +102,106 @@ class ExternalPages extends SpecialPage {
 			return(false);
 		}
 		$this->mPage = $wgRequest->getVal( 'EPpage' );
-		return(true);
-	}
+		return( true );
+    }
 
-	private function constructURL() {
+    private function constructURL() {
 		$url = "http://" . $this->mProject . "/w/api.php?action=parse&page=";
 		$title = ( $this->mYear ? $this->mYear."/" : "" ) . $this->mPage;
 		$title .=  $this->mLang ? "/".$this->mLang : "" ;
 		$title = urlencode( $title );
-		$url = $url . $title . '&format=xml';
-		return( $url );
-	}
+		$url = $url . $title . '&format=php';
+		$this->mPageURL = $url;
+    }
 
-	private function retrieveExternalPage( $url ) {
-		global $wgOut, $wgRequest;
+    public function cacheHeaders() {
+		global $wgRequest;
 
-		$url_text = @file_get_contents( $url );
-		if ( empty( $url_text ) )  {
-			ExternalPagesErrors::showError( 'externalpages-bad-url' );
-			return(false);
+		$smaxage = self::EP_SMAXAGE;
+		$maxage = self::EP_MAXAGE;
+
+		$public = ( session_id() == '' );
+		
+		if ( $public ) {
+			$wgRequest->response()->header( "Cache-Control: public, s-maxage=$smaxage, max-age=$maxage" );
+		} else {
+			$wgRequest->response()->header( "Cache-Control: private, s-maxage=0, max-age=$maxage" );
 		}
-		else {
-			if ( preg_match('/<text[^>]*>([^<]*)<\/text>/',$url_text,$matches) ) {
-				$text = $matches[1];
-				$text = html_entity_decode( $text );
-				$absurl = '<a href="http://'.$this->mProject."/";
-				$text = str_replace( '<a href="/', $absurl, $text );
-				$wgOut->addHTML( $text );
-			}
-			else {
-				ExternalPagesErrors::showError( 'externalpages-bad-url-data' );
+		return( true );
+    }
+
+    private function getCacheKey( $string ) {
+		return( wfMemcKey( 'externalpages', $string ) );
+    }
+
+    private function getPageFromCache() {
+		global $wgMemc;
+	  
+		wfProfileIn( __METHOD__ );
+
+		if ( ! $this->mPageURL ) {
+			$this->constructURL();
+		}
+
+		$this->mPageText = $wgMemc->get( $this->getCacheKey( $this->mPageURL ) );
+		if ( ! $this->mPageText ) {
+			wfDebugLog( 'ExternalPages', "Remote Page Text: cache miss for {$this->mPageURL} " );
+			wfProfileOut( __METHOD__ );
+			return( false );
+		}
+		wfProfileOut( __METHOD__ );
+		return( true );
+    }
+
+    private function savePageToCache() {
+		global $wgMemc;
+
+		wfDebugLog( 'ExternalPages', "Saving text {$this->mPageURL} to cache." );
+		$wgMemc->set( $this->getCacheKey( $this->mPageURL ), $this->mPageText, self::EP_MEMCACHE_EXP );
+    }
+
+    private function retrieveExternalPage() {
+		global $wgOut, $wgRequest, $wgHooks;
+      
+		if ( ! $this->mPageURL ) {
+			$this->constructURL();
+		}
+
+		// try from cache first
+		$this->getPageFromCache();
+
+		if ( ! $this->mPageText ) {
+			$serializedText = Http::get( $this->mPageURL );
+
+			if ( empty( $serializedText ) )  {
+				ExternalPagesErrors::showError( 'externalpages-bad-url' );
 				return(false);
 			}
+			else {
+				$text = unserialize( $serializedText );
+			}
+
+			if ( isset( $text['parse'] ) && ( isset( $text['parse']['text'] ) ) ) {
+				$this->mPageText = $text['parse']['text']['*'];
+				$absurl = '<a href="http://'.$this->mProject."/";
+				$this->mPageText = str_replace( '<a href="/', $absurl, $this->mPageText );
+			}
+			$this->savePageToCache();
+		}
+		else {
+			wfDebugLog( 'ExternalPages', "Retrieved {$this->mPageURL} from cache." );
+		}
+
+		if ( $this->mPageText ) {
+			$wgHooks['CacheHeadersAfterSet'][] = array( $this, 'cacheHeaders' );
+			$wgOut->addHTML( $this->mPageText );
+		}
+		else {
+			ExternalPagesErrors::showError( 'externalpages-bad-url-data' );
+			return( false );
 		}
 		return;
-	}
+    }
 }
 
 /*
@@ -140,10 +213,10 @@ class ExternalPagesErrors {
 		global $wgOut;
 		
 		$args = func_get_args();
-		
+
 		array_shift( $args );
 		$msg =  wfMsg( $errorText, $args );
-		
+
 		$wgOut->addWikiText( "<div class=\"errorbox\" style=\"float:none;\">" .
 							 $msg .
 							 "</div>" );
