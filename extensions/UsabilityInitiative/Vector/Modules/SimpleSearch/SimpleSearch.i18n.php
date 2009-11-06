@@ -12,10 +12,8 @@ $messages = array();
  * @author Trevor Parscal
  */
 $messages['en'] = array(
-	'simplesearch' => 'Simple search',
-	'simplesearch-desc' => "Adds extra functionality to the Vector's simplified search",
-	'simplesearch-search' => 'Search',
-	'simplesearch-containing' => 'containing...',
+	'vector-simplesearch-search' => 'Search',
+	'vector-simplesearch-containing' => 'containing...',
 );
 
 /** Message documentation (Message documentation)
@@ -24,39 +22,39 @@ $messages['en'] = array(
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'simplesearch-desc' => '{{desc}}',
-	'simplesearch-search' => 'Greyed out default text in the simple search box in the Vector skin. (It disappears and lets the user enter the requested search terms when the search box receives focus.)
+	'vector-simplesearch-desc' => '{{desc}}',
+	'vector-simplesearch-search' => 'Greyed out default text in the simple search box in the Vector skin. (It disappears and lets the user enter the requested search terms when the search box receives focus.)
 
 {{Identical|Search}}',
-	'simplesearch-containing' => 'Label used in the special item of the search suggestions list which gives the user an option to perform a full text search for the term.',
+	'vector-simplesearch-containing' => 'Label used in the special item of the search suggestions list which gives the user an option to perform a full text search for the term.',
 );
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
 $messages['af'] = array(
-	'simplesearch' => 'Eenvoudige soek',
-	'simplesearch-desc' => 'Voeg ekstra funksionaliteit by die vereenvoudigde soek in Vector',
-	'simplesearch-search' => 'Soek',
-	'simplesearch-containing' => 'bevat...',
+	'vector-simplesearch' => 'Eenvoudige soek',
+	'vector-simplesearch-desc' => 'Voeg ekstra funksionaliteit by die vereenvoudigde soek in Vector',
+	'vector-simplesearch-search' => 'Soek',
+	'vector-simplesearch-containing' => 'bevat...',
 );
 
 /** Arabic (العربية)
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'simplesearch' => 'بحث بسيط',
-	'simplesearch-desc' => 'يضيف خصائص جديدة إلى بحث ڤكتور المبسّط',
-	'simplesearch-search' => 'ابحث',
-	'simplesearch-containing' => 'يحتوي...',
+	'vector-simplesearch' => 'بحث بسيط',
+	'vector-simplesearch-desc' => 'يضيف خصائص جديدة إلى بحث ڤكتور المبسّط',
+	'vector-simplesearch-search' => 'ابحث',
+	'vector-simplesearch-containing' => 'يحتوي...',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'simplesearch' => 'كلام بسيط',
-	'simplesearch-search' => 'تدوير',
+	'vector-simplesearch' => 'كلام بسيط',
+	'vector-simplesearch-search' => 'تدوير',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -64,10 +62,10 @@ $messages['arz'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'simplesearch' => 'Просты пошук',
-	'simplesearch-desc' => 'Дадае дадатковыя магчымасьці да спрошчанага пошуку ў афармленьні «Вэктар»',
-	'simplesearch-search' => 'Пошук',
-	'simplesearch-containing' => 'утрымлівае...',
+	'vector-simplesearch' => 'Просты пошук',
+	'vector-simplesearch-desc' => 'Дадае дадатковыя магчымасьці да спрошчанага пошуку ў афармленьні «Вэктар»',
+	'vector-simplesearch-search' => 'Пошук',
+	'vector-simplesearch-containing' => 'утрымлівае...',
 );
 
 /** Bulgarian (Български)
@@ -75,38 +73,38 @@ $messages['be-tarask'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
-	'simplesearch' => 'Просто търсене',
-	'simplesearch-search' => 'Търсене',
+	'vector-simplesearch' => 'Просто търсене',
+	'vector-simplesearch-search' => 'Търсене',
 );
 
 /** Bengali (বাংলা)
  * @author Bellayet
  */
 $messages['bn'] = array(
-	'simplesearch' => 'সহজ অনুসন্ধান',
-	'simplesearch-desc' => 'ভেক্টরের সরলীকৃত অনুসন্ধানে বাড়তি ফাংশনালিটি যুক্ত করে',
-	'simplesearch-search' => 'অনুসন্ধান',
-	'simplesearch-containing' => 'যা আছে...',
+	'vector-simplesearch' => 'সহজ অনুসন্ধান',
+	'vector-simplesearch-desc' => 'ভেক্টরের সরলীকৃত অনুসন্ধানে বাড়তি ফাংশনালিটি যুক্ত করে',
+	'vector-simplesearch-search' => 'অনুসন্ধান',
+	'vector-simplesearch-containing' => 'যা আছে...',
 );
 
 /** Breton (Brezhoneg)
  * @author Fulup
  */
 $messages['br'] = array(
-	'simplesearch' => 'Klask eeun',
-	'simplesearch-desc' => "Ouzhpennañ a ra arc'hwelioù all d'ar c'hlask eeunaet Vector",
-	'simplesearch-search' => 'Klask',
-	'simplesearch-containing' => 'ennañ...',
+	'vector-simplesearch' => 'Klask eeun',
+	'vector-simplesearch-desc' => "Ouzhpennañ a ra arc'hwelioù all d'ar c'hlask eeunaet Vector",
+	'vector-simplesearch-search' => 'Klask',
+	'vector-simplesearch-containing' => 'ennañ...',
 );
 
 /** Bosnian (Bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
-	'simplesearch' => 'Jednostavna pretraga',
-	'simplesearch-desc' => 'Dodaje dodatnu funkcionalnost u Vector jednostavnu pretragu',
-	'simplesearch-search' => 'Traži',
-	'simplesearch-containing' => 'sadrži...',
+	'vector-simplesearch' => 'Jednostavna pretraga',
+	'vector-simplesearch-desc' => 'Dodaje dodatnu funkcionalnost u Vector jednostavnu pretragu',
+	'vector-simplesearch-search' => 'Traži',
+	'vector-simplesearch-containing' => 'sadrži...',
 );
 
 /** Catalan (Català)
@@ -114,46 +112,46 @@ $messages['bs'] = array(
  * @author SMP
  */
 $messages['ca'] = array(
-	'simplesearch' => 'Cerca simple',
-	'simplesearch-desc' => 'Afegeix funcionalitat extra a la cerca simplificada de Vector',
-	'simplesearch-search' => 'Cerca',
+	'vector-simplesearch' => 'Cerca simple',
+	'vector-simplesearch-desc' => 'Afegeix funcionalitat extra a la cerca simplificada de Vector',
+	'vector-simplesearch-search' => 'Cerca',
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
-	'simplesearch' => 'گەڕانی ساکار',
-	'simplesearch-search' => 'گەڕان',
+	'vector-simplesearch' => 'گەڕانی ساکار',
+	'vector-simplesearch-search' => 'گەڕان',
 );
 
 /** Czech (Česky)
  * @author Mormegil
  */
 $messages['cs'] = array(
-	'simplesearch' => 'Zjednodušené hledání',
-	'simplesearch-desc' => 'Rozšiřuje funkcionalitu zjednodušeného hledání ve vzhledu Vektor',
-	'simplesearch-search' => 'Hledat',
-	'simplesearch-containing' => 'obsahující…',
+	'vector-simplesearch' => 'Zjednodušené hledání',
+	'vector-simplesearch-desc' => 'Rozšiřuje funkcionalitu zjednodušeného hledání ve vzhledu Vektor',
+	'vector-simplesearch-search' => 'Hledat',
+	'vector-simplesearch-containing' => 'obsahující…',
 );
 
 /** Danish (Dansk)
  * @author Byrial
  */
 $messages['da'] = array(
-	'simplesearch' => 'Enkel søgning',
-	'simplesearch-desc' => 'Tilføjer ekstra funktionalitet til Vectors forenklede søgning',
-	'simplesearch-search' => 'Søg',
+	'vector-simplesearch' => 'Enkel søgning',
+	'vector-simplesearch-desc' => 'Tilføjer ekstra funktionalitet til Vectors forenklede søgning',
+	'vector-simplesearch-search' => 'Søg',
 );
 
 /** German (Deutsch)
  * @author Metalhead64
  */
 $messages['de'] = array(
-	'simplesearch' => 'Einfache Suche',
-	'simplesearch-desc' => 'Fügt Extra-Funktionalität zur vereinfachten Suche des Vektor-Skins hinzu',
-	'simplesearch-search' => 'Suche',
-	'simplesearch-containing' => 'enthält …',
+	'vector-simplesearch' => 'Einfache Suche',
+	'vector-simplesearch-desc' => 'Fügt Extra-Funktionalität zur vereinfachten Suche des Vektor-Skins hinzu',
+	'vector-simplesearch-search' => 'Suche',
+	'vector-simplesearch-containing' => 'enthält …',
 );
 
 /** Zazaki (Zazaki)
@@ -161,20 +159,20 @@ $messages['de'] = array(
  * @author Xoser
  */
 $messages['diq'] = array(
-	'simplesearch' => 'cıgêrayişo basit',
-	'simplesearch-desc' => 'Cigêreyişê Vectorî ra extra xacetî de keno',
-	'simplesearch-search' => 'cıgêr',
-	'simplesearch-containing' => 'tede esto...',
+	'vector-simplesearch' => 'cıgêrayişo basit',
+	'vector-simplesearch-desc' => 'Cigêreyişê Vectorî ra extra xacetî de keno',
+	'vector-simplesearch-search' => 'cıgêr',
+	'vector-simplesearch-containing' => 'tede esto...',
 );
 
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'simplesearch' => 'Jadnore pytanje',
-	'simplesearch-desc' => 'Pśidawa zjadnorjonemu pytanjeju Vectora wósebnu funkcionalnosć.',
-	'simplesearch-search' => 'Pytaś',
-	'simplesearch-containing' => 'wopśimujo...',
+	'vector-simplesearch' => 'Jadnore pytanje',
+	'vector-simplesearch-desc' => 'Pśidawa zjadnorjonemu pytanjeju Vectora wósebnu funkcionalnosć.',
+	'vector-simplesearch-search' => 'Pytaś',
+	'vector-simplesearch-containing' => 'wopśimujo...',
 );
 
 /** Greek (Ελληνικά)
@@ -182,20 +180,20 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
-	'simplesearch' => 'Απλή αναζήτηση',
-	'simplesearch-desc' => 'Προσθέτει έξτρα λειτουργικότητα στην απλοποιημένη αναζήτηση του Vector',
-	'simplesearch-search' => 'Αναζήτηση',
-	'simplesearch-containing' => 'περιέχει...',
+	'vector-simplesearch' => 'Απλή αναζήτηση',
+	'vector-simplesearch-desc' => 'Προσθέτει έξτρα λειτουργικότητα στην απλοποιημένη αναζήτηση του Vector',
+	'vector-simplesearch-search' => 'Αναζήτηση',
+	'vector-simplesearch-containing' => 'περιέχει...',
 );
 
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'simplesearch' => 'Simpla serĉo',
-	'simplesearch-desc' => 'Aldonas pluan funkciadon al la simpligita serĉo de Vector.',
-	'simplesearch-search' => 'Serĉi',
-	'simplesearch-containing' => 'enhavas...',
+	'vector-simplesearch' => 'Simpla serĉo',
+	'vector-simplesearch-desc' => 'Aldonas pluan funkciadon al la simpligita serĉo de Vector.',
+	'vector-simplesearch-search' => 'Serĉi',
+	'vector-simplesearch-containing' => 'enhavas...',
 );
 
 /** Spanish (Español)
@@ -206,18 +204,18 @@ $messages['eo'] = array(
  * @author Omnipaedista
  */
 $messages['es'] = array(
-	'simplesearch' => 'Búsqueda simple',
-	'simplesearch-desc' => 'Agregue funcionalidades extra al vector de búsqueda simple',
-	'simplesearch-search' => 'Búsqueda',
-	'simplesearch-containing' => 'conteniendo...',
+	'vector-simplesearch' => 'Búsqueda simple',
+	'vector-simplesearch-desc' => 'Agregue funcionalidades extra al vector de búsqueda simple',
+	'vector-simplesearch-search' => 'Búsqueda',
+	'vector-simplesearch-containing' => 'conteniendo...',
 );
 
 /** Estonian (Eesti)
  * @author Avjoska
  */
 $messages['et'] = array(
-	'simplesearch' => 'Lihtotsing',
-	'simplesearch-search' => 'Otsi',
+	'vector-simplesearch' => 'Lihtotsing',
+	'vector-simplesearch-search' => 'Otsi',
 );
 
 /** Basque (Euskara)
@@ -225,18 +223,18 @@ $messages['et'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
-	'simplesearch' => 'Bilaketa arrunta',
-	'simplesearch-desc' => 'Funtzio gehiagarria gehitzen du Vector-en bilaketa erraztura',
-	'simplesearch-search' => 'Bilatu',
-	'simplesearch-containing' => 'edukian...',
+	'vector-simplesearch' => 'Bilaketa arrunta',
+	'vector-simplesearch-desc' => 'Funtzio gehiagarria gehitzen du Vector-en bilaketa erraztura',
+	'vector-simplesearch-search' => 'Bilatu',
+	'vector-simplesearch-containing' => 'edukian...',
 );
 
 /** Persian (فارسی)
  * @author Mardetanha
  */
 $messages['fa'] = array(
-	'simplesearch' => 'جستجوی ساده',
-	'simplesearch-search' => 'جستجو',
+	'vector-simplesearch' => 'جستجوی ساده',
+	'vector-simplesearch-search' => 'جستجو',
 );
 
 /** Finnish (Suomi)
@@ -244,10 +242,10 @@ $messages['fa'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'simplesearch' => 'Yksinkertainen haku',
-	'simplesearch-desc' => 'Lisää lisätoimintoja Vectorin yksinkertaistettuun hakuun.',
-	'simplesearch-search' => 'Etsi',
-	'simplesearch-containing' => 'sisältää...',
+	'vector-simplesearch' => 'Yksinkertainen haku',
+	'vector-simplesearch-desc' => 'Lisää lisätoimintoja Vectorin yksinkertaistettuun hakuun.',
+	'vector-simplesearch-search' => 'Etsi',
+	'vector-simplesearch-containing' => 'sisältää...',
 );
 
 /** French (Français)
@@ -255,10 +253,10 @@ $messages['fi'] = array(
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'simplesearch' => 'Recherche simple',
-	'simplesearch-desc' => "Ajoute des fonctionnalités à la recherche simplifiée de l'habillage Vector",
-	'simplesearch-search' => 'Rechercher',
-	'simplesearch-containing' => 'contenant...',
+	'vector-simplesearch' => 'Recherche simple',
+	'vector-simplesearch-desc' => "Ajoute des fonctionnalités à la recherche simplifiée de l'habillage Vector",
+	'vector-simplesearch-search' => 'Rechercher',
+	'vector-simplesearch-containing' => 'contenant...',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -266,17 +264,17 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'simplesearch-search' => 'Rechèrche',
+	'vector-simplesearch-search' => 'Rechèrche',
 );
 
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
-	'simplesearch' => 'Busca sinxela',
-	'simplesearch-desc' => 'Engade a funcionalidade adicional á busca simplificada do Vector',
-	'simplesearch-search' => 'Procurar',
-	'simplesearch-containing' => 'que conteña...',
+	'vector-simplesearch' => 'Busca sinxela',
+	'vector-simplesearch-desc' => 'Engade a funcionalidade adicional á busca simplificada do Vector',
+	'vector-simplesearch-search' => 'Procurar',
+	'vector-simplesearch-containing' => 'que conteña...',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -284,27 +282,27 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'simplesearch-search' => 'Ζητεῖν',
-	'simplesearch-containing' => 'περιέχον...',
+	'vector-simplesearch-search' => 'Ζητεῖν',
+	'vector-simplesearch-containing' => 'περιέχον...',
 );
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'simplesearch' => 'Eifachi Suechi',
-	'simplesearch-desc' => 'Fiegt e extra Funktionswys zue dr vereifachte Suechi vum Vekter derzue',
-	'simplesearch-search' => 'Suechi',
-	'simplesearch-containing' => 'din het s …',
+	'vector-simplesearch' => 'Eifachi Suechi',
+	'vector-simplesearch-desc' => 'Fiegt e extra Funktionswys zue dr vereifachte Suechi vum Vekter derzue',
+	'vector-simplesearch-search' => 'Suechi',
+	'vector-simplesearch-containing' => 'din het s …',
 );
 
 /** Manx (Gaelg)
  * @author Shimmin Beg
  */
 $messages['gv'] = array(
-	'simplesearch' => 'Ronsaghey aashagh',
-	'simplesearch-search' => 'Ronsaghey',
-	'simplesearch-containing' => 'goaill stiagh...',
+	'vector-simplesearch' => 'Ronsaghey aashagh',
+	'vector-simplesearch-search' => 'Ronsaghey',
+	'vector-simplesearch-containing' => 'goaill stiagh...',
 );
 
 /** Hebrew (עברית)
@@ -312,10 +310,10 @@ $messages['gv'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'simplesearch' => 'חיפוש פשוט',
-	'simplesearch-desc' => 'הוספת תכונות נוספות לחיפוש המפושט של העיצוב "וקטור"',
-	'simplesearch-search' => 'חיפוש',
-	'simplesearch-containing' => 'כולל...',
+	'vector-simplesearch' => 'חיפוש פשוט',
+	'vector-simplesearch-desc' => 'הוספת תכונות נוספות לחיפוש המפושט של העיצוב "וקטור"',
+	'vector-simplesearch-search' => 'חיפוש',
+	'vector-simplesearch-containing' => 'כולל...',
 );
 
 /** Croatian (Hrvatski)
@@ -323,20 +321,20 @@ $messages['he'] = array(
  * @author Suradnik13
  */
 $messages['hr'] = array(
-	'simplesearch' => 'Jednostavno pretraživanje',
-	'simplesearch-desc' => 'Dodaje dodatne mogućnosti Vectorovom pojednostavljenom pretraživanju',
-	'simplesearch-search' => 'Traži',
-	'simplesearch-containing' => 'sadrži....',
+	'vector-simplesearch' => 'Jednostavno pretraživanje',
+	'vector-simplesearch-desc' => 'Dodaje dodatne mogućnosti Vectorovom pojednostavljenom pretraživanju',
+	'vector-simplesearch-search' => 'Traži',
+	'vector-simplesearch-containing' => 'sadrži....',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'simplesearch' => 'Jednore pytanje',
-	'simplesearch-desc' => 'Přidawa wosebitu funkcionalnosć k zjednorjenej pytanju Vectora.',
-	'simplesearch-search' => 'Pytać',
-	'simplesearch-containing' => 'wobsahuje...',
+	'vector-simplesearch' => 'Jednore pytanje',
+	'vector-simplesearch-desc' => 'Přidawa wosebitu funkcionalnosć k zjednorjenej pytanju Vectora.',
+	'vector-simplesearch-search' => 'Pytać',
+	'vector-simplesearch-containing' => 'wobsahuje...',
 );
 
 /** Hungarian (Magyar)
@@ -344,20 +342,20 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'simplesearch' => 'Egyszerű keresés',
-	'simplesearch-desc' => 'Extra funkciókat biztosít a Vector felület egyszerűsített kereséséhez',
-	'simplesearch-search' => 'Keresés',
-	'simplesearch-containing' => 'tartalmazza…',
+	'vector-simplesearch' => 'Egyszerű keresés',
+	'vector-simplesearch-desc' => 'Extra funkciókat biztosít a Vector felület egyszerűsített kereséséhez',
+	'vector-simplesearch-search' => 'Keresés',
+	'vector-simplesearch-containing' => 'tartalmazza…',
 );
 
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'simplesearch' => 'Recerca simple',
-	'simplesearch-desc' => 'Adde functionalitate extra al recerca simplificate del Vector',
-	'simplesearch-search' => 'Cercar',
-	'simplesearch-containing' => 'continente...',
+	'vector-simplesearch' => 'Recerca simple',
+	'vector-simplesearch-desc' => 'Adde functionalitate extra al recerca simplificate del Vector',
+	'vector-simplesearch-search' => 'Cercar',
+	'vector-simplesearch-containing' => 'continente...',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -365,10 +363,10 @@ $messages['ia'] = array(
  * @author Irwangatot
  */
 $messages['id'] = array(
-	'simplesearch' => 'Pencarian sederhana',
-	'simplesearch-desc' => 'Tambahkan fungsionalitas tambahan untuk pencarian sederhana Vector',
-	'simplesearch-search' => 'Cari',
-	'simplesearch-containing' => 'isian ...',
+	'vector-simplesearch' => 'Pencarian sederhana',
+	'vector-simplesearch-desc' => 'Tambahkan fungsionalitas tambahan untuk pencarian sederhana Vector',
+	'vector-simplesearch-search' => 'Cari',
+	'vector-simplesearch-containing' => 'isian ...',
 );
 
 /** Italian (Italiano)
@@ -376,10 +374,10 @@ $messages['id'] = array(
  * @author Gianfranco
  */
 $messages['it'] = array(
-	'simplesearch' => 'Ricerca semplice',
-	'simplesearch-desc' => 'Aggiunge funzionalità supplementari alla ricerca semplificata di Vector',
-	'simplesearch-search' => 'Ricerca',
-	'simplesearch-containing' => 'contenente...',
+	'vector-simplesearch' => 'Ricerca semplice',
+	'vector-simplesearch-desc' => 'Aggiunge funzionalità supplementari alla ricerca semplificata di Vector',
+	'vector-simplesearch-search' => 'Ricerca',
+	'vector-simplesearch-containing' => 'contenente...',
 );
 
 /** Japanese (日本語)
@@ -387,100 +385,100 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'simplesearch' => '基本検索',
-	'simplesearch-desc' => 'ベクターの簡略化された検索機能に追加機能を追加する',
-	'simplesearch-search' => '検索',
-	'simplesearch-containing' => 'この語句を全文検索',
+	'vector-simplesearch' => '基本検索',
+	'vector-simplesearch-desc' => 'ベクターの簡略化された検索機能に追加機能を追加する',
+	'vector-simplesearch-search' => '検索',
+	'vector-simplesearch-containing' => 'この語句を全文検索',
 );
 
 /** Javanese (Basa Jawa)
  * @author Pras
  */
 $messages['jv'] = array(
-	'simplesearch' => 'Panggolèkan prasaja',
-	'simplesearch-desc' => 'Tambahna fungsionalitas tambahan kanggo panggolèkan prasaja Vector',
-	'simplesearch-search' => 'Golèk',
+	'vector-simplesearch' => 'Panggolèkan prasaja',
+	'vector-simplesearch-desc' => 'Tambahna fungsionalitas tambahan kanggo panggolèkan prasaja Vector',
+	'vector-simplesearch-search' => 'Golèk',
 );
 
 /** Georgian (ქართული)
  * @author Alsandro
  */
 $messages['ka'] = array(
-	'simplesearch' => 'მარტივი ძიება',
-	'simplesearch-desc' => 'ამატებს დამატებით ფუნქციებს ვექტორის გამარტივებულ საძიებელს',
-	'simplesearch-search' => 'ძიება',
+	'vector-simplesearch' => 'მარტივი ძიება',
+	'vector-simplesearch-desc' => 'ამატებს დამატებით ფუნქციებს ვექტორის გამარტივებულ საძიებელს',
+	'vector-simplesearch-search' => 'ძიება',
 );
 
 /** Khmer (ភាសាខ្មែរ)
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
-	'simplesearch' => 'ស្វែងរកសាមញ្ញ​',
-	'simplesearch-search' => 'ស្វែងរក​',
+	'vector-simplesearch' => 'ស្វែងរកសាមញ្ញ​',
+	'vector-simplesearch-search' => 'ស្វែងរក​',
 );
 
 /** Korean (한국어)
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'simplesearch' => '간단한 검색',
-	'simplesearch-search' => '검색',
+	'vector-simplesearch' => '간단한 검색',
+	'vector-simplesearch-search' => '검색',
 );
 
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'simplesearch' => 'Eifach Söhke',
-	'simplesearch-desc' => 'Deiht extra Müjjeleschkeijte beim „{{int:simplesearch}}“ vun de Bedeen-Bovverfläsh „Vektor“ bei.',
-	'simplesearch-search' => 'Söhke',
-	'simplesearch-containing' => 'dren änthallde…',
+	'vector-simplesearch' => 'Eifach Söhke',
+	'vector-simplesearch-desc' => 'Deiht extra Müjjeleschkeijte beim „{{int:vector-simplesearch}}“ vun de Bedeen-Bovverfläsh „Vektor“ bei.',
+	'vector-simplesearch-search' => 'Söhke',
+	'vector-simplesearch-containing' => 'dren änthallde…',
 );
 
 /** Latin (Latina)
  * @author Omnipaedista
  */
 $messages['la'] = array(
-	'simplesearch-search' => 'Quaerere',
+	'vector-simplesearch-search' => 'Quaerere',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'simplesearch' => 'Einfach Sich',
-	'simplesearch-desc' => 'Setzt eng extra Fonctionalitéit bäi déi einfach Sich derbäi.',
-	'simplesearch-search' => 'Sich',
-	'simplesearch-containing' => 'mat ...',
+	'vector-simplesearch' => 'Einfach Sich',
+	'vector-simplesearch-desc' => 'Setzt eng extra Fonctionalitéit bäi déi einfach Sich derbäi.',
+	'vector-simplesearch-search' => 'Sich',
+	'vector-simplesearch-containing' => 'mat ...',
 );
 
 /** Limburgish (Limburgs)
  * @author Pahles
  */
 $messages['li'] = array(
-	'simplesearch' => 'Sumpel zeuke',
-	'simplesearch-desc' => "Deit extra fónksionaliteit bie aan 't sumpel zeuke in Vector",
-	'simplesearch-search' => 'Zeuke',
-	'simplesearch-containing' => 'bevat...',
+	'vector-simplesearch' => 'Sumpel zeuke',
+	'vector-simplesearch-desc' => "Deit extra fónksionaliteit bie aan 't sumpel zeuke in Vector",
+	'vector-simplesearch-search' => 'Zeuke',
+	'vector-simplesearch-containing' => 'bevat...',
 );
 
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
 $messages['lt'] = array(
-	'simplesearch' => 'Paprasta paieška',
-	'simplesearch-desc' => "Prideda papildomą funkcionalumą Vector's supaprastintai paieškai",
-	'simplesearch-search' => 'Ieškoti',
+	'vector-simplesearch' => 'Paprasta paieška',
+	'vector-simplesearch-desc' => "Prideda papildomą funkcionalumą Vector's supaprastintai paieškai",
+	'vector-simplesearch-search' => 'Ieškoti',
 );
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'simplesearch' => 'Едноставно пребарување',
-	'simplesearch-desc' => 'Додава додатна функција на упростеното пребарување на Вектор',
-	'simplesearch-search' => 'Пребарување',
-	'simplesearch-containing' => 'содржи...',
+	'vector-simplesearch' => 'Едноставно пребарување',
+	'vector-simplesearch-desc' => 'Додава додатна функција на упростеното пребарување на Вектор',
+	'vector-simplesearch-search' => 'Пребарување',
+	'vector-simplesearch-containing' => 'содржи...',
 );
 
 /** Malayalam (മലയാളം)
@@ -488,52 +486,52 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'simplesearch' => 'ലളിതമായ തിരച്ചില്‍',
-	'simplesearch-desc' => 'വെക്റ്ററിന്റെ ലളിതമായ തിരച്ചിൽ രീതിയ്ക്ക് കൂടുതൽ സവിശേഷതകൾ ചേർക്കുന്നു',
-	'simplesearch-search' => 'തിരയുക',
-	'simplesearch-containing' => 'ഉൾപ്പെടുത്തുന്നു...',
+	'vector-simplesearch' => 'ലളിതമായ തിരച്ചില്‍',
+	'vector-simplesearch-desc' => 'വെക്റ്ററിന്റെ ലളിതമായ തിരച്ചിൽ രീതിയ്ക്ക് കൂടുതൽ സവിശേഷതകൾ ചേർക്കുന്നു',
+	'vector-simplesearch-search' => 'തിരയുക',
+	'vector-simplesearch-containing' => 'ഉൾപ്പെടുത്തുന്നു...',
 );
 
 /** Mongolian (Монгол)
  * @author Chinneeb
  */
 $messages['mn'] = array(
-	'simplesearch-search' => 'Хайх',
+	'vector-simplesearch-search' => 'Хайх',
 );
 
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
-	'simplesearch' => 'Carian mudah',
-	'simplesearch-desc' => 'Menambahkan lebih fungsi dalam penggunaan carian mudah Vector',
-	'simplesearch-search' => 'Cari',
+	'vector-simplesearch' => 'Carian mudah',
+	'vector-simplesearch-desc' => 'Menambahkan lebih fungsi dalam penggunaan carian mudah Vector',
+	'vector-simplesearch-search' => 'Cari',
 );
 
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'simplesearch-search' => 'Zeuken',
+	'vector-simplesearch-search' => 'Zeuken',
 );
 
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'simplesearch' => 'Eenvoudig zoeken',
-	'simplesearch-desc' => 'Voegt extra functionaliteit toe aan het vereenvoudigd zoeken in Vector',
-	'simplesearch-search' => 'Zoeken',
-	'simplesearch-containing' => 'bevat...',
+	'vector-simplesearch' => 'Eenvoudig zoeken',
+	'vector-simplesearch-desc' => 'Voegt extra functionaliteit toe aan het vereenvoudigd zoeken in Vector',
+	'vector-simplesearch-search' => 'Zoeken',
+	'vector-simplesearch-containing' => 'bevat...',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
  */
 $messages['nn'] = array(
-	'simplesearch' => 'Enkelt søk',
-	'simplesearch-search' => 'Søk',
-	'simplesearch-containing' => 'inneheld ...',
+	'vector-simplesearch' => 'Enkelt søk',
+	'vector-simplesearch-search' => 'Søk',
+	'vector-simplesearch-containing' => 'inneheld ...',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -541,20 +539,20 @@ $messages['nn'] = array(
  * @author Laaknor
  */
 $messages['no'] = array(
-	'simplesearch' => 'Enkelt søk',
-	'simplesearch-desc' => 'Legger til ekstra funksjonalitet til Vectors forenklede søk',
-	'simplesearch-search' => 'Søk',
-	'simplesearch-containing' => 'inneholder …',
+	'vector-simplesearch' => 'Enkelt søk',
+	'vector-simplesearch-desc' => 'Legger til ekstra funksjonalitet til Vectors forenklede søk',
+	'vector-simplesearch-search' => 'Søk',
+	'vector-simplesearch-containing' => 'inneholder …',
 );
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'simplesearch' => 'Recèrca simpla',
-	'simplesearch-desc' => "Apond de foncionalitats a la recèrca simplificada de l'abilhatge Vector",
-	'simplesearch-search' => 'Recercar',
-	'simplesearch-containing' => 'que conten...',
+	'vector-simplesearch' => 'Recèrca simpla',
+	'vector-simplesearch-desc' => "Apond de foncionalitats a la recèrca simplificada de l'abilhatge Vector",
+	'vector-simplesearch-search' => 'Recercar',
+	'vector-simplesearch-containing' => 'que conten...',
 );
 
 /** Polish (Polski)
@@ -562,36 +560,36 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'simplesearch' => 'Proste wyszukiwanie',
-	'simplesearch-desc' => 'Dodaje dodatkową funkcjonalność prostego wyszukiwania w skórce Vector',
-	'simplesearch-search' => 'Szukaj',
-	'simplesearch-containing' => 'zawierające...',
+	'vector-simplesearch' => 'Proste wyszukiwanie',
+	'vector-simplesearch-desc' => 'Dodaje dodatkową funkcjonalność prostego wyszukiwania w skórce Vector',
+	'vector-simplesearch-search' => 'Szukaj',
+	'vector-simplesearch-containing' => 'zawierające...',
 );
 
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'simplesearch' => 'Arserca sempia',
-	'simplesearch-desc' => "A gionta funsionalità extra a l'arserca semplifià ëd Vector",
-	'simplesearch-search' => 'Arserca',
-	'simplesearch-containing' => 'contenent ...',
+	'vector-simplesearch' => 'Arserca sempia',
+	'vector-simplesearch-desc' => "A gionta funsionalità extra a l'arserca semplifià ëd Vector",
+	'vector-simplesearch-search' => 'Arserca',
+	'vector-simplesearch-containing' => 'contenent ...',
 );
 
 /** Pontic (Ποντιακά)
  * @author Consta
  */
 $messages['pnt'] = array(
-	'simplesearch-search' => 'Αράεμαν',
+	'vector-simplesearch-search' => 'Αράεμαν',
 );
 
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'simplesearch' => 'ساده پلټنه',
-	'simplesearch-desc' => 'د وېکټور ساده پلټنې ته نورې کړنې ورګډوي',
-	'simplesearch-search' => 'پلټل',
+	'vector-simplesearch' => 'ساده پلټنه',
+	'vector-simplesearch-desc' => 'د وېکټور ساده پلټنې ته نورې کړنې ورګډوي',
+	'vector-simplesearch-search' => 'پلټل',
 );
 
 /** Portuguese (Português)
@@ -600,46 +598,46 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'simplesearch' => 'Pesquisa simples',
-	'simplesearch-desc' => 'Adiciona funcionalidades extra à pesquisa simplificada do Vector.',
-	'simplesearch-search' => 'Pesquisa',
-	'simplesearch-containing' => 'contendo...',
+	'vector-simplesearch' => 'Pesquisa simples',
+	'vector-simplesearch-desc' => 'Adiciona funcionalidades extra à pesquisa simplificada do Vector.',
+	'vector-simplesearch-search' => 'Pesquisa',
+	'vector-simplesearch-containing' => 'contendo...',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
-	'simplesearch' => 'Pesquisa simples',
-	'simplesearch-desc' => 'Adiciona funcionalidades extras à pesquisa simplificada do Vector.',
-	'simplesearch-search' => 'Pesquisa',
+	'vector-simplesearch' => 'Pesquisa simples',
+	'vector-simplesearch-desc' => 'Adiciona funcionalidades extras à pesquisa simplificada do Vector.',
+	'vector-simplesearch-search' => 'Pesquisa',
 );
 
 /** Quechua (Runa Simi)
  * @author AlimanRuna
  */
 $messages['qu'] = array(
-	'simplesearch' => 'Sikllalla maskay',
-	'simplesearch-desc' => 'Sinkurwaq illwap sikllalla maskayninman huk ruranakunatam yapan',
-	'simplesearch-search' => 'Maskay',
+	'vector-simplesearch' => 'Sikllalla maskay',
+	'vector-simplesearch-desc' => 'Sinkurwaq illwap sikllalla maskayninman huk ruranakunatam yapan',
+	'vector-simplesearch-search' => 'Maskay',
 );
 
 /** Romanian (Română)
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'simplesearch' => 'Căutare simplă',
-	'simplesearch-search' => 'Căutaţi',
+	'vector-simplesearch' => 'Căutare simplă',
+	'vector-simplesearch-search' => 'Căutaţi',
 );
 
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'simplesearch' => 'Ricerca semblice',
-	'simplesearch-desc' => "Aggiunge 'na funzione extra a 'u vettore d'a ricerche semblificate",
-	'simplesearch-search' => 'Cirche',
-	'simplesearch-containing' => 'tène...',
+	'vector-simplesearch' => 'Ricerca semblice',
+	'vector-simplesearch-desc' => "Aggiunge 'na funzione extra a 'u vettore d'a ricerche semblificate",
+	'vector-simplesearch-search' => 'Cirche',
+	'vector-simplesearch-containing' => 'tène...',
 );
 
 /** Russian (Русский)
@@ -647,48 +645,48 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'simplesearch' => 'Простой поиск',
-	'simplesearch-desc' => 'Добавляет больше функциональности в простой поиск Vector',
-	'simplesearch-search' => 'Поиск',
-	'simplesearch-containing' => 'содержащие…',
+	'vector-simplesearch' => 'Простой поиск',
+	'vector-simplesearch-desc' => 'Добавляет больше функциональности в простой поиск Vector',
+	'vector-simplesearch-search' => 'Поиск',
+	'vector-simplesearch-containing' => 'содержащие…',
 );
 
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'simplesearch' => 'Судургу көрдөөһүн',
-	'simplesearch-desc' => 'Vector диэн судургу көрдөөччүгэ эбии кыахтары биэрэр',
-	'simplesearch-search' => 'Көрдөөһүн',
-	'simplesearch-containing' => 'иһинээҕи...',
+	'vector-simplesearch' => 'Судургу көрдөөһүн',
+	'vector-simplesearch-desc' => 'Vector диэн судургу көрдөөччүгэ эбии кыахтары биэрэр',
+	'vector-simplesearch-search' => 'Көрдөөһүн',
+	'vector-simplesearch-containing' => 'иһинээҕи...',
 );
 
 /** Sicilian (Sicilianu)
  * @author Melos
  */
 $messages['scn'] = array(
-	'simplesearch' => 'Ricerca semplici',
-	'simplesearch-desc' => 'Junci funzionalità supplemintari â ricerca simplificata di Vector',
-	'simplesearch-search' => 'Ricerca',
+	'vector-simplesearch' => 'Ricerca semplici',
+	'vector-simplesearch-desc' => 'Junci funzionalità supplemintari â ricerca simplificata di Vector',
+	'vector-simplesearch-search' => 'Ricerca',
 );
 
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
-	'simplesearch' => 'Jednoduché vyhľadávanie',
-	'simplesearch-desc' => 'Pridáva ďalšiu funkcionalitu k zjednodušenému vyhľadávaniu témy vzhľadu Vector',
-	'simplesearch-search' => 'Hľadať',
-	'simplesearch-containing' => 'obsahuje...',
+	'vector-simplesearch' => 'Jednoduché vyhľadávanie',
+	'vector-simplesearch-desc' => 'Pridáva ďalšiu funkcionalitu k zjednodušenému vyhľadávaniu témy vzhľadu Vector',
+	'vector-simplesearch-search' => 'Hľadať',
+	'vector-simplesearch-containing' => 'obsahuje...',
 );
 
 /** Slovenian (Slovenščina)
  * @author Smihael
  */
 $messages['sl'] = array(
-	'simplesearch' => 'Enostavno iskanje',
-	'simplesearch-desc' => 'Dodaja dodatne funkcionalnosti za poenostavljeno iskanje Vector',
-	'simplesearch-search' => 'Iskanje',
+	'vector-simplesearch' => 'Enostavno iskanje',
+	'vector-simplesearch-desc' => 'Dodaja dodatne funkcionalnosti za poenostavljeno iskanje Vector',
+	'vector-simplesearch-search' => 'Iskanje',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -696,26 +694,26 @@ $messages['sl'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'simplesearch' => 'Једноставна претрага',
-	'simplesearch-search' => 'Претрага',
-	'simplesearch-containing' => 'садржи...',
+	'vector-simplesearch' => 'Једноставна претрага',
+	'vector-simplesearch-search' => 'Претрага',
+	'vector-simplesearch-containing' => 'садржи...',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
-	'simplesearch' => 'Jednostavna pretraga',
-	'simplesearch-search' => 'Pretraga',
+	'vector-simplesearch' => 'Jednostavna pretraga',
+	'vector-simplesearch-search' => 'Pretraga',
 );
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
 $messages['su'] = array(
-	'simplesearch' => 'Sungsian basajan',
-	'simplesearch-search' => 'Sungsi',
-	'simplesearch-containing' => 'ngandung...',
+	'vector-simplesearch' => 'Sungsian basajan',
+	'vector-simplesearch-search' => 'Sungsi',
+	'vector-simplesearch-containing' => 'ngandung...',
 );
 
 /** Swedish (Svenska)
@@ -723,19 +721,19 @@ $messages['su'] = array(
  * @author GameOn
  */
 $messages['sv'] = array(
-	'simplesearch' => 'Enkel sökning',
-	'simplesearch-desc' => 'Lägger till extra funktioner till Vectors förenklade sökning',
-	'simplesearch-search' => 'Sök',
-	'simplesearch-containing' => 'innehåller...',
+	'vector-simplesearch' => 'Enkel sökning',
+	'vector-simplesearch-desc' => 'Lägger till extra funktioner till Vectors förenklade sökning',
+	'vector-simplesearch-search' => 'Sök',
+	'vector-simplesearch-containing' => 'innehåller...',
 );
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
  */
 $messages['sw'] = array(
-	'simplesearch' => 'Tafuti sahili',
-	'simplesearch-search' => 'Kutafuta',
-	'simplesearch-containing' => 'ya maneno...',
+	'vector-simplesearch' => 'Tafuti sahili',
+	'vector-simplesearch-search' => 'Kutafuta',
+	'vector-simplesearch-containing' => 'ya maneno...',
 );
 
 /** Telugu (తెలుగు)
@@ -743,36 +741,36 @@ $messages['sw'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'simplesearch' => 'సాధారణ వెతుకులాట',
-	'simplesearch-search' => 'వెతుకు',
+	'vector-simplesearch' => 'సాధారణ వెతుకులాట',
+	'vector-simplesearch-search' => 'వెతుకు',
 );
 
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */
 $messages['tk'] = array(
-	'simplesearch' => 'Ýönekeý gözleg',
-	'simplesearch-desc' => 'Ýönekeý Vector gözlegine goşmaça funksionallyk goşýar',
-	'simplesearch-search' => 'Gözleg',
-	'simplesearch-containing' => 'öz içine alýar...',
+	'vector-simplesearch' => 'Ýönekeý gözleg',
+	'vector-simplesearch-desc' => 'Ýönekeý Vector gözlegine goşmaça funksionallyk goşýar',
+	'vector-simplesearch-search' => 'Gözleg',
+	'vector-simplesearch-containing' => 'öz içine alýar...',
 );
 
 /** Turkish (Türkçe)
  * @author Joseph
  */
 $messages['tr'] = array(
-	'simplesearch' => 'Basit arama',
-	'simplesearch-desc' => "Vector'un basitleştirilmiş aramasına ilave işlevler ekler",
-	'simplesearch-search' => 'Ara',
-	'simplesearch-containing' => 'içeren...',
+	'vector-simplesearch' => 'Basit arama',
+	'vector-simplesearch-desc' => "Vector'un basitleştirilmiş aramasına ilave işlevler ekler",
+	'vector-simplesearch-search' => 'Ara',
+	'vector-simplesearch-containing' => 'içeren...',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Rinatus
  */
 $messages['tt-cyrl'] = array(
-	'simplesearch' => 'Гади эзләү',
-	'simplesearch-search' => 'Эзләү',
+	'vector-simplesearch' => 'Гади эзләү',
+	'vector-simplesearch-search' => 'Эзләү',
 );
 
 /** Ukrainian (Українська)
@@ -781,63 +779,63 @@ $messages['tt-cyrl'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'simplesearch' => 'Простий пошук',
-	'simplesearch-desc' => 'Додає більше функціональності до спрощеного пошуку Vector',
-	'simplesearch-search' => 'Пошук',
-	'simplesearch-containing' => 'що містять...',
+	'vector-simplesearch' => 'Простий пошук',
+	'vector-simplesearch-desc' => 'Додає більше функціональності до спрощеного пошуку Vector',
+	'vector-simplesearch-search' => 'Пошук',
+	'vector-simplesearch-containing' => 'що містять...',
 );
 
 /** Vèneto (Vèneto)
  * @author Candalua
  */
 $messages['vec'] = array(
-	'simplesearch' => 'Riserca sènplise',
-	'simplesearch-desc' => 'Zonta funsionalità agiuntive a la riserca senplificà de Vector',
-	'simplesearch-search' => 'Serca',
-	'simplesearch-containing' => 'che contien...',
+	'vector-simplesearch' => 'Riserca sènplise',
+	'vector-simplesearch-desc' => 'Zonta funsionalità agiuntive a la riserca senplificà de Vector',
+	'vector-simplesearch-search' => 'Serca',
+	'vector-simplesearch-containing' => 'che contien...',
 );
 
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
-	'simplesearch' => 'Järgeline ecind',
-	'simplesearch-desc' => 'Ližadab enambad funkcionaližust Vektoran järgeližhe ecindha',
-	'simplesearch-search' => 'Ectä',
-	'simplesearch-containing' => 'mülütajad...',
+	'vector-simplesearch' => 'Järgeline ecind',
+	'vector-simplesearch-desc' => 'Ližadab enambad funkcionaližust Vektoran järgeližhe ecindha',
+	'vector-simplesearch-search' => 'Ectä',
+	'vector-simplesearch-containing' => 'mülütajad...',
 );
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'simplesearch' => 'Tìm kiếm đơn giản',
-	'simplesearch-desc' => 'Thêm chức năng phụ cho bộ tìm kiếm đơn giản của Bề ngoài Vector',
-	'simplesearch-search' => 'Tìm kiếm',
-	'simplesearch-containing' => 'có chứa...',
+	'vector-simplesearch' => 'Tìm kiếm đơn giản',
+	'vector-simplesearch-desc' => 'Thêm chức năng phụ cho bộ tìm kiếm đơn giản của Bề ngoài Vector',
+	'vector-simplesearch-search' => 'Tìm kiếm',
+	'vector-simplesearch-containing' => 'có chứa...',
 );
 
 /** Mingrelian (მარგალური)
  * @author Lika2672
  */
 $messages['xmf'] = array(
-	'simplesearch-search' => 'გორუა',
+	'vector-simplesearch-search' => 'გორუა',
 );
 
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */
 $messages['yi'] = array(
-	'simplesearch-search' => 'זוכן',
+	'vector-simplesearch-search' => 'זוכן',
 );
 
 /** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
-	'simplesearch' => '簡單搵嘢',
-	'simplesearch-desc' => '加額外功能到Vector嘅簡單搵嘢度',
-	'simplesearch-search' => '搵嘢',
+	'vector-simplesearch' => '簡單搵嘢',
+	'vector-simplesearch-desc' => '加額外功能到Vector嘅簡單搵嘢度',
+	'vector-simplesearch-search' => '搵嘢',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -845,18 +843,18 @@ $messages['yue'] = array(
  * @author Shizhao
  */
 $messages['zh-hans'] = array(
-	'simplesearch' => '简易搜索',
-	'simplesearch-desc' => '向Vector的简易搜索中添加附加功能',
-	'simplesearch-search' => '搜索',
-	'simplesearch-containing' => '含有...',
+	'vector-simplesearch' => '简易搜索',
+	'vector-simplesearch-desc' => '向Vector的简易搜索中添加附加功能',
+	'vector-simplesearch-search' => '搜索',
+	'vector-simplesearch-containing' => '含有...',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'simplesearch' => '簡易搜尋',
-	'simplesearch-desc' => '向Vector的簡化搜尋中增加附加功能',
-	'simplesearch-search' => '搜尋',
+	'vector-simplesearch' => '簡易搜尋',
+	'vector-simplesearch-desc' => '向Vector的簡化搜尋中增加附加功能',
+	'vector-simplesearch-search' => '搜尋',
 );
 
