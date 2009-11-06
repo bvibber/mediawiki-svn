@@ -887,6 +887,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'ct-event-name' => 'പരിപാടിയുടെ പേര്',
 	'ct-expert-header' => '"വിദഗ്ദ്ധ" ഞെക്കലുകൾ',
 	'ct-intermediate-header' => '"മദ്ധ്യവർത്തി" ഞെക്കലുകൾ',
 	'ct-beginner-header' => '"പ്രാരംഭക" ഞെക്കലുകൾ',
@@ -1064,9 +1065,13 @@ $messages['pms'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Lijealso
  */
 $messages['pt'] = array(
+	'clicktracking' => 'Monitorização de cliques da Iniciativa de Usabilidade',
+	'clicktracking-desc' => 'Monitorização de cliques para seguir eventos que não causam refrescamentos de página',
+	'ct-title' => 'Cliques de utilizador agregados',
 	'ct-change-graph' => 'Mudar gráfico',
 	'ct-beginner' => 'Iniciante',
 	'ct-intermediate' => 'Intermediário',
