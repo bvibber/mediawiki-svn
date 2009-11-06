@@ -14,4 +14,5 @@ $messages = array();
 $messages['en'] = array(
 	'geolite-desc' => 'Lightweight GeoIp Redirection',
         'geolite' => 'GeoLite',
-); 
+);
+

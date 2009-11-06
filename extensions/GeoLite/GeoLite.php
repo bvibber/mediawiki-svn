@@ -31,4 +31,3 @@ $wgExtensionMessagesFiles['GeoLite'] = $dir . 'GeoLite.i18n.php';
 $wgSpecialPages['GeoLite'] = 'SpecialGeoLite';
 $wgSpecialPageGroups['GeoLite'] = 'contribution';
 
-?>

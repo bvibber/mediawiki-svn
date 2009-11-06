@@ -44,3 +44,4 @@ class SpecialGeoLite extends SpecialPage {
 	}
 
 }
+
