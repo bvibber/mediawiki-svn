@@ -4519,6 +4519,8 @@ $messages['scn'] = array(
  * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
+	'optin-accept-long' => 'බීටා අනුවාදය අත්හදා බලන්න',
+	'optin-accept-long-anon' => 'ප්‍රවිෂ්ට වී බීටා අනුවාදය අත්හදා බලන්න',
 	'optin-survey-yes' => 'ඔව්',
 	'optin-survey-no' => 'නැත',
 	'optin-survey-question-whyoptout' => 'ඔබ බීටා අනුවාදයෙන් ඉවත් වන්නේ ඇයි? (ගැලපෙන සියල්ල තෝරාගැනුමට කාරුණික වන්න.)',

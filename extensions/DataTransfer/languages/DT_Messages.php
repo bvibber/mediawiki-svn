@@ -1350,6 +1350,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
@@ -1371,10 +1372,12 @@ $messages['pt'] = array(
 	'dt_xml_freetext' => 'Texto Livre',
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Por favor, selecione o ficheiro $1 a importar:',
+	'dt_import_encodingtype' => 'Tipo de codificação',
 	'dt_import_editsummary' => 'Importação de $1',
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '{{PLURAL:$1|A página será importada|As páginas serão importadas}} a partir do ficheiro $2.',
 	'importcsv' => 'Importar CSV',
+	'dt_importcsv_badheader' => "Erro: o cabeçalho da coluna $1, '$2', deve ser '$3', '$4' ou ter a forma 'nome_da_predefinição[nome_do_campo]'",
 	'right-datatransferimport' => 'Importar dados',
 );
 

@@ -240,6 +240,13 @@ $messages['mk'] = array(
 	'localisationupdate-desc' => 'Ги одржува локализираните пораки колку што е можно пообновени и повеќе во тек со настаните',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'localisationupdate-desc' => 'പ്രാദേശികഭാഷയിലാക്കിയ സന്ദേശങ്ങൾ കഴിയുന്നത്ര വേഗം ചേർക്കാൻ ഉപയോഗിക്കുന്നു',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

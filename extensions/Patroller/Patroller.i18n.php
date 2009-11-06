@@ -1409,6 +1409,14 @@ $messages['ro'] = array(
 	'right-patroller' => 'Pagini de patrulat',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'group-patroller' => 'Condrollore',
+	'group-patroller-member' => 'condrollore',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Illusion

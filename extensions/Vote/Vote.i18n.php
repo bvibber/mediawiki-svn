@@ -1136,14 +1136,26 @@ $messages['mg'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'vote' => 'Гласање',
 	'vote-desc' => 'Дава едноставни можности за гласање',
 	'vote-header' => "Можете да гласате за '''Врховниот Владетел на Светот''' овде!",
 	'vote-current' => "Вашиот моментален глас е за '''$1'''.",
 	'vote-legend' => 'Дај или измнени глас',
+	'vote-caption' => 'Вашиот избор:',
+	'vote-choices' => 'џокер|Џокерот
+пингвин|Пингвинот
+загатнувач|Загатнувачот',
 	'vote-submit' => 'Гласај',
 	'vote-registered' => 'Вашиот глас е заведен.',
+	'vote-view-results' => 'Преглед на резултатите',
+	'vote-results' => 'Резултати од гласањето',
 	'vote-results-choice' => 'Избор',
+	'vote-results-count' => 'Број',
+	'vote-results-none' => 'Досега нема гласови.',
+	'vote-login' => 'Мора да [$1 се најавите] за да гласате.',
+	'vote-invalid-choice' => 'Морате да изберете нешто од предложеното.',
 	'right-vote' => 'Гласање',
+	'right-voteadmin' => 'преглед на резултатите од гласањето',
 );
 
 /** Malayalam (മലയാളം)

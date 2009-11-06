@@ -1594,6 +1594,7 @@ Para monitorizá-las configure $wgPrefStatsTrackPrefs.',
 ** $3 {{PLURAL:$3|utilizador desactivou-a|utilizadores desactivaram-na}} desde então
 * No total, $4 {{PLURAL:$4|utilizador tem|utilizadores têm}} esta preferência activada',
 	'prefstats-xaxis' => 'Duração (horas)',
+	'prefstats-factors' => 'Visualizar por: $1',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'seis horas',
 	'prefstats-factor-day' => 'dia',
@@ -1752,6 +1753,19 @@ $messages['sah'] = array(
 $messages['scn'] = array(
 	'prefstats' => 'Statistichi dê prifirenzi',
 	'prefstats-title' => 'Statistichi dê prifirenzi',
+);
+
+/** Sinhala (සිංහල)
+ * @author චතුනි අලහප්පෙරුම
+ */
+$messages['si'] = array(
+	'prefstats-factors' => ' $1: කට නැරඹුම්',
+	'prefstats-factor-hour' => 'පැය',
+	'prefstats-factor-sixhours' => 'පැය හය',
+	'prefstats-factor-day' => 'දිනය',
+	'prefstats-factor-week' => 'සතිය',
+	'prefstats-factor-twoweeks' => 'සති දෙක',
+	'prefstats-factor-fourweeks' => 'සති හතර',
 );
 
 /** Slovak (Slovenčina)

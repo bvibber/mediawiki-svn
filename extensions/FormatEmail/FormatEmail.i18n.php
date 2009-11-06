@@ -348,12 +348,13 @@ $2',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
-	'email-desc' => 'Mengizinkan kepala/akhiran kustom ditambahkan dalam surat-e antar pengguna',
+	'email-desc' => 'Mengizinkan kepala/akhiran kustom ditambahkan dalam surel antar pengguna',
 	'email_footer' => '----------------------------------------------------------------------------
-Surat-e ini telah dikirim kepada Anda melalui sistem surat-e {{SITENAME}} oleh $1.
+Surel ini telah dikirim kepada Anda melalui sistem surel {{SITENAME}} oleh $1.
 
 $2',
 );

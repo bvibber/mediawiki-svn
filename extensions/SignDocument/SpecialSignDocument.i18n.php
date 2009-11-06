@@ -1828,6 +1828,9 @@ $messages['hu'] = array(
 	'signdocument' => 'Dokumentum aláírása',
 	'sign-nodocselected' => 'Kérlek válaszd ki a dokumentumot, ami alá szeretnél írni.',
 	'sign-selectdoc' => 'Dokumentum:',
+	'sign-docheader' => '<div class="noarticletext">Ezen űrlap segítségével aláírhatod az alább láthatő „[[$1]]” dokumentumot.
+Olvasd át az egészet, és ha jelezni szeretnéd a támogatásod, töltsd ki a szükséges mezőket az aláíráshoz.</div>',
+	'sign-error-nosuchdoc' => 'Az általad keresett dokumentum ($1) nem létezik.',
 	'sign-realname' => 'Név:',
 	'sign-address' => 'Utca:',
 	'sign-city' => 'Város:',
@@ -1846,6 +1849,14 @@ $messages['hu'] = array(
 	'sign-list-hidebday' => 'Ne jelenítsd meg a kort',
 	'sign-list-hideemail' => 'Ne jelenítsd meg az e-mail címet',
 	'sign-submit' => 'Dokumentum aláírása',
+	'sign-information' => '<div class="noarticletext">Köszönjük, hogy rászántad az idődet, és végigolvastad a dokumentumot.
+Ha egyetértesz vele, jelezd támogatásod: töltsd ki az alábbi mezőket, majd kattints a „Dokumentum aláírása” gombra.
+Győződj meg arról, hogy az általad megadott személyes információk helyesek, hogy így meg tudjuk erősíteni valamilyen formában a személyazonosságodat.
+Az űrlap rögzíti az IP-címedet, valamint néhány más, azonosító információt, azért, hogy a moderátorok kiszűrhessék a dupla aláírásokat, és megerősíthessék a személyes információid helyességét.
+Mivel a nyílt proxyk használata meggátol minket ebben, az innen érkező szavazatok valószínűleg nem lesznek számításba véve.
+Ha jelenleg egy proxyszerveren keresztül csatlakozol, kapcsolódj le róla, és használj sima kapcsolatot az aláírás közben.</div>
+
+$1',
 	'sig-success' => 'Sikeresen aláírtad a dokumentumot.',
 	'sign-view-selectfields' => '<b>Megjelenített mezők:</b>',
 	'sign-viewfield-entryid' => 'Bejegyzés azonosítója',
@@ -1862,6 +1873,7 @@ $messages['hu'] = array(
 	'sign-viewfield-email' => 'E-mail cím',
 	'sign-viewfield-age' => 'Kor',
 	'sign-viewfield-options' => 'Beállítások',
+	'sign-viewsigs-intro' => 'Alább láthatóak a(z) <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span> dokumentumhoz rögzített aláírások.',
 	'sign-sigadmin-currentlyopen' => 'A dokumentum aláírása engedélyezett.',
 	'sign-sigadmin-close' => 'Aláírás letiltása',
 	'sign-sigadmin-currentlyclosed' => 'A dokumentum aláírása jelenleg nem engedélyezett.',
@@ -1871,12 +1883,26 @@ $messages['hu'] = array(
 	'sign-sigadmin-opensuccess' => 'Az aláírás sikeresen engedélyezve.',
 	'sign-viewsignatures' => 'aláírások megtekintése',
 	'sign-closed' => 'lezárva',
+	'sign-error-closed' => 'A dokumentum aláírása jelenleg nem lehetséges.',
 	'sig-anonymous' => '<i>Névtelen</i>',
 	'sig-private' => '<i>Privát</i>',
 	'sign-sigdetails' => 'Aláírás részletei',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|vita]] • <!--
+-->[[Special:Contributions/$1|szerkesztések]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|blokkolás]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokkolási napló] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} IP-ellenőrzés])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Érvénytelenítés',
+	'sign-viewfield-reviewedby' => 'Ellenőrző',
 	'sign-viewfield-reviewcomment' => 'Megjegyzés',
 	'sign-detail-uniquequery' => 'Hasonló entitások',
 	'sign-detail-uniquequery-run' => 'Lekérdezés futtatása',
+	'sign-detail-strike' => 'Aláírás érvénytelenítése',
 	'sign-reviewsig' => 'Aláírás értékelése',
 	'sign-review-comment' => 'Megjegyzés',
 	'sign-submitreview' => 'Értékelés elküldése',
@@ -1884,6 +1910,7 @@ $messages['hu'] = array(
 	'sign-uniquequery-similaraddress' => 'Hasonló cím',
 	'sign-uniquequery-similarphone' => 'Hasonló telefonszám',
 	'sign-uniquequery-similaremail' => 'Hasonló e-mail cím',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] aláírta a következő dokumentumot: [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Armenian (Հայերեն)

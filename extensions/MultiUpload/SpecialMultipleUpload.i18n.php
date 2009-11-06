@@ -1285,6 +1285,16 @@ $messages['roa-tara'] = array(
 	'multipleupload-desc' => "Permette a l'utinde de [[Special:MultipleUpload|carecà cchiù file jndr'à 'na botta sole]]",
 	'multipleupload-ignoreallwarnings' => "Ignore '''tutte l'avvise''' e reggistre le file.",
 	'multipleupload-saveallfiles' => 'Reggistre tutte le file',
+	'multipleupload-addresswarnings' => 'Pe piacere indirizze ogne avvise apprime de recarecà le file.',
+	'multipleupload-page' => '{{ns:project}}:Reghele pa scangellazione de le file',
+	'multipleupload-text' => "Carecamende de file multiple aqquà.
+
+Scacchie 'Sfoglie' e scacchie ogne file ca tu vuè ccu careche.
+Tu puè carecà da 1 a $1 file a 'a vote.
+
+Tu puè mettere 'nu ''Nome d'u file de destinazione'' a scelte e prevedè 'nu '''Riepileghe''' ca descrive le file tune.
+
+Le file inappropriate avènene scangellate subbete subbete, vide le [[{{MediaWiki:Multipleupload-page}}|reghele pa scangellazione de le file]].",
 	'multiupload-fileuploaded' => 'File carechete.',
 	'multiupload-toolbox' => "Carecamende de cchiù file 'nzieme",
 	'multiupload-no-files' => "Pe piacere scacchie almene 'nu file da carecà",

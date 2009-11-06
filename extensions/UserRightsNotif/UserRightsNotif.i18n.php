@@ -531,6 +531,7 @@ $2',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
@@ -545,7 +546,7 @@ Pengurangan: $6
 Terima kasih,
 
 $2',
-	'userrightsnotif-desc' => 'Mengirimkan notifikasi melalui surat-e ke para pengguna saat ada perubahan hak pengguna',
+	'userrightsnotif-desc' => 'Mengirimkan notifikasi melalui surel ke para pengguna saat ada perubahan hak pengguna',
 );
 
 /** Italian (Italiano)
@@ -887,6 +888,24 @@ $2',
  */
 $messages['ro'] = array(
 	'userrightsnotif-desc' => 'Trimite notificare prin e-mail utilizatorilor când li se modifică permisiunile',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'userrightsnotifysubject' => "Le membre d'u gruppe cangiane sus a $1",
+	'userrightsnotifybody' => "Cià $1.
+
+Queste jè pe te 'mbormà ca le membre d'u gruppe sus a $2 onne state cangiate da $3 a le $4.
+
+Aggiunde: $5
+Luate: $6
+
+Fattà calà,
+
+$2",
+	'userrightsnotif-desc' => "Manne 'na e-mail de notifiche a l'utinde de sus ca onne cangiate le deritte",
 );
 
 /** Russian (Русский)

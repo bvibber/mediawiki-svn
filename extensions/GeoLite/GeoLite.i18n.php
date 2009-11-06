@@ -16,3 +16,17 @@ $messages['en'] = array(
         'geolite' => 'GeoLite',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'geolite-desc' => 'Kis méretű GeoIP-átirányítás',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'geolite-desc' => 'Redirezionamende a Lightweight GeoIp',
+);
+

@@ -184,6 +184,13 @@ $messages['mk'] = array(
 	'wikieditor-toc-preference' => 'Овозможи навигабилна табела и содржина',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'wikieditor-toc-preference' => 'താളിന്റെ ഉള്ളടക്ക പട്ടിക വഴികാട്ടിയായി ഉപയോഗിക്കുക',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -249,6 +256,13 @@ $messages['sk'] = array(
 	'wikieditor-toc-preference' => 'Povoliť obsah s odkazmi na časti',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'wikieditor-toc-preference' => 'Включити зміст з можливістю навігації',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
@@ -256,3 +270,4 @@ $messages['sk'] = array(
 $messages['vi'] = array(
 	'wikieditor-toc-preference' => 'Sử dụng mục lục dễ duyệt tìm',
 );
+

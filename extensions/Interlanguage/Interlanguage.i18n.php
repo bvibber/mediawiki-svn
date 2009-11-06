@@ -233,9 +233,10 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'interlanguage-desc' => 'Obtém interwikis de idiomas a partir de outra wiki',
+	'interlanguage-desc' => 'Extrai as ligações interlínguas de outra wiki',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

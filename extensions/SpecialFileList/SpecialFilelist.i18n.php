@@ -694,7 +694,10 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'filelist' => 'Liste de le file',
+	'filelist-desc' => '[[Special:Filelist|Pàgena speciale]] pe elengà le file carecate',
 	'filelist-show-list' => "Fa vedè 'a liste",
+	'filelist-show-gallery' => "Vide 'a gallerie",
+	'filelist-image-desc' => 'desc',
 );
 
 /** Russian (Русский)

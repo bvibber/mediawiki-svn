@@ -28,6 +28,23 @@ $messages['qqq'] = array(
 	'externalpages-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'externalpages' => 'صفحات خارجية',
+	'externalpages-desc' => 'يسترجع ويعرض الصفحات من مواقع مؤسسة ويكيميديا البعيدة',
+	'externalpages-bad-year' => 'حُدّدت سنة سيئة',
+	'externalpages-bad-language' => 'حُدّدت لغة سيئة',
+	'externalpages-bad-project' => 'حُدّد مشروع سيء',
+	'externalpages-no-project' => 'لم تحدد المشروع',
+	'externalpages-bad-page' => 'حُدّدت صفحة سيئة',
+	'externalpages-no-page' => 'لم تحدد الصفحة',
+	'externalpages-error-generic' => 'صودف خطأ',
+	'externalpages-bad-url' => 'فشل في استرجاع المسار',
+	'externalpages-bad-url-data' => 'فشل في استرجاع محتويات الصفحة',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */

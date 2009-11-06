@@ -832,6 +832,8 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'Арабскія',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Іўрыт',
 	'wikieditor-toolbar-characters-page-telugu' => 'Тэлугу',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Сынгальскія',
+	'wikieditor-toolbar-characters-page-gujarati' => 'Гуджараці',
 	'wikieditor-toolbar-section-help' => 'Дапамога',
 	'wikieditor-toolbar-help-heading-description' => 'Апісаньне',
 	'wikieditor-toolbar-help-heading-syntax' => 'Што Вы ўводзіце',
@@ -1113,6 +1115,7 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  * @author Y-M D
  */
@@ -1223,6 +1226,8 @@ $messages['br'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'Arabek',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Hebraek',
 	'wikieditor-toolbar-characters-page-telugu' => 'Telougou',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhala',
+	'wikieditor-toolbar-characters-page-gujarati' => 'Gujarati',
 	'wikieditor-toolbar-section-help' => 'Skoazell',
 	'wikieditor-toolbar-help-heading-description' => 'Deskrivadur',
 	'wikieditor-toolbar-help-heading-syntax' => 'Ar pezh a skrivit',
@@ -2822,7 +2827,7 @@ $messages['dsb'] = array(
 	'wikieditor-toolbar-help-content-olist-syntax' => '# Lisćinowy zapisk<br /># Lisćinowy zapisk',
 	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>Lisćinowy zapisk</li><li>Lisćinowy zapisk</li></ol>',
 	'wikieditor-toolbar-help-content-file-description' => 'Zasajźona dataja',
-	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Pśikład.png|thumb|Wobrazowe pópisanje]]',
+	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Wobrazowe pópisanje]]',
 	'wikieditor-toolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Wobrazowe pópisanje' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Powětšyś' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Wobrazowe pópisanje</div></div>",
 	'wikieditor-toolbar-help-content-reference-description' => 'Referenca',
 	'wikieditor-toolbar-help-content-reference-syntax' => 'Tekst boka.&lt;ref name="test"&gt;[http://www.example.org Tekst wótkaza], pśidatny tekst.&lt;/ref&gt;',
@@ -7795,6 +7800,8 @@ $messages['mk'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'Арапски',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Хебрејски',
 	'wikieditor-toolbar-characters-page-telugu' => 'Телугу',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Синхалски',
+	'wikieditor-toolbar-characters-page-gujarati' => 'Гуџарати',
 	'wikieditor-toolbar-section-help' => 'Помош',
 	'wikieditor-toolbar-help-heading-description' => 'Опис',
 	'wikieditor-toolbar-help-heading-syntax' => 'Што пишувате',
@@ -7914,6 +7921,7 @@ $messages['ml'] = array(
 	'wikieditor-toolbar-tool-ulist' => 'എണ്ണമിടാത്ത ലിസ്റ്റ്',
 	'wikieditor-toolbar-tool-ulist-example' => 'എണ്ണമിടാത്ത ലിസ്റ്റിന്റെ ഉള്ളിലെ പദങ്ങൾ',
 	'wikieditor-toolbar-tool-olist' => 'എണ്ണമിട്ട ലിസ്റ്റ്',
+	'wikieditor-toolbar-tool-olist-example' => 'എണ്ണമിട്ട ലിസ്റ്റിലെ അംഗം',
 	'wikieditor-toolbar-group-size' => 'വലിപ്പം',
 	'wikieditor-toolbar-tool-big' => 'വലുത്',
 	'wikieditor-toolbar-tool-big-example' => 'വലിയ എഴുത്ത്',
@@ -8745,7 +8753,6 @@ $messages['nn'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'Sida finst',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'Sida finst ikkje',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Ugyldig tittel',
-	'wikieditor-toolbar-tool-link-ext-invalid' => 'URL-adressa du oppga er ikkje gyldig.',
 	'wikieditor-toolbar-tool-file-example' => 'Døme.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referanse',
 	'wikieditor-toolbar-section-advanced' => 'Avansert',
@@ -9457,6 +9464,10 @@ $messages['pt'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Título inválido',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Verificando existência da página...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'O título que especificou é inválido.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'A URL que especificou parece ser uma ligação para outra página da wiki. Deseja torná-la numa ligação interna?',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Ligação interna',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Ligação externa',
+	'wikieditor-toolbar-tool-link-empty' => 'Não introduziu um destino para a ligação.',
 	'wikieditor-toolbar-tool-file' => 'Ficheiro embutido',
 	'wikieditor-toolbar-tool-file-example' => 'Exemplo.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referência',
@@ -9509,10 +9520,14 @@ $messages['pt'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Linhas',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Colunas',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Inclui linha de cabeçalho',
+	'wikieditor-toolbar-tool-table-wikitable' => 'Estilo com margens',
+	'wikieditor-toolbar-tool-table-sortable' => 'Tornar a tabela ordenável',
+	'wikieditor-toolbar-tool-table-preview' => 'Antever resultado',
 	'wikieditor-toolbar-tool-table-insert' => 'Inserir',
 	'wikieditor-toolbar-tool-table-cancel' => 'Cancelar',
 	'wikieditor-toolbar-tool-table-toomany' => 'Inserir uma tabela com mais de $1 colunas não é possível com este interface.',
 	'wikieditor-toolbar-tool-table-invalidnumber' => 'Não introduziu um número válido de linhas ou colunas.',
+	'wikieditor-toolbar-tool-table-zero' => 'Não pode inserir uma tabela com zero linhas ou colunas',
 	'wikieditor-toolbar-tool-replace' => 'Pesquisar e substituir',
 	'wikieditor-toolbar-tool-replace-title' => 'Localizar e substituir',
 	'wikieditor-toolbar-tool-replace-search' => 'Procurar por:',
@@ -9524,6 +9539,9 @@ $messages['pt'] = array(
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Substituir todos',
 	'wikieditor-toolbar-tool-replace-close' => 'Cancelar',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Sua busca não encontrou nenhum resultado.',
+	'wikieditor-toolbar-tool-replace-success' => 'Substituições realizadas: $1.',
+	'wikieditor-toolbar-tool-replace-emptysearch' => 'Não introduziu nada para pesquisar.',
+	'wikieditor-toolbar-tool-replace-invalidregex' => "A expressão regular ''(regex)'' que introduziu é inválida: $1",
 	'wikieditor-toolbar-section-characters' => 'Carateres especiais',
 	'wikieditor-toolbar-characters-page-latin' => 'Latim',
 	'wikieditor-toolbar-characters-page-latinextended' => 'Latim estendido',
@@ -9679,7 +9697,6 @@ $messages['pt-br'] = array(
 | linha 2, célula 2
 | linha 2, célula 3',
 	'wikieditor-toolbar-tool-table-title' => 'Inserir tabela',
-	'wikieditor-toolbar-tool-table-dimensions' => 'Dimensões',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Linhas',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Colunas',
 	'wikieditor-toolbar-tool-table-insert' => 'Inserir',
@@ -9807,7 +9824,6 @@ $messages['ro'] = array(
 	'wikieditor-toolbar-tool-gallery' => 'Galerie de imagini',
 	'wikieditor-toolbar-tool-newline' => 'Linie nouă',
 	'wikieditor-toolbar-tool-table' => 'Tabel',
-	'wikieditor-toolbar-tool-table-dimensions' => 'Dimensiuni',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Linii',
 	'wikieditor-toolbar-section-characters' => 'Caractere speciale',
 	'wikieditor-toolbar-characters-page-latin' => 'Latin',
@@ -10364,6 +10380,7 @@ $messages['sco'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
 	'wikieditor-toolbar' => 'සංස්කරණ මෙවලම් තීරුව',
@@ -10482,6 +10499,8 @@ $messages['si'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'අරාබි අක්ෂර',
 	'wikieditor-toolbar-characters-page-hebrew' => 'හෙබ්‍රෙව් අක්ෂර',
 	'wikieditor-toolbar-characters-page-telugu' => 'තෙලිඟු අක්ෂර',
+	'wikieditor-toolbar-characters-page-sinhala' => 'සිංහල',
+	'wikieditor-toolbar-characters-page-gujarati' => 'ගුජරාටි',
 	'wikieditor-toolbar-section-help' => 'උදව්',
 	'wikieditor-toolbar-help-heading-description' => 'විස්තරය',
 	'wikieditor-toolbar-help-heading-syntax' => 'ඔබ යතුරු ලියනය කරන දෙය',
@@ -11266,7 +11285,6 @@ $messages['sw'] = array(
 	'wikieditor-toolbar-tool-newline' => 'Mstari mpya',
 	'wikieditor-toolbar-tool-table' => 'Jedwali',
 	'wikieditor-toolbar-tool-table-title' => 'Weka jedwali',
-	'wikieditor-toolbar-tool-table-dimensions' => 'Ukubwa',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Mistari',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Safu',
 	'wikieditor-toolbar-tool-table-insert' => 'Weka',
@@ -12277,7 +12295,6 @@ $messages['vep'] = array(
 	'wikieditor-toolbar-tool-gallery' => 'Kuviden gallerei',
 	'wikieditor-toolbar-tool-newline' => "Uz' rivi",
 	'wikieditor-toolbar-tool-table-title' => 'Ližada tablut',
-	'wikieditor-toolbar-tool-table-dimensions' => 'Suruz',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rivid',
 	'wikieditor-toolbar-tool-table-insert' => 'Ližata',
 	'wikieditor-toolbar-tool-table-cancel' => 'Heitta',

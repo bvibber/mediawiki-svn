@@ -98,6 +98,14 @@ $messages['ja'] = array(
 	'templateinfo-header' => 'このテンプレートの XML 定義は以下のようになっています:',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'templateinfo-desc' => "Ënnerstetzt d'Schablounen déi hir Datestruktur iwwer XML-Tagen definéieren",
+	'templateinfo-header' => "D'XML-Definitioun fir dës Schabloun ass:",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -121,6 +129,14 @@ $messages['nl'] = array(
 $messages['pms'] = array(
 	'templateinfo-desc' => "A manten jë stamp ch'a definisso soa strutura dij dat via markup XML",
 	'templateinfo-header' => "La definission XML për sto stamp-sì a l'é:",
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'templateinfo-desc' => "Le template de supporte definiscene 'a struttura lore ausanne l'XML",
+	'templateinfo-header' => "'A definizione XML pe st'esembie jè:",
 );
 
 /** Russian (Русский)

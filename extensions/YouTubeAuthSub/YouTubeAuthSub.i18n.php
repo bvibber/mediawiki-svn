@@ -3288,7 +3288,10 @@ $messages['war'] = array(
  */
 $messages['yi'] = array(
 	'youtubeauthsub_title' => 'קעפל',
+	'youtubeauthsub_description' => 'שילדערונג',
+	'youtubeauthsub_keywords' => 'שליסלווערטער',
 	'youtubeauthsub_category' => 'קאַטעגאריע',
+	'youtubeauthsub_submit' => 'אײַנגעבן',
 	'youtubeauthsub_uploadbutton' => 'ארויפֿלאָדן',
 );
 

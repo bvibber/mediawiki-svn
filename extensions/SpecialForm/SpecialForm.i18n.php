@@ -892,6 +892,13 @@ $messages['mhr'] = array(
 	'formsave' => 'Аралаш',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'formbadpagenametext' => 'Внесените податоци за формата образуваат погрешен назив на страницата, „$1“.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

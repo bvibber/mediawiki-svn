@@ -1202,11 +1202,13 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'contributors' => 'Condrebbutore',
+	'contributors-desc' => "Riepileghe le maggiore condrebbutore d'a pàgene",
 	'contributors-toolbox' => 'Condrebbuture prengepàle',
 	'contributors-legend' => "Elenghe de le condrebbutore prengepàle a 'na pàgene",
 	'contributors-target' => 'Titele:',
 	'contributors-submit' => 'Fà vedè',
 	'contributors-subtitle' => 'Condrebbutore prengepàle de $1',
+	'contributors-others-long' => "{{PLURAL:$1|Stè 'n'otre condrebbutore|Stonne otre $1 condrebbutore}} de sta pàgene.",
 	'contributors-others' => "e {{PLURAL:$1|'notre|$1 otre}}",
 	'contributors-badtitle' => 'Titele invalide.',
 	'contributors-nosuchpage' => "'A pàgene $1 non g'esiste.",

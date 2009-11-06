@@ -183,6 +183,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'tasklistunknownproject' => 'Raktres dianav',
 	'tasklistunspecuser' => "N'eo ket diferet an implijer",
 	'tasklistincorrectuser' => 'Anv implijer direizh',
 	'tasklistemail' => '%s ker',

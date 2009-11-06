@@ -404,6 +404,15 @@ $messages['pt-br'] = array(
 	'stalepages-summary' => 'Esta é uma lista das páginas que não foram editadas {{PLURAL:$1|no último dia|nos últimos $1 dias}}.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'stalepages' => 'Pàggene vicchije',
+	'stalepages-desc' => "Genere 'n'[[Special:Stalepages|elenghe de pàggene]] ca non g'onne avute cangiaminde de recende",
+	'stalepages-summary' => "Quiste jè 'n'elenghe de pàggene ca non g'onne state cangiate jndr'à l'urteme $1 {{PLURAL:$1|sciurne|sciurne}}.",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

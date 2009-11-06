@@ -400,6 +400,15 @@ $messages['ro'] = array(
 	'spl3_nosubpages' => '$1 nu are subpagini pentru afişat.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'spl3-desc' => "Automaticamende ccreje 'n'elenghe de sottopàggene de 'na pàgene ausanne 'u tag <code><nowiki><splist /></nowiki></code>",
+	'spl3_debug' => "Valore scanusciute pe l'opzione $1.",
+	'spl3_nosubpages' => '$1 non ge tène sottopàggene da elengà.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

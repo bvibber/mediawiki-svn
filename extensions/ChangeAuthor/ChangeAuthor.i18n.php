@@ -2166,6 +2166,13 @@ If pöl at dönu ojenon, nünodem ba edädikon.',
 	'changeauthor-logpagename' => 'Jenotalised lautanivotükamas',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'changeauthor-pagenameform-go' => 'גיין',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

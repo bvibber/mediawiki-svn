@@ -593,6 +593,16 @@ $messages['pt-br'] = array(
 	'simpleantispam-desc' => 'Adiciona um verificador simples de spam/robôs em formulários',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'simpleantispam' => "Le cangiaminde tune sonde tracciate da 'nu meccanisme andi-spam",
+	'simpleantispam-label' => "Verifiche andi-spam.
+'''NO''' anghiè quiste!",
+	'simpleantispam-desc' => "Aggiunge 'na verifiche semblice de spam/bot jndr'à le module",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

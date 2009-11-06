@@ -691,6 +691,16 @@ $messages['lt'] = array(
 	'onlinestatus-toggle-online' => 'Prisijungęs',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'onlinestatus-tab' => 'Статус',
+	'onlinestatus-toggles-desc' => 'Вашиот статус:',
+	'onlinestatus-toggle-offline' => 'Исклучен',
+	'onlinestatus-toggle-online' => 'Вклучен',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

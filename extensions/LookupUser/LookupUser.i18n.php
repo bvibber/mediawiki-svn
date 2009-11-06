@@ -620,6 +620,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
@@ -630,7 +631,7 @@ $messages['id'] = array(
 	'lookupuser-authenticated' => 'di-otentifikasi pada $1',
 	'lookupuser-not-authenticated' => 'tidak di-otentifikasi',
 	'lookupuser-id' => 'ID Pengguna: <tt>#$1</tt>',
-	'lookupuser-email' => 'Surat-e: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-email' => 'Surel: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'tidak diberikan',
 	'lookupuser-realname' => 'Nama asli: $1',
 	'lookupuser-registration' => 'Tanggal pendaftaran: $1',
