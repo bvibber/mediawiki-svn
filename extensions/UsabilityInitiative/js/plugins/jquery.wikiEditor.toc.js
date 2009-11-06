@@ -58,7 +58,7 @@ fn: {
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
 	},
- 
+	
 	unhighlight: function( context ) {
 		context.modules.$toc.find( 'div' ).removeClass( 'current' );
 	},
@@ -142,10 +142,13 @@ fn: {
 					.data( 'textbox', context.$textarea )
 					.data( 'position', structure[i].position )
 					.bind( 'mousedown', function( event ) {
+						/* FIXME: This code needs to be updated to use the iframe and context.fn.* functions for
+						 * text selection and scrolling and such...
 						$(this).data( 'textbox' )
 							.focus()
 							.setSelection( $(this).data( 'position' ) )
 							.scrollToCaretPosition( true );
+						*/
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
 						event.preventDefault();

@@ -229,7 +229,7 @@ fn : {
 							action.options.periRegexReplace );
 					}
 				}
-				context.$textarea.encapsulateSelection(
+				context.fn.encapsulateSelection(
 					parts.pre, parts.peri, parts.post, action.options.ownline, action.type == 'replace'
 				);
 				break;
