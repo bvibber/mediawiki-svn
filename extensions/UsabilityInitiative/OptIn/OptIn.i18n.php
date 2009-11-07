@@ -474,6 +474,7 @@ $messages['br'] = array(
 	'optin-needlogin' => "Ret eo deoc'h bezañ [$1 luget] evit ober gant Beta.",
 	'optin-feedback-intro' => "Trugarez deoc'h da amprouiñ Beta.
 Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp laouen ma restpontfec'h d'ar goulennoù dindan.",
+	'optin-feedback-back' => "Ma ne fell ket deoc'h leuniañ ar roll goulennoù, e c'hallit distreiñ da $1.",
 	'optin-success-in' => "Emaoc'h oc'h amprouiñ Beta.
 Gallout a rit distreiñ d'ar stumm boas pa garit en ur glikañ war al liamm \"{{int:optin-leave}}\" e laez ar skramm.",
 	'optin-success-feedback' => 'Trugarez evit bezañ roet ho soñj !',
@@ -2486,7 +2487,6 @@ Terima kasih dan kami menunggu pendapat Anda!',
  * @author Malafaya
  */
 $messages['io'] = array(
-	'optin-try' => 'Probez Beta',
 	'optin-survey-yes' => 'Yes',
 	'optin-survey-no' => 'No',
 );
@@ -3212,7 +3212,6 @@ $messages['lv'] = array(
 	'optin-title-feedback' => 'Atsauksmes par Beta',
 	'optin-accept-long' => 'Izmēģināt Beta',
 	'optin-submit-out' => 'Pamest Beta',
-	'optin-feedback' => 'Atsauksmes par Beta',
 );
 
 /** Macedonian (Македонски)
@@ -4088,6 +4087,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Capmo
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
@@ -4099,17 +4099,17 @@ $messages['pt'] = array(
 	'optin-title-justoptedin' => 'Bem-vindo ao Beta',
 	'optin-title-justoptedout' => 'Obrigado por experimentar o Beta',
 	'optin-title-feedback' => 'Enviar comentários',
-	'optin-needlogin' => 'Você precisa [$1 autenticar-se] para experimentar o Beta.',
+	'optin-needlogin' => 'Precisa de [$1 autenticar-se] para experimentar o Beta.',
 	'optin-intro' => 'A Iniciativa de Usabilidade da Wikipédia tem trabalhado arduamente para melhorar a usabilidade da Wikipédia.
 Gostaria de experimentar a versão Beta?',
-	'optin-feedback-intro' => 'Obrigado por experimentar Beta.
-Gostaríamos de saber o que você acha da nossa nova interface, por isso agradecíamos que preenchesse o inquérito opcional abaixo.',
-	'optin-feedback-back' => 'Se você não quiser preencher o inquérito, pode regressar a $1.',
-	'optin-success-in' => 'Você está agora a experimentar o Beta.
-Você pode optar por sair a qualquer momento, clicando no link "{{int:optin-leave}}" no topo do ecrã.',
-	'optin-leave-cancel' => 'Se você quiser continuar a usar o Beta, você pode voltar para $1.',
-	'optin-success-out' => 'Você saiu do Beta.
-Você pode experimentá-lo novamente a qualquer momento, clicando no link "{{int:optin-try}}" na parte superior direita do ecrã.',
+	'optin-feedback-intro' => 'Obrigado por ter experimentado o Beta.
+Gostaríamos de saber o que acha da nossa nova interface, por isso agradeciamos que preenchesse o inquérito opcional abaixo.',
+	'optin-feedback-back' => 'Se não quiser preencher o inquérito, pode regressar à página $1.',
+	'optin-success-in' => 'Está agora a experimentar o Beta.
+Pode optar por sair a qualquer momento, clicando na ligação "{{int:optin-leave}}" no topo do ecrã.',
+	'optin-leave-cancel' => 'Se quiser continuar a usar o Beta, pode voltar para $1.',
+	'optin-success-out' => 'Saiu do Beta.
+Pode experimentá-lo novamente a qualquer momento, clicando na ligação "{{int:optin-try}}" na parte superior direita do ecrã.',
 	'optin-success-feedback' => 'Obrigado pelos seus comentários!',
 	'optin-accept-short' => 'Ok, vamos fazê-lo!',
 	'optin-accept-long' => 'Experimente o Beta',
@@ -4121,37 +4121,37 @@ Você pode experimentá-lo novamente a qualquer momento, clicando no link "{{int
 	'optin-survey-yes' => 'Sim',
 	'optin-survey-no' => 'Não',
 	'optin-survey-intro' => 'Obrigado por experimentar o Beta.
-Gostaríamos de saber o que você acha da nossa nova interface, por isso agradecíamos que preenchesse o inquérito opcional abaixo, antes de clicar em "[[#leave|{{int:optin-submit-out}}]]".',
-	'optin-survey-question-likedislike' => 'De que você gostou no Beta? De que você não gostou no Beta?',
-	'optin-survey-question-whyoptout' => 'Por que você está a sair do Beta? (Selecione todas as opções que se aplicam.)',
+Gostaríamos de saber o que achou da nossa nova interface, por isso agradecíamos que preenchesse o inquérito opcional abaixo, antes de clicar em "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => 'Do que foi que gostou no Beta? Do que foi que não gostou no Beta?',
+	'optin-survey-question-whyoptout' => 'Por que está a sair do Beta? (Por favor, seleccione todas as opções que se aplicam.)',
 	'optin-survey-answer-whyoptout-hard' => 'Foi muito difícil de usar.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Não funcionou corretamente.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Não funcionou de forma consistente.',
-	'optin-survey-answer-whyoptout-didntlike-look' => 'Eu não gostei do seu aspecto.',
-	'optin-survey-answer-whyoptout-didntlike-layout' => 'Eu não gostei dos novos separadores e design.',
-	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Eu não gostei da nova barra de ferramentas.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Não gostei do aspecto.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => "Não gostei dos novos separadores e ''design''.",
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Não gostei da nova barra de ferramentas.',
 	'optin-survey-answer-whyoptout-other' => 'Outro motivo:',
 	'optin-survey-question-explain' => 'Por favor explique ou elabore a sua resposta anterior:',
-	'optin-survey-question-techfail' => 'Você sofreu alguma falha técnica ao usar o Beta?',
+	'optin-survey-question-techfail' => 'Sofreu alguma falha técnica ao usar o Beta?',
 	'optin-survey-question-techfail-ifyes' => 'Se sim, por favor descreva ou explique:',
-	'optin-survey-question-usedtoolbar' => 'Você usou a nova barra de ferramentas expansível para editar uma página?',
-	'optin-survey-question-usedtoolbar-ifyes' => 'Se sim, de que você gostou nela? De que você não gostou nela?',
+	'optin-survey-question-usedtoolbar' => 'Usou a nova barra de ferramentas expansível para editar uma página?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Se sim, do que foi que gostou nela? E do que foi que não gostou?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Se não, porque não? Irá no futuro? Por favor, elabore.',
-	'optin-survey-question-different' => 'O que poderíamos ter feito de forma diferente para que você continuasse a usar o nosso Beta?',
-	'optin-survey-question-feedback' => 'Por favor, indique-nos quaisquer outros comentários, críticas ou sugestões que você tenha para nós - todas as opiniões são úteis!:',
+	'optin-survey-question-different' => 'O que poderíamos ter feito de forma diferente para que continuasse a usar o Beta?',
+	'optin-survey-question-feedback' => 'Por favor, faça quaisquer outros comentários, críticas ou sugestões que tenha - todas as opiniões são úteis:',
 	'optin-survey-question-browser' => 'Que navegador utiliza?',
 	'optin-survey-answer-browser-other' => 'Outro navegador:',
 	'optin-survey-question-os' => 'Que sistema operativo utiliza?',
 	'optin-survey-answer-os-other' => 'Outro sistema operativo:',
 	'optin-survey-question-res' => 'Qual é a resolução do seu ecrã?',
-	'optin-survey-question-changes' => 'Que mudanças você gostaria de ver futuramente no Beta? (favor selecionar as opções pertinentes)',
-	'optin-survey-answer-changes-nav' => 'Tornar a navegação geral do site mais fácil de usar.',
+	'optin-survey-question-changes' => 'Que mudanças gostaria de ver futuramente no Beta? (Por favor, seleccione todas as opções que se aplicam.)',
+	'optin-survey-answer-changes-nav' => 'Tornar a navegação geral do sítio mais fácil de usar.',
 	'optin-survey-answer-changes-edittools' => 'Criar mais e melhores ferramentas de edição.',
 	'optin-survey-answer-changes-upload' => 'Melhorar o carregamento de conteúdo e multimédia.',
 	'optin-survey-answer-changes-richtext' => 'Desenvolver ferramentas de edição semelhantes a editores avançados de texto.',
 	'optin-survey-answer-changes-lookfeel' => 'Renovar o aspecto geral do site.',
 	'optin-survey-answer-changes-predictability' => 'Melhorar a consistência dos resultados.',
-	'optin-survey-answer-changes-custom' => 'Permite maior personalização pelo utilizador.',
+	'optin-survey-answer-changes-custom' => 'Permitir um maior grau de personalização pelo utilizador.',
 	'optin-survey-answer-changes-other' => 'Outros:',
 	'optin-improvements' => '== O que foi melhorado? ==
 [[File:UsabilityNavigation.png|left|link=|Captura de ecrã das novas abas de navegação]]

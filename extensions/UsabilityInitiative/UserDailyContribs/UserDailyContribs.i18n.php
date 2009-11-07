@@ -235,10 +235,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  */
 $messages['pt'] = array(
-	'userdailycontribs-desc' => 'Contribuições diárias de usuário para a extensão de rastreio de clique',
+	'userdailycontribs-desc' => 'Contribuições diárias dos utilizadores para a extensão de monitorização de cliques',
 );
 
 /** Tarandíne (Tarandíne)

@@ -22,8 +22,8 @@ $messages['en'] = array(
  * @author Yaron Koren 
  */
 $messages['qqq'] = array(
-    'templateinfo-desc' => 'Short description of the Template Info extension, shown on [[Special:Version]].',
-    'templateinfo-header' => 'Header to display XML definition in template page',
+	'templateinfo-desc' => 'Short description of the Template Info extension, shown on [[Special:Version]].',
+	'templateinfo-header' => 'Header to display XML definition in template page',
 );
 
 /** Lower Sorbian (Dolnoserbski)

@@ -99,6 +99,13 @@ $messages['ja'] = array(
 	'wlfeed-desc' => '強化されたフィード生成クラス',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wlfeed-desc' => 'Klasse för verbäßerte Abonnemangs-Kanähl (<i lang="en">feeds</i>) aanzelääje',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -128,10 +135,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Juliano F. Ravasi
  */
 $messages['pt'] = array(
-	'wlfeed-desc' => 'Classes aprimoradas para geração de feeds',
+	'wlfeed-desc' => "Classes melhoradas de geração de ''feeds''",
 );
 
 /** Tarandíne (Tarandíne)

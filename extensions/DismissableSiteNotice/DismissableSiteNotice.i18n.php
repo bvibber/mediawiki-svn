@@ -152,14 +152,14 @@ $messages['cdo'] = array(
 );
 
 /** Crimean Turkish (Latin) (Qırımtatarca (Latin))
- * @author Alessandro
+ * @author Don Alessandro
  */
 $messages['crh-latn'] = array(
 	'sitenotice_close' => 'gizle',
 );
 
 /** Crimean Turkish (Cyrillic) (Qırımtatarca (Cyrillic))
- * @author Alessandro
+ * @author Don Alessandro
  */
 $messages['crh-cyrl'] = array(
 	'sitenotice_close' => 'гизле',
@@ -472,7 +472,7 @@ $messages['kaa'] = array(
 	'sitenotice_close' => 'jasırıw',
 );
 
-/** Kirmanjki (Kirmanjki)
+/** Kirmanjki (Kırmancki)
  * @author Mirzali
  */
 $messages['kiu'] = array(

@@ -422,7 +422,7 @@ $messages['ca'] = array(
 	'right-viewsystemstats' => "Veure [[Special:UserStats|estadístiques d'ús de la wiki]]",
 );
 
-/** Sorani (Arabic script) (کوردی (عەرەبی))
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
@@ -1547,7 +1547,7 @@ $messages['nn'] = array(
 	'right-viewsystemstats' => 'Vis [[Special:UserStats|wikibrukarstatistikk]]',
 );
 
-/** Norwegian (bokmål) (Norsk (bokmål))
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
@@ -2239,7 +2239,7 @@ $messages['vo'] = array(
 	'usagestatistics-editpages' => 'Padastatits tefü geban: $1',
 );
 
-/** Simplified Chinese (中文(简体))
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  */
 $messages['zh-hans'] = array(
@@ -2268,7 +2268,7 @@ $messages['zh-hans'] = array(
 	'usagestatistics-editpages' => '用户$1统计分析',
 );
 
-/** Traditional Chinese (中文(繁體))
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(

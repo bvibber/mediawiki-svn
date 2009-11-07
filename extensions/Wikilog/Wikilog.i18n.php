@@ -2130,22 +2130,23 @@ A dovrìa o fornì në stranòm si 'nsima për identifiché sò coment, opura \$
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Juliano F. Ravasi
  */
 $messages['pt'] = array(
-	'wikilog-desc' => 'Adiciona recursos de blog, criando um híbrido wiki-blog',
+	'wikilog-desc' => "Adiciona funcionalidades de ''blog'', criando um híbrido ''wiki-blog''",
 	'wikilog-auto' => 'Wikilog Auto',
-	'right-wl-postcomment' => 'Postar comentários em artigos wikilog',
+	'right-wl-postcomment' => 'Criar comentários em artigos wikilog',
 	'right-wl-moderation' => 'Moderação de comentários de artigos wikilog',
 	'wikilog' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
-	'wikilog-log-pagename' => 'Registro de ações wikilog',
-	'wikilog-log-pagetext' => 'Abaixo está uma lista das ações wikilog.',
+	'wikilog-log-pagename' => 'Registo de acções wikilog',
+	'wikilog-log-pagetext' => 'Abaixo está uma lista das acções wikilog.',
 	'wikilog-log-cmt-approve' => 'aprovou o comentário [[$1]]',
 	'wikilog-log-cmt-reject' => 'rejeitou o comentário [[$1]]',
 	'wikilog-log-cmt-rejdel' => 'Comentário wikilog de [[Special:Contributions/$1|$1]] rejeitado',
 	'wikilog-tab' => 'Wikilog',
-	'wikilog-tab-title' => 'Ações wikilog',
+	'wikilog-tab-title' => 'Acções wikilog',
 	'wikilog-information' => 'Informações do wikilog',
 	'wikilog-post-count-published' => 'Há $1 {{PLURAL:$1|artigo publicado|artigos publicados}} neste wikilog,',
 	'wikilog-post-count-drafts' => 'mais $1 {{PLURAL:$1|artigo não-publicado (rascunho)|artigos não-publicados (rascunhos)}},',
@@ -2154,18 +2155,18 @@ $messages['pt'] = array(
 	'wikilog-new-item-go' => 'Criar',
 	'wikilog-item-name' => 'Nome do artigo:',
 	'wikilog-published' => 'Publicado',
-	'wikilog-updated' => 'Atualizado',
+	'wikilog-updated' => 'Actualizado',
 	'wikilog-draft' => 'Rascunho',
 	'wikilog-authors' => 'Autores',
 	'wikilog-wikilog' => 'Wikilog',
 	'wikilog-title' => 'Título',
-	'wikilog-actions' => 'Ações',
+	'wikilog-actions' => 'Acções',
 	'wikilog-comments' => 'Comentários',
 	'wikilog-replies' => 'Respostas',
 	'wikilog-view-archives' => 'Arquivos',
 	'wikilog-view-summary' => 'Resumo',
 	'wikilog-draft-title-mark' => '(rascunho)',
-	'wikilog-anonymous-mark' => '(anônimo)',
+	'wikilog-anonymous-mark' => '(anónimo)',
 	'wikilog-pager-newer-n' => '← $1 próximos',
 	'wikilog-pager-older-n' => '$1 anteriores →',
 	'wikilog-pager-newest' => '←← mais recentes',
@@ -2182,7 +2183,7 @@ $messages['pt'] = array(
 	'wikilog-item-footer' => ': <i>&mdash; $5 &#8226; $6 &#8226; $7</i>',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussão]])',
 	'wikilog-comment-by-user' => 'Comentário por $1 ($2)',
-	'wikilog-comment-by-anon' => 'Comentário por $3 (anônimo)',
+	'wikilog-comment-by-anon' => 'Comentário por $3 (anónimo)',
 	'wikilog-comment-pending' => 'Este comentário está aguardando aprovação.',
 	'wikilog-comment-deleted' => 'Este comentário foi apagado.',
 	'wikilog-comment-edited' => 'Este comentário foi editado pela última vez em $1 ($2).',
@@ -2201,13 +2202,14 @@ $messages['pt'] = array(
 	'wikilog-title-item-full' => '$1 - $2',
 	'wikilog-title-comments' => 'Comentários - $1',
 	'wikilog-error-msg' => 'Wikilog: $1',
+	'wikilog-error-title' => 'Erro no Wikilog',
 	'wikilog-invalid-param' => 'Parâmetro inválido: $1.',
 	'wikilog-invalid-author' => 'Autor inválido: $1.',
 	'wikilog-invalid-date' => 'Data inválida: $1.',
 	'wikilog-invalid-tag' => 'Rótulo inválido: $1.',
-	'wikilog-invalid-file' => 'Arquivo inválido: $1.',
-	'wikilog-file-not-found' => 'Arquivo não-existente: $1.',
-	'wikilog-not-an-image' => 'Arquivo não é uma imagem: $1.',
+	'wikilog-invalid-file' => 'Ficheiro inválido: $1.',
+	'wikilog-file-not-found' => 'Ficheiro inexistente: $1.',
+	'wikilog-not-an-image' => 'Ficheiro não é uma imagem: $1.',
 	'wikilog-out-of-context' => 'Aviso: Rótulos wikilog estão sendo utilizados fora de contexto. Eles devem ser usados apenas em artigos no espaço de nomes do Wikilog.',
 	'wikilog-too-many-authors' => 'Aviso: Autores demais listados nesta postagem wikilog.',
 	'wikilog-too-many-tags' => 'Aviso: Rótulos demais listados nesta postagem wikilog.',
@@ -2243,6 +2245,22 @@ $messages['pt'] = array(
 	'wikilog-page-lc' => 'página',
 	'wikilog-history-lc' => 'histórico',
 	'wikilog-doc-import-comment' => 'Documentação Wikilog importada',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Hamilton Abreu
+ */
+$messages['pt-br'] = array(
+	'wikilog-log-pagename' => 'Registro de ações wikilog',
+	'wikilog-log-pagetext' => 'Abaixo está uma lista das ações wikilog.',
+	'wikilog-tab-title' => 'Ações wikilog',
+	'wikilog-updated' => 'Atualizado',
+	'wikilog-actions' => 'Ações',
+	'wikilog-anonymous-mark' => '(anônimo)',
+	'wikilog-comment-by-anon' => 'Comentário por $3 (anônimo)',
+	'wikilog-invalid-file' => 'Arquivo inválido: $1.',
+	'wikilog-file-not-found' => 'Arquivo não-existente: $1.',
+	'wikilog-not-an-image' => 'Arquivo não é uma imagem: $1.',
 );
 
 /** Russian (Русский)

@@ -26,6 +26,10 @@ $magicWords['mr'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__विनाअंकमथळे__', '__NONUMBEREDHEADINGS__' ),
 );
 
+$magicWords['nds-nl'] = array(
+	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__GIENENUMMERDEKOPJES__', '__GEENGENUMMERDEKOPPEN__', '__NONUMBEREDHEADINGS__' ),
+);
+
 $magicWords['nl'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__GEENGENUMMERDEKOPPEN__', '__NONUMBEREDHEADINGS__' ),
 );

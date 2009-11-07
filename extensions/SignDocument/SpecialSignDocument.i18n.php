@@ -2067,12 +2067,41 @@ $1',
 	'sign-viewfield-email' => 'Surel',
 	'sign-viewfield-age' => 'Usia',
 	'sign-viewfield-options' => 'Pilihan',
+	'sign-viewsigs-intro' => 'Di bawah ini ditunjukkan tanda tangan yang dicatat untuk <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'Penandatanganan saat ini diaktifkan untuk dokumen ini.',
+	'sign-sigadmin-close' => 'Nonaktifkan penandatanganan',
+	'sign-sigadmin-currentlyclosed' => 'Penandatanganan saat ini dinonaktifkan untuk dokumen ini.',
+	'sign-sigadmin-open' => 'Aktifkan penandatanganan',
 	'sign-signatures' => 'Tanda tangan',
+	'sign-sigadmin-closesuccess' => 'Penandatanganan berhasil dinonaktifkan.',
+	'sign-sigadmin-opensuccess' => 'Penandatanganan berhasil diaktifkan.',
+	'sign-viewsignatures' => 'lihat tanda tangan',
+	'sign-closed' => 'ditutup',
+	'sign-error-closed' => 'Penandatanganan dokumen ini sedang dimatikan.',
+	'sig-anonymous' => '<i>Anonim</i>',
 	'sig-private' => '<i>Pribadi</i>',
+	'sign-sigdetails' => 'Detail tanda tangan',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|bicara]] • <!--
+-->[[Special:Contributions/$1|kontribusi]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|blokir]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} log pemblokiran] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} cek ip])<!--
+--></span>',
 	'sign-viewfield-reviewedby' => 'Peninjau',
 	'sign-viewfield-reviewcomment' => 'Komentar',
+	'sign-detail-uniquequery' => 'Entitas serupa',
+	'sign-detail-uniquequery-run' => 'Jalankan query',
+	'sign-reviewsig' => 'Tinjau tanda tangan',
 	'sign-review-comment' => 'Komentar',
 	'sign-submitreview' => 'Kirim tinjauan',
+	'sign-uniquequery-similarname' => 'Nama serupa',
+	'sign-uniquequery-similaraddress' => 'Alamat serupa',
+	'sign-uniquequery-similarphone' => 'Telepon serupa',
+	'sign-uniquequery-similaremail' => 'Surel serupa',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] tandatangan [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 

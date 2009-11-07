@@ -847,6 +847,7 @@ $2',
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Waldir
  */
@@ -862,7 +863,7 @@ Removido: $6
 Os melhores cumprimentos,
 
 $2',
-	'userrightsnotif-desc' => 'Enviar notificação por email a usuários que sofreram alteração de privilégios',
+	'userrightsnotif-desc' => 'Enviar notificação por email a utilizadores que sofreram alteração de privilégios',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

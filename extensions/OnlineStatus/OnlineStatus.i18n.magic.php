@@ -20,6 +20,12 @@ $magicWords['mr'] = array(
 	'anyuseronlinestatus'     => array( '0', 'कोणीसदस्यऑनलाईनस्थिती', 'anyuseronlinestatus' ),
 );
 
+$magicWords['nds-nl'] = array(
+	'onlinestatus_word'       => array( '1', 'ONLINESTAOTUS', 'ONLINESTATUS' ),
+	'onlinestatus_word_raw'   => array( '1', 'ROEWEONLINESTAOTUS', 'RUWEONLINESTATUS', 'RAWONLINESTATUS' ),
+	'anyuseronlinestatus'     => array( '0', 'allegebrukersonlinestaotus', 'allegebruikersonlinestatus', 'anyuseronlinestatus' ),
+);
+
 $magicWords['nl'] = array(
 	'onlinestatus_word_raw'   => array( '1', 'RUWEONLINESTATUS', 'RAWONLINESTATUS' ),
 	'anyuseronlinestatus'     => array( '0', 'allegebruikersonlinestatus', 'anyuseronlinestatus' ),

@@ -2211,7 +2211,7 @@ un wat domet zosamme hängk, flöck quitt.',
 	'oversight-offender' => 'Dä Väsjohn ier Schriever:',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(

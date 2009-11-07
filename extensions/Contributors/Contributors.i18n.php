@@ -835,7 +835,7 @@ $messages['ku-latn'] = array(
 	'contributors-nosuchpage' => 'Gotarê $2 tune ye.',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(

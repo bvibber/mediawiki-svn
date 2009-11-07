@@ -959,6 +959,14 @@ Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej l
 	'right-deletebatch' => 'usuwanie grupy stron',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'deletebatch' => 'Scansela na partìa ëd pàgine',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Scansela na partìa ëd pàgine]]',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

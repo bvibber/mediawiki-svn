@@ -552,7 +552,7 @@ $messages['ksh'] = array(
 	'randomincategory-submit' => 'Loß Jonn!',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(

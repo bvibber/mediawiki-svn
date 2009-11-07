@@ -18,6 +18,10 @@ $magicWords['mr'] = array(
 	'itemtags'   => array( '0', 'आयटमखूणा', 'कलमखूणा', 'itemtags' ),
 );
 
+$magicWords['nds-nl'] = array(
+	'itemtags'   => array( '0', 'onderwarpetiket', 'itemlabels', 'itemtags' ),
+);
+
 $magicWords['nl'] = array(
 	'itemtags'   => array( '0', 'itemlabels', 'itemtags' ),
 );

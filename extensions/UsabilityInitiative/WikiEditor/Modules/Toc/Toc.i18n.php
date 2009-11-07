@@ -174,7 +174,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'wikieditor-toc-preference' => 'Navigabelbart Inhaltsverzeechness aschalten',
+	'wikieditor-toc-preference' => 'nhaltsverzeechnes duerch dat een navigéiere kann aschalten',
 );
 
 /** Macedonian (Македонски)

@@ -8003,8 +8003,13 @@ $messages['vec'] = array(
 	'code-release-legend' => 'Gènera le note de rilascio',
 	'code-release-startrev' => 'Revision de partensa:',
 	'code-release-endrev' => 'Ultima revision:',
+	'code-release-badrange' => 'Intervalo massa grando!',
 	'codereview-subtitle' => 'Par $1',
 	'codereview-reply-link' => 'rispondi',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|test|test}} andà ben',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test|test}} andà ben, $3 {{PLURAL:$4|test|test}} mia riussìi:',
+	'codereview-tests-running' => "I casi de test i xe drio 'ndar...",
+	'codereview-tests-aborted' => 'Esecussion del test interota.',
 	'codereview-email-subj' => '[$1] [r$2]: Zontà un comento nóvo',
 	'codereview-email-body' => 'L\'utente "$1" el gà scrito un comento su r$3.
 

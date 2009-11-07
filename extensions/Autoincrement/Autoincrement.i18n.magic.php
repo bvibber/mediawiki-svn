@@ -14,6 +14,10 @@ $magicWords['mr'] = array(
 	'autoincrement'   => array( '0', 'स्वयंवाढ', 'AUTOINCREMENT' ),
 );
 
+$magicWords['nds-nl'] = array(
+	'autoincrement'   => array( '0', 'AUTEMATISCHOPHOGEN', 'AUTOMATISCHOPHOGEN', 'AUTOINCREMENT' ),
+);
+
 $magicWords['nl'] = array(
 	'autoincrement'   => array( '0', 'AUTOMATISCHOPHOGEN', 'AUTOINCREMENT' ),
 );

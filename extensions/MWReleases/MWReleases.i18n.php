@@ -289,14 +289,17 @@ $messages['vi'] = array(
 	'mwreleases-desc' => 'Thêm [[Mediawiki:Mwreleases-list|danh sách]] phiên bản được hỗ trợ, có thể truy cập qua API.',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'mwreleases-desc' => '加入一個支援發佈嘅[[Mediawiki:Mwreleases-list|一覽]]，可經API訪問',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'mwreleases-desc' => '加入一个支持发布的[[Mediawiki:Mwreleases-list|列表]]，可经API访问',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'mwreleases-desc' => '加入一個支援發佈的[[Mediawiki:Mwreleases-list|列表]]，可經API訪問',
 );

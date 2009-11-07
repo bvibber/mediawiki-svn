@@ -1393,23 +1393,64 @@ Probabilemente non existe tal usator.',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
+	'regexblock' => 'Pemblokiran regex',
 	'regexblock-already-blocked' => '$1 telah diblokir.',
+	'regexblock-block-log' => "Nama pengguna atau alamat IP '''$1''' telah diblokir.",
+	'regexblock-block-success' => 'Pemblokiran berhasil',
+	'regexblock-currently-blocked' => 'Alamat yang sedang diblokir:',
+	'regexblock-desc' => 'Ekstensi yang digunakan untuk memblokir pengguna nama dan alamat IP dengan ekspresi reguler. Berisi baik mekanisme pemblokiran dan suatu [[Special:Regexblock|halaman istimewa]] untuk menambah/mengelola blokir',
 	'regexblock-expire-duration' => '1 jam,2 jam,4 jam,6 jam,1 hari,3 hari,1 minggu,2 minggu,1 bulan,3 bulan,6 bulan,1 tahun,selamanya',
+	'regexblock-page-title' => 'Pemblokiran nama dengan ekspresi reguler',
+	'regexblockstats' => 'Statistik pemblokiran regex',
+	'regexblock-help' => 'Gunakan formulir di bawah untuk memblokir akses menulis dari alamat IP atau nama pengguna tertentu.
+Gunakan ini hanya untuk mencegah vandalisme dan sesuai dengan kebijakan.
+\'\'Halaman ini memungkinkan Anda untuk bahkan memblokir pengguna yang belum ada, dan juga akan memblokir pengguna dengan nama yang serupa dengan yang diberikan, yaitu "Pengujian" akan diblokir sebagaimana "Pengujian 2", dll.
+Anda juga dapat memblokir seluruh alamat IP, yang berarti bahwa tidak ada yang bisa masuk log dan menyunting halaman.
+Catatan: alamat IP parsial akan diperlakukan seperti nama pengguna dalam penentuan blokir.
+Jika tidak ada alasan yang diberikan, suatu alasan generik baku akan digunakan.\'\'',
+	'regexblock-page-title-1' => 'Blokir alamat menggunakan ekspresi reguler',
+	'regexblock-reason-ip' => 'Alamat IP ini dicekal untuk menyunting karena vandalisme atau gangguan yang dilakukan oleh Anda atau orang lain yang berbagi IP dengan Anda.
+Jika menurut Anda ini adalah suatu kesalahan, silakan [[$1|hubungi kami]]',
 	'regexblock-reason-name' => 'Pengguna ini dicegah dari penyuntingan karena vandalisme atau kekacauan lain.
 Jika anda percaya ini adalah kesalahan, silahkan [[$1|hubungi kami]]',
 	'regexblock-reason-regex' => 'Pengguna ini dicegah dari penyuntingan karena vandalisme atau kekacauan lain oleh pengguna dengan nama yang mirip.
 Silahkan buat nama pengguna lain atau [[$1|hubungi kami]] tentang permasalahan ini',
+	'regexblock-form-username' => 'Alamat IP atau nama pengguna:',
 	'regexblock-form-reason' => 'Alasan:',
 	'regexblock-form-expiry' => 'Kadaluwarsa:',
 	'regexblock-form-match' => 'Pertandingan tepat',
+	'regexblock-form-account-block' => 'Blokir pembuatan akun baru',
 	'regexblock-form-submit' => 'Blok pengguna ini',
+	'regexblock-form-submit-empty' => 'Memberikan nama pengguna atau alamat IP yang dapat diblokir.',
+	'regexblock-form-submit-regex' => 'Ekspresi regular tidak valid.',
+	'regexblock-form-submit-expiry' => 'Tolong tentukan periode kadaluwarsa.',
 	'regexblock-match-stats-record' => "$1 diblok '$2' pada '$3' saat '$4', masuk log dari alamat '$5'",
+	'regexblock-nodata-found' => 'Tanggal tidak ditemukan',
+	'regexblock-stats-title' => 'Statistik blokir regex',
+	'regexblock-unblock-success' => 'Buka blokir berhasil',
+	'regexblock-unblock-log' => "Nama pengguna atau alamat IP '''$1''' telah dibuka diblokirnya.",
+	'regexblock-unblock-error' => 'Kesalahan buka blokir $1.
+Mungkin tidak ada pengguna seperti itu.',
+	'regexblock-regex-filter' => 'atau nilai regex:',
+	'regexblock-view-blocked' => 'Lihat pemblokiran oleh:',
 	'regexblock-view-all' => 'Semua',
 	'regexblock-view-go' => 'Tuju ke',
 	'regexblock-view-match' => '(pertandingan tepat)',
+	'regexblock-view-regex' => '(kecocokan regex)',
+	'regexblock-view-account' => '(pembuatan akun diblokir)',
+	'regexblock-view-reason' => 'alasan: $1',
+	'regexblock-view-reason-default' => 'alasan generik',
+	'regexblock-view-block-infinite' => 'blok permanen',
+	'regexblock-view-block-by' => 'diblokir oleh:',
+	'regexblock-view-block-unblock' => 'buka blokir',
+	'regexblock-view-stats' => 'stat',
+	'regexblock-view-empty' => 'Daftar nama dan alamat yang diblokir kosong.',
+	'regexblock-view-time' => 'pada $1',
+	'right-regexblock' => 'Memblokir pengguna untuk menyunting pada semua wiki di kebun wiki',
 );
 
 /** Ido (Ido)

@@ -72,6 +72,30 @@ $messages['id'] = array(
 	'vector-desc' => 'Meningkatkan elemen pada antarmuka penguna dari kulit Vector.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'vector' => 'Verbesserunge vum Benotzer-IInterface (UI) fir Vector',
+	'vector-desc' => "Verbessert am Benotzer-Interface Elementer vum Ausgesinn ''Vector''.",
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'vector' => 'Mejorament UI për vector',
+	'vector-desc' => "A mejora an sj'element dl'antërfacia utent dlë skin Vector.",
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'vector' => 'Melhorias da IU do Vector',
+	'vector-desc' => 'Melhora a interface do utilizador do tema Vector',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

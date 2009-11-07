@@ -35,6 +35,14 @@ $messages['qqq'] = array(
 {{Identical|Loading}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'wikieditor-preview-tab-edit' => 'Wysig',
+	'wikieditor-preview-loading' => 'Besig om te laai...',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -213,6 +221,16 @@ $messages['pt'] = array(
 	'wikieditor-preview-loading' => 'A carregar...',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikieditor-preview-preference' => "Abbilite l'andeprime da na vanne a l'otre",
+	'wikieditor-preview-tab-edit' => 'Cange',
+	'wikieditor-preview-tab-preview' => 'Andeprime',
+	'wikieditor-preview-loading' => 'Carecamende...',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */
@@ -230,5 +248,14 @@ $messages['uk'] = array(
 	'wikieditor-preview-tab-edit' => 'Редагувати',
 	'wikieditor-preview-tab-preview' => 'Попередній перегляд',
 	'wikieditor-preview-loading' => 'Завантаження...',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'wikieditor-preview-tab-edit' => 'Modìfega',
+	'wikieditor-preview-tab-preview' => 'Anteprima',
+	'wikieditor-preview-loading' => "So' drio cargar...",
 );
 

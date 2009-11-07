@@ -14,12 +14,20 @@ $magicWords['br'] = array(
 	'todo'   => array( '0', 'daober', 'todo' ),
 );
 
+$magicWords['mg'] = array(
+	'todo'   => array( '0', 'atao', 'todo' ),
+);
+
 $magicWords['ml'] = array(
 	'todo'   => array( '0', 'ചെയ്യേണ്ടവ', 'todo' ),
 );
 
 $magicWords['mr'] = array(
 	'todo'   => array( '0', 'हेकरा', 'हेकर', 'todo' ),
+);
+
+$magicWords['nds-nl'] = array(
+	'todo'   => array( '0', 'tedoon', 'tedoen', 'todo' ),
 );
 
 $magicWords['nl'] = array(

@@ -14,6 +14,10 @@ $magicWords['mr'] = array(
 	'sgallery'   => array( '0', 'मृदूदिर्घा', 'sgallery' ),
 );
 
+$magicWords['nds-nl'] = array(
+	'sgallery'   => array( '0', 'suutstalling', 'sgalerij', 'sgallery' ),
+);
+
 $magicWords['nl'] = array(
 	'sgallery'   => array( '0', 'sgalerij', 'sgallery' ),
 );

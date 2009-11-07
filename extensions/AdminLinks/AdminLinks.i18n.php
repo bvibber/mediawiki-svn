@@ -41,13 +41,6 @@ $messages['qqq'] = array(
 	'right-adminlinks' => '{{doc-right}}',
 );
 
-/** Lazuri Nena (Lazuri Nena)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'adminlinks_users' => "K'oçepe",
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -1078,7 +1071,7 @@ $messages['te'] = array(
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
- * @author Yildiz
+ * @author Рашат Якупов
  */
 $messages['tt-cyrl'] = array(
 	'adminlinks_users' => 'Катнашучылар',

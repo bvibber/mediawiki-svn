@@ -43,6 +43,19 @@ $magicWords['ar'] = array(
 	'sin'      => array( '0', 'جا', 'sin' ),
 );
 
+$magicWords['ko'] = array(
+	'const'    => array( '0', '상수', 'const' ),
+	'median'   => array( '0', '메디안', 'median' ),
+	'mean'     => array( '0', '평균', 'mean' ),
+	'log'      => array( '0', '로그', 'log' ),
+	'tan'      => array( '0', '탄젠트', 'tan' ),
+	'cot'      => array( '0', '코탄젠트', 'cot' ),
+	'cos'      => array( '0', '코사인', 'cos' ),
+	'sec'      => array( '0', '시컨트', 'sec' ),
+	'sin'      => array( '0', '사인', 'sin' ),
+	'csc'      => array( '0', '코시컨트', 'csc' ),
+);
+
 $magicWords['nl'] = array(
 	'median'   => array( '0', 'mediaan', 'median' ),
 	'mean'     => array( '0', 'gemiddelde', 'mean' ),

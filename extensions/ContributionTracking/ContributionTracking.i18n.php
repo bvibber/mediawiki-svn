@@ -533,7 +533,7 @@ $messages['ksh'] = array(
 	'contrib-tracking-button' => 'Wigger',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(

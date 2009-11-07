@@ -1114,6 +1114,7 @@ $messages['ksh'] = array(
 	'expand_templates_xml_output' => 'XML ußjevve',
 	'expand_templates_ok' => 'Loß Jonn!',
 	'expand_templates_remove_comments' => 'De ėnner Kommentare fottloohße',
+	'expand_templates_remove_nowiki' => 'Donn de <nowiki>-Befähle ongerdröcke en dämm, wadd_eruß kütt',
 	'expand_templates_generate_xml' => 'Och dä XML-Parser-Boum zeije',
 	'expand_templates_preview' => 'Vör-Aansich',
 );

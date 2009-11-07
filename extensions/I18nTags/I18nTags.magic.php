@@ -14,6 +14,10 @@ $magicWords['ar'] = array(
 	'languagename'   => array( '0', 'اسم_اللغة', 'languagename' ),
 );
 
+$magicWords['arc'] = array(
+	'languagename'   => array( '0', 'ܫܡܐ_ܕܠܫܢܐ', 'languagename' ),
+);
+
 $magicWords['br'] = array(
 	'languagename'   => array( '0', 'anvyezh', 'languagename' ),
 );

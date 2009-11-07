@@ -1244,7 +1244,7 @@ $messages['tr'] = array(
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
- * @author Yildiz
+ * @author Рашат Якупов
  */
 $messages['tt-cyrl'] = array(
 	'edituser' => 'Катнашучыны үзгәртү',

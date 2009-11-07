@@ -519,7 +519,7 @@ $messages['ksh'] = array(
 	'languageselector-setlang' => 'Setze',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(

@@ -481,9 +481,9 @@ $messages['pt'] = array(
 	'webchat-desc' => 'Adiciona uma [[Special:WebChat|página especial]] usada para conversar em tempo real com outros utilizadores da wiki',
 	'webchat-header' => "Esta página especial permite-lhe colaborar em tempo real com outros utilizadores da wiki.
 Para ligar, clique o botão ''\"Connect\"''.
-Se entrou na wiki, o seu nome na ferramenta de conversação já estará devidamente preenchido.
+Se se autenticou na wiki, o seu nome na ferramenta de conversação já estará devidamente preenchido.
 Utilizadores anónimos recebem um nome gerado automaticamente, que pode ser alterado.",
-	'right-webchat' => 'Permitido o uso da [[Special:WebChat|conversação]]',
+	'right-webchat' => 'Usar a [[Special:WebChat|conversação]]',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
