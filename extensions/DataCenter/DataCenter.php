@@ -18,8 +18,8 @@
 
 // Check environment
 if ( !defined( 'MEDIAWIKI' ) ) {
-	echo ( "This is a MediaWiki extension and cannot be run standalone.\n" );
-	die ( 1 );
+	echo( "This is a MediaWiki extension and cannot be run standalone.\n" );
+	die( 1 );
 }
 
 /* Configuration */
@@ -35,6 +35,7 @@ $egDataCenterGoogleMapsAPIKey =
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'DataCenter',
+	'version' => '0.1.0',
 	'author' => 'Trevor Parscal',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DataCenter',
 	'description' => 'DataCenter Planning and Asset Tracking System',
