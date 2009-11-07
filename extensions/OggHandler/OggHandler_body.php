@@ -697,6 +697,7 @@ class OggTransformOutput extends MediaTransformOutput {
 			$videoAttr = array(
 					'id' => $id,
 					'src' => $url,
+					'wikiTitleKey' => $this->file->getTitle()->getDBKey(),
 					'style' => "width:{$width}px;height:{$playerHeight}px",
 					'thumbnail'=>$thumb_url,
 					'controls'=> 'true',
