@@ -16,6 +16,21 @@ $messages['en'] = array(
 	'vector-desc' => 'Improves on the user interface elements of the Vector skin.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Fryed-peach
+ */
+$messages['qqq'] = array(
+	'vector-desc' => '{{desc}}',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'vector' => 'ভেক্টরের জন্য ব্যবহারকারী ইন্টারফেসের উন্নতি সাধন',
+	'vector-desc' => 'ভেক্টর স্কিনের ইন্টারফেস উপাদানের উন্নতি সাধন',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -48,6 +63,14 @@ $messages['gl'] = array(
 	'vector-desc' => 'Mellora os elementos da interface de usuario da apariencia Vector.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'vector' => 'BI-Verbesserige fir Vektor',
+	'vector-desc' => 'Verbesserige an dr Elemänt vu dr Benutzeroberflechi bim Vector-skin',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -64,6 +87,14 @@ $messages['hu'] = array(
 	'vector-desc' => 'Fejlesztések a Vector felület felhasználói felületének elemein.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'vector' => 'Meliorationes del interfacie de usator pro Vector',
+	'vector-desc' => 'Meliora le elementos del interfacie de usator del apparentia Vector.',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  */
@@ -72,12 +103,52 @@ $messages['id'] = array(
 	'vector-desc' => 'Meningkatkan elemen pada antarmuka penguna dari kulit Vector.',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'vector' => 'ベクター用ユーザーインターフェイス改良',
+	'vector-desc' => 'ベクター・スキンのユーザーインターフェイス要素を改良する。',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'vector' => 'Verbesserunge vum Benotzer-IInterface (UI) fir Vector',
 	'vector-desc' => "Verbessert am Benotzer-Interface Elementer vum Ausgesinn ''Vector''.",
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'vector' => 'Подобрувања на интерфејсот на Vector',
+	'vector-desc' => 'Ги подобрува елементите на корисничкиот интерфејс на изгледот „Vector“.',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'vector' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിലെ ദൃശ്യമണ്ഡല മെച്ചപ്പെടുത്തലുകൾ',
+	'vector-desc' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിൽ ഉപയോക്തൃ ദൃശ്യമണ്ഡലത്തിലെ ഘടകങ്ങളിലെ മെച്ചപ്പെടുത്തലുകൾ.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'vector' => 'Gebruikersinterfaceverbeteringen voor Vector',
+	'vector-desc' => 'Verbetert de gebruikersinterfaceelementen van het uiterlijk Vector',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'vector' => 'Melhoraments IU per Vector',
+	'vector-desc' => "Melhoraments dels elements de l'interfàcia d'utilizaire de l'abilhatge Vector.",
 );
 
 /** Piedmontese (Piemontèis)
@@ -102,5 +173,20 @@ $messages['pt'] = array(
 $messages['roa-tara'] = array(
 	'vector' => 'Miglioramende UI pe Vector',
 	'vector-desc' => "Migliore l'elemende de l'inderfacce utende d'a schermate Vector.",
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'vector' => 'Mejoramenti de interfacia utente (UI) par el Vector.',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
+ */
+$messages['zh-hans'] = array(
+	'vector' => 'Vector用户界面改进',
+	'vector-desc' => '改进Vector皮肤中的用户界面元素。',
 );
 

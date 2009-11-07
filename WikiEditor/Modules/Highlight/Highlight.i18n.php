@@ -71,11 +71,25 @@ $messages['hu'] = array(
 	'wikieditor-highlight-preference' => 'Szintaxiskiemelés engedélyezése szerkesztés közben',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'wikieditor-highlight-preference' => 'Activar le coloration syntactic durante le modification',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */
 $messages['id'] = array(
 	'wikieditor-highlight-preference' => 'Aktifkan penyorotan sintaks sewaktu menyunting',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'wikieditor-highlight-preference' => '編集時の構文ハイライトを有効化する',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -99,11 +113,25 @@ $messages['mk'] = array(
 	'wikieditor-highlight-preference' => 'Овозможи подвелкување на ситакса при уредување',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'wikieditor-highlight-preference' => 'തിരുത്തുമ്പോൾ വിന്യാസങ്ങൾ പ്രമുഖമാക്കിക്കാട്ടൽ സജ്ജമാക്കുക',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'wikieditor-highlight-preference' => 'Codemarkering inschakelen tijdens het bewerken',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'wikieditor-highlight-preference' => 'Activar la coloracion sintaxica al moment de la modificacion dins la fenèstra',
 );
 
 /** Piedmontese (Piemontèis)
@@ -125,5 +153,19 @@ $messages['pt'] = array(
  */
 $messages['roa-tara'] = array(
 	'wikieditor-highlight-preference' => "Abbilite 'a sindasse evidenziate quanne face le cangiaminde",
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'wikieditor-highlight-preference' => 'Ativa la colorassion de la sintassi in modifica',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
+ */
+$messages['zh-hans'] = array(
+	'wikieditor-highlight-preference' => '编辑时启用语法高亮',
 );
 

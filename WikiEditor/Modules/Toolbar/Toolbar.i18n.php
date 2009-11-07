@@ -534,6 +534,7 @@ $messages['ar'] = array(
 	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'يبدو أن المُراد بالمسار الذي حددته وصلة إلى صفحة ويكي أخرى. أتريد أن تجعلها وصلة داخلية؟',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'وصلة داخلية',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'وصلة خارجية',
+	'wikieditor-toolbar-tool-link-empty' => 'لم تدخل شيئا لتصل به.',
 	'wikieditor-toolbar-tool-file' => 'ملف مضمّن',
 	'wikieditor-toolbar-tool-file-example' => 'Example.jpg',
 	'wikieditor-toolbar-tool-reference' => 'مرجع',
@@ -984,6 +985,7 @@ $messages['bn'] = array(
 	'wikieditor-toolbar-tool-link-int-invalid' => 'আপনার শিরোনামটি ঠিক নয়।',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'আন্তঃসংযোগ',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'বহিঃসংযোগ',
+	'wikieditor-toolbar-tool-link-empty' => 'লিঙ্ক করা জন্য আপনি কোনো কিছু টাইপ করেননি।',
 	'wikieditor-toolbar-tool-file-example' => 'Example.jpg',
 	'wikieditor-toolbar-tool-reference' => 'তথ্যসূত্র',
 	'wikieditor-toolbar-tool-reference-example' => 'পাদটীকার লেখা এখানে যোগ করো',
@@ -1025,14 +1027,20 @@ $messages['bn'] = array(
 | সারি ২, ঘর ১
 | সারি ২, ঘর ২
 | সারি ২, ঘর ৩',
-	'wikieditor-toolbar-tool-table-example' => 'সারি $1, ঘর $2',
-	'wikieditor-toolbar-tool-table-example-header' => 'সারি $1, ঘর $2 (শীর্ষপাদ)',
+	'wikieditor-toolbar-tool-table-example' => 'ঘরের লেখ',
+	'wikieditor-toolbar-tool-table-example-header' => 'শিরোনামের লেখ',
 	'wikieditor-toolbar-tool-table-title' => 'ছক যোগ করো',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'সারি',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'কলাম',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'শিরোনাম সারি অন্তর্ভুক্ত করো',
+	'wikieditor-toolbar-tool-table-wikitable' => 'সীমান্ত শৈলী',
+	'wikieditor-toolbar-tool-table-sortable' => 'ছক ক্রমায়ন করো',
+	'wikieditor-toolbar-tool-table-preview' => 'প্রাকদর্শন',
 	'wikieditor-toolbar-tool-table-insert' => 'যোগ করো',
 	'wikieditor-toolbar-tool-table-cancel' => 'বাতিল',
+	'wikieditor-toolbar-tool-table-toomany' => 'এই ডায়লগ দ্বারা $1 ঘরের বেশি ছক যোগ করা সম্ভব নয়।',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'আপনি সারি এবং কলামের জন্য ভুল সংখ্যা টাইপ করেছেন।',
+	'wikieditor-toolbar-tool-table-zero' => 'আপনি ছকের সারি এবং কলামের সংখ্যা শূন্য দিতে পারবেন না।',
 	'wikieditor-toolbar-tool-replace' => 'অনুসন্ধান এবং প্রতিস্থাপন',
 	'wikieditor-toolbar-tool-replace-title' => 'অনুসন্ধান ও প্রতিস্থাপন',
 	'wikieditor-toolbar-tool-replace-search' => 'অনুসন্ধান:',
@@ -1056,6 +1064,8 @@ $messages['bn'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'আরবীয়',
 	'wikieditor-toolbar-characters-page-hebrew' => 'হিব্রু',
 	'wikieditor-toolbar-characters-page-telugu' => 'তেলেগু',
+	'wikieditor-toolbar-characters-page-sinhala' => 'শিংহলী',
+	'wikieditor-toolbar-characters-page-gujarati' => 'গুজরাতি',
 	'wikieditor-toolbar-section-help' => 'সহায়িকা',
 	'wikieditor-toolbar-help-heading-description' => 'বর্ণনা',
 	'wikieditor-toolbar-help-heading-syntax' => 'আপনি যা টাইপ করেছেন',
@@ -1077,7 +1087,10 @@ $messages['bn'] = array(
 	'wikieditor-toolbar-help-content-bolditalic-syntax' => "'''''গাঢ় &amp; ইটালিক লেখা'''''",
 	'wikieditor-toolbar-help-content-bolditalic-result' => '<strong><em>গাঢ় &amp; ইটালিক লেখা</em></strong>',
 	'wikieditor-toolbar-help-content-ilink-description' => 'আভ্যন্তরীণ সংযোগ',
+	'wikieditor-toolbar-help-content-ilink-syntax' => '[[পাতার শিরোনাম|সংযোগ লেবেল]]<br />[[পাতার শিরোনাম]]',
 	'wikieditor-toolbar-help-content-xlink-description' => 'বহিঃসংযোগ',
+	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.example.org সংযোগ লেবেল]<br />[http://www.example.org]<br />http://www.example.org',
+	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>সংযোগ লেবেল</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
 	'wikieditor-toolbar-help-content-heading1-description' => '১ম পর্যায়ের স্তর',
 	'wikieditor-toolbar-help-content-heading1-syntax' => '= শিরোনাম লেখ =',
 	'wikieditor-toolbar-help-content-heading1-result' => '<h1> শিরোনাম লেখ </h1>',
@@ -1098,6 +1111,7 @@ $messages['bn'] = array(
 	'wikieditor-toolbar-help-content-ulist-result' => '<ul><li>তালিকা আইটেম</li><li>তালিকা আইটেম</li></ul>',
 	'wikieditor-toolbar-help-content-olist-description' => 'সংখ্যায়িত তালিকা',
 	'wikieditor-toolbar-help-content-olist-syntax' => '# তালিকা আইটেম <br /># তালিকা আইটেম',
+	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>তালিকা আইটেম</li><li>তালিকা আইটেম</li></ol>',
 	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|ক্যাপশন লেখ]]',
 	'wikieditor-toolbar-help-content-reference-description' => 'তথ্যসূত্র',
 	'wikieditor-toolbar-help-content-reference-result' => "পাতার লেখা।<sup><a href='#'>[1]</a></sup>",
@@ -2092,7 +2106,7 @@ $messages['cy'] = array(
 	'wikieditor-toolbar-help-content-olist-syntax' => '# Eitem ar y rhestr<br /># Eitem ar y rhestr',
 	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>Eitem ar y rhestr</li><li>Eitem ar y rhestr</li></ol>',
 	'wikieditor-toolbar-help-content-file-description' => 'Ffeil mewnosodol',
-	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Enghraifft.png|mân-lun|Disgrifiad]]',
+	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Enghraifft.png|thumb|Disgrifiad]]',
 	'wikieditor-toolbar-help-content-reference-description' => 'Troednodyn',
 	'wikieditor-toolbar-help-content-reference-syntax' => 'Testun y dudalen.&lt;ref name="test"&gt;[http://www.enghraifft.org ysgrifen y cyswllt], ysgrifen ychwanegol.&lt;/ref&gt;',
 	'wikieditor-toolbar-help-content-reference-result' => 'Testun y dudalen.',
@@ -3021,6 +3035,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -3186,7 +3201,7 @@ $messages['eo'] = array(
 	'wikieditor-toolbar-help-content-olist-syntax' => '# Listero<br /># Listero',
 	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>Listero</li><li>Listero</li></ol>',
 	'wikieditor-toolbar-help-content-file-description' => 'Enmetita dosiero',
-	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Ekzemplo.png|thumb|Teksto pri dosiero]]',
+	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Teksto pri dosiero]]',
 	'wikieditor-toolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Pligrandigi' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Teksto pri dosiero</div></div>",
 	'wikieditor-toolbar-help-content-reference-description' => 'Referenco',
 	'wikieditor-toolbar-help-content-reference-syntax' => 'Paĝa teksto.&lt;ref name="test"&gt;[http://www.ekzemplo.org Ligila teksto], aldona teksto.&lt;/ref&gt;',
@@ -12790,21 +12805,46 @@ $messages['zh-hans'] = array(
 {{ns:file}}:Example.jpg|标题2',
 	'wikieditor-toolbar-tool-newline' => '换行',
 	'wikieditor-toolbar-tool-table' => '表格',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! 标题1
+! 标题2
+! 标题3
+|-
+| 第一行第一个单元格
+| 第一行第二个单元格
+| 第一行第三个单元格
+|-
+| 第二行第一个单元格
+| 第二行第二个单元格
+| 第二行第三个单元格',
 	'wikieditor-toolbar-tool-table-example' => '单元格文本',
 	'wikieditor-toolbar-tool-table-example-header' => '标头文本',
 	'wikieditor-toolbar-tool-table-title' => '插入表格',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => '行',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => '列',
+	'wikieditor-toolbar-tool-table-dimensions-header' => '包含标题栏',
+	'wikieditor-toolbar-tool-table-wikitable' => '含表格线维基风格',
+	'wikieditor-toolbar-tool-table-sortable' => '使表格内容可排序',
+	'wikieditor-toolbar-tool-table-preview' => '预览',
 	'wikieditor-toolbar-tool-table-insert' => '插入',
 	'wikieditor-toolbar-tool-table-cancel' => '取消',
+	'wikieditor-toolbar-tool-table-toomany' => '在这个对话框中无法插入超过$1个单元格的表格。',
+	'wikieditor-toolbar-tool-table-invalidnumber' => '您未输入有效的行数或列数。',
+	'wikieditor-toolbar-tool-table-zero' => '您不能插入一个零行或零列的表格。',
 	'wikieditor-toolbar-tool-replace' => '查找和替换',
 	'wikieditor-toolbar-tool-replace-title' => '查找和替换',
 	'wikieditor-toolbar-tool-replace-search' => '查找：',
 	'wikieditor-toolbar-tool-replace-replace' => '替换为：',
 	'wikieditor-toolbar-tool-replace-case' => '区分大小写',
 	'wikieditor-toolbar-tool-replace-regex' => '使用正则表达式',
+	'wikieditor-toolbar-tool-replace-button-findnext' => '查找下一个',
+	'wikieditor-toolbar-tool-replace-button-replacenext' => '替换下一个',
+	'wikieditor-toolbar-tool-replace-button-replaceall' => '替换所有',
 	'wikieditor-toolbar-tool-replace-close' => '取消',
 	'wikieditor-toolbar-tool-replace-nomatch' => '没有找到任何匹配项。',
+	'wikieditor-toolbar-tool-replace-success' => '完成$1次替换。',
+	'wikieditor-toolbar-tool-replace-emptysearch' => '您没有输入查找内容。',
+	'wikieditor-toolbar-tool-replace-invalidregex' => '您输入的正则表达式无效：$1',
 	'wikieditor-toolbar-section-characters' => '特殊文字',
 	'wikieditor-toolbar-characters-page-latin' => '拉丁字母',
 	'wikieditor-toolbar-characters-page-latinextended' => '扩展拉丁字母',
@@ -12815,6 +12855,8 @@ $messages['zh-hans'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => '阿拉伯字母',
 	'wikieditor-toolbar-characters-page-hebrew' => '希伯来字母',
 	'wikieditor-toolbar-characters-page-telugu' => '泰卢固字母',
+	'wikieditor-toolbar-characters-page-sinhala' => '僧伽罗字母',
+	'wikieditor-toolbar-characters-page-gujarati' => '古吉拉特字母',
 	'wikieditor-toolbar-section-help' => '帮助',
 	'wikieditor-toolbar-help-heading-description' => '描述',
 	'wikieditor-toolbar-help-heading-syntax' => '输入内容',

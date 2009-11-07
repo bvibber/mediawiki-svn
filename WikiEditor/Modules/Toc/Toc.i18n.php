@@ -263,11 +263,25 @@ $messages['uk'] = array(
 	'wikieditor-toc-preference' => 'Включити зміст з можливістю навігації',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'wikieditor-toc-preference' => "Ativa l'indice navigabile",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'wikieditor-toc-preference' => 'Sử dụng mục lục dễ duyệt tìm',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
+ */
+$messages['zh-hans'] = array(
+	'wikieditor-toc-preference' => '启用可导航目录',
 );
 

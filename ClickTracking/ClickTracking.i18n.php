@@ -1072,22 +1072,36 @@ $messages['pt'] = array(
 	'clicktracking' => 'Monitorização de cliques da Iniciativa de Usabilidade',
 	'clicktracking-desc' => 'Monitorização de cliques para seguir eventos que não causam refrescamentos de página',
 	'ct-title' => 'Cliques de utilizador agregados',
+	'ct-event-name' => 'Nome do evento',
+	'ct-expert-header' => 'Cliques de "Perito"',
+	'ct-intermediate-header' => 'Cliques de "Intermédio"',
+	'ct-beginner-header' => 'Cliques de "Iniciante"',
+	'ct-total-header' => 'Cliques totais',
+	'ct-start-date' => 'Data de Início (AAAAMMDD)',
+	'ct-end-date' => 'Data de Fim (AAAAMMDD)',
+	'ct-increment-by' => 'Número de dias representado por cada ponto',
 	'ct-change-graph' => 'Mudar gráfico',
 	'ct-beginner' => 'Iniciante',
-	'ct-intermediate' => 'Intermediário',
-	'ct-expert' => 'Experiente',
+	'ct-intermediate' => 'Intermédio',
+	'ct-expert' => 'Perito',
 	'ct-date-range' => 'Intervalo de datas',
 	'ct-editing' => 'A editar actualmente:',
 	'ct-anon-users' => 'Utilizadores anónimos',
+	'ct-user-contribs' => 'Total de contribuições dos utilizadores',
+	'ct-user-span' => 'Contribuições dos utilizadores no período de tempo',
 	'ct-and' => 'e',
+	'ct-update-table' => 'Actualizar tabela',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Hamilton Abreu
  */
 $messages['pt-br'] = array(
 	'clicktracking' => 'Monitoramento de cliques da Iniciativa de Usabilidade',
 	'clicktracking-desc' => 'Monitoramento de cliques, destinado ao monitoramento de eventos que não causem uma atualização de página',
+	'ct-intermediate' => 'Intermediário',
+	'ct-expert' => 'Experiente',
 );
 
 /** Russian (Русский)
@@ -1345,11 +1359,32 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'clicktracking' => '可用性倡议点击追踪',
-	'clicktracking-desc' => '点击追踪，不在重载页面的情况中用来追踪点击',
+	'clicktracking' => 'Usability Initiative点击追踪',
+	'clicktracking-desc' => '点击追踪，追踪对象为不造成页面刷新的事件',
+	'ct-title' => '整合用户点击统计',
+	'ct-event-name' => '事件名称',
+	'ct-expert-header' => '“专业”点击',
+	'ct-intermediate-header' => '“中级”点击',
+	'ct-beginner-header' => '“新手”点击',
+	'ct-total-header' => '总点击数',
+	'ct-start-date' => '开始日期（年月日）',
+	'ct-end-date' => '结束日期（年月日）',
+	'ct-increment-by' => '每个数据点代表的天数',
+	'ct-change-graph' => '更改图像',
+	'ct-beginner' => '新手',
+	'ct-intermediate' => '中级',
+	'ct-expert' => '专业',
+	'ct-date-range' => '数据范围',
+	'ct-editing' => '当前编辑：',
+	'ct-anon-users' => '匿名用户',
+	'ct-user-contribs' => '总用户贡献',
+	'ct-user-span' => '时间范围内的用户贡献',
+	'ct-and' => '和',
+	'ct-update-table' => '更新表格',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

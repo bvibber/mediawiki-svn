@@ -4112,7 +4112,7 @@ Pode optar por sair a qualquer momento, clicando na ligação "{{int:optin-leave
 Pode experimentá-lo novamente a qualquer momento, clicando na ligação "{{int:optin-try}}" na parte superior direita do ecrã.',
 	'optin-success-feedback' => 'Obrigado pelos seus comentários!',
 	'optin-accept-short' => 'Ok, vamos fazê-lo!',
-	'optin-accept-long' => 'Experimente o Beta',
+	'optin-accept-long' => 'Experimentar o Beta',
 	'optin-accept-long-anon' => 'Entre e experimente o Beta',
 	'optin-deny-short' => 'Não, obrigado',
 	'optin-deny-long' => 'Regressar à página anterior',
@@ -4154,20 +4154,20 @@ Gostaríamos de saber o que achou da nossa nova interface, por isso agradecíamo
 	'optin-survey-answer-changes-custom' => 'Permitir um maior grau de personalização pelo utilizador.',
 	'optin-survey-answer-changes-other' => 'Outros:',
 	'optin-improvements' => '== O que foi melhorado? ==
-[[File:UsabilityNavigation.png|left|link=|Captura de ecrã das novas abas de navegação]]
+[[File:UsabilityNavigation.png|left|link=|Captura de ecrã nos novos separadores de navegação]]
 ;Navegação melhorada 
-O novo sistema de navegação torna mais fácil ver onde você está e o que você está a fazer, bem como onde pode ir e como chegar lá. Com a caixa de pesquisa localizada no canto superior direito, a funcionalidade de pesquisa é mais fácil de encontrar e mais rápida de usar.
+O novo sistema de navegação torna mais fácil ver onde está e o que está a fazer, bem como para onde pode ir e como lá chegar. Com a caixa de pesquisa localizada no canto superior direito, a funcionalidade de pesquisa é mais fácil de encontrar e mais rápida de usar.
 <div style="clear:both;"></div>
 
 [[File:UsabilityToolbar.png|left|link=|Captura de ecrã da barra de ferramentas melhorada]]
 ;Melhoramentos na barra de ferramentas de edição
-Novos e melhorados ícones tornam mais claro que acção que cada ferramenta realiza. Secções ampliáveis reduzem o empilhamento de botões, continuando a manter ferramentas menos utilizadas a apenas um clique de distância.
+Ícones novos e melhorados tornam mais clara a acção que cada ferramenta realiza. Secções ampliáveis reduzem o empilhamento de botões, continuando a manter as ferramentas menos utilizadas a apenas um clique de distância.
 A secção de ajuda fornece acesso rápido a uma referência para usos comuns de código wiki.
 <div style="clear:both;"></div>
 == Como participar ==
-Para aprender mais ou participar do projecto, por favor visite a [http://usability.wikimedia.org wiki da Iniciativa de Usabilidade]. Lá você encontrará informações sobre nossa concessão, pesquisa,  desenho + desenvolvimento, e lançamentos. Para esclarecer dúvidas ou sugestões, por favor utilize nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão]. Para assuntos específicos, utilize uma das páginas de discussão associada. Caso encontro bugs, por favor deixe seu comentário na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discussão Acai] ou através do [https://bugzilla.wikimedia.org Bugzilla].
+Para aprender mais ou participar do projecto, por favor visite a [http://usability.wikimedia.org wiki da Iniciativa de Usabilidade]. Lá encontrará informações sobre os nossos fundos, pesquisa,  desenho + desenvolvimento e lançamento de versões. Para esclarecer dúvidas ou sugestões, por favor use a nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão]. Para assuntos específicos, use uma das páginas de discussão associadas. Caso encontre defeitos no \'\'software\'\', por favor reporte-os na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discussão Acai] ou através do [https://bugzilla.wikimedia.org Bugzilla].
 
-Obrigado e estamos ansiosos para ouvir de você!',
+Obrigado e estamos ansiosos por receber os seus comentários!',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -4519,8 +4519,12 @@ $messages['scn'] = array(
  * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
+	'optin-title-optedout' => 'බීටා අනුවාදය අත්හදා බලන්න',
+	'optin-accept-short' => 'උත්සාහ කර බලමු!',
 	'optin-accept-long' => 'බීටා අනුවාදය අත්හදා බලන්න',
 	'optin-accept-long-anon' => 'ප්‍රවිෂ්ට වී බීටා අනුවාදය අත්හදා බලන්න',
+	'optin-deny-short' => 'ස්තුතියි. බැහැ',
+	'optin-deny-long' => 'පෙර පිටුවට නැවත යන්න',
 	'optin-survey-yes' => 'ඔව්',
 	'optin-survey-no' => 'නැත',
 	'optin-survey-question-whyoptout' => 'ඔබ බීටා අනුවාදයෙන් ඉවත් වන්නේ ඇයි? (ගැලපෙන සියල්ල තෝරාගැනුමට කාරුණික වන්න.)',
