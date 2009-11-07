@@ -492,13 +492,17 @@ $messages['pms'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
+	'ratedpages' => 'Páginas avaliadas',
+	'ratedpages-leg' => 'Procurar páginas com um número significativo de avaliações',
 	'ratedpages-list' => 'Segue-se uma lista de páginas ordenada de acordo com a avaliação dos leitores.',
 	'ratedpages-none' => 'Não há páginas nesta listagem',
-	'ratedpages-graphs' => 'dados de avaliações',
+	'ratedpages-graphs' => 'dados das avaliações',
+	'ratedpages-count' => '$1 {{PLURAL:$1|avaliação|avaliações}}',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

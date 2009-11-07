@@ -5570,6 +5570,7 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'viewapc' => 'Відомості про APC',
@@ -5615,6 +5616,7 @@ $messages['uk'] = array(
 	'viewapc-memory-miss' => 'Промахів: $1 ($2)',
 	'viewapc-memoryfragmentation' => "Детальніше про використання пам'яті і фрагментацію",
 	'viewapc-fragmentation-info' => 'Фрагментація: $1 ($2 з $3 в $4 {{PLURAL:$4|фрагменті|фрагментах|фрагментах}})',
+	'viewapc-display-filename' => 'Назва файлу',
 );
 
 /** Veps (Vepsan kel')

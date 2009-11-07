@@ -4478,6 +4478,7 @@ $messages['ko'] = array(
 	'code-release-legend' => '배포 노트 만들기',
 	'code-release-startrev' => '시작 버전:',
 	'code-release-endrev' => '마지막 버전:',
+	'code-release-badrange' => '범위가 너무 넓습니다!',
 	'codereview-subtitle' => '$1',
 	'codereview-reply-link' => '답변',
 	'codereview-email-subj' => '[$1] [$2판]: 새 의견이 추가되었습니다.',
@@ -6077,6 +6078,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Crazymadlover
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -6102,17 +6104,18 @@ $messages['pt'] = array(
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
 	'code-tests' => 'Baterias de testes',
-	'code-authors-text' => 'Abaixo encontra-se uma lista de autores do repositório por ordem das efectivações recentes. Contas do wiki locais são mostrados entre parênteses.',
-	'code-author-haslink' => 'Este autor está associado ao utilizador de wiki $1',
+	'code-authors-text' => 'Abaixo encontra-se uma lista de autores do repositório por ordem das efectivações recentes. Contas da wiki local são mostradas entre parênteses.',
+	'code-author-haslink' => 'Este autor está associado ao utilizador wiki $1',
 	'code-author-orphan' => 'Este autor não está associado a nenhuma conta wiki',
-	'code-author-dolink' => 'Associar este autor a um utilizador de wiki:',
-	'code-author-alterlink' => 'Alterar o utilizador de wiki associado a este autor:',
-	'code-author-orunlink' => 'Ou desassociar este utilizador de wiki:',
+	'code-author-dolink' => 'Associar este autor a um utilizador wiki:',
+	'code-author-alterlink' => 'Alterar o utilizador wiki associado a este autor:',
+	'code-author-orunlink' => 'Ou desassociar este utilizador wiki:',
 	'code-author-name' => 'Introduza um nome de utilizador:',
-	'code-author-success' => 'O autor $1 foi associado ao utilizador de wiki $2',
+	'code-author-success' => 'O autor $1 foi associado ao utilizador wiki $2',
 	'code-author-link' => 'associar?',
 	'code-author-unlink' => 'desassociar?',
 	'code-author-unlinksuccess' => 'O autor $1 foi desassociado',
+	'code-browsing-path' => "Visualizando revisões em '''$1'''",
 	'code-field-id' => 'Revisão',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentador',
@@ -6143,7 +6146,8 @@ $messages['pt'] = array(
 	'code-rev-tag-remove' => 'Remover etiquetas:',
 	'code-rev-comment-by' => 'Comentário de $1',
 	'code-rev-comment-submit' => 'Submeter comentário',
-	'code-rev-comment-preview' => 'Previsão',
+	'code-rev-comment-preview' => 'Antevisão',
+	'code-rev-inline-preview' => 'Antevisão:',
 	'code-rev-diff' => 'Diferenças',
 	'code-rev-diff-link' => 'dif',
 	'code-rev-purge-link' => 'purgar',
@@ -6160,7 +6164,7 @@ $messages['pt'] = array(
 	'code-rev-submit-next' => 'Gravar & próximo por resolver',
 	'code-batch-status' => 'Estado da modificação:',
 	'code-batch-tags' => 'Etiquetas da modificação:',
-	'codereview-batch-title' => 'Alterar todas as revisões selecionadas',
+	'codereview-batch-title' => 'Alterar todas as revisões seleccionadas',
 	'codereview-batch-submit' => 'Submeter',
 	'code-releasenotes' => 'Notas de lançamento',
 	'code-release-legend' => 'Gerar notas de lançamento',
@@ -6169,6 +6173,10 @@ $messages['pt'] = array(
 	'code-release-badrange' => 'Intervalo é demasiado elevado!',
 	'codereview-subtitle' => 'Para $1',
 	'codereview-reply-link' => 'responder',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|teste|testes}} com sucesso',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|teste|testes}} com sucesso, $3 {{PLURAL:$4|teste falhado|testes falhados}}:',
+	'codereview-tests-running' => 'Casos de teste em execução...',
+	'codereview-tests-aborted' => 'Execução de testes abortada.',
 	'codereview-email-subj' => '[$1] [r$2]: Novo comentário adicionado',
 	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em r$3.
 
@@ -6180,7 +6188,7 @@ $4',
 	'codereview-email-subj2' => '[$1] [r$2]: Mudanças de seguimento',
 	'codereview-email-body2' => 'Utilizador "$1" fez alterações de seguimento à r$2.
 
-URL completo: $3
+URL completa: $3
 
 Sumário da submissão: $4',
 	'codereview-email-subj3' => '[$1] [r$2]: Testes automáticos detetaram regressão',
@@ -6191,7 +6199,7 @@ URL completa: $2
 Sumário de efetivação:
 
 $3',
-	'repoadmin' => 'Administração de Repositório',
+	'repoadmin' => 'Administração do Repositório',
 	'repoadmin-new-legend' => 'Criar um novo repositório',
 	'repoadmin-new-label' => 'Nome do repositório:',
 	'repoadmin-new-button' => 'Criar',
@@ -6207,7 +6215,7 @@ $3',
 	'right-codereview-remove-tag' => 'Remover etiquetas de revisões',
 	'right-codereview-post-comment' => 'Adicionar comentários a revisões',
 	'right-codereview-set-status' => 'Alterar estado de revisões',
-	'right-codereview-link-user' => 'Associar autores a utilizadores de wiki',
+	'right-codereview-link-user' => 'Associar autores a utilizadores wiki',
 	'specialpages-group-developer' => 'Ferramentas de desenvolvimento',
 );
 

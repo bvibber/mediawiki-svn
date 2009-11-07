@@ -122,6 +122,14 @@ $messages['nl'] = array(
 	'templateinfo-header' => 'De XML-definitie voor dit sjabloon luidt als volgt:',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'templateinfo-desc' => 'Supòrta los modèls en definissent lor estructura de donadas via de balisas XML',
+	'templateinfo-header' => 'La definicion XML per aqueste modèl es :',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
@@ -129,6 +137,14 @@ $messages['nl'] = array(
 $messages['pms'] = array(
 	'templateinfo-desc' => "A manten jë stamp ch'a definisso soa strutura dij dat via markup XML",
 	'templateinfo-header' => "La definission XML për sto stamp-sì a l'é:",
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'templateinfo-desc' => 'Define a estrutura de dados das predefinições em XML',
+	'templateinfo-header' => 'A definição XML para esta predefinição é:',
 );
 
 /** Tarandíne (Tarandíne)

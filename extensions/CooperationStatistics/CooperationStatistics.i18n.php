@@ -173,13 +173,14 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'cooperationstatistics-tablearticle' => 'Nombro de paĝoj',
 	'cooperationstatistics-tablevalue' => 'Nombro de redaktantoj',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|paĝo|paĝoj}}',
-	'cooperationstatistics-nbusers' => 'havas $1 {{PLURAL:$1|redaktanton|redaktantojn}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|havas|havas}} $1 {{PLURAL:$1|redaktanton|redaktantojn}}',
 	'cooperationstatistics-legendmore' => 'aŭ pliaj redaktoj.',
 );
 
@@ -522,12 +523,21 @@ Varda ëdcò le [[Special:MostRevisors|'''pàgine con pì revisor''']] e le [[Sp
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'cooperationstatistics' => 'Estatísticas de cooperação',
+	'cooperationstatistics-desc' => 'Mostrar [[Special:CooperationStatistics|estatísticas de cooperação no espaço nominal principal]].',
+	'cooperationstatistics-text' => "Mostrar estatísticas de cooperação no espaço nominal principal.
+Desde [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] a [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}} ou mais]] editores.<br />
+Veja também as [[Special:MostRevisors|'''páginas com mais editores''']] e as [[Special:MostRevisions|páginas com mais edições]].",
 	'cooperationstatistics-tablearticle' => 'Número de páginas',
 	'cooperationstatistics-tablevalue' => 'Número de editores',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|página|páginas}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|tem|têm}} $1 {{PLURAL:$1|editor|editores}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|tem|têm}} $1 {{PLURAL:$1|editor|ou menos editores}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|tem|têm}} $1 ou mais editores',
 	'cooperationstatistics-legendmore' => 'ou mais editores.',
 );
 

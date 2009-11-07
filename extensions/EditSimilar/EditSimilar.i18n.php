@@ -182,13 +182,14 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'editsimilar-thanks' => 'Dankon pro via kontribuo.
-Jen rilataj paĝoj: $1.',
+Kontrolu {{PLURAL:$2|ĉi tiun rilatan paĝon|ĉi tiujn rilatajn paĝojn}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Dankon pro via kontribuo.
-Jen paĝoj kiuj ankaŭ bezonas vian helpon: $1.',
+{{PLURAL:$2|Ĉi tiu paĝo|Ĉi tiuj paĝoj}} ankaŭ povus bezoni vian helpon: $1.',
 	'editsimilar-thankyou' => 'Dankon pro via kontribuo, $1!',
 	'editsimilar-link-disable' => 'fari preferojn',
 );

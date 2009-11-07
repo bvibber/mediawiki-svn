@@ -588,7 +588,7 @@ $messages['ia'] = array(
 	'importfreeimages_description' => 'Iste pagina permitte cercar photos propriemente licentiate in Flickr e importar los in tu wiki.',
 	'importfreeimages_noapikey' => 'Tu non ha configurate tu clave API de Flickr.
 Pro facer isto, per favor obtene un clave API ab [http://www.flickr.com/services/api/misc.api_keys.html iste pagina] e defini $wgFlickrAPIKey  in ImportFreeImages.php.',
-	'importfreeimages_nophotosfound' => "Nulle photo corresponde a tu criterios de recerca '$1'. Per favor reprova.",
+	'importfreeimages_nophotosfound' => "Nulle photo corresponde a tu criterios de recerca '$1'. Per favor reproba.",
 	'importfreeimages_invalidurl' => 'Le adresse URL "$1" non corresponde a un imagine de Flickr valide.',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importar isto',

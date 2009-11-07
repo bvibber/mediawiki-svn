@@ -1493,26 +1493,33 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Indech
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'expandtemplates' => 'Expandir predefinições',
-	'expandtemplates-desc' => 'Expande predefinições, funções do analisador "parser" e variáveis para mostrar texto wiki expandido e prever o aspecto da página',
-	'expand_templates_intro' => 'Esta página especial pega em algum texto e expande todas as predefinições nele existentes recursivamente. Também expande funções do analisador (parser) como <nowiki>{{</nowiki>#if:...}}, e variáveis como <nowiki>{{</nowiki>CURRENTDAY}}&mdash;de facto, tudo entre chavetas duplas. Isto é feito através da chamada ao estágio do analisador (parser) relevante do próprio MediaWiki.',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expande predefinições, funções do analisador sintáctico e variáveis]] para mostrar texto wiki expandido e antever o aspecto final da página',
+	'expand_templates_intro' => "Esta página especial recebe um texto e expande recursivamente todas as predefinições nele existentes.
+Também expande funções do analisador sintáctico ''(parser)'', tais como
+<nowiki>{{</nowiki>#if:...}}, e variáveis, tais como
+<nowiki>{{</nowiki>CURRENTDAY}} &mdash; de facto, expande tudo o que estiver entre chavetas duplas.
+Isto é feito chamando o estágio relevante do analisador sintáctico a partir do próprio MediaWiki.
+Ver o resultado nas secções abaixo.",
 	'expand_templates_title' => 'Título de contexto para {{PAGENAME}} etc.:',
-	'expand_templates_input' => 'Texto de entrada:',
+	'expand_templates_input' => 'Texto a expandir:',
 	'expand_templates_output' => 'Resultado',
 	'expand_templates_xml_output' => 'Resultado XML',
-	'expand_templates_ok' => 'OK',
+	'expand_templates_ok' => 'Expandir',
 	'expand_templates_remove_comments' => 'Remover comentários',
-	'expand_templates_remove_nowiki' => 'Suprima marcações <nowiki> no resultado',
-	'expand_templates_generate_xml' => 'Mostrar árvore de análise (parse) do XML',
-	'expand_templates_preview' => 'Previsão',
+	'expand_templates_remove_nowiki' => "Suprimir ''tags'' <nowiki> no resultado",
+	'expand_templates_generate_xml' => 'Mostrar a árvore de análise sintáctica do XML',
+	'expand_templates_preview' => 'Antevisão do resultado',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Hamilton Abreu
  */
 $messages['pt-br'] = array(
 	'expandtemplates' => 'Expandir predefinições',
@@ -1524,6 +1531,7 @@ $messages['pt-br'] = array(
 	'expand_templates_xml_output' => 'Resultado XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Remover comentários',
+	'expand_templates_remove_nowiki' => 'Suprima marcações <nowiki> no resultado',
 	'expand_templates_generate_xml' => 'Mostrar árvore de análise (parse) do XML',
 	'expand_templates_preview' => 'Previsão',
 );
@@ -1936,6 +1944,7 @@ $messages['vec'] = array(
 	'expand_templates_xml_output' => 'Output in formato XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Ignora i comenti',
+	'expand_templates_remove_nowiki' => 'Cava i tag <nowiki> dal risultato',
 	'expand_templates_generate_xml' => 'Mostra àlbaro sintàtico XML',
 	'expand_templates_preview' => 'Anteprima',
 );

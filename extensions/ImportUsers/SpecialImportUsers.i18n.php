@@ -421,6 +421,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -430,7 +431,7 @@ $messages['eo'] = array(
 	'importusers-user-added' => "Uzanto '''$1''' estis aldonita.",
 	'importusers-user-present-update' => "Uzanto '''$1''' jam ekzistas. Ĝisdatigita.",
 	'importusers-user-present-not-update' => "Uzanto '''$1''' jam ekzistas. Ne estis ĝisdatigita.",
-	'importusers-log' => 'Protokolo de importoj',
+	'importusers-log' => 'Protokolo de importoj de uzantoj',
 	'importusers-log-summary' => 'Resumo',
 	'importusers-log-summary-all' => 'Ĉiuj',
 	'importusers-log-summary-added' => 'Aldonita',

@@ -4093,6 +4093,7 @@ $wgGoogleMapsMessages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
@@ -4120,7 +4121,7 @@ Experimente a última versão do <a href="http://www.microsoft.com/ie">Internet 
 	'gm-no-results' => 'Desculpe, não há resultados',
 	'gm-searching' => 'em busca...',
 	'gm-map' => 'Mapa',
-	'gm-note' => 'Nota: certifique-se de que copia o que quer gravar para a página (abaixo) antes de carregar em "Carregar mapa", "Gravar" ou "Prever"!',
+	'gm-note' => 'Nota: certifique-se de que copia o que quer gravar para a página (abaixo) antes de clicar "Carregar mapa", "Gravar" ou "Antever"!',
 	'gm-instructions' => 'Abaixo encontra-se a notação Wiki para criar o mapa exibido acima.',
 	'gm-are-you-sure' => 'Tem a certeza?',
 	'gm-clear-all-points' => 'Limpar todos os pontos',

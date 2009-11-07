@@ -91,6 +91,14 @@ $messages['bg'] = array(
 	'abcdownload' => 'Изтегляне:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'abcdesc' => 'ABC music এর জন্য <tt>&lt;abc&gt;</tt> ফলক যোগ করুন',
+	'abcdownload' => 'ডাউনলোড:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

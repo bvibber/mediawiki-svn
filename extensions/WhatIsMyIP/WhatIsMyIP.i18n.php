@@ -201,11 +201,12 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'whatismyip' => 'Kio estas mia IP',
-	'whatismyip-desc' => 'Montras nunan IP-adreson de uzanto en [[Special:WhatIsMyIP]]',
+	'whatismyip-desc' => 'Montras nunan [[Special:WhatIsMyIP|IP-adreson]] de uzanto',
 	'whatismyip-out' => 'Via IP-adreso:',
 	'right-whatismyip' => 'Vidi [[Special:WhatIsMyIP|propran IP-adreson]]',
 );

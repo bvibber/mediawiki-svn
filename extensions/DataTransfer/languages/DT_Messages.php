@@ -431,10 +431,11 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'dt-desc' => 'Permesas importadon kaj eksportadon de strukturemaj datenoj enhave en ŝablonaj vokoj.',
+	'dt-desc' => 'Permesas importadon kaj eksportadon de datumoj enhave en ŝablonaj vokoj',
 	'viewxml' => 'Rigardu XML-on',
 	'dt_viewxml_docu' => 'Bonvolu elekti inter la subaj kategorioj kaj nomspacoj por rigardi en XML-formato.',
 	'dt_viewxml_categories' => 'Kategorioj',
@@ -1095,6 +1096,36 @@ $messages['mhr'] = array(
 	'dt_xml_page' => 'Лаштык',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'dt-desc' => 'Овозможува увоз и извоз на податоци содржани во повикувањата на шаблоните',
+	'viewxml' => 'Преглед на XML',
+	'dt_viewxml_docu' => 'Одберете од следиве категории и именски простори за преглед во XML формат.',
+	'dt_viewxml_categories' => 'Категории',
+	'dt_viewxml_namespaces' => 'Именски простори',
+	'dt_viewxml_simplifiedformat' => 'Упростен формат',
+	'dt_xml_namespace' => 'Именски простор',
+	'dt_xml_pages' => 'Страници',
+	'dt_xml_page' => 'Страница',
+	'dt_xml_template' => 'Шаблон',
+	'dt_xml_field' => 'Поле',
+	'dt_xml_name' => 'Име',
+	'dt_xml_title' => 'Наслов',
+	'dt_xml_id' => 'ид. бр.',
+	'dt_xml_freetext' => 'Слободен текст',
+	'importxml' => 'Увоз на XML',
+	'dt_import_selectfile' => 'Одберете ја $1 податотеката за увоз:',
+	'dt_import_encodingtype' => 'Тип на кодирање',
+	'dt_import_editsummary' => 'Увоз на $1',
+	'dt_import_importing' => 'Увезувам...',
+	'dt_import_success' => '$1 {{PLURAL:$1|страница ќе биде создадена|страници ќе бидат создадени}} од $2 податотеката.',
+	'importcsv' => 'Увоз на CSV',
+	'dt_importcsv_badheader' => 'Грешка: насловот на колона $1, „$2“, мора да биде или „$3“, или „$4“, или пак од обликот „template_name[field_name]“',
+	'right-datatransferimport' => 'Увезување податоци',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -1732,8 +1763,10 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'dt_xml_field' => 'Поле',
 	'dt_xml_title' => 'Заголовок',
 );
 

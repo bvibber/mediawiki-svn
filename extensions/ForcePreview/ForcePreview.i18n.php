@@ -449,13 +449,14 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'forcepreview' => 'Gravar página (use a previsão primeiro)',
-	'forcepreview-desc' => 'Força previsão para utilizadores sem privilégios',
-	'right-forcepreviewexempt' => 'Pode salvar páginas sem mostrar a previsão antes',
+	'forcepreview' => 'Gravar página (use a antevisão primeiro)',
+	'forcepreview-desc' => 'Força antevisão para utilizadores sem privilégios',
+	'right-forcepreviewexempt' => 'Gravar páginas sem usar "Antever resultado"',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

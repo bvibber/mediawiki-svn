@@ -52,6 +52,7 @@ $messages['en'] = array(
  * @author Darth Kule
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Hamilton Abreu
  * @author Huji
  * @author Jon Harald Søby
  * @author Meno25
@@ -64,6 +65,21 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'readerfeedback-desc' => '{{desc}}',
+	'readerfeedback-level-0' => 'Must be consistent with:
+*{{msg-mw|ratinghistory-ratings}}
+*{{msg-mw|ratinghistory-legend}}',
+	'readerfeedback-level-1' => 'Must be consistent with:
+*{{msg-mw|ratinghistory-ratings}}
+*{{msg-mw|ratinghistory-legend}}',
+	'readerfeedback-level-2' => 'Must be consistent with:
+*{{msg-mw|ratinghistory-ratings}}
+*{{msg-mw|ratinghistory-legend}}',
+	'readerfeedback-level-3' => 'Must be consistent with:
+*{{msg-mw|ratinghistory-ratings}}
+*{{msg-mw|ratinghistory-legend}}',
+	'readerfeedback-level-4' => 'Must be consistent with:
+*{{msg-mw|ratinghistory-ratings}}
+*{{msg-mw|ratinghistory-legend}}',
 	'readerfeedback-submit' => '{{Identical|Submit}}',
 	'readerfeedback-main' => '{{Identical|Content page}}',
 	'readerfeedback-submitting' => '{{flaggedrevs}}
@@ -1576,6 +1592,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -1589,17 +1606,20 @@ $messages['pt'] = array(
 	'readerfeedback-presentation' => 'Apresentação',
 	'readerfeedback-overall' => 'em Geral',
 	'readerfeedback-level-none' => '(incerto)',
-	'readerfeedback-level-0' => 'Miserável',
-	'readerfeedback-level-1' => 'Baixo',
+	'readerfeedback-level-0' => 'Péssima',
+	'readerfeedback-level-1' => 'Baixa',
 	'readerfeedback-level-2' => 'Razoável',
-	'readerfeedback-level-3' => 'Alto',
+	'readerfeedback-level-3' => 'Alta',
 	'readerfeedback-level-4' => 'Excelente',
 	'readerfeedback-submit' => 'Enviar',
 	'readerfeedback-main' => 'Somente páginas de conteúdo podem ser avaliadas.',
-	'readerfeedback-success' => "'''Obrigado por avaliar esta página!''' ([$3 comentários ou dúvidas?]).",
-	'readerfeedback-voted' => "'''Aparentemente você já avaliou esta página''' ([$3 comentários ou dúvidas?]).",
+	'readerfeedback-success' => "'''Obrigado por avaliar esta página!''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?]).",
+	'readerfeedback-voted' => "'''Aparentemente já avaliou esta página''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?]).",
+	'readerfeedback-error' => "'''Ocorreu um erro ao avaliar esta página''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?])",
 	'readerfeedback-submitting' => 'Enviando...',
 	'readerfeedback-finished' => 'Obrigado!',
+	'readerfeedback-tagfilter' => 'Etiqueta:',
+	'readerfeedback-tierfilter' => 'Avaliação:',
 	'readerfeedback-tier-high' => 'Elevado',
 	'readerfeedback-tier-medium' => 'Moderado',
 	'readerfeedback-tier-poor' => 'Pobre',

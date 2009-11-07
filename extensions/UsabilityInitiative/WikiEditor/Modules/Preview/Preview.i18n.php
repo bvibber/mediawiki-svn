@@ -43,6 +43,15 @@ $messages['af'] = array(
 	'wikieditor-preview-loading' => 'Besig om te laai...',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'wikieditor-preview-tab-edit' => 'حرّر',
+	'wikieditor-preview-tab-preview' => 'عاين',
+	'wikieditor-preview-loading' => 'يحمّل...',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -151,6 +160,16 @@ $messages['hu'] = array(
 	'wikieditor-preview-loading' => 'Betöltés…',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'wikieditor-preview-preference' => 'Activar le previsualisation latere a latere',
+	'wikieditor-preview-tab-edit' => 'Modification',
+	'wikieditor-preview-tab-preview' => 'Previsualisation',
+	'wikieditor-preview-loading' => 'Cargamento...',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */
@@ -159,6 +178,16 @@ $messages['id'] = array(
 	'wikieditor-preview-tab-edit' => 'Sunting',
 	'wikieditor-preview-tab-preview' => 'Pratayang',
 	'wikieditor-preview-loading' => 'Memuat...',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'wikieditor-preview-preference' => '比較プレビューを有効化する',
+	'wikieditor-preview-tab-edit' => '編集',
+	'wikieditor-preview-tab-preview' => 'プレビュー',
+	'wikieditor-preview-loading' => '読み込み中…',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -199,6 +228,16 @@ $messages['nl'] = array(
 	'wikieditor-preview-tab-edit' => 'Bewerken',
 	'wikieditor-preview-tab-preview' => 'Voorvertoning',
 	'wikieditor-preview-loading' => 'Bezig met laden...',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'wikieditor-preview-preference' => 'Activar la previsualizacion còsta a còsta',
+	'wikieditor-preview-tab-edit' => 'Modificacion',
+	'wikieditor-preview-tab-preview' => 'Previsualizacion',
+	'wikieditor-preview-loading' => 'Cargament...',
 );
 
 /** Piedmontese (Piemontèis)
@@ -254,8 +293,19 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'wikieditor-preview-preference' => "Ativa l'anteprima parte par parte",
 	'wikieditor-preview-tab-edit' => 'Modìfega',
 	'wikieditor-preview-tab-preview' => 'Anteprima',
 	'wikieditor-preview-loading' => "So' drio cargar...",
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
+ */
+$messages['zh-hans'] = array(
+	'wikieditor-preview-preference' => '启用双列对比预览',
+	'wikieditor-preview-tab-edit' => '编辑',
+	'wikieditor-preview-tab-preview' => '预览',
+	'wikieditor-preview-loading' => '载入中……',
 );
 

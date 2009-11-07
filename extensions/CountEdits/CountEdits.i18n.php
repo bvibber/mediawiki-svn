@@ -317,6 +317,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Tlustulimu
  * @author Yekrats
  */
@@ -328,7 +329,7 @@ $messages['eo'] = array(
 	'countedits-ok' => 'Ek!',
 	'countedits-nosuchuser' => 'Ne ekzistas uzanto kun la nomo $1.',
 	'countedits-resultheader' => 'Rezultoj por $1',
-	'countedits-resulttext' => '$1 faris $2 redaktojn',
+	'countedits-resulttext' => '$1 faris $2 {{PLURAL:$2|redakton|redaktojn}}',
 	'countedits-mostactive' => 'Plej aktivaj kontribuantoj',
 	'countedits-nocontribs' => 'Ne estas iuj kontribuaĵoj por ĉi tiu vikio.',
 );

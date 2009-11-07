@@ -677,7 +677,7 @@ $messages['ia'] = array(
 	'formarticleexists' => 'Pagina existe',
 	'formarticleexiststext' => 'Le pagina [[$1]] existe ja.',
 	'formbadpagename' => 'Nomine de pagina invalide',
-	'formbadrecaptcha' => 'Valores incorrecte pro reCaptcha. Reprova.',
+	'formbadrecaptcha' => 'Valores incorrecte pro reCaptcha. Reproba.',
 	'formbadpagenametext' => 'Le datos de formulario que tu entrava resulta in un nomine de pagina invalide, "$1".',
 	'formrequiredfielderror' => 'Le {{PLURAL:$2|campo|campos}} $1 es requirite pro iste formulario.
 Per favor completa {{PLURAL:$2|lo|los}}.',

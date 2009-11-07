@@ -2983,7 +2983,7 @@ Por favor, comuníquello a un [[{{MediaWiki:Grouppage-sysop}}|administrador do s
 	'mvexportstream' => 'Exportar un fluxo Metavid',
 	'mv_move_delete_msg' => 'movido a $1',
 	'mv_add_stream_page' => 'Engadir un fluxo MetaVid',
-	'mv_edit_strea_docu' => '<p>Editar a <b>administración</b> do fluxo<br />para a visualización/edición dos usuarios, vexa a páxina $1',
+	'mv_edit_strea_docu' => '<p>Editar o fluxo como <b>administrador</b><br />para a visualización/edición como usuario normal, vexa a páxina $1',
 	'mv_add_stream_docu' => '<p>Engadir un novo fluxo co campo de embaixo.</p>
 <p>Máis información na <a href="$1">páxina de axuda sobre como engadir fluxos</a>.</p>',
 	'mv_add_stream_submit' => 'Engadir o fluxo',
@@ -4087,16 +4087,18 @@ Prošu zdźěl to [[{{MediaWiki:Grouppage-sysop}}|sydłowemu administratorej]].'
  * @author Tgr
  */
 $messages['hu'] = array(
-	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Videó metaadat szerkesztő & médiakereső]',
-	'metavid' => 'MetaVid lap',
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Videómetaadat-szerkesztő és médiakereső]',
+	'metavid' => 'MetaVid-lap',
 	'mv_missing_stream' => 'Hiányzó adatfolyam: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki speciális lapok',
 	'mv_warning_wiki' => '<i>Megjegyzés: a MetaVides videók átiratai [[Help:FAQ#How_accurate_is_the_information.3F|tartalmazhatnak pontatlanságokat]], segíts nekünk egy [[Help:Participation#Improving_Archive_Accuracy|tökéletesebb archívum]] létrehozásában</i>',
-	'mv_ogg_low_quality' => 'Webes adatfolyam – Ogg Theora 300 kbit/s',
-	'mv_ogg_high_quality' => 'Kiváló minőség – Ogg Theora 900 kbit/s',
+	'mv_ogg_low_quality' => 'Webes adatfolyam – 300 kbit/s-os Ogg Theora',
+	'mv_ogg_high_quality' => 'Kiváló minőség – 900 kbit/s-os Ogg Theora',
 	'mv_flash_low_quality' => 'Webes adatfolyam – Flash videó',
 	'mv_archive_org_mp4' => 'Archive.org MP4 beágyazott H.264 adatfolyam',
-	'mv_archive_org_link' => 'Hivatkozások az Archive.org-on található MPEG-2 eredetikre',
+	'mv_archive_org_link' => 'Hivatkozások az Archive.org-on található eredeti, MPEG-2 formátumú változatokra',
+	'mv_error_stream_missing' => '<span class="error">Hiba: ehhez az adatfolyamhoz nincs videófájl társítva.</span><br />
+Jelentsd ezt az [[{{MediaWiki:Grouppage-sysop}}|oldal adminisztrátorainak]].',
 	'mv_stream_added' => 'Hozzáadtad a(z) $1 adatfolyamot',
 	'mv_stream_meta' => 'Adatfolyam lap',
 	'mv_add_stream' => 'Metavid adatfolyam hozzáadása',
@@ -4106,6 +4108,9 @@ $messages['hu'] = array(
 	'mvexportstream' => 'MetaVid export adatfolyam',
 	'mv_move_delete_msg' => 'áthelyezve ide: $1',
 	'mv_add_stream_page' => 'MetaVid adatfolyam hozzáadása',
+	'mv_edit_strea_docu' => '<p>Adatfolyam szerkesztése<b>adminisztrátorként</b><br />a normál felhasználókénti megtekintéshez/szerkesztéshez lásd a(z) $1 lapot',
+	'mv_add_stream_docu' => '<p>Az alábbi mező segítségével adhatsz hozzá új adatfolyamot.</p>
+<p>További információt <a href="$1">az ide vonatkozó segítséglapon</a> találsz.</p>',
 	'mv_add_stream_submit' => 'Adatfolyam hozzáadása',
 	'mv_no_stream_files' => 'Nincsenek adatfolyam-fájlok',
 	'mv_edit_stream_files' => 'Adatfolyam-fájlok szerkesztése',
@@ -4116,10 +4121,15 @@ $messages['hu'] = array(
 	'mv_path_type_label' => 'útvonal típusa',
 	'mv_base_offset_label' => 'alap eltolás',
 	'mv_duration_label' => 'Hossz',
+	'mv_file_desc_label' => 'az adatfolyam leíró üzenete',
 	'mv_delete_stream_file' => 'adatfolyam-fájl hivatkozás törlése',
 	'mv_save_changes' => 'Változtatások mentése',
+	'mv_file_with_same_desc' => 'Hiba: már létezik adatfolyamfájl ugyanezzel a kulccsal (<i>$1</i>)',
 	'mv_updated_stream_files' => 'Adatfolyam-fájlok rekordja frissítve',
 	'mv_removed_file_stream' => 'Adatfolyam-fájl eltávolítva: $1',
+	'mv_missing_stream_text' => 'Az általad kért adatfolyam (<b>$1</b>) nem elérhető.<br />
+Ellenőrizd az <a href="$2">Adatfolyamok listáját</a>,<br />
+vagy <a href="$3">készíts új adatfolyamot</a>.',
 	'mv_user_cant_edit' => 'A szerkesztéshez [$1 be kell jelentkezned], $2',
 	'mv_add_stream_file' => 'Adatfolyam fájl hozzáadása',
 	'mv_media_path' => 'média elérési útvonala',
@@ -4128,12 +4138,14 @@ $messages['hu'] = array(
 	'mv_label_stream_desc' => 'Adatfolyam leírása',
 	'add_stream_permission' => 'Nincs jogosultságod új adatfolyam hozzáadásához',
 	'edit_stream_missing' => 'Hiányzó adatfolyam-név',
+	'mv_missing_req_time' => 'Hiányzó kérésidő',
 	'mv_missing_cat' => 'Hiányzó kategórianév',
 	'mv_stream_already_exists' => 'A(z) <a href="$2">$1</a> adatfolyam már létezik',
 	'mv_summary_add_stream' => 'űrlap segítségével hozzáadott adatfolyam',
 	'mv_error_stream_insert' => 'nem sikerült az adatfolyam beillesztése',
 	'mv_redirect_and_delete_reason' => 'átirányítás lap eltávolítva',
 	'mv_remove_reason' => 'A törlés oka:',
+	'mv_stream_delete_warrning' => "'''Az adatfolyam eltávolításával törlődik a hozzátartozó $1 asszociatív metaadat'''<br />",
 	'mv_label_stream_type' => 'Adatfolyam típusa',
 	'mv_metavid_file' => 'Létező fájl a szerveren',
 	'mv_metavid_live' => 'Élő adatfolyam beállítása',
@@ -4143,6 +4155,7 @@ $messages['hu'] = array(
 	'mv_tool_search_title' => 'Keresés ebben az adatfolyamban',
 	'mv_search_transcripts_for' => 'Videók keresése ehhez: $1 (elrejtés)',
 	'mv_tool_navigate' => 'Navigáció',
+	'mv_tool_navigate_title' => 'Navigálás a teljes adatfolyamon',
 	'mv_tool_export' => 'Exportálás',
 	'mv_tool_export_title' => 'Adatfolyam metaadatainak exportálása',
 	'mv_tool_embed' => 'Beágyazás',
@@ -4152,11 +4165,24 @@ $messages['hu'] = array(
 	'mv_update_layers' => 'Rétegek frissítése',
 	'mv_watch_clip' => 'Klip lejátszása',
 	'mv_close_clip' => 'Klip bezárása',
-	'mv_people_matches' => 'Ember találatok',
+	'mv_improve_transcript' => 'Átirat javítása',
+	'mv_people_matches' => 'Talált emberek',
 	'mv_category_matches' => 'Kategóriatalálatok',
+	'mv_bill_matches' => 'Talált jegyzékek',
+	'mv_interest_group_matches' => 'Talált érdekelt csoportok',
 	'mv_click_to_edit' => 'kattints a szerkesztéshez',
+	'ht_en' => 'Átirat',
+	'ht_en_desc' => 'Angol nyelvű átirat.
+Ez az overlaytípus a beszélt szöveghez van.',
 	'anno_en' => 'Kommentárok és kategóriák',
+	'anno_en_desc' => 'Angol kategorizációk és kommentárok.
+Ez az overlay a videó szakaszainak kategorizálásához vagy olyan kommentárok hozzáadására használhatók, melyek nincsenek az elhangzó beszédekben',
+	'thomas_en' => 'Hivatalos átirat',
+	'thomas_en_desc' => 'Hivatalos Thomas-átirat a kormányzatok THOMAS rögzítő szolgáltatásától.
+A forrás ideje szinkronizálva a C-SPAN c-spanarchives.org-éval',
 	'mvd_default_mismatch' => 'Hiba a beállításfájlban',
+	'mvd_default_mismatch_text' => 'Hiba van a beállításokat tartalmazó fájlodban.
+A $mvMVDTypeDefaultDisp a $mvMVDTypeAllAvailable részhalmaza kell, hogy legyen.',
 	'mv_data_page_title' => '$1 ehhez: $2, innen: $3',
 	'mv_time_separator' => '$1 – $2',
 	'mv_list_streams' => 'MetaVid adatfolyamok listázása',
@@ -4166,8 +4192,13 @@ $messages['hu'] = array(
 	'mvvideofeed' => 'MetaVid veideó-hírcsatorna exportálás',
 	'mvexportask' => 'Szemantikus videó-hírcsatorna exportálás',
 	'video_feed_cat' => 'Videó hírcsatorna kategóriához:',
+	'mv_cat_search_note' => 'Megjegyzés: ezek csak a legfelsőbb szintű kategóriák.
+A kategóriatartományokban található összes metaadathoz keress erre: $1',
+	'mv-category-media-count' => '$1 médiarészlet a kategóriában',
 	'mv_mvd_linkback' => 'A(z) $1 adatfolyam része <br />
 Ugrás adatfolyam nézetre: $2',
+	'mvBadMVDtitle' => 'hiányzó típus, az adatfolyam hiányzik, vagy nem érvényes időformátum',
+	'mvMVDFormat' => 'Az MVD-címnek a következő formában kellene lennie: mvd:típus:adatfolyam_neve/kezdés_ideje/vég_ideje',
 	'mv_play' => 'Lejátszás',
 	'mv_edit' => 'Szerkesztés',
 	'mv_history' => 'Történet',
@@ -4182,6 +4213,7 @@ Ugrás adatfolyam nézetre: $2',
 	'mv_adjust_preview' => 'Igazítás előnézete',
 	'mv_adjust_preview_stop' => 'Előnézet megállítása',
 	'mv_adjust_default_reason' => 'MetaVid felület igazítás',
+	'mv_adjust_old_title_missing' => 'A lap, amit megpróbáltál átnevezni ($1) nem létezik',
 	'mv_adjust_ok_move' => 'Siker, igazítás…',
 	'mv_start_desc' => 'Kezdés ideje',
 	'mv_end_desc' => 'Befejezés ideje',
@@ -4197,13 +4229,19 @@ Ugrás adatfolyam nézetre: $2',
 	'mediasearch' => 'Médiakeresés',
 	'mv_search_sel_t' => 'Keresési típus kiválasztása',
 	'mv_do_media_search' => 'MetaVid médiakeresés erre: $1',
+	'mv_results_for' => 'Találatok: $1',
 	'mv_video_search' => 'Videókeresés',
 	'mv_page_search' => 'Wikilap keresés erre: $1',
 	'mv_add_filter' => 'Szűrő hozzáadása',
 	'mv_search_match' => 'Szöveg keresése',
+	'mv_search_spoken_by' => 'Mondta:',
 	'mv_search_categories' => 'Kategóriák',
+	'mv_search_bills' => 'Jegyzék',
+	'mv_search_bill' => 'Jegyzék',
+	'mv_bill' => 'jegyzék',
 	'mv_search_category' => 'Kategória',
 	'mv_search_smw_property' => 'Szemantikus tulajdonságok',
+	'mv_search_smw_property_numeric' => 'Numerikus szemantikus érték',
 	'mv_search_and' => 'és',
 	'mv_search_or' => 'vagy',
 	'mv_search_not' => 'nem',
@@ -4213,9 +4251,13 @@ Ugrás adatfolyam nézetre: $2',
 	'mv_date_range' => 'dátumtartomány',
 	'mv_date_last_week' => 'Utolsó hét',
 	'mv_category_results' => 'Kategóriatalálatok',
+	'mv_people_results' => 'Talált emberek',
+	'mv_bill_results' => 'Talált jegyzékek',
+	'mv_intrest_group_results' => 'Érdekelt csoportok',
 	'mv_most_relevant' => 'Legrelevánsabb',
 	'mv_most_recent' => 'Legfrissebb',
 	'mv_most_viewed' => 'Legnézettebb',
+	'mv_spoken_by' => 'mondta:',
 	'mv_speech_by' => 'beszéd tőle:',
 	'mv_category' => 'kategória',
 	'mv_search_no_results' => 'Nincs médiatalálat',
@@ -4266,19 +4308,25 @@ Ugrás adatfolyam nézetre: $2',
 	'mv_add_clip_by_name' => 'Klip hozzáadása név alapján',
 	'mv_stream_resource_export' => 'Adatfolyam-erőforrások exportálása',
 	'mv_export_cmml' => 'CMML exportálás',
+	'mv_navigate_stream' => 'Navigáció a teljes adatfolyamon',
 	'mv_stream_overview' => 'Adatfolyam áttekintése',
 	'mv_edit_time' => 'Szerkesztési idő',
 	'mv_embed_options' => 'Beágyazási beállítások',
 	'mv_stream_tool_heading' => 'Adatfolyam eszközök',
 	'mv_tool_missing' => 'a kért eszköz nem létezik',
+	'mv_bad_tool_request' => 'hibás eszközsor, a következő formában kellene lennie: eszköz_neve|eszköz_megjelenített_neve',
 	'mv_prev_speech' => 'Előző beszéd: $1',
 	'mv_next_speech' => 'Következő beszéd: $1',
+	'mv_prev_bill' => 'Előző jegyzék: $1',
+	'mv_next_bill' => 'Következő jegyzék: $1',
 	'mv_prev_cat' => 'Előző kategória: $1',
 	'mv_next_cat' => 'Következő kategória: $1',
 	'mv_search_stream' => 'Adatfolyam keresése',
 	'mv_search_stream_title' => 'Keresés az aktuális adatfolyamban',
+	'mv_new_ht_en' => 'Új átirat',
 	'mv_new_anno_en' => 'Új címke vagy kommentár',
 	'mv_mang_layers' => 'Rétegek kezelése',
+	'mv_mang_layers_title' => 'A jelenlegi adatfolyamhoz tartozó megjelenített rétegek beállítása',
 	'mv_protect_source_material' => 'Az eredeti forrásanyag védett a szerkesztések ellen',
 	'right-mv_delete_mvd' => 'MetaVid metaadatok törlése',
 	'action-mv_delete_mvd' => 'MetaVid metaadat szegmens törlése',
@@ -7009,6 +7057,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author 555
  * @author Cedric31
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -7138,8 +7187,8 @@ Saltar para vista de stream: $2',
 	'mv_adjust' => 'apondre',
 	'mv_adjust_submit' => 'Salvar ajuste',
 	'mv_adjust_title' => 'Ajustar tempo de início e fim',
-	'mv_adjust_preview' => 'Prever ajuste',
-	'mv_adjust_preview_stop' => 'Interromper a previsão',
+	'mv_adjust_preview' => 'Antever ajustamento',
+	'mv_adjust_preview_stop' => 'Interromper a antevisão',
 	'mv_adjust_default_reason' => 'ajuste de interface metavid',
 	'mv_adjust_old_title_missing' => 'A página a partir da qual está a tentar mover ($1) não existe',
 	'mv_adjust_ok_move' => 'Sucesso, ajustando...',
@@ -7260,11 +7309,13 @@ Saltar para vista de stream: $2',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Hamilton Abreu
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'mv_duration_label' => 'Duração',
 	'mv_save_changes' => 'Salvar alterações',
+	'mv_adjust_preview_stop' => 'Interromper a previsão',
 	'mv_category' => 'categoria',
 );
 
@@ -8860,6 +8911,13 @@ $messages['tr'] = array(
 	'mv_edit' => 'Değiştir',
 	'mv_history' => 'Geçmiş',
 	'mv_remove' => 'kaldır',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'mv_remove' => 'вилучити',
 );
 
 /** Veps (Vepsan kel')

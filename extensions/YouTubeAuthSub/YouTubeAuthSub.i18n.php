@@ -695,6 +695,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -710,8 +711,9 @@ $messages['eo'] = array(
 	'youtubeauthsub_submit' => 'Ek',
 	'youtubeauthsub_clickhere' => 'Klaku ĉi tien por ensaluti YouTube-on',
 	'youtubeauthsub_tokenerror' => 'Eraro dum generado de aŭtentokontrola ĵetono; bonvolu refreŝigi.',
-	'youtubeauthsub_success' => "Gratulon! Via video estas alŝutita.
-Por spekti vian videon, klaku <a href='http://www.youtube.com/watch?v=$1'>ĉi tien</a>.
+	'youtubeauthsub_success' => "Gratulon! 
+Via video estas alŝutita.
+<a href='http://www.youtube.com/watch?v=$1'>Spekti vian videon</a>.
 YouTube povas bezoni iom da tempo procezi vian videon, do eble ĝi ne pretas ĵus nun.
 
 Por inkluzivi vian videon en paĝo en la vikio, enmeti la jenan kodon en paĝon: 

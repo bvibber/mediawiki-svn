@@ -67,10 +67,11 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
-	'charinsert-desc' => 'আদর্শ নয় এমন ক্যারেক্টার অনুপ্রবেশ করানোর জন্য জাভাস্ক্রিপ্ট বাক্স সৃষ্টি অনুমোদন করে',
+	'charinsert-desc' => '[[MediaWiki:Edittools|আদর্শ নয় এমন অক্ষর যোগের]] জন্য জাভাস্ক্রিপ্ট বাক্স সৃষ্টি অনুমোদন করে',
 );
 
 /** Breton (Brezhoneg)

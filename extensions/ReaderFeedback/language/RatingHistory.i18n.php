@@ -43,6 +43,7 @@ $messages['en'] = array(
  * @author Aotake
  * @author Boivie
  * @author Byrial
+ * @author Hamilton Abreu
  * @author Purodha
  * @author Umherirrender
  */
@@ -52,16 +53,20 @@ $messages['qqq'] = array(
 
 
 $3 is the page name for the rated page.',
-	'ratinghistory-ratings' => "'''(1)''' - {{int:readerfeedback-level-0}}
-'''(2)''' - {{int:readerfeedback-level-1}}
-'''(3)''' - {{int:readerfeedback-level-2}}
-'''(4)''' - {{int:readerfeedback-level-3}}
-'''(5)''' - {{int:readerfeedback-level-4}}",
-	'ratinghistory-legend' => "'''(1)''' - {{int:readerfeedback-level-0}}
-'''(2)''' - {{int:readerfeedback-level-1}}
-'''(3)''' - {{int:readerfeedback-level-2}}
-'''(4)''' - {{int:readerfeedback-level-3}}
-'''(5)''' - {{int:readerfeedback-level-4}}",
+	'ratinghistory-ratings' => "Must be consistent with:
+*'''(1)''' {{msg-mw|readerfeedback-level-0}}
+*'''(2)''' {{msg-mw|readerfeedback-level-1}}
+*'''(3)''' {{msg-mw|readerfeedback-level-2}}
+*'''(4)''' {{msg-mw|readerfeedback-level-3}}
+*'''(5)''' {{msg-mw|readerfeedback-level-4}}
+*{{msg-mw|ratinghistory-legend}}",
+	'ratinghistory-legend' => "Must be consistent with:
+*'''(1)''' {{msg-mw|readerfeedback-level-0}}
+*'''(2)''' {{msg-mw|readerfeedback-level-1}}
+*'''(3)''' {{msg-mw|readerfeedback-level-2}}
+*'''(4)''' {{msg-mw|readerfeedback-level-3}}
+*'''(5)''' {{msg-mw|readerfeedback-level-4}}
+*{{msg-mw|ratinghistory-ratings}}",
 	'right-feedback' => '{{doc-right|feedback}}',
 );
 
@@ -1463,6 +1468,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author 555
  * @author Crazymadlover
+ * @author Hamilton Abreu
  * @author Indech
  * @author Lijealso
  * @author Malafaya
@@ -1488,15 +1494,15 @@ $messages['pt'] = array(
 	'ratinghistory-svg' => 'Ver como SVG',
 	'ratinghistory-table-rating' => 'Avaliação',
 	'ratinghistory-table-votes' => 'Votos',
-	'ratinghistory-none' => 'Ainda não há dados suficientes de avaliações dos leitores para mostrar gráficos.',
-	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Pobre; '''(2)''' - Baixo; '''(3)''' - Moderado; '''(4)''' - Elevado; '''(5)''' - Excelente;",
-	'ratinghistory-legend' => "O '''número diário de revisões''' <font color=\"red\">''(vermelho)''</font>, '''avaliação média diária''' <font color=\"blue\">''(azul)''</font> e a '''avaliação média acumulada''' <font color=\"green\">''(verde)''</font> estão apresentadas graficamente abaixo, por data. 
-A '''avaliação média acumulada''' é apenas a média de todas as avaliações diárias ''dentro'' desta janela temporal para cada dia.
-As avaliações são como segue:
+	'ratinghistory-none' => 'Ainda não há dados suficientes de avaliação pelos leitores para mostrar gráficos.',
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Péssima; '''(2)''' - Baixa; '''(3)''' - Razoável; '''(4)''' - Alta; '''(5)''' - Excelente;",
+	'ratinghistory-legend' => "O '''número diário de revisões''' <font color=\"red\">''(vermelho)''</font>, a '''avaliação média diária''' <font color=\"blue\">''(azul)''</font> e a '''avaliação média acumulada''' <font color=\"green\">''(verde)''</font> estão apresentadas graficamente abaixo, por data. 
+A '''avaliação média acumulada''' é apenas a média de todas as avaliações diárias ''dentro'' desta janela temporal em cada dia.
+As avaliações são como se segue:
 
 '''(1)''' - Péssima; '''(2)''' - Baixa; '''(3)''' - Razoável; '''(4)''' - Alta; '''(5)''' - Excelente;",
-	'ratinghistory-graph-scale' => "'''Revisões por dia''' <font color=\"red\">''(red)''</font> mostrados em uma escala ''1:\$1''.",
-	'right-feedback' => 'Use o formulário de feedback para avaliar uma página',
+	'ratinghistory-graph-scale' => "'''Número diário de revisões''' <font color=\"red\">''(red)''</font> apresentado na escala ''1:\$1''.",
+	'right-feedback' => 'Use o formulário de avaliação para avaliar uma página',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

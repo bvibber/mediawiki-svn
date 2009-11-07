@@ -126,11 +126,11 @@ $messages['bs'] = array(
 /** German (Deutsch) */
 $messages['de'] = array(
 	'commentbox-desc' => 'Fügt in bestimmte Seiten ein Kommentarfeld ein',
-	'commentbox-intro' => '== Kommentar hinzufügen... ==
+	'commentbox-intro' => '== Kommentar hinzufügen … ==
 Du hast einen Kommentar zu dieser Seite? Trag ihn hier ein oder <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbeite die Seite direkt]</span>.',
 	'commentbox-savebutton' => 'Kommentar speichern',
 	'commentbox-name' => 'Name:',
-	'commentbox-name-explanation' => '<small>(Tipp: Wenn Du Dich [[Spezial:Anmelden|anmeldest]], musst Du nicht mehr hier Deinen Namen angeben)</small>',
+	'commentbox-name-explanation' => '<small>(Tipp: Wenn Du Dich [[Special:UserLogin|anmeldest]], musst Du nicht mehr hier Deinen Namen angeben)</small>',
 	'commentbox-log' => 'Neuer Kommentar',
 	'commentbox-first-comment-heading' => '== Kommentare ==',
 	'commentbox-regex' => '/\\n==\\s*Kommentare\\s*==\\s*\\n/i',
@@ -576,15 +576,22 @@ It l\'has-to un coment an sta pàgina-sì? Giontlo sì o <span class="plainlinks
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  */
 $messages['pt'] = array(
 	'commentbox-desc' => 'Inclui uma caixa de comentários em certas páginas',
-	'commentbox-savebutton' => 'Salvar comentário',
+	'commentbox-intro' => '== Adicione um comentário... ==
+Tem um comentário acerca desta página? Adicione-o aqui ou <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} edite a página directamente]</span>.',
+	'commentbox-savebutton' => 'Gravar comentário',
 	'commentbox-name' => 'Nome:',
+	'commentbox-name-explanation' => '<small>(Dica: Se [[Special:UserLogin|se autenticar]], não terá de preencher o seu nome aqui manualmente)</small>',
 	'commentbox-log' => 'Novos comentários',
 	'commentbox-first-comment-heading' => '== Comentários ==',
-	'commentbox-error-page-nonexistent' => 'Essa página não existe!',
+	'commentbox-regex' => '/\\n==\\s*Comentários\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Erro ao criar comentário',
+	'commentbox-error-page-nonexistent' => 'Esta página não existe!',
+	'commentbox-error-namespace' => 'Não são permitidos comentários neste espaço nominal!',
 	'commentbox-error-empty-comment' => 'Comentários vazios não são permitidos!',
 );
 

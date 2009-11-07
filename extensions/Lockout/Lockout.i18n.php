@@ -191,9 +191,17 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  */
 $messages['pt'] = array(
+	'lockout-desc' => 'Impedir a autenticação de utilizadores bloqueados',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Hamilton Abreu
+ */
+$messages['pt-br'] = array(
 	'lockout-desc' => 'Prevenir que usuários bloqueados façam login',
 );
 

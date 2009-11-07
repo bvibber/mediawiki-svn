@@ -183,10 +183,14 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'tasklist' => "Roll ar c'hefridioù",
+	'tasklistbyproject' => "Roll ar c'hefridioù dre raktres",
 	'tasklistunknownproject' => 'Raktres dianav',
 	'tasklistunspecuser' => "N'eo ket diferet an implijer",
 	'tasklistincorrectuser' => 'Anv implijer direizh',
 	'tasklistemail' => '%s ker',
+	'tasklistemailsubject' => "[%s] Kemmoù e roll ar c'hefridioù",
+	'tasklistmytasks' => "Va c'hefridioù",
 	'tasklistchooseproj' => 'Diuzañ ur raktres :',
 	'tasklistprojdisp' => 'Diskwel',
 	'tasklistbyname' => '== Roll an traoù da ober gant $s ==',

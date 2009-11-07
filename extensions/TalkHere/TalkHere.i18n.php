@@ -168,10 +168,12 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'talkhere-talkpage' => 'pajenn kaozeal',
 	'talkhere-notalk' => '"(addispleg ebet evit poent)"',
+	'talkhere-addcomment' => 'Ouzhpennañ un evezhiadenn',
 	'talkhere-loading' => 'o kargañ an aozer...',
 	'talkhere-collapse' => 'kuzhat an aozer',
 );

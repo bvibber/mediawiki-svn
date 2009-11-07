@@ -303,6 +303,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -313,12 +314,12 @@ Selektu uzanton kiu estos montrata en forigadaj protokoloj.
 Alŝutita dosiero enhavu paĝan nomon kaj nedevigan kialon apartigita de signo "|" en ĉiu linio.',
 	'deletebatch-caption' => 'Paĝlisto:',
 	'deletebatch-title' => 'Forigi aron',
-	'deletebatch-link-back' => 'Vi povas reiri al la etendilo',
-	'deletebatch-as' => 'Voki la skripton kiel',
+	'deletebatch-link-back' => 'Reiru al la speciala paĝo',
+	'deletebatch-as' => 'Voki la skripton kiel:',
 	'deletebatch-both-modes' => 'Bonvolu selekti aŭ unu specifan paĝon aŭ donatan liston de paĝoj.',
 	'deletebatch-or' => '<b>AŬ</b>',
 	'deletebatch-delete' => 'Forigi',
-	'deletebatch-page' => 'Forigotaj paĝoj',
+	'deletebatch-page' => 'Forigotaj paĝoj:',
 	'deletebatch-omitting-nonexistant' => 'Pasante neekzistan paĝon $1.',
 	'deletebatch-omitting-invalid' => 'Pasante nevalidan paĝon $1.',
 	'deletebatch-file-bad-format' => 'La dosiero estu norma teksto',
@@ -1194,6 +1195,7 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'deletebatch' => 'Вилучення сторінок групами',
@@ -1203,10 +1205,11 @@ $messages['uk'] = array(
 Завантажений файл повинен містити у кожному рядку назву сторінки та необов\'язкову причину вилучення, відокремлену символом "|".',
 	'deletebatch-caption' => 'Список сторінок:',
 	'deletebatch-title' => 'Вилучити групу',
-	'deletebatch-link-back' => 'Ви можете повернутися до розширення',
+	'deletebatch-link-back' => 'Повернутися до спеціальної сторінки',
 	'deletebatch-as' => 'Запустити скрипт як:',
 	'deletebatch-both-modes' => 'Виберіть або одну вказану сторінку, або наданий список сторінок.',
 	'deletebatch-or' => '<b>або</b>',
+	'deletebatch-delete' => 'Вилучити',
 	'deletebatch-page' => 'Сторінки до вилучення:',
 	'deletebatch-omitting-nonexistant' => 'Пропускання неіснуючої сторінки $1.',
 	'deletebatch-file-missing' => 'Не в змозі прочитати наданий файл',

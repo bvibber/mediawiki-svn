@@ -740,6 +740,13 @@ $messages['oc'] = array(
 	'masseditregex-tooltip-execute' => 'Aplicar aquestes cambiaments a cada pagina',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'masseditregex-max-preview-diffs' => 'A antevisão foi limitada {{PLURAL:$1|à primeira ocorrência comum|às primeiras $1 ocorrências comuns}}.',
+);
+
 /** Russian (Русский)
  * @author Rubin
  * @author Александр Сигачёв

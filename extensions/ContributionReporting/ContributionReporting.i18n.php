@@ -2900,6 +2900,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
@@ -2916,8 +2917,8 @@ $messages['pt'] = array(
 	'contrib-hist-anonymous' => 'Anónimo',
 	'contributionstatistics' => 'Estatísticas de contribuições',
 	'contribstats-desc' => 'Apresenta estatísticas das contribuições feitas à Fundação Wikimedia',
-	'contribstats-daily-totals' => '{{PLURAL:$1|Total de hoje|Totais diários dos passados $1 dias}}',
-	'contribstats-monthly-totals' => '{{PLURAL:$1|Total deste mês|Totais mensais dos passados $1 meses}}',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Total de hoje|Totais diários dos últimos $1 dias}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Total deste mês|Totais mensais dos últimos $1 meses}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Total de $1 mês|Totais mensais de $1 meses}}',
 	'contribstats-currency-range-totals' => 'Totais por divisa (de $1 a $2)',
 	'contribstats-contribution-range-breakdown' => 'Separação das contribuições por valor (de $1 a $2)',
@@ -2937,8 +2938,11 @@ $messages['pt'] = array(
 	'contribstats-value-under' => 'Menos de $1',
 	'contribstats-value-from' => 'Entre $1 - $2',
 	'contribstats-value-over' => 'Mais de $1',
+	'contributiontrackingstatistics' => 'Estatísticas de monitorização das contribuições',
 	'contribstats-day-totals' => 'Total para hoje',
 	'contribstats-week' => 'Semana',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Total desta semana|Totais semanais das últimas $1 semanas}}',
+	'contribstats-clicks' => 'Cliques',
 	'contribstats-donations' => 'Donativos',
 	'contribstats-conversion' => 'Taxa de conversão (%)',
 	'contribstats-template' => 'Predefinição',

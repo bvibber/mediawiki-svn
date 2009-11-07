@@ -326,6 +326,17 @@ $messages['pms'] = array(
 	'transliterator-error-rulesize' => "La régola <code>$1</code> a l'ha pì che $3 {{PLURAL:$3|caràter|caràter}} an sla snista ëd [[MediaWiki:$2]]",
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'transliterator-desc' => 'Fornece uma função de análise sintáctica configurável, para transliteração',
+	'transliterator-error-ambiguous' => 'Regra ambígua <code>$1</code> em [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Sintaxe inválida <code>$1</code> em [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Mais de {{PLURAL:$1|uma regra|$1 regras}} em [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'A regra <code>$1</code> tem mais de {{PLURAL:$3|um carácter|$3 caracteres}} à esquerda em [[MediaWiki:$2]]',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

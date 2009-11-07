@@ -884,9 +884,11 @@ $messages['ko'] = array(
 	'imagemap_bad_image' => '오류: 이 그림은 이 문서에서 사용이 금지되어 있습니다.',
 	'imagemap_no_link' => '오류: $1번째 줄에서 유효한 링크를 찾을 수 없습니다',
 	'imagemap_invalid_title' => '오류: $1번째 줄의 링크 제목이 잘못되었습니다',
+	'imagemap_missing_coord' => '오류: $1줄에 정의된 도형의 좌표 값이 충분하지 않습니다.',
 	'imagemap_no_areas' => '오류: 설정된 영역이 없습니다',
 	'imagemap_invalid_coord' => '오류: $1번째 줄에서 좌표가 잘못되었습니다. 좌표는 반드시 숫자여야 합니다.',
 	'imagemap_description' => '이 그림에 대한 정보',
+	'imagemap_poly_odd' => '오류: $1번째 줄에 정의된 좌표 값의 수가 홀수 개입니다.',
 );
 
 /** Ripoarisch (Ripoarisch)

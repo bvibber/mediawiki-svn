@@ -1051,10 +1051,43 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  */
 $messages['pt'] = array(
+	'wah-desc' => 'Possibilita a distribuição de tarefas de transcodificação de vídeo para clientes que utilizam o Firefogg',
+	'wah-user-desc' => 'Wiki@Home permite que membros da comunidade doem os seus ciclos de CPU em excesso para ajudar em operações com uso intensivo de recursos',
+	'wah-short-audio' => 'Ficheiro de áudio $1, $2',
+	'wah-short-video' => 'Ficheiro de vídeo $1, $2',
+	'wah-short-general' => 'Ficheiro multimédia $1, $2',
+	'wah-long-audio' => '(ficheiro de áudio $1, duração $2, $3)',
+	'wah-long-video' => '(ficheiro de vídeo $1, duração $2, $4×$5 pixels, $3)',
+	'wah-long-multiplexed' => '(ficheiro de áudio/vídeo multiplex, $1, duração $2, $4×$5 pixels, total $3)',
+	'wah-long-general' => '(ficheiro multimédia, duração $2, $3)',
+	'wah-long-error' => '(ffmpeg não conseguiu ler este ficheiro: $1)',
 	'wah-transcode-working' => 'Este vídeo está a ser processado. Por favor, tente mais tarde',
+	'wah-transcode-helpout' => 'Pode ajudar a transcodificar este vídeo visitando [[Special:WikiAtHome|Wiki@Home]].',
+	'wah-transcode-fail' => 'Falha na transcodificação deste ficheiro.',
+	'wah-javascript-off' => 'Precisa de possibilitar o uso de JavaScript para participar no Wiki@Home',
+	'wah-loading' => 'carregando a interface do Wiki@Home ...',
+	'wah-menu-jobs' => 'Tarefas',
+	'wah-menu-stats' => 'Estatísticas',
+	'wah-menu-pref' => 'Preferências',
+	'wah-lookingforjob' => 'Procurando uma tarefa ...',
+	'wah-start-on-visit' => 'Iniciar o Wiki@Home sempre que eu visitar este sítio.',
+	'wah-jobs-while-away' => 'Executar tarefas só quando eu me ausentar do navegador por mais de 20 minutos.',
+	'wah-nojobfound' => 'Não foram encontradas tarefas. Nova tentativa em $1.',
+	'wah-notoken-login' => 'Está autenticado? Se não, por favor, entre e autentique-se.',
+	'wah-apioff' => 'A API do Wiki@Home parece estar desligada. Por favor, contacte o administrador da wiki.',
+	'wah-doing-job' => 'Tarefa: <i>$1</i> em: <i>$2</i>',
+	'wah-downloading' => 'Descarregamento do ficheiro <i>$1%</i> terminado',
+	'wah-encoding' => 'Codificação do ficheiro <i>$1%</i> terminada',
+	'wah-encoding-fail' => 'A codificação falhou. Por favor, refresque esta página ou tente novamente mais tarde.',
+	'wah-uploading' => 'Carregamento do ficheiro <i>$1</i> terminado',
+	'wah-uploadfail' => 'Carregamento do ficheiro falhou',
+	'wah-doneuploading' => 'Carregamento do ficheiro terminou. Obrigado pela sua contribuição.',
+	'wah-needs-firefogg' => 'Para participar no Wiki@Home precisa de instalar o <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Ocorreu um erro na API. Por favor, tente novamente mais tarde.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

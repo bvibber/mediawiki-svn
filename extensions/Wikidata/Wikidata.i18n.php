@@ -5207,9 +5207,9 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
  * @author Gondnok
  */
 $messages['hu'] = array(
-	'wikidata-desc' => 'Wiki-szerű adatbázist ad különböző típusú tartalmakhoz',
+	'wikidata-desc' => 'Wikiszerű adatbázist ad különböző típusú tartalmakhoz',
 	'wikidata-handler-namespace-move-error' => 'A Wikiadat kiterjesztés által kezelt névterek lapjai nem nevezhetőek át.',
-	'languages' => 'Wikidata: Nyelvkezelő',
+	'languages' => 'Wikiadat: Nyelvkezelő',
 	'langman-desc' => 'Nyelvek hozzáadása és beállításaik módosítása a [[Special:Languages]] lapon',
 	'langman_title' => 'Nyelv kezelő',
 	'langman_not_allowed' => 'Nincs jogosultságod a nyelvek beállításainak módosításához.',
@@ -5219,12 +5219,14 @@ $messages['hu'] = array(
 	'langman_langname' => 'Nyelv neve:',
 	'langman_iso639-3' => 'ISO 639-3-kód:',
 	'langman_iso639-2' => 'ISO 639-2-kód:',
-	'langman_wikimedia' => 'Wikimédia kód:',
+	'langman_wikimedia' => 'Wikimédia-kód:',
 	'langman_field_optional' => '(nem kötelező)',
 	'langman_addlang' => 'Nyelv hozzáadása',
 	'importlangnames' => 'Wikiadat: nyelvek neveinek importálása',
 	'importlangnames_title' => 'Nyelvek neveinek importálása',
 	'importlangnames_not_allowed' => 'Nincs jogosultságod nyelvek neveinek importálásához.',
+	'importlangnames_added' => '„$1” nyelv nevei hozzáadva.',
+	'importlangnames_not_found' => '<strong>Nincs a(z) „$1” kódhoz tartozó bejegyzés!</strong>',
 	'datasearch' => 'Wikiadat: adatkeresés',
 	'datasearch_language' => 'Nyelv:',
 	'datasearch_found_word' => 'Szó találat',
@@ -5233,20 +5235,39 @@ $messages['hu'] = array(
 	'datasearch_search_text' => 'Keresett szöveg:',
 	'datasearch_within_words' => 'Szavakon belül:',
 	'datasearch_within_ext_ids' => 'Külső azonosítókban:',
-	'importtsv' => 'Wikiadat: TSV importálása',
+	'datasearch_showing_only' => 'Legfeljebb $1 találat jelenik meg.',
+	'datasearch_match_ext_ids' => 'A(z) <i>$1</i> szöveggel egyező külső azonosítók',
+	'datasearch_match_words' => 'A(z) <i>$1</i> szöveggel egyező szavak és a hozzájuk tartozó jelentések',
+	'datasearch_match_words_lang' => '<i>$1</i> nyelvű, <i>$2</i> szöveggel egyező szavak és a hozzájuk tartozó jelentések',
+	'importtsv' => 'Wikiadat: TSV formátumú fájl importálása',
 	'ow_importtsv_title1' => 'TSV importálása',
 	'ow_importtsv_title2' => 'Definíciók és fordítások importálása',
-	'ow_importtsv_importing' => 'TSV adatok importálása',
+	'ow_importtsv_header' => '<p>Definíciók és fordítások importálása tabulátorral határolt szövegfájlból, amit OpenOffice.orgból, Excelből vagy más táblázatkezelő szoftverből exportáltál ki.</p>
+<p>A fájlnak ugyanolyan formátumúnak kell lennie, mint az [[Special:ExportTSV|ExportTSV]] lap által készített fájloknak. Ha megváltoztattad az oszlopneveket, az importálás sikertelen lesz. Ha megváltoztattad bármelyik megadott jelentés azonosítóját vagy definiáló kifejezését, az a sor figyelmen kívül lesz hagyva. Ha új oszlopokat adtál hozzá, a „definitions_iso” vagy „translations_iso” nevűnek kell lenniük, ahol az iso egy ISO 639-3-as nyelvkód.</p>
+<o>Ha a „tesztfutás” doboz ki van pipálva, a végrehajtott műveletek jelentve lesznek, azonban valójában nem történik módosítás. Ajánlott, hogy végezz tesztfuttatást, mielőtt a tényleges importálást futtatnád le.</p>',
+	'ow_importtsv_not_allowed' => 'Nincs jogosultságod TSV-ben való importáláshoz.',
+	'ow_importtsv_importing' => 'Adatok importálása TSV formátumban',
 	'ow_importtsv_import_failed' => 'Importálás nem sikerült',
 	'ow_importtsv_file' => 'TSV-fájl:',
-	'ow_importtsv_test_run' => 'Teszt futás:',
+	'ow_importtsv_test_run' => 'Tesztfuttatás:',
+	'ow_importtsv_not_utf8' => '<p>Úgy tűnik, hogy a fájl nem UTF-8 kódolást használ. A fájlnak UTF-8 kódolást <i>kell</i> használnia.
+Győződj meg róla, hogy az alkalmazásod helyesen mentette el vagy exportálta a fájlt.</p>',
+	'ow_importtsv_not_tsv' => '<p>Ez a fájl nem érvényes TSV-fájl.</p>',
+	'ow_importtsv_bad_columns' => '<p>Érvénytelen oszlopnév: „$1”.<br />
+Az oszlopok neveinek „definition_iso”-nak vagy „translations_iso”-nak kell lenniük,
+ahol az iso a nyelv kódja.</p>',
 	'ow_importtsv_test_run_title' => 'Teszt futás a TSV adatok importálásához',
 	'ow_importtsv_nothing_added' => 'Nem lett hozzáadva semmi.',
 	'ow_importtsv_nothing_added_test' => 'Nem lett hozzáadva semmi (tesztet futtattál).',
-	'exporttsv' => 'Wikiadat: TSV exportálása',
+	'ow_importtsv_results' => '$1 definíció és $2 fordítás lett hozzáadva.',
+	'ow_impexptsv_unknown_lang' => '<p>Ismeretlen vagy érvénytelen nyelv: $1.<br />
+A nyelveknek ISO 639-3-as nyelvkódoknak kell lenniük.</p>',
+	'exporttsv' => 'Wikiadat: Exportálás TSV-formátumban',
 	'ow_exporttsv_title' => 'Gyűjtemény exportálása TSV formátumba',
+	'ow_exporttsv_header' => '<p>Egy gyűjtemény exportálása egy tabulátorral elválasztott szövegfájlba, amit aztán OpenOffice.orgba, Excelbe, vagy más táblázatkezelő szoftverbe importálhatsz.<br />
+Válaszd ki az exportálandó gyűjteményt. A nyelvek szövegdobozba add meg az ISO 639-3-as nyelvkódok vesszővel elválasztott listáját. Kezd azokkal a nyelvekkel, amelyekről fordítani akarsz (annyit választhatsz, amennyit akarsz), és azokkal fejezd be, melyekre fordítasz, majd kattints az „Elkészítés” gombra az exportálás végrehajtásához.</p>',
 	'ow_exporttsv_languages' => 'Nyelvek:',
-	'ow_exporttsv_not_allowed' => 'Nincs jogosultságod a TSV-exportáláshoz.',
+	'ow_exporttsv_not_allowed' => 'Nincs jogosultságod a TSV-formátumba való exportáláshoz.',
 	'ow_exporttsv_export_failed' => 'Az exportálás nem sikerült',
 	'addcollection' => 'Wikiadat: gyűjtemény hozzáadása',
 	'ow_save' => 'Mentés',
@@ -5278,12 +5299,29 @@ Lásd a [[{{MediaWiki:Ow editing policy url}}|szerkesztési irányelveinket]].',
 	'ow_transaction_summary' => 'Összefoglaló',
 	'conceptmapping' => 'Wikiadat: fogalom-hozzárendelés',
 	'ow_conceptmapping_title' => 'Fogalom-hozzárendelés',
+	'ow_conceptmapping_help' => '<p>lehetséges műveletek: <ul>
+<li>&action=insert&<adatkontextus-előtag>=<defined_id>&... hozzárendelés beillesztése</li>
+<li>&action=get&concept=<fogalomazonosító> hozzárendelés visszaolvasása</li>
+<li>&action=list_sets az elérhető adatkontextus-előtagok és a hivatkozásaik céljának listája.</li>
+<li>&action=get_associated&dm=<definiált_jelentés_azonosítója>&dc=<adatkontextus-előtag> egy fogalom definiált jelentésénél visszaadja az összes többit</li>
+<li>&action=help Segítség megjelenítése.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext' => '<p>A fogalom-hozzárendelés lehetővé teszi, hogy megadd, az egyik adathalmazban megadott jelentés mely más adathalmazbeli jelentésekkel egyezik meg.</p>',
 	'ow_conceptmapping_no_action_specified' => 'A(z) „$1” művelet nem támogatott.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'nincs megadva',
 	'ow_dm_not_found' => 'nem található az adatbázisban vagy nem megfelelő',
 	'ow_mapping_successful' => 'Az összes [OK]-val jelölt mező fel lett térképezve<br />',
+	'ow_mapping_unsuccessful' => 'Legalább két megadott jelentést ki kell választani, mielőtt össze lehetne őket kapcsolni.',
 	'ow_will_insert' => 'Beilleszti a következőket:',
+	'ow_contents_of_mapping' => 'A hozzárendelés tartalomjegyzéke',
+	'ow_available_contexts' => 'Elérhető kontextusok',
+	'ow_add_concept_link' => 'Hivatkozás hozzáadása más fogalmakhoz',
+	'ow_concept_panel' => 'Fogalompanel',
+	'ow_dm_badtitle' => 'Ez a lap nem mutat egyetlen DefinedMeaningre (fogalomra) sem.
+Ellenőrizd a címet.',
+	'ow_dm_missing' => 'Úgy tűnik, hogy ez a lap egy nem létező DefinedMeaningre (fogalomra) mutat.
+Ellenőrizd a címet.',
 	'ow_AddHint' => 'Add meg a hozzáadandó új sorokat',
 	'ow_AlternativeDefinition' => 'Alternatív definíció',
 	'ow_AlternativeDefinitions' => 'Más definíciók',
@@ -5312,16 +5350,23 @@ Lásd a [[{{MediaWiki:Ow editing policy url}}|szerkesztési irányelveinket]].',
 	'ow_GotoSource' => 'Menj a forráshoz',
 	'ow_Language' => 'Nyelv',
 	'ow_LevelAnnotation' => 'Annotáció',
+	'ow_LinkAttributeHeader' => 'Attribútum csatolása',
+	'ow_Multiple_meanings' => 'Több jelentés:',
+	'ow_NewExactMeaning' => 'Új pontos jelentés',
 	'ow_OptionAttribute' => 'Tulajdon',
+	'ow_OptionAttributeHeader' => 'Opcióattribútum',
 	'ow_OptionAttributeOption' => 'Opció',
 	'ow_OptionAttributeOptions' => 'Beállítások',
 	'ow_OptionAttributeValues' => 'Opció értékek',
 	'ow_OtherDefinedMeaning' => 'Egyéb definiált jelentés',
 	'ow_PopupAnnotation' => 'Annotáció',
+	'ow_RecordLifeSpan' => 'A rekord élettartama',
 	'ow_Relations' => 'Relációk',
 	'ow_RelationType' => 'Reláció típusa',
 	'ow_Remove' => 'Eltávolítás',
+	'ow_RemoveHint' => 'Jelöld ki a sorokat az eltávolításhoz',
 	'ow_Spelling' => 'Helyesírás',
+	'ow_SuggestHint' => 'Kattints a kijelölés módosításához',
 	'ow_Synonyms' => 'Szinonímák',
 	'ow_SynonymsAndTranslations' => 'Szinonímák és fordítások',
 	'ow_Source' => 'Forrás',
@@ -5352,16 +5397,28 @@ Lásd a [[{{MediaWiki:Ow editing policy url}}|szerkesztési irányelveinket]].',
 	'ow_copy_help' => 'A súgó még nincs megvalósítva.',
 	'ow_please_proved_dmid' => 'Úgy tűnik, hiányzik egy „?dmid=<ID>” (dmid= Defined Meaning ID, definiált jelentés azonosító) abból, amit megadtál.<br />
 Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
+	'ow_please_proved_dc1' => 'Úgy tűnik, hiányzik egy „?dc1=<something>” (dc1=adathalmaz-kontextus 1, az adathalmaz, amiből másolsz)<br />
+Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
+	'ow_please_proved_dc2' => 'Úgy tűnik, hiányzik egy „?dc2=<valami>” (dc2=adathalmaz-kontextus 2, az adathalmaz, amibe másolsz)<br />
+Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
 	'ow_copy_successful' => '<h2>Sikeres másolás</h2>
 Úgy tűnik, hogy az adatok sikeresen át lettek másolva.
 Ne felejtsd el még egyszer ellenőrizni!',
 	'ow_copy_unsuccessful' => '<h3>Sikertelen másolás</h3>
 Nem történt másolási művelet.',
+	'ow_no_action_specified' => '<h3>Nincs művelet megadva</h3>
+Talán közvetlenül érkeztél erre a lapra? Alapesetben nem kellene itt lenned.',
+	'ow_db_consistency_not_found' => '<h2>Hiba</h2>
+Probléma van az adatbázis konzisztenciájával, a wikiadat nem talált olyan érvényes adatot, ami ehhez a jelentésazonosítóhoz van kapcsolva.
+Valószínűleg elveszett.
+Kérlek lépj kapcsolatba a szerver működtetőjével vagy adminisztrátorával.',
 	'ow_history_transaction' => 'Tranzakció:',
+	'ow_history_show_life_span' => 'A rekord élettartamának megjelenítése:',
 	'ow_class_attr_type_dm' => 'Definiált jelentés',
 	'ow_class_attr_type_xlate' => 'Lefordítható szöveg',
 	'ow_class_attr_type_plain' => 'Sima szöveg',
 	'ow_class_attr_type_link' => 'Hivatkozás',
+	'ow_class_attr_type_option' => 'Választéklista',
 	'needstranslation' => 'Wikiadat: lefordítandó kifejezések',
 	'ow_needs_xlation_title' => 'Lefordítandó kifejezések',
 	'ow_needs_xlation_source_lang' => 'Forrásnyelv:',
@@ -5370,6 +5427,7 @@ Nem történt másolási művelet.',
 	'ow_show' => 'Megjelenítés',
 	'ow_upload' => 'Feltöltés',
 	'ow_create' => 'Létrehozás',
+	'ow_collection_added' => '<strong>A(z) $1 gyűjtemény hozzáadva.</strong>',
 	'ow_suggest_previous' => 'Előző',
 	'ow_suggest_next' => 'Következő',
 	'ow_suggest_clear' => 'Törlés',
@@ -11941,6 +11999,7 @@ $messages['ug-latn'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'wikidata-desc' => 'Додає вікі-подібну базу даних для різних типів контенту',
 	'languages' => 'Вікідані: Мовний менеджер',
 	'langman-desc' => 'Додавання або зміна мовних налаштувань за допомогою [[Special:Languages]]',
 	'langman_title' => 'Мовний менеджер',
@@ -11973,6 +12032,7 @@ $messages['uk'] = array(
 	'ow_uipref_datasets' => 'Звичайний вигляд:',
 	'ow_uiprefs' => 'Вікідані',
 	'ow_none_selected' => 'Нічого не обрано',
+	'ow_transaction_remove' => 'Вилучити',
 	'ow_transaction_summary' => 'Опис',
 	'ow_conceptmapping_help' => '<p>можливі дії: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  вставити відповідність</li>
@@ -12027,6 +12087,7 @@ $messages['uk'] = array(
 	'ow_PopupAnnotation' => 'Анотація',
 	'ow_Relations' => 'Відношення',
 	'ow_RelationType' => 'Тип відношення',
+	'ow_Remove' => 'Вилучити',
 	'ow_Spelling' => 'Правопис',
 	'ow_Synonyms' => 'Синоніми',
 	'ow_SynonymsAndTranslations' => 'Синоніми і переклади',

@@ -223,7 +223,7 @@ $messages['dsb'] = array(
 	'filelist-desc' => '[[Special:Filelist|Specialny bok]] za nalistowanje nagratych datajow',
 	'filelist-show-list' => 'Lisćinu pokazaś',
 	'filelist-show-gallery' => 'Galeriju pokazaś',
-	'filelist-image-desc' => 'Zespominanje',
+	'filelist-image-desc' => 'wóstupujucy',
 );
 
 /** Greek (Ελληνικά)

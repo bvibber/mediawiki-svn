@@ -962,6 +962,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -1028,6 +1029,7 @@ $messages['eo'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Kaŝi difinojn en demanda lingvo',
 	'voctrain_hide_words_in_question_language' => 'Kaŝi vortojn en demanda lingvo',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Apartigi valutojn de komoj por uzi plurajn lingvojn.',
+	'voctrain_other' => 'alia',
 );
 
 /** Spanish (Español)

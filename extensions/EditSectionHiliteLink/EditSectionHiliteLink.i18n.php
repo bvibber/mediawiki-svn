@@ -158,7 +158,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'Editsectionhilitelink-desc' => 'Emphasar le section appropriate de un pagina quando tu placia le mouse super le ligamine "modificar"',
+	'Editsectionhilitelink-desc' => 'Mitte in evidentia le section appropriate de un pagina quando tu placia le mouse super le ligamine "modificar"',
 );
 
 /** Indonesian (Bahasa Indonesia)

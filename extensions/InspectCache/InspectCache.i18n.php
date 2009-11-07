@@ -1086,9 +1086,19 @@ $messages['ug-latn'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'inspectcache' => 'Перегляд кешу',
+	'inspectcache-desc' => 'Простий інструмент для налагодження і перегляду вмісту загального кешу',
 	'inspectcache-ok' => 'Гаразд',
+	'inspectcache-general' => 'Загальний кеш',
+	'inspectcache-parser' => 'Кеш парсера',
+	'inspectcache-message' => 'Кеш повідомлень',
+	'inspectcache-get' => 'Отримати',
+	'inspectcache-delete' => 'Вилучити',
+	'inspectcache-deleted' => 'Вилучений кеш',
+	'inspectcache-list' => 'Список',
 );
 
 /** Veps (Vepsan kel')

@@ -350,10 +350,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'trustedxff-desc' => 'Manuseamento de uma lista de endereços proxy confiáveis ([http://meta.wikimedia.org/wiki/XFF_project projecto XFF])',
+	'trustedxff-desc' => "Tratamento de uma lista de endereços ''proxy'' confiáveis ([http://meta.wikimedia.org/wiki/XFF_project projecto XFF])",
 );
 
 /** Brazilian Portuguese (Português do Brasil)

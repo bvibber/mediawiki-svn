@@ -986,7 +986,7 @@ Simplemente modifica le nomine de usator infra, adde un commento (optional) e cl
 	'changeauthor-revview' => 'Version #$1 de $2',
 	'changeauthor-nosuchtitle' => 'Non existe un pagina con titulo "$1".',
 	'changeauthor-weirderror' => 'Un error multo estranie ha occurrite.
-Per favor reprova tu requesta.
+Per favor reproba tu requesta.
 Si iste error persiste, le base de datos es probabilemente defecte.',
 	'changeauthor-invalidform' => 'Per favor usa le formulario providite per le [[Special:ChangeAuthor|pagina special]] e non un formulario personalisate.',
 	'changeauthor-success' => 'Tu requesta ha essite processate con successo.',

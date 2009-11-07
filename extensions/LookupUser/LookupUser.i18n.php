@@ -738,6 +738,13 @@ $messages['km'] = array(
 	'lookupuser-useroptions' => 'ជម្រើសនៃអ្នកប្រើប្រាស់ ៖',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'lookupuser-realname' => '실명: $1',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

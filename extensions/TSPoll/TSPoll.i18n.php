@@ -303,11 +303,12 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  */
 $messages['pt'] = array(
 	'tspoll-desc' => 'Incluir [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] como tag HTML',
-	'tspoll-fetch-error' => 'Erro ao buscar o URL!',
+	'tspoll-fetch-error' => 'Erro ao carregar a URL!',
 	'tspoll-id-error' => 'Não foi dada identificação!',
 );
 

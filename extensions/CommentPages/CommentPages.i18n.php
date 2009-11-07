@@ -86,6 +86,14 @@ $messages['bg'] = array(
 	'nstab-comments' => 'Коментари',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'commentpages-desc' => 'প্রধান নামস্থানের জন্য মন্তব্য পাতা',
+	'nstab-comments' => 'ধারাভাষ্য',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

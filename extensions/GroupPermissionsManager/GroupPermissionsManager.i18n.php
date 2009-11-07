@@ -1436,7 +1436,7 @@ $messages['ia'] = array(
 	'grouppermissions-dosearch' => 'Ir',
 	'grouppermissions-searchlabel' => 'Cercar gruppo',
 	'grouppermissions-deletelabel' => 'Deler gruppo',
-	'grouppermissions-error' => 'Un error incognite ha occurrite, per favor preme le button de retorno in tu navigator e reprova',
+	'grouppermissions-error' => 'Un error incognite ha occurrite, per favor preme le button de retorno in tu navigator e reproba',
 	'grouppermissions-change' => 'Cambiar permissiones de gruppo',
 	'grouppermissions-add' => 'Adder gruppo',
 	'grouppermissions-delete' => 'Deler gruppo',
@@ -1488,27 +1488,71 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
+	'grouppermissions' => 'Kelola akses group',
+	'sortpermissions' => 'Urutkan akses',
+	'removeunusedgroups' => 'Hapus kelompok yang tak terpakai',
+	'grouppermissions-desc' => 'Mengelola akses group melalui [[Special:GroupPermissions|halaman istimewa]]',
+	'grouppermissions-desc2' => 'Sistem hak akses yang diperluas',
+	'grouppermissions-desc3' => 'Memungkinkan penyesuaian hak akses untuk operasi isi (tab)',
+	'grouppermissions-desc4' => 'Memungkinkan penambahan butir ke kotak peralatan',
+	'grouppermissions-desc-nsm' => 'Mengelola ruang nama melalui halaman istimewa',
+	'grouppermissions-header' => 'Anda dapat menggunakan halaman ini untuk mengubah hak akses dari berbagai kelompok pengguna.',
 	'grouppermissions-search' => 'Kelompok:',
 	'grouppermissions-dologin' => 'Masuk log',
 	'grouppermissions-dosearch' => 'Tuju ke',
 	'grouppermissions-searchlabel' => 'Cari kelompok',
 	'grouppermissions-deletelabel' => 'Hapus kelompok',
+	'grouppermissions-error' => 'Telah terjadi kesalahan yang tidak dikenal, silahkan tekan tombol back pada penjelajah Anda dan coba lagi',
+	'grouppermissions-change' => 'Ubah akses group',
 	'grouppermissions-add' => 'Tambahkan kelompok',
 	'grouppermissions-delete' => 'Hapus kelompok',
 	'grouppermissions-comment' => 'Komentar:',
+	'grouppermissions-addsuccess' => '$1 telah berhasil ditambahkan',
+	'grouppermissions-deletesuccess' => '$1 telah berhasil dihapus',
+	'grouppermissions-changesuccess' => 'Akses untuk $1 telah berhasil diubah',
 	'grouppermissions-true' => 'Benar',
 	'grouppermissions-false' => 'Salah',
 	'grouppermissions-never' => 'Tidak pernah',
+	'grouppermissions-nooldrev' => 'Kesalahan ditemukan saat mencoba untuk mengarsipkan berkas konfigurasi saat ini. Arsip tidak akan dibuat',
 	'grouppermissions-sort-read' => 'Membaca',
 	'grouppermissions-sort-edit' => 'Menyunting',
 	'grouppermissions-sort-manage' => 'Pengelolaan',
 	'grouppermissions-sort-admin' => 'Administrasi',
 	'grouppermissions-sort-tech' => 'Teknis',
 	'grouppermissions-sort-misc' => 'Lain-lain',
+	'grouppermissions-log-add' => 'menambahkan kelompok "$2"',
+	'grouppermissions-log-change' => 'mengganti akses untuk kelompok "$2"',
+	'grouppermissions-log-delete' => 'menghapus kelompok "$2"',
+	'grouppermissions-log-name' => 'Log akses kelompok',
+	'grouppermissions-log-header' => 'Halaman ini melacak perubahan pada hak akses kelompok pengguna.',
+	'grouppermissions-needjs' => "'''Peringatan:''' JavaScript dinonaktifkan pada penjelajah Anda. Beberapa fitur mungkin tidak bekerja!",
+	'grouppermissions-sp-header' => 'Anda dapat menggunakan halaman ini untuk mengatur bagaimana hak akses diurutkan dan menambah akses baru. Arahkan di atas sebuah izin untuk membaca deskripsinya.',
+	'grouppermissions-sp-sort' => 'Urutkan akses',
 	'grouppermissions-sp-save' => 'Simpan',
+	'grouppermissions-sp-success' => 'Akses telah berhasil diurutkan',
+	'grouppermissions-sp-addtype' => 'Tambahkan tipe pengurutan',
+	'grouppermissions-sp-addperm' => 'Tambahkan akses',
 	'grouppermissions-sp-remove' => 'hapus',
+	'grouppermissions-sp-deltype' => 'Hapus tipe pengurutan',
+	'grouppermissions-rug-header' => 'Anda dapat menggunakan halaman ini untuk menghapus pengguna dari kelompok yang tak digunakan (dihapus).',
+	'grouppermissions-rug-success' => 'Berhasil menghapus pengguna dari kelompok yang tak terpakai!',
+	'grouppermissions-rug-confirm' => 'Hapus pengguna dari kelompok yang tak terpakai',
+	'right-grouppermissions' => 'Mengelola akses kelompok',
+	'right-viewsource' => 'Melihat sumber wiki dari halaman yang dilindungi',
+	'right-raw' => 'Melihat halaman mentah',
+	'right-render' => 'Melihat halaman yang ditampilkan tanpa navigasi',
+	'right-info' => 'Melihat info halaman',
+	'right-credits' => 'Melihat kredit halaman',
+	'right-history' => 'Melihat sejarah halaman',
+	'right-search' => 'Mencari di wiki',
+	'right-contributions' => 'Melihat halaman kontribusi',
+	'right-recentchanges' => 'Melihat perubahan terbaru',
+	'right-edittalk' => 'Menyunting halaman pembicaraan',
+	'right-edit-new' => 'Menyunting halaman (yang bukan halaman pembicaraan)',
+	'right-readold' => 'Melihat isi revisi lama dan perbedaan revisi',
 );
 
 /** Italian (Italiano)
@@ -2919,6 +2963,13 @@ $messages['ug-arab'] = array(
 $messages['ug-latn'] = array(
 	'grouppermissions-dologin' => 'Kirish',
 	'grouppermissions-dosearch' => 'Köchüsh',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'grouppermissions-sp-remove' => 'вилучити',
 );
 
 /** Veps (Vepsan kel')

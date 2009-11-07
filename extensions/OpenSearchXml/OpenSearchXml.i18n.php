@@ -276,6 +276,13 @@ $messages['mk'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML интерфејсот овозможува извадоци од текст',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'opensearchxml-desc' => 'എഴുത്തുകൾ മാത്രമായി എടുക്കാനുള്ള [http://www.opensearch.org ഓപ്പൺസേർച്ച്] എക്സ്.എം.എൽ. ദൃശ്യമണ്ഡലം നൽകുന്നു',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

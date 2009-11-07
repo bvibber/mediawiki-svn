@@ -7096,6 +7096,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author 555
  * @author Crazymadlover
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -7158,7 +7159,7 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 	'configure-old-summary' => '$1 por $2 $4 $3',
 	'configure-saved' => 'A configuração foi gravada',
 	'configure-backlink' => 'Voltar ao formulário',
-	'configure-image-url-explanation' => 'Introduza a URL para uma imagem, ou o nome de uma imagem neste wiki (sem o espaço nominal). Uma previsão será mostrada quando você sair do campo.',
+	'configure-image-url-explanation' => 'Introduza a URL para uma imagem, ou o nome de uma imagem desta wiki (sem o espaço nominal). Uma antevisão será mostrada quando sair do campo.',
 	'configure-section-robots' => 'Web crawlers',
 	'configure-section-features' => 'Funcionalidades',
 	'configure-section-general' => 'Parâmetros gerais',
@@ -7287,6 +7288,7 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Crazymadlover
+ * @author Hamilton Abreu
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
@@ -7304,6 +7306,7 @@ $messages['pt-br'] = array(
 	'configure-js-biglist-show' => '[mostrar detalhes]',
 	'configure-js-biglist-hide' => '[esconder detalhes]',
 	'configure-no-diff' => 'Não há alterações entre as versões selecionadas.',
+	'configure-image-url-explanation' => 'Introduza a URL para uma imagem, ou o nome de uma imagem neste wiki (sem o espaço nominal). Uma previsão será mostrada quando você sair do campo.',
 	'configure-section-general' => 'Configurações gerais',
 	'configure-section-pages' => 'Páginas',
 	'configure-section-db' => 'Base de dados',

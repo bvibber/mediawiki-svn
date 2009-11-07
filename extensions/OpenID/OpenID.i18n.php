@@ -1119,6 +1119,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Lucas
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -1182,7 +1183,7 @@ Se ne, klaku la butonon "Continue" (Daŭri).',
 	'openiddelete-button' => 'Konfirmi',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-agordoj',
 	'openid-pref-hide' => 'Kaŝi viajn identigon OpenID en via uzula paĝo, se vi ensalutas kun OpenID.',
-	'openid-pref-update-userinfo-on-login' => 'Ĝisdatigi mian informon de OpenID-konto ĉiam mi ensalutos',
+	'openid-pref-update-userinfo-on-login' => 'Ĝisdatigi mian informon de OpenID-konto ĉiam, kiam mi ensalutos:',
 	'openid-urls-action' => 'Ago',
 	'openid-urls-delete' => 'Forigi',
 	'openid-add-url' => 'Aldoni novan OpenID',

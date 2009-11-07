@@ -868,15 +868,25 @@ Setzt der mat den Toolen am Menü derbäi.',
  * @author Brest
  */
 $messages['mk'] = array(
+	'gep-desc' => 'Ја надополнува страницата за уредување, за да биде полесна за користење',
+	'gep-emailsubject' => '[$1] Препорачана категорија: $2',
+	'gep-emailbody' => 'Корисникот „$1“ ја предложи категоријата „$2“ за страната „$3“.',
+	'gep-emailfailure' => 'Жалиме, но вашиот предлог не можеше да се обработи.',
+	'gep-emailsuccess' => 'Ви благодариме што ја предложивте категоријата: $1.',
 	'gep-categories' => 'Категории',
 	'gep-addcategory' => 'Додај категорија',
 	'gep-addcategorybutton' => 'Додај',
 	'gep-suggestcategory' => 'Предложи категорија',
 	'gep-suggestcategorybutton' => '*Зачувај',
 	'gep-sections' => 'Секции',
+	'gep-sectionnotdisabled' => 'Овој дел не може да биде оневозможен',
+	'gep-addsection' => 'Додај поднаслов',
 	'gep-addsectionbutton' => 'Додај',
 	'gep-classicmode' => 'Класичен изглед',
 	'gep-genericmode' => 'Генерички изглед',
+	'gep-nosectioninstructions' => 'Оваа страница нема поднаслови.
+Додајте поднаслови со алатките во менито.',
+	'gep-nocategories' => 'Одберете барем една категорија пред зачувување',
 );
 
 /** Erzya (Эрзянь)

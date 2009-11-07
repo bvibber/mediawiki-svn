@@ -621,7 +621,7 @@ $messages['ml'] = array(
 	'fundraiserportal-rubytext-close' => 'ഇതിനി കാണിക്കേണ്ട',
 	'fundraiserportal-sapphire-button' => 'സംഭാവന നൽകുക',
 	'fundraiserportal-tourmaline-button' => 'സംഭാവന നൽകുക',
-	'fundraiserportal-tourmaline-message' => 'വിക്കിപീഡിയ സൗജ്യന്യമായി എല്ലാവരിലുമെത്താൻ എല്ലാ സംഭാവനകളും ഞങ്ങളെ സഹായിക്കുന്നു.',
+	'fundraiserportal-tourmaline-message' => 'വിക്കിപീഡിയ സൗജന്യമായി എല്ലാവരിലുമെത്താൻ എല്ലാ സംഭാവനകളും ഞങ്ങളെ സഹായിക്കുന്നു.',
 	'fundraiserportal-tourmaline-close' => 'ഇതിനി കാണിക്കേണ്ട',
 );
 
