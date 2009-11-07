@@ -42,7 +42,7 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 	// check if we are dealing with an InterWiki link
 	if ( $ititle->isLocal() ) {
 		$image = wfFindFile( $img );
-		if (!$image->exists())
+		if (!$image)
 			return '[[Image:'.$img.']]';
 
 		$iURL = $image->getURL();
