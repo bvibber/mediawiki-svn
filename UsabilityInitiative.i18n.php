@@ -440,12 +440,13 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Waldir
  */
 $messages['pt'] = array(
 	'usabilityinitiative' => 'Iniciativa de Usabilidade',
-	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Wikipedia Usability Initiative, para melhorar a usabilidade do MediaWiki',
+	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Iniciativa de Usabilidade da Wikipédia, para melhorar a usabilidade do MediaWiki',
 	'prefs-experimental' => 'Funcionalidades experimentais',
 );
 

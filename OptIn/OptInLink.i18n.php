@@ -715,6 +715,7 @@ $messages['pms'] = array(
 /** Portuguese (Português)
  * @author Capmo
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Indech
  * @author Lijealso
  * @author Malafaya
@@ -726,16 +727,18 @@ $messages['pt'] = array(
 	'optin-leave' => 'Sair do Beta',
 	'tooltip-pt-optin-leave' => 'Desligue as novas funcionalidades',
 	'optin-feedback' => 'Enviar comentários',
-	'tooltip-pt-optin-feedback' => 'Dê sua opinião acerca de sua experiência com as novidades',
+	'tooltip-pt-optin-feedback' => 'Deixe um comentário com a sua opinião sobre as novas funcionalidades',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Hamilton Abreu
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'optin-try' => 'Experimente o Beta',
 	'optin-leave' => 'Sair do Beta',
 	'optin-feedback' => 'Enviar comentários',
+	'tooltip-pt-optin-feedback' => 'Dê sua opinião acerca de sua experiência com as novidades',
 );
 
 /** Quechua (Runa Simi)
@@ -975,6 +978,18 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'optin-try' => 'Sperimäntolös el Beta',
+);
+
+/** Kalmyk (Хальмг)
+ * @author Huuchin
+ */
+$messages['xal'] = array(
+	'optin-try' => 'β бәәдл сөрҗ үзх',
+	'tooltip-pt-optin-try' => 'Шин арһс сөртн',
+	'optin-leave' => 'Бета бәәдләс мөрлх',
+	'tooltip-pt-optin-leave' => 'Шин арһс унтрах',
+	'optin-feedback' => 'Үнлһн кех',
+	'tooltip-pt-optin-feedback' => 'Шин арһта бәәлһнә туск үнлһн бичх.',
 );
 
 /** Yiddish (ייִדיש)

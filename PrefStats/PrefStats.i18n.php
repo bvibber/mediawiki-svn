@@ -1602,6 +1602,8 @@ Para monitorizá-las configure $wgPrefStatsTrackPrefs.',
 	'prefstats-factor-twoweeks' => 'duas semanas',
 	'prefstats-factor-fourweeks' => 'quatro semanas',
 	'prefstats-factor-default' => 'repor a escala padrão',
+	'prefstats-legend-out' => 'Desactivou',
+	'prefstats-legend-in' => 'Activou',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -2012,7 +2014,7 @@ $messages['uk'] = array(
 	'prefstats-noprefs' => 'Наразі параметри не відстежуються. Налаштуйте $wgPrefStatsTrackPrefs для відстеження параметрів.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|користувач увімкнув|користувачі увімкнули|користувачів увімкнули}} цей параметр з моменту початку роботи статистики параметрів
 ** У $2 {{PLURAL:$2|користувача|користувачів}} він ввімкнений
-** У $2 {{PLURAL:$3|користувача|користувачів}} він вже вимкнений',
+** У $3 {{PLURAL:$3|користувача|користувачів}} він вже вимкнений',
 	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|користувач увімкнув|користувачі увімкнули|користувачів увімкнули}} цей параметр з моменту початку роботи статистики параметрів
 ** У $2 {{PLURAL:$2|користувача|користувачів}} він ввімкнений
 ** У $3 {{PLURAL:$3|користувача|користувачів}} він вже вимкнений

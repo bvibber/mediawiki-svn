@@ -1078,7 +1078,7 @@ $messages['pt'] = array(
 	'ct-expert' => 'Experiente',
 	'ct-date-range' => 'Intervalo de datas',
 	'ct-editing' => 'A editar actualmente:',
-	'ct-anon-users' => 'Usuários anónimos',
+	'ct-anon-users' => 'Utilizadores anónimos',
 	'ct-and' => 'e',
 );
 

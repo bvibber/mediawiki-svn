@@ -17,15 +17,6 @@ If you are logged in, you can disable this warning in the "{{int:prefs-editing}}
 	'vector-editwarning-preference' => 'Warn me when I leave an edit page with unsaved changes',
 );
 
-/** Message documentation (Message documentation)
- * @author McDutchie
- * @author Umherirrender
- */
-$messages['qqq'] = array(
-	'vector-editwarning' => "This is the name of an extension that warns people when they try to leave an edit form without saving. So it means something like \"warning about (your) edit\", '''not''' \"edit the warning\".",
-	'vector-editwarning-desc' => '{{desc}}',
-);
-
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -33,13 +24,6 @@ $messages['ar'] = array(
 	'vector-editwarning-warning' => 'قد تتسبب مغادرة هذه الصفحة بخسارتك لأي تغييرات قمت بها.
 يمكنك تعطيل هذا التحذير إذا كنت والجلًا في قسم "{{int:prefs-editing}}" في تفضيلاتك.',
 	'vector-editwarning-preference' => 'حذّرني عندما أغادر تحرير صفحة ذات تغييرات غير محفوظة',
-);
-
-/** Aramaic (ܐܪܡܝܐ)
- * @author Basharh
- */
-$messages['arc'] = array(
-	'vector-editwarning' => 'ܙܘܗܪܐ ܥܠ ܫܚܠܦܬܐ',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -483,14 +467,15 @@ S'it ses logà, it peule disabilité st'avis-sì ant la session \"{{int:prefs-ed
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Heldergeovane
  * @author Indech
  * @author Lijealso
  * @author Waldir
  */
 $messages['pt'] = array(
-	'vector-editwarning-warning' => 'Sair desta página fará com que você perca todas as alterações feitas por você.
-Se você fez login, pode desabilitar este aviso na seção "{{int:prefs-editing}}" das suas preferências.',
+	'vector-editwarning-warning' => 'Abandonar esta página pode fazer com que perca todas as suas alterações.
+Se estiver autenticado, pode desactivar este aviso na secção "{{int:prefs-editing}}" das preferências.',
 	'vector-editwarning-preference' => 'Avisar-me ao abandonar uma página editada sem gravar as alterações.',
 );
 
@@ -571,13 +556,6 @@ Unaweza kuondoa ilani hii ukienda kwenye sehemu ya "{{int:prefs-editing}}" kweny
 	'vector-editwarning-preference' => 'Unionyeshe ilani ninapotaka kutoka kwenye ukurasa ninouhariri, bila kuhifadhi mabadiliko',
 );
 
-/** Telugu (తెలుగు)
- * @author Ravichandra
- */
-$messages['te'] = array(
-	'vector-editwarning' => 'దిద్దుబాటు ఘర్షణ',
-);
-
 /** Thai (ไทย)
  * @author Ans
  */
@@ -610,13 +588,6 @@ $messages['vec'] = array(
 	'vector-editwarning-warning' => 'Se te vè via da sta pagina te podaressi pèrdar tute le modìfeghe che te ghè fato.
 Se te sì loggà, te poli disabilitar sto aviso in te la sezion "{{int:prefs-editing}} de le to preferense.',
 	'vector-editwarning-preference' => 'Dime se sto lassando na pagina de modifica sensa aver salvà',
-);
-
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'vector-editwarning' => 'Redaktiruida varutuz',
 );
 
 /** Vietnamese (Tiếng Việt)

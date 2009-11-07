@@ -112,12 +112,20 @@ $messages['nl'] = array(
 	'wikieditor-desc' => 'Voegt een uitbreidbare tekstverwerker voor wikitekst toe en modules met extra mogelijkheden',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'wikieditor' => 'Antërfacia ëd modìfica avansà ëd wikitext',
+	'wikieditor-desc' => "A dà n'antërfacia ëd modìfica estendibla ëd wikitext e motobin ëd moduj ch'a dan ëd funsion",
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
 	'wikieditor' => 'Interface avançada de edição de wikitexto',
-	'wikieditor-desc' => 'Fornece uma interface extensível de edição de wikitexto e vários módulos de funcionalidades',
+	'wikieditor-desc' => 'Fornece uma interface extensível de edição de wikitexto e vários módulos funcionais',
 );
 
 /** Tarandíne (Tarandíne)

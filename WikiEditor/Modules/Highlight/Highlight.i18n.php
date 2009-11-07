@@ -78,6 +78,20 @@ $messages['id'] = array(
 	'wikieditor-highlight-preference' => 'Aktifkan penyorotan sintaks sewaktu menyunting',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikieditor-highlight-preference' => 'Donn beim Ändere de Syntax met Färve makeere',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'wikieditor-highlight-preference' => 'Dat faarwlecht Eraushiewe vun der Syntax an der Ännerungsfënster aschalten',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
