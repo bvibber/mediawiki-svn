@@ -88,7 +88,7 @@ class OggChop {
 			@@todo build the ogg skeleton header
 			1) that gives the offset between
 			// $kStart time and the requested time.
-
+			*/
 			//for now just start output at the given byte range
 			$this->outputByteRange( $kStart[1], $kEnd[1]);
 		}
