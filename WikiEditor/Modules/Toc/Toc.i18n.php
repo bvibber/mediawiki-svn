@@ -75,6 +75,13 @@ $messages['de'] = array(
 	'wikieditor-toc-preference' => 'Inhaltsverzeichnis im Bearbeiten-Fenster aktivieren',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'wikieditor-toc-preference' => 'Tabloyo tedeesteyi ke navigasyon keno ay a bike',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

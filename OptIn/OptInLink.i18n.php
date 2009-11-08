@@ -144,6 +144,13 @@ $messages['cs'] = array(
 	'tooltip-pt-optin-feedback' => 'Poskytnout připomínky o zkušenostech s novými funkcemi',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'optin-try' => 'Rhowch gynnig ar Beta',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */

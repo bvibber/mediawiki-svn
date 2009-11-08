@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'wikieditor-highlight-preference' => 'Enable syntax highlighting when editing',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'wikieditor-highlight-preference' => 'مكّن إبراز الصياغة أثناء التعديل',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -22,11 +29,25 @@ $messages['be-tarask'] = array(
 	'wikieditor-highlight-preference' => 'Уключыць падсьветку сынтаксісу пад час рэдагаваньня',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'wikieditor-highlight-preference' => 'Aotren an usskediñ ereadurel er prenestr skridaozañ',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
 $messages['cs'] = array(
 	'wikieditor-highlight-preference' => 'Při editování zvýrazňovat syntaxi',
+);
+
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'wikieditor-highlight-preference' => 'Ci wext ke ez nuste vurneno, sytax highligh a bike',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -153,6 +174,13 @@ $messages['pt'] = array(
  */
 $messages['roa-tara'] = array(
 	'wikieditor-highlight-preference' => "Abbilite 'a sindasse evidenziate quanne face le cangiaminde",
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'wikieditor-highlight-preference' => 'Увімкнути підсвічування синтаксису при редагуванні',
 );
 
 /** Vèneto (Vèneto)

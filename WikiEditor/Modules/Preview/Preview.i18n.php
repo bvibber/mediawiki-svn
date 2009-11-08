@@ -47,7 +47,7 @@ $messages['qqq'] = array(
 	'wikieditor-preview-savedialog-summary' => 'Label for the edit summary textbox in the dialog that opens when the user clicks the Publish button',
 	'wikieditor-preview-savedialog-minor' => 'Label for the minor edit checkbox in the dialog that opens when the user clicks the Publish button',
 	'wikieditor-preview-savedialog-watch' => 'Label for the watch checkbox in the dialog that opens when the user clicks the Publish button',
-	'wikieditor-preview-savedialog-publish' => 'Button that saves the user\'s edit in the dialog that opens when the user clicks the Publish button',
+	'wikieditor-preview-savedialog-publish' => "Button that saves the user's edit in the dialog that opens when the user clicks the Publish button",
 	'wikieditor-preview-savedialog-goback' => 'Button that closes the dialog that opens when the user clicks the Publish button',
 );
 
@@ -57,12 +57,14 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'wikieditor-preview-tab-edit' => 'Wysig',
 	'wikieditor-preview-loading' => 'Besig om te laai...',
+	'wikieditor-preview-savedialog-goback' => 'Terug',
 );
 
 /** Arabic (العربية)
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'wikieditor-preview-preference' => 'مكّن المعاينة جنبًا لجنب',
 	'wikieditor-preview-tab-edit' => 'حرّر',
 	'wikieditor-preview-tab-preview' => 'عاين',
 	'wikieditor-preview-loading' => 'يحمّل...',
@@ -97,6 +99,15 @@ $messages['cs'] = array(
 	'wikieditor-preview-loading' => 'Načítá se…',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'wikieditor-preview-tab-edit' => 'Golygu',
+	'wikieditor-preview-tab-preview' => 'Rhagolwg',
+	'wikieditor-preview-loading' => "Wrthi'n llwytho...",
+);
+
 /** German (Deutsch)
  * @author Lyzzy
  */
@@ -104,6 +115,16 @@ $messages['de'] = array(
 	'wikieditor-preview-tab-edit' => 'Bearbeiten',
 	'wikieditor-preview-tab-preview' => 'Vorschau',
 	'wikieditor-preview-loading' => 'lädt …',
+);
+
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'wikieditor-preview-preference' => 'verqeyde miqeyese a bike',
+	'wikieditor-preview-tab-edit' => 'Bivurne',
+	'wikieditor-preview-tab-preview' => 'Verqeyd',
+	'wikieditor-preview-loading' => 'Ho bar keno...',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -244,6 +265,14 @@ $messages['nl'] = array(
 	'wikieditor-preview-tab-edit' => 'Bewerken',
 	'wikieditor-preview-tab-preview' => 'Voorvertoning',
 	'wikieditor-preview-loading' => 'Bezig met laden...',
+	'wikieditor-preview-button-publish' => 'Publiceren',
+	'wikieditor-preview-button-cancel' => 'Annuleren',
+	'wikieditor-preview-savedialog-title' => 'Publiceren naar {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Bewerkingssamenvatting (beschrijf kort de gemaakte wijzingen):',
+	'wikieditor-preview-savedialog-minor' => 'Kleine bewerking',
+	'wikieditor-preview-savedialog-watch' => 'Deze pagina volgen',
+	'wikieditor-preview-savedialog-publish' => 'Publiceren',
+	'wikieditor-preview-savedialog-goback' => 'Terug',
 );
 
 /** Occitan (Occitan)
@@ -257,10 +286,11 @@ $messages['oc'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'wikieditor-preview-preference' => 'Abìlita la previsualisassion da part-a-part',
+	'wikieditor-preview-preference' => 'Abìlita la previsualisassion da part a part',
 	'wikieditor-preview-tab-edit' => 'Modìfica',
 	'wikieditor-preview-tab-preview' => 'Previsualisassion',
 	'wikieditor-preview-loading' => 'A caria ...',

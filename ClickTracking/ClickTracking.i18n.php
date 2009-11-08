@@ -825,6 +825,7 @@ $messages['ksh'] = array(
 	'ct-user-contribs' => 'Em Metmaacher sing Beidrääsch enßjesamp',
 	'ct-user-span' => 'Em Metmaacher sing Beidrääsch en dä Zick',
 	'ct-and' => ', un',
+	'ct-update-table' => 'De Tabäll op der neuste Schtand bränge',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1004,6 +1005,13 @@ $messages['oc'] = array(
 	'ct-user-span' => "Contribucions de l'utilizaire sus la durada",
 	'ct-and' => 'e',
 	'ct-update-table' => 'Metre a jorn la taula',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'ct-and' => 'unn',
 );
 
 /** Polish (Polski)

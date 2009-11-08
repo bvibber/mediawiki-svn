@@ -115,6 +115,14 @@ $messages['cs'] = array(
 	'vector-simplesearch-containing' => 'obsahující…',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'vector-simplesearch-search' => 'Chwilio',
+	'vector-simplesearch-containing' => 'yn cynnwys...',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */
