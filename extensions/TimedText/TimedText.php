@@ -14,6 +14,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgHooks['EditPageBeforeEditToolbar'][] = 'wfAddTimedTextJs';
+$wgExtraNamespaces[102] = "TimedText";
 
 function wfAddTimedTextJs( &$toolabar ) {
 	global $wgOut, $wgTitle, $wgRequest, $wgScriptPath;
