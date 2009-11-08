@@ -121,6 +121,7 @@ body.rtl .wikiEditor-ui-text {
 	overflow-x: hidden;
 }
 body.rtl .wikiEditor-ui-toc {
+	float: left;
 	right: auto;
 	left: -1px;
 	border-left: none;
@@ -605,4 +606,14 @@ body.rtl .wikiEditor-ui-toolbar .page-characters > div > a,
 .wikiEditor-ui .ui-widget-header {
 	border-width: 0;
 	border-bottom-width: 1px;
+}
+
+.wikiEditor-ui .wikiEditor-tabs button {
+	float: right;
+	margin-left: 1em;
+}
+
+body.rtl .wikiEditor-ui .wikiEditor-tabs button {
+	float: left;
+	margin-right: 1em;
 }

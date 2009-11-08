@@ -1298,86 +1298,84 @@ $.wikiEditor = {
 	 * this code (and images) gets moved into the core - or anywhere for
 	 * that matter...
 	 */
-	imgPath : wgScriptPath + '/extensions/UsabilityInitiative/images/wikiEditor/'
-};
-
-$.wikiEditor.isSupportKnown = function() {
-	return $.browser.name in $.wikiEditor.browsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'];
-};
-$.wikiEditor.isSupported = function() {
-	if ( !$.wikiEditor.isSupportKnown ) {
-		// Assume good faith :)
+	'imgPath' : wgScriptPath + '/extensions/UsabilityInitiative/images/wikiEditor/',
+	'isSupportKnown': function() {
+		return $.browser.name in $.wikiEditor.browsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'];
+	},
+	'isSupported': function() {
+		if ( !$.wikiEditor.isSupportKnown ) {
+			// Assume good faith :)
+			return true;
+		}
+		var browser = $.wikiEditor.browsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'][$.browser.name];
+		for ( condition in browser ) {
+			var op = browser[condition][0];
+			var val = browser[condition][1];
+			if ( typeof val == 'string' ) {
+				if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
+					return false;
+				}
+			} else if ( typeof val == 'number' ) {
+				if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
+					return false;
+				}
+			}
+		}
 		return true;
-	}
-	var browser = $.wikiEditor.browsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'][$.browser.name];
-	for ( condition in browser ) {
-		var op = browser[condition][0];
-		var val = browser[condition][1];
-		if ( typeof val == 'string' ) {
-			if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
-				return false;
-			}
-		} else if ( typeof val == 'number' ) {
-			if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
-				return false;
+	},
+	// Wraps gM from js2, but allows raw text to supercede
+	'autoMsg': function( object, property ) {
+		// Accept array of possible properties, of which the first one found will be used
+		if ( typeof property == 'object' ) {
+			for ( i in property ) {
+				if ( property[i] in object || property[i] + 'Msg' in object ) {
+					property = property[i];
+					break;
+				}
 			}
 		}
-	}
-	return true;
-};
-// Wraps gM from js2, but allows raw text to supercede
-$.wikiEditor.autoMsg = function( object, property ) {
-	// Accept array of possible properties, of which the first one found will be used
-	if ( typeof property == 'object' ) {
-		for ( i in property ) {
-			if ( property[i] in object || property[i] + 'Msg' in object ) {
-				property = property[i];
-				break;
-			}
+		if ( property in object ) {
+			return object[property];
+		} else if ( property + 'Msg' in object ) {
+			return gM( object[property + 'Msg'] );
+		} else {
+			return '';
 		}
+	},
+	'fixOperaBrokenness': function( s ) {
+		/*
+		// This function works around Opera's
+		// broken newline handling in textareas.
+		// .val() has \n while selection functions
+		// treat newlines as \r\n
+		
+		if ( typeof $.isOperaBroken == 'undefined' && $.wikiEditor.instances.length > 0 ) {
+			// Create a textarea inside a div
+			// with zero area, to hide it properly
+			var div = $( '<div />' )
+				.height( 0 )
+				.width( 0 )
+				.insertBefore( $.wikiEditor.instances[0] );
+			var textarea = $( '<textarea></textarea>' )
+				.height( 0 )
+				.appendTo( div )
+				.val( "foo\r\nbar" );
+			// Try to search&replace bar --> BAR
+			var index = textarea.val().indexOf( 'bar' );
+			textarea.select();
+			textarea.setSelection( index, index + 3 );
+			textarea.encapsulateSelection( '', 'BAR', '', false, true );
+			if ( textarea.val().substr( -4 ) != 'BARr' )
+				$.isOperaBroken = false;
+			else
+				$.isOperaBroken = true;
+			div.remove();
+		}
+		if ( $.isOperaBroken )
+			s = s.replace( /\n/g, "\r\n" );
+		*/
+		return s;
 	}
-	if ( property in object ) {
-		return object[property];
-	} else if ( property + 'Msg' in object ) {
-		return gM( object[property + 'Msg'] );
-	} else {
-		return '';
-	}
-};
-
-$.wikiEditor.fixOperaBrokenness = function( s ) {
-	/*
-	// This function works around Opera's
-	// broken newline handling in textareas.
-	// .val() has \n while selection functions
-	// treat newlines as \r\n
-	
-	if ( typeof $.isOperaBroken == 'undefined' && $.wikiEditor.instances.length > 0 ) {
-		// Create a textarea inside a div
-		// with zero area, to hide it properly
-		var div = $( '<div />' )
-			.height( 0 )
-			.width( 0 )
-			.insertBefore( $.wikiEditor.instances[0] );
-		var textarea = $( '<textarea></textarea>' )
-			.height( 0 )
-			.appendTo( div )
-			.val( "foo\r\nbar" );
-		// Try to search&replace bar --> BAR
-		var index = textarea.val().indexOf( 'bar' );
-		textarea.select();
-		textarea.setSelection( index, index + 3 );
-		textarea.encapsulateSelection( '', 'BAR', '', false, true );
-		if ( textarea.val().substr( -4 ) != 'BARr' )
-			$.isOperaBroken = false;
-		else
-			$.isOperaBroken = true;
-		div.remove();
-	}
-	if ( $.isOperaBroken )
-		s = s.replace( /\n/g, "\r\n" );
-	*/
-	return s;
 };
 
 $.fn.wikiEditor = function() {
@@ -1388,25 +1386,79 @@ $.fn.wikiEditor = function() {
 // gets called again we can pick up where we left off
 var context = $(this).data( 'wikiEditor-context' );
 
-
 if ( typeof context == 'undefined' ) {
-	/* Construction */
+	
+	/* Base UI Construction */
+	
 	var instance = $.wikiEditor.instances.length;
 	context = { '$textarea': $(this), 'modules': {}, 'data': {}, 'instance': instance };
 	$.wikiEditor.instances[instance] = $(this);
-	
 	// Encapsulate the textarea with some containers for layout
 	$(this)
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ).attr( 'id', 'wikiEditor-ui' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ).attr( 'id', 'wikiEditor-ui-bottom' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ).attr( 'id', 'wikiEditor-ui-text' ) );
-	
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ).attr( 'id', 'wikiEditor-ui-text' ) );	
 	// Get a reference to the outer container
 	context.$ui = $(this).parent().parent().parent();
 	context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 	// Attach a container in the top
 	context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ).attr( 'id', 'wikiEditor-ui-top' ) );
 	
+	/* Magic IFRAME Construction */
+	
+	// Create an iframe in place of the text area
+	context.$iframe = $( '<iframe></iframe>' )
+		.attr( 'frameborder', 0 )
+		.css( {
+			'backgroundColor': 'white',
+			'width': '100%',
+			'height': context.$textarea.height(),
+			'display': 'none'
+		})
+		.insertAfter( context.$textarea );
+	/*
+	 * For whatever strange reason, this code needs to be within a timeout or it doesn't work - it seems to be that
+	 * the DOM manipulation to add the iframe happens asynchronously and this code that depends on it actually being
+	 * finished doesn't function on the right reference.
+	 */
+	setTimeout( function() {
+		// Setup the iframe with a basic document
+		context.$iframe[0].contentWindow.document.open();
+		context.$iframe[0].contentWindow.document.write(
+			'<html><head><title>wikiEditor</title></head><body style="margin:0;padding:0;width:100%;height:100%;">' +
+			'<pre style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;"></pre></body></html>'
+		);
+		context.$iframe[0].contentWindow.document.close();
+		// Turn the document's design mode on
+		context.$iframe[0].contentWindow.document.designMode = 'on';
+		// Get a reference to the content area of the iframe 
+		context.$content = context.$iframe.contents().find( 'body > pre' );
+		
+		/* Magic IFRAME Activation */
+		
+		// Activate the iframe, encoding the content of the textarea and copying it to the content of the iframe
+		context.$textarea.attr( 'disabled', true );
+		// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
+		// characters rather than actual HTML tags in the code editor container.
+		context.$content.text( context.$textarea.val() );
+		context.$textarea.hide();
+		context.$iframe.show();
+	}, 1 );
+	
+	// Attach a submit handler to the form so that when the form is submitted the content of the iframe gets decoded and
+	// copied over to the textarea
+	context.$textarea.closest( 'form' ).submit( function() {
+		context.$textarea.attr( 'disabled', false );
+		// To properly decode the HTML entities, we set the HTML rather than the val of the textarea - also, all
+		// of the text will have been properly escaped with HTML entities except the <br> tags which are in the
+		// place of end line characters - so we just swap those out.
+		context.$textarea.html( context.$content.html().replace( /\<br\>/g, "\n" ) );
+		context.$textarea.show();
+		context.$iframe.hide();
+	} );
+	
+	/* This is probably only a textarea issue, thus no longer needed
+	 * 
 	// Some browsers don't restore the cursor position on refocus properly
 	// Do it for them
 	$(this)
@@ -1419,6 +1471,7 @@ if ( typeof context == 'undefined' ) {
 		.blur( function() {
 			$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
 		});
+	*/
 	
 	// Create a set of standard methods for internal and external use
 	context.api = {
@@ -1427,7 +1480,7 @@ if ( typeof context == 'undefined' ) {
 		 * additional configuration parameters, or an object with members keyed with
 		 * module names and valued with configuration objects
 		 */
-		addModule: function( context, data ) {
+		'addModule': function( context, data ) {
 			// A safe way of calling an API function on a module
 			function callModuleApi( module, call, data ) {
 				if (
@@ -1461,6 +1514,68 @@ if ( typeof context == 'undefined' ) {
 			}
 		}
 	}
+	/* Create a set of functions for interacting with the editor content */
+	context.fn = {
+		/*
+		 * When finishing these functions, take a look at jquery.textSelection.js because this is designed to be API
+		 * compatible with those functions. The key difference is that these perform actions on a designMode iframe
+		 */
+		/**
+		 * Gets the currently selected text in the content
+		 */
+		'getSelection': function() {
+			// ...
+		},
+		/**
+		 * Inserts text at the begining and end of a text selection, optionally inserting text at the caret when
+		 * selection is empty.
+		 * 
+		 * @param pre Text to insert before selection
+		 * @param peri Text to insert at caret if selection is empty
+		 * @param post Text to insert after selection
+		 * @param ownline If true, put the inserted text is on its own line
+		 * @param replace If true, replaces any selected text with peri; if false, peri is ignored and selected text is left alone
+		 */
+		'encapsulateSelection': function( pre, peri, post, ownline, replace ) {
+			// ...
+			// Scroll the textarea to the inserted text
+			//?.scrollToCaretPosition();
+			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
+			//context.$textarea.trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+		},
+		/**
+		 * Gets the position (in resolution of bytes not nessecarily characters) in a textarea
+		 * 
+		 * @param startAndEnd Array of start and end character positions like [start, end] (is this better than just
+		 * using separate arguments)
+		 */
+		'getCaretPosition': function( startAndEnd ) {
+			// ...
+			//reurn character position
+		},
+		/**
+		 * Sets the selection of the content
+		 * 
+		 * @param start Character offset of selection start
+		 * @param end Character offset of selection end
+		 */
+		'setSelection': function( start, end ) {
+			if ( typeof end == 'undefined' ) {
+				end = start;
+			}
+			// ...
+		},
+		/**
+		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()
+		 *
+		 * @param force boolean Whether to force a scroll even if the caret position is already visible. Defaults to
+		 * false.
+		 */
+		'scrollToCaretPosition': function( force ) {
+			// ...
+			//context.$textarea.trigger( 'scrollToPosition' );
+		}
+	};
 }
 
 // If there was a configuration passed, it's assumed to be for the addModule
@@ -1483,7 +1598,7 @@ if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 // Store the context for next time, and support chaining
 return $(this).data( 'wikiEditor-context', context );
 
-};})(jQuery);/**
+}; } )( jQuery );/**
  * Extend the RegExp object with an escaping function
  * From http://simonwillison.net/2006/Jan/20/escape/
  */
@@ -1547,18 +1662,20 @@ fn: {
 						configuration.newButtons[gM( msg )] = configuration.buttons[msg];
 					configuration.buttons = configuration.newButtons;
 					// Create the dialog <div>
-					$( '<div /> ' )
+					var dialogDiv = $( '<div /> ' )
 						.attr( 'id', module.id )
 						.html( module.html )
 						.data( 'context', context )
 						.appendTo( $( 'body' ) )
 						.each( module.init )
-						.dialog( configuration )
-						.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
-						.find( '.ui-tabs' ).bind( 'tabsshow', function() {
-							$(this).closest( '.ui-dialog-content' ).each(
-								$.wikiEditor.modules.dialogs.fn.resize );
-						});
+						.dialog( configuration );
+					if ( !( 'resizeme' in module ) || module.resizeme )
+						dialogDiv
+							.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
+							.find( '.ui-tabs' ).bind( 'tabsshow', function() {
+								$(this).closest( '.ui-dialog-content' ).each(
+									$.wikiEditor.modules.dialogs.fn.resize );
+							});
 					
 					// Add tabindexes to dialog form elements
 					// Find the highest tabindex in use
@@ -1875,7 +1992,7 @@ fn : {
 							action.options.periRegexReplace );
 					}
 				}
-				context.$textarea.encapsulateSelection(
+				context.fn.encapsulateSelection(
 					parts.pre, parts.peri, parts.post, action.options.ownline, action.type == 'replace'
 				);
 				break;
@@ -2298,7 +2415,7 @@ fn: {
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
 	},
- 
+	
 	unhighlight: function( context ) {
 		context.modules.$toc.find( 'div' ).removeClass( 'current' );
 	},
@@ -2382,10 +2499,13 @@ fn: {
 					.data( 'textbox', context.$textarea )
 					.data( 'position', structure[i].position )
 					.bind( 'mousedown', function( event ) {
+						/* FIXME: This code needs to be updated to use the iframe and context.fn.* functions for
+						 * text selection and scrolling and such...
 						$(this).data( 'textbox' )
 							.focus()
 							.setSelection( $(this).data( 'position' ) )
 							.scrollToCaretPosition( true );
+						*/
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
 						event.preventDefault();
@@ -2598,126 +2718,7 @@ $.wikiEditor.modules.toc.defaults = {
 	width: "13em"
 }
 } ) ( jQuery );
-/**
- * Code Module for wikiEditor
- */
-( function( $ ) { $.wikiEditor.modules.code = {
-
-/**
- * API accessible functions
- */
-api: {
-	//
-},
-/**
- * Internally used functions
- */
-fn: {
-	// Create the iframe and set things up
-	create: function( context, config ) {
-		context.$iframe = $( '<iframe></iframe>' )
-			.attr( 'frameborder', 0 )
-			.css( {
-				'backgroundColor': 'white',
-				'width': '100%',
-				'height': context.$textarea.height(),
-				'display': 'none'
-			})
-			.insertAfter( context.$textarea );
-		context.$iframe[0].contentWindow.document.open();
-		context.$iframe[0].contentWindow.document.write(
-			'<html><head><title>wikiEditor</title></head><body style="margin:0;padding:0;width:100%;height:100%;">' +
-			'<pre style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;"></pre></body></html>'
-		);
-		context.$iframe[0].contentWindow.document.close();
-		context.$iframe[0].contentWindow.document.designMode = 'on';
-		context.modules.code = {
-			'editor': {
-				'container': context.$iframe.contents().find( 'body > pre' ),
-				'active': false,
-				'config': {}
-			}
-		};
-		// Make it happen!
-		$.wikiEditor.modules.code.fn.active( context, true );
-		
-		// Before the form is submitted, if in iframe mode, we need to sync the textarea and the iframe
-		context.$textarea.closest( 'form' ).submit( function() {
-			if ( context.modules.code.editor.active ) {
-				$.wikiEditor.modules.code.fn.active( context, false );
-			}
-		} );
-	},
-	// Set config / get config
-	config: function( context, config ) {
-		if ( config != undefined ) {
-			$.extend( context.modules.code.editor.config, config );
-		} else {
-			return context.modules.code.editor.config;
-		}
-	},
-	// Set code / get code to whichever control (textarea or iframe) is active
-	code: function( context, code ) {
-		if ( code !== undefined ) {
-			// Set
-			context.modules.code.editor.active ?
-				context.modules.code.editor.container.text( code ) : context.$textarea.val( code );
-		} else {
-			// Get
-			context.modules.code.editor.active ?
-				context.modules.code.editor.container.text() : context.$textarea.val();
-		}
-	},
-	// Lock / unlock / get locked state of all editing controls
-	locked: function( context, value ) {
-		if ( value !== undefined ) {
-			if ( value ) {
-				context.$textarea.attr( 'readonly', true );
-				if ( context.$iframe.css( 'display' ) != 'none' ) { // prevent exception on FF + iframe with display:none
-					context.$iframe.attr( 'readonly', true );
-				}
-			} else {
-				context.$textarea.attr( 'readonly', false );
-				if ( context.$iframe.css( 'display' ) != 'none' ) { // prevent exception on FF + iframe with display:none
-					context.$iframe.attr( 'readonly', false );
-				}
-			}
-		} else {
-			return context.modules.code.editor.active ?
-				context.$iframe.attr( 'readonly' ) : context.$textarea.attr( 'readonly' );
-		}
-	},
-	// Activate / deactivate / get active state of the iframe
-	active: function( context, value ) {
-		if ( value !== undefined ) {
-			if ( value && !context.modules.code.editor.active ) {
-				context.$textarea.attr( 'disabled', true );
-				// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
-				// characters rather than actual HTML tags in the code editor container.
-				context.modules.code.editor.container.text( context.$textarea.val() );
-				context.$textarea.hide();
-				context.$iframe.show();
-				context.modules.code.editor.active = true;
-			} else if ( !value && context.modules.code.editor.active ) {
-				context.$textarea.attr( 'disabled', false );
-				// To properly decode the HTML entities, we set the HTML rather than the val of the textarea - also, all
-				// of the text will have been properly escaped with HTML entities except the <br> tags which are in the
-				// place of end line characters - so we just swap those out.
-				context.$textarea.html( context.modules.code.editor.container.html().replace( /\<br\>/g, "\n" ) );
-				context.$textarea.show();
-				context.$iframe.hide();
-				context.modules.code.editor.active = false;
-			}
-		} else {
-			return context.modules.code.editor.active;
-		}
-	}
-}
-
-}; } ) ( jQuery );
-
-
-$j( '#wpTextbox1' ).wikiEditor( 'caretPosition' )/* Preview module for wikiEditor */
+/* Preview module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.preview = {
 
 /**
@@ -2741,51 +2742,105 @@ fn: {
 				return;
 			
 			context.$ui
-				.wrapInner( $j( '<div />' )
+				.wrapInner( $( '<div />' )
 					.addClass( 'wikiEditor-tab-edit' )
 					.attr( 'id', 'wikiEditor-' + context.instance + '-tab-edit' )
 				)
-				.wrapInner( $j( '<div />' )
+				.wrapInner( $( '<div />' )
 					.addClass( 'wikiEditor-tabs' )
 				);
 			var tabList = context.$ui.children();
 			var editTab = tabList.children();
 			
 			var loadingMsg = gM( 'wikieditor-preview-loading' );
-			var previewTab = $j( '<div />' )
+			var previewTab = $( '<div />' )
 				.addClass( 'wikiEditor-tab-preview' )
 				.attr( 'id', 'wikiEditor-' + context.instance + '-tab-preview' )
-				.append( $j( '<div />' )
+				.append( $( '<div />' )
 					.addClass( 'wikiEditor-preview-spinner' )
-					.append( $j( '<img />' )
+					.append( $( '<img />' )
 						.attr( {
-							'src': $j.wikiEditor.imgPath + 'dialogs/loading.gif',
+							'src': $.wikiEditor.imgPath + 'dialogs/loading.gif',
 							'alt': loadingMsg,
 							'title': loadingMsg
 						} )
 					)
 				)
-				.append( $j( '<div />' )
+				.append( $( '<div />' )
 					.addClass( 'wikiEditor-preview-contents' )
 				)
 				.insertAfter( editTab );
-			tabList
-				.append( $j( '<ul />' )
-					.append( $j( '<li />' )
-						.append( $j( '<a />' )
-							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-edit' )
-							.text( gM( 'wikieditor-preview-tab-edit' ) )
-						)
-					)
-					.append( $j( '<li />' )
-						.append( $j( '<a />' )
-							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-preview' )
-							.text( gM( 'wikieditor-preview-tab-preview' ) )
-						)
-					)
-				)
-				.append( editTab )
-				.append( previewTab );
+			
+			// Build the dialog behind the Publish button
+			var dialogID = 'wikiEditor-' + context.instance + '-savedialog';
+			$.wikiEditor.modules.dialogs.fn.create( context, { previewsave: {
+				id: dialogID,
+				titleMsg: 'wikieditor-preview-savedialog-title',
+				html: '\
+					<div class="wikiEditor-savedialog-copywarn"></div>\
+					<div class="wikiEditor-savedialog-editoptions">\
+						<form>\
+							<label for="wikiEditor-' + context.instance + '-savedialog-summary"\
+								rel="wikieditor-preview-savedialog-summary"></label>\
+							<br />\
+							<input type="text" id="wikiEditor-' + context.instance + '-savedialog-summary"\
+								style="width: 100%;" />\
+							<br />\
+							<input type="checkbox"\
+								id="wikiEditor-' + context.instance + '-savedialog-minor" />\
+							<label for="wikiEditor-' + context.instance + '-savedialog-minor"\
+								rel="wikieditor-preview-savedialog-minor"></label>\
+							<br />\
+							<input type="checkbox"\
+								id="wikiEditor-' + context.instance + '-savedialog-watch" />\
+							<label for="wikiEditor-' + context.instance + '-savedialog-watch"\
+								rel="wikieditor-preview-savedialog-watch"></label>\
+						</form>\
+					</div>',
+				init: function() {
+					$(this).find( '[rel]' ).each( function() {
+						$(this).text( gM( $(this).attr( 'rel' ) ) );
+					});
+					$(this).find( '.wikiEditor-savedialog-copywarn' )
+						.html( $( '#editpage-copywarn' ).html() );
+					if ( $( '#wpMinoredit' ).is( ':checked' ) )
+						$( '#wikiEditor-' + context.instance + '-savedialog-minor' )
+							.attr( 'checked', 'checked' );
+					if ( $( '#wpWatchthis' ).is( ':checked' ) )
+						$( '#wikiEditor-' + context.instance + '-savedialog-watch' )
+							.attr( 'checked', 'checked' );
+					$(this).find( 'form' ).submit( function( e ) {
+						$(this).closest( '.ui-dialog' ).find( 'button:first' ).click();
+						e.preventDefault();
+					});
+				},
+				dialog: {
+					buttons: {
+						'wikieditor-preview-savedialog-publish': function() {
+							var minorChecked = $( '#wikiEditor-' + context.instance +
+								'-savedialog-minor' ).is( ':checked' ) ?
+									'checked' : '';
+							var watchChecked = $( '#wikiEditor-' + context.instance +
+								'-savedialog-watch' ).is( ':checked' ) ?
+									'checked' : '';
+							$( '#wpMinoredit' ).attr( 'checked', minorChecked );
+							$( '#wpWatchthis' ).attr( 'checked', watchChecked );
+							$( '#wpSummary' ).val( $j( '#wikiEditor-' + context.instance +
+								'-savedialog-summary' ).val() );
+							$( '#editform' ).submit();
+						},
+						'wikieditor-preview-savedialog-goback': function() {
+							// TODO: Keep edit summary and minor/watch status or reset?
+							$(this).dialog( 'close' );
+						}
+					},
+					open: function() {
+						$( '#wikiEditor-' + context.instance + '-savedialog-summary' ).focus();
+					},
+					width: 500
+				},
+				resizeme: false
+			} } );
 			
 			// Paranoia: initialize context.modules before running
 			// tabs() and binding event handlers
@@ -2793,8 +2848,39 @@ fn: {
 				'editTab': editTab,
 				'previewTab': previewTab,
 				'tabList': tabList,
+				'saveDialog': $( '#' + dialogID ),
 				'prevText': null
 			};
+
+			tabList
+				.append( $( '<ul />' )
+					.append( $( '<li />' )
+						.append( $( '<a />' )
+							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-edit' )
+							.text( gM( 'wikieditor-preview-tab-edit' ) )
+						)
+					)
+					.append( $( '<li />' )
+						.append( $( '<a />' )
+							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-preview' )
+							.text( gM( 'wikieditor-preview-tab-preview' ) )
+						)
+					)
+					// These have to go in reverse because they're floated right
+					.append( $( '<button />' )
+						.text( gM( 'wikieditor-preview-button-cancel' ) )
+					)
+					.append( $( '<button />' )
+						.text( gM( 'wikieditor-preview-button-publish' ) )
+						.click( function() {
+							context.modules.preview.saveDialog.dialog( 'open' );
+							return false;
+						})
+					)
+				)
+				.append( editTab )
+				.append( previewTab );
+			
 			tabList
 				.bind( 'tabsshow', function() {
 					if ( context.modules.preview.previewTab.is( ':visible' ) )
@@ -2806,6 +2892,7 @@ fn: {
 			// causes NTOC mispositioning
 			// FIXME: Find out which CSS rule is causing this
 			// and override it
+			// FIXME: Don't use jQuery UI tabs, implement our own tabs
 			tabList.closest( '.ui-tabs' ).removeClass( 'ui-widget' );
 		});
 	},

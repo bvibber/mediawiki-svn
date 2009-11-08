@@ -16,6 +16,14 @@ $messages['en'] = array(
 	'wikieditor-preview-tab-edit' => 'Edit',
 	'wikieditor-preview-tab-preview' => 'Preview',
 	'wikieditor-preview-loading' => 'Loading...',
+	'wikieditor-preview-button-publish' => 'Publish',
+	'wikieditor-preview-button-cancel' => 'Cancel',
+	'wikieditor-preview-savedialog-title' => 'Publish to {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Edit summary (briefly describe the changes you have made):',
+	'wikieditor-preview-savedialog-minor' => 'Minor edit',
+	'wikieditor-preview-savedialog-watch' => 'Watch this page',
+	'wikieditor-preview-savedialog-publish' => 'Publish',
+	'wikieditor-preview-savedialog-goback' => 'Go back',
 );
 
 /** Message documentation (Message documentation)
@@ -33,6 +41,14 @@ $messages['qqq'] = array(
 {{Identical|Preview}}',
 	'wikieditor-preview-loading' => 'Alt text for spinner displayed while preview is being loaded
 {{Identical|Loading}}',
+	'wikieditor-preview-button-publish' => 'Button to the right of the Edit/Preview tabs that opens a dialog window that lets the user save their edit',
+	'wikieditor-preview-button-cancel' => 'Button to the right of the Edit/Preview tabs that has the same effect as the Cancel link below the edit box',
+	'wikieditor-preview-savedialog-title' => 'Title of the dialog that opens when the user clicks the Publish button',
+	'wikieditor-preview-savedialog-summary' => 'Label for the edit summary textbox in the dialog that opens when the user clicks the Publish button',
+	'wikieditor-preview-savedialog-minor' => 'Label for the minor edit checkbox in the dialog that opens when the user clicks the Publish button',
+	'wikieditor-preview-savedialog-watch' => 'Label for the watch checkbox in the dialog that opens when the user clicks the Publish button',
+	'wikieditor-preview-savedialog-publish' => 'Button that saves the user\'s edit in the dialog that opens when the user clicks the Publish button',
+	'wikieditor-preview-savedialog-goback' => 'Button that closes the dialog that opens when the user clicks the Publish button',
 );
 
 /** Afrikaans (Afrikaans)

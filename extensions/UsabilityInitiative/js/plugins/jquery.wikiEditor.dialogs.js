@@ -62,18 +62,20 @@ fn: {
 						configuration.newButtons[gM( msg )] = configuration.buttons[msg];
 					configuration.buttons = configuration.newButtons;
 					// Create the dialog <div>
-					$( '<div /> ' )
+					var dialogDiv = $( '<div /> ' )
 						.attr( 'id', module.id )
 						.html( module.html )
 						.data( 'context', context )
 						.appendTo( $( 'body' ) )
 						.each( module.init )
-						.dialog( configuration )
-						.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
-						.find( '.ui-tabs' ).bind( 'tabsshow', function() {
-							$(this).closest( '.ui-dialog-content' ).each(
-								$.wikiEditor.modules.dialogs.fn.resize );
-						});
+						.dialog( configuration );
+					if ( !( 'resizeme' in module ) || module.resizeme )
+						dialogDiv
+							.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
+							.find( '.ui-tabs' ).bind( 'tabsshow', function() {
+								$(this).closest( '.ui-dialog-content' ).each(
+									$.wikiEditor.modules.dialogs.fn.resize );
+							});
 					
 					// Add tabindexes to dialog form elements
 					// Find the highest tabindex in use
