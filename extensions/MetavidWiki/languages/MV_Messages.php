@@ -186,7 +186,6 @@ Jump to stream view: $2',
 
 	'mv_start_desc' => 'Start time',
 	'mv_end_desc' => 'End time',
-	'mv_of' => '&#32;of&#32;',
 
 	'mv_edit_metadata' => 'Edit metadata',
 	'mv_advanced_edit' => 'Advanced edit',
