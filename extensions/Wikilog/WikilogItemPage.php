@@ -154,20 +154,13 @@ class WikilogItemPage
 	 * that is then saved to the database and causes the post to be published.
 	 */
 	function preSaveTransform( $text ) {
-		global $wgParser, $wgUser, $wgLocaltimezone;
+		global $wgParser, $wgUser;
 
-		$user = $wgUser->getName();
 		$popt = ParserOptions::newFromUser( $wgUser );
 
-		$unixts = wfTimestamp( TS_UNIX, $popt->getTimestamp() );
-		if ( isset( $wgLocaltimezone ) ) {
-			$oldtz = getenv( 'TZ' );
-			putenv( "TZ={$wgLocaltimezone}" );
-			$date = date( 'Y-m-d H:i:s O', $unixts );
-			putenv( "TZ={$oldtz}" );
-		} else {
-			$date = date( 'Y-m-d H:i:s O', $unixts );
-		}
+		$t = WikilogUtils::getPublishParameters();
+		$date = $t['date'];
+		$user = $t['user'];
 
 		$sigs = array(
 			'/\n?(--)?~~~~~\n?/m' => "\n{{wl-publish: {$date} }}\n",

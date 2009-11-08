@@ -293,4 +293,27 @@ class WikilogUtils
 			implode( "\n", $rows ) );
 		return $form;
 	}
+
+	/**
+	 * Returns the date and user parameters suitable for substitution in
+	 * {{wl-publish:...}} parser function.
+	 */
+	public static function getPublishParameters() {
+		global $wgUser, $wgLocaltimezone;
+
+		$user = $wgUser->getName();
+		$popt = ParserOptions::newFromUser( $wgUser );
+
+		$unixts = wfTimestamp( TS_UNIX, $popt->getTimestamp() );
+		if ( isset( $wgLocaltimezone ) ) {
+			$oldtz = getenv( 'TZ' );
+			putenv( "TZ={$wgLocaltimezone}" );
+			$date = date( 'Y-m-d H:i:s O', $unixts );
+			putenv( "TZ={$oldtz}" );
+		} else {
+			$date = date( 'Y-m-d H:i:s O', $unixts );
+		}
+
+		return array( 'date' => $date, 'user' => $user );
+	}
 }

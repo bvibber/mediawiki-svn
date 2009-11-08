@@ -102,30 +102,34 @@ $wgSpecialPageGroups['Wikilog'] = 'changes';
 $wgExtensionFunctions[] = array( 'Wikilog', 'ExtensionInit' );
 
 // Main Wikilog hooks
-$wgHooks['ArticleFromTitle'][]			= 'Wikilog::ArticleFromTitle';
-$wgHooks['ArticleViewHeader'][]			= 'Wikilog::ArticleViewHeader';
-$wgHooks['BeforePageDisplay'][]			= 'Wikilog::BeforePageDisplay';
-$wgHooks['LinkBegin'][]					= 'Wikilog::LinkBegin';
-$wgHooks['SkinTemplateTabAction'][]		= 'Wikilog::SkinTemplateTabAction';
-$wgHooks['SkinTemplateTabs'][]			= 'Wikilog::SkinTemplateTabs';
+$wgHooks['ArticleFromTitle'][] = 'Wikilog::ArticleFromTitle';
+$wgHooks['ArticleViewHeader'][] = 'Wikilog::ArticleViewHeader';
+$wgHooks['BeforePageDisplay'][] = 'Wikilog::BeforePageDisplay';
+$wgHooks['LinkBegin'][] = 'Wikilog::LinkBegin';
+$wgHooks['SkinTemplateTabAction'][] = 'Wikilog::SkinTemplateTabAction';
+$wgHooks['SkinTemplateTabs'][] = 'Wikilog::SkinTemplateTabs';
 
 // General Wikilog hooks
-$wgHooks['ArticleEditUpdates'][]		= 'WikilogHooks::ArticleEditUpdates';
-$wgHooks['ArticleDeleteComplete'][]		= 'WikilogHooks::ArticleDeleteComplete';
-$wgHooks['TitleMoveComplete'][]			= 'WikilogHooks::TitleMoveComplete';
+$wgHooks['ArticleEditUpdates'][] = 'WikilogHooks::ArticleEditUpdates';
+$wgHooks['ArticleDeleteComplete'][] = 'WikilogHooks::ArticleDeleteComplete';
+$wgHooks['ArticleSave'][] = 'WikilogHooks::ArticleSave';
+$wgHooks['TitleMoveComplete'][] = 'WikilogHooks::TitleMoveComplete';
+$wgHooks['EditPage::attemptSave'][] = 'WikilogHooks::EditPageAttemptSave';
+$wgHooks['EditPage::showEditForm:fields'][] = 'WikilogHooks::EditPageEditFormFields';
+$wgHooks['EditPage::importFormData'][] = 'WikilogHooks::EditPageImportFormData';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'WikilogHooks::ExtensionSchemaUpdates';
-$wgHooks['UnknownAction'][]				= 'WikilogHooks::UnknownAction';
+$wgHooks['UnknownAction'][] = 'WikilogHooks::UnknownAction';
 
 // WikilogLinksUpdate hooks
-$wgHooks['LinksUpdate'][]				= 'WikilogLinksUpdate::LinksUpdate';
+$wgHooks['LinksUpdate'][] = 'WikilogLinksUpdate::LinksUpdate';
 
 // WikilogParser hooks
-$wgHooks['ParserFirstCallInit'][]		= 'WikilogParser::FirstCallInit';
-$wgHooks['ParserClearState'][]			= 'WikilogParser::ClearState';
-$wgHooks['ParserBeforeInternalParse'][]	= 'WikilogParser::BeforeInternalParse';
-$wgHooks['ParserAfterTidy'][]			= 'WikilogParser::AfterTidy';
-$wgHooks['GetLocalURL'][]				= 'WikilogParser::GetLocalURL';
-$wgHooks['GetFullURL'][]				= 'WikilogParser::GetFullURL';
+$wgHooks['ParserFirstCallInit'][] = 'WikilogParser::FirstCallInit';
+$wgHooks['ParserClearState'][] = 'WikilogParser::ClearState';
+$wgHooks['ParserBeforeInternalParse'][] = 'WikilogParser::BeforeInternalParse';
+$wgHooks['ParserAfterTidy'][] = 'WikilogParser::AfterTidy';
+$wgHooks['GetLocalURL'][] = 'WikilogParser::GetLocalURL';
+$wgHooks['GetFullURL'][] = 'WikilogParser::GetFullURL';
 
 if ( !defined( 'MW_SUPPORTS_LOCALISATIONCACHE' ) ) {
 	/* pre Mw1.16 compatibility */

@@ -2,11 +2,19 @@
 
 == Current development version ==
 
+=== New configuration options ===
+
+* $wgWikilogSignAndPublishDefault: default state for the new "sign and
+  publish" checkbox in the edit page for new articles.
+
 === New features ===
 
 * New parameters 'date', 'time', 'updatedDate', 'updatedTime' and 'hasMore'
   for the template pager, used when embedding using templates. Old parameters
   'pubdate' and 'updated' were deprecated, and should be removed on v1.2.0.
+* Wikilog article edit page now features a "sign and publish" checkbox that,
+  when selected, automatically signs and publishes the article by adding an
+  appropriate {{wl-publish:...}} parser function call at the end of the text.
 
 === Bug fixes ===
 

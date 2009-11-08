@@ -69,6 +69,17 @@ $wgWikilogNumArticles = 20;
 $wgWikilogMaxAuthors = 6;
 
 /**
+ * Publish new articles by default. When creating new wikilog articles,
+ * if this variable is set to true, the default value of the "Sign and
+ * publish this article" checkbox will be checked, which means that saving
+ * the article will automatically sign and publish it. In order to save
+ * the article as draft, the user would have to uncheck the box before
+ * saving.
+ * @since Wikilog v1.0.1.
+ */
+$wgWikilogSignAndPublishDefault = false;
+
+/**
  * Enable use of tags. This is disabled by default since MediaWiki category
  * system already provides similar functionality, and are the preferred way
  * of organizing wikilog posts. Enable this if you want or need an additional

@@ -81,6 +81,12 @@ $messages['en'] = array(
 
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|talk]])',
 
+	# Edit page
+	'wikilog-edit-fieldset-legend' => 'Wikilog options:',
+	'wikilog-edit-signpub' => 'Sign and publish this article',
+	'wikilog-edit-signpub-tooltip' => 'Causes this article to be signed and published in its wikilog when saved. 
+Uncheck this box to keep the article as a draft.',
+
 	# Comments
 	'wikilog-comment-by-user' => 'Comment by $1 ($2)',
 	'wikilog-comment-by-anon' => 'Comment by $3 (anonymous)',
@@ -213,7 +219,7 @@ $messages['qqq'] = array(
 * $1 = Wikilog URL
 * $2 = Wikilog Name
 * $5 = Authors,
-* $6 = Publish date,
+* $6 = Publication date,
 * $7 = Comments link',
 	'wikilog-item-more' => 'Parameters:
 * $3 = Item URL',
@@ -223,7 +229,7 @@ $messages['qqq'] = array(
 * $3 is a date
 * $4 is a time',
 	'wikilog-comment-autosumm' => 'Parameters:
-* $1 is a  user name
+* $1 is a user name
 * $2 is a summary',
 	'wikilog-feed-title' => 'Parameters:
 * $1 is a title

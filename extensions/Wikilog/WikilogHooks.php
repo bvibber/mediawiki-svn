@@ -179,6 +179,24 @@ class WikilogHooks
 	}
 
 	/**
+	 * ArticleSave hook handler function.
+	 * Add article signature if user selected "sign and publish" option in
+	 * EditPage.
+	 */
+	static function ArticleSave( &$article, &$user, &$text, &$summary,
+			$minor, $watch, $sectionanchor, &$flags )
+	{
+		# $article->mExtWikilog piggybacked from WikilogHooks::EditPageAttemptSave().
+		if ( isset( $article->mExtWikilog ) && $article->mExtWikilog['signpub'] ) {
+			$t = WikilogUtils::getPublishParameters();
+			$txtDate = $t['date'];
+			$txtUser = $t['user'];
+			$text = rtrim( $text ) . "\n{{wl-publish: {$txtDate} | {$txtUser} }}\n";
+		}
+		return true;
+	}
+
+	/**
 	 * TitleMoveComplete hook handler function.
 	 * Handles moving articles to and from wikilog namespaces.
 	 */
@@ -255,6 +273,82 @@ class WikilogHooks
 		} else {
 			$words += array_merge( $magicWords['en'], $magicWords[$lang] );
 		}
+		return true;
+	}
+
+	/**
+	 * EditPage::showEditForm:fields hook handler function.
+	 * Adds wikilog article options to edit pages.
+	 */
+	static function EditPageEditFormFields( &$editpage, &$output ) {
+		$wi = Wikilog::getWikilogInfo( $editpage->mTitle );
+		if ( $wi && $wi->isItem() && !$wi->isTalk() ) {
+			global $wgUser, $wgWikilogSignAndPublishDefault;
+			$fields = array();
+			$item = WikilogItem::newFromInfo( $wi );
+
+			# [x] Sign and publish this wikilog article.
+			if ( !$item || !$item->getIsPublished() ) {
+				if ( isset( $editpage->wlSignpub ) ) {
+					$checked = $editpage->wlSignpub;
+				} else {
+					$checked = !$item && $wgWikilogSignAndPublishDefault;
+				}
+				$label = wfMsgExt( 'wikilog-edit-signpub', array( 'parseinline' ) );
+				$tooltip = wfMsgExt( 'wikilog-edit-signpub-tooltip', array( 'parseinline' ) );
+				$fields['wlSignpub'] =
+					Xml::check( 'wlSignpub', $checked, array(
+						'id' => 'wl-signpub',
+						'tabindex' => 1, // after text, before summary
+					) ) . '&nbsp;' .
+					Xml::element( 'label', array(
+						'for' => 'wl-signpub',
+						'title' => $tooltip,
+					), $label );
+			}
+
+			$fields = implode( $fields, "\n" );
+			$html = Xml::fieldset(
+				wfMsgExt( 'wikilog-edit-fieldset-legend', array( 'parseinline' ) ),
+				$fields
+			);
+			$editpage->editFormTextAfterWarn .= $html;
+		}
+		return true;
+	}
+
+	/**
+	 * EditPage::importFormData hook handler function.
+	 * Import wikilog article options form data in edit pages.
+	 * @note Requires MediaWiki 1.16+.
+	 */
+	static function EditPageImportFormData( &$editpage, &$request ) {
+		if ( $request->wasPosted() ) {
+			$editpage->wlSignpub = $request->getCheck( 'wlSignpub' );
+		}
+		return true;
+	}
+
+	/**
+	 * EditPage::attemptSave hook handler function.
+	 * Check edit page options.
+	 * @todo Remove $editpage->wlSignpub hack in Wikilog 1.1.0, along with
+	 *   support for Mw < 1.16.
+	 */
+	static function EditPageAttemptSave( $editpage ) {
+		# HACK: For Mw < 1.16, due to the lack of 'EditPage::importFormData' hook.
+		if ( !isset( $editpage->wlSignpub ) ) {
+			global $wgRequest;
+			$editpage->wlSignpub = $wgRequest->getCheck( 'wlSignpub' );
+		}
+
+		$options = array(
+			'signpub' => $editpage->wlSignpub
+		);
+
+		# Piggyback options into article object. Will be retrieved later
+		# in 'ArticleEditUpdates' hook.
+		$editpage->mArticle->mExtWikilog = $options;
 		return true;
 	}
 
