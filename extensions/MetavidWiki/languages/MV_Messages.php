@@ -52,7 +52,7 @@ Please report this to the [[{{MediaWiki:Grouppage-sysop}}|site administrator]].'
 	'mvexportstream' => 'MetaVid export stream',
 	'mv_move_delete_msg' => 'moved to $1',
 	'mv_add_stream_page' => 'MetaVid add stream',
-	'mv_edit_strea_docu' => '<p>Edit stream <b>admin</b><br />for normal user view/edit see $1 page',
+	'mv_edit_strea_docu' => '<p>Edit stream <b>admin</b><br />for normal user view/edit see $1 page</p>',
 	'mv_add_stream_docu' => '<p>Add a new stream with the field below.</p>
 <p>More information is given on the <a href="$1">help page for add stream</a>.</p>',
 	'mv_add_stream_submit' => 'Add stream',
