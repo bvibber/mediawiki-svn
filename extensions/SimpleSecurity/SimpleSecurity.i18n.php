@@ -115,8 +115,12 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  */
 $messages['br'] = array(
+	'security' => 'Marilh surentez',
+	'security-logpage' => 'Marilh surentez',
+	'security-info' => " Bez' ez eus $1 war ar bajenn-mañ",
 	'security-inforestrict' => '$1 zo strishaet da $2',
 	'security-manygroups' => 'strolladoù $1 ha $2',
 	'security-unchain' => 'Kemmañ an oberoù unan-hag-unan',
@@ -734,6 +738,7 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  * @author Lijealso
  * @author Malafaya
@@ -755,7 +760,7 @@ $messages['pt'] = array(
 	'security-unchain' => 'Modificar ações individualmente',
 	'security-type-category' => 'categoria',
 	'security-type-namespace' => 'domínio',
-	'security-restricttogroup' => 'Acessar conteúdo restrito a membros de "$1"',
+	'security-restricttogroup' => 'Aceder a conteúdo restrito aos membros de "$1"',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

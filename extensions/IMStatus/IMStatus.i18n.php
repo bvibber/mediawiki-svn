@@ -184,16 +184,17 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'imstatus_syntax' => 'Ereadur',
 	'imstatus_default' => 'Dre ziouer',
 	'imstatus_example' => 'Skouer',
-	'imstatus_max' => 'max',
-	'imstatus_min' => 'min',
+	'imstatus_max' => 'muiañ',
+	'imstatus_min' => 'nebeutañ',
 	'imstatus_or' => 'pe',
-	'imstatus_your_name' => 'ho anv $1',
+	'imstatus_your_name' => "hoc'h anv $1",
 );
 
 /** Bosnian (Bosanski)
@@ -381,13 +382,14 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Melancholie
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'imstatus_syntax' => 'Sintakso',
 	'imstatus_default' => 'Defaŭlta',
 	'imstatus_example' => 'Ekzemplo',
-	'imstatus_possible_val' => 'Eblaj valutoj',
+	'imstatus_possible_val' => 'Eblaj valoroj',
 	'imstatus_max' => 'maks',
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'aŭ',

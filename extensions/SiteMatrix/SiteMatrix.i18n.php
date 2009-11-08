@@ -1301,6 +1301,7 @@ $messages['pag'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'sitematrix' => 'Lischt vun Wikimedia-Wikis',
 	'sitematrix-language' => 'Schprooch',
 );
 

@@ -1203,6 +1203,28 @@ $messages['mhr'] = array(
 	'expand_templates_preview' => 'Ончылгоч ончымаш',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'expandtemplates' => 'Прошири шаблони',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Проширува шаблони, парсерски функции и променливи]] за приказ на проширен викитекст и преглед на прикажаната слика',
+	'expand_templates_intro' => 'Оваа специјална страница зема еден текст и рекурзивно ги проширува сите шаблони во него.
+Исто така проширува и парсерски функции како
+<nowiki>{{</nowiki>#if:…}}, и променливи како
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;всушност сето она што е во двојни големи загради.
+Ова го врши со повикување на релевантната парсерска етапа од самиот МедијаВики.',
+	'expand_templates_title' => 'Наслов на контекстот, за {{PAGENAME}} и тн.:',
+	'expand_templates_input' => 'Влезен текст:',
+	'expand_templates_output' => 'Резултат',
+	'expand_templates_xml_output' => 'XML излез',
+	'expand_templates_ok' => 'ОК',
+	'expand_templates_remove_comments' => 'Отстрани коментари',
+	'expand_templates_remove_nowiki' => 'Притаи <nowiki> ознаки во резултатот',
+	'expand_templates_generate_xml' => 'Прикажи XML дрво на парсирање',
+	'expand_templates_preview' => 'Преглед',
+);
+
 /** Malayalam (മലയാളം)
  * @author Praveenp
  * @author Shijualex

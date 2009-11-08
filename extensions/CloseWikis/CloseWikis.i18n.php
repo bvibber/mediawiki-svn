@@ -1282,6 +1282,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Sir Lestaty de Lioncourt
  */
@@ -1290,7 +1291,7 @@ $messages['pt'] = array(
 	'closewikis-page' => 'Fechar wiki',
 	'closewikis-page-close' => 'Fechar wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
-	'closewikis-page-close-dreason' => 'Razão (exibida):',
+	'closewikis-page-close-dreason' => 'Razão (apresentada):',
 	'closewikis-page-close-reason' => 'Razão (registrada):',
 	'closewikis-page-close-submit' => 'Fechar',
 	'closewikis-page-close-success' => 'Wiki foi fechada com sucesso',

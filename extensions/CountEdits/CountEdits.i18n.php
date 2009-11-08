@@ -1063,6 +1063,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'countedits-username' => 'Yuuser-Naame:',
+	'countedits-ok' => 'OK',
 );
 
 /** Plautdietsch (Plautdietsch)

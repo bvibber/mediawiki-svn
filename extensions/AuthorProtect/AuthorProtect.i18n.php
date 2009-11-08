@@ -1426,6 +1426,7 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'authorprotect' => 'Захист сторінок від не-авторів',
@@ -1441,6 +1442,7 @@ $messages['uk'] = array(
 	'authorprotect-failure' => 'Встановити захист не вдалося',
 	'protect-level-author' => 'Захист від не-авторів',
 	'restriction-level-author' => 'Авторський захист',
+	'right-authorprotect' => 'Захист авторських сторінок',
 );
 
 /** Vèneto (Vèneto)

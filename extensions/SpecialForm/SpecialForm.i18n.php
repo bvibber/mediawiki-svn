@@ -207,6 +207,7 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'form' => 'Furmskrid',
@@ -216,6 +217,7 @@ $messages['br'] = array(
 	'formsave' => 'Enrollañ',
 	'formarticleexists' => 'Ar bajenn zo anezhi dija',
 	'formarticleexiststext' => 'Ar bajenn [[$1]] zo anezhi dija.',
+	'formbadpagename' => 'Anv fall evit ar bajenn',
 	'formsaveerror' => 'Fazi en ur enrollañ ar furmskrid',
 );
 
@@ -373,6 +375,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Melancholie
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -388,8 +391,8 @@ $messages['eo'] = array(
 	'formarticleexiststext' => 'La paĝo [[$1]] jam ekzistas.',
 	'formbadpagename' => 'Fuŝa paĝnomo',
 	'formbadrecaptcha' => 'Malkorektaj valoroj por reCaptcha. Reprovu.',
-	'formrequiredfielderror' => 'La kampo $1 estas deviga por ĉi tiu kamparo.
-Bonvolu plenumi ĝin.',
+	'formrequiredfielderror' => 'La {{PLURAL:$2|kampo $1 estas deviga|kampoj $1 estas devigaj}} por ĉi tiu formulario.
+Bonvolu plenigi {{PLURAL:$2|ĝin|ilin}}.',
 	'formsaveerror' => 'Eraro konservante formularon',
 	'formsaveerrortext' => "Estis nekonata eraro konservante paĝon '$1'.",
 );

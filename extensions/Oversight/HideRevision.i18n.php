@@ -885,6 +885,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -908,7 +909,7 @@ Forigitaĵoj ne estos videbla al iu ajn per la retejo, sed la forigoj estas skri
 	'hiderevision-submit' => 'Kaŝi ĉi tiujn datenojn ĉiam',
 	'hiderevision-tab' => 'Kaŝi version',
 	'hiderevision-link' => 'Kaŝitaj kontribuoj de uzanto',
-	'hiderevision-norevisions' => 'Neniuj versioj specifigita por forigo.',
+	'hiderevision-norevisions' => 'Neniuj versioj specifitaj por forigo.',
 	'hiderevision-noreason' => 'Vi nepre priskribu la kialon por ĉi tiu forigo.',
 	'hiderevision-status' => 'Versio $1: $2',
 	'hiderevision-success' => 'Arkivis kaj forigis sukcese.',
@@ -2857,6 +2858,8 @@ $messages['pam'] = array(
  */
 $messages['pdc'] = array(
 	'hiderevision-continue' => 'Weiter',
+	'hiderevision-tab' => 'Version verschwinne losse',
+	'hiderevision-status' => 'Version $1: $2',
 );
 
 /** Polish (Polski)

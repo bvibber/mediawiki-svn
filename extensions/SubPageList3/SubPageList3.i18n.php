@@ -146,11 +146,12 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'spl3-desc' => 'Aŭtomate kreas liston de la subpaĝoj de paĝo uzante la etikedon <code><nowiki><splist /></nowiki></code>',
-	'spl3_debug' => 'Nekonata valuto por opcio $1.',
+	'spl3_debug' => 'Nekonata valoro por opcio $1.',
 	'spl3_nosubpages' => '$1 havas neniujn subpaĝojn por listigi.',
 );
 

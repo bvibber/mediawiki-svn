@@ -46,6 +46,13 @@ $messages['cs'] = array(
 	'wikieditor-desc' => 'Poskytuje rozšiřitelné editační rozhraní a mnoho modulů s novými funkcemi',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'wikieditor' => 'Interfaceye wikitext ke raver siyayo',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -159,11 +166,12 @@ $messages['oc'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'wikieditor' => 'Antërfacia ëd modìfica avansà ëd wikitext',
-	'wikieditor-desc' => "A dà n'antërfacia ëd modìfica estendibla ëd wikitext e motobin ëd moduj ch'a dan ëd funsion",
+	'wikieditor-desc' => "A dà n'antërfacia ëd modìfica estendìbil ëd wikitext e motobin ëd modoj ch'a dan ëd fonsionalità",
 );
 
 /** Portuguese (Português)
@@ -180,6 +188,14 @@ $messages['pt'] = array(
 $messages['roa-tara'] = array(
 	'wikieditor' => "Wikitext avanzate pe le cangiaminde de l'inderfacce",
 	'wikieditor-desc' => "Dè 'nu wikitext estendibbele pe le cangiaminde de l'inderfacce e 'nu sbuenne de funzionalità de cchiù previste sus a le module",
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'wikieditor' => 'Розширений інтерфейс редагування вікітексту',
+	'wikieditor-desc' => 'Забезпечує розширюваний інтерфейс редагування вікітексту і багато функціональних модулів',
 );
 
 /** Vèneto (Vèneto)

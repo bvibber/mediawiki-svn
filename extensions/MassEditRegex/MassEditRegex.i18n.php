@@ -149,6 +149,9 @@ $messages['bg'] = array(
 	'masseditregex-executebtn' => 'Изпълняване',
 	'masseditregex-before' => 'Преди',
 	'masseditregex-after' => 'След',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|промяна|промени}}',
+	'masseditregex-page-not-exists' => '$1 не съществува',
+	'masseditregex-hint-headreplace' => 'Заместване',
 );
 
 /** Breton (Brezhoneg)
@@ -619,7 +622,7 @@ $messages['ksh'] = array(
 	'masseditregex-hint-headeffect' => 'Wat eruß kütt',
 	'masseditregex-hint-toappend' => 'Donn e Täx-Shtöck aam Engk vun dä Sigg aanhange — wunderbaa för Sigge en Saachjroppe ze donn',
 	'masseditregex-hint-remove' => 'Donn e Shtöck vum Täx vun alle Sigge en dä Leß fott nämme',
-	'masseditregex-hint-removecat' => 'Donn alle Enndrääsch för Saachjropp us en Sigg eruß schmiiße — jev Aach op et Escaping vun de äkijje Klammere em Wiki_Kood. Wat beim Tuusche för dä ahle Täx ennjesaz weed, darf mer ävver nit escape.',
+	'masseditregex-hint-removecat' => 'Donn alle Enndrääsch för Saachjroppe us en Sigg eruß schmiiße — jev Aach op et <i lang="en">Escaping</i> vun de äkijje Klammere em Wiki_Kood. Wat beim Tuusche för dä ahle Täx ennjesaz weed, darf mer ävver nit <i lang="en">escape</i>.',
 	'masseditregex-listtype-intro' => 'Dat es en Leß vun:',
 	'masseditregex-listtype-pagenames' => 'Name vun Sigge för zem Ändere',
 	'masseditregex-listtype-pagename-prefixes' => 'Aanfäng vun Siggetittelle (Alsu donn di Sigge ändere, dänne ier Tittelle met däm Täx heh aanfange)',

@@ -428,6 +428,13 @@ $messages['os'] = array(
 	'authors_authors' => 'Автортæ',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'authors_authors' => 'Schreiwer',
+);
+
 /** Polish (Polski)
  * @author Leinad
  */

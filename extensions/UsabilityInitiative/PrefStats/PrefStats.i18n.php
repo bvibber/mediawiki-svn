@@ -1500,6 +1500,18 @@ Clicatz sus una d'entre elas per veire las estatisticas a son prepaus.",
 	'prefstats-legend-in' => 'Vòl participar',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'prefstats-factor-hour' => 'Schtund',
+	'prefstats-factor-sixhours' => 'sex Schtund',
+	'prefstats-factor-day' => 'Daag',
+	'prefstats-factor-week' => 'Woch',
+	'prefstats-factor-twoweeks' => 'zwee Woche',
+	'prefstats-factor-fourweeks' => 'vier Woche',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -2007,7 +2019,7 @@ $messages['tt-cyrl'] = array(
  */
 $messages['uk'] = array(
 	'prefstats' => 'Статистика налаштувань',
-	'prefstats-desc' => 'Творення статистики про популярність тих чи інших налаштувань',
+	'prefstats-desc' => 'Відслідковування статистики про популярність тих чи інших налаштувань',
 	'prefstats-title' => 'Статистика налаштувань',
 	'prefstats-list-intro' => 'Зараз відстежуються такі налаштування.
 Натисніть на якомусь, щоб побачити його статистику.',

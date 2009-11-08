@@ -2476,6 +2476,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
@@ -2499,7 +2500,7 @@ $messages['pt'] = array(
 Você pode <a href="$1">descarregar o vídeo</a><br />ou<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar um reprodutor</a> para executar o vídeo no seu navegador.',
 	'ogg-no-xiphqt' => 'Aparentemente você não tem o componente XiphQT para QuickTime. Não será possível reproduzir ficheiros Ogg pelo QuickTime sem tal componente. Por gentileza, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">faça o download do XiphQT</a> ou escolha outro reprodutor.',
 	'ogg-player-videoElement' => 'Suporte nativo do navegador',
-	'ogg-player-oggPlugin' => 'Plugin do browser',
+	'ogg-player-oggPlugin' => "''Plugin'' do navegador",
 	'ogg-player-thumbnail' => 'Apenas imagem estática',
 	'ogg-player-soundthumb' => 'Sem player',
 	'ogg-player-selected' => '(selecionado)',

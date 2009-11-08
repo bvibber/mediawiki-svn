@@ -854,6 +854,28 @@ $messages['mhr'] = array(
 	'editmsg-search' => 'Кычал',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Веб-уредување]] на голем број на Messages*.php податотеки',
+	'editmessages' => 'Уреди пораки',
+	'editmsg-target' => 'Целна порака:',
+	'editmsg-search' => 'Пребарај',
+	'editmsg-show-list' => 'Приказ на вредностите за порака по име „$1“',
+	'editmsg-get-patch' => 'Создај пришивка',
+	'editmsg-new-search' => 'Ново пребарување',
+	'editmsg-warning-parse1' => '* Регуларниот израз на името на пораката не одговара: $1',
+	'editmsg-warning-parse2' => '* Се очекува наводник по стрелката: $1',
+	'editmsg-warning-parse3' => '* Не е пронајден крајот на вредносната нишка: $1',
+	'editmsg-warning-file' => '* Наидов на грешки со читањето на податотеката за {{PLURAL:$2|следниов јазик|следниве јазици}}: $1',
+	'editmsg-warning-mismatch' => '* Изворниот текст ја немаше очекуваната вредност за {{PLURAL:$2|следниов јазик|следниве јазици}}: $1',
+	'editmsg-apply-patch' => 'Примени пришивка',
+	'editmsg-no-patch' => 'Не можев да ја извршам командата „пришиј“',
+	'editmsg-patch-failed' => 'Пришивката не успеа со излезен статус $1',
+	'editmsg-patch-success' => 'Успешно пришиено.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

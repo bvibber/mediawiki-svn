@@ -54,6 +54,14 @@ $messages['be-tarask'] = array(
 	'wikiarticlefeeds_combined_description' => 'Гэта камбінаваная стужка, якая ўтрымлівае элемэнты з некалькіх крынічных стужак.',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'wikiarticlefeeds-desc' => 'মিডিয়াউইকি পাতা থেকে ফিড উৎপন্ন করে',
+	'wikiarticlefeeds_combined_description' => 'এটি একটি সমন্বিত ফিড, যেখানে কয়েকটি ফিড উৎস থেকে আনা আইটেম রয়েছে।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

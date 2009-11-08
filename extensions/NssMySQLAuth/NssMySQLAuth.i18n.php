@@ -145,6 +145,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -155,7 +156,7 @@ $messages['br'] = array(
 	'nss-save-changes' => "Enrollañ ar c'hemmoù",
 	'nss-create-account-header' => 'Krouiñ ur gont nevez',
 	'nss-create-account' => 'Krouiñ ar gont',
-	'nss-no-mail' => 'Chom hep kas ur postel',
+	'nss-no-mail' => 'Chom hep kas posteloù',
 );
 
 /** Bosnian (Bosanski)

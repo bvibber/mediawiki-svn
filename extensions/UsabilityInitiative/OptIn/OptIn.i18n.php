@@ -778,6 +778,7 @@ Děkujeme a budeme se těšit na vaše názory!',
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'optin-title-optedout' => 'Rhowch gynnig ar Beta',
 	'optin-accept-long' => 'Rhoi cynnig ar Beta',
 	'optin-submit-out' => 'Gadael Beta',
 );
@@ -2402,6 +2403,7 @@ Gratias, e nos spera audir de te!',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
@@ -2415,7 +2417,7 @@ $messages['id'] = array(
 	'optin-needlogin' => 'Anda harus [$1 masuk log] untuk mencoba Beta.',
 	'optin-intro' => 'Proyek Inisiatif Kebergunaan Wikipedia berusaha untuk mengembangkan kegunaan dari Wikipedia. Apakah Anda ingin mencoba Beta?',
 	'optin-feedback-intro' => 'Terima kasih telah mencoba Beta.
-Kami ingin tahu apa pendapat Anda tentang antarmuka baru kami, sehingga kami sangat menghargai jika Anda mengisi jajak pendapat manasuka di bawah ini .',
+Kami ingin tahu apa pendapat Anda tentang antarmuka baru kami, sehingga kami sangat menghargai jika Anda mengisi jajak pendapat opsional di bawah ini .',
 	'optin-feedback-back' => 'Jika Anda tidak ingin mengisi survei, Anda dapat kembali ke $1.',
 	'optin-success-in' => 'Anda saat ini sedang mencoba Beta.
 Anda dapat keluar kapan saja dengan menekan pranala "{{int:optin-submit-out}}" di bagian atas halaman.',
@@ -2471,11 +2473,11 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 Dengan sistem navigasi yang baru, Anda dapat dengan mudah mengetahui di mana Anda berada dan apa yang sedang Anda lakukan, dan juga ke mana Anda dapat pergi dan bagaimana menuju ke sana. Dengan kotak pencarian yang terletak di pojok kanan atas, fitur pencarian menjadi lebih mudah ditemukan dan lebih cepat digunakan.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=|Batang alat penyuntingan yang diperluas]]
+[[File:UsabilityToolbar.png|left|link=|Bilah alat penyuntingan yang diperluas]]
 ;Perbaikan alat penyuntingan
 Ikon yang baru dan lebih baik lebih dapat menjelaskan tindakan apa yang dapat dilakukan masing-masing alat. Alat-alat yang jarang dipakai disembunyikan pada bagian yang dapat diklik sehingga mengurangi tombol-tombol yang tidak terpakai.
-Bagian "Bantuan" memberikan penjelasan untuk markup-wiki yang sering digunakan.
-Bagian yang membantu memberikan akses cepat ke referensi untuk penggunaan umum markup-wiki .
+Bagian "Bantuan" memberikan penjelasan untuk markah wiki yang sering digunakan.
+Bagian yang membantu memberikan akses cepat ke referensi untuk penggunaan umum markah wiki .
 <div style="clear:both;"></div>
 == Bagaimana Anda dapat terlibat ==
 Untuk mempelajari lebih lanjut tentang proyek ini atau terlibat di dalamnya, silakan kunjungi [http://usability.wikimedia.org Wiki Inisiatif Kebergunaan]. Di sana Anda akan menemukan informasi tentang hibah, penelitian, desain + pengembangan, dan rilis terbaru. Untuk mengajukan pertanyaan atau meninggalkan umpan balik, silakan gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype halaman pembicaraan] prototipe kami. Untuk membahas tentang subyek tertentu, silakan gunakan halaman diskusi yang terkait. Jika Anda menemukan bug, silakan tinggalkan komentar pada [http://usability.wikimedia.org/wiki/Talk:Releases/Acai halaman pembicaraan rilis Acai] atau lewat [https://bugzilla.wikimedia.org Bugzilla].

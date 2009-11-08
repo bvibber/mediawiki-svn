@@ -583,6 +583,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -591,10 +592,10 @@ $messages['eo'] = array(
 	'usagestatistics-desc' => 'Montru individuan uzanton kaj ĉiun statistikon pri uzado de vikio',
 	'usagestatisticsfor' => '<h2>Statistiko pri uzado por [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Uzadaj statistikoj por ĉiuj uzantoj</h2>',
-	'usagestatisticsinterval' => 'Intervalo',
+	'usagestatisticsinterval' => 'Intervalo:',
 	'usagestatisticstype' => 'Speco',
-	'usagestatisticsstart' => 'Komenco-dato',
-	'usagestatisticsend' => 'Fino-dato',
+	'usagestatisticsstart' => 'Komencodato:',
+	'usagestatisticsend' => 'Findato:',
 	'usagestatisticssubmit' => 'Generu statistikojn',
 	'usagestatisticsnostart' => 'Bonvolu entajpi komenco-daton.',
 	'usagestatisticsnoend' => 'Bonvolu entajpi fino-daton.',

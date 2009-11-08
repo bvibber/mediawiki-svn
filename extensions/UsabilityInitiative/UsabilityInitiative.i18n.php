@@ -108,6 +108,13 @@ $messages['cs'] = array(
 	'prefs-experimental' => 'Experimentální funkce',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'usabilityinitiative' => 'Cynllun Defnyddioldeb',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */

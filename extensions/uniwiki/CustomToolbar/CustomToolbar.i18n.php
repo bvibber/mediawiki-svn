@@ -663,6 +663,7 @@ $wgCustomToolbarMessages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Melancholie
+ * @author Michawiki
  * @author Yekrats
  */
 $wgCustomToolbarMessages['eo'] = array(
@@ -697,9 +698,9 @@ $wgCustomToolbarMessages['eo'] = array(
 	'ct_horizontal_tip' => 'Enmeti horizontan linion (uzu ŝpareme)',
 	'ct_horizontal_caption' => 'Horizonta linio',
 	'ct_upload' => 'Alŝuti $1n',
-	'ct_select' => 'Selekti $1 por alŝuti',
+	'ct_select' => 'Selekti $1 por alŝuti:',
 	'ct_caption' => 'Aldoni tekston (nedevige):',
-	'ct_link' => 'Aldoni ligilan nomon (nedevige)',
+	'ct_link' => 'Aldoni ligilan nomon (nedeviga):',
 	'ct_submit' => 'Ek!',
 	'ct_close' => 'Fermi fenestron',
 	'ct_success' => 'Dosiera alŝuto sukcesis!',

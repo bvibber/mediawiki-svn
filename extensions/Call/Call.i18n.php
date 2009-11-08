@@ -551,12 +551,13 @@ In caso de problemas, tu pote probar <b>{{#special:call}}/DebuG</b>",
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'call' => 'Panggilan',
 	'call-desc' => 'Buat sebuah pranala ke templat (atau halaman wiki biasa) dengan parameter. 
 Dapat digunakan pada baris perintah penjelajah web atau di antara teks wiki',
-	'call-text' => "Pengaya \"Panggilan\" membutuhkan sebuah halaman wiki dan parameter manasuka untuk halaman tersebut untuk digunakan sebagai argumen.
+	'call-text' => "Pengaya \"Panggilan\" membutuhkan sebuah halaman wiki dan parameter opsional untuk halaman tersebut untuk digunakan sebagai argumen.
 
 Contoh 1: &nbsp; <tt>[[{{#special:call}}/Templat Saya,parm1=value1]]</tt><br />
 Contoh 2: &nbsp; <tt>[[{{#special:call}}/Pembicaraan:Diskusi Saya,parm1=value1]]</tt><br />
@@ -564,7 +565,7 @@ Contoh 3: &nbsp; <tt>[[{{#special:call}}/:Halaman Saya,parm1=value1,parm2=value2
 Contoh 4 (URL Penjelajah): &nbsp; <tt>http://domain/wiki/index.php?{{#special:call}}/:Halaman Saya,parm1=value1</tt><br /><br />
 
 Pengaya <i>Panggilan</i> akan memanggil halaman yang dimaksud dan mengirimkan parameternya.<br />
-Anda akan melihat isi dari halaman tersebut dan judulnya, tapi 'tipe'nya akan seperti halaman istimewa, yakni halaman tersebut tidak bisa disunting.<br />Isi yang Anda lihat akan bervariasi tergantung dari parameter yang dikirimkan.<br /><br />
+Anda akan melihat isi dari halaman tersebut dan judulnya, tapi 'tipe'-nya akan seperti halaman istimewa, yakni halaman tersebut tidak bisa disunting.<br />Isi yang Anda lihat akan bervariasi tergantung dari parameter yang dikirimkan.<br /><br />
 
 Pengaya <i>Panggilan</i> berguna untuk membuat aplikasi interaktif dengan MediaWiki.<br />
 Contohnya: <a href='http://semeb.com/dpldemo/Template:Catlist'>GUI DPL</a> ..<br />
@@ -903,20 +904,24 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'call' => 'Call',
-	'call-desc' => 'Cria uma hiperligação para uma predefinição (ou para uma página wiki normal) com passagem de parâmetros. Pode ser usada na linha de comandos do "browser" ou dentro de texto wiki.',
-	'call-text' => "A extensão Call espera uma página wiki e parâmetros opcionais para essa página como argumentos.<br /><br />
+	'call-desc' => 'Cria uma ligação para uma predefinição (ou para uma página wiki normal) com passagem de parâmetros. Pode ser usada na linha de comando do navegador ou no texto wiki.',
+	'call-text' => "A extensão Call espera receber como argumentos uma página wiki e parâmetros opcionais para essa página.<br /><br />
+
 Exemplo 1: &nbsp; <tt>[[{{#special:call}}/Minha Predefinição,parm1=value1]]</tt><br />
 Exemplo 2: &nbsp; <tt>[[{{#special:call}}/Talk:Minha Discussão,parm1=value1]]</tt><br />
 Exemplo 3: &nbsp; <tt>[[{{#special:call}}/:Minha Página,parm1=value1,parm2=value2]]</tt><br /><br />
-Exemplo 4 (URL de \"browser\"): &nbsp; <tt>http://meudominio/meuwiki/index.php?{{#special:call}}/:Minha Página,parm1=value1</tt><br /><br />
+Exemplo 4 (URL para navegador): &nbsp; <tt>http://meudominio/minhawiki/index.php?{{#special:call}}/:Minha Página,parm1=value1</tt><br /><br />
 
-A <i>extensão Call</i> irá realizar uma chamada à página fornecida e passar os parâmetros.<br />Você irá ver o conteúdo da página chamada e o seu título, mas o seu 'tipo' será o de uma página especial,<br />i.e. tal página não poderá ser editada.<br />O conteúdo que verá poderá variar dependendo do valor dos parâmetros que forem passados.<br /><br />
-A <i>extensão Call</i> é útil na construção de aplicações interactivas com MediaWiki.<br />Para um exemplo, veja <a href='http://semeb.com/dpldemo/Template:Catlist'>o GUI DPL</a> ..<br />
-Em caso de problemas, poderá experimentar <b>{{#special:call}}/DebuG</b>",
+A <i>extensão Call</i> irá realizar uma chamada à página fornecida e passar os parâmetros.<br />
+Verá o conteúdo da página chamada e o seu título, mas o seu 'tipo' será o de uma página especial, isto é, a página não pode ser editada.<br />O conteúdo que verá pode variar dependendo do valor dos parâmetros que passou.<br /><br />
+
+A <i>extensão Call</i> é útil para construir aplicações interactivas com o MediaWiki.<br />Para um exemplo, veja <a href='http://semeb.com/dpldemo/Template:Catlist'>o GUI DPL</a> ..<br />
+Em caso de problemas, pode experimentar <b>{{#special:call}}/DebuG</b>",
 	'call-save' => "O resultado desta chamada seria gravado numa página chamada ''$1''.",
 	'call-save-success' => 'O seguinte texto foi gravado na página <big>[[$1]]</big>.',
 	'call-save-failed' => 'O seguinte texto NÃO foi gravado na página <big>[[$1]]</big> porque essa página já existe.',

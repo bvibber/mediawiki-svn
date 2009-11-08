@@ -611,6 +611,13 @@ $messages['vo'] = array(
 	'formatchanges-editedby' => 'Pad: $1 - peredakon fa geban: $2 ($3)',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'formatchanges-anonymous' => 'אַנאנים',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong

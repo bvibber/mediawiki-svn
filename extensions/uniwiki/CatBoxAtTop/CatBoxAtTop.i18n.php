@@ -541,6 +541,13 @@ $messages['vo'] = array(
 	'catboxattop-categories' => 'Klads',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'catboxattop-categories' => 'קאַטעגאריעס',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

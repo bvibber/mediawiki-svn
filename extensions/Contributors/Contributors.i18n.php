@@ -1086,6 +1086,13 @@ $messages['os'] = array(
 	'contributors-submit' => 'Равдис',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'contributors-submit' => 'Zeig',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Masti

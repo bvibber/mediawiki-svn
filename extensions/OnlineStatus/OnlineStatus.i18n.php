@@ -287,13 +287,14 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'onlinestatus-desc' => 'Aldonas preferon por montri se la uzanto estas nune ensalutita aŭ ne en la vikio',
 	'onlinestatus-js-anon' => 'Eraro: Vi devas ensaluti por uzi ĉi tiun etendilon',
 	'onlinestatus-js-changed' => 'Via statuso estis ŝanĝita al "$1"',
-	'onlinestatus-js-error' => 'Neeblas ŝanĝi statuson, valuto "$1" estas nevalida',
+	'onlinestatus-js-error' => 'Neeblas ŝanĝi statuson, valoro "$1" estas nevalida',
 	'onlinestatus-subtitle-offline' => 'Ĉi tiu uzanto estas nune nekonektita',
 	'onlinestatus-subtitle-online' => 'Ĉi tiu uzanto estas nune konektita',
 	'onlinestatus-tab' => 'Statuso',
@@ -695,10 +696,20 @@ $messages['lt'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'onlinestatus-desc' => 'Додава прилагодување кое прикажува дали корисникот е моментално присутен на викито',
+	'onlinestatus-js-anon' => 'Грешка: морате да сте најавени за да ја користите оваа можност',
+	'onlinestatus-js-changed' => 'Вашиот статус е променет на „$1“',
+	'onlinestatus-js-error' => 'Невозможно е да се измени статусот, вредноста „$1“ е погрешна',
+	'onlinestatus-subtitle-offline' => 'Овој корисник е моментално исклучен',
+	'onlinestatus-subtitle-online' => 'Овој корисник е моментално вклучен',
 	'onlinestatus-tab' => 'Статус',
 	'onlinestatus-toggles-desc' => 'Вашиот статус:',
+	'onlinestatus-toggles-explain' => 'Со ова другите корисници на вашата страница можат да видат дали сте всушност на линија.',
+	'onlinestatus-toggles-show' => 'Прикажувај дали сум на линија на мојата корисничка страница',
 	'onlinestatus-toggle-offline' => 'Исклучен',
 	'onlinestatus-toggle-online' => 'Вклучен',
+	'onlinestatus-pref-onlineonlogin' => 'Промени ми го статусот во „вклучен“ кога се најавувам',
+	'onlinestatus-pref-offlineonlogout' => 'Промени ми го статусот во „исклучен“ кога се одјавувам',
 );
 
 /** Malayalam (മലയാളം)
@@ -865,12 +876,13 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'onlinestatus-desc' => 'Adiciona uma preferência para mostrar se o utilizador está atualmente presente no wiki ou não',
+	'onlinestatus-desc' => 'Adiciona uma preferência para mostrar se o utilizador está ligado à wiki ou não',
 	'onlinestatus-js-anon' => 'Erro: tem que estar autenticado para usar esta funcionalidade',
 	'onlinestatus-js-changed' => 'O seu estado foi alterado para "$1"',
 	'onlinestatus-js-error' => 'Impossível alterar estado, o valor "$1" é inválido',
@@ -878,12 +890,12 @@ $messages['pt'] = array(
 	'onlinestatus-subtitle-online' => 'Este utilizador encontra-se online',
 	'onlinestatus-tab' => 'Estado',
 	'onlinestatus-toggles-desc' => 'O seu estado:',
-	'onlinestatus-toggles-explain' => 'Permite que seja exibido a outros utilizadores, através de sua página de utilizador, se você se encontra online ou não.',
-	'onlinestatus-toggles-show' => 'Exibir o estado da minha ligação na minha página de utilizador',
-	'onlinestatus-toggle-offline' => 'Offline',
-	'onlinestatus-toggle-online' => 'Online',
-	'onlinestatus-pref-onlineonlogin' => 'Alterar o meu estado para online quando me autenticar',
-	'onlinestatus-pref-offlineonlogout' => 'Alterar o meu estado para offline quando me desautenticar',
+	'onlinestatus-toggles-explain' => 'Isto permite-lhe mostrar a quem consulte a sua página de utilizador se está, ou não, ligado.',
+	'onlinestatus-toggles-show' => 'Mostrar o estado da minha ligação na minha página de utilizador',
+	'onlinestatus-toggle-offline' => 'Desligado',
+	'onlinestatus-toggle-online' => 'Ligado',
+	'onlinestatus-pref-onlineonlogin' => 'Alterar o meu estado para ligado, quando me autenticar',
+	'onlinestatus-pref-offlineonlogout' => 'Alterar o meu estado para desligado, quando me desautenticar',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

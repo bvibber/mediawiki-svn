@@ -259,6 +259,7 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'configure-js-remove' => '{{Identical|Delete}}',
 	'configure-no-directory' => '* $1 is the directory in the file-system',
 	'configure-old-not-available' => '* $1 is the 14 char timestamp of the version',
+	'configure-old-changes' => '{{Identical|Change}}',
 	'configure-old-summary' => '* $1 is a link to the page, the time and date of the version is the link anchor
 * $2 is an internal or external link the user who made the version with the user name as the link anchor, or empty, or a text identifying the user without a link
 * $3 is a link to the diff page of this version and the version preceeding it, or empty
@@ -359,6 +360,7 @@ $messages['af'] = array(
 	'configure-edit-ext' => 'Uitbreidings',
 	'configure-ext-settings' => 'Instellings',
 	'configure-js-remove' => 'Skrap',
+	'configure-old-changes' => 'veranderinge',
 	'configure-section-pages' => 'Bladsye',
 	'configure-section-paths' => 'Paaie',
 	'configure-section-db' => 'Databasis',
@@ -6875,6 +6877,7 @@ $messages['pdc'] = array(
 	'configure-js-remove' => 'Lösche',
 	'configure-section-specialpages' => 'Besunnere Bledder',
 	'configure-throttle-action-move' => 'Ziehe',
+	'configure-condition-operator-or' => 'Odder',
 	'configure-condition-operator-and' => 'Unn',
 );
 
@@ -7141,7 +7144,7 @@ Por favor, torne possível a sua escrita por PHP para usar esta extensão.',
 	'configure-js-image-error' => 'Ocorreu um erro durante a busca da URL. Por favor, verifique que o ficheiro existe.',
 	'configure-js-biglist-shown' => 'Detalhes da configuração podem ser ocultados',
 	'configure-js-biglist-hidden' => 'Detalhes da configuração ocultados',
-	'configure-js-biglist-show' => '[exibir detalhes]',
+	'configure-js-biglist-show' => '[mostrar detalhes]',
 	'configure-js-biglist-hide' => '[ocultar detalhes]',
 	'configure-js-summary-none' => 'Sem configurações',
 	'configure-js-search-legend' => 'Configuração da pesquisa',
@@ -8861,7 +8864,7 @@ $messages['ug-latn'] = array(
  */
 $messages['uk'] = array(
 	'configure' => 'Конфігурувати вікі',
-	'configure-desc' => 'Дозволити авторизованим користувачам конфігурувати вікі, використовуючи веб-інтерфейс',
+	'configure-desc' => 'Дозволяє авторизованим користувачам [[Special:Configure|конфігурувати]] вікі, використовуючи веб-інтерфейс',
 	'configure-desc-group' => 'Група',
 	'configure-desc-key' => 'Ключ',
 	'configure-desc-ns' => 'Простір назв',
@@ -8869,6 +8872,8 @@ $messages['uk'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Розширення',
 	'configure-viewconfig-default-diff' => 'Зміни порівняно зі стандартними налаштуваннями',
+	'configure-ext-ext-dependencies' => "'''Увага:''' це розширення вимагає активації {{PLURAL:$2|наступного розширення|наступних розширень}}: $1.",
+	'configure-ext-ext-dependency-err' => "'''Помилка:''' розширення $1 вимагає активації розширення $2.",
 	'configure-ext-doc' => 'Див. документацію в мережі',
 	'configure-ext-schemachange' => "'''Увага:''' це розширення вимагає оновлення бази даних для коректної роботи!",
 	'configure-ext-settings' => 'Налаштування',
@@ -8879,7 +8884,7 @@ $messages['uk'] = array(
 	'configure-arrayinput-oneperline' => "''(один на рядок)''",
 	'configure-summary' => 'На цій спеціальній сторінці ви можете налаштувати цю вікі, див. [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] для детальнішої інформації.',
 	'configure-btn-save' => 'Зберегти налаштування',
-	'configure-edit-old' => 'Попередження: ви редагуєте <strong>стару</strong> версію конфігурації.',
+	'configure-edit-old' => "'''Попередження:''' ви редагуєте <strong>стару</strong> версію конфігурації (від $1).",
 	'configure-error' => 'Конфігурація не може бути збережена',
 	'configure-js-add' => 'Додати новий запис',
 	'configure-js-group-exists' => 'Помилка: група вже існує.',

@@ -152,11 +152,12 @@ $messages['oc'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'vector' => 'Mejorament UI për vector',
-	'vector-desc' => "A mejora an sj'element dl'antërfacia utent dlë skin Vector.",
+	'vector' => 'Ameliorament UI për Vector',
+	'vector-desc' => "Ameliorament ëd j'element dl'antërfacia utent dla pel Vector.",
 );
 
 /** Portuguese (Português)
@@ -173,6 +174,14 @@ $messages['pt'] = array(
 $messages['roa-tara'] = array(
 	'vector' => 'Miglioramende UI pe Vector',
 	'vector-desc' => "Migliore l'elemende de l'inderfacce utende d'a schermate Vector.",
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'vector' => 'Удосконалення інтерфейсу користувача за допомогою «векторного» оформлення',
+	'vector-desc' => 'Покращує елементи інтерфейсу користувача за допомогою «векторного» оформлення.',
 );
 
 /** Vèneto (Vèneto)

@@ -1099,6 +1099,13 @@ With regards,
 $2',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'userrightsnotifysubject' => 'Членство в групах змінено на $1',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

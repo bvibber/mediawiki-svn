@@ -1295,9 +1295,11 @@ $1',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  * @author Kandar
  */
 $messages['id'] = array(
+	'inplace_access_disabled' => 'Akses untuk layanan ini telah dimatikan bagi semua klien.',
 	'webstore_dest_open' => 'Tak bisa membuka berkas tujuan "$1".',
 	'webstore_src_open' => 'Gagal membuka berkas sumber "$1".',
 	'webstore_404' => 'Berkas tidak ditemukan.',
@@ -2024,12 +2026,13 @@ $1',
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'inplace_access_disabled' => 'O acesso a este serviço foi desabilitado para todos os clientes.',
+	'inplace_access_disabled' => 'O acesso a este serviço foi impossibilitado para todos os clientes.',
 	'inplace_access_denied' => 'Este serviço está restringido por IP de cliente.',
 	'inplace_scaler_no_temp' => 'Não existe directoria temporária, defina $wgLocalTmpDirectory com uma directoria onde seja possível escrever.',
 	'inplace_scaler_not_enough_params' => 'Parâmetros insuficientes.',

@@ -927,6 +927,13 @@ $messages['pl'] = array(
 	'errorhandler-trace-line-internal' => '[funkcja wewnętrzna] – $1',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'errorhandler-desc' => "Gestor d'eror për MediaWiki",
+);
+
 /** Pontic (Ποντιακά)
  * @author Omnipaedista
  */

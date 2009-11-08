@@ -523,6 +523,13 @@ $messages['oc'] = array(
 	'unicodeconverter-newtext' => 'Tèxte un còp convertit :',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'unicodeconverter-ok' => 'OK',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Jwitos

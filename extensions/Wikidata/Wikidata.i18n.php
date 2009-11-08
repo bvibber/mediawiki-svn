@@ -2939,6 +2939,7 @@ $messages['el'] = array(
 /** Esperanto (Esperanto)
  * @author Jagwar
  * @author Malafaya
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -3033,10 +3034,10 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_LinkAttributeHeader' => 'Ligila atribuo',
 	'ow_Multiple_meanings' => 'Pluraj signifoj:',
 	'ow_NewExactMeaning' => 'Nova preciza signifo',
-	'ow_OptionAttribute' => 'Eco',
+	'ow_OptionAttribute' => 'Atributo',
 	'ow_OptionAttributeOption' => 'Opcio',
 	'ow_OptionAttributeOptions' => 'Preferoj',
-	'ow_OptionAttributeValues' => 'Valutoj de opcioj',
+	'ow_OptionAttributeValues' => 'Valoroj de opcioj',
 	'ow_OtherDefinedMeaning' => 'Alia difinita signifo',
 	'ow_PopupAnnotation' => 'Prinotado',
 	'ow_Relations' => 'Rilatoj',
@@ -3069,14 +3070,14 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_meaningsoftitle' => 'Signifoj de "$1"',
 	'ow_meaningsofsubtitle' => '<em>Vikiligilo:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>PERMESO NEITA</h2>',
-	'ow_copy_no_action_specified' => 'Bonvolu specifigi agon',
+	'ow_copy_no_action_specified' => 'Bonvolu specifi agon',
 	'ow_copy_help' => 'Helpado ne estas jam funkciigita.',
 	'ow_copy_successful' => '<h2>Kopio sukcesis</h2>
 Viaj datenoj verŝajne estis kopiitaj sukcese.
 Ne forgesu rekontroli por certigi!',
 	'ow_copy_unsuccessful' => '<h3>Kopio malsukcesis</h3>
 Neniu kopia operacio okazis.',
-	'ow_no_action_specified' => '<h3>Neniu ago estis specifigita</h3>
+	'ow_no_action_specified' => '<h3>Neniu ago estis specifita</h3>
 Ĉu eble vi alvenis ĉi tiun paĝon rekte? Norme vi ne bezonus esti ĉi tie.',
 	'ow_class_attr_type_xlate' => 'Tradukebla teksto',
 	'ow_class_attr_type_plain' => 'Ordinara teksto',
@@ -5244,7 +5245,7 @@ $messages['hu'] = array(
 	'ow_importtsv_title2' => 'Definíciók és fordítások importálása',
 	'ow_importtsv_header' => '<p>Definíciók és fordítások importálása tabulátorral határolt szövegfájlból, amit OpenOffice.orgból, Excelből vagy más táblázatkezelő szoftverből exportáltál ki.</p>
 <p>A fájlnak ugyanolyan formátumúnak kell lennie, mint az [[Special:ExportTSV|ExportTSV]] lap által készített fájloknak. Ha megváltoztattad az oszlopneveket, az importálás sikertelen lesz. Ha megváltoztattad bármelyik megadott jelentés azonosítóját vagy definiáló kifejezését, az a sor figyelmen kívül lesz hagyva. Ha új oszlopokat adtál hozzá, a „definitions_iso” vagy „translations_iso” nevűnek kell lenniük, ahol az iso egy ISO 639-3-as nyelvkód.</p>
-<o>Ha a „tesztfutás” doboz ki van pipálva, a végrehajtott műveletek jelentve lesznek, azonban valójában nem történik módosítás. Ajánlott, hogy végezz tesztfuttatást, mielőtt a tényleges importálást futtatnád le.</p>',
+<p>Ha a „tesztfutás” doboz ki van pipálva, a végrehajtott műveletek jelentve lesznek, azonban valójában nem történik módosítás. Ajánlott, hogy végezz tesztfuttatást, mielőtt a tényleges importálást futtatnád le.</p>',
 	'ow_importtsv_not_allowed' => 'Nincs jogosultságod TSV-ben való importáláshoz.',
 	'ow_importtsv_importing' => 'Adatok importálása TSV formátumban',
 	'ow_importtsv_import_failed' => 'Importálás nem sikerült',
@@ -5300,7 +5301,7 @@ Lásd a [[{{MediaWiki:Ow editing policy url}}|szerkesztési irányelveinket]].',
 	'conceptmapping' => 'Wikiadat: fogalom-hozzárendelés',
 	'ow_conceptmapping_title' => 'Fogalom-hozzárendelés',
 	'ow_conceptmapping_help' => '<p>lehetséges műveletek: <ul>
-<li>&action=insert&<adatkontextus-előtag>=<defined_id>&... hozzárendelés beillesztése</li>
+<li>&action=insert&<adatkontextus-előtag>=<defined_id>&… hozzárendelés beillesztése</li>
 <li>&action=get&concept=<fogalomazonosító> hozzárendelés visszaolvasása</li>
 <li>&action=list_sets az elérhető adatkontextus-előtagok és a hivatkozásaik céljának listája.</li>
 <li>&action=get_associated&dm=<definiált_jelentés_azonosítója>&dc=<adatkontextus-előtag> egy fogalom definiált jelentésénél visszaadja az összes többit</li>
@@ -5675,6 +5676,7 @@ Per favor contacta le operator o administrator del servitor.',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  * @author Kandar
  * @author Rex
  */
@@ -5692,7 +5694,7 @@ $messages['id'] = array(
 	'langman_iso639-3' => 'Kode ISO 639-3:',
 	'langman_iso639-2' => 'Kode ISO 639-2:',
 	'langman_wikimedia' => 'Kode Wikimedia:',
-	'langman_field_optional' => '(manasuka)',
+	'langman_field_optional' => '(opsional)',
 	'langman_addlang' => 'Tambahkan bahasa',
 	'importlangnames' => 'Wikidata: impor nama bahasa',
 	'importlangnames_title' => 'Impor nama bahasa',
@@ -8774,6 +8776,7 @@ $messages['pdc'] = array(
 	'ow_Language' => 'Schprooch',
 	'ow_LinkAttributeValues' => 'Gleecher',
 	'ow_User' => 'Yuuser',
+	'ow_show' => 'Zeige',
 	'ow_suggest_previous' => 'Letscht',
 	'ow_suggest_next' => 'Neegscht',
 );

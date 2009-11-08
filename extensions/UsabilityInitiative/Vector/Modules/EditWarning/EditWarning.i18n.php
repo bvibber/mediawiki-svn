@@ -298,12 +298,13 @@ Si tu ha aperite un session, tu pote disactivar iste aviso in le section "{{int:
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
 	'vector-editwarning-warning' => 'Meninggalkan halaman ini dapat menyebabkan semua perubahan yang belum tersimpan hilang.
 Jika Anda telah masuk log, Anda dapat mematikan peringatan ini lewat "{{int:prefs-editing}}" pada halaman preferensi Anda.',
-	'vector-editwarning-preference' => 'Peringatkan saya jika saya meninggalkan halaman penyuntingan dengan perubahan yang belum tersimpan',
+	'vector-editwarning-preference' => 'Ingatkan saya jika saya meninggalkan halaman penyuntingan sebelum menyimpan perubahan',
 );
 
 /** Italian (Italiano)

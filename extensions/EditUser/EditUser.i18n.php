@@ -298,6 +298,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -306,8 +307,8 @@ $messages['eo'] = array(
 	'edituser-logout' => 'Elsaluti uzanton',
 	'edituser-username' => 'Nomo',
 	'edituser-dosearch' => 'Serĉi',
-	'edituser-nouser' => 'La specifigita uzanto ne ekzistas',
-	'edituser-exempt' => 'La specifigita uzanto ne estas redaktebla',
+	'edituser-nouser' => 'La specifita uzanto ne ekzistas',
+	'edituser-exempt' => 'La specifita uzanto ne estas redaktebla',
 );
 
 /** Spanish (Español)

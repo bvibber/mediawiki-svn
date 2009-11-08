@@ -723,11 +723,13 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'whatismyip' => 'Яка моя IP-адреса',
 	'whatismyip-desc' => 'Показує поточну [[Special:WhatIsMyIP|IP-адресу]] користувача',
 	'whatismyip-out' => 'Ваша IP-адреса:',
+	'right-whatismyip' => 'Перегляд [[Special:WhatIsMyIP|власної IP-адреси]]',
 );
 
 /** Vèneto (Vèneto)

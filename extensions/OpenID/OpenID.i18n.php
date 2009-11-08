@@ -279,7 +279,7 @@ $messages['ar'] = array(
 	'openiddelete-error' => 'صودف خطأ أثناء إزالة OpenID من حسابك.',
 	'prefs-openid' => 'هوية مفتوحة',
 	'openid-prefstext' => 'تفضيلات [http://openid.net/ OpenID]',
-	'openid-pref-hide' => 'أخف هويتك هويتك المفتوحة على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
+	'openid-pref-hide' => 'أخفِ مسار هويتك المفتوحة من صفحتك الشخصية، إذا سجلت الدخول بالهوية المفتوحة.',
 	'openid-pref-update-userinfo-on-login' => 'حدث المعلومات التالية من شخصية الهوية المفتوحة كل مرة أسجل الدخول:',
 	'openid-urls-desc' => 'OpenIDs المربوطة بحسابك:',
 	'openid-urls-action' => 'إجراء',
@@ -1145,7 +1145,7 @@ Bonvolu konsulti [[Special:ListUsers/sysop|administranton]].',
 	'openidserverlogininstructions' => 'Enigu vian pasvorton suben por ensaluti al $3 kiel uzanto $2 (uzulpaĝo $1).',
 	'openidtrustinstructions' => 'Kontroli se vi volas kunpermesigi datenojn kun $1.',
 	'openidallowtrust' => 'Rajtigi $1 fidi ĉi tiun uzulan konton.',
-	'openidnopolicy' => 'Retejo ne specifigis regularon pri privateco.',
+	'openidnopolicy' => 'Retejo ne specifis regularon pri privateco.',
 	'openidpolicy' => 'Kontroli la <a target="_new" href="$1">regularon pri privateco</a> pri plua informo.',
 	'openidoptional' => 'Nedeviga',
 	'openidrequired' => 'Deviga',
@@ -2242,6 +2242,7 @@ Tu non potera plus aperir un session con iste OpenID.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
@@ -2270,7 +2271,7 @@ Pesan kesalahan: "$1"',
 	'openidallowtrust' => 'Izinkan $1 untuk mempercayai akun pengguna ini.',
 	'openidnopolicy' => 'Situs ini tidak memiliki kebijakan privasi.',
 	'openidpolicy' => 'Lihat <a target="_new" href="$1">kebijakan privasi</a> untuk informasi lebih lanjut.',
-	'openidoptional' => 'Manasuka',
+	'openidoptional' => 'Opsional',
 	'openidrequired' => 'Diperlukan',
 	'openidnickname' => 'Nama panggilan',
 	'openidfullname' => 'Nama lengkap',

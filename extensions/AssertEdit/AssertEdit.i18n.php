@@ -176,12 +176,13 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'assert_edit_title' => 'Aserto malsukcesis',
 	'assert_edit_desc' => 'Aldonas redaktajn asertojn por uzo de robotoj',
-	'assert_edit_message' => 'La specifigita aserto ($1) malsukcesis.',
+	'assert_edit_message' => 'La specifita aserto ($1) malsukcesis.',
 );
 
 /** Spanish (Español)

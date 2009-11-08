@@ -810,6 +810,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -833,7 +834,7 @@ $messages['eo'] = array(
 	'math_IllegalRedefinition' => 'La komando "$1" jam estis difinita; vi ne povas redifini ĝin',
 	'math_InvalidColour' => 'La koloro "$1" estas nevalida',
 	'math_InvalidUtf8Input' => 'La enigo-ĉeno ne estis valida UTF-8',
-	'math_LatexFontNotSpecified' => 'Neniu LaTeX tiparo estis specifigita por "$1"',
+	'math_LatexFontNotSpecified' => 'Neniu LaTeX tiparo estis specifita por "$1"',
 	'math_LatexPackageUnavailable' => 'Neeblas bildigi PNG-on ĉar la LaTeX-pakaĵo "$1" ne estas atingebla',
 	'math_MismatchedBeginAndEnd' => 'Komandoj "$1" kaj "$2" ne kongruas',
 	'math_MissingDelimiter' => 'Mankas disigilo post "$1"',

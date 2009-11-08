@@ -89,6 +89,14 @@ $messages['bg'] = array(
 	'whosonline-desc' => 'Показва [[Special:WhosOnline|списък]] с анонимни потребители и влезли потребители, които са на линия',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'whosonline' => 'অনলাইনে যিনি আছেন',
+	'whosonline-desc' => 'যে সকল ব্যবহারকারী এ মুহূর্তে অনলাইনে লগ-ইন বা বেনামী অবস্থায়  উপস্থিত আছেন তাদের [[Special:WhosOnline|একটি তালিকা]] দেখাও',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

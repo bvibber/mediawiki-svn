@@ -245,3 +245,10 @@ $messages['te'] = array(
 	'autoincrement-desc' => 'దాని అంతట అదే పెరిగే వేరియబుల్ <nowiki>{{AUTOINCREMENT}}</nowiki> కి ఒక వేరియబుల్ కొక్కెం',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'autoincrement-desc' => 'Змінний перехоплювач (variable hook), який додає змінну <nowiki>{{AUTOINCREMENT}}</nowiki>, здатну до автоматичного приросту.',
+);
+

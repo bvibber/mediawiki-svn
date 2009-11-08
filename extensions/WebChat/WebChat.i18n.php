@@ -553,6 +553,13 @@ $messages['te'] = array(
 	'webchat' => 'వెబ్ ఛాట్',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'webchat-desc' => 'Додає [[Special:WebChat|спеціальні сторінку]], що використовується для спілкування в режимі реального часу з іншими користувачами вікі',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

@@ -25,6 +25,13 @@ $messages['qqq'] = array(
 {{desc}}",
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'geolite-desc' => 'Adheñchadenn Geolp skañv',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -110,10 +117,11 @@ $messages['oc'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'geolite-desc' => 'Rediression iluminà GeoIp',
+	'geolite-desc' => 'Ridiression sempia GeoIp',
 );
 
 /** Tarandíne (Tarandíne)

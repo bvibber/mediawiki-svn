@@ -101,10 +101,11 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'mootools12core-desc' => 'Aldonas ilojn [http://mootools.net mootools-1.2-core-yc.js] al ĉiu paĝo',
+	'mootools12core-desc' => 'Aldonas ilojn [http://mootools.net mootools-1.2-core-yc.js], kompaktan Ĝavoskriptan framon, al ĉiu paĝo',
 );
 
 /** Spanish (Español)
@@ -378,6 +379,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'mootools12core-desc' => 'Her sayfaya [http://mootools.net mootools-1.2-core-yc.js], kompakt bir JavaScript çerçevesi, ekler',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'mootools12core-desc' => 'Додає компактний JavaScript framework [http://mootools.net mootools-1.2-core-yc.js] на кожній сторінці',
 );
 
 /** Veps (Vepsan kel')

@@ -1018,6 +1018,14 @@ $messages['os'] = array(
 	'gep-categories' => 'Категоритæ',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'gep-addcategorybutton' => 'Dezu duh',
+	'gep-addsectionbutton' => 'Dezu duh',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad

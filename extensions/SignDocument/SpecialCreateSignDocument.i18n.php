@@ -420,6 +420,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -438,9 +439,10 @@ $messages['eo'] = array(
 	'createsigndoc-create' => 'Krei',
 	'createsigndoc-error-generic' => 'Eraro: $1',
 	'createsigndoc-error-pagenoexist' => 'Eraro: La paĝo [[$1]] ne ekzistas.',
-	'createsigndoc-success' => 'Dokumenta subskribado estis sukcese ebligita ĉe [[$1]].
-Por testi ĝin, bonvolu eniri [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} ĉi tiun paĝon].',
-	'createsigndoc-error-alreadycreated' => 'Subskribado de dokumento "$1" jam ekzistas.',
+	'createsigndoc-success' => 'Dokumenta subskribado estas sukcese ebligita ĉe [[$1]].
+Vi povas [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testi ĝin].',
+	'createsigndoc-error-alreadycreated' => 'Subskribado de dokumento "$1" jam ekzistas.
+Tio ne estas dufoje ebla.',
 );
 
 /** Spanish (Español)
@@ -857,7 +859,7 @@ Harap pastikan juga bahwa Anda menentukan semua isian persis seperti yang seharu
 	'createsigndoc-minage' => 'Umur minimum:',
 	'createsigndoc-introtext' => 'Pendahuluan:',
 	'createsigndoc-hidden' => 'Tersembunyi',
-	'createsigndoc-optional' => 'Manasuka',
+	'createsigndoc-optional' => 'Opsional',
 	'createsigndoc-create' => 'Buat',
 	'createsigndoc-error-generic' => 'Kesalahan: $1',
 	'createsigndoc-error-pagenoexist' => 'Kesalahan: Halaman [[$1]] tidak ada.',

@@ -958,6 +958,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -977,9 +978,9 @@ $messages['eo'] = array(
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Tuto por ĉi tiu monato|Monataj tutoj por la lastaj $1 monatoj}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Tuto por $1 monato|Monataj tutoj por $1 monatoj}}',
 	'contribstats-currency-range-totals' => 'Valutaj tutoj (de $1 al $2)',
-	'contribstats-contribution-range-breakdown' => 'Kategoriigitaj kontribuoj laŭ valuto (de $1 al $2)',
+	'contribstats-contribution-range-breakdown' => 'Kategoriigitaj kontribuoj laŭ valoro (de $1 al $2)',
 	'contribstats-currency-totals' => 'Valutaj tutoj por la fiska jaro de $1',
-	'contribstats-contribution-breakdown' => 'Kategoriigitaj kontribuoj laŭ valuto por la fiska jaro de $1',
+	'contribstats-contribution-breakdown' => 'Kategoriigitaj kontribuoj laŭ valoro por la fiska jaro de $1',
 	'contribstats-day' => 'Tago',
 	'contribstats-month' => 'Monato',
 	'contribstats-currency' => 'Valuto',

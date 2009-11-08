@@ -207,9 +207,9 @@ $messages['qqq'] = array(
 	'wikilog-draft-title-mark' => '{{Identical|Draft}}',
 	'wikilog-anonymous-mark' => '{{Identical|Anonymous}}',
 	'wikilog-pager-newer-n' => 'Parameters:
-* $1 is a number of items',
+* $1 is a number of items. You can use PLURAL if you need.',
 	'wikilog-pager-older-n' => 'Parameters:
-* $1 is a number of items',
+* $1 is a number of items. You can use PLURAL if you need.',
 	'wikilog-pager-prev' => '{{Identical|Previous}}',
 	'wikilog-pager-next' => '{{Identical|Next}}',
 	'wikilog-pager-last' => '{{Identical|Last}}',
@@ -221,8 +221,15 @@ $messages['qqq'] = array(
 * $5 = Authors,
 * $6 = Publication date,
 * $7 = Comments link',
-	'wikilog-item-more' => 'Parameters:
-* $3 = Item URL',
+	'wikilog-item-more' => "Parameters:
+* $1 is a URL formatted link to the parent (optional)
+* $2 is the item's parent name (optional)
+* $3 is a URL formatted link to the item
+* $4 is the item's name (optional)",
+	'wikilog-comment-by-user' => 'Parameters:
+* $1 is a link to the commenting user page
+* $2 is a link to the commenting user talk page
+* $3 is the plain text user name of the commenting user for use with GENDER (optional)',
 	'wikilog-comment-edited' => 'Parameters:
 * $1 is a timestamp
 * $2 is a history link
@@ -391,7 +398,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-auto' => 'Wikilog Aoto',
 	'wikilog' => 'Wikilogoù',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Marilh an oberoù war wikilog',
@@ -416,15 +423,15 @@ $messages['br'] = array(
 	'wikilog-view-summary' => 'Diverradur',
 	'wikilog-draft-title-mark' => '(brouilhed)',
 	'wikilog-anonymous-mark' => '(dizanv)',
-	'wikilog-pager-newer-n' => '← $1 neveshañ',
-	'wikilog-pager-older-n' => '$1 koshañ →→',
-	'wikilog-pager-newest' => '←← nevesañ',
-	'wikilog-pager-oldest' => '',
+	'wikilog-pager-newer-n' => '← $1 nevesañ',
+	'wikilog-pager-older-n' => "$1 koshoc'h →→",
+	'wikilog-pager-newest' => '←← ar re nevesañ',
+	'wikilog-pager-oldest' => 'ar re goshañ →→',
 	'wikilog-pager-prev' => '← a-raok',
-	'wikilog-pager-next' => 'da heul →',
+	'wikilog-pager-next' => "war-lerc'h →",
 	'wikilog-pager-first' => '←← kentañ',
 	'wikilog-pager-last' => 'diwezhañ →→',
-	'wikilog-pager-empty' => '(item ebet)',
+	'wikilog-pager-empty' => '(elfenn ebet)',
 	'wikilog-no-comments' => 'addispleg ebet',
 	'wikilog-comment-by-user' => 'Addispleg gant $1 ($2)',
 	'wikilog-comment-by-anon' => 'Addispleg gant $3 (dizanv)',
@@ -635,6 +642,10 @@ $messages['dsb'] = array(
 	'wikilog-item-brief-header' => ': <i><small>wót $5, z [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ dalej cytaś...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|diskusija]])',
+	'wikilog-edit-fieldset-legend' => 'Wikilogowe opcije:',
+	'wikilog-edit-signpub' => 'Toś ten pśinosk pódpisaś a wózjawiś',
+	'wikilog-edit-signpub-tooltip' => 'Zawinujo, až toś ten pśinosk pódpišo a wózjawijo w swójom wikilogu, gaž se składujo.
+Wótpóraj markěrowanje toś togo kašćika, aby se pśinosk wobchował ako nacerjenje.',
 	'wikilog-comment-by-user' => 'Komentar wót $1 ($2)',
 	'wikilog-comment-by-anon' => 'Komentar wót $3 (anonymny)',
 	'wikilog-comment-pending' => 'Toś ten komentar caka na pśizwólenje.',
@@ -835,6 +846,10 @@ $messages['fr'] = array(
 	'wikilog-item-brief-header' => ': <i><small>par $5, de [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ lire la suite...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discuter]])',
+	'wikilog-edit-fieldset-legend' => 'Options de wikilog :',
+	'wikilog-edit-signpub' => 'Signer et publier cet article',
+	'wikilog-edit-signpub-tooltip' => "Fait que l'article est signé et publié dans son wikilog lors de la sauvegarde.
+Décochez cette case pour que l'article reste à l'état de brouillon.",
 	'wikilog-comment-by-user' => 'Commentaire de $1 ($2)',
 	'wikilog-comment-by-anon' => 'Commentaire de $3 (anonyme)',
 	'wikilog-comment-pending' => "Ce commentaire est en attente d'une approbation.",
@@ -1222,6 +1237,10 @@ $messages['hsb'] = array(
 	'wikilog-item-brief-header' => ': <i><small>wot $5, z [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ dale čitać...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|diskusija]])',
+	'wikilog-edit-fieldset-legend' => 'Wikilogowe opcije:',
+	'wikilog-edit-signpub' => 'Tutón přinošk podpisać a wozjewić',
+	'wikilog-edit-signpub-tooltip' => 'Zawinuje, zo so tutón přinošk w swojim wikilogu podpisuje a wozjewja, hdyž so składuje.
+Wotstroń markěrowanje z kašćika, zo by so přinošk jako naćisk wobchował.',
 	'wikilog-comment-by-user' => 'Komentar wot $1 ($2)',
 	'wikilog-comment-by-anon' => 'Komentar wot $3 (anonymny)',
 	'wikilog-comment-pending' => 'Tutón komentar na schwalenje čaka.',
@@ -1341,6 +1360,10 @@ $messages['hu'] = array(
 	'wikilog-item-brief-header' => ': <i><small>szerző: $5, helye:[[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ olvass tovább…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|vita]])',
+	'wikilog-edit-fieldset-legend' => 'Wikinapló-beállítások:',
+	'wikilog-edit-signpub' => 'Dokumentum aláírása és közzététele',
+	'wikilog-edit-signpub-tooltip' => 'Hatására ez a szócikk alá lesz írva és közzé lesz téve a wikinaplójában mentéskor.
+Vedd ki a pipát a doboz elől, ha vázlatként szeretnéd elmenteni a cikket.',
 	'wikilog-comment-by-user' => '$1 hozzászólása ($2)',
 	'wikilog-comment-by-anon' => '$3 hozzászólása (névtelen)',
 	'wikilog-comment-pending' => 'Ez a hozzászólás elfogadásra vár.',
@@ -1356,7 +1379,7 @@ $messages['hu'] = array(
 	'wikilog-comment-reject' => 'Hozzászólás elutasítása (azonnali művelet)',
 	'wikilog-newtalk-text' => '<!-- a Wikinapló által létrehozott üres oldal -->',
 	'wikilog-newtalk-summary' => 'automatikusan létrehozta a Wikinapló',
-	'wikilog-feed-description' => 'A feed legújabb hozzászólásainak olvasása',
+	'wikilog-feed-description' => 'A hírcsatorna legújabb hozzászólásainak olvasása',
 	'wikilog-title-comments' => 'Megjegyzések – $1',
 	'wikilog-error-msg' => 'Wikinapló: $1',
 	'wikilog-error-title' => 'Wikinapló hiba',
@@ -1768,6 +1791,52 @@ $messages['jv'] = array(
 	'wikilog-comment-history' => 'Nudhuhaké sajarah komentar',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikilog-desc' => 'Brängk Müjjeleschkeite för et Blogge en et Wiki, un schavv_esu e Wiki-Blog-Jemölsch.',
+	'wikilog-log-cmt-approve' => 'hät di Aanmärkung [[$1]] zohjelohße',
+	'wikilog-log-cmt-reject' => 'hät di Aanmärkung [[$1]] affjelehnt',
+	'wikilog-post-count-published' => 'Mer han {{PLURAL:$1|eine öffentlesche Beidraach|$1 öffentlesche Beidrääsch|keine öffentlesche Beidrääsch}} en heh dämm Wikilog,',
+	'wikilog-post-count-drafts' => 'Et {{PLURAL:$1|es noch eine nit veröffentleschte Beidraach (Äntworf) do|sinn_er $1 Beidrääch (Äntwörf) noch nit öffentlesch jemaat|sinn_er kein Beidrääch (Äntwörf) noh_nit öffentlesch jemaat}}.',
+	'wikilog-post-count-all' => 'Ensjesamp ham_mer {{PLURAL:$1|eine Beidraach|$1 Beidrääch|kein Beidrääch}}.',
+	'wikilog-new-item' => 'Ene neue Wikilog Beijdraach aanlääje',
+	'wikilog-new-item-go' => 'Lohß Jonn!',
+	'wikilog-item-name' => 'Dä Name för dä Beidraach:',
+	'wikilog-authors' => 'Schriiver',
+	'wikilog-comments' => 'Aanmärkunge',
+	'wikilog-pager-newer-n' => '← neuer $1',
+	'wikilog-pager-older-n' => 'ähler $1 →',
+	'wikilog-pager-newest' => '←← neuste',
+	'wikilog-pager-oldest' => 'ählste →→',
+	'wikilog-pager-prev' => '← förrije',
+	'wikilog-pager-next' => 'nähste →',
+	'wikilog-pager-first' => '←← eetste',
+	'wikilog-pager-last' => 'lätsde →→',
+	'wikilog-item-more' => '[[$3|→&nbsp;wigger lässe{{int:ellipsis}}]]',
+	'wikilog-edit-fieldset-legend' => 'Ennschtellunge för Wikilog:',
+	'wikilog-comment-by-user' => 'Aanmärkung vum $1 ($2)',
+	'wikilog-comment-by-anon' => 'Aanmärkung vun däm namelose Metmaacher $3',
+	'wikilog-comment-pending' => 'Heh di Aamärkung es noch nit zohjelohße.',
+	'wikilog-comment-deleted' => 'He di Aanmärkung es fottjeschmeße woode.',
+	'wikilog-comment-edited' => 'Heh di Aanmärkung es et läz aam $3 öm $4 Uhr jeändert woode ($2)',
+	'wikilog-newtalk-text' => '<!-- en läddije Sigg wood aanjelaat vun Wikilog -->',
+	'wikilog-title-comments' => 'Aanmärkunge zoh „$1“',
+	'wikilog-comment-is-empty' => 'En dä Aanmärkung schteiht nix dren.',
+	'wikilog-comment-too-long' => 'Di Aanmärkung es ze lang.',
+	'wikilog-comment-invalid-name' => 'Dä aanjejovve Name es nit jöltesch.',
+	'wikilog-form-wikilog' => 'Wikilog:',
+	'wikilog-form-category' => 'Saachjropp:',
+	'wikilog-form-name' => 'Name:',
+	'wikilog-form-author' => 'Schriiver:',
+	'wikilog-form-tag' => 'Makeerung:',
+	'wikilog-form-date' => 'Dattum:',
+	'wikilog-form-status' => 'Stattus:',
+	'wikilog-form-preview' => 'Vör-Aansech:',
+	'wikilog-form-comment' => 'Aanmärkung:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -1957,6 +2026,10 @@ $messages['nl'] = array(
 	'wikilog-item-brief-header' => ': <i><small>door $5, van [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ meer lezen...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|overleg]])',
+	'wikilog-edit-fieldset-legend' => 'Wikilog-instellingen:',
+	'wikilog-edit-signpub' => 'Dit artikel ondertekenen en publiceren',
+	'wikilog-edit-signpub-tooltip' => 'Zorgt ervoor dat dit artikel wordt ondertekend en gepubliceerd in de wikilog.
+Schakel dit vaktje uit om het artikel de status concept te laten houden.',
 	'wikilog-comment-by-user' => 'Reactie van $1 ($2)',
 	'wikilog-comment-by-anon' => 'Reactie van $3 (anoniem)',
 	'wikilog-comment-pending' => 'Deze reactie wacht op moderatie.',
@@ -2141,6 +2214,14 @@ Lo comentari apareisserà pas qu'aprèp verificacion per un moderator.",
 	'wikilog-page-lc' => 'pagina',
 	'wikilog-history-lc' => 'istoric',
 	'wikilog-doc-import-comment' => 'Documentacion importada de wikilog',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'wikilog-authors' => 'Schreiwer',
+	'wikilog-form-author' => 'Schreiwer:',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2713,8 +2794,10 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'wikilog' => 'וויקילאגן',
 	'wikilog-specialwikilog' => 'וויקילאג',
 	'wikilog-tab' => 'וויקילאג',
+	'wikilog-form-date' => 'דאטע',
 	'wikilog-form-preview' => 'פֿאראויסשטעלונג:',
 	'wikilog-preview' => 'פֿאראויסשטעלונג',
 );

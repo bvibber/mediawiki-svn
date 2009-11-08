@@ -192,13 +192,14 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'passwordreset-invalidusername' => 'Anv implijer direizh',
 	'passwordreset-username' => 'Anv implijer :',
 	'passwordreset-newpass' => 'Ger-tremen nevez :',
-	'passwordreset-confirmpass' => 'Kadarnaat ar ger-tremen nevez :',
+	'passwordreset-confirmpass' => 'Kadarnaat ar ger-tremen :',
 	'passwordreset-submit' => 'Adderaouekaat ar ger-tremen',
 	'passwordreset-disableuser' => 'Diweredekaat ar gont implijer ?',
 	'disabledusers' => 'Implijerien diweredekaet',

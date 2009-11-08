@@ -215,12 +215,13 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'ratinghistory-month' => 'miz diwezhañ',
 	'ratinghistory-3months' => '3 miz diwezhañ',
-	'ratinghistory-year' => 'bloavezh diwezhañ',
+	'ratinghistory-year' => 'bloaz tremenet',
 	'ratinghistory-3years' => 'tri bloaz diwezhañ',
 	'ratinghistory-ave' => 'Keidenn : $1',
 );
@@ -1413,6 +1414,15 @@ Las notacions son las seguentas :
 '''(1)''' - Marrit ; '''(2)''' - Mediòcre ; '''(3)''' - Mejan ; '''(4)''' - Bon ; '''(5)''' - Excellent.",
 	'ratinghistory-graph-scale' => "'''Evaluacions per jorn''' <font color=\"red\">''(roge)''</font> afichadas a l'escala ''1:\$1''.",
 	'right-feedback' => 'Utilizar lo formulari de somission per notar una pagina',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'ratinghistory-3months' => 'letscht 3 Munede',
+	'ratinghistory-year' => 'letscht Yaahr',
+	'ratinghistory-3years' => 'letscht 3 Yaahre',
 );
 
 /** Polish (Polski)

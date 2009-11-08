@@ -457,13 +457,14 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'piwik-desc' => 'Insere script Piwik em páginas MediaWiki para rastreio e adiciona [[Special:Piwik|algumas estatísticas]]',
 	'piwik-lastvisits' => 'Últimas visitas',
 	'piwik-countries' => 'Países',
-	'piwik-browsers' => 'Browsers',
+	'piwik-browsers' => 'Navegadores',
 	'right-viewpiwik' => 'Ver [[Special:Piwik|estatísticas Piwik]]',
 );
 

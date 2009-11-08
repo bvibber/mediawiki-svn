@@ -1056,11 +1056,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'player' => 'Reprodutor',
-	'player-desc' => 'Reprodução multimédia incorporada usando plugins de browser comuns, e uma [[Special:Player|página especial]]',
+	'player-desc' => "Reprodução multimédia incorporada usando ''plugins'' comuns do navegador, e uma [[Special:Player|página especial]]",
 	'player-title' => 'Reprodutor',
 	'player-playertitle' => 'Reprodutor: $1',
 	'player-file' => 'Nome do ficheiro',

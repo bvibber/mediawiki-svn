@@ -385,18 +385,19 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'imagemap_desc' => 'Permesas klientflankajn klakeblajn bildmapojn uzante etikedon <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_no_image' => 'Error: devas deklari bildon en la unua linio',
+	'imagemap_no_image' => 'Eraro: devas specifi bildon en la unua linio',
 	'imagemap_invalid_image' => 'Eraro: bildo estas aŭ nevalida aŭ neekzista',
 	'imagemap_bad_image' => 'Eraro: bildo estas nigralistigita en ĉi tiu paĝo',
 	'imagemap_no_link' => 'Eraro: neniu valida ligilo estis trovita ĉe fino de linio $1',
 	'imagemap_invalid_title' => 'Eraro: nevalida titolo en ligilo ĉe linio $1',
 	'imagemap_missing_coord' => 'Eraro: mankas sufiĉaj koordinatoj por formo ĉe linio $1',
 	'imagemap_unrecognised_shape' => 'Eraro: nekonata formo ĉe linio $1; ĉiu linio devas komenci kun unu el: default, rect, circle aŭ poly',
-	'imagemap_no_areas' => 'Eraro: almenaŭ unu specifigado de areo devas esti donata',
+	'imagemap_no_areas' => 'Eraro: almenaŭ unu specifado de areo devas esti donata',
 	'imagemap_invalid_coord' => 'Eraro: Nevalida koordinato ĉe linio $1; ĝi nepre estu nombro',
 	'imagemap_invalid_desc' => 'Eraro: nevalida desc deklarado, devas esti unu el: <tt>$1</tt>',
 	'imagemap_description' => 'Pri ĉi tiu bildo',

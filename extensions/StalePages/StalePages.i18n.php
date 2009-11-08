@@ -106,12 +106,13 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'stalepages' => 'Malfreŝaj paĝoj',
 	'stalepages-desc' => 'Generas [[Special:Stalepages|listo de paĝoj]] kiuj ne estis redaktitaj lastatempe.',
-	'stalepages-summary' => 'Jen listo de paĝoj ne redaktitaj dum la lastaj $1 tagoj.',
+	'stalepages-summary' => 'Jen listo de paĝoj ne redaktitaj dum la {{PLURAL:$1|lasta tago|lastaj $1 tagoj}}.',
 );
 
 /** Spanish (Español)

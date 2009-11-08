@@ -185,12 +185,13 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'refreshspecial-title' => 'Freskaat ar pajennoù arbennik',
 	'refreshspecial-select-all-pages' => 'Diuzañ an holl bajennoù',
-	'refreshspecial-reconnected' => 'Adluget.',
+	'refreshspecial-reconnected' => 'Adkevreet.',
 );
 
 /** Bosnian (Bosanski)
@@ -974,6 +975,35 @@ Uwaga – odświeżenie może trwać długo na dużej wiki.',
 	'refreshspecial-page-result' => 'otrzymała $1 {{PLURAL:$1|wiersz|wiersze|wierszy}} w',
 	'refreshspecial-total-display' => 'Odświeżono $1 {{PLURAL:$1|stronę|strony|stron}} łącznie $2 {{PLURAL:$2|wiersz|wiersze|wierszy}} w czasie $3 (pełny czas wykonania skryptu $4)',
 	'right-refreshspecial' => 'Odświeżanie stron specjalnych',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'refreshspecial' => 'Agiorna le pàgine speciaj',
+	'refreshspecial-desc' => "A përmëtt l'[[Special:RefreshSpecial|agiornament manual ëd le pàgine speciaj]] ëd le pàgine speciaj",
+	'refreshspecial-title' => 'Agiorna le pàgine speciaj',
+	'refreshspecial-help' => "Sta pàgina special-sì a dà ij mojen për agiorné le pàgine speciaj.
+Quand it l'has sërnù tute le pàgine ch'it veule agiorné, sgnaca ël boton \"Agiorna selessionà\" sì sota për agiorné le pàgine speciaj selessionà.
+'''Atension:''' L'agiornament a peul duré bastansa an dzora a wiki gròsse.",
+	'refreshspecial-button' => 'Agiorna selessionà',
+	'refreshspecial-fail' => 'Për piasì contròla almanch na pàgina special da agiorné.',
+	'refreshspecial-refreshing' => 'agiornament pàgine speciaj',
+	'refreshspecial-skipped' => 'da gnente, sautà',
+	'refreshspecial-choice' => 'agiornament pàgine speciaj',
+	'refreshspecial-js-disabled' => "(<i>It peule pa selessioné tute le pàgine quand che JavaScript a l'é disabilità</i>)",
+	'refreshspecial-select-all-pages' => 'Selession-a tute le pàgine',
+	'refreshspecial-link-back' => 'Torna a la pàgina special',
+	'refreshspecial-none-selected' => "It l'has pa selessionà gnun-e pàgine speciaj. Tornà a la selession ëd default",
+	'refreshspecial-db-error' => 'Eror: eror dël database',
+	'refreshspecial-no-page' => 'A-i é pa la pàgina special',
+	'refreshspecial-slave-lagged' => 'Artard ëd lë slave, speta ...',
+	'refreshspecial-reconnected' => 'Torna conetù.',
+	'refreshspecial-reconnecting' => 'Conession falìa, reconession tra 10 second ...',
+	'refreshspecial-page-result' => 'trovà $1 {{PLURAL:$1|riga|righe}} an',
+	'refreshspecial-total-display' => "Agiornà $1 {{PLURAL:$1|pàgina|pàgine}} për un total ëd $2 {{PLURAL:$2|riga|righe}} ant un temp ëd $3 (ël temp total d'esecussion dlë script a l'é $4)",
+	'right-refreshspecial' => 'Agiorna pàgine speciaj',
 );
 
 /** Portuguese (Português)

@@ -769,8 +769,11 @@ $messages['lb'] = array(
 	'slippymap_desc' => 'Setzt eng Markéierung <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> derbäi déi et erlaabt statesch an dynamesch Kaarten  anzebannen. Ënnerstëtzt verschidde Kaarte-Servicer wéi [http://openstreetmap.org openstreetmap.org OpenStreetMap] an NASA Worldwind',
 	'slippymap_error' => '$1-Feeler: $2',
 	'slippymap_errors' => '$1-Feeler:',
+	'slippymap_error_tag_content_given' => 'De(n) <tt>&lt;$1&gt;</tt>-Tag erkennt nëmmen Attribut-Argumenter (&lt;$1 [...]/&gt;), a keen Text (&lt;$1&gt; ... &lt;/$1&gt;)',
+	'slippymap_error_missing_arguments' => 'Dir hutt keng Atributer fir de(n)  &lt;$1&gt;-Tag uginn, kuckt [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax usage information] fir zze gesinn wéi Dir dat maache sollt.',
 	'slippymap_error_missing_attribute_lat' => 'Attribut <tt>lat</tt> ((fir déi geographesch Breet)) feelt.',
 	'slippymap_error_missing_attribute_lon' => 'Attribut <tt>lon</tt> (fir déi geographesch Längt) feelt.',
+	'slippymap_error_missing_attribute_zoom' => 'De <tt>zoom</tt>-attribut feelt (fir den Niveau vum Zoom)',
 	'slippymap_error_invalid_attribute_lat_value_nan' => 'De Wäert <tt>$1</tt> ass net valabel fir de <tt>lag t</tt>-Attribut (geografesch Längt), de Wäert muss eng valabel Zuel sinn.',
 	'slippymap_error_unknown_attribute' => 'Den Attribut <tt>$1</tt> ass onbekannt.',
 	'slippymap_code' => 'Wikicode fir dës Kaart ze kucken:',
@@ -781,14 +784,15 @@ $messages['lb'] = array(
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author Brest
  */
 $messages['mk'] = array(
-	'slippymap_desc' => 'Додава ознака <tt>&lt;slippymap&gt;</tt> која дозволува вметнување на статични и динамични карти. Поддржува повеќе картографски служби, вклучувајќи ги [http://openstreetmap.org OpenStreetMap] и NASA Worldwind',
+	'slippymap_desc' => 'Додава ознака <tt>&lt;slippymap&gt;</tt> која дозволува вгнездување на статични и динамични карти. Поддржува повеќе картографски сервиси, вклучувајќи ги [http://openstreetmap.org OpenStreetMap] и NASA Worldwind',
 	'slippymap_error' => '$1 грешка: $2',
 	'slippymap_errors' => '$1 грешка:',
 	'slippymap_error_tag_content_given' => 'Ознаката <tt>&lt;$1&gt;</tt> прима само атрибутни аргументи (&lt;$1 [...]/&gt;), а не вносен текст (&lt;$1&gt; ... &lt;/$1&gt;)',
 	'slippymap_error_missing_arguments' => 'Не зададовте никакви атрибути за ознаката &lt;$1&gt;, видете [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax информации за употреба] за да дознаете како да ја повикате.',
-	'slippymap_error_missing_attribute_lat' => 'Недостига <tt>lat</tt> атрибут (за геоградската ширина).',
+	'slippymap_error_missing_attribute_lat' => 'Недостига <tt>lat</tt> атрибут (за географската ширина).',
 	'slippymap_error_missing_attribute_lon' => 'Недостига <tt>lon</tt> атрибут (за географската должина).',
 	'slippymap_error_missing_attribute_zoom' => 'Недостига <tt>zoom</tt> атрибут (за нивото на зум).',
 	'slippymap_error_invalid_attribute_lat_value_nan' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>lat</tt> (географска ширина), внесената вредност мора да биде важечки број.',
@@ -801,11 +805,11 @@ $messages['mk'] = array(
 	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот, важечки обележувачки се $2.',
 	'slippymap_error_unknown_attribute' => 'Атрибутот <tt>$1</tt> е непознат.',
 	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>lat</tt> (географска ширина). Географските ширини мора да изнесуваат помеѓу -90 и 90 степени.',
-	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот<tt>lon</tt> (географска должина). Географските должини мора да изнесуваат помеѓу -180 и 180 степени.',
-	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>zoom</tt>. Нивоата на зум мораат да изнесуваат помеѓу $2 и $3.',
-	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>width</tt>. Широчините мораат да изнесуваат помеѓу $2 и $3.',
-	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>height</tt>. Височините мора да изнесуваат помеѓу $2 и $3.',
-	'slippymap_code' => 'Викикод за картава подолу:',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>lon</tt> (географска должина). Географските должини се помеѓу -180 и 180 степени.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>zoom</tt>. Нивото на зум мора да е помеѓу $2 и $3.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>width</tt>. Вредноста мора да е помеѓу $2 и $3.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>height</tt>. Вредноста мора да е помеѓу $2 и $3.',
+	'slippymap_code' => 'Викикод за овој поглед на карта:',
 	'slippymap_button_code' => 'Преземи викикод',
 	'slippymap_resetview' => 'Основен поглед',
 	'slippymap_clicktoactivate' => 'Кликнете за да ја активирате картата',

@@ -130,7 +130,7 @@ $messages['de'] = array(
 Du hast einen Kommentar zu dieser Seite? Trag ihn hier ein oder <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbeite die Seite direkt]</span>.',
 	'commentbox-savebutton' => 'Kommentar speichern',
 	'commentbox-name' => 'Name:',
-	'commentbox-name-explanation' => '<small>(Tipp: Wenn Du Dich [[Special:UserLogin|anmeldest]], musst Du nicht mehr hier Deinen Namen angeben)</small>',
+	'commentbox-name-explanation' => '<small>(Tipp: Wenn du dich [[Special:UserLogin|anmeldest]], musst du hier nicht mehr deinen Namen angeben)</small>',
 	'commentbox-log' => 'Neuer Kommentar',
 	'commentbox-first-comment-heading' => '== Kommentare ==',
 	'commentbox-regex' => '/\\n==\\s*Kommentare\\s*==\\s*\\n/i',
@@ -672,6 +672,13 @@ $messages['tr'] = array(
 	'commentbox-name' => 'İsim:',
 	'commentbox-log' => 'Yeni yorumlar',
 	'commentbox-first-comment-heading' => '==Yorumlar ==',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'commentbox-desc' => 'Додає поле коментаря до певних сторінок',
 );
 
 /** Vèneto (Vèneto)

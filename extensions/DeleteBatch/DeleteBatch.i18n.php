@@ -326,7 +326,7 @@ Alŝutita dosiero enhavu paĝan nomon kaj nedevigan kialon apartigita de signo "
 	'deletebatch-file-missing' => 'Ne eblas legi donatan dosieron',
 	'deletebatch-select-script' => 'skripto por forigi paĝon',
 	'deletebatch-select-yourself' => 'vi',
-	'deletebatch-no-page' => 'Bonvolu specifigi almenaŭ unu paĝon por forigi AŬ selekti dosieron enhavantan paĝliston.',
+	'deletebatch-no-page' => 'Bonvolu specifi almenaŭ unu paĝon por forigi AŬ selekti dosieron enhavantan paĝliston.',
 );
 
 /** Spanish (Español)
@@ -928,6 +928,13 @@ Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu 
 	'right-deletebatch' => 'Suprimir de paginas en lòt',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'deletebatch-or' => '<b>odder</b>',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  * @author Maikking
@@ -966,6 +973,28 @@ Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej l
 $messages['pms'] = array(
 	'deletebatch' => 'Scansela na partìa ëd pàgine',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Scansela na partìa ëd pàgine]]',
+	'deletebatch-help' => 'Scansela na partìa ëd pàgine.
+It peule ëdcò fé na scanselassion sìngola, o scanselé dle pàgine listà ant un file.
+Sern n\'utent che a sarà mostà ant ël registr ëd le scanselassion.
+Ij file carià a dovrìo conten-e ël nòm pàgina e na rason opsional, separà da un caràter "|" an minca linia.',
+	'deletebatch-caption' => 'Lista dle pàgine:',
+	'deletebatch-title' => 'Scansela na partìa',
+	'deletebatch-link-back' => 'Va andré a la pàgina special',
+	'deletebatch-as' => 'Fà giré lë script com:',
+	'deletebatch-both-modes' => 'Për piasì sern na pàgina specificà o na serta lista ëd pàgine.',
+	'deletebatch-or' => '<b>o</b>',
+	'deletebatch-delete' => 'Scansela',
+	'deletebatch-page' => 'Pàgine da scanselé:',
+	'deletebatch-processing-from-file' => 'scanselassion  ëd pàgine da la lista ëd file',
+	'deletebatch-processing-from-form' => 'scanselassion ëd pàgine da na forma',
+	'deletebatch-omitting-nonexistant' => 'As lassa sté la pàgina $1$ ch\'a esist pa.',
+	'deletebatch-omitting-invalid' => 'As lassa sté la pàgina $1 pa bon-a.',
+	'deletebatch-file-bad-format' => 'Ël file a dovrìa esse mach test',
+	'deletebatch-file-missing' => 'As peul pa les-se ël file dàit',
+	'deletebatch-select-script' => 'Script dë scanselassion ëd na pàgina',
+	'deletebatch-select-yourself' => 'Ti',
+	'deletebatch-no-page' => "Për piasì specìfica almanch na pàgina da scanselé o sern un file ch'a conten-a na lista ëd pàgine.",
+	'right-deletebatch' => 'Scansela le pàgine an partìa',
 );
 
 /** Portuguese (Português)

@@ -5071,6 +5071,8 @@ $4',
 	'repoadmin-edit-sucess' => '"[[Special:Code/$1|$1]]" എന്ന റെപ്പോസിറ്ററി വിജയകരമായി പുതുക്കിയിരിക്കുന്നു.',
 	'right-repoadmin' => 'കോഡ് റെപ്പോസിറ്ററിയുടെ കൈകാര്യം',
 	'right-codereview-use' => 'Special:Code ഉപയോഗം',
+	'right-codereview-add-tag' => 'നാൾപ്പതിപ്പുകൾക്ക് പുതിയ റ്റാഗുകൾ ചേർക്കുക',
+	'right-codereview-remove-tag' => 'നാൾപ്പതിപ്പുകളിൽ നിന്നും റ്റാഗുകൾ നീക്കുക',
 	'right-codereview-set-status' => 'നാൾപ്പതിപ്പുകളുടെ സ്ഥിതിയിൽ മാറ്റം വരുത്തുക',
 	'right-codereview-link-user' => 'രചയിതാക്കളെ വിക്കി ഉപയോക്താക്കളുമായി കണ്ണി ചേർക്കുക',
 	'specialpages-group-developer' => 'വികസന ഉപകരണങ്ങൾ',
@@ -5897,8 +5899,11 @@ $messages['pdc'] = array(
 	'code-references' => 'Neegschte Versione',
 	'code-change-removed' => 'gelöscht:',
 	'code-change-added' => 'dezu geduh:',
+	'code-field-author' => 'Schreiwer',
+	'code-rev-author' => 'Schreiwer',
 	'code-rev-message' => 'Comment:',
 	'code-rev-modified-d' => 'gelöscht',
+	'code-rev-modified-m' => 'gennert',
 	'code-status-new' => 'nei',
 	'code-status-ok' => 'OK',
 	'codereview-subtitle' => 'Fer $1',
@@ -7825,6 +7830,7 @@ $messages['ug-latn'] = array(
  * @author AS
  * @author Ahonc
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'code' => 'Перевірка коду',
@@ -7914,6 +7920,7 @@ $4',
 	'repoadmin-edit-button' => 'Готово',
 	'repoadmin-edit-sucess' => 'Сховище «[[Special:Code/$1|$1]]» успішно змінено.',
 	'right-repoadmin' => 'Управління сховищами кодів',
+	'right-codereview-use' => 'Використання Special:Code',
 	'right-codereview-add-tag' => 'Додавання тегів до редакцій',
 	'right-codereview-remove-tag' => 'Видалення тегів з редакцій',
 	'right-codereview-post-comment' => 'Додавання коментарів до редакцій',

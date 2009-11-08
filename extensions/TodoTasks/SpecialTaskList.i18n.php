@@ -180,17 +180,18 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
-	'tasklist' => "Roll ar c'hefridioù",
-	'tasklistbyproject' => "Roll ar c'hefridioù dre raktres",
+	'tasklist' => 'Roll trevelloù',
+	'tasklistbyproject' => 'Roll trevelloù dre raktres',
 	'tasklistunknownproject' => 'Raktres dianav',
 	'tasklistunspecuser' => "N'eo ket diferet an implijer",
 	'tasklistincorrectuser' => 'Anv implijer direizh',
 	'tasklistemail' => '%s ker',
-	'tasklistemailsubject' => "[%s] Kemmoù e roll ar c'hefridioù",
-	'tasklistmytasks' => "Va c'hefridioù",
+	'tasklistemailsubject' => '[%s] Kemmoù e roll an trevelloù',
+	'tasklistmytasks' => 'Ma zrevelloù',
 	'tasklistchooseproj' => 'Diuzañ ur raktres :',
 	'tasklistprojdisp' => 'Diskwel',
 	'tasklistbyname' => '== Roll an traoù da ober gant $s ==',

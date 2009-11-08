@@ -680,6 +680,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -700,7 +701,7 @@ Verŝajne ne estas uzanto kun tiu nomo.',
 	'regexblock-view-reason' => 'kialo: $1',
 	'regexblock-view-reason-default' => 'malspecifa kialo',
 	'regexblock-view-block-infinite' => 'ĉiama bloko',
-	'regexblock-view-block-by' => 'forbarita de',
+	'regexblock-view-block-by' => 'forbarita de:',
 	'regexblock-view-block-unblock' => 'restarigu',
 	'regexblock-view-stats' => 'statistikoj',
 	'regexblock-view-time' => 'je $1',

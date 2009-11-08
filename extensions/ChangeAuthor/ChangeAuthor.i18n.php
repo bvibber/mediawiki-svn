@@ -998,6 +998,7 @@ Si iste error persiste, le base de datos es probabilemente defecte.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
@@ -1010,10 +1011,10 @@ $messages['id'] = array(
 	'changeauthor-comment' => 'Komentar:',
 	'changeauthor-changeauthors-multi' => 'Ganti {{PLURAL:$1|penulis|penulis}}',
 	'changeauthor-explanation-multi' => 'Dalam formulir ini Anda dapat mengubah penulis suatu revisi.
-Anda hanya perlu mengubah satu nama pengguna atau lebih pada daftar di bawah ini, menambahkan komentar (manasuka) dan klik tombol "Ganti penulis".',
+Anda hanya perlu mengubah satu nama pengguna atau lebih pada daftar di bawah ini, menambahkan komentar (opsional) dan klik tombol "Ganti penulis".',
 	'changeauthor-changeauthors-single' => 'Ganti penulis',
 	'changeauthor-explanation-single' => 'Dalam formulir ini Anda dapat mengubah penulis suatu revisi.
-Anda hanya perlu mengubah nama pengguna di bawah ini, menambahkan komentar (manasuka) dan klik tombol "Ganti penulis"',
+Anda hanya perlu mengubah nama pengguna di bawah ini, menambahkan komentar (opsional) dan klik tombol "Ganti penulis"',
 	'changeauthor-invalid-username' => 'Nama pengguna tidak sah "$1".',
 	'changeauthor-nosuchuser' => 'Tidak ada pengguna dengan nama "$1".',
 	'changeauthor-revview' => 'Revisi #$1 dari $2',

@@ -146,11 +146,12 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'importfreeimages_owner' => 'Aozer',
-	'importfreeimages_next' => '$1 da heul',
+	'importfreeimages_next' => "$1 war-lerc'h",
 );
 
 /** Bosnian (Bosanski)
@@ -963,6 +964,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'importfreeimages_owner' => 'Schreiwer',
 	'importfreeimages_next' => 'Neegschte $1',
 );
 

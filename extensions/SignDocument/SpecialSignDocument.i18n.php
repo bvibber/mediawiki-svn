@@ -575,8 +575,10 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
+	'signdocument' => 'Sinañ an teul',
 	'sign-selectdoc' => 'Teul :',
 	'sign-realname' => 'Anv :',
 	'sign-address' => "Chomlec'h :",
@@ -591,6 +593,7 @@ $messages['br'] = array(
 	'sign-list-hidephone' => 'chom hep menegiñ an niverenn bellgomz',
 	'sign-list-hidebday' => 'Chom hep menegiñ an oad',
 	'sign-list-hideemail' => "Chom hep menegiñ ar chomlec'h postel",
+	'sign-submit' => 'Sinañ an teul',
 	'sign-view-selectfields' => '<b>Maeziennoù da ziskwel :</b>',
 	'sign-viewfield-realname' => 'Anv',
 	'sign-viewfield-address' => "Chomlec'h",
@@ -1892,7 +1895,7 @@ $1',
 -->[[Special:Contributions/$1|szerkesztések]] • <!--
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
--->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBL-ek] • <!--
 -->[[Special:BlockIP/$1|blokkolás]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokkolási napló] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} IP-ellenőrzés])<!--

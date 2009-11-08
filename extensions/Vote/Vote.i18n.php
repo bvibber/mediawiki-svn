@@ -456,6 +456,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -1500,16 +1501,22 @@ riddler|O Charada',
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'vote' => 'Votaţi',
+	'vote-desc' => 'Furnizează capacităţi simple de votare',
 	'vote-current' => "Votul dumneavoastră curent este pentru '''$1'''.",
-	'vote-caption' => 'Alegerea dvs.:',
+	'vote-legend' => 'Plasaţi sau modificaţi votul',
+	'vote-caption' => 'Alegerea dumneavoastră:',
 	'vote-submit' => 'Votează',
 	'vote-registered' => 'Votul dumneavoastră a fost înregistrat.',
 	'vote-view-results' => 'Vizualizează rezultatele',
 	'vote-results' => 'Rezultatele votului',
 	'vote-results-choice' => 'Alegeţi',
+	'vote-results-count' => 'Numărare',
+	'vote-results-none' => 'Niciun vot nu a fost plasat în acest timp.',
+	'vote-login' => 'Trebuie [$1 să vă autentificaţi] pentru a vota.',
 	'vote-invalid-choice' => 'Trebuie să selectaţi una din opţiunile disponibile.',
 	'right-vote' => 'Votaţi',
 	'right-voteadmin' => 'Vedeţi rezultatele votului',

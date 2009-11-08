@@ -1726,6 +1726,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'badimages-add-btn' => 'Dezu duh',
 	'badimages-name' => 'Naame:',
 	'badimages-reason' => 'Grund:',
 );

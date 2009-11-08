@@ -496,13 +496,14 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'recordadmin-select' => 'Elekti',
 	'recordadmin-newsearch' => 'Nova $1 serĉo',
 	'recordadmin-submit' => 'Ek!',
-	'recordadmin-create' => 'Trovi aŭ krei rikordon "$1"',
+	'recordadmin-create' => 'Trovi aŭ krei rikordojn "$1"',
 	'recordadmin-alreadyexist' => 'Bedaŭrinde, "$1" jam ekzistas!',
 	'recordadmin-createsuccess' => '$1 kreita',
 	'recordadmin-badtitle' => 'Fuŝa titolo!',

@@ -250,9 +250,10 @@ $messages['lb'] = array(
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author Brest
  */
 $messages['mk'] = array(
-	'stringfunctions-desc' => 'Го обогатува парсерот со низни функции',
+	'stringfunctions-desc' => 'Проширување на парсерот со функции за работа со низи',
 );
 
 /** Low German (Plattdüütsch)

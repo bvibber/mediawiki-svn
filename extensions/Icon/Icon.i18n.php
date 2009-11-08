@@ -638,6 +638,15 @@ $messages['tr'] = array(
 	'icon-badimage' => 'Kötü resim',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'icon-badimage' => 'Помилкове зображення',
+	'icon-badwidth' => 'Помилкова ширина',
+	'icon-desc' => 'Дозволяє використовувати зображення в якості іконок та посилань',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

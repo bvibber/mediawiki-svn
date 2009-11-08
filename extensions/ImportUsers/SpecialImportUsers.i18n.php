@@ -1359,6 +1359,36 @@ $messages['pl'] = array(
 	'right-import_users' => 'Hurtowe importowanie kont użytkowników',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'importusers' => 'Ampòrta utent',
+	'importusers-desc' => '[[Special:ImportUsers|A ampòrta utent]] an partìa da file CSV; codìfica: UTF-8',
+	'importusers-uploadfile' => 'Caria file',
+	'importusers-form-caption' => 'Anseriss file CSV (UTF-8)',
+	'importusers-form-file' => 'Formà file utent (CSV):',
+	'importusers-form-replace-present' => 'Rimpiassa utent esistemt',
+	'importusers-form-button' => 'Ampòrta',
+	'importusers-user-added' => "L'utent '''$1''' a l'é stàit giontà.",
+	'importusers-user-present-update' => "L'utent '''$1''' a esist già.
+Modificà.",
+	'importusers-user-present-not-update' => "L'utent '''$1''' a esist già.
+Pa modificà.",
+	'importusers-user-invalid-format' => 'Ij dat utent ant la linia #$1 a son pa bon o a son biank.
+Sautà.',
+	'importusers-log' => 'Registr amportassion utent',
+	'importusers-log-summary' => 'Resumé',
+	'importusers-log-summary-all' => 'Tùit',
+	'importusers-log-summary-added' => 'Giontà',
+	'importusers-log-summary-updated' => 'Modificà',
+	'importusers-login-name' => 'Nòm utent',
+	'importusers-password' => 'Ciav',
+	'importusers-email' => 'e-mail',
+	'importusers-realname' => 'nòm ver',
+	'right-import_users' => 'Ampòrta utent an partìa',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

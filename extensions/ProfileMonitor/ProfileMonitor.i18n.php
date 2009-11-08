@@ -132,6 +132,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -139,8 +140,8 @@ $messages['br'] = array(
 	'profiling-ok' => 'Mat eo',
 	'profiling-data-process' => 'Argerzh',
 	'profiling-data-count' => 'Kontañ',
-	'profiling-data-time' => 'Padelezh (hollek)',
-	'profiling-data-average' => 'Padelezh (keidenn)',
+	'profiling-data-time' => 'Pad (hollek)',
+	'profiling-data-average' => 'Pad (keidenn)',
 );
 
 /** Bosnian (Bosanski)

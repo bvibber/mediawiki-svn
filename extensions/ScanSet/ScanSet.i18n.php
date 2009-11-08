@@ -339,19 +339,20 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'scanset-desc' => 'Rigardi bildojn de skanitaj paĝoj de la CD/DVD-kolekto de Andreas Grosz',
-	'scanset_no_name' => 'Error: Vi devas specifigi nomon de skanitajxaro, ekz-e &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Error: Nevalida aŭ mankanta skanita bildaro.',
-	'scanset_unrecognised_index_format' => 'Error: Nekonata formato de indekso',
-	'scanset_opendir_error' => 'Error: Eraro, ne povas malfermi dosierujon $1',
-	'scanset_no_files' => 'Error: Neniuj dosieroj estas en tiu dosierujo.',
-	'scanset_no_volumes' => 'Error: Neniuj dosierujoj de datumportilo estis trovitaj',
-	'scanset_missing_index_file' => 'Error: Indeksa dosiero $1 ne estis trovita',
-	'scanset_index_file_error' => 'Error: Eraro en formato de indeksa dosiero ĉe linio $1',
-	'scanset_invalid_volume' => 'Error: Nevalida datumportilo',
+	'scanset_no_name' => 'Eraro: Vi devas specifi nomon de skanitaĵaro, ekz. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Eraro: Nevalida aŭ mankanta skanita bildaro.',
+	'scanset_unrecognised_index_format' => 'Eraro: Nekonata formato de indekso',
+	'scanset_opendir_error' => 'Eraro: Ne povas malfermi dosierujon $1',
+	'scanset_no_files' => 'Eraro: Neniuj dosieroj estas en tiu dosierujo.',
+	'scanset_no_volumes' => 'Eraro: Neniuj dosierujoj de datumportilo estis trovitaj',
+	'scanset_missing_index_file' => 'Eraro: Indeksa dosiero $1 ne estis trovita',
+	'scanset_index_file_error' => 'Earo: Eraro en formato de indeksa dosiero ĉe linio $1',
+	'scanset_invalid_volume' => 'Eraro: Nevalida datumportilo',
 	'scanset_next' => 'Sekva &gt;',
 	'scanset_prev' => '&lt; Antaŭa',
 );
@@ -1014,6 +1015,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'scanset_next' => 'Neegscht →',
+	'scanset_prev' => '← Letscht',
 );
 
 /** Polish (Polski)

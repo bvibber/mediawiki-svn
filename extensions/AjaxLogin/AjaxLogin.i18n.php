@@ -649,6 +649,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  * @author Malafaya
  * @author Waldir
@@ -660,14 +661,15 @@ Isto leva-lo-á a abandonar esta página de edição e poderá perder a sua edi�
 	'ajaxLogin2' => 'Tem a certeza?
 Poderá perder as suas alterações a esta página se abandonar esta página agora.',
 	'ajaxlogin-create' => 'Criar uma conta',
-	'al-nosuchuser' => 'Não existe usuário com o nome "$1".
-Nomes de usuário são sensíveis à maiúsculas.
-Cheque se você soletrou corretamente.',
+	'al-nosuchuser' => 'Não existe nenhum utilizador com o nome "$1".
+Nomes de utilizador são sensíveis à maiúsculas.
+Verifique se soletrou o nome correctamente.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Brunoy Anastasiya Seryozhenko
  * @author Eduardo.mps
+ * @author Hamilton Abreu
  */
 $messages['pt-br'] = array(
 	'ajaxlogin-desc' => 'Caixa dinâmica que permite que os utilizadores se autentiquem e gravem sua palavra-chave',
@@ -676,6 +678,9 @@ Isto o impedirá de editar esta página e você perderá esta edição.',
 	'ajaxLogin2' => 'Tem certeza?
 Você perderá as suas edições se abandonar a página agora.',
 	'ajaxlogin-create' => 'Criar uma conta',
+	'al-nosuchuser' => 'Não existe usuário com o nome "$1".
+Nomes de usuário são sensíveis à maiúsculas.
+Cheque se você soletrou corretamente.',
 );
 
 /** Romanian (Română)

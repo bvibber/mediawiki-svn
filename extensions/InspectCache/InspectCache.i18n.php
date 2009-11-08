@@ -1086,11 +1086,12 @@ $messages['ug-latn'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'inspectcache' => 'Перегляд кешу',
-	'inspectcache-desc' => 'Простий інструмент для налагодження і перегляду вмісту загального кешу',
+	'inspectcache-desc' => 'Простий інструмент для налагодження і перегляду вмісту спільного кешу',
 	'inspectcache-ok' => 'Гаразд',
 	'inspectcache-general' => 'Загальний кеш',
 	'inspectcache-parser' => 'Кеш парсера',
