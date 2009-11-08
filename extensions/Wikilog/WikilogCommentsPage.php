@@ -368,7 +368,8 @@ class WikilogCommentsPage
 			$by = wfMsgExt( 'wikilog-comment-by-user',
 				array( 'parseinline', 'replaceafter' ),
 				'<span class="wl-comment-author">' . $this->mSkin->userLink( $comment->mUserID, $comment->mUserText ) . '</span>',
-				$this->mSkin->userTalkLink( $comment->mUserID, $comment->mUserText )
+				$this->mSkin->userTalkLink( $comment->mUserID, $comment->mUserText ),
+				$comment->mUserText
 			);
 		} else {
 			$by = wfMsgExt( 'wikilog-comment-by-anon',
