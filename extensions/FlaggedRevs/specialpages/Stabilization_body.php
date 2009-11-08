@@ -111,8 +111,10 @@ class Stabilization extends UnlistedSpecialPage
 		# Handle submission data
 		} else {
 			// Custom expiry takes precedence
-			$this->expiry = strlen($this->expiry) ? $this->expiry : $this->expirySelection;
-			if( $this->expiry == 'existing' ) $this->expiry = $this->oldExpiry;
+			$this->expiry = strlen($this->expiry) ?
+				$this->expiry : $this->expirySelection;
+			if( $this->expiry == 'existing' )
+				$this->expiry = $this->oldExpiry;
 			// Custom reason takes precedence
 			if( $this->reasonSelection != 'other' ) {
 				$comment = $this->reasonSelection; // start with dropdown reason
@@ -128,6 +130,29 @@ class Stabilization extends UnlistedSpecialPage
 			if( $this->select && !in_array( $this->select, $allowed ) ) {
 				return false; // invalid value
 			}
+			// Check autoreview setting
+			if( !self::userCanSetAutoreviewLevel($this->autoreview) ) {
+				return false; // invalid value
+			}
+		}
+		return true;
+	}
+
+	/**
+	* Check if a user can set the autoreview restiction level to $right
+	* @param string $level
+	* @returns bool
+	*/
+	public static function userCanSetAutoreviewLevel( $right ) {
+		global $wgUser;
+		# Don't let them choose levels above their own rights
+		if( $right == 'sysop' ) {
+			// special case, rewrite sysop to protect and editprotected
+			if( !$wgUser->isAllowed('protect') && !$wgUser->isAllowed('editprotected') ) {
+				return false;
+			}
+		} else if( !$wgUser->isAllowed($right) ) {
+			return false;
 		}
 		return true;
 	}
@@ -307,15 +332,10 @@ class Stabilization extends UnlistedSpecialPage
 		global $wgUser, $wgFlaggedRevsRestrictionLevels;
 		$levels = array();
 		foreach( $wgFlaggedRevsRestrictionLevels as $key ) {
-			# Don't let them choose levels above their own (aka so they can still unprotect and edit the page).
-			# but only when the form isn't disabled
-			if( $key == 'sysop' ) {
-				// special case, rewrite sysop to protect and editprotected
-				if( !$wgUser->isAllowed('protect') && !$wgUser->isAllowed('editprotected') && $this->isAllowed )
-					continue;
-			} else {
-				if( !$wgUser->isAllowed($key) && $this->isAllowed )
-					continue;
+			# Don't let them choose levels they can't set, 
+			# but *show* them all when the form is disabled.
+			if( $this->isAllowed && !self::userCanSetAutoreviewLevel($key) ) {
+				continue;
 			}
 			$levels[] = $key;
 		}
