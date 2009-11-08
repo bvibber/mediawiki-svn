@@ -104,7 +104,7 @@
 		$errors = array(		    UPLOAD_ERR_OK => 'There is no error, the file uploaded with success.',		    UPLOAD_ERR_INI_SIZE => 'The uploaded file exceeds the upload_max_filesize directive in php.ini.',		    UPLOAD_ERR_FORM_SIZE => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.',		    UPLOAD_ERR_PARTIAL => 'The uploaded file was only partially uploaded.',		    UPLOAD_ERR_NO_FILE => 'No file was uploaded.',		    UPLOAD_ERR_NO_TMP_DIR => 'Missing a temporary folder.',		    UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk.',		    UPLOAD_ERR_EXTENSION => 'File upload stopped by extension.',		);
 		return $errors[$code];
 	}
-	
+
 	function upload_file($file, $filename) {
 		$destination = GE_IMAGES_PATH.$filename;
 		$moveresult = @move_uploaded_file($_FILES[$file]['tmp_name'], $destination);
@@ -146,7 +146,7 @@
 
 		// Check if the extension is supported
 		$extension = strtolower(strrchr($_FILES["file"]["name"],"."));
-		
+
 		if (!in_array($extension, $settings['ALLOWED_EXTENSIONS'])) {
 			$return['key'] = "unsupported_extension";
 			return $return;
@@ -199,10 +199,10 @@
 			if ($array[$value] == "") {
 				// we translate the form names as well
 				$translate = array(
-				    'title'           => ___('FORM_TITLE'), 
-				    'source'          => ___('FORM_SOURCE'), 
-				    'name'            => ___('FORM_NAME'), 
-				    'email'           => ___('FORM_EMAIL'), 
+				    'title'           => ___('FORM_TITLE'),
+				    'source'          => ___('FORM_SOURCE'),
+				    'name'            => ___('FORM_NAME'),
+				    'email'           => ___('FORM_EMAIL'),
 				    'disclaimerAgree' => ___('FORM_DISCLAIMER_AGREE')
 			    );
 
@@ -226,12 +226,17 @@
 		return $newarray;
 	}
 
+	function is_language($lang) {
+	   global $settings;
+	   return in_array($lang, $settings['LANGUAGES']);
+	}
+
 	/*
 	 * Sends an e-mail to OTRS containing the data from this upload
 	 */
 	function send_otrs_mail($data) {
 	    global $settings;
-	    
+
 	    $id = $data['id'];
 	    $secret = md5(GE_SECRET.$data['id'].$data['timestamp']);
 
@@ -243,7 +248,7 @@ Deze foto heeft als titel '".$data['title']."', gemaakt door '".$data['source'].
 onder de licentie '".$data['license']."' met als omschrijving '".$data['description']."'
 De uploader heeft het volgende IP-adres: '".$data['ip']."'
 
-Je kunt de foto bekijken op Wikiportret en de foto daar afwijzen, of een tekst genereren die 
+Je kunt de foto bekijken op Wikiportret en de foto daar afwijzen, of een tekst genereren die
 je kan copy-pasten om een e-mail te schrijven.
 
 Klik op deze link:
@@ -262,7 +267,7 @@ Al vast heel erg bedankt voor je medewerking!
 		$headers	= 'From: '.$data['email']."\r\n".
 					  'Reply-to: '.$data['email']."\r\n".
 					  'X-Mailer: PHP/'.phpversion();
-					  
+
 		@$mail = mail($to, $subject, $msg, $headers);
 
 		// Also mail to some extra people
@@ -291,13 +296,13 @@ Al vast heel erg bedankt voor je medewerking!
 
 	function show_wizard() {
   	    global $settings;
-  	    
+
 		$question   = $GLOBALS['question'];
 		$questions 	= $GLOBALS['questions'];
 		$actions 	= $GLOBALS['actions'];
 		$phpself	= $_SERVER['PHP_SELF'];
-
-		if (!$question) {
+		
+		if (empty($question)) {
 			// welcome, no questions yet
 			show_language_chooser(); // gives a dropdown box of all available languages and changes $GLOBALS['settings']['language'] to that language
 			echo "<p>".disp('WELCOME_MESSAGE')."</p>";
@@ -363,9 +368,9 @@ Al vast heel erg bedankt voor je medewerking!
 			// give 'SUBJECT_PROTECTED' in the function to avoid having to search explanations for 'first'
 			question ($questions["SUBJECT_PROTECTED"][0], $questions['SUBJECT_PROTECTED'][1], $questions['SUBJECT_PROTECTED'][2], 'SUBJECT_PROTECTED');
 		} else {
-			// not the first question or welcome
+  			// not the first question or welcome
 			if (!array_key_exists($question, $actions)) {
-				question ($questions[$question][0], $questions[$question][1], $questions[$question][2], $question);
+				question($questions[$question][0], $questions[$question][1], $questions[$question][2], $question);				
 			} else {
 				// not a question but an action
 				action($actions[$question], $question);

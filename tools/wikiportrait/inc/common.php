@@ -15,15 +15,11 @@
 	session_start();
 
 	// select language
-    $newLanguage = $_GET['newLanguage'];
-	if ($newLanguage) {
-		// set new language
-		$_SESSION['language'] = $newLanguage;
-	}
+	$_SESSION['language'] = GE_LANGUAGE; // default
 
-	// failsafe is value is not yet set
-	if (!$_SESSION['language']) {
-		$_SESSION['language'] = GE_LANGUAGE; // default language set in config.php
+	// Maybe overwrite with a custom setting?
+	if (isset($_GET['newLanguage']) && is_language($_GET['newLanguage'])) {
+        $_SESSION['language'] = $_GET['newLanguage'];
 	}
 
 	// fill a global var with the language
