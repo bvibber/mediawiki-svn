@@ -22,51 +22,105 @@ fn: {
 				return;
 			
 			context.$ui
-				.wrapInner( $j( '<div />' )
+				.wrapInner( $( '<div />' )
 					.addClass( 'wikiEditor-tab-edit' )
 					.attr( 'id', 'wikiEditor-' + context.instance + '-tab-edit' )
 				)
-				.wrapInner( $j( '<div />' )
+				.wrapInner( $( '<div />' )
 					.addClass( 'wikiEditor-tabs' )
 				);
 			var tabList = context.$ui.children();
 			var editTab = tabList.children();
 			
 			var loadingMsg = gM( 'wikieditor-preview-loading' );
-			var previewTab = $j( '<div />' )
+			var previewTab = $( '<div />' )
 				.addClass( 'wikiEditor-tab-preview' )
 				.attr( 'id', 'wikiEditor-' + context.instance + '-tab-preview' )
-				.append( $j( '<div />' )
+				.append( $( '<div />' )
 					.addClass( 'wikiEditor-preview-spinner' )
-					.append( $j( '<img />' )
+					.append( $( '<img />' )
 						.attr( {
-							'src': $j.wikiEditor.imgPath + 'dialogs/loading.gif',
+							'src': $.wikiEditor.imgPath + 'dialogs/loading.gif',
 							'alt': loadingMsg,
 							'title': loadingMsg
 						} )
 					)
 				)
-				.append( $j( '<div />' )
+				.append( $( '<div />' )
 					.addClass( 'wikiEditor-preview-contents' )
 				)
 				.insertAfter( editTab );
-			tabList
-				.append( $j( '<ul />' )
-					.append( $j( '<li />' )
-						.append( $j( '<a />' )
-							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-edit' )
-							.text( gM( 'wikieditor-preview-tab-edit' ) )
-						)
-					)
-					.append( $j( '<li />' )
-						.append( $j( '<a />' )
-							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-preview' )
-							.text( gM( 'wikieditor-preview-tab-preview' ) )
-						)
-					)
-				)
-				.append( editTab )
-				.append( previewTab );
+			
+			// Build the dialog behind the Publish button
+			var dialogID = 'wikiEditor-' + context.instance + '-savedialog';
+			$.wikiEditor.modules.dialogs.fn.create( context, { previewsave: {
+				id: dialogID,
+				titleMsg: 'wikieditor-preview-savedialog-title',
+				html: '\
+					<div class="wikiEditor-savedialog-copywarn"></div>\
+					<div class="wikiEditor-savedialog-editoptions">\
+						<form>\
+							<label for="wikiEditor-' + context.instance + '-savedialog-summary"\
+								rel="wikieditor-preview-savedialog-summary"></label>\
+							<br />\
+							<input type="text" id="wikiEditor-' + context.instance + '-savedialog-summary"\
+								style="width: 100%;" />\
+							<br />\
+							<input type="checkbox"\
+								id="wikiEditor-' + context.instance + '-savedialog-minor" />\
+							<label for="wikiEditor-' + context.instance + '-savedialog-minor"\
+								rel="wikieditor-preview-savedialog-minor"></label>\
+							<br />\
+							<input type="checkbox"\
+								id="wikiEditor-' + context.instance + '-savedialog-watch" />\
+							<label for="wikiEditor-' + context.instance + '-savedialog-watch"\
+								rel="wikieditor-preview-savedialog-watch"></label>\
+						</form>\
+					</div>',
+				init: function() {
+					$(this).find( '[rel]' ).each( function() {
+						$(this).text( gM( $(this).attr( 'rel' ) ) );
+					});
+					$(this).find( '.wikiEditor-savedialog-copywarn' )
+						.html( $( '#editpage-copywarn' ).html() );
+					if ( $( '#wpMinoredit' ).is( ':checked' ) )
+						$( '#wikiEditor-' + context.instance + '-savedialog-minor' )
+							.attr( 'checked', 'checked' );
+					if ( $( '#wpWatchthis' ).is( ':checked' ) )
+						$( '#wikiEditor-' + context.instance + '-savedialog-watch' )
+							.attr( 'checked', 'checked' );
+					$(this).find( 'form' ).submit( function( e ) {
+						$(this).closest( '.ui-dialog' ).find( 'button:first' ).click();
+						e.preventDefault();
+					});
+				},
+				dialog: {
+					buttons: {
+						'wikieditor-preview-savedialog-publish': function() {
+							var minorChecked = $( '#wikiEditor-' + context.instance +
+								'-savedialog-minor' ).is( ':checked' ) ?
+									'checked' : '';
+							var watchChecked = $( '#wikiEditor-' + context.instance +
+								'-savedialog-watch' ).is( ':checked' ) ?
+									'checked' : '';
+							$( '#wpMinoredit' ).attr( 'checked', minorChecked );
+							$( '#wpWatchthis' ).attr( 'checked', watchChecked );
+							$( '#wpSummary' ).val( $j( '#wikiEditor-' + context.instance +
+								'-savedialog-summary' ).val() );
+							$( '#editform' ).submit();
+						},
+						'wikieditor-preview-savedialog-goback': function() {
+							// TODO: Keep edit summary and minor/watch status or reset?
+							$(this).dialog( 'close' );
+						}
+					},
+					open: function() {
+						$( '#wikiEditor-' + context.instance + '-savedialog-summary' ).focus();
+					},
+					width: 500
+				},
+				resizeme: false
+			} } );
 			
 			// Paranoia: initialize context.modules before running
 			// tabs() and binding event handlers
@@ -74,8 +128,39 @@ fn: {
 				'editTab': editTab,
 				'previewTab': previewTab,
 				'tabList': tabList,
+				'saveDialog': $( '#' + dialogID ),
 				'prevText': null
 			};
+
+			tabList
+				.append( $( '<ul />' )
+					.append( $( '<li />' )
+						.append( $( '<a />' )
+							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-edit' )
+							.text( gM( 'wikieditor-preview-tab-edit' ) )
+						)
+					)
+					.append( $( '<li />' )
+						.append( $( '<a />' )
+							.attr( 'href', '#wikiEditor-' + context.instance + '-tab-preview' )
+							.text( gM( 'wikieditor-preview-tab-preview' ) )
+						)
+					)
+					// These have to go in reverse because they're floated right
+					.append( $( '<button />' )
+						.text( gM( 'wikieditor-preview-button-cancel' ) )
+					)
+					.append( $( '<button />' )
+						.text( gM( 'wikieditor-preview-button-publish' ) )
+						.click( function() {
+							context.modules.preview.saveDialog.dialog( 'open' );
+							return false;
+						})
+					)
+				)
+				.append( editTab )
+				.append( previewTab );
+			
 			tabList
 				.bind( 'tabsshow', function() {
 					if ( context.modules.preview.previewTab.is( ':visible' ) )
@@ -87,6 +172,7 @@ fn: {
 			// causes NTOC mispositioning
 			// FIXME: Find out which CSS rule is causing this
 			// and override it
+			// FIXME: Don't use jQuery UI tabs, implement our own tabs
 			tabList.closest( '.ui-tabs' ).removeClass( 'ui-widget' );
 		});
 	},

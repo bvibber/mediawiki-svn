@@ -15,6 +15,7 @@ body.rtl .wikiEditor-ui-text {
 	overflow-x: hidden;
 }
 body.rtl .wikiEditor-ui-toc {
+	float: left;
 	right: auto;
 	left: -1px;
 	border-left: none;
