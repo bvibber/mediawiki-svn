@@ -77,6 +77,11 @@
 					' AND ' . getLatestTransactionRestriction( 'source_syntrans' ) .
 					' AND ' . getLatestTransactionRestriction( 'source_expression' ) ;
 
+				$queryResultCount_r = mysql_query( $sqlcount );
+				$queryResultCount_a = mysql_fetch_row( $queryResultCount_r );
+				$queryResultCount = $queryResultCount_a[0];
+				$nbshown = min ( 100, $queryResultCount ) ;
+
 
 				$sql = 'SELECT source_expression.expression_id AS source_expression_id, source_expression.language_id AS source_language_id, source_expression.spelling AS source_spelling, source_syntrans.defined_meaning_id AS source_defined_meaning_id' .
 					" FROM ({$dc}_syntrans source_syntrans, {$dc}_expression source_expression)";
@@ -100,15 +105,16 @@
 					' AND ' . getLatestTransactionRestriction( 'destination_expression' ) .
 					')' .
 					' AND ' . getLatestTransactionRestriction( 'source_syntrans' ) .
-					' AND ' . getLatestTransactionRestriction( 'source_expression' ) .
-					' LIMIT 100';
+					' AND ' . getLatestTransactionRestriction( 'source_expression' ) ;
+
+				if ( $queryResultCount > 100 ) {
+					$startnumber = rand ( 0 , $queryResultCount - 100 ) ;
+					$sql .= " LIMIT $startnumber,100";
+				} else {
+					$sql .= ' LIMIT 100';
+				}
 
 				$queryResult = $dbr->query( $sql );
-
-				$queryResultCount_r = mysql_query( $sqlcount );
-				$queryResultCount_a = mysql_fetch_row( $queryResultCount_r );
-				$queryResultCount = $queryResultCount_a[0];
-				$nbshown = min ( 100, $queryResultCount ) ;
 
 
 				$definitionAttribute = new Attribute( "definition", wfMsg( "ow_Definition" ), "definition" );
