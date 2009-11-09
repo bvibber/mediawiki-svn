@@ -34,12 +34,13 @@ class SpecialGeoLite extends SpecialPage {
 		$ip = ( $wgRequest->getVal( 'ip') ) ? $wgRequest->getVal( 'ip' ) : wfGetIP();
 		
 		if ( IP::isValid( $ip ) ) {
-		   $country = geoip_country_code_by_name( $ip );
-                   if ( is_string ( $country ) && array_key_exists( $country, $wgKnownLandingPages ) ) {
-		          $wgOut->redirect( $wgChaptersPageBase . "/" . $wgChapterLandingPages[ $country ] . $tracking );
-	  	   }
-		} else {  
-			// Either we couldn't get the ip from the client or the geo ip lookup failed. Redirect as best as we can 
+			$country = geoip_country_code_by_name( $ip );
+			if ( is_string ( $country ) && array_key_exists( $country, $wgChapterLandingPages ) ) {
+			    $wgOut->redirect( $wgChaptersPageBase . "/" . $wgChapterLandingPages[ $country ] . $tracking );
+			} else { // Valid IP but no chapter page
+				$wgOut->redirect( $wgLandingPageBase . "/" . $lang . $tracking );
+			}
+		} else { // No ip found so do the best we can 
 			$wgOut->redirect( $wgLandingPageBase . "/" . $lang . $tracking );
 		}
 	}
