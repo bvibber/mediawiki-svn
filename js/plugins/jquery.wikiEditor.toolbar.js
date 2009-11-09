@@ -223,15 +223,14 @@ fn : {
 					}
 				}
 				if ( 'periRegex' in action.options && 'periRegexReplace' in action.options ) {
-					var selection = context.$textarea.getSelection();
+					var selection = context.$textarea.textSelection( 'getSelection' );
 					if ( selection != '' ) {
 						parts.peri = selection.replace( action.options.periRegex,
 							action.options.periRegexReplace );
 					}
 				}
-				context.fn.encapsulateSelection(
-					parts.pre, parts.peri, parts.post, action.options.ownline, action.type == 'replace'
-				);
+				context.$textarea.textSelection( 'encapsulateSelection', $.extend( action.options,
+					parts, { 'replace': action.type == 'replace' } ) );
 				break;
 			case 'callback':
 				if ( typeof action.execute == 'function' ) {

@@ -171,6 +171,7 @@ if ( typeof context == 'undefined' ) {
 			'display': 'none'
 		})
 		.insertAfter( context.$textarea );
+	
 	/*
 	 * For whatever strange reason, this code needs to be within a timeout or it doesn't work - it seems to be that
 	 * the DOM manipulation to add the iframe happens asynchronously and this code that depends on it actually being
@@ -204,11 +205,7 @@ if ( typeof context == 'undefined' ) {
 	// copied over to the textarea
 	context.$textarea.closest( 'form' ).submit( function() {
 		context.$textarea.attr( 'disabled', false );
-		
-		// Setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
-		context.$textarea.val( $( '<div />' )
-				.html( context.$content.html().replace( /\<br\>/g, "\n" ) )
-				.text() );
+		context.$textarea.val( context.$textarea.getSelection( 'getContents' ) );
 	} );
 	
 	/* This is probably only a textarea issue, thus no longer needed
@@ -268,12 +265,25 @@ if ( typeof context == 'undefined' ) {
 			}
 		}
 	}
-	/* Create a set of functions for interacting with the editor content */
+	/* Create a set of functions for interacting with the editor content
+	 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
+	 */
 	context.fn = {
 		/*
 		 * When finishing these functions, take a look at jquery.textSelection.js because this is designed to be API
 		 * compatible with those functions. The key difference is that these perform actions on a designMode iframe
 		 */
+		
+		/**
+		 * Gets the complete contents of the iframe
+		 */
+		'getContents': function() {
+			// We use .html() instead of .text() so HTML entities are handled right
+			// Setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
+			return $( '<div />' )
+				.html( context.$content.html().replace( /\<br\>/g, "\n" ) )
+				.text();
+		},
 		/**
 		 * Gets the currently selected text in the content
 		 */
@@ -283,14 +293,8 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Inserts text at the begining and end of a text selection, optionally inserting text at the caret when
 		 * selection is empty.
-		 * 
-		 * @param pre Text to insert before selection
-		 * @param peri Text to insert at caret if selection is empty
-		 * @param post Text to insert after selection
-		 * @param ownline If true, put the inserted text is on its own line
-		 * @param replace If true, replaces any selected text with peri; if false, peri is ignored and selected text is left alone
 		 */
-		'encapsulateSelection': function( pre, peri, post, ownline, replace ) {
+		'encapsulateSelection': function( options ) {
 			// ...
 			// Scroll the textarea to the inserted text
 			//?.scrollToCaretPosition();
@@ -299,11 +303,8 @@ if ( typeof context == 'undefined' ) {
 		},
 		/**
 		 * Gets the position (in resolution of bytes not nessecarily characters) in a textarea
-		 * 
-		 * @param startAndEnd Array of start and end character positions like [start, end] (is this better than just
-		 * using separate arguments)
 		 */
-		'getCaretPosition': function( startAndEnd ) {
+		'getCaretPosition': function( options ) {
 			// ...
 			//reurn character position
 		},
@@ -313,19 +314,13 @@ if ( typeof context == 'undefined' ) {
 		 * @param start Character offset of selection start
 		 * @param end Character offset of selection end
 		 */
-		'setSelection': function( start, end ) {
-			if ( typeof end == 'undefined' ) {
-				end = start;
-			}
+		'setSelection': function( options ) {
 			// ...
 		},
 		/**
 		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()
-		 *
-		 * @param force boolean Whether to force a scroll even if the caret position is already visible. Defaults to
-		 * false.
 		 */
-		'scrollToCaretPosition': function( force ) {
+		'scrollToCaretPosition': function( options ) {
 			// ...
 			//context.$textarea.trigger( 'scrollToPosition' );
 		}
