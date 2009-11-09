@@ -20,27 +20,28 @@ class SpecialGeoLite extends SpecialPage {
 	public function execute( $sub ) {
 		global $wgOut, $wgRequest, $wgLandingPageBase, $wgKnownLandingPages;
 
-		$lang = ( $wgRequest->getVal( 'lang' ) ) ? $wgRequest->getVal( 'lang' ) : 'en' ;
+		$lang = ( preg_match( '/^[A-Za-z-]+$/', $wgRequest->getVal( 'lang' ) ) ) ? $wgRequest->getVal( 'lang' ) : 'en' ;
 		$utm_source = $wgRequest->getVal( 'utm_source' );
 		$utm_medium = $wgRequest->getVal( 'utm_medium' );
-		$utm_campaign = $wgRequest->getVal( 'utm_camapaign' );
+		$utm_campaign = $wgRequest->getVal( 'utm_campaign' );
 
-		$tracking = '?' . "utm_source=$utm_source" . "&utm_medium=$utm_medium" . "&utm_campaign=$utm_campaign";
+		$tracking = '?' . wfArrayToCGI( array( 
+			'utm_source' => "$utm_source",
+			'utm_medium' => "$utm_medium",
+		        'utm_campaign' => "$utm_campaign",
+		) );
 		
-		if ( $wgRequest->getVal( 'ip') ) {
-		   $ip = $wgRequest->getVal( 'ip' ); 
-		} else { 
-		   $ip = $_SERVER[ 'REMOTE_ADDR' ];
-		}
+		$ip = ( $wgRequest->getVal( 'ip') ) ? $wgRequest->getVal( 'ip' ) : wfGetIP();
 		
 		if ( IP::isValid( $ip ) ) {
 		   $country = geoip_country_code_by_name( $ip );
-		
                    if ( is_string ( $country ) && array_key_exists( $country, $wgKnownLandingPages ) ) {
 		          $wgOut->redirect( $wgLandingPageBase . "/" . $wgKnownLandingPages[ $country ] . $tracking );
 	  	   }
+		} else {  
+			// Either we couldn't get the ip from the client or the geo ip lookup failed. Redirect as best as we can 
+			$wgOut->redirect( $wgLandingPageBase . "/" . $lang . $tracking );
 		}
-		$wgOut->redirect( $wgLandingPageBase . "/" . $lang . $tracking );
 	}
 
 }

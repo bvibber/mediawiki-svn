@@ -12,9 +12,9 @@ EOT;
 $wgLandingPageBase = 'http://wikimediafoundation.org/wiki/Support_Wikipedia';
 
 $wgKnownLandingPages = array( 'US' => 'en',
-			      			  'DE' => '',
-			      			  'PL' => ''
-		       		   ); # Which Chapters actually have landing pages
+			   			      'DE' => '',
+			      	  	      'PL' => '',
+		       		); # Which Chapters actually have landing pages
 
 $wgExtensionCredits['specialpage'][] = array(
         'path' => __FILE__,
