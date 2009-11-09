@@ -18,7 +18,7 @@ class SpecialGeoLite extends SpecialPage {
         }
 
 	public function execute( $sub ) {
-		global $wgOut, $wgRequest, $wgLandingPageBase, $wgKnownLandingPages;
+		global $wgOut, $wgRequest, $wgLandingPageBase, $wgChaptersPageBase, $wgChapterLandingPages;
 
 		$lang = ( preg_match( '/^[A-Za-z-]+$/', $wgRequest->getVal( 'lang' ) ) ) ? $wgRequest->getVal( 'lang' ) : 'en' ;
 		$utm_source = $wgRequest->getVal( 'utm_source' );
@@ -36,7 +36,7 @@ class SpecialGeoLite extends SpecialPage {
 		if ( IP::isValid( $ip ) ) {
 		   $country = geoip_country_code_by_name( $ip );
                    if ( is_string ( $country ) && array_key_exists( $country, $wgKnownLandingPages ) ) {
-		          $wgOut->redirect( $wgLandingPageBase . "/" . $wgKnownLandingPages[ $country ] . $tracking );
+		          $wgOut->redirect( $wgChaptersPageBase . "/" . $wgChapterLandingPages[ $country ] . $tracking );
 	  	   }
 		} else {  
 			// Either we couldn't get the ip from the client or the geo ip lookup failed. Redirect as best as we can 

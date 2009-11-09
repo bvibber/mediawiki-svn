@@ -10,11 +10,14 @@ EOT;
 }
 
 $wgLandingPageBase = 'http://wikimediafoundation.org/wiki/Support_Wikipedia';
+$wgChaptersPageBase = 'http://wikimediafoundation.org/wiki/Global_Support';
 
-$wgKnownLandingPages = array( 'US' => 'en',
-			   			      'DE' => '',
-			      	  	      'PL' => '',
-		       		); # Which Chapters actually have landing pages
+$wgChapterLandingPages = array( 'HK' => 'hk',
+				'DE' => 'de',
+			        'UK' => 'uk',
+			        'FR' => 'fr',
+			        'CH' => 'ch',
+		       ); # Which Chapters actually have landing pages
 
 $wgExtensionCredits['specialpage'][] = array(
         'path' => __FILE__,
