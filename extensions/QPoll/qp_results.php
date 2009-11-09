@@ -705,6 +705,7 @@ class qp_PollsList extends qp_QueryPage {
 		$voices_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_stats_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"stats" ) );
 		$users_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_users_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"pulist" ) );
 		$not_participated_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_not_participated_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"npulist" ) );
+		// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
 		$link = wfMsg( 'qp_spec_line', '"' . $pagename . '"', '"' . $pollname . '":' , $goto_link .', ', $voices_link . ', ', $users_link . ', ', $not_participated_link );
 		return $link;
 	}
@@ -743,6 +744,7 @@ class qp_PollUsersList extends qp_QueryPage {
 			$pagename = htmlspecialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 			$pollname = htmlspecialchars( $row->poll_id );
 			$goto_link = self::$skin->link( $poll_title, wfMsg( 'qp_source_link' ) );
+			// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
 			$spec = wfMsg( 'qp_spec_line', '"' . $pagename . '"', '"' . $pollname . '"', '', '', '', '' );
 			$head[] = PollResults::getPollsLink();
 			$head[] = PollResults::getUsersLink();
@@ -838,6 +840,7 @@ class qp_UserCellList extends qp_QueryPage {
 				$pagename = htmlspecialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 				$pollname = htmlspecialchars( $this->poll_id );
 				$goto_link = self::$skin->link( $poll_title, wfMsg( 'qp_source_link' ) );
+				// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
 				$spec = wfMsg( 'qp_spec_line', '"' . $pagename . '"', '"' . $pollname . '"', '', '', '', '' );
 				$head[] = PollResults::getPollsLink();
 				$head[] = PollResults::getUsersLink();
@@ -856,6 +859,7 @@ class qp_UserCellList extends qp_QueryPage {
 						$categ = &$ques->Categories[ $this->cat_id ];
 						$proptext = $ques->ProposalText[ $this->proposal_id ];
 						$qpa .= htmlentities( $proptext );
+						// FIXME: This is hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
 						$qpa .= ( substr( $proptext, strlen( $proptext ) - 1 ) === '?' ) ? ' ' : '? ';
 						if ( array_key_exists( 'spanId', $categ ) ) {
 							$qpa .= htmlentities( $ques->CategorySpans[ $categ["spanId"] ]["name"] ) . ' |';
