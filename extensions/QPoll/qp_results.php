@@ -206,8 +206,17 @@ class PollResults extends SpecialPage {
 					$pollStore->setLastUser( $userName, false );
 					if ( $pollStore->loadUserVote() ) {
 						$poll_title = $pollStore->getTitle();
-						$output .= wfMsg( 'qp_browse_to', $user_link . "<br />\n" );
-						$output .= wfMsg( 'qp_browse_to', self::$skin->link( $poll_title, $poll_title->getPrefixedText() . ' (' .		$pollStore->mPollId . ")<br />\n" ) );
+						$output .= wfMsg(
+							'qp_browse_to_user',
+							$user_link
+						) . "<br />\n" );
+						$output .= wfMsg(
+							'qp_browse_to_poll',
+							self::$skin->link(
+								$poll_title,
+								$poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'parentheses', $pollStore->mPollId ) . "<br />\n"
+							)
+						);
 						foreach ( $pollStore->Questions as $qkey => &$qdata ) {
 							$output .= "<br />\n<b>" . $qkey . ".</b> " . htmlentities( $qdata->CommonQuestion ) . "<br />\n";
 							$output .= $this->displayUserQuestionVote( $qdata );
@@ -274,7 +283,13 @@ class PollResults extends SpecialPage {
 				$pollStore->loadTotals();
 				$pollStore->calculateStatistics();
 				$poll_title = $pollStore->getTitle();
-				$output .= wfMsg( 'qp_browse_to', self::$skin->link( $poll_title, $poll_title->getPrefixedText() . ' (' . $pollStore->mPollId . ")<br />\n" ) );
+				$output .= wfMsg(
+					'qp_browse_to_poll',
+					self::$skin->link(
+						$poll_title,
+						$poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'parentheses', $pollStore->mPollId ) . "<br />\n"
+					)
+				);
 				$output .= self::$skin->link( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style"=>"font-weight:bold;" ), array( 'action'=>'stats_xls', 'id'=>$pid ) );
 				foreach ( $pollStore->Questions as $qkey => &$qdata ) {
 					$output .= "<br />\n<b>" . $qkey . ".</b> " . htmlentities( $qdata->CommonQuestion ) . "<br />\n";
