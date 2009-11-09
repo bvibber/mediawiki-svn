@@ -79,7 +79,7 @@ Make sure that the poll declared and saved, also be sure to use address delimite
 	'qp_error_dependance_in_stats_mode' => 'Cannot declare dependance chain of the poll in statistical mode',
 	'qp_error_no_stats' => 'No statistical data is available, because noone has voted for this poll, yet (address=$1)',
 	'qp_error_address_in_decl_mode' => 'Cannot get an address of the poll in declaration mode',
-	'qp_error_question_not_implemented' => 'Question of such type are not implemented: $1',
+	'qp_error_question_not_implemented' => 'Questions of such type are not implemented: $1',
 	'qp_error_invalid_question_type' => 'Invalid question type: $1',
 	'qp_error_type_in_stats_mode' => 'Question type cannot be defined in statistical display mode: $1',
 	'qp_error_no_poll_id'	=> 'Poll tag has no id attribute defined.',
