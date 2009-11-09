@@ -52,20 +52,22 @@ define( 'QP_MAX_TEXT_ANSWER_LENGTH', 1024 );
  * Extension's parameters.
  */
 $wgExtensionCredits['parserhook'][] = array(
-	'name'						=> 'QPoll',
-	'version'					=> '0.6.2',
-	'author'					=> 'QuestPC',
-	'url'							=> 'http://www.mediawiki.org/wiki/Extension:QPoll',
-	'description'			=> 'Allows creation of polls',
-	'descriptionmsg'	=> 'qp_desc'
+	'path' => __FILE__,
+	'name' => 'QPoll',
+	'version' => '0.6.2',
+	'author' => 'QuestPC',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
+	'description' => 'Allows creation of polls',
+	'descriptionmsg' => 'qp_desc',
 );
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'QPoll results page',
 	'version' => '0.6.2',
 	'author' => 'QuestPC',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
 	'description' => 'QPoll extension [[Special:PollResults]] page for viewing results of the polls',
-	'descriptionmsg' => 'qp_desc',
+	'descriptionmsg' => 'qp_desc-sp',
 );
 
 /**
@@ -82,6 +84,7 @@ $wgAutoloadClasses['qp_QuestionStats'] = $qp_ExtDir . '/qp_question.php';
 $wgAutoloadClasses['qp_PollStore'] = $qp_ExtDir . '/qp_pollstore.php';
 $wgAutoloadClasses['qp_QuestionData'] = $qp_ExtDir . '/qp_pollstore.php';
 $wgAutoloadClasses['qp_QueryPage'] = $qp_ExtDir . '/qp_results.php';
+// TODO: Use the new technique for i18n of special page aliases
 $wgSpecialPages['PollResults'] = array('PollResults');
 
 if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
@@ -91,6 +94,7 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 	$wgExtensionFunctions[] = 'wfQPollExtension';
 }
 
+// TODO: Use the new technique for i18n of magic words
 $wgHooks['LanguageGetMagic'][]       = 'qp_FunctionsHook::languageGetMagic';
 $wgHooks['LoadAllMessages'][] = 'qp_AbstractPoll::loadMessages';
 

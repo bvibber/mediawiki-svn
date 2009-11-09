@@ -31,6 +31,7 @@
  * @version 0.6.2
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
+ * @addtogroup Extensions
  */
 
 /**
@@ -43,17 +44,17 @@ $messages = array();
  * @author QuestPC
  */
 $messages['en'] = array(
-	'pollresults'				=> 'Results of the polls on this site',
-	'qpuserchoice'			=> 'qpuserchoice',
-	'qp_desc'	        => 'Allows creation of polls',
-	'qp_result_NA'		=> "Not answered",
-	'qp_result_error'	=> "Syntax error",
-	'qp_vote_button' => "Vote",
-	'qp_vote_again_button' => "Change your vote",
+	'pollresults' => 'Results of the polls on this site',
+	'qp_desc' => 'Allows creation of polls',
+	'qp_desc-sp' => '[[Special:PollResults|Specialpage]] for viewing results of the polls',
+	'qp_result_NA' => 'Not answered',
+	'qp_result_error' => 'Syntax error',
+	'qp_vote_button' => 'Vote',
+	'qp_vote_again_button' => 'Change your vote',
 	'qp_polls_list' => 'List all polls',
 	'qp_users_list' => 'List all users',
-	'qp_browse_to' => "Browse to $1",
-	'qp_votes_count' => "$1 {{PLURAL:$1|vote|votes}}",
+	'qp_browse_to' => 'Browse to $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|vote|votes}}',
 	'qp_source_link' => 'Source',
 	'qp_stats_link' => 'Statistics',
 	'qp_users_link' => 'Users',
@@ -71,7 +72,8 @@ $messages['en'] = array(
 	'qp_func_invalid_question_id' => 'Invalid question id=$2 (not a number) for the poll $1',
 	'qp_func_missing_proposal_id' => 'Please specify an existing proposal id (starting from 0) for the poll $1, question $2',
 	'qp_func_invalid_proposal_id' => 'Invalid proposal id=$3 (not a number) for the poll $1, question $2',
-	'qp_error_no_such_poll' => 'No such poll ($1). Make sure that the poll declared and saved, also be sure to use address delimiter character #',
+	'qp_error_no_such_poll' => 'No such poll ($1).
+Make sure that the poll declared and saved, also be sure to use address delimiter character #',
 	'qp_error_id_in_stats_mode' => 'Cannot declare an ID of the poll in statistical mode',
 	'qp_error_dependance_in_stats_mode' => 'Cannot declare dependance chain of the poll in statistical mode',
 	'qp_error_no_stats' => 'No statistical data is available, because noone has voted for this poll, yet (address=$1)',
@@ -80,11 +82,15 @@ $messages['en'] = array(
 	'qp_error_invalid_question_type' => 'Invalid question type: $1',
 	'qp_error_type_in_stats_mode' => 'Question type cannot be defined in statistical display mode: $1',
 	'qp_error_no_poll_id'	=> 'Poll tag has no id attribute defined.',
-	'qp_error_invalid_poll_id' => 'Invalid poll id (id=$1). Poll id may contain only letters, numbers and space character',
+	'qp_error_invalid_poll_id' => 'Invalid poll id (id=$1).
+Poll id may contain only letters, numbers and space character',
 	'qp_error_already_used_poll_id' => 'The poll id has already been used on this page (id=$1).',
 	'qp_error_invalid_dependance_value' => 'The poll (id=$1) dependance chain has invalid value of dependance attribute (dependance="$2")',
-	'qp_error_missed_dependance_title' => 'The poll (id=$1) is dependant on the another poll (id=$3) from page [[$2]], but the title [[$2]] was not found. Either remove the dependance attribute, or restore [[$2]]',
-	'qp_error_missed_dependance_poll' => 'The poll (id=$1) is dependant on the another poll (id=$3) on page $2, but that poll does not exists or has not been saved yet. Either remove the dependance attribute, or create the poll with id=$3 at the page $2 and save it. To save a poll, submit it while not answering to any proposal questions.',
+	'qp_error_missed_dependance_title' => 'The poll (id=$1) is dependant on the another poll (id=$3) from page [[$2]], but the title [[$2]] was not found.
+Either remove the dependance attribute, or restore [[$2]]',
+	'qp_error_missed_dependance_poll' => 'The poll (id=$1) is dependant on the another poll (id=$3) on page $2, but that poll does not exists or has not been saved yet.
+Either remove the dependance attribute, or create the poll with id=$3 at the page $2 and save it.
+To save a poll, submit it while not answering to any proposal questions.',
 	'qp_error_vote_dependance_poll' => 'Please vote for poll $1 first.',
 	'qp_error_too_many_spans' => 'Too many category classes for the subcategories defined',
 	'qp_error_unanswered_span' => 'Unanswered subcategory',
