@@ -8,7 +8,7 @@
 
 // Special page GeoLite
 
-class SpecialGeoLite extends SpecialPage {
+class SpecialGeoLite extends UnlistedSpecialPage {
 
         /* Functions */
 
@@ -24,11 +24,13 @@ class SpecialGeoLite extends SpecialPage {
 		$utm_source = $wgRequest->getVal( 'utm_source' );
 		$utm_medium = $wgRequest->getVal( 'utm_medium' );
 		$utm_campaign = $wgRequest->getVal( 'utm_campaign' );
+		$referrer = $wgRequest->getHeader( 'referer' );
 
 		$tracking = '?' . wfArrayToCGI( array( 
 			'utm_source' => "$utm_source",
 			'utm_medium' => "$utm_medium",
 		        'utm_campaign' => "$utm_campaign",
+			'referrer' => "$referrer",
 		) );
 		
 		$ip = ( $wgRequest->getVal( 'ip') ) ? $wgRequest->getVal( 'ip' ) : wfGetIP();
