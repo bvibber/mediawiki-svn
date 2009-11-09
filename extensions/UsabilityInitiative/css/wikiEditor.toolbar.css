@@ -22,6 +22,11 @@ body.rtl .wikiEditor-ui-toolbar .sections {
 	border-top: solid 1px #DDDDDD;
 	background-color: #F3F3F3;
 }
+.wikiEditor-ui-toolbar {
+	background-image: url(../images/wikiEditor/toolbar/main-base.png);
+	background-position: left top;
+	background-repeat: repeat-x;
+}
 body.rtl .wikiEditor-ui-toolbar .sections .section {
 	float: right;
 }
