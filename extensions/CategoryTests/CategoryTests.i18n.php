@@ -84,6 +84,13 @@ $messages['el'] = array(
 	'categorytests-desc' => 'Λειτουργίες για δοκιμή κατηγορίας',
 );
 
+/** Esperanto (Esperanto)
+ * @author Michawiki
+ */
+$messages['eo'] = array(
+	'categorytests-desc' => 'Funkcioj por testado de kategorioj',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -307,6 +314,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'categorytests-desc' => 'వర్గముల పరీక్షకు ఫంక్షన్సు',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'categorytests-desc' => 'Функції тестування категорій',
 );
 
 /** Veps (Vepsan kel')

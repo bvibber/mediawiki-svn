@@ -502,6 +502,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -525,6 +526,7 @@ $messages['eo'] = array(
 	'badimages-log-add' => 'Aldonis [[$1]] al la listo de nevalidaj bildoj',
 	'badimages-log-remove' => 'forigis [[$1]] el la listo de nevalidaj bildoj',
 	'badimages-page' => '{{ns:help}}:Listo de nevalidaj bildoj',
+	'right-badimages' => 'Ĝisdatigi la liston de nebonvenaj bildoj',
 );
 
 /** Spanish (Español)

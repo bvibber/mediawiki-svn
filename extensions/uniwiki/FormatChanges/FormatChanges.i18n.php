@@ -576,11 +576,13 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'formatchanges-desc' => 'Перетворює [[Special:RecentChanges|нові редагування]]',
 	'formatchanges-anonymous' => 'Анонім',
 	'formatchanges-createdby' => '$1 — створено $2 ($3)',
+	'formatchanges-editedby' => '$1 - відредаговано $2 ($3)',
 );
 
 /** Veps (Vepsan kel')

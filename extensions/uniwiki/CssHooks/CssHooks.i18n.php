@@ -372,6 +372,13 @@ $messages['tl'] = array(
 	'csshooks-desc' => 'Nagdaragdag ng CSS sa inilalabas na produktong HTML ng mga pahina para sa mas mainam na pag-iistilo.',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'csshooks-desc' => 'Додає CSS у HTML-вивід сторінок для покращення стилів',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

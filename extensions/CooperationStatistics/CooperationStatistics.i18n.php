@@ -268,6 +268,20 @@ Luege au d [[Special:MostRevisors|'''Syte mit dr meischte Bearbeiter''']] un d [
 	'cooperationstatistics-legendmore' => 'oder meh Bearbeiter',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'cooperationstatistics' => 'સહયોગ અંકશાસ્ત્ર',
+	'cooperationstatistics-tablearticle' => 'પાના ગણના',
+	'cooperationstatistics-tablevalue' => 'સંપાદકોની સંખ્યા',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|પાના|પાનાઓ}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|પાસે હતા|પાસે છે}} $1 {{PLURAL:$1|સંપાદક|સંપાદકો}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|પાસે હતા|પાસે છે}} $1 {{PLURAL:$1|સંપાદક|કે ઓછા સંપાદકો}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|પાસે હતા|પાસે છે}} $1 કે વધુ સંપાદકો',
+	'cooperationstatistics-legendmore' => 'અથવા વધુ સંપાદકો.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

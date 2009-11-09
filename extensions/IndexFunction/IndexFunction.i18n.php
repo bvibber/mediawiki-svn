@@ -772,6 +772,38 @@ Scriv pòchi caràter inissiaj e sgnaca ël boton \"spediss\" për serché ij t�
 Sgnaca la frecia për mosté tute le pàgine indicisà sota col tìtol-lì.",
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'indexfunc-desc' => "Função do analisador sintáctico ''(parser),'' para criação automática de páginas de redireccionamento e de desambiguação",
+	'indexfunc-badtitle' => 'Título inválido: "$1"',
+	'indexfunc-editwarning' => 'Aviso:
+Este título já consta do índice de títulos {{PLURAL:$2|na seguinte página|nas seguintes páginas}}:
+$1
+Certifique-se de que a página que está prestes a criar não existe já com um título diferente.
+Se criar esta página, elimine este título da função <nowiki>{{#index:}}</nowiki> {{PLURAL:$1|na página acima|nas páginas listadas acima}}.',
+	'indexfunc-index-exists' => 'A página "$1" já existe',
+	'indexfunc-movewarn' => 'Aviso:
+"$1" consta do índice de títulos {{PLURAL:$3|na seguinte página|nas seguintes páginas}}:
+$2
+Por favor, elimine "$1" da função <nowiki>{{#index:}}</nowiki> {{PLURAL:$1|nesta página|nestas páginas}}.',
+	'index' => 'Pesquisa do índice',
+	'index-legend' => 'Pesquisar o índice de títulos',
+	'index-search' => 'Pesquisar:',
+	'index-submit' => 'Submeter',
+	'index-disambig-start' => "'''$1''' pode referir-se a várias páginas:",
+	'index-emptylist' => 'Não há páginas relacionadas com "$1"',
+	'index-expand-detail' => 'Mostrar páginas indexadas sob este título',
+	'index-hide-detail' => 'Esconder a lista de páginas',
+	'index-no-results' => 'A pesquisa não produziu resultados',
+	'index-search-explain' => 'Esta página permite uma pesquisa pelos caracteres iniciais.
+
+Introduza alguns caracteres e clique o botão "Submeter" para procurar páginas e entradas do índice de títulos começadas por esses caracteres.',
+	'index-details-explain' => 'As entradas com setas pertencem ao índice de títulos.
+Clique uma seta para ver todas as páginas indexadas sob o respectivo título.',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila

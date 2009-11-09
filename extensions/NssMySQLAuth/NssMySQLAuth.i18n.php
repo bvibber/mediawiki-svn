@@ -149,14 +149,17 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'accountmanager' => 'Merer kontoù',
 	'am-username' => 'Anv implijer',
 	'am-email' => 'postel',
 	'am-active' => 'oberiant',
+	'am-updated' => 'Enrollet-mat eo bet ho kemmoù',
 	'nss-rights' => 'gwirioù',
 	'nss-save-changes' => "Enrollañ ar c'hemmoù",
 	'nss-create-account-header' => 'Krouiñ ur gont nevez',
 	'nss-create-account' => 'Krouiñ ar gont',
 	'nss-no-mail' => 'Chom hep kas posteloù',
+	'nss-welcome-mail' => "Krouet ez eus bet evidoc'h ur gont dezhi an anv a $1 gant ar ger-tremen $2 stag outi",
 );
 
 /** Bosnian (Bosanski)

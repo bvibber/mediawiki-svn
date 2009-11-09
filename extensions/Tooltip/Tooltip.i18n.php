@@ -428,6 +428,13 @@ $messages['tl'] = array(
 	'tooltip-desc' => 'Nagdaragdag ng tatak na <tt><nowiki><tooltip></nowiki></tt> at <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'tooltip-desc' => 'Додає теги <tt><nowiki><tooltip></nowiki></tt> та <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

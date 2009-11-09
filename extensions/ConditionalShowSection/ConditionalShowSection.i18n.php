@@ -218,6 +218,13 @@ $messages['sk'] = array(
 	'conditionalshowsection-desc' => 'Pridáva značku cshow na podmienečné zobrazenie/skrytie sekcie wikitextu',
 );
 
+/** Ukrainian (Українська)
+ * @author NickK
+ */
+$messages['uk'] = array(
+	'conditionalshowsection-desc' => 'Додає тег cshow для умовного показу/приховування розділу вікітексту',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

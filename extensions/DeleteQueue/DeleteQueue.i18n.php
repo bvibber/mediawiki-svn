@@ -292,6 +292,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'deletequeue-desc' => 'ينشئ [[Special:DeleteQueue|نظاما معتمدا على طابور للتحكم بالحذف]]',
@@ -357,7 +358,7 @@ $messages['ar'] = array(
 	'deletequeue-review-reason' => 'تعليقات:',
 	'deletequeue-review-newreason' => 'سبب جديد:',
 	'deletequeue-review-newextra' => 'معلومات إضافية:',
-	'deletequeue-review-submit' => 'حفظ المراجعة',
+	'deletequeue-review-submit' => 'احفظ المراجعة',
 	'deletequeue-review-original' => 'السبب للترشيح',
 	'deletequeue-actiondisabled-involved' => 'الفعل التالي معطل لأنك قمت بدور في حالة الحذف هذه في الأدوار $1:',
 	'deletequeue-actiondisabled-notexpired' => 'الفعل التالي معطل لأن ترشيح الحذف لم ينته بعد:',

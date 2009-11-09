@@ -745,11 +745,14 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'unicodeconverter' => 'Конвертер Unicode',
+	'unicodeconverter-desc' => 'Простий приклад спеціальної сторінки модуля. [[Special:UnicodeConverter|Вихідний рядок в UTF-8]] конвертується в HTML формат, що може використовуватись на веб-сторінках ISO 8859-1',
 	'unicodeconverter-ok' => 'ОК',
 	'unicodeconverter-oldtext' => 'Оригінальний текст:',
+	'unicodeconverter-newtext' => 'Конвертований текст:',
 );
 
 /** Vèneto (Vèneto)

@@ -254,10 +254,11 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Prima klasy4na
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'interlanguage-desc' => 'Захватывает межъязыковые ссылки из дрогой вики',
+	'interlanguage-desc' => 'Захватывает межъязыковые ссылки из другой вики',
 );
 
 /** Slovak (Slovenčina)
@@ -286,6 +287,13 @@ $messages['te'] = array(
  */
 $messages['tr'] = array(
 	'interlanguage-desc' => 'Başka bir vikiden dillerarası bağlantıları alır',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'interlanguage-desc' => 'Імпортує міжмовні посилання з іншої вікі',
 );
 
 /** Vietnamese (Tiếng Việt)

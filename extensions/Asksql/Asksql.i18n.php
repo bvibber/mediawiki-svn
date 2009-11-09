@@ -1218,6 +1218,7 @@ $messages['uk'] = array(
 	'querybtn' => 'Відправити запит',
 	'selectonly' => 'Дозволені тільки запити на читання.',
 	'querysuccessful' => 'Запит виконано',
+	'right-asksql' => 'Виконання SQL-запитів',
 );
 
 /** Vèneto (Vèneto)

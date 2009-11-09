@@ -26,6 +26,22 @@ $messages['qqq'] = array(
 	'templateinfo-header' => 'Header to display XML definition in template page',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'templateinfo-desc' => 'Skorañ a ra ar patromoù dre dermeniñ o framm roadennoù gant balizennoù XML',
+	'templateinfo-header' => 'Setu an termenadur XML evit ar patrom-mañ :',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'templateinfo-desc' => 'Podržava šablone koji definiraju svoju strukturu podataka preko XML opisnog jezika',
+	'templateinfo-header' => 'XML definicija za ovaj šablon je:',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -161,5 +177,13 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'templateinfo-desc' => 'Поддерживает шаблоны с определением их структуры данных постредством XML-разметки',
 	'templateinfo-header' => 'XML-определение этого шаблона:',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'templateinfo-desc' => 'Підтримує визначення структури даних шаблонів за допомогою розмітки XML',
+	'templateinfo-header' => 'XML-визначення для цього шаблону:',
 );
 

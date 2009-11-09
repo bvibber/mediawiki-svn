@@ -840,6 +840,7 @@ $messages['lt'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -847,7 +848,7 @@ $messages['ml'] = array(
 	'scanset_no_name' => 'Error: നിങ്ങള്‍ ഒരു സ്കാന്‍സെറ്റ് നാമം (ഉദാ. &lt;scanset name="EB1911" /&gt;) നിര്‍ബന്ധമായും കൊടുത്തിരിക്കണം.',
 	'scanset_invalid_name' => 'Error: അസാധുവായ അല്ലെങ്കില്‍ നഷ്ടപെട്ടുപോയ സ്കാന്‍സെറ്റ്.',
 	'scanset_unrecognised_index_format' => 'Error: അറിയപ്പെടാത്ത ഇന്‍ഡെക്സ് ഫോര്‍മാറ്റ്',
-	'scanset_opendir_error' => 'Error: പ്രിഴവ്, $1 എന്ന ഡയറക്ടറി തുറക്കാന്‍ പറ്റിയില്ല',
+	'scanset_opendir_error' => 'പിഴവ്: $1 എന്ന ഡയറക്ടറി തുറക്കാന്‍ പറ്റിയില്ല',
 	'scanset_no_files' => 'Error: നിര്‍ദ്ദിഷ്ട ഡയറക്ടറിയില്‍ ഫയലുകള്‍ ഒന്നുമില്ല.',
 	'scanset_no_volumes' => 'Error: വാല്യം ഡയറക്ടറികള്‍ കണ്ടില്ല',
 	'scanset_missing_index_file' => 'Error: $1 എന്ന ഇന്‍ഡെക്സ് ഫയല്‍ കണ്ടില്ല',

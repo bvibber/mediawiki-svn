@@ -289,10 +289,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'forcepreview' => 'Simpan halaman (gunakan pratayang dulu)',
-	'forcepreview-desc' => 'Paksa pratayang untuk pengguna yang belum otomatis dikonfirmasi',
+	'forcepreview-desc' => 'Paksa pratayang untuk pengguna tanpa konfirmasi otomatis',
 	'right-forcepreviewexempt' => 'Dapat menyimpan tanpa menggunakan Lihat pratayang',
 );
 

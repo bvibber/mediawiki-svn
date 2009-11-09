@@ -295,6 +295,13 @@ $messages['tl'] = array(
 	'pipeescape-desc' => 'Tungkulin ng banghay na <code>#!</code> para sa kung kailan mo naising maging isang panitik na tubo lamang ang isang panitik na tubo',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'pipeescape-desc' => 'Функція парсеру <code>#!</code> для випадків, коли ви хочете використовувати символ вертикальної риски тільки як символ',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

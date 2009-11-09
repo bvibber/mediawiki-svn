@@ -302,6 +302,13 @@ $messages['te'] = array(
 	'Editsectionhilitelink-desc' => "మౌస్ ని '''మార్చు''' లంకె మీదుగా తీసుకెళ్ళినప్పుడు వ్యాసములోని భాగమును గుర్తించేటట్టు చేస్తుంది",
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'Editsectionhilitelink-desc' => 'Підсвічує відповідний розділ сторінки, коли ви переміщує курсор миші на посилання «редагувати»',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

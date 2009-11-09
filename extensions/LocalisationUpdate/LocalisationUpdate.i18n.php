@@ -51,6 +51,13 @@ $messages['be-tarask'] = array(
 	'localisationupdate-desc' => 'Сынхранізуе перакладзеныя сыстэмныя паведамленьні як мага даўжэй',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'localisationupdate-desc' => 'স্থানীয়করণকৃত বার্তাসমূহ যথাসম্ভব হালনাগাদ রাখে',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -119,6 +126,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'localisationupdate-desc' => 'Mantener los mensajes localizados tan actualizados como sean posibles',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'localisationupdate-desc' => 'Hoiab lokaliseeritud sõnumid nii ajakohased kui võimalik.',
 );
 
 /** Basque (Euskara)
@@ -343,6 +357,13 @@ $messages['te'] = array(
  */
 $messages['tr'] = array(
 	'localisationupdate-desc' => 'Yerelleştirilen mesajları mümkün olabildiğince güncel tutar',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'localisationupdate-desc' => 'Забезпечує оновлення локалізованих повідомлень у міру можливості',
 );
 
 /** Veps (Vepsan kel')

@@ -344,6 +344,13 @@ $messages['tl'] = array(
 	'i18ntags-desc' => 'Puntahan ang mga tungkuling i18n para sa pagpopormat ng bilang, balarila, at pangmaramihan sa anumang makukuhang wika',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'i18ntags-desc' => 'Доступ до функцій інтернаціоналізації i18n для форматування чисел, перетворень і вибору граматичних форм для будь-якої доступної мови',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

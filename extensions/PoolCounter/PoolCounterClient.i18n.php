@@ -244,6 +244,17 @@ $messages['pms'] = array(
 	'poolcounter-remote-error' => 'Eror dël server ëd pool counter: $1',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'poolcounter-desc' => "Cliente MediaWiki para o ''pool counter daemon'' poolcounter.py",
+	'poolcounter-connection-error' => "Erro na ligação ao servidor ''pool counter'': $1",
+	'poolcounter-read-error' => "Erro ao ler o servidor ''pool counter''",
+	'poolcounter-write-error' => "Erro ao escrever no servidor ''pool counter''",
+	'poolcounter-remote-error' => "Erro do servidor ''pool counter'': $1",
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

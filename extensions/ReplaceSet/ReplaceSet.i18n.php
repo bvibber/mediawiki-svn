@@ -265,6 +265,16 @@ $messages['pms'] = array(
 	'replaceset-error-regexbadmodifier' => "Ël modificador ëd regex '$1' a l'é pa bon.",
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'replaceset-desc' => "Adiciona ao analisador sintáctico ''(parser)'' a função <nowiki>{{#replaceset}}</nowiki> usada para substituir secções de texto por dados formatados",
+	'replaceset-error-calllimit' => 'Foi atingido o limite de chamadas ao ReplaceSet.',
+	'replaceset-error-regexnoend' => "Falta o delimitador final '\$2' à expressão regular ''(regex)'' \"\$1\"",
+	'replaceset-error-regexbadmodifier' => "O modificador de expressões regulares ''(regex)'' '$1' não é válido",
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

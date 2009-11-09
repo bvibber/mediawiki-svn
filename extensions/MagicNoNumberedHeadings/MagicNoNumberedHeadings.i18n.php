@@ -265,6 +265,13 @@ $messages['sv'] = array(
 	'magicnonumberedheadings-desc' => 'Lägger till det magiska ordet "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'magicnonumberedheadings-desc' => 'Додає магічне слово "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

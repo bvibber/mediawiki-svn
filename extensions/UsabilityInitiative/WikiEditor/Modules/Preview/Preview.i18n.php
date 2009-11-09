@@ -28,6 +28,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Lloffiwr
  * @author Mormegil
  * @author Roan Kattouw
  */
@@ -42,7 +43,9 @@ $messages['qqq'] = array(
 	'wikieditor-preview-loading' => 'Alt text for spinner displayed while preview is being loaded
 {{Identical|Loading}}',
 	'wikieditor-preview-button-publish' => 'Button to the right of the Edit/Preview tabs that opens a dialog window that lets the user save their edit',
-	'wikieditor-preview-button-cancel' => 'Button to the right of the Edit/Preview tabs that has the same effect as the Cancel link below the edit box',
+	'wikieditor-preview-button-cancel' => 'Button to the right of the Edit/Preview tabs that has the same effect as the Cancel link below the edit box.
+
+{{Identical|Cancel}}',
 	'wikieditor-preview-savedialog-title' => 'Title of the dialog that opens when the user clicks the Publish button',
 	'wikieditor-preview-savedialog-summary' => 'Label for the edit summary textbox in the dialog that opens when the user clicks the Publish button',
 	'wikieditor-preview-savedialog-minor' => 'Label for the minor edit checkbox in the dialog that opens when the user clicks the Publish button',
@@ -83,10 +86,30 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  */
 $messages['br'] = array(
+	'wikieditor-preview-preference' => 'Gweredekaat ar rakweled skoaz-ouzh-skoaz',
 	'wikieditor-preview-tab-edit' => 'Aozañ',
 	'wikieditor-preview-tab-preview' => 'Rakwelet',
+	'wikieditor-preview-loading' => 'O kargañ...',
+	'wikieditor-preview-button-publish' => 'Embann',
+	'wikieditor-preview-button-cancel' => 'Nullañ',
+	'wikieditor-preview-savedialog-title' => 'Embann war {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => "Aozañ an diverrañ (deskrivañ berr-ha-berr ar c'hemmoù degaset ganeoc'h) :",
+	'wikieditor-preview-savedialog-minor' => 'Kemmig dister',
+	'wikieditor-preview-savedialog-watch' => 'Evezhiañ ar bajenn-mañ',
+	'wikieditor-preview-savedialog-publish' => 'Embann',
+	'wikieditor-preview-savedialog-goback' => 'Distreiñ',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'wikieditor-preview-tab-preview' => 'Pregled',
+	'wikieditor-preview-loading' => 'Učitavam...',
+	'wikieditor-preview-button-cancel' => 'Odustani',
 );
 
 /** Czech (Česky)
@@ -110,11 +133,20 @@ $messages['cy'] = array(
 
 /** German (Deutsch)
  * @author Lyzzy
+ * @author MF-Warburg
  */
 $messages['de'] = array(
 	'wikieditor-preview-tab-edit' => 'Bearbeiten',
 	'wikieditor-preview-tab-preview' => 'Vorschau',
 	'wikieditor-preview-loading' => 'lädt …',
+	'wikieditor-preview-button-publish' => 'Veröffentlichen',
+	'wikieditor-preview-button-cancel' => 'Abbrechen',
+	'wikieditor-preview-savedialog-title' => 'Auf {{SITENAME}} veröffentlichen',
+	'wikieditor-preview-savedialog-summary' => 'Zusammenfassung (kurze Beschreibung der von dir vorgenommenen Änderungen):',
+	'wikieditor-preview-savedialog-minor' => 'Nur Kleinigkeiten wurden verändert',
+	'wikieditor-preview-savedialog-watch' => 'Diese Seite beobachten',
+	'wikieditor-preview-savedialog-publish' => 'Veröffentlichen',
+	'wikieditor-preview-savedialog-goback' => 'Zurück',
 );
 
 /** Zazaki (Zazaki)
@@ -125,6 +157,14 @@ $messages['diq'] = array(
 	'wikieditor-preview-tab-edit' => 'Bivurne',
 	'wikieditor-preview-tab-preview' => 'Verqeyd',
 	'wikieditor-preview-loading' => 'Ho bar keno...',
+	'wikieditor-preview-button-publish' => 'Çap ke',
+	'wikieditor-preview-button-cancel' => 'Iptal bike',
+	'wikieditor-preview-savedialog-title' => '{{SITENAME}} rê çap ke',
+	'wikieditor-preview-savedialog-summary' => 'Xulasayê vurnayişi (ser vurnayişê xo xulasa binuse):',
+	'wikieditor-preview-savedialog-minor' => 'Vurnayişo qickek',
+	'wikieditor-preview-savedialog-watch' => 'Ena pele seyr bike',
+	'wikieditor-preview-savedialog-publish' => 'Çap ke',
+	'wikieditor-preview-savedialog-goback' => 'Reyna şi',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -135,6 +175,14 @@ $messages['dsb'] = array(
 	'wikieditor-preview-tab-edit' => 'Wobźěłaś',
 	'wikieditor-preview-tab-preview' => 'Pśeglěd',
 	'wikieditor-preview-loading' => 'Zacytujo se...',
+	'wikieditor-preview-button-publish' => 'Wózjawiś',
+	'wikieditor-preview-button-cancel' => 'Pśetergnuś',
+	'wikieditor-preview-savedialog-title' => 'Do {{GRAMMAR:genitiw|{{SITENAME}}}} wózjawiś',
+	'wikieditor-preview-savedialog-summary' => 'Zespominanje změnow (wópisaj krotko změny, kótareř sy cynił):',
+	'wikieditor-preview-savedialog-minor' => 'Snadna změna',
+	'wikieditor-preview-savedialog-watch' => 'Toś ten bok wobglědowaś',
+	'wikieditor-preview-savedialog-publish' => 'Wózjawiś',
+	'wikieditor-preview-savedialog-goback' => 'Slědk',
 );
 
 /** Esperanto (Esperanto)
@@ -147,14 +195,38 @@ $messages['eo'] = array(
 	'wikieditor-preview-loading' => 'Ŝarĝante',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'wikieditor-preview-tab-edit' => 'Editar',
+	'wikieditor-preview-tab-preview' => 'Previsualizar',
+	'wikieditor-preview-loading' => 'Cargando...',
+	'wikieditor-preview-button-publish' => 'Publicar',
+	'wikieditor-preview-button-cancel' => 'Cancelar',
+	'wikieditor-preview-savedialog-minor' => 'Edición menor',
+	'wikieditor-preview-savedialog-watch' => 'Vigilar esta página',
+	'wikieditor-preview-savedialog-publish' => 'Publicar',
+	'wikieditor-preview-savedialog-goback' => 'Regresar',
+);
+
 /** French (Français)
  * @author IAlex
+ * @author Jean-Frédéric
  */
 $messages['fr'] = array(
 	'wikieditor-preview-preference' => 'Activer la prévisualisation côte à côte',
 	'wikieditor-preview-tab-edit' => 'Modification',
 	'wikieditor-preview-tab-preview' => 'Prévisualisation',
 	'wikieditor-preview-loading' => 'Chargement...',
+	'wikieditor-preview-button-publish' => 'Publier',
+	'wikieditor-preview-button-cancel' => 'Annuler',
+	'wikieditor-preview-savedialog-title' => 'Publier sur {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Résumé de modification (décrivez brièvement les changements que vous avez apportés) :',
+	'wikieditor-preview-savedialog-minor' => 'Modification mineure',
+	'wikieditor-preview-savedialog-watch' => 'Suivre cette page',
+	'wikieditor-preview-savedialog-publish' => 'Publier',
+	'wikieditor-preview-savedialog-goback' => 'Retour',
 );
 
 /** Galician (Galego)
@@ -165,6 +237,14 @@ $messages['gl'] = array(
 	'wikieditor-preview-tab-edit' => 'Editar',
 	'wikieditor-preview-tab-preview' => 'Vista previa',
 	'wikieditor-preview-loading' => 'Cargando...',
+	'wikieditor-preview-button-publish' => 'Publicar',
+	'wikieditor-preview-button-cancel' => 'Cancelar',
+	'wikieditor-preview-savedialog-title' => 'Publicar en {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Resumo de edición (describa brevemente os cambios que fixo):',
+	'wikieditor-preview-savedialog-minor' => 'Edición pequena',
+	'wikieditor-preview-savedialog-watch' => 'Vixiar esta páxina',
+	'wikieditor-preview-savedialog-publish' => 'Publicar',
+	'wikieditor-preview-savedialog-goback' => 'Voltar',
 );
 
 /** Swiss German (Alemannisch)
@@ -185,6 +265,14 @@ $messages['hsb'] = array(
 	'wikieditor-preview-tab-edit' => 'Wobdźěłać',
 	'wikieditor-preview-tab-preview' => 'Přehlad',
 	'wikieditor-preview-loading' => 'Začituje so...',
+	'wikieditor-preview-button-publish' => 'Wozjewić',
+	'wikieditor-preview-button-cancel' => 'Přetorhnyć',
+	'wikieditor-preview-savedialog-title' => 'Do {{GRAMMAR:genitiw|{{SITENAME}}}} wozjewić',
+	'wikieditor-preview-savedialog-summary' => 'Zjeće změnow (wopisaj krótko změny, kotrež sy činił):',
+	'wikieditor-preview-savedialog-minor' => 'Snadna změna',
+	'wikieditor-preview-savedialog-watch' => 'Tutu stronu wobkedźbować',
+	'wikieditor-preview-savedialog-publish' => 'Wozjewić',
+	'wikieditor-preview-savedialog-goback' => 'Wróćo',
 );
 
 /** Hungarian (Magyar)
@@ -215,6 +303,14 @@ $messages['id'] = array(
 	'wikieditor-preview-tab-edit' => 'Sunting',
 	'wikieditor-preview-tab-preview' => 'Pratayang',
 	'wikieditor-preview-loading' => 'Memuat...',
+	'wikieditor-preview-button-publish' => 'Terbitkan',
+	'wikieditor-preview-button-cancel' => 'Batalkan',
+	'wikieditor-preview-savedialog-title' => 'Terbitkan ke',
+	'wikieditor-preview-savedialog-summary' => 'Ringkasan suntingan (jelaskan dengan ringkas perubahan yang Anda buat):',
+	'wikieditor-preview-savedialog-minor' => 'Suntingan kecil',
+	'wikieditor-preview-savedialog-watch' => 'Pantau halaman ini',
+	'wikieditor-preview-savedialog-publish' => 'Terbitkan',
+	'wikieditor-preview-savedialog-goback' => 'Kembali',
 );
 
 /** Japanese (日本語)
@@ -253,8 +349,16 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'wikieditor-preview-preference' => 'അരികിലായുള്ള പ്രിവ്യൂ സജ്ജമാക്കുക',
 	'wikieditor-preview-tab-edit' => 'തിരുത്തുക',
-	'wikieditor-preview-tab-preview' => 'പ്രിവ്യൂ',
+	'wikieditor-preview-tab-preview' => 'എങ്ങിനെയുണ്ടെന്നു കാണുക',
 	'wikieditor-preview-loading' => 'ശേഖരിക്കുന്നു...',
+	'wikieditor-preview-button-publish' => 'പ്രസിദ്ധീകരിക്കുക',
+	'wikieditor-preview-button-cancel' => 'റദ്ദാക്കുക',
+	'wikieditor-preview-savedialog-title' => '{{SITENAME}} സംരംഭത്തിൽ പ്രസിദ്ധീകരിക്കുക',
+	'wikieditor-preview-savedialog-summary' => 'തിരുത്തലിന്റെ ചുരുക്കം (താങ്കൾ വരുത്തിയ മാറ്റങ്ങളെ കുറിച്ച് ലഘുവായി വിശദീകരിക്കുക):',
+	'wikieditor-preview-savedialog-minor' => 'ചെറു തിരുത്തൽ',
+	'wikieditor-preview-savedialog-watch' => 'ഈ താൾ ശ്രദ്ധിക്കുക',
+	'wikieditor-preview-savedialog-publish' => 'പ്രസിദ്ധീകരിക്കുക',
+	'wikieditor-preview-savedialog-goback' => 'പഴയ താളിലേയ്ക്ക് മടങ്ങുക',
 );
 
 /** Dutch (Nederlands)
@@ -316,6 +420,33 @@ $messages['roa-tara'] = array(
 	'wikieditor-preview-loading' => 'Carecamende...',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'wikieditor-preview-preference' => 'Включить предпросмотр бок о бок',
+	'wikieditor-preview-tab-edit' => 'Правка',
+	'wikieditor-preview-tab-preview' => 'Предпросмотр',
+	'wikieditor-preview-loading' => 'Загрузка…',
+	'wikieditor-preview-button-publish' => 'Опубликовать',
+	'wikieditor-preview-button-cancel' => 'Отмена',
+	'wikieditor-preview-savedialog-title' => 'Опубликование в проекте {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Описание изменений (кратко укажите какие изменения были произведены):',
+	'wikieditor-preview-savedialog-minor' => 'Малое изменение',
+	'wikieditor-preview-savedialog-watch' => 'Наблюдать за этой страницей',
+	'wikieditor-preview-savedialog-publish' => 'Опубликовать',
+	'wikieditor-preview-savedialog-goback' => 'Назад',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'wikieditor-preview-tab-edit' => 'Hariri',
+	'wikieditor-preview-tab-preview' => 'Hakikisho',
+	'wikieditor-preview-button-cancel' => 'Batilisha',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */
@@ -327,12 +458,22 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'wikieditor-preview-preference' => 'Увімкнути додаткову панель швидкого перемикання: "Редагувати" — "Попередній перегляд"',
 	'wikieditor-preview-tab-edit' => 'Редагувати',
 	'wikieditor-preview-tab-preview' => 'Попередній перегляд',
 	'wikieditor-preview-loading' => 'Завантаження...',
+	'wikieditor-preview-button-publish' => 'Зберегти',
+	'wikieditor-preview-button-cancel' => 'Скасувати',
+	'wikieditor-preview-savedialog-title' => 'Опублікувати на {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Опис редагування (короткий опис змін, зроблених вами):',
+	'wikieditor-preview-savedialog-minor' => 'Незначне редагування',
+	'wikieditor-preview-savedialog-watch' => 'Спостерігати за цією сторінкою',
+	'wikieditor-preview-savedialog-publish' => 'Зберегти',
+	'wikieditor-preview-savedialog-goback' => 'Назад',
 );
 
 /** Vèneto (Vèneto)

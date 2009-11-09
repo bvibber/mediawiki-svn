@@ -1300,6 +1300,7 @@ $1',
  */
 $messages['id'] = array(
 	'inplace_access_disabled' => 'Akses untuk layanan ini telah dimatikan bagi semua klien.',
+	'inplace_access_denied' => 'Layanan ini dibatasi oleh IP klien.',
 	'webstore_dest_open' => 'Tak bisa membuka berkas tujuan "$1".',
 	'webstore_src_open' => 'Gagal membuka berkas sumber "$1".',
 	'webstore_404' => 'Berkas tidak ditemukan.',

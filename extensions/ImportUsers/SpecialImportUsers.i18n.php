@@ -1360,22 +1360,23 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'importusers' => 'Ampòrta utent',
-	'importusers-desc' => '[[Special:ImportUsers|A ampòrta utent]] an partìa da file CSV; codìfica: UTF-8',
-	'importusers-uploadfile' => 'Caria file',
-	'importusers-form-caption' => 'Anseriss file CSV (UTF-8)',
-	'importusers-form-file' => 'Formà file utent (CSV):',
-	'importusers-form-replace-present' => 'Rimpiassa utent esistemt',
+	'importusers-desc' => "[[Special:ImportUsers|A ampòrta dj'utent]] an partìa da archivi CSV; codìfica: UTF-8",
+	'importusers-uploadfile' => 'Caria archivi',
+	'importusers-form-caption' => "Anseriss n'archivi CSV (UTF-8)",
+	'importusers-form-file' => 'Formà archivi utent (CSV):',
+	'importusers-form-replace-present' => 'Rimpiassa utent esistent',
 	'importusers-form-button' => 'Ampòrta',
 	'importusers-user-added' => "L'utent '''$1''' a l'é stàit giontà.",
 	'importusers-user-present-update' => "L'utent '''$1''' a esist già.
 Modificà.",
 	'importusers-user-present-not-update' => "L'utent '''$1''' a esist già.
 Pa modificà.",
-	'importusers-user-invalid-format' => 'Ij dat utent ant la linia #$1 a son pa bon o a son biank.
+	'importusers-user-invalid-format' => 'Ij dat utent ant la linia #$1 a son pa bon o a son veuid.
 Sautà.',
 	'importusers-log' => 'Registr amportassion utent',
 	'importusers-log-summary' => 'Resumé',
@@ -1384,7 +1385,7 @@ Sautà.',
 	'importusers-log-summary-updated' => 'Modificà',
 	'importusers-login-name' => 'Nòm utent',
 	'importusers-password' => 'Ciav',
-	'importusers-email' => 'e-mail',
+	'importusers-email' => 'pòsta eletrònica',
 	'importusers-realname' => 'nòm ver',
 	'right-import_users' => 'Ampòrta utent an partìa',
 );

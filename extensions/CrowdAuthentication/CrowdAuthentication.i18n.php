@@ -362,6 +362,13 @@ $messages['tr'] = array(
 	'crowdauthentication-desc' => 'Atlassian Crowd için doğrulama verisi eklentisidir.',
 );
 
+/** Ukrainian (Українська)
+ * @author NickK
+ */
+$messages['uk'] = array(
+	'crowdauthentication-desc' => 'Модуль автентифікації для Atlassian Crowd',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

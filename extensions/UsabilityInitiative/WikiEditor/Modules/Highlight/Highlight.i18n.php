@@ -176,6 +176,13 @@ $messages['roa-tara'] = array(
 	'wikieditor-highlight-preference' => "Abbilite 'a sindasse evidenziate quanne face le cangiaminde",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'wikieditor-highlight-preference' => 'Включить подсветку синтаксиса при редактировании',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

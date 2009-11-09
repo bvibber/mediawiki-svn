@@ -232,6 +232,13 @@ $messages['sk'] = array(
 	'nsfilerepo-desc' => 'Poskytuje nahraným súborom možnosti menných priestorov',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'nsfilerepo-desc' => 'Додає особливості завантаження файлів в залежності від простору назв',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

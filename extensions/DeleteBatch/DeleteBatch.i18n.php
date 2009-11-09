@@ -968,33 +968,34 @@ Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej l
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'deletebatch' => 'Scansela na partìa ëd pàgine',
-	'deletebatch-desc' => '[[Special:DeleteBatch|Scansela na partìa ëd pàgine]]',
-	'deletebatch-help' => 'Scansela na partìa ëd pàgine.
-It peule ëdcò fé na scanselassion sìngola, o scanselé dle pàgine listà ant un file.
-Sern n\'utent che a sarà mostà ant ël registr ëd le scanselassion.
-Ij file carià a dovrìo conten-e ël nòm pàgina e na rason opsional, separà da un caràter "|" an minca linia.',
+	'deletebatch' => 'Scancela na partìa ëd pàgine',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Scancela na partìa ëd pàgine]]',
+	'deletebatch-help' => "Scancela na partìa ëd pàgine.
+It peule ëdcò fé na scancelassion sìngola, o scancelé dle pàgine listà an n'archivi.
+Sern n'utent che a sarà mostà ant ël registr ëd le scancelassion.
+J'archivi carià a dovrìo conten-e ël nòm dla pàgina e na rason opsional, separà da un caràter \"|\" an minca linia.",
 	'deletebatch-caption' => 'Lista dle pàgine:',
-	'deletebatch-title' => 'Scansela na partìa',
+	'deletebatch-title' => 'Scancela na partìa',
 	'deletebatch-link-back' => 'Va andré a la pàgina special',
 	'deletebatch-as' => 'Fà giré lë script com:',
 	'deletebatch-both-modes' => 'Për piasì sern na pàgina specificà o na serta lista ëd pàgine.',
 	'deletebatch-or' => '<b>o</b>',
-	'deletebatch-delete' => 'Scansela',
-	'deletebatch-page' => 'Pàgine da scanselé:',
-	'deletebatch-processing-from-file' => 'scanselassion  ëd pàgine da la lista ëd file',
-	'deletebatch-processing-from-form' => 'scanselassion ëd pàgine da na forma',
+	'deletebatch-delete' => 'Scancela',
+	'deletebatch-page' => 'Pàgine da scancelé:',
+	'deletebatch-processing-from-file' => "scancelassion ëd pàgine da n'archivi ëd lista",
+	'deletebatch-processing-from-form' => 'scancelassion ëd pàgine dal formolari',
 	'deletebatch-omitting-nonexistant' => 'As lassa sté la pàgina $1$ ch\'a esist pa.',
 	'deletebatch-omitting-invalid' => 'As lassa sté la pàgina $1 pa bon-a.',
-	'deletebatch-file-bad-format' => 'Ël file a dovrìa esse mach test',
-	'deletebatch-file-missing' => 'As peul pa les-se ël file dàit',
-	'deletebatch-select-script' => 'Script dë scanselassion ëd na pàgina',
+	'deletebatch-file-bad-format' => "L'archivi a dovrìa esse mach test",
+	'deletebatch-file-missing' => "L'archivi dàit as peul pa les-se",
+	'deletebatch-select-script' => 'Script dë scancelassion ëd na pàgina',
 	'deletebatch-select-yourself' => 'Ti',
-	'deletebatch-no-page' => "Për piasì specìfica almanch na pàgina da scanselé o sern un file ch'a conten-a na lista ëd pàgine.",
-	'right-deletebatch' => 'Scansela le pàgine an partìa',
+	'deletebatch-no-page' => "Për piasì specìfica almanch na pàgina da scancelé o sern n'archivi ch'a conten-a na lista ëd pàgine.",
+	'right-deletebatch' => 'Scancela le pàgine an partìa',
 );
 
 /** Portuguese (Português)

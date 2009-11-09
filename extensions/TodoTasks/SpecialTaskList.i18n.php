@@ -1149,6 +1149,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -1156,7 +1157,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'tasklist' => 'Lista de Tarefas',
 	'tasklist-parser-desc' => 'Adiciona a função do analisador (parser) <nowiki>{{#todo:}}</nowiki> para a atribuição de tarefas',
-	'tasklist-special-desc' => 'Adiciona uma página especial para a revisão de [[Special:TaskList|atribuições de tarefas]]',
+	'tasklist-special-desc' => '[[Special:TaskList|Página especial]] para a revisão de tarefas atribuídas',
 	'tasklistbyproject' => 'Lista de Tarefas por Projecto',
 	'tasklistunknownproject' => 'projecto deconhecido',
 	'tasklistunspecuser' => 'Utilizador não especificado',

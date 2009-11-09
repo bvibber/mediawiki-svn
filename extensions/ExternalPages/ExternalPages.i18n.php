@@ -278,6 +278,23 @@ $messages['pms'] = array(
 	'externalpages-bad-url-data' => 'Pa podù trové ij contnù dla pàgina',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'externalpages' => 'Páginas Externas',
+	'externalpages-desc' => 'Importa e apresenta páginas de sítios WMF remotos',
+	'externalpages-bad-year' => 'Ano incorrecto',
+	'externalpages-bad-language' => 'Língua incorrecta',
+	'externalpages-bad-project' => 'Projecto incorrecto',
+	'externalpages-no-project' => 'Projecto não introduzido',
+	'externalpages-bad-page' => 'Página incorrecta',
+	'externalpages-no-page' => 'Página não introduzida',
+	'externalpages-error-generic' => 'Erro detectado',
+	'externalpages-bad-url' => 'Importação da URL falhou',
+	'externalpages-bad-url-data' => 'Importação do conteúdo da página falhou',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

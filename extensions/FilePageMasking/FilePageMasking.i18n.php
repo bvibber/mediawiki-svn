@@ -216,3 +216,10 @@ $messages['sk'] = array(
 	'filepagemasking-desc' => 'Prepisuje „.xxx“ na „_xxx“ v odkazoch na popisných stránkach súborov',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'filepagemasking-desc' => 'Перезаписує ".xxx" на "_xxx" в посиланнях на сторінки описів файлів',
+);
+

@@ -81,6 +81,13 @@ $messages['ia'] = array(
 	'geolite-desc' => 'Redirection GeoIP simple',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'geolite-desc' => 'Pengalihan GeoIP Ringan',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -124,10 +131,24 @@ $messages['pms'] = array(
 	'geolite-desc' => 'Ridiression sempia GeoIp',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'geolite-desc' => 'Reencaminhamento GeoIP Versão Ligeira',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
 	'geolite-desc' => 'Redirezionamende a Lightweight GeoIp',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'geolite-desc' => 'Облегчённое перенаправление GeoIp',
 );
 

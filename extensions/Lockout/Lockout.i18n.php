@@ -233,3 +233,10 @@ $messages['tr'] = array(
 	'lockout-desc' => 'Engellenmiş kullanıcıların giriş yapmalarını önle',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'lockout-desc' => 'Не дозволяє заблокованим користувачам входити в систему',
+);
+

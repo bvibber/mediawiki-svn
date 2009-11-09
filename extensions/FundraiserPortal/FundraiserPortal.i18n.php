@@ -713,17 +713,21 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  */
 $messages['pt'] = array(
+	'fundraiserportal' => 'Portal de Angariação de Fundos',
+	'fundraiserportal-desc' => 'Adiciona um portal "Contribua" ao topo da barra lateral.',
 	'fundraiserportal-plain-button' => 'Ajude a Wikipédia!',
-	'fundraiserportal-ruby-button' => 'Faça doação agora',
-	'fundraiserportal-rubytext-button' => 'Faça doação agora',
-	'fundraiserportal-rubytext-close' => 'Esconder isto a partir de agora',
-	'fundraiserportal-sapphire-button' => 'Faça doação agora',
-	'fundraiserportal-tourmaline-button' => 'Faça doação agora',
-	'fundraiserportal-tourmaline-message' => 'Cada doação ajuda-nos a manter a Wikipédia livre para toda a gente.',
-	'fundraiserportal-tourmaline-close' => 'Esconder isto a partir de agora',
+	'fundraiserportal-ruby-button' => 'Faça Donativo Agora',
+	'fundraiserportal-rubytext-button' => 'Faça Donativo Agora',
+	'fundraiserportal-rubytext-message' => 'Cada donativo ajuda-nos a manter a Wikipédia gratuita para todos.',
+	'fundraiserportal-rubytext-close' => 'Ocultar esta mensagem a partir de agora',
+	'fundraiserportal-sapphire-button' => 'Faça Donativo Agora',
+	'fundraiserportal-tourmaline-button' => 'Faça Donativo Agora',
+	'fundraiserportal-tourmaline-message' => 'Cada donativo ajuda-nos a manter a Wikipédia gratuita para todos.',
+	'fundraiserportal-tourmaline-close' => 'Ocultar esta mensagem a partir de agora',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

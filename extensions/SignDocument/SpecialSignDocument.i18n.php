@@ -2094,10 +2094,12 @@ $1',
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} log pemblokiran] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} cek ip])<!--
 --></span>',
+	'sign-viewfield-stricken' => 'Coret',
 	'sign-viewfield-reviewedby' => 'Peninjau',
 	'sign-viewfield-reviewcomment' => 'Komentar',
 	'sign-detail-uniquequery' => 'Entitas serupa',
 	'sign-detail-uniquequery-run' => 'Jalankan query',
+	'sign-detail-strike' => 'Coret tanda tangan',
 	'sign-reviewsig' => 'Tinjau tanda tangan',
 	'sign-review-comment' => 'Komentar',
 	'sign-submitreview' => 'Kirim tinjauan',

@@ -215,10 +215,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'minify-desc' => 'Encolhe a saída CSS e JavaScript de action=raw',
+	'minify-desc' => "Compacta o código CSS e JavaScript produzido por ''action=raw''",
 );
 
 /** Brazilian Portuguese (Português do Brasil)

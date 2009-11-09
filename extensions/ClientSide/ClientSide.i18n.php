@@ -328,6 +328,13 @@ $messages['tr'] = array(
 	'clientside-desc' => 'HTML, CSS ve JavaScript gibi istemci-tarafındaki formatlarda kod oluşturmak için fonksiyonlar sağlar',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'clientside-desc' => 'Надає функції генерації коду в клієнтських форматах, таких, як HTML, CSS і JavaScript',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

@@ -978,15 +978,16 @@ Uwaga – odświeżenie może trwać długo na dużej wiki.',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'refreshspecial' => 'Agiorna le pàgine speciaj',
-	'refreshspecial-desc' => "A përmëtt l'[[Special:RefreshSpecial|agiornament manual ëd le pàgine speciaj]] ëd le pàgine speciaj",
+	'refreshspecial-desc' => "A përmëtt l'[[Special:RefreshSpecial|agiornament manual]] ëd le pàgine speciaj",
 	'refreshspecial-title' => 'Agiorna le pàgine speciaj',
 	'refreshspecial-help' => "Sta pàgina special-sì a dà ij mojen për agiorné le pàgine speciaj.
-Quand it l'has sërnù tute le pàgine ch'it veule agiorné, sgnaca ël boton \"Agiorna selessionà\" sì sota për agiorné le pàgine speciaj selessionà.
-'''Atension:''' L'agiornament a peul duré bastansa an dzora a wiki gròsse.",
+Quand it l'has sërnù tute le pàgine ch'it veule agiorné, sgnaca ël boton \"Agiorna selessionà\" sì-sota për agiorné le pàgine speciaj selessionà.
+'''Atension:''' L'agiornament a peul duré bastansa dzora a wiki gròsse.",
 	'refreshspecial-button' => 'Agiorna selessionà',
 	'refreshspecial-fail' => 'Për piasì contròla almanch na pàgina special da agiorné.',
 	'refreshspecial-refreshing' => 'agiornament pàgine speciaj',
@@ -995,12 +996,12 @@ Quand it l'has sërnù tute le pàgine ch'it veule agiorné, sgnaca ël boton \"
 	'refreshspecial-js-disabled' => "(<i>It peule pa selessioné tute le pàgine quand che JavaScript a l'é disabilità</i>)",
 	'refreshspecial-select-all-pages' => 'Selession-a tute le pàgine',
 	'refreshspecial-link-back' => 'Torna a la pàgina special',
-	'refreshspecial-none-selected' => "It l'has pa selessionà gnun-e pàgine speciaj. Tornà a la selession ëd default",
-	'refreshspecial-db-error' => 'Eror: eror dël database',
+	'refreshspecial-none-selected' => "It l'has pa selessionà gnun-e pàgine speciaj. Tornà a la selession ëstàndard.",
+	'refreshspecial-db-error' => 'Eror: eror dla base ëd dàit',
 	'refreshspecial-no-page' => 'A-i é pa la pàgina special',
-	'refreshspecial-slave-lagged' => 'Artard ëd lë slave, speta ...',
-	'refreshspecial-reconnected' => 'Torna conetù.',
-	'refreshspecial-reconnecting' => 'Conession falìa, reconession tra 10 second ...',
+	'refreshspecial-slave-lagged' => 'Artard ëd lë s-ciav, speta ...',
+	'refreshspecial-reconnected' => 'Torna colegà.',
+	'refreshspecial-reconnecting' => 'Conession falìa, riconession tra 10 second ...',
 	'refreshspecial-page-result' => 'trovà $1 {{PLURAL:$1|riga|righe}} an',
 	'refreshspecial-total-display' => "Agiornà $1 {{PLURAL:$1|pàgina|pàgine}} për un total ëd $2 {{PLURAL:$2|riga|righe}} ant un temp ëd $3 (ël temp total d'esecussion dlë script a l'é $4)",
 	'right-refreshspecial' => 'Agiorna pàgine speciaj',
@@ -1253,6 +1254,13 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'refreshspecial' => 'Yenilen özel sayfalar',
 	'refreshspecial-title' => 'Yenilen özel sayfalar',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'refreshspecial-desc' => 'Дозволяє [[Special:RefreshSpecial|здійснювати ручне оновлення]] спеціальних сторінок',
 );
 
 /** Veps (Vepsan kel')

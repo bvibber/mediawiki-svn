@@ -615,6 +615,14 @@ $messages['tl'] = array(
 	'contributionseditcount-desc' => 'Nagpapakita ng bilang ng pamamatnugot sa ibabaw ng [[Special:Contributions|pahina ng mga ambag ng tagagamit]]',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'contributionseditcount' => '{{GENDER:$2|Цей користувач зробив|Ця користувачка зробила}} {{PLURAL:$1|$1 редагування|$1 редагувань}}.',
+	'contributionseditcount-desc' => 'Відображає кількість редагувань на [[Special:Contributions|сторінці внеску користувача]]',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

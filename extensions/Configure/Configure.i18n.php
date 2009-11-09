@@ -440,7 +440,7 @@ $messages['ar'] = array(
 	'configure-customised' => "''هذا الإعداد تم تخصيصه''",
 	'configure-arrayinput-oneperline' => "''(واحد في السطر)''",
 	'configure-summary' => 'هذه الصفحة الخاصة تسمح لك بضبط هذا الويكي، انظر [http://www.mediawiki.org/wiki/Manual:Configuration_settings إعدادات الضبط] لمزيد من المعلومات.',
-	'configure-btn-save' => 'حفظ الاعدادات',
+	'configure-btn-save' => 'احفظ الإعدادات',
 	'configure-db-error' => 'قاعدة البيانات الت يحددتها لحمل الضبط ($1) غير موجودة.
 من فضلك أنشئها وشغل configure.sql أو صحح اسمها.',
 	'configure-db-table-error' => 'قاعدة البيانات التي حددتها لا تمتلك الجداول المطلوبة. من فضلك شغل configure.sql في قاعدة البيانات تلك.',
@@ -8860,6 +8860,7 @@ $messages['ug-latn'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
@@ -8872,7 +8873,7 @@ $messages['uk'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Розширення',
 	'configure-viewconfig-default-diff' => 'Зміни порівняно зі стандартними налаштуваннями',
-	'configure-ext-ext-dependencies' => "'''Увага:''' це розширення вимагає активації {{PLURAL:$2|наступного розширення|наступних розширень}}: $1.",
+	'configure-ext-ext-dependencies' => "'''Увага:''' це розширення вимагає активації {{PLURAL:$2|такого розширення|таких розширень}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Помилка:''' розширення $1 вимагає активації розширення $2.",
 	'configure-ext-doc' => 'Див. документацію в мережі',
 	'configure-ext-schemachange' => "'''Увага:''' це розширення вимагає оновлення бази даних для коректної роботи!",

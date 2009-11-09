@@ -459,6 +459,13 @@ $messages['tr'] = array(
 	'googleadsense-desc' => "Kenar çubuğuna [http://www.google.com/adsense Google AdSense]'ı ekler",
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'googleadsense-desc' => 'Додає [http://www.google.com/adsense Google AdSense] на бічну панель',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

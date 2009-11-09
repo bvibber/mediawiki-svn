@@ -399,6 +399,13 @@ $messages['tl'] = array(
 	'metakeywords-desc' => 'Nagpapahintulot ng pagsasaayos ng mga tatak na <tt><nowiki><meta "keywords"></nowiki></tt> at <tt><nowiki><meta "description"></nowiki></tt> sa bawat espasyo ng pangalan',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'metakeywords-desc' => 'Дозволяє конфігурацію тегів <tt><nowiki><meta "keywords"></nowiki></tt> та <tt><nowiki><meta "description"></nowiki></tt> для кожного простору назв окремо',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

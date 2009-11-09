@@ -2308,6 +2308,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author MF-Warburg
  * @author Malafaya
  * @author Waldir
@@ -2327,7 +2328,7 @@ $messages['pt'] = array(
 	'grouppermissions-dosearch' => 'Ir',
 	'grouppermissions-searchlabel' => 'Pesquise por um grupo',
 	'grouppermissions-deletelabel' => 'Apagar o grupo',
-	'grouppermissions-error' => 'Ocorreu um erro desconhecido; por favor aperte o botão de retornar no seu navegador e tente novamente',
+	'grouppermissions-error' => "Ocorreu um erro desconhecido; por favor clique o botão 'voltar' do seu navegador e tente novamente",
 	'grouppermissions-change' => 'Alterar as permissões do grupo',
 	'grouppermissions-add' => 'Adicionar grupo',
 	'grouppermissions-delete' => 'Eliminar grupo',

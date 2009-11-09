@@ -478,7 +478,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'webchat' => 'Conversação',
-	'webchat-desc' => 'Adiciona uma [[Special:WebChat|página especial]] usada para conversar em tempo real com outros utilizadores da wiki',
+	'webchat-desc' => '[[Special:WebChat|Página especial]] usada para conversar em tempo real com outros utilizadores da wiki',
 	'webchat-header' => "Esta página especial permite-lhe colaborar em tempo real com outros utilizadores da wiki.
 Para ligar, clique o botão ''\"Connect\"''.
 Se se autenticou na wiki, o seu nome na ferramenta de conversação já estará devidamente preenchido.
@@ -554,10 +554,11 @@ $messages['te'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'webchat-desc' => 'Додає [[Special:WebChat|спеціальні сторінку]], що використовується для спілкування в режимі реального часу з іншими користувачами вікі',
+	'webchat-desc' => 'Додає [[Special:WebChat|спеціальну сторінку]], що використовується для спілкування в режимі реального часу з іншими користувачами вікі',
 );
 
 /** Veps (Vepsan kel')

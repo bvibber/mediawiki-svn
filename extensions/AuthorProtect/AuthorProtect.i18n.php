@@ -347,6 +347,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -363,6 +364,7 @@ $messages['eo'] = array(
 	'authorprotect-failure' => 'Protektado malsukcesis',
 	'protect-level-author' => 'Protekti kontraŭ ne-aŭtoroj',
 	'restriction-level-author' => 'Protektita per aŭtoro',
+	'right-authorprotect' => 'Protekti aŭtorajn paĝojn',
 );
 
 /** Spanish (Español)

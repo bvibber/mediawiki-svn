@@ -578,6 +578,25 @@ $messages['ps'] = array(
 	'mostrevisors-submit' => 'ورځه',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'mostrevisors' => 'Páginas com mais editores',
+	'mostrevisors-desc' => 'Lista as [[Special:MostRevisors|páginas com mais editores]]',
+	'mostrevisors-header' => "'''Esta página lista {{PLURAL:$1|a página|as $1 páginas}} com mais editores desta wiki.'''",
+	'mostrevisors-limitlinks' => 'Mostrar até $1 páginas',
+	'mostrevisors-namespace' => 'Espaço nominal:',
+	'mostrevisors-none' => 'Nenhuma entrada encontrada.',
+	'mostrevisors-ns-header' => "'''Esta página lista {{PLURAL:$1|a página|as $1 páginas}} com mais editores no espaço nominal $2.'''",
+	'mostrevisors-showing' => 'Listando {{PLURAL:$1|uma página|$1 páginas}}:',
+	'mostrevisors-submit' => 'Submeter',
+	'mostrevisors-showredir' => 'Mostrar páginas de redireccionamento',
+	'mostrevisors-hideredir' => 'Esconder páginas de redirecionamento',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editores}}',
+	'mostrevisors-viewcontributors' => 'Ver os principais editores',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

@@ -396,6 +396,13 @@ $messages['tl'] = array(
 	'substall-desc' => 'Lumilikha ng isang tatak na <nowiki><substall></nowiki> na nagpapalawak sa lahat ng mga suleras hanggang palaugnayan ng wiki',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'substall-desc' => 'Створює тег <nowiki><substall></nowiki>, який розгортає всі шаблони у вікі-розмітку',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

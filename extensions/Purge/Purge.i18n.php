@@ -382,11 +382,12 @@ $messages['pms'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'purge' => 'purgar',
-	'purge-desc' => 'Adiciona uma pestana para purgar em todas as páginas normais, e ultrapassa a verificação de purga para utilizadores anónimos, permitindo um purga rápida da cache',
+	'purge-desc' => "Adiciona um separador \"purgar\" a todas as páginas normais e ultrapassa a verificação de purga para os utilizadores anónimos, permitindo uma purga rápida da ''cache''",
 );
 
 /** Brazilian Portuguese (Português do Brasil)

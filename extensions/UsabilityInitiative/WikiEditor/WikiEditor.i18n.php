@@ -38,6 +38,14 @@ $messages['be-tarask'] = array(
 	'wikieditor-desc' => 'Дадае пашыраны інтэрфэйс рэдагаваньня вікі-тэксту і шмат модульных магчымасьцяў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'wikieditor' => 'Etrefas kemmañ wikitestenn klokaet',
+	'wikieditor-desc' => "Poruchas a ra un etrefas kemmañ wikitestenn astennidik ha meur a arc'hwel all.",
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -51,6 +59,7 @@ $messages['cs'] = array(
  */
 $messages['diq'] = array(
 	'wikieditor' => 'Interfaceye wikitext ke raver siyayo',
+	'wikieditor-desc' => 'Yew pedê nuştişiyê girdi u moduleyanê binan dano',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -188,6 +197,14 @@ $messages['pt'] = array(
 $messages['roa-tara'] = array(
 	'wikieditor' => "Wikitext avanzate pe le cangiaminde de l'inderfacce",
 	'wikieditor-desc' => "Dè 'nu wikitext estendibbele pe le cangiaminde de l'inderfacce e 'nu sbuenne de funzionalità de cchiù previste sus a le module",
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'wikieditor' => 'Расширенный интерфейс редактирования викитекста',
+	'wikieditor-desc' => 'Обеспечивает расширяемый интерфейс редактирования викитекста и многие функции, предоставляемые модулями',
 );
 
 /** Ukrainian (Українська)

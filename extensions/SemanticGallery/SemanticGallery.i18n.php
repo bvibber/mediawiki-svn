@@ -283,6 +283,13 @@ $messages['tl'] = array(
 	'semanticgallery-desc' => 'Nagdaragdag ng mga inilalabas ng mga produktong na nasa anyong pangtanghalan (galerya) sa mga nasa loob ng hanay na mga katanunang pang-SMW',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'semanticgallery-desc' => 'Додає вихідний формат галереї для вбудованих SMW-запитів',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -87,9 +87,16 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  */
 $messages['br'] = array(
+	'multiboilerplate-desc' => 'Aotren a ra diuzañ ur bajenn pe ur patrom da enframmañ adalek ur voest a-us da furmskrid skridaozañ ur bajenn.',
+	'multiboilerplate-legend' => 'Diuzañ ar bajenn da enframmañ',
 	'multiboilerplate-submit' => 'Kargañ',
+	'boilerplates' => 'Patromoù hegerz',
+	'multiboilerplate-special-pagetext' => "Gallout a ra ar patromoù-mañ bezañ rakkarget pa vez krouet ar pajennoù. (<span class=plainlinks>[{{fullurl:N'eus ket eus ar bajenn-mañ|action=edit}} demo]</span>)",
+	'multiboilerplate-special-define-in-localsettings' => 'Termenet eo ar patromoù e LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Termenet eo ar patromoù e [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Bosnian (Bosanski)

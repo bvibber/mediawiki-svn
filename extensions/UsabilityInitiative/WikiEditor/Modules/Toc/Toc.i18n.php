@@ -28,7 +28,7 @@ $messages['qqq'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'wikieditor-toc-preference' => 'مكن جدول المحتويات القابل للتصفح',
+	'wikieditor-toc-preference' => 'مكّن جدول المحتويات القابل للتصفح',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -265,9 +265,10 @@ $messages['sk'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'wikieditor-toc-preference' => 'Включити зміст з можливістю навігації',
+	'wikieditor-toc-preference' => 'Увімкнути додаткову панель змісту з можливістю навігації',
 );
 
 /** Vèneto (Vèneto)

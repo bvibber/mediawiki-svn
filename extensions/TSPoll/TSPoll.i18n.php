@@ -92,11 +92,12 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'tspoll-fetch-error' => 'Eraro atingante la URL-on!',
-	'tspoll-id-error' => 'Neniu idnetigo estas donata!',
+	'tspoll-id-error' => 'Neniu identigo estas donata!',
 );
 
 /** Spanish (Español)

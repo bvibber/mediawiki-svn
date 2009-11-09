@@ -147,6 +147,13 @@ $messages['gsw'] = array(
 	'contributorsaddon-desc' => 'Fiegt onMouseOver-Popups dur JavaScript zue dr Gleicher vu dr Hauptautore dezue',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'contributorsaddon-desc' => '"મુખ્ય યોગદાનકર્તાઓ" કડીઓ પર જાવાસ્ક્રિપ્ટ પોપઅપ્સ ઉમેરો',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -400,6 +407,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'contributorsaddon-desc' => '"Temel katkıda bulunanlar" bağlantılarına JavaScript açılır pencereleri ekler.',
+);
+
+/** Ukrainian (Українська)
+ * @author NickK
+ */
+$messages['uk'] = array(
+	'contributorsaddon-desc' => 'Додає JavaScript виринаючі вікна для посилань «Основні автори»',
 );
 
 /** Vèneto (Vèneto)

@@ -493,6 +493,7 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Erkan Yilmaz
+ * @author MF-Warburg
  * @author Tbleher
  * @author Umherirrender
  */
@@ -520,6 +521,7 @@ $messages['de'] = array(
 	'wikilog-title' => 'Titel',
 	'wikilog-actions' => 'Aktionen',
 	'wikilog-comments' => 'Kommentare',
+	'wikilog-replies' => 'Antworten',
 	'wikilog-view-archives' => 'Archive',
 	'wikilog-view-summary' => 'Zusammenfassung',
 	'wikilog-draft-title-mark' => '(Entwurf)',
@@ -589,6 +591,11 @@ Sie sollten nur in Beiträgen im Wikilog-Namensraum benutzt werden.',
 	'wikilog-preview' => 'Vorher betrachten',
 	'wikilog-edit-lc' => 'bearbeiten',
 	'wikilog-reply-lc' => 'antworten',
+	'wikilog-delete-lc' => 'löschen',
+	'wikilog-approve-lc' => 'annehmen',
+	'wikilog-reject-lc' => 'ablehnen',
+	'wikilog-page-lc' => 'Seite',
+	'wikilog-history-lc' => 'Versionen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -968,6 +975,10 @@ $messages['gl'] = array(
 	'wikilog-item-brief-header' => ': <i><small>por $5, de [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ seguir lendo...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|conversa]])',
+	'wikilog-edit-fieldset-legend' => 'Opcións do wikilog',
+	'wikilog-edit-signpub' => 'Asinar e publicar este artigo',
+	'wikilog-edit-signpub-tooltip' => 'Fai que o artigo sexa asinado e publicado no seu wikilog ao gardalo.
+Desmarque esta caixa para considerar o artigo un borrador.',
 	'wikilog-comment-by-user' => 'Comentario de $1 ($2)',
 	'wikilog-comment-by-anon' => 'Comentario de $3 (anónimo)',
 	'wikilog-comment-pending' => 'Este comentario está á espera de aprobación.',
@@ -2275,6 +2286,11 @@ $messages['pms'] = array(
 	'wikilog-has-comments' => '{{PLURAL:$1|un|$1}} coment',
 	'wikilog-item-brief-header' => ': <i><small>da $5, da [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ anans a lese...]]',
+	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|ciaciarade]])',
+	'wikilog-edit-fieldset-legend' => 'Opsion ëd wikilog:',
+	'wikilog-edit-signpub' => "Sot-signa e pùblica s'artìcol",
+	'wikilog-edit-signpub-tooltip' => "A fa an manera che l'artìcol a sia sot-signà e publicà an sò wikilog cand salvà.
+Desselession-a costa casela për manten-e l'artìcol an në stat dë sbòss.",
 	'wikilog-comment-by-user' => 'Coment da $1 ($2)',
 	'wikilog-comment-by-anon' => 'Coment da $3 (anònim)',
 	'wikilog-comment-pending' => "Cost coment a speta d'esse aprovà.",
@@ -2529,6 +2545,10 @@ $messages['ru'] = array(
 	'wikilog-item-brief-header' => ': <i><small>$5 для [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ продолжить чтение…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|обсуждение]])',
+	'wikilog-edit-fieldset-legend' => 'Настройки викилога:',
+	'wikilog-edit-signpub' => 'Подписать и опубликовать эту статью',
+	'wikilog-edit-signpub-tooltip' => 'Вызывает подписывание и опубликование статьи в викилоге при сохранении.
+Снимите этот флажок, чтобы оставить статью в качестве черновика.',
 	'wikilog-comment-by-user' => 'Комментарии от $1 ($2)',
 	'wikilog-comment-by-anon' => 'Комментарий от $3 (анонимно)',
 	'wikilog-comment-pending' => 'Этот комментарий ожидает утверждения.',

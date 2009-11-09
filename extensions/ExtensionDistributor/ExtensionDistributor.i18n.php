@@ -2006,53 +2006,54 @@ Jeśli masz jakieś pytania na temat systemu dystrybuującego rozszerzenia, zada
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'extensiondistributor' => "Dëscaria l'estension MediaWiki",
 	'extdist-desc' => "Estension për distribuì j'archivi snapshot ëd j'estension",
 	'extdist-not-configured' => 'Për piasì configura $wgExtDistTarDir e $wgExtDistWorkingCopy',
-	'extdist-wc-missing' => 'La directory configurà për còpie ëd travaj a esist pa!',
+	'extdist-wc-missing' => 'Ël dossié configurà për còpie ëd travaj a esist pa!',
 	'extdist-no-such-extension' => 'Pa gnun-e estension "$1"',
-	'extdist-no-such-version' => 'L\'estension "$1" a esist pa ant la vërsion "$2".',
+	'extdist-no-such-version' => 'L\'estension "$1" a esist pa ant la version "$2".',
 	'extdist-choose-extension' => 'Selession-a che estension it veule dëscarié:',
-	'extdist-wc-empty' => "La directory configurà për còpie ëd travaj a l'ha pa gnun-e estension distribuibij!",
+	'extdist-wc-empty' => "Ël dossié configurà për còpie ëd travaj a l'ha pa gnun-e estension distribuìbij!",
 	'extdist-submit-extension' => 'Continua',
-	'extdist-current-version' => 'Vërsion ëd dësvilup (trunk)',
-	'extdist-choose-version' => "<big>It të stas dëscariand l'estension <b>$1</b>.</big>
+	'extdist-current-version' => 'Version ëd dësvlup (trunk)',
+	'extdist-choose-version' => "<big>It ses an camin ch'it dëscarie l'estension <b>$1</b>.</big>
 
-Selession-a toa vërsion MediaWiki.
+Selession-a toa version MediaWiki.
 
-Vàire estension a travajo an dzora a vërsion multiple ëd MediaWiki, parèj se toa vërsion ëd MediaWiki a l'é pa sì, o s'it l'has dabzògn ëd j'ùltime funsion ëd l'estension, preuva a dovré la vërsion corenta.",
-	'extdist-no-versions' => "L'estension selessionà ($1) a l'é pa disponìbila an gnun-e vërsion!",
+Vàire estension a travajo dzora a 'd version diferente ëd MediaWiki, parèj se toa version ëd MediaWiki a l'é pa sì, o s'it l'has dabzògn ëd j'ùltime funsion ëd l'estension, preuva a dovré la version corenta.",
+	'extdist-no-versions' => "L'estension selessionà ($1) a l'é pa disponìbil an gnun-e version!",
 	'extdist-submit-version' => 'Continua',
-	'extdist-no-remote' => 'As peul pa contaté ël client remòt ëd la subvërsion.',
-	'extdist-remote-error' => 'Eror dal client remòt ëd la subvërsion: <pre>$1</pre>',
-	'extdist-remote-invalid-response' => 'Arspòsta pa bon-a dal client remòt ëd la subvërsion.',
-	'extdist-svn-error' => "La subvërsion a l'ha avù n'eror: <pre>$1</pre>",
+	'extdist-no-remote' => 'As peul pa contaté ël client leugn ëd la sot-version.',
+	'extdist-remote-error' => 'Eror dal client leugn ëd la sot-version: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Rispòsta pa bon-a dal client leugn ëd la sot-version.',
+	'extdist-svn-error' => "La sot-version a l'ha rëncontrà n'eror: <pre>$1</pre>",
 	'extdist-svn-parse-error' => 'As peul pa processesse l\'XML da "svn info": <pre>$1</pre>',
-	'extdist-tar-error' => "Tar a l'ha artornà l'exit code $1:",
-	'extdist-created' => "Në snapshot ëd la vërsion <b>$2</b> ëd l'estension <b>$1</b> për MediaWiki <b>$3</b> a l'é stàit creà. Toa dëscaria a dovrìa parte automaticament an 5 second.
+	'extdist-tar-error' => "Tar a l'ha restituì ël còdes ëd surtìa $1:",
+	'extdist-created' => "Na còpia d'amblé ëd la version <b>$2</b> ëd l'estension <b>$1</b> për MediaWiki <b>$3</b> a l'é stàita creà. Toa dëscaria a dovrìa parte automaticament tra 5 second.
 
-L'URL për sto snapshot-sì a l'é:
+L'URL për sta còpia-sì a l'é:
 :$4
-A peul esse dovrà për carielo sùbit su un server, ma për piasì memorizlo pa, da già che ël contnù a sarà pa modificà, e a peul esse scanselà un doman.
+A peul esse dovrà për cariela sùbit su un servent, ma për piasì memorisla pa, da già che ël contnù a sarà pa modificà, e a peul esse scancelà un doman.
 
-L'archivi tar a dovrìa esse scompatà an toa directory d'estension. Për esempi, ant un OS unix-like:
+L'archivi tar a dovrìa esse dëscompatà an tò dossié d'estension. Për esempi, ant un sistema ëd tipo OS unix:
 
 <pre>
 tar -xzf $5 -C /var/www/mediawiki/extensions
 </pre>
 
-An dzora a Windows, it peule dovré [http://www.7-zip.org/ 7-zip] për scompaté ij file.
+Dzora a Windows, it peule dovré [http://www.7-zip.org/ 7-zip] për dëscompaté j'archivi.
 
-Se toa wiki a l'é su un server remòt, scompata i file ant un-a directory an dzora a tò computer local, e peui caria '''tùit''' ij file scompatà ant la directory d'estension an dzora al server.
+Se toa wiki a l'é su un servent leugn, dëscompata j'archivi ant un dossié dzora a tò ordinator local, e peui caria '''tùit''' j'archivi dëscompatà ant ël dossié d'estension dzora al servent.
 
-Nòta che cheiche estension a l'han dabzògn d'un file ciamà ExtensionFunctions.php, piassà an <tt>extensions/ExtensionFunctions.php</tt>, visadì, ant la directory ''parent'' dë sta particolar directory d'estension. Lë snapshot coste estension a conten sto file com un tarbomb, scompatà con ./ExtensionFunctions.php. Dësmentia pa ëd carié sto file-sì an dzora a tò server remòt.
+Nòta che chèiche estension a l'han dabzògn ëd n'archivi ciamà ExtensionFunctions.php, piassà an <tt>extensions/ExtensionFunctions.php</tt>, visadì, ant ël dossié ''pare'' dë sto particolar dossié d'estension. La còpia d'amblé për coste estension a conten st'archivi com un tarbomb, dëscompatà con ./ExtensionFunctions.php. Dësmentia pa ëd carié st'archivi-sì dzora a tò servent leugn.
 
-D'apress ch'it l'as scompatà ij file, it deuve argistré l'estension an LocalSettings.php. La documentassion ëd l'estension a dovrìa avèj d'istrussion su com fé sòn-sì.
+Apress ch'it l'has dëscompatà j'archivi, it deve argistré l'estension an LocalSettings.php. La documentassion ëd l'estension a dovrìa avèj d'istrussion su com fé sòn.
 
-S'it l'has cheiche custion su sto sistema ëd distribuì j'estension, për piasì va a [[Extension talk:ExtensionDistributor]].",
+S'it l'has chèiche chestion su sto sistema ëd distribuì j'estension, për piasì va a [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => "Pija n'àutra estension",
 );
 

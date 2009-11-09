@@ -51,7 +51,7 @@ $messages['af'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'commentbox-savebutton' => 'حفظ التعليق',
+	'commentbox-savebutton' => 'احفظ التعليق',
 	'commentbox-name' => 'الاسم:',
 	'commentbox-log' => 'تعليقات جديدة',
 	'commentbox-first-comment-heading' => '== تعليقات ==',

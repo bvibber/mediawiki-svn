@@ -334,6 +334,13 @@ $messages['tl'] = array(
 	'gotocategory-desc' => "Nagsusuri ng mga salitang panghanap laban sa espasyo ng pangalang Kaurian: para sa sa katungkulang Gawin 'tumalon papunta sa pahina'",
 );
 
+/** Ukrainian (Українська)
+ * @author NickK
+ */
+$messages['uk'] = array(
+	'gotocategory-desc' => "Перевіряє умови пошуку в просторі назв «Категорія» для забезпечення функції 'перейти до сторінки'",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

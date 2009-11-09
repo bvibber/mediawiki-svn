@@ -463,6 +463,13 @@ $messages['tr'] = array(
 	'emailaddressimage-desc' => 'E-posta adresini resim olarak görüntülemek için <tt>&lt;email&gt;</tt> ekler',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'emailaddressimage-desc' => 'Додає <tt>&lt;email&gt;</tt> для відображення адреси електронної пошти у вигляді зображення',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

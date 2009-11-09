@@ -168,12 +168,18 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'talkhere-desc' => 'Lakaat ar bajenn gaozeal e-barzh ar bajenn',
+	'talkhere-foottext' => "Gant sellerien eo bet lezet an evezhiadennoù a-us moarvat.
+
+N'eo ket atebek an dud e-karg eus al lec'hienn eus ar pezh a c'hall bezañ bet skrivet.",
 	'talkhere-talkpage' => 'pajenn kaozeal',
 	'talkhere-notalk' => '"(addispleg ebet evit poent)"',
 	'talkhere-addcomment' => 'Ouzhpennañ un evezhiadenn',
+	'talkhere-beforeinput' => "Un notenn a c'hallit skrivañ a-is",
 	'talkhere-loading' => 'o kargañ an aozer...',
 	'talkhere-collapse' => 'kuzhat an aozer',
 );
@@ -1048,8 +1054,10 @@ $messages['ug-arab'] = array(
 
 /** Ukrainian (Українська)
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'talkhere-desc' => 'Розташовує сторінку обговорення на сторінці',
 	'talkhere-foottext' => 'Ви можете залишити свої коментарі до цієї статті в нижній частині сторінки. 
 
 Адміністратори цього сайту не несуть відповідальність за зміст коментарів до статей, що розташовані на сайті.',

@@ -315,10 +315,12 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'contributors' => 'Kontribuantoj',
+	'contributors-desc' => 'Listigas la ĉefajn aŭtorojn de paĝo',
 	'contributors-toolbox' => 'Ĉefaj kontribuantoj',
 	'contributors-legend' => 'Listigi ĉefajn kontribuantojn al paĝo',
 	'contributors-target' => 'Titolo:',
@@ -484,6 +486,23 @@ $messages['gsw'] = array(
 	'contributors-others' => 'un {{PLURAL:$1|1 wytere|$1 wyteri}}',
 	'contributors-badtitle' => 'Nit giltigi Syte',
 	'contributors-nosuchpage' => 'D Syte $1 git nit.',
+);
+
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'contributors' => 'યોગદાનકર્તાઓ',
+	'contributors-desc' => 'પાનામાં મુખ્ય યોગદાનકર્તાઓને સંક્ષિપ્તમાં દર્શાવો',
+	'contributors-toolbox' => 'મુખ્ય યોગદાનકર્તાઓ',
+	'contributors-legend' => 'પાનાનાં છેલ્લા મુખ્ય યોગદાનકર્તાઓ',
+	'contributors-target' => 'મથાળું:',
+	'contributors-submit' => 'બતાવો',
+	'contributors-subtitle' => '$1 નાં મુખ્ય યોગદાનકર્તાઓ',
+	'contributors-others-long' => 'આ પાના માટે {{PLURAL:$1|એક અન્ય યોગદાનકર્તા|$1 અન્ય યોગદાનકર્તાઓ}} છે.',
+	'contributors-others' => 'અને {{PLURAL:$1|એક અન્ય|$1 અન્યો}}',
+	'contributors-badtitle' => 'અમાન્ય મથાળું.',
+	'contributors-nosuchpage' => 'પાનું $1 ઉપલબ્ધ નથી.',
 );
 
 /** Manx (Gaelg)

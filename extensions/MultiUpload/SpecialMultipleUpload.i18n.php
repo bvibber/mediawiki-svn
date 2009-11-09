@@ -62,12 +62,13 @@ $messages['gom-latn'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'multipleupload' => 'رفع ملفات متعددة',
 	'multipleupload-desc' => 'يسمح للمستخدمين [[Special:MultipleUpload|برفع عدة ملفات في وقت واحد]]',
 	'multipleupload-ignoreallwarnings' => "تجاهل '''كل التحذيرات''' واحفظ الملفات على أية حال.",
-	'multipleupload-saveallfiles' => 'حفظ كل الملفات',
+	'multipleupload-saveallfiles' => 'احفظ كل الملفات',
 	'multipleupload-addresswarnings' => 'من فضلك صحح أية تحذيرات قبل إعادة رفع الملفات.',
 	'multipleupload-page' => '{{ns:project}}:سياسة حذف الصور',
 	'multipleupload-text' => "ارفع ملفات متعددة هنا.
