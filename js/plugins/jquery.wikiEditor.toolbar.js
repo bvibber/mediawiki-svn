@@ -553,6 +553,11 @@ fn : {
 	},
 	build : function( context, config ) {
 		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.$toolbar );
+		if( wgNavigableTOCCollapseEnable ){
+			var $collopseControl = $('<div class="tab tab-toc" rel="characters"><a class="" href="#">Hide Contents</a></div>')
+			.bind( 'click', $.wikiEditor.modules.toc.fn.collapse )
+			.appendTo( context.modules.$toolbar );
+		}
 		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
 		context.modules.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
 		var sectionQueue = [];
