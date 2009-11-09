@@ -70,17 +70,17 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 17 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 12 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 13 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 18 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 9 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 30 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 1 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 64 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 65 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 64 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 65 ),
 			),
 		),
 	);

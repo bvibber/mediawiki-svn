@@ -204,12 +204,11 @@ if ( typeof context == 'undefined' ) {
 	// copied over to the textarea
 	context.$textarea.closest( 'form' ).submit( function() {
 		context.$textarea.attr( 'disabled', false );
-		// To properly decode the HTML entities, we set the HTML rather than the val of the textarea - also, all
-		// of the text will have been properly escaped with HTML entities except the <br> tags which are in the
-		// place of end line characters - so we just swap those out.
-		context.$textarea.html( context.$content.html().replace( /\<br\>/g, "\n" ) );
-		context.$textarea.show();
-		context.$iframe.hide();
+		
+		// Setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
+		context.$textarea.val( $( '<div />' )
+				.html( context.$content.html().replace( /\<br\>/g, "\n" ) )
+				.text() );
 	} );
 	
 	/* This is probably only a textarea issue, thus no longer needed
