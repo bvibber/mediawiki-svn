@@ -67,7 +67,7 @@ $messages['en'] = array(
 	'qp_order_by_polls_count' => 'Order by polls count',
 	'qp_spec_line' => 'Page $1 poll $2 $3 $4 $5 $6',
 	'qp_export_to_xls' => 'Export statistics into XLS format',
-	'qp_users_answered_questions' => 'users answered to the questions',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|user|users}} answered to the questions',
 	'qp_func_no_such_poll' => 'No such poll ($1)',
 	'qp_func_missing_question_id' => 'Please specify an existing question id (starting from 1) for the poll $1',
 	'qp_func_invalid_question_id' => 'Invalid question id=$2 (not a number) for the poll $1',
