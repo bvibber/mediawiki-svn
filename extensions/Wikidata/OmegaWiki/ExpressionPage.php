@@ -139,11 +139,11 @@ HTML;
 			$wgTitle, $wgUseExpressionPageTitlePrefix;
 	
 		if ( $wgUseExpressionPageTitlePrefix )
-			$prefix = wfMsg( 'ow_Multiple_meanings' ) . ' ';
+			$title = wfMsg( 'ow_Multiple_meanings', $wgTitle->getText() );
 		else
-			$prefix	= "";
+			$title	= $wgTitle->getText();
 					
-		return $prefix . $wgTitle->getText();
+		return $title;
 	}
 	
 	protected function getIdStack() {
