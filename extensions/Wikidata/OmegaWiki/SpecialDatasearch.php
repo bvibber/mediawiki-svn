@@ -149,7 +149,8 @@ function wfSpecialDatasearch() {
 				else
 					$wgOut->addHTML( '<h1>' . wfMsg( 'datasearch_match_words', $searchText ) . '</h1>' );
 
-				$wgOut->addHTML( '<p>' . wfMsgExt( 'datasearch_showing_only', 'parsemag', 100 ) . '</p>' );
+				$resultCount = $this->searchWordsCount( $searchText, $collectionId, $languageId ) ;
+				$wgOut->addHTML( '<p>' . wfMsgExt( 'datasearch_showing_only', 'parsemag', 100 , $resultCount ) . '</p>' );
 
 				$wgOut->addHTML( $this->searchWords( $searchText, $collectionId, $languageId ) );
 			}
@@ -222,6 +223,43 @@ function wfSpecialDatasearch() {
 			$editor = $this->getWordsSearchResultEditor();
 
 			return $editor->view( new IdStack( "words" ), $recordSet );
+		}
+
+/**
+* Gives the exact number of results (not limited to 100)
+*/
+		function searchWordsCount( $text, $collectionId, $languageId ) {
+			$dc = wdGetDataSetContext();
+			$dbr = wfGetDB( DB_SLAVE );
+
+			$sql =
+				"SELECT COUNT(*) " .
+				"FROM {$dc}_expression, {$dc}_syntrans ";
+
+			if ( $collectionId > 0 )
+				$sql .= ", {$dc}_collection_contents ";
+
+			$sql .=
+		    	"WHERE {$dc}_expression.expression_id={$dc}_syntrans.expression_id AND {$dc}_syntrans.identical_meaning=1 " .
+				" AND " . getLatestTransactionRestriction( "{$dc}_syntrans" ) .
+				" AND " . getLatestTransactionRestriction( "{$dc}_expression" ) .
+				$this->getSpellingRestriction( $text, 'spelling' );
+
+			if ( $collectionId > 0 )
+				$sql .=
+					" AND {$dc}_collection_contents.member_mid={$dc}_syntrans.defined_meaning_id " .
+					" AND {$dc}_collection_contents.collection_id=" . $collectionId .
+					" AND " . getLatestTransactionRestriction( "{$dc}_collection_contents" );
+
+			if ( $languageId > 0 )
+				$sql .=
+					" AND {$dc}_expression.language_id=$languageId";
+
+			$queryResult_r = mysql_query( $sql );
+			$queryResult_a = mysql_fetch_row( $queryResult_r );
+			$queryResultCount = $queryResult_a[0];
+
+			return $queryResultCount ;
 		}
 
 		function getWordsSearchResultAsRecordSet( $queryResult ) {
