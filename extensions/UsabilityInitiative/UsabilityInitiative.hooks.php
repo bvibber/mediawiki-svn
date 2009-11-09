@@ -71,16 +71,16 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 17 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 13 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 18 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 19 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 9 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 30 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 31 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 65 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 66 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 65 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 66 ),
 			),
 		),
 	);

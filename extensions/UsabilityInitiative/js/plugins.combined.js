@@ -2315,6 +2315,11 @@ fn : {
 	},
 	build : function( context, config ) {
 		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.$toolbar );
+		if( wgNavigableTOCCollapseEnable ){
+			var $collopseControl = $('<div class="tab tab-toc" rel="characters"><a class="" href="#">Hide Contents</a></div>')
+			.bind( 'click', $.wikiEditor.modules.toc.fn.collapse )
+			.appendTo( context.modules.$toolbar );
+		}
 		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
 		context.modules.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
 		var sectionQueue = [];
@@ -2456,6 +2461,38 @@ fn: {
 				context.modules.$toc.scrollTop( scrollTop + relTop + sectionHeight - divHeight );
 		}
 	},
+	collapse: function() {
+		if(!$('#wikiEditor-ui-toc').data('openWidth')){ 
+			$('#wikiEditor-ui-toc')
+			.data('openWidth', $('#wikiEditor-ui-toc').width());
+			console.log("whatsup");
+		}
+		$('#wikiEditor-ui-toolbar .tab-toc')
+		.unbind('click',$.wikiEditor.modules.toc.fn.collapse)
+		.bind('click', $.wikiEditor.modules.toc.fn.expand)
+		.children('a')
+		.text('Show Contents');
+		
+		$('#wikiEditor-ui-toc')
+		.animate({'width': '1px'}, 'fast', function() { $(this).hide(); } )
+		.prev()
+		.animate({'marginRight': '1px'}, 'fast', function() { $(this).css('marginRight', '-1px'); } );
+	},
+	
+	expand: function() {
+		$('#wikiEditor-ui-toolbar .tab-toc')
+		.unbind('click', $.wikiEditor.modules.toc.fn.expand)
+		.bind('click', $.wikiEditor.modules.toc.fn.collapse)
+		.children('a')
+		.text('Hide Contents');
+		$('#wikiEditor-ui-toc')
+		.show()
+		.animate( { 'width': $('#wikiEditor-ui-toc').data('openWidth')+'px'}, 'fast', function() { 
+			$('#wikiEditor-ui-text textarea').trigger('mouseup');
+		} )
+		.prev()
+		.animate({'marginRight': $('#wikiEditor-ui-toc').data('openWidth')+'px'}, 'fast' );
+	},
 	/**
 	 * Builds table of contents
 	 * 
@@ -2574,49 +2611,23 @@ fn: {
 			var mR = e.pageX - $('#wikiEditor-ui-bottom').offset().left;
 			mR = $('#wikiEditor-ui-bottom').width() - mR;
 			if(mR < 50 && wgNavigableTOCCollapseEnable){
-				collapse();
+				$.wikiEditor.modules.toc.fn.collapse();
 			}else{
 				$('#wikiEditor-ui-text textarea').trigger('mouseup');
+				$('#wikiEditor-ui-toc')
+				.data('openWidth', $('#wikiEditor-ui-toc').width());
+				console.log($('#wikiEditor-ui-toc').data('openWidth'));
 			}
 			return false;
 		}
-		
-		function collapse() {
-			if($('#wikiEditor-ui-toolbar .tab-toc').size()==0){
-				$contentsTab = $('<span class="tab tab-toc" rel="characters"><a class="" href="#">Show Contents</a></span>')
-				.hide()
-				.bind('click', expand);
 
-				$($contentsTab)
-				.insertAfter('#wikiEditor-ui-toolbar .tabs');
-			}
-			
-			$('#wikiEditor-ui-toolbar .tab-toc').show('fast');
-			
-			
-			$('#wikiEditor-ui-toc')
-			.animate({'width': '1px'}, 'fast', function() { $(this).hide(); } )
-			.prev()
-			.animate({'marginRight': '1px'}, 'fast', function() { $(this).css('marginRight', '-1px'); } );
-		}
-		
-		function expand() {
-			$('#wikiEditor-ui-toolbar .tab-toc')
-			.hide('fast');
-			$('#wikiEditor-ui-toc')
-			.show()
-			.animate({'width': $('#wikiEditor-ui-toc').data('openWidth')+'px'}, 'fast', function() { 
-				$('#wikiEditor-ui-text textarea').trigger('mouseup');
-			} )
-			.prev()
-			.animate({'marginRight': $('#wikiEditor-ui-toc').data('openWidth')+'px'}, 'fast' );
-		}
 		function buildResizeControls() {
 			var $resizeControlVertical = $( '<div />' )
 			.attr( 'id', 'wikiEditor-ui-toc-resize-vertical')
 			.bind( 'mousedown', function() {
 				$('#wikiEditor-ui-toc')
 				.data('openWidth', $('#wikiEditor-ui-toc').width());
+				console.log($('#wikiEditor-ui-toc').data('openWidth'));
 				$()
 				.bind( 'mousemove', drag )
 				.bind( 'mouseup', stopDrag );
@@ -2626,10 +2637,16 @@ fn: {
 			.bind( 'mousedown', function() {
 				$('#wikiEditor-ui-toc')
 				.data('openWidth', $('#wikiEditor-ui-toc').width());
+				console.log($('#wikiEditor-ui-toc').data('openWidth'));
 				$()
 				.bind( 'mousemove', drag )
 				.bind( 'mouseup', stopDrag );
 			});
+			
+			/*$.cookie(
+				'wikiEditor-' + $(this).data( 'context' ).instance + '-toc-width',
+				$.wikiEditor.modules.toc.defaults.width
+			);*/
 			
 			return $resizeControlVertical.add($resizeControlHorizontal);
 		}
