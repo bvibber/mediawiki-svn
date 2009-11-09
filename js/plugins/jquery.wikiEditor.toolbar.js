@@ -552,10 +552,21 @@ fn : {
 	},
 	build : function( context, config ) {
 		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.$toolbar );
-		if( wgNavigableTOCCollapseEnable ){
-			var $collopseControl = $('<div class="tab tab-toc" rel="characters"><a class="" href="#">Hide Contents</a></div>')
-			.bind( 'click', $.wikiEditor.modules.toc.fn.collapse )
-			.appendTo( context.modules.$toolbar );
+		if( wgNavigableTOCCollapseEnable ) {
+			var $collapseControl = $( '<div />' ).addClass( 'tab' ).addClass( 'tab-toc' )
+			.append( '<a href="#"></a>' );
+			if( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) != '1px' ) {
+				$collapseControl.bind( 'click', function() {
+					$.wikiEditor.modules.toc.fn.collapse( context );
+				} )
+				.find( 'a' ).text( 'Hide Contents' );
+			} else { 
+				$collapseControl.bind( 'click', function() {
+					$.wikiEditor.modules.toc.fn.expand( context );
+				} )
+				.find( 'a' ).text( 'Show Contents' );
+			}
+			$collapseControl.appendTo( context.modules.$toolbar );
 		}
 		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
 		context.modules.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
