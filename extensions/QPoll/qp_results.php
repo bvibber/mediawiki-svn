@@ -659,7 +659,9 @@ class qp_UserPollsList extends qp_QueryPage {
 		$pagename = htmlspecialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 		$pollname = htmlspecialchars( $result->poll_id );
 		$goto_link = self::$skin->link( $poll_title, wfMsg( 'qp_source_link' ) );
+		// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
 		$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' ) . ( $this->inverse ? "?" : "" ), array(), array( "id"=>intval( $result->pid), "uid"=>$this->uid, "action"=>"uvote" ) );
+		// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
 		$link = wfMsg( 'qp_spec_line', '"' . $pagename . '"', '"' . $pollname . '":' , $voice_link, '', '', '' );
 		return $link;
 	}
@@ -777,7 +779,9 @@ class qp_PollUsersList extends qp_QueryPage {
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 			$user_link = self::$skin->link( $userTitle, $userName );
+			// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
 			$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' ) . ( $this->inverse ? "?" : "" ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
+			// FIXME: This is hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
 			$link = $user_link . ': ' . $voice_link;
 		}
 		return $link;
@@ -891,8 +895,10 @@ class qp_UserCellList extends qp_QueryPage {
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 			$user_link = self::$skin->link( $userTitle, $userName );
+			// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
 			$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' ) . ( $this->inverse ? "?" : "" ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
 			$text_answer = ($result->text_answer == '') ? '' : ' <i>' . htmlentities( $result->text_answer ) . '</i>';
+			// FIXME: This is hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
 			$link = $user_link . ': ' . $voice_link . $text_answer;
 		}
 		return $link;
