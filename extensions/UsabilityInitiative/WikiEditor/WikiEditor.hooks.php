@@ -280,8 +280,8 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-help-content-indent-result',
 			),
 			'scripts' => array(
-				'raw' => array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 1 ),
-				'min' => array( 'src' => 'Modules/Toolbar/Toolbar.min.js', 'version' => 1 ),
+				'raw' => array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 2 ),
+				'min' => array( 'src' => 'Modules/Toolbar/Toolbar.min.js', 'version' => 2 ),
 			),
 		),
 	);

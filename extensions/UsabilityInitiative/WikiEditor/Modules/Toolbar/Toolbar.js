@@ -1149,7 +1149,7 @@ $j( '#wpTextbox1' ).wikiEditor( 'addModule', {
 						.replace( /\\\$1/g, '(.*)' ) + '$'
 				) );
 				// Pre-fill the text fields based on the current selection
-				var selection = $j(this).data( 'context' ).$textarea.getSelection();
+				var selection = $j(this).data( 'context' ).$textarea.textSelection( 'getSelection' );
 				$j( '#wikieditor-toolbar-link-int-target' ).focus();
 				$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [ '', '' ] );
 				if ( selection != '' ) {
@@ -1477,8 +1477,9 @@ $j( '#wpTextbox1' ).wikiEditor( 'addModule', {
 						.val( replaced )
 						.change()
 						.focus()
-						.setSelection( start + corr, end + corr )
-						.scrollToCaretPosition();
+						.textSelection( 'setSelection', { 'start': start + corr,
+							'end': end + corr } )
+						.textSelection( 'scrollToCaretPosition' );
 					
 					$j( '#wikieditor-toolbar-replace-success' )
 						.text( gM( 'wikieditor-toolbar-tool-replace-success', matches.length ) )
@@ -1492,13 +1493,18 @@ $j( '#wpTextbox1' ).wikiEditor( 'addModule', {
 						start = text.indexOf( matches[0] );
 					var end = start + matches[0].length;
 					var newEnd = start + replaceStr.length;
-					$textarea.focus().setSelection( start, end );
+					$textarea.focus().textSelection( 'setSelection', { 'start': start,
+						'end': end } );
 					if ( mode == 'replace' ) {
 						$textarea
-							.encapsulateSelection( '', replaceStr, '', false, true )
-							.setSelection( start, newEnd );
+							.textSelection( 'encapsulateSelection', {
+								'peri': replaceStr,
+								'replace': true } )
+							.textSelection( 'setSelection', {
+								'start': start,
+								'end': newEnd } );
 					}
-					$textarea.scrollToCaretPosition();
+					$textarea.textSelection( 'scrollToCaretPosition' );
 					$j(this).data( 'offset', mode == 'replace' ? newEnd : end );
 				}
 			});

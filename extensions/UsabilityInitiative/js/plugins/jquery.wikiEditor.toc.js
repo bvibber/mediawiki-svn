@@ -69,7 +69,7 @@ fn: {
 	 */
 	update: function( context ) {
 		$.wikiEditor.modules.toc.fn.unhighlight( context );
-		var position = context.$textarea.getCaretPosition();
+		var position = context.$textarea.textSelection( 'getCaretPosition' );
 		var section = 0;
 		if ( context.data.outline.length > 0 ) {
 			// If the caret is before the first heading, you must be in section
@@ -174,13 +174,11 @@ fn: {
 					.data( 'textbox', context.$textarea )
 					.data( 'position', structure[i].position )
 					.bind( 'mousedown', function( event ) {
-						/* FIXME: This code needs to be updated to use the iframe and context.fn.* functions for
-						 * text selection and scrolling and such...
 						$(this).data( 'textbox' )
 							.focus()
-							.setSelection( $(this).data( 'position' ) )
-							.scrollToCaretPosition( true );
-						*/
+							.textSelection( 'setSelection', {
+								'start': $(this).data( 'position' ) } )
+							.textSelection( 'scrollToCaretPosition', { 'force': true } );
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
 						event.preventDefault();
