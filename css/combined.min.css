@@ -240,6 +240,11 @@ width:100%;
 border-top:solid 1px #DDDDDD;
 background-color:#F3F3F3;
 }
+.wikiEditor-ui-toolbar{
+background-image:url(../images/wikiEditor/toolbar/main-base.png);
+background-position:left top;
+background-repeat:repeat-x;
+}
 body.rtl .wikiEditor-ui-toolbar .sections .section{
 float:right;
 }
@@ -570,9 +575,11 @@ border-bottom-width:1px;
 }
 .wikiEditor-ui .wikiEditor-tabs button{
 float:right;
-margin-left:1em;
+margin-left:0.5em;
+margin-top:0.25em;
 }
 body.rtl .wikiEditor-ui .wikiEditor-tabs button{
 float:left;
-margin-right:1em;
+margin-right:0.5em;
+margin-top:0.25em;
 }

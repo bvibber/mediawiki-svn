@@ -2926,16 +2926,16 @@ fn: {
 							.text( gM( 'wikieditor-preview-tab-preview' ) )
 						)
 					)
-					// These have to go in reverse because they're floated right
-					.append( $( '<button />' )
-						.text( gM( 'wikieditor-preview-button-cancel' ) )
-					)
 					.append( $( '<button />' )
 						.text( gM( 'wikieditor-preview-button-publish' ) )
 						.click( function() {
 							context.modules.preview.saveDialog.dialog( 'open' );
 							return false;
 						})
+					)
+					// These have to go in reverse because they're floated right
+					.append( $( '<button />' )
+						.text( gM( 'wikieditor-preview-button-cancel' ) )
 					)
 				)
 				.append( editTab )
