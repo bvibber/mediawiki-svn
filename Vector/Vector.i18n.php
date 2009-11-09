@@ -31,12 +31,28 @@ $messages['bn'] = array(
 	'vector-desc' => 'ভেক্টর স্কিনের ইন্টারফেস উপাদানের উন্নতি সাধন',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'vector' => 'Gwellaennoù IU evit Vector',
+	'vector-desc' => 'Gwellaat a ra elfennoù eus ar gwiskadur Vector war an etrefas implijer .',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
 $messages['cs'] = array(
 	'vector' => 'Vylepšení uživatelského rozhraní pro Vektor',
 	'vector-desc' => 'Vylepšuje prvky uživatelského rozhraní vzhledu Vektor.',
+);
+
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'vector' => 'Ser vectori UI hacetanê hewli',
+	'vector-desc' => 'Ena ser Vector skin, interface hewl keno.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -174,6 +190,14 @@ $messages['pt'] = array(
 $messages['roa-tara'] = array(
 	'vector' => 'Miglioramende UI pe Vector',
 	'vector-desc' => "Migliore l'elemende de l'inderfacce utende d'a schermate Vector.",
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'vector' => 'Улучшения интерфейса для темы «Векторное»',
+	'vector-desc' => 'Улучшения пользовательского интерфейса для темы оформления «Векторное»',
 );
 
 /** Ukrainian (Українська)
