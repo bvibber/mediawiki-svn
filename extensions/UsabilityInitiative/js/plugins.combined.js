@@ -2682,6 +2682,7 @@ fn: {
 				.bind( 'mouseup', stopDrag );
 			});
 			
+			console.log(context.instance);
 			/*$.cookie(
 				'wikiEditor-' + $(this).data( 'context' ).instance + '-toc-width',
 				$.wikiEditor.modules.toc.defaults.width
