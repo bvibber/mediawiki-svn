@@ -2456,20 +2456,7 @@ fn : {
 	build : function( context, config ) {
 		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.$toolbar );
 		if( wgNavigableTOCCollapseEnable ) {
-			var $collapseControl = $( '<div />' ).addClass( 'tab' ).addClass( 'tab-toc' )
-			.append( '<a href="#"></a>' );
-			if( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) != '1px' ) {
-				$collapseControl.bind( 'click', function() {
-					$.wikiEditor.modules.toc.fn.collapse( context );
-				} )
-				.find( 'a' ).text( 'Hide Contents' );
-			} else { 
-				$collapseControl.bind( 'click', function() {
-					$.wikiEditor.modules.toc.fn.expand( context );
-				} )
-				.find( 'a' ).text( 'Show Contents' );
-			}
-			$collapseControl.appendTo( context.modules.$toolbar );
+			// placeholder for drag control creation code
 		}
 		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
 		context.modules.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
@@ -2550,15 +2537,20 @@ fn: {
 			}
 		}
 		*/
-		
+		var height = context.$ui.find( '.wikiEditor-ui-left' ).height();
 		context.modules.$toc = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toc' )
 			.data( 'context', context );
 		context.$ui.find( '.wikiEditor-ui-right' )
 			.css( 'width', $.wikiEditor.modules.toc.defaultWidth )
 			.append( context.modules.$toc );
+		context.modules.$toc.height(
+			context.$ui.find( '.wikiEditor-ui-left' ).height()
+		);
 		context.$ui.find( '.wikiEditor-ui-left' )
-			.css( 'width', ( context.$ui.width() - context.modules.$toc.width() - 1 ) + 'px' );
+			.css( 'marginRight', "-" + $.wikiEditor.modules.toc.defaultWidth)
+			.children()
+			.css('marginRight', $.wikiEditor.modules.toc.defaultWidth );
 		
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context, config );
@@ -2766,11 +2758,12 @@ fn: {
 			return $collapseBar;	
 		}
 		function drag( e ) {
-			var mR = e.pageX - $( '#wikiEditor-ui-bottom' ).offset().left;
-			mR = $( '#wikiEditor-ui-bottom' ).width() - mR;
-			if( mR < 26 || mR >  $( '#wikiEditor-ui-bottom' ).width() - 250) return false;
-			$( '#wikiEditor-ui-text' ).css( 'marginRight', mR+'px' );
-			$( '#wikiEditor-ui-toc' ).css( 'width', mR+'px' );
+			var mR = e.pageX - $( '#wikiEditor-ui-left' ).offset().left;
+			mR = $( '#wikiEditor-ui-left' ).width() - mR;
+			console.log(mR);
+			if( mR < 26 || mR >  $( '#wikiEditor-ui-left' ).width() - 250) return false;
+			$( '#wikiEditor-ui-left' ).css( 'marginRight', mR+'px' );
+			$( '#wikiEditor-ui-right' ).css( 'width', mR+'px' );
 			return false;
 		}
 		function stopDrag( e ) {
@@ -2783,10 +2776,10 @@ fn: {
 			if( mR < 50 && wgNavigableTOCCollapseEnable ) {
 				$.wikiEditor.modules.toc.fn.collapse( context );
 			} else {
-				$( '#wikiEditor-ui-text textarea' ).trigger( 'mouseup' );
-				$( '#wikiEditor-ui-toc' )
-				.data( 'openWidth', $('#wikiEditor-ui-toc').width()+'px' );
-				$.cookie( 'wikiEditor-' + context.instance + '-toc-width', $( '#wikiEditor-ui-toc' ).width() + 'px' );
+				$( '#wikiEditor-ui-left' ).trigger( 'mouseup' );
+				$( '#wikiEditor-ui-right' )
+				.data( 'openWidth', $( '#wikiEditor-ui-right' ).width() + 'px' );
+				$.cookie( 'wikiEditor-' + context.instance + '-toc-width', $( '#wikiEditor-ui-right' ).width() + 'px' );
 			}
 			return false;
 		}
@@ -2800,20 +2793,27 @@ fn: {
 				.bind( 'mousemove', drag )
 				.bind( 'mouseup', stopDrag );
 			});
-			var $resizeControlHorizontal = $( '<div />' )
-			.attr( 'id', 'wikiEditor-ui-toc-resize-horizontal' )
-			.bind( 'mousedown', function() {
-				$( '#wikiEditor-ui-toc' )
-				.data( 'openWidth', $( '#wikiEditor-ui-toc' ).width() );
-				$()
-				.bind( 'mousemove', drag )
-				.bind( 'mouseup', stopDrag );
-			});
+			
+			var $collapseControl = $( '<div />' ).addClass( 'tab' ).addClass( 'tab-toc' )
+			.append( '<a href="#"></a>' );
+			if( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) != '1px' ) {
+				$collapseControl.bind( 'click', function() {
+					$.wikiEditor.modules.toc.fn.collapse( context );
+				} )
+				.find( 'a' ).text( 'Hide Contents' );
+			} else { 
+				$collapseControl.bind( 'click', function() {
+					$.wikiEditor.modules.toc.fn.expand( context );
+				} )
+				.find( 'a' ).text( 'Show Contents' );
+			}
+			$collapseControl.insertBefore( context.modules.$toc );
+			
 			if( !$( '#wikiEditor-ui-toc' ).data( 'openWidth' ) ) {
 				$( '#wikiEditor-ui-toc' ).data( 'openWidth', context.initialWidth == '1px' ? 
 					$.wikiEditor.modules.toc.defaultWidth : context.initialWidth );
 			}
-			return $resizeControlVertical.add( $resizeControlHorizontal );
+			return $resizeControlVertical;
 		}
 		
 		// Build outline from wikitext

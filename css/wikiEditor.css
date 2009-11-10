@@ -32,21 +32,20 @@ body.rtl .wikiEditor-ui {
 	float: right;
 }
 .wikiEditor-ui .wikiEditor-ui-bottom {
-	width: 100%;
+	
 }
 .wikiEditor-ui .wikiEditor-ui-text {
 	line-height: 0;
 }
 .wikiEditor-ui .wikiEditor-ui-top {
 	position: relative;
-	width: 100%;
+
 	border-bottom: solid silver 1px;
 }
 .wikiEditor-ui .wikiEditor-ui-left {
-	width: 100%;
 	float: left;
+	width:100%;
 }
 .wikiEditor-ui .wikiEditor-ui-right {
-	float: left;
-	width: 13em;
+	float: right;
 }
