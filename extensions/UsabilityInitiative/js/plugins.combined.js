@@ -933,6 +933,10 @@ getContents: function() {
 	return $(this).val();
 },
 
+setContents: function( options ) {
+	return $(this).val( options.contents );
+},
+
 /**
  * Get the currently selected text in this textarea. Will focus the textarea
  * in some browsers (IE/Opera)
@@ -1252,6 +1256,7 @@ scrollToCaretPosition: function( options ) {
 	// Apply defaults
 	switch ( command ) {
 		//case 'getContents': // no params
+		//case 'setContents': // no params with defaults
 		//case 'getSelection': // no params
 		case 'encapsulateSelection':
 			options = $.extend( {
@@ -1284,9 +1289,9 @@ scrollToCaretPosition: function( options ) {
 			break;
 	}
 	var context = $(this).data( 'wikiEditor-context' );
-	//var hasIframe = context !== undefined && context.$iframe !== undefined;
+	var hasIframe = context !== undefined && context.$iframe !== undefined;
 	// iframe functions have not been implemented yet, this is a temp hack
-	var hasIframe = false;
+	//var hasIframe = false;
 	return ( hasIframe ? context.fn : fn )[command].call( this, options );
 };
 
@@ -1468,30 +1473,9 @@ if ( typeof context == 'undefined' ) {
 	 * For whatever strange reason, this code needs to be within a timeout or it doesn't work - it seems to be that
 	 * the DOM manipulation to add the iframe happens asynchronously and this code that depends on it actually being
 	 * finished doesn't function on the right reference.
+	 * FIXME: The fact that this calls a function that's defined below is ugly
 	 */
-	setTimeout( function() {
-		// Setup the iframe with a basic document
-		context.$iframe[0].contentWindow.document.open();
-		context.$iframe[0].contentWindow.document.write(
-			'<html><head><title>wikiEditor</title></head><body style="margin:0;padding:0;width:100%;height:100%;">' +
-			'<pre style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;"></pre></body></html>'
-		);
-		context.$iframe[0].contentWindow.document.close();
-		// Turn the document's design mode on
-		context.$iframe[0].contentWindow.document.designMode = 'on';
-		// Get a reference to the content area of the iframe 
-		context.$content = context.$iframe.contents().find( 'body > pre' );
-		
-		/* Magic IFRAME Activation */
-		
-		// Activate the iframe, encoding the content of the textarea and copying it to the content of the iframe
-		context.$textarea.attr( 'disabled', true );
-		// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
-		// characters rather than actual HTML tags in the code editor container.
-		context.$content.text( context.$textarea.val() );
-		context.$textarea.hide();
-		context.$iframe.show();
-	}, 1 );
+	setTimeout( function() { context.fn.setup(); }, 1 );
 	
 	// Attach a submit handler to the form so that when the form is submitted the content of the iframe gets decoded and
 	// copied over to the textarea
@@ -1566,6 +1550,29 @@ if ( typeof context == 'undefined' ) {
 		 * compatible with those functions. The key difference is that these perform actions on a designMode iframe
 		 */
 		
+		'setup': function() {
+			// Setup the iframe with a basic document
+			context.$iframe[0].contentWindow.document.open();
+			context.$iframe[0].contentWindow.document.write(
+				'<html><head><title>wikiEditor</title></head><body style="margin:0;padding:0;width:100%;height:100%;">' +
+				'<pre style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;"></pre></body></html>'
+			);
+			context.$iframe[0].contentWindow.document.close();
+			// Turn the document's design mode on
+			context.$iframe[0].contentWindow.document.designMode = 'on';
+			// Get a reference to the content area of the iframe 
+			context.$content = context.$iframe.contents().find( 'body > pre' );
+			
+			/* Magic IFRAME Activation */
+			
+			// Activate the iframe, encoding the content of the textarea and copying it to the content of the iframe
+			context.$textarea.attr( 'disabled', true );
+			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
+			// characters rather than actual HTML tags in the code editor container.
+			context.$content.text( context.$textarea.val() );
+			context.$textarea.hide();
+			context.$iframe.show();
+		},
 		/**
 		 * Gets the complete contents of the iframe
 		 */
@@ -1576,27 +1583,84 @@ if ( typeof context == 'undefined' ) {
 				.html( context.$content.html().replace( /\<br\>/g, "\n" ) )
 				.text();
 		},
+		'setContents': function( options ) {
+			context.$content.text( options.contents );
+			return context.$textarea;
+		},
 		/**
 		 * Gets the currently selected text in the content
 		 */
 		'getSelection': function() {
-			// ...
+			var retval;
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				retval = context.$iframe[0].contentWindow.getSelection();
+			} else if ( context.$iframe[0].contentWindow.selection ) { // should come last; Opera!
+				retval = context.$iframe[0].contentWindow.selection.createRange();
+			}
+			if ( retval.text ) {
+				retval = retval.text;
+			} else if ( retval.toString ) {
+				retval = retval.toString();
+			}
+			return retval;
 		},
 		/**
 		 * Inserts text at the begining and end of a text selection, optionally inserting text at the caret when
 		 * selection is empty.
 		 */
 		'encapsulateSelection': function( options ) {
+			// TODO: IE
+			// TODO: respect options.ownline
+			var selText = $(this).textSelection( 'getSelection' );
+			var selectAfter = false;
+			var pre = options.pre, post = options.post;
+			if ( !selText ) {
+				selText = options.peri;
+				selectAfter = true;
+			} else if ( options.replace ) {
+				selText = options.peri;
+			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
+				// Exclude ending space char
+				// FIXME: Why?
+				selText = selText.substring( 0, selText.length - 1 );
+				post += ' ';
+			}
+			
+			var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
+			if ( options.ownline ) {
+				// TODO: This'll probably break with syntax highlighting
+				if ( range.startOffset != 0 )
+					pre  = "\n" + options.pre;
+				// TODO: Will this still work with syntax highlighting?
+				if ( range.endContainer == range.commonAncestorContainer )
+					post += "\n";
+			}
+			
+			var insertText = pre + selText + post;
+			var insertLines = insertText.split( "\n" );
+			
+			range.extractContents();
+			// Insert the contents one line at a time
+			// insertNode() inserts at the beginning, so this has
+			// to happen in reverse order
+			for ( var i = insertLines.length - 1; i >= 0; i-- ) {
+				range.insertNode( document.createTextNode( insertLines[i] ) );
+				if ( i > 0 )
+					range.insertNode( document.createElement( 'br' ) );
+			}
+			
 			// ...
 			// Scroll the textarea to the inserted text
 			//?.scrollToCaretPosition();
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
 			//context.$textarea.trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+			return context.$textarea;
 		},
 		/**
 		 * Gets the position (in resolution of bytes not nessecarily characters) in a textarea
 		 */
 		'getCaretPosition': function( options ) {
+			// FIXME: Character-based functions aren't useful for the magic iframe
 			// ...
 			//reurn character position
 		},
@@ -1607,6 +1671,7 @@ if ( typeof context == 'undefined' ) {
 		 * @param end Character offset of selection end
 		 */
 		'setSelection': function( options ) {
+			// FIXME: Character-based functions aren't useful for the magic iframe
 			// ...
 		},
 		/**
@@ -1615,6 +1680,17 @@ if ( typeof context == 'undefined' ) {
 		'scrollToCaretPosition': function( options ) {
 			// ...
 			//context.$textarea.trigger( 'scrollToPosition' );
+		},
+		/**
+		 * Scroll an element to the top of the iframe
+		 * @param $element jQuery object containing an element in the iframe
+		 * @param force If true, scroll the element even if it's already visible
+		 */
+		'scrollToTop': function( $element, force ) {
+			var body = context.$content.closest( 'body' );
+			var y = $element.offset().top - context.$content.offset().top;
+			if ( force || y < body.scrollTop() || y > body.scrollTop() + body.height() )
+				body.scrollTop( y );
 		}
 	};
 }
@@ -1622,7 +1698,15 @@ if ( typeof context == 'undefined' ) {
 // If there was a configuration passed, it's assumed to be for the addModule
 // API call
 if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
-	context.api.addModule( context, arguments[0] );
+	// If the iframe construction isn't ready yet, defer the call
+	if ( context.$content )
+		context.api.addModule( context, arguments[0] );
+	else {
+		var args = arguments;
+		setTimeout( function() {
+			context.api.addModule( context, args[0] );
+		}, 2 );
+	}
 } else {
 	// Since javascript gives arguments as an object, we need to convert them
 	// so they can be used more easily
@@ -1631,7 +1715,15 @@ if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 		// Handle API calls
 		var call = arguments.shift();
 		if ( call in context.api ) {
-			context.api[call]( context, arguments[0] == undefined ? {} : arguments[0] );
+			// If the iframe construction isn't ready yet, defer the call
+			if ( context.$content )
+				context.api[call]( context, arguments[0] == undefined ? {} : arguments[0] );
+			else {
+				var args = arguments;
+				setTimeout( function() {
+					context.api[call]( context, args[0] == undefined ? {} : args[0] );
+				}, 2 );
+			}
 		}
 	}
 }
@@ -2568,19 +2660,14 @@ fn: {
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
-			var list = $( '<ul></ul>' );
+			var list = $( '<ul />' );
 			for ( i in structure ) {
-				var div = $( '<div></div>' )
-					.attr( 'href', '#' )
+				var div = $( '<div />' )
 					.addClass( 'section-' + structure[i].index )
-					.data( 'textbox', context.$textarea )
-					.data( 'position', structure[i].position )
-					.bind( 'mousedown', function( event ) {
-						$(this).data( 'textbox' )
-							.focus()
-							.textSelection( 'setSelection', {
-								'start': $(this).data( 'position' ) } )
-							.textSelection( 'scrollToCaretPosition', { 'force': true } );
+					.data( 'wrapper', structure[i].wrapper )
+					.mousedown( function( event ) {
+						context.fn.scrollToTop( $(this).data( 'wrapper' ) );
+						// TODO: Move cursor
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
 						event.preventDefault();
@@ -2588,7 +2675,7 @@ fn: {
 					.text( structure[i].text );
 				if ( structure[i].text == '' )
 					div.html( '&nbsp;' );
-				var item = $( '<li></li>' ).append( div );
+				var item = $( '<li />' ).append( div );
 				if ( structure[i].sections !== undefined ) {
 					item.append( buildList( structure[i].sections ) );
 				}
@@ -2690,49 +2777,36 @@ fn: {
 			
 			return $resizeControlVertical.add($resizeControlHorizontal);
 		}
+		
 		// Build outline from wikitext
 		var outline = [];
-		var wikitext = $.wikiEditor.fixOperaBrokenness( context.$textarea.val() );
-		var headings = wikitext.match( /^={1,6}[^=\n][^\n]*={1,6}\s*$/gm );
-		var offset = 0;
-		headings = $.makeArray( headings );
-		for ( var h = 0; h < headings.length; h++ ) {
-			text = $.trim( headings[h] );
-			// Get position of first occurence
-			var position = wikitext.indexOf( text, offset );
-			// Update offset to avoid stumbling on duplicate headings
-			if ( position >= offset ) {
-				offset = position + text.length;
-			} else if ( position == -1 ) {
-				// Not sure this is possible, or what should happen
-				continue;
+		// Traverse all text nodes in context.$content
+		var h = 0;
+		context.$content.contents().each( function() {
+			if ( this.nodeName != '#text' )
+				return;
+			var text = this.textContent;
+			var match = text.match( /^(={1,6})(.*?)\1\s*$/ );
+			if ( !match )
+				return;
+			// Wrap the header in a <div>, unless it's already wrapped
+			var div;
+			if ( $(this).parent().is( 'div' ) && $(this).parent().children().size() == 1 )
+				div = $(this)
+					.parent()
+					.addClass( 'wikiEditor-toc-header' );
+			else {
+				div = $j( '<div />' )
+					.text( text )
+					.css( 'display', 'inline' )
+					.addClass( 'wikiEditor-toc-header' );
+				this.parentNode.replaceChild( div.get( 0 ), this );
 			}
-			
-			// Detect the starting and ending heading levels
-			var startLevel = 0;
-			for ( var c = 0; c < text.length; c++ ) {
-				if ( text.charAt( c ) == '=' ) {
-					startLevel++;
-				} else {
-					break;
-				}
-			}
-			var endLevel = 0;
-			for ( var c = text.length - 1; c >= 0; c-- ) {
-				if ( text.charAt( c ) == '=' ) {
-					endLevel++;
-				} else {
-					break;
-				}
-			}
-			// Use the lowest number of =s as the actual level
-			var level = Math.min( startLevel, endLevel );
-			text = $.trim( text.substr( level, text.length - ( level * 2 ) ) );
-			// Add the heading data to the outline
-			outline[h] = { 'text': text, 'position': position, 'level': level, 'index': h + 1 };
-		}
+			outline[h] = { 'text': match[2], 'wrapper': div, 'level': match[1].length, 'index': h + 1 };
+			h++;
+		});
 		// Normalize heading levels for list creation
-		// This is based on Linker::generateTOC() so, it should behave like the
+		// This is based on Linker::generateTOC(), so it should behave like the
 		// TOC on rendered articles does - which is considdered to be correct
 		// at this point in time.
 		var lastLevel = 0;
@@ -2754,7 +2828,13 @@ fn: {
 		// section 0, if needed
 		var structure = buildStructure( outline );
 		if ( $( 'input[name=wpSection]' ).val() == '' ) {
-			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
+			// Add a <div> at the beginning
+			var div = $j( '<div />' )
+				.addClass( 'wikiEditor-toc-start' )
+				.hide()
+				.prependTo( context.$content );
+			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0,
+				'wrapper': div } );
 		}
 		context.modules.$toc.html( buildList( structure ) );
 
@@ -2797,6 +2877,7 @@ fn: {
 			if ( 'preview' in context.modules )
 				return;
 			
+			var iframeHTML = context.$content.html();
 			context.$ui
 				.wrapInner( $( '<div />' )
 					.addClass( 'wikiEditor-tab-edit' )
@@ -2955,6 +3036,10 @@ fn: {
 			// and override it
 			// FIXME: Don't use jQuery UI tabs, implement our own tabs
 			tabList.closest( '.ui-tabs' ).removeClass( 'ui-widget' );
+			
+			// The magic iframe doesn't like being wrapped, restore it
+			context.fn.setup();
+			context.$content.html( iframeHTML );
 		});
 	},
 	

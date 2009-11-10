@@ -11,6 +11,10 @@ getContents: function() {
 	return $(this).val();
 },
 
+setContents: function( options ) {
+	return $(this).val( options.contents );
+},
+
 /**
  * Get the currently selected text in this textarea. Will focus the textarea
  * in some browsers (IE/Opera)
@@ -330,6 +334,7 @@ scrollToCaretPosition: function( options ) {
 	// Apply defaults
 	switch ( command ) {
 		//case 'getContents': // no params
+		//case 'setContents': // no params with defaults
 		//case 'getSelection': // no params
 		case 'encapsulateSelection':
 			options = $.extend( {
@@ -362,9 +367,9 @@ scrollToCaretPosition: function( options ) {
 			break;
 	}
 	var context = $(this).data( 'wikiEditor-context' );
-	//var hasIframe = context !== undefined && context.$iframe !== undefined;
+	var hasIframe = context !== undefined && context.$iframe !== undefined;
 	// iframe functions have not been implemented yet, this is a temp hack
-	var hasIframe = false;
+	//var hasIframe = false;
 	return ( hasIframe ? context.fn : fn )[command].call( this, options );
 };
 
