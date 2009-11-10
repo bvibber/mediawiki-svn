@@ -149,11 +149,9 @@ js2AddOnloadHook( function() {
 								action: {
 									type: 'replace',
 									options: {
-										pre: "==", 
 										periMsg: 'edittoolbar-tool-heading-example',
-										periRegex: /^(={1,6})(.*?)\1\s*$/,
-										periRegexReplace: "\$2",
-										post: "=="
+										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
+										periRegexReplace: "\$1==\$3==\$4"
 									}
 								}
 							},
@@ -162,11 +160,9 @@ js2AddOnloadHook( function() {
 								action: {
 									type: 'replace',
 									options: {
-										pre: "===",
-										periRegex: /^(={1,6})(.*?)\1\s*$/,
-										periRegexReplace: "\$2",
 										periMsg: 'edittoolbar-tool-heading-example',
-										post: "==="
+										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
+										periRegexReplace: "\$1===\$3===\$4"
 									}
 								}
 							},
@@ -175,11 +171,9 @@ js2AddOnloadHook( function() {
 								action: {
 									type: 'replace',
 									options: {
-										pre: "====",
-										periRegex: /^(={1,6})(.*?)\1\s*$/,
-										periRegexReplace: "\$2",
 										periMsg: 'edittoolbar-tool-heading-example',
-										post: "===="
+										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
+										periRegexReplace: "\$1====\$3====\$4"
 									}
 								}
 							},
@@ -188,11 +182,9 @@ js2AddOnloadHook( function() {
 								action: {
 									type: 'replace',
 									options: {
-										pre: "=====",
-										periRegex: /^(={1,6})(.*?)\1\s*$/,
-										periRegexReplace: "\$2",
 										periMsg: 'edittoolbar-tool-heading-example',
-										post: "====="
+										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
+										periRegexReplace: "\$1=====\$3=====\$4"
 									}
 								}
 							}
