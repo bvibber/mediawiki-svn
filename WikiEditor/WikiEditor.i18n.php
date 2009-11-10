@@ -223,6 +223,14 @@ $messages['vec'] = array(
 	'wikieditor-desc' => 'Fornisse na interfacia avansada de modifica testo wiki e vari moduli funsionali',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'wikieditor' => 'Giao diện sửa đổi văn bản wiki nâng cao',
+	'wikieditor-desc' => 'Cung cấp giao diện sửa đổi văn bản wiki có thể mở rộng, cũng như nhiều tính năng khác',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  */

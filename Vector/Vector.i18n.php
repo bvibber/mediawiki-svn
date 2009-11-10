@@ -23,6 +23,14 @@ $messages['qqq'] = array(
 	'vector-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'vector' => 'Паляпшэньні інтэрфэйсу карыстальніка для афармленьня «Вэктар»',
+	'vector-desc' => 'Паляпшае элемэнты інтэрфэйсу карыстальніка для афармленьня «Вэктар».',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -213,6 +221,14 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'vector' => 'Mejoramenti de interfacia utente (UI) par el Vector.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'vector' => 'Giao diện tích hợp với Vectơ',
+	'vector-desc' => 'Hoàn thiện các phần giao diện để tích hợp với hình dạng Vectơ.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

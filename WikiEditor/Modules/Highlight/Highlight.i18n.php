@@ -197,6 +197,13 @@ $messages['vec'] = array(
 	'wikieditor-highlight-preference' => 'Ativa la colorassion de la sintassi in modifica',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'wikieditor-highlight-preference' => 'Tô màu cú pháp khi sửa đổi',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  */
