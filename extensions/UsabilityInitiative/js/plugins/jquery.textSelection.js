@@ -8,11 +8,11 @@ var fn = {
  * Get the contents of the textarea
  */
 getContents: function() {
-	return $(this).val();
+	return this.val();
 },
 
 setContents: function( options ) {
-	return $(this).val( options.contents );
+	return this.val( options.contents );
 },
 
 /**
@@ -20,15 +20,16 @@ setContents: function( options ) {
  * in some browsers (IE/Opera)
  */
 getSelection: function() {
+	var e = this.get( 0 );
 	var retval = '';
-	if ( $(this).is( ':hidden' ) ) {
+	if ( $(e).is( ':hidden' ) ) {
 		// Do nothing
 	} else if ( document.selection && document.selection.createRange ) {
-		this.focus();
+		e.focus();
 		var range = document.selection.createRange();
 		retval = range.text;
-	} else if ( this.selectionStart || this.selectionStart == '0' ) {
-		retval = this.value.substring( this.selectionStart, this.selectionEnd );
+	} else if ( e.selectionStart || e.selectionStart == '0' ) {
+		retval = e.value.substring( e.selectionStart, e.selectionEnd );
 	}
 	return retval;
 },
