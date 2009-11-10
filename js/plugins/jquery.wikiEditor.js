@@ -288,7 +288,18 @@ if ( typeof context == 'undefined' ) {
 		 * Gets the currently selected text in the content
 		 */
 		'getSelection': function() {
-			// ...
+			var userSelection;
+			if (window.getSelection) {
+				userSelection = window.getSelection();
+			}
+			else if (document.selection) { // should come last; Opera!
+				userSelection = document.selection.createRange();
+			}
+			var selectedText = userSelection;
+			if (userSelection.text){
+				selectedText = userSelection.text;
+			}
+			return selectedText;
 		},
 		/**
 		 * Inserts text at the begining and end of a text selection, optionally inserting text at the caret when
