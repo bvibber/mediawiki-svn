@@ -19,7 +19,7 @@ class VectorHooks {
 		'combined' => array(
 			array( 'src' => 'Vector.combined.js', 'version' => 1 ),
 		),
-		'min' => array(
+		'minified' => array(
 			array( 'src' => 'Vector.combined.min.js', 'version' => 1 ),
 		),
 	);

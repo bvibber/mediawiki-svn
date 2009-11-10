@@ -20,7 +20,7 @@ class WikiEditorHooks {
 		'combined' => array(
 			array( 'src' => 'WikiEditor.combined.js', 'version' => 1 ),
 		),
-		'min' => array(
+		'minified' => array(
 			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 1 ),
 		),
 	);
