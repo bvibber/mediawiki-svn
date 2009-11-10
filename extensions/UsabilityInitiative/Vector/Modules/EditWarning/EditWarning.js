@@ -1,6 +1,10 @@
 /* JavaScript for EditWarning extension */
 
 js2AddOnloadHook( function() {
+	// Check preferences for editwarning
+	if ( !wgVectorPreferences || !( wgVectorPreferences.editwarning && wgVectorPreferences.editwarning.enable ) ) {
+		return true;
+	}
 	// Get the original values of some form elements
 	$j( '#wpTextbox1, #wpSummary' ).each( function() {
 		$j(this).data( 'origtext', $j(this).val() );

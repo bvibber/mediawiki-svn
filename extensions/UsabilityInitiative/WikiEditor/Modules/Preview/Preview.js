@@ -1,5 +1,12 @@
 /* JavaScript for WikiEditor Preview module */
 
 js2AddOnloadHook( function() {
-	$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'preview' );
+	// Check preferences for preview
+	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.preview && wgWikiEditorPreferences.preview.enable ) ) {
+		return true;
+	}
+	// Add the preview module
+	if ( $j.wikiEditor ) {
+		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'preview' );
+	}
 });

@@ -82,21 +82,23 @@ body.rtl .wikiEditor-ui {
 	float: right;
 }
 .wikiEditor-ui .wikiEditor-ui-bottom {
-	
+	width: 100%;
 }
 .wikiEditor-ui .wikiEditor-ui-text {
 	line-height: 0;
 }
 .wikiEditor-ui .wikiEditor-ui-top {
 	position: relative;
+	width: 100%;
 	border-bottom: solid silver 1px;
 }
 .wikiEditor-ui .wikiEditor-ui-left {
+	width: 100%;
 	float: left;
-	width:100%;
 }
 .wikiEditor-ui .wikiEditor-ui-right {
-	float: right;
+	float: left;
+	width: 13em;
 }/* wikiEditor dialogs module */
 
 .ui-widget table {
@@ -145,17 +147,10 @@ body.rtl .wikiEditor-ui-toc {
 	list-style-position: outside;
 	list-style-type: none;
 	width: 100%;
-}
-.tab-toc {
 	/* Should match the toolbar */
 	background-image: url(../images/wikiEditor/toolbar/main-base.png);
 	background-position: left top;
 	background-repeat: repeat-x;
-	height: 26px;
-	padding: 3px 0;
-	line-height: 26px;
-	padding-left: 1em;
-	border-bottom: solid 1px silver;
 }
 .wikiEditor-ui-toc li {
 	padding: 0;
@@ -245,7 +240,7 @@ body.rtl .wikiEditor-ui-toc {
 	height:100%;
 	cursor:ew-resize;
 }
-#wikiEditor-ui-toc-resize-grip{
+#wikiEditor-ui-toc-resize-horizontal{
 	width:9px;
 	height:16px;
 	position:absolute;
@@ -287,9 +282,13 @@ body.rtl .wikiEditor-ui-toolbar .sections {
 	background-color: #F3F3F3;
 }
 .wikiEditor-ui-toolbar {
-	background-image: url(../images/wikiEditor/toolbar/main-base.png);
+	background-image: url(../images/wikiEditor/toolbar/base.png);
 	background-position: left top;
 	background-repeat: repeat-x;
+}
+.wikiEditor-ui-toolbar .toolbar {
+	background-image: url(../images/wikiEditor/toolbar/base.png);
+	background-position: left top;
 }
 body.rtl .wikiEditor-ui-toolbar .sections .section {
 	float: right;
