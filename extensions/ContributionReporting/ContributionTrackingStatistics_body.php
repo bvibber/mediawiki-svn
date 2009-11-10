@@ -9,6 +9,8 @@
 // Special page ContributionTrackingStatistics
 class SpecialContributionTrackingStatistics extends SpecialPage {
 
+	public static $number_of_days_to_show = 7;
+	
 	/* Functions */
 
 	public function __construct() {
@@ -26,19 +28,36 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 		// Show day totals
 		$this->showDayTotals();
 		
+		$this->showDayTotalsForLastDays(SpecialContributionTrackingStatistics::$number_of_days_to_show);
+		
 		// Show weekly total
-		$this->showWeeklyTotals();
+		//$this->showWeeklyTotals();
 	}
 	
+	/* Wrapper */
+	public function showDayTotalsForLastDays( $num_days ){
+		//Seriously, PHP 5.3 has cleaner ways of doing this, till then strtotime to the rescue!
+		$today = new DateTime( time() );
+		++$num_days; //really you probably don't want today
+		$end_day = $today->modify("-$num_days days");
+		
+		for( $i = 0 ; $i < ($num_days - 2) ; $i++){ //you don't want today
+			$this->showDayTotals(false, $end_day->format("YmdHis")); //MW Format
+			$end_day->modify("+1 day");
+		}		
+	}
+	
+	
+		
 	/* Display Functions */
 	
 	// Html out for the days total
-	public function showDayTotals() {
+	public function showDayTotals( $is_now = true, $timestamp = 0 ) {
 		global $wgOut,$wgLang;
 		global $wgAllowedTemplates;
-
-		$totals = $this->getDayTotals();
-
+		
+		$totals = $this->getDayTotals($is_now, $timestamp);
+		
 		$msg = wfMsg( 'contribstats-day-totals' ) . " - " . date( 'o-m-d', wfTimestamp( TS_UNIX ) );
 		$htmlOut = Xml::element( 'h3', null, $msg );
 
@@ -161,56 +180,30 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	
 	/* Query Functions */
 
-	// Database lookup for a single day
-	public function getDayTotals() {
-		$dbr = efContributionTrackingConnection();
-		
-		$conds[] = "ts >=" . $dbr->addQuotes( date( 'Ymd000000' ) );
-		$conds[] = "ts <=" . $dbr->addQuotes( date( 'YmdHis' ) ); 
-
-		$res = $dbr->select( 
-			array( 'contribution_tracking',
-			       'civicrm.public_reporting',
-			),
-			array(
-				'utm_source',
-				'sum(isnull(contribution_tracking.contribution_id)) as miss',
-				'sum(not isnull(contribution_tracking.contribution_id)) as hit',
-				'sum(converted_amount) as converted_amount',
-			),
-			$conds,
-			__METHOD__,
-			array(
-				'ORDER BY' => 'hit DESC',
-				'GROUP BY' => 'utm_source'
-			),
-			array( 'civicrm.public_reporting' =>
-				array(
-					'LEFT JOIN',
-				 	'contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id',
-				) 
-			)
-		);
-		
-		while ( $row = $dbr->fetchRow( $res ) ) {
-			$result[] = array(
-					$row[0],
-					$row[1],
-					$row[2],
-					$row[3],
-			);
+	// Totals for today
+	public function getDayTotals($is_now = true, $timestamp = 0) {
+		$range = array();
+		$end_format = 'Ymd235959';
+		if($is_now){
+			$timestamp = time();
+			$end_format = 'YmdHis';	
 		}
+		
+		$range[0] = date( 'Ymd000000' , wfTimestamp(TS_UNIX, $timestamp) );
+		$range[1] = date( $end_format , wfTimestamp(TS_UNIX, $timestamp) );
 
-
-		return $result;
+		return $this->getTotalsInRange($range);
 	}
-	
 	
 	// Database lookup for week totals
 	public function getWeekTotals( $week ) {
-		$dbr = efContributionTrackingConnection();
-
 		$range = $this->weekRange( $week );
+		return $this->getTotalsInRange($range);
+	}
+	
+	//generalized lookup
+	public function getTotalsInRange($range){
+		$dbr = efContributionTrackingConnection();
 
 		$conds[] = "ts >=" . $dbr->addQuotes( $range[0] );
 		$conds[] = "ts <=" . $dbr->addQuotes( $range[1] );
