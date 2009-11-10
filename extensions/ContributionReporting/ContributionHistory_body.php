@@ -139,7 +139,7 @@ class ContributionHistory extends SpecialPage {
 		$output .= $pagingDiv;
 
 		header( 'Cache-Control: max-age=300,s-maxage=300' );
-		$wgOut->addWikiText( '{{2009/Donate-banner/' . $language . '}}' );
+		$wgOut->addWikiText( '{{2009/Donate-header/' . $language . '}}' );
 		$wgOut->addHTML( '<h1>' . $this->msg( 'contrib-hist-header' ) . '</h1>' );
 		$wgOut->addWikiText( '<strong>{{2008/Contribution history introduction/' . $language . '}}</strong>' );
 		$wgOut->addHTML( $output );
