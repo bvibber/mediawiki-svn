@@ -7,6 +7,23 @@
  */
 
 class WikiEditorHooks {
+	
+	/* Static Members */
+	
+	static $scripts = array(
+		'raw' => array(
+			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 1 ),
+			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 1 ),
+			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 1 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 3 ),
+		),
+		'combined' => array(
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 1 ),
+		),
+		'min' => array(
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 1 ),
+		),
+	);
 	static $modules = array(
 		'highlight' => array(
 			'i18n' => 'WikiEditorHighlight',
@@ -19,9 +36,6 @@ class WikiEditorHooks {
 						'section' => 'editing/experimental',
 					),
 				),
-			),
-			'scripts' => array(
-				'raw' => array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 1 ),
 			),
 		),
 		'preview' => array(
@@ -49,9 +63,6 @@ class WikiEditorHooks {
 				'wikieditor-preview-savedialog-publish',
 				'wikieditor-preview-savedialog-goback',
 			),
-			'scripts' => array(
-				'raw' => array( 'src' => 'Modules/Preview/Preview.js', 'version' => 1 ),
-			),
 		),
 		'toc' => array(
 			'i18n' => 'WikiEditorToc',
@@ -70,9 +81,6 @@ class WikiEditorHooks {
 				// These are probably only for testing purposes?
   				'wgNavigableTOCCollapseEnable',
 				'wgNavigableTOCResizable'
-			),
-			'scripts' => array(
-				'raw' => array( 'src' => 'Modules/Toc/Toc.js', 'version' => 1 ),
 			),
 		),
 		'toolbar' => array(
@@ -275,10 +283,6 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-help-content-indent-syntax',
 				'wikieditor-toolbar-help-content-indent-result',
 			),
-			'scripts' => array(
-				'raw' => array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 3 ),
-				'min' => array( 'src' => 'Modules/Toolbar/Toolbar.min.js', 'version' => 3 ),
-			),
 		),
 	);
 	
@@ -298,8 +302,6 @@ class WikiEditorHooks {
 		global $wgWikiEditorModules, $wgUsabilityInitiativeResourceMode;
 		
 		// Modules
-		$scripts = array();
-		$enabled = false;
 		$preferences = array();
 		foreach ( $wgWikiEditorModules as $module => $enable ) {
 			if (
@@ -309,14 +311,7 @@ class WikiEditorHooks {
 					&& $wgUser->getOption( self::$modules[$module]['preferences']['enable']['key'] )
 				)
 			) {
-				$enabled = true;
 				UsabilityInitiativeHooks::initialize();
-				// Scripts
-				$mode = $wgUsabilityInitiativeResourceMode;
-				if ( !isset( self::$modules[$module]['scripts'][$mode] ) ) {
-					$mode = 'raw';
-				}
-				$scripts[] = self::$modules[$module]['scripts'][$mode];
 				// Messages
 				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {		
 					wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
@@ -343,7 +338,7 @@ class WikiEditorHooks {
 			}
 		}
 		// Add all scripts
-		foreach ( $scripts as $script ) {
+		foreach ( self::$scripts[$wgUsabilityInitiativeResourceMode] as $script ) {
 			UsabilityInitiativeHooks::addScript(
 				basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']
 			);

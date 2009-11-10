@@ -1433,6 +1433,11 @@ $.wikiEditor = {
 
 $.fn.wikiEditor = function() {
 
+// Skip any further work on browsers that are unsupported
+if ( $j.wikiEditor.isSupportKnown() && !$j.wikiEditor.isSupported() ) {
+	return $(this);
+}
+
 /* Initialization */
 
 // The wikiEditor context is stored in the element, so when this function

@@ -8,11 +8,24 @@
 
 class VectorHooks {
 
+	/* Static Members */
+	
+	static $scripts = array(
+		'raw' => array(
+			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 1 ),
+			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 1 ),
+			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 1 ),
+		),
+		'combined' => array(
+			array( 'src' => 'Vector.combined.js', 'version' => 1 ),
+		),
+		'min' => array(
+			array( 'src' => 'Vector.combined.min.js', 'version' => 1 ),
+		),
+	);
 	static $modules = array(
 		'collapsibletabs' => array(
-			'scripts' => array(
-				'raw' => array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 1 ),
-			),
+			// Configuration stuff here
 		),
 		'editwarning' => array(
 			'i18n' => 'VectorEditWarning',
@@ -30,18 +43,12 @@ class VectorHooks {
 			'messages' => array(
 				'vector-editwarning-warning',
 			),
-			'scripts' => array(
-				'raw' => array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 1 ),
-			),
 		),
 		'simplesearch' => array(
 			'i18n' => 'WikiEditorToc',
 			'messages' => array(
 				'vector-simplesearch-search',
 				'vector-simplesearch-containing',
-			),
-			'scripts' => array(
-				'raw' => array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 1 ),
 			),
 		),
 	);
@@ -62,8 +69,6 @@ class VectorHooks {
 		global $wgVectorModules, $wgUsabilityInitiativeResourceMode;
 		
 		// Modules
-		$scripts = array();
-		$enabled = false;
 		$preferences = array();
 		foreach ( $wgVectorModules as $module => $enable ) {
 			if (
@@ -73,14 +78,7 @@ class VectorHooks {
 					&& $wgUser->getOption( self::$modules[$module]['preferences']['enable']['key'] )
 				)
 			) {
-				$enabled = true;
 				UsabilityInitiativeHooks::initialize();
-				// Scripts
-				$mode = $wgUsabilityInitiativeResourceMode;
-				if ( !isset( self::$modules[$module]['scripts'][$mode] ) ) {
-					$mode = 'raw';
-				}
-				$scripts[] = self::$modules[$module]['scripts'][$mode];
 				// Messages
 				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {		
 					wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
@@ -107,7 +105,7 @@ class VectorHooks {
 			}
 		}
 		// Add all scripts
-		foreach ( $scripts as $script ) {
+		foreach ( self::$scripts[$wgUsabilityInitiativeResourceMode] as $script ) {
 			UsabilityInitiativeHooks::addScript(
 				basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']
 			);
