@@ -77,7 +77,7 @@ $messages['en'] = array(
 Make sure that the poll declared and saved, also be sure to use address delimiter character #',
 	'qp_error_id_in_stats_mode' => 'Cannot declare an ID of the poll in statistical mode',
 	'qp_error_dependance_in_stats_mode' => 'Cannot declare dependance chain of the poll in statistical mode',
-	'qp_error_no_stats' => 'No statistical data is available, because noone has voted for this poll, yet (address=$1)',
+	'qp_error_no_stats' => 'No statistical data is available, because no one has voted for this poll, yet (address=$1)',
 	'qp_error_address_in_decl_mode' => 'Cannot get an address of the poll in declaration mode',
 	'qp_error_question_not_implemented' => 'Questions of such type are not implemented: $1',
 	'qp_error_invalid_question_type' => 'Invalid question type: $1',
