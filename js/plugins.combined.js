@@ -2462,6 +2462,26 @@ fn : {
 		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.$toolbar );
 		if( wgNavigableTOCCollapseEnable ) {
 			// placeholder for drag control creation code
+			$dragControl = $( '<div />' ).addClass( 'tab' ).attr( 'id', 'wikiEditor-ui-toc-resize-grip' )
+			.append( '<a href="#" title="Drag to resize"></a>' )
+			.bind( 'mousedown', function() {
+				$( '#wikiEditor-ui-toc' )
+				.data( 'openWidth', $( '#wikiEditor-ui-toc' ).width() );
+				$()
+				.bind( 'mousemove', {'context': context}, $.wikiEditor.modules.toc.fn.drag )
+				.bind( 'mouseup', {'context': context}, $.wikiEditor.modules.toc.fn.stopDrag );
+				$(context.$iframe[0].contentWindow.document)
+				.bind( 'mousemove', {'context': context}, function( e ){ 
+					parent.top.$j().trigger("mousemove", e.pageX); 
+					return false; 
+				} )
+				.bind( 'mouseup', {'context': context}, function( e ){ 
+					parent.top.$j().trigger("mouseup"); 
+					return false;  
+				});
+				return false;
+			});
+			context.modules.$toolbar.append( $dragControl );
 		}
 		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
 		context.modules.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
@@ -2668,6 +2688,43 @@ fn: {
 		return false;
 	},
 	/**
+	 * Handles drag events on the contents module
+	 * 
+	 * @param {object} e
+	 */
+	drag: function( e, pageX ) {
+		var mR = pageX ? pageX : 
+			(e.pageX - e.data.context.$ui.find( '.wikiEditor-ui-left' ).offset().left);
+		mR = e.data.context.$ui.find( '.wikiEditor-ui-left' ).width() - mR;
+		if( mR < 26 || mR >  e.data.context.$ui.find( '.wikiEditor-ui-left' ).width() - 250) return false;
+		e.data.context.$ui.find( '.wikiEditor-ui-left' ).css( 'marginRight', "-"+mR+'px' )
+		.children().css('marginRight', mR+'px');
+		e.data.context.$ui.find( '.wikiEditor-ui-right' ).css( 'width', mR+'px' );
+		return false;
+	},
+	/**
+	 * Handles cleanup of drag events on the contents module
+	 * 
+	 * @param {object} e
+	 */
+	stopDrag: function( e ) {
+		$()
+			.unbind( 'mousemove', $.wikiEditor.modules.toc.fn.drag )
+			.unbind( 'mouseup', $.wikiEditor.modules.toc.fn.stopDrag );
+		$(e.data.context.$iframe[0].contentWindow.document)
+			.unbind( 'mousemove' )
+			.unbind( 'mouseup' );
+		if( $( '#wikiEditor-ui-right' ).width() < 50 && wgNavigableTOCCollapseEnable ) {
+			$.wikiEditor.modules.toc.fn.collapse( e.data.context );
+		} else {
+			$( '#wikiEditor-ui-left' ).trigger( 'mouseup' );
+			$( '#wikiEditor-ui-right' )
+			.data( 'openWidth', $( '#wikiEditor-ui-right' ).width() + 'px' );
+			$.cookie( 'wikiEditor-' + e.data.context.instance + '-toc-width', $( '#wikiEditor-ui-right' ).width() + 'px' );
+		}
+		return false;
+	},
+	/**
 	 * Builds table of contents
 	 * 
 	 * @param {Object} context
@@ -2762,31 +2819,6 @@ fn: {
 				});
 			return $collapseBar;	
 		}
-		function drag( e ) {
-			var mR = e.pageX - $( '#wikiEditor-ui-left' ).offset().left;
-			mR = $( '#wikiEditor-ui-left' ).width() - mR;
-			if( mR < 26 || mR >  $( '#wikiEditor-ui-left' ).width() - 250) return false;
-			$( '#wikiEditor-ui-left' ).css( 'marginRight', mR+'px' );
-			$( '#wikiEditor-ui-right' ).css( 'width', mR+'px' );
-			return false;
-		}
-		function stopDrag( e ) {
-			$()
-			.unbind( 'mousemove', drag )
-			.unbind( 'mouseup', stopDrag );
-			context.modules.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
-			var mR = e.pageX - $( '#wikiEditor-ui-bottom' ).offset().left;
-			mR = $( '#wikiEditor-ui-bottom' ).width() - mR;
-			if( mR < 50 && wgNavigableTOCCollapseEnable ) {
-				$.wikiEditor.modules.toc.fn.collapse( context );
-			} else {
-				$( '#wikiEditor-ui-left' ).trigger( 'mouseup' );
-				$( '#wikiEditor-ui-right' )
-				.data( 'openWidth', $( '#wikiEditor-ui-right' ).width() + 'px' );
-				$.cookie( 'wikiEditor-' + context.instance + '-toc-width', $( '#wikiEditor-ui-right' ).width() + 'px' );
-			}
-			return false;
-		}
 		function buildResizeControls() {
 			var $resizeControlVertical = $( '<div />' )
 			.attr( 'id', 'wikiEditor-ui-toc-resize-vertical')
@@ -2794,8 +2826,18 @@ fn: {
 				$( '#wikiEditor-ui-toc' )
 				.data( 'openWidth', $( '#wikiEditor-ui-toc' ).width() );
 				$()
-				.bind( 'mousemove', drag )
-				.bind( 'mouseup', stopDrag );
+				.bind( 'mousemove', { 'context': context }, $.wikiEditor.modules.toc.fn.drag )
+				.bind( 'mouseup', {'context': context}, $.wikiEditor.modules.toc.fn.stopDrag );
+				$(context.$iframe[0].contentWindow.document)
+				.bind( 'mousemove', {'context': context}, function( e ){ 
+					parent.top.$j().trigger("mousemove", e.pageX); 
+					return false; 
+				} )
+				.bind( 'mouseup', {'context': context}, function( e ){ 
+					parent.top.$j().trigger("mouseup"); 
+					return false;  
+				});
+				return false;
 			});
 			
 			var $collapseControl = $( '<div />' ).addClass( 'tab' ).addClass( 'tab-toc' )
