@@ -32,15 +32,15 @@ body.rtl .wikiEditor-ui-toc {
 	list-style-type: none;
 	width: 100%;
 }
-.tab-toc{
+.tab-toc {
 	/* Should match the toolbar */
 	background-image: url(../images/wikiEditor/toolbar/main-base.png);
 	background-position: left top;
 	background-repeat: repeat-x;
-	height:26px;
+	height: 26px;
 	padding: 3px 0;
-	line-height:26px;
-	padding-left:1em;
+	line-height: 26px;
+	padding-left: 1em;
 	border-bottom: solid 1px silver;
 }
 .wikiEditor-ui-toc li {
@@ -131,7 +131,7 @@ body.rtl .wikiEditor-ui-toc {
 	height:100%;
 	cursor:ew-resize;
 }
-#wikiEditor-ui-toc-resize-horizontal{
+#wikiEditor-ui-toc-resize-grip{
 	width:9px;
 	height:16px;
 	position:absolute;

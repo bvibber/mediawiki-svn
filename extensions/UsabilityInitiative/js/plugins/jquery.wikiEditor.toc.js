@@ -261,7 +261,6 @@ fn: {
 		function drag( e ) {
 			var mR = e.pageX - $( '#wikiEditor-ui-left' ).offset().left;
 			mR = $( '#wikiEditor-ui-left' ).width() - mR;
-			console.log(mR);
 			if( mR < 26 || mR >  $( '#wikiEditor-ui-left' ).width() - 250) return false;
 			$( '#wikiEditor-ui-left' ).css( 'marginRight', mR+'px' );
 			$( '#wikiEditor-ui-right' ).css( 'width', mR+'px' );
