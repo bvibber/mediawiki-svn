@@ -206,17 +206,10 @@ class PollResults extends SpecialPage {
 					$pollStore->setLastUser( $userName, false );
 					if ( $pollStore->loadUserVote() ) {
 						$poll_title = $pollStore->getTitle();
-						$output .= wfMsg(
-							'qp_browse_to_user',
-							$user_link
-						) . "<br />\n" );
-						$output .= wfMsg(
-							'qp_browse_to_poll',
-							self::$skin->link(
-								$poll_title,
-								$poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'parentheses', $pollStore->mPollId ) . "<br />\n"
-							)
-						);
+						# 'parentheses' is unavailable in 1.14.x
+						$poll_link = self::$skin->link( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
+						$output .= wfMsg( 'qp_browse_to_user', $user_link ) . "<br />\n";
+						$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
 						foreach ( $pollStore->Questions as $qkey => &$qdata ) {
 							$output .= "<br />\n<b>" . $qkey . ".</b> " . htmlentities( $qdata->CommonQuestion ) . "<br />\n";
 							$output .= $this->displayUserQuestionVote( $qdata );
@@ -283,13 +276,9 @@ class PollResults extends SpecialPage {
 				$pollStore->loadTotals();
 				$pollStore->calculateStatistics();
 				$poll_title = $pollStore->getTitle();
-				$output .= wfMsg(
-					'qp_browse_to_poll',
-					self::$skin->link(
-						$poll_title,
-						$poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'parentheses', $pollStore->mPollId ) . "<br />\n"
-					)
-				);
+				# 'parentheses' is unavailable in 1.14.x
+				$poll_link = self::$skin->link( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
+				$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
 				$output .= self::$skin->link( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style"=>"font-weight:bold;" ), array( 'action'=>'stats_xls', 'id'=>$pid ) );
 				foreach ( $pollStore->Questions as $qkey => &$qdata ) {
 					$output .= "<br />\n<b>" . $qkey . ".</b> " . htmlentities( $qdata->CommonQuestion ) . "<br />\n";
@@ -659,10 +648,8 @@ class qp_UserPollsList extends qp_QueryPage {
 		$pagename = htmlspecialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 		$pollname = htmlspecialchars( $result->poll_id );
 		$goto_link = self::$skin->link( $poll_title, wfMsg( 'qp_source_link' ) );
-		// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
-		$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' ) . ( $this->inverse ? "?" : "" ), array(), array( "id"=>intval( $result->pid), "uid"=>$this->uid, "action"=>"uvote" ) );
-		// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
-		$link = wfMsg( 'qp_spec_line', '"' . $pagename . '"', '"' . $pollname . '":' , $voice_link, '', '', '' );
+		$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "") ), array(), array( "id"=>intval( $result->pid), "uid"=>$this->uid, "action"=>"uvote" ) );
+		$link = wfMsg( 'qp_results_line_qupl', $pagename, $pollname, $voice_link );
 		return $link;
 	}
 
@@ -705,8 +692,7 @@ class qp_PollsList extends qp_QueryPage {
 		$voices_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_stats_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"stats" ) );
 		$users_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_users_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"pulist" ) );
 		$not_participated_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_not_participated_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"npulist" ) );
-		// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
-		$link = wfMsg( 'qp_spec_line', '"' . $pagename . '"', '"' . $pollname . '":' , $goto_link .', ', $voices_link . ', ', $users_link . ', ', $not_participated_link );
+		$link = wfMsg( 'qp_results_line_qpl', $pagename, $pollname, $goto_link, $voices_link, $users_link, $not_participated_link );
 		return $link;
 	}
 
@@ -744,11 +730,10 @@ class qp_PollUsersList extends qp_QueryPage {
 			$pagename = htmlspecialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 			$pollname = htmlspecialchars( $row->poll_id );
 			$goto_link = self::$skin->link( $poll_title, wfMsg( 'qp_source_link' ) );
-			// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
-			$spec = wfMsg( 'qp_spec_line', '"' . $pagename . '"', '"' . $pollname . '"', '', '', '', '' );
+			$spec = wfMsg( 'qp_header_line_qpul', wfMsg( $this->inverse ? 'qp_not_participated_link' : 'qp_users_link'), $pagename, $pollname );
 			$head[] = PollResults::getPollsLink();
 			$head[] = PollResults::getUsersLink();
-			$head[] = array( '__tag'=>'div', 'class'=>'head', 0=>wfMsg( $this->inverse ? 'qp_not_participated_link' : 'qp_users_link' ) . ' [ '. $spec . ']' );
+			$head[] = array( '__tag'=>'div', 'class'=>'head', 0=>$spec );
 			$head[] = ' (' . $goto_link . ')';
 			$link = qp_Renderer::renderHTMLobject( $head );
 		}
@@ -781,10 +766,8 @@ class qp_PollUsersList extends qp_QueryPage {
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 			$user_link = self::$skin->link( $userTitle, $userName );
-			// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
-			$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' ) . ( $this->inverse ? "?" : "" ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
-			// FIXME: This is hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
-			$link = $user_link . ': ' . $voice_link;
+			$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "") ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
+			$link = wfMsg( 'qp_results_line_qpul', $user_link, $voice_link );
 		}
 		return $link;
 	}
@@ -840,12 +823,12 @@ class qp_UserCellList extends qp_QueryPage {
 				$pagename = htmlspecialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 				$pollname = htmlspecialchars( $this->poll_id );
 				$goto_link = self::$skin->link( $poll_title, wfMsg( 'qp_source_link' ) );
-				// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
-				$spec = wfMsg( 'qp_spec_line', '"' . $pagename . '"', '"' . $pollname . '"', '', '', '', '' );
+				$spec = wfMsg( 'qp_header_line_qpul', wfMsg( 'qp_users_link' ), $pagename, $pollname );
 				$head[] = PollResults::getPollsLink();
 				$head[] = PollResults::getUsersLink();
-				$head[] = array( '__tag'=>'div', 'class'=>'head', 0=>wfMsg( 'qp_users_link' ) . ' [ '. $spec . ']' );
-				$head[] = ' (' . $goto_link . ')<br />';
+				$head[] = array( '__tag'=>'div', 'class'=>'head', 0=>$spec );
+				# 'parentheses' are unavailable in MW 1.14.x
+				$head[] = wfMsg( 'qp_parentheses',  $goto_link ) . '<br />';
 				$ques_found = false;
 				foreach ( $pollStore->Questions as &$ques ) {
 					if ( $ques->question_id == $this->question_id ) {
@@ -854,17 +837,15 @@ class qp_UserCellList extends qp_QueryPage {
 					}
 				}
 				if ( $ques_found ) {
-					$qpa = $this->question_id . '. ' . htmlentities( $ques->CommonQuestion ) . '<br />';
+					$qpa = wfMsg( 'qp_header_line_qucl', $this->question_id, htmlentities( $ques->CommonQuestion ) );
 					if ( array_key_exists( $this->cat_id, $ques->Categories ) ) {
 						$categ = &$ques->Categories[ $this->cat_id ];
 						$proptext = $ques->ProposalText[ $this->proposal_id ];
-						$qpa .= htmlentities( $proptext );
-						// FIXME: This is hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
-						$qpa .= ( substr( $proptext, strlen( $proptext ) - 1 ) === '?' ) ? ' ' : '? ';
+						$cat_name = $categ['name'];
 						if ( array_key_exists( 'spanId', $categ ) ) {
-							$qpa .= htmlentities( $ques->CategorySpans[ $categ["spanId"] ]["name"] ) . ' |';
+							$cat_name =  wfMsg( 'qp_full_category_name', $cat_name, $ques->CategorySpans[ $categ['spanId'] ]['name'] );
 						}
-						$qpa .= ' ' . htmlentities( $categ["name"] ) . '<br />';
+						$qpa = wfMsg( 'qp_header_line_qucl', $this->question_id, htmlentities( $ques->CommonQuestion ), htmlentities( $proptext ), htmlentities( $cat_name ) ) . '<br />';
 						$head[] = array( '__tag'=>'div', 'class'=>'head', 'style'=>'padding-left:2em;', 0=>$qpa );
 						$link = qp_Renderer::renderHTMLobject( $head );
 					}
@@ -899,11 +880,9 @@ class qp_UserCellList extends qp_QueryPage {
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 			$user_link = self::$skin->link( $userTitle, $userName );
-			// FIXME: This is a lot of hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
-			$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' ) . ( $this->inverse ? "?" : "" ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
-			$text_answer = ($result->text_answer == '') ? '' : ' <i>' . htmlentities( $result->text_answer ) . '</i>';
-			// FIXME: This is hard coded formatting. Please make a message with parameters for this, as not all languages would format this in this same way.
-			$link = $user_link . ': ' . $voice_link . $text_answer;
+			$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "" ) ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
+			$text_answer = ($result->text_answer == '') ? '' : '<i>' . htmlentities( $result->text_answer ) . '</i>';
+			$link = wfMsg( 'qp_results_line_qucl', $user_link, $voice_link, $text_answer );
 		}
 		return $link;
 	}
