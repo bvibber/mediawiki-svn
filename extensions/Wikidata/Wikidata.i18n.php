@@ -52,8 +52,12 @@ $messages['en'] = array(
 	'ow_importtsv_title1' => 'Import TSV',
 	'ow_importtsv_title2' => 'Import definitions and translations',
 	'ow_importtsv_header' => '<p>Import definitions and translations from a tab delimited text file that you may have exported from OpenOffice.org, Excel or other spreadsheet software.</p>
-<p>The format of the file must be the same as the files exported on the [[Special:ExportTSV|ExportTSV]] page. If you\'ve changed the column names, the import will fail. If you\'ve changed the id or the defining expression of any defined meaning, that line will be ignored. If you\'ve added columns, they must be in the form \'definitions_iso\' or \'translations_iso\', where iso is an ISO 639-3 language code.</p>
-<p>If the \'test run\' box is checked, any actions that would be taken are reported, but no changes are actually made. You are encouraged to do a test run before you do an actual import.</p>',
+<p>The format of the file must be the same as the files exported on the [[Special:ExportTSV|ExportTSV]] page.
+If you have changed the column names, the import will fail.
+If you have changed the id or the defining expression of any defined meaning, that line will be ignored.
+If you have added columns, they must be in the form "definitions_iso" or "translations_iso", where iso is an ISO 639-3 language code.</p>
+<p>If the "test run" box is checked, any actions that would be taken are reported, but no changes are actually made.
+You are encouraged to do a test run before you do an actual import.</p>',
 	'ow_importtsv_not_allowed' => 'You do not have permission to do a TSV import.',
 	'ow_importtsv_importing' => 'Importing TSV data',
 	'ow_importtsv_import_failed' => 'Import failed',
@@ -167,7 +171,7 @@ Please check the web address.',
 	'ow_Language' => 'Language',
 	'ow_LevelAnnotation' => 'Annotation',
 	'ow_LinkAttributeHeader' => 'Link attribute',
-	'ow_Multiple_meanings' => 'Definitions of \'$1\'',
+	'ow_Multiple_meanings' => 'Definitions of "$1"',
 	'ow_NewExactMeaning' => 'New exact meaning',
 	'ow_OptionAttribute' => 'Property',
 	'ow_OptionAttributeHeader' => 'Option attribute',
@@ -277,7 +281,7 @@ $messages['qqq'] = array(
 	'languages' => 'Name of special page (see [http://www.omegawiki.org/Special:Specialpages http://www.omegawiki.org/Special:Specialpages])',
 	'langman-desc' => '{{desc}}',
 	'langman_title' => 'Title in Language manager special page ([http://www.omegawiki.org/Special:Languages http://www.omegawiki.org/Special:Languages])',
-	'langman_header' => 'Translate the word "English"; don\'t change it to your own language!',
+	'langman_header' => 'Translate the word "English"; do not change it to your own language!',
 	'langman_adding' => "$1 is the language name; $2 is the language's ISO 639-3 code.",
 	'langman_field_optional' => "Here, '''optional''' refers to the fields labeled with text from {{msg-mw|langman_iso639-2}} and {{msg-mw|langman_wikimedia}}
 {{Identical|Optional}}",
