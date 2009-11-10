@@ -48,3 +48,15 @@ body.rtl .wikiEditor-ui {
 .wikiEditor-ui .wikiEditor-ui-right {
 	float: right;
 }
+.wikiEditor-wikitext {
+	float: left;
+	width: 100%;
+}
+.wikiEditor-tabs {
+	float: left;
+	width: 50%;
+}
+.wikiEditor-buttons {
+	float: right;
+	width: 50%;
+}

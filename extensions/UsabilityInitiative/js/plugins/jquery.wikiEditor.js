@@ -151,6 +151,7 @@ if ( typeof context == 'undefined' ) {
 	// Encapsulate the textarea with some containers for layout
 	$(this)
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-wikitext' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );	
