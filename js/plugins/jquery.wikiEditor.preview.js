@@ -21,6 +21,7 @@ fn: {
 			if ( 'preview' in context.modules )
 				return;
 			
+			var iframeHTML = context.$content.html();
 			context.$ui
 				.wrapInner( $( '<div />' )
 					.addClass( 'wikiEditor-tab-edit' )
@@ -179,6 +180,10 @@ fn: {
 			// and override it
 			// FIXME: Don't use jQuery UI tabs, implement our own tabs
 			tabList.closest( '.ui-tabs' ).removeClass( 'ui-widget' );
+			
+			// The magic iframe doesn't like being wrapped, restore it
+			context.fn.setup();
+			context.$content.html( iframeHTML );
 		});
 	},
 	

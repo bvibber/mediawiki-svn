@@ -181,30 +181,9 @@ if ( typeof context == 'undefined' ) {
 	 * For whatever strange reason, this code needs to be within a timeout or it doesn't work - it seems to be that
 	 * the DOM manipulation to add the iframe happens asynchronously and this code that depends on it actually being
 	 * finished doesn't function on the right reference.
+	 * FIXME: The fact that this calls a function that's defined below is ugly
 	 */
-	setTimeout( function() {
-		// Setup the iframe with a basic document
-		context.$iframe[0].contentWindow.document.open();
-		context.$iframe[0].contentWindow.document.write(
-			'<html><head><title>wikiEditor</title></head><body style="margin:0;padding:0;width:100%;height:100%;">' +
-			'<pre style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;"></pre></body></html>'
-		);
-		context.$iframe[0].contentWindow.document.close();
-		// Turn the document's design mode on
-		context.$iframe[0].contentWindow.document.designMode = 'on';
-		// Get a reference to the content area of the iframe 
-		context.$content = context.$iframe.contents().find( 'body > pre' );
-		
-		/* Magic IFRAME Activation */
-		
-		// Activate the iframe, encoding the content of the textarea and copying it to the content of the iframe
-		context.$textarea.attr( 'disabled', true );
-		// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
-		// characters rather than actual HTML tags in the code editor container.
-		context.$content.text( context.$textarea.val() );
-		context.$textarea.hide();
-		context.$iframe.show();
-	}, 1 );
+	setTimeout( function() { context.fn.setup(); }, 1 );
 	
 	// Attach a submit handler to the form so that when the form is submitted the content of the iframe gets decoded and
 	// copied over to the textarea
@@ -279,6 +258,29 @@ if ( typeof context == 'undefined' ) {
 		 * compatible with those functions. The key difference is that these perform actions on a designMode iframe
 		 */
 		
+		'setup': function() {
+			// Setup the iframe with a basic document
+			context.$iframe[0].contentWindow.document.open();
+			context.$iframe[0].contentWindow.document.write(
+				'<html><head><title>wikiEditor</title></head><body style="margin:0;padding:0;width:100%;height:100%;">' +
+				'<pre style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;"></pre></body></html>'
+			);
+			context.$iframe[0].contentWindow.document.close();
+			// Turn the document's design mode on
+			context.$iframe[0].contentWindow.document.designMode = 'on';
+			// Get a reference to the content area of the iframe 
+			context.$content = context.$iframe.contents().find( 'body > pre' );
+			
+			/* Magic IFRAME Activation */
+			
+			// Activate the iframe, encoding the content of the textarea and copying it to the content of the iframe
+			context.$textarea.attr( 'disabled', true );
+			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
+			// characters rather than actual HTML tags in the code editor container.
+			context.$content.text( context.$textarea.val() );
+			context.$textarea.hide();
+			context.$iframe.show();
+		},
 		/**
 		 * Gets the complete contents of the iframe
 		 */
@@ -289,38 +291,84 @@ if ( typeof context == 'undefined' ) {
 				.html( context.$content.html().replace( /\<br\>/g, "\n" ) )
 				.text();
 		},
+		'setContents': function( options ) {
+			context.$content.text( options.contents );
+			return context.$textarea;
+		},
 		/**
 		 * Gets the currently selected text in the content
 		 */
 		'getSelection': function() {
-			var userSelection;
-			if (window.getSelection) {
-				userSelection = window.getSelection();
+			var retval;
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				retval = context.$iframe[0].contentWindow.getSelection();
+			} else if ( context.$iframe[0].contentWindow.selection ) { // should come last; Opera!
+				retval = context.$iframe[0].contentWindow.selection.createRange();
 			}
-			else if (document.selection) { // should come last; Opera!
-				userSelection = document.selection.createRange();
+			if ( retval.text ) {
+				retval = retval.text;
+			} else if ( retval.toString ) {
+				retval = retval.toString();
 			}
-			var selectedText = userSelection;
-			if (userSelection.text){
-				selectedText = userSelection.text;
-			}
-			return selectedText;
+			return retval;
 		},
 		/**
 		 * Inserts text at the begining and end of a text selection, optionally inserting text at the caret when
 		 * selection is empty.
 		 */
 		'encapsulateSelection': function( options ) {
+			// TODO: IE
+			// TODO: respect options.ownline
+			var selText = $(this).textSelection( 'getSelection' );
+			var selectAfter = false;
+			var pre = options.pre, post = options.post;
+			if ( !selText ) {
+				selText = options.peri;
+				selectAfter = true;
+			} else if ( options.replace ) {
+				selText = options.peri;
+			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
+				// Exclude ending space char
+				// FIXME: Why?
+				selText = selText.substring( 0, selText.length - 1 );
+				post += ' ';
+			}
+			
+			var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
+			if ( options.ownline ) {
+				// TODO: This'll probably break with syntax highlighting
+				if ( range.startOffset != 0 )
+					pre  = "\n" + options.pre;
+				// TODO: Will this still work with syntax highlighting?
+				if ( range.endContainer == range.commonAncestorContainer )
+					post += "\n";
+			}
+			
+			var insertText = pre + selText + post;
+			var insertLines = insertText.split( "\n" );
+			
+			range.extractContents();
+			// Insert the contents one line at a time
+			// insertNode() inserts at the beginning, so this has
+			// to happen in reverse order
+			for ( var i = insertLines.length - 1; i >= 0; i-- ) {
+				range.insertNode( document.createTextNode( insertLines[i] ) );
+				if ( i > 0 )
+					range.insertNode( document.createElement( 'br' ) );
+			}
+			
 			// ...
 			// Scroll the textarea to the inserted text
 			//?.scrollToCaretPosition();
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
 			//context.$textarea.trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+			return context.$textarea;
 		},
 		/**
 		 * Gets the position (in resolution of bytes not nessecarily characters) in a textarea
 		 */
 		'getCaretPosition': function( options ) {
+			// FIXME: Character-based functions aren't useful for the magic iframe
 			// ...
 			//reurn character position
 		},
@@ -331,6 +379,7 @@ if ( typeof context == 'undefined' ) {
 		 * @param end Character offset of selection end
 		 */
 		'setSelection': function( options ) {
+			// FIXME: Character-based functions aren't useful for the magic iframe
 			// ...
 		},
 		/**
@@ -339,6 +388,17 @@ if ( typeof context == 'undefined' ) {
 		'scrollToCaretPosition': function( options ) {
 			// ...
 			//context.$textarea.trigger( 'scrollToPosition' );
+		},
+		/**
+		 * Scroll an element to the top of the iframe
+		 * @param $element jQuery object containing an element in the iframe
+		 * @param force If true, scroll the element even if it's already visible
+		 */
+		'scrollToTop': function( $element, force ) {
+			var body = context.$content.closest( 'body' );
+			var y = $element.offset().top - context.$content.offset().top;
+			if ( force || y < body.scrollTop() || y > body.scrollTop() + body.height() )
+				body.scrollTop( y );
 		}
 	};
 }
@@ -346,7 +406,15 @@ if ( typeof context == 'undefined' ) {
 // If there was a configuration passed, it's assumed to be for the addModule
 // API call
 if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
-	context.api.addModule( context, arguments[0] );
+	// If the iframe construction isn't ready yet, defer the call
+	if ( context.$content )
+		context.api.addModule( context, arguments[0] );
+	else {
+		var args = arguments;
+		setTimeout( function() {
+			context.api.addModule( context, args[0] );
+		}, 2 );
+	}
 } else {
 	// Since javascript gives arguments as an object, we need to convert them
 	// so they can be used more easily
@@ -355,7 +423,15 @@ if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 		// Handle API calls
 		var call = arguments.shift();
 		if ( call in context.api ) {
-			context.api[call]( context, arguments[0] == undefined ? {} : arguments[0] );
+			// If the iframe construction isn't ready yet, defer the call
+			if ( context.$content )
+				context.api[call]( context, arguments[0] == undefined ? {} : arguments[0] );
+			else {
+				var args = arguments;
+				setTimeout( function() {
+					context.api[call]( context, args[0] == undefined ? {} : args[0] );
+				}, 2 );
+			}
 		}
 	}
 }

@@ -192,19 +192,14 @@ fn: {
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
-			var list = $( '<ul></ul>' );
+			var list = $( '<ul />' );
 			for ( i in structure ) {
-				var div = $( '<div></div>' )
-					.attr( 'href', '#' )
+				var div = $( '<div />' )
 					.addClass( 'section-' + structure[i].index )
-					.data( 'textbox', context.$textarea )
-					.data( 'position', structure[i].position )
-					.bind( 'mousedown', function( event ) {
-						$(this).data( 'textbox' )
-							.focus()
-							.textSelection( 'setSelection', {
-								'start': $(this).data( 'position' ) } )
-							.textSelection( 'scrollToCaretPosition', { 'force': true } );
+					.data( 'wrapper', structure[i].wrapper )
+					.mousedown( function( event ) {
+						context.fn.scrollToTop( $(this).data( 'wrapper' ) );
+						// TODO: Move cursor
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
 						event.preventDefault();
@@ -212,7 +207,7 @@ fn: {
 					.text( structure[i].text );
 				if ( structure[i].text == '' )
 					div.html( '&nbsp;' );
-				var item = $( '<li></li>' ).append( div );
+				var item = $( '<li />' ).append( div );
 				if ( structure[i].sections !== undefined ) {
 					item.append( buildList( structure[i].sections ) );
 				}
@@ -308,49 +303,36 @@ fn: {
 			}
 			return $resizeControlVertical.add( $resizeControlHorizontal );
 		}
+		
 		// Build outline from wikitext
 		var outline = [];
-		var wikitext = $.wikiEditor.fixOperaBrokenness( context.$textarea.val() );
-		var headings = wikitext.match( /^={1,6}[^=\n][^\n]*={1,6}\s*$/gm );
-		var offset = 0;
-		headings = $.makeArray( headings );
-		for ( var h = 0; h < headings.length; h++ ) {
-			text = $.trim( headings[h] );
-			// Get position of first occurence
-			var position = wikitext.indexOf( text, offset );
-			// Update offset to avoid stumbling on duplicate headings
-			if ( position >= offset ) {
-				offset = position + text.length;
-			} else if ( position == -1 ) {
-				// Not sure this is possible, or what should happen
-				continue;
+		// Traverse all text nodes in context.$content
+		var h = 0;
+		context.$content.contents().each( function() {
+			if ( this.nodeName != '#text' )
+				return;
+			var text = this.textContent;
+			var match = text.match( /^(={1,6})(.*?)\1\s*$/ );
+			if ( !match )
+				return;
+			// Wrap the header in a <div>, unless it's already wrapped
+			var div;
+			if ( $(this).parent().is( 'div' ) && $(this).parent().children().size() == 1 )
+				div = $(this)
+					.parent()
+					.addClass( 'wikiEditor-toc-header' );
+			else {
+				div = $j( '<div />' )
+					.text( text )
+					.css( 'display', 'inline' )
+					.addClass( 'wikiEditor-toc-header' );
+				this.parentNode.replaceChild( div.get( 0 ), this );
 			}
-			
-			// Detect the starting and ending heading levels
-			var startLevel = 0;
-			for ( var c = 0; c < text.length; c++ ) {
-				if ( text.charAt( c ) == '=' ) {
-					startLevel++;
-				} else {
-					break;
-				}
-			}
-			var endLevel = 0;
-			for ( var c = text.length - 1; c >= 0; c-- ) {
-				if ( text.charAt( c ) == '=' ) {
-					endLevel++;
-				} else {
-					break;
-				}
-			}
-			// Use the lowest number of =s as the actual level
-			var level = Math.min( startLevel, endLevel );
-			text = $.trim( text.substr( level, text.length - ( level * 2 ) ) );
-			// Add the heading data to the outline
-			outline[h] = { 'text': text, 'position': position, 'level': level, 'index': h + 1 };
-		}
+			outline[h] = { 'text': match[2], 'wrapper': div, 'level': match[1].length, 'index': h + 1 };
+			h++;
+		});
 		// Normalize heading levels for list creation
-		// This is based on Linker::generateTOC() so, it should behave like the
+		// This is based on Linker::generateTOC(), so it should behave like the
 		// TOC on rendered articles does - which is considdered to be correct
 		// at this point in time.
 		var lastLevel = 0;
@@ -372,7 +354,13 @@ fn: {
 		// section 0, if needed
 		var structure = buildStructure( outline );
 		if ( $( 'input[name=wpSection]' ).val() == '' ) {
-			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
+			// Add a <div> at the beginning
+			var div = $j( '<div />' )
+				.addClass( 'wikiEditor-toc-start' )
+				.hide()
+				.prependTo( context.$content );
+			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0,
+				'wrapper': div } );
 		}
 		context.modules.$toc.html( buildList( structure ) );
 
