@@ -23,12 +23,12 @@ body.rtl .wikiEditor-ui-toolbar .sections {
 	background-color: #F3F3F3;
 }
 .wikiEditor-ui-toolbar {
-	background-image: url(../images/wikiEditor/toolbar/main-base.png);
+	background-image: url(../images/wikiEditor/toolbar/base.png);
 	background-position: left top;
 	background-repeat: repeat-x;
 }
 .wikiEditor-ui-toolbar .toolbar {
-	background-image: url(../images/wikiEditor/toolbar/main-base.png);
+	background-image: url(../images/wikiEditor/toolbar/base.png);
 	background-position: left top;
 }
 body.rtl .wikiEditor-ui-toolbar .sections .section {
