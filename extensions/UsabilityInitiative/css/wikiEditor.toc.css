@@ -1,24 +1,26 @@
 /* wikiEditor toc module */
 
 .wikiEditor-ui-text {
-	border-right: solid silver 1px;
+	/*border-right: solid silver 1px;*/
 }
 body.rtl .wikiEditor-ui-text {
-	border-right: none;
-	border-left: solid silver 1px;
+	/*border-right: none;*/
+	/*border-left: solid silver 1px;*/
 }
 .wikiEditor-ui-toc {
 	/* height and width are set dynamically */
-	float: right;
+	/*float: right;*/
 	padding: 0;
 	overflow: auto;
 	overflow-x: hidden;
 }
 body.rtl .wikiEditor-ui-toc {
+	/*
 	float: left;
 	right: auto;
 	left: -1px;
 	border-left: none;
+	*/
 }
 .wikiEditor-ui-toc ul {
 	padding: 0;
@@ -29,6 +31,10 @@ body.rtl .wikiEditor-ui-toc {
 	list-style-position: outside;
 	list-style-type: none;
 	width: 100%;
+	/* Should match the toolbar */
+	background-image: url(../images/wikiEditor/toolbar/main-base.png);
+	background-position: left top;
+	background-repeat: repeat-x;
 }
 .wikiEditor-ui-toc li {
 	padding: 0;
@@ -40,6 +46,7 @@ body.rtl .wikiEditor-ui-toc {
 	margin-bottom: 0 !important;
 	margin-top: 0 !important;
 	list-style: none;
+	background-image: none;
 }
 .wikiEditor-ui-toc ul li div {
 	display: block;

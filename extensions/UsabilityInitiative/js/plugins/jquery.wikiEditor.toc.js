@@ -8,6 +8,10 @@ api: {
 	//
 },
 /**
+ * Default width of table of contents
+ */
+defaultWidth: '13em',
+/**
  * Internally used functions
  */
 fn: {
@@ -21,33 +25,29 @@ fn: {
 		if ( '$toc' in context.modules ) {
 			return;
 		}
-		context.initialWidth = $.wikiEditor.modules.toc.defaults.width;
+		/*
+		context.initialWidth = $.wikiEditor.modules.toc.defaultWidth;
 		if( wgNavigableTOCResizable ) {
 			if( !$.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) ) {
 				$.cookie(
 					'wikiEditor-' + context.instance + '-toc-width',
-					$.wikiEditor.modules.toc.defaults.width
+					$.wikiEditor.modules.toc.defaultWidth
 				);
 			} else {
 				context.initialWidth = $.cookie( 'wikiEditor-' + context.instance + '-toc-width' );
 			}
 		}
+		*/
+		
 		context.modules.$toc = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toc' )
-			.data('context', context)
-			.attr( 'id', 'wikiEditor-ui-toc' );
-		// If we ask for this later (after we insert the TOC) then in IE this measurement will be incorrect
-		var height = context.$ui.find( '.wikiEditor-ui-bottom' ).height();
-		context.$ui.find( '.wikiEditor-ui-bottom' )
+			.data( 'context', context );
+		context.$ui.find( '.wikiEditor-ui-right' )
+			.css( 'width', $.wikiEditor.modules.toc.defaultWidth )
 			.append( context.modules.$toc );
-		context.modules.$toc.height(
-			context.$ui.find( '.wikiEditor-ui-bottom' ).height()
-		);
-		// Make some css modifications to make room for the toc on the right...
-		// Perhaps this could be configurable?
-		context.modules.$toc.css( { 'width': context.initialWidth, 'marginTop': -( height ) } );
-		context.$ui.find( '.wikiEditor-ui-text' )
-			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), (context.initialWidth == "1px" ? "-1px" : context.initialWidth )  );
+		context.$ui.find( '.wikiEditor-ui-left' )
+			.css( 'width', ( context.$ui.width() - context.modules.$toc.width() - 1 ) + 'px' );
+		
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$textarea
@@ -226,7 +226,7 @@ fn: {
 			var $collapseBar = $( '<div />' )
 				.addClass( 'wikiEditor-ui-toc-collapse-open' )
 				.attr( 'id', 'wikiEditor-ui-toc-collapse' )
-				.data( 'openWidth', $.wikiEditor.modules.toc.defaults.width)
+				.data( 'openWidth', $.wikiEditor.modules.toc.defaultWidth)
 				.bind( 'mouseup', function() {
 					var $e = $(this);
 					var close = $e.hasClass( 'wikiEditor-ui-toc-collapse-open' );
@@ -304,7 +304,7 @@ fn: {
 			});
 			if( !$( '#wikiEditor-ui-toc' ).data( 'openWidth' ) ) {
 				$( '#wikiEditor-ui-toc' ).data( 'openWidth', context.initialWidth == '1px' ? 
-					$.wikiEditor.modules.toc.defaults.width : context.initialWidth );
+					$.wikiEditor.modules.toc.defaultWidth : context.initialWidth );
 			}
 			return $resizeControlVertical.add( $resizeControlHorizontal );
 		}
@@ -387,8 +387,4 @@ fn: {
 	}
 }
 
-}; 
-$.wikiEditor.modules.toc.defaults = {
-	width: "13em"
-}
-} ) ( jQuery );
+}; } ) ( jQuery );

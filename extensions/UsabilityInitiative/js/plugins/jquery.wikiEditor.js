@@ -150,14 +150,17 @@ if ( typeof context == 'undefined' ) {
 	$.wikiEditor.instances[instance] = $(this);
 	// Encapsulate the textarea with some containers for layout
 	$(this)
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ).attr( 'id', 'wikiEditor-ui' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ).attr( 'id', 'wikiEditor-ui-bottom' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ).attr( 'id', 'wikiEditor-ui-text' ) );	
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );	
 	// Get a reference to the outer container
-	context.$ui = $(this).parent().parent().parent();
+	context.$ui = $(this).parent().parent().parent().parent();
 	context.$ui.after( $( '<div style="clear:both;"></div>' ) );
-	// Attach a container in the top
-	context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ).attr( 'id', 'wikiEditor-ui-top' ) );
+	// Attach a right container
+	context.$ui.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-right' ) );
+	// Attach a top container to the left pane
+	context.$ui.find( '.wikiEditor-ui-left' ).prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
 	
 	/* Magic IFRAME Construction */
 	
@@ -168,7 +171,9 @@ if ( typeof context == 'undefined' ) {
 			'backgroundColor': 'white',
 			'width': '100%',
 			'height': context.$textarea.height(),
-			'display': 'none'
+			'display': 'none',
+			'overflow-y': 'scroll',
+			'overflow-x': 'hidden',
 		})
 		.insertAfter( context.$textarea );
 	
