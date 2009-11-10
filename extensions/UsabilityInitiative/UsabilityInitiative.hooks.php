@@ -22,16 +22,16 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/wikiEditor.css', 'version' => 5 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 7 ),
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 2 ),
-				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 14 ),
+				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 15 ),
 				array( 'src' => 'css/wikiEditor.preview.css', 'version' => 1 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 21 ),
+				array( 'src' => 'css/combined.css', 'version' => 22 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 21 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 22 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)
@@ -71,16 +71,16 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 20 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 15 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 22 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 23 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 9 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 34 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 35 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 70 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 71 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 70 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 71 ),
 			),
 		),
 	);
