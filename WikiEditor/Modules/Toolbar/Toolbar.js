@@ -154,11 +154,9 @@ $j( '#wpTextbox1' ).wikiEditor( 'addModule', {
 								action: {
 									type: 'replace',
 									options: {
-										pre: "==",
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										periRegex: /^(={1,6})(.*?)\1\s*$/,
-										periRegexReplace: "\$2",
-										post: "=="
+										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
+										periRegexReplace: "\$1==\$3==\$4"
 									}
 								}
 							},
@@ -167,11 +165,9 @@ $j( '#wpTextbox1' ).wikiEditor( 'addModule', {
 								action: {
 									type: 'replace',
 									options: {
-										pre: "===",
-										periRegex: /^(={1,6})(.*?)\1\s*$/,
-										periRegexReplace: "\$2",
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										post: "==="
+										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
+										periRegexReplace: "\$1===\$3===\$4"
 									}
 								}
 							},
@@ -180,11 +176,9 @@ $j( '#wpTextbox1' ).wikiEditor( 'addModule', {
 								action: {
 									type: 'replace',
 									options: {
-										pre: "====",
-										periRegex: /^(={1,6})(.*?)\1\s*$/,
-										periRegexReplace: "\$2",
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										post: "===="
+										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
+										periRegexReplace: "\$1====\$3====\$4"
 									}
 								}
 							},
@@ -193,11 +187,9 @@ $j( '#wpTextbox1' ).wikiEditor( 'addModule', {
 								action: {
 									type: 'replace',
 									options: {
-										pre: "=====",
-										periRegex: /^(={1,6})(.*?)\1\s*$/,
-										periRegexReplace: "\$2",
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										post: "====="
+										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
+										periRegexReplace: "\$1=====\$3=====\$4"
 									}
 								}
 							}
