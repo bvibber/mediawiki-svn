@@ -219,7 +219,7 @@ left:0;
 height:100%;
 cursor:ew-resize;
 }
-#wikiEditor-ui-toc-resize-horizontal{
+#wikiEditor-ui-toc-resize-grip{
 width:9px;
 height:16px;
 position:absolute;
