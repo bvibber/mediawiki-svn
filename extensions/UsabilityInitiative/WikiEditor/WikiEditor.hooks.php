@@ -7,10 +7,6 @@
  */
 
 class WikiEditorHooks {
-
-	static $scripts = array(
-		'raw' => array( 'src' => 'WikiEditor.js', 'version' => 1 ),
-	);
 	static $modules = array(
 		'highlight' => array(
 			'i18n' => 'WikiEditorHighlight',
@@ -346,12 +342,6 @@ class WikiEditorHooks {
 				}
 			}
 		}
-		// Prepend global script
-		$mode = $wgUsabilityInitiativeResourceMode;
-		if ( !isset( self::$scripts[$mode] ) ) {
-			$mode = 'raw';
-		}
-		array_unshift( $scripts, self::$scripts[$mode] );
 		// Add all scripts
 		foreach ( $scripts as $script ) {
 			UsabilityInitiativeHooks::addScript(
