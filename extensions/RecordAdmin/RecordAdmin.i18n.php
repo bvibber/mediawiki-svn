@@ -1746,6 +1746,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'recordadmin-alreadyexist' => 'క్షమించండి, "$1" ఇప్పటికే ఉంది!',
+	'recordadmin-badtitle' => 'తప్పు శీర్షిక!',
 	'recordadmin-buttonsearch' => 'వెతుకు',
 	'recordadmin-buttoncreate' => 'సృష్టించు',
 	'recordadmin-searchresult' => 'అన్వేషణ ఫలితాలు',

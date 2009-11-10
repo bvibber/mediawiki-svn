@@ -766,6 +766,9 @@ $3',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'latexdoc_no_text' => "'A pàgene non ge condene teste e non ge pò ccrejà DVI",
+	'latexdoc_cant_create_dir' => "Non ge se pò ccrejà 'a cartella temboranea $1",
+	'latexdoc_cant_write' => "Non ge pozze scrivere jndr'à 'u file $1",
 	'latexdoc_error' => 'Errore de LaTeX
 
 Comande: $1
@@ -775,6 +778,7 @@ Resultete: $2
 $3',
 	'latexdoc_get_dvi' => 'Pigghije DVI',
 	'latexdoc_get_pdf' => 'Pigghije PDF',
+	'latexdoc-desc' => 'Cangiamende collaborative cu le documende LaTeX',
 );
 
 /** Russian (Русский)

@@ -1267,6 +1267,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'wah-menu-stats' => 'గణాంకాలు',
 	'wah-menu-pref' => 'అభిరుచులు',
 );
 

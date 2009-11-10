@@ -587,10 +587,14 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'lua_desc' => "Estenne l'analizzatore cu 'u supporte pe blocche 'nzertate de codece [http://www.lua.org/ Lua]",
 	'lua_error' => "Errore sus 'a linee $1",
 	'lua_extension_notfound' => 'Le estenziune de Lua non ge sonde configurete',
 	'lua_interp_notfound' => "L'interprete Lua non g'a state acchiete",
 	'lua_error_internal' => 'Errore inderne',
+	'lua_overflow_recursion' => 'Limite de ricorsione raggiunde',
+	'lua_overflow_loc' => 'Numere massime de linèe de codece raggiunde',
+	'lua_overflow_time' => 'Numere massime de vote de esecuzione raggiunde',
 );
 
 /** Russian (Русский)

@@ -721,9 +721,13 @@ Komentar buźo se akle pokazaś, za tym až moderator jo jen pśeglědał.',
 );
 
 /** Spanish (Español)
+ * @author Locos epraix
  * @author Translationista
  */
 $messages['es'] = array(
+	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog' => 'Wikilog',
+	'wikilog-log-pagename' => 'Registro de acciones  de Wikilog',
 	'wikilog-log-cmt-approve' => 'comentario aprobado [[$1]]',
 	'wikilog-log-cmt-reject' => 'comentario rechazado [[$1]]',
 );
@@ -1097,6 +1101,10 @@ $messages['gsw'] = array(
 	'wikilog-item-brief-header' => ': <i><small>vu $5, us [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ wyterläse …]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|Diskussion]])',
+	'wikilog-edit-fieldset-legend' => 'Wikilog-Optione:',
+	'wikilog-edit-signpub' => 'Die Artikel unterzeichne un publiziere',
+	'wikilog-edit-signpub-tooltip' => 'Sorgt derfir, ass dää Artikel bim Spychere unterzeichnet un publiziert wird im Wikilog.
+Schalt des Chäschtli uus, wänn Du dr Artikel as Entwurf witt bhalte.',
 	'wikilog-comment-by-user' => 'Kommentar vu $1 ($2)',
 	'wikilog-comment-by-anon' => 'Kommentar vu $3 (anonym)',
 	'wikilog-comment-pending' => 'Dää Kommentar muess no zuegloo wäre.',
@@ -1493,6 +1501,10 @@ $messages['ia'] = array(
 	'wikilog-item-brief-header' => ': <i><small>per $5, de [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ continuar a leger...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussion]])',
+	'wikilog-edit-fieldset-legend' => 'Optiones de wikilog:',
+	'wikilog-edit-signpub' => 'Signar e publicar iste articulo',
+	'wikilog-edit-signpub-tooltip' => 'Face que iste articulo es signate e publicate in iste wikilog al momento que illo es salveguardate.
+Dismarca iste quadrato pro retener le articulo como version provisori.',
 	'wikilog-comment-by-user' => 'Commento per $1 ($2)',
 	'wikilog-comment-by-anon' => 'Commento per $3 (anonyme)',
 	'wikilog-comment-pending' => 'Iste commento attende approbation.',
@@ -1611,6 +1623,10 @@ $messages['id'] = array(
 	'wikilog-item-brief-header' => ': <i><small>oleh $5, dari [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ lanjutkan membaca...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|bicara]])',
+	'wikilog-edit-fieldset-legend' => 'Opsi Wikilog:',
+	'wikilog-edit-signpub' => 'Tanda tangani dan terbitkan artikel ini',
+	'wikilog-edit-signpub-tooltip' => 'Menyebabkan artikel ini ditandatangani dan diterbitkan di wikilognya sewaktu disimpan.
+Hapus centang di kotak ini untuk tetap menandai artikel ini sebagai draf.',
 	'wikilog-comment-by-user' => 'Komentar oleh $1 ($2)',
 	'wikilog-comment-by-anon' => 'Komentar oleh $3 (anonim)',
 	'wikilog-comment-pending' => 'Komentar ini menunggu persetujuan.',
@@ -1857,6 +1873,7 @@ $messages['lb'] = array(
 	'wikilog-log-cmt-reject' => 'refuséiert Bemierkung [[$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Wikilog-Aktiounen',
+	'wikilog-information' => 'Wikilog Informatioun',
 	'wikilog-new-item' => 'Neie Wikilog-Artikel uleeën',
 	'wikilog-new-item-go' => 'Uleeën',
 	'wikilog-item-name' => 'Numm vum Artikel:',
@@ -1884,6 +1901,9 @@ $messages['lb'] = array(
 	'wikilog-pager-empty' => '(keng Objeten)',
 	'wikilog-no-comments' => 'Keng Bemierkungen',
 	'wikilog-item-more' => '[[$3|→ weiderliesen ...]]',
+	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|Diskussioun]])',
+	'wikilog-edit-fieldset-legend' => 'Optioune vu Wikilog:',
+	'wikilog-edit-signpub' => 'Dësen Artikel ënnerschreiwen a publizéieren',
 	'wikilog-comment-by-user' => 'Bemierkung vum $1 ($2)',
 	'wikilog-comment-by-anon' => 'Bemierkung vum $3 (anonym)',
 	'wikilog-comment-deleted' => 'Dës Bemierkung gouf geläscht.',
@@ -2232,7 +2252,15 @@ Lo comentari apareisserà pas qu'aprèp verificacion per un moderator.",
  */
 $messages['pdc'] = array(
 	'wikilog-authors' => 'Schreiwer',
+	'wikilog-comments' => 'Anmaerrickinge',
+	'wikilog-has-comments' => '{{PLURAL:$1|een Anmaerricking|$1 Anmaerrickinge}}',
+	'wikilog-comment-by-user' => 'Anmaerricking  vun $1 ($2)',
+	'wikilog-title-comments' => 'Anmaerrickinge - $1',
+	'wikilog-form-name' => 'Naame:',
 	'wikilog-form-author' => 'Schreiwer:',
+	'wikilog-form-tag' => 'Daag:',
+	'wikilog-form-comment' => 'Anmaerricking:',
+	'wikilog-page-lc' => 'Blatt',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2731,6 +2759,50 @@ $messages['sv'] = array(
 	'wikilog-history-lc' => 'historia',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'wikilog' => 'వికీచిట్టాలు',
+	'wikilog-specialwikilog' => 'వికీచిట్టా',
+	'wikilog-tab' => 'వికీచిట్టా',
+	'wikilog-tab-title' => 'వికీచిట్టా చర్యలు',
+	'wikilog-information' => 'వికీచిట్టా సమాచారం',
+	'wikilog-new-item-go' => 'సృష్టించు',
+	'wikilog-item-name' => 'వ్యాసపు పేరు:',
+	'wikilog-published' => 'ప్రచురితం',
+	'wikilog-authors' => 'రచయితలు',
+	'wikilog-wikilog' => 'వికీచిట్టా',
+	'wikilog-title' => 'శీర్షిక',
+	'wikilog-actions' => 'చర్యలు',
+	'wikilog-comments' => 'వ్యాఖ్యలు',
+	'wikilog-replies' => 'స్పందనలు',
+	'wikilog-view-summary' => 'సంగ్రహం',
+	'wikilog-pager-first' => '←← మొదటి',
+	'wikilog-pager-last' => 'చివరి →→',
+	'wikilog-pager-empty' => '(అంశాలు లేవు)',
+	'wikilog-no-comments' => 'వ్యాఖ్యలు లేవు',
+	'wikilog-has-comments' => '{{PLURAL:$1|ఒక వ్యాఖ్య|$1 వ్యాఖ్యలు}}',
+	'wikilog-edit-fieldset-legend' => 'వికీచిట్టా ఎంపికలు:',
+	'wikilog-title-comments' => 'వ్యాఖ్యలు - $1',
+	'wikilog-error-msg' => 'వికీచిట్టా: $1',
+	'wikilog-invalid-date' => 'తప్పుడు తేదీ: $1.',
+	'wikilog-invalid-file' => 'తప్పుడు ఫైలు: $1.',
+	'wikilog-form-wikilog' => 'వికీచిట్టా:',
+	'wikilog-form-category' => 'వర్గం:',
+	'wikilog-form-name' => 'పేరు:',
+	'wikilog-form-author' => 'రచయిత:',
+	'wikilog-form-date' => 'తేదీ:',
+	'wikilog-form-status' => 'స్థితి:',
+	'wikilog-form-preview' => 'మునుజూపు:',
+	'wikilog-form-comment' => 'వ్యాఖ్య:',
+	'wikilog-show-published' => 'ప్రచురితం',
+	'wikilog-delete-lc' => 'తొలగించు',
+	'wikilog-reject-lc' => 'తిరస్కరించు',
+	'wikilog-page-lc' => 'పేజీ',
+	'wikilog-history-lc' => 'చరిత్ర',
+);
+
 /** Turkish (Türkçe)
  * @author Manco Capac
  */
@@ -2820,5 +2892,6 @@ $messages['yi'] = array(
 	'wikilog-form-date' => 'דאטע',
 	'wikilog-form-preview' => 'פֿאראויסשטעלונג:',
 	'wikilog-preview' => 'פֿאראויסשטעלונג',
+	'wikilog-edit-lc' => 'רעדאַקטירן',
 );
 

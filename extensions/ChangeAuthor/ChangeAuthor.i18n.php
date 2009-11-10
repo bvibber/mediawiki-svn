@@ -182,6 +182,16 @@ $messages['ar'] = array(
 	'right-changeauthor' => 'تغيير مؤلف مراجعة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'changeauthor-pagename-or-revid' => 'ܫܡܐ ܕܦܐܬܐ ܐܘ ܗܝܝܘܬܐ ܕܬܢܝܬܐ:',
+	'changeauthor-pagenameform-go' => 'ܙܠ',
+	'changeauthor-changeauthors-multi' => 'ܫܚܠܦ {{PLURAL:$1|ܣܝܘܡܐ|ܣܝܘܡ̈ܐ}}',
+	'changeauthor-changeauthors-single' => 'ܫܚܠܦ ܣܝܘܡܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

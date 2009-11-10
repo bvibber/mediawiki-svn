@@ -1695,6 +1695,7 @@ Cazze sus a une de le statisteche da vedè.',
 	'prefstats-factor-week' => 'sumáne',
 	'prefstats-factor-twoweeks' => 'doje sumáne',
 	'prefstats-factor-fourweeks' => 'quattre sumáne',
+	'prefstats-factor-default' => "tuèrne a 'a scale de base",
 );
 
 /** Russian (Русский)

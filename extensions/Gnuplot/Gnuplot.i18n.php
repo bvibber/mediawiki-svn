@@ -423,6 +423,13 @@ $messages['tr'] = array(
 	'gnuplot-desc' => 'Gnuplot kullanmak için <code><nowiki><gnuplot></nowiki></code> etiketini ekler',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'gnuplot-desc' => 'Додає тег <code><nowiki><gnuplot></nowiki></code> для використання Gnuplot',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

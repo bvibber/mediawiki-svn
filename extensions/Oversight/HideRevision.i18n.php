@@ -1686,17 +1686,18 @@ Le divulgation de iste informationes pote resultar in le perdita permanente del 
  * @author Bennylin
  * @author Borgx
  * @author Irwangatot
+ * @author IvanLanin
  * @author Meursault2004
  * @author Rex
  */
 $messages['id'] = array(
 	'hiderevision' => 'Sembunyikan revisi',
-	'hiderevision-desc' => 'Menyembunyikan revisi-revisi tertentu dari semua pengguna (termasuk Opsis) atas dasar alasan hukum, dan lain-lain.',
-	'group-oversight' => 'Pengawas suntingan',
-	'group-oversight-member' => 'pengawas suntingan',
+	'hiderevision-desc' => 'Menyembunyikan revisi tertentu dari semua pengguna karena alasan hukum, dll.',
+	'group-oversight' => 'Pengawas',
+	'group-oversight-member' => 'pengawas',
 	'grouppage-oversight' => '{{ns:project}}:Pengawas',
 	'right-oversight' => 'Melihat revisi yang telah disembunyikan',
-	'right-hiderevision' => 'Menyembunyikan revisi-revisi dari opsis',
+	'right-hiderevision' => 'Menyembunyikan revisi dari penglihatan pengurus',
 	'hiderevision-prompt' => 'Nomor revisi untuk dihilangkan:',
 	'hiderevision-continue' => 'Lanjutkan',
 	'hiderevision-text' => "Ini hanya diproses '''hanya''' dalam kasus:
@@ -1708,7 +1709,7 @@ $messages['id'] = array(
 Item yang dihilangkan tidak akan dapat dilihat oleh siapapun melalui situs web,
 tetapi penghapusan akan dicatat dan dapat dikembalikan secara manual oleh seorang
 administrator basis data jika Anda membuat kesalahan.",
-	'hiderevision-reason' => 'Alasan:',
+	'hiderevision-reason' => 'Alasan (akan dicatat secara privat):',
 	'hiderevision-submit' => 'Sembunyikan data secara permanen',
 	'hiderevision-tab' => 'Sembunyikan revisi',
 	'hiderevision-link' => 'kontribusi pengguna yang disembunyikan',
@@ -1724,15 +1725,15 @@ administrator basis data jika Anda membuat kesalahan.",
 *Halaman telah dihapus
 *Revisi yang disembunyikan merupakan revisi pertama',
 	'oversight-log-hiderev' => 'menghapus sebuah suntingan dari $1',
-	'oversight' => 'Pengawas suntingan',
+	'oversight' => 'Pengawas',
 	'oversight-view' => 'rincian',
 	'oversight-difference' => '(Perbedaan dari revisi terdahulu yang ada)',
-	'oversight-prev' => 'revisi terdahulu terakhir',
+	'oversight-prev' => 'Revisi terakhir sebelumnya',
 	'oversight-hidden' => 'Revisi disembunyikan',
 	'oversight-header' => 'Di bawah ini adalah daftar revisi yang disembunyikan secara permanen dari umum.
 Menyebarkan informasi ini dapat berakibat kepada hilangnya hak pengawas.',
 	'oversight-legend' => 'Cari log penyembunyian revisi',
-	'oversight-oversighter' => 'Penyembunyi suntingan:',
+	'oversight-oversighter' => 'Pengawas:',
 	'oversight-offender' => 'Revisi penulis:',
 );
 
@@ -3614,6 +3615,7 @@ $messages['te'] = array(
 	'oversight-prev' => 'చివరి గత కూర్పు',
 	'oversight-hidden' => 'దాచిన కూర్పు',
 	'oversight-oversighter' => 'పరాకు కలిగినవారు:',
+	'oversight-offender' => 'కూర్పు రచయిత:',
 );
 
 /** Tetum (Tetun)

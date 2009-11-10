@@ -391,9 +391,9 @@ $2',
  */
 $messages['gl'] = array(
 	'userrightsnotifysubject' => 'Os membros do grupo cambiaron a $1',
-	'userrightsnotifybody' => 'Ola $1.
+	'userrightsnotifybody' => 'Ola $1:
 
-Isto é para informalo de o grupo ao que pertencía en $2 foi cambiado por $3 ao de $4.
+Isto é para informalo de que o grupo ao que pertencía en $2 foi cambiado por $3 o $4.
 
 
 Engadido: $5
@@ -1100,6 +1100,7 @@ $2',
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
@@ -1114,7 +1115,7 @@ $messages['uk'] = array(
 З повагою,
 
 $2',
-	'userrightsnotif-desc' => 'Відправляє користувачам повідомлення електронною поштою в разі зміни прав',
+	'userrightsnotif-desc' => 'Надсилає користувачам повідомлення електронною поштою в разі зміни прав',
 );
 
 /** Vèneto (Vèneto)

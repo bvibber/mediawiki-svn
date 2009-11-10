@@ -131,6 +131,13 @@ $messages['ar'] = array(
 	'right-spamregex' => 'منع عبارات السبام من خلال [[Special:SpamRegex]]',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 ܠܚܝ]) ܐܬܬܘܣܦ ܒܝܕ $5 ܒ$6 ܫܥܬܐ $7",
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

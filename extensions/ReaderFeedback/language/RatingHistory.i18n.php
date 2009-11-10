@@ -1188,6 +1188,7 @@ $messages['li'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -1201,10 +1202,25 @@ $messages['mk'] = array(
 	'ratinghistory-3months' => 'последни 3 месеци',
 	'ratinghistory-year' => 'последна година',
 	'ratinghistory-3years' => 'последни 3 години',
+	'ratinghistory-ave' => 'Просеч: $1',
+	'ratinghistory-chart' => 'Оценки од читателите низ времето',
+	'ratinghistory-purge' => 'исчисти кеш',
+	'ratinghistory-table' => 'Преглед на оценки од читателите',
 	'ratinghistory-users' => 'Корисници кои дале оценки',
 	'ratinghistory-graph' => '$2 од "$3" ($1 {{PLURAL:$1|оценка|оценки}})',
 	'ratinghistory-svg' => 'Поглед како SVG',
+	'ratinghistory-table-rating' => 'Оцена',
+	'ratinghistory-table-votes' => 'Гласови',
 	'ratinghistory-none' => 'Нема доволно податоци од оценувачите за исцртување на графиконот во овој момент.',
+	'ratinghistory-ratings' => "'''Легенда:''' '''(1)''' - Слабо; '''(2)''' - Ниско; '''(3)''' - Средно; '''(4)''' - Високо; '''(5)''' - Одлично;",
+	'ratinghistory-legend' => "'''Дневниот број на оценки''' <font color=\"red\">''(црвено)''</font>, '''просечна дневна оценка''' <font color=\"blue\">''(сино)''</font>,
+и '''тековна просечна оценка''' <font color=\"green\">''(green)''</font> се прикажани на графикот подолу, по датум.
+'''Тековна просечна оценка''' е прост просек од сите дневни оценки ''во рамките на'' овој временски период за секој ден.
+Еве ги оценките:
+
+'''(1)''' - Слабо; '''(2)''' - Ниско; '''(3)''' - Средно; '''(4)''' - Високо; '''(5)''' - Одлично;",
+	'ratinghistory-graph-scale' => "'''Бројот на оценки за еден ден''' <font color=\"red\">''(црвено)''</font> е прикажан во размер ''1:\$1''.",
+	'right-feedback' => 'Користете го образецот за повратни информации за да оцените страница',
 );
 
 /** Malayalam (മലയാളം)

@@ -2426,6 +2426,7 @@ $messages['ml'] = array(
 	'contribstats-monthly-totals' => '{{PLURAL:$1|ഈ മാസം ആകെ|കഴിഞ്ഞ $1 മാസങ്ങളിൽ ഓരോ മാസവും ആകെയുള്ളത്}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|ഒരു മാസത്തിലാകെ|$1 മാസങ്ങളിൽ ഓരോ മാസവുമാകെ}}',
 	'contribstats-currency-range-totals' => 'നാണ്യ തുക ($1 മുതൽ $2 വരെ)',
+	'contribstats-currency-totals' => '$1 സാമ്പത്തിക വർഷത്തിൽ ആകെ തുക',
 	'contribstats-day' => 'ദിവസം',
 	'contribstats-month' => 'മാസം',
 	'contribstats-currency' => 'നാണയം',

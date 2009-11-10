@@ -874,6 +874,7 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'layouts_title' => 'שאַפֿן א בלאַט',
 	'layouts_unknown' => 'אומבאַוואוסט',
 );
 

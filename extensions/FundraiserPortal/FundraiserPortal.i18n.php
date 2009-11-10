@@ -833,6 +833,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'fundraiserportal' => 'నిధులసేకరణ నెలవు',
 	'fundraiserportal-plain-button' => 'వికీపీడియాకి తోడ్పడండి!',
 	'fundraiserportal-ruby-button' => 'విరాళమివ్వండి',
 	'fundraiserportal-rubytext-button' => 'ఇప్పుడే విరాళమివ్వండి',

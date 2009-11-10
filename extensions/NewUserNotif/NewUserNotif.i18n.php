@@ -238,9 +238,9 @@ Tá cuntas úsáideora nua, $2, cruthaigh ar $3, $4.',
 $messages['gl'] = array(
 	'newusernotifsubj' => 'Notificación de novo usuario para $1',
 	'newusernotif-desc' => 'Envía unha notificación por correo electrónico cando se crean contas de usuario',
-	'newusernotifbody' => 'Ola $1,
+	'newusernotifbody' => 'Ola $1:
 
-Unha nova conta de usuario, $2, foi creada sobre $3 en $4.',
+Creouse unha nova conta de usuario, chamada $2, en $3 o $5 ás $6.',
 );
 
 /** Swiss German (Alemannisch)

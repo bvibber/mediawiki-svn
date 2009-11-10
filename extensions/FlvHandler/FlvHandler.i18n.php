@@ -270,3 +270,11 @@ $messages['tr'] = array(
 	'flv-long-desc' => '(Flaş Video, $1 × $2 piksel, dosya boyutu: $3)',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'flvhandler_desc' => 'Дозволяє використання флеш-відео файлів (.flv) як звичайних стандартних файлів (наприклад, <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => '(флеш-відео, $1 × $2 пікселів, розмір файлу: $3)',
+);
+

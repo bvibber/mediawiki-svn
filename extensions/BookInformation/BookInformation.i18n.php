@@ -98,6 +98,15 @@ $messages['ar'] = array(
 	'bookinfo-provider' => 'مزود البيانات: $1',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'bookinfo-result-author' => 'ܣܝܘܡܐ:',
+	'bookinfo-result-publisher' => 'ܦܪܣܢܐ:',
+	'bookinfo-result-year' => 'ܫܢܬܐ:',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

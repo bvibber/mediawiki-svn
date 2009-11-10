@@ -340,6 +340,13 @@ $messages['tl'] = array(
 	'navigationpopups-desc' => "Nagkakarga sa MediaWiki ng pangpaglilibot na mga panitik ng mga \"sulpot-litaw\" (''popup'') ni Lupin",
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'navigationpopups-desc' => 'Завантажує скрипти вистрибуючої навігації Люпіна (Lupin) у MediaWiki',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

@@ -95,6 +95,13 @@ $messages['ar'] = array(
 	'sitematrix-fishbowl' => 'التعديل محدد',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'sitematrix-language' => 'ܠܫܢܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

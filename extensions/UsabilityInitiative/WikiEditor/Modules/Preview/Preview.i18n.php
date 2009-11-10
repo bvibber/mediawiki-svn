@@ -43,15 +43,19 @@ $messages['qqq'] = array(
 	'wikieditor-preview-loading' => 'Alt text for spinner displayed while preview is being loaded
 {{Identical|Loading}}',
 	'wikieditor-preview-button-publish' => 'Button to the right of the Edit/Preview tabs that opens a dialog window that lets the user save their edit',
-	'wikieditor-preview-button-cancel' => 'Button to the right of the Edit/Preview tabs that has the same effect as the Cancel link below the edit box.
+	'wikieditor-preview-button-cancel' => 'Button to the right of the Edit/Preview tabs that has the same effect as the {{msg-mw|Cancel}} link below the edit box.
 
 {{Identical|Cancel}}',
 	'wikieditor-preview-savedialog-title' => 'Title of the dialog that opens when the user clicks the Publish button',
-	'wikieditor-preview-savedialog-summary' => 'Label for the edit summary textbox in the dialog that opens when the user clicks the Publish button',
-	'wikieditor-preview-savedialog-minor' => 'Label for the minor edit checkbox in the dialog that opens when the user clicks the Publish button',
-	'wikieditor-preview-savedialog-watch' => 'Label for the watch checkbox in the dialog that opens when the user clicks the Publish button',
+	'wikieditor-preview-savedialog-summary' => 'Label for the edit summary textbox in the dialog that opens when the user clicks the Publish button. See also {{msg-mw|Summary}}.',
+	'wikieditor-preview-savedialog-minor' => 'Label for the minor edit checkbox in the dialog that opens when the user clicks the Publish button. See also {{msg-mw|Minoredit}}',
+	'wikieditor-preview-savedialog-watch' => 'Label for the watch checkbox in the dialog that opens when the user clicks the Publish button
+
+{{Identical|Watch this page}}',
 	'wikieditor-preview-savedialog-publish' => "Button that saves the user's edit in the dialog that opens when the user clicks the Publish button",
-	'wikieditor-preview-savedialog-goback' => 'Button that closes the dialog that opens when the user clicks the Publish button',
+	'wikieditor-preview-savedialog-goback' => 'Button that closes the dialog that opens when the user clicks the Publish button
+
+{{Identical|Go back}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -82,6 +86,14 @@ $messages['be-tarask'] = array(
 	'wikieditor-preview-tab-edit' => 'Рэдагаваць',
 	'wikieditor-preview-tab-preview' => 'Папярэдні прагляд',
 	'wikieditor-preview-loading' => 'Загрузка…',
+	'wikieditor-preview-button-publish' => 'Апублікаваць',
+	'wikieditor-preview-button-cancel' => 'Адмяніць',
+	'wikieditor-preview-savedialog-title' => 'Апублікаваць у {{GRAMMAR:месны|{{SITENAME}}}}',
+	'wikieditor-preview-savedialog-summary' => 'Апісаньне рэдагаваньняў (коратка апішыце зробленыя Вамі зьмены):',
+	'wikieditor-preview-savedialog-minor' => 'Дробная праўка',
+	'wikieditor-preview-savedialog-watch' => 'Назіраць за гэтай старонкай',
+	'wikieditor-preview-savedialog-publish' => 'Апублікаваць',
+	'wikieditor-preview-savedialog-goback' => 'Вярнуцца',
 );
 
 /** Breton (Brezhoneg)
@@ -120,6 +132,14 @@ $messages['cs'] = array(
 	'wikieditor-preview-tab-edit' => 'Editace',
 	'wikieditor-preview-tab-preview' => 'Náhled',
 	'wikieditor-preview-loading' => 'Načítá se…',
+	'wikieditor-preview-button-publish' => 'Publikovat',
+	'wikieditor-preview-button-cancel' => 'Storno',
+	'wikieditor-preview-savedialog-title' => 'Publikovat do {{grammar:2sg|{{SITENAME}}}}',
+	'wikieditor-preview-savedialog-summary' => 'Shrnutí editace (stručně popište provedené změny):',
+	'wikieditor-preview-savedialog-minor' => 'Malá editace',
+	'wikieditor-preview-savedialog-watch' => 'Sledovat tuto stránku',
+	'wikieditor-preview-savedialog-publish' => 'Publikovat',
+	'wikieditor-preview-savedialog-goback' => 'Zpět',
 );
 
 /** Welsh (Cymraeg)
@@ -129,6 +149,9 @@ $messages['cy'] = array(
 	'wikieditor-preview-tab-edit' => 'Golygu',
 	'wikieditor-preview-tab-preview' => 'Rhagolwg',
 	'wikieditor-preview-loading' => "Wrthi'n llwytho...",
+	'wikieditor-preview-button-publish' => 'Cyhoeddi',
+	'wikieditor-preview-savedialog-title' => 'Cyhoeddi ar {{SITENAME}}',
+	'wikieditor-preview-savedialog-publish' => 'Cyhoedder',
 );
 
 /** German (Deutsch)
@@ -255,6 +278,14 @@ $messages['gsw'] = array(
 	'wikieditor-preview-tab-edit' => 'Bearbeite',
 	'wikieditor-preview-tab-preview' => 'Vorschau',
 	'wikieditor-preview-loading' => 'Am Lade ...',
+	'wikieditor-preview-button-publish' => 'Publiziere',
+	'wikieditor-preview-button-cancel' => 'Abbräche',
+	'wikieditor-preview-savedialog-title' => 'Uf {{SITENAME}} publiziere',
+	'wikieditor-preview-savedialog-summary' => 'Zämmefassig (churzi Bschryybig vu dr Änderige, wu du gmacht hesch):',
+	'wikieditor-preview-savedialog-minor' => 'Chleinigkeite sin gänderet wore',
+	'wikieditor-preview-savedialog-watch' => 'Die Syte beobachte',
+	'wikieditor-preview-savedialog-publish' => 'Publiziere',
+	'wikieditor-preview-savedialog-goback' => 'Zruck',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -283,6 +314,14 @@ $messages['hu'] = array(
 	'wikieditor-preview-tab-edit' => 'Szerkesztés',
 	'wikieditor-preview-tab-preview' => 'Előnézet',
 	'wikieditor-preview-loading' => 'Betöltés…',
+	'wikieditor-preview-button-publish' => 'Közzététel',
+	'wikieditor-preview-button-cancel' => 'Mégse',
+	'wikieditor-preview-savedialog-title' => 'Közzététel a(z) {{SITENAME}} wikin',
+	'wikieditor-preview-savedialog-summary' => 'Szerkesztési összefoglaló (pontosan írd le az általad végzett változtatásokat):',
+	'wikieditor-preview-savedialog-minor' => 'Apró szerkesztés',
+	'wikieditor-preview-savedialog-watch' => 'Lap figyelése',
+	'wikieditor-preview-savedialog-publish' => 'Közzététel',
+	'wikieditor-preview-savedialog-goback' => 'Vissza',
 );
 
 /** Interlingua (Interlingua)
@@ -293,6 +332,14 @@ $messages['ia'] = array(
 	'wikieditor-preview-tab-edit' => 'Modification',
 	'wikieditor-preview-tab-preview' => 'Previsualisation',
 	'wikieditor-preview-loading' => 'Cargamento...',
+	'wikieditor-preview-button-publish' => 'Publicar',
+	'wikieditor-preview-button-cancel' => 'Cancellar',
+	'wikieditor-preview-savedialog-title' => 'Publicar in {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Summario del modification (describe brevemente le cambios que tu ha facite):',
+	'wikieditor-preview-savedialog-minor' => 'Modification minor',
+	'wikieditor-preview-savedialog-watch' => 'Observar iste pagina',
+	'wikieditor-preview-savedialog-publish' => 'Publicar',
+	'wikieditor-preview-savedialog-goback' => 'Retornar',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -331,6 +378,14 @@ $messages['lb'] = array(
 	'wikieditor-preview-tab-edit' => 'Änneren',
 	'wikieditor-preview-tab-preview' => 'Kucken ouni ze späicheren',
 	'wikieditor-preview-loading' => 'Lueden...',
+	'wikieditor-preview-button-publish' => 'Verëffentlechen',
+	'wikieditor-preview-button-cancel' => 'Ofbriechen',
+	'wikieditor-preview-savedialog-title' => 'Op {{SITENAME}} verëffentlechen',
+	'wikieditor-preview-savedialog-summary' => "Resumé vun der Ännerung (beschreift kuerz d'Ännerungen déi Dir gemaach hutt):",
+	'wikieditor-preview-savedialog-minor' => 'Kleng Ännerung',
+	'wikieditor-preview-savedialog-watch' => 'Dës Säit iwwerwaachen',
+	'wikieditor-preview-savedialog-publish' => 'Verëffentlechen',
+	'wikieditor-preview-savedialog-goback' => 'Zréck goen',
 );
 
 /** Macedonian (Македонски)
@@ -341,6 +396,14 @@ $messages['mk'] = array(
 	'wikieditor-preview-tab-edit' => 'Уреди',
 	'wikieditor-preview-tab-preview' => 'Преглед',
 	'wikieditor-preview-loading' => 'Вчитувам...',
+	'wikieditor-preview-button-publish' => 'Објави',
+	'wikieditor-preview-button-cancel' => 'Откажи',
+	'wikieditor-preview-savedialog-title' => 'Објави на {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Опис на уредувањето (накратко опишете ги промените кои ги направивте):',
+	'wikieditor-preview-savedialog-minor' => 'Ситно уредување',
+	'wikieditor-preview-savedialog-watch' => 'Набљудувај ја оваа страница',
+	'wikieditor-preview-savedialog-publish' => 'Објави',
+	'wikieditor-preview-savedialog-goback' => 'Назад',
 );
 
 /** Malayalam (മലയാളം)
@@ -398,16 +461,30 @@ $messages['pms'] = array(
 	'wikieditor-preview-tab-edit' => 'Modìfica',
 	'wikieditor-preview-tab-preview' => 'Previsualisassion',
 	'wikieditor-preview-loading' => 'A caria ...',
+	'wikieditor-preview-button-publish' => 'Pùblica',
+	'wikieditor-preview-button-cancel' => 'Scancela',
+	'wikieditor-preview-savedialog-title' => 'Pùblica dzora {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => "Modìfica resumé (descriv curtament ij cambi ch'it l'has fàit)",
+	'wikieditor-preview-savedialog-minor' => 'Modìfiche pì cite',
+	'wikieditor-preview-savedialog-watch' => "Ten d'euj sta pàgina-sì",
+	'wikieditor-preview-savedialog-publish' => 'Pùblica',
+	'wikieditor-preview-savedialog-goback' => 'Torna andré',
 );
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'wikieditor-preview-preference' => 'Possibilitar antevisão lado a lado',
 	'wikieditor-preview-tab-edit' => 'Editar',
 	'wikieditor-preview-tab-preview' => 'Antevisão',
 	'wikieditor-preview-loading' => 'A carregar...',
+	'wikieditor-preview-button-publish' => 'Publicar',
+	'wikieditor-preview-button-cancel' => 'Cancelar',
+	'wikieditor-preview-savedialog-title' => 'Publicar em {{SITENAME}}',
+	'wikieditor-preview-savedialog-publish' => 'Publicar',
+	'wikieditor-preview-savedialog-goback' => 'Voltar',
 );
 
 /** Tarandíne (Tarandíne)
@@ -418,6 +495,11 @@ $messages['roa-tara'] = array(
 	'wikieditor-preview-tab-edit' => 'Cange',
 	'wikieditor-preview-tab-preview' => 'Andeprime',
 	'wikieditor-preview-loading' => 'Carecamende...',
+	'wikieditor-preview-button-publish' => 'Pubbleche',
+	'wikieditor-preview-button-cancel' => 'Annulle',
+	'wikieditor-preview-savedialog-minor' => 'Cangiamende stuèdeche',
+	'wikieditor-preview-savedialog-publish' => 'Pubbleche',
+	'wikieditor-preview-savedialog-goback' => 'Tuèrne rrete',
 );
 
 /** Russian (Русский)
@@ -444,7 +526,30 @@ $messages['ru'] = array(
 $messages['sw'] = array(
 	'wikieditor-preview-tab-edit' => 'Hariri',
 	'wikieditor-preview-tab-preview' => 'Hakikisho',
+	'wikieditor-preview-button-publish' => 'Toa',
 	'wikieditor-preview-button-cancel' => 'Batilisha',
+	'wikieditor-preview-savedialog-title' => 'Kutoa kwenye {{SITENAME}}',
+	'wikieditor-preview-savedialog-minor' => 'Badiliko dogo',
+	'wikieditor-preview-savedialog-watch' => 'Fuatilia ukurasa huu',
+	'wikieditor-preview-savedialog-publish' => 'Toa',
+	'wikieditor-preview-savedialog-goback' => 'Rudi',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'wikieditor-preview-tab-edit' => 'మార్చు',
+	'wikieditor-preview-tab-preview' => 'మునుజూపు',
+	'wikieditor-preview-loading' => 'లోడవుతోంది...',
+	'wikieditor-preview-button-publish' => 'ప్రచురించు',
+	'wikieditor-preview-button-cancel' => 'రద్దుచేయి',
+	'wikieditor-preview-savedialog-title' => '{{SITENAME}}లో ప్రచురించు',
+	'wikieditor-preview-savedialog-summary' => 'మార్పు సంగ్రహం (మీరు చేసిన మార్పులని క్లుప్తంగా వివరించండి):',
+	'wikieditor-preview-savedialog-minor' => 'చిన్న మార్పు',
+	'wikieditor-preview-savedialog-watch' => 'ఈ పేజీ మీద కన్నేసి ఉంచు',
+	'wikieditor-preview-savedialog-publish' => 'ప్రచురించు',
+	'wikieditor-preview-savedialog-goback' => 'వెనక్కి వెళ్ళు',
 );
 
 /** Turkish (Türkçe)
@@ -484,6 +589,24 @@ $messages['vec'] = array(
 	'wikieditor-preview-tab-edit' => 'Modìfega',
 	'wikieditor-preview-tab-preview' => 'Anteprima',
 	'wikieditor-preview-loading' => "So' drio cargar...",
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'wikieditor-preview-preference' => 'Cho phép so sánh cạnh nhau',
+	'wikieditor-preview-tab-edit' => 'Sửa đổi',
+	'wikieditor-preview-tab-preview' => 'Xem trước',
+	'wikieditor-preview-loading' => 'Đang tải…',
+	'wikieditor-preview-button-publish' => 'Xuất bản',
+	'wikieditor-preview-button-cancel' => 'Hủy bỏ',
+	'wikieditor-preview-savedialog-title' => 'Xuất bản tới {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Tóm lược sửa đổi (miêu tả ngắn gọn các thay đổi của bạn):',
+	'wikieditor-preview-savedialog-minor' => 'Sửa đổi nhỏ',
+	'wikieditor-preview-savedialog-watch' => 'Theo dõi trang này',
+	'wikieditor-preview-savedialog-publish' => 'Xuất bản',
+	'wikieditor-preview-savedialog-goback' => 'Trở lại',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

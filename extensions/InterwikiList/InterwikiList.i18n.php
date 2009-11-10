@@ -702,12 +702,15 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'interwikilist' => 'Список інтервікі',
 	'interwikilist-desc' => 'Додає [[Special:Interwikilist|спеціальну сторінку]] для перегляду доступних інтервікі-посилань',
 	'interwikilist-linkname' => 'Інтервікі-посилання',
 	'interwikilist-target' => 'Цільова URL-адреса',
+	'interwikilist-filter' => 'Список фільтрів',
+	'interwikilist-prefix' => 'Префікс інтервікі:',
 );
 
 /** Vèneto (Vèneto)

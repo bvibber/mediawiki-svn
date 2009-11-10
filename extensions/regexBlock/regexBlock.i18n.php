@@ -2875,6 +2875,7 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'regexblock-already-blocked' => '$1 איז שוין בלאקירט.',
 	'regexblock-form-reason' => 'אורזאַך:',
 	'regexblock-view-all' => 'אַלע',
 );

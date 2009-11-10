@@ -468,6 +468,14 @@ $messages['tr'] = array(
 	'purge' => 'Temizle',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'purge' => 'очистити',
+	'purge-desc' => 'Додає вкладку очистки на всі звичайні сторінки і обходить перевірку анонімних користувачів, що дозволяє швидко очищати кеш',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

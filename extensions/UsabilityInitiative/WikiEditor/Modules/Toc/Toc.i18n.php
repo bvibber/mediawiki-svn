@@ -227,10 +227,18 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'wikieditor-toc-preference' => 'Possibilitar tabela de conteúdo navegável',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Hamilton Abreu
+ */
+$messages['pt-br'] = array(
 	'wikieditor-toc-preference' => 'Habilita tabela de conteúdo navegável',
 );
 

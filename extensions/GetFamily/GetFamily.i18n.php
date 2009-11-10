@@ -335,6 +335,16 @@ $messages['pt-br'] = array(
 	'right-getfamily' => 'Criar um arquivo de família para o pywikipediabot',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'getfamily-desc' => "Genere 'na famigghie de file pe pywikipediabot",
+	'getfamily' => "Pigghie 'a famigghie de pywikipediabot",
+	'getfamily-interwikierror' => "Errore: configurazione de interuicchi scorrette, condatte l'amministratore locale.",
+	'right-getfamily' => "Ccreja 'na famigghie de file pe pywikipediabot",
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

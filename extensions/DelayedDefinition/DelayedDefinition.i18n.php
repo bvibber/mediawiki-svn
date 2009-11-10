@@ -301,6 +301,16 @@ $messages['pt-br'] = array(
 	'delaydef-error-redef' => 'Erro: Tentativa de redefinição de $1.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'delaydef-desc' => "Aggiunge &lt;define&gt; e &lt;display&gt; pe permettere a 'u codece de essere reposizionate",
+	'delaydef-error-missing-def' => 'Errore: \'A definizione abbesgone de &lt;display name="$1"&gt; ca no se iacchie.',
+	'delaydef-error-no-name' => 'Errore: Nisciune parametre specificate.',
+	'delaydef-error-redef' => "Errore: S'a pruvate a ridefinì $1.",
+);
+
 /** Russian (Русский)
  * @author Lockal
  */

@@ -257,10 +257,13 @@ $messages['arc'] = array(
 	'mywhitelistpages' => 'ܦܐܬܬ̈ܐ ܕܝܠܝ',
 	'whitelisttablemodifyall' => 'ܟܠ',
 	'whitelisttablemodifynone' => 'ܠܐ ܡܕܡ',
+	'whitelisttablepage' => 'ܦܐܬܐ ܕܘܝܩܝ',
 	'whitelisttableedit' => 'ܫܚܠܦ',
 	'whitelisttableview' => 'ܚܙܝ',
+	'whitelisttableremove' => 'ܠܚܝ',
 	'whitelistnewtableprocess' => 'ܥܡܠܝܬܐ',
 	'whitelistnewtablereview' => 'ܬܢܝܬܐ',
+	'whitelistpagelist' => '{{SITENAME}} ܦܐܬܬ̈ܐ ܠ$1',
 	'whitelistnever' => 'ܠܐ ܡܡܬܘܡ',
 );
 
@@ -2569,6 +2572,17 @@ Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone
 	'group-manager-member' => 'Zarządca',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ */
+$messages['pms'] = array(
+	'whitelist-desc' => "Modìfica ij përmess d'intrada dj'utent a fonsionalità limità",
+	'whitelistedit' => "Modificator dla lista bianca dj'intrade",
+	'whitelist' => 'Pàgine dle liste bianche',
+	'mywhitelistpages' => 'Mie pàgine',
+	'whitelistfor' => '<center>Anformassion corente për <b>$1</b></center>',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -3177,6 +3191,7 @@ $messages['te'] = array(
 	'whitelisttablemodifyall' => 'అన్నీ',
 	'whitelisttablemodifynone' => 'ఏదీకాదు',
 	'whitelisttablepage' => 'వికీ పేజీ',
+	'whitelisttabletype' => 'అనుమతి రకం',
 	'whitelisttableexpires' => 'కాలంచెల్లు తేదీ',
 	'whitelisttablemodby' => 'చివరగా మార్చినది',
 	'whitelisttablemodon' => 'చివరి మార్పు తేదీ',
@@ -3446,6 +3461,8 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'whitelisttablemodifyall' => 'אַלע',
 	'whitelisttablemodifynone' => 'גארנישט',
+	'whitelisttablepage' => 'וויקי בלאַט',
+	'whitelistnever' => 'קיינמאָל',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

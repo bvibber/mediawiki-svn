@@ -189,9 +189,14 @@ $messages['bs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Pill
  * @author Tbleher
  */
 $messages['de'] = array(
+	'masseditregex-matchtxt' => 'Suchen nach:',
+	'masseditregex-replacetxt' => 'Ersetzen durch:',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|Änderung|Änderungen}}',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|Seite|Seiten}} bearbeitet',
 	'masseditregex-badregex' => 'Ungültiger regulärer Ausdruck:',
 );
 
@@ -790,6 +795,14 @@ $messages['ru'] = array(
 	'masseditregex-badregex' => 'Ошибочное регулярное выражение:',
 	'masseditregex-editfailed' => 'Ошибка редактирования:',
 	'masseditregex-tooltip-execute' => 'Применить эти изменения для каждой страницы',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'masseditregex-before' => 'ముందు',
+	'masseditregex-after' => 'తర్వాత',
 );
 
 /** Veps (Vepsan kel')

@@ -121,6 +121,13 @@ $messages['ar'] = array(
 	'right-badimages' => 'تحديث قائمة الصور السيئة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'badimages-add-btn' => 'ܐܘܣܦ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

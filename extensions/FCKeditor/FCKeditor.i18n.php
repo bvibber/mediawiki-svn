@@ -1051,6 +1051,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'textrichditor' => 'సిరి కూర్పరి',
+	'prefs-fckeditor' => 'సిరి కూర్పరి',
 	'tog-riched_disable' => 'సిరి కూర్పరిని అచేతనం చేయండి',
 );
 

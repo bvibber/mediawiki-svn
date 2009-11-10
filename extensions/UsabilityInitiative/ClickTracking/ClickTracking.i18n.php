@@ -1112,6 +1112,14 @@ $messages['pt-br'] = array(
 	'ct-expert' => 'Experiente',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'ct-expert' => 'Esperte',
+	'ct-and' => 'e',
+);
+
 /** Russian (Русский)
  * @author HalanTul
  * @author Kv75
@@ -1219,6 +1227,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'ct-title' => 'సంకలిత వాడుకరి నొక్కులు',
 	'ct-event-name' => 'ఘటన పేరు',
 	'ct-total-header' => 'మొత్తం నొక్కులు',
 	'ct-start-date' => 'ప్రారంభ తేదీ (YYYYMMDD)',

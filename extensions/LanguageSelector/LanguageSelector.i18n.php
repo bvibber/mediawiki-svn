@@ -921,9 +921,12 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'languageselector' => 'Мова',
+	'languageselector-desc' => 'Вибір мови на кожній сторінці, а також для відвідувачів',
+	'languageselector-setlang' => 'встановити',
 );
 
 /** Vèneto (Vèneto)

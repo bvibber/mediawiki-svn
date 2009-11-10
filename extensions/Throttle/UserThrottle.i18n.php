@@ -400,6 +400,17 @@ Por favor, aguarde um momento e clique em 'atualizar' no seu navegador para reen
 	'acct_creation_global_soft_throttle_hit-desc' => 'Restringir a criação de utilizadores',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'acct_creation_global_soft_throttle_hit' => "'A ccrejazione de cunde utinde ha state sospese automaticamende pe quacche mumende purcé è strane ca 'nu sbuenne de richieste de ccreazione utende onne state fatte.
+Pe piacere aspitte quacche menute e pruève 'notra vote.",
+	'acct_creation_global_hard_throttle_hit' => "'A ccrejazione de cunde utinde ha state sospese automaticamende pe quacche seconde purcé ha state 'n'attacche de ''flood''.
+Pe piacere aspitte 'nu mumende e cazze 'recareche' sus a 'u browser tue pe risottomettere.",
+	'acct_creation_global_soft_throttle_hit-desc' => "Ccrejazione de l'utinde limitate",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

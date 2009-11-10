@@ -71,7 +71,7 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'templateinfo-desc' => 'Unterstitzt Vorlage, wu ihri Datestruktur iber XML-Markup definiere',
-	'templateinfo-header' => 'D XML-DEfinition fir die Vorlag isch:',
+	'templateinfo-header' => 'D XML-Definition fir die Vorlag isch:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -112,6 +112,14 @@ $messages['id'] = array(
 $messages['ja'] = array(
 	'templateinfo-desc' => '自身のデータ構造を XML マークアップで定義するテンプレートをサポートする',
 	'templateinfo-header' => 'このテンプレートの XML 定義は以下のようになっています:',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'templateinfo-desc' => 'Ongerschtöz, dat mer de Dateschtruktur vun Schablone övver en <i lang="en">XML</i> Fommaat beschrieve kann.',
+	'templateinfo-header' => 'Di Schablon met <i lang="en">XML</i> beschrevve:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -2764,6 +2764,7 @@ $1',
  */
 $messages['yi'] = array(
 	'inplace_scaler_not_enough_params' => 'נישטא גענוג פאראמעטערס',
+	'webstore_path_invalid' => 'טעקע נאמען איז אומגילטיק.',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬)

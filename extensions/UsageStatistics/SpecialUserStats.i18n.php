@@ -2240,6 +2240,17 @@ $messages['vo'] = array(
 	'usagestatistics-editpages' => 'Padastatits tefü geban: $1',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'usagestatisticstype' => 'טיפ:',
+	'usagestatisticsintervalday' => 'טאָג',
+	'usagestatisticsintervalweek' => 'וואך',
+	'usagestatisticsintervalmonth' => 'מאנאַט',
+	'usagestatisticscalselect' => 'אויסוויילן',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  */

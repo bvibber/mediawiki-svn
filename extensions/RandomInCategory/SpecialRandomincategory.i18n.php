@@ -811,6 +811,10 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'randomincategory' => "Pàggene a uecchije jndr'à categorije",
+	'randomincategory-desc' => "[[Special:Randomincategory|Pàgena speciale]] pe pigghià 'na pàgene a uecchije jndr'à categorije",
+	'randomincategory-toolbox' => 'Pàgene a uecchije',
+	'randomincategory-nocategory' => "'A categorije $1 non g'esiste o jè vacande",
 	'randomincategory-label' => 'Categorije:',
 	'randomincategory-submit' => 'Veje',
 );

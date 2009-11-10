@@ -4597,11 +4597,12 @@ Saltar verso le vista del fluxo: $2',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  * @author Kandar
  * @author Rex
  */
 $messages['id'] = array(
-	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Penyunting Metadata Editor & Pencari Media]',
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Penyunting Metadata Video & Pencari Media]',
 	'metavid' => 'Halaman MetaVid',
 	'mv_missing_stream' => 'Stream terhilang: $1',
 	'specialpages-group-mv_group' => 'Halaman istimewa MetaVidWiki',
@@ -4646,7 +4647,6 @@ $messages['id'] = array(
 	'mv_adjust_old_title_missing' => 'Halaman yang anda coba pindahkan ($1) tidak ada',
 	'mv_start_desc' => 'Waktu mulai',
 	'mv_end_desc' => 'Waktu selesai',
-	'mv_of' => '&#32;dari&#32;',
 	'mv_edit_metadata' => 'Sunting metadata',
 	'mv_advanced_edit' => 'Penyuntingan lengkap',
 	'mv_basic_edit' => 'Penyuntingan dasar',

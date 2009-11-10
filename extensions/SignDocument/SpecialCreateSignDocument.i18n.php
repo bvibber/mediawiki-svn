@@ -123,6 +123,13 @@ $messages['ar'] = array(
 هذا لا يمكن عمله مرة ثانية.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'createsigndoc-pagename' => 'ܦܐܬܐ:',
+);
+
 /** Araucanian (Mapudungun)
  * @author Remember the dot
  */

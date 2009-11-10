@@ -502,6 +502,10 @@ $messages['roa-tara'] = array(
 	'multiboilerplate-desc' => "Permette de scacchià 'na pàgene da 'ngorporà da 'na liste ca se iacchie sus a 'a maschere de cangiamende quanne ste cange le pàggene",
 	'multiboilerplate-legend' => "Scacchie 'na pàgene da 'ngorporà",
 	'multiboilerplate-submit' => 'Careche',
+	'boilerplates' => "Pàggene da 'ngorporà disponibbele",
+	'multiboilerplate-special-pagetext' => "Ste template ponne essere carecate sus a creazione de 'na pàgene. (<span class=plainlinks>[{{fullurl:Sta pàgene non g'esiste|action=edit}} demo]</span>)",
+	'multiboilerplate-special-define-in-localsettings' => "Le pàggene da 'ngorporà sonde definite jndr'à le LocalSettings.",
+	'multiboilerplate-special-define-in-interface' => "Le pàggene da 'ngorporà sonde definite jndr'à [[MediaWiki:Multiboilerplate]].",
 );
 
 /** Russian (Русский)

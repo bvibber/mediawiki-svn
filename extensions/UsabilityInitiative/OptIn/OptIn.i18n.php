@@ -4315,10 +4315,13 @@ $messages['roa-tara'] = array(
 	'optin-title-justoptedin' => "Bovegne jndr'à Beta",
 	'optin-title-feedback' => 'Segnale a Beta',
 	'optin-needlogin' => 'Tu è abbesogne de [$1 trasè] pe pruvà Beta.',
+	'optin-accept-short' => 'Facimele!',
+	'optin-deny-short' => 'No grazie',
 	'optin-submit-feedback' => "Danne 'na segnalazione",
 	'optin-survey-yes' => 'Sìne',
 	'optin-survey-no' => 'None',
 	'optin-survey-answer-whyoptout-other' => 'Otre mutive:',
+	'optin-survey-answer-browser-other' => 'Otre browser:',
 	'optin-survey-answer-changes-other' => 'Otre:',
 );
 

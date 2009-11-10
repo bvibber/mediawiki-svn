@@ -82,6 +82,14 @@ $messages['ar'] = array(
 	'security-restricttogroup' => 'الوصول إلى المحتوى مُقيّد لأعضاء "$1"',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'security-type-category' => 'ܣܕܪܐ',
+	'security-type-namespace' => 'ܚܩܠܐ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

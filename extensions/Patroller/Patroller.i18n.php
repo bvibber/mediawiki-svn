@@ -1455,6 +1455,14 @@ $messages['sh'] = array(
 	'patrol-revert' => 'Vrati',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'group-patroller' => 'මුර සංචාරකයන්',
+	'group-patroller-member' => 'මුර සංචාරකයා',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

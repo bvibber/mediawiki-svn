@@ -63,6 +63,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'imagemap_desc' => 'يسمح بخرائط صور قابلة للضغط عليها من طرف العميل باستخدام وسم <tt><nowiki><imagemap></nowiki></tt>',
@@ -76,7 +77,7 @@ $messages['ar'] = array(
 	'imagemap_no_areas' => 'خطأ: على الأقل محدد مساحة واحد يجب إعطاؤه',
 	'imagemap_invalid_coord' => 'خطأ: إحداثي غير صحيح عند السطر $1، يجب أن يكون رقما',
 	'imagemap_invalid_desc' => 'خطأ: محدد وصف غير صحيح، يجب أن يكون واحدا من: <tt>$1</tt>',
-	'imagemap_description' => 'حول هذه الصورة',
+	'imagemap_description' => 'عن هذه الصورة',
 	'imagemap_desc_types' => 'أعلى اليمين, أسفل اليمين, أسفل اليسار, أعلى اليسار, لا شيء',
 	'imagemap_poly_odd' => 'خطأ: تم العثور على مضلع بعدد فردي من الأضلاع في السطر $1',
 );

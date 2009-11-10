@@ -795,6 +795,7 @@ Lo gestionari del site es pas responsable de lor contengut.',
  */
 $messages['pdc'] = array(
 	'talkhere-talkpage' => 'Gschwetz-Blatt',
+	'talkhere-addcomment' => 'Anmaerricking dezue duh',
 );
 
 /** Polish (Polski)
