@@ -149,9 +149,11 @@ js2AddOnloadHook( function() {
 								action: {
 									type: 'replace',
 									options: {
+										pre: '==',
 										periMsg: 'edittoolbar-tool-heading-example',
-										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
-										periRegexReplace: "\$1==\$3==\$4"
+										post: '==',
+										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										regexReplace: "\$1==\$3==\$4"
 									}
 								}
 							},
@@ -160,9 +162,11 @@ js2AddOnloadHook( function() {
 								action: {
 									type: 'replace',
 									options: {
+										pre: '===',
 										periMsg: 'edittoolbar-tool-heading-example',
-										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
-										periRegexReplace: "\$1===\$3===\$4"
+										post: '===',
+										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										regexReplace: "\$1===\$3===\$4"
 									}
 								}
 							},
@@ -171,9 +175,11 @@ js2AddOnloadHook( function() {
 								action: {
 									type: 'replace',
 									options: {
+										pre: '====',
 										periMsg: 'edittoolbar-tool-heading-example',
-										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
-										periRegexReplace: "\$1====\$3====\$4"
+										post: '====',
+										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										regexReplace: "\$1====\$3====\$4"
 									}
 								}
 							},
@@ -182,9 +188,11 @@ js2AddOnloadHook( function() {
 								action: {
 									type: 'replace',
 									options: {
+										pre: '=====',
 										periMsg: 'edittoolbar-tool-heading-example',
-										periRegex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
-										periRegexReplace: "\$1=====\$3=====\$4"
+										post: '=====',
+										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										regexReplace: "\$1=====\$3=====\$4"
 									}
 								}
 							}
