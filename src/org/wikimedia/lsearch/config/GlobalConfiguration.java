@@ -122,8 +122,8 @@ public class GlobalConfiguration {
 	/** All the lang codes we encountered, used for "smart interwiki" */
 	protected HashSet<String> smartInterwikiCodes = new HashSet<String>();
 	protected boolean useSmartInterwiki = false;
-	protected int maxSearchLimit;
-	protected int maxSearchOffset; 
+	protected int maxSearchLimit = 1000;
+	protected int maxSearchOffset = 1000000; 
 	
 	/** Wether to report warnings and info */
 	protected static boolean verbose = true;
