@@ -244,7 +244,7 @@ class RegexBlockForm extends SpecialPage {
 
 		$wgOut->addHTML( '</select>&nbsp;' . wfMsg( 'regexblock-regex-filter' ) . wfMsg( 'word-separator' ) . '
 			<input type="text" name="rfilter" id="regex_filter" value="'.$this->mRegexFilter.'" />
-			<input type="submit" value="'.wfMsg( 'regexblock-view-go' ).'">
+			<input type="submit" value="'.wfMsg( 'regexblock-view-go' ).'" />
 			</form>
 		<br /><br />');
 		if ( !empty( $blockers ) ) {
