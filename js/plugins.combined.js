@@ -1454,6 +1454,7 @@ if ( typeof context == 'undefined' ) {
 	// Encapsulate the textarea with some containers for layout
 	$(this)
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-wikitext' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );	
@@ -2130,11 +2131,12 @@ fn : {
 						parts[part] = ( action.options[part] || '' )
 					}
 				}
-				if ( 'periRegex' in action.options && 'periRegexReplace' in action.options ) {
+				if ( 'regex' in action.options && 'regexReplace' in action.options ) {
 					var selection = context.$textarea.textSelection( 'getSelection' );
-					if ( selection != '' ) {
-						parts.peri = selection.replace( action.options.periRegex,
-							action.options.periRegexReplace );
+					if ( selection != '' && selection.match( action.options.regex ) ) {
+						parts.peri = selection.replace( action.options.regex,
+							action.options.regexReplace );
+						parts.pre = parts.post = '';
 					}
 				}
 				context.$textarea.textSelection( 'encapsulateSelection', $.extend( action.options,
