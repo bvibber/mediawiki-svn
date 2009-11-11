@@ -34,7 +34,7 @@ body.rtl .wikiEditor-ui-toc {
 }
 .tab-toc {
 	/* Should match the toolbar */
-	background-image: url(../images/wikiEditor/toolbar/main-base.png);
+	background-image: url(../images/wikiEditor/toolbar/base.png);
 	background-position: left top;
 	background-repeat: repeat-x;
 	height: 26px;
