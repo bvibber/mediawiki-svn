@@ -250,12 +250,18 @@ fn : {
 		if ( label ) {
 			$group.append( '<div class="label">' + label + '</div>' )
 		}
+
+		var empty = true;
 		if ( 'tools' in group ) {
 			for ( tool in group.tools ) {
-				$group.append( $.wikiEditor.modules.toolbar.fn.buildTool( context, tool, group.tools[tool] ) );
+				var tool =  $.wikiEditor.modules.toolbar.fn.buildTool( context, tool, group.tools[tool] );
+				if ( tool ) {
+					empty = false;
+					$group.append( tool );
+				}
 			}
 		}
-		return $group;
+		return empty ? null : $group;
 	},
 	buildTool : function( context, id, tool ) {
 		if ( 'filters' in tool ) {
