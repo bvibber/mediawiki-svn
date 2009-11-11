@@ -93,6 +93,7 @@ $messages['ar'] = array(
 	'ct-intermediate-header' => 'نقرات "المتوسطين"',
 	'ct-beginner-header' => 'نقرات "المبتدئين"',
 	'ct-total-header' => 'مجموع النقرات',
+	'ct-increment-by' => 'عدد الأيام التي تمثلها كل نقطة بيانات',
 	'ct-beginner' => 'مبتدئ',
 	'ct-intermediate' => 'متوسط',
 	'ct-expert' => 'خبير',

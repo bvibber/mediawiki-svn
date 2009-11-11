@@ -28,6 +28,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Fryed-peach
  * @author Lloffiwr
  * @author Mormegil
  * @author Roan Kattouw
@@ -42,7 +43,9 @@ $messages['qqq'] = array(
 {{Identical|Preview}}',
 	'wikieditor-preview-loading' => 'Alt text for spinner displayed while preview is being loaded
 {{Identical|Loading}}',
-	'wikieditor-preview-button-publish' => 'Button to the right of the Edit/Preview tabs that opens a dialog window that lets the user save their edit',
+	'wikieditor-preview-button-publish' => 'Button to the right of the Edit/Preview tabs that opens a dialog window that lets the user save their edit
+
+{{Identical|Publish}}',
 	'wikieditor-preview-button-cancel' => 'Button to the right of the Edit/Preview tabs that has the same effect as the {{msg-mw|Cancel}} link below the edit box.
 
 {{Identical|Cancel}}',
@@ -52,7 +55,9 @@ $messages['qqq'] = array(
 	'wikieditor-preview-savedialog-watch' => 'Label for the watch checkbox in the dialog that opens when the user clicks the Publish button
 
 {{Identical|Watch this page}}',
-	'wikieditor-preview-savedialog-publish' => "Button that saves the user's edit in the dialog that opens when the user clicks the Publish button",
+	'wikieditor-preview-savedialog-publish' => "Button that saves the user's edit in the dialog that opens when the user clicks the Publish button
+
+{{Identical|Publish}}",
 	'wikieditor-preview-savedialog-goback' => 'Button that closes the dialog that opens when the user clicks the Publish button
 
 {{Identical|Go back}}',
@@ -62,8 +67,17 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'wikieditor-preview-preference' => 'Wysig en voorskou langs mekaar',
 	'wikieditor-preview-tab-edit' => 'Wysig',
+	'wikieditor-preview-tab-preview' => 'Voorskou',
 	'wikieditor-preview-loading' => 'Besig om te laai...',
+	'wikieditor-preview-button-publish' => 'Publiseer',
+	'wikieditor-preview-button-cancel' => 'Kanselleer',
+	'wikieditor-preview-savedialog-title' => 'Publiseer na {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Wysigingsopsomming (beskryf kortliks wat u verander het):',
+	'wikieditor-preview-savedialog-minor' => 'Klein wysiging',
+	'wikieditor-preview-savedialog-watch' => 'Hou die bladsy dop',
+	'wikieditor-preview-savedialog-publish' => 'Publiseer',
 	'wikieditor-preview-savedialog-goback' => 'Terug',
 );
 
@@ -75,6 +89,14 @@ $messages['ar'] = array(
 	'wikieditor-preview-tab-edit' => 'حرّر',
 	'wikieditor-preview-tab-preview' => 'عاين',
 	'wikieditor-preview-loading' => 'يحمّل...',
+	'wikieditor-preview-button-publish' => 'انشر',
+	'wikieditor-preview-button-cancel' => 'ألغِ',
+	'wikieditor-preview-savedialog-title' => 'انشر في {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'ملخص التعديل (اشرح باختصار التغييرات التي قمت بها):',
+	'wikieditor-preview-savedialog-minor' => 'تعديل طفيف',
+	'wikieditor-preview-savedialog-watch' => 'راقب هذه الصفحة',
+	'wikieditor-preview-savedialog-publish' => 'انشر',
+	'wikieditor-preview-savedialog-goback' => 'ارجع',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -270,6 +292,14 @@ $messages['gl'] = array(
 	'wikieditor-preview-savedialog-goback' => 'Voltar',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'wikieditor-preview-tab-edit' => 'Μεταγράφειν',
+	'wikieditor-preview-button-cancel' => 'Ἀκυροῦν',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -368,6 +398,14 @@ $messages['ja'] = array(
 	'wikieditor-preview-tab-edit' => '編集',
 	'wikieditor-preview-tab-preview' => 'プレビュー',
 	'wikieditor-preview-loading' => '読み込み中…',
+	'wikieditor-preview-button-publish' => '投稿',
+	'wikieditor-preview-button-cancel' => '中止',
+	'wikieditor-preview-savedialog-title' => '{{SITENAME}} への投稿',
+	'wikieditor-preview-savedialog-summary' => '編集内容の要約 (あなたが為した変更を簡潔に説明してください):',
+	'wikieditor-preview-savedialog-minor' => '細部の編集',
+	'wikieditor-preview-savedialog-watch' => 'このページをウォッチする',
+	'wikieditor-preview-savedialog-publish' => '投稿',
+	'wikieditor-preview-savedialog-goback' => '戻る',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -483,6 +521,9 @@ $messages['pt'] = array(
 	'wikieditor-preview-button-publish' => 'Publicar',
 	'wikieditor-preview-button-cancel' => 'Cancelar',
 	'wikieditor-preview-savedialog-title' => 'Publicar em {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Sumário de edição (breve descrição das suas alterações):',
+	'wikieditor-preview-savedialog-minor' => 'Edição menor',
+	'wikieditor-preview-savedialog-watch' => 'Vigiar esta página',
 	'wikieditor-preview-savedialog-publish' => 'Publicar',
 	'wikieditor-preview-savedialog-goback' => 'Voltar',
 );
@@ -526,9 +567,11 @@ $messages['ru'] = array(
 $messages['sw'] = array(
 	'wikieditor-preview-tab-edit' => 'Hariri',
 	'wikieditor-preview-tab-preview' => 'Hakikisho',
+	'wikieditor-preview-loading' => 'Unapakiwa...',
 	'wikieditor-preview-button-publish' => 'Toa',
 	'wikieditor-preview-button-cancel' => 'Batilisha',
 	'wikieditor-preview-savedialog-title' => 'Kutoa kwenye {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Muhtasari ya kuhariri (ueleze kifupi mabadiliko ulioyafanya):',
 	'wikieditor-preview-savedialog-minor' => 'Badiliko dogo',
 	'wikieditor-preview-savedialog-watch' => 'Fuatilia ukurasa huu',
 	'wikieditor-preview-savedialog-publish' => 'Toa',
