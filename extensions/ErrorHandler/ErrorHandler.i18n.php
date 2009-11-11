@@ -928,10 +928,32 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'errorhandler-desc' => "Gestor d'eror për MediaWiki",
+	'errorhandler-errors' => 'Eror',
+	'errorhandler-error-fatal' => 'Eror fataj',
+	'errorhandler-error-warning' => 'Avis',
+	'errorhandler-error-parse' => 'Eror dël parser',
+	'errorhandler-error-notice' => 'Neuva',
+	'errorhandler-error-deprecated' => 'Deprecà',
+	'errorhandler-error-core-error' => 'Eror ëd la nos',
+	'errorhandler-error-core-warning' => 'Avertiment ëd la nos',
+	'errorhandler-error-compile-error' => 'Eror ëd compilassion',
+	'errorhandler-error-compile-warning' => 'Avis ëd compilassion',
+	'errorhandler-error-user-error' => "Eror ëd l'utent",
+	'errorhandler-error-user-warning' => 'Avis utent',
+	'errorhandler-error-user-notice' => 'Neuva utent',
+	'errorhandler-error-user-deprecated' => "Deprecà da l'utent",
+	'errorhandler-error-strict' => 'Standard strèit',
+	'errorhandler-error-recoverable' => 'Eror fatal ciapàbil',
+	'errorhandler-msg-text' => '$1: $2 an $3 (linia $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> an <b>$3</b> (linia <b>$4</b>)',
+	'errorhandler-trace' => 'trassa:',
+	'errorhandler-trace-line' => '$1 (linia $2): $3',
+	'errorhandler-trace-line-internal' => '[funsion anterna]: $1',
 );
 
 /** Pontic (Ποντιακά)

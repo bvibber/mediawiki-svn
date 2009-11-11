@@ -237,6 +237,13 @@ $messages['mk'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Број на скорешни настани поттикнати од IP адресата, според Project Honey Pot',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'തേൻകുട പദ്ധതിപ്രകാരം, ഐ.പി. വിലാസങ്ങൾ ഉണർത്തിവിട്ട സമീപകാല സാഹചര്യങ്ങളുടെ എണ്ണം',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

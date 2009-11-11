@@ -535,6 +535,15 @@ $messages['tl'] = array(
 	'mediafunctions-not-exist' => 'Hindi umiiral ang "$1"',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'mediafunctions-desc' => 'Функції парсеру для отримання інформації про медіа-файли',
+	'mediafunctions-invalid-title' => '"$1" не є коректною назвою',
+	'mediafunctions-not-exist' => '"$1" не існує',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

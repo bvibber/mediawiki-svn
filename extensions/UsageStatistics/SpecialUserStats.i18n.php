@@ -2121,6 +2121,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author A1
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'specialuserstats' => 'Статистика використання',
@@ -2128,10 +2129,14 @@ $messages['uk'] = array(
 	'usagestatistics-desc' => 'Показує індивідуальну для користувача і загальну для вікі статистику використання',
 	'usagestatisticsfor' => '<h2>Статистика використання для користувача [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Статистика використання для всіх користувачів</h2>',
-	'usagestatisticsinterval' => 'Інтервал',
+	'usagestatisticsinterval' => 'Інтервал:',
+	'usagestatisticsnamespace' => 'Простір назв:',
+	'usagestatisticsexcluderedirects' => 'Виключити перенаправлення',
+	'usagestatistics-namespace' => 'Ці статистичні дані щодо простору назв [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Перенаправлення]] не беруться до уваги.',
 	'usagestatisticstype' => 'Тип',
-	'usagestatisticsstart' => 'Дата початку',
-	'usagestatisticsend' => 'Дата закінчення',
+	'usagestatisticsstart' => 'Дата початку:',
+	'usagestatisticsend' => 'Дата закінчення:',
 	'usagestatisticssubmit' => 'Згенерувати статистику',
 	'usagestatisticsnostart' => 'Будь ласка, зазначте дату початку',
 	'usagestatisticsnoend' => 'Будь ласка, зазначте дату закінчення',

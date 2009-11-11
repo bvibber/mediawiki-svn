@@ -131,11 +131,16 @@ $messages['af'] = array(
 	'qp_source_link' => 'Bron',
 	'qp_stats_link' => 'Statistieke',
 	'qp_users_link' => 'Gebruikers',
+	'qp_voice_link' => 'Gebruikersstem',
+	'qp_voice_link_inv' => 'Gebruikersstem',
 	'qp_user_polls_link' => 'Het deelgeneem aan $1 peilings',
 	'qp_user_missing_polls_link' => 'Geen deelname',
 	'qp_not_participated_link' => 'Nie deelgeneem nie',
 	'qp_order_by_username' => 'Sorteer op gebruikersnaam',
 	'qp_order_by_polls_count' => 'Sorteer op aantal peilings',
+	'qp_results_line_qupl' => 'Bladsy "$1", peiling "$2": $3',
+	'qp_results_line_qpl' => 'Bladsy "$1", peiling "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ bladsy "$2", peiling "$3" ]',
 	'qp_export_to_xls' => 'Eksporteer statistieke na XLS-formaat',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|gebruiker|gebruikers}} het die vraag beantwoord',
 	'qp_func_no_such_poll' => 'Die peiling bestaan nie ($1)',
@@ -172,6 +177,73 @@ Om \'n peiling te stoor, stuur dit sonder dat enig voorstel beantwoord word.',
 	'qp_error_too_few_spans' => 'Vir elke kategorieklas moet daar ten minste twee moontlike antwoorde gedefinieerd wees',
 	'qp_error_no_answer' => 'Onbeantwoorde voorstel',
 	'qp_error_unique' => 'Vir die vraag van die tipe unique() is daar meer voorstelle as moontlike antwoorde gedefinieer. Dit is nie reg voorberei nie.',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'pollresults' => 'Wuslědki napšašowanjow na toś tom sedle',
+	'qp_desc' => 'Zmóžnja napóranje napšašowanjow',
+	'qp_desc-sp' => '[[Special:PollResults|Specialny bok]] za woglědowanje wuslědkow napšašowanjow',
+	'qp_result_NA' => 'Njewótgronjony',
+	'qp_result_error' => 'Syntaksowa zmólka',
+	'qp_vote_button' => 'Wótgłosowaś',
+	'qp_vote_again_button' => 'Twójo wótgłosowanje změniś',
+	'qp_polls_list' => 'Wše napšašowanja nalicyś',
+	'qp_users_list' => 'Wšych wužywarjow nalicyś',
+	'qp_browse_to_poll' => 'Dalej k $1',
+	'qp_browse_to_user' => 'Dalej k $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|głos|głosa|głose|głosow}}',
+	'qp_source_link' => 'Žrědło',
+	'qp_stats_link' => 'Statistika',
+	'qp_users_link' => 'Wužywarje',
+	'qp_voice_link' => 'Wužywarski głos',
+	'qp_voice_link_inv' => 'Wužywarski głos?',
+	'qp_user_polls_link' => 'Jo se wobźělił na $1 {{PLURAL:$1|napšašowanju|napšašowanjoma|napšašowanjach|napšašowanjach}}',
+	'qp_user_missing_polls_link' => 'Žedne wobźělenje',
+	'qp_not_participated_link' => 'Njewobźělony',
+	'qp_order_by_username' => 'Pórěd pó wužywarskem mjenju',
+	'qp_order_by_polls_count' => 'Pórěd pó licbje napšašowanjow',
+	'qp_results_line_qupl' => 'Bok "$1" napšašowanje "$2": $3',
+	'qp_results_line_qpl' => 'Bok "$1" napšašowanje "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ bok "$2" napšašowanje "$3" ]',
+	'qp_export_to_xls' => 'Statistiku do XLS-formata eksportěrowaś',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|wužywaŕ jo wótegronił|wužywarja stej wótegroniłej|wužywarje su wótegronili|wužywarjow jo wótegroniło}}',
+	'qp_func_no_such_poll' => 'Take napšašowanje njejo ($1)',
+	'qp_func_missing_question_id' => 'Pšosym pódaj eksistěrujucy ID pšašanja (zachopinajucy wót 1) za napšašowanje $1',
+	'qp_func_invalid_question_id' => 'Njepłaśiwy ID=$2 pšašanja (žedna licba) za napšašowanje $1',
+	'qp_func_missing_proposal_id' => 'Pšosym pódaj eksistěrujucy ID naraźenja (zachopinajucy wót 0) za napšašowanje $1, pšašanje $2',
+	'qp_func_invalid_proposal_id' => 'Njepłaśiwy ID=$3 naraźenja (žedna licba) za napšašowanje $1, pšašanje $2',
+	'qp_error_no_such_poll' => 'Take napšašowanje ($1) njejo.
+Zawěsć, až napšašowanje se deklarěrujo a składujo, zawěsć se teke adresowe źěleńske znamuško # wužywaś',
+	'qp_error_id_in_stats_mode' => 'Njejo móžno ID napšašowanja w statistiskem modusu deklarěrowaś',
+	'qp_error_dependance_in_stats_mode' => 'Njejo móžno rjeśak wótwisnosći napšašowanja w statistiskem modusu deklarěrowaś',
+	'qp_error_no_stats' => 'Žedne statistiske daty k dispoziciji, dokulaž nichten njejo wótgłosował za toś to napšašowanje (adresa=$1)',
+	'qp_error_address_in_decl_mode' => 'Njejo móžno adresu napšašowanja w deklaraciskem modusu dostaś',
+	'qp_error_question_not_implemented' => 'Pšašanja takego typa njejsu implementěrowane: $1',
+	'qp_error_invalid_question_type' => 'Njepłaśiwy typ pšašanja: $1',
+	'qp_error_type_in_stats_mode' => 'Typ pšašanja njedajo se w statistiskem zwobraznjeńskem modusu definěrowaś: $1',
+	'qp_error_no_poll_id' => 'Toflicka Poll njejo atribut ID definěrowana.',
+	'qp_error_invalid_poll_id' => 'Njepłaśiwy napšašowański ID (ID=$1).
+Napšašowański ID smějo jano pismiki, licby a prozne znamje wopśimjeś',
+	'qp_error_already_used_poll_id' => 'Napšašowański ID jo se južo wužył na toś tom boku (ID=$1).',
+	'qp_error_invalid_dependance_value' => 'Rjeśazk wótwisnosći napšašowanja (ID=$1) ma njepłaśiwu gódnotu atributa dependance (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'Napšašowanje (ID=$1) jo wótwisne wót drugego napšašowanja (ID=$3) z boka [[$2]], ale titel [[$2]] njejo se namakał.
+Wótpóraj pak atribut dependance pak wótnow [[$2]]',
+	'qp_error_missed_dependance_poll' => 'Napšašowanje (ID=$1) jo wótwisne wót drugego napšašowanja (ID=$3) na boku $2, ale to napšašowanje njeeksistěrujo abo njejo se doněnta składło.
+Wótpóraj pak atribut dependance pak napóraj napšašowanje z ID=$3 na boku $2 a składuj jo.
+Aby składował napšašowanje, wótpósćel jo, mimo až sy wótegronił na naraźeńske pšašanja.',
+	'qp_error_vote_dependance_poll' => 'Pšosym wótgłosuj nejpjerwjej za napšašowanje $1.',
+	'qp_error_too_many_spans' => 'Pśewjele kategorijowych klasow za pódkategorije definěrowane',
+	'qp_error_unanswered_span' => 'Pódkategorija bźez wótegrona',
+	'qp_error_non_unique_choice' => 'Toś to pšašanje trjeba jadnorazne wótegrono naraźenja',
+	'qp_error_category_name_empty' => 'Mě kategorije jo prozne',
+	'qp_error_proposal_text_empty' => 'Tekst naraźenja jo prozny',
+	'qp_error_too_few_categories' => 'Nanejmjenjej dwě kategorji musytej se definěrować',
+	'qp_error_too_few_spans' => 'Kužda kategorijowa klasa trjeba nanejmjenjej dwě móžnej wótegronje',
+	'qp_error_no_answer' => 'Naraźenje bźez wótegrona',
+	'qp_error_unique' => 'Pšašanje typa unique() ma wěcej naraźenjow ako móžne wótegrona su definěrowane: njemóžno pókšacowaś',
 );
 
 /** French (Français)
@@ -242,6 +314,38 @@ Pour enregistrer un sondage, soumettez-le en ne répondant à aucune proposition
 	'qp_error_unique' => "La question de type unique() a plus de propositions qu'il n'y a de réponses possibles définies : impossible de compléter",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'pollresults' => 'Resultados das enquisas desta páxina',
+	'qp_desc' => 'Permite a creación de enquisas',
+	'qp_desc-sp' => '[[Special:PollResults|Páxina especial]] para ollar os resultados das enquisas',
+	'qp_result_NA' => 'Sen resposta',
+	'qp_result_error' => 'Erro de sintaxe',
+	'qp_vote_button' => 'Votar',
+	'qp_vote_again_button' => 'Cambiar o seu voto',
+	'qp_polls_list' => 'Lista de todas as enquisas',
+	'qp_users_list' => 'Lista de todos os usuarios',
+	'qp_browse_to_poll' => 'Navegar ata $1',
+	'qp_browse_to_user' => 'Navegar ata $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|voto|votos}}',
+	'qp_source_link' => 'Fonte',
+	'qp_stats_link' => 'Estatísticas',
+	'qp_users_link' => 'Usuarios',
+	'qp_voice_link' => 'Voz do usuario',
+	'qp_voice_link_inv' => 'Voz do usuario?',
+	'qp_user_polls_link' => 'Participou en $1 enquisas',
+	'qp_user_missing_polls_link' => 'Non participou',
+	'qp_not_participated_link' => 'Non participou',
+	'qp_order_by_username' => 'Ordenar por nome de usuario',
+	'qp_order_by_polls_count' => 'Ordenar por número de enquisa',
+	'qp_results_line_qupl' => 'Páxina "$1", enquisa "$2": $3',
+	'qp_results_line_qpl' => 'Páxina "$1", enquisa "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Páxina "$2", enquisa "$3" ]',
+	'qp_export_to_xls' => 'Exportar as estatísticas en formato XLS',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -308,6 +412,72 @@ Go ne Abstimmig spychere due si ibertrage ohni ne Antwort gee uf irged e Vorschl
 	'qp_error_too_few_spans' => 'Fir jedi Kategorieklasse brucht s zmindescht zwo definierti Antworte',
 	'qp_error_no_answer' => 'Vorschlag ohni Antwort',
 	'qp_error_unique' => 'Fir d Frog vum Typ unique() git s meh Vorschleg wie Antworte definiert sin: cha nit abgschlosse wäre',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'pollresults' => 'Wuslědki wothłosowanjow na tutym sydle',
+	'qp_desc' => 'Zmóžnja wutworjenje wothłosowanjow',
+	'qp_desc-sp' => '[[Special:PollResults|Specialna strona]] za wobhladowanje wuslědkow wothłosowanjow',
+	'qp_result_NA' => 'Njewotmołwjeny',
+	'qp_result_error' => 'Syntaksowy zmylk',
+	'qp_vote_button' => 'Hłosować',
+	'qp_vote_again_button' => 'Twoje wothłosowanje změnić',
+	'qp_polls_list' => 'Wšě wothłosowanja nalistować',
+	'qp_users_list' => 'Wšěch wužiwarjow nalistować',
+	'qp_browse_to_poll' => 'Dale k $1',
+	'qp_browse_to_user' => 'Dale k $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|hłós|hłosaj|hłosy|hłosow}}',
+	'qp_source_link' => 'Žórło',
+	'qp_stats_link' => 'Statistika',
+	'qp_users_link' => 'Wužiwarjo',
+	'qp_voice_link' => 'Wužiwarski hłós',
+	'qp_voice_link_inv' => 'Wužiwarski hłós?',
+	'qp_user_polls_link' => 'Wobdźěli so na $1 {{PLURAL:$1|wothłosownju|wothłosowanjomaj|wothłosowanjach|wothłosowanjach}}',
+	'qp_user_missing_polls_link' => 'Žane wobdźělenje',
+	'qp_not_participated_link' => 'Njewobdźěleny',
+	'qp_order_by_username' => 'Porjad po wužiwarskim mjenje',
+	'qp_order_by_polls_count' => 'Porjad po ličbje wothłosowanjow',
+	'qp_results_line_qupl' => 'Strona "$1" wothłosowanje "$2": $3',
+	'qp_results_line_qpl' => 'Strona "$1" wothłosowanje "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ strona "$2" wothłosowanje "$3" ]',
+	'qp_export_to_xls' => 'Statistiku do XLS-formata eksportować',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} na prašenja {{PLURAL:$1|wotmołwił|wotmołwiłoj|wotmołwili|wotmołwiło}}',
+	'qp_func_no_such_poll' => 'Žane tajke wothłosowanje ($1)',
+	'qp_func_missing_question_id' => 'Prošu podaj eksistowacy prašenski ID (započinajo wot 1) za wothłosowanje $1',
+	'qp_func_invalid_question_id' => 'Njepłaćiwe prašenje id=$2 (žana ličba) za wothłosowanje $1',
+	'qp_func_missing_proposal_id' => 'Prošu podaj eksistowacy namjetowy ID (započinajo wot 0) za naprašowanje $1, prašenje $2',
+	'qp_func_invalid_proposal_id' => 'Njepłaćiwy namjet id=$3 (žana ličba) za wothłosowanje $1, prašenje $2',
+	'qp_error_no_such_poll' => 'Tajke wothłosowanje njeje ($1).
+Zawěsć, zo wothłosowanje bu deklarowane a składowane, přeswědč so, zo wužiwaš adresowe dźělatko #',
+	'qp_error_id_in_stats_mode' => 'Njeje móžno ID wothłosowanja w statistiskim modusu deklarowác',
+	'qp_error_dependance_in_stats_mode' => 'Njeje móžno wotwisnosćowy rjećazk  wothłosowanja w statistiskim modusu deklarować',
+	'qp_error_no_stats' => 'Žane statistiske daty k dispoziciji, dokelž dotal nichtó njeje za tute wothłosowanje hłosował (adresa=$1)',
+	'qp_error_address_in_decl_mode' => 'Njeje móžno adresu wothłosowanja w deklaraciskim modusu dóstać',
+	'qp_error_question_not_implemented' => 'Prašenja tutoho typa njejsu implementowane: $1',
+	'qp_error_invalid_question_type' => 'Njepłaćiwy prašenski typ: $1',
+	'qp_error_type_in_stats_mode' => 'Prašenski typ njeda so w statistiskim zwobraznjenskim modusu definować: $1',
+	'qp_error_no_poll_id' => 'Taflička Poll njeje atribut ID definował.',
+	'qp_error_invalid_poll_id' => 'Njepłaćiwy Id wothłosowanja (ID=$1).
+ID wothłosowanja smě jenož pismiki, ličby a mjezeru wobsahować',
+	'qp_error_already_used_poll_id' => 'ID wothłosowanja wužiwa so hižo na tutej stronje (ID=$1).',
+	'qp_error_invalid_dependance_value' => 'Wotwisnosćowy rjećazk wothłosowanja (id=$1) ma njepłaćiwu hódnotu atributa dependance (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'Wothłosowanje (ID=$1) je wot druheho wothłosowanja (ID=$3) ze strony [[$2]] wotwisne, ale titul [[$2]] njebu namakany. Wotstroń pak atribut dependance pak wobnow [[$2]]',
+	'qp_error_missed_dependance_poll' => 'Wothłosowanje (ID=$1) je wot druheho wothłosowanja (ID=$3) na stronje $2 wotwisne, ale te wothłosowanje njeeksistuje abo njeje so składowało.
+Wotstroń pak atribut dependance pak wutwor wothłosowanje z ID=$3 na stronje $2 a składuj jo.
+Zo by wothłosowanje składował, wotpósćel jo, bjeztoho zo by na namjetowe prašenja wotmołwił.',
+	'qp_error_vote_dependance_poll' => 'Prošu hłosuj najprjedy za wothłosowanje $1.',
+	'qp_error_too_many_spans' => 'Přewjele kategorijowych klasow za podkategorije definowane',
+	'qp_error_unanswered_span' => 'Njewotmołwjena podkategorija',
+	'qp_error_non_unique_choice' => 'Tute prašenje trjeba jónkróćnu namjetowu wotmołwu',
+	'qp_error_category_name_empty' => 'Kategorijowe mjeno je prózdne',
+	'qp_error_proposal_text_empty' => 'Namjetowy tekst je prózdny',
+	'qp_error_too_few_categories' => 'Znajmjeńša dwě kategoriji dyrbitej so definować',
+	'qp_error_too_few_spans' => 'Kóžda kategorijowa klasa trjeba znajmjeńša dwě móžnej definowanej wotmołwje',
+	'qp_error_no_answer' => 'Njewotmołwjeny namjet',
+	'qp_error_unique' => 'Prašenje typa unique() ma wjace namjetow hač su móžne wotmołwy definowane: njemóžno pokročować',
 );
 
 /** Hungarian (Magyar)
@@ -397,6 +567,33 @@ $messages['ia'] = array(
 	'qp_users_answered_questions' => 'usatores respondeva al questiones',
 	'qp_func_no_such_poll' => 'Sondage non existe ($1)',
 	'qp_func_missing_question_id' => 'Per favor specifica le ID de un question existente (a partir de 1) pro le sondage $1',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'pollresults' => 'Resultater vun der Ëmfro op dësem Site',
+	'qp_desc' => "Erlaabt et Ëmfroen z'organiséieren",
+	'qp_desc-sp' => "[[Special:PollResults|Spezialsäit]] fir d'Resultater vun der Ëmfro ze gesinn",
+	'qp_result_NA' => 'Keng Äntwert',
+	'qp_result_error' => 'Syntaxfeeler',
+	'qp_vote_button' => 'Ofstëmmen',
+	'qp_vote_again_button' => 'Ännert Är Ofstëmmung',
+	'qp_users_list' => 'All Benotzer opzielen',
+	'qp_source_link' => 'Quell',
+	'qp_stats_link' => 'Statistiken',
+	'qp_users_link' => 'Benotzer',
+	'qp_voice_link' => 'Stëmm vum Benotzer',
+	'qp_voice_link_inv' => 'Stëmm vum Benotzer?',
+	'qp_user_missing_polls_link' => 'Keng Bedeelegung',
+	'qp_not_participated_link' => 'Net matgemaach',
+	'qp_order_by_username' => 'Nom Benotzernumm zortéieren',
+	'qp_results_line_qupl' => 'Säit "$1" Ëmfro "$2": $3',
+	'qp_export_to_xls' => "Exportéiert d'Statistiken am XLS-Format",
+	'qp_func_no_such_poll' => 'Et gëtt keng esou eng Ëmfro ($1)',
+	'qp_error_category_name_empty' => 'Den Numm vun der Kategorie ass eidel',
+	'qp_error_proposal_text_empty' => 'Den Text vum Virschlag ass eidel',
 );
 
 /** Dutch (Nederlands)
@@ -544,10 +741,11 @@ $messages['te'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'qp_desc' => 'Дозволяє створювати опитування',
-	'qp_users_answered_questions' => 'На питання {{PLURAL:$1|відповів $1 користувач|відповіли $1 користувача|відповіли $1 користувачів}}',
+	'qp_users_answered_questions' => 'На питання {{PLURAL:$1|відповів $1 користувач|відповіли $1 користувачі|відповіли $1 користувачів}}',
 );
 

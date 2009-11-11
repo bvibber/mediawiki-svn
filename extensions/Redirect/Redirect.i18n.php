@@ -326,6 +326,13 @@ $messages['tl'] = array(
 	'redirect-desc' => 'Nagpapahintulot ng maginhawang pagsasaayos ng mga panturo sa [[MediaWiki:Redirect-addnewaccount|paglikha ng akawnt]] at [[MediaWiki:Redirect-userlogoutcomplete|pag-alis sa pagkakalagda]]',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'redirect-desc' => 'Дозволяє зручне налаштування перенаправлень на [[MediaWiki:Redirect-addnewaccount|створення облікових записів]] та [[MediaWiki:Redirect-userlogoutcomplete|вихід з системи]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

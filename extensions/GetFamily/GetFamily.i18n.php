@@ -373,6 +373,13 @@ $messages['te'] = array(
 	'getfamily' => 'పివైవికీపీడియాబాట్ కుటుంబాన్ని తీసుకురా',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'getfamily-desc' => 'Створення файлу family для для pywikipediabot',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

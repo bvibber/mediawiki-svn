@@ -1217,6 +1217,7 @@ $messages['ko'] = array(
 	'readerfeedback-level-3' => '높음',
 	'readerfeedback-level-4' => '우수',
 	'readerfeedback-submit' => '제출',
+	'readerfeedback-main' => '일반 문서만 평가할 수 있습니다.',
 	'readerfeedback-success' => "'''이 문서를 평가해 주셔서 감사합니다!''' ([$2 결과 보기]) ([$3 질문이나 의견이 있으신가요?])",
 	'readerfeedback-submitting' => '제출하는 중...',
 	'readerfeedback-finished' => '감사합니다!',

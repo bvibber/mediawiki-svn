@@ -2443,6 +2443,7 @@ $messages['ml'] = array(
 	'contribstats-value-over' => '$1-ൽ അധികം',
 	'contribstats-day-totals' => 'ഇന്ന് ആകെ',
 	'contribstats-week' => 'ആഴ്‌‌ച',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|ഈ ആഴ്ച ആകെ|കഴിഞ്ഞ $1 ആഴ്ചകൾ ഉൾപ്പടെ ആഴ്ചകളിലെ ആകെ തുകകൾ}}',
 	'contribstats-clicks' => 'ഞെക്കലുകൾ',
 	'contribstats-donations' => 'സംഭാവനകൾ',
 	'contribstats-template' => 'ഫലകം',
@@ -3572,6 +3573,7 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'contributionreporting-desc' => 'Поточні відомості про збір пожертвувань на користь Вікімедіі',
@@ -3607,6 +3609,15 @@ $messages['uk'] = array(
 	'contribstats-value-under' => 'Менш ніж $1',
 	'contribstats-value-from' => 'З $1 - $2',
 	'contribstats-value-over' => 'Більш ніж $1',
+	'contributiontrackingstatistics' => 'Статистика збору коштів',
+	'contribstats-day-totals' => 'Загалом на сьогодні',
+	'contribstats-week' => 'Тиждень',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Усього за цей тиждень|Щотижневі підсумки за останні $1 тижня включно}}',
+	'contribstats-clicks' => 'Кліків',
+	'contribstats-donations' => 'Пожертвування',
+	'contribstats-conversion' => 'Коефіцієнт конверсії (%)',
+	'contribstats-template' => 'Шаблон',
+	'contribstats-nodata' => 'Немає даних',
 	'fundraiserstatistics' => 'Статистика збору коштів',
 	'fundraiserstats-date' => 'Дата',
 	'fundraiserstats-day' => '$1 день збору коштів $2',

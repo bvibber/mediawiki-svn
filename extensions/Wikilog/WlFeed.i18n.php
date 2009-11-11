@@ -156,3 +156,10 @@ $messages['ru'] = array(
 	'wlfeed-desc' => 'Расширенные классы подготовки лент новостей',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'wlfeed-desc' => 'Розширені класи створення стрічок новин',
+);
+

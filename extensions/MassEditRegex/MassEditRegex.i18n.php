@@ -752,7 +752,41 @@ $messages['oc'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'masseditregex-max-preview-diffs' => 'A antevisão foi limitada {{PLURAL:$1|à primeira ocorrência comum|às primeiras $1 ocorrências comuns}}.',
+	'masseditregex' => 'Edições em massa usando expressões regulares',
+	'masseditregex-desc' => '[[Special:MassEditRegex|Página especial]] para editar múltiplas páginas numa só operação, usando expressões regulares',
+	'masseditregextext' => "Introduza uma ou várias (uma por linha) expressões regulares de busca e uma ou várias expressões de troca correspondentes.
+Cada ocorrência da primeira expressão-de-busca será substituída pela primeira expressão-de-troca e assim por diante.
+Consulte [http://php.net/manual/en/function.preg-replace.php a função PHP ''preg_replace()''] para mais detalhes.",
+	'masseditregex-pagelisttxt' => "Páginas a editar (não use um prefixo 'espaço nominal:'):",
+	'masseditregex-matchtxt' => 'Expressão-de-busca:',
+	'masseditregex-replacetxt' => 'Expressão-de-troca:',
+	'masseditregex-executebtn' => 'Executar',
+	'masseditregex-err-nopages' => 'Introduza pelo menos uma página para alterar.',
+	'masseditregex-before' => 'Antes',
+	'masseditregex-after' => 'Depois',
+	'masseditregex-max-preview-diffs' => 'A antevisão foi limitada {{PLURAL:$1|à primeira ocorrência|às primeiras $1 ocorrências}}.',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|alteração|alterações}}',
+	'masseditregex-page-not-exists' => '$1 não existe',
+	'masseditregex-num-articles-changed' => '{{PLURAL:$1|Uma página editada|$1 páginas editadas}}',
+	'masseditregex-view-full-summary' => 'Ver resumo de edição completo',
+	'masseditregex-hint-intro' => 'Seguem-se algumas dicas e exemplos para realizar operações comuns:',
+	'masseditregex-hint-headmatch' => 'Busca',
+	'masseditregex-hint-headreplace' => 'Troca',
+	'masseditregex-hint-headeffect' => 'Efeito',
+	'masseditregex-hint-toappend' => 'Adiciona algum texto ao fim da página - útil para adicionar páginas a categorias',
+	'masseditregex-hint-remove' => 'Remover um texto de todas as páginas na lista',
+	'masseditregex-hint-removecat' => "Remover todas as categorias de uma página (note o ''escape'' dos parênteses rectos no código wiki.)
+Os valores de troca não devem ter o ''escape''.",
+	'masseditregex-listtype-intro' => 'Esta é uma lista de:',
+	'masseditregex-listtype-pagenames' => 'Nomes de página (editar estas páginas)',
+	'masseditregex-listtype-pagename-prefixes' => 'Inícios dos nomes de página (editar páginas cujos nomes começam por estes caracteres)',
+	'masseditregex-listtype-categories' => 'Nomes de categoria (editar cada página nestas categorias; não é feita selecção dos espaços nominais)',
+	'masseditregex-listtype-backlinks' => 'Afluentes (editar páginas que contêm ligações para estas)',
+	'masseditregex-namespace-intro' => 'Todas estas páginas estão neste espaço nominal:',
+	'masseditregex-exprnomatch' => 'A expressão "$1" não ocorre em nenhuma página.',
+	'masseditregex-badregex' => 'Regex inválida:',
+	'masseditregex-editfailed' => 'Edição falhou:',
+	'masseditregex-tooltip-execute' => 'Aplicar estas alterações a cada página',
 );
 
 /** Russian (Русский)

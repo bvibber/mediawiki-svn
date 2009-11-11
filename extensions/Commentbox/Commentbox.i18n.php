@@ -271,6 +271,7 @@ Quere facer un comentario sobre esta páxina? Engádao aquí ou <span class="pla
 $messages['grc'] = array(
 	'commentbox-name' => 'Ὄνομα:',
 	'commentbox-first-comment-heading' => '== Σχόλια ==',
+	'commentbox-regex' => '/\\n==\\s*Σχόλια\\s*==\\s*\\n/i',
 );
 
 /** Swiss German (Alemannisch)

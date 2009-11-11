@@ -419,8 +419,10 @@ $messages['tl'] = array(
 
 /** Ukrainian (Українська)
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'tidy-desc' => 'Додає на звичайні сторінки вкладки tidy та untidy (в залежності від $wgUseTidy), які дозволяють визначати глобальне налаштування HTML tidy для одиночного перегляду',
 	'tidy' => 'Впорядкувати',
 	'untidy' => 'Розпорядкувати',
 );

@@ -641,7 +641,7 @@ $messages['ar'] = array(
 	'ow_Language' => 'اللغة',
 	'ow_LevelAnnotation' => 'هامش',
 	'ow_LinkAttributeHeader' => 'صفة الوصلة',
-	'ow_Multiple_meanings' => "معاني '$1'",
+	'ow_Multiple_meanings' => 'معاني "$1"',
 	'ow_NewExactMeaning' => 'معنى دقيق جديد',
 	'ow_OptionAttribute' => 'خاصية',
 	'ow_OptionAttributeHeader' => 'صفة الخيار',
@@ -2248,6 +2248,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
+ * @author Kipcool
  * @author Lyzzy
  * @author Ortografix
  * @author Purodha
@@ -2398,7 +2399,7 @@ Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_LevelAnnotation' => 'Annotation',
 	'ow_LinkAttributeHeader' => 'Link-Attribut',
 	'ow_Multiple_meanings' => 'Definitionen für „$1“',
-	'ow_NewExactMeaning' => 'Neue extakte Bedeutung',
+	'ow_NewExactMeaning' => 'Neue exakte Bedeutung',
 	'ow_OptionAttribute' => 'Eigenschaft',
 	'ow_OptionAttributeHeader' => 'Option-Attribut',
 	'ow_OptionAttributeOption' => 'Option',
@@ -6066,7 +6067,7 @@ $messages['ja'] = array(
 	'datasearch_search_text' => '検索文字列:',
 	'datasearch_within_words' => '語:',
 	'datasearch_within_ext_ids' => '外部識別子:',
-	'datasearch_showing_only' => '一致したもののうち最大$1{{PLURAL:$1|件}}までのみを表示しています。',
+	'datasearch_showing_only' => '一致した$2件のうち最大$1{{PLURAL:$1|件}}までのみを表示しています。',
 	'datasearch_match_ext_ids' => '<i>$1</i> に一致した外部識別子',
 	'datasearch_match_words' => '<i>$1</i> に一致した語とそれに関連付けられている意味',
 	'datasearch_match_words_lang' => '<i>$1</i> で <i>$2</i> に一致した語とそれに関連付けられた意味',
@@ -6177,7 +6178,7 @@ $messages['ja'] = array(
 	'ow_Language' => '言語',
 	'ow_LevelAnnotation' => '注釈',
 	'ow_LinkAttributeHeader' => 'リンク属性',
-	'ow_Multiple_meanings' => '複数の意味:',
+	'ow_Multiple_meanings' => '「$1」の定義',
 	'ow_NewExactMeaning' => '次の厳密な意味',
 	'ow_OptionAttribute' => '特性',
 	'ow_OptionAttributeHeader' => '選択可能属性',
@@ -6805,7 +6806,7 @@ $messages['ksh'] = array(
 	'datasearch_search_text' => 'Tex zem Söke:',
 	'datasearch_within_words' => 'En Wööter dren:',
 	'datasearch_within_ext_ids' => 'En Wööter un Ußdröck vun ußerhallef:',
-	'datasearch_showing_only' => 'Mer zeije nur {{PLURAL:$1|jenou eine|bes $1|keine}} Treffer.',
+	'datasearch_showing_only' => 'Mer zeije heh {{PLURAL:$1|{{PLURAL:$2|der einzje|jenou eine|keine}}|nur bes $1|keine}} Treffer{{PLURAL:$2||&#32;vun enßjesamp $2|, et jidd_er kein}}.',
 	'datasearch_match_ext_ids' => 'Wööter un Ußdröck vun ußerhallef, woh <i>$1</i> drop paß',
 	'datasearch_match_words' => 'Wööter, di op <i>$1</i> passe donn, un dänne ier Bedüggdeniß',
 	'datasearch_match_words_lang' => 'Wööter en <i>$1</i>, di op <i>$2</i> passe donn, un dänne ier Bedüggdeniß',
@@ -6917,7 +6918,7 @@ Don ens noh dä Webaddress loore.',
 	'ow_Language' => 'Sprooch',
 	'ow_LevelAnnotation' => 'Aanmerkung',
 	'ow_LinkAttributeHeader' => 'Lengk-Eijeschaff',
-	'ow_Multiple_meanings' => 'Ongerscheedlesch Bedüggdeniße:',
+	'ow_Multiple_meanings' => 'Bedüggdeniße vun „$1“',
 	'ow_NewExactMeaning' => 'Neu akoraat ejaale Bedüggdeneß',
 	'ow_OptionAttribute' => 'Eijeschaff als en Ußwahl',
 	'ow_OptionAttributeHeader' => 'Eijeschaff als en Ußwahl',
@@ -9326,6 +9327,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Jorge Morais
  * @author Malafaya
  * @author Waldir
@@ -9474,7 +9476,7 @@ Seleccione uma colecção a exportar. Na caixa de texto das línguas, introduza 
 	'ow_Language' => 'Língua',
 	'ow_LevelAnnotation' => 'Anotação',
 	'ow_LinkAttributeHeader' => 'Atributo da ligação',
-	'ow_Multiple_meanings' => "Definições de '$1'",
+	'ow_Multiple_meanings' => 'Definições de "$1"',
 	'ow_NewExactMeaning' => 'Novo significado exacto',
 	'ow_OptionAttribute' => 'Propriedade',
 	'ow_OptionAttributeHeader' => 'Atributo da opção',

@@ -1183,7 +1183,7 @@ Les articles supprimés ne sont plus visibles dans ce système, mais ces suppres
 	'hiderevision-reason' => 'Motif (sera enregistré séparément) :',
 	'hiderevision-submit' => 'Cacher cette révision de manière permanente',
 	'hiderevision-tab' => 'Cacher la modification',
-	'hiderevision-link' => 'Contributions cachées de l’utilisateur',
+	'hiderevision-link' => 'contributions cachées de l’utilisateur',
 	'hiderevision-norevisions' => 'Aucune modification indiquée à supprimer.',
 	'hiderevision-noreason' => 'Vous devez indiquer la raison précise de cette suppression.',
 	'hiderevision-status' => 'Modification $1 : $2',

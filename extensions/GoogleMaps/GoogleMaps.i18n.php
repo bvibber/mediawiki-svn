@@ -3996,7 +3996,7 @@ $wgGoogleMapsMessages['pl'] = array(
 	'gm-incompatible-browser' => 'Korzystanie z mapy wymaga byś używał współpracującej z nią przeglądarki.',
 	'gm-incompatible-browser-link' => 'Kliknij tutaj, by zobaczyć listę wspieranych przeglądarek.',
 	'gm-no-editor' => 'Niestety używana przez Ciebie przeglądarka internetowa nie obsługuje mechanizmu mapy interaktywnej.
-Spróbuj użyć najnowszej wersji <a href="http://www.microsoft.com/ie">Internet Explorer</a> (dla systemów Windows) or <a href="http://www.mozilla.org/products/firefox">Firefox</a> (dla systemów Windows, Mac oraz Linux).',
+Spróbuj użyć najnowszej wersji <a href="http://www.microsoft.com/ie">Internet Explorera</a> (dla systemów Windows) lub <a href="http://www.mozilla.org/products/firefox">Firefoksa</a> (dla systemów Windows, Mac oraz Linux).',
 	'gm-balloon-title' => 'Tytuł:',
 	'gm-balloon-link-article' => 'Link do tej strony (opcjonalnie):',
 	'gm-make-marker' => 'Podpis (możesz użyć składni wiki)',

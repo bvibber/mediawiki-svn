@@ -649,12 +649,15 @@ $messages['tl'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'purgecache' => 'Очистити кеш',
+	'purgecache-desc' => '[[Special:PurgeCache|Спеціальна сторінка]] для очистки таблиці OBJECTCACHE',
 	'purgecache-warning' => 'Буде здійснене очищення кеш-таблиць.',
 	'purgecache-purged' => 'Кеш було очищено.',
 	'purgecache-button' => 'Очистити',
+	'right-purgecache' => 'Очистка таблиці OBJECTCACHE',
 );
 
 /** Vietnamese (Tiếng Việt)

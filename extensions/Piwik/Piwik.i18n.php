@@ -594,6 +594,13 @@ $messages['tl'] = array(
 	'piwik-browsers' => 'Mga pantingin-tingin',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'piwik-desc' => 'Додає скрипт Piwik на сторінки MediaWiki для відстеження і [[Special:Piwik|деяку статистику]]',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

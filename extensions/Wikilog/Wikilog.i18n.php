@@ -1050,6 +1050,22 @@ O comentario non aparecerá ata que sexa revisado por un moderador.',
 	'wikilog-doc-import-comment' => 'Documentación importada do wikilog',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'wikilog-new-item-go' => 'Ποιεῖν',
+	'wikilog-actions' => 'Δράσεις',
+	'wikilog-comments' => 'Σχόλια',
+	'wikilog-view-summary' => 'Σύνοψις',
+	'wikilog-anonymous-mark' => '(Άνώνυμος)',
+	'wikilog-form-category' => 'Κατηγορία:',
+	'wikilog-form-name' => 'Ὄνομα:',
+	'wikilog-form-author' => 'Δημιουργός:',
+	'wikilog-form-comment' => 'Σχόλιον:',
+	'wikilog-edit-lc' => 'μεταγράφειν',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -1746,6 +1762,9 @@ $messages['ja'] = array(
 	'wikilog-item-brief-header' => ': <i><small>$5、[[$1|$2]]において、$6、$7。</small></i>',
 	'wikilog-item-more' => '[[$3|→ 続きを読む…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|会話]])',
+	'wikilog-edit-fieldset-legend' => 'ウィキログのオプション:',
+	'wikilog-edit-signpub' => 'この記事に署名し公開する',
+	'wikilog-edit-signpub-tooltip' => '保存時にこの記事が署名され、そのウィキログに公開されます。この記事を下書きのままにするのなら、このボックスをチェックしないでください。',
 	'wikilog-comment-by-user' => '$1 ($2) によるコメント',
 	'wikilog-comment-by-anon' => '$3 (匿名) によるコメント',
 	'wikilog-comment-pending' => 'このコメントは承認待ちです。',

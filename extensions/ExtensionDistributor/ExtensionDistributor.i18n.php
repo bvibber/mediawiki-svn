@@ -2505,12 +2505,24 @@ $messages['uk'] = array(
 	'extdist-not-configured' => 'Будь ласка, налаштуйте $wgExtDistTarDir і $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Зазначеного в налаштуваннях каталогу робочої копії не існує!',
 	'extdist-no-such-extension' => 'Розширення «$1» не знайдено',
+	'extdist-no-such-version' => 'Розширення "$1" не існує у версії "$2".',
 	'extdist-choose-extension' => 'Виберіть розширення, яке ви хочете завантажити:',
 	'extdist-wc-empty' => 'Зазначений в налаштуваннях каталог робочої копії не містить дистрибутивів розширень!',
 	'extdist-submit-extension' => 'Продовжити',
 	'extdist-current-version' => 'Версія в розробці (trunk)',
+	'extdist-choose-version' => '<big>Ви завантажуєте <b>$1</b> розширення.</big>
+
+Оберіть вашу версію MediaWiki.
+
+Більшість розширень працюють на кількох версіях MediaWiki, тому, якщо вашої версії MediaWiki тут немає, або якщо у Вас є потреба в функціях останньої версії розширення, спробуйте використати поточну версію.',
 	'extdist-no-versions' => 'Обране розширення ($1) не доступне в жодній версії!',
 	'extdist-submit-version' => 'Продовжити',
+	'extdist-no-remote' => "Не вдається зв'язатись з віддаленим клієнтом субверсії.",
+	'extdist-remote-error' => 'Помилка віддаленого клієнту субверсії: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Неприпустима відповідь від віддаленого клієнту субверсії.',
+	'extdist-svn-error' => 'Помилка субверсії: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Не вдається обробити XML з "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar повернув код помилки $1:',
 	'extdist-want-more' => 'Завантажити інше розширення',
 );
 

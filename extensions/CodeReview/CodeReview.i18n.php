@@ -4982,11 +4982,15 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'code' => 'കോഡ് സംശോധനം',
+	'code-rev-title' => 'r$1 - കോഡ് സംശോധനം',
+	'code-change-status' => "r$1-ന്റെ '''സ്ഥിതി''' മാറ്റിയിരിക്കുന്നു",
+	'code-change-tags' => "r$1-ന്റെ '''റ്റാഗുകൾ''' മാറ്റിയിരിക്കുന്നു",
 	'code-change-removed' => 'നീക്കം ചെയ്തു:',
 	'code-change-added' => 'കൂട്ടിച്ചേർത്തു:',
 	'code-old-status' => 'പഴയ സ്ഥിതി',
 	'code-new-status' => 'പുതിയ സ്ഥിതി',
 	'code-prop-changes' => 'സ്ഥിതിയുടേയും റ്റാഗിങ്ങിന്റേയും രേഖ',
+	'code-desc' => '[[Special:RepoAdmin|സബ്‌‌വേർഷൻ പിന്തുണയോടു]] കൂടിയ [[Special:Code|കോഡ് സംശോധന ഉപകരണം]]',
 	'code-no-repo' => 'റെപ്പോസിറ്ററികളൊന്നും ക്രമീകരിച്ചിട്ടില്ല!',
 	'code-load-diff' => 'വ്യത്യാസം ശേഖരിക്കുന്നു...',
 	'code-statuschanges' => 'സ്ഥിതിയിൽ വ്യത്യാസമുണ്ടായി',

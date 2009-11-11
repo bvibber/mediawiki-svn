@@ -341,10 +341,11 @@ $messages['tl'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'navigationpopups-desc' => 'Завантажує скрипти вистрибуючої навігації Люпіна (Lupin) у MediaWiki',
+	'navigationpopups-desc' => 'Завантажує навігаційні скрипти виринаючих вікон Люпіна (Lupin) у MediaWiki',
 );
 
 /** Vèneto (Vèneto)

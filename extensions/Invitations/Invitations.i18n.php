@@ -1030,6 +1030,13 @@ $messages['pl'] = array(
 	'invitations-inviteform-submit' => 'Zaproś',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'invite-logpage' => "Registr ëd j'anvit",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

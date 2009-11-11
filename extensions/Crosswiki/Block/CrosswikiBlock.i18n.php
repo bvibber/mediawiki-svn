@@ -118,6 +118,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'crosswikiblock-desc' => 'يسمح بمنع المستخدمين في ويكيات أخرى باستخدام [[Special:Crosswikiblock|صفحة خاصة]]',
@@ -137,7 +138,7 @@ $messages['ar'] = array(
 من فضلك تحقق من أنه مسموح لك بالعمل على هذه الويكي وأن أفعالك تطابق كل السياسات.',
 	'crosswikiunblock-user' => 'اسم المستخدم، عنوان الأيبي أو رقم المنع والويكي المستهدفة:',
 	'crosswikiunblock-reason' => 'السبب:',
-	'crosswikiunblock-submit' => 'رفع المنع عن هذا المستخدم',
+	'crosswikiunblock-submit' => 'ارفع المنع عن هذا المستخدم',
 	'crosswikiunblock-success' => "المستخدم '''$1''' تم رفع المنع عنه بنجاح.
 
 ارجع إلى:

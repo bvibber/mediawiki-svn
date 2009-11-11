@@ -368,6 +368,13 @@ $messages['tl'] = array(
 	'javascript-desc' => 'Nagdaragdag ng uniwiki.js sa bawat pahinang naglalaman ng kodigong JavaScript na pinagsasaluhan sa pagitan ng mga karugtong na pang-Uniwiki',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'javascript-desc' => 'Додає uniwiki.js до кожної сторінки, яка містить код JavaScript, що розподіляється між розширеннями Uniwiki',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

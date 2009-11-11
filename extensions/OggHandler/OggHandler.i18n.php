@@ -3088,10 +3088,11 @@ $messages['ts'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'ogg-desc' => 'Обробник файлів Ogg Theora і Vorbis з використанням JavaScript-програвача',
+	'ogg-desc' => 'Оброблювач файлів Ogg Theora і Vorbis з використанням JavaScript-програвача',
 	'ogg-short-audio' => 'Звуковий файл Ogg $1, $2',
 	'ogg-short-video' => 'Відео-файл Ogg $1, $2',
 	'ogg-short-general' => 'Файл Ogg $1, $2',
@@ -3106,7 +3107,7 @@ $messages['uk'] = array(
 	'ogg-play-video' => 'Відтворити відео',
 	'ogg-play-sound' => 'Відтворити звук',
 	'ogg-no-player' => 'Вибачте, ваша ситема не має необхідного програмного забезпечення для відтворення файлів. Будь ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">завантажте програвач</a>.',
-	'ogg-no-player-js' => 'На жаль, у вашій системі або відключений JavaScript, або відсутній жоден з сумісних програвачів.<br />Ви можете <a href="$1">завантажити кліп</a> або <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">завантажити програвач</a> для відтворення кліпу у Вашому браузері.',
+	'ogg-no-player-js' => 'На жаль, у вашій системі або відключений JavaScript, або немає жодного з сумісних програвачів.<br />Ви можете <a href="$1">завантажити кліп</a> або <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">завантажити програвач</a> для відтворення кліпу у Вашому браузері.',
 	'ogg-no-xiphqt' => 'Відсутній компонент XiphQT для QuickTime.
 QuickTime не може відтворювати ogg-файли без цього компонента.
 Будь ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">завантажте XiphQT</a> або оберіть інший програвач.',
