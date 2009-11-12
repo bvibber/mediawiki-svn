@@ -568,24 +568,24 @@ fn : {
 			// placeholder for drag control creation code
 			/*
 			$dragControl = $( '<div />' ).addClass( 'tab' ).attr( 'id', 'wikiEditor-ui-toc-resize-grip' )
-			.append( '<a href="#" title="Drag to resize"></a>' )
-			.bind( 'mousedown', function() {
-				$( '#wikiEditor-ui-toc' )
-				.data( 'openWidth', $( '#wikiEditor-ui-toc' ).width() );
-				$()
-				.bind( 'mousemove', context, $.wikiEditor.modules.toc.fn.drag )
-				.bind( 'mouseup', context, $.wikiEditor.modules.toc.fn.stopDrag );
-				$(context.$iframe[0].contentWindow.document)
-				.bind( 'mousemove', function() {
-					parent.top.$j().trigger("mousemove", e.pageX); 
+				.append( '<a href="#" title="Drag to resize"></a>' )
+				.mousedown( function() {
+					context.modules.$toc
+						.data( 'openWidth', $( '#wikiEditor-ui-toc' ).width() );
+					$()
+						.bind( 'mousemove', context, $.wikiEditor.modules.toc.fn.drag )
+						.bind( 'mouseup', context, $.wikiEditor.modules.toc.fn.stopDrag );
+					$( context.$iframe[0].contentWindow.document )
+						.mousemove( function() {
+							parent.top.$j().trigger( 'mousemove', e.pageX ); 
+							return false;
+						} )
+						.mouseup( function() {
+							parent.top.$j().trigger( 'mouseup' );
+							return false;
+						});
 					return false;
-				} )
-				.bind( 'mouseup', function() {
-					parent.top.$j().trigger("mouseup"); 
-					return false;
-				});
-				return false;
-			})
+				})
 			context.modules.$toolbar.append( $dragControl );
 			*/
 		}
@@ -610,8 +610,7 @@ fn : {
 		$.eachAsync( sectionQueue, {
 			'bulk' : 0,
 			'end' : function() {
-				// HACK: Opera doesn't seem to want to redraw after
-				// these bits
+				// HACK: Opera doesn't seem to want to redraw after these bits
 				// are added to the DOM, so we can just FORCE it!
 				$( 'body' ).css( 'position', 'static' );
 				$( 'body' ).css( 'position', 'relative' );
