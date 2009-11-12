@@ -12,12 +12,7 @@ EOT;
 $wgLandingPageBase = 'http://wikimediafoundation.org/wiki/Support_Wikipedia';
 $wgChaptersPageBase = 'http://wikimediafoundation.org/wiki/Global_Support';
 
-$wgChapterLandingPages = array( 'HK' => 'hk',
-				'DE' => 'de',
-			        'UK' => 'uk',
-			        'FR' => 'fr',
-			        'CH' => 'ch',
-		       ); # Which Chapters actually have landing pages
+//wgChapterLandingPages set which landing pages we know about
 
 $wgExtensionCredits['specialpage'][] = array(
         'path' => __FILE__,
@@ -33,4 +28,3 @@ $wgAutoloadClasses['SpecialGeoLite'] = $dir . 'GeoLite_body.php';
 $wgExtensionMessagesFiles['GeoLite'] = $dir . 'GeoLite.i18n.php';
 $wgSpecialPages['GeoLite'] = 'SpecialGeoLite';
 $wgSpecialPageGroups['GeoLite'] = 'contribution';
-
