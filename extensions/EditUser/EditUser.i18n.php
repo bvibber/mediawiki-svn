@@ -1129,7 +1129,15 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'edituser-desc' => 'Omogućava privilegovanim korisnicima da menjaju podešavanja drugih korisnika',
+	'edituser' => 'Izmeni korisnika',
+	'edituser-logout' => 'Izloguj korisnika',
+	'edituser-username' => 'Ime',
 	'edituser-dosearch' => 'Pretraga',
+	'edituser-nouser' => 'Željeni korisnik ne postoji',
+	'edituser-exempt' => 'Željeni korisnik ne može da bude izmenjen',
+	'right-edituser' => 'Izmeni podešavanja drugih korisnika',
+	'right-edituser-exempt' => 'Drugi ne mogu da menjaju podešavanja ovog korisnika',
 );
 
 /** Sundanese (Basa Sunda)

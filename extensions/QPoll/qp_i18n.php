@@ -112,6 +112,21 @@ To save a poll, submit it while not answering to any proposal questions.',
 	'qp_error_unique' => 'Question of type unique() has more proposals than possible answers defined: impossible to complete'
 );
 
+/** Message documentation (Message documentation)
+ * @author Fryed-peach
+ * @author Siebrand
+ */
+$messages['qqq'] = array(
+	'qp_desc' => '{{desc}}',
+	'qp_result_error' => '{{Identical|Syntax error}}',
+	'qp_vote_button' => '{{Identical|Vote}}',
+	'qp_stats_link' => '{{Identical|Statistics}}',
+	'qp_users_link' => '{{Identical|User}}',
+	'qp_voice_link_inv' => "What '?' means?",
+	'qp_user_polls_link' => 'Parameters:
+* $1 is the number of polls participated in.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -133,7 +148,7 @@ $messages['af'] = array(
 	'qp_users_link' => 'Gebruikers',
 	'qp_voice_link' => 'Gebruikersstem',
 	'qp_voice_link_inv' => 'Gebruikersstem',
-	'qp_user_polls_link' => 'Het deelgeneem aan $1 peilings',
+	'qp_user_polls_link' => 'Het aan $1 {{PLURAL:$1|peiling|peilings}} deelgeneem',
 	'qp_user_missing_polls_link' => 'Geen deelname',
 	'qp_not_participated_link' => 'Nie deelgeneem nie',
 	'qp_order_by_username' => 'Sorteer op gebruikersnaam',
@@ -177,6 +192,13 @@ Om \'n peiling te stoor, stuur dit sonder dat enig voorstel beantwoord word.',
 	'qp_error_too_few_spans' => 'Vir elke kategorieklas moet daar ten minste twee moontlike antwoorde gedefinieerd wees',
 	'qp_error_no_answer' => 'Onbeantwoorde voorstel',
 	'qp_error_unique' => 'Vir die vraag van die tipe unique() is daar meer voorstelle as moontlike antwoorde gedefinieer. Dit is nie reg voorberei nie.',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'qp_stats_link' => 'Статыстыка',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -247,7 +269,9 @@ Aby składował napšašowanje, wótpósćel jo, mimo až sy wótegronił na nar
 );
 
 /** French (Français)
+ * @author IAlex
  * @author Jean-Frédéric
+ * @author McDutchie
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
@@ -268,7 +292,7 @@ $messages['fr'] = array(
 	'qp_users_link' => 'Utilisateurs',
 	'qp_voice_link' => "Voix de l'utilisateur",
 	'qp_voice_link_inv' => "Voix de l'utilisateur ?",
-	'qp_user_polls_link' => 'A participé à $1 sondages',
+	'qp_user_polls_link' => 'A participé à $1 {{PLURAL:$1|sondage|sondages}}',
 	'qp_user_missing_polls_link' => 'Pas de participation',
 	'qp_not_participated_link' => 'Pas de participation',
 	'qp_order_by_username' => "Trier par nom d'utilisateur",
@@ -301,11 +325,11 @@ L'id sondage peut contenir uniquement des lettres, des nombres et le caractère 
 Supprimez l'attribut de dépendance, ou bien restaurez [[$2]]",
 	'qp_error_missed_dependance_poll' => "Le sondage (id=$1) est dépendant d'un autre sondage (id=$3) à la page $2, mais ce sondage n'existe pas ou n'a pas encore été enregistré.
 Supprimez l'attribut de dépendance, ou bien créez le sondage avec id=$3 à la page $2 et enregistrez-le.
-Pour enregistrer un sondage, soumettez-le en ne répondant à aucune proposition de question.",
+Pour enregistrer un sondage, soumettez-le en ne répondant à aucune question de proposition.",
 	'qp_error_vote_dependance_poll' => "Veuillez d'abord voter pour le sondage $1.",
 	'qp_error_too_many_spans' => 'Trop de classes de catégories pour les sous-catégories définies',
 	'qp_error_unanswered_span' => 'Sous-catégorie sans réponse',
-	'qp_error_non_unique_choice' => 'Cette question nécessite une proposition de réponse unique',
+	'qp_error_non_unique_choice' => 'Cette question nécessite une réponse de proposition unique',
 	'qp_error_category_name_empty' => 'Le nom de la catégorie est vide',
 	'qp_error_proposal_text_empty' => 'Le texte de la proposition est vide',
 	'qp_error_too_few_categories' => 'Au moins deux catégories doivent être définies',
@@ -335,7 +359,7 @@ $messages['gl'] = array(
 	'qp_users_link' => 'Usuarios',
 	'qp_voice_link' => 'Voz do usuario',
 	'qp_voice_link_inv' => 'Voz do usuario?',
-	'qp_user_polls_link' => 'Participou en $1 enquisas',
+	'qp_user_polls_link' => 'Participou {{PLURAL:$1|nunha enquisa|en $1 enquisas}}',
 	'qp_user_missing_polls_link' => 'Non participou',
 	'qp_not_participated_link' => 'Non participou',
 	'qp_order_by_username' => 'Ordenar por nome de usuario',
@@ -502,6 +526,9 @@ $messages['hu'] = array(
 	'qp_not_participated_link' => 'Nem vett részt',
 	'qp_order_by_username' => 'Rendezés felhasználónév szerint',
 	'qp_order_by_polls_count' => 'Rendezés a szavazások száma szerint',
+	'qp_results_line_qupl' => 'Lap: „$1”, szavazás: „$2”: $3',
+	'qp_results_line_qpl' => 'Lap: „$1”, szavazás: „$2”: $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Lap: „$2”, szavazás: „$3” ]',
 	'qp_export_to_xls' => 'Statisztikák exportálása XLS-formátumban',
 	'qp_users_answered_questions' => '$1 felhasználó válaszolt a kérdésekre',
 	'qp_func_no_such_poll' => 'Nincs ilyen szavazás ($1)',
@@ -553,20 +580,84 @@ $messages['ia'] = array(
 	'qp_vote_again_button' => 'Modificar tu voto',
 	'qp_polls_list' => 'Listar tote le sondages',
 	'qp_users_list' => 'Listar tote le usatores',
+	'qp_browse_to_poll' => 'Navigar verso $1',
+	'qp_browse_to_user' => 'Navigar verso $1',
 	'qp_votes_count' => '$1 {{PLURAL:$1|voto|votos}}',
 	'qp_source_link' => 'Origine',
 	'qp_stats_link' => 'Statisticas',
 	'qp_users_link' => 'Usatores',
 	'qp_voice_link' => 'Voce del usator',
+	'qp_voice_link_inv' => 'Voce de usator?',
 	'qp_user_polls_link' => 'Participava in $1 sondages',
 	'qp_user_missing_polls_link' => 'Nulle participation',
 	'qp_not_participated_link' => 'Non participate',
 	'qp_order_by_username' => 'Ordinar per nomine de usator',
 	'qp_order_by_polls_count' => 'Ordinar per numero de sondages',
+	'qp_results_line_qupl' => 'Pagina "$1" Sondage "$2": $3',
+	'qp_results_line_qpl' => 'Pagina "$1" Sondage "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Pagina "$2" Sondage "$3" ]',
 	'qp_export_to_xls' => 'Exportar statisticas in formato XLS',
 	'qp_users_answered_questions' => 'usatores respondeva al questiones',
 	'qp_func_no_such_poll' => 'Sondage non existe ($1)',
 	'qp_func_missing_question_id' => 'Per favor specifica le ID de un question existente (a partir de 1) pro le sondage $1',
+	'qp_func_invalid_question_id' => 'Question invalide id=$2 (non un numero) pro le sondage $1',
+	'qp_func_missing_proposal_id' => 'Per favor specifica un ID de proposition existente (a partir de 0) pro le sondage $1, question $2',
+	'qp_func_invalid_proposal_id' => 'ID de proposition invalide "$3" (non un numero) pro le sondage $1, question $2',
+	'qp_error_no_such_poll' => 'Sondage non existe ($1).
+Verifica que le sondage ha essite declarate e salveguardate, e que le character # es usate como delimitator de adresse.',
+	'qp_error_id_in_stats_mode' => 'Non pote declarar un ID del sondage in modo statistic',
+	'qp_error_dependance_in_stats_mode' => 'Non pote declarar le catena de dependentia del sondage in modo statistic',
+	'qp_error_no_stats' => 'Nulle dato statistic es disponibile, proque necuno ha ancora votate pro iste sondage (adresse=$1)',
+	'qp_error_address_in_decl_mode' => 'Non pote obtener un adresse del sondage in modo declarative',
+	'qp_error_question_not_implemented' => 'Le questiones de iste typo non es implementate: $1',
+	'qp_error_invalid_question_type' => 'Typo de question invalide: $1',
+	'qp_error_type_in_stats_mode' => 'Le typo de question non pote esser definite in modo de presentation statistic: $1',
+	'qp_error_no_poll_id' => 'Le etiquetta del sondage non ha un attributo "id" definite.',
+	'qp_error_invalid_poll_id' => 'ID de sondage invalide (id=$1).
+Le ID del sondage pote continer solmente litteras, numeros e le character de spatio.',
+	'qp_error_already_used_poll_id' => 'Le ID del sondage ha ja essite usate in iste pagina (id=$1).',
+	'qp_error_invalid_dependance_value' => 'Le catena de dependentia del sondage (id=$1) ha un valor invalide del attributo de dependentia (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'Le sondage (id=$1) depende de un altere sondage (id=$3) del pagina [[$2]], ma le titulo [[$2]] non ha essite trovate.
+O remove le attributo de dependentia, o restaura [[$2]].',
+	'qp_error_missed_dependance_poll' => 'Le sondage (id=$1) depende de un altere sondage (id=$3) al pagina $2, ma ille sondage non existe o non ha ancora essite salveguardate.
+O remove le attributo de dependentia, o crea le sondage con id=$3 al pagina $2 e salveguarda lo.
+Pro salveguardar un sondage, submitte lo sin responder a alcun question de proposition.',
+	'qp_error_vote_dependance_poll' => 'Per favor vota primo pro le sondage $1.',
+	'qp_error_too_many_spans' => 'Troppo de classes de categoria pro le subcategorias definite',
+	'qp_error_unanswered_span' => 'Subcategoria sin responsa',
+	'qp_error_non_unique_choice' => 'Iste question require un responsa de proposition unic',
+	'qp_error_category_name_empty' => 'Le nomine del categoria es vacue',
+	'qp_error_proposal_text_empty' => 'Le texto del proposition es vacue',
+	'qp_error_too_few_categories' => 'Al minus duo categorias debe esser definite',
+	'qp_error_too_few_spans' => 'Cata classe de categoria require le definition de al minus duo responsas possibile',
+	'qp_error_no_answer' => 'Proposition sin responsa',
+	'qp_error_unique' => 'Pro le question de typo unique() es definite plus propositiones que responsas possibile: non pote completar',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'pollresults' => 'このサイトでの投票結果',
+	'qp_desc' => '投票を実施できるようにする',
+	'qp_desc-sp' => '投票結果を見るための[[Special:PollResults|特別ページ]]',
+	'qp_result_NA' => '回答されていません',
+	'qp_result_error' => '構文エラー',
+	'qp_vote_button' => '投票',
+	'qp_vote_again_button' => 'あなたの票を変更',
+	'qp_polls_list' => '全投票一覧',
+	'qp_users_list' => '全利用者一覧',
+	'qp_browse_to_poll' => '$1 を閲覧',
+	'qp_browse_to_user' => '$1 を閲覧',
+	'qp_votes_count' => '$1{{PLURAL:$1|票}}',
+	'qp_stats_link' => '統計',
+	'qp_users_link' => '利用者',
+	'qp_voice_link' => '利用者の声',
+	'qp_voice_link_inv' => '利用者の声?',
+	'qp_user_missing_polls_link' => '参加なし',
+	'qp_not_participated_link' => '未参加',
+	'qp_order_by_username' => '利用者名順に整列',
+	'qp_order_by_polls_count' => '投票数順に整列',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -580,7 +671,9 @@ $messages['lb'] = array(
 	'qp_result_error' => 'Syntaxfeeler',
 	'qp_vote_button' => 'Ofstëmmen',
 	'qp_vote_again_button' => 'Ännert Är Ofstëmmung',
+	'qp_polls_list' => 'All Ëmfroe weisen',
 	'qp_users_list' => 'All Benotzer opzielen',
+	'qp_votes_count' => '$1 {{PLURAL:$1|Stëmm|Stëmmen}}',
 	'qp_source_link' => 'Quell',
 	'qp_stats_link' => 'Statistiken',
 	'qp_users_link' => 'Benotzer',
@@ -590,13 +683,17 @@ $messages['lb'] = array(
 	'qp_not_participated_link' => 'Net matgemaach',
 	'qp_order_by_username' => 'Nom Benotzernumm zortéieren',
 	'qp_results_line_qupl' => 'Säit "$1" Ëmfro "$2": $3',
+	'qp_results_line_qpl' => 'Säit "$1" Ëmfro "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Säit "$2" Ëmfro "$3" ]',
 	'qp_export_to_xls' => "Exportéiert d'Statistiken am XLS-Format",
+	'qp_users_answered_questions' => "$1 {{PLURAL:$1|Benotzer huet|Benotzer hun}} op d'Froe geäntwert",
 	'qp_func_no_such_poll' => 'Et gëtt keng esou eng Ëmfro ($1)',
 	'qp_error_category_name_empty' => 'Den Numm vun der Kategorie ass eidel',
 	'qp_error_proposal_text_empty' => 'Den Text vum Virschlag ass eidel',
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -617,7 +714,7 @@ $messages['nl'] = array(
 	'qp_users_link' => 'Gebruikers',
 	'qp_voice_link' => 'Gebruikersstem',
 	'qp_voice_link_inv' => 'Gebruikersstem?',
-	'qp_user_polls_link' => 'Heeft deelgenomen in $1 peilingen',
+	'qp_user_polls_link' => 'Heeft deelgenomen aan $1 {{PLURAL:$1|peiling|peilingen}}',
 	'qp_user_missing_polls_link' => 'Geen deelname',
 	'qp_not_participated_link' => 'Niet deelgenomen',
 	'qp_order_by_username' => 'Sorteren op gebruikersnaam',
@@ -661,7 +758,7 @@ Sla een peiling op door deze op te slaan zonder dat enig voorstel is beantwoord.
 	'qp_error_too_few_categories' => 'Er moeten tenminste twee categorieën gedefinieerd worden.',
 	'qp_error_too_few_spans' => 'Voor iedere categorieklasse dienen tenminste twee mogelijk antwoorden gedefinieerd te zijn',
 	'qp_error_no_answer' => 'Onbeantwoord voorstel',
-	'qp_error_unique' => 'Voor de vraag van het type unique() zijn meer voorstellen dan mogelijk antwoorden gedefinieerd. Dat is niet recht te breien.',
+	'qp_error_unique' => 'Voor de vraag van het type unique() zijn meer voorstellen dan mogelijke antwoorden gedefinieerd. Dat is niet recht te breien.',
 );
 
 /** Russian (Русский)

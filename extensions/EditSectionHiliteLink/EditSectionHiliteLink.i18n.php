@@ -302,6 +302,13 @@ $messages['te'] = array(
 	'Editsectionhilitelink-desc' => "మౌస్ ని '''మార్చు''' లంకె మీదుగా తీసుకెళ్ళినప్పుడు వ్యాసములోని భాగమును గుర్తించేటట్టు చేస్తుంది",
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'Editsectionhilitelink-desc' => 'Değiştirme bağlantısının üzerine fare ile geldiğinizde sayfanın uygun bölümünü vurgulayın',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

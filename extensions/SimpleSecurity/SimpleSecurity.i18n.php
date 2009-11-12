@@ -900,6 +900,14 @@ $messages['tr'] = array(
 	'security' => 'Güvenlik günlüğü',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'security-desc' => 'Розширює захист сторінок MediaWiki, дозволяючи обмежувати перегляд вмісту сторінки',
+	'security-inforestrict' => '$1 обмежений для $2',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

@@ -1210,16 +1210,30 @@ $messages['sl'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author GameOn
  */
 $messages['sv'] = array(
+	'clicktracking' => 'Klickspårning för användbarhetsinitiativet',
+	'clicktracking-desc' => 'Spårar klickningar för spårningshändelser som inte orsakar en siduppdatering',
+	'ct-title' => 'Sammanlagda användarklickningar',
+	'ct-event-name' => 'Händelsenamn',
 	'ct-expert-header' => '"Expertklick"',
+	'ct-intermediate-header' => 'Klickningar på "mellannivå"',
 	'ct-beginner-header' => '"Nybörjarklick"',
 	'ct-total-header' => 'Totala antalet klick',
 	'ct-start-date' => 'Startdatum (YYYYMMDD)',
 	'ct-end-date' => 'Slutdatum (YYYYMMDD)',
+	'ct-increment-by' => 'Antal dagar varje datapunkt representerar',
+	'ct-change-graph' => 'Ändra graf',
 	'ct-beginner' => 'Nybörjare',
+	'ct-intermediate' => 'Mellannivå',
 	'ct-expert' => 'Expert',
+	'ct-date-range' => 'Datumomfång',
+	'ct-editing' => 'Redigerar nu:',
+	'ct-anon-users' => 'Anonyma användare',
+	'ct-user-contribs' => 'Totalt antal användarbidrag',
+	'ct-user-span' => 'Användarbidrag i tidsperiod',
 	'ct-and' => 'och',
 	'ct-update-table' => 'Tppdatera tabell',
 );

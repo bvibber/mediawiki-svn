@@ -1839,6 +1839,7 @@ Omogočite spremljanje nastavitev v $wgPrefStatsTrackPrefs.',
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'prefstats-xaxis' => 'Трајање (сати)',
@@ -1848,6 +1849,19 @@ $messages['sr-ec'] = array(
 	'prefstats-factor-week' => 'недеља',
 	'prefstats-factor-twoweeks' => 'две недеље',
 	'prefstats-factor-fourweeks' => '4 недеље',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'prefstats-xaxis' => 'Trajanje (sati)',
+	'prefstats-factor-hour' => 'sat',
+	'prefstats-factor-sixhours' => 'šest sati',
+	'prefstats-factor-day' => 'dan',
+	'prefstats-factor-week' => 'nedelja',
+	'prefstats-factor-twoweeks' => 'dve nedelje',
+	'prefstats-factor-fourweeks' => '4 nedelje',
 );
 
 /** Sundanese (Basa Sunda)

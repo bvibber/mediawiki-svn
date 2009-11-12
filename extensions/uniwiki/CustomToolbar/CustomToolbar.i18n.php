@@ -2043,6 +2043,9 @@ $wgCustomToolbarMessages['ro'] = array(
  * @author Joetaras
  */
 $wgCustomToolbarMessages['roa-tara'] = array(
+	'ct_bold_sample' => 'Teste in grascette',
+	'ct_math_caption' => 'Formule',
+	'ct_upload' => 'Careche $1',
 	'ct_submit' => 'Veje!',
 	'ct_close' => "Achiude 'a fenéstre",
 	'ct_success' => 'File carecate senza probbleme!',

@@ -1191,6 +1191,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'spamdifftool' => "Gestisce 'a blacklist d'u spam",
 	'spamdifftool_option_none' => 'ninde',
 	'spamdifftool_block' => 'Blocche:',
 	'spamdifftool_submit_buttom' => 'Conferme',

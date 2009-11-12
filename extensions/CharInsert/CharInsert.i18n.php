@@ -152,10 +152,11 @@ $messages['es'] = array(
 );
 
 /** Estonian (Eesti)
+ * @author Pikne
  * @author Silvar
  */
 $messages['et'] = array(
-	'charinsert-desc' => 'Lubab JavaScripti abil teha raami [[MediaWiki:Edittools|erimärkide lisamiseks]]',
+	'charinsert-desc' => 'Lubab JavaScripti abil teha raami [[MediaWiki:Edittools|erimärkide lisamiseks]].',
 );
 
 /** Basque (Euskara)

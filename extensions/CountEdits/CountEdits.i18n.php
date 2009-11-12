@@ -1118,19 +1118,21 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'countedits' => 'Contador de edições',
 	'countedits-desc' => '[[Special:CountEdits|Página especial]] que conta as edições de utilizadores e fornece uma lista dos dez contribuidores de topo',
-	'countedits-warning' => "'''Atenção:''' Não julgue um livro pela sua capa. Não julgue um contribuidor pela contagem de suas edições.",
+	'countedits-warning' => "'''Atenção:''' Não julgue um livro pela capa.
+Não julgue um contribuidor pela contagem das suas edições.",
 	'countedits-username' => 'Utilizador:',
 	'countedits-ok' => 'Ok',
 	'countedits-nosuchuser' => 'Não foi encontrado um utilizador com o nome $1.',
 	'countedits-resultheader' => 'Resultados para $1',
 	'countedits-resulttext' => '$1 fez $2 {{PLURAL:$2|edição|edições}}',
 	'countedits-mostactive' => 'Contribuidores mais activos',
-	'countedits-nocontribs' => 'Não possui contribuições neste wiki.',
+	'countedits-nocontribs' => 'Não há contribuições nesta wiki.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

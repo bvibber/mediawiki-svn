@@ -377,6 +377,13 @@ $messages['tl'] = array(
 	'tab0-desc' => 'Nagdaragdag ng panglaylay na "0", na kumakawing sa pahina ng pagbabago ng unang seksyon ng pahina',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'tab0-desc' => 'Sayfanın ilk bölümünü değiştirme sayfasına bağlantı veren "0" sekmesini ekler',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

@@ -2581,6 +2581,13 @@ $messages['pms'] = array(
 	'whitelist' => 'Pàgine dle liste bianche',
 	'mywhitelistpages' => 'Mie pàgine',
 	'whitelistfor' => '<center>Anformassion corente për <b>$1</b></center>',
+	'whitelisttablemodify' => 'Modifiché',
+	'whitelisttablemodifyall' => 'Tut',
+	'whitelisttablemodifynone' => 'Gnun',
+	'whitelisttablepage' => 'Pàgina wiki',
+	'whitelisttabletype' => "Tipo d'intrada",
+	'whitelisttableexpires' => 'A finiss ai',
+	'whitelisttablemodby' => "Modificà l'ùltima vira da",
 );
 
 /** Pashto (پښتو)

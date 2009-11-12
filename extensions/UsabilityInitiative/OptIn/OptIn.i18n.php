@@ -1458,11 +1458,11 @@ $messages['et'] = array(
 	'optin-feedback-back' => 'Kui sa ei soovi küsitlust täita, saad naasta leheküljele $1.',
 	'optin-success-feedback' => 'Aitäh tagasiside eest!',
 	'optin-accept-short' => 'Tehkem proovi!',
-	'optin-accept-long' => 'Proovi Beta-versiooni',
+	'optin-accept-long' => 'Proovi beetaversiooni',
 	'optin-accept-long-anon' => 'Logi sisse ja proovi beetat',
 	'optin-deny-short' => 'Ei, tänan',
 	'optin-deny-long' => 'Naase eelmisele lehele',
-	'optin-submit-out' => 'Lahku Beta-versioonist',
+	'optin-submit-out' => 'Lahku beetaversioonist',
 	'optin-submit-feedback' => 'Anna tagasisidet',
 	'optin-survey-yes' => 'Jah',
 	'optin-survey-no' => 'Ei',
@@ -1479,7 +1479,7 @@ $messages['et'] = array(
 	'optin-survey-question-os' => 'Millist operatsioonisüsteemi sa kasutad?',
 	'optin-survey-answer-os-other' => 'Muu operatsioonisüsteem:',
 	'optin-survey-question-res' => 'Milline on su ekraani resolutsioon?',
-	'optin-survey-question-changes' => 'Milliseid muudatusi soovid näha Beta-versioonis tulevikus (vali kõik sobivad)?',
+	'optin-survey-question-changes' => 'Milliseid muudatusi soovid näha beetaversioonis tulevikus (vali kõik sobivad)?',
 	'optin-survey-answer-changes-custom' => 'Luba enam isikupärastamist.',
 	'optin-survey-answer-changes-other' => 'Muu:',
 );
@@ -3304,6 +3304,7 @@ $messages['mk'] = array(
  * @author Sadik Khalid
  */
 $messages['ml'] = array(
+	'optin' => 'യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് ഓപ്റ്റിൻ',
 	'optin-desc' => 'ഉപയോക്താക്കളെ യൂസബിലിന്റി ഇനിഷ്യേറ്റീവിന്റെ ഏറ്റവും പുതിയ മെച്ചപ്പെടുത്തലുകൾ അഥവാ ബീറ്റ പരീക്ഷിക്കാനനുവദിക്കുന്നു.',
 	'optin-title-optedout' => 'ബീറ്റ പരീക്ഷിക്കൂ',
 	'optin-title-optedin' => 'ബീറ്റ ഉപേക്ഷിക്കൂ',
@@ -3389,6 +3390,7 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Diagramma Della Verita
  * @author Kurniasan
  */
@@ -3454,18 +3456,18 @@ Kami ingin ketahui pandangan anda tentang antara muka baru kami, jadi kami mengh
 	'optin-survey-answer-changes-custom' => 'Benarkan pengubahsuaian penguna yang lebih besar.',
 	'optin-survey-answer-changes-other' => 'Lain-lain:',
 	'optin-improvements' => '== Apa yang telah dipertingkatkan? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Tampilan skrin tab pandu arah baharu]]
 ;Pandu arah yang dipertingkatkan
-Sistem pandu arah yang baru memudahkan anda untuk melihat di mana anda berada dan apa yang anda lakukan, dan juga di mana anda boleh pergi dan bagaimana mahu ke sana. Dengan kotak carian diletakkan di bahagian atas sebelah kanan, tampilan pencarian adalah lebih mudah ditemui dan dan lebih cepat untuk digunakan.
+Sistem pandu arah yang baharu memudahkan anda untuk melihat di mana anda berada dan apa yang anda lakukan, dan juga ke mana anda boleh pergi dan bagaimana mahu ke sana. Dengan kotak carian diletakkan di bahagian atas sebelah kanan, ciri pencarian adalah lebih mudah ditemui dan dan lebih cepat untuk digunakan.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
-;Penambahbaikan kotak alat tulis
-Arca-arca yang baru dan diperbaiki menjadikan tindakan yang akan dilakukan bagi setiap alat lebih jelas. Bahagian-bahagian yang boleh dikembangkan mengurangkan sepah sementara mengekalkan peralatan yang jarang digunakan cuma dalam jarak seklik sahaja.
+[[File:UsabilityToolbar.png|left|link=|Tampilan skrin bar alat sunting dipertingkat]]
+;Penambahbaikan bar alat tulis
+Arca-arca yang baharu dan diperbaiki menjadikan tindakan yang akan dilakukan bagi setiap alat lebih jelas. Bahagian-bahagian yang boleh dikembangkan mengurangkan sepah sementara mengekalkan peralatan yang jarang digunakan cuma dalam jarak seklik sahaja.
 Bahagian bantuan membekalkan capaian pantas kepada rujukan bagi penanda wiki yang sering digunakan.
 <div style="clear:both;"></div>
 == Cara untuk menyertai ==
-Bagi mengetahui lebih lanjut akan projek ini ataupun ingin turut serta, sila lawati [http://usability.wikimedia.org Wiki Inisiatif Kepenggunaan].  Di sana anda akan temukan maklumat mengenai geran kami, kajian, rekaan + pembangunan, dan keluaran-keluaran. Bagi pertanyaan soalan dan maklum balas umum, sila gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype laman perbincangan prototaip] kami.  Bagi mengemukakan sesuatu subjek, sila gunakan laman-laman perbincangan yang berkaitan.  Sekiranya anda menemui sebarang pepijat, sila tinggalkan komen anda di [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Laman perbincangan keluaran Acai] ataupun melalui [https://bugzilla.wikimedia.org Bugzilla].
+Bagi mengetahui lebih lanjut akan projek ini ataupun ingin turut serta, sila lawati [http://usability.wikimedia.org Wiki Inisiatif Kepenggunaan].  Di sana anda akan temukan maklumat mengenai geran, kajian, rekaan + pembangunan, dan keluaran-keluaran kami. Bagi pertanyaan soalan dan maklum balas umum, sila gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype laman perbincangan prototaip] kami.  Bagi persoalan suatu subjek khusus, sila gunakan laman perbincangan yang berkaitan.  Sekiranya anda menemui sebarang pepijat, sila tinggalkan komen anda di [http://usability.wikimedia.org/wiki/Talk:Releases/Acai laman perbincangan keluaran Acai] ataupun melalui [https://bugzilla.wikimedia.org Bugzilla].
 
 Terima kasih, kami berharap untuk mendengar daripada anda!',
 );

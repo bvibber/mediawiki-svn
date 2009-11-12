@@ -1226,7 +1226,9 @@ $messages['sr-el'] = array(
 	'lookupuser-no-email' => 'nije priloženo',
 	'lookupuser-realname' => 'Pravo ime: $1',
 	'lookupuser-registration' => 'Datum registracije: $1',
+	'lookupuser-no-registration' => 'nije zabeleženo',
 	'lookupuser-info-authenticated' => 'Potvrda imejla: $1',
+	'lookupuser-useroptions' => 'Korisničke opcije:',
 );
 
 /** Seeltersk (Seeltersk)

@@ -535,6 +535,21 @@ $messages['lt'] = array(
 	'communityvoice-ratings-scale-status-thanks' => 'Ačiū, kad balsavote!',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'communityvoice' => 'Глас на заедницата',
+	'communityvoice-desc' => 'Алатки за учество на заедницата',
+	'communityvoice-ratings' => 'Котирања',
+	'communityvoice-ratings-scale-status-sending' => 'Испраќам...',
+	'communityvoice-ratings-scale-status-error' => 'Грешка при испраќањето!',
+	'communityvoice-ratings-scale-status-thanks' => 'Ви благодариме што гласавте!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|глас|гласови}})',
+	'communityvoice-ratings-error-no-category' => 'Во ознаката за котирање недостига атрибут за категорија.',
+	'communityvoice-ratings-error-no-title' => 'Во ознаката за котирање недостига атрибут за наслов.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Praveenp
  */

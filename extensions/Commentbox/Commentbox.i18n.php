@@ -615,6 +615,15 @@ Você tem um comentário sobre esta página? Adicione-o aqui ou <span class="pla
 	'commentbox-error-empty-comment' => 'Comentários vazios não são permitidos!',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'commentbox-log' => 'Commende nuève',
+	'commentbox-first-comment-heading' => '== Commende ==',
+	'commentbox-error-empty-comment' => 'Le commende vacande non ge se ponne mettere!',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

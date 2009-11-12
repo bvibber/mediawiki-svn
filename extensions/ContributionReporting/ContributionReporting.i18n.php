@@ -1022,6 +1022,7 @@ $messages['eo'] = array(
  * @author Omnipaedista
  * @author Remember the dot
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'contributiontotal' => 'Contribución total',
@@ -1059,6 +1060,7 @@ $messages['es'] = array(
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total para esta semana|Totales  semanales para las pasadas $1 semanas inclusive}}',
 	'contribstats-clicks' => 'Clics',
 	'contribstats-donations' => 'Donaciones',
+	'contribstats-conversion' => 'Tasa de conversión (%)',
 	'contribstats-template' => 'Plantilla',
 	'fundraiserstatistics' => 'Estadísticas del recaudador de fondos',
 	'fundraiserstats-date' => 'Fecha',
@@ -2411,6 +2413,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'contributionreporting-desc' => 'വിക്കിമീഡിയ ഫണ്ട്റെയ്സർ നൽകുന്ന തത്സമയ തെര്യപ്പെടുത്തൽ',
 	'contributiontotal' => 'ആകെ സംഭാവനകൾ',
 	'contributionhistory' => 'സംഭാവനകളുടെ നാൾവഴി',
 	'contrib-hist-header' => 'ലോകത്തിന്റെ നാനാഭാഗത്തു നിന്നുമുള്ള ദാതാക്കളുടെ തത്സമയ കുറിപ്പുകൾ',
@@ -2446,6 +2449,7 @@ $messages['ml'] = array(
 	'contribstats-weekly-totals' => '{{PLURAL:$1|ഈ ആഴ്ച ആകെ|കഴിഞ്ഞ $1 ആഴ്ചകൾ ഉൾപ്പടെ ആഴ്ചകളിലെ ആകെ തുകകൾ}}',
 	'contribstats-clicks' => 'ഞെക്കലുകൾ',
 	'contribstats-donations' => 'സംഭാവനകൾ',
+	'contribstats-conversion' => 'മാറ്റത്തിന്റെ നിരക്ക് (%)',
 	'contribstats-template' => 'ഫലകം',
 	'contribstats-nodata' => 'വിവരങ്ങളൊന്നും ലഭിച്ചില്ല',
 	'fundraiserstats-date' => 'തീയതി',
@@ -2458,6 +2462,7 @@ $messages['ml'] = array(
 	'fundraiserstats-tab-contributions' => 'സംഭാവനകളുടെ എണ്ണം',
 	'fundraiserstats-tab-averages' => 'ശരാശരികൾ (USD)',
 	'fundraiserstats-tab-maximums' => 'പരമാവധികൾ (USD)',
+	'specialpages-group-contribution' => 'സംഭാവനകൾ/ഫണ്ട്‌‌റെയ്സർ',
 );
 
 /** Malay (Bahasa Melayu)

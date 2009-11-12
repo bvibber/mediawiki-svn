@@ -943,9 +943,11 @@ Probeer het later nog eens.',
  */
 $messages['nn'] = array(
 	'wah-short-audio' => '$1 lydfil, $2',
+	'wah-short-video' => '$1-videofil, $2',
 	'wah-transcode-working' => 'Videoen vert arbeidd med, ver venleg og prøv igjen seinare',
 	'wah-transcode-fail' => 'Kunde ikkje konvertera denne fila.',
 	'wah-javascript-off' => 'Du må ha JavaScript aktivert for kunna delta i Wiki@Home',
+	'wah-start-on-visit' => 'Start opp Wiki@Home kvar gong eg vitjar denne nettstaden.',
 	'wah-nojobfound' => 'Ingen jobb funne. Prøver igjen om $1.',
 );
 

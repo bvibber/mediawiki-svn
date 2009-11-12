@@ -340,6 +340,13 @@ $messages['tl'] = array(
 	'jskit-desc' => "Nagsasama ng mga kagamitang pang-''js-kit'' sa ibabaw ng isang pahina ng wiki",
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'jskit-desc' => 'js-kit araçlarını bir viki sayfasına entegre eder',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

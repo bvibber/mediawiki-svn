@@ -252,10 +252,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'clientside-desc' => 'Providencia funções para gerar código em formatos "client-side", tais como HTML, CSS e JavaScript',
+	'clientside-desc' => "Fornece funções de geração de código em formatos processados do lado do cliente ''(client-side formats)'' como HTML, CSS e JavaScript",
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -298,6 +299,13 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'clientside-desc' => 'Пружа функције за генерисање кода у форматима који раде на страни клијента као што су HTML, CSS и JavaScript',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'clientside-desc' => 'Pruža funkcije za generisanje koda u formatima koji rade na strani klijenta kao što su HTML, CSS i JavaScript',
 );
 
 /** Sundanese (Basa Sunda)

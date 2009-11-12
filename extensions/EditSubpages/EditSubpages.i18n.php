@@ -630,6 +630,13 @@ $messages['sr-ec'] = array(
 	'editsubpages-desc' => 'Омогућава администраторима да одблокирају страницу и све подстранице те странице за анонимно уређивање помоћу [[MediaWiki:Unlockedpages]]',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'editsubpages-desc' => 'Omogućava administratorima da odblokiraju stranicu i sve podstranice te stranice za anonimno uređivanje pomoću [[MediaWiki:Unlockedpages]]',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Micke

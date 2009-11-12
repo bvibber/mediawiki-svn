@@ -3605,7 +3605,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'openid-desc' => 'Autentique-se no wiki com um [http://openid.net/ OpenID], e autentique-se noutros sítios que usem OpenID com uma conta de utilizador wiki',
+	'openid-desc' => 'Autentique-se na wiki com um [http://openid.net/ OpenID] e autentique-se noutros sítios que usem OpenID com uma conta de utilizador wiki',
 	'openidlogin' => 'Autenticação com OpenID',
 	'openidserver' => 'Servidor OpenID',
 	'openidxrds' => 'Ficheiro Yadis',
@@ -3613,8 +3613,8 @@ $messages['pt'] = array(
 	'openiderror' => 'Erro de verificação',
 	'openiderrortext' => 'Ocorreu um erro durante a verificação da URL OpenID.',
 	'openidconfigerror' => 'Erro de Configuração do OpenID',
-	'openidconfigerrortext' => 'A configuração de armazenamento OpenID para este wiki é inválida.
-Por favor, consulte um [[Special:ListUsers/sysop|administrator]].',
+	'openidconfigerrortext' => 'A configuração de armazenamento OpenID para esta wiki é inválida.
+Por favor, consulte um [[Special:ListUsers/sysop|administrador]].',
 	'openidpermission' => 'Erro de permissões OpenID',
 	'openidpermissiontext' => 'O OpenID fornecido não está autorizado a autenticar-se neste servidor.',
 	'openidcancel' => 'Verificação cancelada',
@@ -3644,7 +3644,7 @@ pode escolher uma das opções abaixo.',
 	'openidchooseurl' => 'Um nome escolhido a partir do seu OpenID ($1)',
 	'openidchooseauto' => 'Um nome gerado automaticamente ($1)',
 	'openidchoosemanual' => 'Um nome à sua escolha:',
-	'openidchooseexisting' => 'Uma conta existente neste wiki:',
+	'openidchooseexisting' => 'Uma conta existente nesta wiki:',
 	'openidchoosepassword' => 'palavra-chave:',
 	'openidconvertinstructions' => 'Este formulário permite-lhe alterar a sua conta de utilizador para usar uma URL OpenID ou adicionar mais URLs OpenID.',
 	'openidconvertoraddmoreids' => 'Converter para OpenID ou adicionar outra URL OpenID',
@@ -3659,7 +3659,7 @@ Se de futuro pretender usar OpenID para se autenticar, pode [[Special:OpenIDConv
 	'openidbadusername' => 'Nome de utilizador especificado inválido.',
 	'openidautosubmit' => 'Esta página inclui um formulário que deverá ser automaticamente submetido se tiver JavaScript activado.
 Caso contrário, utilize o botão "Continue" (Continuar).',
-	'openidclientonlytext' => 'Você pode usar contas deste wiki como OpenIDs noutro sítio.',
+	'openidclientonlytext' => 'Pode usar contas desta wiki como OpenIDs noutro sítio.',
 	'openidloginlabel' => 'URL do OpenID',
 	'openidlogininstructions' => '{{SITENAME}} suporta o padrão [http://openid.net/ OpenID] para autenticação única entre sítios Web.
 O OpenID permite-lhe autenticar-se em diversos sítios Web sem usar uma palavra-chave diferente em cada um.
@@ -3840,6 +3840,7 @@ $messages['roa-tara'] = array(
 	'openidfullname' => 'Nome comblete',
 	'openidemail' => 'Indirizze e-mail',
 	'openidlanguage' => 'Lènghe',
+	'openidtimezone' => "Orarie d'a zone",
 	'openidchoosefull' => "'U nome comblete tue ($1)",
 	'openidchoosemanual' => "Scacchie 'nu nome:",
 	'openidchoosepassword' => 'password:',
@@ -3850,6 +3851,7 @@ $messages['roa-tara'] = array(
 	'openid-prefstext' => 'Preferenze [http://openid.net/ OpenID]',
 	'openid-urls-action' => 'Azione',
 	'openid-urls-delete' => 'Scangille',
+	'openidsigninorcreateaccount' => "Trase o ccreje 'nu cunde utende nuève",
 	'openid-provider-label-openid' => "Mitte l'URL toje de OpenID",
 	'openid-provider-label-google' => "Tràse ausanne 'u cunde utende de Google",
 	'openid-provider-label-yahoo' => "Tràse ausanne 'u cunde utende de Yahoo",

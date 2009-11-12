@@ -566,11 +566,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'createbox-desc' => 'Inputbox especializado para a criação de páginas',
+	'createbox-desc' => 'Caixa especializada para a criação de páginas',
 	'createbox-create' => 'Criar',
 	'createbox-exists' => "Desculpe, \"'''{{FULLPAGENAME}}'''\" já existe.
 

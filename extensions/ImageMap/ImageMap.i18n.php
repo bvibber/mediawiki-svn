@@ -432,7 +432,7 @@ $messages['es'] = array(
  * @author Silvar
  */
 $messages['et'] = array(
-	'imagemap_desc' => 'Lubab kliendipoolse klõpsatava pildi ala, mis kasutab <tt><nowiki><imagemap></nowiki></tt>-märgendit',
+	'imagemap_desc' => 'Lubab kliendipoolse klõpsatava pildi ala, mis kasutab <tt><nowiki><imagemap></nowiki></tt>-märgendit.',
 	'imagemap_no_image' => 'Viga: esimesel real peab määrama pildi',
 	'imagemap_invalid_image' => 'Viga: pilt on vigane või teda ei eksisteeri',
 	'imagemap_no_link' => 'Viga: ei leidnud sobivat linki, rea number $1 lõpust',

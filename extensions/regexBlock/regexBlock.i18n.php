@@ -862,6 +862,7 @@ Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, [[$1|
 	'regexblock-form-submit-empty' => 'Indiquez un nom d’utilisateur ou une adresse IP à bloquer.',
 	'regexblock-form-submit-regex' => 'Expression régulière incorrecte.',
 	'regexblock-form-submit-expiry' => 'Précisez une période d’expiration.',
+	'regexblock-link' => 'bloquer avec un expression rationnelle',
 	'regexblock-match-stats-record' => '$1 a bloqué « $2 » le « $3 » à « $4 », connecté depuis l’adresse « $5 »',
 	'regexblock-nodata-found' => 'Aucune donnée trouvée',
 	'regexblock-stats-title' => 'Statistiques des blocages par expressions régulières',
@@ -939,6 +940,7 @@ Cree un nome de usuario diferente ou [[$1|contacte con nós]] para falar sobre o
 	'regexblock-form-submit-empty' => 'Dar un nome de usuario ou un enderezo IP para bloquear.',
 	'regexblock-form-submit-regex' => 'Expresión regular non válida.',
 	'regexblock-form-submit-expiry' => 'Especifique un período de caducidade.',
+	'regexblock-link' => 'bloquear cunha expresión regular',
 	'regexblock-match-stats-record' => '$1 bloqueou a "$2" en "$3" ás $4, rexistrado desde o enderezo "$5"',
 	'regexblock-nodata-found' => 'Non se atoparon os datos',
 	'regexblock-stats-title' => 'Estatíticas do bloqueo Regex',
@@ -1274,6 +1276,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -1308,6 +1311,7 @@ Kérlek regisztrálj más néven, vagy [[$1|vedd fel velünk a kapcsolatot]]',
 	'regexblock-form-submit-empty' => 'Add meg a blokkolandó felhasználónevet vagy IP-címet.',
 	'regexblock-form-submit-regex' => 'Érvénytelen reguláris kifejezés.',
 	'regexblock-form-submit-expiry' => 'Add meg a blokk lejáratát.',
+	'regexblock-link' => 'blokkolás reguláris kifejezéssel',
 	'regexblock-match-stats-record' => '$1 blokkolta „$2” felhasználót itt: „$3” ekkor: „$4”, naplózás a(z) „$5” címről',
 	'regexblock-nodata-found' => 'Nem található adat',
 	'regexblock-stats-title' => 'Reguláris kifejezés blokk statisztika',
@@ -1904,6 +1908,7 @@ Kies een andere gebruikersnaam of [[$1|neem contact met ons op]] over het proble
 	'regexblock-form-submit-empty' => 'Geef een gebruikersnaam of een IP-adres om te blokkeren.',
 	'regexblock-form-submit-regex' => 'Ongeldige reguliere uitdrukking.',
 	'regexblock-form-submit-expiry' => 'Geef een vervaltermijn op.',
+	'regexblock-link' => 'blokkeren met reguliere expressies',
 	'regexblock-match-stats-record' => '$1 blokkeerde "$2" op "$3" om "$4", werkend via IP-adres "$5"',
 	'regexblock-nodata-found' => 'Er zijn geen gegevens aangetroffen',
 	'regexblock-stats-title' => 'Regex-blokkeringsstatistieken',
@@ -2209,6 +2214,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -2265,7 +2271,7 @@ Por favor, crie um nome de utilizador alternativo ou [[$1|avise-nos]] sobre o pr
 	'regexblock-view-stats' => 'estatísticas',
 	'regexblock-view-empty' => 'Esta lista de nomes e endereços bloqueados está vazia.',
 	'regexblock-view-time' => 'em $1',
-	'right-regexblock' => 'Bloquear a edição a utilizadores em todos os wikis da farm de wikis',
+	'right-regexblock' => 'Bloquear a edição aos utilizadores de todas as wikis da fazenda',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -2421,6 +2427,7 @@ $messages['ru'] = array(
 	'regexblock-form-submit-empty' => 'Укажите имя участника или IP-адрес для блокировки.',
 	'regexblock-form-submit-regex' => 'Ошибочное регулярное выражение.',
 	'regexblock-form-submit-expiry' => 'Пожалуйста, укажите время действия.',
+	'regexblock-link' => 'заблокировать с регулярным выражением',
 	'regexblock-match-stats-record' => '$1 блокировал «$2» на «$3» на «$4», вошедшего в систему с адреса «$5»',
 	'regexblock-nodata-found' => 'Ничего не найдено',
 	'regexblock-stats-title' => 'Статистика RegexBlock',

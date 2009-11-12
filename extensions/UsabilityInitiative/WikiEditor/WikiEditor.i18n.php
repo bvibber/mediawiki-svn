@@ -70,6 +70,13 @@ $messages['dsb'] = array(
 	'wikieditor-desc' => 'Stoj rozšyrjobny pówjerch za wobźěłowanje wikiteksta a wjele modulow k dispoziciji',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'wikieditor' => 'Progresa redaktilo por vikiteksto',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -205,6 +212,14 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'wikieditor' => 'Расширенный интерфейс редактирования викитекста',
 	'wikieditor-desc' => 'Обеспечивает расширяемый интерфейс редактирования викитекста и многие функции, предоставляемые модулями',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'wikieditor' => 'Gelişmiş viki metni düzenleme arayüzü',
+	'wikieditor-desc' => 'Genişletilebilir bir viki metni düzenleme arayüzü ve birçok özellik sağlayan modüller sağlar',
 );
 
 /** Ukrainian (Українська)

@@ -345,6 +345,13 @@ $messages['sk'] = array(
 	'localisationupdate-desc' => 'Udržiava lokalizované správy čo najaktuálnejšie',
 );
 
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'localisationupdate-desc' => 'Håller de lokaliserade meddelandena så uppdaterade som möjligt',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -218,6 +218,13 @@ $messages['sk'] = array(
 	'conditionalshowsection-desc' => 'Pridáva značku cshow na podmienečné zobrazenie/skrytie sekcie wikitextu',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'conditionalshowsection-desc' => 'Viki metninin bir bölümünü duruma göre gösterecek/gizleyecek cshow etiketi ekleniyor',
+);
+
 /** Ukrainian (Українська)
  * @author NickK
  */

@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'stringfunctions-desc' => 'Short description of the extension. Shown in [[Special:Version]].',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'stringfunctions-desc' => 'Brei die ontleder uit deur string-funksies by te voeg',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -76,6 +76,13 @@ $messages['el'] = array(
 	'magicnonumberedheadings-desc' => 'Προσθέτει την μαγική λέξη "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Esperanto (Esperanto)
+ * @author Michawiki
+ */
+$messages['eo'] = array(
+	'magicnonumberedheadings-desc' => 'Aldonas magian vorton "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -263,6 +270,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'magicnonumberedheadings-desc' => 'Lägger till det magiska ordet "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'magicnonumberedheadings-desc' => '"<nowiki>__NONUMBEREDHEADINGS__</nowiki>" sihirli kelimesini ekler',
 );
 
 /** Ukrainian (Українська)

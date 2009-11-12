@@ -344,6 +344,13 @@ $messages['tl'] = array(
 	'i18ntags-desc' => 'Puntahan ang mga tungkuling i18n para sa pagpopormat ng bilang, balarila, at pangmaramihan sa anumang makukuhang wika',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'i18ntags-desc' => 'Mevcut dillerde sayı formatlama, gramer ve çoğul için i18n fonksiyonlarına erişin',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

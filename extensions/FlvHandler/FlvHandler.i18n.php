@@ -265,8 +265,10 @@ $messages['sk'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'flvhandler_desc' => 'Flash Video (.flv) dosyalarının standart dosya olarak eklenmesine izin verir (örn: <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
 	'flv-long-desc' => '(Flaş Video, $1 × $2 piksel, dosya boyutu: $3)',
 );
 

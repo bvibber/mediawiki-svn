@@ -701,6 +701,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'layouts_title' => "Ccreje 'na vosce",
+	'layouts_continue' => 'Condinue',
 	'layouts_unknown' => 'Scanusciute',
 );
 

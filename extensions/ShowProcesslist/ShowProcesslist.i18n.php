@@ -974,8 +974,10 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'showprocesslist-desc' => 'Показує вивід команди MySQL [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-user' => 'Користувач',
 );
 

@@ -467,6 +467,13 @@ $messages['tl'] = array(
 	'fixedimage-desc' => 'Nagdaragdag ng tatak na <tt><nowiki><fundraising></nowiki></tt> bilang isang larawan',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'fixedimage-desc' => 'Bir resim olarak <tt><nowiki><fundraising></nowiki></tt> etiketi ekler',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

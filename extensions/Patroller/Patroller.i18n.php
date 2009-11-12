@@ -401,6 +401,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'patrol' => 'Patroli redaktojn',
+	'patrol-desc' => 'Progresa patrolada interfaco kun kunlaboriloj',
 	'patrol-endorse' => 'Aprobi',
 	'patrol-revert' => 'Restarigi',
 	'patrol-revert-reason' => 'Kialo:',
@@ -416,6 +417,7 @@ $messages['eo'] = array(
 * Novula testo
 * Vidu diskuto-paĝon',
 	'patrol-another' => 'Montri alian redakton, se haveblan.',
+	'patrol-stopped' => 'Vi elektis ne patroli alian redakton. $1',
 	'patrol-resume' => 'Klaku ĉi tie por reaktivigi.',
 	'group-patroller' => 'Patrolantoj',
 	'group-patroller-member' => 'Patrolanto',

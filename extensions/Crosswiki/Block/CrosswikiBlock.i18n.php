@@ -1950,15 +1950,16 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'crosswikiblock-desc' => 'Permite bloquear utilizadores noutros wikis usando uma [[Special:Crosswikiblock|página especial]]',
-	'crosswikiblock' => 'Bloquear utilizador noutro wiki',
-	'crosswikiblock-header' => 'Esta página permite bloquear um utilizador noutro wiki.
-Por favor, verifique se tem permissão para agir neste wiki e as suas acções respeitam todas as políticas.',
+	'crosswikiblock-desc' => '[[Special:Crosswikiblock|Página especial]] que permite bloquear utilizadores noutras wikis',
+	'crosswikiblock' => 'Bloquear utilizador noutra wiki',
+	'crosswikiblock-header' => 'Esta página permite bloquear um utilizador noutra wiki.
+Por favor, verifique se tem permissão para agir sobre essa wiki e se as suas acções respeitam todas as políticas.',
 	'crosswikiblock-target' => 'Endereço IP ou nome de utilizador e wiki destino:',
 	'crosswikiblock-expiry' => 'Expiração:',
 	'crosswikiblock-reason' => 'Motivo:',
@@ -1967,9 +1968,9 @@ Por favor, verifique se tem permissão para agir neste wiki e as suas acções r
 	'crosswikiblock-nocreate' => 'Impedir criação de conta',
 	'crosswikiblock-autoblock' => 'Bloquear automaticamente o último endereço IP usado por este utilizador, e qualquer endereço IP subsequente a partir do qual ele tente editar',
 	'crosswikiblock-noemail' => 'Impedir utilizador de enviar email',
-	'crosswikiunblock' => 'Desbloquear utilizador noutro wiki',
-	'crosswikiunblock-header' => 'Esta página permite desbloquear um utilizador noutro wiki.
-Por favor, verifique se tem permissão para agir neste wiki e as suas acções respeitam todas as políticas.',
+	'crosswikiunblock' => 'Desbloquear utilizador noutra wiki',
+	'crosswikiunblock-header' => 'Esta página permite desbloquear um utilizador noutra wiki.
+Por favor, verifique se tem permissão para agir sobre essa wiki e se as suas acções respeitam todas as políticas.',
 	'crosswikiunblock-user' => 'Nome de utilizador, endereço IP ou ID de bloqueio e wiki destino:',
 	'crosswikiunblock-reason' => 'Motivo:',
 	'crosswikiunblock-submit' => 'Desbloquear este utilizador',
@@ -1994,7 +1995,7 @@ Voltar para:
 * [[Special:CrosswikiBlock|Formulário de bloqueio]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Desbloqueios locais são podem ser efectuados a partir deste interface. Use [[Special:IPBlockList|{{int:ipblocklist}}]]',
-	'right-crosswikiblock' => 'Bloquear e desbloquear utilizadores em outras wikis',
+	'right-crosswikiblock' => 'Bloquear e desbloquear utilizadores noutras wikis',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

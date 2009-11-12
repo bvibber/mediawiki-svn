@@ -208,6 +208,14 @@ $messages['ru'] = array(
 	'vector-desc' => 'Улучшения пользовательского интерфейса для темы оформления «Векторное»',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'vector' => 'Vector için kullanıcı arabirimi iyileştirmeleri',
+	'vector-desc' => 'Vector görünümünün kullanıcı arayüzü bileşenlerini iyileştirir',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

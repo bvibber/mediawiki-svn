@@ -240,6 +240,13 @@ $messages['sv'] = array(
 	'ipauth-desc' => 'Automatisk inloggning från fasta IP adresser',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'ipauth-desc' => 'Statik IP adreslerinden otomatik oturum açma',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

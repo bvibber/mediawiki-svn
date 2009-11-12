@@ -2067,6 +2067,7 @@ $3',
  * @author Omnipaedista
  * @author Remember the dot
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'code' => 'Revisión de código',
@@ -2129,6 +2130,7 @@ $messages['es'] = array(
 	'code-rev-comment-by' => 'Comentario de $1',
 	'code-rev-comment-submit' => 'Enviar comentario',
 	'code-rev-comment-preview' => 'Previsualización',
+	'code-rev-inline-preview' => 'Previsualización:',
 	'code-rev-diff' => 'Dif',
 	'code-rev-diff-link' => 'dif',
 	'code-rev-purge-link' => 'purgar',
@@ -2647,7 +2649,7 @@ Lien hypertexte complet : $2
 Commentaire :
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2] : Modification suivie',
+	'codereview-email-subj2' => '[$1] [r$2] : suivi de la modification',
 	'codereview-email-body2' => 'L’utilisateur « $1 » a fait des modifications reliées à r$2.
 
 URL complète : $3

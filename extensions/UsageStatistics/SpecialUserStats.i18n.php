@@ -161,6 +161,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'usagestatisticsnamespace' => 'ܚܩܠܐ:',
 	'usagestatisticstype' => 'ܐܕܫܐ',
 	'usagestatisticsintervalday' => 'ܝܘܡܐ',
 	'usagestatisticsintervalweek' => 'ܫܒܘܥܐ',
@@ -1723,7 +1724,7 @@ $messages['pt'] = array(
 	'usagestatisticscalselect' => 'Escolher',
 	'usagestatistics-editindividual' => 'Estatísticas $1 de edição de utilizador individual',
 	'usagestatistics-editpages' => 'Estatísticas $1 de páginas de utilizador individual',
-	'right-viewsystemstats' => 'Ver [[Special:UserStats|estatísticas de utilização do wiki]]',
+	'right-viewsystemstats' => 'Ver [[Special:UserStats|estatísticas de utilização da wiki]]',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1895,10 +1896,10 @@ $messages['sr-ec'] = array(
 	'usagestatistics-desc' => 'Покажи појединачне кориснике и укупну статистику коришћења Викија',
 	'usagestatisticsfor' => '<h2>Статистике коришћења за [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Статистике коришћења за све кориснике</h2>',
-	'usagestatisticsinterval' => 'Интервал',
+	'usagestatisticsinterval' => 'Интервал:',
 	'usagestatisticstype' => 'Тип',
-	'usagestatisticsstart' => 'Почетни датум',
-	'usagestatisticsend' => 'Завршни датум',
+	'usagestatisticsstart' => 'Почетни датум:',
+	'usagestatisticsend' => 'Завршни датум:',
 	'usagestatisticssubmit' => 'Генериши статистике',
 	'usagestatisticsnostart' => 'Молимо Вас да задате почетни датум',
 	'usagestatisticsnoend' => 'Молимо Вас да задате завршни датум',
@@ -1917,6 +1918,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Михајло Анђелковић
  */
 $messages['sr-el'] = array(
 	'specialuserstats' => 'Statistike korišćenja',
@@ -1924,10 +1926,10 @@ $messages['sr-el'] = array(
 	'usagestatistics-desc' => 'Pokaži pojedinačne korisnike i ukupnu statistiku korišćenja Vikija',
 	'usagestatisticsfor' => '<h2>Statistike korišćenja za [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Statistike korišćenja za sve korisnike</h2>',
-	'usagestatisticsinterval' => 'Interval',
+	'usagestatisticsinterval' => 'Interval:',
 	'usagestatisticstype' => 'Tip',
-	'usagestatisticsstart' => 'Početni datum',
-	'usagestatisticsend' => 'Završni datum',
+	'usagestatisticsstart' => 'Početni datum:',
+	'usagestatisticsend' => 'Završni datum:',
 	'usagestatisticssubmit' => 'Generiši statistike',
 	'usagestatisticsnostart' => 'Molimo Vas da zadate početni datum',
 	'usagestatisticsnoend' => 'Molimo Vas da zadate završni datum',

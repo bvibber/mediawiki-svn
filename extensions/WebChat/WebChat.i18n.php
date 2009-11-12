@@ -499,6 +499,13 @@ Utilizadores anônimos recebem um apelido gerado aleatoriamente, mas este pode s
 	'right-webchat' => 'Permitido a utilizar o [[Special:WebChat|Bate-papo web]]',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'webchat' => 'Ciat web',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

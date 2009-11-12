@@ -568,6 +568,13 @@ Vizitează şi {{PLURAL:$2|această pagină conexă|aceste pagini conexe}}: $1.'
 	'tog-edit-similar' => 'Activează sugestiile paginilor similare',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'editsimilar-link-disable' => "'mboste le preferenze",
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

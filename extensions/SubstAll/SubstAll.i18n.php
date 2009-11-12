@@ -396,6 +396,13 @@ $messages['tl'] = array(
 	'substall-desc' => 'Lumilikha ng isang tatak na <nowiki><substall></nowiki> na nagpapalawak sa lahat ng mga suleras hanggang palaugnayan ng wiki',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'substall-desc' => 'Tüm şablonları viki söz sizimine genişleten bir <nowiki><substall></nowiki> etiketi oluşturur',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

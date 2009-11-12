@@ -89,6 +89,13 @@ $messages['dsb'] = array(
 	'wikieditor-toc-preference' => 'Nawigěrujobny zapis wopśimjeśa zmóžniś',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'wikieditor-toc-preference' => 'Ŝalti navigeblan tabelon de enhavo',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -269,6 +276,13 @@ $messages['si'] = array(
  */
 $messages['sk'] = array(
 	'wikieditor-toc-preference' => 'Povoliť obsah s odkazmi na časti',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'wikieditor-toc-preference' => 'Gezintiye uygun içindekiler tablosunu etkinleştir',
 );
 
 /** Ukrainian (Українська)

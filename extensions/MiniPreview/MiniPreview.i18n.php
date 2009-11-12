@@ -749,6 +749,14 @@ $messages['sr-ec'] = array(
 	'minipreview-no_category_gallery' => 'Нема категорија или галерија',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'minipreview-no_more_files_here' => 'Nema više fajlova u ovom smeru',
+	'minipreview-no_category_gallery' => 'Nema kategorija ili galerija',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Najami

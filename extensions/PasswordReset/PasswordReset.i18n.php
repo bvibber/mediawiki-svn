@@ -1217,12 +1217,13 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'passwordreset' => 'Repor Palavra-Chave',
-	'passwordreset-desc' => "[[Special:PasswordReset|Repõe palavras-chaves de utilizadores do wiki]] - requer privilégios 'passwordreset'",
+	'passwordreset-desc' => "[[Special:PasswordReset|Repõe palavras-chave dos utilizadores da wiki]] - requer privilégios 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nome de Utilizador Inválido',
 	'passwordreset-emptyusername' => 'Nome de Utilizador Vazio',
 	'passwordreset-nopassmatch' => 'Palavras-Chave não coincidem',

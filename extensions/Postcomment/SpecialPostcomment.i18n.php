@@ -843,6 +843,9 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'postcomment_post' => 'Manne',
+	'postcomment_on' => "'U",
+	'postcomment_said' => 'ha ditte',
 	'postcomment_invalidrequest' => 'Richieste invalide.',
 );
 

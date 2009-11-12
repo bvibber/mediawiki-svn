@@ -472,9 +472,19 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'stalepages' => 'Eski sayfalar',
+	'stalepages-desc' => 'Yakın zamanda düzenleme yapılmamış olan [[Special:Stalepages|sayfaların bir listesini]] oluşturur',
+	'stalepages-summary' => 'Bu, son {{PLURAL:$1|günde|günde}} düzenleme yapılmamış sayfaların bir listesidir.',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'stalepages-desc' => 'Формує [[Special:Stalepages|список сторінок]], які останнім часом не редагувались',
 );
 
 /** Vietnamese (Tiếng Việt)

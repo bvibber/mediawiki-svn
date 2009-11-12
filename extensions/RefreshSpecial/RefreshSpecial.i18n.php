@@ -1008,15 +1008,16 @@ Quand it l'has sërnù tute le pàgine ch'it veule agiorné, sgnaca ël boton \"
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'refreshspecial' => 'Refrescar páginas especiais',
 	'refreshspecial-desc' => 'Permite o [[Special:RefreshSpecial|refrescamento manual]] das páginas especiais',
 	'refreshspecial-title' => 'Refrescar páginas especiais',
-	'refreshspecial-help' => 'Esta página especial providencia forma de refrescar páginas especiais.
-Quando tiver escolhido todas as páginas que pretende refrescar, clique no botão "Refrescar seleccionadas" abaixo para refrescar as páginas especiais seleccionadas.
-Aviso: o refrescamento pode demorar um tempo considerável em wikis grandes.',
+	'refreshspecial-help' => "Esta página especial permite refrescar manualmente páginas especiais.
+Quando tiver escolhido todas as páginas que pretende refrescar, clique no botão \"Refrescar seleccionadas\" abaixo, para refrescar as páginas especiais que seleccionou.
+'''Aviso:''' O refrescamento pode demorar algum tempo em wikis de tamanho considerável.",
 	'refreshspecial-button' => 'Refrescar seleccionadas',
 	'refreshspecial-fail' => 'Por favor, seleccione pelo menos uma página especial para refrescar.',
 	'refreshspecial-refreshing' => 'a refrescar página especiais',
@@ -1257,10 +1258,31 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'refreshspecial' => 'Оновити спеціальні сторінки',
 	'refreshspecial-desc' => 'Дозволяє [[Special:RefreshSpecial|здійснювати ручне оновлення]] спеціальних сторінок',
+	'refreshspecial-title' => 'Оновити спеціальні сторінки',
+	'refreshspecial-help' => "Ця спеціальна сторінка дозволяє вручну оновлювати спеціальні сторінки.
+Коли ви обрали всі сторінки, які ви хочете оновити, натисніть на кнопку \"Оновити вибрані\", розташовану нижче, щоб оновити вибрані спеціальні сторінки.
+'''Увага:''' оновлення у великих вікі може зайняти якийсь час.",
+	'refreshspecial-button' => 'Оновити вибрані',
+	'refreshspecial-fail' => 'Будь ласка, оберіть принаймні одну спеціальну сторінку для оновлення.',
+	'refreshspecial-refreshing' => 'оновлення спеціальних сторінок',
+	'refreshspecial-choice' => 'оновлення спеціальних сторінок',
+	'refreshspecial-js-disabled' => '(<i>Ви не можете вибрати всі сторінки, коли відключений JavaScript</i>)',
+	'refreshspecial-select-all-pages' => 'Виділити всі сторінки',
+	'refreshspecial-link-back' => 'Повернутись до спеціальної сторінки',
+	'refreshspecial-none-selected' => 'Ви не вибрали жодної спеціальної сторінки. Повернення до вибору за замовчуванням.',
+	'refreshspecial-db-error' => 'Помилка: Помилка бази даних',
+	'refreshspecial-no-page' => 'Немає такої спеціальної сторінки',
+	'refreshspecial-reconnected' => "Повторне з'єднання.",
+	'refreshspecial-reconnecting' => "Не вдалося встановити з'єднання, повтор через 10 секунд ...",
+	'refreshspecial-page-result' => 'отримано $1 {{PLURAL:$1|рядок|рядки|рядків}} за',
+	'refreshspecial-total-display' => 'Оновлено $1 {{PLURAL:$1|сторінку, що містить|сторінки, що містять|сторінок, що містять}} $2 {{PLURAL:$2|рядок|рядки|рядків}} за час $3 (загальний час роботи скрипту $4)',
+	'right-refreshspecial' => 'Оновлення спеціальних сторінок',
 );
 
 /** Veps (Vepsan kel')

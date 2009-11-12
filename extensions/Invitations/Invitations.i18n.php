@@ -1035,6 +1035,7 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'invite-logpage' => "Registr ëd j'anvit",
+	'invite-logpagetext' => "Sto-sì a l'é un registr ëd j'utent che as anvito l'un l'àutr a dovré le diferente possibilità software.",
 );
 
 /** Pashto (پښتو)
@@ -1305,6 +1306,13 @@ Para mapamahalaan ang mga paanyaya para sa isang partikular na kasangkapang-kata
 	'invitations-error-baduser' => 'Tila hindi pa umiiral ang tinukoy mong tagagamit.',
 	'invitations-error-alreadyinvited' => 'Ang tinukoy mong tagagamit ay nakakapunta na sa ganitong kasangkapang-katangian!',
 	'invitations-invite-success' => 'Matagumpay mong naanyayahan si $1 upang magamit ang kasangkapang-katangiang ito!',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'invitations-desc' => 'Дозволяє [[Special:Invitations|управління новими функціями]], обмежуючи доступ до них за допомогою системи запрошень',
 );
 
 /** Veps (Vepsan kel')

@@ -270,6 +270,13 @@ $messages['sk'] = array(
 	'userdailycontribs-desc' => 'Denné príspevky používateľa rozšírenia na sledovanie kliknutí',
 );
 
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'userdailycontribs-desc' => 'Dagliga användarbidrag för tilläggsfunktionen klickningsspårning',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

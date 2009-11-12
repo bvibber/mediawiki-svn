@@ -611,6 +611,18 @@ $messages['tr'] = array(
 	'protectsection_forbidden' => 'Yasaklanmış',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'protectsection_desc' => 'Дозволяє авторизованим користувачам захистити частини сторінки за допомогою тегу <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => 'Ви намагалися додати або вилучити захищений розділ',
+	'protectsection_modify' => 'Ви спробували змінити захищений текст',
+	'protectsection_add_above' => 'Ви намагалися вставити текст перед захищеним розділом',
+	'protectsection_forbidden' => 'Заборонений',
+	'right-protectsection' => 'Захист розділів сторінки',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

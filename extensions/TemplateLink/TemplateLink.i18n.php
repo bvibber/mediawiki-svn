@@ -461,6 +461,16 @@ $messages['pt-br'] = array(
 	'templatelink_newtitle' => '$1 (transcluído)',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'templatelink' => 'Template link',
+	'templatelink_desc' => "Sta estenzione pò fà vedè 'u template cumme a 'na pàgena nove",
+	'templatelink_empty' => "Tu à mettere 'nu parametre.",
+	'templatelink_newtitle' => '$1 (trascluse)',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

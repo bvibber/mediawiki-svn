@@ -852,6 +852,14 @@ $messages['sr-ec'] = array(
 	'optin-feedback' => 'Повратна информација о бета-верзији',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'tooltip-pt-optin-try' => 'Probajte nove mogućnosti',
+	'tooltip-pt-optin-leave' => 'Ugasite nove mogućnosti',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -285,6 +285,16 @@ $messages['pt-br'] = array(
 	'replaceset-error-regexbadmodifier' => "O modificador de expressão regular '$1' não é válido",
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'replaceset-desc' => "Aggiunge 'na funzione de l' analizzatore <nowiki>{{#replaceset}}</nowiki> ausate pe sostituì le seziune de teste cu le date formattate",
+	'replaceset-error-calllimit' => "'U limite de chiamate a ReplaceSet ha state raggiunde.",
+	'replaceset-error-regexnoend' => "Jndr'à 'u pattern de regex \"\$1\" non ge stè ste 'u delimitatore finale '\$2'",
+	'replaceset-error-regexbadmodifier' => "'U modificatore de regex '$1' non g'è valide.",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -312,5 +322,13 @@ $messages['sv'] = array(
 	'replaceset-desc' => 'Lägger till parsefunktionen <nowiki>{{#replaceset}}</nowiki> som används för att ersätta sektioner av text med formaterad data',
 	'replaceset-error-calllimit' => 'Begränsningen i antal anrop till funktionen ReplaceSet har uppnåtts.',
 	'replaceset-error-regexnoend' => 'Det reguljära uttrycket "$1" saknar en avslutande avgränsare \'$2\'',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'replaceset-desc' => 'Додає функцію парсеру <nowiki>{{#replaceset}}</nowiki>, яка використовується для заміни ділянок тексту з відформатованими даними',
+	'replaceset-error-calllimit' => 'Досягнуто межі викликів ReplaceSet.',
 );
 
