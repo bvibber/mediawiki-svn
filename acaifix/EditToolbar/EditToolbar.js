@@ -869,7 +869,8 @@ js2AddOnloadHook( function() {
 			// Automatically copy the value of the internal link page title field to the link text field unless the user
 			// has changed the link text field - this is a convience thing since most link texts are going to be the
 			// the same as the page title
-			$j( '#edittoolbar-link-int-target' ).bind( 'change keypress paste cut', function() {
+			// Also change the internal/external radio button accordingly
+			$j( '#edittoolbar-link-int-target' ).bind( 'change keydown paste cut', function() {
 				// $j(this).val() is the old value, before the keypress
 				if ( $j( '#edittoolbar-link-int-text' ).data( 'untouched' ) )
 					// Defer this until $j(this).val() has been updated
@@ -877,8 +878,13 @@ js2AddOnloadHook( function() {
 						$j( '#edittoolbar-link-int-text' ).val( $j( '#edittoolbar-link-int-target' ).val() );
 					}, 0 );
 			});
-			$j( '#edittoolbar-link-int-text' ).bind( 'change keypress paste cut', function() {
-				$j(this).data( 'untouched', false );
+			$j( '#edittoolbar-link-int-text' ).bind( 'change keydown paste cut', function() {
+				var oldVal = $j(this).val();
+				var that = this;
+				setTimeout( function() {
+					if ( $j(that).val() != oldVal )
+						$j(that).data( 'untouched', false );
+				}, 0 );
 			});
 			// Set the initial value of the external link field to start out as a real URL
 			$j( '#edittoolbar-link-ext-target' ).val( 'http://' );
