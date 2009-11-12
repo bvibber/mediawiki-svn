@@ -75,6 +75,8 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 		if ( isset ( $totals ) ) {
 			// Table headers
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-template' ) ) ;
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-landingpage' ) ) ;
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-donatepage' ) ) ;
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-clicks' ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-donations' ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-amount' ) );
@@ -87,8 +89,16 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				$conversion_rate = ( $template[1] == 0 ) ? 0 : ( $template[2] / $template[1] ) * 100; 
 				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
 
+				$expanded_template = explode(".", $template);
+				if(!isset($expanded_template[1])){ $expanded_template[1] = "";}
+				if(!isset($expanded_template[2])){ $expanded_template[2] = "";}
+				
+				
+				
 				$htmlOut .= Xml::tags( 'tr', null,
-						Xml::element( 'td', array( 'align' => 'left'), $template[0] ) .
+						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[0] ) .
+						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[1] ) .
+						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[2] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $amount ) .
