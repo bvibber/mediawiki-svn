@@ -2480,24 +2480,24 @@ fn : {
 			// placeholder for drag control creation code
 			/*
 			$dragControl = $( '<div />' ).addClass( 'tab' ).attr( 'id', 'wikiEditor-ui-toc-resize-grip' )
-			.append( '<a href="#" title="Drag to resize"></a>' )
-			.bind( 'mousedown', function() {
-				$( '#wikiEditor-ui-toc' )
-				.data( 'openWidth', $( '#wikiEditor-ui-toc' ).width() );
-				$()
-				.bind( 'mousemove', context, $.wikiEditor.modules.toc.fn.drag )
-				.bind( 'mouseup', context, $.wikiEditor.modules.toc.fn.stopDrag );
-				$(context.$iframe[0].contentWindow.document)
-				.bind( 'mousemove', function() {
-					parent.top.$j().trigger("mousemove", e.pageX); 
+				.append( '<a href="#" title="Drag to resize"></a>' )
+				.mousedown( function() {
+					context.modules.$toc
+						.data( 'openWidth', $( '#wikiEditor-ui-toc' ).width() );
+					$()
+						.bind( 'mousemove', context, $.wikiEditor.modules.toc.fn.drag )
+						.bind( 'mouseup', context, $.wikiEditor.modules.toc.fn.stopDrag );
+					$( context.$iframe[0].contentWindow.document )
+						.mousemove( function() {
+							parent.top.$j().trigger( 'mousemove', e.pageX ); 
+							return false;
+						} )
+						.mouseup( function() {
+							parent.top.$j().trigger( 'mouseup' );
+							return false;
+						});
 					return false;
-				} )
-				.bind( 'mouseup', function() {
-					parent.top.$j().trigger("mouseup"); 
-					return false;
-				});
-				return false;
-			})
+				})
 			context.modules.$toolbar.append( $dragControl );
 			*/
 		}
@@ -2522,8 +2522,7 @@ fn : {
 		$.eachAsync( sectionQueue, {
 			'bulk' : 0,
 			'end' : function() {
-				// HACK: Opera doesn't seem to want to redraw after
-				// these bits
+				// HACK: Opera doesn't seem to want to redraw after these bits
 				// are added to the DOM, so we can just FORCE it!
 				$( 'body' ).css( 'position', 'static' );
 				$( 'body' ).css( 'position', 'relative' );
@@ -2598,6 +2597,7 @@ fn: {
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$textarea
+			// FIXME: magic iframe integration
 			.delayedBind( 250, 'mouseup scrollToPosition focus keyup encapsulateSelection change',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
@@ -2672,16 +2672,16 @@ fn: {
 			$toc.data( 'openWidth', $toc.width() );
 		}
 		context.$ui.find( '.tab-toc' )
-		.unbind( 'click', $.wikiEditor.modules.toc.fn.collapse )
-		.bind( 'click', context, $.wikiEditor.modules.toc.fn.expand )
-		.children( 'a' )
-		.text( gM( 'wikieditor-toc-show' ) );
+			.unbind( 'click', $.wikiEditor.modules.toc.fn.collapse )
+			.bind( 'click', context, $.wikiEditor.modules.toc.fn.expand )
+			.children( 'a' )
+			.text( gM( 'wikieditor-toc-show' ) );
 		
 		$toc
-		//.animate( { 'width': '1px' }, 'fast', function() { $(this).hide(); } )
-		.animate( { 'width': 1 }, 'fast' );
-		//.prev()
-		//.animate( {'marginRight': '1px'}, 'fast', function() { $(this).css('marginRight', '-1px'); } );
+			//.animate( { 'width': '1px' }, 'fast', function() { $(this).hide(); } )
+			.animate( { 'width': 1 }, 'fast' );
+			//.prev()
+			//.animate( {'marginRight': '1px'}, 'fast', function() { $(this).css('marginRight', '-1px'); } );
 		$.cookie( 'wikiEditor-' + context.instance + '-toc-width', 1 );
 		return false;
 	},
@@ -2694,18 +2694,18 @@ fn: {
 	expand: function( event) {
 		var context = event.data;
 		context.$ui.find( '.tab-toc' )
-		.unbind( 'click', $.wikiEditor.modules.toc.fn.expand )
-		.bind( 'click', context, $.wikiEditor.modules.toc.fn.collapse )
-		.children( 'a' )
-		.text( gM( 'wikieditor-toc-hide' ) );
+			.unbind( 'click', $.wikiEditor.modules.toc.fn.expand )
+			.bind( 'click', context, $.wikiEditor.modules.toc.fn.collapse )
+			.children( 'a' )
+			.text( gM( 'wikieditor-toc-hide' ) );
 		context.modules.$toc
-		.show()
-		.animate( { 'width': context.modules.$toc.data( 'openWidth' ) }, 'fast' );
-		//.animate( { 'width': context.modules.$toc.data( 'openWidth' )}, 'fast', function() { 
-		//	$( '#wikiEditor-ui-text textarea' ).trigger( 'mouseup' );
-		//} )
-		//.prev()
-		//.animate( { 'marginRight': context.modules.$toc.data( 'openWidth' ) }, 'fast' );
+			.show()
+			.animate( { 'width': context.modules.$toc.data( 'openWidth' ) }, 'fast' );
+			//.animate( { 'width': context.modules.$toc.data( 'openWidth' )}, 'fast', function() {
+			//	$( '#wikiEditor-ui-text textarea' ).trigger( 'mouseup' );
+			//} )
+			//.prev()
+			//.animate( { 'marginRight': context.modules.$toc.data( 'openWidth' ) }, 'fast' );
 		$.cookie( 'wikiEditor-' + context.instance + '-toc-width', context.modules.$toc.data( 'openWidth' ) );
 		return false;
 	},
@@ -2729,7 +2729,7 @@ fn: {
 		if( mR < 26 || mR > context.$ui.find( '.wikiEditor-ui-left' ).width() - 250)
 			return false;
 		context.$ui.find( '.wikiEditor-ui-left' ).css( 'marginRight', -mR )
-		.children().css('marginRight', mR);
+			.children().css( 'marginRight', mR );
 		context.$ui.find( '.wikiEditor-ui-right' ).css( 'width', mR );
 		return false;
 	},
@@ -2743,7 +2743,7 @@ fn: {
 		$()
 			.unbind( 'mousemove', $.wikiEditor.modules.toc.fn.drag )
 			.unbind( 'mouseup', $.wikiEditor.modules.toc.fn.stopDrag );
-		$(context.$iframe[0].contentWindow.document)
+		$( context.$iframe[0].contentWindow.document )
 			.unbind( 'mousemove' )
 			.unbind( 'mouseup' );
 		if( context.$ui.find( '.wikiEditor-ui-right' ).width() < 50 && wgNavigableTOCCollapseEnable ) {
@@ -2751,7 +2751,7 @@ fn: {
 		} else {
 			context.$ui.find( '.wikiEditor-ui-left' ).trigger( 'mouseup' );
 			context.$ui.find( '.wikiEditor-ui-right' )
-			.data( 'openWidth', context.$ui.find( '.wikiEditor-ui-right' ).width() );
+				.data( 'openWidth', context.$ui.find( '.wikiEditor-ui-right' ).width() );
 			$.cookie( 'wikiEditor-' + context.instance + '-toc-width',
 				context.$ui.find( '.wikiEditor-ui-right' ).width() );
 		}
@@ -2822,12 +2822,11 @@ fn: {
 				.addClass( 'wikiEditor-ui-toc-collapse-open' )
 				.attr( 'id', 'wikiEditor-ui-toc-collapse' )
 				.data( 'openWidth', $.wikiEditor.modules.toc.defaultWidth )
-				.bind( 'mouseup', function() {
+				.mouseup( function() {
 					var $e = $(this);
 					var close = $e.hasClass( 'wikiEditor-ui-toc-collapse-open' );
 					if( close ) {
-						$e
-							.removeClass( 'wikiEditor-ui-toc-collapse-open' );
+						$e.removeClass( 'wikiEditor-ui-toc-collapse-open' );
 						$e.parent()
 							.animate( { 'width': $e.outerWidth() }, 'fast', function() {
 									$(this).find( 'ul:first' ).hide();
@@ -2838,15 +2837,13 @@ fn: {
 									.addClass( 'wikiEditor-ui-toc-collapse-closed' );
 							});
 					} else {
-						$e
-							.removeClass( 'wikiEditor-ui-toc-collapse-closed' );
+						$e.removeClass( 'wikiEditor-ui-toc-collapse-closed' );
 						$e.siblings().show()
 						.parent()
 							.animate( { 'width': $e.data( 'openWidth' ) }, 'fast' )
 							.prev()
 							.animate( { 'marginRight': $e.data( 'openWidth' ) }, 'fast', function() {
-								$e
-									.addClass( 'wikiEditor-ui-toc-collapse-open' );
+								$e.addClass( 'wikiEditor-ui-toc-collapse-open' );
 							});
 					}
 					
@@ -2855,33 +2852,33 @@ fn: {
 		}
 		function buildResizeControls() {
 			var $resizeControlVertical = $( '<div />' )
-			.attr( 'id', 'wikiEditor-ui-toc-resize-vertical')
-			.bind( 'mousedown', function() {
-				context.modules.$toc
-				.data( 'openWidth', context.modules.$toc.width() );
-				$()
-				.bind( 'mousemove', context, $.wikiEditor.modules.toc.fn.drag )
-				.bind( 'mouseup', context, $.wikiEditor.modules.toc.fn.stopDrag );
-				$(context.$iframe[0].contentWindow.document)
-				.bind( 'mousemove', function( e ) {
-					parent.top.$j().trigger("mousemove", e.pageX);
-					return false; 
-				} )
-				.bind( 'mouseup', function() {
-					parent.top.$j().trigger("mouseup");
+				.attr( 'id', 'wikiEditor-ui-toc-resize-vertical')
+				.mousedown( function() {
+					context.modules.$toc
+						.data( 'openWidth', context.modules.$toc.width() );
+					$()
+						.bind( 'mousemove', context, $.wikiEditor.modules.toc.fn.drag )
+						.bind( 'mouseup', context, $.wikiEditor.modules.toc.fn.stopDrag );
+					$( context.$iframe[0].contentWindow.document )
+						.mousemove( function( e ) {
+							parent.top.$j().trigger( 'mousemove', e.pageX );
+							return false;
+						} )
+					.bind( 'mouseup', function() {
+						parent.top.$j().trigger( 'mouseup' );
+						return false;
+					});
 					return false;
 				});
-				return false;
-			});
 			
 			var $collapseControl = $( '<div />' ).addClass( 'tab' ).addClass( 'tab-toc' )
 				.append( '<a href="#" />' );
 			if( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) != 1 ) {
 				$collapseControl.bind( 'click', context, $.wikiEditor.modules.toc.fn.collapse )
-				.find( 'a' ).text( gM( 'wikieditor-toc-hide' ) );
+					.find( 'a' ).text( gM( 'wikieditor-toc-hide' ) );
 			} else {
 				$collapseControl.bind( 'click', context, $.wikiEditor.modules.toc.fn.expand )
-				.find( 'a' ).text( gM( 'wikieditor-toc-show' ) );
+					.find( 'a' ).text( gM( 'wikieditor-toc-show' ) );
 			}
 			$collapseControl.insertBefore( context.modules.$toc );
 			
