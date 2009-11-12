@@ -172,8 +172,13 @@ $messages['cy'] = array(
 	'wikieditor-preview-tab-preview' => 'Rhagolwg',
 	'wikieditor-preview-loading' => "Wrthi'n llwytho...",
 	'wikieditor-preview-button-publish' => 'Cyhoeddi',
+	'wikieditor-preview-button-cancel' => 'Diddymu',
 	'wikieditor-preview-savedialog-title' => 'Cyhoeddi ar {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => "Crynodeb golygu (rhowch ddisgrifiad byr o'ch newididau):",
+	'wikieditor-preview-savedialog-minor' => 'Golygiad bychan',
+	'wikieditor-preview-savedialog-watch' => 'Dilyn hynt y dudalen hon',
 	'wikieditor-preview-savedialog-publish' => 'Cyhoedder',
+	'wikieditor-preview-savedialog-goback' => 'Yn ôl',
 );
 
 /** German (Deutsch)
@@ -238,6 +243,12 @@ $messages['eo'] = array(
 	'wikieditor-preview-tab-edit' => 'Redakta',
 	'wikieditor-preview-tab-preview' => 'Antaŭvida',
 	'wikieditor-preview-loading' => 'Ŝarĝante',
+	'wikieditor-preview-button-publish' => 'Konservi',
+	'wikieditor-preview-button-cancel' => 'Nuligi',
+	'wikieditor-preview-savedialog-title' => 'Konservi al {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Resumo (mallonge priskribu la ŝanĝoj faritaj):',
+	'wikieditor-preview-savedialog-minor' => 'Eta redakto',
+	'wikieditor-preview-savedialog-watch' => 'Atenti ĉi tiun paĝon',
 );
 
 /** Spanish (Español)
@@ -538,7 +549,10 @@ $messages['roa-tara'] = array(
 	'wikieditor-preview-loading' => 'Carecamende...',
 	'wikieditor-preview-button-publish' => 'Pubbleche',
 	'wikieditor-preview-button-cancel' => 'Annulle',
+	'wikieditor-preview-savedialog-title' => 'Pubbleche sus a {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Riepileghe de le cangiaminde (veloce veloce descrive le cangiaminde ca tu è fatte):',
 	'wikieditor-preview-savedialog-minor' => 'Cangiamende stuèdeche',
+	'wikieditor-preview-savedialog-watch' => 'Condrolle sta pàgene',
 	'wikieditor-preview-savedialog-publish' => 'Pubbleche',
 	'wikieditor-preview-savedialog-goback' => 'Tuèrne rrete',
 );
@@ -597,12 +611,21 @@ $messages['te'] = array(
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'wikieditor-preview-preference' => 'Yan-yana önizlemeyi etkinleştir',
 	'wikieditor-preview-tab-edit' => 'Değiştir',
 	'wikieditor-preview-tab-preview' => 'Önizleme',
 	'wikieditor-preview-loading' => 'Yükleniyor...',
+	'wikieditor-preview-button-publish' => 'Yayınla',
+	'wikieditor-preview-button-cancel' => 'İptal',
+	'wikieditor-preview-savedialog-title' => '{{SITENAME}} bünyesinde yayınla',
+	'wikieditor-preview-savedialog-summary' => 'Değişiklik özeti (yaptığınız değişiklikleri kısaca açıklayın):',
+	'wikieditor-preview-savedialog-minor' => 'Küçük değişiklik',
+	'wikieditor-preview-savedialog-watch' => 'Bu sayfayı izle',
+	'wikieditor-preview-savedialog-publish' => 'Yayınla',
+	'wikieditor-preview-savedialog-goback' => 'Geri git',
 );
 
 /** Ukrainian (Українська)
@@ -632,6 +655,14 @@ $messages['vec'] = array(
 	'wikieditor-preview-tab-edit' => 'Modìfega',
 	'wikieditor-preview-tab-preview' => 'Anteprima',
 	'wikieditor-preview-loading' => "So' drio cargar...",
+	'wikieditor-preview-button-publish' => 'Pùblica',
+	'wikieditor-preview-button-cancel' => 'Anula',
+	'wikieditor-preview-savedialog-title' => 'Pùblica su {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Somario de la modifica (descrivi brevemente i canbiamenti che te ghè fato):',
+	'wikieditor-preview-savedialog-minor' => 'Modifica picenina',
+	'wikieditor-preview-savedialog-watch' => "Tien d'ocio sta pagina",
+	'wikieditor-preview-savedialog-publish' => 'Pùblica',
+	'wikieditor-preview-savedialog-goback' => 'Torna indrìo',
 );
 
 /** Vietnamese (Tiếng Việt)

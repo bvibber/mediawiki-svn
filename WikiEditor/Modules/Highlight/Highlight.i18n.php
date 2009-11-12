@@ -57,6 +57,13 @@ $messages['dsb'] = array(
 	'wikieditor-highlight-preference' => 'Syntaksowe wuzwignjenje za wobźěłanje zmóžniś',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'wikieditor-highlight-preference' => 'Ŝalti sintaksan kolorigadon dum redakto',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -181,6 +188,20 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'wikieditor-highlight-preference' => 'Включить подсветку синтаксиса при редактировании',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'wikieditor-highlight-preference' => 'Aktivera markering av syntax vid redigering',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'wikieditor-highlight-preference' => 'Değişiklik esnasında söz diziminin vurgulanmasını etkinleştir',
 );
 
 /** Ukrainian (Українська)

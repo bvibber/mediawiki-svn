@@ -519,12 +519,14 @@ $messages['sl'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Fluff
  * @author Rotsee
  */
 $messages['sv'] = array(
 	'usabilityinitiative' => 'Initiativet för användbarhet',
 	'usabilityinitiative-desc' => "Funktioner utvecklade av ''Wikipedias initiativ för användbarhet'', för att förbättra MediaWikis användbarhet",
+	'prefs-experimental' => 'Experimentella funktioner',
 );
 
 /** Telugu (తెలుగు)
