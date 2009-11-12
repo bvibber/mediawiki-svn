@@ -929,7 +929,7 @@ js2AddOnloadHook( function() {
 			// has changed the link text field - this is a convience thing since most link texts are going to be the
 			// the same as the page title
 			// Also change the internal/external radio button accordingly
-			$j( '#wikieditor-toolbar-link-int-target' ).bind( 'change keypress paste cut', function() {
+			$j( '#wikieditor-toolbar-link-int-target' ).bind( 'change keydown paste cut', function() {
 				// $j(this).val() is the old value, before the keypress
 				// Defer this until $j(this).val() has been updated
 				setTimeout( function() {
@@ -942,8 +942,13 @@ js2AddOnloadHook( function() {
 						$j( '#wikieditor-toolbar-link-int-text' ).val( $j( '#wikieditor-toolbar-link-int-target' ).val() );
 				}, 0 );
 			});
-			$j( '#wikieditor-toolbar-link-int-text' ).bind( 'change keypress paste cut', function() {
-				$j(this).data( 'untouched', false );
+			$j( '#wikieditor-toolbar-link-int-text' ).bind( 'change keydown paste cut', function() {
+				var oldVal = $j(this).val();
+				var that = this;
+				setTimeout( function() {
+					if ( $j(that).val() != oldVal )
+						$j(that).data( 'untouched', false );
+				}, 0 );
 			});
 			// Add images to the page existence widget, which will be shown mutually exclusively to communicate if the
 			// page exists, does not exist or the title is invalid (like if it contains a | character)

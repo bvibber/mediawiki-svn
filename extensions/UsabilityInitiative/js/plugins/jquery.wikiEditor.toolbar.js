@@ -467,7 +467,10 @@ fn : {
 					} )
 					.bind( 'mousedown', function( e ) {
 						// Only act when the primary mouse button was pressed
-						if ( e.button !== 0 ) {
+						// This is a terrible hack: IE and Safari use a 1/2/4 bitmask,
+						// but Firefox uses 0/1/2
+						// See http://quirksmode.org/dom/w3c_events.html#miscprop
+						if ( e.button !== 0  || e.button & 1 == 0) {
 							return true;
 						}
 						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
@@ -579,7 +582,7 @@ fn : {
 					return false;  
 				});
 				return false;
-			});
+			})
 			context.modules.$toolbar.append( $dragControl );
 		}
 		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
