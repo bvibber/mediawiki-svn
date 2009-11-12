@@ -59,7 +59,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 		
 		$totals = $this->getDayTotals($is_now, $timestamp);
 		
-		$msg = wfMsg( 'contribstats-day-totals' ) . " - " . date( 'o-m-d', wfTimestamp( TS_UNIX ) );
+		$msg = wfMsg( 'contribstats-day-totals' ) . " - " . date( 'o-m-d', wfTimestamp( TS_UNIX, $is_now?time():$timestamp ) );
 		$htmlOut = Xml::element( 'h3', null, $msg );
 
 		// Day
@@ -192,7 +192,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 		
 		$range[0] = date( 'Ymd000000' , wfTimestamp(TS_UNIX, $timestamp) );
 		$range[1] = date( $end_format , wfTimestamp(TS_UNIX, $timestamp) );
-
+		
 		return $this->getTotalsInRange($range);
 	}
 	
