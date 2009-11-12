@@ -56,6 +56,7 @@ class OpenIDHooks {
 											"<a href='$url'>$disp</a>" .
 											"</span>" );
 					}
+				} else {
 					# Add OpenID data if its allowed
 					if ( !$wgOpenIDClientOnly ) {
 						$st = SpecialPage::getTitleFor( 'OpenIDServer' );
