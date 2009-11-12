@@ -36,16 +36,17 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	
 	/* Wrapper */
 	public function showDayTotalsForLastDays( $num_days ){
-		//Seriously, PHP 5.3 has cleaner ways of doing this, till then strtotime to the rescue!
-		$today = new DateTime( time() );
-		++$num_days; //really you probably don't want today
-		$end_day = $today->modify("-$num_days days");
-		
-		for( $i = 0 ; $i < ($num_days - 2) ; $i++){ //you don't want today
-			$this->showDayTotals(false, $end_day->format("YmdHis")); //MW Format
-			$end_day->modify("+1 day");
-		}		
-	}
+                //Seriously, PHP 5.3 has cleaner ways of doing this, till then strtotime to the rescue!
+                $end_day = new DateTime( "now" );
+                ++$num_days; //really you probably don't want today
+                $end_day->modify("-$num_days days");
+
+                for( $i = 0 ; $i < ($num_days - 2) ; $i++){ //you don't want today
+                        $this->showDayTotals(false, $end_day->format("YmdHis")); //MW Format
+                        $end_day->modify("+1 day");
+                }
+        }
+	
 	
 	
 		
