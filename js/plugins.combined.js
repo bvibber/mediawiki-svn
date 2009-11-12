@@ -2379,7 +2379,7 @@ fn : {
 						// This is a terrible hack: IE and Safari use a 1/2/4 bitmask,
 						// but Firefox uses 0/1/2
 						// See http://quirksmode.org/dom/w3c_events.html#miscprop
-						if ( e.button !== 0  && e.button & 1 == 0) {
+						if ( e.button !== 0  && ( e.button & 1 ) == 0) {
 							return true;
 						}
 						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
