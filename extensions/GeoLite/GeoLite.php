@@ -12,14 +12,7 @@ EOT;
 $wgLandingPageBase = 'http://wikimediafoundation.org/wiki/Support_Wikipedia';
 $wgChaptersPageBase = 'http://wikimediafoundation.org/wiki/Global_Support';
 
-# Which Chapters actually have landing pages
-$wgChapterLandingPages = array(
-	'HK' => 'hk',
-	'DE' => 'de',
-	'UK' => 'uk',
-	'FR' => 'fr',
-	'CH' => 'ch',
-);
+//wgChapterLandingPages set which landing pages we know about
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
