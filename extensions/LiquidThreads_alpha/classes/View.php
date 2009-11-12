@@ -790,18 +790,25 @@ class LqtView {
 		global $wgOut;
 		global $wgScriptPath, $wgStyleVersion;
 		global $wgEnableJS2system;
+		
+		$extRoot = "{$wgScriptPath}/extensions/LiquidThreads";
+		
+		// WMF hack
+		if ( !empty($wmgLiquidThreadsAlpha) ) {
+			$extRoot = "{$wgScriptPath}/extensions/LiquidThreads_alpha";
+		}
 
 		$wgOut->addInlineScript( 'var wgLqtMessages = ' . self::exportJSLocalisation() . ';' );
 		
 		if ( !$wgEnableJS2system ) {
-			$wgOut->addScriptFile( "{$wgScriptPath}/extensions/LiquidThreads/jquery/js2.combined.js" );
-			$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/LiquidThreads/jquery/jquery-ui-1.7.2.css" );
+			$wgOut->addScriptFile( "$extRoot/jquery/js2.combined.js" );
+			$wgOut->addExtensionStyle( "$extRoot/jquery/jquery-ui-1.7.2.css" );
 		}
 		
-		$wgOut->addScriptFile( "{$wgScriptPath}/extensions/LiquidThreads/jquery/jquery.autogrow.js" );
+		$wgOut->addScriptFile( "$extRoot/jquery/jquery.autogrow.js" );
 		
-		$wgOut->addScriptFile( "{$wgScriptPath}/extensions/LiquidThreads/lqt.js" );
-		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/LiquidThreads/lqt.css?{$wgStyleVersion}" );
+		$wgOut->addScriptFile( "$extRoot/lqt.js" );
+		$wgOut->addExtensionStyle( "$extRoot/lqt.css?{$wgStyleVersion}" );
 		
 		self::$stylesAndScriptsDone = true;
 	}
