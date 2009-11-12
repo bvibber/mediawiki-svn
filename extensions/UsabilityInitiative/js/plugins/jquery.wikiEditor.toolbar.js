@@ -563,27 +563,31 @@ fn : {
 	build : function( context, config ) {
 		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.$toolbar );
 		if( wgNavigableTOCCollapseEnable ) {
+			// FIXME: This code is duplicated from the TOC plugin and doesn't belong here;
+			// the TOC drag thingy should be in the TOC plugin instead
 			// placeholder for drag control creation code
+			/*
 			$dragControl = $( '<div />' ).addClass( 'tab' ).attr( 'id', 'wikiEditor-ui-toc-resize-grip' )
 			.append( '<a href="#" title="Drag to resize"></a>' )
 			.bind( 'mousedown', function() {
 				$( '#wikiEditor-ui-toc' )
 				.data( 'openWidth', $( '#wikiEditor-ui-toc' ).width() );
 				$()
-				.bind( 'mousemove', {'context': context}, $.wikiEditor.modules.toc.fn.drag )
-				.bind( 'mouseup', {'context': context}, $.wikiEditor.modules.toc.fn.stopDrag );
+				.bind( 'mousemove', context, $.wikiEditor.modules.toc.fn.drag )
+				.bind( 'mouseup', context, $.wikiEditor.modules.toc.fn.stopDrag );
 				$(context.$iframe[0].contentWindow.document)
-				.bind( 'mousemove', {'context': context}, function( e ){ 
+				.bind( 'mousemove', function() {
 					parent.top.$j().trigger("mousemove", e.pageX); 
-					return false; 
+					return false;
 				} )
-				.bind( 'mouseup', {'context': context}, function( e ){ 
+				.bind( 'mouseup', function() {
 					parent.top.$j().trigger("mouseup"); 
-					return false;  
+					return false;
 				});
 				return false;
 			})
 			context.modules.$toolbar.append( $dragControl );
+			*/
 		}
 		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
 		context.modules.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
