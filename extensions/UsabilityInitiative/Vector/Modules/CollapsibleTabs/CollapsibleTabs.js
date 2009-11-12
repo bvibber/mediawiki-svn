@@ -52,10 +52,10 @@ js2AddOnloadHook( function() {
 	}).collapsibleTabs({
 		expandCondition: function(eleWidth) {
 			if( rtl ){
-				return ( $j('#right-navigation').position().left + $j('#right-navigation').width()) 
+				return ( $j('#right-navigation').position().left + $j('#right-navigation').width() + 1) 
 					< ($j('#left-navigation').position().left - eleWidth);
 			} else {
-				return ( $j('#left-navigation').position().left + $j('#left-navigation').width()) 
+				return ( $j('#left-navigation').position().left + $j('#left-navigation').width() + 1) 
 					< ($j('#right-navigation').position().left - eleWidth);
 			}
 		},
