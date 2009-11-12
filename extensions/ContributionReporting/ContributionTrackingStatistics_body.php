@@ -89,7 +89,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				$conversion_rate = ( $template[1] == 0 ) ? 0 : ( $template[2] / $template[1] ) * 100; 
 				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
 
-				$expanded_template = explode(".", $template);
+				$expanded_template = explode(".", $template[0]);
 				if(!isset($expanded_template[1])){ $expanded_template[1] = "";}
 				if(!isset($expanded_template[2])){ $expanded_template[2] = "";}
 				
