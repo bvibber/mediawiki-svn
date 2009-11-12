@@ -12,15 +12,15 @@ class VectorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 1 ),
+			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 2 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 1 ),
 			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 1 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 1 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 2 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 1 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 2 ),
 		),
 	);
 	static $modules = array(
