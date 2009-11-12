@@ -13,6 +13,8 @@ $messages = array();
  */
 $messages['en'] = array(
 	'wikieditor-toc-preference' => 'Enable navigable table of contents',
+	'wikieditor-toc-show' => 'Show contents',
+	'wikieditor-toc-hide' => 'Hide contents',
 );
 
 /** Message documentation (Message documentation)
@@ -21,6 +23,8 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'wikieditor-toc-preference' => "Option at [[Special:Preferences]], tab ''{{int:prefs-editing}}''",
+	'wikieditor-toc-show' => 'Label of the show/hide link when the navigable table of contents is hidden',
+	'wikieditor-toc-hide' => 'Label of the show/hide link when the navigable table of contents is visible',
 );
 
 /** Arabic (العربية)

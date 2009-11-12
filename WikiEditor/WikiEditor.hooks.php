@@ -82,6 +82,10 @@ class WikiEditorHooks {
   				'wgNavigableTOCCollapseEnable',
 				'wgNavigableTOCResizable'
 			),
+			'messages' => array(
+				'wikieditor-toc-show',
+				'wikieditor-toc-hide',
+			),
 		),
 		'toolbar' => array(
 			'i18n' => 'WikiEditorToolbar',

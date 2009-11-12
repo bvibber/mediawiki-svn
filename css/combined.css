@@ -102,10 +102,12 @@ body.rtl .wikiEditor-ui {
 	float: left;
 	width: 100%;
 }
+/*
 .wikiEditor-tabs {
 	float: left;
 	width: 50%;
 }
+*/
 .wikiEditor-buttons {
 	float: right;
 	width: 50%;

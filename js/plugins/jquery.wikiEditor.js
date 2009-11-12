@@ -357,11 +357,14 @@ if ( typeof context == 'undefined' ) {
 			// Insert the contents one line at a time
 			// insertNode() inserts at the beginning, so this has
 			// to happen in reverse order
+			var lastNode;
 			for ( var i = insertLines.length - 1; i >= 0; i-- ) {
 				range.insertNode( document.createTextNode( insertLines[i] ) );
 				if ( i > 0 )
-					range.insertNode( document.createElement( 'br' ) );
+					lastNode = range.insertNode( document.createElement( 'br' ) );
 			}
+			if ( lastNode )
+				context.fn.scrollToTop( lastNode );
 			
 			// ...
 			// Scroll the textarea to the inserted text
