@@ -135,6 +135,14 @@ $messages['ja'] = array(
 	'vector-desc' => 'ベクター・スキンのユーザーインターフェイス要素を改良する。',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'vector' => 'Verbäßert Schnettschtäll för Minsche en dä Vektor Bovverfläsch.',
+	'vector-desc' => 'Verbäßert Schnettschtäll för Minsche en dä Vektor Bovverfläsch.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -206,6 +214,14 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'vector' => 'Улучшения интерфейса для темы «Векторное»',
 	'vector-desc' => 'Улучшения пользовательского интерфейса для темы оформления «Векторное»',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'vector' => 'Användargränssnittsförbättringar för Vector',
+	'vector-desc' => 'Förbättrar element i användargränssnittet för Vector-utseendet.',
 );
 
 /** Turkish (Türkçe)

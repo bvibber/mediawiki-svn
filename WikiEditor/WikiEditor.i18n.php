@@ -141,6 +141,14 @@ $messages['ja'] = array(
 	'wikieditor-desc' => '拡張可能なウィキテキスト編集インターフェイスと多数の機能モジュールを提供する',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikieditor' => 'Fottjeschredde Eddiror för de WikiTäx',
+	'wikieditor-desc' => 'Brängk en Müjjeleschkeit för Wikitäx enzejävve un ze ändere en et Wiki, di mer ußboue kann, un noch allerhand Kröhmsches met dobei hät.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -212,6 +220,14 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'wikieditor' => 'Расширенный интерфейс редактирования викитекста',
 	'wikieditor-desc' => 'Обеспечивает расширяемый интерфейс редактирования викитекста и многие функции, предоставляемые модулями',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'wikieditor' => 'Avancerat gränssnitt för redigering av wikitext',
+	'wikieditor-desc' => 'Tillhandahåller ett utökat gränssnitt för redigering av wikitext och många moduler som tillhandahåller funktioner',
 );
 
 /** Turkish (Türkçe)

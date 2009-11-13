@@ -141,9 +141,13 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'wikieditor-preview-tab-edit' => 'Uredi',
 	'wikieditor-preview-tab-preview' => 'Pregled',
 	'wikieditor-preview-loading' => 'Učitavam...',
+	'wikieditor-preview-button-publish' => 'Objavi',
 	'wikieditor-preview-button-cancel' => 'Odustani',
+	'wikieditor-preview-savedialog-minor' => 'mala izmjena',
+	'wikieditor-preview-savedialog-publish' => 'Objavi',
 );
 
 /** Czech (Česky)
@@ -531,12 +535,19 @@ $messages['pt'] = array(
 	'wikieditor-preview-loading' => 'A carregar...',
 	'wikieditor-preview-button-publish' => 'Publicar',
 	'wikieditor-preview-button-cancel' => 'Cancelar',
-	'wikieditor-preview-savedialog-title' => 'Publicar em {{SITENAME}}',
+	'wikieditor-preview-savedialog-title' => 'Publicar na {{SITENAME}}',
 	'wikieditor-preview-savedialog-summary' => 'Sumário de edição (breve descrição das suas alterações):',
 	'wikieditor-preview-savedialog-minor' => 'Edição menor',
 	'wikieditor-preview-savedialog-watch' => 'Vigiar esta página',
 	'wikieditor-preview-savedialog-publish' => 'Publicar',
 	'wikieditor-preview-savedialog-goback' => 'Voltar',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Hamilton Abreu
+ */
+$messages['pt-br'] = array(
+	'wikieditor-preview-savedialog-title' => 'Publicar em {{SITENAME}}',
 );
 
 /** Tarandíne (Tarandíne)
@@ -573,6 +584,31 @@ $messages['ru'] = array(
 	'wikieditor-preview-savedialog-watch' => 'Наблюдать за этой страницей',
 	'wikieditor-preview-savedialog-publish' => 'Опубликовать',
 	'wikieditor-preview-savedialog-goback' => 'Назад',
+);
+
+/** Sinhala (සිංහල)
+ * @author චතුනි අලහප්පෙරුම
+ */
+$messages['si'] = array(
+	'wikieditor-preview-tab-edit' => 'සංස්කරණය',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'wikieditor-preview-preference' => 'Aktivera förhandsgranskning sida-vid-sida',
+	'wikieditor-preview-tab-edit' => 'Redigera',
+	'wikieditor-preview-tab-preview' => 'Förhandsgranska',
+	'wikieditor-preview-loading' => 'Laddar...',
+	'wikieditor-preview-button-publish' => 'Publicera',
+	'wikieditor-preview-button-cancel' => 'Avbryt',
+	'wikieditor-preview-savedialog-title' => 'Publicera i {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Redigeringssammanfattning (beskriv överskådligt de förändringar du har gjort):',
+	'wikieditor-preview-savedialog-minor' => 'Mindre ändring',
+	'wikieditor-preview-savedialog-watch' => 'Bevaka denna sida',
+	'wikieditor-preview-savedialog-publish' => 'Publicera',
+	'wikieditor-preview-savedialog-goback' => 'Gå tillbaka',
 );
 
 /** Swahili (Kiswahili)

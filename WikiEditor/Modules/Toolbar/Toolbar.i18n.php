@@ -251,6 +251,9 @@ $messages['qqq'] = array(
 	'wikieditor-toolbar-tool-olist' => '{{Identical|Numbered list}}',
 	'wikieditor-toolbar-group-size' => '{{Identical|Size}}',
 	'wikieditor-toolbar-group-insert' => '{{Identical|Insert}}',
+	'wikieditor-toolbar-tool-table-example' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
+	'wikieditor-toolbar-tool-table-example-header' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
+	'wikieditor-toolbar-tool-table-title' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-preview' => '{{Identical|Preview}}
 
 [[File:Wikieditor-toolbar-tool-table.png|thumb]]This is a noun. See screenshot.',
@@ -11156,6 +11159,7 @@ $messages['sv'] = array(
 	'wikieditor-toolbar' => 'Redigeringsverktygsrad',
 	'wikieditor-toolbar-desc' => 'Redigeringsverktygsrad med utökad användbarhet',
 	'wikieditor-toolbar-preference' => 'Aktivera utökad redigeringsverktygsrad',
+	'wikieditor-toolbar-dialogs-preference' => 'Aktivera dialoger för inläggning av länkar, tabeller och annat',
 	'wikieditor-toolbar-loading' => 'Laddar...',
 	'wikieditor-toolbar-tool-bold' => 'Fet',
 	'wikieditor-toolbar-tool-bold-example' => 'Fet text',
@@ -11180,8 +11184,10 @@ $messages['sv'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Ogiltig titel',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Kontrollerar om sidan existerar...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'Titeln du angav är ogiltig.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'URL:et du specificerade ser ut att vara avsett som en länk till en annan wikisida. Vill du göra det till en intern länk?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Intern länk',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Extern länk',
+	'wikieditor-toolbar-tool-link-empty' => 'Du skrev inget att länka till.',
 	'wikieditor-toolbar-tool-file' => 'Inbäddad fil',
 	'wikieditor-toolbar-tool-file-example' => 'Exempel.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referens',
@@ -11216,10 +11222,32 @@ $messages['sv'] = array(
 {{ns:file}}:Exempel.jpg|Bildtext2',
 	'wikieditor-toolbar-tool-newline' => 'Ny rad',
 	'wikieditor-toolbar-tool-table' => 'Tabell',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! överskrift 1
+! överskrift 2
+! överskrift 3
+|-
+| rad 1, cell 1
+| rad 1, cell 2
+| rad 1, cell 3
+|-
+| rad 2, cell 1
+| rad 2, cell 2
+| rad 2, cell 3',
+	'wikieditor-toolbar-tool-table-example' => 'Celltext',
+	'wikieditor-toolbar-tool-table-example-header' => 'Överskriftstext',
+	'wikieditor-toolbar-tool-table-title' => 'Sätt in tabell',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rader',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Kolumner',
+	'wikieditor-toolbar-tool-table-dimensions-header' => 'Inkludera överskriftsrad',
+	'wikieditor-toolbar-tool-table-wikitable' => 'Stil med kanter',
+	'wikieditor-toolbar-tool-table-sortable' => 'Gör tabell sorterbar',
 	'wikieditor-toolbar-tool-table-preview' => 'Förhandsgranska',
+	'wikieditor-toolbar-tool-table-insert' => 'Sätt in',
 	'wikieditor-toolbar-tool-table-cancel' => 'Avbryt',
+	'wikieditor-toolbar-tool-table-toomany' => 'Att sätta in en tabell med fler än $1 celler är inte möjligt med denna dialog.',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'Du har inte angett ett giltigt antal rader eller kolumner.',
+	'wikieditor-toolbar-tool-table-zero' => 'Du kan inte sätta in en tabell med noll rader eller kolumner.',
 	'wikieditor-toolbar-tool-replace' => 'Sök och ersätt',
 	'wikieditor-toolbar-tool-replace-title' => 'Sök och ersätt',
 	'wikieditor-toolbar-tool-replace-search' => 'Sök efter:',
@@ -11231,7 +11259,9 @@ $messages['sv'] = array(
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Ersätt alla',
 	'wikieditor-toolbar-tool-replace-close' => 'Avbryt',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Sökningen gav inget resultat.',
+	'wikieditor-toolbar-tool-replace-success' => '$1 ersättning(ar) gjorda.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Du matade inte in något att söka efter.',
+	'wikieditor-toolbar-tool-replace-invalidregex' => 'Det reguljära uttryck du angav är ogiltigt: $1',
 	'wikieditor-toolbar-section-characters' => 'Specialtecken',
 	'wikieditor-toolbar-characters-page-latin' => 'Latin',
 	'wikieditor-toolbar-characters-page-latinextended' => 'Utökad latin',
@@ -11242,6 +11272,8 @@ $messages['sv'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'Arabiska',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Hebreiska',
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Singalesiska',
+	'wikieditor-toolbar-characters-page-gujarati' => 'Gujarati',
 	'wikieditor-toolbar-section-help' => 'Hjälp',
 	'wikieditor-toolbar-help-heading-description' => 'Beskrivning',
 	'wikieditor-toolbar-help-heading-syntax' => 'Vad du skriver',
@@ -11362,6 +11394,7 @@ $messages['sw'] = array(
 	'wikieditor-toolbar-group-insert' => 'Kuweka',
 	'wikieditor-toolbar-tool-newline' => 'Mstari mpya',
 	'wikieditor-toolbar-tool-table' => 'Jedwali',
+	'wikieditor-toolbar-tool-table-example-header' => 'Maandiko ya kichwa',
 	'wikieditor-toolbar-tool-table-title' => 'Weka jedwali',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Mistari',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Safu',
