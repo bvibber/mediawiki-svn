@@ -104,8 +104,8 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				
 				//if the template has a URL associated, create a href to it
 				$template_link = $expanded_template[0];
-				if(isset(ContributionTrackingStatistics::$templateURLs["{$expanded_template[0]}"])){
-					$link = ContributionTrackingStatistics::$templateURLs["{$expanded_template[0]}"];
+				if(isset(SpecialContributionTrackingStatistics::$templateURLs["{$expanded_template[0]}"])){
+					$link = SpecialContributionTrackingStatistics::$templateURLs["{$expanded_template[0]}"];
 					$template_link = "<a href=\"$link\">{$expanded_template[0]}</a>";
 				}
 				
