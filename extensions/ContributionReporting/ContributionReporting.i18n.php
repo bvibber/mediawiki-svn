@@ -64,8 +64,8 @@ $messages['en'] = array(
 	'contribstats-conversion' => 'Conversion rate (%)',
 	'contribstats-template' => 'Template',
 	'contribstats-nodata' => 'No data provided',
-	'contribstats-landingpage' => 'Landing Page',
-	'contribstats-donatepage' => 'Donate Page',
+	'contribstats-landingpage' => 'Landing page',
+	'contribstats-donatepage' => 'Donate page',
 
 	// Fundraiser statistics
 	'fundraiserstatistics' => 'Fundraiser statistics',
