@@ -66,6 +66,7 @@ $messages['en'] = array(
 	'contribstats-nodata' => 'No data provided',
 	'contribstats-landingpage' => 'Landing page',
 	'contribstats-donatepage' => 'Donate page',
+	'contribstats-average' => 'Average',
 
 	// Fundraiser statistics
 	'fundraiserstatistics' => 'Fundraiser statistics',

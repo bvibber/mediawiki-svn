@@ -11,6 +11,13 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 	public static $number_of_days_to_show = 7;
 	
+	//URL for templates
+	public static $templateURLs = array(
+		'2009_Notice1' => "http://meta.wikimedia.org/w/index.php?title=Special:NoticeTemplate/view&template=2009_Notice1",
+        '2009_EM1Notice'=> "http://meta.wikimedia.org/w/index.php?title=Special:NoticeTemplate/view&template=2009_EM1Notice",
+        '2009_Notice11' => "http://meta.wikimedia.org/w/index.php?title=Special:NoticeTemplate/view&template=2009_Notice11", 
+        '2009_Notice10' => "http://meta.wikimedia.org/w/index.php?title=Special:NoticeTemplate/view&template=2009_Notice10",
+	);
 	/* Functions */
 
 	public function __construct() {
@@ -80,6 +87,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-clicks' ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-donations' ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-amount' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-average' ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-conversion' ) );
 
 			foreach( $totals as $template ) {
@@ -89,19 +97,30 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				$conversion_rate = ( $template[1] == 0 ) ? 0 : ( $template[2] / $template[1] ) * 100; 
 				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
 
+				//grab info from utm_src, 'unpack' template, landing page, donation page thus far
 				$expanded_template = explode(".", $template[0]);
 				if(!isset($expanded_template[1])){ $expanded_template[1] = "";}
 				if(!isset($expanded_template[2])){ $expanded_template[2] = "";}
 				
+				//if the template has a URL associated, create a href to it
+				$template_link = $expanded_template[0];
+				if(isset(ContributionTrackingStatistics::$templateURLs["{$expanded_template[0]}"])){
+					$link = ContributionTrackingStatistics::$templateURLs["{$expanded_template[0]}"];
+					$template_link = "<a href=\"$link\">{$expanded_template[0]}</a>";
+				}
 				
+				
+				//average donations
+				$average = $amount / $template[2];
 				
 				$htmlOut .= Xml::tags( 'tr', null,
-						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[0] ) .
+						Xml::element( 'td', array( 'align' => 'left'), $template_link ) .
 						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[1] ) .
 						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[2] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $amount ) .
+						Xml::element( 'td', array( 'align' => 'right'), $average ) .
 						Xml::element( 'td', array( 'align' => 'right'), $wgLang->formatNum( number_format( $conversion_rate, 2 ) ) ) 
 				);
 
