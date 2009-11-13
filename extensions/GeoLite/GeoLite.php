@@ -9,7 +9,9 @@ EOT;
 	exit( 1 );
 }
 
-$wgLandingPageBase = 'http://wikimediafoundation.org/wiki/Support_Wikipedia';
+$wgChapterLandingPages = array();
+$wgLandingPageBase = 'http://wikimediafoundation.org/wiki/';
+$wgLandingPageDefaultTarget = 'Support_Wikipedia';
 $wgChaptersPageBase = 'http://wikimediafoundation.org/wiki/Global_Support';
 
 //wgChapterLandingPages set which landing pages we know about
