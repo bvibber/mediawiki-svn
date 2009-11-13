@@ -33,7 +33,7 @@ class TalkpageView extends LqtView {
 		wfLoadExtensionMessages( 'LiquidThreads' );
 		// If $article_text == "", the talkpage was probably just created
 		// when the first thread was posted to make the links blue.
-		if ( $article->exists() && $article->getContent() ) {
+		if ( $article->exists() ) {
 			$html = '';
 			
 			$article->view();
@@ -269,7 +269,8 @@ class TalkpageView extends LqtView {
 			$html .= Xml::element( 'br', array( 'style' => 'clear: both;' ) );
 			$html .= $this->getTOC( $threads );
 		} else {
-			$html .= wfMsgExt( 'lqt-no-threads', 'parseinline' );
+			$html .= Xml::tags( 'div', array( 'class' => 'lqt-no-threads' ),
+					wfMsgExt( 'lqt-no-threads', 'parseinline' ) );
 		}
 		
 		$html .= $pager->getNavigationBar();

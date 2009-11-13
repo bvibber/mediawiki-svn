@@ -668,7 +668,11 @@ var liquidThreads = {
 			
 			var newThread = $j(html);
 			
-			$j('.lqt_toc').after(newThread);
+			if ( $j('.lqt_toc').length ) {
+				$j('.lqt_toc').after(newThread);
+			} else {
+				$j('.lqt-no-threads').replaceWith( newThread );
+			}
 			
 			$j(newThread).find( '.lqt-post-wrapper').each(
 				function() {
@@ -681,6 +685,12 @@ var liquidThreads = {
 						'slow');
 				}
 			);
+			
+			// Load the new TOC
+			var loadTOCSpinner = $j('<div class="mw-ajax-loader"/>');
+			$j('.lqt_toc').empty().append( loadTOCSpinner );
+			$j('.lqt_toc').load( window.location.href + ' .lqt_toc > *',
+				function() { loadTOCSpinner.remove(); } );
 		}
 		
 		var doneCallback = function(data) {
