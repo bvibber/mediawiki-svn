@@ -240,7 +240,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 		# Is the user an OpenID user?
 
-		if ( !$this->getUserUrl( $user ) ) {
+		if ( $this->getUserUrl( $user ) ) {
 			wfDebug( "OpenID: Not one of our users; logs in with OpenID.\n" );
 			return $request->answer( false, $this->serverUrl() );
 		}
