@@ -2474,11 +2474,11 @@ fn : {
 	},
 	build : function( context, config ) {
 		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.$toolbar );
+		/*
 		if( wgNavigableTOCCollapseEnable ) {
 			// FIXME: This code is duplicated from the TOC plugin and doesn't belong here;
 			// the TOC drag thingy should be in the TOC plugin instead
 			// placeholder for drag control creation code
-			/*
 			$dragControl = $( '<div />' ).addClass( 'tab' ).attr( 'id', 'wikiEditor-ui-toc-resize-grip' )
 				.append( '<a href="#" title="Drag to resize"></a>' )
 				.mousedown( function() {
@@ -2499,8 +2499,8 @@ fn : {
 					return false;
 				})
 			context.modules.$toolbar.append( $dragControl );
-			*/
 		}
+		*/
 		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
 		context.modules.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
 		var sectionQueue = [];
