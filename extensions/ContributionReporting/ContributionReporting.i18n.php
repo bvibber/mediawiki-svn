@@ -56,7 +56,7 @@ $messages['en'] = array(
 
 	// Tracking Statistics
 	'contributiontrackingstatistics' => 'Contribution tracking statistics',
-	'contribstats-day-totals' => 'Total for today',
+	'contribstats-day-totals' => 'Total for day',
 	'contribstats-week' => 'Week',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total for this week|Weekly totals for the past $1 weeks inclusive}}',
 	'contribstats-clicks' => 'Clicks',
