@@ -268,6 +268,22 @@ Aby składował napšašowanje, wótpósćel jo, mimo až sy wótegronił na nar
 	'qp_error_unique' => 'Pšašanje typa unique() ma wěcej naraźenjow ako móžne wótegrona su definěrowane: njemóžno pókšacowaś',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'qp_result_NA' => 'No respondido',
+	'qp_result_error' => 'Error de sintaxis',
+	'qp_source_link' => 'Fuente',
+	'qp_stats_link' => 'Estadísticas',
+	'qp_users_link' => 'Usuarios',
+	'qp_error_invalid_question_type' => 'Tipo de pregunta inválido: $1',
+	'qp_error_type_in_stats_mode' => 'El tipo de pregunta no puede definirse en modo de visualización estadística: $1',
+	'qp_error_category_name_empty' => 'El nombre de categoría está vacío',
+	'qp_error_proposal_text_empty' => 'El texto de propuesta está vacío',
+	'qp_error_no_answer' => 'Propuesta no respondida',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Jean-Frédéric
@@ -391,7 +407,7 @@ $messages['gsw'] = array(
 	'qp_users_link' => 'Benutzer',
 	'qp_voice_link' => 'Benutzerstimm',
 	'qp_voice_link_inv' => 'Benutzerstimm?',
-	'qp_user_polls_link' => 'Mitgmacht bi $1 Abstimmige',
+	'qp_user_polls_link' => 'Mitgmacht bi $1 {{PLURAL:$1|Abstimmig|Abstimmige}}',
 	'qp_user_missing_polls_link' => 'Niene mitgmacht',
 	'qp_not_participated_link' => 'Niene mitgmacht',
 	'qp_order_by_username' => 'No Benutzername gordnet',
@@ -654,6 +670,7 @@ $messages['ja'] = array(
 	'qp_users_link' => '利用者',
 	'qp_voice_link' => '利用者の声',
 	'qp_voice_link_inv' => '利用者の声?',
+	'qp_user_polls_link' => '$1件の{{PLURAL:$1|投票}}に参加',
 	'qp_user_missing_polls_link' => '参加なし',
 	'qp_not_participated_link' => '未参加',
 	'qp_order_by_username' => '利用者名順に整列',

@@ -322,6 +322,13 @@ $messages['sk'] = array(
 	'i18ntags-desc' => 'Prístup k i18n funkciám na formátovanie čísel, gramatiku a plurál v ktoromkoľvek z dostupných jazykov',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'i18ntags-desc' => 'Приступа i18n функцијама за форматирање бројева, граматику и множину у било ком доступном језику',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

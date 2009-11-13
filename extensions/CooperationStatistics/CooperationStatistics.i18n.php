@@ -580,6 +580,24 @@ $messages['ro'] = array(
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pagină|pagini}}',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'cooperationstatistics' => 'Statisteche de cooperazione',
+	'cooperationstatistics-desc' => "Fà vedè le [[Special:CooperationStatistics|statisteche de cooperazione sus a 'u namespace prengepàle]].",
+	'cooperationstatistics-text' => "Fà vedè le statisteche de cooperazione sus a 'u namespace prengepàle.
+Da [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] a [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] revisure.<br />
+Vide pure le [[Special:MostRevisors|'''pàggene cu cchiù revisure''']] e le [[Special:MostRevisions|pàggene cu cchiù revisiune]].",
+	'cooperationstatistics-tablearticle' => 'Cunde de le pàggene',
+	'cooperationstatistics-tablevalue' => 'Numere de cangiature',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pàgene|pàggene}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|tène|tènene}} $1 {{PLURAL:$1|cangiatore|cangiature}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|tène|tènene}} $1 {{PLURAL:$1|cangiatore|o mene cangiature}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|tène|tènene}} $1 o cchiù cangiature',
+	'cooperationstatistics-legendmore' => 'o cchiù cangiature.',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Lockal

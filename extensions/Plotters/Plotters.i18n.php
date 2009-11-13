@@ -544,11 +544,29 @@ Për piasì definiss na tableclass che a sia 255 caràter al pì.",
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  */
 $messages['pt'] = array(
+	'plotters-desc' => "Permite o uso de código JavaScript personalizado nas ''tags'' jsplot",
+	'plotters' => 'Plotters',
+	'plotters-title' => 'Plotters',
+	'plotters-pagetext' => "Abaixo encontra uma lista de ''plotters'' especiais que podem ser usadas pelos utilizadores nas ''tags'' jsplot, como definido em [[MediaWiki:Plotters-definition]].
+Este resumo permite um fácil acesso às páginas das mensagens de sistema que definem o código e a descrição de cada ''plotter''.",
 	'plotters-uses' => 'Usos',
-	'plotters-no-data' => 'Não foram providenciados dados.',
+	'plotters-missing-script' => "Não foi definido nenhum''script''.",
+	'plotters-missing-arguments' => 'Não foram fornecidos argumentos.',
+	'plotters-excessively-long-scriptname' => "O nome do ''script'' é demasiado longo.
+Por favor, defina um ''script'' cujo nome tenha no máximo 255 caracteres.",
+	'plotters-excessively-long-preprocessorname' => 'O nome do preprocessador é demasiado longo.
+Por favor, defina um preprocessador cujo nome tenha no máximo 255 caracteres.',
+	'plotters-excessively-long-name' => "O nome do ''plot'' é demasiado longo.
+Por favor, defina um ''plot'' cujo nome tenha no máximo 255 caracteres.",
+	'plotters-excessively-long-tableclass' => "A ''tableclass'' é demasiado longa.
+Por favor, defina uma ''tableclass'' cujo nome tenha no máximo 255 caracteres.",
+	'plotters-no-data' => 'Não foram fornecidos dados.',
+	'plotters-invalid-renderer' => 'Foi seleccionado um renderizador inválido.',
+	'plotters-errors' => "{{PLURAL:$1|Erro|Erros}} das ''plotters'':",
 );
 
 /** Brazilian Portuguese (Português do Brasil)

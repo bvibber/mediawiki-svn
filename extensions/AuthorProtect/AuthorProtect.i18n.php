@@ -1286,6 +1286,7 @@ $messages['sr-ec'] = array(
 	'authorprotect-failure' => 'Заштита неуспешна',
 	'protect-level-author' => 'Заштити од не-аутора',
 	'restriction-level-author' => 'Кориснички заштићено',
+	'right-authorprotect' => 'Заштита страна од стране аутора',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

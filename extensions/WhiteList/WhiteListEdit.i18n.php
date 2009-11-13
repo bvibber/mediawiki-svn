@@ -2588,6 +2588,14 @@ $messages['pms'] = array(
 	'whitelisttabletype' => "Tipo d'intrada",
 	'whitelisttableexpires' => 'A finiss ai',
 	'whitelisttablemodby' => "Modificà l'ùltima vira da",
+	'whitelisttablemodon' => "Modificà l'ùltima vira ai",
+	'whitelisttableedit' => 'Modifiché',
+	'whitelisttableview' => 'Vëdde',
+	'whitelisttablenewdate' => 'Neuva dàita:',
+	'whitelisttablechangedate' => 'Cangé la dàita dë scadensa',
+	'whitelisttablesetedit' => 'Ativé la modificassion',
+	'whitelisttablesetview' => 'Ativé la visualisassion',
+	'whitelisttableremove' => 'Gavé',
 );
 
 /** Pashto (پښتو)
@@ -2610,6 +2618,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -2645,7 +2654,7 @@ Você tem de [[Special:UserRights|adicionar utilizadores ao grupo]] antes de pod
 	'whitelistnewtableprocess' => 'Processar',
 	'whitelistnewtablereview' => 'Rever',
 	'whitelistselectrestricted' => '== Selecionar nome de utilizador restrito ==',
-	'whitelistpagelist' => 'Página de {{SITENAME}} para $1',
+	'whitelistpagelist' => 'Páginas da {{SITENAME}} para $1',
 	'whitelistnocalendar' => "<font color='red' size=3>Parece que [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], um pré-requisito para esta extensão, não foi instalada devidamente!</font>",
 	'whitelistoverview' => '== Resumo das alterações a $1 ==',
 	'whitelistoverviewcd' => "* A alterar data de [[:$2|$2]] para '''$1'''",

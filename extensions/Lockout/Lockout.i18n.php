@@ -226,6 +226,13 @@ $messages['sk'] = array(
 	'lockout-desc' => 'Zabrániť prihlásenie zablokovaným používateľom',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'lockout-desc' => 'Онемогућава блокиране кориснике да се пријаве',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

@@ -872,6 +872,13 @@ $messages['te'] = array(
 	'security-type-category' => 'వర్గం',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'security-type-namespace' => 'เนมสเปซ',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

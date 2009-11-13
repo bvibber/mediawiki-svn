@@ -714,7 +714,7 @@ $messages['te'] = array(
 $messages['th'] = array(
 	'searchbox-search' => 'สืบค้น',
 	'searchbox-go' => 'ไป',
-	'searchbox-namespaces' => 'กลุ่มชื่อ:',
+	'searchbox-namespaces' => 'เนมสเปซ:',
 );
 
 /** Tagalog (Tagalog)

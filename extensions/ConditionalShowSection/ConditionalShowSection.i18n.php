@@ -218,6 +218,13 @@ $messages['sk'] = array(
 	'conditionalshowsection-desc' => 'Pridáva značku cshow na podmienečné zobrazenie/skrytie sekcie wikitextu',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'conditionalshowsection-desc' => 'Додаје cshow таг за условно приказивање и скривање одељака вики-текста.',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

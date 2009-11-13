@@ -1333,6 +1333,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -1358,7 +1359,7 @@ $messages['pt'] = array(
 	'patrol-stopped' => 'Você optou por não patrulhar uma outra edição. $1',
 	'patrol-resume' => 'Carregue aqui para continuar.',
 	'group-patroller' => 'Patrulhadores',
-	'group-patroller-member' => 'Patrulhador',
+	'group-patroller-member' => 'patrulhador',
 	'grouppage-patroller' => '{{ns:project}}:Patrulhador',
 	'right-patroller' => 'Patrulhar páginas',
 );

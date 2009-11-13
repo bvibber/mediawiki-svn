@@ -416,10 +416,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'breadcrumbs-desc' => 'Mostra o caminho dos utilizadores através do wiki.',
+	'breadcrumbs-desc' => 'Mostra o caminho dos utilizadores através da wiki.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

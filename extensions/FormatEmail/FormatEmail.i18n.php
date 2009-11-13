@@ -543,12 +543,13 @@ $2',
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'email-desc' => 'Permite que sejam adicionados cabeçalhos/rodapés personalizados aos emails dos utilizadores.',
 	'email_footer' => '----------------------------------------------------------------------------
-Este email foi enviado pelo sistema de email de {{SITENAME}} por $1.
+Este email foi-lhe enviado pelo sistema de email da {{SITENAME}} por $1.
 
 $2',
 );

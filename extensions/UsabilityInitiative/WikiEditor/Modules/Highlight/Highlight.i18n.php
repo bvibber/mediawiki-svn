@@ -36,6 +36,13 @@ $messages['br'] = array(
 	'wikieditor-highlight-preference' => 'Aotren an usskediñ ereadurel er prenestr skridaozañ',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'wikieditor-highlight-preference' => 'Omogući označavanje sintakse pri uređivanju',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

@@ -772,6 +772,25 @@ $messages['es'] = array(
 	'wikilog-posting-anonymously' => 'No has accedido al sistema;
 tu comentario se añadirá como anónimo y se identificará por medio de tu dirección de conexión de internet.
 Debes escribir un seudónimo abajo para identificar tu comentario o $1 para que se te atribuya.',
+	'wikilog-form-category' => 'Categoría:',
+	'wikilog-form-name' => 'Nombre:',
+	'wikilog-form-author' => 'Autor:',
+	'wikilog-form-tag' => 'Etiqueta:',
+	'wikilog-form-date' => 'Fecha:',
+	'wikilog-form-status' => 'Estado:',
+	'wikilog-form-preview' => 'Previsualización:',
+	'wikilog-form-comment' => 'Comentario:',
+	'wikilog-show-published' => 'Publicado',
+	'wikilog-show-drafts' => 'Borradores',
+	'wikilog-submit' => 'Enviar',
+	'wikilog-preview' => 'Previsualizar',
+	'wikilog-edit-lc' => 'editar',
+	'wikilog-reply-lc' => 'responder',
+	'wikilog-delete-lc' => 'borrar',
+	'wikilog-approve-lc' => 'aprobar',
+	'wikilog-reject-lc' => 'rechazar',
+	'wikilog-page-lc' => 'página',
+	'wikilog-history-lc' => 'historial',
 );
 
 /** Basque (Euskara)
@@ -2199,6 +2218,7 @@ Er vindt eerst een controle plaats door een moderator.',
  * @author Gunnernett
  */
 $messages['nn'] = array(
+	'wikilog-desc' => 'Legg til bloggfunksjonar, og lagar ei wiki-blogg hybridoppsett',
 	'wikilog-title' => 'Tittel',
 	'wikilog-pager-newest' => '←← nyaste',
 	'wikilog-edit-signpub' => 'Signér og publiser denne artikkelen',

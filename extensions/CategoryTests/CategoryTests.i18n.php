@@ -295,6 +295,13 @@ $messages['sk'] = array(
 	'categorytests-desc' => 'Funkcie na testovanie kategórie',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'categorytests-desc' => 'Функције за тестирање категорија',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
@@ -314,6 +321,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'categorytests-desc' => 'వర్గముల పరీక్షకు ఫంక్షన్సు',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'categorytests-desc' => 'Kategori testi için fonksiyonlar',
 );
 
 /** Ukrainian (Українська)

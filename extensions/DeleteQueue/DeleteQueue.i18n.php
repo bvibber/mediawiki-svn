@@ -4163,6 +4163,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Heldergeovane
  * @author Malafaya
  * @author Waldir
@@ -4172,9 +4173,9 @@ $messages['pt'] = array(
 	'deletequeue-action-queued' => 'Eliminação',
 	'deletequeue-action' => 'Sugerir eliminação',
 	'deletequeue-action-title' => 'Sugerir eliminação de "$1"',
-	'deletequeue-action-text' => "{{SITENAME}} tem um número de processos para eliminar páginas:
-*Se crê que esta página aconselha a uma ''eliminação rápida'', poderá sugeri-la [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} aqui].
-*Se esta página não aconselha a uma eliminação rápida, mas ''a eliminação provavelmente será incontroversa'', deverá [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} propôr uma eliminação incontestada].
+	'deletequeue-action-text' => "A {{SITENAME}} tem vários processos para eliminar páginas:
+*Se acredita que esta página justifica uma ''eliminação rápida'', poderá sugeri-la [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} aqui].
+*Se esta página não justifica uma eliminação rápida, mas ''a eliminação provavelmente será incontroversa'', deverá [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} propôr uma eliminação incontestada].
 *Se a eliminação desta página será ''provavelmente contestada'', deverá [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} iniciar uma discussão].",
 	'deletequeue-action-text-queued' => 'Você pode ver as seguintes páginas para este caso de eliminação:
 * [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Ver suportes e objeções atuais].

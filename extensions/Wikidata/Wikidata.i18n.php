@@ -11774,6 +11774,7 @@ $messages['th'] = array(
 	'ow_User' => 'ผู้ใช้',
 	'ow_Value' => 'ค่า',
 	'ow_meaningsoftitle' => 'ความหมายของ "$1"',
+	'ow_show' => 'แสดง',
 );
 
 /** Turkmen (Türkmençe)

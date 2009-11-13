@@ -1429,11 +1429,13 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Passawuth
  */
 $messages['th'] = array(
 	'contributors' => 'ผู้เขียน',
 	'contributors-toolbox' => 'ผู้เขียนหลัก',
+	'contributors-submit' => 'แสดง',
 );
 
 /** Tagalog (Tagalog)

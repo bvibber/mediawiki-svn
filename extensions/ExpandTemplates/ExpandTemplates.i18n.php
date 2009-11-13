@@ -1720,6 +1720,7 @@ $messages['sr-ec'] = array(
 	'expand_templates_xml_output' => 'XML излаз',
 	'expand_templates_ok' => 'У реду',
 	'expand_templates_remove_comments' => 'Уклони коментаре',
+	'expand_templates_remove_nowiki' => 'Поништава ефекат <nowiki> тагова у приказу чланака',
 	'expand_templates_generate_xml' => 'прикажи XML стабло',
 	'expand_templates_preview' => 'Приказ',
 );

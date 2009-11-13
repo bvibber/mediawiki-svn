@@ -94,6 +94,7 @@ $messages['ar'] = array(
 	'ct-beginner-header' => 'نقرات "المبتدئين"',
 	'ct-total-header' => 'مجموع النقرات',
 	'ct-increment-by' => 'عدد الأيام التي تمثلها كل نقطة بيانات',
+	'ct-change-graph' => 'غير الرسم البياني',
 	'ct-beginner' => 'مبتدئ',
 	'ct-intermediate' => 'متوسط',
 	'ct-expert' => 'خبير',
@@ -1262,13 +1263,14 @@ $messages['tk'] = array(
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'clicktracking' => 'Kullanılabilirlik Girişimi tıklama izleme',
 	'clicktracking-desc' => 'Tıklama izleme, bir sayfa yenilemesine sebep olmadan olayları izleme amaçlı',
 	'ct-title' => 'Kümeli kullanıcı tıklamaları',
 	'ct-event-name' => 'Olay adı',
-	'ct-expert-header' => '"Deneyimli" tıklamaları',
+	'ct-expert-header' => '"Uzman" tıklamaları',
 	'ct-intermediate-header' => '"Orta düzeyde" tıklamaları',
 	'ct-beginner-header' => '"Acemi" tıklamaları',
 	'ct-total-header' => 'Toplam tıklama',
@@ -1280,7 +1282,7 @@ $messages['tr'] = array(
 	'ct-intermediate' => 'Orta düzeyde',
 	'ct-expert' => 'Deneyimli',
 	'ct-date-range' => 'Tarih aralığı',
-	'ct-editing' => 'Şuanda değiştiriyor:',
+	'ct-editing' => 'Şu anda değiştiriyor:',
 	'ct-anon-users' => 'Anonim kullanıcılar',
 	'ct-user-contribs' => 'Toplam kullanıcı katkıları',
 	'ct-user-span' => 'Zaman içerisindeki kullanıcı katkıları',

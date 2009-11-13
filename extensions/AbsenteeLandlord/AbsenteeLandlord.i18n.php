@@ -507,11 +507,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'absenteelandlord-reason' => 'A base de dados foi automaticamente bloqueada devido a inactividade dos sysops.',
-	'absenteelandlord-desc' => 'Bloqueia a base dados do wiki automaticamente se todos os sysops estiverem inactivos por algum tempo',
+	'absenteelandlord-desc' => 'Bloqueia a base dados da wiki automaticamente se todos os administradores estiverem inactivos durante algum tempo',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

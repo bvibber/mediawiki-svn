@@ -1035,10 +1035,11 @@ Hindi maaaring angkinin ng mga nagpapaandar/nagpapatakbo ng sayt/sityong ito ang
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'talkhere-talkpage' => 'Tartışma sayfası',
-	'talkhere-addcomment' => 'Yorumu ekle',
+	'talkhere-talkpage' => 'tartışma sayfası',
+	'talkhere-addcomment' => 'yorum ekle',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

@@ -4532,8 +4532,13 @@ $messages['si'] = array(
 	'optin-accept-long-anon' => 'ප්‍රවිෂ්ට වී බීටා අනුවාදය අත්හදා බලන්න',
 	'optin-deny-short' => 'ස්තුතියි. බැහැ',
 	'optin-deny-long' => 'පෙර පිටුවට නැවත යන්න',
+	'optin-submit-out' => 'බීටා අනුවාදයෙන් ඉවත් වන්න',
+	'optin-submit-feedback' => 'ප්‍රතිපෝෂණය ලබාදෙන්න',
 	'optin-survey-yes' => 'ඔව්',
 	'optin-survey-no' => 'නැත',
+	'optin-survey-intro' => 'බීටා අනුවාදය අත්හදා බැලීම පිළිබඳ ස්තූතියි.
+අපගේ නව අතුරු-මුහුණත පිළිබඳ ඔබ සිතන දේ දැනගැනීමට අප සතුටු වන අතර, "[[#leave|{{int:optin-submit-out}}]]" ක්ලික් කිරීමට පෙර,  පහත වෛකල්පික සමීක්ෂණය පුරවා දමන්නේ නම් කෘතඥ වෙමු.',
+	'optin-survey-question-likedislike' => 'බීටා අනුවාදය පිළිබඳ ඔබ සිත්ගත් දෑ කුමක්ද? බීටා අනුවාදය පිළිබඳ ඔබ සිත්නොගත් දෑ කුමක්ද?',
 	'optin-survey-question-whyoptout' => 'ඔබ බීටා අනුවාදයෙන් ඉවත් වන්නේ ඇයි? (ගැලපෙන සියල්ල තෝරාගැනුමට කාරුණික වන්න.)',
 	'optin-survey-answer-whyoptout-hard' => 'එය භාවිතය ඉතා දුෂ්කර විය.',
 	'optin-survey-answer-whyoptout-didntwork' => 'එය හරි හැටි ක්‍රියාත්මක නොවීය.',
@@ -4541,6 +4546,7 @@ $messages['si'] = array(
 	'optin-survey-answer-whyoptout-didntlike-look' => 'එහි පෙනුම මා සිත් ගත්තේ නැත.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'නව ටැබ හා වින්‍යාස සැලැස්ම මා සිත් ගත්තේ නැත.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'නව මෙවලම්-පටිය මා සිත් ගත්තේ නැත.',
+	'optin-survey-answer-whyoptout-other' => 'වෙනත් හේතුවක්:',
 );
 
 /** Slovak (Slovenčina)
@@ -5053,6 +5059,7 @@ Täze interfeýsimiz baradaky pikiriňizi bilesimiz gelýär, şonuň üçinem "
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'optin' => 'Kullanılabilirlik Girişimi katılım',
@@ -5101,13 +5108,13 @@ Yeni arayüzümüz konusunda ne düşündüğünüzü bilmek isteriz, o yüzden 
 	'optin-survey-question-usedtoolbar-ifyes' => 'Evet ise, neleri sevdiniz? Nelerden hoşlanmadınız?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Eğer hayırsa, neden? Gelecekte kullanacak mısınız? Lütfen açıklayın.',
 	'optin-survey-question-different' => "Beta'mızı kullanmaya devam etmeniz için farklı olarak ne yapabilirdik?",
-	'optin-survey-question-feedback' => 'Lütfen geribeslemenizi bildirin:',
+	'optin-survey-question-feedback' => 'Lütfen tüm diğer yorum, endişe ve düşüncelerinizi bize bildirin - her türlü geribildirim yararlıdır:',
 	'optin-survey-question-browser' => 'Hangi tarayıcıyı kullanıyorsunuz?',
 	'optin-survey-answer-browser-other' => 'Diğer tarayıcı:',
 	'optin-survey-question-os' => 'Hangi işletim sistemini kullanıyorsunuz?',
 	'optin-survey-answer-os-other' => 'Diğer işletim sistemi:',
 	'optin-survey-question-res' => 'Ekran çözünürlüğünüz nedir?',
-	'optin-survey-question-changes' => "Beta'da gelecekte hangi değişiklikleri görmek istersiniz (uygun olan hepsini seçin)?",
+	'optin-survey-question-changes' => "Beta'da gelecekte hangi değişiklikleri görmek istersiniz (uygun olanların tamamını seçin)?",
 	'optin-survey-answer-changes-nav' => 'Sitenin genel dolaşımını kullanımı kolay yapın.',
 	'optin-survey-answer-changes-edittools' => 'Düzenleme araçlarını çoğaltın ve geliştirin.',
 	'optin-survey-answer-changes-upload' => 'Ortam yüklemelerini ve içeriği geliştirin.',

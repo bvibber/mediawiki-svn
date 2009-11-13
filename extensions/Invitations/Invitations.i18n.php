@@ -1031,11 +1031,13 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'invite-logpage' => "Registr ëd j'anvit",
-	'invite-logpagetext' => "Sto-sì a l'é un registr ëd j'utent che as anvito l'un l'àutr a dovré le diferente possibilità software.",
+	'invite-logpagetext' => "Sto-sì a l'é un registr ëd j'utent che as anvito l'un l'àutr a dovré le diferente possibilità dël programa.",
+	'invite-logentry' => 'Anvità $1 a dovré la possibilità <i>$2</i>.',
 );
 
 /** Pashto (پښتو)

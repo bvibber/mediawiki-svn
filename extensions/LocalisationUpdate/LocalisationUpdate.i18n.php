@@ -345,6 +345,13 @@ $messages['sk'] = array(
 	'localisationupdate-desc' => 'Udržiava lokalizované správy čo najaktuálnejšie',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'localisationupdate-desc' => 'Ажурира локализоване поруке колико је то могуће',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

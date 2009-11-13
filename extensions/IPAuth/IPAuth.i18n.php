@@ -233,6 +233,13 @@ $messages['sk'] = array(
 	'ipauth-desc' => 'Automatické prihlásenie z pevných IP adries',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'ipauth-desc' => 'Аутоматско пријављивање са фиксних IP адреса',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

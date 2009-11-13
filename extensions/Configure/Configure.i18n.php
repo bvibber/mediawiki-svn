@@ -8706,8 +8706,10 @@ $messages['tet'] = array(
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'configure-desc-ns' => 'เนมสเปซ',
 	'configure-js-remove' => 'ลบ',
 	'configure-section-timezone' => 'เขตเวลา',
+	'configure-section-namespaces' => 'เนมสเปซ',
 	'configure-section-category' => 'หมวดหมู่',
 	'configure-section-search' => 'สืบค้น',
 );

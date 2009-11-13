@@ -1422,9 +1422,10 @@ Pindutin <a href='$1'>dito</a> para makabalik.",
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'spamdifftool' => 'Spam karalistesini yönet',
+	'spamdifftool' => 'Spam kara listesini yönet',
 	'spamdifftool-desc' => 'Spam karalistesine fark sayfalarından yeni girdiler eklemek için basit bir yol sağlar',
 	'spamdifftool_cantedit' => 'Üzgünüz - spam karalistesini değiştirmek için izniniz yok.',
 	'spamdifftool_notext' => "Spam karalistesine eklenecek metin yok.
@@ -1439,7 +1440,7 @@ Kullanıcı hesapları barındıran domainleri -blogspot.com, geocities.com gibi
 	'spamdifftool_no_urls_detected' => "Hiçbir url algılanmadı.
 Geri dönmek için <a href='$1'>buraya</a> tıklayın.",
 	'spamdifftool_spam_link_text' => "spam'e ekle",
-	'spamdifftool_option_domain' => 'bu domainden hepsini',
+	'spamdifftool_option_domain' => 'bu alan adından gelenlerin hepsi',
 	'spamdifftool_option_subdomain' => 'bu alt domainden hepsini',
 	'spamdifftool_option_directory' => 'bu alt domain ve dizin',
 	'spamdifftool_option_none' => 'hiçbir şey',

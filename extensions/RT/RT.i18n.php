@@ -482,15 +482,26 @@ It l'has provà: '''$1'''",
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'rt-desc' => 'Interface bonita para o RT (Request Tracker)',
-	'rt-inactive' => 'A extensão RT não está ativa',
-	'rt-badquery' => 'A extensão RT encontrou um erro ao comunicar-se com a base de dados RT',
-	'rt-nomatches' => 'Não foram encontrados bilhetes RT correspondentes',
+	'rt-inactive' => 'A extensão RT não está activa',
+	'rt-badquery' => 'A extensão RT encontrou um erro ao comunicar com a base de dados RT',
+	'rt-badlimit' => "Parâmetro LIMIT (l) inválido: deve ser um número.
+Tentou: '''$1'''",
+	'rt-badorderby' => "Parâmetro ORDER BY (ob) inválido: deve ser um campo padrão (veja a documentação).
+Tentou: '''$1'''",
+	'rt-badstatus' => "Parâmetro status (s) inválido: deve ser um campo padrão (veja a documentação).
+Tentou: '''$1'''",
+	'rt-badqueue' => "Parâmetro queue (q) inválido: deve ser uma palavra simples.
+Tentou: '''$1'''",
+	'rt-badowner' => "Parâmetro owner (o) inválido: deve ser um nome de utilizador válido.
+Tentou: '''$1'''",
+	'rt-nomatches' => 'Não foram encontrados pedidos RT correspondentes',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

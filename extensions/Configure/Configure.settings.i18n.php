@@ -14131,6 +14131,13 @@ $messages['tg-cyrl'] = array(
 	'configure-setting-wgSecretKey' => 'Калиди махфӣ',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'configure-setting-wgXhtmlNamespaces-key' => 'เนมสเปซ',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

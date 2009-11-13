@@ -33,6 +33,8 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'wikieditor-toc-preference' => 'مكّن جدول المحتويات القابل للتصفح',
+	'wikieditor-toc-show' => 'أظهر المحتويات',
+	'wikieditor-toc-hide' => 'أخفِ المحتويات',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -62,6 +64,8 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'wikieditor-toc-preference' => 'Omogući navigacijski sadržaj',
+	'wikieditor-toc-show' => 'Pokaži sadržaj',
+	'wikieditor-toc-hide' => 'Sakrij sadržaj',
 );
 
 /** Czech (Česky)
@@ -70,6 +74,8 @@ $messages['bs'] = array(
  */
 $messages['cs'] = array(
 	'wikieditor-toc-preference' => 'Zapnout navigovatelný obsah',
+	'wikieditor-toc-show' => 'Zobrazit obsah',
+	'wikieditor-toc-hide' => 'Skrýt obsah',
 );
 
 /** German (Deutsch)
@@ -91,6 +97,8 @@ $messages['diq'] = array(
  */
 $messages['dsb'] = array(
 	'wikieditor-toc-preference' => 'Nawigěrujobny zapis wopśimjeśa zmóžniś',
+	'wikieditor-toc-show' => 'Wopśimjeśe pokazaś',
+	'wikieditor-toc-hide' => 'Wopśimjeśe schowaś',
 );
 
 /** Esperanto (Esperanto)
@@ -113,6 +121,8 @@ $messages['es'] = array(
  */
 $messages['fr'] = array(
 	'wikieditor-toc-preference' => 'Activer la table des matières navigable',
+	'wikieditor-toc-show' => 'Afficher le contenu',
+	'wikieditor-toc-hide' => 'Masquer le contenu',
 );
 
 /** Galician (Galego)
@@ -120,6 +130,8 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'wikieditor-toc-preference' => 'Activar a táboa de contidos navegable',
+	'wikieditor-toc-show' => 'Mostrar o contido',
+	'wikieditor-toc-hide' => 'Agochar o contido',
 );
 
 /** Swiss German (Alemannisch)
@@ -127,6 +139,8 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'wikieditor-toc-preference' => 'Navigierbari Inhaltstabälle megli mache',
+	'wikieditor-toc-show' => 'Inhalt zeige',
+	'wikieditor-toc-hide' => 'Inhalt uusblände',
 );
 
 /** Hebrew (עברית)
@@ -141,6 +155,8 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'wikieditor-toc-preference' => 'Nawigěrujomny zapis wobsaha zmóžnić',
+	'wikieditor-toc-show' => 'Wobsah pokazać',
+	'wikieditor-toc-hide' => 'Wobsah schować',
 );
 
 /** Hungarian (Magyar)
@@ -149,6 +165,8 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'wikieditor-toc-preference' => 'Tartalomjegyzék megjelenítése szerkesztéskor',
+	'wikieditor-toc-show' => 'Tartalomjegyzék megjelenítése',
+	'wikieditor-toc-hide' => 'Tartalomjegyzék elrejtése',
 );
 
 /** Interlingua (Interlingua)
@@ -160,9 +178,12 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'wikieditor-toc-preference' => 'Daftar isi yang dapat dinavigasi',
+	'wikieditor-toc-show' => 'Tampilkan isi',
+	'wikieditor-toc-hide' => 'Sembunyikan isi',
 );
 
 /** Japanese (日本語)
@@ -171,6 +192,8 @@ $messages['id'] = array(
  */
 $messages['ja'] = array(
 	'wikieditor-toc-preference' => '編集用目次を有効化する',
+	'wikieditor-toc-show' => '目次を表示',
+	'wikieditor-toc-hide' => '目次を非表示',
 );
 
 /** Korean (한국어)
@@ -193,6 +216,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'wikieditor-toc-preference' => 'nhaltsverzeechnes duerch dat een navigéiere kann aschalten',
+	'wikieditor-toc-show' => 'Inhalt weisen',
+	'wikieditor-toc-hide' => 'Inhalt verstoppen',
 );
 
 /** Macedonian (Македонски)
@@ -235,6 +260,8 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'wikieditor-toc-preference' => 'Abìlita a scanucié la tàula dij contnù',
+	'wikieditor-toc-show' => 'Mosta contnù',
+	'wikieditor-toc-hide' => 'Stërma contnù',
 );
 
 /** Portuguese (Português)
@@ -244,6 +271,8 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'wikieditor-toc-preference' => 'Possibilitar tabela de conteúdo navegável',
+	'wikieditor-toc-show' => 'Mostrar conteúdo',
+	'wikieditor-toc-hide' => 'Esconder conteúdo',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -266,13 +295,18 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'wikieditor-toc-preference' => 'Включить оглавление с возможностью навигации',
+	'wikieditor-toc-show' => 'Показать оглавление',
+	'wikieditor-toc-hide' => 'Скрыть оглавление',
 );
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
 	'wikieditor-toc-preference' => 'සංචලනය කළ හැකි පටුන සක්‍රීය කරන්න',
+	'wikieditor-toc-show' => 'අන්තර්ගතය පෙන්වන්න',
+	'wikieditor-toc-hide' => 'අන්තර්ගතය සඟවන්න',
 );
 
 /** Slovak (Slovenčina)
@@ -280,6 +314,15 @@ $messages['si'] = array(
  */
 $messages['sk'] = array(
 	'wikieditor-toc-preference' => 'Povoliť obsah s odkazmi na časti',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'wikieditor-toc-preference' => 'Aktivera navigerbar innehållsförteckning',
+	'wikieditor-toc-show' => 'Visa innehåll',
+	'wikieditor-toc-hide' => 'Göm innehåll',
 );
 
 /** Turkish (Türkçe)
@@ -310,6 +353,8 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'wikieditor-toc-preference' => 'Sử dụng mục lục dễ duyệt tìm',
+	'wikieditor-toc-show' => 'Hiện mục lục',
+	'wikieditor-toc-hide' => 'Ẩn mục lục',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -676,6 +676,13 @@ $messages['te'] = array(
 	'mostrevisors-submit' => 'వెళ్ళు',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'mostrevisors-namespace' => 'เนมสเปซ:',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

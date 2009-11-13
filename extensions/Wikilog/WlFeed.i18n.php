@@ -36,6 +36,13 @@ $messages['br'] = array(
 	'wlfeed-desc' => 'Renkadoù genel lanvadoù gwellaet',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'wlfeed-desc' => 'Napredno generisanje klasa fida',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

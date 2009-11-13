@@ -265,6 +265,13 @@ $messages['sk'] = array(
 	'magicnonumberedheadings-desc' => 'Pridáva magické slovo „<nowiki>__NONUMBEREDHEADINGS__</nowiki>“',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'magicnonumberedheadings-desc' => 'Додаје магичну реч "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  */

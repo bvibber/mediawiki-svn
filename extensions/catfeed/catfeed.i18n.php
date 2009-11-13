@@ -426,6 +426,14 @@ $messages['tl'] = array(
 Lumikha ng bersyong nasa loob ng pahina, partikular na magagamit para sa Wikibalita (''Wikinews'').",
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'catfeed-desc' => 'Son değişiklikler beslemelerinin parçalarını kullanır.
+Özellikle Vikihaber için yararlı olan sayfa içi sürümünü oluşturun',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

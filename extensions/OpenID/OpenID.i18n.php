@@ -3661,14 +3661,14 @@ Se de futuro pretender usar OpenID para se autenticar, pode [[Special:OpenIDConv
 Caso contrário, utilize o botão "Continue" (Continuar).',
 	'openidclientonlytext' => 'Pode usar contas desta wiki como OpenIDs noutro sítio.',
 	'openidloginlabel' => 'URL do OpenID',
-	'openidlogininstructions' => '{{SITENAME}} suporta o padrão [http://openid.net/ OpenID] para autenticação única entre sítios Web.
-O OpenID permite-lhe autenticar-se em diversos sítios Web sem usar uma palavra-chave diferente em cada um.
-(Veja [http://pt.wikipedia.org/wiki/OpenID o artigo OpenID na Wikipédia] para mais informação.)
+	'openidlogininstructions' => 'A {{SITENAME}} suporta o padrão [http://openid.net/ OpenID] para autenticação unificada entre vários sítios na internet.
+O OpenID permite-lhe autenticar-se em vários sítios sem usar uma palavra-chave diferente em cada um
+(veja [http://pt.wikipedia.org/wiki/OpenID o artigo OpenID na Wikipédia] para mais informações).
 
-Se já possui uma conta em {{SITENAME}}, pode [[Special:UserLogin|autenticar-se]] com o seu nome de utilizador e palavra-chave como habitualmente.
-Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua conta em OpenID]] após autenticar-se normalmente.
+Se já possui uma conta na {{SITENAME}}, pode [[Special:UserLogin|autenticar-se]] com o seu nome de utilizador e palavra-chave como habitualmente.
+Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua conta para OpenID]] depois de se ter autenticado normalmente.
 
-Existems vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de OpenID], e você poderá já ter uma conta ativada para OpenID noutro serviço.',
+Existem vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de OpenID] e poderá já ter uma conta activada para OpenID noutro serviço.',
 	'openidupdateuserinfo' => 'Atualizar a minha informação pessoal',
 	'openiddelete' => 'Eliminar OpenID',
 	'openiddelete-text' => 'Ao clicar o botão "{{int:openiddelete-button}}", irá eliminar o OpenID $1 da sua conta.

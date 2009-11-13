@@ -399,6 +399,13 @@ $messages['tl'] = array(
 	'metakeywords-desc' => 'Nagpapahintulot ng pagsasaayos ng mga tatak na <tt><nowiki><meta "keywords"></nowiki></tt> at <tt><nowiki><meta "description"></nowiki></tt> sa bawat espasyo ng pangalan',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'metakeywords-desc' => 'Alan adına göre <tt><nowiki><meta "anahtar kelimeleri"></nowiki></tt> ve <tt><nowiki><meta "tanımı"></nowiki></tt> konfigürasyonunu mümkün kılar',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

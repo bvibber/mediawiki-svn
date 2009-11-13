@@ -463,6 +463,7 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
@@ -471,6 +472,8 @@ $messages['pt'] = array(
 	'signature-desc' => 'Permite a [[Special:SignDocument|assinatura]] de documentos',
 	'signaturelogpagetext' => 'Este é um registo de [[Special:SignDocument|todas as assinaturas adicionadas a documentos]].',
 	'signaturelogentry' => 'assinou o documento $1',
+	'right-sigadmin' => 'Administrar a assinatura de documentos',
+	'right-createsigndocument' => 'Criar documentos que possam ser assinados',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

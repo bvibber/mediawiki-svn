@@ -876,6 +876,7 @@ $messages['lb'] = array(
 	'formtitlepattern' => 'Nei $1 derbäisetzen',
 	'formsave' => 'Späicheren',
 	'formindexmismatch-title' => 'Duercherneen tëschent dem Numm an der Schabloun',
+	'formindexmismatch' => "Dëse Formulaire ass net richteg configuréiert wat d'Schablounen an d'Modeller vun den Donnéeën. De Feeler fänkt beim Index $1 un.",
 	'formarticleexists' => "D'Säit gëtt et schonn.",
 	'formarticleexiststext' => "D'Säit [[$1]] gëtt et schonn.",
 	'formbadpagename' => 'Falsche Säitennumm',

@@ -1070,6 +1070,24 @@ $messages['te'] = array(
 	'adminlinks_users' => 'వాడుకరులు',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'adminlinks' => 'Hizmetli bağlantıları',
+	'adminlinks-desc' => 'Hizmetliler için yararlı bağlantıları bulunduran bir [[Special:AdminLinks|özel sayfa]] ekler',
+	'adminlinks_documentation' => '$1 dokümantasyonu',
+	'adminlinks_general' => 'Genel',
+	'adminlinks_editsidebar' => 'Kenar çubuğunu düzenle',
+	'adminlinks_editcss' => 'CSS dosyasını düzenle',
+	'adminlinks_editmainpagename' => 'Ana sayfanın adını düzenle',
+	'adminlinks_users' => 'Kullanıcılar',
+	'adminlinks_createuser' => 'Kullanıcı oluştur',
+	'adminlinks_browsesearch' => 'Gezinme ve arama',
+	'adminlinks_importexport' => 'İçe ve dışa aktarma',
+	'right-adminlinks' => '[[Special:AdminLinks|Hizmetli bağlantılarına]] giden bağlantıyı gör',
+);
+
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Рашат Якупов
  */

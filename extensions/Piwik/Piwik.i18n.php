@@ -530,6 +530,7 @@ $messages['sr-ec'] = array(
 	'piwik-lastvisits' => 'Последње посете',
 	'piwik-countries' => 'Земље',
 	'piwik-browsers' => 'Браузери',
+	'right-viewpiwik' => 'Преглед [[Special:Piwik|Piwik статистика]]',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

@@ -443,6 +443,13 @@ $messages['tl'] = array(
 	'woopra-desc' => "Nagpapahintulot na mapatakbo ang ''[http://www.woopra.com/ Woopra Live Tracking Software]'' sa iyong instalasyong MediaWiki",
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'woopra-desc' => "[http://www.woopra.com/ Woopra Canlı Takip Yazılımı]'nın MediaWiki kurulumunuzda çalışmasını sağlar",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

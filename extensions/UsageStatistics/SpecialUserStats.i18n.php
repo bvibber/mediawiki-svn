@@ -2068,8 +2068,10 @@ $messages['tg-cyrl'] = array(
 /** Thai (ไทย)
  * @author Ans
  * @author Manop
+ * @author Octahedron80
  */
 $messages['th'] = array(
+	'usagestatisticsnamespace' => 'เนมสเปซ:',
 	'usagestatisticsstart' => 'วันที่เริ่มต้น:',
 	'usagestatisticsend' => 'วันที่สิ้นสุด:',
 	'usagestatisticsintervalday' => 'วัน',

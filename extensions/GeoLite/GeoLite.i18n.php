@@ -152,3 +152,10 @@ $messages['ru'] = array(
 	'geolite-desc' => 'Облегчённое перенаправление GeoIp',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'geolite-desc' => 'Редирекције за Lightweight GeoIp',
+);
+

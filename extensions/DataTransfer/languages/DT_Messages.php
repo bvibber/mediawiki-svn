@@ -1697,6 +1697,7 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'dt_viewxml_categories' => 'หมวดหมู่',
+	'dt_viewxml_namespaces' => 'เนมสเปซ',
 	'dt_xml_namespace' => 'เนมสเปซ',
 );
 
