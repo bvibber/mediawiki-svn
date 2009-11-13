@@ -47,10 +47,11 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
                 $current_day = new DateTime( "now" );
                 ++$num_days; //really you probably don't want today
                 
-                for( $i = 0 ; $i < ($num_days - 1) ; $i++){ //you don't want today
-                        $this->showDayTotals(false, $end_day->format("YmdHis")); //MW Format
+ 				for( $i = 0 ; $i < ($num_days - 1) ; $i++){ //you don't want today
                         $current_day->modify("-1 day");
+                        $this->showDayTotals(false, $current_day->format("YmdHis")); //MW Format
                 }
+                
         }
 	
 	
