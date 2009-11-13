@@ -123,7 +123,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 						Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $amount ) .
-						Xml::element( 'td', array( 'align' => 'right'), $average ) .
+						Xml::element( 'td', array( 'align' => 'right'), round($average, 2) ) .
 						Xml::element( 'td', array( 'align' => 'right'), $wgLang->formatNum( number_format( $conversion_rate, 2 ) ) ) 
 				);
 
