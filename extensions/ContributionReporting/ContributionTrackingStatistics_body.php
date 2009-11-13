@@ -106,15 +106,18 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				$template_link = $expanded_template[0];
 				if(isset(SpecialContributionTrackingStatistics::$templateURLs["{$expanded_template[0]}"])){
 					$link = SpecialContributionTrackingStatistics::$templateURLs["{$expanded_template[0]}"];
-					$template_link = "<a href=\"$link\">{$expanded_template[0]}</a>";
+					$template_link = Xml::element('a', array('href' =>"$link"), $expanded_template[0]);
 				}
 				
 				
 				//average donations
-				$average = $amount / $template[2];
+				$average = 0;
+				if($template[2] != 0){
+					$average = $amount / $template[2];	
+				}
 				
 				$htmlOut .= Xml::tags( 'tr', null,
-						Xml::element( 'td', array( 'align' => 'left'), $template_link ) .
+						Xml::tags( 'td', array( 'align' => 'left'), $template_link ) .
 						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[1] ) .
 						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[2] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
