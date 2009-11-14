@@ -56,7 +56,7 @@ $messages['en'] = array(
 
 	// Tracking Statistics
 	'contributiontrackingstatistics' => 'Contribution tracking statistics',
-	'contribstats-day-totals' => 'Total for today',
+	'contribstats-day-totals' => 'Total for day',
 	'contribstats-week' => 'Week',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total for this week|Weekly totals for the past $1 weeks inclusive}}',
 	'contribstats-clicks' => 'Clicks',
@@ -64,6 +64,10 @@ $messages['en'] = array(
 	'contribstats-conversion' => 'Conversion rate (%)',
 	'contribstats-template' => 'Template',
 	'contribstats-nodata' => 'No data provided',
+	'contribstats-landingpage' => 'Landing page',
+	'contribstats-donatepage' => 'Donate page',
+	'contribstats-average' => 'Average',
+	'contribstats-max' => 'Highest Donation',
 
 	// Fundraiser statistics
 	'fundraiserstatistics' => 'Fundraiser statistics',
@@ -98,8 +102,10 @@ $messages['qqq'] = array(
 	'contrib-hist-header' => 'Title of Special:ContributionHistory. See http://wikimediafoundation.org/wiki/Special:ContributionHistory for example.',
 	'contrib-hist-name' => '{{Identical|Name}}',
 	'contrib-hist-date' => '{{Identical|Date}}',
+	'contrib-hist-amount' => '{{Identical|Amount}}',
 	'contribstats-currency-range-totals' => '* $1 is a start date
 * $2 is an end date',
+	'contribstats-currency' => '{{Identical|Currency}}',
 	'contribstats-conversion' => 'Click conversion rate, see [[:wikipedia:Conversion rate|Wikipedia article]].',
 	'contribstats-template' => '{{Identical|Template}}',
 	'fundraiserstats-date' => '{{Identical|Date}}',
@@ -132,7 +138,7 @@ $messages['af'] = array(
 	'contribstats-value-under' => 'Minder as $1',
 	'contribstats-value-from' => 'Tussen $1 en $2',
 	'contribstats-value-over' => 'Meer as $1',
-	'contribstats-day-totals' => 'Totaal vir vandag',
+	'contribstats-day-totals' => 'Totaal vir dag',
 	'contribstats-week' => 'Week',
 	'contribstats-clicks' => 'Klieks',
 	'contribstats-donations' => 'Donasies',
@@ -249,6 +255,7 @@ $messages['ar'] = array(
 	'contribstats-donations' => 'تبرعات',
 	'contribstats-conversion' => 'نسبة التحويل (%)',
 	'contribstats-template' => 'قالب',
+	'contribstats-nodata' => 'لا معلومات مُعطاة',
 	'fundraiserstatistics' => 'إحصاءات جمع التبرعات',
 	'fundraiserstats-date' => 'تاريخ',
 	'fundraiserstats-day' => 'اليوم $1 من $2',
@@ -449,6 +456,28 @@ $messages['bn'] = array(
 	'fundraiserstats-tab-maximums' => 'সর্বোচ্চ (USD)',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'contrib-hist-name' => 'Anv',
+	'contrib-hist-date' => 'Deiziad hag eur',
+	'contrib-hist-amount' => 'Sammad',
+	'contribstats-day' => 'Deiz',
+	'contribstats-month' => 'Miz',
+	'contribstats-currency' => 'Moneiz',
+	'contribstats-amount' => 'Sammad (dollaroù SUA)',
+	'contribstats-total' => 'Hollad (SUA)',
+	'contribstats-avg' => 'Keitat (SUA)',
+	'contribstats-percentage-ytd' => 'Dregantad (er bl.-mañ)',
+	'contribstats-total-ytd' => 'Hollad (er bloaz-mañ)',
+	'contribstats-day-totals' => 'Hollad evit hiziv',
+	'contribstats-week' => 'Sizhun',
+	'contribstats-clicks' => 'Klikoù',
+	'contribstats-template' => 'Patrom',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -487,7 +516,7 @@ $messages['bs'] = array(
 	'contribstats-value-from' => 'Između $1 - $2',
 	'contribstats-value-over' => 'preko $1',
 	'contributiontrackingstatistics' => 'Statistike praćenja doprinosa',
-	'contribstats-day-totals' => 'Ukupno za danas',
+	'contribstats-day-totals' => 'Ukupno za dan',
 	'contribstats-week' => 'Sedmica',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Ukupno za ovu sedmicu|Ukupno sedmično za protekle $1 sedmice zaključno}}',
 	'contribstats-clicks' => 'Klikovi',
@@ -495,6 +524,7 @@ $messages['bs'] = array(
 	'contribstats-conversion' => 'Stopa pretvaranja (%)',
 	'contribstats-template' => 'Šablon',
 	'contribstats-nodata' => 'Nisu dostupni podaci',
+	'contribstats-donatepage' => 'Stranica donacija',
 	'fundraiserstatistics' => 'Statistike donatora',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dan $1 od $2',
@@ -603,7 +633,7 @@ $messages['cs'] = array(
 	'contribstats-value-from' => 'Mezi $1 a $2',
 	'contribstats-value-over' => 'Více než $1',
 	'contributiontrackingstatistics' => 'Statistika příspěvků',
-	'contribstats-day-totals' => 'Celkem za dnešek',
+	'contribstats-day-totals' => 'Denní součet',
 	'contribstats-week' => 'Týden',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Celkem za tento týden|Celkové týdenní výsledky za poslední $1 týdny včetně|Celkové týdenní výsledky za posledních $1 týdnů včetně}}',
 	'contribstats-clicks' => 'Kliknutí',
@@ -726,7 +756,7 @@ $messages['de'] = array(
 	'contribstats-value-from' => 'Zwischen $1 und $2',
 	'contribstats-value-over' => 'Mehr als $1',
 	'contributiontrackingstatistics' => 'Beitragsaufzeichnungsstatistiken',
-	'contribstats-day-totals' => 'Gesamtsumme heute',
+	'contribstats-day-totals' => 'Tagessumme',
 	'contribstats-week' => 'Woche',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Gesamtmenge für diese Woche|Wöchentliche Gesamtmengen inklusive der vergangenen $1 Wochen}}',
 	'contribstats-clicks' => 'Klicks',
@@ -746,6 +776,66 @@ $messages['de'] = array(
 	'fundraiserstats-tab-averages' => 'Durchschnittswerte (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'specialpages-group-contribution' => 'Spenden/Fundraiser',
+);
+
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'contributionreporting-desc' => 'Pere berz kerdişê Wîkîmediya ser rapor u hever',
+	'contributiontotal' => 'Tarixê yardim ê yekunî',
+	'contributionhistory' => 'Tarixê yardim ê pereyî',
+	'contrib-hist-header' => 'Her koşeyê dinyayî ra xulsaya pere dayoğan',
+	'contrib-hist-name' => 'Name',
+	'contrib-hist-date' => 'Seet u wext',
+	'contrib-hist-amount' => 'Yekun',
+	'contrib-hist-next' => 'Yardimê pere yê verîyerî',
+	'contrib-hist-previous' => 'Yardimê pere yê newîyerî',
+	'contrib-hist-anonymous' => 'Anonim',
+	'contributionstatistics' => 'Îstatistikê destek dayoğan',
+	'contribstats-desc' => 'Ser yardimê pereyî ke Wikimedia Foundationî îstatistikan bimucne',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Qe ena roce, yekun|Qe $1 roce penî, yekun}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Qe ena mengê, yekun|Qe $1 mengê penî, yekun}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Qe mengê 1î yekun|Qe $1 mengî yukun}}',
+	'contribstats-currency-range-totals' => 'Yekunê dovizî ($1 ra $2)',
+	'contribstats-contribution-range-breakdown' => 'Pê panetî detayanê destek dayoğî ($1 rê $2)',
+	'contribstats-currency-totals' => 'Qe serra $1î yekunê pereyî',
+	'contribstats-contribution-breakdown' => 'Pê panetî u serra $1î de detayanê destek dayoğî',
+	'contribstats-day' => 'Roce',
+	'contribstats-month' => 'Menge',
+	'contribstats-currency' => 'Pere (Currency)',
+	'contribstats-amount' => 'Yekun (USD)',
+	'contribstats-contributions' => 'Destek dayoğî',
+	'contribstats-total' => 'Yekun (USD)',
+	'contribstats-avg' => 'Orta (USD)',
+	'contribstats-max' => 'Tewr zafyer (USD)',
+	'contribstats-percentage-ytd' => 'Se de (YTD)',
+	'contribstats-total-ytd' => 'Yekun (YTD)',
+	'contribstats-value-exactly' => 'Tam $1 o',
+	'contribstats-value-under' => '$1 ra tay',
+	'contribstats-value-from' => '$1 ra - $2',
+	'contribstats-value-over' => '$1 ra zafyer',
+	'contributiontrackingstatistics' => 'Îstatistiksê destek dayoğî',
+	'contribstats-day-totals' => 'Ena roc de yekun',
+	'contribstats-week' => 'Hefte',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Ena hefte de yekunî|Ena hefte de yekunî u $1 hefte verînî dehil o}}',
+	'contribstats-clicks' => 'Klikan',
+	'contribstats-donations' => 'Yardimê pere',
+	'contribstats-conversion' => 'Reytinê vurnayîşî (%)',
+	'contribstats-template' => 'Template',
+	'contribstats-nodata' => 'Data çini yo',
+	'fundraiserstatistics' => 'Îstatistkê pere berz kerdoğ',
+	'fundraiserstats-date' => 'Wext',
+	'fundraiserstats-day' => 'Rocê $1î u $2',
+	'fundraiserstats-contributions' => 'Destek dayoğan',
+	'fundraiserstats-total' => 'Hemî (USD)',
+	'fundraiserstats-avg' => 'Orta (USD)',
+	'fundraiserstats-max' => 'Tewr zaf (USD)',
+	'fundraiserstats-tab-totals' => 'Hemî (USD)',
+	'fundraiserstats-tab-contributions' => 'Amarê destek dayoğan',
+	'fundraiserstats-tab-averages' => 'Orta (USD)',
+	'fundraiserstats-tab-maximums' => 'Tewr zaf (USD)',
+	'specialpages-group-contribution' => 'Destek dayoğan/Pere berz kerdoğ',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -786,7 +876,7 @@ $messages['dsb'] = array(
 	'contribstats-value-from' => 'Wót $1 - $2',
 	'contribstats-value-over' => 'Wěcej ako $1',
 	'contributiontrackingstatistics' => 'Statistika slědowanja pśinoskow',
-	'contribstats-day-totals' => 'Cełkowna suma za źinsa',
+	'contribstats-day-totals' => 'Cełkowna suma za dźeń',
 	'contribstats-week' => 'Tyźeń',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Cełkowna suma za źinsa|Tyźeńske cełkowne sumy za {{PLURAL:$1|slědny tyźeń|slědnej $1 tyźenja|slědne $1 tyźenje|slědnych $1 tyźenjow}}}} inkluziwnje',
 	'contribstats-clicks' => 'Kliknjenja',
@@ -794,6 +884,8 @@ $messages['dsb'] = array(
 	'contribstats-conversion' => 'Konwersijna rata (%)',
 	'contribstats-template' => 'Pśedłoga',
 	'contribstats-nodata' => 'Žedne daty pódane',
+	'contribstats-landingpage' => 'Celowy bok',
+	'contribstats-donatepage' => 'Pósćiwański bok',
 	'fundraiserstatistics' => 'Pósćiwańska statistika',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Źeń $1 z $2',
@@ -873,6 +965,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -892,9 +985,9 @@ $messages['eo'] = array(
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Tuto por ĉi tiu monato|Monataj tutoj por la lastaj $1 monatoj}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Tuto por $1 monato|Monataj tutoj por $1 monatoj}}',
 	'contribstats-currency-range-totals' => 'Valutaj tutoj (de $1 al $2)',
-	'contribstats-contribution-range-breakdown' => 'Kategoriigitaj kontribuoj laŭ valuto (de $1 al $2)',
+	'contribstats-contribution-range-breakdown' => 'Kategoriigitaj kontribuoj laŭ valoro (de $1 al $2)',
 	'contribstats-currency-totals' => 'Valutaj tutoj por la fiska jaro de $1',
-	'contribstats-contribution-breakdown' => 'Kategoriigitaj kontribuoj laŭ valuto por la fiska jaro de $1',
+	'contribstats-contribution-breakdown' => 'Kategoriigitaj kontribuoj laŭ valoro por la fiska jaro de $1',
 	'contribstats-day' => 'Tago',
 	'contribstats-month' => 'Monato',
 	'contribstats-currency' => 'Valuto',
@@ -936,6 +1029,7 @@ $messages['eo'] = array(
  * @author Omnipaedista
  * @author Remember the dot
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'contributiontotal' => 'Contribución total',
@@ -973,6 +1067,7 @@ $messages['es'] = array(
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total para esta semana|Totales  semanales para las pasadas $1 semanas inclusive}}',
 	'contribstats-clicks' => 'Clics',
 	'contribstats-donations' => 'Donaciones',
+	'contribstats-conversion' => 'Tasa de conversión (%)',
 	'contribstats-template' => 'Plantilla',
 	'fundraiserstatistics' => 'Estadísticas del recaudador de fondos',
 	'fundraiserstats-date' => 'Fecha',
@@ -1211,7 +1306,7 @@ $messages['fr'] = array(
 	'contribstats-value-from' => 'De $1 à $2',
 	'contribstats-value-over' => 'Plus de $1',
 	'contributiontrackingstatistics' => 'Statistiques de suivi des contributions',
-	'contribstats-day-totals' => 'Total pour aujourd’hui',
+	'contribstats-day-totals' => 'Total du jour',
 	'contribstats-week' => 'Semaine',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total pour cette semaine|Totaux hebdomadaires sur les $1 semaines passées inclues}}',
 	'contribstats-clicks' => 'Clics',
@@ -1219,6 +1314,8 @@ $messages['fr'] = array(
 	'contribstats-conversion' => 'Taux de conversion (%)',
 	'contribstats-template' => 'Modèle',
 	'contribstats-nodata' => 'Aucune donnée fournie',
+	'contribstats-landingpage' => "Page d'arrivée",
+	'contribstats-donatepage' => 'Page de don',
 	'fundraiserstatistics' => 'Statistiques de la levée de fonds',
 	'fundraiserstats-date' => 'Date',
 	'fundraiserstats-day' => '$1<sup>{{PLURAL:$1|er|e}}</sup> jour $1 de $2',
@@ -1281,7 +1378,7 @@ $messages['gl'] = array(
 	'contribstats-value-from' => 'De $1 a $2',
 	'contribstats-value-over' => 'Por riba de $1',
 	'contributiontrackingstatistics' => 'Estatísticas de seguimento das contribucións',
-	'contribstats-day-totals' => 'Total por hoxe',
+	'contribstats-day-totals' => 'Total do día',
 	'contribstats-week' => 'Semana',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total por esta semana|Totais semanais polas últimas $1 semanas}}',
 	'contribstats-clicks' => 'Clics',
@@ -1289,6 +1386,8 @@ $messages['gl'] = array(
 	'contribstats-conversion' => 'Taxa de conversión (%)',
 	'contribstats-template' => 'Modelo',
 	'contribstats-nodata' => 'Non se proporcionou ningún dato',
+	'contribstats-landingpage' => 'Páxina de chegada',
+	'contribstats-donatepage' => 'Páxina de doazóns',
 	'fundraiserstatistics' => 'Estatísticas da recadación',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Día $1 de $2',
@@ -1362,7 +1461,7 @@ $messages['gsw'] = array(
 	'contribstats-value-from' => 'Zwüsche $1 un $2',
 	'contribstats-value-over' => 'Mee wie $1',
 	'contributiontrackingstatistics' => 'Spändeverfolgigsstatischtik',
-	'contribstats-day-totals' => 'Gsamtsumme fir hite',
+	'contribstats-day-totals' => 'Gsamtsumme fir dr Tag',
 	'contribstats-week' => 'Wuche',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Gsamtsumme fir die Wuche|Gsamtsumme fir di letschte $1 Wuche}}',
 	'contribstats-clicks' => 'Clicks',
@@ -1370,6 +1469,8 @@ $messages['gsw'] = array(
 	'contribstats-conversion' => 'Konversionsrat (%)',
 	'contribstats-template' => 'Vorlag',
 	'contribstats-nodata' => 'Kei Date vorhande',
+	'contribstats-landingpage' => 'Landsyte',
+	'contribstats-donatepage' => 'Spändesyte',
 	'fundraiserstatistics' => 'Spändestatischtik',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dag $1 vo $2',
@@ -1546,7 +1647,7 @@ $messages['hsb'] = array(
 	'contribstats-value-from' => 'Wot $1 - $2',
 	'contribstats-value-over' => 'Wjace hač $1',
 	'contributiontrackingstatistics' => 'Statistika sćěhowanja přinoškow',
-	'contribstats-day-totals' => 'Dohromady za dźensa',
+	'contribstats-day-totals' => 'Dohromady za dźeń',
 	'contribstats-week' => 'Tydźeń',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Dohromady za tutón tydźeń|Tydźenske cyłkowne sumy za {{PLURAL:$1|posledni tydźeń|poslednjej $1 njedźeli|poslednje $1 njedźele|poslednich $1 njedźel}}}} inkluziwnje',
 	'contribstats-clicks' => 'Kliknjenja',
@@ -1554,6 +1655,8 @@ $messages['hsb'] = array(
 	'contribstats-conversion' => 'Konwersijna rata (%)',
 	'contribstats-template' => 'Předłoha',
 	'contribstats-nodata' => 'Žane daty podate',
+	'contribstats-landingpage' => 'Cilowa strona',
+	'contribstats-donatepage' => 'Darjenska strona',
 	'fundraiserstatistics' => 'Darjenska statistika',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dźeń $1 z $2',
@@ -1608,7 +1711,7 @@ $messages['hu'] = array(
 	'contribstats-value-from' => '$1 és $2 között',
 	'contribstats-value-over' => 'több, mint $1',
 	'contributiontrackingstatistics' => 'Adománykövetési statisztika',
-	'contribstats-day-totals' => 'Összes a mai napon',
+	'contribstats-day-totals' => 'Összes ezen a napon',
 	'contribstats-week' => 'Hét',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Heti összesítés|Heti összesítések az elmúlt $1 hetet is beleértve}}',
 	'contribstats-clicks' => 'Kattintások',
@@ -1616,6 +1719,8 @@ $messages['hu'] = array(
 	'contribstats-conversion' => 'Konverziós ráta (%)',
 	'contribstats-template' => 'Sablon',
 	'contribstats-nodata' => 'Nincs rendelkezésre álló adat',
+	'contribstats-landingpage' => 'Érkezési oldal',
+	'contribstats-donatepage' => 'Adományoldal',
 	'fundraiserstatistics' => 'Adományozási statisztikák',
 	'fundraiserstats-date' => 'Dátum',
 	'fundraiserstats-day' => '$2, $1. nap',
@@ -1693,6 +1798,7 @@ $messages['ia'] = array(
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  * @author Kandar
  */
 $messages['id'] = array(
@@ -1730,7 +1836,7 @@ $messages['id'] = array(
 	'contribstats-value-from' => 'Dari $1 - $2',
 	'contribstats-value-over' => 'Melebihi $1',
 	'contributiontrackingstatistics' => 'Pelacakan statistik kontribusi',
-	'contribstats-day-totals' => 'Jumlah untuk hari ini.',
+	'contribstats-day-totals' => 'Total harian',
 	'contribstats-week' => 'Minggu',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total untuk minggu ini|Jumlah Mingguan selama $1 minggu inklusif}}',
 	'contribstats-clicks' => 'Clicks',
@@ -1738,6 +1844,8 @@ $messages['id'] = array(
 	'contribstats-conversion' => 'Tingkat konversi (%)',
 	'contribstats-template' => 'Templat',
 	'contribstats-nodata' => 'Data tidak tersedia',
+	'contribstats-landingpage' => 'Halaman Penyambutan',
+	'contribstats-donatepage' => 'Halaman Donasi',
 	'fundraiserstatistics' => 'Statistika penggalang dana',
 	'fundraiserstats-date' => 'Tanggal',
 	'fundraiserstats-day' => 'Hari $1 dari $2',
@@ -1867,7 +1975,7 @@ $messages['ja'] = array(
 	'contribstats-value-from' => '$1 以上 $2 以下',
 	'contribstats-value-over' => '$1 以上',
 	'contributiontrackingstatistics' => '寄付追跡統計',
-	'contribstats-day-totals' => '今日の合計',
+	'contribstats-day-totals' => '一日の合計',
 	'contribstats-week' => '週',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|今週の合計|過去$1週間の1週あたりの合計}}',
 	'contribstats-clicks' => 'クリック数',
@@ -1875,6 +1983,8 @@ $messages['ja'] = array(
 	'contribstats-conversion' => 'コンバージョン率 (%)',
 	'contribstats-template' => 'テンプレート',
 	'contribstats-nodata' => 'データが提供されていません',
+	'contribstats-landingpage' => '申し込みページ',
+	'contribstats-donatepage' => '寄付ページ',
 	'fundraiserstatistics' => '資金調達統計',
 	'fundraiserstats-date' => '日付',
 	'fundraiserstats-day' => '$2 の$1日目',
@@ -1936,13 +2046,24 @@ $messages['jv'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author Malafaya
  */
 $messages['ka'] = array(
+	'contributionhistory' => 'წვლილის ისტორია',
 	'contrib-hist-name' => 'სახელი',
+	'contrib-hist-date' => 'დრო და თარიღი',
 	'contribstats-day' => 'დღე',
 	'contribstats-month' => 'თვე',
+	'contribstats-contributions' => 'წვლილი',
+	'contribstats-total' => 'ტოტალური (USD)',
+	'contribstats-avg' => 'საშუალო (USD)',
+	'contribstats-max' => 'მაქსიმუმი (USD)',
+	'contribstats-donations' => 'შეწირულობები',
+	'contribstats-template' => 'თარგი',
 	'fundraiserstats-date' => 'თარიღი',
+	'fundraiserstats-contributions' => 'წვლილი',
+	'fundraiserstats-tab-contributions' => 'წვლილის ნომერი',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -2138,7 +2259,7 @@ $messages['lb'] = array(
 	'contribstats-value-from' => 'Tësche(n) $1 a(n) $2',
 	'contribstats-value-over' => 'Méi wéi $1',
 	'contributiontrackingstatistics' => 'Statistike vun der Opzeechnung vun Donen',
-	'contribstats-day-totals' => 'Total fir haut',
+	'contribstats-day-totals' => 'Total fir den Dag',
 	'contribstats-week' => 'Woch',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total fir dës Woch|Totaler vun de Wochen wàhrend de leschten $1 Wochen}}',
 	'contribstats-clicks' => 'Klicken',
@@ -2146,6 +2267,7 @@ $messages['lb'] = array(
 	'contribstats-conversion' => 'Ëmrechnungs-Cours (%)',
 	'contribstats-template' => 'Schabloun',
 	'contribstats-nodata' => 'Keng Donnéeën uginn',
+	'contribstats-donatepage' => 'Spende-Säit',
 	'fundraiserstatistics' => 'Statistike vun den Donen',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dag $1 vu(n) $2',
@@ -2161,6 +2283,7 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Aelske
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
@@ -2169,7 +2292,7 @@ $messages['li'] = array(
 	'contributionhistory' => 'Giftegesjiedenès',
 	'contrib-hist-header' => 'Ópmèrkinger ven donore vanoet de ganse welt',
 	'contrib-hist-name' => 'Naam',
-	'contrib-hist-date' => 'Datum èn tied',
+	'contrib-hist-date' => 'Datum en tied',
 	'contrib-hist-amount' => 'Bedraag',
 	'contrib-hist-next' => 'Ieëder gifte',
 	'contrib-hist-previous' => 'Later gifte',
@@ -2198,7 +2321,7 @@ $messages['li'] = array(
 	'contribstats-value-from' => 'Tösje $1 en $2',
 	'contribstats-value-over' => 'Meer es $1',
 	'fundraiserstatistics' => 'Fónswèrvindstattistieker',
-	'fundraiserstats-date' => 'Datom',
+	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Daag $1 ven $2',
 	'fundraiserstats-contributions' => 'Gifte',
 	'fundraiserstats-total' => 'Totaal (in USD)',
@@ -2209,6 +2332,14 @@ $messages['li'] = array(
 	'fundraiserstats-tab-averages' => 'Gemiddelde (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'specialpages-group-contribution' => 'Gifte/Fónswèrvingsaksie',
+);
+
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
+$messages['lmo'] = array(
+	'contribstats-week' => 'Semana',
+	'contribstats-donations' => 'Dunazión',
 );
 
 /** Lithuanian (Lietuvių)
@@ -2279,13 +2410,16 @@ $messages['mk'] = array(
 	'contribstats-value-from' => 'Од $1 - $2',
 	'contribstats-value-over' => 'Над $1',
 	'contributiontrackingstatistics' => 'Статистики за следењето на придонеси',
-	'contribstats-day-totals' => 'Вкупно за денес',
+	'contribstats-day-totals' => 'Вкупно за денот',
 	'contribstats-week' => 'Седмица',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Вкупно за оваа седмица|Седмични вкупни износи за изминатите $1 недели, заклучно со последната}}',
 	'contribstats-clicks' => 'Кликања',
 	'contribstats-donations' => 'Донации',
 	'contribstats-conversion' => 'Стапка на придобивање на придонесувачи (%)',
 	'contribstats-template' => 'Шаблон',
+	'contribstats-nodata' => 'Нема внесено податоци',
+	'contribstats-landingpage' => 'Проследна страница',
+	'contribstats-donatepage' => 'Страница за донирање',
 	'fundraiserstatistics' => 'Статистики за собирањето на средства',
 	'fundraiserstats-date' => 'Датум',
 	'fundraiserstats-day' => 'Ден $1 од $2',
@@ -2298,6 +2432,62 @@ $messages['mk'] = array(
 	'fundraiserstats-tab-averages' => 'Просеци (USD)',
 	'fundraiserstats-tab-maximums' => 'Највисоки (USD)',
 	'specialpages-group-contribution' => 'Придонеси/Обезб. средства',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'contributionreporting-desc' => 'വിക്കിമീഡിയ ഫണ്ട്റെയ്സർ നൽകുന്ന തത്സമയ തെര്യപ്പെടുത്തൽ',
+	'contributiontotal' => 'ആകെ സംഭാവനകൾ',
+	'contributionhistory' => 'സംഭാവനകളുടെ നാൾവഴി',
+	'contrib-hist-header' => 'ലോകത്തിന്റെ നാനാഭാഗത്തു നിന്നുമുള്ള ദാതാക്കളുടെ തത്സമയ കുറിപ്പുകൾ',
+	'contrib-hist-name' => 'പേര്',
+	'contrib-hist-date' => 'സമയവും തീയതിയും',
+	'contrib-hist-amount' => 'തുക',
+	'contrib-hist-next' => 'മുൻ സംഭാവനകൾ',
+	'contrib-hist-previous' => 'പുതിയ സംഭാവനകൾ',
+	'contrib-hist-anonymous' => 'അജ്ഞാതം',
+	'contributionstatistics' => 'സംഭാവനകളുടെ സ്ഥിതിവിവരക്കണക്ക്',
+	'contribstats-desc' => 'വിക്കിമീഡിയ ഫൗണ്ടേഷനു ലഭ്യമായ സംഭാവനകളുടെ സ്ഥിതിവിവരക്കണക്ക് കാട്ടുന്നു',
+	'contribstats-daily-totals' => '{{PLURAL:$1|ഇന്ന് ആകെ|കഴിഞ്ഞ $1 ദിവസങ്ങളിൽ ഓരോ ദിവസവും ആകെയുള്ളത്}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|ഈ മാസം ആകെ|കഴിഞ്ഞ $1 മാസങ്ങളിൽ ഓരോ മാസവും ആകെയുള്ളത്}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|ഒരു മാസത്തിലാകെ|$1 മാസങ്ങളിൽ ഓരോ മാസവുമാകെ}}',
+	'contribstats-currency-range-totals' => 'നാണ്യ തുക ($1 മുതൽ $2 വരെ)',
+	'contribstats-currency-totals' => '$1 സാമ്പത്തിക വർഷത്തിൽ ആകെ തുക',
+	'contribstats-day' => 'ദിവസം',
+	'contribstats-month' => 'മാസം',
+	'contribstats-currency' => 'നാണയം',
+	'contribstats-amount' => 'തുക (USD)',
+	'contribstats-contributions' => 'സംഭാവനകൾ',
+	'contribstats-total' => 'ആകെ (USD)',
+	'contribstats-avg' => 'ശരാശരി (USD)',
+	'contribstats-max' => 'കൂടുതൽ (USD)',
+	'contribstats-percentage-ytd' => 'ശതമാനം (YTD)',
+	'contribstats-total-ytd' => 'ആകെ (YTD)',
+	'contribstats-value-exactly' => 'കൃത്യം $1',
+	'contribstats-value-under' => '$1-ലും താഴെ',
+	'contribstats-value-from' => '$1 മുതൽ $2 വരെ',
+	'contribstats-value-over' => '$1-ൽ അധികം',
+	'contribstats-day-totals' => 'ഇന്ന് ആകെ',
+	'contribstats-week' => 'ആഴ്‌‌ച',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|ഈ ആഴ്ച ആകെ|കഴിഞ്ഞ $1 ആഴ്ചകൾ ഉൾപ്പടെ ആഴ്ചകളിലെ ആകെ തുകകൾ}}',
+	'contribstats-clicks' => 'ഞെക്കലുകൾ',
+	'contribstats-donations' => 'സംഭാവനകൾ',
+	'contribstats-conversion' => 'മാറ്റത്തിന്റെ നിരക്ക് (%)',
+	'contribstats-template' => 'ഫലകം',
+	'contribstats-nodata' => 'വിവരങ്ങളൊന്നും ലഭിച്ചില്ല',
+	'fundraiserstats-date' => 'തീയതി',
+	'fundraiserstats-day' => '$2-വിൽ $1 ദിനം',
+	'fundraiserstats-contributions' => 'സംഭാവനകൾ',
+	'fundraiserstats-total' => 'ആകെ (USD)',
+	'fundraiserstats-avg' => 'ശരാശരി (USD)',
+	'fundraiserstats-max' => 'പരമാവധി (USD)',
+	'fundraiserstats-tab-totals' => 'ആകെ (USD)',
+	'fundraiserstats-tab-contributions' => 'സംഭാവനകളുടെ എണ്ണം',
+	'fundraiserstats-tab-averages' => 'ശരാശരികൾ (USD)',
+	'fundraiserstats-tab-maximums' => 'പരമാവധികൾ (USD)',
+	'specialpages-group-contribution' => 'സംഭാവനകൾ/ഫണ്ട്‌‌റെയ്സർ',
 );
 
 /** Malay (Bahasa Melayu)
@@ -2626,6 +2816,7 @@ $messages['oc'] = array(
 	'contribstats-donations' => 'Donacions',
 	'contribstats-conversion' => 'Taus de conversion (%)',
 	'contribstats-template' => 'Modèl',
+	'contribstats-nodata' => 'Cap de donada pas provesida',
 	'fundraiserstatistics' => 'Estatisticas de la levada de fonses',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Jorn $1 de $2',
@@ -2742,6 +2933,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
@@ -2758,8 +2950,8 @@ $messages['pt'] = array(
 	'contrib-hist-anonymous' => 'Anónimo',
 	'contributionstatistics' => 'Estatísticas de contribuições',
 	'contribstats-desc' => 'Apresenta estatísticas das contribuições feitas à Fundação Wikimedia',
-	'contribstats-daily-totals' => '{{PLURAL:$1|Total de hoje|Totais diários dos passados $1 dias}}',
-	'contribstats-monthly-totals' => '{{PLURAL:$1|Total deste mês|Totais mensais dos passados $1 meses}}',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Total de hoje|Totais diários dos últimos $1 dias}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Total deste mês|Totais mensais dos últimos $1 meses}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Total de $1 mês|Totais mensais de $1 meses}}',
 	'contribstats-currency-range-totals' => 'Totais por divisa (de $1 a $2)',
 	'contribstats-contribution-range-breakdown' => 'Separação das contribuições por valor (de $1 a $2)',
@@ -2779,8 +2971,11 @@ $messages['pt'] = array(
 	'contribstats-value-under' => 'Menos de $1',
 	'contribstats-value-from' => 'Entre $1 - $2',
 	'contribstats-value-over' => 'Mais de $1',
-	'contribstats-day-totals' => 'Total para hoje',
+	'contributiontrackingstatistics' => 'Estatísticas de monitorização das contribuições',
+	'contribstats-day-totals' => 'Total do dia',
 	'contribstats-week' => 'Semana',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Total desta semana|Totais semanais das últimas $1 semanas}}',
+	'contribstats-clicks' => 'Cliques',
 	'contribstats-donations' => 'Donativos',
 	'contribstats-conversion' => 'Taxa de conversão (%)',
 	'contribstats-template' => 'Predefinição',
@@ -2941,7 +3136,7 @@ $messages['ru'] = array(
 	'contribstats-value-from' => 'С $1 — $2',
 	'contribstats-value-over' => 'Более $1',
 	'contributiontrackingstatistics' => 'Статистика сбора пожертвований',
-	'contribstats-day-totals' => 'Всего на сегодняшний день',
+	'contribstats-day-totals' => 'Всего за день',
 	'contribstats-week' => 'Неделя',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Всего за эту неделю|Еженедельные итоги за последние $1 недели включительно}}',
 	'contribstats-clicks' => 'Переходы',
@@ -2949,6 +3144,8 @@ $messages['ru'] = array(
 	'contribstats-conversion' => 'Показатель конверсии (%)',
 	'contribstats-template' => 'Шаблон',
 	'contribstats-nodata' => 'Данные не указаны',
+	'contribstats-landingpage' => 'Страница приземления',
+	'contribstats-donatepage' => 'Страница пожертвований',
 	'fundraiserstatistics' => 'Статистика сбора средств',
 	'fundraiserstats-date' => 'Дата',
 	'fundraiserstats-day' => '$1 день $2',
@@ -3067,6 +3264,7 @@ $messages['sk'] = array(
 	'contribstats-donations' => 'Príspevky',
 	'contribstats-conversion' => 'Konverzný kurz (%)',
 	'contribstats-template' => 'Šablóna',
+	'contribstats-nodata' => 'Neboli poskytnuté žiadne údaje',
 	'fundraiserstatistics' => 'Štatistika fundraisingu',
 	'fundraiserstats-date' => 'Dátum',
 	'fundraiserstats-day' => 'Deň $1 z $2',
@@ -3140,6 +3338,7 @@ $messages['sr-el'] = array(
  * @author Boivie
  * @author Fluff
  * @author Najami
+ * @author Per
  */
 $messages['sv'] = array(
 	'contributionreporting-desc' => 'Liverapportering av Wikimedias insamling',
@@ -3175,6 +3374,7 @@ $messages['sv'] = array(
 	'contribstats-value-under' => 'Under $1',
 	'contribstats-value-from' => 'Från $1 - $2',
 	'contribstats-value-over' => 'Över $1',
+	'contributiontrackingstatistics' => 'Bidragsstatistik',
 	'contribstats-day-totals' => 'Summa för idag',
 	'contribstats-week' => 'Vecka',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Totalt den här veckan|Veckototaler för de senaste $1 veckorna}}',
@@ -3182,6 +3382,7 @@ $messages['sv'] = array(
 	'contribstats-donations' => 'Donationer',
 	'contribstats-conversion' => 'Konverteringsgrad (%)',
 	'contribstats-template' => 'Mall',
+	'contribstats-nodata' => 'Ingen data tillgänglig',
 	'fundraiserstatistics' => 'Insamlingsstatistik',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dag $1 av $2',
@@ -3200,23 +3401,46 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'contributionhistory' => 'విరాళాల చరిత్ర',
 	'contrib-hist-name' => 'పేరు',
 	'contrib-hist-date' => 'సమయం మరియు తేదీ',
+	'contrib-hist-amount' => 'మొత్తం',
+	'contrib-hist-next' => 'పాత విరాళాలు',
+	'contrib-hist-previous' => 'కొత్త విరాళాలు',
+	'contrib-hist-anonymous' => 'అజ్ఞాత',
+	'contributionstatistics' => 'విరాళాల గణాంకాలు',
+	'contribstats-desc' => 'వికీమీడియా ఫౌండేషన్&zwnj;కి వచ్చిన విరాళాల గణాంకాలను చూపిస్తుంది',
+	'contribstats-currency-totals' => '$1 ఆర్థిక సంవత్సరానికి ద్రవ్యాల వారీగా మొత్తాలు',
 	'contribstats-day' => 'రోజు',
 	'contribstats-month' => 'నెల',
+	'contribstats-currency' => 'ద్రవ్యం',
+	'contribstats-amount' => 'మొత్తం (USD)',
+	'contribstats-contributions' => 'దాతలు',
 	'contribstats-total' => 'మొత్తం (USD)',
 	'contribstats-avg' => 'సగటు (USD)',
 	'contribstats-max' => 'గరిష్టం (USD)',
 	'contribstats-percentage-ytd' => 'శాతం (YTD)',
 	'contribstats-total-ytd' => 'మొత్తం (YTD)',
+	'contribstats-value-exactly' => '$1 కచ్చితంగా',
+	'contribstats-value-under' => '$1 కంటే తక్కువ',
+	'contribstats-value-from' => '$1 నుండి - $2 వరకు',
+	'contribstats-value-over' => '$1 పైబడి',
+	'contribstats-day-totals' => 'నేటి మొత్తం',
 	'contribstats-week' => 'వారం',
+	'contribstats-clicks' => 'నొక్కులు',
 	'contribstats-donations' => 'విరాళాలు',
+	'contribstats-template' => 'మూస',
+	'fundraiserstatistics' => 'నిధుల సేకరణ గణాంకాలు',
 	'fundraiserstats-date' => 'తేదీ',
+	'fundraiserstats-contributions' => 'దాతలు',
 	'fundraiserstats-total' => 'మొత్తం (USD)',
 	'fundraiserstats-avg' => 'సగటు (USD)',
 	'fundraiserstats-max' => 'గరిష్ఠం (USD)',
+	'fundraiserstats-tab-totals' => 'మొత్తాలు (USD)',
+	'fundraiserstats-tab-contributions' => 'దాతల సంఖ్య',
 	'fundraiserstats-tab-averages' => 'సగటులు (USD)',
 	'fundraiserstats-tab-maximums' => 'గరిష్ఠాలు (USD)',
+	'specialpages-group-contribution' => 'విరాళాలు/నిధుల సేకరణ',
 );
 
 /** Tetum (Tetun)
@@ -3381,6 +3605,7 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'contributionreporting-desc' => 'Поточні відомості про збір пожертвувань на користь Вікімедіі',
@@ -3416,6 +3641,15 @@ $messages['uk'] = array(
 	'contribstats-value-under' => 'Менш ніж $1',
 	'contribstats-value-from' => 'З $1 - $2',
 	'contribstats-value-over' => 'Більш ніж $1',
+	'contributiontrackingstatistics' => 'Статистика збору коштів',
+	'contribstats-day-totals' => 'Загалом на сьогодні',
+	'contribstats-week' => 'Тиждень',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Усього за цей тиждень|Щотижневі підсумки за останні $1 тижня включно}}',
+	'contribstats-clicks' => 'Кліків',
+	'contribstats-donations' => 'Пожертвування',
+	'contribstats-conversion' => 'Коефіцієнт конверсії (%)',
+	'contribstats-template' => 'Шаблон',
+	'contribstats-nodata' => 'Немає даних',
 	'fundraiserstatistics' => 'Статистика збору коштів',
 	'fundraiserstats-date' => 'Дата',
 	'fundraiserstats-day' => '$1 день збору коштів $2',
@@ -3475,6 +3709,7 @@ $messages['vec'] = array(
 	'contribstats-donations' => 'Donassioni',
 	'contribstats-conversion' => 'Tasso de conversion (%)',
 	'contribstats-template' => 'Modèl',
+	'contribstats-nodata' => 'Nissun dato disponibile',
 	'fundraiserstatistics' => 'Statìsteghe de la racolta fondi',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Zorno $1 de $2',
@@ -3559,7 +3794,7 @@ $messages['vi'] = array(
 	'contribstats-value-from' => 'Từ $1–$2',
 	'contribstats-value-over' => 'Hơn $1',
 	'contributiontrackingstatistics' => 'Thống kê theo dõi quyên góp',
-	'contribstats-day-totals' => 'Tổng cộng hôm nay',
+	'contribstats-day-totals' => 'Tổng cộng trong ngày',
 	'contribstats-week' => 'Tuần',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Tổng số tuần này|Tổng số hàng tuần trong $1 tuần trước}}',
 	'contribstats-clicks' => 'Số lần nhấn chuột',
@@ -3567,6 +3802,8 @@ $messages['vi'] = array(
 	'contribstats-conversion' => 'Tỷ lệ chuyển đổi (%)',
 	'contribstats-template' => 'Bản mẫu',
 	'contribstats-nodata' => 'Không có dữ liệu',
+	'contribstats-landingpage' => 'Trang Giới thiệu',
+	'contribstats-donatepage' => 'Trang Quyên góp',
 	'fundraiserstatistics' => 'Thống kê về vận động gây quỹ',
 	'fundraiserstats-date' => 'Ngày',
 	'fundraiserstats-day' => 'Ngày $1 trong $2',

@@ -82,16 +82,7 @@ $egFundraiserStatisticsFundraisers = array(
 $egFundraiserStatisticsMinimum = 1;
 $egFundraiserStatisticsMaximum = 10000;
 
-// Allowed display templates since users can introduce noise
-$wgAllowedTemplates = array(
-			'enwiki_00',
-			'enwiki_01',
-			'enwiki_02',
-			'enwiki_03',
-			'enwiki_04',
-			'enwiki_05',
-			'donate'
-		);
+
 
 $wgContributionTrackingStatisticsViewWeeks = 3;
 

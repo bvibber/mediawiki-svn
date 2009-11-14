@@ -24,7 +24,6 @@ class ContributionHistory extends SpecialPage {
 		$db = efContributionReportingConnection();
 		
 		$output = '<style type="text/css">';
-		$output .= 'td {vertical-align: top; padding: 5px;}';
 		$output .= 'td.left {padding-right: 10px;}';
 		$output .= 'td.right {padding-left: 10px; text-align: right;}';
 		$output .= 'td.alt {background-color: #DDDDDD;}';
@@ -140,7 +139,7 @@ class ContributionHistory extends SpecialPage {
 		$output .= $pagingDiv;
 
 		header( 'Cache-Control: max-age=300,s-maxage=300' );
-		$wgOut->addWikiText( '{{2009/Donate-banner/' . $language . '}}' );
+		$wgOut->addWikiText( '{{2009/Donate-header/' . $language . '}}' );
 		$wgOut->addHTML( '<h1>' . $this->msg( 'contrib-hist-header' ) . '</h1>' );
 		$wgOut->addWikiText( '<strong>{{2008/Contribution history introduction/' . $language . '}}</strong>' );
 		$wgOut->addHTML( $output );
