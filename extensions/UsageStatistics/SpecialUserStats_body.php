@@ -1834,7 +1834,7 @@ function CP_getCalendar() {
                 else {
                         result += '             <A CLASS="'+this.cssPrefix+'cpTodayText" HREF="javascript:'+windowref+this.returnFunction+'(\''+now.getFullYear()+'\',\''+(now.getMonth()+1)+'\',\''+now.getDate()+'\');'+windowref+'CP_hideCalendar(\''+this.index+'\');">'+this.todayText+'</A>';
                         }
-                result += '             <BR>';
+                result += '             <br />';
                 result += '     </TD></TR></TABLE></CENTER></TD></TR></TABLE>';
         }
 
@@ -1875,12 +1875,12 @@ function CP_getCalendar() {
         // Code for QUARTER display
         // ------------------------
         if (this.displayType=="quarter") {
-                result += '<BR><TABLE WIDTH=120 BORDER=1 CELLSPACING=0 CELLPADDING=0 ALIGN=CENTER>';
+                result += '<br /><TABLE WIDTH=120 BORDER=1 CELLSPACING=0 CELLPADDING=0 ALIGN=CENTER>';
                 for (var i=0; i<2; i++) {
                         result += '<TR>';
                         for (var j=0; j<2; j++) {
                                 var quarter = ((i*2)+j+1);
-                                result += '<TD WIDTH=50% ALIGN=CENTER><BR><A CLASS="'+this.cssPrefix+'cpText" HREF="javascript:'+windowref+this.returnQuarterFunction+'('+year+','+quarter+');'+windowref+'CP_hideCalendar(\''+this.index+'\');" CLASS="'+date_class+'">Q'+quarter+'</A><BR><BR></TD>';
+                                result += '<TD WIDTH=50% ALIGN=CENTER><br /><A CLASS="'+this.cssPrefix+'cpText" HREF="javascript:'+windowref+this.returnQuarterFunction+'('+year+','+quarter+');'+windowref+'CP_hideCalendar(\''+this.index+'\');" CLASS="'+date_class+'">Q'+quarter+'</A><br /><br /></TD>';
                                 }
                         result += '</TR>';
                         }

@@ -119,12 +119,12 @@
 	function add_editor_options(){
 		global $wgOut;
 		$wgOut->addHTML( '<h3>' . wfMsg('mv_editor_options') . '</h3>'.
-				wfMsg('mv_editor_mode') . '<br> ' .
+				wfMsg('mv_editor_mode') . '<br /> ' .
 				'<blockquote><input type="radio" value="simple_editor" name="opt_editor">' . 
 						wfMsg('mv_simple_editor_desc') . ' </blockquote>' .
 				'<blockquote><input type="radio" value="advanced_editor" name="opt_editor">' .
 						wfMsg('mv_advanced_editor_desc') . ' </blockquote>'.
-				wfMsg('mv_other_options') . '<br>' . 
+				wfMsg('mv_other_options') . '<br />' . 
 				'<blockquote><input type="checkbox" value="contextmenu_opt" name="contextmenu_opt">' . 
 						wfMsg('mv_contextmenu_opt') . ' </blockquote>'				
 				 );				

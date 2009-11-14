@@ -156,7 +156,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		if ( $showDiff ) {
 			$text .= Xml::openElement( 'form', array( 'action' => $wgScript ) ) . "\n" .
 			Xml::hidden( 'title', $self->getPrefixedDBKey() ) . "\n" .
-			$this->getButton() . "<br/>\n";
+			$this->getButton() . "<br />\n";
 		}
 		$text .= $pager->getBody();
 		if ( $showDiff ) {
@@ -296,9 +296,9 @@ class SpecialViewConfig extends ConfigurationPage {
 			foreach( $wgConfigureWikis as $wiki ) {
 				$selector->addOption( $wiki );
 			}
-			$form .= $selector->getHTML() . "<br/>";
+			$form .= $selector->getHTML() . "<br />";
 		} else {
-			$form .= Xml::input( 'wiki', false, $this->mWiki )."<br/>";
+			$form .= Xml::input( 'wiki', false, $this->mWiki )."<br />";
 		}
 
 		$form .= Xml::submitButton( wfMsg( 'configure-select-wiki-submit' ) );

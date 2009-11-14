@@ -71,9 +71,9 @@ class SpecialAddComment extends UnlistedSpecialPage {
 		if ( !preg_match( wfMsgForContentNoTrans( 'commentbox-regex' ), $text ) )
 			$subject = wfMsgForContent( 'commentbox-first-comment-heading' ) . "\n";
 		$sig = $wgUser->isLoggedIn() ? "-- ~~~~" : "-- $Author ~~~~~";
-		// Append <br/> after each newline, except if the user started a new paragraph
-		$Comment = preg_replace( '/(?<!\n)\n(?!\n)/', "<br/>\n", $Comment );
-		$text .= "\n\n" . $subject . $Comment . "\n<br/>" . $sig;
+		// Append <br /> after each newline, except if the user started a new paragraph
+		$Comment = preg_replace( '/(?<!\n)\n(?!\n)/', "<br />\n", $Comment );
+		$text .= "\n\n" . $subject . $Comment . "\n<br />" . $sig;
 		try {
 			$req = new FauxRequest( array(
 						'action'  => 'edit',

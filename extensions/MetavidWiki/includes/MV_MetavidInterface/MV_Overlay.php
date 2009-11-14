@@ -377,7 +377,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 					$smwKeyTitle = Title::newFromText( $smw_key );
 					$valueTitle = Title::newFromText( $smw_attr_val );
 					if ( $template_key == 'anno_en' )
-						$smw_text_html .= ucwords( $smwKeyTitle->getText() ) . ': ' . $sk->makeLinkObj( $valueTitle ) . '<br>';
+						$smw_text_html .= ucwords( $smwKeyTitle->getText() ) . ': ' . $sk->makeLinkObj( $valueTitle ) . '<br />';
 				}
 
 				if ( !$added_play_link && $mvd_page != '' ) {
@@ -515,7 +515,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			$rlink = '<a title="' . htmlspecialchars( wfMsg( 'mv_remove_title' ) ) . '" href="javascript:mv_disp_remove_mvd(\'' . htmlspecialchars( $mvd_page->wiki_title ) . '\', \'' . htmlspecialchars( $mvd_page->id ) . '\')">' . wfMsg( 'mv_remove' ) . '</a>';
 			$out .= ' ' .  $rlink;
 		}
-		$out .= " )<br> ";
+		$out .= " )<br /> ";
 		return $out;
 	}
 	/*
@@ -605,7 +605,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 								'<div class="autocomplete" id="smw_' . htmlspecialchars( $prop ) . '_choices_' . htmlspecialchars( $mvd_id ) . '" style="display: none;"/>
 								</td></tr>';
 					} else {
-						print '<span class="error">Error:</span>' . $sk->makeKnownLinkObj( $swmTitle, $swmTitle->getText() ) . ' does not exist<br>' ;
+						print '<span class="error">Error:</span>' . $sk->makeKnownLinkObj( $swmTitle, $swmTitle->getText() ) . ' does not exist<br />' ;
 					}
 				}
 				$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
@@ -622,7 +622,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 							'<a  href="#" onclick="$j(\'#ext_cat_' . $i . '\').fadeOut(\'fast\').remove();return false;">
 								<img border="0" src="' . $mvgScriptPath . '/skins/images/delete.png">
 							</a>
-							</span><br>';
+							</span><br />';
 						$i++;
 					}
 					$o .= '</tr>';
@@ -663,7 +663,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
   		 */
 		$mvd_id = htmlspecialchars( $mvd_id );
 		$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
-		$out .= '<br><div class="inOutSlider"></div><br />';
+		$out .= '<br /><div class="inOutSlider"></div><br />';
 
 		$out .= '<span style="float:left;"><label class="mv_css_form" for="mv_start_hr_' . $mvd_id . '"><i>' . wfMsg( 'mv_start_desc' ) . ':</i></label> ' .
 			'<input class="mv_adj_hr" size="8" maxlength="8" value="' . htmlspecialchars( $start_time ) . '" id="mv_start_hr_' . $mvd_id . '" name="mv_start_hr_' . $mvd_id . '">' .

@@ -223,7 +223,7 @@ class CodeCommentLinker {
 
 	function link( $text ) {
 		# Catch links like http://www.mediawiki.org/wiki/Special:Code/MediaWiki/44245#c829
-		# Ended by space or brackets (like those pesky <br/> tags)
+		# Ended by space or brackets (like those pesky <br /> tags)
 		$text = preg_replace_callback( '/(\b)(' . wfUrlProtocols() . ')([^ <>]+)(\b)/', array( $this, 'generalLink' ), $text );
 		$text = preg_replace_callback( '/\br(\d+)\b/', array( $this, 'messageRevLink' ), $text );
 		$text = preg_replace_callback( '/\bbug #?(\d+)\b/i', array( $this, 'messageBugLink' ), $text );

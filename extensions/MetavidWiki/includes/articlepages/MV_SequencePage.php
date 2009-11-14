@@ -700,7 +700,7 @@ class MV_SequencePage extends Article {
 		foreach($mvd_rows as $mvd){
 		//output a link /line break
 		$MV_Overlay->outputMVD($mvd);
-		$wgOut->addHTML('<br>');
+		$wgOut->addHTML('<br />');
 		}
 		$clip['desc']=$wgOut->getHTML();
 		$wgOut->clearHTML();

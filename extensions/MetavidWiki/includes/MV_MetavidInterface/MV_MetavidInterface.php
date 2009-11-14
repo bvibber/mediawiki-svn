@@ -89,7 +89,7 @@
 					'</span>'.
 				'</span>' .
 			$this->components['MV_Tools']->stream_paging_links( 'next' ) .
-			'<br><span style="font-size:80%">' .
+			'<br /><span style="font-size:80%">' .
 				wfMsg( 'mv_stream_length' ) . seconds2Description( $this->article->mvTitle->getDuration(), true ) . ' <i>'.
 			'<span style="font-size:90%">';
 		$this->page_header .= wfMsg('mv_stream_tool_heading'). ':</i></span> <span style="font-size:70%">';

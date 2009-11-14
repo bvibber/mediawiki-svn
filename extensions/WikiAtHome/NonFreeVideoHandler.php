@@ -101,7 +101,7 @@ class NonFreeVideoHandler extends MediaHandler {
 			}
 		}else{
 			$metadata['error'] = array(
-				'message' => 'missing ffmpeg2theora<br> check that ffmpeg2theora is installed and that $wgffmpeg2theora points to its location',
+				'message' => 'missing ffmpeg2theora<br /> check that ffmpeg2theora is installed and that $wgffmpeg2theora points to its location',
 				'code' => 1
 			);
 		}

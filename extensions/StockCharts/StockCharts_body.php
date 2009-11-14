@@ -153,8 +153,8 @@ class StockCharts {
 			'<div id="wikichartContainer_' . $chartId . '">' .
 			'<div id="wikichartContainer_' . $chartId . '_noFlash" style="width: $WIDTHpx; display:none;">' .
 			'<a href="http://get.adobe.com/flashplayer/">' .
-			'<img src="http://cdn.wikinvest.com/wikinvest/images/adobe_flash_logo.gif" alt="Flash" style="border-width: 0px;"/><br/>' .
-			'Flash Player 9 or higher is required to view the chart<br/><strong>Click here to download Flash Player now</strong>' .
+			'<img src="http://cdn.wikinvest.com/wikinvest/images/adobe_flash_logo.gif" alt="Flash" style="border-width: 0px;"/><br />' .
+			'Flash Player 9 or higher is required to view the chart<br /><strong>Click here to download Flash Player now</strong>' .
 			'</a>' .
 			'</div>' .
 			'</div>' .

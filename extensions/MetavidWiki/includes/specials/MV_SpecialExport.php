@@ -456,9 +456,9 @@ echo $ns?>meta> </<?php echo $ns?>head>
 		$SMWAskPage = new SMWAskPage();
 		$SMWAskPage->extractQueryParameters( $wgRequest->getVal( 'q' ) );
 
-		// print 'query string: ' . $SMWAskPage->m_querystring . "\n<br>";
-		// print 'm_params: ' . print_r($SMWAskPage->m_params) . "\n<br>";
-		// print 'print outs: ' .print_r($SMWAskPage->m_printouts) . "\n<br>";
+		// print 'query string: ' . $SMWAskPage->m_querystring . "\n<br />";
+		// print 'm_params: ' . print_r($SMWAskPage->m_params) . "\n<br />";
+		// print 'print outs: ' .print_r($SMWAskPage->m_printouts) . "\n<br />";
 		// set up the feed:
 		$this->feed = new mvRSSFeed(
 		$wgSitename . ' - ' . wfMsg( 'mediasearch' ) . ' : ' . strip_tags( $SMWAskPage->m_querystring ), // title

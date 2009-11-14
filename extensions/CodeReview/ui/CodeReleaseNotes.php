@@ -94,7 +94,7 @@ class CodeReleaseNotes extends CodeView {
 				$summary = $this->shortenSummary( $summary );
 				# Anything left? (this can happen with some heuristics)
 				if ( $summary ) {
-					$summary = str_replace( "\n", "<br/>", $summary ); // Newlines -> <br/>
+					$summary = str_replace( "\n", "<br />", $summary ); // Newlines -> <br />
 					$wgOut->addHTML( "<li>" );
 					$wgOut->addHTML(
 						$linker->link( $summary ) . " <i>(" . htmlspecialchars( $row->cr_author ) .

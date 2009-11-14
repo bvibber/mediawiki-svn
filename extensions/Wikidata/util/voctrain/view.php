@@ -28,9 +28,9 @@ function _displayLogin( $username = null, $status = null, &$auth = null ) {
 	}
 	$language->i18nprint( '
 	 <fieldset class="settings">
-	<div class="datarow"><label><|User name|>: </label><input type="text" name="username" /></div><br/>
-	<div class="datarow"><label><|Password|>: </label><input type="password" name="password" /></div><br/>
-	<div class="datarow"><label><|Language|>: </label>' . _langSelect() . '</div><br/>
+	<div class="datarow"><label><|User name|>: </label><input type="text" name="username" /></div><br />
+	<div class="datarow"><label><|Password|>: </label><input type="password" name="password" /></div><br />
+	<div class="datarow"><label><|Language|>: </label>' . _langSelect() . '</div><br />
 	</fieldset>
 	<fieldset class="settings">
 	<div class="datarow">
@@ -122,17 +122,17 @@ class View {
 		</fieldset>
 		<h2><|Number of questions|></h2>
 		<fieldset class='settings'>
-		<div class='datarow'><input type='radio' value='10' name='exercise_size' /><label>10</label></div><br/>
-		<div class='datarow'><input type='radio' value='25' name='exercise_size' checked /><label>25</label></div><br/>
-		<div class='datarow'><input type='radio' value='50' name='exercise_size' /><label>50</label></div><br/>
-		<div class='datarow'><input type='radio' value='75' name='exercise_size' /><label>75</label></div><br/>
-		<div class='datarow'><input type='text' size='4' value='' name='exercise_size_other'><|other|></div><br/>
+		<div class='datarow'><input type='radio' value='10' name='exercise_size' /><label>10</label></div><br />
+		<div class='datarow'><input type='radio' value='25' name='exercise_size' checked /><label>25</label></div><br />
+		<div class='datarow'><input type='radio' value='50' name='exercise_size' /><label>50</label></div><br />
+		<div class='datarow'><input type='radio' value='75' name='exercise_size' /><label>75</label></div><br />
+		<div class='datarow'><input type='text' size='4' value='' name='exercise_size_other'><|other|></div><br />
 		</fieldset>
 		</p>
 		<h2><|hiding|></h2>
 		<fieldset class='settings'>
-		<div class='datarow'><input type='checkbox' value='hide_definition' name='hide_definition' /><label><|hide definitions in question language|></label></div><br/>
-		<div class='datarow'><input type='checkbox' value='hide_words' name='hide_words' /><label><|hide words in question language|></label></div><br/>
+		<div class='datarow'><input type='checkbox' value='hide_definition' name='hide_definition' /><label><|hide definitions in question language|></label></div><br />
+		<div class='datarow'><input type='checkbox' value='hide_words' name='hide_words' /><label><|hide words in question language|></label></div><br />
 		</fieldset>
 		</p>
 		</fieldset>
@@ -140,8 +140,8 @@ class View {
 		<fieldset class='settings'>
 		<!-- should be a dropdown, perhaps -->
 		<|Please specify the languages you want to test in|> <a href='http://www.sil.org/ISO639-3/codes.asp'><|ISO-639-3 format|></a>. <|(eg, eng for English, deu for Deutch (German)).|> <|Depending on your test set, some combinations might work better than others.|> <|Separate values by commas to use multiple languages.|>
-		<div class='datarow'><label><|Questions|>:</label> <input type='text' value='eng' name='questionLanguages'/></div><br/>
-		<div class='datarow'><label><|Answers|>: </label><input type='text' value='deu' name='answerLanguages'/></li></div><br/>
+		<div class='datarow'><label><|Questions|>:</label> <input type='text' value='eng' name='questionLanguages'/></div><br />
+		<div class='datarow'><label><|Answers|>: </label><input type='text' value='deu' name='answerLanguages'/></li></div><br />
 		<hr/>
 		</p>
 		<input type='submit' value='<|start exercise|>'/> 
@@ -182,7 +182,7 @@ class View {
 		if ( $question === null ) {
 			$question = $exercise->nextQuestion();
 		}
-		$definitions = implode( ",<br/>", $question->getQuestionDefinitions() );
+		$definitions = implode( ",<br />", $question->getQuestionDefinitions() );
 		$words = implode( ", ", $question->getQuestionWords() );
 		$questionDmid = $question->getDmid();
 		$questions_remaining = $exercise->countQuestionsRemaining();
@@ -212,7 +212,7 @@ class View {
 				<input type='hidden' name='unhide_words' value='$questionDmid'/>
 				<h2><|Word|></h2>
 				<p class='result'>
-				<i><|The word to translate|>:</i><br/>
+				<i><|The word to translate|>:</i><br />
 				$words
 				</p>
 			" );
@@ -229,7 +229,7 @@ class View {
 				<input type='hidden' name='unhide_definition' value='$questionDmid'/>
 				<h2><|Definition|></h2>
 				<p class='result'>
-				<i><|Dictionary definition to help you|>:</i><br/>
+				<i><|Dictionary definition to help you|>:</i><br />
 				$definitions 
 				</p>
 			" );
@@ -241,15 +241,15 @@ class View {
 
 		if ( $peek ) {
 			$this->language->i18nprint( "
-				<i><|peek|>:</i>$answers<br/>" );
+				<i><|peek|>:</i>$answers<br />" );
 		} else {
 			$this->language->i18nprint( "
-				<input type='submit' value='(<|peek|>)' name='peek' /><br/>
+				<input type='submit' value='(<|peek|>)' name='peek' /><br />
 			" );
 		}
 
 		$this->language->i18nprint( "
-			<i><|Please type your answer here|></i><br/>
+			<i><|Please type your answer here|></i><br />
 
 			<input type='text' value='' name='userAnswer' />
 			<input type='submit' value='<|submit answer|>' name='submitAnswer' />
@@ -269,7 +269,7 @@ class View {
 
 	/** Show the answer to a question */
 	public function answer( $question, $correct ) {
-		$definitions = implode( ",<br/>", $question->getQuestionDefinitions() );
+		$definitions = implode( ",<br />", $question->getQuestionDefinitions() );
 		$words = implode( ", ", $question->getQuestionWords() );
 		$answers = implode( ", ", $question->getAnswers() );
 
@@ -300,7 +300,7 @@ class View {
 
 	public function vocview( $question ) {
 		# we only use questions and questionlanguages, we haven't set answerlanguages.
-		$definitions = implode( ",<br/>", $question->getQuestionDefinitions() );
+		$definitions = implode( ",<br />", $question->getQuestionDefinitions() );
 		$words = implode( ", ", $question->getQuestionWords() );
 		$questionDmid = $question->getDmid();
 		$answers = implode( ", ", $question->getAnswers() );
@@ -311,13 +311,13 @@ class View {
 			<hr>
 			<h2><|Word|></h2>
 			<p class='result'>
-			<i><|word|>:</i><br/>
+			<i><|word|>:</i><br />
 			$words
 			</p>
 			<hr>
 			<h2><|Definition|></h2>
 			<p class='result'>
-			<i><|Dictionary definitions|>:</i><br/>
+			<i><|Dictionary definitions|>:</i><br />
 			$definitions 
 			</p>
 			<hr>
@@ -360,7 +360,7 @@ class View {
 			$exercise->rewind();
 			foreach ( $exercise as $question ) {
 				print "<tr>";
-				print "<td>" . implode( ",<br/>", $question->getQuestionDefinitions() ) . "</td>";
+				print "<td>" . implode( ",<br />", $question->getQuestionDefinitions() ) . "</td>";
 				print "<td>" . implode( ", ", $question->getQuestionWords() ) . "</td>";
 				print "<td>" . implode( ", ", $question->getAnswers() ) . "</td>";
 				print "</tr>";
@@ -382,7 +382,7 @@ class View {
 
 	public function failed_new_user() {
 		$this->language->i18nprint( "<h1> <|Could not create new user|> </h1>\n" );
-		$this->language->i18nprint( "<|Type a username and optional password, (or try a different username)|><br/>\n" );
+		$this->language->i18nprint( "<|Type a username and optional password, (or try a different username)|><br />\n" );
 		$this->language->i18nprint( "<a href='?'><|try again?|></a>\n" );
 	}
 

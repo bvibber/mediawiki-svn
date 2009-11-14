@@ -176,10 +176,10 @@ class SpecialYouTubeAuthSub extends SpecialPage {
 
 			$next_url = urlencode($wgTitle->getFullURL() . "?metaid={$meta_id}");
 
-			$wgOut->addHTML(wfMsg('youtubeauthsub_uploadhere') . "<br/><br/>
+			$wgOut->addHTML(wfMsg('youtubeauthsub_uploadhere') . "<br /><br />
 					 <form action='{$url}?nexturl={$next_url}' METHOD='post' enctype='multipart/form-data' name='videoupload'>
 						  <input type='file' name='file' size='50'/>
-						<input type='hidden' name='token' value='{$token}'/><br/>
+						<input type='hidden' name='token' value='{$token}'/><br />
 						<input type='submit' name='submitbtn' value='" . wfMsg('youtubeauthsub_uploadbutton') . "'/>
 						</form>
 						<center>

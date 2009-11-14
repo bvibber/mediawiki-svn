@@ -6230,9 +6230,9 @@ Vérsi nu kaénkripsi aya di handap. Éta hasil baris [[Special:BoardVote/dump|d
 	'boardvote_nosession' => 'Anjeun kudu asup log kalawan ngaran pamaké Wikimedia anu sah.
 Sumangga asup log ka wiki di mana Anjeun nyumponan sarat pikeun milih, lajeng indit ka <nowiki>[[Special:BoardVote]]</nowiki>.
 Anjeun kudu maké rekening kalawan {{PLURAL:$1|contribution|kontribusi}} saeutikna $1 saméméh $2, sarta geus ngabogaan saeutikna $3 {{PLURAL:$3|contribution|kontribusi}} antara $4 sarta $5.',
-	'boardvote_notloggedin' => 'Anjeun can asup log.<br>
+	'boardvote_notloggedin' => 'Anjeun can asup log.<br />
 Pikeun nyoara, anjeun kudu maké rekening nu sahanteuna geus boga $1 kontribusi saméméh $2, jeung sahanteuna boga $3 kontibusi antara $4 jeung $5.',
-	'boardvote_notqualified' => 'Anjeun teu nedunan sarat pikeun ngilu milih.<br>
+	'boardvote_notqualified' => 'Anjeun teu nedunan sarat pikeun ngilu milih.<br />
 Sahanteuna Anjeun kudu geus boga $1 éditan saméméh $2, sarta boga $3 kontibusi antara $4 jeung $5.',
 	'boardvote_novotes' => 'Acan aya pamilih.',
 	'boardvote_time' => 'Wanci',

@@ -938,7 +938,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		if ( $type == 'image-url' ) {
 			if ( !$allowed )
 				return '<code>' . htmlspecialchars( (string)$default ) . '</code>';
-			return wfMsgExt( 'configure-image-url-explanation', 'parseinline' ) . '<br/>' .
+			return wfMsgExt( 'configure-image-url-explanation', 'parseinline' ) . '<br />' .
 				Xml::input( "wp$conf", 45, (string)$default,
 					array( 'class' => 'image-selector', 'id' => 'image-url-textbox-'.$conf )
 				) . '&nbsp;' .
@@ -1044,7 +1044,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-key-{$i}",
 							'type' => 'text', 'value' => $key, 'size' => 20
-						) ) . "<br/>\n";
+						) ) . "<br />\n";
 					else
 						$text .= '<code>' . htmlspecialchars( $key ) . '</code>';
 					$text .= '</td><td>';
@@ -1052,7 +1052,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-val-{$i}",
 							'type' => 'text', 'value' => $val, 'size' => 20
-						) ) . "<br/>\n";
+						) ) . "<br />\n";
 					else
 						$text .= '<code>' . htmlspecialchars( $val ) . '</code>';
 					$text .= '</td></tr>';
@@ -1064,12 +1064,12 @@ abstract class ConfigurationPage extends SpecialPage {
 					$text .= Xml::element( 'input', array(
 						'name' => 'wp' . $conf . "-key-0",
 						'type' => 'text', 'value' => '', 'size' => 20,
-					) ) . "<br/>\n";
+					) ) . "<br />\n";
 					$text .= '</td><td>';
 					$text .= Xml::element( 'input', array(
 						'name' => 'wp' . $conf . "-val-0",
 						'type' => 'text', 'value' => '', 'size' => 20,
-					) ) . "<br/>\n";
+					) ) . "<br />\n";
 					$text .= '</td></tr>';
 				} else {
 					$text .= "<tr><td style='width:10em; height:1.5em;'><hr /></td>" .
@@ -1232,7 +1232,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						'cols' => 30,
 						'rows' => 5, ) ) .
 					( isset( $default[$ns] ) ? implode( "\n", (array)$default[$ns] ) : '' ) .
-					Xml::closeElement( 'textarea' ) . "<br/>\n";
+					Xml::closeElement( 'textarea' ) . "<br />\n";
 				} else {
 					$text .= "<pre>" . ( isset( $default[$ns] ) ?
 						htmlspecialchars( implode( "\n", (array)$default[$ns] ) ) : '' ) . "\n</pre>";

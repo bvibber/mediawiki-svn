@@ -355,7 +355,7 @@ class MV_SpecialMediaSearch {
 			$prevnext = mvViewPrevNext( $this->offset, $this->limit, SpecialPage :: getTitleFor( 'MediaSearch' ), $this->get_httpd_filters_query(), ( $this->num < $this->limit ) );
 			$o .= '<li class="prevnext">' . $prevnext . '</li>';
 		}
-		$br = '<br>';
+		$br = '<br />';
 		$enddash = '';
 
 		$sTitle = Title :: MakeTitle( NS_SPECIAL, 'MvExportSearch' );
@@ -374,7 +374,7 @@ class MV_SpecialMediaSearch {
 		$o .= 	$sk->makeKnownLinkObj( $sTitle, 'RSS', $this->get_httpd_filters_query() );
 		$o .= '</li>';
 
-		$o .= '<br>';
+		$o .= '<br />';
 		foreach ( array ( 'relevant', 'recent', 'viewed' ) as $type ) {
 			if ( $this->order == $type ) {
 				$o .= $enddash . '<li class="relevant">' . wfMsg( 'mv_most_' . $type ) . '</li>' ;
@@ -424,7 +424,7 @@ class MV_SpecialMediaSearch {
 								' clip is part of a larger '.
 								$sk->makeKnownLinkObj($pAnnoStreamLink, seconds2Description ( $pMvTitle->getSegmentDuration(), true, true ) ) . ' Speech';
 					if($pmvd->category){
-						$pmeta_out.='<br>Covering: ';
+						$pmeta_out.='<br />Covering: ';
 						$coma='';
 						foreach($pmvd->category as $cat_titlekey ){
 							$cTitle = $cTitle = Title :: MakeTitle( NS_CATEGORY, $cat_titlekey );
@@ -434,7 +434,7 @@ class MV_SpecialMediaSearch {
 						}
 					}
 					if($pmvd->Bill){
-						$pmeta_out.='<br>Bill: ';
+						$pmeta_out.='<br />Bill: ';
 						$bTitle = Title :: newFromText( $pmvd->Bill );
 						$pmeta_out .= $sk->makeKnownLinkObj( $bTitle, $bTitle->getText() );
 						assoc_array_increment( $sideBarLinkBucket, 'bill', $pmvd->Bill );
@@ -445,7 +445,7 @@ class MV_SpecialMediaSearch {
 			if ( isset ( $mvd->spoken_by ) ) {
 				$ptitle = Title :: MakeTitle( NS_MAIN, $mvd->spoken_by );
 				$mvd_cnt_links .= wfMsg( 'mv_search_spoken_by' ) . ': ' . $sk->makeKnownLinkObj( $ptitle );
-				$mvd_cnt_links .= '<br>';
+				$mvd_cnt_links .= '<br />';
 				assoc_array_increment( $sideBarLinkBucket, 'person', $mvd->spoken_by );
 			}
 			$mvd_cat_links = $mvd_bill_links = '';
@@ -757,7 +757,7 @@ class MV_SpecialMediaSearch {
 				$filter['a'] = '';
 
 			// output the master selecter per line:
-			$s .= '<br><span id="mvs_' . htmlspecialchars( $i ) . '">';
+			$s .= '<br /><span id="mvs_' . htmlspecialchars( $i ) . '">';
 			$s .= '&nbsp;&nbsp;';
 			// selctor (don't display if i==0')
 			$s .= $this->selector( $i, 'a', $filter['a'], ( $i == 0 ) ? false : true );
@@ -827,7 +827,7 @@ class MV_SpecialMediaSearch {
 		// add link:
 		$s .= '<a style="text-decoration:none;" href="javascript:mv_add_filter();">' .
 			'<img border="0" title="' . htmlspecialchars( wfMsg( 'mv_add_filter' ) ) . '" ' .
-			'src="' . $mvgScriptPath . '/skins/images/cog_add.png"> ' . htmlspecialchars( wfMsg( 'mv_add_filter' ) ) . '</a><br><br>';
+			'src="' . $mvgScriptPath . '/skins/images/cog_add.png"> ' . htmlspecialchars( wfMsg( 'mv_add_filter' ) ) . '</a><br /><br />';
 
 		/*$s .= '<input id="mv_do_search" type="submit" ' .
 		' value="' . wfMsg('mv_run_search') . '">';*/

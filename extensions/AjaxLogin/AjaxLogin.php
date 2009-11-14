@@ -113,7 +113,7 @@ function GetAjaxLoginForm( &$data ) {
 	</div>
 		<form action="" method="post" name="userajaxloginform" id="userajaxloginform" style="margin:5px">
 			<div id="wpError" style="width: 250px; line-height: 1.4em;"></div>
-			<label>' . wfMsg( 'loginprompt' ) . '</label><br /><br/>
+			<label>' . wfMsg( 'loginprompt' ) . '</label><br /><br />
 			<label for="wpName1">' . wfMsg( 'yourname' ) . '</label><br />
 			<input type="text" class="loginText" name="wpName" id="wpName1" tabindex="101" size="20" /><br />
 			<label for="wpPassword1">' . wfMsg( 'yourpassword' ) . '</label><br />

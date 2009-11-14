@@ -104,9 +104,9 @@ EOT
 		// output questions:
 		$wgOut->addHTML( wfMsg( 'ps_could_play' ) );
 		// yes no with expand
-		$wgOut->addHTML( '<br><input type="radio" name="ps_could_play"  value="yes"
+		$wgOut->addHTML( '<br /><input type="radio" name="ps_could_play"  value="yes"
 				onclick="document.getElementById(\'ps_could_not_play\').style.display = \'none\';">' .
-		wfMsg( 'ps_play_yes' ) . '<br>
+		wfMsg( 'ps_play_yes' ) . '<br />
 				<input type="radio" name="ps_could_play"  value="no" 
 				onclick="document.getElementById(\'ps_could_not_play\').style.display = \'inline\';">' .
 		wfMsg( 'ps_play_no' ) . '<p>
@@ -131,23 +131,23 @@ EOT
               <td>' . wfMsg( 'ps_no_sound' ) . '</td>              
             </tr>
           </table>		
-          ' . wfMsg( 'ps_problems_desc' ) . '<br><textarea name="ps_problems_desc" rows="2" cols="40" MAXLENGTH="300"></textarea><br>        
+          ' . wfMsg( 'ps_problems_desc' ) . '<br /><textarea name="ps_problems_desc" rows="2" cols="40" MAXLENGTH="300"></textarea><br />        
 	</div>
-	' . wfMsg( 'ps_would_install' ) . '<br>' .
-	'<input type="radio" name="ps_would_install"  value="yes">' . wfMsg( 'ps_yes_install' ) . '<br>' .
-	'<input type="radio" name="ps_would_install"  value="no">' . wfMsg( 'ps_no_install' ) . '<br>'
+	' . wfMsg( 'ps_would_install' ) . '<br />' .
+	'<input type="radio" name="ps_would_install"  value="yes">' . wfMsg( 'ps_yes_install' ) . '<br />' .
+	'<input type="radio" name="ps_would_install"  value="no">' . wfMsg( 'ps_no_install' ) . '<br />'
 		);
 		// if ie output switch check:
 		if ( preg_match( '|MSIE ([0-9].[0-9]{1,2})|', $_SERVER['HTTP_USER_AGENT'], $matched ) ) {
-			$wgOut->addHTML( '<br>' .
-			wfMsg( 'ps_would_switch' ) . '<br>' .
-		 '<input type="radio" name="ps_would_switch"  value="yes">' . wfMsg( 'ps_yes_switch' ) . '<br>' .
-		 '<input type="radio" name="ps_would_switch"  value="no">' . wfMsg( 'ps_no_install' ) . '<br>'
+			$wgOut->addHTML( '<br />' .
+			wfMsg( 'ps_would_switch' ) . '<br />' .
+		 '<input type="radio" name="ps_would_switch"  value="yes">' . wfMsg( 'ps_yes_switch' ) . '<br />' .
+		 '<input type="radio" name="ps_would_switch"  value="no">' . wfMsg( 'ps_no_install' ) . '<br />'
 		 );
 		}
-		$wgOut->addHTML( '<br>' .	wfMsg( 'ps_your_email' ) . '<br>' .
+		$wgOut->addHTML( '<br />' .	wfMsg( 'ps_your_email' ) . '<br />' .
 		'<input type="text" name="ps_your_email"  size="30" maxlength="200"><p>' .
-		wfMsg( 'ps_privacy' ) . '<br>' .
+		wfMsg( 'ps_privacy' ) . '<br />' .
 		'<input type="submit" value="' . wfMsg( 'ps_submit_survey' ) . '">'
 		);
 

@@ -147,7 +147,7 @@ function efDiscussionThread($efform){
 					$text = $text."\n\n".$matches[1]."=Re: ".trim($matches[2])." -- ~~~~".$matches[1]."=";
 				}
 			} else {
-				$text = $text." -- ~~~~<br>\n\n";
+				$text = $text." -- ~~~~<br />\n\n";
 			}
 		   // Add an appropriate number of colons (:) to indent the body.
 		   // Include replace me text, so the user knows where to reply

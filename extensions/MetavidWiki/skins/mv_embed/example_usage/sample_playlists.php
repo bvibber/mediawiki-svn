@@ -40,18 +40,18 @@ $sample_embed[6]['tag'] = '<playlist id="warplaylist" src="' . $plurl . '"/>';
 // sample smil
 $smilURL = 'fresh_smil_load.php';
 $sample_embed[8]['tag'] = '<playlist id="smil_pl" src="' . $smilURL . '" />';
-$sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/transit.htm">source</a>
+$sample_embed[8]['desc'] = ' <br /><b>Crossfading Videos</b><br /><a href="http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/transit.htm">source</a>
 			The first video fades up from green when it starts to play, 
 			and the second video fades down to green when it ends. 
 			When the first video stops and the second video starts, 
 			though, the two videos crossfade into each other' .
-				'<br>' .
+				'<br />' .
 				'<iframe width="500" height="200" src="' . $smilURL . '">rss feed here</iframe>';
 
 $smilURL = 'http://'.$_SERVER['SERVER_NAME'].'/wiki/index.php/Special:MvExportSequence/Test';
 $sample_embed[9]['tag'] = '<playlist src="' . $smilURL . '" />';
-$sample_embed[9]['desc'] = ' <br><b>MediaWiki example:</b><br/>'.
-				'<br>' .
+$sample_embed[9]['desc'] = ' <br /><b>MediaWiki example:</b><br />'.
+				'<br />' .
 				'<iframe width="500" height="200" src="' . $smilURL . '">rss feed here</iframe>';
 
 // empty sample embed (to only do one:)

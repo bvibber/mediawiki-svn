@@ -81,7 +81,7 @@ function do_request(){
 		header('Content-Length: ' . ($end_byte - $start_byte) );
 		$flv->play($start_byte, $end_byte);
 		//$end = microtime(true);
-		//file_put_contents('/tmp/time.log', "<hr/>EXTRACT METADATA PROCESS TOOK " . number_format(($end-$start), 2) . " seconds<br/>");
+		//file_put_contents('/tmp/time.log', "<hr/>EXTRACT METADATA PROCESS TOOK " . number_format(($end-$start), 2) . " seconds<br />");
 		$flv->close();
 	}
 }

@@ -131,7 +131,7 @@ class SpecialEmailPage extends SpecialPage {
 			$options .= "<option$selected>$t</option>";
 		}
 		$db->freeResult( $res );
-		if ( $options ) $wgOut->addHTML( wfMsg( 'ea-selectcss' ) . " <select name=\"ea-css\">$options</select><br>\n" );
+		if ( $options ) $wgOut->addHTML( wfMsg( 'ea-selectcss' ) . " <select name=\"ea-css\">$options</select><br />\n" );
 
 		# Get titles in Category:Records and build option list
 		$options = "<option />";
@@ -254,7 +254,7 @@ class SpecialEmailPage extends SpecialPage {
 					if ( $this->record ) $mail->Body = $this->replaceFields( $message, $recipient );
 					$mail->AddAddress( $recipient );
 					if ( $state = $mail->Send() ) $msg = wfMsg( 'ea-sent', $this->title, $count, $wgUser->getName() );
-					else $error .= "Couldn't send to $recipient: {$mail->ErrorInfo}<br>\n";
+					else $error .= "Couldn't send to $recipient: {$mail->ErrorInfo}<br />\n";
 					$mail->ClearAddresses();
 				} else $msg .= "\n*[mailto:$recipient $recipient]";
 				if ( $error ) $msg = wfMsg( 'ea-error', $this->title, $error );

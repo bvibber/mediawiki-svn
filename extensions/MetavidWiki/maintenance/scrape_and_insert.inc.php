@@ -89,7 +89,7 @@ class MV_BillScraper extends MV_BaseScraper {
 				preg_match( '/href="(.*)"/', $matches[5][$k], $href_match );
 				if ( count( $href_match ) != 0 )$href = $href_match[1];
 
-				$porg = str_replace( '<br>', ' ', $matches[4][$k] );
+				$porg = str_replace( '<br />', ' ', $matches[4][$k] );
 				$porg = preg_replace( '/[D|R|I]+\-\[.*\]/', '', $porg );
 				$pparts = explode( ',', $porg );
 				if ( isset( $pparts[1] ) && isset( $pparts[0] ) ) {
@@ -98,7 +98,7 @@ class MV_BillScraper extends MV_BaseScraper {
 						$cspan_person_ary[] = array(
 							'start_time' => strip_tags( $matches[1][$k] ),
 							'length' => $matches[3][$k],
-							'person_title' => str_replace( '<br>', ' ', $matches[4][$k] ),
+							'person_title' => str_replace( '<br />', ' ', $matches[4][$k] ),
 							'Spoken_by' => $pname,
 							'href' => $href
 						);

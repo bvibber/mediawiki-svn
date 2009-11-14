@@ -17,7 +17,7 @@ class SpecialWikiAtHome extends SpecialPage {
 		$html = '<h1 class="firstHeading" id="firstHeading">'.wfMsg('specialwikiathome').'</h1>';
 		$html.='<div id="bodyContent">';
 		$html.= wfMsg('wah-user-desc');
-		$html.='<br><br>';
+		$html.='<br /><br />';
 		$html.= '<div id="wah_container" style="height:500px;">'.
 					wfMsg('wah-javascript-off') .
 				'</div>';

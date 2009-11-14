@@ -68,10 +68,10 @@ function display_form() {
 	if ( $_REQUEST['definedmeaning'] ) {
 		$expression_group[] = &HTML_QuickForm::createElement( 'text', 'expression', 'search expression:', array( 'value' => '' , 'size' => 20, 'maxlength' => 256 ) );
 		$form->updateElementAttr( 'expression', array( 'value' => '' ) );
-		$expression_group[] = &HTML_QuickForm::createElement( 'text', 'wdexplanguage', 'source language of an expression <br/>(leave blank to search all languages)', array( 'size' => 20, 'maxlength' => 256 ) );
+		$expression_group[] = &HTML_QuickForm::createElement( 'text', 'wdexplanguage', 'source language of an expression <br />(leave blank to search all languages)', array( 'size' => 20, 'maxlength' => 256 ) );
 	} else {
 		$expression_group[] = &HTML_QuickForm::createElement( 'text', 'expression', 'search expression:', array( 'size' => 20, 'maxlength' => 256 ) );
-		$expression_group[] = &HTML_QuickForm::createElement( 'text', 'wdexplanguage', 'source language of an expression <br/>(leave blank to search all languages)', array( 'size' => 4, 'maxlength' => 256 ) );
+		$expression_group[] = &HTML_QuickForm::createElement( 'text', 'wdexplanguage', 'source language of an expression <br />(leave blank to search all languages)', array( 'size' => 4, 'maxlength' => 256 ) );
 	}
 
 
@@ -136,7 +136,7 @@ function build_api_query_url() {
 	}
 
 	if ( $_REQUEST['debug'] == 1 ) {
-		echo '<br>' . $ow_api_url . "<br>";
+		echo '<br />' . $ow_api_url . "<br />";
 	}
 	return $ow_api_url;
 }
@@ -540,7 +540,7 @@ function build_get_uri_2( $var_search = '', $replace_value = '', $uri = '' ) {
 	if ( strpos( $uri, '?' ) )
 	{
 		preg_match( "|(\?)(.*)|", $uri, $arr );
-		// echo "<br>uri: $uri<--<br>";
+		// echo "<br />uri: $uri<--<br />";
 		// print_r($arr);
 		// echo "--->".$arr[2];
 		$query_string = $arr[2];
@@ -566,7 +566,7 @@ function build_get_uri_2( $var_search = '', $replace_value = '', $uri = '' ) {
 		$string = $var_search . "=" . $replace_value . "&" . $string ;
 	}
 
-	// echo  "<br>nach Variable setzen: $string";
+	// echo  "<br />nach Variable setzen: $string";
 
 
 	$get_uri_1 = $_SERVER["SCRIPT_URI"];
@@ -581,7 +581,7 @@ function build_get_uri_2( $var_search = '', $replace_value = '', $uri = '' ) {
 		// voderen Teil extrahieren (paramater kommen schon von obe, sonst doppelt)
 		unset( $arr );
 		$uri = preg_replace( "|(\?.*)|", "?", $uri );
-		// echo "<br>uri: $uri<--<br>";
+		// echo "<br />uri: $uri<--<br />";
 		$get_uri_1 = $uri;
 	}
 	else // es ist nur der hintere Teil anders (andere Datei)
@@ -597,7 +597,7 @@ function build_get_uri_2( $var_search = '', $replace_value = '', $uri = '' ) {
 	$get_uri_1 = str_replace( '??', '?', $get_uri_1 );
 	$get_uri_1 = str_replace( '&&', '&', $get_uri_1 );
 
-	// echo "<br>get_uri_1: ".$get_uri_1;
+	// echo "<br />get_uri_1: ".$get_uri_1;
 
 	return $get_uri_1;
 }
@@ -616,7 +616,7 @@ function get_ow_content_1( $url, $params = '' )
 
 	if ( is_numeric( strpos( $string, "http://upload.wikimedia.org/wikipedia/commons/a/af/Arrow_green.png" ) ) )
 	{
-	$string_ret = "<br>Kein Treffer. <br>vielleicht Anlegen in <a  href='" . $url . "'  target='_blank'>" . Wiktionary . "?</a>";
+	$string_ret = "<br />Kein Treffer. <br />vielleicht Anlegen in <a  href='" . $url . "'  target='_blank'>" . Wiktionary . "?</a>";
 	}
 	else
 	{

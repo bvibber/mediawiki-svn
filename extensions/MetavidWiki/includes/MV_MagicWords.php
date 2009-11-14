@@ -74,7 +74,7 @@ class MV_MagicWords {
 				return $this->getTotalLength();
 				break;
 			default:
-				return "error: unknown mvData function: <b>{$this->magicTypeKey}</b> <br>";
+				return "error: unknown mvData function: <b>{$this->magicTypeKey}</b> <br />";
 				break;
 		}
 	}
@@ -226,7 +226,7 @@ FROM `mv_streams` ');
 					$ptitle = Title::MakeTitle( NS_MAIN, $mvd_row->Speech_by );
 					$mvd_out_html .= '<span class="keywords">' .
 							$sk->makeKnownLinkObj( $ptitle, $ptitle->getText() ) .
- 						'</span><br>';
+ 						'</span><br />';
 				}
 			}
 			if ( isset( $mvd_row->Bill ) ) {
@@ -234,7 +234,7 @@ FROM `mv_streams` ');
 					$btitle = Title::MakeTitle( NS_MAIN, $mvd_row->Bill );
 					$mvd_out_html .= '<span class="keywords">Bill: ' .
 							$sk->makeKnownLinkObj( $btitle ) . '
- 						</span><br>';
+ 						</span><br />';
 				}
 			}
 			global $wgContLang;
@@ -255,7 +255,7 @@ FROM `mv_streams` ');
 						 $mvd_out_html.=$coma.$sk->makeKnownLinkObj($cTitle, $cTitle->getText());
 						 $coma=', ';
 				 	}
-					$mvd_out_html.='</span><br>';
+					$mvd_out_html.='</span><br />';
 				 }
 			}
 		}else{		
