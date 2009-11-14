@@ -14,13 +14,13 @@
 				["wikiportret_advertentie_150dpi_zwartwit.jpg", "Advertentie op 150 dpi zwart/wit (JPG)"],
 				["wikiportret_advertentie_cmyk.pdf","Advertentie als CMYK PDF (voor drukwerk)"]
 			];
-			
+
 			for (var i in images) {
 				document.write('<li><a href="' + GE_URL + '/pers/media/' + images[i][0] + '">' + images[i][1] + '</a></li>');
 			}
 		</script>
-	</ul>			
-	
+	</ul>
+
 	<p>
 		Voor vragen: neem contact op met Hay Kranen (06 - 14 95 13 08), secretaris van <a href="http://www.wmnl.nl">Wikimedia Nederland</a>
 	</p>

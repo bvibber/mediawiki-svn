@@ -27,17 +27,16 @@
 ?>
 	<div id="questions">
 		<?php
-			show_page('welcome');			
+			show_page( 'welcome' );
 		?>
 
 		<p>
-			<a href="<?php echo GE_WIZARD; ?>?question=first" class="question"><?php echo disp('CLICK_TO_BEGIN'); ?></a>
+			<a href="<?php echo GE_WIZARD; ?>?question=first" class="question"><?php echo disp( 'CLICK_TO_BEGIN' ); ?></a>
 		</p>
 		
 		<?php
-			show_page('welcome_disclaimer');
+			show_page( 'welcome_disclaimer' );
 		?>
 	</div> <!-- /questions -->
 <?php
 	include '_footer.php';
-?>

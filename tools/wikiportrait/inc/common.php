@@ -2,14 +2,17 @@
 // General variables
 $wikiportrait_version = "1.1beta-3";
 
-if(!@include 'config.php') die("Could not find config.php. Maybe you haven't made a configuration file yet?");
+if ( !@include 'config.php' ) {
+	die( "Could not find config.php. Maybe you haven't made a configuration file yet?" );
+}
+
 require 'lib.php'; // General library
 require 'lib-db.php'; // Global database Class
 require 'lib-utils.php'; // Utility stuff
 require 'lib-admin.php'; // stuff for admin/index.php
 
 // connect to db
-$db = new db(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
+$db = new db( DB_HOST, DB_USER, DB_PASS, DB_DATABASE );
 
 // start session
 session_start();
@@ -18,7 +21,7 @@ session_start();
 $_SESSION['language'] = GE_LANGUAGE; // default
 
 // Maybe overwrite with a custom setting?
-if (isset($_GET['newLanguage']) && is_language($_GET['newLanguage'])) {
+if ( isset( $_GET['newLanguage'] ) && is_language( $_GET['newLanguage'] ) ) {
 	$_SESSION['language'] = $_GET['newLanguage'];
 }
 

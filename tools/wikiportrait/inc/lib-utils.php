@@ -1,12 +1,12 @@
 <?php
-function printr($msg) {
-	echo "<pre>".print_r($msg, true)."</pre>";
+function printr( $msg ) {
+	echo "<pre>" . print_r( $msg, true ) . "</pre>";
 }
 
-function bail($msg) {
+function bail( $msg ) {
 	// Die, or if in debug mode, with a message
-	if(GE_DEBUG > 0) {
-		die($msg);
+	if ( GE_DEBUG > 0 ) {
+		die( $msg );
 	}
 	else {
 		die();
@@ -14,14 +14,14 @@ function bail($msg) {
 }
 
 // returns a constant from the $GLOBALS['constants'] array
-function disp($const) {
-	if ($GLOBALS['constants'][$const]) {
+function disp( $const ) {
+	if ( $GLOBALS['constants'][$const] ) {
 		//  This constant is available
 		return $GLOBALS['constants'][$const];
 	}
 	else {
 		// Not available, display when GE_DEBUG is on
-		if (GE_DEBUG >= 1) {
+		if ( GE_DEBUG >= 1 ) {
 			return "Unknown constant: $const";
 		}
 	}
@@ -30,18 +30,18 @@ function disp($const) {
 // Functions for translating entries. __() gives an echo, ___() returns the value
 // I know, we could have used gettext() for this, but the messages need to be in the
 // db, not in .mo files and i'm lazy
-function __($const) {
-	echo disp($const);
+function __( $const ) {
+	echo disp( $const );
 }
 
-function ___($const) {
-	return disp($const);
+function ___( $const ) {
+	return disp( $const );
 }
 
 // Simple wrapper for the timthumb.php script
-function timthumb($src, $width, $height, $zoomcrop = 0, $echo = true) {
-	$url = GE_URL."inc/timthumb.php?src=$src&w=$width&h=$height&zc=$zc";
-	if($echo) {
+function timthumb( $src, $width, $height, $zoomcrop = 0, $echo = true ) {
+	$url = GE_URL . "inc/timthumb.php?src=$src&w=$width&h=$height&zc=$zc";
+	if ( $echo ) {
 		echo $url;
 	}
 	else {
@@ -50,21 +50,21 @@ function timthumb($src, $width, $height, $zoomcrop = 0, $echo = true) {
 }
 
 // shows a variable if GE_DEBUG > 1
-function debug($var) {
-	if (GE_DEBUG >= 1) {
+function debug( $var ) {
+	if ( GE_DEBUG >= 1 ) {
 		echo $var;
 	}
 }
 
-function sanitize_dashed($value) {
-	$value = strip_tags($value);
-	$value = strtolower($value);
+function sanitize_dashed( $value ) {
+	$value = strip_tags( $value );
+	$value = strtolower( $value );
 	// kill entities
-	$value = preg_replace('/&.+?;/', '', $value);
-	$value = preg_replace('/[^%a-z0-9 _-]/', '', $value);
-	$value = preg_replace('/\s+/', '-', $value);
-	$value = preg_replace('|-+|', '-', $value);
-	$value = trim($value, '-');
+	$value = preg_replace( '/&.+?;/', '', $value );
+	$value = preg_replace( '/[^%a-z0-9 _-]/', '', $value );
+	$value = preg_replace( '/\s+/', '-', $value );
+	$value = preg_replace( '|-+|', '-', $value );
+	$value = trim( $value, '-' );
 	return $value;
 }
 
