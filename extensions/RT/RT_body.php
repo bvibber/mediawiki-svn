@@ -13,7 +13,10 @@ class RT {
 	// This is called to process <rt>...</rt> within a page
 	public static function render( $input, $args = array(), $parser = null ) {
    
-		global $wgRequestTracker_Cachepage, $wgRequestTracker_Active, $wgRequestTracker_DBconn,
+		global $wgRequestTracker_Cachepage,
+			$wgRequestTracker_Active,
+			$wgRequestTracker_DBconn,
+			$wgRequestTracker_Sortable,
 			$wgRequestTracker_TIMEFORMAT_LASTUPDATED,
 			$wgRequestTracker_TIMEFORMAT_LASTUPDATED2,
 			$wgRequestTracker_TIMEFORMAT_CREATED,
@@ -270,8 +273,18 @@ class RT {
 		// Unless 'tablerows' has been set, output the table and header tags
 		if ( !array_key_exists( 'tablerows', $args ) ) {
    
-			$output = "<table class='rt-table' border='1'><tr>";
-   
+			$class = $wgRequestTracker_Sortable ? 'wikitable sortable' : 'rt-table';
+
+			// Allow override of the default sortable table option
+			if (array_key_exists('sortable', $args ) ) {
+				$class = 'wikitable sortable';
+			}
+			if (array_key_exists('nosortable', $args ) ) {
+				$class = 'rt-table';
+			}
+
+			$output = "<table class='$class' border='1'>\n<tr>\n";
+
 			if ( $showticket )    { $output .= '<th>Ticket</th>';       }
 			if ( $showqueue )     { $output .= '<th>Queue</th>';        }
 			if ( $showsubject )   { $output .= '<th>Subject</th>';      }

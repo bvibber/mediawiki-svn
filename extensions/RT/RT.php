@@ -14,7 +14,7 @@
  *
  * @author Greg Sabino Mullane <greg@endpoint.com>
  * @license MIT <http://www.opensource.org/licenses/mit-license.php>
- * @version 1.8
+ * @version 1.9
  * @link http://www.mediawiki.org/wiki/Extension:RT
  */
 
@@ -27,6 +27,7 @@ $wgRequestTracker_Formats     = array();
 $wgRequestTracker_Cachepage   = 0;
 $wgRequestTracker_Useballoons = 1;
 $wgRequestTracker_Active      = 1;
+$wgRequestTracker_Sortable    = 1;
 
 # Time formatting
 # Example formats:
@@ -54,7 +55,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'RT',
-	'version'        => '1.8',
+	'version'        => '1.9',
 	'author'         => array( 'Greg Sabino Mullane' ),
 	'description'    => 'Fancy interface to RT (Request Tracker)',
 	'descriptionmsg' => 'rt-desc',
