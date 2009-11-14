@@ -84,6 +84,9 @@ class RT {
 			. " TO_CHAR(t.created $TZ, '$wgRequestTracker_TIMEFORMAT_CREATED2'::text) AS created2,"
 			. " TO_CHAR(t.resolved $TZ, '$wgRequestTracker_TIMEFORMAT_RESOLVED'::text) AS resolved,"
 			. " TO_CHAR(t.resolved $TZ, '$wgRequestTracker_TIMEFORMAT_RESOLVED2'::text) AS resolved2,"
+			. " ROUND(EXTRACT('epoch' FROM t.lastupdated $TZ)) AS lastupdated_epoch,"
+			. " ROUND(EXTRACT('epoch' FROM t.created $TZ)) AS created_epoch,"
+			. " ROUND(EXTRACT('epoch' FROM t.resolved $TZ)) AS resolved_epoch,"
 			. "	CASE WHEN (now() $TZ - t.created) <= '1 second'::interval THEN '1 second' ELSE"
 			. " CASE WHEN (now() $TZ - t.created) <= '2 minute'::interval THEN EXTRACT(seconds FROM now() $TZ - t.created) || ' seconds' ELSE"
 			. " CASE WHEN (now() $TZ - t.created) <= '2 hour'::interval THEN EXTRACT(minutes FROM now() $TZ - t.created) || ' minutes' ELSE"
@@ -285,21 +288,21 @@ class RT {
 
 			$output = "<table class='$class' border='1'>\n<tr>\n";
 
-			if ( $showticket )    { $output .= '<th>Ticket</th>';       }
-			if ( $showqueue )     { $output .= '<th>Queue</th>';        }
-			if ( $showsubject )   { $output .= '<th>Subject</th>';      }
-			if ( $showstatus )    { $output .= '<th>Status</th>';       }
-			if ( $showpriority )  { $output .= '<th>Priority</th>';     }
-			if ( $showowner )     { $output .= '<th>Owner</th>';        }
-			if ( $showupdated )   { $output .= '<th>Last updated</th>'; }
-			if ( $showupdated2 )  { $output .= '<th>Last updated</th>'; }
-			if ( $showcreated )   { $output .= '<th>Created</th>';      }
-			if ( $showcreated2 )  { $output .= '<th>Created</th>';      }
-			if ( $showresolved )  { $output .= '<th>Resolved</th>';     }
-			if ( $showresolved2 ) { $output .= '<th>Resolved</th>';     }
-			if ( $showage )       { $output .= '<th>Age</th>';          }
+			if ( $showticket )    { $output .= "<th>Ticket</th>\n";       }
+			if ( $showqueue )     { $output .= "<th>Queue</th>\n";        }
+			if ( $showsubject )   { $output .= "<th>Subject</th>\n";      }
+			if ( $showstatus )    { $output .= "<th>Status</th>\n";       }
+			if ( $showpriority )  { $output .= "<th>Priority</th>\n";     }
+			if ( $showowner )     { $output .= "<th>Owner</th>\n";        }
+			if ( $showupdated )   { $output .= "<th>Last updated</th>\n"; }
+			if ( $showupdated2 )  { $output .= "<th>Last updated</th>\n"; }
+			if ( $showcreated )   { $output .= "<th>Created</th>\n";      }
+			if ( $showcreated2 )  { $output .= "<th>Created</th>\n";      }
+			if ( $showresolved )  { $output .= "<th>Resolved</th>\n";     }
+			if ( $showresolved2 ) { $output .= "<th>Resolved</th>\n";     }
+			if ( $showage )       { $output .= "<th>Age</th>\n";          }
    
-			$output .= '</tr>';
+			$output .= "</tr>\n";
 		}
    
 		foreach ( $info as $row ) {
@@ -308,23 +311,30 @@ class RT {
 				$id = self::fancyLink( $row, $args, $parser, 1 );
 				$output .= "<td style='white-space: nowrap'>$id</td>";
 			}
-			if ( $showqueue )     { $output .= '<td>' . htmlspecialchars( $row['queue'] )   . '</td>'; }
-			if ( $showsubject )   { $output .= '<td>' . htmlspecialchars( $row['subject'] ) . '</td>'; }
-			if ( $showstatus )    { $output .= '<td>' . htmlspecialchars( $row['status'] )  . '</td>'; }
-			if ( $showpriority )  { $output .= '<td>' . htmlspecialchars( $row['priority'] ) . '</td>'; }
-			if ( $showowner )     { $output .= '<td>' . htmlspecialchars( $row['owner'] )   . '</td>'; }
-			if ( $showupdated )   { $output .= '<td>' . $row['lastupdated']                 . '</td>'; }
-			if ( $showupdated2 )  { $output .= '<td>' . $row['lastupdated2']                . '</td>'; }
-			if ( $showcreated )   { $output .= '<td>' . $row['created']                     . '</td>'; }
-			if ( $showcreated2 )  { $output .= '<td>' . $row['created2']                    . '</td>'; }
-			if ( $showresolved )  { $output .= '<td>' . $row['resolved']                    . '</td>'; }
-			if ( $showresolved2 ) { $output .= '<td>' . $row['resolved2']                   . '</td>'; }
-			if ( $showage )       { $output .= '<td>' . $row['age']                         . '</td>'; }
-			$output .= '<tr>';
+			if ( $showqueue )     { $output .= '<td>' . htmlspecialchars( $row['queue'] )    . "</td>\n"; }
+			if ( $showsubject )   { $output .= '<td>' . htmlspecialchars( $row['subject'] )  . "</td>\n"; }
+			if ( $showstatus )    { $output .= '<td>' . htmlspecialchars( $row['status'] )   . "</td>\n"; }
+			if ( $showpriority )  { $output .= '<td>' . htmlspecialchars( $row['priority'] ) . "</td>\n"; }
+			if ( $showowner )     { $output .= '<td>' . htmlspecialchars( $row['owner'] )    . "</td>\n"; }
+			if ( $showupdated )   { $output .= '<td>' . $row['lastupdated']                  . "</td>\n"; }
+			if ( $showupdated )   { $output .= "<td><span style='display:none'>"
+					. $row['lastupdated_epoch'] . "</span>" . $row['lastupdated']  . "</td>\n"; }
+			if ( $showupdated2 )  { $output .= "<td><span style='display:none'>"
+					. $row['lastupdated_epoch'] . "</span>" . $row['lastupdated2'] . "</td>\n"; }
+			if ( $showcreated )   { $output .= "<td><span style='display:none'>"
+					. $row['created_epoch']     . "</span>" . $row['created']      . "</td>\n"; }
+			if ( $showcreated2 )  { $output .= "<td><span style='display:none'>"
+					. $row['created_epoch']     . "</span>" . $row['created2']     . "</td>\n"; }
+			if ( $showresolved )  { $output .= "<td><span style='display:none'>"
+					. $row['resolved_epoch']    . "</span>" . $row['resolved']     . "</td>\n"; }
+			if ( $showresolved2 )  { $output .= "<td><span style='display:none'>"
+					. $row['resolved_epoch']    . "</span>" . $row['resolved2']    . "</td>\n"; }
+			if ( $showage )       { $output .= '<td>' . $row['age'] . "</td>\n"; }
+			$output .= "\n</tr>\n";
 		}
    
 		if ( !array_key_exists( 'tablerows', $args ) ) {
-			$output .= '</table>';
+			$output .= "</table>\n";
 		}
    
 		return $output;
