@@ -38,4 +38,3 @@ class XMLRC_UDP extends XMLRC_Transport {
     if ( $do_disconnect ) $this->disconnect();
   }
 }
-?>

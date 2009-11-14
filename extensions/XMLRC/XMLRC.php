@@ -55,5 +55,3 @@ $wgAutoloadClasses[ 'XMLRC_UDP' ] = "$dir/XMLRC_UDP.class.php";
 $wgAutoloadClasses[ 'XMLRC_File' ] = "$dir/XMLRC_File.class.php";
 
 $wgHooks['RecentChange_save'][] = 'XMLRC::RecentChange_save';
-
-?>

@@ -66,4 +66,3 @@ class XMLRC_XMPP extends XMLRC_Transport {
     if ( $do_disconnect ) $this->disconnect();
   }
 }
-?>

@@ -1,4 +1,3 @@
-
 <?php
 /*
  * TODO Test the whole thing, make it safe.

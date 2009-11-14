@@ -140,4 +140,3 @@
  		return wfMsg( $this->file_desc_msg );
  	}
  }
-?>

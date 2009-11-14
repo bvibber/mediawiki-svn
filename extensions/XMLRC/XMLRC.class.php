@@ -123,4 +123,3 @@ abstract class XMLRC_Filter {
 abstract class XMLRC_Transport {
   abstract function send( $xml );
 }
-?>

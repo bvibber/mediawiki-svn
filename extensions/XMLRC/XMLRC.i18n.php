@@ -8,4 +8,3 @@ $messages['en'] = array(
 $messages['de'] = array(
   'xmlrc-desc' => 'Verschickt benachrichtigungen über Änderungen als XML, über UDP, Jabber oder andere Protokolle.',
 );
-?>

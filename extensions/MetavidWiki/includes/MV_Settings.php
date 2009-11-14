@@ -219,5 +219,3 @@ if ( !isset( $mvNamespaceIndex ) ) {
 } else {
 	mvInitNamespaces();
 }
-
-?>

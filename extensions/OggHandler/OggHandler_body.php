@@ -971,5 +971,3 @@ if(!function_exists('time_duration_2array')){
 		return $values;
 	}
 }
-
-?>

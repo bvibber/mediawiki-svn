@@ -390,4 +390,3 @@ function ImageTrueColorToPalette2( $image, $dither, $ncolors ) {
    // @imagedestroy($colors_handle);
    return $image;
 }
-?>

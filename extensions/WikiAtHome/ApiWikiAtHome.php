@@ -321,5 +321,3 @@ class ApiWikiAtHome extends ApiBase {
 		return __CLASS__ . ': $Id: ApiWikiAtHome.php 51812 2009-06-12 23:45:20Z dale $';
 	}
 }
-
-?>

@@ -856,4 +856,3 @@ function mvViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 		return wfMsg( 'mv_viewprevnext', $plink, $nlink );
 	}
 }
-?>

@@ -401,5 +401,3 @@ FROM `mv_streams` ');
 		return $o;
 	}
 }
-
-?>

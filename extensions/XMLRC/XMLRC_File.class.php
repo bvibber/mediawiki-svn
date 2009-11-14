@@ -39,4 +39,3 @@ class XMLRC_File extends XMLRC_Transport {
     if ( $do_close ) $this->close();
   }
 }
-?>

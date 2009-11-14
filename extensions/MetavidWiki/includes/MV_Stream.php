@@ -248,4 +248,3 @@ class MV_Stream {
 			 'Mv_Stream::updateStreamDB' );
 	}
 }
-?>

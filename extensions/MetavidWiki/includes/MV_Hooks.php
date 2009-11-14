@@ -465,5 +465,3 @@ function mv_frame_server( $stream_name = '', $req_time = '', $req_size = '' ) {
 	return $MV_Overlay->edit_preview_form_html($_POST['title'], $_POST['mvd_id']);
 }*/
 
-
-?>

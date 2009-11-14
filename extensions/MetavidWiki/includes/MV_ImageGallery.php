@@ -153,4 +153,3 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		return $s;
 	}
  }
-?>

@@ -54,5 +54,3 @@ $wgHooks['AjaxAddScript'][] = 'EditSectionHiliteLinkHooks::addJS';
 
 // Register css add script hook
 $wgHooks['BeforePageDisplay'][] = 'EditSectionHiliteLinkHooks::addCSS';
-
-?>
