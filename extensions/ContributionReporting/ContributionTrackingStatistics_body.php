@@ -88,6 +88,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-donations' ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-amount' ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-average' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-max' ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-conversion' ) );
 
 			foreach( $totals as $template ) {
@@ -131,6 +132,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 						Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $amount ) .
 						Xml::element( 'td', array( 'align' => 'right'), round($average, 2) ) .
+						Xml::element( 'td', array( 'align' => 'right'), $template[4] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $wgLang->formatNum( number_format( $conversion_rate, 2 ) ) ) 
 				);
 
