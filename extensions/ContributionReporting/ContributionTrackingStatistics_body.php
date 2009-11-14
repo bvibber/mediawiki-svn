@@ -25,6 +25,9 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 		// Begin output
 		$this->setHeaders();
 		
+		global $wgOut;
+		$wgOut->addHTML( 'WARNING: THIS IS INCOMPLETE TEST DATA AND IS NOT REFLECTIVE OFF THE FULL CAMPAIGN' );
+
 		// Show day totals
 		$this->showDayTotals();
 		
