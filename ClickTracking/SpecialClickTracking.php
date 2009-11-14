@@ -503,7 +503,7 @@ class SpecialClickTracking extends SpecialPage {
 	 * @param maxTime max day (YYYYMMDD)
 	 * NOTE: once some of the constraints have been finalized, this will use more of the Database functions and not raw SQL
 	 */
-	static function getTimeConstraintsStatement( $minTime, $maxTime ){
+	static function getTimeConstraintsStatement( $minTime, $maxTime ){		
 		$minTime = addslashes($minTime);
 		$maxTime = addslashes($maxTime);
 		if( $minTime == 0 || $maxTime == 0 ||
@@ -512,7 +512,9 @@ class SpecialClickTracking extends SpecialPage {
 		 		return '';
 		 	}
 		else {
-			
+			//the dates are stored in the DB as MW_TIMESTAMP formats, add the zeroes to fix that 
+			$minTime .= "000000";
+			$maxTime .= "000000";  
 			return "WHERE `action_time` >= '$minTime' AND `action_time` <= '$maxTime'";
 			
 		}
