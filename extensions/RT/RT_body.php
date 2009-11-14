@@ -120,8 +120,11 @@ class RT {
 			return self::fancyLink( $info, $args, $parser, 0 );
 		}
    
-		// Add in a LIMIT clause if l=xx was used
+		// Add in a LIMIT clause if l=xx or limit=xx was used
 		$limit = '';
+		if ( array_key_exists( 'limit', $args ) ) {
+			$args['l'] = $args['limit'];
+		}
 		if ( array_key_exists( 'l', $args ) ) {
 			$limit = trim( $args['l'] );
 			if ( !preg_match( '/^ *\d+ *$/', $limit ) ) {
