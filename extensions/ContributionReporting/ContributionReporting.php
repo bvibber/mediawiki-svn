@@ -9,6 +9,8 @@ EOT;
 	exit( 1 );
 }
 
+$wgContributionReportingBaseURL = "http://meta.wikimedia.org/w/index.php?title=Special:NoticeTemplate/view&template=";
+
 // Override these with appropriate DB settings for the CiviCRM database...
 $wgContributionReportingDBserver = $wgDBserver;
 $wgContributionReportingDBuser = $wgDBuser;
