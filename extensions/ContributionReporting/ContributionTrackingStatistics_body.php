@@ -62,7 +62,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	// Html out for the days total
 	public function showDayTotals( $is_now = true, $timestamp = 0 ) {
 		global $wgOut,$wgLang;
-		global $wgAllowedTemplates;
+		global $wgAllowedTemplates, $wgAllowedSupport, $wgAllowedPaymentMethod;
 		
 		$totals = $this->getDayTotals($is_now, $timestamp);
 		
@@ -91,17 +91,24 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-conversion' ) );
 
 			foreach( $totals as $template ) {
-				if ( ! in_array($template[0], $wgAllowedTemplates ) )
-					continue;
-				// Pull together templates, clicks, donations, conversion rate
-				$conversion_rate = ( $template[1] == 0 ) ? 0 : ( $template[2] / $template[1] ) * 100; 
-				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
 
 				//grab info from utm_src, 'unpack' template, landing page, donation page thus far
 				$expanded_template = explode(".", $template[0]);
 				if(!isset($expanded_template[1])){ $expanded_template[1] = "";}
 				if(!isset($expanded_template[2])){ $expanded_template[2] = "";}
 				
+				if ( ! in_array($expanded_template[0], $wgAllowedTemplates ) )
+					continue;
+				if( ($expanded_template[1] != "") && (! in_array($expanded_template[1], $wgAllowedSupport)) ){
+					continue;
+				}
+				if( ($expanded_template[2] != "") && (! in_array($expanded_template[2], $wgAllowedPaymentMethod)) ){
+					continue;
+				}
+				// Pull together templates, clicks, donations, conversion rate
+				$conversion_rate = ( $template[1] == 0 ) ? 0 : ( $template[2] / $template[1] ) * 100; 
+				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
+
 				//if the template has a URL associated, create a href to it
 				$template_link = $expanded_template[0];
 				if(isset(SpecialContributionTrackingStatistics::$templateURLs["{$expanded_template[0]}"])){
@@ -183,6 +190,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-clicks' ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-donations' ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-amount' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-max' ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-conversion' ) );
 
 			foreach( $totals as $template ) {
@@ -197,6 +205,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 						Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $amount ) .
+						Xml::element( 'td', array( 'align' => 'right'), $template[4] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $wgLang->formatNum( number_format( $conversion_rate, 2 ) ) ) 
 				);
 			}
@@ -250,6 +259,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				'sum(isnull(contribution_tracking.contribution_id)) as miss',
 				'sum(not isnull(contribution_tracking.contribution_id)) as hit',
 				'sum(converted_amount) as converted_amount',
+				'max(converted_amount) as max_converted_amt'
 			),
 			$conds,
 			__METHOD__,
@@ -272,6 +282,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 					$row[1],
 					$row[2],
 					$row[3],
+					$row[4]
 			);
 		}
 

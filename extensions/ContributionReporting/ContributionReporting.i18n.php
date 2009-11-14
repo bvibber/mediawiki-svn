@@ -67,6 +67,7 @@ $messages['en'] = array(
 	'contribstats-landingpage' => 'Landing page',
 	'contribstats-donatepage' => 'Donate page',
 	'contribstats-average' => 'Average',
+	'contribstats-max' => 'Highest Donation',
 
 	// Fundraiser statistics
 	'fundraiserstatistics' => 'Fundraiser statistics',
