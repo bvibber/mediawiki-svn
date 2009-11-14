@@ -11,13 +11,6 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 	public static $number_of_days_to_show = 7;
 	
-	//URL for templates
-	public static $templateURLs = array(
-		'2009_Notice1' => "http://meta.wikimedia.org/w/index.php?title=Special:NoticeTemplate/view&template=2009_Notice1",
-        '2009_EM1Notice'=> "http://meta.wikimedia.org/w/index.php?title=Special:NoticeTemplate/view&template=2009_EM1Notice",
-        '2009_Notice11' => "http://meta.wikimedia.org/w/index.php?title=Special:NoticeTemplate/view&template=2009_Notice11", 
-        '2009_Notice10' => "http://meta.wikimedia.org/w/index.php?title=Special:NoticeTemplate/view&template=2009_Notice10",
-	);
 	/* Functions */
 
 	public function __construct() {
@@ -62,7 +55,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	// Html out for the days total
 	public function showDayTotals( $is_now = true, $timestamp = 0 ) {
 		global $wgOut,$wgLang;
-		global $wgAllowedTemplates, $wgAllowedSupport, $wgAllowedPaymentMethod;
+		global $wgAllowedTemplates, $wgAllowedSupport, $wgAllowedPaymentMethod, $wgContributionReportingBaseURL;
 		
 		$totals = $this->getDayTotals($is_now, $timestamp);
 		
@@ -110,13 +103,8 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				$conversion_rate = ( $template[1] == 0 ) ? 0 : ( $template[2] / $template[1] ) * 100; 
 				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
 
-				//if the template has a URL associated, create a href to it
-				$template_link = $expanded_template[0];
-				if(isset(SpecialContributionTrackingStatistics::$templateURLs["{$expanded_template[0]}"])){
-					$link = SpecialContributionTrackingStatistics::$templateURLs["{$expanded_template[0]}"];
-					$template_link = Xml::element('a', array('href' =>"$link"), $expanded_template[0]);
-				}
-				
+				$link = $wgContributionReportingBaseURL.$expanded_template[0];
+				$template_link = Xml::element('a', array('href' =>"$link"), $expanded_template[0]);
 				
 				//average donations
 				$average = 0;
