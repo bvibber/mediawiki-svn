@@ -1367,6 +1367,14 @@ $messages['pl'] = array(
 	'dt_xml_freetext' => 'Dowolny tekst',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'dt-desc' => "A përmëtt d'amporté e esporté ij dat contnù ant le ciamà a stamp",
+	'viewxml' => 'Varda XML',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

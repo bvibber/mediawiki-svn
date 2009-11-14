@@ -25,11 +25,25 @@ $messages['qqq'] = array(
 {{desc}}",
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'geolite-desc' => 'Liggewig GeoIP-gebaseerde aanstuur',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
 $messages['br'] = array(
 	'geolite-desc' => 'Adheñchadenn Geolp skañv',
+);
+
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'geolite-desc' => 'Lightweight GeoIp Reyna Neqili',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -157,5 +171,19 @@ $messages['ru'] = array(
  */
 $messages['sr-ec'] = array(
 	'geolite-desc' => 'Редирекције за Lightweight GeoIp',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'geolite-desc' => 'Полегшене перенаправлення GeoIP',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'geolite-desc' => 'Đổi hướng GeoIP nhẹ nhàng',
 );
 

@@ -375,5 +375,9 @@ $messages['sk'] = array(
  */
 $messages['vi'] = array(
 	'transliterator-desc' => 'Cung cấp hàm cú pháp thiết kế được để chuyển tự',
+	'transliterator-error-ambiguous' => 'Quy tắc không rõ <code>$1</code> trong [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Cú pháp không hợp lệ <code>$1</code> trong [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Hơn $1 quy tắc trong [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Quy tắc <code>$1</code> có hơn $3 ký tự vào bên trái trong [[MediaWiki:$2]]',
 );
 

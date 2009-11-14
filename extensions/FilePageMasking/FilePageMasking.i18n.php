@@ -124,6 +124,13 @@ $messages['id'] = array(
 	'filepagemasking-desc' => 'Menulis ulang ".xxx" menjadi "_xxx" pada pranala halaman deskripsi berkas',
 );
 
+/** Italian (Italiano)
+ * @author OrbiliusMagister
+ */
+$messages['it'] = array(
+	'filepagemasking-desc' => 'Trascrive ".xxx" come  "_xxx" nei collegamenti a pagine di descrizione del file',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -221,5 +228,12 @@ $messages['sk'] = array(
  */
 $messages['uk'] = array(
 	'filepagemasking-desc' => 'Перезаписує ".xxx" на "_xxx" в посиланнях на сторінки описів файлів',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'filepagemasking-desc' => 'Đổi các liên kết “.xxx” thành “_xxx” trong các trang miêu tả tập tin',
 );
 

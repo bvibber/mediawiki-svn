@@ -5072,6 +5072,7 @@ $messages['ml'] = array(
 	'codereview-tests-succeeded2' => '{{PLURAL:$2|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $1 കടന്നിരിക്കുന്നു',
 	'codereview-tests-failed2' => '{{PLURAL:$2|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $1 കടന്നിരിക്കുന്നു, {{PLURAL:$4|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $3 പരാജയപ്പെട്ടിരിക്കുന്നു:',
 	'codereview-tests-aborted' => 'പരീക്ഷണ ഓട്ടം റദ്ദാക്കിയിരിക്കുന്നു.',
+	'codereview-email-subj' => '[$1] [r$2]: പുതിയ അഭിപ്രായം ചേർത്തിരിക്കുന്നു',
 	'codereview-email-subj2' => '[$1] [r$2]: പിന്തുടർച്ചാ മാറ്റങ്ങൾ',
 	'codereview-email-body2' => 'ഉപയോക്താവ് "$1" r$2 എന്നതിനു പിന്തുടർച്ചാ മാറ്റങ്ങൾ നടത്തിയിരിക്കുന്നു.
 
@@ -5093,6 +5094,7 @@ $4',
 	'right-codereview-use' => 'Special:Code ഉപയോഗം',
 	'right-codereview-add-tag' => 'നാൾപ്പതിപ്പുകൾക്ക് പുതിയ റ്റാഗുകൾ ചേർക്കുക',
 	'right-codereview-remove-tag' => 'നാൾപ്പതിപ്പുകളിൽ നിന്നും റ്റാഗുകൾ നീക്കുക',
+	'right-codereview-post-comment' => 'നാൾപ്പതിപ്പുകളിൽ അഭിപ്രായങ്ങൾ ചേർക്കുക',
 	'right-codereview-set-status' => 'നാൾപ്പതിപ്പുകളുടെ സ്ഥിതിയിൽ മാറ്റം വരുത്തുക',
 	'right-codereview-link-user' => 'രചയിതാക്കളെ വിക്കി ഉപയോക്താക്കളുമായി കണ്ണി ചേർക്കുക',
 	'specialpages-group-developer' => 'വികസന ഉപകരണങ്ങൾ',

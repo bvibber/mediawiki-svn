@@ -254,6 +254,13 @@ $messages['tr'] = array(
 	'ipauth-desc' => 'Statik IP adreslerinden otomatik oturum açma',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'ipauth-desc' => 'Автоматичний вхід з постійних IP адрес',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

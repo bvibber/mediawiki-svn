@@ -134,6 +134,13 @@ $messages['id'] = array(
 	'lockout-desc' => 'Menghalangi pengguna yang diblokir untuk log masuk',
 );
 
+/** Italian (Italiano)
+ * @author OrbiliusMagister
+ */
+$messages['it'] = array(
+	'lockout-desc' => "Impedisce a utenti bloccati di effettuare l'accesso",
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */

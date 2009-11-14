@@ -97,6 +97,17 @@ $messages['bg'] = array(
 	'unicodeconverter-newtext' => 'Преобразуван текст:',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'unicodeconverter' => 'ইউনিকোড অনুবাদকরেকুরা',
+	'unicodeconverter-desc' => 'বিশেষ পাতা মডিউলর সিদা উদাহরণ আহান। [[Special:UnicodeConverter| UTF-8 র ৱাহি আহান দে]], অহান ISO 8859-1র কা HTML কোডগ দিতই।',
+	'unicodeconverter-ok' => 'চুম',
+	'unicodeconverter-oldtext' => 'মুল ৱাহিহান:',
+	'unicodeconverter-newtext' => 'অনুবাদ অসে ৱাহিহান:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

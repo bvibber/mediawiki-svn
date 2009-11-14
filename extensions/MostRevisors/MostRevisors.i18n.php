@@ -416,6 +416,7 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author OrbiliusMagister
  */
 $messages['it'] = array(
 	'mostrevisors' => 'Pagine con più revisori',
@@ -425,10 +426,11 @@ $messages['it'] = array(
 	'mostrevisors-namespace' => 'Namespace:',
 	'mostrevisors-none' => 'Nessuna pagina trovata.',
 	'mostrevisors-ns-header' => "'''In questa pagina {{PLURAL:$1|è elencata la pagina|sono elencate le $1 pagine}} con più revisori nel namespace $2.'''",
-	'mostrevisors-showing' => 'Elenco {{PLURAL:$1|pagina|$1 pagine}}:',
+	'mostrevisors-showing' => 'Elenco di {{PLURAL:$1|pagina|$1 pagine}}:',
 	'mostrevisors-submit' => 'Vai',
 	'mostrevisors-showredir' => 'Mostra redirect',
 	'mostrevisors-hideredir' => 'Nascondi redirect',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|contributore|contributori}}',
 	'mostrevisors-viewcontributors' => 'Visualizza principali contributori',
 );
 

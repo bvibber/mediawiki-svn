@@ -496,10 +496,11 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'titlekey-desc' => '标题前缀搜寻建议背干',
+	'titlekey-desc' => '标题前缀搜寻建议后台',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

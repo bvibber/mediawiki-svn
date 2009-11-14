@@ -251,6 +251,9 @@ Tämä vie sinut pois tältä muokkaussivulta ja saatat menettää nykyisen muok
 	'ajaxLogin2' => 'Oletko varma?
 Saatat menettää muokkauksesi jos lähdet tältä sivulta nyt.',
 	'ajaxlogin-create' => 'Luo käyttäjätunnus',
+	'al-nosuchuser' => 'Käyttäjää ”$1” ei ole olemassa.
+Nimet ovat kirjainkoosta riippuvaisia.
+Tarkista kirjoititko nimen oikein.',
 );
 
 /** French (Français)

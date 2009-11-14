@@ -207,6 +207,13 @@ $messages['ja'] = array(
 	'uploadblacklist-desc' => 'アップロード・ブラックリスト機能を追加する',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'uploadblacklist-desc' => '파일 올리기 블랙리스트 기능을 추가',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -356,8 +363,9 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
-	'uploadblacklist-desc' => '添加一个上传黑名单功能',
+	'uploadblacklist-desc' => '添加上传黑名单功能',
 );
 

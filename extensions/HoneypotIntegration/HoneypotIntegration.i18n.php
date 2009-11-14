@@ -241,6 +241,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'honeypot-desc' => 'മീഡിയാവിക്കി സൈറ്റുകളിൽ [http://projecthoneypot.org/ തേൻകുട പദ്ധതി] ഇണക്കിച്ചേർക്കൽ അനുവദിക്കുന്നു',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'തേൻകുട പദ്ധതിപ്രകാരം, ഐ.പി. വിലാസങ്ങൾ ഉണർത്തിവിട്ട സമീപകാല സാഹചര്യങ്ങളുടെ എണ്ണം',
 );
 

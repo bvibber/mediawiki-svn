@@ -968,12 +968,15 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'patrol' => 'Kontroll vun den Ännerungen',
+	'patrol-desc' => "Erweiderten Interface fir d'Kontrolléiere vu Säiten an Zesummenaarbecht mat Aneren",
 	'patrol-endorse' => 'Bestätegen',
 	'patrol-revert' => 'Zrécksetzen',
 	'patrol-revert-reason' => 'Grond:',
 	'patrol-skip' => 'Iwwersprangen',
 	'patrol-reverting' => 'Zrécksetzen: $1',
 	'patrol-nonefound' => "Et goufe keng passend Ännerunge fir z'iwerkucke fonnt.",
+	'patrol-endorsed-ok' => 'Dës Ännerung gouf als kontrolléiert markéiert.',
+	'patrol-endorsed-failed' => "D'Ännerung konnt net als kontolléiert markéiert ginn.",
 	'patrol-reverted-ok' => "D'Ännerung gouf zréckgesat.",
 	'patrol-reverted-failed' => "D'Ännerung konnt net zréck gesat ginn.",
 	'patrol-skipped-ok' => 'Ännerung ignoréieren',
@@ -981,7 +984,11 @@ $messages['lb'] = array(
 * Test vun engem neie Benotzer
 * Kuckt d'Diskussiounssäit",
 	'patrol-another' => 'Weis eng aner Ännerung, wann se disponibel ass',
+	'patrol-stopped' => 'Dir hutt decidéiert keng weider Ännerung ze kontrolléieren. $1',
 	'patrol-resume' => 'Hei clicke fir weiderzefueren.',
+	'group-patroller' => 'Kontrolleren',
+	'group-patroller-member' => 'Kontroller',
+	'grouppage-patroller' => '{{ns:project}}:Kontroller',
 	'right-patroller' => 'Sàiten iwwerkucken',
 );
 

@@ -270,6 +270,36 @@ $messages['es'] = array(
 	'wikieditor-preview-savedialog-goback' => 'Regresar',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'wikieditor-preview-tab-edit' => 'Aldatu',
+	'wikieditor-preview-tab-preview' => 'Aurreikuspena',
+	'wikieditor-preview-loading' => 'Kargatzen...',
+	'wikieditor-preview-button-publish' => 'Argitaratu',
+	'wikieditor-preview-button-cancel' => 'Ezeztatu',
+	'wikieditor-preview-savedialog-title' => '{{SITENAME}}era argitaratu',
+	'wikieditor-preview-savedialog-minor' => 'Aldaketa txikia',
+	'wikieditor-preview-savedialog-watch' => 'Orrialde hau jarraitu',
+	'wikieditor-preview-savedialog-publish' => 'Argitaratu',
+	'wikieditor-preview-savedialog-goback' => 'Atzera joan',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'wikieditor-preview-tab-edit' => 'Muokkaa',
+	'wikieditor-preview-tab-preview' => 'Esikatselu',
+	'wikieditor-preview-button-publish' => 'Julkaise',
+	'wikieditor-preview-button-cancel' => 'Peruuta',
+	'wikieditor-preview-savedialog-minor' => 'Pieni muutos',
+	'wikieditor-preview-savedialog-watch' => 'Tarkkaile tätä sivua',
+	'wikieditor-preview-savedialog-publish' => 'Julkaise',
+	'wikieditor-preview-savedialog-goback' => 'Palaa takaisin',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Jean-Frédéric
@@ -721,11 +751,20 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'wikieditor-preview-preference' => '启用双列对比预览',
 	'wikieditor-preview-tab-edit' => '编辑',
 	'wikieditor-preview-tab-preview' => '预览',
 	'wikieditor-preview-loading' => '载入中……',
+	'wikieditor-preview-button-publish' => '发表',
+	'wikieditor-preview-button-cancel' => '取消',
+	'wikieditor-preview-savedialog-title' => '发表到{{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => '编辑摘要（简要描述您作出编辑）：',
+	'wikieditor-preview-savedialog-minor' => '小修改',
+	'wikieditor-preview-savedialog-watch' => '监视本页',
+	'wikieditor-preview-savedialog-publish' => '发表',
+	'wikieditor-preview-savedialog-goback' => '后退',
 );
 

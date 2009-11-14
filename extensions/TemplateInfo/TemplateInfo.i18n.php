@@ -195,3 +195,11 @@ $messages['uk'] = array(
 	'templateinfo-header' => 'XML-визначення для цього шаблону:',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'templateinfo-desc' => 'Cho phép định nghĩa cấu trúc dữ liệu của bản mẫu dùng mã XML',
+	'templateinfo-header' => 'Định nghĩa XML của bản mẫu này là:',
+);
+

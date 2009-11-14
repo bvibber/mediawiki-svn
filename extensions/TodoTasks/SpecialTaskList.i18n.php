@@ -677,7 +677,7 @@ Le systema de notification de %s',
  */
 $messages['id'] = array(
 	'tasklist' => 'Daftar tugas',
-	'tasklist-parser-desc' => 'Menambahkan fungsi pemilah (parser functions) <nowiki>{{#todo:}}</nowiki> untuk memberikan tugas',
+	'tasklist-parser-desc' => 'Menambahkan fungsi parser (parser functions) <nowiki>{{#todo:}}</nowiki> untuk memberikan tugas',
 	'tasklist-special-desc' => 'Menambah halaman istimewa untuk meninjau [[Special:TaskList|pemberian tugas]]',
 	'tasklistbyproject' => 'Daftar tugas menurut proyek',
 	'tasklistunknownproject' => 'Proyek tak dikenal',

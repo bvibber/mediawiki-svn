@@ -32,6 +32,23 @@ $messages['qqq'] = array(
 	'externalpages-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'externalpages' => 'Eksterne bladsye',
+	'externalpages-desc' => 'Kry bladsye vanaf ander WMF werwe en gee hulle hier weer',
+	'externalpages-bad-year' => 'Ongeldige jaar gespesifiseer',
+	'externalpages-bad-language' => 'Ongeldige taal gespesifiseer',
+	'externalpages-bad-project' => 'Ongeldige projek gespesifiseer',
+	'externalpages-no-project' => 'Geen projek gespesifiseer nie',
+	'externalpages-bad-page' => 'Ongeldige bladsy gespesifiseer',
+	'externalpages-no-page' => 'Geen bladsy gespesifiseer nie',
+	'externalpages-error-generic' => "'n Fout het voorgekom",
+	'externalpages-bad-url' => 'Dit was nie moontlik om die URL te onttrek nie',
+	'externalpages-bad-url-data' => 'Kon nie die bladsyinhoud onttrek nie',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -207,6 +224,23 @@ $messages['ja'] = array(
 	'externalpages-error-generic' => 'エラー発生',
 	'externalpages-bad-url' => 'URL の読み込みに失敗',
 	'externalpages-bad-url-data' => 'ページ内容の読み込みに失敗',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'externalpages' => 'Sigge vun Ußerhallef',
+	'externalpages-desc' => 'Röf Sigge von ander Projäkte vun de WikiMedia-Schtefftung af, un zeijsch se aan.',
+	'externalpages-bad-year' => 'Et es e verkiehrt Johr aanjejovve',
+	'externalpages-bad-language' => 'En onjöltijje Shprooch wood aanjejovve',
+	'externalpages-bad-project' => 'En onjöltesch Projäk wood aanjejovve',
+	'externalpages-no-project' => 'Kei Projäk aanjejovve',
+	'externalpages-bad-page' => 'En kappodde Sigg wood aanjejovve',
+	'externalpages-no-page' => 'Keijn Sigg aanjejovve',
+	'externalpages-error-generic' => 'Ene Fähler es opjetrodde',
+	'externalpages-bad-url' => 'Kunnt dä <i lang="en">URL</i> nit eraan holle',
+	'externalpages-bad-url-data' => 'Kunnt dä Ennhald vun dä Sigg nit eraan holle',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -280,3 +280,11 @@ $messages['uk'] = array(
 	'flv-long-desc' => '(флеш-відео, $1 × $2 пікселів, розмір файлу: $3)',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'flvhandler_desc' => 'Cho phép thêm video Flash (.flv) như tập tin bình thường (thí dụ <nowiki>[[</nowiki>{{ns:file}}:Phim.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => '(Video Flash, $1 × $2 điểm ảnh, kích thước: $3)',
+);
+

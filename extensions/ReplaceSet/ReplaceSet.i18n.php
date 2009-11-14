@@ -330,5 +330,6 @@ $messages['sv'] = array(
 $messages['uk'] = array(
 	'replaceset-desc' => 'Додає функцію парсеру <nowiki>{{#replaceset}}</nowiki>, яка використовується для заміни ділянок тексту з відформатованими даними',
 	'replaceset-error-calllimit' => 'Досягнуто межі викликів ReplaceSet.',
+	'replaceset-error-regexbadmodifier' => "Модифікатор регулярного виразу '$1' недійсний.",
 );
 

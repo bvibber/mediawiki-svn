@@ -604,7 +604,7 @@ $messages['ia'] = array(
 	'qp_users_link' => 'Usatores',
 	'qp_voice_link' => 'Voce del usator',
 	'qp_voice_link_inv' => 'Voce de usator?',
-	'qp_user_polls_link' => 'Participava in $1 sondages',
+	'qp_user_polls_link' => 'Participava in $1 {{PLURAL:$1||sondage|sondages}}',
 	'qp_user_missing_polls_link' => 'Nulle participation',
 	'qp_not_participated_link' => 'Non participate',
 	'qp_order_by_username' => 'Ordinar per nomine de usator',
@@ -675,6 +675,13 @@ $messages['ja'] = array(
 	'qp_not_participated_link' => '未参加',
 	'qp_order_by_username' => '利用者名順に整列',
 	'qp_order_by_polls_count' => '投票数順に整列',
+	'qp_results_line_qupl' => 'ページ「$1」投票「$2」: $3',
+	'qp_results_line_qpl' => 'ページ「$1」投票「$2」: $3、$4、$5、$6',
+	'qp_header_line_qpul' => '$1 [ ページ「$2」投票「$3」]',
+	'qp_export_to_xls' => '統計を XLS 形式でエクスポート',
+	'qp_users_answered_questions' => '$1{{PLURAL:$1|人}}の利用者がこの質問に答えました',
+	'qp_error_category_name_empty' => 'カテゴリー名が空です',
+	'qp_error_proposal_text_empty' => '提案文が空です',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -705,8 +712,10 @@ $messages['lb'] = array(
 	'qp_export_to_xls' => "Exportéiert d'Statistiken am XLS-Format",
 	'qp_users_answered_questions' => "$1 {{PLURAL:$1|Benotzer huet|Benotzer hun}} op d'Froe geäntwert",
 	'qp_func_no_such_poll' => 'Et gëtt keng esou eng Ëmfro ($1)',
+	'qp_error_vote_dependance_poll' => "Stëmmt w.e.g. fir d'éischt bäi der Ëmfro $1 of.",
 	'qp_error_category_name_empty' => 'Den Numm vun der Kategorie ass eidel',
 	'qp_error_proposal_text_empty' => 'Den Text vum Virschlag ass eidel',
+	'qp_error_no_answer' => 'Propos ouni Äntwert',
 );
 
 /** Dutch (Nederlands)

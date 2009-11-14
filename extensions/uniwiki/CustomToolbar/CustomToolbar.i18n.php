@@ -2526,8 +2526,10 @@ $wgCustomToolbarMessages['ug-latn'] = array(
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $wgCustomToolbarMessages['uk'] = array(
+	'ct-desc' => 'Додає розширювану панель',
 	'ct_bold_sample' => 'Жирний текст',
 	'ct_bold_tip_ins' => 'Вставити жирний текст',
 	'ct_bold_tip_wrap' => 'Зробити цей текст жирним',
@@ -2554,12 +2556,14 @@ $wgCustomToolbarMessages['uk'] = array(
 	'ct_nowiki_sample' => 'Вставте сюди текст, який не потрібно форматувати',
 	'ct_nowiki_tip_ins' => 'Ігнорувати вікі-форматування',
 	'ct_nowiki_tip_wrap' => 'Ігнорувати вікі-форматування в цьому тексті',
+	'ct_nowiki_caption' => 'Без вікі',
 	'ct_horizontal_tip' => 'Вставити горизонтальну лінію (використовуйте скупо)',
 	'ct_horizontal_caption' => 'Горизонтальна лінія',
 	'ct_upload' => 'Завантажити $1',
 	'ct_select' => 'Обрати $1 для завантаження:',
 	'ct_caption' => "Додати заголовок (необов'язково):",
 	'ct_link' => "Додати назву посилання (необов'язково):",
+	'ct_submit' => 'Поїхали!',
 	'ct_close' => 'Закрити вікно',
 	'ct_success' => 'Файл успішно завантажено!',
 	'ct_popupblocked' => 'Спливаюче вікно завантаження не було відкрито. 

@@ -657,6 +657,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Finnrind
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -665,11 +666,12 @@ $messages['nn'] = array(
 	'contrib-tracking-error' => 'Feil',
 	'contrib-tracking-error-text' => 'Ugyldig skjema',
 	'contrib-tracking-submitting' => 'Sender til betalingshandtering...',
-	'contrib-tracking-continue' => 'Om du ikkje blir omdirigert automatsik, klikk på knappen for å gjennomføra donasjonen hjå PayPal.',
+	'contrib-tracking-continue' => 'Om du ikkje blir omdirigert automatisk, klikk på knappen for å gjennomføra donasjonen hjå PayPal.',
 	'contrib-tracking-button' => 'Hald fram',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Finnrind
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -678,7 +680,7 @@ $messages['no'] = array(
 	'contrib-tracking-error' => 'Feil',
 	'contrib-tracking-error-text' => 'Ugyldig skjema',
 	'contrib-tracking-submitting' => 'Sender til betalingshåndtering...',
-	'contrib-tracking-continue' => 'Om du ikke omdirigeres automatsik, klikk på knappen for å gjennomføre donasjonen hos PayPal.',
+	'contrib-tracking-continue' => 'Om du ikke omdirigeres automatisk, klikk på knappen for å gjennomføre donasjonen hos PayPal.',
 	'contrib-tracking-button' => 'Fortsett',
 );
 

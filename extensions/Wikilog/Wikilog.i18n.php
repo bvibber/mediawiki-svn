@@ -182,6 +182,7 @@ The comment will only appear after it is reviewed by a moderator.',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Purodha
  * @author Siebrand
  * @author Umherirrender
  */
@@ -191,6 +192,7 @@ $messages['qqq'] = array(
 	'right-wl-postcomment' => '{{doc-right|wl-postcomment}}',
 	'right-wl-moderation' => '{{doc-right|wl-moderation}}',
 	'wikilog-specialwikilog' => 'This is a special page name',
+	'wikilog-log-cmt-rejdel' => 'Afjelehnte wikilog Aanmärkung fom [[Special:Contributions/$1|$1]]',
 	'wikilog-post-count-published' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
 	'wikilog-post-count-drafts' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
 	'wikilog-post-count-all' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
@@ -283,7 +285,7 @@ Parameters:
 {{Identical|Delete}}',
 	'wikilog-approve-lc' => 'Verb',
 	'wikilog-reject-lc' => 'Verb',
-	'wikilog-page-lc' => 'Noun
+	'wikilog-page-lc' => '"Page" is a noun.
 {{Identical|Page}}',
 	'wikilog-history-lc' => 'Noun
 {{Identical|History}}',
@@ -307,16 +309,24 @@ $messages['af'] = array(
 	'wikilog-pager-next' => 'volgende →',
 	'wikilog-pager-last' => 'laaste →→',
 	'wikilog-has-comments' => '{{PLURAL:$1|een opmerking|$1 opmerkings}}',
+	'wikilog-form-wikilog' => 'Wikilog:',
+	'wikilog-form-category' => 'Kategorie:',
+	'wikilog-form-name' => 'Naam:',
 	'wikilog-form-author' => 'Outeur:',
 	'wikilog-form-tag' => 'Etiket:',
 	'wikilog-form-date' => 'Datum:',
+	'wikilog-form-status' => 'Status:',
 	'wikilog-form-preview' => 'Voorskou:',
 	'wikilog-form-comment' => 'Opmerking:',
+	'wikilog-show-published' => 'Gepubliseer',
+	'wikilog-show-drafts' => 'Werkweergawes',
 	'wikilog-submit' => 'Dien in',
 	'wikilog-preview' => 'Voorskou',
 	'wikilog-edit-lc' => 'wysig',
 	'wikilog-reply-lc' => 'antwoord',
 	'wikilog-delete-lc' => 'skrap',
+	'wikilog-approve-lc' => 'goedkeur',
+	'wikilog-reject-lc' => 'verwerp',
 	'wikilog-page-lc' => 'bladsy',
 	'wikilog-history-lc' => 'geskiedenis',
 );
@@ -1113,13 +1123,14 @@ O comentario non aparecerá ata que sexa revisado por un moderador.',
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'wikilog-new-item-go' => 'Ποιεῖν',
 	'wikilog-actions' => 'Δράσεις',
 	'wikilog-comments' => 'Σχόλια',
 	'wikilog-view-summary' => 'Σύνοψις',
-	'wikilog-anonymous-mark' => '(Άνώνυμος)',
+	'wikilog-anonymous-mark' => '(ἀνώνυμος)',
 	'wikilog-form-category' => 'Κατηγορία:',
 	'wikilog-form-name' => 'Ὄνομα:',
 	'wikilog-form-author' => 'Δημιουργός:',
@@ -1911,8 +1922,16 @@ $messages['ksh'] = array(
 	'wikilog-new-item' => 'Ene neue Wikilog Beijdraach aanlääje',
 	'wikilog-new-item-go' => 'Lohß Jonn!',
 	'wikilog-item-name' => 'Dä Name för dä Beidraach:',
+	'wikilog-published' => 'Öffentlesch jemaat',
+	'wikilog-updated' => 'Op der neue Schtand jebraat',
+	'wikilog-draft' => 'Äntworf',
 	'wikilog-authors' => 'Schriiver',
 	'wikilog-comments' => 'Aanmärkunge',
+	'wikilog-replies' => 'Antwoote',
+	'wikilog-view-archives' => 'Aschiive',
+	'wikilog-view-summary' => 'Zosammefassung',
+	'wikilog-draft-title-mark' => '(Äntworf)',
+	'wikilog-anonymous-mark' => '(namelos)',
 	'wikilog-pager-newer-n' => '← neuer $1',
 	'wikilog-pager-older-n' => 'ähler $1 →',
 	'wikilog-pager-newest' => '←← neuste',
@@ -1921,6 +1940,10 @@ $messages['ksh'] = array(
 	'wikilog-pager-next' => 'nähste →',
 	'wikilog-pager-first' => '←← eetste',
 	'wikilog-pager-last' => 'lätsde →→',
+	'wikilog-pager-empty' => '(Kein Beidrääsch)',
+	'wikilog-no-comments' => 'kein Aanmärkunge',
+	'wikilog-has-comments' => '{{PLURAL:$1|ein Aanmärkung|$1 Aanmärkunge|kein Aanmärkunge}}',
+	'wikilog-item-brief-header' => ': <i><small>vum $5, vum [[$1|$2]] aam $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→&nbsp;wigger lässe{{int:ellipsis}}]]',
 	'wikilog-edit-fieldset-legend' => 'Ennschtellunge för Wikilog:',
 	'wikilog-comment-by-user' => 'Aanmärkung vum $1 ($2)',
@@ -1928,11 +1951,15 @@ $messages['ksh'] = array(
 	'wikilog-comment-pending' => 'Heh di Aamärkung es noch nit zohjelohße.',
 	'wikilog-comment-deleted' => 'He di Aanmärkung es fottjeschmeße woode.',
 	'wikilog-comment-edited' => 'Heh di Aanmärkung es et läz aam $3 öm $4 Uhr jeändert woode ($2)',
+	'wikilog-comment-autosumm' => 'En neuje Aanmärkung {{GENDER:$1|vum|vum|vun däm Metmaacher|vun dä|vum}} $1: „$2“',
+	'wikilog-comment-delete' => 'Donn di Aanmärkung fott schmiiße',
 	'wikilog-newtalk-text' => '<!-- en läddije Sigg wood aanjelaat vun Wikilog -->',
 	'wikilog-title-comments' => 'Aanmärkunge zoh „$1“',
 	'wikilog-comment-is-empty' => 'En dä Aanmärkung schteiht nix dren.',
 	'wikilog-comment-too-long' => 'Di Aanmärkung es ze lang.',
 	'wikilog-comment-invalid-name' => 'Dä aanjejovve Name es nit jöltesch.',
+	'wikilog-post-comment' => 'En neue Aanmärkung maache',
+	'wikilog-post-reply' => 'Maach en neu Aanmärkung',
 	'wikilog-form-wikilog' => 'Wikilog:',
 	'wikilog-form-category' => 'Saachjropp:',
 	'wikilog-form-name' => 'Name:',
@@ -1942,6 +1969,10 @@ $messages['ksh'] = array(
 	'wikilog-form-status' => 'Stattus:',
 	'wikilog-form-preview' => 'Vör-Aansech:',
 	'wikilog-form-comment' => 'Aanmärkung:',
+	'wikilog-show-all' => 'All de Beijdrääsch',
+	'wikilog-show-published' => 'Öffentlesch jemaat',
+	'wikilog-show-drafts' => 'Äntwörf',
+	'wikilog-page-lc' => 'Sigg',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1950,6 +1981,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'wikilog' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
+	'wikilog-log-cmt-approve' => 'approuvéiert Bemierkung [[$1]]',
 	'wikilog-log-cmt-reject' => 'refuséiert Bemierkung [[$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Wikilog-Aktiounen',
@@ -1983,6 +2015,7 @@ $messages['lb'] = array(
 	'wikilog-pager-last' => 'lescht →→',
 	'wikilog-pager-empty' => '(keng Objeten)',
 	'wikilog-no-comments' => 'Keng Bemierkungen',
+	'wikilog-has-comments' => '{{PLURAL:$1|eng Bemierkung|$1 Bemierkungen}}',
 	'wikilog-item-brief-header' => ': <i><small>vum $5, aus dem [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→ weiderliesen ...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|Diskussioun]])',
@@ -1993,9 +2026,12 @@ $messages['lb'] = array(
 	'wikilog-comment-deleted' => 'Dës Bemierkung gouf geläscht.',
 	'wikilog-comment-edited' => "Dës Beierkung gouf den $3 ëm $4 Auer fir d'lescht geännert ($2)",
 	'wikilog-comment-autosumm' => 'Nei Bemierkung vum $1: $2',
+	'wikilog-reply-to-comment' => 'Eng Änwert zu dëser Bemierkung schécken',
 	'wikilog-comment-page' => "Op d'Säit vun dëser Bemierkung goen",
 	'wikilog-comment-edit' => 'Dës Bemierkung änneren',
 	'wikilog-comment-delete' => 'Dës Bemierkung läschen',
+	'wikilog-comment-history' => 'Versioune vun der Bemierkung kucken',
+	'wikilog-comment-approve' => 'Dës Bemierkung approuvéieren (gëtt direkt gemaach)',
 	'wikilog-newtalk-text' => '<!-- eidel Säit déi vu Wikilog ugeluecht gouf-->',
 	'wikilog-title-comments' => 'Bemierkungen - $1',
 	'wikilog-error-msg' => 'Wikilog: $1',

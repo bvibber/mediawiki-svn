@@ -1479,6 +1479,13 @@ Skala ocen:
 	'right-feedback' => 'Użyj formularza, aby ocenić stronę',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'ratinghistory' => 'Stòria dij pontegi dle pàgine',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
