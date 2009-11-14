@@ -13,9 +13,9 @@
 		-->
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
-    	<!--[if lt IE 7]>		
-            <link rel="stylesheet" href="style_ie6.css" type="text/css" media="screen" />	
-    	<![endif]-->    	 	
+    	<!--[if lt IE 7]>
+            <link rel="stylesheet" href="style_ie6.css" type="text/css" media="screen" />
+    	<![endif]-->
 		<style type="text/css">
             #wrapper {
                 /* we need to set this here because it might change per language */
@@ -48,7 +48,7 @@
 			<div id="header">
 				<h1>
 				    <a href="<?php echo GE_HOME; ?>">
-                        <?php if(GE_DEV_MODE > 0) echo "TEST MODE - "; ?>				    
+                        <?php if(GE_DEV_MODE > 0) echo "TEST MODE - "; ?>
     				    <?php __('TITLE'); ?>
 			        </a>
 		        </h1>

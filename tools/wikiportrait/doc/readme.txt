@@ -30,7 +30,7 @@ This software includes (pieces of) the following programs:
 * TimThumb script created by Tim McDaniels and Darren Hoyt with tweaks by Ben Gillbanks
   http://code.google.com/p/timthumb/
   released under the MIT License: http://www.opensource.org/licenses/mit-license.php
-  
+
 * jQuery JavaScript Library v1.3.2
   http://jquery.com/
   Copyright (c) 2009 John Resig
