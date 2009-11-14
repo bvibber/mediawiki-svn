@@ -90,6 +90,8 @@ $messages['de'] = array(
  */
 $messages['diq'] = array(
 	'wikieditor-toc-preference' => 'Tabloyo tedeesteyi ke navigasyon keno ay a bike',
+	'wikieditor-toc-show' => 'Tedeesteyi bimocne',
+	'wikieditor-toc-hide' => 'Tedeesteyi binumne',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -113,6 +115,22 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'wikieditor-toc-preference' => 'Habilitar tabla de contenidos navegable',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'wikieditor-toc-show' => 'Edukiak erakutsi',
+	'wikieditor-toc-hide' => 'Edukiak ezkutatu',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'wikieditor-toc-show' => 'Näytä sisältö',
+	'wikieditor-toc-hide' => 'Piilota sisältö',
 );
 
 /** French (Français)
@@ -174,6 +192,8 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'wikieditor-toc-preference' => 'Activar le tabula de contento navigabile',
+	'wikieditor-toc-show' => 'Revelar contento',
+	'wikieditor-toc-hide' => 'Celar contento',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -208,6 +228,8 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'wikieditor-toc-preference' => 'Schalld e Enhaltsverzeischnes aan, woh mer dren eröm wandere kann',
+	'wikieditor-toc-show' => 'Enhalld aanzeije',
+	'wikieditor-toc-hide' => 'Enhalld verschteische',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -232,6 +254,8 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-toc-preference' => 'താളിന്റെ ഉള്ളടക്ക പട്ടിക വഴികാട്ടിയായി ഉപയോഗിക്കുക',
+	'wikieditor-toc-show' => 'ഉള്ളടക്കം പ്രദർശിപ്പിക്കുക',
+	'wikieditor-toc-hide' => 'ഉള്ളടക്കം മറയ്ക്കുക',
 );
 
 /** Dutch (Nederlands)
@@ -239,6 +263,8 @@ $messages['ml'] = array(
  */
 $messages['nl'] = array(
 	'wikieditor-toc-preference' => 'Navigeerbare inhoudsopgave inschakelen',
+	'wikieditor-toc-show' => 'Inhoud weergeven',
+	'wikieditor-toc-hide' => 'Inhoud verbergen',
 );
 
 /** Occitan (Occitan)
@@ -326,10 +352,13 @@ $messages['sv'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'wikieditor-toc-preference' => 'Gezintiye uygun içindekiler tablosunu etkinleştir',
+	'wikieditor-toc-show' => 'İçindekileri göster',
+	'wikieditor-toc-hide' => 'İçindekileri gizle',
 );
 
 /** Ukrainian (Українська)
@@ -338,6 +367,8 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'wikieditor-toc-preference' => 'Увімкнути додаткову панель змісту з можливістю навігації',
+	'wikieditor-toc-show' => 'Показати зміст',
+	'wikieditor-toc-hide' => 'Сховати зміст',
 );
 
 /** Vèneto (Vèneto)
@@ -359,8 +390,11 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'wikieditor-toc-preference' => '启用可导航目录',
+	'wikieditor-toc-show' => '显示内容',
+	'wikieditor-toc-hide' => '隐藏内容',
 );
 

@@ -254,10 +254,17 @@ $messages['qqq'] = array(
 	'wikieditor-toolbar-tool-table-example' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-example-header' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-title' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
+	'wikieditor-toolbar-tool-table-dimensions-rows' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
+	'wikieditor-toolbar-tool-table-dimensions-columns' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
+	'wikieditor-toolbar-tool-table-dimensions-header' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
+	'wikieditor-toolbar-tool-table-wikitable' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
+	'wikieditor-toolbar-tool-table-sortable' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-preview' => '{{Identical|Preview}}
 
 [[File:Wikieditor-toolbar-tool-table.png|thumb]]This is a noun. See screenshot.',
-	'wikieditor-toolbar-tool-table-insert' => '{{Identical|Insert}}',
+	'wikieditor-toolbar-tool-table-insert' => '{{Identical|Insert}}
+
+[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-cancel' => '{{Identical|Cancel}}',
 	'wikieditor-toolbar-tool-table-toomany' => '[[file:Bulbgraph.png|left|22px]]
 This message does not support PLURAL on $1.',
@@ -3695,6 +3702,7 @@ $messages['eu'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Errenkadak',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Zutabeak',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Goiburu errendaka txertatu',
+	'wikieditor-toolbar-tool-table-preview' => 'Aurreikuspena',
 	'wikieditor-toolbar-tool-table-insert' => 'Txertatu',
 	'wikieditor-toolbar-tool-table-cancel' => 'Ezeztatu',
 	'wikieditor-toolbar-tool-replace' => 'Bilatu eta ordezkatu',
@@ -4113,7 +4121,7 @@ $messages['fr'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => "Inclure la ligne d'en-tête",
 	'wikieditor-toolbar-tool-table-wikitable' => 'Style avec bordures',
 	'wikieditor-toolbar-tool-table-sortable' => 'Rendre le tableau triable',
-	'wikieditor-toolbar-tool-table-preview' => 'Prévisualiser',
+	'wikieditor-toolbar-tool-table-preview' => 'Prévisualisation',
 	'wikieditor-toolbar-tool-table-insert' => 'Insérer',
 	'wikieditor-toolbar-tool-table-cancel' => 'Annuler',
 	'wikieditor-toolbar-tool-table-toomany' => "Il n'est pas possible d'insérer un tableau de plus de $1 cellules avec cet outil.",
@@ -9055,6 +9063,7 @@ $messages['no'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author McDutchie
  */
 $messages['oc'] = array(
 	'wikieditor-toolbar' => 'Modificacion de la barra d’espleches',
@@ -9143,7 +9152,7 @@ $messages['oc'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => "Inclure la linha d'entèsta",
 	'wikieditor-toolbar-tool-table-wikitable' => 'Estil amb bordaduras',
 	'wikieditor-toolbar-tool-table-sortable' => 'Far lo tablèu triable',
-	'wikieditor-toolbar-tool-table-preview' => 'Previsualizar',
+	'wikieditor-toolbar-tool-table-preview' => 'Previsualizacion',
 	'wikieditor-toolbar-tool-table-insert' => 'Inserir',
 	'wikieditor-toolbar-tool-table-cancel' => 'Anullar',
 	'wikieditor-toolbar-tool-table-toomany' => "Es pas possible d'inserir un tablèu de mai de $1 cellulas amb aqueste esplech.",
@@ -11342,6 +11351,7 @@ $messages['sv'] = array(
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
+ * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
 	'wikieditor-toolbar' => 'Mwambaa zana wa kuhariri',
@@ -11367,8 +11377,9 @@ $messages['sw'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'Ukurasa haupatikani',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Jina batili',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Inahakikishwa kwamba ukurasa inapatikana...',
-	'wikieditor-toolbar-tool-link-int-invalid' => 'Jina la ukurasa ulioliandika si halali.',
+	'wikieditor-toolbar-tool-link-int-invalid' => 'Jina la ukurasa uliloliandika ni batili.',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Kiungo cha ndani',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Kiungo cha nje',
 	'wikieditor-toolbar-tool-file-example' => 'Mfano.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Tiniwayo',
 	'wikieditor-toolbar-tool-reference-example' => 'Weka maneno ya tiniwayo hapa',
@@ -11398,9 +11409,13 @@ $messages['sw'] = array(
 	'wikieditor-toolbar-tool-table-title' => 'Weka jedwali',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Mistari',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Safu',
+	'wikieditor-toolbar-tool-table-dimensions-header' => 'Weka mstari wa vichwa',
+	'wikieditor-toolbar-tool-table-wikitable' => 'Mtindo unaochora mipaka',
+	'wikieditor-toolbar-tool-table-sortable' => 'Uwezeshe jedwali ipangishwe',
 	'wikieditor-toolbar-tool-table-preview' => 'Hakiki',
 	'wikieditor-toolbar-tool-table-insert' => 'Weka',
 	'wikieditor-toolbar-tool-table-cancel' => 'Batilisha',
+	'wikieditor-toolbar-tool-table-zero' => 'Huwezi kuweka jedwali ambayo haini mistari wala safu zozote.',
 	'wikieditor-toolbar-tool-replace-search' => 'Tafuta:',
 	'wikieditor-toolbar-tool-replace-close' => 'Batilisha',
 	'wikieditor-toolbar-section-characters' => 'Herufi maalum',
