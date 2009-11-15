@@ -67,15 +67,15 @@ install: build
 	install -m 0644 debian/wikimedia-task-dns-auth-default $(DESTDIR)/etc/default/wikimedia-task-dns-auth
 	install gen-zones $(DESTDIR)/usr/lib/wikimedia-task-dns-auth/bin/
 	install gen-bind.conf $(DESTDIR)/usr/lib/wikimedia-task-dns-auth/bin/
-	install authdns-update authdns-scenario $(DESTDIR)/usr/sbin/
+	install gen-langlist-cnames $(DESTDIR)/usr/lib/wikimedia-task-dns-auth/bin/
+	install gen-dblist-cnames $(DESTDIR)/usr/lib/wikimedia-task-dns-auth/bin/
+	install authdns-update authdns-local-update authdns-scenario $(DESTDIR)/usr/sbin/
 	install -m 0644 -o pdns zz.countries.nerd.dk.rbldnsd $(DESTDIR)/etc/powerdns/ip-map/
 	install -d $(DESTDIR)/etc/powerdns/scenarios/
 	install -d $(DESTDIR)/etc/powerdns/scenarios/normal
-	install -d $(DESTDIR)/etc/powerdns/scenarios/knams-down
-	install -d $(DESTDIR)/etc/powerdns/scenarios/yaseo-down
+	install -d $(DESTDIR)/etc/powerdns/scenarios/esams-down
 	install scenarios/normal/* $(DESTDIR)/etc/powerdns/scenarios/normal/
-	install scenarios/knams-down/* $(DESTDIR)/etc/powerdns/scenarios/knams-down/
-	install scenarios/yaseo-down/* $(DESTDIR)/etc/powerdns/scenarios/yaseo-down/
+	install scenarios/esams-down/* $(DESTDIR)/etc/powerdns/scenarios/esams-down/
 
 
 # Build architecture-independent files here.

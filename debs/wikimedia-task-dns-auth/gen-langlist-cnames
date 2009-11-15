@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+PATH=/bin:/usr/bin
+
+POWERDNSDIR=/etc/powerdns
+LANGLIST=$POWERDNSDIR/langlist
+LANGLISTSOURCE=""
+
+[ $LANGLIST -nt $POWERDNSDIR/langlist-cnames ] && < $LANGLIST awk '{ print $1"\t\t\t1H\tIN CNAME\trr.wikimedia.org."; print"www."$1"\t\t\t1H\tIN CNAME\trr.wikimedia.org."; print $1".m\t\t\t1H\tIN CNAME\tmobile1.wikimedia.org." }' > $POWERDNSDIR/langlist-cnames
+

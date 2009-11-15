@@ -53,24 +53,15 @@ fi
 # Generate a new list of language CNAMEs
 echo "Syncing langlist"
 rsync -t $LANGLISTSOURCE $LANGLIST || true
-echo "Generating language subdomains CNAME file from $LANGLIST"
-[ $LANGLIST -nt $POWERDNSDIR/langlist-cnames ] && < $LANGLIST awk '{ print $1"\t\t\t1H\tIN CNAME\trr.wikimedia.org."; print"www."$1"\t\t\t1H\tIN CNAME\trr.wikimedia.org."; print $1".m\t\t\t1H\tIN CNAME\tmobile1.wikimedia.org." }' > $POWERDNSDIR/langlist-cnames
 
 echo "Syncing all.dblist"
 rsync -t $DBLISTSOURCE $DBLIST || true
+
+echo "Generating language subdomains CNAME file from $LANGLIST"
+$SCRIPTDIR/gen-langlist-cnames
+
 echo "Generating wiki toolserver CNAMEs from $DBLIST"
-(
-while read line; do 
-	line=`echo $line | tr _ -`
-	if echo $line | egrep -q '^(bgwiki|bgwiktionary|commonswiki|cswiki|dewiki|enwikiquote|enwiktionary|eowiki|fiwiki|idwiki|itwiki|nlwiki|nowiki|plwiki|ptwiki|svwiki|thwiki|trwiki|zhwiki)$'; then
-		echo "$line-p 1H IN CNAME sql-s2.toolserver.org."
-	elif [ $line = enwiki ]; then 
-		echo "$line-p 1H IN CNAME sql-s1.toolserver.org." 
-	else 
-		echo "$line-p 1H IN CNAME sql-s3.toolserver.org."
-	fi; 
-done
-) < $DBLIST > $POWERDNSDIR/dblist-cnames
+$SCRIPTDIR/gen-dblist-cnames
 
 # Generate the zonefiles from the templates
 echo "Generating zonefiles from zone templates"

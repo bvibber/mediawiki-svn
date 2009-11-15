@@ -1,3 +1,14 @@
+wikimedia-task-dns-auth (0.11) hardy; urgency=low
+
+  * Refactored authdns-update into separate scripts
+  * Removed directory scenarios/yaseo-down
+  * Renamed directory knams-down to esams-down
+  * Changed zwinger into fenari in /etc/default/wikimedia-task-dns-auth
+  * Depend on pnds > 2.9.22
+  * Add script authdns-local-update
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 15 Nov 2009 14:55:58 +0000
+
 wikimedia-task-dns-auth (0.10) hardy; urgency=low
 
   * Add <language>.m.wikipedia.org entries

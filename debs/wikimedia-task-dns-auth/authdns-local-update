@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# Shell script that pulls zone templates from the "master" DNS server,
+# and regenerates them locally.
+#
+# Written on 2009/11/15 by Mark Bergsma <mark@wikimedia.org>
+
+set -e
+
+CONFFILE=/etc/default/wikimedia-task-dns-auth
+MASTER=""
+POWERDNSDIR=/etc/powerdns
+SCRIPTDIR=/usr/lib/wikimedia-task-dns-auth/bin
+
+export RSYNC_RSH="ssh -i /root/.ssh/wikimedia-task-dns-auth"
+
+PATH=/bin:/usr/bin
+
+# Source the configuration file
+[ -f $CONFFILE ] && source $CONFFILE
+
+# If no master is given on the command line, use the first one in /etc/default/wikimedia-task-dns-auth
+if [ -z "$1" ]; then
+	MASTER=$(echo $NAMESERVERS | cut -d' ' -f1 )
+else
+	MASTER=$1
+fi
+
+rsync --delete -av $MASTER:$POWERDNSDIR/dblist-cnames $POWERDNSDIR/
+rsync --delete -av $MASTER:$POWERDNSDIR/langlist-cnames $POWERDNSDIR/
+rsync --delete -av $MASTER:$POWERDNSDIR/participants $POWERDNSDIR/
+rsync --delete -av $MASTER:$POWERDNSDIR/templates $POWERDNSDIR/
+rsync --delete -av $MASTER:$POWERDNSDIR/scenarios $POWERDNSDIR/
+rsync --delete -av $MASTER:$POWERDNSDIR/geomaps $POWERDNSDIR/
+
+$SCRIPTDIR/gen-zones
+$SCRIPTDIR/gen-bind.conf
+
+pdns_control reload
+pdns_control rediscover

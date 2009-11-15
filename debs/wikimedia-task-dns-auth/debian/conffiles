@@ -2,7 +2,5 @@
 /etc/default/wikimedia-task-dns-auth
 /etc/powerdns/scenarios/normal/rr.wikimedia.org
 /etc/powerdns/scenarios/normal/upload.wikimedia.org
-/etc/powerdns/scenarios/knams-down/rr.wikimedia.org
-/etc/powerdns/scenarios/knams-down/upload.wikimedia.org
-/etc/powerdns/scenarios/yaseo-down/rr.wikimedia.org
-/etc/powerdns/scenarios/yaseo-down/upload.wikimedia.org
+/etc/powerdns/scenarios/esams-down/rr.wikimedia.org
+/etc/powerdns/scenarios/esams-down/upload.wikimedia.org
