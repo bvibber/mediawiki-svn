@@ -2600,6 +2600,7 @@ $messages['kn'] = array(
 /** Korean (한국어)
  * @author Ficell
  * @author Kwj2772
+ * @author happyday19c
  */
 $messages['ko'] = array(
 	'openidlogin' => 'OpenID로 로그인',
@@ -2610,7 +2611,87 @@ $messages['ko'] = array(
 	'openidemail' => '이메일 주소',
 	'openidlanguage' => '언어',
 	'openidchoosepassword' => '비밀번호:',
-	'openidloginlabel' => 'OpenID URL',
+	'openidloginlabel' => 'OpenID 주소',
+	'openid-desc' => '[http://openid.net/ OpenID]를 통한 로그인이 가능합니다. 또한 위키 사용자 계정을 통해 OpenID를 지원하는 다른 사이트에도 로그인이 가능합니다.',
+  'openidxrds' => 'Yadis 파일',
+	'openidconvert' => 'OpenID 변환기',
+	'openiderror' => '인증 오류가 발생했습니다.',
+	'openiderrortext' => 'OpenID URL을 인증하는 과정에 오류가 발생하였습니다.',
+	'openidconfigerrortext' => 'OpenID 계정 정보 저장소에 문제가 발생하였습니다. [[Special:ListUsers/sysop|{{SITENAME}} 관리자]]에게 문의하시기 바랍니다.',
+	'openidpermissiontext' => '제출한 OpenID는 위키 접속을 지원하지 않습니다.',
+	'openidcancel' => '인증 취소',
+	'openidcanceltext' => 'OpenID 인증이 취소되었습니다.',
+	'openidfailure' => '인증 실패',
+	'openidfailuretext' => 'OpenID 인증이 실패하였습니다. 오류 메시지 : "$1"',
+	'openidsuccess' => '인증 성공',
+	'openidsuccesstext' => '성공적으로 OpenID URL이 인증되었습니다.',
+	'openidserverlogininstructions' => '유저 $2로서 $3에 로그인하기 위한 암호를 입력하십시오. (사용자 페이지 $1)',
+	'openidtrustinstructions' => '$1과 데이터를 공유하려면 체크하십시오.',
+	'openidallowtrust' => '$1이 이 사용자 계정을 신뢰함.',
+	'openidnopolicy' => '사이트가 개인 정보 보호 정책을 제시하지 않았습니다.',
+	'openidpolicy' => '자세한 사항은 <a target="_new" href="$1">개인 정보 보호 정책</a>을 참고하십시오.',
+	'openidoptional' => '선택 사항',
+	'openidrequired' => '필수 사항',
+	'openidnickname' => '별명',
+	'openidfullname' => '전체이름',
+	'openidemail' => '메일 주소',
+	'openidlanguage' => '언어',
+	'openidtimezone' => '시간대',
+	'openidnotavailable' => '입력한 별명 ($1)은 이미 다른 사용자가 사용중입니다..',
+	'openidnotprovided' => '제출한 OpenID 서버가 별명을 제출하지 않았습니다. (OpenID 서버가 지원하지 않거나, 제출하지 않도록 설정하였을 수 있습니다.).',
+	'openidchooseinstructions' => '모든 사용자는 별명을 가져야 합니다.
+아래의 옵션 중 하나를 선택할 수 있습니다..',
+	'openidchoosefull' => '전체 이름은 ($1)',
+	'openidchooseurl' => 'OpenID로 부터 선택한 이름 ($1)',
+	'openidchooseauto' => '자동 생성된 이름 ($1)',
+	'openidchoosemanual' => '선택하신 이름:',
+	'openidchooseexisting' => '위키에 이미 존재하는 계정입니다:',
+	'openidchoosepassword' => '암호:',
+	'openidconvertinstructions' => '이 양식은 OpenID URL을 통한 로그인을 설정하거나 OpenID URL을 추가하기 위한 곳입니다.',
+	'openidconvertoraddmoreids' => 'OpenID로 변환하거나 OpenID URL을 추가합니다.',
+	'openidconvertsuccess' => 'OpenID로의 변환이 완료되었습니다',
+	'openidconvertsuccesstext' => '성공적으로 제출하신 [$1 OpenID 정보]를 {{SITENAME}} 계정 정보로 변환하였습니다.',
+	'openidconvertyourstext' => '이미 사용중인 OpenID입니다.',
+	'openidconvertothertext' => '다른 사용자의 OpenID입니다.',
+	'openidalreadyloggedin' => "'''이미 $1로 로그인하셨습니다!'''
+
+추후 OpenID를 사용하고자 하신다면, 일반적인 방법으로 로그인 하신 후 [[Special:OpenIDConvert|사용자 계정을 OpenID로 변환]]할 수 있습니다.",
+	'openidnousername' => '사용자명을 지정하지 않았습니다.',
+	'openidbadusername' => '잘못된 사용자명을 지정하셨습니다.',
+	'openidautosubmit' => '자바 스크립트가 허용된 경우 자동으로 데이터가 전송됩니다..
+	만약 자동으로 로그인되지 않는다면 ""계속"" 버튼을 눌러주세요.',
+	'openidclientonlytext' => '{{SITENAME}}은 OpenID 서비스 제공자로서 동작하지 않습니다.',
+	'openidloginlabel' => 'OpenID URL 주소',
+	'openidlogininstructions' => '{{SITENAME}}에서는 다양한 웹사이트에서의 Single Sign-On을 지원하는 [http://openid.net/ OpenID] 로그인 기능을 제공합니다.
+OpenID는 다른 많은 웹사이트에서 서로 다른 암호나 사용자명을 입력하는 불편없이 편리하게 로그인할 수 있도록 도와줍니다.
+(OpenID에 대한 자세한 정보는 [http://ko.wikipedia.org/wiki/OpenID 위키피디아 OpenID 문서]를 참고하세요.)
+
+이미 {{SITENAME}}에 계정을 가지고 계신 경우, 일반적인 방법으로 [[Special:UserLogin|로그인]]이 가능합니다.
+추후 OpenID를 사용하고자 하신다면, 일반적인 방법으로 로그인 하신 후 [[Special:OpenIDConvert|사용자 계정을 OpenID로 변환]]할 수 있습니다.
+
+다양한 사이트에서 [http://openid.net/get/ OpenID 서비스]를 제공하며, 이미 사용중인 다른 서비스가 OpenID 서비스를 제공할 수도 있습니다.',
+	'openidupdateuserinfo' => '내 사용자 정보를 갱신하기',
+	'openiddelete' => 'OpenID 삭제',
+	'openiddelete-text' => '"{{int:openiddelete-button}}" 버튼을 누르시면, [$1 OpenID 정보]를 당신의 사용자 계정으로부터 삭제할 것입니다.
+이후 OpenID를 통한 현재 사용자 계정으로의 로그인이 불가능하게 될 것입니다.',
+	'openiddelete-button' => '확인',
+	'openiddelete-sucess' => '사용자 계정으로부터 OpenID 정보가 삭제되었습니다. [[특수기능:OpenIDConvert|OpenID 변환]] 페이지로 돌아갑니다.',
+	'openiddelete-error' => '사용자 계정으로부터 OpenID 정보를 삭제하는 과정에 오류가 발생하였습니다.',
+	'prefs-openid' => 'OpenID 설정',
+	'openid-prefstext' => '[http://openid.net/ OpenID] 사용사 설정',
+	'openid-pref-hide' => 'OpenID로 로그인한 경우, 사용자 페이지에서 OpenID 정보를 보여주지 않습니다.',
+	'openid-pref-update-userinfo-on-login' => '로그인 시 업데이트 할 OpenID 정보 : ',
+	'openid-urls-desc' => '현재 열결된 OpenID 계정 목록 : ',
+	'openid-urls-url' => 'URL 주소',
+	'openid-urls-action' => '동작',
+	'openid-urls-delete' => '삭제',
+	'openid-add-url' => '새 OpenID 추가하기',
+	'openidsigninorcreateaccount' => '로그인 또는 새 계정 생성',
+	'openid-provider-label-openid' => 'OpenID URL을 입력하십시오',
+	'openid-provider-label-google' => '구글 계정을 통해 로그인하기',
+	'openid-provider-label-yahoo' => '야후 계정을 통해 로그인하기',
+	'openid-provider-label-aol' => 'AOL 사용자명 을입력하십시오',
+	'openid-provider-label-other-username' => '$1 사용자명을 입력하십시오',
 );
 
 /** Ripoarisch (Ripoarisch)
