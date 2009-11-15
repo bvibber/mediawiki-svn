@@ -240,6 +240,7 @@ $messages['dsb'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Lucas
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -253,6 +254,8 @@ $messages['eo'] = array(
 	'wikieditor-preview-savedialog-summary' => 'Resumo (mallonge priskribu la ŝanĝoj faritaj):',
 	'wikieditor-preview-savedialog-minor' => 'Eta redakto',
 	'wikieditor-preview-savedialog-watch' => 'Atenti ĉi tiun paĝon',
+	'wikieditor-preview-savedialog-publish' => 'Eldoni',
+	'wikieditor-preview-savedialog-goback' => 'Reen',
 );
 
 /** Spanish (Español)

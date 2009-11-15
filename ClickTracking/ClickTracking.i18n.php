@@ -246,6 +246,13 @@ $messages['cs'] = array(
 	'ct-and' => 'a zároveň',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'ct-and' => 'и',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  * @author Umherirrender

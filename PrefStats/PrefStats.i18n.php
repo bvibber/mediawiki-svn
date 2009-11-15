@@ -313,10 +313,14 @@ Kliknutím zobrazíte příslušné statistiky.',
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author Omnipaedista
+ * @author ОйЛ
  */
 $messages['cu'] = array(
 	'prefstats-factor-hour' => 'часъ',
 	'prefstats-factor-day' => 'дьнь',
+	'prefstats-factor-week' => 'сєдми́ца',
+	'prefstats-factor-twoweeks' => 'двѣ сєдми́ци',
+	'prefstats-factor-fourweeks' => 'чєтꙑрє сєдми́цѧ',
 );
 
 /** Welsh (Cymraeg)
