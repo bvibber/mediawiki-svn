@@ -11,7 +11,7 @@ abstract class POMTemplateParameter
 	static function parse($text)
 	{
 
-		$pair = split('=', $text, 2);
+		$pair = explode('=', $text, 2);
 
 		# if it's a name/value pair, create POMTemplateNamedParameter, otherwise, create POMTemplateNumberedParameter
 		# if neither can be created, return POMTemplateInvalidParameter

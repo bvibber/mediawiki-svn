@@ -19,7 +19,7 @@ class POMTemplate extends POMElement
 		$text = substr($text, 2, strlen($text) - 4);
 
 		# Split by pipe
-		$parts = split('\|', $text);
+		$parts = explode('\|', $text);
 
 		$this->title_triple = new POMUtilTrimTriple(array_shift($parts));
 		
