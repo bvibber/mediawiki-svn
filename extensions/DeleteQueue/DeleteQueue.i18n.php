@@ -4180,7 +4180,7 @@ $messages['pt'] = array(
 	'deletequeue-action-text-queued' => 'Você pode ver as seguintes páginas para este caso de eliminação:
 * [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Ver suportes e objeções atuais].
 * [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Suportar ou objetar à eliminação desta página].',
-	'deletequeue-permissions-noedit' => 'Você deverá estar habilitado a editar uma página para poder afetar o seu estado de eliminação.',
+	'deletequeue-permissions-noedit' => 'Tem de poder editar uma página para poder afectar o seu estado de eliminação.',
 	'deletequeue-generic-reasons' => '* Motivos genéricos
   ** Vandalismo
   ** Spam

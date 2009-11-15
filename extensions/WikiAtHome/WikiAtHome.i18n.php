@@ -375,6 +375,13 @@ $messages['el'] = array(
 	'wah-menu-pref' => 'Προτιμήσεις',
 );
 
+/** Esperanto (Esperanto)
+ * @author Lucas
+ */
+$messages['eo'] = array(
+	'wah-menu-pref' => 'Agordoj',
+);
+
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover

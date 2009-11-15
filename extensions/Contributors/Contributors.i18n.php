@@ -794,6 +794,13 @@ $messages['km'] = array(
 	'contributors-nosuchpage' => 'មិនមានទំព័រ$1ទេ។',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'contributors-submit' => 'ತೋರಿಸು',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Kwj2772

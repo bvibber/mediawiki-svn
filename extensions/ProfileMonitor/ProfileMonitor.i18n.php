@@ -136,12 +136,17 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'profiling' => 'Roadennoù priziañ',
+	'profiling-desc' => '[[Special:Profiling|Pajenn dibar]] da glask ha da wiriañ roadennoù profil',
 	'profiling-process' => 'Neudennad an argerzh :',
+	'profiling-wildcard' => 'Ober gant un aotre digor-frank',
 	'profiling-ok' => 'Mat eo',
+	'profiling-data' => 'Roadennoù priziañ evit `$1`',
 	'profiling-data-process' => 'Argerzh',
 	'profiling-data-count' => 'Kontañ',
 	'profiling-data-time' => 'Pad (hollek)',
 	'profiling-data-average' => 'Pad (keidenn)',
+	'profiling-no-data' => "N'eus bet kavet roadenn ebet o klotañ gant se.",
 );
 
 /** Bosnian (Bosanski)
@@ -762,6 +767,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
@@ -769,14 +775,14 @@ $messages['pt'] = array(
 	'profiling' => 'Dados de perfilagem',
 	'profiling-desc' => '[[Special:Profiling|Página especial]] para pesquisar e inspeccionar dados de perfilagem',
 	'profiling-process' => 'Comando do processo:',
-	'profiling-wildcard' => 'Usar carácter universal',
+	'profiling-wildcard' => "Usar carácter de substituição ''(wildcard)''",
 	'profiling-ok' => 'OK',
 	'profiling-data' => 'A perfilar dados para `$1`',
 	'profiling-data-process' => 'Processo',
 	'profiling-data-count' => 'Contagem',
 	'profiling-data-time' => 'Tempo (todos)',
 	'profiling-data-average' => 'Tempo (média)',
-	'profiling-no-data' => 'Dados correspondentes não encontrados.',
+	'profiling-no-data' => 'Não foram encontrados dados coincidentes.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

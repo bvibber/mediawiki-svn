@@ -2496,10 +2496,12 @@ $messages['pt'] = array(
 	'ogg-stop' => 'Parar',
 	'ogg-play-video' => 'Reproduzir vídeo',
 	'ogg-play-sound' => 'Reproduzir som',
-	'ogg-no-player' => 'Lamentamos, mas seu sistema aparenta não ter um player suportado. Por gentileza, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">faça o download de um player</a>.',
-	'ogg-no-player-js' => 'Desculpe, seu sistema ou está com JavaScript desativado ou não tem nenhum reprodutor suportado.<br />
-Você pode <a href="$1">descarregar o vídeo</a><br />ou<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar um reprodutor</a> para executar o vídeo no seu navegador.',
-	'ogg-no-xiphqt' => 'Aparentemente você não tem o componente XiphQT para QuickTime. Não será possível reproduzir ficheiros Ogg pelo QuickTime sem tal componente. Por gentileza, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">faça o download do XiphQT</a> ou escolha outro reprodutor.',
+	'ogg-no-player' => "Desculpe, mas o seu sistema não aparenta ter qualquer leitor suportado. Por favor, faça o <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">''download'' de um leitor</a>.",
+	'ogg-no-player-js' => "Desculpe, mas o seu sistema ou está com o JavaScript desactivado ou não tem qualquer leitor suportado.<br />
+Pode fazer o <a href=\"\$1\">''download'' do vídeo</a> ou o <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">''download'' de um leitor</a> para ver o vídeo no seu navegador.",
+	'ogg-no-xiphqt' => "Aparentemente não tem o componente XiphQT do QuickTime.
+O QuickTime não pode reproduzir ficheiros Ogg sem este componente.
+Por favor, faça o <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">''download'' do XiphQT</a> ou escolha outro leitor.",
 	'ogg-player-videoElement' => 'Suporte nativo do navegador',
 	'ogg-player-oggPlugin' => "''Plugin'' do navegador",
 	'ogg-player-thumbnail' => 'Apenas imagem estática',

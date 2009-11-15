@@ -186,10 +186,13 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Imre
+ * @author Translationista
  */
 $messages['es'] = array(
+	'cooperationstatistics' => 'Estadísticas de cooperación',
 	'cooperationstatistics-tablevalue' => 'Número de editores',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|página|páginas}}',
+	'cooperationstatistics-legendmore' => 'o más editores.',
 );
 
 /** Basque (Euskara)

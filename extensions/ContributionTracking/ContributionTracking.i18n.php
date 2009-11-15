@@ -303,13 +303,14 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Korrigan
+ * @author PieRRoMaN
  * @author Verdy p
  */
 $messages['fr'] = array(
 	'contributiontracking-desc' => 'Suivi des contributions pour la levée de fonds de Wikimedia',
 	'contributiontracking' => 'Suivi des contributions',
 	'contrib-tracking-error' => 'Erreur',
-	'contrib-tracking-error-text' => 'Soumission de formulaire invalide',
+	'contrib-tracking-error-text' => 'Soumission du formulaire invalide',
 	'contrib-tracking-submitting' => 'Envoi au système de traitement des paiements...',
 	'contrib-tracking-continue' => 'Si vous n’êtes pas redirigé automatiquement, cliquez ce bouton pour compléter votre don avec Paypal.',
 	'contrib-tracking-button' => 'Continuer',

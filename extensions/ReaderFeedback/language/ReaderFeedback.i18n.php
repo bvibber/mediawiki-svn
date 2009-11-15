@@ -1599,8 +1599,9 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'readerfeedback' => 'O que você acha desta página?',
-	'readerfeedback-text' => "''Por gentileza, dedique um momento para avaliar esta página. Sua opinião é importante e nos ajuda a melhorar o website.''",
+	'readerfeedback-desc' => 'A validação de páginas permite que os leitores as avaliem, atribuindo-lhes avaliações categóricas',
+	'readerfeedback' => 'O que acha desta página?',
+	'readerfeedback-text' => "''Por favor, dedique um momento a avaliar esta página. A sua opinião é importante e ajuda-nos a melhorar o ''site''.''",
 	'readerfeedback-reliability' => 'Confiabilidade',
 	'readerfeedback-completeness' => 'Completitude',
 	'readerfeedback-npov' => 'Neutralidade',
@@ -1613,7 +1614,7 @@ $messages['pt'] = array(
 	'readerfeedback-level-3' => 'Alta',
 	'readerfeedback-level-4' => 'Excelente',
 	'readerfeedback-submit' => 'Enviar',
-	'readerfeedback-main' => 'Somente páginas de conteúdo podem ser avaliadas.',
+	'readerfeedback-main' => 'Só páginas de conteúdo podem ser avaliadas.',
 	'readerfeedback-success' => "'''Obrigado por avaliar esta página!''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?]).",
 	'readerfeedback-voted' => "'''Aparentemente já avaliou esta página''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?]).",
 	'readerfeedback-error' => "'''Ocorreu um erro ao avaliar esta página''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?])",
@@ -1629,10 +1630,12 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Hamilton Abreu
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'readerfeedback' => 'O que você acha desta página?',
+	'readerfeedback-text' => "''Por gentileza, dedique um momento para avaliar esta página. Sua opinião é importante e nos ajuda a melhorar o website.''",
 	'readerfeedback-level-4' => 'Excelente',
 	'readerfeedback-submit' => 'Enviar',
 	'readerfeedback-finished' => 'Obrigado!',

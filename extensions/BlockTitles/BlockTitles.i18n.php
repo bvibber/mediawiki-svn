@@ -559,12 +559,13 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'block_title_error_page_title' => 'Título Bloqueado',
 	'block_title_error-desc' => 'Providencia uma forma básica de prevenir que páginas com certos títulos sejam gravadas ou criadas',
-	'block_title_error' => 'Desculpe-nos, não é permitido salvar dados neste título de página.',
+	'block_title_error' => 'Desculpe, mas não pode gravar esta página porque não é permitido gravar este título.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

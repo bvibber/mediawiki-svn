@@ -154,12 +154,15 @@ $messages['br'] = array(
 	'am-email' => 'postel',
 	'am-active' => 'oberiant',
 	'am-updated' => 'Enrollet-mat eo bet ho kemmoù',
+	'nss-desc' => "Un adveziant a c'haller drezañ gwiriekaat ouzh un diaz titouroù libnss-mysql. Ur [[Special:AccountManager|merour kontoù]] zo ennañ",
 	'nss-rights' => 'gwirioù',
 	'nss-save-changes' => "Enrollañ ar c'hemmoù",
 	'nss-create-account-header' => 'Krouiñ ur gont nevez',
 	'nss-create-account' => 'Krouiñ ar gont',
 	'nss-no-mail' => 'Chom hep kas posteloù',
 	'nss-welcome-mail' => "Krouet ez eus bet evidoc'h ur gont dezhi an anv a $1 gant ar ger-tremen $2 stag outi",
+	'nss-welcome-mail-subject' => 'Krouiñ kontoù',
+	'nss-db-error' => 'Fazi lenn gant an diaz gwiriekaat',
 );
 
 /** Bosnian (Bosanski)

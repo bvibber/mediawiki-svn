@@ -942,6 +942,30 @@ $messages['mhr'] = array(
 	'passwordreset-username' => 'Пайдаланышын лӱмжӧ',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'passwordreset' => 'Менување на лозинка',
+	'passwordreset-desc' => "[[Special:PasswordReset|Менува лозинки на корисници на викито]] - треба 'passwordreset' привилегии",
+	'passwordreset-invalidusername' => 'Неважечко корисничко име',
+	'passwordreset-emptyusername' => 'Празно корисничко име',
+	'passwordreset-nopassmatch' => 'Лозинките не се совпаѓаат',
+	'passwordreset-badtoken' => 'Неважечки жетон при уредувањето',
+	'passwordreset-username' => 'Корисничко име:',
+	'passwordreset-newpass' => 'Нова лозинка:',
+	'passwordreset-confirmpass' => 'Потврдете ја лозинката:',
+	'passwordreset-submit' => 'Смени лозинка',
+	'passwordreset-success' => 'Лозинката е променета за кориснички ид. бр.: $1',
+	'passwordreset-disableuser' => 'Да ја оневозможам корисничката сметка?',
+	'passwordreset-disableuserexplain' => '(постава неважечка тараба - корисникот не може да се најави)',
+	'passwordreset-disablesuccess' => 'Корисничката сметка е оневозможена за корисничкиот ид. бр.: $1',
+	'passwordreset-accountdisabled' => 'Сметката е оневозможена',
+	'disabledusers' => 'Оневозможени корисници',
+	'disabledusers-summary' => 'Ова е листа на корисници кои се оневозможени со PasswordReset.',
+	'right-passwordreset' => 'Менување на лозинка на корисник ([[Special:PasswordReset|специјална страница]])',
+);
+
 /** Malayalam (മലയാളം)
  * @author Praveenp
  * @author Shijualex

@@ -256,6 +256,8 @@ $messages['br'] = array(
 	'createsigndoc-create' => 'Krouiñ',
 	'createsigndoc-error-generic' => 'Fazi : $1',
 	'createsigndoc-error-pagenoexist' => "Fazi : Ar bajenn [[$1]] n'eus ket anezhi.",
+	'createsigndoc-error-alreadycreated' => 'Krouet eo bet an teul gwiriekaat evit "$1" dija.
+N\'hall ket bezañ graet un eil gwech.',
 );
 
 /** Bosnian (Bosanski)

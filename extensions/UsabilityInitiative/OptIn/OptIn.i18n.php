@@ -774,6 +774,14 @@ Pokud se chcete o projektu dozvědět více nebo se zapojit, navštivte [http://
 Děkujeme a budeme se těšit na vaše názory!',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'optin-survey-yes' => 'да',
+	'optin-survey-no' => 'нѣ́тъ',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

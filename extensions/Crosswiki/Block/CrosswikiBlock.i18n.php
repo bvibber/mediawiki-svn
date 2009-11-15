@@ -301,10 +301,12 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  */
 $messages['br'] = array(
 	'crosswikiblock-reason' => 'Abeg :',
 	'crosswikiblock-submit' => 'Stankañ an implijer-mañ',
+	'crosswikiunblock-reason' => 'Abeg :',
 );
 
 /** Bosnian (Bosanski)

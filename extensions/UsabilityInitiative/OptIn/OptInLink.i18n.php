@@ -144,6 +144,13 @@ $messages['cs'] = array(
 	'tooltip-pt-optin-feedback' => 'Poskytnout připomínky o zkušenostech s novými funkcemi',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'optin-try' => '⁖ β ⁖ искоушє́ниѥ',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -609,13 +616,17 @@ $messages['ml'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Diagramma Della Verita
  * @author Kurniasan
  */
 $messages['ms'] = array(
 	'optin-try' => 'Cuba Beta',
+	'tooltip-pt-optin-try' => 'Cuba ciri baru',
 	'optin-leave' => 'Tinggalkan Beta',
+	'tooltip-pt-optin-leave' => 'Tutup ciri baru',
 	'optin-feedback' => 'Maklum balas Beta',
+	'tooltip-pt-optin-feedback' => 'Berikan maklum balas mengenai pengalaman anda dengan ciri baru ini',
 );
 
 /** Maltese (Malti)

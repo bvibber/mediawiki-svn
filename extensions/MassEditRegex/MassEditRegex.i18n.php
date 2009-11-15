@@ -276,6 +276,7 @@ $messages['es'] = array(
 	'masseditregex-listtype-categories' => 'Nombres de categorías (editar cada página incluida en estas categorías; se ignora la selección del espacio de nombre)',
 	'masseditregex-namespace-intro' => 'Todas estas páginas están en este espacio de nombre:',
 	'masseditregex-exprnomatch' => 'La expresión $1 no coincidió con ninguna página.',
+	'masseditregex-badregex' => 'Expresión regular inválida:',
 	'masseditregex-editfailed' => 'Edición fallida:',
 	'masseditregex-tooltip-execute' => 'Aplicar estos cambios a cada página',
 );

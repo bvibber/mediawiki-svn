@@ -2645,7 +2645,7 @@ $messages['pt'] = array(
 	'whitelisttablesetview' => 'Activar visualização',
 	'whitelisttableremove' => 'Remover',
 	'whitelistnewpagesfor' => 'Adicione novas páginas à lista branca de <b>$1</b><br />
-Use * ou % como carácter polivalente',
+Use * ou % como caracteres de substituição',
 	'whitelistnewtabledate' => 'Validade:',
 	'whitelistnewtableedit' => 'Activar edição',
 	'whitelistnewtableview' => 'Activar visualização',

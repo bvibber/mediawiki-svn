@@ -178,9 +178,15 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'edituser-desc' => 'Aotren a ra an implijerien dezho gwirioù dibar da gemmañ penndibaboù an implijerien all',
 	'edituser' => 'Aozañ an implijer',
+	'edituser-logout' => "Klozañ dalc'h an implijer",
 	'edituser-username' => 'Anv',
 	'edituser-dosearch' => 'Klask',
+	'edituser-nouser' => "N'eus ket eus an implijer-se",
+	'edituser-exempt' => "N'haller ket degas kemmoù d'an implijer-se.",
+	'right-edituser' => 'Kemmañ a ra penndibaboù an implijerien all',
+	'right-edituser-exempt' => "An dud diavaez n'hallont ket degas kemmoù e penndibaboù an implijer-mañ",
 );
 
 /** Bosnian (Bosanski)

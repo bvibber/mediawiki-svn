@@ -1373,6 +1373,28 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'dt-desc' => "A përmëtt d'amporté e esporté ij dat contnù ant le ciamà a stamp",
 	'viewxml' => 'Varda XML',
+	'dt_viewxml_docu' => 'Për piasì selession-a an tra le categorìe sota e jë spassi nominaj për vëdde an formà XLM.',
+	'dt_viewxml_categories' => 'Categorìe',
+	'dt_viewxml_namespaces' => 'Spassi nominaj',
+	'dt_viewxml_simplifiedformat' => 'Formà semplifià',
+	'dt_xml_namespace' => 'Spassi nominal',
+	'dt_xml_pages' => 'Pàgine',
+	'dt_xml_page' => 'Pàgina',
+	'dt_xml_template' => 'Stamp',
+	'dt_xml_field' => 'Camp',
+	'dt_xml_name' => 'Nòm',
+	'dt_xml_title' => 'Tìtol',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Test lìber',
+	'importxml' => 'Ampòrta XML',
+	'dt_import_selectfile' => 'Për piasì selession-a ël file $1 da amporté:',
+	'dt_import_encodingtype' => 'Sòrt da codifié',
+	'dt_import_editsummary' => '$1 ampòrta',
+	'dt_import_importing' => "A s'ampòrta ...",
+	'dt_import_success' => 'S1 {{PLURAL:$1|pàgina|pàgine}} a saran creà dal file $2',
+	'importcsv' => 'Ampòrta CSV',
+	'dt_importcsv_badheader' => "Eror: l'header ëd la colòna $1, '$2', a deuv esse '$3', '$4' o ëd la forma 'template_name[field_name]'",
+	'right-datatransferimport' => 'Ampòrta dat',
 );
 
 /** Pashto (پښتو)

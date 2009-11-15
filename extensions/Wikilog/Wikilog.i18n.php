@@ -730,6 +730,24 @@ Komentar buźo se akle pokazaś, za tym až moderator jo jen pśeglědał.',
 	'wikilog-doc-import-comment' => 'Importěrowana wikilogowa dokumentacija',
 );
 
+/** Esperanto (Esperanto)
+ * @author Lucas
+ */
+$messages['eo'] = array(
+	'wikilog-new-item-go' => 'Krei',
+	'wikilog-title' => 'Titolo',
+	'wikilog-actions' => 'Agoj',
+	'wikilog-replies' => 'Respondoj',
+	'wikilog-comment-edit' => 'Redakti ĉi tiun komenton',
+	'wikilog-comment-delete' => 'Forigi ĉi tiun komenton',
+	'wikilog-form-name' => 'Nomo:',
+	'wikilog-form-status' => 'Stato:',
+	'wikilog-edit-lc' => 'redakti',
+	'wikilog-reply-lc' => 'respondi',
+	'wikilog-delete-lc' => 'forigi',
+	'wikilog-page-lc' => 'paĝo',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  * @author Translationista
@@ -763,11 +781,21 @@ $messages['es'] = array(
 	'wikilog-pager-first' => '←← primero',
 	'wikilog-pager-last' => 'último →→',
 	'wikilog-no-comments' => 'sin comentarios',
+	'wikilog-item-more' => '[[$3|→ continuar leyendo...]]',
+	'wikilog-edit-signpub' => 'Firma y publica este artículo',
 	'wikilog-comment-by-user' => 'Comentario de $1 ($2)',
+	'wikilog-comment-by-anon' => 'Comentario de $3 (anónimo)',
+	'wikilog-comment-pending' => 'Este comentario está en espera por ser aprobado',
 	'wikilog-comment-deleted' => 'Este comentario ha sido borrado.',
+	'wikilog-comment-edited' => 'La última edición de este comentario se realizó el $3 a las $4 ($2).',
+	'wikilog-comment-autosumm' => 'Nuevo comentario de $1: $2',
+	'wikilog-reply-to-comment' => 'Publicar una respuesta a este comentario',
+	'wikilog-comment-page' => 'Ir a la página de este comentario',
 	'wikilog-comment-edit' => 'Editar este comentario',
 	'wikilog-comment-delete' => 'Borrar este comentario',
 	'wikilog-comment-history' => 'Ver el historial de comentarios',
+	'wikilog-comment-approve' => 'Aprobar este comentario (acción inmediata)',
+	'wikilog-comment-reject' => 'Rechazar este comentario (acción inmediata)',
 	'wikilog-title-comments' => 'Comentarios - $1',
 	'wikilog-invalid-param' => 'Parámetro inválido: $1.',
 	'wikilog-invalid-author' => 'Autor inválido: $1.',
@@ -782,6 +810,8 @@ $messages['es'] = array(
 	'wikilog-posting-anonymously' => 'No has accedido al sistema;
 tu comentario se añadirá como anónimo y se identificará por medio de tu dirección de conexión de internet.
 Debes escribir un seudónimo abajo para identificar tu comentario o $1 para que se te atribuya.',
+	'wikilog-post-comment' => 'Publicar un nuevo comentario',
+	'wikilog-post-reply' => 'Publicar una nueva respuesta',
 	'wikilog-form-category' => 'Categoría:',
 	'wikilog-form-name' => 'Nombre:',
 	'wikilog-form-author' => 'Autor:',
@@ -2251,6 +2281,7 @@ Er vindt eerst een controle plaats door een moderator.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Finnrind
  * @author Gunnernett
  */
 $messages['nn'] = array(
@@ -2264,7 +2295,7 @@ $messages['nn'] = array(
 	'wikilog-title-comments' => 'Kommentarar - $1',
 	'wikilog-not-an-image' => 'Fila er ikkje eit bilete: $1.',
 	'wikilog-comment-invalid-name' => 'Oppgjeve namn er ikkje gyldig.',
-	'wikilog-reading-draft' => 'Denne artikkelen til wikilog er eit ukast, og er ikkje publisert enno.',
+	'wikilog-reading-draft' => 'Denne artikkelen til wikilog er eit utkast, og er ikkje publisert enno.',
 );
 
 /** Occitan (Occitan)

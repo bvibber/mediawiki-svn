@@ -115,6 +115,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'lua_error' => 'Fazi el linenn $1',
+	'lua_extension_notfound' => "N'eo ket kefluniet an astenn Lua",
 	'lua_error_internal' => 'Fazi diabarzh',
 );
 

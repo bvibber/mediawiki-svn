@@ -584,6 +584,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Lucas
  * @author Michawiki
  * @author Yekrats
  */
@@ -594,6 +595,7 @@ $messages['eo'] = array(
 	'usagestatisticsfor' => '<h2>Statistiko pri uzado por [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Uzadaj statistikoj por ĉiuj uzantoj</h2>',
 	'usagestatisticsinterval' => 'Intervalo:',
+	'usagestatisticsnamespace' => 'Nomspaco:',
 	'usagestatisticstype' => 'Speco',
 	'usagestatisticsstart' => 'Komencodato:',
 	'usagestatisticsend' => 'Findato:',

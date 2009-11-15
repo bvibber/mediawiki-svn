@@ -1509,7 +1509,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'ratinghistory' => 'Histórico de avaliações da página',
-	'ratinghistory-leg' => 'Histórico de dados de avaliações para [[:$1|$1]]',
+	'ratinghistory-leg' => 'Histórico de dados de avaliação para [[:$1|$1]]',
 	'ratinghistory-tab' => 'avaliação',
 	'ratinghistory-link' => 'Avaliação da página',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">Obrigado por reservar um momento para avaliar esta página!</font>''",
@@ -1527,7 +1527,7 @@ $messages['pt'] = array(
 	'ratinghistory-svg' => 'Ver como SVG',
 	'ratinghistory-table-rating' => 'Avaliação',
 	'ratinghistory-table-votes' => 'Votos',
-	'ratinghistory-none' => 'Ainda não há dados suficientes de avaliação pelos leitores para mostrar gráficos.',
+	'ratinghistory-none' => 'Neste momento, ainda não há avaliações dos leitores suficientes para mostrar gráficos.',
 	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Péssima; '''(2)''' - Baixa; '''(3)''' - Razoável; '''(4)''' - Alta; '''(5)''' - Excelente;",
 	'ratinghistory-legend' => "O '''número diário de revisões''' <font color=\"red\">''(vermelho)''</font>, a '''avaliação média diária''' <font color=\"blue\">''(azul)''</font> e a '''avaliação média acumulada''' <font color=\"green\">''(verde)''</font> estão apresentadas graficamente abaixo, por data. 
 A '''avaliação média acumulada''' é apenas a média de todas as avaliações diárias ''dentro'' desta janela temporal em cada dia.

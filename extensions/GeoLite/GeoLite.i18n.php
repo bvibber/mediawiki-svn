@@ -180,6 +180,13 @@ $messages['uk'] = array(
 	'geolite-desc' => 'Полегшене перенаправлення GeoIP',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'geolite-desc' => 'Rediression GeoIp lezéra',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

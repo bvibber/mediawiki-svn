@@ -110,14 +110,19 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  */
 $messages['br'] = array(
 	'showprocesslist' => 'Diskouez roll an argerzhoù',
+	'showprocesslist-desc' => 'Diskwel a ra ezvont [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Implijer',
 	'showprocesslist-host' => 'Ostiz',
 	'showprocesslist-db' => 'Diaz roadennoù',
+	'showprocesslist-command' => 'Urzhiad',
 	'showprocesslist-time' => 'Pad',
 	'showprocesslist-state' => 'Stad',
+	'showprocesslist-info' => 'Keleier',
 );
 
 /** Bosnian (Bosanski)

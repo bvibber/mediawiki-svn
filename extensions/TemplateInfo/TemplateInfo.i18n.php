@@ -50,6 +50,13 @@ $messages['dsb'] = array(
 	'templateinfo-header' => 'XML-definicija za toś tu pśedłogu jo:',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'templateinfo-header' => 'La definición XML para esta plantilla es:',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

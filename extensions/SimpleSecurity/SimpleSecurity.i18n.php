@@ -754,7 +754,7 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'security' => 'Registo de segurança',
-	'security-desc' => 'Incrementa a protecção de páginas do MediaWiki para permitir que se restrinja a visualização do conteúdo de páginas',
+	'security-desc' => 'Incrementa a protecção de páginas do MediaWiki para permitir restrições à visualização do conteúdo de páginas',
 	'security-logpage' => 'Registo de segurança',
 	'security-logpagetext' => 'Este é um registo de acções bloqueadas pela [http://www.mediawiki.org/wiki/Extension:SimpleSecurity extensão SimpleSecurity].',
 	'badaccess-read' => 'Aviso: "$1" é referido aqui, mas você não tem permissões suficientes para o aceder.',

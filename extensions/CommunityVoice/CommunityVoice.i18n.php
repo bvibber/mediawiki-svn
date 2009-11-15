@@ -109,11 +109,19 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'communityvoice' => 'Mouezh ar gumuniezh',
+	'communityvoice-desc' => 'Ostilhoù ar gumuniezh evit kemer perzh',
+	'communityvoice-ratings' => 'Priziadennoù',
 	'communityvoice-ratings-scale-status-sending' => 'O kas...',
 	'communityvoice-ratings-scale-status-error' => 'Fazi en ur gas !',
+	'communityvoice-ratings-scale-status-thanks' => "Trugarez deoc'h da vezañ votet!",
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|mouezh|mouezh}} embannet)',
+	'communityvoice-ratings-error-no-category' => "N'eus ket eus an dezverk rummad er valizenn briziañ.",
+	'communityvoice-ratings-error-no-title' => "N'eus ket eus an desverk titl er valizenn briziañ.",
 );
 
 /** Bosnian (Bosanski)

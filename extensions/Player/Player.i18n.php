@@ -179,14 +179,21 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'player' => 'Lenner',
+	'player-desc' => 'Lenner liesvedia enframmet a implij adveziantoù boas ar merdeer, hag ur [[Special:Player|bajenn dibar]]',
+	'player-title' => 'Lenner',
 	'player-playertitle' => 'Lenner : $1',
 	'player-file' => 'Anv ar restr',
+	'player-play' => 'Lenn',
 	'player-not-allowed' => 'furmad diaotreet',
 	'player-not-found' => "n'eo ket bet kavet ar restr",
+	'player-invalid-title' => 'Titl fall',
+	'player-clicktoplay' => 'Lenn $1',
+	'player-goto-player' => 'Lenner',
 	'player-goto-page' => 'Pajenn',
 	'player-goto-file' => 'restr',
 );

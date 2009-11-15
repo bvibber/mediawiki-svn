@@ -638,6 +638,7 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'ratedpages-none' => 'No ghe xe nissuna pagina su sta lista',
 	'ratedpages-count' => '$1 {{PLURAL:$1|revision|revision}}',
 );
 

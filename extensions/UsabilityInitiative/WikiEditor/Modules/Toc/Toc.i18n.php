@@ -57,6 +57,8 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'wikieditor-toc-preference' => 'Gweredekaat an daolenn verdeus an danvezioù',
+	'wikieditor-toc-show' => 'Diskouez an danvez',
+	'wikieditor-toc-hide' => 'Kuzhat an danvez',
 );
 
 /** Bosnian (Bosanski)
@@ -104,10 +106,12 @@ $messages['dsb'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Lucas
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'wikieditor-toc-preference' => 'Ŝalti navigeblan tabelon de enhavo',
+	'wikieditor-toc-show' => 'Montri enhavon',
 );
 
 /** Spanish (Español)
@@ -247,6 +251,8 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'wikieditor-toc-preference' => 'Овозможи навигабилна табела и содржина',
+	'wikieditor-toc-show' => 'Прикажи содржина',
+	'wikieditor-toc-hide' => 'Сокриј содржина',
 );
 
 /** Malayalam (മലയാളം)
@@ -376,6 +382,8 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'wikieditor-toc-preference' => "Ativa l'indice navigabile",
+	'wikieditor-toc-show' => 'Fà védar el contenuto',
+	'wikieditor-toc-hide' => 'Scondi el contenuto',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -1968,6 +1968,19 @@ $messages['cs'] = array(
 	'wikieditor-toolbar-help-content-indent-result' => 'Základní text<dl><dd>Odsazený text<dl><dd>Odsazený text</dd></dl></dd></dl>',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'wikieditor-toolbar-characters-page-latin' => 'лати́ньска а́ꙁъбоукꙑ',
+	'wikieditor-toolbar-characters-page-latinextended' => 'лати́ньскꙑ а́ꙁъбоукьвє доложє́ниѥ',
+	'wikieditor-toolbar-characters-page-ipa' => 'М҃ФА',
+	'wikieditor-toolbar-characters-page-symbols' => 'сѷмволи',
+	'wikieditor-toolbar-characters-page-greek' => 'грьчьска а́ꙁъбоукꙑ',
+	'wikieditor-toolbar-characters-page-cyrillic' => 'климє́нтовица / гражда́ньска а́ꙁъбоукꙑ',
+	'wikieditor-toolbar-section-help' => 'по́мощь',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

@@ -547,6 +547,22 @@ $messages['km'] = array(
 	'fundraiserportal-tourmaline-button' => 'វិភាគទាន ឥឡូវ​នេះ​',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'fundraiserportal' => 'ನಿಧಿ ಸಂಗ್ರಹ ದ್ವಾರ',
+	'fundraiserportal-plain-button' => 'ವಿಕಿಪೀಡಿಯ ಬೆಂಬಲಿಸಿ!',
+	'fundraiserportal-ruby-button' => 'ಈಗಲೇ ದಾನ ಮಾಡಿ',
+	'fundraiserportal-rubytext-button' => 'ಈಗಲೇ ದಾನ ಮಾಡಿ',
+	'fundraiserportal-rubytext-message' => 'ಪ್ರತಿ ದಾನವು ವಿಕಿಪೀಡಿಯವನ್ನು ಎಲ್ಲರಿಗಾಗಿ ಉಚಿತವಾಗಿಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.',
+	'fundraiserportal-rubytext-close' => 'ಇದನ್ನು ಈಗಲಿಂದ ಅಡಗಿಸು',
+	'fundraiserportal-sapphire-button' => 'ಈಗಲೇ ದಾನ ಮಾಡಿ',
+	'fundraiserportal-tourmaline-button' => 'ಈಗಲೇ ದಾನ ಮಾಡಿ',
+	'fundraiserportal-tourmaline-message' => 'ಪ್ರತಿ ದಾನವು ವಿಕಿಪೀಡಿಯವನ್ನು ಎಲ್ಲರಿಗಾಗಿ ಉಚಿತವಾಗಿಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.',
+	'fundraiserportal-tourmaline-close' => 'ಇದನ್ನು ಈಗಲಿಂದ ಅಡಗಿಸು',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

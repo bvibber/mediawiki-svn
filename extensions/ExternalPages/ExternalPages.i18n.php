@@ -90,6 +90,15 @@ $messages['dsb'] = array(
 	'externalpages-bad-url-data' => 'Wopśimjeśe boka njejo se dało wótwołaś',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'externalpages-no-project' => 'No se ha especificado un proyecto',
+	'externalpages-no-page' => 'No se ha especificado una página',
+	'externalpages-error-generic' => 'Se ha encontrado un error',
+);
+
 /** French (Français)
  * @author Grondin
  */

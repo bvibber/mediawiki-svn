@@ -1464,6 +1464,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
@@ -1472,21 +1473,21 @@ $messages['pt'] = array(
 	'todo-desc' => 'Extensão experimental de [[Special:Todo|lista pessoal de tarefas]]',
 	'todo-tab' => 'tarefas',
 	'todo-new-queue' => 'novo',
-	'todo-mail-subject' => 'Itens completos na lista de tarefas de $1',
-	'todo-mail-body' => 'Você pediu um e-mail de confirmação sobre a finalização de um item que você submeteu para a lista de tarefas online de $1.
+	'todo-mail-subject' => 'Tarefa finalizada na lista de tarefas de $1',
+	'todo-mail-body' => "Pediu um e-mail de confirmação da finalização de uma tarefa que inseriu na lista de tarefas ''online'' de $1.
 
-Item: $2
-Submetido em: $3
+Tarefa: $2
+Submetida a: $3
 
-Este item foi marcado como completo, com este comentário:
-$4',
-	'todo-invalid-item' => 'Item em falta ou inválido',
-	'todo-update-else-item' => 'A tentar atualizar os itens de outra pessoa',
+Esta tarefa foi marcada como completa, com este comentário:
+$4",
+	'todo-invalid-item' => 'Tarefa inexistente ou inválida',
+	'todo-update-else-item' => 'A tentar actualizar as tarefas de outra pessoa',
 	'todo-unrecognize-type' => 'Tipo não reconhecido',
-	'todo-user-invalide' => 'Tarefa fornecida inválida, em falta, ou utilizador sem possibilidade de tarefas',
-	'todo-item-list' => 'Seus itens',
+	'todo-user-invalide' => 'Tarefa atribuída a utilizador inválido, inexistente ou sem lista de tarefas',
+	'todo-item-list' => 'As suas tarefas',
 	'todo-no-item' => 'Sem tarefas.',
-	'todo-invalid-owner' => 'Proprietário inválido neste item',
+	'todo-invalid-owner' => 'Proprietário inválido nesta tarefa',
 	'todo-add-queue' => 'Adicionar fila…',
 	'todo-move-queue' => 'Mover para fila…',
 	'todo-list-for' => 'Lista de tarefas de $1',
@@ -1495,8 +1496,10 @@ $4',
 	'todo-new-item' => 'Novo item',
 	'todo-issue-summary' => 'Sumário do problema:',
 	'todo-form-details' => 'Detalhes:',
-	'todo-form-email' => 'Para receber uma notificação por e-mail quando este item for fechado, escreva o seu endereço aqui:',
+	'todo-form-email' => 'Para receber uma notificação por e-mail quando esta tarefa for finalizada, escreva o seu endereço aqui:',
 	'todo-form-submit' => 'Submeter pesquisa',
+	'right-todo' => 'Possuir lista de tarefas',
+	'right-todosubmit' => 'Restringir o privilégio de possuir uma lista de tarefas',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

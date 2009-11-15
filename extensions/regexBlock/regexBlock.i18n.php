@@ -718,6 +718,7 @@ Verŝajne ne estas uzanto kun tiu nomo.',
  * @author Translationista
  */
 $messages['es'] = array(
+	'regexblock' => 'Bloque de expresión regular',
 	'regexblock-already-blocked' => '"$1" ya está bloqueado.',
 	'regexblock-block-log' => "Nombre de usuario o dirección IP '''$1''' ha sido bloqueada.",
 	'regexblock-block-success' => 'Bloqueo fue un éxito',
@@ -2240,10 +2241,10 @@ $messages['pt'] = array(
 	'regexblockstats' => 'Estatísticas de bloqueio de expressões regulares',
 	'regexblock-help' => 'Use o formulário abaixo para bloquear o acesso de escrita a um endereço IP ou nome de utilizador específicos.
 Isto deverá ser feito apenas para prevenir vandalismo, e de acordo com as políticas.
-\'\'Esta página permitir-lhe-á bloquear até mesmo utilizadores não existentes, e também bloqueará utilizadores com nomes semelhantes ao dado, p. ex. "Teste" será bloqueado juntamente com "Teste 2", etc.
-Você pode também bloquear endereços IP completos, significando isto que ninguém deles proveniente poderá editar páginas.
-Nota: endereços IP parciais serão tratados como nomes de utilizadores na determinação do bloqueio.
-Se nenhum motivo for especificado, um motivo genérico por defeito será usado.\'\'',
+\'\'Esta página permitir-lhe-á bloquear até mesmo utilizadores não existentes, e também bloqueará utilizadores com nomes semelhantes ao dado, isto é, "Teste" será bloqueado juntamente com "Teste 2", etc.
+Também pode bloquear endereços IP completos, significando isto que ninguém proveniente deles poderá editar páginas.
+Nota: endereços IP parciais serão tratados como nomes de utilizador na determinação do bloqueio.
+Se nenhum motivo for especificado, será usado um motivo genérico predefinido.\'\'',
 	'regexblock-page-title-1' => 'Bloquear endereço utilizando expressões regulares',
 	'regexblock-reason-ip' => 'Este endereço IP está impedido de editar devido a vandalismo ou outra perturbação por si ou outra pessoa que partilha o seu endereço IP.
 Se crê que se trata de um erro, por favor, [[$1|entre em contacto]]',
@@ -2259,9 +2260,10 @@ Por favor, crie um nome de utilizador alternativo ou [[$1|avise-nos]] sobre o pr
 	'regexblock-form-submit-empty' => 'Forneça um nome de utilizador ou um endereço IP para bloquear.',
 	'regexblock-form-submit-regex' => 'Expressão regular inválida.',
 	'regexblock-form-submit-expiry' => 'Por favor, seleccione um período de expiração.',
+	'regexblock-link' => 'bloqueio com expressão regular',
 	'regexblock-match-stats-record' => "$1 bloqueou '$2' em '$3' em '$4', proveniente do endereço '$5'",
-	'regexblock-nodata-found' => 'Nenhuns dados encontrados',
-	'regexblock-stats-title' => 'Estatísticas de bloqueio de expressões regulares',
+	'regexblock-nodata-found' => 'Não foram encontrados dados',
+	'regexblock-stats-title' => 'Estatísticas de bloqueio com expressões regulares',
 	'regexblock-unblock-success' => 'Desbloqueio bem sucedido',
 	'regexblock-unblock-log' => "O nome de utilizador ou endereço IP '''$1''' foi desbloqueado.",
 	'regexblock-unblock-error' => 'Erro ao desbloquear $1. Provavelmente não existe esse utilizador.',

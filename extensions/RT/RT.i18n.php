@@ -377,6 +377,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'rt-desc' => 'Interface fir RT (Request Tracker)',
 	'rt-inactive' => "D'RT-Erweiderung ass net aktiv",
 	'rt-badquery' => "D'RT-Erweiderung hat bäi der Kommunikatioun mat der RT-Datebank e Problem",
 );

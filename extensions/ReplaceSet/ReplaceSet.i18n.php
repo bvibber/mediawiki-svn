@@ -92,6 +92,7 @@ $messages['el'] = array(
  */
 $messages['es'] = array(
 	'replaceset-error-regexnoend' => 'Al patrón de expresión regular "$1" le falta el delimitador final \'$2\'',
+	'replaceset-error-regexbadmodifier' => "El modificador de expresión regular '$1' es inválido.",
 );
 
 /** French (Français)
