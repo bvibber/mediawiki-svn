@@ -93,11 +93,8 @@ class RT {
 			. " CASE WHEN (now() $TZ - t.created) <= '2 day'::interval THEN EXTRACT(hours FROM now() $TZ - t.created) || ' hours' ELSE"
 			. " EXTRACT(days FROM now() $TZ - t.created) || ' days' END END END END AS age";
    
-		// The standard query
-		$ticketquery = "SELECT $ticketinfo FROM tickets t"
-			. ' JOIN users u ON t.owner = u.id'
-			. ' JOIN users u2 ON t.creator = u2.id'
-			. ' JOIN queues q ON t.queue = q.id';
+		$ticketquery = "SELECT $ticketinfo\nFROM tickets t, queues q, users u, users u2";
+		$whereclause = "WHERE t.queue = q.id\nAND t.owner = u.id\nAND t.creator = u2.id";
    
 		// If just a single number, treat it as <rt>#</rt>
 		if ( 1 === count( $args ) ) {
@@ -108,7 +105,7 @@ class RT {
    
 		// Look up a single ticket number
 		if ( $ticketnum ) {
-			$SQL = "$ticketquery AND t.id = $ticketnum";
+			$SQL = "$ticketquery $whereclause\nAND t.id = $ticketnum";
 			$res = pg_query( $dbh, $SQL );
 			if ( !$res ) {
 				die ( wfMsg( 'rt-badquery' ) );
@@ -170,7 +167,7 @@ class RT {
 		}
    
 		// Determine what status to use. Default is new and open:
-		$searchstatus = "AND t.status IN ('new','open')";
+		$searchstatus = "t.status IN ('new','open')";
 		$valid_status = array( 'new', 'open', 'resolved', 'deleted', 'stalled', 'rejected' );
 		if ( array_key_exists( 's', $args ) ) {
 			$statusargs = trim( strtolower( $args['s'] ) );
@@ -178,7 +175,7 @@ class RT {
 				$searchstatus = '';
 			}
 			else {
-				$searchstatus = 'AND t.status IN (';
+				$searchstatus = 't.status IN (';
 				foreach ( preg_split( '/\s*,\s*/', $statusargs ) as $word ) {
 					if ( !in_array( $word, $valid_status ) ) {
 						die ( wfMsg ( 'rt-badstatus', $word ) );
@@ -188,12 +185,15 @@ class RT {
 				$searchstatus = preg_replace( '/.$/', ')', $searchstatus );
 			}
 		}
-   
+		if ( strlen( $searchstatus) ) {
+			$whereclause .= "\nAND $searchstatus";
+		}
+
 		// See if we are limiting to one or more queues
 		$searchq = '';
 		if ( array_key_exists( 'q', $args ) ) {
 			$qargs = trim( strtolower( $args['q'] ) );
-			$searchq = 'AND LOWER(q.name) IN (';
+			$searchq = 'LOWER(q.name) IN (';
 			foreach ( preg_split( '/\s*,\s*/', $qargs ) as $word ) {
 				$word = trim( $word );
 				if ( !preg_match( '/^[\w \.-]+$/', $word ) ) {
@@ -202,13 +202,14 @@ class RT {
 				$searchq .= "'$word',";
 			}
 			$searchq = preg_replace( '/.$/', ')', $searchq );
+			$whereclause .= "\nAND $searchq";
 		}
    
 		// See if we are limiting to one or more owners
 		$searchowner = '';
 		if ( array_key_exists( 'o', $args ) ) {
 			$oargs = trim( strtolower( $args['o'] ) );
-			$searchowner = 'AND LOWER(u.name) IN (';
+			$searchowner = 'LOWER(u.name) IN (';
 			foreach ( preg_split( '/\s*,\s*/', $oargs ) as $word ) {
 				$word = trim( $word );
 				if ( !preg_match( '/^[\w\@\.\-\:\/]+$/', $word ) ) {
@@ -217,10 +218,30 @@ class RT {
 				$searchowner .= "'$word',";
 			}
 			$searchowner = preg_replace( '/.$/', ')', $searchowner );
+			$whereclause .= "\nAND $searchowner";
 		}
    
+		// Allow use of custom fields
+		$searchcustom = '';
+		if ( array_key_exists('custom', $args ) ) {
+			$searchcustom = trim( $args['custom'] );
+			$cfargs = trim( strtolower( $args['custom'] ) );
+			$ticketquery .= ', customfields cf, objectcustomfieldvalues ov';
+			$whereclause .= "\nAND ov.objectid = t.id\nAND ov.customfield=cf.id";
+			$whereclause .= "\nAND LOWER(cf.name) IN (";
+			foreach ( preg_split( '/\s*,\s*/', $cfargs ) as $word ) {
+				$word = trim( $word );
+				if ( !preg_match( '/^[\w \.-]+$/', $word ) ) {
+					die ( wfMsg ( 'rt-badcfield', $word ) );
+				}
+				$whereclause .= "'$word',";
+				$ticketquery = preg_replace( '/COALESCE/', "\nov.content AS custom, COALESCE", $ticketquery);
+			}
+			$whereclause = preg_replace( '/.$/', ')', $whereclause );
+		}
+
 		// Build and run the final query
-		$SQL = "$ticketquery $searchq $searchowner $searchstatus $orderby $limit";
+		$SQL = "$ticketquery $whereclause $orderby $limit";
 		$res = pg_query( $dbh, $SQL );
 		if ( !$res ) {
 			die ( wfMsg( 'rt-badquery' ) );
@@ -230,12 +251,12 @@ class RT {
 			$msg = wfMsg( 'rt-nomatches' );
 			return "<table class='rt-table-empty' border='1'><tr><th>$msg</th><tr></table>";
 		}
-   
+
 		// Figure out what columns to show
 		// Anything specifically requested is shown
 		// Everything else is either on or off by default, but can be overidden
 		$output = '';
-   
+
 		// The queue: show by default unless searching a single queue
 		$showqueue = 1;
 		if ( array_key_exists( 'noqueue', $args )
@@ -275,6 +296,7 @@ class RT {
 		$showresolved  = array_key_exists( 'resolved',  $args );
 		$showresolved2 = array_key_exists( 'resolved2', $args );
 		$showage       = array_key_exists( 'age',       $args );
+		$showcustom    = array_key_exists( 'custom',    $args );
    
 		// Unless 'tablerows' has been set, output the table and header tags
 		if ( !array_key_exists( 'tablerows', $args ) ) {
@@ -291,19 +313,26 @@ class RT {
 
 			$output = "<table class='$class' border='1'>\n<tr>\n";
 
-			if ( $showticket )    { $output .= "<th>Ticket</th>\n";       }
-			if ( $showqueue )     { $output .= "<th>Queue</th>\n";        }
-			if ( $showsubject )   { $output .= "<th>Subject</th>\n";      }
-			if ( $showstatus )    { $output .= "<th>Status</th>\n";       }
-			if ( $showpriority )  { $output .= "<th>Priority</th>\n";     }
-			if ( $showowner )     { $output .= "<th>Owner</th>\n";        }
-			if ( $showupdated )   { $output .= "<th>Last updated</th>\n"; }
-			if ( $showupdated2 )  { $output .= "<th>Last updated</th>\n"; }
-			if ( $showcreated )   { $output .= "<th>Created</th>\n";      }
-			if ( $showcreated2 )  { $output .= "<th>Created</th>\n";      }
-			if ( $showresolved )  { $output .= "<th>Resolved</th>\n";     }
-			if ( $showresolved2 ) { $output .= "<th>Resolved</th>\n";     }
-			if ( $showage )       { $output .= "<th>Age</th>\n";          }
+			if ( $showticket )    { $output .= "<th style='white-space: nowrap'>Ticket</th>\n";       }
+			if ( $showcustom )    {
+				foreach ( preg_split( '/\s*,\s*/', $searchcustom ) as $word ) {
+					$word = trim( $word );
+					$output .= "<th style='white-space: nowrap'>$word</th>\n";
+					break;
+				}
+			}
+			if ( $showqueue )     { $output .= "<th style='white-space: nowrap'>Queue</th>\n";        }
+			if ( $showsubject )   { $output .= "<th style='white-space: nowrap'>Subject</th>\n";      }
+			if ( $showstatus )    { $output .= "<th style='white-space: nowrap'>Status</th>\n";       }
+			if ( $showpriority )  { $output .= "<th style='white-space: nowrap'>Priority</th>\n";     }
+			if ( $showowner )     { $output .= "<th style='white-space: nowrap'>Owner</th>\n";        }
+			if ( $showupdated )   { $output .= "<th style='white-space: nowrap'>Last updated</th>\n"; }
+			if ( $showupdated2 )  { $output .= "<th style='white-space: nowrap'>Last updated</th>\n"; }
+			if ( $showcreated )   { $output .= "<th style='white-space: nowrap'>Created</th>\n";      }
+			if ( $showcreated2 )  { $output .= "<th style='white-space: nowrap'>Created</th>\n";      }
+			if ( $showresolved )  { $output .= "<th style='white-space: nowrap'>Resolved</th>\n";     }
+			if ( $showresolved2 ) { $output .= "<th style='white-space: nowrap'>Resolved</th>\n";     }
+			if ( $showage )       { $output .= "<th style='white-space: nowrap'>Age</th>\n";          }
    
 			$output .= "</tr>\n";
 		}
@@ -314,12 +343,15 @@ class RT {
 				$id = self::fancyLink( $row, $args, $parser, 1 );
 				$output .= "<td style='white-space: nowrap'>$id</td>";
 			}
+			if ( $showcustom )    { $output .= '<td>' . htmlspecialchars( $row['custom'] ) . "</td>\n";  }
 			if ( $showqueue )     { $output .= '<td>' . htmlspecialchars( $row['queue'] )    . "</td>\n"; }
 			if ( $showsubject )   { $output .= '<td>' . htmlspecialchars( $row['subject'] )  . "</td>\n"; }
 			if ( $showstatus )    { $output .= '<td>' . htmlspecialchars( $row['status'] )   . "</td>\n"; }
 			if ( $showpriority )  { $output .= '<td>' . htmlspecialchars( $row['priority'] ) . "</td>\n"; }
-			if ( $showowner )     { $output .= '<td>' . htmlspecialchars( $row['owner'] )    . "</td>\n"; }
-			if ( $showupdated )   { $output .= '<td>' . $row['lastupdated']                  . "</td>\n"; }
+			if ( $showowner )     {
+				$prettyowner = $row['owner'] == 'Nobody in particular' ? 'Nobody' : $row['owner'];
+				$output .= '<td>' . htmlspecialchars( $prettyowner )   . "</td>\n";
+			}
 			if ( $showupdated )   { $output .= "<td><span style='display:none'>"
 					. $row['lastupdated_epoch'] . "</span>" . $row['lastupdated']  . "</td>\n"; }
 			if ( $showupdated2 )  { $output .= "<td><span style='display:none'>"
@@ -337,7 +369,7 @@ class RT {
 		}
    
 		if ( !array_key_exists( 'tablerows', $args ) ) {
-			$output .= "</table>\n";
+			$output .= "\n</table>\n";
 		}
    
 		return $output;
