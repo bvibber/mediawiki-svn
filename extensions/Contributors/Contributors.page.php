@@ -116,7 +116,7 @@ class SpecialContributors extends IncludableSpecialPage {
 	 *
 	 * @return array
 	 */
-	protected function getMainContributors() {
+	public function getMainContributors() {
 		wfProfileIn( __METHOD__ );
 		global $wgContributorsLimit, $wgContributorsThreshold;
 		$total = 0;
@@ -139,7 +139,7 @@ class SpecialContributors extends IncludableSpecialPage {
 	 *
 	 * @return array
 	 */
-	protected function getContributors() {
+	public function getContributors() {
 		wfProfileIn( __METHOD__ );
 		global $wgMemc;
 		$k = wfMemcKey( 'contributors', $this->target->getArticleId() );
