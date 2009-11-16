@@ -1465,6 +1465,11 @@ database result
 &$titleArray: set this to an object to override the default object returned
 $res: database result used to create the object
 
+'TitleGetRestrictionTypes': Allows extensions to modify the types of protection
+  that can be applied.
+$title: The title in question.
+&$types: The types of protection available.
+
 'TitleMoveComplete': after moving an article (title)
 $old: old title
 $nt: new title
