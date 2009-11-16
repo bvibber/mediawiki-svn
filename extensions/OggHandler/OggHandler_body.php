@@ -705,6 +705,10 @@ class OggTransformOutput extends MediaTransformOutput {
 					'startOffset' => $offset,
 					'linkback' => $linkAttribs['href']
 		    );
+		    if( $this->file->getRepoName() == 'shared' ){
+				$videoAttr['sharedWiki'] = true;
+		    }
+
 		    if( $wgEnableTemporalOggUrls )
 		        $videoAttr['URLTimeEncoding'] = 'true';
 
@@ -852,9 +856,9 @@ function wfGetMediaJsonMeta( $path ){
 		return false;
 	}
 	$cmd = wfEscapeShellArg( $wgffmpeg2theoraPath ) . ' ' . wfEscapeShellArg ( $path ). ' --info';
-	wfProfileIn( 'ffmpeg2theora' );
+	wfProfileIn( __METHOD__ . '/ffmpeg2theora' );
 	$json_meta_str = wfShellExec( $cmd );
-	wfProfileOut( 'ffmpeg2theora' );
+	wfProfileOut( __METHOD__ . '/ffmpeg2theora' );
 	$objMeta = FormatJson::decode( $json_meta_str );
 
 	return $objMeta;
