@@ -1493,7 +1493,7 @@ if ( typeof context == 'undefined' ) {
 	// copied over to the textarea
 	context.$textarea.closest( 'form' ).submit( function() {
 		context.$textarea.attr( 'disabled', false );
-		context.$textarea.val( context.$textarea.getSelection( 'getContents' ) );
+		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
 	} );
 	
 	/* This is probably only a textarea issue, thus no longer needed
