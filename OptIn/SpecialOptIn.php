@@ -66,6 +66,12 @@ class SpecialOptIn extends SpecialPage {
 		
 		$par = $wgRequest->getVal( 'from', $par );
 		$this->mOriginTitle = Title::newFromText( $par );
+		
+		// Verify that $this->mOriginTitle is not Special:Userlogout
+		if ( $this->mOriginTitle && $this->mOriginTitle->getNamespace() == NS_SPECIAL &&
+				SpecialPage::resolveAlias( $this->mOriginTitle->getText() ) == 'Userlogout' ) {
+			$this->mOriginTitle = null;
+		}
 		if ( $this->mOriginTitle ) {
 			$this->mOrigin = $this->mOriginTitle->getPrefixedDBKey();
 			$this->mOriginQuery = $wgRequest->getVal( 'fromquery' );
@@ -93,17 +99,17 @@ class SpecialOptIn extends SpecialPage {
 		}
 		else
 		{
-			if ( $wgRequest->getVal( 'opt' ) == 'in' )
-				// Just opted in
+			if ( $wgRequest->getVal( 'opt' ) == 'in' && $wgUser->isLoggedIn() )
+				// Will be opted in in this request
 				$wgOut->setPageTitle( wfMsg( 'optin-title-justoptedin' ) );
 			else
 				// About to opt in
 				$wgOut->setPageTitle( wfMsg( 'optin-title-optedout' ) );
 		}
 		
-		if ( $wgRequest->getCheck( 'opt' ) ) {
+		if ( $wgRequest->getCheck( 'opt' ) && $wgUser->isLoggedIn() ) {
 			if ( $wgRequest->getVal( 'opt' ) === 'in' ) {
-				if ( self::checkToken() ) {
+				if ( self::checkToken() && !self::isOptedIn( $wgUser ) ) {
 					self::optIn( $wgUser );
 					$wgOut->addWikiMsg( 'optin-success-in' );
 					
@@ -117,21 +123,28 @@ class SpecialOptIn extends SpecialPage {
 						array( 'type' => $wgJsMimeType ),
 						'js2AddOnloadHook( function() { $j.post( "' . $url . '", optInGetPOSTData() ); } );'
 					) );
+				} else if ( self::isOptedIn( $wgUser ) ) {
+					// User is already opted in but
+					// reloaded the page or tried to opt in
+					// again. Fake success
+					$wgOut->addWikiMsg( 'optin-success-in' );
 				} else
+					// Token didn't match
 					$this->showForm( self::isOptedIn( $wgUser ) ?
 						'out' : 'in' );
-			} else if ( $wgRequest->getVal( 'opt' ) == 'feedback' ) {
+			} else if ( $wgRequest->getVal( 'opt' ) == 'feedback' && self::isOptedIn( $wgUser ) ) {
 				if ( $wgRequest->wasPosted() ) {
 					$this->saveSurvey( $wgOptInFeedBackSurvey,
 						'feedback' );
 					$wgOut->addWikiMsg( 'optin-success-feedback' );
 				} else
 					$this->showForm( 'feedback' );
-			} else if ( $wgRequest->getVal( 'opt' ) == 'browser' ) {
+			} else if ( $wgRequest->getVal( 'opt' ) == 'browser' && self::isOptedIn( $wgUser ) ) {
 				$this->saveSurvey( $wgOptInBrowserSurvey, 'in' );
 				$wgOut->disable();
 			} else {
-				if ( self::checkToken() ) {
+				// Opt out
+				if ( self::checkToken() && self::isOptedIn( $wgUser ) ) {
 					self::optOut( $wgUser );
 					$this->saveSurvey( $wgOptInSurvey, 'out' );
 					$wgOut->addWikiMsg( 'optin-success-out' );
