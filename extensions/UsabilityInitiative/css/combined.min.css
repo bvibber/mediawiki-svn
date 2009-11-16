@@ -90,6 +90,7 @@ width:100%;
 }
 .wikiEditor-ui .wikiEditor-ui-right{
 float:right;
+overflow:hidden;
 }
 .wikiEditor-wikitext{
 float:left;
@@ -104,7 +105,7 @@ width:50%;
 .wikiEditor-buttons{
 float:right;
 width:50%;
-}
+} */
 .ui-widget table{
 margin-top:0.75em;
 }
@@ -116,9 +117,9 @@ overflow:visible;
 div.suggestions{
 z-index:1099;
 }
-.wikiEditor-ui-text{
-}
 body.rtl .wikiEditor-ui-text{
+border-right:none;
+border-left:solid silver 1px;
 }
 .wikiEditor-ui-toc{
 padding:0;
@@ -134,6 +135,7 @@ border-left:none;
 */
 }
 .wikiEditor-ui-toc ul{
+border-left:solid silver 1px;
 padding:0;
 margin:0;
 list-style:none;
@@ -141,6 +143,10 @@ list-style-image:none;
 list-style-position:outside;
 list-style-type:none;
 width:100%;
+}
+body.rtl .wikiEditor-ui-toc ul{
+border-left:none;
+border-right:solid silver 1px;
 }
 .tab-toc{
 background-image:url(../images/wikiEditor/toolbar/base.png);
@@ -151,6 +157,8 @@ padding:3px 0;
 line-height:26px;
 padding-left:1em;
 border-bottom:solid 1px silver;
+white-space:nowrap;
+overflow:hidden;
 }
 .tab-toc a{
 outline:none;
@@ -228,7 +236,8 @@ border-left:1px solid #DDDDDD;
 .wikiEditor-ui-toc-collapse-closed{
 background:#f3f3f3 url(../images/wikiEditor/toc/open.png) 4px 50% no-repeat;
 }
-#wikiEditor-ui-toc-resize-vertical{
+.wikiEditor-ui-toc-resize-vertical,
+.ui-resizable-w{
 width:4px;
 position:absolute;
 top:0;
@@ -236,25 +245,34 @@ left:0;
 height:100%;
 cursor:ew-resize;
 }
-#wikiEditor-ui-toc-resize-grip{
+.wikiEditor-ui .wikiEditor-ui-right{
+overflow:visible;
+}
+.wikiEditor-ui-right .ui-resizable-w{
+left:0px !important;
+}
+.wikiEditor-ui-right .wikiEditor-ui-toc-resize-grip{
 width:5px;
 height:12px;
 padding:3px;
 position:absolute;
 top:7px;
-right:2px;
+left:-12px !important;
 cursor:ew-resize;
 background:url(../images/wikiEditor/toc/grip.png) 50% 50% no-repeat;
 }
-#wikiEditor-ui-toolbar .tab-toc{
+.wikiEditor-ui-toolbar .tab-toc{
 float:right;
 margin:3px 16px 3px 3px;
 line-height:26px;
 }
-#wikiEditor-ui-text textarea{
+.wikiEditor-ui-text textarea{
 resize:none;
 }
-#wikiEditor-ui-text textarea:focus{outline:none;}
+.wikiEditor-ui-text textarea:focus{outline:none;}
+.wikiEditor-ui-right{
+left:0px !important;
+}
 .wikiEditor-ui-toolbar{
 position:relative;
 width:100%;
