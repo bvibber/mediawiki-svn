@@ -478,12 +478,15 @@ fn : {
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
 						var show = $section.css( 'display' ) == 'none';
 						$previousSections = $section.parent().find( '.section:visible' );
+						var dH = $previousSections.outerHeight();
 						$previousSections.css( 'position', 'absolute' );
 						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 						$sections.css('overflow', 'hidden');
 						if ( show ) {
 							$section.fadeIn( 'fast' );
+							dH = $section.outerHeight() - dH;
+							context.modules.$toc.animate({'height': "+="+dH}, $section.outerHeight() * 2);
 							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() { 
 								$(this).css('overflow', 'visible').css('height', 'auto'); 
 							} );
@@ -493,6 +496,7 @@ fn : {
 								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() { 
 									$(this).css('overflow', 'visible'); 
 								} );
+							context.modules.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);
 						}
 						// Click tracking
 						if($.trackAction != undefined){
@@ -562,33 +566,6 @@ fn : {
 	},
 	build : function( context, config ) {
 		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.$toolbar );
-		/*
-		if( wgNavigableTOCCollapseEnable ) {
-			// FIXME: This code is duplicated from the TOC plugin and doesn't belong here;
-			// the TOC drag thingy should be in the TOC plugin instead
-			// placeholder for drag control creation code
-			$dragControl = $( '<div />' ).addClass( 'tab' ).attr( 'id', 'wikiEditor-ui-toc-resize-grip' )
-				.append( '<a href="#" title="Drag to resize"></a>' )
-				.mousedown( function() {
-					context.modules.$toc
-						.data( 'openWidth', $( '#wikiEditor-ui-toc' ).width() );
-					$()
-						.bind( 'mousemove', context, $.wikiEditor.modules.toc.fn.drag )
-						.bind( 'mouseup', context, $.wikiEditor.modules.toc.fn.stopDrag );
-					$( context.$iframe[0].contentWindow.document )
-						.mousemove( function() {
-							parent.top.$j().trigger( 'mousemove', e.pageX ); 
-							return false;
-						} )
-						.mouseup( function() {
-							parent.top.$j().trigger( 'mouseup' );
-							return false;
-						});
-					return false;
-				})
-			context.modules.$toolbar.append( $dragControl );
-		}
-		*/
 		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
 		context.modules.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
 		var sectionQueue = [];
@@ -619,7 +596,12 @@ fn : {
 				s.$sections.append( $.wikiEditor.modules.toolbar.fn.buildSection( s.context, s.id, s.config ) );
 				var $section = s.$sections.find( '.section:visible' );
 				if ( $section.size() ) {
-					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2 );
+					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function( ) {
+						context.modules.$toc.height(
+							context.$ui.find( '.wikiEditor-ui-left' )
+								.outerHeight() - context.$ui.find( '.tab-toc' ).outerHeight()
+						);
+					} );
 				}
 			}
 		} );

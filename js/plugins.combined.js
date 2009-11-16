@@ -2390,12 +2390,15 @@ fn : {
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
 						var show = $section.css( 'display' ) == 'none';
 						$previousSections = $section.parent().find( '.section:visible' );
+						var dH = $previousSections.outerHeight();
 						$previousSections.css( 'position', 'absolute' );
 						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 						$sections.css('overflow', 'hidden');
 						if ( show ) {
 							$section.fadeIn( 'fast' );
+							dH = $section.outerHeight() - dH;
+							context.modules.$toc.animate({'height': "+="+dH}, $section.outerHeight() * 2);
 							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() { 
 								$(this).css('overflow', 'visible').css('height', 'auto'); 
 							} );
@@ -2405,6 +2408,7 @@ fn : {
 								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() { 
 									$(this).css('overflow', 'visible'); 
 								} );
+							context.modules.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);
 						}
 						// Click tracking
 						if($.trackAction != undefined){
@@ -2531,7 +2535,12 @@ fn : {
 				s.$sections.append( $.wikiEditor.modules.toolbar.fn.buildSection( s.context, s.id, s.config ) );
 				var $section = s.$sections.find( '.section:visible' );
 				if ( $section.size() ) {
-					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2 );
+					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function( ) {
+						context.modules.$toc.height(
+							context.$ui.find( '.wikiEditor-ui-left' )
+								.outerHeight() - context.$ui.find( '.tab-toc' ).outerHeight()
+						);
+					} );
 				}
 			}
 		} );
@@ -2587,8 +2596,9 @@ fn: {
 			.css( 'width', $.wikiEditor.modules.toc.defaultWidth )
 			.append( context.modules.$toc );
 		context.modules.$toc.height(
-			context.$ui.find( '.wikiEditor-ui-left' ).height()
+			context.$ui.find( '.wikiEditor-ui-left' ).height() - 1
 		);
+		context.modules.$toc
 		context.$ui.find( '.wikiEditor-ui-left' )
 			.css( 'marginRight', "-" + $.wikiEditor.modules.toc.defaultWidth )
 			.children()

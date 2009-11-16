@@ -47,6 +47,7 @@ body.rtl .wikiEditor-ui {
 }
 .wikiEditor-ui .wikiEditor-ui-right {
 	float: right;
+	overflow:hidden;
 }
 .wikiEditor-wikitext {
 	float: left;
@@ -61,4 +62,4 @@ body.rtl .wikiEditor-ui {
 .wikiEditor-buttons {
 	float: right;
 	width: 50%;
-}
+} */
