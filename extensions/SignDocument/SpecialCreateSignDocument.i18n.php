@@ -242,6 +242,7 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'createsigndocument' => 'Gweredekaat ar gwiriañ teulioù',
 	'createsigndoc-pagename' => 'Pajenn :',
 	'createsigndoc-allowedgroup' => 'Strollad aotreet :',
 	'createsigndoc-email' => "Chomlec'h postel :",

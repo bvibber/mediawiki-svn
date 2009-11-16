@@ -790,9 +790,12 @@ $messages['lb'] = array(
 	'deletebatch-link-back' => "Gitt zréck op d'Spezialsäit",
 	'deletebatch-both-modes' => 'Wielt entweder eng spezifesch Säit oder eng spezifesch Lëscht vu Säiten.',
 	'deletebatch-or' => '<b>ODER</b>',
+	'deletebatch-delete' => 'Läschen',
 	'deletebatch-page' => 'Säite fir ze läschen:',
+	'deletebatch-processing-from-form' => 'Säiten vum Formulaire aus läschen',
 	'deletebatch-omitting-nonexistant' => "D'Säit $1 déi et net gëtt iwwersprangen.",
 	'deletebatch-omitting-invalid' => 'Déi ongëlteg Säit $1 iwwersprangen.',
+	'deletebatch-file-missing' => 'De Fichier deen ukoum konnt net geliest ginn',
 	'deletebatch-select-script' => 'de Script vun der Säit läschen',
 	'deletebatch-select-yourself' => 'Dir',
 );

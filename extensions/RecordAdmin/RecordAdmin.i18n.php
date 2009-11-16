@@ -1456,18 +1456,19 @@ $messages['pl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'recordadmin' => 'Administração de registos',
 	'recordadmin-desc' => 'Uma [[Special:RecordAdmin|página especial]] para encontrar e editar páginas de registos usando um formulário',
-	'recordadmin-categoryempty' => 'No momento não há tipos de registo. Por favor, categorize predefinições de registo em [[:$1|$1]].',
-	'recordadmin-select' => 'Selecione o tipo de registo a gerir',
+	'recordadmin-categoryempty' => 'Não existe nenhum tipo de registo. Por favor, categorize predefinições de registos em [[:$1|$1]].',
+	'recordadmin-select' => 'Seleccione o tipo de registo a gerir',
 	'recordadmin-createtype' => 'Introduza o nome do novo tipo de registo a criar',
 	'recordadmin-recordtype' => 'Tipo de registo',
 	'recordadmin-newsearch' => 'Nova pesquisa $1',
-	'recordadmin-newrecord' => 'Selecionar outro tipo de registo',
+	'recordadmin-newrecord' => 'Seleccionar outro tipo de registo',
 	'recordadmin-submit' => 'Submeter',
 	'recordadmin-create' => 'Procurar ou criar registos "$1"',
 	'recordadmin-alreadyexist' => 'Desculpe, "$1" já existe!',
@@ -1475,16 +1476,16 @@ $messages['pt'] = array(
 	'recordadmin-createerror' => 'Ocorreu um erro ao tentar criar o $1!',
 	'recordadmin-badtitle' => 'Título inválido!',
 	'recordadmin-recordid' => 'ID/nome do registo:',
-	'recordadmin-invert' => 'Inverter seleção',
+	'recordadmin-invert' => 'Inverter selecção',
 	'recordadmin-buttonsearch' => 'Pesquisar',
 	'recordadmin-buttoncreate' => 'Criar',
 	'recordadmin-buttonreset' => 'Repor',
 	'recordadmin-searchresult' => 'Resultados da pesquisa',
 	'recordadmin-nomatch' => 'Não foram encontrados resultados correspondentes!',
 	'recordadmin-edit' => 'A editar registo $2 "$1"',
-	'recordadmin-typeupdated' => 'Propriedades de $1 atualizadas',
-	'recordadmin-updatesuccess' => '$1 atualizado',
-	'recordadmin-updateerror' => 'Ocorreu um erro durante a atualização',
+	'recordadmin-typeupdated' => 'Propriedades de $1 actualizadas',
+	'recordadmin-updatesuccess' => '$1 actualizado',
+	'recordadmin-updateerror' => 'Ocorreu um erro durante a actualização',
 	'recordadmin-buttonsave' => 'Gravar',
 	'recordadmin-noform' => 'Não há um formulário associado com registos "$1"!',
 	'recordadmin-createlink' => 'criar um',
@@ -1494,8 +1495,10 @@ $messages['pt'] = array(
 	'recordadmin-editlink' => 'editar',
 	'recordadmin-created' => 'Criado',
 	'recordadmin-modified' => 'Modificado',
-	'recordadmin-actions' => 'Ações',
+	'recordadmin-actions' => 'Acções',
 	'recordadmin-needscontent' => 'Adicionar conteúdo...',
+	'recordadmin-editwithform' => 'Editar com formulário',
+	'recordadmin-typeinfo' => 'Registo de $1',
 	'right-recordadmin' => 'Encontrar e editar páginas de registos',
 );
 

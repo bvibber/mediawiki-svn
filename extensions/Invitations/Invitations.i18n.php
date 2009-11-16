@@ -1039,13 +1039,13 @@ $messages['pms'] = array(
 	'invite-logpagetext' => "Sto-sì a l'é un registr ëd j'utent che as anvito l'un l'àutr a dovré le diferente possibilità dël programa.",
 	'invite-logentry' => 'Anvità $1 a dovré la possibilità <i>$2</i>.',
 	'invitations' => "Gestiss j'anvit a le possibilità software",
-	'invitations-desc' => "A përmëtt lë [[Special:Invitations|gestion ëd le neuve possibilità]] an restrinzendje a un sistema basà an sj'anvit",
-	'invitations-invitedlist-description' => "It l'has acess a le possibilità software sì sota mach a anvit.
-Për gestì j'anvit a na sola possibilità, sgnaca an sël sò nòm.",
-	'invitations-invitedlist-none' => 'It ses pa stàit anvità a dovré gnun-e possibilità software mach a anvit.',
+	'invitations-desc' => "A përmët le [[Special:Invitations|gestion ëd le neuve possibilità]] an restrinzendje a un sistema basà an sj'anvit",
+	'invitations-invitedlist-description' => "It l'has mach acess a le caraterìstiche sì-sota dël programa mach a anvit.
+Për gestì j'anvit për na sola caraterìstica, sgnaca an sël sò nòm.",
+	'invitations-invitedlist-none' => 'It ses pa stàit anvità a dovré dle possibilità dël programa mach a anvit.',
 	'invitations-invitedlist-item-count' => "({{PLURAL:$1|N'anvit disponìbil|$1 anvit disponibij}})",
 	'invitations-pagetitle' => 'Possibilità software mach a anvit',
-	'invitations-uninvitedlist-description' => "It l'has pa acess a coste àutre possibilità software mach a anvit.",
+	'invitations-uninvitedlist-description' => "It l'has pa acess a coste àutre caraterìstiche dël programa mach a anvit.",
 	'invitations-uninvitedlist-none' => 'Adess, gnun-e àutre possibilità software a son nominà mach a anvit.',
 	'invitations-feature-pagetitle' => "Gestion ëd j'anvit - $1",
 	'invitations-feature-access' => "Adess it l'has acess për dovré <i>$1</i>.",

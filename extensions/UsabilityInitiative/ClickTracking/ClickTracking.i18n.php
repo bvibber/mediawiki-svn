@@ -725,6 +725,13 @@ $messages['id'] = array(
 	'ct-update-table' => 'Pemutahiran tabel',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'ct-and' => 'e(d)',
+);
+
 /** Italian (Italiano)
  * @author Gianfranco
  */

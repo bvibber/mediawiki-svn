@@ -501,6 +501,17 @@ $messages['id'] = array(
 	'fundraiserportal-tourmaline-close' => 'Sembunyikan ini untuk saat ini',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'fundraiserportal-ruby-button' => 'Donacez Nun',
+	'fundraiserportal-rubytext-button' => 'Donacez Nun',
+	'fundraiserportal-sapphire-button' => 'Donacez Nun',
+	'fundraiserportal-tourmaline-button' => 'Donacez Nun',
+	'fundraiserportal-tourmaline-close' => 'Celez ico de nun',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

@@ -466,13 +466,18 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'multiboilerplate-desc' => 'Permite que um texto-modelo seja seleccionado de uma lista drop-down localizada em cima do formulário de edição, quando se edita páginas',
-	'multiboilerplate-legend' => 'Seleccione o texto-modelo',
+	'multiboilerplate-desc' => 'Permite que um texto normalizado seja seleccionado de uma lista localizada acima do formulário de edição, quando se edita páginas',
+	'multiboilerplate-legend' => 'Seleccione o texto normalizado',
 	'multiboilerplate-submit' => 'Carregar',
+	'boilerplates' => 'Textos disponíveis',
+	'multiboilerplate-special-pagetext' => 'Estes textos normalizados podem ser pré-carregados na criação da página. (<span class=plainlinks>[{{fullurl:Esta página não existe|action=edit}} demonstração]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Os textos normalizados são definidos no ficheiro LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Os textos normalizados são definidos em [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

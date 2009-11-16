@@ -118,15 +118,22 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'postcomment_desc' => "Talvezout a ra d'an implijerien da lakaat sonjoù war-eeun war ar pajennoù kaozeal",
+	'postcomment_discussionprotected' => "Gwarezet a-enep d'ar skrivañ eo bet ar bajenn gaozeal",
 	'postcomment_notloggedin' => "N'oc'h ket kevreet.",
 	'postcomment_youareloggedinas' => "Kevreet oc'h evel $1",
+	'postcomment_addcommentdiscussionpage' => 'Ouzhpennañ un evezhiadenn war ar bajenn gaozeal-mañ',
 	'postcomment_leavemessagefor' => 'Lezel ur gemennadenn da $1',
+	'postcomment_post' => 'Embann',
+	'postcomment_on' => "D'an",
 	'postcomment_said' => 'en deus lavaret',
 	'postcomment_invalidrequest' => 'Reked direizh.',
 	'postcomment_replyto' => 'Respont da $1',
+	'postcomment_nopostingtoadd' => 'Kemennadenn ebet da ouzpennañ.',
 );
 
 /** Bosnian (Bosanski)

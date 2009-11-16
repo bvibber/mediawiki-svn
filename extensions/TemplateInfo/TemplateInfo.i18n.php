@@ -26,6 +26,14 @@ $messages['qqq'] = array(
 	'templateinfo-header' => 'Header to display XML definition in template page',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'templateinfo-desc' => 'Ondersteun sjablone waarvoor die datastruktuur via XML gedefinieer is',
+	'templateinfo-header' => 'Die XML-definisie vir die sjabloon is:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

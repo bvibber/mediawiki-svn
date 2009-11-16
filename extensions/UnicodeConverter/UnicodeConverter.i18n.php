@@ -605,6 +605,15 @@ $messages['pt-br'] = array(
 	'unicodeconverter-newtext' => 'Texto convertido:',
 );
 
+/** Rhaeto-Romance (Rumantsch)
+ * @author Gion-andri
+ */
+$messages['rm'] = array(
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Text original:',
+	'unicodeconverter-newtext' => 'Text convertà:',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

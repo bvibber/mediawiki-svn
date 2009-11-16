@@ -73,6 +73,23 @@ $messages['br'] = array(
 	'externalpages' => 'Pajennoù diavaez',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'externalpages' => 'Vanjske stranice',
+	'externalpages-desc' => 'Preuzima i prikazuje stranice sa udaljenih WMF sajtova',
+	'externalpages-bad-year' => 'Navedena pogrešna godina',
+	'externalpages-bad-language' => 'Naveden pogrešan jezik',
+	'externalpages-bad-project' => 'Naveden pogrešan projekt',
+	'externalpages-no-project' => 'Nije naveden projekt',
+	'externalpages-bad-page' => 'Navedena pogrešna stranica',
+	'externalpages-no-page' => 'Nije navedena stranica',
+	'externalpages-error-generic' => 'Desila se greška',
+	'externalpages-bad-url' => 'Nije uspjelo preuzimanje URL',
+	'externalpages-bad-url-data' => 'Nije uspjelo preuzimanje sadržaja stranice',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

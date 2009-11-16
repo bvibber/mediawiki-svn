@@ -118,6 +118,15 @@ $messages['be-tarask'] = array(
 	'wikieditor-preview-savedialog-goback' => 'Вярнуцца',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'wikieditor-preview-loading' => 'Зареждане...',
+	'wikieditor-preview-button-cancel' => 'Отказване',
+	'wikieditor-preview-savedialog-publish' => 'Публикуване',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -456,6 +465,24 @@ $messages['ja'] = array(
 	'wikieditor-preview-savedialog-goback' => '戻る',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikieditor-preview-preference' => "Donn de {{int:preview}} nevve'eneijn zohlohße",
+	'wikieditor-preview-tab-edit' => '{{int:edit}}',
+	'wikieditor-preview-tab-preview' => '{{int:preview}}',
+	'wikieditor-preview-loading' => 'Ben aam Laade{{int:ellipsis}}',
+	'wikieditor-preview-button-publish' => 'Öffentlesch maache!',
+	'wikieditor-preview-button-cancel' => '{{int:cancel}}',
+	'wikieditor-preview-savedialog-title' => 'En dä {{SITENAME}} öffentlesch maache',
+	'wikieditor-preview-savedialog-summary' => 'Koot Zosammejefass (Wat De verändert häs, en koot):',
+	'wikieditor-preview-savedialog-minor' => '{{int:minoredit}}',
+	'wikieditor-preview-savedialog-watch' => '{{int:watchthis}}',
+	'wikieditor-preview-savedialog-publish' => '{{int:wikieditor-preview-button-publish}}',
+	'wikieditor-preview-savedialog-goback' => 'Jangk Retuur!',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -536,6 +563,24 @@ $messages['oc'] = array(
 	'wikieditor-preview-tab-edit' => 'Modificacion',
 	'wikieditor-preview-tab-preview' => 'Previsualizacion',
 	'wikieditor-preview-loading' => 'Cargament...',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'wikieditor-preview-preference' => 'Włącz sąsiadujący podgląd',
+	'wikieditor-preview-tab-edit' => 'Edycja',
+	'wikieditor-preview-tab-preview' => 'Podgląd',
+	'wikieditor-preview-loading' => 'Wczytywanie...',
+	'wikieditor-preview-button-publish' => 'Opublikuj',
+	'wikieditor-preview-button-cancel' => 'Anuluj',
+	'wikieditor-preview-savedialog-title' => 'Opublikuj w {{GRAMMAR:MS.lp|{{SITENAME}}}}',
+	'wikieditor-preview-savedialog-summary' => 'Zmiany (krótki opis wykonanych zmian)',
+	'wikieditor-preview-savedialog-minor' => 'Drobna zmiana',
+	'wikieditor-preview-savedialog-watch' => 'Obserwuj tę stronę',
+	'wikieditor-preview-savedialog-publish' => 'Publikowanie',
+	'wikieditor-preview-savedialog-goback' => 'Wróć',
 );
 
 /** Piedmontese (Piemontèis)

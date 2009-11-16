@@ -591,6 +591,7 @@ $messages['lb'] = array(
 	'security-info-toggle' => 'Sécherheetsrestrictiounen',
 	'security-inforestrict' => '$1 ass limitéiert op $2',
 	'security-desc-LS' => '(gëllt well dës Säit an der "$2 $1" ass)',
+	'security-desc-PR' => '(agestallt vum Tab "Protectioun")',
 	'security-infosysops' => "Keng Limitatioune gëlle fir Iech wëll Dir e Member vum Grupp vun den '''Administrateure''' sidd",
 	'security-manygroups' => 'Gruppen $1 a(n) $2',
 	'security-unchain' => 'Aktiounen individuell änneren',

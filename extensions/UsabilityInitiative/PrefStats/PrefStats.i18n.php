@@ -1017,6 +1017,7 @@ Klik pada salah satu untuk melihat statistiknya.',
  */
 $messages['io'] = array(
 	'prefstats-factor-hour' => 'horo',
+	'prefstats-factor-sixhours' => 'sis hori',
 	'prefstats-factor-day' => 'dio',
 	'prefstats-factor-week' => 'semano',
 	'prefstats-factor-twoweeks' => 'du semani',

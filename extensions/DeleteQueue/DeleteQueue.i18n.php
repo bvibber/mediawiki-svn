@@ -2861,6 +2861,7 @@ $messages['id'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'deletequeue-delnom-otherreason' => 'Altra motivo',
 	'deletequeue-list-header-expiry' => 'Expiro',
 	'deletequeue-case-expiry' => 'Expiro:',
 );

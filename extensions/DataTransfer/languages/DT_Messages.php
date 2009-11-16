@@ -1368,6 +1368,7 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -1376,7 +1377,7 @@ $messages['pms'] = array(
 	'dt_viewxml_docu' => 'Për piasì selession-a an tra le categorìe sota e jë spassi nominaj për vëdde an formà XLM.',
 	'dt_viewxml_categories' => 'Categorìe',
 	'dt_viewxml_namespaces' => 'Spassi nominaj',
-	'dt_viewxml_simplifiedformat' => 'Formà semplifià',
+	'dt_viewxml_simplifiedformat' => 'Formà semplificà',
 	'dt_xml_namespace' => 'Spassi nominal',
 	'dt_xml_pages' => 'Pàgine',
 	'dt_xml_page' => 'Pàgina',
@@ -1388,12 +1389,12 @@ $messages['pms'] = array(
 	'dt_xml_freetext' => 'Test lìber',
 	'importxml' => 'Ampòrta XML',
 	'dt_import_selectfile' => 'Për piasì selession-a ël file $1 da amporté:',
-	'dt_import_encodingtype' => 'Sòrt da codifié',
+	'dt_import_encodingtype' => 'Tipo ëd codìfica',
 	'dt_import_editsummary' => '$1 ampòrta',
-	'dt_import_importing' => "A s'ampòrta ...",
-	'dt_import_success' => 'S1 {{PLURAL:$1|pàgina|pàgine}} a saran creà dal file $2',
+	'dt_import_importing' => "An camin ch'as ampòrta...",
+	'dt_import_success' => "$1 {{PLURAL:$1|pàgina|pàgine}} a saran creà da l'archivi $2.",
 	'importcsv' => 'Ampòrta CSV',
-	'dt_importcsv_badheader' => "Eror: l'header ëd la colòna $1, '$2', a deuv esse '$3', '$4' o ëd la forma 'template_name[field_name]'",
+	'dt_importcsv_badheader' => "Eror: l'antestassion ëd la colòna $1, '$2', a deuv esse '$3', '$4' o ëd la forma 'template_name[field_name]'",
 	'right-datatransferimport' => 'Ampòrta dat',
 );
 

@@ -479,6 +479,17 @@ $messages['pt-br'] = array(
 	'right-viewpiwik' => 'Ver [[Special:Piwik|estatísticas Piwik]]',
 );
 
+/** Rhaeto-Romance (Rumantsch)
+ * @author Gion-andri
+ */
+$messages['rm'] = array(
+	'piwik-desc' => 'Inserescha in Piwik script en paginas da MediaWiki per agiuntar [[Special:Piwik|tschertgas statisticas]]',
+	'piwik-lastvisits' => 'Ultimas visitas',
+	'piwik-countries' => 'Pajais',
+	'piwik-browsers' => 'Navigaturs',
+	'right-viewpiwik' => 'Guardar [[Special:Piwik|statisticas da Piwik]]',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

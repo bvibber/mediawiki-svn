@@ -267,6 +267,7 @@ $messages['bs'] = array(
 	'spamregex-error-unblocking' => 'Greška pri deblokadi "$1". Moguće je da nema takve šeme.',
 	'spamregex-summary' => 'Tekst je pronađen u sažetku stranice',
 	'spamregex-currently-blocked' => "'''Trenutno blokirane fraze:'''",
+	'spamregex-move' => 'Razlog koji ste unijeli sadrži blokiranu frazu.',
 	'spamregex-no-currently-blocked' => "'''Nema blokiranih fraza.'''",
 	'spamregex-unblock-success' => 'Deblokada uspješna',
 	'spamregex-unblock-message' => "Fraza '''$1''' je deblokirana za uređivanje.",

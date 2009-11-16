@@ -693,6 +693,11 @@ $messages['ja'] = array(
 	'qp_header_line_qpul' => '$1 [ ページ「$2」投票「$3」]',
 	'qp_export_to_xls' => '統計を XLS 形式でエクスポート',
 	'qp_users_answered_questions' => '$1{{PLURAL:$1|人}}の利用者がこの質問に答えました',
+	'qp_func_no_such_poll' => 'そのような投票はありません ($1)',
+	'qp_func_missing_question_id' => '投票 $1 に存在する質問 ID を指定してください (1から始まります)',
+	'qp_func_invalid_question_id' => '投票 $1 に対して無効な質問の ID ($2 は数値ではありません)',
+	'qp_error_no_such_poll' => 'そのような投票はありません ($1)。
+その投票が宣言され保存されていること、およびアドレス区切り記号 # を使っていることを確認してください。',
 	'qp_error_category_name_empty' => 'カテゴリー名が空です',
 	'qp_error_proposal_text_empty' => '提案文が空です',
 );

@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'mootools12core-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'mootools12core-desc' => "Voeg [http://mootools.net Mootools-1,2-kern-yc.js], 'n kompakte JavaScript-raamwerk by elke bladsy by",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

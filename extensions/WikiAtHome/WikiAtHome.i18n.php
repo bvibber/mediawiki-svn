@@ -208,6 +208,7 @@ $messages['be-tarask'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
+	'wah-short-audio' => '$1 звуков файл, $2',
 	'wah-transcode-working' => 'Видеото се обработва. Моля, опитайте пак по-късно.',
 	'wah-javascript-off' => 'За да участвате в Wiki@Home е необходимо браузърът ви да е с включена поддръжка на Джаваскрипт.',
 	'wah-loading' => 'зареждане на интерфейса на Wiki@Home ...',

@@ -1102,6 +1102,13 @@ $messages['id'] = array(
 	'specialpages-group-feedback' => 'Opini pembaca',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'readerfeedback-finished' => 'Danko!',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Gianfranco

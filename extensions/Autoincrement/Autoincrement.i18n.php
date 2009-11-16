@@ -13,6 +13,13 @@ $messages['qqq'] = array(
 	'autoincrement-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'autoincrement-desc' => "Maak 'n veranderlike <nowiki>{{AUTOINCREMENT}}</nowiki> beskikbaar vir outomatiese inkrementering.",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

@@ -41,6 +41,13 @@ $messages['be-tarask'] = array(
 	'magicnonumberedheadings-desc' => 'Дадае магічнае слова «<nowiki>__NONUMBEREDHEADINGS__</nowiki>»',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'magicnonumberedheadings-desc' => 'Добавя вълшебната дума "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

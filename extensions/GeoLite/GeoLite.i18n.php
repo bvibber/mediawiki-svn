@@ -116,6 +116,13 @@ $messages['ksh'] = array(
 	'geolite-desc' => 'En eijfaache Ömlängkung för GeoIP.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'geolite-desc' => 'Liicht Viruleedung op GeoIP',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -5767,6 +5767,13 @@ Maak die map aan, of veranger 't um dees oetbreijing te gebroeke.",
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Veur deze wiki besjikbare oetbreijinge betrachte]].',
 );
 
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
+$messages['lmo'] = array(
+	'configure-select-wiki-submit' => 'Scernìss',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Tomasdd
  */

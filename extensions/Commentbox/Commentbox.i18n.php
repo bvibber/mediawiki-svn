@@ -468,6 +468,25 @@ Dir hutt eng Bemierkung zu dëser Säit? Setzt ze hei derbäi oder <span class="
 	'commentbox-error-empty-comment' => 'Eidel Bemierkunge sinn net erlaabt!',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'commentbox-desc' => 'Додава поле за коментар на извесни страници',
+	'commentbox-intro' => '== Додајте коментар... ==
+Имате коментар за оваа страница? Пишете го тука или пак <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} директно уредете ја страницата]</span>.',
+	'commentbox-savebutton' => 'Зачувај коментар',
+	'commentbox-name' => 'Име:',
+	'commentbox-name-explanation' => '<small>(Помош: Ако [[Special:UserLogin|се најавите]], нема да треба тука да си го внесувате името рачно)</small>',
+	'commentbox-log' => 'Нови коментари',
+	'commentbox-first-comment-heading' => '== Коментари ==',
+	'commentbox-regex' => '/\\n==\\s*Коментари\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Грешка при создавањето на коментарот',
+	'commentbox-error-page-nonexistent' => 'Оваа страница не постои!',
+	'commentbox-error-namespace' => 'Во овој именски простор не се дозволени коментари!',
+	'commentbox-error-empty-comment' => 'Не се дозволени празни коментари!',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

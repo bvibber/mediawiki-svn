@@ -2596,6 +2596,24 @@ $messages['pms'] = array(
 	'whitelisttablesetedit' => 'Ativé la modificassion',
 	'whitelisttablesetview' => 'Ativé la visualisassion',
 	'whitelisttableremove' => 'Gavé',
+	'whitelistnewpagesfor' => "Gionta ëd neuve pàgine a la lista bianca ëd <b>$1</b><br />
+Dovré o bin ël caràter * opura % tanme caràter d'indefinission (wildcard)",
+	'whitelistnewtabledate' => 'Dàita dë scadensa:',
+	'whitelistnewtableedit' => 'Ativé la modìfica',
+	'whitelistnewtableview' => 'Ativé la visualisassion',
+	'whitelistnowhitelistedusers' => "A-i é gnun utent ant la partìa « {{MediaWiki:Group-restricted}} ».
+A dev [[Special:UserRights|gionté j'utent ant la partìa]] prima ch'a peula gionté dle pàgine a la lista bianca ëd n'utent.",
+	'whitelistnewtableprocess' => 'Traté',
+	'whitelistnewtablereview' => 'Lese torna',
+	'whitelistselectrestricted' => "== Selessioné un nòm d'utent a acess limità ==",
+	'whitelistpagelist' => 'Pàgine ëd {{SITENAME}} për $1',
+	'whitelistnocalendar' => "<font color='red' size=3>A smija che [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], un prerequisì për costa estension, a sia pa stàit anstalà për da bin!</font>",
+	'whitelistoverview' => '== Descrission general dle modìfiche për $1 ==',
+	'whitelistoverviewcd' => "* Modìfica dla dàita a '''$1''' për [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Configurassion ëd l'acess a '''$1''' për [[:$2|$2]]",
+	'whitelistoverviewrm' => "* Gaveje l'acess a [[:$1|$1]]",
+	'whitelistoverviewna' => "* Gionta ëd [[:$1|$1]] a la lista bianca con ij drit ëd '''$2''' e dàita dë scadensa '''$3'''",
+	'whitelistrequest' => "Ciamé l'intrada a d'àutre pàgine",
 );
 
 /** Pashto (پښتو)

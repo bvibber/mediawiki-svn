@@ -7921,6 +7921,7 @@ $messages['id'] = array(
 	'configure-setting-wgZhdaemonHost' => 'Inang ZhDaemon',
 	'configure-setting-wgZhdaemonPort' => 'Porta ZhDaemon',
 	'configure-setting-wgLocaltimezone' => 'Zona waktu lokal',
+	'configure-setting-wgLocalTZoffset' => 'Perbedaan zona waktu',
 	'configure-setting-wgAllowUserCss' => 'Izinkan halaman Cascading Style Sheet (CSS) pengguna',
 	'configure-setting-wgAllowUserJs' => 'Izinkan halaman JavaScript pengguna',
 	'configure-setting-wgUseSiteCss' => 'Gunakan Cascading Style Sheet (CSS) situs',
@@ -7941,6 +7942,17 @@ $messages['id'] = array(
 	'configure-setting-wgTrivialMimeDetection' => 'Gunakan deteksi tipe MIME trivial',
 	'configure-setting-wgVerifyMimeType' => 'Periksa tipe MIME berkas unggahan',
 	'configure-setting-wgMimeTypeBlacklist' => 'Matikan tipe MIME',
+	'configure-setting-wgCacheSharedUploads' => 'Singgahkan metadata bersama di memcached',
+	'configure-setting-wgForeignFileRepos' => 'Repositori berkas luar',
+	'configure-setting-wgFetchCommonsDescriptions' => 'Ambil deskripsi berkas bersama',
+	'configure-setting-wgHashedSharedUploadDirectory' => 'Acak nama direktori unggahan bersama',
+	'configure-setting-wgRepositoryBaseUrl' => 'URL dasar untuk repositori bersama',
+	'configure-setting-wgSharedThumbnailScriptPath' => 'Direktori skrip gambar mini untuk unggahan bersama',
+	'configure-setting-wgSharedUploadDBname' => 'Basis data untuk unggahan bersama',
+	'configure-setting-wgSharedUploadDBprefix' => 'Prefiks basis data untuk unggahan bersama',
+	'configure-setting-wgSharedUploadDirectory' => 'Direktori sistem berkas tempat unggahan bersama dapat ditemukan',
+	'configure-setting-wgSharedUploadPath' => 'Direktori lengkap di server web tempat unggahan bersama dapat ditemukan',
+	'configure-setting-wgUseSharedUploads' => 'Gunakan unggahan bersama',
 );
 
 /** Italian (Italiano)

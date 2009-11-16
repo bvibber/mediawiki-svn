@@ -365,6 +365,13 @@ $messages['pt-br'] = array(
 	'emailaddressimage-desc' => 'Adiciona <tt>&lt;email&gt;</tt> para apresentar um endereço de e-mail como imagem',
 );
 
+/** Rhaeto-Romance (Rumantsch)
+ * @author Gion-andri
+ */
+$messages['rm'] = array(
+	'emailaddressimage-desc' => "Agiunta il tag <tt>&lt;email&gt;</tt> per visualisar ina adressa d'e-mail sco maletg",
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

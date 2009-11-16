@@ -162,6 +162,8 @@ $messages['bg'] = array(
 	'amazonplus-french' => 'френски',
 	'amazonplus-japanese' => 'японски',
 	'amazonplus-cp-none' => 'Няма',
+	'amazonplus-more' => 'повече',
+	'amazonplus-less' => 'по-малко',
 );
 
 /** Breton (Brezhoneg)

@@ -1239,7 +1239,7 @@ $messages['ml'] = array(
 	'expand_templates_remove_comments' => 'അഭിപ്രായങ്ങള്‍ ഒഴിവാക്കുക',
 	'expand_templates_remove_nowiki' => 'ഫലങ്ങളിലെ <nowiki> റ്റാഗുകൾ ഒതുക്കുക',
 	'expand_templates_generate_xml' => 'XML പാര്‍സര്‍ ട്രീ പ്രദര്‍ശിപ്പിക്കുക',
-	'expand_templates_preview' => 'പ്രിവ്യൂ',
+	'expand_templates_preview' => 'എങ്ങിനെയുണ്ടെന്നു കാണുക',
 );
 
 /** Marathi (मराठी)

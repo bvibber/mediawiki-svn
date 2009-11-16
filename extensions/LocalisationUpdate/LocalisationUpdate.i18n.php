@@ -304,10 +304,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'localisationupdate-desc' => 'Mantém as mensagens localizadas tão atualizadas quanto possível',
+	'localisationupdate-desc' => 'Mantém as mensagens localizadas tão actualizadas quanto possível',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
