@@ -357,6 +357,14 @@ $messages['sv'] = array(
 	'wikieditor-toc-hide' => 'Göm innehåll',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'wikieditor-toc-show' => 'విషయసూచికని చూపించు',
+	'wikieditor-toc-hide' => 'విషయసూచికని దాచు',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Vito Genovese

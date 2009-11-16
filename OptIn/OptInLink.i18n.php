@@ -456,6 +456,7 @@ $messages['id'] = array(
  */
 $messages['io'] = array(
 	'optin-try' => 'Probez Beta',
+	'optin-leave' => 'Livez Beta',
 );
 
 /** Icelandic (Íslenska)

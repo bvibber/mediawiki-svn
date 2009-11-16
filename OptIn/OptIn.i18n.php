@@ -2497,8 +2497,15 @@ Terima kasih dan kami menunggu pendapat Anda!',
  * @author Malafaya
  */
 $messages['io'] = array(
+	'optin-title-optedout' => 'Probez Beta',
+	'optin-title-optedin' => 'Livez Beta',
+	'optin-accept-long' => 'Probez Beta',
+	'optin-deny-short' => 'No, danko',
+	'optin-submit-out' => 'Livez Beta',
 	'optin-survey-yes' => 'Yes',
 	'optin-survey-no' => 'No',
+	'optin-survey-answer-whyoptout-other' => 'Altra motivo:',
+	'optin-survey-answer-changes-other' => 'Altra:',
 );
 
 /** Icelandic (Íslenska)
@@ -3159,7 +3166,14 @@ $messages['li'] = array(
  * @author Dakrismeno
  */
 $messages['lmo'] = array(
+	'optin' => "Adesion a l'Iniziativa per l'Usabilità",
+	'optin-desc' => "'L dà la pussibilità ai druvadur de pruvà la beta, i ültem mejurament del pruget.",
+	'optin-title-optedout' => 'Pröva la Beta',
+	'optin-title-optedin' => 'Va fö da Beta',
 	'optin-title-justoptedin' => 'Benvegnüü denter a Beta',
+	'optin-title-justoptedout' => 'Mersì per avè pruaa la Beta',
+	'optin-intro' => "'L pruget d'üsabilità de Wikipedia l'è adree a laurà fort per mejurà la Wikipedia.
+A vöret pruvà la nostra beta?",
 );
 
 /** Lithuanian (Lietuvių)
@@ -3360,8 +3374,29 @@ $messages['ml'] = array(
 	'optin-survey-question-different' => 'താങ്കളെ ബീറ്റയിൽ തന്നെ പിടിച്ചു നിർത്താൻ എന്തെന്തു മാറ്റങ്ങളായിരുന്നു ഞങ്ങൾ വരുത്തേണ്ടിയിരുന്നത്?',
 	'optin-survey-question-feedback' => 'ദയവായി താങ്കളുടെ കുറിപ്പുകളും, ഉത്കണ്ഠകളും, ചിന്തകളും ഞങ്ങളെ അറിയിക്കുക - എല്ലാ അഭിപ്രായങ്ങളും ഉപകാരപ്രദങ്ങളാണ്:',
 	'optin-survey-question-browser' => 'ഏതു ബ്രൌസറാണ് താങ്കള്‍ ഉപയോഗിക്കുന്നത്?',
+	'optin-survey-answer-browser-ie5' => 'ഇന്റർനെറ്റ് എക്സ്‌‌പ്ലോറർ 5',
+	'optin-survey-answer-browser-ie6' => 'ഇന്റർനെറ്റ് എക്സ്‌‌പ്ലോറർ 6',
+	'optin-survey-answer-browser-ie7' => 'ഇന്റർനെറ്റ് എക്സ്‌‌പ്ലോറർ 7',
+	'optin-survey-answer-browser-ie8' => 'ഇന്റർനെറ്റ് എക്സ്‌‌പ്ലോറർ 8',
+	'optin-survey-answer-browser-ff1' => 'ഫയർഫോക്സ് 1',
+	'optin-survey-answer-browser-ff2' => 'ഫയർഫോക്സ് 2',
+	'optin-survey-answer-browser-ff3' => 'ഫയർഫോക്സ് 3',
+	'optin-survey-answer-browser-cb' => 'ഗൂഗിൾ ക്രോം ബീറ്റ',
+	'optin-survey-answer-browser-c1' => 'ഗൂഗിൾ ക്രോം 1',
+	'optin-survey-answer-browser-c2' => 'ഗൂഗിൾ ക്രോം 2',
+	'optin-survey-answer-browser-c3' => 'ഗൂഗിൾ ക്രോം 3',
+	'optin-survey-answer-browser-c4' => 'ഗൂഗിൾ ക്രോം 4',
+	'optin-survey-answer-browser-s3' => 'സഫാരി 3',
+	'optin-survey-answer-browser-s4' => 'സഫാരി 4',
+	'optin-survey-answer-browser-o9' => 'ഓപ്പറ 9',
+	'optin-survey-answer-browser-o9.5' => 'ഓപ്പറ 9.5',
+	'optin-survey-answer-browser-o10' => 'ഓപ്പറ 10',
 	'optin-survey-answer-browser-other' => 'മറ്റ് ബ്രൗസർ:',
 	'optin-survey-question-os' => 'ഏത് ഓപറേറ്റിങ്ങ് സിസ്റ്റമാണ് താങ്കള്‍ ഉപയോഗിക്കുന്നത്?',
+	'optin-survey-answer-os-windows' => 'വിൻഡോസ്',
+	'optin-survey-answer-os-windowsmobile' => 'വിൻഡോസ് മൊബൈൽ',
+	'optin-survey-answer-os-macos' => 'മാക് ഓ.എസ്.',
+	'optin-survey-answer-os-linux' => 'ലിനക്സ്',
 	'optin-survey-answer-os-other' => 'മറ്റ് ഓപറേറ്റിങ് സിസ്റ്റം:',
 	'optin-survey-question-res' => 'താങ്കളുടെ സ്ക്രീന്‍ റെസ‌ല്യൂഷന്‍ എന്താണ്?',
 	'optin-survey-question-changes' => 'ഭാവിയിൽ ബീറ്റയിൽ എന്തു മാറ്റങ്ങൾ ഉണ്ടായിരിക്കാൻ താങ്കൾ ആഗ്രഹിക്കുന്നു (ബാധകമാകുന്ന എല്ലാം തിരഞ്ഞെടുക്കുക)?',

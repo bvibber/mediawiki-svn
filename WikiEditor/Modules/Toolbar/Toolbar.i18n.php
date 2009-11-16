@@ -602,6 +602,7 @@ $messages['ar'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'الصفوف',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'الأعمدة',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'ضمّن صف الترويسة',
+	'wikieditor-toolbar-tool-table-wikitable' => 'سمة ذات حدود',
 	'wikieditor-toolbar-tool-table-sortable' => 'اجعل الجدول قابلا للترتيب',
 	'wikieditor-toolbar-tool-table-preview' => 'عاين',
 	'wikieditor-toolbar-tool-table-insert' => 'أدرج',
@@ -933,6 +934,7 @@ $messages['bg'] = array(
 	'wikieditor-toolbar-tool-link-cancel' => 'Отказване',
 	'wikieditor-toolbar-tool-file-example' => 'Пример.jpg',
 	'wikieditor-toolbar-group-list' => 'Списък',
+	'wikieditor-toolbar-group-size' => 'Размер',
 	'wikieditor-toolbar-tool-newline' => 'Нов ред',
 	'wikieditor-toolbar-tool-table' => 'Таблица',
 	'wikieditor-toolbar-tool-table-example-old' => '-
@@ -950,6 +952,9 @@ $messages['bg'] = array(
 	'wikieditor-toolbar-tool-table-title' => 'Вмъкване на таблица',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Редове',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Колони',
+	'wikieditor-toolbar-tool-table-cancel' => 'Отказване',
+	'wikieditor-toolbar-tool-replace-replace' => 'Заместване с:',
+	'wikieditor-toolbar-tool-replace-close' => 'Отказване',
 	'wikieditor-toolbar-section-characters' => 'Специални символи',
 	'wikieditor-toolbar-characters-page-latin' => 'Латиница',
 	'wikieditor-toolbar-characters-page-ipa' => 'IPA',
@@ -961,9 +966,13 @@ $messages['bg'] = array(
 	'wikieditor-toolbar-section-help' => 'Помощ',
 	'wikieditor-toolbar-help-heading-description' => 'Описание',
 	'wikieditor-toolbar-help-page-format' => 'Форматиране',
+	'wikieditor-toolbar-help-content-italic-description' => 'Курсив',
+	'wikieditor-toolbar-help-content-italic-syntax' => "''Курсивен текст''",
 	'wikieditor-toolbar-help-content-bold-description' => 'Получер',
 	'wikieditor-toolbar-help-content-bold-syntax' => "'''Получер текст'''",
 	'wikieditor-toolbar-help-content-bold-result' => '<strong>Получер текст</strong>',
+	'wikieditor-toolbar-help-content-ilink-description' => 'Вътрешна препратка',
+	'wikieditor-toolbar-help-content-xlink-description' => 'Външна препратка',
 );
 
 /** Bengali (বাংলা)
@@ -1444,6 +1453,8 @@ $messages['bs'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'Arapski',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Hebrejski',
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhala',
+	'wikieditor-toolbar-characters-page-gujarati' => 'Gujarati',
 	'wikieditor-toolbar-section-help' => 'Pomoć',
 	'wikieditor-toolbar-help-heading-description' => 'Opis',
 	'wikieditor-toolbar-help-heading-syntax' => 'Šta upisujete',
@@ -6142,6 +6153,28 @@ $messages['id'] = array(
 	'wikieditor-toolbar-help-content-indent-result' => 'Teks normal<dl><dd>Teks inden<dl><dd>Teks inden</dd></dl></dd></dl>',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'La pagino existas',
+	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'La pagino ne existas',
+	'wikieditor-toolbar-tool-file-example' => 'Exemplo.jpg',
+	'wikieditor-toolbar-tool-heading-1' => 'Nivelo 1',
+	'wikieditor-toolbar-tool-heading-2' => 'Nivelo 2',
+	'wikieditor-toolbar-tool-heading-3' => 'Nivelo 3',
+	'wikieditor-toolbar-tool-heading-4' => 'Nivelo 4',
+	'wikieditor-toolbar-tool-heading-5' => 'Nivelo 5',
+	'wikieditor-toolbar-group-list' => 'Listo',
+	'wikieditor-toolbar-tool-table' => 'Tabelo',
+	'wikieditor-toolbar-characters-page-symbols' => 'Simboli',
+	'wikieditor-toolbar-section-help' => 'Helpo',
+	'wikieditor-toolbar-help-page-link' => 'Ligili',
+	'wikieditor-toolbar-help-page-list' => 'Listi',
+	'wikieditor-toolbar-help-page-file' => 'Arkivi',
+	'wikieditor-toolbar-help-content-signature-description' => 'Signaturo',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Gianfranco
@@ -7022,6 +7055,10 @@ $messages['ksh'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Dat es ene onjöltijje Tittel för en Sigg',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Ben aam Prööfe, ov et di Sigg jitt{{int:ellipsis}}',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'Dä aanjejovve Tittel för en Sigg en onjöltesch.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'Ding <i lang="en">URL</i> schingk obb en Sigg em Wiki sellver ze jon. Wells De ene ääschte Lengk en et Wiki druß maache?',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Ene Lengk en et Wiki',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Ene Lengk uß em Wiki moh ußerhallef',
+	'wikieditor-toolbar-tool-link-empty' => 'Mer han nix faßjehallde för ne Lingk drop ze maache.',
 	'wikieditor-toolbar-tool-file' => 'Enjefösh Dattei',
 	'wikieditor-toolbar-tool-file-example' => 'Beld_Beishpöll.jpeg',
 	'wikieditor-toolbar-tool-reference' => 'Fohßnoht',
@@ -7068,12 +7105,15 @@ $messages['ksh'] = array(
 | 2. Reij, 1. Shpalldt
 | 2. Reij, 2. Shpalldt
 | 2. Reij, 3. Shpalldt',
-	'wikieditor-toolbar-tool-table-example' => 'De $2. Kolommne en de $1. Reij',
-	'wikieditor-toolbar-tool-table-example-header' => 'De $2. Kolommne en de $1. Reij (Kopp)',
+	'wikieditor-toolbar-tool-table-example' => 'Täx en enem Feld en dä Tabäll',
+	'wikieditor-toolbar-tool-table-example-header' => 'Kopp-Täx',
 	'wikieditor-toolbar-tool-table-title' => 'Tabäll ennfööje',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Zeile ov Reije',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Schpallde ov Kolommne',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Donn de Övverscherff jäz dobei',
+	'wikieditor-toolbar-tool-table-wikitable' => 'Maach Linnije öm di Tabäll un zwesche de Felder',
+	'wikieditor-toolbar-tool-table-sortable' => 'Maach, dat mer di Tabäll zoteere kan',
+	'wikieditor-toolbar-tool-table-preview' => '{{int:preview}}',
 	'wikieditor-toolbar-tool-table-insert' => 'Lohß Jonn!',
 	'wikieditor-toolbar-tool-table-cancel' => 'Schloß! Ophüüre!',
 	'wikieditor-toolbar-tool-table-toomany' => 'En Tabäll met mieh wi $1 Pläz kann heh dat Projramm nit en dä Täx enboue.',
@@ -7092,6 +7132,7 @@ $messages['ksh'] = array(
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Doh ham_mer nix jefonge.',
 	'wikieditor-toolbar-tool-replace-success' => '$1 Mohl jet <!--{{PLURAL:$1|Eijmol|$1 Mohl jet|Nix}}--> jetuusch.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Do häs nix aanjejovve, för donoh ze söhke.',
+	'wikieditor-toolbar-tool-replace-invalidregex' => 'Do häs en onjöltijje <i lang="en">regular expression</i> aanjejovve: $1',
 	'wikieditor-toolbar-section-characters' => 'Sönderzeijsche',
 	'wikieditor-toolbar-characters-page-latin' => 'Lateinesch',
 	'wikieditor-toolbar-characters-page-latinextended' => 'Lateinesch met Extras',
@@ -7102,6 +7143,8 @@ $messages['ksh'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'Arabesch',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Hebräjesch',
 	'wikieditor-toolbar-characters-page-telugu' => 'Teluuju',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Singhaleesesch',
+	'wikieditor-toolbar-characters-page-gujarati' => 'Jujaraatesch',
 	'wikieditor-toolbar-section-help' => 'Hülp',
 	'wikieditor-toolbar-help-heading-description' => 'Beschrevve',
 	'wikieditor-toolbar-help-heading-syntax' => 'Wat De schriifs',
@@ -8019,7 +8062,7 @@ $messages['ml'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'നിരകൾ',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'തലക്കുറിയ്ക്കുള്ള വരി ഉൾപ്പെടുത്തുക',
 	'wikieditor-toolbar-tool-table-sortable' => 'പട്ടിക ക്രമപ്പെടുത്താവുന്നതാക്കുക',
-	'wikieditor-toolbar-tool-table-preview' => 'പ്രിവ്യൂ',
+	'wikieditor-toolbar-tool-table-preview' => 'എങ്ങിനെയുണ്ടെന്നു കാണുക',
 	'wikieditor-toolbar-tool-table-insert' => 'ഉൾപ്പെടുത്തുക',
 	'wikieditor-toolbar-tool-table-cancel' => 'റദ്ദാക്കുക',
 	'wikieditor-toolbar-tool-table-toomany' => 'ഇതുപയോഗിച്ച് $1 കളങ്ങളിൽ അധികമുള്ള പട്ടിക ഉൾപ്പെടുത്തുക സാദ്ധ്യമല്ല.',
