@@ -334,9 +334,26 @@ class LqtView {
 		 can temporarily use a random scratch title. It's fine if the title changes
 		 throughout the edit cycle, since the article doesn't exist yet anyways.
 		*/
+		
+		// Check permissions
+		if ( $edit_type == 'new' ) {
+			if ( Thread::canUserPost( $this->user, $this->article ) !== true ) {
+				$this->output->addWikiMsg( 'lqt-protected-newthread' );
+				return;
+			}
+		} elseif ( $edit_type == 'reply' ) {
+			$perm_result = $edit_applies_to->canUserReply( $this->user );
+			if ( $perm_result !== true ) {
+				$msg = "lqt-protected-reply-$perm_result";
+				$this->output->addWikiMsg( $msg );
+				return;
+			}
+		}
 
 		// Check if we actually want a subject, pull the submitted subject, and validate it.
-		$subject_expected = ( $edit_type == 'new' || $thread && $thread->isTopmostThread() );
+		$subject_expected = ( $edit_type == 'new' ||
+						$thread && $thread->isTopmostThread() ) &&
+					$edit_type != 'summarize';
 		$subject = $this->request->getVal( 'lqt_subject_field', '' );
 		$valid_subject = true;
 		
@@ -348,8 +365,8 @@ class LqtView {
 		} elseif ( !$thread ) {
 			$t = null;
 			
-			$subjectOk = Thread::validateSubject( $subject, &$t,
-							$edit_applies_to, $this->article );
+			$subjectOk = Thread::validateSubject( $subject, $t,
+						$edit_applies_to, $this->article );
 			if ( ! $subjectOk ) {
 				$subject = false;
 			}
@@ -678,15 +695,17 @@ class LqtView {
 							'enabled' => true, 'tooltip' => $label );
 		}
 		
-		$commands['reply'] = array(
-			'label' => wfMsgExt( 'lqt_reply', 'parseinline' ),
-			 'href' => $this->talkpageUrl( $this->title, 'reply', $thread,
-				true /* include fragment */, $this->request ),
-			 'enabled' => true,
-			 'icon' => 'reply.png',
-			 'showlabel' => 1,
-			 'tooltip' => wfMsg( 'lqt_reply' )
-		);
+		if ( $thread->canUserReply( $this->user ) === true ) {
+			$commands['reply'] = array(
+				'label' => wfMsgExt( 'lqt_reply', 'parseinline' ),
+				 'href' => $this->talkpageUrl( $this->title, 'reply', $thread,
+					true /* include fragment */, $this->request ),
+				 'enabled' => true,
+				 'icon' => 'reply.png',
+				 'showlabel' => 1,
+				 'tooltip' => wfMsg( 'lqt_reply' )
+			);
+		}
 		
 		$commands['link'] = array(
 			'label' => wfMsgExt( 'lqt_permalink', 'parseinline' ),
@@ -725,6 +744,22 @@ class LqtView {
 			                     'href' => $move_href,
 			                     'enabled' => true );
 		}
+		
+		if ( $this->user->isAllowed( 'protect' ) ) {
+			$protect_href = $thread->title()->getFullURL( 'action=protect' );
+			
+			// Check if it's already protected
+			if ( !$thread->title()->isProtected() ) {
+				$label = wfMsg( 'protect' );
+			} else {
+				$label = wfMsg( 'unprotect' );
+			}
+			
+			$commands['protect'] = array( 'label' => $label,
+							'href' => $protect_href,
+							'enabled' => true, );
+		}
+		
 		if ( !$this->user->isAnon() && !$thread->title()->userIsWatching() ) {
 			$commands['watch'] = array( 'label' => wfMsg( 'watch' ),
 			                     'href' => self::permalinkUrlWithQuery( $thread, 'action=watch' ),
@@ -757,18 +792,21 @@ class LqtView {
 		global $wgOut;
 		global $wgScriptPath, $wgStyleVersion;
 		global $wgEnableJS2system;
+		global $wgLiquidThreadsExtensionName;
 
 		$wgOut->addInlineScript( 'var wgLqtMessages = ' . self::exportJSLocalisation() . ';' );
 		
+		$basePath = "$wgScriptPath/extensions/$wgLiquidThreadsExtensionName";
+		
 		if ( !$wgEnableJS2system ) {
-			$wgOut->addScriptFile( "{$wgScriptPath}/extensions/LiquidThreads/jquery/js2.combined.js" );
-			$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/LiquidThreads/jquery/jquery-ui-1.7.2.css" );
+			$wgOut->addScriptFile( "$basePath/jquery/js2.combined.js" );
+			$wgOut->addExtensionStyle( "$basePath/jquery/jquery-ui-1.7.2.css" );
 		}
 		
-		$wgOut->addScriptFile( "{$wgScriptPath}/extensions/LiquidThreads/jquery/jquery.autogrow.js" );
+		$wgOut->addScriptFile( "$basePath/jquery/jquery.autogrow.js" );
 		
-		$wgOut->addScriptFile( "{$wgScriptPath}/extensions/LiquidThreads/lqt.js" );
-		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/LiquidThreads/lqt.css?{$wgStyleVersion}" );
+		$wgOut->addScriptFile( "$basePath/lqt.js" );
+		$wgOut->addExtensionStyle( "$basePath/lqt.css?{$wgStyleVersion}" );
 		
 		self::$stylesAndScriptsDone = true;
 	}

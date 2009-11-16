@@ -28,6 +28,8 @@ class ApiThreadAction extends ApiBase {
 			'reason' => 'If applicable, the reason/summary for the action',
 			'newparent' => 'If merging a thread, the ID or title for its new parent',
 			'text' => 'The text of the post to create',
+			'render' => 'If set, on post/reply methods, the top-level thread '.
+				'after the change will be rendered and returned in the result.',
 		);
 	}
 	
@@ -51,6 +53,7 @@ class ApiThreadAction extends ApiBase {
 			'reason' => null,
 			'newparent' => null,
 			'text' => null,
+			'render' => null,
 		);
 	}
 	
@@ -277,6 +280,12 @@ class ApiThreadAction extends ApiBase {
 		}
 		$talkpage = new Article( $talkpageTitle );
 		
+		// Check if we can post.
+		if ( Thread::canUserPost( $wgUser, $talkpage ) !== true ) {
+			$this->dieUsage( 'You cannot post to the specified talkpage, '.
+				'because it is protected from new posts', 'talkpage-protected' );
+			return;
+		}
 		
 		// Validate subject, generate a title
 		if ( empty( $params['subject'] ) ) {
@@ -305,7 +314,7 @@ class ApiThreadAction extends ApiBase {
 		$text = $params['text'];
 		
 		// Generate or pull summary
-		$summary = wfMsg( 'lqt-newpost-summary', $subject );
+		$summary = wfMsgForContent( 'lqt-newpost-summary', $subject );
 		if ( !empty( $params['reason'] ) ) {
 			$summary = $params['reason'];
 		}
@@ -364,6 +373,10 @@ class ApiThreadAction extends ApiBase {
 			'max-lag' => $maxLag,
 		);
 		
+		if ( !empty( $params['render'] ) ) {
+			$result['html'] = self::renderThreadPostAction( $thread );
+		}
+		
 		$result = array( 'thread' => $result );
 		
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
@@ -384,6 +397,15 @@ class ApiThreadAction extends ApiBase {
 		}
 		$replyTo = array_pop( $threads );
 		
+		// Check if we can reply to that thread.
+		$perm_result = $replyTo->canUserReply( $wgUser );
+		if ( $perm_result !== true ) {
+			$this->dieUsage( "You cannot reply to this thread, because the ".
+				$perm_result." is protected from replies.",
+				$perm_result.'-protected' );
+			return;
+		}
+		
 		// Validate text parameter
 		if ( empty( $params['text'] ) ) {
 			$this->dieUsage( 'You must include text in your post', 'no-text' );
@@ -393,7 +415,7 @@ class ApiThreadAction extends ApiBase {
 		$text = $params['text'];
 		
 		// Generate/pull summary
-		$summary = wfMsg( 'lqt-reply-summary', $replyTo->subject(),
+		$summary = wfMsgForContent( 'lqt-reply-summary', $replyTo->subject(),
 				$replyTo->title()->getPrefixedText() );
 		
 		if ( !empty( $params['reason'] ) ) {
@@ -467,9 +489,35 @@ class ApiThreadAction extends ApiBase {
 			'max-lag' => $maxLag,
 		);
 		
+		if ( !empty( $params['render'] ) ) {
+			$result['html'] = self::renderThreadPostAction( $thread );
+		}
+		
 		$result = array( 'thread' => $result );
 		
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+	
+	static function renderThreadPostAction( $thread ) {
+		$thread = $thread->topmostThread();
+		
+		// Set up OutputPage
+		global $wgOut, $wgUser, $wgRequest;
+		$oldOutputText = $wgOut->getHTML();
+		$wgOut->clearHTML();
+
+		// Setup
+		$article = $thread->root();
+		$title = $article->getTitle();
+		$view = new LqtView( $wgOut, $article, $title, $wgUser, $wgRequest );
+		
+		$view->showThread( $thread );
+
+		$result = $wgOut->getHTML();
+		$wgOut->clearHTML();
+		$wgOut->addHTML( $oldOutputText );
+		
+		return $result;
 	}
 	
 	public function actionSetSubject( $threads, $params ) {

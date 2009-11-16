@@ -9,10 +9,13 @@ class TalkpageView extends LqtView {
 		unset( $content_actions['edit'] );
 		unset( $content_actions['viewsource'] );
 		unset( $content_actions['delete'] );
-		
-		$thisTitle = $this->article->getTitle();
-		$history_url = $thisTitle->getFullURL( 'lqt_method=talkpage_history' );
-		$content_actions['history']['href'] = $history_url;
+
+		# Protection against non-SkinTemplate skins
+		if ( isset( $content_actions['history'] ) ) {
+			$thisTitle = $this->article->getTitle();
+			$history_url = $thisTitle->getFullURL( 'lqt_method=talkpage_history' );
+			$content_actions['history']['href'] = $history_url;
+		}
 
 		return true;
 	}
@@ -30,7 +33,7 @@ class TalkpageView extends LqtView {
 		wfLoadExtensionMessages( 'LiquidThreads' );
 		// If $article_text == "", the talkpage was probably just created
 		// when the first thread was posted to make the links blue.
-		if ( $article->exists() && $article->getContent() ) {
+		if ( $article->exists() ) {
 			$html = '';
 			
 			$article->view();
@@ -228,14 +231,18 @@ class TalkpageView extends LqtView {
 
 		$talkpageHeader = '';
 		
-		$newThreadText = wfMsgExt( 'lqt_new_thread', 'parseinline' );
-		$newThreadLink = $sk->link( $this->title, $newThreadText,
-									array( ),
-									array( 'lqt_method' => 'talkpage_new_thread' ),
-									array( 'known' ) );
-									
-		$talkpageHeader .= Xml::tags( 'strong', array( 'class' => 'lqt_start_discussion' ),
-										$newThreadLink );
+		if ( Thread::canUserPost( $this->user, $this->article ) ) {
+			$newThreadText = wfMsgExt( 'lqt_new_thread', 'parseinline' );
+			$newThreadLink = $sk->link( $this->title, $newThreadText,
+							array( ),
+							array( 'lqt_method' => 'talkpage_new_thread' ),
+							array( 'known' ) );
+										
+			$talkpageHeader .= Xml::tags( 'strong',
+						array( 'class' => 'lqt_start_discussion' ),
+						$newThreadLink );			
+		}
+					
 		$talkpageHeader .= $this->getSearchBox();
 		$talkpageHeader .= $this->showTalkpageViewOptions( $article );
 		$talkpageHeader = Xml::tags( 'div', array( 'class' => 'lqt-talkpage-header' ),
@@ -262,7 +269,8 @@ class TalkpageView extends LqtView {
 			$html .= Xml::element( 'br', array( 'style' => 'clear: both;' ) );
 			$html .= $this->getTOC( $threads );
 		} else {
-			$html .= wfMsgExt( 'lqt-no-threads', 'parseinline' );
+			$html .= Xml::tags( 'div', array( 'class' => 'lqt-no-threads' ),
+					wfMsgExt( 'lqt-no-threads', 'parseinline' ) );
 		}
 		
 		$html .= $pager->getNavigationBar();
@@ -450,8 +458,8 @@ class LqtDiscussionPager extends IndexPager {
 		$disabledTexts = array();
 		foreach ( $labels as $type => $label ) {
 			$msgLabel = wfMsgHtml( $label );
-			$linkTexts[$type] = "<img src=\"$path/{$images[$type]}\" alt=\"$msgLabel\"/><br/>$msgLabel";
-			$disabledTexts[$type] = "<img src=\"$path/{$disabledImages[$type]}\" alt=\"$msgLabel\"/><br/>$msgLabel";
+			$linkTexts[$type] = "<img src=\"$path/{$images[$type]}\" alt=\"$msgLabel\"/><br />$msgLabel";
+			$disabledTexts[$type] = "<img src=\"$path/{$disabledImages[$type]}\" alt=\"$msgLabel\"/><br />$msgLabel";
 		}
 		$links = $this->getPagingLinks( $linkTexts, $disabledTexts );
 
