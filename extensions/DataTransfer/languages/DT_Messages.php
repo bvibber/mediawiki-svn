@@ -883,6 +883,7 @@ $messages['id'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'dt_xml_template' => 'Shablono',
 	'dt_xml_title' => 'Titulo',
 );
 

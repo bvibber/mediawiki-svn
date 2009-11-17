@@ -1916,6 +1916,7 @@ $messages['io'] = array(
 	'contribstats-value-from' => 'Inter $1 - $2',
 	'contribstats-value-over' => 'Plu kam $1',
 	'contribstats-week' => 'Semano',
+	'contribstats-template' => 'Shablono',
 	'fundraiserstats-date' => 'Dato',
 	'fundraiserstats-day' => 'Dio $1 di $2',
 );
@@ -2726,6 +2727,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -2762,6 +2764,17 @@ $messages['nn'] = array(
 	'contribstats-value-under' => 'Under $1',
 	'contribstats-value-from' => 'Frå $1–$2',
 	'contribstats-value-over' => 'Over $1',
+	'contributiontrackingstatistics' => 'Gåvestatistikk',
+	'contribstats-day-totals' => 'Totalt for dagen',
+	'contribstats-week' => 'Veke',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Totalt denne veka|Vekesummar for dei seinaste $1 vekene}}',
+	'contribstats-clicks' => 'Klikk',
+	'contribstats-donations' => 'Gåver',
+	'contribstats-conversion' => 'Konverteringsgrad (%)',
+	'contribstats-template' => 'Mal',
+	'contribstats-nodata' => 'Ingen data oppgjeve',
+	'contribstats-donatepage' => 'Side for å gje gåver',
+	'contribstats-average' => 'Gjennomsnitt',
 	'fundraiserstatistics' => 'Innsamlingsstatistikk',
 	'fundraiserstats-date' => 'Dato',
 	'fundraiserstats-day' => 'Dag $1 av $2',

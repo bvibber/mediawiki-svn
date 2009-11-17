@@ -796,6 +796,20 @@ $messages['lfn'] = array(
 	'lookupuser-email' => 'Eposta: [[Special:EmailUser/$2|$1]]',
 );
 
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
+$messages['lmo'] = array(
+	'lookupuser-nonexistent' => "Erur: 'stu druvadur l'esist mía",
+	'lookupuser-authenticated' => 'utenticaa del: $1',
+	'lookupuser-not-authenticated' => 'mía utenticaa',
+	'lookupuser-id' => 'ID del druvadur: <tt>#$1</tt>',
+	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'mía furnii',
+	'lookupuser-realname' => 'Nom vér: $1',
+	'lookupuser-registration' => 'Registraa dal: $1',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Tomasdd
  */

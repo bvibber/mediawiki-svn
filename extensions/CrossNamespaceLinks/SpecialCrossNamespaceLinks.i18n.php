@@ -54,6 +54,13 @@ $messages['ar'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|وصلة|وصلات}} ل $3',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'crossnamespacelinks' => 'ܐܣܘܪ̈ܐ ܡܢ ܚܩܠܬ̈ܐ ܡܫܚܠܦܬ̈ܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II

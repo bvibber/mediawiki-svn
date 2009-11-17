@@ -88,6 +88,15 @@ $messages['ar'] = array(
 	'contributors-nosuchpage' => 'الصفحة $1 غير موجودة.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'contributors' => 'ܫܘܬܦܢ̈ܐ',
+	'contributors-submit' => 'ܚܘܝ',
+	'contributors-others' => 'ܘ {{PLURAL:$1|ܚܕ ܐܚܪܢܐ|$1 ܐܚܪ̈ܢܐ}}',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

@@ -29,6 +29,13 @@ $messages['be-tarask'] = array(
 	'wikieditor-highlight-preference' => 'Уключыць падсьветку сынтаксісу пад час рэдагаваньня',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'wikieditor-highlight-preference' => 'সম্পাদনার সময় সিন্ট্যাক্স দৃষ্টিগোচরকরণ সক্রিয় করো',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -167,6 +174,13 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'wikieditor-highlight-preference' => 'Activar la coloracion sintaxica al moment de la modificacion dins la fenèstra',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'wikieditor-highlight-preference' => 'Włącz kolorowanie składni podczas edycji',
 );
 
 /** Piedmontese (Piemontèis)

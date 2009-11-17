@@ -79,6 +79,14 @@ $messages['be-tarask'] = array(
 	'right-forcepreviewexempt' => 'магчымасьць захаваньня старонак без папярэдняга прагляду',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'forcepreview' => 'পাতা সংরক্ষণ (প্রথমে প্রাকদর্শন ব্যবহার করুন)',
+	'forcepreview-desc' => 'সুবিধাবঞ্চিত ব্যবহারকারীদের জন্য জোড়পূর্বক প্রাকদর্শন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

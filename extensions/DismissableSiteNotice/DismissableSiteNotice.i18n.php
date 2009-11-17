@@ -420,6 +420,13 @@ $messages['id'] = array(
 	'sitenotice-desc' => 'Memungkinkan pengguna untuk menutup pengumuman situs',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'sitenotice_close' => 'celar',
+);
+
 /** Icelandic (Íslenska) */
 $messages['is'] = array(
 	'sitenotice_close' => 'fela',

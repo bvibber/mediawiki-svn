@@ -105,6 +105,15 @@ $messages['bg'] = array(
 	'languageselector' => 'Език',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'languageselector' => 'ভাষা',
+	'languageselector-desc' => 'প্রতি পাতায় ভাষা নির্বাচক, পরিদর্শকের জন্যেও',
+	'languageselector-setlang' => 'স্থাপন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

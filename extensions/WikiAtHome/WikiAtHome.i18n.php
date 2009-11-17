@@ -955,8 +955,14 @@ $messages['nn'] = array(
 	'wah-transcode-working' => 'Videoen vert arbeidd med, ver venleg og prøv igjen seinare',
 	'wah-transcode-fail' => 'Kunde ikkje konvertera denne fila.',
 	'wah-javascript-off' => 'Du må ha JavaScript aktivert for kunna delta i Wiki@Home',
+	'wah-menu-stats' => 'Statistikk',
+	'wah-lookingforjob' => 'Ser etter eit oppdrag ...',
 	'wah-start-on-visit' => 'Start opp Wiki@Home kvar gong eg vitjar denne nettstaden.',
 	'wah-nojobfound' => 'Ingen jobb funne. Prøver igjen om $1.',
+	'wah-notoken-login' => 'Er du logga inn? Om ikkje, ver venleg og logg inn først.',
+	'wah-downloading' => 'Nedlasting av fila <i>$1%</i>  er ferdig',
+	'wah-uploadfail' => 'Opplastinga mislukkast',
+	'wah-doneuploading' => 'Opplastinga er ferdig. Takk for bidraget ditt.',
 );
 
 /** Occitan (Occitan)

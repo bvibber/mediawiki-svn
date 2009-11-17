@@ -69,6 +69,13 @@ $messages['ar'] = array(
 	'contrib-tracking-button' => 'استمر',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'contrib-tracking-error' => 'ܦܘܕܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

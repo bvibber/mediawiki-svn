@@ -105,6 +105,14 @@ $messages['ar'] = array(
 	'right-edituser-exempt' => 'لا يمكن تعديل تفضيلاتهم بواسطة الآخرين',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'edituser-username' => 'ܫܡܐ',
+	'edituser-dosearch' => 'ܒܨܝ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

@@ -1301,6 +1301,14 @@ $messages['bg'] = array(
 	'mv_search_or' => 'или',
 	'mv_category' => 'категория',
 	'mv_remove_filter' => 'премахване на филтър',
+	'mv_other_options' => 'Други настройки',
+	'mv_days' => '$1 {{PLURAL:$1|ден|дни}}',
+	'mv_hours' => '$1 {{PLURAL:$1|час|часа}}',
+	'mv_hours_singular' => '1 час',
+	'mv_minutes' => '$1 {{PLURAL:$1|минута|минути}}',
+	'mv_minutes_singular' => '1 минута',
+	'mv_seconds' => '$1 {{PLURAL:$1|секунда|секунди}}',
+	'mv_seconds_singular' => '1 секунда',
 	'mv_mang_layers' => 'Управление на слоевете',
 );
 

@@ -99,6 +99,15 @@ $messages['ar'] = array(
 	'countedits-nocontribs' => 'لا يوجد مساهمون في هذه الويكي.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'countedits-username' => 'ܫܡܐ ܕܡܦܠܚܢܐ:',
+	'countedits-ok' => 'ܛܒ',
+	'countedits-resultheader' => 'ܦܠܛ̈ܐ ܕ $1',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II
@@ -1205,6 +1214,23 @@ $messages['sah'] = array(
 	'countedits-resulttext' => '$1 $2 {{PLURAL:$2|биир көннөрүүлээх|көннөрүүнү}} оҥорбут',
 	'countedits-mostactive' => 'Саамай элбэх көннөрүүнү оҥорбут кыттааччылар',
 	'countedits-nocontribs' => 'Бу биикигэ көннөрүү оҥоһуллубатах.',
+);
+
+/** Sinhala (සිංහල)
+ * @author චතුනි අලහප්පෙරුම
+ */
+$messages['si'] = array(
+	'countedits' => 'සංස්කරණයන් ගණින්න',
+	'countedits-desc' => 'පරිශීලක සංස්කරණ ගැණ මුදුන්-දසය දායක ලැයිස්තුව සපයන [[Special:CountEdits|විශේෂ පිටුව]]',
+	'countedits-warning' => "'''අවවාදයයි:''' පොතක් එහි කවරයෙන් විනිශ්චය නොකරන්න.
+දායකයන් ඔවුන්ගේ සංස්කරණ ගණනයෙන් විනිශ්චය නොකරන්න.",
+	'countedits-username' => 'පරිශීලක_නම:',
+	'countedits-ok' => 'හරි',
+	'countedits-nosuchuser' => '$1 නමැති පරිශීලකයෙක් නොමැත.',
+	'countedits-resultheader' => '$1 සඳහා ප්‍රතිඵල',
+	'countedits-resulttext' => '$1 විසින් {{PLURAL:$2| එක් සංස්කරණයක්|සංස්කරණ $2 ගණනක්}} සිදු කර ඇත',
+	'countedits-mostactive' => 'වඩාත් සක්‍රීය දායකයන්',
+	'countedits-nocontribs' => 'මෙම විකියට කිසිදු දායකත්වයක් සිදු කර නොමැත.',
 );
 
 /** Slovak (Slovenčina)

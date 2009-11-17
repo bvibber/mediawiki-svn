@@ -43,6 +43,8 @@ $messages['ar'] = array(
  */
 $messages['be-tarask'] = array(
 	'wikieditor-toc-preference' => 'Дазволіць навігацыйныя табліцы зьместу',
+	'wikieditor-toc-show' => 'Паказаць зьмест',
+	'wikieditor-toc-hide' => 'Схаваць зьмест',
 );
 
 /** Bengali (বাংলা)
@@ -50,6 +52,8 @@ $messages['be-tarask'] = array(
  */
 $messages['bn'] = array(
 	'wikieditor-toc-preference' => 'দিকদর্শী সূচী সক্রিয় করো',
+	'wikieditor-toc-show' => 'বিষয়বস্তু দেখাও',
+	'wikieditor-toc-hide' => 'বিষয়বস্তু আড়াল করো',
 );
 
 /** Breton (Brezhoneg)
@@ -285,6 +289,8 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'wikieditor-toc-preference' => 'Włącz umożliwiający nawigację spis treści',
+	'wikieditor-toc-show' => 'Pokaż zawartość',
+	'wikieditor-toc-hide' => 'Ukryj zawartość',
 );
 
 /** Piedmontese (Piemontèis)

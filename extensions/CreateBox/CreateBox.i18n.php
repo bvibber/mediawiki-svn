@@ -53,6 +53,13 @@ $messages['ar'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'createbox-create' => 'ܒܪܝ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

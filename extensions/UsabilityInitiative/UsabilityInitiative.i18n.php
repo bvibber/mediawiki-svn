@@ -69,6 +69,7 @@ $messages['bg'] = array(
 $messages['bn'] = array(
 	'usabilityinitiative' => 'ইউজাবিলিটি ইনিসিয়েটিভ',
 	'usabilityinitiative-desc' => 'মিডিয়াউইকির ব্যবহারযোগ্যতা বাড়াতে উইকিপিডিয়া ইউজাবিলিটি ইনিসিয়েটিভের বৈশিষ্ট্যগুলোর উন্নয়ন করেছে',
+	'prefs-experimental' => 'পরীক্ষামূলক বৈশিষ্ট্যাবলী',
 );
 
 /** Breton (Brezhoneg)
@@ -406,6 +407,13 @@ $messages['nl'] = array(
 	'usabilityinitiative' => 'Bruikbaarheidsinitiatief',
 	'usabilityinitiative-desc' => 'Functionaliteit die door het Wikipedia Bruikbaarheidsinitiatief is ontwikkeld ter verbetering van de bruikbaarheid van MediaWiki',
 	'prefs-experimental' => 'Experimentele functionaliteit',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'prefs-experimental' => 'Eksperimentelle funksjonar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -425,6 +425,13 @@ Anonieme gebruikers krijgen een automatisch aangemaakte gebruikersnaam die later
 	'right-webchat' => 'Maakt het mogelijk [[Special:WebChat|webchat]] te gebruiken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'webchat-desc' => 'Legg til ei [[Special:WebChat|spesialside]] for å samtala i realtid med andre wikibrukarar',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -579,6 +586,14 @@ Miše tulda čatha, paigat "Connect"-kingitim.
 Ku tö olet sistemas, teiden nikneim mugažo ozutadas.
 Anonimižile kävutajile anttas avtomatižikš uz\' nikneim, no se sab toižetada.',
 	'right-webchat' => 'Kävuatada [[Special:WebChat|verkčat]]',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'webchat' => 'Chat trên Web',
+	'right-webchat' => '[[Special:WebChat|Chat trên Web]]',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

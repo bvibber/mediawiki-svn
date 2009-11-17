@@ -122,9 +122,30 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'wikieditor-preview-tab-edit' => 'Редактиране',
 	'wikieditor-preview-loading' => 'Зареждане...',
 	'wikieditor-preview-button-cancel' => 'Отказване',
+	'wikieditor-preview-savedialog-minor' => 'Малка промяна',
+	'wikieditor-preview-savedialog-watch' => 'Наблюдаване на страницата',
 	'wikieditor-preview-savedialog-publish' => 'Публикуване',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'wikieditor-preview-preference' => 'পাশাপাশি প্রাকদর্শন সক্রিয় করো',
+	'wikieditor-preview-tab-edit' => 'সম্পাদনা',
+	'wikieditor-preview-tab-preview' => 'প্রাকদর্শন',
+	'wikieditor-preview-loading' => 'লোডিং...',
+	'wikieditor-preview-button-publish' => 'প্রকাশ করো',
+	'wikieditor-preview-button-cancel' => 'বাতিল',
+	'wikieditor-preview-savedialog-title' => '{{SITENAME}} এ প্রকাশ করো',
+	'wikieditor-preview-savedialog-summary' => 'সম্পাদনা সারাংশ (আপনি কি পরিবর্তন করেছেন তা অল্প কথায় লিখুন):',
+	'wikieditor-preview-savedialog-minor' => 'অনুল্লেখ্য সম্পাদনা',
+	'wikieditor-preview-savedialog-watch' => 'এই পাতাটি নজরে রাখো',
+	'wikieditor-preview-savedialog-publish' => 'প্রকাশ করো',
+	'wikieditor-preview-savedialog-goback' => 'ফিরে যাও',
 );
 
 /** Breton (Brezhoneg)
@@ -156,7 +177,9 @@ $messages['bs'] = array(
 	'wikieditor-preview-button-publish' => 'Objavi',
 	'wikieditor-preview-button-cancel' => 'Odustani',
 	'wikieditor-preview-savedialog-minor' => 'mala izmjena',
+	'wikieditor-preview-savedialog-watch' => 'Prati ovu stranicu',
 	'wikieditor-preview-savedialog-publish' => 'Objavi',
+	'wikieditor-preview-savedialog-goback' => 'Vrati se nazad',
 );
 
 /** Czech (Česky)
@@ -553,6 +576,13 @@ $messages['nl'] = array(
 	'wikieditor-preview-savedialog-watch' => 'Deze pagina volgen',
 	'wikieditor-preview-savedialog-publish' => 'Publiceren',
 	'wikieditor-preview-savedialog-goback' => 'Terug',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'wikieditor-preview-savedialog-watch' => 'Overvak denne sida',
 );
 
 /** Occitan (Occitan)

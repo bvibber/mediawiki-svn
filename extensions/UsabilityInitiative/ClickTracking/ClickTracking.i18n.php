@@ -137,6 +137,13 @@ $messages['be-tarask'] = array(
 	'ct-update-table' => 'Абнавіць табліцу',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'ct-and' => 'и',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -154,6 +161,11 @@ $messages['bn'] = array(
 	'ct-beginner' => 'নবাগত',
 	'ct-intermediate' => 'মাধ্যমিক',
 	'ct-expert' => 'দক্ষ',
+	'ct-date-range' => 'তারিখের পরিসীমা',
+	'ct-editing' => 'বর্তমানে সম্পাদনা করছেন:',
+	'ct-anon-users' => 'বেনামী ব্যবহারকারী',
+	'ct-user-contribs' => 'মোট ব্যবহাকারী অবদান',
+	'ct-and' => 'এবং',
 );
 
 /** Breton (Brezhoneg)
@@ -967,6 +979,7 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'ct-start-date' => 'Startdato (ÅÅÅÅMMDD)',
 	'ct-expert' => 'Ekspert',
+	'ct-date-range' => 'Datoer som visast',
 	'ct-anon-users' => 'Anonyme brukarar',
 );
 
@@ -1396,6 +1409,13 @@ $messages['vi'] = array(
 	'ct-user-span' => 'Số lần đóng góp trong thời gian',
 	'ct-and' => 'và',
 	'ct-update-table' => 'Cập nhật bảng',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'ct-and' => 'e',
 );
 
 /** Yue (粵語)

@@ -277,14 +277,14 @@ Parameters:
 	'wikilog-submit' => '{{Identical|Submit}}',
 	'wikilog-preview' => 'This word is a verb
 {{Identical|Preview}}',
-	'wikilog-edit-lc' => 'Verb
+	'wikilog-edit-lc' => 'This word is a verb
 {{Identical|Edit}}',
-	'wikilog-reply-lc' => 'Verb
+	'wikilog-reply-lc' => 'This word is a verb.
 {{Identical|Reply}}',
-	'wikilog-delete-lc' => 'Verb
+	'wikilog-delete-lc' => 'This word is a verb
 {{Identical|Delete}}',
-	'wikilog-approve-lc' => 'Verb',
-	'wikilog-reject-lc' => 'Verb',
+	'wikilog-approve-lc' => 'This word is a verb',
+	'wikilog-reject-lc' => 'This word is a verb',
 	'wikilog-page-lc' => '"Page" is a noun.
 {{Identical|Page}}',
 	'wikilog-history-lc' => 'Noun
@@ -440,6 +440,21 @@ $messages['bg'] = array(
 	'wikilog-reject-lc' => 'отказване',
 	'wikilog-page-lc' => 'страница',
 	'wikilog-history-lc' => 'история',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'wikilog-new-item-go' => 'তৈরি',
+	'wikilog-item-name' => 'নিবন্ধের নাম:',
+	'wikilog-published' => 'প্রকাশিত',
+	'wikilog-updated' => 'হালনাগাদকৃত',
+	'wikilog-draft' => 'খসড়া',
+	'wikilog-authors' => 'লেখক',
+	'wikilog-title' => 'শিরোনাম',
+	'wikilog-comments' => 'মন্তব্য',
+	'wikilog-draft-title-mark' => '(খসড়া)',
 );
 
 /** Breton (Brezhoneg)
@@ -1984,19 +1999,32 @@ $messages['jv'] = array(
  */
 $messages['ksh'] = array(
 	'wikilog-desc' => 'Brängk Müjjeleschkeite för et Blogge en et Wiki, un schavv_esu e Wiki-Blog-Jemölsch.',
+	'wikilog-auto' => '{{int:Wikilog-wikilog}} (automattesch)',
+	'right-wl-postcomment' => 'Aanmärkunge zoh Atikelle vum {{int:Wikilog-wikilog}} afjävve',
+	'right-wl-moderation' => 'De Aanmörkunge zoh Atikelle vum {{int:Wikilog-wikilog}} modderiere',
+	'wikilog' => '{{int:Wikilog-wikilog}} Blog',
+	'wikilog-specialwikilog' => '{{int:Wikilog-wikilog}}',
+	'wikilog-log-pagename' => 'et Logboch met dem {{int:Wikilog-wikilog}} singe Akßjuhne',
+	'wikilog-log-pagetext' => 'Heh dronger kütt en Leß met dem {{int:Wikilog-wikilog}} sing Akßjuhne.',
 	'wikilog-log-cmt-approve' => 'hät di Aanmärkung [[$1]] zohjelohße',
 	'wikilog-log-cmt-reject' => 'hät di Aanmärkung [[$1]] affjelähnt',
-	'wikilog-post-count-published' => 'Mer han {{PLURAL:$1|eine öffentlesche Beidraach|$1 öffentlesche Beidrääsch|keine öffentlesche Beidrääsch}} en heh dämm Wikilog,',
+	'wikilog-log-cmt-rejdel' => 'Afjelehnte Aanmärkung em {{int:Wikilog-wikilog}} fum [[Special:Contributions/$1|$1]]',
+	'wikilog-tab' => '{{int:Wikilog-wikilog}}',
+	'wikilog-tab-title' => 'Em {{int:Wikilog-wikilog}} sing Akßjuhne',
+	'wikilog-information' => 'Infomazjuhne övver {{int:Wikilog-wikilog}}',
+	'wikilog-post-count-published' => 'Mer han {{PLURAL:$1|eine öffentlesche Beidraach|$1 öffentlesche Beidrääsch|keine öffentlesche Beidrääsch}} en heh dämm {{int:Wikilog-wikilog}},',
 	'wikilog-post-count-drafts' => 'Et {{PLURAL:$1|es noch eine nit veröffentleschte Beidraach (Äntworf) do|sinn_er $1 Beidrääch (Äntwörf) noch nit öffentlesch jemaat|sinn_er kein Beidrääch (Äntwörf) noh_nit öffentlesch jemaat}}.',
 	'wikilog-post-count-all' => 'Ensjesamp ham_mer {{PLURAL:$1|eine Beidraach|$1 Beidrääch|kein Beidrääch}}.',
-	'wikilog-new-item' => 'Ene neue Wikilog Beijdraach aanlääje',
+	'wikilog-new-item' => 'Ene neue {{int:Wikilog-wikilog}} Beijdraach aanlääje',
 	'wikilog-new-item-go' => 'Lohß Jonn!',
 	'wikilog-item-name' => 'Dä Name för dä Beidraach:',
 	'wikilog-published' => 'Öffentlesch jemaat',
 	'wikilog-updated' => 'Op der neue Schtand jebraat',
 	'wikilog-draft' => 'Äntworf',
 	'wikilog-authors' => 'Schriiver',
+	'wikilog-wikilog' => 'Wikilog',
 	'wikilog-title' => 'Övverschreff',
+	'wikilog-actions' => 'Wat mer maache kann',
 	'wikilog-comments' => 'Aanmärkunge',
 	'wikilog-replies' => 'Antwoote',
 	'wikilog-view-archives' => 'Aschiive',
@@ -2016,7 +2044,11 @@ $messages['ksh'] = array(
 	'wikilog-has-comments' => '{{PLURAL:$1|ein Aanmärkung|$1 Aanmärkunge|kein Aanmärkunge}}',
 	'wikilog-item-brief-header' => ': <i><small>vum $5, vum [[$1|$2]] aam $6, $7.</small></i>',
 	'wikilog-item-more' => '[[$3|→&nbsp;wigger lässe{{int:ellipsis}}]]',
-	'wikilog-edit-fieldset-legend' => 'Ennschtellunge för Wikilog:',
+	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|{{ns:talk}}]])',
+	'wikilog-edit-fieldset-legend' => 'Ennschtellunge för {{int:Wikilog-wikilog}}:',
+	'wikilog-edit-signpub' => 'Donn heh dä Atikel ongerschriive un öffentlesch maache',
+	'wikilog-edit-signpub-tooltip' => 'Sorresch doför, dat heh dä Atikel ongerschrevve weedt, un öffentlesch jemaat weedt.
+Donn heh keij Höhksche maache, öm en als ene Äntworf faßhallde.',
 	'wikilog-comment-by-user' => 'Aanmärkung vum $1 ($2)',
 	'wikilog-comment-by-anon' => 'Aanmärkung vun däm namelose Metmaacher $3',
 	'wikilog-comment-pending' => 'Heh di Aamärkung es noch nit zohjelohße.',
@@ -2024,13 +2056,18 @@ $messages['ksh'] = array(
 	'wikilog-comment-edited' => 'Heh di Aanmärkung es et läz aam $3 öm $4 Uhr jeändert woode ($2)',
 	'wikilog-comment-autosumm' => 'En neuje Aanmärkung {{GENDER:$1|vum|vum|vun däm Metmaacher|vun dä|vum}} $1: „$2“',
 	'wikilog-reply-to-comment' => 'Donn en Antwoot op heh di Aanmärkung jävve',
+	'wikilog-comment-page' => 'Jangk op dä Aanmärkung ier Sigg',
 	'wikilog-comment-edit' => 'Donn di Aanmärkung verändere',
 	'wikilog-comment-delete' => 'Donn di Aanmärkung fott schmiiße',
 	'wikilog-comment-history' => 'Don de Verjangeheit vun dä Aanmärkung beluhre',
 	'wikilog-comment-approve' => 'Donn di Aanmärkung zohlohße (weet_tiräk jedonn)',
 	'wikilog-comment-reject' => 'Donn di Aanmärkung afflähne (weet_tiräk jedonn)',
-	'wikilog-newtalk-text' => '<!-- en läddije Sigg wood aanjelaat vun Wikilog -->',
+	'wikilog-newtalk-text' => '<!-- en läddije Sigg wood aanjelaat vun {{int:Wikilog-wikilog}} -->',
+	'wikilog-newtalk-summary' => 'Automattesch vum {{int:Wikilog-wikilog}} aanjelaat',
+	'wikilog-feed-description' => 'Donn dä neuste Beidraach en heh dämm Kanaal lässe.',
 	'wikilog-title-comments' => 'Aanmärkunge zoh „$1“',
+	'wikilog-error-msg' => '{{int:Wikilog-wikilog}}: $1',
+	'wikilog-error-title' => 'Em {{int:Wikilog-wikilog}} es ene Fähler opjefalle',
 	'wikilog-invalid-param' => '„$1“ es ene onjöltejje Parrammeeter.',
 	'wikilog-invalid-author' => '„$1“ es ene onjöltejje Schriiver.',
 	'wikilog-invalid-date' => '„$1“ es e onjöltesch Dattum.',
@@ -2038,12 +2075,23 @@ $messages['ksh'] = array(
 	'wikilog-invalid-file' => '„$1“ es en onjöltejje Datteij.',
 	'wikilog-file-not-found' => 'En Dattei „$1“ jidd_et nit.',
 	'wikilog-not-an-image' => '„$1“ es en Dattei, ed es ävver keij Beld dren.',
+	'wikilog-out-of-context' => 'Opjepaß: Em {{int:Wikilog-wikilog}} sing Makeerunge wääde ußerhallef vum Zosammehang vum {{int:Wikilog-wikilog}} jebruch. Se sullte alleijns en Atikelle em Appachtemang „{{int:Wikilog-wikilog}}“ vörkumme.',
+	'wikilog-too-many-authors' => 'Opjepaß: Et sin zoh vill Schriiver en heh dämm Beodraach em {{int:Wikilog-wikilog}} jeleß.',
+	'wikilog-too-many-tags' => 'Opjepaß: Et sin zoh vill Makeerunge en heh dämm Beodraach em {{int:Wikilog-wikilog}} jeleß.',
 	'wikilog-comment-is-empty' => 'En dä Aanmärkung schteiht nix dren.',
 	'wikilog-comment-too-long' => 'Di Aanmärkung es ze lang.',
 	'wikilog-comment-invalid-name' => 'Dä aanjejovve Name es nit jöltesch.',
+	'wikilog-no-such-article' => 'Dä aanjefroochte Atikel em {{int:Wikilog-wikilog}} jidd_et nit.',
+	'wikilog-reading-draft' => 'Heh dä Atikel em {{int:Wikilog-wikilog}} es ene Äntworf un es noch nit öffentlesch jemaat woode.',
+	'wikilog-posting-anonymously' => 'Do bes im Momang nit ennjelogg.
+Ding Aanmärkung weed ohne Name öffentlesch jemaat, un Ding <i lang="en">IP</i>-Addräß drran jeschrevve.
+Do sollts entweder ene aanjenumme Name bovve aanjävve udder $1, domet mer weijß, vun wämm di Aanmärkung es.',
+	'wikilog-anonymous-moderated' => 'Wann De Ding Aanmärkung afjeschpeijschert has, weed se nit tiräk op heh dä Sigg aanjezeijsch.
+Se moß eets vun enem Moderator aanjenumme wääde.',
 	'wikilog-post-comment' => 'En neue Aanmärkung maache',
 	'wikilog-post-reply' => 'Maach en neu Aanmärkung',
-	'wikilog-form-wikilog' => 'Wikilog:',
+	'wikilog-form-legend' => 'Noh Veröffentleschunge vum {{int:Wikilog-wikilog}} söhke',
+	'wikilog-form-wikilog' => '{{int:Wikilog-wikilog}}:',
 	'wikilog-form-category' => 'Saachjropp:',
 	'wikilog-form-name' => 'Name:',
 	'wikilog-form-author' => 'Schriiver:',
@@ -2055,7 +2103,16 @@ $messages['ksh'] = array(
 	'wikilog-show-all' => 'All de Beijdrääsch',
 	'wikilog-show-published' => 'Öffentlesch jemaat',
 	'wikilog-show-drafts' => 'Äntwörf',
+	'wikilog-submit' => 'Lohß Jonn!',
+	'wikilog-preview' => '{{int:preview}}',
+	'wikilog-edit-lc' => 'verändere',
+	'wikilog-reply-lc' => 'antwoote',
+	'wikilog-delete-lc' => 'fott schmiiße',
+	'wikilog-approve-lc' => 'aanämme',
+	'wikilog-reject-lc' => 'afflähne',
 	'wikilog-page-lc' => 'Sigg',
+	'wikilog-history-lc' => 'Versione',
+	'wikilog-doc-import-comment' => 'Empoteet Handbooch för {{int:Wikilog-wikilog}}',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -2889,6 +2946,27 @@ $messages['ru'] = array(
 	'wikilog-page-lc' => 'страница',
 	'wikilog-history-lc' => 'история',
 	'wikilog-doc-import-comment' => 'Импортированная документация Викилога',
+);
+
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'wikilog-comment-deleted' => 'මෙම විචාරය මකා දමන ලදී.',
+	'wikilog-comment-edited' => 'මෙම විචාරය අවසන් වරට සංස්කරණය කරන ලද්දේ $3 $4 ($2) .',
+	'wikilog-comment-autosumm' => '$1: $2 විසින් නව විචාරයක්.',
+	'wikilog-reply-to-comment' => 'මෙම විචාරයට පිළිතුරක් ඉදිරිපත් කරන්න.',
+	'wikilog-comment-page' => 'මෙම විචාරයේ පිටුවට යන්න.',
+	'wikilog-comment-edit' => 'මෙම විචාරය සංස්කරණය කරන්න.',
+	'wikilog-comment-delete' => 'මෙම විචාරය මකන්න.',
+	'wikilog-comment-history' => 'විචාර ඉතිහාසය පෙන්වන්න.',
+	'wikilog-comment-approve' => 'මෙම විචාරය අනුමත කරන්න (කඩිනම් කාර්යය)',
+	'wikilog-comment-reject' => 'මෙම විචාරය ප්‍රතික්ෂේප කරන්න (කඩිනම් කාර්යය)',
+	'wikilog-newtalk-text' => '<!-- විකි ලඝු සටහන මඟින් නිර්මාණය කළ හිස් පිටුව -->',
+	'wikilog-newtalk-summary' => 'විකි ලඝු සටහන මඟින් ස්වයංක්‍රීයව නිර්මාණය කරන ලදී',
+	'wikilog-feed-description' => 'අලුතින්ම කළ ඉදිරිපත් කිරීම මෙම සංග්‍රහයෙන් කියවන්න.',
+	'wikilog-title-comments' => 'විචාර - $1',
+	'wikilog-error-msg' => 'විකි ලඝු සටහන: $1',
 );
 
 /** Swedish (Svenska)

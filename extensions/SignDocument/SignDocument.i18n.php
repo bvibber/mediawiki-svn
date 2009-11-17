@@ -403,6 +403,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -410,6 +411,8 @@ $messages['nn'] = array(
 	'signature-desc' => 'Slår på [[Special:SignDocument|dokumentsignering]]',
 	'signaturelogpagetext' => 'Dette er ein logg over [[Special:SignDocument|alle signaturar lagt til dokument]].',
 	'signaturelogentry' => 'signerte dokumentet $1',
+	'right-sigadmin' => 'Administrer signering av dokument',
+	'right-createsigndocument' => 'Lag dokument som kan signerast',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

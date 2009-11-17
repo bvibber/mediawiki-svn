@@ -257,6 +257,7 @@ $messages['nl'] = array(
  * @author Gunnernett
  */
 $messages['nn'] = array(
+	'tspoll-fetch-error' => 'Feil under henting av nettadressa!',
 	'tspoll-id-error' => 'Ingen ID er oppgjeven!',
 );
 

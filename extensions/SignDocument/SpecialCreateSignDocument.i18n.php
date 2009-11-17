@@ -257,6 +257,8 @@ $messages['br'] = array(
 	'createsigndoc-create' => 'Krouiñ',
 	'createsigndoc-error-generic' => 'Fazi : $1',
 	'createsigndoc-error-pagenoexist' => "Fazi : Ar bajenn [[$1]] n'eus ket anezhi.",
+	'createsigndoc-success' => 'Gweredekaet eo ar gwiriañ teulioù war [[$1]].
+Gallout a rit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} amprouiñ].',
 	'createsigndoc-error-alreadycreated' => 'Krouet eo bet an teul gwiriekaat evit "$1" dija.
 N\'hall ket bezañ graet un eil gwech.',
 );

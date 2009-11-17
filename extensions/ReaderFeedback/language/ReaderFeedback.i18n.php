@@ -1478,7 +1478,9 @@ $messages['nn'] = array(
 	'readerfeedback-voted' => "'''Du har alt vurdert denne sida.''' ([$3 Kommentarar eller spørsmål?])",
 	'readerfeedback-submitting' => 'Leverer …',
 	'readerfeedback-finished' => 'Takk!',
+	'readerfeedback-tier-high' => 'Høg',
 	'tooltip-ca-ratinghist' => 'Lesarvurderingar av sida',
+	'specialpages-group-feedback' => 'Meining frå lesar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1912,6 +1914,7 @@ $messages['te'] = array(
 	'readerfeedback' => 'ఈ పేజీ గురించి మీరేమనుకుంటున్నారు?',
 	'readerfeedback-completeness' => 'సంపూర్ణత',
 	'readerfeedback-npov' => 'తటస్థత',
+	'readerfeedback-submit' => 'దాఖలుచేయి',
 	'readerfeedback-success' => "'''ఈ పేజీని సమీక్షించినందుకు కృతజ్ఞతలు!'''  ([$2 ఫలితాలను చూడండి]) ([$3 సందేహాలు లేదా సూచనలున్నాయా?]).",
 	'readerfeedback-finished' => 'ధన్యవాదాలు!',
 	'specialpages-group-feedback' => 'వీక్షకుల అభిప్రాయం',

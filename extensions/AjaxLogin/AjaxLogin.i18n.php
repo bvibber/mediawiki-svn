@@ -74,6 +74,13 @@ $messages['bg'] = array(
 	'ajaxlogin-create' => 'Създаване на сметка',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'ajaxlogin-create' => 'অ্যাকাউন্ট তৈরি',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

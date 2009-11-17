@@ -1675,6 +1675,23 @@ $messages['pl'] = array(
 	'right-viewsystemstats' => 'Podgląd [[Special:UserStats|statystyk wykorzystania wiki]]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ */
+$messages['pms'] = array(
+	'specialuserstats' => "Statìstiche d'utilisassion",
+	'usagestatistics' => "Statìstiche d'utilisassion",
+	'usagestatistics-desc' => "Mostra le statìstiche d'utilisassion dj'utent andividuaj e dl'ansem dla wiki",
+	'usagestatisticsfor' => "<h2>Statìstiche d'utilisassion për [[User:$1|$1]]</h2>",
+	'usagestatisticsforallusers' => "<h2>Statìstiche d'utilisassion për tuti j'utent</h2>",
+	'usagestatisticsinterval' => 'Antërval:',
+	'usagestatisticsnamespace' => 'Spassi nominal:',
+	'usagestatisticsexcluderedirects' => 'Lassé fòra le ridiression',
+	'usagestatistics-namespace' => 'Coste a son dë statìstiche an slë spassi nominal [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => 'Le [[Special:ListRedirects|ridiression]] a son nen pijà an cont.',
+	'usagestatisticstype' => 'Tipo:',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

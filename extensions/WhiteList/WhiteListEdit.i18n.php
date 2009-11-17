@@ -2574,6 +2574,7 @@ Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'whitelist-desc' => "Modìfica ij përmess d'intrada dj'utent a fonsionalità limità",
@@ -2614,6 +2615,22 @@ A dev [[Special:UserRights|gionté j'utent ant la partìa]] prima ch'a peula gio
 	'whitelistoverviewrm' => "* Gaveje l'acess a [[:$1|$1]]",
 	'whitelistoverviewna' => "* Gionta ëd [[:$1|$1]] a la lista bianca con ij drit ëd '''$2''' e dàita dë scadensa '''$3'''",
 	'whitelistrequest' => "Ciamé l'intrada a d'àutre pàgine",
+	'whitelistrequestmsg' => "$1 a l'ha ciamà l'acess a {{PLURAL:$3|la pàgina|le pàgine}} sì-dapress:
+
+$2",
+	'whitelistrequestconf' => "N'arcesta për na pàgina neuva a va mandà a $1",
+	'whitelistnonrestricted' => "L'utent '''$1''' a l'é pa n'utent selessionà.
+Sta pàginà-sì a l'é mach disponìbil a utent selessionà.",
+	'whitelistnever' => 'mai',
+	'whitelistnummatches' => '- {{PLURAL:$1|un-a ocorensa|$1 ocorense}}',
+	'right-editwhitelist' => "Modìfica la lista bianca për j'utent esistent",
+	'right-restricttowhitelist' => 'Modìfica e varda mach pàgine an sla lista bianca',
+	'action-editwhitelist' => 'modìfica la lista bianca për utent esistent',
+	'action-restricttowhitelist' => 'modìfica e varda pàgine an sla lista bianca',
+	'group-restricted' => 'Utent selessionà',
+	'group-restricted-member' => 'Utent selessionà',
+	'group-manager' => 'Mansé',
+	'group-manager-member' => 'Mansé',
 );
 
 /** Pashto (پښتو)

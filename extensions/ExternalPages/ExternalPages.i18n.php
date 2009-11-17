@@ -66,6 +66,13 @@ $messages['ar'] = array(
 	'externalpages-bad-url-data' => 'فشل في استرجاع محتويات الصفحة',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'externalpages' => 'বহিস্থ পাতা',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */

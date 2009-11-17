@@ -5441,6 +5441,8 @@ Cảm ơn và mong hồi âm từ bạn!',
 $messages['vo'] = array(
 	'optin-survey-yes' => 'Si',
 	'optin-survey-no' => 'No',
+	'optin-survey-answer-whyoptout-other' => 'Kod votik:',
+	'optin-survey-answer-changes-other' => 'Votik:',
 );
 
 /** Yiddish (ייִדיש)

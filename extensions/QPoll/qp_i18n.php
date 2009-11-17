@@ -201,6 +201,15 @@ $messages['be-tarask'] = array(
 	'qp_stats_link' => 'Статыстыка',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'qp_result_error' => 'Sintaksna greška',
+	'qp_stats_link' => 'Statistika',
+	'qp_users_link' => 'Korisnici',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -695,9 +704,18 @@ $messages['ja'] = array(
 	'qp_users_answered_questions' => '$1{{PLURAL:$1|人}}の利用者がこの質問に答えました',
 	'qp_func_no_such_poll' => 'そのような投票はありません ($1)',
 	'qp_func_missing_question_id' => '投票 $1 に存在する質問 ID を指定してください (1から始まります)',
-	'qp_func_invalid_question_id' => '投票 $1 に対して無効な質問の ID ($2 は数値ではありません)',
+	'qp_func_invalid_question_id' => '投票 $1 に対して無効な質問 ID ($2 は数値ではありません)',
+	'qp_func_missing_proposal_id' => '投票 $1、質問 $2 に存在する提案 ID を指定してください (1から始まります)',
+	'qp_func_invalid_proposal_id' => '投票 $1、質問 $2 に対して無効な提案 ID ($3 は数値ではありません)',
 	'qp_error_no_such_poll' => 'そのような投票はありません ($1)。
 その投票が宣言され保存されていること、およびアドレス区切り記号 # を使っていることを確認してください。',
+	'qp_error_id_in_stats_mode' => '統計モードでは投票の ID を宣言できません',
+	'qp_error_dependance_in_stats_mode' => '統計モードでは投票の依存性チェーンを宣言できません',
+	'qp_error_no_stats' => 'まだ誰もこの投票に投票していないので、統計データはありません (アドレス $1)',
+	'qp_error_address_in_decl_mode' => '宣言モードでは投票のアドレスを取得できません',
+	'qp_error_question_not_implemented' => 'そのタイプの質問は実装されていません: $1',
+	'qp_error_invalid_question_type' => '無効な質問タイプ: $1',
+	'qp_error_type_in_stats_mode' => '質問タイプは統計表示モードでは定義できません: $1',
 	'qp_error_category_name_empty' => 'カテゴリー名が空です',
 	'qp_error_proposal_text_empty' => '提案文が空です',
 );
@@ -808,6 +826,16 @@ Sla een peiling op door deze op te slaan zonder dat enig voorstel is beantwoord.
 	'qp_error_too_few_spans' => 'Voor iedere categorieklasse dienen tenminste twee mogelijk antwoorden gedefinieerd te zijn',
 	'qp_error_no_answer' => 'Onbeantwoord voorstel',
 	'qp_error_unique' => 'Voor de vraag van het type unique() zijn meer voorstellen dan mogelijke antwoorden gedefinieerd. Dat is niet recht te breien.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'qp_result_NA' => 'Ikkje svar',
+	'qp_users_list' => 'List opp alle brukarar',
+	'qp_source_link' => 'Kjelde',
+	'qp_stats_link' => 'Statistikk',
 );
 
 /** Russian (Русский)

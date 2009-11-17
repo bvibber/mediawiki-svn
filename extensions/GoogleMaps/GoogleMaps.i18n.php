@@ -2650,6 +2650,7 @@ $wgGoogleMapsMessages['id'] = array(
  */
 $wgGoogleMapsMessages['io'] = array(
 	'gm-balloon-title' => 'Titulo:',
+	'gm-no-zoom-control' => 'Nula',
 	'gm-yes' => 'Yes',
 );
 

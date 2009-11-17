@@ -1104,6 +1104,7 @@ $messages['ko'] = array(
 	'ratinghistory-3months' => '지난 3개월',
 	'ratinghistory-year' => '지난 1년',
 	'ratinghistory-3years' => '지난 3년',
+	'ratinghistory-ave' => '평균: $1',
 	'ratinghistory-svg' => 'SVG로 보기',
 	'right-feedback' => '문서를 평가하는 피드백 양식을 이용',
 );
@@ -2053,6 +2054,13 @@ $messages['vi'] = array(
 '''[1]''' – Tệ; '''[2]''' – Dở; '''[3]''' – Khá; '''[4]''' – Hay; '''[5]''' – Tuyệt",
 	'ratinghistory-graph-scale' => "'''Số lần đánh giá trong ngày''' <font color=\"red\">''(đỏ)''</font> được trình bày với tỷ lệ ''1:\$1''.",
 	'right-feedback' => 'Đánh giá trang',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'ratinghistory-ave' => 'Zäned: $1',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

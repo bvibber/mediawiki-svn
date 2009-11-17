@@ -196,12 +196,17 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'form-desc' => 'নতুন পাতা শুরু করতে [[Special:Form|ফরম ইন্টারফেস]]',
 	'form' => 'ফরম',
 	'formnoname' => 'কোনো ফরম নাম নাই',
 	'formbadname' => 'মন্দ ফরম নাম',
+	'formbadnametext' => 'এই নামে কোনো ফরম নাই।',
 	'formpattern' => '$1-ফরম',
 	'formtitlepattern' => 'নতুন $1 যোগ',
 	'formsave' => 'সংরক্ষণ',
+	'formarticleexists' => 'পাতা রয়েছে',
+	'formbadpagename' => 'পাতার মন্দ নাম',
+	'formsaveerror' => 'ফরম সংরক্ষণে ত্রুটি',
 );
 
 /** Breton (Brezhoneg)
