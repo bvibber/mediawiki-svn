@@ -171,7 +171,9 @@ if ( typeof context == 'undefined' ) {
 			$(this).data( 'wikiEditor-cursor', false );
 		})
 		.blur( function() {
-			$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
+			var pos = $(this).data( 'wikiEditor-cursor' );
+			if ( !$(this).data( 'wikiEditor-cursor' ) )
+				$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true, true ) );
 		});
 	
 	// Create a set of standard methods for internal and external use

@@ -51,13 +51,12 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 				post += ' ';
 			}
 		}
-		var selText = $(this).getSelection();
+		var selText = $(this).focus().getSelection();
 		var isSample = false;
 		if ( this.style.display == 'none' ) {
 			// Do nothing
 		} else if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla/Opera
-			$(this).focus();
 			var startPos = this.selectionStart;
 			var endPos = this.selectionEnd;
 			checkSelectedText();
@@ -82,9 +81,10 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 				this.selectionStart = startPos + pre.length + selText.length + post.length;
 				this.selectionEnd = this.selectionStart;
 			}
+			// Scroll the textarea to the inserted text
+			$(this).scrollToCaretPosition();
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
-			$(this).focus();
 			var range = document.selection.createRange();
 			if ( ownline && range.moveStart ) {
 				var range2 = document.selection.createRange();
@@ -109,8 +109,6 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			}
 			range.select();
 		}
-		// Scroll the textarea to the inserted text
-		$(this).scrollToCaretPosition();
 		$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
 	});
 },
@@ -123,11 +121,18 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
  * Get the position (in resolution of bytes not nessecarily characters)
  * in a textarea 
  */
- getCaretPosition: function( startAndEnd ) {
+ getCaretPosition: function( startAndEnd, restoreFocus ) {
 	function getCaret( e ) {
 		var caretPos = 0, endPos = 0;
 		if ( $.browser.msie ) {
 			// IE Support
+			// Focus the textarea for this
+			// If another element currently has focus, restore it
+			var oldFocus = false;
+			if ( restoreFocus )
+				oldFocus = document.selection.createRange().parentElement;
+			e.focus();
+			
 			var postFinished = false;
 			var periFinished = false;
 			var postFinished = false;
@@ -196,6 +201,9 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			} while ( ( !postFinished || !periFinished || !postFinished ) );
 			caretPos = rawPreText.replace( /\r\n/g, "\n" ).length;
 			endPos = caretPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
+			// Restore focus
+			if ( oldFocus && oldFocus.focus )
+				oldFocus.focus();
 		} else if ( e.selectionStart || e.selectionStart == '0' ) {
 			// Firefox support
 			caretPos = e.selectionStart;
@@ -224,8 +232,12 @@ setSelection: function( start, end ) {
 			var selection = document.body.createTextRange();
 			selection.moveToElementText( this );
 			var length = selection.text.length;
+			if ( start > length || end > length )
+				// Faulty data, ignore
+				return;
+			selection.collapse();
+			selection.moveEnd( 'character', end );
 			selection.moveStart( 'character', start );
-			selection.moveEnd( 'character', -length + end );
 			selection.select();
 		}
 	});
