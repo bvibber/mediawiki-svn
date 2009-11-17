@@ -10,6 +10,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	var $type      = '';
 	var $record    = '';
 	var $types     = array();
+	var $values    = array();
 	var $orderBy   = '';
 	var $desc      = false;
 	var $guid      = '';
@@ -514,7 +515,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	function populateForm( $values ) {
 
 		# If values are wikitext, convert to hash
-		if ( !is_array( $values ) ) $values = $this->valuesFromText( $values );
+		if ( !is_array( $values ) ) $values = $this->values = $this->valuesFromText( $values );
 
 		# Add the values into the form's HTML depending on their type
 		foreach( $this->types as $k => $type ) {
