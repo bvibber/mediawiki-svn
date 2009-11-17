@@ -134,8 +134,10 @@ left:-1px;
 border-left:none;
 */
 }
-.wikiEditor-ui-toc ul{
+.wikiEditor-ui-toc{
 border-left:solid silver 1px;
+}
+.wikiEditor-ui-toc ul{
 padding:0;
 margin:0;
 list-style:none;
@@ -265,6 +267,18 @@ background:url(../images/wikiEditor/toc/grip.png) 50% 50% no-repeat;
 float:right;
 margin:3px 16px 3px 3px;
 line-height:26px;
+}
+.wikiEditor-ui-toc-expandControl{
+position:absolute;
+z-index:2;
+top:0px;
+right:10px;
+height:26px;
+padding:3px 0;
+line-height:26px;
+padding-right:1em;
+white-space:nowrap;
+overflow:hidden;
 }
 .wikiEditor-ui-text textarea{
 resize:none;
