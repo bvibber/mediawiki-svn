@@ -670,6 +670,7 @@ $messages['nn'] = array(
 	'optin-leave' => 'Gå ut av Beta',
 	'tooltip-pt-optin-leave' => 'Slå av nye funksjonar',
 	'optin-feedback' => 'Beta tilbakemelding',
+	'tooltip-pt-optin-feedback' => 'Gje ei tilbakemelding om di oppleving av dei nye funksjonane',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

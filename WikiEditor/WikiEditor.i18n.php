@@ -38,6 +38,13 @@ $messages['be-tarask'] = array(
 	'wikieditor-desc' => 'Дадае пашыраны інтэрфэйс рэдагаваньня вікі-тэксту і шмат модульных магчымасьцяў',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'wikieditor' => 'উন্নত উইকিটেক্সট সম্পাদনা ইন্টারফেস',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -181,12 +188,27 @@ $messages['nl'] = array(
 	'wikieditor-desc' => 'Voegt een uitbreidbare tekstverwerker voor wikitekst toe en modules met extra mogelijkheden',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'wikieditor' => 'Avansert grensesnitt for endring av wikitekst',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
 	'wikieditor' => 'Interfàcia avançada de modificacion de wikitèxte',
 	'wikieditor-desc' => 'Provesís una interfàcia de modificacion de wikitèxte extensible e mantuna foncionalitats.',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'wikieditor' => 'Zaawansowany interfejs edycji wikitekstu',
+	'wikieditor-desc' => 'Dostarcza rozszerzalny interfejs edycji wikitekstu oraz wiele funkcji oferowane przez moduły',
 );
 
 /** Piedmontese (Piemontèis)

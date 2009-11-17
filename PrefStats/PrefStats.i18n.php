@@ -2138,6 +2138,18 @@ Hãy nhấn vào một tùy chọn để xem thống kê về nó.',
 	'prefstats-legend-in' => 'Dùng thử',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'prefstats-factor-hour' => 'düp',
+	'prefstats-factor-sixhours' => 'düps mäl',
+	'prefstats-factor-day' => 'del',
+	'prefstats-factor-week' => 'vig',
+	'prefstats-factor-twoweeks' => 'vigs tel',
+	'prefstats-factor-fourweeks' => 'vigs fol',
+);
+
 /** Mingrelian (მარგალური)
  * @author Lika2672
  */
