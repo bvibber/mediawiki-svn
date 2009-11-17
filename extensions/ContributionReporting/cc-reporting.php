@@ -18,6 +18,7 @@ function handleLoad(){
 	}
 	
 	//if not exist insert into DB
+	//via REQUEST['utm_src']
 }
 
 function handleSubmit(){
