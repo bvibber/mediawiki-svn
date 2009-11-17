@@ -102,16 +102,11 @@ var liquidThreads = {
 					currentFocused = this;
 				} );
 			
-			document.editform = $j(container).find('#editform');
-			
 			// Check for live preview
 			if ( $j('#wpLivePreview').length ) {
 				$j.getScript( stylepath+'/common/preview.js',
 								function() { setupLivePreview(); } );
 			}
-			
-			// Add AJAX save handler
-			$j(container).find('#wpSave').click( liquidThreads.handleAJAXSave );
 		};
 		
 		mwEditButtons = [];
@@ -842,5 +837,7 @@ js2AddOnloadHook( function() {
 	
 	// Autogrowing textarea - this only affects the new-topic page
 //	$j('#wpTextbox1')//.autogrow();
+
+	$j('#wpSave').live( 'click', liquidThreads.handleAJAXSave );
 } );
 
