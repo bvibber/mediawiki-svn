@@ -79,7 +79,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			$days = $this->getDailyTotals( $fundraiser['start'], $fundraiser['end'] );
 			foreach( $sources as $chart => $source ) {
 				$column = 0;
-				$factor = 200 / $max[$source];
+				$factor = 300 / $max[$source];
 				// Build bars for chart
 				foreach( $days as $i => $day ) {
 					$height = $factor * $day[$source];
@@ -129,7 +129,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 							) .
 							Xml::tags( 'tr', null,
 								Xml::element( 'td', $tdLabelAttributes, wfMsg( 'fundraiserstats-contributions' ) ) .
-								Xml::element( 'td', $tdValueAttributes, $wgLang->formatNum( number_format( $day[2], 2 ) ) ) .
+								Xml::element( 'td', $tdValueAttributes, $wgLang->formatNum( number_format( $day[2] ) ) ) .
 								Xml::element( 'td', $tdLabelAttributes, wfMsg( 'fundraiserstats-avg' ) ) .
 								Xml::element( 'td', $tdValueAttributes, $wgLang->formatNum( number_format( $day[3], 2 ) ) )
 							)
