@@ -178,6 +178,4 @@ body.rtl .wikiEditor-ui-toc ul {
 	resize:none;
 }
 .wikiEditor-ui-text textarea:focus {outline:none;}
-.wikiEditor-ui-right{
-	left: 0px !important;
-}
+

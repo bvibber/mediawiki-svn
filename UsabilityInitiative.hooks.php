@@ -19,19 +19,19 @@ class UsabilityInitiativeHooks {
 		'base_sets' => array(
 			'raw' => array(
 				array( 'src' => 'css/suggestions.css', 'version' => 6 ),
-				array( 'src' => 'css/wikiEditor.css', 'version' => 6 ),
+				array( 'src' => 'css/wikiEditor.css', 'version' => 7 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 7 ),
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 2 ),
-				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 19 ),
+				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 20 ),
 				array( 'src' => 'css/wikiEditor.preview.css', 'version' => 1 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 26 ),
+				array( 'src' => 'css/combined.css', 'version' => 27 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 26 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 27 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)
@@ -73,14 +73,14 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 17 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 32 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 9 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 38 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 39 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 82 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 83 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 82 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 83 ),
 			),
 		),
 	);
