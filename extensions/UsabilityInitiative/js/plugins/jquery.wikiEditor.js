@@ -170,9 +170,10 @@ if ( typeof context == 'undefined' ) {
 				$(this).setSelection( pos[0], pos[1] );
 			$(this).data( 'wikiEditor-cursor', false );
 		})
-		.blur( function() {
-			$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
-		});
+		.delayedBind( 100, 'keyup mouseup', function() {
+				$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
+	
+		} );
 	
 	// Create a set of standard methods for internal and external use
 	context.api = {

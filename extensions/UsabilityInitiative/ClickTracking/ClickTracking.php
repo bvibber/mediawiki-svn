@@ -18,6 +18,9 @@
 
 /* Configuration */
 
+// Increment this value when you change ClickTracking.js
+$wgClickTrackingStyleVersion = 2;
+
 // click throttle, should be seen as "1 out of every $wgClickTrackThrottle users will have it enabled"
 // setting this to 1 means all users will have it enabled
 // setting to a negative number will disable it for all users
@@ -25,7 +28,7 @@ $wgClickTrackThrottle = -1;
 
 // set the time window for what we consider 'recent' contributions, in days
 $wgClickTrackContribGranularity1 = 60 * 60 * 24 * 365 / 2; // half a year
-$wgClickTrackContribGranularity2 =60 * 60 * 24 * 365 / 4;  // 1/4 a year (3 months approx)
+$wgClickTrackContribGranularity2 = 60 * 60 * 24 * 365 / 4;  // 1/4 a year (3 months approx)
 $wgClickTrackContribGranularity3 = 60 * 60 * 24 * 30;  //30 days (1 month approx)
 
 // Credits
@@ -45,20 +48,21 @@ require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ClickTrackingHooks'] = $dir . 'ClickTracking.hooks.php';
 $wgAutoloadClasses['ApiClickTracking'] = $dir . 'ApiClickTracking.php';
-//$wgAutoloadClasses['SpecialClickTracking'] = $dir . 'SpecialClickTracking.php';
-//$wgAutoloadClasses['ApiSpecialClickTracking'] = $dir .'ApiSpecialClickTracking.php';
+$wgAutoloadClasses['SpecialClickTracking'] = $dir . 'SpecialClickTracking.php';
+$wgAutoloadClasses['ApiSpecialClickTracking'] = $dir .'ApiSpecialClickTracking.php';
 
 // Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::schema';
-$wgHooks['EditPage::showEditForm:initial'][] = 'ClickTrackingHooks::addJS';
+$wgHooks['AjaxAddScript'][] = 'ClickTrackingHooks::addJS';
+$wgHooks['ParserTestTables'][] = 'ClickTrackingHooks::parserTestTables';
 
 // Set up the new API module
 $wgAPIModules['clicktracking'] = 'ApiClickTracking';
-//$wgAPIModules['specialclicktracking'] = 'ApiSpecialClickTracking';
+$wgAPIModules['specialclicktracking'] = 'ApiSpecialClickTracking';
 
 //Special page setup
-//$wgSpecialPages['ClickTracking'] = 'SpecialClickTracking';
-//$wgGroupPermissions['sysop']['clicktrack'] = true;
+$wgSpecialPages['ClickTracking'] = 'SpecialClickTracking';
+$wgGroupPermissions['sysop']['clicktrack'] = true;
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['ClickTracking'] = $dir . 'ClickTracking.i18n.php';

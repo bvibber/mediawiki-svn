@@ -37,6 +37,7 @@
 
 .control_div {
 	margin: 10px;
+	clear: both;
 }
 
 .sub_option_div{
@@ -53,4 +54,10 @@
 	display:inline;
 	float:left;
 	width:200px;
+}
+
+.add_condition_button{
+	float: right;
+	color: blue;
+	cursor: pointer;
 }

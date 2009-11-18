@@ -42,6 +42,7 @@ $messages['en'] = array(
 	'edittoolbar-tool-link-int-target-status-loading' => 'Checking page existence...',
 	'edittoolbar-tool-link-int-invalid' => 'The title you specified is invalid.',
 	'edittoolbar-tool-link-ext-invalid' => 'The URL you specified is invalid.',
+	'edittoolbar-tool-link-empty' => "You didn't enter anything to link to.",
 	'edittoolbar-tool-file' => 'Embedded file',
 	'edittoolbar-tool-file-pre' => '$1{{ns:file}}:',
 	'edittoolbar-tool-file-example' => 'Example.jpg',

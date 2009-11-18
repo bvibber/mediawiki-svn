@@ -147,44 +147,52 @@ js2AddOnloadHook( function() {
 							'heading-2' : {
 								labelMsg: 'edittoolbar-tool-heading-2',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
-										pre: "==", 
+										pre: '==',
 										periMsg: 'edittoolbar-tool-heading-example',
-										post: "=="
+										post: '==',
+										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										regexReplace: "\$1==\$3==\$4"
 									}
 								}
 							},
 							'heading-3' : {
 								labelMsg: 'edittoolbar-tool-heading-3',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
-										pre: "===", 
+										pre: '===',
 										periMsg: 'edittoolbar-tool-heading-example',
-										post: "==="
+										post: '===',
+										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										regexReplace: "\$1===\$3===\$4"
 									}
 								}
 							},
 							'heading-4' : {
 								labelMsg: 'edittoolbar-tool-heading-4',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
-										pre: "====", 
+										pre: '====',
 										periMsg: 'edittoolbar-tool-heading-example',
-										post: "===="
+										post: '====',
+										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										regexReplace: "\$1====\$3====\$4"
 									}
 								}
 							},
 							'heading-5' : {
 								labelMsg: 'edittoolbar-tool-heading-5',
 								action: {
-									type: 'encapsulate',
+									type: 'replace',
 									options: {
-										pre: "=====", 
+										pre: '=====',
 										periMsg: 'edittoolbar-tool-heading-example',
-										post: "====="
+										post: '=====',
+										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										regexReplace: "\$1=====\$3=====\$4"
 									}
 								}
 							}
@@ -219,6 +227,19 @@ js2AddOnloadHook( function() {
 								pre: "# ", 
 								periMsg: 'edittoolbar-tool-olist-example',
 								post: "", 
+								ownline: true
+							}
+						}
+					},
+					'indent': {
+						labelMsg: 'edittoolbar-tool-indent',
+						type: 'button',
+						icon: 'format-indent.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: ":",
+								post: "",
 								ownline: true
 							}
 						}
@@ -820,14 +841,17 @@ js2AddOnloadHook( function() {
 							'format': 'json'
 						},
 						success: function( data ) {
-							// TODO: What happens if data.query.pageids is undefined?
-							var page = data.query.pages[data.query.pageids[0]];
-							var status = 'exists';
-							if ( typeof page.missing != 'undefined' )
-								status = 'notexists';
-							else if ( typeof page.invalid != 'undefined' )
+							var status;
+							if ( typeof data.query == 'undefined' ) {
 								status = 'invalid';
-							
+							} else {
+								var page = data.query.pages[data.query.pageids[0]];
+								status = 'exists';
+								if ( typeof page.missing != 'undefined' )
+									status = 'notexists';
+								else if ( typeof page.invalid != 'undefined' )
+									status = 'invalid';
+							}
 							cache[target] = status;
 							updateWidget( status );
 						}
@@ -845,7 +869,8 @@ js2AddOnloadHook( function() {
 			// Automatically copy the value of the internal link page title field to the link text field unless the user
 			// has changed the link text field - this is a convience thing since most link texts are going to be the
 			// the same as the page title
-			$j( '#edittoolbar-link-int-target' ).bind( 'change keypress paste cut', function() {
+			// Also change the internal/external radio button accordingly
+			$j( '#edittoolbar-link-int-target' ).bind( 'change keydown paste cut', function() {
 				// $j(this).val() is the old value, before the keypress
 				if ( $j( '#edittoolbar-link-int-text' ).data( 'untouched' ) )
 					// Defer this until $j(this).val() has been updated
@@ -853,8 +878,13 @@ js2AddOnloadHook( function() {
 						$j( '#edittoolbar-link-int-text' ).val( $j( '#edittoolbar-link-int-target' ).val() );
 					}, 0 );
 			});
-			$j( '#edittoolbar-link-int-text' ).bind( 'change keypress paste cut', function() {
-				$j(this).data( 'untouched', false );
+			$j( '#edittoolbar-link-int-text' ).bind( 'change keydown paste cut', function() {
+				var oldVal = $j(this).val();
+				var that = this;
+				setTimeout( function() {
+					if ( $j(that).val() != oldVal )
+						$j(that).data( 'untouched', false );
+				}, 0 );
 			});
 			// Set the initial value of the external link field to start out as a real URL
 			$j( '#edittoolbar-link-ext-target' ).val( 'http://' );
@@ -1013,11 +1043,11 @@ js2AddOnloadHook( function() {
 				}
 			},
 			open: function() {
+				// Pre-fill the text fields based on the current selection
+				var selection = $j(this).data( 'context' ).$textarea.focus().getSelection();
 				$j( '#edittoolbar-link-int-target, #edittoolbar-link-ext-target' )
 					.filter( ':visible' )
 					.focus();
-				// Pre-fill the text fields based on the current selection
-				var selection = $j(this).data( 'context' ).$textarea.getSelection();
 				$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ '', '' ] );
 				$j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace', [ '', '' ] );
 				if ( selection != '' ) {
@@ -1068,6 +1098,7 @@ js2AddOnloadHook( function() {
 							$j(this)
 								.find( 'button:first' )
 								.click();
+							e.preventDefault();
 						}
 					});
 				}
@@ -1093,15 +1124,6 @@ js2AddOnloadHook( function() {
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
-			});
-			// Execute the action associated with the first button
-			// when the user presses Enter
-			$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
-				if ( ( e.keyCode || e.which ) == 13 ) {
-					$j(this)
-						.find( 'button:first' )
-						.click();
-				}
 			});
 			$j( '#edittoolbar-table-dimensions-rows' ).val( 2 );
 			$j( '#edittoolbar-table-dimensions-columns' ).val( 2 );
@@ -1174,6 +1196,7 @@ js2AddOnloadHook( function() {
 							$j(this)
 								.find( 'button:first' )
 								.click();
+							e.preventDefault();
 						}
 					});
 				}
@@ -1190,12 +1213,12 @@ js2AddOnloadHook( function() {
 				<div id="edittoolbar-replace-emptysearch" rel="edittoolbar-tool-replace-emptysearch"></div>\
 				<div id="edittoolbar-replace-invalidregex"></div>\
 			</div>\
-			<fieldset><table><tr>\
+			<fieldset><table style="width: 100%;"><tr>\
 				<td><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label></td>\
-				<td><input type="text" id="edittoolbar-replace-search" /></td>\
+				<td><input type="text" id="edittoolbar-replace-search" style="width: 100%;" /></td>\
 			</tr><tr>\
 				<td><label for="edittoolbar-replace-replace" rel="edittoolbar-tool-replace-replace"></label></td>\
-				<td><input type="text" id="edittoolbar-replace-replace" /></td>\
+				<td><input type="text" id="edittoolbar-replace-replace" style="width: 100%;" /></td>\
 			</tr></table><table><tr>\
 				<td><input type="checkbox" id="edittoolbar-replace-case" /></td>\
 				<td><label for="edittoolbar-replace-case" rel="edittoolbar-tool-replace-case"></label></td>\
@@ -1207,15 +1230,6 @@ js2AddOnloadHook( function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
-			// Execute the action associated with the first button
-			// when the user presses Enter
-			$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
-				if ( ( e.keyCode || e.which ) == 13 ) {
-					$j(this)
-						.find( 'button:first' )
-						.click();
-				}
-			});
 			
 			// TODO: Find a cleaner way to share this function
 			$j(this).data( 'replaceCallback', function( mode ) {
@@ -1226,7 +1240,7 @@ js2AddOnloadHook( function() {
 					return;
 				}
 				var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
-				var flags = '';
+				var flags = 'm';
 				var matchCase = $j( '#edittoolbar-replace-case' ).is( ':checked' );
 				var isRegex = $j( '#edittoolbar-replace-regex' ).is( ':checked' );
 				if ( !matchCase ) {
@@ -1298,13 +1312,16 @@ js2AddOnloadHook( function() {
 		},
 		dialog: {
 			buttons: {
-				'edittoolbar-tool-replace-button-findnext': function() {
+				'edittoolbar-tool-replace-button-findnext': function( e ) {
+					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
 					$j(this).data( 'replaceCallback' ).call( this, 'find' );
 				},
-				'edittoolbar-tool-replace-button-replacenext': function() {
+				'edittoolbar-tool-replace-button-replacenext': function( e ) {
+					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
 					$j(this).data( 'replaceCallback' ).call( this, 'replace' );
 				},
-				'edittoolbar-tool-replace-button-replaceall': function() {
+				'edittoolbar-tool-replace-button-replaceall': function( e ) {
+					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
 					$j(this).data( 'replaceCallback' ).call( this, 'replaceAll' );
 				},
 				'edittoolbar-tool-replace-close': function() {
@@ -1312,27 +1329,35 @@ js2AddOnloadHook( function() {
 					$j(this).data( 'context' ).$textarea
 						.unbind( 'keypress.srdialog' )
 						.focus();
+					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', false );
 				}
 			},
 			open: function() {
 				$j(this).data( 'offset', 0 );
 				$j( '#edittoolbar-replace-search' ).focus();
 				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch, #edittoolbar-replace-invalidregex' ).hide();
-				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
-					$j(this).data( 'dialogkeypressset', true );
+				if ( !( $j(this).data( 'onetimeonlystuff' ) ) ) {
+					$j(this).data( 'onetimeonlystuff', true );
 					// Execute the action associated with the first button
 					// when the user presses Enter
 					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
 						if ( ( e.keyCode || e.which ) == 13 ) {
-							$j(this).find( 'button:first' ).click();
+							var button = $j(this).data( 'dialogaction' ) || $j(this).find( 'button:first' );
+							button.click();
 							e.preventDefault();
 						}
+					});
+					// Make tabbing to a button and pressing
+					// Enter do what people expect
+					$j(this).closest( '.ui-dialog' ).find( 'button' ).focus( function() {
+						$j(this).closest( '.ui-dialog' ).data( 'dialogaction', this );
 					});
 				}
 				var dialog = $j(this).closest( '.ui-dialog' );
 				$j(this).data( 'context' ).$textarea.bind( 'keypress.srdialog', function( e ) {
 					if ( ( e.keyCode || e.which ) == 13 ) {
-						dialog.find( 'button:first' ).click();
+						var button = dialog.data( 'dialogaction' ) || dialog.find( 'button:first' );
+						button.click();
 						e.preventDefault();
 					}
 				});

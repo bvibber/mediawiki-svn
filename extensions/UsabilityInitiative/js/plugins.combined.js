@@ -90,30 +90,28 @@ $.fn.autoEllipse = function( options ) {
 		var text = $(this).text();
 		var $text = $( '<span />' ).text( text ).css( 'whiteSpace', 'nowrap' );
 		$(this).empty().append( $text );
-		if ( $text.outerWidth() > $(this).innerWidth() ) {
+		if ( $text.width() > $(this).width() ) {
 			switch ( options.position ) {
 				case 'right':
-					// Use binary search-like technique for
-					// efficiency
+					// Use binary search-like technique for efficiency
 					var l = 0, r = text.length;
-					var ow, iw;
 					do {
 						var m = Math.ceil( ( l + r ) / 2 );
 						$text.text( text.substr( 0, m ) + '...' );
-						ow = $text.outerWidth();
-						iw = $(this).innerWidth();
-						if ( ow > iw )
+						if ( $text.width() > $(this).width() ) {
 							// Text is too long
 							r = m - 1;
-						else
+						} else {
 							l = m;
+						}
 					} while ( l < r );
+					$text.text( text.substr( 0, l ) + '...' );
 					break;
 				case 'center':
 					// TODO: Use binary search like for 'right'
 					var i = [Math.round( text.length / 2 ), Math.round( text.length / 2 )];
 					var side = 1; // Begin with making the end shorter
-					while ( $text.outerWidth() > ( $(this).innerWidth() ) && i[0] > 0 ) {
+					while ( $text.outerWidth() > ( $(this).width() ) && i[0] > 0 ) {
 						$text.text( text.substr( 0, i[0] ) + '...' + text.substr( i[1] ) );
 						// Alternate between trimming the end and begining
 						if ( side == 0 ) {
@@ -130,7 +128,7 @@ $.fn.autoEllipse = function( options ) {
 				case 'left':
 					// TODO: Use binary search like for 'right'
 					var r = 0;
-					while ( $text.outerWidth() > $(this).innerWidth() && r < text.length ) {
+					while ( $text.outerWidth() > $(this).width() && r < text.length ) {
 						$text.text( '...' + text.substr( r ) );
 						r++;
 					}
@@ -574,7 +572,7 @@ $.suggestions = {
 	 * @param updateTextbox If true, put the suggestion in the textbox
 	 */
 	highlight: function( context, result, updateTextbox ) {
-		var selected = context.data.$container.find( '.suggestions-result-current' )
+		var selected = context.data.$container.find( '.suggestions-result-current' );
 		if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
 			if ( result == 'prev' ) {
 				result = selected.prev();
@@ -643,6 +641,12 @@ $.suggestions = {
 			case 13:
 				context.data.$container.hide();
 				preventDefault = wasVisible;
+				if ( typeof context.config.result.select == 'function' ) {
+					context.config.result.select.call(
+						context.data.$container.find( '.suggestions-result-current' ),
+						context.data.$textbox
+					);
+				}
 				break;
 			default:
 				$.suggestions.update( context, true );
@@ -827,12 +831,17 @@ $.fn.suggestions = function() {
  */
 ( function( $ ) { $.fn.extend( {
 
+/**
+ * Get the currently selected text in this textarea. Will focus the textarea
+ * in some browsers (IE/Opera)
+ */
 getSelection: function() {
 	var e = this.jquery ? this[0] : this;
 	var retval = '';
 	if ( e.style.display == 'none' ) {
 		// Do nothing
 	} else if ( document.selection && document.selection.createRange ) {
+		e.focus();
 		var range = document.selection.createRange();
 		retval = range.text;
 	} else if ( e.selectionStart || e.selectionStart == '0' ) {
@@ -870,13 +879,12 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 				post += ' ';
 			}
 		}
-		var selText = $(this).getSelection();
+		var selText = $(this).focus().getSelection();
 		var isSample = false;
 		if ( this.style.display == 'none' ) {
 			// Do nothing
 		} else if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla/Opera
-			$(this).focus();
 			var startPos = this.selectionStart;
 			var endPos = this.selectionEnd;
 			checkSelectedText();
@@ -901,9 +909,10 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 				this.selectionStart = startPos + pre.length + selText.length + post.length;
 				this.selectionEnd = this.selectionStart;
 			}
+			// Scroll the textarea to the inserted text
+			$(this).scrollToCaretPosition();
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
-			$(this).focus();
 			var range = document.selection.createRange();
 			if ( ownline && range.moveStart ) {
 				var range2 = document.selection.createRange();
@@ -928,8 +937,6 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			}
 			range.select();
 		}
-		// Scroll the textarea to the inserted text
-		$(this).scrollToCaretPosition();
 		$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
 	});
 },
@@ -942,11 +949,18 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
  * Get the position (in resolution of bytes not nessecarily characters)
  * in a textarea 
  */
- getCaretPosition: function( startAndEnd ) {
+ getCaretPosition: function( startAndEnd, restoreFocus ) {
 	function getCaret( e ) {
 		var caretPos = 0, endPos = 0;
 		if ( $.browser.msie ) {
 			// IE Support
+			// Focus the textarea for this
+			// If another element currently has focus, restore it
+			var oldFocus = false;
+			if ( restoreFocus )
+				oldFocus = document.selection.createRange().parentElement;
+			e.focus();
+			
 			var postFinished = false;
 			var periFinished = false;
 			var postFinished = false;
@@ -1015,6 +1029,9 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			} while ( ( !postFinished || !periFinished || !postFinished ) );
 			caretPos = rawPreText.replace( /\r\n/g, "\n" ).length;
 			endPos = caretPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
+			// Restore focus
+			if ( oldFocus && oldFocus.focus )
+				oldFocus.focus();
 		} else if ( e.selectionStart || e.selectionStart == '0' ) {
 			// Firefox support
 			caretPos = e.selectionStart;
@@ -1043,8 +1060,12 @@ setSelection: function( start, end ) {
 			var selection = document.body.createTextRange();
 			selection.moveToElementText( this );
 			var length = selection.text.length;
+			if ( start > length || end > length )
+				// Faulty data, ignore
+				return;
+			selection.collapse();
+			selection.moveEnd( 'character', end );
 			selection.moveStart( 'character', start );
-			selection.moveEnd( 'character', -length + end );
 			selection.select();
 		}
 	});
@@ -1140,7 +1161,8 @@ scrollToCaretPosition: function( force ) {
 	} );
 }
 
-} ); } )( jQuery );/**
+} ); } )( jQuery );
+/**
  * This plugin provides a way to build a user interface around a textarea. You
  * can build the UI from a confguration..
  * 	$j( 'div#edittoolbar' ).wikiEditor(
@@ -1312,9 +1334,10 @@ if ( typeof context == 'undefined' ) {
 				$(this).setSelection( pos[0], pos[1] );
 			$(this).data( 'wikiEditor-cursor', false );
 		})
-		.blur( function() {
-			$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
-		});
+		.delayedBind( 100, 'keyup mouseup', function() {
+				$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
+	
+		} );
 	
 	// Create a set of standard methods for internal and external use
 	context.api = {
@@ -1379,7 +1402,8 @@ if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 // Store the context for next time, and support chaining
 return $(this).data( 'wikiEditor-context', context );
 
-};})(jQuery);/**
+};})(jQuery);
+/**
  * Extend the RegExp object with an escaping function
  * From http://simonwillison.net/2006/Jan/20/escape/
  */
@@ -1745,6 +1769,14 @@ fn : {
 						parts[part] = ( action.options[part] || '' )
 					}
 				}
+				if ( 'regex' in action.options && 'regexReplace' in action.options ) {
+					var selection = context.$textarea.getSelection();
+					if ( selection != '' && selection.match( action.options.regex ) ) {
+						parts.peri = selection.replace( action.options.regex,
+							action.options.regexReplace );
+						parts.pre = parts.post = '';
+					}
+				}
 				context.$textarea.encapsulateSelection(
 					parts.pre, parts.peri, parts.post, action.options.ownline, action.type == 'replace'
 				);
@@ -1766,12 +1798,18 @@ fn : {
 		if ( label ) {
 			$group.append( '<div class="label">' + label + '</div>' )
 		}
+
+		var empty = true;
 		if ( 'tools' in group ) {
 			for ( tool in group.tools ) {
-				$group.append( $.wikiEditor.modules.toolbar.fn.buildTool( context, tool, group.tools[tool] ) );
+				var tool =  $.wikiEditor.modules.toolbar.fn.buildTool( context, tool, group.tools[tool] );
+				if ( tool ) {
+					empty = false;
+					$group.append( tool );
+				}
 			}
 		}
-		return $group;
+		return empty ? null : $group;
 	},
 	buildTool : function( context, id, tool ) {
 		if ( 'filters' in tool ) {
@@ -1849,25 +1887,23 @@ fn : {
 			.text( label )
 			.attr( 'rel', id )
 			.data( 'context', context )
-			.click(
-				function() {
-					
-					$(this).parent().parent().find( '.page' ).hide();
-					$(this).parent().parent().find( '.page-' + $(this).attr( 'rel' ) ).show();
-					$(this).siblings().removeClass( 'current' );
-					$(this).addClass( 'current' );
-					var section = $(this).parent().parent().attr( 'rel' );
-					
-					//click tracking
-					if($.trackAction != undefined){
-						$.trackAction(section + '.' + $(this).attr('rel'));
-					}
-					
-					$.cookie(
-						'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
-						$(this).attr( 'rel' )
-					);
-				} );
+			.bind( 'mousedown', function() {
+				$(this).parent().parent().find( '.page' ).hide();
+				$(this).parent().parent().find( '.page-' + $(this).attr( 'rel' ) ).show();
+				$(this).siblings().removeClass( 'current' );
+				$(this).addClass( 'current' );
+				var section = $(this).parent().parent().attr( 'rel' );
+				
+				//click tracking
+				if($.trackAction != undefined){
+					$.trackAction(section + '.' + $(this).attr('rel'));
+				}
+				
+				$.cookie(
+					'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
+					$(this).attr( 'rel' )
+				);
+			} );
 	},
 	buildPage : function( context, id, page ) {
 		var $page = $( '<div />' ).attr( {
@@ -1974,22 +2010,30 @@ fn : {
 					.attr( 'href', '#' )
 					.text( $.wikiEditor.autoMsg( section, 'label' ) )
 					.data( 'context', context )
-					.click( function() {
+					.bind( 'mouseup', function( e ) {
+						$(this).blur();
+					} )
+					.bind( 'click', function( e ) {
 						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
 						var $section =
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
-						$(this).blur();
 						var show = $section.css( 'display' ) == 'none';
 						$previousSections = $section.parent().find( '.section:visible' );
 						$previousSections.css( 'position', 'absolute' );
 						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
+						$sections.css('overflow', 'hidden');
 						if ( show ) {
 							$section.fadeIn( 'fast' );
-							$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() { 
+								$(this).css('overflow', 'visible').css('height', 'auto'); 
+							} );
 							$(this).addClass( 'current' );
 						} else {
-							$sections.animate( { 'height': 0 } );
+							$sections.css('height', $section.outerHeight() )
+								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() { 
+									$(this).css('overflow', 'visible'); 
+								} );
 						}
 						// Click tracking
 						if($.trackAction != undefined){
@@ -2090,7 +2134,7 @@ fn : {
 				s.$sections.append( $.wikiEditor.modules.toolbar.fn.buildSection( s.context, s.id, s.config ) );
 				var $section = s.$sections.find( '.section:visible' );
 				if ( $section.size() ) {
-					$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2 );
 				}
 			}
 		} );
@@ -2098,9 +2142,7 @@ fn : {
 }
 
 }; } )( jQuery );
-/**
- * TOC Module for wikiEditor
- */
+/* TOC Module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.toc = {
 
 /**
@@ -2141,7 +2183,7 @@ fn: {
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$textarea
-			.delayedBind( 1000, 'keyup encapsulateSelection change',
+			.delayedBind( 250, 'mouseup scrollToPosition focus keyup encapsulateSelection change',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -2153,25 +2195,16 @@ fn: {
 					} );
 				}
 			)
-			.bind( 'mouseup scrollToPosition focus keyup encapsulateSelection change',
-				function( event ) {
-					var context = $(this).data( 'wikiEditor-context' );
-					$(this).eachAsync( {
-						bulk: 0,
-						loop: function() {
-							$.wikiEditor.modules.toc.fn.update( context );
-						}
-					} );
-				}
-			)
 			.blur( function() {
 				var context = $(this).data( 'wikiEditor-context' );
+				context.$textarea.delayedBindCancel( 250,
+					'mouseup scrollToPosition focus keyup encapsulateSelection change' );
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
 	},
  
 	unhighlight: function( context ) {
-		context.modules.$toc.find( 'a' ).removeClass( 'currentSelection' );
+		context.modules.$toc.find( 'div' ).removeClass( 'current' );
 	},
 	/**
 	 * Highlight the section the cursor is currently within
@@ -2195,8 +2228,8 @@ fn: {
 				}
 				section = Math.max( 0, section );
 			}
-			var sectionLink = context.modules.$toc.find( 'a.section-' + section );
-			sectionLink.addClass( 'currentSelection' );
+			var sectionLink = context.modules.$toc.find( 'div.section-' + section );
+			sectionLink.addClass( 'current' );
 			
 			// Scroll the highlighted link into view if necessary
 			var relTop = sectionLink.offset().top - context.modules.$toc.offset().top;
@@ -2245,26 +2278,26 @@ fn: {
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
-			var list = $( '<ul />' );
+			var list = $( '<ul></ul>' );
 			for ( i in structure ) {
-				var item = $( '<li />' )
-					.append(
-						$( '<a />' )
-							.attr( 'href', '#' )
-							.addClass( 'section-' + structure[i].index )
-							.data( 'textbox', context.$textarea )
-							.data( 'position', structure[i].position )
-							.click( function( event ) {
-								$(this).data( 'textbox' )
-									.focus()
-									.setSelection( $(this).data( 'position' ) )
-									.scrollToCaretPosition( true );
-								if ( typeof $.trackAction != 'undefined' )
-									$.trackAction( 'ntoc.heading' );
-								event.preventDefault();
-							} )
-							.text( structure[i].text )
-					);
+				var div = $( '<div></div>' )
+					.attr( 'href', '#' )
+					.addClass( 'section-' + structure[i].index )
+					.data( 'textbox', context.$textarea )
+					.data( 'position', structure[i].position )
+					.bind( 'mousedown', function( event ) {
+						$(this).data( 'textbox' )
+							.focus()
+							.setSelection( $(this).data( 'position' ) )
+							.scrollToCaretPosition( true );
+						if ( typeof $.trackAction != 'undefined' )
+							$.trackAction( 'ntoc.heading' );
+						event.preventDefault();
+					} )
+					.text( structure[i].text );
+				if ( structure[i].text == '' )
+					div.html( '&nbsp;' );
+				var item = $( '<li></li>' ).append( div );
 				if ( structure[i].sections !== undefined ) {
 					item.append( buildList( structure[i].sections ) );
 				}
@@ -2275,7 +2308,7 @@ fn: {
 		// Build outline from wikitext
 		var outline = [];
 		var wikitext = $.wikiEditor.fixOperaBrokenness( context.$textarea.val() );
-		var headings = wikitext.match( /^={1,6}.+={1,6}\s*$/gm );
+		var headings = wikitext.match( /^={1,6}[^=\n][^\n]*={1,6}\s*$/gm );
 		var offset = 0;
 		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {
@@ -2335,18 +2368,11 @@ fn: {
 		// Recursively build the structure and add special item for
 		// section 0, if needed
 		var structure = buildStructure( outline );
-		if ( $( 'input[name=wpSection]' ).val() == '' )
+		if ( $( 'input[name=wpSection]' ).val() == '' ) {
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
+		}
 		context.modules.$toc.html( buildList( structure ) );
-		
-		context.modules.$toc.find( 'ul' ).css( 'width', '10em' );
-		
-		var links = context.modules.$toc.find( 'ul a' );
-		// Highlighted links are wider; autoEllipse links in
-		// highlighted state
-		links.addClass( 'currentSelection' );
-		links.autoEllipse( { 'position': 'right', 'tooltip': true } );
-		links.removeClass( 'currentSelection' );
+		context.modules.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}
