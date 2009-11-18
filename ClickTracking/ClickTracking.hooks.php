@@ -94,7 +94,7 @@ class ClickTrackingHooks {
 			'SUM(contribs)',
 			array(
 				'user_id' => $wgUser->getId(),
-				"day >= '$time'"
+				"day >= " . $dbr->addQuotes($time)
 			),
 			__METHOD__
 		);
