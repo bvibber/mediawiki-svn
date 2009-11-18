@@ -465,14 +465,7 @@ fn : {
 					.bind( 'mouseup', function( e ) {
 						$(this).blur();
 					} )
-					.bind( 'mousedown', function( e ) {
-						// Only act when the primary mouse button was pressed
-						// This is a terrible hack: IE and Safari use a 1/2/4 bitmask,
-						// but Firefox uses 0/1/2
-						// See http://quirksmode.org/dom/w3c_events.html#miscprop
-						if ( e.button !== 0  && ( e.button & 1 ) == 0) {
-							return true;
-						}
+					.bind( 'click', function( e ) {
 						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
 						var $section =
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
@@ -507,8 +500,8 @@ fn : {
 							'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
 							show ? $section.attr( 'rel' ) : null
 						);
+						return false;
 					} )
-					.click( function() { return false; } )
 			);
 	},
 	buildSection : function( context, id, section ) {
