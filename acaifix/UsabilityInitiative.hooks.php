@@ -66,16 +66,16 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 18 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 13 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 14 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 22 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 8 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 27 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 65 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 66 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 65 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 66 ),
 			),
 		),
 	);
