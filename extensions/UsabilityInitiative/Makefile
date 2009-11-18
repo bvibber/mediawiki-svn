@@ -20,6 +20,7 @@ PLUGINS := \
 	js/plugins/jquery.async.js\
 	js/plugins/jquery.autoEllipse.js\
 	js/plugins/jquery.browser.js\
+	js/plugins/jquery.collapsibleTabs.js\
 	js/plugins/jquery.cookie.js\
 	js/plugins/jquery.delayedBind.js\
 	js/plugins/jquery.namespaceSelect.js\
