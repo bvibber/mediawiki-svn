@@ -799,7 +799,7 @@ class LqtView {
 		$basePath = "$wgScriptPath/extensions/$wgLiquidThreadsExtensionName";
 		
 		if ( !$wgEnableJS2system ) {
-			$wgOut->addScriptFile( "$basePath/jquery/js2.combined.js" );
+			$wgOut->addScriptFile( "{$wgScriptPath}/js2/js2stopgap.js" );
 			$wgOut->addExtensionStyle( "$basePath/jquery/jquery-ui-1.7.2.css" );
 		}
 		
@@ -1339,10 +1339,6 @@ class LqtView {
 			$options = array() ) {
 		global $wgLang;
 		
-		if ( !isset( $this->toplevelShowThread ) ) {
-			$this->toplevelShowThread = $thread->id();
-		}
-		
 		// Safeguard
 		if ( $thread->type() & Threads::TYPE_DELETED ) {
 			return;
@@ -1449,13 +1445,6 @@ class LqtView {
 			count( array_intersect(
 				array_keys( $mustShowThreads ), array_keys( $thread->replies() )
 			) );
-			
-		if ( $this->toplevelShowThread == 847 ) {
-			wfDebugLog( 'Lqt-debugging', "LqtView::showThread(".$thread->id().") — showThreads: $showThreads ".
-				"hasSubthreads:$hasSubthreads, has ".count($thread->replies()).
-				" subthreads." );
-		}
-			
 		if ( $hasSubthreads && $showThreads ) {
 			$this->showThreadReplies( $thread, $startAt, $maxCount, $showThreads,
 				$cascadeOptions );
@@ -1484,10 +1473,6 @@ class LqtView {
 		$this->output->addHTML( Xml::closeElement( 'div' ) );
 		
 		$this->threadNestingLevel--;
-		
-		if ( $this->toplevelShowThread == $thread->id() ) {
-			unset( $this->toplevelShowThread );
-		}
 	}
 	
 	function threadDivClass( $thread ) {
