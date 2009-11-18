@@ -25,6 +25,11 @@ class WikiEditorHooks {
 		),
 	);
 	static $modules = array(
+		'global' => array(
+			'variables' => array(
+				'wgWikiEditorIconVersion',
+			),
+		),
 		'highlight' => array(
 			'i18n' => 'WikiEditorHighlight',
 			'preferences' => array(
@@ -307,17 +312,19 @@ class WikiEditorHooks {
 		
 		// Modules
 		$preferences = array();
-		foreach ( $wgWikiEditorModules as $module => $enable ) {
+		$modules = $wgWikiEditorModules;
+		$modules['global'] = true;
+		foreach ( $modules as $module => $enable ) {
 			if (
 				$enable['global'] || (
 					$enable['user']
 					&& isset( self::$modules[$module]['preferences']['enable'] )
 					&& $wgUser->getOption( self::$modules[$module]['preferences']['enable']['key'] )
-				)
+				) || $module == 'global'
 			) {
 				UsabilityInitiativeHooks::initialize();
 				// Messages
-				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {		
+				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {
 					wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
 					UsabilityInitiativeHooks::addMessages( self::$modules[$module]['messages'] );
 				}

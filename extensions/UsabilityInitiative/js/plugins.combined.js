@@ -2186,7 +2186,7 @@ fn : {
 		var label = $.wikiEditor.autoMsg( tool, 'label' );
 		switch ( tool.type ) {
 			case 'button':
-				var src = tool.icon;
+				var src = tool.icon + '?' + wgWikiEditorIconVersion;
 				if ( src.indexOf( 'http://' ) !== 0 && src.indexOf( 'https://' ) !== 0 ) {
 					src = $.wikiEditor.imgPath + 'toolbar/' + src;
 				}

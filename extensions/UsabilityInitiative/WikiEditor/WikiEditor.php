@@ -28,6 +28,9 @@ $wgWikiEditorModules = array(
 
 /* Setup */
 
+// Bump this each time you change an icon without renaming it
+$wgWikiEditorIconVersion = 0;
+
 // Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
