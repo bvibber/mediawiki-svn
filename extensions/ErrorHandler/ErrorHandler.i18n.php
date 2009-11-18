@@ -173,6 +173,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'errorhandler-errors' => 'Fazioù :',
+	'errorhandler-trace' => 'roud :',
 );
 
 /** Bosnian (Bosanski)

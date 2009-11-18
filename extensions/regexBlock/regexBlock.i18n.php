@@ -397,6 +397,7 @@ $messages['br'] = array(
 	'regexblock-form-expiry' => 'Termen :',
 	'regexblock-form-match' => 'Klotadur rik',
 	'regexblock-form-submit' => 'Stankañ an implijer-mañ',
+	'regexblock-view-blocked' => 'Gwelet ar stankadurioù gant :',
 	'regexblock-view-all' => 'Pep tra',
 	'regexblock-view-reason' => 'abeg : $1',
 	'regexblock-view-block-infinite' => 'stankadur pad',

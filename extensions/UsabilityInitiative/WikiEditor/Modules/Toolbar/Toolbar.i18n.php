@@ -1253,6 +1253,7 @@ $messages['br'] = array(
 	'wikieditor-toolbar-tool-replace-case' => "Diforc'hañ Pennlizherennoù/Lizherennoù bihan",
 	'wikieditor-toolbar-tool-replace-regex' => 'Sellet ouzh ar chadennad klask evel ouzh un droienn reoliek',
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'Kavout an hini da heul',
+	'wikieditor-toolbar-tool-replace-button-replacenext' => "Erlec'hiañ an hini da-heul",
 	'wikieditor-toolbar-tool-replace-button-replaceall' => "Erlec'hiañ pep tra",
 	'wikieditor-toolbar-tool-replace-close' => 'Nullañ',
 	'wikieditor-toolbar-tool-replace-nomatch' => "N'eus bet kavet netra o klotañ gant ar pezh a glaskit.",

@@ -2531,9 +2531,12 @@ $messages['sh'] = array(
 
 /** Sinhala (සිංහල)
  * @author Asiri wiki
+ * @author Calcey
  */
 $messages['si'] = array(
 	'youtubeauthsub' => 'YouTube වීඩියෝව උඩුගතකරන්න',
+	'youtubeauthsub-desc' => 'පරිශීලකයින්ට ඍජුවම YouTube වෙත  [[Special:YouTubeAuthSub|වීඩියෝ උඩුගත කිරීම]]ට ඉඩ හරියි.',
+	'youtubeauthsub_info' => 'පිටුවකට කිරීම සඳහා YouTube වෙත වීඩියෝවක් උඩුගත කිරීමට,පහත තොරතුරු පුරවන්න:',
 	'youtubeauthsub_title' => 'සිරස',
 	'youtubeauthsub_description' => 'විස්තරය',
 	'youtubeauthsub_password' => 'YouTube මුරපදය',
@@ -2550,6 +2553,7 @@ YouTube may require some time to process your video, so it might not be ready ju
 
 වීඩියෝව ඔබගේ විකි පිටුවකට යෙදීමක‍ට නම් පහත දැක්වෙන කේත පි‍ටුව‍ට ඇතුල් කරන්න:
 <code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => ' වීඩියෝවත් උඩුගත කිරීමට,ඔබ ප්‍රථමයෙන්ම YouTube වෙත පිවිසිය යුතුය.',
 	'youtubeauthsub_uploadhere' => 'ඔබේ වීඩීයෝව මෙතැනින් උඩුගතකරන්න:',
 	'youtubeauthsub_uploadbutton' => 'උඩුගතකරන්න',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.

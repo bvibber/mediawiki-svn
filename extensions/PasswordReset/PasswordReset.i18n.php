@@ -1290,9 +1290,11 @@ $messages['pt-br'] = array(
 	'right-passwordreset' => 'Repor palavra-chave de um utilizador ([[Special:PasswordReset|página especial]])',
 );
 
-/** Rhaeto-Romance (Rumantsch) */
+/** Rhaeto-Romance (Rumantsch)
+ * @author Gion-andri
+ */
 $messages['rm'] = array(
-	'passwordreset-username' => "Num d'utilisader",
+	'passwordreset-username' => "Num d'utilisader:",
 );
 
 /** Romanian (Română)

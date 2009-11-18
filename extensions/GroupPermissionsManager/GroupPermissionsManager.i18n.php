@@ -1556,6 +1556,13 @@ $messages['id'] = array(
 	'right-readold' => 'Melihat isi revisi lama dan perbedaan revisi',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'grouppermissions-sp-save' => 'Registragar',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn

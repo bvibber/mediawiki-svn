@@ -255,9 +255,11 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'povwatch' => 'PovWatch',
 	'povwatch_already_subscribed' => "Koumanantet oc'h da bPovWatch dija",
+	'povwatch_subscribed' => "Koumanantet oc'h da PovWatch bremañ",
 	'povwatch_unknown_subpage' => 'Ispajenn dianav.',
 	'povwatch_title' => 'Titl :',
 	'povwatch_comment' => 'Addispleg evit an deizlevr :',
+	'povwatch_no_subscribers' => "N'eus ket koumananterien.",
 	'povwatch_unsubscribe' => 'Digoumanantiñ',
 	'povwatch_subscribe' => 'Koumanantiñ',
 	'povwatch_added' => 'ouzhpennet',
@@ -1801,6 +1803,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Sir Lestaty de Lioncourt
@@ -1817,9 +1820,9 @@ $messages['pt'] = array(
 	'povwatch_unsubscribed' => 'Você não está mais inscrito na lista do PovWatch',
 	'povwatch_invalid_title' => 'O título especificado é inválido',
 	'povwatch_pushed' => '[[$1]] foi adicionada com sucesso à lista de páginas vigiadas de {{PLURAL:$2|$2 utilizador|$2 utilizadores}}',
-	'povwatch_intro' => 'PovWatch é um serviço que permite que páginas sejam discretamente adicionadas para a lista de artigos vigiados de administradores subscritos.
+	'povwatch_intro' => 'PovWatch é um serviço que permite adicionar discretamente páginas contenciosas às listas de páginas vigiadas dos administradores que subscrevem o serviço.
 
-Um registro das recentes páginas adicionadas na lista de artigos vigiados está disponível na página [[Special:PovWatch/log]].',
+Um registo das adições recentes às listas de páginas vigiadas está disponível na página [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'Uma [[Special:PovWatch/subscribers|lista de subscritos]] está disponível.',
 	'povwatch_subscriber_list_intro' => '<strong>Lista de subscritos</strong>',
 	'povwatch_not_allowed_subscribers' => 'Você não tem permissão para visualizar a lista de subscritos do PovWatch.',
@@ -1828,7 +1831,7 @@ Um registro das recentes páginas adicionadas na lista de artigos vigiados está
 	'povwatch_push_intro' => 'Utilize o formulário abaixo para adicionar páginas na lista de artigos vigiados de utilizadores subscritos.
 Tenha cuidado ao digitar o título: mesmo os títulos que não existem podem ser adicionados, e não há uma maneira de remover um título depois de ter sido adicionado.',
 	'povwatch_title' => 'Título:',
-	'povwatch_comment' => 'Registrar comentário:',
+	'povwatch_comment' => 'Comentário do registo:',
 	'povwatch_no_log' => 'Não há regitros',
 	'povwatch_no_subscribers' => 'Não existem subscritores.',
 	'povwatch_unsubscribe_intro' => 'Você está subscrito para o PovWatch.

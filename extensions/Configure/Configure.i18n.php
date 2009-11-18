@@ -8445,6 +8445,7 @@ $messages['su'] = array(
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
+ * @author Per
  */
 $messages['sv'] = array(
 	'configure' => 'Konfigurera wikin',
@@ -8563,7 +8564,7 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-section-output' => 'Utdata',
 	'configure-select-wiki' => 'Val av wiki',
 	'configure-select-wiki-desc' => 'Välj den wiki du vill konfigurera.',
-	'configure-select-wiki-view-desc' => 'Välj en wiki som du vill se versionerna från.',
+	'configure-select-wiki-view-desc' => 'Välj en wiki som du vill se konfigurations versionerna från.',
 	'configure-select-wiki-view-all' => 'Alla wikier',
 	'configure-select-wiki-view-specific' => 'Specifik wiki:',
 	'configure-select-wiki-submit' => 'Välj',

@@ -590,11 +590,15 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Per
  */
 $messages['sv'] = array(
+	'ratedpages' => 'Sidor betygssatta av läsare',
+	'ratedpages-leg' => 'Hitta sidor med flera betygssättningar',
 	'ratedpages-list' => 'Nedan finns en lista över sidor sorterade efter deras läsar-feedback-betyg',
 	'ratedpages-none' => 'Det finns inga sidor i denna lista',
 	'ratedpages-graphs' => 'betygsdata',
+	'ratedpages-count' => '$1 {{PLURAL:$1|granskning|granskningar}}',
 );
 
 /** Telugu (తెలుగు)

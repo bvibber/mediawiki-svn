@@ -384,6 +384,13 @@ $messages['tr'] = array(
 	'tab0-desc' => 'Sayfanın ilk bölümünü değiştirme sayfasına bağlantı veren "0" sekmesini ekler',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'tab0-desc' => 'Додає вкладку "0" з посиланням на редагування першої секції сторінки',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

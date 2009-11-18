@@ -129,6 +129,7 @@ $messages['br'] = array(
 	'security' => 'Marilh surentez',
 	'security-logpage' => 'Marilh surentez',
 	'security-info' => " Bez' ez eus $1 war ar bajenn-mañ",
+	'security-info-toggle' => 'strishadurioù surentez',
 	'security-inforestrict' => '$1 zo strishaet da $2',
 	'security-manygroups' => 'strolladoù $1 ha $2',
 	'security-unchain' => 'Kemmañ an oberoù unan-hag-unan',

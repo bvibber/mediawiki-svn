@@ -868,6 +868,24 @@ $messages['id'] = array(
 	'right-closewikis' => 'Tutup wiki',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'closewikis-page' => 'Klozar wiki',
+	'closewikis-page-close' => 'Klozar wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-submit' => 'Klozez',
+	'closewikis-page-reopen' => 'Ri-apertar wiki',
+	'closewikis-page-reopen-reason' => 'Motivo:',
+	'closewikis-page-reopen-submit' => 'Ri-apertez',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Klozita da',
+	'closewikis-list-header-timestamp' => 'Klozita ye',
+	'closewikis-log-close' => 'klozis $2',
+	'closewikis-log-reopen' => 'ri-apertis $2',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn
@@ -1292,7 +1310,7 @@ $messages['pt'] = array(
 	'closewikis-page-close' => 'Fechar wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
 	'closewikis-page-close-dreason' => 'Razão (apresentada):',
-	'closewikis-page-close-reason' => 'Razão (registrada):',
+	'closewikis-page-close-reason' => 'Razão (registada):',
 	'closewikis-page-close-submit' => 'Fechar',
 	'closewikis-page-close-success' => 'Wiki foi fechada com sucesso',
 	'closewikis-page-reopen' => 'Reabrir wiki',
@@ -1309,8 +1327,8 @@ $messages['pt'] = array(
 	'closewikis-list-header-by' => 'Fechada por',
 	'closewikis-list-header-timestamp' => 'Fechada em',
 	'closewikis-list-header-dispreason' => 'Razão apresentada',
-	'closewikis-log' => 'Registro de Wikis fechadas',
-	'closewikis-log-header' => "Aqui está um registro de todas as wikis que foram fechadas ou reabertas por administradores ''(stewards)''",
+	'closewikis-log' => 'Registo de Wikis fechadas',
+	'closewikis-log-header' => "Este é um registo de todas as wikis que foram fechadas ou reabertas por administradores ''(stewards)''",
 	'closewikis-log-close' => 'fechada $2',
 	'closewikis-log-reopen' => 'reaberta $2',
 	'right-editclosedwikis' => 'Editar wikis fechadas',

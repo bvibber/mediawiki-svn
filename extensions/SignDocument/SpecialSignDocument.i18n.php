@@ -595,6 +595,7 @@ $messages['br'] = array(
 	'sign-list-hideemail' => "Chom hep menegiñ ar chomlec'h postel",
 	'sign-submit' => 'Sinañ an teul',
 	'sign-view-selectfields' => '<b>Maeziennoù da ziskwel :</b>',
+	'sign-viewfield-timestamp' => 'Deiziad hag eur',
 	'sign-viewfield-realname' => 'Anv',
 	'sign-viewfield-address' => "Chomlec'h",
 	'sign-viewfield-city' => 'Kêr',
@@ -611,7 +612,9 @@ $messages['br'] = array(
 	'sign-closed' => 'serr',
 	'sig-anonymous' => '<i>Dizanv</i>',
 	'sig-private' => '<i>Prevez</i>',
+	'sign-viewfield-stricken' => 'Barrennet',
 	'sign-viewfield-reviewcomment' => 'Addispleg',
+	'sign-review-comment' => 'Addispleg',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] en deus kadarnaet [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 

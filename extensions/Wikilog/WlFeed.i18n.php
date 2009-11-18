@@ -163,6 +163,13 @@ $messages['ru'] = array(
 	'wlfeed-desc' => 'Расширенные классы подготовки лент новостей',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'wlfeed-desc' => 'වර්ධිත සංග්‍රහ ප්‍රවේණි පංති',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

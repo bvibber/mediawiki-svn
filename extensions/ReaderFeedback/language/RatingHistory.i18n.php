@@ -224,6 +224,8 @@ $messages['br'] = array(
 	'ratinghistory-year' => 'bloaz tremenet',
 	'ratinghistory-3years' => 'tri bloaz diwezhañ',
 	'ratinghistory-ave' => 'Keidenn : $1',
+	'ratinghistory-purge' => 'riñsañ ar grubuilh',
+	'ratinghistory-svg' => 'Gwelet evel SVG',
 );
 
 /** Bosnian (Bosanski)

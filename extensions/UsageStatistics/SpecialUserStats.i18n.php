@@ -1677,6 +1677,7 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'specialuserstats' => "Statìstiche d'utilisassion",
@@ -1690,6 +1691,23 @@ $messages['pms'] = array(
 	'usagestatistics-namespace' => 'Coste a son dë statìstiche an slë spassi nominal [[Special:Allpages/$1|$2]].',
 	'usagestatistics-noredirects' => 'Le [[Special:ListRedirects|ridiression]] a son nen pijà an cont.',
 	'usagestatisticstype' => 'Tipo:',
+	'usagestatisticsstart' => 'Dàita ëd prinsipi:',
+	'usagestatisticsend' => 'Dàita ëd fin:',
+	'usagestatisticssubmit' => 'Generé le statìstiche',
+	'usagestatisticsnostart' => 'Për piasì specìfica na data ëd partensa',
+	'usagestatisticsnoend' => 'Për piasì specìfica na data ëd fin',
+	'usagestatisticsbadstartend' => '<b>Data <i>inissial</i> e/o <i>final</i> pa bon-a!</b>',
+	'usagestatisticsintervalday' => 'Di',
+	'usagestatisticsintervalweek' => 'Sman-a',
+	'usagestatisticsintervalmonth' => 'Meis',
+	'usagestatisticsincremental' => 'Ancremental',
+	'usagestatisticsincremental-text' => 'ancremental',
+	'usagestatisticscumulative' => 'Cumulativ',
+	'usagestatisticscumulative-text' => 'cumulativ',
+	'usagestatisticscalselect' => 'Selession-a',
+	'usagestatistics-editindividual' => "Statìstiche $1 dle modìfiche dj'utent andividuaj",
+	'usagestatistics-editpages' => "Statìstiche $1 dle pàgine dj'utent andividuaj",
+	'right-viewsystemstats' => "Varda [[Special:UserStats|statìstiche d'usagi dla wiki]]",
 );
 
 /** Pashto (پښتو)

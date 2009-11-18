@@ -265,6 +265,7 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'extdist-submit-extension' => "Kenderc'hel",
 	'extdist-submit-version' => "Kenderc'hel",
+	'extdist-want-more' => 'Tapout un astenn all',
 );
 
 /** Bosnian (Bosanski)

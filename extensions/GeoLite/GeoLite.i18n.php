@@ -32,6 +32,13 @@ $messages['af'] = array(
 	'geolite-desc' => 'Liggewig GeoIP-gebaseerde aanstuur',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'geolite-desc' => 'Палегчанае перанакіраваньне GeoIp',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

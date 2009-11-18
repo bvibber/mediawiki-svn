@@ -290,6 +290,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'recordadmin-select' => 'Diuzañ',
 	'recordadmin-newsearch' => 'Enklask nevez $1',
+	'recordadmin-newrecord' => 'Diuzañ ur seurt enrolladennoù all',
 	'recordadmin-submit' => 'Kas',
 	'recordadmin-createsuccess' => '$1 zo bet krouet',
 	'recordadmin-badtitle' => 'Titl fall !',
@@ -307,6 +308,8 @@ $messages['br'] = array(
 	'recordadmin-modified' => 'Kemmet',
 	'recordadmin-actions' => 'Oberoù',
 	'recordadmin-editwithform' => 'Aozañ gant ur furmskrid',
+	'recordadmin-typeinfo' => 'enrolladenn $1',
+	'right-recordadmin' => 'Kavout hag aozañ ar pajennoù enrollañ',
 );
 
 /** Bosnian (Bosanski)
@@ -1041,6 +1044,13 @@ $messages['id'] = array(
 	'recordadmin-editwithform' => 'Sunting dengan formulir',
 	'recordadmin-typeinfo' => '$1 catatan',
 	'right-recordadmin' => 'Temukan dan sunting catatan halaman',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'recordadmin-buttonsave' => 'Registragar',
 );
 
 /** Italian (Italiano)

@@ -227,6 +227,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'patrol-revert' => 'Assevel',
 	'patrol-revert-reason' => 'Abeg :',
 	'group-patroller' => 'Patrouilherien',
 	'group-patroller-member' => 'patrouilher',

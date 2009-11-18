@@ -800,6 +800,8 @@ $messages['lfn'] = array(
  * @author Dakrismeno
  */
 $messages['lmo'] = array(
+	'lookupuser' => 'Varda i infurmazión del druvadur',
+	'lookupuser-intro' => 'Meta denter un suranom per vedè i sò preferenz.',
 	'lookupuser-nonexistent' => "Erur: 'stu druvadur l'esist mía",
 	'lookupuser-authenticated' => 'utenticaa del: $1',
 	'lookupuser-not-authenticated' => 'mía utenticaa',

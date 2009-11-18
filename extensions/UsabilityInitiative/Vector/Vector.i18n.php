@@ -47,6 +47,14 @@ $messages['br'] = array(
 	'vector-desc' => 'Gwellaat a ra elfennoù eus ar gwiskadur Vector war an etrefas implijer .',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'vector' => 'UI poboljšanja za Vector',
+	'vector-desc' => 'Poboljšava elemente korisničkog interfejsa u koži Vector.',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

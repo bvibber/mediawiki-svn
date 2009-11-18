@@ -190,6 +190,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'refreshspecial-title' => 'Freskaat ar pajennoù arbennik',
+	'refreshspecial-button' => 'Freskaat ar re ziuzet',
 	'refreshspecial-select-all-pages' => 'Diuzañ an holl bajennoù',
 	'refreshspecial-reconnected' => 'Adkevreet.',
 );

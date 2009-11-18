@@ -83,6 +83,13 @@ $messages['be-tarask'] = array(
 	'rt-nomatches' => 'Ня знойдзена супадзеньняў з RT',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'rt-inactive' => "An astenn RT n'eo ket oberiant",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

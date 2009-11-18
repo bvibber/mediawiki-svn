@@ -496,10 +496,12 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
 	'hiderevision-continue' => "Kenderc'hel",
+	'oversight' => 'Oversight',
 	'oversight-view' => 'munudoù',
 );
 
@@ -2970,6 +2972,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Indech
  * @author Lijealso
  * @author Malafaya
@@ -3018,7 +3021,7 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 	'oversight-hidden' => 'Edição oculta',
 	'oversight-header' => 'Listagem de edições permanentemente ocultas de serem vistas publicamente.
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
-	'oversight-legend' => 'Pesquisar registro de revisões ocultas',
+	'oversight-legend' => 'Pesquisar registo de ocultação de revisões',
 	'oversight-oversighter' => 'Supervisor:',
 	'oversight-offender' => 'Autor da revisão:',
 );

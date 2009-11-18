@@ -295,6 +295,13 @@ $messages['sr-el'] = array(
 	'Editsectionhilitelink-desc' => 'Ističe odgovarajući odeljak strane kada se mišem pređe preko veze za njegovu izmenu',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'Editsectionhilitelink-desc' => 'Markera den aktuella delen av en sida när du för muspekaren över editeringslänken',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  */

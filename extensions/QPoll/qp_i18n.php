@@ -114,9 +114,11 @@ To save a poll, submit it while not answering to any proposal questions.',
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
+ * @author Hamilton Abreu
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'pollresults' => 'Special page name in [[Special:SpecialPages]]',
 	'qp_desc' => '{{desc}}',
 	'qp_result_error' => '{{Identical|Syntax error}}',
 	'qp_vote_button' => '{{Identical|Vote}}',
@@ -199,6 +201,16 @@ Om \'n peiling te stoor, stuur dit sonder dat enig voorstel beantwoord word.',
  */
 $messages['be-tarask'] = array(
 	'qp_stats_link' => 'Статыстыка',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'qp_desc' => 'Aotren krouiñ sontadegoù',
+	'qp_stats_link' => 'Stadegoù',
+	'qp_error_category_name_empty' => 'Goullo eo anv ar rummad',
+	'qp_error_proposal_text_empty' => "Goullo eo testenn ar c'hinnig",
 );
 
 /** Bosnian (Bosanski)
@@ -716,8 +728,79 @@ $messages['ja'] = array(
 	'qp_error_question_not_implemented' => 'そのタイプの質問は実装されていません: $1',
 	'qp_error_invalid_question_type' => '無効な質問タイプ: $1',
 	'qp_error_type_in_stats_mode' => '質問タイプは統計表示モードでは定義できません: $1',
+	'qp_error_no_poll_id' => '投票タグに id 属性がありません。',
+	'qp_error_invalid_poll_id' => '無効な投票 ID ($1)。
+投票 ID はアルファベット、数字、スペースのみを含むことができます。',
+	'qp_error_already_used_poll_id' => 'その投票 ID は既にこのページで使われています ($1)。',
 	'qp_error_category_name_empty' => 'カテゴリー名が空です',
 	'qp_error_proposal_text_empty' => '提案文が空です',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'pollresults' => 'Wat bei dä Affschtemmunge en heh däm Wiki eruß gekumme es',
+	'qp_desc' => 'Määt Affschtemmunge müjjelesch.',
+	'qp_desc-sp' => '[[Special:PollResults|{{int:nstab-special}}]] för aanzeloore, wat bei Affschtemmunge erus kohm.',
+	'qp_result_NA' => 'Kein Antwoot jejovve',
+	'qp_result_error' => 'Ene Fähler en dä Syntax es opjefalle',
+	'qp_vote_button' => 'Schtemm',
+	'qp_vote_again_button' => 'Donn Ding Shtemm ändere',
+	'qp_polls_list' => 'Alle Affschtemmunge opleste',
+	'qp_users_list' => 'Alle Metmaacher opleste',
+	'qp_browse_to_poll' => 'Bes $1 bläddere',
+	'qp_browse_to_user' => 'Bes $1 bläddere',
+	'qp_votes_count' => '{{PLURAL:$1|ein Schtemm|$1 Schtemme|Kein Schtemm}}',
+	'qp_source_link' => 'Quelle-Dattei',
+	'qp_stats_link' => 'Schtatistike',
+	'qp_users_link' => 'Metmaacher',
+	'qp_voice_link' => 'Enem Metmaacher sing Stemm',
+	'qp_voice_link_inv' => 'Enem Metmaacher sing Stemm?',
+	'qp_user_polls_link' => 'Hät beij {{PLURAL:$1|eine Affschtemmung|$1 Affschtemmunge|keine Affschtemmung}} metjemaat',
+	'qp_user_missing_polls_link' => 'Keine hät metjemaat',
+	'qp_not_participated_link' => 'Nit metjmaat',
+	'qp_order_by_username' => 'Noh de Metmaacher iere Name zoteere',
+	'qp_order_by_polls_count' => 'Noh e Affschtemmunge ier Zahle zoteere',
+	'qp_results_line_qupl' => 'Sigg „$1“ Affschtemmung „$2“: $3',
+	'qp_results_line_qpl' => 'Sigg „$1“ Affschtemmung „$2“: $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Sigg „$2“ Affschtemmung „$3“ ]',
+	'qp_export_to_xls' => 'Donn de Schtatistike em <i lang="en">XLS</i> Fommaat äxpotteere',
+	'qp_users_answered_questions' => '{{PLURAL:$1|Eine|$1|Keine}} Metmaacher {{PLURAL:$1|hät|han|hät}} op di Froore jeantwoot \\',
+	'qp_func_no_such_poll' => 'Esu en Affschtemmung ham_mer nit ($1)',
+	'qp_func_missing_question_id' => 'Bes esu joot, un jif en Kännong aan, di et jitt,för en Frooch (vun 1 aan jezallt) för de Affschtemmung $1',
+	'qp_func_invalid_question_id' => 'Dat es en onjöltijje Frooch (<code lang="en">id=$2</code>), nämmlesch kein Nommer, för de Affschtemmung $1',
+	'qp_func_missing_proposal_id' => 'Bes esu joot, un jif en Kännong aan, di et jitt,för ene Vörschlaach (vun 0 aan jezallt) för de Affschtemmung $1 un de Frooch $2',
+	'qp_func_invalid_proposal_id' => 'Dat es en onjöltijje Kännong för ene Vörschlaach (<code lang="en">id=$3</code>), nämmlesch kein Nommer, för de Affschtemmung $1 un de Frooch $2',
+	'qp_error_no_such_poll' => 'Mer hann kein esu en Affschtemmung ($1).
+Bes sescher, dat di Affschtemmung wennjerescht es un affjeschpeijschert, un bes sescher, dat De dat Bejränzungszeijsche # en dä Addräß bruche deihß.',
+	'qp_error_id_in_stats_mode' => 'Mer künne kein Kännung (<code lang="en">id=</code>) fö di Affschtemmung en de Enschtellung för de Schtatistike faßlääje',
+	'qp_error_dependance_in_stats_mode' => 'Mer künne kein Kett vun Affhängeschkeite fö di Affschtemmung en de Enschtellung för de Schtatistike faßlääje',
+	'qp_error_no_stats' => 'Ner han kein schtatistesche Daate, weil noch keiner för heh di Affjeschtemmung affjeschtemmp hät. (<code>address=$1</code>) \\',
+	'qp_error_address_in_decl_mode' => 'Mer künne kein Addräß vun dä Affschtemmung beij em Fäßlääje vun de Enschtellung un Eijeschaffte krijje',
+	'qp_error_question_not_implemented' => 'Froore vun dä Zoot sin nit em Projramm: $1',
+	'qp_error_invalid_question_type' => 'Dat es en onjöltijje Zoot Frooch: $1',
+	'qp_error_type_in_stats_mode' => 'Froore ier Zoot kam_mer nit en de Enschtellung för de Schtatistike faßlääje: $1',
+	'qp_error_no_poll_id' => 'Dä Befähl för en Affschtemmung hät kein Kännung (<code>id=</code>) aanjejovve.',
+	'qp_error_invalid_poll_id' => 'Dat es en onjöltijje Kännung för en Affschtemmung (<code>id=$1</code>)
+Doh dörfe nur Bochschtabe, Zeffere, un Affschtänd dren sin.',
+	'qp_error_already_used_poll_id' => 'Di Kännung för en Affschtemmung (<code>id=$1</code>) es ald ens op heh dä Sigg jebruch woode.',
+	'qp_error_invalid_dependance_value' => 'Di Affschtemmung fö di Kännung (<code>id=$1</code>) ier Kett vun Afhängeschkeite hät en onjöltesch Eijeschaff (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'Di Affschtemmung met dä Kännung (<code>id=$1</code>) hängk aff vun ene andere Affschtemmung met dä Kännung (<code>id=$3</code>) op dä Sigg „[[$2]]“, ävver di ham_mer nit jefonge.
+Entweder donn die Eijeschff met dä Affhängeschkeit fott, udder holl di Sigg „[[$2]]“ wider en et Wiki,',
+	'qp_error_missed_dependance_poll' => 'Di Affschtemmung met dä Kännung (<code>id=$1</code>) hängk aff vun ene andere Affschtemmung met dä Kännung (<code>id=$3</code>) op dä Sigg „[[:$2]]“, ävver di Affschtemmung ham_mer doh nit jefonge.
+Entweder donn die Eijeschaff met dä Affhängeschkeit fott, udder donn en Affschtemmung met dä Kännung (<code>id=$3</code>) op di Sigg „[[:$2]]“ un donn se afscheijschere.
+Öm en Afschtemmung reschtesch ze schpeijschere, donn dat, der ohne op en Frooch jeantwoot ze han.',
+	'qp_error_vote_dependance_poll' => 'Bes esu joot un donn övver „$1“ et eets affschtemme',
+	'qp_error_too_many_spans' => 'Zoh vill Knubbel Classes sin för de Ungerknubbel aanjejovve',
+	'qp_error_unanswered_span' => 'Onger-Knubber oohne Antwoot',
+	'qp_error_non_unique_choice' => 'Di Frooch bruch ene einzelne Vörschlaach för en Antwoot \\',
+	'qp_error_category_name_empty' => 'Dä Name för dä Knubbel es läddesch',
+	'qp_error_proposal_text_empty' => 'En däm Täx för dä Vörschlaach schteiht nix dren',
+	'qp_error_too_few_categories' => 'Winnischsdens zweij Knubbelle möße doh sin',
+	'qp_error_too_few_spans' => 'För jeede Zoot Knubbel möte winnischsdens zweij müjjelesche Antwoote doh sin',
+	'qp_error_no_answer' => 'Ene Vörschlaach ohne Antwoot',
+	'qp_error_unique' => 'En Frooch vun dä Zoot <code>unique()</code> hät mieh Vörschlääsch, wi müjjelesche Antwoote aanjejovve: Dat kam_mer nit ußfölle.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -836,6 +919,73 @@ $messages['nn'] = array(
 	'qp_users_list' => 'List opp alle brukarar',
 	'qp_source_link' => 'Kjelde',
 	'qp_stats_link' => 'Statistikk',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'pollresults' => 'Resultados de sondagens neste sítio',
+	'qp_desc' => 'Permite a criação de sondagens',
+	'qp_desc-sp' => '[[Special:PollResults|Página especial]] para visualizar os resultados das sondagens',
+	'qp_result_NA' => 'Sem resposta',
+	'qp_result_error' => 'Erro sintáctico',
+	'qp_vote_button' => 'Vote',
+	'qp_vote_again_button' => 'Altere o seu voto',
+	'qp_polls_list' => 'Listar todas as sondagens',
+	'qp_users_list' => 'Listar todos os utilizadores',
+	'qp_browse_to_poll' => 'Navegar para $1',
+	'qp_browse_to_user' => 'Navegar para $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|voto|votos}}',
+	'qp_source_link' => 'Fonte',
+	'qp_stats_link' => 'Estatísticas',
+	'qp_users_link' => 'Utilizadores',
+	'qp_voice_link' => 'Voz do utilizador',
+	'qp_voice_link_inv' => 'Voz do utilizador?',
+	'qp_user_polls_link' => 'Participou {{PLURAL:$1|numa sondagem|em $1 sondagens}}',
+	'qp_user_missing_polls_link' => 'Nenhuma participação',
+	'qp_not_participated_link' => 'Não participada',
+	'qp_order_by_username' => 'Ordenar por utilizador',
+	'qp_order_by_polls_count' => 'Ordenar por contagem de sondagens',
+	'qp_results_line_qupl' => 'Página "$1" Sondagem "$2": $3',
+	'qp_results_line_qpl' => 'Página "$1" Sondagem "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Página "$2" Sondagem "$3" ]',
+	'qp_export_to_xls' => 'Exportar estatísticas para o formato XLS',
+	'qp_users_answered_questions' => '{{PLURAL:$1|Um utilizador respondeu|$1 utilizadores responderam}} às questões',
+	'qp_func_no_such_poll' => 'Sondagem inexistente ($1)',
+	'qp_func_missing_question_id' => 'Por favor, especifique o número de uma pergunta existente (começando a partir de 1) para a sondagem $1',
+	'qp_func_invalid_question_id' => 'Número de pergunta=$2 é inválido (não é numérico) para a sondagem $1',
+	'qp_func_missing_proposal_id' => 'Por favor, especifique o número de uma proposta existente (começando a partir de 0) para a sondagem $1, pergunta $2',
+	'qp_func_invalid_proposal_id' => 'Número de proposta=$3 é inválido (não é numérico) para a sondagem $1, pergunta $2',
+	'qp_error_no_such_poll' => 'Sondagem inexistente ($1).
+Verifique que a sondagem foi declarada e gravada, certifique-se também de que foi usado o carácter delimitador #',
+	'qp_error_id_in_stats_mode' => 'Não é possível declarar um identificador da sondagem em modo estatístico',
+	'qp_error_dependance_in_stats_mode' => 'Não é possível declarar uma cadeia de dependências da sondagem em modo estatístico',
+	'qp_error_no_stats' => 'Não estão disponíveis dados estatísticos, porque ainda ninguém votou nesta sondagem (endereço=$1)',
+	'qp_error_address_in_decl_mode' => 'Não é possível obter um endereço da sondagem em modo declarativo',
+	'qp_error_question_not_implemented' => 'Não estão implementadas perguntas do tipo: $1',
+	'qp_error_invalid_question_type' => 'Tipo de pergunta inválido: $1',
+	'qp_error_type_in_stats_mode' => 'Não é possível definir em modo de visualização estatística o tipo de pergunta: $1',
+	'qp_error_no_poll_id' => "Não foi definido um atributo de identificação no marcador ''(tag)'' da sondagem",
+	'qp_error_invalid_poll_id' => 'Identificador de sondagem inválido (id=$1).
+O identificador só pode conter letras, números e espaços',
+	'qp_error_already_used_poll_id' => 'O identificador da sondagem (id=$1) já foi usado nesta página',
+	'qp_error_invalid_dependance_value' => 'A cadeia de dependências da sondagem (id=$1) tem um valor inválido no atributo da dependência (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'A sondagem (id=$1) está dependente de outra sondagem (id=$3) da página [[$2]], mas o título [[$2]] não foi encontrado.
+Remova o atributo da dependência ou restaure a página [[$2]]',
+	'qp_error_missed_dependance_poll' => 'A sondagem (id=$1) está dependente de outra sondagem (id=$3) da página $2, mas essa sondagem não existe ou ainda não foi gravada.
+Remova o atributo da dependência ou crie a sondagem com id=$3 na página $2 e grave-a.
+Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
+	'qp_error_vote_dependance_poll' => 'Por favor, vote na sondagem $1 antes.',
+	'qp_error_too_many_spans' => 'Demasiadas classes de categorias para as subcategorias definidas',
+	'qp_error_unanswered_span' => 'Subcategoria sem resposta',
+	'qp_error_non_unique_choice' => 'Esta pergunta requer resposta a uma única proposta',
+	'qp_error_category_name_empty' => 'O nome da categoria está vazio',
+	'qp_error_proposal_text_empty' => 'O texto da proposta está vazio',
+	'qp_error_too_few_categories' => 'Deve definir pelo menos duas categorias',
+	'qp_error_too_few_spans' => 'Cada classe de categorias requer pelo menos duas respostas possíveis definidas',
+	'qp_error_no_answer' => 'Proposta sem resposta',
+	'qp_error_unique' => 'Pergunta do tipo unique() tem mais propostas definidas do que respostas possíveis: impossível de completar',
 );
 
 /** Russian (Русский)

@@ -812,9 +812,13 @@ $messages['bg'] = array(
  * @author Fohanno
  */
 $messages['br'] = array(
+	'deletequeue-action-queued' => 'Dilamadur',
+	'deletequeue-action' => 'Kinnig un dilamadur',
 	'deletequeue-delnom-otherreason' => 'Abeg all',
+	'deletequeue-delnom-submit' => 'Kas an anvadur',
 	'deletequeue-queue-speedy' => 'Dilamadenn brim',
 	'deletequeue-review-delete' => 'Dilemel ar bajenn.',
+	'deletequeue-review-reason' => 'Addisplegoù :',
 	'deletequeue-vote-submit' => 'Kas',
 	'deletequeue-list-search-legend' => 'Klask pajennoù',
 	'deletequeue-list-header-page' => 'Pajenn',

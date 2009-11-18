@@ -366,6 +366,13 @@ $messages['ru'] = array(
 	'woopra-desc' => 'Позволяет [http://www.woopra.com/ Woopra Live Tracking Software] работать с вашей инсталляцией MediaWiki',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'woopra-desc' => 'ඔබේ MediaWiki ස්ථාපනය සඳහා ක්‍රියා කිරීමට [http://www.woopra.com/ Woopra Live Tracking Software] ට ඉඩ ලබා දේ.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

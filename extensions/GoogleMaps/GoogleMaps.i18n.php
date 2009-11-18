@@ -2652,6 +2652,7 @@ $wgGoogleMapsMessages['io'] = array(
 	'gm-balloon-title' => 'Titulo:',
 	'gm-no-zoom-control' => 'Nula',
 	'gm-yes' => 'Yes',
+	'gm-save-path' => 'Registragar',
 );
 
 /** Icelandic (Íslenska)

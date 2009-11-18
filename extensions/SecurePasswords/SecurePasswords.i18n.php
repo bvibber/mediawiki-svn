@@ -94,6 +94,7 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'securepasswords-valid' => 'Direizh pe re verr eo ho ker-tremen.
 Ret eo dezhañ :',
+	'securepasswords-digit' => '1 sifr ennañ da nebeutañ',
 	'securepasswords-username' => "bezañ disheñvel eus hoc'h anv implijer",
 );
 

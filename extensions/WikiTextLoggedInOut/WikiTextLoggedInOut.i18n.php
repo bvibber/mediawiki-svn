@@ -306,6 +306,13 @@ $messages['scn'] = array(
 	'wikitextloggedinout-desc' => "Dui hook dû parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt> p'ammustrari testi diffirenti a sècunnu dû statu di login di l'utenti",
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'wikitextloggedinout-desc' => 'වෙනස් පෙළ පරිශීලකයාගේ ප්‍රවිෂ්ට  තත්වය මත රඳා පවතින බව පෙන්වීමට  parser ‍දොරටු දෙකක්,<tt>&lt;loggedin&gt;</tt> සහ <tt>&lt;loggedout&gt;</tt>.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -722,6 +722,13 @@ Silakan masukkan {{PLURAL:$2|isian|isian}} itu.',
 	'formsaveerrortext' => "Terjadi kesalahan yang tak dikenal sewaktu menyimpan halaman '$1'.",
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'formsave' => 'Registragar',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

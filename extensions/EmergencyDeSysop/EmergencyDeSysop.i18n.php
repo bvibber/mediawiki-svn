@@ -120,6 +120,7 @@ $messages['be-tarask'] = array(
  * @author Fohanno
  */
 $messages['br'] = array(
+	'emergencydesysop-reason' => 'Abeg evit lemel',
 	'emergencydesysop-submit' => 'Kas',
 );
 

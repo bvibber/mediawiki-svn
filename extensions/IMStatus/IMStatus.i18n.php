@@ -45,6 +45,7 @@ The id you need to provide is the numbers and letters between "$2" and "$3".',
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
@@ -52,6 +53,7 @@ The id you need to provide is the numbers and letters between "$2" and "$3".',
 $messages['qqq'] = array(
 	'imstatus-desc' => 'Short description of the IMStatus extension, shown on [[Special:Version]].',
 	'imstatus_default' => '{{Identical|Default}}',
+	'imstatus_example' => '{{Identical|Example}}',
 	'imstatus_live_get_code' => 'The parameters are pieces of static text to help a user find what he needs.
 * $1 is "http://settings.messenger.live.com/applications/CreateHtml.aspx"
 * $2 is "invitee="
