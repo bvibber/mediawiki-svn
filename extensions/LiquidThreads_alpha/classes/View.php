@@ -1445,6 +1445,11 @@ class LqtView {
 			count( array_intersect(
 				array_keys( $mustShowThreads ), array_keys( $thread->replies() )
 			) );
+			
+		wfDebug( "LqtView::showThread(".$thread->id().") — showThreads: $showThreads ".
+			"hasSubthreads:$hasSubthreads, has ".count($thread->replies()).
+			" subthreads.\n" );
+			
 		if ( $hasSubthreads && $showThreads ) {
 			$this->showThreadReplies( $thread, $startAt, $maxCount, $showThreads,
 				$cascadeOptions );
