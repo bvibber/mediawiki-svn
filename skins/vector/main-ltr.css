@@ -141,6 +141,7 @@ body {
 		background-image: url(images/tab-normal-fade.png);
 		background-position: bottom left;
 		background-repeat: repeat-x;
+		white-space:nowrap;
 	}
 	/* IGNORED BY IE6 */
 	div.vectorTabs ul > li {
@@ -1052,6 +1053,7 @@ div#bodyContent {
 /* Watch/Unwatch Icon Styling */
 #ca-unwatch.icon,
 #ca-watch.icon {
+	margin-right:1px;
 }
 #ca-unwatch.icon a,
 #ca-watch.icon a {
@@ -1086,4 +1088,9 @@ div#bodyContent {
 #ca-unwatch.icon a span,
 #ca-watch.icon a span {
 	display: none;
+}
+div.vectorTabs ul {
+	background-image:url(images/tab-break.png);
+	background-position:right bottom;
+	background-repeat:no-repeat;
 }
