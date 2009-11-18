@@ -97,6 +97,7 @@ body.rtl .wikiEditor-ui {
 }
 .wikiEditor-ui .wikiEditor-ui-right {
 	float: right;
+	background: #F3F3F3;
 	overflow:hidden;
 }
 .wikiEditor-wikitext {
@@ -307,9 +308,7 @@ body.rtl .wikiEditor-ui-toc ul {
 	resize:none;
 }
 .wikiEditor-ui-text textarea:focus {outline:none;}
-.wikiEditor-ui-right{
-	left: 0px !important;
-}
+
 /* wikiEditor toolbar module */
 
 .wikiEditor-ui-toolbar {
