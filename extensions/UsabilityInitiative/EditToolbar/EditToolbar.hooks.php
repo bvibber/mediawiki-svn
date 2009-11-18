@@ -17,7 +17,7 @@ class EditToolbarHooks {
 	public static function addToolbar( &$toolbar ) {
 		global $wgUser, $wgEditToolbarGlobalEnable;
 		global $wgEditToolbarUserEnable, $wgEditToolbarCGDGlobalEnable;
-		global $wgEditToolbarCGDUserEnable;
+		global $wgEditToolbarCGDUserEnable, $wgWikiEditorIconVersion;
 		
 		// Only proceed if some specific conditions are met
 		if ( $wgEditToolbarGlobalEnable || ( $wgEditToolbarUserEnable && $wgUser->getOption( 'usebetatoolbar' ) ) ) {
@@ -28,7 +28,8 @@ class EditToolbarHooks {
 				'EditToolbar/EditToolbar.js', $wgEditToolbarStyleVersion
 			);
 			UsabilityInitiativeHooks::addVariables( array(
-				'wgEditToolbarCGD' => $wgEditToolbarCGDGlobalEnable || ( $wgEditToolbarCGDUserEnable && $wgUser->getOption( 'usebetatoolbar-cgd' ) )
+				'wgEditToolbarCGD' => $wgEditToolbarCGDGlobalEnable || ( $wgEditToolbarCGDUserEnable && $wgUser->getOption( 'usebetatoolbar-cgd' ) ),
+				'wgWikiEditorIconVersion' => $wgWikiEditorIconVersion,
 			) );
 			// Internationalization
 			wfLoadExtensionMessages( 'EditToolbar' );

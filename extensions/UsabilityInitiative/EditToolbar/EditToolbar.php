@@ -20,6 +20,7 @@
 
 // Bump the version number every time you change any of the .css/.js files
 $wgEditToolbarStyleVersion = 76;
+$wgWikiEditorIconVersion = 0;
 
 // Set this to true to simply override the stock toolbar for everyone
 $wgEditToolbarGlobalEnable = false;
