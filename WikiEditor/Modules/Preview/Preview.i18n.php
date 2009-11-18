@@ -171,11 +171,14 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'wikieditor-preview-preference' => 'Omogući pretpregled s obje strane',
 	'wikieditor-preview-tab-edit' => 'Uredi',
 	'wikieditor-preview-tab-preview' => 'Pregled',
 	'wikieditor-preview-loading' => 'Učitavam...',
 	'wikieditor-preview-button-publish' => 'Objavi',
 	'wikieditor-preview-button-cancel' => 'Odustani',
+	'wikieditor-preview-savedialog-title' => 'Objavi na {{SITENAME}}',
+	'wikieditor-preview-savedialog-summary' => 'Uredi sažetak (kratko opiši izmjene koje ste načinili):',
 	'wikieditor-preview-savedialog-minor' => 'mala izmjena',
 	'wikieditor-preview-savedialog-watch' => 'Prati ovu stranicu',
 	'wikieditor-preview-savedialog-publish' => 'Objavi',

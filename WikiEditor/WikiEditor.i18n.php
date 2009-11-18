@@ -53,6 +53,14 @@ $messages['br'] = array(
 	'wikieditor-desc' => "Poruchas a ra un etrefas kemmañ wikitestenn astennidik ha meur a arc'hwel all.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'wikieditor' => 'Napredni interfejs za uređivanje wikiteksta',
+	'wikieditor-desc' => 'Omogućava proširivi interfejs za uređivanje wikiteksta i mnoge module sa brojnim mogućnostima',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
