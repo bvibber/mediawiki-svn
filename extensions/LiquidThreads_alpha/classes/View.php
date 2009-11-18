@@ -1339,6 +1339,10 @@ class LqtView {
 			$options = array() ) {
 		global $wgLang;
 		
+		if ( !isset( $this->toplevelShowThread ) ) {
+			$this->toplevelShowThread = $thread->id();
+		}
+		
 		// Safeguard
 		if ( $thread->type() & Threads::TYPE_DELETED ) {
 			return;
@@ -1446,9 +1450,11 @@ class LqtView {
 				array_keys( $mustShowThreads ), array_keys( $thread->replies() )
 			) );
 			
-		wfDebug( "LqtView::showThread(".$thread->id().") — showThreads: $showThreads ".
-			"hasSubthreads:$hasSubthreads, has ".count($thread->replies()).
-			" subthreads.\n" );
+		if ( $this->toplevelShowThread == 847 ) {
+			wfDebugLog( 'Lqt-debugging', "LqtView::showThread(".$thread->id().") — showThreads: $showThreads ".
+				"hasSubthreads:$hasSubthreads, has ".count($thread->replies()).
+				" subthreads." );
+		}
 			
 		if ( $hasSubthreads && $showThreads ) {
 			$this->showThreadReplies( $thread, $startAt, $maxCount, $showThreads,
@@ -1478,6 +1484,10 @@ class LqtView {
 		$this->output->addHTML( Xml::closeElement( 'div' ) );
 		
 		$this->threadNestingLevel--;
+		
+		if ( $this->toplevelShowThread == $thread->id() ) {
+			unset( $this->toplevelShowThread );
+		}
 	}
 	
 	function threadDivClass( $thread ) {
