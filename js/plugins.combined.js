@@ -2642,10 +2642,14 @@ fn: {
 	 */
 	collapse: function( event ) {
 		var $this = $( this ), context = $this.data('context');
+		var pT = $this.parent().position().top - 1;
 		$this.parent()
-			.animate( { 'width' : '1px' }, 'fast', function() { 
-				$(this).hide();
-				context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).show( 'fast' );
+			.css( 'position', 'absolute' )
+			.css( {'left': 'auto', 'right': 0, 'top': pT})
+			.fadeOut( 'fast', function() { 
+				$(this).hide()
+				.css( 'width', '1px' );
+				context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).fadeIn( 'fast' );
 			 } )
 			.prev()
 			.animate( { 'marginRight': '-1px'}, 'fast', function() { $(this).css( 'marginRight', 0 ); } )
@@ -2665,10 +2669,13 @@ fn: {
 	 */
 	expand: function( event) {
 		var $this = $( this ), context = $this.data('context');
-		context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).hide( 'fast' );
+		context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).hide();
 		$this.parent()
 			.show()
-			.animate( { 'width' : '13em' }, 'fast' )
+			.animate( { 'width' : '13em' }, 'fast', function() { 
+				$(this)
+				.css( { 'position': 'relative', 'right': 'auto', 'top': 'auto' });
+			 } )
 			.prev()
 			.animate( { 'marginRight': '-13em'}, 'fast' )
 			.children()
@@ -2857,13 +2864,16 @@ fn: {
 		if(wgNavigableTOCResizable) {
 			context.$ui.find( '.wikiEditor-ui-right' )
 			.data( 'wikiEditor-ui-left', context.$ui.find( '.wikiEditor-ui-left' ))
-			.resizable( {handles: 'w,e', minWidth: 50,
+			.resizable( {handles: 'w,e', dontScrewWithLeft: true, minWidth: 50,
 				start: function( e, ui ) {
+					$this = $( this );
+					// Toss a transparent cover over our iframe
 					$( '<div />' ).addClass( 'wikiEditor-ui-resize-mask' )
 					.css( 'position', 'absolute' )
 					.css( 'z-index', 2 )
 					.css( 'left', 0 ).css( 'top', 0 ).css( 'bottom', 0 ).css( 'right', 0 )
 					.appendTo(context.$ui.find( '.wikiEditor-ui-left' ));
+					$this.resizable( 'option', 'maxWidth', $this.parent().width() - 450 );
 				},
 				resize: function( e, ui ) {
 					/*
@@ -2873,14 +2883,14 @@ fn: {
 					
 					// for some odd reason, ui.size.width seems a step ahead of what the *actual* width of 
 					// the resizable is
-					$( this ).css( 'width' , ui.size.width )
+					$( this ).css( { 'width': ui.size.width, 'top': 'auto' } )
 					.data( 'wikiEditor-ui-left' ).css( 'marginRight', ( -1 * ui.size.width ) )
 					.children( ).css( 'marginRight', ui.size.width );
 				},
 				stop: function ( e, ui ) {
 					context.$ui.find( '.wikiEditor-ui-resize-mask' ).remove();
 					if( ui.size.width < 70 ){
-						// collapse
+						context.modules.$toc.trigger( 'collapse' ); 
 					}
 				}
 			});
@@ -2894,7 +2904,18 @@ fn: {
 	}
 }
 
-}; } ) ( jQuery );
+};
+
+/*
+ * Extending resizable to allow west resizing without altering the left position attribute
+ */
+$.ui.plugin.add("resizable", "dontScrewWithLeft", {
+	resize: function(event, ui){
+		$(this).data("resizable").position.left=0;
+	}
+});
+ 
+} ) ( jQuery );
 /* Preview module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.preview = {
 
