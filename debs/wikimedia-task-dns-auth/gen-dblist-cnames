@@ -10,8 +10,7 @@ PATH=/bin:/usr/bin:/usr/local/bin
 (
 while read line; do
         line=`echo $line | tr _ -`
-        if echo $line | egrep -q '^(bgwiki|bgwiktionary|commonswiki|cswiki|dewiki|enwikiquote|enwiktionary|eowiki|fiwiki|idwiki|itwiki|nlwiki|nowiki|plwiki|ptwiki|svwiki|thwiki|trwiki
-|zhwiki)$'; then
+        if echo $line | egrep -q '^(bgwiki|bgwiktionary|commonswiki|cswiki|dewiki|enwikiquote|enwiktionary|eowiki|fiwiki|idwiki|itwiki|nlwiki|nowiki|plwiki|ptwiki|svwiki|thwiki|trwiki|zhwiki)$'; then
                 echo "$line-p 1H IN CNAME sql-s2.toolserver.org."
         elif [ $line = enwiki ]; then
                 echo "$line-p 1H IN CNAME sql-s1.toolserver.org." 
@@ -20,3 +19,5 @@ while read line; do
         fi;
 done
 ) < $DBLIST > $POWERDNSDIR/dblist-cnames
+
+exit 0
