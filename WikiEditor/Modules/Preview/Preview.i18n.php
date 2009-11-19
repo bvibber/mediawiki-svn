@@ -326,10 +326,12 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'wikieditor-preview-tab-edit' => 'Muokkaa',
 	'wikieditor-preview-tab-preview' => 'Esikatselu',
+	'wikieditor-preview-loading' => 'Ladataan...',
 	'wikieditor-preview-button-publish' => 'Julkaise',
 	'wikieditor-preview-button-cancel' => 'Peruuta',
 	'wikieditor-preview-savedialog-minor' => 'Pieni muutos',
