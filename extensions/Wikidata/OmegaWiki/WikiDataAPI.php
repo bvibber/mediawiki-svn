@@ -28,8 +28,7 @@ class Expression {
 	}
 	
 	function createPage() {
-		# FIXME: Replace with method for Namespace::getIndexForName.
-		$expressionNameSpaceId = 16;
+		$expressionNameSpaceId = Namespace::getCanonicalIndex('expression');
 		wfDebug( "NS ID: $expressionNameSpaceId \n" );
 		return createPage( $expressionNameSpaceId, getPageTitle( $this->spelling ) );
 	}
@@ -188,7 +187,10 @@ function findExpression( $spelling, $languageId ) {
 
 function createExpression( $spelling, $languageId ) {
 	$expression = new Expression( createExpressionId( $spelling, $languageId ), $spelling, $languageId );
-	$expression->createNewInDatabase();
+	$expressionTitle = Title::makeTitle( Namespace::getCanonicalIndex('expression') , $spelling );
+	if( !$expressionTitle->exists() ) {
+		$expression->createNewInDatabase();
+	}
 	return $expression;
 }
 
