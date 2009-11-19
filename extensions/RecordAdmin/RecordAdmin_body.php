@@ -16,13 +16,94 @@ class SpecialRecordAdmin extends SpecialPage {
 	var $guid      = '';
 	var $quid      = '';
 	var $filter    = array();
+	var $acturl    = '';
+	var $done      = false;
 
 	function __construct() {
+		global $wgHooks, $wgParser, $wgRequest, $wgRecordAdminTag, $wgRecordAdminCategory,
+			$wgRecordAdminTag, $wgRecordAdminTableMagic, $wgRecordAdminDataMagic;
+
 		# Name to use for creating a new record either via RecordAdmin or a public form
 		# todo: should add a hook here for custom default-naming
 		$this->guid = strftime( '%Y%m%d', time() ) . '-' . substr( strtoupper( uniqid('', true) ), -5 );
 		wfLoadExtensionMessages ( 'RecordAdmin' );
 		SpecialPage::SpecialPage( 'RecordAdmin', 'recordadmin', true, false, 'default', true );
+
+		# Make recordID's of articles created with public forms available via recordid tag
+		$wgParser->setHook( $wgRecordAdminTag, array( $this, 'expandTag' ) );
+
+		# Add the parser-functions
+		$wgParser->setFunctionHook( $wgRecordAdminTableMagic, array( $this, 'expandTableMagic' ) );
+		$wgParser->setFunctionHook( $wgRecordAdminDataMagic,  array( $this, 'expandDataMagic'  ) );
+
+		# Check if posting a public creation form
+		$title = Title::newFromText( $wgRequest->getText( 'title' ) );
+		if ( is_object( $title ) && $title->getNamespace() != NS_SPECIAL && $wgRequest->getText( 'wpType' ) && $wgRequest->getText( 'wpCreate' ) )
+			$this->createRecord();
+
+		# A minimal hook so we know if the page has been rendered or not
+		# (so that record tables don't execute when run from the job-queue - looking for a better way to do this)
+		$wgHooks['BeforePageDisplay'][] = $this;
+
+		# Add some hooks if the current title is a record
+		if ( is_object( $title ) ) {
+			$types = array();
+			$id    = $title->getArticleID();
+			$dbr   = &wfGetDB( DB_SLAVE );
+			$cat   = $dbr->addQuotes( $wgRecordAdminCategory );
+			$cl    = $dbr->tableName( 'categorylinks' );
+			$tl    = $dbr->tableName( 'templatelinks' );
+			$res   = $dbr->select( $cl, 'cl_from', "cl_to = $cat" );
+			while ( $row = $dbr->fetchRow( $res ) ) $types[] = 'tl_title = ' . $dbr->addQuotes( Title::newFromID( $row[0] )->getText() );
+			$dbr->freeResult( $res );
+			$uses = join( ' OR ', $types );
+			if ( $uses && $row = $dbr->selectRow( $tl, 'tl_title', "tl_from = $id AND ($uses)" ) ) {
+				global $wgRecordAdminEditWithForm, $wgRecordAdminAddTitleInfo;
+				$this->type = $row->tl_title;
+
+				# Add title info
+				if ( $wgRecordAdminAddTitleInfo ) $wgHooks['OutputPageBeforeHTML'][] = $this;
+
+				# Add an "edit with form" action link
+				if ( $wgRecordAdminEditWithForm ) {
+					$wgHooks['SkinTemplateTabs'][] = $this;
+					$qs = "wpType={$this->type}&wpRecord=" . $title->getPrefixedText();
+					$this->acturl = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' )->getLocalURL( $qs );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Store the fact that this hook has executed so we don't run record tables from job queue
+	 */
+	function onBeforePageDisplay( &$out, $skin = false ) {
+		return $this->done = true;
+	}
+
+	/**
+	 * Add record type info below title
+	 */
+	function onOutputPageBeforeHTML( &$out, &$text ) {
+		$text = '<div class="recordadmin-typeinfo">' . wfMsg( 'recordadmin-typeinfo', $this->type ) . "</div>\n" . $text;
+		return true;
+	}
+
+	/**
+	 * Add action link
+	 */
+	function onSkinTemplateTabs( &$skin, &$actions ) {
+		$tmp = array();
+		foreach ( $actions as $k => $v ) {
+			$tmp[$k] = $v;
+			if ( $k == 'edit' ) $tmp['editwithform'] = array(
+				'text' => wfMsg( 'recordadmin-editwithform' ),
+				'class' => false,
+				'href' => $this->acturl
+			);
+		}
+		$actions = $tmp;
+		return true;
 	}
 
 	/**
@@ -243,6 +324,9 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function getRecords( $type, $posted, $wpTitle = '', $invert = false, $orderby = 'created desc' ) {
 		global $wgRequest;
+
+		# If the page is already rendered, don't run this query
+		if ( $this->done ) return array();
 
 		# Generate a unique id for this set of parameters
 		$this->quid = md5( var_export( array( $type, $posted ), true ) );
