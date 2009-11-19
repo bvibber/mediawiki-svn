@@ -48,8 +48,8 @@ require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ClickTrackingHooks'] = $dir . 'ClickTracking.hooks.php';
 $wgAutoloadClasses['ApiClickTracking'] = $dir . 'ApiClickTracking.php';
-$wgAutoloadClasses['SpecialClickTracking'] = $dir . 'SpecialClickTracking.php';
-$wgAutoloadClasses['ApiSpecialClickTracking'] = $dir .'ApiSpecialClickTracking.php';
+//$wgAutoloadClasses['SpecialClickTracking'] = $dir . 'SpecialClickTracking.php';
+//$wgAutoloadClasses['ApiSpecialClickTracking'] = $dir .'ApiSpecialClickTracking.php';
 
 // Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::schema';
@@ -58,11 +58,11 @@ $wgHooks['ParserTestTables'][] = 'ClickTrackingHooks::parserTestTables';
 
 // Set up the new API module
 $wgAPIModules['clicktracking'] = 'ApiClickTracking';
-$wgAPIModules['specialclicktracking'] = 'ApiSpecialClickTracking';
+//$wgAPIModules['specialclicktracking'] = 'ApiSpecialClickTracking';
 
 //Special page setup
-$wgSpecialPages['ClickTracking'] = 'SpecialClickTracking';
-$wgGroupPermissions['sysop']['clicktrack'] = true;
+//$wgSpecialPages['ClickTracking'] = 'SpecialClickTracking';
+//$wgGroupPermissions['sysop']['clicktrack'] = true;
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['ClickTracking'] = $dir . 'ClickTracking.i18n.php';
