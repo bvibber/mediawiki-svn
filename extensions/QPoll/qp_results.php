@@ -545,11 +545,13 @@ class qp_UsersList extends qp_QueryPage {
 	function getIntervalResults( $offset, $limit ) {
 		$result = array();
 		$db = & wfGetDB( DB_SLAVE );
-		$res = $db->select( array( 'qp_users_polls', 'qp_users' ),
-			array( 'qp_users.uid as uid', 'name as username', 'count(pid) as pidcount' ),
-			'qp_users.uid=qp_users_polls.uid',
+		$qp_users = $db->tableName( 'qp_users' );
+		$qp_users_polls = $db->tableName( 'qp_users_polls' );
+		$res = $db->select( "$qp_users_polls qup, $qp_users qu",
+			array( 'qu.uid as uid', 'name as username', 'count(pid) as pidcount' ),
+			'qu.uid=qup.uid',
 			__METHOD__,
-			array( 'GROUP BY'=>'qp_users_polls.uid',
+			array( 'GROUP BY'=>'qup.uid',
 						'ORDER BY'=>$this->order_by,
 						'OFFSET'=>intval( $offset ),
 						'LIMIT'=>intval( $limit ) ) );
