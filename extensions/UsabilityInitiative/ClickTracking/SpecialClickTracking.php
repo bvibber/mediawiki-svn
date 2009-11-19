@@ -511,8 +511,8 @@ class SpecialClickTracking extends SpecialPage {
 		 	}
 		else {
 			//the dates are stored in the DB as MW_TIMESTAMP formats, add the zeroes to fix that 
-			//$minTime .= "000000";
-			//$maxTime .= "000000"; 
+			$minTime .= "000000";
+			$maxTime .= "000000"; 
 
 			$dbr = wfGetDB( DB_SLAVE );
 			
