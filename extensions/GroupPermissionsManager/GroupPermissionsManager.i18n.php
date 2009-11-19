@@ -425,12 +425,25 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'sortpermissions' => 'Urzhiañ an aotreoù',
+	'removeunusedgroups' => 'Lemel ar strolladoù dizimplij',
 	'grouppermissions-search' => 'Strollad :',
 	'grouppermissions-dologin' => 'Lugañ',
+	'grouppermissions-deletelabel' => 'Dilemel ar strollad',
+	'grouppermissions-add' => 'Ouzhpennañ ur strollad',
+	'grouppermissions-delete' => 'Dilemel ar strollad',
+	'grouppermissions-addsuccess' => '$1 zo bet ouzhpennet',
+	'grouppermissions-deletesuccess' => '$1 zo bet dilamet',
 	'grouppermissions-true' => 'Gwir',
 	'grouppermissions-false' => 'Gaou',
 	'grouppermissions-never' => 'Morse',
+	'grouppermissions-sort-read' => 'O lenn',
+	'grouppermissions-sort-edit' => "Oc'h aozañ",
+	'grouppermissions-sort-tech' => 'Teknik',
+	'grouppermissions-sort-misc' => 'A bep seurt',
 	'grouppermissions-sp-save' => 'Enrollañ',
+	'grouppermissions-sp-addperm' => 'Ouzhpennañ an aotre',
+	'grouppermissions-sp-remove' => 'lemel',
 	'right-search' => 'Klask ar wiki',
 );
 

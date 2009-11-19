@@ -942,11 +942,12 @@ $messages['tk'] = array(
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'optin-try' => "Acai Beta'yı Dene",
+	'optin-try' => "Beta'yı Dene",
 	'tooltip-pt-optin-try' => 'Yeni özellikleri dene',
-	'optin-leave' => "Acai Beta'dan çıkın",
+	'optin-leave' => "Beta'dan çık",
 	'tooltip-pt-optin-leave' => 'Yeni özellikleri kapat',
 	'optin-feedback' => 'Geribildirim verin',
 	'tooltip-pt-optin-feedback' => 'Yeni özelliklerle tecrübeleriniz hakkında geri bildirim sağlayın',

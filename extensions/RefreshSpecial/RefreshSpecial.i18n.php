@@ -191,8 +191,10 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'refreshspecial-title' => 'Freskaat ar pajennoù arbennik',
 	'refreshspecial-button' => 'Freskaat ar re ziuzet',
+	'refreshspecial-refreshing' => 'o freskaat ar pajennoù arbennik',
 	'refreshspecial-select-all-pages' => 'Diuzañ an holl bajennoù',
 	'refreshspecial-reconnected' => 'Adkevreet.',
+	'right-refreshspecial' => 'Freskaat ar pajennoù arbennik',
 );
 
 /** Bosnian (Bosanski)

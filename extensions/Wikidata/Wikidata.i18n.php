@@ -10366,6 +10366,43 @@ $messages['sh'] = array(
 	'ow_suggest_previous' => 'Prethodna',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'wikidata-desc' => 'විවධ වර්ගයේ අන්තර්ගතයන්ට විකි-ආකාරයේ දත්ත සමුදායන් එක් කරයි',
+	'wikidata-handler-namespace-move-error' => 'විකිදත්ත දිඟුව මඟින් හසුරුවන ලබන නාම අවකාශවල ඇති පිටු චලනය කළ නොහැක.',
+	'languages' => 'විකිදත්ත: භාෂා කළමනාකරු',
+	'langman-desc' => '[[Special:Languages]] සමඟ භාෂා සිටවුම් එකතු කිරීම හා වෙනස් කිරීම සිදු කරයි.',
+	'langman_title' => 'භාෂා කළමනාකරු',
+	'langman_not_allowed' => 'භාෂා පිහිටවුම් වෙනස් කිරීමට ඔබට අවසර නොමැත.',
+	'langman_header' => 'භාෂා කේතය හා එහි ඉංග්‍රීසි නම පහතින් යතුරු ලියනය කරන්න:',
+	'langman_req_fields' => 'භාෂා නම හා ISO 639-3 කේතය ද අවශ්‍යයි!',
+	'langman_adding' => '$2 යතුර සමඟ $1 භාෂාව එකතු කිරීම.',
+	'langman_langname' => 'භාෂා නම:',
+	'langman_iso639-3' => 'ISO 639-3 කේතය:',
+	'langman_iso639-2' => 'ISO 639-2 කේතය:',
+	'langman_wikimedia' => 'විකිමීඩියා කේතය:',
+	'langman_field_optional' => '(වෛකල්පිත)',
+	'langman_addlang' => 'භාෂාව එකතු කිරීම',
+	'importlangnames' => 'විකිදත්ත: භාෂා නම් ආයාත කරන්න',
+	'importlangnames_title' => 'භාෂා නම් ආයාත කරන්න',
+	'importlangnames_not_allowed' => 'ඔබට භාෂා නම් ආයාත කිරීමට අවසර නොමැත.',
+	'importlangnames_added' => '"$1" සඳහා භාෂා නම් එකතු කරන ලදී.',
+	'importlangnames_not_found' => '<strong> "$1" සඳහා භාෂා ඇතුළත් කිරීමක් හමු නොවුණි!</strong>',
+	'datasearch' => 'විකිදත්ත: දත්ත සෙවීම',
+	'datasearch_language' => 'භාෂාව:',
+	'datasearch_found_word' => 'සොයාගත් වචනය',
+	'datasearch_meaning' => 'අර්ථය',
+	'datasearch_ext_identifier' => 'භාහිර හඳුන්වනය',
+	'datasearch_search_text' => 'පෙළ සොයන්න:',
+	'datasearch_within_words' => 'වචන ඇතුළත:',
+	'datasearch_within_ext_ids' => 'භාහිර හඳුන්වන්නන් ඇතුළත:',
+	'datasearch_showing_only' => 'පෙන්වනු ලබන්නේ  $1 {{PLURAL:$1|match|matches}}  න් උපරිමයක් පමණි ($2 කින්).',
+	'datasearch_match_ext_ids' => 'භාහිර හඳුන්වන්නන් <i>$1</i> ගළපයි',
+	'datasearch_match_words' => 'වචන ගැළපීම <i>$1</i> හා ආශ්‍රිත අර්ථයන්',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

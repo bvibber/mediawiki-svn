@@ -208,7 +208,12 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'qp_desc' => 'Aotren krouiñ sontadegoù',
+	'qp_result_error' => 'Fazi ereadur',
+	'qp_users_list' => 'Renabliñ an holl implijerien',
 	'qp_stats_link' => 'Stadegoù',
+	'qp_users_link' => 'Implijerien',
+	'qp_voice_link' => 'Mouezh an implijer',
+	'qp_order_by_username' => 'Urzhiañ dre anv implijer',
 	'qp_error_category_name_empty' => 'Goullo eo anv ar rummad',
 	'qp_error_proposal_text_empty' => "Goullo eo testenn ar c'hinnig",
 );

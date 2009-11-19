@@ -171,6 +171,8 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'openidserver' => 'OpenID-bediener',
+	'openidxrds' => 'Yadis-lêer',
 	'openidoptional' => 'Opsioneel',
 	'openidrequired' => 'Verpligtend',
 	'openidnickname' => 'Noemnaam',
@@ -178,10 +180,13 @@ $messages['af'] = array(
 	'openidemail' => 'E-posadres',
 	'openidlanguage' => 'Taal',
 	'openidtimezone' => 'Tydsone',
+	'openidchoosefull' => 'U volledige naam ($1)',
 	'openidchoosepassword' => 'wagwoord:',
+	'openidloginlabel' => 'OpenID URL',
 	'openiddelete-button' => 'Bevestig',
 	'openid-urls-action' => 'Aksie',
 	'openid-urls-delete' => 'Skrap',
+	'openid-provider-label-other-username' => 'U gebruikersnaam by $1',
 );
 
 /** Amharic (አማርኛ)
@@ -550,6 +555,7 @@ $messages['br'] = array(
 	'openidserver' => 'Servijer OpenID',
 	'openidxrds' => 'Restr Yadis',
 	'openidfailure' => "C'hwitet eo ar gwiriadur",
+	'openidusernameprefix' => 'Implijer OpenID',
 	'openidoptional' => 'Diret',
 	'openidrequired' => 'Rekis',
 	'openidnickname' => 'Lesanv',
@@ -570,6 +576,7 @@ $messages['br'] = array(
 	'openid-urls-delete' => 'Dilemel',
 	'openid-add-url' => 'Ouzhpennañ un OpenID nevez',
 	'openid-provider-label-openid' => "Ebarzhit hoc'h URL OpenID",
+	'openid-provider-label-aol' => "Ebarzhit hoc'h anv AOL",
 	'openid-provider-label-other-username' => "Ebarzhit hoc'h anv implijer $1",
 );
 

@@ -467,6 +467,7 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'ogg-short-audio' => 'Restr son Ogg $1, $2',
 	'ogg-long-error' => '(Restr ogg direizh : $1)',
 	'ogg-play' => 'Lenn',
 	'ogg-pause' => 'Ehan',

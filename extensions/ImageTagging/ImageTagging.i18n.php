@@ -256,10 +256,15 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'imagetagging-addimagetag' => 'Balizennañ ar skeudenn-mañ',
 	'imagetagging-article' => 'Pajenn :',
 	'imagetagging-imghistory' => 'Istor',
 	'imagetagging-images' => 'skeudennoù',
+	'imagetagging-removetag' => 'Lemel ar valizenn',
+	'imagetagging-done-button' => 'Graet eo ar balizennañ',
+	'imagetagging-tag-button' => 'Balizenn',
 	'imagetagging-tagcancel-button' => 'Nullañ',
+	'imagetagging-addtagsuccess' => 'Ouzhpennet eo ar valizenn',
 	'imagetagging-taggedimages-title' => 'Skeudennoù eus « $1 »',
 );
 

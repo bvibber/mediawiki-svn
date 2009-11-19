@@ -219,6 +219,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'ratinghistory-tab' => 'istimadur',
 	'ratinghistory-month' => 'miz diwezhañ',
 	'ratinghistory-3months' => '3 miz diwezhañ',
 	'ratinghistory-year' => 'bloaz tremenet',
@@ -1487,6 +1488,9 @@ Skala ocen:
  */
 $messages['pms'] = array(
 	'ratinghistory' => 'Stòria dij pontegi dle pàgine',
+	'ratinghistory-leg' => 'Dat ëd la stòria dij pontegi për [[:$1|$1]]',
+	'ratinghistory-tab' => 'pontegi',
+	'ratinghistory-link' => 'Pontegi dla pàgina',
 );
 
 /** Pashto (پښتو)

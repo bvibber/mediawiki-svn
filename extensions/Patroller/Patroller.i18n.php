@@ -227,8 +227,10 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'patrol-endorse' => 'Aprouiñ',
 	'patrol-revert' => 'Assevel',
 	'patrol-revert-reason' => 'Abeg :',
+	'patrol-resume' => "Klikit amañ evit kenderc'hel.",
 	'group-patroller' => 'Patrouilherien',
 	'group-patroller-member' => 'patrouilher',
 );

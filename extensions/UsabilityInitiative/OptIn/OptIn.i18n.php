@@ -477,6 +477,7 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-feedback-back' => "Ma ne fell ket deoc'h leuniañ ar roll goulennoù, e c'hallit distreiñ da $1.",
 	'optin-success-in' => "Emaoc'h oc'h amprouiñ Beta.
 Gallout a rit distreiñ d'ar stumm boas pa garit en ur glikañ war al liamm \"{{int:optin-leave}}\" e laez ar skramm.",
+	'optin-leave-cancel' => "M'hoc'h eus c'hoant da genderc'hel da implijout Beta, e c'hallit distreiñ da $1.",
 	'optin-success-feedback' => 'Trugarez evit bezañ roet ho soñj !',
 	'optin-accept-short' => "Bec'h de'i",
 	'optin-accept-long' => 'Amprouiñ Beta',
@@ -502,6 +503,7 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-question-os' => 'Peseurt reizhiad korvoiñ a rit gantañ ?',
 	'optin-survey-answer-os-other' => 'Reizhiad korvoiñ all :',
 	'optin-survey-question-res' => 'Petra eo spisder ho skramm ?',
+	'optin-survey-answer-changes-lookfeel' => "Hizivaat arvez al lec'hienn.",
 	'optin-survey-answer-changes-other' => 'Traoù all :',
 );
 

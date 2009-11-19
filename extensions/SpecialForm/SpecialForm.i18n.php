@@ -216,6 +216,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'form' => 'Furmskrid',
+	'formnoname' => 'Anv ebet',
 	'formbadname' => 'Anv furmskrid fall',
 	'formpattern' => 'furmskrid-$1',
 	'formtitlepattern' => 'Ouzhpennañ un $1 nevez',

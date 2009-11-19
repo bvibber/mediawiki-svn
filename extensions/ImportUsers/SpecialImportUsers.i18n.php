@@ -216,7 +216,9 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'importusers' => 'Enporzhiañ implijerien',
+	'importusers-uploadfile' => 'Kargañ ar restr',
 	'importusers-form-button' => 'Enporzhiañ',
+	'importusers-log-summary' => 'Diverradur',
 	'importusers-log-summary-added' => 'Ouzhpennet',
 	'importusers-log-summary-updated' => 'Hizivaet',
 	'importusers-password' => 'ger-tremen',

@@ -161,9 +161,12 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'masseditregex-matchtxt' => 'Klask :',
 	'masseditregex-replacetxt' => "Erlec'hiañ gant :",
+	'masseditregex-executebtn' => 'Seveniñ',
 	'masseditregex-before' => 'A-raok',
 	'masseditregex-after' => 'Goude',
 	'masseditregex-page-not-exists' => "N'eus ket eus $1",
+	'masseditregex-hint-headreplace' => "Erlec'hiañ",
+	'masseditregex-hint-headeffect' => 'Efed',
 );
 
 /** Bosnian (Bosanski)

@@ -46,6 +46,13 @@ $messages['br'] = array(
 	'geolite-desc' => 'Adheñchadenn Geolp skañv',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'geolite-desc' => 'Jednoduché přesměrování GeoIp',
+);
+
 /** Zazaki (Zazaki)
  * @author Xoser
  */

@@ -242,10 +242,13 @@ $messages['br'] = array(
 	'wah-transcode-fail' => "C'hwitet eo treuzkodañ ar restr.",
 	'wah-javascript-off' => 'Rekis eo bezañ gweredekaet JavaScript evit kemer perzh e Wiki@Home',
 	'wah-loading' => 'o kargañ etrefas Wiki@Home ...',
+	'wah-menu-jobs' => 'Trevelloù',
 	'wah-menu-stats' => 'Stadegoù',
 	'wah-menu-pref' => 'Penndibaboù',
 	'wah-lookingforjob' => 'O klask un tamm labour ...',
 	'wah-notoken-login' => "Ha kevreet oc'h ? Ma n'oc'h ket, kevreit da gentañ, mar plij.",
+	'wah-downloading' => 'Echu eo pellgargañ ar restr <i>$1%</i>',
+	'wah-encoding' => 'Echu eo kodañ ar restr <i>$1%</i>',
 	'wah-uploading' => 'Echu eo kargañ ar restr <i>$1</i>',
 	'wah-uploadfail' => "C'hwitet eo ar gargadenn",
 );
