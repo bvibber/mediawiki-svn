@@ -363,7 +363,7 @@
 		var processTableJSON = function( data, status ) {
 			// clear
 			$(".table_data_row").each( function() { $(this).remove(); } );
-
+			
 			var row_count = 0;
 			for( var row_iter in data['tablevals']['vals'] ) {
 				var row = data['tablevals']['vals'][row_iter]; // really, JS?
@@ -395,6 +395,7 @@
 			}
 
 			$.colorizeTable();
+			$.changeDataLinks();
 		};
 
 		start_date = $("#start_date").val();

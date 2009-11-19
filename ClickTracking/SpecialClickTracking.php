@@ -408,10 +408,10 @@ class SpecialClickTracking extends SpecialPage {
 	public static function buildRowArray($minTime, $maxTime, $userDefs, $is_JSON= true){
 		
 		
-		if($minTime == 0){
+		if($minTime === false){
 			$minTime = self::$minimum_date;
 		}
-		if($maxTime == 0){
+		if($maxTime === false){
 			$maxTime = gmdate("Ymd",time());  //today
 		}
 		
@@ -503,19 +503,24 @@ class SpecialClickTracking extends SpecialPage {
 	 * @param maxTime max day (YYYYMMDD)
 	 * NOTE: once some of the constraints have been finalized, this will use more of the Database functions and not raw SQL
 	 */
-	static function getTimeConstraintsStatement( $minTime, $maxTime ){		
-		$minTime = addslashes($minTime);
-		$maxTime = addslashes($maxTime);
+	static function getTimeConstraints( $minTime, $maxTime ){		
 		if( $minTime == 0 || $maxTime == 0 ||
 		 	( strptime( SpecialClickTracking::space_out_date( $minTime ), "%Y %m %d" ) === false ) ||
 		 	( strptime( SpecialClickTracking::space_out_date( $minTime ), "%Y %m %d" ) === false ) ) {
-		 		return '';
+		 		return array();
 		 	}
 		else {
 			//the dates are stored in the DB as MW_TIMESTAMP formats, add the zeroes to fix that 
-			$minTime .= "000000";
-			$maxTime .= "000000";  
-			return "WHERE `action_time` >= '$minTime' AND `action_time` <= '$maxTime'";
+			//$minTime .= "000000";
+			//$maxTime .= "000000"; 
+
+			$dbr = wfGetDB( DB_SLAVE );
+			
+			//time constraint array
+			return array(
+				"`action_time` >= ". $dbr->addQuotes($minTime) ,
+				"`action_time` <= ". $dbr->addQuotes($maxTime)
+			);
 			
 		}
 		
@@ -530,17 +535,28 @@ class SpecialClickTracking extends SpecialPage {
 	 */
 	public static function getTopEvents($minTime = "", $maxTime = "", $normalize_top_results = false){
 		
-		$time_constraint_statement = self::getTimeConstraintsStatement($minTime,$maxTime);
+		$time_constraint_statement = self::getTimeConstraints($minTime,$maxTime);
 		$time_constraint = $time_constraint_statement;
 		
+		$dbr = wfGetDB( DB_SLAVE );
+		$dbresult = $dbr->select(
+            array( 'click_tracking', 'click_tracking_events' ),
+            array( 'count(event_id) as totalevtid', 'event_id', 'event_name' ),
+            $time_constraint,
+            __METHOD__,
+            array( 'GROUP BY' => 'event_id', 'ORDER BY' => 'totalevtid DESC' ),
+            array( 'click_tracking_events' =>
+                array( 'LEFT JOIN', 'event_id=click_tracking_events.id' )
+            )
+        );
+		
+		/*		
 		$sql = "select count(event_id) as totalevtid, event_id,event_name from click_tracking" .
 		 " LEFT JOIN click_tracking_events ON event_id=click_tracking_events.id".
 		 " $time_constraint  group by event_id order by totalevtid desc";
-		
+		*/
+        
 		//returns count(event_id),event_id, event_name, top one first
-		$dbr = wfGetDB( DB_SLAVE );
-		$dbresult = $dbr->query($sql);
-		
 		return $dbresult;
 	}
 
@@ -550,21 +566,15 @@ class SpecialClickTracking extends SpecialPage {
 	 */
 	static function getTableValue($event_id, $userDef, $minTime = '', $maxTime = '', $normalize_results = false){
 		
-		$time_constraint_statement = self::getTimeConstraintsStatement($minTime,$maxTime); 
-		$time_constraint = $time_constraint_statement;
-		
-		$user_conditions = SpecialClickTracking::buildUserDefQuery($userDef);
-		
-		$where = ($time_constraint == "" ? "where" : "");
-		
-		$and = ($time_constraint == "" ? "": "and");
-		
-		$sql ="select count(*) as totalcount from click_tracking $where $time_constraint $and ($user_conditions) and event_id=$event_id";
-		
 		$dbr = wfGetDB( DB_SLAVE );
-		$result = $dbr->query($sql);
-		$resRow = $result->fetchRow();
-		return $resRow["totalcount"];
+		$conds = array_merge(
+            self::getTimeConstraints($minTime,$maxTime),
+            SpecialClickTracking::buildUserDefConstraints($userDef),
+            array( 'event_id' => $event_id )
+        );
+        return wfGetDB( DB_SLAVE )->selectField(
+            'click_tracking', 'count(*)', $conds, __METHOD__ );
+		
 	}
 	
 	/**
@@ -576,7 +586,9 @@ class SpecialClickTracking extends SpecialPage {
 	 * @param $contrib_3 array, nonempty AND conditions for user_contribs_1
 	 * @return unknown_type query
 	 */
-	public static function buildUserDefQuery($def){
+	public static function buildUserDefConstraints($def){
+		
+		$dbr = wfGetDB( DB_SLAVE );
 		
 		$include_anon_users = (empty($def['anonymous'])?array():$def['anonymous']);
 		$total_contribs = (empty($def['total_contribs'])?array():$def['total_contribs']);
@@ -619,16 +631,16 @@ class SpecialClickTracking extends SpecialPage {
 			if(!empty($sql)){
 				$sql .= " AND ";
 			}
-			$sql .= $cond["field"] . " " . $cond["operation"] . " " . $cond["value"];
+			$sql .= $cond["field"] . " " . $cond["operation"] . " " . $dbr->addQuotes( $cond["value"] );
 		}
 		foreach($or_conds as $cond){
 			if(!empty($sql)){
 				$sql .= " OR ";
 			}
-			$sql .= $cond["field"] . " " . $cond["operation"] . " " . $cond["value"];
+			$sql .= $cond["field"] . " " . $cond["operation"] . " " . $dbr->addQuotes( $cond["value"] );
 		}
 		
-		return $sql;
+		return array($sql);
 	}
 	
 	public static function validate_oper($operation){
