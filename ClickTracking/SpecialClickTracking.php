@@ -408,10 +408,10 @@ class SpecialClickTracking extends SpecialPage {
 	public static function buildRowArray($minTime, $maxTime, $userDefs, $is_JSON= true){
 		
 		
-		if($minTime === false){
+		if($minTime == 0){
 			$minTime = self::$minimum_date;
 		}
-		if($maxTime === false){
+		if($maxTime == 0){
 			$maxTime = gmdate("Ymd",time());  //today
 		}
 		
