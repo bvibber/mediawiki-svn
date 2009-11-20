@@ -449,6 +449,14 @@ $messages['nds-nl'] = array(
 	'absenteelandlord-desc' => 'Sluut de databanke autematisch as de beheerders allemaole inactief bin in een bepaolde tied',
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'absenteelandlord-reason' => 'प्रवन्धकहरुको निश्कृयताले गर्दा  डेटावेस स्वत:  ताला मारिएको छ',
+	'absenteelandlord-desc' => 'विकि डेटावेस स्वत: ताला मारिने गरिन्छ यदि  सिस्टम अपरेटरहरु केही समय  निस्कृय रहे भने ।',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -780,6 +780,19 @@ $messages['nds'] = array(
 	'ajax-se-usernotfound' => 'FEHLER: Bruker nich funnen',
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'ajax-se-desc' => 'सम्पादन गरिरहेका प्रयोगकर्ताहरु देखाउ छ जो उही पृष्ठ सम्पादन गरिरहेका छन् ।',
+	'ajax-se-title' => 'अहिले सम्पादन भैरहेको:',
+	'ajax-se-pending' => 'ताजा पार्न बाँकी ....(यो बट्टामा क्लिक गर्नुहोस् या सम्पादन सुरु गर्नुहोस)',
+	'ajax-se-idling' => '($1से पहिले)',
+	'ajax-se-pagedoesnotexist' => 'पृष्ठ अस्तित्वमा रहेको छैन',
+	'ajax-se-userinvalid' => 'त्रुटी : अमान्य प्रयोगकर्ता',
+	'ajax-se-usernotfound' => 'त्रुटी: प्रयोगकर्ता भेटिएन',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

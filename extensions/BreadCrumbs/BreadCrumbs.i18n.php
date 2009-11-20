@@ -366,6 +366,13 @@ $messages['nds-nl'] = array(
 	'breadcrumbs-desc' => "Geef 't pad weer dat gebruker in de wiki deurlopen.",
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'breadcrumbs-desc' => 'विकिबाट प्रयोगकर्ताहरुको बाटो (Path)  देखाउछ',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

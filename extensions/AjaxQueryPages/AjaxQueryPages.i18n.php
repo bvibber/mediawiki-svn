@@ -360,6 +360,13 @@ $messages['nds-nl'] = array(
 	'ajax-qp-desc' => "Voeg wat AJAX toe an QueryPages zoas [[Special:Shortpages|korte pagina's]]",
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'ajax-qp-desc' => '[[Special:Shortpages|{{int:shortpages}}]] जस्तै केही  AJAX क्वेरी पृष्ठहरु थप्ने',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

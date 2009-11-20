@@ -122,6 +122,7 @@ $messages['qqq'] = array(
 	'qp_desc' => '{{desc}}',
 	'qp_result_error' => '{{Identical|Syntax error}}',
 	'qp_vote_button' => '{{Identical|Vote}}',
+	'qp_source_link' => '{{Identical|Source}}',
 	'qp_stats_link' => '{{Identical|Statistics}}',
 	'qp_users_link' => '{{Identical|User}}',
 	'qp_voice_link_inv' => "What '?' means?",
@@ -205,15 +206,18 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  */
 $messages['br'] = array(
 	'qp_desc' => 'Aotren krouiñ sontadegoù',
 	'qp_result_error' => 'Fazi ereadur',
+	'qp_vote_button' => 'Mouezhiañ',
 	'qp_users_list' => 'Renabliñ an holl implijerien',
 	'qp_stats_link' => 'Stadegoù',
 	'qp_users_link' => 'Implijerien',
 	'qp_voice_link' => 'Mouezh an implijer',
 	'qp_order_by_username' => 'Urzhiañ dre anv implijer',
+	'qp_export_to_xls' => "Ezporzhiañ ar stadegoù d'ar furmad XLS",
 	'qp_error_category_name_empty' => 'Goullo eo anv ar rummad',
 	'qp_error_proposal_text_empty' => "Goullo eo testenn ar c'hinnig",
 );
@@ -734,11 +738,20 @@ $messages['ja'] = array(
 	'qp_error_invalid_question_type' => '無効な質問タイプ: $1',
 	'qp_error_type_in_stats_mode' => '質問タイプは統計表示モードでは定義できません: $1',
 	'qp_error_no_poll_id' => '投票タグに id 属性がありません。',
-	'qp_error_invalid_poll_id' => '無効な投票 ID ($1)。
+	'qp_error_invalid_poll_id' => '無効な投票 ID (id=$1)。
 投票 ID はアルファベット、数字、スペースのみを含むことができます。',
-	'qp_error_already_used_poll_id' => 'その投票 ID は既にこのページで使われています ($1)。',
+	'qp_error_already_used_poll_id' => 'その投票 ID は既にこのページで使われています (id=$1)。',
+	'qp_error_invalid_dependance_value' => 'この投票 (id=$1) の依存性チェーンには依存性属性に不正な値があります (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'この投票 (id=$1) はページ [[$2]] の別の投票 (id=$3) に依存していますが、ページ名 [[$2]] は見つかりませんでした。依存性属性を削除するか、[[$2]] を復帰させてください',
+	'qp_error_missed_dependance_poll' => 'この投票 (id=$1) はページ $2 の別の投票 (id=$3) に依存していますが、その投票が存在しないかまだ保存されていません。依存性属性を削除するか、ページ $2 で id=$3 の投票を作成してください。投票を保存するには、どの提案質問にも答えずに投稿してください。',
+	'qp_error_vote_dependance_poll' => '初めに投票 $1 に投票してください。',
+	'qp_error_unanswered_span' => '未回答のサブカテゴリー',
+	'qp_error_non_unique_choice' => 'この質問には答えとして独自の提案が必要です',
 	'qp_error_category_name_empty' => 'カテゴリー名が空です',
 	'qp_error_proposal_text_empty' => '提案文が空です',
+	'qp_error_too_few_categories' => '最低でも2つのカテゴリーが定義されなければなりません',
+	'qp_error_no_answer' => '未回答の提案',
+	'qp_error_unique' => 'タイプが unique() の質問には回答可能なものより多くの質問が定義されています。すべてに記入することはできません',
 );
 
 /** Ripoarisch (Ripoarisch)

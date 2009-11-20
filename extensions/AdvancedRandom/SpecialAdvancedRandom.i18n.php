@@ -419,6 +419,15 @@ $messages['nds-nl'] = array(
 Kan gebruuk wönnen as [[{{#special:advancedrandom}}/{{ns:template}}:Uut-eloch/{{ns:talk}}]] um een willekeurig etelazie-artikel weer te geven of as [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] um een willekeurig GFDL-elicenseerd bestaand te bekieken',
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'advancedrandom' => 'उन्नत र्‌यान्डम',
+	'advancedrandom-desc' => 'कुनै पनि नेमस्पेसबाट वार्तालाप वा विषय पृष्ठ जो यो पृष्ठ सँग जोडिएको छ पाउनको लागि ।
+ [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] कुनै पनि फिचर पृष्ठ पाउनको लागि, or like [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] कुनै पनि  GFDL फाइल पानको लागि , यस रुपमा प्रयोग गर्न सकिन्छ ।',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

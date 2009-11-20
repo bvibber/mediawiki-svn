@@ -788,6 +788,24 @@ $messages['nds-nl'] = array(
 	'right-adminlinks' => 'De verwiezing naor [[Special:AdminLinks|verwiezingen veur beheerders]] zien',
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'adminlinks' => 'प्रवन्धक लिङ्कहरु',
+	'adminlinks-desc' => '[[Special:AdminLinks|special page]] थप्छ जसले प्रवन्धककर्ताहरुको  लागि सहयोगी लिङ्कहरु समेटेको छ।',
+	'adminlinks_documentation' => '$1 मिसिलिकरण',
+	'adminlinks_general' => 'साधारण',
+	'adminlinks_editsidebar' => 'साइडबार सम्पादन गर्ने',
+	'adminlinks_editcss' => ' CSS फाइल सम्पादन गर्ने',
+	'adminlinks_editmainpagename' => 'मूख्य पृष्ठको नाम सम्पादन गर्ने',
+	'adminlinks_users' => 'प्रयोगकर्ताहरु',
+	'adminlinks_createuser' => 'प्रयोगकर्ता शृजना गर्ने',
+	'adminlinks_browsesearch' => 'ब्राउजिङ्ग र खोजी',
+	'adminlinks_importexport' => 'आयात तथा निर्यात',
+	'right-adminlinks' => 'यो लिङ्क हेर्नुहोस [[Special:AdminLinks|प्रवन्धक लिङ्क]]',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1063,11 +1081,20 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Ravichandra
  * @author Veeven
  */
 $messages['te'] = array(
+	'adminlinks' => 'నిర్వహణా లింకులు',
 	'adminlinks_general' => 'సాధారణ',
+	'adminlinks_editsidebar' => 'సైడ్‌బార్ ను మార్చు',
+	'adminlinks_editcss' => 'స్టైల్ షీట్ ను మార్చు',
+	'adminlinks_editmainpagename' => 'ప్రధాన పేజీ పేరు మార్చు',
 	'adminlinks_users' => 'వాడుకరులు',
+	'adminlinks_createuser' => 'వాడుకరిని సృష్టించు',
+	'adminlinks_browsesearch' => 'విహరించడం, మరియు వెతకడం',
+	'adminlinks_importexport' => 'ఎగుమతులు, దిగుమతులు',
+	'right-adminlinks' => 'నిర్వహణా లింకులకు లింకు చూడండి',
 );
 
 /** Turkish (Türkçe)

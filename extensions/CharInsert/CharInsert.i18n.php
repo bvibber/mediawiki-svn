@@ -383,6 +383,13 @@ $messages['nds-nl'] = array(
 	'charinsert-desc' => 'Hiermee ku-j [[MediaWiki:Edittools|neet-standardkarakters]] invoeren vanuut een deelvienster via JavaScript',
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'charinsert-desc' => 'JavaScript बाकस बनाउन [[MediaWiki:Edittools| स्तरहिन वर्णहरु राख्न ]] सहयोग गर्छ',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

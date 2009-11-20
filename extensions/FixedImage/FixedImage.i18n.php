@@ -326,6 +326,13 @@ $messages['nds'] = array(
 	'fixedimage-desc' => 'Föögt dat <tt><nowiki><fundraising></nowiki></tt>-Tag as Bild to',
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'fixedimage-desc' => '<tt><nowiki><चन्दा></nowiki></tt> ट्यागलाई तस्विरको रुपमा थप्छ',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

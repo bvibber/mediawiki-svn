@@ -160,6 +160,13 @@ $messages['mk'] = array(
 	'filepagemasking-desc' => 'Го менува „.xxx“ во „_xxx“ во врските на страницата за опис на податотека',
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'filepagemasking-desc' => 'फाइल जानकारी लिङ्कहरुमा ".xxx" लाई  "_xxx" को रुपमा आधिलेखन गरिदिन्छ ।',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

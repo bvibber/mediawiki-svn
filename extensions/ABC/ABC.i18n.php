@@ -504,6 +504,14 @@ $messages['nds-nl'] = array(
 	'abcdownload' => 'Binnenhaolen:',
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'abcdesc' => ' ABC संगित <tt>&lt;abc&gt;</tt> ढाँचावद्ध गर्नलाई ट्याग थप्छ।',
+	'abcdownload' => 'डाउनलोड गर्ने:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

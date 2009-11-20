@@ -5075,6 +5075,7 @@ $messages['ml'] = array(
 	'codereview-reply-link' => 'മറുപടി',
 	'codereview-tests-succeeded2' => '{{PLURAL:$2|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $1 കടന്നിരിക്കുന്നു',
 	'codereview-tests-failed2' => '{{PLURAL:$2|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $1 കടന്നിരിക്കുന്നു, {{PLURAL:$4|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $3 പരാജയപ്പെട്ടിരിക്കുന്നു:',
+	'codereview-tests-running' => 'പരീക്ഷണ ഓട്ടങ്ങൾ തുടരുന്നു...',
 	'codereview-tests-aborted' => 'പരീക്ഷണ ഓട്ടം റദ്ദാക്കിയിരിക്കുന്നു.',
 	'codereview-email-subj' => '[$1] [r$2]: പുതിയ അഭിപ്രായം ചേർത്തിരിക്കുന്നു',
 	'codereview-email-body' => 'r$3-യിൽ "$1" ഒരു അഭിപ്രായം ചേർത്തിരിക്കുന്നു.

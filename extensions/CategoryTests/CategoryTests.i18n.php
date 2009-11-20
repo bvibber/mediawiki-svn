@@ -218,6 +218,13 @@ $messages['nds-nl'] = array(
 	'categorytests-desc' => 'Functies veur kattegerietests',
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'categorytests-desc' => 'प्रकार  जाँचको कार्यहरु',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

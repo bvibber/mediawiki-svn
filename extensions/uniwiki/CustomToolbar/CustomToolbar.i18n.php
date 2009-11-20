@@ -1877,6 +1877,31 @@ Proszę sprawdzić swoją blokadę wyskakujących okienek.',
 	'ct_user_sample' => 'Nazwa użytkownika',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ */
+$wgCustomToolbarMessages['pms'] = array(
+	'ct-desc' => "A gionta na bara d'utiss estendìbil",
+	'ct_bold_sample' => 'Test an grassèt',
+	'ct_bold_tip_ins' => 'Anserì un test an grassèt',
+	'ct_bold_tip_wrap' => "Buté 's test an grassèt",
+	'ct_bold_caption' => 'Grassèt',
+	'ct_italic_sample' => 'Test an corsiv',
+	'ct_italic_tip_ins' => 'Anserì un test an corsiv',
+	'ct_italic_tip_wrap' => "Buté 's test an corsiv",
+	'ct_italic_caption' => 'Corsiv',
+	'ct_internal_sample' => 'Nòm dla pàgina',
+	'ct_internal_tip_ins' => "Anserì n'anliura anterna",
+	'ct_internal_tip_wrap' => "Buté ës test 'me n'anliura anterna",
+	'ct_internal_caption' => 'Anliura anterna',
+	'ct_external_tip_ins' => "Anserì n'anliura esterna",
+	'ct_external_tip_wrap' => "Buté ës test 'me n'anliura esterna",
+	'ct_external_caption' => 'Anliura esterna',
+	'ct_image_tip' => 'Anserì na plancia',
+	'ct_image_caption' => 'Gionté na plancia',
+	'ct_attachment_tip' => "Anserì n'alegà",
+);
+
 /** Western Punjabi (پنجابی)
  * @author Khalid Mahmood
  */

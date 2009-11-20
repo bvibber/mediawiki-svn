@@ -289,6 +289,14 @@ $messages['nds-nl'] = array(
 Maak een versie binnen een pagina, in 't biezunder hendig veur Wikiniejs",
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'catfeed-desc' => 'हालै परिवर्तन गरिएको फिडबाट बिट्सहरु प्रयोग गर्छ ।
+पृष्ठ-भित्र शृजना गर्ने , विशेषरुपमा विकिन्युजलाई प्रभावकारी',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

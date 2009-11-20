@@ -378,6 +378,14 @@ $messages['nds'] = array(
 	'categoryonupload-label' => 'Kategorie:',
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'categoryonupload-desc' => 'फाइल अपलोड  गर्ने बेला प्रयोगकर्तालाई   कुनै प्रकार छान्न लगाउछ',
+	'categoryonupload-label' => 'प्रकार :',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
