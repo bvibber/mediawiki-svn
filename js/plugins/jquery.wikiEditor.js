@@ -255,6 +255,34 @@ if ( typeof context == 'undefined' ) {
 			}
 		}
 	}
+	/*
+	 * Create a set of event handlers for the iframe to hook into
+	 */
+	context.evt = {
+		'change': function( event ) {
+			// BTW: context is in event.data.context
+			switch ( event.type ) {
+				case 'keypress':
+					if ( /* something interesting was deleted */ false ) {
+						//console.log( 'MAJOR CHANGE' );
+					} else {
+						//console.log( 'MINOR CHANGE' );
+					}
+					break;
+				case 'mousedown':
+					if ( /* text was dragged and dropped */ false ) {
+						//console.log( 'MAJOR CHANGE' );
+					} else {
+						//console.log( 'MINOR CHANGE' );
+					}
+					break;
+				default:
+					//console.log( 'MAJOR CHANGE' );
+					break;
+			}
+		
+		}
+	};
 	/* Create a set of functions for interacting with the editor content
 	 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 	 */
@@ -263,19 +291,17 @@ if ( typeof context == 'undefined' ) {
 		 * When finishing these functions, take a look at jquery.textSelection.js because this is designed to be API
 		 * compatible with those functions. The key difference is that these perform actions on a designMode iframe
 		 */
-		
 		'setup': function() {
 			// Setup the iframe with a basic document
 			context.$iframe[0].contentWindow.document.open();
 			context.$iframe[0].contentWindow.document.write(
-				'<html><head><title>wikiEditor</title></head><body style="margin:0;padding:0;width:100%;height:100%;">' +
-				'<pre style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;"></pre></body></html>'
+				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keypress mouseup cut paste", { "context": context }, context.evt.change );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace"></body></html>'
 			);
 			context.$iframe[0].contentWindow.document.close();
 			// Turn the document's design mode on
 			context.$iframe[0].contentWindow.document.designMode = 'on';
 			// Get a reference to the content area of the iframe 
-			context.$content = context.$iframe.contents().find( 'body > pre' );
+			context.$content = context.$iframe.contents().find( 'body' );
 			
 			/* Magic IFRAME Activation */
 			
