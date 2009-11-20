@@ -12,6 +12,6 @@ $messages = array();
  * @author Trevor Parscal
  */
 $messages['en'] = array(
-	'svgzoom' => 'SVGZoom',
-	'svgzoom-desc' => 'Adds pan and zoom capabilies to MediaWiki when viewing SVG files.',
+	'svgzoom' => 'SVGZoom', # FIXME: Seems unused. Please check. Thanks.
+	'svgzoom-desc' => 'Adds pan and zoom capabilities to MediaWiki when viewing SVG files',
 );
