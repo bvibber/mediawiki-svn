@@ -21,6 +21,7 @@ class ApiClickTracking extends ApiBase {
 		$session_id = $params['token'];
 
 		// Event ID lookup table
+		// FIXME: API should already have urldecode()d
 		$event_id = ClickTrackingHooks::getEventIDFromName( urldecode( $eventid_to_lookup ) );
 
 		$is_logged_in = $wgUser->isLoggedIn();

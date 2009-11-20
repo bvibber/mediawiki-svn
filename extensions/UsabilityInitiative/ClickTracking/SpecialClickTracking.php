@@ -539,16 +539,19 @@ class SpecialClickTracking extends SpecialPage {
 		$time_constraint = $time_constraint_statement;
 		
 		$dbr = wfGetDB( DB_SLAVE );
+		
+		// NOTE: This query is a performance nightmare
+		// Permission to run it is restricted by default
 		$dbresult = $dbr->select(
-            array( 'click_tracking', 'click_tracking_events' ),
-            array( 'count(event_id) as totalevtid', 'event_id', 'event_name' ),
-            $time_constraint,
-            __METHOD__,
-            array( 'GROUP BY' => 'event_id', 'ORDER BY' => 'totalevtid DESC' ),
-            array( 'click_tracking_events' =>
-                array( 'LEFT JOIN', 'event_id=click_tracking_events.id' )
-            )
-        );
+			array( 'click_tracking', 'click_tracking_events' ),
+			array( 'count(event_id) as totalevtid', 'event_id', 'event_name' ),
+			$time_constraint,
+			__METHOD__,
+			array( 'GROUP BY' => 'event_id', 'ORDER BY' => 'totalevtid DESC' ),
+			array( 'click_tracking_events' =>
+				array( 'LEFT JOIN', 'event_id=click_tracking_events.id' ) // FIXME: breaks when table prefixes are used
+			)
+		);
 		
 		/*		
 		$sql = "select count(event_id) as totalevtid, event_id,event_name from click_tracking" .
@@ -568,12 +571,12 @@ class SpecialClickTracking extends SpecialPage {
 		
 		$dbr = wfGetDB( DB_SLAVE );
 		$conds = array_merge(
-            self::getTimeConstraints($minTime,$maxTime),
-            SpecialClickTracking::buildUserDefConstraints($userDef),
-            array( 'event_id' => $event_id )
-        );
-        return wfGetDB( DB_SLAVE )->selectField(
-            'click_tracking', 'count(*)', $conds, __METHOD__ );
+			self::getTimeConstraints($minTime,$maxTime),
+			SpecialClickTracking::buildUserDefConstraints($userDef),
+			array( 'event_id' => $event_id )
+		);
+		return wfGetDB( DB_SLAVE )->selectField(
+			'click_tracking', 'count(*)', $conds, __METHOD__ );
 		
 	}
 	

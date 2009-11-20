@@ -9,8 +9,5 @@ CREATE TABLE IF NOT EXISTS /*_*/click_tracking_events (
 	event_name VARBINARY(255) unique,
 
 	-- day
-	id INTEGER AUTO_INCREMENT,
-
-	-- keyed on event, sql makes you use the id as a primary key
-	PRIMARY KEY(id)
+	id INTEGER AUTO_INCREMENT PRIMARY KEY
 ) /*$wgDBTableOptions*/;
