@@ -168,6 +168,8 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-tool-ulist-example',
 				'wikieditor-toolbar-tool-olist',
 				'wikieditor-toolbar-tool-olist-example',
+				'wikieditor-toolbar-tool-indent',
+				'wikieditor-toolbar-tool-indent-example',
 				'wikieditor-toolbar-group-size',
 				'wikieditor-toolbar-tool-big',
 				'wikieditor-toolbar-tool-big-example',
