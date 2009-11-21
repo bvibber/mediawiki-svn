@@ -479,7 +479,7 @@ fn : {
 						if ( show ) {
 							$section.fadeIn( 'fast' );
 							dH = $section.outerHeight() - dH;
-							context.modules.$toolbar.animate({'height': "+="+dH}, $section.outerHeight() * 2);
+							context.modules.$toc.animate({'height': "+="+dH}, $section.outerHeight() * 2);
 							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() { 
 								$(this).css('overflow', 'visible').css('height', 'auto'); 
 							} );
@@ -489,7 +489,7 @@ fn : {
 								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() { 
 									$(this).css('overflow', 'visible'); 
 								} );
-							context.modules.$toolbar.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);
+							context.modules.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);
 						}
 						// Click tracking
 						if($.trackAction != undefined){
@@ -590,7 +590,7 @@ fn : {
 				var $section = s.$sections.find( '.section:visible' );
 				if ( $section.size() ) {
 					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function( ) {
-						context.modules.$toolbar.height(
+						context.modules.$toc.height(
 							context.$ui.find( '.wikiEditor-ui-left' )
 								.outerHeight() - context.$ui.find( '.tab-toc' ).outerHeight()
 						);
