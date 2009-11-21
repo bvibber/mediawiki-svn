@@ -26,8 +26,8 @@ class UserDailyContribsHooks {
 	 * @return unknown_type
 	 */
 	public static function parserTestTables( &$tables ) {
-    	$tables[] = 'user_daily_contribs';
-    	return true;
+		$tables[] = 'user_daily_contribs';
+		return true;
 	}
 	
 	/**
