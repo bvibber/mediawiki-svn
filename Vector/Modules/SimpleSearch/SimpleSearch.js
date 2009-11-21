@@ -24,7 +24,7 @@ js2AddOnloadHook( function() {
 					'color': '#999999',
 					'cursor': 'text'
 				})
-				.css( ( $j( 'body.rtl' ).size() > 0 ? 'right' : 'left' ), 0 )
+				.css( ( $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' ), 0 )
 				.click( function() {
 					$j(this).parent().find( 'input#searchInput' ).focus();
 				})

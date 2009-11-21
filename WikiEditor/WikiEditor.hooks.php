@@ -15,13 +15,13 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 1 ),
 			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 1 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 1 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 7 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 8 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 5 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 6 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 5 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 6 ),
 		),
 	);
 	static $modules = array(

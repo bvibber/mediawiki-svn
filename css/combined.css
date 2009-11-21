@@ -93,12 +93,18 @@ body.rtl .wikiEditor-ui {
 }
 .wikiEditor-ui .wikiEditor-ui-left {
 	float: left;
-	width:100%;
+	width: 100%;
+}
+body.rtl .wikiEditor-ui .wikiEditor-ui-left {
+	float: right;
 }
 .wikiEditor-ui .wikiEditor-ui-right {
 	float: right;
 	background: #F3F3F3;
-	overflow:hidden;
+	overflow: hidden;
+}
+body.rtl .wikiEditor-ui .wikiEditor-ui-right {
+	float: left;
 }
 .wikiEditor-wikitext {
 	float: left;
@@ -109,7 +115,6 @@ body.rtl .wikiEditor-ui {
 	float: left;
 	width: 50%;
 }
-*/
 .wikiEditor-buttons {
 	float: right;
 	width: 50%;
@@ -178,6 +183,10 @@ body.rtl .wikiEditor-ui-toc ul {
 	white-space: nowrap;
 	overflow: hidden;
 }
+body.rtl .tab-toc {
+	background-position: right top;
+	padding-right: 1em;
+}
 .tab-toc a {
 	outline: none;
 }
@@ -201,20 +210,38 @@ body.rtl .wikiEditor-ui-toc ul {
 	cursor: pointer;
 	color: #0645ad;
 }
+body.rtl .wikiEditor-ui-toc ul li div {
+	padding-right: 1em;
+}
 .wikiEditor-ui-toc ul ul li div {
 	padding-left: 2em;
+}
+body.rtl .wikiEditor-ui-toc ul ul li div {
+	padding-right: 2em;
 }
 .wikiEditor-ui-toc ul ul ul li div {
 	padding-left: 3em;
 }
+body.rtl .wikiEditor-ui-toc ul ul ul li div {
+	padding-right: 3em;
+}
 .wikiEditor-ui-toc ul ul ul ul li div {
 	padding-left: 4em;
+}
+body.rtl .wikiEditor-ui-toc ul ul ul ul li div {
+	padding-right: 4em;
 }
 .wikiEditor-ui-toc ul ul ul ul ul li div {
 	padding-left: 5em;
 }
+body.rtl .wikiEditor-ui-toc ul ul ul ul ul li div {
+	padding-right: 5em;
+}
 .wikiEditor-ui-toc ul ul ul ul ul ul li div {
 	padding-left: 6em;
+}
+body.rtl wikiEditor-ui-toc ul ul ul ul ul ul li div {
+	padding-right: 6em;
 }
 .wikiEditor-ui-toc ul li div.current {
 	background-color: #FAFAFA;
@@ -303,6 +330,10 @@ body.rtl .wikiEditor-ui-toc ul {
 	padding-right: 1em;
 	white-space: nowrap;
 	overflow: hidden;
+}
+body.rtl .wikiEditor-ui-toc-expandControl {
+	left: 10px;
+	padding-left: 1em;
 }
 .wikiEditor-ui-text textarea {
 	resize: none;

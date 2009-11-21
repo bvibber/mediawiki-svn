@@ -1353,14 +1353,14 @@ $.wikiEditor = {
 	 */
 	'imgPath' : wgScriptPath + '/extensions/UsabilityInitiative/images/wikiEditor/',
 	'isSupportKnown': function() {
-		return $.browser.name in $.wikiEditor.browsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'];
+		return $.browser.name in $.wikiEditor.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'];
 	},
 	'isSupported': function() {
 		if ( !$.wikiEditor.isSupportKnown ) {
 			// Assume good faith :)
 			return true;
 		}
-		var browser = $.wikiEditor.browsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'][$.browser.name];
+		var browser = $.wikiEditor.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
 		for ( condition in browser ) {
 			var op = browser[condition][0];
 			var val = browser[condition][1];
@@ -1600,6 +1600,8 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe[0].contentWindow.document.designMode = 'on';
 			// Get a reference to the content area of the iframe 
 			context.$content = context.$iframe.contents().find( 'body' );
+			if ( $( 'body' ).is( '.rtl' ) )
+				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
 			
 			/* Magic IFRAME Activation */
 			
