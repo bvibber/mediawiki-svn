@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
  * 
- * @version 0.6.2
+ * @version 0.6.3
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
  */
@@ -54,7 +54,7 @@ define( 'QP_MAX_TEXT_ANSWER_LENGTH', 1024 );
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QPoll',
-	'version' => '0.6.2',
+	'version' => '0.6.3',
 	'author' => 'QuestPC',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
 	'description' => 'Allows creation of polls',
@@ -63,7 +63,7 @@ $wgExtensionCredits['parserhook'][] = array(
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'QPoll results page',
-	'version' => '0.6.2',
+	'version' => '0.6.3',
 	'author' => 'QuestPC',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
 	'description' => 'QPoll extension [[Special:PollResults]] page for viewing results of the polls',

@@ -1,4 +1,4 @@
-MediaWiki extension QPoll, version 0.6.2
+MediaWiki extension QPoll, version 0.6.3
 
 * download the latest available version and extract it to your wiki extension directory. 
 * add the following line to LocalSettings.php 
