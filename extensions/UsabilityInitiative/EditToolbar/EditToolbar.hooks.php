@@ -82,6 +82,8 @@ class EditToolbarHooks {
 					'edittoolbar-tool-ulist-example',
 					'edittoolbar-tool-olist',
 					'edittoolbar-tool-olist-example',
+					'edittoolbar-tool-indent',
+					'edittoolbar-tool-indent-example',
 					'edittoolbar-group-size',
 					'edittoolbar-tool-big',
 					'edittoolbar-tool-big-example',
