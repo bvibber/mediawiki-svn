@@ -1,6 +1,6 @@
 js2AddOnloadHook( function() {
 	
-	var rtl = $j( 'body.rtl' ).size() ? true : false;
+	var rtl = $j( 'body' ).is( '.rtl' ) ? true : false;
 	
 	//Overloading the moveToCollapsed function to animate the transition 
 	$j.collapsibleTabs.moveToCollapsed = function( ele ) {

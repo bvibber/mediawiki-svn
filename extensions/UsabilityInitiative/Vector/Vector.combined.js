@@ -1,6 +1,6 @@
 js2AddOnloadHook( function() {
 	
-	var rtl = $j( 'body.rtl' ).size() ? true : false;
+	var rtl = $j( 'body' ).is( '.rtl' ) ? true : false;
 	
 	//Overloading the moveToCollapsed function to animate the transition 
 	$j.collapsibleTabs.moveToCollapsed = function( ele ) {
@@ -144,7 +144,7 @@ js2AddOnloadHook( function() {
 					'color': '#999999',
 					'cursor': 'text'
 				})
-				.css( ( $j( 'body.rtl' ).size() > 0 ? 'right' : 'left' ), 0 )
+				.css( ( $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' ), 0 )
 				.click( function() {
 					$j(this).parent().find( 'input#searchInput' ).focus();
 				})
