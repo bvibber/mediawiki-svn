@@ -24,7 +24,8 @@ PLUGINS := \
 	js/plugins/jquery.wikiEditor.dialogs.js\
 	js/plugins/jquery.wikiEditor.toolbar.js\
 	js/plugins/jquery.wikiEditor.toc.js\
-	js/plugins/jquery.wikiEditor.preview.js
+	js/plugins/jquery.wikiEditor.preview.js\
+	js/plugins/jquery.wikiEditor.highlight.js
 
 WIKIEDITOR_MODULES := \
 	WikiEditor/Modules/Toolbar/Toolbar.js\

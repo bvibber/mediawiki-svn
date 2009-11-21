@@ -78,10 +78,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 83 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 84 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 83 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 84 ),
 			),
 		),
 	);
