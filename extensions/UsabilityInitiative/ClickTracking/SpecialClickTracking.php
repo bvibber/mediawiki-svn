@@ -549,7 +549,7 @@ class SpecialClickTracking extends SpecialPage {
 			__METHOD__,
 			array( 'GROUP BY' => 'event_id', 'ORDER BY' => 'totalevtid DESC' ),
 			array( 'click_tracking_events' =>
-				array( 'LEFT JOIN', 'event_id=click_tracking_events.id' ) // FIXME: breaks when table prefixes are used
+				array( 'LEFT JOIN', 'event_id=id' )
 			)
 		);
 		
