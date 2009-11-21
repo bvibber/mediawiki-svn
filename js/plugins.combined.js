@@ -1553,6 +1553,34 @@ if ( typeof context == 'undefined' ) {
 			}
 		}
 	}
+	/*
+	 * Create a set of event handlers for the iframe to hook into
+	 */
+	context.evt = {
+		'change': function( event ) {
+			// BTW: context is in event.data.context
+			switch ( event.type ) {
+				case 'keypress':
+					if ( /* something interesting was deleted */ false ) {
+						//console.log( 'MAJOR CHANGE' );
+					} else {
+						//console.log( 'MINOR CHANGE' );
+					}
+					break;
+				case 'mousedown':
+					if ( /* text was dragged and dropped */ false ) {
+						//console.log( 'MAJOR CHANGE' );
+					} else {
+						//console.log( 'MINOR CHANGE' );
+					}
+					break;
+				default:
+					//console.log( 'MAJOR CHANGE' );
+					break;
+			}
+		
+		}
+	};
 	/* Create a set of functions for interacting with the editor content
 	 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 	 */
@@ -1561,19 +1589,17 @@ if ( typeof context == 'undefined' ) {
 		 * When finishing these functions, take a look at jquery.textSelection.js because this is designed to be API
 		 * compatible with those functions. The key difference is that these perform actions on a designMode iframe
 		 */
-		
 		'setup': function() {
 			// Setup the iframe with a basic document
 			context.$iframe[0].contentWindow.document.open();
 			context.$iframe[0].contentWindow.document.write(
-				'<html><head><title>wikiEditor</title></head><body style="margin:0;padding:0;width:100%;height:100%;">' +
-				'<pre style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;"></pre></body></html>'
+				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keypress mouseup cut paste", { "context": context }, context.evt.change );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace"></body></html>'
 			);
 			context.$iframe[0].contentWindow.document.close();
 			// Turn the document's design mode on
 			context.$iframe[0].contentWindow.document.designMode = 'on';
 			// Get a reference to the content area of the iframe 
-			context.$content = context.$iframe.contents().find( 'body > pre' );
+			context.$content = context.$iframe.contents().find( 'body' );
 			
 			/* Magic IFRAME Activation */
 			
@@ -2853,6 +2879,7 @@ fn: {
 		var structure = buildStructure( outline );
 		if ( $( 'input[name=wpSection]' ).val() == '' ) {
 			// Add a <div> at the beginning
+			// FIXME: The user can remove this div, use the <body> tag for anchor
 			var div = $j( '<div />' )
 				.addClass( 'wikiEditor-toc-start' )
 				.hide()
@@ -3144,4 +3171,81 @@ fn: {
 	}
 }
 };
-})( jQuery );
+})( jQuery );/* Highlight module for wikiEditor */
+( function( $ ) { $.wikiEditor.modules.highlight = {
+
+/**
+ * API accessible functions
+ */
+api: {
+	//
+},
+/**
+ * Internally used event handlers
+ */
+evt: {
+	change: function( event ) {
+		/*
+		 * Triggered on any of the following events, with the intent on detecting if something was added, deleted or
+		 * replaced due to user action.
+		 * 
+		 * The following conditions are indicative that one or more divisions need to be re-scanned/marked:
+		 * 		Keypress while something is highlighted
+		 * 		Cut
+		 * 		Paste
+		 * 		Drag+drop selected text
+		 * The following conditions are indicative that special handlers need to be consulted to properly parse content
+		 * 		Keypress with any of the following characters
+		 * 			}	Template or Table handler
+		 * 			>	Tag handler
+		 * 			]	Link handler
+		 * The following conditions are indicative that divisions might be being made which would need encapsulation
+		 * 		Keypress with any of the following characters
+		 * 			=	Heading
+		 * 			#	Ordered
+		 * 			*	Unordered
+		 * 			;	Definition
+		 * 			:	Definition
+		 */
+	}
+},
+/**
+ * Internally used functions
+ */
+fn: {
+	/**
+	 * Creates a highlight module within a wikiEditor
+	 * @param context Context object of editor to create module in
+	 * @param config Configuration object to create module from
+	 */
+	create: function( context, config ) {
+		// hook $.wikiEditor.modules.highlight.evt.change to context.evt.change
+	},
+	divide: function( context ) {
+		/*
+		 * We need to add some markup to the iframe content to encapsulate divisions
+		 */
+	},
+	isolate: function( context ) {
+		/*
+		 * A change just occured, and we need to know which sections were affected
+		 */
+		return []; // array of sections?
+	},
+	strip: function( context, division ) {
+		return $( '<div />' ).html( division.html().replace( /\<br[^\>]*\>/g, "\n" ) ).text();
+	},
+	scan: function( context, division ) {
+		/*
+		 * We need to look over some text and find interesting areas, then return the positions of those areas as tokens
+		 */
+		return []; // array of tokens?
+	},
+	mark: function( context, division, tokens ) {
+		/*
+		 * We need to markup some text based on some tokens
+		 */
+	}
+}
+
+}; })( jQuery );

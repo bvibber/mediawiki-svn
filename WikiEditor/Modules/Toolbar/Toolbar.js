@@ -818,18 +818,20 @@ js2AddOnloadHook( function() {
 		html: '\
 			<fieldset><table style="width: 100%;"><tr>\
 				<td>\
-					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target"></label><br />\
-					<input type="text" id="wikieditor-toolbar-link-int-target" style="width: 100%;" />\
-				</td><td style="width: 48px;">\
-					<div id="wikieditor-toolbar-link-int-target-status" style="display: inline;"></div>\
+					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target"\
+						style="display: inline; float: left;"></label>\
+					<div id="wikieditor-toolbar-link-int-target-status" style="display: inline; float:right;"></div><br />\
+					<div style="position: relative;"><label rel="wikieditor-toolbar-tool-link-int-target-tooltip"></label>\
+						<input type="text" id="wikieditor-toolbar-link-int-target" style="width: 100%;" /></div>\
 				</td>\
 			</tr><tr>\
 				<td>\
 					<label for="wikieditor-toolbar-link-int-text" rel="wikieditor-toolbar-tool-link-int-text"></label><br />\
-					<input type="text" id="wikieditor-toolbar-link-int-text" style="width: 100%;" />\
+					<div style="position: relative;"><label rel="wikieditor-toolbar-tool-link-int-text-tooltip"></label>\
+						<input type="text" id="wikieditor-toolbar-link-int-text" style="width: 100%;" /></div>\
 				</td>\
 			</tr><tr>\
-				<td colspan="2">\
+				<td>\
 					<div style="float: left; margin-right: 2em;">\
 						<input type="radio" id="wikieditor-toolbar-link-type-int" name="wikieditor-toolbar-link-type" selected />\
 						<label for="wikieditor-toolbar-link-type-int" rel="wikieditor-toolbar-tool-link-int"></label>\
@@ -926,8 +928,33 @@ js2AddOnloadHook( function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
+			// Setup the tooltips in the textboxes
+			$j( '#wikieditor-toolbar-link-int-target, #wikieditor-toolbar-link-int-text' )
+				.focus( function() {
+					$j(this).parent().find( 'label' ).hide();
+				})
+				.bind( 'blur change', function() {
+					if ( $j(this).val() == '' )
+						$j(this).parent().find( 'label' ).show();
+					else
+						$j(this).parent().find( 'label' ).hide();
+				})
+				.parent().find( 'label')
+				.css({
+					'display': 'none',
+					'position' : 'absolute',
+					'bottom': 0,
+					'padding': '0.25em',
+					'color': '#999999',
+					'cursor': 'text'
+				})
+				.css( ( $j( 'body.rtl' ).size() > 0 ? 'right' : 'left' ), 0 )
+				.click( function() {
+					$j(this).parent().find( 'input' ).focus();
+				});
+			
 			// Automatically copy the value of the internal link page title field to the link text field unless the user
-			// has changed the link text field - this is a convience thing since most link texts are going to be the
+			// has changed the link text field - this is a convenience thing since most link texts are going to be the
 			// the same as the page title
 			// Also change the internal/external radio button accordingly
 			$j( '#wikieditor-toolbar-link-int-target' ).bind( 'change keydown paste cut', function() {
@@ -940,7 +967,9 @@ js2AddOnloadHook( function() {
 						$j( '#wikieditor-toolbar-link-type-int' ).attr( 'checked', 'checked' );
 
 					if ( $j( '#wikieditor-toolbar-link-int-text' ).data( 'untouched' ) )
-						$j( '#wikieditor-toolbar-link-int-text' ).val( $j( '#wikieditor-toolbar-link-int-target' ).val() );
+						$j( '#wikieditor-toolbar-link-int-text' )
+							.val( $j( '#wikieditor-toolbar-link-int-target' ).val() )
+							.change();
 				}, 0 );
 			});
 			$j( '#wikieditor-toolbar-link-int-text' ).bind( 'change keydown paste cut', function() {
@@ -959,37 +988,38 @@ js2AddOnloadHook( function() {
 			var externalMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-external' );
 			var loadingMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-loading' );
 			$j( '#wikieditor-toolbar-link-int-target-status' )
-				.before( $j( '<br />' ) )
-				.append( $j( '<img />' ).attr( {
-					'id': 'wikieditor-toolbar-link-int-target-status-exists',
-					'src': $j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-exists.png',
-					'alt': existsMsg,
-					'title': existsMsg
-				} ) )
-				.append( $j( '<img />' ).attr( {
-					'id': 'wikieditor-toolbar-link-int-target-status-notexists',
-					'src': $j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-notexists.png',
-					'alt': notexistsMsg,
-					'title': notexistsMsg
-				} ) )
-				.append( $j( '<img />' ).attr( {
-					'id': 'wikieditor-toolbar-link-int-target-status-invalid',
-					'src': $j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-invalid.png',
-					'alt': invalidMsg,
-					'title': invalidMsg
-				} ) )
-				.append( $j( '<img />' ).attr( {
-					'id': 'wikieditor-toolbar-link-int-target-status-external',
-					'src': $j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-external.png',
-					'alt': externalMsg,
-					'title': externalMsg
-				} ) )
-				.append( $j( '<img />' ).attr( {
-					'id': 'wikieditor-toolbar-link-int-target-status-loading',
-					'src': $j.wikiEditor.imgPath + 'dialogs/loading.gif',
-					'alt': loadingMsg,
-					'title': loadingMsg
-				} ) )
+				.append( $j( '<div />' )
+					.attr( 'id', 'wikieditor-toolbar-link-int-target-status-exists' )
+					.append( $j( '<img />' ).attr( 'src',
+						$j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-exists.png' ) )
+					.append( existsMsg )
+				)
+				.append( $j( '<div />' )
+					.attr( 'id', 'wikieditor-toolbar-link-int-target-status-notexists' )
+					.append( $j( '<img />' ).attr( 'src',
+						$j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-notexists.png' ) )
+					.append( notexistsMsg )
+				)
+				.append( $j( '<div />' )
+					.attr( 'id', 'wikieditor-toolbar-link-int-target-status-invalid' )
+					.append( $j( '<img />' ).attr( 'src',
+						$j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-invalid.png' ) )
+					.append( invalidMsg )
+				)
+				.append( $j( '<div />' )
+					.attr( 'id', 'wikieditor-toolbar-link-int-target-status-external' )
+					.append( $j( '<img />' ).attr( 'src',
+						$j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-external.png' ) )
+					.append( externalMsg )
+				)
+				.append( $j( '<div />' )
+					.attr( 'id', 'wikieditor-toolbar-link-int-target-status-loading' )
+					.append( $j( '<img />' ).attr( {
+						'src': $j.wikiEditor.imgPath + 'dialogs/' + 'loading.gif',
+						'alt': loadingMsg,
+						'title': loadingMsg
+					} ) )
+				)
 				.data( 'existencecache', {} )
 				.children().hide();
 			
@@ -1190,6 +1220,12 @@ js2AddOnloadHook( function() {
 					$j( '#wikieditor-toolbar-link-int-text' ).val() == $j( '#wikieditor-toolbar-link-int-target' ).val()
 				);
 				$j( '#wikieditor-toolbar-link-int-target' ).suggestions();
+				
+				$j( '#wikieditor-toolbar-link-int-text, #wikiedit-toolbar-link-int-target' )
+					.each( function() {
+						if ( $j(this).val() == '' )
+							$j(this).parent().find( 'label' ).show();
+					});
 				
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );

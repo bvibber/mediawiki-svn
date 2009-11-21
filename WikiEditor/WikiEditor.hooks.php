@@ -15,13 +15,13 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 1 ),
 			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 1 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 1 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 6 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 7 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 4 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 5 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 4 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 5 ),
 		),
 	);
 	static $modules = array(
@@ -130,7 +130,9 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-tool-link-title',
 				'wikieditor-toolbar-tool-link-int',
 				'wikieditor-toolbar-tool-link-int-target',
+				'wikieditor-toolbar-tool-link-int-target-tooltip',
 				'wikieditor-toolbar-tool-link-int-text',
+				'wikieditor-toolbar-tool-link-int-text-tooltip',
 				'wikieditor-toolbar-tool-link-ext',
 				'wikieditor-toolbar-tool-link-ext-target',
 				'wikieditor-toolbar-tool-link-ext-text',
@@ -139,6 +141,7 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-tool-link-int-target-status-exists',
 				'wikieditor-toolbar-tool-link-int-target-status-notexists',
 				'wikieditor-toolbar-tool-link-int-target-status-invalid',
+				'wikieditor-toolbar-tool-link-int-target-status-external',
 				'wikieditor-toolbar-tool-link-int-target-status-loading',
 				'wikieditor-toolbar-tool-link-int-invalid',
 				'wikieditor-toolbar-tool-link-lookslikeinternal',

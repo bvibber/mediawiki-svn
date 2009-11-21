@@ -337,6 +337,7 @@ fn: {
 		var structure = buildStructure( outline );
 		if ( $( 'input[name=wpSection]' ).val() == '' ) {
 			// Add a <div> at the beginning
+			// FIXME: The user can remove this div, use the <body> tag for anchor
 			var div = $j( '<div />' )
 				.addClass( 'wikiEditor-toc-start' )
 				.hide()
