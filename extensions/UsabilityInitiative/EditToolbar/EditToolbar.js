@@ -239,6 +239,7 @@ js2AddOnloadHook( function() {
 							type: 'encapsulate',
 							options: {
 								pre: ":",
+								periMsg: 'edittoolbar-tool-indent-example',
 								post: "",
 								ownline: true
 							}
