@@ -284,7 +284,9 @@ overflow:hidden;
 .wikiEditor-ui-text textarea{
 resize:none;
 }
-.wikiEditor-ui-text textarea:focus{outline:none;}
+.wikiEditor-ui-text textarea:focus{
+outline:none;
+}
 .wikiEditor-ui-toolbar{
 position:relative;
 width:100%;
