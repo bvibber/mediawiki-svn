@@ -231,7 +231,10 @@ public class XmlDumpReader  extends DefaultHandler {
 	// ----------
 	
 	void threadAttribute(String attrib) throws IOException {
-		page.DiscussionThreadingInfo.put(attrib, bufferContents());
+		if(attrib.equals("ThreadPage")) // parse title
+			page.DiscussionThreadingInfo.put(attrib, new Title(bufferContents(), siteinfo.Namespaces));
+		else
+			page.DiscussionThreadingInfo.put(attrib, bufferContents());
 	}
 	
 	void openMediaWiki() throws IOException {
