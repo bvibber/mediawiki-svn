@@ -18,9 +18,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
+ * @author Lloffiwr
  */
 $messages['qqq'] = array(
-	'wikieditor-desc' => '{{desc}}',
+	'wikieditor-desc' => "{{desc}}
+
+I guess that 'feature-providing modules' means the same as 'modules providing features'.",
 );
 
 /** Arabic (العربية)
@@ -67,6 +70,13 @@ $messages['bs'] = array(
 $messages['cs'] = array(
 	'wikieditor' => 'Vylepšené rozhraní pro editaci wikitextu',
 	'wikieditor-desc' => 'Poskytuje rozšiřitelné editační rozhraní a mnoho modulů s novými funkcemi',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'wikieditor' => 'Rhyngwyneb golygu testun wici uwch',
 );
 
 /** Zazaki (Zazaki)

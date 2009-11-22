@@ -2531,7 +2531,7 @@ $messages['it'] = array(
 	'optin-title-optedout' => 'Prova la Beta',
 	'optin-title-optedin' => 'Lascia Beta',
 	'optin-title-justoptedin' => 'Benvenuto in Beta',
-	'optin-title-justoptedout' => 'Grazie per aver provato Beta',
+	'optin-title-justoptedout' => 'Grazie per aver provato la beta',
 	'optin-title-feedback' => 'Feedback della Beta',
 	'optin-needlogin' => "È necessario [$1 effettuare l'accesso] per provare Beta",
 	'optin-intro' => "Il progetto usabilità di Wikipedia sta lavorando intensamente per migliorare l'usabilità di Wikipedia.
@@ -2542,8 +2542,8 @@ Vorremmo sapere cosa ne pensi della nostra nuova interfaccia, quindi apprezzerem
 	'optin-success-in' => 'Ora stai provando la Beta.
 Puoi uscirne in qualsiasi momento facendo clic sul link "{{int:optin-leave}}" nella parte superiore dello schermo.',
 	'optin-leave-cancel' => 'Se si desidera continuare a usare Beta è possibile tornare a $1',
-	'optin-success-out' => 'Beta è stato lasciato con successo.
-È possibile provarlo nuovamente in qualsiasi momento facendo clic sul collegamento "{{int:optin-try}}" in alto a destra dello schermo.',
+	'optin-success-out' => 'Hai abbandonato la beta.
+È possibile provarla nuovamente in qualsiasi momento facendo clic sul collegamento "{{int:optin-try}}" in alto a destra dello schermo.',
 	'optin-success-feedback' => 'Grazie per il tuo feedback!',
 	'optin-accept-short' => 'Prova!',
 	'optin-accept-long' => 'Prova la Beta',
@@ -2566,7 +2566,7 @@ Vorremmo sapere cosa ne pensi della nostra nuova interfaccia, quindi apprezzerem
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Non mi piaceva la nuova barra degli strumenti.',
 	'optin-survey-answer-whyoptout-other' => 'Altra motivazione:',
 	'optin-survey-question-explain' => 'Spiega o approfondisci la tua risposta di cui sopra:',
-	'optin-survey-question-techfail' => 'Si sono verificati problemi tecnici usando Beta?',
+	'optin-survey-question-techfail' => 'Si sono verificati problemi tecnici usando la beta?',
 	'optin-survey-question-techfail-ifyes' => 'In caso affermativo, si prega di elaborare o spiegare:',
 	'optin-survey-question-usedtoolbar' => 'Hai usato la nuova barra degli strumenti espandibile per modificare una pagina?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Se sì, cosa ti è piaciuto? Cosa non ti è piaciuto?',
