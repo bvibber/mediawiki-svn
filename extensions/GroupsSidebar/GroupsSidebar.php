@@ -18,5 +18,5 @@ $dir = dirname(__FILE__) . '/';
 
 $wgAutoloadClasses['GroupsSidebar'] = $dir . 'GroupsSidebar.body.php'; # Tell MediaWiki to load the extension body.
 $wgHooks['SkinBuildSidebar'][] = array(new GroupsSidebar(), 'efHideSidebar');
-$wgExtensionMessagesFiles['myextension'] = $dir . 'GroupsSidebar.i18n.php';
+$wgExtensionMessagesFiles['GroupsSidebar'] = $dir . 'GroupsSidebar.i18n.php';
 $wgGroupsSidebar = array();
