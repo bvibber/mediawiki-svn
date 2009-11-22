@@ -1,22 +1,18 @@
 <?php
 /**
- * Interpreter for MediaWiki inline scripts
+ * Interpreter for MediaWiki inline scripts.
  * Copyright (C) Victor Vasiliev, Andrew Garrett, 2008-2009.
  * Distributed under GNU GPL v2 or later terms.
  */
 
-require_once( 'Utils.php' );
+require_once( 'Shared.php' );
+require_once( 'Data.php' );
 
 class InlineScriptInterpreter {
-	/**
-	 * Used to invalidate AST cache. Increment whenever you change
-	 * code parser or $mFunctions/$mOps
-	 */
 	const ParserVersion = 1;
 
 	var $mVars, $mOut, $mParser, $mFrame, $mCodeParser;
 
-	// length,lcase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count
 	static $mFunctions = array(
 		'out' => 'funcOut',
 
@@ -50,33 +46,10 @@ class InlineScriptInterpreter {
 		'bool' => 'castBool',
 	);
 
-	// Order is important. The punctuation-matching regex requires that
-	//  ** comes before *, etc. They are sorted to make it easy to spot
-	//  such errors.
-	static $mOps = array(
-		'!==', '!=', '!', 	// Inequality
-		'+=', '-=',         // Setting 1
-		'*=', '/=',         // Setting 2
-		'**', '*', 			// Multiplication/exponentiation
-		'/', '+', '-', '%', // Other arithmetic
-		'&', '|', '^', 		// Logic
-		'?', ':', 			// Ternery
-		'<=','<', 			// Less than
-		'>=', '>', 			// Greater than
-		'===', '==', '=', 	// Equality
-		',', ';',           // Comma, semicolon
-		'(', '[', '{',      // Braces
-	);
-	static $mKeywords = array(
-		'in', 'true', 'false', 'null', 'contains', 'break',
-		'if', 'then', 'else', 'foreach', 'do', 'try', 'catch',
-		'continue', 'isset', 'unset',
-	);
-
 	public function __construct() {
-		global $wgInlineScriptsParserParams;
+		global $wgInlineScriptsParserClass;
 		$this->resetState();
-		$this->mCodeParser = new $wgInlineScriptsParserParams['parserClass']( $this );
+		$this->mCodeParser = new $wgInlineScriptsParserClass( $this );
 	}
 
 	public function resetState() {
@@ -85,33 +58,32 @@ class InlineScriptInterpreter {
 	}
 
 	protected function checkRecursionLimit( $rec ) {
-		global $wgInlineScriptsParserParams;
+		global $wgInlineScriptsLimits;
 		if( $rec > $this->mParser->is_maxDepth )
 			$this->mParser->is_maxDepth = $rec;
-		return $rec <= $wgInlineScriptsParserParams['limits']['depth'];
+		return $rec <= $wgInlineScriptsLimits['depth'];
 	}
 
 	protected function increaseEvaluationsCount() {
-		global $wgInlineScriptsParserParams;
+		global $wgInlineScriptsLimits;
 		$this->mParser->is_evalsCount++;
-		return $this->mParser->is_evalsCount <= $wgInlineScriptsParserParams['limits']['evaluations'];
+		return $this->mParser->is_evalsCount <= $wgInlineScriptsLimits['evaluations'];
 	}
 
-	public function increaseTokensCount() {
-		global $wgInlineScriptsParserParams;
-		$this->mParser->is_tokensCount++;
-		return $this->mParser->is_tokensCount <= $wgInlineScriptsParserParams['limits']['tokens'];
+	public function getMaxTokensLeft() {
+		global $wgInlineScriptsLimits;
+		return $wgInlineScriptsLimits['tokens'] - $this->mParser->is_tokensCount;
 	}
 
-	public function evaluateForOutput( $code, $parser, $frame, $resetState = true ) {
+	public function execute( $code, $parser, $frame, $resetState = true ) {
 		wfProfileIn( __METHOD__ );
 		if( $resetState )
 			$this->resetState();
 		$this->mParser = $parser;
 		$this->mFrame = $frame;
 
-		$ast = $this->getCodeAST( $code );
-		$this->evaluateASTNode( $ast );
+		$ast = $this->parseCode( $code );
+		$this->evaluateNode( $ast, 0 );
 		wfProfileOut( __METHOD__ );
 		return $this->mOut;
 	}
@@ -123,330 +95,356 @@ class InlineScriptInterpreter {
 		$this->mParser = $parser;
 		$this->mFrame = $frame;
 
-		$ast = $this->getCodeAST( $code );
+		$ast = $this->parseCode( $code );
 		wfProfileOut( __METHOD__ );
-		return $this->evaluateASTNode( $ast )->toString();
+		return $this->evaluateNode( $ast, 0 )->toString();
 	}
 
-	public function getCodeAST( $code ) {
+	public function parseCode( $code ) {
 		global $parserMemc;
-		static $ASTCache;
+		static $parserCache;	// Unserializing can be expensive as well
 
 		wfProfileIn( __METHOD__ );
 		$code = trim( $code );
 
 		$memcKey = 'isparser:ast:' . md5( $code );
-		if( isset( $ASTCache[$memcKey] ) ) {
+
+		if( isset( $parserCache[$memcKey] ) ) {
 			wfProfileOut( __METHOD__ );
-			return $ASTCache[$memcKey];
+			return $parserCache[$memcKey];
 		}
 
 		$cached = $parserMemc->get( $memcKey );
 		if( @$cached instanceof ISParserOutput && !$cached->isOutOfDate() ) {
 			$cached->appendTokenCount( $this );
-			$ASTCache[$memcKey] = $cached->getAST();
+			$parserCache[$memcKey] = $cached->getParserTree();
 			wfProfileOut( __METHOD__ );
-			return $cached->getAST();
+			return $cached->getParserTree();
 		}
 
-		$out = $this->mCodeParser->parse( $code );
+		$scanner = new ISScanner( $code );
+		$out = $this->mCodeParser->parse( $scanner, $this->getMaxTokensLeft() );
+
+		$out->appendTokenCount( $this );
 		$parserMemc->set( $memcKey, $out );
-		$ASTCache[$memcKey] = $out->getAST();
+		$parserCache[$memcKey] = $out->getParserTree();
+
 		wfProfileOut( __METHOD__ );
-		return $out->getAST();
+		return $out->getParserTree();
 	}
 
-	public function evaluateASTNode( $ast, $rec = 0 ) {
-		if( $ast instanceof ISDataNode ) {
-			return $this->getDataNodeValue( $ast );
+	public function evaluateNode( $node, $rec ) {
+		if( !$node instanceof ISParserTreeNode ) {
+			throw new ISException( 'evaluateNode() accepts only nonterminals' );
 		}
 
-		if( !$this->checkRecursionLimit( $rec ) )
-			throw new ISUserVisibleException( 'recoverflow', $ast->getPos() );
-		if( !$this->increaseEvaluationsCount() )
-			throw new ISUserVisibleException( 'toomanyevals', $ast->getPos() );
-
-		@list( $l, $r ) = $ast->getChildren();
-		$op = $ast->getOperator();
-		switch( $op ) {
-			/* Math */
-			case ISOperatorNode::OMul:
-			case ISOperatorNode::ODiv:
-			case ISOperatorNode::OMod:
-				$ldata = $this->evaluateASTNode( $l, $rec + 1 );
-				$rdata = $this->evaluateASTNode( $r, $rec + 1 );
-				return ISData::mulRel( $ldata, $rdata, $op, $ast->getPos() );
-			case ISOperatorNode::OSum:
-				$ldata = $this->evaluateASTNode( $l, $rec + 1 );
-				$rdata = $this->evaluateASTNode( $r, $rec + 1 );
-				return ISData::sum( $ldata, $rdata );
-			case ISOperatorNode::OSub:
-				$ldata = $this->evaluateASTNode( $l, $rec + 1 );
-				$rdata = $this->evaluateASTNode( $r, $rec + 1 );
-				return ISData::sub( $ldata, $rdata );
-			case ISOperatorNode::OPow:
-				$ldata = $this->evaluateASTNode( $l, $rec + 1 );
-				$rdata = $this->evaluateASTNode( $r, $rec + 1 );
-				return ISData::pow( $ldata, $rdata );
-			case ISOperatorNode::OPositive:
-				return $this->evaluateASTNode( $l, $rec + 1 );
-			case ISOperatorNode::ONegative:
-				$data = $this->evaluateASTNode( $l, $rec + 1 );
-				return ISData::unaryMinus( $data );
-
-			/* Statement seperator */
-			case ISOperatorNode::OStatementSeperator:
-				// Linearize tree for ";" to allow code with many statements
-				$statements = array();
-				if( $r )
-					array_unshift( $statements, $r );
-				while( $l->isOp( ';' ) ) {
-					list( $l, $r ) = $l->getChildren();
-					array_unshift( $statements, $r );
+		$c = $node->getChildren();
+		switch( $node->getType() ) {
+			case 'stmts':
+				$stmts = array();
+				while( isset( $c[1] ) ) {
+					array_unshift( $stmts, $c[1] );
+					$c = $c[0]->getChildren();
 				}
-				array_unshift( $statements, $l );
-
-				foreach( $statements as $node )
-					$result = $this->evaluateASTNode( $node, $rec + 1 );
-				return $result;
-
-			/* Logic */
-			case ISOperatorNode::OInvert:
-				$data = $this->evaluateASTNode( $l, $rec + 1 );
-				return ISData::boolInvert( $data );
-			case ISOperatorNode::OAnd:
-				$ldata = $this->evaluateASTNode( $l, $rec + 1 );
-				if( $ldata->toBool() ) {
-					return ISData::castTypes( $this->evaluateASTNode( $r, $rec + 1 ), ISData::DBool );
-				} else {
-					return new ISData( ISData::DBool, false );
-				}
-			case ISOperatorNode::OOr:
-				$ldata = $this->evaluateASTNode( $l, $rec + 1 );
-				if( !$ldata->toBool() ) {
-					return ISData::castTypes( $this->evaluateASTNode( $r, $rec + 1 ), ISData::DBool );
-				} else {
-					return new ISData( ISData::DBool, true );
-				}
-			case ISOperatorNode::OXor:
-				$ldata = $this->evaluateASTNode( $l, $rec + 1 );
-				$rdata = $this->evaluateASTNode( $r, $rec + 1 );
-				return new ISData( ISData::DBool, $ldata->toBool() xor $rdata->toBool() );
-
-			/* Comparsions */
-			case ISOperatorNode::OEqualsTo:
-			case ISOperatorNode::ONotEqualsTo:
-			case ISOperatorNode::OEqualsToStrict:
-			case ISOperatorNode::ONotEqualsToStrict:
-			case ISOperatorNode::OGreater:
-			case ISOperatorNode::OGreaterOrEq:
-			case ISOperatorNode::OLess:
-			case ISOperatorNode::OLessOrEq:
-				$ldata = $this->evaluateASTNode( $l, $rec + 1 );
-				$rdata = $this->evaluateASTNode( $r, $rec + 1 );
-				return ISData::compareOp( $ldata, $rdata, $op );
-
-			/* Variable assignment */
-			case ISOperatorNode::OSet:
-			case ISOperatorNode::OSetAdd:
-			case ISOperatorNode::OSetSub:
-			case ISOperatorNode::OSetMul:
-			case ISOperatorNode::OSetDiv:
-				if( $l->isOp( ISOperatorNode::OArrayElement ) || $l->isOp( ISOperatorNode::OArrayElementSingle ) ) {
-					$datanode = $r;
-					$keys = array();
-					while( $l->isOp( ISOperatorNode::OArrayElement ) || $l->isOp( ISOperatorNode::OArrayElementSingle ) ) {
-						@list( $l, $r ) = $l->getChildren();
-						array_unshift( $keys, $r ? $r : null );
+				array_unshift( $stmts, $c[0] );
+				foreach( $stmts as $stmt )
+					$res = $this->evaluateNode( $stmt, $rec + 1 );
+				return $res;
+			case 'stmt':
+				if( $c[0] instanceof ISToken ) {
+					switch( $c[0]->type ) {
+						case 'leftcurly':
+							return $this->evaluateNode( $c[1], $rec + 1 );
+						case 'if':
+							$cond = $this->evaluateNode( $c[2], $rec + 1 );
+							if( $cond->toBool() ) {
+								return $this->evaluateNode( $c[4], $rec + 1 );
+							} else {
+								if( isset( $c[6] ) ) {
+									return $this->evaluateNode( $c[6], $rec + 1 );
+								} else {
+									return new ISData();
+								}
+							}
+						case 'foreach':
+							$array = $this->evaluateNode( $c[4], $rec + 1 );
+							if( $array->type != ISData::DList )
+								throw new ISException( 'invalidforeach', $c[0]->type );
+							$last = new ISData();
+							foreach( $array->data as $item ) {
+								$this->setVar( $c[2], $item, $rec );
+								try {
+									$last = $this->evaluateNode( $c[6], $rec + 1 );
+								} catch( ISUserVisibleException $e ) {
+									if( $e->getExceptionID() == 'break' )
+										break;
+									elseif( $e->getExceptionID() == 'continue' )
+										continue;
+									else
+										throw $e;
+								}
+							}
+							return $last;
+						case 'try':
+							try {
+								return $this->evaluateNode( $c[1], $rec + 1 );
+							} catch( ISUserVisibleException $e ) {
+								if( $e->getExceptionID() == 'break' || $e->getExceptionID() == 'continue' ) {
+									throw $e;
+								} else {
+									$this->setVar( $c[4], new ISData( ISData::DString, $e->getExceptionID() ), $rec );
+									return $this->evaluateNode( $c[6], $rec + 1 );
+								}
+							}
+						default:
+							throw new ISException( "Unknown keyword: {$c[0]->type}" );
 					}
-					if( $l->getType() != ISASTNode::NodeData || $l->getType() == ISDataNode::DNData )
-						throw new ISUserVisibleException( 'cantchangeconst', $pos );
-					$array = $this->getDataNodeValue( new ISDataNode( $l->getVar(), 0 ) );
-					foreach( $keys as &$key )
-						if( $key )
-							$key = $this->evaluateASTNode( $key, $rec + 1 );
-					$val = $this->evaluateASTNode( $datanode, $rec + 1 );
-					$array->setValueByIndices( $val, $keys );
-					$this->mVars[$l->getVar()] = $array;
-					return $val;
 				} else {
-					if( $l->getType() != ISASTNode::NodeData || $l->getType() == ISDataNode::DNData )
-						throw new ISUserVisibleException( 'cantchangeconst', $pos );
-					$val = $this->getValueForSetting( @$this->mVars[$l->getVar()], 
-						$this->evaluateASTNode( $r, $rec + 1 ), $op );
-					return $this->mVars[$l->getVar()] = $val;
+					return $this->evaluateNode( $c[0], $rec + 1 );
 				}
-
-			/* Arrays */
-			case ISOperatorNode::OArray:
-				$array = array();
-				while( $l->isOp( ',' ) ) {
-					list( $l, $r )  = $l->getChildren();
-					$array[] = $r;
-				}
-				$array[] = $l;
-				$array = array_reverse( $array );
-				foreach( $array as &$element )
-					$element = $this->evaluateASTNode( $element, $rec + 1 );
-				return new ISData( ISData::DList, $array );
-			case ISOperatorNode::OArrayElement:
-				$array = $this->evaluateASTNode( $l, $rec + 1 );
-				$index = $this->evaluateASTNode( $r, $rec + 1 )->toInt();
-				if( $array->type != ISData::DList ) 
-					throw new ISUserVisibleException( 'notanarray', $ast->getPos(), array( $array->type ) );
-				if( count( $array->data ) <= $index )
-					throw new ISUserVisibleException( 'outofbounds', $ast->getPos(), array( count( $array->data ), $index ) );
-				return $array->data[$index];
-
-			/* Flow control (if, foreach, etc) */
-			case ISOperatorNode::OTrinary:
-				if( !$r->isOp( ':' ) )
-					throw new ISUserVisibleException( 'expectednotfound', $pos, array( ':' ) );
-				$cond = $this->evaluateASTNode( $l, $rec + 1 );
-				list( $onTrue, $onFalse ) = $r->getChildren();
-				if( $cond->toBool() )
-					return $this->evaluateASTNode( $onTrue, $rec + 1 );
-				else
-					return $this->evaluateASTNode( $onFalse, $rec + 1 );
-			case ISOperatorNode::OIf:
-				if( !$l->isOp( ISOperatorNode::OThen ) )
-					throw new ISUserVisibleException( 'exceptednotfound', $ast->getPos(), array( 'then' ) );
-				list( $l, $r ) = $l->getChildren();
-				if( $r->isOp( ISOperatorNode::OElse ) ) {
-					list( $onTrue, $onFalse ) = $r->getChildren();
-					if( $this->evaluateASTNode( $l, $rec + 1 )->toBool() )
-						$this->evaluateASTNode( $onTrue, $rec + 1 );
-					else
-						$this->evaluateASTNode( $onFalse, $rec + 1 );
+			case 'exprset':
+				if( $c[1]->value == '=' ) {
+					$new = $this->evaluateNode( $c[2], $rec + 1 );
+					$this->setVar( $c[0], $new, $rec );
+					return $new;
 				} else {
-					if( $this->evaluateASTNode( $l, $rec + 1 )->toBool() )
-						$this->evaluateASTNode( $r, $rec + 1 );
+					$old = $this->getVar( $c[0], $rec, false );
+					$new = $this->evaluateNode( $c[2], $rec + 1 );
+					$new = $this->getValueForSetting( $old, $new,
+						$c[1]->value, $c[1]->line );
+					$this->setVar( $c[0], $new, $rec );
+					return $new;
 				}
-				return new ISData();
-			case ISOperatorNode::OForeach:
-				if( !$l->isOp( ISOperatorNode::ODo ) )
-					throw new ISUserVisibleException( 'exceptednotfound', $ast->getPos(), array( 'do' ) );
-				list( $l, $r ) = $l->getChildren();
-				$array = $this->evaluateASTNode( $l, $rec + 1 );
-				if( $array->type != ISData::DList )
-					throw new ISUserVisibleException( 'invalidforeach', $ast->getPos(), array( $array->type ) );
-				foreach( $array->data as $element ) {
-					try {
-						$this->mVars[$ast->getData()] = $element;
-						$this->evaluateASTNode( $r, $rec + 1 );
-					} catch( ISUserVisibleException $e ) {
-						if( $e->getExceptionID() == 'break' )
-							break;
-						elseif( $e->getExceptionID() == 'continue' )
-							continue;
+			case 'exprtrinary':
+				$cond = $this->evaluateNode( $c[0], $rec + 1 );
+				if( $cond->toBool() ) {
+					return $this->evaluateNode( $c[2], $rec + 1 );
+				} else {
+					return $this->evaluateNode( $c[4], $rec + 1 );
+				}
+			case 'exprlogical':
+				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
+				switch( $c[1]->value ) {
+					case '&':
+						if( !$arg1->toBool() )
+							return new ISData( ISData::DBool, false );
 						else
-							throw $e;
-					}
+							return $this->evaluateNode( $c[2], $rec + 1 );
+					case '|':
+						if( $arg1->toBool() )
+							return new ISData( ISData::DBool, true );
+						else
+							return $this->evaluateNode( $c[2], $rec + 1 );
+					case '^':
+						$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
+						return new ISData( ISData::DBool, $arg1->toBool() xor $arg2->toBool() );
+					default:
+						throw new ISException( "Invalid logical operation: {$c[1]->value}" );
 				}
-				return new ISData();
-			case ISOperatorNode::OTry:
-				if( $l->isOp( ISOperatorNode::OCatch ) ) {
-					list( $code, $errorHandler ) = $l->getChildren();
-					try {
-						$val = $this->evaluateASTNode( $code, $rec + 1 );
-					} catch( ISUserVisibleException $e ) {
-						if( in_array( $e->getExceptionID(), array( 'break', 'continue' ) ) )
-							throw $e;
-						$varname = $l->getData();
-						$old = wfSetVar( $this->mVars[$varname], 
-							new ISData( ISData::DString, $e->getExceptionID() ) );
-						$val = $this->evaluateASTNode( $errorHandler, $rec + 1 );
-						$this->mVars[$varname] = $old;
-					}
-					return $val;
-				} else {
-					try {
-						return $this->evaluateASTNode( $l, $rec + 1 );
-					} catch( ISUserVisibleException $e ) {
-						return new ISData();
-					}
+			case 'exprequals':
+			case 'exprcompare':
+				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
+				$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
+				return ISData::compareOp( $arg1, $arg2, $c[1]->value );
+			case 'exprsum':
+				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
+				$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
+				switch( $c[1]->value ) {
+					case '+':
+						return ISData::sum( $arg1, $arg2 );
+					case '-':
+						return ISData::sub( $arg1, $arg2 );
 				}
-
-			/* break/continue */
-			case ISOperatorNode::OBreak:
-				throw new ISUserVisibleException( 'break', $ast->getPos() );
-			case ISOperatorNode::OContinue:
-				throw new ISUserVisibleException( 'continue', $ast->getPos() );
-
-			/* isset/unset */
-			case ISOperatorNode::OUnset:
-				if( $l->getType() == ISASTNode::NodeData && $l->getDataType() == ISDataNode::DNVariable ) {
-					if( isset( $this->mVars[$l->getVar()] ) )
-						unset( $this->mVars[$l->getVar()] );
-					break;
-				} else {
-					throw new ISUserVisibleException( 'cantchangeconst', $ast->getPos() );
+			case 'exprmul':
+				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
+				$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
+				return ISData::mulRel( $arg1, $arg2, $c[1]->value, $c[1]->line );
+			case 'exprpow':
+				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
+				$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
+				return ISData::pow( $arg1, $arg2 );
+			case 'exprkeyword':
+				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
+				$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
+				switch( $c[1]->value ) {
+					case 'in':
+						return ISData::keywordIn( $arg1, $arg2 );
+					case 'contains':
+						return ISData::keywordIn( $arg2, $arg1 );
+					default:
+						throw new ISException( "Invalid keyword: {$c[1]->value}" );
 				}
-			case ISOperatorNode::OIsset:
-				if( $l->getType() == ISASTNode::NodeData && $l->getDataType() == ISDataNode::DNVariable ) {
-					return new ISData( ISData::DBool, isset( $this->mVars[$l->getVar()] ) );
-				} elseif( $l->isOp( ISOperatorNode::OArrayElement ) ) {
-					$indices = array();
-					while( $l->isOp( ISOperatorNode::OArrayElement ) ) {
-						list( $l, $r ) = $l->getChildren();
-						array_unshift( $indices, $r );
-					}
-					if( !($l->getType() == ISASTNode::NodeData && $l->getDataType() == ISDataNode::DNVariable) )
-						throw new ISUserVisibleException( 'cantchangeconst', $ast->getPos() );
-					foreach( $indices as &$idx )
-						$idx = $this->evaluateASTNode( $idx )->toInt();
-					$var = $l->getVar();
-
-					if( !isset( $this->mVars[$var] ) )
-						return new ISData( ISData::DBool, false );
-					return new ISData( ISData::DBool, $this->mVars[$var]->checkIssetByIndices( $indices ) );
-				} else {
-					throw new ISUserVisibleException( 'cantchangeconst', $ast->getPos() );
-				}
-
-			/* Functions */
-			case ISOperatorNode::OFunction:
-				$args = array();
-				if( $l ) {
-					while( $l->isOp( ',' ) ) {
-						@list( $l, $r ) = $l->getChildren();
-						array_unshift( $args, $r );
-					}
-					array_unshift( $args, $l );
-				}
-				foreach( $args as &$arg )
-					$arg = $this->evaluateASTNode( $arg, $rec + 1 );
-				$funcName = self::$mFunctions[$ast->getData()];
-				$result = $this->$funcName( $args, $ast->getPos() );
-				return $result;
-			default:
-				throw new ISUserVisibleException( 'unexceptedop', $ast->getPos(), array( $op ) );
-		}
-	}
-
-	protected function getDataNodeValue( $node ) {
-		switch( $node->getDataType() ) {
-			case ISDataNode::DNData:
-				return $node->getData();
-			case ISDataNode::DNVariable:
-				$varname = $node->getVar();
-				if( isset( $this->mVars[$varname] ) )
-					return $this->mVars[$varname];
+			case 'exprinvert':
+				$arg = $this->evaluateNode( $c[1], $rec + 1 );
+				return ISData::boolInvert( $arg );
+			case 'exprunary':
+				$arg = $this->evaluateNode( $c[1], $rec + 1 );
+				if( $c[0]->value == '-' )
+					return ISData::unaryMinus( $arg );
 				else
-					return new ISData();
+					return $arg;
+			case 'exprfunction':
+				if( $c[0] instanceof ISToken ) {
+					$funcname = $c[0]->value;
+					if( !isset( self::$mFunctions[$funcname] ) ) 
+						throw new ISUserVisibleException( 'unknownfunction', $c[0]->line );
+					$func = self::$mFunctions[$funcname];
+					if( $c[2] instanceof ISParserTreeNode ) {
+						$args = $this->parseArray( $c[2], $rec );
+					} else {
+						$args = array();
+					}
+					return $this->$func( $args, $c[0]->line );
+				} else {
+					$type = $c[0]->mChildren[0]->value;
+					switch( $type ) {
+						case 'isset':
+							return new ISData( ISData::DBool, $this->checkIsset( $c[2], $rec ) );
+						case 'unset':
+							$this->unsetVar( $c[2], $rec );
+							return new ISData();
+						default:
+							throw new ISException( "Unknown keyword: {$type}" );
+					}
+				}
+			case 'expratom':
+				if( $c[0] instanceof ISParserTreeNode ) {
+					if( $c[0]->getType() == 'atom' ) {
+						list( $val ) = $c[0]->getChildren();
+						switch( $val->type ) {
+							case 'string':
+								return new ISData( ISData::DString, $val->value );
+							case 'int':
+								return new ISData( ISData::DInt, $val->value );
+							case 'float':
+								return new ISData( ISData::DFloat, $val->value );
+							case 'true':
+								return new ISData( ISData::DBool, true );
+							case 'false':
+								return new ISData( ISData::DBool, false );
+							case 'null':
+								return new ISData();
+						}
+					} else {
+						return $this->getVar( $c[0], $rec );
+					}
+				} else {
+					switch( $c[0]->type ) {
+						case 'leftbrace':
+							return $this->evaluateNode( $c[1], $rec + 1 );
+						case 'leftsquare':
+							return new ISData( ISData::DList, $this->parseArray( $c[1], $rec + 1 ) );
+						case 'break':
+							throw new ISUserVisibleException( 'break', $c[0]->line );
+						case 'continue':
+							throw new ISUserVisibleException( 'continue', $c[0]->line );
+					}
+				}
+			default:
+				$type = $node->getType();
+				throw new ISException( "Invalid node type passed to evaluateNode(): {$type}" );
 		}
 	}
 
-	protected function getValueForSetting( $old, $new, $set ) {
+	/*
+	 * Converts commaList* to a PHP array.
+	 */
+	protected function parseArray( $node, $rec ) {
+		$c = $node->getChildren();
+		switch( $node->getType() ) {
+			case 'commalist':
+				return $this->parseArray( $c[0], $rec );
+			case 'commalistplain':
+				$elements = $result = array();
+				while( isset( $c[2] ) ) {
+					array_unshift( $elements, $c[2] );
+					$c = $c[0]->getChildren();
+				}
+				array_unshift( $elements, $c[0] );
+				foreach( $elements as $elem )
+					$result[] = $this->evaluateNode( $elem, $rec + 1 );
+				return $result;
+			case 'commalistassoc':
+				throw new ISException( 'Not implemented' );
+		}
+	}
+
+	protected function getVar( $lval, $rec ) {
+		$c = $lval->getChildren();
+		$line = $c[0]->line;
+		$varname = $c[0]->value;
+		if( !isset( $this->mVars[$varname] ) ) {
+			throw new ISUserVisibleException( 'unknownvar', $line, array( $varname ) );
+		}
+		if( isset( $c[1] ) ) {
+			$indices = array();
+			$c = $c[1]->getChildren();
+			while( isset( $c[1] ) ) {
+				array_unshift( $indices, $c[1] );
+				$c = $c[0]->getChildren();
+			}
+			array_unshift( $indices, $c[0] );
+			foreach( $indices as &$idx ) {
+				$c = $idx->getChildren();
+				if( !$c[1] instanceof ISParserTreeNode )
+					throw new ISUserVisibleException( 'emptyidx', $line );
+				$idx = $this->evaluateNode( $c[1], $rec + 1 );
+			}
+
+			$val = $this->mVars[$varname];
+			foreach( $indices as $idx ) {
+				if( $val->type == ISData::DList ) {
+					$idx = $idx->toInt();
+					if( count( $val->data ) <= $idx )
+						throw new ISUserVisibleException( 'outofbounds', $line );
+					$val = $val->data[$idx];
+				} else {
+					throw new ISUserVisibleException( 'notanarray', $line );
+				}
+			}
+			return $val;
+		} else {
+			return $this->mVars[$varname];
+		}
+	}
+
+	protected function setVar( $lval, $newval, $rec ) {
+		$c = $lval->getChildren();
+		$varname = $c[0]->value;
+		if( isset( $c[1] ) ) {
+			$lineno = 0;
+			$idxs = array();
+			while( isset( $c[1] ) && $c[1]->getType() == 'arrayidxs' ) {
+				$c = $c[1]->getChildren();
+				$idxs[] = $c[0];
+			}
+			if( !isset( $this->mVars[$varname] ) ) 
+				$this->mVars[$varname] = new ISData( ISData::DList, array() );
+			foreach( $idxs as &$idx ) {
+				$idxchildren = $idx->getChildren();
+				if( !$lineno )
+					$lineno = $idxchildren[0]->line;
+				if( count( $idxchildren ) > 2 )
+					$idx = $this->evaluateNode( $idxchildren[1], $rec + 1 );
+				else
+					$idx = null;
+			}
+			$this->mVars[$varname]->setValueByIndices( $newval, $idxs, $lineno );
+		} else {
+			$this->mVars[$varname] = $newval;
+		}
+	}
+
+	protected function getValueForSetting( $old, $new, $set, $line ) {
 		switch( $set ) {
-			case ISOperatorNode::OSetAdd:
+			case '+=':
 				return ISData::sum( $old, $new );
-			case ISOperatorNode::OSetSub:
+			case '-=':
 				return ISData::sub( $old, $new );
-			case ISOperatorNode::OSetMul:
-				return ISData::mulRel( $old, $new, '*', 0 );
-			case ISOperatorNode::OSetDiv:
-				return ISData::mulRel( $old, $new, '/', 0 );
+			case '*=':
+				return ISData::mulRel( $old, $new, '*', $line );
+			case '/=':
+				return ISData::mulRel( $old, $new, '/', $line );
 			default:
 				return $new;
 		}
@@ -455,6 +453,55 @@ class InlineScriptInterpreter {
 	protected function checkParamsCount( $args, $pos, $count ) {
 		if( count( $args ) < $count )
 			throw new ISUserVisibleException( 'notenoughargs', $pos );
+	}
+
+	protected function checkIsset( $lval, $rec ) {
+		$c = $lval->getChildren();
+		$line = $c[0]->line;
+		$varname = $c[0]->value;
+		if( !isset( $this->mVars[$varname] ) ) {
+			return false;
+		}
+		if( isset( $c[1] ) ) {
+			$indices = array();
+			$c = $c[1]->getChildren();
+			while( isset( $c[1] ) ) {
+				array_unshift( $indices, $c[1] );
+				$c = $c[0]->getChildren();
+			}
+			array_unshift( $indices, $c[0] );
+			foreach( $indices as &$idx ) {
+				$c = $idx->getChildren();
+				if( !$c[1] instanceof ISParserTreeNode )
+					throw new ISUserVisibleException( 'emptyidx', $line );
+				$idx = $this->evaluateNode( $c[1], $rec + 1 );
+			}
+
+			$val = $this->mVars[$varname];
+			foreach( $indices as $idx ) {
+				if( $val->type == ISData::DList ) {
+					$idx = $idx->toInt();
+					if( count( $val->data ) <= $idx )
+						return false;
+					$val = $val->data[$idx];
+				} else {
+					return false;
+				}
+			}
+			return true;
+		} else {
+			return true;
+		}
+	}
+	
+	protected function unsetVar( $lval, $rec ) {
+		$c = $lval->getChildren();
+		$line = $c[0]->line;
+		$varname = $c[0]->value;
+		if( isset( $c[1] ) ) {
+			throw new ISException( 'unset() is not usable for array elements' );
+		}
+		unset( $this->mVars[$varname] );
 	}
 
 	/** Functions */

@@ -3,9 +3,18 @@
 !! test
 Basic mathematics
 !! input
-{{#inline:2 + 2 * 2 ** 2 - 3 * 7 % 5}}
+{{#inline:-2 + 2 * 2 ** 2 - 3 * 7 % 5;}}
 !! result
-<p>9
+<p>5
+</p>
+!! end
+
+!! test
+** associativity
+!! input
+{{#inline: 4 ** 3 ** 2;}}<!-- Not 4096! -->
+!! result
+<p>262144
 </p>
 !! end
 
@@ -23,7 +32,7 @@ out( "foo" + "bar" );
 !! test
 Multiple variable assignment
 !! input
-{{#inline: a = b = 3; a + b }}
+{{#inline: a = b = 3; a + b; }}
 !! result
 <p>6
 </p>
@@ -32,7 +41,7 @@ Multiple variable assignment
 !! test
 Assigment with arithmetics (+=, -=, etc)
 !! input
-{{#inline: a = 2; a += 3; a -= 7; a }}
+{{#inline: a = 2; a += 3; a -= 7; a; }}
 !! result
 <p>-2
 </p>
@@ -54,7 +63,7 @@ out( b );
 Equality
 !! input
 {{#inline: "2" == 2 & "2" !== 2 & 4 === (2 + 2) &
-null == "" & false == null & 0 == "" }}
+null == "" & false == null & 0 == ""; }}
 !! result
 <p>1
 </p>
@@ -63,7 +72,7 @@ null == "" & false == null & 0 == "" }}
 !! test
 Comments
 !! input
-{{#inline: 2 + /* 2 + */ 2}}
+{{#inline: 2 + /* 2 + */ 2; }}
 !! result
 <p>4
 </p>
@@ -72,7 +81,7 @@ Comments
 !! test
 Comparsions
 !! input
-{{#inline: 2 > 1 & 2 >= 2 & 2 <= 2 & 1 < 2}}
+{{#inline: 2 > 1 & 2 >= 2 & 2 <= 2 & 1 < 2; }}
 !! result
 <p>1
 </p>
@@ -81,7 +90,7 @@ Comparsions
 !! test
 Tag integration
 !! input
-{{lc:<wikiscript>out("AA")</wikiscript>}}
+{{lc:<wikiscript>out("AA");</wikiscript>}}
 !! result
 <p>aa
 </p>
@@ -90,7 +99,7 @@ Tag integration
 !! test
 Conditions (?)
 !! input
-{{#inline: 2 + 2 == 4 ? "a" : "b"}}
+{{#inline: 2 + 2 == 4 ? "a" : "b";}}
 !! result
 <p>a
 </p>
@@ -100,13 +109,13 @@ Conditions (?)
 Conditions (if-then, if-then-else)
 !! input
 <wikiscript>
-if 2 * 7 > 3 * 4 then
-	a = 7
-else {
+if( 2 * 7 > 3 * 4 ) {
+	a = 7;
+} else {
 	a = 10;
-};
+}
 
-if a ** 2 < 50 then
+if( a ** 2 < 50 )
 	out( "ok" );
 </wikiscript>
 !! result
@@ -118,7 +127,7 @@ if a ** 2 < 50 then
 Template:Bullets
 !! text
 <wikiscript>
-foreach a in args() do
+foreach( a in args() )
 	out( "* " + a + "\n" );
 </wikiscript>
 !! endarticle
@@ -138,7 +147,7 @@ args() function
 !! article
 Template:TranscludedSwitch
 !! text
-{{#inline: isTranscluded() ? arg(1) : "?!"}}
+{{#inline: isTranscluded() ? arg(1) : "?!";}}
 !! endarticle
 
 !! test
@@ -153,7 +162,7 @@ isTranscluded()/arg() check
 !! test
 Empty argument handling check
 !! input
-{{#inline: arg("test") === null}}
+{{#inline: arg("test") === null;}}
 !! result
 <p>1
 </p>
@@ -162,7 +171,7 @@ Empty argument handling check
 !! test
 Casts
 !! input
-{{#inline: string(float(2)) === "2.0" & int(7.99) === 7}}
+{{#inline: string(float(2)) === "2.0" & int(7.99) === 7;}}
 !! result
 <p>1
 </p>
@@ -171,7 +180,12 @@ Casts
 !! test
 Exception handling
 !! input
-{{#inline: try 2 / 0 catch e e }}
+<wikiscript>
+try
+	2 / 0;
+catch( e )
+	out( e );
+</wikiscript>
 !! result
 <p>dividebyzero
 </p>
@@ -199,7 +213,7 @@ out( '{{numberofsomething}}: ' + numofsmth );
 String functions 1
 !! input
 {{#inline: lc( 'FOO' ) == 'foo' & uc( 'foo' ) == 'FOO' &
-ucfirst( 'bar' ) == 'Bar' & urlencode( 'a="b"' ) == "a%3D%22b%22" }}
+ucfirst( 'bar' ) == 'Bar' & urlencode( 'a="b"' ) == "a%3D%22b%22"; }}
 !! result
 <p>1
 </p>
@@ -209,7 +223,7 @@ ucfirst( 'bar' ) == 'Bar' & urlencode( 'a="b"' ) == "a%3D%22b%22" }}
 String functions 2
 !! input
 {{#inline: strlen( "тест" ) == 4 & substr( "слово", 1, 2 ) == "ло" &
- strreplace( "abcd", 'bc', 'ad' ) == 'aadd'
+ strreplace( "abcd", 'bc', 'ad' ) == 'aadd';
 }}
 !! result
 <p>1
@@ -219,7 +233,7 @@ String functions 2
 !! test
 split()/join()
 !! input
-{{#inline: join( '!', split( ':', 'a:b:c:d' ) ) + join( ' ', '', 'e', 'f' ) }}
+{{#inline: join( '!', split( ':', 'a:b:c:d' ) ) + join( ' ', '', 'e', 'f' ); }}
 !! result
 <p>a!b!c!d e f
 </p>
@@ -238,6 +252,17 @@ out( 'a: ' + isset( a ) + '; b: ' + int( isset( b ) ) );
 </p>
 !! end
 
+!! test
+in/contains
+!! input
+<wikiscript>
+out( int( "a" in "b" + "c" in "cd" + "foobar" contains "oo" + "foobar" contains "baz" ) );
+</wikiscript>
+!! result
+<p>2
+</p>
+!! end
+
 #
 ## Lists
 #
@@ -246,7 +271,7 @@ Lists: basics
 !! input
 <wikiscript>
 a = [ b = "a", b = "b", b = "c" ];
-out( a[1] + b )
+out( a[1] + b );
 </wikiscript>
 !! result
 <p>bc
@@ -258,7 +283,7 @@ Lists: foreach
 !! input
 <wikiscript>
 a = [ 1, 2, 3, 4, 5 ];
-foreach n in a do
+foreach( n in a )
 	out( n * n + "\n\n");
 </wikiscript>
 !! result
@@ -274,7 +299,7 @@ foreach n in a do
 List merging
 !! input
 <wikiscript>
-foreach element in [ 7, 4 ] + [ 2, 8 ] do
+foreach( element in [ 7, 4 ] + [ 2, 8 ] )
 	out( element );
 </wikiscript>
 !! result
@@ -287,12 +312,14 @@ Lists: loop control (break/continue)
 !! input
 <wikiscript>
 a = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
-foreach e in a do {
-	if e >= 6 & e < 9 then continue;
+foreach( e in a ) {
+	if( e >= 6 & e < 9 )
+		continue;
 	out( e );
-};
-foreach e in a do {
-	if e == 3 then break;
+}
+foreach( e in a ) {
+	if( e == 3 )
+		break;
 	out( e );
 }
 </wikiscript>
@@ -314,9 +341,9 @@ out( a );
 <p>2
 3
 1
-</p><p>3
+3
 6
-</p><p>7
+7
 </p>
 !! end
 
@@ -329,68 +356,5 @@ out( isset( lst[1] ) + isset( lst[2] ) + isset( list[3] ) );
 </wikiscript>
 !! result
 <p>2
-</p>
-!! end
-
-#
-## Error handling
-#
-!! test
-Error handling: unexcepted token
-!! input
-{{#inline: 2 2}}
-!! result
-<p><strong class="error">Unexpected token at char 3</strong>
-</p>
-!! end
-
-!! test
-Error handling: missing second argument
-!! input
-{{#inline: 2 + }}
-!! result 
-<p><strong class="error">Not enough aruments for operator at char 3</strong>
-</p>
-!! end
-
-!! test
-Error handling: token limit
-!! config
-wgInlineScriptsParserParams=array('parserClass'=>'ISCodeParserShuntingYard', 'limits' => array( 'tokens' => 10, 'evaluations' => 1000, 'depth' => 100 ) )
-!! input
-{{#inline: 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2}}
-!! result
-<p><strong class="error">Exceeded tokens limit</strong>
-</p>
-!! end
-
-!! test
-Error handling: evaluations limit
-!! config
-wgInlineScriptsParserParams=array('parserClass'=>'ISCodeParserShuntingYard', 'limits' => array( 'tokens' => 25000, 'evaluations' => 5, 'depth' => 100 ) )
-!! input
-{{#inline: 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2}}
-!! result
-<p><strong class="error">Exceeded evaluations limit</strong>
-</p>
-!! end
-
-!! test
-Error handling: AST depth limit
-!! config
-wgInlineScriptsParserParams=array('parserClass'=>'ISCodeParserShuntingYard', 'limits' => array( 'tokens' => 25000, 'evaluations' => 1000, 'depth' => 5 ) )
-!! input
-{{#inline: 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 * 2 + 2 + 2}}
-!! result
-<p><strong class="error">Too deep abstract syntax tree</strong>
-</p>
-!! end
-
-!! test
-Error handling: missing arguments
-!! input
-{{#inline: arg()}}
-!! result
-<p><strong class="error">Not enough arguments for function at char 3</strong>
 </p>
 !! end

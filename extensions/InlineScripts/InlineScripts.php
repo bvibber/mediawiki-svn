@@ -27,7 +27,7 @@ $wgExtensionCredits['parserhook']['InlineScripts'] = array(
 	'path'           => __FILE__,
 	'name'           => 'InlineScripts',
 	'author'         => 'Victor Vasiliev',
-	'description'    => 'Provides inline script interpreter',
+	'description'    => 'Provides a build into wikitext scripting language',
 	'descriptionmsg' => 'inlinescriprs-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:InlineScripts',
 );
@@ -35,36 +35,33 @@ $wgExtensionCredits['parserhook']['InlineScripts'] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['InlineScripts'] = $dir . 'InlineScripts.i18n.php';
 $wgAutoloadClasses['InlineScriptInterpreter'] = $dir . 'interpreter/Interpreter.php';
-$wgAutoloadClasses['ISCodeParserShuntingYard'] = $dir . 'interpreter/ParserShuntingYard.php';
+$wgAutoloadClasses['ISScanner'] = $dir . 'interpreter/Scanner.php';
+$wgAutoloadClasses['ISLRParser'] = $dir . 'interpreter/LRParser.php';
 $wgParserTestFiles[] = $dir . 'interpreterTests.txt';
 $wgHooks['ParserFirstCallInit'][] = 'InlineScriptsHooks::setupParserHook';
 $wgHooks['ParserClearState'][] = 'InlineScriptsHooks::clearState';
 $wgHooks['ParserLimitReport'][] = 'InlineScriptsHooks::reportLimits';
 
-$wgInlineScriptsParserParams = array(
-	/* Name of the code-to-AST parser class */
-	'parserClass' => 'ISCodeParserShuntingYard',
-
-	/* Different sanity limits */
-	'limits' => array(
-		/**
-		 * Maximal amount of tokens (strings, keywords, numbers, operators,
-		 * but not whitespace) to be parsed.
-		 */
-		'tokens' => 25000,
-		/**
-		 * Maximal amount of operations (multiplications, comarsionss, function
-		 * calls) to be done.
-		 */
-		'evaluations' => 10000,
-		/**
-		 * Maximal depth of recursion when evaluating the parser tree. For
-		 * example 2 + 2 * 2 ** 2 is parsed to (2 + (2 * (2 ** 2))) and needs
-		 * depth 3 to be parsed.
-		 */
-		'depth' => 100,
-	),
+$wgInlineScriptsLimits = array(
+	/**
+	 * Maximal amount of tokens (strings, keywords, numbers, operators,
+	 * but not whitespace) to be parsed.
+	 */
+	'tokens' => 25000,
+	/**
+	 * Maximal amount of operations (multiplications, comarsionss, function
+	 * calls) to be done.
+	 */
+	'evaluations' => 10000,
+	/**
+	 * Maximal depth of recursion when evaluating the parser tree. For
+	 * example 2 + 2 * 2 ** 2 is parsed to (2 + (2 * (2 ** 2))) and needs
+	 * depth 3 to be parsed.
+	 */
+	'depth' => 250,
 );
+
+$wgInlineScriptsParserClass = 'ISLRParser';
 
 class InlineScriptsHooks {
 	static $scriptParser = null;
@@ -87,7 +84,7 @@ class InlineScriptsHooks {
 
 	public static function inlineHook( &$parser, $frame, $args ) {
 		wfProfileIn( __METHOD__ );
-		$scriptParser = self::getParser();
+		$scriptParser = self::getInterpreter();
 		try {
 			$result = $scriptParser->evaluate( $parser->mStripState->unstripBoth( $args[0] ),
 				$parser, $frame );
@@ -102,9 +99,9 @@ class InlineScriptsHooks {
 
 	public static function scriptHook( &$parser, $frame, $code, $attribs ) {
 		wfProfileIn( __METHOD__ );
-		$scriptParser = self::getParser();
+		$scriptParser = self::getInterpreter();
 		try {
-			$result = $scriptParser->evaluateForOutput( $code, $parser, $frame );
+			$result = $scriptParser->execute( $code, $parser, $frame );
 		} catch( ISException $e ) {
 			$msg = nl2br( htmlspecialchars( $e->getMessage() ) );
 			wfProfileOut( __METHOD__ );
@@ -127,7 +124,7 @@ class InlineScriptsHooks {
 		return true;
 	}
 
-	public static function getParser() {
+	public static function getInterpreter() {
 		if( !self::$scriptParser )
 			self::$scriptParser = new InlineScriptInterpreter();
 		return self::$scriptParser;
