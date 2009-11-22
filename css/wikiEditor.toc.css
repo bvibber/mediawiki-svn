@@ -197,8 +197,10 @@ body.rtl wikiEditor-ui-toc ul ul ul ul ul ul li div {
 	overflow: hidden;
 }
 body.rtl .wikiEditor-ui-toc-expandControl {
-	left: 10px;
 	padding-left: 1em;
+	padding-right: 0;
+	left: 10px;
+	right: auto;
 }
 .wikiEditor-ui-text textarea {
 	resize: none;
