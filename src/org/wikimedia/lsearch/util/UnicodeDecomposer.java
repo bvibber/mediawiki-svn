@@ -97,6 +97,13 @@ public class UnicodeDecomposer {
 			}
 			in.close();
 			
+			// add some exception requested by users
+			// yiddish stuffs
+			combining[0x05B7] = true;
+			combining[0x05B8] = true;
+			combining[0x05BC] = true;
+			combining[0x05BF] = true;
+			
 			// decomposition table
 			char[][] table = new char[65536][];
 			
@@ -134,6 +141,29 @@ public class UnicodeDecomposer {
 					} 
 				} 				
 			}
+			
+			// some decomposition exceptions
+			// yiddish stuffs
+			table[0x05F0] = new char[2]; // HEBREW LIGATURE YIDDISH DOUBLE VAV
+			table[0x05F0][0] = 0x05D5;
+			table[0x05F0][1] = 0x05D5;
+			
+			table[0x05F1] = new char[2]; // HEBREW LIGATURE YIDDISH VAV YOD
+			table[0x05F1][0] = 0x05D5;
+			table[0x05F1][1] = 0x05D9;
+			
+			table[0x05F2] = new char[2]; // HEBREW LIGATURE YIDDISH DOUBLE YOD
+			table[0x05F2][0] = 0x05D9;
+			table[0x05F2][1] = 0x05D9;
+			
+			table[0xFB1F] = new char[2]; // HEBREW LIGATURE YIDDISH YOD YOD PATAH
+			table[0xFB1F][0] = 0x05D9;
+			table[0xFB1F][1] = 0x05D9;
+			
+			table[0xFB1D] = new char[1]; // HEBREW LETTER YOD WITH HIRIQ
+			table[0xFB1D][0] = 0x05D9;
+			
+			
 			// using decomposition table recursively decompose characters
 			for(int ich = 0; ich <= 0xFFFF; ich++){
 				if(table[ich]==null)

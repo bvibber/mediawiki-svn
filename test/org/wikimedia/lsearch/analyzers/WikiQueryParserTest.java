@@ -21,6 +21,8 @@ import org.wikimedia.lsearch.test.WikiTestCase;
 import junit.framework.TestCase;
 
 public class WikiQueryParserTest extends WikiTestCase {
+	
+	
 
 	public void testEnglish() {
 		IndexId enwiki = IndexId.get("enwiki");
@@ -136,11 +138,22 @@ public class WikiQueryParserTest extends WikiTestCase {
 			
 			tokens = parser.tokenizeForSpellCheck("+incategory:\"Suspension bridges in the United States\"");
 			assertEquals("[]", tokens.toString());
-
 			
+			/* ================== unicode decomposition stuffs ============ */
+			q = parser.parseRaw("šta");
+			assertEquals("contents:šta contents:sta^0.5",q.toString());
+			
+			q = parser.parseRaw("װאנט");
+			assertEquals("contents:װאנט contents:וואנט^0.5",q.toString());
+			
+			q = parser.parseRaw("פּאריז");
+			assertEquals("contents:פּאריז contents:פאריז^0.5",q.toString());
+			
+						
 		} catch(Exception e){
 		}
 	}
+
 	
 	public void XtestEnglishFull() {
 		IndexId enwiki = IndexId.get("enwiki");
