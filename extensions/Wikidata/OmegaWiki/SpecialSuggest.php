@@ -238,14 +238,64 @@ function constructSQLWithFallback( $actual_query, $fallback_query, $fields ) {
 	return $sql;
 }
 
+/**
+ * Returns the list of attributes of a given $attributesType (DM, TEXT, TRNS, URL, OPTN)
+ * in the user language or in English
+ *
+ * @param $language the 2 letter wikimedia code
+ */
+
 function getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, $attributesType ) {
-	global
-		$wgUser;
-	
-	$sqlActual = getSQLToSelectPossibleAttributesForLanguage( $definedMeaningId, $attributesLevel, $annotationAttributeId, $attributesType, $wgUser->getOption( 'language' ) );
-	$sqlFallback = getSQLToSelectPossibleAttributesForLanguage( $definedMeaningId, $attributesLevel, $annotationAttributeId, $attributesType, 'en' );
-	
-	return constructSQLWithFallback( $sqlActual, $sqlFallback, array( "attribute_mid", "spelling" ) );
+
+	global $wgDefaultClassMids;
+	global $wgUser;
+	$dc = wdGetDataSetContext();
+	$dbr =& wfGetDB( DB_SLAVE );
+
+	$language = $wgUser->getOption( 'language' ) ;
+	$lng = ' ( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' ) ';
+
+	if ( count( $wgDefaultClassMids ) > 0 )
+		$defaultClassRestriction = " OR {$dc}_class_attributes.class_mid IN (" . join( $wgDefaultClassMids, ", " ) . ")";
+	else
+		$defaultClassRestriction = "";
+		
+	$filteredAttributesRestriction = getFilteredAttributesRestriction( $annotationAttributeId );
+
+	$sql =
+		'SELECT attribute_mid, MAX(spelling) as spelling FROM (' .
+		'SELECT attribute_mid, spelling' .
+		" FROM {$dc}_bootstrapped_defined_meanings, {$dc}_class_attributes, {$dc}_syntrans, {$dc}_expression" .
+		" WHERE {$dc}_bootstrapped_defined_meanings.name = " . $dbr->addQuotes( $attributesLevel ) .
+		" AND {$dc}_bootstrapped_defined_meanings.defined_meaning_id = {$dc}_class_attributes.level_mid" .
+		" AND {$dc}_class_attributes.attribute_type = " . $dbr->addQuotes( $attributesType ) .
+		" AND {$dc}_syntrans.defined_meaning_id = {$dc}_class_attributes.attribute_mid" .
+		" AND {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .
+		$filteredAttributesRestriction . " ";
+
+	$sql .=
+	" AND ( language_id=$lng " .
+		' OR ( ' .
+		' language_id=85 ' .
+		" AND {$dc}_syntrans.defined_meaning_id NOT IN ( SELECT defined_meaning_id FROM {$dc}_syntrans synt, {$dc}_expression exp WHERE exp.expression_id = synt.expression_id AND exp.language_id=$lng ) " .
+	' ) ) ' ;
+
+	$sql .=
+		' AND ' . getLatestTransactionRestriction( "{$dc}_class_attributes" ) .
+		' AND ' . getLatestTransactionRestriction( "{$dc}_expression" ) .
+		' AND ' . getLatestTransactionRestriction( "{$dc}_syntrans" ) .
+		" AND ({$dc}_class_attributes.class_mid IN (" .
+			' SELECT class_mid ' .
+			" FROM   {$dc}_class_membership" .
+			" WHERE  {$dc}_class_membership.class_member_mid = " . $definedMeaningId .
+			' AND ' . getLatestTransactionRestriction( "{$dc}_class_membership" ) .
+			' )' .
+			$defaultClassRestriction .
+		')';
+
+	$sql .= ') AS filtered GROUP BY attribute_mid';
+
+	return $sql ;
 }
 
 function getPropertyToColumnFilterForAttribute( $annotationAttributeId ) {
@@ -310,64 +360,6 @@ function getFilteredAttributesRestriction( $annotationAttributeId ) {
 	return $result;
 }
 
-# language is the 2 letter wikimedia code. use "<ANY>" if you don't want language filtering
-# (any does set limit 1 hmph)
-function getSQLToSelectPossibleAttributesForLanguage( $definedMeaningId, $attributesLevel, $annotationAttributeId, $attributesType, $language = "<ANY>" ) {
-	global $wgDefaultClassMids;
-	global $wgUser;
-	$dc = wdGetDataSetContext();
-
-	if ( count( $wgDefaultClassMids ) > 0 )
-		$defaultClassRestriction = " OR {$dc}_class_attributes.class_mid IN (" . join( $wgDefaultClassMids, ", " ) . ")";
-	else
-		$defaultClassRestriction = "";
-		
-	$filteredAttributesRestriction = getFilteredAttributesRestriction( $annotationAttributeId );
-
-	$dbr =& wfGetDB( DB_SLAVE );
-	$sql =
-		'SELECT attribute_mid, MAX(spelling) as spelling FROM (' .
-		'SELECT attribute_mid, spelling' .
-		" FROM {$dc}_bootstrapped_defined_meanings, {$dc}_class_attributes, {$dc}_syntrans, {$dc}_expression" .
-		" WHERE {$dc}_bootstrapped_defined_meanings.name = " . $dbr->addQuotes( $attributesLevel ) .
-		" AND {$dc}_bootstrapped_defined_meanings.defined_meaning_id = {$dc}_class_attributes.level_mid" .
-		" AND {$dc}_class_attributes.attribute_type = " . $dbr->addQuotes( $attributesType ) .
-		" AND {$dc}_syntrans.defined_meaning_id = {$dc}_class_attributes.attribute_mid" .
-		" AND {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .
-		$filteredAttributesRestriction . " ";
-
-	if ( $language != "<ANY>" ) {
-		$sql .=
-		' AND language_id=( ' .
-				' SELECT language_id' .
-				' FROM language' .
-				' WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) .
-				' )';
-	}
-
-	$sql .=
-		' AND ' . getLatestTransactionRestriction( "{$dc}_class_attributes" ) .
-		' AND ' . getLatestTransactionRestriction( "{$dc}_expression" ) .
-		' AND ' . getLatestTransactionRestriction( "{$dc}_syntrans" ) .
-		" AND ({$dc}_class_attributes.class_mid IN (" .
-				' SELECT class_mid ' .
-				" FROM   {$dc}_class_membership" .
-				" WHERE  {$dc}_class_membership.class_member_mid = " . $definedMeaningId .
-				' AND ' . getLatestTransactionRestriction( "{$dc}_class_membership" ) .
-				' )' .
-				$defaultClassRestriction .
-		')';
-
-	$sql .= ') AS filtered GROUP BY attribute_mid';
-
-	// if ($language="<ANY>") {
-	//	$sql .=
-	//	' LIMIT 1 ';
-	// }
-
-
-	return $sql;
-}
 
 /**
  * Returns the name of all classes and their spelling in the user language or in English
