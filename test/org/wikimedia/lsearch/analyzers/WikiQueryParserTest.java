@@ -180,4 +180,9 @@ public class WikiQueryParserTest extends WikiTestCase {
 			e.printStackTrace();
 		}
 	}
+	
+	public void testExtractRawFields(){
+		assertEquals("[something , 0:eh heh]", Arrays.toString(WikiQueryParser.extractRawField("something ondiscussionpage:eh heh", "ondiscussionpage:")));
+		assertEquals("[something , 0:eh \"heh\"]", Arrays.toString(WikiQueryParser.extractRawField("something ondiscussionpage:eh \"heh\"", "ondiscussionpage:")));
+	}
 }

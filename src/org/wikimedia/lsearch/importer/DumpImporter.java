@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -13,8 +14,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.document.Field;
 import org.apache.lucene.document.FieldSelector;
 import org.apache.lucene.document.SetBasedFieldSelector;
+import org.apache.lucene.document.Field.Index;
+import org.apache.lucene.document.Field.Store;
 import org.mediawiki.importer.DumpWriter;
 import org.mediawiki.importer.Page;
 import org.mediawiki.importer.Revision;
@@ -111,7 +115,7 @@ public class DumpImporter implements DumpWriter {
 		Article article = new Article(page.Id,page.Title.Namespace,
 				page.Title.Text,revision.Text,redirectTo,references,
 				redirectTargetNamespace,0,redirects,rel,anchors,date,
-				page.DiscussionThreadingInfo);
+				processLiquidThreadInfo(page.DiscussionThreadingInfo));
 		// index
 		if(indexWriter != null)
 			indexWriter.addArticle(article);
@@ -124,6 +128,25 @@ public class DumpImporter implements DumpWriter {
 		if(limit >= 0 && count > limit)
 			throw new IOException("stopped");
 	}	
+	
+	/** Process LQT properties, convert titles into correct format */
+	public static Hashtable<String, String> processLiquidThreadInfo(Hashtable info){
+		Enumeration e = info.keys();
+		Hashtable<String,String> res = new Hashtable<String,String>();
+		while (e.hasMoreElements()) {
+			String key = (String)e.nextElement();
+			Object rawvalue = info.get(key);
+			String value = rawvalue.toString();
+			if(rawvalue instanceof org.mediawiki.importer.Title){
+				// put titles into <ns>:<title> format (where ns is integer)
+				org.mediawiki.importer.Title t = (org.mediawiki.importer.Title) rawvalue;
+				value = t.Namespace+":"+t.Text;
+			}
+			res.put(key, value);
+		}
+		
+		return res;	
+	}
 	
 	public void close() throws IOException {
 		// nop		

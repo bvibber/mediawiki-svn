@@ -18,6 +18,7 @@ import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.importer.DumpImporter;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.ranks.LinksBuilder;
@@ -83,7 +84,7 @@ public class IndexUpdatesCollector implements DumpWriter {
 					revision.Text, redirectTo, references, 0, 0,
 					redirects, new ArrayList<RelatedTitle>(),
 					new Hashtable<String,Integer>(), date,
-					page.DiscussionThreadingInfo );
+					DumpImporter.processLiquidThreadInfo(page.DiscussionThreadingInfo) );
 		log.debug("Collected "+article+" with rank "+references+" and "+redirects.size()+" redirects: "+redirects);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.UPDATE));
 		log.debug(iid+": Update for "+article);

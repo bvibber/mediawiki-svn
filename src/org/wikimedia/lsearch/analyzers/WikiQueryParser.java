@@ -146,6 +146,11 @@ public class WikiQueryParser {
 	protected boolean isInTitle = false;
 	protected int isInTitleLevel = 0;
 	
+	/** Raw fields to append to queries like ondiscussionpage */
+	protected HashMap<String,String> rawFields = new HashMap<String,String>();
+	
+	Hashtable<String,String> keywordFieldMapping = new Hashtable<String,String>();
+	
 	protected Pattern urlPattern = Pattern.compile("(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?");
 	
 	/** default operator (must = AND, should = OR) for boolean queries */
@@ -361,6 +366,9 @@ public class WikiQueryParser {
 		tokens = new ArrayList<Token>();
 		this.namespacePolicy = nsPolicy;
 		disableTitleAliases = true;
+		keywordFieldMapping = new Hashtable<String,String>();
+		keywordFieldMapping.put("inthread", "ThreadAncestor");		
+		keywordFieldMapping.put("ondiscussionpage", "ThreadPage");
 		initNamespaces();
 		this.stopWords = new HashSet<String>();
 		if(stopWords != null)
@@ -425,8 +433,7 @@ public class WikiQueryParser {
 		HashSet<String> fields = getFields(queryText);
 		HashSet<NamespaceFilter> ret = new HashSet<NamespaceFilter>();
 		List ThreadingKeywords = new ArrayList();
-		ThreadingKeywords.add("inthread");
-		ThreadingKeywords.add("ondiscussionpage");
+		ThreadingKeywords.add("inthread");		
 		
 		for(String field : fields){
 			field = field.toLowerCase();
@@ -667,8 +674,7 @@ public class WikiQueryParser {
 		List<String> fieldOperators = new ArrayList<String>();
 		fieldOperators.add("intitle");
 		fieldOperators.add("incategory");
-		fieldOperators.add("inthread");
-		fieldOperators.add("ondiscussionpage");
+		fieldOperators.add("inthread");		
 		
 		return fieldOperators;
 	}
@@ -753,9 +759,7 @@ public class WikiQueryParser {
 	
 	/** Make a lucene term from string */
 	private Term makeTerm(String t){
-		Hashtable<String,String> keywordFieldMapping = new Hashtable<String,String>();
-		keywordFieldMapping.put("inthread", "ThreadAncestor");
-		keywordFieldMapping.put("ondiscussionpage", "ThreadPage");
+		
 		
 		if(currentField == null)
 			return new Term(defaultField,builder.isExactCase()? t : t.toLowerCase());
@@ -1292,8 +1296,50 @@ public class WikiQueryParser {
 		return queryText;
 	}
 	
+	/**
+	 * Extract prefix: field from the query and put it into prefixFilter
+	 * variable for later retrieval
+	 * 
+	 * @param queryText
+	 * @param field (like "ondiscussionthread:")
+	 * @return [0] - queryText with field part deleted
+	 *         [1] - the field part
+	 */
+	public static String[] extractRawField(String queryText, String field){
+		ArrayList<String> filters = new ArrayList<String>(); 
+		int start = 0;
+		while(start < queryText.length()){
+			int end = indexOf(queryText,'"',start); // begin of phrase
+			int inx = queryText.indexOf(field); 
+			if(inx >=0 && inx < end){
+				String prefix = queryText.substring(inx+field.length());
+
+				String full = null;
+				if(prefix.startsWith("[") && prefix.contains("]:")){
+					// convert from [2]:query to 2:query form
+					full = prefix.replace("[","").replace("]:",":");
+				} else // default to main namespace
+					full = "0:"+prefix ;
+				
+				// add lowercase nonempty prefixes
+				if(full != null && full.length()>0)
+					filters.add(full);
+				
+				return new String[]{ queryText.substring(0,inx), full };
+				
+			}
+			start = end+1;
+			if(start < queryText.length()){
+				// skip phrase
+				start = indexOf(queryText,'"',start) + 1;
+			}
+		}
+		
+		return new String[]{ queryText, null };
+	}
+	
 	/** Like string.indexOf but return end of string instead of -1 when needle is not found */
-	protected int indexOf(String string, char needle, int start){
+	protected static int indexOf(String string, char needle, int start){
 		int inx = string.indexOf(needle,start);
 		if(inx == -1)
 			return string.length();
@@ -1394,6 +1440,17 @@ public class WikiQueryParser {
 			this.namespacePolicy = options.policy;		
 		defaultBoost = CONTENTS_BOOST;
 		defaultAliasBoost = ALIAS_BOOST;
+		
+		this.rawFields = new HashMap<String,String>();
+		// parse out raw queries
+		for(String field : new String[] {"ondiscussionpage:"}){
+			String[] ret = extractRawField(queryText, field);
+			queryText = ret[0];
+			if( ret[1] != null )
+				this.rawFields.put(field,ret[1]);			                
+		}
+		
+		
 		Query qc = parseRaw(queryText);		
 		ParsedWords words = parsedWords;
 		this.namespacePolicy = defaultPolicy;
@@ -1436,6 +1493,17 @@ public class WikiQueryParser {
 		if(redirectMatch != null)
 			full.add(redirectMatch, Occur.SHOULD);
 		
+		// add raw fields as global constrains
+		for(Entry<String,String> e : rawFields.entrySet()){
+			String field = e.getKey();
+			if(field.endsWith(":"))
+				field = field.substring(0, field.length()-1);
+			// find target field in the index, e.g. ondiscussionpage -> ThreadPage
+			String targetField = keywordFieldMapping.get(field);
+			if( targetField != null)
+				full.add(new TermQuery(new Term(targetField, e.getValue())),Occur.MUST);
+		}
+		
 		// init global scaling of articles 
 		ArticleScaling scale = new ArticleScaling.None();
 		// based on age
@@ -1449,6 +1517,7 @@ public class WikiQueryParser {
 			}  
 			
 		}
+		
 		// additional rank
 		AggregateInfo rank = iid.useAdditionalRank()? new AggregateInfoImpl() :  null;
 		ArticleNamespaceScaling nsScale = iid.getNamespaceScaling();
