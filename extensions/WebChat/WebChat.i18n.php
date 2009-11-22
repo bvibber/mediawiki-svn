@@ -511,6 +511,12 @@ Utilizadores anônimos recebem um apelido gerado aleatoriamente, mas este pode s
  */
 $messages['roa-tara'] = array(
 	'webchat' => 'Ciat web',
+	'webchat-desc' => "Aggiunge 'na [[Special:WebChat|pàgena speciale]] ausate pe ciattà in timbe reale cu l'othe utinde de Uicchi",
+	'webchat-header' => "Sta pàgena speciale te permette de collabborà in timbe reale cu l'otre utinde de le Uicchi.
+Pe te collegà avaste ca cazze 'u buttone \"Trase\".
+Ce tu è già trasute 'u nickname tune avène già 'mbostate.
+Le utinde anoneme ne generescene une automateche ma 'u ponne cangià.",
+	'right-webchat' => "Fà ausà 'a [[Special:WebChat|web ciat]]",
 );
 
 /** Russian (Русский)

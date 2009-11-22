@@ -36,12 +36,14 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
  * @author Bennylin
  * @author Fryed-peach
  * @author Jon Harald Søby
+ * @author Lloffiwr
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
 	'multipleupload' => '',
 	'multipleupload-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'multipleupload-addresswarnings' => "'Address' here means 'deal with' or 'fix'.",
 	'multipleupload-text' => 'Plural is supported for $1.',
 	'multiupload-toolbox' => '{{Identical|Uploadmultiple}}',
 );
@@ -281,7 +283,16 @@ $messages['cy'] = array(
 	'multipleupload-desc' => 'Yn galluogi defnyddiwr i [[Special:MultipleUpload|uwchlwytho nifer o ffeiliau ar unwaith]]',
 	'multipleupload-ignoreallwarnings' => "Anwybydder '''pob rhybudd''' gan roi'r ffeiliau ar gadw beth bynnag.",
 	'multipleupload-saveallfiles' => "Rhoi'r holl ffeiliau ar gadw",
+	'multipleupload-addresswarnings' => "Gofalwch dalu sylw at unrhyw rybuddion sy'n cael eu dangos cyn ail-lwytho ffeiliau.",
 	'multipleupload-page' => '{{ns:project}}:Polisi dileu ffeiliau',
+	'multipleupload-text' => "Gallwch uwchlwytho nifer o ffeiliau ar unwaith yma.
+
+Pwyswch y botwm 'Pori' ('Browse') ac yna dewis pob ffeil yr hoffech eu huwchlwytho.
+Gallwch uwchlwytho rhwng 1 a $1 o ffeiliau ar unwaith.
+
+Mae modd gosod '''Enw ffeil y cyrchfan''' a '''Chrynodeb''' sy'n disgrifio'ch ffeil, os y dymunwch.
+
+Caiff ffeiliau anaddas eu dileu ar unwaith; gweler y [[{{MediaWiki:Multipleupload-page}}|polisi dileu ffeiliau]].",
 	'multiupload-fileuploaded' => 'Uwchlwythwyd ffeil.',
 	'multiupload-toolbox' => 'Uwchlwytho nifer o ffeiliau ar y tro',
 	'multiupload-no-files' => "Dewiswch o leiaf un ffeil i'w huwchlwytho",

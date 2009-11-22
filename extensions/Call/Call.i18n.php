@@ -959,6 +959,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'call' => 'Chiame',
+	'call-save' => "'U resultate de sta chiamate avène reggistrate jndr'à 'na pàgene chiamate ''$1''.",
 );
 
 /** Russian (Русский)

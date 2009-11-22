@@ -84,6 +84,15 @@ $messages['cs'] = array(
 	'wikieditor-toc-hide' => 'Skrýt obsah',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'wikieditor-toc-preference' => 'Galluogi rhestr gynnwys mordwyol',
+	'wikieditor-toc-show' => "Dangos 'Cynnwys'",
+	'wikieditor-toc-hide' => "Cuddio 'Cynnwys'",
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */
@@ -325,6 +334,8 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'wikieditor-toc-preference' => 'Abbilite le tabbele navigabbele de condenute',
+	'wikieditor-toc-show' => 'Fà vedè le condenute',
+	'wikieditor-toc-hide' => 'Scunne le condenute',
 );
 
 /** Russian (Русский)

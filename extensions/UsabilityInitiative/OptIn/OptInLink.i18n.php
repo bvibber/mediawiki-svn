@@ -156,6 +156,7 @@ $messages['cu'] = array(
  */
 $messages['cy'] = array(
 	'optin-try' => 'Rhowch gynnig ar Beta',
+	'optin-leave' => 'Gadael Beta',
 );
 
 /** Danish (Dansk)

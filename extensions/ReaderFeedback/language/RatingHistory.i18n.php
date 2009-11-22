@@ -1491,6 +1491,10 @@ $messages['pms'] = array(
 	'ratinghistory-leg' => 'Dat ëd la stòria dij pontegi për [[:$1|$1]]',
 	'ratinghistory-tab' => 'pontegi',
 	'ratinghistory-link' => 'Pontegi dla pàgina',
+	'ratinghistory-month' => 'ùltim meis',
+	'ratinghistory-3months' => 'ùltim 3 meis',
+	'ratinghistory-year' => 'ùltim ann',
+	'ratinghistory-3years' => 'ùltim 3 ann',
 );
 
 /** Pashto (پښتو)

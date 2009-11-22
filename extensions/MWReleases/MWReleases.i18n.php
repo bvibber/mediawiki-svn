@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'mwreleases-desc' => "Voeg 'n [[Mediawiki:Mwreleases-list|lys]] van ondersteunde MediaWiki-weergawes by, toeganklik via die API",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'mwreleases-desc' => 'يضيف [[Mediawiki:Mwreleases-list|قائمة]] بالإصدارات المدعومة, يمن الوصول إليها من ال API',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

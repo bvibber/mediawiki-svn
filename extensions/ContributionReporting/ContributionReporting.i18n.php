@@ -3670,6 +3670,7 @@ $messages['tr'] = array(
 	'contribstats-conversion' => 'Dönüşüm oranı (%)',
 	'contribstats-template' => 'Şablon',
 	'contribstats-nodata' => 'Hiç veri sağlanmamış',
+	'contribstats-landingpage' => 'İniş sayfası',
 	'contribstats-donatepage' => 'Bağış sayfası',
 	'contribstats-average' => 'Ortalama',
 	'fundraiserstatistics' => 'Fonsağlayıcı istatistikleri',

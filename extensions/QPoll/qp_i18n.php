@@ -115,6 +115,7 @@ To save a poll, submit it while not answering to any proposal questions.',
 /** Message documentation (Message documentation)
  * @author Fryed-peach
  * @author Hamilton Abreu
+ * @author IAlex
  * @author Siebrand
  */
 $messages['qqq'] = array(
@@ -122,7 +123,7 @@ $messages['qqq'] = array(
 	'qp_desc' => '{{desc}}',
 	'qp_result_error' => '{{Identical|Syntax error}}',
 	'qp_vote_button' => '{{Identical|Vote}}',
-	'qp_source_link' => '{{Identical|Source}}',
+	'qp_source_link' => '"Source" is the link text for a link to the page there the poll is defined.{{Identical|Source}}',
 	'qp_stats_link' => '{{Identical|Statistics}}',
 	'qp_users_link' => '{{Identical|User}}',
 	'qp_voice_link_inv' => "What '?' means?",
@@ -207,17 +208,29 @@ $messages['be-tarask'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'qp_desc' => 'Aotren krouiñ sontadegoù',
+	'qp_result_NA' => 'Respont ebet',
 	'qp_result_error' => 'Fazi ereadur',
 	'qp_vote_button' => 'Mouezhiañ',
+	'qp_vote_again_button' => 'Kemmañ ho vot',
+	'qp_polls_list' => 'Listennañ an holl sontadegoù',
 	'qp_users_list' => 'Renabliñ an holl implijerien',
+	'qp_browse_to_poll' => 'Mont betek $1',
+	'qp_browse_to_user' => 'Mont betek $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|vot|votoù}}',
+	'qp_source_link' => 'Mammenn',
 	'qp_stats_link' => 'Stadegoù',
 	'qp_users_link' => 'Implijerien',
 	'qp_voice_link' => 'Mouezh an implijer',
+	'qp_voice_link_inv' => 'Mouezh an implijer ?',
 	'qp_order_by_username' => 'Urzhiañ dre anv implijer',
+	'qp_results_line_qupl' => 'Pajenn "$1" Sontadeg "$2" : $3',
+	'qp_results_line_qpl' => 'Pajenn "$1" Sontadeg "$2" : $3, $4, $5, $6',
 	'qp_export_to_xls' => "Ezporzhiañ ar stadegoù d'ar furmad XLS",
+	'qp_error_vote_dependance_poll' => 'Mar plij, votit evit ar sontadeg $1 da gentañ.',
 	'qp_error_category_name_empty' => 'Goullo eo anv ar rummad',
 	'qp_error_proposal_text_empty' => "Goullo eo testenn ar c'hinnig",
 );
@@ -709,6 +722,7 @@ $messages['ja'] = array(
 	'qp_browse_to_poll' => '$1 を閲覧',
 	'qp_browse_to_user' => '$1 を閲覧',
 	'qp_votes_count' => '$1{{PLURAL:$1|票}}',
+	'qp_source_link' => '投票場所',
 	'qp_stats_link' => '統計',
 	'qp_users_link' => '利用者',
 	'qp_voice_link' => '利用者の声',
@@ -852,11 +866,13 @@ $messages['lb'] = array(
 	'qp_users_answered_questions' => "$1 {{PLURAL:$1|Benotzer huet|Benotzer hun}} op d'Froe geäntwert",
 	'qp_func_no_such_poll' => 'Et gëtt keng esou eng Ëmfro ($1)',
 	'qp_error_no_stats' => 'Et gëtt keng statistesch Donnéeën, well bis elo (Adress=$1) kee fir dës Ëmfro gestëmmt huet.',
+	'qp_error_invalid_question_type' => 'Net-valabelen Typ vu Fro: $1',
 	'qp_error_already_used_poll_id' => "D'Ëmfro-Nummer (poll id) gouf op dëser Säit scho benotzt (id=$1).",
 	'qp_error_vote_dependance_poll' => "Stëmmt w.e.g. fir d'éischt bäi der Ëmfro $1 of.",
 	'qp_error_unanswered_span' => 'Ënnerkategorie ouni Äntwert',
 	'qp_error_category_name_empty' => 'Den Numm vun der Kategorie ass eidel',
 	'qp_error_proposal_text_empty' => 'Den Text vum Virschlag ass eidel',
+	'qp_error_too_few_categories' => 'Et musse mindestens zwou Kategorien definéiert sinn',
 	'qp_error_no_answer' => 'Propos ouni Äntwert',
 );
 
@@ -1004,6 +1020,15 @@ Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
 	'qp_error_too_few_spans' => 'Cada classe de categorias requer pelo menos duas respostas possíveis definidas',
 	'qp_error_no_answer' => 'Proposta sem resposta',
 	'qp_error_unique' => 'Pergunta do tipo unique() tem mais propostas definidas do que respostas possíveis: impossível de completar',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'qp_vote_button' => 'Vote',
+	'qp_stats_link' => 'Statisteche',
+	'qp_users_link' => 'Utinde',
 );
 
 /** Russian (Русский)

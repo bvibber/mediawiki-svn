@@ -108,6 +108,21 @@ $3',
 	'latexdoc-desc' => 'Съвместно редактиране на документи на LaTeX',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'latexdoc_error' => 'Fazi LaTeX
+
+Urzhiad : $1
+
+Dont er-maez : $2
+
+$3',
+	'latexdoc_get_dvi' => 'Kaout DVI',
+	'latexdoc_get_pdf' => 'Kaout PDF',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -810,17 +810,32 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'deletequeue-action-queued' => 'Dilamadur',
 	'deletequeue-action' => 'Kinnig un dilamadur',
+	'deletequeue-action-title' => 'Kinnig e vefe diverket "$1"',
+	'deletequeue-generic-reasons' => "* Abegoù an alisañ
+** Vandalerezh
+** Strob
+** Trezalc'h
+** E maez ar raktres",
+	'deletequeue-prod-title' => 'Kinnig e vefe diverket "$1"',
+	'deletequeue-delnom-reason' => "Abeg ar c'hinnig :",
 	'deletequeue-delnom-otherreason' => 'Abeg all',
 	'deletequeue-delnom-submit' => 'Kas an anvadur',
+	'right-prod-nominate' => 'Kinnig diverkañ pajennoù',
 	'deletequeue-queue-speedy' => 'Dilamadenn brim',
+	'deletequeue-queue-prod' => 'Diverkadenn kinniget',
 	'deletequeue-review-delete' => 'Dilemel ar bajenn.',
 	'deletequeue-review-reason' => 'Addisplegoù :',
+	'deletequeue-review-newreason' => 'Abeg nevez :',
+	'deletequeue-vote-reason' => 'Evezhiadenn :',
 	'deletequeue-vote-submit' => 'Kas',
 	'deletequeue-list-search-legend' => 'Klask pajennoù',
+	'deletequeue-list-status' => 'Statud :',
+	'deletequeue-list-search' => 'Klask',
 	'deletequeue-list-header-page' => 'Pajenn',
 	'deletequeue-case-page' => 'Pajenn :',
 	'deletequeue-case-reason' => 'Abeg :',

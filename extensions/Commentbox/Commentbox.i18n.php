@@ -101,7 +101,13 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'commentbox-intro' => '== Ouzhpennañ evezhiadenn... ==
+Un evezhidenn o peus d\'ober diwar-benn ar bajenn-mañ ? Ouzhpennit anezhañ amañ pe <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} kemmit ar bajenn war-eeun]</span>.',
+	'commentbox-savebutton' => 'Enrollañ an evezhiadenn',
 	'commentbox-name' => 'Anv :',
+	'commentbox-log' => 'Evezhiadenn nevez',
+	'commentbox-first-comment-heading' => '== Evezhiadennoù ==',
+	'commentbox-error-page-nonexistent' => "N'eus ket eus ar bajenn-se",
 );
 
 /** Bosnian (Bosanski)

@@ -144,6 +144,13 @@ $messages['mk'] = array(
 	'geolite-desc' => 'Просто GeoIp пренасочување',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'geolite-desc' => 'ലഘുവായ ജിയോഐപി തിരിച്ചുവിടൽ',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -192,6 +199,13 @@ $messages['ru'] = array(
  */
 $messages['sr-ec'] = array(
 	'geolite-desc' => 'Редирекције за Lightweight GeoIp',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'geolite-desc' => 'Hafif GeoIP Yönlendirmesi',
 );
 
 /** Ukrainian (Українська)

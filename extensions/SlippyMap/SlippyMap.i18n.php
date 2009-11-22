@@ -184,11 +184,20 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'slippymap_desc' => 'Ouzhpennañ a ra ur valizenn <tt>&lt;slippymap&gt;</tt> a dalvez da enframmañ kartennoù statek ha dinamek. Skorañ a ra meur a servij kartennoù en o zouez [http://openstreetmap.org OpenStreetMap] ha NASA Worldwind',
 	'slippymap_error' => '$1 fazi : $2',
 	'slippymap_errors' => '$1 fazi :',
+	'slippymap_error_invalid_attribute_lat_value_nan' => "N'eo ket reizh an dalvoudenn <tt>$1</tt> evit an doareenn <tt>lat</tt> (led), an dalvoudenn roet a rank bezañ un niver reizh.",
+	'slippymap_error_invalid_attribute_lon_value_nan' => "N'eo ket reizh an dalvoudenn <tt>$1</tt> evit an doareenn <tt>lon</tt> (hed), an dalvoudenn roet a rank bezañ un niver reizh.",
+	'slippymap_error_invalid_attribute_zoom_value_nan' => "N'eo ket reizh an dalvoudenn <tt>$1</tt> evit an doareenn <tt>zoom</tt>, an dalvoudenn roet a rank bezañ un niver reizh.",
+	'slippymap_error_invalid_attribute_width_value_nan' => "N'eo ket reizh an dalvoudenn <tt>$1</tt> evit an doareenn <tt>width</tt>, an dalvoudenn roet a rank bezañ un niver reizh.",
+	'slippymap_error_invalid_attribute_height_value_nan' => "N'eo ket reizh an dalvoudenn <tt>$1</tt> evit an doareenn <tt>height</tt>, an dalvoudenn roet a rank bezañ un niver reizh.",
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => "N'eo ket reizh an dalvoudenn <tt>$1</tt> evit an doareenn <tt>mode</tt>, ar re reizh a zo $2.",
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => "N'eo ket reizh an dalvoudenn <tt>$1</tt> evit an doareenn <tt>layer</tt>, ar re reizh a zo $2.",
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => "N'eo ket reizh an dalvoudenn <tt>$1</tt> evit an doareenn <tt>marker</tt>, ar re reizh a zo $2.",
 	'slippymap_code' => 'Kod wiki evit gwelet ar gartenn-mañ :',
 	'slippymap_button_code' => "Tapout ar c'hod wiki",
 	'slippymap_resetview' => 'Adderaouekaat ar gwel',

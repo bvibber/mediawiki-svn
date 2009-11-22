@@ -7096,6 +7096,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor de Metadados de Vídeo e Pesquisa de Conteúdos Multimédia]',
 	'metavid' => 'Página MetaVid',
 	'mv_missing_stream' => 'Stream não localizado: $1',
 	'specialpages-group-mv_group' => 'Páginas especiais MetaVidWiki',
@@ -7303,6 +7304,7 @@ Saltar para vista de stream: $2',
 	'mv_sequence_edit_visual_editor' => 'Mudar para Editor Visual',
 	'mv_other_options' => 'Outras Opções',
 	'mv_contextmenu_opt' => 'Ativar menus de contexto',
+	'mv_days' => '$1 {{PLURAL:$1|dia|dias}}',
 	'mv_hours' => '$1 {{PLURAL:$1|hora|horas}}',
 	'mv_hours_singular' => '1 hora',
 	'mv_minutes' => '$1 {{PLURAL:$1|minuto|minutos}}',
@@ -7318,6 +7320,7 @@ Saltar para vista de stream: $2',
 	'mv_stream_resource_export' => 'Exportação de recursos de stream',
 	'mv_export_cmml' => 'Exportar CMML',
 	'mv_navigate_stream' => 'Navegar stream completa',
+	'mv_stream_overview' => 'Resumo de Stream',
 	'mv_edit_time' => 'Editar Tempo',
 	'mv_embed_options' => 'Opções de incorporação',
 	'mv_overlay' => 'Controlos de overlay',
@@ -7338,6 +7341,8 @@ Saltar para vista de stream: $2',
 	'mv_mang_layers_title' => "Gerir o conjunto de visualização de camadas para a 'stream' actual",
 	'mv_protect_source_material' => 'Material fonte original protegido contra edições',
 	'right-mv_delete_mvd' => 'Apagar metadados MetaVid',
+	'action-mv_delete_mvd' => 'eliminar este segmento de metadados MetaVid',
+	'right-mv_edit_stream' => 'Editar ficheiros stream',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

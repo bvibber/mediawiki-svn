@@ -2048,6 +2048,7 @@ $messages['vec'] = array(
 	'readerfeedback-completeness' => 'Conpletessa',
 	'readerfeedback-npov' => 'Neutralità',
 	'readerfeedback-presentation' => 'Presentassion',
+	'readerfeedback-overall' => 'Conplessivo',
 	'readerfeedback-level-none' => '(mia sicuro)',
 	'readerfeedback-level-0' => 'Tristo assè',
 	'readerfeedback-level-1' => 'Tristo',

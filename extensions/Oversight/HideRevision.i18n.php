@@ -498,11 +498,18 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'hiderevision-continue' => "Kenderc'hel",
+	'hiderevision-reason' => 'Abeg (enrollet e vo en un doare distag) :',
+	'hiderevision-tab' => 'Kuzat an adweladenn',
+	'hiderevision-link' => 'degasadennoù kuzhet an implijer',
+	'hiderevision-status' => 'Adweladenn $1 : $2',
 	'oversight' => 'Oversight',
 	'oversight-view' => 'munudoù',
+	'oversight-hidden' => 'Adweladennoù kuzhet',
+	'oversight-offender' => 'Aozer an adweladenn :',
 );
 
 /** Bosnian (Bosanski)

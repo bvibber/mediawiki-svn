@@ -336,10 +336,22 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
+	'changeauthor' => 'Kemmañ aozer an adweladennoù',
+	'changeauthor-title' => 'Kemmañ aozer un adweladenn',
+	'changeauthor-search-box' => 'Klask adweladennoù',
 	'changeauthor-pagenameform-go' => 'Mont',
 	'changeauthor-comment' => 'Notenn :',
+	'changeauthor-changeauthors-multi' => 'Kemmañ {{PLURAL:$1|an aozer|an aozerien}}',
+	'changeauthor-changeauthors-single' => 'Kemmañ an aozer',
+	'changeauthor-nosuchuser' => 'Implijer "$1" ebet.',
+	'changeauthor-revview' => 'adweladenn #$1 eus $2',
+	'changeauthor-nosuchtitle' => 'N\'eus pajenn ebet anvet "$1".',
+	'changeauthor-logentry' => 'Kemmoù an aozer eus $2 eus $1 eus $3 da $4',
+	'changeauthor-logpagename' => "Marilh ar c'hemmoù graet gant an aozer",
+	'right-changeauthor' => 'Kemmañ aozer un adweladenn',
 );
 
 /** Bosnian (Bosanski)

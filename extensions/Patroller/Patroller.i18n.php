@@ -430,6 +430,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Dferg
  * @author Sanbec
  * @author Titoxd
  * @author Translationista
@@ -437,7 +438,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'patrol' => 'Revisión de ediciones',
 	'patrol-desc' => 'Interface de patrullaje mejorado con comparticion de carga de trabajo',
-	'patrol-endorse' => 'Aprovar',
+	'patrol-endorse' => 'Aprobar',
 	'patrol-revert' => 'Revertir',
 	'patrol-revert-reason' => 'Motivo:',
 	'patrol-skip' => 'Omitir',
@@ -445,7 +446,7 @@ $messages['es'] = array(
 	'patrol-nonefound' => 'No hay ediciones disponibles para revisar.',
 	'patrol-endorsed-ok' => 'La edición fue marcada como revisada.',
 	'patrol-endorsed-failed' => 'La edición no se pudo marcar como revisada.',
-	'patrol-reverted-ok' => 'The edición fue revertida.',
+	'patrol-reverted-ok' => 'La edición fue revertida.',
 	'patrol-reverted-failed' => 'La edición no pudo ser revertida.',
 	'patrol-skipped-ok' => 'Ignorando la edición.',
 	'patrol-reasons' => '*Vandalismo simple
@@ -454,9 +455,9 @@ $messages['es'] = array(
 	'patrol-another' => 'Mostrar otra edición (si disponible).',
 	'patrol-stopped' => 'Has optado no marcar otra edición como revisada. $1',
 	'patrol-resume' => 'Haz click aquí para continuar.',
-	'group-patroller' => 'Patrulladores',
-	'group-patroller-member' => 'patrullador',
-	'grouppage-patroller' => '{{ns:project}}:Patrullador',
+	'group-patroller' => 'Patrulleros',
+	'group-patroller-member' => 'patrulleros',
+	'grouppage-patroller' => '{{ns:project}}:Patrullero',
 	'right-patroller' => 'Patrullar páginas',
 );
 

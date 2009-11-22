@@ -264,6 +264,7 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'authorprotect' => 'Diogeler y dudalen rhag ei newid gan neb ond ei hawduron',
 	'authorprotect-desc' => "Yn galluogi awdur tudalen i'w diogelu rhag defnyddwyr eraill",
 	'authorprotect-notauthor' => 'Nid chi yw awdur y dudalen hon',
 	'authorprotect-confirm' => 'Newid lefelau diogelu',
@@ -271,8 +272,10 @@ $messages['cy'] = array(
 	'authorprotect-move' => "Cyfyngu'r gallu i symud tudalen i'r awduron",
 	'authorprotect-expiry' => 'Cyfnod',
 	'authorprotect-reason' => 'Rheswm',
+	'authorprotect-intro' => "Defnyddiwch y ffurflen hon i gloi'r dudalen hon rhag neb ond ei hawduron",
 	'authorprotect-success' => 'Llwyddodd y diogelu!',
 	'authorprotect-failure' => 'Ni lwyddodd y diogelu',
+	'protect-level-author' => 'Diogeler rhag cael ei newid gan neb ond ei hawduron',
 	'right-authorprotect' => "Gallu awdur i ddiogelu tudalennau o'i waith ei hun",
 );
 

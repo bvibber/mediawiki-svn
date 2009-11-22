@@ -168,9 +168,14 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Y-M D
  */
 $messages['br'] = array(
+	'deletebatch-caption' => 'Roll ar pajennoù',
+	'deletebatch-link-back' => "Distreiñ d'ar bajenn ispisial",
+	'deletebatch-or' => '<b>pe</b>',
 	'deletebatch-delete' => 'Dilemel',
+	'deletebatch-page' => 'Pajennoù da ziverkañ :',
 	'deletebatch-select-yourself' => "C'hwi",
 );
 

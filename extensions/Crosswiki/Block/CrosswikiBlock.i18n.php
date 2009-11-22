@@ -302,11 +302,17 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
+	'crosswikiblock' => 'Stankañ un implijer war ur wiki all',
 	'crosswikiblock-reason' => 'Abeg :',
 	'crosswikiblock-submit' => 'Stankañ an implijer-mañ',
 	'crosswikiunblock-reason' => 'Abeg :',
+	'crosswikiunblock-submit' => 'Distankañ an implijer-mañ',
+	'crosswikiblock-nouser' => 'N\'eo ket bet kavet an implijer "$3".',
+	'crosswikiblock-alreadyblocked' => 'An implijer $3 a zo dija stanket.',
+	'crosswikiblock-noblock' => "N'eo ket stanket an implijer-mañ.",
 );
 
 /** Bosnian (Bosanski)

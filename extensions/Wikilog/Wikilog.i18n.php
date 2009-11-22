@@ -406,11 +406,22 @@ $messages['be-tarask'] = array(
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|гутаркі]])',
 	'wikilog-edit-fieldset-legend' => 'Устаноўкі вікіблёгу:',
 	'wikilog-edit-signpub' => 'Падпісаць і апублікаваць гэты артыкул',
+	'wikilog-edit-signpub-tooltip' => 'Вядзе да таго, што гэты артыкул падпісваецца і апублікоўваецца ў гэтым вікіжурнале пад час захаваньня.
+Прыбярыце гэту пазнаку каб заставіць артыкул у якасьці чарнавіка.',
+	'wikilog-comment-by-user' => 'Камэнтар $1 ($2)',
+	'wikilog-comment-by-anon' => 'Камэнтар $3 (ананімна)',
+	'wikilog-comment-pending' => 'Гэты камэнтар чакае пацьверджаньня.',
 	'wikilog-comment-deleted' => 'Гэты камэнтар быў выдалены.',
+	'wikilog-comment-edited' => 'Гэты камэнтар апошні раз рэдагаваўся $3 у $4 ($2).',
+	'wikilog-comment-autosumm' => 'Новы камэнтар $1: $2',
+	'wikilog-reply-to-comment' => 'Адказаць на гэты камэнтар',
 	'wikilog-comment-page' => 'Перайсьці на старонку гэтага камэнтара',
 	'wikilog-comment-edit' => 'Рэдагаваць гэты камэнтар',
 	'wikilog-comment-delete' => 'Выдаліць гэты камэнтар',
 	'wikilog-comment-history' => 'Паказаць гісторыю камэнтара',
+	'wikilog-comment-approve' => 'Зацьвердзіць гэты камэнтар (неадкладнае дзеяньне)',
+	'wikilog-comment-reject' => 'Адхіліць гэты камэнтар (неадкладнае дзеяньне)',
+	'wikilog-newtalk-text' => '<!-- пустая старонка створаная Вікіжурналам -->',
 	'wikilog-title-comments' => 'Камэнтары — $1',
 	'wikilog-invalid-param' => 'Няслушны парамэтар: $1.',
 	'wikilog-invalid-date' => 'Няслушная дата: $1.',
@@ -848,6 +859,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Dferg
  * @author Locos epraix
  * @author Translationista
  */
@@ -880,6 +892,7 @@ $messages['es'] = array(
 	'wikilog-pager-first' => '←← primero',
 	'wikilog-pager-last' => 'último →→',
 	'wikilog-no-comments' => 'sin comentarios',
+	'wikilog-has-comments' => '{{PLURAL:$1|un comentario|$1 comentarios}}',
 	'wikilog-item-more' => '[[$3|→ continuar leyendo...]]',
 	'wikilog-edit-signpub' => 'Firma y publica este artículo',
 	'wikilog-comment-by-user' => 'Comentario de $1 ($2)',
@@ -895,6 +908,7 @@ $messages['es'] = array(
 	'wikilog-comment-history' => 'Ver el historial de comentarios',
 	'wikilog-comment-approve' => 'Aprobar este comentario (acción inmediata)',
 	'wikilog-comment-reject' => 'Rechazar este comentario (acción inmediata)',
+	'wikilog-newtalk-text' => '<!-- página en blanco creada por Wikilog -->',
 	'wikilog-title-comments' => 'Comentarios - $1',
 	'wikilog-invalid-param' => 'Parámetro inválido: $1.',
 	'wikilog-invalid-author' => 'Autor inválido: $1.',
@@ -2448,6 +2462,7 @@ $messages['nn'] = array(
 	'wikilog-item-name' => 'Artikkelnamn:',
 	'wikilog-published' => 'Publisert',
 	'wikilog-draft' => 'Utkast',
+	'wikilog-authors' => 'Forfattarar',
 	'wikilog-title' => 'Tittel',
 	'wikilog-actions' => 'Handlingar',
 	'wikilog-comments' => 'Kommentarar',
@@ -2464,6 +2479,7 @@ $messages['nn'] = array(
 	'wikilog-pager-last' => 'siste →→',
 	'wikilog-pager-empty' => '(ingen innlegg)',
 	'wikilog-no-comments' => 'ingen kommentarar',
+	'wikilog-item-more' => '[[$3|→ hald fram med å lesa...]]',
 	'wikilog-edit-signpub' => 'Signér og publiser denne artikkelen',
 	'wikilog-comment-by-user' => 'Kommentarar av $1 ($2)',
 	'wikilog-comment-pending' => 'Denne kommentaren ventar på godkjenning.',
@@ -2475,6 +2491,7 @@ $messages['nn'] = array(
 	'wikilog-feed-description' => 'Les dei nyaste innlegga i denne feeden.',
 	'wikilog-title-comments' => 'Kommentarar - $1',
 	'wikilog-invalid-param' => 'Feilaktig parameter: $1.',
+	'wikilog-invalid-date' => 'Ikkje gyldig dato: $1.',
 	'wikilog-not-an-image' => 'Fila er ikkje eit bilete: $1.',
 	'wikilog-comment-too-long' => 'Kommentaren er for lang.',
 	'wikilog-comment-invalid-name' => 'Oppgjeve namn er ikkje gyldig.',
@@ -2489,6 +2506,10 @@ $messages['nn'] = array(
 	'wikilog-form-date' => 'Dato:',
 	'wikilog-form-status' => 'Status:',
 	'wikilog-form-preview' => 'Førehandsvising:',
+	'wikilog-form-comment' => 'Kommentar:',
+	'wikilog-show-all' => 'Alle innlegg',
+	'wikilog-show-published' => 'Publisert',
+	'wikilog-show-drafts' => 'Utkast',
 	'wikilog-history-lc' => 'historikk',
 );
 
@@ -2908,6 +2929,28 @@ $messages['pt-br'] = array(
 	'wikilog-form-tag' => 'Rótulo:',
 	'wikilog-show-all' => 'Todas as postagens',
 	'wikilog-preview' => 'Previsão',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikilog-authors' => 'Auture',
+	'wikilog-title' => 'Titele',
+	'wikilog-actions' => 'Aziune',
+	'wikilog-comments' => 'Commende',
+	'wikilog-replies' => 'Resposte',
+	'wikilog-view-archives' => 'Archivije',
+	'wikilog-view-summary' => 'Riepileghe',
+	'wikilog-no-comments' => 'nisciune commende',
+	'wikilog-form-category' => 'Categorije:',
+	'wikilog-form-name' => 'Nome:',
+	'wikilog-form-author' => 'Autore:',
+	'wikilog-form-tag' => 'Tag:',
+	'wikilog-form-date' => 'Date:',
+	'wikilog-form-status' => 'State:',
+	'wikilog-form-preview' => 'Andeprime:',
+	'wikilog-form-comment' => 'Commende:',
 );
 
 /** Russian (Русский)

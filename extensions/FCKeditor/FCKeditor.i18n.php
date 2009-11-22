@@ -932,12 +932,14 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'fckeditor-desc' => 'Permitir edição através do editor WYSIWYG, FCKeditor',
 	'textrichditor' => 'Editor Rico',
+	'prefs-fckeditor' => 'Editor Rico',
 	'tog-riched_disable' => 'Desactivar editor rico',
 	'tog-riched_disable_ns_main' => 'Desactivar editor rico no espaço nominal principal',
 	'tog-riched_disable_ns_talk' => 'Desactivar editor rico no espaço nominal "{{ns:talk}}"',
@@ -955,6 +957,11 @@ $messages['pt'] = array(
 	'tog-riched_disable_ns_help_talk' => 'Desactivar editor rico no espaço nominal "{{ns:help_talk}}"',
 	'tog-riched_disable_ns_category' => 'Desactivar editor rico no espaço nominal "{{ns:category}}"',
 	'tog-riched_disable_ns_category_talk' => 'Desactivar editor rico no espaço nominal "{{ns:category_talk}}"',
+	'rich_editor_new_window' => 'Abrir editor rico numa nova janela',
+	'tog-riched_start_disabled' => 'Começar com o editor rico desactivado',
+	'tog-riched_use_popup' => 'Abrir editor rico numa janela flutuante',
+	'tog-riched_use_toggle' => 'Use selector para alternar entre texto wiki e editor rico na área de texto',
+	'tog-riched_toggle_remember_state' => 'Memorizar último estado do selector',
 );
 
 /** Russian (Русский)
