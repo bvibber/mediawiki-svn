@@ -55,11 +55,9 @@ fn: {
 		
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context, config );
-		context.$textarea
-			// FIXME: magic iframe integration
-			.delayedBind( 250, 'mouseup scrollToPosition focus keyup encapsulateSelection change',
-				function( event ) {
-					var context = $(this).data( 'wikiEditor-context' );
+		context.$content.parent()
+			.delayedBind( 250, 'mouseup scrollToTop keyup change',
+				function() {
 					$(this).eachAsync( {
 						bulk: 0,
 						loop: function() {
@@ -69,12 +67,12 @@ fn: {
 					} );
 				}
 			)
-			.blur( function() {
-				var context = $(this).data( 'wikiEditor-context' );
-				context.$textarea.delayedBindCancel( 250,
-					'mouseup scrollToPosition focus keyup encapsulateSelection change' );
+			.blur( function( event ) {
+				var context = event.data.context;
+				context.$textarea.delayedBindCancel( 250, 'mouseup scrollToTop keyup change' );
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
+		
 	},
 	
 	unhighlight: function( context ) {
@@ -211,7 +209,6 @@ fn: {
 					.data( 'wrapper', structure[i].wrapper )
 					.mousedown( function( event ) {
 						context.fn.scrollToTop( $(this).data( 'wrapper' ) );
-						// TODO: Move cursor
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
 						event.preventDefault();
@@ -228,6 +225,7 @@ fn: {
 			return list;
 		}
 		function buildCollapseControls() {
+			// FIXME: Coding style
 			var $collapseControl = $( '<div />' ), $expandControl = $( '<div />' );
 			$collapseControl
 				.addClass( 'tab' )
@@ -253,6 +251,7 @@ fn: {
 			context.$ui.find( '.wikiEditor-ui-left .wikiEditor-ui-top' ).append( $expandControl );
 		}
 		function buildResizeControls() {
+			// FIXME: Coding style
 			context.$ui.find( '.ui-resizable-e' )
 				.removeClass( 'ui-resizable-e' )
 				.addClass( 'ui-resizable-w' )
@@ -288,27 +287,35 @@ fn: {
 		
 		// Build outline from wikitext
 		var outline = [];
+		
 		// Traverse all text nodes in context.$content
 		var h = 0;
-		context.$content.contents().each( function() {
-			if ( this.nodeName != '#text' )
+		context.$content.contents().add( context.$content.find( '.wikiEditor-toc-header' ) ).each( function() {
+			if ( this.nodeName != '#text' && !$(this).is( '.wikiEditor-toc-header' ) )
 				return;
-			var text = this.textContent;
+			var text = this.nodeValue;
+			if ( $(this).is( '.wikiEditor-toc-header' ) )
+				text = $(this).html();
+			
 			var match = text.match( /^(={1,6})(.*?)\1\s*$/ );
-			if ( !match )
+			if ( !match ) {
+				if ( $(this).is( '.wikiEditor-toc-header' ) )
+					// Header has become invalid
+					// Remove the class but keep the <div> intact
+					// to prevent issues with Firefox
+					$(this).removeClass( 'wikiEditor-toc-header' );
 				return;
+			}
 			// Wrap the header in a <div>, unless it's already wrapped
 			var div;
-			if ( $(this).parent().is( 'div' ) && $(this).parent().children().size() == 1 )
-				div = $(this)
-					.parent()
-					.addClass( 'wikiEditor-toc-header' );
+			if ( $(this).is( '.wikiEditor-toc-header' ) )
+				div = $(this);
 			else {
 				div = $j( '<div />' )
 					.text( text )
 					.css( 'display', 'inline' )
 					.addClass( 'wikiEditor-toc-header' );
-				this.parentNode.replaceChild( div.get( 0 ), this );
+				$(this).replaceWith( div );
 			}
 			outline[h] = { 'text': match[2], 'wrapper': div, 'level': match[1].length, 'index': h + 1 };
 			h++;
@@ -336,18 +343,16 @@ fn: {
 		// section 0, if needed
 		var structure = buildStructure( outline );
 		if ( $( 'input[name=wpSection]' ).val() == '' ) {
-			// Add a <div> at the beginning
-			// FIXME: The user can remove this div, use the <body> tag for anchor
-			var div = $j( '<div />' )
-				.addClass( 'wikiEditor-toc-start' )
-				.hide()
-				.prependTo( context.$content );
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0,
-				'wrapper': div } );
+				'wrapper': context.$content } );
 		}
 		context.modules.$toc.html( buildList( structure ) );
-		if(wgNavigableTOCResizable) {
-			context.$ui.find( '.wikiEditor-ui-right' )
+		
+		// FIXME: Coding style
+		if ( wgNavigableTOCResizable && !context.$ui.data( 'resizableDone' ) ) {
+			context.$ui
+			.data( 'resizableDone', true )
+			.find( '.wikiEditor-ui-right' )
 			.data( 'wikiEditor-ui-left', context.$ui.find( '.wikiEditor-ui-left' ))
 			.resizable( {handles: 'w,e', dontScrewWithLeft: true, minWidth: 50,
 				start: function( e, ui ) {

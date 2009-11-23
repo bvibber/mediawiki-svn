@@ -261,6 +261,7 @@ if ( typeof context == 'undefined' ) {
 	context.evt = {
 		'change': function( event ) {
 			// BTW: context is in event.data.context
+			
 			switch ( event.type ) {
 				case 'keypress':
 					if ( /* something interesting was deleted */ false ) {
@@ -269,7 +270,7 @@ if ( typeof context == 'undefined' ) {
 						//console.log( 'MINOR CHANGE' );
 					}
 					break;
-				case 'mousedown':
+				case 'mousedown': // FIXME: mouseup?
 					if ( /* text was dragged and dropped */ false ) {
 						//console.log( 'MAJOR CHANGE' );
 					} else {
@@ -287,21 +288,21 @@ if ( typeof context == 'undefined' ) {
 	 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 	 */
 	context.fn = {
-		/*
-		 * When finishing these functions, take a look at jquery.textSelection.js because this is designed to be API
-		 * compatible with those functions. The key difference is that these perform actions on a designMode iframe
+		/**
+		 * Set up the magic iframe
 		 */
 		'setup': function() {
 			// Setup the iframe with a basic document
 			context.$iframe[0].contentWindow.document.open();
 			context.$iframe[0].contentWindow.document.write(
-				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keypress mouseup cut paste", { "context": context }, context.evt.change );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace"></body></html>'
+				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keydown keypress keyup mousedown mouseup cut paste", { "context": context }, context.evt.change );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace"></body></html>'
 			);
 			context.$iframe[0].contentWindow.document.close();
 			// Turn the document's design mode on
 			context.$iframe[0].contentWindow.document.designMode = 'on';
+			
 			// Get a reference to the content area of the iframe 
-			context.$content = context.$iframe.contents().find( 'body' );
+			context.$content = $( context.$iframe[0].contentWindow.document.body );
 			if ( $( 'body' ).is( '.rtl' ) )
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
 			
@@ -314,6 +315,12 @@ if ( typeof context == 'undefined' ) {
 			context.$content.text( context.$textarea.val() );
 			context.$textarea.hide();
 			context.$iframe.show();
+		},
+		/**
+		 * Checks whether the magic iframe is properly set up
+		 */
+		'isSetup': function() {
+			return context.$content != undefined && context.$content[0].innerHTML != undefined;
 		},
 		/**
 		 * Gets the complete contents of the iframe
@@ -394,11 +401,8 @@ if ( typeof context == 'undefined' ) {
 			if ( lastNode )
 				context.fn.scrollToTop( lastNode );
 			
-			// ...
-			// Scroll the textarea to the inserted text
-			//?.scrollToCaretPosition();
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
-			//context.$textarea.trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+			context.$content.trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
 			return context.$textarea;
 		},
 		/**
@@ -436,6 +440,7 @@ if ( typeof context == 'undefined' ) {
 			var y = $element.offset().top - context.$content.offset().top;
 			if ( force || y < body.scrollTop() || y > body.scrollTop() + body.height() )
 				body.scrollTop( y );
+			$element.trigger( 'scrollToTop' );
 		}
 	};
 }
@@ -444,13 +449,13 @@ if ( typeof context == 'undefined' ) {
 // API call
 if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 	// If the iframe construction isn't ready yet, defer the call
-	if ( context.$content )
+	if ( context.fn.isSetup() )
 		context.api.addModule( context, arguments[0] );
 	else {
 		var args = arguments;
 		setTimeout( function() {
 			context.api.addModule( context, args[0] );
-		}, 2 );
+ 		}, 2 );
 	}
 } else {
 	// Since javascript gives arguments as an object, we need to convert them
@@ -461,7 +466,7 @@ if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 		var call = arguments.shift();
 		if ( call in context.api ) {
 			// If the iframe construction isn't ready yet, defer the call
-			if ( context.$content )
+			if ( context.fn.isSetup() )
 				context.api[call]( context, arguments[0] == undefined ? {} : arguments[0] );
 			else {
 				var args = arguments;

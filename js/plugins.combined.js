@@ -1559,6 +1559,7 @@ if ( typeof context == 'undefined' ) {
 	context.evt = {
 		'change': function( event ) {
 			// BTW: context is in event.data.context
+			
 			switch ( event.type ) {
 				case 'keypress':
 					if ( /* something interesting was deleted */ false ) {
@@ -1567,7 +1568,7 @@ if ( typeof context == 'undefined' ) {
 						//console.log( 'MINOR CHANGE' );
 					}
 					break;
-				case 'mousedown':
+				case 'mousedown': // FIXME: mouseup?
 					if ( /* text was dragged and dropped */ false ) {
 						//console.log( 'MAJOR CHANGE' );
 					} else {
@@ -1585,21 +1586,21 @@ if ( typeof context == 'undefined' ) {
 	 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 	 */
 	context.fn = {
-		/*
-		 * When finishing these functions, take a look at jquery.textSelection.js because this is designed to be API
-		 * compatible with those functions. The key difference is that these perform actions on a designMode iframe
+		/**
+		 * Set up the magic iframe
 		 */
 		'setup': function() {
 			// Setup the iframe with a basic document
 			context.$iframe[0].contentWindow.document.open();
 			context.$iframe[0].contentWindow.document.write(
-				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keypress mouseup cut paste", { "context": context }, context.evt.change );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace"></body></html>'
+				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keydown keypress keyup mousedown mouseup cut paste", { "context": context }, context.evt.change );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace"></body></html>'
 			);
 			context.$iframe[0].contentWindow.document.close();
 			// Turn the document's design mode on
 			context.$iframe[0].contentWindow.document.designMode = 'on';
+			
 			// Get a reference to the content area of the iframe 
-			context.$content = context.$iframe.contents().find( 'body' );
+			context.$content = $( context.$iframe[0].contentWindow.document.body );
 			if ( $( 'body' ).is( '.rtl' ) )
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
 			
@@ -1612,6 +1613,12 @@ if ( typeof context == 'undefined' ) {
 			context.$content.text( context.$textarea.val() );
 			context.$textarea.hide();
 			context.$iframe.show();
+		},
+		/**
+		 * Checks whether the magic iframe is properly set up
+		 */
+		'isSetup': function() {
+			return context.$content != undefined && context.$content[0].innerHTML != undefined;
 		},
 		/**
 		 * Gets the complete contents of the iframe
@@ -1692,11 +1699,8 @@ if ( typeof context == 'undefined' ) {
 			if ( lastNode )
 				context.fn.scrollToTop( lastNode );
 			
-			// ...
-			// Scroll the textarea to the inserted text
-			//?.scrollToCaretPosition();
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
-			//context.$textarea.trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+			context.$content.trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
 			return context.$textarea;
 		},
 		/**
@@ -1734,6 +1738,7 @@ if ( typeof context == 'undefined' ) {
 			var y = $element.offset().top - context.$content.offset().top;
 			if ( force || y < body.scrollTop() || y > body.scrollTop() + body.height() )
 				body.scrollTop( y );
+			$element.trigger( 'scrollToTop' );
 		}
 	};
 }
@@ -1742,13 +1747,13 @@ if ( typeof context == 'undefined' ) {
 // API call
 if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 	// If the iframe construction isn't ready yet, defer the call
-	if ( context.$content )
+	if ( context.fn.isSetup() )
 		context.api.addModule( context, arguments[0] );
 	else {
 		var args = arguments;
 		setTimeout( function() {
 			context.api.addModule( context, args[0] );
-		}, 2 );
+ 		}, 2 );
 	}
 } else {
 	// Since javascript gives arguments as an object, we need to convert them
@@ -1759,7 +1764,7 @@ if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 		var call = arguments.shift();
 		if ( call in context.api ) {
 			// If the iframe construction isn't ready yet, defer the call
-			if ( context.$content )
+			if ( context.fn.isSetup() )
 				context.api[call]( context, arguments[0] == undefined ? {} : arguments[0] );
 			else {
 				var args = arguments;
@@ -2599,11 +2604,9 @@ fn: {
 		
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context, config );
-		context.$textarea
-			// FIXME: magic iframe integration
-			.delayedBind( 250, 'mouseup scrollToPosition focus keyup encapsulateSelection change',
-				function( event ) {
-					var context = $(this).data( 'wikiEditor-context' );
+		context.$content.parent()
+			.delayedBind( 250, 'mouseup scrollToTop keyup change',
+				function() {
 					$(this).eachAsync( {
 						bulk: 0,
 						loop: function() {
@@ -2613,12 +2616,12 @@ fn: {
 					} );
 				}
 			)
-			.blur( function() {
-				var context = $(this).data( 'wikiEditor-context' );
-				context.$textarea.delayedBindCancel( 250,
-					'mouseup scrollToPosition focus keyup encapsulateSelection change' );
+			.blur( function( event ) {
+				var context = event.data.context;
+				context.$textarea.delayedBindCancel( 250, 'mouseup scrollToTop keyup change' );
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
+		
 	},
 	
 	unhighlight: function( context ) {
@@ -2755,7 +2758,6 @@ fn: {
 					.data( 'wrapper', structure[i].wrapper )
 					.mousedown( function( event ) {
 						context.fn.scrollToTop( $(this).data( 'wrapper' ) );
-						// TODO: Move cursor
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
 						event.preventDefault();
@@ -2772,6 +2774,7 @@ fn: {
 			return list;
 		}
 		function buildCollapseControls() {
+			// FIXME: Coding style
 			var $collapseControl = $( '<div />' ), $expandControl = $( '<div />' );
 			$collapseControl
 				.addClass( 'tab' )
@@ -2797,6 +2800,7 @@ fn: {
 			context.$ui.find( '.wikiEditor-ui-left .wikiEditor-ui-top' ).append( $expandControl );
 		}
 		function buildResizeControls() {
+			// FIXME: Coding style
 			context.$ui.find( '.ui-resizable-e' )
 				.removeClass( 'ui-resizable-e' )
 				.addClass( 'ui-resizable-w' )
@@ -2832,27 +2836,35 @@ fn: {
 		
 		// Build outline from wikitext
 		var outline = [];
+		
 		// Traverse all text nodes in context.$content
 		var h = 0;
-		context.$content.contents().each( function() {
-			if ( this.nodeName != '#text' )
+		context.$content.contents().add( context.$content.find( '.wikiEditor-toc-header' ) ).each( function() {
+			if ( this.nodeName != '#text' && !$(this).is( '.wikiEditor-toc-header' ) )
 				return;
-			var text = this.textContent;
+			var text = this.nodeValue;
+			if ( $(this).is( '.wikiEditor-toc-header' ) )
+				text = $(this).html();
+			
 			var match = text.match( /^(={1,6})(.*?)\1\s*$/ );
-			if ( !match )
+			if ( !match ) {
+				if ( $(this).is( '.wikiEditor-toc-header' ) )
+					// Header has become invalid
+					// Remove the class but keep the <div> intact
+					// to prevent issues with Firefox
+					$(this).removeClass( 'wikiEditor-toc-header' );
 				return;
+			}
 			// Wrap the header in a <div>, unless it's already wrapped
 			var div;
-			if ( $(this).parent().is( 'div' ) && $(this).parent().children().size() == 1 )
-				div = $(this)
-					.parent()
-					.addClass( 'wikiEditor-toc-header' );
+			if ( $(this).is( '.wikiEditor-toc-header' ) )
+				div = $(this);
 			else {
 				div = $j( '<div />' )
 					.text( text )
 					.css( 'display', 'inline' )
 					.addClass( 'wikiEditor-toc-header' );
-				this.parentNode.replaceChild( div.get( 0 ), this );
+				$(this).replaceWith( div );
 			}
 			outline[h] = { 'text': match[2], 'wrapper': div, 'level': match[1].length, 'index': h + 1 };
 			h++;
@@ -2880,18 +2892,16 @@ fn: {
 		// section 0, if needed
 		var structure = buildStructure( outline );
 		if ( $( 'input[name=wpSection]' ).val() == '' ) {
-			// Add a <div> at the beginning
-			// FIXME: The user can remove this div, use the <body> tag for anchor
-			var div = $j( '<div />' )
-				.addClass( 'wikiEditor-toc-start' )
-				.hide()
-				.prependTo( context.$content );
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0,
-				'wrapper': div } );
+				'wrapper': context.$content } );
 		}
 		context.modules.$toc.html( buildList( structure ) );
-		if(wgNavigableTOCResizable) {
-			context.$ui.find( '.wikiEditor-ui-right' )
+		
+		// FIXME: Coding style
+		if ( wgNavigableTOCResizable && !context.$ui.data( 'resizableDone' ) ) {
+			context.$ui
+			.data( 'resizableDone', true )
+			.find( '.wikiEditor-ui-right' )
 			.data( 'wikiEditor-ui-left', context.$ui.find( '.wikiEditor-ui-left' ))
 			.resizable( {handles: 'w,e', dontScrewWithLeft: true, minWidth: 50,
 				start: function( e, ui ) {
