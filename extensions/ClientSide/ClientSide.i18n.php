@@ -209,6 +209,13 @@ $messages['mk'] = array(
 	'clientside-desc' => 'Овозможува функции за создавање код во форматите од клинетска страна како  HTML, CSS и JavaScript',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'clientside-desc' => 'എച്ച്.റ്റി.എം.എൽ., സി.എസ്.എസ്., ജാവാസ്ക്രിപ്റ്റ് തുടങ്ങിയ ക്ലയന്റ്-സൈഡ് വിദ്യകൾ സ്വയം സൃഷ്ടിക്കുന്ന സൗകര്യങ്ങൾ നൽകുന്നു',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

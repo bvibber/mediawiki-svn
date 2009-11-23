@@ -165,6 +165,13 @@ $messages['oc'] = array(
 	'geolite-desc' => 'Redireccion GeoIp leugièra',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'geolite-desc' => 'Proste przekierowanie GeoIP',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

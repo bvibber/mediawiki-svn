@@ -1879,6 +1879,7 @@ Proszę sprawdzić swoją blokadę wyskakujących okienek.',
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
+ * @author Dragonòt
  */
 $wgCustomToolbarMessages['pms'] = array(
 	'ct-desc' => "A gionta na bara d'utiss estendìbil",
@@ -1900,6 +1901,29 @@ $wgCustomToolbarMessages['pms'] = array(
 	'ct_image_tip' => 'Anserì na plancia',
 	'ct_image_caption' => 'Gionté na plancia',
 	'ct_attachment_tip' => "Anserì n'alegà",
+	'ct_attachment_caption' => "Gionta n'alegà",
+	'ct_math_sample' => 'Anseriss la fórmola LaTex ambelessì',
+	'ct_math_tip_ins' => 'Anseriss la fórmola matemàtica (LaTeX)',
+	'ct_math_tip_wrap' => 'Fà vnì sto test-sì na fórmola matemàtica (LaTeX)',
+	'ct_math_caption' => 'Fórmola',
+	'ct_nowiki_sample' => 'Anseriss ël test pa formatà ambelessì',
+	'ct_nowiki_tip_ins' => 'Ignora la formatassion wiki',
+	'ct_nowiki_tip_wrap' => 'Ignoré la formatassion wiki për ës test-sì',
+	'ct_nowiki_caption' => "Pa 'd wiki",
+	'ct_horizontal_tip' => 'Anserì na linia orisontal (da dovré sparagnin)',
+	'ct_horizontal_caption' => 'Linia orisontal',
+	'ct_upload' => 'Carié $1',
+	'ct_select' => 'Selessioné $1 da carié:',
+	'ct_caption' => 'Gionté antestassion (opsional):',
+	'ct_link' => "Gionté nòm ëd l'anliura (opsional):",
+	'ct_submit' => 'Parte!',
+	'ct_close' => 'Saré la fnestra',
+	'ct_success' => "Cariament ëd l'archivi riussì!",
+	'ct_popupblocked' => "La duvertura dla fnestra ëd cariament a l'é stàita ampedìa. Për piasì, ch'a verìfica ij sò blocador ëd duvertura dë fnestre.",
+	'ct_user_user' => 'Utent',
+	'ct_user_tip' => "Anserì n'anliura vers na pàgina d'utent",
+	'ct_user_caption' => "Anliura dl'utent",
+	'ct_user_sample' => 'Stranòm',
 );
 
 /** Western Punjabi (پنجابی)

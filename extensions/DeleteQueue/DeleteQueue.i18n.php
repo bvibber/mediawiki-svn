@@ -810,18 +810,19 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'deletequeue-action-queued' => 'Dilamadur',
 	'deletequeue-action' => 'Kinnig un dilamadur',
-	'deletequeue-action-title' => 'Kinnig e vefe diverket "$1"',
-	'deletequeue-generic-reasons' => "* Abegoù an alisañ
+	'deletequeue-action-title' => 'Kinnig diverkañ "$1"',
+	'deletequeue-generic-reasons' => "* Abegoù boutinañ
 ** Vandalerezh
 ** Strob
 ** Trezalc'h
 ** E maez ar raktres",
-	'deletequeue-prod-title' => 'Kinnig e vefe diverket "$1"',
+	'deletequeue-prod-title' => 'Kinnig diverkañ "$1"',
 	'deletequeue-delnom-reason' => "Abeg ar c'hinnig :",
 	'deletequeue-delnom-otherreason' => 'Abeg all',
 	'deletequeue-delnom-submit' => 'Kas an anvadur',
@@ -831,7 +832,7 @@ $messages['br'] = array(
 	'deletequeue-review-delete' => 'Dilemel ar bajenn.',
 	'deletequeue-review-reason' => 'Addisplegoù :',
 	'deletequeue-review-newreason' => 'Abeg nevez :',
-	'deletequeue-vote-reason' => 'Evezhiadenn :',
+	'deletequeue-vote-reason' => 'Evezhiadennoù :',
 	'deletequeue-vote-submit' => 'Kas',
 	'deletequeue-list-search-legend' => 'Klask pajennoù',
 	'deletequeue-list-status' => 'Statud :',
@@ -1132,7 +1133,7 @@ Du kannst deine eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{F
 	'deletequeue-case-title' => 'Weiterführende Details',
 	'deletequeue-case-details' => 'Basisdetails',
 	'deletequeue-case-page' => 'Seite:',
-	'deletequeue-case-reason' => 'Begründung:',
+	'deletequeue-case-reason' => 'Grund:',
 	'deletequeue-case-expiry' => 'Ablaufdatum:',
 	'deletequeue-case-needs-review' => 'Dieser Fall braucht eine [[$1|Überprüfung]].',
 );

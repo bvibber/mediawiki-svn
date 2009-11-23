@@ -1094,7 +1094,7 @@ $messages['te'] = array(
 	'adminlinks_createuser' => 'వాడుకరిని సృష్టించు',
 	'adminlinks_browsesearch' => 'విహరించడం, మరియు వెతకడం',
 	'adminlinks_importexport' => 'ఎగుమతులు, దిగుమతులు',
-	'right-adminlinks' => 'నిర్వహణా లింకులకు లింకు చూడండి',
+	'right-adminlinks' => '[[Special:AdminLinks|నిర్వహణా లింకుల]]కు లింకుని చూడగలగడం',
 );
 
 /** Turkish (Türkçe)

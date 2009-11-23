@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'svgzoom-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'svgzoom-desc' => 'Дадае магчымасьць панарамаваньня і маштабаваньня ў MediaWiki пры праглядзе файлаў у фармаце SVG',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -63,6 +70,13 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'svgzoom-desc' => 'Adde a MediaWiki le capabilitates de movimento panoramic e de zoom durante le visualisation de files SVG',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'svgzoom-desc' => 'Menambahkan fitur untuk memutar dan memperbesar berkas SVG pada MediaWiki',
 );
 
 /** Japanese (日本語)

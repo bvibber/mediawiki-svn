@@ -305,13 +305,13 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'crosswikiblock' => 'Stankañ un implijer war ur wiki all',
+	'crosswikiblock' => 'Stankañ an implijer war ur wiki all',
 	'crosswikiblock-reason' => 'Abeg :',
 	'crosswikiblock-submit' => 'Stankañ an implijer-mañ',
 	'crosswikiunblock-reason' => 'Abeg :',
 	'crosswikiunblock-submit' => 'Distankañ an implijer-mañ',
 	'crosswikiblock-nouser' => 'N\'eo ket bet kavet an implijer "$3".',
-	'crosswikiblock-alreadyblocked' => 'An implijer $3 a zo dija stanket.',
+	'crosswikiblock-alreadyblocked' => 'Stanket eo an implijer $3 dija.',
 	'crosswikiblock-noblock' => "N'eo ket stanket an implijer-mañ.",
 );
 
@@ -451,7 +451,7 @@ $messages['de'] = array(
 Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob deine Aktion deren Richtlinien entspricht.',
 	'crosswikiblock-target' => 'IP-Adresse oder Benutzername und Zielwiki:',
 	'crosswikiblock-expiry' => 'Sperrdauer:',
-	'crosswikiblock-reason' => 'Begründung:',
+	'crosswikiblock-reason' => 'Grund:',
 	'crosswikiblock-submit' => 'IP-Adresse/Benutzer sperren',
 	'crosswikiblock-anononly' => 'Sperre nur anonyme Benutzer (angemeldete Benutzer mit dieser IP-Adresse werden nicht gesperrt). In vielen Fällen empfehlenswert.',
 	'crosswikiblock-nocreate' => 'Erstellung von Benutzerkonten verhindern',
@@ -461,7 +461,7 @@ Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob 
 	'crosswikiunblock-header' => 'Diese Spezialseite erlaubt die Aufhebung einer Benutzersperre in einem anderen Wiki.
 Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob deine Aktion deren Richtlinien entspricht.',
 	'crosswikiunblock-user' => 'IP-Adresse, Benutzername oder Sperr-ID und Zielwiki:',
-	'crosswikiunblock-reason' => 'Begründung:',
+	'crosswikiunblock-reason' => 'Grund:',
 	'crosswikiunblock-submit' => 'Sperre für IP-Adresse/Benutzer aufheben',
 	'crosswikiunblock-success' => "Benutzer '''„$1“''' erfolgreich entsperrt.
 
@@ -818,7 +818,7 @@ $messages['gl'] = array(
 Por favor, comprobe se ten permiso para actuar neste wiki que se as súas accións coinciden coas políticas.',
 	'crosswikiblock-target' => 'Enderezo IP ou nome de usuario e wiki de destino:',
 	'crosswikiblock-expiry' => 'Remate:',
-	'crosswikiblock-reason' => 'Razón:',
+	'crosswikiblock-reason' => 'Motivo:',
 	'crosswikiblock-submit' => 'Bloquear este usuario',
 	'crosswikiblock-anononly' => 'Bloquear só usuarios anónimos',
 	'crosswikiblock-nocreate' => 'Previr a creación de contas',
@@ -828,7 +828,7 @@ Por favor, comprobe se ten permiso para actuar neste wiki que se as súas acció
 	'crosswikiunblock-header' => 'Esta páxina permitiralle desbloquear un usuario noutro wiki.
 Por favor, comprobe se lle está permitido actuar neste wiki e se os seus actos coinciden coas políticas.',
 	'crosswikiunblock-user' => 'Nome de usuario, enderezo IP ou ID de bloqueo e wiki de destino:',
-	'crosswikiunblock-reason' => 'Razón:',
+	'crosswikiunblock-reason' => 'Motivo:',
 	'crosswikiunblock-submit' => 'Desbloquear este usuario',
 	'crosswikiunblock-success' => "O usuario '''$1''' foi desbloqueado con éxito.
 

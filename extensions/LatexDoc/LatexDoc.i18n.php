@@ -109,6 +109,7 @@ $3',
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -116,7 +117,7 @@ $messages['br'] = array(
 
 Urzhiad : $1
 
-Dont er-maez : $2
+Ezvont : $2
 
 $3',
 	'latexdoc_get_dvi' => 'Kaout DVI',
@@ -695,10 +696,22 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Yarl
  */
 $messages['pl'] = array(
+	'latexdoc_no_text' => 'Strona nie zawiera tekstu, nie można utworzyć DVI',
 	'latexdoc_cant_create_dir' => 'Nie można utworzyć katalogu tymczasowego $1',
 	'latexdoc_cant_write' => 'Nie można pisać do pliku $1',
+	'latexdoc_error' => 'Błąd LaTeX
+
+Polecenie: $1
+
+Dane wyjściowe: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Pobierz DVI',
+	'latexdoc_get_pdf' => 'Pobierz PDF',
+	'latexdoc-desc' => 'Wspólne edytowanie dokumentów LaTeX',
 );
 
 /** Piedmontese (Piemontèis)

@@ -265,9 +265,12 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'contrib-tracking-error' => 'Viga',
+	'contrib-tracking-submitting' => 'Maksevahendaja juurde suunamine...',
+	'contrib-tracking-continue' => 'Kui sind ei suunata automaatselt, klõpsa nuppu, et annetus PayPalis lõpule viia.',
 	'contrib-tracking-button' => 'Jätka',
 );
 

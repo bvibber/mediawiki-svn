@@ -94,11 +94,12 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
-	'plotters' => 'Tresellerien',
-	'plotters-title' => 'Tresellerien',
+	'plotters' => 'Treserioù grafek',
+	'plotters-title' => 'Treserioù grafek',
 	'plotters-no-data' => "N'eus bet pourchaset roadenn ebet.",
 );
 

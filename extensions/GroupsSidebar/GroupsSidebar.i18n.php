@@ -4,3 +4,129 @@ $messages['en'] = array(
     'groupssidebar-desc' => 'This extension enables site admins to include sidebar elements for specific user groups'
 );
 
+/** Message documentation (Message documentation)
+ * @author Fryed-peach
+ */
+$messages['qqq'] = array(
+	'groupssidebar-desc' => '{{desc}}',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'groupssidebar-desc' => 'Гэтае пашырэньне дазваляе адміністратарам сайта ўключаць элемэнты бакавой панэлі для пазначаных групаў удзельнікаў',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'groupssidebar-desc' => 'Ovo proširenje omoguće administratorima stranice da uključe elemente sa alatne trake za određene grupe korisnika',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'groupssidebar-desc' => 'Toś to rozšyrjenje zmóžnja sedłowym administratoram elementy bocnice za wěste wužywarske kupki zapśěgnuś',
+);
+
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'groupssidebar-desc' => "Cette extension permet aux administrateurs du site d'inclure des éléments dans la barre latérale en fonction des groupes de l'utilisateurs",
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'groupssidebar-desc' => 'Esta extensión permite que os administradores do sitio poidan incluír elementos na barra lateral para grupos específicos de usuarios',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'groupssidebar-desc' => 'Die erwyterig macht s megli benutzergruppespezifischi Elemänt in d syteleischte yyzbinde',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'groupssidebar-desc' => 'Tute rozšěrjenje zmóžnja sydłowym administratoram elementy bóčnicy za wěste wužiwarske skupiny zapřijeć',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'groupssidebar-desc' => 'Ez a kiterjesztés lehetővé teszi az adminisztrátorok számára, hogy csoportspecifikus elemeket helyezzenek el az oldalsávon.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'groupssidebar-desc' => 'Iste extension permitte al administratores del sito includer elementos in le barra lateral pro gruppos specific de usatores',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'groupssidebar-desc' => 'Memungkinkan admin situs untuk menyediakan bilah sisi spesifik per kelompok pengguna',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'groupssidebar-desc' => 'この拡張機能は、サイト管理者が特定の利用者グループ向けにサイドバー項目を加えることができるようにする',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'groupssidebar-desc' => 'Heh dat Zohsazprojramm määd et müjjelesch, en dä Lengks aan de Sigg vun de Sigge bestemmpte Saache för beschtemmpte Jruppe vun Metmaacher ongerzebränge.',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'groupssidebar-desc' => 'Ова проширување им овозможува на администраторите на веб-страниците да вклучат елементи во страничните ленти за поедини кориснички групи',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'groupssidebar-desc' => 'Maakt het mogelijk om gebruikersgroepspecifieke elementen in de menubalk weer te geven',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ */
+$messages['pms'] = array(
+	'groupssidebar-desc' => "Sta estension-sì a abìlita j'aministrator dël sit a anserì element ant la banda lateral për specìfiche partìe d'utent",
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'groupssidebar-desc' => 'Esta extensão permite que os administradores disponibilizem certos elementos da barra lateral a grupos específicos de utilizadores',
+);
+
+/** Russian (Русский)
+ * @author Lockal
+ */
+$messages['ru'] = array(
+	'groupssidebar-desc' => 'Это расширение позволяет администраторам сайта включать элементы боковой панели для определённых групп участников',
+);
+

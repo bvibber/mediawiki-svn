@@ -365,6 +365,14 @@ $messages['tr'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Project Honey Pot'a göre, IP adresinin tetiklediği son olayların sayısı",
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'honeypot-desc' => "Fornisse l'integrassion col [http://projecthoneypot.org/ Projeto Honey Pot] par i siti MediaWiki",
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Nùmaro de eventi recenti che l'indirisso IP el gà ativà, in base al projeto Honey Pot",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -191,6 +191,14 @@ $messages['oc'] = array(
 	'vector-desc' => "Melhoraments dels elements de l'interfàcia d'utilizaire de l'abilhatge Vector.",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'vector' => 'Ulepszenia interfejsu użytkownika dla skórki Wektor',
+	'vector-desc' => 'Poprawia elementy interfejsu użytkownika skórki Wektor.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

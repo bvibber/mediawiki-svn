@@ -233,7 +233,7 @@ $messages['arc'] = array(
 	'right-history' => 'ܚܙܝ ܦܐܬܐ ܕܬܫܥܝܬ̈ܐ',
 	'right-search' => 'ܒܨܝܐ ܒܘܝܩܝ',
 	'right-contributions' => 'ܚܙܝ ܦܐܬܐ ܕܫܘܬܦܘܝܬ̈ܐ',
-	'right-recentchanges' => 'ܚܙܝ ܫܘܚܠܦ̈ܐ ܚܕܬ̈ܐ',
+	'right-recentchanges' => 'ܚܙܝ ܫܘܚܠܦ̈ܐ ܚܕ̈ܬܐ',
 	'right-edittalk' => 'ܫܚܠܦ ܦܐܬܬ̈ܐ ܕܕܘܪܫܐ',
 );
 

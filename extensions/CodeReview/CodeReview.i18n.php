@@ -8002,6 +8002,7 @@ $messages['vec'] = array(
 	'code-author-link' => 'ligar?',
 	'code-author-unlink' => 'desligar?',
 	'code-author-unlinksuccess' => "El colegamento a l'autor $1 el xe stà cavà",
+	'code-browsing-path' => "Sfojando le revision in '''$1'''",
 	'code-field-id' => 'Revision',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentador',

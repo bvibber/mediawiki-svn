@@ -170,6 +170,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -177,7 +178,7 @@ $messages['br'] = array(
 	'errorhandler-msg-text' => '$1 : $2 e $3 (linenn $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> e <b>$3</b> (linenn <b>$4</b>)',
 	'errorhandler-trace' => 'roud :',
-	'errorhandler-trace-line' => '$1 (linenn $2): $3',
+	'errorhandler-trace-line' => '$1 (linenn $2) : $3',
 );
 
 /** Bosnian (Bosanski)

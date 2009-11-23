@@ -374,6 +374,14 @@ $messages['sv'] = array(
 	'wikieditor-toc-hide' => 'Göm innehåll',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'wikieditor-toc-show' => 'Fichua yaliyomo',
+	'wikieditor-toc-hide' => 'Ficha yaliyomo',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

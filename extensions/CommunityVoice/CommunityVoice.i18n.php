@@ -105,6 +105,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Изпращане...',
+	'communityvoice-ratings-scale-status-error' => 'Грешка при изпращането!',
 );
 
 /** Breton (Brezhoneg)

@@ -1484,6 +1484,7 @@ Skala ocen:
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -1491,10 +1492,31 @@ $messages['pms'] = array(
 	'ratinghistory-leg' => 'Dat ëd la stòria dij pontegi për [[:$1|$1]]',
 	'ratinghistory-tab' => 'pontegi',
 	'ratinghistory-link' => 'Pontegi dla pàgina',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Mersì për pijé un moment e revisioné sta pàgina-sì!</font>''",
+	'ratinghistory-period' => 'Perìod ëd temp:',
 	'ratinghistory-month' => 'ùltim meis',
 	'ratinghistory-3months' => 'ùltim 3 meis',
 	'ratinghistory-year' => 'ùltim ann',
-	'ratinghistory-3years' => 'ùltim 3 ann',
+	'ratinghistory-3years' => 'ùltim 3 agn',
+	'ratinghistory-ave' => 'Media: $1',
+	'ratinghistory-chart' => 'Pontegi dij letor ant ël temp',
+	'ratinghistory-purge' => 'Polida la cache',
+	'ratinghistory-table' => 'Vista general dij pontegi dij letor',
+	'ratinghistory-users' => "Utent che a l'han dàit pontegi",
+	'ratinghistory-graph' => '$2 ëd "$3" ($1 {{PLURAL:$1|revisin|revision}})',
+	'ratinghistory-svg' => 'Varda com SVG',
+	'ratinghistory-table-rating' => 'Pontegi',
+	'ratinghistory-table-votes' => 'Vot',
+	'ratinghistory-none' => 'A-i é pa basta dat ëd feedback dij letor për dij gràfich al moment.',
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Pòver; '''(2)''' - Bass; '''(3)''' - Mesan; '''(4)''' - Àut; '''(5)''' - Ecelent;",
+	'ratinghistory-legend' => "Ël '''nùmer ëd revision për di''' <font color=\"red\">''(ross)''</font>, '''pontegi medi për di''' <font color=\"blue\">''(bleu)''</font>,
+e '''pontegi medi an cors''' <font color=\"green\">''(verd)''</font> a son an gràfich sota, për data.
+Ël '''pontegi medi an cors''' a l'é semplicement la media ëd tùit ij pontegi giornalié ''an drinta'' sto perìod ëd temp për minca di.
+Ij pontegi a son com sota:
+
+'''(1)''' - Pòver; '''(2)''' - Bass; '''(3)''' - Mesan; '''(4)''' - Àut; '''(5)''' - Ecelent;",
+	'ratinghistory-graph-scale' => "'''Revision për di''' <font color=\"red\">''(ross)''</font> mostrà su na scala ''1:\$1''.",
+	'right-feedback' => 'Deuvra la forma ëd feedback për voté na pàgina',
 );
 
 /** Pashto (پښتو)

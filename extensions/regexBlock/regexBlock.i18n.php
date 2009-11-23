@@ -216,7 +216,7 @@ $messages['arc'] = array(
 	'regexblock-view-go' => 'ܙܠ',
 	'regexblock-view-reason' => 'ܥܠܬܐ: $1',
 	'regexblock-view-block-by' => 'ܚܪܝܡܐ ܒܝܕ:',
-	'regexblock-view-block-unblock' => 'ܫܩܘܠ ܚܪܡܐ',
+	'regexblock-view-block-unblock' => 'ܛܥܘܢ ܚܪܡܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -939,7 +939,7 @@ Se pensa que se trata dun erro, [[$1|contacte con nós]]',
 	'regexblock-reason-regex' => 'A este nome de usuario estalle prohibido editar debido a vandalismo ou outras actividades negativas por parte dun usuario cun nome semellante.
 Cree un nome de usuario diferente ou [[$1|contacte con nós]] para falar sobre o problema',
 	'regexblock-form-username' => 'Enderezo IP ou nome de usuario:',
-	'regexblock-form-reason' => 'Razón:',
+	'regexblock-form-reason' => 'Motivo:',
 	'regexblock-form-expiry' => 'Remate:',
 	'regexblock-form-match' => 'Procura exacta',
 	'regexblock-form-account-block' => 'Bloqueada a creación de novas contas',

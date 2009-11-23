@@ -116,6 +116,7 @@ To save a poll, submit it while not answering to any proposal questions.',
  * @author Fryed-peach
  * @author Hamilton Abreu
  * @author IAlex
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
@@ -123,7 +124,8 @@ $messages['qqq'] = array(
 	'qp_desc' => '{{desc}}',
 	'qp_result_error' => '{{Identical|Syntax error}}',
 	'qp_vote_button' => '{{Identical|Vote}}',
-	'qp_source_link' => '"Source" is the link text for a link to the page there the poll is defined.{{Identical|Source}}',
+	'qp_source_link' => '"Source" is the link text for a link to the page where the poll is defined.
+{{Identical|Source}}',
 	'qp_stats_link' => '{{Identical|Statistics}}',
 	'qp_users_link' => '{{Identical|User}}',
 	'qp_voice_link_inv' => "What '?' means?",
@@ -212,15 +214,15 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'qp_desc' => 'Aotren krouiñ sontadegoù',
-	'qp_result_NA' => 'Respont ebet',
+	'qp_result_NA' => 'Direspont',
 	'qp_result_error' => 'Fazi ereadur',
 	'qp_vote_button' => 'Mouezhiañ',
-	'qp_vote_again_button' => 'Kemmañ ho vot',
-	'qp_polls_list' => 'Listennañ an holl sontadegoù',
+	'qp_vote_again_button' => 'Distreiñ war ho vot',
+	'qp_polls_list' => 'Rollañ an holl sontadegoù',
 	'qp_users_list' => 'Renabliñ an holl implijerien',
 	'qp_browse_to_poll' => 'Mont betek $1',
 	'qp_browse_to_user' => 'Mont betek $1',
-	'qp_votes_count' => '$1 {{PLURAL:$1|vot|votoù}}',
+	'qp_votes_count' => '$1 {{PLURAL:$1|vot|vot}}',
 	'qp_source_link' => 'Mammenn',
 	'qp_stats_link' => 'Stadegoù',
 	'qp_users_link' => 'Implijerien',
@@ -784,7 +786,7 @@ $messages['ksh'] = array(
 	'qp_browse_to_poll' => 'Bes $1 bläddere',
 	'qp_browse_to_user' => 'Bes $1 bläddere',
 	'qp_votes_count' => '{{PLURAL:$1|ein Schtemm|$1 Schtemme|Kein Schtemm}}',
-	'qp_source_link' => 'Quelle-Dattei',
+	'qp_source_link' => 'Beschrevve',
 	'qp_stats_link' => 'Schtatistike',
 	'qp_users_link' => 'Metmaacher',
 	'qp_voice_link' => 'Enem Metmaacher sing Stemm',
@@ -856,6 +858,7 @@ $messages['lb'] = array(
 	'qp_users_link' => 'Benotzer',
 	'qp_voice_link' => 'Stëmm vum Benotzer',
 	'qp_voice_link_inv' => 'Stëmm vum Benotzer?',
+	'qp_user_polls_link' => 'huet {{PLURAL:$1|un enger Ëmfro|u(n) $1 Ëmfroen}} deelgeholl',
 	'qp_user_missing_polls_link' => 'Keng Bedeelegung',
 	'qp_not_participated_link' => 'Net matgemaach',
 	'qp_order_by_username' => 'Nom Benotzernumm zortéieren',

@@ -3360,7 +3360,7 @@ $messages['ml'] = array(
 പുതിയ ദൃശ്യരൂപത്തെ കുറിച്ച് താങ്കൾ എന്താണു വിചാരിക്കുന്നതെന്നറിയാൻ ഞങ്ങൾക്കാഗ്രഹമുണ്ട്, "[[#leave|{{int:optin-submit-out}}]]" എന്നതു ഞെക്കുന്നതിനു മുമ്പ് താങ്കൾ താഴെ കൊടുത്തിരിക്കുന്ന സർവേയിൽ പങ്കെടുക്കാൻ താത്പര്യപ്പെടുന്നു.',
 	'optin-survey-question-likedislike' => 'ബീറ്റയിൽ താങ്കൾക്ക് എന്തൊക്കെ ഇഷ്ടപ്പെട്ടു? എന്തൊക്കെ ഇഷ്ടപ്പെട്ടില്ല?',
 	'optin-survey-question-whyoptout' => 'താങ്കൾ എന്തുകൊണ്ട് ബീറ്റ ഉപേക്ഷിക്കുന്നു? (കാരണമാകുന്ന എല്ലാം ദയവായി തിരഞ്ഞെടുക്കുക.)',
-	'optin-survey-answer-whyoptout-hard' => 'ഉപയോഗിക്കാൻ ഏറെ ബുദ്ധിമുട്ടുള്ള ഒന്നാണിത്.',
+	'optin-survey-answer-whyoptout-hard' => 'ഇതുപയോഗിക്കാൻ ഏറെ ബുദ്ധിമുട്ടാണ്.',
 	'optin-survey-answer-whyoptout-didntwork' => 'ഇത് ശരിയായി പ്രവർത്തിക്കുന്നില്ല.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'ഇതെങ്ങിനെ പ്രവർത്തിക്കുമെന്നു പറയാൻ പറ്റുന്നില്ല.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'ഇത് കാണപ്പെടുന്ന രൂപം എനിക്കിഷ്ടപ്പെടുന്നില്ല.',

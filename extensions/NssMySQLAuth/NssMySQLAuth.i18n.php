@@ -82,7 +82,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
-	'nss-rights' => 'ܙܕܩ̈ܐ',
+	'nss-rights' => 'ܙܕ̈ܩܐ',
 	'nss-create-account-header' => 'ܒܪܝ ܚܘܫܒܢܐ ܚܕܬܐ',
 );
 
