@@ -146,75 +146,15 @@ if ( $j.wikiEditor.isSupportKnown() && !$j.wikiEditor.isSupported() ) {
 // gets called again we can pick up where we left off
 var context = $(this).data( 'wikiEditor-context' );
 
+// This only gets run on the first call
 if ( typeof context == 'undefined' ) {
-	
-	/* Base UI Construction */
 	
 	var instance = $.wikiEditor.instances.length;
 	context = { '$textarea': $(this), 'modules': {}, 'data': {}, 'instance': instance };
 	$.wikiEditor.instances[instance] = $(this);
-	// Encapsulate the textarea with some containers for layout
-	$(this)
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-wikitext' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );	
-	// Get a reference to the outer container
-	context.$ui = $(this).parent().parent().parent().parent();
-	context.$ui.after( $( '<div style="clear:both;"></div>' ) );
-	// Attach a right container
-	context.$ui.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-right' ) );
-	// Attach a top container to the left pane
-	context.$ui.find( '.wikiEditor-ui-left' ).prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
 	
-	/* Magic IFRAME Construction */
+	/* Externally Accessible API */
 	
-	// Create an iframe in place of the text area
-	context.$iframe = $( '<iframe></iframe>' )
-		.attr( 'frameborder', 0 )
-		.css( {
-			'backgroundColor': 'white',
-			'width': '100%',
-			'height': context.$textarea.height(),
-			'display': 'none',
-			'overflow-y': 'scroll',
-			'overflow-x': 'hidden',
-		})
-		.insertAfter( context.$textarea );
-	
-	/*
-	 * For whatever strange reason, this code needs to be within a timeout or it doesn't work - it seems to be that
-	 * the DOM manipulation to add the iframe happens asynchronously and this code that depends on it actually being
-	 * finished doesn't function on the right reference.
-	 * FIXME: The fact that this calls a function that's defined below is ugly
-	 */
-	setTimeout( function() { context.fn.setup(); }, 1 );
-	
-	// Attach a submit handler to the form so that when the form is submitted the content of the iframe gets decoded and
-	// copied over to the textarea
-	context.$textarea.closest( 'form' ).submit( function() {
-		context.$textarea.attr( 'disabled', false );
-		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
-	} );
-	
-	/* This is probably only a textarea issue, thus no longer needed
-	 * 
-	// Some browsers don't restore the cursor position on refocus properly
-	// Do it for them
-	$(this)
-		.focus( function() {
-			var pos = $(this).data( 'wikiEditor-cursor' );
-			if ( pos )
-				$(this).setSelection( pos[0], pos[1] );
-			$(this).data( 'wikiEditor-cursor', false );
-		})
-		.blur( function() {
-			$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
-		});
-	*/
-	
-	// Create a set of standard methods for internal and external use
 	context.api = {
 		/**
 		 * Accepts either a string of the name of a module to add without any
@@ -255,9 +195,7 @@ if ( typeof context == 'undefined' ) {
 			}
 		}
 	}
-	/*
-	 * Create a set of event handlers for the iframe to hook into
-	 */
+	/* Event Handlers */
 	context.evt = {
 		'change': function( event ) {
 			// BTW: context is in event.data.context
@@ -300,11 +238,11 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe[0].contentWindow.document.close();
 			// Turn the document's design mode on
 			context.$iframe[0].contentWindow.document.designMode = 'on';
-			
 			// Get a reference to the content area of the iframe 
 			context.$content = $( context.$iframe[0].contentWindow.document.body );
-			if ( $( 'body' ).is( '.rtl' ) )
+			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
+			}
 			
 			/* Magic IFRAME Activation */
 			
@@ -374,7 +312,6 @@ if ( typeof context == 'undefined' ) {
 				selText = selText.substring( 0, selText.length - 1 );
 				post += ' ';
 			}
-			
 			var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
 			if ( options.ownline ) {
 				// TODO: This'll probably break with syntax highlighting
@@ -384,10 +321,8 @@ if ( typeof context == 'undefined' ) {
 				if ( range.endContainer == range.commonAncestorContainer )
 					post += "\n";
 			}
-			
 			var insertText = pre + selText + post;
 			var insertLines = insertText.split( "\n" );
-			
 			range.extractContents();
 			// Insert the contents one line at a time
 			// insertNode() inserts at the beginning, so this has
@@ -395,12 +330,13 @@ if ( typeof context == 'undefined' ) {
 			var lastNode;
 			for ( var i = insertLines.length - 1; i >= 0; i-- ) {
 				range.insertNode( document.createTextNode( insertLines[i] ) );
-				if ( i > 0 )
+				if ( i > 0 ) {
 					lastNode = range.insertNode( document.createElement( 'br' ) );
+				}
 			}
-			if ( lastNode )
+			if ( lastNode ) {
 				context.fn.scrollToTop( lastNode );
-			
+			}
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
 			context.$content.trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
 			return context.$textarea;
@@ -443,10 +379,56 @@ if ( typeof context == 'undefined' ) {
 			$element.trigger( 'scrollToTop' );
 		}
 	};
+	
+	/* Base UI Construction */
+	
+	// Encapsulate the textarea with some containers for layout
+	$(this)
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-wikitext' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );	
+	// Get a reference to the outer container
+	context.$ui = $(this).parent().parent().parent().parent();
+	context.$ui.after( $( '<div style="clear:both;"></div>' ) );
+	// Attach a right container
+	context.$ui.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-right' ) );
+	// Attach a top container to the left pane
+	context.$ui.find( '.wikiEditor-ui-left' ).prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
+	
+	/* Magic IFRAME Construction */
+	
+	// Create an iframe in place of the text area
+	context.$iframe = $( '<iframe></iframe>' )
+		.attr( 'frameborder', 0 )
+		.css( {
+			'backgroundColor': 'white',
+			'width': '100%',
+			'height': context.$textarea.height(),
+			'display': 'none',
+			'overflow-y': 'scroll',
+			'overflow-x': 'hidden',
+		})
+		.insertAfter( context.$textarea );
+	
+	/*
+	 * For whatever strange reason, this code needs to be within a timeout or it doesn't work - it seems to be that
+	 * the DOM manipulation to add the iframe happens asynchronously and this code that depends on it actually being
+	 * finished doesn't function on the right reference.
+	 * FIXME: The fact that this calls a function that's defined below is ugly
+	 */
+	setTimeout( function() { context.fn.setup(); }, 1 );
+	
+	// Attach a submit handler to the form so that when the form is submitted the content of the iframe gets decoded and
+	// copied over to the textarea
+	context.$textarea.closest( 'form' ).submit( function() {
+		context.$textarea.attr( 'disabled', false );
+		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
+	} );
 }
 
-// If there was a configuration passed, it's assumed to be for the addModule
-// API call
+// If there was a configuration passed, it's assumed to be for the addModule API call
 if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 	// If the iframe construction isn't ready yet, defer the call
 	if ( context.fn.isSetup() )
@@ -458,8 +440,7 @@ if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
  		}, 2 );
 	}
 } else {
-	// Since javascript gives arguments as an object, we need to convert them
-	// so they can be used more easily
+	// Since javascript gives arguments as an object, we need to convert them so they can be used more easily
 	arguments = $.makeArray( arguments );
 	if ( arguments.length > 0 ) {
 		// Handle API calls
