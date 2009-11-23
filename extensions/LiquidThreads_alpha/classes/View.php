@@ -825,6 +825,9 @@ class LqtView {
 				'lqt-thread-link-url',
 				'lqt-thread-link-title',
 				'lqt-thread-link-copy',
+				'lqt-sign-not-necessary',
+				'lqt-marked-as-read-placeholder',
+				'lqt-email-undo',
 			);
 				
 		$data = array();
@@ -1572,6 +1575,8 @@ class LqtView {
 		$wgParser->mOptions = new ParserOptions;
 		
 		$sig = $wgParser->getUserSig( $user );
+		$sig = $wgParser->preSaveTransform( $sig, $this->title, $user,
+							$wgParser->mOptions, false );
 		$sig = $wgOut->parseInline( $sig );
 		
 		self::$userSignatureCache[$name] = $sig;
