@@ -354,7 +354,7 @@ fn: {
 			.data( 'resizableDone', true )
 			.find( '.wikiEditor-ui-right' )
 			.data( 'wikiEditor-ui-left', context.$ui.find( '.wikiEditor-ui-left' ))
-			.resizable( {handles: 'w,e', dontScrewWithLeft: true, minWidth: 50,
+			.resizable( {handles: 'w,e', preventPositionLeftChange: true, minWidth: 50,
 				start: function( e, ui ) {
 					$this = $( this );
 					// Toss a transparent cover over our iframe
@@ -399,10 +399,10 @@ fn: {
 /*
  * Extending resizable to allow west resizing without altering the left position attribute
  */
-$.ui.plugin.add("resizable", "dontScrewWithLeft", {
-	resize: function(event, ui){
-		$(this).data("resizable").position.left=0;
+$.ui.plugin.add( "resizable", "preventPositionLeftChange", {
+	resize: function( event, ui ) {
+		$( this ).data( "resizable" ).position.left = 0;
 	}
-});
+} );
  
 } ) ( jQuery );
