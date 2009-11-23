@@ -222,9 +222,9 @@ if ( typeof context == 'undefined' ) {
 		
 		}
 	};
-	/* Create a set of functions for interacting with the editor content
-	 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-	 */
+	
+	/* Internal Functions */
+	
 	context.fn = {
 		/**
 		 * Set up the magic iframe
@@ -276,6 +276,7 @@ if ( typeof context == 'undefined' ) {
 		},
 		/**
 		 * Gets the currently selected text in the content
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'getSelection': function() {
 			var retval;
@@ -294,6 +295,7 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Inserts text at the begining and end of a text selection, optionally inserting text at the caret when
 		 * selection is empty.
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'encapsulateSelection': function( options ) {
 			// TODO: IE
@@ -343,6 +345,7 @@ if ( typeof context == 'undefined' ) {
 		},
 		/**
 		 * Gets the position (in resolution of bytes not nessecarily characters) in a textarea
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'getCaretPosition': function( options ) {
 			// FIXME: Character-based functions aren't useful for the magic iframe
@@ -351,6 +354,7 @@ if ( typeof context == 'undefined' ) {
 		},
 		/**
 		 * Sets the selection of the content
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 * 
 		 * @param start Character offset of selection start
 		 * @param end Character offset of selection end
@@ -361,6 +365,7 @@ if ( typeof context == 'undefined' ) {
 		},
 		/**
 		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'scrollToCaretPosition': function( options ) {
 			// ...
@@ -368,6 +373,8 @@ if ( typeof context == 'undefined' ) {
 		},
 		/**
 		 * Scroll an element to the top of the iframe
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
+		 * 
 		 * @param $element jQuery object containing an element in the iframe
 		 * @param force If true, scroll the element even if it's already visible
 		 */
