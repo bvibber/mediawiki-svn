@@ -13,8 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'wikieditor-preview-preference' => 'Enable side-by-side preview',
-	'wikieditor-preview-tab-edit' => 'Edit',
-	'wikieditor-preview-tab-preview' => 'Preview',
+	'wikieditor-preview-tab' => 'Preview',
 	'wikieditor-preview-loading' => 'Loading...',
 	'wikieditor-preview-button-publish' => 'Publish',
 	'wikieditor-preview-button-cancel' => 'Cancel',
@@ -35,10 +34,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'wikieditor-preview-preference' => "Option in [[Special:Preferences]], tab ''{{int:prefs-editing}}''",
-	'wikieditor-preview-tab-edit' => 'Caption of the tab containing the edit box
-
-{{Identical|Edit}}',
-	'wikieditor-preview-tab-preview' => 'Caption of the tab containing the preview
+	'wikieditor-preview-tab' => 'Caption of the tab containing the preview
 
 {{Identical|Preview}}',
 	'wikieditor-preview-loading' => 'Alt text for spinner displayed while preview is being loaded
@@ -68,8 +64,7 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'wikieditor-preview-preference' => 'Wysig en voorskou langs mekaar',
-	'wikieditor-preview-tab-edit' => 'Wysig',
-	'wikieditor-preview-tab-preview' => 'Voorskou',
+	'wikieditor-preview-tab' => 'Voorskou',
 	'wikieditor-preview-loading' => 'Besig om te laai...',
 	'wikieditor-preview-button-publish' => 'Publiseer',
 	'wikieditor-preview-button-cancel' => 'Kanselleer',
@@ -86,8 +81,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'wikieditor-preview-preference' => 'مكّن المعاينة جنبًا لجنب',
-	'wikieditor-preview-tab-edit' => 'حرّر',
-	'wikieditor-preview-tab-preview' => 'عاين',
+	'wikieditor-preview-tab' => 'عاين',
 	'wikieditor-preview-loading' => 'يحمّل...',
 	'wikieditor-preview-button-publish' => 'انشر',
 	'wikieditor-preview-button-cancel' => 'ألغِ',
@@ -105,8 +99,7 @@ $messages['ar'] = array(
  */
 $messages['be-tarask'] = array(
 	'wikieditor-preview-preference' => 'Уключыць папярэдні прагляд адзін каля аднаго',
-	'wikieditor-preview-tab-edit' => 'Рэдагаваць',
-	'wikieditor-preview-tab-preview' => 'Папярэдні прагляд',
+	'wikieditor-preview-tab' => 'Папярэдні прагляд',
 	'wikieditor-preview-loading' => 'Загрузка…',
 	'wikieditor-preview-button-publish' => 'Апублікаваць',
 	'wikieditor-preview-button-cancel' => 'Адмяніць',
@@ -122,7 +115,6 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'wikieditor-preview-tab-edit' => 'Редактиране',
 	'wikieditor-preview-loading' => 'Зареждане...',
 	'wikieditor-preview-button-cancel' => 'Отказване',
 	'wikieditor-preview-savedialog-minor' => 'Малка промяна',
@@ -135,8 +127,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'wikieditor-preview-preference' => 'পাশাপাশি প্রাকদর্শন সক্রিয় করো',
-	'wikieditor-preview-tab-edit' => 'সম্পাদনা',
-	'wikieditor-preview-tab-preview' => 'প্রাকদর্শন',
+	'wikieditor-preview-tab' => 'প্রাকদর্শন',
 	'wikieditor-preview-loading' => 'লোডিং...',
 	'wikieditor-preview-button-publish' => 'প্রকাশ করো',
 	'wikieditor-preview-button-cancel' => 'বাতিল',
@@ -154,8 +145,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'wikieditor-preview-preference' => 'Gweredekaat ar rakweled skoaz-ouzh-skoaz',
-	'wikieditor-preview-tab-edit' => 'Aozañ',
-	'wikieditor-preview-tab-preview' => 'Rakwelet',
+	'wikieditor-preview-tab' => 'Rakwelet',
 	'wikieditor-preview-loading' => 'O kargañ...',
 	'wikieditor-preview-button-publish' => 'Embann',
 	'wikieditor-preview-button-cancel' => 'Nullañ',
@@ -172,8 +162,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'wikieditor-preview-preference' => 'Omogući pretpregled s obje strane',
-	'wikieditor-preview-tab-edit' => 'Uredi',
-	'wikieditor-preview-tab-preview' => 'Pregled',
+	'wikieditor-preview-tab' => 'Pregled',
 	'wikieditor-preview-loading' => 'Učitavam...',
 	'wikieditor-preview-button-publish' => 'Objavi',
 	'wikieditor-preview-button-cancel' => 'Odustani',
@@ -190,8 +179,7 @@ $messages['bs'] = array(
  */
 $messages['cs'] = array(
 	'wikieditor-preview-preference' => 'Zapnout náhledy v panelu',
-	'wikieditor-preview-tab-edit' => 'Editace',
-	'wikieditor-preview-tab-preview' => 'Náhled',
+	'wikieditor-preview-tab' => 'Náhled',
 	'wikieditor-preview-loading' => 'Načítá se…',
 	'wikieditor-preview-button-publish' => 'Publikovat',
 	'wikieditor-preview-button-cancel' => 'Storno',
@@ -207,8 +195,7 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
-	'wikieditor-preview-tab-edit' => 'Golygu',
-	'wikieditor-preview-tab-preview' => 'Rhagolwg',
+	'wikieditor-preview-tab' => 'Rhagolwg',
 	'wikieditor-preview-loading' => "Wrthi'n llwytho...",
 	'wikieditor-preview-button-publish' => 'Cyhoeddi',
 	'wikieditor-preview-button-cancel' => 'Diddymu',
@@ -225,8 +212,7 @@ $messages['cy'] = array(
  * @author MF-Warburg
  */
 $messages['de'] = array(
-	'wikieditor-preview-tab-edit' => 'Bearbeiten',
-	'wikieditor-preview-tab-preview' => 'Vorschau',
+	'wikieditor-preview-tab' => 'Vorschau',
 	'wikieditor-preview-loading' => 'lädt …',
 	'wikieditor-preview-button-publish' => 'Veröffentlichen',
 	'wikieditor-preview-button-cancel' => 'Abbrechen',
@@ -243,8 +229,7 @@ $messages['de'] = array(
  */
 $messages['diq'] = array(
 	'wikieditor-preview-preference' => 'verqeyde miqeyese a bike',
-	'wikieditor-preview-tab-edit' => 'Bivurne',
-	'wikieditor-preview-tab-preview' => 'Verqeyd',
+	'wikieditor-preview-tab' => 'Verqeyd',
 	'wikieditor-preview-loading' => 'Ho bar keno...',
 	'wikieditor-preview-button-publish' => 'Çap ke',
 	'wikieditor-preview-button-cancel' => 'Iptal bike',
@@ -261,8 +246,7 @@ $messages['diq'] = array(
  */
 $messages['dsb'] = array(
 	'wikieditor-preview-preference' => 'Pśeglěd bok pó boku zmóžniś',
-	'wikieditor-preview-tab-edit' => 'Wobźěłaś',
-	'wikieditor-preview-tab-preview' => 'Pśeglěd',
+	'wikieditor-preview-tab' => 'Pśeglěd',
 	'wikieditor-preview-loading' => 'Zacytujo se...',
 	'wikieditor-preview-button-publish' => 'Wózjawiś',
 	'wikieditor-preview-button-cancel' => 'Pśetergnuś',
@@ -280,8 +264,7 @@ $messages['dsb'] = array(
  */
 $messages['eo'] = array(
 	'wikieditor-preview-preference' => 'Ŝalti kolumnecan antaŭvidon',
-	'wikieditor-preview-tab-edit' => 'Redakta',
-	'wikieditor-preview-tab-preview' => 'Antaŭvida',
+	'wikieditor-preview-tab' => 'Antaŭvida',
 	'wikieditor-preview-loading' => 'Ŝarĝante',
 	'wikieditor-preview-button-publish' => 'Konservi',
 	'wikieditor-preview-button-cancel' => 'Nuligi',
@@ -297,8 +280,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
-	'wikieditor-preview-tab-edit' => 'Editar',
-	'wikieditor-preview-tab-preview' => 'Previsualizar',
+	'wikieditor-preview-tab' => 'Previsualizar',
 	'wikieditor-preview-loading' => 'Cargando...',
 	'wikieditor-preview-button-publish' => 'Publicar',
 	'wikieditor-preview-button-cancel' => 'Cancelar',
@@ -312,8 +294,7 @@ $messages['es'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
-	'wikieditor-preview-tab-edit' => 'Aldatu',
-	'wikieditor-preview-tab-preview' => 'Aurreikuspena',
+	'wikieditor-preview-tab' => 'Aurreikuspena',
 	'wikieditor-preview-loading' => 'Kargatzen...',
 	'wikieditor-preview-button-publish' => 'Argitaratu',
 	'wikieditor-preview-button-cancel' => 'Ezeztatu',
@@ -329,8 +310,7 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'wikieditor-preview-tab-edit' => 'Muokkaa',
-	'wikieditor-preview-tab-preview' => 'Esikatselu',
+	'wikieditor-preview-tab' => 'Esikatselu',
 	'wikieditor-preview-loading' => 'Ladataan...',
 	'wikieditor-preview-button-publish' => 'Julkaise',
 	'wikieditor-preview-button-cancel' => 'Peruuta',
@@ -346,8 +326,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'wikieditor-preview-preference' => 'Activer la prévisualisation côte à côte',
-	'wikieditor-preview-tab-edit' => 'Modification',
-	'wikieditor-preview-tab-preview' => 'Prévisualisation',
+	'wikieditor-preview-tab' => 'Prévisualisation',
 	'wikieditor-preview-loading' => 'Chargement...',
 	'wikieditor-preview-button-publish' => 'Publier',
 	'wikieditor-preview-button-cancel' => 'Annuler',
@@ -364,8 +343,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'wikieditor-preview-preference' => 'Activar a vista previa comparativa',
-	'wikieditor-preview-tab-edit' => 'Editar',
-	'wikieditor-preview-tab-preview' => 'Vista previa',
+	'wikieditor-preview-tab' => 'Vista previa',
 	'wikieditor-preview-loading' => 'Cargando...',
 	'wikieditor-preview-button-publish' => 'Publicar',
 	'wikieditor-preview-button-cancel' => 'Cancelar',
@@ -381,7 +359,6 @@ $messages['gl'] = array(
  * @author Crazymadlover
  */
 $messages['grc'] = array(
-	'wikieditor-preview-tab-edit' => 'Μεταγράφειν',
 	'wikieditor-preview-button-cancel' => 'Ἀκυροῦν',
 );
 
@@ -390,8 +367,7 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'wikieditor-preview-preference' => 'Gegeiniberstelligs-Vorschau meglig mache',
-	'wikieditor-preview-tab-edit' => 'Bearbeite',
-	'wikieditor-preview-tab-preview' => 'Vorschau',
+	'wikieditor-preview-tab' => 'Vorschau',
 	'wikieditor-preview-loading' => 'Am Lade ...',
 	'wikieditor-preview-button-publish' => 'Publiziere',
 	'wikieditor-preview-button-cancel' => 'Abbräche',
@@ -408,8 +384,7 @@ $messages['gsw'] = array(
  */
 $messages['hsb'] = array(
 	'wikieditor-preview-preference' => 'Přehlad bok po boku zmóžnić',
-	'wikieditor-preview-tab-edit' => 'Wobdźěłać',
-	'wikieditor-preview-tab-preview' => 'Přehlad',
+	'wikieditor-preview-tab' => 'Přehlad',
 	'wikieditor-preview-loading' => 'Začituje so...',
 	'wikieditor-preview-button-publish' => 'Wozjewić',
 	'wikieditor-preview-button-cancel' => 'Přetorhnyć',
@@ -426,8 +401,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'wikieditor-preview-preference' => 'Előnézet egymás mellett engedélyezése',
-	'wikieditor-preview-tab-edit' => 'Szerkesztés',
-	'wikieditor-preview-tab-preview' => 'Előnézet',
+	'wikieditor-preview-tab' => 'Előnézet',
 	'wikieditor-preview-loading' => 'Betöltés…',
 	'wikieditor-preview-button-publish' => 'Közzététel',
 	'wikieditor-preview-button-cancel' => 'Mégse',
@@ -444,8 +418,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'wikieditor-preview-preference' => 'Activar le previsualisation latere a latere',
-	'wikieditor-preview-tab-edit' => 'Modification',
-	'wikieditor-preview-tab-preview' => 'Previsualisation',
+	'wikieditor-preview-tab' => 'Previsualisation',
 	'wikieditor-preview-loading' => 'Cargamento...',
 	'wikieditor-preview-button-publish' => 'Publicar',
 	'wikieditor-preview-button-cancel' => 'Cancellar',
@@ -462,8 +435,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'wikieditor-preview-preference' => 'Aktifkan pratayang bersisian',
-	'wikieditor-preview-tab-edit' => 'Sunting',
-	'wikieditor-preview-tab-preview' => 'Pratayang',
+	'wikieditor-preview-tab' => 'Pratayang',
 	'wikieditor-preview-loading' => 'Memuat...',
 	'wikieditor-preview-button-publish' => 'Terbitkan',
 	'wikieditor-preview-button-cancel' => 'Batalkan',
@@ -480,8 +452,7 @@ $messages['id'] = array(
  */
 $messages['ja'] = array(
 	'wikieditor-preview-preference' => '比較プレビューを有効化する',
-	'wikieditor-preview-tab-edit' => '編集',
-	'wikieditor-preview-tab-preview' => 'プレビュー',
+	'wikieditor-preview-tab' => 'プレビュー',
 	'wikieditor-preview-loading' => '読み込み中…',
 	'wikieditor-preview-button-publish' => '投稿',
 	'wikieditor-preview-button-cancel' => '中止',
@@ -498,8 +469,7 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'wikieditor-preview-preference' => "Donn de {{int:preview}} nevve'eneijn zohlohße",
-	'wikieditor-preview-tab-edit' => '{{int:edit}}',
-	'wikieditor-preview-tab-preview' => '{{int:preview}}',
+	'wikieditor-preview-tab' => '{{int:preview}}',
 	'wikieditor-preview-loading' => 'Ben aam Laade{{int:ellipsis}}',
 	'wikieditor-preview-button-publish' => 'Öffentlesch maache!',
 	'wikieditor-preview-button-cancel' => '{{int:cancel}}',
@@ -516,8 +486,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'wikieditor-preview-preference' => 'side-by-side kucken ouni ze späicheren aschalten',
-	'wikieditor-preview-tab-edit' => 'Änneren',
-	'wikieditor-preview-tab-preview' => 'Kucken ouni ze späicheren',
+	'wikieditor-preview-tab' => 'Kucken ouni ze späicheren',
 	'wikieditor-preview-loading' => 'Lueden...',
 	'wikieditor-preview-button-publish' => 'Verëffentlechen',
 	'wikieditor-preview-button-cancel' => 'Ofbriechen',
@@ -534,8 +503,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'wikieditor-preview-preference' => 'Овозможи преглед „рамо до рамо“',
-	'wikieditor-preview-tab-edit' => 'Уреди',
-	'wikieditor-preview-tab-preview' => 'Преглед',
+	'wikieditor-preview-tab' => 'Преглед',
 	'wikieditor-preview-loading' => 'Вчитувам...',
 	'wikieditor-preview-button-publish' => 'Објави',
 	'wikieditor-preview-button-cancel' => 'Откажи',
@@ -552,8 +520,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-preview-preference' => 'അരികിലായുള്ള പ്രിവ്യൂ സജ്ജമാക്കുക',
-	'wikieditor-preview-tab-edit' => 'തിരുത്തുക',
-	'wikieditor-preview-tab-preview' => 'എങ്ങിനെയുണ്ടെന്നു കാണുക',
+	'wikieditor-preview-tab' => 'എങ്ങിനെയുണ്ടെന്നു കാണുക',
 	'wikieditor-preview-loading' => 'ശേഖരിക്കുന്നു...',
 	'wikieditor-preview-button-publish' => 'പ്രസിദ്ധീകരിക്കുക',
 	'wikieditor-preview-button-cancel' => 'റദ്ദാക്കുക',
@@ -570,8 +537,7 @@ $messages['ml'] = array(
  */
 $messages['nl'] = array(
 	'wikieditor-preview-preference' => 'Bewerken en voorvertoning naast elkaar',
-	'wikieditor-preview-tab-edit' => 'Bewerken',
-	'wikieditor-preview-tab-preview' => 'Voorvertoning',
+	'wikieditor-preview-tab' => 'Voorvertoning',
 	'wikieditor-preview-loading' => 'Bezig met laden...',
 	'wikieditor-preview-button-publish' => 'Publiceren',
 	'wikieditor-preview-button-cancel' => 'Annuleren',
@@ -595,8 +561,7 @@ $messages['nn'] = array(
  */
 $messages['oc'] = array(
 	'wikieditor-preview-preference' => 'Activar la previsualizacion còsta a còsta',
-	'wikieditor-preview-tab-edit' => 'Modificacion',
-	'wikieditor-preview-tab-preview' => 'Previsualizacion',
+	'wikieditor-preview-tab' => 'Previsualizacion',
 	'wikieditor-preview-loading' => 'Cargament...',
 );
 
@@ -605,8 +570,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'wikieditor-preview-preference' => 'Włącz sąsiadujący podgląd',
-	'wikieditor-preview-tab-edit' => 'Edycja',
-	'wikieditor-preview-tab-preview' => 'Podgląd',
+	'wikieditor-preview-tab' => 'Podgląd',
 	'wikieditor-preview-loading' => 'Wczytywanie...',
 	'wikieditor-preview-button-publish' => 'Opublikuj',
 	'wikieditor-preview-button-cancel' => 'Anuluj',
@@ -624,8 +588,7 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'wikieditor-preview-preference' => 'Abìlita la previsualisassion da part a part',
-	'wikieditor-preview-tab-edit' => 'Modìfica',
-	'wikieditor-preview-tab-preview' => 'Previsualisassion',
+	'wikieditor-preview-tab' => 'Previsualisassion',
 	'wikieditor-preview-loading' => 'A caria ...',
 	'wikieditor-preview-button-publish' => 'Pùblica',
 	'wikieditor-preview-button-cancel' => 'Scancela',
@@ -643,8 +606,7 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'wikieditor-preview-preference' => 'Possibilitar antevisão lado a lado',
-	'wikieditor-preview-tab-edit' => 'Editar',
-	'wikieditor-preview-tab-preview' => 'Antevisão',
+	'wikieditor-preview-tab' => 'Antevisão',
 	'wikieditor-preview-loading' => 'A carregar...',
 	'wikieditor-preview-button-publish' => 'Publicar',
 	'wikieditor-preview-button-cancel' => 'Cancelar',
@@ -668,8 +630,7 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'wikieditor-preview-preference' => "Abbilite l'andeprime da na vanne a l'otre",
-	'wikieditor-preview-tab-edit' => 'Cange',
-	'wikieditor-preview-tab-preview' => 'Andeprime',
+	'wikieditor-preview-tab' => 'Andeprime',
 	'wikieditor-preview-loading' => 'Carecamende...',
 	'wikieditor-preview-button-publish' => 'Pubbleche',
 	'wikieditor-preview-button-cancel' => 'Annulle',
@@ -686,8 +647,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'wikieditor-preview-preference' => 'Включить предпросмотр бок о бок',
-	'wikieditor-preview-tab-edit' => 'Правка',
-	'wikieditor-preview-tab-preview' => 'Предпросмотр',
+	'wikieditor-preview-tab' => 'Предпросмотр',
 	'wikieditor-preview-loading' => 'Загрузка…',
 	'wikieditor-preview-button-publish' => 'Опубликовать',
 	'wikieditor-preview-button-cancel' => 'Отмена',
@@ -703,7 +663,6 @@ $messages['ru'] = array(
  * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
-	'wikieditor-preview-tab-edit' => 'සංස්කරණය',
 );
 
 /** Swedish (Svenska)
@@ -711,8 +670,7 @@ $messages['si'] = array(
  */
 $messages['sv'] = array(
 	'wikieditor-preview-preference' => 'Aktivera förhandsgranskning sida-vid-sida',
-	'wikieditor-preview-tab-edit' => 'Redigera',
-	'wikieditor-preview-tab-preview' => 'Förhandsgranska',
+	'wikieditor-preview-tab' => 'Förhandsgranska',
 	'wikieditor-preview-loading' => 'Laddar...',
 	'wikieditor-preview-button-publish' => 'Publicera',
 	'wikieditor-preview-button-cancel' => 'Avbryt',
@@ -728,8 +686,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
-	'wikieditor-preview-tab-edit' => 'Hariri',
-	'wikieditor-preview-tab-preview' => 'Hakikisho',
+	'wikieditor-preview-tab' => 'Hakikisho',
 	'wikieditor-preview-loading' => 'Unapakiwa...',
 	'wikieditor-preview-button-publish' => 'Toa',
 	'wikieditor-preview-button-cancel' => 'Batilisha',
@@ -745,8 +702,7 @@ $messages['sw'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'wikieditor-preview-tab-edit' => 'మార్చు',
-	'wikieditor-preview-tab-preview' => 'మునుజూపు',
+	'wikieditor-preview-tab' => 'మునుజూపు',
 	'wikieditor-preview-loading' => 'లోడవుతోంది...',
 	'wikieditor-preview-button-publish' => 'ప్రచురించు',
 	'wikieditor-preview-button-cancel' => 'రద్దుచేయి',
@@ -764,8 +720,7 @@ $messages['te'] = array(
  */
 $messages['tr'] = array(
 	'wikieditor-preview-preference' => 'Yan-yana önizlemeyi etkinleştir',
-	'wikieditor-preview-tab-edit' => 'Değiştir',
-	'wikieditor-preview-tab-preview' => 'Önizleme',
+	'wikieditor-preview-tab' => 'Önizleme',
 	'wikieditor-preview-loading' => 'Yükleniyor...',
 	'wikieditor-preview-button-publish' => 'Yayınla',
 	'wikieditor-preview-button-cancel' => 'İptal',
@@ -783,8 +738,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'wikieditor-preview-preference' => 'Увімкнути додаткову панель швидкого перемикання: "Редагувати" — "Попередній перегляд"',
-	'wikieditor-preview-tab-edit' => 'Редагувати',
-	'wikieditor-preview-tab-preview' => 'Попередній перегляд',
+	'wikieditor-preview-tab' => 'Попередній перегляд',
 	'wikieditor-preview-loading' => 'Завантаження...',
 	'wikieditor-preview-button-publish' => 'Зберегти',
 	'wikieditor-preview-button-cancel' => 'Скасувати',
@@ -801,8 +755,7 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'wikieditor-preview-preference' => "Ativa l'anteprima parte par parte",
-	'wikieditor-preview-tab-edit' => 'Modìfega',
-	'wikieditor-preview-tab-preview' => 'Anteprima',
+	'wikieditor-preview-tab' => 'Anteprima',
 	'wikieditor-preview-loading' => "So' drio cargar...",
 	'wikieditor-preview-button-publish' => 'Pùblica',
 	'wikieditor-preview-button-cancel' => 'Anula',
@@ -819,8 +772,7 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'wikieditor-preview-preference' => 'Cho phép so sánh cạnh nhau',
-	'wikieditor-preview-tab-edit' => 'Sửa đổi',
-	'wikieditor-preview-tab-preview' => 'Xem trước',
+	'wikieditor-preview-tab' => 'Xem trước',
 	'wikieditor-preview-loading' => 'Đang tải…',
 	'wikieditor-preview-button-publish' => 'Xuất bản',
 	'wikieditor-preview-button-cancel' => 'Hủy bỏ',
@@ -838,8 +790,7 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'wikieditor-preview-preference' => '启用双列对比预览',
-	'wikieditor-preview-tab-edit' => '编辑',
-	'wikieditor-preview-tab-preview' => '预览',
+	'wikieditor-preview-tab' => '预览',
 	'wikieditor-preview-loading' => '载入中……',
 	'wikieditor-preview-button-publish' => '发表',
 	'wikieditor-preview-button-cancel' => '取消',

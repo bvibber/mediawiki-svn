@@ -17,41 +17,75 @@ fn: {
 	 * @param config Configuration object to create module from
 	 */
 	create: function( context, config ) {
-		mvJsLoader.doLoad( [ '$j.ui', '$j.ui.tabs' ], function() {
-			if ( 'preview' in context.modules )
-				return;
-			
-			var iframeHTML = context.$content.html();
-			context.$ui
-				.wrapInner( $( '<div />' )
-					.addClass( 'wikiEditor-tab-edit' )
-					.attr( 'id', 'wikiEditor-' + context.instance + '-tab-edit' )
-				)
-				.wrapInner( $( '<div />' )
-					.addClass( 'wikiEditor-tabs' )
+		if ( 'preview' in context.modules ) {
+			return;
+		}
+		context.modules.preview = {
+			'previousText': null,
+		};
+		context.$preview = context.fn.addView( {
+			'name': 'preview',
+			'titleMsg': 'wikieditor-preview-tab',
+			'init': function( context ) {
+				// Gets the latest copy of the wikitext
+				var wikitext = context.fn.getContents();
+				// Aborts when nothing has changed since the last preview
+				if ( context.modules.preview.previousText == wikitext ) {
+					return;
+				}
+				context.$preview.find( '.wikiEditor-preview-contents' ).empty();
+				context.$preview.find( '.wikiEditor-preview-loading' ).show();
+				$.post(
+					wgScriptPath + '/api.php',
+					{
+						'action': 'parse',
+						'title': wgPageName,
+						'text': wikitext,
+						'prop': 'text',
+						'pst': '',
+						'format': 'json'
+					},
+					function( data ) {
+						if (
+							data.parse == undefined ||
+							data.parse.text == undefined ||
+							data.parse.text['*'] == undefined
+						) {
+							return;
+						}
+						context.modules.preview.previousText = wikitext;
+						context.$preview.find( '.wikiEditor-preview-loading' ).hide();
+						context.$preview.find( '.wikiEditor-preview-contents' ).html( data.parse.text['*'] );
+					},
+					'json'
 				);
-			var tabList = context.$ui.children();
-			var editTab = tabList.children();
-			
-			var loadingMsg = gM( 'wikieditor-preview-loading' );
-			var previewTab = $( '<div />' )
-				.addClass( 'wikiEditor-tab-preview' )
-				.attr( 'id', 'wikiEditor-' + context.instance + '-tab-preview' )
-				.append( $( '<div />' )
+			}
+		} );
+		var loadingMsg = gM( 'wikieditor-preview-loading' );
+		context.$preview
+			.append( $( '<div />' )
+				.addClass( 'wikiEditor-preview-loading' )
+				.append( $( '<img />' )
 					.addClass( 'wikiEditor-preview-spinner' )
-					.append( $( '<img />' )
-						.attr( {
-							'src': $.wikiEditor.imgPath + 'dialogs/loading.gif',
-							'alt': loadingMsg,
-							'title': loadingMsg
-						} )
-					)
+					.attr( {
+						'src': $.wikiEditor.imgPath + 'dialogs/loading.gif',
+						'valign': 'absmiddle',
+						'alt': loadingMsg,
+						'title': loadingMsg
+					} )
 				)
-				.append( $( '<div />' )
-					.addClass( 'wikiEditor-preview-contents' )
+				.append(
+					$( '<span></span>' ).text( loadingMsg )
 				)
-				.insertAfter( editTab );
-			
+			)
+			.append( $( '<div />' )
+				.addClass( 'wikiEditor-preview-contents' )
+			);
+		
+		/*
+		 * This code needs to move somewhere else - maybe it's very own module?
+		 * 
+		mvJsLoader.doLoad( [ '$j.ui' ], function() {
 			// Build the dialog behind the Publish button
 			var dialogID = 'wikiEditor-' + context.instance + '-savedialog';
 			$.wikiEditor.modules.dialogs.fn.create( context, { previewsave: {
@@ -127,7 +161,6 @@ fn: {
 				},
 				resizeme: false
 			} } );
-			
 			// Paranoia: initialize context.modules before running
 			// tabs() and binding event handlers
 			context.modules.preview = {
@@ -137,7 +170,6 @@ fn: {
 				'saveDialog': $( '#' + dialogID ),
 				'prevText': null
 			};
-
 			tabList
 				.append( $( '<ul />' )
 					.append( $( '<li />' )
@@ -181,49 +213,9 @@ fn: {
 			// FIXME: Don't use jQuery UI tabs, implement our own tabs
 			tabList.closest( '.ui-tabs' ).removeClass( 'ui-widget' );
 			
-			// The magic iframe doesn't like being wrapped, restore it
-			context.fn.setup();
-			context.$content.html( iframeHTML );
 		});
-	},
-	
-	showPreview: function( context ) {
-		// FIXME: This is a temp hack, which should be superseded by context.fn.something
-		var wikitext = $( '<div />' )
-				.html( context.$content.html().replace( /\<br\>/g, "\n" ) )
-				.text();
-		
-		if ( context.modules.preview.prevText == wikitext )
-			// Nothing changed since the last preview
-			return;
-		
-		context.modules.preview.previewTab
-			.children( '.wikiEditor-preview-contents' )
-			.empty();
-		context.modules.preview.previewTab
-			.children( '.wikiEditor-preview-spinner' )
-			.show();
-		
-		$.post( wgScriptPath + '/api.php', {
-			'action': 'parse',
-			'title': wgPageName,
-			'text': wikitext,
-			'prop': 'text',
-			'pst': '',
-			'format': 'json'
-		}, function( data ) {
-			if ( data.parse == undefined || data.parse.text == undefined ||
-					data.parse.text['*'] == undefined )
-				return;
-			context.modules.preview.prevText = wikitext;
-			context.modules.preview.previewTab
-				.children( '.wikiEditor-preview-spinner' )
-				.hide();
-			context.modules.preview.previewTab
-				.children( '.wikiEditor-preview-contents' )
-				.html( data.parse.text['*'] );
-		}, 'json' );
+			*/
 	}
 }
-};
-})( jQuery );
+
+}; } )( jQuery );

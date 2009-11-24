@@ -24,6 +24,9 @@ class WikiEditorHooks {
 			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 6 ),
 		),
 	);
+	static $messages = array(
+		'wikieditor-wikitext-tab',
+	);
 	static $modules = array(
 		'global' => array(
 			'variables' => array(
@@ -56,8 +59,7 @@ class WikiEditorHooks {
 				),
 			),
 			'messages' => array(
-				'wikieditor-preview-tab-edit',
-				'wikieditor-preview-tab-preview',
+				'wikieditor-preview-tab',
 				'wikieditor-preview-loading',
 				'wikieditor-preview-button-publish',
 				'wikieditor-preview-button-cancel',
@@ -353,6 +355,9 @@ class WikiEditorHooks {
 				}
 			}
 		}
+		// Load global messages
+		wfLoadExtensionMessages( 'WikiEditor' );
+		UsabilityInitiativeHooks::addMessages( self::$messages );
 		// Add all scripts
 		foreach ( self::$scripts[$wgUsabilityInitiativeResourceMode] as $script ) {
 			UsabilityInitiativeHooks::addScript(

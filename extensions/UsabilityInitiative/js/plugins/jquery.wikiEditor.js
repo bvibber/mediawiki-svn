@@ -150,7 +150,7 @@ var context = $(this).data( 'wikiEditor-context' );
 if ( typeof context == 'undefined' ) {
 	
 	var instance = $.wikiEditor.instances.length;
-	context = { '$textarea': $(this), 'modules': {}, 'data': {}, 'instance': instance };
+	context = { '$textarea': $(this), 'views': {}, 'modules': {}, 'data': {}, 'instance': instance };
 	$.wikiEditor.instances[instance] = $(this);
 	
 	/* Externally Accessible API */
@@ -226,6 +226,48 @@ if ( typeof context == 'undefined' ) {
 	/* Internal Functions */
 	
 	context.fn = {
+		'addButton': function( options ) {
+			// Ensure that buttons and tabs are visible
+			context.$controls.show();
+		},
+		'addView': function( options ) {
+			// Adds a tab
+			function addTab( options ) {
+				// Ensure that buttons and tabs are visible
+				context.$controls.show();
+				// Return the newly appended tab
+				return $( '<div></div>' )
+					.attr( 'rel', 'wikiEditor-ui-view-' + options.name )
+					.addClass( context.view == options.name ? 'current' : null )
+					.append( $( '<a></a>' )
+						.attr( 'href', '#' )
+						.click( function( event ) {
+							context.$ui.find( '.wikiEditor-ui-view' ).hide();
+							context.$ui.find( '.' + $(this).parent().attr( 'rel' ) ).show();
+							context.$tabs.find( 'div' ).removeClass( 'current' );
+							$(this).parent().addClass( 'current' );
+							$(this).blur();
+							if ( 'init' in options && typeof options.init == 'function' ) {
+								options.init( context );
+							}
+							event.preventDefault();
+						} )
+						.text( $.wikiEditor.autoMsg( options, 'title' ) )
+					)
+					.appendTo( context.$tabs );
+			}
+			// Automatically add the previously not-needed wikitext tab
+			if ( !context.$tabs.children().size() ) {
+				addTab( { 'name': 'wikitext', 'titleMsg': 'wikieditor-wikitext-tab' } );
+			}
+			// Add the tab for the view we were actually asked to add
+			addTab( options );
+			// Return newly appended view
+			return $( '<div></div>' )
+				.addClass( 'wikiEditor-ui-view wikiEditor-ui-view-' + options.name )
+				.hide()
+				.appendTo( context.$ui );
+		},
 		/**
 		 * Set up the magic iframe
 		 */
@@ -390,19 +432,34 @@ if ( typeof context == 'undefined' ) {
 	/* Base UI Construction */
 	
 	// Encapsulate the textarea with some containers for layout
-	$(this)
+	context.$textarea
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-wikitext' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-view wikiEditor-ui-view-wikitext' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );	
-	// Get a reference to the outer container
-	context.$ui = $(this).parent().parent().parent().parent();
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
+	
+	context.$ui = context.$textarea.parent().parent().parent().parent().parent();
+	context.$wikitext = context.$textarea.parent().parent().parent().parent();
+	// Add in tab and button containers
+	context.$wikitext
+		.before(
+			$( '<div></div>' ).addClass( 'wikiEditor-ui-controls' )
+				.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-tabs' ) )
+				.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-buttons' ) )
+		)
+		.before( $( '<div style="clear:both;"></div>' ) );
+	context.$controls = context.$ui.find( '.wikiEditor-ui-buttons' ).hide();
+	context.$buttons = context.$ui.find( '.wikiEditor-ui-buttons' );
+	context.$tabs = context.$ui.find( '.wikiEditor-ui-tabs' );
+	// Clear all floating after the UI
 	context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 	// Attach a right container
-	context.$ui.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-right' ) );
+	context.$wikitext.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-right' ) );
 	// Attach a top container to the left pane
-	context.$ui.find( '.wikiEditor-ui-left' ).prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
+	context.$wikitext.find( '.wikiEditor-ui-left' ).prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
+	// Setup the intial view
+	context.view = 'wikitext';
 	
 	/* Magic IFRAME Construction */
 	

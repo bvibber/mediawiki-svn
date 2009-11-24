@@ -1,43 +1,16 @@
 /* CSS for wikiEditor preview plugin */
-.wikiEditor-tab-edit {
-	background: #f3f3f3 !important;
-	font-size: 1em;
+
+.wikiEditor-preview-loading {
+	padding: 1em;
+	background-color: white;
 }
-/*
-.wikiEditor-ui .ui-widget-content .ui-state-default {
-	background: #ffffff;
+.wikiEditor-preview-loading span {
+	color: #666666;
 }
-.wikiEditor-ui .ui-widget-content .ui-state-hover {
-	background: #dadada;
+.wikiEditor-preview-spinner {
+	padding-right: 1em;
 }
-.wikiEditor-ui .ui-widget-content .ui-state-active {
-	background: #f3f3f3;
-}
-*/
-.wikiEditor-ui .ui-tabs .wikiEditor-tab-edit {
-	padding: 0;
-	margin: 0;
-}
-.wikiEditor-ui .ui-tabs-nav {
-	margin-bottom: 0 !important;
-}
-.wikiEditor-ui .ui-tabs {
-	padding: 0;
-}
-.wikiEditor-ui .ui-widget-content {
-	border-width: 0;
-}
-.wikiEditor-ui .ui-widget-header {
-	border-width: 0;
-	border-bottom-width: 1px;
-}
-.wikiEditor-ui .wikiEditor-tabs button {
-	float: right;
-	margin-left: 0.5em;
-	margin-top: 0.25em;
-}
-body.rtl .wikiEditor-ui .wikiEditor-tabs button {
-	float: left;
-	margin-right: 0.5em;
-	margin-top: 0.25em;
+.wikiEditor-preview-contents {
+	padding: 1em;
+	background-color: white;
 }

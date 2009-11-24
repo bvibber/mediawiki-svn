@@ -103,15 +103,52 @@ float:left;
 float:left;
 width:100%;
 }
-/*
-.wikiEditor-tabs{
+.wikiEditor-ui-controls{
 float:left;
-width:50%;
+width:100%;
+background-color:white;
+margin-top:-1px;
+border-bottom:solid 1px silver;
 }
-.wikiEditor-buttons{
+.wikiEditor-ui-tabs{
+float:left;
+height:2.5em;
+margin-left:-1px;
+background-color:white;
+border-left:solid 1px silver;
+border-top:solid 1px silver;
+}
+.wikiEditor-ui-buttons{
 float:right;
-width:50%;
-} */
+height:2.5em;
+margin-right:-1px;
+background-color:white;
+padding-left:1em;
+border-top:solid 1px white;
+}
+.wikiEditor-ui-tabs div{
+float:left;
+height:2.5em;
+background-color:#f3f3f3;
+border-right:solid 1px silver;
+border-bottom:solid 1px silver;
+}
+.wikiEditor-ui-tabs div.current{
+border-bottom:solid 1px white;
+background-color:white;
+}
+.wikiEditor-ui-tabs div a{
+display:inline-block;
+padding:0 0.75em;
+line-height:2.5em;
+color:#0645AD;
+}
+.wikiEditor-ui-tabs div.current a{
+color:#333333;
+}
+.wikiEditor-ui-tabs div.current a:hover{
+text-decoration:none;
+}
 .ui-widget table{
 margin-top:0.75em;
 }
@@ -645,45 +682,17 @@ background-color:white;
 text-decoration:none;
 border-color:#a8d7f9;
 }
-.wikiEditor-tab-edit{
-background:#f3f3f3 !important;
-font-size:1em;
+.wikiEditor-preview-loading{
+padding:1em;
+background-color:white;
 }
-/*
-.wikiEditor-ui .ui-widget-content .ui-state-default{
-background:#ffffff;
+.wikiEditor-preview-loading span{
+color:#666666;
 }
-.wikiEditor-ui .ui-widget-content .ui-state-hover{
-background:#dadada;
+.wikiEditor-preview-spinner{
+padding-right:1em;
 }
-.wikiEditor-ui .ui-widget-content .ui-state-active{
-background:#f3f3f3;
-}
-*/
-.wikiEditor-ui .ui-tabs .wikiEditor-tab-edit{
-padding:0;
-margin:0;
-}
-.wikiEditor-ui .ui-tabs-nav{
-margin-bottom:0 !important;
-}
-.wikiEditor-ui .ui-tabs{
-padding:0;
-}
-.wikiEditor-ui .ui-widget-content{
-border-width:0;
-}
-.wikiEditor-ui .ui-widget-header{
-border-width:0;
-border-bottom-width:1px;
-}
-.wikiEditor-ui .wikiEditor-tabs button{
-float:right;
-margin-left:0.5em;
-margin-top:0.25em;
-}
-body.rtl .wikiEditor-ui .wikiEditor-tabs button{
-float:left;
-margin-right:0.5em;
-margin-top:0.25em;
+.wikiEditor-preview-contents{
+padding:1em;
+background-color:white;
 }

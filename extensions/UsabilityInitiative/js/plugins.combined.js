@@ -1448,7 +1448,7 @@ var context = $(this).data( 'wikiEditor-context' );
 if ( typeof context == 'undefined' ) {
 	
 	var instance = $.wikiEditor.instances.length;
-	context = { '$textarea': $(this), 'modules': {}, 'data': {}, 'instance': instance };
+	context = { '$textarea': $(this), 'views': {}, 'modules': {}, 'data': {}, 'instance': instance };
 	$.wikiEditor.instances[instance] = $(this);
 	
 	/* Externally Accessible API */
@@ -1520,10 +1520,52 @@ if ( typeof context == 'undefined' ) {
 		
 		}
 	};
-	/* Create a set of functions for interacting with the editor content
-	 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-	 */
+	
+	/* Internal Functions */
+	
 	context.fn = {
+		'addButton': function( options ) {
+			// Ensure that buttons and tabs are visible
+			context.$controls.show();
+		},
+		'addView': function( options ) {
+			// Adds a tab
+			function addTab( options ) {
+				// Ensure that buttons and tabs are visible
+				context.$controls.show();
+				// Return the newly appended tab
+				return $( '<div></div>' )
+					.attr( 'rel', 'wikiEditor-ui-view-' + options.name )
+					.addClass( context.view == options.name ? 'current' : null )
+					.append( $( '<a></a>' )
+						.attr( 'href', '#' )
+						.click( function( event ) {
+							context.$ui.find( '.wikiEditor-ui-view' ).hide();
+							context.$ui.find( '.' + $(this).parent().attr( 'rel' ) ).show();
+							context.$tabs.find( 'div' ).removeClass( 'current' );
+							$(this).parent().addClass( 'current' );
+							$(this).blur();
+							if ( 'init' in options && typeof options.init == 'function' ) {
+								options.init( context );
+							}
+							event.preventDefault();
+						} )
+						.text( $.wikiEditor.autoMsg( options, 'title' ) )
+					)
+					.appendTo( context.$tabs );
+			}
+			// Automatically add the previously not-needed wikitext tab
+			if ( !context.$tabs.children().size() ) {
+				addTab( { 'name': 'wikitext', 'titleMsg': 'wikieditor-wikitext-tab' } );
+			}
+			// Add the tab for the view we were actually asked to add
+			addTab( options );
+			// Return newly appended view
+			return $( '<div></div>' )
+				.addClass( 'wikiEditor-ui-view wikiEditor-ui-view-' + options.name )
+				.hide()
+				.appendTo( context.$ui );
+		},
 		/**
 		 * Set up the magic iframe
 		 */
@@ -1574,6 +1616,7 @@ if ( typeof context == 'undefined' ) {
 		},
 		/**
 		 * Gets the currently selected text in the content
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'getSelection': function() {
 			var retval;
@@ -1592,6 +1635,7 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Inserts text at the begining and end of a text selection, optionally inserting text at the caret when
 		 * selection is empty.
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'encapsulateSelection': function( options ) {
 			// TODO: IE
@@ -1641,6 +1685,7 @@ if ( typeof context == 'undefined' ) {
 		},
 		/**
 		 * Gets the position (in resolution of bytes not nessecarily characters) in a textarea
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'getCaretPosition': function( options ) {
 			// FIXME: Character-based functions aren't useful for the magic iframe
@@ -1649,6 +1694,7 @@ if ( typeof context == 'undefined' ) {
 		},
 		/**
 		 * Sets the selection of the content
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 * 
 		 * @param start Character offset of selection start
 		 * @param end Character offset of selection end
@@ -1659,6 +1705,7 @@ if ( typeof context == 'undefined' ) {
 		},
 		/**
 		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'scrollToCaretPosition': function( options ) {
 			// ...
@@ -1666,6 +1713,8 @@ if ( typeof context == 'undefined' ) {
 		},
 		/**
 		 * Scroll an element to the top of the iframe
+		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
+		 * 
 		 * @param $element jQuery object containing an element in the iframe
 		 * @param force If true, scroll the element even if it's already visible
 		 */
@@ -1681,19 +1730,34 @@ if ( typeof context == 'undefined' ) {
 	/* Base UI Construction */
 	
 	// Encapsulate the textarea with some containers for layout
-	$(this)
+	context.$textarea
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-wikitext' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-view wikiEditor-ui-view-wikitext' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );	
-	// Get a reference to the outer container
-	context.$ui = $(this).parent().parent().parent().parent();
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
+	
+	context.$ui = context.$textarea.parent().parent().parent().parent().parent();
+	context.$wikitext = context.$textarea.parent().parent().parent().parent();
+	// Add in tab and button containers
+	context.$wikitext
+		.before(
+			$( '<div></div>' ).addClass( 'wikiEditor-ui-controls' )
+				.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-tabs' ) )
+				.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-buttons' ) )
+		)
+		.before( $( '<div style="clear:both;"></div>' ) );
+	context.$controls = context.$ui.find( '.wikiEditor-ui-buttons' ).hide();
+	context.$buttons = context.$ui.find( '.wikiEditor-ui-buttons' );
+	context.$tabs = context.$ui.find( '.wikiEditor-ui-tabs' );
+	// Clear all floating after the UI
 	context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 	// Attach a right container
-	context.$ui.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-right' ) );
+	context.$wikitext.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-right' ) );
 	// Attach a top container to the left pane
-	context.$ui.find( '.wikiEditor-ui-left' ).prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
+	context.$wikitext.find( '.wikiEditor-ui-left' ).prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
+	// Setup the intial view
+	context.view = 'wikitext';
 	
 	/* Magic IFRAME Construction */
 	
@@ -2961,41 +3025,75 @@ fn: {
 	 * @param config Configuration object to create module from
 	 */
 	create: function( context, config ) {
-		mvJsLoader.doLoad( [ '$j.ui', '$j.ui.tabs' ], function() {
-			if ( 'preview' in context.modules )
-				return;
-			
-			var iframeHTML = context.$content.html();
-			context.$ui
-				.wrapInner( $( '<div />' )
-					.addClass( 'wikiEditor-tab-edit' )
-					.attr( 'id', 'wikiEditor-' + context.instance + '-tab-edit' )
-				)
-				.wrapInner( $( '<div />' )
-					.addClass( 'wikiEditor-tabs' )
+		if ( 'preview' in context.modules ) {
+			return;
+		}
+		context.modules.preview = {
+			'previousText': null,
+		};
+		context.$preview = context.fn.addView( {
+			'name': 'preview',
+			'titleMsg': 'wikieditor-preview-tab',
+			'init': function( context ) {
+				// Gets the latest copy of the wikitext
+				var wikitext = context.fn.getContents();
+				// Aborts when nothing has changed since the last preview
+				if ( context.modules.preview.previousText == wikitext ) {
+					return;
+				}
+				context.$preview.find( '.wikiEditor-preview-contents' ).empty();
+				context.$preview.find( '.wikiEditor-preview-loading' ).show();
+				$.post(
+					wgScriptPath + '/api.php',
+					{
+						'action': 'parse',
+						'title': wgPageName,
+						'text': wikitext,
+						'prop': 'text',
+						'pst': '',
+						'format': 'json'
+					},
+					function( data ) {
+						if (
+							data.parse == undefined ||
+							data.parse.text == undefined ||
+							data.parse.text['*'] == undefined
+						) {
+							return;
+						}
+						context.modules.preview.previousText = wikitext;
+						context.$preview.find( '.wikiEditor-preview-loading' ).hide();
+						context.$preview.find( '.wikiEditor-preview-contents' ).html( data.parse.text['*'] );
+					},
+					'json'
 				);
-			var tabList = context.$ui.children();
-			var editTab = tabList.children();
-			
-			var loadingMsg = gM( 'wikieditor-preview-loading' );
-			var previewTab = $( '<div />' )
-				.addClass( 'wikiEditor-tab-preview' )
-				.attr( 'id', 'wikiEditor-' + context.instance + '-tab-preview' )
-				.append( $( '<div />' )
+			}
+		} );
+		var loadingMsg = gM( 'wikieditor-preview-loading' );
+		context.$preview
+			.append( $( '<div />' )
+				.addClass( 'wikiEditor-preview-loading' )
+				.append( $( '<img />' )
 					.addClass( 'wikiEditor-preview-spinner' )
-					.append( $( '<img />' )
-						.attr( {
-							'src': $.wikiEditor.imgPath + 'dialogs/loading.gif',
-							'alt': loadingMsg,
-							'title': loadingMsg
-						} )
-					)
+					.attr( {
+						'src': $.wikiEditor.imgPath + 'dialogs/loading.gif',
+						'valign': 'absmiddle',
+						'alt': loadingMsg,
+						'title': loadingMsg
+					} )
 				)
-				.append( $( '<div />' )
-					.addClass( 'wikiEditor-preview-contents' )
+				.append(
+					$( '<span></span>' ).text( loadingMsg )
 				)
-				.insertAfter( editTab );
-			
+			)
+			.append( $( '<div />' )
+				.addClass( 'wikiEditor-preview-contents' )
+			);
+		
+		/*
+		 * This code needs to move somewhere else - maybe it's very own module?
+		 * 
+		mvJsLoader.doLoad( [ '$j.ui' ], function() {
 			// Build the dialog behind the Publish button
 			var dialogID = 'wikiEditor-' + context.instance + '-savedialog';
 			$.wikiEditor.modules.dialogs.fn.create( context, { previewsave: {
@@ -3071,7 +3169,6 @@ fn: {
 				},
 				resizeme: false
 			} } );
-			
 			// Paranoia: initialize context.modules before running
 			// tabs() and binding event handlers
 			context.modules.preview = {
@@ -3081,7 +3178,6 @@ fn: {
 				'saveDialog': $( '#' + dialogID ),
 				'prevText': null
 			};
-
 			tabList
 				.append( $( '<ul />' )
 					.append( $( '<li />' )
@@ -3125,52 +3221,12 @@ fn: {
 			// FIXME: Don't use jQuery UI tabs, implement our own tabs
 			tabList.closest( '.ui-tabs' ).removeClass( 'ui-widget' );
 			
-			// The magic iframe doesn't like being wrapped, restore it
-			context.fn.setup();
-			context.$content.html( iframeHTML );
 		});
-	},
-	
-	showPreview: function( context ) {
-		// FIXME: This is a temp hack, which should be superseded by context.fn.something
-		var wikitext = $( '<div />' )
-				.html( context.$content.html().replace( /\<br\>/g, "\n" ) )
-				.text();
-		
-		if ( context.modules.preview.prevText == wikitext )
-			// Nothing changed since the last preview
-			return;
-		
-		context.modules.preview.previewTab
-			.children( '.wikiEditor-preview-contents' )
-			.empty();
-		context.modules.preview.previewTab
-			.children( '.wikiEditor-preview-spinner' )
-			.show();
-		
-		$.post( wgScriptPath + '/api.php', {
-			'action': 'parse',
-			'title': wgPageName,
-			'text': wikitext,
-			'prop': 'text',
-			'pst': '',
-			'format': 'json'
-		}, function( data ) {
-			if ( data.parse == undefined || data.parse.text == undefined ||
-					data.parse.text['*'] == undefined )
-				return;
-			context.modules.preview.prevText = wikitext;
-			context.modules.preview.previewTab
-				.children( '.wikiEditor-preview-spinner' )
-				.hide();
-			context.modules.preview.previewTab
-				.children( '.wikiEditor-preview-contents' )
-				.html( data.parse.text['*'] );
-		}, 'json' );
+			*/
 	}
 }
-};
-})( jQuery );/* Highlight module for wikiEditor */
+
+}; } )( jQuery );/* Highlight module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.highlight = {
 
 /**
