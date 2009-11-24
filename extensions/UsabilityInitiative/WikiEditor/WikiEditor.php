@@ -51,6 +51,7 @@ $wgAutoloadClasses['WikiEditorHooks'] = dirname( __FILE__ ) . '/WikiEditor.hooks
 $wgExtensionMessagesFiles['WikiEditor'] = dirname( __FILE__ ) . '/WikiEditor.i18n.php';
 $wgExtensionMessagesFiles['WikiEditorHighlight'] = dirname( __FILE__ ) . '/Modules/Highlight/Highlight.i18n.php';
 $wgExtensionMessagesFiles['WikiEditorPreview'] = dirname( __FILE__ ) . '/Modules/Preview/Preview.i18n.php';
+$wgExtensionMessagesFiles['WikiEditorPublish'] = dirname( __FILE__ ) . '/Modules/Publish/Publish.i18n.php';
 $wgExtensionMessagesFiles['WikiEditorToc'] = dirname( __FILE__ ) . '/Modules/Toc/Toc.i18n.php';
 $wgExtensionMessagesFiles['WikiEditorToolbar'] = dirname( __FILE__ ) . '/Modules/Toolbar/Toolbar.i18n.php';
 

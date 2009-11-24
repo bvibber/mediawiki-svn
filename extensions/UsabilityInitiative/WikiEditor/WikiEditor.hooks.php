@@ -13,7 +13,8 @@ class WikiEditorHooks {
 	static $scripts = array(
 		'raw' => array(
 			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 1 ),
-			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 1 ),
+			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 2 ),
+			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 1 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 1 ),
 			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 8 ),
 		),
@@ -61,14 +62,29 @@ class WikiEditorHooks {
 			'messages' => array(
 				'wikieditor-preview-tab',
 				'wikieditor-preview-loading',
-				'wikieditor-preview-button-publish',
-				'wikieditor-preview-button-cancel',
-				'wikieditor-preview-savedialog-title',
-				'wikieditor-preview-savedialog-summary',
-				'wikieditor-preview-savedialog-minor',
-				'wikieditor-preview-savedialog-watch',
-				'wikieditor-preview-savedialog-publish',
-				'wikieditor-preview-savedialog-goback',
+			),
+		),
+		'publish' => array(
+			'i18n' => 'WikiEditorPublish',
+			'preferences' => array(
+				'enable' => array(
+					'key' => 'wikieditor-publish',
+					'ui' => array(
+						'type' => 'toggle',
+						'label-message' => 'wikieditor-publish-preference',
+						'section' => 'editing/experimental',
+					),
+				),
+			),
+			'messages' => array(
+				'wikieditor-publish-button-publish',
+				'wikieditor-publish-button-cancel',
+				'wikieditor-publish-dialog-title',
+				'wikieditor-publish-dialog-summary',
+				'wikieditor-publish-dialog-minor',
+				'wikieditor-publish-dialog-watch',
+				'wikieditor-publish-dialog-publish',
+				'wikieditor-publish-dialog-goback',
 			),
 		),
 		'toc' => array(

@@ -22,16 +22,18 @@ PLUGINS := \
 	js/plugins/jquery.textSelection.js\
 	js/plugins/jquery.wikiEditor.js\
 	js/plugins/jquery.wikiEditor.dialogs.js\
-	js/plugins/jquery.wikiEditor.toolbar.js\
-	js/plugins/jquery.wikiEditor.toc.js\
+	js/plugins/jquery.wikiEditor.highlight.js\
 	js/plugins/jquery.wikiEditor.preview.js\
-	js/plugins/jquery.wikiEditor.highlight.js
+	js/plugins/jquery.wikiEditor.publish.js\
+	js/plugins/jquery.wikiEditor.toc.js\
+	js/plugins/jquery.wikiEditor.toolbar.js
 
 WIKIEDITOR_MODULES := \
-	WikiEditor/Modules/Toolbar/Toolbar.js\
-	WikiEditor/Modules/Toc/Toc.js\
+	WikiEditor/Modules/Highlight/Highlight.js\
 	WikiEditor/Modules/Preview/Preview.js\
-	WikiEditor/Modules/Highlight/Highlight.js
+	WikiEditor/Modules/Publish/Publish.js\
+	WikiEditor/Modules/Toc/Toc.js\
+	WikiEditor/Modules/Toolbar/Toolbar.js
 
 VECTOR_MODULES := \
 	Vector/Modules/CollapsibleTabs/CollapsibleTabs.js\

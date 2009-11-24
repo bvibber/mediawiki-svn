@@ -1,3 +1,51 @@
+/* JavaScript for WikiEditor Highlight module */
+
+js2AddOnloadHook( function() {
+	// Check preferences for highlight
+	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.highlight && wgWikiEditorPreferences.highlight.enable ) ) {
+		return true;
+	}
+	// Add the highlight module
+	if ( $j.wikiEditor ) {
+		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'highlight' );
+	}
+});
+/* JavaScript for WikiEditor Preview module */
+
+js2AddOnloadHook( function() {
+	// Check preferences for preview
+	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.preview && wgWikiEditorPreferences.preview.enable ) ) {
+		return true;
+	}
+	// Add the preview module
+	if ( $j.wikiEditor ) {
+		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'preview' );
+	}
+});
+/* JavaScript for WikiEditor Publish module */
+
+js2AddOnloadHook( function() {
+	// Check preferences for preview
+	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.publish && wgWikiEditorPreferences.publish.enable ) ) {
+		return true;
+	}
+	// Add the preview module
+	if ( $j.wikiEditor ) {
+		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'publish' );
+	}
+});
+/* JavaScript for WikiEditor Toc module */
+
+js2AddOnloadHook( function() {
+	// Check preferences for toolbar
+	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.toc && wgWikiEditorPreferences.toc.enable ) ) {
+		return true;
+	}
+	// Add the toc module
+	if ( $j.wikiEditor ) {
+		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'toc' );
+	}
+});
 /* JavaScript for WikiEditor Toolbar module */
 
 js2AddOnloadHook( function() {
@@ -1611,39 +1659,3 @@ js2AddOnloadHook( function() {
 
 } } );
 
-/* JavaScript for WikiEditor Toc module */
-
-js2AddOnloadHook( function() {
-	// Check preferences for toolbar
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.toc && wgWikiEditorPreferences.toc.enable ) ) {
-		return true;
-	}
-	// Add the toc module
-	if ( $j.wikiEditor ) {
-		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'toc' );
-	}
-});
-/* JavaScript for WikiEditor Preview module */
-
-js2AddOnloadHook( function() {
-	// Check preferences for preview
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.preview && wgWikiEditorPreferences.preview.enable ) ) {
-		return true;
-	}
-	// Add the preview module
-	if ( $j.wikiEditor ) {
-		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'preview' );
-	}
-});
-/* JavaScript for WikiEditor Highlight module */
-
-js2AddOnloadHook( function() {
-	// Check preferences for highlight
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.highlight && wgWikiEditorPreferences.highlight.enable ) ) {
-		return true;
-	}
-	// Add the highlight module
-	if ( $j.wikiEditor ) {
-		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'highlight' );
-	}
-});
