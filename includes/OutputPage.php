@@ -1073,6 +1073,7 @@ class OutputPage {
 			$response->header( 'Cache-Control: no-cache, no-store, max-age=0, must-revalidate' );
 			$response->header( 'Pragma: no-cache' );
 		}
+		wfRunHooks('CacheHeadersAfterSet', array( $this ) );
 	}
 
 	/**
