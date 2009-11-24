@@ -22,6 +22,7 @@
 $wgWikiEditorModules = array(
 	'highlight' => array( 'global' => false, 'user' => true ),
 	'preview' => array( 'global' => false, 'user' => true ),
+	'publish' => array( 'global' => false, 'user' => true ),
 	'toc' => array( 'global' => false, 'user' => true ),
 	'toolbar' => array( 'global' => false, 'user' => true ),
 );
