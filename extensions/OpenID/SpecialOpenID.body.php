@@ -63,13 +63,13 @@ class SpecialOpenID extends SpecialPage {
 	}
 
 	function xriToUrl( $xri ) {
-		return 'http://xri.net/' . OpenIDXriBase( $xri );
+		return 'http://xri.net/' . SpecialOpenID::xriBase( $xri );
 	}
 
 	static function OpenIDToUrl( $openid ) {
 		/* ID is either an URL already or an i-name */
 		if ( Auth_Yadis_identifierScheme( $openid ) == 'XRI' ) {
-			return OpenIDXriToUrl( $openid );
+			return SpecialOpenID::xriToUrl( $openid );
 		} else {
 			return $openid;
 		}
