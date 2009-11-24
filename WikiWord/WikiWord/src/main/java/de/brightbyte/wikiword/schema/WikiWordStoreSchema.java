@@ -297,22 +297,34 @@ public class WikiWordStoreSchema extends DatabaseSchema {
 	}
 	
 	
-	public String encodeSet(ConceptType[] values) {
-		int[] vv = new int[values.length];
-		for (int i=0; i<values.length; i++) vv[i] = values[i].getCode();
-		return encodeSet(vv);
+	public String encodeSet(ConceptType[] values) throws PersistenceException {
+		try {
+			int[] vv = new int[values.length];
+			for (int i=0; i<values.length; i++) vv[i] = values[i].getCode();
+			return encodeSet(vv);
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
 	}
 	
-	public String encodeSet(ResourceType[] values) {
-		int[] vv = new int[values.length];
-		for (int i=0; i<values.length; i++) vv[i] = values[i].getCode();
-		return encodeSet(vv);
+	public String encodeSet(ResourceType[] values) throws PersistenceException {
+		try {
+			int[] vv = new int[values.length];
+			for (int i=0; i<values.length; i++) vv[i] = values[i].getCode();
+			return encodeSet(vv);
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
 	}
 	
-	public String encodeSet(Namespace[] values) {
-		int[] vv = new int[values.length];
-		for (int i=0; i<values.length; i++) vv[i] = values[i].getNumber();
-		return encodeSet(vv);
+	public String encodeSet(Namespace[] values) throws PersistenceException {
+		try {
+			int[] vv = new int[values.length];
+			for (int i=0; i<values.length; i++) vv[i] = values[i].getNumber();
+			return encodeSet(vv);
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
 	}
 	
 	

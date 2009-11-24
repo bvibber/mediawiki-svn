@@ -18,10 +18,12 @@ import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.ExtractionRule;
 import de.brightbyte.wikiword.ResourceType;
+import de.brightbyte.wikiword.disambig.ConceptFeatures;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.schema.AliasScope;
+import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema.ReferenceListEntrySpec;
 import de.brightbyte.wikiword.store.GroupNameTranslator;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
 
@@ -419,6 +421,15 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
 		public DatasetIdentifier getDatasetIdentifier() {
 			return dataset;
+		}
+
+		public int buildConceptPropertyCache(String targetField, String propertyTable, String propertyConceptField, ReferenceListEntrySpec spec, String threshold) throws PersistenceException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		public void storeConceptFeatures(ConceptFeatures<LocalConcept> features) throws PersistenceException {
+			log("+ storeConceptFeatures: concept = "+features.getConceptId()+", features = "+features.getFeatureVector());
 		}
 		
 	}

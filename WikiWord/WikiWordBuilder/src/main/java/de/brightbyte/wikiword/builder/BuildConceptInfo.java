@@ -2,8 +2,13 @@ package de.brightbyte.wikiword.builder;
 
 import java.io.IOException;
 
+import de.brightbyte.data.cursor.CursorProcessor;
+import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.disambig.ConceptFeatures;
+import de.brightbyte.wikiword.disambig.FeatureFetcher;
 import de.brightbyte.wikiword.model.WikiWordConcept;
+import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.store.builder.ConceptInfoStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 
@@ -12,9 +17,9 @@ import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
  * ImportDump can be invoked as a standalone program, use --help as a
  * command line parameter for usage information.
  */
-public class BuildConceptInfo extends ImportApp<WikiWordConceptStoreBuilder<? extends WikiWordConcept>> {
+public class BuildConceptInfo<C extends WikiWordConcept> extends ImportApp<WikiWordConceptStoreBuilder<C>> {
 
-	protected ConceptInfoStoreBuilder infoStore;
+	protected ConceptInfoStoreBuilder<C> infoStore;
 	
 	public BuildConceptInfo() {
 		super("BuildConceptInfo", true, true);
@@ -39,10 +44,38 @@ public class BuildConceptInfo extends ImportApp<WikiWordConceptStoreBuilder<? ex
 	
 	@Override
 	protected void run() throws Exception {
-		section("-- build info --------------------------------------------------");
+		section("-- build concept property cache --------------------------------------------------");
 		this.infoStore.buildConceptInfo();
+
+		section("-- build concept feature vector cache --------------------------------------------------");
+		if (agenda.beginTask("buildConceptInfo", "buildConceptFeatureVectors")) {
+			   //TODO: cleanup incomplete run
+				buildConceptFeatureVectors();
+				agenda.endTask("buildConceptInfo", "buildConceptFeatureVectors");
+		}
 	}	
 	
+	protected FeatureFetcher<C> featureFetcher;
+	
+	private void buildConceptFeatureVectors() {
+		CursorProcessor<C> p = new CursorProcessor<C>() {
+		
+			public void process(DataCursor<C> c) throws Exception {
+				
+				C r;
+				while ((r = c.next())!=null) {
+					ConceptFeatures<C> features = featureFetcher.getFeatures(r);
+					infoStore.storeConceptFeatures(features);
+				}
+				
+				infoStore.flush();
+			}
+		
+		};
+		
+		conceptStore.processConcepts(p);
+	}
+
 	public static void main(String[] argv) throws Exception {
 		BuildConceptInfo app = new BuildConceptInfo();
 		app.launch(argv);

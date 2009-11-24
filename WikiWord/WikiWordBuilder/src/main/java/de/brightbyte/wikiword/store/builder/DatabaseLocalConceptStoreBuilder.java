@@ -1397,6 +1397,23 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			}
 		}
 				
+
+		protected static DatabaseDataSet.Factory<LocalConceptReference> localConceptReferenceFactory = new DatabaseDataSet.Factory<LocalConceptReference>() {
+			public LocalConceptReference newInstance(ResultSet row) throws SQLException, PersistenceException {
+				int id = row.getInt("id");
+				String name = asString(row.getObject("name"));
+
+				return new LocalConceptReference(id, name, -1, -1);
+			}
+		};
+
+		public int processConcepts(final CursorProcessor<LocalConceptReference> processor) throws PersistenceException {
+			String sql = "SELECT * FROM "+conceptTable.getSQLName();
+			String where = "type = "+ConceptType.UNKNOWN.getCode();
+			
+			DatabaseAccess.SimpleChunkedQuery query = new DatabaseAccess.SimpleChunkedQuery(getDatabaseAccess(), "processUnknownConcepts", "process", sql, where, null, conceptTable, "id");
+			return executeChunkedQuery(query, 1, localConceptReferenceFactory, processor);
+		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////

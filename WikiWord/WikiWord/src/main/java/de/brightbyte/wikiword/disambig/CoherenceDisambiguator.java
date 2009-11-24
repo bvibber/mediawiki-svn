@@ -19,15 +19,15 @@ import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.WikiWordRanking;
 import de.brightbyte.wikiword.store.LocalConceptStore;
 
-public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
+public class CoherenceDisambiguator extends AbstractDisambiguator {
 	
 	protected int frequencyThreshold = 2; //FIXME: use complex cutoff specifier! 
 	protected double scoreThreshold = 0.002;
 	protected double popularityBias = 0.01;
-	protected Similarity<LabeledVector<K>> similarityMeasure;
-	protected FeatureFetcher<K> featureFetcher;
+	protected Similarity<LabeledVector<Integer>> similarityMeasure;
+	protected FeatureFetcher<LocalConcept> featureFetcher;
 	
-	public CoherenceDisambiguator(LocalConceptStore conceptStore, FeatureFetcher<K> featureFetcher, Similarity<LabeledVector<K>> sim) {
+	public CoherenceDisambiguator(LocalConceptStore conceptStore, FeatureFetcher<LocalConcept> featureFetcher, Similarity<LabeledVector<Integer>> sim) {
 		super(conceptStore);
 		
 		if (sim==null) throw new NullPointerException();
@@ -40,16 +40,16 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		return featureFetcher;
 	}
 
-	public void setFeatureFetcher(FeatureFetcher<K> featureFetcher) {
+	public void setFeatureFetcher(FeatureFetcher<LocalConcept> featureFetcher) {
 		this.featureFetcher = featureFetcher;
 	}
 
-	public Similarity<LabeledVector<K>> getSimilarityMeasure() {
+	public Similarity<LabeledVector<Integer>> getSimilarityMeasure() {
 		return similarityMeasure;
 	}
 
 	public void setSimilarityMeasure(
-			Similarity<LabeledVector<K>> similarityMeasure) {
+			Similarity<LabeledVector<Integer>> similarityMeasure) {
 		if (similarityMeasure==null) throw new NullPointerException();
 		this.similarityMeasure = similarityMeasure;
 	}
@@ -229,10 +229,10 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 						d = similarities.get(a, b);
 					}
 					else {
-						LabeledVector<K> fa = featureFetcher.getFeatures(a);
-						LabeledVector<K> fb = featureFetcher.getFeatures(b);
+						ConceptFeatures<LocalConcept> fa = featureFetcher.getFeatures(a);
+						ConceptFeatures<LocalConcept> fb = featureFetcher.getFeatures(b);
 						
-						d = similarityMeasure.similarity(fa, fb);
+						d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
 						similarities.set(a, b, d);
 					}
 				}

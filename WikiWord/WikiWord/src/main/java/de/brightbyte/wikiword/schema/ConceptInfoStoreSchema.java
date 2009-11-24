@@ -49,6 +49,7 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 	
 	protected EntityTable conceptInfoTable;
 	protected EntityTable conceptDescriptionTable;
+	protected EntityTable conceptFeaturesTable;
 	
 	private String fields(String... f) {
 		if (f.length==0) return null;
@@ -115,7 +116,7 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 		setGroupConcatMaxLen(listBlobSize); //TODO: if it's larger currently, don't shrink!
 		
 		conceptInfoTable = new EntityTable(this, "concept_info", getDefaultTableAttributes());
-		conceptInfoTable.addField( new DatabaseField(this, "concept", "INT", "AUTO_INCREMENT", true, KeyType.PRIMARY ) );
+		conceptInfoTable.addField( new DatabaseField(this, "concept", "INT", null, true, KeyType.PRIMARY ) );
 		conceptInfoTable.addField( new DatabaseField(this, "inlinks", getTextType(listBlobSize), null, false, null ) );
 		conceptInfoTable.addField( new DatabaseField(this, "outlinks", getTextType(listBlobSize), null, false, null ) );
 		conceptInfoTable.addField( new DatabaseField(this, "narrower", getTextType(listBlobSize), null, false, null ) );
@@ -129,11 +130,17 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 
 		if (description) {
 			conceptDescriptionTable = new EntityTable(this, "concept_description", getDefaultTableAttributes());
-			conceptDescriptionTable.addField( new DatabaseField(this, "concept", "INT", "AUTO_INCREMENT", true, KeyType.PRIMARY ) );
+			conceptDescriptionTable.addField( new DatabaseField(this, "concept", "INT", null, true, KeyType.PRIMARY ) );
 			conceptDescriptionTable.addField( new DatabaseField(this, "terms", getTextType(listBlobSize), null, false, null ) );
 			conceptDescriptionTable.setAutomaticField(null);
 			addTable(conceptDescriptionTable);
 		}
+
+		conceptFeaturesTable = new EntityTable(this, "concept_features", getDefaultTableAttributes());
+		conceptFeaturesTable.addField( new DatabaseField(this, "concept", "INT", null, true, KeyType.PRIMARY ) );
+		conceptFeaturesTable.addField( new DatabaseField(this, "features", getFieldType(byte[].class), null, false, null ) );
+		conceptFeaturesTable.setAutomaticField(null);
+		addTable(conceptFeaturesTable);
 	}
 	
 	@Override

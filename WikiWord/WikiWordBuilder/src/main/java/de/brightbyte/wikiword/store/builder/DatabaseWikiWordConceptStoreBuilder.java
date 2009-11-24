@@ -3,6 +3,7 @@ package de.brightbyte.wikiword.store.builder;
 import static de.brightbyte.db.DatabaseUtil.asInt;
 import static de.brightbyte.db.DatabaseUtil.asString;
 
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -26,6 +27,7 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.Processor;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.disambig.ConceptFeatures;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
@@ -624,13 +626,17 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		}
 		
 		protected void storeStatsEntry(String block, String name, double value) throws PersistenceException {
-			//TODO: inserter?...
-			String sql = "REPLACE INTO "+statsTable.getSQLName()+" (block, name, value) VALUES (" 
-					+database.encodeValue(block)+", " 
-					+database.encodeValue(name)+", " 
-					+database.encodeValue(value)+") ";
-			
-			executeUpdate("storeStatsEntry", sql);
+			try {
+				//TODO: inserter?...
+				String sql = "REPLACE INTO "+statsTable.getSQLName()+" (block, name, value) VALUES (" 
+						+database.encodeValue(block)+", " 
+						+database.encodeValue(name)+", " 
+						+database.encodeValue(value)+") ";
+				
+				executeUpdate("storeStatsEntry", sql);
+			} catch (SQLException e) {
+				throw new PersistenceException(e);
+			}
 		}
 		
 		protected void storeStatsEntries(String block, ResultSet rs, GroupNameTranslator translator) throws PersistenceException {
@@ -679,13 +685,17 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 				String name = e.getKey();
 				double value = e.getValue().doubleValue();
 				
-				sql.append( "(" ); 
-				sql.append(database.encodeValue(block));
-				sql.append(", "); 
-				sql.append(database.encodeValue(name));
-				sql.append(", "); 
-				sql.append(database.encodeValue(value));
-				sql.append( ")" ); 
+				try {
+					sql.append( "(" ); 
+					sql.append(database.encodeValue(block));
+					sql.append(", "); 
+					sql.append(database.encodeValue(name));
+					sql.append(", "); 
+					sql.append(database.encodeValue(value));
+					sql.append( ")" );
+				} catch (SQLException e1) {
+					throw new PersistenceException(e1);
+				} 
 			}
 			
 			executeUpdate("storeStatsEntries", sql.toString());
@@ -776,12 +786,18 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		protected WikiWordConceptStoreSchema conceptDatabase;
 		
 		protected EntityTable conceptInfoTable;
+		protected EntityTable conceptFeaturesTable;
+		protected Inserter conceptFeaturesInserter;
 
 		protected DatabaseConceptInfoStoreBuilder(ConceptInfoStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
 			super(database, tweaks, agenda);
 			
 			Inserter conceptInfoInserter = configureTable("concept_info", 64, 1024);
 			conceptInfoTable = (EntityTable)conceptInfoInserter.getTable();
+			
+			conceptFeaturesInserter = configureTable("concept_features", 64, 1024);
+			conceptFeaturesInserter.setLenient(true); //ignore dupes. //TODO: replace instead!
+			conceptFeaturesTable = (EntityTable)conceptFeaturesInserter.getTable();
 		}	
 
 		public void buildConceptInfo() throws PersistenceException {
@@ -848,6 +864,11 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 			return executeChunkedUpdate("prepareConceptCache", cacheTable.getName()+"."+conceptIdField, sql, null, t, "id");
 		}
 		
+		public int buildConceptPropertyCache(String targetField, String propertyTable, String propertyConceptField,
+				ReferenceListEntrySpec spec, String threshold) throws PersistenceException {
+			return buildConceptPropertyCache(conceptInfoTable, "concept", targetField, propertyTable, propertyConceptField, spec, false, threshold, 1);
+		}
+		
 		protected int buildConceptPropertyCache(
 				final DatabaseTable cacheTable, final String cacheIdField, 
 				final String propertyField, final String realtion, final String relConceptField, 
@@ -889,5 +910,19 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 			return executeChunkedUpdate(query, chunkFactor);
 		}
 
+		/**
+		 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeRawText(int, java.lang.String)
+		 */
+		public void  storeConceptFeatures(ConceptFeatures<T> features) throws PersistenceException {
+			try {
+				if (conceptFeaturesInserter==null) conceptFeaturesInserter = conceptFeaturesTable.getInserter();
+				
+				conceptFeaturesInserter.updateInt("concept", features.getConceptId());
+				conceptFeaturesInserter.updateBlob("features", features.getFeatureVectorData());
+				conceptFeaturesInserter.updateRow();
+			} catch (SQLException e) {
+				throw new PersistenceException(e);
+			}
+		}
 	}
 }

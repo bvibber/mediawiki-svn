@@ -7,14 +7,14 @@ import de.brightbyte.util.UncheckedPersistenceException;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 
-public class ConceptRelatedness<K> implements Similarity<WikiWordConcept> {
+public class ConceptRelatedness<C extends WikiWordConcept> implements Similarity<C> {
 
-	public static class Relatedness {
+	public static class Relatedness<C extends WikiWordConcept> {
 		public final double relatedness;
-		public final WikiWordConceptReference a;
-		public final WikiWordConceptReference b;
+		public final WikiWordConceptReference<C> a;
+		public final WikiWordConceptReference<C> b;
 		
-		public Relatedness(final double relatedness, final WikiWordConceptReference a, final WikiWordConceptReference b) {
+		public Relatedness(final double relatedness, final WikiWordConceptReference<C> a, final WikiWordConceptReference<C> b) {
 			super();
 			this.relatedness = relatedness;
 			this.a = a;
@@ -27,25 +27,25 @@ public class ConceptRelatedness<K> implements Similarity<WikiWordConcept> {
 		}
 	}
 
-	protected Similarity<LabeledVector<K>> similarityMeasure;
-	protected FeatureFetcher<K> featureFetcher;
+	protected Similarity<LabeledVector<Integer>> similarityMeasure;
+	protected FeatureFetcher<C> featureFetcher;
 
-	public ConceptRelatedness(Similarity<LabeledVector<K>> similarityMeasure, FeatureFetcher<K> featureFetcher) {
+	public ConceptRelatedness(Similarity<LabeledVector<Integer>> similarityMeasure, FeatureFetcher<C> featureFetcher) {
 		this.similarityMeasure = similarityMeasure;
 		this.featureFetcher = featureFetcher;
 	}
 
-	public Relatedness relatedness(WikiWordConcept a, WikiWordConcept b) {
+	public Relatedness relatedness(C a, C b) {
 		double d = similarity(a, b);
-		return new Relatedness(d, a.getReference(), b.getReference());		
+		return new Relatedness<C>(d, a.getReference(), b.getReference());		
 	}
 	
-	public double similarity(WikiWordConcept a, WikiWordConcept b) {
+	public double similarity(C a, C b) {
 		try {
-			LabeledVector<K> fa = featureFetcher.getFeatures(a);
-			LabeledVector<K> fb = featureFetcher.getFeatures(b);
+			ConceptFeatures<C>  fa = featureFetcher.getFeatures(a);
+			ConceptFeatures<C>  fb = featureFetcher.getFeatures(b);
 			
-			double d = similarityMeasure.similarity(fa, fb);
+			double d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
 			return d;
 		} catch (PersistenceException e) {
 			throw new UncheckedPersistenceException(e);

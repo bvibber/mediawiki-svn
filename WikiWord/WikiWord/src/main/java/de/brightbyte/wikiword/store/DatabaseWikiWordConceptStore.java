@@ -376,9 +376,13 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		public DataSet<C> getConcepts(int[] ids)
 			throws PersistenceException {
 		
-			String sql = conceptSelect("-1");
-			sql += " WHERE C.id IN " + database.encodeSet(ids);
-			return new QueryDataSet<C>(database, new ConceptFactory(), "getConcepts", sql, false);
+			try {
+				String sql = conceptSelect("-1");
+				sql += " WHERE C.id IN " + database.encodeSet(ids);
+				return new QueryDataSet<C>(database, new ConceptFactory(), "getConcepts", sql, false);
+			} catch (SQLException e) {
+				throw new PersistenceException(e);
+			}
 		}
 	
 		protected abstract C newConcept(Map<String, Object> data) throws PersistenceException;
