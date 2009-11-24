@@ -376,6 +376,19 @@ $messages['lb'] = array(
 	'multiboilerplate-special-define-in-interface' => 'Textschabloune sinn a [[MediaWiki:Multiboilerplate]] definéiert.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'multiboilerplate-desc' => 'Овозможува да биде избран подготвен текст од паѓачко мени сместено над полето за уредување, при уредувањето на страници',
+	'multiboilerplate-legend' => 'Избор на подготвен текст',
+	'multiboilerplate-submit' => 'Вчитај',
+	'boilerplates' => 'Достапни подготвени текстови',
+	'multiboilerplate-special-pagetext' => 'Овие шаблони можат да се вчитаат како готови при создавањето на страници. (<span class=plainlinks>[{{fullurl:This page does not exist|action=edit}} пример]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Подготвените текстови се дефинирани во LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Подготвените текстови се дефинирани на [[MediaWiki:Multiboilerplate]].',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

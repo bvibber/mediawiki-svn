@@ -132,7 +132,7 @@ $4',
 	'todo-add-queue' => 'أضف الطابور...',
 	'todo-move-queue' => 'انقل إلى الطابور...',
 	'todo-list-for' => 'قائمة للعمل ل $1',
-	'todo-list-change' => 'تغيير',
+	'todo-list-change' => 'غيّر',
 	'todo-list-cancel' => 'ألغِ',
 	'todo-new-item' => 'مدخلة جديدة',
 	'todo-issue-summary' => 'ملخص القضية:',
@@ -1455,6 +1455,42 @@ $4',
 	'todo-form-submit' => 'Wyślij zapytanie',
 	'right-todo' => 'Posiada listę zadań',
 	'right-todosubmit' => 'Ograniczanie dostępu użytkowników do listy zadań',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'todo' => 'lista da fé',
+	'todo-desc' => 'Estension përsonal sperimental [[Special:Todo|lista da fé]]',
+	'todo-tab' => 'da fé',
+	'todo-new-queue' => 'neuv',
+	'todo-mail-subject' => 'Element completà an sla lista da fé ëd $1',
+	'todo-mail-body' => "Ti it l'has ciamà la conferma për pòsta eletrònica dël completament ëd n'element ch'it l'has butà an sla lista an linia da fé ëd $1.
+
+Element: $2
+Butà: $3
+
+Sto element-sì a l'é stàit marcà com completà, con sto coment-sì:
+$4",
+	'todo-invalid-item' => 'Element mancant o pa bon',
+	'todo-update-else-item' => "Tentativ d'agiorné j'element ëd cheidun d'àutr",
+	'todo-unrecognize-type' => 'Sòrt pa arconossùa',
+	'todo-item-list' => 'Tò element',
+	'todo-no-item' => 'Pa gnun element da fé.',
+	'todo-invalid-owner' => 'Assignatari pa bon dzora sto element-sì',
+	'todo-add-queue' => 'Gionta coa ...',
+	'todo-move-queue' => 'Tramuda a la coa ...',
+	'todo-list-for' => 'Lista da fé për $1',
+	'todo-list-change' => 'Cambia',
+	'todo-list-cancel' => 'Scancela',
+	'todo-new-item' => 'Element neuv',
+	'todo-form-details' => 'Detaj',
+	'todo-form-email' => "Për arsèive notìfiche për pòsta eletrònica quand che l'element a l'é sarà, dà toa adrëssa:",
+	'todo-form-submit' => 'Anseriss la query',
+	'right-todo' => 'Oten la lista da fé',
+	'right-todosubmit' => "Strenz ij drit ëd la lista da fé ëd l'utent",
 );
 
 /** Pashto (پښتو)

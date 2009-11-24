@@ -445,6 +445,20 @@ $messages['lb'] = array(
 	'lua_error_internal' => 'Interne Feeler',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'lua_desc' => 'Додава поддршка во парсерот за вметнати блокови со [http://www.lua.org/ Lua] код',
+	'lua_error' => 'Грешка на ред $1',
+	'lua_extension_notfound' => 'Проширувањето Lua не е конфигурирано',
+	'lua_interp_notfound' => 'Lua интерпретаторот не е пронајден',
+	'lua_error_internal' => 'Внатрешна грешка',
+	'lua_overflow_recursion' => 'Достигнато е ограничувањето за рекурзија',
+	'lua_overflow_loc' => 'Достигната е максималниот број на редови код',
+	'lua_overflow_time' => 'Достигнато е максималното време за извршување',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

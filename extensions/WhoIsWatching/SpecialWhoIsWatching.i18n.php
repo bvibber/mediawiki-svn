@@ -676,6 +676,19 @@ $messages['ru'] = array(
 	'specialwhoiswatchingaddbtn' => 'Добавить выбранных участников',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'whoiswatching' => 'විකි පිටුවක් නරඹමින් සිටින්නේ කවුරුද',
+	'whoiswatching-desc' => 'විකි පිටුවක් නරඹන පරිශීලකයන්ගේ නම් ලැයිස්තුවක් සපයයි',
+	'specialwhoiswatchingthepage' => '% නරඹන්නේ කවුද',
+	'specialwhoiswatchingusage' => 'මෙම විශේෂ පිටුව එය මතදීම භාවිතා කළ නොහැක.
+කරුණාකර මෙම විශේෂ පිටුවට පිවිසුම් ලක්ෂ්‍යයක් නිර්වචනය කිරීමට [[MediaWiki:Number_of_watching_users_pageview]]  පිටුව භාවිතා කරන්න.',
+	'specialwhoiswatchingaddusers' => 'පිටුව බැලීමට පරිශීලකයන් එකතු කරන්න',
+	'specialwhoiswatchingaddbtn' => 'තෝරාගත් පරිශීලකයන් ඇතුල් කරන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

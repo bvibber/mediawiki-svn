@@ -465,8 +465,10 @@ $messages['ru'] = array(
 
 /** Sinhala (සිංහල)
  * @author Asiri wiki
+ * @author Calcey
  */
 $messages['si'] = array(
+	'whosonline' => 'සබැඳිව සිටින්නේ කවුද',
 	'whosonline-desc' => 'දැන‍ට යාවත්කාලීක අනාමික පරිශීලකයෝ [[Special:WhosOnline|a list]] පිවිසි ඇති බව පෙන්වයි.',
 );
 

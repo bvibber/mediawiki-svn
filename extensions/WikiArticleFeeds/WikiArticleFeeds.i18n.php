@@ -312,6 +312,14 @@ $messages['ru'] = array(
 	'wikiarticlefeeds_combined_description' => 'Это составной канал, содержащий материалы из нескольких источников.',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'wikiarticlefeeds-desc' => 'මීඩියාවිකි පිටු මඟින් ජනනය වූ සංග්‍රහයන් නිපදවයි',
+	'wikiarticlefeeds_combined_description' => 'මෙය සංයුක්ත සංග්‍රහයකි,විවිධ සංග්‍රහ මූලාශ්‍රයන්වල අයිතම අඩංගුවේ.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

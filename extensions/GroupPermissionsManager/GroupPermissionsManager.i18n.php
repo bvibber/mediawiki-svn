@@ -217,6 +217,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'removeunusedgroups' => 'ܠܚܝ ܟܢܘܫܬ̈ܐ ܠܐ ܦܠܝܚ̈ܐ',
 	'grouppermissions-search' => 'ܟܢܘܫܬܐ:',
 	'grouppermissions-dologin' => 'ܥܘܠ',
 	'grouppermissions-dosearch' => 'ܙܠ',
@@ -230,6 +231,8 @@ $messages['arc'] = array(
 	'grouppermissions-log-name' => 'ܣܓܠܐ ܕܦܣܣ̈ܐ ܕܟܢܘܫܬܐ',
 	'grouppermissions-sp-save' => 'ܠܒܘܟ',
 	'grouppermissions-sp-addperm' => 'ܐܘܣܦ ܦܣܣܐ',
+	'grouppermissions-rug-success' => 'ܠܘܚܝܐ ܕܡܦܠܚܢ̈ܐ ܡܢ ܟܢܘܫܬ̈ܐ ܠܐ ܦܠܝܚ̈ܐ ܓܡܪ!',
+	'grouppermissions-rug-confirm' => 'ܠܚܝ ܡܦܠܚܢ̈ܐ ܡܢ ܟܢܘܫܬ̈ܐ ܠܐ ܦܠܝܚ̈ܐ',
 	'right-history' => 'ܚܙܝ ܦܐܬܐ ܕܬܫܥܝܬ̈ܐ',
 	'right-search' => 'ܒܨܝܐ ܒܘܝܩܝ',
 	'right-contributions' => 'ܚܙܝ ܦܐܬܐ ܕܫܘܬܦܘܝܬ̈ܐ',

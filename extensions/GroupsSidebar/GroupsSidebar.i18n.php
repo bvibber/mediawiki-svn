@@ -95,6 +95,13 @@ $messages['ksh'] = array(
 	'groupssidebar-desc' => 'Heh dat Zohsazprojramm määd et müjjelesch, en dä Lengks aan de Sigg vun de Sigge bestemmpte Saache för beschtemmpte Jruppe vun Metmaacher ongerzebränge.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'groupssidebar-desc' => 'Dës Erweiderung erlaabt et den Administrateure fir Navigatiounselementer am säitleche Menu a Fonctioun vun de Benotzergruppen, zu deenen de Benotzer gehéiert, derbäizesetzen',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

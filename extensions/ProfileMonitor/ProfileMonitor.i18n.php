@@ -589,6 +589,23 @@ $messages['lt'] = array(
 	'profiling-data-count' => 'Rezultatas',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'profiling' => 'Податоци за профилирање',
+	'profiling-desc' => '[[Special:Profiling|Специјална страница]] за пребарување и преглед на податоци за профилирање',
+	'profiling-process' => 'Низа на процесот:',
+	'profiling-wildcard' => 'Користи џокер',
+	'profiling-ok' => 'ОК',
+	'profiling-data' => 'Податоци за профилирање за „$1“',
+	'profiling-data-process' => 'Процес',
+	'profiling-data-count' => 'Број',
+	'profiling-data-time' => 'Време (сè)',
+	'profiling-data-average' => 'Време (просеч.)',
+	'profiling-no-data' => 'Не беа пронајдени соодветни податоци.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

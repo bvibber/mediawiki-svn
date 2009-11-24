@@ -1109,6 +1109,22 @@ $messages['lv'] = array(
 	'sitematrix-others' => 'Citi Wikimedia projekti',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'sitematrix' => 'Листа на вики-проектите на Викимедија',
+	'sitematrix-summary' => 'Оваа специјална страница е листа на сите вики-проекти на Викимедија.',
+	'sitematrix-desc' => 'Прикажува [[Special:SiteMatrix|листа на вики-проектите на Викимедија]]',
+	'sitematrix-language' => 'Јазик',
+	'sitematrix-project' => 'Име на проектот, меѓупроектна врска и инервики',
+	'sitematrix-others' => 'Други проекти на Викимедија',
+	'sitematrix-total' => "'''Севкупно: $1'''",
+	'sitematrix-sitetotal' => 'Вкупно',
+	'sitematrix-private' => 'приватен',
+	'sitematrix-fishbowl' => 'ограничено уредување',
+);
+
 /** Malayalam (മലയാളം)
  * @author Praveenp
  * @author Shijualex

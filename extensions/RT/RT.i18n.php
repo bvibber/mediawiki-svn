@@ -389,6 +389,26 @@ $messages['lb'] = array(
 	'rt-badquery' => "D'RT-Erweiderung hat bäi der Kommunikatioun mat der RT-Datebank e Problem",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'rt-desc' => 'Збогатен интерфејс за RT (Request Tracker, „Следење на барања“)',
+	'rt-inactive' => 'Проширувањето RT не е активно',
+	'rt-badquery' => 'Проширувањето RT наиде на грешка при комуницирањето со RT базата на податоци',
+	'rt-badlimit' => "Неважечки LIMIT (l) аргумент: мора да биде број.
+Вие наведовте: '''$1'''",
+	'rt-badorderby' => "Неважечки ORDER BY (ob) аргумент: мора да биде стандардно поле (погледајте во документацијата).
+Вие наведовте: '''$1'''",
+	'rt-badstatus' => "Неважечки status (s) аргумент: мора да биде стандардно поле (погледајте во документацијата).
+Вие наведовте: '''$1'''",
+	'rt-badqueue' => "Неважечки queue (q) аргумент: мора да биде прост збор.
+Вие наведовте: '''$1'''",
+	'rt-badowner' => "Неважечки owner (o) аргумент: мора да биде важечко корисничко име.
+Вие наведовте: '''$1'''",
+	'rt-nomatches' => 'Не се пронајдени совпаѓачки RT билети',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand

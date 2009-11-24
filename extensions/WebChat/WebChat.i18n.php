@@ -79,6 +79,13 @@ $messages['bg'] = array(
 	'webchat-desc' => 'Добавя [[Special:WebChat|специална страница]], която се използва за чат в реално време с другите потребители на уикито',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'webchat' => 'ওয়েব চ্যাট',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

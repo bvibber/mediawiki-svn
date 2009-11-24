@@ -597,6 +597,25 @@ $3',
 	'latexdoc-desc' => 'Kollektivt Ännere vu LaTeX Dokumenter',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'latexdoc_no_text' => 'Страницата не содржи текст; не може да се создаде DVI',
+	'latexdoc_cant_create_dir' => 'Не можам да го создадам привремениот директориум $1',
+	'latexdoc_cant_write' => 'Не можам да впишам во податотеката $1',
+	'latexdoc_error' => 'LaTeX грешка
+
+Наредба: $1
+
+Резултат: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Создај DVI',
+	'latexdoc_get_pdf' => 'Создај PDF',
+	'latexdoc-desc' => 'Колаборативно уредување на LaTeX документи',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

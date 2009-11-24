@@ -547,6 +547,28 @@ Vergewëssert Iech datt et{{PLURAL:$3|dat ugefrote Bild|déi ugefrote Biller}} g
 	'smoothgallery-javascript-disabled' => 'JavaScriot gëtt gebraucht fir dës Gallerie korrekt ze gesinn.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'smoothgallery' => 'Глатка галерија',
+	'smoothgallery-desc' => 'Им овозможува на корисниците да создаваат галерии со подигнати слики.
+Ги поддржува највеќето можности на SmoothGallery',
+	'smoothgallery-title' => 'Глатка галерија',
+	'smoothgallery-smoothgallerytitle' => 'Глатка галерија: $1',
+	'smoothgallery-error' => '<b>Грешка со Глатката галерија:</b>',
+	'smoothgallery-gallery-not-found' => 'Побараната галерија не постои.',
+	'smoothgallery-not-found' => 'Не беа додадени слики во галеријата.
+Додајте барем една слика.',
+	'smoothgallery-no-images' => 'Неа беа пронајдени слики во галеријата.
+Проверете дали {{PLURAL:$3|постои бараната слика|постојат сите барани слики}}.
+{{PLURAL:$2|Не беше пронајдена следната слика|Не беа пронајдени следните слики}}: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|Следнава побарана слика е|Следниве побарани слики се}} од неважечки тип: $1',
+	'smoothgallery-unexpected-error' => 'Се случи неочекувана грешка.
+Поднесете пријава за грешката.',
+	'smoothgallery-javascript-disabled' => 'За правилен приказ на галеријата потребен е JavaScript.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

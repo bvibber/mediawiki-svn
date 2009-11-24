@@ -467,6 +467,24 @@ Kuckt och d'[[Special:MostRevisors|'''Säite mat de meeschte Reviseuren''']] an 
 	'cooperationstatistics-legendmore' => 'oder méi Editeuren.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'cooperationstatistics' => 'Статистики за соработка',
+	'cooperationstatistics-desc' => 'Прикажи [[Special:CooperationStatistics|статистики за соработка во главниот именски простор]].',
+	'cooperationstatistics-text' => "Прикажи статистики за соработка во главниот именски простор.
+Од [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] до [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] уредници.<br />
+Видете ги и [[Special:MostRevisors|'''страниците со највеќе уредници''']] и [[Special:MostRevisions|страниците со највеќе ревизии]].",
+	'cooperationstatistics-tablearticle' => 'Број на страници',
+	'cooperationstatistics-tablevalue' => 'Број на уредници',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|страница|страници}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|има|имаат}} $1 {{PLURAL:$1|уредник|уредници}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|има|имаат}} $1 {{PLURAL:$1|уредник|или помалку уредници}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|има|имаат}} $1 или повеќе уредници',
+	'cooperationstatistics-legendmore' => 'или повеќе уредници.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

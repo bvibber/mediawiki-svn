@@ -34,6 +34,15 @@ $messages['af'] = array(
 	'templateinfo-header' => 'Die XML-definisie vir die sjabloon is:',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'templateinfo-desc' => 'Падтрымлівае шаблёны вызначаючы іх будову зьвестак праз меткі XML',
+	'templateinfo-header' => 'XML-вызначэньне гэтага шаблёну:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

@@ -293,6 +293,23 @@ $messages['lb'] = array(
 	'externalpages-bad-url-data' => 'Et ass net gelong den Inhalt vun de Säiten eriwwerzehuelen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'externalpages' => 'Надворешни страници',
+	'externalpages-desc' => 'Извлекува и прикажува страници од други WMF веб-страници',
+	'externalpages-bad-year' => 'Назначена е неправилна година',
+	'externalpages-bad-language' => 'Назначен е неправилен јазик',
+	'externalpages-bad-project' => 'Назначен е неправилен проект',
+	'externalpages-no-project' => 'Нема назначено проект',
+	'externalpages-bad-page' => 'Назначена е неправилна страница',
+	'externalpages-no-page' => 'Нема назначено страница',
+	'externalpages-error-generic' => 'Настана грешка',
+	'externalpages-bad-url' => 'Не можев да ја добијам URL адресата',
+	'externalpages-bad-url-data' => 'Не можев да ја добијам содржината на страницата',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

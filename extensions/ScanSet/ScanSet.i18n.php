@@ -839,6 +839,24 @@ $messages['lt'] = array(
 	'scanset_prev' => '&lt; Ankstesnis',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'scanset-desc' => 'Преглед на слики од скенирани страници од CD/DVD збирките на Андреас Грос (Andreas Grosz)',
+	'scanset_no_name' => 'Error: Мора да назначите збирка скенирани страници, на пр. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Error: Грешка, неважечка или неприсутна збирка на скенирани страници.',
+	'scanset_unrecognised_index_format' => 'Error: Непознат формат на индексот',
+	'scanset_opendir_error' => 'Error: Грешка, не можам да го отворам директориумот $1',
+	'scanset_no_files' => 'Error: Нема податотеки во назначениот директориум.',
+	'scanset_no_volumes' => 'Error: Нема прондајдено директориуми за томови',
+	'scanset_missing_index_file' => 'Error: Индексната податотека $1 не беше најдена',
+	'scanset_index_file_error' => 'Error: Грешка во форматот на податотеката во индексот, во ред $1',
+	'scanset_invalid_volume' => 'Error: Грешен том',
+	'scanset_next' => 'Следно &gt;',
+	'scanset_prev' => '&lt; Претходно',
+);
+
 /** Malayalam (മലയാളം)
  * @author Praveenp
  * @author Shijualex

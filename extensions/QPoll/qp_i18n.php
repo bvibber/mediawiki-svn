@@ -134,6 +134,13 @@ $messages['qqq'] = array(
 * $2 is the name of the user this message refers to (optional - use for GENDER)',
 	'qp_user_missing_polls_link' => 'Parameters:
 * $1 is the name of the user this message refers to (optional - use for GENDER)',
+	'qp_results_line_qpl' => 'Parameters:
+* $1 is a link to the page page name the poll is on with the page title as link label
+* $2 is the poll name in plain text
+* $3 is a link to the poll with link label {{msg-mw|qp_source_link}}
+* $4 is a link to the poll statistics with link label {{msg-mw|qp_stats_link}}
+* $5 is a link to the users that participated in the poll with link label {{msg-mw|qp_users_link}}
+* $6 is a link to the with link label {{msg-mw|qp_not_participated_link}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -205,9 +212,33 @@ Om \'n peiling te stoor, stuur dit sonder dat enig voorstel beantwoord word.',
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'pollresults' => 'Вынікі апытаньняў на гэтым сайце',
+	'qp_desc' => 'Дазваляе стварэньне апытаньняў',
+	'qp_desc-sp' => '[[Special:PollResults|Спэцыяльная старонка]] для прагляду вынікаў апытаньняў',
+	'qp_result_NA' => 'Няма адказу',
+	'qp_result_error' => 'Сынтаксычная памылка',
+	'qp_vote_button' => 'Прагаласаваць',
+	'qp_vote_again_button' => 'Зьмяніць Ваш голас',
+	'qp_polls_list' => 'Сьпіс усіх апытаньняў',
+	'qp_users_list' => 'Сьпіс усіх удзельнікаў',
+	'qp_browse_to_poll' => 'Перайсьці да $1',
+	'qp_browse_to_user' => 'Перайсьці да $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|голас|галасы|галасоў}}',
+	'qp_source_link' => 'Крыніца',
 	'qp_stats_link' => 'Статыстыка',
+	'qp_users_link' => 'Удзельнікі',
+	'qp_voice_link' => 'Голас удзельніка',
+	'qp_voice_link_inv' => 'Голас удзельніка?',
+	'qp_user_polls_link' => 'Удзельнічаў у $1 {{PLURAL:$1|апытаньні|апытаньнях|апытаньнях}}',
+	'qp_user_missing_polls_link' => 'Не ўдзельнічаў',
+	'qp_not_participated_link' => 'Сьпіс не прыняўшых удзел',
+	'qp_order_by_username' => 'Сартаваць па імені ўдзельніка',
+	'qp_order_by_polls_count' => 'Сартаваць па колькасьці апытаньняў',
+	'qp_results_line_qupl' => 'Старонка «$1» Апытаньне «$2»: $3',
+	'qp_results_line_qpl' => 'Старонка «$1» Апытаньне «$2»: $3, $4, $5, $6',
 );
 
 /** Breton (Brezhoneg)
@@ -764,11 +795,13 @@ $messages['ja'] = array(
 	'qp_error_missed_dependance_title' => 'この投票 (id=$1) はページ [[$2]] の別の投票 (id=$3) に依存していますが、ページ名 [[$2]] は見つかりませんでした。依存性属性を削除するか、[[$2]] を復帰させてください',
 	'qp_error_missed_dependance_poll' => 'この投票 (id=$1) はページ $2 の別の投票 (id=$3) に依存していますが、その投票が存在しないかまだ保存されていません。依存性属性を削除するか、ページ $2 で id=$3 の投票を作成してください。投票を保存するには、どの提案質問にも答えずに投稿してください。',
 	'qp_error_vote_dependance_poll' => '初めに投票 $1 に投票してください。',
+	'qp_error_too_many_spans' => 'このサブカテゴリーに対して定義されているカテゴリーが多すぎます',
 	'qp_error_unanswered_span' => '未回答のサブカテゴリー',
 	'qp_error_non_unique_choice' => 'この質問には答えとして独自の提案が必要です',
 	'qp_error_category_name_empty' => 'カテゴリー名が空です',
 	'qp_error_proposal_text_empty' => '提案文が空です',
 	'qp_error_too_few_categories' => '最低でも2つのカテゴリーが定義されなければなりません',
+	'qp_error_too_few_spans' => 'どのカテゴリーも最低でも2つの回答がとり得るように定義されなければなりません',
 	'qp_error_no_answer' => '未回答の提案',
 	'qp_error_unique' => 'タイプが unique() の質問には回答可能なものより多くの質問が定義されています。すべてに記入することはできません',
 );
@@ -909,7 +942,10 @@ $messages['nl'] = array(
 	'qp_not_participated_link' => 'Niet deelgenomen',
 	'qp_order_by_username' => 'Sorteren op gebruikersnaam',
 	'qp_order_by_polls_count' => 'Sorteren op peilingenaantal',
-	'qp_results_line_qupl' => 'Pagina "$1", peiling "$2": $3',
+	'qp_results_line_qupl' => 'Parameters:
+* $1 is a link to the page page name the poll is on with the page title as link label
+* $2 is the poll name in plain text
+* $3 is a link to the poll statistics with link label {{msg-mw|qp_stats_link}}',
 	'qp_results_line_qpl' => 'Pagina "$1", peiling "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ pagina "$2", peiling "$3" ]',
 	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',

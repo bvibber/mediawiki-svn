@@ -739,6 +739,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Imre
+ * @author MF-Warburg
  * @author Metalhead64
  * @author Omnipaedista
  * @author Purodha
@@ -786,6 +787,8 @@ $messages['de'] = array(
 	'contribstats-conversion' => 'Umrechnungskurs (%)',
 	'contribstats-template' => 'Vorlage',
 	'contribstats-nodata' => 'Keine Daten vorhanden',
+	'contribstats-donatepage' => 'Spenden-Seite',
+	'contribstats-average' => 'Durchschnitt',
 	'fundraiserstatistics' => 'Spendenstatistiken',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Tag $1 von $2',

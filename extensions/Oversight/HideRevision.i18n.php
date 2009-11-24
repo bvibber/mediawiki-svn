@@ -108,7 +108,9 @@ $messages['af'] = array(
 	'group-oversight-member' => 'Toesighouer',
 	'hiderevision-continue' => 'Gaan voort',
 	'hiderevision-error-missing' => 'Nie in databasis gevind nie.',
+	'oversight' => 'Toesigkomitee',
 	'oversight-view' => 'details',
+	'oversight-oversighter' => 'Toesighouer:',
 );
 
 /** Aragonese (Aragonés)

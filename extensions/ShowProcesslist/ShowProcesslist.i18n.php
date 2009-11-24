@@ -585,6 +585,22 @@ $messages['mhr'] = array(
 	'showprocesslist-user' => 'Пайдаланыше',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'showprocesslist' => 'Прикажи листа на процеси',
+	'showprocesslist-desc' => 'Прикажи го изводот од наредбата „[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]“',
+	'showprocesslist-id' => 'Id',
+	'showprocesslist-user' => 'Корисник',
+	'showprocesslist-host' => 'Домаќин',
+	'showprocesslist-db' => 'База на податоци',
+	'showprocesslist-command' => 'Наредба',
+	'showprocesslist-time' => 'Време',
+	'showprocesslist-state' => 'Состојба',
+	'showprocesslist-info' => 'Инфо',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

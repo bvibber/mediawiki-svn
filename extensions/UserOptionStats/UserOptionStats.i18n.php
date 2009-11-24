@@ -618,9 +618,15 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Fluff
+ * @author Per
  */
 $messages['sv'] = array(
+	'useroptionstats' => 'Statistik för användarinställningar',
 	'uos-warn' => 'PHPlot är inte installerat!',
+	'uos-choose' => 'Välj en av följande inställningar: $1',
+	'uos-unknown' => '*Standard',
+	'uos-other' => '*Annat',
+	'uos-title' => 'Fördelning av värden för användarinställningar $1',
 );
 
 /** Telugu (తెలుగు)

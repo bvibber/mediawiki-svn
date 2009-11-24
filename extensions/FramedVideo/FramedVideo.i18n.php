@@ -524,7 +524,21 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'framedvideo_errors' => 'Настанаа повеќе грешки!',
+	'framedvideo_error' => 'Настана грешка!',
+	'framedvideo_error_unknown_type' => 'Непознат id на видеосервисот („$1“): проверете го параметарот „type“.',
+	'framedvideo_error_no_id_given' => 'Недостасува „id“ параметар.',
+	'framedvideo_error_height_required' => 'Типот на видео „$1“ бара параметар „height“.',
+	'framedvideo_error_height_required_not_only_width' => 'Типот на видео „$1“ бара параметар „height“, а не само параметар „width“.',
+	'framedvideo_error_width_too_big' => 'Дадената вредност за параметарот „width“ е преголема.',
+	'framedvideo_error_height_too_big' => 'Дадената вредност за параметарот „height“ е преголема.',
+	'framedvideo_error_no_integer' => 'Дадената вредност „$1“ не е позитивен број.',
+	'framedvideo_error_limit' => 'Највисоката дозволена вредност е $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Вредноста „full“ за параметрот „size“ не е дозволена за видеосервисот со id „$1“.',
 	'framedvideo_helppage' => 'Help:Видео',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Повеќе за синтаксата]].',
+	'framedvideo_error_height_and_width_required' => 'Типот на видео „$1“ бара параметри „height“ и „width2“ или „width“.',
+	'framedvideo-desc' => 'Овозможува вметнување на видеоклипови од разни веб-страници со помош на ознаката <tt><nowiki><video></nowiki></tt>',
 );
 
 /** Dutch (Nederlands)
