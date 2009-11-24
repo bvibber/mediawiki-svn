@@ -39,10 +39,12 @@ import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.NameMaps;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.LocalConceptReference;
+import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.LocalStatisticsStoreSchema;
+import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
 import de.brightbyte.wikiword.store.DatabaseLocalConceptStore;
 
@@ -1319,7 +1321,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		protected EntityTable termTable;
 
 		protected DatabaseLocalStatisticsStoreBuilder(StatisticsStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
-			super(database, tweaks, agenda);
+			super(DatabaseLocalConceptStoreBuilder.this, database, tweaks, agenda);
 
 			Inserter termInserter = configureTable("term", 64, 1024);
 			termTable =   (EntityTable)termInserter.getTable();
@@ -1376,44 +1378,24 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		protected EntityTable conceptDescriptionTable;
 
 		protected DatabaseLocalConceptInfoStoreBuilder(ConceptInfoStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
-			super(database, tweaks, agenda);
+			super(DatabaseLocalConceptStoreBuilder.this, database, tweaks, agenda);
 			
 			Inserter conceptDescriptionInserter = configureTable("concept_description", 64, 1024);
 			conceptDescriptionTable = (EntityTable)conceptDescriptionInserter.getTable();
 		}
 	
-		@Override
-		public void buildConceptInfo() throws PersistenceException {
-			super.buildConceptInfo();
-
-			if (beginTask("buildConceptInfo", "prepareConceptCache:concept_description")) {
+		public void buildConceptDescriptionCache() throws PersistenceException {
+			if (beginTask("buildConceptDescriptionCache", "prepareConceptCache:concept_description")) {
 				int n = prepareConceptCache(conceptDescriptionTable, "concept"); 
-				endTask("buildConceptInfo", "prepareConceptCache:concept_description", n+" concpets");
+				endTask("buildConceptDescriptionCache", "prepareConceptCache:concept_description", n+" concpets");
 			}
 
-			if (beginTask("buildConceptInfo", "buildConceptPropertyCache:concept_description,terms")) {
+			if (beginTask("buildConceptDescriptionCache", "prepareConceptCache:concept_description,terms")) {
 				int n = buildConceptPropertyCache(conceptDescriptionTable, "concept", "terms", "meaning", "concept", ((ConceptInfoStoreSchema)database).termReferenceListEntry, false, null, 5);
-				endTask("buildConceptInfo", "buildConceptPropertyCache:concept_description,terms", n+" concpets");
+				endTask("buildConceptDescriptionCache", "prepareConceptCache:concept_description,terms", n+" concpets");
 			}
 		}
 				
-
-		protected static DatabaseDataSet.Factory<LocalConceptReference> localConceptReferenceFactory = new DatabaseDataSet.Factory<LocalConceptReference>() {
-			public LocalConceptReference newInstance(ResultSet row) throws SQLException, PersistenceException {
-				int id = row.getInt("id");
-				String name = asString(row.getObject("name"));
-
-				return new LocalConceptReference(id, name, -1, -1);
-			}
-		};
-
-		public int processConcepts(final CursorProcessor<LocalConceptReference> processor) throws PersistenceException {
-			String sql = "SELECT * FROM "+conceptTable.getSQLName();
-			String where = "type = "+ConceptType.UNKNOWN.getCode();
-			
-			DatabaseAccess.SimpleChunkedQuery query = new DatabaseAccess.SimpleChunkedQuery(getDatabaseAccess(), "processUnknownConcepts", "process", sql, where, null, conceptTable, "id");
-			return executeChunkedQuery(query, 1, localConceptReferenceFactory, processor);
-		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -1447,8 +1429,6 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		} 
 	}
 	
-	
-	
 	@Override
 	protected DatabaseConceptInfoStoreBuilder<LocalConcept> newConceptInfoStoreBuilder() throws SQLException {
 		ConceptInfoStoreSchema schema = new ConceptInfoStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), true, tweaks, false, true);
@@ -1461,6 +1441,12 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		StatisticsStoreSchema schema = new LocalStatisticsStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), tweaks, false); 
 		schema.setBackgroundErrorHandler(database.getBackgroundErrorHandler());
 		return new DatabaseLocalStatisticsStoreBuilder(schema, tweaks, getAgenda());
+	}
+	
+	protected DatabaseProximityStoreBuilder newProximityStoreBuilder() throws SQLException {
+		ProximityStoreSchema schema = new ProximityStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), false, tweaks, false);
+		schema.setBackgroundErrorHandler(database.getBackgroundErrorHandler());
+		return new DatabaseProximityStoreBuilder(this, schema, tweaks, getAgenda());
 	}
 
 	@Override
@@ -1539,4 +1525,5 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		log("deleting data from with id "+op+" "+rcId);
 		deleteDataFrom(rcId, op);
 	}
+
 }

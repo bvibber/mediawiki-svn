@@ -1,14 +1,10 @@
 package de.brightbyte.wikiword.store.builder;
 
 import static de.brightbyte.db.DatabaseUtil.asInt;
-import static de.brightbyte.db.DatabaseUtil.asString;
 
-import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import de.brightbyte.application.Agenda;
 import de.brightbyte.data.IntList;
@@ -27,14 +23,9 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.Processor;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.TweakSet;
-import de.brightbyte.wikiword.disambig.ConceptFeatures;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
-import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
-import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
 import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
-import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema.ReferenceListEntrySpec;
-import de.brightbyte.wikiword.store.GroupNameTranslator;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
 
 public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConcept> extends DatabaseWikiWordStoreBuilder implements WikiWordConceptStoreBuilder<T>  {
@@ -78,6 +69,14 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		Inserter relationInserter = configureTable("relation", 16, 4*1024);
 		relationTable = (RelationTable)relationInserter.getTable();
 	}	
+	
+	protected ConceptType getConceptType(int type) throws PersistenceException {
+		try {
+			return database.getConceptType(type);
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
 	
 	protected int deleteConceptBroader(int narrow, int broad) throws SQLException {
 		String sql = "DELETE FROM "+broaderTable.getSQLName()+" " +
@@ -429,6 +428,7 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 	protected abstract WikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> newConceptStore() throws SQLException, PersistenceException;
 	
 	private DatabaseStatisticsStoreBuilder statsStore;
+	private ProximityStoreBuilder proximityStore;
 	private DatabaseConceptInfoStoreBuilder<T> infoStore;
 	private WikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> conceptStore;
 	
@@ -445,6 +445,15 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		try { 
 			if (infoStore==null) infoStore = newConceptInfoStoreBuilder();
 			return infoStore;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		} 
+	}
+
+	public ProximityStoreBuilder getProximityStoreBuilder() throws PersistenceException {
+		try { 
+			if (proximityStore==null) proximityStore = newProximityStoreBuilder();
+			return proximityStore;
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		} 
@@ -470,459 +479,7 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 			return false;
 		}
 	}
+
+	protected abstract DatabaseProximityStoreBuilder newProximityStoreBuilder() throws SQLException;
 	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	protected abstract class DatabaseStatisticsStoreBuilder extends DatabaseWikiWordStoreBuilder implements StatisticsStoreBuilder {
-		
-		protected EntityTable statsTable;
-		protected EntityTable degreeTable;
-		
-		protected DatabaseStatisticsStoreBuilder(StatisticsStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
-			super(database, tweaks, agenda);
-			
-			//XXX: wen don't need inserters, really...
-			Inserter statsInserter = configureTable("stats", 64, 1024);
-			Inserter degreeInserter = configureTable("degree", 64, 1024);
-			
-			statsTable =  (EntityTable)statsInserter.getTable();
-			degreeTable = (EntityTable)degreeInserter.getTable();
-		}	
-
-		protected int getNumberOfConcepts() throws PersistenceException {
-			String sql = "select count(*) from "+conceptTable.getSQLName();
-			try {
-				return asInt(database.executeSingleValueQuery("getNumberOfConcepts", sql));
-			} catch (SQLException e) {
-				throw new PersistenceException(e);
-			}
-		}
-
-		public void buildStatistics() throws PersistenceException {		
-			if (beginTask("buildStatistics", "stats.prepareDegreeTable")) {
-				int n = prepareDegreeTable();
-				endTask("buildStatistics", "stats.prepareDegreeTable", n+" entries");
-			}
-			
-			if (beginTask("buildStatistics", "stats.buildDegreeInfo#in")) {
-				int n = buildDegreeInfo("anchor", "target", "in");
-				endTask("buildStatistics", "stats.buildDegreeInfo#in", n+" entries");
-			}
-			
-			if (beginTask("buildStatistics", "stats.buildDegreeInfo#out")) {
-				int n = buildDegreeInfo("target", "anchor", "out");
-				endTask("buildStatistics", "stats.buildDegreeInfo#out", n+" entries");
-			}
-			
-			if (beginTask("buildStatistics", "stats.combineDegreeInfo")) {
-				int n = combineDegreeInfo("in", "out", "link");
-				endTask("buildStatistics", "stats.combineDegreeInfo", n+" entries");
-			}
-
-			if (beginTask("buildStatistics", "stats.inDegreeDistribution")) {
-				buildDistributionStats("in-degree distr", degreeTable, "in_rank", "in_degree");
-				endTask("buildStatistics", "stats.inDegreeDistribution");
-			}
-			
-			if (beginTask("buildStatistics", "stats.outDegreeDistribution")) {
-				buildDistributionStats("out-degree distr", degreeTable, "out_rank", "out_degree");
-				endTask("buildStatistics", "stats.outDegreeDistribution");
-			}
-			
-			if (beginTask("buildStatistics", "stats.linkDegreeDistribution")) {
-				buildDistributionStats("link-degree distr", degreeTable, "link_rank", "link_degree");
-				endTask("buildStatistics", "stats.linkDegreeDistribution");
-			}
-			
-			if (beginTask("buildStatistics", "stats.idf")) {
-				
-				//idf = inverse document frequency
-				//      see Salton, G. and McGill, M. J. 1983 Introduction to modern information retrieval
-
-				int numberOfConcepts = getNumberOfConcepts();
-				String idf = "LOG("+numberOfConcepts+" / in_degree)";
-
-				int n = buildDistributionCoefficient("idf", degreeTable, "idf", idf, "in_degree > 0");
-				endTask("buildStatistics", "stats.idf", n + " entries");
-				
-				if (beginTask("buildStatistics", "stats.idfRank")) {
-					buildRank(degreeTable, "idf", "idf_rank");
-					endTask("buildStatistics", "stats.idfRank");
-				}
-			}
-
-			if (beginTask("buildStatistics", "stats.lhs")) {
-				
-				//lhs = local hierarchy score
-				//      as defined by Muchnik et.al. 2007 in Physical Review E 76, 016106
-				//      Note that the symmetrical counterpart has been omitted.
-
-				String lhs = "in_degree * SQRT(in_degree) / (in_degree + out_degree)";
-				
-				int n = buildDistributionCoefficient("lhs", degreeTable, "lhs", lhs, "in_degree > 0");
-				endTask("buildStatistics", "stats.lhs", n + " entries");
-				
-				if (beginTask("buildStatistics", "stats.lhsRank")) {
-					buildRank(degreeTable, "lhs", "lhs_rank");
-					endTask("buildStatistics", "stats.lhsRank");
-				}
-			}
-			
-			if (beginTask("buildStatistics", "stats.table")) {
-				storeStatsEntries( "table", DatabaseWikiWordConceptStoreBuilder.this.getTableStats() );
-				endTask("buildStatistics", "stats.table");
-			}
-		}
-
-		protected int buildDistributionCoefficient(String name, DatabaseTable table, String coefField, String coefFormula, String coefCond) throws PersistenceException {
-			String sql = "UPDATE "+table.getSQLName()+" SET "+coefField+" = "+coefFormula;
-			
-			return executeChunkedUpdate("buildDistributionCoefficient", name, sql, coefCond, table, "concept");
-		}
-		
-		protected void buildDistributionStats(String name, DatabaseTable table, String rankField, String valueField) throws PersistenceException {
-			try {
-				//log("building distribution statistics \""+name+"\" from "+table.getName()+"."+rankField+" x "+table.getName()+"."+valueField);
-				String sql = "SELECT count(*) as t, sum("+valueField+") as N FROM "+table.getSQLName();
-				Map<String, Object> m = database.executeSingleRowQuery("buildZipfStats", sql);
-				
-				double t = ((Number)m.get("t")).doubleValue(); //number of types (different terms)
-				
-				if (t==0) {
-					warning(-1, "no distribution stats", "no types found for "+name, null);
-					return;
-				}
-				
-				double N = ((Number)m.get("N")).doubleValue(); //number of tokens (term occurrances)
-				
-				if (N==0) {
-					warning(-1, "no distribution stats", "no tokens found for "+name, null);
-					return;
-				}
-				
-				sql = "SELECT avg(rank*value) as k, stddev(rank*value/"+N+") as kd " +
-						"FROM (SELECT MAX("+rankField+") as rank, "+valueField+" as value " +
-								"FROM "+table.getSQLName()+" " +
-								"GROUP BY "+valueField+") as G";
-				
-				m = database.executeSingleRowQuery("buildDistributionStats", sql);
-				
-				double k = ((Number)m.get("k")).doubleValue();   //average of maxrank * freq
-				double kd = ((Number)m.get("kd")).doubleValue(); //deviation of maxrank * freq
-				double c = k / N; 								 //characteristic fitting constant (normalized k) 
-				
-				Map<String, Number> stats = new HashMap<String, Number>(10);
-				stats.put("total distinct types", t);
-				stats.put("total token occurrences", N);
-				stats.put("average type value", N/t);
-				stats.put("average type value x rank", k);
-				stats.put("characteristic fitting", c); //c = k / N
-				stats.put("deviation from char. fit.", kd);
-				
-				storeStatsEntries(name, stats);
-			} catch (SQLException e) {
-				throw new PersistenceException(e);
-			}
-		}
-		
-		protected void storeStatsEntry(String block, String name, double value) throws PersistenceException {
-			try {
-				//TODO: inserter?...
-				String sql = "REPLACE INTO "+statsTable.getSQLName()+" (block, name, value) VALUES (" 
-						+database.encodeValue(block)+", " 
-						+database.encodeValue(name)+", " 
-						+database.encodeValue(value)+") ";
-				
-				executeUpdate("storeStatsEntry", sql);
-			} catch (SQLException e) {
-				throw new PersistenceException(e);
-			}
-		}
-		
-		protected void storeStatsEntries(String block, ResultSet rs, GroupNameTranslator translator) throws PersistenceException {
-			try {
-				StringBuilder sql = new StringBuilder();
-				sql.append( "REPLACE INTO " );
-				sql.append( statsTable.getSQLName() );
-				sql.append( " (block, name, value) VALUES" );
-				
-				boolean first = true;
-				while (rs.next()) {
-					if (first) first = false;
-					else sql.append(", ");
-						
-					String name = asString(rs.getObject("name"));
-					double value = rs.getDouble("value");
-					
-					if (translator!=null) name = translator.translate(name);
-					
-					sql.append( "(" ); 
-					sql.append(database.encodeValue(block));
-					sql.append(", "); 
-					sql.append(database.encodeValue(name));
-					sql.append(", "); 
-					sql.append(database.encodeValue(value));
-					sql.append( ")" ); 
-				}
-				
-				executeUpdate("storeStatsEntries", sql.toString());
-			} catch (SQLException e) {
-				throw new PersistenceException(e);
-			}
-		}
-		
-		protected void storeStatsEntries(String block, Map<String, ? extends Number> stats) throws PersistenceException {
-			StringBuilder sql = new StringBuilder();
-			sql.append( "REPLACE INTO " );
-			sql.append( statsTable.getSQLName() );
-			sql.append( " (block, name, value) VALUES" );
-			
-			boolean first = true;
-			for (Map.Entry<String, ? extends Number> e: stats.entrySet()) {
-				if (first) first = false;
-				else sql.append(", ");
-					
-				String name = e.getKey();
-				double value = e.getValue().doubleValue();
-				
-				try {
-					sql.append( "(" ); 
-					sql.append(database.encodeValue(block));
-					sql.append(", "); 
-					sql.append(database.encodeValue(name));
-					sql.append(", "); 
-					sql.append(database.encodeValue(value));
-					sql.append( ")" );
-				} catch (SQLException e1) {
-					throw new PersistenceException(e1);
-				} 
-			}
-			
-			executeUpdate("storeStatsEntries", sql.toString());
-		}
-		
-		protected int prepareDegreeTable() throws PersistenceException {
-			DatabaseTable t = DatabaseWikiWordConceptStoreBuilder.this.database.getTable("concept");
-			
-			String sql = "INSERT ignore INTO "+degreeTable.getSQLName()+" ( concept, concept_name ) "
-				+" SELECT id, name "
-				+" FROM "+t.getSQLName();
-
-			return executeChunkedUpdate("prepareDegreeTable", "prepareDegreeTable", sql, null, t, "id");
-		}
-		
-		protected int buildDegreeInfo(String linkField, String groupField, String statsField) throws PersistenceException {
-			DatabaseTable t = DatabaseWikiWordConceptStoreBuilder.this.database.getTable("link");
-			
-			String sql = "UPDATE "+degreeTable.getSQLName()+" AS D "
-				+" JOIN ( SELECT "+groupField+" as concept, count("+linkField+") as degree " 
-						+" FROM "+t.getSQLName()+" " 
-						+" WHERE anchor IS NOT NULL " 
-						+" GROUP BY "+groupField+") AS X "
-				+" ON X.concept = D.concept"
-				+" SET "+statsField+"_degree = X.degree";
-
-			//System.out.println("*** "+sql+" ***");
-			int n =  executeChunkedUpdate("buildDegreeInfo", linkField+","+groupField+","+statsField, sql, null, degreeTable, "D.concept"); 
-			
-			//TODO: solve tangle!
-			return buildRank(degreeTable, statsField+"_degree", statsField+"_rank");
-		}
-		
-		protected int buildRank(DatabaseTable table, String valueField, String rankField) throws PersistenceException {
-			log("building ranks in "+table.getName()+"."+rankField+" based on "+table.getName()+"."+valueField);
-			
-			executeUpdate("buildDegreeInfo#init", "set @num = 0;");
-			
-			String sql = "UPDATE "+degreeTable.getSQLName()
-				+" SET "+rankField+" = (@num := @num + 1)" 
-				+" ORDER BY "+valueField+" DESC ";
-
-			//System.out.println("*** "+sql+" ***");
-			
-			long t = System.currentTimeMillis();
-			int n = executeUpdate("buildRank", sql); //XXX: chunk? if yes, how? need to set @num first!
-		
-			log("built ranks info in "+table.getName()+"."+rankField+" based on "+table.getName()+"."+valueField+" on "+n+" rows "+(System.currentTimeMillis()-t)/1000+" sec");
-			return n;
-		}
-		
-		protected int combineDegreeInfo(String firstField, String secondField, String sumField) throws PersistenceException {
-			String sql = "UPDATE "+degreeTable.getSQLName()
-				+" SET "+sumField+"_degree = "+firstField+"_degree + "+secondField+"_degree";
-
-			//System.out.println("*** "+sql+" ***");
-			int n = executeChunkedUpdate("buildDegreeInfo", firstField+","+secondField+","+sumField, sql, null, degreeTable, "concept");
-			
-			//TODO: solve tangle!
-			return buildRank(degreeTable, sumField+"_degree", sumField+"_rank");
-		}
-		
-		protected ConceptType getConceptType(int type) throws PersistenceException {
-			try {
-				return DatabaseWikiWordConceptStoreBuilder.this.database.getConceptType(type);
-			} catch (SQLException e) {
-				throw new PersistenceException(e);
-			}
-		}
-
-		public void clear() throws PersistenceException {
-			try {
-				database.truncateTable(statsTable.getName(), true);
-				database.truncateTable(degreeTable.getName(), true);
-			} catch (SQLException e) {
-				throw new PersistenceException(e);
-			}
-		}
-
-	}
-	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	protected abstract class DatabaseConceptInfoStoreBuilder<T extends WikiWordConcept> 
-		extends DatabaseWikiWordStoreBuilder 
-		implements ConceptInfoStoreBuilder<T> {
-
-		protected WikiWordConceptStoreSchema conceptDatabase;
-		
-		protected EntityTable conceptInfoTable;
-		protected EntityTable conceptFeaturesTable;
-		protected Inserter conceptFeaturesInserter;
-
-		protected DatabaseConceptInfoStoreBuilder(ConceptInfoStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
-			super(database, tweaks, agenda);
-			
-			Inserter conceptInfoInserter = configureTable("concept_info", 64, 1024);
-			conceptInfoTable = (EntityTable)conceptInfoInserter.getTable();
-			
-			conceptFeaturesInserter = configureTable("concept_features", 64, 1024);
-			conceptFeaturesInserter.setLenient(true); //ignore dupes. //TODO: replace instead!
-			conceptFeaturesTable = (EntityTable)conceptFeaturesInserter.getTable();
-		}	
-
-		public void buildConceptInfo() throws PersistenceException {
-			if (!areStatsComplete()) throw new IllegalStateException("statistics need to be built before concept infos!");
-			
-			if (beginTask("buildConceptInfo", "prepareConceptCache:concept_info")) {
-				int n = prepareConceptCache(conceptInfoTable, "concept");
-				endTask("buildConceptInfo", "prepareConceptCache:concept_info", n+" entries");
-			}
-			
-			if (beginTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,langlinks")) {
-				int n = buildConceptPropertyCache(conceptInfoTable, "concept", "langlinks", "langlink", "concept", ((ConceptInfoStoreSchema)database).langlinkReferenceListEntry, false, null, 1);
-				endTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,langlinks", n+" entries");
-			}
-
-			
-			if (beginTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,inlinks")) {
-				int n = buildConceptPropertyCache(conceptInfoTable, "concept", "inlinks", "link", "target", ((ConceptInfoStoreSchema)database).inLinksReferenceListEntry, false, null, 5);
-				endTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,inlinks", n+" entries");
-			}
-			
-			if (beginTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,outlinks")) {
-				int n = buildConceptPropertyCache(conceptInfoTable, "concept", "outlinks", "link", "anchor", ((ConceptInfoStoreSchema)database).outLinksReferenceListEntry, false, null, 5);
-				endTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,outlinks", n+" entries");
-			}
-			
-			if (beginTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,narrower")) {
-				int n = buildConceptPropertyCache(conceptInfoTable, "concept", "narrower", "broader", "broad", ((ConceptInfoStoreSchema)database).narrowerReferenceListEntry, false, null, 2);
-				endTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,narrower", n+" entries");
-			}
-			
-			if (beginTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,broader")) {
-				int n = buildConceptPropertyCache(conceptInfoTable, "concept", "broader", "broader", "narrow", ((ConceptInfoStoreSchema)database).broaderReferenceListEntry, false, null, 2);
-				endTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,broader", n+" entries");
-			}
-
-			//XXX: different similarities / thresholds!
-			if (beginTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,similar")) {
-				int n = buildConceptPropertyCache(conceptInfoTable, "concept", "similar", "relation", "concept1", ((ConceptInfoStoreSchema)database).similarReferenceListEntry, false, "langmatch > 0", 1);
-				endTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,similar", n+" entries");
-			}
-
-			//XXX: different similarities / thresholds!
-			if (beginTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,related#1")) {
-				int n = buildConceptPropertyCache(conceptInfoTable, "concept", "related", "relation", "concept1", ((ConceptInfoStoreSchema)database).relatedReferenceListEntry, false, "bilink > 0", 2);
-				endTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,related#1", n+" entries");
-			}
-
-			//XXX: different similarities / thresholds!
-			if (beginTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,related#2")) {
-				int n = buildConceptPropertyCache(conceptInfoTable, "concept", "related", "relation", "concept2", ((ConceptInfoStoreSchema)database).related2ReferenceListEntry, false, "bilink > 0", 2);
-				endTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,related#2", n+" entries");
-			}
-			
-		}
-		
-		protected int prepareConceptCache(DatabaseTable cacheTable, String conceptIdField) throws PersistenceException {
-			DatabaseTable t = DatabaseWikiWordConceptStoreBuilder.this.database.getTable("concept");
-			
-			String sql = "INSERT ignore INTO "+cacheTable.getSQLName()+" ( " + conceptIdField + " ) "
-				+" SELECT id "
-				+" FROM "+t.getSQLName();
-
-			return executeChunkedUpdate("prepareConceptCache", cacheTable.getName()+"."+conceptIdField, sql, null, t, "id");
-		}
-		
-		public int buildConceptPropertyCache(String targetField, String propertyTable, String propertyConceptField,
-				ReferenceListEntrySpec spec, String threshold) throws PersistenceException {
-			return buildConceptPropertyCache(conceptInfoTable, "concept", targetField, propertyTable, propertyConceptField, spec, false, threshold, 1);
-		}
-		
-		protected int buildConceptPropertyCache(
-				final DatabaseTable cacheTable, final String cacheIdField, 
-				final String propertyField, final String realtion, final String relConceptField, 
-				final ReferenceListEntrySpec spec, final boolean append, final String threshold,
-				final int chunkFactor) throws PersistenceException {
-			
-			final DatabaseTable relationTable = DatabaseWikiWordConceptStoreBuilder.this.database.getTable(realtion);
-			
-			//XXX: if no frequency-field, evtl use inner grouping by nameField to determin frequency! (expensive, though)
-
-			//XXX: for outlinks, langlinks, etc, we could exclude UNKN OWN concepts...
-			
-			final String v = !append ? "s" : "if ("+propertyField+" IS NOT NULL, concat("+propertyField+", '"+((ConceptInfoStoreSchema)database).referenceSeparator+"', s), s)";
-			
-			final String joinDistrib = !spec.useRelevance ? "" : " JOIN "+database.getSQLTableName("degree", true)+" as DT ON DT.concept = "+spec.joinField;
-			final String andThreashold = threshold==null ? "" : " AND ("+threshold+")";
-
-			DatabaseSchema.ChunkedQuery query = new DatabaseSchema.AbstractChunkedQuery(database, "buildConceptPropertyCache", cacheTable.getName()+"."+propertyField, cacheTable, "C."+cacheIdField) {
-				
-				@Override
-				protected String getSQL(long first, long end) {
-					String sql = "UPDATE "+cacheTable.getSQLName()+" AS C "
-								+" JOIN ( SELECT "+relConceptField+", group_concat("+spec.valueExpression+" separator '"+((ConceptInfoStoreSchema)database).referenceSeparator+"' ) as s" 
-								+"        FROM "+relationTable.getSQLName()
-										+joinDistrib
-										+" WHERE ( "+relConceptField+" >= "+first+" AND "+relConceptField+" < "+end+" )"
-										+andThreashold
-										+" group by "+relConceptField+" )" 
-								+" AS R "
-								+" ON R."+relConceptField+" = C."+cacheIdField
-								+" SET "+propertyField+" = " + v
-								+" WHERE ( C."+cacheIdField+" >= "+first+" AND C."+cacheIdField+" < "+end+" )";
-					
-					return sql;
-				}
-			
-			};
-
-			return executeChunkedUpdate(query, chunkFactor);
-		}
-
-		/**
-		 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeRawText(int, java.lang.String)
-		 */
-		public void  storeConceptFeatures(ConceptFeatures<T> features) throws PersistenceException {
-			try {
-				if (conceptFeaturesInserter==null) conceptFeaturesInserter = conceptFeaturesTable.getInserter();
-				
-				conceptFeaturesInserter.updateInt("concept", features.getConceptId());
-				conceptFeaturesInserter.updateBlob("features", features.getFeatureVectorData());
-				conceptFeaturesInserter.updateRow();
-			} catch (SQLException e) {
-				throw new PersistenceException(e);
-			}
-		}
-	}
 }

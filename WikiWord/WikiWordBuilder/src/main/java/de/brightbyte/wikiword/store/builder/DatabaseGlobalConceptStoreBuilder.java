@@ -33,6 +33,7 @@ import de.brightbyte.wikiword.model.GlobalConcept;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.GlobalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
+import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
 import de.brightbyte.wikiword.store.DatabaseGlobalConceptStore;
 import de.brightbyte.wikiword.store.DatabaseLocalConceptStore;
@@ -905,7 +906,7 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	protected class DatabaseGlobalStatisticsStoreBuilder extends DatabaseStatisticsStoreBuilder {
 
 		protected DatabaseGlobalStatisticsStoreBuilder(StatisticsStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
-			super(database, tweaks, agenda);
+			super(DatabaseGlobalConceptStoreBuilder.this, database, tweaks, agenda);
 			// TODO Auto-generated constructor stub
 		}
 		
@@ -922,19 +923,24 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	protected class DatabaseGlobalConceptInfoStoreBuilder extends DatabaseConceptInfoStoreBuilder<GlobalConcept> {
 		
 		protected DatabaseGlobalConceptInfoStoreBuilder(ConceptInfoStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
-			super(database, tweaks, agenda);
+			super(DatabaseGlobalConceptStoreBuilder.this, database, tweaks, agenda);
 		}
 			
 		@Override
-		public void buildConceptInfo() throws PersistenceException {
-			super.buildConceptInfo();
+		public void buildConceptRelationCache() throws PersistenceException {
+			super.buildConceptRelationCache();
 
 			//XXX: different similarities / thresholds!
-			if (beginTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,similar#langref")) {
+			if (beginTask("buildConceptRelationCache", "prepareConceptCache:concept_info,similar#langref")) {
 				int n = buildConceptPropertyCache(conceptInfoTable, "concept", "similar", "relation", "concept1", ((ConceptInfoStoreSchema)database).similarReferenceListEntry, true, "langref > 0", 1);
-				endTask("buildConceptInfo", "buildConceptPropertyCache:concept_info,similar#langref", n+" entries");
+				endTask("buildConceptRelationCache", "prepareConceptCache:concept_info,similar#langref", n+" entries");
 			}
 		}
+
+		public void buildConceptDescriptionCache() throws PersistenceException {
+			throw new UnsupportedOperationException();
+		}
+
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -951,6 +957,12 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		return new DatabaseGlobalStatisticsStoreBuilder(schema, tweaks, getAgenda());
 	}
 	
+	protected DatabaseProximityStoreBuilder newProximityStoreBuilder() throws SQLException {
+		ProximityStoreSchema schema = new ProximityStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), true, tweaks, false);
+		schema.setBackgroundErrorHandler(database.getBackgroundErrorHandler());
+		return new DatabaseProximityStoreBuilder(this, schema, tweaks, getAgenda());
+	}
+
 	@Override
 	protected DatabaseGlobalConceptStore newConceptStore() throws SQLException {
 		return new DatabaseGlobalConceptStore((GlobalConceptStoreSchema)database, tweaks);

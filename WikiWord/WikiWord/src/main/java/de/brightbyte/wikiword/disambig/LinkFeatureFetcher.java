@@ -7,7 +7,7 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
 
-public class LinkFeatureFetcher<C extends WikiWordConcept> implements FeatureFetcher<C> {
+public class LinkFeatureFetcher<C extends WikiWordConcept> implements FeatureFetcher<C, Integer> {
 	protected boolean useRelevance;
 	protected boolean useCardinality;
 	
@@ -33,7 +33,7 @@ public class LinkFeatureFetcher<C extends WikiWordConcept> implements FeatureFet
 		return x*y;
 	}
 	
-	public ConceptFeatures<C> getFeatures(WikiWordConcept c) throws PersistenceException {
+	public ConceptFeatures<C, Integer> getFeatures(WikiWordConcept c) throws PersistenceException {
 		LabeledVector<Integer> features = new MapLabeledVector<Integer>();
 		
 		//XXX: magic numbers!
@@ -72,7 +72,7 @@ public class LinkFeatureFetcher<C extends WikiWordConcept> implements FeatureFet
 		
 		//XXX: compare cooccurrances (i.e. eval second level cooc)
 		
-		return new ConceptFeatures<C>(c.getReference(), features);
+		return new ConceptFeatures<C, Integer>(c.getReference(), features);
 	}
 	
 	private Integer getLabel(WikiWordConceptReference r) {

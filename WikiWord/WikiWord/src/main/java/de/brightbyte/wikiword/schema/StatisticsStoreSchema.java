@@ -35,14 +35,21 @@ public class StatisticsStoreSchema extends WikiWordStoreSchema {
 		degreeTable.addField( new ReferenceField(this, "concept_name", getTextType(global ? 32*255+32*16 : 255), null, true, global ? null : KeyType.UNIQUE, "concept", "name", null ) ); 
 		degreeTable.addField( new DatabaseField(this, "in_rank", "INT", null, true, KeyType.INDEX ) );
 		degreeTable.addField( new DatabaseField(this, "in_degree", "INT", null, true, KeyType.INDEX ) );
+		degreeTable.addField( new DatabaseField(this, "in_bias", "REAL", "DEFAULT 0", true, KeyType.INDEX ) ); // ~ Idf
 		degreeTable.addField( new DatabaseField(this, "out_rank", "INT", null, true, KeyType.INDEX ) );
 		degreeTable.addField( new DatabaseField(this, "out_degree", "INT", null, true, KeyType.INDEX ) );
+		degreeTable.addField( new DatabaseField(this, "out_bias", "REAL", "DEFAULT 0", true, KeyType.INDEX ) );
+		degreeTable.addField( new DatabaseField(this, "up_degree", "INT", null, true, KeyType.INDEX ) );
+		degreeTable.addField( new DatabaseField(this, "up_bias", "REAL", "DEFAULT 0", true, KeyType.INDEX ) );
+		degreeTable.addField( new DatabaseField(this, "down_degree", "INT", null, true, KeyType.INDEX ) );
+		degreeTable.addField( new DatabaseField(this, "down_bias", "REAL", "DEFAULT 0", true, KeyType.INDEX ) );
 		degreeTable.addField( new DatabaseField(this, "link_rank", "INT", null, true, KeyType.INDEX ) );
 		degreeTable.addField( new DatabaseField(this, "link_degree", "INT", null, true, KeyType.INDEX ) );
-		degreeTable.addField( new DatabaseField(this, "lhs", "REAL", "NOT NULL DEFAULT 0", true, KeyType.INDEX ) ); //local hierarchy score
-		degreeTable.addField( new DatabaseField(this, "idf", "REAL", "NOT NULL DEFAULT 0", true, KeyType.INDEX ) ); //inverse document frequency
-		degreeTable.addField( new DatabaseField(this, "lhs_rank", "INT", null, true, KeyType.INDEX ) );
-		degreeTable.addField( new DatabaseField(this, "idf_rank", "INT", null, true, KeyType.INDEX ) );
+		degreeTable.addField( new DatabaseField(this, "link_bias", "REAL", "DEFAULT 0", true, KeyType.INDEX ) );
+		degreeTable.addField( new DatabaseField(this, "lhs", "REAL", "DEFAULT 0", true, KeyType.INDEX ) ); //local hierarchy score
+		//degreeTable.addField( new DatabaseField(this, "idf", "REAL", "DEFAULT 0", true, KeyType.INDEX ) ); 
+		//degreeTable.addField( new DatabaseField(this, "lhs_rank", "INT", null, true, KeyType.INDEX ) );
+		//degreeTable.addField( new DatabaseField(this, "idf_rank", "INT", null, true, KeyType.INDEX ) );
 		degreeTable.setAutomaticField(null);
 		addTable(degreeTable);
 

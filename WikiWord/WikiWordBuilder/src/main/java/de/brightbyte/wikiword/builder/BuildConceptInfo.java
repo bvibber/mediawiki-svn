@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import de.brightbyte.data.cursor.CursorProcessor;
 import de.brightbyte.data.cursor.DataCursor;
+import de.brightbyte.io.BlockCodec;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.disambig.ConceptFeatures;
 import de.brightbyte.wikiword.disambig.FeatureFetcher;
@@ -44,38 +45,24 @@ public class BuildConceptInfo<C extends WikiWordConcept> extends ImportApp<WikiW
 	
 	@Override
 	protected void run() throws Exception {
-		section("-- build concept property cache --------------------------------------------------");
-		this.infoStore.buildConceptInfo();
-
-		section("-- build concept feature vector cache --------------------------------------------------");
-		if (agenda.beginTask("buildConceptInfo", "buildConceptFeatureVectors")) {
-			   //TODO: cleanup incomplete run
-				buildConceptFeatureVectors();
-				agenda.endTask("buildConceptInfo", "buildConceptFeatureVectors");
+		section("-- build concept relation cache --------------------------------------------------");
+		this.infoStore.buildConceptRelationCache();
+		
+		if (isDatasetLocal()) {
+			section("-- build concept description cache --------------------------------------------------");
+			this.infoStore.buildConceptDescriptionCache();
 		}
+		
+		section("-- build concept feature cache --------------------------------------------------");
+		this.infoStore.buildConceptFeatureCache();
+		
+		section("-- build concept proximity cache --------------------------------------------------");
+		this.infoStore.buildConceptProximetyCache();
 	}	
 	
-	protected FeatureFetcher<C> featureFetcher;
+	protected FeatureFetcher<C, Integer> featureFetcher;
+	protected BlockCodec<FeatureFetcher<C, Integer>> featureCodec;
 	
-	private void buildConceptFeatureVectors() {
-		CursorProcessor<C> p = new CursorProcessor<C>() {
-		
-			public void process(DataCursor<C> c) throws Exception {
-				
-				C r;
-				while ((r = c.next())!=null) {
-					ConceptFeatures<C> features = featureFetcher.getFeatures(r);
-					infoStore.storeConceptFeatures(features);
-				}
-				
-				infoStore.flush();
-			}
-		
-		};
-		
-		conceptStore.processConcepts(p);
-	}
-
 	public static void main(String[] argv) throws Exception {
 		BuildConceptInfo app = new BuildConceptInfo();
 		app.launch(argv);

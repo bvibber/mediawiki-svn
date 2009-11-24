@@ -10,6 +10,8 @@ public interface WikiWordConceptStoreBuilder<T extends WikiWordConcept> extends 
 
 	public StatisticsStoreBuilder getStatisticsStoreBuilder() throws PersistenceException;
 	public ConceptInfoStoreBuilder<T> getConceptInfoStoreBuilder() throws PersistenceException;
+	public ProximityStoreBuilder getProximityStoreBuilder() throws PersistenceException;
+
 	public WikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> getConceptStore() throws PersistenceException;
 
 }

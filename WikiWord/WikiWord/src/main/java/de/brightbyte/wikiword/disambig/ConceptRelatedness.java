@@ -7,7 +7,7 @@ import de.brightbyte.util.UncheckedPersistenceException;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 
-public class ConceptRelatedness<C extends WikiWordConcept> implements Similarity<C> {
+public class ConceptRelatedness<C extends WikiWordConcept, K> implements Similarity<C> {
 
 	public static class Relatedness<C extends WikiWordConcept> {
 		public final double relatedness;
@@ -27,10 +27,10 @@ public class ConceptRelatedness<C extends WikiWordConcept> implements Similarity
 		}
 	}
 
-	protected Similarity<LabeledVector<Integer>> similarityMeasure;
-	protected FeatureFetcher<C> featureFetcher;
+	protected Similarity<LabeledVector<K>> similarityMeasure;
+	protected FeatureFetcher<C, K> featureFetcher;
 
-	public ConceptRelatedness(Similarity<LabeledVector<Integer>> similarityMeasure, FeatureFetcher<C> featureFetcher) {
+	public ConceptRelatedness(Similarity<LabeledVector<K>> similarityMeasure, FeatureFetcher<C, K> featureFetcher) {
 		this.similarityMeasure = similarityMeasure;
 		this.featureFetcher = featureFetcher;
 	}
@@ -42,8 +42,8 @@ public class ConceptRelatedness<C extends WikiWordConcept> implements Similarity
 	
 	public double similarity(C a, C b) {
 		try {
-			ConceptFeatures<C>  fa = featureFetcher.getFeatures(a);
-			ConceptFeatures<C>  fb = featureFetcher.getFeatures(b);
+			ConceptFeatures<C, K>  fa = featureFetcher.getFeatures(a);
+			ConceptFeatures<C, K>  fb = featureFetcher.getFeatures(b);
 			
 			double d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
 			return d;

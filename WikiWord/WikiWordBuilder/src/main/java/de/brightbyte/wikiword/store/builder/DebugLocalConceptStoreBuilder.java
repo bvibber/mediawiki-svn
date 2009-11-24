@@ -18,12 +18,10 @@ import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.ExtractionRule;
 import de.brightbyte.wikiword.ResourceType;
-import de.brightbyte.wikiword.disambig.ConceptFeatures;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.schema.AliasScope;
-import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema.ReferenceListEntrySpec;
 import de.brightbyte.wikiword.store.GroupNameTranslator;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
 
@@ -338,6 +336,101 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
 	}
 
+	public class DebugProximityStoreBuilder implements ProximityStoreBuilder {
+
+
+		public void finalizeImport() throws PersistenceException {
+			log("* finalizeImport *");			
+		}
+
+		public void prepareImport() throws PersistenceException {
+			log("* prepareImport *");
+		}
+		
+		public void clear() throws PersistenceException {
+			log("* clearStatistics *");
+		}
+
+		public void checkConsistency() throws PersistenceException {
+			log("* checkConsistency *");
+		}
+
+		public void close(boolean flush) throws PersistenceException {
+			log("* close *");
+		}
+
+		public void deleteDataAfter(int lastId, boolean inclusive)
+				throws PersistenceException {
+			log("* deleteDataAfter("+lastId+", "+inclusive+") *");
+		}
+
+		public void deleteDataFrom(int lastId) throws PersistenceException {
+			log("* deleteDataFrom("+lastId);
+		}
+
+		public void dumpTableStats(Output out) throws PersistenceException {
+			log("* no table stats *");
+		}
+
+		public void flush() throws PersistenceException {
+			log("* flush *");
+		}
+
+		public Agenda getAgenda() throws PersistenceException {
+			return agenda;
+		}
+
+		public Agenda createAgenda() throws PersistenceException {
+			return null;
+		}
+
+		public int getNumberOfWarnings() throws PersistenceException {
+			return 0;
+		}
+
+		public void open() throws PersistenceException {
+			log("* open *");
+		}
+
+		public void optimize() throws PersistenceException {
+			log("* optimize *");
+		}
+
+		public void initialize(boolean purge, boolean dropAll) throws PersistenceException {
+			log("* prepare *");
+		}
+
+		public void setLogLevel(int loglevel) {
+			//noop
+		}
+
+		public void storeWarning(int rcId, String problem, String details) throws PersistenceException {
+			log("+ warning: rcId = "+rcId+", problem = "+problem+", details = "+details);
+		}
+
+
+		public Map<String, ? extends Number> getTableStats() throws PersistenceException {
+			return Collections.emptyMap(); //TODO: counters
+		}
+
+		public boolean isComplete() throws PersistenceException {
+			return true;
+		}
+		
+		public DatasetIdentifier getDatasetIdentifier() {
+			return dataset;
+		}
+
+		public void buildFeatures() throws PersistenceException {
+			log("* buildFeatures *");
+		}
+
+		public void buildProximity() throws PersistenceException {
+			log("* buildProximity *");
+		}
+
+	}
+
 	public class DebugConceptInfoStoreBuilder implements
 			ConceptInfoStoreBuilder<LocalConcept> {
 
@@ -350,10 +443,6 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			log("* prepareImport *");
 		}
 		
-		public void buildConceptInfo() throws PersistenceException {
-			log("* buildConceptInfo *");
-		}
-
 		public void checkConsistency() throws PersistenceException {
 			log("* checkConsistency *");
 		}
@@ -423,15 +512,22 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			return dataset;
 		}
 
-		public int buildConceptPropertyCache(String targetField, String propertyTable, String propertyConceptField, ReferenceListEntrySpec spec, String threshold) throws PersistenceException {
-			// TODO Auto-generated method stub
-			return 0;
+		public void buildConceptRelationCache() throws PersistenceException {
+			log("* buildConceptRelationCache *");
 		}
 
-		public void storeConceptFeatures(ConceptFeatures<LocalConcept> features) throws PersistenceException {
-			log("+ storeConceptFeatures: concept = "+features.getConceptId()+", features = "+features.getFeatureVector());
+		public void buildConceptDescriptionCache() throws PersistenceException {
+			log("* buildConceptDescriptionCache *");
 		}
-		
+
+		public void buildConceptFeatureCache() throws PersistenceException {
+			log("* buildConceptFeatureCache *");
+		}
+
+		public void buildConceptProximetyCache() throws PersistenceException {
+			log("* buildConceptProximetyCache *");
+		}
+
 	}
 
 	public class DebugAgendaPersistor extends Agenda.TransientPersistor {
@@ -716,6 +812,10 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
 	public StatisticsStoreBuilder getStatisticsStoreBuilder() {
 		return new DebugStatisticsStoreBuilder();
+	}
+
+	public ProximityStoreBuilder getProximityStoreBuilder() {
+		return new DebugProximityStoreBuilder();
 	}
 
 	public TextStoreBuilder getTextStoreBuilder() {

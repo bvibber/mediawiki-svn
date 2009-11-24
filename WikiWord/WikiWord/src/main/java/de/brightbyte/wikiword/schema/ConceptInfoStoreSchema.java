@@ -46,10 +46,11 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 	public final ReferenceListEntrySpec similarReferenceListEntry;
 	public final ReferenceListEntrySpec relatedReferenceListEntry;
 	public final ReferenceListEntrySpec related2ReferenceListEntry;
+	public final ReferenceListEntrySpec featureReferenceListEntry;
+	public final ReferenceListEntrySpec proximityReferenceListEntry;
 	
 	protected EntityTable conceptInfoTable;
 	protected EntityTable conceptDescriptionTable;
-	protected EntityTable conceptFeaturesTable;
 	
 	private String fields(String... f) {
 		if (f.length==0) return null;
@@ -102,6 +103,14 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 		related2ReferenceListEntry = 
 			new ReferenceListEntrySpec("concept1","concept1", 
 					true, false, false, false); //TODO: name?... in relation table?... //XXX: why no score
+		
+		featureReferenceListEntry = 
+			new ReferenceListEntrySpec("target",fields("target", "weight"), 
+					true, false, false, true);
+				
+		proximityReferenceListEntry = 
+			new ReferenceListEntrySpec("target",fields("target", "proximity"), 
+					true, false, false, true);
 				
 		init(tweaks, description);
 	}
@@ -126,6 +135,9 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 		conceptInfoTable.setAutomaticField(null);
 		conceptInfoTable.addField( new DatabaseField(this, "similar", getTextType(listBlobSize), null, false, null ) );
 		conceptInfoTable.addField( new DatabaseField(this, "related", getTextType(listBlobSize), null, false, null ) );
+		//TODO: derived
+		conceptInfoTable.addField( new DatabaseField(this, "feature", getTextType(listBlobSize), null, false, null ) );
+		conceptInfoTable.addField( new DatabaseField(this, "proximity", getTextType(listBlobSize), null, false, null ) );
 		addTable(conceptInfoTable);
 
 		if (description) {
@@ -135,12 +147,6 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 			conceptDescriptionTable.setAutomaticField(null);
 			addTable(conceptDescriptionTable);
 		}
-
-		conceptFeaturesTable = new EntityTable(this, "concept_features", getDefaultTableAttributes());
-		conceptFeaturesTable.addField( new DatabaseField(this, "concept", "INT", null, true, KeyType.PRIMARY ) );
-		conceptFeaturesTable.addField( new DatabaseField(this, "features", getFieldType(byte[].class), null, false, null ) );
-		conceptFeaturesTable.setAutomaticField(null);
-		addTable(conceptFeaturesTable);
 	}
 	
 	@Override
