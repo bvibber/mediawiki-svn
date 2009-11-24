@@ -8,7 +8,7 @@ class FlagPageTabInstaller {
 		if ( !$wgTitle->exists() ) {
 			return false;
 		}
-		$linkParam = "page=" . $wgTitle->getPartialURL();
+		$linkParam = "page=" . $wgTitle->getPrefixedURL();
 		wfLoadExtensionMessages( 'FlagPage' );
 		$special = SpecialPage::getTitleFor( 'FlagPage' );
 		$content_actions['flagpage'] = array(
