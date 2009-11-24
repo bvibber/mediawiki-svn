@@ -28,7 +28,6 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 	
 	protected WikiWordStoreFactory<? extends S> conceptStoreFactory;
 	
-	
 	public StoreBackedApp(boolean allowGlobal, boolean allowLocal) {
 		super();
 		
@@ -38,7 +37,7 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 	
 	
 	protected void registerStore(WikiWordStore store) {
-		stores.add(store);
+		if (!stores.contains(store)) stores.add(store);
 	}
 	
 	protected Collection<WikiWordStore> getStores() {

@@ -137,6 +137,7 @@ public class PropertyImporter extends ConceptImporter {
 		super.configure(args);
 		
 		if (args.isSet("attach")) buildConcepts = false;
+		else buildConcepts = true;
 		
 		setStoreProperties(true);
 	}

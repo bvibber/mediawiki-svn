@@ -28,9 +28,11 @@ public class ImportProperties extends ImportDump<LocalConceptStoreBuilder> {
 	@Override
 	protected void createStores(WikiWordStoreFactory<? extends LocalConceptStoreBuilder> factory) throws IOException, PersistenceException {
 		super.createStores(factory);
+		boolean attach = args.isSet("attach");
+		if (!attach) registerTargetStore(conceptStore);
 		
 		propertyStore = conceptStore.getPropertyStoreBuilder();
-		registerStore(propertyStore);
+		registerTargetStore(propertyStore);
 	}
 	
 	@Override

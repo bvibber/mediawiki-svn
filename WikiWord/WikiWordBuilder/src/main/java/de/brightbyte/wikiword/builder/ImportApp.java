@@ -4,10 +4,11 @@ import static de.brightbyte.util.LogLevels.LOG_FINE;
 import static de.brightbyte.util.LogLevels.LOG_INFO;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.brightbyte.application.Agenda;
 import de.brightbyte.application.Agenda.Monitor;
-import de.brightbyte.db.DatabaseTask;
 import de.brightbyte.io.Prompt;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.StoreBackedApp;
@@ -30,6 +31,8 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 		APPEND,
 		ATTACH
 	}
+	
+	protected List<WikiWordStoreBuilder> targetStores = new ArrayList<WikiWordStoreBuilder>();
 	
 	private boolean useAgenda;
 	private String agendaTask;
@@ -251,22 +254,30 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 	
 	protected void initializeStores(boolean purge, boolean dropWarnings) throws PersistenceException {
 		for (WikiWordStore store: stores) {
-			((WikiWordStoreBuilder)store).initialize(purge, dropWarnings); //XXX: ugly cast!
+			if (store instanceof WikiWordStoreBuilder) {
+				boolean isTarget = targetStores.contains(store);
+				((WikiWordStoreBuilder)store).initialize(isTarget && purge, isTarget && dropWarnings); 
+			}
 		}		
 	}
 
 	protected void optimizeStores() throws PersistenceException {
-		for (WikiWordStore store: stores) {
-			((WikiWordStoreBuilder)store).optimize(); //XXX: ugly cast!
+		for (WikiWordStoreBuilder store: targetStores) {
+			store.optimize(); 
 		}		
 	}
 
 	protected void checkStores() throws PersistenceException {
-		for (WikiWordStore store: stores) {
-			((WikiWordStoreBuilder)store).checkConsistency(); //XXX: ugly cast!
+		for (WikiWordStore store: targetStores) {
+			store.checkConsistency(); 
 		}		
 	}
 
+	protected void registerTargetStore(WikiWordStoreBuilder store) {
+		super.registerStore(store);
+		if (!targetStores.contains(store)) targetStores.add(store);
+	}
+	
 	protected void createStores(WikiWordStoreFactory<? extends S> factory) throws IOException, PersistenceException {
 		super.createStores(factory);
 		

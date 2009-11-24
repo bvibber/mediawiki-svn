@@ -28,13 +28,12 @@ public class BuildStatistics extends ImportApp<WikiWordConceptStoreBuilder<? ext
 	
 	//protected WikiWordConceptStoreBuilder<?> conceptStore;
 	
-	
 	@Override
 	protected void createStores(WikiWordStoreFactory<? extends WikiWordConceptStoreBuilder<? extends WikiWordConcept>> factory) throws IOException, PersistenceException {
 		super.createStores(factory);
 		
 		statisticsStore = conceptStore.getStatisticsStoreBuilder();
-		registerStore(statisticsStore);
+		registerTargetStore(statisticsStore);
 	}
 
 	@Override

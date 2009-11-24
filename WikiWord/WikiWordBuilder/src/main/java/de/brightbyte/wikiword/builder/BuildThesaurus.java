@@ -1,8 +1,11 @@
 package de.brightbyte.wikiword.builder;
 
+import java.io.IOException;
 import java.util.Arrays;
 
+import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.GlobalConceptStoreBuilder;
 
 /**
@@ -10,7 +13,7 @@ import de.brightbyte.wikiword.store.builder.GlobalConceptStoreBuilder;
  * ImportDump can be invoked as a standalone program, use --help as a
  * command line parameter for usage information.
  */
-public class BuildThesaurus extends ImportApp {
+public class BuildThesaurus extends ImportApp<GlobalConceptStoreBuilder> {
 
 	private Corpus[] languages;
 
@@ -62,7 +65,6 @@ public class BuildThesaurus extends ImportApp {
 		}
 	}*/
 	
-
 	@Override
 	protected void run() throws Exception {
 		section("-- importConcepts --------------------------------------------------");
@@ -84,16 +86,16 @@ public class BuildThesaurus extends ImportApp {
 		}
 		
 		info("Using languages: "+Arrays.toString(languages));
-		((GlobalConceptStoreBuilder)this.conceptStore).setLanguages(languages);
+		this.conceptStore.setLanguages(languages);
 		
 		if (agenda.beginTask("BuildThesaurus.run", "importConcepts")) {
-			((GlobalConceptStoreBuilder)this.conceptStore).importConcepts();
+			this.conceptStore.importConcepts();
 			agenda.endTask("BuildThesaurus.run", "importConcepts");
 		}
 		
 		section("-- buildGlobalConcepts --------------------------------------------------");
 		if (agenda.beginTask("BuildThesaurus.run", "buildGlobalConcepts")) {
-			((GlobalConceptStoreBuilder)this.conceptStore).buildGlobalConcepts();
+			this.conceptStore.buildGlobalConcepts();
 			agenda.endTask("BuildThesaurus.run", "buildGlobalConcepts");
 		}
 
@@ -113,4 +115,11 @@ public class BuildThesaurus extends ImportApp {
 		BuildThesaurus app = new BuildThesaurus();
 		app.launch(argv);
 	}
+
+	@Override
+	protected void createStores(WikiWordStoreFactory<? extends GlobalConceptStoreBuilder> factory) throws IOException, PersistenceException {
+		super.createStores(factory);
+		registerTargetStore(conceptStore);
+	}
+	
 }

@@ -26,7 +26,7 @@ public class BuildConceptInfo extends ImportApp<WikiWordConceptStoreBuilder<? ex
 		super.createStores(factory);
 		
 		infoStore = conceptStore.getConceptInfoStoreBuilder();
-		registerStore(infoStore);
+		registerTargetStore(infoStore);
 	}
 
 	@Override

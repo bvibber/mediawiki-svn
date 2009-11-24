@@ -6,11 +6,13 @@ import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
+import de.brightbyte.wikiword.store.WikiWordStore;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.DebugLocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
 import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
+import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
 /**
  * This is the primary entry point to the first phase of a WikiWord analysis.
@@ -34,12 +36,13 @@ public class ImportConcepts extends ImportDump<LocalConceptStoreBuilder> {
 	@Override
 	protected void createStores(WikiWordStoreFactory<? extends LocalConceptStoreBuilder> factory) throws IOException, PersistenceException {
 		super.createStores(factory);
+		registerTargetStore(conceptStore);
 		
 		textStore = conceptStore.getTextStoreBuilder();
-		registerStore(textStore);
+		registerTargetStore(textStore);
 		
 		propertyStore = conceptStore.getPropertyStoreBuilder();
-		registerStore(propertyStore);
+		registerTargetStore(propertyStore);
 	}
 
 	@Override
