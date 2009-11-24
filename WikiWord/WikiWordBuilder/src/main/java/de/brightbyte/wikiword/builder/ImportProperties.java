@@ -7,7 +7,6 @@ import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.builder.ConceptImporter;
 import de.brightbyte.wikiword.builder.ImportDump;
 import de.brightbyte.wikiword.builder.PropertyImporter;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
 
@@ -26,8 +25,8 @@ public class ImportProperties extends ImportDump<LocalConceptStoreBuilder> {
 	}
 	
 	@Override
-	protected void createStores(WikiWordStoreFactory<? extends LocalConceptStoreBuilder> factory) throws IOException, PersistenceException {
-		super.createStores(factory);
+	protected void createStores() throws IOException, PersistenceException {
+		super.createStores();
 		boolean attach = args.isSet("attach");
 		if (!attach) registerTargetStore(conceptStore);
 		

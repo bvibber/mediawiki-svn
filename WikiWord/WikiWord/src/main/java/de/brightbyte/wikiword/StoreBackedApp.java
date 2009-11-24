@@ -11,7 +11,6 @@ import de.brightbyte.wikiword.store.DatabaseWikiWordStore;
 import de.brightbyte.wikiword.store.WikiWordConceptStoreBase;
 import de.brightbyte.wikiword.store.WikiWordLocalStore;
 import de.brightbyte.wikiword.store.WikiWordStore;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
 /**
  * This is the base class for entry points to WikiWord.
@@ -25,8 +24,6 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 	
 	protected boolean allowLocalStore;
 	protected boolean allowGlobalStore;
-	
-	protected WikiWordStoreFactory<? extends S> conceptStoreFactory;
 	
 	public StoreBackedApp(boolean allowGlobal, boolean allowLocal) {
 		super();
@@ -76,10 +73,6 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 		return (Corpus)dataset;
 	}
 
-	public void setConceptStoreFactory(WikiWordStoreFactory<? extends S> conceptStoreFactory) {
-		this.conceptStoreFactory = conceptStoreFactory;
-	}
-	
 	public DatasetIdentifier getConfiguredDataset() {
 		DatasetIdentifier dataset;
 
@@ -96,9 +89,6 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 		
 		return dataset;
 	}
-	
-	
-	protected abstract WikiWordStoreFactory<? extends S> createConceptStoreFactory() throws IOException, PersistenceException;
 
 	protected void openStores() throws PersistenceException {
 		for (WikiWordStore store: stores) {
@@ -118,16 +108,13 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 		}
 	}
 	
-	protected void createStores(WikiWordStoreFactory<? extends S> factory) throws IOException, PersistenceException {
-		conceptStore = factory.newStore();
-		registerStore(conceptStore);
-	}
+	protected abstract void createStores() throws IOException, PersistenceException;
 
 	protected void launchExecute() throws Exception {
-		if (conceptStoreFactory==null) conceptStoreFactory= createConceptStoreFactory();
-		if (conceptStore==null) createStores(conceptStoreFactory);
+		if (conceptStore==null) createStores();
 		
 		if (conceptStore==null) throw new RuntimeException("createStores() failed to initialize conceptStore");
+		if (!stores.contains(conceptStore)) throw new RuntimeException("createStores() failed to call registerStore(conceptStore)");
 
 		exitCode = 23;
 

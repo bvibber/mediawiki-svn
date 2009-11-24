@@ -15,29 +15,6 @@ import de.brightbyte.wikiword.schema.WikiWordStoreSchema;
 
 public class DatabaseConceptStores {
 	
-	public static class Factory<S extends DatabaseWikiWordConceptStore<? extends WikiWordConcept, ? extends WikiWordConceptReference<? extends WikiWordConcept>>> implements WikiWordStoreFactory<S> {
-		private DataSource db;
-		private DatasetIdentifier dataset;
-		private TweakSet tweaks;
-		private boolean allowCorpus;
-		private boolean allowThesaurus;
-
-		public Factory(DataSource db, DatasetIdentifier dataset, TweakSet tweaks, boolean allowCorpus, boolean allowThesaurus) {
-			super();
-			this.db = db;
-			this.dataset = dataset;
-			this.tweaks = tweaks;
-			this.allowCorpus = allowCorpus;
-			this.allowThesaurus = allowThesaurus;
-		}
-
-		@SuppressWarnings("unchecked")
-		public S newStore() throws PersistenceException {
-			return (S)createConceptStore(db, dataset, tweaks, allowCorpus, allowThesaurus);
-		}
-		
-	}
-	
 	public static DatabaseWikiWordConceptStore<? extends WikiWordConcept, ? extends WikiWordConceptReference<? extends WikiWordConcept>> createConceptStore(DataSource db, DatasetIdentifier dataset, TweakSet tweaks, boolean allowCorpus, boolean allowThesaurus) throws PersistenceException {
 		//XXX: UGLY HACK!
 		try {

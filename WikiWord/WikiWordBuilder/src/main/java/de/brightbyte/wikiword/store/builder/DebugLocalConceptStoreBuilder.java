@@ -24,26 +24,11 @@ import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.store.GroupNameTranslator;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
 /**
  * Dummy implementation of WikiStoreBuilder for testing and debugging
  */
 public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
-
-	public static class Factory implements WikiWordStoreFactory<DebugLocalConceptStoreBuilder> {
-		protected Output out;
-		protected Corpus corpus;
-		
-		public Factory(Corpus corpus, Output out) {
-			this.out = out;
-			this.corpus = corpus;
-		}
-		
-		public DebugLocalConceptStoreBuilder newStore() throws PersistenceException {
-			return new DebugLocalConceptStoreBuilder(corpus, out);
-		}
-	}
 	
 	public class DebugTextStoreBuilder implements TextStoreBuilder {
 

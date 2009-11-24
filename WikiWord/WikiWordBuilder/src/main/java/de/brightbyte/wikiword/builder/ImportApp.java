@@ -9,14 +9,16 @@ import java.util.List;
 
 import de.brightbyte.application.Agenda;
 import de.brightbyte.application.Agenda.Monitor;
+import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.Prompt;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.StoreBackedApp;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.store.WikiWordStore;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.DatabaseConceptStoreBuilders;
 import de.brightbyte.wikiword.store.builder.DatabaseWikiWordStoreBuilder;
+import de.brightbyte.wikiword.store.builder.DebugLocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
@@ -49,12 +51,6 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 		this.useAgenda = agendaTask != null;
 	}
 		
-	@SuppressWarnings("unchecked")
-	@Override
-	protected WikiWordStoreFactory<? extends S> createConceptStoreFactory() throws IOException, PersistenceException {
-		return new DatabaseConceptStoreBuilders.Factory(getConfiguredDataSource(), getConfiguredDataset(), tweaks, null, true, true);
-	}
-
 	@Override
 	protected void declareOptions() {
 		super.declareOptions();
@@ -278,8 +274,13 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 		if (!targetStores.contains(store)) targetStores.add(store);
 	}
 	
-	protected void createStores(WikiWordStoreFactory<? extends S> factory) throws IOException, PersistenceException {
-		super.createStores(factory);
+	@SuppressWarnings("unchecked")
+	@Override
+	protected void createStores() throws PersistenceException, IOException {
+		if (args.isSet("debug"))  conceptStore =  (S)new DebugLocalConceptStoreBuilder(getCorpus(), out); //HACK: ugly cast; //FIXME: will fail if global store expected
+		else conceptStore = (S)DatabaseConceptStoreBuilders.createConceptStoreBuilder(getConfiguredDataSource(), getConfiguredDataset(), tweaks, null, true, true);
+		
+		registerStore(conceptStore);
 		
 		if (conceptStore instanceof DatabaseWikiWordStoreBuilder) {
 			((DatabaseWikiWordStoreBuilder)conceptStore).setBackgroundErrorHandler(new FatalBackgroundErrorHandler<Runnable, Throwable, Error>());

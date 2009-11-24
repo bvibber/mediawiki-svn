@@ -27,7 +27,6 @@ import de.brightbyte.wikiword.store.DatabaseConceptStores;
 import de.brightbyte.wikiword.store.GlobalConceptStore;
 import de.brightbyte.wikiword.store.LocalConceptStore;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
 public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 
@@ -391,7 +390,8 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}
 
 	@Override
-	protected WikiWordStoreFactory<WikiWordConceptStore> createConceptStoreFactory() throws IOException, PersistenceException {
-		return new DatabaseConceptStores.Factory(getConfiguredDataSource(), getConfiguredDataset(), tweaks, true, true);
+	protected void createStores() throws PersistenceException, IOException {
+		conceptStore = DatabaseConceptStores.createConceptStore(getConfiguredDataSource(), getConfiguredDataset(), tweaks, true, true);
+		registerStore(conceptStore);
 	}
 }

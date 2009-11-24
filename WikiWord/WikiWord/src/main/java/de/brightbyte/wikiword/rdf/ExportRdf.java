@@ -42,7 +42,6 @@ import de.brightbyte.wikiword.store.DatabaseGlobalConceptStore;
 import de.brightbyte.wikiword.store.DatabaseLocalConceptStore;
 import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseStatisticsStore;
 
 public class ExportRdf<V, R extends V, A, W> extends StoreBackedApp<WikiWordConceptStore> {
@@ -966,10 +965,10 @@ public class ExportRdf<V, R extends V, A, W> extends StoreBackedApp<WikiWordConc
 		this.plainSkos = plainSkos;
 	}
 	
-
 	@Override
-	protected WikiWordStoreFactory<WikiWordConceptStore> createConceptStoreFactory() throws IOException, PersistenceException {
-		return new DatabaseConceptStores.Factory(getConfiguredDataSource(), getConfiguredDataset(), tweaks, true, true);
+	protected void createStores() throws PersistenceException, IOException {
+		conceptStore = DatabaseConceptStores.createConceptStore(getConfiguredDataSource(), getConfiguredDataset(), tweaks, true, true);
+		registerStore(conceptStore);
 	}
 	
 	public static void main(String[] argv) throws Exception {

@@ -7,7 +7,6 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.store.WikiWordStore;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.DebugLocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
@@ -28,14 +27,9 @@ public class ImportConcepts extends ImportDump<LocalConceptStoreBuilder> {
 		super("ImportConcepts");
 	}
 	
-	protected WikiWordStoreFactory<? extends LocalConceptStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
-		if (args.isSet("debug"))  return new DebugLocalConceptStoreBuilder.Factory((Corpus)getConfiguredDataset(), ConsoleIO.output);
-		else return super.createConceptStoreFactory();
-	}
-	
 	@Override
-	protected void createStores(WikiWordStoreFactory<? extends LocalConceptStoreBuilder> factory) throws IOException, PersistenceException {
-		super.createStores(factory);
+	protected void createStores() throws IOException, PersistenceException {
+		super.createStores();
 		registerTargetStore(conceptStore);
 		
 		textStore = conceptStore.getTextStoreBuilder();

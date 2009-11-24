@@ -12,34 +12,9 @@ import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.schema.WikiWordStoreSchema;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
 public class DatabaseConceptStoreBuilders {
-	
-	public static class Factory<C extends WikiWordConcept> implements WikiWordStoreFactory<DatabaseWikiWordConceptStoreBuilder<C>> {
-		private DataSource db;
-		private DatasetIdentifier dataset;
-		private TweakSet tweaks;
-		private Agenda agenda;
-		private boolean allowCorpus;
-		private boolean allowThesaurus;
-
-		public Factory(DataSource db, DatasetIdentifier dataset, TweakSet tweaks, Agenda agenda, boolean allowCorpus, boolean allowThesaurus) {
-			super();
-			this.db = db;
-			this.dataset = dataset;
-			this.tweaks = tweaks;
-			this.agenda = agenda;
-			this.allowCorpus = allowCorpus;
-			this.allowThesaurus = allowThesaurus;
-		}
-
-		@SuppressWarnings("unchecked")
-		public DatabaseWikiWordConceptStoreBuilder<C> newStore() throws PersistenceException {
-			return (DatabaseWikiWordConceptStoreBuilder<C>)createConceptStoreBuilder(db, dataset, tweaks, agenda, allowCorpus, allowThesaurus);
-		}
-	}
-	
+		
 	public static DatabaseWikiWordConceptStoreBuilder<? extends WikiWordConcept> createConceptStoreBuilder(DataSource db, DatasetIdentifier dataset, TweakSet tweaks, Agenda agenda, boolean allowCorpus, boolean allowThesaurus) throws PersistenceException {
 		//XXX: UGLY HACK!
 		try {

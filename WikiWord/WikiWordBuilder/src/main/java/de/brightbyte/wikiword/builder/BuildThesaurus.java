@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Corpus;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.GlobalConceptStoreBuilder;
 
 /**
@@ -117,8 +116,8 @@ public class BuildThesaurus extends ImportApp<GlobalConceptStoreBuilder> {
 	}
 
 	@Override
-	protected void createStores(WikiWordStoreFactory<? extends GlobalConceptStoreBuilder> factory) throws IOException, PersistenceException {
-		super.createStores(factory);
+	protected void createStores() throws IOException, PersistenceException {
+		super.createStores();
 		registerTargetStore(conceptStore);
 	}
 	

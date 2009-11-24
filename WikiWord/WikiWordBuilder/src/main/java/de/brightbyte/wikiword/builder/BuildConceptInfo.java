@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.ConceptInfoStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 
@@ -22,8 +21,8 @@ public class BuildConceptInfo extends ImportApp<WikiWordConceptStoreBuilder<? ex
 	}
 	
 	@Override
-	protected void createStores(WikiWordStoreFactory<? extends WikiWordConceptStoreBuilder<? extends WikiWordConcept>> factory) throws IOException, PersistenceException {
-		super.createStores(factory);
+	protected void createStores() throws IOException, PersistenceException {
+		super.createStores();
 		
 		infoStore = conceptStore.getConceptInfoStoreBuilder();
 		registerTargetStore(infoStore);
