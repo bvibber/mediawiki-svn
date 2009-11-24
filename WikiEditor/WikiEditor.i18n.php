@@ -14,6 +14,7 @@ $messages = array();
 $messages['en'] = array(
 	'wikieditor' => 'Advanced wikitext editing interface',
 	'wikieditor-desc' => 'Provides an extendable wikitext editing interface and many feature providing modules',
+	'wikieditor-wikitext-tab' => 'WikiText',
 );
 
 /** Message documentation (Message documentation)
