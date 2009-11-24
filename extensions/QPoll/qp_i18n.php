@@ -63,8 +63,8 @@ $messages['en'] = array(
 	'qp_users_link' => 'Users',
 	'qp_voice_link' => 'User voice',
 	'qp_voice_link_inv' => 'User voice?',
-	'qp_user_polls_link' => 'Participated in $1 {{PLURAL:$1|poll|polls}}',
-	'qp_user_missing_polls_link' => 'No participation',
+	'qp_user_polls_link' => 'Participated in $1 {{PLURAL:$1|poll|polls}}', // Supports use of GENDER with $2
+	'qp_user_missing_polls_link' => 'No participation', // Supports use of GENDER with $1
 	'qp_not_participated_link' => 'Not participated',
 	'qp_order_by_username' => 'Order by username',
 	'qp_order_by_polls_count' => 'Order by polls count',
@@ -130,7 +130,10 @@ $messages['qqq'] = array(
 	'qp_users_link' => '{{Identical|User}}',
 	'qp_voice_link_inv' => "What '?' means?",
 	'qp_user_polls_link' => 'Parameters:
-* $1 is the number of polls participated in.',
+* $1 is the number of polls participated in.
+* $2 is the name of the user this message refers to (optional - use for GENDER)',
+	'qp_user_missing_polls_link' => 'Parameters:
+* $1 is the name of the user this message refers to (optional - use for GENDER)',
 );
 
 /** Afrikaans (Afrikaans)

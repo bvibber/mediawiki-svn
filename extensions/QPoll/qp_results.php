@@ -569,8 +569,8 @@ class qp_UsersList extends qp_QueryPage {
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 			$user_link = self::$skin->link( $userTitle, $userName );
-			$user_polls_link = self::$skin->link( $this->getTitle(), wfMsgExt( 'qp_user_polls_link', array( 'parsemag' ), $result->pidcount ) , array(), array( "uid"=>$uid, "action"=>"upolls" ) );
-			$user_missing_polls_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_user_missing_polls_link' ) , array(), array( "uid"=>$uid, "action"=>"nupolls" ) );
+			$user_polls_link = self::$skin->link( $this->getTitle(), wfMsgExt( 'qp_user_polls_link', array( 'parsemag' ), $result->pidcount, $userName ) , array(), array( "uid"=>$uid, "action"=>"upolls" ) );
+			$user_missing_polls_link = self::$skin->link( $this->getTitle(), wfMsgExt( 'qp_user_missing_polls_link', 'parsemag', $userName ) , array(), array( "uid"=>$uid, "action"=>"nupolls" ) );
 			$link = $user_link . ': ' . $user_polls_link . ', ' . $user_missing_polls_link;
 		}
 		return $link;
@@ -619,7 +619,7 @@ class qp_UserPollsList extends qp_QueryPage {
 		if ( $userName !== false ) {
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 			$user_link = self::$skin->link( $userTitle, $userName );
-			return PollResults::getPollsLink() . PollResults::getUsersLink() . '<div class="head">' . $user_link . ': ' . ( $this->inverse ? wfMsg( 'qp_user_missing_polls_link' ) : wfMsgExt( 'qp_user_polls_link', array( 'parsemag' ), $pidcount ) ) . ' ' . '</div>';
+			return PollResults::getPollsLink() . PollResults::getUsersLink() . '<div class="head">' . $user_link . ': ' . ( $this->inverse ? wfMsgExt( 'qp_user_missing_polls_link', 'parsemag', $userName ) : wfMsgExt( 'qp_user_polls_link', array( 'parsemag' ), $pidcount, $userName ) ) . ' ' . '</div>';
 		}
 	}
 
