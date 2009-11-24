@@ -10,7 +10,12 @@ api: {
 /**
  * Default width of table of contents
  */
-defaultWidth: '13em',
+defaultWidth: '166px',
+/**
+ * Minimum width to allow resizing to before collapsing the table of contents
+ * Only used if resizing and collapsing is enabled
+ */
+minimumWidth: '70px',
 /**
  * Internally used functions
  */
@@ -24,18 +29,6 @@ fn: {
 	create: function( context, config ) {
 		if ( '$toc' in context.modules ) {
 			return;
-		}
-		
-		context.initialWidth = $.wikiEditor.modules.toc.defaultWidth;
-		if( wgNavigableTOCResizable ) {
-			if( !$.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) ) {
-				$.cookie(
-					'wikiEditor-' + context.instance + '-toc-width',
-					$.wikiEditor.modules.toc.defaultWidth
-				);
-			} else {
-				context.initialWidth = $.cookie( 'wikiEditor-' + context.instance + '-toc-width' );
-			}
 		}
 		
 		var height = context.$ui.find( '.wikiEditor-ui-left' ).height();
@@ -123,24 +116,21 @@ fn: {
 	 * @param {Object} event Event object with context as data
 	 */
 	collapse: function( event ) {
-		var $this = $( this ), context = $this.data('context');
-		var pT = $this.parent().position().top - 1;
+		var $this = $( this ), context = $this.data( 'context' ),
+			pT = $this.parent().position().top - 1;
 		$this.parent()
 			.css( 'position', 'absolute' )
-			.css( {'left': 'auto', 'right': 0, 'top': pT})
+			.css( { 'left': 'auto', 'right': 0, 'top': pT } )
 			.fadeOut( 'fast', function() { 
-				$(this).hide()
+				$( this ).hide()
 				.css( 'width', '1px' );
 				context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).fadeIn( 'fast' );
 			 } )
 			.prev()
-			.animate( { 'marginRight': '-1px'}, 'fast', function() { $(this).css( 'marginRight', 0 ); } )
+			.animate( { 'marginRight': '-1px' }, 'fast', function() { $( this ).css( 'marginRight', 0 ); } )
 			.children()
-			.animate( {'marginRight': '1px'}, 'fast',  function() { $(this).css( 'marginRight', 0 ); } );
-		/* 
-		 * TODO: incorporate the cookie for saving toc position
-		 * $.cookie( 'wikiEditor-' + context.instance + '-toc-width', 1 );
-		*/
+			.animate( { 'marginRight': '1px' }, 'fast',  function() { $( this ).css( 'marginRight', 0 ); } );
+		$.cookie( 'wikiEditor-' + context.instance + '-toc-width', 0 );
 		return false;
 	},
 	
@@ -150,22 +140,22 @@ fn: {
 	 * @param {Object} event Event object with context as data
 	 */
 	expand: function( event) {
-		var $this = $( this ), context = $this.data('context');
+		var $this = $( this ), 
+			context = $this.data( 'context' ), 
+			openWidth = context.modules.$toc.data( 'openWidth' );
 		context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).hide();
 		$this.parent()
 			.show()
-			.animate( { 'width' : '13em' }, 'fast', function() { 
-				$(this)
-				.css( { 'position': 'relative', 'right': 'auto', 'top': 'auto' });
+			.animate( { 'width' : openWidth }, 'fast', function() { 
+				context.$content.trigger( 'mouseup' );
+				$( this ).css( { 'position': 'relative', 'right': 'auto', 'top': 'auto' } );
 			 } )
 			.prev()
-			.animate( { 'marginRight': '-13em'}, 'fast' )
+			.animate( { 'marginRight': ( parseFloat( openWidth ) * -1 ) }, 'fast' )
 			.children()
-			.animate( {'marginRight': '13em'}, 'fast');
-		/* 
-		 * TODO: incorporate the cookie for saving toc position
-		 * $.cookie( 'wikiEditor-' + context.instance + '-toc-width', context.modules.$toc.data( 'openWidth' ) );
-		*/
+			.animate( { 'marginRight': openWidth }, 'fast' );
+		$.cookie( 'wikiEditor-' + context.instance + '-toc-width', 
+			context.modules.$toc.data( 'openWidth' ) );
 		return false;
 	},
 	/**
@@ -224,65 +214,96 @@ fn: {
 			}
 			return list;
 		}
-		function buildCollapseControls() {
-			// FIXME: Coding style
+		/**
+		 * Builds controls for collapsing and expanding the TOC
+		 * 
+		 */
+		function buildCollapseControls( ) {
 			var $collapseControl = $( '<div />' ), $expandControl = $( '<div />' );
 			$collapseControl
 				.addClass( 'tab' )
 				.addClass( 'tab-toc' )
 				.append( '<a href="#" />' )
 				.bind( 'click.wikiEditor-toc', function() { 
-						context.modules.$toc.trigger( 'collapse' ); 
-						return false; 
-					})
+					context.modules.$toc.trigger( 'collapse.wikiEditor-toc' ); return false; 
+				} )
 				.find( 'a' )
 				.text( gM( 'wikieditor-toc-hide' ) );
 			$expandControl
-				.addClass( 'wikiEditor-ui-toc-expandControl')
+				.addClass( 'wikiEditor-ui-toc-expandControl' )
 				.append( '<a href="#" />' )
 				.bind( 'click.wikiEditor-toc', function() { 
-						context.modules.$toc.trigger( 'expand' ); 
-						return false; 
-					})
+					context.modules.$toc.trigger( 'expand.wikiEditor-toc' ); return false; 
+				} )
 				.hide()
 				.find( 'a' )
 				.text( gM( 'wikieditor-toc-show' ) );
 			$collapseControl.insertBefore( context.modules.$toc );
 			context.$ui.find( '.wikiEditor-ui-left .wikiEditor-ui-top' ).append( $expandControl );
 		}
-		function buildResizeControls() {
-			// FIXME: Coding style
+		/**
+		 * Initializes resizing controls on the TOC and sets the width of 
+		 * the TOC based on it's previous state
+		 * 
+		 */
+		function buildResizeControls( ) {
+			context.$ui
+				.data( 'resizableDone', true )
+				.find( '.wikiEditor-ui-right' )
+				.data( 'wikiEditor-ui-left', context.$ui.find( '.wikiEditor-ui-left' ) )
+				.resizable( { handles: 'w,e', preventPositionLeftChange: true, minWidth: 50,
+					start: function( e, ui ) {
+						var $this = $( this );
+						// Toss a transparent cover over our iframe
+						$( '<div />' )
+							.addClass( 'wikiEditor-ui-resize-mask' )
+							.css( { 'position': 'absolute', 'z-index': 2, 'left': 0, 'top': 0, 'bottom': 0, 'right': 0 } )
+							.appendTo( context.$ui.find( '.wikiEditor-ui-left' ) );
+						$this.resizable( 'option', 'maxWidth', $this.parent().width() - 450 );
+					},
+					resize: function( e, ui ) {
+						// for some odd reason, ui.size.width seems a step ahead of what the *actual* width of 
+						// the resizable is
+						$( this ).css( { 'width': ui.size.width, 'top': 'auto', 'height': 'auto' } )
+							.data( 'wikiEditor-ui-left' ).css( 'marginRight', ( -1 * ui.size.width ) )
+							.children().css( 'marginRight', ui.size.width );
+					},
+					stop: function ( e, ui ) {
+						context.$ui.find( '.wikiEditor-ui-resize-mask' ).remove();
+						context.$content.trigger( 'mouseup' );
+						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.minimumWidth ) ) {
+							context.modules.$toc.trigger( 'collapse' ); 
+						} else {
+							context.modules.$toc.data( 'openWidth', ui.size.width );
+							$.cookie( 'wikiEditor-' + context.instance + '-toc-width', ui.size.width );
+						}
+					}
+				});
+			// Convert our east resize handle into a secondary west resize handle
 			context.$ui.find( '.ui-resizable-e' )
 				.removeClass( 'ui-resizable-e' )
 				.addClass( 'ui-resizable-w' )
-				.addClass( 'wikiEditor-ui-toc-resize-grip' )
-				.appendTo( context.$ui.find( '.wikiEditor-ui-right' ) );
+				.addClass( 'wikiEditor-ui-toc-resize-grip' );
+			// Bind collapse and expand event handlers to the TOC
 			context.modules.$toc
 				.bind( 'collapse.wikiEditor-toc', $.wikiEditor.modules.toc.fn.collapse )
 				.bind( 'expand.wikiEditor-toc', $.wikiEditor.modules.toc.fn.expand  );
-			var $collapseControl = $( '<div />' )
-				.addClass( 'tab' )
-				.addClass( 'tab-toc' )
-				.append( '<a href="#" />' );
-			if( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) != 1 ) {
-				$collapseControl.bind( 'click.wikiEditor-toc', function() { 
-						context.modules.$toc.trigger( 'collapse' ); return false; 
-					})
-					.find( 'a' ).text( gM( 'wikieditor-toc-hide' ) );
-			} else {
-				$collapseControl.bind( 'click.wikiEditor-toc', function() { 
-						context.modules.$toc.trigger( 'expand' ); return false; 
-					})
-					.find( 'a' ).text( gM( 'wikieditor-toc-show' ) );
+			context.modules.$toc.data( 'openWidth', $.wikiEditor.modules.toc.defaultWidth );
+			// If the toc-width cookie is set, reset the widths based upon that
+			if ( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) == 0 ) {
+				context.modules.$toc.trigger( 'collapse.wikiEditor-toc', { data: context } );
+			} else if ( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) > 0 ) {
+				var initialWidth = $.cookie( 'wikiEditor-' + context.instance + '-toc-width' );
+				if( initialWidth < parseFloat( $.wikiEditor.modules.toc.minimumWidth ) )
+					initialWidth = parseFloat( $.wikiEditor.modules.toc.minimumWidth ) + 1;
+				context.modules.$toc.data( 'openWidth', initialWidth + 'px' );
+				context.$ui.find( '.wikiEditor-ui-right' )
+					.css( 'width', initialWidth + 'px' );
+				context.$ui.find( '.wikiEditor-ui-left' )
+					.css( 'marginRight', ( parseFloat( initialWidth ) * -1 ) + 'px' )
+					.children()
+					.css( 'marginRight', initialWidth + 'px' );
 			}
-			
-			if( !context.modules.$toc.data( 'openWidth' ) ) {
-				context.modules.$toc.data( 'openWidth', context.initialWidth == 1 ?
-					$.wikiEditor.modules.toc.defaultWidth : context.initialWidth );
-			}
-			if ( context.initialWidth == 1 )
-				$.wikiEditor.modules.toc.fn.collapse( { data: context } );
-			return "";
 		}
 		
 		// Build outline from wikitext
@@ -348,44 +369,8 @@ fn: {
 		}
 		context.modules.$toc.html( buildList( structure ) );
 		
-		// FIXME: Coding style
 		if ( wgNavigableTOCResizable && !context.$ui.data( 'resizableDone' ) ) {
-			context.$ui
-			.data( 'resizableDone', true )
-			.find( '.wikiEditor-ui-right' )
-			.data( 'wikiEditor-ui-left', context.$ui.find( '.wikiEditor-ui-left' ))
-			.resizable( {handles: 'w,e', preventPositionLeftChange: true, minWidth: 50,
-				start: function( e, ui ) {
-					$this = $( this );
-					// Toss a transparent cover over our iframe
-					$( '<div />' ).addClass( 'wikiEditor-ui-resize-mask' )
-					.css( 'position', 'absolute' )
-					.css( 'z-index', 2 )
-					.css( 'left', 0 ).css( 'top', 0 ).css( 'bottom', 0 ).css( 'right', 0 )
-					.appendTo(context.$ui.find( '.wikiEditor-ui-left' ));
-					$this.resizable( 'option', 'maxWidth', $this.parent().width() - 450 );
-				},
-				resize: function( e, ui ) {
-					/*
-					 * FIXME: Currently setting a heigh property on the resizable with ever mousemove event
-					 * which breaks our height resizing code in jquery.wikiEditor.toolbar.js
-					 */
-					
-					// for some odd reason, ui.size.width seems a step ahead of what the *actual* width of 
-					// the resizable is
-					$( this ).css( { 'width': ui.size.width, 'top': 'auto' } )
-					.data( 'wikiEditor-ui-left' ).css( 'marginRight', ( -1 * ui.size.width ) )
-					.children( ).css( 'marginRight', ui.size.width );
-				},
-				stop: function ( e, ui ) {
-					context.$ui.find( '.wikiEditor-ui-resize-mask' ).remove();
-					if( ui.size.width < 70 ){
-						context.modules.$toc.trigger( 'collapse' ); 
-					}
-				}
-			});
-			
-			context.modules.$toc.append( buildResizeControls() );
+			buildResizeControls();
 			buildCollapseControls();
 		}
 		context.modules.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
