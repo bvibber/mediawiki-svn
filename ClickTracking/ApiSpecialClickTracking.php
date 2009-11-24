@@ -23,17 +23,17 @@ class ApiSpecialClickTracking extends ApiBase {
 		$userDefString = $params['userdefs'];
 
 		// this is if it's asking for tableData
-		if( isset( $params['tabledata'] ) ) {
+		if ( isset( $params['tabledata'] ) ) {
 			$tableData = SpecialClickTracking::buildRowArray( $startdate, $enddate, $userDefString );
 			$this->getResult()->addValue( array( 'tablevals' ), 'vals', $tableData );
-		} else{ //chart data
+		} else { // chart data
 			$click_data = array();
 			try {
 				$click_data = SpecialClickTracking::getChartData( $event_id, $startdate, $enddate, $increment, $userDefString );
 				$this->getResult()->addValue( array( 'datapoints' ), 'expert', $click_data['expert'] );
 				$this->getResult()->addValue( array( 'datapoints' ), 'basic', $click_data['basic'] );
 				$this->getResult()->addValue( array( 'datapoints' ), 'intermediate', $click_data['intermediate'] );
-			} catch( Exception $e ) { /* no result */ }
+			} catch ( Exception $e ) { /* no result */ }
 		}
 	}
 
@@ -42,32 +42,32 @@ class ApiSpecialClickTracking extends ApiBase {
 	 * @param $params params extracted from the POST
 	 */
  	protected function validateParams( $params ) {
-		$required = array( 'eventid', 'startdate', 'enddate', 'increment', 'userdefs');
-		foreach( $required as $arg ) {
+		$required = array( 'eventid', 'startdate', 'enddate', 'increment', 'userdefs' );
+		foreach ( $required as $arg ) {
 			if ( !isset( $params[$arg] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', $arg ) );
 			}
 		}
 
 		// check if event id parses to an int greater than zero
-		if( (int) $params['eventid'] < 0 ) {
+		if ( (int) $params['eventid'] < 0 ) {
 			$this->dieUsage( 'Invalid event ID', 'badeventid' );
 		}
 
 		// check start and end date are of proper format
-		if( $params['startdate'] != 0 && strptime( SpecialClickTracking::space_out_date( $params['startdate'] ), "%Y %m %d" ) === false ) {
+		if ( $params['startdate'] != 0 && strptime( SpecialClickTracking::space_out_date( $params['startdate'] ), "%Y %m %d" ) === false ) {
 			$this->dieUsage( "startdate not in YYYYMMDD format: <<{$params['startdate']}>>", 'badstartdate' );
 		}
- 		if( $params['enddate'] != 0 && strptime( SpecialClickTracking::space_out_date( $params['enddate'] ), "%Y %m %d" ) === false ) {
+ 		if ( $params['enddate'] != 0 && strptime( SpecialClickTracking::space_out_date( $params['enddate'] ), "%Y %m %d" ) === false ) {
 			$this->dieUsage( "enddate not in YYYYMMDD format:<<{$params['enddate']}>>", 'badenddate' );
 		}
 
 		// check if increment is a positive int
- 		if( (int) $params['increment'] <= 0 ) {
+ 		if ( (int) $params['increment'] <= 0 ) {
 			$this->dieUsage( 'Invalid increment', 'badincrement' );
 		}
 
-		if( json_decode( $params['userdefs'] ) == null ) {
+		if ( json_decode( $params['userdefs'] ) == null ) {
 			$this->dieUsage( "Invalid JSON encoding <<{$params['userdefs']}>>", 'badjson' );
 		}
 	}
@@ -78,7 +78,7 @@ class ApiSpecialClickTracking extends ApiBase {
 		return array(
 			'eventid' => 'event ID (number)',
 			'startdate'  => 'start date for data in YYYYMMDD format',
-			'enddate' =>'end date for the data in YYYYMMDD format',
+			'enddate' => 'end date for the data in YYYYMMDD format',
 			'increment' => 'increment interval (in days) for data points',
 			'userdefs' => 'JSON object to encode user definitions',
 			'tabledata' => 'set to 1 for table data instead of chart data'
@@ -106,7 +106,7 @@ class ApiSpecialClickTracking extends ApiBase {
 			'increment' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_MIN => 1,
-				ApiBase::PARAM_MAX => 365 //1 year
+				ApiBase::PARAM_MAX => 365 // 1 year
 			),
 			'userdefs' => array(
 				ApiBase::PARAM_TYPE => 'string'

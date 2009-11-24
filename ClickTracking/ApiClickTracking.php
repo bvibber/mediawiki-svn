@@ -41,9 +41,9 @@ class ApiClickTracking extends ApiBase {
 			$wgTitle->getNamespace(), 			 // what namespace are they editing?
 			$event_id,							 // event ID passed in
 			( $is_logged_in ? $wgUser->getEditCount() : 0 ), // total edit count or 0 if anonymous
-			$granularity1, //contributions made in granularity 1 time frame
-			$granularity2, //contributions made in granularity 2 time frame
-			$granularity3  //contributions made in granularity 3 time frame
+			$granularity1, // contributions made in granularity 1 time frame
+			$granularity2, // contributions made in granularity 2 time frame
+			$granularity3  // contributions made in granularity 3 time frame
 		);
 		
 		// For links that go off the page, redirect the user
@@ -62,7 +62,7 @@ class ApiClickTracking extends ApiBase {
 	 */
  	protected function validateParams( $params ) {
 		$required = array( 'eventid', 'token' );
-		foreach( $required as $arg ) {
+		foreach ( $required as $arg ) {
 			if ( !isset( $params[$arg] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', $arg ) );
 			}

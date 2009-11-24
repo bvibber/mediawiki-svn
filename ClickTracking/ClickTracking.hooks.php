@@ -99,7 +99,7 @@ class ClickTrackingHooks {
 			'SUM(contribs)',
 			array(
 				'user_id' => $wgUser->getId(),
-				"day >= " . $dbr->addQuotes($time)
+				"day >= " . $dbr->addQuotes( $time )
 			),
 			__METHOD__
 		);
@@ -133,7 +133,7 @@ class ClickTrackingHooks {
 		// this will be incredibly rare as the whole database will only have a few hundred entries in it at most
 		// and getting DB_MASTER up top would be wasteful
 		// FIXME: Use replace() instead of this selectField --> insert or update logic
-		if( $id_num === false ) {
+		if ( $id_num === false ) {
 			$dbw->insert(
 				'click_tracking_events',
 				array( 'event_name' => (string) $event_name ),
@@ -142,7 +142,7 @@ class ClickTrackingHooks {
 			$id_num = $dbw->insertId();
 		}
 
-		if( $id_num === false ){
+		if ( $id_num === false ) {
 			return 0;
 		}
 
