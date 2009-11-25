@@ -500,6 +500,25 @@ $messages['lb'] = array(
 	'mostrevisors-viewcontributors' => 'Weis déi Haaptmataarbechter',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'mostrevisors' => 'Страници со највеќе уредници',
+	'mostrevisors-desc' => 'Листа на [[Special:MostRevisors|страници со највеќе уредници]]',
+	'mostrevisors-header' => "'''На оваа страница {{PLURAL:$1|е наведена страница|се наведени $1 страници}} со највеќе уредници.'''",
+	'mostrevisors-limitlinks' => 'Прикажи $1 страници',
+	'mostrevisors-namespace' => 'Именски простор:',
+	'mostrevisors-none' => 'Нема пронајдено записи.',
+	'mostrevisors-ns-header' => "'''На оваа страница {{PLURAL:$1|е наведена страницасе наведени |$1 страници}} со највеќе уредници во именскиот простор $2.'''",
+	'mostrevisors-showing' => 'Содржи {{PLURAL:$1|1 страница|$1 страници}}:',
+	'mostrevisors-submit' => 'Оди',
+	'mostrevisors-showredir' => 'Прикажи страници за пренасочување',
+	'mostrevisors-hideredir' => 'Сокриј страници за пренасочување',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|уредник|уредници}}',
+	'mostrevisors-viewcontributors' => 'Прикажи ги главните уредници',
+);
+
 /** Mongolian (Монгол)
  * @author Chinneeb
  */

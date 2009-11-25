@@ -872,6 +872,34 @@ Klickt w.e.g. <a href='$1'>heihi</a> fir zréck.",
 	'spamdifftool_submit_buttom' => 'Späicheren',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'spamdifftool' => 'Раководење со црната листа на спам',
+	'spamdifftool-desc' => 'Овозможува лесен начин на додавање на нови ставки во црната листа на спам од споредени страници (верзии)',
+	'spamdifftool_cantedit' => 'Жалам - немате дозвола да ја уредувате црната листа на спам.',
+	'spamdifftool_notext' => "Нема текст за додавање на црната листа на спам.
+Кликнете <a href='$1'>тука</a> за да продолжите.",
+	'spamdifftool_confirm' => "Потврдете дека сакате да ги додадете овие ставки во црната листа на спам.
+(Кликнете <a href='$1' target='new'>тука</a> за да пријавите проблем.)",
+	'spamdifftool_summary' => 'Додавање на црната листа на спам',
+	'spamdifftool_urls_detected' => 'Следниве URL-адреси беа пронајдени во уредувањето/њата.
+Кои од нив дакате да ги додадете во црната листа на спам?
+Овие прилагодувања се подредени од повеќе ограничувачки до помалку ограничувачки, и ако го блокирате целиот домен ќе ги блокирате и сите врски кон сè што доаѓа од тој домен.
+
+Проверете дали не блокирате цели домени кои содржат кориснички сметки, како blogspot.com, geocities.com и тн.',
+	'spamdifftool_no_urls_detected' => "Не беа пронајдени URL адреси.
+Кликнете <a href='$1'>тука</a> за да се вратите.",
+	'spamdifftool_spam_link_text' => 'додај во спам',
+	'spamdifftool_option_domain' => 'сè од овој домен',
+	'spamdifftool_option_subdomain' => 'сè од овој поддомен',
+	'spamdifftool_option_directory' => 'овој поддомен и директориум',
+	'spamdifftool_option_none' => 'ништо',
+	'spamdifftool_block' => 'Блокирање:',
+	'spamdifftool_submit_buttom' => 'Испрати',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

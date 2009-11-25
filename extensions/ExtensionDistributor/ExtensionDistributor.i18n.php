@@ -1592,6 +1592,19 @@ Als u vragen hebt over dit distributiesysteem voor uitbreidingen, ga dan naar [[
 	'extdist-want-more' => "Nag 'n uitbreiding downloade",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'extensiondistributor' => 'Преземи го проширувањето за MediaWiki',
+	'extdist-desc' => 'Проширување за дистрибуција на приказни архиви на проширувања',
+	'extdist-current-version' => 'Развојна верзија (trunk)',
+	'extdist-no-remote' => 'Не можам да го контактирам оддалечениот Subversion клиент.',
+	'extdist-svn-error' => 'Настана грешка во Subversion: <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar го даде кодот на грешката $1:',
+	'extdist-want-more' => 'Преземи друго проширување',
+);
+
 /** Malayalam (മലയാളം)
  * @author Praveenp
  */

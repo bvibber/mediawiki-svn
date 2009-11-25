@@ -1145,11 +1145,11 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'call' => 'Gọi',
-	'call-desc' => 'Tạo một siêu liên kết đến một tiêu bản (hoặc đến một trang wiki thông thường) bằng cách truyền tham số.
+	'call-desc' => 'Tạo một siêu liên kết đến một bản mẫu (hoặc đến một trang wiki thông thường) bằng cách truyền tham số.
 Có thể được dùng tại dòng lệnh của trình duyệt hoặc trong văn bản wiki.',
 	'call-text' => "Phần mở rộng Call mong đợi một trang wiki và những thông số tùy chọn của trang đó là tham số.
 
-Ví dụ 1: &nbsp; <tt>[[{{#special:call}}/Tiêu bản của tôi,tham1=trị1]]</tt><br />
+Ví dụ 1: &nbsp; <tt>[[{{#special:call}}/Bản mẫu của tôi,tham1=trị1]]</tt><br />
 Ví dụ 2: &nbsp; <tt>[[{{#special:call}}/Thảo luận:Thảo luận của tôi,tham1=trị1]]</tt><br />
 Ví dụ 3: &nbsp; <tt>[[{{#special:call}}/:Trang của tôi,tham1=trị1,tham2=trị2]]</tt><br />
 Ví dụ 4 (URL trình duyệt): &nbsp; <tt>http://tênmiền/wikitôi/index.php?{{#special:call}}/:Trang của tôi,tham1=trị1</tt>

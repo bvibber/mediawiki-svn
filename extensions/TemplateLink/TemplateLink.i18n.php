@@ -575,11 +575,12 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'templatelink' => 'Liên kết tiêu banr',
-	'templatelink_desc' => 'Bộ mở rộng này có thể hiển thị một tiêu bản như một trang mới',
+	'templatelink_desc' => 'Bộ mở rộng này có thể hiển thị một bản mẫu như một trang mới',
 	'templatelink_empty' => 'Bạn phải cung cấp một tham số.',
 	'templatelink_newtitle' => '$1 (được nhúng)',
 );

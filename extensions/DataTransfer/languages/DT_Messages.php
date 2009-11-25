@@ -1808,7 +1808,7 @@ $messages['uk'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'dt-desc' => 'Cho phép nhập xuất dữ liệu có cấu trúc được chứa trong lời gọi tiêu bản',
+	'dt-desc' => 'Cho phép nhập xuất dữ liệu có cấu trúc được chứa trong lời gọi bản mẫu',
 	'viewxml' => 'Xem XML',
 	'dt_viewxml_docu' => 'Xin hãy chọn trong những thể loại và không gian tên dưới đây để xem ở dạng XML.',
 	'dt_viewxml_categories' => 'Thể loại',
@@ -1817,7 +1817,7 @@ $messages['vi'] = array(
 	'dt_xml_namespace' => 'Không gian tên',
 	'dt_xml_pages' => 'Trang',
 	'dt_xml_page' => 'Trang',
-	'dt_xml_template' => 'Tiêu bản',
+	'dt_xml_template' => 'Bản mẫu',
 	'dt_xml_field' => 'Trường',
 	'dt_xml_name' => 'Tên',
 	'dt_xml_title' => 'Tựa đề',

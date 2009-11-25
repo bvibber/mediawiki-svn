@@ -1576,6 +1576,15 @@ $messages['ru'] = array(
 	'right-voteadmin' => 'просматривать результаты голосования',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'vote-submit' => 'ඡන්දය දෙන්න',
+	'vote-results-choice' => 'තේරීම',
+	'vote-results-count' => 'ගණනය',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

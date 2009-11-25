@@ -1279,6 +1279,13 @@ $messages['pl'] = array(
 	'right-closewikis' => 'Zamknij projekty wiki',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'closewikis-desc' => 'A përmëtt ëd saré ij sit wiki an famije wiki',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

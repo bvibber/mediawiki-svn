@@ -114,10 +114,12 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Lyzzy
  * @author MF-Warburg
  */
 $messages['de'] = array(
+	'wikieditor-preview-preference' => 'Gegenüberstellungs-Vorschau ermöglichen',
 	'wikieditor-preview-tab' => 'Vorschau',
 	'wikieditor-preview-loading' => 'lädt …',
 );

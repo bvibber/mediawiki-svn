@@ -418,9 +418,10 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'substall-desc' => 'Tạo một thẻ <nowiki><substall></nowiki> để mở rộng tất cả tiêu bản thành cú pháp wiki',
+	'substall-desc' => 'Tạo một thẻ <nowiki><substall></nowiki> để mở rộng tất cả bản mẫu thành cú pháp wiki',
 );
 

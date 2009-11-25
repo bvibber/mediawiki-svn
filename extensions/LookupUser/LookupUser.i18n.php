@@ -823,6 +823,28 @@ $messages['lt'] = array(
 	'lookupuser-no-registration' => 'įrašų nėra',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'lookupuser' => 'Провери кориснички информации',
+	'lookupuser-desc' => '[[Special:LookupUser|Проверка на информации]] за корисник како е-поштенска адреса и ид. бр.',
+	'lookupuser-intro' => 'Внесете корисничко име за да ги видите нагодувањата на тој корисник.',
+	'lookupuser-nonexistent' => 'Грешка: Таков корисник не постои',
+	'lookupuser-authenticated' => 'потврден на $1',
+	'lookupuser-not-authenticated' => 'непотврден',
+	'lookupuser-id' => 'Кориснички ид. бр.: <tt>#$1</tt>',
+	'lookupuser-email' => 'Е-пошта: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'ненаведено',
+	'lookupuser-realname' => 'Вистинско име: $1',
+	'lookupuser-registration' => 'Датум на регистрација: $1',
+	'lookupuser-no-registration' => 'незапишано',
+	'lookupuser-touched' => 'Последна измена во записите на корисникот: $1',
+	'lookupuser-info-authenticated' => 'Потврда по е-пошта: $1',
+	'lookupuser-useroptions' => 'Кориснички прилагодувања:',
+	'right-lookupuser' => 'Проверка на кориснички нагодувања',
+);
+
 /** Malayalam (മലയാളം)
  * @author Anoopan
  * @author Shijualex

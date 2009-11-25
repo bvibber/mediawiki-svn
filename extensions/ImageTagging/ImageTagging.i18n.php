@@ -1481,6 +1481,13 @@ $messages['pl'] = array(
 	'imagetagging-tagcancel-button' => 'Anuluj',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'taggedimages' => 'Figure tagà',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author MF-Warburg

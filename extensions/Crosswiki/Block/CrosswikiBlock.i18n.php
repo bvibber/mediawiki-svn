@@ -1947,6 +1947,13 @@ Powrót do:
 	'right-crosswikiblock' => 'Blokowanie i odblokowywanie użytkowników na innych wiki',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'crosswikiblock-expiry' => 'Fin:',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

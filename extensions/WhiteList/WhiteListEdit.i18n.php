@@ -2912,6 +2912,66 @@ $2',
 	'group-manager-member' => 'управляющий',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'whitelist-desc' => 'සීමා කරනු ලැබ ඇති පරිශීලකයන්ගේ ප්‍රවේශ අවසරය සංස්කරණය කරන්න',
+	'whitelistedit' => 'ධවල ලැයිස්තු ප්‍රවේශ සංස්කාරක',
+	'whitelist' => 'ධවල ලැයිස්තු පිටු',
+	'mywhitelistpages' => 'මගේ පිටු',
+	'whitelistfor' => '<center>දැනට <b>$1</b></center>සඳහා පවතින තොරතුරු',
+	'whitelisttablemodify' => 'විකරණය',
+	'whitelisttablemodifyall' => 'සියල්ලම',
+	'whitelisttablemodifynone' => 'කිසිවක් නැත',
+	'whitelisttablepage' => 'විකි පිටුව',
+	'whitelisttabletype' => 'ප්‍රවේශ වර්ගය',
+	'whitelisttableexpires' => 'කල් ඉකුත් වන්නේ',
+	'whitelisttablemodby' => 'අවසන් වරට විකරණය කරන ලද්දේ',
+	'whitelisttablemodon' => 'අවසන් වරට විකරණය කරනු ලැබුවේ',
+	'whitelisttableedit' => 'සංස්කරණය',
+	'whitelisttableview' => 'දර්ශනය',
+	'whitelisttablenewdate' => 'නව දිනය:',
+	'whitelisttablechangedate' => 'කල් ඉකුත්වීමේ දිනය වෙනස් කරන්න',
+	'whitelisttablesetedit' => 'සංස්කරණය කිරීමට සකස් කරන්න',
+	'whitelisttablesetview' => 'දර්ශනය කිරීමට සකසන්න',
+	'whitelisttableremove' => 'ඉවත් කරන්න',
+	'whitelistnewpagesfor' => " <b>$1's</b>ධවල ලැයිස්තුව<br />ට නව පිටු එකතු කරන්න
+ * හෝ % ආදේශක ලකුණ ලෙස භාවිතා කරන්න",
+	'whitelistnewtabledate' => 'කල් ඉකුත්වීමේ දිනය:',
+	'whitelistnewtableedit' => 'සංස්කරණය කිරීමට සකසන්න',
+	'whitelistnewtableview' => 'දර්ශනය කිරීමට සකසන්න',
+	'whitelistnowhitelistedusers' => ' "{{MediaWiki:Group-restricted}}" හි පරිශීලකයන් නොමැත.
+ඔබ පරිශීලකයෙකුගේ ධවල ලැයිස්තුවට පිටු එකතු කිරීමට පෙර [[Special:UserRights|කණ්ඩායමට පරිශීලකයන් එකතු කිරීම]] ට ඔබට සිදුවේ.',
+	'whitelistnewtableprocess' => 'ක්‍රියාවලිය',
+	'whitelistnewtablereview' => 'විවරණය',
+	'whitelistselectrestricted' => '== සීමා කරනු ලැබූ පරිශීලක නාම තෝරන්න ==',
+	'whitelistpagelist' => '$1 සඳහා {{SITENAME}}පිටු',
+	'whitelistnocalendar' => "<font color='red' size=3>මෙම දිඟුවට පූර්ව අවශ්‍යතාවයක් වූ  [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], නිවැරදිව පිහිටුවා නැති ලෙසින් පෙනේ!</font>",
+	'whitelistoverview' => '==  $1 සඳහා කළ වෙනස් කිරීම්වල දළ විශපල්ෂණය==',
+	'whitelistoverviewcd' => "*   [[:$2|$2]] සඳහා දිනය '''$1'''ට මාරු කිරීම",
+	'whitelistoverviewsa' => "*  [[:$2|$2]] සඳහා '''$1''' ට ප්‍රවේශය සිටුවීම",
+	'whitelistoverviewrm' => '*  [[:$1|$1]]ට ප්‍රවේශය ඉවත් කිරීම',
+	'whitelistoverviewna' => "*    '''$2''' සහ  '''$3''' කල් ඉකුත්වීමේ දිනය   [[:$1|$1]] ප්‍රවේශය සමඟ ධවල ලැයිස්තුවට එකතු කිරීම",
+	'whitelistrequest' => 'වැඩි පිටු ගණනකට ප්‍ර‍වේශය ඉල්ලීම',
+	'whitelistrequestmsg' => 'පහත  {{PLURAL:$3|පිටුව|පිටු}} සඳහා ප්‍රවේශවීමට $1 ක් ඉල්ලුම් කර ඇත:
+
+$2',
+	'whitelistrequestconf' => 'නව පිටු සඳහා වූ ඉල්ලීම $1 වෙත යවන ලදී',
+	'whitelistnonrestricted' => "'''$1'''  සීමා කරනු ලැබූ පරිශීලකයෙකු නොවේ.
+මෙම පිටුව අදාළ වන්නේ සීමා කරනු ලැබූ පරිශීලකයින්ට පමණි.",
+	'whitelistnever' => 'කවදාවත් නෑ',
+	'whitelistnummatches' => '  - {{PLURAL:$1|ගැළපීම් එකයි|$1 ගැළපීම්}}',
+	'right-editwhitelist' => 'පවතින පරිශීලකයන් සඳහා ධවල ලැයිස්තුව විකරණය',
+	'right-restricttowhitelist' => 'ධවල ලැයිස්තුවේ ඇති පිටු පමණක් පෙන්වීම හා සංස්කරණය',
+	'action-editwhitelist' => 'සිටින පරිශීලකයන් සඳහා ධවල ලැයිස්තුව විකරණය කරන්න',
+	'action-restricttowhitelist' => 'ධවල ලැයිස්තුවේ ඇති පිටු පමණක් පෙන්වීම හා සංස්කරණය',
+	'group-restricted' => 'සීමා කරනු ලැබූ පරිශීලකයින්',
+	'group-restricted-member' => 'සීමා කරනු ලැබූ පරිශීලකයින්',
+	'group-manager' => 'කළමනාකරුවන්',
+	'group-manager-member' => 'කළමනාකරු',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

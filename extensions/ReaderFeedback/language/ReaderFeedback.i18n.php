@@ -1593,6 +1593,13 @@ $messages['pl'] = array(
 	'specialpages-group-feedback' => 'Opinia czytelnika',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'readerfeedback-completeness' => 'Completëssa',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

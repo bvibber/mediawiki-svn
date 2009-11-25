@@ -1271,6 +1271,20 @@ Należy zwrócić uwagę, by wyrażania nie były zbyt krótkie lub zbyt często
 	'right-spamregex' => 'Blokowanie spamu, przez blokowanie zwrotów na stronie [[Special:SpamRegex]]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'spamregex' => 'Regex dë spam',
+	'spamregex-desc' => '[[Special:SpamRegex|A filtra]] fras pa vorsùe an pàgine modificà, basà dzora a espression regolar',
+	'spamregex-error-unblocking' => 'Eror an sblocand "$1". Probabilment a-i é é pa col pattern.',
+	'spamregex-summary' => "Ël test a l'é stàit trovà ant ël somari dla pàgina.",
+	'spamregex-intro' => "Dòvra sta forma-sì për vieté efetivament ëd salvé le espression ant ël test ëd na pàgina.
+Se ël test a conten l'espression dàita, ël cambi a sarà pa salvà e na spiegassion a sarà visualisà a l'utent ch'e l'ha provà a salvé la pàgina.
+Avis ëd pi, l'espression a dovrìa esse pa tròp curta o tròp comun.",
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya

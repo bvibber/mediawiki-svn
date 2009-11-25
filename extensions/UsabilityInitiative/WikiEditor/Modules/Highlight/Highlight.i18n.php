@@ -57,6 +57,13 @@ $messages['cs'] = array(
 	'wikieditor-highlight-preference' => 'Při editování zvýrazňovat syntaxi',
 );
 
+/** German (Deutsch)
+ * @author Als-Holder
+ */
+$messages['de'] = array(
+	'wikieditor-highlight-preference' => 'Markierung der Syntax beim Editieren ermöglichen',
+);
+
 /** Zazaki (Zazaki)
  * @author Xoser
  */

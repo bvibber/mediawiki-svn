@@ -1012,15 +1012,33 @@ $messages['mhr'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
+	'patrol' => 'Патролирај уредувања',
+	'patrol-desc' => 'Подобрен интеррфејс за патролирање со распределба на работниот обем',
+	'patrol-endorse' => 'Потврди',
+	'patrol-revert' => 'Врати',
 	'patrol-revert-reason' => 'Причина:',
 	'patrol-skip' => 'Прескокни',
+	'patrol-reverting' => 'Враќање: $1',
+	'patrol-nonefound' => 'Нема пронајдено соодветни уредувања за патролирање.',
+	'patrol-endorsed-ok' => 'Уредувањето е обележано како проверено.',
+	'patrol-endorsed-failed' => 'Уредувањето не можеше да се одбележи како проверено.',
+	'patrol-reverted-ok' => 'Уредувањето е вратено.',
+	'patrol-reverted-failed' => 'Уредувањето не можеше да се врати.',
+	'patrol-skipped-ok' => 'Игнорирање на уредувањето.',
+	'patrol-reasons' => '* Прост вандализам
+* Тест на почетник
+* Види страница за разговор',
+	'patrol-another' => 'Прикажи друго уредување, ако го има.',
+	'patrol-stopped' => 'Одлучивте да не патролирате друго уредување. $1',
+	'patrol-resume' => 'Кликнете тука за да продолжите',
 	'group-patroller' => 'Патролирачи',
 	'group-patroller-member' => 'патролирач',
 	'grouppage-patroller' => '{{ns:project}}:Патролирач',
-	'right-patroller' => 'Патролни страници',
+	'right-patroller' => 'Патролирани страници',
 );
 
 /** Malayalam (മലയാളം)

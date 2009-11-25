@@ -2295,6 +2295,29 @@ $1',
 	'webstore_no_handler' => 'Нет обработчика для преобразования этого MIME-типа',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'inplace_access_disabled' => 'මෙම සේවාවට ප්‍රවේශවීම සියලුම සේවා දායකයන් සඳහා අක්‍රීය කර ඇත.',
+	'inplace_access_denied' => 'මෙම සේවාව සේවා දායක IP මඟින් සීමා කරනු ලැබ ඇත.',
+	'inplace_scaler_no_temp' => 'වලංගු තාවකාලික නාමාවලියක් නොමැත.
+$wgLocalTmpDirectory ලිවිය හැකි නාමාවලියකට සකසන්න.',
+	'inplace_scaler_not_enough_params' => 'ප්‍රමාණවත් පරාමිති නොමැත.',
+	'inplace_scaler_invalid_image' => 'අවලංගු රූපයකි,විශාලත්වය නිර්ණය කළ නොහැකි විය.',
+	'inplace_scaler_failed' => 'රූප පරිමාණකරණයේදී දෝෂයක් හමුවිය: $1',
+	'inplace_scaler_no_handler' => 'මෙම MIME වර්ගය පරිණාමනය කිරීම සඳහා හසුරුවන්නෙක් නොමැත',
+	'inplace_scaler_no_output' => 'පරිණාම ප්‍රතිදානයක් නිපදවා නැත.',
+	'inplace_scaler_zero_size' => 'පරිණාමයෙන් විශාලත්වය ශුන්‍ය වූ ප්‍රතිදාන ගොනුවක් නිපදවන ලදී.',
+	'webstore_access' => 'මෙම සේවාව සේවාදායක IP මඟින් සීමා කරනු ලැබ ඇත.',
+	'webstore_path_invalid' => 'ගොනු නාමය වලංගු නොවේ.',
+	'webstore_dest_open' => '"$1, ගමනාන්ත ගොනුව විවෘත කිරීමට නොහැකි විය.',
+	'webstore_dest_lock' => '"$1" ගමනාන්ත ගොනුව මත අගුළු දැමීම අසාර්ථක විය.',
+	'webstore_dest_mkdir' => '"$1" ගමනාන්ත නාමාවලිය නිර්මාණය කිරීමට නොහැකි විය.',
+	'webstore_archive_lock' => '"$1" ලේඛනාගාර ගොනුව මත අගුළු දැමීම අසාර්ථක විය.',
+	'webstore_archive_mkdir' => '"$1" ලේඛනාගාර නාමාවලිය නිර්මාණය කිරීමට නොහැකි විය.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
