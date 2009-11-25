@@ -86,6 +86,7 @@ $messages['ar'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'wikieditor-publish-preference' => 'Уключыць паступовую публікацыю',
 	'wikieditor-publish-button-publish' => 'Апублікаваць',
 	'wikieditor-publish-button-cancel' => 'Адмяніць',
 	'wikieditor-publish-dialog-title' => 'Апублікаваць у {{GRAMMAR:месны|{{SITENAME}}}}',
@@ -178,10 +179,12 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Lyzzy
  * @author MF-Warburg
  */
 $messages['de'] = array(
+	'wikieditor-publish-preference' => 'Schritt-für-Schritt-Veröffentlichung ermöglichen',
 	'wikieditor-publish-button-publish' => 'Veröffentlichen',
 	'wikieditor-publish-button-cancel' => 'Abbrechen',
 	'wikieditor-publish-dialog-title' => 'Auf {{SITENAME}} veröffentlichen',
@@ -210,6 +213,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'wikieditor-publish-preference' => 'Publicěrowanje kšać pó kšacu zmóžniś',
 	'wikieditor-publish-button-publish' => 'Wózjawiś',
 	'wikieditor-publish-button-cancel' => 'Pśetergnuś',
 	'wikieditor-publish-dialog-title' => 'Do {{GRAMMAR:genitiw|{{SITENAME}}}} wózjawiś',
@@ -278,6 +282,7 @@ $messages['fi'] = array(
  * @author Jean-Frédéric
  */
 $messages['fr'] = array(
+	'wikieditor-publish-preference' => 'Activer la publication étape par étape',
 	'wikieditor-publish-button-publish' => 'Publier',
 	'wikieditor-publish-button-cancel' => 'Annuler',
 	'wikieditor-publish-dialog-title' => 'Publier sur {{SITENAME}}',
@@ -292,6 +297,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'wikieditor-publish-preference' => 'Activar a publicación paso a paso',
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancelar',
 	'wikieditor-publish-dialog-title' => 'Publicar en {{SITENAME}}',
@@ -313,6 +319,7 @@ $messages['grc'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
+	'wikieditor-publish-preference' => 'Schritt-fir-Schritt-Vereffentlichung meglig mache',
 	'wikieditor-publish-button-publish' => 'Publiziere',
 	'wikieditor-publish-button-cancel' => 'Abbräche',
 	'wikieditor-publish-dialog-title' => 'Uf {{SITENAME}} publiziere',
@@ -327,6 +334,7 @@ $messages['gsw'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'wikieditor-publish-preference' => 'Publikowanje krok po kroku zmóžnić',
 	'wikieditor-publish-button-publish' => 'Wozjewić',
 	'wikieditor-publish-button-cancel' => 'Přetorhnyć',
 	'wikieditor-publish-dialog-title' => 'Do {{GRAMMAR:genitiw|{{SITENAME}}}} wozjewić',
@@ -355,6 +363,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'wikieditor-publish-preference' => 'Activar publication passo a passo',
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancellar',
 	'wikieditor-publish-dialog-title' => 'Publicar in {{SITENAME}}',
@@ -369,6 +378,7 @@ $messages['ia'] = array(
  * @author IvanLanin
  */
 $messages['id'] = array(
+	'wikieditor-publish-preference' => 'Aktifkan penerbitan langkah demi langkah',
 	'wikieditor-publish-button-publish' => 'Terbitkan',
 	'wikieditor-publish-button-cancel' => 'Batalkan',
 	'wikieditor-publish-dialog-title' => 'Terbitkan ke',
@@ -383,6 +393,7 @@ $messages['id'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'wikieditor-publish-preference' => '段階的投稿を有効化する',
 	'wikieditor-publish-button-publish' => '投稿',
 	'wikieditor-publish-button-cancel' => '中止',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} への投稿',
@@ -411,6 +422,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'wikieditor-publish-preference' => 'Schrëtt-fir-Schrëtt Publikatioun aschalten',
 	'wikieditor-publish-button-publish' => 'Verëffentlechen',
 	'wikieditor-publish-button-cancel' => 'Ofbriechen',
 	'wikieditor-publish-dialog-title' => 'Op {{SITENAME}} verëffentlechen',
@@ -425,6 +437,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'wikieditor-publish-preference' => 'Овозможи објавување „чекор по чекор“',
 	'wikieditor-publish-button-publish' => 'Објави',
 	'wikieditor-publish-button-cancel' => 'Откажи',
 	'wikieditor-publish-dialog-title' => 'Објави на {{SITENAME}}',
@@ -439,6 +452,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'wikieditor-publish-preference' => 'ഘട്ടം ഘട്ടമായുള്ള പ്രസിദ്ധപ്പെടുത്തൽ സജ്ജമാക്കുക',
 	'wikieditor-publish-button-publish' => 'പ്രസിദ്ധീകരിക്കുക',
 	'wikieditor-publish-button-cancel' => 'റദ്ദാക്കുക',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} സംരംഭത്തിൽ പ്രസിദ്ധീകരിക്കുക',
@@ -495,6 +509,7 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'wikieditor-publish-preference' => 'Abìlita publicassion pass për pass',
 	'wikieditor-publish-button-publish' => 'Pùblica',
 	'wikieditor-publish-button-cancel' => 'Scancela',
 	'wikieditor-publish-dialog-title' => 'Pùblica dzora {{SITENAME}}',
@@ -510,6 +525,7 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'wikieditor-publish-preference' => 'Possibilitar publicação passo a passo',
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancelar',
 	'wikieditor-publish-dialog-title' => 'Publicar na {{SITENAME}}',
@@ -545,6 +561,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'wikieditor-publish-preference' => 'Включить пошаговую публикацию',
 	'wikieditor-publish-button-publish' => 'Опубликовать',
 	'wikieditor-publish-button-cancel' => 'Отмена',
 	'wikieditor-publish-dialog-title' => 'Опубликование в проекте {{SITENAME}}',
@@ -553,6 +570,14 @@ $messages['ru'] = array(
 	'wikieditor-publish-dialog-watch' => 'Наблюдать за этой страницей',
 	'wikieditor-publish-dialog-publish' => 'Опубликовать',
 	'wikieditor-publish-dialog-goback' => 'Назад',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'wikieditor-publish-button-publish' => 'Бэчээккэ таһаарарга',
+	'wikieditor-publish-button-cancel' => 'Төнүн',
 );
 
 /** Sinhala (සිංහල)

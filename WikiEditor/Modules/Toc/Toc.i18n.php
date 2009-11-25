@@ -94,10 +94,13 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author ChrisiPK
  */
 $messages['de'] = array(
 	'wikieditor-toc-preference' => 'Inhaltsverzeichnis im Bearbeiten-Fenster aktivieren',
+	'wikieditor-toc-show' => 'Inhalte anzeigen',
+	'wikieditor-toc-hide' => 'Inhalte verbergen',
 );
 
 /** Zazaki (Zazaki)
@@ -346,6 +349,13 @@ $messages['ru'] = array(
 	'wikieditor-toc-preference' => 'Включить оглавление с возможностью навигации',
 	'wikieditor-toc-show' => 'Показать оглавление',
 	'wikieditor-toc-hide' => 'Скрыть оглавление',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'wikieditor-toc-show' => 'Иһинээҕитэ',
 );
 
 /** Sinhala (සිංහල)
