@@ -3759,10 +3759,11 @@ class Title {
 	public function getRestrictionTypes() {
 		global $wgRestrictionTypes;
 		$types = $this->exists() ? $wgRestrictionTypes : array('create');
-		
-		if ( $this->getNamespace() == NS_FILE ) {
-			$types[] = 'upload';
-		}
+
+// Live-hack disabled because the core infrastructure has not been merged.		
+//		if ( $this->getNamespace() == NS_FILE ) {
+//			$types[] = 'upload';
+//		}
 		
 		wfRunHooks( 'TitleGetRestrictionTypes', array( $this, &$types ) );
 				
