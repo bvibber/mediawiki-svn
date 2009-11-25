@@ -21,7 +21,7 @@ fn: {
 			return;
 		}
 		context.modules.preview = {
-			'previousText': null,
+			'previousText': null
 		};
 		context.$preview = context.fn.addView( {
 			'name': 'preview',

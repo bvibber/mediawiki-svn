@@ -228,6 +228,7 @@ if ( typeof context == 'undefined' ) {
 	context.fn = {
 		'addButton': function( options ) {
 			// Ensure that buttons and tabs are visible
+			// TODO: Implement
 			context.$controls.show();
 		},
 		'addView': function( options ) {
@@ -235,6 +236,7 @@ if ( typeof context == 'undefined' ) {
 			function addTab( options ) {
 				// Ensure that buttons and tabs are visible
 				context.$controls.show();
+				context.$tabs.show();
 				// Return the newly appended tab
 				return $( '<div></div>' )
 					.attr( 'rel', 'wikiEditor-ui-view-' + options.name )
@@ -382,7 +384,8 @@ if ( typeof context == 'undefined' ) {
 				context.fn.scrollToTop( lastNode );
 			}
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
-			context.$content.trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+			context.$content.trigger( 'encapsulateSelection', [ pre, options.peri, post,
+				options.ownline, options.replace ] );
 			return context.$textarea;
 		},
 		/**
@@ -445,7 +448,7 @@ if ( typeof context == 'undefined' ) {
 	context.$wikitext
 		.before(
 			$( '<div></div>' ).addClass( 'wikiEditor-ui-controls' )
-				.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-tabs' ) )
+				.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-tabs' ).hide() )
 				.append( $( '<div></div>' ).addClass( 'wikiEditor-ui-buttons' ) )
 		)
 		.before( $( '<div style="clear:both;"></div>' ) );
