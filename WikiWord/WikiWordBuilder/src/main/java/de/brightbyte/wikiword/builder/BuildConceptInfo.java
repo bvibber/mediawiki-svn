@@ -2,14 +2,10 @@ package de.brightbyte.wikiword.builder;
 
 import java.io.IOException;
 
-import de.brightbyte.data.cursor.CursorProcessor;
-import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.io.BlockCodec;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.disambig.ConceptFeatures;
 import de.brightbyte.wikiword.disambig.FeatureFetcher;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.store.builder.ConceptInfoStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 

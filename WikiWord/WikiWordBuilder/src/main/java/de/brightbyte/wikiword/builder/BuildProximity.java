@@ -5,7 +5,6 @@ import java.io.IOException;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.store.builder.ProximityStoreBuilder;
-import de.brightbyte.wikiword.store.builder.StatisticsStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 
 /**

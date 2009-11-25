@@ -88,6 +88,8 @@ public abstract class DatabaseConceptInfoStoreBuilder<T extends WikiWordConcept>
 		}
 		
 		public void buildConceptFeatureCache() throws PersistenceException {
+			if (!conceptStore.isProximityComplete()) throw new IllegalStateException("features/proximity need to be built before concept infos!");
+
 			if (beginTask("buildConceptProximityCache", "buildConceptPropertyCache:concept_info,feature")) {
 				int n = buildConceptPropertyCache(conceptInfoTable, "concept", "feature", "feature", "concept", ((ConceptInfoStoreSchema)database).featureReferenceListEntry, false, "bilink > 0", 2);
 				endTask("buildConceptProximityCache", "buildConceptPropertyCache:concept_info,feature", n+" entries");
@@ -95,6 +97,8 @@ public abstract class DatabaseConceptInfoStoreBuilder<T extends WikiWordConcept>
 		}
 		
 		public void buildConceptProximetyCache() throws PersistenceException {
+			if (!conceptStore.isProximityComplete()) throw new IllegalStateException("features/proximity need to be built before concept infos!");
+
 			if (beginTask("buildConceptProximityCache", "buildConceptPropertyCache:concept_info,proximity")) {
 				int n = buildConceptPropertyCache(conceptInfoTable, "concept", "proximity", "proximity", "concept", ((ConceptInfoStoreSchema)database).proximityReferenceListEntry, false, "bilink > 0", 2);
 				endTask("buildConceptProximityCache", "buildConceptPropertyCache:concept_info,proximity", n+" entries");

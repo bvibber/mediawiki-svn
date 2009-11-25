@@ -39,7 +39,6 @@ import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.NameMaps;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.LocalConceptReference;
-import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;

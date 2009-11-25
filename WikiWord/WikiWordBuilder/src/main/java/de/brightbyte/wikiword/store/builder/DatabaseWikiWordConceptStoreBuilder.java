@@ -26,7 +26,7 @@ import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
-import de.brightbyte.wikiword.store.WikiWordConceptStore;
+import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore;
 
 public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConcept> extends DatabaseWikiWordStoreBuilder implements WikiWordConceptStoreBuilder<T>  {
 
@@ -425,14 +425,16 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 
 	protected abstract DatabaseStatisticsStoreBuilder newStatisticsStoreBuilder() throws SQLException, PersistenceException;
 	protected abstract DatabaseConceptInfoStoreBuilder<T> newConceptInfoStoreBuilder() throws SQLException, PersistenceException;
-	protected abstract WikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> newConceptStore() throws SQLException, PersistenceException;
-	
+	protected abstract DatabaseWikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> newConceptStore() throws SQLException, PersistenceException;
+	protected abstract DatabaseProximityStoreBuilder newProximityStoreBuilder() throws SQLException;
+		
 	private DatabaseStatisticsStoreBuilder statsStore;
-	private ProximityStoreBuilder proximityStore;
+	private DatabaseProximityStoreBuilder proximityStore;
 	private DatabaseConceptInfoStoreBuilder<T> infoStore;
-	private WikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> conceptStore;
 	
-	public WikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> getConceptStore() throws PersistenceException {
+	private DatabaseWikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> conceptStore;
+	
+	public DatabaseWikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> getConceptStore() throws PersistenceException {
 		try { 
 			if (conceptStore==null) conceptStore = newConceptStore();
 			return conceptStore;
@@ -440,8 +442,8 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 			throw new PersistenceException(e);
 		} 
 	}
-
-	public ConceptInfoStoreBuilder<T> getConceptInfoStoreBuilder() throws PersistenceException {
+	
+	public DatabaseConceptInfoStoreBuilder<T> getConceptInfoStoreBuilder() throws PersistenceException {
 		try { 
 			if (infoStore==null) infoStore = newConceptInfoStoreBuilder();
 			return infoStore;
@@ -450,7 +452,7 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		} 
 	}
 
-	public ProximityStoreBuilder getProximityStoreBuilder() throws PersistenceException {
+	public DatabaseProximityStoreBuilder getProximityStoreBuilder() throws PersistenceException {
 		try { 
 			if (proximityStore==null) proximityStore = newProximityStoreBuilder();
 			return proximityStore;
@@ -459,7 +461,7 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		} 
 	}
 
-	public StatisticsStoreBuilder getStatisticsStoreBuilder() throws PersistenceException {
+	public DatabaseStatisticsStoreBuilder getStatisticsStoreBuilder() throws PersistenceException {
 		try { 
 			if (statsStore==null) statsStore = newStatisticsStoreBuilder();
 			return statsStore;
@@ -469,6 +471,7 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 	}	
 	
 	private Boolean statsComplete;
+	private Boolean proximityComplete;
 	
 	public boolean areStatsComplete() {
 		try {
@@ -480,6 +483,14 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		}
 	}
 
-	protected abstract DatabaseProximityStoreBuilder newProximityStoreBuilder() throws SQLException;
-	
+	public boolean isProximityComplete() {
+		try {
+			if (proximityComplete==null) proximityComplete = getProximityStoreBuilder().isComplete();
+			return proximityComplete;
+		} catch (PersistenceException ex) {
+			database.warn("failed to determin areStatsComplete", ex);
+			return false;
+		}
+	}
+
 }

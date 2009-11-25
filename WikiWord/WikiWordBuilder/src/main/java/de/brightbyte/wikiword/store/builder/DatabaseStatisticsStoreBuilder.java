@@ -62,33 +62,27 @@ abstract class DatabaseStatisticsStoreBuilder extends DatabaseWikiWordStoreBuild
 		}
 		
 		DatabaseTable linkTable = conceptStore.getDatabaseAccess().getTable("link");
-		DatabaseTable hierarchyTable = conceptStore.getDatabaseAccess().getTable("link");
+		DatabaseTable hierarchyTable = conceptStore.getDatabaseAccess().getTable("broader");
 		
 		if (beginTask("buildStatistics", "stats.buildDegreeInfo#in")) {
-			int n = buildDegreeInfo(linkTable, "anchor", "target", "in", "in_degree", "in_rank");
+			int n = buildDegreeInfo(linkTable, "anchor", "target", "in", "in_degree", "in_rank",  "in_bias");
 			endTask("buildStatistics", "stats.buildDegreeInfo#in", n+" entries");
 		}
 		
 		if (beginTask("buildStatistics", "stats.buildDegreeInfo#out")) {
-			int n = buildDegreeInfo(linkTable, "target", "anchor", "out", "out_degree", "out_rank");
+			int n = buildDegreeInfo(linkTable, "target", "anchor", "out", "out_degree", "out_rank",  "out_bias");
 			endTask("buildStatistics", "stats.buildDegreeInfo#out", n+" entries");
 		}
 		
 		if (beginTask("buildStatistics", "stats.buildDegreeInfo#up")) {
-			int n = buildDegreeInfo(hierarchyTable, "narrow", "broad", "up", "up_degree", null);
+			int n = buildDegreeInfo(hierarchyTable, "narrow", "broad", "up", "up_degree", null, "up_bias");
 			endTask("buildStatistics", "stats.buildDegreeInfo#up", n+" entries");
 		}
 		
 		if (beginTask("buildStatistics", "stats.buildDegreeInfo#down")) {
-			int n = buildDegreeInfo(hierarchyTable, "broad", "narrow", "down", "down_degree", null);
+			int n = buildDegreeInfo(hierarchyTable, "broad", "narrow", "down", "down_degree", null, "down_bias");
 			endTask("buildStatistics", "stats.buildDegreeInfo#down", n+" entries");
 		}
-		
-		if (beginTask("buildStatistics", "stats.in_bias")) { //idf = inverse document frequency
-			int n = buildDegreeBias("in_degree", "inbias", null);
-			endTask("buildStatistics", "stats.in_bias", n + " entries");
-		}
-
 		
 		if (beginTask("buildStatistics", "stats.combineDegreeInfo")) {
 			int n = combineDegreeInfo("in", "out", "link");
@@ -110,8 +104,13 @@ abstract class DatabaseStatisticsStoreBuilder extends DatabaseWikiWordStoreBuild
 			endTask("buildStatistics", "stats.linkDegreeDistribution");
 		}
 		
+		if (beginTask("buildStatistics", "stats.idf")) {
+			int n = buildInverseReferenceFrequency("in_degree", "idf", null);
+			endTask("buildStatistics", "stats.idf", n + " entries");
+		}
+		
 		if (beginTask("buildStatistics", "stats.lhs")) {
-			int n = buildLocalHierarchyScore("in_degree", "out_degree", "lhs", "lhs_rank");
+			int n = buildLocalHierarchyScore("in_degree", "out_degree", "lhs", null);
 			endTask("buildStatistics", "stats.lhs", n + " entries");
 		}
 		
@@ -121,30 +120,41 @@ abstract class DatabaseStatisticsStoreBuilder extends DatabaseWikiWordStoreBuild
 		}
 	}
 	
-	protected int buildDegreeBias(String degreeField, String biasField, String rankField) throws PersistenceException {
-		//	similar to inverse document frequency
-		//  see Salton, G. and McGill, M. J. 1983 Introduction to modern information retrieval
+	protected int buildDegreeBias(String degreeField, String biasField) throws PersistenceException {
+		//	bias = 1 - ( log(d) / log(D) ) 
 
 		int numberOfConcepts = getNumberOfConcepts();
-		String bias = "LOG("+numberOfConcepts+" / "+degreeField+")";
+		String bias = " 1 - ( log("+degreeField+") / "+Math.log(numberOfConcepts)+" )";
 
 		int n = buildDistributionCoefficient(biasField, degreeTable, biasField, bias, degreeField + " > 0");
-		endTask("buildDegreeBias", "stats."+biasField, n + " entries");
+		return n;
+	}
+	
+	protected int buildInverseReferenceFrequency(String degreeField, String idfField, String rankField) throws PersistenceException {
+		//	similar to inverse document frequency
+		//  see Salton, G. and McGill, M. J. 1983 Introduction to modern information retrieval
+        //  idf = log( D / d ) = log( D ) - log( d )
+
+		int numberOfConcepts = getNumberOfConcepts();
+		String idf = Math.log(numberOfConcepts) + " - LOG( "+degreeField+")";   
+
+		int n = buildDistributionCoefficient(idfField, degreeTable, idfField, idf, degreeField + " > 0");
 		
-		if (rankField!=null && beginTask("buildDegreeBias", "stats."+rankField)) {
-			buildRank(degreeTable, biasField, rankField);
-			endTask("buildDegreeBias", "stats."+rankField);
+		if (rankField!=null && beginTask("buildInverseReferenceFrequency", "stats."+rankField)) {
+			buildRank(degreeTable, idfField, rankField);
+			endTask("buildInverseReferenceFrequency", "stats."+rankField);
 		}
 		
 		return n;
 	}
 	
 	protected int buildLocalHierarchyScore(String inField, String outField, String lhsField, String rankField) throws PersistenceException {
-		//lhs = local hierarchy score
+		// lhs = local hierarchy score
 		//      as defined by Muchnik et.al. 2007 in Physical Review E 76, 016106
 		//      Note that the symmetrical counterpart has been omitted.
+		// lhs = d_in * sqrt( d_in ) / ( d_in + d_out )
 
-		String lhs = "in_degree * SQRT("+inField+") / ("+inField+" + "+outField+")";
+		String lhs = inField + " * SQRT("+inField+") / ("+inField+" + "+outField+")";
 		
 		int n = buildDistributionCoefficient("lhs", degreeTable, lhsField, lhs, ""+inField+" > 0");
 		
@@ -293,11 +303,11 @@ abstract class DatabaseStatisticsStoreBuilder extends DatabaseWikiWordStoreBuild
 		return executeChunkedUpdate("prepareDegreeTable", "prepareDegreeTable", sql, null, t, "id");
 	}
 	
-	protected int buildDegreeInfo(DatabaseTable t, String linkField, String groupField, String statsField, String degreeField, String rankField) throws PersistenceException {
+	protected int buildDegreeInfo(DatabaseTable t, String linkField, String groupField, String statsField, String degreeField, String rankField, String biasField) throws PersistenceException {
 		String sql = "UPDATE "+degreeTable.getSQLName()+" AS D "
 			+" JOIN ( SELECT "+groupField+" as concept, count("+linkField+") as degree " 
 					+" FROM "+t.getSQLName()+" " 
-					+" WHERE anchor IS NOT NULL " 
+					+" WHERE "+linkField+" IS NOT NULL AND "+groupField+" IS NOT NULL " 
 					+" GROUP BY "+groupField+") AS X "
 			+" ON X.concept = D.concept"
 			+" SET "+degreeField+" = X.degree";
@@ -308,6 +318,11 @@ abstract class DatabaseStatisticsStoreBuilder extends DatabaseWikiWordStoreBuild
 		if (rankField!=null && beginTask("buildDegreeInfo", "stats."+rankField)) {
 			buildRank(degreeTable, degreeField, rankField);
 			endTask("buildDegreeInfo", "stats."+rankField);
+		}
+		
+		if (biasField!=null && beginTask("buildDegreeInfo", "stats."+biasField)) {
+			buildDegreeBias(degreeField, biasField);
+			endTask("buildDegreeInfo", "stats."+biasField);
 		}
 		
 		return n;
