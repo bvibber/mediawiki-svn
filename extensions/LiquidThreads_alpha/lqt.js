@@ -97,7 +97,7 @@ var liquidThreads = {
 			var cancelButton = $j(container).find('#mw-editform-cancel');
 			cancelButton.click( liquidThreads.cancelEdit );
 			
-			$j(container).find('#wpTextbox1')[0].rows = 10;
+			$j(container).find('#wpTextbox1').attr( 'rows', 12 );
 			
 			// Add toolbar
 			mwSetupToolbar();
@@ -466,6 +466,7 @@ var liquidThreads = {
 		var threadId = thread.data('thread-id');
 		var replies = thread.parent().find('.lqt-thread-replies');
 		var loader = $j('<div class="mw-ajax-loader"/>');
+		var sep = $j('<div class="lqt-post-sep">&nbsp;</div>');
 		
 		replies.empty();
 		replies.hide();
@@ -492,6 +493,8 @@ var liquidThreads = {
 				replies.find('div.lqt-post-wrapper').each( function() {
 					liquidThreads.setupThread( $j(this) );
 				} );
+				
+				replies.before(sep);
 				
 				// Show
 				loader.remove();
@@ -641,8 +644,15 @@ var liquidThreads = {
 		
 		var text = editform.find('#wpTextbox1').val();
 		var summary = editform.find('#wpSummary').val();
+		
+		// Check if summary is undefined
+		if (summary === undefined) {
+			summary = '';
+		}
+		
 		var subject = editform.find( '#lqt_subject_field' ).val();
 		var replyThread = editform.find('input[name=lqt_operand]').val();
+		var bump = editform.find('#wpBumpThread').is(':checked') ? 1 : 0;
 		
 		var spinner = $j('<div class="mw-ajax-loader"/>');
 		editform.prepend(spinner);
@@ -747,18 +757,19 @@ var liquidThreads = {
 		};
 		
 		if ( type == 'reply' ) {			
-			liquidThreads.doReply( replyThread, text, summary, doneCallback);
+			liquidThreads.doReply( replyThread, text, summary,
+						doneCallback, bump );
 			
 			e.preventDefault();
 		} else if ( type == 'talkpage_new_thread' ) {
 			liquidThreads.doNewThread( wgPageName, subject, text, summary,
-					doneCallback );
+					doneCallback, bump );
 			
 			e.preventDefault();
 		}
 	},
 	
-	'doNewThread' : function( talkpage, subject, text, summary, callback ) {
+	'doNewThread' : function( talkpage, subject, text, summary, callback, bump ) {
 		liquidThreads.getToken(
 			function(token) {
 				var newTopicParams =
@@ -771,7 +782,8 @@ var liquidThreads = {
 					'token' : token,
 					'format' : 'json',
 					'render' : '1',
-					'reason' : summary
+					'reason' : summary,
+					'bump' : bump
 				};
 				
 				$j.post( wgScriptPath+'/api'+wgScriptExtension, newTopicParams,
@@ -783,7 +795,7 @@ var liquidThreads = {
 			} );
 	},
 	
-	'doReply' : function( thread, text, summary, callback ) {
+	'doReply' : function( thread, text, summary, callback, bump ) {
 		liquidThreads.getToken(
 			function(token) {
 				var replyParams =
@@ -795,7 +807,8 @@ var liquidThreads = {
 					'token' : token,
 					'format' : 'json',
 					'render' : '1',
-					'reason' : summary
+					'reason' : summary,
+					'bump' : bump
 				};
 				
 				$j.post( wgScriptPath+'/api'+wgScriptExtension, replyParams,

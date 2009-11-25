@@ -419,11 +419,28 @@ class LqtView {
 					wfMsgExt( $msg, 'parse' ) );
 		}
 		
+		global $wgRequest;
 		// Quietly force a preview if no subject has been specified.
 		if ( ( !$valid_subject && $subject ) || ( $subject_expected && !$subject ) ) {
 			// Dirty hack to prevent saving from going ahead
-			global $wgRequest;
 			$wgRequest->setVal( 'wpPreview', true );
+		}
+		
+		// For new posts and replies, remove the summary field and use a boilerplate
+		//  default.
+		if ( $edit_type == 'new' ) {
+			$e->mShowSummaryField = false;
+			
+			$summary = wfMsgForContent( 'lqt-newpost-summary', $subject );
+			$wgRequest->setVal( 'wpSummary', $summary );
+		} elseif ( $edit_type == 'reply' ) {
+			$e->mShowSummaryField = false;
+			
+			$reply_subject = $edit_applies_to->subject();
+			$reply_title = $edit_applies_to->title()->getPrefixedText();
+			$summary = wfMsgForContent( 'lqt-reply-summary',
+					$reply_subject, $reply_title );
+			$wgRequest->setVal( 'wpSummary', $summary );
 		}
 		
 		// Add an offset so it works if it's on the wrong page.
@@ -493,10 +510,12 @@ class LqtView {
 				// $this->renameThread( $thread, $subject, $e->summary );
 			}
 			
+			$bump = $this->request->getBool( 'wpBumpThread' );
+			
 			$thread = self::postEditUpdates(
 					$edit_type, $edit_applies_to, $article,
 					$this->article,	$subject, $e->summary, $thread,
-					$e->textbox1
+					$e->textbox1, $bump
 				);
 			
 			if ( $submitted_nonce && $nonce_key ) {
@@ -520,22 +539,25 @@ class LqtView {
 	}
 	
 	static function postEditUpdates( $edit_type, $edit_applies_to, $edit_page, $article,
-					$subject, $edit_summary, $thread, $new_text ) {
+					$subject, $edit_summary, $thread, $new_text,
+					$bump = null ) {
 		// Update metadata - create and update thread and thread revision objects as
 		//  appropriate.
 
 		if ( $edit_type == 'reply' ) {
 			$subject = $edit_applies_to->subject();
 			
-			$thread = Threads::newThread( $edit_page, $article, $edit_applies_to,
-							Threads::TYPE_NORMAL, $subject );
+			$thread = Thread::create( $edit_page, $article, $edit_applies_to,
+							Threads::TYPE_NORMAL, $subject,
+							$edit_summary, $bump );
 			
 			global $wgUser;
 			NewMessages::markThreadAsReadByUser( $edit_applies_to, $wgUser );
 		} elseif ( $edit_type == 'summarize' ) {
 			$edit_applies_to->setSummary( $edit_page );
 			$edit_applies_to->commitRevision( Threads::CHANGE_EDITED_SUMMARY,
-							$edit_applies_to, $edit_summary );
+							$edit_applies_to, $edit_summary,
+							$bump);
 		} elseif ( $edit_type == 'editExisting' ) {
 			// Use a separate type if the content is blanked.
 			$type = strlen( trim( $new_text ) )
@@ -543,10 +565,11 @@ class LqtView {
 					: Threads::CHANGE_ROOT_BLANKED;
 			
 			// Add the history entry.
-			$thread->commitRevision( $type, $thread, $edit_summary );
+			$thread->commitRevision( $type, $thread, $edit_summary, $bump );
 		} else {
-			$thread = Threads::newThread( $edit_page, $article, null,
-							Threads::TYPE_NORMAL, $subject );
+			$thread = Thread::create( $edit_page, $article, null,
+							Threads::TYPE_NORMAL, $subject,
+							$edit_summary );
 		}
 		
 		return $thread;
@@ -1279,7 +1302,7 @@ class LqtView {
 		$repliesClass = 'lqt-thread-replies lqt-thread-replies-' .
 					$this->threadNestingLevel;
 		$div = Xml::openElement( 'div', array( 'class' => $repliesClass ) );
-		$this->output->addHTML( $div );
+		$sep = Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&nbsp;' );
 		
 		$subthreadCount = count( $thread->subthreads() );
 		$i = 0;
@@ -1303,7 +1326,7 @@ class LqtView {
 					// We've shown too many threads.
 					$link = $this->getShowMore( $thread, $st, $i );
 					
-					$this->output->addHTML( $link );
+					$this->output->addHTML( $div.$link );
 					$showThreads = false;
 					continue;
 				}
@@ -1312,10 +1335,7 @@ class LqtView {
 				if ( $showCount == 1 ) {
 					// There's a post sep before each reply group to
 					//  separate from the parent thread.
-					$this->output->addHTML(
-						Xml::tags( 'div',
-							array( 'class' => 'lqt-post-sep' ),
-							'&nbsp;' ) );
+					$this->output->addHTML( $sep.$div );
 				}
 				
 				$this->showThread( $st, $i, $subthreadCount, $cascadeOptions );
@@ -1582,5 +1602,17 @@ class LqtView {
 		self::$userSignatureCache[$name] = $sig;
 		
 		return $sig;
+	}
+	
+	function customizeTabs( $skin, &$links ) {
+		// No-op
+	}
+	
+	function customizeNavigation( $skin, &$links ) {
+		// No-op
+	}
+	
+	function show() {
+		return true; // No-op
 	}
 }

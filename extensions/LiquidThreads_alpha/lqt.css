@@ -1,11 +1,3 @@
-
-#wpTextbox1 {
-	/* Textareas in lqt use auto-sizing based on these properties */
-	height: 7.5em;
-	max-height: 30em;
-	min-height: 7.5em;
-}
-
 .lqt_watchlist_messages_notice {
 	background-color: #eee;
 	border:           1px solid #ddd;
@@ -312,7 +304,6 @@ li.lqt-command-reply {
 }
 
 div.lqt-post-sep {
-	height: 1px;
 	padding: 0;
 	margin: 0;
 	margin-left: 1em;
@@ -321,6 +312,7 @@ div.lqt-post-sep {
 	background-position: bottom;
 	background-repeat: repeat-x;
 	clear: both;
+	line-height: 1em;
 }
 
 .lqt-thread-first > .lqt-post-wrapper {
