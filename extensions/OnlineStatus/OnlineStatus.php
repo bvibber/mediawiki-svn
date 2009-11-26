@@ -41,9 +41,6 @@ $wgDefaultUserOptions['offlineonlogout'] = 1;
 $wgExtensionMessagesFiles['OnlineStatus'] = dirname( __FILE__ ) . '/OnlineStatus.i18n.php';
 $wgExtensionMessagesFiles['OnlineStatusMagic'] = dirname( __FILE__ ) . '/OnlineStatus.i18n.magic.php';
 
-// Script loader
-$wgJSAutoloadClasses['OnlineStatus'] = "extensions/OnlineStatus/OnlineStatus.js";
-
 // FIXME: Should be a separate class file
 class OnlineStatus {
 	// FIXME: Can't this just be in the core bit instead of the class? The init() will not have to be called
@@ -287,7 +284,7 @@ class OnlineStatus {
 
 		if( $wgUser->isLoggedIn() && $wgUseAjax ){
 			global $wgScriptPath;
-			$out->addScriptClass( 'OnlineStatus' );
+			$out->addScriptFile( "{$wgScriptPath}/extensions/OnlineStatus/OnlineStatus.js" );
 			$out->addExtensionStyle( "{$wgScriptPath}/extensions/OnlineStatus/OnlineStatus.css" );
 		}
 
