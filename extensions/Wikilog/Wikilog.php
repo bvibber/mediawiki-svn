@@ -331,7 +331,7 @@ class Wikilog
 	 * Adds a wikilog tab to articles in Wikilog namespaces.
 	 * Suppresses the "add section" tab in comments pages.
 	 */
-	static function SkinTemplateTabs( &$skin, &$contentActions ) {
+	static function SkinTemplateTabs( $skin, &$contentActions ) {
 		global $wgRequest, $wgWikilogEnableComments;
 
 		$wi = self::getWikilogInfo( $skin->mTitle );

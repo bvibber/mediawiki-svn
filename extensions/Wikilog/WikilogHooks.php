@@ -322,7 +322,7 @@ class WikilogHooks
 	 * Import wikilog article options form data in edit pages.
 	 * @note Requires MediaWiki 1.16+.
 	 */
-	static function EditPageImportFormData( &$editpage, &$request ) {
+	static function EditPageImportFormData( $editpage, $request ) {
 		if ( $request->wasPosted() ) {
 			$editpage->wlSignpub = $request->getCheck( 'wlSignpub' );
 		}

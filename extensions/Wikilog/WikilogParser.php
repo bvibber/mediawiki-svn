@@ -221,7 +221,9 @@ class WikilogParser
 
 		# First argument is the publish date
 		if ( !is_null( $pubdate ) ) {
+			wfSuppressWarnings(); // Shut up E_STRICT warnings about timezone.
 			$ts = strtotime( $pubdate );
+			wfRestoreWarnings();
 			if ( $ts > 0 ) {
 				$parser->mExtWikilog->mPubDate = wfTimestamp( TS_MW, $ts );
 			}
