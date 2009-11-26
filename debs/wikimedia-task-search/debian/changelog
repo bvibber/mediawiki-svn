@@ -1,3 +1,11 @@
+wikimedia-task-search (1.04) hardy; urgency=low
+
+  * Remove dependency on wikimedia-nis-client, assume this is managed by
+    puppet
+  * Remove sudoers file, also managed by puppet
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 26 Nov 2009 16:54:05 +0000
+
 wikimedia-task-search (1.03) hardy; urgency=low
 
   * Increase the memory limit to 3 GB
