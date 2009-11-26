@@ -19,7 +19,7 @@
 /* Configuration */
 
 // Bump the version number every time you change any of the .css/.js files
-$wgEditToolbarStyleVersion = 77;
+$wgEditToolbarStyleVersion = 78;
 $wgWikiEditorIconVersion = 0;
 
 // Set this to true to simply override the stock toolbar for everyone
@@ -51,7 +51,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Trevor Parscal',
 	'version' => '0.1.3',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
-	'descriptionmsg' => 'edittoolbar-desc',
+	'descriptionmsg' => 'wikieditor-toolbar-desc',
 );
 
 // Includes parent extension
@@ -63,7 +63,7 @@ $wgAutoloadClasses['EditToolbarHooks'] =
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['EditToolbar'] =
-	dirname( __FILE__ ) . '/EditToolbar.i18n.php';
+	dirname( __FILE__ ) . '/../WikiEditor/Modules/Toolbar/Toolbar.i18n.php';
 
 // Registers Hooks
 $wgHooks['EditPageBeforeEditToolbar'][] = 'EditToolbarHooks::addToolbar';

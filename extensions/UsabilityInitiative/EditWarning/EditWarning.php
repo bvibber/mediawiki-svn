@@ -19,7 +19,7 @@
 /* Configuration */
 
 // Bump the version number every time you change any of the .css/.js files
-$wgEditWarningStyleVersion = 4;
+$wgEditWarningStyleVersion = 5;
 
 /* Setup */
 
@@ -30,7 +30,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Roan Kattouw',
 	'version' => '0.1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
-	'descriptionmsg' => 'editwarning-desc',
+	'descriptionmsg' => 'vector-editwarning-desc',
 );
 
 // Includes parent extension
@@ -42,7 +42,7 @@ $wgAutoloadClasses['EditWarningHooks'] =
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['EditWarning'] =
-	dirname( __FILE__ ) . '/EditWarning.i18n.php';
+	dirname( __FILE__ ) . '/../Vector/Modules/EditWarning/EditWarning.i18n.php';
 
 // Registers Hooks
 $wgHooks['EditPage::showEditForm:initial'][] = 'EditWarningHooks::initialize';

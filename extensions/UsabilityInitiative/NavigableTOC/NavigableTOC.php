@@ -27,7 +27,7 @@ $wgNavigableTOCGlobalEnable = false;
 $wgNavigableTOCUserEnable = true;
 
 // Bump the version number every time you change any of the .css/.js files
-$wgNavigableTOCStyleVersion = 6;
+$wgNavigableTOCStyleVersion = 7;
 
 /* Setup */
 
@@ -38,7 +38,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Roan Kattouw',
 	'version' => '0.1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
-	'descriptionmsg' => 'navigabletoc-desc',
+	'descriptionmsg' => 'wikieditor-toc-desc',
 );
 
 // Includes parent extension
@@ -50,7 +50,7 @@ $wgAutoloadClasses['NavigableTOCHooks'] =
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['NavigableTOC'] =
-	dirname( __FILE__ ) . '/NavigableTOC.i18n.php';
+	dirname( __FILE__ ) . '/../WikiEditor/Modules/Toc/Toc.i18n.php';
 
 // Registers Hooks
 $wgHooks['EditPageBeforeEditToolbar'][] = 'NavigableTOCHooks::addTOC';

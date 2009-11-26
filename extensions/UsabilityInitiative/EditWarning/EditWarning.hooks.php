@@ -28,7 +28,7 @@ class EditWarningHooks {
 			wfLoadExtensionMessages( 'EditWarning' );
 			// Adds messages to page
 			UsabilityInitiativeHooks::addMessages(
-				array( 'editwarning-warning' )
+				array( 'vector-editwarning-warning' )
 			);
 		}
 		// Continue
@@ -47,7 +47,7 @@ class EditWarningHooks {
 		$defaultPreferences['useeditwarning'] =
 		array(
 			'type' => 'toggle',
-			'label-message' => 'editwarning-preference',
+			'label-message' => 'vector-editwarning-preference',
 			'section' => 'editing/advancedediting',
 		);
 		return true;
