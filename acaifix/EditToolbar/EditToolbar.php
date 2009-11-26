@@ -62,7 +62,7 @@ $wgAutoloadClasses['EditToolbarHooks'] =
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['EditToolbar'] =
-	dirname( __FILE__ ) . '/EditToolbar.i18n.php';
+	dirname( __FILE__ ) . '../WikiEditor/Modules/Toolbar/Toolbar.i18n.php';
 
 // Registers Hooks
 $wgHooks['EditPageBeforeEditToolbar'][] = 'EditToolbarHooks::addToolbar';
