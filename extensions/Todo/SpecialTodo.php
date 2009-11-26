@@ -55,7 +55,7 @@ function todoSetup() {
  * @param array $actions
  * @return bool true to continue running hooks, false to abort operation
  */
-function todoAddTab( &$skin, &$actions ) {
+function todoAddTab( $skin, &$actions ) {
 	global $wgTitle;
 	if ( $wgTitle->getNamespace() == NS_USER || $wgTitle->getNamespace() == NS_USER_TALK ) {
 		$title = Title::makeTitle( NS_SPECIAL, 'Todo/' . $wgTitle->getText() );

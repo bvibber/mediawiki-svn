@@ -60,7 +60,7 @@ function wfEmailPageToolboxLink() {
 	return true;
 }
 
-function wfEmailPageActionLink( &$skin, &$actions ) {
+function wfEmailPageActionLink( $skin, &$actions ) {
 	global $wgTitle, $wgUser, $wgEmailPageGroup;
 	if ( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
 		$url = Title::makeTitle( NS_SPECIAL, 'EmailPage' )->getLocalURL('ea-title='.$wgTitle->getPrefixedText() );

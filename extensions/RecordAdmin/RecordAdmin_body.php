@@ -92,7 +92,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Add action link
 	 */
-	function onSkinTemplateTabs( &$skin, &$actions ) {
+	function onSkinTemplateTabs( $skin, &$actions ) {
 		$tmp = array();
 		foreach ( $actions as $k => $v ) {
 			$tmp[$k] = $v;

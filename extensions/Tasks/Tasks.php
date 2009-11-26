@@ -415,7 +415,7 @@ function wfTasksExtensionPreventOtherActiveTabs( &$skin, &$prevent_active_tabs )
  * @param array $content_actions
  * @return bool true to continue running other hooks, false to abort operation
  */
-function wfTasksExtensionTab( &$skin, &$content_actions ) { # Checked for HTML and MySQL insertion attacks
+function wfTasksExtensionTab( $skin, &$content_actions ) { # Checked for HTML and MySQL insertion attacks
 	global $wgTitle, $action;
 	if( $wgTitle->isTalkPage() ) {
 		# No talk pages please
