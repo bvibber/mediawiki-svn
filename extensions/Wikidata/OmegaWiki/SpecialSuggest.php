@@ -379,7 +379,7 @@ function getSQLForClasses( $language ) {
 		" WHERE col.collection_type='CLAS' " .
 		" AND col_contents.collection_id = col.collection_id " .
  		" AND synt.defined_meaning_id = col_contents.member_mid " .
-		" AND synt.identical_meaning=1 " .
+//		" AND synt.identical_meaning=1 " .
 		" AND exp.expression_id = synt.expression_id " .
 		" AND dm.defined_meaning_id = synt.defined_meaning_id " .
 		" AND ( " .
