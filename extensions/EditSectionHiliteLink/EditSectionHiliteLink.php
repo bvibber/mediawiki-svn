@@ -32,7 +32,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '0.1.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:EditSectionHiliteLink',
 	'description' => 'Hilight the appropriate section of an article when you mouse over the edit link',
-	'description-msg' => 'Editsectionhilitelink-desc',
+	'descriptionmsg' => 'editsectionhilitelink-desc',
 );
 
 // Turn on the section container divs in the Parser
@@ -40,6 +40,7 @@ $wgSectionContainers = true;
 
 // Shortcut to this extension directory
 $dir = dirname( __FILE__ ) . '/';
+$wgExtensionMessagesFiles['EditSectionHiliteLink'] = $dir . 'EditSectionHiliteLink.i18n.php';
 
 # Bump the version number every time you change any of the .css/.js files
 $wgEditSectionHiliteLinkStyleVersion = 2;
