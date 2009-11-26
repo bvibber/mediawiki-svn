@@ -77,6 +77,8 @@ $messages['en'] = array(
 	'wikieditor-toolbar-tool-gallery' => 'Picture gallery',
 	'wikieditor-toolbar-tool-gallery-example' => "{{ns:file}}:Example.jpg|Caption1
 {{ns:file}}:Example.jpg|Caption2",
+	'wikieditor-toolbar-tool-indent' => 'Indentation',
+	'wikieditor-toolbar-tool-indent-example' => 'Indented line',
 	'wikieditor-toolbar-tool-newline' => 'New line',
 	'wikieditor-toolbar-tool-table' => 'Table',
 	'wikieditor-toolbar-tool-table-example-old' => "-

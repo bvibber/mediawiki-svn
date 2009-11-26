@@ -19,7 +19,7 @@
 /* Configuration */
 
 // Bump the version number every time you change any of the .css/.js files
-$wgEditToolbarStyleVersion = 76;
+$wgEditToolbarStyleVersion = 77;
 
 // Set this to true to simply override the stock toolbar for everyone
 $wgEditToolbarGlobalEnable = false;
@@ -62,7 +62,7 @@ $wgAutoloadClasses['EditToolbarHooks'] =
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['EditToolbar'] =
-	dirname( __FILE__ ) . '../WikiEditor/Modules/Toolbar/Toolbar.i18n.php';
+	dirname( __FILE__ ) . '/../WikiEditor/Modules/Toolbar/Toolbar.i18n.php';
 
 // Registers Hooks
 $wgHooks['EditPageBeforeEditToolbar'][] = 'EditToolbarHooks::addToolbar';

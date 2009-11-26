@@ -50,7 +50,7 @@ $wgAutoloadClasses['NavigableTOCHooks'] =
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['NavigableTOC'] =
-	dirname( __FILE__ ) . '../WikiEditor/Modules/Toc/Toc.i18n.php';
+	dirname( __FILE__ ) . '/../WikiEditor/Modules/Toc/Toc.i18n.php';
 
 // Registers Hooks
 $wgHooks['EditPageBeforeEditToolbar'][] = 'NavigableTOCHooks::addTOC';

@@ -94,6 +94,8 @@ class EditToolbarHooks {
 					'wikieditor-toolbar-group-insert',
 					'wikieditor-toolbar-tool-gallery',
 					'wikieditor-toolbar-tool-gallery-example',
+					'wikieditor-toolbar-tool-indent',
+					'wikieditor-toolbar-tool-indent-example',
 					'wikieditor-toolbar-tool-newline',
 					'wikieditor-toolbar-tool-table',
 					'wikieditor-toolbar-tool-table-example-old',

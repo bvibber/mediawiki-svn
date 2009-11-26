@@ -239,6 +239,7 @@ js2AddOnloadHook( function() {
 							type: 'encapsulate',
 							options: {
 								pre: ":",
+								periMsg: 'wikieditor-toolbar-tool-indent-example',
 								post: "",
 								ownline: true
 							}

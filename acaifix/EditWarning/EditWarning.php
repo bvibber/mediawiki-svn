@@ -42,7 +42,7 @@ $wgAutoloadClasses['EditWarningHooks'] =
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['EditWarning'] =
-	dirname( __FILE__ ) . '../Vector/Modules/EditWarning/EditWarning.i18n.php';
+	dirname( __FILE__ ) . '/../Vector/Modules/EditWarning/EditWarning.i18n.php';
 
 // Registers Hooks
 $wgHooks['EditPage::showEditForm:initial'][] = 'EditWarningHooks::initialize';
