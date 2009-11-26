@@ -9,6 +9,7 @@ EOT;
 }
  
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'SendmailToWiki',
 	'author' => 'Jure Kajzer - freakolowsky <jure.kajzer@abakus.si>',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SendmailToWiki',
@@ -21,7 +22,6 @@ $dir = dirname(__FILE__) . '/';
  
 $wgAutoloadClasses['SendmailToWiki'] = $dir . 'SendmailToWiki_body.php';
 $wgExtensionMessagesFiles['SendmailToWiki'] = $dir . 'SendmailToWiki.i18n.php';
-//$wgExtensionAliasesFiles['SendmailToWiki'] = $dir . 'SendmailToWiki.alias.php';
 $wgSpecialPages['SendmailToWiki'] = 'SendmailToWiki';
 
 $wgHooks['GetPreferences'][] = 'sendmailtowikiPrefHook';
@@ -67,4 +67,3 @@ function sendmailtowikiUserCanHook(&$title, &$user, $action, &$result) {
 	return true;
 }
 
-?>

@@ -34,4 +34,4 @@ if ($csessionReturn != '') {
 
 	mail($mailData['headers']['from'], 'RE: '.$mailData['headers']['subject'], $csessionReturn, $headers);
 }
-?>
+

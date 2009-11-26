@@ -1,23 +1,24 @@
 <?php
 $messages = array();
  
-/* *** English *** */
+/** English
+ * @author Jure Kajzer - freakolowsky
+ */
 $messages['en'] = array( 
 	'sendmailtowiki' => 'SendmailToWiki',
-	'sendmailtowiki-desc' => "Post wiki content trough dedicated dynamic email address.",
-	'prefs-sendmailtowiki' => "Posting content with email",
-	'sendmailtowiki-inemail' => "Dedicated email:",
-	'sendmailtowiki-inpin' => "PIN:",
-	'prefs-help-sendmailtowiki_pin' => "Blank field for PIN number disables posting content to wiki with your account.",
-	'sendmailtowiki-err-pinlength' => "PIN must contain exactly 5 numbers!",
-	'sendmailtowiki-err-wrongprefix' => "Wrong wiki account prefix. Contact your administrator!",
-	'sendmailtowiki-err-invalidaccount' => "Invalid account. Check the email address you're sending to.",
-	'sendmailtowiki-err-invalidsender' => "Invalid sender. Check the email address you're sending from.",
-	'sendmailtowiki-err-invalidpin' => "Invalid PIN. Access Denied.",
-	'sendmailtowiki-err-onlyplain' => "Because of potential misinterpretatons only text/plain messages are accepted.",
+	'sendmailtowiki-desc' => 'Post wiki content trough dedicated dynamic e-mail address.',
+	'prefs-sendmailtowiki' => 'Posting content with e-mail',
+	'sendmailtowiki-inemail' => 'Dedicated e-mail:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Blank field for PIN number disables posting content to wiki with your account.',
+	'sendmailtowiki-err-pinlength' => 'PIN must contain exactly 5 numbers!',
+	'sendmailtowiki-err-wrongprefix' => 'Wrong wiki account prefix. Contact your administrator!',
+	'sendmailtowiki-err-invalidaccount' => 'Invalid account. Check the e-mail address you are sending to.',
+	'sendmailtowiki-err-invalidsender' => 'Invalid sender. Check the e-mail address you are sending from.',
+	'sendmailtowiki-err-invalidpin' => 'Invalid PIN. Access denied.',
+	'sendmailtowiki-err-onlyplain' => 'Because of potential misinterpretations only text/plain messages are accepted.',
 );
- 
-/* *** German (Deutsch) *** */
+
 $messages['sl'] = array(
 	'sendmailtowiki' => 'SendmailToWiki',
 	'sendmailtowiki-desc' => 'Pošiljanje wiki vsebine preko namenskega dinamičnega email naslova.',
@@ -32,4 +33,4 @@ $messages['sl'] = array(
 	'sendmailtowiki-err-invalidpin' => "Nepravilen PIN. Dostop zavrnjen.",
 	'sendmailtowiki-err-onlyplain' => "Zaradi potencialnega nepravilnega interpretiranja so podprta samo text/plain sporočila.",
 );
-?>
+
