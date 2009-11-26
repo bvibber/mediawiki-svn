@@ -23,6 +23,9 @@ class APIQueryTemplateInfo extends ApiQueryBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$titles = $this->getPageSet()->getGoodTitles();
+		if (count($titles) == 0)
+			return;
+
 		$this->addTables( 'page_props' );
 		$this->addFields( array( 'pp_page', 'pp_value' ) );
 		$this->addWhere( array(
