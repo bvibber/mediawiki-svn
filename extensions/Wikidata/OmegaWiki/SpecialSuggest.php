@@ -374,26 +374,29 @@ function getSQLForClasses( $language ) {
 
   // exp.spelling, txt.text_text
 	$sql = "SELECT member_mid, spelling " .
-        " FROM {$dc}_collection_contents col_contents, {$dc}_collection col, {$dc}_syntrans synt," .
-        " {$dc}_expression exp, {$dc}_defined_meaning dm" .
-        " WHERE col.collection_type='CLAS' " .
-        " AND col_contents.collection_id = col.collection_id " .
-        " AND synt.defined_meaning_id = col_contents.member_mid " .
-        " AND synt.identical_meaning=1 " .
-        " AND exp.expression_id = synt.expression_id " .
-        " AND dm.defined_meaning_id = synt.defined_meaning_id " .
-        " AND ( " .
-          " exp.language_id=$lng " .
-          " OR (" .
-            " exp.language_id=85 " .
-            " AND dm.defined_meaning_id NOT IN ( SELECT defined_meaning_id FROM {$dc}_syntrans synt, {$dc}_expression exp WHERE exp.expression_id = synt.expression_id AND exp.language_id=$lng ) " .
-          " ) " .
-        " ) " .
-        " AND " . getLatestTransactionRestriction( "col" ) .
-        " AND " . getLatestTransactionRestriction( "col_contents" ) .
-        " AND " . getLatestTransactionRestriction( "synt" ) .
-        " AND " . getLatestTransactionRestriction( "exp" ) .
-        " AND " . getLatestTransactionRestriction( "dm" ) ;
+		" FROM {$dc}_collection_contents col_contents, {$dc}_collection col, {$dc}_syntrans synt," .
+		" {$dc}_expression exp, {$dc}_defined_meaning dm" .
+		" WHERE col.collection_type='CLAS' " .
+		" AND col_contents.collection_id = col.collection_id " .
+ 		" AND synt.defined_meaning_id = col_contents.member_mid " .
+		" AND synt.identical_meaning=1 " .
+		" AND exp.expression_id = synt.expression_id " .
+		" AND dm.defined_meaning_id = synt.defined_meaning_id " .
+		" AND ( " .
+			" exp.language_id=$lng " .
+			" OR (" .
+				" exp.language_id=85 " .
+				" AND dm.defined_meaning_id NOT IN " .
+					" ( SELECT defined_meaning_id FROM {$dc}_syntrans synt_bis, {$dc}_expression exp_bis " .
+					" WHERE exp_bis.expression_id = synt_bis.expression_id AND exp_bis.language_id=$lng " .
+					" AND synt_bis.remove_transaction_id IS NULL AND exp_bis.remove_transaction_id IS NULL ) " .
+				" ) " .
+			" ) " .
+		" AND " . getLatestTransactionRestriction( "col" ) .
+		" AND " . getLatestTransactionRestriction( "col_contents" ) .
+		" AND " . getLatestTransactionRestriction( "synt" ) .
+		" AND " . getLatestTransactionRestriction( "exp" ) .
+		" AND " . getLatestTransactionRestriction( "dm" ) ;
 
 	return $sql;
 }
