@@ -41,7 +41,7 @@ class NavigableTOCHooks {
 			$defaultPreferences['usenavigabletoc'] =
 			array(
 				'type' => 'toggle',
-				'label-message' => 'navigabletoc-preference',
+				'label-message' => 'wikieditor-toc-preference',
 				'section' => 'editing/experimental',
 			);
 		}

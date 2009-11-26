@@ -50,7 +50,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Trevor Parscal',
 	'version' => '0.1.3',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
-	'descriptionmsg' => 'edittoolbar-desc',
+	'descriptionmsg' => 'wikieditor-toolbar-desc',
 );
 
 // Includes parent extension

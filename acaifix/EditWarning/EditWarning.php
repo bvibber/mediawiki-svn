@@ -30,7 +30,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Roan Kattouw',
 	'version' => '0.1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
-	'descriptionmsg' => 'editwarning-desc',
+	'descriptionmsg' => 'vector-editwarning-desc',
 );
 
 // Includes parent extension
