@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.14.15 - 26 November 2009
+  Removed ScriptLoader usage (removed from MediaWiki).
+
 0.14.14 - 19 September 2009
   Updated Collection, FlaggedRevs and OggHandler extensions.
 
