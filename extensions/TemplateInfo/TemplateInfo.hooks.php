@@ -19,7 +19,7 @@ class TemplateInfoHooks {
 	return true;
     }
 
-    public static function validateXML( $xml ) {
+    public static function validateXML( $xml, &$error_msg ) {
 	$xmlDTD =<<<END
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE template [
@@ -49,22 +49,27 @@ END;
 	// hide parsing warnings
 	libxml_use_internal_errors(true);
 	$xml_success = simplexml_load_string($xmlDTD . $xml);
+	$errors = libxml_get_errors();
+	$message = $errors[0]->message;
+	//$line = $errors[0]->line;
+	$error_msg = "ERROR: $message";
 	return $xml_success;
     }
 
     // Render the displayed XML, if any
     public static function render( $input, $args, $parser, $frame ) {
 	// if this call is contained in a transcluded page or template,
-	// or if the inpur is empty, display nothing
+	// or if the input is empty, display nothing
 	if ( !$frame->title->equals( $parser->getTitle() ) || $input == '' )
 		return;
 	
 	// Store XML in the page_props table
 	// TODO: Do processing here, like parse to an array
- 	if ( TemplateInfoHooks::validateXML( $input ) )
+	$error_msg = null;
+ 	if ( TemplateInfoHooks::validateXML( $input, $error_msg ) )
 		$parser->getOutput()->setProperty( 'templateinfo', $input );
 	else
-		$parser->getOutput()->setProperty( 'templateinfo', "Error: Invalid XML" );
+		$parser->getOutput()->setProperty( 'templateinfo', $error_msg );
 
 	// Return output
 	$text = "<p>" . wfMsg( 'templateinfo-header' ) . "</p>\n";
