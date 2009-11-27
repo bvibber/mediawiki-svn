@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'usercontactlink-baduser' => 'incorrect username',
-	'usercontactlink-desc'    => 'Provides the ability to simply and consistantly add other user names using ^^^user^^^ syntax',
+	'usercontactlink-desc'    => 'Provides the ability to simply and consistently add other user names using ^^^user^^^ syntax',
 );
 
 /** Message documentation (Message documentation)
