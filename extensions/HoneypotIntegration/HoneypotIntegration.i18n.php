@@ -294,10 +294,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'honeypot-desc' => 'Providencia integração com [http://projecthoneypot.org/ Project Honey Pot] para sítios MediaWiki',
+	'honeypot-desc' => 'Fornece integração com o [http://projecthoneypot.org/ Projecto Honey Pot] para sítios MediaWiki',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Número de eventos recentes que o endereço IP despoletou, segundo Project Honey Pot',
 );
 

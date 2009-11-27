@@ -287,10 +287,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'randomimage-desc' => 'Providencia um selector de media aleatória usando <tt>&lt;randomimage /&gt;</tt>',
+	'randomimage-desc' => 'Fornece um selector aleatório de ficheiros multimédia usando <tt>&lt;randomimage /&gt;</tt>',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

@@ -150,8 +150,11 @@ $messages['af'] = array(
 	'optin-title-justoptedout' => 'Baie dankie dat u Beta uitprobeer het',
 	'optin-title-feedback' => 'Beta terugvoer',
 	'optin-needlogin' => 'U moet [$1 aanteken] voordat u Beta kan gebruik.',
+	'optin-intro' => 'Met Wikipedia se bruikbaarheidsinisiatief is hard gewerk om die bruikbaarheid van Wikipedia te verbeter.
+Wil u Beta uitprobeer?',
 	'optin-success-feedback' => 'Baie dankie vir u terugvoer!',
 	'optin-accept-short' => 'Inskakeling',
+	'optin-accept-long' => 'Probeer Beta',
 	'optin-accept-long-anon' => 'Teken in en probeer Beta',
 	'optin-deny-short' => 'Nee dankie',
 	'optin-deny-long' => 'Terug na die vorige bladsy',
@@ -159,12 +162,42 @@ $messages['af'] = array(
 	'optin-submit-feedback' => 'Gee terugvoer',
 	'optin-survey-yes' => 'Ja',
 	'optin-survey-no' => 'Nee',
+	'optin-survey-question-whyoptout' => 'Hoekom wil u die Beta-koppelvlak afskakel?
+Kies asseblief alle toepaslike redes.',
+	'optin-survey-answer-whyoptout-hard' => 'Dit was te moeilik om te gebruik.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Dit het nie behoorlik gefunksioneer nie.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Dit reageer nie voorspelbaar nie.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Ek hou nie van hoe dit lyk nie.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Ek hou nie van die nuwe oortjies en uitleg nie.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ek hou nie van die nuwe wysigingsbalk nie.',
 	'optin-survey-answer-whyoptout-other' => 'Ander rede:',
 	'optin-survey-question-browser' => 'Watter webblaaier gebruik u?',
 	'optin-survey-answer-browser-other' => 'Ander webblaaier:',
 	'optin-survey-question-os' => 'Watter bedryfstelsel gebruik u?',
 	'optin-survey-answer-os-other' => 'Ander bedryfstelsel:',
+	'optin-survey-question-res' => 'Wat is die resolusie van u skerm?',
 	'optin-survey-answer-changes-other' => 'Ander:',
+	'optin-improvements' => '== Wat is verbeter? ==
+[[File:UsabilityNavigation.png|left|link=|Skermkiekie van die nuwe navigasiebalk]]
+;Verbeterde navigasie
+Die nuwe navigasiestelsel maak dit makliker om te sien waar u is en wat u tans doen, asook waar u heen kan gaan en hoe om daar uit te kom.
+Met het soekopsie in die regterbohoek is dit makliker om die soekfunksie te vind en vinniger om te gebruik.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|link=|Skermkiekie van die verbeterde wysigingsbalk]]
+;Verbeterde wysigingsbalk
+Nuwe en verbeterde prentjies maak dit duideliker wat elke hulpmiddel doen.
+Uitklapbare onderdele versteek minder gebruikte funksies, maar hou dit tog binne bereik.
+Die hulpfunksie bied vinnige toegang tot veelgebruikte funksies en die wikisintaks.
+<div style="clear:both;"></div>
+== Hoe om betrokke te raak ==
+Om meer oor die projek te wete te kom, of om betrokke te raak, kan u die [http://usability.wikimedia.org bruikbaarheidsinisiatief se wiki] besoek.
+Daar sal u inligting aantref oor skenkings, navorsing gedoen, die ontwerp en ontwikkeling en vrystellings.
+Vir vrae of terugkoppeling, kan u die [http://usability.wikimedia.org/wiki/Talk:Prototype beskrekingsblad van die prototipe] besoek.
+Om spesifieke punte aan die orde te stel, kan u die bybehorende besprekingsblaaie gebruik.
+As u sagtewarefoute aantref, meld dit aan op [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai se besprekingsblad] of gebruik [https://bugzilla.wikimedia.org Bugzilla].
+
+Baie dankie, ons sien daarna uit om u mening te hoor!',
 );
 
 /** Arabic (العربية)

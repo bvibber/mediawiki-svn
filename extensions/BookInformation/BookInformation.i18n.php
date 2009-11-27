@@ -1332,6 +1332,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1346,7 +1347,7 @@ $messages['pt'] = array(
 	'bookinfo-error-nodriver' => 'Não foi possível inicializar um Book Information Driver (Dispositivo de Informação de Livro) apropriado.',
 	'bookinfo-error-noresponse' => 'Sem resposta ou tempo de pedido expirado.',
 	'bookinfo-purchase' => 'Comprar este livro a $1',
-	'bookinfo-provider' => 'Provedor de dados: $1',
+	'bookinfo-provider' => 'Fornecedor de dados: $1',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

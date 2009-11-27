@@ -340,10 +340,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'opensearchxml-desc' => 'Interface [http://www.opensearch.org OpenSearch] XML que providencia extracções de texto',
+	'opensearchxml-desc' => 'Interface XML [http://www.opensearch.org OpenSearch] que fornece excertos de textos',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

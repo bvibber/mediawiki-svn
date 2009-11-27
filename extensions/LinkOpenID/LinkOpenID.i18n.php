@@ -424,12 +424,13 @@ Sòn sì at përmëtt ëd dovré toa pàgina utent com n'OpenID.",
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'linkopenid-desc' => 'Permite aos utilizadores associarem a sua conta a um OpenID externo',
 	'linkopenid-prefstext-pre' => 'Se possui um OpenID de um fornecedor externo, pode especificá-lo aqui.
-Isto permite-lhe usar a sua página de utilizador como um OpenID também.',
+Isto também lhe permite usar a sua página de utilizador como um OpenID.',
 	'linkopenid-prefstext-openid' => 'O seu OpenID:',
 	'linkopenid-prefstext-v1url' => 'URL do servidor para OpenID versão 1.1:',
 	'linkopenid-prefstext-v2url' => 'URL do servidor para OpenID versão 2:',

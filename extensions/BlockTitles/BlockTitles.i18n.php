@@ -564,7 +564,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'block_title_error_page_title' => 'Título Bloqueado',
-	'block_title_error-desc' => 'Providencia uma forma básica de prevenir que páginas com certos títulos sejam gravadas ou criadas',
+	'block_title_error-desc' => 'Fornece uma forma básica de impedir que páginas com certos títulos sejam gravadas ou criadas',
 	'block_title_error' => 'Desculpe, mas não pode gravar esta página porque não é permitido gravar este título.',
 );
 

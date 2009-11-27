@@ -9375,10 +9375,14 @@ $messages['pt'] = array(
 	'importtsv' => 'Wikidata: Importar TSV',
 	'ow_importtsv_title1' => 'Importar TSV',
 	'ow_importtsv_title2' => 'Importar definições e traduções',
-	'ow_importtsv_header' => "<p>Importe definições e traduções de uma ficheiro de texto delimitado por tab que poderá ter exportado do OpenOffice.org, Excel ou outro software de folha de cálculo.</p>
-<p>O formato do ficheiro deverá ser o mesmo que o dos ficheiros exportados na página [[Special:ExportTSV|ExportTSV]]. Se alterou os nomes das colunas, a importação falhará. Se alterou o id or a expressão definidora de qualquer significado definido, essa linha será ignorada. Se adicionou colunas, estas deverão estar como 'definitions_iso' ou 'translations_iso', onde iso é um código de língua ISO 639-3.</p>
-<p>Se a caixa 'Testar execução' estiver seleccionada, quaisquer acções que fossem executadas são reportadas, mas nenhuma modificação é efectivamente feita. Você é encorajado a fazer um teste de execução antes de uma importação efectiva.</p>",
-	'ow_importtsv_not_allowed' => 'Você não tem permissão para fazer uma importação de TSV.',
+	'ow_importtsv_header' => "<p>Importar definições e traduções de um ficheiro de texto, delimitado por tabulações, que tenha sido exportado do OpenOffice.org, Excel ou outra folha de cálculo.</p>
+<p>O formato do ficheiro deverá ser o mesmo que o dos ficheiros exportados na página [[Special:ExportTSV|ExportTSV]].
+Se alterou os nomes das colunas, a importação falhará.
+Se alterou o id or a expressão definidora de qualquer significado definido, essa linha será ignorada.
+Se adicionou colunas, estas deverão estar na forma 'definitions_iso' ou 'translations_iso', onde iso é um código de língua ISO 639-3.</p>
+<p>Se a caixa 'Testar execução' estiver marcada, quaisquer acções que seriam executadas numa importação são reportadas, mas nenhuma modificação é efectivamente feita.
+É encorajado a fazer um teste de execução antes de uma importação efectiva.</p>",
+	'ow_importtsv_not_allowed' => 'Não tem permissão para fazer uma importação de TSV.',
 	'ow_importtsv_importing' => 'A importar dados TSV',
 	'ow_importtsv_import_failed' => 'A importação falhou',
 	'ow_importtsv_file' => 'Ficheiro TSV:',
@@ -9391,14 +9395,14 @@ As colunas deverão ter o nome 'definition_iso' ou 'translations_iso',
 onde iso é o código da língua.</p>",
 	'ow_importtsv_test_run_title' => 'Teste de execução de importação de dados TSV',
 	'ow_importtsv_nothing_added' => 'Nada adicionado.',
-	'ow_importtsv_nothing_added_test' => 'Nada adicionado (você efectuou um teste de execução).',
+	'ow_importtsv_nothing_added_test' => 'Nada adicionado (efectuou um teste de execução).',
 	'ow_importtsv_results' => 'Adicionadas $1 {{PLURAL:$1|definição|definições}} e $2 {{PLURAL:$2|tradução|traduções}}.',
 	'ow_impexptsv_unknown_lang' => '<p>Língua desconhecida ou incorrecta: $1.<br />
 As línguas deverão ser códigos de língua ISO 639-3.</p>',
 	'exporttsv' => 'Wikidata: Exportar TSV',
 	'ow_exporttsv_title' => 'Exportar uma colecção para TSV',
-	'ow_exporttsv_header' => "<p>Exporte uma colecção para um formato de texto separado por tab que poderá importar no OpenOffice.org, Excel ou outro software de folha de cálculo.<br />
-Seleccione uma colecção a exportar. Na caixa de texto das línguas, introduza uma lista separada por vírgulas com códigos de língua ISO 639-3. Comece com as línguas a partir das quais irá traduzir (escolha tantas quantas queira) e termine com aquelas para as quais irá traduzir. Depois, clique em 'Criar' para criar o ficheiro.</p>",
+	'ow_exporttsv_header' => "<p>Exporte uma colecção para um formato de texto separado por tabulações que poderá importar no OpenOffice.org, Excel ou outro software de folha de cálculo.<br />
+Seleccione uma colecção a exportar. Na caixa de texto das línguas, introduza uma lista separada por vírgulas com códigos de língua ISO 639-3. Comece pelas línguas a partir das quais irá traduzir (escolha tantas quantas queira) e termine com aquelas para as quais irá traduzir. Depois, clique em 'Criar' para criar o ficheiro.</p>",
 	'ow_exporttsv_languages' => 'Línguas:',
 	'ow_exporttsv_not_allowed' => 'Você não tem permissões para fazer uma exportação para TSV.',
 	'ow_exporttsv_export_failed' => 'A exportação falhou',

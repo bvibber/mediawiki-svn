@@ -182,6 +182,7 @@ The comment will only appear after it is reviewed by a moderator.',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Juliano
  * @author Purodha
  * @author Siebrand
  * @author Umherirrender
@@ -192,7 +193,15 @@ $messages['qqq'] = array(
 	'right-wl-postcomment' => '{{doc-right|wl-postcomment}}',
 	'right-wl-moderation' => '{{doc-right|wl-moderation}}',
 	'wikilog-specialwikilog' => 'This is a special page name',
-	'wikilog-log-cmt-rejdel' => 'Afjelehnte wikilog Aanmärkung fom [[Special:Contributions/$1|$1]]',
+	'wikilog-log-cmt-approve' => 'Log action message used for entries describing comments approved by moderators, as in someone "did that". Similar to {{msg-mw|deletedarticle}} and {{msg-mw|protectedarticle}}.
+Parameters:
+* $1 is the page title of the approved comment.',
+	'wikilog-log-cmt-reject' => 'Log action message used for entries describing comments rejected by moderators, as in someone "did that". Similar to {{msg-mw|deletedarticle}} and {{msg-mw|protectedarticle}}.
+Parameters:
+* $1 is the page title of the rejected comment.',
+	'wikilog-log-cmt-rejdel' => 'Message explaining the reason for a comment page to be deleted, after that comment was rejected by a moderator.
+Parameters:
+* $1 is the commenter name (which is usually an IP address in this case).',
 	'wikilog-post-count-published' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
 	'wikilog-post-count-drafts' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
 	'wikilog-post-count-all' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
@@ -2105,7 +2114,7 @@ $messages['ksh'] = array(
 	'wikilog-log-pagetext' => 'Heh dronger kütt en Leß met dem {{int:Wikilog-wikilog}} sing Akßjuhne.',
 	'wikilog-log-cmt-approve' => 'hät di Aanmärkung [[$1]] zohjelohße',
 	'wikilog-log-cmt-reject' => 'hät di Aanmärkung [[$1]] affjelähnt',
-	'wikilog-log-cmt-rejdel' => 'Afjelehnte Aanmärkung em {{int:Wikilog-wikilog}} fum [[Special:Contributions/$1|$1]]',
+	'wikilog-log-cmt-rejdel' => 'Afjelehnte Aanmärkung em {{int:Wikilog-wikilog}} {{GENDER:$1|fum|fum|fum Metmaacher|fun dä|fum}} [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => '{{int:Wikilog-wikilog}}',
 	'wikilog-tab-title' => 'Em {{int:Wikilog-wikilog}} sing Akßjuhne',
 	'wikilog-information' => 'Infomazjuhne övver {{int:Wikilog-wikilog}}',
@@ -2500,6 +2509,7 @@ $messages['nn'] = array(
 	'wikilog-new-item-go' => 'Lag',
 	'wikilog-item-name' => 'Artikkelnamn:',
 	'wikilog-published' => 'Publisert',
+	'wikilog-updated' => 'Oppdatert',
 	'wikilog-draft' => 'Utkast',
 	'wikilog-authors' => 'Forfattarar',
 	'wikilog-title' => 'Tittel',
@@ -2937,6 +2947,7 @@ O comentário só aparecerá após ser revisto por um moderador.',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Hamilton Abreu
+ * @author Juliano
  */
 $messages['pt-br'] = array(
 	'wikilog-log-pagename' => 'Registro de ações wikilog',
@@ -2960,7 +2971,9 @@ $messages['pt-br'] = array(
 	'wikilog-too-many-tags' => 'Aviso: Rótulos demais listados nesta postagem wikilog.',
 	'wikilog-comment-is-empty' => 'O comentário postado está em branco.',
 	'wikilog-comment-too-long' => 'O comentário postado é muito longo.',
-	'wikilog-posting-anonymously' => 'Seu comentário será postado anonimamente. Você pode $1 para que seu comentário seja identificado.',
+	'wikilog-posting-anonymously' => 'Você não está autenticado neste momento;
+o seu comentário será postado anonimamente, identificado pelo endereço da sua conexão Internet.
+Você deve fornecer um pseudônimo acima para identificar o seu comentário ou $1 para este ser devidamente atribuído.',
 	'wikilog-anonymous-moderated' => 'Após submeter seu comentário, este não será imediatamente visível nesta página. O comentário somente aparecerá após ser revisado por um moderador.',
 	'wikilog-post-comment' => 'Postar um novo comentário',
 	'wikilog-post-reply' => 'Postar uma nova resposta',

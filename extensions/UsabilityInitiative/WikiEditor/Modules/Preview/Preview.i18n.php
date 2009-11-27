@@ -369,6 +369,15 @@ $messages['ru'] = array(
 	'wikieditor-preview-loading' => 'Загрузка…',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'wikieditor-preview-preference' => 'Инники көрүүнү сэргэстэһиннэрэ көрдөр',
+	'wikieditor-preview-tab' => 'Инники көрүү',
+	'wikieditor-preview-loading' => 'Хачайдана турар...',
+);
+
 /** Sinhala (සිංහල)
  * @author චතුනි අලහප්පෙරුම
  */

@@ -1134,18 +1134,27 @@ Donn drop wade, bes dä Vörjang fädesch es, dä jraad em Jang es.',
  */
 $messages['lb'] = array(
 	'taggedimages' => 'Markéiert Biller',
+	'imagetagging-addimagetag' => 'Markéierung op dëst Bild derbäisetzen',
 	'imagetagging-article' => 'Säit:',
+	'imagetagging-articletotag' => 'Säit fir ze markéieren',
 	'imagetagging-canteditothermessage' => "Dir kënnt dës Säit net änneren enteseder well Dir net déi néideg Rechter hutt oder well d'Säit aus anere Grënn gespaart ass.",
 	'imagetagging-imghistory' => 'Versiounen',
 	'imagetagging-images' => 'Biller',
 	'imagetagging-inthisimage' => 'Op dësem Bild: $1',
+	'imagetagging-new' => '<sup><span style="color:red">Nei!</span></sup>',
 	'imagetagging-removetag' => 'Tag ewechhuelen',
 	'imagetagging-tag-button' => 'Tag',
 	'imagetagging-tagcancel-button' => 'Zréck',
+	'imagetagging-tagging-instructions' => 'Klickt op Leit oder Saachen op dem Bild fir se ze markéieren.',
 	'imagetagging-addingtag' => 'Markéierung derbäisetzen',
+	'imagetagging-removingtag' => 'Markéierung ewechhuelen',
+	'imagetagging-addtagsuccess' => 'Markéierugn déi derbäigesat gouf',
+	'imagetagging-removetagsuccess' => 'Markéerung déi ewechgeholl gouf',
+	'imagetagging-oneuniquetagmessage' => 'Dëst Bild huet schonn eng Markéierung mat dësem Numm.',
 	'imagetagging-imagetag-seemoreimages' => 'Kuckt méi Biller vu(n) "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Biller vun "$1"',
 	'imagetagging-taggedimages-displaying' => 'Weis $1 - $2 vu(n) $3 Biller vu(n) "$4"',
+	'tag-logpagename' => 'Logbuch vun de Markéierungen (Tagging log)',
 );
 
 /** Limburgish (Limburgs)

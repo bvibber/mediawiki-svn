@@ -1119,6 +1119,7 @@ $messages['tr'] = array(
  * @author Рашат Якупов
  */
 $messages['tt-cyrl'] = array(
+	'adminlinks' => 'Идарәчеләр өчен сылтамалар',
 	'adminlinks_users' => 'Катнашучылар',
 	'adminlinks_createuser' => 'Катнашучы хисабын төзү',
 );

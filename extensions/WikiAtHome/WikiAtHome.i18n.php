@@ -1210,6 +1210,7 @@ $messages['ru'] = array(
  * @author Calcey
  */
 $messages['si'] = array(
+	'wah-desc' => 'වීඩියෝ පරාකේතනය කිරීමේ කාර්යය Firefogg භාවිතා කරන සේවාදායකයන්ට බෙදා හැරීමට හැකියාව ලබා දෙයි',
 	'wah-short-audio' => '$1 නාද ගොනුව, $2',
 	'wah-short-video' => '$1 වීඩියෝ ගොනුව, $2',
 	'wah-short-general' => '$1 මාධ්‍ය ගොනුව, $2',

@@ -1580,9 +1580,23 @@ $messages['ru'] = array(
  * @author Calcey
  */
 $messages['si'] = array(
+	'vote' => 'ඡන්දය දෙන්න',
+	'vote-desc' => 'ඡන්දය දීමේ සරල හැකියාවන් සපයා දෙයි',
+	'vote-header' => "ඔබට මෙහිදී '''Supreme Overlord of the World''' සඳහා ඡන්දය දිය හැක!",
+	'vote-current' => 'ඔබගේ දැනට ඡන්දය "\'$1"\' සඳහා වේ.',
+	'vote-legend' => 'ඡන්දය සංශෝධනය හෝ ස්ථානගත කරන්න',
+	'vote-caption' => 'ඔබේ තේරීම:',
 	'vote-submit' => 'ඡන්දය දෙන්න',
+	'vote-registered' => 'ඔබගේ ඡන්දය ලියාපදිංචි කරනු ලැබීය.',
+	'vote-view-results' => 'ප්‍රතිඵල පෙන්වන්න',
+	'vote-results' => 'ඡන්ද ප්‍රතිඵල',
 	'vote-results-choice' => 'තේරීම',
 	'vote-results-count' => 'ගණනය',
+	'vote-results-none' => 'මෙම අවස්ථාවේ කිසිම ඡන්දයක් ස්ථානගත කරනු නොලැබීය.',
+	'vote-login' => 'ඡන්දය දීමට ඔබ [$1 ප්‍රවිෂ්ට] විය යුතුය.',
+	'vote-invalid-choice' => 'ඔබ ලබා ගත හැකි විකල්පවලින් එකක් තෝරාගත යුතුය.',
+	'right-vote' => 'ඡන්දය දෙන්න',
+	'right-voteadmin' => 'ඡන්ද ප්‍රතිඵල බලන්න',
 );
 
 /** Slovak (Slovenčina)

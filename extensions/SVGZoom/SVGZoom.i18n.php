@@ -65,6 +65,13 @@ $messages['hsb'] = array(
 	'svgzoom-desc' => 'Přidawa MediaWiki wotbočenske a skalowanske kmanosće za zwobraznjenje SVG-datajow',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'svgzoom-desc' => 'Úsztatási és nagyítási képességek a MediaWiki-hez SVG fájlok megnézésekor',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

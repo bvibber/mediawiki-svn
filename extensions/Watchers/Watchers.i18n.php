@@ -792,6 +792,20 @@ $messages['ru'] = array(
 	'watchers_less_than_x' => 'За этой страницей {{PLURAL:$1|наблюдает|наблюдают}} менее $1 {{PLURAL:$1|участника|участников|участников}}.',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'watchers' => 'මුරකරුවන්',
+	'watchers-desc' => '[[Special:Watchers|ඔවුන්ගේ මුර ලඅයිස්තුවේ පිටුවක් ඇති පරිශීලකයින්]] පෙන්වයි',
+	'watchers_link_title' => 'මෙම පිටුව මුර කරන්නේ කවුද?',
+	'watchers_error_article' => '"දෝෂය:" පිටුව නොපවතී.',
+	'watchers_header' => '"$1" මුර කරන {{PLURAL:$2|පරිශිලකයා|පරිශීලකයින්}}',
+	'watchers_noone_watches' => 'මෙම පිටුව කිසිවෙකු විසින් මුර කරනු ලබන්නේ නැත.',
+	'watchers_x_or_more' => '$1 හෝ {{PLURAL:$1|පරිශීලකයින|පරිශීලකයින්}}ගේ මුර ලැයිස්තුවේ මෙම පිටුව ඇත.',
+	'watchers_less_than_x' => '{{PLURAL:$1|පරිශීලකයින්|පරිශීලකයින්}} $1ට වඩා අඩුවෙන් මෙම පිටුව තමන්ගේ මුර ලැයිස්තුවේ ඇත.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

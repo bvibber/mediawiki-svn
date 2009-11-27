@@ -66,6 +66,23 @@ $messages['ar'] = array(
 	'externalpages-bad-url-data' => 'فشل في استرجاع محتويات الصفحة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'externalpages' => 'Вонкавыя старонкі',
+	'externalpages-bad-year' => 'Пазначаны няслушны год',
+	'externalpages-bad-language' => 'Пазначаная няслушная мова',
+	'externalpages-bad-project' => 'Пазначаны няслушны праект',
+	'externalpages-no-project' => 'Праект не пазначаны',
+	'externalpages-bad-page' => 'Пазначана няслушная старонка',
+	'externalpages-no-page' => 'Старонка не пазначаная',
+	'externalpages-error-generic' => 'Узьнікла памылка',
+	'externalpages-bad-url' => 'Не атрымалася атрымаць URL',
+	'externalpages-bad-url-data' => 'Не атрымалася атрымаць зьмест старонкі',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */

@@ -1952,6 +1952,15 @@ $messages['ka'] = array(
 	'voctrain_Translation' => 'თარგმანი',
 );
 
+/** Kirmanjki (Kırmancki)
+ * @author Mirzali
+ */
+$messages['kiu'] = array(
+	'voctrain_Questions' => 'Perşi',
+	'voctrain_Answer' => 'Cüab',
+	'voctrain_Language' => 'Zon',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith

@@ -1480,6 +1480,14 @@ $messages['ru'] = array(
 	'right-patroller' => 'Патрулирование страниц',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'group-patroller' => 'Ботурууллар',
+	'group-patroller-member' => 'ботуруул',
+);
+
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
  * @author OC Ripper
  */

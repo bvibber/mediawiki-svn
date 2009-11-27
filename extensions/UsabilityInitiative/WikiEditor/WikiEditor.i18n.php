@@ -90,11 +90,13 @@ $messages['de'] = array(
 );
 
 /** Zazaki (Zazaki)
+ * @author Mirzali
  * @author Xoser
  */
 $messages['diq'] = array(
 	'wikieditor' => 'Interfaceye wikitext ke raver siyayo',
 	'wikieditor-desc' => 'Yew pedê nuştişiyê girdi u moduleyanê binan dano',
+	'wikieditor-wikitext-tab' => 'Wikimeqale',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -152,10 +154,12 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'wikieditor' => 'Fejlett szerkesztőfelület wikiszöveghez',
 	'wikieditor-desc' => 'Bővíthető szerkesztőfelület wikiszöveghez és több, új funkciókat kínáló modul',
+	'wikieditor-wikitext-tab' => 'Wikiszöveg',
 );
 
 /** Interlingua (Interlingua)
@@ -191,6 +195,7 @@ $messages['ja'] = array(
 $messages['ksh'] = array(
 	'wikieditor' => 'Fottjeschredde Eddiror för de WikiTäx',
 	'wikieditor-desc' => 'Brängk en Müjjeleschkeit för Wikitäx enzejävve un ze ändere en et Wiki, di mer ußboue kann, un noch allerhand Kröhmsches met dobei hät.',
+	'wikieditor-wikitext-tab' => 'Wikitäx',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -226,6 +231,7 @@ $messages['ml'] = array(
 $messages['nl'] = array(
 	'wikieditor' => 'Uitgebreide tekstverwerker voor wikitekst',
 	'wikieditor-desc' => 'Voegt een uitbreidbare tekstverwerker voor wikitekst toe en modules met extra mogelijkheden',
+	'wikieditor-wikitext-tab' => 'Wikitekst',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -287,6 +293,14 @@ $messages['ru'] = array(
 	'wikieditor-wikitext-tab' => 'Викитекст',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'wikieditor' => 'Биики тиэкиһи эрэдээксийэлиир кэҥэтиллибит интерфейс',
+	'wikieditor-wikitext-tab' => 'Биики тиэкис',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -317,6 +331,7 @@ $messages['uk'] = array(
 $messages['vec'] = array(
 	'wikieditor' => 'Interfacia avansada de modifica testo wiki',
 	'wikieditor-desc' => 'Fornisse na interfacia avansada de modifica testo wiki e vari moduli funsionali',
+	'wikieditor-wikitext-tab' => 'Testo wiki',
 );
 
 /** Vietnamese (Tiếng Việt)

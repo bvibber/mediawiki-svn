@@ -198,10 +198,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Waldir
  */
 $messages['pt'] = array(
-	'nsfilerepo-desc' => 'Fornecer funcionalidades para ficheiros carregados, baseadas no domínio',
+	'nsfilerepo-desc' => 'Fornecer, aos ficheiros carregados, características de acesso associadas aos espaços nominais protegidos',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

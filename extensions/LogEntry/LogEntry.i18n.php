@@ -442,12 +442,13 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'logentry-append' => 'Acrescentar',
-	'logentry-parserhook-desc' => 'Esta extensão de marca fornece uma forma de acrescentar ao início/fim de páginas de registo',
-	'logentry-specialpage-desc' => 'Esta extensão de marca fornece processamento para acrescentar a páginas de registo',
+	'logentry-parserhook-desc' => 'Esta extensão de elementos HTML fornece um formulário para acrescentar dados no topo ou fundo das páginas dos registos',
+	'logentry-specialpage-desc' => 'Esta extensão de elementos HTML fornece um processo para acrescentar dados no fundo das páginas dos registos',
 	'logentry' => 'Entrada de Registo',
 	'logentry-invalidpage' => 'Página inválida',
 	'logentry-invalidtoken' => 'Token inválido',

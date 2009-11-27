@@ -379,10 +379,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'oai-desc' => 'Providencia interface de repositório [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oai-desc' => 'Fornece uma interface para o repositório [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

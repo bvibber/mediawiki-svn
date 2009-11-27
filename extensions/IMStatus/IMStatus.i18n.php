@@ -1159,6 +1159,7 @@ L\'identificativ ch\'it deve dé a son ij nùmer e le litre an tra "$2" e "$3".'
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1183,8 +1184,8 @@ $messages['pt'] = array(
 	'imstatus_icq_id' => 'o seu ID do ICQ',
 	'imstatus_icq_style' => 'um número entre 0 e 26 (sim, existem 27 estilos disponíveis...).',
 	'imstatus_live_code' => 'o seu ID do sítio Live Messenger',
-	'imstatus_live_get_code' => 'o seu ID do sítio Live Messenger: <strong>não é o seu endereço de e-mail</strong>, precisará de gerar um nas <a href="$1">opções do seu Live Messenger</a>.
-O ID que você precisa de fornecer consiste em números e letras entre "$2" e "$3".',
+	'imstatus_live_get_code' => 'o seu ID do Live Messenger: <strong>não é o seu endereço de correio electrónico</strong>, tem de gerar um ID nas <a href="$1">opções do Live Messenger</a>.
+O ID que precisa de fornecer são os números e letras entre "$2" e "$3".',
 	'imstatus_skype_nbstyle' => 'Nota: Se escolher um estilo que seja também uma acção, a sua escolha de acção será suplantada pela acção que corresponda ao seu estilo escolhido.',
 	'imstatus_xfire_size' => 'o tamanho do botão, de $1 (maior) a $2 (menor).',
 	'imstatus_yahoo_style' => 'o estilo do botão, de $1 (menor) a $2 (maior), $3 e $4 são para correio de voz.',

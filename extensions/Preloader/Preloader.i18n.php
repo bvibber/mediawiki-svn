@@ -268,10 +268,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Waldir
  */
 $messages['pt'] = array(
-	'preloader-desc' => 'Fornece textos-modelo para novas páginas, persnonalizáveis por domínio',
+	'preloader-desc' => 'Fornece textos-modelo para novas páginas, personalizáveis por espaço nominal',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

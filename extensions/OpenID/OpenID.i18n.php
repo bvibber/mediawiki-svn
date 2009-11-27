@@ -3771,7 +3771,7 @@ Não poderá voltar a autenticar-se com este OpenID.',
 	'openid-provider-label-openid' => 'Introduza a sua URL OpenID',
 	'openid-provider-label-google' => 'Entrar usando a sua conta do Google',
 	'openid-provider-label-yahoo' => 'Entrar usando a sua conta do Yahoo',
-	'openid-provider-label-aol' => 'Digite seu nome de utilizador AOL',
+	'openid-provider-label-aol' => 'Introduza o seu nome de utilizador AOL',
 	'openid-provider-label-other-username' => 'Introduza o seu nome de utilizador $1',
 );
 

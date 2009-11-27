@@ -134,6 +134,10 @@ $messages['qqq'] = array(
 * $2 is the name of the user this message refers to (optional - use for GENDER)',
 	'qp_user_missing_polls_link' => 'Parameters:
 * $1 is the name of the user this message refers to (optional - use for GENDER)',
+	'qp_results_line_qupl' => 'Parameters:
+* $1 is a link to the page page name the poll is on with the page title as link label
+* $2 is the poll name in plain text
+* $3 is a link to the poll statistics with link label {{msg-mw|qp_stats_link}}',
 	'qp_results_line_qpl' => 'Parameters:
 * $1 is a link to the page page name the poll is on with the page title as link label
 * $2 is the poll name in plain text
@@ -265,6 +269,16 @@ $messages['be-tarask'] = array(
 Неабходна выдаліць атрыбут залежнасьці ці аднавіць [[$2]]',
 	'qp_error_missed_dependance_poll' => 'Апытаньне (id=$1) залежыць ад іншага апытаньня (id=$3) на старонцы $2, але гэта апытаньне не існуе ці яшчэ не было захаванае.
 Неабходна выдаліць атрыбут залежнасьці альбо стварыць апытаньне з ідэнтыфікатарам id=$3 на старонцы $2 і яго захаваць. Каб захаваць апытаньне можна націснуць кнопку «Прагаласаваць», не адказваючы на пытаньні.',
+	'qp_error_vote_dependance_poll' => 'Калі ласка, спачатку прыміце ўдзел у апытаньні $1.',
+	'qp_error_too_many_spans' => 'Вызначана зашмат клясаў катэгорыяў для падкатэгорыяў',
+	'qp_error_unanswered_span' => 'Падкатэгорыя без адказу',
+	'qp_error_non_unique_choice' => 'Гэта пытаньне патрабуе, каб варыянт адказу не выкарыстоўваўся раней',
+	'qp_error_category_name_empty' => 'Пустая назва катэгорыі',
+	'qp_error_proposal_text_empty' => 'Прапанаваны тэкст — пусты',
+	'qp_error_too_few_categories' => 'Павінны быць вызначаныя хаця б дзьве катэгорыі',
+	'qp_error_too_few_spans' => 'Кожная кляса катэгорыі патрабуе хаця б два варыянты адказу',
+	'qp_error_no_answer' => 'Няма адказу на пытаньне',
+	'qp_error_unique' => 'Пытаньне тыпу unique() мае больш адказаў чым гэта магчыма: немагчыма скончыць',
 );
 
 /** Breton (Brezhoneg)
@@ -943,6 +957,7 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author McDutchie
+ * @author Purodha
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -968,10 +983,7 @@ $messages['nl'] = array(
 	'qp_not_participated_link' => 'Niet deelgenomen',
 	'qp_order_by_username' => 'Sorteren op gebruikersnaam',
 	'qp_order_by_polls_count' => 'Sorteren op peilingenaantal',
-	'qp_results_line_qupl' => 'Parameters:
-* $1 is a link to the page page name the poll is on with the page title as link label
-* $2 is the poll name in plain text
-* $3 is a link to the poll statistics with link label {{msg-mw|qp_stats_link}}',
+	'qp_results_line_qupl' => 'Pagina "$1", peiling "$2": $3',
 	'qp_results_line_qpl' => 'Pagina "$1", peiling "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ pagina "$2", peiling "$3" ]',
 	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
@@ -1088,6 +1100,21 @@ Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
 	'qp_error_too_few_spans' => 'Cada classe de categorias requer pelo menos duas respostas possíveis definidas',
 	'qp_error_no_answer' => 'Proposta sem resposta',
 	'qp_error_unique' => 'Pergunta do tipo unique() tem mais propostas definidas do que respostas possíveis: impossível de completar',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Heldergeovane
+ */
+$messages['pt-br'] = array(
+	'pollresults' => "Resultados de enquetes neste ''site''",
+	'qp_desc' => 'Habilita a criação de enquetes',
+	'qp_desc-sp' => '[[Special:PollResults|Página especial]] para visulizar os resultados das enquetes',
+	'qp_result_NA' => 'Não respondido',
+	'qp_result_error' => 'Erro de sintaxe',
+	'qp_vote_button' => 'Votar',
+	'qp_vote_again_button' => 'Alterar o seu voto',
+	'qp_polls_list' => 'Listar todas as enquetes',
+	'qp_users_list' => 'Listar todos os usuários',
 );
 
 /** Tarandíne (Tarandíne)

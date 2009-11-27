@@ -617,6 +617,14 @@ Bitte haben Sie Geduld.',
 	'youtubeauthsub_jserror_nodesc' => 'Bitte geben Sie eine Beschreibung für das Video an.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'youtubeauthsub_category' => 'Kategoriye',
+	'youtubeauthsub_uploadbutton' => 'Bar ke',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -1492,6 +1500,14 @@ YouTube-ს შესაძლოა გარკვეული დრო დ�
 	'youtubeauthsub_jserror_nokeywords' => 'გთხოვთ მიუთითოთ 1 ან მეტი საძიებო სიტყვა.',
 	'youtubeauthsub_jserror_notitle' => 'გთხოვთ მიუთითოთ ვიდეოს სათაური.',
 	'youtubeauthsub_jserror_nodesc' => 'გთხოვთ მიუთითოთ ვიდეოს აღწერა.',
+);
+
+/** Kirmanjki (Kırmancki)
+ * @author Mirzali
+ */
+$messages['kiu'] = array(
+	'youtubeauthsub_category' => 'Kategoriye',
+	'youtubeauthsub_uploadbutton' => 'Bar ke',
 );
 
 /** Khmer (ភាសាខ្មែរ)
