@@ -594,7 +594,10 @@ class WikilogCommentsPage
 			$log->addEntry( 'c-approv', $title, '' );
 			$wgOut->redirect( $this->mTalkTitle->getFullUrl() );
 		} else if ( $approval == 'reject' ) {
-			$reason = wfMsgForContent( 'wikilog-log-cmt-rejdel', $comment->mUserText );
+			$reason = wfMsgExt( 'wikilog-log-cmt-rejdel',
+				array( 'content', 'parsemag' ),
+				$comment->mUserText
+			);
 			$id = $title->getArticleID( GAID_FOR_UPDATE );
 			if ( $this->doDeleteArticle( $reason, false, $id ) ) {
 				$comment->deleteComment();

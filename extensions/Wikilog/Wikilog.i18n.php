@@ -24,8 +24,8 @@ $messages['en'] = array(
 	# Logs
 	'wikilog-log-pagename' => 'Wikilog actions log',
 	'wikilog-log-pagetext' => 'Below is a list of wikilog actions.',
-	'wikilog-log-cmt-approve' => 'approved comment [[$1]]',
-	'wikilog-log-cmt-reject' => 'rejected comment [[$1]]',
+	'wikilog-log-cmt-approve' => 'approved comment "[[$1]]"',
+	'wikilog-log-cmt-reject' => 'rejected comment "[[$1]]"',
 	'wikilog-log-cmt-rejdel' => 'Rejected wikilog comment from [[Special:Contributions/$1|$1]]',
 
 	# Wikilog tab
