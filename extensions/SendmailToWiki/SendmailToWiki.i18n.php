@@ -6,7 +6,7 @@ $messages = array();
  */
 $messages['en'] = array( 
 	'sendmailtowiki' => 'SendmailToWiki',
-	'sendmailtowiki-desc' => 'Post wiki content trough dedicated dynamic e-mail address.',
+	'sendmailtowiki-desc' => 'Post wiki content trough dedicated dynamic e-mail address',
 	'prefs-sendmailtowiki' => 'Posting content with e-mail',
 	'sendmailtowiki-inemail' => 'Dedicated e-mail:',
 	'sendmailtowiki-inpin' => 'PIN:',
