@@ -199,6 +199,7 @@ $messages['de'] = array(
  * @author Xoser
  */
 $messages['diq'] = array(
+	'wikieditor-publish-preference' => 'Game be game çap kerdişi a bike',
 	'wikieditor-publish-button-publish' => 'Çap ke',
 	'wikieditor-publish-button-cancel' => 'Iptal bike',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} rê çap ke',
@@ -408,6 +409,7 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'wikieditor-publish-preference' => 'Et Schrett för Schrett öffentlesch Maache zohlohße',
 	'wikieditor-publish-button-publish' => 'Öffentlesch maache!',
 	'wikieditor-publish-button-cancel' => '{{int:cancel}}',
 	'wikieditor-publish-dialog-title' => 'En dä {{SITENAME}} öffentlesch maache',
@@ -467,6 +469,7 @@ $messages['ml'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'wikieditor-publish-preference' => 'Stap voor stap publiceren inschakelen',
 	'wikieditor-publish-button-publish' => 'Publiceren',
 	'wikieditor-publish-button-cancel' => 'Annuleren',
 	'wikieditor-publish-dialog-title' => 'Publiceren naar {{SITENAME}}',
@@ -576,8 +579,15 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'wikieditor-publish-preference' => 'Биирдии хаамыынан бэчээккэ таһаарыыны холбоо',
 	'wikieditor-publish-button-publish' => 'Бэчээккэ таһаарарга',
 	'wikieditor-publish-button-cancel' => 'Төнүн',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}} бырайыакка бэчээттэммит',
+	'wikieditor-publish-dialog-summary' => 'Уларытыы туһунан (тугу уларыппыккын кылгастык кэпсээ):',
+	'wikieditor-publish-dialog-minor' => 'Кыра суолталаах уларытыы',
+	'wikieditor-publish-dialog-watch' => 'Бу сирэйи кэтииргэ',
+	'wikieditor-publish-dialog-publish' => 'Бэчээттииргэ',
+	'wikieditor-publish-dialog-goback' => 'Төнүн',
 );
 
 /** Sinhala (සිංහල)
@@ -662,6 +672,7 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'wikieditor-publish-preference' => 'Intaca la publicassion un toco a la olta',
 	'wikieditor-publish-button-publish' => 'Pùblica',
 	'wikieditor-publish-button-cancel' => 'Anula',
 	'wikieditor-publish-dialog-title' => 'Pùblica su {{SITENAME}}',

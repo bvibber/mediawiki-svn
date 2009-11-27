@@ -356,6 +356,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'wikieditor-toc-show' => 'Иһинээҕитэ',
+	'wikieditor-toc-hide' => 'Иһинээҕитин кистээ',
 );
 
 /** Sinhala (සිංහල)

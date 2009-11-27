@@ -218,6 +218,13 @@ $messages['ru'] = array(
 	'wikieditor-highlight-preference' => 'Включить подсветку синтаксиса при редактировании',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'wikieditor-highlight-preference' => 'Эрэдээксийэлииргэ синтаксииһын сырдатыыны холбоо',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
