@@ -63,6 +63,14 @@ $messages['cs'] = array(
 	'vector-desc' => 'Vylepšuje prvky uživatelského rozhraní vzhledu Vektor.',
 );
 
+/** German (Deutsch)
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'vector' => 'Benutzeroberflächenverbesserungen für den Vektor-Skin',
+	'vector-desc' => 'Verbesserungen an den Benutzeroberflächenelementen des Vektor-Skins.',
+);
+
 /** Zazaki (Zazaki)
  * @author Xoser
  */
@@ -261,6 +269,7 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'vector' => 'Mejoramenti de interfacia utente (UI) par el Vector.',
+	'vector-desc' => "Mejora l'interfacia utente del tema Vector.",
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -301,6 +301,13 @@ $messages['hu'] = array(
 	'vector-simplesearch-containing' => 'tartalmazza…',
 );
 
+/** Armenian (Հայերեն)
+ * @author Xelgen
+ */
+$messages['hy'] = array(
+	'vector-simplesearch-search' => 'Որոնել',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

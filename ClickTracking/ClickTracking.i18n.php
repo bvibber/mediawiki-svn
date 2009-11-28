@@ -60,6 +60,13 @@ $messages['qqq'] = array(
 	'ct-and' => '{{Identical|And}}',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'ct-and' => 'do',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

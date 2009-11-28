@@ -57,6 +57,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'wikieditor' => 'Etrefas kemmañ wikitestenn klokaet',
 	'wikieditor-desc' => "Poruchas a ra un etrefas kemmañ wikitestenn astennidik ha meur a arc'hwel all.",
+	'wikieditor-wikitext-tab' => 'Wikitestenn',
 );
 
 /** Bosnian (Bosanski)
@@ -84,9 +85,11 @@ $messages['cy'] = array(
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Metalhead64
  */
 $messages['de'] = array(
 	'wikieditor' => 'Fortgeschrittener Wikitext-Editor',
+	'wikieditor-wikitext-tab' => 'Wikitext',
 );
 
 /** Zazaki (Zazaki)
@@ -310,11 +313,13 @@ $messages['sv'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'wikieditor' => 'Gelişmiş viki metni düzenleme arayüzü',
 	'wikieditor-desc' => 'Genişletilebilir bir viki metni düzenleme arayüzü ve birçok özellik sağlayan modüller sağlar',
+	'wikieditor-wikitext-tab' => 'Vikimetin',
 );
 
 /** Ukrainian (Українська)
