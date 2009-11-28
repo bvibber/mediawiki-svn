@@ -1,5 +1,5 @@
 <?php
-class SendmailToWiki extends SpecialPage {
+class SendmailToWiki extends UnlistedSpecialPage {
 
 	function __construct() {
 		parent::__construct( 'SendmailToWiki' );
