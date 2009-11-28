@@ -69,16 +69,17 @@ $messages['en'] = array(
 	'wikilog-no-comments' => 'no comments',
 	'wikilog-has-comments' => '{{PLURAL:$1|one comment|$1 comments}}',
 
-	# Wikilog item header and footer
-	# $1 = Wikilog URL, $2 = Wikilog Name, $3 = Item URL, $4 = Item Title
-	# $5 = Authors, $6 = Publish date, $7 = Comments link
-	'wikilog-item-brief-header' => ': <i><small>by $5, from [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-brief-footer' => '',
-	'wikilog-item-more' => '[[$3|→ continue reading...]]',
-	'wikilog-item-sub' => '',
-	'wikilog-item-header' => '',
-	'wikilog-item-footer' => ': <i>&mdash; $5 &#8226; $6 &#8226; $7</i>',
-
+	# Wikilog article header and footer
+	'wikilog-summary-header' => '',
+	'wikilog-summary-footer' => 'Posted by $7 to [[$1|$2]] on $8 at $9, $10.',
+	'wikilog-summary-header-single' => '',
+	'wikilog-summary-footer-single' => 'Posted by $7 on $8 at $9, $10.',
+	'wikilog-summary-uncategorized' => 'Uncategorized',
+	'wikilog-summary-categories' => 'Filled in $2',
+	'wikilog-summary-more' => '[[$3|→ continue reading...]]',
+	'wikilog-entry-sub' => '',
+	'wikilog-entry-header' => '',
+	'wikilog-entry-footer' => '— $7 • $9, $8 • $10',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|talk]])',
 
 	# Edit page
@@ -159,11 +160,11 @@ The comment will only appear after it is reviewed by a moderator.',
 	'wikilog-preview' => 'Preview',	# verb
 	'wikilog-edit-lc' => 'edit',		# verb
 	'wikilog-reply-lc' => 'reply',		# verb
-	'wikilog-delete-lc' => 'delete',	# verb
-	'wikilog-approve-lc' => 'approve',	# verb
-	'wikilog-reject-lc' => 'reject',	# verb
+	'wikilog-delete-lc' => 'delete',
+	'wikilog-approve-lc' => 'approve',
+	'wikilog-reject-lc' => 'reject',
 	'wikilog-page-lc' => 'page',		# noun
-	'wikilog-history-lc' => 'history',	# noun
+	'wikilog-history-lc' => 'history',
 
 	# Other
 	'wikilog-doc-import-comment' => "Imported Wikilog documentation",
@@ -175,7 +176,7 @@ The comment will only appear after it is reviewed by a moderator.',
 	'wikilog-navigation-bar' => '<div class="$6 visualClear">
 <div style="float:left">$1 • $2</div>
 <div style="float:right">$3 • $4</div>
-<div style="text-align:center">$5</div>
+&nbsp;
 </div>',
 );
 
@@ -201,7 +202,7 @@ Parameters:
 * $1 is the page title of the rejected comment.',
 	'wikilog-log-cmt-rejdel' => 'Message explaining the reason for a comment page to be deleted, after that comment was rejected by a moderator.
 Parameters:
-* $1 is the commenter name (which is usually an IP address in this case).',
+* $1 is the commenter name (which is usually an IP address in this case, genderless).',
 	'wikilog-post-count-published' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
 	'wikilog-post-count-drafts' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
 	'wikilog-post-count-all' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
@@ -218,29 +219,56 @@ Parameters:
 	'wikilog-draft-title-mark' => '{{Identical|Draft}}',
 	'wikilog-anonymous-mark' => '{{Identical|Anonymous}}',
 	'wikilog-pager-newer-n' => 'Parameters:
-* $1 is a number of items. You can use PLURAL if you need.',
+* $1 is a number of items in the linked page. You can use PLURAL if you need.',
 	'wikilog-pager-older-n' => 'Parameters:
-* $1 is a number of items. You can use PLURAL if you need.',
+* $1 is a number of items in the linked page. You can use PLURAL if you need.',
 	'wikilog-pager-prev' => '{{Identical|Previous}}',
 	'wikilog-pager-next' => '{{Identical|Next}}',
 	'wikilog-pager-last' => '{{Identical|Last}}',
 	'wikilog-has-comments' => 'Parameters:
 * $1 is the number of comments',
-	'wikilog-item-brief-header' => 'Parameters:
-* $1 = Wikilog URL
-* $2 = Wikilog Name
-* $5 = Authors,
-* $6 = Publication date,
-* $7 = Comments link',
-	'wikilog-item-more' => "Parameters:
-* $1 is a URL formatted link to the parent (optional)
-* $2 is the item's parent name (optional)
-* $3 is a URL formatted link to the item
-* $4 is the item's name (optional)",
+	'wikilog-summary-header' => "Parameters:
+* $1 is a URL formatted link to the article's parent wikilog
+* $2 is the article's parent wikilog name
+* $3 is a URL formatted link to the article (optional)
+* $4 is the article title (optional)
+* $5 is the number of authors listed in $7, for PLURAL if necessary
+* $6 is the clean name of the first author, for GENDER if necessary (avoid it if possible since $7 is a list)
+* $7 is a list of authors of the article, each name formated with {{msg-mw|wikilog-author-signature}}
+* $8 is the publication date
+* $9 is the publication time
+* $10 is a link to the comments page, with either {{msg-mw|wikilog-no-comments}} or {{msg-mw|wikilog-has-comments}} as link text",
+	'wikilog-summary-footer' => "Parameters:
+* $1 is a URL formatted link to the article's parent wikilog
+* $2 is the article's parent wikilog name
+* $3 is a URL formatted link to the article (optional)
+* $4 is the article title (optional)
+* $5 is the number of authors listed in $7, for PLURAL if necessary
+* $6 is the clean name of the first author, for GENDER if necessary (avoid it if possible since $7 is a list)
+* $7 is a list of authors of the article, each name formated with {{msg-mw|wikilog-author-signature}}
+* $8 is the publication date
+* $9 is the publication time
+* $10 is a link to the comments page, with either {{msg-mw|wikilog-no-comments}} or {{msg-mw|wikilog-has-comments}} as link text",
+	'wikilog-summary-header-single' => "Identical to {{msg-mw|wikilog-summary-header}}, but used when listing articles from a single wikilog, so it is not necessary to say where it was posted to.",
+	'wikilog-summary-footer-single' => "Identical to {{msg-mw|wikilog-summary-footer}}, but used when listing articles from a single wikilog, so it is not necessary to say where it was posted to.",
+	'wikilog-summary-categories' => 'Parameters:
+* $1 is the number of categories listed in $2
+* $2 is a list of the categories the article is in',
+	'wikilog-summary-more' => "Parameters:
+* $1 is a URL formatted link to the article's parent wikilog (optional)
+* $2 is the article's parent wikilog name (optional)
+* $3 is a URL formatted link to the article
+* $4 is the article title (optional)",
+	'wikilog-entry-header' => "Has the same parameters of {{msg-mw|wikilog-summary-header}}.",
+	'wikilog-entry-footer' => "Has the same parameters of {{msg-mw|wikilog-summary-footer}}.",
 	'wikilog-comment-by-user' => 'Parameters:
 * $1 is a link to the commenting user page
 * $2 is a link to the commenting user talk page
 * $3 is the plain text user name of the commenting user for use with GENDER (optional)',
+    'wikilog-comment-by-anon' => 'Parameters:
+* $1 is a link to the commenting user page (unused, it is an IP address)
+* $2 is a link to the commenting user talk page (unused)
+* $3 is the pseudonym used by the anonymous commenter (genderless)',
 	'wikilog-comment-edited' => 'Parameters:
 * $1 is a timestamp
 * $2 is a history link
@@ -283,21 +311,30 @@ Parameters:
 	'wikilog-form-preview' => '{{Identical|Preview}}',
 	'wikilog-form-comment' => '{{Identical|Comment}}',
 	'wikilog-show-drafts' => '{{Identical|Draft}}',
+	'wikilog-form-preview' => 'Form field label. The word "Preview" used as a noun, as in "the preview of the changes".',
 	'wikilog-submit' => '{{Identical|Submit}}',
-	'wikilog-preview' => 'This word is a verb
+	'wikilog-preview' => 'The word "Preview" used as a verb, as in "to preview the page".
 {{Identical|Preview}}',
-	'wikilog-edit-lc' => 'This word is a verb
+	'wikilog-edit-lc' => 'The word "edit" used as a verb, as in "to edit a comment".
+Part of a list of actions, use lowercase if applicable.
 {{Identical|Edit}}',
-	'wikilog-reply-lc' => 'This word is a verb.
+	'wikilog-reply-lc' => 'The word "reply" used as a verb, as in "to reply to a comment".
+Part of a list of actions, use lowercase if applicable.
 {{Identical|Reply}}',
-	'wikilog-delete-lc' => 'This word is a verb
+	'wikilog-delete-lc' => 'As in "to delete a comment".
+Part of a list of actions, use lowercase if applicable.
 {{Identical|Delete}}',
-	'wikilog-approve-lc' => 'This word is a verb',
-	'wikilog-reject-lc' => 'This word is a verb',
-	'wikilog-page-lc' => '"Page" is a noun.
+	'wikilog-approve-lc' => 'As in "to approve a comment".
+Part of a list of actions, use lowercase if applicable.',
+	'wikilog-reject-lc' => 'As in "to reject a comment".
+Part of a list of actions, use lowercase if applicable.',
+	'wikilog-page-lc' => 'The word "page" used as noun, as in "the comment page".
+Part of a list of actions, use lowercase if applicable.
 {{Identical|Page}}',
-	'wikilog-history-lc' => 'Noun
+	'wikilog-history-lc' => 'Noun.
+Part of a list of actions, use lowercase if applicable.
 {{Identical|History}}',
+	'wikilog-doc-import-comment' => 'This is an automatic edit summary for pages imported into the wiki.'
 );
 
 /** Afrikaans (Afrikaans)
@@ -324,7 +361,7 @@ $messages['af'] = array(
 	'wikilog-pager-empty' => '(geen items)',
 	'wikilog-no-comments' => 'geen kommentaar',
 	'wikilog-has-comments' => '{{PLURAL:$1|een opmerking|$1 opmerkings}}',
-	'wikilog-item-more' => '[[$3|→ lees verder...]]',
+	'wikilog-summary-more' => '[[$3|→ lees verder...]]',
 	'wikilog-comment-by-user' => 'Kommentaar deur $1 ($2)',
 	'wikilog-comment-by-anon' => 'Kommentaar deur $3 (anoniem)',
 	'wikilog-comment-edit' => 'Wysig die kommentaar',
@@ -417,8 +454,7 @@ $messages['be-tarask'] = array(
 	'wikilog-pager-empty' => '(няма элемэнтаў)',
 	'wikilog-no-comments' => 'няма камэнтараў',
 	'wikilog-has-comments' => '$1 {{PLURAL:$1|камэнтар|камэнтары|камэнтараў}}',
-	'wikilog-item-brief-header' => ': <i><small> $5, з [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ працягваць чытаньне…]]',
+	'wikilog-summary-more' => '[[$3|→ працягваць чытаньне…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|гутаркі]])',
 	'wikilog-edit-fieldset-legend' => 'Устаноўкі вікіблёгу:',
 	'wikilog-edit-signpub' => 'Падпісаць і апублікаваць гэты артыкул',
@@ -594,7 +630,7 @@ $messages['br'] = array(
 	'wikilog-pager-empty' => '(elfenn ebet)',
 	'wikilog-no-comments' => 'addispleg ebet',
 	'wikilog-has-comments' => '{{PLURAL:$1|un addispleg|$1 addispleg}}',
-	'wikilog-item-more' => "[[$3|→ kenderc'hel da lenn...]]",
+	'wikilog-summary-more' => "[[$3|→ kenderc'hel da lenn...]]",
 	'wikilog-edit-fieldset-legend' => 'Dibarzhioù wikilog :',
 	'wikilog-edit-signpub' => 'Sinañ hag embann ar pennad-mañ',
 	'wikilog-comment-by-user' => 'Addispleg gant $1 ($2)',
@@ -705,9 +741,7 @@ $messages['de'] = array(
 	'wikilog-pager-empty' => '(keine Beiträge)',
 	'wikilog-no-comments' => 'keine Kommentare',
 	'wikilog-has-comments' => '{{PLURAL:$1|ein Kommentar|$1 Kommentare}}',
-	'wikilog-item-brief-header' => ': <i><small>von $5, aus [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ weiterlesen …]]',
-	'wikilog-item-footer' => ': <i>&mdash; $5 &#8226; $6 &#8226; $7</i>',
+	'wikilog-summary-more' => '[[$3|→ weiterlesen …]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|Diskussion]])',
 	'wikilog-comment-by-user' => 'Kommentar von $1 ($2)',
 	'wikilog-comment-by-anon' => 'Kommentar von $3 (anonym)',
@@ -814,8 +848,7 @@ $messages['dsb'] = array(
 	'wikilog-pager-empty' => '(žedne zapiski)',
 	'wikilog-no-comments' => 'žedne komentary',
 	'wikilog-has-comments' => '{{PLURAL:$1|jaden komentar|$1 komentara|$1 komentary|$1 komentarow}}',
-	'wikilog-item-brief-header' => ': <i><small>wót $5, z [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ dalej cytaś...]]',
+	'wikilog-summary-more' => '[[$3|→ dalej cytaś...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|diskusija]])',
 	'wikilog-edit-fieldset-legend' => 'Wikilogowe opcije:',
 	'wikilog-edit-signpub' => 'Toś ten pśinosk pódpisaś a wózjawiś',
@@ -941,7 +974,7 @@ $messages['es'] = array(
 	'wikilog-pager-last' => 'último →→',
 	'wikilog-no-comments' => 'sin comentarios',
 	'wikilog-has-comments' => '{{PLURAL:$1|un comentario|$1 comentarios}}',
-	'wikilog-item-more' => '[[$3|→ continuar leyendo...]]',
+	'wikilog-summary-more' => '[[$3|→ continuar leyendo...]]',
 	'wikilog-edit-signpub' => 'Firma y publica este artículo',
 	'wikilog-comment-by-user' => 'Comentario de $1 ($2)',
 	'wikilog-comment-by-anon' => 'Comentario de $3 (anónimo)',
@@ -1018,7 +1051,7 @@ $messages['eu'] = array(
 	'wikilog-pager-last' => 'azkena →→',
 	'wikilog-no-comments' => 'ez dago iruzkinik',
 	'wikilog-has-comments' => '{{PLURAL:$1|iruzkin bat|$1 iruzkin}}',
-	'wikilog-item-more' => '[[$3|→ jarraitu irakurtzen...]]',
+	'wikilog-summary-more' => '[[$3|→ jarraitu irakurtzen...]]',
 	'wikilog-comment-edit' => 'Iruzkin hau editatu',
 	'wikilog-comment-delete' => 'Iruzkin hau ezabatu',
 	'wikilog-title-comments' => 'Iruzkinak - $1',
@@ -1116,8 +1149,7 @@ $messages['fr'] = array(
 	'wikilog-pager-empty' => '(aucun item)',
 	'wikilog-no-comments' => 'pas de commentaire',
 	'wikilog-has-comments' => '{{PLURAl:$1|un commentaire|$1 commentaires}}',
-	'wikilog-item-brief-header' => ': <i><small>par $5, de [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ lire la suite...]]',
+	'wikilog-summary-more' => '[[$3|→ lire la suite...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discuter]])',
 	'wikilog-edit-fieldset-legend' => 'Options de wikilog :',
 	'wikilog-edit-signpub' => 'Signer et publier cet article',
@@ -1238,8 +1270,7 @@ $messages['gl'] = array(
 	'wikilog-pager-empty' => '(sen elementos)',
 	'wikilog-no-comments' => 'sen comentarios',
 	'wikilog-has-comments' => '{{PLURAL:$1|un comentario|$1 comentarios}}',
-	'wikilog-item-brief-header' => ': <i><small>por $5, de [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ seguir lendo...]]',
+	'wikilog-summary-more' => '[[$3|→ seguir lendo...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|conversa]])',
 	'wikilog-edit-fieldset-legend' => 'Opcións do wikilog',
 	'wikilog-edit-signpub' => 'Asinar e publicar este artigo',
@@ -1377,8 +1408,7 @@ $messages['gsw'] = array(
 	'wikilog-pager-empty' => '(kei Byytreg)',
 	'wikilog-no-comments' => 'kei Kommentar',
 	'wikilog-has-comments' => '{{PLURAL:$1|ei Kommentar|$1 Kommentar}}',
-	'wikilog-item-brief-header' => ': <i><small>vu $5, us [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ wyterläse …]]',
+	'wikilog-summary-more' => '[[$3|→ wyterläse …]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|Diskussion]])',
 	'wikilog-edit-fieldset-legend' => 'Wikilog-Optione:',
 	'wikilog-edit-signpub' => 'Die Artikel unterzeichne un publiziere',
@@ -1532,8 +1562,7 @@ $messages['hsb'] = array(
 	'wikilog-pager-empty' => '(žane zapiski)',
 	'wikilog-no-comments' => 'žane komentary',
 	'wikilog-has-comments' => '{{PLURAL:$1|jedyn komentar|$1 komentaraj|$1 komentary|$1 komentarow}}',
-	'wikilog-item-brief-header' => ': <i><small>wot $5, z [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ dale čitać...]]',
+	'wikilog-summary-more' => '[[$3|→ dale čitać...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|diskusija]])',
 	'wikilog-edit-fieldset-legend' => 'Wikilogowe opcije:',
 	'wikilog-edit-signpub' => 'Tutón přinošk podpisać a wozjewić',
@@ -1655,8 +1684,7 @@ $messages['hu'] = array(
 	'wikilog-pager-empty' => '(nincsenek elemek)',
 	'wikilog-no-comments' => 'nincsenek hozzászólások',
 	'wikilog-has-comments' => '{{PLURAL:$1|egy|$1}} hozzászólás',
-	'wikilog-item-brief-header' => ': <i><small>szerző: $5, helye:[[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ olvass tovább…]]',
+	'wikilog-summary-more' => '[[$3|→ olvass tovább…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|vita]])',
 	'wikilog-edit-fieldset-legend' => 'Wikinapló-beállítások:',
 	'wikilog-edit-signpub' => 'Dokumentum aláírása és közzététele',
@@ -1777,8 +1805,7 @@ $messages['ia'] = array(
 	'wikilog-pager-empty' => '(nulle entrata)',
 	'wikilog-no-comments' => 'nulle commento',
 	'wikilog-has-comments' => '{{PLURAL:$1|un commento|$1 commentos}}',
-	'wikilog-item-brief-header' => ': <i><small>per $5, de [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ continuar a leger...]]',
+	'wikilog-summary-more' => '[[$3|→ continuar a leger...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussion]])',
 	'wikilog-edit-fieldset-legend' => 'Optiones de wikilog:',
 	'wikilog-edit-signpub' => 'Signar e publicar iste articulo',
@@ -1899,8 +1926,7 @@ $messages['id'] = array(
 	'wikilog-pager-empty' => '(tanpa butir)',
 	'wikilog-no-comments' => 'tidak ada komentar',
 	'wikilog-has-comments' => '{{PLURAL:$1|satu|$1}} komentar',
-	'wikilog-item-brief-header' => ': <i><small>oleh $5, dari [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ lanjutkan membaca...]]',
+	'wikilog-summary-more' => '[[$3|→ lanjutkan membaca...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|bicara]])',
 	'wikilog-edit-fieldset-legend' => 'Opsi Wikilog:',
 	'wikilog-edit-signpub' => 'Tanda tangani dan terbitkan artikel ini',
@@ -2022,8 +2048,7 @@ $messages['ja'] = array(
 	'wikilog-pager-empty' => '(項目なし)',
 	'wikilog-no-comments' => 'コメントなし',
 	'wikilog-has-comments' => '{{PLURAL:$1|$1件のコメント}}',
-	'wikilog-item-brief-header' => ': <i><small>$5、[[$1|$2]]において、$6、$7。</small></i>',
-	'wikilog-item-more' => '[[$3|→ 続きを読む…]]',
+	'wikilog-summary-more' => '[[$3|→ 続きを読む…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|会話]])',
 	'wikilog-edit-fieldset-legend' => 'ウィキログのオプション:',
 	'wikilog-edit-signpub' => 'この記事に署名し公開する',
@@ -2148,8 +2173,7 @@ $messages['ksh'] = array(
 	'wikilog-pager-empty' => '(Kein Beidrääsch)',
 	'wikilog-no-comments' => 'kein Aanmärkunge',
 	'wikilog-has-comments' => '{{PLURAL:$1|ein Aanmärkung|$1 Aanmärkunge|kein Aanmärkunge}}',
-	'wikilog-item-brief-header' => ': <i><small>vum $5, vum [[$1|$2]] aam $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→&nbsp;wigger lässe{{int:ellipsis}}]]',
+	'wikilog-summary-more' => '[[$3|→&nbsp;wigger lässe{{int:ellipsis}}]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|{{ns:talk}}]])',
 	'wikilog-edit-fieldset-legend' => 'Ennschtellunge för {{int:Wikilog-wikilog}}:',
 	'wikilog-edit-signpub' => 'Donn heh dä Atikel ongerschriive un öffentlesch maache',
@@ -2262,8 +2286,7 @@ $messages['lb'] = array(
 	'wikilog-pager-empty' => '(keng Objeten)',
 	'wikilog-no-comments' => 'Keng Bemierkungen',
 	'wikilog-has-comments' => '{{PLURAL:$1|eng Bemierkung|$1 Bemierkungen}}',
-	'wikilog-item-brief-header' => ': <i><small>vum $5, aus dem [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ weiderliesen ...]]',
+	'wikilog-summary-more' => '[[$3|→ weiderliesen ...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|Diskussioun]])',
 	'wikilog-edit-fieldset-legend' => 'Optioune vu Wikilog:',
 	'wikilog-edit-signpub' => 'Dësen Artikel ënnerschreiwen a publizéieren',
@@ -2346,7 +2369,6 @@ $messages['mk'] = array(
 	'wikilog-pager-first' => '←← прва',
 	'wikilog-pager-last' => 'последна →→',
 	'wikilog-has-comments' => '{{PLURAL:$1|еден коментар|$1 коментари}}',
-	'wikilog-item-brief-header' => ': <i><small>од $5, од [[$1|$2]], $6, $7.</small></i>',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|разговор]])',
 	'wikilog-newtalk-text' => '<!-- празна страница создадена од Викидневникот -->',
 	'wikilog-error-msg' => 'Викидневник: $1',
@@ -2421,8 +2443,7 @@ $messages['nl'] = array(
 	'wikilog-pager-empty' => '(geen items)',
 	'wikilog-no-comments' => 'geen reacties',
 	'wikilog-has-comments' => '{{PLURAL:$1|1 reactie|$1 reacties}}',
-	'wikilog-item-brief-header' => ': <i><small>door $5, van [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ meer lezen...]]',
+	'wikilog-summary-more' => '[[$3|→ meer lezen...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|overleg]])',
 	'wikilog-edit-fieldset-legend' => 'Wikilog-instellingen:',
 	'wikilog-edit-signpub' => 'Dit artikel ondertekenen en publiceren',
@@ -2528,7 +2549,7 @@ $messages['nn'] = array(
 	'wikilog-pager-last' => 'siste →→',
 	'wikilog-pager-empty' => '(ingen innlegg)',
 	'wikilog-no-comments' => 'ingen kommentarar',
-	'wikilog-item-more' => '[[$3|→ hald fram med å lesa...]]',
+	'wikilog-summary-more' => '[[$3|→ hald fram med å lesa...]]',
 	'wikilog-edit-signpub' => 'Signér og publiser denne artikkelen',
 	'wikilog-comment-by-user' => 'Kommentarar av $1 ($2)',
 	'wikilog-comment-pending' => 'Denne kommentaren ventar på godkjenning.',
@@ -2610,8 +2631,7 @@ $messages['oc'] = array(
 	'wikilog-pager-empty' => "(pas cap d'item)",
 	'wikilog-no-comments' => 'pas de comentari',
 	'wikilog-has-comments' => '{{PLURAl:$1|un comentari|$1 comentaris}}',
-	'wikilog-item-brief-header' => ': <i><small>per $5, de [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ legir la seguida...]]',
+	'wikilog-summary-more' => '[[$3|→ legir la seguida...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discutir]])',
 	'wikilog-comment-by-user' => 'Comentari de $1 ($2)',
 	'wikilog-comment-by-anon' => 'Comentari de $3 (anonim)',
@@ -2745,8 +2765,7 @@ $messages['pms'] = array(
 	'wikilog-pager-empty' => '(gnun oget)',
 	'wikilog-no-comments' => 'gnun coment',
 	'wikilog-has-comments' => '{{PLURAL:$1|un|$1}} coment',
-	'wikilog-item-brief-header' => ': <i><small>da $5, da [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ anans a lese...]]',
+	'wikilog-summary-more' => '[[$3|→ anans a lese...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|ciaciarade]])',
 	'wikilog-edit-fieldset-legend' => 'Opsion ëd wikilog:',
 	'wikilog-edit-signpub' => "Sot-signa e pùblica s'artìcol",
@@ -2868,9 +2887,7 @@ $messages['pt'] = array(
 	'wikilog-pager-empty' => '(não há itens)',
 	'wikilog-no-comments' => 'não há comentários',
 	'wikilog-has-comments' => '{{PLURAL:$1|um comentário|$1 comentários}}',
-	'wikilog-item-brief-header' => ': <i><small>por $5, em [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ continuar a ler...]]',
-	'wikilog-item-footer' => ': <i>&mdash; $5 &#8226; $6 &#8226; $7</i>',
+	'wikilog-summary-more' => '[[$3|→ continuar a ler...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussão]])',
 	'wikilog-edit-fieldset-legend' => 'Opções wikilog:',
 	'wikilog-edit-signpub' => 'Assinar e publicar este artigo',
@@ -3054,8 +3071,7 @@ $messages['ru'] = array(
 	'wikilog-pager-empty' => '(нет элементов)',
 	'wikilog-no-comments' => 'нет комментариев',
 	'wikilog-has-comments' => '$1 {{PLURAL:$1|комментарий|комментария|комментариев}}',
-	'wikilog-item-brief-header' => ': <i><small>$5 для [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ продолжить чтение…]]',
+	'wikilog-summary-more' => '[[$3|→ продолжить чтение…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|обсуждение]])',
 	'wikilog-edit-fieldset-legend' => 'Настройки викилога:',
 	'wikilog-edit-signpub' => 'Подписать и опубликовать эту статью',
@@ -3176,8 +3192,7 @@ $messages['si'] = array(
 	'wikilog-pager-empty' => '(අයිතම නොමැත)',
 	'wikilog-no-comments' => 'විචාර නොමැත',
 	'wikilog-has-comments' => '{{PLURAL:$1|එක විචාරයක්|$1 විචාර}}',
-	'wikilog-item-brief-header' => ': <i><small>$5 විසින්,  [[$1|$2]]වෙතින්, $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→දිගටම කියැවීම...]]',
+	'wikilog-summary-more' => '[[$3|→දිගටම කියැවීම...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|කථාව]])',
 	'wikilog-edit-fieldset-legend' => 'විකි ලඝු තෝරාගැනීම්:',
 	'wikilog-edit-signpub' => 'අත්සන් කර මෙම ලිපිය ප්‍රකාශනය කරන්න',
@@ -3297,9 +3312,7 @@ $messages['sv'] = array(
 	'wikilog-pager-empty' => '(inga inlägg)',
 	'wikilog-no-comments' => 'inga kommentarer',
 	'wikilog-has-comments' => '{{PLURAL:$1|en kommentar|$1 kommentarer}}',
-	'wikilog-item-brief-header' => ': <i><small>av $5, från bloggen [[$1|$2]], $6, $7.</small></i>',
-	'wikilog-item-more' => '[[$3|→ fortsätt läsa...]]',
-	'wikilog-item-footer' => ': <i>&mdash; $5 &#8226; $6 &#8226; $7</i>',
+	'wikilog-summary-more' => '[[$3|→ fortsätt läsa...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|diskussion]])',
 	'wikilog-comment-by-user' => 'Kommentar av $1 ($2)',
 	'wikilog-comment-by-anon' => 'Kommentar av $3 (anonym)',
@@ -3389,7 +3402,7 @@ $messages['te'] = array(
 	'wikilog-pager-empty' => '(అంశాలు లేవు)',
 	'wikilog-no-comments' => 'వ్యాఖ్యలు లేవు',
 	'wikilog-has-comments' => '{{PLURAL:$1|ఒక వ్యాఖ్య|$1 వ్యాఖ్యలు}}',
-	'wikilog-item-more' => '[[$3|→ చదవడం కొనసాగించండి...]]',
+	'wikilog-summary-more' => '[[$3|→ చదవడం కొనసాగించండి...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|చర్చ]])',
 	'wikilog-edit-fieldset-legend' => 'వికీచిట్టా ఎంపికలు:',
 	'wikilog-comment-delete' => 'ఈ వ్యాఖ్యని తొలగించు',

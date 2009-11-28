@@ -63,20 +63,16 @@ class WikilogItemPage
 		$skin = $wgUser->getSkin();
 
 		if ( $this->mItem ) {
+			$params = $this->mItem->getMsgParams( true );
+
 			# Set page subtitle
-			$subtitleTxt = wfMsgExt( 'wikilog-item-sub',
-				array( 'parse', 'content' ),
-				/* $1 */ $this->mItem->mParentTitle->getPrefixedURL(),
-				/* $2 */ $this->mItem->mParentName
+			$subtitleTxt = wfMsgExt( 'wikilog-entry-sub',
+				array( 'parsemag', 'content' ),
+				$params
 			);
 			if ( !empty( $subtitleTxt ) ) {
 				$wgOut->setSubtitle( $wgOut->parse( $subtitleTxt ) );
 			}
-
-			# Generate some fixed bits.
-			$authors = WikilogUtils::authorList( array_keys( $this->mItem->mAuthors ) );
-			$pubdate = $wgContLang->timeanddate( $this->mItem->mPubDate, true );
-			$comments = WikilogUtils::getCommentsWikiText( $this->mItem );
 
 			# Display draft notice.
 			if ( !$this->mItem->getIsPublished() ) {
@@ -84,24 +80,18 @@ class WikilogItemPage
 			}
 
 			# Item page header.
-			$headerTxt = wfMsgExt( 'wikilog-item-header',
+			$headerTxt = wfMsgExt( 'wikilog-entry-header',
 				array( 'parse', 'content' ),
-				/* $1 */ $this->mItem->mParentTitle->getPrefixedURL(),
-				/* $2 */ $this->mItem->mParentName,
-				/* $3 */ $this->mItem->mTitle->getPrefixedURL(),
-				/* $4 */ $this->mItem->mName,
-				/* $5 */ $authors,
-				/* $6 */ $pubdate,
-				/* $7 */ $comments
+				$params
 			);
 			if ( !empty( $headerTxt ) ) {
-				$wgOut->addHtml( $headerTxt );
+				$wgOut->addHtml( WikilogUtils::wrapDiv( 'wl-entry-header', $headerTxt ) );
 			}
 
 			# Display article.
 			parent::view();
 
-			# Override page title
+			# Override page title.
 			# NOTE (MW1.16+): Must come after parent::view().
 			$fullPageTitle = wfMsg( 'wikilog-title-item-full',
 					$this->mItem->mName,
@@ -111,18 +101,12 @@ class WikilogItemPage
 			$wgOut->setHTMLTitle( wfMsg( 'pagetitle', $fullPageTitle ) );
 
 			# Item page footer.
-			$footerTxt = wfMsgExt( 'wikilog-item-footer',
+			$footerTxt = wfMsgExt( 'wikilog-entry-footer',
 				array( 'parse', 'content' ),
-				/* $1 */ $this->mItem->mParentTitle->getPrefixedURL(),
-				/* $2 */ $this->mItem->mParentName,
-				/* $3 */ $this->mItem->mTitle->getPrefixedURL(),
-				/* $4 */ $this->mItem->mName,
-				/* $5 */ $authors,
-				/* $6 */ $pubdate,
-				/* $7 */ $comments
+				$params
 			);
 			if ( !empty( $footerTxt ) ) {
-				$wgOut->addHtml( $footerTxt );
+				$wgOut->addHtml( WikilogUtils::wrapDiv( 'wl-entry-footer', $footerTxt ) );
 			}
 
 			# Add feed links.

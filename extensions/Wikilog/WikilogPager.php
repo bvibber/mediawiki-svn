@@ -157,77 +157,66 @@ class WikilogSummaryPager
 	}
 
 	function formatRow( $row ) {
-		global $wgUser, $wgContLang;
-
+		global $wgWikilogExtSummaries;
 		$skin = $this->getSkin();
+		$header = $footer = '';
 
 		# Retrieve article parser output and other data.
 		$item = WikilogItem::newFromRow( $row );
 		list( $article, $parserOutput ) = WikilogUtils::parsedArticle( $item->mTitle );
 		list( $summary, $content ) = WikilogUtils::splitSummaryContent( $parserOutput );
 
-		# Some general data.
-		$authors = WikilogUtils::authorList( array_keys( $item->mAuthors ) );
-		$pubdate = $wgContLang->timeanddate( $item->getPublishDate(), true );
-		$comments = WikilogUtils::getCommentsWikiText( $item );
+		# Retrieve the common header and footer parameters.
+		$params = $item->getMsgParams( $wgWikilogExtSummaries, $parserOutput );
 
-		# Entry div class.
-		$divclass = 'wl-entry' . ( $item->getIsPublished() ? '' : ' wl-draft' );
-		$result = "<div class=\"{$divclass} visualClear\">";
-
-		# Edit section link.
+		# Article title heading, with direct link article page and optional
+		# edit link (if user can edit the article).
+		$titleText = $item->mName;
+		if ( !$item->getIsPublished() )
+			$titleText .= wfMsgForContent( 'wikilog-draft-title-mark' );
+		$heading = $skin->link( $item->mTitle, $titleText, array(), array(),
+			array( 'known', 'noclasses' )
+		);
+		$heading = Xml::tags( 'h2', null, $heading );
 		if ( $item->mTitle->quickUserCan( 'edit' ) ) {
-			$result .= $this->editLink( $item->mTitle );
+			$heading = $this->editLink( $item->mTitle ) . $heading;
 		}
 
-		# Title heading, with link.
-		$heading = $skin->makeKnownLinkObj( $item->mTitle, $item->mName .
-			( $item->getIsPublished() ? '' : ' ' . wfMsgForContent( 'wikilog-draft-title-mark' ) ) );
-		$result .= "<h2>{$heading}</h2>\n";
-
-		# Item header.
-		$msg = wfMsgForContentNoTrans( 'wikilog-item-brief-header',
-			/* $1 */ $item->mParentTitle->getPrefixedURL(),
-			/* $2 */ $item->mParentName,
-			/* $3 */ $item->mTitle->getPrefixedURL(),
-			/* $4 */ $item->mName,
-			/* $5 */ $authors,
-			/* $6 */ $pubdate,
-			/* $7 */ $comments
-		);
+		# Sumary entry header.
+		$key = $this->mQuery->isSingleWikilog()
+			? 'wikilog-summary-header-single'
+			: 'wikilog-summary-header';
+		$msg = wfMsgExt( $key, array( 'content', 'parsemag' ), $params );
 		if ( !empty( $msg ) ) {
-			$result .= $this->parse( $msg . "\n" );
+			$header = WikilogUtils::wrapDiv( 'wl-summary-header', $this->parse( $msg ) );
 		}
 
-		# Item text.
+		# Summary entry text.
 		if ( $summary ) {
-			$more = $this->parse( wfMsgForContentNoTrans( 'wikilog-item-more',
-				/* $1 */ $item->mParentTitle->getPrefixedURL(),
-				/* $2 */ $item->mParentName,
-				/* $3 */ $item->mTitle->getPrefixedURL(),
-				/* $4 */ $item->mName
-			) );
-			$result .= "<div class=\"wl-summary\">{$summary}\n{$more}\n</div>\n";
+			$more = $this->parse( wfMsgForContentNoTrans( 'wikilog-summary-more', $params ) );
+			$summary = WikilogUtils::wrapDiv( 'wl-summary', $summary . $more );
 		} else {
-			$result .= "<div class=\"wl-summary\">{$content}</div>\n";
+			$summary = WikilogUtils::wrapDiv( 'wl-summary', $content );
 		}
 
-		# Item footer.
-		$msg = wfMsgForContentNoTrans( 'wikilog-item-brief-footer',
-			/* $1 */ $item->mParentTitle->getPrefixedURL(),
-			/* $2 */ $item->mParentName,
-			/* $3 */ $item->mTitle->getPrefixedURL(),
-			/* $4 */ $item->mName,
-			/* $5 */ $authors,
-			/* $6 */ $pubdate,
-			/* $7 */ $comments
-		);
+		# Summary entry footer.
+		$key = $this->mQuery->isSingleWikilog()
+			? 'wikilog-summary-footer-single'
+			: 'wikilog-summary-footer';
+		$msg = wfMsgExt( $key, array( 'content', 'parsemag' ), $params );
 		if ( !empty( $msg ) ) {
-			$result .= $this->parse( $msg . "\n" );
+			$footer = WikilogUtils::wrapDiv( 'wl-summary-footer', $this->parse( $msg ) );
 		}
 
-		$result .= "</div>\n\n";
-		return $result;
+		# Assembly the entry div.
+		$divclass = array( 'wl-entry', 'visualClear' );
+		if ( !$item->getIsPublished() )
+			$divclass[] = 'wl-draft';
+		$entry = WikilogUtils::wrapDiv(
+			implode( ' ', $divclass ),
+			$heading . $header . $summary . $footer
+		);
+		return $entry;
 	}
 
 	/**

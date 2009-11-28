@@ -6,6 +6,26 @@
  * Lincensed under the GNU General Public License version 2.
  */
 
+div.wl-summary-header {
+	font-size: 90%;
+	font-style: italic;
+}
+
+div.wl-summary-footer {
+	font-size: 90%;
+	font-style: italic;
+	padding: 0 3em;
+}
+
+div.wl-entry-header {
+	font-style: italic;
+}
+
+div.wl-entry-footer {
+	font-style: italic;
+	padding: 3pt 3em;
+}
+
 div.wl-description {
 	border: 1px solid #CCCCCC;
 	background-color: #EEEEEE;

@@ -198,6 +198,45 @@ class WikilogUtils
 	}
 
 	/**
+	 * Formats a list of categories.
+	 * Given a list of categories, this function formats it in wiki syntax,
+	 * with links to either their page or to Special:Wikilog.
+	 *
+	 * @param $list Array of categories.
+	 * @return Wikitext-formatted textual list of categories.
+	 */
+	public static function categoryList( $list ) {
+		global $wgContLang;
+		$special = $wgContLang->specialPage( 'Wikilog' );
+		$categories = array();
+		foreach ( $list as $cat ) {
+			$title = Title::makeTitle( NS_CATEGORY, $cat );
+			$categoryUrl = $title->getPrefixedText();
+			$categoryTxt = $title->getText();
+			$categories[] = "[[{$special}/{$categoryUrl}|{$categoryTxt}]]";
+		}
+		return $wgContLang->listToText( $categories );
+	}
+
+	/**
+	 * Formats a list of tags.
+	 * Given a list of tags, this function formats it in wiki syntax,
+	 * with links to Special:Wikilog.
+	 *
+	 * @param $list Array of tags.
+	 * @return Wikitext-formatted textual list of tags.
+	 */
+	public static function tagList( $list ) {
+		global $wgContLang;
+		$special = $wgContLang->specialPage( 'Wikilog' );
+		$tags = array();
+		foreach ( $list as $tag ) {
+			$tags[] = "[[{$special}/t={$tag}|{$tag}]]";
+		}
+		return $wgContLang->listToText( $tags );
+	}
+
+	/**
 	 * Split summary of a wikilog post from the contents.
 	 * If summary was provided in <summary>...</summary> tags, use it,
 	 * otherwise, use some heuristics to find it in the content.
@@ -292,6 +331,16 @@ class WikilogUtils
 		$form = Xml::tags( 'table', array( 'width' => '100%' ),
 			implode( "\n", $rows ) );
 		return $form;
+	}
+
+	/**
+	 * Wraps a div, with a class, around some HTML fragment.
+	 * Similar to Xml::wrapClass(..., 'div') or Xml::tags('div',...).
+	 * This is something that should be in includes/Xml.php, doing it here
+	 * to avoid Mw version dependency.
+	 */
+	public static function wrapDiv( $class, $text ) {
+		return Xml::tags( 'div', array( 'class' => $class ), $text );
 	}
 
 	/**

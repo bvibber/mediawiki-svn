@@ -35,11 +35,15 @@ if ( !defined( 'MEDIAWIKI' ) )
  * to your LocalSettings.php file, and change them there, not here.
  */
 
+/* *** Tagging entity *** */
+
 /**
  * A string in the format "example.org,date", according to RFC 4151, that will
  * be used as taggingEntity in order to create feed item tags.
  */
 $wgTaggingEntity = false;
+
+/* *** Cascading style sheets *** */
 
 /**
  * Path of Wikilog style and image files.
@@ -51,7 +55,9 @@ $wgWikilogStylePath = false;
  * Wikilog style version, incremented when $wgWikilogStylePath/wikilog.css
  * is changed.
  */
-$wgWikilogStyleVersion = 2;
+$wgWikilogStyleVersion = 3;
+
+/* *** Presentation options *** */
 
 /**
  * Maximum number of items in wikilog front page.
@@ -59,14 +65,32 @@ $wgWikilogStyleVersion = 2;
 $wgWikilogSummaryLimit = $wgFeedLimit;
 
 /**
- * Default number of articles to list on the wikilog front page.
+ * Default number of articles to list in the wikilog front page and in
+ * Special:Wikilog.
  */
 $wgWikilogNumArticles = 20;
 
 /**
- * Maximum number of authors of a wikilog post.
+ * Allow listing of categories and tags for each article in the wikilog
+ * front page and in Special:Wikilog, in the header and footer of each entry.
+ * This is a little expensive and not used by default, so it is disabled.
+ *
+ * After enabling this option, system messages 'wikilog-summary-header',
+ * 'wikilog-summary-footer', 'wikilog-summary-header-single' and
+ * 'wikilog-summary-footer-single' should be modified to include parameters
+ * $11 - $14.
+ *
+ * @since Wikilog v1.1.0.
  */
-$wgWikilogMaxAuthors = 6;
+$wgWikilogExtSummaries = false;
+
+/**
+ * Navigation bars to show in listing pages.
+ */
+$wgWikilogNavTop = false;
+$wgWikilogNavBottom = true;
+
+/* *** Editing *** */
 
 /**
  * Publish new articles by default. When creating new wikilog articles,
@@ -78,6 +102,15 @@ $wgWikilogMaxAuthors = 6;
  * @since Wikilog v1.0.1.
  */
 $wgWikilogSignAndPublishDefault = false;
+
+/* *** Authors *** */
+
+/**
+ * Maximum number of authors of a wikilog article.
+ */
+$wgWikilogMaxAuthors = 6;
+
+/* *** Categories and tags *** */
 
 /**
  * Enable use of tags. This is disabled by default since MediaWiki category
@@ -98,6 +131,8 @@ $wgWikilogEnableTags = false;
  */
 $wgWikilogMaxTags = 25;
 
+/* *** Comments *** */
+
 /**
  * Enable wikilog article commenting interface. When disabled, commenting is
  * still possible through article talk pages, like normal wiki pages.
@@ -105,7 +140,7 @@ $wgWikilogMaxTags = 25;
 $wgWikilogEnableComments = true;
 
 /**
- * Maximum size, in bytes for wikilog article comments.
+ * Maximum size for wikilog article comments, in bytes.
  */
 $wgWikilogMaxCommentSize = 2048;	// bytes
 
@@ -119,6 +154,8 @@ $wgWikilogMaxCommentSize = 2048;	// bytes
  * need isn't better accomplished with user rights or anti-spam filters.
  */
 $wgWikilogModerateAnonymous = false;
+
+/* *** Syndication feeds *** */
 
 /**
  * Syndication feed classes. Similar to $wgFeedClasses.
@@ -145,20 +182,14 @@ $wgWikilogFeedCategories = true;
  */
 $wgWikilogFeedRelated = false;
 
-/**
- * Navigation bars to show in listing pages.
- */
-$wgWikilogNavTop = false;
-$wgWikilogNavBottom = true;
+/* *** Namespaces *** */
 
 /**
  * Namespaces used for wikilogs.
  */
 $wgWikilogNamespaces = array();
 
-/*
- *                --- DEBUGGING CONFIGURATION OPTIONS ---
- */
+/* *** Debugging *** */
 
 /**
  * Use a clone of the global parser object instead of creating a new instance.
