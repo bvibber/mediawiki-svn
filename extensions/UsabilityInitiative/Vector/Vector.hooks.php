@@ -80,7 +80,7 @@ class VectorHooks {
 			) {
 				UsabilityInitiativeHooks::initialize();
 				// Messages
-				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {		
+				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {
 					wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
 					UsabilityInitiativeHooks::addMessages( self::$modules[$module]['messages'] );
 				}
@@ -96,7 +96,7 @@ class VectorHooks {
 				// Preferences
 				if ( isset( self::$modules[$module]['preferences'] ) ) {
 					foreach ( self::$modules[$module]['preferences'] as $name => $preference ) {
-						if ( !isset( $preferences[$module] ) ) {			
+						if ( !isset( $preferences[$module] ) ) {
 							$preferences[$module] = array();
 						}
 						$preferences[$module][$name] = $wgUser->getOption( $preference['key'] );

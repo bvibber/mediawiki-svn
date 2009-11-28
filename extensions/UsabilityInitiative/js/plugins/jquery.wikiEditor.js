@@ -58,9 +58,13 @@ $.wikiEditor = {
 		return $.browser.name in $.wikiEditor.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'];
 	},
 	'isSupported': function() {
+		// Cache the return value
+		if ( $.wikiEditor.supported != undefined )
+			return $.wikiEditor.supported;
+		
 		if ( !$.wikiEditor.isSupportKnown ) {
 			// Assume good faith :)
-			return true;
+			return $.wikiEditor.supported = true;
 		}
 		var browser = $.wikiEditor.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
 		for ( condition in browser ) {
@@ -68,15 +72,15 @@ $.wikiEditor = {
 			var val = browser[condition][1];
 			if ( typeof val == 'string' ) {
 				if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
-					return false;
+					return $.wikiEditor.supported = false;
 				}
 			} else if ( typeof val == 'number' ) {
 				if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
-					return false;
+					return $.wikiEditor.supported = false;
 				}
 			}
 		}
-		return true;
+		return $.wikiEditor.supported = true;
 	},
 	// Wraps gM from js2, but allows raw text to supercede
 	'autoMsg': function( object, property ) {
