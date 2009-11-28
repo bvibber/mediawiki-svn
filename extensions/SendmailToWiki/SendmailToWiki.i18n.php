@@ -6,17 +6,17 @@ $messages = array();
  */
 $messages['en'] = array( 
 	'sendmailtowiki' => 'SendmailToWiki',
-	'sendmailtowiki-desc' => 'Post wiki content trough dedicated dynamic e-mail address',
+	'sendmailtowiki-desc' => 'Post wiki content through dedicated dynamic e-mail address',
 	'prefs-sendmailtowiki' => 'Posting content with e-mail',
-	'sendmailtowiki-inemail' => 'Dedicated e-mail:',
+	'sendmailtowiki-inemail' => 'Dedicated e-mail address:',
 	'sendmailtowiki-inpin' => 'PIN:',
 	'prefs-help-sendmailtowiki_pin' => 'Blank field for PIN number disables posting content to wiki with your account.',
-	'sendmailtowiki-err-pinlength' => 'PIN must contain exactly 5 numbers!',
-	'sendmailtowiki-err-wrongprefix' => 'Wrong wiki account prefix. Contact your administrator!',
+	'sendmailtowiki-err-pinlength' => 'PIN must contain exactly 5 numbers.',
+	'sendmailtowiki-err-wrongprefix' => 'Wrong wiki account prefix. Contact your administrator.',
 	'sendmailtowiki-err-invalidaccount' => 'Invalid account. Check the e-mail address you are sending to.',
 	'sendmailtowiki-err-invalidsender' => 'Invalid sender. Check the e-mail address you are sending from.',
 	'sendmailtowiki-err-invalidpin' => 'Invalid PIN. Access denied.',
-	'sendmailtowiki-err-onlyplain' => 'Because of potential misinterpretations only text/plain messages are accepted.',
+	'sendmailtowiki-err-onlyplain' => 'Because of potential misinterpretations only pure text messages are accepted.',
 );
 
 $messages['sl'] = array(
