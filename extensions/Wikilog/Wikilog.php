@@ -32,6 +32,7 @@ if ( !defined( 'MEDIAWIKI' ) )
  * General extension information.
  */
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Wikilog',
 	'version'        => '1.0.99.1dev',
 	'author'         => 'Juliano F. Ravasi',
