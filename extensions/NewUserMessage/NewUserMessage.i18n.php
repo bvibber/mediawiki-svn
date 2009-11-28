@@ -9,20 +9,29 @@ $messages = array();
 
 /** English
  * @author [http://www.organicdesign.co.nz/User:Nad Nad]
+ * @author Siebrand
  */
 $messages['en'] = array(
 	'newusermessage-desc' => "Adds a message to newly created user's talk pages",
 	'newuseredit-summary' => 'Adding [[{{int:newusermessage-template}}|welcome message]] to new user\'s talk page',
 	'newusermessage-template' => 'Template:Welcome', # The title of the message template
+	'newusermessage-template-subject' => 'Template:Welcome-subject', # Always substituted. Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages
+	'newusermessage-template-body' => 'Template:Welcome-body', # Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages
 	'newusermessage-editor' => 'New user message', # The username used for the edit
 	'newusermessage-substitute' => '', # do not translate or duplicate this message to other languages
 );
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'newusermessage-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'newusermessage-desc' => '{{desc}}',
+	'newuseredit-summary' => 'The edit summary used when placing a new user message.',
+	'newusermessage-subject' => 'Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages.',
+	'newusermessage-body' => 'Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages.',
+	'newusermessage-editor' => 'The username used for the edit',
+	'newusermessage-substitute' => 'If this message is not empty, the new user message templates will be substituted. Do not translate or duplicate this message to other languages.',
 );
 
 /** Afrikaans (Afrikaans)
