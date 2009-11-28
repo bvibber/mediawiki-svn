@@ -77,6 +77,15 @@ Cumulative statistics means that for each interval the number of edits in that i
 	'right-viewsystemstats' => '{{doc-right|viewsystemstats}}',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'usagestatisticsintervalday' => 'Ndğa',
+	'usagestatisticsintervalweek' => 'Doloni',
+	'usagestatisticsintervalmonth' => 'Tuta',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj

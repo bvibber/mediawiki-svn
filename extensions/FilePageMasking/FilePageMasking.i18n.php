@@ -196,9 +196,17 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  */
 $messages['pt'] = array(
+	'filepagemasking-desc' => 'Reescreve ".xxx" como "_xxx" nas ligações para páginas de descrição de ficheiros',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Hamilton Abreu
+ */
+$messages['pt-br'] = array(
 	'filepagemasking-desc' => 'Reescreve ".xxx" para "_xxx" nas ligações das páginas de descrição de arquivo',
 );
 

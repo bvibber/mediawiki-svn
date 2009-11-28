@@ -207,6 +207,15 @@ $messages['hu'] = array(
 	'wikieditor-toc-hide' => 'Tartalomjegyzék elrejtése',
 );
 
+/** Armenian (Հայերեն)
+ * @author Xelgen
+ */
+$messages['hy'] = array(
+	'wikieditor-toc-preference' => 'Ակտիվացնել նավարկելի բովանդակության ցանկ',
+	'wikieditor-toc-show' => 'Ցուցադրել բովանդակությունը',
+	'wikieditor-toc-hide' => 'Թաքցնել բովանդակությունը',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

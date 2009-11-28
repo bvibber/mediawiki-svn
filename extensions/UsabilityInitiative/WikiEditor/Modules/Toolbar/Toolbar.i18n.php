@@ -330,6 +330,17 @@ This message does not support PLURAL on $1.',
 	'wikieditor-toolbar-help-content-signature-description' => '{{Identical|Signature}}',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'wikieditor-toolbar-tool-small' => "Ç'ut'a",
+	'wikieditor-toolbar-tool-gallery' => "Suret'iş Galeri",
+	'wikieditor-toolbar-characters-page-latin' => "Lat'ini",
+	'wikieditor-toolbar-characters-page-greek' => 'Xorumi',
+	'wikieditor-toolbar-characters-page-arabic' => 'Arabuli',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author Omnipaedista
@@ -5693,7 +5704,9 @@ $messages['hy'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Ավելացնել հղում',
 	'wikieditor-toolbar-tool-link-int' => 'Վիքիի էջին',
 	'wikieditor-toolbar-tool-link-int-target' => 'Էջի վերնագիր․',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Ներմուծեք էջի վերնագիրը',
 	'wikieditor-toolbar-tool-link-int-text' => 'Հղման տեսքստ․',
+	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Ներմուծեք տեքստը, որ պետք է ցուցադրվի',
 	'wikieditor-toolbar-tool-link-ext' => 'Արտաքին վեբ էջին',
 	'wikieditor-toolbar-tool-link-ext-target' => 'Հղման URL․',
 	'wikieditor-toolbar-tool-link-ext-text' => 'Հղման տեքստ․',
@@ -5702,6 +5715,7 @@ $messages['hy'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'Էջը գոյություն ունի',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'Էջը գոյություն չունի',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Սխալ վերնագիր',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Արտաքին հղում',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Էջի գոյության ստուգում…',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'Ձեր նշած վերնագիրը անթույլատրելի է։',
 	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'Ձեր նշած URL-ը նման է վիքիի այլ էջին հղմանը։ Դուք ուզո՞ւմ եք այս հղումը սարքել ներքին։',
@@ -5726,6 +5740,8 @@ $messages['hy'] = array(
 	'wikieditor-toolbar-tool-ulist-example' => 'Չհամարակալած ցանկի տարր',
 	'wikieditor-toolbar-tool-olist' => 'Համարակալած ցանկ',
 	'wikieditor-toolbar-tool-olist-example' => 'Համարակալած ցանկի տարր',
+	'wikieditor-toolbar-tool-indent' => 'Խորքից',
+	'wikieditor-toolbar-tool-indent-example' => 'Խորքից գրված տող',
 	'wikieditor-toolbar-group-size' => 'Չափս',
 	'wikieditor-toolbar-tool-big' => 'Խոշոր',
 	'wikieditor-toolbar-tool-big-example' => 'Խոշոր տեքստ',
@@ -7956,7 +7972,7 @@ $messages['mk'] = array(
 	'wikieditor-toolbar-tool-ulist-example' => 'Потточка во листата',
 	'wikieditor-toolbar-tool-olist' => 'Листа со редни броеви',
 	'wikieditor-toolbar-tool-olist-example' => 'Реден број на листата',
-	'wikieditor-toolbar-tool-indent' => 'Вовлечи',
+	'wikieditor-toolbar-tool-indent' => 'Вовлечeно',
 	'wikieditor-toolbar-tool-indent-example' => 'Вовлечен ред',
 	'wikieditor-toolbar-group-size' => 'Големина',
 	'wikieditor-toolbar-tool-big' => 'Голем',

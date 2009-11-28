@@ -59,6 +59,13 @@ $messages['qqq'] = array(
 	'youtubeauthsub_submit' => '{{Identical|Submit}}',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'youtubeauthsub_category' => "K'at'egori",
+);
+
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Arnobarnard

@@ -25,6 +25,13 @@ $messages['qqq'] = array(
 	'catboxattop-categories' => '{{Identical|Categories}}',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'catboxattop-categories' => "K'at'egorepe",
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

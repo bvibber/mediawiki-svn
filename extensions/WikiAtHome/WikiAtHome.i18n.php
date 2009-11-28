@@ -103,6 +103,13 @@ $messages['qqq'] = array(
 * $1 is the file name of the file that is being uploaded',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'wah-menu-jobs' => 'Dulyape',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

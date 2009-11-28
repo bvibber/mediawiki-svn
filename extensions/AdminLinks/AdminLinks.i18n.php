@@ -937,12 +937,13 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'adminlinks' => 'Links para Admins',
-	'adminlinks-desc' => 'Adiciona uma [[Special:AdminLinks|página especial]] que possui links úteis para administradores',
+	'adminlinks' => 'Ligações para administradores',
+	'adminlinks-desc' => 'Adiciona uma [[Special:AdminLinks|página especial]] que contém ligações úteis para administradores',
 	'adminlinks_documentation' => 'Documentação sobre $1',
 	'adminlinks_general' => 'Geral',
 	'adminlinks_editsidebar' => 'Editar barra lateral',
@@ -952,7 +953,7 @@ $messages['pt'] = array(
 	'adminlinks_createuser' => 'Criar um utilizador',
 	'adminlinks_browsesearch' => 'Navegação e pesquisa',
 	'adminlinks_importexport' => 'Importação e exportação',
-	'right-adminlinks' => 'Ver a ligação para [[Special:AdminLinks|ligações Admin]]',
+	'right-adminlinks' => 'Ver a ligação para a página [[Special:AdminLinks|Ligações para administradores]]',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

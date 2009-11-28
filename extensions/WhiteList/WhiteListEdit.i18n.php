@@ -148,6 +148,14 @@ $messages['niu'] = array(
 	'whitelisttableedit' => 'Fakahakohako',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'mywhitelistpages' => 'Çkimi sayfape',
+	'whitelisttableremove' => 'Dokosi',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj

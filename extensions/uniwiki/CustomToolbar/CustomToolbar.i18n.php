@@ -76,6 +76,15 @@ $wgCustomToolbarMessages['qqq'] = array(
 	'ct_user_sample' => '{{Identical|Username}}',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$wgCustomToolbarMessages['lzz'] = array(
+	'ct_bold_sample' => "Mçxu nç'ara",
+	'ct_bold_caption' => 'Mçxu',
+	'ct_submit' => 'İgzali!',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

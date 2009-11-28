@@ -57,6 +57,17 @@ $messages['qqq'] = array(
 	'prefstats-factor-default' => 'Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'prefstats-factor-hour' => "saat'i",
+	'prefstats-factor-day' => 'ndğa',
+	'prefstats-factor-week' => 'doloni',
+	'prefstats-factor-twoweeks' => 'jur doloni',
+	'prefstats-factor-fourweeks' => 'xut doloni',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

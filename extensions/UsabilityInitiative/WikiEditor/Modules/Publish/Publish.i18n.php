@@ -126,6 +126,7 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'wikieditor-publish-preference' => 'Gweredekaat an embann pazenn-ha-pazenn',
 	'wikieditor-publish-button-publish' => 'Embann',
 	'wikieditor-publish-button-cancel' => 'Nullañ',
 	'wikieditor-publish-dialog-title' => 'Embann war {{SITENAME}}',
@@ -348,8 +349,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'wikieditor-publish-preference' => 'Lépésről-lépésre közzététel engedélyezése',
 	'wikieditor-publish-button-publish' => 'Közzététel',
 	'wikieditor-publish-button-cancel' => 'Mégse',
 	'wikieditor-publish-dialog-title' => 'Közzététel a(z) {{SITENAME}} wikin',
@@ -358,6 +361,20 @@ $messages['hu'] = array(
 	'wikieditor-publish-dialog-watch' => 'Lap figyelése',
 	'wikieditor-publish-dialog-publish' => 'Közzététel',
 	'wikieditor-publish-dialog-goback' => 'Vissza',
+);
+
+/** Armenian (Հայերեն)
+ * @author Xelgen
+ */
+$messages['hy'] = array(
+	'wikieditor-publish-button-publish' => 'Հրատարակել',
+	'wikieditor-publish-button-cancel' => 'Բեկանել',
+	'wikieditor-publish-dialog-title' => 'Հրատարակել {{SITENAME}} նախագծում',
+	'wikieditor-publish-dialog-summary' => 'Խմբագրման ամփոփում (հակիրճ նկարագրեք ձեր կատարած փոփոխությունները)',
+	'wikieditor-publish-dialog-minor' => 'Չնչին խմբագրում',
+	'wikieditor-publish-dialog-watch' => 'Հսկել այս էջը',
+	'wikieditor-publish-dialog-publish' => 'Հրատարակել',
+	'wikieditor-publish-dialog-goback' => 'Ետ գնալ',
 );
 
 /** Interlingua (Interlingua)
@@ -643,6 +660,7 @@ $messages['te'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'wikieditor-publish-preference' => 'Adım-adım yayınlamayı etkinleştir',
 	'wikieditor-publish-button-publish' => 'Yayınla',
 	'wikieditor-publish-button-cancel' => 'İptal',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} bünyesinde yayınla',

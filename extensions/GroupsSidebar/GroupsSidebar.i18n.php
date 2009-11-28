@@ -18,6 +18,13 @@ $messages['be-tarask'] = array(
 	'groupssidebar-desc' => 'Гэтае пашырэньне дазваляе адміністратарам сайта ўключаць элемэнты бакавой панэлі для пазначаных групаў удзельнікаў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'groupssidebar-desc' => "Gant an astenn-mañ e c'hall merourien al lec'hienn enframmañ elfennoù er varrenn gostez diouzh strolladoù an implijerien",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

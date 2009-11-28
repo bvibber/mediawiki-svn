@@ -46,6 +46,13 @@ $messages['qqq'] = array(
 	'gep-categorypage' => '{{optional}}',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'gep-categories' => "K'at'egorepe",
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

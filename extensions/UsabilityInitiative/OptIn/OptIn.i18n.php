@@ -140,6 +140,15 @@ $messages['qqq'] = array(
 	'optin-improvements' => 'A few paragraphs of wikitext describing the improvements made in Beta. The referenced images have been uploaded to Commons',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'optin-deny-short' => 'Var didi mardi',
+	'optin-survey-yes' => 'Ho',
+	'optin-survey-no' => 'Var',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

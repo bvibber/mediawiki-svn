@@ -317,11 +317,14 @@ Ovo se uradi putem poziva relevantnog parserskog nivoa iz same MediaWiki.',
  * @author SMP
  * @author Solde
  * @author Toniher
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'expandtemplates' => 'Expansió de plantilles',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandeix plantilles, funcions i variables]] per a mostrar-vos la sintaxi expandida i previsualitzar el resultat que es mostrarà a les pàgines',
-	'expand_templates_intro' => 'Aquesta pàgina especial permet provar plantilles, amb expansions recursives. Les funcions i les variables predefinides, com ara <nowiki>{{</nowiki>#if:...}} o <nowiki>{{</nowiki>CURRENTDAY}}, també són substituïdes.',
+	'expand_templates_intro' => "Aquesta pàgina especial expandeix de forma recursiva totes les plantilles d'un text donat.
+També expandeix les funcions sintàctiques, com ara <tt><nowiki>{{</nowiki>#if:…}}</tt>, i les variables predefinides, com <tt><nowiki>{{</nowiki>CURRENTDAY}}</tt> &mdash;de fet, gairebé tot que estigui entre claus dobles.
+Ho fa cridant el nivell sintàctic pertinent del mateix MediaWiki.",
 	'expand_templates_title' => 'Títol per contextualitzar ({{PAGENAME}}, etc):',
 	'expand_templates_input' => 'El vostre text:',
 	'expand_templates_output' => 'Resultat:',

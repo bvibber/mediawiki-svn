@@ -654,11 +654,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  */
 $messages['pt'] = array(
-	'filelist' => 'Lista de arquivos',
-	'filelist-desc' => '[[Special:Filelist|Página Especial]] para listar arquivos carregados',
+	'filelist' => 'Lista de ficheiros',
+	'filelist-desc' => '[[Special:Filelist|Página Especial]] para listar ficheiros carregados',
 	'filelist-show-list' => 'Mostrar lista',
 	'filelist-show-gallery' => 'Mostrar galeria',
 	'filelist-image-desc' => 'desc',

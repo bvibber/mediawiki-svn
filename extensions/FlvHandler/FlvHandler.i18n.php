@@ -232,9 +232,18 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  */
 $messages['pt'] = array(
+	'flvhandler_desc' => 'Permite a adição de ficheiros de Vídeo Flash (.flv) como ficheiros padrão (exemplo: <nowiki>[[</nowiki>{{ns:file}}:Filme.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => '(Vídeo Flash, $1 × $2 pixels, tamanho do ficheiro: $3)',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Hamilton Abreu
+ */
+$messages['pt-br'] = array(
 	'flvhandler_desc' => 'Permitir arquivos de vídeo Flash (.flv) serem adicionados como arquivos padrão (ex.: <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
 	'flv-long-desc' => '(Vídeo Flash, $1 × $2 pixels, tamanho do arquivo: $3)',
 );

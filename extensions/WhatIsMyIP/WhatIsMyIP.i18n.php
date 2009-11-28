@@ -29,6 +29,14 @@ $messages['qqq'] = array(
 	'right-whatismyip' => '{{doc-right|whatismyip}}',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'whatismyip' => 'Çkimi IP mu ren',
+	'whatismyip-out' => 'Skani IP adresi:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -575,14 +583,15 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Waldir
  */
 $messages['pt'] = array(
-	'whatismyip' => 'Qual o meu IP',
+	'whatismyip' => 'Qual é o meu IP',
 	'whatismyip-desc' => 'Mostra o endereço IP do utilizador actual em [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'O seu IP:',
-	'right-whatismyip' => 'Ver [[Special:WhatIsMyIP|o meu IP]]',
+	'right-whatismyip' => 'Ver [[Special:WhatIsMyIP|o endereço IP próprio]]',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

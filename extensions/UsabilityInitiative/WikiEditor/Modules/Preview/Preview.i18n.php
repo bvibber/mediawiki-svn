@@ -229,6 +229,15 @@ $messages['hu'] = array(
 	'wikieditor-preview-loading' => 'Betöltés…',
 );
 
+/** Armenian (Հայերեն)
+ * @author Xelgen
+ */
+$messages['hy'] = array(
+	'wikieditor-preview-preference' => 'Ակտիվացնել կողք–կողքի նախադիտումը',
+	'wikieditor-preview-tab' => 'Նախադիտել',
+	'wikieditor-preview-loading' => 'Բեռնում…',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

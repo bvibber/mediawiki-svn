@@ -612,7 +612,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'crossnamespacelinks' => 'Säite ma Linken an aner Nummraim',
+	'crossnamespacelinks' => 'Säite mat Linken an aner Nummraim',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Lëscht vun de Linken op Säite vun anere Nummraim]], déi et op {{SITENAME}} net sollt ginn',
 	'crossnamespacelinks-summary' => "Dës Säit weist eng Lëscht vun de Linke vun enger Säit aus dem Haaptnummraum op Säiten an aneren Nummraim (ausser fir d'Nummraim {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}}), déi net solle benotzt ginn.",
 	'crossnamespacelinkstext' => '$1 : huet $2 {{PLURAL:$2|Link|Linken}} an den Nummraum « $3 »',

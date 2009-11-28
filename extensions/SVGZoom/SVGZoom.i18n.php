@@ -30,6 +30,13 @@ $messages['be-tarask'] = array(
 	'svgzoom-desc' => 'Дадае магчымасьць панарамаваньня і маштабаваньня ў MediaWiki пры праглядзе файлаў у фармаце SVG',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'svgzoom-desc' => 'Ouzhpennañ a ra da VediaWiki ar barregezhioù zoumiñ ha gweledvaekaat pa seller ouzh restroù SVG',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -289,6 +289,13 @@ $messages['uk'] = array(
 	'mwreleases-desc' => 'Додає [[Mediawiki:Mwreleases-list|список]] підтримуваних релізів, доступних через API',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'mwreleases-desc' => 'Zonta un [[Mediawiki:Mwreleases-list|elenco]] de version suportà, acessibile tramite API',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -381,6 +381,21 @@ $messages['niu'] = array(
 	'ow_history' => 'Liu onoono atu ki tua',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'langman_langname' => 'Nenaşi Coxo:',
+	'langman_iso639-3' => "ISO 639-3 K'odi:",
+	'langman_iso639-2' => "ISO 639-2 K'odi:",
+	'langman_wikimedia' => "Vik'imedyaş K'odi:",
+	'datasearch_language' => 'Nena:',
+	'ow_exporttsv_languages' => 'Nenape:',
+	'ow_dm_OK' => 'HO',
+	'ow_Language' => 'Nena',
+	'ow_Time' => 'Ora',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj

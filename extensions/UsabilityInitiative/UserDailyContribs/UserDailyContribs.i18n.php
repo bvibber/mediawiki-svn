@@ -291,6 +291,13 @@ $messages['uk'] = array(
 	'userdailycontribs-desc' => 'Щоденний внесок користувачів для розширення відстеження кліків',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'userdailycontribs-desc' => "Contributi utente giornalieri par l'estension tràcia-clic",
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

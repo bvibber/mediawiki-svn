@@ -1594,16 +1594,51 @@ Als u vragen hebt over dit distributiesysteem voor uitbreidingen, ga dan naar [[
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author Brest
  */
 $messages['mk'] = array(
 	'extensiondistributor' => 'Преземи го проширувањето за MediaWiki',
 	'extdist-desc' => 'Проширување за дистрибуција на приказни архиви на проширувања',
+	'extdist-not-configured' => 'Задајте $wgExtDistTarDir и $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Зададениот директориум со работниот примерок не постои!',
 	'extdist-no-such-extension' => 'Нема проширување со име „$1“',
+	'extdist-no-such-version' => 'Проширувањето „$1“ не постои во верзијата „$2“.',
+	'extdist-choose-extension' => 'Одберете го проширувањето коешто сакате да го преземете',
+	'extdist-wc-empty' => 'Зададениот директориум со работниот примерок нема дистрибутивни проширувања!',
+	'extdist-submit-extension' => 'Продолжи',
 	'extdist-current-version' => 'Развојна верзија (trunk)',
+	'extdist-choose-version' => '<big>Го преземате проширувањето <b>$1</b>.</big>
+
+Изберете ја вашата верзија на MediaWiki.
+
+Највеќето проширувања работат на многу верзии на MediaWiki, така што ако вашата MediaWiki ја нема, или пак ако имате потреба од можностите во најновото проширување, тогаш пробајте ја последната верзија.',
+	'extdist-no-versions' => 'Избраното проширување ($1) не е достапно во ниту една верзија!',
 	'extdist-submit-version' => 'Продолжи',
 	'extdist-no-remote' => 'Не можам да го контактирам оддалечениот Subversion клиент.',
+	'extdist-remote-error' => 'Грешка од оддалечениот Subversion клиент: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Грешен одговор  од оддалечениот Subversion клиент.',
 	'extdist-svn-error' => 'Настана грешка во Subversion: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Грешка при обработката на XML од „svn info“: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar го даде кодот на грешката $1:',
+	'extdist-created' => "Направена е снимка од верзијата <b>$2</b> на проширувањето <b>$1</b> за MediaWiki <b>$3</b>. Преземањето треба да започне автоматски за 5 секунди.  URL-адресата за оваа снимка е:
+:$4
+Може да се користи за моментално симнување на опслужувач, но ве молиме да не правите прибелешка за него, бидејќи содржината нема да се обновува, а подоцна може да биде избришана.
+
+Tar податотеката треба да ја распакувате во именикот за проширувања. На пример, на ОС од типот на unix:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Во Windows за таа намена можете да го употребите [http://www.7-zip.org/ 7-zip].
+
+Ако вашето вики е на оддалечен сервер, отпакувајте ги податотеките во привремен именик на вашиот локален компјутер, а потоа подигнете ги '''сите''' отпакувани податотеки во именикот за проширувања на опслужувачот.
+
+Имајте на ум дека некои проширувања бараат податотека наречена ExtensionFunctions.php, која ќе ја најдете на <tt>extensions/ExtensionFunctions.php</tt>, т.е., во ''родителскиот'' именик на именикот на ова конкретно проширување. Снимката за овие проширувања ја содржи оваа податотека како tar-бомба, која се распакува во ./ExtensionFunctions.php. Немојте да испуштите да ја подигнете оваа податотека на вашиот оддалечен опслужувач.
+
+Откако ќе ги распакувате податотеките, ќе треба да го регистрирате проширувањето во LocalSettings.php. Документацијата на проширувањето треба да има инструкции за оваа постапка.
+
+Доколку имате прашања за овој дистрибутивен систем на проширувања, обратете се на страницата [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Преземи друго проширување',
 );
 
@@ -2079,7 +2114,7 @@ S'it l'has chèiche chestion su sto sistema ëd distribuì j'estension, për pia
  */
 $messages['pt'] = array(
 	'extensiondistributor' => 'Descarregar extensão MediaWiki',
-	'extdist-desc' => 'Extensão para distribuir arquivos snapshot de extensões',
+	'extdist-desc' => "Extensão para distribuir instantâneos arquivados ''(snapshot archives)'' de extensões",
 	'extdist-not-configured' => 'Por favor, configure $wgExtDistTarDir e $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'A directoria de cópia de trabalho configurada não existe!',
 	'extdist-no-such-extension' => 'A extensão "$1" não existe',

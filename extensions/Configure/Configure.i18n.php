@@ -7381,7 +7381,7 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 	'configure-throttle-action-edit' => 'Editar',
 	'configure-throttle-action-move' => 'Mover',
 	'configure-throttle-action-rollback' => 'Desfazer',
-	'configure-throttle-action-mailpassword' => 'Enviar lembrete de palavra-chave',
+	'configure-throttle-action-mailpassword' => 'Enviar recuperação da palavra-chave',
 	'configure-throttle-action-emailuser' => 'Enviar e-mail',
 	'configure-throttle-group-anon' => 'Todos os utilizadores anónimos',
 	'configure-throttle-group-user' => 'Por conta de utilizador',
@@ -7480,6 +7480,7 @@ $messages['pt-br'] = array(
 	'extensions' => 'Configurar as extensões',
 	'right-configure' => 'Configurar o wiki',
 	'right-configure-all' => 'Configurar todos os parâmetros do wiki',
+	'configure-throttle-action-mailpassword' => 'Enviar lembrete de palavra-chave',
 );
 
 /** Tarifit (Tarifit)

@@ -1245,20 +1245,21 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'imagemap_desc' => 'Permite mapas de imagem clicáveis no lado do cliente usando a "tag" <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_no_image' => '&lt;imagemap&gt;: é necessário especificar uma imagem na primeira linha',
-	'imagemap_invalid_image' => '&lt;imagemap&gt;: imagem inválida ou inexistente',
+	'imagemap_no_image' => 'Erro: é necessário especificar uma imagem na primeira linha',
+	'imagemap_invalid_image' => 'Erro: imagem inválida ou inexistente',
 	'imagemap_bad_image' => 'Erro: a imagem está na lista negra para esta página',
-	'imagemap_no_link' => '&lt;imagemap&gt;: não foi encontrado um link válido ao final da linha $1',
-	'imagemap_invalid_title' => '&lt;imagemap&gt;: título inválido no link da linha $1',
-	'imagemap_missing_coord' => '&lt;imagemap&gt;: coordenadas insuficientes para formar uma figura na linha $1',
-	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: figura não reconhecida na linha $1. Cada linha precisa iniciar com: default, rect, circle ou poly',
-	'imagemap_no_areas' => '&lt;imagemap&gt;: é necessário fornecer ao menos uma especificação de área',
-	'imagemap_invalid_coord' => '&lt;imagemap&gt;: coordenada inválida na linha $1. 0 necessário que seja um número',
-	'imagemap_invalid_desc' => '&lt;imagemap&gt;: especificação desc inválida. 0 necessário que seja uma dentre: <tt>$1</tt>',
+	'imagemap_no_link' => 'Erro: não foi encontrada nenhuma ligação válida, ao final da linha $1',
+	'imagemap_invalid_title' => 'Erro: título inválido numa ligação, na linha $1',
+	'imagemap_missing_coord' => 'Erro: coordenadas insuficientes para formar uma figura, na linha $1',
+	'imagemap_unrecognised_shape' => 'Erro: figura não reconhecida, na linha $1 - cada linha tem de começar por: default, rect, circle ou poly',
+	'imagemap_no_areas' => 'Erro: tem de ser fornecida pelo menos uma especificação de área',
+	'imagemap_invalid_coord' => 'Erro: coordenada inválida, na linha $1 - tem de ser um número',
+	'imagemap_invalid_desc' => 'Erro: especificação desc inválida - tem de ser uma destas: <tt>$1</tt>',
 	'imagemap_description' => 'Sobre esta imagem',
 	'imagemap_poly_odd' => 'Erro: encontrado polígono com número ímpar de coordenadas na linha $1',
 );

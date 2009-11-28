@@ -526,12 +526,13 @@ Contròla {{PLURAL:$2|sta pàgina corelà-sì|ste pàgine corelà-sì}}: $1.',
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'editsimilar-desc' => 'Encoraja os utilizadores a editarem uma página semelhante depois de gravar uma página',
 	'editsimilar-thanks' => 'Obrigado pela sua contribuição.
-Espreite {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.',
+Visite {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Obrigado pela sua contribuição.
 {{PLURAL:$2|Esta página poderia|Estas páginas poderiam}} também beneficiar da sua ajuda: $1.',
 	'editsimilar-thankyou' => 'Obrigado pela sua contribuição, $1!',

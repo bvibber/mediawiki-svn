@@ -117,6 +117,14 @@ Don't change '|' character.",
 	'tasks_status_open' => 'This is an adjective.',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'tasks_table_header_page' => 'Sayfe',
+	'tasks_search_form_title' => 'Mgori',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

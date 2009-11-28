@@ -896,16 +896,17 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Brunoy Anastasiya Seryozhenko
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'ajax-se-desc' => 'Mostra utilizadores que estão a editar a mesma página',
 	'ajax-se-title' => 'Editando no momento:',
-	'ajax-se-pending' => 'atualização pendente... (clique neste box ou inicie a edição)',
+	'ajax-se-pending' => 'actualização pendente... (clique esta caixa ou comece a editar)',
 	'ajax-se-idling' => '($1 segundos atrás)',
 	'ajax-se-pagedoesnotexist' => 'página não existe',
-	'ajax-se-userinvalid' => 'ERR: utilizador inválido',
-	'ajax-se-usernotfound' => 'ERR: utilizador não encontrado',
+	'ajax-se-userinvalid' => 'Erro: utilizador inválido',
+	'ajax-se-usernotfound' => 'Erro: utilizador não encontrado',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

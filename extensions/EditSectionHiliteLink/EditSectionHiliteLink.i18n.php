@@ -247,10 +247,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Waldir
  */
 $messages['pt'] = array(
-	'editsectionhilitelink-desc' => 'Destacar a seção apropriada de um artigo quando você passar o cursor do rato sobre o link "editar"',
+	'editsectionhilitelink-desc' => 'Destacar a respectiva secção da página quando o cursor for colocado sobre a ligação de edição',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

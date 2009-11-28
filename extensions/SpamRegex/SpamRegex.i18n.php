@@ -1285,6 +1285,10 @@ Se ël test a conten l'espression dàita, ël cambi a sarà pa salvà e na spieg
 As sugeriss che l'espression a dovrìa esse pa tròp curta o tròp comun-a.",
 	'spamregex-page-title' => "Blocagi ëd j'espression pa vorsùe dë spam regex",
 	'spamregex-currently-blocked' => "'''Fras blocà al moment:'''",
+	'spamregex-move' => "La rason ch'it l'has anserì a contnìa na fras blocà.",
+	'spamregex-no-currently-blocked' => "'''A-i é pa gnun-e fras blocà.'''",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 gava]) giontà da $5 dzora $6 a $7",
+	'spamregex-page-title-1' => "Blòca fras ch'a dòvra espression regolar",
 );
 
 /** Portuguese (Português)
