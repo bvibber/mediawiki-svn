@@ -228,8 +228,12 @@ if ( typeof context == 'undefined' ) {
 	context.fn = {
 		'addButton': function( options ) {
 			// Ensure that buttons and tabs are visible
-			// TODO: Implement
 			context.$controls.show();
+			context.$buttons.show();
+			return $( '<button />' )
+				.text( $.wikiEditor.autoMsg( options, 'caption' ) )
+				.click( options.action )
+				.appendTo( context.$buttons );
 		},
 		'addView': function( options ) {
 			// Adds a tab
