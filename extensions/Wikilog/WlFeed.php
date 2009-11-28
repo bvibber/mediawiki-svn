@@ -32,6 +32,7 @@ if ( !defined( 'MEDIAWIKI' ) )
  * General extension information.
  */
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'WlFeed',
 	'version'        => '1.0.99.1dev',
 	'author'         => 'Juliano F. Ravasi',
