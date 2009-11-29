@@ -26,9 +26,9 @@ js2AddOnloadHook( function() {
 		// Check if the current values of some form elements are the same as
 		// the original values
 		if(
-			$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val()
-			|| $j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
-			|| $j( '#wikiPreview' ).is( ':visible' )
+			wgAction == 'submit' ||
+			$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val() ||
+			$j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
 		) {
 			// Return our message
 			return gM( 'vector-editwarning-warning' );
