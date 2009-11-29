@@ -103,9 +103,9 @@ js2AddOnloadHook( function() {
 		// Check if the current values of some form elements are the same as
 		// the original values
 		if(
-			$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val()
-			|| $j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
-			|| $j( '#wikiPreview' ).is( ':visible' )
+			wgAction == 'submit' ||
+			$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val() ||
+			$j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
 		) {
 			// Return our message
 			return gM( 'vector-editwarning-warning' );
@@ -118,7 +118,8 @@ js2AddOnloadHook( function() {
 	});
 });
 //Global storage of fallback for onbeforeunload hook
-var fallbackWindowOnBeforeUnload = null;/* JavaScript for SimpleSearch extension */
+var fallbackWindowOnBeforeUnload = null;
+/* JavaScript for SimpleSearch extension */
 
 // Disable mwsuggest.js on searchInput 
 if ( typeof os_autoload_inputs !== 'undefined' && os_autoload_forms !== 'undefined' ) {
