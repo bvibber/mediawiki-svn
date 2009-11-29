@@ -670,6 +670,7 @@ $messages['br'] = array(
 	'viewapc-display-no-delete' => "N'eo ket dilamet",
 	'viewapc-display-mem_size' => 'Ment',
 	'viewapc-ls-options-legend' => 'Dibarzhioù',
+	'viewapc-ls-submit' => 'Mont !',
 	'viewapc-ls-header-name' => 'Anv',
 	'viewapc-ls-header-size' => 'Ment',
 	'viewapc-ls-header-modified' => 'Kemm diwezhañ',
@@ -688,6 +689,7 @@ $messages['br'] = array(
 	'viewapc-ls-limit-none' => 'An holl',
 	'viewapc-ls-more' => "''$1 {{PLURAL:$1|moned|moned}}'' all zo",
 	'viewapc-ls-nodata' => "''Roadenn ebet ne glot''",
+	'viewapc-version-changelog' => "Marilh ar c'hemmoù",
 );
 
 /** Bosnian (Bosanski)

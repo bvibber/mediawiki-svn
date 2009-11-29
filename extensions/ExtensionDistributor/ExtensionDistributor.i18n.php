@@ -1648,9 +1648,11 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 $messages['ml'] = array(
 	'extensiondistributor' => 'മീഡിയവിക്കി അനുബന്ധം ഡൗൺലോഡ് ചെയ്യുക',
 	'extdist-not-configured' => 'ദയവായി $wgExtDistTarDir, $wgExtDistWorkingCopy എന്നിവ ക്രമീകരിക്കുക',
+	'extdist-wc-missing' => 'പ്രവർത്തനം പകർത്താനായി ക്രമീകരിക്കപ്പെട്ട ഡയറക്റ്ററി നിലവിലില്ല!',
 	'extdist-no-such-extension' => '"$1" എന്നൊരു അനുബന്ധം ഇല്ല',
 	'extdist-no-such-version' => '"$2" പതിപ്പിൽ "$1" എന്നൊരു അനുബന്ധം ഇല്ല.',
 	'extdist-choose-extension' => 'താങ്കൾക്ക് ഡൗൺലോഡ് ചെയ്യേണ്ട അനുബന്ധം തിരഞ്ഞെടുക്കുക:',
+	'extdist-wc-empty' => 'പ്രവർത്തനം പകർത്താനായി ക്രമീകരിക്കപ്പെട്ട ഡയറക്റ്ററിയിൽ വിതരണം ചെയ്യാവുന്ന അനുബന്ധങ്ങളൊന്നും ഇല്ല!',
 	'extdist-submit-extension' => 'തുടരുക',
 	'extdist-current-version' => 'വികസനഘട്ടത്തിലുള്ള പതിപ്പ് (ട്രങ്ക്)',
 	'extdist-choose-version' => '<big>താങ്കൾ <b>$1</b> എന്ന അനുബന്ധം ഡൗൺലോഡ് ചെയ്യുകയാണ്.</big>
@@ -1664,6 +1666,7 @@ $messages['ml'] = array(
 	'extdist-remote-error' => 'വിദൂര സബ്‌‌വേർഷൻ ക്ലയന്റിൽ നിന്നുണ്ടായ പിശക്: <pre>$1</pre>',
 	'extdist-remote-invalid-response' => 'വിദൂര സബ്‌‌വേർഷൻ ക്ലയന്റ് അസാധുവായ പ്രതികരണമാണ് നൽകിയത്.',
 	'extdist-svn-error' => 'സബ്‌‌വേർഷൻ ഒരു പിശക് അഭിമുഖീകരിക്കുന്നു: <pre>$1</pre>',
+	'extdist-svn-parse-error' => '"svn info" തന്ന എക്സ്.എം.എൽ. ഉപയോഗിക്കാൻ കഴിയില്ല: <pre>$1</pre>',
 	'extdist-want-more' => 'മറ്റൊരു അനുബന്ധം നേടുക',
 );
 

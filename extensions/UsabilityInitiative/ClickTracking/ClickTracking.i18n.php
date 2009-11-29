@@ -192,6 +192,7 @@ $messages['br'] = array(
 	'ct-expert' => 'Mailh',
 	'ct-editing' => "Oc'h aozañ er mare-mañ :",
 	'ct-anon-users' => 'implijerien dizanv',
+	'ct-user-contribs' => 'Sammad hollek degasadennoù an implijer',
 	'ct-and' => 'ha(g)',
 	'ct-update-table' => 'Hizivaat an daolenn',
 );
@@ -923,6 +924,8 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'clicktracking' => 'യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് ക്ലിക്ക് പിന്തുടരൽ',
+	'clicktracking-desc' => 'താൾ റിഫ്രഷ് ചെയ്യേണ്ടതില്ലാത്ത സാഹചര്യങ്ങളിൽ ഉപയോഗിക്കുന്ന ക്ലിക്കുകൾ പിന്തുടരൽ',
 	'ct-event-name' => 'പരിപാടിയുടെ പേര്',
 	'ct-expert-header' => '"വിദഗ്ദ്ധ" ഞെക്കലുകൾ',
 	'ct-intermediate-header' => '"മദ്ധ്യവർത്തി" ഞെക്കലുകൾ',

@@ -94,6 +94,23 @@ $messages['fr'] = array(
 	'sendmailtowiki-err-onlyplain' => "En raison d'éventuelles erreurs d'interprétations, seuls les messages contenant du texte brut sont acceptés.",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'sendmailtowiki-desc' => 'Publicar contido wiki a través dun enderezo de correo electrónico dinámico',
+	'prefs-sendmailtowiki' => 'Publicación de contido por correo electrónico',
+	'sendmailtowiki-inemail' => 'Enderezo de correo electrónico dedicado:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Un campo baleiro para o número PIN desactiva a publicación de contidos no wiki coa súa conta.',
+	'sendmailtowiki-err-pinlength' => 'O PIN debe conter exactamente 5 números.',
+	'sendmailtowiki-err-wrongprefix' => 'Prefixo de conta wiki erróneo. Póñase en contacto co administrador.',
+	'sendmailtowiki-err-invalidaccount' => 'Conta non válida. Comprobe o enderezo de correo electrónico de destino.',
+	'sendmailtowiki-err-invalidsender' => 'Remitente non válido. Comprobe o enderezo de correo electrónico de procedencia.',
+	'sendmailtowiki-err-invalidpin' => 'PIN non válido. Acceso denegado.',
+	'sendmailtowiki-err-onlyplain' => 'Debido a posibles erros de interpretación, só se aceptan mensaxes de texto.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -146,6 +163,23 @@ $messages['ja'] = array(
 	'sendmailtowiki-err-onlyplain' => '誤った解釈を防ぐために、純粋なテキストのメッセージのみを受け付けます。',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'sendmailtowiki-desc' => 'Donn övver en doför fallwieß faßjelaate Adräß övver <i lang="en">e-mail</i> en et Wiki schriive.',
+	'prefs-sendmailtowiki' => 'Övver <i lang="en">e-mail</i> en et Wiki schriive',
+	'sendmailtowiki-inemail' => 'De zohjedeijlte Adräß för <i lang="en">e-mail</i>:',
+	'sendmailtowiki-inpin' => 'PIN-Kood:',
+	'prefs-help-sendmailtowiki_pin' => 'Nix för dä PIN-Kood enzjävve schalldt et Schriive övver <i lang="en">e-mail</i> för Desch uß.',
+	'sendmailtowiki-err-pinlength' => 'Dä PIN-Kood moß jenou 5 Zeffere lang sin.',
+	'sendmailtowiki-err-wrongprefix' => 'Dat es ene verkehte Försaz fö ene Zohjang nohm Wiki. Donn ene Wiki_Köbes froore.',
+	'sendmailtowiki-err-invalidaccount' => 'Dat es ene onjöltijje Zohjang zom Wiki. Donn de Adräß övverproove, woh Ding <i lang="en">e-mail</i> hen jejange es.',
+	'sendmailtowiki-err-invalidsender' => 'Dat es ene onjöltijje Afsender. Donn Ding Äddräß pröve, vun woh De de <i lang="en">e-mail</i> verschek häß.',
+	'sendmailtowiki-err-invalidpin' => 'Verkehte PIN-Kood. Zohjang nit zohjelohße.',
+	'sendmailtowiki-err-onlyplain' => 'Domet et keine Dorjeneeijn jit, dum_mer bloß Nohreescht us öhndlijje Täxte aanämme.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -154,6 +188,13 @@ $messages['lb'] = array(
 	'sendmailtowiki-inpin' => 'PIN:',
 	'sendmailtowiki-err-pinlength' => 'De PIN muss genee 5 Zifferen hunn.',
 	'sendmailtowiki-err-invalidpin' => 'PIN net valabel. Zougang refüséiert',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'sendmailtowiki-inpin' => 'PIN:',
 );
 
 /** Dutch (Nederlands)

@@ -224,12 +224,14 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'patrol-endorse' => 'Aprouiñ',
 	'patrol-revert' => 'Assevel',
 	'patrol-revert-reason' => 'Abeg :',
+	'patrol-skip' => 'Lezel a-gostez',
 	'patrol-resume' => "Klikit amañ evit kenderc'hel.",
 	'group-patroller' => 'Patrouilherien',
 	'group-patroller-member' => 'patrouilher',

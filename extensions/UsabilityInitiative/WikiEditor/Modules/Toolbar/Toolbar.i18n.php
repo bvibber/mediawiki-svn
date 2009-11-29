@@ -8173,6 +8173,7 @@ $messages['ml'] = array(
 	'wikieditor-toolbar-tool-big-example' => 'വലിയ എഴുത്ത്',
 	'wikieditor-toolbar-tool-small' => 'ചെറിയത്',
 	'wikieditor-toolbar-tool-small-example' => 'ചെറിയ എഴുത്ത്',
+	'wikieditor-toolbar-group-baseline' => 'അക്ഷരസ്ഥാനം',
 	'wikieditor-toolbar-group-insert' => 'ഉൾപ്പെടുത്തുക',
 	'wikieditor-toolbar-tool-gallery' => 'ചിത്രശാല',
 	'wikieditor-toolbar-tool-gallery-example' => '{{ns:file}}:Example.jpg|കുറിപ്പ്1
@@ -8305,6 +8306,7 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Diagramma Della Verita
  * @author Kurniasan
  */
@@ -8370,8 +8372,20 @@ $messages['ms'] = array(
 {{ns:file}}:Contoh.jpg|Kapsyen2',
 	'wikieditor-toolbar-tool-newline' => 'Baris baru',
 	'wikieditor-toolbar-tool-table' => 'Jadual',
-	'wikieditor-toolbar-tool-table-example' => 'Baris $1, sel $2',
-	'wikieditor-toolbar-tool-table-example-header' => 'Baris $1, sel $2 (tajuk)',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! pengepala 1
+! pengepala 2
+! pengepala 3
+|-
+| baris 1, sel 1
+| baris 1, sel 2
+| baris 1, sel 3
+|-
+| baris 2, sel 1
+| baris 2, sel 2
+| baris 2, sel 3',
+	'wikieditor-toolbar-tool-table-example' => 'Teks sel',
+	'wikieditor-toolbar-tool-table-example-header' => 'Teks pengepala',
 	'wikieditor-toolbar-tool-table-title' => 'Sisipkan jadual',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Baris',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Lajur',

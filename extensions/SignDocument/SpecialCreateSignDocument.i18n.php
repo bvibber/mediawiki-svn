@@ -243,6 +243,14 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'createsigndocument' => 'Gweredekaat ar gwiriañ teulioù',
+	'createsigndoc-head' => "Ober gant ar furmskrid-mañ evit krouiñ ur bajenn 'Teul sinañ' evit ar bajenn merket, d'an implijerien da c'hellout [[Special:SignDocument|he sinañ]].
+Merkit anv ar bajenn a fell deoc'h gweredekaat ar sinadur niverel eviti, izili ar strollad implijerien a vo aotreet da sinañ, peseurt maeziennoù a c'hallo an implijerien gwelet ha peseurt re a vo diret, an oad bihanañ evit gellout emezelañ er strollad (n'eus ket a oad bihanañ dre ziouer);
+hag ur rakskrid a ginnig an teul berr-ha-berr hag a bourchas kuzulioù d'an implijerien.
+
+<b>Evit ar mare n'haller ket diverkañ un teul sinañ ur wezh m'eo bet krouet</b> nemet dre gemmañ diaz titouroù ar wiki.
+A zo muioc'h, an destenn diskwelet war an teul sinañ a vo an destenn \"red\", ne vern ar c'hemmoù a vo degaset enni goude-se.
+Se zo kaoz e rankit bezañ peursur eo stabil a-walc'h an teul evit bezañ sinet.
+Hag \"a-raok kas ar furmskrid-mañ\", bezit sur eo bet leuniet an holl vaeziennoù tre evel ma oa ret ober.",
 	'createsigndoc-pagename' => 'Pajenn :',
 	'createsigndoc-allowedgroup' => 'Strollad aotreet :',
 	'createsigndoc-email' => "Chomlec'h postel :",

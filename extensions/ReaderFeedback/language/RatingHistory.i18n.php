@@ -220,6 +220,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'ratinghistory-tab' => 'istimadur',
+	'ratinghistory-period' => 'Prantad :',
 	'ratinghistory-month' => 'miz diwezhañ',
 	'ratinghistory-3months' => '3 miz diwezhañ',
 	'ratinghistory-year' => 'bloaz tremenet',
@@ -227,6 +228,7 @@ $messages['br'] = array(
 	'ratinghistory-ave' => 'Keidenn : $1',
 	'ratinghistory-purge' => 'riñsañ ar grubuilh',
 	'ratinghistory-svg' => 'Gwelet evel SVG',
+	'ratinghistory-table-votes' => 'Mouezhioù',
 );
 
 /** Bosnian (Bosanski)

@@ -489,10 +489,11 @@ $messages['br'] = array(
 	'contribstats-avg' => 'Keitat (SUA)',
 	'contribstats-percentage-ytd' => 'Dregantad (er bl.-mañ)',
 	'contribstats-total-ytd' => 'Hollad (er bloaz-mañ)',
-	'contribstats-day-totals' => 'Hollad evit hiziv',
+	'contribstats-day-totals' => 'Hollad an deiz',
 	'contribstats-week' => 'Sizhun',
 	'contribstats-clicks' => 'Klikoù',
 	'contribstats-template' => 'Patrom',
+	'fundraiserstats-tab-totals' => 'Hollad (dollaroù SUA)',
 );
 
 /** Bosnian (Bosanski)
@@ -1312,6 +1313,8 @@ $messages['fi'] = array(
 	'contribstats-clicks' => 'Klikkaukset',
 	'contribstats-donations' => 'Lahjoitukset',
 	'contribstats-template' => 'Malline',
+	'contribstats-donatepage' => 'Lahjoitussivu',
+	'contribstats-average' => 'Keskiarvo',
 	'fundraiserstatistics' => 'Rahankeräyksen tilastoja',
 	'fundraiserstats-date' => 'Päiväys',
 	'fundraiserstats-day' => 'Päivä $1 / $2',

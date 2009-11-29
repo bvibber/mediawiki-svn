@@ -114,9 +114,14 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'lua_desc' => "Astenn a ra ar parser a-benn skoriñ bloc'hadennoù enframmet ar c'hod [http://www.lua.org/ Lua]",
 	'lua_error' => 'Fazi el linenn $1',
 	'lua_extension_notfound' => "N'eo ket kefluniet an astenn Lua",
+	'lua_interp_notfound' => "N'eo ket bet kavet dielfenner Lua",
 	'lua_error_internal' => 'Fazi diabarzh',
+	'lua_overflow_recursion' => 'Bevenn ar rekursadur tizhet',
+	'lua_overflow_loc' => 'Niver brasañ a linennoù kod tizhet',
+	'lua_overflow_time' => 'Pad erounit hirañ tizhet',
 );
 
 /** Bosnian (Bosanski)

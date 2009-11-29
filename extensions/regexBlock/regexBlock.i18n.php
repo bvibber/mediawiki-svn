@@ -389,6 +389,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -401,6 +402,7 @@ $messages['br'] = array(
 	'regexblock-form-submit-expiry' => 'Diferit un termen, mar plij.',
 	'regexblock-view-blocked' => 'Gwelet ar stankadurioù gant :',
 	'regexblock-view-all' => 'Pep tra',
+	'regexblock-view-go' => 'Mont',
 	'regexblock-view-reason' => 'abeg : $1',
 	'regexblock-view-block-infinite' => 'stankadur pad',
 	'regexblock-view-block-by' => 'stanket gant :',
