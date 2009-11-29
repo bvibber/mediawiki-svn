@@ -1001,10 +1001,18 @@ function createOptionAttributeOption( $attributeId, $optionMeaningId, $languageI
 function removeOptionAttributeOption( $optionId ) {
 	$dc = wdGetDataSetContext();
 	$dbr =& wfGetDB( DB_MASTER );
+	$transactionId = getUpdateTransactionId() ;
 	$sql = "UPDATE {$dc}_option_attribute_options" .
-			' SET remove_transaction_id = ' . getUpdateTransactionId() .
+			' SET remove_transaction_id = ' . $transactionId .
 			' WHERE option_id = ' . $optionId .
 			' AND ' . getLatestTransactionRestriction( "{$dc}_option_attribute_options" );
+	$dbr->query( $sql );
+
+	// and remove the attribute values in the syntrans using this option.
+	$sql = "UPDATE {$dc}_option_attribute_values" .
+			' SET remove_transaction_id = ' . $transactionId .
+			' WHERE option_id = ' . $optionId .
+			' AND remove_transaction_id IS NULL' ;
 	$dbr->query( $sql );
 }
 
