@@ -20,17 +20,19 @@ body.rtl .wikiEditor-ui-toolbar .sections {
 	float: left;
 	width: 100%;
 	border-top: solid 1px #DDDDDD;
-	background-color: #F3F3F3;
+	background-color: #E0EEf7;
 }
 .wikiEditor-ui-toolbar {
 	background-image: url(../images/wikiEditor/toolbar/base.png);
 	background-position: left top;
 	background-repeat: repeat-x;
 }
+/*
 .wikiEditor-ui-toolbar .toolbar {
 	background-image: url(../images/wikiEditor/toolbar/base.png);
 	background-position: left top;
 }
+*/
 body.rtl .wikiEditor-ui-toolbar .sections .section {
 	float: right;
 }
@@ -196,6 +198,7 @@ body.rtl .wikiEditor-ui-toolbar .group > .tool-select {
 	padding-right: 22px;
 	margin-right: 4px;
 	cursor: pointer;
+	color: #333333;
 }
 body.rtl .wikiEditor-ui-toolbar .group .tool-select .label {
 	background-position: center left;
