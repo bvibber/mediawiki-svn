@@ -83,7 +83,9 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-right {
 	padding-left: 1em;
 	border-top: solid 1px white;
 }
-
+.wikiEditor-ui-buttons button {
+	margin-left: 0.5em;
+}
 .wikiEditor-ui-tabs div {
 	float: left;
 	height: 2.5em;
