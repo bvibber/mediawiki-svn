@@ -776,24 +776,24 @@ js2AddOnloadHook( function() {
 		html: '\
 			<div id="edittoolbar-link-tabs">\
 				<ul>\
-					<li><a href="#edittoolbar-link-dialog-tab-int" rel="wikieditor-toolbartool-link-int"></a></li>\
-					<li><a href="#edittoolbar-link-dialog-tab-ext" rel="wikieditor-toolbartool-link-ext"></a></li>\
+					<li><a href="#edittoolbar-link-dialog-tab-int" rel="wikieditor-toolbar-tool-link-int"></a></li>\
+					<li><a href="#edittoolbar-link-dialog-tab-ext" rel="wikieditor-toolbar-tool-link-ext"></a></li>\
 				</ul>\
 				<div id="edittoolbar-link-dialog-tab-int"><fieldset><table><tr>\
-					<td><label for="edittoolbar-link-int-target" rel="wikieditor-toolbartool-link-int-target"></label></td>\
+					<td><label for="edittoolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target"></label></td>\
 					<td>\
 						<input type="text" id="edittoolbar-link-int-target" size="50" />\
 						<div id="edittoolbar-link-int-target-status" style="display: inline;"></div>\
 					</td>\
 				</tr><tr>\
-					<td><label for="edittoolbar-link-int-text" rel="wikieditor-toolbartool-link-int-text"></label></td>\
+					<td><label for="edittoolbar-link-int-text" rel="wikieditor-toolbar-tool-link-int-text"></label></td>\
 					<td><input type="text" id="edittoolbar-link-int-text" size="50" /></td>\
 				</table></fieldset></div>\
 				<div id="edittoolbar-link-dialog-tab-ext"><fieldset><table><tr>\
-					<td><label for="edittoolbar-link-ext-target" rel="wikieditor-toolbartool-link-ext-target"></label></td>\
+					<td><label for="edittoolbar-link-ext-target" rel="wikieditor-toolbar-tool-link-ext-target"></label></td>\
 					<td><input type="text" id="edittoolbar-link-ext-target" size="50" /></td>\
 				</tr><tr>\
-					<td><label for="edittoolbar-link-ext-text" rel="wikieditor-toolbartool-link-ext-text"></label></td>\
+					<td><label for="edittoolbar-link-ext-text" rel="wikieditor-toolbar-tool-link-ext-text"></label></td>\
 					<td><input type="text" id="edittoolbar-link-ext-text" size="50" /></td>\
 				</table></fieldset></div>\
 			</div>',
@@ -1110,16 +1110,16 @@ js2AddOnloadHook( function() {
 		titleMsg: 'wikieditor-toolbar-tool-table-title',
 		id: 'wikieditor-toolbar-table-dialog',
 		html: '\
-			<fieldset><legend rel="wikieditor-toolbartool-table-dimensions"></legend><table><tr>\
+			<fieldset><legend rel="wikieditor-toolbar-tool-table-dimensions"></legend><table><tr>\
 				<td><input type="checkbox" id="edittoolbar-table-dimensions-header" value="1" /></td>\
 				<td class="label"><label for="edittoolbar-table-dimensions-header"\
-					rel="wikieditor-toolbartool-table-dimensions-header"></label></td>\
+					rel="wikieditor-toolbar-tool-table-dimensions-header"></label></td>\
 			</tr></table><table><tr>\
 				<td class="label"><label for="edittoolbar-table-dimensions-columns"\
-					rel="wikieditor-toolbartool-table-dimensions-columns"></label></td>\
+					rel="wikieditor-toolbar-tool-table-dimensions-columns"></label></td>\
 				<td><input type="text" id="edittoolbar-table-dimensions-columns" size="3" /></td>\
 				<td class="label"><label for="edittoolbar-table-dimensions-rows"\
-					rel="wikieditor-toolbartool-table-dimensions-rows"></label></td>\
+					rel="wikieditor-toolbar-tool-table-dimensions-rows"></label></td>\
 				<td><input type="text" id="edittoolbar-table-dimensions-rows" size="3" /></td>\
 			</tr></table></fieldset>',
 		init: function() {
@@ -1209,23 +1209,23 @@ js2AddOnloadHook( function() {
 		id: 'wikieditor-toolbar-replace-dialog',
 		html: '\
 			<div id="edittoolbar-replace-message">\
-				<div id="edittoolbar-replace-nomatch" rel="wikieditor-toolbartool-replace-nomatch"></div>\
+				<div id="edittoolbar-replace-nomatch" rel="wikieditor-toolbar-tool-replace-nomatch"></div>\
 				<div id="edittoolbar-replace-success"></div>\
-				<div id="edittoolbar-replace-emptysearch" rel="wikieditor-toolbartool-replace-emptysearch"></div>\
+				<div id="edittoolbar-replace-emptysearch" rel="wikieditor-toolbar-tool-replace-emptysearch"></div>\
 				<div id="edittoolbar-replace-invalidregex"></div>\
 			</div>\
 			<fieldset><table style="width: 100%;"><tr>\
-				<td><label for="edittoolbar-replace-search" rel="wikieditor-toolbartool-replace-search"></label></td>\
+				<td><label for="edittoolbar-replace-search" rel="wikieditor-toolbar-tool-replace-search"></label></td>\
 				<td><input type="text" id="edittoolbar-replace-search" style="width: 100%;" /></td>\
 			</tr><tr>\
-				<td><label for="edittoolbar-replace-replace" rel="wikieditor-toolbartool-replace-replace"></label></td>\
+				<td><label for="edittoolbar-replace-replace" rel="wikieditor-toolbar-tool-replace-replace"></label></td>\
 				<td><input type="text" id="edittoolbar-replace-replace" style="width: 100%;" /></td>\
 			</tr></table><table><tr>\
 				<td><input type="checkbox" id="edittoolbar-replace-case" /></td>\
-				<td><label for="edittoolbar-replace-case" rel="wikieditor-toolbartool-replace-case"></label></td>\
+				<td><label for="edittoolbar-replace-case" rel="wikieditor-toolbar-tool-replace-case"></label></td>\
 			</tr><tr>\
 				<td><input type="checkbox" id="edittoolbar-replace-regex" /></td>\
-				<td><label for="edittoolbar-replace-regex" rel="wikieditor-toolbartool-replace-regex"></label></td>\
+				<td><label for="edittoolbar-replace-regex" rel="wikieditor-toolbar-tool-replace-regex"></label></td>\
 			</tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
