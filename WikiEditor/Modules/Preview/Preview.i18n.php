@@ -393,6 +393,15 @@ $messages['sah'] = array(
 $messages['si'] = array(
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'wikieditor-preview-preference' => 'Zapnúť náhľad vedľa úprav',
+	'wikieditor-preview-tab' => 'Náhľad',
+	'wikieditor-preview-loading' => 'Načítava sa...',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

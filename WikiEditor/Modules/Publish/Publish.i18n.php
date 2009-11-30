@@ -141,6 +141,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'wikieditor-publish-preference' => 'Omogući objavljivanje u koracima',
 	'wikieditor-publish-button-publish' => 'Objavi',
 	'wikieditor-publish-button-cancel' => 'Odustani',
 	'wikieditor-publish-dialog-title' => 'Objavi na {{SITENAME}}',
@@ -613,6 +614,21 @@ $messages['sah'] = array(
 $messages['si'] = array(
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'wikieditor-publish-preference' => 'Zapnúť publikovanie krok za krokom',
+	'wikieditor-publish-button-publish' => 'Publikovať',
+	'wikieditor-publish-button-cancel' => 'Zrušiť',
+	'wikieditor-publish-dialog-title' => 'Publikovať na {{GRAMMAR:lokál|{{SITENAME}}}}',
+	'wikieditor-publish-dialog-summary' => 'Zhrnutie úprav (stručný popis zmien, ktoré ste vykonali):',
+	'wikieditor-publish-dialog-minor' => 'Drobná úprava',
+	'wikieditor-publish-dialog-watch' => 'Sledovať túto stránku',
+	'wikieditor-publish-dialog-publish' => 'Zverejniť',
+	'wikieditor-publish-dialog-goback' => 'Prejsť späť',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -705,6 +721,7 @@ $messages['vec'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'wikieditor-publish-preference' => 'Xuất bản từng bước một',
 	'wikieditor-publish-button-publish' => 'Xuất bản',
 	'wikieditor-publish-button-cancel' => 'Hủy bỏ',
 	'wikieditor-publish-dialog-title' => 'Xuất bản tới {{SITENAME}}',
