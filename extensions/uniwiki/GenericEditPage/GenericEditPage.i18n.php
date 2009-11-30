@@ -1029,6 +1029,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'gep-categories' => 'Abdeelinge',
 	'gep-addcategorybutton' => 'Dezu duh',
 	'gep-addsectionbutton' => 'Dezu duh',
 );

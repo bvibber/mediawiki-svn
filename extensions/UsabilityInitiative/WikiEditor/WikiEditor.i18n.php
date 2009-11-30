@@ -66,6 +66,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'wikieditor' => 'Napredni interfejs za uređivanje wikiteksta',
 	'wikieditor-desc' => 'Omogućava proširivi interfejs za uređivanje wikiteksta i mnoge module sa brojnim mogućnostima',
+	'wikieditor-wikitext-tab' => 'Wikitekst',
 );
 
 /** Czech (Česky)
@@ -304,6 +305,15 @@ $messages['sah'] = array(
 	'wikieditor-wikitext-tab' => 'Биики тиэкис',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'wikieditor' => 'Pokročilé rozhranie na úpravu wikitextu',
+	'wikieditor-desc' => 'Poskytuje rozšíriteľné rozhranie na úpravu wikitextu a mnohé moduly poskytujúce funkcionalitu',
+	'wikieditor-wikitext-tab' => 'Wikitext',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -345,6 +355,7 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'wikieditor' => 'Giao diện sửa đổi văn bản wiki nâng cao',
 	'wikieditor-desc' => 'Cung cấp giao diện sửa đổi văn bản wiki có thể mở rộng, cũng như nhiều tính năng khác',
+	'wikieditor-wikitext-tab' => 'Mã wiki',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

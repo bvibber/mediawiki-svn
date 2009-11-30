@@ -6998,8 +6998,11 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'mv_remove_reason' => 'Grund fers Lösche:',
+	'mv_upload_file' => 'Feil ufflaade',
 	'mv_edit' => 'Ennere',
 	'mv_history' => 'Gschicht',
+	'mv_existing_categories' => '{{PLURAL:$1|Abdeeling|Abdeelinge}}:',
+	'mv_search_categories' => 'Abdeelinge',
 	'mv_search_bills' => 'Lischt',
 	'mv_search_and' => 'unn',
 	'mv_search_or' => 'odder',

@@ -208,6 +208,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -220,10 +221,13 @@ $messages['br'] = array(
 	'closewikis-page-reopen-reason' => 'Abeg :',
 	'closewikis-page-reopen-submit' => 'Addigeriñ',
 	'closewikis-page-err-closed' => 'Serret eo ar wiki dija',
+	'closewikis-page-err-opened' => "N'eo ket serret ar wiki",
 	'closewikis-list' => 'Roll ar wikioù serret',
 	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-list-header-by' => 'Serret gant',
-	'closewikis-log-close' => 'en deus serret $2',
+	'closewikis-list-header-timestamp' => "Serret d'an",
+	'closewikis-log-close' => '{{Gender:.|en|he}} deus serret $2',
+	'closewikis-log-reopen' => '{{Gender:.|en|he}} deus addigoret $2',
 	'right-editclosedwikis' => 'Aozañ ar wikioù serret',
 	'right-closewikis' => 'Serriñ ar wikioù',
 );

@@ -2168,6 +2168,8 @@ $messages['os'] = array(
 $messages['pdc'] = array(
 	'youtubeauthsub_password' => 'YouTube-Paesswatt',
 	'youtubeauthsub_keywords' => 'Keywadde',
+	'youtubeauthsub_category' => 'Abdeeling',
+	'youtubeauthsub_uploadbutton' => 'Ufflaade',
 );
 
 /** Polish (Polski)

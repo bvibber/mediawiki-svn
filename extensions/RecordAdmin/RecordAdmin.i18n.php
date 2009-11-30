@@ -1413,6 +1413,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'recordadmin-buttonsearch' => 'Guck uff',
 	'recordadmin-editlink' => 'ennere',
 	'recordadmin-modified' => 'Gennert',
 );

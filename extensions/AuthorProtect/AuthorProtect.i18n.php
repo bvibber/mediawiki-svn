@@ -912,6 +912,26 @@ $messages['mhr'] = array(
 	'authorprotect-reason' => 'Амал',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'authorprotect' => 'Заштити ја страницата од неавтори',
+	'authorprotect-desc' => 'Му овозможува на авторот на една страница да ја заштити од други корисници',
+	'authorprotect-notauthor' => 'Не сте автор на оваа страница',
+	'authorprotect-confirm' => 'Промени го нивото на заштита',
+	'authorprotect-edit' => 'Само автори можат да уредуваат',
+	'authorprotect-move' => 'Само автори можат да преместуваат',
+	'authorprotect-expiry' => 'Истекува',
+	'authorprotect-reason' => 'Причина',
+	'authorprotect-intro' => 'Користете го овој образец за да ја заклучите страницата од неавтори',
+	'authorprotect-success' => 'Заштитувањето успеа',
+	'authorprotect-failure' => 'Заштитувањето не успеа',
+	'protect-level-author' => 'Заштити од неавтори',
+	'restriction-level-author' => 'Авторска заштита',
+	'right-authorprotect' => 'Заштити авторски страници',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

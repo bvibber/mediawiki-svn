@@ -8811,6 +8811,7 @@ $messages['pdc'] = array(
 	'ow_LinkAttributeValues' => 'Gleecher',
 	'ow_User' => 'Yuuser',
 	'ow_show' => 'Zeige',
+	'ow_upload' => 'Ufflaade',
 	'ow_suggest_previous' => 'Letscht',
 	'ow_suggest_next' => 'Neegscht',
 );

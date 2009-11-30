@@ -7011,7 +7011,10 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'configure-js-remove' => 'Lösche',
+	'configure-section-category' => 'Abdeelinge',
+	'configure-section-upload' => 'Ufflaade',
 	'configure-section-specialpages' => 'Besunnere Bledder',
+	'configure-section-search' => 'Uffgucke',
 	'configure-throttle-action-move' => 'Ziehe',
 	'configure-condition-operator-or' => 'Odder',
 	'configure-condition-operator-and' => 'Unn',

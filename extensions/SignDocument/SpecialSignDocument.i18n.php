@@ -3154,8 +3154,8 @@ $messages['os'] = array(
 $messages['pdc'] = array(
 	'sign-realname' => 'Naame:',
 	'sign-viewfield-realname' => 'Naame',
-	'sign-viewfield-reviewcomment' => 'Comment',
-	'sign-review-comment' => 'Comment',
+	'sign-viewfield-reviewcomment' => 'Anmaerricking',
+	'sign-review-comment' => 'Anmaerricking',
 );
 
 /** Polish (Polski)

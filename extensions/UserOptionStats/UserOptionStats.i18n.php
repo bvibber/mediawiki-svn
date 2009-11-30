@@ -583,6 +583,15 @@ $messages['ru'] = array(
 	'uos-title' => 'Распределение значений пользовательской настройки $1',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'useroptionstats' => 'පරිශීලක විකල්ප සංඛ්‍යා දත්ත',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|විශේෂ පිටුව]] මීඩියාවිකි පරිශීලක විකල්ප භාවිතය වාර්තා කිරීම සඳහා',
+	'uos-warn' => 'PHPlot ස්ථාපනය නොකරන ලදී!',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

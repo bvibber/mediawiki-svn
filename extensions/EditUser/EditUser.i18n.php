@@ -938,6 +938,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'edituser-username' => 'Naame',
+	'edituser-dosearch' => 'Uffgucke',
 );
 
 /** Polish (Polski)

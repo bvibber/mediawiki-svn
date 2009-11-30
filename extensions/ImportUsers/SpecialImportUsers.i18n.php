@@ -1318,6 +1318,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'importusers-uploadfile' => 'Feil ufflaade',
 	'importusers-log-summary-all' => 'All',
 	'importusers-password' => 'Paesswatt',
 );

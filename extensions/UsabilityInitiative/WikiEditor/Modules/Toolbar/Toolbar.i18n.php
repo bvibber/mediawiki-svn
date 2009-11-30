@@ -9776,6 +9776,23 @@ $messages['pms'] = array(
 	'wikieditor-toolbar-tool-subscript-example' => 'Test a ìndes an bass',
 	'wikieditor-toolbar-group-insert' => 'Anserì',
 	'wikieditor-toolbar-tool-gallery' => 'Galarìa ëd plance',
+	'wikieditor-toolbar-tool-gallery-example' => '{{ns:file}}:Esempi.jpg|Descrission1
+{{ns:file}}:Esempi.jpg|Descrission2',
+	'wikieditor-toolbar-tool-newline' => 'A cap',
+	'wikieditor-toolbar-tool-table' => 'Tàula',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! antestassion 1
+! antestassion 2
+! antestassion 3
+|-
+| linia 1, casela 1
+| linia 1, casela 2
+| linia 1, casela 3
+|-
+| linia 2, casela 1
+| linia 2, casela 2
+| linia 2, casela 3',
+	'wikieditor-toolbar-tool-table-example' => 'Test ëd la casela',
 );
 
 /** Pontic (Ποντιακά)
@@ -11002,7 +11019,9 @@ $messages['sk'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Vložiť odkaz',
 	'wikieditor-toolbar-tool-link-int' => 'Na wiki stránku',
 	'wikieditor-toolbar-tool-link-int-target' => 'Názov stránky:',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Zadajte názov stránky',
 	'wikieditor-toolbar-tool-link-int-text' => 'Text odkazu:',
+	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Zadajte text, ktorý sa má zobraziť',
 	'wikieditor-toolbar-tool-link-ext' => 'Na externú webstránku',
 	'wikieditor-toolbar-tool-link-ext-target' => 'URL odkazu:',
 	'wikieditor-toolbar-tool-link-ext-text' => 'Text odkazu:',
@@ -11011,6 +11030,7 @@ $messages['sk'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'Stránka existuje',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'Stránka neexistuje',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Neplatný názov',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Externý odkaz',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Kontroluje sa existencia stránky...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'Názov, ktorý ste zadali nie je platný.',
 	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'URL, ktorý ste zadali vyzerá ako odkaz na inú stránku wiki. Chcete z neho spraviť interný odkaz?',
@@ -11035,6 +11055,8 @@ $messages['sk'] = array(
 	'wikieditor-toolbar-tool-ulist-example' => 'Položka zoznamu s odrážkami',
 	'wikieditor-toolbar-tool-olist' => 'Číslovaný zoznam',
 	'wikieditor-toolbar-tool-olist-example' => 'Položka číslovaného zoznamu',
+	'wikieditor-toolbar-tool-indent' => 'Odsadenie',
+	'wikieditor-toolbar-tool-indent-example' => 'Odsadený riadok',
 	'wikieditor-toolbar-group-size' => 'Veľkosť',
 	'wikieditor-toolbar-tool-big' => 'Veľká',
 	'wikieditor-toolbar-tool-big-example' => 'Veľký text',

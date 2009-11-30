@@ -201,6 +201,13 @@ $messages['ru'] = array(
 	'geolite-desc' => 'Облегчённое перенаправление GeoIp',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'geolite-desc' => 'Odľahčené presmerovanie GeoIP',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

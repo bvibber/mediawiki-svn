@@ -111,6 +111,23 @@ $messages['gl'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Debido a posibles erros de interpretación, só se aceptan mensaxes de texto.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'sendmailtowiki-desc' => 'Wiki-Inhalt byytrage iber e zuegwiseni dynamischi E-Mail-Adräss',
+	'prefs-sendmailtowiki' => 'Inhalt byytrage iber E-Mail',
+	'sendmailtowiki-inemail' => 'Zuegwiseni E-Mail-Adräss:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Wänn Du s PIN-Fäld läär losch, no chasch kei Inhalt zum Wiki byytrage mit Dyym Benutzerkonto.',
+	'sendmailtowiki-err-pinlength' => 'Dr PIN-Code muess genau 5 Zahle lang syy.',
+	'sendmailtowiki-err-wrongprefix' => 'Falsche Vorsatz fir dr Wiki-Zuegang. Nimm Kontakt uf zue Dyym Administrator.',
+	'sendmailtowiki-err-invalidaccount' => 'Nit giltig Benutzerkonto. Iberprief d E-Mail-Adräss, wu Du as Empfänger aagee hesch.',
+	'sendmailtowiki-err-invalidsender' => 'Nit giltige Absänder. Iberprief d E-Mail-Adräss, wu Du as Absänder aagee hesch.',
+	'sendmailtowiki-err-invalidpin' => 'Nit giltige PIN-Code. Zuegang verweigeret.',
+	'sendmailtowiki-err-onlyplain' => 'Wäg meglige Fählinterpretatione sin nume Nochrichte mit reinem Text zuegloo.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -195,6 +212,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'sendmailtowiki-inpin' => 'PIN:',
+	'sendmailtowiki-err-invalidpin' => 'Неважечки PIN. Влезот не ви е дозволен.',
 );
 
 /** Dutch (Nederlands)
@@ -215,20 +233,21 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'sendmailtowiki-desc' => "Spediss contnù dla wiki con adrësse dinàmiche dicà d'e-mail",
-	'prefs-sendmailtowiki' => 'Posté contnù con e-mail',
-	'sendmailtowiki-inemail' => 'e-mail dicà:',
+	'sendmailtowiki-desc' => 'Spediss contnù dla wiki con adrësse dinàmiche dedicà ëd pòsta eletrònica',
+	'prefs-sendmailtowiki' => 'Publicassion ëd contnù për pòsta eletrònica',
+	'sendmailtowiki-inemail' => 'Adrëssa ëd pòsta eletrònica dedicà:',
 	'sendmailtowiki-inpin' => 'PIN:',
-	'prefs-help-sendmailtowiki_pin' => 'Un camp veuid për nùmer PIN a disabìlita ël posté contnù a la wiki con tò cont.',
-	'sendmailtowiki-err-pinlength' => 'Ël PIN a deuv conten-e pròpi 5 nùmer!',
-	'sendmailtowiki-err-wrongprefix' => 'Prefiss dël cont wiki pa bon. Contata tò aministrador!',
-	'sendmailtowiki-err-invalidaccount' => 'Cont pa bon. Contròla a che adrëssa e-mail i të spedisse.',
-	'sendmailtowiki-err-invalidsender' => "Mandant pa bon. Contròla l'adrëssa e-mail da andova i të spedisse.",
+	'prefs-help-sendmailtowiki_pin' => 'Un camp veuid për ël nùmer PIN a disabìlita la publicassion ëd contnù an sla wiki con tò cont.',
+	'sendmailtowiki-err-pinlength' => 'Ël PIN a dev conten-e pròpi 5 nùmer!',
+	'sendmailtowiki-err-wrongprefix' => 'Prefiss dël cont wiki pa bon. Contata tò aministrator!',
+	'sendmailtowiki-err-invalidaccount' => 'Cont pa bon. Contròla a che adrëssa ëd pòste eletrònica i të spedisse.',
+	'sendmailtowiki-err-invalidsender' => "Mitent pa bon. Contròla l'adrëssa ëd pòsta eletrònica da andova i të spedisse.",
 	'sendmailtowiki-err-invalidpin' => 'PIN pa bon. Intrada vietà.',
-	'sendmailtowiki-err-onlyplain' => 'A càusa ëd possìbij antërpretassion pa bon-e a son mach assetà messagi ëd sol test.',
+	'sendmailtowiki-err-onlyplain' => 'A càusa ëd possìbij antërpretassion pa bon-e a son mach acetà ëd mëssagi mach ëd test.',
 );
 
 /** Portuguese (Português)

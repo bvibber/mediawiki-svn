@@ -566,6 +566,13 @@ $messages['os'] = array(
 	'searchbox-search' => 'Агур',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'searchbox-search' => 'Guck uff',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

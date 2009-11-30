@@ -266,7 +266,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'wikieditor-toc-preference' => 'nhaltsverzeechnes duerch dat een navigéiere kann aschalten',
+	'wikieditor-toc-preference' => 'Inhaltsverzeechnes fir ze navigéieren aschalten',
 	'wikieditor-toc-show' => 'Inhalt weisen',
 	'wikieditor-toc-hide' => 'Inhalt verstoppen',
 );
@@ -383,6 +383,8 @@ $messages['si'] = array(
  */
 $messages['sk'] = array(
 	'wikieditor-toc-preference' => 'Povoliť obsah s odkazmi na časti',
+	'wikieditor-toc-show' => 'Zobraziť obsah',
+	'wikieditor-toc-hide' => 'Skryť obsah',
 );
 
 /** Swedish (Svenska)

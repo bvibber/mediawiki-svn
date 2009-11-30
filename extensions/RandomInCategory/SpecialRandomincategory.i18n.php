@@ -730,6 +730,13 @@ $messages['os'] = array(
 	'randomincategory-label' => 'Категори',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'randomincategory-label' => 'Abdeeling:',
+);
+
 /** Polish (Polski)
  * @author Maikking
  * @author Sp5uhe

@@ -240,6 +240,14 @@ $messages['ru'] = array(
 	'vector-desc' => 'Улучшения пользовательского интерфейса для темы оформления «Векторное»',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'vector' => 'Vylepšenia použ. rozhrania Vector',
+	'vector-desc' => 'Vylepšuje prvky používateľského rozhrania témy vzhľady Vector',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

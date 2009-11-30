@@ -2252,6 +2252,7 @@ $messages['br'] = array(
 	'configure-setting-wgAddGroups' => "Strolladoù a c'haller ouzhpennañ",
 	'configure-setting-wgValidSkinNames-key' => 'Anv diabarzh',
 	'configure-setting-wgValidSkinNames-value' => 'Anv diskwelet',
+	'configure-setting-wgNamespaceAliases-key' => 'Anv an alias',
 	'configure-setting-wgAllowRealName' => 'Aotren an anvioù gwir',
 	'configure-setting-wgSecretKey' => "Alc'hwez kuzh",
 	'configure-setting-wgUseImageMagick' => 'Implijout ImageMagick',

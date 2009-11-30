@@ -740,6 +740,13 @@ Picatz los primièrs caractèrs e quichatz sul boton de somission per cercar los
 	'index-details-explain' => "Las entradas amb de sagetas son d'entradas d'indèx, clicatz sus la sageta per veire totas las paginas indexadas jos aqueste títol.",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'index-search' => 'Guck uff:',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

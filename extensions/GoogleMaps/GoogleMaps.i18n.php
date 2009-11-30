@@ -4020,6 +4020,7 @@ $wgGoogleMapsMessages['pdc'] = array(
 	'gm-small' => 'Glee',
 	'gm-yes' => 'Ya',
 	'gm-no' => 'Nee',
+	'gm-search' => 'Uffgucke',
 	'gm-earth' => 'Erd',
 	'gm-moon' => 'Moond',
 	'gm-mars' => 'Mars',

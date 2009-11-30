@@ -1457,7 +1457,7 @@ $messages['pa'] = array(
 $messages['pdc'] = array(
 	'expand_templates_output' => 'Result',
 	'expand_templates_ok' => 'OK',
-	'expand_templates_remove_comments' => 'Comments lösche',
+	'expand_templates_remove_comments' => 'Anmaerrickinge lösche',
 );
 
 /** Polish (Polski)

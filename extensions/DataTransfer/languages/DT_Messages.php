@@ -1347,6 +1347,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'dt_viewxml_categories' => 'Abdeelinge',
 	'dt_xml_namespace' => 'Blatznaame',
 	'dt_xml_page' => 'Blatt',
 	'dt_xml_name' => 'Naame',

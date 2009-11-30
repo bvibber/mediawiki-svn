@@ -568,6 +568,26 @@ $messages['lb'] = array(
 	'right-emergencydesysop' => "Kann engem anere Benotzer d'Administrateursrechter ofhuele, géigesäiteg",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'emergencydesysop' => 'Итно одземање администраторски права',
+	'emergencydesysop-desc' => 'Дозволува администратор да ги жртвува своите привилегии за да одземе администраторски права на друг',
+	'emergencydesysop-title' => 'Отстрани администраторски права на тековниот корисник и на друг администратор',
+	'emergencydesysop-otheradmin' => 'Други администратори за одземање на права',
+	'emergencydesysop-reason' => 'Причина за отстранување',
+	'emergencydesysop-submit' => 'Поднеси',
+	'emergencydesysop-incomplete' => 'Мора да се пополнат сите полиња; обидете се повторно',
+	'emergencydesysop-notasysop' => 'Целниот корисник не е во групата на администратори.',
+	'emergencydesysop-nogroups' => 'Нема',
+	'emergencydesysop-done' => 'Постапката е завршена; вие и [[$1]] сте лишени од администраторски права',
+	'emergencydesysop-invalidtarget' => 'Целниот корисник не постои.',
+	'emergencydesysop-blocked' => 'Не можете да дојдете до страницата кога сте блокирани',
+	'emergencydesysop-noright' => 'Немате доволно дозволи за пристап на оваа страница',
+	'right-emergencydesysop' => 'Одземање на администраторски права заедно со своите',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

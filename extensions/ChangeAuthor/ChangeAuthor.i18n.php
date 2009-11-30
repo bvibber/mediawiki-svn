@@ -1555,7 +1555,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
-	'changeauthor-comment' => 'Comment:',
+	'changeauthor-comment' => 'Anmaerricking:',
 );
 
 /** Polish (Polski)

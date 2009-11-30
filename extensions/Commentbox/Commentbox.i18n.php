@@ -564,6 +564,14 @@ Avètz un comentari sus aquesta pagina ? Apondètz-o aicí o <span class="plainl
 	'commentbox-error-empty-comment' => 'Los comentaris voids son pas autorizats !',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'commentbox-first-comment-heading' => '== Anmaerrickinge ==',
+	'commentbox-regex' => '/\\n==\\s*Anmaerrickinge\\s*==\\s*\\n/i',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

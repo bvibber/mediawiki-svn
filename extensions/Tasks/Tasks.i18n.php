@@ -2568,13 +2568,14 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
-	'tasks_form_comment' => 'Comment',
+	'tasks_form_comment' => 'Anmaerricking',
 	'tasks_noone' => 'ken',
 	'tasks_delete' => 'Lösche',
 	'tasks_here' => 'do',
 	'tasks_help_page_link' => 'Hilf',
 	'tasks_more_like_it' => 'mehner',
 	'tasks_table_header_page' => 'Blatt',
+	'tasks_search_form_title' => 'Uffgucke',
 	'tasks_previous' => 'Letscht',
 	'tasks_next' => 'Neegscht',
 	'tasks_logentry' => 'fer „[[$1]]“',

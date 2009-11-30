@@ -2248,7 +2248,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'grouppermissions-dologin' => 'Kumm nei',
-	'grouppermissions-comment' => 'Comment:',
+	'grouppermissions-comment' => 'Anmaerricking:',
 	'grouppermissions-true' => 'Ya',
 	'grouppermissions-false' => 'Nee',
 	'grouppermissions-never' => 'Nie net',

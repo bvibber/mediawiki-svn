@@ -225,6 +225,13 @@ $messages['sah'] = array(
 	'wikieditor-highlight-preference' => 'Эрэдээксийэлииргэ синтаксииһын сырдатыыны холбоо',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'wikieditor-highlight-preference' => 'Zapnúť zvýrazňovanie syntaxe počas úprav',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

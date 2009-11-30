@@ -427,6 +427,13 @@ $messages['pcd'] = array(
 	'categoryonupload-label' => 'Catégorie :',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'categoryonupload-label' => 'Abdeeling:',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Wpedzich

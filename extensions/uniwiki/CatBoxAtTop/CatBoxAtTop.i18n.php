@@ -376,6 +376,13 @@ $messages['os'] = array(
 	'catboxattop-categories' => 'Категоритæ',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'catboxattop-categories' => 'Abdeelinge',
+);
+
 /** Polish (Polski)
  * @author Leinad
  */

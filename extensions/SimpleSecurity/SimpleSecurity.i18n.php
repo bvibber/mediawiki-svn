@@ -699,6 +699,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'security-type-category' => 'in de Abdeeling',
 	'security-type-namespace' => 'Blatznaame vun',
 );
 

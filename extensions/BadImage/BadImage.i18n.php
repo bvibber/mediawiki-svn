@@ -318,7 +318,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'badimages' => 'Roll ar skeudennoù fall',
-	'badimages-desc' => 'Kreskiñ a ra barregezh roll skeudennoù da argas MediaWiki',
+	'badimages-desc' => 'Kreskiñ a ra barregezh ar roll skeudennoù da argas evit MediaWiki',
 	'badimages-add-btn' => 'Ouzhpennañ',
 	'badimages-added' => "Ouzhpennet eo bet $1 d'ar roll.",
 	'badimages-count' => "'''$1''' {{PLURAL:$1|skeudenn|skeudenn}} {{PLURAL:$1|zo|zo}} war roll ar skeudennoù fall.",

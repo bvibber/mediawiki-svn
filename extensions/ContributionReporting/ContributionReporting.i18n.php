@@ -1160,7 +1160,7 @@ $messages['et'] = array(
 	'contribstats-template' => 'Mall',
 	'contribstats-donatepage' => 'Annetamislehekülg',
 	'contribstats-average' => 'Keskmine',
-	'fundraiserstatistics' => 'Rahakogumise arvandmed',
+	'fundraiserstatistics' => 'Korjanduse arvandmed',
 	'fundraiserstats-date' => 'Kuupäev',
 	'fundraiserstats-day' => '$1. päev ($2)',
 	'fundraiserstats-contributions' => 'Annetusi',
@@ -1171,7 +1171,7 @@ $messages['et'] = array(
 	'fundraiserstats-tab-contributions' => 'Annetuste hulk',
 	'fundraiserstats-tab-averages' => 'Keskmised (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumid (USD)',
-	'specialpages-group-contribution' => 'Annetamine / rahakogumine',
+	'specialpages-group-contribution' => 'Annetamine / korjandused',
 );
 
 /** Basque (Euskara)
@@ -3377,6 +3377,9 @@ $messages['sk'] = array(
 	'contribstats-conversion' => 'Konverzný kurz (%)',
 	'contribstats-template' => 'Šablóna',
 	'contribstats-nodata' => 'Neboli poskytnuté žiadne údaje',
+	'contribstats-landingpage' => 'Cieľová stránka',
+	'contribstats-donatepage' => 'Stránka darov',
+	'contribstats-average' => 'Priemer',
 	'fundraiserstatistics' => 'Štatistika fundraisingu',
 	'fundraiserstats-date' => 'Dátum',
 	'fundraiserstats-day' => 'Deň $1 z $2',

@@ -1075,6 +1075,13 @@ $messages['os'] = array(
 	'editmsg-search' => 'Агур',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'editmsg-search' => 'Guck uff',
+);
+
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe
