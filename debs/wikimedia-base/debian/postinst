@@ -48,17 +48,14 @@ case "$1" in
 
 	# Disable the 'quiet' kernel command line option so console messages
 	# will be printed.
-	if grep -q "^# defoptions.*[= ]quiet " /boot/grub/menu.lst
+	if [ -f /boot/grub/menu.lst ] && grep -q "^# defoptions.*[= ]quiet " /boot/grub/menu.lst
 	then
 		sed -i '/^# defoptions.*[= ]quiet /s/quiet //' /boot/grub/menu.lst
 		update-grub
-	fi
-
-	# Remote syslogging
-	if [ $CLUSTERNAME = "pmtpa" ] && ! grep -q "@syslog\.pmtpa\.wmnet" /etc/syslog.conf
+	elif [ -f /etc/default/grub ] && grep -q '^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"' /etc/default/grub
 	then
-		echo "*.info;mail.none;authpriv.none;cron.none	@syslog.pmtpa.wmnet" >> /etc/syslog.conf
-		invoke-rc.d sysklogd restart
+		sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/s/quiet splash//' /etc/default/grub
+		update-grub
 	fi
 
 	# Optimize TCP
@@ -72,13 +69,6 @@ case "$1" in
 	update-alternatives --install /usr/bin/editor editor /usr/bin/vim 75 \
 		--slave /usr/share/man/man1/editor.1.gz editor.1.gz \
 		/usr/share/man/man1/vim.1.gz
-
-	# Enable smartd
-	if ! [ -f /var/run/smartd.pid ] || ! kill -0 $(cat /var/run/smartd.pid)
-	then
-		sed -i -e '/^#start_smartd=yes/s/^#//' /etc/default/smartmontools
-		invoke-rc.d smartmontools start || true
-	fi
 
 	# Enable some aliases in /root/.bashrc
 	sed -i '

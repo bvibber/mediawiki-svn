@@ -8,7 +8,7 @@ Standards-Version: 3.6.2
 Package: wikimedia-base
 Architecture: all
 Origin: Wikimedia
-Pre-Depends: ntp-server, smartmontools
+Pre-Depends: ntp
 Depends: ${shlibs:Depends}, ${misc:Depends}, openssh-server, sysstat, zsh, vim, joe, traceroute, screen, gdb, ntp, ssmtp | mail-transport-agent, acct
 Description: Base requirements for any Wikimedia server
  wikimedia-base provides the Wikimedia specific base requirements
@@ -18,5 +18,4 @@ Description: Base requirements for any Wikimedia server
  * Finds out which Wikimedia cluster the host belongs to
  * Sets APT package pinning for Wikimedia packages
  * Sets up NTP
- * Set up SMART disk monitoring
  * Set up process accounting
