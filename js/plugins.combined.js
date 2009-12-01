@@ -1285,10 +1285,14 @@ scrollToCaretPosition: function( options ) {
 		case 'setSelection':
 			options = $.extend( {
 				'start': undefined, // Position to start selection at
-				'end': undefined // Position to end selection at. Defaults to start
+				'end': undefined, // Position to end selection at. Defaults to start
+				'startContainer': undefined, // Element to start selection in (iframe only)
+				'endContainer': undefined, // Element to end selection in (iframe only). Defaults to startContainer
 			}, options );
 			if ( options.end === undefined )
 				options.end = options.start;
+			if ( options.endContainer == undefined )
+				options.endContainer = options.startContainer;
 			// FIXME: We may not need character position-based functions if we insert markers in the right places
 			break;
 		case 'scrollToCaretPosition':
@@ -1588,10 +1592,15 @@ if ( typeof context == 'undefined' ) {
 		 * Set up the magic iframe
 		 */
 		'setup': function() {
+			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
+			// characters rather than actual HTML tags in the code editor container.
+			var contentHTML = $( '<div />' ).text( context.$textarea.val() ).html();
+			
 			// Setup the iframe with a basic document
 			context.$iframe[0].contentWindow.document.open();
 			context.$iframe[0].contentWindow.document.write(
-				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keydown keypress keyup mousedown mouseup cut paste", { "context": context }, context.evt.change );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace"></body></html>'
+				// FIXME: Break this line
+				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keydown keypress keyup mousedown mouseup cut paste", { "context": context }, context.evt.change );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace">' + contentHTML + '</body></html>'
 			);
 			context.$iframe[0].contentWindow.document.close();
 			// Turn the document's design mode on
@@ -1606,9 +1615,6 @@ if ( typeof context == 'undefined' ) {
 			
 			// Activate the iframe, encoding the content of the textarea and copying it to the content of the iframe
 			context.$textarea.attr( 'disabled', true );
-			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
-			// characters rather than actual HTML tags in the code editor container.
-			context.$content.text( context.$textarea.val() );
 			context.$textarea.hide();
 			context.$iframe.show();
 		},
@@ -1717,10 +1723,16 @@ if ( typeof context == 'undefined' ) {
 		 * 
 		 * @param start Character offset of selection start
 		 * @param end Character offset of selection end
+		 * @param startContainer Element in iframe to start selection in
+		 * @param endContainer Element in iframe to end selection in
 		 */
 		'setSelection': function( options ) {
-			// FIXME: Character-based functions aren't useful for the magic iframe
-			// ...
+			// TODO: IE
+			var sel = context.$iframe[0].contentWindow.getSelection();
+			// TODO: Can this be done in one call?
+			sel.extend( startContainer, start );
+			sel.collapseToStart();
+			sel.extend( endContainer, end );
 		},
 		/**
 		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()
@@ -2595,27 +2607,55 @@ fn: {
 		var outline = [];
 		
 		// Traverse all text nodes in context.$content
+		// FIXME: Doesn't traverse non-top-level text nodes, rewrite as recursive function
 		var h = 0;
-		context.$content.contents().add( context.$content.find( '.wikiEditor-toc-header' ) ).each( function() {
+		context.$content.contents().add( context.$content.find( '*' ) ).each( function() {
 			if ( this.nodeName != '#text' && !$(this).is( '.wikiEditor-toc-header' ) )
 				return;
 			var text = this.nodeValue;
-			if ( $(this).is( '.wikiEditor-toc-header' ) )
+			if ( $(this).is( 'div' ) ) {
 				text = $(this).html();
+				// Edge case: there are more equals signs,
+				// but they're not all in the <div>. Eat them.
+				var prev = this.previousSibling;
+				if ( prev && prev.nodeName == '#text' ) {
+					var prevText = prev.nodeValue;
+					while ( prevText.substr( -1 ) == '=' ) {
+						prevText = prevText.substr( 0, prevText.length - 1 );
+						text = '=' + text;
+					}
+					prev.nodeValue = prevText;
+				}
+				var next = this.nextSibling;
+				if ( next && next.nodeName == '#text' ) {
+					var nextText = next.nodeValue;
+					while ( nextText.substr( 0, 1 ) == '=' ) {
+						nextText = nextText.substr( 1 );
+						text = text + '=';
+					}
+					next.nodeValue = nextText;
+				}
+				if ( text != $(this).html() )
+					$(this).html( text );
+			}
 			
-			var match = text.match( /^(={1,6})(.*?)\1\s*$/ );
+			var match = text.match( /^(={1,6})(.+?)\1\s*$/ );
 			if ( !match ) {
 				if ( $(this).is( '.wikiEditor-toc-header' ) )
 					// Header has become invalid
 					// Remove the class but keep the <div> intact
 					// to prevent issues with Firefox
-					$(this).removeClass( 'wikiEditor-toc-header' );
+					// TODO: Fix this issue
+					//$(this).removeClass( 'wikiEditor-toc-header' );
+					$(this).replaceWith( $(this).html() );
 				return;
 			}
 			// Wrap the header in a <div>, unless it's already wrapped
 			var div;
 			if ( $(this).is( '.wikiEditor-toc-header' ) )
 				div = $(this);
+			else if ( $(this).is( 'div' ) )
+				div = $(this).addClass( 'wikiEditor-toc-header' );
 			else {
 				div = $j( '<div />' )
 					.text( text )

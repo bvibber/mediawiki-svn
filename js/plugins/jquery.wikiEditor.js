@@ -282,10 +282,15 @@ if ( typeof context == 'undefined' ) {
 		 * Set up the magic iframe
 		 */
 		'setup': function() {
+			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
+			// characters rather than actual HTML tags in the code editor container.
+			var contentHTML = $( '<div />' ).text( context.$textarea.val() ).html();
+			
 			// Setup the iframe with a basic document
 			context.$iframe[0].contentWindow.document.open();
 			context.$iframe[0].contentWindow.document.write(
-				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keydown keypress keyup mousedown mouseup cut paste", { "context": context }, context.evt.change );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace"></body></html>'
+				// FIXME: Break this line
+				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keydown keypress keyup mousedown mouseup cut paste", { "context": context }, context.evt.change );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace">' + contentHTML + '</body></html>'
 			);
 			context.$iframe[0].contentWindow.document.close();
 			// Turn the document's design mode on
@@ -300,9 +305,6 @@ if ( typeof context == 'undefined' ) {
 			
 			// Activate the iframe, encoding the content of the textarea and copying it to the content of the iframe
 			context.$textarea.attr( 'disabled', true );
-			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
-			// characters rather than actual HTML tags in the code editor container.
-			context.$content.text( context.$textarea.val() );
 			context.$textarea.hide();
 			context.$iframe.show();
 		},
@@ -411,10 +413,16 @@ if ( typeof context == 'undefined' ) {
 		 * 
 		 * @param start Character offset of selection start
 		 * @param end Character offset of selection end
+		 * @param startContainer Element in iframe to start selection in
+		 * @param endContainer Element in iframe to end selection in
 		 */
 		'setSelection': function( options ) {
-			// FIXME: Character-based functions aren't useful for the magic iframe
-			// ...
+			// TODO: IE
+			var sel = context.$iframe[0].contentWindow.getSelection();
+			// TODO: Can this be done in one call?
+			sel.extend( startContainer, start );
+			sel.collapseToStart();
+			sel.extend( endContainer, end );
 		},
 		/**
 		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()
