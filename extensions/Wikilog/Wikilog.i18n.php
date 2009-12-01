@@ -184,6 +184,7 @@ The comment will only appear after it is reviewed by a moderator.',
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Juliano
+ * @author McDutchie
  * @author Purodha
  * @author Siebrand
  * @author Umherirrender
@@ -239,8 +240,8 @@ Parameters:
 * $9 is the publication time
 * $10 is a link to the comments page, with either {{msg-mw|wikilog-no-comments}} or {{msg-mw|wikilog-has-comments}} as link text",
 	'wikilog-summary-footer-single' => "Identical to {{msg-mw|wikilog-summary-footer}}, but used when listing articles from a single wikilog, so it is not necessary to say where it was posted to. Parameters:
-* $1 is a URL formatted link to the article's parent wikilog
-* $2 is the article's parent wikilog name
+* $1 is a URL formatted link to the article's parent wikilog (optional)
+* $2 is the article's parent wikilog name (optional)
 * $3 is a URL formatted link to the article (optional)
 * $4 is the article title (optional)
 * $5 is the number of authors listed in $7, for PLURAL if necessary
@@ -1845,6 +1846,10 @@ $messages['ia'] = array(
 	'wikilog-pager-empty' => '(nulle entrata)',
 	'wikilog-no-comments' => 'nulle commento',
 	'wikilog-has-comments' => '{{PLURAL:$1|un commento|$1 commentos}}',
+	'wikilog-summary-footer' => 'Publicate per $7 in [[$1|$2]] le $8 a $9, $10.',
+	'wikilog-summary-footer-single' => 'Publicate per $7 le $8 a $9, $10.',
+	'wikilog-summary-uncategorized' => 'Sin categoria',
+	'wikilog-summary-categories' => 'In {{PLURAL:$1|categoria|categorias}} $2',
 	'wikilog-summary-more' => '[[$3|→ continuar a leger...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussion]])',
 	'wikilog-edit-fieldset-legend' => 'Optiones de wikilog:',
@@ -2367,6 +2372,7 @@ $messages['lb'] = array(
 	'wikilog-invalid-file' => 'Fichier net valabel: $1',
 	'wikilog-file-not-found' => 'Fichier gëtt et net: $1',
 	'wikilog-not-an-image' => 'De Fichier ass kee Bild: $1',
+	'wikilog-comment-is-empty' => 'Déi geschéckte Bemierung ass eidel.',
 	'wikilog-comment-too-long' => "D'Bemierkung déi geschéckt gouf ass ze laang.",
 	'wikilog-comment-invalid-name' => 'Den Numm deen dir uginn hutt ass net valabel.',
 	'wikilog-post-reply' => 'Eng nei Äntwert schécken',
@@ -3141,6 +3147,10 @@ $messages['ru'] = array(
 	'wikilog-pager-empty' => '(нет элементов)',
 	'wikilog-no-comments' => 'нет комментариев',
 	'wikilog-has-comments' => '$1 {{PLURAL:$1|комментарий|комментария|комментариев}}',
+	'wikilog-summary-footer' => 'Разместил $7 в [[$1|$2]] $8 $9, $10.',
+	'wikilog-summary-footer-single' => 'Разместил $7 $8 $9, $10.',
+	'wikilog-summary-uncategorized' => 'Без категории',
+	'wikilog-summary-categories' => 'Отнесено к $2',
 	'wikilog-summary-more' => '[[$3|→ продолжить чтение…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|обсуждение]])',
 	'wikilog-edit-fieldset-legend' => 'Настройки викилога:',

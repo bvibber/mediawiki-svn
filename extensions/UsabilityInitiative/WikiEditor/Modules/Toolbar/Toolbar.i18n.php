@@ -8174,6 +8174,10 @@ $messages['ml'] = array(
 	'wikieditor-toolbar-tool-small' => 'ചെറിയത്',
 	'wikieditor-toolbar-tool-small-example' => 'ചെറിയ എഴുത്ത്',
 	'wikieditor-toolbar-group-baseline' => 'അക്ഷരസ്ഥാനം',
+	'wikieditor-toolbar-tool-superscript' => 'മുകളിലായുള്ള എഴുത്ത്',
+	'wikieditor-toolbar-tool-superscript-example' => 'സൂപ്പർസ്ക്രിപ്റ്റ് എഴുത്ത്',
+	'wikieditor-toolbar-tool-subscript' => 'താഴെയായുള്ള എഴുത്ത്',
+	'wikieditor-toolbar-tool-subscript-example' => 'സബ്സ്ക്രിപ്റ്റ് എഴുത്ത്',
 	'wikieditor-toolbar-group-insert' => 'ഉൾപ്പെടുത്തുക',
 	'wikieditor-toolbar-tool-gallery' => 'ചിത്രശാല',
 	'wikieditor-toolbar-tool-gallery-example' => '{{ns:file}}:Example.jpg|കുറിപ്പ്1
@@ -9793,6 +9797,12 @@ $messages['pms'] = array(
 | linia 2, casela 2
 | linia 2, casela 3',
 	'wikieditor-toolbar-tool-table-example' => 'Test ëd la casela',
+	'wikieditor-toolbar-tool-table-example-header' => "Test ëd l'antestassion",
+	'wikieditor-toolbar-tool-table-title' => 'Anserì na tàula',
+	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Linie',
+	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Colòne',
+	'wikieditor-toolbar-tool-table-dimensions-header' => "Comprende la linia d'antestassion",
+	'wikieditor-toolbar-tool-table-wikitable' => 'Stil con bordure',
 );
 
 /** Pontic (Ποντιακά)

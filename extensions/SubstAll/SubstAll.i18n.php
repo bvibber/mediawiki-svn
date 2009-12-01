@@ -40,6 +40,13 @@ $messages['arz'] = array(
 	'substall-hook' => 'نسخ_الكل',
 );
 
+/** Azerbaijani (Azərbaycan)
+ * @author Wertuose
+ */
+$messages['az'] = array(
+	'substall-desc' => 'Bütün şablonları vikinişana çevirən <nowiki><substall></nowiki> teqini yaradır',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

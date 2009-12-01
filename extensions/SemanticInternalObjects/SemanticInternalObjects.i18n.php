@@ -133,6 +133,13 @@ $messages['id'] = array(
 	'semanticinternalobjects-desc' => 'Seting untuk objek internal pada Semantic MediaWiki',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
+$messages['it'] = array(
+	'semanticinternalobjects-desc' => 'Configurazione degli oggetti interni in Semantic MediaWiki',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

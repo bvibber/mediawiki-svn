@@ -611,7 +611,7 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'masseditregex' => 'Donn Sigge em Pöngel ändere, un dat övver <code>regular expressions</code>.',
-	'masseditregex-desc' => 'Deiht Sigge [[Special:MassEditRegex|em Pöngel en einem Rötsch ändere]], un dat övver <code>ergular expressions</code>.',
+	'masseditregex-desc' => 'Deiht Sigge [[Special:MassEditRegex|em Pöngel en einem Rötsch ändere]], un dat övver <code>regular expressions</code>.',
 	'masseditregextext' => 'Jif ein <i lang="en">regular expression</i> pro Reih en, esu vill wi nüüdesch. Dohenger en desellve Reih schriif hen, woh jäähje dat jetuusch wääde sull, wat op di <i lang="en">regular expression</i> paß. De [http://de.php.net/manual/de/function.preg-replace.php Funxjuhn <code lang="en">preg_replace()</code> en dä Projammeer_Shprooch <i lang="en">PHP</i>] weed doför jebruch, un doh kam_mer och de Einzelheite janz jenou nohlässe.',
 	'masseditregex-pagelisttxt' => 'De Sigge zom Ändere, der_oohne en Appachtemang dovör:',
 	'masseditregex-matchtxt' => 'Söhk noh:',

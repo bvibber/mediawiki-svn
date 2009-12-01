@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'tooltip-desc' => 'يضيف وسم <tt><nowiki><tooltip></nowiki></tt> و <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Azerbaijani (Azərbaycan)
+ * @author Wertuose
+ */
+$messages['az'] = array(
+	'tooltip-desc' => '<tt><nowiki><tooltip></nowiki></tt> və <tt><nowiki>{{#tooltip:}}</nowiki></tt> teqlərini əlavə edir',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

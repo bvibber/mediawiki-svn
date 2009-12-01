@@ -149,6 +149,13 @@ $messages['id'] = array(
 	'semanticgallery-desc' => 'Menambahkan format output galeri kepada kueri inline SMW',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
+$messages['it'] = array(
+	'semanticgallery-desc' => 'Aggiunge un formato per la visualizzazione delle gallerie alle query inline di SMW',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Hosiryuhosi

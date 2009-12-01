@@ -43,6 +43,20 @@ $messages['af'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Om moontlike misinterpretasie te voorkom word slegs suiwer teks (MIME-type text/plain) aanvaar.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'sendmailtowiki-desc' => 'Разьмяшчае зьмест ў {{GRAMMAR:месны|{{SITENAME}}}} праз выдзелены дынамічны адрас электроннай пошты',
+	'prefs-sendmailtowiki' => 'Разьмяшчэньне зьмест праз электронную пошты',
+	'sendmailtowiki-inemail' => 'Выдзелены адрас электроннай пошты:',
+	'sendmailtowiki-inpin' => 'Пэрсанальны ідэнтыфікацыйны нумар:',
+	'prefs-help-sendmailtowiki_pin' => 'Незапоўненае поле пэрсанальнага ідэнтыфікацыйнага нумару адключае магчымасьць разьмяшчэньня зьместу ў {{GRAMMAR:месны|{{SITENAME}}}} з Вашага рахунку.',
+	'sendmailtowiki-err-pinlength' => 'Пэрсанальны ідэнтыфікацыйны нумар павінен утрымліваць 5 лічбаў.',
+	'sendmailtowiki-err-wrongprefix' => 'Няслушны прэфікс рахунку ў {{GRAMMAR:месны|{{SITENAME}}}}. Зьвяжыцеся з Вашым адміністратарам.',
+	'sendmailtowiki-err-invalidaccount' => 'Няслушны рахунак. Праверце адрас электроннай пошты, на які адбываецца дасылка.',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -163,6 +177,23 @@ $messages['hu'] = array(
 	'sendmailtowiki-err-onlyplain' => 'A lehetséges félreértelmezések elkerülése miatt csak tisztán szöveges üzenetek elfogadhatóak.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'sendmailtowiki-desc' => 'Publicar contento wiki via un adresse de e-mail dynamic dedicate',
+	'prefs-sendmailtowiki' => 'Publicar contento con e-mail',
+	'sendmailtowiki-inemail' => 'Adresse de e-mail dedicate:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Si le campo pro le numero PIN es vacue, tu non pote publicar contento al wiki con tu conto.',
+	'sendmailtowiki-err-pinlength' => 'Le PIN debe continer exactemente 5 numeros.',
+	'sendmailtowiki-err-wrongprefix' => 'Prefixo de conto wiki incorrecte. Contacta tu administrator.',
+	'sendmailtowiki-err-invalidaccount' => 'Conto invalide. Verifica le adresse e-mail de destination.',
+	'sendmailtowiki-err-invalidsender' => 'Expeditor invalide. Verifica le adresse de e-mail del qual tu invia le messages.',
+	'sendmailtowiki-err-invalidpin' => 'PIN invalide. Accesso refusate.',
+	'sendmailtowiki-err-onlyplain' => 'Debite a potential errores de interpretation, solo le messages in texto simple es acceptate.',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -265,6 +296,23 @@ $messages['pt'] = array(
 	'sendmailtowiki-err-invalidsender' => 'Remetente inválido. Verifique o endereço de correio do remetente.',
 	'sendmailtowiki-err-invalidpin' => 'PIN inválido. Acesso negado.',
 	'sendmailtowiki-err-onlyplain' => 'Devido a potenciais erros de interpretação, só são aceites mensagens de texto.',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'sendmailtowiki-desc' => 'Размещение содержимого вики посредством специального динамического адреса электронной почты',
+	'prefs-sendmailtowiki' => 'Публикация текста с адресами электронной почтой',
+	'sendmailtowiki-inemail' => 'Специальный адрес электронной почты:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Пустое поле ПИН-кода не позволяет разместить материал в вики с вашей учётной записи.',
+	'sendmailtowiki-err-pinlength' => 'ПИН-код должен содержать ровно 5 цифр.',
+	'sendmailtowiki-err-wrongprefix' => 'Неправильный префикс учётной записи в вики. Обратитесь к администратору.',
+	'sendmailtowiki-err-invalidaccount' => 'Ошибочная учётная запись. Проверьте адрес электронной почты, на который производится отправка.',
+	'sendmailtowiki-err-invalidsender' => 'Ошибочная значение отправителя. Проверьте адрес электронной почты, с которого вы отправляете.',
+	'sendmailtowiki-err-invalidpin' => 'Ошибочный PIN-код. Отказано в доступе.',
+	'sendmailtowiki-err-onlyplain' => 'Во избежание возможных недоразумений, допускаются исключительно текстовые сообщения.',
 );
 
 /** Slovenian (Slovenščina) */

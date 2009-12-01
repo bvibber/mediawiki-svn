@@ -76,6 +76,16 @@ $messages['arz'] = array(
 	'whatismyip-out' => 'الأيبى الخاص بك:',
 );
 
+/** Azerbaijani (Azərbaycan)
+ * @author Wertuose
+ */
+$messages['az'] = array(
+	'whatismyip' => 'Mənim IP ünvanım',
+	'whatismyip-desc' => 'İstifadəçinin hazırkı [[Special:WhatIsMyIP|IP ünvanını]] göstərir',
+	'whatismyip-out' => 'Sizin IP ünvanınız:',
+	'right-whatismyip' => '[[Special:WhatIsMyIP|Öz IP ünvanınıza]] baxın',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

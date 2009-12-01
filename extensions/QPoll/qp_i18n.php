@@ -899,7 +899,7 @@ Doh dörfe nur Bochschtabe, Zeffere, un Affschtänd dren sin.',
 	'qp_error_missed_dependance_title' => 'Di Affschtemmung met dä Kännung (<code>id=$1</code>) hängk aff vun ene andere Affschtemmung met dä Kännung (<code>id=$3</code>) op dä Sigg „[[$2]]“, ävver di ham_mer nit jefonge.
 Entweder donn die Eijeschff met dä Affhängeschkeit fott, udder holl di Sigg „[[$2]]“ wider en et Wiki,',
 	'qp_error_missed_dependance_poll' => 'Di Affschtemmung met dä Kännung (<code>id=$1</code>) hängk aff vun ene andere Affschtemmung met dä Kännung (<code>id=$3</code>) op dä Sigg „[[:$2]]“, ävver di Affschtemmung ham_mer doh nit jefonge.
-Entweder donn die Eijeschaff met dä Affhängeschkeit fott, udder donn en Affschtemmung met dä Kännung (<code>id=$3</code>) op di Sigg „[[:$2]]“ un donn se afscheijschere.
+Entweder donn die Eijeschaff met dä Affhängeschkeit fott, udder donn en Affschtemmung met dä Kännung (<code>id=$3</code>) op di Sigg „[[:$2]]“ un donn se afschpeijschere.
 Öm en Afschtemmung reschtesch ze schpeijschere, donn dat, der ohne op en Frooch jeantwoot ze han.',
 	'qp_error_vote_dependance_poll' => 'Bes esu joot un donn övver „$1“ et eets affschtemme',
 	'qp_error_too_many_spans' => 'Zoh vill Knubbel Classes sin för de Ungerknubbel aanjejovve',
