@@ -355,10 +355,14 @@ scrollToCaretPosition: function( options ) {
 		case 'setSelection':
 			options = $.extend( {
 				'start': undefined, // Position to start selection at
-				'end': undefined // Position to end selection at. Defaults to start
+				'end': undefined, // Position to end selection at. Defaults to start
+				'startContainer': undefined, // Element to start selection in (iframe only)
+				'endContainer': undefined, // Element to end selection in (iframe only). Defaults to startContainer
 			}, options );
 			if ( options.end === undefined )
 				options.end = options.start;
+			if ( options.endContainer == undefined )
+				options.endContainer = options.startContainer;
 			// FIXME: We may not need character position-based functions if we insert markers in the right places
 			break;
 		case 'scrollToCaretPosition':
