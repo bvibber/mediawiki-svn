@@ -1,5 +1,5 @@
 /*
-	mvClipEdit
+	mvClipEdit hanndles the edit interfaces for images and video
 */
 // set gMsg object:
 loadGM( {
@@ -190,7 +190,8 @@ mvClipEdit.prototype = {
 				$j( target ).find( "input[name='ce_dur']" ).upDownTimeInputBind( doUpdateDur );
 			}
 		},
-		/*
+		
+		/**
 		* Edit the in and out points for a resource
 		* 
 		* supports resource types:
@@ -223,7 +224,7 @@ mvClipEdit.prototype = {
 		/**
 		* Edit clip attributes for a given resource.
 		*
-		* Attributes are dynamicaly driven via asset type
+		* Attributes are dynamically driven via asset type
 		* 
 		* supports resource types:
 		* 	['image', 'video', 'template']
@@ -307,18 +308,23 @@ mvClipEdit.prototype = {
 		// Add html for resource resource:
 		var o =	'<table>' +
 				'<tr>' +
-					'<td colspan="2"><b>' + gM( 'mwe-edit_properties' ) + '</b></td>' +
+				'<td colspan="2"><b>' + gM( 'mwe-edit_properties' ) + '</b></td>' +
 				'</tr>' +
 				'<tr>' +
-					'<td>' +
-						gM( 'mwe-custom_title' ) +
-					'</td>' +
-					'<td><input type="text" size="15" maxwidth="255" value="';
-						if ( _this.resource.title != null )
-							o += _this.resource.title;
-						o += '">' +
-					'</td>' +
+				'<td>' +
+				gM( 'mwe-custom_title' ) +
+				'</td>' +
+				'<td><input type="text" size="15" maxwidth="255" value="';
+				
+				//Output the resource title if present: 
+				if ( _this.resource.title != null )
+					o += _this.resource.title;
+					
+				o += '">' +
+				'</td>' +
 				'</tr>';
+				
+		// Output the resource template var input form  				
 		if ( _this.resource.tVars ) {
 			var existing_p = _this.resource.params;
 			var testing_a = _this.resource.tVars;
@@ -564,9 +570,12 @@ mvClipEdit.prototype = {
 	
 	/**
 	* Update the video time 
-	* Target video is named #embed_vid 
+	* Target video is hard coded to #embed_vid for now 
+	*
+	* @param {String} start_npt Start time in npt format
+	* @param {String} end_npt End time in npt format
 	*/
-	updateVideoTime : function ( start_time, end_time )	{	
+	updateVideoTime : function ( start_npt, end_npt )	{	
 		// Update the video title:		
 		var ebvid = $j( '#embed_vid' ).get( 0 );
 		if ( ebvid ) {			
@@ -774,7 +783,8 @@ mvClipEdit.prototype = {
 	showImageControls:function() {
 		var _this = this;
 		var $tool_target = $j( '#' + this.target_control_display );
-		// by default apply Crop tool
+		
+		// By default apply Crop tool
 		if ( _this.enabled_tools == 'all' || _this.enabled_tools.length > 0 ) {
 			$tool_target.append( '<h3>' + gM( 'mwe-edit-tools' ) + '</h3>' );
 			for ( var i in _this.toolset ) {
@@ -783,8 +793,10 @@ mvClipEdit.prototype = {
 					_this.addTool( $tool_target, toolid );
 			}
 		}
+		
 		// Add the insert description text field: 
 		$tool_target.append( _this.getInsertHtml() );
+		
 		// Add the actions to the 'button bar'
 		_this.updateInsertControlActions();
 	},	
@@ -881,8 +893,8 @@ mvClipEdit.prototype = {
 	}
 };
 
-// Custom jQuery Binding for upDownTimeInputBind
 ( function( $ ) {
+	// jQuery Binding for upDownTimeInputBind
 	$.fn.upDownTimeInputBind = function( inputCB ) {
 		$( this.selector ).unbind( 'focus' ).focus( function() {
 			var doDelayCall = true;

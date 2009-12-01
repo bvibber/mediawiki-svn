@@ -1,48 +1,71 @@
-// set the dismissNativeWarn flag:
+
+// Set the global dismissNativeWarn flag:
 _global['dismissNativeWarn'] = false;
 
 /**
-* Msg text is inherited from embedVideo (we should move it here (although can't load ctrlBuilder without parent EmbedVideo obj)
-/
+* Msg text is inherited from embedVideo 
+*/
 
 /**
-* base ctrlBuilder object
+* ctrlBuilder object
 *	@param the embedVideo element we are targeting
 */
-var ctrlBuilder = function( embedObj ) {
-	return this.init( embedObj );
+var ctrlBuilder = function( embedObj, options ) {
+	return this.init( embedObj, options );
 };
 
 /*
  * controlsBuilder prototype:
  */
 ctrlBuilder.prototype = {
-	init:function( embedObj, opt ) {
+	//Default Local values: 
+	
+	// Parent css Class name
+	parentClass : 'mv-player',
+	
+	// Long string dsipaly of time value 
+	long_time_disp: true,
+	
+	// If the options menu outside of player 
+	external_options : true,
+	
+	// Default volume layout is "vertical"
+	volume_layout : 'vertical',
+	
+	// Default control bar height is 29
+	height:29,
+	
+	// Default Extended supported options is merged with embedObject supported types
+	supports: {
+	  'options':true,
+	  'borders':true
+	},
+	
+	/**
+	* Initialization Object for the control builder
+	*/ 
+	init:function( embedObj, options ) {
 		var _this = this;
 		this.embedObj = embedObj;
 
-		// check for skin overrides for ctrlBuilder
+		// Check for skin overrides for ctrlBuilder
 		if ( _global[ embedObj.skin_name + 'Config'] ) {
-			// clone as to not override prototype: 	
+			// Clone as to not override prototype: 	
 			var _this = $j.extend( true, { }, this, _global[ embedObj.skin_name + 'Config'] );
 			return _this;
 		}
+		// Return the ctrlBuilder Object: 
 		return this;
 	},
-	pClass : 'mv-player',
-	long_time_disp: true,
-	body_options : true,
-	// default volume layout is "vertical"
-	volume_layout : 'vertical',
-	height:29,
-	supports: {
-		  'options':true,
-		  'borders':true
-	},
+	
+	/**
+	* Gets the controlls html
+	* @return {String} html output of controls
+	*/
 	getControls:function() {
-		// set up local pointer to the embedObj
+		// Set up local pointer to the embedObj
 		var embedObj = this.embedObj;
-		// set up loadl ctrlBuilder ref
+		// set up local ctrlBuilder
 		var _this = this;
 
 		js_log( 'f:controlsBuilder:: opt:' + this.options );
@@ -56,13 +79,13 @@ ctrlBuilder.prototype = {
 			_this.supports[i] = embedObj.supports[i];
 		};
 
-		// Special case vars:
-		if ( ( embedObj.roe ||
-			  embedObj.wikiTitleKey ||
-				( embedObj.media_element.timedTextSources &&
-				embedObj.media_element.timedTextSources() )
-			)  && embedObj.show_meta_link  )
+		// Check for timed Text:
+		if ( ( embedObj.roe || embedObj.wikiTitleKey ||
+				( embedObj.media_element.checkForTextSource &&
+				embedObj.media_element.checkForTextSource() )
+			)  && embedObj.show_meta_link  ){
 			this.supports['closed_captions'] = true;
+		}
 
 
 		// Append options to body (if not already there)
@@ -85,21 +108,23 @@ ctrlBuilder.prototype = {
 		}
 		return o;
 	},
+	
 	 /*
 	 * addControlHooks
 	 * to be run once controls are attached to the dom
+	 * @param {jQueryObject} $target The target hook position
 	 */
-	addControlHooks:function( $tp ) {
+	addControlHooks:function( $target ) {
 		// Set up local pointer to the embedObj
 		var embedObj = this.embedObj;
 		var _this = this;				
 
-		if ( !$tp )
-			$tp = $j( '#' + embedObj.id );
+		if ( !$target )
+			$target = $j( '#' + embedObj.id );
 		
 		
 		// Add play hook:
-		$tp.find( '.play-btn,.play-btn-large' ).unbind().btnBind().click( function() {
+		$target.find( '.play-btn,.play-btn-large' ).unbind().btnBind().click( function() {
 			embedObj.play();
 		} );
 
@@ -146,22 +171,23 @@ ctrlBuilder.prototype = {
 
 
 		// Captions binding:
-		$tp.find( '.timed-text' ).unbind().btnBind().click( function() {
+		$target.find( '.timed-text' ).unbind().btnBind().click( function() {
 			embedObj.showTextInterface();
 		} );
 
 		// Options binding:
-		$tp.find( '.options-btn' ).unbind().btnBind().click( function() {
+		$target.find( '.options-btn' ).unbind().btnBind().click( function() {
 			embedObj.doOptionsHTML();
 		} );
 
 		// Fullscreen binding:
-		$tp.find( '.fullscreen-btn' ).unbind().btnBind().click( function() {
+		$target.find( '.fullscreen-btn' ).unbind().btnBind().click( function() {
 			embedObj.fullscreen();
 		} );
-
-		js_log( " should add slider binding: " + $tp.find( '.play_head' ).length );
-		$tp.find( '.play_head' ).slider( {
+		
+		// Playhead binding
+		js_log( " should add slider binding: " + $target.find( '.play_head' ).length );
+		$target.find( '.play_head' ).slider( {
 			range: "min",
 			value: 0,
 			min: 0,
@@ -189,7 +215,7 @@ ctrlBuilder.prototype = {
 				}
 			},
 			change:function( event, ui ) {
-				// only run the onChange event if done by a user slide 
+				// Only run the onChange event if done by a user slide 
 				// (otherwise it runs times it should not)
 				if ( embedObj.userSlide ) {
 					embedObj.userSlide = false;
@@ -207,31 +233,35 @@ ctrlBuilder.prototype = {
 				}
 			}
 		} );
+		
 		// Up the z-index of the default status indicator:
-		$tp.find( '.play_head .ui-slider-handle' ).css( 'z-index', 4 );
-		$tp.find( '.play_head .ui-slider-range' ).addClass( 'ui-corner-all' ).css( 'z-index', 2 );
+		$target.find( '.play_head .ui-slider-handle' ).css( 'z-index', 4 );
+		$target.find( '.play_head .ui-slider-range' ).addClass( 'ui-corner-all' ).css( 'z-index', 2 );
 		
 		// Extended class list for jQuery ui themeing 
 		//(we can probably refactor this with custom buffering highlighter)
-		$tp.find( '.play_head' ).append( this.getBufferHtml() );
+		$target.find( '.play_head' ).append( this.getBufferHtml() );
 			
 		$opt = $j( '#mv_vid_options_' + embedObj.id );
+		
 		// videoOptions ... @@todo should be merged with something more like kskin.js:
 		$opt.find( '.vo_selection' ).click( function() {
 			embedObj.displayHTML();
-			embedObj.showPlayerselect( $tp.find( '.videoOptionsComplete' ) );
+			embedObj.showPlayerselect( $target.find( '.videoOptionsComplete' ) );
 			$opt.hide();
 			return false;
 		} );
+		
 		$opt.find( '.vo_download' ).click( function() {
 			embedObj.displayHTML();
-			embedObj.showDownload( $tp.find( '.videoOptionsComplete' ) );
+			embedObj.showDownload( $target.find( '.videoOptionsComplete' ) );
 			$opt.hide();
 			return false;
-		} )
+		} );
+		
 		$opt.find( '.vo_showcode' ).click( function() {
 			embedObj.displayHTML();
-			embedObj.showShare( $tp.find( '.videoOptionsComplete' ) );
+			embedObj.showShare( $target.find( '.videoOptionsComplete' ) );
 			$opt.hide();
 			return false;
 		} );
@@ -241,35 +271,38 @@ ctrlBuilder.prototype = {
 		if ( this.addSkinControlBindings && typeof( this.addSkinControlBindings ) == 'function' )
 			this.addSkinControlBindings();
 	},
+	/*
+	* Binds the volume controls
+	*/
 	doVolumeBinding:function() {
 		var embedObj = this.embedObj;
 		var _this = this;
-		var $tp = $j( '#' + embedObj.id );
-		$tp.find( '.volume_control' ).unbind().btnBind().click( function() {
+		var $target = $j( '#' + embedObj.id );
+		$target.find( '.volume_control' ).unbind().btnBind().click( function() {
 			js_log( 'clicked volume control' );
 			$j( '#' + embedObj.id ).get( 0 ).toggleMute();
 		} );
 		
 		// Add vertical volume display hover
 		if ( this.volume_layout == 'vertical' ) {
-			// default volume binding:
+			// Default volume binding:
 			var hoverOverDelay = false;
-			var $tpvol = $tp.find( '.vol_container' );
-			$tp.find( '.volume_control' ).hover(
+			var $targetvol = $target.find( '.vol_container' );
+			$target.find( '.volume_control' ).hover(
 				function() {
-					$tpvol.addClass( 'vol_container_top' );
-					// set to "below" if playing and embedType != native
+					$targetvol.addClass( 'vol_container_top' );
+					// Set to "below" if playing and embedType != native
 					if ( embedObj && embedObj.isPlaying && embedObj.isPlaying() && !embedObj.supports['overlays'] ) {
-						$tpvol.removeClass( 'vol_container_top' ).addClass( 'vol_container_below' );
+						$targetvol.removeClass( 'vol_container_top' ).addClass( 'vol_container_below' );
 					}
-					$tpvol.fadeIn( 'fast' );
+					$targetvol.fadeIn( 'fast' );
 					hoverOverDelay = true;
 				},
 				function() {
 					hoverOverDelay = false;
 					setTimeout( function doHideVolume() {
 						if ( !hoverOverDelay ) {
-							$tpvol.fadeOut( 'fast' );
+							$targetvol.fadeOut( 'fast' );
 						}
 					}, 500 );
 				}
@@ -290,9 +323,9 @@ ctrlBuilder.prototype = {
 			change:function( event, ui ) {
 				var perc = ui.value / 100;
 				if ( perc == 0 ) {
-					$tp.find( '.volume_control span' ).removeClass( 'ui-icon-volume-on' ).addClass( 'ui-icon-volume-off' );
+					$target.find( '.volume_control span' ).removeClass( 'ui-icon-volume-on' ).addClass( 'ui-icon-volume-off' );
 				} else {
-					$tp.find( '.volume_control span' ).removeClass( 'ui-icon-volume-off' ).addClass( 'ui-icon-volume-on' );
+					$target.find( '.volume_control span' ).removeClass( 'ui-icon-volume-off' ).addClass( 'ui-icon-volume-on' );
 				}
 				var perc = ui.value / 100;
 				embedObj.updateVolumen( perc );
@@ -302,9 +335,10 @@ ctrlBuilder.prototype = {
 		if ( this.volume_layout == 'vertical' )
 			sliderConf['orientation'] = "vertical";
 		
-		$tp.find( '.volume-slider' ).slider( sliderConf );
+		$target.find( '.volume-slider' ).slider( sliderConf );
 	},
-	/*
+	
+	/** 
 	* Gets the Buffer Html that overlays the playhead
 	*/
 	getBufferHtml:function() {
@@ -312,6 +346,12 @@ ctrlBuilder.prototype = {
 				'ui-state-highlight ui-corner-all ' +
 				'mv_buffer" style="width:0px;height:100%;z-index:1;top:0px" />';
 	},
+	
+	/**
+	* Accessor to get a given local component
+	*
+	* @param {String} compoent Component key to grab html output
+	*/
 	getComponent:function( component ) {
 		if ( this.components[ component ] ) {
 			return this.components[ component ].o( this );
@@ -319,22 +359,29 @@ ctrlBuilder.prototype = {
 			return false;
 		}
 	},
-	/*
-	* components take in the embedObj and return some html for the given component.
+	
+	/**
+	* Components Object
+	* Take in the embedObj and return some html for the given component.
+	*
 	* components can be overwritten by skin javascript
 	*/
 	components: {
+		/* Borders */ 
 		'borders': {
 			'w':8,
 			'o':function( ctrlObj ) {
 				return	'';
 			}
 		},
+		/*
+		* The large play button in center of the player
+		*/
 		'play-btn-large': {
 			'w' : 130,
 			'h' : 96,
 			'o':function( ctrlObj ) {
-				// get dynamic position for big play button (@@todo maybe use margin:auto ? )
+				// Get dynamic position for big play button
 				return $j( '<div/>' ).attr( {
 								'title'	: gM( 'mwe-play_clip' ),
 								'class'	: "ui-state-default play-btn-large"
@@ -346,6 +393,10 @@ ctrlBuilder.prototype = {
 							.wrap( '<div/>' ).parent().html();
 			}
 		},
+		/*
+		* The options for the player, includes player selection, 
+		* download, and share options
+		*/
 		'mv_embedded_options': {
 			'w':0,
 			'o':function( ctrlObj ) {
@@ -371,6 +422,9 @@ ctrlBuilder.prototype = {
 				return o;
 			}
 		},
+		/*
+		* The fullscreen button for displaying the video fullscreen
+		*/
 		'fullscreen': {
 			'w':20,
 			'o':function( ctrlObj ) {
@@ -379,6 +433,9 @@ ctrlBuilder.prototype = {
 						'</div>'
 			}
 		},
+		/*
+		* The options button, diffrent from the options menu above
+		*/
 		'options': {
 			'w':26,
 			'o':function( ctrlObj ) {
@@ -387,6 +444,9 @@ ctrlBuilder.prototype = {
 						'</div>';
 			}
 		},
+		/*
+		* The pause button
+		*/
 		'pause': {
 			'w':24,
 			'o':function( ctrlObj ) {
@@ -395,6 +455,9 @@ ctrlBuilder.prototype = {
 						'</div>';
 			}
 		},
+		/*
+		* The closed captions button
+		*/
 		'closed_captions': {
 			'w':23,
 			'o':function( ctrlObj ) {
@@ -403,6 +466,9 @@ ctrlBuilder.prototype = {
 						'</div>'
 			}
 		},
+		/*
+		* The volume control interface html
+		*/
 		'volume_control': {
 			'w':23,
 			'o':function( ctrlObj ) {
@@ -422,12 +488,18 @@ ctrlBuilder.prototype = {
 				return o;
 			}
 		},
+		/*
+		* The time dispaly area
+		*/
 		'time_display': {
 			'w':90,
 			'o':function( ctrlObj ) {
 				return '<div class="ui-widget time-disp">' + ctrlObj.embedObj.getTimeReq() + '</div>';
 			}
 		},
+		/*
+		* The playhead html
+		*/
 		'play_head': {
 			'w':0, // special case (takes up remaining space)
 			'o':function( ctrlObj ) {

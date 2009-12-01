@@ -8,11 +8,19 @@ loadGM( {
 } );
 
 var kskinConfig = {
-	pClass: 'k-player',
-	// display time progress
+	// The parent class for all kskin css: 
+	parentClass: 'k-player',
+	
+	// Display time string length
 	long_time_disp: false,
-	body_options: false,
+	
+	// Options are hanndled internnaly
+	external_options: false,
+	
+	// Volume control layout is horizontal
 	volume_layout: 'horizontal',
+	
+	// Menu items for the kskin: 
 	menu_items:[
 		'playerselect',
 		'download',

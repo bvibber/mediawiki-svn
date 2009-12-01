@@ -54,7 +54,7 @@ mvTextInterface.prototype = {
 				_this.getParseTimedText_rowReady();
 			}
 		} else {
-			if ( this.pe.media_element.timedTextSources() ) {
+			if ( this.pe.media_element.checkForTextSource() ) {
 				_this.getParseTimedText_rowReady();
 			} else {
 				js_log( 'no roe data or timed text sources' );

@@ -19,7 +19,6 @@ var mv_default_playlist_attributes = {
 	// playlist user controlled features
 	"linkback":null,
 	"src":null,
-	"embed_link":true,
 	
 	// enable sequencer? (only display top frame no navigation or accompanying text
 	"sequencer":false
@@ -186,7 +185,7 @@ mvPlayList.prototype = {
 						}
 		this.cur_clip.embed.showShare( embed_code );
 	},
-	timedTextSources:function() {
+	checkForTextSource: function() {
 		return false;
 	},
 	getPlaylist:function() {
@@ -433,7 +432,7 @@ mvPlayList.prototype = {
 			// append title:
 			$j( '#dc_' + _this.id ).append(
 				'<div style="font-size:13px;border:solid thin;width:' + this.width + 'px;" id="ptitle_' + this.id + '"></div>' +
-				'<div class="' + this.ctrlBuilder.pClass + '" style="position:absolute;top:' + cpos + 'px">' +
+				'<div class="' + this.ctrlBuilder.parentClass + '" style="position:absolute;top:' + cpos + 'px">' +
 				'<div class="ui-widget-header ui-helper-clearfix control-bar" ' +
 					'style="width:' + _this.width + 'px" >' +
 						 _this.getControlsHTML() +
@@ -446,7 +445,7 @@ mvPlayList.prototype = {
 		} else {
 			// just append the video: 
 			$j( '#dc_' + _this.id ).append(
-				'<div class="' + this.ctrlBuilder.pClass + '" style="position:absolute;top:' + ( _this.height + _this.pl_layout.title_bar_height + 4 ) + 'px"></div>'
+				'<div class="' + this.ctrlBuilder.parentClass + '" style="position:absolute;top:' + ( _this.height + _this.pl_layout.title_bar_height + 4 ) + 'px"></div>'
 			);
 		}
 		this.setupClipDisplay();
@@ -1143,8 +1142,7 @@ mvClip.prototype = {
 		// if in sequence mode hide controls / embed links		 
 		//			init_pl_embed.play_button=false;
 		// init_pl_embed.controls=true;	
-		// if(this.pp.sequencer=='true'){
-		init_pl_embed.embed_link = null;
+		// if(this.pp.sequencer=='true'){		
 		init_pl_embed.linkback = null;
 		
 		if( this.durationHint )

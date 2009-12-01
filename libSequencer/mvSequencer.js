@@ -1510,7 +1510,7 @@ mvSequencer.prototype = {
 		$j( this.target_sequence_container ).append( '<div id="' + this.timeline_id + '_pl_control"' +
 			' style="position:absolute;top:' + ( this.plObj.height ) + 'px;' +
 			'right:1px;width:' + this.plObj.width + 'px;height:' + this.plObj.org_control_height + '" ' +
-			'class="' + this.plObj.ctrlBuilder.pClass + '"><div class="ui-widget ui-corner-bottom ui-state-default control-bar">' +
+			'class="' + this.plObj.ctrlBuilder.parentClass + '"><div class="ui-widget ui-corner-bottom ui-state-default control-bar">' +
 					 this.plObj.getControlsHTML() +
 				 '</div>' +
 			'</div>' );
