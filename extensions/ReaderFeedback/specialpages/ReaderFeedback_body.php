@@ -27,13 +27,16 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		$confirm = $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) );
 		if( $wgUser->isAllowed( 'feedback' ) ) {
 			if( $wgUser->isBlocked( !$confirm ) ) {
-				return $wgOut->blockedPage();
+				$wgOut->blockedPage();
+				return;
 			}
 		} else {
-			return $wgOut->permissionRequired( 'feedback' );
+			$wgOut->permissionRequired( 'feedback' );
+			return;
 		}
 		if( wfReadOnly() ) {
-			return $wgOut->readOnlyPage();
+			$wgOut->readOnlyPage();
+			return;
 		}
 		$this->setHeaders();
 		# Our target page

@@ -17,13 +17,16 @@ class RatedPages extends SpecialPage
 		$this->setHeaders();
 		if( $wgUser->isAllowed( 'feedback' ) ) {
 			if( $wgUser->isBlocked() ) {
-				return $wgOut->blockedPage();
+				$wgOut->blockedPage();
+				return;
 			}
 		} else {
-			return $wgOut->permissionRequired( 'feedback' );
+			$wgOut->permissionRequired( 'feedback' );
+			return;
 		}
 		if( wfReadOnly() ) {
-			return $wgOut->readOnlyPage();
+			$wgOut->readOnlyPage();
+			return;
 		}
 		// Purge expired entries on one in every 10 queries
 		if( 0 == mt_rand( 0, 10 ) ) {
