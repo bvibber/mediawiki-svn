@@ -18,3 +18,9 @@ killall.sh; netcfg; true
 SUITE=$(debconf-get mirror/suite)
 echo d-i apt-setup/local0/repository string  http://apt.wikimedia.org/wikimedia $SUITE-wikimedia main restricted universe multiverse > /tmp/apt_repository.cfg
 debconf-set-selections /tmp/apt_repository.cfg
+
+# Karmic has a bug with grub 2 and serial consoles
+if [ "$SUITE" = "karmic" ]; then
+	sed -i /usr/bin/grub-installer 's/`grub_serial_console`/`grub_serial_console $serial`/g'
+fi
+
