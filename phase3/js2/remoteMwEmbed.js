@@ -38,7 +38,7 @@ function doPageSpecificRewrite() {
 		mwr_load_mv_embed( function() {
 			// Load with mw loader to get localized interface:
 			mw.load( ['mvTimeTextEdit'], function() {
-				// could run init here (but mvTimeTextEdit already included onLoad actions)
+				// Could run init here (but mvTimeTextEdit already included onLoad actions)
 			} );
 		} );
 	}

@@ -10,7 +10,7 @@ loadGM( {
 /*
 * rsd_default_rss_item_mapping
 * 
-*  @key is name of rObj variable
+*  @key is name of resource variable
 *  @value is where to find the value in the item xml
 * 
 *  *value format:*
@@ -40,7 +40,10 @@ var baseRemoteSearch = function( iObj ) {
 };
 baseRemoteSearch.prototype = {
 
+	// Number of completed requests
 	completed_req:0,
+	
+	// Number of requests
 	num_req:0,
 	
 	// ResultsObj holds the array of results
@@ -56,20 +59,24 @@ baseRemoteSearch.prototype = {
 	* Initialise the baseRemoteSearch 
 	* @param {Object} options The set of options for the remote search class
 	*/
-	init: function( options ) {
+	init: function( options ) {	
 		js_log( 'mvBaseRemoteSearch:init' );
 		for ( var i in options ) {
 			this[i] = options[i];
 		}
 		return this;
 	},
+	/**
+	* Base search results 
+	* Does some common initialisation for search results  
+	*/
 	getSearchResults:function() {
 		// Empty out the current results before issuing a request
 		this.resultsObj = { };
 		
 		// Do global getSearchResults bindings
 		this.last_query = $j( '#rsd_q' ).val();
-		this.last_offset = this.cp.offset;
+		this.last_offset = this.provider.offset;
 		
 		// Set the loading flag:		
 		this.loading = true;
@@ -92,34 +99,34 @@ baseRemoteSearch.prototype = {
 		var items = data.getElementsByTagName( 'item' );
 		// js_log('found ' + items.length );
 		$j.each( items, function( inx, item ) {		
-			var rObj = { };
+			var resource = { };
 			for ( var attr in rsd_default_rss_item_mapping ) {				
-				_this.mapAttributeToResource( rObj, item, attr );
+				_this.mapAttributeToResource( resource, item, attr );
 			}
 			// make relative urls absolute:
 			var url_param = new Array( 'src', 'poster' );
 			for ( var j = 0; j < url_param.length; j++ ) {
 				var p = url_param[j];
-				if ( typeof rObj[p] != 'undefined' ) {
-					if ( rObj[p].substr( 0, 1 ) == '/' ) {
-						rObj[p] = http_host + rObj[p];
+				if ( typeof resource[p] != 'undefined' ) {
+					if ( resource[p].substr( 0, 1 ) == '/' ) {
+						resource[p] = http_host + resource[p];
 					}
-					if ( mw.parseUri( rObj[i] ).host ==  rObj[p] ) {
-						rObj[p] = http_host + http_path + rObj[p];
+					if ( mw.parseUri( resource[i] ).host ==  resource[p] ) {
+						resource[p] = http_host + http_path + resource[p];
 					}
 				}
 			}
 			// Force a mime type. In the future generalize for other RSS feeds
-			rObj['mime'] = 'video/ogg';
-			// Add pointer to parent search obj:( this.cp.limit )? this.cp.limit : this.limit,
+			resource['mime'] = 'video/ogg';
+			// Add pointer to parent search obj:( this.provider.limit )? this.provider.limit : this.limit,
 
-			rObj['pSobj'] = _this;
+			resource['pSobj'] = _this;
 
 			// Set target_resource_title
-			_this.updateTargetResourceTitle( rObj );
+			_this.updateTargetResourceTitle( resource );
 
 			// add the result to the result set:
-			_this.resultsObj[ inx ] = rObj;
+			_this.resultsObj[ inx ] = resource;
 			_this.num_results++;
 		} );
 	},
@@ -127,15 +134,15 @@ baseRemoteSearch.prototype = {
 	* Maps a given attribute to a resource object per mapping defined in 
 	* rsd_default_rss_item_mapping
 	*
-	* @param {Object} rObj the resource object
+	* @param {Object} resource the resource object
 	* @param {XML Node} the xml result node
 	* @param {attr} the name attribute we are maping to the resource object 
 	*/
-	mapAttributeToResource: function( rObj, item, attr ){		
+	mapAttributeToResource: function( resource, item, attr ){		
 		var selector = rsd_default_rss_item_mapping[ attr ].split( '@' );
 		var flag_multiple = (  selector[0].substr( 0, 1 ) == '.' ) ? true : false;
 		if ( flag_multiple ) {
-			rObj[ attr ] = new Array();
+			resource[ attr ] = new Array();
 			var tag_name = selector[0].substr( 1 );
 		} else {
 			var tag_name = selector[0];
@@ -169,30 +176,34 @@ baseRemoteSearch.prototype = {
 				}
 			}
 			if ( flag_multiple ) {
-				rObj[ attr ].push( tag_val )
+				resource[ attr ].push( tag_val )
 			} else {
-				rObj[ attr ] = tag_val;
+				resource[ attr ] = tag_val;
 			}
 		} );
-		// Nothing to return we update the "rObj" directly
+		// Nothing to return we update the "resource" directly
 	}, 
 	
 	/**
 	* Get the html representation of the resource Object parameter
+	*
+	* @param {Object} resource Resource Object to get embed HTML from
+	* @param {Object} options Embed HTML options can include: 
+	* 	'width', 'height' and 'max_height' 
 	*/
-	getEmbedHTML: function( rObj , options ) {
+	getEmbedHTML: function( resource , options ) {
 		if ( !options )
 			options = { };			
 		// Set up the output var with the default values: 
 		if(! options.width )
-			options.width = rObj.width;
+			options.width = resource.width;
 		if(! options.height )
-			options.height = rObj.height
+			options.height = resource.height
 			
 		var outHtml  = '';
 		if ( options['max_height'] ) {
-			options.height = ( options.max_height > rObj.height ) ? rObj.height : options.max_height;
-			options.width = ( rObj.width / rObj.height ) * options.height;
+			options.height = ( options.max_height > resource.height ) ? resource.height : options.max_height;
+			options.width = ( resource.width / resource.height ) * options.height;
 		}
 		options.style = '';
 		if( options.height )
@@ -201,21 +212,21 @@ baseRemoteSearch.prototype = {
 		if( options.width )
 			options.style += 'width:' + options.width + 'px;';							
 		
-		if ( rObj.mime.indexOf( 'image' ) != -1 )
-			outHtml = this.getImageEmbedHTML( rObj, options );
+		if ( resource.mime.indexOf( 'image' ) != -1 )
+			outHtml = this.getImageEmbedHTML( resource, options );
 			
-		if ( rObj.mime == 'application/ogg' || rObj.mime == 'video/ogg' || rObj.mime == 'audio/ogg' ) {
+		if ( resource.mime == 'application/ogg' || resource.mime == 'video/ogg' || resource.mime == 'audio/ogg' ) {
 			// Setup the attribute html:
 			var ahtml = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
-			ahtml+=	'src="' + rObj.src + '" ' +
+			ahtml+=	'src="' + resource.src + '" ' +
 					'style="' + options.style + '" ' +
-					'poster="' +  rObj.poster + '" ';
+					'poster="' +  resource.poster + '" ';
 					
-			if (  rObj.mime == 'application/ogg' || rObj.mime == 'video/ogg'  ) {
+			if (  resource.mime == 'application/ogg' || resource.mime == 'video/ogg'  ) {
 				outHtml = '<video ' + ahtml + '></video>';
 			}
 					
-			if ( rObj.mime == 'audio/ogg' ) {
+			if ( resource.mime == 'audio/ogg' ) {
 				outHtml = '<audio ' + ahtml + '></audio>';
 			}
 		}
@@ -223,20 +234,20 @@ baseRemoteSearch.prototype = {
 		// Return the output. Wrap with a description div if remote_insert_description is on.		
 		if( outHtml != '')
 			return ( this.rsd['remote_insert_description'] ) ?
-					this.wrapHtmlDesc(rObj, options, outHtml) :
+					this.wrapHtmlDesc(resource, options, outHtml) :
 					outHtml;
 			
 		// No output give error: 
-		js_log( "ERROR:: no embed code for mime type: " + rObj.mime );	
-		return 'Error missing embed code for: ' + escape( rObj.mime );
+		js_log( "ERROR:: no embed code for mime type: " + resource.mime );	
+		return 'Error missing embed code for: ' + escape( resource.mime );
 	},
-	wrapHtmlDesc: function( rObj, options, outHtml ) {
-		var stripedTitle =  rObj.title.replace( /File:|Image:|.jpg|.png|.ogg|.ogv|.oga|.svg/ig, '');
+	wrapHtmlDesc: function( resource, options, outHtml ) {
+		var stripedTitle =  resource.title.replace( /File:|Image:|.jpg|.png|.ogg|.ogv|.oga|.svg/ig, '');
 		
-		var titleLink = '<a href="' + rObj.link + '" title="' + stripedTitle + '">' +
+		var titleLink = '<a href="' + resource.link + '" title="' + stripedTitle + '">' +
 							 stripedTitle + '</a>';
-		var cpTitle = gM('rsd-' + this.cp.id + '-title');
-		var remoteProviderLink = '<a href="' + this.cp.homepage + '" '+
+		var cpTitle = gM('rsd-' + this.provider.id + '-title');
+		var remoteProviderLink = '<a href="' + this.provider.homepage + '" '+
 									'title="' + cpTitle + '">' +
 									cpTitle + '</a>'; 									
 		return '<div class="mw-imported-resource" '+ 
@@ -249,17 +260,17 @@ baseRemoteSearch.prototype = {
 	/**
 	* Get the embed html specifically for an image type resource Object. 
 	*/
-	getImageEmbedHTML:function( rObj, options ) {
+	getImageEmbedHTML:function( resource, options ) {
 		// if crop is null do base output: 
 		var imgHtml = '<img ';
 		imgHtml += ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
-		imgHtml += ' src="' + rObj.edit_url  + '" '+
+		imgHtml += ' src="' + resource.edit_url  + '" '+
 					'style="' + options.style + '" />';
-		if ( rObj.crop == null )
+		if ( resource.crop == null )
 			return imgHtml;
 		// Else do crop output:	
-		return '<div style="width:' + rObj.crop.w + 'px;height: ' + rObj.crop.h + 'px;overflow:hidden;position:relative">' +
-					'<div style="position:relative;top:-' + rObj.crop.y + 'px;left:-' + rObj.crop.x + 'px">' +
+		return '<div style="width:' + resource.crop.w + 'px;height: ' + resource.crop.h + 'px;overflow:hidden;position:relative">' +
+					'<div style="position:relative;top:-' + resource.crop.y + 'px;left:-' + resource.crop.x + 'px">' +
 						imgHtml +
 					'</div>' +
 				'</div>';
@@ -271,18 +282,18 @@ baseRemoteSearch.prototype = {
 	* 
 	* By default just return the existing image.
 	*/
-	getImageObj:function( rObj, size, callback ) {
+	getImageObj:function( resource, size, callback ) {
 		callback( { 
-			'url' : rObj.poster 
+			'url' : resource.poster 
 		} );
 	},
 	/**
 	* Gets the inline wikiText description of the resource Object
 	*/
-	getInlineDescWiki:function( rObj ) {
+	getInlineDescWiki:function( resource ) {
 		// return striped html  & trim white space
-		if ( rObj.desc )
-			return $j.trim( rObj.desc.replace(/(<([^>]+)>)/ig,"") );
+		if ( resource.desc )
+			return $j.trim( resource.desc.replace(/(<([^>]+)>)/ig,"") );
 		// No Description available:  
 		return '';
 	},
@@ -292,27 +303,27 @@ baseRemoteSearch.prototype = {
 	* By default license permission wiki text is cc based template mapping 
 	* (does not confirm the templates actually exist)
 	*/
-	getPermissionWikiTag: function( rObj ) {
-		if ( !rObj.license )
+	getPermissionWikiTag: function( resource ) {
+		if ( !resource.license )
 			return '';// no license info
 			
 		// First check if we have a special license template tag already set: 
-		if( rObj.license_template_tag )
-			return '{{' + rObj.license_template_tag + '}}';
+		if( resource.license_template_tag )
+			return '{{' + resource.license_template_tag + '}}';
 			
 		// Check that its a defined creative commons license key:
-		if (  this.rsd.licenses.cc.licenses[ rObj.license.key ] != 'undefined' ) {
-			return '{{Cc-' + rObj.license.key + '}}';
-		} else if ( rObj.license.lurl ) {
-			return '{{Template:External_License|' + rObj.license.lurl + '}}';
+		if (  this.rsd.licenses.cc.licenses[ resource.license.key ] != 'undefined' ) {
+			return '{{Cc-' + resource.license.key + '}}';
+		} else if ( resource.license.lurl ) {
+			return '{{Template:External_License|' + resource.license.lurl + '}}';
 		}
 
 	},
 	/**
 	* Gets the resource import description text
 	*/
-	getImportResourceDescWiki:function( rObj ) {
-		return gM( 'mwe-imported_from', [rObj.title,  this.cp.homepage, gM('rsd-' + this.cp.id + '-title'), rObj.link] );
+	getImportResourceDescWiki:function( resource ) {
+		return gM( 'mwe-imported_from', [resource.title,  this.provider.homepage, gM('rsd-' + this.provider.id + '-title'), resource.link] );
 	},
 	/**
 	* Get any extra wikitext description for the given resource object. 
@@ -321,7 +332,7 @@ baseRemoteSearch.prototype = {
 	*
 	* By default its an empty string. 
 	*/
-	getExtraResourceDescWiki:function( rObj ) {
+	getExtraResourceDescWiki:function( resource ) {
 		return '';
 	},
 	
@@ -329,15 +340,15 @@ baseRemoteSearch.prototype = {
 	* Gets a image transformation 
 	* by default it just return the poster
 	*/
-	getImageTransform:function( rObj, opt ) {
-		return rObj.poster;
+	getImageTransform:function( resource, opt ) {
+		return resource.poster;
 	},
 	
 	/**
 	* Adds additional resource information post clip embedding. 
 	*/
-	addResourceInfoFromEmbedInstance : function( rObj, eb_id ) {
-		return rObj;
+	addResourceInfoFromEmbedInstance : function( resource, eb_id ) {
+		return resource;
 	},
 	
 	/**
@@ -346,35 +357,36 @@ baseRemoteSearch.prototype = {
 	* Use full for grabbing extra info that is not available in the initial 
 	* search results api request.
 	*/
-	addResourceInfoCallback:function( rObj, callback ) {
+	addResourceInfoCallback:function( resource, callback ) {
 		callback();
 	},
 	
 	/**
 	* Get the wiki embed code for a given resource object
 	*/
-	getEmbedWikiCode:function( rObj ) {
-		var layout = ( rObj.layout ) ? rObj.layout:"right"
-		var o = '[[' + this.rsd.fileNS + ':' + rObj.target_resource_title + '|thumb|' + layout;
+	getEmbedWikiCode:function( resource ) {
+		var layout = ( resource.layout ) ? resource.layout:"right"
+		var o = '[[' + this.rsd.canonicalFileNS + ':' + resource.target_resource_title + '|thumb|' + layout;
 
-		if ( !rObj.target_width && rObj.width ) {
-			rObj.target_width = ( rObj.width < 640 ) ? rObj.width: '640';
+		if ( !resource.target_width && resource.width ) {
+			resource.target_width = ( resource.width < 640 ) ? resource.width: '640';
 		}
 
-		if ( rObj.target_width )
-			o += '|' + rObj.target_width + 'px';
+		if ( resource.target_width )
+			o += '|' + resource.target_width + 'px';
 
-		if ( rObj.inlineDesc )
-			o += '|' + rObj.inlineDesc;
+		if ( resource.inlineDesc )
+			o += '|' + resource.inlineDesc;
 
 		o += ']]';
 		return o;
 	},
+	
 	/**
 	* Updates / normalizes the target_resource_title
 	*/
-	updateTargetResourceTitle:function( rObj ) {
-		rObj.target_resource_title = rObj.titleKey.replace( /^(File:|Image:)/ , '' );
-		rObj.target_resource_title = this.cp.resource_prefix + rObj.target_resource_title;
+	updateTargetResourceTitle:function( resource ) {
+		resource.target_resource_title = resource.titleKey.replace( /^(File:|Image:)/ , '' );
+		resource.target_resource_title = this.provider.resource_prefix + resource.target_resource_title;
 	}
 }

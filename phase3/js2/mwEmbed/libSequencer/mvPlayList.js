@@ -960,7 +960,7 @@ mvPlayList.prototype = {
 			barHtml += 'filter:alpha(opacity=40);' +
 					'-moz-opacity:.40;">';
 			
-			barHtml += _this.ctrlBuilder.getMvBufferHtml();
+			barHtml += _this.ctrlBuilder.getBufferHtml();
 			
 			barHtml += '</div>';
 			

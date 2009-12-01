@@ -35,7 +35,7 @@ mediaWikiSearch.prototype = {
 		}
 		do_api_req( {
 			'data':reqObj,
-			'url':this.cp.api_url
+			'url':this.provider.api_url
 			}, function( data ) {
 				// check for redirect
 				for ( var i in data.query.pages ) {
@@ -66,7 +66,7 @@ mediaWikiSearch.prototype = {
 	getUserRecentUploads:function( wgUser, callback ) {
 		var _this = this;
 		do_api_req( {
-			'url':this.cp.api_url,
+			'url':this.provider.api_url,
 			'data': {
 				'action':'query',
 				'list':'recentchanges',
@@ -100,7 +100,7 @@ mediaWikiSearch.prototype = {
 					'iiurlwidth': parseInt( _this.rsd.thumb_width ),
 					'rvprop':'content'
 				},
-				'url':_this.cp.api_url
+				'url':_this.provider.api_url
 			}, function( data ) {
 				_this.clearResults();
 				_this.addResults( data );
@@ -125,8 +125,8 @@ mediaWikiSearch.prototype = {
 			'gsrsearch':  $j( '#rsd_q' ).val(),
 			'gsrnamespace':6, // (only search the "file" namespace (audio, video, images)
 			'gsrwhat':'title',
-			'gsrlimit':  this.cp.limit,
-			'gsroffset': this.cp.offset,
+			'gsrlimit':  this.provider.limit,
+			'gsroffset': this.provider.offset,
 			'prop':'imageinfo|revisions|categories',
 			'iiprop':'url|mime|size',
 			'iiurlwidth': parseInt( this.rsd.thumb_width ),
@@ -140,7 +140,7 @@ mediaWikiSearch.prototype = {
 		reqObj['gsrwhat'] = 'text';
 		do_api_req( {
 			'data':reqObj,
-			'url':this.cp.api_url
+			'url':this.provider.api_url
 			}, function( data ) {
 				js_log( 'mediaWikiSearch: got data response' );
 				// parse the return data
@@ -161,7 +161,7 @@ mediaWikiSearch.prototype = {
 			if ( typeof data['query-continue'].search != 'undefined' )
 				this.more_results = true;
 		}
-		// Make sure we have pages to idorate: 	
+		// Make sure we have pages to iterate: 	
 		if ( data.query && data.query.pages ) {
 			for ( var page_id in  data.query.pages ) {
 				var page =  data.query.pages[ page_id ];
@@ -277,10 +277,10 @@ mediaWikiSearch.prototype = {
 		// Set the width: 
 		if ( size.width )
 			reqObj['iiurlwidth'] = size.width;
-		 js_log( 'going to do req: ' + this.cp.api_url + ' ' + reqObj );
+		 js_log( 'going to do req: ' + this.provider.api_url + ' ' + reqObj );
 		do_api_req( {
 			'data':reqObj,
-			'url' : this.cp.api_url
+			'url' : this.provider.api_url
 			}, function( data ) {
 				var imObj = { };
 				for ( var page_id in  data.query.pages ) {

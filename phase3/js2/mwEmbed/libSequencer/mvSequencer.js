@@ -793,12 +793,9 @@ mvSequencer.prototype = {
 	/*
 	* Updates the clip details div if edit resource is set
 	*/
-	doEditClip:function( cObj ) {
+	doEditClip:function( resource ) {
 		js_log( 'seq:doEditClip' );
 		var _this = this;
-
-		// Set default edit action
-		var edit_action = 'fileopts';
 
 		mv_get_loading_img( '#clipedit_ic' );
 		
@@ -810,12 +807,11 @@ mvSequencer.prototype = {
 			_this.myClipEditor = { };
 			// Setup the cliploader options
 			_this.myClipEditor = new mvClipEdit( {
-				'rObj'			: cObj,
-				'control_ct'	: 'clipedit_ic',
-				'clip_disp_ct'	: cObj.id,
-				'edit_action'	: edit_action,
-				'p_seqObj'		: _this,
-				'profile'		: 'sequence'
+				'resource'					: resource,
+				'target_control_display'	: 'clipedit_ic',
+				'target_clip_display'		: resource.id,				
+				'parentSequence'			: _this,
+				'profile'					: 'sequence'
 			} );
 		} );
 	},

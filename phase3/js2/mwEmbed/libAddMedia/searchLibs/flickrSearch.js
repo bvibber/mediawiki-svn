@@ -12,8 +12,8 @@
  *	(8) United States Government Work
  */
 
-var flickrSearch = function ( iObj ) {
-	return this.init( iObj );
+var flickrSearch = function ( options ) {
+	return this.init( options );
 }
 flickrSearch.prototype = {
 	dtUrl : 'http://www.flickr.com/photos/',
@@ -28,8 +28,11 @@ flickrSearch.prototype = {
 		'7'	: 'http://www.flickr.com/commons/usage/',
 		'8' : 'http://www.usa.gov/copyright.shtml'
 	},
+	
 	/**
 	* Initialize the flickr Search with provided options
+	*
+	* @param {Object} options Initial options for the flickrSearch class
 	*/
 	init:function( options ) {		
 		var baseSearch = new baseRemoteSearch( options );
@@ -41,8 +44,11 @@ flickrSearch.prototype = {
 			}
 		}
 	},
+	
 	/**
 	* Gets the Search results setting _loading flag to false once results have been added 
+	* 
+	* Runs an api call then calls addResults with the resulting data
 	*/
 	getSearchResults:function() {
 		var _this = this;
@@ -55,14 +61,14 @@ flickrSearch.prototype = {
 			'format':'json',
 			'license':this._license_keys,
 			'api_key':this.apikey,
-			'per_page': this.cp.limit,
-			'page' : this.cp.offset,
+			'per_page': this.provider.limit,
+			'page' : this.provider.offset,
 			'text': $j( '#rsd_q' ).val(),
 			'extras' :	'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_m, url_o'
 		}
 		do_api_req( {
 			'data': reqObj,
-			'url':this.cp.api_url,
+			'url':this.provider.api_url,
 			'jsonCB':'jsoncallback',
 		},	function( data ) {
 			_this.addResults( data );
@@ -70,102 +76,123 @@ flickrSearch.prototype = {
 		} );
 	},
 	/**
-	* Adds Results for a given data response from api query
+	* Adds results from fliker api data response object 
+	*
+	* @param {Object} data Fliker response data
 	*/
 	addResults:function( data ) {
 		var _this = this;
 		if ( data.photos && data.photos.photo ) {
 			// set result info: 
 			this.num_results = data.photos.total;
-			if ( this.num_results > this.cp.offset + this.cp.limit ) {
+			if ( this.num_results > this.provider.offset + this.provider.limit ) {
 				this.more_results = true;
 			}
 			for ( var resource_id in data.photos.photo ) {
-				var sourceResource = data.photos.photo[ resource_id ];
-				var rObj = _this.getResourceObject( sourceResource );
-				_this.resultsObj[ resource_id ] = rObj;
+				var flickrResource = data.photos.photo[ resource_id ];
+				var resource = _this.getResourceObject( flickrResource );
+				_this.resultsObj[ resource_id ] = resource;
 			}
 		}
 	},
 	/**
-	* Gets an individual resource object from a given source Resource
+	* Maps a Fliker response object to a "resource object"
+	*
+	* @param {Object} flickrResource Fliker response resource
 	*/
-	getResourceObject: function( resource ){			
+	getResourceObject: function( flickrResource ){		
 		var _this = this;		
-		var rObj = {
-			'titleKey'	 : resource.title + '.jpg',
-			'resourceKey': resource.id,
-			'link'		 : _this.dtUrl + resource.pathalias + '/' + resource.id,
-			'title'		 : resource.title,
-			'thumbwidth' : resource.width_t,
-			'thumbheight': resource.height_t,
-			'desc'		 : resource.title,
+		var resource = {
+			'titleKey'	 : flickrResource.title + '.jpg',
+			'resourceKey': flickrResource.id,
+			'link'		 : _this.dtUrl + flickrResource.pathalias + '/' + flickrResource.id,
+			'title'		 : flickrResource.title,
+			'thumbwidth' : flickrResource.width_t,
+			'thumbheight': flickrResource.height_t,
+			'desc'		 : flickrResource.title,
 			// Set the license
-			'license'	 : this.rsd.getLicenceFromUrl( _this.licenseMap[ resource.license ] ),
+			'license'	 : this.rsd.getLicenseFromUrl( _this.licenseMap[ flickrResource.license ] ),
 			'pSobj'		 : _this,
+			
 			// Assume image/jpeg for flickr response
 			'mime'		 : 'image/jpeg'
 		};
 		// Add all the provided src types that are avaliable 
-		rObj['srcSet'] = { };
+		resource['sizeKeys'] = { };
 		for ( var i in _this._srctypes ) {
 			var st = _this._srctypes[i];
-			// if resource has a url add it to the srcSet:	
-			if ( resource['url_' + st] ) {
-				rObj['srcSet'][st] = {
-					'h': resource['height_' + st],
-					'w': resource['width_' + st],
-					'src': resource['url_' + st]
+			// If resource has a url add it to the sizeKeys:	
+			if ( flickrResource['url_' + st] ) {
+				resource['sizeKeys'][st] = {
+					'h' : flickrResource[ 'height_' + st ],
+					'w' : flickrResource[ 'width_' + st ],
+					'src' : flickrResource[ 'url_' + st ]
 				}
 				// Set src to the largest
-				rObj['src'] = resource['url_' + st];
+				resource[ 'src' ] = flickrResource['url_' + st];
 			}
 		}
-		return rObj;
+		return resource;
 	},
+	
 	/**
-	* return image transform via callback
+	* Return image transform via callback
+	*
+	* @param {Object} resource Resource object
+	* @param {Number} size Requested size
+	* @param {Function} callback Callback is called directly 
+	*	since fliker includes image transforms in api response
 	*/ 
-	getImageObj:function( rObj, size, callback ) {
+	getImageObj:function( resource, size, callback ) {
 		if ( size.width ) {
-			var skey = this.getSrcTypeKey( rObj, size.width )
+			var skey = this.getSizeKey( resource, size.width )
 			callback ( {
-				'url' : rObj.srcSet[ skey ].src,
-				'width' : rObj.srcSet[ skey ].w,
-				'height' : rObj.srcSet[ skey ].h
+				'url' : resource.sizeKeys[ skey ].src,
+				'width' : resource.sizeKeys[ skey ].w,
+				'height' : resource.sizeKeys[ skey ].h
 			} );
 		}
 	},
 	/**
-	* Gets an image transformation based a SrcTypeKey gennerated by the requested options
+	* Gets an image transformation based a SrcTypeKey generated by the requested options
+	* 
+	* @param {Object} resource Resource for image transform
+	* @param {Object} options Options for image transform call
 	*/
-	getImageTransform:function( rObj, options ) {
+	getImageTransform:function( resource, options ) {
 		if ( options.width ) {
-			return rObj.srcSet[ this.getSrcTypeKey( rObj, options.width ) ].src;
+			return resource.sizeKeys[ this.getSizeKey( resource, options.width ) ].src;
 		}
-		return rObj.srcSet[ _srctypes[_srctypes.length-1] ];
+		return resource.sizeKeys[ _srctypes[_srctypes.length-1] ];
 	},
-	getSrcTypeKey:function( rObj, width ) {
+	
+	/**
+	* Get the size key for a requested width
+	*
+	* @param {Object} resource Resource for sizeKey grab
+	* @param {Number} width Requeste width for sizeKey lookup
+	*/
+	getSizeKey:function( resource, width ) {
 		if ( width <= 75 ) {
-			if ( rObj.srcSet['sq'] )
+			if ( resource.sizeKeys['sq'] )
 				return 'sq';
 		} else if ( width <= 100 ) {
-			if ( rObj.srcSet['t'] )
+			if ( resource.sizeKeys['t'] )
 				return 't';
 		} else if ( width <= 240 ) {
-			if ( rObj.srcSet['s'] )
+			if ( resource.sizeKeys['s'] )
 				return 's';
 		} else if ( width <= 500 ) {
-			if ( rObj.srcSet['m'] )
+			if ( resource.sizeKeys['m'] )
 				return 'm';
 		} else {
-			if ( rObj.srcSet['o'] )
+			if ( resource.sizeKeys['o'] )
 				return 'o';
 		}
 		// original was missing return medium or small
-		if ( rObj.srcSet['m'] )
+		if ( resource.sizeKeys['m'] )
 			return 'm';
-		if ( rObj.srcSet['s'] )
+		if ( resource.sizeKeys['s'] )
 			return 's';
 		
 	}

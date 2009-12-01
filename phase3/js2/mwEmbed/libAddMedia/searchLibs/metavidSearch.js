@@ -31,14 +31,14 @@ metavidSearch.prototype = {
 		var _this = this;
 		js_log( 'metavidSearch::getSearchResults()' );
 		// Proccess all options
-		var url = this.cp.api_url;
+		var url = this.provider.api_url;
 		var reqObj = $j.extend({}, this.defaultReq);
 		reqObj[ 'f[0][t]' ] = 'match';
 		reqObj[ 'f[0][v]' ] = $j( '#rsd_q' ).val();
 		
 		// add offset limit:
-		reqObj[ 'limit' ] = this.cp.limit;
-		reqObj[ 'offset' ] =  this.cp.offset;
+		reqObj[ 'limit' ] = this.provider.limit;
+		reqObj[ 'offset' ] =  this.provider.offset;
 
 		do_api_req({
 			'url' : url,
@@ -57,31 +57,31 @@ metavidSearch.prototype = {
 			// Add the data xml payload with context url:
 			_this.addRSSData( xmldata , url );
 			
-			// Do some metavid specific pos processing on the rObj data:
+			// Do some metavid specific pos processing on the resource data:
 			for ( var i in _this.resultsObj ) {
-				var rObj = _this.resultsObj[i];
-				var proe = mw.parseUri( rObj['roe_url'] );
-				rObj['start_time'] = proe.queryKey['t'].split( '/' )[0];
-				rObj['end_time'] = proe.queryKey['t'].split( '/' )[1];
-				rObj['stream_name'] = proe.queryKey['stream_name'];
+				var resource = _this.resultsObj[i];
+				var proe = mw.parseUri( resource['roe_url'] );
+				resource['start_time'] = proe.queryKey['t'].split( '/' )[0];
+				resource['end_time'] = proe.queryKey['t'].split( '/' )[1];
+				resource['stream_name'] = proe.queryKey['stream_name'];
 
 				// All metavid content is public domain:
-				rObj['license'] = _this.rsd.getLicenseFromKey( 'pd' );
+				resource['license'] = _this.rsd.getLicenseFromKey( 'pd' );
 
 				// Transform the title into a wiki_safe title:				
-				rObj['titleKey'] =	 _this.getTitleKey( rObj );
+				resource['titleKey'] =	 _this.getTitleKey( resource );
 
 				// Default width of metavid clips:
-				rObj['target_width'] = 400;
+				resource['target_width'] = 400;
 								
-				rObj['author'] = 'US Government';
+				resource['author'] = 'US Government';
 				
 				// Add in the date as UTC "toDateString" : 
-				var d = _this.getDateFromLink( rObj.link );
-				rObj['date'] =	 d.toDateString();
+				var d = _this.getDateFromLink( resource.link );
+				resource['date'] =	 d.toDateString();
 				
 				// Set the license_template_tag ( all metavid content is PD-USGov )
-				rObj['license_template_tag'] = 'PD-USGov';
+				resource['license_template_tag'] = 'PD-USGov';
 			}
 			// done loading:
 			_this.loading = 0;
@@ -90,112 +90,112 @@ metavidSearch.prototype = {
 	/** 
 	* Get a Title key for the assset name inside the mediaWiki system
 	*/
-	getTitleKey:function( rObj ) {
-		return rObj['stream_name'] + '_part_' + rObj['start_time'].replace(/:/g, '.' ) + '_to_' + rObj['end_time'].replace(/:/g, '.' ) + '.ogv';
+	getTitleKey:function( resource ) {
+		return resource['stream_name'] + '_part_' + resource['start_time'].replace(/:/g, '.' ) + '_to_' + resource['end_time'].replace(/:/g, '.' ) + '.ogv';
 	},
-	getTitle:function( rObj ) {
-		var sn = rObj['stream_name'].replace( /_/g, ' ' );
+	getTitle:function( resource ) {
+		var sn = resource['stream_name'].replace( /_/g, ' ' );
 		sn = sn.charAt( 0 ).toUpperCase() + sn.substr( 1 );
-		return gM( 'mwe-stream_title', [ sn, rObj.start_time, rObj.end_time ] );
+		return gM( 'mwe-stream_title', [ sn, resource.start_time, resource.end_time ] );
 	},
-	getExtraResourceDescWiki:function( rObj ) {
+	getExtraResourceDescWiki:function( resource ) {
 		var o = "\n";
 		// check for person
-		if (  rObj.person && rObj.person['label'] )
-			o += '* featuring [[' + rObj.person['label'] + ']]' + "\n";
+		if (  resource.person && resource.person['label'] )
+			o += '* featuring [[' + resource.person['label'] + ']]' + "\n";
 
-		if ( rObj.parent_clip )
-			o += '* part of longer [' + rObj.parent_clip + ' video clip]' + "\n";
+		if ( resource.parent_clip )
+			o += '* part of longer [' + resource.parent_clip + ' video clip]' + "\n";
 
-		if ( rObj.person && rObj.person['url'] && rObj.person['label'] )
-			o += '* also see speeches by [' +  $j.trim( rObj.person.url ) + ' ' + rObj.person['label'] + ']' + "\n";
+		if ( resource.person && resource.person['url'] && resource.person['label'] )
+			o += '* also see speeches by [' +  $j.trim( resource.person.url ) + ' ' + resource.person['label'] + ']' + "\n";
 
 		// check for bill:
-		if ( rObj.bill && rObj.bill['label'] && rObj.bill['url'] )
-			o += '* related to bill: [[' + rObj.bill['label'] + ']] more bill [' + rObj.bill['url'] + ' video clips]' + "\n";
+		if ( resource.bill && resource.bill['label'] && resource.bill['url'] )
+			o += '* related to bill: [[' + resource.bill['label'] + ']] more bill [' + resource.bill['url'] + ' video clips]' + "\n";
 		return o;
 	},
 	// format is "quote" followed by [[name of person]]
-	getInlineDescWiki:function( rObj ) {
-		var o = this.parent_getInlineDescWiki( rObj );
+	getInlineDescWiki:function( resource ) {
+		var o = this.parent_getInlineDescWiki( resource );
 		// add in person if found
-		if ( rObj.person &&  rObj.person['label'] ) {
-			o = $j.trim(  o.replace( rObj.person['label'], '' ) );
+		if ( resource.person &&  resource.person['label'] ) {
+			o = $j.trim(  o.replace( resource.person['label'], '' ) );
 			// trim leading :
 			if ( o.substr( 0, 1 ) == ':' )
 				o =  o.substr( 1 );
 			// add quotes and person at the end:
-			var d = this.getDateFromLink( rObj.link );
-			o = '"' + o + '" [[' + rObj.person['label'] + ']] on ' + d.toDateString();
+			var d = this.getDateFromLink( resource.link );
+			o = '"' + o + '" [[' + resource.person['label'] + ']] on ' + d.toDateString();
 		}
 		// could do ref or direct link:
-		o += ' \'\'[' + $j.trim( rObj.link ) + ' source clip]\'\' ';
+		o += ' \'\'[' + $j.trim( resource.link ) + ' source clip]\'\' ';
 
-		// var o= '"' + o + '" by [[' + rObj.person['label'] + ']] '+
-		//		'<ref>[' + rObj.link + ' Metavid Source Page] for ' + rObj.title +'</ref>';
+		// var o= '"' + o + '" by [[' + resource.person['label'] + ']] '+
+		//		'<ref>[' + resource.link + ' Metavid Source Page] for ' + resource.title +'</ref>';
 		return o;
 	},
 	// give an updated start and end time updates the title and url
-	applyVideoAdj: function( rObj ) {
+	applyVideoAdj: function( resource ) {
 		js_log( 'mv ApplyVideoAdj::' );
 		// update the titleKey:
-		rObj['titleKey'] =	 this.getTitleKey( rObj );
+		resource['titleKey'] =	 this.getTitleKey( resource );
 
 		// update the title:
-		rObj['title'] = this.getTitle( rObj );
+		resource['title'] = this.getTitle( resource );
 
 		// update the interface:
-		js_log( 'update title to: ' + rObj['title'] );
-		$j( '#rsd_resource_title' ).html( gM( 'rsd_resource_edit', rObj['title'] ) );
+		js_log( 'update title to: ' + resource['title'] );
+		$j( '#rsd_resource_title' ).html( gM( 'rsd_resource_edit', resource['title'] ) );
 
 		// if the video is "roe" based select the ogg stream
-		if ( rObj.roe_url && rObj.pSobj.cp.stream_import_key ) {
-			var source = $j( '#embed_vid' ).get( 0 ).media_element.getSourceById( rObj.pSobj.cp.stream_import_key );
+		if ( resource.roe_url && resource.pSobj.provider.stream_import_key ) {
+			var source = $j( '#embed_vid' ).get( 0 ).media_element.getSourceById( resource.pSobj.provider.stream_import_key );
 			if ( !source ) {
-				js_error( 'Error::could not find source: ' +  rObj.pSobj.cp.stream_import_key );
+				js_error( 'Error::could not find source: ' +  resource.pSobj.provider.stream_import_key );
 			} else {
-				rObj['src'] = source.getURI();
-				js_log( "g src_key: " + rObj.pSobj.cp.stream_import_key + ' src:' + rObj['src'] ) ;
+				resource['src'] = source.getURI();
+				js_log( "g src_key: " + resource.pSobj.provider.stream_import_key + ' src:' + resource['src'] ) ;
 				return true;
 			}
 		}
 	},
-	getEmbedHTML:function( rObj , options ) {
+	getEmbedHTML:function( resource , options ) {
 	    if ( !options )
 		     options = { };
 		var id_attr = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
 		var style_attr = ( options['max_width'] ) ? ' style="width:' + options['max_width'] + 'px;"':'';
 		// @@maybe check type here ?
 		if ( options['only_poster'] ) {
-			return '<img ' + id_attr + ' src="' + rObj['poster'] + '" ' + style_attr + '>';
+			return '<img ' + id_attr + ' src="' + resource['poster'] + '" ' + style_attr + '>';
 		} else {
-			return '<video ' + id_attr + ' roe="' + rObj['roe_url'] + '"></video>';
+			return '<video ' + id_attr + ' roe="' + resource['roe_url'] + '"></video>';
 		}
 	},
-	getImageTransform:function( rObj, opt ) {
+	getImageTransform:function( resource, opt ) {
 		if ( opt.width <= 80 ) {
-			return getURLParamReplace( rObj.poster, { 'size' : "icon" } )
+			return getURLParamReplace( resource.poster, { 'size' : "icon" } )
 		} else if ( opt.width <= 160 ) {
-			return getURLParamReplace( rObj.poster, { 'size' : "small" } )
+			return getURLParamReplace( resource.poster, { 'size' : "small" } )
 		} else if ( opt.width <= 320 ) {
-			return getURLParamReplace( rObj.poster, { 'size' : 'medium' } )
+			return getURLParamReplace( resource.poster, { 'size' : 'medium' } )
 		} else if ( opt.width <= 512 ) {
-			return getURLParamReplace( rObj.poster, { 'size' : 'large' } )
+			return getURLParamReplace( resource.poster, { 'size' : 'large' } )
 		} else {
-			return getURLParamReplace( rObj.poster, { 'size' : 'full' } )
+			return getURLParamReplace( resource.poster, { 'size' : 'full' } )
 		}
 	},
-	addResourceInfoFromEmbedInstance : function( rObj, embed_id ) {
+	addResourceInfoFromEmbedInstance : function( resource, embed_id ) {
 		var sources = $j( '#' + embed_id ).get( 0 ).media_element.getSources();
-		rObj.other_versions = '*[' + rObj['roe_url'] + ' XML of all Video Formats and Timed Text]' + "\n";
+		resource.other_versions = '*[' + resource['roe_url'] + ' XML of all Video Formats and Timed Text]' + "\n";
 		for ( var i in sources ) {
 			var cur_source = sources[i];
-			// rObj.other_versions += '*['+cur_source.getURI() +' ' + cur_source.title +']' + "\n";
-			if ( cur_source.id ==  this.cp.target_source_id )
-				rObj['url'] = cur_source.getURI();
+			// resource.other_versions += '*['+cur_source.getURI() +' ' + cur_source.title +']' + "\n";
+			if ( cur_source.id ==  this.provider.target_source_id )
+				resource['url'] = cur_source.getURI();
 		}
-		// js_log('set url to: ' + rObj['url']);
-		return rObj;
+		// js_log('set url to: ' + resource['url']);
+		return resource;
 	},
 	getDateFromLink:function( link ) {
 		var dateExp = new RegExp( /_([0-9]+)\-([0-9]+)\-([0-9]+)/ );

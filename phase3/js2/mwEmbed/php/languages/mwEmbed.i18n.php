@@ -21,7 +21,7 @@ $messages['en'] = array(
 	'mwe-insert_into_sequence' => 'Insert into sequence',
 	'mwe-preview_insert' => 'Preview insert',
 	'mwe-cancel_image_insert' => 'Cancel insert',
-	'mwe-sc_fileopts' => 'Clip detail edit',
+	'mwe-sc_attributes' => 'Clip detail edit',
 	'mwe-sc_inoutpoints' => 'Set in-out points',
 	'mwe-sc_overlays' => 'Overlays',
 	'mwe-sc_audio' => 'Audio control',
@@ -39,6 +39,7 @@ $messages['en'] = array(
 	'mwe-inline-description' => 'Caption',
 	'mwe-edit-video-tools' => 'Edit video tools:',
 	'mwe-duration' => 'Duration:',
+	'mwe-layout' => 'Layout:',
 
 	/*
 	 * js file: /libTimedText/mvTimeTextEdit.js

@@ -1,52 +1,53 @@
-/*the sequence remote search driver
-	 extends the base remote search driver with sequence specific stuff
+/* the sequence remote search driver
+*	extends the base remote search driver for use in the sequencer 
 */
 
-var seqRemoteSearchDriver = function( iObj ) {
-	return this.init( iObj )
+var seqRemoteSearchDriver = function( mySequence ) {
+	return this.init( mySequence )
 }
+
 seqRemoteSearchDriver.prototype = {
 	sequence_add_target:false,
-	init:function( this_seq ) {
+	init:function( mySequence ) {
 		var _this = this;
 		js_log( "init:seqRemoteSearchDriver" );
-		// setup remote search driver with a seq parent:
-		this.pSeq = this_seq;
-		var iObj = {
+		
+		// Setup remote search driver with a seq parent:
+		this.pSeq = mySequence;
+		var options = {
 			'target_container'	: '#cliplib_ic',
-			'local_wiki_api_url': this_seq.getLocalApiUrl(),
-			'instance_name'		: this_seq.instance_name + '.mySearch',
+			'local_wiki_api_url': mySequence.getLocalApiUrl(),
+			'instance_name'		: mySequence.instance_name + '.mySearch',
 			'default_query'		: this.pSeq.plObj.title
 		}
-		if ( typeof this_seq.amw_conf != 'undefined' )
-			$j.extend( iObj,  this_seq.amw_conf );
+		
+		// Extend the options with any sequencer provided add-media-wizard config
+		if ( typeof mySequence.amw_conf != 'undefined' )
+			$j.extend( options,  mySequence.amw_conf );
 			
 	
-		// inherit the remoteSearchDriver properties:n
-		var tmpRSD = new remoteSearchDriver( iObj );
-		for ( var i in tmpRSD ) {
+		// Inherit the remoteSearchDriver properties:n
+		var tmpRemoteSearchDriver = new remoteSearchDriver( options );
+		for ( var i in tmpRemoteSearchDriver ) {
 			if ( this[i] ) {
-				this['parent_' + i] = tmpRSD[i];
+				this['parent_' + i] = tmpRemoteSearchDriver[i];
 			} else {
-				this[i] = tmpRSD[i];
+				this[i] = tmpRemoteSearchDriver[i];
 			}
 		}
-		// extend parent_do_refresh_timeline actions:
+		
+		// Extend parent_do_refresh_timeline actions:
 		if ( !this.pSeq.parent_do_refresh_timeline ) {
 			this.pSeq.parent_do_refresh_timeline = this.pSeq.do_refresh_timeline;
 			this.pSeq.do_refresh_timeline = function() {
 				js_log( "seqRemoteSearchDriver::" + _this.pSeq.disp_menu_item );
 				// call the parent
 				_this.pSeq.parent_do_refresh_timeline();
-				// add our local bindings
+				//Add our local bindings
 				_this.addResultBindings();
 				return true;
 			}
 		}
-	},
-	resourceEdit:function() {
-		var _this = this;
-
 	},
 	addResultBindings:function() {
 		// set up seq:
@@ -83,9 +84,9 @@ seqRemoteSearchDriver.prototype = {
 				$j( this ).css( 'border-right', 'solid thin white' );
 				js_log( "Droped: " + $j( ui.draggable ).attr( 'id' ) + ' on ' +  $j( this ).attr( 'id' ) );
 				_this.sequence_add_target =  $j( this ).attr( 'id' );
-				// load the orginal draged item
+				// load the original draged item
 				var rObj = _this.getResourceFromId( $j( ui.draggable ).attr( 'id' ) );
-				_this.resourceEdit( rObj, ui.draggable );
+				_this.showResourceEditor( rObj, ui.draggable );
 			}
 		} );
 
@@ -99,18 +100,16 @@ seqRemoteSearchDriver.prototype = {
 			if ( tClip )
 				var target_order = tClip.order;
 		}
-		// @@todo show watting of sorts.
-
-		// get target order:
-		var cat = rObj;
-		// check for target insert path
-		this.checkImportResource( rObj, function() {
+				
+		// Check if the file is already Available
+		this.isFileLocallyAvailable( rObj, function( status ) {
 
 			var clipConfig = {
 				'type' 	 : rObj.mime,
 				'uri' 	 : _this.fileNS + ':' + rObj.target_resource_title,
 				'title'	 : rObj.title
 			};
+			
 			// Set via local properties if available 
 			clipConfig['src'] = ( rObj.local_src ) ? rObj.local_src : rObj.src;
 			clipConfig['poster'] = ( rObj.local_poster ) ? rObj.local_poster : rObj.poster;
@@ -142,32 +141,34 @@ seqRemoteSearchDriver.prototype = {
 			}
 		};
 	},
-	resourceEdit:function( rObj, rsdElement ) {
+	showResourceEditor:function( rObj, rsdElement ) {
 		var _this = this;
-		// don't resize to default (full screen behavior)
-		_this.dmodalCss = { };
-		// open up a new target_contaienr:
+		// Open up a new target_contaienr:
 		if ( $j( '#seq_resource_import' ).length == 0 )
 			$j( 'body' ).append( '<div id="seq_resource_import" style="position:relative"></div>' );
-		var bConf = { };
-		bConf[ gM( 'mwe-cancel' ) ] = function() {
+			
+		var buttons = { };
+		buttons[ gM( 'mwe-cancel' ) ] = function() {
 			$j( this ).dialog( "close" );
 		}
+		
 		$j( '#seq_resource_import' ).dialog( 'destroy' ).dialog( {
 			bgiframe: true,
 			width:750,
 			height:480,
 			modal: true,
-			buttons: bConf
+			buttons: buttons
 		} );
 		_this.target_container = '#seq_resource_import';
 		// do parent resource edit (with updated target)
-		this.parent_resourceEdit( rObj, rsdElement );
+		this.parent_showResourceEditor( rObj, rsdElement );
 	},
 	closeAll:function() {
 		js_log( 'should close: seq_resource_import' );
 		$j( '#seq_resource_import' ).dialog( 'close' ).dialog( 'destroy' ).remove();
-		this.parent_closeAll();
+		// Unhide the results container
+		$j( '#rsd_results_container' ).show();
+		//this.parent_closeAll();
 	},
 	getEditToken:function( callback ) {
 		if ( this.pSeq.sequenceEditToken ) {

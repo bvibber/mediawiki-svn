@@ -731,6 +731,42 @@ var global_req_cb = new Array(); // The global request callback array
 				getMatchingTmpl( this.pNode );
 				return tmplSet;
 			},
+			
+			/**
+			* getTemplateVars
+			* returns a set of template values in a given wikitext page
+			* 
+			* NOTE: should be integrated with the parser
+			*/
+			getTemplateVars: function(){
+				//js_log('matching against: ' + wikiText);
+				templateVars = new Array();
+				var tempVars = wikiText.match(/\{\{\{([^\}]*)\}\}\}/gi);
+																
+				// Clean up results:
+				for(var i=0; i < tempVars.length; i++){
+					//match 
+					var tvar = tempVars[i].replace('{{{','').replace('}}}','');
+					
+					// Strip anything after a |
+					if(tvar.indexOf('|') != -1){
+						tvar = tvar.substr(0, tvar.indexOf('|'));
+					}
+					
+					// Check for duplicates:
+					var do_add=true;
+					for(var j=0; j < templateVars.length; j++){
+						if( templateVars[j] == tvar)
+							do_add=false;
+					}
+					
+					// Add the template vars to the output obj
+					if(do_add)
+						templateVars.push( tvar );
+				}
+				return templateVars;
+			},
+			
 			/**
 			 * Returns the transformed wikitext
 			 * 

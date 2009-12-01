@@ -35,22 +35,25 @@ archiveOrgSearch.prototype = {
 		this.parent_getSearchResults();
 		var _this = this;
 		js_log( 'f:getSearchResults for:' + $j( '#rsd_q' ).val() );
-		// build the query var
+		
+		// Build the query var
 		var q = $j( '#rsd_q' ).val();
-		// @@todo check advanced options: include audio and images media types
-		// for now force (Ogg video) & url based license
+		
+		// For now force (Ogg video) & url based license
 		q += ' format:(Ogg video)';
 		q += ' licenseurl:(http\\:\\/\\/*)';
+		
+		// Build the request Object
 		var reqObj = {
 			'q': q, // just search for video atm
 			'fl':"description,title,identifier,licenseurl,format,license,thumbnail",
 			'wt':'json',
-			'rows' : this.cp.limit,
-			'start' : this.cp.offset
+			'rows' : this.provider.limit,
+			'start' : this.provider.offset
 		}
 		do_api_req( {
 			'data':reqObj,
-			'url':this.cp.api_url,
+			'url':this.provider.api_url,
 			'jsonCB':'json.wrf'
 			}, function( data ) {
 				_this.addResults( data );
@@ -69,7 +72,7 @@ archiveOrgSearch.prototype = {
 		
 			for ( var resource_id in data.response.docs ) {
 				var resource = data.response.docs[resource_id];
-				var rObj = {
+				var resource = {
 					// @@todo we should add .ogv or oga if video or audio:
 					'titleKey'	 :  resource.identifier + '.ogg',
 					'resourceKey':  resource.identifier,
@@ -87,44 +90,45 @@ archiveOrgSearch.prototype = {
 					'pSobj'		 :_this
 					
 				};
-				this.resultsObj[ resource_id ] = rObj;
+				this.resultsObj[ resource_id ] = resource;
 			}
 		}
 	},
 	/**
 	* Gets some media metadata via a archive.org special entry point "avinfo"
 	*/ 
-	addResourceInfoCallback:function( rObj, callback ) {
+	addResourceInfoCallback:function( resource, callback ) {
 		var _this = this;
 		do_api_req( {
 			'data': { 'avinfo' : 1 },
-			'url':_this.downloadUrl + rObj.resourceKey + '/format=Ogg+video'
+			'url':_this.downloadUrl + resource.resourceKey + '/format=Ogg+video'
 		}, function( data ) {
 			if ( data['length'] )
-				rObj.duration = data['length'];
+				resource.duration = data['length'];
 			if ( data['width'] )
-				rObj.width = data['width'];
+				resource.width = data['width'];
 			if ( data['height'] )
-				rObj.height = data['height'];
+				resource.height = data['height'];
 								   
 			callback();
 		} );
 	},
-	/*
-	* Returns html to embed a given result Object ( rObj ) 
+	
+	/**
+	* Returns html to embed a given result Object ( resource ) 
 	*/	
-	getEmbedHTML: function( rObj , options ) {
-		js_log( 'getEmbedHTML:: ' + rObj.poster );
+	getEmbedHTML: function( resource , options ) {
+		js_log( 'getEmbedHTML:: ' + resource.poster );
 		if ( !options )
 			options = { };
 		var id_attr = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
-		if ( rObj.duration ) {
-			var src = rObj.src + '?t=0:0:0/' + seconds2npt( rObj.duration );
+		if ( resource.duration ) {
+			var src = resource.src + '?t=0:0:0/' + seconds2npt( resource.duration );
 		} else {
-			var src = rObj.src;
+			var src = resource.src;
 		}
-		if ( rObj.mime == 'application/ogg' || rObj.mime == 'audio/ogg' || rObj.mime == 'video/ogg' ) {
-			return '<video ' + id_attr + ' src="' + src + '" poster="' + rObj.poster + '" type="video/ogg"></video>';
+		if ( resource.mime == 'application/ogg' || resource.mime == 'audio/ogg' || resource.mime == 'video/ogg' ) {
+			return '<video ' + id_attr + ' src="' + src + '" poster="' + resource.poster + '" type="video/ogg"></video>';
 		}
 	}
 }

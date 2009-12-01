@@ -1,9 +1,5 @@
 /*
-	handles clip edit controls
-	'inoutpoints':0,	//should let you set the in and out points of clip
-	'panzoom':0,		 //should allow setting keyframes and tweening modes
-	'overlays':0,		 //should allow setting "locked to clip" overlay tracks
-	'audio':0			//should allow controlling the audio volume (with keyframes)
+	mvClipEdit
 */
 // set gMsg object:
 loadGM( {
@@ -14,7 +10,7 @@ loadGM( {
 	"mwe-insert_into_sequence" : "Insert into sequence",
 	"mwe-preview_insert" : "Preview insert",
 	"mwe-cancel_image_insert" : "Cancel insert",
-	"mwe-sc_fileopts" : "Clip detail edit",
+	"mwe-sc_attributes" : "Clip detail edit",
 	"mwe-sc_inoutpoints" : "Set in-out points",
 	"mwe-sc_overlays" : "Overlays",
 	"mwe-sc_audio" : "Audio control",
@@ -31,91 +27,161 @@ loadGM( {
 	"mwe-edit-tools" : "Edit tools",
 	"mwe-inline-description" : "Caption",
 	"mwe-edit-video-tools" : "Edit video tools:",
-	"mwe-duration" : "Duration:"
+	"mwe-duration" : "Duration:",
+	"mwe-layout" : "Layout:"
 } );
 
+/**
+* The default clipedit values
+*/
 var default_clipedit_values = {
-	'rObj':	null,		 // the resource object
-	'clip_disp_ct':null,// target clip disp
-	'control_ct':null,	 // control container
-	'media_type': null, // media type
-	'parent_ct': null,	 // parent container
+	
+	// Resource object for editing
+	'resource':	null,
+			
+	// Target clip display container
+	'target_clip_display':null,
+	
+	// Target control container
+	'target_control_display':null,	 
+	
+	// Media type (if not supplied its autodetected via: mvClipEdit.getMediaType()
+	'media_type': null,
+	
+	// Parent Container 
+	'parent_container': null,	 
 
-	'p_rsdObj': null,	// parent remote search object
-	'p_seqObj': null,	 // parent sequence Object
+	// Parent remote search driver object pointer
+	'parentRemoteSearchDriver': null,
+	
+	// Parent sequence object pointer (optional) 	
+	'parentSequence': null,	 
 
-	'controlActionsCb' : null, // the object that configures control Action callbacks
+	/**
+	* Object that configures the clip action callbacks
+	* 	function :: updateInsertControlActions drives display of these callback
+	*
+	* supported callback types are: insert_seq, insert, preview, cancel
+	*/
+	'controlActionsCallback' : null, 
 
-	// The set of tools to enable (by default 'all' else an array of tools from mvClipEdit.toolset list below: 
-	'enabled_tools': 'all',
-	'edit_action': null, // the requested edit action
-	'profile': 'inpage' // the given profile either "inpage" or "sequence"
+	/**
+	* The set of tools to enable by default 'all' tools are enabled
+	* Can be any sub array of mvClipEdit.toolset 
+	*
+	* crop: tool for croping the image layout
+	* layout: tool for adjusting the layout of the image
+	*/
+	'enabled_tools' : 'all',
+	
+	// Edit profile either "inpage" or "sequence"
+	'profile': 'inpage' 
 }
 var mvClipEdit = function( iObj ) {
 	return this.init( iObj );
 };
 mvClipEdit.prototype = {
-
-	selTool:null, // selected tool
-	crop: null, // the crop values
-	base_img_src:null,
-	toolset : ['crop', 'layout'],
+	// Selected tool
+	selectedTool : null, 
 	
-	init:function( iObj ) {
+	// Crop values ( populated via the crop tool ) 
+	crop : null, 
+	
+	// All of the available tools ( displayed tools are set via enabled_tools option )
+	toolset : ['crop', 'layout'],
+
+	/**
+	* Initialisation function 
+	*
+	* initialises a clipEdit object with provided options.  
+	*/
+	init:function( options ) {
 		// init object:
 		for ( var i in default_clipedit_values ) {
-			if ( iObj[i] ) {
-				this[i] = iObj[i];
+			if ( options[i] ) {
+				this[i] = options[i];
 			}
 		}
-
-		// if media type was not supplied detect for resource if possible:
-		// @@todo more advanced detection.
-		if ( !this.media_type && this.rObj && this.rObj.type ) {
-			if ( this.rObj.type.indexOf( "image/" ) === 0 ) {
-				this.media_type = 'image';
-			} else if ( this.rObj.type.indexOf( "video/" ) === 0 ) {
-				this.media_type = 'video';
-			} else if ( this.rObj.type.indexOf( "text/" ) === 0 ) {
-				this.media_type = 'template';
-			}
-		}
-		// display control:
+		// Display control based on profile
+		this.showControlEdit();		
+	},
+	
+	/**
+	* Shows the control edit interface based on the clipEdit profile
+	* 
+	* Clip edit profile is either "sequence" or "clip" 
+	*/
+	showControlEdit:function(){
 		if ( this.profile == 'sequence' ) {
-			this.doEditTypesMenu();
-			this.doDisplayEdit();
+			this.showEditTypesMenu();
+			this.showEditUI();
 		} else {
 			// check the media_type:
-			// js_log('mvClipEdit:: media type:' + this.media_type + ' base width: ' + this.rObj.width + ' bh: ' + this.rObj.height);
-			// could seperate out into media Types objects for now just call method
-			if ( this.media_type == 'image' ) {
-				this.setUpImageCtrl();
-			} else if ( this.media_type == 'video' ) {
-				this.setUpVideoCtrl();
+			// js_log('mvClipEdit:: media type:' + this.media_type + ' base width: ' + this.resource.width + ' bh: ' + this.resource.height);
+			// could separate out into media Types objects for now just call method
+			if ( this.getMediaType() == 'image' ) {
+				this.showImageControls();
+			} else if ( this.getMediaType() == 'video' ) {
+				this.showVideoControls();
 			}
 		}
 	},
-
-	// master edit types object:
-	// maybe we should refactor these into their own classes
-	// more refactor each media type should be its own class inheriting the shared baseEditType object
+	/**
+	* Gets the mediatype for the current resource
+	*
+	*/
+	getMediaType: function (){
+		if( this.media_type )
+			return this.media_type;
+		// If media type was not supplied detect for resource if possible:
+		// @@todo more advanced detection.
+		if ( !this.media_type && this.resource && this.resource.type ) {
+			if ( this.resource.type.indexOf( "image/" ) === 0 ) {
+				this.media_type = 'image';
+			} else if ( this.resource.type.indexOf( "video/" ) === 0 ) {
+				this.media_type = 'video';
+			} else if ( this.resource.type.indexOf( "text/" ) === 0 ) {
+				this.media_type = 'template';
+			}
+		}
+		if( this.media_type )
+			return this.media_type;
+		return false;
+	},
+	
+	/**
+	* Edit types object contains edit types
+	*
+	* Iterate edit_types media types on a given resource to expose relevent tools
+	* 
+	* NOTE: we could re-factor these into their own classes
+	* which extend a base edit object ( and we would only load the requested toolset ) 
+	*/
 	edit_types: {
+		/*
+		* Edit the "duration" of a given resource
+		*
+		* supports resource types:
+		*	['image', 'template']
+		*/
 		'duration': {
-			'media':['image', 'template'],
+			'media' : ['image', 'template'],
 			'doEdit':function( _this, target ) {
 				function doUpdateDur( inputElm ) {
 					js_log( "update duration:" + $j( inputElm ).val() );
 					// update the parent sequence object:
-					_this.rObj.dur = smilParseTime( $j( inputElm ).val() );
+					_this.resource.dur = smilParseTime( $j( inputElm ).val() );
 					// update the playlist:
-					_this.p_seqObj.do_refresh_timeline( true );
+					_this.parentSequence.do_refresh_timeline( true );
 				}
 							
 				$j( target ).html(
 						'<label for="ce_dur">' + gM( 'mwe-duration' ) + '</label>' +
-						'<input name="ce_dur" tabindex="1" maxlength="11" value="' +
-							seconds2npt( _this.rObj.getDuration() ) +
-							'" size="10"/>' +
+						'<input name="ce_dur" '+
+						'tabindex="1" '+
+						'maxlength="11" '+
+						'value="' +	seconds2npt( _this.resource.getDuration() ) +'" '+
+						'size="10"/>' +
 					'</div>'
 				).children( "input[name='ce_dur']" ).change( function() {
 					 doUpdateDur( this );
@@ -124,69 +190,90 @@ mvClipEdit.prototype = {
 				$j( target ).find( "input[name='ce_dur']" ).upDownTimeInputBind( doUpdateDur );
 			}
 		},
+		/*
+		* Edit the in and out points for a resource
+		* 
+		* supports resource types:
+		* 	['video']
+		*/
 		'inoutpoints': {
 			'media':['video'],
 			'doEdit':function( _this, target ) {
 				// do clock mouse scroll duration editor
-				var end_ntp = ( _this.rObj.embed.end_ntp ) ? _this.rObj.embed.end_ntp : _this.rObj.embed.getDuration();
+				var end_ntp = ( _this.resource.embed.end_ntp ) ? _this.resource.embed.end_ntp : _this.resource.embed.getDuration();
 				if ( !end_ntp )
-					end_ntp = seconds2npt( _this.rObj.dur );
+					end_ntp = seconds2npt( _this.resource.dur );
 
-				var start_ntp = ( _this.rObj.embed.start_ntp ) ? _this.rObj.embed.start_ntp : seconds2npt( 0 );
+				var start_ntp = ( _this.resource.embed.start_ntp ) ? _this.resource.embed.start_ntp : seconds2npt( 0 );
 				if ( !start_ntp )
 					seconds2npt( 0 );
 				// make sure we have an end time				
 				if ( end_ntp ) {
 					$j( target ).html(
-						_this.getSetInOutHtml( {
+						_this.getStartEndHtml( {
 							'start_ntp'	: start_ntp,
 							'end_ntp'	: end_ntp
 						} )
 					);
-					_this.setInOutBindings();
+					_this.bindStartEndControls();
 				}
 			}
 		},
-		'fileopts': {
-			'media':['image', 'video', 'template'],
+		
+		/**
+		* Edit clip attributes for a given resource.
+		*
+		* Attributes are dynamicaly driven via asset type
+		* 
+		* supports resource types:
+		* 	['image', 'video', 'template']
+		*/
+		'attributes': {
+			'media': ['image', 'video', 'template'],
 			'doEdit':function( _this, target ) {
 				// if media type is template we have to query to get its URI to get its parameters
-				if ( _this.media_type == 'template' && !_this.rObj.tVars ) {
+				if ( _this.getMediaType() == 'template' && !_this.resource.tVars ) {
 					mv_set_loading( '#sub_cliplib_ic' );
 					var reqObj = {
 						'action':'query',
 						'prop':'revisions',
-						'titles': _this.rObj.uri,
+						'titles': _this.resource.uri,
 						'rvprop':'content'
 					};
 					// get the interface uri from the plObject
-					var api_url = _this.p_seqObj.plObj.interface_url;
+					var api_url = _this.parentSequence.plObj.interface_url;
 					// first check
 					do_api_req( {
 						'data':reqObj,
 						'url':api_url
 						}, function( data ) {
 							if ( typeof data.query.pages == 'undefined' )
-								return _this.doEditOpts( target );
+								return _this.showEditOptions( target );
 							for ( var i in data.query.pages ) {
 								var page = data.query.pages[i];
 								if ( !page['revisions'] || !page['revisions'][0]['*'] ) {
-									return _this.doEditOpts( target );
+									return _this.showEditOptions( target );
 								} else {
 									var template_rev = page['revisions'][0]['*'];
 								}
 							}
-							var pObj = mw.parser.pNew( template_rev );
-							_this.rObj.tVars = pObj.getTemplateVars();
-							// run the editor now that we have updated the tVars: 													
-							_this.doEditOpts( target );
+							var parserObj = mw.parser.pNew( template_rev );
+							_this.resource.tVars = parserObj.getTemplateVars();
+							// Run the editor now that we have updated the template variables: 													
+							_this.showEditOptions( target );
 						}
 					);
 				} else {
-					_this.doEditOpts( target );
+					_this.showEditOptions( target );
 				}
 			}
-		},
+		}
+		/**
+		* Stub for overlay edit support
+		*
+		* supports resource types:
+		* 	['image', 'video']
+		
 		'overlays': {
 			'media':['image', 'video'],
 			'doEdit':function( _this, target ) {
@@ -194,6 +281,13 @@ mvClipEdit.prototype = {
 				$j( target ).html( '<h3>Current Overlays:</h3>Add,Remove,Modify' );
 			}
 		},
+		*/
+		
+		/**
+		* Stub for audio support
+		*
+		* supports resource types:
+		* 	['image', 'video', 'template'],
 		'audio': {
 			'media':['image', 'video', 'template'],
 			'doEdit':function( _this, target ) {
@@ -201,10 +295,16 @@ mvClipEdit.prototype = {
 				$j( target ).html( '<h3>Audio Volume:</h3>' );
 			}
 		}
+		*/
 	},
-	doEditOpts:function( target ) {
+	
+	/*
+	* Outputs the Edit options to a given target 
+	* @param {String} target Output target for edit options
+	*/
+	showEditOptions : function( target ) {
 		var _this = this;
-		// add html for rObj resource:
+		// Add html for resource resource:
 		var o =	'<table>' +
 				'<tr>' +
 					'<td colspan="2"><b>' + gM( 'mwe-edit_properties' ) + '</b></td>' +
@@ -214,26 +314,26 @@ mvClipEdit.prototype = {
 						gM( 'mwe-custom_title' ) +
 					'</td>' +
 					'<td><input type="text" size="15" maxwidth="255" value="';
-						if ( _this.rObj.title != null )
-							o += _this.rObj.title;
+						if ( _this.resource.title != null )
+							o += _this.resource.title;
 						o += '">' +
 					'</td>' +
 				'</tr>';
-		if ( _this.rObj.tVars ) {
-			var existing_p = _this.rObj.params;
-			var testing_a = _this.rObj.tVars;
+		if ( _this.resource.tVars ) {
+			var existing_p = _this.resource.params;
+			var testing_a = _this.resource.tVars;
 			// debugger;
 			o += '<tr>' +
 					'<td colspan="2"><b>' + gM( 'mwe-template_properties' ) + '</b></td>' +
 				'</tr>';
-			for ( var i = 0; i < _this.rObj.tVars.length ; i++ ) {
+			for ( var i = 0; i < _this.resource.tVars.length ; i++ ) {
 				o += '<tr>' +
 					'<td>' +
-						_this.rObj.tVars[i] +
+						_this.resource.tVars[i] +
 					'</td>' +
-					'<td><input name="' + _this.rObj.tVars[i] + '" class="ic_tparam" type="text" size="15" maxwidth="255" value="';
-				if ( _this.rObj.params[ _this.rObj.tVars[i] ] ) {
-					o += _this.rObj.params[ _this.rObj.tVars[i] ];
+					'<td><input name="' + _this.resource.tVars[i] + '" class="ic_tparam" type="text" size="15" maxwidth="255" value="';
+				if ( _this.resource.params[ _this.resource.tVars[i] ] ) {
+					o += _this.resource.params[ _this.resource.tVars[i] ];
 				}
 				o += '">' +
 					'</td>' +
@@ -241,68 +341,74 @@ mvClipEdit.prototype = {
 			}
 		}
 		if ( typeof wgArticlePath != 'undefined' ) {
-			var res_src = wgArticlePath.replace( /\$1/, _this.rObj.uri );
-			var res_title = _this.rObj.uri;
+			var res_src = wgArticlePath.replace( /\$1/, _this.resource.uri );
+			var res_title = _this.resource.uri;
 		} else {
 			// var res_page =
-			var res_src = _this.rObj.src;
-			var res_title = mw.parseUri( _this.rObj.src ).file;
+			var res_src = _this.resource.src;
+			var res_title = mw.parseUri( _this.resource.src ).file;
 		}
-		o +=	'<tr>' +
-					'<td colspan="2"><b>' + gM( 'mwe-other_properties' ) + '</b></td>' +
-				'</tr>' +
-				'<tr>' +
-					'<td>' +
-						gM( 'mwe-resource_page' ) +
-					'</td>' +
-					'<td><a href="' + res_src  + '" ' +
-						' target="new">' +
-							res_title + '</a>' +
-					'</td>' +
-				'</tr>';
-		o += '</table>';
+		o +='<tr>' +
+			'<td colspan="2"><b>' + gM( 'mwe-other_properties' ) + '</b></td>' +
+			'</tr>' +
+			'<tr>' +
+			'<td>' +
+			gM( 'mwe-resource_page' ) +
+			'</td>' +
+			'<td>' +
+			'<a href="' + res_src  + '" ' +
+				'target="new">' +
+			res_title + 
+			'</a>' +
+			'</td>' +
+			'</tr>' +
+			'</table>';
 
 		$j( target ).html ( o );
 
-		// add update bindings
+		// Add update bindings
 		$j( target + ' .ic_tparam' ).change( function() {
 			js_log( "updated tparam::" + $j( this ).attr( "name" ) );
-			// update param value:
-			_this.rObj.params[ $j( this ).attr( "name" ) ] = $j( this ).val();
-			// re-parse & update template
-			var template_wiki_text = '{{' + _this.rObj.uri;
-			for ( var i = 0; i < _this.rObj.tVars.length ; i++ ) {
+			// Update param value:
+			_this.resource.params[ $j( this ).attr( "name" ) ] = $j( this ).val();
+			// Re-parse & update template
+			var template_wiki_text = '{{' + _this.resource.uri;
+			for ( var i = 0; i < _this.resource.tVars.length ; i++ ) {
 
-				template_wiki_text += "\n|" + _this.rObj.tVars[i] + ' = ' +  _this.rObj.params[ _this.rObj.tVars[i] ]  ;
+				template_wiki_text += "\n|" + _this.resource.tVars[i] + ' = ' +  _this.resource.params[ _this.resource.tVars[i] ]  ;
 			}
 			template_wiki_text += "\n}}";
 			var reqObj = {
-					'action':'parse',
-					'title'	: _this.p_seqObj.plObj.mTitle,
-					'text'	:	template_wiki_text
+				'action':'parse',
+				'title'	: _this.parentSequence.plObj.mTitle,
+				'text'	:	template_wiki_text
 			};
-			$j( _this.rObj.embed ).html( mv_get_loading_img() );
+			$j( _this.resource.embed ).html( mv_get_loading_img() );
 
-			var api_url = _this.p_seqObj.plObj.interface_url;
+			var api_url = _this.parentSequence.plObj.interface_url;
 			do_api_req( {
 				'data':reqObj,
 				'url':api_url
 			}, function( data ) {
 				if ( data.parse.text['*'] ) {
 					// update the target
-					$j( _this.rObj.embed ).html( data.parse.text['*'] );
+					$j( _this.resource.embed ).html( data.parse.text['*'] );
 				}
 			} )
 		} )
 
-		// update doFocusBindings
-		if ( _this.p_seqObj )
-			_this.p_seqObj.doFocusBindings();
+		// Update doFocusBindings
+		if ( _this.parentSequence )
+			_this.parentSequence.doFocusBindings();
 	},
-	doEditTypesMenu:function() {
+	
+	/**
+	* Show Edit Types Menu 
+	*/
+	showEditTypesMenu:function() {
 		var _this = this;
-		// add in subMenus if set
-		// check for submenu and add to item container
+		
+		// Add in relevent subMenus
 		var o = '';
 		var tabc = '';
 		o += '<div id="mv_submenu_clipedit">';
@@ -312,14 +418,14 @@ mvClipEdit.prototype = {
 			// check if the given editType is valid for our given media type
 			var include = false;
 			for ( var i = 0; i < editType.media.length; i++ ) {
-				if ( editType.media[i] == _this.media_type ) {
+				if ( editType.media[i] == _this.getMediaType() ) {
 					include = true;
 					if ( !first_tab )
 						first_tab = sInx;
 				}
 			}
 			if ( include ) {
-				o +=	'<li>' +
+				o +='<li>' +
 						'<a id="mv_smi_' + sInx + '" href="#sc_' + sInx + '">' + gM( 'mwe-sc_' + sInx ) + '</a>' +
 					'</li>';
 				tabc += '<div id="sc_' + sInx + '" style="overflow:auto;" ></div>';
@@ -327,63 +433,78 @@ mvClipEdit.prototype = {
 		} );
 		o += '</ul>' + tabc;
 		o += '</div>';
-		// add sub menu container with menu html:
-		$j( '#' + this.control_ct ).html( o ) ;
-		// set up bindings:
+		
+		// Add sub menu container with menu html:
+		$j( '#' + this.target_control_display ).html( o ) ;
+		
+		// Do clip edit bindings:
 		$j( '#mv_submenu_clipedit' ).tabs( {
 			selected: 0,
 			select: function( event, ui ) {
-				_this.doDisplayEdit( $j( ui.tab ).attr( 'id' ).replace( 'mv_smi_', '' ) );
+				_this.showEditUI( $j( ui.tab ).attr( 'id' ).replace( 'mv_smi_', '' ) );
 			}
 		} ).addClass( 'ui-tabs-vertical ui-helper-clearfix' );
-		// close left:
+		
+		// Close left:
 		$j( "#mv_submenu_clipedit li" ).removeClass( 'ui-corner-top' ).addClass( 'ui-corner-left' );
 		// update the default edit display:
-		_this.doDisplayEdit( first_tab );
+		_this.showEditUI( first_tab );
 	},
-	doDisplayEdit:function( edit_type ) {
+	
+	/**
+	* Show the edit User Interface for edit type
+	*
+	* @param {String} edit_type key for the edit interface 
+	*/	
+	showEditUI:function( edit_type ) {
 		if ( !edit_type )
 			return false;
-		js_log( 'doDisplayEdit: ' + edit_type );
-
-		// do edit interface for that edit type:
+		js_log( 'showEditUI: ' + edit_type );
 		if ( this.edit_types[ edit_type ].doEdit )
 			this.edit_types[ edit_type ].doEdit( this, '#sc_' + edit_type );
 	},
-	setUpVideoCtrl:function() {
-		js_log( 'setUpVideoCtrl:f' );
+	
+	/**
+	* Show Video Controls for the resource edit
+	*/
+	showVideoControls:function() {
+		js_log( 'showVideoControls:f' );
 		var _this = this;
 		var eb = $j( '#embed_vid' ).get( 0 );
 		// turn on preview to avoid onDone actions
 		eb.preview_mode = true;
-		$j( '#' + this.control_ct ).html( '<h3>' + gM( 'mwe-edit-video-tools' ) + '</h3>' );
+		$j( '#' + this.target_control_display ).html( '<h3>' + gM( 'mwe-edit-video-tools' ) + '</h3>' );
 		if ( eb.supportsURLTimeEncoding() ) {
 			if ( eb.end_ntp ) {
-				$j( '#' + this.control_ct ).append(
-					_this.getSetInOutHtml( {
+				$j( '#' + this.target_control_display ).append(
+					_this.getStartEndHtml( {
 						'start_ntp'	: eb.start_ntp,
 						'end_ntp'	: eb.end_ntp
 					} )
 				);
-				_this.setInOutBindings();
+				_this.bindStartEndControls();
 			}
 		}
-		// if in a sequence we have no need for insertDesc
-		if ( !_this.p_seqObj ) {
-			$j( '#' + this.control_ct ).append(	_this.getInsertDescHtml() );
+		// If in a Sequence we have no need for insertDesc
+		if ( !_this.parentSequence ) {
+			$j( '#' + this.target_control_display ).append(	_this.getInsertHtml() );
 		}
 		// update control actions
 		this.updateInsertControlActions();
 	},
-	setInOutBindings:function() {
+	
+	/**
+	* Bind the Start End video controls
+	*/
+	bindStartEndControls:function() {
 		var _this = this;
-		// setup a top level shortcut: 
-		var $tp = $j( '#' + this.control_ct );
+		// Setup a top level shortcut: 
+		var $target = $j( '#' + this.target_control_display );
 
-		var start_sec = npt2seconds( $tp.find( '.startInOut' ).val() );
-		var end_sec   = npt2seconds( $tp.find( '.endInOut' ).val() );
+		var start_sec = npt2seconds( $target.find( '.startInOut' ).val() );
+		var end_sec   = npt2seconds( $target.find( '.endInOut' ).val() );
 
-		// if we don't have 0 as start then assume we are in a range request and give some buffer area:
+		// If we don't have 0 as start then assume we are in a range request and give some buffer area:
 		var min_slider =  ( start_sec - 60 < 0 ) ? 0 : start_sec - 60;
 		if ( min_slider != 0 ) {
 			var max_slider =  end_sec + 60;
@@ -391,7 +512,7 @@ mvClipEdit.prototype = {
 			max_slider = end_sec;
 		}
 
-		$tp.find( '.inOutSlider' ).slider( {
+		$target.find( '.inOutSlider' ).slider( {
 			range: true,
 			min: min_slider,
 			max: max_slider,
@@ -399,161 +520,210 @@ mvClipEdit.prototype = {
 			values: [start_sec, end_sec],
 			slide: function( event, ui ) {
 				// js_log(" vals:"+  seconds2npt( ui.values[0] ) + ' : ' + seconds2npt( ui.values[1]) );
-				$tp.find( '.startInOut' ).val( seconds2npt( ui.values[0] ) );
-				$tp.find( '.endInOut' ).val( seconds2npt( ui.values[1] ) );
+				$target.find( '.startInOut' ).val( seconds2npt( ui.values[0] ) );
+				$target.find( '.endInOut' ).val( seconds2npt( ui.values[1] ) );
 			},
 			change:function( event, ui ) {
-				do_video_time_update( seconds2npt( ui.values[0] ), seconds2npt( ui.values[1] ) );
+				_this.updateVideoTime( seconds2npt( ui.values[0] ), seconds2npt( ui.values[1] ) );
 			}
 		} );
 		
-		// bind up and down press when focus on start or end 
-		$tp.find( '.startInOut' ).upDownTimeInputBind( function( inputElm ) {
+		// Bind up and down press when focus on start or end 
+		$target.find( '.startInOut' ).upDownTimeInputBind( function( inputElm ) {
 			var s_sec = npt2seconds( $j( inputElm ).val() );
-			var e_sec = npt2seconds( $tp.find( '.endInOut' ).val() )
+			var e_sec = npt2seconds( $target.find( '.endInOut' ).val() )
 			if ( s_sec > e_sec )
 				$j( inputElm ).val( seconds2npt( e_sec - 1 ) );
-			// update the slider: 
-			var values = $tp.find( '.inOutSlider' ).slider( 'option', 'values' );
-			js_log( 'in slider len: ' + $tp.find( '.inOutSlider' ).length );
-			// set to 5 
-			$tp.find( '.inOutSlider' ).slider( 'value', 10 );
+			
+			// Update the slider: 
+			var values = $target.find( '.inOutSlider' ).slider( 'option', 'values' );
+			js_log( 'in slider len: ' + $target.find( '.inOutSlider' ).length );
+			 
+			$target.find( '.inOutSlider' ).slider( 'value', 10 );
 			debugger;
-			$tp.find( '.inOutSlider' ).slider( 'option', 'values', [s_sec, e_sec] );
-			var values = $tp.find( '.inOutSlider' ).slider( 'option', 'values' );
+			$target.find( '.inOutSlider' ).slider( 'option', 'values', [s_sec, e_sec] );
+			var values = $target.find( '.inOutSlider' ).slider( 'option', 'values' );
 			js_log( 'values (after update):' + values );
 		} );
-		$tp.find( '.endInOut' ).upDownTimeInputBind( function( inputElm ) {
-			var s_sec = npt2seconds( $tp.find( '.startInOut' ).val() );
+		
+		$target.find( '.endInOut' ).upDownTimeInputBind( function( inputElm ) {
+			var s_sec = npt2seconds( $target.find( '.startInOut' ).val() );
 			var e_sec = npt2seconds( $j( inputElm ).val() );
 			if ( e_sec < s_sec )
 				$j( inputElm ).val(  seconds2npt( s_sec + 1 ) );
 			// update the slider: 
-			$tp.find( '.inOutSlider' ).slider( 'option', 'values', [ s_sec, e_sec ] );
+			$target.find( '.inOutSlider' ).slider( 'option', 'values', [ s_sec, e_sec ] );
 		} );
 		
-		// preview button:
-		$j( '#' + this.control_ct + ' .inOutPreviewClip' ).btnBind().click( function() {
+		// Preview button:
+		$j( '#' + this.target_control_display + ' .inOutPreviewClip' ).btnBind().click( function() {
 			$j( '#embed_vid' ).get( 0 ).stop();
 			$j( '#embed_vid' ).get( 0 ).play();
 		} );
-
 	},
-	getSetInOutHtml:function( setInt ) {
+	
+	/**
+	* Update the video time 
+	* Target video is named #embed_vid 
+	*/
+	updateVideoTime : function ( start_time, end_time )	{	
+		// Update the video title:		
+		var ebvid = $j( '#embed_vid' ).get( 0 );
+		if ( ebvid ) {			
+			ebvid.stop();							
+			ebvid.updateVideoTime( start_time, end_time );
+			js_log( 'update thumb: ' + start_time );
+			ebvid.updateThumbTimeNTP( start_time );
+		}
+	},
+	
+	/**
+	* Get the start end html
+	* 
+	* start end html supports setting start and end times for video clips
+	* 
+	* @param {Object} defaultTime Provides start and end time default values 
+	*/
+	getStartEndHtml:function( defaultTime ) {
 		return '<strong>' + gM( 'mwe-set_in_out_points' ) + '</strong>' +
 			'<table border="0" style="background: transparent; width:94%;height:50px;">' +
-				'<tr>' +
-					'<td style="width:90px">' +
-						gM( 'mwe-start_time' ) +
-						'<input class="ui-widget-content ui-corner-all startInOut" size="9" value="' + setInt.start_ntp + '">' +
-					'</td>' +
-					'<td>' +
-						'<div class="inOutSlider"></div>' +
-					'</td>' +
-					'<td style="width:90px;text-align:right;">' +
+			'<tr>' +
+			'<td style="width:90px">' +
+				gM( 'mwe-start_time' ) +
+			'<input class="ui-widget-content ui-corner-all startInOut" size="9" value="' + defaultTime.start_ntp + '">' +
+			'</td>' +
+			'<td>' +
+			'<div class="inOutSlider"></div>' +
+			'</td>' +
+			'<td style="width:90px;text-align:right;">' +
 						gM( 'mwe-end_time' ) +
-						'<input class="ui-widget-content ui-corner-all endInOut" size="9" value="' + setInt.end_ntp + '">' +
-					'</td>' +
-				'</tr>' +
+			'<input class="ui-widget-content ui-corner-all endInOut" size="9" value="' + defaultTime.end_ntp + '">' +
+			'</td>' +
+			'</tr>' +
 			'</table>' +
 			$j.btnHtml( gM( 'mwe-preview_inout' ), 'inOutPreviewClip', 'video' );
 	},
-	getInsertDescHtml:function() {
+	
+	/**
+	* Gets the Insert Html
+	*/
+	getInsertHtml:function() {
 		var o = '<h3>' + gM( 'mwe-inline-description' ) + '</h3>' +
 					'<textarea style="width:95%" id="mv_inline_img_desc" rows="5" cols="30">';
-		if ( this.p_rsdObj ) {
-			// if we have a parent remote search driver let it parse the inline description
-			o += this.rObj.pSobj.getInlineDescWiki( this.rObj );
+		if ( this.parentRemoteSearchDriver ) {
+			// If we have a parent remote search driver let it parse the inline description
+			o += this.resource.pSobj.getInlineDescWiki( this.resource );
 		}
 		o += '</textarea><br>';
-		// js_log('getInsertDescHtml: ' + o );
+		// js_log('getInsertHtml: ' + o );
 		return o;
 	},
+	
+	/**
+	* Update Insert Control Actions
+	*
+	* Loops over the local controlActionsCallback 
+	*/
 	updateInsertControlActions:function() {
 		var _this = this;
-		var b_target =   _this.p_rsdObj.target_container + '~ .ui-dialog-buttonpane';
-		// empty the ui-dialog-buttonpane bar:
+		var b_target =   _this.parentRemoteSearchDriver.target_container + '~ .ui-dialog-buttonpane';
+		// Empty the ui-dialog-buttonpane bar:
 		$j( b_target ).empty();
-		for ( var cbType in _this.controlActionsCb ) {
-			switch( cbType ) {
+		for ( var callbackType in _this.controlActionsCallback ) {
+			switch( callbackType ) {
 				case 'insert_seq':
 					$j( b_target ).append( $j.btnHtml( gM( 'mwe-insert_into_sequence' ), 'mv_insert_sequence', 'check' ) + ' ' )
 						.children( '.mv_insert_sequence' )
 						.btnBind()
 						.click( function() {
 							_this.applyEdit();
-							_this.controlActionsCb['insert_seq'](  _this.rObj );
+							_this.controlActionsCallback['insert_seq'](  _this.resource );
 						} );
-				break;
+				break;				
 				case 'insert':
 					$j( b_target ).append(  $j.btnHtml( gM( 'mwe-insert_image_page' ), 'mv_insert_image_page', 'check' ) + ' ' )
 						.children( '.mv_insert_image_page' )
 						.btnBind()
 						.click( function() {
 							_this.applyEdit();
-							_this.controlActionsCb['insert'](  _this.rObj );
+							_this.controlActionsCallback['insert'](  _this.resource );
 						} ).show( 'slow' );
-				break;
+				break;			
 				case 'preview':
 					$j( b_target ).append( $j.btnHtml( gM( 'mwe-preview_insert' ), 'mv_preview_insert', 'refresh' ) + ' ' )
 						.children( '.mv_preview_insert' )
 						.btnBind()
 						.click( function() {
 							_this.applyEdit();
-							_this.controlActionsCb['preview'](  _this.rObj );
+							_this.controlActionsCallback['preview'](  _this.resource );
 						} ).show( 'slow' );
-				break;
+				break;					
 				case 'cancel':
 					$j( b_target ).append( $j.btnHtml( gM( 'mwe-cancel_image_insert' ), 'mv_cancel_img_edit', 'close' ) + ' ' )
 						.children( '.mv_cancel_img_edit' )
 						.btnBind()
 						.click( function() {
 							// no cancel action;
-							_this.controlActionsCb['cancel'](  _this.rObj );
+							_this.controlActionsCallback['cancel'](  _this.resource );
 						} ).show( 'slow' );
 				break;
 			}
 		}
 	},
+	
+	/**
+	* Applies the current edit to the resource object
+	* supports "crop" and "videoAdjustment" 
+	*/
 	applyEdit:function() {
 		var _this = this;
-		js_log( 'applyEdit::' + this.media_type );
-		if ( this.media_type == 'image' ) {
+		js_log( 'applyEdit::' + this.getMediaType() );
+		if ( this.getMediaType() == 'image' ) {
 			this.applyCrop();
-		} else if ( this.media_type == 'video' ) {
-			this.applyVideoAdj();
+		} else if ( this.getMediaType() == 'video' ) {
+			this.applyVideoStartEnd();
 		}
 		// copy over the desc text to the resource object
-		_this.rObj['inlineDesc'] = $j( '#mv_inline_img_desc' ).val();
+		_this.resource['inlineDesc'] = $j( '#mv_inline_img_desc' ).val();
 	},
-	appendTool: function( $target, tool_id ) {
+	
+	/**
+	* Adds a tool to the supplied target
+	*
+	* @param {Object} $target jQuery object to append the tool to
+	* @param {Object} tool_type Type key for the tool to be added 
+	*/
+	addTool: function( $target, tool_type ) {
 		var _this = this;
-		switch( tool_id ) {
+		switch( tool_type ) {
 			case 'layout':
+				
 				$target.append(	'' +
-					'<span style="float:left;">Layout:</span>' +
-						'<input type="radio" name="mv_layout" id="mv_layout_left" style="float:left"></input>'+
-							'<div id="mv_layout_left_img" title="' + gM( 'mwe-layout_left' ) + '"></div>' +
-						'<input type="radio" name="mv_layout" id="mv_layout_right" style="float:left"></input>'+
-							'<div id="mv_layout_right_img" title="' + gM( 'mwe-layout_left' ) + '"></div>' +
+					'<span style="float:left;">' + gM( 'mwe-layout' ) +'</span>' +
+					'<input type="radio" name="mv_layout" id="mv_layout_left" style="float:left"></input>'+
+					'<div id="mv_layout_left_img" title="' + gM( 'mwe-layout_left' ) + '"></div>' +
+					'<input type="radio" name="mv_layout" id="mv_layout_right" style="float:left"></input>'+
+					'<div id="mv_layout_right_img" title="' + gM( 'mwe-layout_left' ) + '"></div>' +
 					'<hr style="clear:both" /><br/>'
 				);
-				// make sure the default is reflected:
-				if ( ! _this.rObj.layout )
-					_this.rObj.layout = 'right';
-				$j( '#mv_layout_' + _this.rObj.layout )[0].checked = true;
+				
+				// Make sure the default is reflected:
+				if ( ! _this.resource.layout )
+					_this.resource.layout = 'right';
+				$j( '#mv_layout_' + _this.resource.layout )[0].checked = true;
 		
-				// left radio click
+				// Left radio click
 				$j( '#mv_layout_left,#mv_layout_left_img' ).click( function() {
 					$j( '#mv_layout_right' )[0].checked = false;
 					$j( '#mv_layout_left' )[0].checked = true;
-					_this.rObj.layout = 'left';
+					_this.resource.layout = 'left';
 				} );
-				// right radio click
+				
+				// Right radio click
 				$j( '#mv_layout_right,#mv_layout_right_img' ).click( function() {
 					$j( '#mv_layout_left' )[0].checked = false;
 					$j( '#mv_layout_right' )[0].checked = true;
-					_this.rObj.layout = 'right';
+					_this.resource.layout = 'right';
 				} );
 			break;
 			case 'crop':
@@ -565,195 +735,159 @@ mvClipEdit.prototype = {
 						'<a href="#" style="display:none" class="mv_reset_crop">' + gM( 'mwe-reset_crop' ) + '</a> ' +
 					'<hr style="clear:both"/><br>'
 				);
-				// add binding: 
+				// Add binding: 
 				$j( '#mv_crop_button,.mv_crop_msg,.mv_apply_crop' ).click( function() {
-					js_log( 'click:mv_crop_button: base width: ' + _this.rObj.width + ' bh: ' + _this.rObj.height );
+					js_log( 'click:mv_crop_button: base width: ' + _this.resource.width + ' bh: ' + _this.resource.height );
 					if ( $j( '#mv_crop_button' ).hasClass( 'mv_crop_button_selected' ) ) {
 						_this.applyCrop();
 					} else {
 						js_log( 'click:turn on' );
-						_this.enableCrop();
+						_this.doCropInterface();
 					}
 				} );
 				$j( '.mv_reset_crop' ).click( function() {
 					$j( '.mv_apply_crop,.mv_reset_crop' ).hide();
 					$j( '.mv_crop_msg' ).show();
 					$j( '#mv_crop_button' ).removeClass( 'mv_crop_button_selected' ).addClass( 'mv_crop_button_base' ).attr( 'title', gM( 'mwe-crop' ) );
-					_this.rObj.crop = null;
-					$j( '#' + _this.clip_disp_ct ).empty().html(
-						'<img src="' + _this.rObj.edit_url + '" id="rsd_edit_img">'
+					_this.resource.crop = null;
+					$j( '#' + _this.target_clip_display ).empty().html(
+						'<img src="' + _this.resource.edit_url + '" id="rsd_edit_img">'
 					);
 				} );
 			break;
+			/* Stubs for scale: 
 			case 'scale':
-				/*scale:
+				
 				 '<div class="mv_edit_button mv_scale_button_base" id="mv_scale_button" alt="crop" title="'+gM('mwe-scale')+'"></div>'+
 						'<a href="#" class="mv_scale_msg">' + gM('mwe-scale') + '</a><br>'+
 						'<a href="#" style="display:none" class="mv_apply_scale">' + gM('mwe-apply_scale') + '</a> '+
 						'<a href="#" style="display:none" class="mv_reset_scale">' + gM('mwe-reset_scale') + '</a><br> '+
-		
-				*/
+						
 			break;
+			*/
 		}
 	},
-	setUpImageCtrl:function() {
+	
+	/**
+	* Show Image Controls
+	*/
+	showImageControls:function() {
 		var _this = this;
-		var $tool_target = $j( '#' + this.control_ct );
+		var $tool_target = $j( '#' + this.target_control_display );
 		// by default apply Crop tool
 		if ( _this.enabled_tools == 'all' || _this.enabled_tools.length > 0 ) {
 			$tool_target.append( '<h3>' + gM( 'mwe-edit-tools' ) + '</h3>' );
 			for ( var i in _this.toolset ) {
 				var toolid = _this.toolset[i];
 				if ( $j.inArray( toolid, _this.enabled_tools ) != -1 || _this.enabled_tools == 'all' )
-					_this.appendTool( $tool_target, toolid );
+					_this.addTool( $tool_target, toolid );
 			}
 		}
-		// add the insert description text field: 
-		$tool_target.append( _this.getInsertDescHtml() );
-		// add the actions to the 'button bar'
+		// Add the insert description text field: 
+		$tool_target.append( _this.getInsertHtml() );
+		// Add the actions to the 'button bar'
 		_this.updateInsertControlActions();
-	},
-	applyVideoAdj:function() {
-		js_log( 'applyVideoAdj::' );
-		$tp = $j( '#' + this.control_ct );
-
-		// be sure to "stop the video (some plugins can't have DOM elements on top of them)
-		$j( '#embed_vid' ).get( 0 ).stop();
-
-		// update video related keys
-		this.rObj['start_time'] = $tp.find( '.startInOut' ).val();
-		this.rObj['end_time']   = $tp.find( '.endInOut' ).val() ;
-
-		// do the local video adjust
-		if ( typeof this.rObj.pSobj['applyVideoAdj'] != 'undefined' ) {
-			this.rObj.pSobj.applyVideoAdj( this.rObj );
-		}
-	},
+	},	
+	
+	/**
+	* Apply Image Crop to the edit resource image
+	*/
 	applyCrop:function() {
 		var _this = this;
 		$j( '.mv_apply_crop' ).hide();
 		$j( '.mv_crop_msg' ).show();
-		$j( '#mv_crop_button' ).removeClass( 'mv_crop_button_selected' ).addClass( 'mv_crop_button_base' ).attr( 'title', gM( 'mwe-crop' ) );
-		js_log( 'click:turn off' );
-		var cat = _this.rObj;
-		if ( _this.rObj.crop ) {
-			// empty out and display cropped:
-			$j( '#' + _this.clip_disp_ct ).empty().html(
-				'<div id="mv_cropcotainer" style="overflow:hidden;position:absolute;' +
-					'width:' + _this.rObj.crop.w + 'px;' +
-					'height:' + _this.rObj.crop.h + 'px;">' +
+		
+		// Update the crop button: 
+		$j( '#mv_crop_button' )
+			.removeClass( 'mv_crop_button_selected' )
+			.addClass( 'mv_crop_button_base' )
+			.attr( 'title', gM( 'mwe-crop' ) );	
+				
+		if ( _this.resource.crop ) {
+			// Empty out and display cropped:
+			$j( '#' + _this.target_clip_display )
+				.empty()
+				.html(
+					'<div id="mv_cropcotainer" style="overflow:hidden;position:absolute;' +
+						'width:' + _this.resource.crop.w + 'px;' +
+						'height:' + _this.resource.crop.h + 'px;">' +
 					'<div id="mv_crop_img" style="position:absolute;' +
-						'top:-' + _this.rObj.crop.y + 'px;' +
-						'left:-' + _this.rObj.crop.x + 'px;">' +
-						'<img src="' + _this.rObj.edit_url  + '">' +
+						'top:-' + _this.resource.crop.y + 'px;' +
+						'left:-' + _this.resource.crop.x + 'px;">' +
+					'<img src="' + _this.resource.edit_url  + '">' +
 					'</div>' +
-				'</div>'
-			);
+					'</div>'
+				);
 		}
 		return true;
 	},
-	// right now enableCrop loads "just in time"
-	// @@todo we really need an "auto loader" type system.
-	enableCrop:function() {
+	
+	/**
+	* Apply the video Start End Adjustments to the resource
+	*/
+	applyVideoStartEnd:function() {
+		js_log( 'apply Video StartEnd updates::' );
+		$target = $j( '#' + this.target_control_display );
+
+		// Be sure to "stop the video (some plugins can't have DOM elements on top of them)
+		$j( '#embed_vid' ).get( 0 ).stop();
+
+		// Update video related keys
+		this.resource['start_time'] = $target.find( '.startInOut' ).val();
+		this.resource['end_time']   = $target.find( '.endInOut' ).val() ;
+
+		// Do the local video adjust
+		if ( typeof this.resource.pSobj['applyVideoAdj'] != 'undefined' ) {
+			this.resource.pSobj.applyVideoAdj( this.resource );
+		}
+	},
+	
+	/**
+	* Do the crop Interface
+	*/
+	doCropInterface:function() {
 		var _this = this;
 		$j( '.mv_crop_msg' ).hide();
-		$j( '.mv_crop_msg_load' ).show();
-		var doEnableCrop = function() {
-			$j( '.mv_crop_msg_load' ).hide();
-			$j( '.mv_reset_crop,.mv_apply_crop' ).show();
-			$j( '#mv_crop_button' ).removeClass( 'mv_crop_button_base' ).addClass( 'mv_crop_button_selected' ).attr( 'title', gM( 'mwe-crop_done' ) );
-			$j( '#' + _this.clip_disp_ct + ' img' ).Jcrop( {
-				 onSelect: function( c ) {
-					 js_log( 'on select:' + c.x + ',' + c.y + ',' + c.x2 + ',' + c.y2 + ',' + c.w + ',' + c.h );
-					 _this.rObj.crop = c;
-				 },
-				 onChange: function( c ) {
-				 }
-			} );
-			// temporary hack (@@todo need to debug why rsd_res_item gets moved )
-			$j( '#clip_edit_disp .rsd_res_item' ).css( {
-				'top':'0px',
-				'left':'0px'
-			} );
-		}
+		$j( '.mv_crop_msg_load' ).show();		
 		// load the jcrop library if needed:
 		mvJsLoader.doLoad( [
 			'$j.Jcrop'
 		], function() {
-			doEnableCrop();
+			_this.bindCrop();
+		} );
+	},
+	
+	/**
+	* Bind the Crop once the library $j.Jcrop is ready: 
+	*/
+	bindCrop: function(){
+		var _this = this;
+		$j( '.mv_crop_msg_load' ).hide();
+		$j( '.mv_reset_crop,.mv_apply_crop' ).show();
+		$j( '#mv_crop_button' ).removeClass( 'mv_crop_button_base' ).addClass( 'mv_crop_button_selected' ).attr( 'title', gM( 'mwe-crop_done' ) );
+		$j( '#' + _this.target_clip_display + ' img' ).Jcrop( {
+			 onSelect: function( c ) {
+				 js_log( 'on select:' + c.x + ',' + c.y + ',' + c.x2 + ',' + c.y2 + ',' + c.w + ',' + c.h );
+				 _this.resource.crop = c;
+			 },
+			 onChange: function( c ) {
+			 }
+		} );
+		// Temporary hack (@@todo need to debug why rsd_res_item gets moved )
+		$j( '#clip_edit_disp .rsd_res_item' ).css( {
+			'top' : '0px',
+			'left' : '0px'
 		} );
 	}
-}
+};
 
-// mv_lock_vid_updates defined in mv_stream.js (we need to do some more refactoring )
-if ( typeof mv_lock_vid_updates == 'undefined' )
-	mv_lock_vid_updates = false;
-
-function add_adjust_hooks( mvd_id, adj_callback ) {
-
-	var start_sec = npt2seconds( $j( '#mv_start_hr_' + mvd_id ).val() );
-	var end_sec   = npt2seconds( $j( '#mv_end_hr_' + mvd_id ).val()  );
-
-	// if we don't have 0 as start then assume we are in a range request and give some buffer area:
-	var min_slider =  ( start_sec - 60 < 0 ) ? 0 : start_sec - 60;
-	if ( min_slider != 0 ) {
-		var max_slider =  end_sec + 60;
-	} else {
-		max_slider = end_sec;
-	}
-	// pre-destroy just in case:
-	$j( '#mvd_form_' + mvd_id + ' .inOutSlider' ).slider( 'destroy' ).slider( {
-		range: true,
-		min: min_slider,
-		max: max_slider,
-		values: [start_sec, end_sec],
-		slide: function( event, ui ) {
-			js_log( " vals:" +  seconds2npt( ui.values[0] ) + ' : ' + seconds2npt( ui.values[1] ) );
-			$j( '#mv_start_hr_' + mvd_id ).val( seconds2npt( ui.values[0] ) );
-			$j( '#mv_end_hr_' + mvd_id ).val( seconds2npt( ui.values[1] ) );
-		},
-		change:function( event, ui ) {
-			do_video_time_update( seconds2npt( ui.values[0] ), seconds2npt( ui.values[1] ) );
-		}
-	} );
-	$j( '.mv_adj_hr' ).change( function() {
-		// preserve track duration for nav and seq:
-		// ie seems to crash so no interface updates for IE for the time being
-		if ( !$j.browser.msie ) {
-			if ( mvd_id == 'nav' || mvd_id == 'seq' ) {
-				add_adjust_hooks( mvd_id ); // (no adj_callback)
-			} else {
-				add_adjust_hooks( mvd_id )
-			}
-		}
-		// update the video time for onChange
-		do_video_time_update( $j( '#mv_start_hr_' + mvd_id ).val(), $j( '#mv_end_hr_' + mvd_id ).val() );
-	} );
-}
-
-function do_video_time_update( start_time, end_time, mvd_id )	{
-	js_log( 'do_video_time_update: ' + start_time + ' ' + end_time );
-	if ( mv_lock_vid_updates == false ) {
-		// update the vid title:
-		$j( '#mv_videoPlayerTime' ).html( start_time + ' to ' + end_time );
-		var ebvid = $j( '#embed_vid' ).get( 0 );
-		if ( ebvid ) {
-			if ( ebvid.isPaused() )
-				ebvid.stop();
-			ebvid.updateVideoTime( start_time, end_time );
-			js_log( 'update thumb: ' + start_time );
-			ebvid.updateThumbTimeNTP( start_time );
-		}
-	}
-}
-
-// some custom jquery bindings: 
+// Custom jQuery Binding for upDownTimeInputBind
 ( function( $ ) {
 	$.fn.upDownTimeInputBind = function( inputCB ) {
 		$( this.selector ).unbind( 'focus' ).focus( function() {
 			var doDelayCall = true;
 			$( this ).addClass( 'ui-state-focus' );
-			// bind up down keys
+			// Bind up down keys
 			$( this ).unbind( 'keydown' ).keydown( function ( e ) {
 				var sec = npt2seconds( $j( this ).val() );
 				var k = e.which;
@@ -763,7 +897,7 @@ function do_video_time_update( start_time, end_time, mvd_id )	{
 					var sval = ( ( sec - 1 ) < 0 ) ? 0 : ( sec - 1 )
 					$( this ).val(  seconds2npt( sval ) );
 				}
-				// set the delay updates:
+				// Set the delay updates:
 				if ( k == 38 || k == 40 ) {
 					var _inputElm = this;
 					if ( doDelayCall ) {
