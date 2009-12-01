@@ -105,18 +105,18 @@ mvTimedEffectsEdit.prototype = {
 		$j( '#mv_submenu_timedeffect' ).tabs( {
 			selected: selected_tab,
 			select: function( event, ui ) {
-				_this.doDisplayEdit( $j( ui.tab ).attr( 'id' ).replace( 'mv_te_', '' ) );
+				_this.showEditUI( $j( ui.tab ).attr( 'id' ).replace( 'mv_te_', '' ) );
 			}
 		} ).addClass( 'ui-tabs-vertical ui-helper-clearfix' );
 		// close left:
 		$j( "#mv_submenu_clipedit li" ).removeClass( 'ui-corner-top' ).addClass( 'ui-corner-left' );
-		_this.doDisplayEdit( tTarget );
+		_this.showEditUI( tTarget );
 	},
-	doDisplayEdit:function( tab_id ) {
-		// @@todo fix the double display of doDisplayEdit
-		js_log( "doDisplayEdit::" );
+	showEditUI:function( tab_id ) {
+		// @@todo fix the double display of showEditUI
+		js_log( "showEditUI::" );
 		if ( !this.menu_items[ tab_id ] ) {
-			js_log( 'error: doDisplayEdit missing item:' + tab_id );
+			js_log( 'error: showEditUI missing item:' + tab_id );
 		} else {
 			// use the menu_item config to map to function display
 			this.menu_items[tab_id].doEdit( this );

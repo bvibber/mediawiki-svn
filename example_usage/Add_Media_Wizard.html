@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>sample mv embed</title>
+	<title> Sample mv Embed</title>
 	<style type="text/css">
 		body{
 			font-size:80%;
@@ -15,6 +15,7 @@
  	<!--<script type="text/javascript" src="../jsScriptLoader.php?class=window.jQuery,mv_embed,remoteSearchDriver,$j.ui,$j.ui.resizable,$j.ui.draggable,$j.ui.dialog,$j.ui.tabs,$j.ui.sortable,$j.cookie,baseRemoteSearch&urid=1257728132531&debug=true&uselang=en"></script> --> 	 	 
  	<script type="text/javascript">
  	js2AddOnloadHook(function(){
+ 	
  		$j('#add_media_link').addMediaWiz( {
 			'profile':'html_edit',			
 			'target_textbox': '#wpTextbox1',
@@ -27,11 +28,11 @@
 			//we only enabled commons
         	//(since javascript includes from other servers would be problamatic ) in a default install
             //** but you can set this to 'all' to pull from multiple repositories  
-            'enabled_cps':['wiki_commons'],        	
+            'enabled_providers' : ['wiki_commons'],        	
 			
 			//the local wiki api url: 
 			'local_wiki_api_url': 'none'
-		});			
+		});					
 	});	
 	
  	</script> 
