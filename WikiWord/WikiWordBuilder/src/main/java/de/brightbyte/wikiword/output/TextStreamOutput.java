@@ -7,11 +7,12 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.ResourceType;
 
-public class PlainTextOutput extends AbstractStreamOutput implements TextOutput {
+public class TextStreamOutput extends AbstractStreamOutput implements TextOutput {
 	
+	private static final String MARKER = "[\u0001\u0002\u0003\u0004] (binary marker)";
 	protected String encoding;
 	
-	public PlainTextOutput(DatasetIdentifier dataset, OutputStream out, String enc) {
+	public TextStreamOutput(DatasetIdentifier dataset, OutputStream out, String enc) {
 		super(dataset, out);
 		
 		if (enc==null) throw new NullPointerException();
@@ -19,9 +20,12 @@ public class PlainTextOutput extends AbstractStreamOutput implements TextOutput 
 		this.encoding = enc;
 	}
 
-	public int storeDefinition(int rcId, String name, int conceptId, ResourceType ptype, String text) throws PersistenceException {
+	public void storeDefinitionText(int rcId, String name, ResourceType ptype, String text) throws PersistenceException {
 		writeBlock(name, "definition", "text/plain", ptype, text);
-		return 0;
+	}
+
+	public void storeSynopsisText(int rcId, String name, ResourceType ptype, String text) throws PersistenceException {
+		writeBlock(name, "synopsis", "text/plain", ptype, text);
 	}
 
 	public void storePlainText(int rcId, String name, ResourceType ptype, String text) throws PersistenceException {
@@ -42,6 +46,7 @@ public class PlainTextOutput extends AbstractStreamOutput implements TextOutput 
 			text = text.trim()+"\r\n";
 			byte[] data = text.getBytes(encoding);
 			
+			s.append("Marker: "); s.append(MARKER); s.append(sep);
 			s.append("Page: "); s.append(name); s.append(sep);
 			s.append("Aspect:"); s.append(aspect); s.append(sep);
 			s.append("Page-Type:"); s.append(ptype.name()); s.append(sep);

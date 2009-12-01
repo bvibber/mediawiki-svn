@@ -174,6 +174,8 @@ public class Namespace {
 		if (k.equals("MEDIA")) return MEDIA;
 		if (k.equals("SPECIAL")) return SPECIAL;
 		if (k.equals("MAIN")) return MAIN;
+		if (k.equals("*")) return MAIN;
+		if (k.equals("")) return MAIN;
 		if (k.equals("TALK")) return TALK;
 		if (k.equals("USER")) return USER;
 		if (k.equals("USER_TALK")) return USER_TALK;

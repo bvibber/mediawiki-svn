@@ -175,8 +175,12 @@ public abstract class CliApp {
 		return (Corpus)dataset;
 	}
 	
+	protected String getDatasetArgument() {
+		return args.getParameter(0);
+	}
+	
 	protected String getConfiguredCollectionName() {
-		String s = args.getParameter(0);
+		String s = getDatasetArgument();
 		int idx = s.indexOf(':');
 		
 		if (idx<=0) {
@@ -187,7 +191,7 @@ public abstract class CliApp {
 	}
 
 	public String getConfiguredDatasetName() {
-		String s = args.getParameter(0);
+		String s = getDatasetArgument();
 		int idx = s.indexOf(':');
 		
 		if (idx<0) {

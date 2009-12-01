@@ -29,6 +29,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NamespaceSet implements Iterable<Namespace> {
 	protected Map<Integer, Namespace> byCode = new HashMap<Integer, Namespace>();
@@ -74,8 +76,18 @@ public class NamespaceSet implements Iterable<Namespace> {
 		return byCode.get(number);
 	}
 
+	private static final Pattern numericNamespacePattern = Pattern.compile("^(ns:)?(\\d+)$", Pattern.CASE_INSENSITIVE);
+	
 	public Namespace getNamespace(String name) {
-		return byName.get(normalizeName(name, true));
+		if (name.equals("") || name.equals("*")) return getNamespace(Namespace.MAIN);
+		
+		Matcher m = numericNamespacePattern.matcher(name);
+		if (m.matches()) {
+			int n = Integer.parseInt(m.group(2));
+			return getNamespace(n);
+		} else {
+			return byName.get(normalizeName(name, true));
+		}
 	}
 	
 	public String getCanonicalName(int number) {

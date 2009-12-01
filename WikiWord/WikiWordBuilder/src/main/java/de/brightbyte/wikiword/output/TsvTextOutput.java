@@ -18,6 +18,14 @@ public class TsvTextOutput extends AbstractTsvOutput implements TextOutput {
 	public TsvTextOutput(Corpus corpus, Writer out) {
 		super(corpus, out);
 	}
+	
+	public void storeDefinitionText(int textId, String name, ResourceType ptype, String text) throws PersistenceException {
+		writeRow("definition", name, text);
+	}
+
+	public void storeSynopsisText(int textId, String name, ResourceType ptype, String text) throws PersistenceException {
+		writeRow("synopsis", name, text);
+	}
 
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.output.TextOutput#storePlainText(int, java.lang.String, de.brightbyte.wikiword.ResourceType, java.lang.String)

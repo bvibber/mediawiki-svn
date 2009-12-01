@@ -18,7 +18,11 @@ public abstract class ExtractFromDump<S extends DataOutput> extends ExtractorApp
 	}
 
 	protected URL dumpFile;
-
+/*
+	protected String getDatasetArgument() {
+		return args.getOption("corpus", ":");
+	}
+*/		
 	@Override
 	protected boolean applyArguments() {
 		String d = getTargetFileName();
@@ -50,8 +54,10 @@ public abstract class ExtractFromDump<S extends DataOutput> extends ExtractorApp
 		args.declare("wiki", null, true, String.class, "sets the wiki name (overrides the name given by, or " +
 			"guessed from, the <wiki> parameter)");
 		args.declare("url", null, false, Boolean.class, "read the <dump-file> parameter as a full URL");
+		
+		args.declare("namespaces", null, true, String.class, "Only process pages in the given namespace(s).");
 	}
-
+	
 	@Override
 	protected void run() throws Exception {
 
