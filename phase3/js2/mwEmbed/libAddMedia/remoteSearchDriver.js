@@ -875,8 +875,8 @@ remoteSearchDriver.prototype = {
 
 		// Deal with the api form upload form directly:
 		$j( '#upload_form' ).simpleUploadForm( {
-			"api_target" : _this.upload_api_target,
-			"ondone_cb": function( resultData ) {
+			"api_target" 	  : _this.upload_api_target,
+			"ondone_callback" : function( resultData ) {
 				var wTitle = resultData['filename'];
 				// Add a loading div
 				_this.addResourceEditLoader();
@@ -915,10 +915,10 @@ remoteSearchDriver.prototype = {
 
 		var draw_direct_flag = true;
 
-		// else do showSearchTab
+		// Else do showSearchTab
 		var provider = this.content_providers[providerName];
 
-		// check if we need to update:
+		// Check if we need to update:
 		if ( typeof provider.sObj != 'undefined' ) {
 			if ( provider.sObj.last_query == $j( '#rsd_q' ).val() 
 				&& provider.sObj.last_offset == provider.offset ) 
@@ -977,32 +977,37 @@ remoteSearchDriver.prototype = {
 						'modules': 'upload'
 					}
 				}, function( data ) {
-					// Jump right into api checks:
-					for ( var i in data.paraminfo.modules[0].parameters ) {
-						var pname = data.paraminfo.modules[0].parameters[i].name;
-						if ( pname == 'url' ) {
-							js_log( 'Autodetect Upload Mode: api: copy by url:: ' );
-							// Check permission  too:
-							_this.checkForCopyURLPermission( function( canCopyUrl ) {
-								if ( canCopyUrl ) {
-									_this.import_url_mode = 'api';
-									js_log( 'import mode: ' + _this.import_url_mode );
-									callback();
-								} else {
-									_this.import_url_mode = 'none';
-									js_log( 'import mode: ' + _this.import_url_mode );
-									callback();
-								}
-							} );
-							break;
-						}
-					}
+					_this.checkCopyURLApiResult( data, callback ) 
 				}
 			);
 		}
 	},
-
-	/*
+	checkCopyURLApiResult: function( data, callback ) {
+		var _this = this;
+		// Api checks:
+		for ( var i in data.paraminfo.modules[0].parameters ) {
+			var pname = data.paraminfo.modules[0].parameters[i].name;
+			if ( pname == 'url' ) {
+				js_log( 'Autodetect Upload Mode: api: copy by url:: ' );
+				// Check permission  too:
+				_this.checkForCopyURLPermission( function( canCopyUrl ) {
+					if ( canCopyUrl ) {
+						_this.import_url_mode = 'api';
+						js_log( 'import mode: ' + _this.import_url_mode );
+						callback();
+					} else {
+						_this.import_url_mode = 'none';
+						js_log( 'import mode: ' + _this.import_url_mode );
+						callback();
+					}
+				} );
+				// End the pname search once we found the the "url" param 
+				break; 
+			}
+		}
+	}
+	
+	/**
 	 * checkForCopyURLPermission:
 	 * not really necessary the api request to upload will return appropriate error 
 	 * if the user lacks permission. or $wgAllowCopyUploads is set to false

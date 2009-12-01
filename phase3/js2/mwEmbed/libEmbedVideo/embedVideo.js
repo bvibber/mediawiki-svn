@@ -1,5 +1,10 @@
-/*  the base video control JSON object with default attributes
-*	for supported attribute details see README
+/*  
+* EmbedVideo Object is the base class for html5 video tag javascript abstration library
+* EmbedVideo include a few subclasses: 
+*  mediaPlayer represents a media player plugin. (like java, vlc or native)
+*  mediaElement used to represent source media elements	
+*  ctrlBuilder handles skinning of the player controls
+* 
 */
 
 loadGM( {
@@ -59,47 +64,105 @@ loadGM( {
 	"mwe-video-audio" : "Ogg audio"
 } );
 
+/*
+* The default video attributes supported by embedVideo
+*/ 
 var default_video_attributes = {
+	/* 
+	* Base html element attributes: 
+	*/	
+	
+	// id: Auto-populated if unset   
 	"id" : null,
-	"class" : null,
-	"style" : null,
-	"name" : null,
-	"innerHTML" : null,
-	"width" : "320",
-	"height" : "240",
 
-	// video attributes:
+	// Class: used to set the player "skin" 
+	"class" : null,
+	
+	// Style: used to set player width and height  
+	"style" : null,
+	
+	// Width: alternate to "style" to set player width
+	"width" : null,
+	
+	// Height: alternative to "style" to set player height
+	"height" : null,
+
+	/* 
+	* Base html5 video element attributes
+	* also see:  http://www.whatwg.org/specs/web-apps/current-work/multipage/video.html
+	*/
+	
+	// Media src URI, can be relative or absolute URI	
 	"src" : null,
+	
+	// Poster attribute for displaying a placeholder before playing the video
+	"poster" 
+	
+	// Autoplay if the media should start playing 
 	"autoplay" : false,
-	"start" : 0,
-	"end" : null,
+	
+	// If the controlls should be displayed
 	"controls" : true,
+	
+	// Video starts "paused" 
+	"paused" : true,
+	
+	// ReadyState is a default attribute for video element
+	// see: http://www.whatwg.org/specs/web-apps/current-work/#readystate	
+	"readyState" : 0,  
+	
+	// Loading state of the video element
+	"networkState" : 0,
+	
+	// Current playback position 
+	"currentTime"  :0, 
+	
+	// Media duration this value is populated via 
+	//  custom durationHint attribute or via the media file once its played
+	"duration"  :null,   
+	
+	// Mute state
 	"muted" : false,
+	
+	/*
+	* Custom attributes for embedVideo player:
+	* (not part of the html5 video spec)  
+	*/
+	
+	// Start time of the clip
+	"start" : 0,
+	
+	// End time of the clip
+	"end" : null,
+	
+	// A wikiTitleKey for looking up subtitles, credits and related videos
 	"wikiTitleKey" : null,
 	
-	// roe url (for xml based metadata)
+	// ROE url (for xml based metadata)
+	// also see: http://wiki.xiph.org/ROE
 	"roe" : null,
 	
 	// If roe includes metadata tracks we can expose a link to metadata
-	"show_meta_link" : true,
+	"show_meta_link" : true,	
 
-	// default state attributes per html5 spec:
-	// http://www.whatwg.org/specs/web-apps/current-work/#video)
-	"paused" : true,
-	"readyState" : 0,  // http://www.whatwg.org/specs/web-apps/current-work/#readystate
-	"currentTime"  :0, // current playback position (should be updated by plugin)
-	"duration"  :null,   // media duration (read from file or the temporal url)
-	"networkState" : 0,
+	// If serving an ogg_chop segment use this to offset the presentation time
+	// ( for some plugins that use ogg page time rather than presentaiton time ) 
+	"startOffset" : null, 
 
-	"startOffset" : null, // if serving an ogg_chop segment use this to offset the presentation time 
-
-	// custom attributes for mv_embed:
+	//If we should display the play button
 	"play_button" : true,
+	
+	// Thumbnail (same as poster) 
 	"thumbnail" : null,
+	
+	// Source page for media asset ( used for linkbacks in remote embedding )  
 	"linkback" : null,
-	"embed_link" : true,
+	
+	// If the download link should be shown
 	"download_link" : true,
-	"type" :null	 // the content type of the media 
+	
+	// Content type of the media
+	"type" :null	  
 };
 /*
  * the base source attribute checks
@@ -574,6 +637,9 @@ mediaElement.prototype = {
 	},
 	/** 
 	* Updates the time request for all sources that have a standard time request argument (ie &t=start_time/end_time)
+	*
+	* @param {String} start_ntp Start time in npt format
+	* @param {String} end_ntp End time in npt format
 	*/
 	updateSourceTimes:function( start_ntp, end_ntp ) {
 		var _this = this;
@@ -581,8 +647,12 @@ mediaElement.prototype = {
 			mediaSource.updateSrcTime( start_ntp, end_ntp );
 		} );
 	},
-	/*timed Text check*/
-	timedTextSources:function() {
+	
+	/**
+	* Check for Timed Text tracks
+	* @return {Boolean} true if text tracks exist, false if no text tracks are found
+	*/
+	checkForTextSource: function() {
 		for ( var i = 0; i < this.sources.length; i++ ) {
 			if (	this.sources[i].mime_type == 'text/cmml' ||
 				this.sources[i].mime_type == 'text/x-srt' )
@@ -590,8 +660,12 @@ mediaElement.prototype = {
 		};
 		return false;
 	},
-	/** Returns the array of mediaSources of this element.
-	*	@return {Array} of mediaSource elements.
+	
+	/** 
+	* Returns the array of mediaSources of this element.
+	* 
+	* @param {String} mime_filter Filter critera for set of mediaSources to return
+	* @return {Array} of mediaSource elements.
 	*/
 	getSources:function( mime_filter )
 	{
@@ -605,6 +679,11 @@ mediaElement.prototype = {
 		}
 		return source_set;
 	},
+	/**
+	* Selects a source by id
+	* @param {String} source_id Id of the srouce to select. 
+	* @return {MediaSource} The selected mediaSource or null if not found  
+	*/
 	getSourceById:function( source_id ) {
 		for ( var i = 0; i < this.sources.length ; i++ ) {
 			if ( this.sources[i].id ==  source_id )
@@ -612,7 +691,10 @@ mediaElement.prototype = {
 		}
 		return null;
 	},
-	/** Selects a particular source for playback.
+	/** 
+	* Selects a particular source for playback updating the "selected_source" 
+	*
+	* @param {Number} index Index of source element to set as selected_source
 	*/
 	selectSource:function( index )
 	{
@@ -627,6 +709,7 @@ mediaElement.prototype = {
 			}
 		}
 	},
+	
 	/** 
 	* Selects the default source via cookie preference, default marked, or by id order
 	*/
@@ -691,7 +774,10 @@ mediaElement.prototype = {
 			this.selected_source = playable_sources[0];
 			return true;
 		}
+		// No Source found so no source selected
+		return false;
 	},
+	
 	/** 
 	* Returns the thumbnail URL for the media element.
 	* @returns {String} thumbnail URL
@@ -700,6 +786,7 @@ mediaElement.prototype = {
 	{
 		return this.thumbnail;
 	},
+	
 	/** 
 	* Checks whether there is a stream of a specified MIME type.
 	* @param {String} mime_type MIME type to check.
@@ -714,6 +801,10 @@ mediaElement.prototype = {
 		}
 		return false;
 	},
+	
+	/**
+	* Checks if media is a playable type
+	*/
 	isPlayableType:function( mime_type )
 	{
 		if ( embedTypes.players.defaultPlayer( mime_type ) ) {
@@ -722,6 +813,7 @@ mediaElement.prototype = {
 			return false;
 		}
 	},
+	
 	/** 
 	* Adds a single mediaSource using the provided element if
 	*	the element has a 'src' attribute.		
@@ -753,6 +845,12 @@ mediaElement.prototype = {
 		this.sources.push( source );
 		js_log( 'pushed source to stack' + source + 'sl:' + this.sources.length );
 	},
+	
+	/**
+	* Gets playable sources
+	*
+	* @returns {Array} of playbale sources
+	*/
 	getPlayableSources: function() {
 		 var playable_sources = new Array();
 		 for ( var i = 0; i < this.sources.length; i++ ) {
@@ -764,8 +862,10 @@ mediaElement.prototype = {
 		 };
 		 return playable_sources;
 	},
-	/* Imports media sources from ROE data.
-	 *   @param roe_data ROE data.
+	
+	/**
+	* Imports media sources from ROE data.
+	*   @param roe_data ROE data.
 	*/
 	addROE:function( roe_data ) {
 		js_log( 'f:addROE' );
@@ -1511,7 +1611,7 @@ embedVideo.prototype = {
 		var _this = this;
 		var html_code = '';
 		html_code = '<div id="videoPlayer_' + this.id + '" style="width:' + this.width + 'px;position:relative;"' +
-						'class="' + this.ctrlBuilder.pClass + '">';
+						'class="' + this.ctrlBuilder.parentClass + '">';
 		html_code += '<div style="width:' + parseInt( this.width ) + 'px;height:' + parseInt( this.height ) + 'px;"  id="mv_embedded_player_' + this.id + '">' +
 						this.getThumbnailHTML() +
 					'</div>';
@@ -1583,8 +1683,8 @@ embedVideo.prototype = {
 		if ( my_thumb_src.indexOf( 't=' ) !== -1 ) {
 			var time_ntp =  seconds2npt ( options.time + parseInt( this.start_offset ) );
 			my_thumb_src = getURLParamReplace( my_thumb_src, { 
-				't':time_ntp, 
-				'size': options.size 
+				't' : time_ntp, 
+				'size' : options.size 
 			});
 		}
 		var thumb_class = ( typeof options['thumb_class'] != 'undefined' ) ? options['thumb_class'] : '';

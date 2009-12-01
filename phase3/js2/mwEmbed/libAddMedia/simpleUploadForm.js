@@ -21,35 +21,40 @@ var default_form_options = {
 	'enable_fogg'	 : true,
 	'license_options': ['cc-by-sa'],
 	'api_target' : false,
-	'ondone_cb' : null
+	'ondone_callback' : null
 };
 
 ( function( $ ) {
-	$.fn.simpleUploadForm = function( opt , callback ) {
+	/** 
+	* Add the Simple Upload From jQuery binding
+	*
+	* @param {Object} options Set of options for the upload 
+	* overitting default values in default_form_options
+	*/
+	$.fn.simpleUploadForm = function( options  ) {
 		var _this = this;
 		// set the options:
 		for ( var i in default_form_options ) {
-			if ( !opt[i] )
-				opt[i] = default_form_options[i];
+			if ( !options[i] )
+				options[i] = default_form_options[i];
 		}
 
-		// first do a reality check on the options:
-		if ( !opt.api_target ) {
+		// First do a reality check on the options:
+		if ( !options.api_target ) {
 			$( this.selector ).html( 'Error: Missing api target' );
 			return false;
 		}
-
-		// @@todo this is just a proof of concept
-		// much todo to improved this web form
-		get_mw_token( 'File:MyRandomFileTokenCheck', opt.api_target, function( eToken ) {
+		
+		// Get an edit Token for "uploading"
+		get_mw_token( 'File:MyRandomFileTokenCheck', options.api_target, function( eToken ) {
 			if ( !eToken || eToken == '+\\' ) {
 				$( this.selector ).html( gM( 'mwe-error_not_loggedin' ) );
 				return false;
 			}
 
-			// build an upload form:
+			// Build an upload form:
 			var o = '<div>' +
-						'<form id="suf-upload" enctype="multipart/form-data" action="' + opt.api_target + '" method="post">'  +
+						'<form id="suf-upload" enctype="multipart/form-data" action="' + options.api_target + '" method="post">'  +
 						// hidden input:
 						'<input type="hidden" name="action" value="upload">' +
 						'<input type="hidden" name="format" value="jsonfm">' +
@@ -78,16 +83,17 @@ var default_form_options = {
 						'<input type="checkbox" id="wpLicence" name="wpLicence" value="cc-by-sa">' + gM( 'mwe-license_cc-by-sa' ) + '</p>' +
 			
 						'<input type="submit" accesskey="s" value="' + gM( 'mwe-upload' ) + '" name="wpUploadBtn" id="wpUploadBtn"  tabindex="9"/>' +
-						// close the form and div
+						// Close the form and div
 						'</form>' +
 				'</div>';
 
-			// set the target with the form output:
+			// Set the target with the form output:
 			$( _this.selector ).html( o );
-			// by default dissable:
+			
+			// By default disable:
 			$j( '#wpUploadBtn' ).attr( 'disabled', 'disabled' );
 
-			// set up basic license binding:
+			// Set up basic license binding:
 			$j( '#wpLicence' ).click( function() {
 				if ( $j( this ).is( ':checked' ) ) {
 					$j( '#wpUploadBtn' ).removeAttr( 'disabled' );
@@ -95,8 +101,8 @@ var default_form_options = {
 					$j( '#wpUploadBtn' ).attr( 'disabled', 'disabled' );
 				}
 			} );
-			// do destination fill:
-			// @@should integrate with doDestinationFill on upload page
+			
+			// Do destination fill
 			$j( "#wpUploadFile" ).change( function() {
 				var path = $j( this ).val();
 				// Find trailing part
@@ -113,28 +119,28 @@ var default_form_options = {
 				fname = fname.charAt( 0 ).toUpperCase().concat( fname.substring( 1, 10000 ) ).replace( / /g, '_' );
 				// Output result
 				$j( "#wpDestFile" ).val( fname );
-				// do destination check
+				// Do destination check
 				$j( "#wpDestFile" ).doDestCheck( {
 					'warn_target':'#wpDestFile-warning'
 				} );
 			} );
 
 
-			// do destination check:
+			// Do destination check:
 			$j( "#wpDestFile" ).change( function() {			
 				$j( "#wpDestFile" ).doDestCheck( {
 					'warn_target':'#wpDestFile-warning'
 				} );
 			} );
 
-			if ( typeof opt.ondone_cb == 'undefined' )
-				opt.ondone_cb = false;
+			if ( typeof options.ondone_callback == 'undefined' )
+				options.ondone_callback = false;
 
-			// set up the binding per the config
-			if ( opt.enable_fogg ) {
+			// Set up the binding per the config
+			if ( options.enable_fogg ) {
 				$j( "#wpUploadFile" ).firefogg( {
 					// An api url (we won't submit directly to action of the form)
-					'api_url' : opt.api_target,
+					'api_url' : options.api_target,
 					
 					// If we should do a form rewrite
 					'form_rewrite': true,
@@ -148,7 +154,7 @@ var default_form_options = {
 							warn_target: "#wpDestFile-warning"
 						} );
 					},
-					'done_upload_cb' : opt.ondone_cb
+					'done_upload_cb' : options.ondone_callback
 				} );
 			}
 		} );

@@ -78,7 +78,7 @@ var htmlEmbed = {
 		selected_source: {
 			URLTimeEncoding:false
 		},
-		timedTextSources:function() {
+		checkForTextSource:function() {
 			return false;
 		}
 	},
