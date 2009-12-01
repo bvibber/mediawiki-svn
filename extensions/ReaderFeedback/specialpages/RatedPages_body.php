@@ -136,7 +136,7 @@ class RatedPagesPager extends AlphabeticPager {
 			default: $conds[] = "rfp_ave_val >= 2 AND rfp_ave_val <= 3"; break;
 		}
 		// Reasonable samples only
-		$conds[] = 'rfp_count >= '.ReaderFeedback::getFeedbackSize();
+		$conds[] = 'rfp_count >= '.$this->mDb->addQuotes( ReaderFeedback::getFeedbackSize() );
 		return array(
 			'tables'  => array('reader_feedback_pages','page'),
 			'fields'  => 'page_namespace,page_title,page_len,rfp_ave_val,rfp_count',
