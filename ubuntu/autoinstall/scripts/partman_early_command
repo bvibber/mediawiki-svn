@@ -1,0 +1,9 @@
+#! /bin/sh
+
+set -e
+set -x
+
+# Karmic has a bug with grub 2 and serial consoles
+if [ "$SUITE" = "karmic" ]; then
+	sed -i /usr/bin/grub-installer 's/`grub_serial_console`/`grub_serial_console $serial`/g'
+fi
