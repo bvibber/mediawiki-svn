@@ -1,3 +1,8 @@
+// Prototype in string.trim on browsers that haven't yet implemented
+// See http://blog.stevenlevithan.com/archives/faster-trim-javascript for the reason why /^\s+|\s+$/g is not used as the regex
+if ( typeof String.prototype.trim !== "function" )
+	String.prototype.trim = function(str) { return str.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); };
+
 var liquidThreads = {
 	currentReplyThread : null,
 	currentToolbar : null,
@@ -12,9 +17,8 @@ var liquidThreads = {
 			target = $j(e.target);
 		}
 		
-		var prefixLength = "lqt_thread_id_".length;
 		var container = $j(target).closest('.lqt_thread')[0];
-		var thread_id = container.id.substring( prefixLength );
+		var thread_id = $j(this).data('thread-id');
 		
 		if (thread_id == liquidThreads.currentReplyThread) {
 			liquidThreads.cancelEdit({});
@@ -23,7 +27,28 @@ var liquidThreads = {
 		
 		var query = '&lqt_method=reply&lqt_operand='+thread_id;
 		
-		var replyDiv = $j(container).find('.lqt-reply-form')[0];
+		var repliesElement = $j(container).contents().filter('.lqt-thread-replies');
+		var replyDiv = repliesElement.contents().filter('.lqt-reply-form');
+		if (!replyDiv.length) {
+			// Create a div for it
+			replyDiv = $j('<div class="lqt-reply-form lqt-edit-form"/>');
+			
+			// Try to find a place for it
+			if ( !repliesElement.length ) {
+				repliesElement = $j('<div class="lqt-thread-replies"/>' );
+				
+				var finishDiv = $j('<div class="lqt-replies-finish"/>');
+				finishDiv.append($j('<div class="lqt-replies-finish-corner"/>'));
+				finishDiv.contents().html('&nbsp;');
+				repliesElement.append(finishDiv);
+				
+				$j(container).append(repliesElement);
+			}
+			
+			repliesElement.find('.lqt-replies-finish').before( replyDiv );
+		}
+		
+		replyDiv = replyDiv[0];
 		
 		liquidThreads.injectEditForm( query, replyDiv, e.preload );
 		liquidThreads.currentReplyThread = thread_id;
@@ -154,8 +179,7 @@ var liquidThreads = {
 	},
 	
 	'transformQuote' : function(quote) {
-		// trim() doesn't work on all browsers
-		quote = quote.replace(/^\s+|\s+$/g, '');
+		quote = quote.trim();
 		var lines = quote.split("\n");
 		var newQuote = '';
 		
@@ -243,7 +267,21 @@ var liquidThreads = {
 			e.preventDefault();
 		}
 		
-		$j('.lqt-edit-form').not(e).fadeOut('slow', function() { $j(this).empty(); } );
+		$j('.lqt-edit-form').not(e).each(
+			function() {
+				var repliesElement = $j(this).closest('.lqt-thread-replies');
+				var emptyAll = repliesElement.length &&
+					!( repliesElement.contents().not('.lqt-replies-finish')
+						.not('.lqt-edit-form').length );
+				$j(this).fadeOut('slow',
+					function() {
+						$j(this).empty();
+						
+						if (emptyAll) {
+							repliesElement.remove();
+						}
+					} )
+			} );
 		
 		liquidThreads.currentReplyThread = null;
 	},
@@ -251,8 +289,8 @@ var liquidThreads = {
 	'setupMenus' : function() {
 		var post = $j(this);
 		
-		var toolbar = post.find('.lqt-thread-toolbar');
-					
+		var toolbar = post.contents().filter('.lqt-thread-toolbar');
+		var threadID = post.data('thread-id');
 		var menu = post.find('.lqt-thread-toolbar-command-list');
 		var menuContainer = post.find( '.lqt-thread-toolbar-menu' );
 		menu.remove().appendTo( menuContainer );
@@ -261,6 +299,11 @@ var liquidThreads = {
 		// Add handler for edit link -- Disabled for further tweaking
 //		var editLink = menu.find('.lqt-command-edit > a');
 //		editLink.click( liquidThreads.handleEditLink );
+
+		// Add handler for reply link
+		var replyLink = menu.find('.lqt-command-reply > a');
+		replyLink.data( 'thread-id', threadID );
+		replyLink.click( liquidThreads.handleReplyLink );
 
 		var trigger = menuContainer.find( '.lqt-thread-actions-trigger' )	
 
@@ -417,22 +460,15 @@ var liquidThreads = {
 		var prefixLength = "lqt_thread_id_".length;
 		
 		// Update reply links
-		var replyLI = $j(threadContainer).find( '.lqt-command-reply' );
 		var threadWrapper = $j(threadContainer).closest('.lqt_thread')[0]
 		var threadId = threadWrapper.id.substring( prefixLength );
 		
 		$j(threadContainer).data( 'thread-id', threadId );
 		
-		if ( replyLI.length ) {
-			replyLI[0].id = "lqt-reply-id-"+threadId;
-			var replyLink = replyLI.find('a');
-			
-			replyLink.click( liquidThreads.handleReplyLink );
-			
-			// Add quote button to menus
-// 			var toolbar = $j(threadContainer).find('.lqt-thread-toolbar-commands');
-// 			liquidThreads.addQuoteButton(toolbar);
-		}
+		// Set up reply link
+		var replyLinks = $j(threadWrapper).find('.lqt-add-reply');
+		replyLinks.click( liquidThreads.handleReplyLink );
+		replyLinks.data( 'thread-id', threadId );
 		
 		// Hide edit forms
 		$j(threadContainer).find('div.lqt-edit-form').each(
@@ -675,6 +711,8 @@ var liquidThreads = {
 			var newThread = newContent.filter('div.lqt_thread')[0];
 			var newThreadContent = $j(newThread).contents();
 			topmostThread.append( newThreadContent );
+			topmostThread.removeClass( 'lqt-thread-no-subthreads' );
+			topmostThread.addClass( 'lqt-thread-with-subthreads' );
 				
 			// Set up thread.
 			topmostThread.find('.lqt-post-wrapper').each( function() {

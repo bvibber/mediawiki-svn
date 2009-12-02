@@ -364,7 +364,20 @@ class LqtDiscussionPager extends IndexPager {
 		
 		parent::__construct();
 		
-		$this->mLimit = 20;
+		$this->mLimit = $this->getPageLimit();
+	}
+	
+	function getPageLimit() {
+		$article = $this->article;
+		
+		if ( $article->exists() ) {
+			$pout = $article->getParserOutput();
+			$setLimit = $pout->getProperty('lqt-page-limit');
+			if ($setLimit) return $setLimit;
+		}
+		
+		global $wgLiquidThreadsDefaultPageLimit;
+		return $wgLiquidThreadsDefaultPageLimit;
 	}
 	
 	function getQueryInfo() {
