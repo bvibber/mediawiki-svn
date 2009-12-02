@@ -108,7 +108,7 @@ $.wikiEditor = {
 	'getIcon': function( icon, path, lang ) {
 		lang = lang || wgUserLanguage;
 		path = path || $.wikiEditor.imgPath;
-		var src = icon[lang] || icon.default || icon;
+		var src = icon[lang] || icon['default'] || icon;
 		// Prepend path if src is not absolute
 		if ( src.substr( 0, 7 ) != 'http://' && src.substr( 0, 8 ) != 'https://' &&
 				src[0] != '/' )
@@ -434,9 +434,10 @@ if ( typeof context == 'undefined' ) {
 			// TODO: IE
 			var sel = context.$iframe[0].contentWindow.getSelection();
 			// TODO: Can this be done in one call?
-			sel.extend( startContainer, start );
+			sel.removeAllRanges();
+			sel.extend( options.startContainer, options.start );
 			sel.collapseToStart();
-			sel.extend( endContainer, end );
+			sel.extend( options.endContainer, options.end );
 		},
 		/**
 		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()

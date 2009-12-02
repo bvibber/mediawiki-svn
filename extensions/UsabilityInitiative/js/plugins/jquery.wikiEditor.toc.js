@@ -139,7 +139,7 @@ fn: {
 	 *
 	 * @param {Object} event Event object with context as data
 	 */
-	expand: function( event) {
+	expand: function( event ) {
 		var $this = $( this ),
 			context = $this.data( 'context' ),
 			openWidth = context.modules.$toc.data( 'openWidth' );
@@ -197,8 +197,12 @@ fn: {
 				var div = $( '<div />' )
 					.addClass( 'section-' + structure[i].index )
 					.data( 'wrapper', structure[i].wrapper )
-					.mousedown( function( event ) {
+					.click( function( event ) {
 						context.fn.scrollToTop( $(this).data( 'wrapper' ) );
+						context.$textarea.textSelection( 'setSelection', {
+							'start': 0,
+							'startContainer': $(this).data( 'wrapper' )
+						} );
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
 						event.preventDefault();
@@ -307,60 +311,70 @@ fn: {
 		}
 		
 		// Build outline from wikitext
-		var outline = [];
+		var outline = [], h = 0;
 		
 		// Traverse all text nodes in context.$content
-		// FIXME: Doesn't traverse non-top-level text nodes, rewrite as recursive function
-		var h = 0;
-		context.$content.contents().add( context.$content.find( '*' ) ).each( function() {
-			if ( this.nodeName != '#text' && !$(this).is( '.wikiEditor-toc-header' ) )
+		function traverseTextNodes() {
+			if ( this.nodeName != '#text' ) {
+				$( this.childNodes ).each( traverseTextNodes );
 				return;
-			var text = this.nodeValue;
-			if ( $(this).is( 'div' ) ) {
-				text = $(this).html();
-				// Edge case: there are more equals signs,
-				// but they're not all in the <div>. Eat them.
-				var prev = this.previousSibling;
-				if ( prev && prev.nodeName == '#text' ) {
-					var prevText = prev.nodeValue;
-					while ( prevText.substr( -1 ) == '=' ) {
-						prevText = prevText.substr( 0, prevText.length - 1 );
-						text = '=' + text;
-					}
-					prev.nodeValue = prevText;
-				}
-				var next = this.nextSibling;
-				if ( next && next.nodeName == '#text' ) {
-					var nextText = next.nodeValue;
-					while ( nextText.substr( 0, 1 ) == '=' ) {
-						nextText = nextText.substr( 1 );
-						text = text + '=';
-					}
-					next.nodeValue = nextText;
-				}
-				if ( text != $(this).html() )
-					$(this).html( text );
 			}
+			var text = this.nodeValue;
+			
+			// Get the previous and next node in Euler tour order
+			var p = this;
+			while( !p.previousSibling )
+				p = p.parentNode;
+			var prev = p.previousSibling;
+			
+			p = this;
+			while ( p && !p.nextSibling )
+				p = p.parentNode;
+			var next = p.nextSibling;
+			
+			// Edge case: there are more equals signs,
+			// but they're not all in the <div>. Eat them.
+			if ( prev && prev.nodeName == '#text' ) {
+				var prevText = prev.nodeValue;
+				while ( prevText.substr( -1 ) == '=' ) {
+					prevText = prevText.substr( 0, prevText.length - 1 );
+					text = '=' + text;
+				}
+				prev.nodeValue = prevText;
+			}
+			var next = this.nextSibling;
+			if ( next && next.nodeName == '#text' ) {
+				var nextText = next.nodeValue;
+				while ( nextText.substr( 0, 1 ) == '=' ) {
+					nextText = nextText.substr( 1 );
+					text = text + '=';
+				}
+				next.nodeValue = nextText;
+			}
+			if ( text != this.nodeValue )
+				this.nodeValue = text;
 			
 			var match = text.match( /^(={1,6})(.+?)\1\s*$/ );
 			if ( !match ) {
-				if ( $(this).is( '.wikiEditor-toc-header' ) )
+				if ( $(this).parent().is( '.wikiEditor-toc-header' ) )
 					// Header has become invalid
 					// Remove the class but keep the <div> intact
 					// to prevent issues with Firefox
 					// TODO: Fix this issue
-					//$(this).removeClass( 'wikiEditor-toc-header' );
-					$(this).replaceWith( $(this).html() );
+					//$(this).parent()
+					//	.removeClass( 'wikiEditor-toc-header' );
+					$(this).parent().replaceWith( text );
 				return;
 			}
+			
 			// Wrap the header in a <div>, unless it's already wrapped
 			var div;
-			if ( $(this).is( '.wikiEditor-toc-header' ) )
-				div = $(this);
-			else if ( $(this).is( 'div' ) )
-				div = $(this).addClass( 'wikiEditor-toc-header' );
+			if ( $(this).parent().is( '.wikiEditor-toc-header' ) )
+				div = $(this).parent();
+			else if ( $(this).parent().is( 'div' ) )
+				div = $(this).parent().addClass( 'wikiEditor-toc-header' );
 			else {
-				div = $j( '<div />' )
+				div = $( '<div />' )
 					.text( text )
 					.css( 'display', 'inline' )
 					.addClass( 'wikiEditor-toc-header' );
@@ -368,7 +382,9 @@ fn: {
 			}
 			outline[h] = { 'text': match[2], 'wrapper': div, 'level': match[1].length, 'index': h + 1 };
 			h++;
-		});
+		}
+		context.$content.each( traverseTextNodes );
+				
 		// Normalize heading levels for list creation
 		// This is based on Linker::generateTOC(), so it should behave like the
 		// TOC on rendered articles does - which is considdered to be correct
