@@ -322,6 +322,13 @@ $messages['sv'] = array(
 	'wikieditor-desc' => 'Tillhandahåller ett utökat gränssnitt för redigering av wikitext och många moduler som tillhandahåller funktioner',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'wikieditor-wikitext-tab' => 'వికీపాఠ్యం',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Vito Genovese

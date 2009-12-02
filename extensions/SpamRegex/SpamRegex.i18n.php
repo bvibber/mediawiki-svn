@@ -278,6 +278,8 @@ $messages['bs'] = array(
 	'spamregex-error-1' => 'Nevaljan regularni izraz.',
 	'spamregex-already-blocked' => '"$1" je već blokiran',
 	'spamregex-phrase-block' => 'Fraza za blokadu:',
+	'spamregex-phrase-block-text' => 'blokirana fraza u tekstu stranice',
+	'spamregex-phrase-block-summary' => 'blokirana fraza u sažetku',
 	'spamregex-text' => '(Tekst)',
 	'spamregex-summary-log' => '(Sažetak)',
 );

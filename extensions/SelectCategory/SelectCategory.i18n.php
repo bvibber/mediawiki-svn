@@ -121,6 +121,15 @@ $messages['ca'] = array(
 	'selectcategory-title' => 'Seleccinoa les categories',
 );
 
+/** Czech (Česky)
+ * @author Kuvaly
+ */
+$messages['cs'] = array(
+	'selectcategory-title' => 'Vyberte kategorie',
+	'selectcategory-desc' => 'Umožňuje uživatelovi vybírat z již existujících kategorií při úpravě stránky',
+	'selectcategory-subtitle' => 'Shift+kliknutí označí souvislou skupinu položek, ctrl+kliknutí označí jednotlivé nesouvislé položky.',
+);
+
 /** German (Deutsch)
  * @author Leithian
  * @author Manuel Schneider <manuel.schneider@wikimedia.ch>

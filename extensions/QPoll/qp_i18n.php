@@ -512,6 +512,8 @@ $messages['gl'] = array(
 	'qp_results_line_qpl' => 'Páxina "$1", enquisa "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Páxina "$2", enquisa "$3" ]',
 	'qp_export_to_xls' => 'Exportar as estatísticas en formato XLS',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|usuario respondeu|usuarios responderon}} ás preguntas',
+	'qp_func_no_such_poll' => 'Non existe tal enquisa ($1)',
 );
 
 /** Swiss German (Alemannisch)

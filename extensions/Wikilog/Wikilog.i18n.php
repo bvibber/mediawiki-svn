@@ -3489,6 +3489,7 @@ $messages['te'] = array(
 	'wikilog-summary-more' => '[[$3|→ చదవడం కొనసాగించండి...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|చర్చ]])',
 	'wikilog-edit-fieldset-legend' => 'వికీచిట్టా ఎంపికలు:',
+	'wikilog-comment-edit' => 'ఈ వ్యాఖ్యని మార్చండి',
 	'wikilog-comment-delete' => 'ఈ వ్యాఖ్యని తొలగించు',
 	'wikilog-title-comments' => 'వ్యాఖ్యలు - $1',
 	'wikilog-error-msg' => 'వికీచిట్టా: $1',

@@ -266,6 +266,7 @@ $messages['ckb-arab'] = array(
 );
 
 /** Czech (Česky)
+ * @author Kuvaly
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
@@ -868,6 +869,13 @@ $messages['lb'] = array(
 Setzt der mat den Toolen am Menü derbäi.',
 	'gep-nocategories' => 'Wielt w.e.g. mindestens eng Kategorie aus ier Dir ofspäichert',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
+$messages['lmo'] = array(
+	'gep-addsection' => 'Gionta una sezión',
 );
 
 /** Macedonian (Македонски)

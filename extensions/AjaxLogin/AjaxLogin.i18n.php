@@ -135,6 +135,21 @@ This will take you away from this edit page and you may lose your current edit.'
 تکایه‌ سپێڵی نوسینه‌که‌ بپشکنه‌.',
 );
 
+/** Czech (Česky)
+ * @author Kuvaly
+ */
+$messages['cs'] = array(
+	'ajaxlogin-desc' => 'Dynamické pole, umožňující uživatelům přihlásit se a připomenout heslo',
+	'ajaxLogin1' => 'Pro dokončení přihlášení musíte zadat nové heslo.
+Tím přejdete pryč z upravované stránky a můžete ztratit své úpravy.',
+	'ajaxLogin2' => 'Jste si jistí?
+Pokud opustíte tuto stránku, můžete ztratit své neuložené úpravy.',
+	'ajaxlogin-create' => 'Vytvořit účet',
+	'al-nosuchuser' => 'Uživatel se jménem „$1“ neexistuje.
+V uživatelských jménech se dbá na velikost písmen!
+Zkontrolujte zda jste jméno napsali správně!',
+);
+
 /** Danish (Dansk)
  * @author Lhademmor
  */

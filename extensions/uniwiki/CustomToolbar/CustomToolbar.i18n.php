@@ -468,6 +468,7 @@ $wgCustomToolbarMessages['ckb-arab'] = array(
 );
 
 /** Czech (Česky)
+ * @author Kuvaly
  * @author Matěj Grabovský
  */
 $wgCustomToolbarMessages['cs'] = array(
@@ -502,9 +503,9 @@ $wgCustomToolbarMessages['cs'] = array(
 	'ct_horizontal_tip' => 'Vložit vodorovnou čáru (používejte střídmě)',
 	'ct_horizontal_caption' => 'Vodorovná čára',
 	'ct_upload' => 'Nahrát $1',
-	'ct_select' => 'Vyberte $1, který se má nahrát',
-	'ct_caption' => 'Přidat nadpis (nepovinné)',
-	'ct_link' => 'Přidat název odkazu (nepovinné)',
+	'ct_select' => 'Vyberte $1, který se má nahrát:',
+	'ct_caption' => 'Přidejte nadpis (nepovinné):',
+	'ct_link' => 'Přidejte název odkazu (nepovinné):',
 	'ct_submit' => 'Vykonat',
 	'ct_close' => 'Zavřít okno',
 	'ct_success' => 'Nahrání souboru proběhlo úspěšně',

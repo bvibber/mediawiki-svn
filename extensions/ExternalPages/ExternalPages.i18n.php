@@ -327,6 +327,23 @@ $messages['mk'] = array(
 	'externalpages-bad-url-data' => 'Не можев да ја добијам содржината на страницата',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'externalpages' => 'പുറത്തുനിന്നുള്ള താളുകൾ',
+	'externalpages-desc' => 'വിദൂര ഡബ്ല്യൂ.എം.എഫ്. സൈറ്റുകളിൽ നിന്നുമുള്ള താളുകൾ ശേഖരിക്കുകയും പ്രദർശിപ്പിക്കുകയും ചെയ്യുന്നു',
+	'externalpages-bad-year' => 'നൽകിയ വർഷം തെറ്റാണ്',
+	'externalpages-bad-language' => 'നൽകിയ ഭാഷ തെറ്റാണ്',
+	'externalpages-bad-project' => 'വ്യക്തമാക്കിയ പദ്ധതി തെറ്റാണ്',
+	'externalpages-no-project' => 'പദ്ധതികളൊന്നും വ്യക്തമാക്കിയിട്ടില്ല',
+	'externalpages-bad-page' => 'നൽകിയ താൾ തെറ്റാണ്',
+	'externalpages-no-page' => 'താളുകളൊന്നും വ്യക്തമാക്കിയിട്ടില്ല',
+	'externalpages-error-generic' => 'പിശക് നേരിട്ടു',
+	'externalpages-bad-url' => 'യൂ.ആർ.എൽ. ശേഖരിക്കുന്നതിൽ പരാജയപ്പെട്ടു',
+	'externalpages-bad-url-data' => 'താളിന്റെ ഉള്ളടക്കം ശേഖരിക്കുന്നതിൽ പരാജയപ്പെട്ടു',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

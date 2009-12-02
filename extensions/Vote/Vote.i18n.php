@@ -307,6 +307,7 @@ $messages['ckb-arab'] = array(
 );
 
 /** Czech (Česky)
+ * @author Kuvaly
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
@@ -328,6 +329,8 @@ riddler|Riddler',
 	'vote-results-none' => 'Momentálně nejsou zaznamenány žádné hlasy.',
 	'vote-login' => 'Abyste mohli hlasovat, musíte [$1 se přihlásit].',
 	'vote-invalid-choice' => 'Musíte vybrat jednu z dostupných možností',
+	'right-vote' => 'Hlasovat',
+	'right-voteadmin' => 'Zobrazit výsledky hlasování',
 );
 
 /** Welsh (Cymraeg)

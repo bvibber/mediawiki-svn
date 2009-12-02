@@ -1355,6 +1355,7 @@ $messages['ch'] = array(
 
 /** Czech (Česky)
  * @author Danny B.
+ * @author Kuvaly
  * @author Matěj Grabovský
  * @author Mormegil
  */
@@ -1416,6 +1417,7 @@ Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfigura
 	'configure-section-robots' => 'Webové crawlery',
 	'configure-section-features' => 'Vlastnosti',
 	'configure-section-general' => 'Všeobecná nastavení',
+	'configure-section-pages' => 'Stránky',
 	'configure-section-paths' => 'Cesty',
 	'configure-section-db' => 'Databáze',
 	'configure-section-load-balancing' => 'Vyvážení záteže',

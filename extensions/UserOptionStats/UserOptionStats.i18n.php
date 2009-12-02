@@ -590,6 +590,10 @@ $messages['si'] = array(
 	'useroptionstats' => 'පරිශීලක විකල්ප සංඛ්‍යා දත්ත',
 	'useroptionstats-desc' => '[[Special:UserOptionStats|විශේෂ පිටුව]] මීඩියාවිකි පරිශීලක විකල්ප භාවිතය වාර්තා කිරීම සඳහා',
 	'uos-warn' => 'PHPlot ස්ථාපනය නොකරන ලදී!',
+	'uos-choose' => 'පහත පරිශීලක විකල්පයන් අතරින් එකක් තෝරාගන්න: $1',
+	'uos-unknown' => '*පෙරනිමිය',
+	'uos-other' => '*වෙනත්',
+	'uos-title' => '$1 පරිශිලක විකල්පයේ අගයන් ව්‍යාප්තිය',
 );
 
 /** Slovak (Slovenčina)

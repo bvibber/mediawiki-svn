@@ -45,6 +45,7 @@ $messages['af'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'sendmailtowiki-desc' => 'Разьмяшчае зьмест ў {{GRAMMAR:месны|{{SITENAME}}}} праз выдзелены дынамічны адрас электроннай пошты',
@@ -55,6 +56,9 @@ $messages['be-tarask'] = array(
 	'sendmailtowiki-err-pinlength' => 'Пэрсанальны ідэнтыфікацыйны нумар павінен утрымліваць 5 лічбаў.',
 	'sendmailtowiki-err-wrongprefix' => 'Няслушны прэфікс рахунку ў {{GRAMMAR:месны|{{SITENAME}}}}. Зьвяжыцеся з Вашым адміністратарам.',
 	'sendmailtowiki-err-invalidaccount' => 'Няслушны рахунак. Праверце адрас электроннай пошты, на які адбываецца дасылка.',
+	'sendmailtowiki-err-invalidsender' => 'Няслушны адпраўшчык. Праверце адрас электроннай пошты, з якога Вы дасылаеце.',
+	'sendmailtowiki-err-invalidpin' => 'Няслушны пэрсанальны ідэнтыфікацыйны нумар. У доступе адмоўлена.',
+	'sendmailtowiki-err-onlyplain' => 'Каб пазьбегнуць супярэчнасьцяў, прымаюцца выключна тэкставыя паведамленьні.',
 );
 
 /** Breton (Brezhoneg)

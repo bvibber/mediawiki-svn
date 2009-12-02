@@ -652,6 +652,7 @@ $messages['bs'] = array(
 	'sign-viewfield-realname' => 'Ime',
 	'sign-viewfield-address' => 'Adresa',
 	'sign-viewfield-city' => 'Grad',
+	'sign-viewfield-state' => 'Pokrajina',
 	'sign-viewfield-country' => 'Država',
 	'sign-viewfield-zip' => 'Poštanski broj',
 	'sign-viewfield-ip' => 'IP adresa',
