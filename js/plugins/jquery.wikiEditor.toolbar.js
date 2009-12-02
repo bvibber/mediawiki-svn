@@ -274,10 +274,7 @@ fn : {
 		var label = $.wikiEditor.autoMsg( tool, 'label' );
 		switch ( tool.type ) {
 			case 'button':
-				var src = tool.icon + '?' + wgWikiEditorIconVersion;
-				if ( src.indexOf( 'http://' ) !== 0 && src.indexOf( 'https://' ) !== 0 ) {
-					src = $.wikiEditor.imgPath + 'toolbar/' + src;
-				}
+				var src = $.wikiEditor.getIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
 				$button = $( '<img />' ).attr( {
 					'src' : src,
 					'width' : 22,

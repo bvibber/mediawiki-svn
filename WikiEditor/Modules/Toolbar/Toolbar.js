@@ -26,7 +26,17 @@ js2AddOnloadHook( function() {
 					'bold': {
 						labelMsg: 'wikieditor-toolbar-tool-bold',
 						type: 'button',
-						icon: 'format-bold.png',
+						icon: {
+							'default': 'format-bold.png'/*,
+							'en': 'format-bold-B.png',
+							'de': 'format-bold-F.png',
+							'fr': 'format-bold-G.png',
+							'es': 'format-bold-G.png',
+							'nl': 'format-bold-V.png',
+							'pt': 'format-bold-N.png',
+							'pt-br': 'format-bold-N.png',
+							'pl': 'format-bold-P.png'*/
+						},
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -42,7 +52,17 @@ js2AddOnloadHook( function() {
 						id: 'italic',
 						labelMsg: 'wikieditor-toolbar-tool-italic',
 						type: 'button',
-						icon: 'format-italic.png',
+						icon: {
+							'default': 'format-italic.png'/*,
+							'en': 'format-italic-I.png',
+							'de': 'format-italic-K.png',
+							'fr': 'format-italic-I.png',
+							'es': 'format-italic-C.png',
+							'nl': 'format-italic-C.png',
+							'pt': 'format-italic-I.png',
+							'pt-br': 'format-italic-I.png',
+							'pl': 'format-italic-K.png'*/
+						},
 						action: {
 							type: 'encapsulate',
 							options: {
