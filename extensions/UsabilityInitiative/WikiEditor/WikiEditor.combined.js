@@ -932,6 +932,7 @@ js2AddOnloadHook( function() {
 				function updateWidget( status ) {
 					$j( '#wikieditor-toolbar-link-int-target-status' ).children().hide();
 					$j( '#wikieditor-toolbar-link-int-target-status-' + status ).show();
+					$j( '#wikieditor-toolbar-link-int-target' ).parent().removeClass().addClass( 'status-' + status );
 				}
 				// Abort previous request
 				var request = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'request' );
