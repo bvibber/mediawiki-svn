@@ -55,6 +55,7 @@ It may:
 	'lqt_hist_tooltip_older_disabled' => 'This link is disabled because you are on the last page.',
 	'lqt_hist_split' => 'Reply split to a new thread',
 	'lqt_hist_edited_subject' => 'Edited subject',
+	'lqt_hist_edited_subject_corrupt' => 'Changed subject',
 	'lqt_hist_merged_from' => 'Reply moved to another thread',
 	'lqt_hist_merged_to' => 'Reply moved from another thread',
 	'lqt_hist_split_from' => 'Split to a new thread',
@@ -183,6 +184,7 @@ To avoid this, split them from this thread before deleting it.',
 	'lqt-menu-trigger' => 'More',
 	'lqt-newmessages-from' => 'From $1',
 	'lqt-hot-topics' => 'Hot topics',
+	'lqt-add-reply' => 'Add a reply',
 
 	// Rights
 	'right-lqt-split' => 'Split threads',
@@ -278,6 +280,8 @@ The signature is shown automatically.',
 	
 	'lqt-edit-bump' => 'Bump this thread',
 	'lqt-edit-bump-tooltip' => 'Move this thread to the top of its discussion page',
+	
+	'lqt-historicalrevision-error' => 'The revision you have selected is corrupt, and cannot be viewed.',
 
 );
 
