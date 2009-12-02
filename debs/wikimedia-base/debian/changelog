@@ -15,7 +15,7 @@ wikimedia-base (0.22) hardy; urgency=low
 
   * Remove outdated dependency on ntp-server; no longer available in karmic
 
- -- root <root@wikimedia.org>  Thu, 05 Nov 2009 17:38:23 +0000
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 05 Nov 2009 17:38:23 +0000
 
 wikimedia-base (0.21) hardy; urgency=low
 
