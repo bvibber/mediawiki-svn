@@ -13,3 +13,8 @@
 div.suggestions {
 	z-index: 1099;
 }
+
+#wikieditor-toolbar-link-dialog .status-invalid input {
+	border: 2px solid red;
+	padding: 2px 1px;
+}
