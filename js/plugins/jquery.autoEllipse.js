@@ -1,5 +1,5 @@
 /**
- * Plugin that automatically truncates the plain text contents of an element and adds an ellipsis 
+ * Plugin that automatically truncates the plain text contents of an element and adds an ellipsis
  */
 ( function( $ ) {
 

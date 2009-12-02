@@ -36,7 +36,7 @@ getSelection: function() {
 /**
  * Ported from skins/common/edit.js by Trevor Parscal
  * (c) 2009 Wikimedia Foundation (GPLv2) - http://www.wikimedia.org
- * 
+ *
  * Inserts text at the begining and end of a text selection, optionally
  * inserting text at the caret when selection is empty.
  */
@@ -44,7 +44,7 @@ encapsulateSelection: function( options ) {
 	return this.each( function() {
 		/**
 		 * Check if the selected text is the same as the insert text
-		 */ 
+		 */
 		function checkSelectedText() {
 			if ( !selText ) {
 				selText = options.peri;
@@ -130,7 +130,7 @@ encapsulateSelection: function( options ) {
  * http://www.dedestruct.com/2008/03/22/howto-cross-browser-cursor-position-in-textareas/
  *
  * Get the position (in resolution of bytes not nessecarily characters)
- * in a textarea 
+ * in a textarea
  */
  getCaretPosition: function( options ) {
 	function getCaret( e ) {
@@ -242,7 +242,7 @@ setSelection: function( options ) {
 /**
  * Ported from Wikia's LinkSuggest extension
  * https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest
- * 
+ *
  * Scroll a textarea to the current cursor position. You can set the cursor
  * position with setSelection()
  * @param force boolean Whether to force a scroll even if the caret position

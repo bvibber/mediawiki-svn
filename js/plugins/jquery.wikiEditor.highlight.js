@@ -15,7 +15,7 @@ evt: {
 		/*
 		 * Triggered on any of the following events, with the intent on detecting if something was added, deleted or
 		 * replaced due to user action.
-		 * 
+		 *
 		 * The following conditions are indicative that one or more divisions need to be re-scanned/marked:
 		 * 		Keypress while something is highlighted
 		 * 		Cut

@@ -167,7 +167,7 @@ api : {
 fn : {
 	/**
 	 * Creates a toolbar module within a wikiEditor
-	 * 
+	 *
 	 * @param {Object} context Context object of editor to create module in
 	 * @param {Object} config Configuration object to create module from
 	 */
@@ -183,7 +183,7 @@ fn : {
 	},
 	/**
 	 * Performs an operation based on parameters
-	 * 
+	 *
 	 * @param {Object} context
 	 * @param {Object} action
 	 * @param {Object} source
@@ -482,14 +482,14 @@ fn : {
 							if ( context.modules.$toc ) {
 								context.modules.$toc.animate({'height': "+="+dH}, $section.outerHeight() * 2);
 							}
-							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() { 
-								$(this).css('overflow', 'visible').css('height', 'auto'); 
+							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
+								$(this).css('overflow', 'visible').css('height', 'auto');
 							} );
 							$(this).addClass( 'current' );
 						} else {
 							$sections.css('height', $section.outerHeight() )
-								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() { 
-									$(this).css('overflow', 'visible'); 
+								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() {
+									$(this).css('overflow', 'visible');
 								} );
 							if ( context.modules.$toc ) {
 								context.modules.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);

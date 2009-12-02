@@ -23,7 +23,7 @@ $.whileAsync = function(opts)
 	
 	(function(){
 
-		var t = false, 
+		var t = false,
 			begin = new Date();
 			
 		while( t = test() )
@@ -34,7 +34,7 @@ $.whileAsync = function(opts)
 				break;
 			}
 		}
-		if( t ) 
+		if( t )
 		{
 			setTimeout(arguments.callee, delay);
 		}
@@ -52,15 +52,15 @@ $.whileAsync = function(opts)
 // opts.end : (default empty) function to call at the end of the each loop
 $.eachAsync = function(array, opts)
 {
-	var i = 0, 
-		l = array.length, 
+	var i = 0,
+		l = array.length,
 		loop = opts.loop || function(){};
 	
 	$.whileAsync(
 		$.extend(opts, {
 			test: function(){ return i < l; },
 			loop: function()
-			{ 
+			{
 				var val = array[i];
 				return loop.call(val, i++, val);
 			}

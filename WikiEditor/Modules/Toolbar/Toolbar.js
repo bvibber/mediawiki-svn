@@ -30,7 +30,7 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "'''", 
+								pre: "'''",
 								periMsg: 'wikieditor-toolbar-tool-bold-example',
 								post: "'''"
 							}
@@ -46,7 +46,7 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "''", 
+								pre: "''",
 								periMsg: 'wikieditor-toolbar-tool-italic-example',
 								post: "''"
 							}
@@ -101,7 +101,7 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "[[", 
+								pre: "[[",
 								preMsg: 'wikieditor-toolbar-tool-file-pre',
 								periMsg: 'wikieditor-toolbar-tool-file-example',
 								post: "]]"
@@ -116,7 +116,7 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "<ref>", 
+								pre: "<ref>",
 								periMsg: 'wikieditor-toolbar-tool-reference-example',
 								post: "</ref>"
 							}
@@ -215,9 +215,9 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "* ", 
+								pre: "* ",
 								periMsg: 'wikieditor-toolbar-tool-ulist-example',
-								post: "", 
+								post: "",
 								ownline: true
 							}
 						}
@@ -229,9 +229,9 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "# ", 
+								pre: "# ",
 								periMsg: 'wikieditor-toolbar-tool-olist-example',
-								post: "", 
+								post: "",
 								ownline: true
 							}
 						}
@@ -262,7 +262,7 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "<big>", 
+								pre: "<big>",
 								periMsg: 'wikieditor-toolbar-tool-big-example',
 								post: "</big>"
 							}
@@ -275,7 +275,7 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "<small>", 
+								pre: "<small>",
 								periMsg: 'wikieditor-toolbar-tool-small-example',
 								post: "</small>"
 							}
@@ -293,7 +293,7 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "<sup>", 
+								pre: "<sup>",
 								periMsg: 'wikieditor-toolbar-tool-superscript-example',
 								post: "</sup>"
 							}
@@ -306,7 +306,7 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "<sub>", 
+								pre: "<sub>",
 								periMsg: 'wikieditor-toolbar-tool-subscript-example',
 								post: "</sub>"
 							}
@@ -324,9 +324,9 @@ js2AddOnloadHook( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "<gallery>\n", 
+								pre: "<gallery>\n",
 								periMsg: 'wikieditor-toolbar-tool-gallery-example',
-								post: "\n</gallery>", 
+								post: "\n</gallery>",
 								ownline: true
 							}
 						}
@@ -488,7 +488,7 @@ js2AddOnloadHook( function() {
 					"#", "\u00bd", "\u2153", "\u2154", "\u00bc", "\u00be", "\u215b", "\u215c", "\u215d", "\u215e",
 					"\u221e", "\u2018", "\u201c", "\u2019", "\u201d",
 					{
-						'label': "\u00ab\u00bb", 
+						'label': "\u00ab\u00bb",
 						'action': {
 							'type': 'encapsulate', 'options': { 'pre': "\u00ab", 'post': "\u00bb" }
 						}
@@ -497,7 +497,7 @@ js2AddOnloadHook( function() {
 					"\u20ac", "\u20a0", "\u20a3", "\u0192", "\u20b4", "\u20ad", "\u20a4", "\u2133", "\u20a5", "\u20a6",
 					"\u2116", "\u20a7", "\u20b0", "\u00a3", "\u17db", "\u20a8", "\u20aa", "\u09f3", "\u20ae", "\u20a9",
 					"\u00a5", "\u2660", "\u2663", "\u2665", "\u2666", "m\u00b2", "m\u00b3", "\u2013", "\u2014",
-					"\u2026", "\u2018", "\u201c", "\u2019", "\u201d", "\u00b0", "\u2033", "\u2032", "\u2248", "\u2260", 
+					"\u2026", "\u2018", "\u201c", "\u2019", "\u201d", "\u00b0", "\u2033", "\u2032", "\u2248", "\u2260",
 					"\u2264", "\u2265", "\u00b1", "\u2212", "\u00d7", "\u00f7", "\u2190", "\u2192", "\u00b7", "\u00a7"
 				]
 			},
@@ -506,10 +506,10 @@ js2AddOnloadHook( function() {
 				'layout': 'characters',
 				'language': 'hl',
 				'characters': [
-					"\u0391", "\u0386", "\u03b1", "\u03ac", "\u0392", "\u03b2", "\u0393", "\u03b3", "\u0394", "\u03b4", 
-					"\u0395", "\u0388", "\u03b5", "\u03ad", "\u0396", "\u03b6", "\u0397", "\u0389", "\u03b7", "\u03ae", 
-					"\u0398", "\u03b8", "\u0399", "\u038a", "\u03b9", "\u03af", "\u039a", "\u03ba", "\u039b", "\u03bb", 
-					"\u039c", "\u03bc", "\u039d", "\u03bd", "\u039e", "\u03be", "\u039f", "\u038c", "\u03bf", "\u03cc", 
+					"\u0391", "\u0386", "\u03b1", "\u03ac", "\u0392", "\u03b2", "\u0393", "\u03b3", "\u0394", "\u03b4",
+					"\u0395", "\u0388", "\u03b5", "\u03ad", "\u0396", "\u03b6", "\u0397", "\u0389", "\u03b7", "\u03ae",
+					"\u0398", "\u03b8", "\u0399", "\u038a", "\u03b9", "\u03af", "\u039a", "\u03ba", "\u039b", "\u03bb",
+					"\u039c", "\u03bc", "\u039d", "\u03bd", "\u039e", "\u03be", "\u039f", "\u038c", "\u03bf", "\u03cc",
 					"\u03a0", "\u03c0", "\u03a1", "\u03c1", "\u03a3", "\u03c3", "\u03c2", "\u03a4", "\u03c4", "\u03a5",
 					"\u038e", "\u03c5", "\u03cd", "\u03a6", "\u03c6", "\u03a7", "\u03c7", "\u03a8", "\u03c8", "\u03a9",
 					"\u038f", "\u03c9", "\u03ce"

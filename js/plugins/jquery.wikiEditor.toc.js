@@ -22,7 +22,7 @@ minimumWidth: '70px',
 fn: {
 	/**
 	 * Creates a table of contents module within a wikiEditor
-	 * 
+	 *
 	 * @param {Object} context Context object of editor to create module in
 	 * @param {Object} config Configuration object to create module from
 	 */
@@ -73,7 +73,7 @@ fn: {
 	},
 	/**
 	 * Highlight the section the cursor is currently within
-	 * 
+	 *
 	 * @param {Object} context
 	 */
 	update: function( context ) {
@@ -112,7 +112,7 @@ fn: {
 	
 	/**
 	 * Collapse the contents module
-	 * 
+	 *
 	 * @param {Object} event Event object with context as data
 	 */
 	collapse: function( event ) {
@@ -121,7 +121,7 @@ fn: {
 		$this.parent()
 			.css( 'position', 'absolute' )
 			.css( { 'left': 'auto', 'right': 0, 'top': pT } )
-			.fadeOut( 'fast', function() { 
+			.fadeOut( 'fast', function() {
 				$( this ).hide()
 				.css( 'width', '1px' );
 				context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).fadeIn( 'fast' );
@@ -136,17 +136,17 @@ fn: {
 	
 	/**
 	 * Expand the contents module
-	 * 
+	 *
 	 * @param {Object} event Event object with context as data
 	 */
 	expand: function( event) {
-		var $this = $( this ), 
-			context = $this.data( 'context' ), 
+		var $this = $( this ),
+			context = $this.data( 'context' ),
 			openWidth = context.modules.$toc.data( 'openWidth' );
 		context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).hide();
 		$this.parent()
 			.show()
-			.animate( { 'width' : openWidth }, 'fast', function() { 
+			.animate( { 'width' : openWidth }, 'fast', function() {
 				context.$content.trigger( 'mouseup' );
 				$( this ).css( { 'position': 'relative', 'right': 'auto', 'top': 'auto' } );
 			 } )
@@ -154,19 +154,19 @@ fn: {
 			.animate( { 'marginRight': ( parseFloat( openWidth ) * -1 ) }, 'fast' )
 			.children()
 			.animate( { 'marginRight': openWidth }, 'fast' );
-		$.cookie( 'wikiEditor-' + context.instance + '-toc-width', 
+		$.cookie( 'wikiEditor-' + context.instance + '-toc-width',
 			context.modules.$toc.data( 'openWidth' ) );
 		return false;
 	},
 	/**
 	 * Builds table of contents
-	 * 
+	 *
 	 * @param {Object} context
 	 */
 	build: function( context ) {
 		/**
 		 * Builds a structured outline from flat outline
-		 * 
+		 *
 		 * @param {Object} outline Array of objects with level fields
 		 */
 		function buildStructure( outline, offset, level ) {
@@ -188,7 +188,7 @@ fn: {
 		}
 		/**
 		 * Bulds unordered list HTML object from structured outline
-		 * 
+		 *
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
@@ -216,7 +216,7 @@ fn: {
 		}
 		/**
 		 * Builds controls for collapsing and expanding the TOC
-		 * 
+		 *
 		 */
 		function buildCollapseControls( ) {
 			var $collapseControl = $( '<div />' ), $expandControl = $( '<div />' );
@@ -224,16 +224,16 @@ fn: {
 				.addClass( 'tab' )
 				.addClass( 'tab-toc' )
 				.append( '<a href="#" />' )
-				.bind( 'click.wikiEditor-toc', function() { 
-					context.modules.$toc.trigger( 'collapse.wikiEditor-toc' ); return false; 
+				.bind( 'click.wikiEditor-toc', function() {
+					context.modules.$toc.trigger( 'collapse.wikiEditor-toc' ); return false;
 				} )
 				.find( 'a' )
 				.text( gM( 'wikieditor-toc-hide' ) );
 			$expandControl
 				.addClass( 'wikiEditor-ui-toc-expandControl' )
 				.append( '<a href="#" />' )
-				.bind( 'click.wikiEditor-toc', function() { 
-					context.modules.$toc.trigger( 'expand.wikiEditor-toc' ); return false; 
+				.bind( 'click.wikiEditor-toc', function() {
+					context.modules.$toc.trigger( 'expand.wikiEditor-toc' ); return false;
 				} )
 				.hide()
 				.find( 'a' )
@@ -242,9 +242,9 @@ fn: {
 			context.$ui.find( '.wikiEditor-ui-left .wikiEditor-ui-top' ).append( $expandControl );
 		}
 		/**
-		 * Initializes resizing controls on the TOC and sets the width of 
+		 * Initializes resizing controls on the TOC and sets the width of
 		 * the TOC based on it's previous state
-		 * 
+		 *
 		 */
 		function buildResizeControls( ) {
 			context.$ui
@@ -262,7 +262,7 @@ fn: {
 						$this.resizable( 'option', 'maxWidth', $this.parent().width() - 450 );
 					},
 					resize: function( e, ui ) {
-						// for some odd reason, ui.size.width seems a step ahead of what the *actual* width of 
+						// for some odd reason, ui.size.width seems a step ahead of what the *actual* width of
 						// the resizable is
 						$( this ).css( { 'width': ui.size.width, 'top': 'auto', 'height': 'auto' } )
 							.data( 'wikiEditor-ui-left' ).css( 'marginRight', ( -1 * ui.size.width ) )
@@ -272,7 +272,7 @@ fn: {
 						context.$ui.find( '.wikiEditor-ui-resize-mask' ).remove();
 						context.$content.trigger( 'mouseup' );
 						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.minimumWidth ) ) {
-							context.modules.$toc.trigger( 'collapse' ); 
+							context.modules.$toc.trigger( 'collapse' );
 						} else {
 							context.modules.$toc.data( 'openWidth', ui.size.width );
 							$.cookie( 'wikiEditor-' + context.instance + '-toc-width', ui.size.width );
