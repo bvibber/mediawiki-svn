@@ -1411,6 +1411,20 @@ $.wikiEditor = {
 			return '';
 		}
 	},
+	// Get an icon in a certain language
+	// @param icon Icon object from e.g. toolbar config
+	// @param path Default icon path, defaults to $.wikiEditor.imgPath
+	// @param lang Language code, defaults to wgUserLanguage
+	'getIcon': function( icon, path, lang ) {
+		lang = lang || wgUserLanguage;
+		path = path || $.wikiEditor.imgPath;
+		var src = icon[lang] || icon.default || icon;
+		// Prepend path if src is not absolute
+		if ( src.substr( 0, 7 ) != 'http://' && src.substr( 0, 8 ) != 'https://' &&
+				src[0] != '/' )
+			src = path + src;
+		return src + '?' + wgWikiEditorIconVersion;
+	},
 	'fixOperaBrokenness': function( s ) {
 		/*
 		// This function works around Opera's
@@ -2992,10 +3006,7 @@ fn : {
 		var label = $.wikiEditor.autoMsg( tool, 'label' );
 		switch ( tool.type ) {
 			case 'button':
-				var src = tool.icon + '?' + wgWikiEditorIconVersion;
-				if ( src.indexOf( 'http://' ) !== 0 && src.indexOf( 'https://' ) !== 0 ) {
-					src = $.wikiEditor.imgPath + 'toolbar/' + src;
-				}
+				var src = $.wikiEditor.getIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
 				$button = $( '<img />' ).attr( {
 					'src' : src,
 					'width' : 22,
