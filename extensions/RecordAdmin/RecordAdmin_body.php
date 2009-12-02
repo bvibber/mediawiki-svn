@@ -47,17 +47,16 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Add some hooks if the current title is a record
 		if ( is_object( $title ) ) {
-			$types = array();
-			$id    = $title->getArticleID();
-			$dbr   = &wfGetDB( DB_SLAVE );
-			$cat   = $dbr->addQuotes( $wgRecordAdminCategory );
-			$cl    = $dbr->tableName( 'categorylinks' );
-			$tl    = $dbr->tableName( 'templatelinks' );
-			$res   = $dbr->select( $cl, 'cl_from', "cl_to = $cat" );
-			while ( $row = $dbr->fetchRow( $res ) ) $types[] = 'tl_title = ' . $dbr->addQuotes( Title::newFromID( $row[0] )->getText() );
+			$uses = '';
+			$id   = $title->getArticleID();
+			$dbr  = &wfGetDB( DB_SLAVE );
+			$cat  = $dbr->addQuotes( $wgRecordAdminCategory );
+			$cl   = $dbr->tableName( 'categorylinks' );
+			$tl   = $dbr->tableName( 'templatelinks' );
+			$res  = $dbr->select( $cl, 'cl_from', "cl_to = $cat" );
+			while ( $row = $dbr->fetchRow( $res ) ) $uses .= " OR tl_title=" . $dbr->addQuotes( Title::newFromID( $row[0] )->getText() );
 			$dbr->freeResult( $res );
-			$uses = join( ' OR ', $types );
-			if ( $uses && $row = $dbr->selectRow( $tl, 'tl_title', "tl_from = $id AND ($uses)" ) ) {
+			if ( $uses && $row = $dbr->selectRow( $tl, 'tl_title', "tl_from = $id AND (0 $uses)" ) ) {
 				global $wgRecordAdminEditWithForm, $wgRecordAdminAddTitleInfo;
 				$this->type = $row->tl_title;
 
@@ -855,11 +854,13 @@ class SpecialRecordAdmin extends SpecialPage {
 			}
 		}
 		$this->filter = $filter;
+		$tmp = $this->type;
 		$this->preProcessForm( $type );
 		$this->examineForm();
 		$records = $this->getRecords( $type, $filter, $title, $invert, $orderby );
 		if ( $count ) while ( count( $records ) > $count ) array_pop( $records );
 		$table = $this->renderRecords( $records, $cols, $sortable, $template, $name, $export );
+		$this->type = $tmp;
 
 		return array( $table, 'noparse' => true, 'isHTML' => true );
 	}
