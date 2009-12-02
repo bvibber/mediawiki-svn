@@ -23,7 +23,7 @@ $.whileAsync = function(opts)
 	
 	(function(){
 
-		var t = false, 
+		var t = false,
 			begin = new Date();
 			
 		while( t = test() )
@@ -34,7 +34,7 @@ $.whileAsync = function(opts)
 				break;
 			}
 		}
-		if( t ) 
+		if( t )
 		{
 			setTimeout(arguments.callee, delay);
 		}
@@ -52,15 +52,15 @@ $.whileAsync = function(opts)
 // opts.end : (default empty) function to call at the end of the each loop
 $.eachAsync = function(array, opts)
 {
-	var i = 0, 
-		l = array.length, 
+	var i = 0,
+		l = array.length,
 		loop = opts.loop || function(){};
 	
 	$.whileAsync(
 		$.extend(opts, {
 			test: function(){ return i < l; },
 			loop: function()
-			{ 
+			{
 				var val = array[i];
 				return loop.call(val, i++, val);
 			}
@@ -77,7 +77,7 @@ $.fn.eachAsync = function(opts)
 })(jQuery);
 
 /**
- * Plugin that automatically truncates the plain text contents of an element and adds an ellipsis 
+ * Plugin that automatically truncates the plain text contents of an element and adds an ellipsis
  */
 ( function( $ ) {
 
@@ -226,14 +226,14 @@ jQuery Browser Plugin
 
 $.fn.collapsibleTabs = function( $$options ) {
 	// return if the function is called on an empty jquery object
-	if( !this.length ) return this; 
+	if( !this.length ) return this;
 	//merge options into the defaults
 	var $settings = $.extend( {}, $.collapsibleTabs.defaults, $$options );
 
 	this.each( function() {
 		var $this = $( this );
 		// add the element to our array of collapsible managers
-		$.collapsibleTabs.instances = ( $.collapsibleTabs.instances.length == 0 ? 
+		$.collapsibleTabs.instances = ( $.collapsibleTabs.instances.length == 0 ?
 			$this : $.collapsibleTabs.instances.add( $this ) );
 		// attach the settings to the elements
 		$this.data( 'collapsibleTabsSettings', $settings );
@@ -268,7 +268,7 @@ $.collapsibleTabs = {
 		collapsible: 'li.collapsible',
 		shifting: false,
 		expandCondition: function( eleWidth ) {
-			return ( $( '#left-navigation' ).position().left + $( '#left-navigation' ).width() ) 
+			return ( $( '#left-navigation' ).position().left + $( '#left-navigation' ).width() )
 				< ( $( '#right-navigation' ).position().left - eleWidth );
 		},
 		collapseCondition: function() {
@@ -281,7 +281,7 @@ $.collapsibleTabs = {
 			var $this = $( this ), data = $this.data( 'collapsibleTabsSettings' );
 			if( data.shifting ) return;
 
-			// if the two navigations are colliding 
+			// if the two navigations are colliding
 			if( $this.children( data.collapsible ).length > 0 && data.collapseCondition() ) {
 				
 				$this.trigger( "beforeTabCollapse" );
@@ -289,7 +289,7 @@ $.collapsibleTabs = {
 				$.collapsibleTabs.moveToCollapsed( $this.children( data.collapsible + ':last' ) );
 			}
 
-			// if there are still moveable items in the dropdown menu, 
+			// if there are still moveable items in the dropdown menu,
 			// and there is sufficient space to place them in the tab container
 			if( $( data.collapsedContainer + ' ' + data.collapsible ).length > 0
 					&& data.expandCondition( $( data.collapsedContainer ).children(
@@ -510,9 +510,9 @@ $.fn.namespaceSelector = function( defaultNS ) {
 
 /**
  * This plugin provides a generic way to add suggestions to a text box.
- * 
+ *
  * Usage:
- * 
+ *
  * Set options:
  *		$('#textbox').suggestions( { option1: value1, option2: value2 } );
  *		$('#textbox').suggestions( option, value );
@@ -520,9 +520,9 @@ $.fn.namespaceSelector = function( defaultNS ) {
  *		value = $('#textbox').suggestions( option );
  * Initialize:
  *		$('#textbox').suggestions();
- * 
+ *
  * Options:
- * 
+ *
  * fetch(query): Callback that should fetch suggestions and set the suggestions property. Executed in the context of the
  * 		textbox
  * 		Type: Function
@@ -547,7 +547,7 @@ $.fn.namespaceSelector = function( defaultNS ) {
 $.suggestions = {
 	/**
 	 * Cancel any delayed updateSuggestions() call and inform the user so
-	 * they can cancel their result fetching if they use AJAX or something 
+	 * they can cancel their result fetching if they use AJAX or something
 	 */
 	cancel: function( context ) {
 		if ( context.data.timerID != null ) {
@@ -913,7 +913,7 @@ $.fn.suggestions = function() {
 				} )
 				.blur( function() {
 					// When losing focus because of a mousedown
-					// on a suggestion, don't hide the suggestions 
+					// on a suggestion, don't hide the suggestions
 					if ( context.data.mouseDownOn.size() > 0 ) {
 						return;
 					}
@@ -966,7 +966,7 @@ getSelection: function() {
 /**
  * Ported from skins/common/edit.js by Trevor Parscal
  * (c) 2009 Wikimedia Foundation (GPLv2) - http://www.wikimedia.org
- * 
+ *
  * Inserts text at the begining and end of a text selection, optionally
  * inserting text at the caret when selection is empty.
  */
@@ -974,7 +974,7 @@ encapsulateSelection: function( options ) {
 	return this.each( function() {
 		/**
 		 * Check if the selected text is the same as the insert text
-		 */ 
+		 */
 		function checkSelectedText() {
 			if ( !selText ) {
 				selText = options.peri;
@@ -1060,7 +1060,7 @@ encapsulateSelection: function( options ) {
  * http://www.dedestruct.com/2008/03/22/howto-cross-browser-cursor-position-in-textareas/
  *
  * Get the position (in resolution of bytes not nessecarily characters)
- * in a textarea 
+ * in a textarea
  */
  getCaretPosition: function( options ) {
 	function getCaret( e ) {
@@ -1172,7 +1172,7 @@ setSelection: function( options ) {
 /**
  * Ported from Wikia's LinkSuggest extension
  * https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest
- * 
+ *
  * Scroll a textarea to the current cursor position. You can set the cursor
  * position with setSelection()
  * @param force boolean Whether to force a scroll even if the caret position
@@ -1605,7 +1605,7 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe[0].contentWindow.document.close();
 			// Turn the document's design mode on
 			context.$iframe[0].contentWindow.document.designMode = 'on';
-			// Get a reference to the content area of the iframe 
+			// Get a reference to the content area of the iframe
 			context.$content = $( context.$iframe[0].contentWindow.document.body );
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
@@ -1720,7 +1720,7 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Sets the selection of the content
 		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-		 * 
+		 *
 		 * @param start Character offset of selection start
 		 * @param end Character offset of selection end
 		 * @param startContainer Element in iframe to start selection in
@@ -1745,7 +1745,7 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Scroll an element to the top of the iframe
 		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-		 * 
+		 *
 		 * @param $element jQuery object containing an element in the iframe
 		 * @param force If true, scroll the element even if it's already visible
 		 */
@@ -1891,7 +1891,7 @@ api: {
 fn: {
 	/**
 	 * Creates a dialog module within a wikiEditor
-	 * 
+	 *
 	 * @param {Object} context Context object of editor to create module in
 	 * @param {Object} config Configuration object to create module from
 	 */
@@ -1969,7 +1969,7 @@ fn: {
 		// elements.
 		
 		// Work around jQuery bug where <div style="display:inline;" />
-		// inside a dialog is both :visible and :hidden 
+		// inside a dialog is both :visible and :hidden
 		var oldHidden = $(this).find( '*' ).not( ':visible' );
 		
 		// Save the style attributes of the hidden elements to restore
@@ -2036,7 +2036,7 @@ evt: {
 		/*
 		 * Triggered on any of the following events, with the intent on detecting if something was added, deleted or
 		 * replaced due to user action.
-		 * 
+		 *
 		 * The following conditions are indicative that one or more divisions need to be re-scanned/marked:
 		 * 		Keypress while something is highlighted
 		 * 		Cut
@@ -2319,7 +2319,7 @@ minimumWidth: '70px',
 fn: {
 	/**
 	 * Creates a table of contents module within a wikiEditor
-	 * 
+	 *
 	 * @param {Object} context Context object of editor to create module in
 	 * @param {Object} config Configuration object to create module from
 	 */
@@ -2370,7 +2370,7 @@ fn: {
 	},
 	/**
 	 * Highlight the section the cursor is currently within
-	 * 
+	 *
 	 * @param {Object} context
 	 */
 	update: function( context ) {
@@ -2409,7 +2409,7 @@ fn: {
 	
 	/**
 	 * Collapse the contents module
-	 * 
+	 *
 	 * @param {Object} event Event object with context as data
 	 */
 	collapse: function( event ) {
@@ -2418,7 +2418,7 @@ fn: {
 		$this.parent()
 			.css( 'position', 'absolute' )
 			.css( { 'left': 'auto', 'right': 0, 'top': pT } )
-			.fadeOut( 'fast', function() { 
+			.fadeOut( 'fast', function() {
 				$( this ).hide()
 				.css( 'width', '1px' );
 				context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).fadeIn( 'fast' );
@@ -2433,17 +2433,17 @@ fn: {
 	
 	/**
 	 * Expand the contents module
-	 * 
+	 *
 	 * @param {Object} event Event object with context as data
 	 */
 	expand: function( event) {
-		var $this = $( this ), 
-			context = $this.data( 'context' ), 
+		var $this = $( this ),
+			context = $this.data( 'context' ),
 			openWidth = context.modules.$toc.data( 'openWidth' );
 		context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).hide();
 		$this.parent()
 			.show()
-			.animate( { 'width' : openWidth }, 'fast', function() { 
+			.animate( { 'width' : openWidth }, 'fast', function() {
 				context.$content.trigger( 'mouseup' );
 				$( this ).css( { 'position': 'relative', 'right': 'auto', 'top': 'auto' } );
 			 } )
@@ -2451,19 +2451,19 @@ fn: {
 			.animate( { 'marginRight': ( parseFloat( openWidth ) * -1 ) }, 'fast' )
 			.children()
 			.animate( { 'marginRight': openWidth }, 'fast' );
-		$.cookie( 'wikiEditor-' + context.instance + '-toc-width', 
+		$.cookie( 'wikiEditor-' + context.instance + '-toc-width',
 			context.modules.$toc.data( 'openWidth' ) );
 		return false;
 	},
 	/**
 	 * Builds table of contents
-	 * 
+	 *
 	 * @param {Object} context
 	 */
 	build: function( context ) {
 		/**
 		 * Builds a structured outline from flat outline
-		 * 
+		 *
 		 * @param {Object} outline Array of objects with level fields
 		 */
 		function buildStructure( outline, offset, level ) {
@@ -2485,7 +2485,7 @@ fn: {
 		}
 		/**
 		 * Bulds unordered list HTML object from structured outline
-		 * 
+		 *
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
@@ -2513,7 +2513,7 @@ fn: {
 		}
 		/**
 		 * Builds controls for collapsing and expanding the TOC
-		 * 
+		 *
 		 */
 		function buildCollapseControls( ) {
 			var $collapseControl = $( '<div />' ), $expandControl = $( '<div />' );
@@ -2521,16 +2521,16 @@ fn: {
 				.addClass( 'tab' )
 				.addClass( 'tab-toc' )
 				.append( '<a href="#" />' )
-				.bind( 'click.wikiEditor-toc', function() { 
-					context.modules.$toc.trigger( 'collapse.wikiEditor-toc' ); return false; 
+				.bind( 'click.wikiEditor-toc', function() {
+					context.modules.$toc.trigger( 'collapse.wikiEditor-toc' ); return false;
 				} )
 				.find( 'a' )
 				.text( gM( 'wikieditor-toc-hide' ) );
 			$expandControl
 				.addClass( 'wikiEditor-ui-toc-expandControl' )
 				.append( '<a href="#" />' )
-				.bind( 'click.wikiEditor-toc', function() { 
-					context.modules.$toc.trigger( 'expand.wikiEditor-toc' ); return false; 
+				.bind( 'click.wikiEditor-toc', function() {
+					context.modules.$toc.trigger( 'expand.wikiEditor-toc' ); return false;
 				} )
 				.hide()
 				.find( 'a' )
@@ -2539,9 +2539,9 @@ fn: {
 			context.$ui.find( '.wikiEditor-ui-left .wikiEditor-ui-top' ).append( $expandControl );
 		}
 		/**
-		 * Initializes resizing controls on the TOC and sets the width of 
+		 * Initializes resizing controls on the TOC and sets the width of
 		 * the TOC based on it's previous state
-		 * 
+		 *
 		 */
 		function buildResizeControls( ) {
 			context.$ui
@@ -2559,7 +2559,7 @@ fn: {
 						$this.resizable( 'option', 'maxWidth', $this.parent().width() - 450 );
 					},
 					resize: function( e, ui ) {
-						// for some odd reason, ui.size.width seems a step ahead of what the *actual* width of 
+						// for some odd reason, ui.size.width seems a step ahead of what the *actual* width of
 						// the resizable is
 						$( this ).css( { 'width': ui.size.width, 'top': 'auto', 'height': 'auto' } )
 							.data( 'wikiEditor-ui-left' ).css( 'marginRight', ( -1 * ui.size.width ) )
@@ -2569,7 +2569,7 @@ fn: {
 						context.$ui.find( '.wikiEditor-ui-resize-mask' ).remove();
 						context.$content.trigger( 'mouseup' );
 						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.minimumWidth ) ) {
-							context.modules.$toc.trigger( 'collapse' ); 
+							context.modules.$toc.trigger( 'collapse' );
 						} else {
 							context.modules.$toc.data( 'openWidth', ui.size.width );
 							$.cookie( 'wikiEditor-' + context.instance + '-toc-width', ui.size.width );
@@ -2885,7 +2885,7 @@ api : {
 fn : {
 	/**
 	 * Creates a toolbar module within a wikiEditor
-	 * 
+	 *
 	 * @param {Object} context Context object of editor to create module in
 	 * @param {Object} config Configuration object to create module from
 	 */
@@ -2901,7 +2901,7 @@ fn : {
 	},
 	/**
 	 * Performs an operation based on parameters
-	 * 
+	 *
 	 * @param {Object} context
 	 * @param {Object} action
 	 * @param {Object} source
@@ -3200,14 +3200,14 @@ fn : {
 							if ( context.modules.$toc ) {
 								context.modules.$toc.animate({'height': "+="+dH}, $section.outerHeight() * 2);
 							}
-							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() { 
-								$(this).css('overflow', 'visible').css('height', 'auto'); 
+							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
+								$(this).css('overflow', 'visible').css('height', 'auto');
 							} );
 							$(this).addClass( 'current' );
 						} else {
 							$sections.css('height', $section.outerHeight() )
-								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() { 
-									$(this).css('overflow', 'visible'); 
+								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() {
+									$(this).css('overflow', 'visible');
 								} );
 							if ( context.modules.$toc ) {
 								context.modules.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);

@@ -295,7 +295,7 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe[0].contentWindow.document.close();
 			// Turn the document's design mode on
 			context.$iframe[0].contentWindow.document.designMode = 'on';
-			// Get a reference to the content area of the iframe 
+			// Get a reference to the content area of the iframe
 			context.$content = $( context.$iframe[0].contentWindow.document.body );
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
@@ -410,7 +410,7 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Sets the selection of the content
 		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-		 * 
+		 *
 		 * @param start Character offset of selection start
 		 * @param end Character offset of selection end
 		 * @param startContainer Element in iframe to start selection in
@@ -435,7 +435,7 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Scroll an element to the top of the iframe
 		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-		 * 
+		 *
 		 * @param $element jQuery object containing an element in the iframe
 		 * @param force If true, scroll the element even if it's already visible
 		 */

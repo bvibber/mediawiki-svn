@@ -33,7 +33,7 @@ api: {
 fn: {
 	/**
 	 * Creates a dialog module within a wikiEditor
-	 * 
+	 *
 	 * @param {Object} context Context object of editor to create module in
 	 * @param {Object} config Configuration object to create module from
 	 */
@@ -111,7 +111,7 @@ fn: {
 		// elements.
 		
 		// Work around jQuery bug where <div style="display:inline;" />
-		// inside a dialog is both :visible and :hidden 
+		// inside a dialog is both :visible and :hidden
 		var oldHidden = $(this).find( '*' ).not( ':visible' );
 		
 		// Save the style attributes of the hidden elements to restore

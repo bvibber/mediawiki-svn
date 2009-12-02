@@ -2,14 +2,14 @@
 
 $.fn.collapsibleTabs = function( $$options ) {
 	// return if the function is called on an empty jquery object
-	if( !this.length ) return this; 
+	if( !this.length ) return this;
 	//merge options into the defaults
 	var $settings = $.extend( {}, $.collapsibleTabs.defaults, $$options );
 
 	this.each( function() {
 		var $this = $( this );
 		// add the element to our array of collapsible managers
-		$.collapsibleTabs.instances = ( $.collapsibleTabs.instances.length == 0 ? 
+		$.collapsibleTabs.instances = ( $.collapsibleTabs.instances.length == 0 ?
 			$this : $.collapsibleTabs.instances.add( $this ) );
 		// attach the settings to the elements
 		$this.data( 'collapsibleTabsSettings', $settings );
@@ -44,7 +44,7 @@ $.collapsibleTabs = {
 		collapsible: 'li.collapsible',
 		shifting: false,
 		expandCondition: function( eleWidth ) {
-			return ( $( '#left-navigation' ).position().left + $( '#left-navigation' ).width() ) 
+			return ( $( '#left-navigation' ).position().left + $( '#left-navigation' ).width() )
 				< ( $( '#right-navigation' ).position().left - eleWidth );
 		},
 		collapseCondition: function() {
@@ -57,7 +57,7 @@ $.collapsibleTabs = {
 			var $this = $( this ), data = $this.data( 'collapsibleTabsSettings' );
 			if( data.shifting ) return;
 
-			// if the two navigations are colliding 
+			// if the two navigations are colliding
 			if( $this.children( data.collapsible ).length > 0 && data.collapseCondition() ) {
 				
 				$this.trigger( "beforeTabCollapse" );
@@ -65,7 +65,7 @@ $.collapsibleTabs = {
 				$.collapsibleTabs.moveToCollapsed( $this.children( data.collapsible + ':last' ) );
 			}
 
-			// if there are still moveable items in the dropdown menu, 
+			// if there are still moveable items in the dropdown menu,
 			// and there is sufficient space to place them in the tab container
 			if( $( data.collapsedContainer + ' ' + data.collapsible ).length > 0
 					&& data.expandCondition( $( data.collapsedContainer ).children(

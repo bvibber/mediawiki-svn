@@ -1,8 +1,8 @@
 /**
  * This plugin provides a generic way to add suggestions to a text box.
- * 
+ *
  * Usage:
- * 
+ *
  * Set options:
  *		$('#textbox').suggestions( { option1: value1, option2: value2 } );
  *		$('#textbox').suggestions( option, value );
@@ -10,9 +10,9 @@
  *		value = $('#textbox').suggestions( option );
  * Initialize:
  *		$('#textbox').suggestions();
- * 
+ *
  * Options:
- * 
+ *
  * fetch(query): Callback that should fetch suggestions and set the suggestions property. Executed in the context of the
  * 		textbox
  * 		Type: Function
@@ -37,7 +37,7 @@
 $.suggestions = {
 	/**
 	 * Cancel any delayed updateSuggestions() call and inform the user so
-	 * they can cancel their result fetching if they use AJAX or something 
+	 * they can cancel their result fetching if they use AJAX or something
 	 */
 	cancel: function( context ) {
 		if ( context.data.timerID != null ) {
@@ -403,7 +403,7 @@ $.fn.suggestions = function() {
 				} )
 				.blur( function() {
 					// When losing focus because of a mousedown
-					// on a suggestion, don't hide the suggestions 
+					// on a suggestion, don't hide the suggestions
 					if ( context.data.mouseDownOn.size() > 0 ) {
 						return;
 					}
