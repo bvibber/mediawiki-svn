@@ -72,6 +72,7 @@ $messages['ar'] = array(
  */
 $messages['be-tarask'] = array(
 	'externalpages' => 'Вонкавыя старонкі',
+	'externalpages-desc' => 'Выбірае і паказвае старонкі з іншых сайтаў фундацыі «Вікімэдыя»',
 	'externalpages-bad-year' => 'Пазначаны няслушны год',
 	'externalpages-bad-language' => 'Пазначаная няслушная мова',
 	'externalpages-bad-project' => 'Пазначаны няслушны праект',
@@ -428,5 +429,24 @@ $messages['ru'] = array(
 	'externalpages-error-generic' => 'Произошла ошибка',
 	'externalpages-bad-url' => 'Не удалось получить URL',
 	'externalpages-bad-url-data' => 'Не удалось получить содержание страницы',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'externalpages' => 'బయటి పేజీలు',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'externalpages' => 'Pagine esterne',
+	'externalpages-desc' => 'Recupera e fà védar pagine da siti WMF remoti',
+	'externalpages-bad-year' => 'Ano mia giusto',
+	'externalpages-bad-language' => 'Lengua mia giusta',
+	'externalpages-bad-project' => 'Projeto mia giusto',
+	'externalpages-bad-page' => 'Pagina mia giusta',
 );
 

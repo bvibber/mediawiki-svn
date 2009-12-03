@@ -59,6 +59,13 @@ $messages['niu'] = array(
 	'badimages-reason' => 'Kakano:',
 );
 
+/** Rapanui (arero rapa nui)
+ * @author MJohnsson
+ */
+$messages['rap'] = array(
+	'badimages-name' => 'Igoa:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin

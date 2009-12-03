@@ -489,6 +489,13 @@ Apakah Anda ingin menyunting halaman tersebut?',
 	'createpage-badtitle' => '"$1" tidak dapat digunakan sebagai judul halaman',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'createpage_submitbutton' => 'Sendez',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

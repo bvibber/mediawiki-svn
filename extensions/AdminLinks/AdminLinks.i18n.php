@@ -200,6 +200,14 @@ $messages['ca'] = array(
 	'right-adminlinks' => "Veure l'enllaç a [[Special:AdminLinks|enllaços d'administrador]]",
 );
 
+/** Czech (Česky)
+ * @author Kuvaly
+ */
+$messages['cs'] = array(
+	'adminlinks-desc' => 'Přidává [[Special:AdminLinks|speciální stránku]] s užitečnými odkazy pro správce',
+	'adminlinks_users' => 'Uživatelé',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

@@ -65,6 +65,13 @@ $messages['gsw'] = array(
 	'svgzoom-desc' => 'Fiegt Megligkeite in MediaWiki yy, SVG-Dateie bim Aaluege z drille, z vergreßere oder z verchleinere',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'svgzoom-desc' => 'הוספת אפשרויות גלילה ותקריב למדיהוויקי בעת צפיה בקובצי SVG',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

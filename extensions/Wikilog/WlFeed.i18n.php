@@ -71,6 +71,13 @@ $messages['gsw'] = array(
 	'wlfeed-desc' => 'Klasse zum Aalege vu fortgschrittene Feeds',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'wlfeed-desc' => 'מחלקות מתקדמות לייצור הזנות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

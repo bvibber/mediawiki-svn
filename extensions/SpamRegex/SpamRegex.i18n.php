@@ -1291,6 +1291,11 @@ As sugeriss che l'espression a dovrìa esse pa tròp curta o tròp comun-a.",
 	'spamregex-no-currently-blocked' => "'''A-i é pa gnun-e fras blocà.'''",
 	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 gava]) giontà da $5 dzora $6 a $7",
 	'spamregex-page-title-1' => "Blòca fras ch'a deuvra d'espression regolar",
+	'spamregex-unblock-success' => 'Sblòch andàit bin',
+	'spamregex-unblock-message' => "La fras '''$1''' a l'é stàita sblocà e a peul esse modificà.",
+	'spamregex-page-title-2' => 'Blòca le fras (a peulo pa esse salvà) an dovrand espression regolar',
+	'spamregex-block-success' => 'Blòch andàit bin',
+	'spamregex-block-message' => "La fras '''$1''' a l'é stàita blocà.",
 );
 
 /** Portuguese (Português)

@@ -703,14 +703,14 @@ Chcete túto stránku okomentovať? Napíšte to sem alebo <span class="plainlin
  * @author చక్రవర్తి
  */
 $messages['te'] = array(
-	'commentbox-desc' => 'వ్యాఖ్యల పెట్టిని సదురు పుటలకు తగిలించుట',
+	'commentbox-desc' => 'కొన్ని పేజీలకు వ్యాఖ్యల పెట్టెని చేరుస్తుంది',
 	'commentbox-savebutton' => 'వ్యాఖ్యని భద్రపరచు',
 	'commentbox-name' => 'పేరు:',
 	'commentbox-log' => 'కొత్త వ్యాఖ్యలు',
 	'commentbox-first-comment-heading' => '== వ్యాఖ్యలు ==',
-	'commentbox-errorpage-title' => 'స్పందన సృష్టించునప్పుడు పోరపాటు జరిగినది',
+	'commentbox-errorpage-title' => 'వ్యాఖ్యని సృష్టించునప్పుడు పొరపాటు జరిగింది',
 	'commentbox-error-page-nonexistent' => 'ఈ పేజీ లేనే లేదు!',
-	'commentbox-error-namespace' => 'ఈ ప్రదేశంలో వ్యాఖ్యలకు అనుమతి లేదు',
+	'commentbox-error-namespace' => 'ఈ పేరుబరిలో వ్యాఖ్యలకు అనుమతి లేదు!',
 	'commentbox-error-empty-comment' => 'ఖాళీ వ్యాఖ్యలని అనుమతించము!',
 );
 

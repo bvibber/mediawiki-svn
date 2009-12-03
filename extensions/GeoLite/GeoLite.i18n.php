@@ -88,6 +88,13 @@ $messages['gsw'] = array(
 	'geolite-desc' => 'Eifachi GeoIp-Wyterleitig',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'geolite-desc' => 'הפנייה ל־GeoIp קלת משקל',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

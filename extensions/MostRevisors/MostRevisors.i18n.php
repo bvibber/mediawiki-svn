@@ -141,6 +141,14 @@ $messages['ca'] = array(
 	'mostrevisors-viewcontributors' => 'Mostra els editors principals',
 );
 
+/** Czech (Česky)
+ * @author Kuvaly
+ */
+$messages['cs'] = array(
+	'mostrevisors-namespace' => 'Jmenný prostor:',
+	'mostrevisors-submit' => 'Přejít',
+);
+
 /** German (Deutsch)
  * @author Pill
  * @author Umherirrender

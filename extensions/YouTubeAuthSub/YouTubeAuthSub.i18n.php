@@ -1334,6 +1334,8 @@ Silakan menunggu.',
 $messages['io'] = array(
 	'youtubeauthsub_title' => 'Titulo',
 	'youtubeauthsub_category' => 'Kategorio',
+	'youtubeauthsub_submit' => 'Sendez',
+	'youtubeauthsub_uploadbutton' => 'Adkargez',
 );
 
 /** Icelandic (Íslenska)

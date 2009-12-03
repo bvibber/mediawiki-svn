@@ -788,10 +788,16 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author చక్రవర్తి
  */
 $messages['te'] = array(
+	'communityvoice' => 'సమాజపు పలుకు',
+	'communityvoice-desc' => 'సమాజపు పనులకు ఉపయోగించే ఉపకరణాలు',
+	'communityvoice-ratings' => 'మెచ్చుకోలు',
 	'communityvoice-ratings-scale-status-sending' => 'పంపిస్తున్నాం...',
+	'communityvoice-ratings-scale-status-error' => 'పంపించడంలో పొరపాటు!',
 	'communityvoice-ratings-scale-status-thanks' => 'వోటేసినందుకు కృతజ్ఞతలు!',
+	'communityvoice-ratings-error-no-title' => 'మెచ్చుకోలు యందు ’శీర్షిక’ అనే అంశం లేదు',
 );
 
 /** Tagalog (Tagalog)

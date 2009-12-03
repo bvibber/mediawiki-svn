@@ -680,7 +680,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'ajaxlogin-desc' => 'Caixa dinâmica que permite que os utilizadores se autentiquem e memorizem a palavra-passe',
+	'ajaxlogin-desc' => 'Caixa dinâmica que permite aos utilizadores autenticar-se e relembrar a palavra-chave',
 	'ajaxLogin1' => 'Para completar a sua autenticação, terá de introduzir uma nova palavra-chave.
 Isto leva-lo-á a abandonar esta página de edição e poderá perder a sua edição corrente.',
 	'ajaxLogin2' => 'Tem a certeza?

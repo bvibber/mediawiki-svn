@@ -3960,6 +3960,7 @@ $messages['io'] = array(
 	'code-rev-date' => 'Dato:',
 	'code-rev-message' => 'Komento:',
 	'code-rev-comment-by' => 'Komento per $1',
+	'codereview-batch-submit' => 'Sendez',
 	'codereview-email-subj' => '[$1] [r$2]: Nova komento adjuntita',
 );
 

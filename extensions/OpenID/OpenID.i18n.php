@@ -697,6 +697,7 @@ podeu triar-ne un de les opcions a continuació.',
 );
 
 /** Czech (Česky)
+ * @author Kuvaly
  * @author Matěj Grabovský
  * @author Mormegil
  */

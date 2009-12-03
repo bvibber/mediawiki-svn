@@ -721,6 +721,13 @@ Klik <a href='$1'>di sini</a> untuk kembali.",
 	'spamdifftool_submit_buttom' => 'Kirim',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'spamdifftool_option_none' => 'nulo',
+);
+
 /** Icelandic (Íslenska) */
 $messages['is'] = array(
 	'spamdifftool_option_none' => 'ekkert',

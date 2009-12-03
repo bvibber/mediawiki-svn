@@ -2126,6 +2126,7 @@ $messages['ckb-arab'] = array(
 );
 
 /** Czech (Česky)
+ * @author Kuvaly
  * @author Matěj Grabovský
  * @author Mormegil
  */
@@ -2143,6 +2144,7 @@ $messages['cs'] = array(
 	'langman_field_optional' => '(nepovinné)',
 	'langman_addlang' => 'Přidat jazyk',
 	'datasearch' => 'Wikidata: Hledání údajů',
+	'datasearch_language' => 'Jazyk:',
 	'ow_save' => 'Uložit',
 	'ow_history' => 'Historie',
 	'ow_datasets' => 'Výběr množiny dat',
@@ -2219,8 +2221,10 @@ Prosím, podívejte se na [[{{MediaWiki:Ow editing policy url}}|naše pravidla o
 	'ow_TranslatedTextAttributeValues' => 'Přeložený text',
 	'ow_LinkAttribute' => 'Vlastnost',
 	'ow_LinkAttributeValues' => 'Odkazy',
+	'ow_User' => 'Uživatel',
 	'ow_Property' => 'Vlastnost',
 	'ow_Value' => 'Hodnota',
+	'ow_added' => 'Přidáno',
 	'ow_meaningsoftitle' => 'Významy „$1“',
 	'ow_meaningsofsubtitle' => '<em>Wikiodkaz:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>NEMÁTE POTŘEBNÉ OPRÁVNĚNÍ</h2>',

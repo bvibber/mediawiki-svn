@@ -3545,6 +3545,7 @@ $messages['te'] = array(
 	'contribstats-clicks' => 'నొక్కులు',
 	'contribstats-donations' => 'విరాళాలు',
 	'contribstats-template' => 'మూస',
+	'contribstats-average' => 'సగటు',
 	'fundraiserstatistics' => 'నిధుల సేకరణ గణాంకాలు',
 	'fundraiserstats-date' => 'తేదీ',
 	'fundraiserstats-contributions' => 'దాతలు',

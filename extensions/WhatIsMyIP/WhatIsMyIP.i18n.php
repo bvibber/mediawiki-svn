@@ -156,6 +156,7 @@ $messages['ckb-arab'] = array(
 );
 
 /** Czech (Česky)
+ * @author Kuvaly
  * @author Matěj Grabovský
  * @author Mormegil
  */
