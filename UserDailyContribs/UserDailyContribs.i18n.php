@@ -206,6 +206,13 @@ $messages['mk'] = array(
 	'userdailycontribs-desc' => 'Дневни придонеси од корисници за проширувањето „Следење на кликови“',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'userdailycontribs-desc' => 'ക്ലിക്കുകളിൽ ഉപയോക്താവിന്റെ ദൈനിക സംഭാവനകൾ അനുഗമിക്കാനുള്ള അനുബന്ധം',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
