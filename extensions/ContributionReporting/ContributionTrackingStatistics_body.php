@@ -100,7 +100,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 					continue;
 				}
 				// Pull together templates, clicks, donations, conversion rate
-				$conversion_rate = ( $template[1] == 0 ) ? 0 : ( $template[2] / $template[1] ) * 100; 
+				$conversion_rate = ( $template[2] == 0 ) ? 0 : ( $template[2] / ( $template[1] + $template[2] ) ) * 100;
 				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
 
 				$link = $wgContributionReportingBaseURL.$expanded_template[0];
@@ -116,7 +116,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 						Xml::tags( 'td', array( 'align' => 'left'), $template_link ) .
 						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[1] ) .
 						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[2] ) .
-						Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
+						Xml::element( 'td', array( 'align' => 'right'), $template[1] + $template[2] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $amount ) .
 						Xml::element( 'td', array( 'align' => 'right'), round($average, 2) ) .
