@@ -42,7 +42,16 @@ class APIQueryTemplateInfo extends ApiQueryBase {
 		$res = $this->select(__METHOD__);
 		while ( $row = $this->getDB()->fetchObject( $res ) ) {
 			$vals = array( );
-			ApiResult::setContent( $vals, $row->pp_value );
+			$template_info = $row->pp_value;
+			// determine whether this is actual XML or an error
+			// message by checking whether the first character
+			// is '<' - this is an interim solution until there's
+			// a better storage format in place
+			if (substr($template_info, 0, 1) == '<')
+				ApiResult::setContent( $vals, $row->pp_value );
+			else
+				// add error message as an "error=" attribute
+				$vals['error'] = $row->pp_value;
 			$fit = $this->addPageSubItems( $row->pp_page, $vals );
 			if( !$fit ) {
 				$this->setContinueEnumParameter( 'continue', $row->pp_page );
