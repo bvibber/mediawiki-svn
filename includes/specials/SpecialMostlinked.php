@@ -27,7 +27,19 @@ class MostlinkedPage extends QueryPage {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		if ($wgMiserMode) { $cutoff = 100; } else { $cutoff = 1; }
+		# In miser mode, reduce the query cost by adding a threshold for large wikis
+		if ( $wgMiserMode ) {
+			$numPages = SiteStats::pages();
+			if ( $numPages > 10000 ) {
+				$cutoff = 100;
+			} elseif ( $numPages > 100 ) {
+				$cutoff = intval( sqrt( $numPages ) );
+			} else {
+				$cutoff = 1;
+			}
+		} else {
+			$cutoff = 1;
+		}
 
 		list( $pagelinks, $page ) = $dbr->tableNamesN( 'pagelinks', 'page' );
 		return
@@ -38,7 +50,7 @@ class MostlinkedPage extends QueryPage {
 			FROM $pagelinks
 			LEFT JOIN $page ON pl_namespace=page_namespace AND pl_title=page_title
 			GROUP BY pl_namespace, pl_title
-			HAVING COUNT(*) > 1";
+			HAVING COUNT(*) > $cutoff";
 	}
 
 	/**
