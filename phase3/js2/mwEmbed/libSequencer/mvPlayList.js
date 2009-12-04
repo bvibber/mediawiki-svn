@@ -37,7 +37,7 @@ if ( typeof wgServer == 'undefined' ) {
 	var defaultMetaDataProvider = wgServer + wgScript + '?title=Special:MvExportStream&feed_format=roe&stream_name=';
 }
 /*
- * The playlist Object implements ~most~ of embedVideo but we don't inherit (other than to use the control builder)  
+ * The playlist Object implements ~most~ of embedPlayer but we don't inherit (other than to use the control builder)  
  * because pretty much every function has to be changed for the playlist context
  */
 var mvPlayList = function( element ) {
@@ -131,10 +131,10 @@ mvPlayList.prototype = {
 		// get and load the html:
 		this.getHTML();
 	},
-	// run inheritEmbedObj on every clip (we have changed the playback method) 
-	inheritEmbedObj:function() {
+	// run inheritEmbedPlayer on every clip (we have changed the playback method) 
+	inheritEmbedPlayer:function() {
 		$j.each( this.tracks, function( i, track ) {
-			track.inheritEmbedObj();
+			track.inheritEmbedPlayer();
 		} );
 	},
 	doOptionsHTML:function() {
@@ -295,7 +295,7 @@ mvPlayList.prototype = {
 		// js_log("return dur: " + this.pl_duration);
 		return this.pl_duration;
 	},
-	getTimeReq:function() {
+	getTimeRange:function() {
 		// playlist does not really support time request atm ( in theory in the future we could embed playlists with temporal urls)
 		return '0:0:0/' +  seconds2npt( this.getDuration() );
 	},
@@ -1298,7 +1298,7 @@ PlMvEmbed.prototype = {
 				ve.setAttribute( i, vid_init[i] );
 			}
 		}
-		var videoInterface = new embedVideo( ve );
+		var videoInterface = new embedPlayer( ve );
 		// inherit the videoInterface
 		for ( method in videoInterface ) {
 			if ( method != 'style' ) {
@@ -2268,9 +2268,9 @@ trackObj.prototype = {
 	getClipCount:function() {
 		return this.clips.length;
 	},
-	inheritEmbedObj: function() {
+	inheritEmbedPlayer: function() {
 		$j.each( this.clips, function( i, clip ) {
-			clip.embed.inheritEmbedObj();
+			clip.embed.inheritEmbedPlayer();
 		} );
 	}
 };

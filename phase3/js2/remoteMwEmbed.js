@@ -69,7 +69,7 @@ function doPageSpecificRewrite() {
 		}
 	}
 	if ( vidIdList.length > 0 ) {	
-		var jsSetVideo = [ 'embedVideo', '$j.ui', 'ctrlBuilder', '$j.cookie', '$j.ui.slider', 'kskinConfig' ];		
+		var jsSetVideo = [ 'embedPlayer', '$j.ui', 'ctrlBuilder', '$j.cookie', '$j.ui.slider', 'kskinConfig' ];		
 		// Quick sniff use java if IE and native if firefox 
 		// ( other browsers will run detect and get on-demand ) 	
 		if (navigator.userAgent.indexOf("MSIE") != -1)
@@ -79,7 +79,7 @@ function doPageSpecificRewrite() {
 			jsSetVideo.push( 'nativeEmbed' );
 	
 		mwr_load_mv_embed( jsSetVideo, function() {
-			mvJsLoader.embedVideoCheck( function() {
+			mvJsLoader.embedPlayerCheck( function() {
 				// Do utility rewrite of OggHandler content:
 				rewrite_for_OggHandler( vidIdList );
 			} );

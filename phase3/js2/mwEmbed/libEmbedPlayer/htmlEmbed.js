@@ -82,7 +82,7 @@ var htmlEmbed = {
 			return false;
 		}
 	},
-	inheritEmbedObj:function() {
+	inheritEmbedPlayer:function() {
 		return true;
 	},
 	renderTimelineThumbnail:function( options ) {

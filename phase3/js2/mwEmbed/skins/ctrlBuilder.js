@@ -3,12 +3,12 @@
 _global['dismissNativeWarn'] = false;
 
 /**
-* Msg text is inherited from embedVideo 
+* Msg text is inherited from embedPlayer 
 */
 
 /**
 * ctrlBuilder object
-*	@param the embedVideo element we are targeting
+*	@param the embedPlayer element we are targeting
 */
 var ctrlBuilder = function( embedObj, options ) {
 	return this.init( embedObj, options );
@@ -198,7 +198,7 @@ ctrlBuilder.prototype = {
 				$j( id + ' .play-btn-large' ).fadeOut( 'fast' );
 				// If playlist always start at 0
 				embedObj.start_time_sec = ( embedObj.instanceOf == 'mvPlayList' ) ? 0:
-								npt2seconds( embedObj.getTimeReq().split( '/' )[0] );
+								npt2seconds( embedObj.getTimeRange().split( '/' )[0] );
 			},
 			slide: function( event, ui ) {
 				var perc = ui.value / 1000;
@@ -494,7 +494,7 @@ ctrlBuilder.prototype = {
 		'time_display': {
 			'w':90,
 			'o':function( ctrlObj ) {
-				return '<div class="ui-widget time-disp">' + ctrlObj.embedObj.getTimeReq() + '</div>';
+				return '<div class="ui-widget time-disp">' + ctrlObj.embedObj.getTimeRange() + '</div>';
 			}
 		},
 		/*
