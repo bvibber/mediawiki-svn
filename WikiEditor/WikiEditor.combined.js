@@ -931,8 +931,12 @@ js2AddOnloadHook( function() {
 			function updateExistence() {
 				function updateWidget( status ) {
 					$j( '#wikieditor-toolbar-link-int-target-status' ).children().hide();
-					$j( '#wikieditor-toolbar-link-int-target-status-' + status ).show();
-					$j( '#wikieditor-toolbar-link-int-target' ).parent().removeClass().addClass( 'status-' + status );
+					$j( '#wikieditor-toolbar-link-int-target' ).parent()
+						.removeClass( 'status-invalid status-external status-notexists status-exists status-loading' );
+					if ( status ) {
+						$j( '#wikieditor-toolbar-link-int-target-status-' + status ).show();
+						$j( '#wikieditor-toolbar-link-int-target' ).parent().addClass( 'status-' + status );
+					}
 				}
 				// Abort previous request
 				var request = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'request' );
@@ -948,7 +952,7 @@ js2AddOnloadHook( function() {
 				}
 				if ( target == '' ) {
 					// Hide the widget when the textbox is empty
-					$j( '#wikieditor-toolbar-link-int-target-status' ).children().hide();
+					updateWidget( false );
 					return;
 				}
 				if ( isExternalLink( target ) ) {
