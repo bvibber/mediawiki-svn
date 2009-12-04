@@ -119,6 +119,13 @@ $messages['eu'] = array(
 	'contributorsaddon-desc' => 'JavaScript popupak gehitu "Ekarpen nagusiak" loturara',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
+$messages['ext'] = array(
+	'contributorsaddon-desc' => 'Añii ventanas emelgentis JavaScript a los atijus de los "prencipalis colabutaoris"',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  */

@@ -37,6 +37,13 @@ $messages['br'] = array(
 	'svgzoom-desc' => 'Ouzhpennañ a ra da VediaWiki ar barregezhioù zoumiñ ha gweledvaekaat pa seller ouzh restroù SVG',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'svgzoom-desc' => 'Dodaje mogućnosti pomijeranja i zumiranja na MediaWiki pri pregledavanju SVG datoteka',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -66,10 +73,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'svgzoom-desc' => 'הוספת אפשרויות גלילה ותקריב למדיהוויקי בעת צפיה בקובצי SVG',
+	'svgzoom-desc' => 'הוספת אפשרויות גלילה ותקריב למדיה־ויקי בעת צפיה בקובצי SVG',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

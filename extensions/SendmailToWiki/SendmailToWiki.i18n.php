@@ -246,8 +246,17 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'sendmailtowiki-desc' => 'Објавување на вики-содржини преку специјална динамична е-поштенска адреса',
+	'prefs-sendmailtowiki' => 'Објавување содржини со е-пошта',
+	'sendmailtowiki-inemail' => 'Специјална е-поштенска адреса:',
 	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Празното поле за PIN-кодот не дозволува објавување на содржини на вики од вашата сметка.',
+	'sendmailtowiki-err-pinlength' => 'PIN-кодот мора да содржи точно 5 броја.',
+	'sendmailtowiki-err-wrongprefix' => 'Грешен префикс на вики-сметката. Контактирајте го администраторот.',
+	'sendmailtowiki-err-invalidaccount' => 'Грешна сметка. Проверете ја е-поштенската адреса на која испраќате.',
+	'sendmailtowiki-err-invalidsender' => 'Грешен праќач. Проверете ја е-поштенската адреса од која испраќате.',
 	'sendmailtowiki-err-invalidpin' => 'Неважечки PIN. Влезот не ви е дозволен.',
+	'sendmailtowiki-err-onlyplain' => 'За да се избегнат можни погрешни толкувања, се прифаќаат само пораки со прост текст.',
 );
 
 /** Dutch (Nederlands)

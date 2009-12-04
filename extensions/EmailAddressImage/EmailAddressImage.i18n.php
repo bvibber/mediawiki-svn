@@ -352,10 +352,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'emailaddressimage-desc' => 'Adiciona <tt>&lt;email&gt;</tt> para apresentar um endereço de e-mail como imagem',
+	'emailaddressimage-desc' => 'Adiciona <tt>&lt;email&gt;</tt> para apresentar um endereço de correio electrónico como imagem',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

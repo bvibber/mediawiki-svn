@@ -446,6 +446,31 @@ $messages['lb'] = array(
 	'plotters-missing-script' => 'Et gouf kee Script definéiert.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'plotters-desc' => 'Им овозможува на корисниците да користат свој прилагоден JavaScript во jsplot ознаки',
+	'plotters' => 'Плотери',
+	'plotters-title' => 'Плотери',
+	'plotters-pagetext' => 'Подолу е наведена листа на специјални плотери кои корисниците можат да ги користат во нивните jsplot ознаки, според определеното во [[MediaWiki:Plotters-definition]].
+Овој преглед овозможува лесен пристап кон страниците со системски пораки кои го определуваат описот и кодот на секоја порака.',
+	'plotters-uses' => 'Употреби',
+	'plotters-missing-script' => 'Нема определено скрипта.',
+	'plotters-missing-arguments' => 'Нема определено аргументи.',
+	'plotters-excessively-long-scriptname' => 'Името на скриптата е предолго.
+Определете скрипта, чие име не е подолго од 255 знаци.',
+	'plotters-excessively-long-preprocessorname' => 'Името на претпроцесорот е предолго.
+Определете име на претпороцесорот не подолго од 255 знаци.',
+	'plotters-excessively-long-name' => 'Името на плотерот е предолго.
+Определете име на плотерот не подолго од 255 знаци.',
+	'plotters-excessively-long-tableclass' => 'Класата на таблицата е предолга.
+Определете ја класата на таблицата со не повеќе од 255 знаци.',
+	'plotters-no-data' => 'Нема наведено податоци.',
+	'plotters-invalid-renderer' => 'Избран е неважечки прецртувач.',
+	'plotters-errors' => '{{PLURAL:$1|Грешка кај плотерите|Грешки кај плотерите}}:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

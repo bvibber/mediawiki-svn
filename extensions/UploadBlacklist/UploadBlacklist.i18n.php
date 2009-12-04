@@ -312,6 +312,13 @@ $messages['sah'] = array(
 	'uploadblacklist-desc' => 'Киллэрии (суруттарыы) хара испииһэгин туһанары баар гынар',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'uploadblacklist-desc' => 'උඩුගතකිරීම් අපලේඛන ශ්‍රිතීයතාවයක් එකතු කරයි',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -647,6 +647,13 @@ $messages['ru'] = array(
 	'unicodeconverter-newtext' => 'Преобразованный текст:',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'unicodeconverter-ok' => 'හරි',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

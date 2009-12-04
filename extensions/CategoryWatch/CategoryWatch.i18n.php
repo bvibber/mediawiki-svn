@@ -525,7 +525,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'categorywatch-desc' => 'Espandís la foncionalitat de la lista de seguit per enclure la notificacion de las modificacions dels membres de las categorias seguidas.',
+	'categorywatch-desc' => 'Espandís la foncionalitat de la lista de seguiment per enclure la notificacion de las modificacions dels membres de las categorias seguidas.',
 	'categorywatch-emailsubject' => 'Activitat comprenent la categoria seguida « $1 »',
 	'categorywatch-catmovein' => 'a desplaçat $1 dins la categoria $2 dempuèi $3',
 	'categorywatch-catmoveout' => 'a desplaçat $1 de la categoria $2 cap a $3',

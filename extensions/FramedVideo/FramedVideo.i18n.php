@@ -120,9 +120,13 @@ $messages['be-tarask'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'framedvideo_errors' => "Meur a fazi zo c'hoarvezet !",
+	'framedvideo_error' => 'Ur fazi a zo bet !',
+	'framedvideo_error_no_integer' => 'An talvoud roet da "$1" n\'eo ket un niver pozitivel.',
+	'framedvideo_error_limit' => 'An talvoud uhelañ aotreet a zo $1.',
 	'framedvideo_helppage' => 'Help:Video',
 );
 

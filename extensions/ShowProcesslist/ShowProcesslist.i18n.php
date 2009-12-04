@@ -790,11 +790,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'showprocesslist' => 'Mostrar Lista de Processos',
+	'showprocesslist' => 'Mostrar lista de processos',
 	'showprocesslist-desc' => 'Apresenta o resultado de [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Utilizador',

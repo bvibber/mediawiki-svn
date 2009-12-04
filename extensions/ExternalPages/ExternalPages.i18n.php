@@ -96,6 +96,12 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'externalpages' => 'Pajennoù diavaez',
+	'externalpages-bad-year' => 'Ar bloavezh lakaet a zo direizh',
+	'externalpages-bad-language' => 'Ar yezh lakaet a zo direizh',
+	'externalpages-bad-project' => 'Ar raktres lakaet a zo direizh',
+	'externalpages-bad-page' => 'Ar bajenn lakaet a zo direizh',
+	'externalpages-no-page' => "N'eus pajenn ebet a zo bet lakaet",
+	'externalpages-error-generic' => 'Ur gudenn a zo bet',
 );
 
 /** Bosnian (Bosanski)
@@ -113,6 +119,23 @@ $messages['bs'] = array(
 	'externalpages-error-generic' => 'Desila se greška',
 	'externalpages-bad-url' => 'Nije uspjelo preuzimanje URL',
 	'externalpages-bad-url-data' => 'Nije uspjelo preuzimanje sadržaja stranice',
+);
+
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'externalpages' => 'Pelê Teberi',
+	'externalpages-desc' => 'Siteyanê WMFyê duri ra pelan ano u mocneno',
+	'externalpages-bad-year' => 'Serra ğelete name biya',
+	'externalpages-bad-language' => 'Zıwano ğelet name biyo',
+	'externalpages-bad-project' => 'Proceyo ğelet name biyo',
+	'externalpages-no-project' => 'Proce name nêbiyo',
+	'externalpages-bad-page' => 'Pela ğelete name biya',
+	'externalpages-no-page' => 'Pele name nêbiya',
+	'externalpages-error-generic' => 'Xeta biya',
+	'externalpages-bad-url' => 'Ardena URLi beşar nêbiye',
+	'externalpages-bad-url-data' => 'Ardena tedeesteyanê pele beşar nêbiye',
 );
 
 /** Lower Sorbian (Dolnoserbski)

@@ -1982,7 +1982,7 @@ Por favor, verifique se tem permissão para agir sobre essa wiki e se as suas ac
 	'crosswikiblock-anononly' => 'Bloquear apenas utilizadores anónimos',
 	'crosswikiblock-nocreate' => 'Impedir criação de conta',
 	'crosswikiblock-autoblock' => 'Bloquear automaticamente o último endereço IP usado por este utilizador, e qualquer endereço IP subsequente a partir do qual ele tente editar',
-	'crosswikiblock-noemail' => 'Impedir utilizador de enviar email',
+	'crosswikiblock-noemail' => 'Impedir utilizador de enviar correio electrónico',
 	'crosswikiunblock' => 'Desbloquear utilizador noutra wiki',
 	'crosswikiunblock-header' => 'Esta página permite desbloquear um utilizador noutra wiki.
 Por favor, verifique se tem permissão para agir sobre essa wiki e se as suas acções respeitam todas as políticas.',

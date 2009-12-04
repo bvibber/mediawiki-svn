@@ -119,6 +119,13 @@ $messages['ca'] = array(
 	'webchat' => 'Xat web',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'right-webchat' => 'Používání [[Special:WebChat|webové diskuse]]',
+);
+
 /** German (Deutsch)
  * @author Merlissimo
  * @author Umherirrender

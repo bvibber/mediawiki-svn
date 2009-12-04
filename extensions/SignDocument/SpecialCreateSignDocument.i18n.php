@@ -1378,6 +1378,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
@@ -1392,7 +1393,7 @@ Por favor, certifique-se com o máximo rigor de que o documento está numa situa
 Assegure-se também de que especificou todos os campos exactamente como devem ser, ''antes de enviar este formulário''.",
 	'createsigndoc-pagename' => 'Página:',
 	'createsigndoc-allowedgroup' => 'Grupo autorizado:',
-	'createsigndoc-email' => 'Endereço de e-mail:',
+	'createsigndoc-email' => 'Correio electrónico:',
 	'createsigndoc-address' => 'Endereço da residência:',
 	'createsigndoc-extaddress' => 'Cidade, Estado, País:',
 	'createsigndoc-phone' => 'Número de telefone:',
@@ -1404,8 +1405,8 @@ Assegure-se também de que especificou todos os campos exactamente como devem se
 	'createsigndoc-create' => 'Criar',
 	'createsigndoc-error-generic' => 'Erro: $1',
 	'createsigndoc-error-pagenoexist' => 'Erro: A página [[$1]] não existe.',
-	'createsigndoc-success' => 'A assinatura de documentos foi ativada com sucesso em [[$1]].
-Você pode agora [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testá-la].',
+	'createsigndoc-success' => 'A assinatura de documentos foi activada com sucesso em [[$1]].
+Pode agora [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testá-la].',
 	'createsigndoc-error-alreadycreated' => 'A assinatura de documentos "$1" já existe.
 Isto não pode ser feito segunda vez.',
 );

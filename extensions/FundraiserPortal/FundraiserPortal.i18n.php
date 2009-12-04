@@ -311,6 +311,23 @@ $messages['eu'] = array(
 	'fundraiserportal-tourmaline-message' => 'Dohaintza bakoitzak Wikipedia guztientzako libre mantentzen laguntzen gaitu.',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
+$messages['ext'] = array(
+	'fundraiserportal' => "Puertal p'arrecogel perras",
+	'fundraiserportal-desc' => 'Añii un puertal "pol favol, dona" poncima la barra lateral.',
+	'fundraiserportal-plain-button' => 'Apoya la Güiquipeya!',
+	'fundraiserportal-ruby-button' => 'Dona agora',
+	'fundraiserportal-rubytext-button' => 'Dona agora',
+	'fundraiserportal-rubytext-message' => 'Ca donación mos ayua a conserval la Güiquipeya libri.',
+	'fundraiserportal-rubytext-close' => "A partil d'agora queal estu açonchau",
+	'fundraiserportal-sapphire-button' => 'Dona agora',
+	'fundraiserportal-tourmaline-button' => 'Dona agora',
+	'fundraiserportal-tourmaline-message' => 'Ca donación mos ayua a conserval la Güiquipeya libri.',
+	'fundraiserportal-tourmaline-close' => "A partil d'agora queal estu açonchau",
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

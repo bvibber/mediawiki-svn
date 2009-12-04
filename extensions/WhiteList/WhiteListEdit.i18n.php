@@ -2693,7 +2693,7 @@ Use * ou % como caracteres de substituição',
 	'whitelistnewtableedit' => 'Activar edição',
 	'whitelistnewtableview' => 'Activar visualização',
 	'whitelistnowhitelistedusers' => 'Não há utilizadores no grupo "{{MediaWiki:Group-restricted}}".
-Você tem de [[Special:UserRights|adicionar utilizadores ao grupo]] antes de poder adicionar páginas à lista branca de um utilizador.',
+Tem de [[Special:UserRights|adicionar utilizadores ao grupo]] antes de poder adicionar páginas à lista branca de um utilizador.',
 	'whitelistnewtableprocess' => 'Processar',
 	'whitelistnewtablereview' => 'Rever',
 	'whitelistselectrestricted' => '== Selecionar nome de utilizador restrito ==',

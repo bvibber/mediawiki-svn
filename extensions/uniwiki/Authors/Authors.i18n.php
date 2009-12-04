@@ -515,6 +515,14 @@ $messages['ru'] = array(
 	'authors_anonymous' => 'Аноним',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'authors_authors' => 'ලේඛකයින්',
+	'authors_anonymous' => 'නිර්නාමික',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

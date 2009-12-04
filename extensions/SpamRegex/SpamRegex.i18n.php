@@ -1291,14 +1291,26 @@ As sugeriss che l'espression a dovrìa esse pa tròp curta o tròp comun-a.",
 	'spamregex-no-currently-blocked' => "'''A-i é pa gnun-e fras blocà.'''",
 	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 gava]) giontà da $5 dzora $6 a $7",
 	'spamregex-page-title-1' => "Blòca fras ch'a deuvra d'espression regolar",
-	'spamregex-unblock-success' => 'Sblòch andàit bin',
+	'spamregex-unblock-success' => 'Sblocagi andàit bin',
 	'spamregex-unblock-message' => "La fras '''$1''' a l'é stàita sblocà e a peul esse modificà.",
 	'spamregex-page-title-2' => 'Blòca le fras (a peulo pa esse salvà) an dovrand espression regolar',
-	'spamregex-block-success' => 'Blòch andàit bin',
+	'spamregex-block-success' => 'Blocagi andàit bin',
 	'spamregex-block-message' => "La fras '''$1''' a l'é stàita blocà.",
+	'spamregex-warning-1' => 'Dà na fras da bloché.',
+	'spamregex-error-1' => 'Espression regolar pa bon-a.',
+	'spamregex-warning-2' => 'Për piasì contròla almanch na manera ëd bloché.',
+	'spamregex-already-blocked' => '"$1" a l\'é già blocà.',
+	'spamregex-phrase-block' => 'Fras da bloché:',
+	'spamregex-phrase-block-text' => 'blòca fras ant ël test ëd pàgina',
+	'spamregex-phrase-block-summary' => 'blòca fras ant ël resumé',
+	'spamregex-block-submit' => 'Blòca&nbsp;sta&nbsp;fras',
+	'spamregex-text' => '(Test)',
+	'spamregex-summary-log' => '(Resumé)',
+	'right-spamregex' => 'Blòca fras dë spam con [[Special:SpamRegex]]',
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -1311,9 +1323,9 @@ $messages['pt'] = array(
 	'spamregex-intro' => 'Use este formulário para efetivamente bloquear expressões de serem gravadas no texto de uma página.
 Se o texto contém a dada expressão, as alterações não serão gravadas e uma explicação será apresentada ao utilizador que tentou gravar a página.
 Pede-se atenção: as expressões não deverão ser demasiado curtas ou demasiado comuns.',
-	'spamregex-page-title' => 'Bloco de expressões indesejadas da expressão regular de spam',
-	'spamregex-currently-blocked' => "'''Frases atualmente bloqueadas:'''",
-	'spamregex-move' => 'O motivo que você introduziu contém uma frase bloqueada.',
+	'spamregex-page-title' => "Bloco de expressões regulares ''(regex)'' das expressões de ''spam'' indesejadas",
+	'spamregex-currently-blocked' => "'''Frases presentemente bloqueadas:'''",
+	'spamregex-move' => 'O motivo que introduziu continha uma frase bloqueada.',
 	'spamregex-no-currently-blocked' => "'''Não há frases bloqueadas.'''",
 	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 remover]) adicionado por $5 em $6 em $7",
 	'spamregex-page-title-1' => 'Bloquear frase usando expressões regulares',

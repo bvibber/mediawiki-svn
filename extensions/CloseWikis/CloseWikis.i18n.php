@@ -1284,10 +1284,38 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'closewikis-desc' => 'A përmëtt ëd saré ij sit wiki an famije wiki',
+	'closewikis-page' => 'Sara wiki',
+	'closewikis-page-close' => 'Sara wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Rason (visualisà):',
+	'closewikis-page-close-reason' => 'Rason (registrà):',
+	'closewikis-page-close-submit' => 'Sara',
+	'closewikis-page-close-success' => 'Wiki sarà bin',
+	'closewikis-page-reopen' => 'Torna deurbe la wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Rason:',
+	'closewikis-page-reopen-submit' => 'Torna deurbe',
+	'closewikis-page-reopen-success' => 'Wiki torna durbìa da bin',
+	'closewikis-page-err-nowiki' => 'Wiki spessificà pa bon-a',
+	'closewikis-page-err-closed' => "Wiki a l'é già sarà",
+	'closewikis-page-err-opened' => "Wiki a l'é pa sarà",
+	'closewikis-list' => 'Lista dle wiki sarà',
+	'closewikis-list-intro' => 'Sta lista-sì a conten le wiki che a son ëstàite sarà dai comess.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Sarà da',
+	'closewikis-list-header-timestamp' => 'Sarà ël',
+	'closewikis-list-header-dispreason' => 'Rason visualisà',
+	'closewikis-log' => 'Registr ëd la saradura dle wiki',
+	'closewikis-log-header' => 'Sì a-i é un registr ëd tute le wiki sarà e torna duvertà dai comess',
+	'closewikis-log-close' => 'sarà $2',
+	'closewikis-log-reopen' => 'torna duvertà $2',
+	'right-editclosedwikis' => 'Modìfica wiki sarà',
+	'right-closewikis' => 'Sara wiki',
 );
 
 /** Pashto (پښتو)

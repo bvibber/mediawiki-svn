@@ -2206,6 +2206,14 @@ $wgCustomToolbarMessages['scn'] = array(
 	'ct_user_sample' => 'Nomu utenti',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$wgCustomToolbarMessages['si'] = array(
+	'ct_image_tip' => 'ඡායාරූපයක් ඇතුල් කරන්න',
+	'ct_upload' => '$1 උඩුගත කරන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

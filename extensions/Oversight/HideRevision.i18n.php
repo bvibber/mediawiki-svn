@@ -1949,6 +1949,8 @@ Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenen
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'hiderevision' => 'სამუდამოდ დამალე ცვლილებები',
+	'group-oversight' => 'რევიზორები',
 	'hiderevision-link' => 'მომხმარებლის დამალული წვლილი',
 	'oversight-view' => 'დეტალები',
 );

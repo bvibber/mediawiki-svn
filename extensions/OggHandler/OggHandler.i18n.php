@@ -1640,6 +1640,7 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
  * @author Malafaya
  */
 $messages['ka'] = array(
+	'ogg-player-soundthumb' => 'No player',
 	'ogg-more' => 'მეტი...',
 	'ogg-download' => 'ფაილის ჩამოტვირთვა',
 	'ogg-desc-link' => 'ამ ფაილის შესახებ',

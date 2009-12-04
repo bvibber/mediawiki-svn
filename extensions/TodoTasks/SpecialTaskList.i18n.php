@@ -1171,14 +1171,14 @@ Para uma lista de projectos válidos, ver [[MediaWiki:TodoTasksValidProjects]]."
 	'tasklistchooseproj' => 'Seleccione Projecto:',
 	'tasklistprojdisp' => 'Mostrar',
 	'tasklistbyname' => '== Lista de tarefas de %s ==',
-	'tasklistnoprojects' => "Erro: Aparentemente você activou '''\$wgUseProjects''', mas não criou [[MediaWiki:TodoTasksValidProjects]]. Veja as [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instruções de Instalação] para mais detalhes.",
+	'tasklistnoprojects' => "Erro: Aparentement activou '''\$wgUseProjects''', mas não criou [[MediaWiki:TodoTasksValidProjects]]. Veja as [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instruções de Instalação] para mais detalhes.",
 	'tasklistemailbody' => ',
 
-Alguém atribuiu-lhe uma nova Tarefa em %s.
+Alguém lhe atribuiu uma nova Tarefa em %s.
 
 Para ver a sua Lista de Tarefas completa, vá a %s.
 
-O seu sistema de notificação amigável',
+O seu sistema de notificação amigável da %s',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

@@ -4347,6 +4347,7 @@ $messages['ka'] = array(
 	'code-rev-submit' => 'ცვლილებების შენახვა',
 	'code-batch-status' => 'სტატუსის შეცვლა:',
 	'codereview-reply-link' => 'პასუხი',
+	'repoadmin-new-button' => 'შექმნა',
 );
 
 /** Khmer (ភាសាខ្មែរ)

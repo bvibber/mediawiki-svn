@@ -860,6 +860,14 @@ $messages['sah'] = array(
 	'createpage-badtitle' => '"$1" ааты сирэй аатын быһыытынан туттар сатаммат',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'createpage_submitbutton' => 'යොමන්න',
+	'createpage_entertitle' => 'කරුණාකර ඔබේ පිටුවට මාතෘකාවක් ඇතුල් කරන්න.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

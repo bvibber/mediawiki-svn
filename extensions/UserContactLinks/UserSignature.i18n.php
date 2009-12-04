@@ -461,6 +461,14 @@ $messages['ru'] = array(
 	'usercontactlink-desc' => 'Предоставляет возможность легко добавить имена других участников с помощью синтаксиса ^^^участник^^^',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'usercontactlink-baduser' => 'වැරදි පරිශීලක නාමය',
+	'usercontactlink-desc' => '^^^user^^^ වාග් රීතිය භාවිතා කරමින් සරලව හා ස්ථායීව  අනෙක් පරිශීලකයින් එකතු කිරීමට හැකියාව සලසයි',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

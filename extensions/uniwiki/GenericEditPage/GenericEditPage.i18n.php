@@ -1232,6 +1232,19 @@ $messages['ru'] = array(
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'gep-desc' => 'සංස්කරණ පිටුව වඩා පරිශීලක-හිතෛෂි කිරීමට ඌනපූරණය කරයි',
+	'gep-emailsubject' => '[$1] ප්‍රවර්ග යෝජනාව: $2',
+	'gep-emailbody' => '"$3" අඩවිය සඳහා "$1" පරිශීලකයා "$2" ප්‍රවර්ගය යෝජනා කරන ලදී.',
+	'gep-emailfailure' => 'කණගාටුයි,ඔබේ යෝජනාව සැකසීමට නොහැකි විය.',
+	'gep-categories' => 'ප්‍රවර්ග',
+	'gep-addcategory' => 'ප්‍රවර්ගයක් එකතු කරන්න',
+	'gep-addcategorybutton' => 'එකතු කරන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

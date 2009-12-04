@@ -3367,6 +3367,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
@@ -3385,7 +3386,7 @@ Leia o documento completo, e se desejar indicar o seu suporte, preencha o campos
 	'sign-country' => 'País:',
 	'sign-phone' => 'Número de telefone:',
 	'sign-bday' => 'Idade:',
-	'sign-email' => 'Endereço de e-mail:',
+	'sign-email' => 'Correio electrónico:',
 	'sign-indicates-req' => '<small><i><font color="red">*</font> indica um campo obrigatório.</i></small>',
 	'sign-hide-note' => '<small><i><font color="red">**</font> Nota: Informação não listada continuará visível a moderadores.</i></small>',
 	'sign-list-anonymous' => 'Listar como anónimo',
@@ -3393,14 +3394,14 @@ Leia o documento completo, e se desejar indicar o seu suporte, preencha o campos
 	'sign-list-hideextaddress' => 'Não listar cidade, estado, código postal ou país',
 	'sign-list-hidephone' => 'Não listar telefone',
 	'sign-list-hidebday' => 'Não listar idade',
-	'sign-list-hideemail' => 'Não listar email',
+	'sign-list-hideemail' => 'Não listar correio electrónico',
 	'sign-submit' => 'Assinar documento',
-	'sign-information' => '<div class="noarticletext">Obrigado por tomar o seu tempo a ler todo o documento.
-Se concordar, por favor, indique o seu suporte preenchendo os campos necessários abaixo e clicando em "Assinar documento".
-Por favor, certifique-se que a sua informação pessoal está correta, e que teremos alguma forma de o contactar para verificar a sua identidade.
-Note que o seu endereço IP e outra informação identificativa serão registados por este formulário e usados por moderadores para eliminar assinaturas duplicadas e confirmar a exatidão da sua informação pessoal.
-Como a utilização de proxies abertos e anónimos previne a nossa possibilidade de realizar esta tarefa, assinatura provenientes de tais proxies provavelmente não serão contabilizadas.
-Se está atualmente ligado através de um servidor proxy, por favor, desligue-se deste e use uma ligação convencional durante a assinatura.</div>
+	'sign-information' => '<div class="noarticletext">Obrigado pelo tempo que dedicou a ler todo o documento.
+Se concorda com ele, por favor, indique o seu apoio preenchendo os campos necessários abaixo e clicando "Assinar documento".
+Por favor, certifique-se de que a sua informação pessoal está correcta e de que teremos alguma forma de contactá-lo para verificar a sua identidade.
+Note que o seu endereço IP e outras informações identificativas serão registados por este formulário e usados pelos moderadores para eliminar assinaturas duplicadas e confirmar a exactidão da sua informação pessoal.
+Como a utilização de proxies abertos e anónimos inibe a nossa capacidade de realizar esta tarefa, as assinaturas provenientes de tais proxies provavelmente não serão contabilizadas.
+Se está presentemente ligado através de um servidor proxy, por favor, desligue-se deste e use uma ligação convencional durante a assinatura.</div>
 
 $1',
 	'sig-success' => 'O documento foi assinado com sucesso.',
@@ -3416,20 +3417,20 @@ $1',
 	'sign-viewfield-ip' => 'Endereço IP',
 	'sign-viewfield-agent' => 'Agente utilizador',
 	'sign-viewfield-phone' => 'Telefone',
-	'sign-viewfield-email' => 'E-mail',
+	'sign-viewfield-email' => 'Correio electrónico',
 	'sign-viewfield-age' => 'Idade',
 	'sign-viewfield-options' => 'Opções',
 	'sign-viewsigs-intro' => 'Mostradas abaixo estão as assinaturas registadas para <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
-	'sign-sigadmin-currentlyopen' => 'Assinatura está atualmente ativada para este documento.',
+	'sign-sigadmin-currentlyopen' => 'Assinatura está presentemente activada para este documento.',
 	'sign-sigadmin-close' => 'Desactivar assinaturas',
-	'sign-sigadmin-currentlyclosed' => 'Assinatura está atualmente desativada para este documento.',
+	'sign-sigadmin-currentlyclosed' => 'Assinatura está presentemente desactivada para este documento.',
 	'sign-sigadmin-open' => 'Ativar assinaturas',
 	'sign-signatures' => 'Assinaturas',
-	'sign-sigadmin-closesuccess' => 'Assinaturas desativadas com sucesso.',
-	'sign-sigadmin-opensuccess' => 'Assinaturas ativadas com sucesso.',
+	'sign-sigadmin-closesuccess' => 'Assinaturas desactivadas com sucesso.',
+	'sign-sigadmin-opensuccess' => 'Assinaturas activadas com sucesso.',
 	'sign-viewsignatures' => 'ver assinaturas',
 	'sign-closed' => 'fechado',
-	'sign-error-closed' => 'A possibilidade de assinar este documento está atualmente desativada.',
+	'sign-error-closed' => 'A possibilidade de assinar este documento está presentemente desactivada.',
 	'sig-anonymous' => '<i>Anónimo</i>',
 	'sig-private' => '<i>Privado</i>',
 	'sign-sigdetails' => 'Detalhes da assinatura',
@@ -3452,10 +3453,10 @@ $1',
 	'sign-reviewsig' => 'Rever assinatura',
 	'sign-review-comment' => 'Comentar',
 	'sign-submitreview' => 'Submeter revisão',
-	'sign-uniquequery-similarname' => 'Nome similar',
+	'sign-uniquequery-similarname' => 'Nome semelhante',
 	'sign-uniquequery-similaraddress' => 'Endereço semelhante',
 	'sign-uniquequery-similarphone' => 'Telefone semelhante',
-	'sign-uniquequery-similaremail' => 'Email similar',
+	'sign-uniquequery-similaremail' => 'Correio electrónico semelhante',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] assinou [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 

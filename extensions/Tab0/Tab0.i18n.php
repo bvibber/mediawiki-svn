@@ -294,10 +294,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'tab0-desc' => 'Adiciona uma pestana "0", que liga à página de edição da primeira secção da página',
+	'tab0-desc' => 'Adiciona um separador "0", que liga à página de edição da primeira secção da página',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

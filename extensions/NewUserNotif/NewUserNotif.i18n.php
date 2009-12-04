@@ -524,11 +524,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'newusernotifsubj' => 'Nova Notificação de Utilizador para $1',
-	'newusernotif-desc' => 'Envia uma notificação por e-mail quando uma conta de utilizador é criada',
+	'newusernotif-desc' => 'Envia notificações por correio electrónico quando são criadas contas de utilizador',
 	'newusernotifbody' => 'Olá, $1,
 
 Uma nova conta de utilizador, $2, foi criada em $3 em $4.',

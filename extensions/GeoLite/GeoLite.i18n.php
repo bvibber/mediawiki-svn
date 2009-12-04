@@ -89,10 +89,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'geolite-desc' => 'הפנייה ל־GeoIp קלת משקל',
+	'geolite-desc' => 'הפניה ל־GeoIp קלת משקל',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

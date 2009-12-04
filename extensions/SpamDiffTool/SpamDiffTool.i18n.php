@@ -1155,13 +1155,14 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'spamdifftool' => 'Gerir a lista negra de spam',
 	'spamdifftool-desc' => 'Fornece uma forma básica de adicionar novas entradas à lista negra de spam a partir de páginas de diferenças',
-	'spamdifftool_cantedit' => 'As nossas desculpas - você não tem permissão para editar a lista negra de spam.',
+	'spamdifftool_cantedit' => "Desculpe, mas não tem permissão para editar a lista negra de ''spam''.",
 	'spamdifftool_notext' => "Não há qualquer texto para adicionar à lista negra de spam.
 Clique <a href='$1'>aqui</a> para continuar.",
 	'spamdifftool_confirm' => "Confirme que pretende adicionar estas entradas à lista negra de spam.

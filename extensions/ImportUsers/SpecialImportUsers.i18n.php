@@ -1408,6 +1408,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1429,7 +1430,7 @@ $messages['pt'] = array(
 	'importusers-log-summary-updated' => 'Actualizado',
 	'importusers-login-name' => 'Nome de conta',
 	'importusers-password' => 'palavra-chave',
-	'importusers-email' => 'email',
+	'importusers-email' => 'correio electrónico',
 	'importusers-realname' => 'nome real',
 	'right-import_users' => 'Importar utilizadores em bloco',
 );

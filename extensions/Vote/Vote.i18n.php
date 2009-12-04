@@ -309,6 +309,7 @@ $messages['ckb-arab'] = array(
 /** Czech (Česky)
  * @author Kuvaly
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'vote' => 'Hlasování',
@@ -329,8 +330,8 @@ riddler|Riddler',
 	'vote-results-none' => 'Momentálně nejsou zaznamenány žádné hlasy.',
 	'vote-login' => 'Abyste mohli hlasovat, musíte [$1 se přihlásit].',
 	'vote-invalid-choice' => 'Musíte vybrat jednu z dostupných možností',
-	'right-vote' => 'Hlasovat',
-	'right-voteadmin' => 'Zobrazit výsledky hlasování',
+	'right-vote' => 'Hlasování',
+	'right-voteadmin' => 'Prohlížení výsledků hlasování',
 );
 
 /** Welsh (Cymraeg)

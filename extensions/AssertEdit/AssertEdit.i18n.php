@@ -395,6 +395,13 @@ $messages['jv'] = array(
 	'assert_edit_message' => 'Pandhedhesan sing dikarepaké ($1) gagal.',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'assert_edit_title' => 'მტკიცება არ სრულდება',
+);
+
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
 	'assert_edit_title' => 'ماقۇلداۋ سٵتسٸز',

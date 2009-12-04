@@ -200,8 +200,18 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
+	'scanset_no_name' => 'Fazi : Rankout a reoc\'h reiñ un anv d\'an hollad a restroù niverelaet, da skouer &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => "Fazi : Mankout a ra pe n'eo ket mat strobad ar restroù niverelaet",
+	'scanset_unrecognised_index_format' => 'Fazi : dianav eo ar furmad index',
+	'scanset_opendir_error' => "Fazi : N'eo ket posupl digeriñ ar c'havlec'h $1",
+	'scanset_no_files' => "Fazi : N' ez eus restr ebet er c'havlec'h spisaet.",
+	'scanset_no_volumes' => "Fazi : N'eo ket bet kavet kavlec'h ar gevrenn",
+	'scanset_missing_index_file' => "Fazi : N'eo ket bet kavet ar restr index $1",
+	'scanset_index_file_error' => 'Fazi : Ur fazi a zo e furmad ar restr index el linenn $1',
+	'scanset_invalid_volume' => "Fazi : n'eo ket mat ar gevrenn",
 	'scanset_next' => "War-lerc'h &lt;",
 	'scanset_prev' => '&lt; Kent',
 );

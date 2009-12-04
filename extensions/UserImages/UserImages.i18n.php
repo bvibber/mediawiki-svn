@@ -610,6 +610,16 @@ $messages['ru'] = array(
 	'userimages-noimages' => 'Участник $1 не загружал изображений.',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'userimages-desc' => '<code><nowiki><userimage /></nowiki></code> සමඟ පරිශීලක විසින් උඩුගත කළ ඡායාරූපවල ගැලරිය ජනනය කිරීම',
+	'userimages-caption' => '$1 විසින් උඩුගත කළ ඡායාරූප',
+	'userimages-noname' => 'කිසිවක් සපයා නොමැතිවීම හෝ අවලංගු පරිශීලක නාමයකි.',
+	'userimages-noimages' => '$1ට ඡායාරූප උඩුගතකිරීම් නොමැත.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

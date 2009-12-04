@@ -613,11 +613,11 @@ Når du merker eller fjerner merking av flere sider, kan du holde nede «Shift»
  */
 $messages['oc'] = array(
 	'watchsubpages' => 'Observar las sospaginas',
-	'watchsubpages-addedtowatchlist' => 'La seguenta es estada aponduda a vòstra lista de seguit.',
+	'watchsubpages-addedtowatchlist' => 'La seguenta es estada aponduda a vòstra lista de seguiment.',
 	'watchsubpages-addtitles' => 'Apondre de paginas',
-	'watchsubpages-addtitlestowatchlist' => 'Apondre de paginas a la lista de seguit',
+	'watchsubpages-addtitlestowatchlist' => 'Apondre de paginas a la lista de seguiment',
 	'watchsubpages-desc' => 'Apondre rapidament [[Special:WatchSubpages|totas las sospaginas]] a la tièra de seguit.',
-	'watchsubpages-form' => "Seleccionar las paginas d'apondre a vòstra lista de seguit çaijós.
+	'watchsubpages-form' => "Seleccionar las paginas d'apondre a vòstra lista de seguiment çaijós.
 Per apondre una pagina, marcatz la casa aprèp ela, e clicatz « Apondre de paginas ».
 
 Per marcar o desmarcar mai d'una pagina, lo fach de téner quichada la tòca « Majuscula » permet de seleccionar tota una seria de casa en clicant de part e d’autra de la rengada de seleccionar.",

@@ -162,7 +162,7 @@ $messages['ckb-arab'] = array(
  */
 $messages['cs'] = array(
 	'whatismyip' => 'Jaká je moje IP',
-	'whatismyip-desc' => 'Zobrazí IP adresu aktuálního uživatele na [[Special:WhatIsMyIP|speciální stránce]]',
+	'whatismyip-desc' => 'Zobrazí [[Special:WhatIsMyIP|IP adresu aktuálního uživatele]]',
 	'whatismyip-out' => 'Vaše IP adresa:',
 	'right-whatismyip' => 'Zjišťování [[Special:WhatIsMyIP|vlastní IP adresy]]',
 );

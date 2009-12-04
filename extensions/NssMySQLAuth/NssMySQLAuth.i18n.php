@@ -793,13 +793,14 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'accountmanager' => 'Gestor de contas',
 	'am-username' => 'nome de utilizador',
-	'am-email' => 'e-mail',
+	'am-email' => 'correio electrónico',
 	'am-active' => 'activo',
 	'am-updated' => 'As suas alterações foram gravadas com sucesso',
 	'nss-desc' => 'Um "plugin" para autenticar numa base de dados libnss-mysql. Contém um [[Special:AccountManager|gestor de contas]]',
@@ -807,7 +808,7 @@ $messages['pt'] = array(
 	'nss-save-changes' => 'Gravar alterações',
 	'nss-create-account-header' => 'Criar nova conta',
 	'nss-create-account' => 'Criar conta',
-	'nss-no-mail' => 'Não enviar email',
+	'nss-no-mail' => 'Não enviar correio electrónico',
 	'nss-welcome-mail' => 'Uma conta com nome de utilizador $1 e palavra-chave $2 foi criada para si.',
 	'nss-welcome-mail-subject' => 'Criação de conta',
 	'nss-db-error' => 'Erro na leitura da base de dados de autenticação',

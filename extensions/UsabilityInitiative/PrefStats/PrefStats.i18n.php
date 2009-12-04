@@ -1624,8 +1624,8 @@ $messages['pt'] = array(
 	'prefstats' => 'Estatísticas de preferências',
 	'prefstats-desc' => 'Monitorize estatísticas sobre quantos utilizadores têm certas preferências ativadas',
 	'prefstats-title' => 'Estatísticas de preferências',
-	'prefstats-list-intro' => 'Atualmente, as seguintes preferência estão a ser monitorizadas.
-Clique numa para ver as estatísticas sobre ela.',
+	'prefstats-list-intro' => 'Neste momento estão a ser monitorizadas as seguintes preferências.
+Clique numa delas para ver as estatísticas dessa preferência.',
 	'prefstats-noprefs' => 'As preferências não estão a ser monitorizadas.
 Para monitorizá-las configure $wgPrefStatsTrackPrefs.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|utilizador activou|utilizadores activaram}} esta preferência desde que são coligidas estatísticas de preferências

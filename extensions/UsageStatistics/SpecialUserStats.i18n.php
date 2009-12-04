@@ -1899,6 +1899,40 @@ $messages['ru'] = array(
 	'right-viewsystemstats' => 'просмотр [[Special:UserStats|статистики использования вики]]',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'specialuserstats' => 'භාවිතයේ සංඛ්‍යා දත්ත',
+	'usagestatistics' => 'භාවිතයේ සංඛ්‍යා දත්ත',
+	'usagestatistics-desc' => 'තනි වශයෙන් පරිශීලකයිනිගේ හා සමස්ථයක් වශයෙන් විකි භාවිතාවේ සංඛ්‍යා දත්ත පෙන්වන්න',
+	'usagestatisticsfor' => '<h2> [[User:$1|$1]] සඳහා භාවිතා සංඛ්‍යා දත්ත</h2>',
+	'usagestatisticsforallusers' => '<h2>සියලුම පරිශීලකයින් සඳහා භාවිතා සංඛ්‍යා දත්ත</h2>',
+	'usagestatisticsinterval' => 'විවේකය:',
+	'usagestatisticsnamespace' => 'නාමඅවකාශය:',
+	'usagestatisticsexcluderedirects' => 'ආපසු හැරවීම් බැහැර කරන්න',
+	'usagestatistics-namespace' => 'මේ [[Special:Allpages/$1|$2]] නාමඅවකාශය මත සංඛ්‍යා දත්තය.',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Redirects]] ගිණුමට ගෙන නැත.',
+	'usagestatisticstype' => 'වර්ගය:',
+	'usagestatisticsstart' => 'ආරම්භක දිනය:',
+	'usagestatisticsend' => 'අවසන් දිනය:',
+	'usagestatisticssubmit' => 'සංඛ්‍යා දත්ත ජනනය',
+	'usagestatisticsnostart' => 'කරුණාකර ආරම්භක දිනයක් සඳහන් කරන්න',
+	'usagestatisticsnoend' => 'කරුණාකර අවසන් දිනයක් සඳහන් කරන්න',
+	'usagestatisticsbadstartend' => '<b>අයහපත් <i>ආරම්භය</i> සහ/හෝ <i>අවසානය</i>දිනය!</b>',
+	'usagestatisticsintervalday' => 'දිනය',
+	'usagestatisticsintervalweek' => 'සතිය',
+	'usagestatisticsintervalmonth' => 'මාසය',
+	'usagestatisticsincremental' => 'වෘද්ධී',
+	'usagestatisticsincremental-text' => 'වෘද්ධි',
+	'usagestatisticscumulative' => 'සමුච්ඡිත',
+	'usagestatisticscumulative-text' => 'සමුච්ඡිත',
+	'usagestatisticscalselect' => 'තෝරන්න',
+	'usagestatistics-editindividual' => '$1 තනි පරිශීලකයා සංඛ්‍යා දත්ත සංස්කරණය කරයි',
+	'usagestatistics-editpages' => '$1 තනි පරිශීලකයා සංඛ්‍යා දත්ත පිටු ලකුණු කරයි',
+	'right-viewsystemstats' => '[[Special:UserStats|විකි භාවිතා සංඛ්‍යා දත්ත]] බලන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

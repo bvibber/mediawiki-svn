@@ -547,9 +547,9 @@ $2',
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'email-desc' => 'Permite que sejam adicionados cabeçalhos/rodapés personalizados aos emails dos utilizadores.',
+	'email-desc' => 'Permite adicionar cabeçalhos e rodapés personalizados aos correios electrónicos dos utilizadores.',
 	'email_footer' => '----------------------------------------------------------------------------
-Este email foi-lhe enviado pelo sistema de email da {{SITENAME}} por $1.
+Esta mensagem foi-lhe enviada pelo sistema de correio da {{SITENAME}} por $1.
 
 $2',
 );

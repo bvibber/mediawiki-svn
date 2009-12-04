@@ -720,6 +720,20 @@ $messages['ru'] = array(
 	'layouts_tagline' => "Эта страница была создана с помощью макета '''$1'''.",
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'layouts-desc' => 'පිටු සඳහා පොදු ව්‍යුහයක් දිරිමත් කිරීමට සංස්කරණය කළ හැකි "පිරිසැලසුම්" සමඟ අළුතින්ම නිර්මාණය කළ පිටු ජනප්‍රිය කිරීම',
+	'layouts_title' => 'පිටුවක් නිර්මාණය කරන්න',
+	'layouts_chooselayout' => '$1 සඳහා පිරිසැලසුමක් තෝරාගන්න:',
+	'layouts_nolayout' => 'පිරිසැලසුමක් නැත',
+	'layouts_continue' => 'දිගටම කරගෙන යන්න',
+	'layouts_choosecategory' => '$1 සඳහා ප්‍රවර්ගයක් තෝරාගන්න:',
+	'layouts_unknown' => 'නාඳුනන',
+	'layouts_tagline' => "'''$1''' පිරිසැලැස්ම මඟින් මෙම පිටුව ජනනය කරන ලදී.",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

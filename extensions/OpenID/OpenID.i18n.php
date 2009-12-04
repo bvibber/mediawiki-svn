@@ -757,17 +757,14 @@ Pokud chcete pro přihlašování v budoucnu používat OpenID, můžete [[Speci
 Pokud ne, zkuste tlačátko „Continue“ (Pokračovat).',
 	'openidclientonlytext' => 'Nemůžete používat účty z této wiki jako OpenID na jinýh webech.',
 	'openidloginlabel' => 'OpenID URL',
-	'openidlogininstructions' => "{{SITENAME}} podporuje standard [http://openid.net/ OpenID] pro sjednocené přihlašování na webové stránky.
-OpenID vám umožňuje přihlašovat se na množství různých webových stránek bez nutnosti používat pro každou jiné heslo. (Přečtěte si [http://en.wikipedia.org/wiki/OpenID článek o OpenID na Wikipedii])
+	'openidlogininstructions' => '{{SITENAME}} podporuje standard [http://openid.net/ OpenID] pro sjednocené přihlašování na webové stránky.
+OpenID vám umožňuje přihlašovat se na množství různých webových stránek bez nutnosti používat pro každou jiné heslo.
+(Více informací se dočtete v [http://en.wikipedia.org/wiki/OpenID článku o OpenID na Wikipedii].)
 
-Pokud už máte na {{GRAMMAR:6sg|{{SITENAME}}}} učet, můžete se [[Special:UserLogin|přihlásit]] pomocí uživatelského jména a heslo jako obvykle. Pokud chcete v budoucnosti pouívat OpenID, můžete po normálním přihlášení [[Special:OpenIDConvert|převést svůj účet na OpenID]].
+Pokud už máte na {{GRAMMAR:6sg|{{SITENAME}}}} účet, můžete se [[Special:UserLogin|přihlásit]] pomocí uživatelského jména a hesla jako obvykle.
+Pokud chcete v budoucnosti používat OpenID, můžete po normálním přihlášení [[Special:OpenIDConvert|převést svůj účet na OpenID]].
 
-Existuje množství [http://wiki.openid.net/Public_OpenID_providers veřejných poskytovatelů OpenID] a možná už máte učet s podporou OpenID u jiného poskytovatele.
-
-; Jiné wiki: Pokud máte účet na wiki s podporou OpenID, jako např. [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] nebo [http://kei.ki/ Keiki], můžete se přihlásit na {{GRAMMAR:4sg|{{SITENAME}}}}
-; [http://openid.yahoo.com/ Yahoo!]: Pokud máte učet Yahoo!, můžete se na tuto wiki přihlásit zadáním vašeho OpenID, které poskytuje Yahoo!, do pole výše. Yahoo! OpenID URL bývají ve tvaru ''<nowiki>https://me.yahoo.com/uzivatelskejmeno</nowiki>''.
-; [http://dev.aol.com/aol-and-63-million-openids AOL]: Pokud máte účet [http://www.aol.com/ AOL], jako například účet [http://www.aim.com/ AIM], můžete se přihlásit na {{GRAMMAR:4sg|{{SITENAME}}}} zadáním vaeho OpenID, které poskytuje AOL, do pole výše. AOL OpenID URL bývají ve tvaru ''<nowiki>http://openid.aol.com/uzivatelskejmeno</nowiki>''. Vaše uživatelské jméno by mělo mít jen malá písmena a žádné mezery.
-; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox]: Pokud máte blog na některé z této služeb, zadejte do pole výše URL svého blogu. Například ''<nowiki>http://uzivatelskejmeno.blogspot.com/</nowiki>'', ''<nowiki>http://uzivatelskejmeno.wordpress.com/</nowiki>'', ''<nowiki>http://uzivatelskejmeno.livejournal.com/</nowiki>'' nebo ''<nowiki>http://uzivatelskejmeno.vox.com/</nowiki>''.",
+Existuje množství [http://openid.net/get/ poskytovatelů OpenID], možná už také máte účet s podporou OpenID v rámci jiné služby.',
 	'openidupdateuserinfo' => 'Aktualizovat moje osobní informace',
 	'openiddelete' => 'Smazat OpenID',
 	'openiddelete-text' => 'Kliknutím na tlačítko „{{int:openiddelete-button}}“ odstraníte OpenID $1 z vašeho účtu.
@@ -3718,7 +3715,7 @@ Por favor, consulte um [[Special:ListUsers/sysop|administrador]].',
 	'openidrequired' => 'Requerido',
 	'openidnickname' => 'Alcunha',
 	'openidfullname' => 'Nome completo',
-	'openidemail' => 'Endereço de e-mail',
+	'openidemail' => 'Correio electrónico',
 	'openidlanguage' => 'Língua',
 	'openidtimezone' => 'Fuso horário',
 	'openidnotavailable' => 'A sua alcunha preferida ($1) já está em uso por outro utilizador.',

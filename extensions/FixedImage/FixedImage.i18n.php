@@ -158,6 +158,13 @@ $messages['eu'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> etiketa irudi gisa txertatzen du',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
+$messages['ext'] = array(
+	'fixedimage-desc' => 'Añii elementu <tt><nowiki><fundraising></nowiki></tt> cumu una imagin',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

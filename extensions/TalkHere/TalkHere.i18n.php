@@ -842,6 +842,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -854,7 +855,7 @@ Os responsáveis por este site não podem ser responsabilizados pelo conteúdo d
 	'talkhere-talkpage' => 'discussão',
 	'talkhere-notalk' => "''(sem comentários de momento)''",
 	'talkhere-addcomment' => 'adicionar comentário',
-	'talkhere-beforeinput' => 'Pode adicionar uma comentário abaixo',
+	'talkhere-beforeinput' => 'Pode adicionar um comentário abaixo',
 	'talkhere-loading' => 'carregando editor...',
 	'talkhere-collapse' => 'esconder editor',
 );

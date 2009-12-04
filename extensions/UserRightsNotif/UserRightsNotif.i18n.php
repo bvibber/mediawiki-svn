@@ -855,15 +855,15 @@ $messages['pt'] = array(
 	'userrightsnotifysubject' => 'Mudança de estatuto de utilizador em $1',
 	'userrightsnotifybody' => 'Olá $1
 
-Serve esta mensagem para informar que os seu estatuto de utilizador foi modificado em $2, de $3 para $4.
+Serve esta mensagem para informar que os seus grupos de utilizador foram modificados na $2, por $3 às $4.
 
-Adicionado: $5
-Removido: $6
+Adicionados: $5
+Removidos: $6
 
 Os melhores cumprimentos,
 
 $2',
-	'userrightsnotif-desc' => 'Enviar notificação por email a utilizadores que sofreram alteração de privilégios',
+	'userrightsnotif-desc' => 'Notifica por correio electrónico os utilizadores cujos privilégios forem alterados',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

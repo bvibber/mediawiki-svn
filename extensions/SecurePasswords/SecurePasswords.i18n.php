@@ -588,10 +588,11 @@ A deuv:",
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'securepasswords-desc' => 'Cria hashes de palavras-chaves mais seguros e adiciona um verificador da força da palavra-chave',
+	'securepasswords-desc' => 'Cria resumos criptográficos das palavras-chave mais seguros e adiciona um verificador da solidez da palavra-chave',
 	'securepasswords-valid' => 'A sua palavra-chave é inválida ou demasiado curta.
 Tem de:',
 	'securepasswords-minlength' => 'ter pelo menos $1 {{PLURAL:$1|caracter|caracteres}} de comprimento',

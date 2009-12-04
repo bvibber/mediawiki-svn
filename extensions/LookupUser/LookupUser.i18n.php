@@ -1072,23 +1072,24 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'lookupuser' => 'Procurar informação de utilizador',
-	'lookupuser-desc' => '[[Special:LookupUser|Retorna informação]] sobre um utilizador tal como o endereço de email e o ID',
+	'lookupuser-desc' => '[[Special:LookupUser|Obter informação]] sobre um utilizador tal como o correio electrónico e a identificação (ID)',
 	'lookupuser-intro' => 'Introduza um nome de utilizador para visualizar as preferências desse utilizador.',
 	'lookupuser-nonexistent' => 'Erro: Utilizador não existe',
-	'lookupuser-authenticated' => 'Autenticação por email: $1',
+	'lookupuser-authenticated' => 'autenticado em $1',
 	'lookupuser-not-authenticated' => 'não autenticado',
 	'lookupuser-id' => 'ID de utilizador: <tt>#$1</tt>',
-	'lookupuser-email' => 'Email: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-email' => 'Correio electrónico: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'não fornecido',
 	'lookupuser-realname' => 'Nome real: $1',
 	'lookupuser-registration' => 'Data de registo: $1',
 	'lookupuser-no-registration' => 'não registado',
 	'lookupuser-touched' => 'Registo de utilizador alterado pela última vez: $1',
-	'lookupuser-info-authenticated' => 'Autenticação de e-mail: $1',
+	'lookupuser-info-authenticated' => 'Autenticação do correio electrónico: $1',
 	'lookupuser-useroptions' => 'Opções de utilizador:',
 	'right-lookupuser' => 'Consultar preferências de utilizador',
 );

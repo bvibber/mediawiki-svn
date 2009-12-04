@@ -601,6 +601,28 @@ $messages['lb'] = array(
 	'security-restricttogroup' => 'Zougang zum Inhalt limitéiert fir Membere vu(n) "$1"',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'security' => 'Дневник на сигурност',
+	'security-desc' => 'Ја проширува заштитата на MediaWiki страницата, овозможувајќи ограничување на прегледувањето на содржините на страницата',
+	'security-logpage' => 'Дневник на сигурност',
+	'security-logpagetext' => 'Ова е дневник на дејства блокирани од [http://www.mediawiki.org/wiki/Extension:SimpleSecurity проширувањето SimpleSecurity].',
+	'badaccess-read' => "'''Предупредување:''' „$1“ е наведена тука, но немате доволно дозволи за да ја отворите.",
+	'security-info' => 'На оваа страница има $1',
+	'security-info-toggle' => 'сигурносни ограничувања',
+	'security-inforestrict' => '$1 е ограничен на $2',
+	'security-desc-LS' => '(важи бидејќи оваа страница се наоѓа во „$2 $1“)',
+	'security-desc-PR' => '(поставено преку јазичето „заштити“)',
+	'security-infosysops' => 'Не важат никакви ограничувања бидејќи вие членувате во групата „sysop“',
+	'security-manygroups' => 'групите $1 и $2',
+	'security-unchain' => 'Менувај дејства поединечно',
+	'security-type-category' => 'категорија',
+	'security-type-namespace' => 'именски простор',
+	'security-restricttogroup' => 'Отвори содржина ограничена на членови на „$1“',
+);
+
 /** Mongolian (Монгол)
  * @author Chinneeb
  */
@@ -760,7 +782,7 @@ $messages['pt'] = array(
 	'security-desc' => 'Incrementa a protecção de páginas do MediaWiki para permitir restrições à visualização do conteúdo de páginas',
 	'security-logpage' => 'Registo de segurança',
 	'security-logpagetext' => 'Este é um registo de acções bloqueadas pela [http://www.mediawiki.org/wiki/Extension:SimpleSecurity extensão SimpleSecurity].',
-	'badaccess-read' => 'Aviso: "$1" é referido aqui, mas você não tem permissões suficientes para o aceder.',
+	'badaccess-read' => "'''Aviso:''' \"\$1\" é referido aqui, mas não tem permissões suficientes para aceder ao registo.",
 	'security-info' => 'Há $1 nesta página',
 	'security-info-toggle' => 'restrições de segurança',
 	'security-inforestrict' => '$1 está limitado a $2',

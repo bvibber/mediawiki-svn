@@ -312,6 +312,13 @@ $messages['ru'] = array(
 	'javascript-desc' => 'Добавляет uniwiki.js на каждую страницу, содержащую код JavaScript, разделяемый расширениями Uniwiki',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'javascript-desc' => ' යුනුවිකි දිඟුවන් අතර බෙදාගෙන ඇති JavaScript කේත සහිත හැම පිටුවකටම  uniwiki.js එකතු කරයි',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

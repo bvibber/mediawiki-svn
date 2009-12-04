@@ -1709,7 +1709,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'povwatch' => 'Susvelhança de las guèrras d’edicions',
-	'povwatch_desc' => 'Extension permetent d’[[Special:PovWatch|apondre de paginas a la lista de seguit]] d’autres utilizaires',
+	'povwatch_desc' => 'Extension permetent d’[[Special:PovWatch|apondre de paginas a la lista de seguiment]] d’autres utilizaires',
 	'povwatch_no_session' => 'Error : Impossible de sometre lo formulari en seguida de la pèrda de las donadas de la sesilha.',
 	'povwatch_not_allowed_push' => 'Sètz pas un administrator per la susvelhança de las guèrras d’edicion. Podètz pas apondre los articles dins la lista correspondenta.',
 	'povwatch_already_subscribed' => 'Ja sètz inscrich(a) per la susvelhança de las guèrras d’edicion.',
@@ -1734,10 +1734,10 @@ $messages['oc'] = array(
 	'povwatch_subscribe_intro' => 'Sètz pas marcat(ada) sus la tièra de susvelhança de las guèrras d’edicions. Clicatz sul boton çaijós per vos marcar.',
 	'povwatch_subscribe' => 'Soscriure',
 	'povwatch_added' => 'apondut',
-	'right-povwatch_admin' => "Administrar los dreches d’utilizaire per l'ajust de paginas a la lista de seguit dels autres utilizaires.",
-	'right-povwatch_user' => 'Apond de paginas a la lista de seguit dels autres utilizaires',
+	'right-povwatch_admin' => "Administrar los dreches d’utilizaire per l'apondon de paginas a la lista de seguiment dels autres utilizaires.",
+	'right-povwatch_user' => 'Apond de paginas a la lista de seguiment dels autres utilizaires',
 	'action-povwatch_admin' => "administrar los dreches d'utilizaire per PovWatch",
-	'action-povwatch_user' => "apondre aquesta pagina a la lista de seguit d'autres utilizaires",
+	'action-povwatch_user' => "apondre aquesta pagina a la lista de seguiment d'autres utilizaires",
 );
 
 /** Ossetic (Иронау)

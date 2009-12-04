@@ -2675,6 +2675,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -2699,7 +2700,7 @@ $messages['pt'] = array(
 	'tasks_wontfix' => 'Não será corrigida',
 	'tasks_delete' => 'Eliminar',
 	'tasks_no_task_delete_title' => 'Não permitido',
-	'tasks_no_task_delete_texe' => 'Você não está autorizado a eliminar uma tarefa. Apenas administradores o podem fazer.',
+	'tasks_no_task_delete_texe' => 'Não está autorizado a eliminar uma tarefa. Apenas administradores o podem fazer.',
 	'tasks_action_delete' => 'A tarefa foi eliminada.',
 	'tasks_task_was_deleted' => 'A tarefa foi eliminada com sucesso.',
 	'tasks_reopen' => 'Reabrir tarefa',
@@ -2711,7 +2712,7 @@ $messages['pt'] = array(
 	'tasks_discussion_page_for' => 'Esta tarefa refere-se à página "$1". A lista de todas as tarefas para aquela página é $2.',
 	'tasks_sidebar_title' => 'Tarefas em aberto',
 	'tasks_here' => 'aqui',
-	'tasks_returnto' => 'Você será agora redirecionado. Se não for redirecionado dentro de alguns segundos, clique $1.',
+	'tasks_returnto' => 'Será redireccionado agora. Se não for redireccionado dentro de alguns segundos, clique $1.',
 	'tasks_see_page_tasks' => '(tarefas desta página)',
 	'tasks_task_is_assigned' => '(atribuída)',
 	'tasks_plain_text_only' => '(texto pleno, 256 carateres apenas)',
@@ -2722,10 +2723,10 @@ $messages['pt'] = array(
 	'tasks_event_on_creation_anon' => 'verificar',
 	'tasks_on_creation_comment' => 'Tarefa automática, gerada na criação de página',
 	'tasks_link_your_assignments' => 'atribuições em aberto',
-	'tasks_see_your_assignments' => 'Você tem atualmente $1 {{PLURAL:$1|atribuição|atribuições}} em aberto. Veja as suas $2.',
-	'tasks_my_assignments' => '{{PLURAL:$1|A sua atribuição atual|As suas atribuições atuais}}',
+	'tasks_see_your_assignments' => 'Tem actualmente $1 {{PLURAL:$1|atribuição|atribuições}} em aberto. Veja as suas $2.',
+	'tasks_my_assignments' => '{{PLURAL:$1|A sua atribuição actual|As suas atribuições actuais}}',
 	'tasks_table_header_page' => 'Página',
-	'tasks_you_have_no_assignments' => 'Você não tem nenhuma atribuição em aberto',
+	'tasks_you_have_no_assignments' => 'Não tem nenhuma atribuição em aberto',
 	'tasks_search_form_title' => 'Busca',
 	'tasks_search_tasks' => 'Tarefas',
 	'tasks_search_status' => 'Estado',

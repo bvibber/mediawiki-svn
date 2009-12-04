@@ -150,8 +150,11 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'importfreeimages' => 'Emporzhiañ skeudennoù frank',
 	'importfreeimages_owner' => 'Aozer',
+	'importfreeimages_importthis' => 'emporzhiañ se',
 	'importfreeimages_next' => "$1 war-lerc'h",
+	'importfreeimages_promptuserforfilename' => 'Mar plij lakait anv ar restr bal :',
 );
 
 /** Bosnian (Bosanski)

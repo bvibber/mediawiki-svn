@@ -1520,7 +1520,7 @@ $messages['pt'] = array(
 	'todo-tab' => 'tarefas',
 	'todo-new-queue' => 'novo',
 	'todo-mail-subject' => 'Tarefa finalizada na lista de tarefas de $1',
-	'todo-mail-body' => "Pediu um e-mail de confirmação da finalização de uma tarefa que inseriu na lista de tarefas ''online'' de $1.
+	'todo-mail-body' => "Pediu confirmação da finalização de uma tarefa que inseriu na lista de tarefas ''online'' de $1.
 
 Tarefa: $2
 Submetida a: $3
@@ -1542,7 +1542,7 @@ $4",
 	'todo-new-item' => 'Novo item',
 	'todo-issue-summary' => 'Sumário do problema:',
 	'todo-form-details' => 'Detalhes:',
-	'todo-form-email' => 'Para receber uma notificação por e-mail quando esta tarefa for finalizada, escreva o seu endereço aqui:',
+	'todo-form-email' => 'Para receber uma notificação por correio electrónico quando esta tarefa for finalizada, escreva o seu endereço aqui:',
 	'todo-form-submit' => 'Submeter pesquisa',
 	'right-todo' => 'Possuir lista de tarefas',
 	'right-todosubmit' => 'Restringir o privilégio de possuir uma lista de tarefas',
