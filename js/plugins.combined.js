@@ -1743,11 +1743,21 @@ if ( typeof context == 'undefined' ) {
 		'setSelection': function( options ) {
 			// TODO: IE
 			var sel = context.$iframe[0].contentWindow.getSelection();
-			// TODO: Can this be done in one call?
-			sel.removeAllRanges();
-			sel.extend( options.startContainer, options.start );
+			var sc = options.startContainer, ec = options.endContainer;
+			sc = sc.jquery ? sc[0] : sc;
+			ec = ec.jquery ? ec[0] : ec;
+			while ( sc.firstChild && sc.nodeName != '#text' )
+				sc = sc.firstChild;
+			while ( ec.firstChild && ec.nodeName != '#text' )
+				ec = ec.firstChild;
+			// TODO: Can this be done in one call? sel.addRange()?
+			//sel.removeAllRanges();
+			sel.extend( sc, options.start );
+			//if ( sel.
 			sel.collapseToStart();
-			sel.extend( options.endContainer, options.end );
+			if ( options.end != options.start || sc != ec )
+				sel.extend( ec, options.end );
+			
 		},
 		/**
 		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()
@@ -1770,6 +1780,20 @@ if ( typeof context == 'undefined' ) {
 			if ( force || y < body.scrollTop() || y > body.scrollTop() + body.height() )
 				body.scrollTop( y );
 			$element.trigger( 'scrollToTop' );
+		},
+		/**
+		 * Get the first element before the selection matching a certain selector
+		 * @param selector Selector to match. Defaults to '*'
+		 * @param getAll If true, get all matching elements before the selection
+		 */
+		'beforeSelection': function( selector, getAll ) {
+			if ( typeof selector == 'undefined' )
+				selector = '*';
+			var retval = [];
+			var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
+			// Start at the selection's start and traverse the DOM backwards
+			var e = range.startContainer;
+			//TODO continue
 		}
 	};
 	

@@ -75,7 +75,7 @@ js2AddOnloadHook( function() {
 						labelMsg: 'wikieditor-toolbar-tool-bold',
 						type: 'button',
 						icon: {
-							'default': 'format-bold.png'/*,
+							'default': 'format-bold.png',
 							'en': 'format-bold-B.png',
 							'de': 'format-bold-F.png',
 							'fr': 'format-bold-G.png',
@@ -83,7 +83,7 @@ js2AddOnloadHook( function() {
 							'nl': 'format-bold-V.png',
 							'pt': 'format-bold-N.png',
 							'pt-br': 'format-bold-N.png',
-							'pl': 'format-bold-P.png'*/
+							'pl': 'format-bold-P.png'
 						},
 						action: {
 							type: 'encapsulate',
@@ -101,7 +101,7 @@ js2AddOnloadHook( function() {
 						labelMsg: 'wikieditor-toolbar-tool-italic',
 						type: 'button',
 						icon: {
-							'default': 'format-italic.png'/*,
+							'default': 'format-italic.png',
 							'en': 'format-italic-I.png',
 							'de': 'format-italic-K.png',
 							'fr': 'format-italic-I.png',
@@ -109,7 +109,7 @@ js2AddOnloadHook( function() {
 							'nl': 'format-italic-C.png',
 							'pt': 'format-italic-I.png',
 							'pt-br': 'format-italic-I.png',
-							'pl': 'format-italic-K.png'*/
+							'pl': 'format-italic-K.png'
 						},
 						action: {
 							type: 'encapsulate',
