@@ -1,9 +1,10 @@
 /*  
-* EmbedVideo Object is the base class for html5 video tag javascript abstration library
-* EmbedVideo include a few subclasses: 
-*  mediaPlayer represents a media player plugin. (like java, vlc or native)
-*  mediaElement used to represent source media elements	
-*  ctrlBuilder handles skinning of the player controls
+* embedPlayer is the base class for html5 video tag javascript abstraction library
+* embedPlayer include a few subclasses:
+* 
+*  mediaPlayer Media player embed system ie: java, vlc or native.
+*  mediaElement Represents source media elements	
+*  ctrlBuilder Handles skinning of the player controls
 * 
 */
 
@@ -65,7 +66,7 @@ loadGM( {
 } );
 
 /*
-* The default video attributes supported by embedVideo
+* The default video attributes supported by embedPlayer
 */ 
 var default_video_attributes = {
 	/* 
@@ -88,26 +89,26 @@ var default_video_attributes = {
 	"height" : null,
 
 	/* 
-	* Base html5 video element attributes
+	* Base html5 video element attributes / states
 	* also see:  http://www.whatwg.org/specs/web-apps/current-work/multipage/video.html
 	*/
-	
+
 	// Media src URI, can be relative or absolute URI	
 	"src" : null,
 	
-	// Poster attribute for displaying a placeholder before playing the video
-	"poster" 
+	// Poster attribute for displaying a place holder image before loading or playing the video
+	"poster": null, 
 	
 	// Autoplay if the media should start playing 
 	"autoplay" : false,
 	
-	// If the controlls should be displayed
+	// If the player controls should be displayed
 	"controls" : true,
 	
 	// Video starts "paused" 
 	"paused" : true,
 	
-	// ReadyState is a default attribute for video element
+	// ReadyState an attribute informs clients of video loading state: 
 	// see: http://www.whatwg.org/specs/web-apps/current-work/#readystate	
 	"readyState" : 0,  
 	
@@ -117,7 +118,7 @@ var default_video_attributes = {
 	// Current playback position 
 	"currentTime"  :0, 
 	
-	// Media duration this value is populated via 
+	// Media duration: Value is populated via 
 	//  custom durationHint attribute or via the media file once its played
 	"duration"  :null,   
 	
@@ -125,7 +126,7 @@ var default_video_attributes = {
 	"muted" : false,
 	
 	/*
-	* Custom attributes for embedVideo player:
+	* Custom attributes for embedPlayer player:
 	* (not part of the html5 video spec)  
 	*/
 	
@@ -138,7 +139,7 @@ var default_video_attributes = {
 	// A wikiTitleKey for looking up subtitles, credits and related videos
 	"wikiTitleKey" : null,
 	
-	// ROE url (for xml based metadata)
+	// ROE url ( for xml based metadata )
 	// also see: http://wiki.xiph.org/ROE
 	"roe" : null,
 	
@@ -162,193 +163,309 @@ var default_video_attributes = {
 	"download_link" : true,
 	
 	// Content type of the media
-	"type" :null	  
+	"type" : null	  
 };
-/*
- * the base source attribute checks
+
+/**
+ * The base source attribute checks
  */
-var mv_default_source_attr = new Array(
+var default_source_attributes = new Array(
+	// source id
 	'id',
+	
+	// media url
 	'src',
+	
+	// api url ( used for timed text sources ) 
 	'apisrc',
+	
+	// titleKey ( used for api lookups )  
 	'titleKey',
+	
+	// Title string for the source asset 
 	'title',
-	'URLTimeEncoding', // boolean if we support temporal url requests on the source media
+	
+	// boolean if we support temporal url requests on the source media
+	'URLTimeEncoding', 
+	
+	// Media has a startOffset ( used for plugins that 
+	// display ogg page time rather than presentation time 
 	'startOffset',
 	
+	// A hint to the duration of the media file so that duration
+	// can be displayed in the player without loading the media file
 	'durationHint',
+	
+	// Media start time
 	'start',
+	
+	// Media end time
 	'end',
 	
+	// If the source is the default source
 	'default',
+	
+	// Language key used for subtitle tracks
 	'lang'
 );
+
 // set the dismissNativeWarn flag: 
 _global['dismissNativeWarn'] = false;
-/*
-* Converts all occurrences of <video> tag into video object
+
+/**
+* Adds jQuery binding for embedPlayer  
 */
-function mv_video_embed( swap_done_callback, force_id ) {
-	// check call stack
-	mvEmbed.init( swap_done_callback, force_id );
-}
-mvEmbed = {
-	// flist stores the set of functions to run after the video has been swapped in. 
-	flist:new Array(),
-	init:function( swap_callback, force_id ) {
-		var _this = this;
+( function( $ ) {
+
+	/**
+	* The base embedPlayers function converts all 
+	* video, audio, playlist tags into javascript player interfaces 
+	*
+	* @param  {Object} attributes Attributes applied to all players
+	* @param [ Optional ] {Function} callback Function to be called once player interfaces are ready
+	*/
+	$.embedPlayers = function( attributes, callback ){
+		$( 'video,audio,playlist' ).embedPlayer( attributes, callback );
+	}
+	
+	/**		
+	* Selector based embedPlayer jQuery binding
+	*
+	* Rewrites all tags via a given selector
+	* 
+	* @param [ Optional ] {Object} attributes The embedPlayer options for the given video interface.
+	* 	Attributes Object can inclue any key value pair that would otherwise be
+	*   an attribute in the html element. 
+	*	
+	*	also see: default_video_attributes
+	*
+	* @param [ Optional ] {Function} callback Function to be called once video interfaces are ready
+	*
+	*/
+	$.fn.embedPlayer = function( attributes, callback ){
 		
-		if ( swap_callback )
-			mvEmbed.flist.push( swap_callback );
-		// Get mv_embed location if it has not been set
-		js_log( 'mvEmbed:init: ' + mw.version );
+		//Handle optional include of attributes argument:
+		if( typeof attributes == 'function' && typeof( callback ) != 'function' )
+			callback = attributes;		
 		
-		var loadPlaylistLib = false;
+		// Create the Global Embed Player Manager ( if not already created )  
+		if( ! mw.playerManager ) 
+			mw.playerManager = new EmbedPlayerManager(); 
 		
-		// Setup the selector (should be a configuration option) 
-		if ( force_id == null && force_id != '' ) {
-			var j_selector = 'video,audio,playlist';
-		} else {
-			var j_selector = '#' + force_id;
-		}
-		js_log( 'EmbedVideo:: rewrite j_selector:: ' + j_selector );
+		//Add the current callback 
+		if( typeof callback == 'function' )  
+			mw.playerManager.addCallback( callback );
+		
+		// Pointer to Selector:
+		var j_selector = this.selector;
+				
 		// Process selected elements: 
 		// ie8 does not play well with the jQuery video,audio,playlist selector use native:			
-		if ( $j.browser.msie && $j.browser.version >= 8 ) {
-			jtags = j_selector.split( ',' );
+		if ( $.browser.msie && $j.browser.version >= 8 ) {
+			var ie_compatible_selector = '';
+			var jtags = j_selector.split( ',' );
+			var coma = '';
 			for ( var i = 0; i < jtags.length; i++ ) {
-				if (	jtags[i].indexOf( '#' ) === 1 ) {
-					_this.doElementSwap( $j( j_selector ).get( 0 ) );
-				} else {
-					$j( document.getElementsByTagName( jtags[i] ) ).each( function() {
-						_this.doElementSwap( this );
-					} );
+				if ( jtags[i] === 'video' || 
+					 jtags[i] === 'audio' ||
+					 jtags[i] === 'playlist' ) {
+					// Use native ElementsByTagName selector 
+					$( document.getElementsByTagName( jtags[i] ) ).each( function() {
+						mw.playerManager.addElement( this, attributes);
+					} );					
+				}else{
+					ie_compatible_selector +=  coma + jtags[i]
+					coma = ',';
 				}
 			}
-		} else {
-			$j( j_selector ).each( function() {
-				_this.doElementSwap( this );
-			} );
-		}
-		// Check clips ready to call swap_callback now in ( mvEmbed.flist )
-		this.checkClipsReady();
-	},
-	doElementSwap: function( element ) {
-		if ( $j( element ).attr( "id" ) == '' ) {
-			$j( element ).attr( "id", 'v' + mw.player_list.length );
-		}
-		js_log( "mvEmbed::rewrite:: " + $j( element ).attr( "id" ) + ' tag: ' + element.tagName.toLowerCase() );
+			//Set the selector to IE compatible set and continue processing
+			j_selector = ie_compatible_selector;			
+		} 
+		// Run the selector
+		$j( j_selector ).each( function() {
+			mw.playerManager.addElement( this, attributes);
+		} );
 		
-		// Store a global reference to the id	
-		mw.player_list.push( $j( element ).attr( "id" ) );
+		// Once we are done adding new players start to check if players are ready:
+		mw.playerManager.waitPlayersReadyCallback(); 
+		
+	}	
+
+} )( jQuery );
+
+/**
+* EmbedPlayerManager
+*
+* Mannages calls to embed video interfaces  
+*/
+var EmbedPlayerManager = function( ) {
+	// Create a Player Manage
+	return this.init( );
+};
+EmbedPlayerManager.prototype = {
+	
+	// Functions to run after the video interface is ready
+	callbackFunctions : null,
+	
+	// A list of players being managed by the EmbedPlayerManager
+	playerList : null,
+	
+	/**
+	* Constructor initialises callbackFunctions and playerList  
+	*/
+	init: function( ) {	
+		this.callbackFunctions = new Array();
+		this.playerList = new Array();
+	},
+	
+	/**
+	* Adds a callback to the callbackFunctions list
+	*/
+	addCallback: function( callback ) {
+		this.callbackFunctions.push( callback );
+	},
+	
+	/**
+	* Adds an Element for the embedPlayer to rewrite
+	*
+	*  uses embedPlayer interface on audio / video elements
+	*  uses mvPlayList interface on playlist elements
+	*
+	* @param {Element} element DOM element to be swaped 
+	* @param [ Optional ] {Object} attributes Extra attributes to apply to the player interface 
+	*/
+	addElement: function( element,  attributes ) {
+		if ( $j( element ).attr( "id" ) == '' ) {
+			$j( element ).attr( "id", 'v' + this.playerList.length );
+		}
+		js_log( "mvEmbed::rewrite:: " + $j( element ).attr( "id" ) + ' tag: ' + element.tagName.toLowerCase() );		
+		
+		// Add the element id to playerList
+		this.playerList.push( $j( element ).attr( "id" ) );
 			
 		switch( element.tagName.toLowerCase() ) {
 			case 'video':
 			case 'audio':
-				var videoInterface = new embedVideo( element );
-				mvEmbed.swapEmbedVideoElement( element, videoInterface );
+				var playerInterface = new embedPlayer( element , attributes);
+				this.swapEmbedPlayerElement( element, playerInterface );
 			break;
 			case 'playlist':
-				// Make sure we have the necessary play-list libs loaded:
+				// Make sure we have the necessary playlist libs loaded:
 				mvJsLoader.doLoad( [
 					'mvPlayList',
 					'$j.ui',	// Include dialog for pop-ing up things
 					'$j.ui.dialog'
 				], function() {
-					var plObj = new mvPlayList( element );
-					mvEmbed.swapEmbedVideoElement( element, plObj );
-					var added_height = plObj.pl_layout.title_bar_height + plObj.pl_layout.control_height;
+					// Create playlist player interface
+					var playlistPlayer = new mvPlayList( element, attributes );
+					// Swap in playlist player interface
+					mvEmbed.swapEmbedPlayerElement( element, playlistPlayer );
+					// Add playlistPlayer title height
+					var added_height = playlistPlayer.pl_layout.title_bar_height + playlistPlayer.pl_layout.control_height;
+					
 					// Wrap a blocking display container with height + controls + title height: 
-					$j( '#' + plObj.id ).wrap( '<div style="display:block;height:' + ( plObj.height + added_height ) + 'px;"></div>' );
+					$j( '#' + playlistPlayer.id ).wrap( 
+						'<div style="display:block;' +
+							'height:' + ( playlistPlayer.height + added_height ) + 'px;">' +						
+						'</div>' 
+					);
 				} );
 			break;
 	   }
 	},
-	/*
-	* swapEmbedVideoElement
-	* takes a video element as input and swaps it out with
-	* an embed video interface based on the video_elements attributes
-	* @param {Element} video_element
-	* @param {Object}  
+	
+	/**
+	* swapEmbedPlayerElement
+	*
+	* Takes a video element as input and swaps it out with
+	* an embed player interface
+	*
+	* @param {Element} targetElement Element to be swapped 
+	* @param {Object}  playerInterface Interface to swap into the target element
 	*/
-	swapEmbedVideoElement:function( video_element, videoInterface ) {
-		js_log( 'do swap ' + videoInterface.id + ' for ' + video_element );
-		embed_video = document.createElement( 'div' );
-		// make sure our div has a hight/width set:
-
-		$j( embed_video ).css( {
-			'width' : videoInterface.width,
-			'height' : videoInterface.height
-		} ).html( mv_get_loading_img() );
-		// inherit the video interface
-		for ( var method in videoInterface ) { // for in loop oky in Element context	
-			if ( method != 'readyState' ) { // readyState crashes IE
+	swapEmbedPlayerElement: function( targetElement, playerInterface ) {	
+		
+		// Create a new element to swap the player interface into
+		var swapPlayerElement = document.createElement( 'div' );
+		
+		// Make sure the new swapPlayerElement has height / width set:
+		$j( swapPlayerElement ).css( {
+			'width' : playerInterface.width,
+			'height' : playerInterface.height
+		} )		
+		.html( mv_get_loading_img() );
+		
+		// Apply the Player interface to the DOM element
+		for ( var method in playerInterface ) { // for in loop oky in Element context	
+			if ( method != 'readyState' ) { // readyState crashes IE ( don't include ) 
 				if ( method == 'style' ) {
-						embed_video.setAttribute( 'style', videoInterface[method] );
+						swapPlayerElement.setAttribute( 'style', playerInterface[method] );
 				} else if ( method == 'class' ) {
 					if ( $j.browser.msie )
-						embed_video.setAttribute( "className", videoInterface['class'] );
+						swapPlayerElement.setAttribute( "className", playerInterface['class'] );
 					else
-						embed_video.setAttribute( "class", videoInterface['class'] );
+						swapPlayerElement.setAttribute( "class", playerInterface['class'] );
 				} else {
-					// normal inherit:
-					embed_video[method] = videoInterface[method];
+					// Normal interface method:
+					swapPlayerElement[method] = playerInterface[method];
 				}
 			}
-			// string -> boolean:
-			if ( embed_video[method] == "false" )
-				embed_video[method] = false;
+			// String -> Boolean:
+			if ( swapPlayerElement[method] == "false" )
+				swapPlayerElement[method] = false;
 				
-			if ( embed_video[method] == "true" )
-				embed_video[method] = true;
+			if ( swapPlayerElement[method] == "true" )
+				swapPlayerElement[method] = true;
 		}
 				  
-		// Now swap out the video element for the embed_video obj:	  
-		$j( video_element ).after( embed_video ).remove();
-		$j( '#' + embed_video.id ).get( 0 ).on_dom_swap();
+		// Now Swap out the video element for the embed_video obj:	  
+		$j( targetElement )
+		// Put the swapPlayerElement after the targetElement
+		.after( swapPlayerElement )
+		// Remove the targetElement
+		.remove();
+		
+		// Issue the checkPlayerSources call to the player interface: 
+		swapPlayerElement.checkPlayerSources();
 			  
-		// Now that "embed_video" is stable, do more initialization (if we are ready)
-		if ( $j( '#' + embed_video.id ).get( 0 ).loading_external_data == false
-			 && $j( '#' + embed_video.id ).get( 0 ).init_with_sources_loadedDone == false ) {
-			// load and set ready state since source are available: 
-			$j( '#' + embed_video.id ).get( 0 ).init_with_sources_loaded();
-		}
-		js_log( 'done with child: ' + embed_video.id + ' len:' + mw.player_list.length );
 		return true;
 	},
+	
 	/**
-	* Check if Clips in the player_list are ready and runs 
-	* any associated queued functions 
+	* Runs the callback functions once players are ready	
+	*
+	* Will run all the functions in the this.callbackFunctions array
+	* Once all the player in this.playerList are ready
 	*/
-	checkClipsReady : function() {
+	waitPlayersReadyCallback : function() {
+		var _this = this;
 		// js_log('checkClipsReady');
 		var is_ready = true;
-		for ( var i = 0; i < mw.player_list.length; i++ ) {
-			  if ( $j( '#' + mw.player_list[i] ).length != 0 ) {
-				var cur_vid =  $j( '#' + mw.player_list[i] ).get( 0 );
+		for ( var i = 0; i < this.playerList.length; i++ ) {
+			  if ( $j( '#' + this.playerList[i] ).length != 0 ) {
+				var player =  $j( '#' + this.playerList[i] ).get( 0 );
 				
-				is_ready = ( cur_vid.ready_to_play ) ? is_ready : false;
+				// Check if the current video is ready 
+				is_ready = ( player.ready_to_play ) ? is_ready : false;
 				
-				if ( !is_ready && cur_vid.load_error ) {
+				if ( !is_ready && player.load_error ) {
 					is_ready = true;
-					// Update the video with its load error:
-					$j( cur_vid ).html( cur_vid.load_error );
+					// Update the player with its load error:
+					$j( player ).html( player.load_error );
 				}
 			}
 		}
 		if ( is_ready ) {
-			mvEmbed.allClipsReady = true;
-			// run queued functions 
-			// js_log('run queded functions:' + mvEmbed.flist[0]);
-			mvEmbed.runFlist();
-		} else {
-			 setTimeout( 'mvEmbed.checkClipsReady()', 25 );
+			// Run queued functions 
+			while ( this.callbackFunctions.length ) {
+				this.callbackFunctions.shift()();
+			}
+		} else {			
+			// Continue checking the playerList
+			setTimeout( function(){
+				_this.waitPlayersReadyCallback();
+			}, 25 );
 		 }
-	},
-	runFlist:function() {
-		while ( this.flist.length ) {
-			this.flist.shift()();
-		}
 	}
 }
 
@@ -362,26 +479,39 @@ function mediaSource( element ) {
 }
 
 mediaSource.prototype = {
-	/** MIME type of the source. */
+	// MIME type of the source.
 	mime_type:null,
-	/** URI of the source. */
+	
+	// URI of the source.
 	uri:null,
-	/** Title of the source. */
+	
+	// Title of the source.
 	title:null,
-	/** True if the source has been marked as the default. */
+	
+	// True if the source has been marked as the default.
 	marked_default:false,
-	/** True if the source supports url specification of offset and duration */
+	
+	// True if the source supports url specification of offset and duration 
 	URLTimeEncoding:false,
-	/** Start offset of the requested segment */
+	
+	// Start offset of the requested segment 
 	start_offset:null,
-	/** Duration of the requested segment (0 if not known) */
+	
+	// Duration of the requested segment (0 if not known) 
 	duration:0,
-	is_playable:null,
-	upddate_interval:null,
-
-	id:null,
-	start_ntp:null,
-	end_ntp:null,
+	
+	// Is the source playable
+	is_playable: null,
+	
+	// source id
+	id: null,
+	
+	// Start time in npt format
+	start_npt: null,
+	
+	// End time in npt format
+	end_npt: null,
+	
 	/**
 	* MediaSource constructor:
 	*/
@@ -396,11 +526,11 @@ mediaSource.prototype = {
 		// not ideal way to discover if content is on an oggz_chop server. 
 		// should check some other way. 
 		var pUrl = mw.parseUri ( this.src );
-		if ( typeof pUrl['queryKey']['t'] != 'undefined' ) {
-			this['URLTimeEncoding'] = true;
+		if ( typeof pUrl[ 'queryKey' ][ 't' ] != 'undefined' ) {
+			this[ 'URLTimeEncoding' ] = true;
 		}
-		for ( var i = 0; i < mv_default_source_attr.length; i++ ) { // array loop:
-			var attr = mv_default_source_attr[ i ];
+		for ( var i = 0; i < default_source_attributes.length; i++ ) { // array loop:
+			var attr = default_source_attributes[ i ];
 			if ( $j( element ).attr( attr ) ) {
 				this[ attr ] =  $j( element ).attr( attr );
 			}
@@ -416,6 +546,7 @@ mediaSource.prototype = {
 
 		this.parseURLDuration();
 	},
+	
 	/**
 	* Update Source title via Element
 	* @param Element: 	
@@ -425,41 +556,44 @@ mediaSource.prototype = {
 		if ( $j( element ).attr( "title" ) )
 			this.title = $j( element ).attr( "title" );
 	},
+	
 	/** 
 	 * Updates the src time and start & end
-	 * @param {String} start_time: in NTP format
-	 * @param {String} end_time: in NTP format
+	 * @param {String} start_time: in NPT format
+	 * @param {String} end_time: in NPT format
 	 */
-	updateSrcTime:function ( start_ntp, end_ntp ) {
-		// js_log("f:updateSrcTime: "+ start_ntp+'/'+ end_ntp + ' from org: ' + this.start_ntp+ '/'+this.end_ntp);
+	updateSrcTime:function ( start_npt, end_npt ) {
+		// js_log("f:updateSrcTime: "+ start_npt+'/'+ end_npt + ' from org: ' + this.start_npt+ '/'+this.end_npt);
 		// js_log("pre uri:" + this.src);
 		// if we have time we can use:
 		if ( this.URLTimeEncoding ) {
 			// make sure its a valid start time / end time (else set default) 
-			if ( !npt2seconds( start_ntp ) )
-				start_ntp = this.start_ntp;
+			if ( !npt2seconds( start_npt ) )
+				start_npt = this.start_npt;
 				
-			if ( !npt2seconds( end_ntp ) )
-				end_ntp = this.end_ntp;
+			if ( !npt2seconds( end_npt ) )
+				end_npt = this.end_npt;
 										  
 			this.src = getURLParamReplace( this.src, { 
-				't': start_ntp + '/' + end_ntp 
+				't': start_npt + '/' + end_npt 
 			});
 			
 			// update the duration
 			this.parseURLDuration();
 		}
 	},
+	
 	/**
 	* Sets the duration and sets the end time if unset 
 	* @param {Float} duration: in seconds
 	*/
 	setDuration:function ( duration ) {
 		this.duration = duration;
-		if ( !this.end_ntp ) {
-			this.end_ntp = seconds2npt( this.start_offset + duration );
+		if ( !this.end_npt ) {
+			this.end_npt = seconds2npt( this.start_offset + duration );
 		}
 	},
+	
 	/** 
 	* MIME type accessor function.
 	* @return {String} the MIME type of the source.
@@ -467,6 +601,7 @@ mediaSource.prototype = {
 	getMIMEType : function() {
 		return this.mime_type;
 	},
+	
 	/** URI function.
 	* @param {Number} seek_time_sec  Int: Used to adjust the URI for url based seeks) 
 	* @return {String} the URI of the source.
@@ -475,10 +610,10 @@ mediaSource.prototype = {
 		if ( !seek_time_sec || !this.URLTimeEncoding ) {
 			return this.src;
 		}
-		if ( !this.end_ntp ) {
+		if ( !this.end_npt ) {
 			var endvar = '';
 		} else {
-			var endvar = '/' + this.end_ntp;
+			var endvar = '/' + this.end_npt;
 		}
 		return getURLParamReplace( this.src,
 			{
@@ -486,15 +621,16 @@ mediaSource.prototype = {
 	   		}
 	   	);
 	},
+	
 	/** Title accessor function.
-		@return the title of the source.
+		@return Title of the source.
 		@type String
 	*/
 	getTitle : function() {	
 		if( this.title )
 			return this.title;
 			
-		// Return a title based on mime type: 
+		// Return a Title based on mime type: 
 		switch( this.mime_type ){
 			case 'video/h264' :
 				return gM( 'mwe-video-h264' );
@@ -509,9 +645,11 @@ mediaSource.prototype = {
 				return gM( 'mwe-video-audio' );
 			break;
 		} 
+		
 		// Return the mime type string if not known type.
 		return this.mime_type;
 	},
+	
 	/** Index accessor function.
 		@return the source's index within the enclosing mediaElement container.
 		@type Integer
@@ -519,11 +657,12 @@ mediaSource.prototype = {
 	getIndex : function() {
 		return this.index;
 	},
-	/*
-	 * function parseURLDuration 
-	 * getDuration in milliseconds
-	 * special case derive duration from request url
-	 * supports media_url?t=ntp_start/ntp_end url request format
+	
+	/** 
+	 * 
+	 * Gets Duration of the media in milliseconds from the source url.
+	 *
+	 * Supports media_url?t=ntp_start/ntp_end url request format
 	 */
 	parseURLDuration : function() {
 		// check if we have a URLTimeEncoding: 
@@ -531,23 +670,25 @@ mediaSource.prototype = {
 			var annoURL = mw.parseUri( this.src );
 			if ( annoURL.queryKey['t'] ) {
 				var times = annoURL.queryKey['t'].split( '/' );
-				this.start_ntp = times[0];
-				this.end_ntp = times[1];
-				this.start_offset = npt2seconds( this.start_ntp );
-				this.duration = npt2seconds( this.end_ntp ) - this.start_offset;
+				this.start_npt = times[0];
+				this.end_npt = times[1];
+				this.start_offset = npt2seconds( this.start_npt );
+				this.duration = npt2seconds( this.end_npt ) - this.start_offset;
 			} else {
 				// look for this info as attributes
 				if ( this.startOffset ) {
 					this.start_offset = this.startOffset;
-					this.start_ntp = seconds2npt( this.startOffset );
+					this.start_npt = seconds2npt( this.startOffset );
 				}
 				if ( this.duration ) {
-					this.end_ntp = seconds2npt( parseInt( this.duration ) + parseInt( this.start_offset ) );
+					this.end_npt = seconds2npt( parseInt( this.duration ) + parseInt( this.start_offset ) );
 				}
 			}
 		}
 	},
-	/** Attempts to detect the type of a media file based on the URI.
+	
+	/** 
+	* Attempts to detect the type of a media file based on the URI.
 	*	@param {String} uri URI of the media file.
 	*	@returns {String} The guessed MIME type of the file.
 	*	@type String
@@ -555,8 +696,8 @@ mediaSource.prototype = {
 	detectType:function( uri ) {
 		// @@todo if media is on the same server as the javascript
 		// we can issue a HEAD request and read the mime type of the media...
-		// (this will detect media mime type independently of the url name)
-		// http://www.jibbering.com/2002/4/httprequest.html (this should be done by extending jquery's ajax objects)
+		// ( this will detect media mime type independently of the url name)
+		// http://www.jibbering.com/2002/4/httprequest.html
 		var end_inx =  ( uri.indexOf( '?' ) != -1 ) ? uri.indexOf( '?' ) : uri.length;
 		var no_param_uri = uri.substr( 0, end_inx );
 		switch( no_param_uri.substr( no_param_uri.lastIndexOf( '.' ), 4 ).toLowerCase() ) {
@@ -595,17 +736,26 @@ function mediaElement( element )
 };
 
 mediaElement.prototype = {
-	/** The array of mediaSource elements. */
+	// The array of mediaSource elements.
 	sources:null,
+	// flag for ROE data being added.
 	addedROEData:false,
-	/** Selected mediaSource element. */
+	
+	// Selected mediaSource element. 
 	selected_source:null,
+	
+	// Media element thumbnail
 	thumbnail:null,
+	
+	// Media element linkback 
 	linkback:null,
 
-	/** @private */
-	init:function( video_element )
-	{
+	/**
+	* Media Element constructor
+	*
+	* @param {Element} video_element Element that has src attribute or has children source elements 
+	*/
+	init: function( video_element ) {
 		var _this = this;
 		js_log( 'Initializing mediaElement...' );
 		this.sources = new Array();
@@ -630,21 +780,23 @@ mediaElement.prototype = {
 		if ( $j( video_element ).attr( "src" ) )
 			this.tryAddSource( video_element );
 		
-		// Process all inner <source> elements	
+		// Process all inner <source>, <text> & <itext> elements	
 		$j( video_element ).find( 'source,text,itext' ).each( function( inx, inner_source ) {
 			_this.tryAddSource( inner_source );
 		} );
 	},
+	
 	/** 
-	* Updates the time request for all sources that have a standard time request argument (ie &t=start_time/end_time)
+	* Updates the time request for all sources that have 
+	* a standard time request argument (ie &t=start_time/end_time)
 	*
-	* @param {String} start_ntp Start time in npt format
-	* @param {String} end_ntp End time in npt format
+	* @param {String} start_npt Start time in npt format
+	* @param {String} end_npt End time in npt format
 	*/
-	updateSourceTimes:function( start_ntp, end_ntp ) {
+	updateSourceTimes:function( start_npt, end_npt ) {
 		var _this = this;
 		$j.each( this.sources, function( inx, mediaSource ) {
-			mediaSource.updateSrcTime( start_ntp, end_ntp );
+			mediaSource.updateSrcTime( start_npt, end_npt );
 		} );
 	},
 	
@@ -652,7 +804,7 @@ mediaElement.prototype = {
 	* Check for Timed Text tracks
 	* @return {Boolean} true if text tracks exist, false if no text tracks are found
 	*/
-	checkForTextSource: function() {
+	textSourceExists: function() {
 		for ( var i = 0; i < this.sources.length; i++ ) {
 			if (	this.sources[i].mime_type == 'text/cmml' ||
 				this.sources[i].mime_type == 'text/x-srt' )
@@ -664,11 +816,10 @@ mediaElement.prototype = {
 	/** 
 	* Returns the array of mediaSources of this element.
 	* 
-	* @param {String} mime_filter Filter critera for set of mediaSources to return
+	* @param {String} mime_filter Filter criteria for set of mediaSources to return
 	* @return {Array} of mediaSource elements.
 	*/
-	getSources:function( mime_filter )
-	{
+	getSources:function( mime_filter ){
 		if ( !mime_filter )
 			return this.sources;
 		// apply mime filter: 
@@ -679,6 +830,7 @@ mediaElement.prototype = {
 		}
 		return source_set;
 	},
+	
 	/**
 	* Selects a source by id
 	* @param {String} source_id Id of the srouce to select. 
@@ -691,6 +843,7 @@ mediaElement.prototype = {
 		}
 		return null;
 	},
+	
 	/** 
 	* Selects a particular source for playback updating the "selected_source" 
 	*
@@ -733,7 +886,8 @@ mediaElement.prototype = {
 				 return true;
 			}
 		}
-		// Set Ogg via player support		
+		
+		// Set Ogg if client supports it		
 		for ( var source = 0; source < playable_sources.length; source++ ) {
 			js_log( 'f:autoSelectSource:' + playable_sources[source].mime_type );
 			var mime_type = playable_sources[source].mime_type;
@@ -749,6 +903,7 @@ mediaElement.prototype = {
 				}
 			}
 		}
+		
 		// Set basic flash
 		for ( var source = 0; source < playable_sources.length; source++ ) {
 			var mime_type = playable_sources[source].mime_type;
@@ -768,8 +923,7 @@ mediaElement.prototype = {
 			}
 		}
 		// Select first source		
-		if ( !this.selected_source )
-		{
+		if ( !this.selected_source ){
 			js_log( 'set via first source:' + playable_sources[0] );
 			this.selected_source = playable_sources[0];
 			return true;
@@ -867,7 +1021,7 @@ mediaElement.prototype = {
 	* Imports media sources from ROE data.
 	*   @param roe_data ROE data.
 	*/
-	addROE:function( roe_data ) {
+	addROE: function( roe_data ) {
 		js_log( 'f:addROE' );
 		this.addedROEData = true;
 		var _this = this;
@@ -902,70 +1056,74 @@ mediaElement.prototype = {
 };
 
 
-/** base embedVideo object
-	@param element <video> tag used for initialization.
-	@constructor
+/** base embedPlayer object
+* @param {Element} element, the element used for initialization.
+* @param {Object} customAttributes Attributes for the video interface 
+*					that are not already element attributes
+* @constructor
 */
-var embedVideo = function( element ) {
-	return this.init( element );
+var embedPlayer = function( element, customAttributes ) {
+	return this.init( element, customAttributes );
 };
 
-embedVideo.prototype = {
-	/** The mediaElement object containing all mediaSource objects */
-	media_element:null,
-	preview_mode:false,
-	ready_to_play:false, // should use html5 ready state
-	load_error:false, // used to set error in case of error
-	loading_external_data:false,
-	thumbnail_updating:false,
-	thumbnail_disp:true,
-	init_with_sources_loadedDone:false,
-	inDOM:false,
-	// for onClip done stuff: 
-	anno_data_cache:null,
-	seek_time_sec:0,
-	base_seeker_slider_offset:null,
-	onClipDone_disp:false,
-	supports: { },
-	// for seek thumb updates:
-	cur_thumb_seek_time:0,
-	thumb_seek_interval:null,
-	// set the default tag type to video: 	
-	seeking:false,
-	// set the buffered percent:	
-	bufferedPercent:0,
-	// utility functions for property values:
-	hx : function ( s ) {
-		if ( typeof s != 'String' ) {
-			s = s.toString();
-		}
-		return s.replace( /&/g, '&amp;' )
-			. replace( /</g, '&lt;' )
-			. replace( />/g, '&gt;' );
-	},
-	hq : function ( s ) {
-		return '"' + this.hx( s ) + '"';
-	},
-	playerPixelWidth : function()
-	{
-		var player = $j( '#mv_embedded_player_' + this.id ).get( 0 );
-		if ( typeof player != 'undefined' && player['offsetWidth'] )
-			return player.offsetWidth;
-		else
-			return parseInt( this.width );
-	},
-	playerPixelHeight : function()
-	{
-		var player = $j( '#mv_embedded_player_' + this.id ).get( 0 );
-		if ( typeof player != 'undefined' && player['offsetHeight'] )
-			return player.offsetHeight;
-		else
-			return parseInt( this.height );
-	},
-	init: function( element ) {
-		// Inherit all the default video_attributes		
-		for ( var attr in default_video_attributes ) { // for in loop oky on user object
-			if ( element.getAttribute( attr ) ) {
+embedPlayer.prototype = {
+	// The mediaElement object containing all mediaSource objects
+	'media_element' : null,
+	
+	// Object that describes the supported feature set of the underling plugin / player
+	'supports': { },
+	
+	// Preview mode flag,
+	// some plugins don't seek accurately but in preview mode we need 
+	// accurate seeks so we do tricks like hide the image until its ready
+	'preview_mode' : false,
+	
+	// Ready to play 
+	// NOTE: we should switch over to setting the html5 video ready state
+	'ready_to_play' : false, 
+	
+	// Stores the loading errors
+	'load_error' : false, 
+	
+	// Loading external data flag ( for delaying interface updates )
+	'loading_external_data' : false,
+	
+	// Thumbnail updating flag ( to avoid rewriting an thumbnail thats already being updated)
+	'thumbnail_updating' : false,
+	
+	// Thumbnail display flag
+	'thumbnail_disp' : true,
+				
+	// Local variable to hold CMML meeta data about the current clip
+	// for more on CMML see: http://wiki.xiph.org/CMML 
+	'cmmlData': null,
+	
+	// Stores the seek time request, Updated by the doSeek function
+	'seek_time_sec' : 0,
+		
+	// If the embedPlayer is current 'seeking'  	
+	'seeking' : false,
+	
+	// Percent of the clip buffered:	
+	'bufferedPercent' : 0,	
+	
+	/**
+	* embedPlayer constructor 
+	*
+	* @param {Element} element DOM element that we are building the player interface for.
+	* @param {Object} customAttributes Attributes supplied via argument (rather than applied to the element) 
+	*/
+	init: function( element, customAttributes ) {
+		
+		// Set customAttributes if unset: 
+		if ( !customAttributes )
+			customAttributes = { };
+			
+		// Setup the player Interface from supported attributes:
+		for ( var attr in default_video_attributes ) {
+			if ( customAttributes[ attr ] ){
+				this[ attr ] = customAttributes[ attr ];
+			} else if ( element.getAttribute( attr ) ) {
 				this[ attr ] = element.getAttribute( attr );
 			} else {
 				this[attr] = default_video_attributes[attr];
@@ -981,18 +1139,21 @@ embedVideo.prototype = {
 				}
 			}
 		}
-		// Set the default if unset: 
+		
+		// Set the default skin if unset: 
 		if ( !this.skin_name )
 			this.skin_name = mw.conf.skin_name;
 		
 		// Make sure startOffset is cast as an int		   
 		if ( this.startOffset && this.startOffset.split( ':' ).length >= 2 )
 			this.startOffset = npt2seconds( this.startOffset );
+			
 		// Make sure offset is in float: 
 		this.startOffset = parseFloat( this.startOffset );
 		 
 		if ( this.duration && this.duration.split( ':' ).length >= 2 )
 			this.duration = npt2seconds( this.duration );
+			
 		// Make sure duration is in float:  
 		this.duration = parseFloat( this.duration );
 		js_log( "duration is: " +  this.duration );
@@ -1010,20 +1171,22 @@ embedVideo.prototype = {
 			js_log( 'innerHTML: ' + element.innerHTML );
 			this.user_missing_plugin_html = element.innerHTML;
 		}
-		// Load all of the specified sources
+		
+		// Add the mediaElement object with the elements sources:  
 		this.media_element = new mediaElement( element );
 		
 		// If we are displaying controls setup the ctrlBuilder  
 		if ( this.controls ) {
-			// set-up the local ctrlBuilder instance: 
+			// Set-up the local ctrlBuilder instance: 
 			this.ctrlBuilder = new ctrlBuilder( this );
-			// load the css for the current player
-
 		}
-		// Load skin:
+		// Load player skin css:
 		loadExternalCss(  mv_embed_path +  'skins/' + this.skin_name + '/playerSkin.css' );
 	},
-	// Function for set width height from attributes or by default value
+	
+	/**
+	* Set width or height from css style attribute, html element attribute, or by default value
+	*/
 	setDimSize:function( element, dim ){				
 		var dcss = parseInt( $j(element).css( dim ).replace( 'px' , '' ) );
 		var dattr = parseInt( $j(element).attr( dim ) );
@@ -1037,13 +1200,41 @@ embedVideo.prototype = {
 		 	this[ dim ] = ( dim == 'width' )? dwh[0] : dwh[1];
 		 }
 	},
-	on_dom_swap: function() {
-		js_log( 'f:on_dom_swap' );
-		// Process the provided ROE file... if we don't yet have sources
+	
+	/**
+	* Get the player pixle width
+	*/	
+	playerPixelWidth: function(){
+		var player = $j( '#mv_embedded_player_' + this.id ).get( 0 );
+		if ( typeof player != 'undefined' && player['offsetWidth'] )
+			return player.offsetWidth;
+		else
+			return parseInt( this.width );
+	},
+	
+	/**
+	* Get the player pixle height
+	*/
+	playerPixelHeight: function(){
+		var player = $j( '#mv_embedded_player_' + this.id ).get( 0 );
+		if ( typeof player != 'undefined' && player['offsetHeight'] )
+			return player.offsetHeight;
+		else
+			return parseInt( this.height );
+	},
+	
+	/**
+	* Check player sources if we need to get media sources
+	*  form an external file that request is issued here 
+	*/
+	checkPlayerSources: function() {
+		js_log( 'f:checkPlayerSources' );
+		var _this = this;
+		// Process the provided ROE file. If we don't yet have sources
+		// ( the ROE file provides xml list of sources ) 
 		if ( this.roe && this.media_element.sources.length == 0 ) {
-			js_log( 'loading external data' );
-			this.loading_external_data = true;
-			var _this = this;					 	
+			js_log( 'checkPlayerSources: loading external data' );
+			this.loading_external_data = true;					 	
 			do_request( this.roe, function( data ){				
 				// Continue					   
 				_this.media_element.addROE( data );
@@ -1052,20 +1243,28 @@ embedVideo.prototype = {
 				js_log( 'set loading_external_data=false' );
 				_this.loading_external_data = false;
 				
-				_this.init_with_sources_loaded();
+				_this.sourcesReadyInit();
 			} );
+		}else{
+			_this.sourcesReadyInit();
 		}
 	},
-	init_with_sources_loaded : function()
-	{
-		js_log( 'f:init_with_sources_loaded' );
-		// Set flag that we have run this function:
-		this.init_with_sources_loadedDone = true;
+	
+	/**
+	* Sources Ready Innitialization
+	*
+	* issues autoSelectSource call  
+	*
+	* Sets load error if no source is playable 
+	*/
+	sourcesReadyInit : function(){
+		js_log( 'f:sourcesReadyInit' );
+				
 		// Autoseletct the source
 		this.media_element.autoSelectSource();
+		
 		// Auto select player based on default order
-		if ( !this.media_element.selected_source )
-		{
+		if ( !this.media_element.selected_source ){
 			// check for parent clip: 
 			if ( typeof this.pc != 'undefined' ) {
 				js_log( 'no sources, type:' + this.type + ' check for html' );
@@ -1080,9 +1279,10 @@ embedVideo.prototype = {
 			this.selected_player = embedTypes.players.defaultPlayer( this.media_element.selected_source.mime_type );
 		}
 		if ( this.selected_player ) {
-			js_log( "Playback type: " + this.selected_player.library );
-			this.thumbnail_disp = true;
-			this.inheritEmbedObj();
+			js_log( "Playback system: " + this.selected_player.library );					
+						
+			// Inherit the playback system of the selected player:
+			this.inheritEmbedPlayer();
 		} else {
 			// No source's playable
 			var missing_type = '';
@@ -1099,10 +1299,16 @@ embedVideo.prototype = {
 			this.load_error = this.getPluginMissingHTML( missing_type );
 		}
 	},
-	inheritEmbedObj:function() {
-		js_log( "inheritEmbedObj:duration is: " +  this.getDuration() );
-		// @@note: tricky cuz direct overwrite is not so ideal.. since the extended object is already tied to the dom
-		// clear out any non-base embedObj stuff:
+	
+	/**
+	* Load and inherit methods from the selected player interface
+	*
+	* @param {Function} callback Function to be called once playback-system has been inherited
+	*/
+	inheritEmbedPlayer: function( callback ) {
+		js_log( "inheritEmbedPlayer:duration is: " +  this.getDuration() );
+		
+		// Clear out any non-base embedObj methods:
 		if ( this.instanceOf ) {
 			eval( 'tmpObj = ' + this.instanceOf );
 			for ( var i in tmpObj ) { // for in loop oky for object  
@@ -1113,38 +1319,54 @@ embedVideo.prototype = {
 				}
 			}
 		}
-		// set up the new embedObj
-		js_log( 'f: inheritEmbedObj: embedding with ' + this.selected_player.library );
+		
+		// Set up the new embedObj
+		js_log( 'f: inheritEmbedPlayer: embedding with ' + this.selected_player.library );
 		var _this = this;
+		
+		// Load the selected player
 		this.selected_player.load( function() {
-			// js_log('inheriting '+_this.selected_player.library +'Embed to ' + _this.id + ' ' + $j('#'+_this.id).length);
-			eval( 'embedObj = ' + _this.selected_player.library + 'Embed;' );
-			for ( var method in embedObj ) { // for in loop oky for object  
-				// parent method preservation for local overwritten methods
+			
+			// Get the selected Player embed interface
+			eval( 'var embedPlayer = ' + _this.selected_player.library + 'Embed;' );
+			
+			for ( var method in embedPlayer ) {  
 				if ( _this[method] )
 					_this['parent_' + method] = _this[method];
-				_this[method] = embedObj[method];
-			}
-			if ( _this.inheritEmbedOverride ) {
-				_this.inheritEmbedOverride();
-			}
-			// Update controls if possible
-			if ( !_this.loading_external_data )
-				_this.refreshControlsHTML();
+				_this[method] = embedPlayer[method];
+			}			
 					
 			_this.ready_to_play = true;
 			_this.getDuration();
 			_this.getHTML();
+			
+			// Run the callback if provided
+			if ( callback ) 
+				callback();
 		} );
 	},
-	selectPlayer:function( player )
-	{
+	
+	/**
+	* Select a player playback system
+	*
+	* @param {Object} player Player playback system to be selected
+	* 	player playback system include vlc, native, java etc. 
+	*/
+	selectPlayer:function( player ) {
 		var _this = this;
 		if ( this.selected_player.id != player.id ) {
 			this.selected_player = player;
-			this.inheritEmbedObj();
+			this.inheritEmbedPlayer( function(){ 
+				// Update the controls for the new selected player
+				this.refreshControlsHTML();
+			});			
 		}
 	},
+	
+	/**
+	* Issue a warning to non-native playback systems
+	* that they could improve the playback experience with a different browser
+	*/ 
 	doNativeWarningCheck:function() {
 		if ( $j.cookie( 'dismissNativeWarn' ) && $j.cookie( 'dismissNativeWarn' ) === true ) {
 			return false;
@@ -1174,40 +1396,48 @@ embedVideo.prototype = {
 		}
 		return true;
 	},
-	getTimeReq:function() {
-		var et = ( this.ctrlBuilder.long_time_disp ) ? '/' + seconds2npt( this.getDuration() ) : '';
-		var default_time_req = '0:00:00' + et;
+	
+	/**
+	* Gets a Time range from the media start and end time 
+	*
+	* @return start_npt and end_npt time if present
+	*/	
+	getTimeRange: function(){
+		var end_time = (this.ctrlBuilder.long_time_disp)? '/' + seconds2npt( this.getDuration() ) : '';
+		var default_time_range = '0:00:00' + end_time;		
 		if ( !this.media_element )
-			return default_time_req;
+			return default_time_range;
 		if ( !this.media_element.selected_source )
-			return default_time_req;
-		if ( !this.media_element.selected_source.end_ntp )
-			return default_time_req;
-		var et = ( this.ctrlBuilder.long_time_disp ) ? '/' + this.media_element.selected_source.end_ntp : '';
-		return this.media_element.selected_source.start_ntp + et;
+			return default_time_range;
+		if ( !this.media_element.selected_source.end_npt )
+			return default_time_range;		
+		return this.media_element.selected_source.start_npt + this.media_element.selected_source.end_npt;
 	},
+	/**
+	* Gets the duration of the embed media
+	*/	
 	getDuration:function() {
 		// Update some local pointers for the selected source:	
 		if ( this.media_element && this.media_element.selected_source && this.media_element.selected_source.duration ) {
 			this.duration = this.media_element.selected_source.duration;
 			this.start_offset = this.media_element.selected_source.start_offset;
-			this.start_ntp = this.media_element.selected_source.start_ntp;
-			this.end_ntp = this.media_element.selected_source.end_ntp;
+			this.start_npt = this.media_element.selected_source.start_npt;
+			this.end_npt = this.media_element.selected_source.end_npt;
 		}
-		// Update start end_ntp if duration !=0 (set from plugin) 
-		if ( !this.start_ntp )
-			this.start_ntp = '0:0:0';
-		if ( !this.end_ntp && this.duration )
-			this.end_ntp = seconds2npt( this.duration );
+		// Update start end_npt if duration !=0 (set from plugin) 
+		if ( !this.start_npt )
+			this.start_npt = '0:0:0';
+		if ( !this.end_npt && this.duration )
+			this.end_npt = seconds2npt( this.duration );
 		// Return the duration
 		return this.duration;
 	},
-	/*
-	 * wrapEmebedContainer
-	 * wraps the embed code into a container to better support playlist function
-	 *  (where embed element is swapped for next clip
-	 *  (where plugin method does not support playlist) 
-	 */
+	
+	/**
+	* wraps the embed code into a container to better support playlist function
+	*  (where embed element is swapped for next clip
+	*  (where plugin method does not support playlist) 
+	*/
 	wrapEmebedContainer:function( embed_code ) {
 		// Check if parent clip is set( ie we are in a playlist so name the embed container by playlistID)
 		var id = ( this.pc != null ) ? this.pc.pp.id:this.id;
@@ -1215,43 +1445,41 @@ embedVideo.prototype = {
 					embed_code +
 				'</div>';
 	},
+	
+	/**
+	* Get the plugin embed html ( should be implemented by embed player interface )
+	*/
 	getEmbedHTML : function() {
-		// Return this.wrapEmebedContainer( this.getEmbedObj() );
-		return 'Error: function getEmbedHTML should be overwritten by embedLib ';
+		return 'Error: function getEmbedHTML should be implemented by embed player interface ';
 	},
-	// Do seek function (should be overwritten by implementing embedLibs)
-	// to check if seek can be done on locally downloaded content. 
+	
+	/*
+	* Seek function (should be implemented by embed player interface )
+	*/ 
 	doSeek : function( perc ) {
 		var _this = this;
 		if ( this.supportsURLTimeEncoding() ) {
-			// make sure this.seek_time_sec is up-to-date:
-			this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( perc * this.getDuration() );
+			// Make sure this.seek_time_sec is up-to-date:
+			this.seek_time_sec = npt2seconds( this.start_npt ) + parseFloat( perc * this.getDuration() );
 			js_log( 'updated seek_time_sec: ' + seconds2npt ( this.seek_time_sec ) );
 			this.stop();
 			this.didSeekJump = true;
-			// update the slider
+			// Update the slider
 			this.setSliderValue( perc );
 		}
-		// do play in 100ms (give things time to clear) 
+		// Do play request in 100ms ( give the dom time to swap out the embed player ) 
 		setTimeout( function(){
 			_this.play()
 		}, 100 );
 	},
-	/*
-	 * seeks to the requested time and issues a callback when ready 
+	/**
+	 * Seeks to the requested time and issues a callback when ready 
 	 * (should be overwritten by client that supports frame serving)
 	 */
 	setCurrentTime:function( time, callback ) {
 		js_log( 'Error: base embed setCurrentTime can not frame serve (override via plugin)' );
 	},
-	addPresTimeOffset:function() {
-	   // add in the offset:		
-	   if ( this.seek_time_sec && this.seek_time_sec != 0 ) {
-			this.currentTime += this.seek_time_sec;
-	   } else if ( this.start_offset && this.start_offset != 0 ) {
-		   this.currentTime = parseFloat( this.currentTime ) + parseFloat( this.start_offset );
-	   }
-	},
+	
 	doEmbedHTML:function() {
 		js_log( 'f:doEmbedHTML' );
 		js_log( 'thum disp:' + this.thumbnail_disp );
@@ -1356,7 +1584,6 @@ embedVideo.prototype = {
 		if ( this.width < 300 ) {
 			return ;
 		}
-		this.onClipDone_disp = true;
 		this.thumbnail_disp = true;
 		
 		// make sure we are not in preview mode( no end clip actions in preview mode) 
@@ -1467,7 +1694,7 @@ embedVideo.prototype = {
 		var request_key = new_start + '/' + new_end;
 		// check the anno_data cache: 
 		// @@todo search cache see if current is in range.  
-		if ( this.anno_data_cache ) {
+		if ( this.cmmlData ) {
 			js_log( 'anno data found in cache: ' + request_key );
 			this.showNextPrevLinks();
 		} else {
@@ -1478,21 +1705,21 @@ embedVideo.prototype = {
 					js_log( 'Parse CMML data:' + cmml_data );
 					cmml_data = parser.parseFromString( cmml_data, "text/xml" );
 				}
-				// init anno_data_cache
-				if ( !_this.anno_data_cache )
-					_this.anno_data_cache = { };
-				// grab all metadata and put it into the anno_data_cache:					 
+				// init cmmlData
+				if ( !_this.cmmlData )
+					_this.cmmlData = { };
+				// grab all metadata and put it into the cmmlData:					 
 				$j.each( cmml_data.getElementsByTagName( 'clip' ), function( inx, clip ) {
-					_this.anno_data_cache[ $j( clip ).attr( "id" ) ] = {
+					_this.cmmlData[ $j( clip ).attr( "id" ) ] = {
 							'start_time_sec':npt2seconds( $j( clip ).attr( "start" ).replace( 'npt:', '' ) ),
 							'end_time_sec':npt2seconds( $j( clip ).attr( "end" ).replace( 'npt:', '' ) ),
 							'time_req':$j( clip ).attr( "start" ).replace( 'npt:', '' ) + '/' + $j( clip ).attr( "end" ).replace( 'npt:', '' )
 						};
 					// grab all its meta
-					_this.anno_data_cache[ $j( clip ).attr( "id" ) ]['meta'] = { };
+					_this.cmmlData[ $j( clip ).attr( "id" ) ]['meta'] = { };
 					$j.each( clip.getElementsByTagName( 'meta' ), function( imx, meta ) {
 						// js_log('adding meta: '+ $j(meta).attr("name")+ ' = '+ $j(meta).attr("content"));
-						_this.anno_data_cache[$j( clip ).attr( "id" )]['meta'][$j( meta ).attr( "name" )] = $j( meta ).attr( "content" );
+						_this.cmmlData[$j( clip ).attr( "id" )]['meta'][$j( meta ).attr( "name" )] = $j( meta ).attr( "content" );
 					} );
 				} );
 				_this.showNextPrevLinks();
@@ -1508,15 +1735,14 @@ embedVideo.prototype = {
 			'current':'',
 			'next':''
 		}
-		var curTime = this.getTimeReq().split( '/' );
-		
+		var curTime = this.getTimeRange().split( '/' );
 		var s_sec = npt2seconds( curTime[0] );
 		var e_sec = npt2seconds( curTime[1] );
 		js_log( 'showNextPrevLinks: req time: ' + s_sec + ' to ' + e_sec );
-		// now we have all the data in anno_data_cache
+		// now we have all the data in cmmlData
 		var current_done = false;
-		for ( var clip_id in this.anno_data_cache ) {  // for in loop oky for object
-			 var clip =  this.anno_data_cache[clip_id];
+		for ( var clip_id in this.cmmlData ) {  // for in loop oky for object
+			 var clip =  this.cmmlData[clip_id];
 			 // js_log('on clip:'+ clip_id);
 			 // set prev_link (if cur_link is still empty)
 			if ( s_sec > clip.end_time_sec ) {
@@ -1545,7 +1771,7 @@ embedVideo.prototype = {
 			for ( var link_type in link ) {
 				var link_id = link[link_type];
 				if ( link_id != '' ) {
-					var clip = this.anno_data_cache[link_id];
+					var clip = this.cmmlData[link_id];
 					var title_msg = '';
 					for ( var j in clip['meta'] ) {
 						title_msg += j.replace( /_/g, ' ' ) + ': ' + clip['meta'][j].replace( /_/g, ' ' ) + " <br>";
@@ -1601,10 +1827,7 @@ embedVideo.prototype = {
 	getControlsHTML:function() {
 		return this.ctrlBuilder.getControls( this );
 	},
-	getHTML : function () {
-		// @@todo check if we have sources available	
-		js_log( 'embedVideo:getHTML : ' + this.id  + ' resource type: ' + this.type );
-		
+	getHTML : function () {		
 		// set-up the local ctrlBuilder instance: 
 		this.ctrlBuilder = new ctrlBuilder( this );
 						
@@ -1622,7 +1845,7 @@ embedVideo.prototype = {
 			html_code += '<div class="ui-state-default ui-widget-header ui-helper-clearfix control-bar" >';
 			html_code += this.getControlsHTML();
 			html_code += '</div>';
-			// block out some space by encapulating the top level div 
+			// block out some space by encapsulating the top level div 
 			$j( this ).wrap( '<div style="width:' + parseInt( this.width ) + 'px;height:'
 					+ ( parseInt( this.height ) + this.ctrlBuilder.height ) + 'px"></div>' );
 		}
@@ -1662,19 +1885,27 @@ embedVideo.prototype = {
 		var time_parts = time_req.split( '/' );
 		this.updateVideoTime( time_parts[0], time_parts[1] );
 	},
-	// update video time
-	updateVideoTime:function( start_ntp, end_ntp ) {
+	/** 
+	* Update Video time from provided start_npt and end_npt values
+	*
+	* @param {String} start_npt the new start time in npt format
+	* @pamra {String} end_npt the new end time in npt format 
+	*/
+	updateVideoTime:function( start_npt, end_npt ) {
 		// update media
-		this.media_element.updateSourceTimes( start_ntp, end_ntp );
+		this.media_element.updateSourceTimes( start_npt, end_npt );
+		
 		// update mv_time
-		this.setStatus( start_ntp + '/' + end_ntp );
+		this.setStatus( start_npt + '/' + end_npt );
+		
 		// reset slider
 		this.setSliderValue( 0 );
+		
 		// reset seek_offset:
 		if ( this.media_element.selected_source.URLTimeEncoding )
 			this.seek_time_sec = 0;
 		else
-			this.seek_time_sec = npt2seconds( start_ntp );
+			this.seek_time_sec = npt2seconds( start_npt );
 	},
 	// Should overwrite by embed library if we can render frames natively 
 	renderTimelineThumbnail:function( options ) {
@@ -1696,7 +1927,7 @@ embedVideo.prototype = {
 						'width:' + options.width + 'px">' +
 				'</div>';
 	},
-	updateThumbTimeNTP:function( time ) {
+	updateThumbTimeNPT:function( time ) {
 		this.updateThumbTime( npt2seconds( time ) - parseInt( this.start_offset ) );
 	},
 	updateThumbTime:function( float_sec ) {
@@ -1772,7 +2003,7 @@ embedVideo.prototype = {
 	* download, and embed code.
 	*/
 	getThumbnailHTML : function () {
-		js_log( 'embedVideo:getThumbnailHTML::' + this.id );
+		js_log( 'embedPlayer:getThumbnailHTML::' + this.id );
 		var thumb_html = '';
 		var class_atr = '';
 		var style_atr = '';
@@ -2106,7 +2337,6 @@ embedVideo.prototype = {
 				$j( '#' + this.id ).html( this.getPluginMissingHTML() );
 			} else {
 				this.doEmbedHTML();
-				this.onClipDone_disp = false;
 				this.paused = false;
 				this.thumbnail_disp = false;
 			}
@@ -2175,10 +2405,10 @@ embedVideo.prototype = {
 			this.doThumbnailHTML();
 			this.bufferedPercent = 0; // reset buffer state
 			this.setSliderValue( 0 );
-			this.setStatus( this.getTimeReq() );
+			this.setStatus( this.getTimeRange() );
 		}
 		
-		// make sure the big playbutton is has click action: 
+		//Bind play-btn-large play 
 		$j( '#' + _this.id + ' .play-btn-large' ).unbind( 'click' ).click( function() {
 			$j( '#' + _this.id ).get( 0 ).play();
 		} );
@@ -2240,11 +2470,12 @@ embedVideo.prototype = {
 	* underling plugin objects are responsible for updating currentTime
 	*/
 	monitor:function() {
+		var _this = this;
 		//js_log(' ct: ' + this.currentTime + ' dur: ' + ( parseInt( this.duration ) + 1 )  + ' is seek: ' + this.seeking );
 		if ( this.currentTime && this.currentTime > 0 && this.duration ) {
 			if ( !this.userSlide && !this.seeking ) {
 				if ( this.start_offset  ) {
-					// if start offset include that calculation 
+					// If start offset include that calculation 
 					this.setSliderValue( ( this.currentTime - this.start_offset ) / this.duration );
 					var et = ( this.ctrlBuilder.long_time_disp ) ? '/' + seconds2npt( parseFloat( this.start_offset ) + parseFloat( this.duration ) ) : '';
 					this.setStatus( seconds2npt( this.currentTime ) + et );
@@ -2264,7 +2495,7 @@ embedVideo.prototype = {
 			// Media lacks duration just show end time
 			// js_log(' ct:' + this.currentTime + ' dur: ' + this.duration);
 			if ( this.isStoped() ) {
-				this.setStatus( this.getTimeReq() );
+				this.setStatus( this.getTimeRange() );
 			} else if ( this.isPaused() ) {
 				this.setStatus( gM( 'mwe-paused' ) );
 			} else if ( this.isPlaying() ) {
@@ -2273,14 +2504,11 @@ embedVideo.prototype = {
 				else
 					this.setStatus( " - - - " );
 			} else {
-				this.setStatus( this.getTimeReq() );
+				this.setStatus( this.getTimeRange() );
 			}
 		}
-		// Could check if time > duration here and stop playback
-
 		// Update buffer information 
-		this.updateBufferStatus();
-		var _this = this;
+		this.updateBufferStatus();		
 		// Update monitorTimerId to call child monitor
 		if ( ! this.monitorTimerId ) {
 			// Make sure an instance of this.id exists: 
@@ -2395,7 +2623,7 @@ embedVideo.prototype = {
 		var eid = ( this.pc ) ? this.pc.pp.id:this.id;
 		$j( '#mv_seeker_' + eid + ' .mv_highlight' ).hide();
 		this.setStatus( this.getTimeReq() );
-		this.setSliderValue( 0 );
+		thigetTimeRangerValue( 0 );
 	},
 	setStatus:function( value ) {
 		var eid = ( this.pc ) ? this.pc.pp.id:this.id;
@@ -2457,7 +2685,6 @@ mediaPlayer.prototype =
 		mvJsLoader.doLoad( [
 			this.library + 'Embed'
 		], function() {			
-			js_log("wtf: " + typeof( vlcEmbed ) );
 			callback();
 		} );
 	}

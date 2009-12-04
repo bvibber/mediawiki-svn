@@ -342,7 +342,7 @@ $messages['en'] = array(
 	'mwe-credit-title' => 'Title: $1',
 
 	/*
-	 * js file: /libEmbedVideo/embedVideo.js
+	 * js file: /libEmbedPlayer/embedPlayer.js
 	 */
 	'mwe-loading_plugin' => 'loading plugin ...',
 	'mwe-select_playback' => 'Set playback preference',

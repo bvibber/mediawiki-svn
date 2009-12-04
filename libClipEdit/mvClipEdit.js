@@ -1,4 +1,4 @@
-/*
+k/*
 	mvClipEdit hanndles the edit interfaces for images and video
 */
 // set gMsg object:
@@ -582,7 +582,7 @@ mvClipEdit.prototype = {
 			ebvid.stop();							
 			ebvid.updateVideoTime( start_time, end_time );
 			js_log( 'update thumb: ' + start_time );
-			ebvid.updateThumbTimeNTP( start_time );
+			ebvid.updateThumbTimeNPT( start_time );
 		}
 	},
 	

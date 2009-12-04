@@ -1005,7 +1005,7 @@ remoteSearchDriver.prototype = {
 				break; 
 			}
 		}
-	}
+	},
 	
 	/**
 	 * checkForCopyURLPermission:
@@ -1695,15 +1695,15 @@ remoteSearchDriver.prototype = {
 		// normally this meta should be provided in the search result 
 		// (but archive.org has another query for more media meta)
 		resource.pSobj.addResourceInfoCallback( resource, function() {
-			// Make sure we have the embedVideo libs:
+			// Make sure we have the embedPlayer libs:
 			var runFlag = false;
-			mvJsLoader.embedVideoCheck( function() {
+			mvJsLoader.embedPlayerCheck( function() {
 				// Strange concurrency issue with callbacks
 				// @@todo try and figure out why this callback is fired twice
 				if ( !runFlag ) {
 					runFlag = true;
 				} else {
-					js_log( 'Error: embedVideoCheck run twice' );
+					js_log( 'Error: embedPlayerCheck run twice' );
 					return false;
 				}
 				var embedHtml = resource.pSobj.getEmbedHTML( resource, 
@@ -2341,9 +2341,7 @@ remoteSearchDriver.prototype = {
 				resource.mime.indexOf( 'video' ) != -1 ||
 				resource.mime.indexOf( '/ogg' ) != -1 ) 
 			{
-				mvJsLoader.embedVideoCheck( function() {
-					mv_video_embed();
-				} );
+				mvJsLoader.embedPlayerCheck();
 			}
 		}
 		

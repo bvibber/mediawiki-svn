@@ -180,14 +180,17 @@ var nativeEmbed = {
 		this.prevCurrentTime =	this.currentTime;
 		
 		// update currentTime				
-		this.currentTime = this.vid.currentTime;
-		this.addPresTimeOffset();
+		this.currentTime = this.vid.currentTime;		
 				
 		// js_log('currentTime:' + this.currentTime);
 		// js_log('this.currentTime: ' + this.currentTime );
 		// once currentTime is updated call parent_monitor
 		this.parent_monitor();
 	},
+	
+	/**
+	* Get video src URI
+	*/
 	getSrc:function() {
 		var src = this.parent_getSrc();
 		if (  this.urlAppend != '' )

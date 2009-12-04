@@ -132,15 +132,15 @@ lcPaths( {
 
 	"mvClipEdit"			: "libClipEdit/mvClipEdit.js",
 
-	"embedVideo"		: "libEmbedVideo/embedVideo.js",
-	"flowplayerEmbed"	: "libEmbedVideo/flowplayerEmbed.js",
-	"kplayerEmbed"		: "libEmbedVideo/kplayerEmbed.js",
-	"genericEmbed"		: "libEmbedVideo/genericEmbed.js",
-	"htmlEmbed"			: "libEmbedVideo/htmlEmbed.js",
-	"javaEmbed"			: "libEmbedVideo/javaEmbed.js",
-	"nativeEmbed"		: "libEmbedVideo/nativeEmbed.js",
-	"quicktimeEmbed"	: "libEmbedVideo/quicktimeEmbed.js",
-	"vlcEmbed"			: "libEmbedVideo/vlcEmbed.js",
+	"embedPlayer"		: "libEmbedPlayer/embedPlayer.js",
+	"flowplayerEmbed"	: "libEmbedPlayer/flowplayerEmbed.js",
+	"kplayerEmbed"		: "libEmbedPlayer/kplayerEmbed.js",
+	"genericEmbed"		: "libEmbedPlayer/genericEmbed.js",
+	"htmlEmbed"			: "libEmbedPlayer/htmlEmbed.js",
+	"javaEmbed"			: "libEmbedPlayer/javaEmbed.js",
+	"nativeEmbed"		: "libEmbedPlayer/nativeEmbed.js",
+	"quicktimeEmbed"	: "libEmbedPlayer/quicktimeEmbed.js",
+	"vlcEmbed"			: "libEmbedPlayer/vlcEmbed.js",
 
 	"mvPlayList"		: "libSequencer/mvPlayList.js",
 	"mvSequencer"		: "libSequencer/mvSequencer.js",
@@ -1167,9 +1167,9 @@ var mvJsLoader = {
 			}
 		} );
 	},
-	embedVideoCheck:function( callback ) {
+	embedPlayerCheck:function( callback ) {
 		var _this = this;
-		js_log( 'embedVideoCheck:' );
+		js_log( 'embedPlayerCheck:' );
 		// Make sure we have jQuery
 		_this.jQueryCheck( function() {
 			// set class videonojs to loading
@@ -1178,7 +1178,7 @@ var mvJsLoader = {
 			var depReq = [
 				[
 					'$j.ui',
-					'embedVideo',
+					'embedPlayer',
 					'ctrlBuilder',
 					'$j.cookie'
 				],
@@ -1283,11 +1283,12 @@ function mwdomReady( force ) {
 			}
 		}
 		// Load libs and process videos
-		mvJsLoader.embedVideoCheck( function() {
-			// Run any queued global events:
-			mv_video_embed( function() {
+		mvJsLoader.embedPlayerCheck( function() {
+			// Convert all supported elements into embed players:
+			$j.embedPlayers( function(){
+				// Run any queued global events:			
 				mvJsLoader.runQueuedFunctions();
-			} );
+			});
 		} );
 	} else {
 		mvJsLoader.runQueuedFunctions();
@@ -1314,7 +1315,7 @@ var mwAddOnloadHook = js2AddOnloadHook;
 function rewrite_by_id( vid_id, ready_callback ) {
 	js_log( 'f:rewrite_by_id: ' + vid_id );
 	// Force a re-check of the DOM for playlist or video elements:
-	mvJsLoader.embedVideoCheck( function() {
+	mvJsLoader.eembedPlayerheck( function() {
 		mv_video_embed( ready_callback, vid_id );
 	} );
 }
@@ -1456,7 +1457,7 @@ function mv_jqueryBindings() {
 			loadExternalCss( mv_embed_path + 'skins/' + mw.conf['skin_name'] + '/mv_sequence.css' );
 			// Make sure we have the required mv_embed libs (they are not loaded when no video
 			// element is on the page)
-			mvJsLoader.embedVideoCheck( function() {
+			mvJsLoader.eembedPlayerheck( function() {
 				// Load the playlist object and then the jQuery UI stuff:
 				mvJsLoader.doLoadDepMode( [
 					[
