@@ -226,6 +226,12 @@ class HTMLCacheUpdateJob extends Job {
 	}
 
 	public function run() {
+		# LIVE PATCH TS -- broken indexes
+		if ( $this->table == 'categorylinks' ) {
+			return true;
+		}
+		### END PATCH
+		
 		$update = new HTMLCacheUpdate( $this->title, $this->table, $this->start, $this->end );
 		$update->doUpdate();
 		return true;
