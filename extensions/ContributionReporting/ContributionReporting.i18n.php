@@ -383,6 +383,9 @@ $messages['be-tarask'] = array(
 	'contribstats-conversion' => 'Узровень канвэрсіі (%)',
 	'contribstats-template' => 'Шаблён',
 	'contribstats-nodata' => 'Зьвесткі не пададзеныя',
+	'contribstats-landingpage' => 'Прывітальная старонка',
+	'contribstats-donatepage' => 'Старонка ахвяраваньняў',
+	'contribstats-average' => 'Сярэдняе',
 	'fundraiserstatistics' => 'Статыстыка сабраных ахвяраваньняў',
 	'fundraiserstats-date' => 'Дата',
 	'fundraiserstats-day' => 'Дзень $1 з $2',
@@ -472,10 +475,11 @@ $messages['br'] = array(
 	'contribstats-avg' => 'Keitat (SUA)',
 	'contribstats-percentage-ytd' => 'Dregantad (er bl.-mañ)',
 	'contribstats-total-ytd' => 'Hollad (er bloaz-mañ)',
-	'contribstats-day-totals' => 'Hollad evit hiziv',
+	'contribstats-day-totals' => 'Hollad an deiz',
 	'contribstats-week' => 'Sizhun',
 	'contribstats-clicks' => 'Klikoù',
 	'contribstats-template' => 'Patrom',
+	'fundraiserstats-tab-totals' => 'Hollad (dollaroù SUA)',
 );
 
 /** Bosnian (Bosanski)
@@ -643,6 +647,9 @@ $messages['cs'] = array(
 	'contribstats-conversion' => 'Konverzní poměr (%)',
 	'contribstats-template' => 'Šablona',
 	'contribstats-nodata' => 'Údaje nejsou k dispozici',
+	'contribstats-landingpage' => 'Cílová stránka',
+	'contribstats-donatepage' => 'Přispívací stránka',
+	'contribstats-average' => 'Průměr',
 	'fundraiserstatistics' => 'Statistika příspěvkové kampaně',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => '$2, $1. den',
@@ -719,6 +726,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Imre
+ * @author MF-Warburg
  * @author Metalhead64
  * @author Omnipaedista
  * @author Purodha
@@ -766,6 +774,8 @@ $messages['de'] = array(
 	'contribstats-conversion' => 'Umrechnungskurs (%)',
 	'contribstats-template' => 'Vorlage',
 	'contribstats-nodata' => 'Keine Daten vorhanden',
+	'contribstats-donatepage' => 'Spenden-Seite',
+	'contribstats-average' => 'Durchschnitt',
 	'fundraiserstatistics' => 'Spendenstatistiken',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Tag $1 von $2',
@@ -1090,28 +1100,49 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
-	'contributionhistory' => 'Redigeerimise ajalugu',
+	'contributiontotal' => 'Annetamise kogusumma',
+	'contributionhistory' => 'Annetamise ajalugu',
+	'contrib-hist-header' => 'Reaalajas kommentaarid annetajatelt üle maailma',
 	'contrib-hist-name' => 'Nimi',
 	'contrib-hist-date' => 'Kellaaeg ja kuupäev',
+	'contrib-hist-amount' => 'Summa',
 	'contrib-hist-next' => 'Varasemad annetused',
 	'contrib-hist-previous' => 'Värskemad annetused',
 	'contrib-hist-anonymous' => 'Anonüümne',
-	'contributionstatistics' => 'Redigeerimise arvandmed',
-	'contribstats-desc' => 'Kuvab Wikimedia Sihtasutusele tehtud koostöö arvandmed.',
+	'contributionstatistics' => 'Annetamise arvandmed',
+	'contribstats-desc' => 'Kuvab arvandmed Wikimedia Sihtasutusele tehtud annetuste kohta.',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Tänane kogusumma|Viimase $1 päeva kogusummad}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Selle kuu kogusumma|Viimase $1 kuu kogusummad}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Ühe kuu kogusumma|$1 kuu kogusummad}}',
+	'contribstats-contribution-range-breakdown' => 'Annetuste jaotumine summati ($1–$2)',
+	'contribstats-currency-totals' => 'Eelarveaasta $1 kogusummad vääringuti',
+	'contribstats-contribution-breakdown' => 'Eelarveaasta $1 annetuste jaotumine summati',
 	'contribstats-day' => 'Päev',
 	'contribstats-month' => 'Kuu',
 	'contribstats-currency' => 'Rahaühik',
-	'contribstats-amount' => 'Hulk (USD)',
-	'contribstats-contributions' => 'Annetused',
-	'contribstats-total' => 'Summa (USD)',
+	'contribstats-amount' => 'Summa (USD)',
+	'contribstats-contributions' => 'Annetusi',
+	'contribstats-total' => 'Kokku (USD)',
 	'contribstats-avg' => 'Keskmine (USD)',
-	'contribstats-max' => 'Maksimum (USD)',
+	'contribstats-max' => 'Suurim annetus',
+	'contribstats-percentage-ytd' => 'Protsent (sel aastal)',
+	'contribstats-total-ytd' => 'Kokku (sel aastal)',
 	'contribstats-value-exactly' => 'Täpselt $1',
 	'contribstats-value-under' => 'Alla $1',
-	'contribstats-value-from' => '$1 - $2',
+	'contribstats-value-from' => '$1 – $2',
 	'contribstats-value-over' => 'Üle $1',
+	'contributiontrackingstatistics' => 'Annetamise jälgimisarvandmed',
+	'contribstats-day-totals' => 'Päeva kogusumma',
+	'contribstats-clicks' => 'Klõpse',
+	'contribstats-donations' => 'Annetusi',
+	'contribstats-conversion' => 'Annetusmäär (%)',
+	'contribstats-template' => 'Mall',
+	'contribstats-donatepage' => 'Annetamislehekülg',
+	'contribstats-average' => 'Keskmine',
+	'fundraiserstatistics' => 'Korjanduse arvandmed',
 	'fundraiserstats-date' => 'Kuupäev',
-	'fundraiserstats-contributions' => 'Annetused',
+	'fundraiserstats-day' => '$1. päev ($2)',
+	'fundraiserstats-contributions' => 'Annetusi',
 	'fundraiserstats-total' => 'Kokku (USD)',
 	'fundraiserstats-avg' => 'Keskmine (USD)',
 	'fundraiserstats-max' => 'Maksimum (USD)',
@@ -1119,6 +1150,7 @@ $messages['et'] = array(
 	'fundraiserstats-tab-contributions' => 'Annetuste hulk',
 	'fundraiserstats-tab-averages' => 'Keskmised (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumid (USD)',
+	'specialpages-group-contribution' => 'Annetamine / korjandused',
 );
 
 /** Basque (Euskara)
@@ -1252,6 +1284,8 @@ $messages['fi'] = array(
 	'contribstats-clicks' => 'Klikkaukset',
 	'contribstats-donations' => 'Lahjoitukset',
 	'contribstats-template' => 'Malline',
+	'contribstats-donatepage' => 'Lahjoitussivu',
+	'contribstats-average' => 'Keskiarvo',
 	'fundraiserstatistics' => 'Rahankeräyksen tilastoja',
 	'fundraiserstats-date' => 'Päiväys',
 	'fundraiserstats-day' => 'Päivä $1 / $2',
@@ -1878,6 +1912,7 @@ $messages['io'] = array(
 	'contribstats-value-from' => 'Inter $1 - $2',
 	'contribstats-value-over' => 'Plu kam $1',
 	'contribstats-week' => 'Semano',
+	'contribstats-template' => 'Shablono',
 	'fundraiserstats-date' => 'Dato',
 	'fundraiserstats-day' => 'Dio $1 di $2',
 );
@@ -2677,6 +2712,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -2713,6 +2749,17 @@ $messages['nn'] = array(
 	'contribstats-value-under' => 'Under $1',
 	'contribstats-value-from' => 'Frå $1–$2',
 	'contribstats-value-over' => 'Over $1',
+	'contributiontrackingstatistics' => 'Gåvestatistikk',
+	'contribstats-day-totals' => 'Totalt for dagen',
+	'contribstats-week' => 'Veke',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Totalt denne veka|Vekesummar for dei seinaste $1 vekene}}',
+	'contribstats-clicks' => 'Klikk',
+	'contribstats-donations' => 'Gåver',
+	'contribstats-conversion' => 'Konverteringsgrad (%)',
+	'contribstats-template' => 'Mal',
+	'contribstats-nodata' => 'Ingen data oppgjeve',
+	'contribstats-donatepage' => 'Side for å gje gåver',
+	'contribstats-average' => 'Gjennomsnitt',
 	'fundraiserstatistics' => 'Innsamlingsstatistikk',
 	'fundraiserstats-date' => 'Dato',
 	'fundraiserstats-day' => 'Dag $1 av $2',
@@ -3278,6 +3325,9 @@ $messages['sk'] = array(
 	'contribstats-conversion' => 'Konverzný kurz (%)',
 	'contribstats-template' => 'Šablóna',
 	'contribstats-nodata' => 'Neboli poskytnuté žiadne údaje',
+	'contribstats-landingpage' => 'Cieľová stránka',
+	'contribstats-donatepage' => 'Stránka darov',
+	'contribstats-average' => 'Priemer',
 	'fundraiserstatistics' => 'Štatistika fundraisingu',
 	'fundraiserstats-date' => 'Dátum',
 	'fundraiserstats-day' => 'Deň $1 z $2',
@@ -3443,6 +3493,7 @@ $messages['te'] = array(
 	'contribstats-clicks' => 'నొక్కులు',
 	'contribstats-donations' => 'విరాళాలు',
 	'contribstats-template' => 'మూస',
+	'contribstats-average' => 'సగటు',
 	'fundraiserstatistics' => 'నిధుల సేకరణ గణాంకాలు',
 	'fundraiserstats-date' => 'తేదీ',
 	'fundraiserstats-contributions' => 'దాతలు',

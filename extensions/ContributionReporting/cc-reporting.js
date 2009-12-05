@@ -3,6 +3,7 @@ runOnloadHook = function(){
 	sendReq("cc-reporting.php?load=1&utm_src=" + document.payment.utm_source.value);
 }
 
+//replace "validate_form" call with this
 submitForm = function(){
 	sendReq("cc-reporting.php?submit=1&utm_src="+ document.payment.utm_source.value);
 	return validate_form(document.payment);
