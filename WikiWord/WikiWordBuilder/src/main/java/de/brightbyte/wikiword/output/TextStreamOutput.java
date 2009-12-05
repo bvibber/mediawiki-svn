@@ -51,7 +51,7 @@ public class TextStreamOutput extends AbstractStreamOutput implements TextOutput
 			s.append("Aspect:"); s.append(aspect); s.append(sep);
 			s.append("Page-Type:"); s.append(ptype.name()); s.append(sep);
 			s.append("Content-Type: "); s.append(format); s.append(sep);
-			s.append("Content-Length: "); s.append(data.length); s.append(sep);
+			s.append("Content-Length: "); s.append(data.length); 
 				s.append("; chars="); s.append(text.length()); 
 				s.append("; codepoints="); s.append(Character.codePointCount(text, 0, text.length())); 
 				s.append(sep);
