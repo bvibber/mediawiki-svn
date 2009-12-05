@@ -415,7 +415,6 @@ class SpecialContributionStatistics extends SpecialPage {
 			$totals['USD'][1] += $totals[null][1];
 			$totals['USD'][2] += $totals[null][2];
 			$totals['USD'][3] = ( $totals[null][3] == 0 ) ? $totals['USD'][3] : ( $totals['USD'][3] + $totals[null][3] ) / 2;  
-			$totals['USD'][3] = ( $totals['USD'][3] + $totals[null][3] ) / 2;
 			$totals['USD'][4] = max( $totals['USD'][4], $totals[null][4] );
 			/* $totals['USD'][5] = min( $totals['USD'][5], $totals[null][5] ); */
 			unset( $totals[null] );
