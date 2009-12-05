@@ -25,7 +25,7 @@
  *	http://meta.wikimedia.org/wiki/Help:Advanced_editing
  *
  * MediaWiki Sandbox:
- *	http://meta.wikimedia.org/wiki/Meta:Sandbox
+ *	http://www.mediawiki.org/wiki/Sandbox
  */
 
 // Rename the "Source" buttom to "Wikitext".

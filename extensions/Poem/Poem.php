@@ -2,7 +2,7 @@
 # MediaWiki Poem extension v1.0cis
 #
 # Based on example code from
-# http://meta.wikimedia.org/wiki/Write_your_own_MediaWiki_extension
+# http://www.mediawiki.org/wiki/Manual:Extending_wiki_markup
 #
 # All other code is copyright © 2005 Nikola Smolenski <smolensk@eunet.yu>
 # (with modified parser callback and attribute additions)
@@ -16,7 +16,7 @@
 # To use, put some text between <poem></poem> tags
 #
 # For more information see its page at
-# http://meta.wikimedia.org/wiki/Poem_Extension
+# http://www.mediawiki.org/wiki/Extension:Poem
 
 $wgHooks['ParserFirstCallInit'][] = 'wfPoemExtension';
 $wgExtensionCredits['parserhook'][] = array(
