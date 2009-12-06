@@ -61,7 +61,7 @@ require_once($dir . 'SpecialTaskList_body.php');
 $wgHooks['PersonalUrls'][]             = 'addPersonalUrl';
 $wgHooks['AlternateEdit'][]            = 'todoPreviewAction';
 $wgHooks['EditPage::attemptSave'][]    = 'todoSavePreparser';
-$wgExtensionFunctions[]                = 'wfTodoParserFunction_Setup';
+$wgHooks['ParserFirstCallInit'][]      = 'wfTodoParserFunction_Setup';
 
 function efTodoTasksSchemaUpdates() {
 	global $wgExtNewTables;

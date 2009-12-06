@@ -14,8 +14,11 @@ function wfMsgTL($key) {
 
 function wfTodoParserFunction_Setup() {
         global $wgParser;
+
         # Set a function hook associating the "example" magic word with our function
         $wgParser->setFunctionHook( 'todo', 'wfTodoParserFunction_Render' );
+
+	return true;
 }
 
 # only create the following function if it was not already installed with the User Contact Links extension
