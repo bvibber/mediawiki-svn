@@ -135,23 +135,25 @@ class WikilogMainPage
 	public function wikilog() {
 		global $wgUser, $wgOut, $wgRequest;
 
-		if ( !$this->mTitle->exists() ) {
-			$wgOut->showErrorPage( 'nopagetitle', 'nopagetext' );
-			return;
-		}
-
-		if ( $wgRequest->getBool( 'wlActionNewItem' ) )
+		if ( $this->mTitle->exists() && $wgRequest->getBool( 'wlActionNewItem' ) )
 			return $this->actionNewItem();
 
-		$skin = $wgUser->getSkin();
 		$wgOut->setPageTitle( wfMsg( 'wikilog-tab-title' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-		$wgOut->addHTML( $this->formatWikilogDescription( $skin ) );
-		$wgOut->addHTML( $this->formatWikilogInformation( $skin ) );
-
-		if ( $this->mTitle->quickUserCan( 'edit' ) ) {
-			$wgOut->addHTML( $this->formNewItem() );
+		if ( $this->mTitle->exists() ) {
+			$skin = $wgUser->getSkin();
+			$wgOut->addHTML( $this->formatWikilogDescription( $skin ) );
+			$wgOut->addHTML( $this->formatWikilogInformation( $skin ) );
+			if ( $this->mTitle->quickUserCan( 'edit' ) ) {
+				$wgOut->addHTML( $this->formNewItem() );
+			}
+		} else if ( $this->mTitle->userCan( 'create' ) ) {
+			$text = wfMsgExt( 'wikilog-missing-wikilog', 'parse' );
+			$text = WikilogUtils::wrapDiv( 'noarticletext', $text );
+			$wgOut->addHTML( $text );
+		} else {
+			$this->showMissingArticle();
 		}
 	}
 

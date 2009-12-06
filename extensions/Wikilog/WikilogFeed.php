@@ -35,8 +35,8 @@ if ( !defined( 'MEDIAWIKI' ) )
 class WikilogFeed
 {
 	/**
-	 * Feed title (i.e., not Wikilog title). For Special:Wikilog, 'wikilog'
-	 * system message should be used.
+	 * Feed title (i.e., not Wikilog title). For Special:Wikilog,
+	 * 'wikilog-specialwikilog-title' system message should be used.
 	 */
 	protected $mTitle;
 
@@ -315,7 +315,7 @@ class WikilogFeed
 	 */
 	public function getSiteFeedObject() {
 		global $wgContLanguageCode, $wgWikilogFeedClasses, $wgFavicon, $wgLogo;
-		$title = wfMsgForContent( 'wikilog' );
+		$title = wfMsgForContent( 'wikilog-specialwikilog-title' );
 		$subtitle = wfMsgExt( 'wikilog-feed-description', array( 'parse', 'content' ) );
 
 		$updated = $this->mDb->selectField( 'wikilog_wikilogs',

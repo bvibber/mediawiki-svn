@@ -14,11 +14,12 @@ $messages['en'] = array(
 	# Extension information
 	'wikilog-desc' => 'Adds blogging features, creating a wiki-blog hybrid',
 	'wikilog-auto' => 'Wikilog Auto', # reserved username
+	'wikilog-help' => "{{ns:Help}}:Wikilog",
 	'right-wl-postcomment' => 'Post comments to wikilog articles',
 	'right-wl-moderation' => 'Moderation of wikilog article comments',
 
 	# Special:Wikilog
-	'wikilog' => 'Wikilogs', # Page title
+	'wikilog-specialwikilog-title' => 'Wikilogs', # Page title
 	'wikilog-specialwikilog' => 'Wikilog', # Special page name (DEPRECATED AFTER MW1.16)
 
 	# Logs
@@ -31,6 +32,14 @@ $messages['en'] = array(
 	# Wikilog tab
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Wikilog actions',
+	'wikilog-missing-wikilog' => "
+This is the [[{{int:wikilog-help}}|wikilog]] page for [[{{FULLPAGENAME}}]].
+
+This wikilog does not exist yet.
+In order to publish articles and enable other wikilog features, it has to be created first.
+
+* <span class=\"plainlinks\">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Create this wikilog].</span>
+",
 	'wikilog-information' => 'Wikilog information',
 	'wikilog-post-count-published' => 'There {{PLURAL:$1|is one published article|are $1 published articles}} in this wikilog',
 	'wikilog-post-count-drafts' => 'There {{PLURAL:$1|is one unpublished (draft) article|are $1 unpublished (draft) articles}}',
@@ -192,9 +201,19 @@ The comment will only appear after it is reviewed by a moderator.',
 $messages['qqq'] = array(
 	'wikilog-desc' => '{{desc}}',
 	'wikilog-auto' => 'This is a reserved username that will edit as a robot.',
+	'wikilog-help' => 'This is the name of the help page for the extension.
+This should only be changed when a translation of the extension manual is available in the target language.
+Currently, English is the only language the manual is available in.
+So, let this value untranslated until the manual is available in your language.',
 	'right-wl-postcomment' => '{{doc-right|wl-postcomment}}',
 	'right-wl-moderation' => '{{doc-right|wl-moderation}}',
-	'wikilog-specialwikilog' => 'This is a special page name',
+	'wikilog-specialwikilog-title' => 'This is a special page title.
+"Wikilog" is used as in contraction of "wiki" and "blog" (or "weblog").
+If these words are the same in your language, then just transliterate it;
+otherwise use the proper translation for both words and try to keep the idea of something that ties both concepts into a single object.
+It is used in the plural in this title.',
+	'wikilog-specialwikilog' => 'This is a special page alias. It is obsolete and will be removed in a future version of the extension.', # See Wikilog.i18n.alias.php.
+	'wikilog-missing-wikilog' => 'Displayed when user visits a page for a wikilog that has not been created yet. Similar to {{msg-mw:noarticletext}}.',
 	'wikilog-log-cmt-approve' => 'Log action message used for entries describing comments approved by moderators, as in someone "did that". Similar to {{msg-mw|deletedarticle}} and {{msg-mw|protectedarticle}}.
 Parameters:
 * $1 is the page title of the approved comment.',
@@ -425,7 +444,7 @@ $messages['be-tarask'] = array(
 	'wikilog-auto' => 'Робат вікіблёгу',
 	'right-wl-postcomment' => 'пакідаць камэнтары ў артыкулах вікіблёгу',
 	'right-wl-moderation' => 'мадэрацыя камэнтараў да артыкулаў вікіблёгу',
-	'wikilog' => 'Вікіблёгі',
+	'wikilog-specialwikilog-title' => 'Вікіблёгі',
 	'wikilog-specialwikilog' => 'Вікіблёг',
 	'wikilog-log-pagename' => 'Журнал дзеяньняў вікіблёгу',
 	'wikilog-log-pagetext' => 'Ніжэй пададзены сьпіс дзеяньняў вікіблёгу.',
@@ -611,7 +630,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'wikilog-auto' => 'Wikilog Aoto',
 	'right-wl-postcomment' => 'Postañ addisplegoù da bennadoù wikilog',
-	'wikilog' => 'Wikilogoù',
+	'wikilog-specialwikilog-title' => 'Wikilogoù',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Marilh an oberoù war wikilog',
 	'wikilog-log-cmt-approve' => 'addispleg aprouet [[$1]]',
@@ -722,7 +741,7 @@ $messages['de'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => 'Kommentare zu Wikilog-Beiträgen posten',
 	'right-wl-moderation' => 'Moderation von Kommentaren zu Wikilog-Beiträgen',
-	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Wikilog Aktionen',
@@ -824,7 +843,7 @@ $messages['dsb'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => 'Komentary k wikilogowym pśinoskam pósłaś',
 	'right-wl-moderation' => 'Moderacija komentarow k wikilogowym pśinoskam',
-	'wikilog' => 'Wikilogi',
+	'wikilog-specialwikilog-title' => 'Wikilogi',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Protokol wikilogowych akcijow',
 	'wikilog-log-pagetext' => 'Dołojce jo lisćina wikilogowych akcijow.',
@@ -965,7 +984,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Registro de acciones  de Wikilog',
 	'wikilog-log-cmt-approve' => 'comentario aprobado [[$1]]',
@@ -1130,7 +1149,7 @@ $messages['fr'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => 'Poster des commentaires sur les articles de wikilog',
 	'right-wl-moderation' => 'Modération des commentaires sur les articles de wikilog',
-	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Journal des actions sur wikilog',
 	'wikilog-log-pagetext' => 'Ci-dessous se trouve une liste des actions sur wikilog.',
@@ -1255,7 +1274,7 @@ $messages['gl'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => 'Publicar comentarios nos artigos do wikilog',
 	'right-wl-moderation' => 'Moderar os comentarios dos artigos do wikilog',
-	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Rexistro de accións no wikilog',
 	'wikilog-log-pagetext' => 'A continuación está a lista das accións realizadas no wikilog.',
@@ -1397,7 +1416,7 @@ $messages['gsw'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => 'Kommentar zue Wikilog-Byytreg poschte',
 	'right-wl-moderation' => 'Moderation vu Kommentar zue Wikilog-Byytreg',
-	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Wikilog-Aktionslogbuech',
 	'wikilog-log-pagetext' => 'Unte het s e Lischt mit Wikilog-Aktione.',
@@ -1555,7 +1574,7 @@ $messages['hsb'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => 'Komentary k přinoškam Wikilog pósłać',
 	'right-wl-moderation' => 'Moderacija komentarow k přinoškam Wikilog',
-	'wikilog' => 'Wikiprotokole',
+	'wikilog-specialwikilog-title' => 'Wikiprotokole',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Protokol akcijow Wikiloga',
 	'wikilog-log-pagetext' => 'Deleka je lisćina wikilogowych akcijow.',
@@ -1681,7 +1700,7 @@ $messages['hu'] = array(
 	'wikilog-auto' => 'Automatikus wikinapló',
 	'right-wl-postcomment' => 'Hozzászólások írása a wikinapló bejegyzésekhez',
 	'right-wl-moderation' => 'wikinapló bejegyzés hozzászólásainak moderálása',
-	'wikilog' => 'Wikinaplók',
+	'wikilog-specialwikilog-title' => 'Wikinaplók',
 	'wikilog-specialwikilog' => 'Wikinapló',
 	'wikilog-log-pagename' => 'Wikinapló-műveletek naplója',
 	'wikilog-log-pagetext' => 'Alább látható a wikinaplón végzett műveletek listája.',
@@ -1806,7 +1825,7 @@ $messages['ia'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => 'Lassar commentos in articulos wikilog',
 	'right-wl-moderation' => 'Moderation de commentos de articulos wikilog',
-	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Registro de actiones wikilog',
 	'wikilog-log-pagetext' => 'Seque un lista de actiones wikilog.',
@@ -1931,7 +1950,7 @@ $messages['id'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => 'Mengirim komentar untuk artikel wikilog',
 	'right-wl-moderation' => 'Memoderasi komentar artikel wikilog',
-	'wikilog' => 'Wikilog',
+	'wikilog-specialwikilog-title' => 'Wikilog',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Log tindakan wikilog',
 	'wikilog-log-pagetext' => 'Berikut adalah daftar tindakan wikilog.',
@@ -2057,7 +2076,7 @@ $messages['ja'] = array(
 	'wikilog-auto' => 'ウィキログ・オート',
 	'right-wl-postcomment' => 'ウィキログの記事にコメントを投稿する',
 	'right-wl-moderation' => 'ウィキログ記事のコメントのモデレーション',
-	'wikilog' => 'ウィキログ',
+	'wikilog-specialwikilog-title' => 'ウィキログ',
 	'wikilog-specialwikilog' => 'ウィキログ',
 	'wikilog-log-pagename' => 'ウィキログ操作記録',
 	'wikilog-log-pagetext' => '以下にウィキログの操作の一覧を示します。',
@@ -2186,7 +2205,7 @@ $messages['ksh'] = array(
 	'wikilog-auto' => '{{int:Wikilog-wikilog}} (automattesch)',
 	'right-wl-postcomment' => 'Aanmärkunge zoh Atikelle vum {{int:Wikilog-wikilog}} afjävve',
 	'right-wl-moderation' => 'De Aanmörkunge zoh Atikelle vum {{int:Wikilog-wikilog}} modderiere',
-	'wikilog' => '{{int:Wikilog-wikilog}} Blogs',
+	'wikilog-specialwikilog-title' => '{{int:Wikilog-wikilog}} Blogs',
 	'wikilog-specialwikilog' => '{{int:Wikilog-wikilog}}',
 	'wikilog-log-pagename' => 'et Logboch met dem {{int:Wikilog-wikilog}} singe Akßjuhne',
 	'wikilog-log-pagetext' => 'Heh dronger kütt en Leß met dem {{int:Wikilog-wikilog}} sing Akßjuhne.',
@@ -2307,7 +2326,7 @@ Se moß eets vun enem Moderator aanjenumme wääde.',
  */
 $messages['lb'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
-	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-cmt-approve' => 'approuvéiert Bemierkung [[$1]]',
 	'wikilog-log-cmt-reject' => 'refuséiert Bemierkung [[$1]]',
@@ -2410,7 +2429,7 @@ $messages['mg'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'wikilog' => 'Викидневници',
+	'wikilog-specialwikilog-title' => 'Викидневници',
 	'wikilog-specialwikilog' => 'Викидневник',
 	'wikilog-post-count-all' => 'Има вкупно {{PLURAL:$1|една статија|$1 статии}}.',
 	'wikilog-new-item' => 'Созфај нова статија на викидневникот',
@@ -2466,7 +2485,7 @@ $messages['nl'] = array(
 	'wikilog-auto' => 'Wikilog Automatisch',
 	'right-wl-postcomment' => 'Reacties op wikilog-artikelen plaatsen',
 	'right-wl-moderation' => 'Wikilog-artikelreacties modereren',
-	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Wikiloghandelingenlogboek',
 	'wikilog-log-pagetext' => 'Hieronder treft u een lijst van Wikilog-handelingen aan.',
@@ -2658,7 +2677,7 @@ $messages['oc'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => 'Postar de comentaris suls articles de wikilog',
 	'right-wl-moderation' => 'Moderacion dels comentaris suls articles de wikilog',
-	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Jornal de las accions sus wikilog',
 	'wikilog-log-pagetext' => 'Çaijós se tròba una lista de las accions sus wikilog.',
@@ -2793,7 +2812,7 @@ $messages['pms'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => "Gionté dij coment an sj'artìcoj ëd wikilog",
 	'right-wl-moderation' => "Moderassion dij coment an sj'artìcoj ëd wikilog",
-	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => "Argistr ëd j'assion su wikilog",
 	'wikilog-log-pagetext' => "Si-sota a-i é na lista dj'assion su wikilog.",
@@ -2919,7 +2938,7 @@ $messages['pt'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => 'Criar comentários em artigos wikilog',
 	'right-wl-moderation' => 'Moderação de comentários de artigos wikilog',
-	'wikilog' => 'Wikilogs',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Registo de acções wikilog',
 	'wikilog-log-pagetext' => 'Abaixo está uma lista das acções wikilog.',
@@ -3107,7 +3126,7 @@ $messages['ru'] = array(
 	'wikilog-auto' => 'Викилог Авто',
 	'right-wl-postcomment' => 'оставлять комментарии к статьям викилога',
 	'right-wl-moderation' => 'модерировать комментарии к статьям викилога',
-	'wikilog' => 'Викилоги',
+	'wikilog-specialwikilog-title' => 'Викилоги',
 	'wikilog-specialwikilog' => 'Викилог',
 	'wikilog-log-pagename' => 'Журнал действий викилога',
 	'wikilog-log-pagetext' => 'Ниже приведен список действия викилога.',
@@ -3232,7 +3251,7 @@ $messages['si'] = array(
 	'wikilog-auto' => 'ස්වයං විකි ලඝු සටහන',
 	'right-wl-postcomment' => 'විකි ලඝු  ලිපිවලට විචාර තැපැල් කරන්න.',
 	'right-wl-moderation' => 'විකි ලඝු ලිපි විචාරවල මධ්‍යස්ථතාව',
-	'wikilog' => 'විකි ලඝු සටහන්',
+	'wikilog-specialwikilog-title' => 'විකි ලඝු සටහන්',
 	'wikilog-specialwikilog' => 'විකි ලඝු සටහන',
 	'wikilog-log-pagename' => 'විකි ලඝු ක්‍රියාකාරකම් ලඝු සටහන',
 	'wikilog-log-pagetext' => 'පහතින් විකි ලඝු ක්‍රියාකාරකම්වල ලැයිස්තුවකි.',
@@ -3357,7 +3376,7 @@ $messages['sv'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'right-wl-postcomment' => 'Skriv kommentarer till wikilog-artiklar',
 	'right-wl-moderation' => 'Moderering av wikilog-artikelkommentarer',
-	'wikilog' => 'Wikilog-bloggar',
+	'wikilog-specialwikilog-title' => 'Wikilog-bloggar',
 	'wikilog-log-pagename' => 'Wikilog händelselogg',
 	'wikilog-log-pagetext' => 'Nedan är en lista över wikilog-händelser.',
 	'wikilog-log-cmt-approve' => 'godkände kommentar [[$1]]',
@@ -3466,7 +3485,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'wikilog' => 'వికీచిట్టాలు',
+	'wikilog-specialwikilog-title' => 'వికీచిట్టాలు',
 	'wikilog-specialwikilog' => 'వికీచిట్టా',
 	'wikilog-tab' => 'వికీచిట్టా',
 	'wikilog-tab-title' => 'వికీచిట్టా చర్యలు',
@@ -3518,7 +3537,7 @@ $messages['te'] = array(
  * @author Manco Capac
  */
 $messages['tr'] = array(
-	'wikilog' => 'Vikiloglar',
+	'wikilog-specialwikilog-title' => 'Vikiloglar',
 	'wikilog-specialwikilog' => 'Vikilog',
 	'wikilog-log-pagetext' => 'Aşağıda vikilog hareketlerinin bir listesini bulabilirsiniz.',
 	'wikilog-tab' => 'Vikilog',
@@ -3597,7 +3616,7 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
-	'wikilog' => 'וויקילאגן',
+	'wikilog-specialwikilog-title' => 'וויקילאגן',
 	'wikilog-specialwikilog' => 'וויקילאג',
 	'wikilog-tab' => 'וויקילאג',
 	'wikilog-form-date' => 'דאטע',

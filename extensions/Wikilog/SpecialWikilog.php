@@ -54,6 +54,24 @@ class SpecialWikilog
 	}
 
 	/**
+	 * Execute the special page.
+	 * Called from MediaWiki.
+	 */
+	public function execute( $parameters ) {
+		global $wgRequest;
+
+		$feedFormat = $wgRequest->getVal( 'feed' );
+
+		if ( $feedFormat ) {
+			$opts = $this->feedSetup();
+			return $this->feedOutput( $feedFormat, $opts );
+		} else {
+			$opts = $this->webSetup( $parameters );
+			return $this->webOutput( $opts );
+		}
+	}
+
+	/**
 	 * Returns default options.
 	 */
 	public function getDefaultOptions() {
@@ -103,24 +121,6 @@ class SpecialWikilog
 		$opts->fetchValuesFromRequest( $wgRequest, array( 'show', 'limit' ) );
 		$opts->validateIntBounds( 'limit', 0, min( $wgFeedLimit, $wgWikilogSummaryLimit ) );
 		return $opts;
-	}
-
-	/**
-	 * Execute the special page.
-	 * Called from MediaWiki.
-	 */
-	public function execute( $parameters ) {
-		global $wgRequest;
-
-		$feedFormat = $wgRequest->getVal( 'feed' );
-
-		if ( $feedFormat ) {
-			$opts = $this->feedSetup();
-			return $this->feedOutput( $feedFormat, $opts );
-		} else {
-			$opts = $this->webSetup( $parameters );
-			return $this->webOutput( $opts );
-		}
 	}
 
 	/**
@@ -225,6 +225,14 @@ class SpecialWikilog
 		$feed = new WikilogFeed( $wgTitle, $format, self::getQuery( $opts ),
 			$opts['limit'] );
 		return $feed->execute();
+	}
+
+	/**
+	 * Returns the name used as page title in the special page itself,
+	 * and also the name that will be listed in Special:Specialpages.
+	 */
+	public function getDescription() {
+		return wfMsg( 'wikilog-specialwikilog-title' );
 	}
 
 	/**
