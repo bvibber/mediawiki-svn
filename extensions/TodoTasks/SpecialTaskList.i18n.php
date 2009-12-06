@@ -23,6 +23,7 @@ For a list of valid projects, see [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistchooseproj'      => 'Select project:',
 	'tasklistprojdisp'        => 'Display',
 	'tasklistbyname'          => '== Todo list for %s ==',
+	'tasklistnowguseprojects' => 'You have set $wgUseProjects to "false" and cannot use this page.',
 	'tasklistnoprojects'      => "Error: It looks like you enabled '''\$wgUseProjects''', but did not create [[MediaWiki:TodoTasksValidProjects]]. See [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
 	'tasklistemailbody'       => ",
 
@@ -31,6 +32,7 @@ Someone has assigned a new Task for you on %s.
 To see your complete Task List go to %s.
 
 Your friendly %s notification system",
+	'todoTasksValidProjects' => '', # Do not translate this message.
 );
 
 /** Message documentation (Message documentation)
