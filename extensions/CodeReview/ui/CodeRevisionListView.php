@@ -173,7 +173,7 @@ class SvnRevTablePager extends SvnTablePager {
 					'cp_repo_id' => $this->mRepo->getId(),
 					'cp_path LIKE ' . $this->mDb->addQuotes( $this->mDb->escapeLike( $this->getSVNPath() ) . '%' ),
 					// performance
-					'cp_rev_id > ' . $this->mRepo->getLastStoredRev() - 20000
+					'cp_rev_id > ' . ( $this->mRepo->getLastStoredRev() - 20000 )
 				),
 				'options' => array( 'GROUP BY' => 'cp_rev_id', 'USE INDEX' => array( 'code_path' => 'cp_repo_id' ) ),
 				'join_conds' => array(

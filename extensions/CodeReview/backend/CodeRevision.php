@@ -685,7 +685,7 @@ class CodeRevision {
 			'cp_repo_id' => $this->mRepoId,
 			'cp_path LIKE ' . $dbr->addQuotes( $dbr->escapeLike( $path ) . '%' ),
 			// performance
-			'cp_rev_id > ' . $this->mRepo->getLastStoredRev() - 20000,
+			'cp_rev_id > ' . ( $this->mRepo->getLastStoredRev() - 20000 ),
 			// join conds
 			'cr_repo_id = cp_repo_id',
 			'cr_id = cp_rev_id'
