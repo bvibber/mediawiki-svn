@@ -54,6 +54,7 @@ if ($wgUseProjects) {
 }
 $wgHooks['LoadAllMessages'][] = 'TaskList::loadMessages';
 $wgHooks['LoadAllMessages'][] = 'TaskListByProject::loadMessages';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efTodoTasksSchemaUpdates';
 
 require_once($dir . 'SpecialTaskList_body.php');
 
@@ -62,3 +63,12 @@ $wgHooks['AlternateEdit'][]            = 'todoPreviewAction';
 $wgHooks['EditPage::attemptSave'][]    = 'todoSavePreparser';
 $wgExtensionFunctions[]                = 'wfTodoParserFunction_Setup';
 
+function efTodoTasksSchemaUpdates() {
+	global $wgExtNewTables;
+
+	$base = dirname(__FILE__);
+
+	$wgExtNewTables[] = array( 'todo', "$base/todotasks.sql" ); // Initial install tables
+
+	return true;
+}
