@@ -303,6 +303,8 @@ class TaskList extends SpecialPage
             }
             $username = $user->getName();
             $fullname = $user->getRealName();
+            // FIXME: Notice Undefined offset: 1 in extensions\TodoTasks\SpecialTaskList_body.php on line 306
+            // If GetRealName does not contain one or more spaces.
             list ($firstname, $lastname) = preg_split('/ /', $fullname);
 
             $wgOut->addWikiText(sprintf(wfMsgTL('tasklistbyname'), $fullname));
