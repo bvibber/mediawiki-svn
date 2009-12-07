@@ -324,6 +324,13 @@ $messages['mk'] = array(
 	'didyoumean-desc' => 'Додава врски на страници со „слични“ наслови',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'didyoumean-desc' => '"സമാന" തലക്കെട്ടിലുള്ള താളുകളിലേയ്ക്ക് കണ്ണികൾ ചേർക്കുന്നു',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

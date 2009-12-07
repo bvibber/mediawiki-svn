@@ -174,11 +174,15 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'errorhandler-desc' => 'Merer ar fazioù evit MediaWiki',
 	'errorhandler-errors' => 'Fazioù :',
+	'errorhandler-error-warning' => 'Evezhiadenn',
+	'errorhandler-error-user-error' => 'Fazi implijer',
 	'errorhandler-msg-text' => '$1 : $2 e $3 (linenn $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> e <b>$3</b> (linenn <b>$4</b>)',
 	'errorhandler-trace' => 'roud :',
 	'errorhandler-trace-line' => '$1 (linenn $2) : $3',
+	'errorhandler-trace-line-internal' => '[foñksion diabarzh]: $1',
 );
 
 /** Bosnian (Bosanski)
@@ -781,6 +785,34 @@ $messages['lb'] = array(
 	'errorhandler-trace' => 'Spuer:',
 	'errorhandler-trace-line' => '$1 (Linn $2): $3',
 	'errorhandler-trace-line-internal' => '[intern Fonctioun]: $1',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'errorhandler-desc' => 'Обработувач на грешки за MediaWiki',
+	'errorhandler-errors' => 'Грешки:',
+	'errorhandler-error-fatal' => 'Фатална грешка',
+	'errorhandler-error-warning' => 'Предупредување',
+	'errorhandler-error-parse' => 'Грешка во парсерот',
+	'errorhandler-error-notice' => 'Белешка',
+	'errorhandler-error-deprecated' => 'Забрането',
+	'errorhandler-error-core-error' => 'Јадрена грешка',
+	'errorhandler-error-core-warning' => 'Јадрено предупредување',
+	'errorhandler-error-compile-error' => 'Грешка во компилацијата',
+	'errorhandler-error-compile-warning' => 'Предупредување од компилацијата',
+	'errorhandler-error-user-error' => 'Корисничка грешка',
+	'errorhandler-error-user-warning' => 'Корисничко предупредување',
+	'errorhandler-error-user-notice' => 'Корисничка белешка',
+	'errorhandler-error-user-deprecated' => 'Корисникот е забранет',
+	'errorhandler-error-strict' => 'Строги стандарди',
+	'errorhandler-error-recoverable' => 'Фатална грешка во Catchable',
+	'errorhandler-msg-text' => '$1 : $2 во $3 (ред $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> во <b>$3</b> (ред <b>$4</b>)',
+	'errorhandler-trace' => 'трага:',
+	'errorhandler-trace-line' => '$1 (ред $2): $3',
+	'errorhandler-trace-line-internal' => '[внатрешна функција]: $1',
 );
 
 /** Nahuatl (Nāhuatl)

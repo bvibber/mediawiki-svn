@@ -137,9 +137,10 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author Paucabot
+ * @author Ssola
  */
 $messages['ca'] = array(
-	'simpleantispam' => 'La vostra edició ha activat un mecanisme anti-spam',
+	'simpleantispam' => 'La vostra modificació ha activat un mecanisme anti-spam',
 	'simpleantispam-label' => "Comprovació anti-spam.
 '''NO''' ho ompliu!",
 	'simpleantispam-desc' => 'Inclou un detector simple de spam o bots als formularis',

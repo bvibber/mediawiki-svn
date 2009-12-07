@@ -180,6 +180,15 @@ $messages['eu'] = array(
 	'selectcategory-title' => 'Kategoriak hautatu',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
+$messages['ext'] = array(
+	'selectcategory-title' => 'Ligil categorias',
+	'selectcategory-desc' => 'Premiti al ussuáriu ligil entri categorias ya dessistentis al crial una página',
+	'selectcategory-subtitle' => 'Gasta "shift-ratón" pa ligil entrás contínuas, u "ctrl-ratón" pa ligilas una a una.',
+);
+
 /** Persian (فارسی)
  * @author Tofighi
  */

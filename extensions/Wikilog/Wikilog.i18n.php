@@ -212,8 +212,7 @@ So, let this value untranslated until the manual is available in your language.'
 If these words are the same in your language, then just transliterate it;
 otherwise use the proper translation for both words and try to keep the idea of something that ties both concepts into a single object.
 It is used in the plural in this title.',
-	'wikilog-specialwikilog' => 'This is a special page alias. It is obsolete and will be removed in a future version of the extension.', # See Wikilog.i18n.alias.php.
-	'wikilog-missing-wikilog' => 'Displayed when user visits a page for a wikilog that has not been created yet. Similar to {{msg-mw:noarticletext}}.',
+	'wikilog-specialwikilog' => 'This is a special page name',
 	'wikilog-log-cmt-approve' => 'Log action message used for entries describing comments approved by moderators, as in someone "did that". Similar to {{msg-mw|deletedarticle}} and {{msg-mw|protectedarticle}}.
 Parameters:
 * $1 is the page title of the approved comment.',
@@ -223,6 +222,7 @@ Parameters:
 	'wikilog-log-cmt-rejdel' => 'Message explaining the reason for a comment page to be deleted, after that comment was rejected by a moderator.
 Parameters:
 * $1 is the commenter name (which is usually an IP address in this case, genderless).',
+	'wikilog-missing-wikilog' => 'Displayed when user visits a page for a wikilog that has not been created yet. Similar to {{msg-mw|noarticletext|notext=1}}.',
 	'wikilog-post-count-published' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
 	'wikilog-post-count-drafts' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
 	'wikilog-post-count-all' => 'Entry in an unnumbered list with an overview in numbers about the size of the wikiblog.',
@@ -442,6 +442,7 @@ $messages['af'] = array(
 $messages['be-tarask'] = array(
 	'wikilog-desc' => 'Дадае магчымасьці блёгаў для стварэньня гібрыду вікі-блёга',
 	'wikilog-auto' => 'Робат вікіблёгу',
+	'wikilog-help' => '{{ns:Help}}:Вікіблёг',
 	'right-wl-postcomment' => 'пакідаць камэнтары ў артыкулах вікіблёгу',
 	'right-wl-moderation' => 'мадэрацыя камэнтараў да артыкулаў вікіблёгу',
 	'wikilog-specialwikilog-title' => 'Вікіблёгі',
@@ -453,6 +454,12 @@ $messages['be-tarask'] = array(
 	'wikilog-log-cmt-rejdel' => 'Адхілены камэнтар вікіблёгу ад [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Вікіблёг',
 	'wikilog-tab-title' => 'Дзеяньні вікіблёгу',
+	'wikilog-missing-wikilog' => 'Гэта старонка [[{{int:wikilog-help}}|вікіблёгу]] для [[{{FULLPAGENAME}}]].
+
+Гэты вікіблёг пакуль не існуе.
+Каб апублікаваць артыкул і ўключыць іншыя магчымасьці вікіблёгу, Вам неабходна спачатку яго стварыць.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Стварыць гэты вікіблёг].</span>',
 	'wikilog-information' => 'Інфармацыя пра вікіблёг',
 	'wikilog-post-count-published' => 'У гэтым вікіблёгу {{PLURAL:$1|апублікаваны $1 артыкул|апублікаваныя $1 артыкулы|апублікаваныя $1 артыкулаў}},',
 	'wikilog-post-count-drafts' => 'Ёсьць $1 {{PLURAL:$1|неапублікаваны чарнавік|неапублікаваных чарнавікі|неапублікаваных чарнавікоў}},',
@@ -576,6 +583,8 @@ $messages['bg'] = array(
 	'wikilog-draft-title-mark' => '(чернова)',
 	'wikilog-pager-newer-n' => '← по-нови $1',
 	'wikilog-pager-older-n' => 'по-стари $1 →',
+	'wikilog-pager-newest' => '←← най-новите',
+	'wikilog-pager-oldest' => 'най-старите  →→',
 	'wikilog-no-comments' => 'няма коментари',
 	'wikilog-has-comments' => '{{PLURAL:$1|един коментар|$1 коментара}}',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|беседа]])',
@@ -665,7 +674,10 @@ $messages['br'] = array(
 	'wikilog-pager-empty' => '(elfenn ebet)',
 	'wikilog-no-comments' => 'addispleg ebet',
 	'wikilog-has-comments' => '{{PLURAL:$1|un addispleg|$1 addispleg}}',
+	'wikilog-summary-footer' => "Embannet gant $7 e [[$1|$2]] d'an $8 da $9, $10.",
+	'wikilog-summary-footer-single' => "Embannet gant $7 d'ar $8 da $9, $10.",
 	'wikilog-summary-more' => "[[$3|→ kenderc'hel da lenn...]]",
+	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|kaozeal]])',
 	'wikilog-edit-fieldset-legend' => 'Dibarzhioù wikilog :',
 	'wikilog-edit-signpub' => 'Sinañ hag embann ar pennad-mañ',
 	'wikilog-comment-by-user' => 'Addispleg gant $1 ($2)',
@@ -723,11 +735,19 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'wikilog-log-cmt-approve' => 'odobreni komentar "[[$1]]"',
 	'wikilog-form-status' => 'Stanje:',
 	'wikilog-form-comment' => 'Komentar:',
 	'wikilog-delete-lc' => 'brisati',
 	'wikilog-reject-lc' => 'odbaciti',
 	'wikilog-history-lc' => 'historija',
+);
+
+/** Catalan (Català)
+ * @author Ssola
+ */
+$messages['ca'] = array(
+	'wikilog-edit-lc' => 'modifica',
 );
 
 /** German (Deutsch)
@@ -841,6 +861,7 @@ Sie sollten nur in Beiträgen im Wikilog-Namensraum benutzt werden.',
 $messages['dsb'] = array(
 	'wikilog-desc' => 'Pśidawa funkcije blogowanja, aby se wikiblogowy hybrid napórał',
 	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Komentary k wikilogowym pśinoskam pósłaś',
 	'right-wl-moderation' => 'Moderacija komentarow k wikilogowym pśinoskam',
 	'wikilog-specialwikilog-title' => 'Wikilogi',
@@ -852,6 +873,12 @@ $messages['dsb'] = array(
 	'wikilog-log-cmt-rejdel' => 'Wótpokazany wikilogowy komentar wót [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Wikilogowe akcije',
+	'wikilog-missing-wikilog' => 'To jo [[{{int:wikilog-help}}|wikilogowy]] bok za [[{{FULLPAGENAME}}]].
+
+Toś ten wikilog hyšći njeeksistěrujo.
+Aby se nastawki wózjawili a druge wikilogowe funkcije zmóžnili, musy se wón nejpjerwjej napóraś.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Toś ten wikilog napóraś].</span>',
 	'wikilog-information' => 'Wikilogowe informacije',
 	'wikilog-post-count-published' => '{{PLURAL:$1|Jo jaden wózjawjony pśinosk|Stej $1 wózjawjonej pśinoska|Su $1 wózjawjone pśinoski|Jo $1 wózjawjonych pśinoskow}} w toś tom wikilogu',
 	'wikilog-post-count-drafts' => '{{PLURAL:$1|Jo jaden njewózjawjony pśinosk (nacerjenje)|Stej $1 njewózjawjonej pśinoska (nacerjeni)|Su $1 wózjawjone pśinoski (nacerjenja)|Jo $1 wózjawjonych pśinoskow (nacerjenjow)}}',
@@ -1147,6 +1174,7 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'wikilog-desc' => 'Ajoute des fonctionnalités de blog, créant un wiki-blog hybride',
 	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Poster des commentaires sur les articles de wikilog',
 	'right-wl-moderation' => 'Modération des commentaires sur les articles de wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogs',
@@ -1158,6 +1186,13 @@ $messages['fr'] = array(
 	'wikilog-log-cmt-rejdel' => 'A rejeté le commentaire sur wikilog de [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Actions sur wikilog',
+	'wikilog-missing-wikilog' => "
+Ceci est la page [[{{int:wikilog-help}}|wikilog]] pour [[{{FULLPAGENAME}}]].
+
+Ce wikilog n'existe pas pour l'instant.
+Il doit d'abord être créé afin de pouvoir publier des articles et utiliser les autres fonctionnalités de wikilog.
+
+* <span class=\"plainlkinks\">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Créer ce wikilog].</span>",
 	'wikilog-information' => 'Information sur wikilog',
 	'wikilog-post-count-published' => 'Il y a {{PLURAL:$1|$1 article publié|$1 articles publiés}} sur ce wikilog,',
 	'wikilog-post-count-drafts' => 'Il y a {{PLURAL:£1|un article non publié (brouillon)|$1 articles non publiés (brouillons)}},',
@@ -1272,6 +1307,7 @@ Le commentaire n'apparaîtra qu'après avoir été vérifié par un modérateur.
 $messages['gl'] = array(
 	'wikilog-desc' => 'Engade funcionalidades de blogue, creando un híbrido entre un wiki e mais un blogue',
 	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Publicar comentarios nos artigos do wikilog',
 	'right-wl-moderation' => 'Moderar os comentarios dos artigos do wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogs',
@@ -1283,6 +1319,13 @@ $messages['gl'] = array(
 	'wikilog-log-cmt-rejdel' => 'Rexeitou o comentario no wikilog de [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Accións en wikilog',
+	'wikilog-missing-wikilog' => '
+Esta é a páxina [[{{int:wikilog-help}}|wikilog]] de "[[{{FULLPAGENAME}}]]".
+
+Este wikilog aínda non existe.
+Tense que crear primeiro para publicar artigos e activar outras características do wikilog.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Crear este wikilog].</span>',
 	'wikilog-information' => 'Información do wikilog',
 	'wikilog-post-count-published' => 'Hai {{PLURAL:$1|un artigo publicado|$1 artigos publicados}} neste wikilog',
 	'wikilog-post-count-drafts' => 'Hai {{PLURAL:$1|un artigo non publicado (borrador)|$1 artigos non publicados (borradores)}}',
@@ -1414,6 +1457,7 @@ $messages['grc'] = array(
 $messages['gsw'] = array(
 	'wikilog-desc' => 'Fiegt Blog-Funktione derzue go ne Wiki-Blog Hybrid aalege',
 	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Kommentar zue Wikilog-Byytreg poschte',
 	'right-wl-moderation' => 'Moderation vu Kommentar zue Wikilog-Byytreg',
 	'wikilog-specialwikilog-title' => 'Wikilogs',
@@ -1425,6 +1469,13 @@ $messages['gsw'] = array(
 	'wikilog-log-cmt-rejdel' => 'Het e Wikilog-Kommentar zruckgwise vu [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Wikilog-Aktione',
+	'wikilog-missing-wikilog' => 'Des isch d [[{{int:wikilog-help}}|Wikilogbuech]]-Syte fir [[{{FULLPAGENAME}}]].
+
+Des Wikilogbuech git s nonig.
+
+Go Artikel vereffentlige oder andri Wikilog-Funktione meglig mache, muess es zerscht aagleit wäre.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Des Wikilog aalege].</span>',
 	'wikilog-information' => 'Wikilog-Information',
 	'wikilog-post-count-published' => '$1 {{PLURAL:$1|Byytrag isch|Byytreg sin}} in däm Wiklog vereffentligt wore,',
 	'wikilog-post-count-drafts' => 'S het {{PLURAL:$1|ei Byytrag, wu nit vereffentligt isch|$1 Byytreg, wu nit vereffentligt sin}} (Entwurf),',
@@ -1572,6 +1623,7 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'wikilog-desc' => 'Přidawa blogowe funkcije, zo by so wikiblogowy hybrid wutworił',
 	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Komentary k přinoškam Wikilog pósłać',
 	'right-wl-moderation' => 'Moderacija komentarow k přinoškam Wikilog',
 	'wikilog-specialwikilog-title' => 'Wikiprotokole',
@@ -1583,6 +1635,12 @@ $messages['hsb'] = array(
 	'wikilog-log-cmt-rejdel' => 'Wotpokazany wikilogowy komentar wot [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Akcije wikiloga',
+	'wikilog-missing-wikilog' => 'To je [[{{int:wikilog-help}}|wikilogowa]] strona za [[{{FULLPAGENAME}}]].
+
+Tutón wikilog hišće njeeksistuje.
+Zo bychu so nastawki wozjewili a druhe wikilogowe funkcije zmóžnili, dyrbi so wón najprjedy wutworić.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Tutón wikilog wutworić].</span>',
 	'wikilog-information' => 'Informacije wikiloga',
 	'wikilog-post-count-published' => 'W tutym wikilogu {{PLURAL:$1|je jedyn wozjewjeny přinošk|stej $1 wozjewjenej přinoškaj|su $1 wozjewjene přinoški|je $1 wozjewjenych přinoškow}},',
 	'wikilog-post-count-drafts' => 'W tutym wikilogu {{PLURAL:$1|je jedyn njewozjewjeny přinošk (naćisk)|stej $1 njewozjewjenej přinoškaj (naćiskaj)|su $1 njewozjewjene přinoški (naćiski)|je $1 njewozjewjenych přinoškow (naćiskow)}},',
@@ -1823,6 +1881,7 @@ Csak azután fog megjelenni, miután ellenőrizte egy moderátor.',
 $messages['ia'] = array(
 	'wikilog-desc' => 'Adde functionalitate de blog, creante un hybrido wiki-blog',
 	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Lassar commentos in articulos wikilog',
 	'right-wl-moderation' => 'Moderation de commentos de articulos wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogs',
@@ -1834,6 +1893,12 @@ $messages['ia'] = array(
 	'wikilog-log-cmt-rejdel' => 'Rejectava un commento wikilog de [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Actiones wikilog',
+	'wikilog-missing-wikilog' => 'Isto es le pagina [[{{int:wikilog-help}}|wikilog]] pro [[{{FULLPAGENAME}}]].
+
+Iste wikilog non existe ancora.
+A fin de publicar articulos e activar altere functiones wikilog, illo debe primo esser create.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Crear iste wikilog].</span>',
 	'wikilog-information' => 'Information wikilog',
 	'wikilog-post-count-published' => 'Il ha {{PLURAL:$1|un articulo|$1 articulos}} publicate in iste wikilog,',
 	'wikilog-post-count-drafts' => 'Il ha {{PLURAL:$1|un articulo|$1 articulos}} non publicate (provisori),',
@@ -2072,7 +2137,7 @@ Komentar tersebut hanya akan muncul setelah ditinjau oleh seorang moderator.',
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'wikilog-desc' => 'ブログ機能を追加し、ウィキとブログのハイブリッドを作ります',
+	'wikilog-desc' => 'ブログ機能を追加し、ウィキとブログのハイブリッドを作る',
 	'wikilog-auto' => 'ウィキログ・オート',
 	'right-wl-postcomment' => 'ウィキログの記事にコメントを投稿する',
 	'right-wl-moderation' => 'ウィキログ記事のコメントのモデレーション',
@@ -2085,6 +2150,11 @@ $messages['ja'] = array(
 	'wikilog-log-cmt-rejdel' => '[[Special:Contributions/$1|$1]]のウィキログへのコメントを拒否しました',
 	'wikilog-tab' => 'ウィキログ',
 	'wikilog-tab-title' => 'ウィキログ操作',
+	'wikilog-missing-wikilog' => 'これは[[{{FULLPAGENAME}}]]の[[{{int:wikilog-help}}|ウィキログ]]ページです。
+
+このウィキログはまだ存在しません。記事を投稿するなどウィキログの機能を使うためには、まずウィキログを作成する必要があります。
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} このウィキログを作成]</span>',
 	'wikilog-information' => 'ウィキログ情報',
 	'wikilog-post-count-published' => 'このウィキログには{{PLURAL:$1|$1件}}の公開記事があります。',
 	'wikilog-post-count-drafts' => 'このウィキログには{{PLURAL:$1|$1件}}の非公開記事（下書き）があります。',
@@ -2201,8 +2271,9 @@ $messages['jv'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'wikilog-desc' => 'Brängk Müjjeleschkeite för et Blogge en et Wiki, un schavv_esu e Wiki-Blog-Jemölsch.',
+	'wikilog-desc' => 'Brängk Müjjeleschkeite för ze Blogge en et Wiki, un schavv_esu e Wiki-Blog-Jemölsch.',
 	'wikilog-auto' => '{{int:Wikilog-wikilog}} (automattesch)',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Aanmärkunge zoh Atikelle vum {{int:Wikilog-wikilog}} afjävve',
 	'right-wl-moderation' => 'De Aanmörkunge zoh Atikelle vum {{int:Wikilog-wikilog}} modderiere',
 	'wikilog-specialwikilog-title' => '{{int:Wikilog-wikilog}} Blogs',
@@ -2214,6 +2285,12 @@ $messages['ksh'] = array(
 	'wikilog-log-cmt-rejdel' => 'Afjelehnte Aanmärkung em {{int:Wikilog-wikilog}} {{GENDER:$1|fum|fum|fum Metmaacher|fun dä|fum}} [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => '{{int:Wikilog-wikilog}}',
 	'wikilog-tab-title' => 'Em {{int:Wikilog-wikilog}} sing Akßjuhne',
+	'wikilog-missing-wikilog' => 'Dat heh es de [[{{int:wikilog-help}}|Wikilog]] Sigg för [[{{FULLPAGENAME}}]].
+
+Heh dat Wikilog jidd-et noch nit.
+Öm Atikele öffentlesch drop ze maache, un ander Müjjeleschkeijte vum Wikilog ze han, moß di Sigg eets ens aanjelaat wääde.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Donn dat Wikilog aanlääje!]</span>',
 	'wikilog-information' => 'Infomazjuhne övver {{int:Wikilog-wikilog}}',
 	'wikilog-post-count-published' => 'Mer han {{PLURAL:$1|eine öffentlesche Beidraach|$1 öffentlesche Beidrääsch|keine öffentlesche Beidrääsch}} en heh dämm {{int:Wikilog-wikilog}},',
 	'wikilog-post-count-drafts' => 'Et {{PLURAL:$1|es noch eine nit veröffentleschte Beidraach (Äntworf) do|sinn_er $1 Beidrääch (Äntwörf) noch nit öffentlesch jemaat|sinn_er kein Beidrääch (Äntwörf) noh_nit öffentlesch jemaat}}.',
@@ -2483,6 +2560,7 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'wikilog-desc' => 'Voegt blogmogelijkheden toe om een wikiblog te maken',
 	'wikilog-auto' => 'Wikilog Automatisch',
+	'wikilog-help' => '{{ns:help}}:Wikilog',
 	'right-wl-postcomment' => 'Reacties op wikilog-artikelen plaatsen',
 	'right-wl-moderation' => 'Wikilog-artikelreacties modereren',
 	'wikilog-specialwikilog-title' => 'Wikilogs',
@@ -2494,6 +2572,12 @@ $messages['nl'] = array(
 	'wikilog-log-cmt-rejdel' => 'Heeft een wikilogreactie van [[Special:Contributions/$1|$1]] afgekeurd',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Wikilog-handelingen',
+	'wikilog-missing-wikilog' => 'Dit is de [[{{int:wikilog-help}}|wikilogpagina]] voor [[{{FULLPAGENAME}}]].
+
+Deze wikilog bestaat nog niet.
+Om artikelen te publiceren en andere wikilogmogelijkheden in te schakelen, moet deze eerst aangemaakt worden.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Wikilog aanmaken].</span>',
 	'wikilog-information' => 'Wikilog-informatie',
 	'wikilog-post-count-published' => 'Er {{PLURAL:$1|is 1 gepubliceerd artikel|zijn $1 gepubliceerde artikelen}} in deze wikilog',
 	'wikilog-post-count-drafts' => 'Er {{PLURAL:$1|is 1 ongepubliceerd artikel|zijn $1 ongepubliceerde artikelen}}',
@@ -2947,6 +3031,12 @@ $messages['pt'] = array(
 	'wikilog-log-cmt-rejdel' => 'Rejeitou o comentário wikilog de [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Acções wikilog',
+	'wikilog-missing-wikilog' => 'Esta é a página [[{{int:wikilog-help}}|wikilog]] para [[{{FULLPAGENAME}}]].
+
+Este wikilog ainda não existe.
+Para publicar artigos e activar outras funcionalidade do wikilog, tem que criá-lo primeiro.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Criar este wikilog].</span>',
 	'wikilog-information' => 'Informações do wikilog',
 	'wikilog-post-count-published' => 'Há $1 {{PLURAL:$1|artigo publicado|artigos publicados}} neste wikilog,',
 	'wikilog-post-count-drafts' => 'mais $1 {{PLURAL:$1|artigo não-publicado (rascunho)|artigos não-publicados (rascunhos)}},',
@@ -3124,6 +3214,7 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'wikilog-desc' => 'Добавляет возможность ведения блогов, создания гибрида вики и блога',
 	'wikilog-auto' => 'Викилог Авто',
+	'wikilog-help' => '{{ns:Help}}:Викилог',
 	'right-wl-postcomment' => 'оставлять комментарии к статьям викилога',
 	'right-wl-moderation' => 'модерировать комментарии к статьям викилога',
 	'wikilog-specialwikilog-title' => 'Викилоги',
@@ -3135,6 +3226,12 @@ $messages['ru'] = array(
 	'wikilog-log-cmt-rejdel' => 'Отклонён комментарий викилога от [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Викилог',
 	'wikilog-tab-title' => 'Действия викилога',
+	'wikilog-missing-wikilog' => 'Это страница [[{{int:wikilog-help}}|викилога]] для [[{{FULLPAGENAME}}]].
+
+Данного викилога пока не существует. 
+Для публикации статей и включения других функций викилога, его необходимо предварительно создать.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Создать этот викилог].</span>',
 	'wikilog-information' => 'Сведения о викилоге',
 	'wikilog-post-count-published' => 'В этом викилоге {{PLURAL:$1|опубликована $1 статья|опубликовано $1 статьи|опубликовано $1 статей}},',
 	'wikilog-post-count-drafts' => 'Имеется {{PLURAL:$1|$1 неопубликованная статья-черновик|$1 неопубликованных статьи-черновика|$1 неопубликованных статей-черновиков}},',

@@ -2833,6 +2833,7 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author IvanLanin
  * @author Kandar
  * @author Rex
@@ -2841,12 +2842,28 @@ $messages['id'] = array(
 	'deletequeue-action-queued' => 'Penghapusan',
 	'deletequeue-action' => 'Usulkan penghapusan',
 	'deletequeue-action-title' => 'Usulkan penghapusan untuk "$1"',
+	'deletequeue-action-text-queued' => 'Anda dapat melihat halaman berikut untuk kasus penghapusan ini:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Lihat dukungan dan penolakan terbaru].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Dukung atau tolak penghapusan halaman ini].',
+	'deletequeue-permissions-noedit' => 'Anda harus mampu menyunting halaman untuk mengubah status penghapusan.',
+	'deletequeue-generic-reasons' => '* Alasan umum
+** Vandalisme
+** Spam
+** Perawatan
+** Di luar cakupan proyek',
+	'deletequeue-nom-alreadyqueued' => 'Halaman ini sudah masuk daftar penghapusan.',
+	'deletequeue-speedy-title' => 'Tandai "$1" untuk penghapusan cepat',
+	'deletequeue-prod-title' => 'Ajukan penghapusan "$1"',
 	'deletequeue-delnom-reason' => 'Alasan pengusulan:',
 	'deletequeue-delnom-otherreason' => 'Alasan lain',
 	'deletequeue-delnom-extra' => 'Informasi tambahan:',
 	'deletequeue-delnom-submit' => 'Kirimkan usulan',
 	'deletequeue-log-nominate' => "mengusulkan penghapusan [[$1]] pada antrean '$2'.",
+	'deletequeue-log-rmspeedy' => 'menolak menghapus cepat [[$1]].',
+	'deletequeue-log-requeue' => "memindahkan [[$1]] ke daftar penghapusan lain: dari '$2' ke '$3'.",
+	'deletequeue-log-dequeue' => "menghapus [[$1]] dari daftar penghapusan '$2'.",
 	'right-speedy-nominate' => 'Usulkan halaman untuk penghapusan segera',
+	'right-speedy-review' => 'Tinjau pencalonan penghapusan cepat',
 	'right-prod-nominate' => 'Usulkan penghapusan halaman',
 	'right-deletediscuss-nominate' => 'Mulai pembicaraan penghapusan',
 	'right-deletediscuss-review' => 'Tutup pembicaraan penghapusan',
@@ -2854,27 +2871,88 @@ $messages['id'] = array(
 	'deletequeue-queue-speedy' => 'Penghapusan segera',
 	'deletequeue-queue-prod' => 'Penghapusan yang diusulkan',
 	'deletequeue-queue-deletediscuss' => 'Pembicaraan penghapusan',
+	'deletequeue-page-speedy' => "Halaman ini telah dicalonkan untuk penghapusan cepat.
+Alasan yang diberikan untuk penghapusan ini adalah ''$1''.",
+	'deletequeue-notqueued' => 'Halaman yang Anda pilih saat ini tidak masuk dalam daftar penghapusan',
+	'deletequeue-review-action' => 'Langkah yang diambil:',
+	'deletequeue-review-delete' => 'Hapus halaman.',
+	'deletequeue-review-change' => 'Hapus halaman ini, tapi dengan alasan berbeda.',
+	'deletequeue-review-requeue' => 'Pindahkan halaman ini ke daftar berikut:',
+	'deletequeue-review-dequeue' => 'Tidak mengambil langkah apapun, dan hapus halaman dari daftar penghapusan.',
 	'deletequeue-review-reason' => 'Komentar:',
+	'deletequeue-review-newreason' => 'Alasan baru:',
 	'deletequeue-review-newextra' => 'Informasi tambahan:',
+	'deletequeue-review-submit' => 'Simpan Tinjauan',
+	'deletequeue-review-original' => 'Alasan pencalonan',
+	'deletequeue-actiondisabled-notexpired' => 'Langkah berikut dilarang karena pencalonan penghapusan belum kadaluwarsa:',
+	'deletequeue-review-objections' => "'''Perhatian''': Penghapusan halaman ini memiliki [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} penolakan].
+Pastikan bahwa Anda telah mempertimbangkan penolakan tersebut sebelum menghapus halaman ini.",
+	'deletequeue-reviewspeedy-tab' => 'Tinjau penghapusan cepat',
+	'deletequeue-reviewspeedy-title' => 'Tinjau pencalonan penghapusan cepat "$1".',
+	'deletequeue-reviewspeedy-text' => "Anda dapat menggunakan formulis ini untuk meninjau pencalonan \"'''\$1'''\" untuk penghapusan cepat.
+Pastikan bahwa halaman ini dihapus cepat sesuai dengan kebijakan.",
+	'deletequeue-reviewprod-tab' => 'Tinjau penghapusan yang diajukan',
+	'deletequeue-reviewprod-title' => 'Tinjau penghapusan yang diajukan kepada "$1"',
+	'deletequeue-reviewdeletediscuss-tab' => 'Tinjau penghapusan',
+	'deletequeue-reviewdeletediscuss-title' => 'Tinjau pembicaraan penghapusan "$1"',
+	'deletequeue-reviewdeletediscuss-text' => "Anda dapat menggunakan formulis ini untuk meninjau pembicaraan penghapusan \"'''\$1'''\".
+
+[{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Daftar] dukungan dan penolakan penghapusan ini tersedia, dan pembicaraannya bisa dilihat di [[\$2]].
+Parstikan bahwa Anda membuat keputusan sesuai konsensus di halaman pembicaraan.",
+	'deletequeue-review-success' => 'Anda selesai memeriksa peninjauan halaman ini',
+	'deletequeue-review-success-title' => 'Peninjauan selesai',
+	'deletequeue-discusscreate-summary' => 'Membuat pembicaraan untuk penghapusan [[$1]].',
+	'deletequeue-discusscreate-text' => 'Penghapusan diajukan karena alasan berikut: $2',
+	'deletequeue-role-nominator' => 'pencalon penghapusan',
+	'deletequeue-role-vote-endorse' => 'pendorong penghapusan',
+	'deletequeue-role-vote-object' => 'penolak penghapusan',
+	'deletequeue-vote-tab' => 'Pilih pada penghapusan',
+	'deletequeue-vote-title' => 'Dukung atau tolak penghapusan "$1"',
 	'deletequeue-vote-legend' => 'Dukungan/Keberatan terhadap penghapusan',
 	'deletequeue-vote-action' => 'Rekomendasi:',
 	'deletequeue-vote-endorse' => 'Dukung penghapusan.',
 	'deletequeue-vote-object' => 'Tolak penghapusan.',
 	'deletequeue-vote-reason' => 'Komentar:',
 	'deletequeue-vote-submit' => 'Kirim',
+	'deletequeue-vote-success-endorse' => 'Anda berhasil mendukung penghapusan halaman ini.',
+	'deletequeue-vote-success-object' => 'Anda berhasil menolak penghapusan halaman ini.',
+	'deletequeue-vote-requeued' => 'Anda berhasil menolak penghapusan halaman ini.
+Karena penolakan Anda, halaman ini telah dipindahkan ke daftar $1.',
 	'deletequeue-showvotes' => 'Dukungan dan penolakan terhadap penghapusan "$1"',
+	'deletequeue-showvotes-text' => "Di bawah adalah dukungan dan penolakan terhadap penghapusan halaman \"'''\$1'''\".
+Anda dapat [{{fullurl:{{FULLPAGENAME}}|action=delvote}} mendaftarkan dukungan atau penolakan Anda] terhadap penghapusan ini.",
 	'deletequeue-showvotes-restrict-endorse' => 'Tampilkan dukungan saja',
 	'deletequeue-showvotes-restrict-object' => 'Tampilkan penolakan saja',
 	'deletequeue-showvotes-restrict-none' => 'Tampilkan semua dukungan dan penolakan',
+	'deletequeue-showvotes-vote-endorse' => "'''Dukungan''' penghapusan di $1 $2",
+	'deletequeue-showvotes-vote-object' => "'''Penolakan''' penghapusan di $1 $2",
+	'deletequeue-showvotes-showingonly-endorse' => 'Hanya perlihatkan dukungan',
+	'deletequeue-showvotes-showingonly-object' => 'Hanya perlihatkan penolakan',
+	'deletequeue-showvotes-none' => 'Tidak ada dukungan atau penolakan penghapusan halaman ini.',
+	'deletequeue-showvotes-none-endorse' => 'Tidak ada dukungan penghapusan halaman ini.',
+	'deletequeue-showvotes-none-object' => 'Tidak ada penolakan penghapusan halaman ini.',
+	'deletequeue' => 'Daftar penghapusan',
+	'deletequeue-list-text' => 'Halaman ini menampilkan semua halaman yang berada dalam sistem penghapusan.',
+	'deletequeue-list-search-legend' => 'Cari halaman',
 	'deletequeue-list-queue' => 'Antrean:',
 	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-expired' => 'Hanya perlihatkan pencalonan yang membutuhkan penutupan.',
 	'deletequeue-list-search' => 'Cari',
+	'deletequeue-list-anyqueue' => '(apapun)',
+	'deletequeue-list-votes' => 'Daftar suara',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|dukungan|dukungan}}, $2 {{PLURAL:$2|penolakan|penolakan}}',
 	'deletequeue-list-header-page' => 'Halaman',
 	'deletequeue-list-header-queue' => 'Antrean',
+	'deletequeue-list-header-votes' => 'Dukungan dan penolakan',
 	'deletequeue-list-header-expiry' => 'Kadaluwarsa',
+	'deletequeue-list-header-discusspage' => 'Halaman pembicaraan',
+	'deletequeue-case-intro' => 'Halaman ini berisi informasi mengenai kasus penghapusan tertentu.',
+	'deletequeue-list-header-reason' => 'Alasan penghapusan',
+	'deletequeue-case-votes' => 'Dukungan/penolakan:',
 	'deletequeue-case-page' => 'Halaman:',
 	'deletequeue-case-reason' => 'Alasan:',
 	'deletequeue-case-expiry' => 'Kadaluwarsa:',
+	'deletequeue-case-needs-review' => 'Kasus ini membutuhkan [[$1|tinjauan]].',
 );
 
 /** Ido (Ido)

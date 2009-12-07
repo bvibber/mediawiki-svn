@@ -618,7 +618,12 @@ $messages['br'] = array(
 	'sign-sigdetails' => 'Munudoù ar sinadur',
 	'sign-viewfield-stricken' => 'Barrennet',
 	'sign-viewfield-reviewcomment' => 'Addispleg',
+	'sign-reviewsig' => 'Adwelet ar sinadur',
 	'sign-review-comment' => 'Addispleg',
+	'sign-uniquequery-similarname' => 'Anv damheñvel',
+	'sign-uniquequery-similaraddress' => "Chomlec'h damheñvel",
+	'sign-uniquequery-similarphone' => 'Niverenn bellgomz damheñvel',
+	'sign-uniquequery-similaremail' => 'Postel damheñvel',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] en deus kadarnaet [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 

@@ -389,6 +389,7 @@ Ako se ova greška nastavi ponavljati, vjerovatno je baza podataka u kvaru.',
  * @author Aleator
  * @author Jordi Roqué
  * @author SMP
+ * @author Ssola
  */
 $messages['ca'] = array(
 	'changeauthor' => 'Canviar autor de revisions',
@@ -415,7 +416,7 @@ Si l'error persisteix, és probable que la base de dades estigui avariada.",
 	'changeauthor-success' => 'La vostra petició ha estat processada satisfactòriament.',
 	'changeauthor-logentry' => "S'ha canviat l'autor, de $3 a $4, per a $2 de $1",
 	'changeauthor-logpagename' => "Registre de canvis d'autor",
-	'right-changeauthor' => "Canviar l'autoria d'una edició",
+	'right-changeauthor' => "Canviar l'autoria d'una modificació",
 );
 
 /** Chamorro (Chamoru)

@@ -864,7 +864,10 @@ $messages['sah'] = array(
  * @author Calcey
  */
 $messages['si'] = array(
+	'createpage' => 'පිටුවක් නිර්මාණය කරන්න',
+	'createpage-desc' => 'නව පිටු නිර්මාණය කිරීම සඳහා [[Special:CreatePage|විශේෂ පිටුව]]ක් එකතු කරයි',
 	'createpage_submitbutton' => 'යොමන්න',
+	'createpage_instructions' => 'ඔබ නිර්මාණය කිරීමට කැමති පිටුවේ මාතෘකාව ඇතුල් කරන්න:',
 	'createpage_entertitle' => 'කරුණාකර ඔබේ පිටුවට මාතෘකාවක් ඇතුල් කරන්න.',
 );
 

@@ -577,13 +577,14 @@ Ova stranica se može primijeniti samo na ograničene korisnike",
  * @author Loupeter
  * @author SMP
  * @author Solde
+ * @author Ssola
  */
 $messages['ca'] = array(
 	'whitelisttablemodify' => 'Modifica',
 	'whitelisttablemodifyall' => 'Tot',
 	'whitelisttablemodifynone' => 'Cap',
 	'whitelisttablepage' => 'Pàgina wiki',
-	'whitelisttableedit' => 'Edita',
+	'whitelisttableedit' => 'Modifica',
 	'whitelisttablenewdate' => 'Nova data:',
 	'whitelisttablechangedate' => 'Canviar data de venciment',
 	'whitelisttableremove' => 'Elimina',

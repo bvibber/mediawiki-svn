@@ -432,6 +432,7 @@ $messages['br'] = array(
 	'removeunusedgroups' => 'Lemel ar strolladoù dizimplij',
 	'grouppermissions-search' => 'Strollad :',
 	'grouppermissions-dologin' => 'Lugañ',
+	'grouppermissions-dosearch' => 'Mont',
 	'grouppermissions-deletelabel' => 'Dilemel ar strollad',
 	'grouppermissions-add' => 'Ouzhpennañ ur strollad',
 	'grouppermissions-delete' => 'Dilemel ar strollad',
@@ -442,11 +443,13 @@ $messages['br'] = array(
 	'grouppermissions-never' => 'Morse',
 	'grouppermissions-sort-read' => 'O lenn',
 	'grouppermissions-sort-edit' => "Oc'h aozañ",
+	'grouppermissions-sort-manage' => 'Merañ',
 	'grouppermissions-sort-tech' => 'Teknik',
 	'grouppermissions-sort-misc' => 'A bep seurt',
 	'grouppermissions-sp-save' => 'Enrollañ',
 	'grouppermissions-sp-addperm' => 'Ouzhpennañ an aotre',
 	'grouppermissions-sp-remove' => 'lemel',
+	'right-info' => 'GWelet titouroù ar bajenn',
 	'right-search' => 'Klask ar wiki',
 );
 

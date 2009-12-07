@@ -650,7 +650,19 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'accountmanager' => 'Раководител со сметки',
+	'am-username' => 'корисничко име',
+	'am-email' => 'е-пошта',
+	'am-active' => 'активен',
+	'am-updated' => 'Вашите промени се успешно зачувани',
 	'nss-desc' => 'Приклучок за утврдување веродостојност со проверка на libnss-mysql базата на податоци. Содржи [[Special:AccountManager|раководител со сметки]]',
+	'nss-rights' => 'права',
+	'nss-save-changes' => 'Зачувај промени',
+	'nss-create-account-header' => 'Создај нова сметка',
+	'nss-create-account' => 'Создај сметка',
+	'nss-no-mail' => 'Не праќај е-пошта',
+	'nss-welcome-mail' => 'Создадена ви е сметка со корисничко име $1 и лозинка $2.',
+	'nss-welcome-mail-subject' => 'Создавање на сметка',
+	'nss-db-error' => 'Најдена е грешка во базата на податоци за потврдување',
 );
 
 /** Nahuatl (Nāhuatl)

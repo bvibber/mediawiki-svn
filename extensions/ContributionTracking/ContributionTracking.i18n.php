@@ -613,6 +613,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'contributiontracking-desc' => 'വിക്കിമീഡിയ ധനശേഖരണത്തിലേയ്ക്കുള്ള സംഭാവനകൾ അനുഗമിക്കൽ',
 	'contributiontracking' => 'സംഭാവനകൾ പിന്തുടരൽ',
 	'contrib-tracking-error' => 'പിശക്',
 	'contrib-tracking-error-text' => 'ഫോം സമർപ്പണം അസാധുവായ വിധത്തിലാണ്',

@@ -1325,6 +1325,7 @@ $messages['bs'] = array(
  * @author Paucabot
  * @author SMP
  * @author Solde
+ * @author Ssola
  */
 $messages['ca'] = array(
 	'configure' => 'Configura el wiki',
@@ -1350,6 +1351,7 @@ $messages['ca'] = array(
 	'configure-section-cache' => 'Memòria cau',
 	'configure-section-antivirus' => 'Antivirus',
 	'configure-section-mw-extensions' => 'Extensions MediaWiki',
+	'configure-throttle-action-edit' => 'Modifica',
 );
 
 /** Chamorro (Chamoru)

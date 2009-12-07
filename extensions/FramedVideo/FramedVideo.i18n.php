@@ -124,9 +124,9 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'framedvideo_errors' => "Meur a fazi zo c'hoarvezet !",
-	'framedvideo_error' => 'Ur fazi a zo bet !',
-	'framedvideo_error_no_integer' => 'An talvoud roet da "$1" n\'eo ket un niver pozitivel.',
-	'framedvideo_error_limit' => 'An talvoud uhelañ aotreet a zo $1.',
+	'framedvideo_error' => 'Ur fazi zo bet !',
+	'framedvideo_error_no_integer' => 'An talvoud roet "$1" n\'eo ket un niver pozitivel.',
+	'framedvideo_error_limit' => '$1 eo an dalvoudenn uhelañ aotreet.',
 	'framedvideo_helppage' => 'Help:Video',
 );
 

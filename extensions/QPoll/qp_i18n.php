@@ -817,6 +817,57 @@ Pro salveguardar un sondage, submitte lo sin responder a alcun question de propo
 	'qp_error_unique' => 'Pro le question de typo unique() es definite plus propositiones que responsas possibile: non pote completar',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'pollresults' => 'Hasil pemilihan di situs ini',
+	'qp_desc' => 'Izinkan pembuatan pemilihan',
+	'qp_desc-sp' => '[[Special:PollResults|Halaman khusus]] untuk melihat hasil pemilihan',
+	'qp_result_NA' => 'Tak dijawab',
+	'qp_result_error' => 'Kesalahan sintaks',
+	'qp_vote_button' => 'Pilih',
+	'qp_vote_again_button' => 'Ubah pilihan Anda',
+	'qp_polls_list' => 'Daftar semua pemilihan',
+	'qp_users_list' => 'Daftar semua pengguna',
+	'qp_votes_count' => '$1 {{PLURAL:$1|suara|suara}}',
+	'qp_source_link' => 'Sumber',
+	'qp_stats_link' => 'Statistik',
+	'qp_users_link' => 'Pengguna',
+	'qp_voice_link' => 'Suara pengguna',
+	'qp_voice_link_inv' => 'Suara pengguna?',
+	'qp_user_polls_link' => 'Berpartisipasi dalam $1 {{PLURAL:$1|pemilihan|pemilihan}}',
+	'qp_user_missing_polls_link' => 'Tak ada partisipasi',
+	'qp_not_participated_link' => 'Tidak berpartisipasi',
+	'qp_order_by_username' => 'Urutan menurut nama pengguna',
+	'qp_order_by_polls_count' => 'Urutan menurut jumlah pemilihan',
+	'qp_results_line_qupl' => 'Halaman "$1" Pemilihan "$2": $3',
+	'qp_results_line_qpl' => 'Halaman "$1" Pemilihan "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Halaman "$2" Pemilihan "$3" ]',
+	'qp_export_to_xls' => 'Ekspor statistik ke dalam format XLS',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|pengguna|pengguna}} telah menjawab pertanyaan',
+	'qp_func_no_such_poll' => 'Tidak ada pemilihan ($1)',
+	'qp_func_invalid_question_id' => 'Pertanyaan salah id=$2 (bukan angka) untuk pemilihan $1',
+	'qp_func_invalid_proposal_id' => 'Proposal salah id=$3 (bukan angka) untuk pemilihan $1, pertanyaan $2',
+	'qp_error_id_in_stats_mode' => 'Tidak dapat menetapkan ID pemilihan dalam mode statistik',
+	'qp_error_no_stats' => 'Tidak ada data statistik tersedia, karena belum ada yang memilih pada pemilihan ini (address=$1)',
+	'qp_error_question_not_implemented' => 'Pertanyaan dengan jenis itu belum diberlakukan: $1',
+	'qp_error_invalid_question_type' => 'Jenis pertanyaan salah: $1',
+	'qp_error_type_in_stats_mode' => 'Jenis pertanyaan tak dapat ditetapkan dalam mode tampilan statistik: $1',
+	'qp_error_invalid_poll_id' => 'ID pemilihan salah (id=$1)
+ID pemilihan hanya boleh berisi huruf, angka dan spasi',
+	'qp_error_already_used_poll_id' => 'ID pemilihan telah digunakan di halaman ini (id=$1)',
+	'qp_error_vote_dependance_poll' => 'Mohon pilih pada pemilihan $1 dahulu.',
+	'qp_error_too_many_spans' => 'Terlalu banyak kelas kategori untuk subkategori yang ditetapkan',
+	'qp_error_unanswered_span' => 'Subkategori belum terjawab',
+	'qp_error_non_unique_choice' => 'Pertanyaan ini membutuhkan jawaban proposal yang unik',
+	'qp_error_category_name_empty' => 'Nama kategori kosong',
+	'qp_error_proposal_text_empty' => 'Teks proposal kosong',
+	'qp_error_too_few_categories' => 'Sedikitnya dua kategori harus ditetapkan',
+	'qp_error_too_few_spans' => 'Setiap kelas kategori membutuhkan sedikitnya dua jawaban',
+	'qp_error_no_answer' => 'Proposal belum terjawab',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

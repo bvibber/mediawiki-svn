@@ -1301,6 +1301,18 @@ $messages['lb'] = array(
 	'specialpages-group-feedback' => 'Meenung vun deem dee kuckt',
 );
 
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
+$messages['lmo'] = array(
+	'readerfeedback' => "Cus'è che te penset de quela pagina chì?",
+	'readerfeedback-text' => "''Per piasì töva un mument per vutà 'sta pàgina chì suta. La tua upinión a l'è impurtanta e la jüta a mejurà 'l nòst sit web.''",
+	'readerfeedback-reliability' => 'Afidabilità',
+	'readerfeedback-completeness' => 'Cumpleteza',
+	'readerfeedback-npov' => 'Neutralità',
+	'readerfeedback-presentation' => 'Presentazión',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest
@@ -1597,7 +1609,34 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'readerfeedback-desc' => "La validassion ëd la pàgina a përmëtt ai letor ëd dé d'artorn an forma ëd pontegi categorisà",
+	'readerfeedback' => "Lòn ch'it pense dë sta pàgina-sì?",
+	'readerfeedback-text' => "''Për piasì pija un moment për voté sta pàgina sì sota. Tò artorn a l'é amportant e a giuta a mijoré nòst sit web.''",
+	'readerfeedback-reliability' => 'Afidabilità',
 	'readerfeedback-completeness' => 'Completëssa',
+	'readerfeedback-npov' => 'Neutralità',
+	'readerfeedback-presentation' => 'Presentassion',
+	'readerfeedback-overall' => 'Complessiv',
+	'readerfeedback-level-none' => '(ansicur)',
+	'readerfeedback-level-0' => 'Pòver',
+	'readerfeedback-level-1' => 'Bass',
+	'readerfeedback-level-2' => 'Discret',
+	'readerfeedback-level-3' => 'Àut',
+	'readerfeedback-level-4' => 'Esselent',
+	'readerfeedback-submit' => 'Spediss',
+	'readerfeedback-main' => 'Mach pàgine ëd contnù a peulo esse votà.',
+	'readerfeedback-success' => "'''Mersì për avèj revisionà sta pàgina-sì!''' ([$2 varda arzultà]) ([$3 coment o custion?]).",
+	'readerfeedback-voted' => "'''A smija ch'it l'abie già votà sta pàgina-sì''' ([$2 varda arzultà]) ([$3 coment o custion?]).",
+	'readerfeedback-error' => "'''A l'é capitaje n'eror an votand sta pàgina-sì''' ([$2 varda arzultà)] ([$3 coment  custion?]).",
+	'readerfeedback-submitting' => 'Spedì ...',
+	'readerfeedback-finished' => 'Mersì!',
+	'readerfeedback-tagfilter' => 'Tag:',
+	'readerfeedback-tierfilter' => 'Vot:',
+	'readerfeedback-tier-high' => 'Àut',
+	'readerfeedback-tier-medium' => 'Moderà',
+	'readerfeedback-tier-poor' => 'Pòver',
+	'tooltip-ca-ratinghist' => 'Vot dij letor dë sta pàgina-sì',
+	'specialpages-group-feedback' => 'Opinion dij visualisator',
 );
 
 /** Pashto (پښتو)

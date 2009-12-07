@@ -913,7 +913,27 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'form-desc' => '[[Special:Form|Интерфејс]] за започнување нови страници',
+	'form' => 'Образец',
+	'formnoname' => 'Нема име на образецот',
+	'formnonametext' => 'Мора да наведете име на образецот, како да речеме „Special:Form/ИмеНаОбразец“',
+	'formbadname' => 'Лошо име на образецот',
+	'formbadnametext' => 'Нема образец со тоа име.',
+	'formpattern' => '$1-образец',
+	'formtitlepattern' => 'Додај нов $1',
+	'formsave' => 'Зачувај',
+	'formindexmismatch-title' => 'Несоодветно име и шаблон',
+	'formindexmismatch' => 'Овој образец има несоодветни имиња и шаблони во позиција $1.',
+	'formarticleexists' => 'Страницата постои',
+	'formarticleexiststext' => 'Страницата [[$1]] веќе постои.',
+	'formbadpagename' => 'Лошо име на страницата',
+	'formbadrecaptcha' => 'Неточни вредности за reCaptcha. Обидете се повторно.',
 	'formbadpagenametext' => 'Внесените податоци за формата образуваат погрешен назив на страницата, „$1“.',
+	'formrequiredfielderror' => '{{PLURAL:$2|Полето $1 е задолжително во овој образец|Полињата $1 се задолжителни во овој образец}}.
+Пополнете {{PLURAL:$2|го|ги}}.',
+	'formsavesummary' => 'Нова страница, користејќи го [[Special:Form/$1|образецот $1]]',
+	'formsaveerror' => 'Грешка при зачувување на образецот',
+	'formsaveerrortext' => 'Се појави непозната грешка при зачувувањето на страницата „$1“.',
 );
 
 /** Malayalam (മലയാളം)

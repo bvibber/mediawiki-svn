@@ -569,6 +569,7 @@ Otkrivanje ovih informacija može rezultirati stalnim gubitkom privilegija nazdo
  * @author Paucabot
  * @author Qllach
  * @author SMP
+ * @author Ssola
  * @author Toniher
  */
 $messages['ca'] = array(
@@ -604,7 +605,7 @@ Revertiu aquest canvi abans.",
 	'oversight-nodiff' => 'No ha estat possible rastrejar els canvis ja que no hi ha cap revisió anterior per aquesta pàgina.
 * O bé la pàgina ha estat eliminada
 * O bé aquesta revisió oculta era la primera',
-	'oversight-log-hiderev' => 'eliminada una edició de $1',
+	'oversight-log-hiderev' => 'eliminada una modificació de $1',
 	'oversight' => 'Supervisió',
 	'oversight-view' => 'detalls',
 	'oversight-difference' => '(Diferència amb la versió existent anterior)',
@@ -1177,9 +1178,9 @@ $messages['fo'] = array(
 $messages['fr'] = array(
 	'hiderevision' => 'Cacher définitivement les révisions',
 	'hiderevision-desc' => 'Masque les modifications individuelles de tous les utilisateurs pour des motifs légaux, etc.',
-	'group-oversight' => 'Oversighters',
-	'group-oversight-member' => 'Oversighter',
-	'grouppage-oversight' => '{{ns:project}}:Oversighter',
+	'group-oversight' => 'Masqueurs',
+	'group-oversight-member' => 'Masqueur',
+	'grouppage-oversight' => '{{ns:project}}:Masqueur de modifications',
 	'right-oversight' => 'Voir les versions cachées par oversight',
 	'right-hiderevision' => 'Masquer des révisions aux administrateurs',
 	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
@@ -1215,7 +1216,7 @@ Annulez d’abord cette modification en rétablissant la version précédente.',
 	'oversight-hidden' => 'Révision cachée',
 	'oversight-header' => 'Ci-dessous figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges de {{MediaWiki:Oversight}}.',
 	'oversight-legend' => 'Journal des recherches des versions cachées',
-	'oversight-oversighter' => 'Oversighter :',
+	'oversight-oversighter' => 'Masqueur de modifications :',
 	'oversight-offender' => 'Auteur de la révision :',
 );
 

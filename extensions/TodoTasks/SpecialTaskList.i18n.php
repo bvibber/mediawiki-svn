@@ -148,6 +148,7 @@ $messages['be-tarask'] = array(
 	'tasklistchooseproj' => 'Выберыце праект:',
 	'tasklistprojdisp' => 'Паказаць',
 	'tasklistbyname' => '== Сьпіс заданьняў для %s ==',
+	'tasklistnowguseprojects' => 'Вы устанавілі $wgUseProjects як «false» і ня можаце выкарыстоўваць гэтую старонку.',
 	'tasklistnoprojects' => "Памылка: верагодна Вы ўключылі '''\$wgUseProjects''', але яшчэ не стварылі [[MediaWiki:TodoTasksValidProjects]]. Глядзіце падрабязнасьці ў [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 інструкцыях па ўсталёўцы].",
 	'tasklistemailbody' => ',
 
@@ -336,6 +337,7 @@ Za lisćinu płaśiwych projektow glědaj [[MediaWiki:TodoTasksValidProjects]]."
 	'tasklistchooseproj' => 'Projekt wubraś:',
 	'tasklistprojdisp' => 'Zwobrazniś',
 	'tasklistbyname' => '== Lisćina nadawkow za %s ==',
+	'tasklistnowguseprojects' => 'Sy $wgUseProjects na "false" stajił a njamóžoš toś ten bok wužywaś.',
 	'tasklistnoprojects' => "Zmólka: Wuglěda, ako by ty zaktiwěrował '''\$wgUseProjects''', ale njeby napórał boki [[MediaWiki:TodoTasksValidProjects]]. Glědaj [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instalaciske wukazanja] za dalšne drobnostki.",
 	'tasklistemailbody' => ',
 
@@ -478,6 +480,7 @@ $messages['fr'] = array(
 	'tasklistchooseproj' => 'Sélectionner un projet :',
 	'tasklistprojdisp' => 'Afficher',
 	'tasklistbyname' => '== Liste de tâches pour %s ==',
+	'tasklistnowguseprojects' => 'Vous avez défini $wgUseProjects à « false » et ne pouvez donc pas utiliser cette page.',
 	'tasklistnoprojects' => "Erreur : il semble que vous ayez activé '''\$wgUseProjects''', mais sans avoir créé [[MediaWiki:TodoTasksValidProjects]]. Consultez les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d’installation] pour plus de détails.",
 	'tasklistemailbody' => ',
 
@@ -494,30 +497,31 @@ Votre bien aimable système de notification de %s',
  * @author Xosé
  */
 $messages['gl'] = array(
-	'tasklist' => 'Lista de Tarefas',
-	'tasklist-parser-desc' => 'engade a función de análise <nowiki>{{#todo:}}</nowiki> para asignar tarefas',
+	'tasklist' => 'Lista de tarefas',
+	'tasklist-parser-desc' => 'Engade a función de análise <nowiki>{{#todo:}}</nowiki> para asignar tarefas',
 	'tasklist-special-desc' => 'Engade unha páxina especial para revisar [[Special:TaskList|as tarefas asignadas]]',
-	'tasklistbyproject' => 'Lista de Tarefas por Proxecto',
+	'tasklistbyproject' => 'Lista de tarefas por proxecto',
 	'tasklistunknownproject' => 'Proxecto descoñecido',
 	'tasklistunspecuser' => 'Usuario sen especificar',
 	'tasklistincorrectuser' => 'Nome de usuario incorrecto',
-	'tasklistemail' => 'Querido %s',
-	'tasklistemailsubject' => '[%s] Cambio na Lista de Tarefas',
+	'tasklistemail' => 'Estimado %s',
+	'tasklistemailsubject' => '[%s] Cambio na lista de tarefas',
 	'tasklistmytasks' => 'As miñas tarefas',
-	'tasklistbyprojectbad' => "O Proxecto '''%s''' non é un proxecto válido. Para unha lista de proxectos válidos, vexa
-[[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojectbad' => "O proxecto '''%s''' non é un proxecto válido.
+Para ollar unha lista cos proxectos válidos, véxase [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Tarefas asignadas a '''%s'''",
-	'tasklistchooseproj' => 'Seleccionar Proxecto:',
-	'tasklistprojdisp' => 'Pantalla',
-	'tasklistbyname' => '== Lista de tarefas pendentes para %s ==',
-	'tasklistnoprojects' => "ERRO: parece que permitiu '''\$wgUseProjects''', pero non creou [[MediaWiki:TodoTasksValidProjects]]. Vexa [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 as instrucións da instalación] para máis detalles.",
-	'tasklistemailbody' => ',
+	'tasklistchooseproj' => 'Seleccionar un proxecto:',
+	'tasklistprojdisp' => 'Mostrar',
+	'tasklistbyname' => '== Lista de tarefas pendentes de %s ==',
+	'tasklistnowguseprojects' => 'Ten definido $wgUseProjects en "falso", polo que non pode empregar esta páxina.',
+	'tasklistnoprojects' => "Erro: semella que activou '''\$wgUseProjects''', pero non creou [[MediaWiki:TodoTasksValidProjects]]. Olle [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 as instrucións de instalación] para obter máis detalles.",
+	'tasklistemailbody' => ':
 
 Alguén asignoulle unha nova tarefa en %s.
 
 Para ver a súa lista completa de tarefas vaia a %s.
 
-O seu sistema agradable de notificacións %s',
+O sistema de notificacións de %s',
 );
 
 /** Swiss German (Alemannisch)
@@ -539,6 +543,7 @@ $messages['gsw'] = array(
 	'tasklistchooseproj' => 'Projäkt uswehle:',
 	'tasklistprojdisp' => 'Aazeige',
 	'tasklistbyname' => '== Ufgabelischt fir %s ==',
+	'tasklistnowguseprojects' => 'Du hesch $wgUseProjects uf „falsch“ gsetzt, wäge däm cha s nit brucht.',
 	'tasklistnoprojects' => "Fähler: S siht eso uus wie wänn '''\$wgUseProjects''' aktiviert wär, aber d Syte [[MediaWiki:TodoTasksValidProjects]] sin nit aagleit. Lueg d [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsaawyysige] fir meh Detail.",
 	'tasklistemailbody' => ',
 
@@ -598,6 +603,7 @@ $messages['hsb'] = array(
 	'tasklistchooseproj' => 'Wubjer projekt:',
 	'tasklistprojdisp' => 'Pokazać',
 	'tasklistbyname' => '== Nadawkowa lisćina za %s ==',
+	'tasklistnowguseprojects' => 'Sy $wgUseProjects na "false" stajił a njemóžeš tutu stronu wužiwać.',
 	'tasklistnoprojects' => "ZMYLK: Zda so, zo sy '''\$wgUseProjects''' aktiwizował, ale njejsy [[MediaWiki:TodoTasksValidProjects]] wutworił. Hlej [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] za dalše podrobnosće.",
 	'tasklistemailbody' => ',
 
@@ -659,6 +665,7 @@ Pro un lista de projectos valide, consulta [[MediaWiki:TodoTasksValidProjects]].
 	'tasklistchooseproj' => 'Selige projecto:',
 	'tasklistprojdisp' => 'Presentar',
 	'tasklistbyname' => '== Lista de cargas a facer pro %s ==',
+	'tasklistnowguseprojects' => 'Tu ha definite $wgUseProjects a "false" e non pote usar iste pagina.',
 	'tasklistnoprojects' => "Error: Pare que tu ha activate '''\$wgUseProjects''' sin crear [[MediaWiki:TodoTasksValidProjects]]. Vide le [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructiones de installation] pro ulterior detalios.",
 	'tasklistemailbody' => ',
 
@@ -753,6 +760,7 @@ $messages['ja'] = array(
 	'tasklistchooseproj' => 'プロジェクトを選択:',
 	'tasklistprojdisp' => '表示',
 	'tasklistbyname' => '== %s の ToDo 一覧==',
+	'tasklistnowguseprojects' => '$wgUseProjects が「偽」(false) に設定されているため、このページを使うことはできません。',
 	'tasklistnoprojects' => "エラー: あなたは '''\$wgUseProjects''' を有効にしているようですが、[[MediaWiki:TodoTasksValidProjects]] を作成していません。詳細は[http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 インストール手順]をご覧ください。",
 	'tasklistemailbody' => '
 どなたかがあなたに %s での新しい課題を割り当てました。
@@ -835,6 +843,7 @@ Loor op [[MediaWiki:TodoTasksValidProjects]] noh de Projekte.",
 	'tasklistchooseproj' => 'Projekt ußwähle:',
 	'tasklistprojdisp' => 'Zeije',
 	'tasklistbyname' => '== Opjaveliss för %s ==',
+	'tasklistnowguseprojects' => 'Heh em Wiki es <code lang="en">$wgUseProjects</code> op „verkeeht“ jesaz, dröm kanns De heh di Sigg och nit bruche.',
 	'tasklistnoprojects' => "'''Fähler:''' Et süht us, wi wann De <code>\$wgUseProjects</code>
 aanjeschalldt häts, ävver [[MediaWiki:TodoTasksValidProjects]]
 nit opjesatz häts. Loor Der op de
@@ -976,6 +985,7 @@ $messages['nl'] = array(
 	'tasklistchooseproj' => 'Project selecteren:',
 	'tasklistprojdisp' => 'Bekijken',
 	'tasklistbyname' => '== Takenlijst voor %s ==',
+	'tasklistnowguseprojects' => 'U hebt $wgUseProjects ingesteld op "false" en kunt deze pagina niet gebruiken.',
 	'tasklistnoprojects' => "FOUT: het lijkt alsof u '''\$wgUseProjects''' hebt ingeschakeld, maar [[MediaWiki:TodoTasksValidProjects]] niet hebt aangemaakt. Zie de  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installatie-instructies] voor meer details.",
 	'tasklistemailbody' => ',
 
@@ -1171,6 +1181,7 @@ Para uma lista de projectos válidos, ver [[MediaWiki:TodoTasksValidProjects]]."
 	'tasklistchooseproj' => 'Seleccione Projecto:',
 	'tasklistprojdisp' => 'Mostrar',
 	'tasklistbyname' => '== Lista de tarefas de %s ==',
+	'tasklistnowguseprojects' => 'Definiu $wgUseProjects como "falso" e não pode usar esta página.',
 	'tasklistnoprojects' => "Erro: Aparentement activou '''\$wgUseProjects''', mas não criou [[MediaWiki:TodoTasksValidProjects]]. Veja as [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instruções de Instalação] para mais detalhes.",
 	'tasklistemailbody' => ',
 
@@ -1258,6 +1269,7 @@ $messages['ru'] = array(
 	'tasklistchooseproj' => 'Выберите проект:',
 	'tasklistprojdisp' => 'Показать',
 	'tasklistbyname' => '== Список задач для %s ==',
+	'tasklistnowguseprojects' => 'Вы установили $wgUseProjects в значение «false» и не можете использовать эту страницу.',
 	'tasklistnoprojects' => "Ошибка. Похоже, что вы включили '''\$wgUseProjects''', но не создали [[MediaWiki:TodoTasksValidProjects]]. Подробнее см. в [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Руководстве по установке].",
 	'tasklistemailbody' => ',
 

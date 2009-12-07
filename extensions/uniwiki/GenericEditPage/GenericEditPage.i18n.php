@@ -1240,9 +1240,21 @@ $messages['si'] = array(
 	'gep-emailsubject' => '[$1] ප්‍රවර්ග යෝජනාව: $2',
 	'gep-emailbody' => '"$3" අඩවිය සඳහා "$1" පරිශීලකයා "$2" ප්‍රවර්ගය යෝජනා කරන ලදී.',
 	'gep-emailfailure' => 'කණගාටුයි,ඔබේ යෝජනාව සැකසීමට නොහැකි විය.',
+	'gep-emailsuccess' => 'ප්‍රවර්ගය යෝජනා කිරීම ගැන ස්තුතියි: $1',
 	'gep-categories' => 'ප්‍රවර්ග',
 	'gep-addcategory' => 'ප්‍රවර්ගයක් එකතු කරන්න',
 	'gep-addcategorybutton' => 'එකතු කරන්න',
+	'gep-suggestcategory' => 'ප්‍රවර්ගයක් යෝජනා කරන්න',
+	'gep-suggestcategorybutton' => 'යොමන්න',
+	'gep-sections' => 'අංශයන්',
+	'gep-sectionnotdisabled' => 'මෙම අංශය අක්‍රීය කරනු ලැබිය නොහැක',
+	'gep-addsection' => 'අංශයක් එකතු කරන්න',
+	'gep-addsectionbutton' => 'එකතු කරන්න',
+	'gep-classicmode' => 'සම්භාව්‍ය ප්‍රකාරය',
+	'gep-genericmode' => 'වර්ගීය ප්‍රකාරය',
+	'gep-nosectioninstructions' => 'මෙම පිටුවේ කිසිම අංශයන් නොමැත.
+මෙනු තීරුවේ ඇති මෙවලම් භාවිතා කර කීපයක් එකතු කරන්න.',
+	'gep-nocategories' => 'කරුණාකර සුරැකීමට පෙර අවම වශයෙන් එක් ප්‍රවර්ගයක්වත් තෝරන්න',
 );
 
 /** Slovak (Slovenčina)

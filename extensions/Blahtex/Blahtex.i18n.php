@@ -1643,10 +1643,12 @@ Proba usar le commando "$3{...}".',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Irwangatot
  * @author Kandar
  */
 $messages['id'] = array(
+	'math_CannotRunDvipng' => 'Tidak bisa menjalankan dvipng',
 	'math_CannotRunLatex' => 'Tidak dapat menjalankan latex',
 	'math_IllegalCharacter' => 'Karakter masukan tidak sah',
 	'math_IllegalCommandInMathMode' => 'Perintah "$1" tidak sah pada mode matematik',
@@ -1655,10 +1657,14 @@ Mungkin anda ingin menggunakan "$2" ?',
 	'math_IllegalCommandInTextMode' => 'Perintah "$1" tidak sah pada mode teks',
 	'math_IllegalCommandInTextModeWithHint' => 'Perintah "$1" tidak sah pada mode teks
 Mungkin anda ingin menggunakan "$2"?',
+	'math_InvalidColour' => 'Warna "$1" salah',
 	'math_MissingOpenBraceAfter' => 'Kekurangan kurawal buka "{" setelah "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Kehilangan kurawal buka "{" pada ujung input',
 	'math_MissingOpenBraceBefore' => 'Kehilangan kurawal buka "{" sebelum "$1"',
+	'math_MissingOrIllegalParameterIndex' => 'Indeks parameter hilang atau ilegal pada definisi "$1"',
+	'math_PngIncompatibleCharacter' => 'Tidak bisa membuat PNG yang berisi karakter $1',
 	'math_TooManyTokens' => 'Masukan terlalu panjang',
+	'math_UnrecognisedCommand' => 'Perintah tak dikenali "$1"',
 );
 
 /** Italian (Italiano)

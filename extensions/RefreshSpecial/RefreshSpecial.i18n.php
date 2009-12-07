@@ -1281,6 +1281,7 @@ $messages['uk'] = array(
 	'refreshspecial-none-selected' => 'Ви не вибрали жодної спеціальної сторінки. Повернення до вибору за замовчуванням.',
 	'refreshspecial-db-error' => 'Помилка: Помилка бази даних',
 	'refreshspecial-no-page' => 'Немає такої спеціальної сторінки',
+	'refreshspecial-slave-lagged' => 'Запізнення у обміні з залежним сервером, очікування...',
 	'refreshspecial-reconnected' => "Повторне з'єднання.",
 	'refreshspecial-reconnecting' => "Не вдалося встановити з'єднання, повтор через 10 секунд ...",
 	'refreshspecial-page-result' => 'отримано $1 {{PLURAL:$1|рядок|рядки|рядків}} за',

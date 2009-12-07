@@ -134,6 +134,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -144,7 +145,7 @@ $messages['br'] = array(
 	'smoothgallery-gallery-not-found' => "N'eus ket eus ar palier goulennet.",
 	'smoothgallery-not-found' => "N'eus bet ouzhpennet skeudenn ebet d'ar palier.
 Ouzhpennit ur skeudenn da nebeutañ, mar plij.",
-	'smoothgallery-javascript-disabled' => "Ezhomm 'zo JavaScript evit gwellet palier ar skeudennoù en un doare reizh",
+	'smoothgallery-javascript-disabled' => 'Rekis eo JavaScript evit gwelet ervat ar skeudennaoueg.',
 );
 
 /** Bosnian (Bosanski)

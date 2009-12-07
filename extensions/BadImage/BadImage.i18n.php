@@ -1454,10 +1454,12 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'badimages' => 'മോശം ചിത്രങ്ങളുടെ പട്ടിക',
+	'badimages-desc' => 'മീഡിയവിക്കിയിലെ മോശം ചിത്രങ്ങളുടെ പട്ടികയുടെ കഴിവുകൾ വികസിപ്പിക്കുക',
 	'badimages-add-btn' => 'ചേര്‍ക്കുക',
 	'badimages-added' => '$1 പട്ടികയിലേക്കു ചേര്‍ത്തിരിക്കുന്നു',
 	'badimages-count' => "മോശം ചിത്രങ്ങളുടെ പട്ടികയില്‍ '''$1''' {{PLURAL:$1|ചിത്രം|ചിത്രങ്ങള്‍}} ഉണ്ട്.",
@@ -1476,6 +1478,7 @@ $messages['ml'] = array(
 	'badimages-log-add' => 'മോശം ചിത്രങ്ങളുടെ പട്ടികയിലേയ്ക്ക് [[$1]] ചേര്‍ത്തു',
 	'badimages-log-remove' => 'മോശം ചിത്രങ്ങളുടെ പട്ടികയില്‍നിന്ന് [[$1]] നീക്കംചെയ്തു',
 	'badimages-page' => '{{ns:help}}:ഉപയോഗശൂന്യമായ ചിത്രങ്ങളുടെ പട്ടിക',
+	'right-badimages' => 'മോശം ചിത്രങ്ങളുടെ പട്ടിക പുതുക്കുക',
 );
 
 /** Marathi (मराठी)

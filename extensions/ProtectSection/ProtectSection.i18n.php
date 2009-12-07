@@ -500,15 +500,16 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'protectsection_desc' => 'Permite que utilizadores autorizados protejam partes de uma página usando a tag <tt>&lt;protect&gt;</tt>',
-	'protectsection_add_remove' => 'Você tentou adicionar ou remover uma secção protegida',
-	'protectsection_modify' => 'Você tentou modificar texto protegido',
-	'protectsection_add_above' => 'Você tentou inserir texto antes de uma secção protegida',
+	'protectsection_add_remove' => 'Tentou adicionar ou remover uma secção protegida',
+	'protectsection_modify' => 'Tentou modificar texto protegido',
+	'protectsection_add_above' => 'Tentou inserir texto antes de uma secção protegida',
 	'protectsection_forbidden' => 'Proibido',
 	'right-protectsection' => 'Proteger secções da página',
 );

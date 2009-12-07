@@ -92,16 +92,17 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'externalpages' => 'Pajennoù diavaez',
-	'externalpages-bad-year' => 'Ar bloavezh lakaet a zo direizh',
-	'externalpages-bad-language' => 'Ar yezh lakaet a zo direizh',
-	'externalpages-bad-project' => 'Ar raktres lakaet a zo direizh',
-	'externalpages-bad-page' => 'Ar bajenn lakaet a zo direizh',
-	'externalpages-no-page' => "N'eus pajenn ebet a zo bet lakaet",
-	'externalpages-error-generic' => 'Ur gudenn a zo bet',
+	'externalpages-bad-year' => 'Bloavezh lakaet direizh',
+	'externalpages-bad-language' => 'Yezh lakaet direizh',
+	'externalpages-bad-project' => 'Raktres lakaet direizh',
+	'externalpages-bad-page' => 'Pajenn lakaet direizh',
+	'externalpages-no-page' => "N'eus bet resisaet anv pajenn ebet",
+	'externalpages-error-generic' => 'Kavet ez eus bet ur fazi',
 );
 
 /** Bosnian (Bosanski)
@@ -119,6 +120,23 @@ $messages['bs'] = array(
 	'externalpages-error-generic' => 'Desila se greška',
 	'externalpages-bad-url' => 'Nije uspjelo preuzimanje URL',
 	'externalpages-bad-url-data' => 'Nije uspjelo preuzimanje sadržaja stranice',
+);
+
+/** German (Deutsch)
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'externalpages' => 'Externe Seiten',
+	'externalpages-desc' => 'Empfängt und zeigt Seiten von externen Websites der Wikimedia Foundation an',
+	'externalpages-bad-year' => 'Falsches Jahr angegeben',
+	'externalpages-bad-language' => 'Falsche Sprache angegeben',
+	'externalpages-bad-project' => 'Falsches Projekt angegeben',
+	'externalpages-no-project' => 'Kein Projekt angegeben',
+	'externalpages-bad-page' => 'Falsche Seite angegeben',
+	'externalpages-no-page' => 'Keine Seite angegeben',
+	'externalpages-error-generic' => 'Fehler gefunden',
+	'externalpages-bad-url' => 'Kann die URL nicht empfangen',
+	'externalpages-bad-url-data' => 'Kann keine Seiteninhalte empfangen',
 );
 
 /** Zazaki (Zazaki)
@@ -454,6 +472,23 @@ $messages['ru'] = array(
 	'externalpages-bad-url-data' => 'Не удалось получить содержание страницы',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'externalpages' => 'Externé stránky',
+	'externalpages-desc' => 'Získa a zobrazí stránky zo vzdialených lokalít WMF',
+	'externalpages-bad-year' => 'Uvedený chybný rok',
+	'externalpages-bad-language' => 'Uvedený chybný jazyk',
+	'externalpages-bad-project' => 'Uvedený chybný projekt',
+	'externalpages-no-project' => 'Neuvedený projekt',
+	'externalpages-bad-page' => 'Uvedená chybná stránka',
+	'externalpages-no-page' => 'Neuvedená stránka',
+	'externalpages-error-generic' => 'Vyskytla sa chyba',
+	'externalpages-bad-url' => 'Nepodarilo sa získať URL',
+	'externalpages-bad-url-data' => 'Nepodarilo sa získať obsah stránky',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -470,6 +505,11 @@ $messages['vec'] = array(
 	'externalpages-bad-year' => 'Ano mia giusto',
 	'externalpages-bad-language' => 'Lengua mia giusta',
 	'externalpages-bad-project' => 'Projeto mia giusto',
+	'externalpages-no-project' => 'Nissun projeto indicà',
 	'externalpages-bad-page' => 'Pagina mia giusta',
+	'externalpages-no-page' => 'Nissuna pagina indicà',
+	'externalpages-error-generic' => 'Xe vegnesto fora un eròr',
+	'externalpages-bad-url' => "No se riesse a recuperar l'URL",
+	'externalpages-bad-url-data' => 'No se riesse a recuperar el contenuto de la pagina',
 );
 

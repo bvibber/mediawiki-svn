@@ -85,9 +85,11 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'rt-inactive' => "An astenn RT n'eo ket oberiant",
+	'rt-nomatches' => "N'eo bet kavet tiked RT ebet",
 );
 
 /** Bosnian (Bosanski)

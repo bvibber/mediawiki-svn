@@ -118,10 +118,15 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'emergencydesysop-reason' => 'Abeg evit lemel',
 	'emergencydesysop-submit' => 'Kas',
+	'emergencydesysop-notasysop' => "An implijer buket n'emañ ket er strollad merourien.",
+	'emergencydesysop-nogroups' => 'Hini ebet',
+	'emergencydesysop-invalidtarget' => "N' ez eus ket eus an implijer buket.",
+	'emergencydesysop-blocked' => "Ne c'helloc'h ket mont d'ar bajenn-se keit ma 'moc'h stanket",
 );
 
 /** Bosnian (Bosanski)

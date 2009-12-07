@@ -82,6 +82,14 @@ $messages['ar'] = array(
 	'inspectcache-list' => 'عرض',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'inspectcache-ok' => 'ܛܒ',
+	'inspectcache-delete' => 'ܫܘܦ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -131,9 +139,11 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'inspectcache-ok' => 'Mat eo',
+	'inspectcache-get' => 'Tapout',
 	'inspectcache-delete' => '
 Diverkañ',
 	'inspectcache-list' => 'Roll',

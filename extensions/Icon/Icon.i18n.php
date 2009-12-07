@@ -396,9 +396,11 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'icon-badimage' => 'മോശം ചിത്രം',
 	'icon-badwidth' => 'അസാധുവായ വീതി',
 );
 

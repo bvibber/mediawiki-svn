@@ -164,9 +164,14 @@ $messages['br'] = array(
 	'masseditregex-executebtn' => 'Seveniñ',
 	'masseditregex-before' => 'A-raok',
 	'masseditregex-after' => 'Goude',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|kemm|kemmoù}}',
 	'masseditregex-page-not-exists' => "N'eus ket eus $1",
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|pennad|pennadoù}} embannet',
+	'masseditregex-hint-headmatch' => 'Klotadenn',
 	'masseditregex-hint-headreplace' => "Erlec'hiañ",
 	'masseditregex-hint-headeffect' => 'Efed',
+	'masseditregex-listtype-intro' => 'Setu ur roll eus :',
+	'masseditregex-editfailed' => 'Fazi e-pad an embann :',
 );
 
 /** Bosnian (Bosanski)
@@ -750,6 +755,14 @@ $messages['oc'] = array(
 	'masseditregex-badregex' => 'Regex invalid :',
 	'masseditregex-editfailed' => "Error al moment de l'edicion :",
 	'masseditregex-tooltip-execute' => 'Aplicar aquestes cambiaments a cada pagina',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'masseditregex' => 'Modìfiche mùltiple an dovrand espression regolar',
+	'masseditregex-desc' => 'Dovra espression regolar për [[Special:MassEditRegex|modifiché vàire pàgine ant na sola operassion]]',
 );
 
 /** Portuguese (Português)

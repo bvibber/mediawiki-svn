@@ -198,6 +198,23 @@ $messages['ia'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Debite a potential errores de interpretation, solo le messages in texto simple es acceptate.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'sendmailtowiki-desc' => 'Kirim isi wiki melalui alamat surel khusus yang dinamis',
+	'prefs-sendmailtowiki' => 'Mengirimkan isi melalui surel',
+	'sendmailtowiki-inemail' => 'Alamat surel khusus:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Kotak kosong untuk nomor PIN menghentikan pengiriman isi ke wiki menggunakan akun Anda.',
+	'sendmailtowiki-err-pinlength' => 'PIN harus berisi 5 angka.',
+	'sendmailtowiki-err-wrongprefix' => 'Prefiks akun wiki salah. Hubungi administrator Anda.',
+	'sendmailtowiki-err-invalidaccount' => 'Akun salah. Cek alamat surel tujuan pengiriman Anda.',
+	'sendmailtowiki-err-invalidsender' => 'Pengirim salah. Cek alamat surel asal pengiriman Anda.',
+	'sendmailtowiki-err-invalidpin' => 'PIN salah. Akses ditolak.',
+	'sendmailtowiki-err-onlyplain' => 'Karena kesalahpahaman, hanya pesan teks asli yang diterima.',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

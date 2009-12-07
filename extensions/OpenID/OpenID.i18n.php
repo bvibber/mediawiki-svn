@@ -287,6 +287,7 @@ $messages['ar'] = array(
 	'openid-pref-hide' => 'أخفِ مسار هويتك المفتوحة من صفحتك الشخصية، إذا سجلت الدخول بالهوية المفتوحة.',
 	'openid-pref-update-userinfo-on-login' => 'حدث المعلومات التالية من شخصية الهوية المفتوحة كل مرة أسجل الدخول:',
 	'openid-urls-desc' => 'OpenIDs المربوطة بحسابك:',
+	'openid-urls-url' => 'مسار',
 	'openid-urls-action' => 'إجراء',
 	'openid-urls-delete' => 'احذف',
 	'openid-add-url' => 'أضف OpenID جديدة',
@@ -302,6 +303,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'openidchoosepassword' => 'ܡܠܬܐ ܕܥܠܠܐ:',
 	'openiddelete-button' => 'ܚܬܬ',
 );
 
@@ -554,6 +556,7 @@ $messages['br'] = array(
 	'openidlogin' => 'Kevreañ gant OpenID',
 	'openidserver' => 'Servijer OpenID',
 	'openidxrds' => 'Restr Yadis',
+	'openiderror' => 'Fazi gwiriañ',
 	'openidfailure' => "C'hwitet eo ar gwiriadur",
 	'openidusernameprefix' => 'Implijer OpenID',
 	'openidoptional' => 'Diret',
@@ -572,10 +575,14 @@ $messages['br'] = array(
 	'openidupdateuserinfo' => 'Hizivaat ma zitouroù personel',
 	'openiddelete' => 'Dilemel an OpenID',
 	'openiddelete-button' => 'Kadarnaat',
+	'openid-prefstext' => 'Penndibaboù an [http://openid.net/ OpenID]',
 	'openid-urls-action' => 'Ober',
 	'openid-urls-delete' => 'Dilemel',
 	'openid-add-url' => 'Ouzhpennañ un OpenID nevez',
+	'openidsigninorcreateaccount' => 'En em lugañ pe krouiñ ur gont nevez',
 	'openid-provider-label-openid' => "Ebarzhit hoc'h URL OpenID",
+	'openid-provider-label-google' => 'Lugañ en ur implij ho kont Google',
+	'openid-provider-label-yahoo' => 'Lugañ en ur implij ho kont Yahoo',
 	'openid-provider-label-aol' => "Ebarzhit hoc'h anv AOL",
 	'openid-provider-label-other-username' => "Ebarzhit hoc'h anv implijer $1",
 );

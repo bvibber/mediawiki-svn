@@ -356,8 +356,12 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Hamilton Abreu
+ * @author Heldergeovane
  */
 $messages['pt-br'] = array(
+	'wikieditor-preview-preference' => 'Habilitar a previsão lado a lado',
+	'wikieditor-preview-tab' => 'Previsão',
+	'wikieditor-preview-loading' => 'Carregando...',
 );
 
 /** Tarandíne (Tarandíne)

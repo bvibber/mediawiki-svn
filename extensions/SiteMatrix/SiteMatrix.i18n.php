@@ -270,6 +270,7 @@ $messages['bs'] = array(
  * @author Jordi Roqué
  * @author Paucabot
  * @author SMP
+ * @author Ssola
  * @author לערי ריינהארט
  */
 $messages['ca'] = array(
@@ -282,7 +283,7 @@ $messages['ca'] = array(
 	'sitematrix-total' => "'''Recompte total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privat',
-	'sitematrix-fishbowl' => 'edició restringida',
+	'sitematrix-fishbowl' => 'modificacions restringides',
 );
 
 /** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */

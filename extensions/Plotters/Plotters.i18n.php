@@ -100,6 +100,7 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'plotters' => 'Treserioù grafek',
 	'plotters-title' => 'Treserioù grafek',
+	'plotters-uses' => 'Implij',
 	'plotters-no-data' => "N'eus bet pourchaset roadenn ebet.",
 );
 

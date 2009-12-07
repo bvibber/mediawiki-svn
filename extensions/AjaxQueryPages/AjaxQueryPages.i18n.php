@@ -318,6 +318,13 @@ $messages['lt'] = array(
 	'ajax-qp-desc' => 'Pridėkite AJAX norėdami užklausti puslapius tokius kaip [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Latvian (Latviešu)
+ * @author Dark Eagle
+ */
+$messages['lv'] = array(
+	'ajax-qp-desc' => 'Pievienot nedaudz AJAX vaicājumu lapās, tādos kā [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

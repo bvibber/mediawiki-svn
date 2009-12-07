@@ -113,6 +113,9 @@ $3',
  * @author Y-M D
  */
 $messages['br'] = array(
+	'latexdoc_no_text' => "N'eus testenn ebet war ar bajenn, n'eus ket tu krouiñ DVI",
+	'latexdoc_cant_create_dir' => "Diposupl eo krouinn ar c'havlec'h berrbad $1",
+	'latexdoc_cant_write' => 'Diposubl eo skrivañ er rest $1',
 	'latexdoc_error' => 'Fazi LaTeX
 
 Urzhiad : $1

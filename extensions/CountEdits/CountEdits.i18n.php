@@ -231,6 +231,7 @@ Ne sudite o korisnicima po njihovom broju izmjena.",
 /** Catalan (Català)
  * @author SMP
  * @author Solde
+ * @author Ssola
  * @author Toniher
  */
 $messages['ca'] = array(
@@ -241,7 +242,7 @@ $messages['ca'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'No hi ha cap usuari amb el nom $1.',
 	'countedits-resultheader' => 'Resultats de $1',
-	'countedits-resulttext' => '$1 ha fet {{PLURAL:$2|1 edició|$2 edicions}}',
+	'countedits-resulttext' => '$1 ha fet {{PLURAL:$2|1 modificació|$2 modificacions}}',
 	'countedits-mostactive' => 'Els coŀlaboradors més actius',
 	'countedits-nocontribs' => 'No hi ha hagut cap coŀlaboració en aquest wiki.',
 );

@@ -193,10 +193,12 @@ $messages['br'] = array(
 	'imstatus_syntax' => 'Ereadur',
 	'imstatus_default' => 'Dre ziouer',
 	'imstatus_example' => 'Skouer',
+	'imstatus_possible_val' => 'Talvoudoù posupl',
 	'imstatus_max' => 'muiañ',
 	'imstatus_min' => 'nebeutañ',
 	'imstatus_or' => 'pe',
 	'imstatus_your_name' => "hoc'h anv $1",
+	'imstatus_gtalk_code' => 'ho kod Google Talk',
 );
 
 /** Bosnian (Bosanski)

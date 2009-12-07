@@ -316,6 +316,13 @@ $messages['ru'] = array(
 	'csshooks-desc' => 'Добавляет CSS в HTML-вывод страниц, чтобы улучшить стили',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'csshooks-desc' => 'වඩා හොඳ විපාසයක් සඳහා පිටුවල HTML ප්‍රතිදානයන්ට CSS එකතු කරයි',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

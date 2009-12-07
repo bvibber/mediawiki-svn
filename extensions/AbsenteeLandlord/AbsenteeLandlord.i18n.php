@@ -400,6 +400,14 @@ $messages['lt'] = array(
 	'absenteelandlord-desc' => 'Automatiškai užrakina wiki duomenų bazę jei administratoriai yra tam tikrą laiką neaktyvūs',
 );
 
+/** Latvian (Latviešu)
+ * @author Dark Eagle
+ */
+$messages['lv'] = array(
+	'absenteelandlord-reason' => 'Datu bāze tika automātiski bloķēta, administratoru neaktivitātes dēļ.',
+	'absenteelandlord-desc' => 'Automātiski bloķē wiki-projekta datu bāzi, ja visi administratori kādu laiku ir neaktīvi',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

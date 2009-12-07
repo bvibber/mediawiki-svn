@@ -153,6 +153,8 @@ $messages['ar'] = array(
 	'recordadmin-editwithform' => 'عدل مع الاستمارة',
 	'recordadmin-typeinfo' => '$1 تسجيل',
 	'right-recordadmin' => 'أبحث و عدل صفحات السجل',
+	'recrodadmin-export-csv' => 'سي في إس',
+	'recrodadmin-export-pdf' => 'بي دي إف',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -355,6 +357,13 @@ $messages['bs'] = array(
 	'recordadmin-editwithform' => 'Uređivanje sa obrascom',
 	'recordadmin-typeinfo' => '$1 zapis',
 	'right-recordadmin' => 'Traženje i uređivanje stranica zapisa',
+);
+
+/** Catalan (Català)
+ * @author Ssola
+ */
+$messages['ca'] = array(
+	'recordadmin-editlink' => 'modifica',
 );
 
 /** German (Deutsch)
@@ -1227,6 +1236,51 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'recordadmin-invert' => 'Ómgedriejde selectie',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'recordadmin' => 'Администрација на записи',
+	'recordadmin-desc' => '[[Special:RecordAdmin|Специјална страница]] за пронаоѓање и уредување на записни страници, користејќи образец',
+	'recordadmin-categoryempty' => 'Моментално нема записни типови. Категоризирајте записните шаблони во [[:$1|$1]].',
+	'recordadmin-select' => 'Избери',
+	'recordadmin-createtype' => 'Внесете назив на новиот записен тип за создавање',
+	'recordadmin-recordtype' => 'записен тип',
+	'recordadmin-newsearch' => 'Ново пребарување на $1',
+	'recordadmin-newrecord' => 'Изберете друг записен тип',
+	'recordadmin-submit' => 'Испрати',
+	'recordadmin-create' => 'Пронајди или создај записи за „$1“',
+	'recordadmin-alreadyexist' => 'Жалам, но „$1“ веќе постои!',
+	'recordadmin-createsuccess' => '$1 е создадено',
+	'recordadmin-createerror' => 'Настана грешка при обидот за создавање на $1!',
+	'recordadmin-badtitle' => 'Лош наслов!',
+	'recordadmin-recordid' => 'ID/име на записот:',
+	'recordadmin-invert' => 'Обратен избор',
+	'recordadmin-buttonsearch' => 'Пребарај',
+	'recordadmin-buttoncreate' => 'Создај',
+	'recordadmin-buttonreset' => 'Одново',
+	'recordadmin-searchresult' => 'Резултати од пребарувањето',
+	'recordadmin-nomatch' => 'Нема пронајдено соодветни записи!',
+	'recordadmin-edit' => 'Уредување на запис за $2 наречен „$1“',
+	'recordadmin-typeupdated' => 'Обновени се $1 својства',
+	'recordadmin-updatesuccess' => '$1 е обновено',
+	'recordadmin-updateerror' => 'Настана грешка при обновувањето',
+	'recordadmin-buttonsave' => 'Зачувај',
+	'recordadmin-noform' => 'Нема образец поврзан со записи од типот „$1“!',
+	'recordadmin-createlink' => 'создај',
+	'recordadmin-newcreated' => 'Создаден е нов $1 со јавен образец',
+	'recordadmin-summary-typecreated' => 'Создаден е нов $1',
+	'recordadmin-viewlink' => 'преглед',
+	'recordadmin-editlink' => 'уреди',
+	'recordadmin-created' => 'Создадено',
+	'recordadmin-modified' => 'Изменето',
+	'recordadmin-actions' => 'Дејства',
+	'recordadmin-needscontent' => 'Додај содржина...',
+	'recordadmin-editwithform' => 'Уреди со образец',
+	'recordadmin-typeinfo' => 'Запис од типот $1',
+	'right-recordadmin' => 'Пронаоѓање и уредување на записни страници',
 );
 
 /** Mongolian (Монгол)

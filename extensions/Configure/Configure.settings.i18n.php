@@ -2254,9 +2254,14 @@ $messages['br'] = array(
 	'configure-setting-wgValidSkinNames-key' => 'Anv diabarzh',
 	'configure-setting-wgValidSkinNames-value' => 'Anv diskwelet',
 	'configure-setting-wgNamespaceAliases-key' => 'Anv an alias',
+	'configure-setting-wgRightsIcon' => 'Ikonenn ar copyright',
 	'configure-setting-wgAllowRealName' => 'Aotren an anvioù gwir',
 	'configure-setting-wgSecretKey' => "Alc'hwez kuzh",
 	'configure-setting-wgUseImageMagick' => 'Implijout ImageMagick',
+	'configure-setting-wgUseTeX' => 'Gweredekaat TeX',
+	'configure-setting-wgXMLMimeTypes-key' => 'Doare MIME',
+	'configure-setting-wgAllowUserCss' => 'Aotreañ an implijerien da gaout o fajenn doare Cascading Style Sheet (CSS)',
+	'configure-setting-wgAllowUserJs' => 'Aotreañ an implijerien da gaout o fajenn JavaScript',
 	'configure-setting-wgUseAjax' => 'Gweredekaat AJAX',
 );
 

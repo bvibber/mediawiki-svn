@@ -32,6 +32,13 @@ $messages['af'] = array(
 	'geolite-desc' => 'Liggewig GeoIP-gebaseerde aanstuur',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'geolite' => 'جيو لايت',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

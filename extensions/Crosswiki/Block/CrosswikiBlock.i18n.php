@@ -1951,7 +1951,46 @@ Powrót do:
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'crosswikiblock-desc' => "A përmëtt ëd bloché utent an dzora a d'àutre wiki an dovrand na [[Special:Crosswikiblock|pàgina special]]",
+	'crosswikiblock' => "Blòca utent an dzora a d'àutre wiki",
+	'crosswikiblock-header' => "Sta pàgina-sì a përmëtt ëd bloché utent an dzora a d'àutre wiki.
+Për piasì contròla s'it peule travajé su sta wiki-sì e se toe assion a rispeto tute le polìtiche.",
+	'crosswikiblock-target' => 'Adrëssa IP o nòm utent e wiki ëd destinassion:',
 	'crosswikiblock-expiry' => 'Fin:',
+	'crosswikiblock-reason' => 'Rason:',
+	'crosswikiblock-submit' => 'Blòca sto utent-sì',
+	'crosswikiblock-anononly' => "Blòca mach j'utent anònim",
+	'crosswikiblock-nocreate' => 'Blòca la creassion ëd cont',
+	'crosswikiblock-autoblock' => "Blòca automaticament l'ùltima adrëssa IP dovrà da sto utent-sì, e minca adrëssa IP da andova a preuva a modifiché peui",
+	'crosswikiblock-noemail' => "Vieta a l'utent ëd mandé e-mail",
+	'crosswikiunblock' => "Sblòca l'utent an dzora a àutre wiki",
+	'crosswikiunblock-header' => "Sta pàgina-sì a përmëtt ëd dësbloché utent an dzora a d'àutre wiki.
+Për piasì contròla s'it peule travajé su sta wiki-sì w se toe assion a rispeto tute le polìtiche.",
+	'crosswikiunblock-user' => 'Nòm utent, adrëssa IP o ID ëd blòch e wiki ëd destinassion:',
+	'crosswikiunblock-reason' => 'Rason:',
+	'crosswikiunblock-submit' => "Sblòca st'utent-sì",
+	'crosswikiunblock-success' => "Utent '''$1''' sblocà da bin.
+
+Artorna a:
+* [[Special:CrosswikiBlock|Forma ëd blòch]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Pa gnun nòm utent dàit',
+	'crosswikiblock-local' => 'Ij blòch locaj a son pa apogià da costa antërfacia. Dòvra [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'Ël database $1 a esist pa',
+	'crosswikiblock-noname' => '"$1" a l\'é pa un nòm utent bon.',
+	'crosswikiblock-nouser' => 'Pa trovà l\'utent "$3".',
+	'crosswikiblock-noexpiry' => 'Fin pa bon-a: $1.',
+	'crosswikiblock-noreason' => 'Pa gnun-e rason spessifià.',
+	'crosswikiblock-notoken' => 'Token ëd modìfica pa bon.',
+	'crosswikiblock-alreadyblocked' => "L'utent $3 a l'é già blocà.",
+	'crosswikiblock-noblock' => "St'utent-sì a l'é pa blocà.",
+	'crosswikiblock-success' => "Utent '''$3''' blocà da bin.
+
+Artorna a:
+* [[Special:CrosswikiBlock|Forma ëd blòch]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Jë sblòch locaj a son pa apogià da costa antërfacia. Dòvra [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => "Blòca e sblòca utent an dzora a d'àutre wiki",
 );
 
 /** Pashto (پښتو)
@@ -1980,7 +2019,7 @@ Por favor, verifique se tem permissão para agir sobre essa wiki e se as suas ac
 	'crosswikiblock-reason' => 'Motivo:',
 	'crosswikiblock-submit' => 'Bloquear este utilizador',
 	'crosswikiblock-anononly' => 'Bloquear apenas utilizadores anónimos',
-	'crosswikiblock-nocreate' => 'Impedir criação de conta',
+	'crosswikiblock-nocreate' => 'Impedir criação de contas de utilizador',
 	'crosswikiblock-autoblock' => 'Bloquear automaticamente o último endereço IP usado por este utilizador, e qualquer endereço IP subsequente a partir do qual ele tente editar',
 	'crosswikiblock-noemail' => 'Impedir utilizador de enviar correio electrónico',
 	'crosswikiunblock' => 'Desbloquear utilizador noutra wiki',

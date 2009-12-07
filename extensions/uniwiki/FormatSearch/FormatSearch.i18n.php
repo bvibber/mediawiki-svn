@@ -333,6 +333,13 @@ $messages['ru'] = array(
 	'formatsearch-desc' => 'Приводит в порядок страницу выдачи результатов поиска',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'formatsearch-desc' => 'සෙවීම් ප්‍රතිඵල පිටුව හිස් කරයි',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

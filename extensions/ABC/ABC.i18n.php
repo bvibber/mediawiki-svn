@@ -418,8 +418,10 @@ $messages['lt'] = array(
 
 /** Latvian (Latviešu)
  * @author Dark Eagle
+ * @author FnTmLV
  */
 $messages['lv'] = array(
+	'abcdesc' => 'Pievieno <tt>&lt;abc&gt;</tt> tagu lai formatētu ABC mūziku',
 	'abcdownload' => 'Ielādēt:',
 );
 

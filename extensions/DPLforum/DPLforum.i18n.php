@@ -143,12 +143,13 @@ $messages['bs'] = array(
  * @author Jordi Roqué
  * @author SMP
  * @author Solde
+ * @author Ssola
  * @author Toniher
  */
 $messages['ca'] = array(
 	'dplforum-desc' => 'Extensió per un fòrum basat en DPL',
 	'dplforum-by' => 'per $1',
-	'dplforum-edited' => '- Última edició',
+	'dplforum-edited' => '- Darrera modificació',
 	'dplforum-never' => 'Mai',
 	'dplforum-toofew' => 'Fòrum DPL: massa poques categories!',
 	'dplforum-toomany' => 'Fòrum DPL: massa categories!',

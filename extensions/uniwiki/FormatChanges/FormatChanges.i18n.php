@@ -497,6 +497,16 @@ $messages['ru'] = array(
 	'formatchanges-editedby' => '$1 — отредактировано $2 ($3)',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'formatchanges-desc' => '[[Special:RecentChanges|මෑත වෙනස්කිරීම්]] ප්‍රතිසංස්කරණය කරයි',
+	'formatchanges-anonymous' => 'නිර්නාමික',
+	'formatchanges-createdby' => '$1 - $2 ($3) මඟින් නිර්මාණය කරන ලද',
+	'formatchanges-editedby' => '$1 - $2 ($3) මඟින් සංස්කරණය කරන ලද',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
