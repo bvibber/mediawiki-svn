@@ -8,11 +8,11 @@
 * 
 */
 
-loadGM( {
+mw.addMessages( {
 	"mwe-loading_plugin" : "loading plugin ...",
 	"mwe-select_playback" : "Set playback preference",
 	"mwe-link_back" : "Link back",
-	"mwe-error_swap_vid" : "Error: mv_embed was unable to swap the video tag for the mv_embed interface",
+	"mwe-error_swap_vid" : "Error: mwEmbed was unable to swap the video tag for the mwEmbed interface",
 	"mwe-add_to_end_of_sequence" : "Add to end of sequence",
 	"mwe-missing_video_stream" : "The video file for this stream is missing",
 	"mwe-play_clip" : "Play clip",
@@ -216,17 +216,6 @@ _global['dismissNativeWarn'] = false;
 * Adds jQuery binding for embedPlayer  
 */
 ( function( $ ) {
-
-	/**
-	* The base embedPlayers function converts all 
-	* video, audio, playlist tags into javascript player interfaces 
-	*
-	* @param  {Object} attributes Attributes applied to all players
-	* @param [ Optional ] {Function} callback Function to be called once player interfaces are ready
-	*/
-	$.embedPlayers = function( attributes, callback ){
-		$( 'video,audio,playlist' ).embedPlayer( attributes, callback );
-	}
 	
 	/**		
 	* Selector based embedPlayer jQuery binding
@@ -281,6 +270,7 @@ _global['dismissNativeWarn'] = false;
 			//Set the selector to IE compatible set and continue processing
 			j_selector = ie_compatible_selector;			
 		} 
+		
 		// Run the selector
 		$j( j_selector ).each( function() {
 			mw.playerManager.addElement( this, attributes);
@@ -351,7 +341,7 @@ EmbedPlayerManager.prototype = {
 			break;
 			case 'playlist':
 				// Make sure we have the necessary playlist libs loaded:
-				mvJsLoader.doLoad( [
+				mw.load( [
 					'mvPlayList',
 					'$j.ui',	// Include dialog for pop-ing up things
 					'$j.ui.dialog'
@@ -1142,7 +1132,7 @@ embedPlayer.prototype = {
 		
 		// Set the default skin if unset: 
 		if ( !this.skin_name )
-			this.skin_name = mw.conf.skin_name;
+			this.skin_name = mw.getConfig( 'skin_name' );
 		
 		// Make sure startOffset is cast as an int		   
 		if ( this.startOffset && this.startOffset.split( ':' ).length >= 2 )
@@ -1181,7 +1171,7 @@ embedPlayer.prototype = {
 			this.ctrlBuilder = new ctrlBuilder( this );
 		}
 		// Load player skin css:
-		loadExternalCss(  mv_embed_path +  'skins/' + this.skin_name + '/playerSkin.css' );
+		loadExternalCss(  mw.getMwEmbedPath() +  'skins/' + this.skin_name + '/playerSkin.css' );
 	},
 	
 	/**
@@ -1196,7 +1186,7 @@ embedPlayer.prototype = {
 			if( element.tagName.toLowerCase() == 'audio' &&  dim == 'height' )
 				return this[ dim ] = 0;
 			// Grab width/height from default value (for video) 
-			var dwh = mw.conf['video_size'].split( 'x' );
+			var dwh = mw.getConfig( 'video_size' ).split( 'x' );
 		 	this[ dim ] = ( dim == 'width' )? dwh[0] : dwh[1];
 		 }
 	},
@@ -1251,7 +1241,7 @@ embedPlayer.prototype = {
 	},
 	
 	/**
-	* Sources Ready Innitialization
+	* Sources Ready Initialisation
 	*
 	* issues autoSelectSource call  
 	*
@@ -1379,7 +1369,7 @@ embedPlayer.prototype = {
 				return false;
 			}
 		}
-		// See if we are using mv_embed without a ogg source in which case no point in promoting firefox :P			
+		// See if we are using mwEmbed without a ogg source in which case no point in promoting firefox :P			
 		if ( this.media_element && this.media_element.sources ) {
 			var foundOgg = false;
 			var playable_sources = this.media_element.getPlayableSources();
@@ -1456,16 +1446,16 @@ embedPlayer.prototype = {
 	/*
 	* Seek function (should be implemented by embed player interface )
 	*/ 
-	doSeek : function( perc ) {
+	doSeek : function( percent ) {
 		var _this = this;
 		if ( this.supportsURLTimeEncoding() ) {
 			// Make sure this.seek_time_sec is up-to-date:
-			this.seek_time_sec = npt2seconds( this.start_npt ) + parseFloat( perc * this.getDuration() );
+			this.seek_time_sec = npt2seconds( this.start_npt ) + parseFloat( percent * this.getDuration() );
 			js_log( 'updated seek_time_sec: ' + seconds2npt ( this.seek_time_sec ) );
 			this.stop();
 			this.didSeekJump = true;
 			// Update the slider
-			this.setSliderValue( perc );
+			this.setSliderValue( percent );
 		}
 		// Do play request in 100ms ( give the dom time to swap out the embed player ) 
 		setTimeout( function(){
@@ -1948,8 +1938,8 @@ embedPlayer.prototype = {
 			}
 		}
 	},
-	updateThumbPerc:function( perc ) {
-		return this.updateThumbTime( ( this.getDuration() * perc ) );
+	updateThumbPerc:function( percent ) {
+		return this.updateThumbTime( ( this.getDuration() * percent ) );
 	},
 	// Updates the thumbnail if the thumbnail is being displayed
 	updateThumbnail : function( src, quick_switch ) {
@@ -2029,14 +2019,14 @@ embedPlayer.prototype = {
 
 		var embed_thumb_html;
 		if ( thumbnail.substring( 0, 1 ) == '/' ) {
-			eURL = mw.parseUri( mv_embed_path );
+			eURL = mw.parseUri( mw.getMwEmbedPath() );
 			embed_thumb_url = eURL.protocol + '://' + eURL.host + thumbnail;
-			// js_log('set from mv_embed_path:'+embed_thumb_html);
+			// js_log('set from mwEmbed_path:'+embed_thumb_html);
 		} else {
-			embed_thumb_url = ( thumbnail.indexOf( 'http://' ) != -1 ) ? thumbnail:mv_embed_path + thumbnail;
+			embed_thumb_url = ( thumbnail.indexOf( 'http://' ) != -1 ) ? thumbnail : mw.getMwEmbedPath() + thumbnail;
 		}
 		var embed_code_html = '&lt;script type=&quot;text/javascript&quot; ' +
-					'src=&quot;' + mv_embed_path + 'mv_embed.js&quot;&gt;&lt;/script&gt' +
+					'src=&quot;' + mw.getMwEmbedPath() + 'mwEmbed.js&quot;&gt;&lt;/script&gt' +
 					'&lt;video ';
 		if ( this.roe ) {
 			embed_code_html += 'roe=&quot;' + escape( this.roe ) + '&quot; ';
@@ -2145,7 +2135,7 @@ embedPlayer.prototype = {
 		// check if textObj present:
 		if ( typeof this.textInterface == 'undefined' ) {
 			// load the default text interface:
-			mvJsLoader.doLoad( [
+			mw.load( [
 					'mvTextInterface',
 					'$j.fn.hoverIntent'
 				], function() {
@@ -2166,9 +2156,9 @@ embedPlayer.prototype = {
 		}
 	},
 	/** 
-	* Generic function to display custom HTML inside the mv_embed element.
+	* Generic function to display custom HTML inside the mwEmbed element.
 	* The code should call the closeDisplayedHTML function to close the
-	* display of the custom HTML and restore the regular mv_embed display.		
+	* display of the custom HTML and restore the regular mwEmbed display.		
 	* @param {String} html_code code for the selection list.
 	*/
 	displayHTML:function( html_code )
@@ -2212,7 +2202,7 @@ embedPlayer.prototype = {
 	},
 	/** 
 	* Close the custom HTML displayed using displayHTML and restores the
-	* regular mv_embed display.
+	* regular mwEmbed display.
 	*/
 	closeDisplayedHTML:function() {
 		  var sel_id = ( this.pc != null ) ? this.pc.pp.id:this.id;
@@ -2367,7 +2357,7 @@ embedPlayer.prototype = {
 	pause: function() {
 		var _this = this;
 		var eid = ( this.pc != null ) ? this.pc.pp.id:this.id;
-		// js_log('mv_embed:do pause');		
+		// js_log('mwEmbed:do pause');		
 		// (playing) do pause		
 		this.paused = true;
 		var $pt = $j( '#' + eid);
@@ -2670,21 +2660,23 @@ mediaPlayer.prototype =
 	library:null,
 	loaded:false,
 	loading_callbacks:null,
-	supportsMIMEType : function( type )
+	supportsMIMEType: function( type )
 	{
 		for ( var i = 0; i < this.supported_types.length; i++ )
 			if ( this.supported_types[i] == type )
 				return true;
 		return false;
 	},
-	getName : function()
+	getName: function()
 	{
 		return gM( 'mwe-ogg-player-' + this.id );
 	},
-	load : function( callback ) {	
-		mvJsLoader.doLoad( [
+	load: function( callback ) {
+		debugger;		
+		mw.load( [
 			this.library + 'Embed'
 		], function() {			
+			var cat = nativeEmbed;		
 			callback();
 		} );
 	}

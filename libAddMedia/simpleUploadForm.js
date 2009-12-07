@@ -4,7 +4,7 @@
  *
  */
 
-loadGM( {
+mw.addMessages( {
 	"mwe-select_file" : "Select file",
 	"mwe-more_license_options" : "For more license options, view the <a href=\"$1\">normal upload page<\/a>",
 	"mwe-select_ownwork" : "I am uploading entirely my own work, and licencing it under:",

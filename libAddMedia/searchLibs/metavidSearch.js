@@ -1,7 +1,7 @@
 /*
 * API modes (implementations should call these objects which inherit the mvBaseRemoteSearch
 */
-loadGM( {
+mw.addMessages( {
 	"mwe-stream_title" : "$1 $2 to $3"
 } );
 var metavidSearch = function( iObj ) {

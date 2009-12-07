@@ -34,7 +34,7 @@
 *
 */
 
-loadGM( {
+mw.addMessages( {
 	"mwe-setting-up-proxy" : "Setting up proxy...",
 	"mwe-re-try" : "Retry API request",
 	"mwe-re-trying" : "Retrying API request...",

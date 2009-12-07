@@ -111,7 +111,7 @@ $messages['en'] = array(
 	'mwe-sequencer_credit_line' => 'Developed by <a href="http://kaltura.com">Kaltura, Inc.</a> in partnership with the <a href="http://wikimediafoundation.org/wiki/Home">Wikimedia Foundation</a> (<a href="#">more information</a>).',
 
 	/*
-	 * js file: /mv_embed.js
+	 * js file: /mwEmbed.js
 	 */
 	'mwe-loading_txt' => 'Loading ...',
 	'mwe-size-gigabytes' => '$1 GB',
@@ -347,7 +347,7 @@ $messages['en'] = array(
 	'mwe-loading_plugin' => 'loading plugin ...',
 	'mwe-select_playback' => 'Set playback preference',
 	'mwe-link_back' => 'Link back',
-	'mwe-error_swap_vid' => 'Error: mv_embed was unable to swap the video tag for the mv_embed interface',
+	'mwe-error_swap_vid' => 'Error: mwEmbed was unable to swap the video tag for the mwEmbed interface',
 	'mwe-add_to_end_of_sequence' => 'Add to end of sequence',
 	'mwe-missing_video_stream' => 'The video file for this stream is missing',
 	'mwe-play_clip' => 'Play clip',

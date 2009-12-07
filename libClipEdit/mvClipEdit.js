@@ -1,8 +1,8 @@
-k/*
+/*
 	mvClipEdit hanndles the edit interfaces for images and video
 */
 // set gMsg object:
-loadGM( {
+mw.addMessages( {
 	"mwe-crop" : "Crop image",
 	"mwe-apply_crop" : "Apply crop to image",
 	"mwe-reset_crop" : "Reset crop",
@@ -862,7 +862,7 @@ mvClipEdit.prototype = {
 		$j( '.mv_crop_msg' ).hide();
 		$j( '.mv_crop_msg_load' ).show();		
 		// load the jcrop library if needed:
-		mvJsLoader.doLoad( [
+		mw.load( [
 			'$j.Jcrop'
 		], function() {
 			_this.bindCrop();

@@ -40,7 +40,7 @@ var javaEmbed = {
 			}
 		} else {
 			// should be identical to cortado.jar
-			applet_loc = mv_embed_path + 'libEmbedPlayer/binPlayers/cortado/cortado-ovt-stripped-0.5.0.jar';
+			applet_loc = mw.getMwEmbedPath() + 'libEmbedPlayer/binPlayers/cortado/cortado-ovt-stripped-0.5.0.jar';
 		}
 			// load directly in the page..
 			// (media must be on the same server or applet must be signed)

@@ -18,7 +18,7 @@
  *  exports back out to json or inline format
  */
 
-loadGM( {
+mw.addMessages( {
 	"mwe-menu_clipedit" : "Edit media",
 	"mwe-menu_transition" : "Transitions and effects",
 	"mwe-menu_cliplib" : "Add media",
@@ -155,7 +155,7 @@ mvSequencer.prototype = {
 			'html': gM( 'mwe-loading_txt' ),
 			'js':function( this_seq ) {
 				// Load the search interface with sequence tool targets
-				mvJsLoader.doLoad( [
+				mw.load( [
 					'remoteSearchDriver',
 					'seqRemoteSearchDriver'
 				], function() {
@@ -384,16 +384,16 @@ mvSequencer.prototype = {
 				'<div id="' + this.timeline_id + '_left_cnt" class="mv_tl_left_cnt">' +
 					'<div id="' + this.timeline_id + '_head_control" style="position:absolute;top:0px;left:0px;right:0px;height:30px;">' +
 						'<a title="' + gM( 'mwe-play_from_position' ) + '" href="javascript:' + this.instance_name + '.play_jt()">' +
-							'<img style="width:16px;height:16px;border:0" src="' + mv_embed_path + 'images/control_play_blue.png">' +
+							'<img style="width:16px;height:16px;border:0" src="' + mw.getMwEmbedPath() + 'images/control_play_blue.png">' +
 						'</a>' +
 						'<a title="' + gM( 'mwe-zoom_in' ) + '" href="javascript:' + this.instance_name + '.zoom_in()">' +
-							'<img style="width:16px;height:16px;border:0" src="' + mv_embed_path + 'images/zoom_in.png">' +
+							'<img style="width:16px;height:16px;border:0" src="' + mw.getMwEmbedPath() + 'images/zoom_in.png">' +
 						'</a>' +
 						'<a title="' + gM( 'mwe-zoom_out' ) + '" href="javascript:' + this.instance_name + '.zoom_out()">' +
-							'<img style="width:16px;height:16px;border:0" src="' + mv_embed_path + 'images/zoom_out.png">' +
+							'<img style="width:16px;height:16px;border:0" src="' + mw.getMwEmbedPath() + 'images/zoom_out.png">' +
 						'</a>' +
 						'<a title="' + gM( 'mwe-cut_clip' ) + '" href="javascript:' + this.instance_name + '.cut_mode()">' +
-							'<img style="width:16px;height:16px;border:0" src="' + mv_embed_path + 'images/cut.png">' +
+							'<img style="width:16px;height:16px;border:0" src="' + mw.getMwEmbedPath() + 'images/cut.png">' +
 							'</a>' +
 					'</div>' +
 				'</div>' +
@@ -430,7 +430,7 @@ mvSequencer.prototype = {
 					'<div id="track_cnt_' + i + '" style="top:' + top_pos + 'px;height:' + track_height + 'px;" class="track_name">' +
 						'<a id="mv_exc_' + i + '" title="' + exc_msg + '" href="javascript:' + this_sq.instance_name + '.exc_track(' + i + ',\'' + exc_action + '\')">' +
 							'<img id="' + this_sq.timeline_id + '_close_expand" style="width:16px;height:16px;border:0" ' +
-								' src="' + mv_embed_path + 'images/' + exc_img + '.png">' +
+								' src="' + mw.getMwEmbedPath() + 'images/' + exc_img + '.png">' +
 						'</a>' +
 					track.title + '</div>'
 				);
@@ -776,7 +776,7 @@ mvSequencer.prototype = {
 		var _this = this;
 		// Add a loading image
 		mv_get_loading_img( '#transitions_ic' );
-		mvJsLoader.doLoad( [
+		mw.load( [
 			'$j.fn.ColorPicker',
 			'mvTimedEffectsEdit'
 		], function() {
@@ -800,7 +800,7 @@ mvSequencer.prototype = {
 		mv_get_loading_img( '#clipedit_ic' );
 		
 		// Load the clipEdit library if not already loaded:
-		mvJsLoader.doLoad( [
+		mw.load( [
 			'mvClipEdit'
 		], function() {
 			// Zero out the current editor: 			
@@ -1022,7 +1022,7 @@ mvSequencer.prototype = {
 		this_seq = this;
 		if ( req == 'close' ) {
 			$j( '#mv_exc_' + inx ).attr( 'href', 'javascript:' + this.instance_name + '.exc_track(' + inx + ',\'open\')' );
-			$j( '#mv_exc_' + inx + ' > img' ).attr( 'src', mv_embed_path + 'images/closed.png' );
+			$j( '#mv_exc_' + inx + ' > img' ).attr( 'src', mw.getMwEmbedPath() + 'images/closed.png' );
 			$j( '#track_cnt_' + inx + ',#container_track_' + inx ).animate( { height:this.track_text_height }, "slow", '',
 				function() {
 					this_seq.plObj.tracks[inx].disp_mode = 'text';
@@ -1030,7 +1030,7 @@ mvSequencer.prototype = {
 				} );
 		} else if ( req == 'open' ) {
 			$j( '#mv_exc_' + inx ).attr( 'href', 'javascript:' + this.instance_name + '.exc_track(' + inx + ',\'close\')' );
-			$j( '#mv_exc_' + inx + ' > img' ).attr( 'src', mv_embed_path + 'images/opened.png' );
+			$j( '#mv_exc_' + inx + ' > img' ).attr( 'src', mw.getMwEmbedPath() + 'images/opened.png' );
 			$j( '#track_cnt_' + inx + ',#container_track_' + inx ).animate( { height:this.track_thumb_height }, "slow", '',
 				function() {
 					this_seq.plObj.tracks[inx].disp_mode = 'timeline_thumb';
@@ -1154,9 +1154,9 @@ mvSequencer.prototype = {
 									'" class="mv_time_clip_text mv_clip_drag">' + clip.title;
 						}
 						// add in per clip controls
-						track_html += '<div title="' + gM( 'mwe-clip_in' ) + ' ' + clip.embed.start_ntp + '" class="ui-resizable-w ui-resizable-handle" style="width: 16px; height: 16px; left: 0px; top: 2px;background:url(\'' + mv_embed_path + 'images/application_side_contract.png\');" ></div>' + "\n";
-						track_html += '<div title="' + gM( 'mwe-clip_out' ) + ' ' + clip.embed.end_ntp + '" class="ui-resizable-e ui-resizable-handle" style="width: 16px; height: 16px; right: 0px; top: 2px;background:url(\'' + mv_embed_path + 'images/application_side_expand.png\');" ></div>' + "\n";
-						track_html += '<div title="' + gM( 'mwe-rmclip' ) + '" onClick="' + this.instance_name + '.removeClips(new Array([' + track_id + ',' + j + ']))" style="position:absolute;cursor:pointer;width: 16px; height: 16px; left: 0px; bottom:2px;background:url(\'' + mv_embed_path + 'images/delete.png\');"></div>' + "\n";
+						track_html += '<div title="' + gM( 'mwe-clip_in' ) + ' ' + clip.embed.start_ntp + '" class="ui-resizable-w ui-resizable-handle" style="width: 16px; height: 16px; left: 0px; top: 2px;background:url(\'' + mw.getMwEmbedPath() + 'images/application_side_contract.png\');" ></div>' + "\n";
+						track_html += '<div title="' + gM( 'mwe-clip_out' ) + ' ' + clip.embed.end_ntp + '" class="ui-resizable-e ui-resizable-handle" style="width: 16px; height: 16px; right: 0px; top: 2px;background:url(\'' + mw.getMwEmbedPath() + 'images/application_side_expand.png\');" ></div>' + "\n";
+						track_html += '<div title="' + gM( 'mwe-rmclip' ) + '" onClick="' + this.instance_name + '.removeClips(new Array([' + track_id + ',' + j + ']))" style="position:absolute;cursor:pointer;width: 16px; height: 16px; left: 0px; bottom:2px;background:url(\'' + mw.getMwEmbedPath() + 'images/delete.png\');"></div>' + "\n";
 						track_html += '<span style="display:none;" class="mv_clip_stats"></span>';
 
 						track_html += '</span>';

@@ -2,7 +2,7 @@
 *
 * Note: this file is still under development
 */
-loadGM( {
+mw.addMessages( {
 	"mwe-upload-multi" : "Upload {{PLURAL:$1|file|files}}",
 	"mwe-review-upload": "Review file {{PLURAL:$1|upload|uploads}}"
 } );

@@ -2,7 +2,7 @@
 * Base remote search Object. 
 * provides the base class for the other search system to extend. 
 */
-loadGM( {
+mw.addMessages( {
 	"mwe-imported_from" : "$1 imported from [$2 $3]. See the original [$4 resource page] for more information.",
 	"mwe-import-description" : "$1, imported from $2"
 } );

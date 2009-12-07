@@ -174,7 +174,7 @@ mvPlayList.prototype = {
 	},
 	showShare:function() {
 		var embed_code = '&lt;script type=&quot;text/javascript&quot; ' +
-						'src=&quot;' + mv_embed_path + 'mv_embed.js&quot;&gt;&lt;/script&gt ' + "\n" +
+						'src=&quot;' + mw.getMwEmbedPath() + 'mwEmbed.js&quot;&gt;&lt;/script&gt ' + "\n" +
 						'&lt;playlist id=&quot;' + this.id + '&quot; ';
 						if ( this.src ) {
 							embed_code += 'src=&quot;' + this.src + '&quot; /&gt;';
@@ -1130,7 +1130,7 @@ mvClip.prototype = {
 		
 		this.embed = null;
 		// js_log('setup embed for clip '+ this.id + ':id is a function?'); 
-		// set up the pl_mv_embed object:
+		// set up the pl_mwEmbed object:
 		var init_pl_embed = { id:'e_' + this.id,
 			pc:this, // parent clip
 			src:this.src
@@ -1270,7 +1270,7 @@ mvClip.prototype = {
 		return mv_clip_colors[num];
 	}
 }
-/* mv_embed extensions for playlists */
+/* mwEmbed extensions for playlists */
 var PlMvEmbed = function( vid_init ) {
 	// js_log('PlMvEmbed: '+ vid_init.id);	
 	// create the div container
@@ -1733,7 +1733,7 @@ var mvTransLib = {
 		this[ 'type' ][ tObj.type ][ tObj.subtype ].u( tObj, percent, callback);
 	},
 	getTransitionIcon:function( type, subtype ) {
-		return mv_embed_path + '/skins/common/transition_images/' + type + '_' + subtype + '.png';
+		return mw.getMwEmbedPath() + '/skins/common/transition_images/' + type + '_' + subtype + '.png';
 	},
 	/*
 	 * mvTransLib: functional library mapping:
@@ -2040,7 +2040,7 @@ var mv_smil_ref_supported_attributes = new Array(
 var mvSMILClip = function( sClipElm, mvClipInit ) {
 	return this.init( sClipElm, mvClipInit );
 }
-// all the overwritten and new methods for SMIL extension of mv_embed
+// all the overwritten and new methods for SMIL extension of mwEmbed
 mvSMILClip.prototype = {
 	instanceOf:'mvSMILClip',
 	params : { }, // support param as child of ref clips per SMIL spec  
@@ -2076,7 +2076,7 @@ mvSMILClip.prototype = {
 			js_log( "SET wholeText for: " + this['tagName'] + ' ' + this['wholeText'] );
 		}
 		// debugger;
-		// mv_embed specific property: 
+		// mwEmbed specific property: 
 		if ( $j( sClipElm ).attr( 'poster' ) )
 			this['img'] = $j( sClipElm ).attr( 'poster' );
 		

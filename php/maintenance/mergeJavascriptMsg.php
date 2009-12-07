@@ -96,7 +96,7 @@ foreach ( $objects as $fname => $object ) {
 		$jsFileText = file_get_contents( $fname );
 		$mwPos = strpos( $fname, 'mwEmbed' ) + 7;
 		$curFileName = substr( $fname, $mwPos );
-		if ( preg_match( '/loadGM\s*\(\s*{(.*)}\s*\)\s*/siU',	// @@todo fix: will break down if someone does }) in their msg text
+		if ( preg_match( '/mw\.addMessages\s*\(\s*{(.*)}\s*\)\s*/siU',	// @@todo fix: will break down if someone does }) in their msg text
 		$jsFileText,
 		$matches ) ) {
 			$msgSet .= doJsonMerge( $matches[1] );
@@ -147,8 +147,8 @@ function doJsonMerge( $json_txt ) {
 			// escape $1 for preg replace:
 			$json_txt = str_replace( '$', '\$', $json_txt );
 			// print "json:\n$json_txt \n";
-			$str = preg_replace ( '/loadGM\s*\(\s*{(.*)}\s*\)\s*/siU',
-						"loadGM(" . $json_txt . ")",
+			$str = preg_replace ( '/mw.addMessages\s*\(\s*{(.*)}\s*\)\s*/siU',
+						"mw.addMessages(" . $json_txt . ")",
 						$jsFileText );
 
 			// print substr($str, 0, 600);

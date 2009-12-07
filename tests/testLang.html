@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Test Plural Conversions (should match php) </title>
-<script type="text/javascript" src="../mv_embed.js"></script>
+<script type="text/javascript" src="../mwEmbed.js"></script>
 <style>
 td{
 	border:solid thin black;
@@ -174,7 +174,7 @@ var langKeyAll = [
 		'cy'
 ];
 
-js2AddOnloadHook( function(){
+mw.addOnloadHook( function(){
 	//do mauall script loaders calls to test multiple languages:
 	function doLangTable( langSet ){		
 		//build table output: 

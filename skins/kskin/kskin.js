@@ -2,7 +2,7 @@
 * skin js allows you to override contrlBuilder html/class output
 */
 
-loadGM( {
+mw.addMessages( {
 	"mwe-credit-title" : "Title: $1",
 	"mwe-kaltura-platform-title" : "Kaltura open source video platform"
 } );
@@ -160,7 +160,7 @@ var kskinConfig = {
 			'</div>'								
 		);
 
-		if( mw.conf.k_attribution == true ){
+		if( mw.getConfig( 'k_attribution' ) == true ){
 			$target.append( 
 				$j('<div/>').addClass( 'k-attribution' )
 				.attr({
