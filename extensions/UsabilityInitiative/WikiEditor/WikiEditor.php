@@ -25,6 +25,7 @@ $wgWikiEditorModules = array(
 	'publish' => array( 'global' => false, 'user' => true ),
 	'toc' => array( 'global' => false, 'user' => true ),
 	'toolbar' => array( 'global' => false, 'user' => true ),
+	'templateEditor' => array( 'global' => false, 'user' => true ),
 );
 
 /* Setup */
@@ -55,6 +56,7 @@ $wgExtensionMessagesFiles['WikiEditorPreview'] = dirname( __FILE__ ) . '/Modules
 $wgExtensionMessagesFiles['WikiEditorPublish'] = dirname( __FILE__ ) . '/Modules/Publish/Publish.i18n.php';
 $wgExtensionMessagesFiles['WikiEditorToc'] = dirname( __FILE__ ) . '/Modules/Toc/Toc.i18n.php';
 $wgExtensionMessagesFiles['WikiEditorToolbar'] = dirname( __FILE__ ) . '/Modules/Toolbar/Toolbar.i18n.php';
+$wgExtensionMessagesFiles['WikiEditorTemplateEditor'] = dirname( __FILE__ ) . '/Modules/TemplateEditor/TemplateEditor.i18n.php';
 
 // Register Hooks
 $wgHooks['EditPageBeforeEditToolbar'][] = 'WikiEditorHooks::addModules';
