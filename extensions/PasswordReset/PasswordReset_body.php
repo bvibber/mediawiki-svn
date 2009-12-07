@@ -174,7 +174,7 @@ class PasswordReset extends SpecialPage {
 				if ( $name <> '' ) {
 
 					$u = User::newFromName( $name );
-					if( is_null( $u ) ) {
+					if( !$u instanceof User ) {
 						return true;
 					} elseif ( 0 == $u->getID() ) {
 						return true;
