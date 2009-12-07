@@ -43,6 +43,8 @@ $wgJsMimeType = 'text/javascript';
 
 // Get the autoload classes
 require_once( realpath( dirname( __FILE__ ) ) . '/jsAutoloadLocalClasses.php' );
+// Load the javascript Classes
+wfLoadMwEmbedClassPaths();
 
 // Get the JSmin class:
 require_once( realpath( dirname( __FILE__ ) ) . '/minify/JSMin.php' );

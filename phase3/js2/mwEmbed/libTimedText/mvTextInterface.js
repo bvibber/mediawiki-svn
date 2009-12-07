@@ -1,4 +1,4 @@
-loadGM( {
+mw.addMessages( {
 	"mwe-select_transcript_set" : "Select subtitles",
 	"mwe-auto_scroll" : "auto scroll",
 	"mwe-close" : "close",

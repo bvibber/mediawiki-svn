@@ -420,7 +420,7 @@ class jsScriptLoader {
 	}
 	static public function getLoadGmIndex( $str ){
 		$returnIndex = array();
-		preg_match('/loadGM\s*\(\s*\{/', $str, $matches, PREG_OFFSET_CAPTURE );
+		preg_match('/mw.addMessages\s*\(\s*\{/', $str, $matches, PREG_OFFSET_CAPTURE );
 		if( count($matches) == 0){
 			return false;
 		}
@@ -460,7 +460,7 @@ class jsScriptLoader {
 		$jsmsg = $this->getMsgKeysFromClass( $class );
 		if( $jsmsg ){
 			self::getMsgKeys ( $jsmsg );
-			return 'loadGM(' . FormatJson::encode( $jsmsg ) . ');';
+			return 'mw.addMessages(' . FormatJson::encode( $jsmsg ) . ');';
 		}else{
 			//if could not parse return empty string:
 			return '';
@@ -503,7 +503,7 @@ class jsScriptLoader {
 			//developers will read the js source when its not behaving as expected.
 			return "\n/*
 * Could not parse JSON language messages in this file,
-* Please check that loadGM call contains valid JSON (not javascript)
+* Please check that mw.addMessages call contains valid JSON (not javascript)
 */\n\n" . $json_str; //include the original fallback loadGM
 
 		}
@@ -609,7 +609,8 @@ class simpleFileCache {
 		$mydir2 = substr( $this->filename, 0, strrpos( $this->filename, '/' ) ); # subdirectory level 2
 		$mydir1 = substr( $mydir2, 0, strrpos( $mydir2, '/' ) ); # subdirectory level 1
 
-		if ( wfMkdirParents( $mydir1 ) === false || wfMkdirParents( $mydir2 ) === false ) {
+		// Suppress error so javascript can format it
+		if ( @wfMkdirParents( $mydir1 ) === false || @wfMkdirParents( $mydir2 ) === false ) {
 			return 'Could not create cache directory. Check your cache directory permissions?';
 		} else {
 			return true;

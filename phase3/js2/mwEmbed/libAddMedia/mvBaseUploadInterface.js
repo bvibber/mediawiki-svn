@@ -4,7 +4,7 @@
  * This base upload class is optionally extended by Firefogg
  *
  */
-loadGM({
+mw.addMessages({
 	"mwe-upload-transcode-in-progress" : "Transcode and upload in progress (do not close this window)",
 	"mwe-upload-in-progress" : "Upload in progress (do not close this window)",
 	"mwe-upload-transcoded-status" : "Transcoded",
@@ -467,7 +467,7 @@ mvBaseUploadInterface.prototype = {
 			//update status to 100%
 			_this.updateProgress( 1 );
 			//see if we need JSON
-			mvJsLoader.doLoad( [
+			mw.load( [
 				'JSON'
 			], function() {
 				var apiResult = {};

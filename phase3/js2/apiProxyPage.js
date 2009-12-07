@@ -8,7 +8,7 @@
  * Since this is proxy server set a pre-append debug flag to know which debug msgs are coming from where
  */
  
-mw.conf['debug_pre'] = 'Proxy';
+mw.getConfig( 'pre-append-log' ) = 'Proxy';
  
 if ( !mwApiProxyConfig )
 	var mwApiProxyConfig = { };
@@ -21,7 +21,7 @@ var mwApiProxyDefaultConfig = {
 };
 
 // User white_list should also be checked and configured at runtime.
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
 	// build our configuration from the default and mwApiProxyConfig vars
 	mwApiProxyConfig = $j.extend( true, mwApiProxyDefaultConfig,  mwApiProxyConfig );
 	$j.apiProxy( 'server', mwApiProxyConfig );

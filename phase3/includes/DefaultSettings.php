@@ -921,7 +921,7 @@ $wgHtml5 = true;
 $wgHtml5Version = null;
 
 /**
- * Enabled RDFa attributes for use in wikitext. 
+ * Enabled RDFa attributes for use in wikitext.
  * NOTE: Interaction with HTML5 is somewhat underspecified.
  */
 $wgAllowRdfaAttributes = true;
@@ -2831,7 +2831,7 @@ $wgScriptModifiedMsgCheck = false;
 
 /*
  * enable js2 Script System
- * if enabled we include jquery, mv_embed and js2 versions of editPage.js
+ * if enabled we include jquery, mwEmbed and js2 versions of editPage.js
  */
 $wgEnableJS2system = false;
 
@@ -2841,7 +2841,7 @@ $wgEnableJS2system = false;
 $wgEnableIframeApiProxy = false;
 
 /*
- * boolean; if we should enable javascript localization (it loads loadGM json
+ * boolean; if we should enable javascript localization (it loads mw.addMessages json
  * call with mediaWiki msgs)
  */
 $wgEnableScriptLocalization = true;

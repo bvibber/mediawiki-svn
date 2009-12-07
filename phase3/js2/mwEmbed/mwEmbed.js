@@ -1,17 +1,19 @@
 /*
- * ~mv_embed ~
- * For details see: http://metavid.org/wiki/index.php/Mv_embed
+ * ~mwEmbed ~
+ * For details see: http://www.mediawiki.org/wiki/MwEmbed
  *
- * All Metavid Wiki code is released under the GPL2.
+ * All MediaWiki code is released under the GPL2.
  * For more information visit http://metavid.org/wiki/Code
  *
- * @url http://metavid.org
+ * @author Michael Dale
+ *
+ * mwEmbed uses the following libraries: 
+ *
+ * jQuery: 
+ * http://jquery.com/ 
  *
  * mw.parseUri:
  * http://stevenlevithan.com/demo/parseuri/js/
- *
- * Config values: you can manually set the location of the mv_embed folder here
- * (in cases where media will be hosted in a different place than the embedding page)
  *
  */
 
@@ -51,114 +53,11 @@ function lcCssPath( cssSet ) {
 	}
 }
 
-/*
- * --  Load Class Paths --
- *
- * MUST BE VALID JSON (NOT JS)
- * This is used by the script loader to auto-load classes (so we only define
- * this once for PHP & JavaScript)
- *
- * Right now the PHP AutoLoader only reads this mv_embed.js file.
- * In the future we could have multiple lcPath calls that PHP reads
- * (if our autoloading class list becomes too long) 
- * or 
- * we could support direct file requests to the script loader instead 
- * of shared class names read from a central location.
- */
-lcPaths( {
-	"mv_embed"			: "mv_embed.js",
-	"window.jQuery"		: "jquery/jquery-1.3.2.js",
-	"$j.fn.pngFix"		: "jquery/plugins/jquery.pngFix.js",
-	"$j.fn.autocomplete": "jquery/plugins/jquery.autocomplete.js",
-	"$j.fn.hoverIntent"	: "jquery/plugins/jquery.hoverIntent.js",
-	"$j.fn.datePicker"	: "jquery/plugins/jquery.datePicker.js",
-	"$j.ui"				: "jquery/jquery.ui/ui/ui.core.js",
-	"$j.fn.ColorPicker"	: "libClipEdit/colorpicker/js/colorpicker.js",
-	"$j.Jcrop"			: "libClipEdit/Jcrop/js/jquery.Jcrop.js",
-	"$j.fn.simpleUploadForm" : "libAddMedia/simpleUploadForm.js",
-	
-	"mw.proxy"		: "libMwApi/mw.proxy.js",
-	
-	"mw.testLang"	:  "tests/testLang.js",
-	
-	"ctrlBuilder"	: "skins/ctrlBuilder.js",
-	"kskinConfig"	: "skins/kskin/kskin.js",
-	"mvpcfConfig"	: "skins/mvpcf/mvpcf.js",
-
-	"JSON"				: "libMwApi/json2.js",
-	"$j.cookie"			: "jquery/plugins/jquery.cookie.js",
-	"$j.contextMenu"	: "jquery/plugins/jquery.contextMenu.js",
-	"$j.fn.suggestions"	: "jquery/plugins/jquery.suggestions.js",
-	"$j.fn.textSelection"	: "jquery/plugins/jquery.textSelection.js",
-
-	"$j.effects.blind"		: "jquery/jquery.ui/ui/effects.blind.js",
-	"$j.effects.drop"		: "jquery/jquery.ui/ui/effects.drop.js",
-	"$j.effects.pulsate"	: "jquery/jquery.ui/ui/effects.pulsate.js",
-	"$j.effects.transfer"	: "jquery/jquery.ui/ui/effects.transfer.js",
-	"$j.ui.droppable"		: "jquery/jquery.ui/ui/ui.droppable.js",
-	"$j.ui.slider"			: "jquery/jquery.ui/ui/ui.slider.js",
-	"$j.effects.bounce"		: "jquery/jquery.ui/ui/effects.bounce.js",
-	"$j.effects.explode"	: "jquery/jquery.ui/ui/effects.explode.js",
-	"$j.effects.scale"		: "jquery/jquery.ui/ui/effects.scale.js",
-	"$j.ui.datepicker"		: "jquery/jquery.ui/ui/ui.datepicker.js",
-	"$j.ui.progressbar"		: "jquery/jquery.ui/ui/ui.progressbar.js",
-	"$j.ui.sortable"		: "jquery/jquery.ui/ui/ui.sortable.js",
-	"$j.effects.clip"		: "jquery/jquery.ui/ui/effects.clip.js",
-	"$j.effects.fold"		: "jquery/jquery.ui/ui/effects.fold.js",
-	"$j.effects.shake"		: "jquery/jquery.ui/ui/effects.shake.js",
-	"$j.ui.dialog"			: "jquery/jquery.ui/ui/ui.dialog.js",
-	"$j.ui.resizable"		: "jquery/jquery.ui/ui/ui.resizable.js",
-	"$j.ui.tabs"			: "jquery/jquery.ui/ui/ui.tabs.js",
-	"$j.effects.core"		: "jquery/jquery.ui/ui/effects.core.js",
-	"$j.effects.highlight"	: "jquery/jquery.ui/ui/effects.highlight.js",
-	"$j.effects.slide"		: "jquery/jquery.ui/ui/effects.slide.js",
-	"$j.ui.accordion"		: "jquery/jquery.ui/ui/ui.accordion.js",
-	"$j.ui.draggable"		: "jquery/jquery.ui/ui/ui.draggable.js",
-	"$j.ui.selectable"		: "jquery/jquery.ui/ui/ui.selectable.js",
-
-	"$j.fn.dragDropFile"		: "libAddMedia/dragDropFile.js",
-	"mvFirefogg"			: "libAddMedia/mvFirefogg.js",
-	"mvAdvFirefogg"			: "libAddMedia/mvAdvFirefogg.js",
-	"mvBaseUploadInterface"	: "libAddMedia/mvBaseUploadInterface.js",
-	"remoteSearchDriver"	: "libAddMedia/remoteSearchDriver.js",
-	"seqRemoteSearchDriver" : "libSequencer/seqRemoteSearchDriver.js",
-
-	"baseRemoteSearch"		: "libAddMedia/searchLibs/baseRemoteSearch.js",
-	"mediaWikiSearch"		: "libAddMedia/searchLibs/mediaWikiSearch.js",
-	"metavidSearch"			: "libAddMedia/searchLibs/metavidSearch.js",
-	"archiveOrgSearch"		: "libAddMedia/searchLibs/archiveOrgSearch.js",
-	"flickrSearch"			: "libAddMedia/searchLibs/flickrSearch.js",
-	"baseRemoteSearch"		: "libAddMedia/searchLibs/baseRemoteSearch.js",
-
-	"mvClipEdit"			: "libClipEdit/mvClipEdit.js",
-
-	"embedPlayer"		: "libEmbedPlayer/embedPlayer.js",
-	"flowplayerEmbed"	: "libEmbedPlayer/flowplayerEmbed.js",
-	"kplayerEmbed"		: "libEmbedPlayer/kplayerEmbed.js",
-	"genericEmbed"		: "libEmbedPlayer/genericEmbed.js",
-	"htmlEmbed"			: "libEmbedPlayer/htmlEmbed.js",
-	"javaEmbed"			: "libEmbedPlayer/javaEmbed.js",
-	"nativeEmbed"		: "libEmbedPlayer/nativeEmbed.js",
-	"quicktimeEmbed"	: "libEmbedPlayer/quicktimeEmbed.js",
-	"vlcEmbed"			: "libEmbedPlayer/vlcEmbed.js",
-
-	"mvPlayList"		: "libSequencer/mvPlayList.js",
-	"mvSequencer"		: "libSequencer/mvSequencer.js",
-	"mvFirefoggRender"	: "libSequencer/mvFirefoggRender.js",
-	"mvTimedEffectsEdit": "libSequencer/mvTimedEffectsEdit.js",
-
-	"mvTextInterface"	: "libTimedText/mvTextInterface.js",
-	"mvTimeTextEdit"	: "libTimedText/mvTimeTextEdit.js"
-} );
-
 // Dependency mapping for CSS files for self-contained included plugins:
 lcCssPath( {
 	'$j.Jcrop'			: 'libClipEdit/Jcrop/css/jquery.Jcrop.css',
 	'$j.fn.ColorPicker'	: 'libClipEdit/colorpicker/css/colorpicker.css'
 })
-
-// For use when mv_embed with script-loader is in the root MediaWiki path
-var mediaWiki_mvEmbed_path = 'js2/mwEmbed/';
 
 // The global scope: will be depreciated once we get everything into mw
 var _global = this;
@@ -173,19 +72,47 @@ if ( !window['mw'] ) {
 }
 
 
-// Inherit the default global config
+/**
+* Default global config values. Configuration values are set via mw.setConfig
+* Configuration values should genneraly be set prior to dom-ready 
+*/  
 var mwDefaultConf = {
+	// Default skin name
 	'skin_name' : 'mvpcf',
-	'jui_skin' : 'redmond',
-	'video_size' : '400x300',
-	'k_attribution' : true		
-}
-if( !mw.conf )
-	mw.conf = { }
 	
-for(var i in mwDefaultConf){
-	if( typeof mw.conf[ i ] == 'undefined' )
-		mw.conf[ i ] = mwDefaultConf[ i ];
+	// Default jquery ui skin name
+	'jui_skin' : 'redmond',
+	
+	// What tags will be re-written to video player by default
+	// set to empty string or null to avoid automatic rewrites
+	'rewriteTags' : 'video,audio,playlist',
+	
+	/**
+	* If jQuery / mwEmbed should always be loaded.
+	*
+	* mwEmbedSetup ignores this flag and is run if:  
+	*  If your js calls mw.addOnloadHook ( callback_function )
+	*  If your page includes any tags set in config.rewriteTags 
+	*
+	* This flag increases page performace on pages that do not use mwEmbed 
+	* and don't already load jQuery 
+	*
+	* For examle when including the mwEmbed.js in your blog template 
+	* mwEmbed will only load extra js on blog posts that include the video tag.
+	*
+	* NOTE: Future articture will probably do away with this flag and refactor it into 
+	* a smaller "remotePageMwEmbed.js" script similar to remoteMwEmbed.js in the js2 folder
+	*/ 
+	'alwaysSetupMwEmbed' : false,
+	
+	// Default video size ( if no size provided )
+	'video_size' : '400x300',
+	
+	// If the k-skin video player should attribute kaltura
+	'k_attribution' : true,
+	
+	// The path of mvEmbed in mediaWiki folder 
+	'mediaWikiPath' : 'js2/mwEmbed/'
 }
 
 
@@ -200,16 +127,17 @@ var global_req_cb = new Array(); // The global request callback array
 */
 ( function( $ ) {	
 	// list valid skins here:
-	$.valid_skins = ['mvpcf', 'kskin'];
+	$.valid_skins = [ 'mvpcf', 'kskin' ];
 	// the version of mwEmbed
-	$.version = '1.0r21';
+	$.version = '1.1';
 	
 	// special case of commons api url 
 	// (used for default subtitles server for media with a "wikiTitleKey" atm)
 	// (@@todo eventually we should have  wikiTitleKey be namespaced with interwiki ns
 	$.commons_api_url = 'http://commons.wikimedia.org/w/api.php';
-	/*
-	* some global containers flags 
+	
+	/**
+	* Some global containers flags 
 	*/
 	$.skin_list = new Array();
 	$.init_done = false;
@@ -217,29 +145,69 @@ var global_req_cb = new Array(); // The global request callback array
 	$.player_list = new Array(), // The global player list per page
 	$.req_cb = new Array() // The global request callback array	
 
-	/*
+	/**
+	* Configuration System: 
+	* 
+	* Simple system of inherit defauts, with getter setter functions: 	
+	*/	
+	
+	// Local scope configuration var:
+	mwConfig = { };
+	
+	for(var i in mwDefaultConf){
+		if( typeof mwConfig[ i ] == 'undefined' )
+			mwConfig[ i ] = mwDefaultConf[ i ];
+	}
+	
+	/**
+	* Setter for configuration values
+	*
+	* @param {String} name Name of configuration value
+	* @param {String} value Value of configuration name 
+	*/
+	$.setConfig = function ( name, value ){
+		mwConfig[ name ] = value;
+	}
+	
+	/**
+	* Getter for configuration values
+	*
+	* @param {String} name of configuration value to get
+	* @return {Mixed} value of configuration key
+	* 	returns "false" if key not found
+	*/
+	$.getConfig = function ( name ){
+		if(mwConfig[ name ] )
+			return mwConfig[ name ];
+		return false;
+	}
+
+
+
+	/**
 	* Language classes mw.lang
 	*
-	* Localized Language support attempts to mirror the functionality of Language.php in MediaWiki
+	* Localized Language support attempts to mirror some of the functionality of Language.php in MediaWiki
 	* It contains methods for loading and transforming msg text
 	*
 	*/
 	$.lang = { };
+	
 	/**
 	* Setup the lang object
 	*/
-	var gMsg = { };
+	var messageCache = { };
 	var gRuleSet = { };
 
 	/**
-	* loadGM function
-	* Loads a set of json messages into the lng object.
+	* mw.addMessages function
+	* Loads a set of json messages into the messegeCache object.
 	*
 	* @param json msgSet The set of msgs to be loaded
 	*/
-	$.lang.loadGM = function( msgSet ) {
+	$.addMessages = function( msgSet ) {
 		for ( var i in msgSet ) {
-			gMsg[ i ] = msgSet[i];
+			messageCache[ i ] = msgSet[i];
 		}
 	}
 
@@ -262,13 +230,15 @@ var global_req_cb = new Array(); // The global request callback array
 	 * $1, $2 and does relevant msgkey transformation returning
 	 * the user msg.
 	 *
-	 * @param string key The msg key as set by loadGm
+	 * @param {String} key The msg key as set by mw.addMessages
 	 * @param [mixed] args  An array of replacement strings
 	 * @return string
 	 */
 	$.lang.gM = function( key , args ) {
-		if ( ! gMsg[ key ] )
-			return '&lt;' + key + '&gt;';// Missing key placeholder
+	
+		// Check for missing message key
+		if ( ! messageCache[ key ] )
+			return '&lt;' + key + '&gt;';
 
 		// swap in the arg values
 		var ms =  $.lang.gMsgSwap( key, args );				
@@ -290,15 +260,15 @@ var global_req_cb = new Array(); // The global request callback array
 	/**
 	* gMsgSwap
 	*
-	* @param string key The msg key as set by loadGm
+	* @param string key The msg key as set by mw.addMessages
 	* @param [mixed] args  An array or string to be replaced
 	* @return string
 	*/
 	$.lang.gMsgSwap = function( key , args ) {
-		if ( ! gMsg[ key ] )
+		if ( ! messageCache[ key ] )
 			return '&lt;' + key + '&gt;';// Missing key placeholder
 		// get the message string:
-		var ms = gMsg[ key ];
+		var ms = messageCache[ key ];
 		
 		// replace values
 		if ( typeof args == 'object' || typeof args == 'array' ) {
@@ -319,12 +289,13 @@ var global_req_cb = new Array(); // The global request callback array
 	* @returns string The msg key without transforming it
 	*/
 	$.lang.gMsgNoTrans = function( key ) {
-		if ( gMsg[ key ] )
-			return gMsg[ key ]
+		if ( messageCache[ key ] )
+			return messageCache[ key ]
 
 		// Missing key placeholder
 		return '&lt;' + key + '&gt;';
 	}
+	
 	/**
 	* Add Supported Magic Words to parser
 	*/
@@ -332,7 +303,7 @@ var global_req_cb = new Array(); // The global request callback array
 	$.lang.doneSetup = false;
 	$.lang.magicSetup = function() {
 		if ( !$.lang.doneSetup ) {
-			$.parser.addMagic ( {
+			$.parser.addTemplateTransform ( {
 				'PLURAL' : $.lang.procPLURAL
 			} )
 
@@ -340,6 +311,7 @@ var global_req_cb = new Array(); // The global request callback array
 		}
 
 	}
+	
 	/**
 	* Process the PLURAL special language template key:
 	*/
@@ -461,12 +433,13 @@ var global_req_cb = new Array(); // The global request callback array
 				for ( var i in msgs ) {
 					var ld = { };
 					ld[ msgs[i]['name'] ] = msgs[i]['*'];
-					loadGM( ld );
+					mw.addMessages( ld );
 				}
 			}
 			callback();
 		} );
 	}
+	
 	/**
 	 * Format a size in bytes for output, using an appropriate
 	 * unit (B, KB, MB or GB) according to the magnitude in question
@@ -541,19 +514,20 @@ var global_req_cb = new Array(); // The global request callback array
 	*/
 	$.parser = { };
 	var pMagicSet = { };
+	
 	/**
-	 * parser addMagic
+	 * parser addTemplateTransform
 	 *
-	 * Lets you add a set of magic keys and associated callback functions
+	 * Lets you add a set template key to be transformed by a callback function
 	 *
-	 * @param object magicSet key:callback
+	 * @param {Object} magicSet key:callback
 	 */
-	$.parser.addMagic = function( magicSet ) {
+	$.parser.addTemplateTransform = function( magicSet ) {
 		for ( var i in magicSet )
 			pMagicSet[ i ] = magicSet[i];
 	}
 
-	// actual parse call (returns parser object)
+	// Create a new parser Object
 	$.parser.pNew = function( wikiText, opt ) {
 		var parseObj = function( wikiText, opt ) {
 			return this.init( wikiText, opt )
@@ -647,7 +621,7 @@ var global_req_cb = new Array(); // The global request callback array
 								}
 							}
 						}
-					}
+					}		
 					return tObj;
 				}
 				function getMagicTxtFromTempNode( node ) {
@@ -699,7 +673,6 @@ var global_req_cb = new Array(); // The global request callback array
 				
 				// do the recursive magic swap text:
 				this.pOut = recurse_magic_swap( this.pNode );
-
 			},			
 			/*
 			 * parsed template api ~loosely based off of ~POM~
@@ -770,7 +743,7 @@ var global_req_cb = new Array(); // The global request callback array
 			/**
 			 * Returns the transformed wikitext
 			 * 
-			 * Build output from swapable index 
+			 * Build output from swappable index 
 			 * 		(all transforms must be expanded in parse stage and linearly rebuilt)  
 			 * Alternatively we could build output using a place-holder & replace system 
 			 * 		(this lets us be slightly more sloppy with ordering and indexes, but probably slower)
@@ -789,22 +762,588 @@ var global_req_cb = new Array(); // The global request callback array
 		};
 		// return the parserObj
 		return new parseObj( wikiText, opt ) ;
+	};		
+		
+	
+	/**
+	* The loader prototype:
+	*/
+	$.loader = {
+		/*
+		* Javascript Module Set 
+		* @key Name of Module
+		* @value function code to load module 
+		*/
+		moduleNames : { },
+		
+		/**
+		* Javascript Class Names
+		* @key Name of class
+		* @value Class file path 
+		*/
+		classNames : { }, 		
+		
+		/**
+		* Load a set of scripts.
+		* Will issue many load requests or package the request for the script-loader
+		*
+		* @param {Object} loadSet Set of scripts to be loaded
+		* @param {Function} callback Function to call once all scripts are loaded.
+		*/ 
+		loadMany: function( loadSet, callback ){
+			//Setup up the local "loadState"			
+			var loadState = { };			
+			// Check if its a dependency set ( nested objects ) 
+			if( typeof loadSet [ 0 ] == 'object' ){				
+				//Load sets of classes ( to preserver order for some browsers )
+				this.loadDependencyChain( loadSet, callback );
+				return ;
+			}
+			
+			// Set the initial load state for every item in the loadSet
+			for( var i in loadSet ){							
+				var loadName = loadSet[ i ];				
+				loadState[ loadName ] = 0;								
+			}
+			
+			// Issue the load request check check loadState to see if we are "done"
+			for( var i in loadSet ){			
+				var loadName = loadSet[ i ];
+				$.load( loadName, function ( loadName ){							
+					loadState[ loadName ] = 1;
+					
+					var loadDone = true;
+					for( var j in loadState ){
+						if( loadState[ j ] === 0 )
+							loadDone = false;			
+					}
+					// Run the parent scope callback for "loadMany" 
+					if( loadDone )
+						callback();
+				} );
+			}
+		},
+		
+		/**
+		* Load a sets of scripts satisfy dependency order for browsers that execute out of order
+		* 
+		* @param {Object} loadChain A set of javascript arrays to be loaded. 
+		*	Sets are requested in array order. 		   
+		*/ 
+		loadDependencyChain: function( loadChain, callback ){
+			var _this = this;				
+			// Load with dependency checks
+			this.load( loadChain.shift(), function() {								
+				if ( loadChain.length != 0 ) {
+					_this.loadDependencyChain( loadChain, callback );
+				} else {
+					callback();
+				}
+			} );
+		},
+		
+		/**
+		* Core load function: 
+		* 
+		* @param {Mixed} loadRequest:
+		* 
+		* 	{String} Name of a module to be loaded
+		* 		Modules are added via addModuleLoader and can define custom
+		* 		code needed to load the module dependencies
+		*		Module loader function should accept a callback argument
+		*
+		*	{String} Name of a class to loaded. 
+		*		Using defined class names avoids loading the same class
+		*		twice by first checking if the "class variable" is defined
+		*	
+		*	{String} Absolute or relative to mwEmbed file path. 
+		*		The same file won't be loaded twice
+		*
+		*	{Array} can be an array of any combination of the above strings.
+		*		Will be loaded in-order or in a single 
+		*		script-loader request if scriptLoader is enabled 
+		*
+		* 	{Array} {Array} Can be a set of Arrays for loading.		 
+		*		Some browsers execute included scripts out of order. 
+		* 		This lets you chain sets of request for thouse browers.
+		*		If using the script-loader order is preserved in output and 
+		*			a single request will be used.
+		*
+		* @param {Function} callback Function called once loading is complete
+		*/				
+		load: function( loadRequest, callback ){
+			
+			// Check if its a multi-part request: 
+			if( typeof loadRequest == 'object' ){									
+				this.loadMany ( loadRequest,  callback );
+				return ;
+			}   
+			
+			// Check for the module name loader function 
+			if( this.moduleNames[ loadRequest ] && 
+				typeof ( this.moduleNames[ loadRequest ] ) == 'function' 
+			){
+				//Run the module with the parent callback 
+				this.moduleNames[ loadRequest ]( callback );	
+				return ;
+			}
+			
+			// Check for javascript class 
+			if( this.classNames[ loadRequest ] ){		
+				this.loadClass( loadRequest, callback );																	
+				return ;
+			}
+			
+			// Try loading as a "file"
+			if( loadRequest ) { 
+				$.getScript( loadRequest, callback );
+				return ;
+			}
+			
+			//possible error? 
+			js_log( "Error could not handle load request" );
+		},
+		
+		/**
+		* Loads javascript associated with a className
+		*
+		* @param {String} className Name of class to load
+		* @param {Function} callback Function to run once class is loaded 
+		*/
+		loadClass: function( className , callback){		
+													
+			// Make sure the class is not already defined:
+			if ( $.isset( className ) ){
+				js_log( 'Class ( ' + className + ' ) already defined ' );
+				return ; 									
+			}
+			
+			// Get the class url:
+			var baseClassPath = this.classNames[ className ];
+						
+			var url = null;
+			// Load the mwEmbed path ( if not a root dir url )
+			if( baseClassPath.indexOf( '/' ) !== 0 ){
+				url = $.getMwEmbedPath() + baseClassPath;
+			}else{
+				url = baseClassPath;
+			}
+			
+			if( ! url ){
+				js_log( "Could not get url for class " + className  );						
+				return ;
+			}						
+				
+			// Issue the request to load the class (include class name in result callback:					
+			$.getScript( url, function( ) {
+				callback( className );
+			} );
+												
+		},
+		
+		/**
+		* Adds a module to the mwLoader object 
+		*
+		* @param {String} name Name of module
+		* @param {Function} moduleLoader Function that
+		*	loads dependencies for a module
+		*/
+		addModuleLoader: function( name, moduleLoader ){		
+			this.moduleNames [ name ] = moduleLoader;
+		},
+		
+		/**
+		* Adds file path key value pairs
+		*
+		* @param {Object} classSet JSON formated list of 
+		*  class name file path pairs.
+		*
+		*  classSet must be strict JSON to allow the 
+		*  scriptLoader to parse the file paths.  
+	 	*/
+	 	addClassFilePaths: function( classSet ){
+	 		for( var i in classSet ){
+				this.classNames[ i ] = classSet[ i ];
+			}
+	 	}
+	}
+	
+	/**
+	* Shortcut entry points / convenience functions: 
+	*
+	* Lets you write mw.load() instead of mw.loader.load()
+	*/
+	
+	/**
+	* Load Object entry point: Loads a requested set of javascript 
+	*/	
+	$.load = function( loadRequest, callback ){
+		return $.loader.load( loadRequest, callback );
+	}
+	
+	/**
+	* Add module entry point: Adds a module to the mwLoader object 
+	*/
+	$.addModuleLoader = function ( name, loaderFunction ){
+		return $.loader.addModuleLoader( name, loaderFunction );		
+	}
+	
+	/**
+	* Add Class File Paths entry point:  
+	*/
+	$.addClassFilePaths = function ( classSet )	{	
+		return $.loader.addClassFilePaths( classSet );
+	}
+			
+	
+	/**
+	* Utility Functions
+	*/		
+	
+	/**
+	* Similar to php isset function checks if the variable exists.
+	* Does a safe check of a descendent method or variable
+	*
+	* @param {String} objectPath
+	* @return {Boolean}
+	* 	true if objectPath exists
+	*	false if objectPath is undefined
+	*/	
+	$.isset = function( objectPath ) {
+		if ( !objectPath )
+			return false;
+		var pathSet = objectPath.split( '.' );
+		var cur_path = '';
+		for ( var p = 0; p < pathSet.length; p++ ) {
+			cur_path = ( cur_path == '' ) ? cur_path + pathSet[p] : cur_path + '.' + pathSet[p];
+			eval( 'var ptest = typeof ( ' + cur_path + ' ); ' );
+			if ( ptest == 'undefined' ) {				
+				return false;
+			}
+		}
+		return true;
 	}
 		
-	/* 
-	* API and request functions
+	
+	//Setup the local mwOnLoadFuncitons array: 
+	var mwOnLoadFuncitons = new Array();
+	
+	//mw Ready flag ( set once mwEmbed is ready ) 
+	var mwReadyFlag = false;
+	
+	/**
+	* Enables load hooks to run once DOM is "ready" 
+	* Will ensure jQuery is available, is in the $j namespace 
+	* and mw interfaces and configuration has been loaded and applied
+	*
+	* @param {Function} callback Function to run once DOM and jQuery are ready
+	*/
+	$.addOnloadHook = function( callback ){					
+		if( mwReadyFlag == false ){
+			mwOnLoadFuncitons.push ( callback );
+			
+			// If the dom is ready but we have not run mwSetup::  
+			// Have a rare case where a dynamically included script is calling mw.addOnloadHook ::	
+			if ( mwDomReadyFlag && !mwSetupFlag  ){
+				$.setupMwEmbed();
+			} 
+			return ;
+		}
+		// If mwReadyFlag is already "ready" call the callback directly:
+		callback();
+	}	
+	
+	/**
+	* Runs all the queued functions
+	*/ 
+	$.runLoadHooks = function ( ){
+		// Sets mwReadyFlag to true so that future addOnLoadHook calls 
+		//  know to call the callback directly
+		mwReadyFlag = true;
+		
+		// Run all the queued functions: 
+		while( mwOnLoadFuncitons.length )
+			mwOnLoadFuncitons.pop()();
+	}
+	
+	/**
+	* One time "setup" for mwEmbed 
+	* run onDomReady ( so calls to setConfg apply to setup )
+	*/
+	
+	// Flag to ensure setup is only run once:
+	var mwSetupFlag = false;
+	
+	$.setupMwEmbed = function ( ) {
+			
+		// Only run the setup once: 
+		if( mwSetupFlag )
+			return ;			  
+		mwSetupFlag = true;
+				
+		// Make sure jQuery is loaded:
+		$.load( 'window.jQuery', function(){			
+			if ( !_global['$j'] ) {
+				_global['$j'] = jQuery.noConflict();
+			}
+			
+			// Set up the skin paths
+			_global['mv_jquery_skin_path'] = mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/';
+			_global['mv_skin_img_path'] = mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/images/';
+			_global['mv_default_thumb_url'] = mv_skin_img_path + 'vid_default_thumb.jpg';
+
+			// Make Core skin/style sheets are always available:
+			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
+			loadExternalCss( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
+
+			// Set up AJAX to not send dynamic URLs for loading scripts
+			$j.ajaxSetup( {
+				cache: true
+			} );
+			
+			// Set up mvEmbed jQuery bindings
+			mwDojQueryBindings();
+				
+			// Check for tag-rewrites ( sometimes checked twice but ensures fresh dom check )  
+			if( $.documentHasRewriteTags() ){
+				// Load the embedPlayer module ( then run queued hooks )
+				ms.load( 'embedPlayer', function ( ) {
+					mw.runLoadHooks();
+				} );
+			}else{			
+				// Set ready state and run the callback
+				mw.runLoadHooks();
+			}
+		} ); 			
+	}
+	//Flag to register the domReady has been called
+	var mwDomReadyFlag = false;
+	/**
+ 	* This will get called when the DOM is ready 
+ 	* Will check configuration and issue a mw.setupMwEmbed call if needed
+	*/
+	$.domReady = function ( ) {
+		if( mwDomReadyFlag )
+			return ;
+		js_log( 'run:domReady' );
+		// Set the onDomReady Flag
+		mwDomReadyFlag = true;
+		
+		// Check for the force setup flag:
+		if ( $.getConfig( 'alwaysSetupMwEmbed' ) ){
+			$.setupMwEmbed();
+			return ;
+		}
+		
+		// Check for rewrite tags: 		
+		if ( $.documentHasRewriteTags() ) {
+			$.setupMwEmbed();
+			return ;
+		}		
+		
+		// Check for queued functions that use mw interfaces: 
+		if ( mwOnLoadFuncitons.length ){
+			$.setupMwEmbed();
+			return ;
+		}
+		
+		// If we have any queued functions we need to run setup as well: 
+		
+		/*	
+			// Load libs and process videos
+			mvJsLoader.embedPlayerCheck( function() {
+				// Convert all supported elements into embed players:
+				$j.embedPlayers( function(){
+					// Run any queued global events:			
+					mvJsLoader.runQueuedFunctions();
+				});
+			} );
+		} else {
+			mvJsLoader.runQueuedFunctions();
+		}
+		*/
+	}
+	
+	/**
+	* Check the current DOM for any tags in "rewriteTags"
+	*/
+	$.documentHasRewriteTags = function(){
+		var tags = $.getRewriteTags();
+		return ( tags && tags.length );			
+	}
+	$.getRewriteTags = function(){
+		var tagString = $.getConfig( 'rewriteTags' );
+		if( ! tagString || tagString == '' )
+			return false;
+			
+		// Tags should be separated by "," 
+		var tags = tagString.split(',');
+		
+		// Check for tags: 
+		for( var i in tags ){
+			var tagsInDOM = document.getElementsByTagName( tags[ i ] );		
+			// If tags found return true
+			if( tagsInDOM.length > 0 ){
+				return true;
+			}
+		}
+		return false;	
+	}
+	
+	/**
+	* Wrapper for jQuery getScript
+	* 
+	* If jQuery is not ready load it.
+	*
+	* @param {String} url Url of script
+	* @param {Function} callback Function to call once script is loaded   
+	*/
+	$.getScript = function( url, callback ){
+		
+		js_log( 'mw.getScript: ' + url );		
+		
+		// If jQuery is available just use getScript
+		if( $.isset( 'window.jQuery' ) ) {
+			$j.getScript( url, callback ); 
+			return ;
+		}
+		
+		// No jQuery load and bind manually:  ( copied from jQuery ajax function )
+		var head = document.getElementsByTagName("head")[0];
+		var script = document.createElement("script");
+		script.setAttribute( 'src', url );		
+				
+		// Attach handlers for all browsers ( might not work in safari < version 2.0 ) 
+		var done = false; 
+		script.onload = script.onreadystatechange = function(){
+			if ( !done && (!this.readyState ||
+					this.readyState == "loaded" || this.readyState == "complete") ) {
+				done = true;
+				callback();
+			}
+		};	
+		// Append the script to the DOM:
+		head.appendChild( script );	
+	}
+	
+	/** 
+	* Get Api URL from mediaWiki output page defined variables
 	*/
 	$.getLocalApiUrl = function() {
 		if ( typeof wgServer != 'undefined' && typeof wgScriptPath  != 'undefined' ) {
 			return wgServer + wgScriptPath + '/api.php';
 		}
 		return false;
-	}
+	}	
+	
+	// Local mwEmbedPath variable ( for cache of $.getMwEmbedPath )
+	var mwEmbedPath = null;
 	
 	/**
-	* Utility Functions
-	*/
+	 * Gets the path to the mwEmbed folder
+	 */
+	$.getMwEmbedPath = function() {
+		if ( mwEmbedPath )
+			return mwEmbedPath;	
+			
+		// Get mwEmbed src:
+		var src = $.getMwEmbedSrc();		
+		var mwpath = null;
+		// Check for direct include of the mwEmbed.js
+		if ( src.indexOf( 'mwEmbed.js' ) !== -1 ) {
+			mwpath =  src.substr( 0, src.indexOf( 'mwEmbed.js' ) );			
+		}
 		
+		// Check for scriptLoader include of mwEmbed: 
+		if ( src.indexOf( 'mwScriptLoader.php' ) !== -1 ) {
+			// Script loader is in the root of MediaWiki, Include the default mwEmbed extension path:
+			mwpath =  src.substr( 0, src.indexOf( 'mwScriptLoader.php' ) ) + $.conf.mediaWikiPath;						
+		}
+		
+		// Script-loader has jsScriptLoader name when local:
+		if( src.indexOf( 'jsScriptLoader.php' ) !== -1 ){
+			mwpath = src.substr( 0, src.indexOf( 'jsScriptLoader.php' ) );			
+		}	
+		
+		// Error out if we could not get the path:
+		if( ! mwpath ){
+			js_log( "Error could not get mwEmbed path " );
+			return ;
+		}
+					
+		// Update the cached var with the absolute path: 
+		mwEmbedPath = $.absoluteUrl( mwpath )	;			
+		return mwEmbedPath;
+	}
+	
+	// Local mwEmbedSrc variable ( for cache of $.getMwEmbedSrc )
+	var mwEmbedSrc = null; 
+	
+	/**
+	* Gets the mwEmbed script src attribute
+	*/
+	$.getMwEmbedSrc = function() {
+		if ( mwEmbedSrc )
+			return mwEmbedSrc;
+			
+		// Get all the javascript includes:
+		var js_elements = document.getElementsByTagName( "script" );
+		for ( var i = 0; i < js_elements.length; i++ ) {
+			// Check for mwEmbed.js and/or script loader
+			var src = js_elements[i].getAttribute( "src" );
+			if ( src ) {
+				if ( src.indexOf( 'mwEmbed.js' ) !== -1 || (
+					( src.indexOf( 'mwScriptLoader.php' ) !== -1 || src.indexOf( 'jsScriptLoader.php' ) !== -1 )
+					&& src.indexOf( 'mwEmbed' ) !== -1 ) ) // (check for class=mwEmbed script_loader call)
+				{
+					mwEmbedSrc = src;
+					return mwEmbedSrc;
+				}
+			}
+		}
+		js_log( 'Error: getMwEmbedScriptURL failed to get script path' );
+		return false;
+	}	
+	
+	// Local mwUrlParam variable ( for cache of $.getUrlParam )
+	var mwUrlParam = null;
+	
+	/**
+	* Get URL Paramaters per paramaters in the host script include
+	*/
+	$.getUrlParam = function() {
+		if ( mwUrlParam )
+			return mwUrlParam;
+			
+		var mwEmbedSrc = $.getMwEmbedSrc();		
+		var req_param = '';
+		
+		// If we already have a URI, add it to the param request:
+		var urid = mw.parseUri( mwEmbedSrc ).queryKey['urid']
+		
+		// If we're in debug mode, get a fresh unique request key and pass on "debug" param
+		if ( mw.parseUri( mwEmbedSrc ).queryKey['debug'] == 'true' ) {		
+			
+			var d = new Date();
+			req_param += 'urid=' + d.getTime() + '&debug=true';			
+					
+		} else if ( urid ) { // Just pass on the existing urid:			
+					
+			req_param += 'urid=' + urid;			
+		} else {
+			// Otherwise, Use the mwEmbed version
+			req_param += 'urid=' + mw.version;
+		}
+		
+		// Add the language param:
+		var langKey = mw.parseUri( mwEmbedSrc ).queryKey['uselang'];
+		if ( langKey )
+			req_param += '&uselang=' + langKey;
+		
+		// Update the local cache and return the value	
+		mwUrlParam = req_param;			
+		return mwUrlParam;
+	}
 	
 	/**
 	* parseUri 1.2.2
@@ -826,9 +1365,16 @@ var global_req_cb = new Array(); // The global request callback array
 	
 		return uri;
 	};
+	
+	/**
+	* Parse URI function
+	*
+	* For documentation on its usage see: 
+	* http://stevenlevithan.com/demo/parseuri/js/
+	*/
 	$.parseUri.options = {
 		strictMode: false,
-		key: ["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],
+		key: ["source", "protocol", "authority", "userInfo", "user","password","host","port","relative","path","directory","file","query","anchor"],
 		q:   {
 			name:   "queryKey",
 			parser: /(?:^|&)([^&=]*)=?([^&]*)/g
@@ -841,7 +1387,9 @@ var global_req_cb = new Array(); // The global request callback array
 	
 	/**
 	* getAbsoluteUrl takes a src and returns the absolute location given the document.URL
+	*
 	* @param {String} src path or url
+	* @return {String} absolute url
 	*/
 	$.absoluteUrl = function( src, contextUrl ){
 		var pSrc =  mw.parseUri( src );
@@ -861,8 +1409,15 @@ var global_req_cb = new Array(); // The global request callback array
 			return pUrl.protocol + '://' + pUrl.authority + pUrl.directory + src;
 		}
 	};
+	
 	/**
 	* Takes in a string returns an xml dom object 
+	*
+	* @param {String} str String of XML content to be parsed
+	* @return 
+	* 	{Object} XML
+	*	false If XML could not be parsed 
+	*
 	*/
 	$.parseXML = function ( str ){
 		if ( $j.browser.msie ) {
@@ -890,23 +1445,194 @@ var global_req_cb = new Array(); // The global request callback array
 	}	
 } )( window.mw );
 
-// Get the mv_embed location if it has not been set
-if ( !mv_embed_path ) {
-	var mv_embed_path = getMvEmbedPath();
-}
-
 // load in js2 stopgap into proper location: 
 if ( typeof gMsg != 'undefined' ) {
-	mw.lang.loadGM( gMsg )
+	mw.addMessages( gMsg )
 }
 
-// setup legacy global shortcuts:
-var loadGM = mw.lang.loadGM;
-var loadRS = mw.lang.loadRS;
 var gM = mw.lang.gM;
+// setup legacy global shortcuts:
+var loadRS = mw.lang.loadRS;
 
-// All default messages in [English] should be overwritten by the CMS language message system.
-mw.lang.loadGM( {
+/**
+ * --  Load Class Paths --
+ *
+ * MUST BE VALID JSON (NOT JS)
+ * This is used by the script loader to auto-load classes (so we only define
+ * this once for PHP & JavaScript)
+ *
+ * Right now the PHP AutoLoader only reads this mwEmbed.js file.
+ * In the future we could have multiple "loader" files
+ * 
+ */
+ 
+
+mw.addClassFilePaths( {
+	"mwEmbed"			: "mwEmbed.js",
+	"window.jQuery"		: "jquery/jquery-1.3.2.js",
+	"$j.fn.pngFix"		: "jquery/plugins/jquery.pngFix.js",
+	"$j.fn.autocomplete": "jquery/plugins/jquery.autocomplete.js",
+	"$j.fn.hoverIntent"	: "jquery/plugins/jquery.hoverIntent.js",
+	"$j.fn.datePicker"	: "jquery/plugins/jquery.datePicker.js",
+	"$j.ui"				: "jquery/jquery.ui/ui/ui.core.js",
+	"$j.fn.ColorPicker"	: "libClipEdit/colorpicker/js/colorpicker.js",
+	"$j.Jcrop"			: "libClipEdit/Jcrop/js/jquery.Jcrop.js",
+	"$j.fn.simpleUploadForm" : "libAddMedia/simpleUploadForm.js",
+	
+	"mw.proxy"		: "libMwApi/mw.proxy.js",
+	
+	"mw.testLang"	:  "tests/testLang.js",
+	
+	"ctrlBuilder"	: "skins/ctrlBuilder.js",
+	"kskinConfig"	: "skins/kskin/kskin.js",
+	"mvpcfConfig"	: "skins/mvpcf/mvpcf.js",
+
+	"JSON"				: "libMwApi/json2.js",
+	"$j.cookie"			: "jquery/plugins/jquery.cookie.js",
+	"$j.contextMenu"	: "jquery/plugins/jquery.contextMenu.js",
+	"$j.fn.suggestions"	: "jquery/plugins/jquery.suggestions.js",
+	"$j.fn.textSelection"	: "jquery/plugins/jquery.textSelection.js",
+
+	"$j.effects.blind"		: "jquery/jquery.ui/ui/effects.blind.js",
+	"$j.effects.drop"		: "jquery/jquery.ui/ui/effects.drop.js",
+	"$j.effects.pulsate"	: "jquery/jquery.ui/ui/effects.pulsate.js",
+	"$j.effects.transfer"	: "jquery/jquery.ui/ui/effects.transfer.js",
+	"$j.ui.droppable"		: "jquery/jquery.ui/ui/ui.droppable.js",
+	"$j.ui.slider"			: "jquery/jquery.ui/ui/ui.slider.js",
+	"$j.effects.bounce"		: "jquery/jquery.ui/ui/effects.bounce.js",
+	"$j.effects.explode"	: "jquery/jquery.ui/ui/effects.explode.js",
+	"$j.effects.scale"		: "jquery/jquery.ui/ui/effects.scale.js",
+	"$j.ui.datepicker"		: "jquery/jquery.ui/ui/ui.datepicker.js",
+	"$j.ui.progressbar"		: "jquery/jquery.ui/ui/ui.progressbar.js",
+	"$j.ui.sortable"		: "jquery/jquery.ui/ui/ui.sortable.js",
+	"$j.effects.clip"		: "jquery/jquery.ui/ui/effects.clip.js",
+	"$j.effects.fold"		: "jquery/jquery.ui/ui/effects.fold.js",
+	"$j.effects.shake"		: "jquery/jquery.ui/ui/effects.shake.js",
+	"$j.ui.dialog"			: "jquery/jquery.ui/ui/ui.dialog.js",
+	"$j.ui.resizable"		: "jquery/jquery.ui/ui/ui.resizable.js",
+	"$j.ui.tabs"			: "jquery/jquery.ui/ui/ui.tabs.js",
+	"$j.effects.core"		: "jquery/jquery.ui/ui/effects.core.js",
+	"$j.effects.highlight"	: "jquery/jquery.ui/ui/effects.highlight.js",
+	"$j.effects.slide"		: "jquery/jquery.ui/ui/effects.slide.js",
+	"$j.ui.accordion"		: "jquery/jquery.ui/ui/ui.accordion.js",
+	"$j.ui.draggable"		: "jquery/jquery.ui/ui/ui.draggable.js",
+	"$j.ui.selectable"		: "jquery/jquery.ui/ui/ui.selectable.js",
+
+	"$j.fn.dragDropFile"		: "libAddMedia/dragDropFile.js",
+	"mvFirefogg"			: "libAddMedia/mvFirefogg.js",
+	"mvAdvFirefogg"			: "libAddMedia/mvAdvFirefogg.js",
+	"mvBaseUploadInterface"	: "libAddMedia/mvBaseUploadInterface.js",
+	"remoteSearchDriver"	: "libAddMedia/remoteSearchDriver.js",
+	"seqRemoteSearchDriver" : "libSequencer/seqRemoteSearchDriver.js",
+
+	"baseRemoteSearch"		: "libAddMedia/searchLibs/baseRemoteSearch.js",
+	"mediaWikiSearch"		: "libAddMedia/searchLibs/mediaWikiSearch.js",
+	"metavidSearch"			: "libAddMedia/searchLibs/metavidSearch.js",
+	"archiveOrgSearch"		: "libAddMedia/searchLibs/archiveOrgSearch.js",
+	"flickrSearch"			: "libAddMedia/searchLibs/flickrSearch.js",
+	"baseRemoteSearch"		: "libAddMedia/searchLibs/baseRemoteSearch.js",
+
+	"mvClipEdit"			: "libClipEdit/mvClipEdit.js",
+	
+	"mvPlayList"		: "libSequencer/mvPlayList.js",
+	"mvSequencer"		: "libSequencer/mvSequencer.js",
+	"mvFirefoggRender"	: "libSequencer/mvFirefoggRender.js",
+	"mvTimedEffectsEdit": "libSequencer/mvTimedEffectsEdit.js",
+
+	"mvTextInterface"	: "libTimedText/mvTextInterface.js",
+	"mvTimeTextEdit"	: "libTimedText/mvTimeTextEdit.js"
+
+} );
+
+/**
+* libEmbedPlayer Depenency Module Loader:
+*
+* NOTE: this code block could eventually be put in: 
+* "libEmbedPlayer/loader.js" 
+* 
+* That it could be dynamically inserted into mwEmbed requests 
+* at poit of release or at runtime via the script-loader.
+* 
+* A per module loader enables a dynamic set of modules with only minimal
+* loader code per module in the core mwEmbed included js 
+*  
+*/
+// Add class file paths: 
+mw.addClassFilePaths( {
+	"embedPlayer"		: "libEmbedPlayer/embedPlayer.js",
+	"flowplayerEmbed"	: "libEmbedPlayer/flowplayerEmbed.js",
+	"kplayerEmbed"		: "libEmbedPlayer/kplayerEmbed.js",
+	"genericEmbed"		: "libEmbedPlayer/genericEmbed.js",
+	"htmlEmbed"			: "libEmbedPlayer/htmlEmbed.js",
+	"javaEmbed"			: "libEmbedPlayer/javaEmbed.js",
+	"nativeEmbed"		: "libEmbedPlayer/nativeEmbed.js",
+	"quicktimeEmbed"	: "libEmbedPlayer/quicktimeEmbed.js",
+	"vlcEmbed"			: "libEmbedPlayer/vlcEmbed.js",
+
+} );
+
+// Add the module loader function:
+mw.addModuleLoader( 'player', function(){
+	var _this = this;
+	js_log( 'loadModule: player :' );
+	
+	// Set module specifc class videonojs to loading:
+	$j( '.videonojs' ).html( gM( 'mwe-loading_txt' ) );
+	
+	// Set up the embed video player class request: (include the skin js as well)
+	var dependencyRequest = [
+		[
+			'$j.ui',
+			'embedPlayer',
+			'ctrlBuilder',
+			'$j.cookie'
+		],
+		[
+			'$j.ui.slider'
+		]
+	];
+	
+	// Get any other skins that we need to load 
+	// That way skin js can be part of the single script-loader request:
+	  
+		var	sn = e[j][k].getAttribute('class');				
+		if( sn && sn != ''){
+			for(var n=0;n< $mw.valid_skins.length;n++){ 
+				if( sn.indexOf($mw.valid_skins[n]) !== -1){
+					$mw.skin_list.push( $mw.valid_skins[n] );
+				}
+			}
+		}
+	// Add any requested skins (supports multiple skins per single page)
+	if ( mw.skin_list ) {
+		for ( var i in mw.skin_list  ) {
+			depReq[0].push( mw.skin_list[i] + 'Config' );
+		}
+	}
+
+	// Add PNG fix if needed:
+	if ( $j.browser.msie || $j.browser.version < 7 )
+		depReq[0].push( '$j.fn.pngFix' );
+
+	// Load the video libs:
+	_this.doLoadDepMode( depReq, function() {
+		embedTypes.init();
+		callback();
+		$j( '.videonojs' ).remove();
+	} );
+	
+} );
+
+
+
+
+
+
+
+
+
+// Add the core mvEmbed Messages ( will be localized by script server ) 
+mw.addMessages( {
 	"mwe-loading_txt" : "Loading ...",
 	"mwe-size-gigabytes" : "$1 GB",
 	"mwe-size-megabytes" : "$1 MB",
@@ -919,6 +1645,45 @@ mw.lang.loadGM( {
 	"mwe-ok" : "OK",
 	"mwe-cancel" : "Cancel"
 } );
+
+
+
+
+/**
+* Set DOM-ready call 
+* Does not use jQuery( document ).ready( ) because 
+*  mwEmbed could have been included without jQuery. 
+*/
+// For Mozilla / modern browsers
+if ( document.addEventListener ) {
+	document.addEventListener( "DOMContentLoaded", mw.domReady, false );
+}
+// Preserve any existing window.onload binding: 
+var mwOriginalOnLoad;
+if ( window.onload && typeof  window.onload == 'function' ) {
+    mwOriginalOnLoad = window.onload;
+}
+// Use the onload method as a backup:
+window.onload = function () {
+    if ( mwOriginalOnLoad )
+        mwOriginalOnLoad();
+	mw.domReady();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Get the loading image
@@ -938,7 +1703,7 @@ function mv_set_loading( target, load_id ) {
 
 /**
 * mvJsLoader class handles initialization and js file loads
-*/
+
 var mvJsLoader = {
 	libreq : { },
 	libs : { },
@@ -970,6 +1735,7 @@ var mvJsLoader = {
 					all_libs_loaded = false;
 				}
 			}
+				
 			if ( all_libs_loaded ) {
 				js_log( 'Libraries ( ' + loadLibs  +  ') already loaded... skipping load request' );
 				callback();
@@ -979,7 +1745,7 @@ var mvJsLoader = {
 			// Do a check for any CSS we may need and get it
 			for ( var i = 0; i < loadLibs.length; i++ ) {
 				if ( typeof mvCssPaths[ loadLibs[i] ] != 'undefined' ) {
-					loadExternalCss( mv_embed_path + mvCssPaths[ loadLibs[i] ] );
+					loadExternalCss( mw.getMwEmbedPath() + mvCssPaths[ loadLibs[i] ] );
 				}
 			}
 
@@ -999,17 +1765,17 @@ var mvJsLoader = {
 					}
 				}
 				// Build the url to the scriptServer striping its request parameters:
-				var puri = mw.parseUri( getMvEmbedURL() );
-				if ( ( getMvEmbedURL().indexOf( '://' ) != -1 )
+				var puri = mw.parseUri( getMwEmbedURL() );
+				if ( ( getMwEmbedURL().indexOf( '://' ) != -1 )
 					&& puri.host != mw.parseUri( document.URL ).host )
 				{
 					var scriptPath = puri.protocol + '://' + puri.authority + puri.path;
 				} else {
 					var scriptPath = puri.path;
 				}
-				// js_log('scriptServer Path is: ' + scriptPath + "\n host script path:" + getMvEmbedURL() );				
+				// js_log('scriptServer Path is: ' + scriptPath + "\n host script path:" + getMwEmbedURL() );				
 				this.libs[ last_class ] = scriptPath + '?class=' + class_set +
-					'&' + getMwReqParam();
+					'&' + mw.getUrlParam();
 
 			} else {
 				// Do many requests
@@ -1018,9 +1784,9 @@ var mvJsLoader = {
 					if ( curLib ) {
 						var libLoc = mvGetClassPath( curLib );
 						// Do a direct load of the file (pass along unique request id from
-						// request or mv_embed Version )
+						// request or mwEmbed Version )
 						var qmark = ( libLoc.indexOf( '?' ) !== true ) ? '?' : '&';
-						this.libs[curLib] = mv_embed_path + libLoc + qmark + getMwReqParam();
+						this.libs[curLib] = mw.getMwEmbedPath() + libLoc + qmark + mw.getUrlParam();
 					}
 				}
 			}
@@ -1037,7 +1803,7 @@ var mvJsLoader = {
 				js_log( gM( 'mwe-error_load_lib', [mvGetClassPath( this.missing_path ),  this.missing_path] ) );
 				this.load_error = true;
 			} else {
-				setTimeout( 'mvJsLoader.doLoad()', 20 );
+				setTimeout( 'mw.load()', 20 );
 			}
 		} else {
 			// js_log('checkLoading passed. Running callbacks...');
@@ -1059,7 +1825,7 @@ var mvJsLoader = {
 					// func();
 				} else {
 					// Re-issue doLoad ( ptime will be set to ctime so we should catch up)
-					setTimeout( 'mvJsLoader.doLoad()', 25 );
+					setTimeout( 'mw.load()', 25 );
 					break;
 				}
 			}
@@ -1075,12 +1841,12 @@ var mvJsLoader = {
 					loadSet.push( loadChain[i][j] );
 				}
 			}
-			mvJsLoader.doLoad( loadSet, callback );
+			mw.load( loadSet, callback );
 		} else {
 			// Safari and IE tend to execute out of order so load with dependency checks
-			mvJsLoader.doLoad( loadChain.shift(), function() {
+			mw.load( loadChain.shift(), function() {
 				if ( loadChain.length != 0 ) {
-					mvJsLoader.doLoadDepMode( loadChain, callback );
+					mw.load( loadChain, callback );
 				} else {
 					callback();
 				}
@@ -1118,9 +1884,9 @@ var mvJsLoader = {
 		this.cur_path = cur_path;
 		return true;
 	},
-	/**
-	 * checks for jQuery and adds the $j noConflict var
-	 */
+	//
+	// checks for jQuery and adds the $j noConflict var
+	//
 	jQueryCheck: function( callback ) {
 		// js_log( 'jQueryCheck::' + this.jQuerySetupFlag);
 		var _this = this;
@@ -1131,40 +1897,7 @@ var mvJsLoader = {
 		_this.doLoad( [
 			'window.jQuery'
 		], function() {
-			// only do the $j setup once:
-			if ( !_global['$j'] ) {
-				_global['$j'] = jQuery.noConflict();
-			}
-			if ( _this.jQuerySetupFlag == false ) {
-				// js_log('setup mv_embed jQuery bindings');
-				// Setup our global settings using the (jQuery helper)
-
-				// Set up the skin path
-				_global['mv_jquery_skin_path'] = mv_embed_path + 'jquery/jquery.ui/themes/' + mw.conf['jui_skin'] + '/';
-				_global['mv_skin_img_path'] = mv_embed_path + 'skins/' + mw.conf['skin_name'] + '/images/';
-				_global['mv_default_thumb_url'] = mv_skin_img_path + 'vid_default_thumb.jpg';
-
-				// Make sure the skin/style sheets are always available:
-				loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
-				loadExternalCss( mv_embed_path + 'skins/' + mw.conf['skin_name'] + '/styles.css' );
-
-				// Set up AJAX to not send dynamic URLs for loading scripts (we control that with
-				// the scriptLoader)
-				$j.ajaxSetup( {
-					cache: true
-				} );
-
-				js_log( 'jQuery loaded into $j' );
-				// Set up mvEmbed jQuery bindings and config based dependencies
-				mv_jqueryBindings();
-				_this.jQuerySetupFlag = true;
-				
-				// js_log('should run callback: ' + callback);
-				// Run the callback if not already run above
-				if ( callback ) {
-					callback();
-				}
-			}
+			
 		} );
 	},
 	embedPlayerCheck:function( callback ) {
@@ -1211,7 +1944,7 @@ var mvJsLoader = {
 		this.onReadyEvents.push( fn );
 	},
 	// Check the jQuery flag. This way, when remote embedding, we don't load jQuery
-	// unless js2AddOnloadHook was used or there is video on the page.
+	// unless mw.addOnloadHook was used or there is video on the page.
 	runQueuedFunctions: function() {
 		js_log( "runQueuedFunctions" );
 		var _this = this;
@@ -1229,115 +1962,16 @@ var mvJsLoader = {
 		}
 	}
 }
+*/
 
-// Shortcut ( @@todo consolidate shortcuts & re-factor mvJsLoader )
-function mwLoad( loadSet, callback ) {
-	mvJsLoader.doLoad( loadSet, callback );
-}
-// mw.shortcut
-mw.load = mwLoad;
 
-// Load an external JS file. Similar to jquery .require plugin,
-// but checks for object availability rather than load state.
-
-/*********** INITIALIZATION CODE *************
- * This will get called when the DOM is ready
- *********************************************/
-/* jQuery .ready does not work when jQuery is loaded dynamically.
- * For an example of the problem see: 1.1.3 working: http://pastie.caboo.se/92588
- * and >= 1.1.4 not working: http://pastie.caboo.se/92595
- * $j(document).ready( function(){ */
-function mwdomReady( force ) {
-	js_log( 'f:mwdomReady:' );
-	if ( !force && mw.init_done ) {
-		js_log( "mw done, do nothing..." );
-		return false;
-	}
-	mw.init_done = true;
-	// Handle the execution of queued functions with jQuery "ready"
-
-	// Check if this page has a video, audio or playlist tag
-	var e = [
-		document.getElementsByTagName( "video" ),
-		document.getElementsByTagName( "audio" ),
-		document.getElementsByTagName( "playlist" )
-	];
-	if ( e[0].length != 0 || e[1].length != 0 || e[2].length != 0 ) {
-		// look for any skin classes we have to load: 
-		for ( var j in e ) {
-			for ( var k in e[j] ) {
-				if ( e[j][k] && typeof( e[j][k] ) == 'object' ) {
-					var	sn = e[j][k].getAttribute( 'class' );
-					// Try "className" for good old IE				
-					if( !sn ){
-						var	sn = e[j][k].getAttribute( 'className' );
-					}					
-					if ( sn && sn != '' ) {
-						for ( var n = 0; n < mw.valid_skins.length; n++ ) {
-							if ( sn.indexOf( mw.valid_skins[n] ) !== -1 ) {
-								mw.skin_list.push( mw.valid_skins[n] );
-							}
-						}
-					}
-				}
-			}
-		}
-		// Load libs and process videos
-		mvJsLoader.embedPlayerCheck( function() {
-			// Convert all supported elements into embed players:
-			$j.embedPlayers( function(){
-				// Run any queued global events:			
-				mvJsLoader.runQueuedFunctions();
-			});
-		} );
-	} else {
-		mvJsLoader.runQueuedFunctions();
-	}
-}
-
-// js2AddOnloadHook: ensure jQuery and the DOM are ready
-function js2AddOnloadHook( func ) {
-	// js_log('js2AddOnloadHook:: jquery:' +func);	
-	// If we are ready run directly else add load event: 
-	if ( mvJsLoader.doneReadyEvents ) {
-		//js_log( 'run queued event: ' + func );
-		func();
-	} else {
-		//js_log( 'add to load event: ' + func );
-		mvJsLoader.addLoadEvent( func );
-	}
-}
-// Deprecated mwAddOnloadHook in favour of js2 naming (for clear separation of js2 code from old MW code
-var mwAddOnloadHook = js2AddOnloadHook;
 /*
- * This function allows for targeted rewriting
- */
-function rewrite_by_id( vid_id, ready_callback ) {
-	js_log( 'f:rewrite_by_id: ' + vid_id );
-	// Force a re-check of the DOM for playlist or video elements:
-	mvJsLoader.eembedPlayerheck( function() {
-		mv_video_embed( ready_callback, vid_id );
-	} );
+* js2AddOnloadHook depreciated use mw.addOnloadHook instead
+*/
+function js2AddOnloadHook( func ) {
+	mw.addOnloadHook( func );
 }
 
-
-/*********** INITIALIZATION CODE *************
- * set DOM-ready callback to init_mv_embed
- *********************************************/
-// for Mozilla / modern browsers
-if ( document.addEventListener ) {
-	document.addEventListener( "DOMContentLoaded", mwdomReady, false );
-}
-var temp_f;
-if ( window.onload ) {
-    temp_f = window.onload;
-}
-// Use the onload method as a backup
-window.onload = function () {
-    if ( temp_f )
-        temp_f();
-	mwdomReady();
-}
 
 /*
  * Store all the mwEmbed jQuery-specific bindings
@@ -1345,10 +1979,12 @@ window.onload = function () {
  *
  * These functions are generally are loaders that do the dynamic mapping of
  * dependencies for a given component
+ *
+ * Should be repaced by "loader" calls
  * 
  *
  */
-function mv_jqueryBindings() {
+function mwDojQueryBindings() {
 	js_log( 'mv_jqueryBindings' );
 	( function( $ ) {
 		/*
@@ -1370,7 +2006,7 @@ function mv_jqueryBindings() {
 		 */
 		$.apiProxy = function( mode, pConf, callback ) {
 			js_log( 'do apiProxy setup' );
-			mvJsLoader.doLoad( [
+			mw.load( [
 				'mw.proxy',
 				'JSON'
 			], function() {
@@ -1388,7 +2024,7 @@ function mv_jqueryBindings() {
 		}
 		
 		// non selector based add-media-wizard direct invocation with loader
-		$.addMediaWiz = function( iObj, callback ) {
+		$.addMediaWiz = function( options, callback ) {
 			js_log( ".addMediaWiz call" );
 			// check if already loaded:
 			if ( _global['rsdMVRS'] ) {
@@ -1400,7 +2036,7 @@ function mv_jqueryBindings() {
 			// display a loader: 
 			$.addLoaderDialog( gM( 'mwe-loading-add-media-wiz' ) );
 			// load the addMedia wizard without a target: 
-			$.fn.addMediaWiz ( iObj, function( amwObj ) {
+			$.fn.addMediaWiz ( options, function( amwObj ) {
 				// close the dialog
 				$.closeLoaderDialog();
 				// do the add-media-wizard display
@@ -1410,56 +2046,54 @@ function mv_jqueryBindings() {
 					callback( _global['rsdMVRS'] );
 			} );
 		}
-		$.fn.addMediaWiz = function( iObj, callback ) {
+		
+		$.fn.addMediaWiz = function( options, callback ) {
 			if ( this.selector ) {
 				// First set the cursor for the button to "loading"
 				$j( this.selector ).css( 'cursor', 'wait' ).attr( 'title', gM( 'mwe-loading_txt' ) );
 				// set the target: 
-				iObj['target_invoke_button'] = this.selector;
+				options['target_invoke_button'] = this.selector;
 			}
 
-			// Load the mv_embed_base skin:
+			// Load the mwEmbed_base skin:
 			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
-			loadExternalCss( mv_embed_path + 'skins/' + mw.conf['skin_name'] + '/styles.css' );
+			loadExternalCss( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
 			// Load all the required libs:
-			mvJsLoader.jQueryCheck( function() {
-				// Load with staged dependencies (for IE that does not execute in order)
-				mvJsLoader.doLoadDepMode( [
-					[	'remoteSearchDriver',
-						'$j.cookie',
-						'$j.fn.textSelection',
-						'$j.ui'
-					], [
-						'$j.ui.resizable',
-						'$j.ui.draggable',
-						'$j.ui.dialog',
-						'$j.ui.tabs',
-						'$j.ui.sortable'
-					]
-				], function() {
-					iObj['instance_name'] = 'rsdMVRS';
-					if ( ! _global['rsdMVRS'] )
-						_global['rsdMVRS'] = new remoteSearchDriver( iObj );
-					if ( callback ) {
-						callback( _global['rsdMVRS'] );
-					}
-				} );
+			mw.load( [
+				[	'remoteSearchDriver',
+					'$j.cookie',
+					'$j.fn.textSelection',
+					'$j.ui'
+				], [
+					'$j.ui.resizable',
+					'$j.ui.draggable',
+					'$j.ui.dialog',
+					'$j.ui.tabs',
+					'$j.ui.sortable'
+				]
+			], function() {
+				options['instance_name'] = 'rsdMVRS';
+				if ( ! _global['rsdMVRS'] )
+					_global['rsdMVRS'] = new remoteSearchDriver( options );
+				if ( callback ) {
+					callback( _global['rsdMVRS'] );
+				}
 			} );
 		}
 		/*
 		* Sequencer loader
 		*/
-		$.fn.sequencer = function( iObj, callback ) {
+		$.fn.sequencer = function( options, callback ) {
 			// Debugger
-			iObj['target_sequence_container'] = this.selector;
+			options['target_sequence_container'] = this.selector;
 			// Issue a request to get the CSS file (if not already included):
 			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
-			loadExternalCss( mv_embed_path + 'skins/' + mw.conf['skin_name'] + '/mv_sequence.css' );
-			// Make sure we have the required mv_embed libs (they are not loaded when no video
+			loadExternalCss( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/mv_sequence.css' );
+			// Make sure we have the required mwEmbed libs (they are not loaded when no video
 			// element is on the page)
 			mvJsLoader.eembedPlayerheck( function() {
 				// Load the playlist object and then the jQuery UI stuff:
-				mvJsLoader.doLoadDepMode( [
+				mw.load( [
 					[
 						'mvPlayList',
 						'$j.ui',
@@ -1483,7 +2117,7 @@ function mv_jqueryBindings() {
 					// Initialise the sequence object (it will take over from there)
 					// No more than one mvSeq obj for now:
 					if ( !_global['mvSeq'] ) {
-						_global['mvSeq'] = new mvSequencer( iObj );
+						_global['mvSeq'] = new mvSequencer( options );
 					} else {
 						js_log( 'mvSeq already init' );
 					}
@@ -1500,7 +2134,7 @@ function mv_jqueryBindings() {
 				iObj = { };
 			// Add the base theme CSS:
 			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
-			loadExternalCss( mv_embed_path + 'skins/' + mw.conf['skin_name'] + '/styles.css' );
+			loadExternalCss( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
 
 			// Check if we already have Firefogg loaded (the call just updates the element's
 			// properties)
@@ -1547,7 +2181,7 @@ function mv_jqueryBindings() {
 				] );
 			}
 			// Make sure we have everything loaded that we need:
-			mvJsLoader.doLoadDepMode( loadSet, function() {
+			mw.load( loadSet, function() {
 					js_log( 'firefogg libs loaded. target select:' + iObj.selector );
 					// Select interface provider based on whether we want to include the
 					// encoder interface or not
@@ -1583,7 +2217,7 @@ function mv_jqueryBindings() {
 			sElm['fogg_render'] = 'loading';
 			// Add the selector
 			iObj['player_target'] = this.selector;
-			mvJsLoader.doLoad( [
+			mw.load( [
 				'mvBaseUploadInterface',
 				'mvFirefogg',
 				'mvFirefoggRender'
@@ -1596,7 +2230,7 @@ function mv_jqueryBindings() {
 		}
 
 		$.fn.baseUploadInterface = function( iObj ) {
-			mvJsLoader.doLoadDepMode( [
+			mw.load( [
 				[
 					'mvBaseUploadInterface',
 					'$j.ui',
@@ -1679,7 +2313,7 @@ function mv_jqueryBindings() {
 				}
 			}
 			// turn the loader into a real dialog loader: 
-			mvJsLoader.doLoadDepMode( [
+			mw.load( [
 				[
 					'$j.ui'
 				],
@@ -1698,7 +2332,7 @@ function mv_jqueryBindings() {
 			} );
 		}
 		$.closeLoaderDialog = function() {
-			mvJsLoader.doLoadDepMode( [
+			mw.load( [
 				[
 					'$j.ui'
 				],
@@ -1711,7 +2345,7 @@ function mv_jqueryBindings() {
 		}
 	
 		$.mwProxy = function( apiConf ) {
-			mvJsLoader.doLoad( ['mw.apiProxy'],
+			mw.load( ['mw.apiProxy'],
 			function() {
 				mw.apiProxy( apiConf );
 			} );
@@ -1996,7 +2630,7 @@ function loadExternalCss( url ) {
 	}
 
 	if ( url.indexOf( '?' ) == -1 ) {
-		url += '?' + getMwReqParam();
+		url += '?' + mw.getUrlParam();
 	}
 	if ( !styleSheetPresent( url ) ) {
 		js_log( 'load css: ' + url );
@@ -2007,87 +2641,7 @@ function loadExternalCss( url ) {
 		document.getElementsByTagName( "head" )[0].appendChild( e );
 	}
 }
-function getMvEmbedURL() {
-	if ( _global['mv_embed_url'] )
-		return _global['mv_embed_url'];
-	var js_elements = document.getElementsByTagName( "script" );
-	for ( var i = 0; i < js_elements.length; i++ ) {
-		// Check for mv_embed.js and/or script loader
-		var src = js_elements[i].getAttribute( "src" );
-		if ( src ) {
-			if ( src.indexOf( 'mv_embed.js' ) != -1 || (
-				( src.indexOf( 'mwScriptLoader.php' ) != -1 || src.indexOf( 'jsScriptLoader.php' ) != -1 )
-				&& src.indexOf( 'mv_embed' ) != -1 ) ) // (check for class=mv_embed script_loader call)
-			{
-				_global['mv_embed_url'] = src;
-				return src;
-			}
-		}
-	}
-	js_error( 'Error: getMvEmbedURL failed to get Embed Path' );
-	return false;
-}
-// Get a unique request ID to ensure fresh JavaScript
-function getMwReqParam() {
-	if ( _global['req_param'] )
-		return _global['req_param'];
-	var mv_embed_url = getMvEmbedURL();
-	
-	var req_param = '';
-	
-	// If we have a URI, add it to the req
-	var urid = mw.parseUri( mv_embed_url ).queryKey['urid']
-	// If we're in debug mode, get a fresh unique request key and pass on "debug" param
-	if ( mw.parseUri( mv_embed_url ).queryKey['debug'] == 'true' ) {
-		var d = new Date();
-		req_param += 'urid=' + d.getTime() + '&debug=true';
-	} else if ( urid ) {
-		// Set from request urid:
-		req_param += 'urid=' + urid;
-	} else {
-		// Otherwise, just use the mv_embed version
-		req_param += 'urid=' + mw.version;
-	}
-	// add the lang param:
-	var langKey = mw.parseUri( mv_embed_url ).queryKey['uselang'];
-	if ( langKey )
-		req_param += '&uselang=' + langKey;
-			
-	_global['req_param'] = req_param;
-		
-	return _global['req_param'];
-}
-/*
- * Set the global mv_embed path based on the script's location
- */
-function getMvEmbedPath() {
-	if ( _global['mv_embed_path'] )
-		return _global['mv_embed_path'];
-	var mv_embed_url = getMvEmbedURL();
-	if ( mv_embed_url.indexOf( 'mv_embed.js' ) !== -1 ) {
-		mv_embed_path = mv_embed_url.substr( 0, mv_embed_url.indexOf( 'mv_embed.js' ) );
-	} else if ( mv_embed_url.indexOf( 'mwScriptLoader.php' ) !== -1 ) {
-		// Script loader is in the root of MediaWiki, so include the default mv_embed extension path
-		mv_embed_path = mv_embed_url.substr( 0, mv_embed_url.indexOf( 'mwScriptLoader.php' ) )
-			+ mediaWiki_mvEmbed_path;
-	} else {
-		mv_embed_path = mv_embed_url.substr( 0, mv_embed_url.indexOf( 'jsScriptLoader.php' ) );
-	}
-	// Make an absolute URL (if it's relative and we don't have an mv_embed path)
-	if ( mv_embed_path.indexOf( '://' ) == -1 ) {
-		var pURL = mw.parseUri( document.URL );
-		if ( mv_embed_path.charAt( 0 ) == '/' ) {
-			mv_embed_path = pURL.protocol + '://' + pURL.authority + mv_embed_path;
-		} else {
-			// Relative
-			if ( mv_embed_path == '' ) {
-				mv_embed_path = pURL.protocol + '://' + pURL.authority + pURL.directory + mv_embed_path;
-			}
-		}
-	}
-	_global['mv_embed_path'] = mv_embed_path;
-	return mv_embed_path;
-}
+
 
 if ( typeof DOMParser == "undefined" ) {
 	DOMParser = function () { }
@@ -2113,14 +2667,14 @@ if ( typeof DOMParser == "undefined" ) {
 */
 function js_log( string ) {
 	// Add any prepend debug strings if necessary (used for cross browser)
-	if ( mw.conf['debug_pre'] )
-		string = mw.conf['debug_pre'] + string;
+	if ( mw.getConfig( 'pre-append-log' ) )
+		string = mw.getConfig( 'pre-append-log' ) + string;
 			
 	if ( window.console ) {
 		window.console.log( string );
 	} else {
-		/*
-		 * IE and non-Firebug debug:
+		/**
+		 * old IE and non-Firebug debug:
 		 */
 		/*var log_elm = document.getElementById('mv_js_log');
 		if(!log_elm){

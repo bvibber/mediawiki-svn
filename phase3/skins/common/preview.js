@@ -55,4 +55,4 @@ function doLivePreview( e ) {
 		} );
 }
 
-js2AddOnloadHook( setupLivePreview );
+mw.addOnloadHook( setupLivePreview );

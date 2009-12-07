@@ -6,7 +6,7 @@
 */
 
 // add our local msgs
-loadGM( {
+mw.addMessages( {
 	"mwe-transition_in" : "Transition in",
 	"mwe-transition_out" : "Transition out",
 	"mwe-effects" : "Effects stack",
@@ -128,11 +128,11 @@ mvTimedEffectsEdit.prototype = {
 		js_log( 'type:' + _this.rObj['type'] );
 		$j( appendTarget ).html( gM( 'mwe-loading_txt' ) );
 		// @@todo integrate into core and loading system:
-		loadExternalJs( mv_embed_path + 'libClipEdit/pixastic-editor/editor.js?' + getMwReqParam() );
-		loadExternalJs( mv_embed_path + 'libClipEdit/pixastic-editor/pixastic.all.js?' + getMwReqParam() );
-		loadExternalJs( mv_embed_path + 'libClipEdit/pixastic-editor/ui.js?' + getMwReqParam() );
-		loadExternalJs( mv_embed_path + 'libClipEdit/pixastic-editor/uidata.js?' + getMwReqParam() );
-		loadExternalCss( mv_embed_path + 'libClipEdit/pixastic-editor/pixastic.all.js?' + getMwReqParam() );
+		loadExternalJs( mw.getMwEmbedPath() + 'libClipEdit/pixastic-editor/editor.js?' + getMwReqParam() );
+		loadExternalJs( mw.getMwEmbedPath() + 'libClipEdit/pixastic-editor/pixastic.all.js?' + getMwReqParam() );
+		loadExternalJs( mw.getMwEmbedPath() + 'libClipEdit/pixastic-editor/ui.js?' + getMwReqParam() );
+		loadExternalJs( mw.getMwEmbedPath() + 'libClipEdit/pixastic-editor/uidata.js?' + getMwReqParam() );
+		loadExternalCss( mw.getMwEmbedPath() + 'libClipEdit/pixastic-editor/pixastic.all.js?' + getMwReqParam() );
 
 		var isPixasticReady = function() {
 			if ( typeof PixasticEditor != 'undefined' ) {

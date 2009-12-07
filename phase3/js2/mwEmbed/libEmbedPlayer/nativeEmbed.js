@@ -1,4 +1,9 @@
-// native embed library:
+
+/*
+* Native embed library:
+* 
+* Enables embedPlayer support for native html5 browser playback system
+*/
 var nativeEmbed = {
 	instanceOf:'nativeEmbed',
 	canPlayThrough:false,
@@ -24,7 +29,7 @@ var nativeEmbed = {
 		return this.wrapEmebedContainer( embed_code );
 	},
 	getEmbedObj:function() {
-		// we want to let mv_embed handle the controls so notice the absence of control attribute
+		// we want to let mwEmbed handle the controls so notice the absence of control attribute
 		// controls=false results in controls being displayed: 
 		// http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-August/016159.html		
 		js_log( "native play url:" + this.getSrc() + ' start_offset: ' + this.start_ntp + ' end: ' + this.end_ntp );
@@ -37,7 +42,8 @@ var nativeEmbed = {
 		/*if(!this.onlyLoadFlag)
 			eb+='autoplay="true" ';*/
 			
-		// continue with the other attr:						
+		// continue with the other attr:
+		// NOTE: could be binded in "post embed js" 						
 		eb += 'oncanplaythrough="$j(\'#' + this.id + '\').get(0).oncanplaythrough();return false;" ' +
 			  'onloadedmetadata="$j(\'#' + this.id + '\').get(0).onloadedmetadata();return false;" ' +
 			  'loadedmetadata="$j(\'#' + this.id + '\').get(0).onloadedmetadata();return false;" ' +

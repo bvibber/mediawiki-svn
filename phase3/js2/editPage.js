@@ -20,8 +20,8 @@ var defaultAddMediaConfig = {
 		'local_wiki_api_url': wgServer + wgScriptPath + '/api.php'
 };
 
-js2AddOnloadHook( function() {
-	js_log( "edit page js2AddOnloadHook::" );
+mw.addOnloadHook( function() {
+	js_log( "edit page mw.addOnloadHook::" );
 	var amwConf = $j.extend( true, defaultAddMediaConfig, mwAddMediaConfig );
 	// kind of tricky, it would be nice to use run on ready "loader" call here
 	var didWikiEditorBind = false;

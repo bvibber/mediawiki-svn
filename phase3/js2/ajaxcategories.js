@@ -1,4 +1,4 @@
-loadGM( {
+mw.addMessages( {
 	"ajax-add-category" : "[Add Category]",
 	"ajax-add-category-submit" : "[Add]",
 	"ajax-confirm-prompt" : "[Confirmation Text]",
@@ -17,7 +17,7 @@ var ajaxCategories = {
 		e.preventDefault();
 
 		// Make sure the suggestion plugin is loaded. Load everything else while we're at it
-		mvJsLoader.doLoad(
+		mw.load(
 			['$j.ui', '$j.ui.dialog', '$j.fn.suggestions'],
 			function() {
 				$j( '#mw-addcategory-prompt' ).toggle();
@@ -80,7 +80,7 @@ var ajaxCategories = {
 
 	confirmEdit : function( page, fn, actionSummary, doneFn ) {
 		// Load jQuery UI
-		mvJsLoader.doLoad(
+		mw.load(
 			['$j.ui', '$j.ui.dialog', '$j.fn.suggestions'],
 			function() {
 				// Produce a confirmation dialog
@@ -323,4 +323,4 @@ var ajaxCategories = {
 	}
 };
 
-js2AddOnloadHook( ajaxCategories.setupAJAXCategories );
+mw.addOnloadHook( ajaxCategories.setupAJAXCategories );

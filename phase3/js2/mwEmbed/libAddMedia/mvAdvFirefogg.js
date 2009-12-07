@@ -2,7 +2,7 @@
  * Advanced Firefogg support. Lets you control many aspects of video encoding.
  */
 
-loadGM({
+mw.addMessages({
 	"fogg-help-sticky" : "Help (click to stick)",
 	"fogg-cg-preset" : "Preset: <strong>$1<\/strong>",
 	"fogg-cg-quality" : "Basic quality and resolution control",

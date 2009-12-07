@@ -92,7 +92,7 @@ class UploadFromChunks extends UploadBase {
 			// first append last chunk (so we can do a real verifyFile check... (check file type etc)
 			$status = $this->doChunkAppend();
 			if( $status->isOK() ){
-				$this->mTempPath = $this->getRealPath( $this->mTempAppendPath );
+				$this->mTempPath = UploadBase::getRealPath( $this->mTempAppendPath );
 				// verify the completed merged chunks as if it was the file that got uploaded:
 				return parent::verifyFile( $this->mTempPath );
 			} else {
@@ -172,7 +172,7 @@ class UploadFromChunks extends UploadBase {
 				ob_clean();
 				echo FormatJson::encode( array(
 						'result' => 1,
-						'filesize' => filesize( $this->getRealPath( $this->mTempAppendPath ) )
+						'filesize' => filesize( UploadBase::getRealPath( $this->mTempAppendPath ) )
 					)
 				);
 				exit( 0 );
@@ -227,13 +227,13 @@ class UploadFromChunks extends UploadBase {
 			}
 			return $status;
 		} else {
-			if( is_file( $this->getRealPath( $this->mTempAppendPath ) ) ){
+			if( is_file( UploadBase::getRealPath( $this->mTempAppendPath ) ) ){
 				$status = $this->appendToUploadFile( $this->mTempAppendPath, $this->mTempPath );
 			} else {
 				$status = Status::newFatal( 'filenotfound', $this->mTempAppendPath );
 			}
 			//check to make sure we have not expanded beyond $wgMaxUploadSize
-			if( filesize(  $this->getRealPath( $this->mTempAppendPath ) ) >  $wgMaxUploadSize )
+			if( filesize(  UploadBase::getRealPath( $this->mTempAppendPath ) ) >  $wgMaxUploadSize )
 				$status = Status::newFatal( 'largefileserver' );
 
 			return $status;

@@ -343,11 +343,6 @@ wfProfileIn( $fname.'-extensions' );
 #
 $wgExtensionMessagesFiles['mwEmbed'] = "{$IP}/js2/mwEmbed/php/languages/mwEmbed.i18n.php";
 
-# Include the js2/mwEmbed autoLoadClasses if js2 is enabled
-if( $wgEnableJS2system ){
-	require_once("$IP/js2/mwEmbed/php/jsAutoloadLocalClasses.php");
-}
-
 # Extension setup functions for extensions other than skins
 # Entries should be added to this variable during the inclusion
 # of the extension file. This allows the extension to perform

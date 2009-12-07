@@ -2,7 +2,7 @@
  * autodetects: new upload api or old http POST.
  */
 
-loadGM({
+mw.addMessages({
 	"fogg-select_file" : "Select file",
 	"fogg-select_new_file" : "Select new file",
 	"fogg-select_url" : "Select URL",
@@ -152,7 +152,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 
 	/**
 	 * Rewrite the upload form, or create our own upload controls for local transcoding.
-	 * Called from $j.firefogg(), in mv_embed.js.
+	 * Called from $j.firefogg(), in mwEmbed.js.
 	 */
 	doRewrite: function( callback ) {
 		var _this = this;

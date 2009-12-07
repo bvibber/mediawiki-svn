@@ -18,8 +18,8 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 }
 
 addOnloadHook( function() {
-	// Only do rewrites if MV_EMBED / js2 is "off"
-	if ( typeof MV_EMBED_VERSION == 'undefined' ) {
+	// Only do rewrites if mwEmbed / js2 is "off"
+	if ( typeof mwEmbed_VERSION == 'undefined' ) {
 		doPageSpecificRewrite();
 	}
 } );
@@ -28,14 +28,14 @@ function doPageSpecificRewrite() {
 	// Add media wizard
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {	
 		var jsSetEdit = [ 'remoteSearchDriver', '$j.fn.textSelection', '$j.ui', '$j.ui.sortable' ]
-		mwr_load_mv_embed( jsSetEdit, function() {
+		mwr_load_mwEmbed( jsSetEdit, function() {
 			loadExternalJs( mwEmbedHostPath + '/editPage.js?' + mwGetReqArgs() );
 		} );
 	}
 	
 	// Timed text display:
 	if ( wgPageName.indexOf( "TimedText" ) === 0 ) {
-		mwr_load_mv_embed( function() {
+		mwr_load_mwEmbed( function() {
 			// Load with mw loader to get localized interface:
 			mw.load( ['mvTimeTextEdit'], function() {
 				// Could run init here (but mvTimeTextEdit already included onLoad actions)
@@ -47,7 +47,7 @@ function doPageSpecificRewrite() {
 	if ( wgPageName == "Special:Upload" ) {	
 		var jsSetUpload = [ 'mvBaseUploadInterface', 'mvFirefogg' , '$j.ui',
 							'$j.ui.progressbar', '$j.ui.dialog', '$j.ui.draggable' ]; 
-		mwr_load_mv_embed( jsSetUpload, function() {
+		mwr_load_mwEmbed( jsSetUpload, function() {
 			loadExternalJs( mwEmbedHostPath + '/uploadPage.js?' + mwGetReqArgs() );
 		} );
 	}
@@ -55,7 +55,7 @@ function doPageSpecificRewrite() {
 	// Special api proxy page
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
 		var wgEnableIframeApiProxy = true;
-		mwr_load_mv_embed( [ 'mw.proxy' ], function() {			
+		mwr_load_mwEmbed( [ 'mw.proxy' ], function() {			
 			loadExternalJs( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
 	}
@@ -78,7 +78,7 @@ function doPageSpecificRewrite() {
 		if ( navigator.userAgent &&  navigator.userAgent.indexOf("Firefox") != -1 )
 			jsSetVideo.push( 'nativeEmbed' );
 	
-		mwr_load_mv_embed( jsSetVideo, function() {
+		mwr_load_mwEmbed( jsSetVideo, function() {
 			mvJsLoader.embedPlayerCheck( function() {
 				// Do utility rewrite of OggHandler content:
 				rewrite_for_OggHandler( vidIdList );
@@ -199,16 +199,16 @@ function mwGetReqArgs() {
 /**
 * @param {mixed} function or classSet to preload
 * classSet saves round trips to the server by grabbing things we will likely need in the first request. 
-* ( this is essentially a shortcut to mv_jqueryBindings in mv_embed.js )   
-* @param {callback} function callback to be called once mv_embed is ready
+* ( this is essentially a shortcut to mv_jqueryBindings in mwEmbed.js )   
+* @param {callback} function callback to be called once mwEmbed is ready
 */
-function mwr_load_mv_embed( classSet, callback ) {
+function mwr_load_mwEmbed( classSet, callback ) {
 	if( typeof classSet == 'function')
 		callback = classSet;
-	// Inject mv_embed if needed
+	// Inject mwEmbed if needed
 	if ( typeof mw == 'undefined' ) {
 		if ( ( mwReqParam['uselang'] || mwReqParam['useloader'] ) && mwUseScriptLoader ) {
-			var rurl = mwEmbedHostPath + '/mwEmbed/jsScriptLoader.php?class=mv_embed';
+			var rurl = mwEmbedHostPath + '/mwEmbed/jsScriptLoader.php?class=mwEmbed';
 			
 			// Add jQuery too if we need it: 
 			if ( typeof window.jQuery == 'undefined' ) {
@@ -229,16 +229,16 @@ function mwr_load_mv_embed( classSet, callback ) {
 			importScriptURI( rurl );
 		} else { 
 			// Ingore classSet (will be loaded onDemand )
-			importScriptURI( mwEmbedHostPath + '/mwEmbed/mv_embed.js?' + mwGetReqArgs() );
+			importScriptURI( mwEmbedHostPath + '/mwEmbed/mwEmbed.js?' + mwGetReqArgs() );
 		}
 	}
-	mwr_check_for_mv_embed( callback );
+	mwr_check_for_mwEmbed( callback );
 }
 
-function mwr_check_for_mv_embed( callback ) {
+function mwr_check_for_mwEmbed( callback ) {
 	if ( typeof mw == 'undefined' ) {
 		setTimeout( function() {
-			mwr_check_for_mv_embed( callback );
+			mwr_check_for_mwEmbed( callback );
 		}, 25 );
 	} else {
 		callback();

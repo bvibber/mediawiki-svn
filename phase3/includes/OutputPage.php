@@ -16,6 +16,9 @@ class OutputPage {
 
 	var $mScriptLoaderClassList = array();
 
+	//Flag if we have initialised javascript Classes
+	var $mLoadedJavascriptClasses = false;
+
 	var $mScripts = '', $mLinkColours, $mPageLinkTitle = '', $mHeadItems = array();
 	var $mInlineMsg = array();
 
@@ -175,10 +178,10 @@ class OutputPage {
 	function addCoreScripts2Top(){
 		global $wgEnableScriptLoader, $wgJSAutoloadLocalClasses, $wgScriptPath, $wgEnableJS2system;
 		global $wgUser, $wgJsMimeType;
-		// @todo We should deprecate wikibits in favor of some mv_embed pieces and jQuery
+		// @todo We should deprecate wikibits in favor of some mwEmbed pieces and jQuery
 
 		if( $wgEnableJS2system ){
-			$core_classes = array( 'window.jQuery', 'mv_embed', 'wikibits' );
+			$core_classes = array( 'window.jQuery', 'mwEmbed', 'wikibits' );
 		} else {
 			$core_classes = array( 'wikibits' );
 		}
@@ -205,8 +208,17 @@ class OutputPage {
 	 * @return boolean False if the class wasn't found, true on success
 	 */
 	function addScriptClass( $js_class ){
-		global $wgDebugJavaScript, $wgJSAutoloadLocalClasses, $wgJSAutoloadClasses,
+		global $wgDebugJavaScript, $wgJSAutoloadLocalClasses, $wgJSAutoloadClasses, $IP,
 				$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath, $wgStylePath, $wgEnableJS2system;
+
+		// Load the javascript script class paths
+		if( ! $this->mLoadedJavascriptClasses ){
+			require_once("$IP/js2/mwEmbed/php/jsAutoloadLocalClasses.php");
+			// Issue the load request:
+			wfLoadMwEmbedClassPaths();
+			// Set the flag to true
+			$this->mLoadedJavascriptClasses = true;
+		}
 
 		$path = jsScriptLoader::getJsPathFromClass( $js_class );
 		if( $path !== false ){
@@ -228,7 +240,7 @@ class OutputPage {
 				}
 				$this->addScript( Html::linkedScript( $path . "?" . $this->getURIDparam( $js_class ) ) );
 
-				// Merge in language text (if js2 is on and we have loadGM function &  scriptLoader is "off")
+				// Merge in language text (if js2 is on and we have mw.addMessages function &  scriptLoader is "off")
 				if( $wgEnableJS2system ){
 					if( !$this->mScriptLoader )
 						$this->mScriptLoader = new jsScriptLoader();

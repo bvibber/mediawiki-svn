@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+<!DOCTYPE HT   ML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title> Sample mv Embed</title>
+	<title> Sample mwEmbed Add Media Wizard</title>
 	<style type="text/css">
 		body{
 			font-size:80%;
@@ -11,16 +11,16 @@
 			border:medium none;
 		}
 	</style>
- 	<script type="text/javascript" src="../mv_embed.js?debug=true"></script> 	 
- 	<!--<script type="text/javascript" src="../jsScriptLoader.php?class=window.jQuery,mv_embed,remoteSearchDriver,$j.ui,$j.ui.resizable,$j.ui.draggable,$j.ui.dialog,$j.ui.tabs,$j.ui.sortable,$j.cookie,baseRemoteSearch&urid=1257728132531&debug=true&uselang=en"></script> --> 	 	 
+ 	<script type="text/javascript" src="../mwEmbed.js?debug=true"></script> 	 
+ 	<!-- <script type="text/javascript" src="../jsScriptLoader.php?class=window.jQuery,mwEmbed,remoteSearchDriver,$j.ui,$j.ui.resizable,$j.ui.draggable,$j.ui.dialog,$j.ui.tabs,$j.ui.sortable,$j.cookie,baseRemoteSearch&urid=1257728132531&debug=true&uselang=en"></script> --> 	 	 
  	<script type="text/javascript">
- 	js2AddOnloadHook(function(){
+ 	mw.addOnloadHook(function(){
  	
  		$j('#add_media_link').addMediaWiz( {
-			'profile':'html_edit',			
-			'target_textbox': '#wpTextbox1',
-			'target_render_area':'#inline_append',			
-			'import_url_mode':'remote_link',	
+			'profile' : 'html_edit',			
+			'target_textbox' : '#wpTextbox1',
+			'target_render_area' : '#inline_append',			
+			'import_url_mode' : 'remote_link',	
 			'remote_insert_description' : true,
 			//note selections in the textbox will take over the default query
 			'default_query': 'fish',	

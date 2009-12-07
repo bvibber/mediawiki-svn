@@ -6,7 +6,7 @@
  * Is optionally extended by Sequence Remote Search Driver
  */
 
-loadGM( {
+mw.addMessages( {
 	"mwe-add_media_wizard" : "Add media wizard",
 	"mwe-media_search" : "Media search",
 	"rsd_box_layout" : "Box layout",
@@ -817,7 +817,7 @@ remoteSearchDriver.prototype = {
 	*/
 	showUploadForm: function() {
 		var _this = this;
-		mvJsLoader.doLoad( ['$j.fn.simpleUploadForm'], function() {			
+		mw.load( ['$j.fn.simpleUploadForm'], function() {			
 			var provider = _this.content_providers['this_wiki'];
 
 			// check for "this_wiki" enabled
@@ -1083,7 +1083,7 @@ remoteSearchDriver.prototype = {
 	loadSearchLib: function( provider, callback ) {
 		var _this = this;
 		// Set up the library req:
-		mvJsLoader.doLoad( [
+		mw.load( [
 			'baseRemoteSearch',
 			provider.lib + 'Search'
 		], function() {
@@ -1149,7 +1149,7 @@ remoteSearchDriver.prototype = {
 		var content = '';
 		for ( var providerName in this.content_providers ) {
 			var provider = this.content_providers[providerName];
-			var tabImage = mv_embed_path + '/skins/common/remote_cp/' + providerName + '_tab.png';
+			var tabImage = mw.getMwEmbedPath() + '/skins/common/remote_cp/' + providerName + '_tab.png';
 			if ( provider.enabled && provider.checked && provider.api_url ) {
 				// Add selected default if set
 				if ( this.currentProvider == providerName )
@@ -1673,7 +1673,7 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 		var options = _this.getClipEditOptions( resource );
 		// Display the mvClipEdit obj once we are done loading:
-		mvJsLoader.doLoad( ['mvClipEdit'], function() {
+		mw.load( ['mvClipEdit'], function() {
 			// Run the image clip tools
 			_this.clipEdit = new mvClipEdit( options );
 		} );
@@ -1710,25 +1710,29 @@ remoteSearchDriver.prototype = {
 					{ id : 'embed_vid' } );
 				js_log( 'append html: ' + embedHtml );
 				$j( '#clip_edit_disp' ).html( embedHtml );
-				js_log( "about to call rewrite_by_id::embed_vid" );
 				
-				// Rewrite by id
-				rewrite_by_id( 'embed_vid', function() {
+				js_log( "about to call $j.embedPlayer::embed_vid" );
 				
-					// Grab information available from the embed instance
-					resource.pSobj.addResourceInfoFromEmbedInstance( resource, 'embed_vid' );
-
-					// Add libraries resizable and hoverIntent to support video edit tools
-					var librarySet = [
-						'mvClipEdit', 
-						'$j.ui.resizable',
-						'$j.fn.hoverIntent'
-					] 
-					mvJsLoader.doLoad( librarySet, function() {
-						// Make sure the rsd_edit_img is removed:
-						$j( '#rsd_edit_img' ).remove();
-						// Run the image clip tools
-						_this.clipEdit = new mvClipEdit( options );
+				//Make sure we have embedPlayer libs: 
+				mvJsLoader.embedPlayerCheck( function() {
+					// Rewrite by id
+					$j( '#embed_vid').embedPlayer ( function() {
+					
+						// Grab information available from the embed instance
+						resource.pSobj.addResourceInfoFromEmbedInstance( resource, 'embed_vid' );
+	
+						// Add libraries resizable and hoverIntent to support video edit tools
+						var librarySet = [
+							'mvClipEdit', 
+							'$j.ui.resizable',
+							'$j.fn.hoverIntent'
+						] 
+						mw.load( librarySet, function() {
+							// Make sure the rsd_edit_img is removed:
+							$j( '#rsd_edit_img' ).remove();
+							// Run the image clip tools
+							_this.clipEdit = new mvClipEdit( options );
+						} );
 					} );
 				} );
 			} );
@@ -1960,8 +1964,10 @@ remoteSearchDriver.prototype = {
 		);
 
 		// Update video tag (if a video)
-		if ( resource.mime.indexOf( 'video/' ) !== -1 )
-			rewrite_by_id( $j( _this.target_container ).attr( 'id' ) + '_rsd_pv_vid' );
+		if ( resource.mime.indexOf( 'video/' ) !== -1 ){
+			var target_rewrite_id = $j( _this.target_container ).attr( 'id' ) + '_rsd_pv_vid';
+			$j('#' + target_rewrite_id ).embedPlayer();
+		}
 
 		// Load the preview text:
 		_this.parse(
@@ -2102,7 +2108,7 @@ remoteSearchDriver.prototype = {
 		$j.addLoaderDialog( gM( 'mwe-importing_asset' ) );
 		
 		// Load the BaseUploadInterface:
-		mvJsLoader.doLoad( 
+		mw.load( 
 			[
 				'mvBaseUploadInterface',
 				'$j.ui.progressbar'

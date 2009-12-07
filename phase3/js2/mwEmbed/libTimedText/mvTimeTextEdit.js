@@ -8,7 +8,7 @@ if ( !mwAddMediaConfig )
 
 var mvTimeTextEdit = { };
 
-loadGM( {
+mw.addMessages( {
   "mwe-upload-subs-file" : "Upload subtitle",
   "mwe-add-subs-file-title" : "Select subtitle to upload",
   "mwe-error-only-srt" : "You can only upload srt files.",
@@ -18,7 +18,7 @@ loadGM( {
 } )
 
 
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
   function getSubtitle( f ) {
       var name = f.files[0].name;
       var srtData = f.files[0].getAsBinary();

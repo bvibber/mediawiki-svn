@@ -1438,7 +1438,7 @@ if ( jQ ) {
 } )();
 
 /************************************************
-********* mv_embed extension to flowplayer.js ***
+********* mwEmbed extension to flowplayer.js ***
 ************************************************/
 var flowplayerEmbed = {
 	instanceOf:'flowplayerEmbed',
@@ -1472,7 +1472,7 @@ var flowplayerEmbed = {
 	postEmbedJS: function()
 	{
 		var _this = this;
-		js_log( 'embedFlow: uri:' + this.getSrc() + "\n" + mv_embed_path + 'libEmbedPlayer/binPlayers/flowplayer/flowplayer-3.0.1.swf' ) ;
+		js_log( 'embedFlow: uri:' + this.getSrc() + "\n" + mw.getMwEmbedPath() + 'libEmbedPlayer/binPlayers/flowplayer/flowplayer-3.0.1.swf' ) ;
 		var flowConfig = {
 			clip: {
 				url: this.getSrc(),
@@ -1500,7 +1500,7 @@ var flowplayerEmbed = {
 			flowConfig.screen.opacity = 0.2;
 		}
 
-		$f( this.pid,  mv_embed_path + 'binPlayers/flowplayer/flowplayer-3.0.1.swf', flowConfig );
+		$f( this.pid,  mwEmbed_path + 'binPlayers/flowplayer/flowplayer-3.0.1.swf', flowConfig );
 		// get the this.fla value:
 		this.getFLA();
 		// set up bindings (for when interacting with the swf causes action:

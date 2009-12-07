@@ -59,7 +59,7 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
-	* Gets the controlls html
+	* Gets the controls html
 	* @return {String} html output of controls
 	*/
 	getControls:function() {

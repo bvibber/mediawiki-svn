@@ -138,6 +138,6 @@ var mwUploadHelper = {
 }
 
 
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
 	mwUploadHelper.init();
 } );
