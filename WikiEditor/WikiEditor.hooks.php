@@ -17,6 +17,7 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 2 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 2 ),
 			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 13 ),
+			array( 'src' => 'Modules/Toolbar/TemplateEditor.js', 'version' => 1 ),
 		),
 		'combined' => array(
 			array( 'src' => 'WikiEditor.combined.js', 'version' => 11 ),
@@ -42,6 +43,19 @@ class WikiEditorHooks {
 					'ui' => array(
 						'type' => 'toggle',
 						'label-message' => 'wikieditor-highlight-preference',
+						'section' => 'editing/experimental',
+					),
+				),
+			),
+		),
+		'templateEditor' => array(
+			'i18n' => 'WikiEditorTemplateEditor',
+			'preferences' => array(
+				'enable' => array(
+					'key' => 'wikieditor-template-editor',
+					'ui' => array(
+						'type' => 'toggle',
+						'label-message' => 'wikieditor-template-editor-preference',
 						'section' => 'editing/experimental',
 					),
 				),
