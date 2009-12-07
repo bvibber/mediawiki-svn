@@ -275,6 +275,7 @@ if ( typeof context == 'undefined' ) {
 								options.init( context );
 							}
 							event.preventDefault();
+							return false;
 						} )
 						.text( $.wikiEditor.autoMsg( options, 'title' ) )
 					)
@@ -334,6 +335,7 @@ if ( typeof context == 'undefined' ) {
 		'getContents': function() {
 			// We use .html() instead of .text() so HTML entities are handled right
 			// Setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
+			
 			return $( '<div />' )
 				.html( context.$content.html().replace( /\<br\>/g, "\n" ) )
 				.text();
@@ -350,8 +352,8 @@ if ( typeof context == 'undefined' ) {
 			var retval;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				retval = context.$iframe[0].contentWindow.getSelection();
-			} else if ( context.$iframe[0].contentWindow.selection ) { // should come last; Opera!
-				retval = context.$iframe[0].contentWindow.selection.createRange();
+			} else if ( context.$iframe[0].contentWindow.document.selection ) { // should come last; Opera!
+				retval = context.$iframe[0].contentWindow.document.selection.createRange();
 			}
 			if ( retval.text ) {
 				retval = retval.text;

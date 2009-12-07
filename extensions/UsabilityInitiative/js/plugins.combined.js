@@ -1585,6 +1585,7 @@ if ( typeof context == 'undefined' ) {
 								options.init( context );
 							}
 							event.preventDefault();
+							return false;
 						} )
 						.text( $.wikiEditor.autoMsg( options, 'title' ) )
 					)
@@ -1644,6 +1645,7 @@ if ( typeof context == 'undefined' ) {
 		'getContents': function() {
 			// We use .html() instead of .text() so HTML entities are handled right
 			// Setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
+			
 			return $( '<div />' )
 				.html( context.$content.html().replace( /\<br\>/g, "\n" ) )
 				.text();
@@ -1660,8 +1662,8 @@ if ( typeof context == 'undefined' ) {
 			var retval;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				retval = context.$iframe[0].contentWindow.getSelection();
-			} else if ( context.$iframe[0].contentWindow.selection ) { // should come last; Opera!
-				retval = context.$iframe[0].contentWindow.selection.createRange();
+			} else if ( context.$iframe[0].contentWindow.document.selection ) { // should come last; Opera!
+				retval = context.$iframe[0].contentWindow.document.selection.createRange();
 			}
 			if ( retval.text ) {
 				retval = retval.text;
@@ -2661,12 +2663,12 @@ fn: {
 			var p = this;
 			while( !p.previousSibling )
 				p = p.parentNode;
-			var prev = p.previousSibling;
+			var prev = p ? p.previousSibling : null;
 			
 			p = this;
 			while ( p && !p.nextSibling )
 				p = p.parentNode;
-			var next = p.nextSibling;
+			var next = p ? p.nextSibling : null;
 			
 			// Edge case: there are more equals signs,
 			// but they're not all in the <div>. Eat them.
@@ -2940,7 +2942,7 @@ api : {
 fn : {
 	/**
 	 * Creates a toolbar module within a wikiEditor
-	 * 
+	 *
 	 * @param {Object} context Context object of editor to create module in
 	 * @param {Object} config Configuration object to create module from
 	 */
@@ -2956,7 +2958,7 @@ fn : {
 	},
 	/**
 	 * Performs an operation based on parameters
-	 * 
+	 *
 	 * @param {Object} context
 	 * @param {Object} action
 	 * @param {Object} source
@@ -2995,15 +2997,12 @@ fn : {
 						parts[part] = ( action.options[part] || '' )
 					}
 				}
-				if ( 'periRegex' in action.options && 'periRegexReplace' in action.options ) {
-<<<<<<< .mine
-					var selection = context.$textarea.textSelection();
-=======
+				if ( 'regex' in action.options && 'regexReplace' in action.options ) {
 					var selection = context.$textarea.textSelection( 'getSelection' );
->>>>>>> .r58906
-					if ( selection != '' ) {
-						parts.peri = selection.replace( action.options.periRegex,
-							action.options.periRegexReplace );
+					if ( selection != '' && selection.match( action.options.regex ) ) {
+						parts.peri = selection.replace( action.options.regex,
+							action.options.regexReplace );
+						parts.pre = parts.post = '';
 					}
 				}
 				context.$textarea.textSelection( 'encapsulateSelection', $.extend( action.options,
@@ -3026,12 +3025,18 @@ fn : {
 		if ( label ) {
 			$group.append( '<div class="label">' + label + '</div>' )
 		}
+
+		var empty = true;
 		if ( 'tools' in group ) {
 			for ( tool in group.tools ) {
-				$group.append( $.wikiEditor.modules.toolbar.fn.buildTool( context, tool, group.tools[tool] ) );
+				var tool =  $.wikiEditor.modules.toolbar.fn.buildTool( context, tool, group.tools[tool] );
+				if ( tool ) {
+					empty = false;
+					$group.append( tool );
+				}
 			}
 		}
-		return $group;
+		return empty ? null : $group;
 	},
 	buildTool : function( context, id, tool ) {
 		if ( 'filters' in tool ) {
@@ -3044,10 +3049,7 @@ fn : {
 		var label = $.wikiEditor.autoMsg( tool, 'label' );
 		switch ( tool.type ) {
 			case 'button':
-				var src = tool.icon;
-				if ( src.indexOf( 'http://' ) !== 0 && src.indexOf( 'https://' ) !== 0 ) {
-					src = $.wikiEditor.imgPath + 'toolbar/' + src;
-				}
+				var src = $.wikiEditor.getIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
 				$button = $( '<img />' ).attr( {
 					'src' : src,
 					'width' : 22,
@@ -3235,31 +3237,35 @@ fn : {
 					.bind( 'mouseup', function( e ) {
 						$(this).blur();
 					} )
-					.bind( 'mousedown', function( e ) {
-						// Only act when the primary mouse button was pressed
-						if ( e.button !== 0 ) {
-							return true;
-						}
+					.bind( 'click', function( e ) {
 						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
 						var $section =
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
 						var show = $section.css( 'display' ) == 'none';
 						$previousSections = $section.parent().find( '.section:visible' );
+						var dH = $previousSections.outerHeight();
 						$previousSections.css( 'position', 'absolute' );
 						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 						$sections.css('overflow', 'hidden');
 						if ( show ) {
 							$section.fadeIn( 'fast' );
-							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() { 
-								$(this).css('overflow', 'visible').css('height', 'auto'); 
+							dH = $section.outerHeight() - dH;
+							if ( context.modules.$toc ) {
+								context.modules.$toc.animate({'height': "+="+dH}, $section.outerHeight() * 2);
+							}
+							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
+								$(this).css('overflow', 'visible').css('height', 'auto');
 							} );
 							$(this).addClass( 'current' );
 						} else {
 							$sections.css('height', $section.outerHeight() )
-								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() { 
-									$(this).css('overflow', 'visible'); 
+								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() {
+									$(this).css('overflow', 'visible');
 								} );
+							if ( context.modules.$toc ) {
+								context.modules.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);
+							}
 						}
 						// Click tracking
 						if($.trackAction != undefined){
@@ -3270,8 +3276,8 @@ fn : {
 							'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
 							show ? $section.attr( 'rel' ) : null
 						);
+						return false;
 					} )
-					.click( function() { return false; } )
 			);
 	},
 	buildSection : function( context, id, section ) {
@@ -3329,29 +3335,6 @@ fn : {
 	},
 	build : function( context, config ) {
 		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.$toolbar );
-		if( wgNavigableTOCCollapseEnable ) {
-			// placeholder for drag control creation code
-			$dragControl = $( '<div />' ).addClass( 'tab' ).attr( 'id', 'wikiEditor-ui-toc-resize-grip' )
-			.append( '<a href="#" title="Drag to resize"></a>' )
-			.bind( 'mousedown', function() {
-				$( '#wikiEditor-ui-toc' )
-				.data( 'openWidth', $( '#wikiEditor-ui-toc' ).width() );
-				$()
-				.bind( 'mousemove', {'context': context}, $.wikiEditor.modules.toc.fn.drag )
-				.bind( 'mouseup', {'context': context}, $.wikiEditor.modules.toc.fn.stopDrag );
-				$(context.$iframe[0].contentWindow.document)
-				.bind( 'mousemove', {'context': context}, function( e ){ 
-					parent.top.$j().trigger("mousemove", e.pageX); 
-					return false; 
-				} )
-				.bind( 'mouseup', {'context': context}, function( e ){ 
-					parent.top.$j().trigger("mouseup"); 
-					return false;  
-				});
-				return false;
-			});
-			context.modules.$toolbar.append( $dragControl );
-		}
 		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
 		context.modules.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
 		var sectionQueue = [];
@@ -3373,8 +3356,7 @@ fn : {
 		$.eachAsync( sectionQueue, {
 			'bulk' : 0,
 			'end' : function() {
-				// HACK: Opera doesn't seem to want to redraw after
-				// these bits
+				// HACK: Opera doesn't seem to want to redraw after these bits
 				// are added to the DOM, so we can just FORCE it!
 				$( 'body' ).css( 'position', 'static' );
 				$( 'body' ).css( 'position', 'relative' );
@@ -3383,7 +3365,14 @@ fn : {
 				s.$sections.append( $.wikiEditor.modules.toolbar.fn.buildSection( s.context, s.id, s.config ) );
 				var $section = s.$sections.find( '.section:visible' );
 				if ( $section.size() ) {
-					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2 );
+					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function( ) {
+						if ( context.modules.$toc ) {
+							context.modules.$toc.height(
+								context.$ui.find( '.wikiEditor-ui-left' )
+									.outerHeight() - context.$ui.find( '.tab-toc' ).outerHeight()
+							)
+						}
+					} );
 				}
 			}
 		} );

@@ -325,12 +325,12 @@ fn: {
 			var p = this;
 			while( !p.previousSibling )
 				p = p.parentNode;
-			var prev = p.previousSibling;
+			var prev = p ? p.previousSibling : null;
 			
 			p = this;
 			while ( p && !p.nextSibling )
 				p = p.parentNode;
-			var next = p.nextSibling;
+			var next = p ? p.nextSibling : null;
 			
 			// Edge case: there are more equals signs,
 			// but they're not all in the <div>. Eat them.
