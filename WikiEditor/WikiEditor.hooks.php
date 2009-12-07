@@ -12,17 +12,17 @@ class WikiEditorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 1 ),
-			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 2 ),
-			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 1 ),
-			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 1 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 12 ),
+			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 2 ),
+			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 3 ),
+			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 2 ),
+			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 2 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 13 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 10 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 11 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 10 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 11 ),
 		),
 	);
 	static $messages = array(
