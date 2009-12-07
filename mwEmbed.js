@@ -1966,14 +1966,6 @@ var mvJsLoader = {
 
 
 /*
-* js2AddOnloadHook depreciated use mw.addOnloadHook instead
-*/
-function js2AddOnloadHook( func ) {
-	mw.addOnloadHook( func );
-}
-
-
-/*
  * Store all the mwEmbed jQuery-specific bindings
  * (set up after jQuery is available).
  *
