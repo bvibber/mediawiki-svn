@@ -9352,8 +9352,8 @@ $messages['oc'] = array(
 	'wikieditor-toolbar-tool-small' => 'Pichon',
 	'wikieditor-toolbar-tool-small-example' => 'Tèxte pichon',
 	'wikieditor-toolbar-group-baseline' => 'Soslinhat',
-	'wikieditor-toolbar-tool-superscript' => 'Expausant',
-	'wikieditor-toolbar-tool-superscript-example' => 'Tèxte en expausant',
+	'wikieditor-toolbar-tool-superscript' => 'Exponent',
+	'wikieditor-toolbar-tool-superscript-example' => 'Tèxte en exponent',
 	'wikieditor-toolbar-tool-subscript' => 'Indici',
 	'wikieditor-toolbar-tool-subscript-example' => 'Tèxte en indici',
 	'wikieditor-toolbar-group-insert' => 'Inserir',
@@ -9711,6 +9711,7 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'wikieditor-toolbar' => "Bara d'utiss ëd modìfica",
@@ -9886,6 +9887,20 @@ $messages['pms'] = array(
 	'wikieditor-toolbar-help-content-file-description' => 'Archivi anserì',
 	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Esempi.png|thumb|Test mostrà]]',
 	'wikieditor-toolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Test mostrà' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Test mostrà</div></div>",
+	'wikieditor-toolbar-help-content-reference-description' => 'Arferiment',
+	'wikieditor-toolbar-help-content-reference-syntax' => 'Test ëd dla pàgina.&lt;ref name="test"&gt;[http://www.example.org Test dël colegament], test adissional.&lt;/ref&gt;',
+	'wikieditor-toolbar-help-content-reference-result' => "Test ëd la pàgina.<sup><a href='#'>[1]</a></sup>",
+	'wikieditor-toolbar-help-content-rereference-description' => 'Usagi adissional dël midem arferiment',
+	'wikieditor-toolbar-help-content-rereference-result' => "Test ëd la pàgina.<sup><a href='#'>[1]</a></sup>",
+	'wikieditor-toolbar-help-content-showreferences-description' => 'Visualisa arferiment',
+	'wikieditor-toolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>Test dël colegament</a>, test adissional.</li></ol>",
+	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'Firma con timestamp',
+	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Nòm utent</a> (<a href='#' title='{{#special:mytalk}}'>discussion</a>) 15:54, 10 giugn 2009 (UTC)",
+	'wikieditor-toolbar-help-content-signature-description' => 'Firma',
+	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Nòm utent</a> (<a href='#' title='{{#special:mytalk}}'>discussion</a>)",
+	'wikieditor-toolbar-help-content-indent-description' => 'Indenta',
+	'wikieditor-toolbar-help-content-indent-syntax' => 'Test normal<br />:Test indentà<br />::Test indentà',
+	'wikieditor-toolbar-help-content-indent-result' => 'Test normal<dl><dd>Test indentà<dl><dd>Test indentà</dd></dl></dd></dl>',
 );
 
 /** Pontic (Ποντιακά)
@@ -11073,7 +11088,7 @@ $messages['si'] = array(
 	'wikieditor-toolbar-help-content-olist-syntax' => '# ලැයිස්තු අයිතමය<br /># ලැයිස්තු අයිතමය',
 	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>ලැයිස්තු අයිතමය</li><li>ලැයිස්තු අයිතමය</li></ol>',
 	'wikieditor-toolbar-help-content-file-description' => 'කා වැද්දූ ගොනුව',
-	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:උදාහරණ.png|thumb|යටි ලියමන් පෙළ]]',
+	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|යටි ලියමන් පෙළ]]',
 	'wikieditor-toolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='යටි ලියමන් පෙළ' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='විශාලනය කිරීම' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>යටි ලියමන් පෙළ</div></div>",
 	'wikieditor-toolbar-help-content-reference-description' => 'යොමුව',
 	'wikieditor-toolbar-help-content-reference-syntax' => 'පිටු පෙළ.&lt;ref name="test"&gt;[http://www.example.org සබැඳුම් පෙළ], අමතර පෙළ.&lt;/ref&gt;',

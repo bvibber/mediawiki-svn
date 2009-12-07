@@ -29,10 +29,12 @@ I guess that 'feature-providing modules' means the same as 'modules providing fe
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
 	'wikieditor' => 'واجعة تعديل نص ويكي متقدمة',
+	'wikieditor-wikitext-tab' => 'نص ويكي',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -75,6 +77,7 @@ $messages['bs'] = array(
 $messages['cs'] = array(
 	'wikieditor' => 'Vylepšené rozhraní pro editaci wikitextu',
 	'wikieditor-desc' => 'Poskytuje rozšiřitelné editační rozhraní a mnoho modulů s novými funkcemi',
+	'wikieditor-wikitext-tab' => 'Wikitext',
 );
 
 /** Welsh (Cymraeg)

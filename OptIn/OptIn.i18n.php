@@ -263,8 +263,30 @@ $messages['ar'] = array(
 	'optin-survey-question-different' => 'ماذا كان بإمكاننا فعله لكي تستمر في استخدام البيتا؟',
 	'optin-survey-question-feedback' => 'من فضلك أطلعنا على أي ملاحظات أو مخاوف أو آراء أخرى عن المشروع - كل ملاحظة مفيدة!:',
 	'optin-survey-question-browser' => 'ما المتصفح الذي تستخدمه؟',
+	'optin-survey-answer-browser-ie5' => 'إنترنت إكسبلورر 5',
+	'optin-survey-answer-browser-ie6' => 'إنترنت إكسبلورر 6',
+	'optin-survey-answer-browser-ie7' => 'إنترنت إكسبلورر 7',
+	'optin-survey-answer-browser-ie8' => 'إنترنت إكسبلورر 8',
+	'optin-survey-answer-browser-ff1' => 'فايرفوكس 1',
+	'optin-survey-answer-browser-ff2' => 'فايرفوكس 2',
+	'optin-survey-answer-browser-ff3' => 'فايرفوكس 3',
+	'optin-survey-answer-browser-cb' => 'جوجل كروم بيتا',
+	'optin-survey-answer-browser-c1' => 'جوجل كروم 1',
+	'optin-survey-answer-browser-c2' => 'جوجل كروم 2',
+	'optin-survey-answer-browser-c3' => 'جوجل كروم 3',
+	'optin-survey-answer-browser-c4' => 'جوجل كروم 4',
+	'optin-survey-answer-browser-s3' => 'سفاري 3',
+	'optin-survey-answer-browser-s4' => 'سفاري 4',
+	'optin-survey-answer-browser-o9' => 'أوبرا 9',
+	'optin-survey-answer-browser-o9.5' => 'أوبرا 9.5',
+	'optin-survey-answer-browser-o10' => 'أوبرا 10',
 	'optin-survey-answer-browser-other' => 'متصفح آخر:',
 	'optin-survey-question-os' => 'ما نظام التشغيل الذي تستخدمه؟',
+	'optin-survey-answer-os-windows' => 'ويندوز',
+	'optin-survey-answer-os-windowsmobile' => 'ويندوز موبايل',
+	'optin-survey-answer-os-macos' => 'ماك أو إس',
+	'optin-survey-answer-os-iphoneos' => 'آي فون أو إس',
+	'optin-survey-answer-os-linux' => 'لينكس',
 	'optin-survey-answer-os-other' => 'نظام تشغيل آخر:',
 	'optin-survey-question-res' => 'ما أبعاد شاشتك؟',
 	'optin-survey-question-changes' => 'ما التغييرات التي تطمح لرؤيتها في بيتا المستقبل؟ (من فضلك اختر كل ما ينطبق)',
@@ -3456,7 +3478,7 @@ $messages['ml'] = array(
 	'optin-improvements' => '==എന്താണു മെച്ചപ്പെടുത്തിയത്?==
 [[File:UsabilityNavigation.png|left|link=|പുതിയ നാവിഗേഷൻ റ്റാബുകളുടെ സ്ക്രീൻഷോട്ട്]]
 ;മെച്ചപ്പെട്ട നാവിഗേഷൻ
-പുതിയ നാവിഗേഷൻ സിസ്റ്റം താങ്കൾ എവിടെയെന്നും, എന്താണു ചെയ്യുന്നതെന്നും ലളിതമായി കാണിച്ചു തരുന്നു, എങ്ങിനെ മറ്റൊരിടത്തേയ്ക്ക് പോകാം എന്നും അതിലുണ്ട്. തിരച്ചിൽ പെട്ടി മുകളിൽ വലത്തു മൂലയിലായി മാറ്റി സ്ഥാപിച്ചിരിക്കുന്നു. തിരച്ചിൽ ഉപയോഗിച്ച് കണ്ടുപിടിക്കലും ഉപയോഗിക്കലും ഇനി ലളിതമാകും.
+പുതിയ നാവിഗേഷൻ സിസ്റ്റം താങ്കൾ എവിടെയെന്നും, എന്താണു ചെയ്യുന്നതെന്നും ലളിതമായി കാണിച്ചു തരുന്നു, എങ്ങനെ മറ്റൊരിടത്തേയ്ക്ക് പോകാം എന്നും അതിലുണ്ട്. തിരച്ചിൽ പെട്ടി മുകളിൽ വലത്തു മൂലയിലായി മാറ്റി സ്ഥാപിച്ചിരിക്കുന്നു. തിരച്ചിൽ ഉപയോഗിച്ച് കണ്ടുപിടിക്കലും ഉപയോഗിക്കലും ഇനി ലളിതമാകും.
 <div style="clear:both;"></div>
 
 [[File:UsabilityToolbar.png|left|link=|വിപുലീകരിച്ച എഡിറ്റ് റ്റൂൾബാറിന്റെ സ്ക്രീൻഷോട്ട്]]

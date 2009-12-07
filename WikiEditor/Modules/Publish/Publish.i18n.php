@@ -156,6 +156,7 @@ $messages['bs'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
+	'wikieditor-publish-preference' => 'Zapnout průvodce publikováním',
 	'wikieditor-publish-button-publish' => 'Publikovat',
 	'wikieditor-publish-button-cancel' => 'Storno',
 	'wikieditor-publish-dialog-title' => 'Publikovat do {{grammar:2sg|{{SITENAME}}}}',

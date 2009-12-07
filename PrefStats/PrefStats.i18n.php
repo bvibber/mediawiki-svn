@@ -1352,6 +1352,7 @@ $messages['ml'] = array(
 ** {{PLURAL:$3|ഒരു ഉപയോക്താവ്|$3 ഉപയോക്താക്കൾ}} ഇതു പിന്നീട് ഒഴിവാക്കി
 * ആകെ, {{PLURAL:$4|ഒരു ഉപയോക്താവ്|$4 ഉപയോക്താക്കൾ}} ഈ ക്രമീകരണ ഐച്ഛികം ഉപയോഗിക്കുന്നു',
 	'prefstats-xaxis' => 'കാലയളവ് (മണിക്കൂർ)',
+	'prefstats-factors' => 'കാണേണ്ട വിധം: $1',
 	'prefstats-factor-hour' => 'മണിക്കൂർ',
 	'prefstats-factor-sixhours' => 'ആറു മണിക്കൂർ',
 	'prefstats-factor-day' => 'ദിവസം',
