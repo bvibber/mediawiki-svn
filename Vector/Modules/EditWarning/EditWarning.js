@@ -1,6 +1,6 @@
 /* JavaScript for EditWarning extension */
 
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
 	// Check preferences for editwarning
 	if ( !wgVectorPreferences || !( wgVectorPreferences.editwarning && wgVectorPreferences.editwarning.enable ) ) {
 		return true;

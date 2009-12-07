@@ -189,7 +189,7 @@ var wikiEditorTests = {
 		'post': 6
 	}
 };
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
 	var button = $j( '<button>Run wikiEditor Tests!</button>' )
 		.css( {
 			'position': 'fixed',

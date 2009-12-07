@@ -6,7 +6,7 @@ if ( typeof os_autoload_inputs !== 'undefined' && os_autoload_forms !== 'undefin
 	os_autoload_forms = [];
 }
 
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
 	// Only use this function in conjuction with the Vector skin
 	if( skin != 'vector' ) {
 		return;

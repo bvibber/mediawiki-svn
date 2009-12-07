@@ -1,6 +1,6 @@
 /* JavaScript for WikiEditor Preview module */
 
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
 	// Check preferences for preview
 	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.preview && wgWikiEditorPreferences.preview.enable ) ) {
 		return true;

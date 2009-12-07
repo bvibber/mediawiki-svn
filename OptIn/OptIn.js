@@ -68,7 +68,7 @@ function optInGetPOSTData() {
 		'opt': 'browser' };
 }
 
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
 	$j( '.optin-other-select' ).parent().hide();
 	$j( 'select.optin-need-other' ).change( function() {
 		if( $j(this).val() == 'other' )

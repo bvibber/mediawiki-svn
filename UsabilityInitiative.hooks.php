@@ -164,7 +164,7 @@ class UsabilityInitiativeHooks {
 				Xml::tags(
 					'script',
 					array( 'type' => $wgJsMimeType ),
-					'loadGM({' . implode( ',', self::$messages ) . '});'
+					'mw.addMessages({' . implode( ',', self::$messages ) . '});'
 				)
 			);
 		}

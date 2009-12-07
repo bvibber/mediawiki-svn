@@ -1,6 +1,6 @@
 /* JavaScript for WikiEditor Publish module */
 
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
 	// Check preferences for preview
 	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.publish && wgWikiEditorPreferences.publish.enable ) ) {
 		return true;

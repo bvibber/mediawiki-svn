@@ -512,6 +512,6 @@ return $(this);
 })(jQuery);
 
 // colorize the table on document.ready
-js2AddOnloadHook( $j.colorizeTable );
-js2AddOnloadHook( $j.changeDataLinks );
-js2AddOnloadHook( $j.setUIControls );
+mw.addOnloadHook( $j.colorizeTable );
+mw.addOnloadHook( $j.changeDataLinks );
+mw.addOnloadHook( $j.setUIControls );

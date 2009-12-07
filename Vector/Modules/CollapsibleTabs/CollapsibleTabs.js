@@ -1,4 +1,4 @@
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
 	
 	var rtl = $j( 'body' ).is( '.rtl' ) ? true : false;
 	
