@@ -1,7 +1,7 @@
 //the core javascript file of the wiki@home extension
 
 //load msgs:
-loadGM({
+mw.addMessages({
 	"wah-menu-jobs" : "Jobs",
 	"wah-menu-stats": "Stats",
 	"wah-menu-pref" : "Preferences",
@@ -39,10 +39,10 @@ wahConfig = {
 	'jobsearch_delay'	: ( wgClientSearchInterval ) ? wgClientSearchInterval: 60
 };
 
-//js2AddOnloadHook ensures that the dom and core libraries are ready:
-js2AddOnloadHook(function(){
+//mw.addOnloadHook ensures that the dom and core libraries are ready:
+mw.addOnloadHook(function(){
 	//set up the dependency load request:
-	var depReq = [
+	mw.load( [
 		[
 			'mvBaseUploadInterface',
 			'mvFirefoggRender',
@@ -55,8 +55,7 @@ js2AddOnloadHook(function(){
 			'$j.ui.tabs',
 			'$j.cookie'
 		]
-	];
-	mvJsLoader.doLoadDepMode( depReq, function(){
+	], function(){
 		WikiAtHome.init( wahConfig );
 	});
 });

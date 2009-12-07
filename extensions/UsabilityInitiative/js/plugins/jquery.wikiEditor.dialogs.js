@@ -43,7 +43,7 @@ fn: {
 			$.wikiEditor.modules.dialogs.modules[module] = config[module];
 		}
 		// Build out modules immediately
-		mvJsLoader.doLoad( ['$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
+		mw.load( ['$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
 			for ( module in $.wikiEditor.modules.dialogs.modules ) {
 				var module = $.wikiEditor.modules.dialogs.modules[module];
 				// Only create the dialog if it doesn't exist yet

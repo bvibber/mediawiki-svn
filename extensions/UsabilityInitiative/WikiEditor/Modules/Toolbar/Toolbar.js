@@ -1,6 +1,6 @@
 /* JavaScript for WikiEditor Toolbar module */
 
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
 	// Check preferences for toolbar
 	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.toolbar && wgWikiEditorPreferences.toolbar.enable ) ) {
 		return true;
