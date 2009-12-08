@@ -1523,9 +1523,17 @@ if ( typeof context == 'undefined' ) {
 			}
 		}
 	}
-	/* Event Handlers */
+	
+	/* 
+	 * Event Handlers
+	 * 
+	 * These act as filters returning false if the event should be ignored or returning true if it should be passed
+	 * on to all modules. This is also where we can attach some extra information to the events.
+	 */
+	
 	context.evt = {
 		'change': function( event ) {
+			// Event filtering
 			switch ( event.type ) {
 				case 'keypress':
 					if ( /* TODO: test if something interesting was deleted */ true ) {
@@ -1538,26 +1546,41 @@ if ( typeof context == 'undefined' ) {
 					if ( /* TODO: test if text was dragged and dropped */ true ) {
 						event.data.scope = 'division';
 					} else {
-						event.data.scope = 'none';
+						return false;
 					}
 					break;
 				default:
 					event.data.scope = 'division';
 					break;
 			}
-			if ( event.data.scope !== 'none' ) {
-				for ( module in $.wikiEditor.modules ) {
-					if ( 'evt' in $.wikiEditor.modules[module] && 'change' in $.wikiEditor.modules[module].evt ) {
-						$.wikiEditor.modules[module].evt.change( context, event );
-					}
-				}
-			}
+			return true;
 		}
 	};
 	
 	/* Internal Functions */
 	
 	context.fn = {
+		'trigger': function( name, event ) {
+			// Event is an optional argument, but from here on out, at least the type field should be dependable
+			if ( event == undefined ) {
+				event = { 'type': 'custom' };
+			}
+			// Ensure there's a place for extra information to live
+			if ( event.data == undefined ) {
+				event.data = {};
+			}
+			// Allow filtering to occur
+			if ( name in context.evt ) {
+				if ( !context.evt[name]( event ) ) {
+					return false;
+				}
+			}
+			for ( module in $.wikiEditor.modules ) {
+				if ( 'evt' in $.wikiEditor.modules[module] && name in $.wikiEditor.modules[module].evt ) {
+					$.wikiEditor.modules[module].evt[name]( context, event );
+				}
+			}
+		},
 		'addButton': function( options ) {
 			// Ensure that buttons and tabs are visible
 			context.$controls.show();
@@ -1619,7 +1642,7 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe[0].contentWindow.document.open();
 			context.$iframe[0].contentWindow.document.write(
 				// FIXME: Break this line
-				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keydown keypress keyup mousedown mouseup cut paste", { "context": context }, context.evt.change );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace">' + contentHTML + '</body></html>'
+				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keydown keypress keyup mousedown mouseup cut paste", function( event ) { context.fn.trigger( "change", event ) } );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace">' + contentHTML + '</body></html>'
 			);
 			context.$iframe[0].contentWindow.document.close();
 			// Turn the document's design mode on
@@ -1834,6 +1857,10 @@ if ( typeof context == 'undefined' ) {
 	context.$wikitext.find( '.wikiEditor-ui-left' ).prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
 	// Setup the intial view
 	context.view = 'wikitext';
+	
+	/* Core Event Handlers */
+	
+	$( window ).resize( function( event ) { context.fn.trigger( 'resize', event ) } );
 	
 	/* Magic IFRAME Construction */
 	
@@ -2941,9 +2968,17 @@ api : {
 	}
 },
 /**
+ * Event handlers
+ */
+evt: {
+	resize: function( context, event ) {
+		context.$ui.find( '.sections' ).height( context.$ui.find( '.sections .section:visible' ).outerHeight() );
+	}
+},
+/**
  * Internally used functions
  */
-fn : {
+fn: {
 	/**
 	 * Creates a toolbar module within a wikiEditor
 	 *

@@ -33,7 +33,8 @@ WIKIEDITOR_MODULES := \
 	WikiEditor/Modules/Preview/Preview.js\
 	WikiEditor/Modules/Publish/Publish.js\
 	WikiEditor/Modules/Toc/Toc.js\
-	WikiEditor/Modules/Toolbar/Toolbar.js
+	WikiEditor/Modules/Toolbar/Toolbar.js\
+	WikiEditor/Modules/TemplateEditor/TemplateEditor.js
 
 VECTOR_MODULES := \
 	Vector/Modules/CollapsibleTabs/CollapsibleTabs.js\
