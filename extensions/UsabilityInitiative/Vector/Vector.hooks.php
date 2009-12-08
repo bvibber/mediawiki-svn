@@ -61,7 +61,7 @@ class VectorHooks {
 	 */
 	
 	/**
-	 * EditPage::showEditForm:initial hook
+	 * AjaxAddScript hook
 	 * Adds the modules to the edit form
 	 */
 	 public static function addModules( &$toolbar ) {
