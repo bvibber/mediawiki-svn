@@ -21,7 +21,7 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_xml_output'      => 'XML output',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Remove comments',
-	'expand_templates_remove_nowiki'   => 'Supress <nowiki> tags in result',
+	'expand_templates_remove_nowiki'   => 'Suppress <nowiki> tags in result',
 	'expand_templates_generate_xml'    => 'Show XML parse tree',
 	'expand_templates_preview'         => 'Preview',
 );
