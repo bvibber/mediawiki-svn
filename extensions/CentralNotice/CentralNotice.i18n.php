@@ -591,6 +591,8 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'centralnotice-desc' => "Ouzhpennañ a ra ur c'hemenn kreiz e laez ar pajennoù (sitenotice).",
+	'centralnotice-clone' => 'Eilañ',
+	'centralnotice-clone-notice' => 'Krouiñ un eiladenn eus ar patrom',
 );
 
 /** Bosnian (Bosanski)
@@ -2531,6 +2533,7 @@ Tambahkan di bawah ini.',
  * @author Malafaya
  */
 $messages['io'] = array(
+	'centralnotice-modify' => 'Sendez',
 	'centralnotice-add' => 'Adjuntar',
 	'centralnotice-add-notice' => 'Adjuntar avizo',
 	'centralnotice-add-template' => 'Adjuntar shablono',
@@ -5799,11 +5802,11 @@ Hãy thêm vào!',
 	'centralnotice-overlap' => 'Không thêm được: thông báo sẽ hiện cùng lúc với thông báo khác.',
 	'centralnotice-invalid-date-range' => 'Không cập nhật được: thời gian không hợp lệ.',
 	'centralnotice-null-string' => 'Không thêm được: chuỗi rỗng.',
-	'centralnotice-confirm-delete' => 'Bạn có chắc muốn xóa thông báo hoặc tiêu bản này không? Không thể phục hồi nó.',
+	'centralnotice-confirm-delete' => 'Bạn có chắc muốn xóa thông báo hoặc bản mẫu này không? Không thể phục hồi nó.',
 	'centralnotice-no-notices-exist' => 'Chưa có thông báo. Hãy thêm thông báo ở dưới.',
 	'centralnotice-no-templates-translate' => 'Không có bản mẫu để dịch',
 	'centralnotice-number-uses' => 'Số thông báo dùng',
-	'centralnotice-edit-template' => 'Sửa đổi tiêu bản',
+	'centralnotice-edit-template' => 'Sửa đổi bản mẫu',
 	'centralnotice-message' => 'Thông báo',
 	'centralnotice-message-not-set' => 'Thông báo chưa được thiết lập',
 	'centralnotice-clone' => 'Sao',
