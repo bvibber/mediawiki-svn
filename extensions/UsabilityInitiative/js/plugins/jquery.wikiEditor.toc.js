@@ -127,7 +127,11 @@ fn: {
 				context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).fadeIn( 'fast' );
 			 } )
 			.prev()
-			.animate( { 'marginRight': '-1px' }, 'fast', function() { $( this ).css( 'marginRight', 0 ); } )
+			.animate( { 'marginRight': '-1px' }, 'fast', function() {
+				$( this ).css( 'marginRight', 0 );
+				// Let the UI know things have moved around
+				context.fn.trigger( 'resize' );
+			} )
 			.children()
 			.animate( { 'marginRight': '1px' }, 'fast',  function() { $( this ).css( 'marginRight', 0 ); } );
 		$.cookie( 'wikiEditor-' + context.instance + '-toc-width', 0 );
@@ -149,6 +153,8 @@ fn: {
 			.animate( { 'width' : openWidth }, 'fast', function() {
 				context.$content.trigger( 'mouseup' );
 				$( this ).css( { 'position': 'relative', 'right': 'auto', 'top': 'auto' } );
+				// Let the UI know things have moved around
+				context.fn.trigger( 'resize' );
 			 } )
 			.prev()
 			.animate( { 'marginRight': ( parseFloat( openWidth ) * -1 ) }, 'fast' )
