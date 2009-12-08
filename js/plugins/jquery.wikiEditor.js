@@ -251,8 +251,14 @@ if ( typeof context == 'undefined' ) {
 	
 	context.fn = {
 		'trigger': function( name, event ) {
-			// Make a place for extra information to live
-			event.data = {};
+			// Event is an optional argument, but from here on out, at least the type field should be dependable
+			if ( event == undefined ) {
+				event = { 'type': 'custom' };
+			}
+			// Ensure there's a place for extra information to live
+			if ( event.data == undefined ) {
+				event.data = {};
+			}
 			// Allow filtering to occur
 			if ( name in context.evt ) {
 				if ( !context.evt[name]( event ) ) {
