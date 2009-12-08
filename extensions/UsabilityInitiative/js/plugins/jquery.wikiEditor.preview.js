@@ -57,7 +57,7 @@ fn: {
 						context.$preview.find( '.wikiEditor-preview-loading' ).hide();
 						context.$preview.find( '.wikiEditor-preview-contents' )
 							.html( data.parse.text['*'] )
-							.find( 'a:not([href^=#])' ).attr( 'href', '#' );
+							.find( 'a:not([href^=#])' ).click( function() { return false; } );
 					},
 					'json'
 				);
