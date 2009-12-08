@@ -18,3 +18,9 @@ div.suggestions {
 	border: 2px solid red;
 	padding: 2px 1px;
 }
+
+.ui-dialog .ui-dialog-buttonpane button.disabled {
+	color: #7f7f7f;
+	background: #f2f2f2;
+	border-color: #cccccc;
+}
