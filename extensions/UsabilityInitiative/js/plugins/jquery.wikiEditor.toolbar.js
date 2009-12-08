@@ -162,9 +162,17 @@ api : {
 	}
 },
 /**
+ * Event handlers
+ */
+evt: {
+	resize: function( context, event ) {
+		context.$ui.find( '.sections' ).height( context.$ui.find( '.sections .section:visible' ).outerHeight() );
+	}
+},
+/**
  * Internally used functions
  */
-fn : {
+fn: {
 	/**
 	 * Creates a toolbar module within a wikiEditor
 	 *
