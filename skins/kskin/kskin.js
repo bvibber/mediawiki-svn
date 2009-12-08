@@ -22,7 +22,7 @@ var kskinConfig = {
 	
 	// Menu items for the kskin: 
 	menu_items:[
-		'playerselect',
+		'playerSelect',
 		'download',
 		'share',
 		'credits',

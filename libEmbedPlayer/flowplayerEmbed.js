@@ -1,6 +1,6 @@
 /**
- * metavid: mv_flashEmbed builds off of flowplayer api (included first in this file)
- * THIS WILL BE DEPRECIATED SOON
+ * Builds off of flowplayer api (included first in this file)
+ * THIS WILL BE DEPRECIATED SOON AS WE KNOW USE "kplayer" for our flash fallback support
  */
 
  /**

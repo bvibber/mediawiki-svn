@@ -28,6 +28,7 @@ function wfClassPathLoader( $jvar ) {
 	global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 	if ( !isset( $jvar[1] ) )
 		return false;
+
 	$jClassSet = FormatJson::decode( '{' . $jvar[1] . '}', true );
 	foreach ( $jClassSet as $jClass => $jPath ) {
 		// Strip $ from jClass (as they are stripped on URL request parameter input)

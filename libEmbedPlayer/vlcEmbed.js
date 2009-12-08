@@ -292,6 +292,6 @@ var vlcEmbed = {
 	},	
 	// get the embed vlc object 
 	getVLC : function() {
-		this.vlc = this.getPluginEmbed();
+		this.vlc = $j('#' + this.pid ).get(0);
 	}
 };

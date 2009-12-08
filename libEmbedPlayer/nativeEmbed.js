@@ -5,13 +5,28 @@
 * Enables embedPlayer support for native html5 browser playback system
 */
 var nativeEmbed = {
+
+	//Instance Name
 	instanceOf:'nativeEmbed',
-	canPlayThrough:false,
+	
+	// Counts the number of times we tried to access the video element 
 	grab_try_count:0,
+	
+	// Flag to only load the video ( not play it ) 
 	onlyLoadFlag:false,
-	onLoadedCallback : new Array(),
+	
+	//Callback fired once video is "loaded" 
+	onLoadedCallback: null,
+	
+	//For retrying a player embed with a distinct url
+	// NOTE: this bug workaround may no longer be applicable	
 	urlAppend:'',
+	
+	// The previus "currentTime" to snif seek actions 
+	// NOTE the bug where onSeeked does not seem fire consistently may no longer be applicable	 
 	prevCurrentTime: -1,
+	
+	// Native player supported feature set
 	supports: {
 		'play_head':true,
 		'pause':true,
@@ -21,15 +36,22 @@ var nativeEmbed = {
 		
 		'overlays':true,
 		'playlist_swap_loader':true // if the object supports playlist functions		
-	},
+	},	
+	/**
+	* Wraps the embed object and returns the output
+	*/
 	getEmbedHTML : function () {
 		var embed_code =  this.getEmbedObj();
 		js_log( "embed code: " + embed_code )
 		setTimeout( '$j(\'#' + this.id + '\').get(0).postEmbedJS()', 150 );
 		return this.wrapEmebedContainer( embed_code );
 	},
+	
+	/**
+	* Get the native embeed  code
+	*/
 	getEmbedObj:function() {
-		// we want to let mwEmbed handle the controls so notice the absence of control attribute
+		// We want to let mwEmbed handle the controls so notice the absence of control attribute
 		// controls=false results in controls being displayed: 
 		// http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-August/016159.html		
 		js_log( "native play url:" + this.getSrc() + ' start_offset: ' + this.start_ntp + ' end: ' + this.end_ntp );
@@ -37,96 +59,113 @@ var nativeEmbed = {
 					'id="' + this.pid + '" ' +
 					'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
 					'width="' + this.width + '" height="' + this.height + '" ' +
-					   'src="' + this.getSrc() + '" ';
-					   
-		/*if(!this.onlyLoadFlag)
-			eb+='autoplay="true" ';*/
-			
-		// continue with the other attr:
-		// NOTE: could be binded in "post embed js" 						
-		eb += 'oncanplaythrough="$j(\'#' + this.id + '\').get(0).oncanplaythrough();return false;" ' +
-			  'onloadedmetadata="$j(\'#' + this.id + '\').get(0).onloadedmetadata();return false;" ' +
-			  'loadedmetadata="$j(\'#' + this.id + '\').get(0).onloadedmetadata();return false;" ' +
-			  'onprogress="$j(\'#' + this.id + '\').get(0).onprogress( event );return false;" ' +
-			  'onended="$j(\'#' + this.id + '\').get(0).onended();return false;" ' +
-			  'onseeking="$j(\'#' + this.id + '\').get(0).onseeking();" ' +
-       		  'onseeked="$j(\'#' + this.id + '\').get(0).onseeked();" >' +
-			'</video>';
+					'src="' + this.getSrc() + '" ' +				
+				 '</video>';
 		return eb;
-	},
-	// @@todo : loading progress	
+	},	
+	/**
+	* Post element javascript, binds event listeners and starts monitor 
+	*/	
 	postEmbedJS:function() {
 		var _this = this;
 		js_log( "f:native:postEmbedJS:" );
-		this.getVID();
-		if ( typeof this.vid != 'undefined' ) {
-			// always load the media:
+		this.getPlayerElement();
+		if ( typeof this.playerElement != 'undefined' ) {
+		
+			// Setup some bindings:
+			var vid = $j( this.playerElement ).get(0);
+			var wtf = function(){
+				alert("wtf");
+			}			
+			// Bind events to local js methods:			
+			vid.addEventListener( 'canplaythrough',  function(){ _this.canplaythrough }, true);			 
+			vid.addEventListener( 'loadedmetadata', function(){ _this.onloadedmetadata() }, true);
+			vid.addEventListener( 'progress', function( e ){  _this.onprogress( e )  }, true);
+			vid.addEventListener( 'ended', function(){  _this.onended() }, true);		
+			vid.addEventListener( 'seeking', function(){ _this.onseeking() }, true);
+			vid.addEventListener( 'seeked', function(){ _this.onseeked() }, true);			
+		
+			// Always load the media:
 			if ( this.onlyLoadFlag ) {
-				this.vid.load();
+				this.playerElement.load();
 			} else {
-				// issue play request				
-				this.vid.play();
+				// Issue play request				
+				this.playerElement.play();
 			}
-			setTimeout( '$j(\'#' + this.id + '\').get(0).monitor()', 100 );
-		} else {
-			js_log( 'could not grab vid obj trying again:' + typeof this.vid );
+			setTimeout( function(){
+				_this.monitor();
+			}, 100 );
+			
+		} else {		
+			// False inserts don't seem to be as much of a problem as before: 
+			js_log( 'Could not grab vid obj trying again:' + typeof this.playerElement );
 			this.grab_try_count++;
 			if (	this.grab_count == 20 ) {
-				js_log( ' could not get vid object after 20 tries re-run: getEmbedObj() ?' ) ;
+				js_log( 'Could not get vid object after 20 tries re-run: getEmbedObj() ?' ) ;
 			} else {
 				setTimeout( function(){
 					_this.postEmbedJS();
 				}, 200 );
 			}
+			
 		}
-	},
-	onseeking:function() {
-		js_log( "onseeking" );
-		this.seeking = true;
-		this.setStatus( gM( 'mwe-seeking' ) );
-	},
-	onseeked: function() {
-		js_log("onseeked");
-		this.seeking = false;
-	},
-	doSeek:function( perc ) {
-		js_log( 'native:seek:p: ' + perc + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
+	},		
+	
+	/**
+	* Issue a seeking request. 
+	*
+	* @param {Float} percentage
+	*/
+	doSeek:function( percentage ) {
+		js_log( 'native:seek:p: ' + percentage + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
 		// @@todo check if the clip is loaded here (if so we can do a local seek)
 		if ( this.supportsURLTimeEncoding() ) {
 			// Make sure we could not do a local seek instead:
-			if ( perc < this.bufferedPercent && this.vid.duration && !this.didSeekJump ) {
-				js_log( "do local seek " + perc + ' is already buffered < ' + this.bufferedPercent );
-				this.doNativeSeek( perc );
+			if ( percentage < this.bufferedPercent && this.playerElement.duration && !this.didSeekJump ) {
+				js_log( "do local seek " + percentage + ' is already buffered < ' + this.bufferedPercent );
+				this.doNativeSeek( percentage );
 			} else {
 				// We support URLTimeEncoding call parent seek: 
-				this.parent_doSeek( perc );
+				this.parent_doSeek( percentage );
 			}
-		} else if ( this.vid && this.vid.duration ) {
-			// (could also check bufferedPercent > perc seek (and issue oggz_chop request or not) 
-			this.doNativeSeek( perc );
+		} else if ( this.playerElement && this.playerElement.duration ) {
+			// (could also check bufferedPercent > percentage seek (and issue oggz_chop request or not) 
+			this.doNativeSeek( percentage );
 		} else {
 			// try to do a play then seek: 
-			this.doPlayThenSeek( perc )
+			this.doPlayThenSeek( percentage )
 		}
 	},
-	doNativeSeek:function( perc ) {
-		js_log( 'native::doNativeSeek::' + perc );
+	
+	/**
+	* Do a native seek by updating the currentTime
+	*/
+	doNativeSeek:function( percentage ) {
+		js_log( 'native::doNativeSeek::' + percentage );
 		this.seek_time_sec = 0;
-		this.vid.currentTime = perc * this.duration;
+		this.playerElement.currentTime = percentage * this.duration;
 		this.monitor();
 	},
-	doPlayThenSeek:function( perc ) {
+	
+	/**
+	* Do a play request 
+	* then check if the video is ready to play
+	* then seek
+	*
+	* @param {Float} percentage Percentage of the stream to seek to between 0 and 1
+	*/
+	doPlayThenSeek:function( percentage ) {
 		js_log( 'native::doPlayThenSeek::' );
 		var _this = this;
 		this.play();
 		var rfsCount = 0;
 		var readyForSeek = function() {
-			_this.getVID();
-			if ( _this.vid )
-				js_log( 'readyForSeek looking::' + _this.vid.duration );
+			_this.getPlayerElement();
+			if ( _this.playerElement )
+				js_log( 'readyForSeek looking::' + _this.playerElement.duration );
 			// if we have duration then we are ready to do the seek
-			if ( _this.vid && _this.vid.duration ) {
-				_this.doNativeSeek( perc );
+			if ( _this.playerElement && _this.playerElement.duration ) {
+				_this.doNativeSeek( percentage );
 			} else {
 				// Try to get player for 40 seconds: 
 				// (it would be nice if the onmetadata type callbacks where fired consistently)
@@ -140,33 +179,44 @@ var nativeEmbed = {
 		}
 		readyForSeek();
 	},
-	setCurrentTime: function( pos, callback ) {	
+	
+	/**
+	* Set the current time with a callback
+	*/
+	setCurrentTime: function( position , callback ) {	
 		var _this = this;
-		js_log( 'native:setCurrentTime::: ' + pos + ' :  dur: ' + _this.getDuration() );
-		this.getVID();
-		if ( !this.vid ) {
+		js_log( 'native:setCurrentTime::: ' + position + ' :  dur: ' + _this.getDuration() );
+		this.getPlayerElement();
+		if ( !this.playerElement ) {
 			this.load( function() {				
-				_this.doSeekedCb( pos, callback );		
+				_this.doSeekedCb( position, callback );		
 			} );
 		} else {
-			_this.doSeekedCb( pos, callback );		
+			_this.doSeekedCb( position, callback );		
 		}
 	},
-	doSeekedCb : function( pos, cb ){
+	/**
+	* Do the seek request with a callback
+	*/
+	doSeekedCallback : function( position, callback ){
 		var _this = this;			
-		this.getVID();		
+		this.getPlayerElement();		
 		var once = function( event ) {
-			js_log("did seek cb");
-			cb();
-			_this.vid.removeEventListener( 'seeked', once, false );
+			js_log("did seek callback");
+			callback();
+			_this.playerElement.removeEventListener( 'seeked', once, false );
 		};		
 		// Assume we will get to add the Listener before the seek is done
-		_this.vid.currentTime = pos;
-		_this.vid.addEventListener( 'seeked', once, false );						
+		_this.playerElement.currentTime = position;
+		_this.playerElement.addEventListener( 'seeked', once, false );						
 	},
+	
+	/**
+	* Monitor the video playback & update the currentTime
+	*/
 	monitor : function() {
-		this.getVID(); // make sure we have .vid obj
-		if ( !this.vid ) {
+		this.getPlayerElement(); // make sure we have .vid obj
+		if ( !this.playerElement ) {
 			js_log( 'could not find video embed: ' + this.id + ' stop monitor' );
 			this.stopMonitor();
 			return false;
@@ -186,7 +236,7 @@ var nativeEmbed = {
 		this.prevCurrentTime =	this.currentTime;
 		
 		// update currentTime				
-		this.currentTime = this.vid.currentTime;		
+		this.currentTime = this.playerElement.currentTime;		
 				
 		// js_log('currentTime:' + this.currentTime);
 		// js_log('this.currentTime: ' + this.currentTime );
@@ -197,47 +247,190 @@ var nativeEmbed = {
 	/**
 	* Get video src URI
 	*/
-	getSrc:function() {
+	getSrc: function() {
 		var src = this.parent_getSrc();
 		if (  this.urlAppend != '' )
 			return src + ( ( src.indexOf( '?' ) == -1 ) ? '?':'&' ) + this.urlAppend;
 		return src;
+	},	
+	
+	/**
+	* Pause the video playback
+	* calls parent_pause to update the interface
+	*/
+	pause: function() {
+		this.getPlayerElement();
+		this.parent_pause(); // update interface		
+		if ( this.playerElement ) {
+			this.playerElement.pause();
+		}
+		// stop updates: 
+		this.stopMonitor();
 	},
-	/*
-	 * native callbacks for the video tag: 
-	 */
+	
+	/**
+	* Play back the video stream
+	*  calls parent_play to update the interface
+	*/
+	play: function() {
+		this.getPlayerElement();
+		this.parent_play(); // update interface
+		if ( this.playerElement ) {
+			this.playerElement.play();
+			// re-start the monitor: 
+			this.monitor();
+		}
+	},
+	
+	/**
+	* Toggle the Mute
+	*  calls parent_toggleMute to update the interface
+	*/	
+	toggleMute: function() {
+		this.parent_toggleMute();
+		this.getPlayerElement();
+		if ( this.playerElement )
+			this.playerElement.muted = this.muted;
+	},
+	
+	/**
+	* Update Volume
+	*
+	* @param {Float} percentage Value between 0 and 1 to set audio volume
+	*/	
+	updateVolumen: function( percentage ) {
+		this.getPlayerElement();
+		if ( this.playerElement )
+			this.playerElement.volume = percentage;
+	},
+	
+	/**
+	* get Volume
+	*
+	* @return {Float} 
+	* 	Audio volume between 0 and 1.
+	*/	
+    getVolumen: function() {
+		this.getPlayerElement();
+		if ( this.playerElement )
+			return this.playerElement.volume;
+	},
+	
+	/**
+	* Get the native media duration
+	*/
+	getNativeDuration: function() {
+		if ( this.playerElement )
+			return this.playerElement.duration;
+	},
+	
+	/**
+	* load the video stream with a callback fired once the video is "loaded"
+	*
+	* @parma {Function} callbcak Function called once video is loaded
+	*/
+	load: function( callback ) {
+		this.getPlayerElement();		
+		if ( !this.playerElement ) {
+			// No vid loaded
+			js_log( 'native::load() ... doEmbed' );
+			this.onlyLoadFlag = true;
+			this.doEmbedHTML();
+			this.onLoadedCallback =  callback;
+		} else {
+			// Should not happen offten
+			this.playerElement.load();
+			if( callback)
+				callback();
+		}
+	},
+	
+	/**
+	* Get /update the playerElement value 
+	*/ 
+	getPlayerElement : function () {
+		this.playerElement = $j( '#' + this.pid ).get( 0 );
+	},
+	
+	/**
+ 	* Bindings for the Video Element Events 
+ 	*/
+	 
+	/**
+	* Local method for seeking event
+	*  fired when "seeking" 
+	*/
+	onseeking:function() {
+		js_log( "onseeking" );
+		this.seeking = true;
+		this.setStatus( gM( 'mwe-seeking' ) );
+	},
+	
+	/**
+	* Local method for seeked event
+	*  fired when done seeking 
+	*/
+	onseeked: function() {
+		js_log("onseeked");
+		this.seeking = false;
+	},
+	
+	/**
+	* Local method for can play through
+	*  fired when done video can play through without re-buffering
+	*/	
 	oncanplaythrough : function() {
 		js_log('f:oncanplaythrough');
-		this.getVID();
+		this.getPlayerElement();
 		if ( ! this.paused )
-			this.vid.play();		
+			this.playerElement.play();		
 	},
+	
+	/**
+	* Local method for metadata ready
+	*  fired when metadata becomes avaliable
+	*
+	* Used to update the media duration to 
+	* accurately reflect the src duration 
+	*/
 	onloadedmetadata: function() {
-		this.getVID();
+		this.getPlayerElement();
 		js_log( 'f:onloadedmetadata metadata ready (update duration)' );
-		// update duration if not set (for now trust the getDuration more than this.vid.duration		
-		if ( this.getDuration() == 0  &&  ! isNaN( this.vid.duration ) ) {
-			js_log( 'updaed duration via native video duration: ' + this.vid.duration )
-			this.duration = this.vid.duration;
+		// update duration if not set (for now trust the getDuration more than this.playerElement.duration		
+		if ( this.getDuration() == 0  &&  ! isNaN( this.playerElement.duration ) ) {
+			js_log( 'updaed duration via native video duration: ' + this.playerElement.duration )
+			this.duration = this.playerElement.duration;
 		}
-		//fire "onLoaded" flags if set
-		while( this.onLoadedCallback.length ){
-			func = this.onLoadedCallback.pop()
-			if( typeof func == 'function' )
-				func();
+		
+		//Fire "onLoaded" flags if set		
+		if( typeof this.onLoadedCallback == 'function' ){
+			this.onLoadedCallback();
 		}
 	},
+	
+	/**
+	* Local method for progress event
+	*  fired as the video is downloaded / buffered
+	*
+	*  Used to update the bufferedPercent
+	*/
 	onprogress: function( e ) {
-		this.bufferedPercent =   e.loaded / e.total;
-		// js_log("onprogress:" +e.loaded + ' / ' +  (e.total) + ' = ' + this.bufferedPercent);
+		this.bufferedPercent =   e.loaded / e.total;		
 	},
-	onended:function() {
+	
+	/**
+	* Local method for progress event
+	*  fired as the video is downloaded / buffered
+	*
+	*  Used to update the bufferedPercent
+	*/	
+	onended: function() {
 		var _this = this
-		this.getVID();
-		js_log( 'native:onended:' + this.vid.currentTime + ' real dur:' +  this.getDuration() );
+		this.getPlayerElement();
+		js_log( 'native:onended:' + this.playerElement.currentTime + ' real dur:' +  this.getDuration() );
 		// if we just started (under 1 second played) & duration is much longer.. don't run onClipDone just yet . (bug in firefox native sending onended event early) 
-		if ( this.vid.currentTime  < 1 && this.getDuration() > 1 && this.grab_try_count < 5 ) {
-			js_log( 'native on ended called with time:' + this.vid.currentTime + ' of total real dur: ' +  this.getDuration() + ' attempting to reload src...' );
+		if ( this.playerElement.currentTime  < 1 && this.getDuration() > 1 && this.grab_try_count < 5 ) {
+			js_log( 'native on ended called with time:' + this.playerElement.currentTime + ' of total real dur: ' +  this.getDuration() + ' attempting to reload src...' );
 			var doRetry = function() {
 				_this.urlAppend = 'retry_src=' + _this.grab_try_count;
 				_this.doEmbedHTML();
@@ -248,62 +441,5 @@ var nativeEmbed = {
 			js_log( 'native onClipDone done call' );
 			this.onClipDone();
 		}
-	},
-	pause : function() {
-		this.getVID();
-		this.parent_pause(); // update interface		
-		if ( this.vid ) {
-			this.vid.pause();
-		}
-		// stop updates: 
-		this.stopMonitor();
-	},
-	play:function() {
-		this.getVID();
-		this.parent_play(); // update interface
-		if ( this.vid ) {
-			this.vid.play();
-			// re-start the monitor: 
-			this.monitor();
-		}
-	},
-	toggleMute:function() {
-		this.parent_toggleMute();
-		this.getVID();
-		if ( this.vid )
-			this.vid.muted = this.muted;
-	},
-	updateVolumen:function( perc ) {
-		this.getVID();
-		if ( this.vid )
-			this.vid.volume = perc;
-	},
-    getVolumen:function() {
-		this.getVID();
-		if ( this.vid )
-			return this.vid.volume;
-	},
-	getNativeDuration:function() {
-		if ( this.vid )
-			return this.vid.duration;
-	},
-	load:function( callback ) {
-		this.getVID();		
-		if ( !this.vid ) {
-			// No vid loaded
-			js_log( 'native::load() ... doEmbed' );
-			this.onlyLoadFlag = true;
-			this.doEmbedHTML();
-			this.onLoadedCallback.push( callback );
-		} else {
-			// Should not happen offten
-			this.vid.load();
-			if( callback)
-				callback();
-		}
-	},
-	// get the embed vlc object 
-	getVID : function () {
-		this.vid = $j( '#' + this.pid ).get( 0 );
 	}
 };

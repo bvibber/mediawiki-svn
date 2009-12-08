@@ -85,22 +85,22 @@ var mwDefaultConf = {
 	
 	// What tags will be re-written to video player by default
 	// set to empty string or null to avoid automatic rewrites
-	'rewriteTags' : 'video,audio,playlist',
+	'rewritePlayerTags' : 'video,audio,playlist',
 	
 	/**
 	* If jQuery / mwEmbed should always be loaded.
 	*
 	* mwEmbedSetup ignores this flag and is run if:  
 	*  If your js calls mw.addOnloadHook ( callback_function )
-	*  If your page includes any tags set in config.rewriteTags 
+	*  If your page includes any tags set in config.rewritePlayerTags 
 	*
-	* This flag increases page performace on pages that do not use mwEmbed 
+	* This flag increases page performance on pages that do not use mwEmbed 
 	* and don't already load jQuery 
 	*
 	* For examle when including the mwEmbed.js in your blog template 
 	* mwEmbed will only load extra js on blog posts that include the video tag.
 	*
-	* NOTE: Future articture will probably do away with this flag and refactor it into 
+	* NOTE: Future architecture will probably do away with this flag and refactor it into 
 	* a smaller "remotePageMwEmbed.js" script similar to remoteMwEmbed.js in the js2 folder
 	*/ 
 	'alwaysSetupMwEmbed' : false,
@@ -112,7 +112,10 @@ var mwDefaultConf = {
 	'k_attribution' : true,
 	
 	// The path of mvEmbed in mediaWiki folder 
-	'mediaWikiPath' : 'js2/mwEmbed/'
+	'mediaWikiPath' : 'js2/mwEmbed/',
+	
+	//If we are in debug mode ( results in fresh debugg javascript includes )
+	'debug' : false
 }
 
 
@@ -915,6 +918,7 @@ var global_req_cb = new Array(); // The global request callback array
 			// Make sure the class is not already defined:
 			if ( $.isset( className ) ){
 				js_log( 'Class ( ' + className + ' ) already defined ' );
+				callback();
 				return ; 									
 			}
 			
@@ -959,7 +963,7 @@ var global_req_cb = new Array(); // The global request callback array
 		*  class name file path pairs.
 		*
 		*  classSet must be strict JSON to allow the 
-		*  scriptLoader to parse the file paths.  
+		*  php scriptLoader to parse the file paths.  
 	 	*/
 	 	addClassFilePaths: function( classSet ){
 	 		for( var i in classSet ){
@@ -1074,12 +1078,13 @@ var global_req_cb = new Array(); // The global request callback array
 	// Flag to ensure setup is only run once:
 	var mwSetupFlag = false;
 	
-	$.setupMwEmbed = function ( ) {
-			
+	$.setupMwEmbed = function ( ) {	
 		// Only run the setup once: 
 		if( mwSetupFlag )
 			return ;			  
 		mwSetupFlag = true;
+		
+		js_log( 'mw:setupMwEmbed' );
 				
 		// Make sure jQuery is loaded:
 		$.load( 'window.jQuery', function(){			
@@ -1105,9 +1110,12 @@ var global_req_cb = new Array(); // The global request callback array
 			mwDojQueryBindings();
 				
 			// Check for tag-rewrites ( sometimes checked twice but ensures fresh dom check )  
-			if( $.documentHasRewriteTags() ){
+			if( $.documentHasPlayerTags() ){
 				// Load the embedPlayer module ( then run queued hooks )
-				ms.load( 'embedPlayer', function ( ) {
+				mw.load( 'player', function ( ) {
+					// Rewrite the rewritePlayerTags with the 
+					$j( $.getConfig( 'rewritePlayerTags' ) ).embedPlayer()
+					// Run mw hooks:
 					mw.runLoadHooks();
 				} );
 			}else{			
@@ -1116,8 +1124,10 @@ var global_req_cb = new Array(); // The global request callback array
 			}
 		} ); 			
 	}
+	
 	//Flag to register the domReady has been called
 	var mwDomReadyFlag = false;
+	
 	/**
  	* This will get called when the DOM is ready 
  	* Will check configuration and issue a mw.setupMwEmbed call if needed
@@ -1136,7 +1146,7 @@ var global_req_cb = new Array(); // The global request callback array
 		}
 		
 		// Check for rewrite tags: 		
-		if ( $.documentHasRewriteTags() ) {
+		if ( $.documentHasPlayerTags() ) {
 			$.setupMwEmbed();
 			return ;
 		}		
@@ -1165,29 +1175,37 @@ var global_req_cb = new Array(); // The global request callback array
 	}
 	
 	/**
-	* Check the current DOM for any tags in "rewriteTags"
+	* Check the current DOM for any tags in "rewritePlayerTags"
 	*/
-	$.documentHasRewriteTags = function(){
-		var tags = $.getRewriteTags();
-		return ( tags && tags.length );			
+	$.documentHasPlayerTags = function(){		
+		var tagElm = $.getPlayerTagElements( true );
+		if( tagElm && tagElm.length )
+			return true;
+		return false;
 	}
-	$.getRewriteTags = function(){
-		var tagString = $.getConfig( 'rewriteTags' );
+	/**
+	* Gets page elements that match the rewritePlayerTags config
+	*
+	* @param {Boolean} getOne Flag to retive only one tag ( faster for simple has tag checks )  
+	*/
+	$.getPlayerTagElements = function( getOne ){
+		var tagString = $.getConfig( 'rewritePlayerTags' );
 		if( ! tagString || tagString == '' )
 			return false;
 			
 		// Tags should be separated by "," 
 		var tags = tagString.split(',');
-		
+		var tagsInDOM = [ ];
 		// Check for tags: 
 		for( var i in tags ){
-			var tagsInDOM = document.getElementsByTagName( tags[ i ] );		
-			// If tags found return true
-			if( tagsInDOM.length > 0 ){
-				return true;
+			var tagElements = document.getElementsByTagName( tags[ i ] );			
+			for(var j = 0; j < tagElements.length; j++ ){								
+				tagsInDOM.push( tagElements[ j ] );
+				if( getOne )
+					return tagsInDOM;
 			}
-		}
-		return false;	
+		}		
+		return tagsInDOM;	
 	}
 	
 	/**
@@ -1199,16 +1217,22 @@ var global_req_cb = new Array(); // The global request callback array
 	* @param {Function} callback Function to call once script is loaded   
 	*/
 	$.getScript = function( url, callback ){
+		// Add on the request paramaters to the url:
+		url += ( url.indexOf( '?' ) === -1 )? '?' : '&';
+		
+		// Get url Param also updates the "debug" var 
+		url += $.getUrlParam();		
 		
 		js_log( 'mw.getScript: ' + url );		
 		
-		// If jQuery is available just use getScript
-		if( $.isset( 'window.jQuery' ) ) {
+		// If jQuery is available and debug is off get the scirpt j 
+		if( $.isset( 'window.jQuery' ) && $.getConfig( 'debug' ) === false ) {
 			$j.getScript( url, callback ); 
 			return ;
 		}
 		
-		// No jQuery load and bind manually:  ( copied from jQuery ajax function )
+		// No jQuery or we want a script instead of XHR eval for debugging
+		// Load and bind manually:  ( copied from jQuery ajax function )
 		var head = document.getElementsByTagName("head")[0];
 		var script = document.createElement("script");
 		script.setAttribute( 'src', url );		
@@ -1257,7 +1281,7 @@ var global_req_cb = new Array(); // The global request callback array
 		// Check for scriptLoader include of mwEmbed: 
 		if ( src.indexOf( 'mwScriptLoader.php' ) !== -1 ) {
 			// Script loader is in the root of MediaWiki, Include the default mwEmbed extension path:
-			mwpath =  src.substr( 0, src.indexOf( 'mwScriptLoader.php' ) ) + $.conf.mediaWikiPath;						
+			mwpath =  src.substr( 0, src.indexOf( 'mwScriptLoader.php' ) ) + $.getConfig( 'mediaWikiPath' );						
 		}
 		
 		// Script-loader has jsScriptLoader name when local:
@@ -1309,7 +1333,7 @@ var global_req_cb = new Array(); // The global request callback array
 	var mwUrlParam = null;
 	
 	/**
-	* Get URL Paramaters per paramaters in the host script include
+	* Get URL Parameters per parameters in the host script include
 	*/
 	$.getUrlParam = function() {
 		if ( mwUrlParam )
@@ -1323,7 +1347,7 @@ var global_req_cb = new Array(); // The global request callback array
 		
 		// If we're in debug mode, get a fresh unique request key and pass on "debug" param
 		if ( mw.parseUri( mwEmbedSrc ).queryKey['debug'] == 'true' ) {		
-			
+			$.setConfig( 'debug', true );
 			var d = new Date();
 			req_param += 'urid=' + d.getTime() + '&debug=true';			
 					
@@ -1335,7 +1359,7 @@ var global_req_cb = new Array(); // The global request callback array
 			req_param += 'urid=' + mw.version;
 		}
 		
-		// Add the language param:
+		// Add the language param if present:
 		var langKey = mw.parseUri( mwEmbedSrc ).queryKey['uselang'];
 		if ( langKey )
 			req_param += '&uselang=' + langKey;
@@ -1545,17 +1569,16 @@ mw.addClassFilePaths( {
 } );
 
 /**
-* libEmbedPlayer Depenency Module Loader:
+* libEmbedPlayer Dependency Module Loader:
 *
 * NOTE: this code block could eventually be put in: 
 * "libEmbedPlayer/loader.js" 
 * 
-* That it could be dynamically inserted into mwEmbed requests 
-* at poit of release or at runtime via the script-loader.
+* Then it could be dynamically inserted into mwEmbed requests 
+* at point of release or at runtime via the script-loader.
 * 
-* A per module loader enables a dynamic set of modules with only minimal
+* Per module loader enables a dynamic set of modules with only minimal
 * loader code per module in the core mwEmbed included js 
-*  
 */
 // Add class file paths: 
 mw.addClassFilePaths( {
@@ -1567,16 +1590,15 @@ mw.addClassFilePaths( {
 	"javaEmbed"			: "libEmbedPlayer/javaEmbed.js",
 	"nativeEmbed"		: "libEmbedPlayer/nativeEmbed.js",
 	"quicktimeEmbed"	: "libEmbedPlayer/quicktimeEmbed.js",
-	"vlcEmbed"			: "libEmbedPlayer/vlcEmbed.js",
+	"vlcEmbed"			: "libEmbedPlayer/vlcEmbed.js"
 
 } );
-
 // Add the module loader function:
-mw.addModuleLoader( 'player', function(){
+mw.addModuleLoader( 'player', function( callback ){
 	var _this = this;
 	js_log( 'loadModule: player :' );
 	
-	// Set module specifc class videonojs to loading:
+	// Set module specific class videonojs to loading:
 	$j( '.videonojs' ).html( gM( 'mwe-loading_txt' ) );
 	
 	// Set up the embed video player class request: (include the skin js as well)
@@ -1594,37 +1616,41 @@ mw.addModuleLoader( 'player', function(){
 	
 	// Get any other skins that we need to load 
 	// That way skin js can be part of the single script-loader request:
-	  
-		var	sn = e[j][k].getAttribute('class');				
-		if( sn && sn != ''){
-			for(var n=0;n< $mw.valid_skins.length;n++){ 
-				if( sn.indexOf($mw.valid_skins[n]) !== -1){
-					$mw.skin_list.push( $mw.valid_skins[n] );
-				}
+	var playerElements = mw.getPlayerTagElements();
+	$j.each( playerElements, function(na, playerElem ){
+		var cName = $j( playerElem ).attr( 'class' );
+		for( var n=0; n < mw.valid_skins.length ; n++ ){ 
+			if( cName.indexOf( mw.valid_skins[ n ] ) !== -1){
+				mw.skin_list.push( mw.valid_skins[n] );
 			}
-		}
-	// Add any requested skins (supports multiple skins per single page)
+		}		
+	} );	
+	
+	// Add any page specific requested skins js ( supports multiple skins per single page )
 	if ( mw.skin_list ) {
 		for ( var i in mw.skin_list  ) {
-			depReq[0].push( mw.skin_list[i] + 'Config' );
+			dependencyRequest[0].push( mw.skin_list[i] + 'Config' );
 		}
 	}
 
 	// Add PNG fix if needed:
 	if ( $j.browser.msie || $j.browser.version < 7 )
-		depReq[0].push( '$j.fn.pngFix' );
+		dependencyRequest[0].push( '$j.fn.pngFix' );
 
 	// Load the video libs:
-	_this.doLoadDepMode( depReq, function() {
+	mw.load( dependencyRequest, function() {
+		
+		// Detect what players are supported: 
 		embedTypes.init();
-		callback();
+		
+		// Remove no video html elements:
 		$j( '.videonojs' ).remove();
+		
+		//Run the callback
+		callback();		
 	} );
 	
-} );
-
-
-
+} ); // done with embedPlayer loader.js
 
 
 
@@ -1669,17 +1695,6 @@ window.onload = function () {
         mwOriginalOnLoad();
 	mw.domReady();
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2292,6 +2307,9 @@ function mwDojQueryBindings() {
 			$.addDialog( msg_txt, msg_txt + '<br>' + mv_get_loading_img() );
 		}
 		
+		/**
+		* shortcut jquery binding to add a dialog window:
+		*/
 		$.addDialog = function ( title, msg_txt, btn ) {
 			$( '#mwe_tmp_loader' ).remove();
 			// append the style free loader ontop: 

@@ -163,7 +163,7 @@ mvPlayList.prototype = {
 		} );
 					
 	},
-	showPlayerselect:function() {
+	showPlayerSelect:function() {
 		this.cur_clip.embed.showPlayerselect();
 	},
 	closeDisplayedHTML:function() {
@@ -552,7 +552,7 @@ mvPlayList.prototype = {
 	setStatus:function( value ) {
 		$j( '#' + this.id + ' .time-disp' ).text( value );
 	},
-	setSliderValue:function( value ) {		
+	updatePlayHead:function( value ) {		
 		// slider is on 1000 scale: 
 		var val = parseInt( value * 1000 );
 		//js_log( 'update slider: #' + this.id + ' .play_head to ' + val );
@@ -689,7 +689,7 @@ mvPlayList.prototype = {
 				var clip_time =  this.cur_clip.dur_offset;
 			}
 				
-			this.setSliderValue( clip_time / this.getDuration() );
+			this.updatePlayHead( clip_time / this.getDuration() );
 		}
 	},
 	playPrev: function() {
@@ -857,7 +857,7 @@ mvPlayList.prototype = {
 		// reset the currentTime: 
 		this.currentTime = 0;
 		// rest the sldier
-		this.setSliderValue( 0 );
+		this.updatePlayHead( 0 );
 		// FIXME still some issues with "stoping" and reseting the playlist	
 	},
 	doSeek:function( v ) {
@@ -1364,9 +1364,9 @@ PlMvEmbed.prototype = {
 	setStatus:function( value ) {
 		// status updates handled by playlist obj
 	},
-	setSliderValue:function( value ) {
-		//js_log( 'PlMvEmbed:setSliderValue:' + value );
-		// setSlider value handled by playlist obj		
+	updatePlayHead:function( value ) {
+		//js_log( 'PlMvEmbed:updatePlayHead:' + value );
+		// updatePlayHead handled by playlist obj		
 	}
 }
 
@@ -1522,14 +1522,16 @@ mvPlayList.prototype.monitor = function() {
 	if ( this.currentTime >  this.getDuration() )
 		this.stop();
 	
+	
+	var relative_time = ( this.start_offset ) ? ( this.currentTime - this.start_offset) : this.currentTime; 
 	// update the playlist current time: 
 	// check for a trsnOut from the previus clip to subtract
-	this.currentTime = this.cur_clip.dur_offset + this.cur_clip.embed.relativeCurrentTime();
+	this.currentTime = this.cur_clip.dur_offset + relative_time;
 		
 	// update slider: 
 	if ( !this.userSlide ) {
 		this.setStatus( seconds2npt( this.currentTime ) + '/' + seconds2npt( this.getDuration() ) );
-		this.setSliderValue( this.currentTime / this.getDuration() );
+		this.updatePlayHead( this.currentTime / this.getDuration() );
 	}
 	// pre-load any future clips:
 	this.loadFutureClips();

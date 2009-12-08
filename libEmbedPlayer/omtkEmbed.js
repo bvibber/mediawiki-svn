@@ -1,15 +1,36 @@
+/*
+* omtk media player supports ogg vorbis playback.
+* omtk is not feature complete and fails on some ogg vorbis streams.
+*
+* This script will be depreciated unless the omtk flash applet improves in quality 
+*/
 var omtkEmbed = {
+	
+	// Instance name
 	instanceOf:'omtkEmbed',
+	
+	// Supported player features  
 	supports: {
 		'pause':true,
-			'time_display':true
+		'time_display':true
 	},
+	
+	/**
+	* Wrap the embed code
+	*/
 	getEmbedHTML : function () {
+	 	var _this = this;
 		var embed_code =  this.getEmbedObj();
 		// Need omtk to fire an onReady event.
-		setTimeout( '$j(\'#' + this.id + '\').get(0).postEmbedJS()', 2000 );
+		setTimeout( function(){
+			_this.postEmbedJS();
+		}, 2000 );
 		return this.wrapEmebedContainer( embed_code );
 	},
+	
+	/**
+	* Get the embed object html
+	*/
 	getEmbedObj:function() {
 		var player_path = mw.getMwEmbedPath() + 'libEmbedPlayer/binPlayers/omtk-fx/omtkp.swf';
 		// player_path = 'omtkp.swf';
@@ -25,37 +46,53 @@ var omtkEmbed = {
 					'<!--<![endif]-->' + "\n" +
 				  '</object>';
 	},
+	
+	/**
+	* Run post embed javascript
+	*/ 
 	postEmbedJS:function() {
-		this.getOMTK();
+		this.getPlayerElement();
 		// play the url: 
 		js_log( "play: pid:" + this.pid + ' src:' + this.src );
 				
-		this.omtk.play( this.src );
+		this.playerElement.play( this.src );
 		
 		this.monitor();
 		// $j('#omtk_player').get(0).play(this.src);
 		// $j('#'+this.pid).get(0).play( this.src );
 	},
+	
+	/**
+	* omtk does not support pause, issue the "stop" request
+	*/
 	pause:function() {
 		this.stop();
 	},
+	
+	/**
+	* Monitor the audio playback and update the position
+	*/
 	monitor:function() {
-		if ( this.omtk.getPosition )
-			this.currentTime = this.omtk.getPosition() / 1000;
+		if ( this.playerElement.getPosition )
+			this.currentTime = this.playerElement.getPosition() / 1000;
 		
 		this.parent_monitor();
 	},
-	getOMTK : function () {
-		this.omtk = $j( '#' + this.pid ).get( 0 );
-		if ( !this.omtk.play )
-			this.omtk = $j( '#' + this.pid + '_ie' ).get( 0 );
+	
+	/**
+	* Update the playerElement pointer
+	*/
+	getPlayerElement : function () {
+		this.playerElement = $j( '#' + this.pid ).get( 0 );
+		if ( !this.playerElement.play )
+			this.playerElement = $j( '#' + this.pid + '_ie' ).get( 0 );
 		
-		if ( this.omtk.play ) {
+		if ( this.playerElement.play ) {
 			// js_log('omtk obj is missing .play (probably not omtk obj)');
 		}
 	},
 }
-
+// Some auto-called globals (bad) 
 function OMTK_P_complete() {
 	js_log( 'OMTK_P_complete' );
 }

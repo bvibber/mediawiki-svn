@@ -724,8 +724,10 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	 */
 	getEncoderSettings: function() {
 		if ( this.current_encoder_settings == null ) {
+		
 			// Clone the default settings			
-			var settings = $j.extend( { }, this.default_encoder_settings) ;			
+			var settings = $j.extend( { }, this.default_encoder_settings) ;
+						
 			// Grab the extension
 			var sf = this.fogg.sourceFilename;
 			if ( !sf ) {

@@ -154,7 +154,7 @@ metavidSearch.prototype = {
 			if ( !source ) {
 				js_error( 'Error::could not find source: ' +  resource.pSobj.provider.stream_import_key );
 			} else {
-				resource['src'] = source.getURI();
+				resource['src'] = source.getSrc();
 				js_log( "g src_key: " + resource.pSobj.provider.stream_import_key + ' src:' + resource['src'] ) ;
 				return true;
 			}
@@ -190,9 +190,9 @@ metavidSearch.prototype = {
 		resource.other_versions = '*[' + resource['roe_url'] + ' XML of all Video Formats and Timed Text]' + "\n";
 		for ( var i in sources ) {
 			var cur_source = sources[i];
-			// resource.other_versions += '*['+cur_source.getURI() +' ' + cur_source.title +']' + "\n";
+			// resource.other_versions += '*['+cur_source.getSrc() +' ' + cur_source.title +']' + "\n";
 			if ( cur_source.id ==  this.provider.target_source_id )
-				resource['url'] = cur_source.getURI();
+				resource['url'] = cur_source.getSrc();
 		}
 		// js_log('set url to: ' + resource['url']);
 		return resource;

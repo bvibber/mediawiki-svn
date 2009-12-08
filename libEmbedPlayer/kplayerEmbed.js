@@ -1,5 +1,12 @@
+/*
+* The "kaltura player" embedPlayer interface for fallback h.264 and flv video format support
+*/
 var kplayerEmbed = {
+	
+	// Instance name: 
 	instanceOf:'kplayerEmbed',
+	
+	// List of supported features: 
 	supports: {
 		'play_head':true,
 		'pause':true,
@@ -9,6 +16,10 @@ var kplayerEmbed = {
 		'overlay':false,
 		'fullscreen':false
 	},
+	
+	/*
+	* Get the Embed html by wraping the embed code in the embed container:
+	*/
 	getEmbedHTML : function () {
 		var embed_code =  this.getEmbedObj();
 		alert
@@ -19,6 +30,10 @@ var kplayerEmbed = {
 		js_log( "return embed html" );
 		return this.wrapEmebedContainer( embed_code );
 	},
+	
+	/**
+	* Get the plugin embed html
+	*/
 	getEmbedObj:function() {	
 		var player_path = mw.getMwEmbedPath() + 'libEmbedPlayer/binPlayers/kaltura-player';
 		return '<object width="' + this.width + '" height="' + this.height + '" '+ 
@@ -40,65 +55,92 @@ var kplayerEmbed = {
 			  '<param value="opaque" name="wmode"/>'+
 			 '</object>';		
 	},
+	
+	/**
+	* javascript run post player embeding
+	*/
 	postEmbedJS:function() {
 		var _this = this;
-		this.getKDP();	
-		//alert( 	this.kdp );
-		if( this.kdp && this.kdp.insertMedia){
+		this.getPlayerElement();	
+		//alert( 	this.playerElement );
+		if( this.playerElement && this.playerElement.insertMedia){
 			// Add KDP listeners
 			
-			//this.kdp.addJsListener("doPlay","kdpDoOnPlay");
-			//this.kdp.addJsListener("doStop","kdpDoOnStop");
+			//this.playerElement.addJsListener("doPlay","kdpDoOnPlay");
+			//this.playerElement.addJsListener("doStop","kdpDoOnStop");
 			//myKdp.addJsListener("fastForward","kdpDoOnFF");
 						
-			_this.bindKdpFunc( 'doPause', 'kdpPause' );
-			_this.bindKdpFunc( 'doPlay', 'play' );
-			_this.bindKdpFunc( 'playerPlayEnd', 'onClipDone' );
+			_this.bindPlayerFunction( 'doPause', 'onPause' );
+			_this.bindPlayerFunction( 'doPlay', 'play' );
+			_this.bindPlayerFunction( 'playerPlayEnd', 'onClipDone' );
 						
 			// KDP player likes an absolute url for the src:
 			var src = mw.absoluteUrl( _this.getSrc() );
 			js_log('play src: ' + src);
+			
 			// Insert the src:	
-			this.kdp.insertMedia("-1", src, 'true' );			
-			this.kdp.dispatchKdpEvent('doPlay');
+			this.playerElement.insertMedia( "-1", src, 'true' );			
+			this.playerElement.dispatchKdpEvent( 'doPlay' );
 			
 			// Start the monitor
 			this.monitor();
 		}else{
-			js_log('insert media: not defiend' + typeof this.kdp.insertMedia );
+			js_log('insert media: not defiend' + typeof this.playerElement.insertMedia );
 			setTimeout( function(){
 				_this.postEmbedJS();
 			}, 25);
 		}		
 	},	
+	
 	/**
-	* bindKdpFunc
+	* Bind a Player Function, 
+	* 
+	* Does some tricker to bind to "this" player instance:
 	* 
 	* @param {String} flash binding name
 	* @param {String} function callback name
 	*/
-	bindKdpFunc:function( bName, fName ){
+	bindPlayerFunction:function( bName, fName ){
 		var cbid = fName + '_cb_' + this.id.replace(' ', '_');
 		eval( 'window[ \'' + cbid +'\' ] = function(){$j(\'#' + this.id + '\').get(0).'+ fName +'();}' );
-		this.kdp.addJsListener( bName , cbid);
+		this.playerElement.addJsListener( bName , cbid);
 	},
-	kdpPause:function(){		
+	
+	/**
+	* on Pause callback from the kaltura flash player
+	*  calls parent_pause to update the interface
+	*/
+	onPause:function(){		
 		this.parent_pause();
 	},
+	
+	/**
+	* play method
+	*  calls parent_play to update the interface 
+	*/
 	play:function() {
-		if( this.kdp && this.kdp.dispatchKdpEvent )
-			this.kdp.dispatchKdpEvent('doPlay');
+		if( this.playerElement && this.playerElement.dispatchKdpEvent )
+			this.playerElement.dispatchKdpEvent('doPlay');
 		this.parent_play();
 	},
+	
+	/**
+	* pause method
+	*  calls parent_pause to update the interface 
+	*/
 	pause:function() {
-		this.kdp.dispatchKdpEvent('doPause');
+		this.playerElement.dispatchKdpEvent('doPause');
 		this.parent_pause();
 	},
+	
+	/**
+	* Issues a seek to the playerElement	
+	*/ 
 	doSeek:function( prec ){
 		var _this = this;
-		if( this.kdp ){
+		if( this.playerElement ){
 			var seek_time = prec * this.getDuration(); 
-			this.kdp.dispatchKdpEvent('doSeek',  seek_time);
+			this.playerElement.dispatchKdpEvent('doSeek',  seek_time);
 			// Kdp is missing seek done callback
 			setTimeout(function(){
 				_this.seeking= false;
@@ -106,35 +148,37 @@ var kplayerEmbed = {
 		}
 		this.monitor();
 	},
-	updateVolumen:function( perc ) {
-		if( this.kdp && this.kdp.dispatchKdpEvent )
-			this.kdp.dispatchKdpEvent('volumeChange', perc);
+	
+	/**
+	* Issues a volume update to the playerElement
+	*/
+	updateVolumen:function( percentage ) {
+		if( this.playerElement && this.playerElement.dispatchKdpEvent )
+			this.playerElement.dispatchKdpEvent('volumeChange', percentage);
 	},
+	
+	/**
+	* Monitors playback updating the current Time
+	*/
 	monitor:function() {	
-		if( this.kdp && this.kdp.getMediaSeekTime ){
-			this.currentTime = this.kdp.getMediaSeekTime();
+		if( this.playerElement && this.playerElement.getMediaSeekTime ){
+			this.currentTime = this.playerElement.getMediaSeekTime();
 		}
 		this.parent_monitor();
 	},
-	// get the embed fla object
-	getKDP: function () {
-		this.kdp = document.getElementById( this.pid );
+	
+	/**
+	* Get the embed fla object player Element
+	*/
+	getPlayerElement: function () {
+		this.playerElement = document.getElementById( this.pid );
 	}
 }
-
-function kdpDoOnPause( player ){
-	var cat = player
-	debugger;
-}
-
+/**
+* function called once player is ready.
+* 
+* NOTE: playerID is not always passed so we can't use this: 
+*/
 function onKdpReady( playerId ) {
- 	 js_log( "IN THEORY PLAYER IS READY:" + playerId);
- 	 /*
-	 window.myKdp=get(playerId);
-	 get("Player_State").innerHTML="<br>&nbsp; READY (Id=" + playerId + ")";
-	 get("nowPlaying").innerHTML=(myKdp.evaluate('{entryId}'));
-	 getDuration();
-	 attachKdpEvents();
-	 addKdpListners();
-	 */
+ 	 js_log( "player is ready::" + playerId); 	 
 }

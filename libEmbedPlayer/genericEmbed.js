@@ -1,6 +1,9 @@
-/* the most simple implementation used for unknown application/ogg plugin */
+/* 
+* Simple embed object for unknown application/ogg plugin 
+*/
 var genericEmbed = {
-	 supports: {
+	// List of supported features of the generic plugin
+	 supports: {	 	
 		'play_head':false,
 		'pause':false,
 		'stop':true,
@@ -8,10 +11,17 @@ var genericEmbed = {
 		'time_display':false,
 		'volume_control':false
 	},
+	// Instance name: 
 	instanceOf:'genericEmbed',
+	/*
+	* Generic embed html
+	*
+	* @return {String}
+	* 	embed code for genneric ogg plugin 
+	*/
 	getEmbedHTML:function() {
 		return '<object type="application/ogg" ' +
 			'width="' + this.width + '" height="' + this.height + '" ' +
-			'data="' + this.getURI( this.seek_time_sec ) + '"></object>';
+			'data="' + this.getSrc( this.seek_time_sec ) + '"></object>';
 	}
 };
