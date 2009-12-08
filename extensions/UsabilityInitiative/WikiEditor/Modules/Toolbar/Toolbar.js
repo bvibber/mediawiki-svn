@@ -889,6 +889,15 @@ mw.addOnloadHook( function() {
 						$j( '#wikieditor-toolbar-link-int-target-status-' + status ).show();
 						$j( '#wikieditor-toolbar-link-int-target' ).parent().addClass( 'status-' + status );
 					}
+					if ( status == 'invalid' ) {
+						$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
+							.attr('disabled', true)
+							.addClass('disabled');
+					} else { 
+						$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
+							.removeAttr('disabled')
+							.removeClass('disabled');
+					}
 				}
 				// Abort previous request
 				var request = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'request' );
@@ -1186,7 +1195,7 @@ mw.addOnloadHook( function() {
 							insertText = '[' + escTarget + ' ' + escText + ']';
 					}
 					// Preserve whitespace in selection when replacing
-					insertText = whitespace[0] + insertText + whitespace[1];
+					if ( whitespace ) insertText = whitespace[0] + insertText + whitespace[1];
 					$j.wikiEditor.modules.toolbar.fn.doAction( $j(this).data( 'context' ), {
 						type: 'replace',
 						options: {

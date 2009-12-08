@@ -1526,28 +1526,32 @@ if ( typeof context == 'undefined' ) {
 	/* Event Handlers */
 	context.evt = {
 		'change': function( event ) {
-			// BTW: context is in event.data.context
-			
 			switch ( event.type ) {
 				case 'keypress':
-					if ( /* something interesting was deleted */ false ) {
-						//console.log( 'MAJOR CHANGE' );
+					if ( /* TODO: test if something interesting was deleted */ true ) {
+						event.data.scope = 'division';
 					} else {
-						//console.log( 'MINOR CHANGE' );
+						event.data.scope = 'character';
 					}
 					break;
 				case 'mousedown': // FIXME: mouseup?
-					if ( /* text was dragged and dropped */ false ) {
-						//console.log( 'MAJOR CHANGE' );
+					if ( /* TODO: test if text was dragged and dropped */ true ) {
+						event.data.scope = 'division';
 					} else {
-						//console.log( 'MINOR CHANGE' );
+						event.data.scope = 'none';
 					}
 					break;
 				default:
-					//console.log( 'MAJOR CHANGE' );
+					event.data.scope = 'division';
 					break;
 			}
-		
+			if ( event.data.scope !== 'none' ) {
+				for ( module in $.wikiEditor.modules ) {
+					if ( 'evt' in $.wikiEditor.modules[module] && 'change' in $.wikiEditor.modules[module].evt ) {
+						$.wikiEditor.modules[module].evt.change( context, event );
+					}
+				}
+			}
 		}
 	};
 	
