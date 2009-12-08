@@ -55,7 +55,10 @@ fn: {
 						}
 						context.modules.preview.previousText = wikitext;
 						context.$preview.find( '.wikiEditor-preview-loading' ).hide();
-						context.$preview.find( '.wikiEditor-preview-contents' ).html( data.parse.text['*'] );
+						context.$preview.find( '.wikiEditor-preview-contents' )
+							.html( data.parse.text['*'] )
+							.find( 'a' )
+							.attr( 'href', '#' );
 					},
 					'json'
 				);
