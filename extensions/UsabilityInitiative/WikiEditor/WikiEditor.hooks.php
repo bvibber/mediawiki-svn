@@ -17,7 +17,7 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 2 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 2 ),
 			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 14 ),
-			array( 'src' => 'Modules/Toolbar/TemplateEditor.js', 'version' => 1 ),
+			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 1 ),
 		),
 		'combined' => array(
 			array( 'src' => 'WikiEditor.combined.js', 'version' => 13 ),

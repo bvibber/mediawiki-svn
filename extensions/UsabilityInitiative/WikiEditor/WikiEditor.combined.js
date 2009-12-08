@@ -939,8 +939,8 @@ mw.addOnloadHook( function() {
 					}
 					if ( status == 'invalid' ) {
 						$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
-							.attr('disabled', true)
-							.addClass('disabled');
+							.attr( 'disabled', true )
+							.addClass( 'disabled' );
 					} else { 
 						$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
 							.removeAttr('disabled')
