@@ -542,6 +542,10 @@ if ( typeof context == 'undefined' ) {
 	// Setup the intial view
 	context.view = 'wikitext';
 	
+	/* Core Event Handlers */
+	
+	$( window ).resize( function( event ) { context.fn.trigger( 'resize', event ) } );
+	
 	/* Magic IFRAME Construction */
 	
 	// Create an iframe in place of the text area
