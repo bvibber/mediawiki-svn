@@ -61,11 +61,11 @@ class VectorHooks {
 	 */
 	
 	/**
-	 * AjaxAddScript hook
+	 * BeforePageDislay hook
 	 * Adds the modules to the edit form
 	 */
-	 public static function addModules( &$toolbar ) {
-		global $wgOut, $wgUser, $wgJsMimeType;
+	 public static function addModules( &$out, &$sk ) {
+		global $wgUser, $wgJsMimeType;
 		global $wgVectorModules, $wgUsabilityInitiativeResourceMode;
 		
 		// Modules
@@ -111,7 +111,7 @@ class VectorHooks {
 			);
 		}
 		// Preferences (maybe the UsabilityInitiative class could do most of this for us?)
-		$wgOut->addScript(
+		$out->addScript(
 			Xml::tags(
 				'script',
 				array( 'type' => $wgJsMimeType ),
