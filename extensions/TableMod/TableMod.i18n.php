@@ -13,8 +13,7 @@ $messages['en'] = array(
 	'tablemod-error-headcount' => 'This tag only supports tables single column headers when removing.',
 	'tablemod-error-invalidsort' => 'Invalid sort parameters.',
 	'tablemod-error-invalidaction' => 'Invalid action.',
-	'tablemod-error-tableempty' => 'Table is empty',
-	'tablemod-error-missingid' => 'Missing id attribute in tag.',
+	'tablemod-error-missingid' => 'Missing ident attribute in tag.',
 );
 
 $messages['sl'] = array(
@@ -26,7 +25,6 @@ $messages['sl'] = array(
 	'tablemod-error-headcount' => 'Ta značka podpira samo eno-celične glavne oznake.',
 	'tablemod-error-invalidsort' => 'Neveljavni parametri sortiranja.',
 	'tablemod-error-invalidaction' => 'Neveljavna akcija.',
-	'tablemod-error-tableempty' => 'Tabela je prazna',
-	'tablemod-error-missingid' => 'Mankajoč id atribut v znački.',
+	'tablemod-error-missingid' => 'Mankajoč ident atribut v znački.',
 );
 

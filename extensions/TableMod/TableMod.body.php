@@ -19,17 +19,15 @@ class TableMod {
 	public static $sort_key; 
 	public static $sort_col; 
 	
-	var $output = "";
-	
 	function __construct($input, $args, $parser, $frame) {
 		$this->input = trim($input);	
 		$this->args = $args;	
 		$this->parser = $parser;	
 		$this->frame = $frame;	
-		
-		if (!isset($args['id']))
+
+		if (!isset($args['ident']))
 			throw new TableModException(wfMsg('tablemod-error-missingid'));
-		$this->id = $args['id'];
+		$this->id = $args['ident'];
 
 		$this->index_column = isset($args['index']) ? $args['index'] : 0;
 		if (isset($args['actions'])) {
@@ -46,8 +44,6 @@ class TableMod {
 		if ($tablemodAction[0] == $this->id) {
 			$this->performActions();
 		}
-
-		$this->generateTable();
 
 	}
 
@@ -113,12 +109,6 @@ class TableMod {
 			      $tablemodAction[2] > $row_cols || 
 			      $tablemodAction[2] < 0) )
 				throw new TableModException(wfMsg('tablemod-error-invalidsort'));
-		}
-		
-		if ($this->index_column == 0 ) {
-			foreach ($this->table['rows'] as &$row) {
-				$row[$row_cols] = '';
-			}
 		}
 	}
 	
@@ -198,70 +188,86 @@ class TableMod {
 	}
 
 	private function generateTable() {
-		$this->output = '{|'.$this->table['start']."\n";
-		if (isset($this->table['caption']))
-			$this->output .= '|+'.$this->table['caption']."\n";
-
-		if (isset($this->table['headers']))
-			foreach ($this->table['headers'] as $key=>$header)
-				$this->output .= "!$header >>H:$key<<\n";
-
-		foreach ($this->table['rows'] as $rowkey=>$row) {
-			$this->output .= "|-\n";
-
-			foreach ($row as $key=>$col)
-				$this->output .= "|$col >>R:$rowkey:$key<<\n";
-		}
-
-		$this->output .= '>>EMPTY<<'.$this->table['end']."|}";
 	}
 
 	public function tableSave() {
 		global $tablemodContent;
-		$output = preg_replace(array('/>>H:\d*<</', '/>>R:\d*:\d*<</', '/>>EMPTY<</'), '', $this->output);
-			
+		$output = '{|'.$this->table['start']."\n";
+		if (isset($this->table['caption']))
+			$output .= '|+'.$this->table['caption']."\n";
+
+		
+		if (isset($this->table['headers']))
+			foreach ($this->table['headers'] as $header)
+				$output .= "!$header\n";
+
+		foreach ($this->table['rows'] as $rowkey=>$row) {
+			$output .= "|-\n";
+
+			foreach ($row as $key=>$col)
+				$output .= "|$col\n";
+		}
+
+		$output .= $this->table['end']."|}";
+
 		$article_content = $tablemodContent;
 		$start_tag = array();
-		preg_match('/\<table-mod [^>]*?id="'.$this->id.'"[^>]*?>[^{]*/', $tablemodContent, $start_tag);
+		preg_match('/\<table-mod [^>]*?id="'.$this->id.'"[^>]*?>[^{]* /', $tablemodContent, $start_tag);
 		$tablemodContent = str_replace($start_tag[0].$this->input, $start_tag[0].$output, $tablemodContent);
 	}
 
 	public function tableOutput() {
 		global $wgTitle;
 
-		$output = $this->output;
+		$output = '{|'.$this->table['start']."\n";
+		if (isset($this->table['caption']))
+			$output .= '|+'.$this->table['caption']."\n";
 
-		if (($colspan = count($this->table['rows'])) == 0) {
-			$colspan = isset($this->table['headers']) ? count($this->table['headers']) : 1;
-			for ($key = 0; $key < $colspan; $key++)
-				$output = str_replace(">>H:$key<<", '', $output);
-			$output = str_replace(">>EMPTY<<", "\n|-\n| colspan=\"$colspan\" | ".wfMsg('tablemod-error-tableempty')."\n", $output);
-		} else {
-
-			$output = str_replace(">>EMPTY<<", '', $output);
-
+		if (isset($this->table['headers'])) {
 			if (isset($this->index_actions['sort'])) {
-				if (isset($this->table['headers'])) {
-					foreach ($this->table['headers'] as $key=>$header)
-						$output = str_replace(">>H:$key<<", '<span class="plainlinks">['.$wgTitle->getFullURL(array('tablemod'=>$this->id.'|sort|'.($key+1).'|asc')).' &uarr;]</span><span class="plainlinks">['.$wgTitle->getFullURL(array('tablemod'=>$this->id.'|sort|'.($key+1).'|desc')).' &darr;]</span>', $output);
-				}			
+				foreach ($this->table['headers'] as $key=>$header)
+					$output .= '!'.$header.' <span class="plainlinks">['.$wgTitle->getFullURL(array('tablemod'=>$this->id.'|sort|'.($key+1).'|asc')).' &uarr;]</span><span class="plainlinks">['.$wgTitle->getFullURL(array('tablemod'=>$this->id.'|sort|'.($key+1).'|desc')).' &darr;]</span>'."\n";
+		
+				if ($this->index_column == 0)
+					$output .= '!&nbsp;'."\n";
+			} else {
+				foreach ($this->table['headers'] as $key=>$header)
+					$output .= '!'.$header."\n";
 			}
+			
+		}
 
-			if (isset($this->index_actions['remove'])) {
-				$removeMsg = wfMsg('tablemod-msg-remove');
-				for ($key = 0; $key < $colspan; $key++)
-					if ($key != $this->index_column-1)		
-						$output = preg_replace("/>>R:\d*:$key<</", '', $output);
-				
-				$key = $this->index_column-1;
-				foreach ($this->table['rows'] as $rowkey=>$row) {
-					$colval = trim(preg_replace('/.*\|\s*/', '', $row[$key]));
-					$output = str_replace(">>R:$rowkey:$key<<", '<span class="plainlinks">['.$wgTitle->getFullURL(array('tablemod'=>$this->id.'|remove|'.$colval))." $removeMsg]</span>", $output);
+		if (isset($this->index_actions['remove'])) {
+			$removeMsg = wfMsg('tablemod-msg-remove');
+			
+			foreach ($this->table['rows'] as $rowkey=>$row) {
+				$output .= "|-\n";
+
+				if ($this->index_column > 0) {
+					foreach ($row as $key=>$col)
+						if ($key == $this->index_column-1) {
+							$colval = trim(preg_replace('/.*\|\s*/', '', $col));
+							$output .= "|$col ".'<span class="plainlinks">['.$wgTitle->getFullURL(array('tablemod'=>$this->id.'|remove|'.$colval))." $removeMsg]</span>\n";
+						} else {
+							$output .= "|$col\n";
+						}
+				} else {
+					foreach ($row as $col)
+						$output .= "|$col\n";
+					$output .= '|<span class="plainlinks">['.$wgTitle->getFullURL(array('tablemod'=>$this->id.'|remove|'.$rowkey))." $removeMsg]</span>"."\n";
 				}
 			}
+		} else {
+			foreach ($this->table['rows'] as $rowkey=>$row) {
+				$output .= "|-\n";
 
+				foreach ($row as $col)
+					$output .= "|$col\n";
+			}
 		}
-	
+
+		$output .= $this->table['end']."|}";
+
 		return $this->doParse($output);
 
 	}
