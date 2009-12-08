@@ -20,10 +20,10 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Toolbar/TemplateEditor.js', 'version' => 1 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 12 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 13 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 12 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 13 ),
 		),
 	);
 	static $messages = array(
