@@ -2025,8 +2025,10 @@ remoteSearchDriver.prototype = {
 	},
 
 	/**
-	 * Sets up the proxy for the remote inserts
-	 */
+	* Sets up the proxy for the remote inserts
+	* 
+	* @param {Function} callbcak Function to call once proxy is setup. 
+	*/
 	setupProxy: function( callback ) {
 		var _this = this;
 
@@ -2150,7 +2152,7 @@ remoteSearchDriver.prototype = {
 	* get an edit Token
 	* depends on upload_api_target being initialized
 	* 
-	* @param {Function} callback Function to be called once the token is avaliable  
+	* @param {Function} callback Function to be called once the token is available  
 	*/
 	getEditToken: function( callback ) {
 		var _this = this;
@@ -2252,7 +2254,7 @@ remoteSearchDriver.prototype = {
 	* builds the wikitext represnetation and 
 	* issues an api call to gennerate a preview
 	* 
-	* @param {Object} resource 
+	* @param {Object} resource Resource to get preview text for.
 	*/
 	getPreviewText: function( resource ) {
 		var _this = this;
@@ -2451,8 +2453,11 @@ remoteSearchDriver.prototype = {
 				_this.setDisplayMode( 'list' );
 			} );
 	},
+	
 	/**
-	* Shows pagging for a given traget for a given currentProvider
+	* Shows pagging for a given target for a given currentProvider
+	*
+	* @param {String} target jQuery Selector for pagging Header output  
 	*/
 	showPagingHeader: function( target ) {
 		var _this = this;
@@ -2502,12 +2507,13 @@ remoteSearchDriver.prototype = {
 		} );
 	},
 	
-	/*
-	* Select a given search provider 
+	/**
+	* Select a given search provider
+	* @param {String} provider_id Provider id to select and display  
 	*/
-	selectTab: function( provider ) {
-		js_log( 'select tab: ' + provider );
-		this.currentProvider = provider;
+	selectTab: function( provider_id ) {
+		js_log( 'select tab: ' + provider_id );
+		this.currentProvider = provider_id;
 		if ( this.currentProvider == 'upload' ) {
 			this.showUploadTab();
 		} else {
@@ -2518,7 +2524,7 @@ remoteSearchDriver.prototype = {
 	
 	/*
 	* Sets the dispaly mode
-	* @param {String} either "box" or "list" 
+	* @param {String} mode Either "box" or "list" 
 	*/	
 	setDisplayMode: function( mode ) {
 		js_log( 'setDisplayMode:' + mode );

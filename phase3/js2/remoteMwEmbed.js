@@ -28,14 +28,14 @@ function doPageSpecificRewrite() {
 	// Add media wizard
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {	
 		var jsSetEdit = [ 'remoteSearchDriver', '$j.fn.textSelection', '$j.ui', '$j.ui.sortable' ]
-		mwr_load_mwEmbed( jsSetEdit, function() {
+		loadMwEmbed( jsSetEdit, function() {
 			loadExternalJs( mwEmbedHostPath + '/editPage.js?' + mwGetReqArgs() );
 		} );
 	}
 	
 	// Timed text display:
 	if ( wgPageName.indexOf( "TimedText" ) === 0 ) {
-		mwr_load_mwEmbed( function() {
+		loadMwEmbed( function() {
 			// Load with mw loader to get localized interface:
 			mw.load( ['mvTimeTextEdit'], function() {
 				// Could run init here (but mvTimeTextEdit already included onLoad actions)
@@ -47,7 +47,7 @@ function doPageSpecificRewrite() {
 	if ( wgPageName == "Special:Upload" ) {	
 		var jsSetUpload = [ 'mvBaseUploadInterface', 'mvFirefogg' , '$j.ui',
 							'$j.ui.progressbar', '$j.ui.dialog', '$j.ui.draggable' ]; 
-		mwr_load_mwEmbed( jsSetUpload, function() {
+		loadMwEmbed( jsSetUpload, function() {
 			loadExternalJs( mwEmbedHostPath + '/uploadPage.js?' + mwGetReqArgs() );
 		} );
 	}
@@ -55,7 +55,7 @@ function doPageSpecificRewrite() {
 	// Special api proxy page
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
 		var wgEnableIframeApiProxy = true;
-		mwr_load_mwEmbed( [ 'mw.proxy' ], function() {			
+		loadMwEmbed( [ 'mw.proxy' ], function() {			
 			loadExternalJs( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
 	}
@@ -78,7 +78,7 @@ function doPageSpecificRewrite() {
 		if ( navigator.userAgent &&  navigator.userAgent.indexOf("Firefox") != -1 )
 			jsSetVideo.push( 'nativeEmbed' );
 	
-		mwr_load_mwEmbed( jsSetVideo, function() {
+		loadMwEmbed( jsSetVideo, function() {
 			mvJsLoader.embedPlayerCheck( function() {
 				// Do utility rewrite of OggHandler content:
 				rewrite_for_OggHandler( vidIdList );
@@ -197,14 +197,17 @@ function mwGetReqArgs() {
 	return rurl;
 }
 /**
+* Load the mwEmbed library:
+*
 * @param {mixed} function or classSet to preload
 * classSet saves round trips to the server by grabbing things we will likely need in the first request. 
 * ( this is essentially a shortcut to mv_jqueryBindings in mwEmbed.js )   
 * @param {callback} function callback to be called once mwEmbed is ready
 */
-function mwr_load_mwEmbed( classSet, callback ) {
+function loadMwEmbed( classSet, callback ) {	
 	if( typeof classSet == 'function')
 		callback = classSet;
+		
 	// Inject mwEmbed if needed
 	if ( typeof mw == 'undefined' ) {
 		if ( ( mwReqParam['uselang'] || mwReqParam['useloader'] ) && mwUseScriptLoader ) {
@@ -218,7 +221,7 @@ function mwr_load_mwEmbed( classSet, callback ) {
 			// Add requested classSet
 			for( var i=0; i < classSet.length; i++ ){
 				var cName =  classSet[i];
-				if( !mwr_check_obj_path( cName ) ){
+				if( !mwCheckObjectPath( cName ) ){
 					rurl +=  ',' + cName;
 				}
 			}
@@ -232,20 +235,24 @@ function mwr_load_mwEmbed( classSet, callback ) {
 			importScriptURI( mwEmbedHostPath + '/mwEmbed/mwEmbed.js?' + mwGetReqArgs() );
 		}
 	}
-	mwr_check_for_mwEmbed( callback );
+	waitMwEmbedReady( callback );
 }
-
-function mwr_check_for_mwEmbed( callback ) {
-	if ( typeof mw == 'undefined' ) {
+/**
+* waits for mwEmbed to be ready
+*/
+function waitMwEmbedReady( callback ) {
+	if( ! mwCheckObjectPath( 'mw.version' ) ){
 		setTimeout( function() {
-			mwr_check_for_mwEmbed( callback );
+			waitMwEmbedReady( callback );
 		}, 25 );
 	} else {
 		callback();
 	}
 }
-
-function mwr_check_obj_path ( libVar ) {
+/**
+* Checks an object path to see if its defined
+*/
+function mwCheckObjectPath ( libVar ) {
 	if ( !libVar )
 		return false;
 	var objPath = libVar.split( '.' )
