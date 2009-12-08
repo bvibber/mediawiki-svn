@@ -365,6 +365,7 @@ body.rtl wikiEditor-ui-toc ul ul ul ul ul ul li div span {
 	left: -12px !important;
 	cursor: ew-resize;
 	background: url(../images/wikiEditor/toc/grip.png) 50% 50% no-repeat;
+	z-index: 0;
 }
 .wikiEditor-ui-toolbar .tab-toc {
 	float: right;
