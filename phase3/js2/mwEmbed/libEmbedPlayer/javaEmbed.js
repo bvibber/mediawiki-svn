@@ -34,7 +34,7 @@ var javaEmbed = {
 	},
 	
 	/**
-	* Gets the embed html code:
+	* Get the embed html code:
 	*/
 	getEmbedObj: function() {
 		js_log( "java play url:" + this.getSrc( this.seek_time_sec ) );

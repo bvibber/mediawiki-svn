@@ -536,7 +536,7 @@ mediaSource.prototype = {
 		else
 			this.mime_type = this.detectType( this.src );				
 
-		this.parseURLDuration();
+		this.getURLDuration();
 	},
 	
 	/**
@@ -571,7 +571,7 @@ mediaSource.prototype = {
 			});
 			
 			// update the duration
-			this.parseURLDuration();
+			this.getURLDuration();
 		}
 	},
 	
@@ -652,11 +652,11 @@ mediaSource.prototype = {
 	
 	/** 
 	 * 
-	 * Gets Duration of the media in milliseconds from the source url.
+	 * Get Duration of the media in milliseconds from the source url.
 	 *
 	 * Supports media_url?t=ntp_start/ntp_end url request format
 	 */
-	parseURLDuration : function() {
+	getURLDuration : function() {
 		// check if we have a URLTimeEncoding: 
 		if ( this.URLTimeEncoding ) {
 			var annoURL = mw.parseUri( this.src );
@@ -745,19 +745,25 @@ mediaElement.prototype = {
 	/**
 	* Media Element constructor
 	*
+	* Sets up a  mediaElement from a provided top level "video" element
+	*  adds any child sources that are found
+	*
 	* @param {Element} video_element Element that has src attribute or has children source elements 
 	*/
 	init: function( video_element ) {
 		var _this = this;
 		js_log( 'Initializing mediaElement...' );
-		this.sources = new Array();
-		this.thumbnail = mv_default_thumb_url;
+		this.sources = new Array();	
 		
 		if ( $j( video_element ).attr( 'thumbnail' ) )
 			this.thumbnail = $j( video_element ).attr( 'thumbnail' );
 			
 		if ( $j( video_element ).attr( 'poster' ) )
 			this.thumbnail = $j( video_element ).attr( 'poster' );
+		
+		// Set by default thumb value if not found
+		if( ! this.thumbnail  )
+			this.thumbnail = mw.getConfig( 'default_video_thumb' );
 		
 		if ( $j( video_element ).attr( 'wikiTitleKey' ) )
 			this.wikiTitleKey = $j( video_element ).attr( 'wikiTitleKey' );
@@ -766,7 +772,7 @@ mediaElement.prototype = {
 			this.durationHint = $j( video_element ).attr( 'durationHint' );
 			// Convert duration hint if needed:
 			this.duration = npt2seconds(  this.durationHint );
-		}
+		}			
 		
 		// Process the video_element as a source element:
 		if ( $j( video_element ).attr( "src" ) )
@@ -989,7 +995,7 @@ mediaElement.prototype = {
 	},
 	
 	/**
-	* Gets playable sources
+	* Get playable sources
 	*
 	* @returns {Array} of playbale sources
 	*/
@@ -1172,7 +1178,7 @@ embedPlayer.prototype = {
 			this.ctrlBuilder = new ctrlBuilder( this );
 		}
 		// Load player skin css:
-		loadExternalCss(  mw.getMwEmbedPath() +  'skins/' + this.skin_name + '/playerSkin.css' );
+		mw.getStyleSheet(  mw.getMwEmbedPath() +  'skins/' + this.skin_name + '/playerSkin.css' );
 	},
 	
 	/**
@@ -1361,6 +1367,8 @@ embedPlayer.prototype = {
 	/**
 	* Issue a warning to non-native playback systems
 	* that they could improve the playback experience with a different browser
+	*
+	* dependent on media_element being setup 
 	*/ 
 	doNativeWarningCheck: function( ) {
 		if ( $j.cookie( 'dismissNativeWarn' ) && $j.cookie( 'dismissNativeWarn' ) === true ) {
@@ -1393,7 +1401,7 @@ embedPlayer.prototype = {
 	},
 	
 	/**
-	* Gets a Time range from the media start and end time 
+	* Get a time range from the media start and end time 
 	*
 	* @return start_npt and end_npt time if present
 	*/	
@@ -1408,8 +1416,9 @@ embedPlayer.prototype = {
 			return default_time_range;		
 		return this.media_element.selected_source.start_npt + this.media_element.selected_source.end_npt;
 	},
+	
 	/**
-	* Gets the duration of the embed media
+	* Get the duration of the selected source media
 	*/	
 	getDuration:function() {
 		// Update some local pointers for the selected source:	
@@ -1670,8 +1679,8 @@ embedPlayer.prototype = {
 	},
 	
 	/**
-	* Gets nearby Clip links 
-	* Mostly metavid specific ( should be factored into a seperate module )
+	* Get nearby Clip links 
+	* Mostly metavid specific ( should be factored into a separate module )
 	*/
 	getNearbyClipLinks:function() {
 		js_log( 'f:getNextPrevLinks' );
@@ -2282,7 +2291,7 @@ embedPlayer.prototype = {
 			var playable = embedTypes.players.defaultPlayer( source.getMIMEType() );
 
 			var is_selected = ( source == _this.media_element.selected_source );
-			var image_src =  mv_skin_img_path ;
+			var image_src =  mw.getConfig( 'skin_img_path' ) ;
 			
 			o += '<h2>' + source.getTitle() + '</h2>';
 			
@@ -2761,7 +2770,7 @@ embedPlayer.prototype = {
 	*/
 	
 	/**
-	* Gets the current selected media source
+	* Get the current selected media source
 	*
 	* @return src url	
 	*/

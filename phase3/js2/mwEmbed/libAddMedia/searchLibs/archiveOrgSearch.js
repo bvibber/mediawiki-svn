@@ -28,7 +28,7 @@ archiveOrgSearch.prototype = {
 		}
 	},
 	/**
-	* Gets the search results from the api query
+	* Get search results from the api query
 	*/
 	getSearchResults:function() {
 		// call parent: 
@@ -95,7 +95,7 @@ archiveOrgSearch.prototype = {
 		}
 	},
 	/**
-	* Gets some media metadata via a archive.org special entry point "avinfo"
+	* Get media metadata via a archive.org special entry point "avinfo"
 	*/ 
 	addResourceInfoCallback:function( resource, callback ) {
 		var _this = this;

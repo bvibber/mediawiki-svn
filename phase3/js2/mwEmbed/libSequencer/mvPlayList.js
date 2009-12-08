@@ -918,8 +918,11 @@ mvPlayList.prototype = {
 		}
 		return 0;
 	},
-	// gets playlist controls large control height for sporting 
-	// next prev button and more status display
+	
+	/**
+	* Gets playlist controls large control height for sporting 
+	* next prev button and more status display
+	*/
 	getControlsHTML:function() {
 		// get controls from current clip  (add some playlist specific controls:		  			
 		return this.ctrlBuilder.getControls( this );
@@ -1061,11 +1064,11 @@ mvPlayList.prototype = {
 		js_log( 'getPL cont' );
 		return	 '<a id="mv_prev_link_' + this.id + '" title="Previus Clip" onclick="document.getElementById(\'' + this.id + '\').playPrev();return false;" href="#">' +
 					getTransparentPng( { id:'mv_prev_btn_' + this.id, style:'float:left', width:'27', height:'27', border:"0",
-						src:mv_skin_img_path + 'vid_prev_sm.png' } ) +
+						src: mw.getConfig( 'skin_img_path' ) + 'vid_prev_sm.png' } ) +
 				'</a>' +
 				'<a id="mv_next_link_' + this.id + '"  title="Next Clip"  onclick="document.getElementById(\'' + this.id + '\').playNext();return false;" href="#">' +
 					getTransparentPng( { id:'mv_next_btn_' + this.id, style:'float:left', width:'27', height:'27', border:"0",
-						src:mv_skin_img_path + 'vid_next_sm.png' } ) +
+						src: mw.getConfig( 'skin_img_path' ) + 'vid_next_sm.png' } ) +
 				'</a>';
 	},
 	run_transition: function( clip_inx, trans_type ) {
@@ -2142,7 +2145,7 @@ mvSMILClip.prototype = {
 			return this.dur;
 		return this.embed.getDuration();
 	},
-	// gets the duration of the clip subracting transitions
+	// Get the duration of the clip subracting transitions
 	getSoloDuration:function() {
 		var fulldur = this.getDuration();
 		// see if we need to subtract from time eating transitions (transOut)
@@ -2152,7 +2155,7 @@ mvSMILClip.prototype = {
 		// js_log("getSoloDuration:: td: " + this.getDuration() + ' sd:' + fulldur);
 		return fulldur;
 	},
-	// gets the duration of the original media asset (usefull for bounding setting of in-out-points)
+	// Get the duration of the original media asset (usefull for bounding setting of in-out-points)
 	getSourceDuration:function() {
 		if ( this.durationHint )
 			return this.durationHint;

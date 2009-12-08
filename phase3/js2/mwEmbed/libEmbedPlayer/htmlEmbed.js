@@ -186,15 +186,17 @@ var htmlEmbed = {
 		return $j( '#' + thumb_render_id ).html();
 	},
 	/*
-	* updates the ThumbTime
-	* (does nothings since we display a single renderd html page) 	
+	* Updates the thumb time
+	* (does nothings since we display a single frame renderd html page)
+	*
+	* @param {Float} float_time Ignored 	
 	*/
 	updateThumbTime:function( float_time ) {
 		return ;
 	},
 	
 	/**
-	* gets the "embed" html for the html player
+	* Get the "embed" html for the html player
 	*/
 	getEmbedHTML:function() {
 		js_log( 'f:html:getEmbedHTML: ' + this.id );
@@ -211,7 +213,7 @@ var htmlEmbed = {
 	},
 	
 	/**
-	* gets the ThumbnailHTML
+	* Get the ThumbnailHTML
 	*  ThumbnailHTML is used for both the "paused and playing states of the htmlEmbed player	
 	*/
 	getThumbnailHTML:function( opt ) {
@@ -248,7 +250,7 @@ var htmlEmbed = {
 	},
 	
 	/**
-	* Gets the media duration
+	* Get the media duration
 	*/
 	getDuration:function() {
 		if( !this.duration ){
@@ -263,6 +265,7 @@ var htmlEmbed = {
 	
 	/**
 	* Updates the Video time 
+	*
 	* @param {String} start_npt Start time for update
 	* @param {String} end_npt End time for update  
 	*/

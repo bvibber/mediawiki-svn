@@ -494,7 +494,8 @@ remoteSearchDriver.prototype = {
 	},
 
 	/**
-	 * Gets License Key From a license Url
+	 * Get license key from a license Url
+	 *
 	 * @param license_url the url of the license
 	 */
 	getLicenseFromUrl: function( license_url ) {
@@ -616,7 +617,7 @@ remoteSearchDriver.prototype = {
 	},
 
 	/**
-	* Gets the current position of the text cursor
+	* Get the current position of the text cursor
 	*/
 	getCaretPos: function() {
 		if ( this.caretPos == null ) {
@@ -630,7 +631,7 @@ remoteSearchDriver.prototype = {
 	},
 	
 	/**
-	* Gets the value of the target textbox.  
+	* Get the value of the target textbox.  
 	*/
 	getTextboxValue: function() {
 		if ( this.textboxValue == null ) {
@@ -644,7 +645,7 @@ remoteSearchDriver.prototype = {
 	},
 	
 	/*
-	* Gets the default query from the text selection
+	* Get the default query from the text selection
 	*/
 	getDefaultQuery: function() {
 		if ( this.default_query == null ) {
@@ -1036,7 +1037,7 @@ remoteSearchDriver.prototype = {
 	},
 	
 	/**
-	* Gets the search results for a given content provider
+	* Get the search results for a given content provider
 	* 
 	* Sets up binding to showResults once search providers results are ready
 	* 
@@ -1305,7 +1306,7 @@ remoteSearchDriver.prototype = {
 		
 		// Check for missing poster types for audio
 		if ( resource.mime == 'audio/ogg' && !resource.poster ) {
-			resource.poster = mv_skin_img_path + 'sound_music_icon-80.png';
+			resource.poster = mw.getConfig( 'skin_img_path' ) + 'sound_music_icon-80.png';
 		}
 		
 		// Get a thumb with proper resolution transform if possible:
@@ -1444,7 +1445,7 @@ remoteSearchDriver.prototype = {
 	},
 	
 	/**
-	* Gets the media Type of a resource
+	* Get the media Type of a resource
 	*
 	* @param {Object} resource get media type of resource
 	*/
@@ -2228,8 +2229,9 @@ remoteSearchDriver.prototype = {
 			);
 		} );
 	},
+	
 	/**
-	* Gets the embed code
+	* Get the embed code
 	*
 	* based on import_url_mode:
 	* calls the resource providers getEmbedHTML method
@@ -2378,10 +2380,10 @@ remoteSearchDriver.prototype = {
 	*/ 
 	showResultsHeader: function() {
 		var _this = this;
-		var darkBoxUrl = mv_skin_img_path + 'box_layout_icon_dark.png';
-		var lightBoxUrl = mv_skin_img_path + 'box_layout_icon.png';
-		var darkListUrl = mv_skin_img_path + 'list_layout_icon_dark.png';
-		var lightListUrl = mv_skin_img_path + 'list_layout_icon.png';
+		var darkBoxUrl = mw.getConfig( 'skin_img_path' ) + 'box_layout_icon_dark.png';
+		var lightBoxUrl = mw.getConfig( 'skin_img_path' ) + 'box_layout_icon.png';
+		var darkListUrl = mw.getConfig( 'skin_img_path' ) + 'list_layout_icon_dark.png';
+		var lightListUrl = mw.getConfig( 'skin_img_path' ) + 'list_layout_icon.png';
 
 		if ( !this.content_providers[ this.currentProvider ] ) {
 			return;

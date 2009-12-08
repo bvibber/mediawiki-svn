@@ -53,7 +53,7 @@ mw.addOnloadHook( function() {
 			js_log( 'Do old toolbar bind:' );
 			didWikiEditorBind = true;
 			$j( '#toolbar' ).append( '<img style="cursor:pointer" id="btn-add-media-wiz" src="' +
-				mv_skin_img_path + 'Button_add_media.png">' );
+				mw.getConfig( 'skin_img_path' ) + 'Button_add_media.png">' );
 			$j( '#btn-add-media-wiz' ).addMediaWiz(
 				amwConf
 			);

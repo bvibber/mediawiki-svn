@@ -59,7 +59,7 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
-	* Gets the controls html
+	* Get the controls html
 	* @return {String} html output of controls
 	*/
 	getControls:function() {
@@ -338,7 +338,7 @@ ctrlBuilder.prototype = {
 	},
 	
 	/** 
-	* Gets the Buffer Html that overlays the playhead
+	* Get the Buffer Html that overlays the playhead
 	*/
 	getBufferHtml:function() {
 		return '<div class="ui-slider-range ui-slider-range-min ui-widget-header ' +
@@ -347,7 +347,7 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
-	* Accessor to get a given local component
+	* Accessor to get component
 	*
 	* @param {String} compoent Component key to grab html output
 	*/

@@ -126,9 +126,9 @@ mvClipEdit.prototype = {
 			}
 		}
 	},
+	
 	/**
-	* Gets the mediatype for the current resource
-	*
+	* Get the mediatype for the current resource
 	*/
 	getMediaType: function (){
 		if( this.media_type )
@@ -593,7 +593,7 @@ mvClipEdit.prototype = {
 	* 
 	* @param {Object} defaultTime Provides start and end time default values 
 	*/
-	getStartEndHtml:function( defaultTime ) {
+	getStartEndHtml: function( defaultTime ) {
 		return '<strong>' + gM( 'mwe-set_in_out_points' ) + '</strong>' +
 			'<table border="0" style="background: transparent; width:94%;height:50px;">' +
 			'<tr>' +
@@ -614,9 +614,9 @@ mvClipEdit.prototype = {
 	},
 	
 	/**
-	* Gets the Insert Html
+	* Get the Insert Html form text area
 	*/
-	getInsertHtml:function() {
+	getInsertHtml: function() {
 		var o = '<h3>' + gM( 'mwe-inline-description' ) + '</h3>' +
 					'<textarea style="width:95%" id="mv_inline_img_desc" rows="5" cols="30">';
 		if ( this.parentRemoteSearchDriver ) {
@@ -633,7 +633,7 @@ mvClipEdit.prototype = {
 	*
 	* Loops over the local controlActionsCallback 
 	*/
-	updateInsertControlActions:function() {
+	updateInsertControlActions: function() {
 		var _this = this;
 		var b_target =   _this.parentRemoteSearchDriver.target_container + '~ .ui-dialog-buttonpane';
 		// Empty the ui-dialog-buttonpane bar:
