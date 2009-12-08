@@ -271,6 +271,8 @@ fn: {
 						$( this ).css( { 'width': ui.size.width, 'top': 'auto', 'height': 'auto' } )
 							.data( 'wikiEditor-ui-left' ).css( 'marginRight', ( -1 * ui.size.width ) )
 							.children().css( 'marginRight', ui.size.width );
+						// Let the UI know things have moved around
+						context.fn.trigger( 'resize' );
 					},
 					stop: function ( e, ui ) {
 						context.$ui.find( '.wikiEditor-ui-resize-mask' ).remove();
@@ -281,6 +283,8 @@ fn: {
 							context.modules.$toc.data( 'openWidth', ui.size.width );
 							$.cookie( 'wikiEditor-' + context.instance + '-toc-width', ui.size.width );
 						}
+						// Let the UI know things have moved around
+						context.fn.trigger( 'resize' );
 					}
 				});
 			// Convert our east resize handle into a secondary west resize handle
