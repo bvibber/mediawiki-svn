@@ -47,9 +47,9 @@ fn: {
 					},
 					function( data ) {
 						if (
-							data.parse == undefined ||
-							data.parse.text == undefined ||
-							data.parse.text['*'] == undefined
+							typeof data.parse == 'undefined' ||
+							typeof data.parse.text == 'undefined' ||
+							typeof data.parse.text['*'] == 'undefined'
 						) {
 							return;
 						}
