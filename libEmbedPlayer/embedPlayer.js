@@ -2580,10 +2580,10 @@ embedPlayer.prototype = {
 	/**
 	* Getter for Stoped state
 	* @return {Boolean} 
-	*	true if playing
-	* 	false if not playing
+	*	true if stopped
+	* 	false if playing
 	*/
-	isStoped : function() {
+	isStoped: function() {
 		return this.thumbnail_disp;
 	},
 	
@@ -2592,7 +2592,7 @@ embedPlayer.prototype = {
 	* Monitor playback and update interface components.
 	* underling plugin objects are responsible for updating currentTime
 	*/
-	monitor:function() {
+	monitor: function() {
 		var _this = this;
 		//js_log(' ct: ' + this.currentTime + ' dur: ' + ( parseInt( this.duration ) + 1 )  + ' is seek: ' + this.seeking );
 		if ( this.currentTime && this.currentTime > 0 && this.duration ) {

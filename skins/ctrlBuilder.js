@@ -1,6 +1,8 @@
 
-// Set the global dismissNativeWarn flag:
-_global['dismissNativeWarn'] = false;
+// Set the dismiss_playback_warning flag config
+// Set via config so a dismiss on one video embed applies to all video embeds. 
+mw.setConfig( 'dismiss_playback_warning', false );
+
 
 /**
 * Msg text is inherited from embedPlayer 
@@ -143,19 +145,19 @@ ctrlBuilder.prototype = {
 						$j( '#ffwarn_' + embedObj.id ).click( function() {
 							if ( $j( this ).is( ':checked' ) ) {
 								// set up a cookie for 7 days:
-								$j.cookie( 'dismissNativeWarn', true, { expires: 7 } );
+								$j.cookie( 'dismiss_playback_warning', true, { expires: 7 } );
 								// set the current instance
-								_global['dismissNativeWarn'] = true;
+								mw.setConfig( 'dismiss_playback_warning', true );
 								$j( '#gnp_' + embedObj.id ).fadeOut( 'slow' );
 							} else {
-								_global['adismissNativeWarn'] = false;
-								$j.cookie( 'dismissNativeWarn', false );
+								mw.setConfig( 'dismiss_playback_warning', false );
+								$j.cookie( 'dismiss_playback_warning', false );
 							}
 
 						} );
 					}
-					if ( ( $j.cookie( 'dismissNativeWarn' ) !== true ) &&
-						_global['dismissNativeWarn'] === false  ) {
+					if ( ( $j.cookie( 'dismiss_playback_warning' ) !== true ) &&
+						mw.getConfig( 'dismiss_playback_warning' ) === false  ) {
 						$j( '#gnp_' + embedObj.id ).fadeIn( 'slow' );
 					}
 				},

@@ -32,7 +32,7 @@ if ( !window['mw'] ) {
 
 /**
 * Default global config values. Configuration values are set via mw.setConfig
-* Configuration values should genneraly be set prior to dom-ready 
+* Configuration values should generaly be set prior to dom-ready 
 */  
 var mwDefaultConf = {
 	// Default skin name
@@ -749,67 +749,7 @@ var global_req_cb = new Array(); // The global request callback array
 		* @key Name of the class
 		* @value Style sheet path
 		*/	
-		stylePaths : { },
-		
-		
-		/**
-		* Load a set of scripts.
-		* Will issue many load requests or package the request for the script-loader
-		*
-		* @param {Object} loadSet Set of scripts to be loaded
-		* @param {Function} callback Function to call once all scripts are loaded.
-		*/ 
-		loadMany: function( loadSet, callback ){
-			//Setup up the local "loadState"			
-			var loadState = { };			
-			// Check if its a dependency set ( nested objects ) 
-			if( typeof loadSet [ 0 ] == 'object' ){				
-				//Load sets of classes ( to preserver order for some browsers )
-				this.loadDependencyChain( loadSet, callback );
-				return ;
-			}
-			
-			// Set the initial load state for every item in the loadSet
-			for( var i in loadSet ){							
-				var loadName = loadSet[ i ];				
-				loadState[ loadName ] = 0;								
-			}
-			
-			// Issue the load request check check loadState to see if we are "done"
-			for( var i in loadSet ){			
-				var loadName = loadSet[ i ];
-				$.load( loadName, function ( loadName ){							
-					loadState[ loadName ] = 1;
-					
-					var loadDone = true;
-					for( var j in loadState ){
-						if( loadState[ j ] === 0 )
-							loadDone = false;			
-					}
-					// Run the parent scope callback for "loadMany" 
-					if( loadDone )
-						callback();
-				} );
-			}
-		},
-		
-		/**
-		* Load a sets of scripts satisfy dependency order for browsers that execute out of order
-		* 
-		* @param {Object} loadChain A set of javascript arrays to be loaded. 
-		*	Sets are requested in array order. 		   
-		*/ 
-		loadDependencyChain: function( loadChain, callback ){
-			var _this = this;				
-			// Load with dependency checks
-			this.load( loadChain.shift(), function() {								
-				if ( loadChain.length != 0 ) {
-					_this.loadDependencyChain( loadChain, callback );
-				} else {
-					callback();
-				}
-			} );
-		},
+		stylePaths : { },						
 		
 		/**
 		* Core load function: 
@@ -873,6 +813,70 @@ var global_req_cb = new Array(); // The global request callback array
 			js_log( "Error could not handle load request" );
 		},
 		
+		
+		/**
+		* Load a set of scripts.
+		* Will issue many load requests or package the request for the script-loader
+		*
+		* @param {Object} loadSet Set of scripts to be loaded
+		* @param {Function} callback Function to call once all scripts are loaded.
+		*/ 
+		loadMany: function( loadSet, callback ){
+		
+			//Setup up the local "loadState"			
+			var loadState = { };	
+					
+			// Check if its a dependency set ( nested objects ) 
+			if( typeof loadSet [ 0 ] == 'object' ){				
+				//Load sets of classes ( to preserver order for some browsers )
+				this.loadDependencyChain( loadSet, callback );
+				return ;
+			}
+			
+			// Set the initial load state for every item in the loadSet
+			for( var i in loadSet ){							
+				var loadName = loadSet[ i ];				
+				loadState[ loadName ] = 0;								
+			}
+			
+			// Issue the load request check check loadState to see if we are "done"
+			for( var i in loadSet ){			
+				var loadName = loadSet[ i ];				
+				$.load( loadName, function ( loadName ){								
+					loadState[ loadName ] = 1;
+					
+					var loadDone = true;
+					for( var j in loadState ){
+						if( loadState[ j ] === 0 )
+							loadDone = false;			
+					}
+					
+					// Run the parent scope callback for "loadMany" 
+					if( loadDone )
+						callback();
+				} );
+			}
+		},
+		
+		/**
+		* Load a sets of scripts satisfy dependency order for browsers that execute out of order
+		* 
+		* @param {Object} loadChain A set of javascript arrays to be loaded. 
+		*	Sets are requested in array order. 		   
+		*/ 
+		loadDependencyChain: function( loadChain, callback ){
+			var _this = this;				
+			// Load with dependency checks
+			this.load( loadChain.shift(), function() {								
+				if ( loadChain.length != 0 ) {
+					_this.loadDependencyChain( loadChain, callback );
+				} else {
+					callback();
+				}
+			} );
+		},
+		
+		
 		/**
 		* Loads javascript associated with a className
 		*
@@ -884,7 +888,7 @@ var global_req_cb = new Array(); // The global request callback array
 			// Make sure the class is not already defined:
 			if ( $.isset( className ) ){
 				js_log( 'Class ( ' + className + ' ) already defined ' );
-				callback();
+				callback( className );
 				return ; 									
 			}
 			
@@ -1269,7 +1273,7 @@ var global_req_cb = new Array(); // The global request callback array
 			url += '?' + mw.getUrlParam();
 		}
 		
-		// Return if style sheet is already included:
+		// Check if style sheet is already included:
 		var foundSheet = false; 
 		$j( 'link' ).each( function(){		
 			if( $j( this) .attr( 'href' ) == url )				 
@@ -2059,21 +2063,21 @@ function mwDojQueryBindings() {
 		 * 
 		 * @param mode is either 'server' or 'client'
 		 */
-		$.apiProxy = function( mode, pConf, callback ) {
+		$.apiProxy = function( mode, proxyConfig, callback ) {
 			js_log( 'do apiProxy setup' );
 			mw.load( [
 				'mw.proxy',
 				'JSON'
-			], function() {
+			], function() {				
 				// do the proxy setup or 
 				if ( mode == 'client' ) {
 					// just do the setup (no callbcak for client setup) 
-					mw.proxy.client( pConf );
+					mw.proxy.client( proxyConfig );
 					if ( callback )
 						callback();
 				} else if ( mode == 'server' ) {
-					// do the request with the callback
-					mw.proxy.server( pConf , callback );
+					// Do the request with the callback
+					mw.proxy.server( proxyConfig , callback );
 				}
 			} );
 		}
@@ -2440,6 +2444,7 @@ function getURLParamReplace( url, opt ) {
 	}
 	return new_url;
 }
+
 /**
  * Given a float number of seconds, returns npt format response.
  *
@@ -2692,7 +2697,7 @@ if ( typeof DOMParser == "undefined" ) {
 * Utility functions
 */
 function js_log( string ) {
-	// Add any prepend debug strings if necessary (used for cross browser)
+	// Add any prepend debug strings if necessary 
 	if ( mw.getConfig( 'pre-append-log' ) )
 		string = mw.getConfig( 'pre-append-log' ) + string;
 			

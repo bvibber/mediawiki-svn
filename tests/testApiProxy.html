@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Api Proxy Test</title>
-<script type="text/javascript" src="../mwEmbed.js"></script>
+<script type="text/javascript" src="../mwEmbed.js?debug=true"></script>
 
 <script type="text/javascript" >
 //HARD coded local test: 
@@ -17,7 +17,7 @@ mw.addOnloadHook( function(){
 		'client', 
 		{
 			'server_frame': remote_wiki_host +  remote_script_path + '/index.php/MediaWiki:ApiProxy',
-			'client_frame_path'	: '/wiki_trunk/js2/mwEmbed/libMwApi/NestedCallbackIframe.html',
+			'client_frame_path'	: mw.getMwEmbedPath() + 'libMwApi/NestedCallbackIframe.html',
 		},
 		function(){
 			//callback function here: 
@@ -42,7 +42,7 @@ function getUserName( callback ){
 		'meta':'userinfo'
 	}
 	//we use normal do_api_req with keywork 'proxy' for the url 
-	$mw.proxy.doRequest( rObj,
+	mw.proxy.doRequest( rObj,
 		function( data ){		
 			//now we get the data back for that domain
 			if( !data.query || !data.query.userinfo ){
