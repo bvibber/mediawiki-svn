@@ -214,8 +214,8 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 				'type="text" ' + 
 				'value="' + msg + '"/> ';
 		} else if ( /^target_/.test( target ) ) {
-			// Message
-			var msg = gM( target.replace( '/^target_/', 'fogg-' ) );
+			// Message						
+			var msg = gM( target.replace( /^target_/, 'fogg-' ) );		
 			return '<div style="" class="' + target + '" >' + msg + '</div> ';
 		} else {
 			js_error( 'Invalid target: ' + target );
@@ -378,6 +378,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 		inputTag += '/><span id="' + id + '"></span>';
 
 		js_log( 'set input: ' + inputTag );
+		
 		$j( this.selector ).replaceWith( inputTag );
 
 		this.target_input_file_name = 'input[name=' + $j( this.selector ).attr( 'name' ) + ']';
@@ -573,9 +574,9 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 				_this.fogg = new Firefogg();
 				_this.selectSourceFile();
 			} );
-
+					
 		var settings = this.getEncoderSettings();
-
+		
 		// If we're in passthrough mode, update the interface (if not a form)
 		if ( settings['passthrough'] == true && _this.form_type == 'local' ) {
 			$j( _this.target_passthrough_mode ).show();
@@ -590,6 +591,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 		// Update the input file name box and show it
 		js_log( " should update: " + _this.target_input_file_name + 
 				' to: ' + _this.fogg.sourceFilename );
+				
 		$j( _this.target_input_file_name )
 			.val( _this.fogg.sourceFilename )
 			.show();
@@ -657,7 +659,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 			return false;
 		}
 
-		// We have a source file, now do the encode
+		// We have a source file, now do the encode		
 		this.doEncode(
 			function /* onProgress */ ( progress ) {
 				_this.updateProgress( progress );
@@ -722,11 +724,8 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	 */
 	getEncoderSettings: function() {
 		if ( this.current_encoder_settings == null ) {
-			// Clone the default settings
-			var defaults = function () { };
-			defaults.prototype = this.default_encoder_settings;
-			var settings = new defaults();
-
+			// Clone the default settings			
+			var settings = $j.extend( { }, this.default_encoder_settings) ;			
 			// Grab the extension
 			var sf = this.fogg.sourceFilename;
 			if ( !sf ) {

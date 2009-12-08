@@ -1,4 +1,4 @@
-/*
+/**
  * Advanced Firefogg support. Lets you control many aspects of video encoding.
  */
 
@@ -278,7 +278,7 @@ mvAdvFirefogg.prototype = {
 	/**
 	 * Initialise this object
 	 */
-	init: function( options ) {
+	init: function( options ) {	
 		// Set up a supported object:
 		for ( var key in options ) {
 			if ( typeof default_mvAdvFirefogg_config[key] != 'undefined' ) {
@@ -340,12 +340,12 @@ mvAdvFirefogg.prototype = {
 			$j( this.selector ).append( '<p><div class="control_container"></div>' );
 		}
 		// Hide the container and add the output
-		$j( this.target_control_container ).hide();
+		$j( this.target_control_container ).hide();		
 		$j( this.target_control_container ).html( gdout );
 	},
 
 	// Custom advanced target rewrites
-	getControlHtml: function( target ) {
+	getControlHtml: function( target ) {			
 		switch ( target ) {
 			case 'target_btn_select_file':
 			case 'target_btn_select_new_file':
@@ -361,14 +361,13 @@ mvAdvFirefogg.prototype = {
 							target + '" href="#"><span class="ui-icon ' + icon + '"/>' +
 							linkText +
 						'</a>';
-			case 'target_btn_select_url':
+			case 'target_btn_select_url':				
 				return $j.btnHtml( gM( 'fogg-select_url' ), target,  'link' );
 			case 'target_use_latest_firefox':
 			case 'target_please_install':
-			case 'target_passthrough_mode':
-				var text = gM( target.replace( '/^target_', 'fogg-' ) );
-				return 
-					'<div ' + 
+			case 'target_passthrough_mode':				
+				var text = gM( target.replace( /^target_/, 'fogg-' ) );				
+				return '<div ' + 
 						'style="margin-top:1em;padding: 0pt 0.7em;" ' + 
 						'class="ui-state-error ui-corner-all ' +
 						target + '">' +
@@ -384,8 +383,8 @@ mvAdvFirefogg.prototype = {
 					'class="text ui-widget-content ui-corner-all ' + target + '" ' +
 					'type="text" value="' + text + '" size="60" /> ';
 			default:
-				js_log( 'call : basefogg_getTargetHtml' );
-				return this.basefogg_getTargetHtml( target );
+				js_log( 'call : basefogg_getTargetHtml for:' + target );
+				return this.basefogg_getControlHtml( target );
 		}
 	},
 
@@ -565,7 +564,7 @@ mvAdvFirefogg.prototype = {
 				)
 				.hover(
 					function() {
-						// get the config key (assume it's the last class)
+						// get the config key ( assume it's the last class )
 						var configKey = _this.getClassId( this, 'help_' );
 						$j( _this.selector + ' .helpRow_' + configKey ).show( 'slow' );
 					},
@@ -623,7 +622,7 @@ mvAdvFirefogg.prototype = {
 					});
 					break;
 				case 'slider':
-					var sliderId = _this.getClassId( this, 'slider_' );
+					//var sliderId = _this.getClassId( this, 'slider_' );
 					$j( this.selector + ' .slider_' + configKey ).slider({
 						range: "min",
 						animate: true,
@@ -808,12 +807,14 @@ mvAdvFirefogg.prototype = {
 
 		// Call the base function
 		// Note that settings will be a reference and can be modified
-		var settings = this.basefogg_getEncoderSettings();
+		this.basefogg_getEncoderSettings();
+		
 
 		// Allow re-encoding of files that are already ogg (unlike in the base class)
 		if ( this.isOggFormat() ) {
-			settings['passthrough'] = false;
+			this.current_encoder_settings['passthrough'] = false;
 		}
+		return this.current_encoder_settings;
 	},
 
 	/**
@@ -887,7 +888,7 @@ mvAdvFirefogg.prototype = {
 			}
 			setValues( k, val, maxVal );
 		}
-		// audio stream settings, assumes for now thare is only one stream
+		// audio stream settings, assumes for now there is only one stream
 		for ( var i in fileInfo.audio[0] ) {
 			var val = fileInfo.audio[0][i];
 			var k = false;
@@ -923,11 +924,11 @@ mvAdvFirefogg.prototype = {
 		this.updateValuesInHtml();
 	},
 
-	doEncode: function() {
+	doEncode: function( progressCallback, doneCallback ) {
 		// update the encoder settings (from local settings)
 		pKey = this.local_settings['default'];
-		this.encoder_settings = this.local_settings.presets[ pKey ].conf;
-		this.basefogg_doEncode();
+		this.current_encoder_settings = this.local_settings.presets[ pKey ].conf;
+		this.basefogg_doEncode( progressCallback, doneCallback );
 	},
 
 	/**
@@ -936,7 +937,7 @@ mvAdvFirefogg.prototype = {
 	updateValuesInHtml: function() {
 		js_log( 'updateValuesInHtml::' );
 		var _this = this;
-		var pKey = this.local_settings['default'];
+		var pKey = this.local_settings[ 'default' ];
 		this.updatePresetSelection( pKey );
 
 		// set the actual HTML & widgets based on any local settings values:
@@ -944,7 +945,7 @@ mvAdvFirefogg.prototype = {
 			if ( $j( _this.selector + ' ._' + inx ).length != 0 ) {
 				$j( _this.selector + ' ._' + inx ).val( val );
 			}
-		});
+		} );
 	},
 
 	/**
@@ -970,6 +971,7 @@ mvAdvFirefogg.prototype = {
 	 * FIXME: not called, does nothing
 	 */
 	clearSettings: function( force ) {
+	
 	},
 
 	/**
