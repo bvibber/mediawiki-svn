@@ -119,11 +119,10 @@ fn: {
 		var $this = $( this ), context = $this.data( 'context' ),
 			pT = $this.parent().position().top - 1;
 		$this.parent()
-			.css( 'position', 'absolute' )
-			.css( { 'left': 'auto', 'right': 0, 'top': pT } )
+			.css( { 'marginTop': '1px', 'position': 'absolute', 'left': 'auto', 'right': 0, 'top': pT } )
 			.fadeOut( 'fast', function() {
 				$( this ).hide()
-				.css( 'width', '1px' );
+				.css( { 'marginTop': '0', 'width': '1px' } );
 				context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).fadeIn( 'fast' );
 			 } )
 			.prev()
@@ -150,9 +149,10 @@ fn: {
 		context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).hide();
 		$this.parent()
 			.show()
+			.css( 'marginTop', '1px' )
 			.animate( { 'width' : openWidth }, 'fast', function() {
 				context.$content.trigger( 'mouseup' );
-				$( this ).css( { 'position': 'relative', 'right': 'auto', 'top': 'auto' } );
+				$( this ).css( { 'marginTop': '0', 'position': 'relative', 'right': 'auto', 'top': 'auto' } );
 				// Let the UI know things have moved around
 				context.fn.trigger( 'resize' );
 			 } )
