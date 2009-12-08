@@ -220,9 +220,8 @@ ctrlBuilder.prototype = {
 				if ( embedObj.userSlide ) {
 					embedObj.userSlide = false;
 					embedObj.seeking = true;
-					// stop the monitor timer (if we can)
-					if ( embedObj.stopMonitor )
-						embedObj.stopMonitor();
+					// Stop the monitor timer (if we can)				
+					embedObj.stopMonitor();
 
 					var perc = ui.value / 1000;
 					// set seek time (in case we have to do a url seek)
@@ -247,7 +246,7 @@ ctrlBuilder.prototype = {
 		// videoOptions ... @@todo should be merged with something more like kskin.js:
 		$opt.find( '.vo_selection' ).click( function() {
 			embedObj.displayHTML();
-			embedObj.showPlayerselect( $target.find( '.videoOptionsComplete' ) );
+			embedObj.showPlayerSelect( $target.find( '.videoOptionsComplete' ) );
 			$opt.hide();
 			return false;
 		} );

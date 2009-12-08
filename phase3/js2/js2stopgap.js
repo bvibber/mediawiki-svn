@@ -9510,4 +9510,4 @@ mw.addOnloadHook = function( func ) {
 }
 
 // Define a dummy mw.load() function
-mw.load = function ( callback ) { callback() }
+mw.load = function ( loadRequest, callback ) { callback() }

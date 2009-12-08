@@ -1,3 +1,6 @@
+/*
+* List of domains and hosted location of cortado. Lets clients avoid the security warning for cross domain cortado
+*/
 window.cortadoDomainLocations = {
 	'upload.wikimedia.org' : 'http://upload.wikimedia.org/jars/cortado.jar',
 	'tinyvid.tv' : 'http://tinyvid.tv/static/cortado.jar',
@@ -5,9 +8,11 @@ window.cortadoDomainLocations = {
 }
 
 var javaEmbed = {
+
+	// instance name:
 	instanceOf:'javaEmbed',
-	iframe_src:'',
-	logged_domain_error:false,
+	
+	// Supported feature set of the cortado applet: 		
 	supports: {
 		'play_head':true,
 		'pause':true,
@@ -16,15 +21,23 @@ var javaEmbed = {
 		'time_display':true,
 		'volume_control':false
 	},
-	getEmbedHTML : function () {
+	
+	/**
+	* Wraps the embed object html output:
+	*/
+	getEmbedHTML: function () {
 		// big delay on embed html cuz its just for status updates and ie6 is crazy. 
 		if ( this.controls )
 			setTimeout( 'document.getElementById(\'' + this.id + '\').postEmbedJS()', 500 );
 		// set a default duration of 30 seconds: cortao should detect duration.
 		return this.wrapEmebedContainer( this.getEmbedObj() );
 	},
-	getEmbedObj:function() {
-		js_log( "java play url:" + this.getURI( this.seek_time_sec ) );
+	
+	/**
+	* Gets the embed html code:
+	*/
+	getEmbedObj: function() {
+		js_log( "java play url:" + this.getSrc( this.seek_time_sec ) );
 		// get the duration
 		this.getDuration();
 		// if still unset set to an arbitrary time 60 seconds: 
@@ -77,22 +90,28 @@ var javaEmbed = {
 				return appplet_code;
 			}
 	},
-	postEmbedJS:function() {
-		// reset logged domain error flag:
-		this.logged_domain_error = false;
+	
+	/**
+	* Once the applet has been embed start monitoring playback
+	*/
+	postEmbedJS:function() {		
 		// start monitor: 
 		this.monitor();
 	},
+	
+	/**
+	* Monitor applet playback, and update currentTime 
+	*/	
 	monitor:function() {
-		this.getJCE();
+		this.getPlayerElement();
 		if ( this.isPlaying() ) {
-			if ( this.jce && this.jce.getPlayPosition ) {
+			if ( this.playerElement && this.playerElement.getPlayPosition ) {
 				try {
 				   // java reads ogg media time.. so no need to add the start or seek offset:
-				   // js_log(' ct: ' + this.jce.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
-				   this.currentTime = this.jce.getPlayPosition();
-				   if ( this.jce.getPlayPosition() < 0 ) {
-				   		js_log( 'pp:' + this.jce.getPlayPosition() );
+				   // js_log(' ct: ' + this.playerElement.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
+				   this.currentTime = this.playerElement.getPlayPosition();
+				   if ( this.playerElement.getPlayPosition() < 0 ) {
+				   		js_log( 'pp:' + this.playerElement.getPlayPosition() );
 						// probably reached clip end					
 						this.onClipDone();
 				   }
@@ -104,35 +123,43 @@ var javaEmbed = {
 		// once currentTime is updated call parent_monitor 
 		this.parent_monitor();
 	},
-	/* 
-	 * (local cortado seek does not seem to work very well)  
-	 */
-	doSeek:function( perc ) {
-		js_log( 'java:seek:p: ' + perc + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
-		this.getJCE();
+	
+	/**
+	* Seek in the ogg stream 
+	* (Cortado seek does not seem to work very well)  
+	* @param {Float} percentage Percentage to seek into the stream
+	*/
+	doSeek:function( percentage ) {	
+		js_log( 'java:seek:p: ' + percentage + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
+		this.getPlayerElement();
 		
 		if ( this.supportsURLTimeEncoding() ) {
-			this.parent_doSeek( perc );
-			// this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( perc * this.getDuration() );						
-		   // this.jce.setParam('url', this.getURI( this.seek_time_sec ))
-			// this.jce.restart();
-		} else if ( this.jce ) {
-		   // do a (genneraly broken) local seek:   
-		   js_log( "cortado javascript seems to always fail ... but here we go... doSeek(" + ( perc * parseFloat( this.getDuration() ) ) );
-		   this.jce.doSeek( perc * parseFloat( this.getDuration() )  );
+			this.parent_doSeek( percentage );
+			// this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( percentage * this.getDuration() );						
+		   // this.playerElement.setParam('url', this.getSrc( this.seek_time_sec ))
+			// this.playerElement.restart();
+		} else if ( this.playerElement ) {
+		   // do a (generally broken) local seek:   
+		   js_log( "cortado javascript seems to always fail ... but here we go... doSeek(" + ( percentage * parseFloat( this.getDuration() ) ) );
+		   this.playerElement.doSeek( percentage * parseFloat( this.getDuration() )  );
 		} else {
-			this.doPlayThenSeek( perc );
+			this.doPlayThenSeek( percentage );
 		}
 	},
-	doPlayThenSeek:function( perc ) {
-		js_log( 'doPlayThenSeek Hack' );
+	
+	/**
+	* Issue a play request then seek to a percentage point in the stream
+	* @param {Float} percentage Percentage to seek into the stream
+	*/	
+	doPlayThenSeek: function( percentage ) {
+		js_log( 'doPlayThenSeek' );
 		var _this = this;
 		this.play();
 		var rfsCount = 0;
 		var readyForSeek = function() {
-			_this.getJCE();
+			_this.getPlayerElement();
 			// if we have .jre ~in theory~ we can seek (but probably not) 
-			if ( _this.jce ) {
+			if ( _this.playerElement ) {
 				_this.doSeek( perc );
 			} else {
 				// try to get player for 10 seconds: 
@@ -146,32 +173,49 @@ var javaEmbed = {
 		}
 		readyForSeek();
 	},
-	// get java cortado embed object
-	getJCE:function() {
+	
+	/**
+	* Update the playerElement instance with a pointer to the embed object 
+	*/
+	getPlayerElement:function() {
 		if ( embedTypes.mozilla ) {
-			this.jce = window.frames['cframe_' + this.id ].document.getElementById( this.pid );
+			this.playerElement = window.frames['cframe_' + this.id ].document.getElementById( this.pid );
 		} else {
-			this.jce = $j( '#' + this.pid ).get( 0 );
+			this.playerElement = $j( '#' + this.pid ).get( 0 );
 		}
 	},
-	doThumbnailHTML:function() {
+	
+	/**
+	* Show the Thumbnail
+	*/
+	showThumbnail:function() {
 		// empty out player html (jquery with java applets does mix) :			
 		var pelm = document.getElementById( 'dc_' + this.id );
 		if ( pelm ) {
 			pelm.innerHTML = '';
 		}
-		this.parent_doThumbnailHTML();
+		this.parent_showThumbnail();
 	},
+	
+	/**
+	* Issue the doPlay request to the playerElement
+	*	calls parent_play to update interface
+	*/
 	play:function() {
-		this.getJCE();
+		this.getPlayerElement();
 		this.parent_play();
-		if ( this.jce )
-			this.jce.doPlay();
+		if ( this.playerElement )
+			this.playerElement.doPlay();
 	},
+	
+	/**
+	* Pause playback
+	* 	calls parent_pause to update interface
+	*/	
 	pause:function() {
-		this.getJCE();
+		this.getPlayerElement();
 		this.parent_pause();
-		if ( this.jce )
-			this.jce.doPause();
+		if ( this.playerElement )
+			this.playerElement.doPause();
 	}
 };

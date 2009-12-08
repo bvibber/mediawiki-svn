@@ -1,4 +1,4 @@
-/*  
+/** 
 * embedPlayer is the base class for html5 video tag javascript abstraction library
 * embedPlayer include a few subclasses:
 * 
@@ -53,7 +53,7 @@ mw.addMessages( {
 	"mwe-generic_missing_plugin" : "You browser does not appear to support the following playback type: <b>$1<\/b><br \/>Visit the <a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Media_help\">Playback Methods<\/a> page to download a player.<br \/>",
 	"mwe-for_best_experience" : "For a better video playback experience we recommend:<br \/><b><a href=\"http:\/\/www.mozilla.com\/en-US\/firefox\/upgrade.html?from=mwEmbed\">Firefox 3.5<\/a>.<\/b>",
 	"mwe-do_not_warn_again" : "Dismiss for now.",
-	"mwe-playerselect" : "Players",
+	"mwe-playerSelect" : "Players",
 	"mwe-read_before_embed" : "<a href=\"http:\/\/mediawiki.org\/wiki\/Security_Notes_on_Remote_Embedding\" target=\"_new\">Read this<\/a> before embedding.",
 	"mwe-embed_site_or_blog" : "Embed on a page",
 	"mwe-related_videos" : "Related videos",
@@ -343,7 +343,9 @@ EmbedPlayerManager.prototype = {
 				// Make sure we have the necessary playlist libs loaded:
 				mw.load( [
 					'mvPlayList',
-					'$j.ui',	// Include dialog for pop-ing up things
+					
+					// Include dialog:
+					'$j.ui',	
 					'$j.ui.dialog'
 				], function() {
 					// Create playlist player interface
@@ -596,7 +598,7 @@ mediaSource.prototype = {
 	* @param {Number} seek_time_sec  Int: Used to adjust the URI for url based seeks) 
 	* @return {String} the URI of the source.
 	*/
-	getURI : function( seek_time_sec ) {
+	getSrc : function( seek_time_sec ) {
 		if ( !seek_time_sec || !this.URLTimeEncoding ) {
 			return this.src;
 		}
@@ -762,7 +764,7 @@ mediaElement.prototype = {
 		
 		if ( $j( video_element ).attr( 'durationHint' ) ) {
 			this.durationHint = $j( video_element ).attr( 'durationHint' );
-			// convert duration hint if needed:
+			// Convert duration hint if needed:
 			this.duration = npt2seconds(  this.durationHint );
 		}
 		
@@ -839,15 +841,14 @@ mediaElement.prototype = {
 	*
 	* @param {Number} index Index of source element to set as selected_source
 	*/
-	selectSource:function( index )
-	{
+	selectSource:function( index ) {
 		js_log( 'f:selectSource:' + index );
 		var playable_sources = this.getPlayableSources();
 		for ( var i = 0; i < playable_sources.length; i++ ) {
 			if ( i == index ) {
 				this.selected_source = playable_sources[i];
 				// Update the user selected format: 
-				embedTypes.players.userSelectFormat( playable_sources[i].mime_type );
+				embedTypes.players.setFormatPreference( playable_sources[i].mime_type );
 				break;
 			}
 		}
@@ -870,7 +871,7 @@ mediaElement.prototype = {
 				return true;
 			}
 			// Set via user-preference
-			if ( embedTypes.players.preference['format_prefrence'] == mime_type ) {
+			if ( embedTypes.players.preference['format_preference'] == mime_type ) {
 				 js_log( 'set via preference: ' + playable_sources[source].mime_type );
 				 this.selected_source = playable_sources[source];
 				 return true;
@@ -926,8 +927,7 @@ mediaElement.prototype = {
 	* Returns the thumbnail URL for the media element.
 	* @returns {String} thumbnail URL
 	*/
-	getThumbnailURL:function()
-	{
+	getThumbnailURL: function( ) {
 		return this.thumbnail;
 	},
 	
@@ -963,15 +963,14 @@ mediaElement.prototype = {
 	*	the element has a 'src' attribute.		
 	*	@param {Element} element <video>, <source> or <mediaSource> <text> element.
 	*/
-	tryAddSource:function( element )
-	{
+	tryAddSource: function( element ) {
 		js_log( 'f:tryAddSource:' + $j( element ).attr( "src" ) );
 		if ( $j( element ).attr( "src" ) ) {
 			var new_src = $j( element ).attr( 'src' );
 			// make sure an existing element with the same src does not already exist:		 
 			for ( var i = 0; i < this.sources.length; i++ ) {
 				if ( this.sources[i].src == new_src ) {
-					// js_log('checking existing: '+this.sources[i].getURI() + ' != '+ new_src);	 
+					// js_log('checking existing: '+this.sources[i].getSrc() + ' != '+ new_src);	 
 					// can't add it all but try to update any additional attr: 
 					this.sources[i].updateSource( element );
 				}
@@ -985,9 +984,8 @@ mediaElement.prototype = {
 		if ( !source.startOffset && this.startOffset )
 			source.startOffset = this.startOffset;
 		
-				
-		this.sources.push( source );
 		js_log( 'pushed source to stack' + source + 'sl:' + this.sources.length );
+		this.sources.push( source );		
 	},
 	
 	/**
@@ -1097,6 +1095,9 @@ embedPlayer.prototype = {
 	// Percent of the clip buffered:	
 	'bufferedPercent' : 0,	
 	
+	// Holds the timmer interval function
+	'monitorTimerId' : null,
+	
 	/**
 	* embedPlayer constructor 
 	*
@@ -1176,18 +1177,23 @@ embedPlayer.prototype = {
 	
 	/**
 	* Set width or height from css style attribute, html element attribute, or by default value
+	* @param {Element} element Source element to grab size from
+	* @param {String} dimension "height" or "width" 
 	*/
-	setDimSize:function( element, dim ){				
-		var dcss = parseInt( $j(element).css( dim ).replace( 'px' , '' ) );
-		var dattr = parseInt( $j(element).attr( dim ) );
-		this[ dim ] = ( dcss )? dcss : dattr;		
-		if( !this[ dim ] ){
+	setDimSize:function( element, dimension ){				
+		var dcss = parseInt( $j(element).css( dimension ).replace( 'px' , '' ) );
+		var dattr = parseInt( $j(element).attr( dimension ) );
+					
+		this[ dimension ] = ( dcss )? dcss : dattr;
+		
+		// On load sometimes attr is temporarlly -1		
+		if( ! this[ dimension ] || this[ dimension ] == -1 ){
 			//special height default for audio tag:  
-			if( element.tagName.toLowerCase() == 'audio' &&  dim == 'height' )
-				return this[ dim ] = 0;
+			if( element.tagName.toLowerCase() == 'audio' &&  dimension == 'height' )
+				return this[ dimension ] = 0;
 			// Grab width/height from default value (for video) 
 			var dwh = mw.getConfig( 'video_size' ).split( 'x' );
-		 	this[ dim ] = ( dim == 'width' )? dwh[0] : dwh[1];
+		 	this[ dimension ] = ( dimension == 'width' )? dwh[0] : dwh[1];
 		 }
 	},
 	
@@ -1315,8 +1321,7 @@ embedPlayer.prototype = {
 		var _this = this;
 		
 		// Load the selected player
-		this.selected_player.load( function() {
-			
+		this.selected_player.load( function() {		
 			// Get the selected Player embed interface
 			eval( 'var embedPlayer = ' + _this.selected_player.library + 'Embed;' );
 			
@@ -1325,13 +1330,13 @@ embedPlayer.prototype = {
 					_this['parent_' + method] = _this[method];
 				_this[method] = embedPlayer[method];
 			}			
-					
+			
 			_this.ready_to_play = true;
 			_this.getDuration();
-			_this.getHTML();
+			_this.showPlayer();
 			
 			// Run the callback if provided
-			if ( callback ) 
+			if ( typeof callback == 'function' ) 
 				callback();
 		} );
 	},
@@ -1342,13 +1347,13 @@ embedPlayer.prototype = {
 	* @param {Object} player Player playback system to be selected
 	* 	player playback system include vlc, native, java etc. 
 	*/
-	selectPlayer:function( player ) {
+	selectPlayer: function( player ) {
 		var _this = this;
 		if ( this.selected_player.id != player.id ) {
 			this.selected_player = player;
 			this.inheritEmbedPlayer( function(){ 
 				// Update the controls for the new selected player
-				this.refreshControlsHTML();
+				this.refreshControls();
 			});			
 		}
 	},
@@ -1357,7 +1362,7 @@ embedPlayer.prototype = {
 	* Issue a warning to non-native playback systems
 	* that they could improve the playback experience with a different browser
 	*/ 
-	doNativeWarningCheck:function() {
+	doNativeWarningCheck: function( ) {
 		if ( $j.cookie( 'dismissNativeWarn' ) && $j.cookie( 'dismissNativeWarn' ) === true ) {
 			return false;
 		}
@@ -1443,7 +1448,7 @@ embedPlayer.prototype = {
 		return 'Error: function getEmbedHTML should be implemented by embed player interface ';
 	},
 	
-	/*
+	/**
 	* Seek function (should be implemented by embed player interface )
 	*/ 
 	doSeek : function( percent ) {
@@ -1455,13 +1460,14 @@ embedPlayer.prototype = {
 			this.stop();
 			this.didSeekJump = true;
 			// Update the slider
-			this.setSliderValue( percent );
+			this.updatePlayHead( percent );
 		}
 		// Do play request in 100ms ( give the dom time to swap out the embed player ) 
 		setTimeout( function(){
 			_this.play()
 		}, 100 );
 	},
+	
 	/**
 	 * Seeks to the requested time and issues a callback when ready 
 	 * (should be overwritten by client that supports frame serving)
@@ -1470,27 +1476,33 @@ embedPlayer.prototype = {
 		js_log( 'Error: base embed setCurrentTime can not frame serve (override via plugin)' );
 	},
 	
-	doEmbedHTML:function() {
-		js_log( 'f:doEmbedHTML' );
+	/**
+	* Setup the embed player 
+	* issues a loading request
+	*/
+	setupEmbedPlayer:function() {
+		js_log( 'f:setupEmbedPlayer' );
 		js_log( 'thum disp:' + this.thumbnail_disp );
-		var _this = this;
-		this.closeDisplayedHTML();
+		var _this = this;				
 		
-		// Set "loading" here
+		// Set "loading" here:
 		$j( '#mv_embedded_player_' + _this.id ).html( '' +
 			'<div style="color:black;width:' + this.width + 'px;height:' + this.height + 'px;">' +
 				gM( 'mwe-loading_plugin' ) +
 			'</div>'
 		);
-		// Schedule embedding after player library is loaded:
-		this.selected_player.load( function() {
-			js_log( 'performing embed for ' + _this.id );
-			var embed_code = _this.getEmbedHTML();
-			// js_log('shopuld embed:' + embed_code);
-			$j( '#mv_embedded_player_' + _this.id ).html( embed_code );
-		} );
+		
+		// Make sure the player is		
+		js_log( 'performing embed for ' + _this.id );
+		var embed_code = _this.getEmbedHTML();
+		// js_log('shopuld embed:' + embed_code);
+		$j( '#mv_embedded_player_' + _this.id ).html( embed_code );
 	},
-	relatedTitleKeySearch:function() {
+	
+	/**
+	* Searches for related clipes from titleKey
+	*/
+	getRelatedFromTitleKey:function() {
 		var _this = this;
 		var reqObj = {
 			'action' : 'query',
@@ -1511,20 +1523,26 @@ embedPlayer.prototype = {
 				}
 				_this.getRelatedFromCat( req_categories );
 			} else {
-				_this.doThumbnailHTML();
+				_this.showThumbnail();
 			}
 		} );
 	},
-	getRelatedFromCat:function( catAry ) {
+	
+	/**
+	* Get Related Clips from a category list
+	*
+	* @parma {Object} catlist List of categories
+	*/	
+	getRelatedFromCat:function( catlist ) {
 		js_log( 'getRelatedFromCat' );
 		var _this = this;
-		for ( var i = 0 ; i <= catAry.length ; i++ ) {
-			if ( !catAry[i] )
+		for ( var i = 0 ; i <= catlist.length ; i++ ) {
+			if ( !catlist[i] )
 				continue;
 			var reqObj = {
 				'action'	: 'query',
 				'generator'	: 'categorymembers'  ,
-				'gcmtitle'	: catAry[i],
+				'gcmtitle'	: catlist[i],
 				'prop'		: 'imageinfo',
 				'iiprop'	: 'url',
 				'iiurlwidth': '80'
@@ -1563,12 +1581,16 @@ embedPlayer.prototype = {
 			} ); // end do_api_req
 		};
 	},
+	
+	/**
+	* On clip done action. Called once a clip is done playing
+	*/
 	onClipDone:function() {
 		js_log( 'base:onClipDone' );
 		// stop the clip (load the thumbnail etc) 
 		this.stop();
 		this.seek_time_sec = 0;
-		this.setSliderValue( 0 );
+		this.updatePlayHead( 0 );
 		var _this = this;
 		
 		if ( this.width < 300 ) {
@@ -1599,12 +1621,17 @@ embedPlayer.prototype = {
 			'</div>' );
 			$j( '#img_thumb_' + this.id ).fadeOut( "fast" );
 			$j( '#dc_' + _this.id + ' .related_vids ul' ).html( gM( 'mwe-loading_txt' ) );
-			this.relatedTitleKeySearch();
+			this.getRelatedFromTitleKey();
 		} else {
-			this.onClipDoneDisp();
+			this.showNearbyClips();
 		}
 	},
-	onClipDoneDisp:function() {
+	
+	/**
+	* Shows nearby clips based on "roe" xml 
+	* Mostly metavid specific ( should be factored into a seperate module ) 
+	*/
+	showNearbyClips: function() {
 		var _this = this;
 		// add the liks_info_div black back 
 		$j( '#dc_' + this.id ).append( '<div id="liks_info_' + this.id + '" ' +
@@ -1638,11 +1665,15 @@ embedPlayer.prototype = {
 				_this.getNextPrevLinks();
 			} );
 		} else {
-			this.getNextPrevLinks();
+			this.getNearbyClipLinks();
 		}
 	},
-	// @@todo we should merge getNextPrevLinks with textInterface .. there is repeated code between them. 
-	getNextPrevLinks:function() {
+	
+	/**
+	* Gets nearby Clip links 
+	* Mostly metavid specific ( should be factored into a seperate module )
+	*/
+	getNearbyClipLinks:function() {
 		js_log( 'f:getNextPrevLinks' );
 		var anno_track_url = null;
 		var _this = this;
@@ -1658,7 +1689,7 @@ embedPlayer.prototype = {
 		if ( !anno_track_url ) {
 			js_log( 'no annotative track url found' );
 			// $j('#liks_info_'+this.id).html('no metadata found for related links');
-			_this.doThumbnailHTML();
+			_this.showThumbnail();
 			return ;
 		}
 		
@@ -1717,7 +1748,12 @@ embedPlayer.prototype = {
 		}
 		// query current request time +|- 60s to get prev next speech links. 
 	},
-	showNextPrevLinks:function() {
+	
+	/** 
+	* Display the nearby clip links
+	* Mostly metavid specific ( should be factored into a seperate module )
+	*/
+	showNearbyClipLinks:function() {
 		// js_log('f:showNextPrevLinks');
 		// int requested links: 
 		var link = {
@@ -1776,8 +1812,7 @@ embedPlayer.prototype = {
 					if ( regTimeCheck.test( this.media_element.linkback ) ) {
 						html += ' href="' + this.media_element.linkback.replace( regTimeCheck, time_req ) + '" ';
 					} else {
-						html += ' href="#" onClick="$j(\'#' + this.id + '\').get(0).playByTimeReq(\'' +
-								time_req + '\'); return false; "';
+						html += ' href="#" class="playtimerequest" ';
 					}
 					html += ' title="' + title_msg + '">' +
 						 gM( 'mwe-' + link_type + '_clip_msg' ) +
@@ -1786,38 +1821,59 @@ embedPlayer.prototype = {
 			}
 		}
 		// js_og("should set html:"+ html);
-		$j( '#liks_info_' + this.id ).html( html );
+		$j( '#liks_info_' + this.id )
+			.html( html )
+			//Do bindings:	
+			.children( '.playtimerequest' )
+			.click( function(){
+				_this.stop();
+				_this.updateVideoTimeReq( time_req );
+				_this.play();
+			} );
+			
 	},
-	playByTimeReq: function( time_req ) {
-		js_log( 'f:playByTimeReq: ' + time_req );
-		this.stop();
-		this.updateVideoTimeReq( time_req );
-		this.play();
-	},
-	doThumbnailHTML:function() {
+	
+	/**
+	* Shows the video Thumbnail, updates pause state
+	*/
+	showThumbnail: function() {
 		var _this = this;
-		js_log( 'f:doThumbnailHTML' + this.thumbnail_disp );
+		js_log( 'f:showThumbnail' + this.thumbnail_disp );
 		this.closeDisplayedHTML();
 		$j( '#mv_embedded_player_' + this.id ).html( this.getThumbnailHTML() );
 		this.paused = true;
 		this.thumbnail_disp = true;
-		// make sure the ctrlBuilder remain active: 
+		// Make sure the ctrlBuilder bindings are up-to-date 
 		this.ctrlBuilder.addControlHooks();
 	},
-	refreshControlsHTML:function() {
+	
+	/**
+	* Refresh the player Controls 
+	*  Usefull for updating for when new playback system is selected
+	*/	
+	refreshControls:function() {
 		if ( $j( '#' + this.id + ' .control-bar' ).length == 0 ) {
-			js_log( 'refreshControlsHTML::control-bar not present, no refresh' );
+			js_log( 'refreshControls::control-bar not present, no refresh' );
 			return ;
 		}
 		// Do update controls: 
-		$j( '#' + this.id + ' .control-bar' ).html( this.getControlsHTML() );
+		$j( '#' + this.id + ' .control-bar' ).html( this.getControls() );
 		this.ctrlBuilder.addControlHooks();
 				
 	},
-	getControlsHTML:function() {
+	
+	/**
+	* Maps the getControls request to the ctrl Builder
+	* 	requires this.ctrlBuilder to be setup
+	*/
+	getControls: function() {
 		return this.ctrlBuilder.getControls( this );
 	},
-	getHTML : function () {		
+	
+	/**
+	*
+	*/
+	showPlayer : function () {		
 		// set-up the local ctrlBuilder instance: 
 		this.ctrlBuilder = new ctrlBuilder( this );
 						
@@ -1828,12 +1884,11 @@ embedPlayer.prototype = {
 		html_code += '<div style="width:' + parseInt( this.width ) + 'px;height:' + parseInt( this.height ) + 'px;"  id="mv_embedded_player_' + this.id + '">' +
 						this.getThumbnailHTML() +
 					'</div>';
-		
-		// js_log("mvEmbed:controls "+ typeof this.controls);									
+													
 		if ( this.controls ) {
-			js_log( "f:getHTML:AddControls" );
+			js_log( "f:showPlayer:AddControls" );
 			html_code += '<div class="ui-state-default ui-widget-header ui-helper-clearfix control-bar" >';
-			html_code += this.getControlsHTML();
+			html_code += this.getControls();
 			html_code += '</div>';
 			// block out some space by encapsulating the top level div 
 			$j( this ).wrap( '<div style="width:' + parseInt( this.width ) + 'px;height:'
@@ -1850,7 +1905,7 @@ embedPlayer.prototype = {
 						  
 		
 		if ( this.autoplay ) {
-			js_log( 'getHTML::activating autoplay' );
+			js_log( 'showPlayer::activating autoplay' );
 			this.play();
 		}
 	},
@@ -1889,7 +1944,7 @@ embedPlayer.prototype = {
 		this.setStatus( start_npt + '/' + end_npt );
 		
 		// reset slider
-		this.setSliderValue( 0 );
+		this.updatePlayHead( 0 );
 		
 		// reset seek_offset:
 		if ( this.media_element.selected_source.URLTimeEncoding )
@@ -2204,14 +2259,19 @@ embedPlayer.prototype = {
 	* Close the custom HTML displayed using displayHTML and restores the
 	* regular mwEmbed display.
 	*/
-	closeDisplayedHTML:function() {
+	closeDisplayedHTML: function() {
 		  var sel_id = ( this.pc != null ) ? this.pc.pp.id:this.id;
 		 $j( '#blackbg_' + sel_id ).fadeOut( "slow", function() {
 			 $j( '#blackbg_' + sel_id ).remove();
 		 } );
 		 return false; // onclick action return false
 	},
-	showPlayerselect:function( $target ) {	
+	
+	/**
+	* Shows the Player Select interface
+	* @param {Object} $target jQuery target to output to
+	*/
+	showPlayerSelect: function( $target ) {	
 		// Get id (in case where we have a parent container)
 		var this_id = ( this.pc != null ) ? this.pc.pp.id:this.id;
 		var _this = this;
@@ -2263,7 +2323,7 @@ embedPlayer.prototype = {
 				$j( '#' + this_id  ).get( 0 ).closeDisplayedHTML();
 				$j( '#' + _this.id ).get( 0 ).media_element.selectSource( source_id );
 
-				embedTypes.players.userSelectPlayer( default_player_id,
+				embedTypes.players.setPlayerPreference( default_player_id,
 					 _this.media_element.sources[ source_id ].getMIMEType() );
 
 				// Issue a stop
@@ -2274,6 +2334,11 @@ embedPlayer.prototype = {
 			} );
 		} );
 	},
+	
+	/**
+	* Shows the download interface
+	* @param {Object} $target jQuery target to output to
+	*/
 	showDownload:function( $target ) {
 		var _this = this;
 		// Load the roe if available (to populate out download options:
@@ -2282,9 +2347,9 @@ embedPlayer.prototype = {
 			var dl_list = '';
 			var dl_txt_list = '';
 			$j.each( _this.media_element.getSources(), function( index, source ) {
-				var dl_line = '<li>' + '<a style="color:white" href="' + source.getURI() + '"> '
+				var dl_line = '<li>' + '<a style="color:white" href="' + source.getSrc() + '"> '
 					+ source.getTitle() + '</a> ' + '</li>' + "\n";
-				if (	 source.getURI().indexOf( '?t=' ) !== -1 ) {
+				if (	 source.getSrc().indexOf( '?t=' ) !== -1 ) {
 					out += dl_line;
 				} else if ( this.getMIMEType() == "text/cmml" || this.getMIMEType() == "text/x-srt" ) {
 					dl_txt_list += dl_line;
@@ -2312,9 +2377,18 @@ embedPlayer.prototype = {
 			$target.html( getShowVideoDownload() );
 		}
 	},
-	/*
-	*  Base embed controls
-	*  The Play Action:
+	
+	/**
+	*  Base Embed Controls
+	*/
+	
+	/**
+	* The Play Action
+	*
+	* Handles play requests, updates relevet states:
+	*  seeking =false
+	*  paused = false
+	* Updates pause button
 	*/
 	play : function() {
 		var eid = ( this.pc != null ) ? this.pc.pp.id:this.id;
@@ -2326,7 +2400,7 @@ embedPlayer.prototype = {
 				// this.innerHTML = this.getPluginMissingHTML();				
 				$j( '#' + this.id ).html( this.getPluginMissingHTML() );
 			} else {
-				this.doEmbedHTML();
+				this.setupEmbedPlayer();
 				this.paused = false;
 				this.thumbnail_disp = false;
 			}
@@ -2342,18 +2416,23 @@ embedPlayer.prototype = {
 	   	 } ).attr( 'title', gM( 'mwe-pause_clip' ) );
 		   
 	},
+	
+	/**
+	* Maps the html5 load request. 
+	* There is no genneral way to "load" clips so underling plugin-player libs should overide. 
+	*/
 	load:function() {
 		// should be done by child (no base way to pre-buffer video)
 		js_log( 'baseEmbed:load call' );
-	},
-	getSrc:function() {
-	   return this.media_element.selected_source.getURI( this.seek_time_sec );
-	},
-	/*
-	 * Base embed pause
-	 *	there is no general way to pause the video
-	 *  must be overwritten by embed object to support this functionality.
-	 */
+	},	
+	
+	/**
+	* Base embed pause
+	* Updaets the play/pause button state.
+	*
+	*	There is no general way to pause the video
+	*  must be overwritten by embed object to support this functionality.
+	*/
 	pause: function() {
 		var _this = this;
 		var eid = ( this.pc != null ) ? this.pc.pp.id:this.id;
@@ -2367,9 +2446,16 @@ embedPlayer.prototype = {
 				_this.play();
 		} ).attr( 'title', gM( 'mwe-play_clip' ) );
 	},
+	
 	/**
-	 * Base embed stop (can be overwritten by the plugin)
-	 */
+	* Base embed stop 
+	* 
+	* Updates the player to the stop state 
+	* 	shows Thumbnail
+	* 	resets Buffer
+	*	resets Playhead slider
+	* 	resets Status
+	*/
 	stop: function() {
 		var _this = this;
 		js_log( 'mvEmbed:stop:' + this.id );
@@ -2392,9 +2478,9 @@ embedPlayer.prototype = {
 			js_log( 'already in stopped state' );
 		} else {
 			// rewrite the html to thumbnail disp
-			this.doThumbnailHTML();
+			this.showThumbnail();
 			this.bufferedPercent = 0; // reset buffer state
-			this.setSliderValue( 0 );
+			this.updatePlayHead( 0 );
 			this.setStatus( this.getTimeRange() );
 		}
 		
@@ -2409,6 +2495,13 @@ embedPlayer.prototype = {
 			this.update_interval = null;
 		}
 	},
+	
+	/**
+	* Base Embed mute
+	* 
+	* Handles interface updates for toggling mute.
+	*  Plug-in / player interface must handle updateing the actual media player
+	*/
 	toggleMute:function() {
 		var eid = ( this.pc != null ) ? this.pc.pp.id:this.id;
 		if ( this.muted ) {
@@ -2422,14 +2515,36 @@ embedPlayer.prototype = {
 		}
 		js_log( 'f:toggleMute::' + this.muted );
 	},
+	
+	/**
+	* Abstract Update volumen Method must be overided by plug-in / player interface
+	*/
 	updateVolumen:function( perc ) {
 		js_log( 'update volume not supported with current playback type' );
+		return ;
 	},
+	
+	/**
+	* Abstract fullscreen Method must be overided by plug-in / player interface
+	*/
 	fullscreen:function() {
 		js_log( 'fullscreen not supported with current playback type' );
+		return ;
 	},
+	
 	/**
-	*  returns bool true if playing or paused, false if stooped
+	* Abstract method to be run post embeding the player 
+	* Generally should be overwiten by the plug-in / player 
+	*/
+	postEmbedJS:function() {
+		return ;
+	},
+	
+	/**
+	* Checks the player state based on thumbnail display & paused state
+	* @return {Boolean} 
+	*	true if playing
+	* 	false if not playing
 	*/
 	isPlaying : function() {
 		if ( this.thumbnail_disp ) {
@@ -2442,20 +2557,29 @@ embedPlayer.prototype = {
 			return true;
 		}
 	},
+	
+	/**
+	* Getter for paused state
+	* @return {Boolean} 
+	*	true if playing
+	* 	false if not playing
+	*/
 	isPaused : function() {
 		return this.isPlaying() && this.paused;
 	},
+	
+	/**
+	* Getter for Stoped state
+	* @return {Boolean} 
+	*	true if playing
+	* 	false if not playing
+	*/
 	isStoped : function() {
 		return this.thumbnail_disp;
 	},
-	playlistSupport:function() {
-		// by default not supported (implemented in js)
-		return false;
-	},
-	postEmbedJS:function() {
-		return '';
-	},
-	/*
+	
+
+	/**
 	* Monitor playback and update interface components.
 	* underling plugin objects are responsible for updating currentTime
 	*/
@@ -2466,11 +2590,11 @@ embedPlayer.prototype = {
 			if ( !this.userSlide && !this.seeking ) {
 				if ( this.start_offset  ) {
 					// If start offset include that calculation 
-					this.setSliderValue( ( this.currentTime - this.start_offset ) / this.duration );
+					this.updatePlayHead( ( this.currentTime - this.start_offset ) / this.duration );
 					var et = ( this.ctrlBuilder.long_time_disp ) ? '/' + seconds2npt( parseFloat( this.start_offset ) + parseFloat( this.duration ) ) : '';
 					this.setStatus( seconds2npt( this.currentTime ) + et );
 				} else {
-					this.setSliderValue( this.currentTime / this.duration );
+					this.updatePlayHead( this.currentTime / this.duration );
 					var et = ( this.ctrlBuilder.long_time_disp ) ? '/' + seconds2npt( this.duration ):'';
 					this.setStatus( seconds2npt( this.currentTime ) + et );
 				}
@@ -2478,7 +2602,7 @@ embedPlayer.prototype = {
 			// Check if we are "done"
 			var end_presentation_time = parseFloat( this.startOffset) + parseFloat( this.duration ) ;
 			if ( this.currentTime > end_presentation_time ) {
-				js_log( "should run clip done ct:: " + this.currentTime + ' > ' +  end_presentation_time  );
+				js_log( "should run clip done :: " + this.currentTime + ' > ' +  end_presentation_time  );
 				this.onClipDone();
 			}
 		} else {
@@ -2497,8 +2621,10 @@ embedPlayer.prototype = {
 				this.setStatus( this.getTimeRange() );
 			}
 		}
+		
 		// Update buffer information 
 		this.updateBufferStatus();		
+		
 		// Update monitorTimerId to call child monitor
 		if ( ! this.monitorTimerId ) {
 			// Make sure an instance of this.id exists: 
@@ -2511,13 +2637,20 @@ embedPlayer.prototype = {
 			}
 		}
 	},
+	
+	/**
+	* Stop the playback monitor
+	*/
 	stopMonitor:function() {
-		if ( this.monitorTimerId != 0 )
-		{
+		if ( this.monitorTimerId != 0 ){
 			clearInterval( this.monitorTimerId );
 			this.monitorTimerId = 0;
 		}
 	},
+	
+	/**
+	* Update the buffer status based on the local bufferedPercent var
+	*/
 	updateBufferStatus: function() {
 			
 		// Build the buffer target based for playlist vs clip 
@@ -2536,27 +2669,13 @@ embedPlayer.prototype = {
 			$j( buffer_select ).css( "width", '0px' );
 		}
 	},
-	relativeCurrentTime: function() {
-		if ( !this.start_offset )
-			this.start_offset = 0;
-		var rt = this.currentTime - this.start_offset;
-		if ( rt < 0 ) // should not happen but does. 
-			return 0;
-		return rt;
-	},
-	getPluginEmbed : function() {
-		if ( window.document[this.pid] ) {
-			return window.document[this.pid];
-		}
-		if ( $j.browser.msie ) {
-			return document.getElementById( this.pid );
-		} else {
-			 if ( document.embeds && document.embeds[this.pid] )
-				return  document.embeds[this.pid];
-		}
-		return null;
-	},
-	setSliderValue: function( perc, hide_progress ) {
+	
+	/**
+	* Update the player playhead
+	*
+	* @param {Float} perc Value between 0 and 1 for position of playhead
+	*/
+	updatePlayHead: function( perc ) {
 		var eid = ( this.pc ) ? this.pc.pp.id:this.id;
 		if ( this.controls && $j( '#' + eid + ' .play_head' ).length != 0 ) {
 			var val = parseInt( perc * 1000 );
@@ -2565,11 +2684,17 @@ embedPlayer.prototype = {
 		// js_log('set#mv_seeker_slider_'+eid + ' perc in: ' + perc + ' * ' + $j('#mv_seeker_'+eid).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
 		// js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');
 	},
+	
+	/**
+	* Highligh a section of video on the playhead
+	*  ~ probably could be moved to a seperate module ~ 
+	*
+	* @param {Object} options Provides "start" time & "end" time to highlight
+	*/	
 	highlightPlaySection:function( options ) {
 		js_log( 'highlightPlaySection' );
 		var eid = ( this.pc ) ? this.pc.pp.id:this.id;
 		var dur = this.getDuration();
-		var hide_progress = true;
 		// set the left percet and update the slider: 
 		rel_start_sec = npt2seconds( options['start'] );
 		// remove the start_offset if relevent: 
@@ -2581,7 +2706,7 @@ embedPlayer.prototype = {
 			left_perc = 0;
 			options['start'] = seconds2npt( this.start_offset );
 			rel_start_sec = 0;
-			this.setSliderValue( 0 , hide_progress );
+			this.updatePlayHead( 0 );
 		} else {
 			left_perc = parseInt( ( rel_start_sec / dur ) * 100 ) ;
 			slider_perc = ( left_perc / 100 );
@@ -2589,7 +2714,7 @@ embedPlayer.prototype = {
 		
 		js_log( "slider perc:" + slider_perc );
 		if ( ! this.isPlaying() ) {
-			this.setSliderValue( slider_perc , hide_progress );
+			this.updatePlayHead( slider_perc );
 		}
 		
 		width_perc = parseInt( ( ( npt2seconds( options['end'] ) - npt2seconds( options['start'] ) ) / dur ) * 100 ) ;
@@ -2609,26 +2734,48 @@ embedPlayer.prototype = {
 		js_log( 'DO update: ' +  this.jump_time );
 		this.updateThumbTime( rel_start_sec );
 	},
+	
+	/**
+	* Hides the playhead highlight
+	*/	
 	hideHighlight:function() {
 		var eid = ( this.pc ) ? this.pc.pp.id:this.id;
 		$j( '#mv_seeker_' + eid + ' .mv_highlight' ).hide();
 		this.setStatus( this.getTimeReq() );
 		thigetTimeRangerValue( 0 );
 	},
+	
+	/**
+	* Updates the player status that displays short text msgs and the play clock 
+	*/
 	setStatus:function( value ) {
 		var eid = ( this.pc ) ? this.pc.pp.id:this.id;
 		// update status:
 		$j( '#' + eid + ' .time-disp' ).html( value );
 	},
+	
+	
+	
 	/**
 	* Helper Functions for selected source 
 	*/
-	/*
-	* returns the selected source url for players to play
+	
+	/**
+	* Gets the current selected media source
+	*
+	* @return src url	
 	*/
-	getURI : function( seek_time_sec ) {
-		return this.media_element.selected_source.getURI( this.seek_time_sec );
+	getSrc: function() {
+	   return this.media_element.selected_source.getSrc( this.seek_time_sec );
 	},
+	
+	/**
+	* If the selected src supports URL time encoding
+	*
+	* @return {Boolean}
+	*	ture if the src supports url time requests
+	* 	false if the src does not support url time requests
+	*/
 	supportsURLTimeEncoding: function() {
 		// do head request if on the same domain
 		return this.media_element.selected_source.URLTimeEncoding;
@@ -2639,9 +2786,10 @@ embedPlayer.prototype = {
 
 /**
   * mediaPlayer represents a media player plugin.
+  
   * @param {String} id id used for the plugin.
   * @param {Array<String>} supported_types n array of supported MIME types.
-  * @param {String} library external script containing the plugin interface code. (mv_<library>Embed.js)
+  * @param {String} library external script containing the plugin interface code. 
   * @constructor
   */
 function mediaPlayer( id, supported_types, library )
@@ -2653,62 +2801,88 @@ function mediaPlayer( id, supported_types, library )
 	this.loading_callbacks = new Array();
 	return this;
 }
-mediaPlayer.prototype =
-{
+mediaPlayer.prototype = {
+	// Id of the mediaPlayer
 	id:null,
+	
+	// Mime types supported by this player
 	supported_types:null,
+	
+	// Player library ie: native, vlc, java etc. 
 	library:null,
+	
+	// Flag stores the mediaPlayer load state
 	loaded:false,
-	loading_callbacks:null,
-	supportsMIMEType: function( type )
-	{
-		for ( var i = 0; i < this.supported_types.length; i++ )
+		
+	/**
+	* Checks support for a given MIME type
+	*
+	* @param {String} type Mime type to check against supported_types
+	* @return {Boolean}
+	*	true if mime type is supported
+	*	false if mime type is unsupported
+	*/ 
+	supportsMIMEType: function( type ) {
+		for ( var i = 0; i < this.supported_types.length; i++ ){
 			if ( this.supported_types[i] == type )
 				return true;
+		}
 		return false;
 	},
-	getName: function()
-	{
+	
+	/**
+	* Get the "name" of the player from a predictable msg key
+	*/
+	getName: function() {
 		return gM( 'mwe-ogg-player-' + this.id );
 	},
+	
+	/**
+	* Loads the player library and then calls the callback.
+	*
+	* @param {Function} callback Function to be called once player library is loaded.
+	*/	
 	load: function( callback ) {
-		debugger;		
 		mw.load( [
 			this.library + 'Embed'
-		], function() {			
-			var cat = nativeEmbed;		
+		], function() {									
 			callback();
 		} );
 	}
 }
-/* players and supported mime types 
-@@note ideally we query the plugin to get what mime types it supports in practice not always reliable/avaliable
+
+/** 
+* players and supported mime types 
+* In an ideal world we would query the  plugin to get what mime
+*  types it supports in practice not always reliable/avaliable
 */
+
+//Flash based players: 
 //var flowPlayer = new mediaPlayer( 'flowplayer', ['video/x-flv', 'video/h264'], 'flowplayer' );
 var kplayer = new mediaPlayer('kplayer', ['video/x-flv', 'video/h264'], 'kplayer');
-
 var omtkPlayer = new mediaPlayer( 'omtkplayer', ['audio/ogg'], 'omtk' );
 
+//Java based player
 var cortadoPlayer = new mediaPlayer( 'cortado', ['video/ogg', 'audio/ogg'], 'java' );
+
+//Native html5 player
 var videoElementPlayer = new mediaPlayer( 'videoElement', ['video/ogg', 'audio/ogg'], 'native' );
 
+//VLC player
 var vlcMineList = ['video/ogg', 'audio/ogg', 'video/x-flv', 'video/mp4',  'video/h264'];
 var vlcPlayer = new mediaPlayer( 'vlc-player', vlcMineList, 'vlc' );
 
-// add generic
+//Generic plugin
 var oggPluginPlayer = new mediaPlayer( 'oggPlugin', ['video/ogg'], 'generic' );
 
-// depricate quicktime in favor of safari native 
-// var quicktimeMozillaPlayer = new mediaPlayer('quicktime-mozilla',['video/ogg'],'quicktime');
-// var quicktimeActiveXPlayer = new mediaPlayer('quicktime-activex',['video/ogg'],'quicktime');
-
+//HTML player for timed display of html contnet ( used in sequencer ) 
 var htmlPlayer = new mediaPlayer( 'html', ['text/html', 'image/jpeg', 'image/png', 'image/svg'], 'html' );
 
+
 /**
-  * mediaPlayers is a collection of mediaPlayer objects supported by the client.
-  * It could be merged with embedTypes, since there is one embedTypes per script
-  * and one mediaPlayers per embedTypes.
-  */
+ * mediaPlayers is a collection of mediaPlayer objects supported by the client.
+ * @constructor
+ */
 function mediaPlayers()
 {
 	this.init();
@@ -2716,9 +2890,19 @@ function mediaPlayers()
 
 mediaPlayers.prototype =
 {
+	// The list of players supported
 	players : null,
+	
+	// Store per mime-type prefrences for players
 	preference : null,
+	
+	// Stores the default set of players for a given mime type
 	default_players : { },
+	
+	/**
+	* Initializartion function defiens the default order for players for
+	* a given mime type
+	*/
 	init : function() {
 		this.players = new Array();
 		this.loadPreferences();
@@ -2738,30 +2922,31 @@ mediaPlayers.prototype =
 		this.default_players['image/svg'] = ['html'];
 		
 	},
-	addPlayer : function( player, mime_type ) {
+	
+	/**
+	* Adds a Player to the player list
+	*
+	* @param {Object} player Player object to be added	
+	*/
+	addPlayer: function( player ) {
 		for ( var i = 0; i < this.players.length; i++ ) {
 			if ( this.players[i].id == player.id ) {
-				if ( mime_type != null ) {
-					// make sure the mime_type is not already there:
-					var add_mime = true;
-					for ( var j = 0; j < this.players[i].supported_types.length; j++ ) {
-						if ( this.players[i].supported_types[j] == mime_type )
-							add_mime = false;
-					}
-					if ( add_mime )
-						this.players[i].supported_types.push( mime_type );
-				}
+				// Player already found				
 				return ;
 			}
 		}
-		// Player not found: 
-		if ( mime_type != null )
-			player.supported_types.push( mime_type );
-				  
-		js_log( 'Adding ' + player.id + ' with mime_type ' + mime_type );
+		// Add the player: 				
 		this.players.push( player );
 	},
-	getMIMETypePlayers : function( mime_type ) {
+	
+	/**
+	* get players that support a given mime_type
+	*
+	* @param {String} mime_type Mime type of player set
+	* @return {Array} 
+	*	Array of players that support a the requested mime type
+	*/
+	getMIMETypePlayers: function( mime_type ) {
 		var mime_players = new Array();
 		var _this = this;
 		var inx = 0;
@@ -2778,6 +2963,15 @@ mediaPlayers.prototype =
 		}
 		return mime_players;
 	},
+	
+	/**
+	* Default player for a given mime type
+	*
+	* @param {String} mime_type Mime type of the requested player
+	* @return 
+	*	Player for mime type
+	* 	null if no player found
+	*/
 	defaultPlayer : function( mime_type ) {
 		js_log( "get defaultPlayer for " + mime_type );
 		var mime_players = this.getMIMETypePlayers( mime_type );
@@ -2795,11 +2989,24 @@ mediaPlayers.prototype =
 		js_log( 'No default player found for ' + mime_type );
 		return null;
 	},
-	userSelectFormat : function ( mime_format ) {
-		 this.preference['format_prefrence'] = mime_format;
+	
+	/**
+	* Sets the format preference.
+	*
+	* @param {String} mime_format Prefered format	 
+	*/
+	setFormatPreference : function ( mime_format ) {
+		 this.preference['format_preference'] = mime_format;
 		 this.savePreferences();
 	},
-	userSelectPlayer : function( player_id, mime_type ) {
+	
+	/**
+	* Sets the player preference
+	*
+	* @param {String} player_id Prefered player id
+	* @param {String} mime_type Mime type for the associated player stream
+	*/
+	setPlayerPreference : function( player_id, mime_type ) {
 		var selected_player = null;
 		for ( var i = 0; i < this.players.length; i++ ) {
 			if ( this.players[i].id == player_id ) {
@@ -2821,8 +3028,11 @@ mediaPlayers.prototype =
 			}
 		}
 	},
-	loadPreferences : function()
-	{
+	
+	/**
+	* Loads the user preference settings from a cookie
+	*/	
+	loadPreferences : function ( ) { 
 		this.preference = new Object();
 		// see if we have a cookie set to a clientSupported type:
 		var cookieVal = $j.cookie( 'ogg_player_exp' );
@@ -2836,6 +3046,10 @@ mediaPlayers.prototype =
 			}
 		}
 	},
+	
+	/**
+	* Saves the user preference settings to a cookie
+	*/	
 	savePreferences : function() {
 		var cookieVal = '';
 		for ( var i in this.preference )
@@ -2847,21 +3061,34 @@ mediaPlayers.prototype =
 	}
 };
 
-/*
+/**
  * embedTypes object handles setting and getting of supported embed types:
  * closely mirrors OggHandler so that its easier to share efforts in this area:
  * http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/OggHandler/OggPlayer.js
  */
 var embedTypes = {
-	 // List of players
+
+	 // List of players supported
 	 players: null,
+	 
+	 // Detect flag for completion 
 	 detect_done:false,
+	 
+	 /**
+	 * Runs the detect method and update the detect_done flag
+	 * @constructor 
+	 */
 	 init: function() {
 		// detect supported types
 		this.detect();
 		this.detect_done = true;
 	},
-	clientSupports: { 'thumbnail' : true },
+	
+	/**
+	* If the browsers supports a given mimetype
+	* 
+	* @param {String} mimetype Mime type for browser plug-in check
+	*/
 	supportedMimeType: function( mimetype ) {
 		for ( var i = navigator.plugins.length; i-- > 0; ) {
 			var plugin = navigator.plugins[i];
@@ -2870,8 +3097,11 @@ var embedTypes = {
 		}
 		return false;
 	},
-
-	 detect: function() {
+	
+	/**
+	* Detects what plug-ins the client supports 
+	*/
+	detect: function() {
 		 js_log( "running detect" );
 		this.players = new mediaPlayers();
 		// every browser supports html rendering:
@@ -2962,7 +3192,7 @@ var embedTypes = {
 					pluginName = '';
 				}
 				if ( pluginName.toLowerCase() == 'vlc multimedia plugin' || pluginName.toLowerCase() == 'vlc multimedia plug-in' ) {
-					this.players.addPlayer( vlcPlayer, type );
+					this.players.addPlayer( vlcPlayer );
 					continue;
 				}
 		
@@ -2973,7 +3203,7 @@ var embedTypes = {
 		
 				if ( type == 'application/ogg' ) {
 					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
-						this.players.addPlayer( vlcMozillaPlayer, type );
+						this.players.addPlayer( vlcMozillaPlayer );
 					// else if ( pluginName.indexOf( 'QuickTime' ) > -1 )
 					//	this.players.addPlayer(quicktimeMozillaPlayer);
 					} else {
@@ -2982,7 +3212,7 @@ var embedTypes = {
 					continue;
 				} else if ( uniqueMimesOnly ) {
 					if ( type == 'application/x-vlc-player' ) {
-						this.players.addPlayer( vlcMozillaPlayer, type );
+						this.players.addPlayer( vlcMozillaPlayer );
 						continue;
 					} else if ( type == 'video/quicktime' ) {
 						// this.players.addPlayer(quicktimeMozillaPlayer);
@@ -2990,10 +3220,6 @@ var embedTypes = {
 					}
 				}
 		
-				/*if ( type == 'video/quicktime' ) {
-					this.players.addPlayer(vlcMozillaPlayer, type);
-					continue;
-				}*/
 				if ( type == 'application/x-shockwave-flash' ) {
 				
 					this.players.addPlayer( kplayer );
@@ -3011,12 +3237,14 @@ var embedTypes = {
 					continue;
 				}
 			}
-		}
-		// @@The xiph quicktime component does not work well with annodex streams (temporarly disable)
-		// this.clientSupports['quicktime-mozilla'] = false;
-		// this.clientSupports['quicktime-activex'] = false;
-		// js_log(this.clientSupports);
+		}		
 	},
+	
+	/**
+	* Test IE for activeX by name
+	*
+	* @param {String} name Name of ActiveXObject to look for 
+	*/
 	testActiveX : function ( name ) {
 		 var hasObj = true;
 		 try {

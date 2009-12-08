@@ -1,13 +1,14 @@
 /*
- * used to embed HTML as a movie clip
+ * Used to embed HTML as a movie clip
  * for use with mv_playlist SMIL additions
- * (we make assumptions about this.pc (parent clip) being available)
  */
 var pcHtmlEmbedDefaults = {
 	'dur':4 // default duration of 4 seconds
 }
 
 var htmlEmbed = {
+
+	// List of supported features
 	supports: {
 		'play_head':true,
 		'pause':true,
@@ -16,13 +17,29 @@ var htmlEmbed = {
 		'volume_control':true,
 
 		'overlays':true,
-		'playlist_swap_loader':true // if the object supports playlist functions
+		
+		// if the object supports playlist functions
+		'playlist_swap_loader':true 
 	},
+	
+	// If the player is "ready to play"
 	ready_to_play:true,
+	
+	// Pause time used to track player time between pauses
 	pauseTime:0,
+	
+	// currentTime updated via internal clockStartTime var
 	currentTime:0,
+	
+	// StartOffset support seeking into the virtual player
 	start_offset:0,
-	monitorTimerId:false,
+	
+	// The local clock used to emulate playback time
+	clockStartTime: 0
+	
+	/**
+	*  Play function starts the v
+	*/
 	play:function() {
 		// call the parent
 		this.parent_play();
@@ -34,11 +51,18 @@ var htmlEmbed = {
 		// Start up monitor:
 		this.monitor();
 	},
+	
+	/**
+	* Stops the playback
+	*/
 	stop:function() {
 		this.currentTime = 0;
-		this.pause();
-		// window.clearInterval( this.monitorTimerId );
+		this.pause();		
 	},
+	
+	/**
+	* Preserves the pause time across for timed playback 
+	*/
 	pause:function() {
 		js_log( 'f:pause: htmlEmbedWrapper' );
 		var ct = new Date();
@@ -47,16 +71,32 @@ var htmlEmbed = {
 		
 		window.clearInterval( this.monitorTimerId );
 	},
+	
+	/**
+	* Seeks to a given percent and updates the pauseTime
+	*
+	* @param {Float} perc Pecentage to seek into the virtual player
+	*/
 	doSeek:function( perc ){
 		this.pauseTime = perc * this.getDuration();
 		this.play();
 	},
+	
+	/** 
+	* Sets the current Time 
+	*
+	* @param {Float} perc Pecentage to seek into the virtual player
+	* @param {Function} callback Function called once time has been updated
+	*/
 	setCurrentTime:function( perc, callback ){
 		this.pauseTime = perc * this.getDuration();
 		if( callback )
 			callback();
 	},
-	// Monitor just needs to keep track of time 
+	
+	/**
+	* Monitor tracks of virtual player time
+	*/ 
 	monitor:function() {
 		//js_log('html:monitor: '+ this.currentTime);		
 		var ct = new Date();
@@ -67,7 +107,10 @@ var htmlEmbed = {
 		// Once currentTime is updated call parent_monitor
 		this.parent_monitor();
 	},
-	// set up minimal media_element emulation:	 
+	
+	/**
+	* Minimal media_element emulation:
+	*/	 
 	media_element: {
 		autoSelectSource:function() {
 			return true;
@@ -82,9 +125,19 @@ var htmlEmbed = {
 			return false;
 		}
 	},
-	inheritEmbedPlayer:function() {
+	
+	/**	
+	* HtmlEmbed supports virtual instances without inheriting the embedPlayer 
+	*/
+	inheritEmbedPlayer: function() {
 		return true;
 	},
+	
+	/**
+	* Render out a Thumbnail representation for use in the sequencer
+	*
+	* @param {Object} options Thumbnail options
+	*/	
 	renderTimelineThumbnail:function( options ) {
 		js_log( "HTMLembed req w, height: " + options.width + ' ' + options.height );
 		// generate a scaled down version _that_ we can clone if nessisary
@@ -93,10 +146,13 @@ var htmlEmbed = {
 
 		var thumb_render_id =   this.id + '_thumb_render_' + options.height;
 		if ( $j( '#' + thumb_render_id ).length == 0  ||  do_refresh ) {
-			// set the font scale down percentage: (kind of arbitrary)
+		
+			// Set the font scale down percentage: (kind of arbitrary)
 			var scale_perc = options.width / this.pc.pp.width;
+			
 			js_log( 'scale_perc:' + options.width + ' / ' + $j( this ).width() + ' = ' + scale_perc );
-			// min scale font percent of 70 (overflow is hidden)
+			
+			// Min scale font percent of 70 (overflow is hidden)
 			var font_perc  = ( Math.round( scale_perc * 100 ) < 80 ) ? 80 : Math.round( scale_perc * 100 );
 			var thumb_class = ( typeof options['thumb_class'] != 'undefined' ) ? options['thumb_class'] : '';
 			$j( 'body' ).append( '<div id="' + thumb_render_id + '" style="display:none">' +
@@ -109,15 +165,16 @@ var htmlEmbed = {
 									'</div>' +
 								'</div>'
 							  );
-			// scale down the fonts:
+							  
+			// Scale down the fonts:
 			$j( '#' + thumb_render_id + ' *' ).filter( 'span,div,p,h,h1,h2,h3,h4,h5,h6' ).css( 'font-size', font_perc + '%' )
 			
-			// replace out links:
+			// Replace out links:
 			$j( '#' + thumb_render_id + ' a' ).each( function() {
 				$j( this ).replaceWith( "<span>" + $j( this ).html() + "</span>" );
 			} );
 			
-			// scale images that have width or height:
+			// Scale images that have width or height:
 			$j( '#' + thumb_render_id + ' img' ).filter( '[width]' ).each( function() {
 				$j( this ).attr( {
 						'width': Math.round( $j( this ).attr( 'width' ) * scale_perc ),
@@ -128,11 +185,17 @@ var htmlEmbed = {
 		}
 		return $j( '#' + thumb_render_id ).html();
 	},
-	// nothing to update in static html display: (return a static representation) 
-	// @@todo render out a mini text "preview"
+	/*
+	* updates the ThumbTime
+	* (does nothings since we display a single renderd html page) 	
+	*/
 	updateThumbTime:function( float_time ) {
 		return ;
 	},
+	
+	/**
+	* gets the "embed" html for the html player
+	*/
 	getEmbedHTML:function() {
 		js_log( 'f:html:getEmbedHTML: ' + this.id );
 		// set up the css for our parent div:		 
@@ -146,6 +209,11 @@ var htmlEmbed = {
 		// wrap output in videoPlayer_ div:
 		$j( this ).html( '<div id="videoPlayer_' + this.id + '">' + this.getThumbnailHTML() + '</div>' );
 	},
+	
+	/**
+	* gets the ThumbnailHTML
+	*  ThumbnailHTML is used for both the "paused and playing states of the htmlEmbed player	
+	*/
 	getThumbnailHTML:function( opt ) {
 		var out = '';
 		if ( !opt )
@@ -162,15 +230,26 @@ var htmlEmbed = {
 		// js_log('f:getThumbnailHTML: got thumb: '+out);
 		return out;
 	},
-	doThumbnailHTML:function() {
-		js_log( 'htmlEmbed:doThumbnailHTML()' );
+	
+	/**
+	* re-show the Thumbnail
+	*/
+	showThumbnail:function() {
+		js_log( 'htmlEmbed:showThumbnail()' );
 		this.getEmbedHTML();
 	},
-	/* since its just html display get the "embed" right away */
+	
+	/** 
+	* Display the "embed" html right away 
+	*/
 	getHTML:function() {
 		js_log( 'htmlEmbed::getHTML() ' + this.id );
 		this.getEmbedHTML();
 	},
+	
+	/**
+	* Gets the media duration
+	*/
 	getDuration:function() {
 		if( !this.duration ){
 		 	if( this.pc.dur ){
@@ -181,13 +260,21 @@ var htmlEmbed = {
 		}  
 		return this.parent_getDuration(); 
 	},
-	updateVideoTime:function( start_ntp, end_ntp ) {
+	
+	/**
+	* Updates the Video time 
+	* @param {String} start_npt Start time for update
+	* @param {String} end_npt End time for update  
+	*/
+	updateVideoTime:function( start_npt, end_npt ) {
 		// since we don't really have timeline for html elements just take the delta and set it as the duration
 		this.pc.dur = npt2seconds( end_ntp ) - npt2seconds( start_ntp );
 	},
-	// gives a chance to make any nesseary external requests
-	// @@todo we can "start loading images" if we want
-	on_dom_swap:function() {
+	
+	/**
+	* Local implementation of swapPlayerElement
+	*/
+	swapPlayerElement:function() {
 		this.loading_external_data = false
 		this.ready_to_play = true;
 		return ;

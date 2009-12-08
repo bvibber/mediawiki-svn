@@ -388,7 +388,7 @@ $messages['en'] = array(
 	'mwe-generic_missing_plugin' => 'You browser does not appear to support the following playback type: <b>$1</b><br />Visit the <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Playback Methods</a> page to download a player.<br />',
 	'mwe-for_best_experience' => 'For a better video playback experience we recommend:<br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-do_not_warn_again' => 'Dismiss for now.',
-	'mwe-playerselect' => 'Players',
+	'mwe-playerSelect' => 'Players',
 	'mwe-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Read this</a> before embedding.',
 	'mwe-embed_site_or_blog' => 'Embed on a page',
 	'mwe-related_videos' => 'Related videos',
