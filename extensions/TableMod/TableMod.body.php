@@ -115,7 +115,7 @@ class TableMod {
 	private function performActions() {
 		global $tablemodAction, $tablemodContentChanged;
 		if ($tablemodAction[1] == 'remove' && isset($this->index_actions['remove'])) {
-			if ($this->index_column === 0)
+			if ($this->index_column == 0)
 				unset($this->table['rows'][$tablemodAction[2]]);
 			else {
 				foreach ($this->table['rows'] as $rowid=>$row) {
@@ -185,9 +185,6 @@ class TableMod {
 		} else {
 			return $this->parser->recursiveTagParse($input);
 		}
-	}
-
-	private function generateTable() {
 	}
 
 	public function tableSave() {
