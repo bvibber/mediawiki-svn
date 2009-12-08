@@ -10,6 +10,7 @@ EOT;
 
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'TableMod',
+	'path' => __FILE__,
 	'author' => 'Jure Kajzer - freakolowsky <jure.kajzer@abakus.si>',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:TableMod',
 	'description' => 'Wiki-table manipulation',
@@ -31,16 +32,16 @@ $tablemodAction = FALSE;
 $tablemodContent = FALSE;
 $tablemodContentChanged = FALSE;
 
-function tablemodSetup() {
-	global $wgParser, $wgUser, $wgTitle, $wgRequest;
+function tablemodSetup( $parser ) {
+	global $wgUser, $wgTitle, $wgRequest;
 	
-	if (!in_array($wgRequest->getVal('action'), array('purge', '')))
+	if (!in_array($wgRequest->getVal('action', 'view'), array('purge', 'view')))
 		return true;
 
 	$errors = $wgTitle->getUserPermissionsErrors('edit', $wgUser);
 	if(count($errors)) return true;
 
-	$wgParser->setHook('table-mod', 'tablemodRender');
+	$parser->setHook('table-mod', 'tablemodRender');
 	wfLoadExtensionMessages('TableMod');
 
 	return true;
@@ -71,7 +72,7 @@ function tablemodRender( $input, $args, $parser, $frame ) {
 function tablemodSaveAndRedirect(&$out, $parser) {
 	global $wgTitle, $wgArticle, $wgRequest, $tablemodContent, $tablemodContentChanged;
 	
-	if (!in_array($wgRequest->getVal('action'), array('purge', '')))
+	if (!in_array($wgRequest->getVal('action', 'view'), array('purge', 'view')))
 		return true;
 
 	if ($tablemodContentChanged === TRUE) {

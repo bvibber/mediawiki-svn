@@ -10,20 +10,20 @@ class TableMod {
 	var $frame;
 
 	var $id;
-	
+
 	var $index_column;
 	var $index_actions = array('sort');
-	
+
 	var $table = array('rows' => array());
-	public static $sort_direction; 
-	public static $sort_key; 
-	public static $sort_col; 
-	
+	public static $sort_direction;
+	public static $sort_key;
+	public static $sort_col;
+
 	function __construct($input, $args, $parser, $frame) {
-		$this->input = trim($input);	
-		$this->args = $args;	
-		$this->parser = $parser;	
-		$this->frame = $frame;	
+		$this->input = trim($input);
+		$this->args = $args;
+		$this->parser = $parser;
+		$this->frame = $frame;
 
 		if (!isset($args['ident']))
 			throw new TableModException(wfMsg('tablemod-error-missingid'));
@@ -32,12 +32,12 @@ class TableMod {
 		$this->index_column = isset($args['index']) ? $args['index'] : 0;
 		if (isset($args['actions'])) {
 			$this->index_actions = explode(',', preg_replace('/ /', '', $args['actions']));
-			$this->index_actions = array_flip($this->index_actions);	
+			$this->index_actions = array_flip($this->index_actions);
 		}
-			
+
 		TableMod::$sort_direction = 'asc';
 		TableMod::$sort_key = 0;
-		
+
 		$this->prepareInput();
 
 		global $tablemodAction;
@@ -49,7 +49,7 @@ class TableMod {
 
 	private function prepareInput() {
 		$lines = preg_split('/\\n/', $this->input);
-		
+
 		$lines_count = count($lines);
 		if (strpos(trim($lines[0]), '{|') === FALSE || trim($lines[$lines_count-1]) != '|}') {
 			throw new TableModException(wfMsg('tablemod-error-format'));
@@ -91,22 +91,22 @@ class TableMod {
 		$this->table['rows'] = array_values($this->table['rows']);
 
 		$row_cols = count($this->table['rows'][0]);
-		
+
 		if (isset($this->index_actions['remove']))
 			foreach ($this->table['rows'] as $row) {
 				if ($row_cols != count($row))
 					throw new TableModException(wfMsg('tablemod-error-colcount'));
 			}
-		
+
 		if (isset($this->index_actions['sort'])) {
 			foreach ($this->table['headers'] as $row) {
 				if (strpos('colspan=', $row) !== FALSE)
 					throw new TableModException(wfMsg('tablemod-error-headcount'));
 			}
-			if ( isset($tablemodAction[1]) && 
-			     $tablemodAction[1] == 'sort' && 
-			     (!is_numeric($tablemodAction[2]) || 
-			      $tablemodAction[2] > $row_cols || 
+			if ( isset($tablemodAction[1]) &&
+			     $tablemodAction[1] == 'sort' &&
+			     (!is_numeric($tablemodAction[2]) ||
+			      $tablemodAction[2] > $row_cols ||
 			      $tablemodAction[2] < 0) )
 				throw new TableModException(wfMsg('tablemod-error-invalidsort'));
 		}
@@ -128,7 +128,7 @@ class TableMod {
 		} elseif ($tablemodAction[1] == 'sort' && isset($this->index_actions['sort'])) {
 			TableMod::$sort_key = isset($tablemodAction[2]) && $tablemodAction[2] > 0 && $tablemodAction[2] <= count($this->table['headers']) ? $tablemodAction[2] : 0;
 			TableMod::$sort_direction = isset($tablemodAction[3]) && $tablemodAction[3] == 'asc' ? 'asc' : 'desc';
-		
+
 			if ($tablemodAction[2] == 0)
 				$this->table['rows'] = array_reverse($this->table['rows']);
 			else {
@@ -146,11 +146,11 @@ class TableMod {
 					usort($this->table['rows'], array('TableMod', 'doRowCompare'));
 				else
 					usort($this->table['rows'], array('TableMod', 'doRowCompareString'));
-					
+
 				foreach ($this->table['rows'] as &$row)
 					unset($row[TableMod::$sort_col]);
-				
-				
+
+
 			}
 			$tablemodContentChanged = TRUE;
 		}
@@ -178,8 +178,8 @@ class TableMod {
 		global $wgVersion;
 		$matches = array();
 
-		if (preg_match ('/([0-9]*)\.([0-9]*).*/', $wgVersion, $matches) == 1 && 
-		    $matches[1] == 1 && 
+		if (preg_match ('/([0-9]*)\.([0-9]*).*/', $wgVersion, $matches) == 1 &&
+		    $matches[1] == 1 &&
 		    $matches[2] > 15) {
 			return $this->parser->recursiveTagParse($input, $this->frame);
 		} else {
@@ -193,7 +193,7 @@ class TableMod {
 		if (isset($this->table['caption']))
 			$output .= '|+'.$this->table['caption']."\n";
 
-		
+
 		if (isset($this->table['headers']))
 			foreach ($this->table['headers'] as $header)
 				$output .= "!$header\n";
@@ -231,12 +231,12 @@ class TableMod {
 				foreach ($this->table['headers'] as $key=>$header)
 					$output .= '!'.$header."\n";
 			}
-			
+
 		}
 
 		if (isset($this->index_actions['remove'])) {
 			$removeMsg = wfMsg('tablemod-msg-remove');
-			
+
 			foreach ($this->table['rows'] as $rowkey=>$row) {
 				$output .= "|-\n";
 
