@@ -375,7 +375,7 @@ if ( typeof context == 'undefined' ) {
 		 * Gets the currently selected text in the content
 		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
-		'textSelection': function() {
+		'getSelection': function() {
 			var retval;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				retval = context.$iframe[0].contentWindow.getSelection();
@@ -390,7 +390,7 @@ if ( typeof context == 'undefined' ) {
 			return retval;
 		},
 		/**
-		 * Inserts text at the beginning and end of a text selection, optionally inserting text at the caret when
+		 * Inserts text at the begining and end of a text selection, optionally inserting text at the caret when
 		 * selection is empty.
 		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
