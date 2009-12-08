@@ -670,11 +670,12 @@ mvSequencer.prototype = {
 	getSeqOutputJSON:function() {
 		js_log( 'json output:' );
 	},
-	/*
-	* Gets the Sequence as a formated high level resource description xml string
+	
+	/**
+	* Get the Sequence as a formated high level resource description xml string
 	* @returns {xml} 
 	*/
-	getSeqOutputHLRDXML:function() {
+	getSeqOutputHLRDXML: function() {
 		var o = '<sequence_hlrd>' + "\n";
 		o += "\t<head>\n";
 		// Get transitions

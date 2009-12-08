@@ -132,7 +132,7 @@ mvTimedEffectsEdit.prototype = {
 		loadExternalJs( mw.getMwEmbedPath() + 'libClipEdit/pixastic-editor/pixastic.all.js?' + getMwReqParam() );
 		loadExternalJs( mw.getMwEmbedPath() + 'libClipEdit/pixastic-editor/ui.js?' + getMwReqParam() );
 		loadExternalJs( mw.getMwEmbedPath() + 'libClipEdit/pixastic-editor/uidata.js?' + getMwReqParam() );
-		loadExternalCss( mw.getMwEmbedPath() + 'libClipEdit/pixastic-editor/pixastic.all.js?' + getMwReqParam() );
+		mw.getStyleSheet( mw.getMwEmbedPath() + 'libClipEdit/pixastic-editor/pixastic.all.js?' + getMwReqParam() );
 
 		var isPixasticReady = function() {
 			if ( typeof PixasticEditor != 'undefined' ) {

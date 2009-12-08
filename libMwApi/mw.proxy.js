@@ -44,6 +44,7 @@ mw.addMessages( {
 } );
 
 ( function( $ ) {
+
 	/**
 	 * Base API Proxy object
 	 * 	 
@@ -53,14 +54,14 @@ mw.addMessages( {
 	/**
 	 * The client setup function: 
 	 */
-	$.proxy.client = function( pConf, conf ) {
+	$.proxy.client = function( proxyConfig, conf ) {
 		var _this = this;
 		// Do client setup: 
-		if ( pConf.server_frame )
-			$.proxy.server_frame = pConf.server_frame;
+		if ( proxyConfig.server_frame )
+			$.proxy.server_frame = proxyConfig.server_frame;
 		
-		if ( pConf.client_frame_path ) {
-			$.proxy.client_frame_path = pConf.client_frame_path;
+		if ( proxyConfig.client_frame_path ) {
+			$.proxy.client_frame_path = proxyConfig.client_frame_path;
 		} else {
 			// Set to default mwEmbed iframe path:
 			$.proxy.client_frame_path =  wgScriptPath + '/js2/mwEmbed/libMwApi/NestedCallbackIframe.html';
@@ -176,7 +177,7 @@ mw.addMessages( {
 	 * 
 	 * This is (Domain B) in the above described setup
 	 */
-	$.proxy.server = function( pConf, callback ) {
+	$.proxy.server = function( proxyConfig, callback ) {
 		/* clear the body of any html */
 		$j( 'body' ).html( 'proxy setup' );
 		
@@ -206,15 +207,15 @@ mw.addMessages( {
 		var domain =  aObj.cd;
 		var nested_frame_src = 'http://' + aObj.cd + aObj.cfp;
 		// Check the master whitelist
-		for ( var i in pConf.master_whitelist ) {
-			if ( domain ==  pConf.master_whitelist[ i ] ) {
+		for ( var i in proxyConfig.master_whitelist ) {
+			if ( domain ==  proxyConfig.master_whitelist[ i ] ) {
 				// Do the request: 			
 				return doNestedProxy( aObj.req );
 			}
 		}
 		// Check master blacklist
-		for ( var i in pConf.master_blacklist ) {
-			if ( domain == pConf.master_blacklist ) {
+		for ( var i in proxyConfig.master_blacklist ) {
+			if ( domain == proxyConfig.master_blacklist ) {
 				js_log( 'domain: ' + domain + ' is blacklisted' );
 				return false;
 			}

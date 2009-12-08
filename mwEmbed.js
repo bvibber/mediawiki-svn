@@ -17,48 +17,6 @@
  *
  */
 
-/**
- * AutoLoader paths 
- * @path The path to the file (or set of files) with ending slash
- * @gClasses The set of classes
- * 		if it's an array, $j.className becomes jquery.className.js
- * 		if it's an associative object then key => value pairs are used
- */
-if ( typeof mvAutoLoadClasses == 'undefined' )
-	mvAutoLoadClasses = { };
-
-// The script that loads the class set
-function lcPaths( classSet ) {
-	for ( var i in classSet ) {
-		mvAutoLoadClasses[i] = classSet[i];
-	}
-}
-
-function mvGetClassPath( k ) {
-	if ( mvAutoLoadClasses[k] ) {
-		// js_log('got class path:' + k +  ' : '+ mvClassPaths[k]);
-		return mvAutoLoadClasses[k];
-	} else {
-		js_log( 'Error:: Could not find path for requested class ' + k );
-		return false;
-	}
-}
-
-if ( typeof mvCssPaths == 'undefined' )
-	mvCssPaths = { };
-
-function lcCssPath( cssSet ) {
-	for ( var i in cssSet ) {
-		mvCssPaths[i] = cssSet[i];
-	}
-}
-
-// Dependency mapping for CSS files for self-contained included plugins:
-lcCssPath( {
-	'$j.Jcrop'			: 'libClipEdit/Jcrop/css/jquery.Jcrop.css',
-	'$j.fn.ColorPicker'	: 'libClipEdit/colorpicker/css/colorpicker.css'
-})
-
 // The global scope: will be depreciated once we get everything into mw
 var _global = this;
 
@@ -685,7 +643,7 @@ var global_req_cb = new Array(); // The global request callback array
 			/**
 			 * templates
 			 * 
-			 * gets a requested template from the wikitext (if available)
+			 * Get a requested template from the wikitext (if available)
 			 *  
 			 */
 			templates: function( tname ) {
@@ -773,18 +731,26 @@ var global_req_cb = new Array(); // The global request callback array
 	*/
 	$.loader = {
 		/*
-		* Javascript Module Set 
+		* Javascript Module Loader functions 
 		* @key Name of Module
 		* @value function code to load module 
 		*/
-		moduleNames : { },
+		moduleLoaders : { },
 		
 		/**
-		* Javascript Class Names
+		* Javascript Class Paths
 		* @key Name of class
 		* @value Class file path 
 		*/
-		classNames : { }, 		
+		classPaths : { }, 	
+		
+		/**
+		* Style sheet paths for aossicated classes
+		* @key Name of the class
+		* @value Style sheet path
+		*/	
+		stylePaths : { },
+		
 		
 		/**
 		* Load a set of scripts.
@@ -883,16 +849,16 @@ var global_req_cb = new Array(); // The global request callback array
 			}   
 			
 			// Check for the module name loader function 
-			if( this.moduleNames[ loadRequest ] && 
-				typeof ( this.moduleNames[ loadRequest ] ) == 'function' 
+			if( this.moduleLoaders[ loadRequest ] && 
+				typeof ( this.moduleLoaders[ loadRequest ] ) == 'function' 
 			){
 				//Run the module with the parent callback 
-				this.moduleNames[ loadRequest ]( callback );	
+				this.moduleLoaders[ loadRequest ]( callback );	
 				return ;
 			}
 			
 			// Check for javascript class 
-			if( this.classNames[ loadRequest ] ){		
+			if( this.classPaths[ loadRequest ] ){		
 				this.loadClass( loadRequest, callback );																	
 				return ;
 			}
@@ -923,11 +889,13 @@ var global_req_cb = new Array(); // The global request callback array
 			}
 			
 			// Get the class url:
-			var baseClassPath = this.classNames[ className ];
+			var baseClassPath = this.classPaths[ className ];
 						
 			var url = null;
-			// Load the mwEmbed path ( if not a root dir url )
-			if( baseClassPath.indexOf( '/' ) !== 0 ){
+			
+			// Add the mwEmbed path if not a root path or a full url
+			if( baseClassPath.indexOf( '/' ) !== 0 && 
+				baseClassPath.indexOf('://') === -1 ){
 				url = $.getMwEmbedPath() + baseClassPath;
 			}else{
 				url = baseClassPath;
@@ -936,8 +904,13 @@ var global_req_cb = new Array(); // The global request callback array
 			if( ! url ){
 				js_log( "Could not get url for class " + className  );						
 				return ;
-			}						
-				
+			}	
+								
+			// Check for any associated style sheets that should be loaded 
+			if( typeof this.stylePaths[ className ] != 'undefined' ){
+				$.getStyleSheet( this.stylePaths[ className ] );
+			}
+			
 			// Issue the request to load the class (include class name in result callback:					
 			$.getScript( url, function( ) {
 				callback( className );
@@ -953,7 +926,7 @@ var global_req_cb = new Array(); // The global request callback array
 		*	loads dependencies for a module
 		*/
 		addModuleLoader: function( name, moduleLoader ){		
-			this.moduleNames [ name ] = moduleLoader;
+			this.moduleLoaders [ name ] = moduleLoader;
 		},
 		
 		/**
@@ -967,8 +940,20 @@ var global_req_cb = new Array(); // The global request callback array
 	 	*/
 	 	addClassFilePaths: function( classSet ){
 	 		for( var i in classSet ){
-				this.classNames[ i ] = classSet[ i ];
+				this.classPaths[ i ] = classSet[ i ];
 			}
+	 	},
+	 	
+		/**
+	 	* Add a style sheet to be loaded the same time as the requested class
+	 	*
+		* NOTE: In general style sheets should be loaded via a module loader function. 
+		*  In some cases a single class has a single sheet that can use this function
+	 	*/
+	 	addClassStyleSheets: function( sheetSet ){
+	 		for(var i in sheetSet ){
+	 			this.stylePaths[ i ] = sheetSet[ i ];
+	 		}
 	 	}
 	}
 	
@@ -999,6 +984,12 @@ var global_req_cb = new Array(); // The global request callback array
 		return $.loader.addClassFilePaths( classSet );
 	}
 			
+	/**
+	* Add Class Style Sheet entry point:  	 
+	*/
+	$.addClassStyleSheets = function( sheetSet ){
+		return $.loader.addClassStyleSheets( sheetSet );
+	}
 	
 	/**
 	* Utility Functions
@@ -1092,14 +1083,14 @@ var global_req_cb = new Array(); // The global request callback array
 				_global['$j'] = jQuery.noConflict();
 			}
 			
-			// Set up the skin paths
-			_global['mv_jquery_skin_path'] = mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/';
-			_global['mv_skin_img_path'] = mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/images/';
-			_global['mv_default_thumb_url'] = mv_skin_img_path + 'vid_default_thumb.jpg';
+			// Set up the skin paths configuration
+			$.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
+			$.setConfig( 'skin_img_path', mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/images/' ); 
+			$.setConfig( 'default_video_thumb', mw.getConfig( 'skin_img_path' ) + 'vid_default_thumb.jpg' );
 
 			// Make Core skin/style sheets are always available:
-			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
-			loadExternalCss( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
+			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
+			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
 
 			// Set up AJAX to not send dynamic URLs for loading scripts
 			$j.ajaxSetup( {
@@ -1184,7 +1175,7 @@ var global_req_cb = new Array(); // The global request callback array
 		return false;
 	}
 	/**
-	* Gets page elements that match the rewritePlayerTags config
+	* Get page elements that match the rewritePlayerTags config
 	*
 	* @param {Boolean} getOne Flag to retive only one tag ( faster for simple has tag checks )  
 	*/
@@ -1231,7 +1222,12 @@ var global_req_cb = new Array(); // The global request callback array
 			return ;
 		}
 		
-		// No jQuery or we want a script instead of XHR eval for debugging
+		/**
+		* No jQuery 
+		*  OR 
+		* In debug mode inject the script instead of doing an ajax request and eval
+		*/
+			
 		// Load and bind manually:  ( copied from jQuery ajax function )
 		var head = document.getElementsByTagName("head")[0];
 		var script = document.createElement("script");
@@ -1246,8 +1242,52 @@ var global_req_cb = new Array(); // The global request callback array
 				callback();
 			}
 		};	
+		
 		// Append the script to the DOM:
 		head.appendChild( script );	
+	}
+	
+	/**
+	* "Get" a style sheet.
+	*
+	* Appends a style sheet to the DOM is called "getStyleSheet" to mirror wraping of jqueries getScript
+	*
+	* @param {Mixed}
+	*	{Array} url List of urls to be loaded
+	*	{String} url Url of the style sheet to be loaded
+	*/
+	$.getStyleSheet = function( url ) {	
+		if ( typeof url == 'object' ) {
+			for ( var i in url ) {
+				$.getStyleSheet( url[i] );
+			}
+			return ;
+		}
+		
+		// Add URL params ( if not already included )
+		if ( url.indexOf( '?' ) == -1 ) {
+			url += '?' + mw.getUrlParam();
+		}
+		
+		// Return if style sheet is already included:
+		var foundSheet = false; 
+		$j( 'link' ).each( function(){		
+			if( $j( this) .attr( 'href' ) == url )				 
+				foundSheet = true;
+		} );					
+		if( foundSheet ){
+			js_log( 'sheet: ' + url + ' already included ' );
+			return ;
+		}
+		
+		js_log( ' add css: ' + url );		
+		$j( 'head' ).append( 
+			$j('<link>').attr( {
+				'rel' : 'stylesheet',
+				'type' : 'text/css',
+				'href' : url
+			} )
+		);			
 	}
 	
 	/** 
@@ -1264,8 +1304,8 @@ var global_req_cb = new Array(); // The global request callback array
 	var mwEmbedPath = null;
 	
 	/**
-	 * Gets the path to the mwEmbed folder
-	 */
+	* Gets the path to the mwEmbed folder
+	*/
 	$.getMwEmbedPath = function() {
 		if ( mwEmbedPath )
 			return mwEmbedPath;	
@@ -1568,6 +1608,14 @@ mw.addClassFilePaths( {
 
 } );
 
+/*
+* Adds style sheets to be loaded with particular classes   
+*/
+mw.addClassStyleSheets( {
+	'$j.Jcrop'			: 'libClipEdit/Jcrop/css/jquery.Jcrop.css',
+	'$j.fn.ColorPicker'	: 'libClipEdit/colorpicker/css/colorpicker.css'
+})
+
 /**
 * libEmbedPlayer Dependency Module Loader:
 *
@@ -1760,7 +1808,7 @@ var mvJsLoader = {
 			// Do a check for any CSS we may need and get it
 			for ( var i = 0; i < loadLibs.length; i++ ) {
 				if ( typeof mvCssPaths[ loadLibs[i] ] != 'undefined' ) {
-					loadExternalCss( mw.getMwEmbedPath() + mvCssPaths[ loadLibs[i] ] );
+					mw.getStyleSheet( mw.getMwEmbedPath() + mvCssPaths[ loadLibs[i] ] );
 				}
 			}
 
@@ -2063,8 +2111,8 @@ function mwDojQueryBindings() {
 			}
 
 			// Load the mwEmbed_base skin:
-			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
-			loadExternalCss( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
+			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
+			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
 			// Load all the required libs:
 			mw.load( [
 				[	'remoteSearchDriver',
@@ -2094,8 +2142,8 @@ function mwDojQueryBindings() {
 			// Debugger
 			options['target_sequence_container'] = this.selector;
 			// Issue a request to get the CSS file (if not already included):
-			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
-			loadExternalCss( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/mv_sequence.css' );
+			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
+			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/mv_sequence.css' );
 			// Make sure we have the required mwEmbed libs (they are not loaded when no video
 			// element is on the page)
 			mvJsLoader.eembedPlayerheck( function() {
@@ -2136,27 +2184,28 @@ function mwDojQueryBindings() {
 		 * @@note This Firefogg invocation could be made to work more like real jQuery plugins
 		 */
 		var queuedFirefoggConf = { };
-		$.fn.firefogg = function( iObj, callback ) {
-			if ( !iObj )
-				iObj = { };
+		$.fn.firefogg = function( options, callback ) {
+			if ( !options )
+				options = { };
+				
 			// Add the base theme CSS:
-			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
-			loadExternalCss( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
+			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
+			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
 
 			// Check if we already have Firefogg loaded (the call just updates the element's
-			// properties)
+			// properties)			
 			var sElm = $j( this.selector ).get( 0 );
 			if ( sElm['firefogg'] ) {
 				if ( sElm['firefogg'] == 'loading' ) {
 					js_log( "Queued firefogg operations ( firefogg " +
 						"not done loading ) " );
-					$j.extend( queuedFirefoggConf, iObj );
+					$j.extend( queuedFirefoggConf, options );
 					return false;
 				}
 				// Update properties
-				for ( var i in iObj ) {
-					js_log( "firefogg::updated: " + i + ' to ' + iObj[i] );
-					sElm['firefogg'][i] = iObj[i];
+				for ( var i in options ) {
+					js_log( "firefogg::updated: " + i + ' to ' + options[i] );
+					sElm['firefogg'][i] = options[i];
 				}
 				return sElm['firefogg'];
 			} else {
@@ -2164,7 +2213,7 @@ function mwDojQueryBindings() {
 				sElm['firefogg'] = 'loading';
 			}
 			// Add the selector
-			iObj['selector'] = this.selector;
+			options['selector'] = this.selector;
 
 			var loadSet = [
 				[
@@ -2178,7 +2227,7 @@ function mwDojQueryBindings() {
 					'$j.ui.draggable'
 				]
 			];
-			if ( iObj.encoder_interface ) {
+			if ( options.encoder_interface ) {
 				loadSet.push( [
 					'mvAdvFirefogg',
 					'$j.cookie',
@@ -2189,17 +2238,17 @@ function mwDojQueryBindings() {
 			}
 			// Make sure we have everything loaded that we need:
 			mw.load( loadSet, function() {
-					js_log( 'firefogg libs loaded. target select:' + iObj.selector );
+					js_log( 'firefogg libs loaded. target select:' + options.selector );
 					// Select interface provider based on whether we want to include the
 					// encoder interface or not
-					if ( iObj.encoder_interface ) {
-						var myFogg = new mvAdvFirefogg( iObj );
+					if ( options.encoder_interface ) {
+						var myFogg = new mvAdvFirefogg( options );
 					} else {
-						var myFogg = new mvFirefogg( iObj );
+						var myFogg = new mvFirefogg( options );
 					}
 					if ( myFogg ) {
 						myFogg.doRewrite( callback );
-						var selectorElement = $j( iObj.selector ).get( 0 );
+						var selectorElement = $j( options.selector ).get( 0 );
 						selectorElement['firefogg'] = myFogg;
 						
 						js_log( 'pre:' + selectorElement['firefogg']['firefogg_form_action'] )
@@ -2210,7 +2259,7 @@ function mwDojQueryBindings() {
 			} );
 		}
 		// Take an input player as the selector and expose basic rendering controls
-		$.fn.firefoggRender = function( iObj, callback ) {
+		$.fn.firefoggRender = function( options, callback ) {
 			// Check if we already have render loaded then just pass on updates/actions
 			var sElm = $j( this.selector ).get( 0 );
 			//add a special attribute to the selector: 
@@ -2223,20 +2272,20 @@ function mwDojQueryBindings() {
 			}
 			sElm['fogg_render'] = 'loading';
 			// Add the selector
-			iObj['player_target'] = this.selector;
+			options['player_target'] = this.selector;
 			mw.load( [
 				'mvBaseUploadInterface',
 				'mvFirefogg',
 				'mvFirefoggRender'
 			], function() {
 				// Attach the firefoggRender obj to the selected elm: 
-				sElm['fogg_render'] = new mvFirefoggRender( iObj );
+				sElm['fogg_render'] = new mvFirefoggRender( options );
 				if ( callback && typeof callback == 'function' )
 					callback( sElm['fogg_render'] );
 			} );
 		}
 
-		$.fn.baseUploadInterface = function( iObj ) {
+		$.fn.baseUploadInterface = function( options ) {
 			mw.load( [
 				[
 					'mvBaseUploadInterface',
@@ -2247,7 +2296,7 @@ function mwDojQueryBindings() {
 					'$j.ui.dialog'
 				]
 			], function() {
-				myUp = new mvBaseUploadInterface( iObj );
+				myUp = new mvBaseUploadInterface( options );
 				myUp.setupForm();
 			} );
 		}
@@ -2619,39 +2668,6 @@ function loadExternalJs( url, callback ) {
 		document.getElementsByTagName( "head" )[0].appendChild( e );
 	// }
 }
-function styleSheetPresent( url ) {
-	style_elements = document.getElementsByTagName( 'link' );
-	if ( style_elements.length > 0 ) {
-		for ( i = 0; i < style_elements.length; i++ ) {
-			if ( style_elements[i].href == url )
-				return true;
-		}
-	}
-	return false;
-}
-function loadExternalCss( url ) {
-	// We could have the script loader group these CSS requests.
-	// But it's debatable: it may hurt more than it helps with caching and all
-	if ( typeof url == 'object' ) {
-		for ( var i in url ) {
-			loadExternalCss( url[i] );
-		}
-		return ;
-	}
-
-	if ( url.indexOf( '?' ) == -1 ) {
-		url += '?' + mw.getUrlParam();
-	}
-	if ( !styleSheetPresent( url ) ) {
-		js_log( 'load css: ' + url );
-		var e = document.createElement( "link" );
-		e.href = url;
-		e.type = "text/css";
-		e.rel = 'stylesheet';
-		document.getElementsByTagName( "head" )[0].appendChild( e );
-	}
-}
-
 
 if ( typeof DOMParser == "undefined" ) {
 	DOMParser = function () { }

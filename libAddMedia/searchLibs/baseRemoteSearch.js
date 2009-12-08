@@ -276,7 +276,7 @@ baseRemoteSearch.prototype = {
 				'</div>';
 	},
 	/**
-	* Gets an image object from a requested transformation via callback
+	* Get an image object from a requested transformation via callback
 	* ( letting api search implementations query the remote server for a 
 	*  given transformation )  
 	* 
@@ -288,7 +288,7 @@ baseRemoteSearch.prototype = {
 		} );
 	},
 	/**
-	* Gets the inline wikiText description of the resource Object
+	* Get the inline wikiText description of the resource Object
 	*/
 	getInlineDescWiki:function( resource ) {
 		// return striped html  & trim white space
@@ -319,12 +319,16 @@ baseRemoteSearch.prototype = {
 		}
 
 	},
+	
 	/**
-	* Gets the resource import description text
+	* Get the resource import description text
+	*
+	* @param {Object} resource Resource to get description of
 	*/
 	getImportResourceDescWiki:function( resource ) {
 		return gM( 'mwe-imported_from', [resource.title,  this.provider.homepage, gM('rsd-' + this.provider.id + '-title'), resource.link] );
 	},
+	
 	/**
 	* Get any extra wikitext description for the given resource object. 
 	* For content outside of the main template description, 
@@ -337,25 +341,36 @@ baseRemoteSearch.prototype = {
 	},
 	
 	/** 
-	* Gets a image transformation 
+	* Get an image transformation 
 	* by default it just return the poster
+	*
+	* @param {Object} resource Resource for image transformation
+	* @param {Object} options Transformation options 
 	*/
-	getImageTransform:function( resource, opt ) {
+	getImageTransform:function( resource, options ) {
 		return resource.poster;
 	},
 	
 	/**
-	* Adds additional resource information post clip embedding. 
+	* Adds additional resource information from an embedding instance.
+	*
+	* @param {Object} resource Resource to add embeded info to
+	* @param {String} embed_id Id of embed object
 	*/
-	addResourceInfoFromEmbedInstance : function( resource, eb_id ) {
+	addResourceInfoFromEmbedInstance : function( resource, embed_id ) {
 		return resource;
 	},
 	
 	/**
-	* Adds resource info with a callback function
+	* Adds resource info with a callback 
 	*
-	* Use full for grabbing extra info that is not available in the initial 
-	* search results api request.
+	* Usefull for async grabbing extra info that is not available in the initial 
+	* search results api request. 
+	*
+	* For example see archive.org extra resource query
+	*
+	* @param {Object} resource Resource to add information to
+	* @param {Function} callback Callback function once extra resource info has been added
 	*/
 	addResourceInfoCallback:function( resource, callback ) {
 		callback();
@@ -363,6 +378,8 @@ baseRemoteSearch.prototype = {
 	
 	/**
 	* Get the wiki embed code for a given resource object
+	*
+	* @param {Object} resource Resoruce to get embed wiki code for.
 	*/
 	getEmbedWikiCode:function( resource ) {
 		var layout = ( resource.layout ) ? resource.layout:"right"
@@ -384,6 +401,8 @@ baseRemoteSearch.prototype = {
 	
 	/**
 	* Updates / normalizes the target_resource_title
+	*
+	* @parma {Object} resource Resource to update title on.
 	*/
 	updateTargetResourceTitle:function( resource ) {
 		resource.target_resource_title = resource.titleKey.replace( /^(File:|Image:)/ , '' );
