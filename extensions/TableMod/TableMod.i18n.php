@@ -6,9 +6,9 @@ $messages = array();
  */
 $messages['en'] = array( 
 	'tablemod' => 'TableMod',
-	'tablemod-desc' => 'Wiki-table manipulation.',
+	'tablemod-desc' => 'Wiki-table manipulation',
 	'tablemod-msg-remove' => 'Remove',
-	'tablemod-error-format' => 'This tag supporsts only one simple table per tag, without any text before or after it.',
+	'tablemod-error-format' => 'This tag supports only one simple table per tag, without any text before or after it.',
 	'tablemod-error-colcount' => 'This tag only supports tables with equal numbers of columns per row when removing.',
 	'tablemod-error-headcount' => 'This tag only supports tables single column headers when removing.',
 	'tablemod-error-invalidsort' => 'Invalid sort parameters.',
