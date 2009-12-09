@@ -21,6 +21,11 @@ api: {
  */
 evt: {
 	ready: function( context, event ) {
+		// Only run this code if this module is turned on
+		if ( !( '$toc' in context.modules ) ) {
+			return;
+		}
+		
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
 		context.$content.parent()
