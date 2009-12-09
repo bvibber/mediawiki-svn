@@ -96,7 +96,7 @@ fn: {
 							markOffset += match[0].length;
 						}
 						this.tokenArray.push(new token(match.index + oldOffset + markOffset, label));
-						oldOffset += (match.index + 1);
+						oldOffset += (match.index + match[0].length);
 						newSubstring = text.substring(oldOffset);
 						match = newSubstring.match(regex);
 					}
@@ -122,7 +122,7 @@ fn: {
 		}
 		markedText = "";
 		var previousIndex = 0;
-		for(var currentIndex in this.markers){ //MAKE SURE THERE IS AT LEAST 1, or else this will delete EVERYTHING!
+		for(var currentIndex in this.markers){
 			markedText+= rawText.substring(previousIndex, currentIndex);
 			
 			for(var i = 0 ; i < this.markers[currentIndex].length; i++){
@@ -131,8 +131,10 @@ fn: {
 			
 			previousIndex = currentIndex;
 		}
-		markedText.replace(/\n/g, '<br\>');
-		context.fn.setContents({contents:markedText});
+		if(markedText != ""){
+			markedText.replace(/\n/g, '<br\>');
+			context.fn.setContents({contents:markedText});
+		}
 	}//endmark
 }
 
