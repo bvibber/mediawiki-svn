@@ -187,6 +187,9 @@ if ( typeof context == 'undefined' ) {
 					'fn' in $.wikiEditor.modules[module] &&
 					call in $.wikiEditor.modules[module].fn
 				) {
+					// Add a place for the module to put it's own stuff
+					context.modules[module] = {};
+					// Tell the module to create itself
 					$.wikiEditor.modules[module].fn[call]( context, data );
 				}
 			}
@@ -265,8 +268,13 @@ if ( typeof context == 'undefined' ) {
 					return false;
 				}
 			}
-			for ( module in $.wikiEditor.modules ) {
-				if ( 'evt' in $.wikiEditor.modules[module] && name in $.wikiEditor.modules[module].evt ) {
+			for ( module in context.modules ) {
+				// Pass the event around to all modules activated on this context
+				if (
+					module in $.wikiEditor.modules &&
+					'evt' in $.wikiEditor.modules[module] &&
+					name in $.wikiEditor.modules[module].evt
+				) {
 					$.wikiEditor.modules[module].evt[name]( context, event );
 				}
 			}

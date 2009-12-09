@@ -1497,6 +1497,9 @@ if ( typeof context == 'undefined' ) {
 					'fn' in $.wikiEditor.modules[module] &&
 					call in $.wikiEditor.modules[module].fn
 				) {
+					// Add a place for the module to put it's own stuff
+					context.modules[module] = {};
+					// Tell the module to create itself
 					$.wikiEditor.modules[module].fn[call]( context, data );
 				}
 			}
@@ -1575,8 +1578,13 @@ if ( typeof context == 'undefined' ) {
 					return false;
 				}
 			}
-			for ( module in $.wikiEditor.modules ) {
-				if ( 'evt' in $.wikiEditor.modules[module] && name in $.wikiEditor.modules[module].evt ) {
+			for ( module in context.modules ) {
+				// Pass the event around to all modules activated on this context
+				if (
+					module in $.wikiEditor.modules &&
+					'evt' in $.wikiEditor.modules[module] &&
+					name in $.wikiEditor.modules[module].evt
+				) {
 					$.wikiEditor.modules[module].evt[name]( context, event );
 				}
 			}
@@ -2181,14 +2189,15 @@ fn: {
 	 * @param config Configuration object to create module from
 	 */
 	create: function( context, config ) {
-		if ( 'preview' in context.modules ) {
+		if ( 'initialized' in context.modules.preview ) {
 			return;
 		}
 		context.modules.preview = {
+			'initialized': true,
 			'previewText': null,
 			'changesText': null
 		};
-		context.$preview = context.fn.addView( {
+		context.modules.preview.$preview = context.fn.addView( {
 			'name': 'preview',
 			'titleMsg': 'wikieditor-preview-tab',
 			'init': function( context ) {
@@ -2198,8 +2207,8 @@ fn: {
 				if ( context.modules.preview.previewText == wikitext ) {
 					return;
 				}
-				context.$preview.find( '.wikiEditor-preview-contents' ).empty();
-				context.$preview.find( '.wikiEditor-preview-loading' ).show();
+				context.modules.preview.$preview.find( '.wikiEditor-preview-contents' ).empty();
+				context.modules.preview.$preview.find( '.wikiEditor-preview-loading' ).show();
 				$.post(
 					wgScriptPath + '/api.php',
 					{
@@ -2219,8 +2228,8 @@ fn: {
 							return;
 						}
 						context.modules.preview.previewText = wikitext;
-						context.$preview.find( '.wikiEditor-preview-loading' ).hide();
-						context.$preview.find( '.wikiEditor-preview-contents' )
+						context.modules.preview.$preview.find( '.wikiEditor-preview-loading' ).hide();
+						context.modules.preview.$preview.find( '.wikiEditor-preview-contents' )
 							.html( data.parse.text['*'] )
 							.find( 'a:not([href^=#])' ).click( function() { return false; } );
 					},
@@ -2277,9 +2286,9 @@ fn: {
 				);
 			}
 		} );
-
+		
 		var loadingMsg = gM( 'wikieditor-preview-loading' );
-		context.$preview
+		context.modules.preview.$preview
 			.add( context.$changesTab )
 			.append( $( '<div />' )
 				.addClass( 'wikiEditor-preview-loading' )
@@ -2441,11 +2450,6 @@ api: {
  */
 evt: {
 	ready: function( context, event ) {
-		// Only run this code if this module is turned on
-		if ( !( '$toc' in context.modules ) ) {
-			return;
-		}
-		
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
 		context.$content.parent()
@@ -2478,18 +2482,18 @@ fn: {
 	 * @param {Object} config Configuration object to create module from
 	 */
 	create: function( context, config ) {
-		if ( '$toc' in context.modules ) {
+		if ( '$toc' in context.modules.toc ) {
 			return;
 		}
 		
 		var height = context.$ui.find( '.wikiEditor-ui-left' ).height();
-		context.modules.$toc = $( '<div />' )
+		context.modules.toc.$toc = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toc' )
 			.data( 'context', context );
 		context.$ui.find( '.wikiEditor-ui-right' )
 			.css( 'width', $.wikiEditor.modules.toc.defaultWidth )
-			.append( context.modules.$toc );
-		context.modules.$toc.height(
+			.append( context.modules.toc.$toc );
+		context.modules.toc.$toc.height(
 			context.$ui.find( '.wikiEditor-ui-left' ).height()
 		);
 		context.$ui.find( '.wikiEditor-ui-left' )
@@ -2499,7 +2503,7 @@ fn: {
 	},
 	
 	unhighlight: function( context ) {
-		context.modules.$toc.find( 'div' ).removeClass( 'current' );
+		context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
 	},
 	/**
 	 * Highlight the section the cursor is currently within
@@ -2523,20 +2527,20 @@ fn: {
 				}
 				section = Math.max( 0, section );
 			}
-			var sectionLink = context.modules.$toc.find( 'div.section-' + section );
+			var sectionLink = context.modules.toc.$toc.find( 'div.section-' + section );
 			sectionLink.addClass( 'current' );
 			
 			// Scroll the highlighted link into view if necessary
-			var relTop = sectionLink.offset().top - context.modules.$toc.offset().top;
-			var scrollTop = context.modules.$toc.scrollTop();
-			var divHeight = context.modules.$toc.height();
+			var relTop = sectionLink.offset().top - context.modules.toc.$toc.offset().top;
+			var scrollTop = context.modules.toc.$toc.scrollTop();
+			var divHeight = context.modules.toc.$toc.height();
 			var sectionHeight = sectionLink.height();
 			if ( relTop < 0 )
 				// Scroll up
-				context.modules.$toc.scrollTop( scrollTop + relTop );
+				context.modules.toc.$toc.scrollTop( scrollTop + relTop );
 			else if ( relTop + sectionHeight > divHeight )
 				// Scroll down
-				context.modules.$toc.scrollTop( scrollTop + relTop + sectionHeight - divHeight );
+				context.modules.toc.$toc.scrollTop( scrollTop + relTop + sectionHeight - divHeight );
 		}
 	},
 	
@@ -2575,7 +2579,7 @@ fn: {
 	expand: function( event ) {
 		var $this = $( this ),
 			context = $this.data( 'context' ),
-			openWidth = context.modules.$toc.data( 'openWidth' );
+			openWidth = context.modules.toc.$toc.data( 'openWidth' );
 		context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).hide();
 		$this.parent()
 			.show()
@@ -2591,7 +2595,7 @@ fn: {
 			.children()
 			.animate( { 'marginRight': openWidth }, 'fast' );
 		$.cookie( 'wikiEditor-' + context.instance + '-toc-width',
-			context.modules.$toc.data( 'openWidth' ) );
+			context.modules.toc.$toc.data( 'openWidth' ) );
 		return false;
 	},
 	/**
@@ -2665,7 +2669,7 @@ fn: {
 				.addClass( 'tab-toc' )
 				.append( '<a href="#" />' )
 				.bind( 'click.wikiEditor-toc', function() {
-					context.modules.$toc.trigger( 'collapse.wikiEditor-toc' ); return false;
+					context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' ); return false;
 				} )
 				.find( 'a' )
 				.text( gM( 'wikieditor-toc-hide' ) );
@@ -2673,12 +2677,12 @@ fn: {
 				.addClass( 'wikiEditor-ui-toc-expandControl' )
 				.append( '<a href="#" />' )
 				.bind( 'click.wikiEditor-toc', function() {
-					context.modules.$toc.trigger( 'expand.wikiEditor-toc' ); return false;
+					context.modules.toc.$toc.trigger( 'expand.wikiEditor-toc' ); return false;
 				} )
 				.hide()
 				.find( 'a' )
 				.text( gM( 'wikieditor-toc-show' ) );
-			$collapseControl.insertBefore( context.modules.$toc );
+			$collapseControl.insertBefore( context.modules.toc.$toc );
 			context.$ui.find( '.wikiEditor-ui-left .wikiEditor-ui-top' ).append( $expandControl );
 		}
 		/**
@@ -2714,9 +2718,9 @@ fn: {
 						context.$ui.find( '.wikiEditor-ui-resize-mask' ).remove();
 						context.$content.trigger( 'mouseup' );
 						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.minimumWidth ) ) {
-							context.modules.$toc.trigger( 'collapse' );
+							context.modules.toc.$toc.trigger( 'collapse' );
 						} else {
-							context.modules.$toc.data( 'openWidth', ui.size.width );
+							context.modules.toc.$toc.data( 'openWidth', ui.size.width );
 							$.cookie( 'wikiEditor-' + context.instance + '-toc-width', ui.size.width );
 						}
 						// Let the UI know things have moved around
@@ -2729,18 +2733,18 @@ fn: {
 				.addClass( 'ui-resizable-w' )
 				.addClass( 'wikiEditor-ui-toc-resize-grip' );
 			// Bind collapse and expand event handlers to the TOC
-			context.modules.$toc
+			context.modules.toc.$toc
 				.bind( 'collapse.wikiEditor-toc', $.wikiEditor.modules.toc.fn.collapse )
 				.bind( 'expand.wikiEditor-toc', $.wikiEditor.modules.toc.fn.expand  );
-			context.modules.$toc.data( 'openWidth', $.wikiEditor.modules.toc.defaultWidth );
+			context.modules.toc.$toc.data( 'openWidth', $.wikiEditor.modules.toc.defaultWidth );
 			// If the toc-width cookie is set, reset the widths based upon that
 			if ( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) == 0 ) {
-				context.modules.$toc.trigger( 'collapse.wikiEditor-toc', { data: context } );
+				context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc', { data: context } );
 			} else if ( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) > 0 ) {
 				var initialWidth = $.cookie( 'wikiEditor-' + context.instance + '-toc-width' );
 				if( initialWidth < parseFloat( $.wikiEditor.modules.toc.minimumWidth ) )
 					initialWidth = parseFloat( $.wikiEditor.modules.toc.minimumWidth ) + 1;
-				context.modules.$toc.data( 'openWidth', initialWidth + 'px' );
+				context.modules.toc.$toc.data( 'openWidth', initialWidth + 'px' );
 				context.$ui.find( '.wikiEditor-ui-right' )
 					.css( 'width', initialWidth + 'px' );
 				context.$ui.find( '.wikiEditor-ui-left' )
@@ -2851,13 +2855,13 @@ fn: {
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0,
 				'wrapper': context.$content } );
 		}
-		context.modules.$toc.html( buildList( structure ) );
+		context.modules.toc.$toc.html( buildList( structure ) );
 		
 		if ( wgNavigableTOCResizable && !context.$ui.data( 'resizableDone' ) ) {
 			buildResizeControls();
 			buildCollapseControls();
 		}
-		context.modules.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
+		context.modules.toc.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}
@@ -2888,14 +2892,14 @@ api : {
 		for ( type in data ) {
 			switch ( type ) {
 				case 'sections':
-					var $sections = context.modules.$toolbar
+					var $sections = context.modules.toolbar.$toolbar
 					.find( 'div.sections' );
-					var $tabs = context.modules.$toolbar
+					var $tabs = context.modules.toolbar.$toolbar
 					.find( 'div.tabs' );
 					for ( section in data[type] ) {
 						if ( section == 'main' ) {
 							// Section
-							context.modules.$toolbar
+							context.modules.toolbar.$toolbar
 							.prepend(
 								$.wikiEditor.modules.toolbar.fn.buildSection(
 									context, section, data[type][section]
@@ -2922,7 +2926,7 @@ api : {
 					if ( ! ( 'section' in data ) ) {
 						continue;
 					}
-					var $section = context.modules.$toolbar
+					var $section = context.modules.toolbar.$toolbar
 					.find( 'div[rel=' + data.section + '].section' );
 					for ( group in data[type] ) {
 						// Group
@@ -2934,7 +2938,7 @@ api : {
 					if ( ! ( 'section' in data && 'group' in data ) ) {
 						continue;
 					}
-					var $group = context.modules.$toolbar
+					var $group = context.modules.toolbar.$toolbar
 					.find( 'div[rel=' + data.section + '].section ' + 'div[rel=' + data.group + '].group' );
 					for ( tool in data[type] ) {
 						// Tool
@@ -2945,9 +2949,9 @@ api : {
 					if ( ! ( 'section' in data ) ) {
 						continue;
 					}
-					var $pages = context.modules.$toolbar
+					var $pages = context.modules.toolbar.$toolbar
 					.find( 'div[rel=' + data.section + '].section .pages' );
-					var $index = context.modules.$toolbar
+					var $index = context.modules.toolbar.$toolbar
 					.find( 'div[rel=' + data.section + '].section .index' );
 					for ( page in data[type] ) {
 						// Page
@@ -2963,7 +2967,7 @@ api : {
 					if ( ! ( 'section' in data && 'page' in data ) ) {
 						continue;
 					}
-					var $table = context.modules.$toolbar.find(
+					var $table = context.modules.toolbar.$toolbar.find(
 						'div[rel=' + data.section + '].section ' + 'div[rel=' + data.page + '].page table'
 					);
 					for ( row in data[type] ) {
@@ -2975,7 +2979,7 @@ api : {
 					if ( ! ( 'section' in data && 'page' in data ) ) {
 						continue;
 					}
-					$characters = context.modules.$toolbar.find(
+					$characters = context.modules.toolbar.$toolbar.find(
 						'div[rel=' + data.section + '].section ' + 'div[rel=' + data.page + '].page div'
 					);
 					var actions = $characters.data( 'actions' );
@@ -3021,20 +3025,20 @@ api : {
 					target += ' table tr:not(:has(th)):eq(' + data.row + ')';
 				} else {
 					// Just a page, remove the index too!
-					context.modules.$toolbar.find( index ).remove();
+					context.modules.toolbar.$toolbar.find( index ).remove();
 					$.wikiEditor.modules.toolbar.fn.updateBookletSelection(
 						context,
 						null,
-						context.modules.$toolbar.find( target ),
-						context.modules.$toolbar.find( index )
+						context.modules.toolbar.$toolbar.find( target ),
+						context.modules.toolbar.$toolbar.find( index )
 					);
 				}
 			} else {
 				// Just a section, remove the tab too!
-				context.modules.$toolbar.find( tab ).remove();
+				context.modules.toolbar.$toolbar.find( tab ).remove();
 			}
 			js_log('target is: ' + target);
-			context.modules.$toolbar.find( target ).remove();
+			context.modules.toolbar.$toolbar.find( target ).remove();
 		}
 	}
 },
@@ -3057,14 +3061,14 @@ fn: {
 	 * @param {Object} config Configuration object to create module from
 	 */
 	create : function( context, config ) {
-		if ( '$toolbar' in context.modules ) {
+		if ( '$toolbar' in context.modules.toolbar ) {
 			return;
 		}
-		context.modules.$toolbar = $( '<div />' )
+		context.modules.toolbar.$toolbar = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toolbar' )
 			.attr( 'id', 'wikiEditor-ui-toolbar' );
 		$.wikiEditor.modules.toolbar.fn.build( context, config );
-		context.$ui.find( '.wikiEditor-ui-top' ).append( context.modules.$toolbar );
+		context.$ui.find( '.wikiEditor-ui-top' ).append( context.modules.toolbar.$toolbar );
 	},
 	/**
 	 * Performs an operation based on parameters
@@ -3361,8 +3365,8 @@ fn: {
 						if ( show ) {
 							$section.fadeIn( 'fast' );
 							dH = $section.outerHeight() - dH;
-							if ( context.modules.$toc ) {
-								context.modules.$toc.animate({'height': "+="+dH}, $section.outerHeight() * 2);
+							if ( 'toc' in context.modules ) {
+								context.modules.toc.$toc.animate({'height': "+="+dH}, $section.outerHeight() * 2);
 							}
 							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
 								$(this).css('overflow', 'visible').css('height', 'auto');
@@ -3373,8 +3377,8 @@ fn: {
 								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() {
 									$(this).css('overflow', 'visible');
 								} );
-							if ( context.modules.$toc ) {
-								context.modules.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);
+							if ( 'toc' in context.modules ) {
+								context.modules.toc.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);
 							}
 						}
 						// Click tracking
@@ -3444,13 +3448,13 @@ fn: {
 		$selectedIndex.addClass( 'current' );
 	},
 	build : function( context, config ) {
-		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.$toolbar );
-		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
-		context.modules.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
+		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.toolbar.$toolbar );
+		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.toolbar.$toolbar );
+		context.modules.toolbar.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
 		var sectionQueue = [];
 		for ( section in config ) {
 			if ( section == 'main' ) {
-				context.modules.$toolbar.prepend(
+				context.modules.toolbar.$toolbar.prepend(
 					$.wikiEditor.modules.toolbar.fn.buildSection( context, section, config[section] )
 				);
 			} else {
@@ -3476,8 +3480,8 @@ fn: {
 				var $section = s.$sections.find( '.section:visible' );
 				if ( $section.size() ) {
 					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function( ) {
-						if ( context.modules.$toc ) {
-							context.modules.$toc.height(
+						if ( 'toc' in context.modules ) {
+							context.modules.toc.$toc.height(
 								context.$ui.find( '.wikiEditor-ui-left' )
 									.outerHeight() - context.$ui.find( '.tab-toc' ).outerHeight()
 							)
