@@ -223,7 +223,6 @@ if ( typeof context == 'undefined' ) {
 	
 	context.evt = {
 		'change': function( event ) {
-			alert( event.type );
 			// Event filtering
 			switch ( event.type ) {
 				case 'keypress':
