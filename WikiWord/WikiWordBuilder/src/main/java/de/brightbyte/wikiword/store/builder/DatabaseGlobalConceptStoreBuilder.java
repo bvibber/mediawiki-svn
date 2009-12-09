@@ -164,10 +164,10 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	protected int deletePendingConceptsAfter(int id) throws PersistenceException {
 		try {
 			String sql = "DELETE FROM "+conceptTable.getSQLName()+" WHERE id > "+id;
-			Integer n = (Integer)database.executeUpdate("deleteConceptsAfter", sql);
+			Integer n = (Integer)database.executeUpdate("deletePendingConceptsAfter", sql);
 
 			sql = "DELETE FROM "+mergeTable.getSQLName()+" WHERE new > "+id;
-			database.executeUpdate("deleteConceptsAfter", sql);
+			database.executeUpdate("deletePendingConceptsAfter", sql);
 			
 			return n;
 		} catch (SQLException e) {

@@ -36,21 +36,24 @@ public class ProximityStoreSchema extends WikiWordStoreSchema {
 		featureTable = new RelationTable(this, "feature", getDefaultTableAttributes());
 		featureTable.addField( new ReferenceField(this, "concept", "INT", null, true, null, "concept", "id", null ));
 		featureTable.addField( new ReferenceField(this, "feature", "INT", null, true, KeyType.INDEX, "concept", "id", null ) );
-		featureTable.addField( new DatabaseField(this, "weight", "REAL", "DEFAULT 0", true, null ) );
+		featureTable.addField( new DatabaseField(this, "total_weight", "REAL", "DEFAULT 0", true, null ) );
+		featureTable.addField( new DatabaseField(this, "normal_weight", "REAL", "DEFAULT 0", true, null ) );
 		featureTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concept_feature", new String[] {"concept", "feature"}) );
 		featureTable.setAutomaticField(null);
 		addTable(featureTable);
 
-		featureProductTable = new RelationTable(this, "feature_product", getDefaultTableAttributes());
+		/*
+		 featureProductTable = new RelationTable(this, "feature_product", getDefaultTableAttributes());
 		featureProductTable.addField( new ReferenceField(this, "concept1", "INT", null, true, null, "concept", "id", null ));
 		featureProductTable.addField( new ReferenceField(this, "concept2", "INT", null, true, null, "concept", "id", null ) );
 		featureProductTable.addField( new ReferenceField(this, "feature", "INT", null, true, KeyType.INDEX, "concept", "id", null ) );
-		featureProductTable.addField( new DatabaseField(this, "weight", "REAL", "DEFAULT 0", true, null ) );
+		featureProductTable.addField( new DatabaseField(this, "total_weight", "REAL", "DEFAULT 0", true, null ) );
+		featureProductTable.addField( new DatabaseField(this, "normal_weight", "REAL", "DEFAULT 0", true, null ) );
 		featureProductTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concept1_concept2_feature", new String[] {"concept1", "concept2", "feature"}) );
 		featureProductTable.addKey( new DatabaseKey(this, KeyType.INDEX, "concept1_feature", new String[] {"concept1", "feature"}) );
 		featureProductTable.addKey( new DatabaseKey(this, KeyType.INDEX, "concept2_feature", new String[] {"concept2", "feature"}) );
 		featureProductTable.setAutomaticField(null);
-		addTable(featureProductTable);
+		addTable(featureProductTable);*/
 
 		featureMagnitudeTable = new EntityTable(this, "feature_magnitude", getDefaultTableAttributes());
 		featureMagnitudeTable.addField( new ReferenceField(this, "concept", "INT", null, true, KeyType.PRIMARY, "concept", "id", null ));
