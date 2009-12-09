@@ -30,10 +30,35 @@ $wgSpecialPages['PayflowProGateway'] = 'PayflowProGateway';
 $wgPayflowProURL = 'https://payflowpro.paypal.com';
 $wgPayflowProTestingURL = 'https://pilot-payflowpro.paypal.com'; // Payflow testing URL
 
+$wgPayFlowProGatewayCSSVersion = 1;
+
 $wgPayflowProPartnerID = ''; //PayPal or original authorized reseller
 $wgPayflowProVendorID = ''; // paypal merchant login ID
 $wgPayflowProUserID = ''; //if one or more users are set up, authorized user ID, else same as VENDOR
 $wgPayflowProPassword = ''; //merchant login password
+
+$wgPayflowGatewayDBserver = $wgDBserver;
+$wgPayflowGatewayDBname = $wgDBname;
+$wgPayflowGatewayDBuser = $wgDBuser;
+$wgPayflowGatewayDBpassword = $wgDBpassword;
+
+function payflowGatewayConnection() {
+	global $wgPayflowGatewayDBserver, $wgPayflowGatewayDBname;
+	global $wgPayflowGatewayDBuser, $wgPayflowGatewayDBpassword;
+
+	static $db;
+
+	if ( !$db ) {
+		$db = new DatabaseMysql(
+			$wgPayflowGatewayDBserver,
+			$wgPayflowGatewayDBuser,
+			$wgPayflowGatewayDBpassword,
+			$wgPayflowGatewayDBname );
+			$db->query( "SET names utf8" );
+	}
+
+	return $db;
+}
 
 /** 
  * Hooks required to interface with the donation extension (include <donate> on page)
@@ -88,7 +113,8 @@ function pfpGatewayValue( &$values ) {
 function pfpGatewayPage( &$url ) {
 	global $wgScript;
 
-	$url['payflow'] = 'https://payments.wikimedia.org/index.php' . '?title=Special:PayflowProGateway';
-	
+	//$url['payflow'] = 'https://payments.wikimedia.org/index.php' . '?title=Special:PayflowProGateway';
+	//$url['payflow'] = 'http://c2p2.fkbuild.com/index.php?title=Special:PayflowProGateway';
+	$url['payflow'] = $wgScript . "?title=Special:PayflowProGateway";
 	return true;
 }

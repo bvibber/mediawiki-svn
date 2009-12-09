@@ -5,7 +5,7 @@
  */
 function statesMenuXML() {
 	$states = array(
-		''   => 'Select a State',
+		'YY'   => 'Select a State',
 		'XX' => 'Outside the U.S.',
 		'AK' => 'Alaska',
 		'AL' => 'Alabama',
@@ -58,14 +58,11 @@ function statesMenuXML() {
 		'WA' => 'Washington',
 		'WI' => 'Wisconsin',
 		'WV' => 'West Virginia',
-		'WY' => 'Wyoming'
+		'WY' => 'Wyoming',
+		'AA' => 'AA',
+		'AE' => 'AE',
+		'AP' => 'AP',
 	);
-
-	$stateMenu = '';
-
-	foreach( $states as $value => $fullName ) {
-		$stateMenu .= Xml::option( $fullName, $value );
-	}
-
-	return $stateMenu;
+	
+	return $states;
 }
