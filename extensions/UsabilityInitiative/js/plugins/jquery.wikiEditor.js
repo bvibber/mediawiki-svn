@@ -223,6 +223,7 @@ if ( typeof context == 'undefined' ) {
 	
 	context.evt = {
 		'change': function( event ) {
+			alert( event.type );
 			// Event filtering
 			switch ( event.type ) {
 				case 'keypress':
@@ -324,21 +325,14 @@ if ( typeof context == 'undefined' ) {
 		 * Set up the magic iframe
 		 */
 		'setup': function() {
-			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
-			// characters rather than actual HTML tags in the code editor container.
-			var contentHTML = $( '<div />' ).text( context.$textarea.val() ).html();
-			
-			// Setup the iframe with a basic document
-			context.$iframe[0].contentWindow.document.open();
-			context.$iframe[0].contentWindow.document.write(
-				// FIXME: Break this line
-				'<html><head><title>wikiEditor</title><script>var context = window.parent.jQuery.wikiEditor.instances[' + context.instance + '].data( "wikiEditor-context" ); window.parent.jQuery( document ).bind( "keydown keypress keyup mousedown mouseup cut paste", function( event ) { context.fn.trigger( "change", event ) } );</script></head><body style="margin:0;padding:0;width:100%;height:100%;white-space:pre-wrap;font-family:monospace">' + contentHTML + '</body></html>'
-			);
-			context.$iframe[0].contentWindow.document.close();
 			// Turn the document's design mode on
 			context.$iframe[0].contentWindow.document.designMode = 'on';
 			// Get a reference to the content area of the iframe
 			context.$content = $( context.$iframe[0].contentWindow.document.body );
+			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
+			// characters rather than actual HTML tags in the code editor container.
+			context.$content.html( $( '<div />' ).text( context.$textarea.val() ).html() );
+			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
 			}
@@ -349,6 +343,8 @@ if ( typeof context == 'undefined' ) {
 			context.$textarea.attr( 'disabled', true );
 			context.$textarea.hide();
 			context.$iframe.show();
+			// Let modules know we're ready to start working with the content
+			context.fn.trigger( 'ready' );
 		},
 		/**
 		 * Checks whether the magic iframe is properly set up
@@ -555,25 +551,24 @@ if ( typeof context == 'undefined' ) {
 	/* Magic IFRAME Construction */
 	
 	// Create an iframe in place of the text area
+	var ts = ( new Date() ).getTime();
+	var instance = context.instance;
 	context.$iframe = $( '<iframe></iframe>' )
-		.attr( 'frameborder', 0 )
+		.attr( {
+			'frameborder': 0,
+			'src': wgScriptPath + '/extensions/UsabilityInitiative/js/plugins/jquery.wikiEditor.html?' +
+				'instance=' + context.instance + '&ts=' + ts
+		} )
 		.css( {
 			'backgroundColor': 'white',
 			'width': '100%',
 			'height': context.$textarea.height(),
 			'display': 'none',
 			'overflow-y': 'scroll',
-			'overflow-x': 'hidden',
-		})
-		.insertAfter( context.$textarea );
-	
-	/*
-	 * For whatever strange reason, this code needs to be within a timeout or it doesn't work - it seems to be that
-	 * the DOM manipulation to add the iframe happens asynchronously and this code that depends on it actually being
-	 * finished doesn't function on the right reference.
-	 * FIXME: The fact that this calls a function that's defined below is ugly
-	 */
-	setTimeout( function() { context.fn.setup(); }, 1 );
+			'overflow-x': 'hidden'
+		} )
+		.insertAfter( context.$textarea )
+		.load( context.fn.setup );
 	
 	// Attach a submit handler to the form so that when the form is submitted the content of the iframe gets decoded and
 	// copied over to the textarea

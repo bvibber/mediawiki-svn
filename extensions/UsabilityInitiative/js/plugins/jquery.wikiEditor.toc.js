@@ -2,12 +2,6 @@
 ( function( $ ) { $.wikiEditor.modules.toc = {
 
 /**
- * API accessible functions
- */
-api: {
-	//
-},
-/**
  * Default width of table of contents
  */
 defaultWidth: '166px',
@@ -16,6 +10,38 @@ defaultWidth: '166px',
  * Only used if resizing and collapsing is enabled
  */
 minimumWidth: '70px',
+/**
+ * API accessible functions
+ */
+api: {
+	//
+},
+/**
+ * Event handlers
+ */
+evt: {
+	ready: function( context, event ) {
+		// Add the TOC to the document
+		$.wikiEditor.modules.toc.fn.build( context );
+		context.$content.parent()
+			.delayedBind( 250, 'mouseup scrollToTop keyup change',
+				function() {
+					$(this).eachAsync( {
+						bulk: 0,
+						loop: function() {
+							$.wikiEditor.modules.toc.fn.build( context );
+							$.wikiEditor.modules.toc.fn.update( context );
+						}
+					} );
+				}
+			)
+			.blur( function( event ) {
+				var context = event.data.context;
+				context.$textarea.delayedBindCancel( 250, 'mouseup scrollToTop keyup change' );
+				$.wikiEditor.modules.toc.fn.unhighlight( context );
+			});
+	}
+},
 /**
  * Internally used functions
  */
@@ -45,27 +71,6 @@ fn: {
 			.css( 'marginRight', "-" + $.wikiEditor.modules.toc.defaultWidth )
 			.children()
 			.css( 'marginRight', $.wikiEditor.modules.toc.defaultWidth );
-		
-		// Add the TOC to the document
-		$.wikiEditor.modules.toc.fn.build( context, config );
-		context.$content.parent()
-			.delayedBind( 250, 'mouseup scrollToTop keyup change',
-				function() {
-					$(this).eachAsync( {
-						bulk: 0,
-						loop: function() {
-							$.wikiEditor.modules.toc.fn.build( context );
-							$.wikiEditor.modules.toc.fn.update( context );
-						}
-					} );
-				}
-			)
-			.blur( function( event ) {
-				var context = event.data.context;
-				context.$textarea.delayedBindCancel( 250, 'mouseup scrollToTop keyup change' );
-				$.wikiEditor.modules.toc.fn.unhighlight( context );
-			});
-		
 	},
 	
 	unhighlight: function( context ) {
