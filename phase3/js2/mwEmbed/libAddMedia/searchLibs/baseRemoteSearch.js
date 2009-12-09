@@ -1,4 +1,4 @@
-/*
+/**
 * Base remote search Object. 
 * provides the base class for the other search system to extend. 
 */
@@ -66,23 +66,35 @@ baseRemoteSearch.prototype = {
 		}
 		return this;
 	},
+	
 	/**
 	* Base search results 
-	* Does some common initialisation for search results  
+	* Does some common initialisation for search results  	
+	* @param {String} search_query Text search string 
 	*/
-	getSearchResults:function() {
+	getSearchResults: function( search_query ) {
 		// Empty out the current results before issuing a request
 		this.resultsObj = { };
 		
 		// Do global getSearchResults bindings
-		this.last_query = $j( '#rsd_q' ).val();
+		this.last_query = search_query;
 		this.last_offset = this.provider.offset;
 		
 		// Set the loading flag:		
 		this.loading = true;
 	},
+	
+	/**
+	* Clears Results
+	*/
+	clearResults:function() {
+		this.resultsObj = { };
+		this.last_query = '';
+	},
+	
 	/*
 	* Parses and adds video rss based input format
+	*
 	* @param {XML Nodes} data the data to be parsed
 	* @param {String} provider_url the source url (used to generate absolute links)
 	*/
@@ -258,7 +270,10 @@ baseRemoteSearch.prototype = {
 		 		'</div>';
 	},
 	/**
-	* Get the embed html specifically for an image type resource Object. 
+	* Get the embed html specifically for an image type resource Object.
+	*
+	* @param {Object} resource Resource to get embed html from
+	* @param {Object} options Embeding options 
 	*/
 	getImageEmbedHTML:function( resource, options ) {
 		// if crop is null do base output: 
@@ -275,18 +290,24 @@ baseRemoteSearch.prototype = {
 					'</div>' +
 				'</div>';
 	},
+	
 	/**
 	* Get an image object from a requested transformation via callback
 	* ( letting api search implementations query the remote server for a 
 	*  given transformation )  
 	* 
 	* By default just return the existing image.
+	*
+	* @param {Object} resource Not used in base method
+	* @param {Object} size Not used in base method
+	* @param {Function} callbcak Function called with returned image Object
 	*/
 	getImageObj:function( resource, size, callback ) {
 		callback( { 
 			'url' : resource.poster 
 		} );
 	},
+	
 	/**
 	* Get the inline wikiText description of the resource Object
 	*/
@@ -357,7 +378,7 @@ baseRemoteSearch.prototype = {
 	* @param {Object} resource Resource to add embeded info to
 	* @param {String} embed_id Id of embed object
 	*/
-	addResourceInfoFromEmbedInstance : function( resource, embed_id ) {
+	addEmbedInfo : function( resource, embed_id ) {
 		return resource;
 	},
 	

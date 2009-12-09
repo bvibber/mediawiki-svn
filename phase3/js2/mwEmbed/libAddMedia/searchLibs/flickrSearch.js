@@ -49,12 +49,15 @@ flickrSearch.prototype = {
 	* Get the Search results setting _loading flag to false once results have been added 
 	* 
 	* Runs an api call then calls addResults with the resulting data
+	* @param {String} search_query Text search string 
 	*/
-	getSearchResults:function() {
+	getSearchResults:function( search_query ) {
 		var _this = this;
 		js_log( "flickr::getSearchResults" );
-		// call parent (sets loading sate and other setup stuff) 
+		
+		// call parent for common initialisation:  
 		this.parent_getSearchResults();
+		
 		// setup the flickr request: 
 		var reqObj = {
 			'method':'flickr.photos.search',
@@ -63,12 +66,12 @@ flickrSearch.prototype = {
 			'api_key':this.apikey,
 			'per_page': this.provider.limit,
 			'page' : this.provider.offset,
-			'text': $j( '#rsd_q' ).val(),
+			'text': search_query,
 			'extras' :	'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_m, url_o'
 		}
 		do_api_req( {
 			'data': reqObj,
-			'url':this.provider.api_url,
+			'url': this.provider.api_url,
 			'jsonCB':'jsoncallback',
 		},	function( data ) {
 			_this.addResults( data );

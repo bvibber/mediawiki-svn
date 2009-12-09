@@ -951,7 +951,7 @@ mvAdvFirefogg.prototype = {
 	/**
 	 * Restore settings from a cookie (if available)
 	 */
-	loadEncSettings: function( force ) {
+	loadEncSettings: function( ) {
 		if ( $j.cookie( 'fogg_encoder_config' ) ) {
 			js_log( "load:fogg_encoder_config from cookie " );
 			this.local_settings = JSON.parse( $j.cookie( 'fogg_settings' ) );

@@ -566,7 +566,7 @@ mediaSource.prototype = {
 			if ( !npt2seconds( end_npt ) )
 				end_npt = this.end_npt;
 										  
-			this.src = getURLParamReplace( this.src, { 
+			this.src = mw.replaceUrlParams( this.src, { 
 				't': start_npt + '/' + end_npt 
 			});
 			
@@ -607,7 +607,7 @@ mediaSource.prototype = {
 		} else {
 			var endvar = '/' + this.end_npt;
 		}
-		return getURLParamReplace( this.src,
+		return mw.replaceUrlParams( this.src,
 			{
 	   			't': seconds2npt( seek_time_sec ) + endvar
 	   		}
@@ -1967,7 +1967,7 @@ embedPlayer.prototype = {
 		// check if our thumbnail has a time attribute: 
 		if ( my_thumb_src.indexOf( 't=' ) !== -1 ) {
 			var time_ntp =  seconds2npt ( options.time + parseInt( this.start_offset ) );
-			my_thumb_src = getURLParamReplace( my_thumb_src, { 
+			my_thumb_src = mw.replaceUrlParams( my_thumb_src, { 
 				't' : time_ntp, 
 				'size' : options.size 
 			});
@@ -1991,7 +1991,7 @@ embedPlayer.prototype = {
 			this.org_thum_src = this.media_element.getThumbnailURL();
 		}
 		if ( this.org_thum_src.indexOf( 't=' ) !== -1 ) {
-			this.last_thumb_url = getURLParamReplace( this.org_thum_src,
+			this.last_thumb_url = mw.replaceUrlParams( this.org_thum_src,
 				{ 
 					't' : seconds2npt( float_sec + parseInt( this.start_offset ) ) 
 				}

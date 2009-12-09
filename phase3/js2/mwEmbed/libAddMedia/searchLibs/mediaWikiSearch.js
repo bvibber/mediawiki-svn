@@ -1,22 +1,37 @@
-var mediaWikiSearch = function( iObj ) {
-	return this.init( iObj );
+/**
+* mediaWiki search implementation
+*/
+var mediaWikiSearch = function( options ) {
+	return this.init( options );
 };
 mediaWikiSearch.prototype = {
-	init:function( iObj ) {
+
+	/**
+	* Inherits the base search object and passes along options
+	* @constructor
+	*/
+	init:function( options ) {
 		// init base class and inherit: 
-		var baseSearch = new baseRemoteSearch( iObj );
+		var baseSearch = new baseRemoteSearch( options );
 		for ( var i in baseSearch ) {
 			if ( typeof this[i] == 'undefined' ) {
 				this[i] = baseSearch[i];
 			} else {
 				this['parent_' + i] =  baseSearch[i];
 			}
-		}
-		// inherit the cp settings for 
+		}		
 	},
-	// returns a rObj by title 
+	
+	/**
+	* Adds a resource by its Title
+	*
+	* @param {String} title Title of the resource to be added
+	* @param {Function} callback Function called once title resource aquired   
+	*/ 
 	addByTitle:function( title , callback, redirect_count ) {
+	
 		js_log( "AddByTitle::" + title );
+		
 		var _this = this;
 		if ( !redirect_count )
 			redirect_count = 0;
@@ -25,7 +40,7 @@ mediaWikiSearch.prototype = {
 			callback( false );
 			return false;
 		}
-		var reqObj = {
+		var request = {
 			'action':'query',
 			'titles':'File:' + title,
 			'prop':'imageinfo|revisions|categories',
@@ -34,7 +49,7 @@ mediaWikiSearch.prototype = {
 			'rvprop':'content'
 		}
 		do_api_req( {
-			'data':reqObj,
+			'data':request,
 			'url':this.provider.api_url
 			}, function( data ) {
 				// check for redirect
@@ -58,12 +73,14 @@ mediaWikiSearch.prototype = {
 			}
 		);
 	},
-	clearResults:function() {
-		this.resultsObj = { };
-		this.last_query = '';
-	},
-	// update the resultObj with recently uploaded items by current User:
-	getUserRecentUploads:function( wgUser, callback ) {
+		
+	/**
+	* Get recent upload by user and add them as results 
+	*
+	* @param {String} user Name of the user
+	* @param {Function} callback Function to call once user upload list has been populated
+	*/
+	getUserRecentUploads: function( user, callback ) {
 		var _this = this;
 		do_api_req( {
 			'url':this.provider.api_url,
@@ -71,7 +88,7 @@ mediaWikiSearch.prototype = {
 				'action':'query',
 				'list':'recentchanges',
 				'rcnamespace':6, // only files
-				'rcuser': wgUser,
+				'rcuser': user,
 				'rclimit':15 // get last 15 uploaded files 				
 			}			
 		}, function( data ) {
@@ -89,7 +106,7 @@ mediaWikiSearch.prototype = {
 					}
 				}
 			}
-			// now run the actual query ( too bad we can't use recentchanges as a generator )
+			// Run the actual query ( too bad we can't use recentchanges as a generator )
 			// bug 20563
 			do_api_req( {
 				'data' : {
@@ -100,7 +117,7 @@ mediaWikiSearch.prototype = {
 					'iiurlwidth': parseInt( _this.rsd.thumb_width ),
 					'rvprop':'content'
 				},
-				'url':_this.provider.api_url
+				'url': _this.provider.api_url
 			}, function( data ) {
 				_this.clearResults();
 				_this.addResults( data );
@@ -109,22 +126,27 @@ mediaWikiSearch.prototype = {
 			} );
 		} );
 	},
-	getSearchResults:function() {
-		// Call parent: 
+	
+	/**
+	* Get search results
+	*  
+	* @param {String} search_query Text search string 
+	*/
+	getSearchResults: function( search_query ) {
+		// call parent for common initialisation:  
 		this.parent_getSearchResults();
 		// Set local ref:
 		var _this = this;
 				
-		js_log( 'f:getSearchResults for:' + $j( '#rsd_q' ).val() );
-		// Do two queries against the Image / File / MVD namespace:
+		js_log( 'f:getSearchResults for:' + search_query );
 
-		// Build the image request object: 
-		var reqObj = {
+		// Build the image request 
+		var request = {
 			'action':'query',
 			'generator':'search',
-			'gsrsearch':  $j( '#rsd_q' ).val(),
+			'gsrsearch': search_query ,
 			'gsrnamespace':6, // (only search the "file" namespace (audio, video, images)
-			'gsrwhat':'title',
+			'gsrwhat': 'text',
 			'gsrlimit':  this.provider.limit,
 			'gsroffset': this.provider.offset,
 			'prop':'imageinfo|revisions|categories',
@@ -132,27 +154,33 @@ mediaWikiSearch.prototype = {
 			'iiurlwidth': parseInt( this.rsd.thumb_width ),
 			'rvprop':'content'
 		};
-		// Set up the number of request: 
-		this.completed_req = 0;
-		this.num_req = 1;
-		// Setup the number of requests result flag:											 
-		// Also do a request for page titles (would be nice if api could query both at the same time) 
-		reqObj['gsrwhat'] = 'text';
+		
+		// Do the api request:  
 		do_api_req( {
-			'data':reqObj,
-			'url':this.provider.api_url
-			}, function( data ) {
-				js_log( 'mediaWikiSearch: got data response' );
-				// parse the return data
-				_this.addResults( data );
-				// _this.checkRequestDone(); //only need if we do two queries one for title one for text
+			'data':request,
+			'url': this.provider.api_url
+			}, function( data ) {				
+				// Add result data:
+				_this.addResults( data );				
 				_this.loading = false;
 		} );
 	},
-	// same as below but returns your rObj for convenience 
-	addSingleResult:function( data ) {
+	
+	/**
+	* Adds a single result to resultsObj and returns the resource
+	* 
+	* @param {Object} data Api resource result data to be transformed into a "resource" 
+	*/ 
+	addSingleResult: function( data ) {
 		return this.addResults( data, true );
 	},
+	
+	/**
+	* Covert api data results into common search resources and insert into the resultsObj
+	*
+	* @param {Object} data Api resource result data to be transformed into a resources
+	* @param {Boolean} returnFirst Flag to return the first added resource
+	*/
 	addResults:function( data, returnFirst ) {
 		js_log( "f:addResults" );
 		var _this = this
@@ -178,10 +206,11 @@ mediaWikiSearch.prototype = {
 					// skip page is redirect 
 					continue;
 				}
+				
 				// Skip if its an empty or missing imageinfo: 
 				if ( !page.imageinfo )
 					continue;
-				var rObj = 	{
+				var resource = 	{
 					'id'		 : page_id,
 					'titleKey'	 : page.title,
 					'link'		 : page.imageinfo[0].descriptionurl,
@@ -200,33 +229,34 @@ mediaWikiSearch.prototype = {
 						'categories':page.categories
 					}
 				};
+				
 				/*
 				 //to use once we get the wiki-text parser in shape
-				var pObj = mw.parser.pNew( rObj.desc );
+				var pObj = mw.parser.pNew( resource.desc );
 				//structured data on commons is based on the "information" template: 
 				var tmplInfo = pObj.templates( 'information' );		
-				rObj.desc = tmplInfo.description		
+				resource.desc = tmplInfo.description		
 				*/
 				
 				// Attempt to parse out the description current user desc from the commons template: 
 				// @@todo these could be combined to a single regEx
 				// or better improve the wiki-text parsing and use above 
-				var desc = rObj.desc.match( /\|\s*description\s*=\s*(([^\n]*\n)*)\|\s*source=/i );
+				var desc = resource.desc.match( /\|\s*description\s*=\s*(([^\n]*\n)*)\|\s*source=/i );
 				if ( desc && desc[1] ) {
-					rObj.desc = $j.trim( desc[1] );
+					resource.desc = $j.trim( desc[1] );
 					// attempt to get the user language if set: 
 					if ( typeof wgUserLanguage != 'undefined' && wgUserLanguage ) {
 						// for some reason the RegExp object is not happy:
 						var reg = new RegExp( '\{\{\s*' + wgUserLanguage + '([^=]*)=([^\}]*)\}\}', 'gim' );
-						var langMatch = reg.exec( rObj.desc );
+						var langMatch = reg.exec( resource.desc );
 						if ( langMatch && langMatch[2] ) {
-							rObj.desc = langMatch[2];
+							resource.desc = langMatch[2];
 						} else {
-							// try simple lang template form:
+							// Try simple lang template form:
 							var reg = new RegExp( '\{\{\s*' + wgUserLanguage + '\\|([^\}]*)\}\}', 'gim' );
-							var langMatch = reg.exec( rObj.desc );
+							var langMatch = reg.exec( resource.desc );
 							if ( langMatch && langMatch[1] ) {
-								rObj.desc = langMatch[1];
+								resource.desc = langMatch[1];
 							}
 						}
 					}
@@ -234,11 +264,11 @@ mediaWikiSearch.prototype = {
 										
 				// Likely a audio clip if no poster and type application/ogg 
 				// @@todo we should return audio/ogg for the mime type or some other way to specify its "audio" 
-				if ( ! rObj.poster && rObj.mime == 'application/ogg' ) {
-					rObj.mime = 'audio/ogg';
+				if ( ! resource.poster && resource.mime == 'application/ogg' ) {
+					resource.mime = 'audio/ogg';
 				}
 				// Add to the resultObj
-				this.resultsObj[page_id] = rObj;
+				this.resultsObj[page_id] = resource;
 				
 				// If returnFirst flag:
 				if ( returnFirst )
@@ -254,7 +284,11 @@ mediaWikiSearch.prototype = {
 			js_log( 'no results:' + data );
 		}
 	},
-	// Check request done used for when we have multiple requests to check before formating results. 
+	
+	/* 
+	* Check request done 
+	* Used when we have multiple requests to check before formating results.
+	*/ 
 	checkRequestDone:function() {
 		// Display output if done: 
 		this.completed_req++;
@@ -262,24 +296,32 @@ mediaWikiSearch.prototype = {
 			this.loading = 0;
 		}
 	},
-	getImageObj:function( rObj, size, callback ) {
-		if ( rObj.mime == 'application/ogg' )
-			return callback( { 'url':rObj.src, 'poster' : rObj.url } );
+	
+	/**
+	* Get an Image object of requested size from a resource
+	*
+	* @param {Object} resource Source resource
+	* @param {Object} size Requested size: .width and .height
+	* @param {Function} callbcak Function to be called once image has been reqeusted 
+	*/
+	getImageObj:function( resource, size, callback ) {
+		if ( resource.mime == 'application/ogg' )
+			return callback( { 'url':resource.src, 'poster' : resource.url } );
 		
 		// This could be depreciated if thumb.php support is standard
-		var reqObj = {
+		var request = {
 			'action':'query',
 			'format':'json',
-			'titles':rObj.titleKey,
+			'titles':resource.titleKey,
 			'prop':'imageinfo',
 			'iiprop':'url|size|mime'
 		}
 		// Set the width: 
 		if ( size.width )
-			reqObj['iiurlwidth'] = size.width;
-		 js_log( 'going to do req: ' + this.provider.api_url + ' ' + reqObj );
+			request['iiurlwidth'] = size.width;
+		 js_log( 'going to do req: ' + this.provider.api_url + ' ' + request );
 		do_api_req( {
-			'data':reqObj,
+			'data':request,
 			'url' : this.provider.api_url
 			}, function( data ) {
 				var imObj = { };
@@ -303,13 +345,14 @@ mediaWikiSearch.prototype = {
 				callback( imObj );
 		} );
 	},
-	// the insert image function   
-	insertImage:function( cEdit ) {
-		if ( !cEdit )
-			var cEdit = _this.cEdit;
-	},	
-	getInlineDescWiki:function( rObj ) {
-		var desc = this.parent_getInlineDescWiki( rObj );
+	
+	/*
+	* Gets an inline description of the resource
+	* 
+	* @param {Object} resource Resource to get description of. 
+	*/
+	getInlineDescWiki:function( resource ) {
+		var desc = this.parent_getInlineDescWiki( resource );
 		
 		// Strip categories for inline Desc: (should strip license tags too but not as easy)
 		desc = desc.replace( /\[\[Category\:[^\]]*\]\]/gi, '' );
@@ -334,24 +377,29 @@ mediaWikiSearch.prototype = {
 		js_log( 'Error: No Description Tag, Using::' + desc );
 		return desc;
 	},
-	// Returns the inline wikitext for insertion (template based crops for now) 
-	getEmbedWikiCode: function( rObj ) {
+	
+	/**
+	* Returns the wikitext for embeding the resource in a wiki article
+	* 
+	* @param {Object} resource Resource to get wiki text embed code
+	*/ 
+	getEmbedWikiCode: function( resource ) {
 			// Set default layout to right justified
-			var layout = ( rObj.layout ) ? rObj.layout:"right"
+			var layout = ( resource.layout ) ? resource.layout:"right"
 			// if crop is null do base output: 
-			if ( rObj.crop == null )
-				return this.parent_getEmbedWikiCode( rObj );
+			if ( resource.crop == null )
+				return this.parent_getEmbedWikiCode( resource );
 			// Using the preview crop template: http://en.wikipedia.org/wiki/Template:Preview_Crop
 			// @@todo should be replaced with server side cropping 
 			return '{{Preview Crop ' + "\n" +
-						'|Image   = ' + rObj.target_resource_title + "\n" +
-						'|bSize   = ' + rObj.width + "\n" +
-						'|cWidth  = ' + rObj.crop.w + "\n" +
-						'|cHeight = ' + rObj.crop.h + "\n" +
-						'|oTop	= ' + rObj.crop.y + "\n" +
-						'|oLeft   = ' + rObj.crop.x + "\n" +
+						'|Image   = ' + resource.target_resource_title + "\n" +
+						'|bSize   = ' + resource.width + "\n" +
+						'|cWidth  = ' + resource.crop.w + "\n" +
+						'|cHeight = ' + resource.crop.h + "\n" +
+						'|oTop	= ' + resource.crop.y + "\n" +
+						'|oLeft   = ' + resource.crop.x + "\n" +
 						'|Location =' + layout + "\n" +
-						'|Description =' + rObj.inlineDesc + "\n" +
+						'|Description =' + resource.inlineDesc + "\n" +
 					'}}';
 	}
 }
