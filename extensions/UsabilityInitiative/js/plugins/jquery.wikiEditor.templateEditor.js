@@ -40,7 +40,10 @@ evt: {
 					if(nestedBegins == 0){
 						// outer template begins at tokenStack[i].offset
 						// and ends at tokenStack[j].offset + 2
-						return [i-1,j];
+						var leftMarker = i -1;
+						var rightMarker = j;
+						i = j;
+						return [ leftMarker, rightMarker ];
 					}
 					else{
 						return false;
