@@ -700,6 +700,29 @@ background-color:white;
 text-decoration:none;
 border-color:#a8d7f9;
 }
+.ui-widget table .wikieditor-toolbar-table-preview-frame{
+width:340px;
+height:250px;
+background:#fff;
+padding:10px;
+border:1px solid #cdcdcd;
+overflow:hidden;
+display:block;
+position:relative;
+}
+.ui-widget table .wikieditor-toolbar-table-preview-content{
+width:375px;
+display:block;
+position:absolute;
+top:-29px;
+}
+.ui-widget table .wikieditor-toolbar-table-preview{
+width:340px;
+}
+.ui-widget table td.wikieditor-toolbar-table-preview-wrapper{
+background:#e5e5e5;
+padding:10px;
+}
 .wikiEditor-preview-loading{
 padding:1em;
 background-color:white;
