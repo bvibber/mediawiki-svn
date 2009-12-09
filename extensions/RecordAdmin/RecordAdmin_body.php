@@ -321,7 +321,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Return an array of records given type and other criteria
 	 */
-	function getRecords( $type, $posted, $wpTitle = '', $invert = false, $orderby = 'created desc' ) {
+	function getRecords( $type, $posted, $operator, $wpTitle = '', $invert = false, $orderby = 'created desc' ) {
 		global $wgRequest;
 
 		# If the page is already rendered, don't run this query
@@ -861,7 +861,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$tmp = $this->type;
 		$this->preProcessForm( $type );
 		$this->examineForm();
-		$records = $this->getRecords( $type, $filter, $title, $invert, $orderby );
+		$records = $this->getRecords( $type, $filter, $op, $title, $invert, $orderby );
 		if ( $count ) while ( count( $records ) > $count ) array_pop( $records );
 		$table = $this->renderRecords( $records, $cols, $sortable, $template, $name, $export );
 		$this->type = $tmp;
