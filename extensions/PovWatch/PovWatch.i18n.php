@@ -1796,32 +1796,33 @@ Kliknij guzik poniżej aby zaprenumerować.',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'povwatch' => 'PovWatch',
 	'povwatch_desc' => "Estension për [[Special:PovWatch|gionté pàgine da tnì sot euj]] d'àutri utent",
-	'povwatch_no_session' => 'Eror: as peul pa spedì la form për na pèrdita dij dat ëd session.',
-	'povwatch_not_allowed_push' => "It ses pa n'admin PovWatch, it peule pa mandé pagine a la lista da tnì sot euj.",
+	'povwatch_no_session' => 'Eror: as peul pa spedì ël formolari për na pèrdita dij dat ëd session.',
+	'povwatch_not_allowed_push' => "It ses pa n'aministrator PovWatch, it peule pa mandé dle pagine a la lista da tnì sot euj.",
 	'povwatch_already_subscribed' => 'It ses già iscrit a PovWatch',
 	'povwatch_subscribed' => 'Adess it ses iscrit a PovWatch',
 	'povwatch_not_subscribed' => 'It ses pa iscrit a PovWatch, parèj it peule pa disiscrivte.',
 	'povwatch_unsubscribed' => 'Adess it ses disiscrit da PovWatch',
-	'povwatch_invalid_title' => "Ël tìtol spessifià a l'é pa bon",
-	'povwatch_pushed' => "[[$1]] a l'é stàita giontà a {{PLURAL:$2|la watchlist|le watchlist}} ëd $2 utent",
-	'povwatch_intro' => "PovWatch a l'é un servissi che a përmëtt ëd gionté discretament pàgine contendùe an sla lista da tnì sot euj ëd j'aministrador iscrit.
+	'povwatch_invalid_title' => "Ël tìtol spessificà a l'é pa bon",
+	'povwatch_pushed' => "[[$1]] a l'é stàita giontà a {{PLURAL:$2|la lista|le liste}} dle ròbe ch'as ten-o sot-euj ëd $2 utent",
+	'povwatch_intro' => "PovWatch a l'é un servissi che a përmet ëd gionté con discression pàgine dlicà an sla lista da tnì sot euj ëd j'aministrator iscrit.
 
-Un registr ëd le gionte ressent a le liste da tnì sot euj a l'é disponìbil a [[Special:PovWatch/log]].",
+Un registr ëd le gionte recente a le liste da tnì sot euj a l'é disponìbil a [[Special:PovWatch/log]].",
 	'povwatch_subscriber_list' => "Na [[Special:PovWatch/subscribers|lista ëd j'iscrit]] a l'é disponìbil.",
 	'povwatch_subscriber_list_intro' => "<strong>Lista ëd j'iscrit</strong>",
 	'povwatch_not_allowed_subscribers' => "It peule pa vardé la lista ëd j'iscrit PovWatch.",
 	'povwatch_unknown_subpage' => 'Pagina pa conossùa.',
 	'povwatch_push' => 'Gionta',
-	'povwatch_push_intro' => "Dòvra a forma sota për gionté pàgine an sla lista da tnì sot euj ëd j'utent iscrit.
-Për piasì fa atension an scrivend ël tìtol: a peulo ëdcò esse giontà tìtoj pa esistent, e a-i é pa gnun-e manere ëd gavé un tìtol na vira ch'a sia stàit giontà.",
+	'povwatch_push_intro' => "Deuvra ël formolari sota për gionté pàgine an sla lista da tnì sot-euj ëd j'utent iscrit.
+Për piasì fa atension an scrivend ël tìtol: a peulo ëdcò esse giontà tìtoj pa esistent, e a-i é gnun-e manere ëd gavé un tìtol na vira ch'a sia stàit giontà.",
 	'povwatch_title' => 'Tìtol:',
 	'povwatch_comment' => 'Registra coment:',
-	'povwatch_no_log' => 'A-i é pa gnun-e intrà ant ël registr.',
+	'povwatch_no_log' => "A-i é pa 'd vos ant ël registr.",
 	'povwatch_no_subscribers' => 'A-i é pa gnun iscrit.',
 	'povwatch_unsubscribe_intro' => 'It ses iscrit a PovWatch.
 Sgnaca ël boton sota për disiscrivte.',

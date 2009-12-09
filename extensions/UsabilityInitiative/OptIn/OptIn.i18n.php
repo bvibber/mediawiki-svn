@@ -3412,7 +3412,7 @@ $messages['ml'] = array(
 	'optin-success-out' => 'താങ്കൾ വിജയകരമായി ബീറ്റയിൽ നിന്ന് പുറത്തുകടന്നിരിക്കുന്നു.
 താളിന്റെ മുകളിലായി കൊടുത്തിരിക്കുന്ന "{{int:optin-try}}" എന്ന കണ്ണി ഞെക്കി താങ്കൾക്ക് ഏതൊരു സമയത്തും ബീറ്റ പരീക്ഷിക്കാവുന്നതാണ്.',
 	'optin-success-feedback' => 'താങ്കളുടെ അഭിപ്രായം അറിയിച്ചതിനു നന്ദി!',
-	'optin-accept-short' => 'അങ്ങിനെയാട്ടെ!!',
+	'optin-accept-short' => 'അങ്ങനെയാട്ടെ!!',
 	'optin-accept-long' => 'ബീറ്റ പരീക്ഷിക്കുക',
 	'optin-accept-long-anon' => 'ലോഗിൻ ചെയ്തശേഷം ബീറ്റ പരീക്ഷിക്കുക',
 	'optin-deny-short' => 'വേണ്ട, നന്ദി',
@@ -3486,7 +3486,7 @@ $messages['ml'] = array(
 പുതിയ മെച്ചപ്പെടുത്തിയ ഐകോണുകൾ, ഓരോ ഉപകരണവും ചെയ്യുന്നതെന്താണെന്നു വ്യക്തമായി വെളിപ്പെടുത്തുന്നു. വികസിപ്പിക്കാവുന്ന ഭാഗങ്ങൾ തുടർച്ചയായി ഉപയോഗിക്കാത്തവ മറച്ചു വെയ്ക്കുന്നു, അതേ സമയം വീണ്ടും വീണ്ടും ഉപയോഗിക്കുന്നവ ഒരൊറ്റ ക്ലിക്കിൽ തന്നെ ലഭ്യവുമാണ്.
 <div style="clear:both;"></div>
 == എപ്രകാരം പങ്കെടുക്കാം ==
-പദ്ധതിയെക്കുറിച്ച് കൂടുതൽ അറിയാനും, പങ്കാളിത്ത സാധ്യത ആരായാനും ദയവായി [http://usability.wikimedia.org യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് വിക്കി] സന്ദർശിക്കുക. അവിടെ ഞങ്ങളുടെ പണസ്രോതസ്സുകൾ, ഗവേഷണങ്ങൾ, രൂപകല്പനയും + വികസിപ്പിക്കലും, പതിപ്പുകൾ തുടങ്ങിയവയുടെ വിവരങ്ങൾ ലഭ്യമാണ്. ചോദ്യങ്ങൾ ചോദിക്കാനോ, സാധാരണ അഭിപ്രായം അറിയിക്കാനോ ദയവായി ഞങ്ങളുടെ [http://usability.wikimedia.org/wiki/Talk:Prototype പ്രോട്ടോടൈപ്പ് സംവാദം താൾ] ഉപയോഗിക്കുക. എന്തെങ്കിലും പ്രത്യേക കാര്യത്തെ കുറിക്കാൻ ബന്ധപ്പെട്ട സംവാദം താൾ ഉപയോഗിക്കുക. താങ്കൾ ബഗ്ഗ് വല്ലതും കണ്ടെത്തിയാൽ ദയവായി [http://usability.wikimedia.org/wiki/Talk:Releases/Acai അകായ് റിലീസ് സം‌‌വാദം താളിൽ] നൽകുക, അല്ലങ്കിൽ [https://bugzilla.wikimedia.org ബഗ്സില്ല] ഉപയോഗിക്കുക.
+പദ്ധതിയെക്കുറിച്ച് കൂടുതൽ അറിയാനും, പങ്കാളിത്ത സാധ്യത ആരായാനും ദയവായി [http://usability.wikimedia.org യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് വിക്കി] സന്ദർശിക്കുക. അവിടെ ഞങ്ങളുടെ പണസ്രോതസ്സുകൾ, ഗവേഷണങ്ങൾ, രൂപകല്പനയും + വികസിപ്പിക്കലും, പതിപ്പുകൾ തുടങ്ങിയവയുടെ വിവരങ്ങൾ ലഭ്യമാണ്. ചോദ്യങ്ങൾ ചോദിക്കാനോ, സാധാരണ അഭിപ്രായം അറിയിക്കാനോ ദയവായി ഞങ്ങളുടെ [http://usability.wikimedia.org/wiki/Talk:Prototype പ്രോട്ടോടൈപ്പ് സംവാദം താൾ] ഉപയോഗിക്കുക. എന്തെങ്കിലും പ്രത്യേക കാര്യത്തെ കുറിക്കാൻ ബന്ധപ്പെട്ട സംവാദം താൾ ഉപയോഗിക്കുക. താങ്കൾ ബഗ്ഗ് വല്ലതും കണ്ടെത്തിയാൽ ദയവായി [http://usability.wikimedia.org/wiki/Talk:Releases/Acai അകായ് റിലീസ് സം‌‌വാദം താളിൽ] നൽകുക, അല്ലെങ്കിൽ [https://bugzilla.wikimedia.org ബഗ്സില്ല] ഉപയോഗിക്കുക.
 
 താങ്കളുടെ അഭിപ്രായം അറിയാൻ ഞങ്ങൾ കാത്തിരിക്കുന്നു! നന്ദി.',
 );
@@ -4181,6 +4181,62 @@ Narzędzie pomocy  umożliwia szybki dostęp do pomocy kontekstowej dla często 
 Aby dowiedzieć się więcej o projekcie lub wziąć w nim udział odwiedź witrynę [http://usability.wikimedia.org projektu użyteczności wiki]. Odnajdziesz tam informacje o tym jak nas wesprzeć finansowo, w badaniach, projektowaniu, rozwoju oraz wydawaniu wersji. Pytania można zadawać poprzez ogólny system opiniowania, używając [http://usability.wikimedia.org/wiki/Talk:Prototype prototypowej strony dyskusji]. Konkretne problemy należy poruszać na powiązanych stronach dyskusji. Odnalezione błędy należy zgłaszać pozostawiając komentarz na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai stronie dyskusji wersji Acai] lub korzystając z [https://bugzilla.wikimedia.org Bugzilli].
 
 Dziękujemy i czekamy na Twoje komentarze!',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ */
+$messages['pms'] = array(
+	'optin' => "Partissipé a l'inissiativà ëd dovrabilità",
+	'optin-desc' => "A përmet a j'utent ëd prové Beta, j'ùltime ameliorassion a l'usagi dl'Inissiativa për n'usagi pì belfé.",
+	'optin-title-optedout' => 'Prové Beta',
+	'optin-title-optedin' => 'Chité Beta',
+	'optin-title-justoptedin' => 'Bin-ëvnù an Beta',
+	'optin-title-justoptedout' => 'Mersì ëd prové nòstr Beta',
+	'optin-title-feedback' => 'Sugeriment për Beta',
+	'optin-needlogin' => 'A dev [$1 rintré ant ël sistema] për prové Beta.',
+	'optin-intro' => "L'Inissiativa për n'usagi pì belfé ëd Wikipedia a l'ha travajà dur për rende pì belfé dovré Wikipedia.
+Vorërij-lo prové nostr Beta?",
+	'optin-feedback-intro' => "Mersì ëd prové Beta.
+An farìa gòj conòsse lòn ch'a pensa ëd nòstra neuva antërfassa, donca an farìa piasì s'a rëspondèissa al chestionari opsional sì-sota.",
+	'optin-feedback-back' => "S'a veul pa rësponde al chestionari, a peul torné a $1.",
+	'optin-success-in' => "A l'é an camin ch'a preuva nòstr Beta.
+A peul anterompe a qualsëssìa moment an ësgnacand an sl'anliura «{{int:optin-leave}}» an sima dla pàgina.",
+	'optin-leave-cancel' => "S'a veul continué a dovré Beta, a peul torné a $1.",
+	'optin-success-out' => "A l'ha chità con sucess Beta.
+A peul provelo torna a qualsëssìa moment an ësgnacand an sl'anliura «{{int:optin-try}}» an sima dla pàgina.",
+	'optin-success-feedback' => 'Mersì ëd soa opinion!',
+	'optin-accept-short' => 'Foma che felo!',
+	'optin-accept-long' => 'Prové Beta',
+	'optin-accept-long-anon' => 'Rintré ant ël sistema e prové Beta',
+	'optin-deny-short' => 'No, mersì',
+	'optin-deny-long' => 'Torna a la pàgina ëd prima',
+	'optin-submit-out' => 'Chité Beta',
+	'optin-submit-feedback' => "Smon-e n'opinion",
+	'optin-survey-yes' => 'É',
+	'optin-survey-no' => 'Nò',
+	'optin-survey-intro' => "Mersì ëd prové Beta.
+An farìa gòj savèj lòn ch'a pensa ëd nòstra neuva antërfassa, parèj an farìa piasì s'a rëspondèissa a chestionari opsional sì-sota prima dë sgnaché ansima a «[[#leave|{{int:optin-submit-out}}]]».",
+	'optin-survey-question-likedislike' => "Lòn ch'a l'é piasuje ëd Beta? Lòn ch'a l'é nen piasuje ëd Beta?",
+	'optin-survey-question-whyoptout' => "Përchè a chita Beta? (Ch'a selession-a tut lòn ch'a-i va)",
+	'optin-survey-answer-whyoptout-hard' => "A l'era tròp malfé dovrelo.",
+	'optin-survey-answer-whyoptout-didntwork' => 'A marciava nen bin.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'A marciava pa coma previst.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Am piasìa nen sò aspet.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'A son nen piasume ij neuv quàder e la neuva disposission.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => "A l'é nen piasume la neuva bara dj'utiss.",
+	'optin-survey-answer-whyoptout-other' => 'Àutra rason:',
+	'optin-survey-question-explain' => "Për piasì, ch'a spiega o ch'a aprofondissa soa rispòsta si-dzora:",
+	'optin-survey-question-techfail' => "A l'ha rancontrà dij problema técnich antramentre ch'a dovrava la Beta?",
+	'optin-survey-question-techfail-ifyes' => "Se sì, për piasì ch'a aprofondissa o ch'a spiega:",
+	'optin-survey-question-usedtoolbar' => "Ha-lo dovrà la neuva bara dj'utiss slargàbil për modifiché na pàgina?",
+	'optin-survey-question-usedtoolbar-ifyes' => "Se sì, lòn ch'a l'é piasuje ëd sòn? Lòn ch'a l'é piasuje nen?",
+	'optin-survey-question-usedtoolbar-ifno' => "Si nò, përchè? A lo farà ant l'avnì? Për piasì, ch'a spiega.",
+	'optin-survey-question-different' => "Lòn ch'i l'avrìo podù fé 'd diferent përchè chiel a continuèissa a dovré la Beta?",
+	'optin-survey-question-feedback' => "Për piasì, ch'an fasa savèj qualsëssìa àutr coment, crussi o pensé ch'a l'abia për nojàutri - tute j'opinion a servo:",
+	'optin-survey-question-browser' => "Che navigador ch'a deuvra?",
+	'optin-survey-answer-browser-other' => 'Àutr navigador:',
+	'optin-survey-question-os' => "Che sistema operativ ch'a deuvra?",
 );
 
 /** Pashto (پښتو)

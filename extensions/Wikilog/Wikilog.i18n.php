@@ -2135,10 +2135,12 @@ Komentar tersebut hanya akan muncul setelah ditinjau oleh seorang moderator.',
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'wikilog-desc' => 'ブログ機能を追加し、ウィキとブログのハイブリッドを作る',
 	'wikilog-auto' => 'ウィキログ・オート',
+	'wikilog-help' => '{{ns:Help}}:ウィキログ',
 	'right-wl-postcomment' => 'ウィキログの記事にコメントを投稿する',
 	'right-wl-moderation' => 'ウィキログ記事のコメントのモデレーション',
 	'wikilog-specialwikilog-title' => 'ウィキログ',
@@ -2403,6 +2405,7 @@ Se moß eets vun enem Moderator aanjenumme wääde.',
  */
 $messages['lb'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-cmt-approve' => 'approuvéiert Bemierkung [[$1]]',
@@ -2514,6 +2517,9 @@ $messages['mk'] = array(
 	'wikilog-item-name' => 'Назив на статијата:',
 	'wikilog-published' => 'Објавено',
 	'wikilog-updated' => 'Обновено',
+	'wikilog-draft' => 'Нацрт',
+	'wikilog-authors' => 'Автори',
+	'wikilog-wikilog' => 'Викидневник',
 	'wikilog-title' => 'Наслов',
 	'wikilog-actions' => 'Дејствија',
 	'wikilog-replies' => 'Одговори',
@@ -2525,9 +2531,15 @@ $messages['mk'] = array(
 	'wikilog-pager-older-n' => 'постари $1 →',
 	'wikilog-pager-newest' => '←← најнови',
 	'wikilog-pager-oldest' => 'најстари →→',
+	'wikilog-pager-prev' => '← претходна',
+	'wikilog-pager-next' => 'следна →',
 	'wikilog-pager-first' => '←← прва',
 	'wikilog-pager-last' => 'последна →→',
 	'wikilog-has-comments' => '{{PLURAL:$1|еден коментар|$1 коментари}}',
+	'wikilog-summary-footer' => 'Објавил $7 на [[$1|$2]] на $8 во $9, $10.',
+	'wikilog-summary-footer-single' => 'Објавил $7 на $8 во $9, $10.',
+	'wikilog-summary-uncategorized' => 'Некатегоризирано',
+	'wikilog-summary-more' => '[[$3|→ продолжете со читање...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|разговор]])',
 	'wikilog-newtalk-text' => '<!-- празна страница создадена од Викидневникот -->',
 	'wikilog-error-msg' => 'Викидневник: $1',
@@ -2539,18 +2551,36 @@ $messages['mk'] = array(
 	'wikilog-invalid-file' => 'Неважечка податотека: $1',
 	'wikilog-file-not-found' => 'Непостоечка податотека: $1.',
 	'wikilog-not-an-image' => 'Податотеката не е слика: $1.',
+	'wikilog-post-comment' => 'Напиши нов коментар',
+	'wikilog-post-reply' => 'Напиши нов одговор',
 	'wikilog-form-wikilog' => 'Викидневник',
 	'wikilog-form-category' => 'Категорија:',
 	'wikilog-form-name' => 'Име:',
+	'wikilog-form-author' => 'Автор:',
 	'wikilog-form-tag' => 'Ознака:',
 	'wikilog-form-date' => 'Датум:',
 	'wikilog-form-status' => 'Статус:',
+	'wikilog-form-preview' => 'Преглед:',
 	'wikilog-form-comment' => 'Коментар:',
 	'wikilog-show-all' => 'Сите пораки',
+	'wikilog-show-published' => 'Објавено',
 	'wikilog-show-drafts' => 'Нацрти',
 	'wikilog-submit' => 'Испрати',
 	'wikilog-preview' => 'Преглед',
 	'wikilog-edit-lc' => 'уреди',
+	'wikilog-reply-lc' => 'одговори',
+	'wikilog-delete-lc' => 'избриши',
+	'wikilog-approve-lc' => 'одобри',
+	'wikilog-reject-lc' => 'одбиј',
+	'wikilog-history-lc' => 'историја',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Junaidpv
+ */
+$messages['ml'] = array(
+	'wikilog-new-item-go' => 'സൃഷ്ടിക്കുക',
+	'wikilog-item-name' => 'ലേഖനത്തിന്റെ പേര്:',
 );
 
 /** Dutch (Nederlands)
@@ -2894,6 +2924,7 @@ $messages['pdc'] = array(
 $messages['pms'] = array(
 	'wikilog-desc' => "A gionta dle fonsion dë scartari, creanda n'ìbrid wiki-scartari",
 	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => "Gionté dij coment an sj'artìcoj ëd wikilog",
 	'right-wl-moderation' => "Moderassion dij coment an sj'artìcoj ëd wikilog",
 	'wikilog-specialwikilog-title' => 'Wikilogs',
@@ -2905,6 +2936,12 @@ $messages['pms'] = array(
 	'wikilog-log-cmt-rejdel' => "A l'ha arfudà ël coment su wikilod ëd [[Special:Contributions/$1|$1]]",
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Assion su wikilog',
+	'wikilog-missing-wikilog' => "Costa-sì a l'é la pàgina[[{{int:wikilog-help}}|wikilog]] për [[{{FULLPAGENAME}}]].
+
+Ës wikilog a esist ancor nen.
+Për publiché d'artìcoj and permëtte d'àutre fonsionalità wikilog, a venta prima creelo.
+
+* <span class=\"plainlinks\">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Creé 's wikilog].</span>",
 	'wikilog-information' => 'Anformassion su wikilog',
 	'wikilog-post-count-published' => 'A-i {{PLURAL:$1|é un artìcol|son $1 artìcoj}} publicà ansima a cost wikilog,',
 	'wikilog-post-count-drafts' => 'A-i {{PLURAL:$1| é un artìcol|son $1$ artìcoj}} nen publicà (sbòss),',
@@ -3716,6 +3753,10 @@ $messages['yi'] = array(
 	'wikilog-specialwikilog-title' => 'וויקילאגן',
 	'wikilog-specialwikilog' => 'וויקילאג',
 	'wikilog-tab' => 'וויקילאג',
+	'wikilog-new-item-go' => 'שאַפֿן',
+	'wikilog-title' => 'טיטל',
+	'wikilog-summary-uncategorized' => 'אומקאטעגאריזירט',
+	'wikilog-form-category' => 'קאטעגאריע:',
 	'wikilog-form-date' => 'דאטע',
 	'wikilog-form-preview' => 'פֿאראויסשטעלונג:',
 	'wikilog-preview' => 'פֿאראויסשטעלונג',

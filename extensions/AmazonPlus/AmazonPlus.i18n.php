@@ -1435,6 +1435,16 @@ $messages['vi'] = array(
 	'amazonplus-less' => 'ít hơn',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'amazonplus-german' => 'Deutänapük',
+	'amazonplus-french' => 'Fransänapük',
+	'amazonplus-japanese' => 'Yapänapük',
+	'amazonplus-new' => 'nulik',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

@@ -346,6 +346,14 @@ $messages['ja'] = array(
 	'abcdownload' => 'ダウンロード:',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'abcdesc' => 'Tambahna tag <tt>&lt;abc&gt;</tt> kanggo format musik ABC',
+	'abcdownload' => 'Undhuh:',
+);
+
 /** Georgian (ქართული)
  * @author Sopho
  */

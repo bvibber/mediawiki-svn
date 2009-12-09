@@ -1336,6 +1336,38 @@ Es doe dees foutmeljing jedere kier weer zuus, is de database allezelaeve kepot.
 	'right-changeauthor' => "De outäör van 'n bewirking aanpasse",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'changeauthor' => 'Промена на авторот на ревизијата',
+	'changeauthor-desc' => 'Овозможува да се смени авторот на некоја ревизија',
+	'changeauthor-title' => 'Менување автор на ревизија',
+	'changeauthor-search-box' => 'Пребарај ревизии',
+	'changeauthor-pagename-or-revid' => 'Име на страницата или ID на ревизијата:',
+	'changeauthor-pagenameform-go' => 'Оди',
+	'changeauthor-comment' => 'Коментар:',
+	'changeauthor-changeauthors-multi' => 'Смени {{PLURAL:$1|автор|автори}}',
+	'changeauthor-explanation-multi' => 'Со овој образец можете да ги менувате авторите на ревизии.
+Едноставно сменете едно или повеќе кориснички имиња на листата подолу, додајте коментар (незадолжително) и кликнете на копчето „Смени автор(и)“.',
+	'changeauthor-changeauthors-single' => 'Смени автор',
+	'changeauthor-explanation-single' => 'Со овој образец можете да ги смените авторот на една ревизија.
+Едноставно сменете го корисничкото име подолу, додајте коментар (незадолжително) и кликнете на копчето „Смени автор“.',
+	'changeauthor-invalid-username' => 'Неважечко корисничко име „$1“.',
+	'changeauthor-nosuchuser' => 'Нема корисник по име „$1“.',
+	'changeauthor-revview' => 'Ревизија #$1 од $2',
+	'changeauthor-nosuchtitle' => 'Нема страница наречена „$1“',
+	'changeauthor-weirderror' => 'Се појави многу чудна грешка.
+Повторете го барањето.
+Ако оваа грешка продолжи да се јавува, тоа веројатно значи дека базата на податоци е расипана.',
+	'changeauthor-invalidform' => 'Користете го образецот на [[Special:ChangeAuthor|специјалната страница]], а не некој друг.',
+	'changeauthor-success' => 'Вашето барање е успешно обработено.',
+	'changeauthor-logentry' => 'Променет авторот на $2 на $1 од $3 на $4',
+	'changeauthor-logpagename' => 'Дневник на менувања на автори',
+	'changeauthor-rev' => 'р$1',
+	'right-changeauthor' => 'Менување на авторот на ревизија',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

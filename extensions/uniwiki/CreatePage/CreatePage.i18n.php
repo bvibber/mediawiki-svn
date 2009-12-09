@@ -869,6 +869,9 @@ $messages['si'] = array(
 	'createpage_submitbutton' => 'යොමන්න',
 	'createpage_instructions' => 'ඔබ නිර්මාණය කිරීමට කැමති පිටුවේ මාතෘකාව ඇතුල් කරන්න:',
 	'createpage_entertitle' => 'කරුණාකර ඔබේ පිටුවට මාතෘකාවක් ඇතුල් කරන්න.',
+	'createpage_titleexists' => '[[$1]] මාතෘකිව සහිත ලිටුවක් දැනටම පවතී.
+ඔබ පවතින පිටුව සංස්කරණය කිරීමට කැමතිද?',
+	'createpage_tryagain' => 'නැහැ.මට වෙනස් මාතෘකාවක් සමඟ නව පිටුවක් නිර්මාණය කිරීමට අවශ්‍යයි.',
 );
 
 /** Slovak (Slovenčina)

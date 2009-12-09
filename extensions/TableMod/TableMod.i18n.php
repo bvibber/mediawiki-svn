@@ -16,6 +16,7 @@ $messages['en'] = array(
 	'tablemod-error-missingid' => 'Missing ident attribute in tag.',
 );
 
+/** Slovenian (Slovenščina) */
 $messages['sl'] = array(
 	'tablemod' => 'TableMod',
 	'tablemod-desc' => 'Manipulacija wiki-tabel.',

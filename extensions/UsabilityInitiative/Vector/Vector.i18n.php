@@ -191,6 +191,15 @@ $messages['nl'] = array(
 	'vector-desc' => 'Verbetert de gebruikersinterfaceelementen van het uiterlijk Vector',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'vector' => 'Brukergrensesnittsforbedringer for Vector',
+	'vector-desc' => 'Forbedrer elementer i brukergrensesnittet for Vector-utseendet.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

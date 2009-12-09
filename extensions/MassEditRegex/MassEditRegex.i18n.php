@@ -758,11 +758,16 @@ $messages['oc'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'masseditregex' => 'Modìfiche mùltiple an dovrand espression regolar',
-	'masseditregex-desc' => 'Dovra espression regolar për [[Special:MassEditRegex|modifiché vàire pàgine ant na sola operassion]]',
+	'masseditregex-desc' => 'Dovré espression regolar për [[Special:MassEditRegex|modifiché vàire pàgine ant na sola operassion]]',
+	'masseditregextext' => 'Anseriss un-a o pi espression regolar (un-a për linia) për confront, e un-a o pi espression për rimpiassé minca confront bon.
+La prima espression ëd confront, se bon-a, a sarà rimpiassà con la prima espression ëd rimpiass, e via parèj.
+Varda [http://php.net/manual/en/function.preg-replace.php la funsion PHP preg_replace()] për detaj.',
+	'masseditregex-pagelisttxt' => 'Pàgine da modifiché (deuvra pa në spassi nominal: prefiss):',
 );
 
 /** Portuguese (Português)

@@ -256,6 +256,13 @@ $messages['nn'] = array(
 	'uploadblacklist-desc' => 'Legg til ein funksjon for å svartelista visse opplastingar',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'uploadblacklist-desc' => 'Legg til en funksjon for å svarteliste enkelte opplastinger',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

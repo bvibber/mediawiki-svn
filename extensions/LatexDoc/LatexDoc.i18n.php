@@ -148,10 +148,11 @@ $3',
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Ssola
  */
 $messages['ca'] = array(
 	'latexdoc_cant_write' => "No s'ha pogut escriure al fitxer $1",
-	'latexdoc-desc' => 'Edició col·laborativa de documents LaTeX',
+	'latexdoc-desc' => 'Modificació col·laborativa de documents LaTeX',
 );
 
 /** German (Deutsch)

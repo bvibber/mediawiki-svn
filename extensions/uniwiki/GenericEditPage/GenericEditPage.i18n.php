@@ -1525,7 +1525,11 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'gep-categories' => 'וויקימעדיע קאד:',
+	'gep-addcategory' => 'צולייגן א קאַטעגאריע',
 	'gep-addcategorybutton' => 'צולייגן',
+	'gep-sections' => 'נאָמען:',
+	'gep-addsection' => 'וויקילאג',
 	'gep-addsectionbutton' => 'צולייגן',
 );
 

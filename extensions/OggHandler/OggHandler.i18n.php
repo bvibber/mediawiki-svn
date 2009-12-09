@@ -2052,12 +2052,12 @@ $messages['ml'] = array(
 	'ogg-stop' => 'നിര്‍ത്തുക',
 	'ogg-play-video' => 'വീഡിയോ പ്രവര്‍ത്തിപ്പിക്കുക',
 	'ogg-play-sound' => 'ശബ്ദം പ്രവര്‍ത്തിപ്പിക്കുക',
-	'ogg-no-player' => 'ക്ഷമിക്കണം. നിങ്ങളുടെ കമ്പ്യൂട്ടറില്‍ ഓഗ് ഫയല്‍ പ്രവര്‍ത്തിപ്പിക്കാനാവശ്യമായ സോഫ്റ്റ്‌ഫെയര്‍ ഇല്ല. ദയവു ചെയ്ത് ഒരു പ്ലെയര്‍ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ഡൗണ്‍ലോഡ് ചെയ്യുക</a>.',
-	'ogg-no-player-js' => 'ക്ഷമിക്കുക, താങ്കളുടെ കമ്പ്യൂട്ടറിൽ ജാവാസ്ക്രിപ്റ്റ് സജ്ജമല്ലായിരിക്കാം അല്ലങ്കിൽ പിന്തുണയുള്ള ഒരു പ്ലേയർ ഇല്ലായിരിക്കാം.<br />
-താങ്കൾക്ക് <a href="$1">ക്ലിപ് ഡൗൺലോഡ് ചെയ്യാവുന്നതാണ്</a> അല്ലങ്കിൽ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ഒരു പ്ലേയർ ഡൗൺലോഡ് ചെയ്ത്</a> ബ്രൗസറിൽ തന്നെ ക്ലിപ്പ് കാണാവുന്നതാണ്.',
+	'ogg-no-player' => 'ക്ഷമിക്കണം. താങ്കളുടെ കമ്പ്യൂട്ടറില്‍ ഓഗ് ഫയല്‍ പ്രവര്‍ത്തിപ്പിക്കാനാവശ്യമായ സോഫ്റ്റ്‌ഫെയര്‍ ഇല്ല. ദയവു ചെയ്ത് ഒരു പ്ലെയര്‍ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ഡൗണ്‍ലോഡ് ചെയ്യുക</a>.',
+	'ogg-no-player-js' => 'ക്ഷമിക്കുക, താങ്കളുടെ കമ്പ്യൂട്ടറിൽ ജാവാസ്ക്രിപ്റ്റ് സജ്ജമല്ലായിരിക്കാം അല്ലെങ്കിൽ പിന്തുണയുള്ള ഒരു പ്ലേയർ ഇല്ലായിരിക്കാം.<br />
+താങ്കൾക്ക് <a href="$1">ക്ലിപ് ഡൗൺലോഡ് ചെയ്യാവുന്നതാണ്</a> അല്ലെങ്കിൽ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ഒരു പ്ലേയർ ഡൗൺലോഡ് ചെയ്ത്</a> ബ്രൗസറിൽ തന്നെ ക്ലിപ്പ് കാണാവുന്നതാണ്.',
 	'ogg-no-xiphqt' => 'ക്വിക്ക്റ്റൈമിനുള്ള XiphQT ഘടകം താങ്കളുടെ പക്കലുണ്ടെന്നു കാണുന്നില്ല.
 ഓഗ് പ്രമാണങ്ങൾ ഈ ഘടകമില്ലാതെ പ്രവർത്തിപ്പിക്കാൻ ക്വിക്ക്റ്റൈമിനു കഴിയില്ല.
-ദയവായി <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT ഡൗൺലോഡ് ചെയ്യുക</a> അല്ലങ്കിൽ മറ്റൊരു പ്ലേയർ തിരഞ്ഞെടുക്കുക.',
+ദയവായി <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT ഡൗൺലോഡ് ചെയ്യുക</a> അല്ലെങ്കിൽ മറ്റൊരു പ്ലേയർ തിരഞ്ഞെടുക്കുക.',
 	'ogg-player-videoElement' => 'ബ്രൗസറിൽ സ്വതവേയുള്ള പിന്തുണ',
 	'ogg-player-oggPlugin' => 'ബ്രൗസർ പ്ലഗിൻ',
 	'ogg-player-quicktime-mozilla' => 'ക്വിക്ക്റ്റൈം',
@@ -2300,6 +2300,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  */
 $messages['no'] = array(
 	'ogg-desc' => 'Gjør at Ogg Theora- og Ogg Vorbis-filer kan kjøres med hjelp av JavaScript-avspiller.',
@@ -2317,6 +2318,8 @@ $messages['no'] = array(
 	'ogg-play-video' => 'Spill av video',
 	'ogg-play-sound' => 'Spill av lyd',
 	'ogg-no-player' => 'Beklager, systemet ditt har ingen medieavspillere som støtter filformatet. Vennligst <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned en avspiller</a> som støtter formatet.',
+	'ogg-no-player-js' => 'Beklager, ditt system har enten deaktivert JavaScript, eller har ingen støttet spiller.<br />
+Du kan <a href="$1">laste ned filen</a>eller <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laste ned en spiller</a> for å spille av filen i nettleseren din.',
 	'ogg-no-xiphqt' => 'Du har ingen XiphQT-komponent for QuickTime. QuickTime kan ikke spille Ogg-filer uten denne komponenten. <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned XiphQT</a> eller velg en annen medieavspiller.',
 	'ogg-player-videoElement' => 'Innebygd nettleserstøtte',
 	'ogg-player-oggPlugin' => 'Programtillegg for nettleser',

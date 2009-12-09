@@ -751,6 +751,37 @@ $messages['lb'] = array(
 	'tog-riched_use_popup' => 'Editeur mat erweiderte Fonctiounen an engem Popup opmaachen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'fckeditor-desc' => 'Овозможува уредување со помош на визуелниот (WYSIWYG) уредник FCKeditor',
+	'textrichditor' => 'Визуелен уредувач',
+	'prefs-fckeditor' => 'Визуелен уредувач',
+	'tog-riched_disable' => 'Оневозможи визуелен уредувач',
+	'tog-riched_disable_ns_main' => 'Оневозможи визуелен уредувач во главниот именски простор',
+	'tog-riched_disable_ns_talk' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:talk}}“',
+	'tog-riched_disable_ns_user' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:user}}“',
+	'tog-riched_disable_ns_user_talk' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:user_talk}}“',
+	'tog-riched_disable_ns_project' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:project}}“',
+	'tog-riched_disable_ns_project_talk' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:project_talk}}“',
+	'tog-riched_disable_ns_image' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:file}}“',
+	'tog-riched_disable_ns_image_talk' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:file_talk}}“',
+	'tog-riched_disable_ns_mediawiki' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:mediawiki}}“',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:mediawiki_talk}}“',
+	'tog-riched_disable_ns_template' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:template}}“',
+	'tog-riched_disable_ns_template_talk' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:template_talk}}“',
+	'tog-riched_disable_ns_help' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:help}}“',
+	'tog-riched_disable_ns_help_talk' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:help_talk}}“',
+	'tog-riched_disable_ns_category' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:category}}“',
+	'tog-riched_disable_ns_category_talk' => 'Оневозможи визуелен уредувач во именскиот простор „{{ns:category_talk}}“',
+	'rich_editor_new_window' => 'Отвори го визуелниот уредувач во нов прозорец',
+	'tog-riched_start_disabled' => 'Почнувај со визуелниот уредувач исклучен',
+	'tog-riched_use_popup' => 'Отвори го визуелниот уредувач во скокачки прозорец',
+	'tog-riched_use_toggle' => 'Користи превклучувач за преод помеѓу викитекст и визуелниот уредувач (ја заменува текстуалното поле со визуелен уредувач)',
+	'tog-riched_toggle_remember_state' => 'Запомни ја последната состојба на превклучувачот',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

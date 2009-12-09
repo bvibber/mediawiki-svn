@@ -365,6 +365,23 @@ $messages['fr'] = array(
 	'fundraiserportal-tourmaline-close' => 'Masquer ceci maintenant',
 );
 
+/** Irish (Gaeilge)
+ * @author Kwekubo
+ */
+$messages['ga'] = array(
+	'fundraiserportal' => 'Tairseach Tiomsaithe Airgid',
+	'fundraiserportal-desc' => 'Cuirtear tairseach "tabhair síntiús" ar bharr an thaobh-bharra.',
+	'fundraiserportal-plain-button' => 'Tacaigh le Vicipéid!',
+	'fundraiserportal-ruby-button' => 'Tabhair Síntiús Anois',
+	'fundraiserportal-rubytext-button' => 'Tabhair Síntiús Anois',
+	'fundraiserportal-rubytext-message' => 'Cuidíonn gach síntiús Vicipéid a choimeád saor in aisce do gach aon duine.',
+	'fundraiserportal-rubytext-close' => 'Folaigh é seo as seo amach',
+	'fundraiserportal-sapphire-button' => 'Tabhair Síntiús Anois',
+	'fundraiserportal-tourmaline-button' => 'Tabhair Síntiús Anois',
+	'fundraiserportal-tourmaline-message' => 'Cuidíonn gach síntiús chun Vicipéid a choimeád saor in aisce do gach aon duine.',
+	'fundraiserportal-tourmaline-close' => 'Folaigh é seo as seo amach',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

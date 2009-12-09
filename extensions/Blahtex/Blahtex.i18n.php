@@ -1948,6 +1948,36 @@ $messages['lb'] = array(
 	'math_WrongFontEncoding' => 'D\'Symbol "$1" däerf net an der Zeechecodéierung "$2" virkommen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'math_CannotChangeDirectory' => 'Не можам да го сменам работниот директориум',
+	'math_CannotCreateTexFile' => 'Не можам да создадам tex-податотека',
+	'math_CannotRunDvipng' => 'Не можам да го пуштам dvipng',
+	'math_CannotRunLatex' => 'Не можам да го пуштам LaTeX',
+	'math_CannotWritePngDirectory' => 'Не можам да запишам во излезен PNG директориум',
+	'math_CannotWriteTexFile' => 'Не можам да запишам во tex-податотеката',
+	'math_CasesRowTooBig' => 'Може да има само два записа во секој ред на блок „cases“',
+	'math_DoubleSubscript' => 'Сретнати се два долни индекса на една иста основа.
+Дозволен е само еден индекс.',
+	'math_NonAsciiInMathMode' => 'Знаците кои не припаѓаат на ASCII може да се користат само во текстуален режим.
+Обидете се да ги затворите проблематичните знаци во „\\text{...}“.',
+	'math_TooManyTokens' => 'Внесеното е предолго',
+	'math_UnavailableSymbolFontCombination' => 'Симболот „$1“ не е достапен во фонтот „$2“',
+	'math_UnexpectedNextCell' => 'Наредбата „&“ може да стои само во блок „\\begin ... \\end“',
+	'math_UnexpectedNextRow' => 'Наредбата „\\\\“ може да стои само во блок „\\begin ... \\end“',
+	'math_UnmatchedBegin' => 'Сретнато е „\\begin“ без соодветно „\\end“',
+	'math_UnmatchedCloseBrace' => 'Сретната е затворена средна заграда „}“ без соодветна отворена средна заграда „{“',
+	'math_UnmatchedEnd' => 'Сретнато е „\\end“ без соодветно „\\begin“',
+	'math_UnmatchedLeft' => 'Сретнато е „\\left“ без соодветно „\\right“',
+	'math_UnmatchedOpenBrace' => 'Сретната е отворена средна заграда „{“ без соодветна затворена средна заграда „}“',
+	'math_UnmatchedOpenBracket' => 'Сретната е отворена заграда „[“ без соодветна затворена заграда „]“',
+	'math_UnmatchedRight' => 'Сретнато е „\\right“ без соодветно „\\left“',
+	'math_UnrecognisedCommand' => 'Непризнаена наредба „$1“',
+	'math_WrongFontEncoding' => 'Симболот „$1“ може да не се прикаже пред кодирање „$2“',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

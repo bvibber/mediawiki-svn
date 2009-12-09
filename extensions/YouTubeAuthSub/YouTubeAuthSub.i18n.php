@@ -1806,7 +1806,7 @@ $messages['ml'] = array(
 	'youtubeauthsub_category' => 'വര്‍ഗ്ഗം',
 	'youtubeauthsub_submit' => 'സമര്‍പ്പിക്കുക',
 	'youtubeauthsub_clickhere' => 'യൂട്യൂബിലേക്ക് ലോഗിന്‍ ചെയ്യാന്‍ ഇവിടെ ഞെക്കുക',
-	'youtubeauthsub_uploadhere' => 'നിങ്ങളുടെ വീഡിയോ ഇവിടെ നിന്നും അപ്‌ലോഡ് ചെയ്യുക:',
+	'youtubeauthsub_uploadhere' => 'താങ്കളുടെ വീഡിയോ ഇവിടെ നിന്നും അപ്‌ലോഡ് ചെയ്യുക:',
 	'youtubeauthsub_uploadbutton' => 'അപ്‌ലോഡ്',
 	'youtubeauthsub_summary' => 'യൂട്യൂബ് വീഡിയോ അപ്‌ലോഡ് ചെയ്തുകൊണ്ടിരിക്കുന്നു',
 	'youtubeauthsub_uploading' => 'താങ്കളുടെ വീഡിയോ അപ്‌ലോഡ് ചെയ്യപ്പെട്ടിരിക്കുന്നു. ദയവായി കാത്തിരിക്കൂ.',
@@ -3326,6 +3326,7 @@ $messages['yi'] = array(
 	'youtubeauthsub_category' => 'קאַטעגאריע',
 	'youtubeauthsub_submit' => 'אײַנגעבן',
 	'youtubeauthsub_uploadbutton' => 'ארויפֿלאָדן',
+	'youtubeauthsub_summary' => 'אַרויפֿלאָדן יוטוב ווידעא',
 );
 
 /** Zhuang (Vahcuengh)

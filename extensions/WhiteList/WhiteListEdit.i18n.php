@@ -3579,9 +3579,11 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'mywhitelistpages' => 'מײַנע בלעטער',
 	'whitelisttablemodifyall' => 'אַלע',
 	'whitelisttablemodifynone' => 'גארנישט',
 	'whitelisttablepage' => 'וויקי בלאַט',
+	'whitelisttableedit' => 'רעדאַקטירן',
 	'whitelistnever' => 'קיינמאָל',
 );
 

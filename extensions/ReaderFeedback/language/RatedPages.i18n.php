@@ -341,6 +341,14 @@ $messages['ja'] = array(
 	'ratedpages-count' => '$1件の評価',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'ratedpages' => 'მკითხველების შეფასებული გვერდები',
+	'ratedpages-none' => 'ამ სიაში გვერდები არ არის',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
@@ -447,8 +455,10 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Harald Khan
  * @author Jon Harald Søby
+ * @author Laaknor
  */
 $messages['no'] = array(
+	'ratedpages-leg' => 'Finn sider med et stort antall vurderinger',
 	'ratedpages-list' => 'Nedenfor er en liste over sider sortert etter lesernes vurdering av dem',
 	'ratedpages-none' => 'Det er ingen sider i denne listen',
 	'ratedpages-graphs' => 'vurderingsdata',
@@ -606,6 +616,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'ratedpages-none' => 'ఈ జాబితాలో పేజీలు ఏమీ లేవు',
 	'ratedpages-count' => '$1 {{PLURAL:$1|సమీక్ష|సమీక్షలు}}',
 );
 

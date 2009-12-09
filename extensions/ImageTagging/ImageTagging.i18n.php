@@ -1491,41 +1491,42 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'taggedimages' => 'Figure tagà',
-	'imagetagging-desc' => "Che n'utent a selession-a dle region ëd na figura anclusa e ch'a gropa na pàgina con cola region",
-	'imagetagging-addimagetag' => 'Taga sta figura-sì',
+	'imagetagging-desc' => "A përmet a n'utent ëd selessioné dle region ëd na figura anserìa e ëd gropé na pàgina con cole region",
+	'imagetagging-addimagetag' => 'Ticheté sta figura-sì',
 	'imagetagging-article' => 'Pàgina:',
-	'imagetagging-articletotag' => 'Pàgina da taghé',
-	'imagetagging-canteditothermessage' => "It peule pa modifiché sta pàgina-sì, përchè it l'has pa i drit ëd felo o përchè la pàgina a l'é blocà për d'àutre rason.",
+	'imagetagging-articletotag' => 'Pàgina da ticheté',
+	'imagetagging-canteditothermessage' => "It peule pa modifiché sta pàgina-sì, përchè it l'has pa ij drit ëd felo o përchè la pàgina a l'é blocà për d'àutre rason.",
 	'imagetagging-imghistory' => 'Stòria',
 	'imagetagging-images' => 'Figure',
 	'imagetagging-inthisimage' => 'An sta figura-sì: $1',
-	'imagetagging-logentry' => 'Gavà ël tag a la pàgina [[$1]] da $2',
-	'imagetagging-log-tagged' => "La figura [[$1|$2]] a l'é stàita tagà a la pàgina [[$3]] da $4",
+	'imagetagging-logentry' => 'Tichëtta gavà a la pàgina [[$1]] da $2',
+	'imagetagging-log-tagged' => "La figura [[$1|$2]] a l'é stàita tichetà a la pàgina [[$3]] da $4",
 	'imagetagging-new' => '<sup><span style="color:red">Neuv!</span></sup>',
-	'imagetagging-removetag' => 'gava tag',
-	'imagetagging-done-button' => 'Tagging fàit',
-	'imagetagging-tag-button' => 'Tag',
-	'imagetagging-tagcancel-button' => 'Scansela',
-	'imagetagging-tagging-instructions' => 'Sgnaca an dzora a përson-e o còse ant la figura për tagheje.',
-	'imagetagging-addingtag' => 'Gionté tag ...',
-	'imagetagging-removingtag' => 'Gavé tag ...',
-	'imagetagging-addtagsuccess' => 'Tag giontà.',
-	'imagetagging-removetagsuccess' => 'Tag gavà.',
+	'imagetagging-removetag' => 'gava tichëtta',
+	'imagetagging-done-button' => 'Tichetagi fàit',
+	'imagetagging-tag-button' => 'Tichëtta',
+	'imagetagging-tagcancel-button' => 'Scancela',
+	'imagetagging-tagging-instructions' => 'Sgnaca dzora a përson-e o còse ant la figura për ticheteje.',
+	'imagetagging-addingtag' => "Tichëtta an camin ch'as gionta...",
+	'imagetagging-removingtag' => "Tichëtta an camin ch'as gava...",
+	'imagetagging-addtagsuccess' => 'Tichëtta giontà.',
+	'imagetagging-removetagsuccess' => 'Tichëtta gavà.',
 	'imagetagging-canteditneedloginmessage' => 'It peule pa modifiché sta pàgina-sì.
-A peul esse përchè it deuve intré për taghé dle figure.
+A peul esse përchè it deve intré ant ël sistema për ticheté dle figure.
 It veule intré adess?',
-	'imagetagging-oneactionatatimemessage' => "A l'é mach possìbil n'assion ëd tagging për vòte.
-Për piasì speta che l'assion an mentre a sia completa.",
-	'imagetagging-oneuniquetagmessage' => "Sta figura-sì a l'ha già un tag con sto nòm-sì.",
+	'imagetagging-oneactionatatimemessage' => "A l'é mach possìbil n'assion ëd tichetagi a la vira.
+Për piasì speta che l'assion an cors a sia completa.",
+	'imagetagging-oneuniquetagmessage' => "Sta figura-sì a l'ha già na tichëtta con sto nòm-sì.",
 	'imagetagging-imagetag-seemoreimages' => 'Varda pi figure ëd "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Figure ëd "$1"',
 	'imagetagging-taggedimages-displaying' => 'Visualisé $1 - $2 dle $3 figure ëd "$4"',
-	'tag-logpagename' => 'Registr dël tagging',
-	'tag-logpagetext' => "Sòn-sì a l'é un registr ëd tute le gionte e scanselassion dij tag ëd le figure.",
+	'tag-logpagename' => 'Registr dël tichetagi',
+	'tag-logpagetext' => "Cost-sì a l'é un registr ëd tute le gionte e scancelassion dle tichëtte ëd le figure.",
 );
 
 /** Portuguese (Português)

@@ -141,6 +141,7 @@ $messages['diq'] = array(
 $messages['dsb'] = array(
 	'wikieditor-preview-preference' => 'Pśeglěd bok pó boku zmóžniś',
 	'wikieditor-preview-tab' => 'Pśeglěd',
+	'wikieditor-preview-changes-tab' => 'Změny',
 	'wikieditor-preview-loading' => 'Zacytujo se...',
 );
 
@@ -186,6 +187,7 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'wikieditor-preview-preference' => 'Activer la prévisualisation côte à côte',
 	'wikieditor-preview-tab' => 'Prévisualisation',
+	'wikieditor-preview-changes-tab' => 'Changements',
 	'wikieditor-preview-loading' => 'Chargement...',
 );
 
@@ -219,6 +221,7 @@ $messages['gsw'] = array(
 $messages['hsb'] = array(
 	'wikieditor-preview-preference' => 'Přehlad bok po boku zmóžnić',
 	'wikieditor-preview-tab' => 'Přehlad',
+	'wikieditor-preview-changes-tab' => 'Změny',
 	'wikieditor-preview-loading' => 'Začituje so...',
 );
 
@@ -260,10 +263,12 @@ $messages['id'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'wikieditor-preview-preference' => '比較プレビューを有効化する',
 	'wikieditor-preview-tab' => 'プレビュー',
+	'wikieditor-preview-changes-tab' => '変更',
 	'wikieditor-preview-loading' => '読み込み中…',
 );
 
@@ -299,7 +304,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-preview-preference' => 'അരികിലായുള്ള പ്രിവ്യൂ സജ്ജമാക്കുക',
-	'wikieditor-preview-tab' => 'എങ്ങിനെയുണ്ടെന്നു കാണുക',
+	'wikieditor-preview-tab' => 'എങ്ങനെയുണ്ടെന്നു കാണുക',
 	'wikieditor-preview-loading' => 'ശേഖരിക്കുന്നു...',
 );
 
@@ -316,6 +321,16 @@ $messages['nl'] = array(
  * @author Gunnernett
  */
 $messages['nn'] = array(
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'wikieditor-preview-preference' => 'Aktiver forhåndsvisning side-ved-side',
+	'wikieditor-preview-tab' => 'Forhåndsvisning',
+	'wikieditor-preview-loading' => 'Laster…',
 );
 
 /** Occitan (Occitan)
@@ -478,6 +493,7 @@ $messages['vi'] = array(
 $messages['zh-hans'] = array(
 	'wikieditor-preview-preference' => '启用双列对比预览',
 	'wikieditor-preview-tab' => '预览',
+	'wikieditor-preview-changes-tab' => '修订',
 	'wikieditor-preview-loading' => '载入中……',
 );
 

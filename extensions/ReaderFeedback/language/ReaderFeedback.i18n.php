@@ -1368,9 +1368,9 @@ $messages['ml'] = array(
 	'readerfeedback-level-4' => 'ഒന്നാന്തരം',
 	'readerfeedback-submit' => 'സമർപ്പിക്കുക',
 	'readerfeedback-main' => 'ഉള്ളടക്ക താളുകളുടെ മാറ്റം നിലവാരമളന്നാൽ മതി.',
-	'readerfeedback-success' => "'''ഈ താൾ സംശോധനം ചെയ്തതിനു നന്ദി അറിയിക്കുന്നു!''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലങ്കിൽ ചോദ്യങ്ങൾ?]).",
-	'readerfeedback-voted' => "'''ഈ താളിന്റെ മൂല്യനിർണ്ണയം താങ്കൾ നേരത്തേ ചെയ്തിട്ടുണ്ടെന്നു കാണുന്നു''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലങ്കിൽ ചോദ്യങ്ങൾ?]).",
-	'readerfeedback-error' => "'''ഈ താളിന്റെ മൂല്യനിർണ്ണയത്തിനിടയ്ക്ക് പിശക് സംഭവിച്ചിരിക്കുന്നു''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലങ്കിൽ ചോദ്യങ്ങൾ?]).",
+	'readerfeedback-success' => "'''ഈ താൾ സംശോധനം ചെയ്തതിനു നന്ദി അറിയിക്കുന്നു!''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലെങ്കിൽ ചോദ്യങ്ങൾ?]).",
+	'readerfeedback-voted' => "'''ഈ താളിന്റെ മൂല്യനിർണ്ണയം താങ്കൾ നേരത്തേ ചെയ്തിട്ടുണ്ടെന്നു കാണുന്നു''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലെങ്കിൽ ചോദ്യങ്ങൾ?]).",
+	'readerfeedback-error' => "'''ഈ താളിന്റെ മൂല്യനിർണ്ണയത്തിനിടയ്ക്ക് പിശക് സംഭവിച്ചിരിക്കുന്നു''' ([$2 ഫലങ്ങൾ കാണുക]) ([$3 അഭിപ്രായങ്ങൾ അല്ലെങ്കിൽ ചോദ്യങ്ങൾ?]).",
 	'readerfeedback-submitting' => 'സമർപ്പിക്കുന്നു …',
 	'readerfeedback-finished' => 'നന്ദി!',
 	'readerfeedback-tagfilter' => 'റ്റാഗ്:',
@@ -1501,6 +1501,7 @@ $messages['nn'] = array(
  * @author Harald Khan
  * @author Jon Harald Søby
  * @author Kph
+ * @author Laaknor
  * @author Meno25
  * @author Nghtwlkr
  * @author Stigmj
@@ -1522,10 +1523,15 @@ $messages['no'] = array(
 	'readerfeedback-submit' => 'Send',
 	'readerfeedback-main' => 'Kun innholdssider kan vurderes.',
 	'readerfeedback-success' => "'''Takk for at du anmeldte denne siden!''' ([$3 Kommentarer eller spørsmål?])",
-	'readerfeedback-voted' => "'''Du har allerede vurdert denne siden.''' ([$3 Kommentarer eller spørsmål?])",
+	'readerfeedback-voted' => "'''Du har allerede vurdert denne siden.''' ([$2 se resultater]) ([$3 Kommentarer eller spørsmål?])",
 	'readerfeedback-submitting' => 'Sender …',
 	'readerfeedback-finished' => 'Takk!',
+	'readerfeedback-tagfilter' => 'Tagg:',
+	'readerfeedback-tier-high' => 'Høy',
+	'readerfeedback-tier-medium' => 'Middels',
+	'readerfeedback-tier-poor' => 'Dårlig',
 	'tooltip-ca-ratinghist' => 'Leservurderinger av denne siden',
+	'specialpages-group-feedback' => 'Mening fra leser',
 );
 
 /** Occitan (Occitan)
@@ -1606,23 +1612,24 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'readerfeedback-desc' => "La validassion ëd la pàgina a përmëtt ai letor ëd dé d'artorn an forma ëd pontegi categorisà",
+	'readerfeedback-desc' => 'La validassion ëd la pàgina a përmet ai letor dë smon-e soa opinion an forma ëd pontegi categorisà',
 	'readerfeedback' => "Lòn ch'it pense dë sta pàgina-sì?",
-	'readerfeedback-text' => "''Për piasì pija un moment për voté sta pàgina sì sota. Tò artorn a l'é amportant e a giuta a mijoré nòst sit web.''",
+	'readerfeedback-text' => "''Për piasì pija un moment për voté sta pàgina sì-sota. Toa opinion a l'é amportanta e an giuta a mijoré nòst sit.''",
 	'readerfeedback-reliability' => 'Afidabilità',
 	'readerfeedback-completeness' => 'Completëssa',
 	'readerfeedback-npov' => 'Neutralità',
 	'readerfeedback-presentation' => 'Presentassion',
 	'readerfeedback-overall' => 'Complessiv',
-	'readerfeedback-level-none' => '(ansicur)',
+	'readerfeedback-level-none' => '(nen sicur)',
 	'readerfeedback-level-0' => 'Pòver',
 	'readerfeedback-level-1' => 'Bass',
 	'readerfeedback-level-2' => 'Discret',
 	'readerfeedback-level-3' => 'Àut',
-	'readerfeedback-level-4' => 'Esselent',
+	'readerfeedback-level-4' => 'Ecelent',
 	'readerfeedback-submit' => 'Spediss',
 	'readerfeedback-main' => 'Mach pàgine ëd contnù a peulo esse votà.',
 	'readerfeedback-success' => "'''Mersì për avèj revisionà sta pàgina-sì!''' ([$2 varda arzultà]) ([$3 coment o custion?]).",
@@ -1630,7 +1637,7 @@ $messages['pms'] = array(
 	'readerfeedback-error' => "'''A l'é capitaje n'eror an votand sta pàgina-sì''' ([$2 varda arzultà)] ([$3 coment  custion?]).",
 	'readerfeedback-submitting' => 'Spedì ...',
 	'readerfeedback-finished' => 'Mersì!',
-	'readerfeedback-tagfilter' => 'Tag:',
+	'readerfeedback-tagfilter' => 'Tichëtta:',
 	'readerfeedback-tierfilter' => 'Vot:',
 	'readerfeedback-tier-high' => 'Àut',
 	'readerfeedback-tier-medium' => 'Moderà',
@@ -1960,6 +1967,7 @@ $messages['te'] = array(
 	'readerfeedback' => 'ఈ పేజీ గురించి మీరేమనుకుంటున్నారు?',
 	'readerfeedback-completeness' => 'సంపూర్ణత',
 	'readerfeedback-npov' => 'తటస్థత',
+	'readerfeedback-level-none' => '(చెప్పలేం)',
 	'readerfeedback-submit' => 'దాఖలుచేయి',
 	'readerfeedback-success' => "'''ఈ పేజీని సమీక్షించినందుకు కృతజ్ఞతలు!'''  ([$2 ఫలితాలను చూడండి]) ([$3 సందేహాలు లేదా సూచనలున్నాయా?]).",
 	'readerfeedback-finished' => 'ధన్యవాదాలు!',

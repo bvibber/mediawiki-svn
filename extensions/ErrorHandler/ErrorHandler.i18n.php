@@ -1339,13 +1339,18 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'errorhandler-desc' => 'MediaWiki的错误处理程序',
 	'errorhandler-errors' => '错误：',
 	'errorhandler-error-fatal' => '致命错误',
 	'errorhandler-error-warning' => '警告',
+	'errorhandler-error-parse' => '解析器错误',
 	'errorhandler-error-notice' => '提示',
 	'errorhandler-error-deprecated' => '不推荐使用',
+	'errorhandler-error-core-error' => '核心错误',
+	'errorhandler-error-core-warning' => '核心警告',
 	'errorhandler-error-compile-error' => '编译错误',
 	'errorhandler-error-compile-warning' => '编译警告',
 	'errorhandler-error-user-error' => '用户错误',
@@ -1353,6 +1358,7 @@ $messages['zh-hans'] = array(
 	'errorhandler-error-user-notice' => '用户提示',
 	'errorhandler-error-user-deprecated' => '用户不推荐使用',
 	'errorhandler-error-strict' => '严格的标准',
+	'errorhandler-error-recoverable' => '可捕获的致命错误',
 	'errorhandler-msg-text' => '$1 : $2 在 $3 中 （第$4行）',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> 在 <b>$3</b> 中（第 <b>$4</b> 行）',
 	'errorhandler-trace' => '跟踪：',

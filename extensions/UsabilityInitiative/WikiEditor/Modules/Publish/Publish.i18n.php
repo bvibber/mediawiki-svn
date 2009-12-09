@@ -424,6 +424,13 @@ $messages['ja'] = array(
 	'wikieditor-publish-dialog-goback' => '戻る',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'wikieditor-publish-dialog-minor' => 'მცირე შესწორება',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -504,6 +511,21 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'wikieditor-publish-dialog-watch' => 'Overvak denne sida',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'wikieditor-publish-preference' => 'Aktiver steg-for-steg publisering',
+	'wikieditor-publish-button-publish' => 'Publiser',
+	'wikieditor-publish-button-cancel' => 'Avbryt',
+	'wikieditor-publish-dialog-title' => 'Publiser til {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Redigeringssammendrag (oppsummering av hvilke endringer du har gjort)',
+	'wikieditor-publish-dialog-minor' => 'Mindre endring',
+	'wikieditor-publish-dialog-watch' => 'Overvåk denne siden',
+	'wikieditor-publish-dialog-publish' => 'Publiser',
+	'wikieditor-publish-dialog-goback' => 'Gå tilbake',
 );
 
 /** Occitan (Occitan)
@@ -738,6 +760,7 @@ $messages['vi'] = array(
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'wikieditor-publish-preference' => '启用逐步发表功能',
 	'wikieditor-publish-button-publish' => '发表',
 	'wikieditor-publish-button-cancel' => '取消',
 	'wikieditor-publish-dialog-title' => '发表到{{SITENAME}}',

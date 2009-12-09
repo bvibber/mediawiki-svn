@@ -7623,7 +7623,7 @@ $messages['ml'] = array(
 	'ow_Value' => 'മൂല്യം',
 	'ow_meaningsoftitle' => '"$1"ന്റെ അര്‍ത്ഥങ്ങള്‍',
 	'ow_Permission_denied' => '<h2>പ്രവേശനം നിഷേധിച്ചിരിക്കുന്നു</h2>',
-	'ow_needs_xlation_source_lang' => 'സ്രോതസ് ഭാഷ:',
+	'ow_needs_xlation_source_lang' => 'സ്രോതസ്സ് ഭാഷ:',
 	'ow_needs_xlation_dest_lang' => 'ലക്ഷ്യ ഭാഷ:',
 	'ow_needs_xlation_no_dest_lang' => 'ദയവായി ഒരു ലക്ഷ്യ ഭാഷ വ്യക്തമാക്കുക.',
 	'ow_show' => 'പ്രദർശിപ്പിക്കുക',
@@ -12781,6 +12781,8 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'langman_langname' => 'שפראַך נאָמען:',
+	'langman_addlang' => 'צולייגן שפראַך',
 	'ow_save' => 'אויפֿהיטן',
 	'ow_history' => 'היסטאריע',
 	'ow_transaction_user' => 'באַניצער נאָמען:',

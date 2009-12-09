@@ -212,6 +212,13 @@ $messages['nl'] = array(
 	'mwreleases-desc' => 'Voegt een [[Mediawiki:Mwreleases-list|lijst]] van ondersteunde MediaWiki-versies toe, toegankelijk via de API',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'mwreleases-desc' => 'Legger til en [[Mediawiki:Mwreleases-list|liste]] over støttede versjoner, tilgjengelig via APIet',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

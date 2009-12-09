@@ -598,7 +598,7 @@ Els ítems eliminats no seran visibles per ningú a través del lloc web, però 
 	'hiderevision-status' => 'Revisió $1: $2',
 	'hiderevision-success' => 'Arxivada i eliminada correctament.',
 	'hiderevision-error-missing' => "No s'ha trobat a la base de dades.",
-	'hiderevision-error-current' => "No s'ha pogut eliminar la darrera edició de la pàgina.
+	'hiderevision-error-current' => "No s'ha pogut eliminar la darrera modificació de la pàgina.
 Revertiu aquest canvi abans.",
 	'hiderevision-error-delete' => "No s'ha pogut arxivar. S'havia esborrat ja prèviament?",
 	'hiderevision-archive-status' => 'Revisió eliminada de $1: $2',
@@ -1953,6 +1953,7 @@ $messages['ka'] = array(
 	'hiderevision' => 'სამუდამოდ დამალე ცვლილებები',
 	'group-oversight' => 'რევიზორები',
 	'hiderevision-link' => 'მომხმარებლის დამალული წვლილი',
+	'hiderevision-success' => 'წარმატებით დაარქივდა და წაიშალა',
 	'oversight-view' => 'დეტალები',
 );
 
@@ -2811,7 +2812,7 @@ Revisjoner som fjernes vil ikke være tilgjengelige for noen via nettsiden, men 
 	'oversight-header' => 'Nedenfor er en liste over revisjoner som nylig er blitt skjult fra offentligheten. Å frigi denne informasjonen kan føre til permanent tap av revisjonsslettingsrettigheter.',
 	'oversight-legend' => 'Søk i revisjonsfjerningsloggen',
 	'oversight-oversighter' => 'Revisjonssletter:',
-	'oversight-offender' => 'Synder:',
+	'oversight-offender' => 'Revisjonsforfatter:',
 );
 
 /** Occitan (Occitan)

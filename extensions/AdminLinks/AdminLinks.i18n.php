@@ -1106,6 +1106,15 @@ $messages['te'] = array(
 	'right-adminlinks' => '[[Special:AdminLinks|నిర్వహణా లింకుల]]కు లింకుని చూడగలగడం',
 );
 
+/** Thai (ไทย)
+ * @author Horus
+ */
+$messages['th'] = array(
+	'adminlinks' => 'ลิงก์ผู้ดูแลระบบ',
+	'adminlinks_browsesearch' => 'เรียกดูและค้นหา',
+	'adminlinks_importexport' => 'นำเข้าและส่งออก',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

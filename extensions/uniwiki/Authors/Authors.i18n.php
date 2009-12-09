@@ -651,6 +651,13 @@ $messages['vo'] = array(
 	'authors_anonymous' => 'Nennemik',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'authors_anonymous' => 'אַנאנים',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

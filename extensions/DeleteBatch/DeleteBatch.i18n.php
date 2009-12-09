@@ -806,6 +806,36 @@ $messages['lb'] = array(
 	'deletebatch-select-yourself' => 'Dir',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'deletebatch' => 'Збирно бришење страници',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Бришење на збир страници]]',
+	'deletebatch-help' => 'Збирно бришење страници.
+Можете да го користите за едно бришење, или пак за бришење на страници наведени во податотека.
+Одберете го корисникот кој ќе се прикаже во дневникот на бришења.
+Подигнатите податотеки треба да содржат име на страницата и незадолжителна причина, одвоени со знакот „|“ во секој ред.',
+	'deletebatch-caption' => 'Листа на страници:',
+	'deletebatch-title' => 'Избриши збир',
+	'deletebatch-link-back' => 'Назад кон специјалната страница',
+	'deletebatch-as' => 'Пушти ја скриптата како:',
+	'deletebatch-both-modes' => 'Изберете една назначена страница, или дадена листа страници.',
+	'deletebatch-or' => '<b>или</b>',
+	'deletebatch-delete' => 'Избриши',
+	'deletebatch-page' => 'Страници за бришење:',
+	'deletebatch-processing-from-file' => 'бришење страници од листа од податотека',
+	'deletebatch-processing-from-form' => 'бришење страници од образец',
+	'deletebatch-omitting-nonexistant' => 'За испуштање на непостоечката страница $1.',
+	'deletebatch-omitting-invalid' => 'За испуштање на неважечката страница $1.',
+	'deletebatch-file-bad-format' => 'Податотеката мора да содржи само прост текст',
+	'deletebatch-file-missing' => 'Не можам да ја прочитам дадената податотека',
+	'deletebatch-select-script' => 'Скрипта за бришење на страници',
+	'deletebatch-select-yourself' => 'Вие',
+	'deletebatch-no-page' => 'Назначете барем една страница за бришење или изберете податотека која содржи листа на страници.',
+	'right-deletebatch' => 'Збирно бришење страници',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

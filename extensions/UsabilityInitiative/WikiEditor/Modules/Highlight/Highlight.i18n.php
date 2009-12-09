@@ -176,6 +176,13 @@ $messages['nl'] = array(
 	'wikieditor-highlight-preference' => 'Codemarkering inschakelen tijdens het bewerken',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'wikieditor-highlight-preference' => 'Aktiver markering av syntaks ved redigering',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

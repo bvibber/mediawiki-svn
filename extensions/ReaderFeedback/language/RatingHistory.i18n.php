@@ -1086,6 +1086,13 @@ $messages['jv'] = array(
 	'ratinghistory-3years' => '3 taun pungkasan',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'ratinghistory-year' => 'ბოლო წელი',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
@@ -1396,6 +1403,7 @@ $messages['no'] = array(
 	'ratinghistory-table-rating' => 'Vurdering',
 	'ratinghistory-table-votes' => 'Stemmer',
 	'ratinghistory-none' => 'Det er ikke nok leservurderinger til å vise grafer ennå.',
+	'ratinghistory-ratings' => "'''Forklaring:''' '''(1)''' – dårlig; '''(2)''' – lav; '''(3)''' – middels; '''(4)''' – høy; '''(5)''' – meget god;",
 	'ratinghistory-legend' => "Den '''daglige gjennomsnittsvurderingen''' <font color=\"blue\">''(blå)''</font> og '''løpende gjennomsnittsvurdering''' <font color=\"green\">''(grønn)''</font> vises i grafen under, etter dato. Den '''løpende gjennomsnittsvurderingen''' er rett og slett gjennomsnittet av all de daglige vurderingene ''innen'' denne tidsperioden for hver dag.
 
 Skala: '''[1]''' - Veldig dårlig; '''[2]''' - Dårlig; '''[3]''' - OK; '''[4]''' - Bra; '''[5]''' - Veldig bra;

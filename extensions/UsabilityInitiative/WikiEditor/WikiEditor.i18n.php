@@ -248,6 +248,15 @@ $messages['nn'] = array(
 	'wikieditor' => 'Avansert grensesnitt for endring av wikitekst',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'wikieditor' => 'Avansert grensesnitt for redigering av wikitekst',
+	'wikieditor-desc' => 'Gir et utvidbart tekstredigeringsgrensesnitt og mange utvidelsesmoduler',
+	'wikieditor-wikitext-tab' => 'Wikitekst',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -370,9 +379,11 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'wikieditor' => '高级维基文本编辑界面',
 	'wikieditor-desc' => '提供可扩充的维基文本编辑界面及功能组件',
+	'wikieditor-wikitext-tab' => 'Wiki文本',
 );
 

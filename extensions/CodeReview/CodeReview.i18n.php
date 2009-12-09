@@ -4328,9 +4328,11 @@ $4',
  * @author Malafaya
  */
 $messages['ka'] = array(
+	'code' => 'კოდის შემოწმება',
 	'code-old-status' => 'ძველი სტატუსი',
 	'code-notes' => 'ბოლო კომენტარები',
 	'code-authors' => 'ავტორები',
+	'code-author-link' => 'კავშირის დამყარება?',
 	'code-field-author' => 'ავტორი',
 	'code-field-status' => 'სტატუსი',
 	'code-field-timestamp' => 'თარიღი',
@@ -4970,26 +4972,43 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
+	'code' => 'Проверка на кодот',
 	'code-comments' => 'Забелешки',
+	'code-references' => 'Понатамошни ревизии',
+	'code-change-status' => "го измени '''статусот''' на r$1",
+	'code-change-tags' => "ги измени '''ознаките''' за r$1",
 	'code-change-removed' => 'избришано:',
 	'code-change-added' => 'додадено:',
+	'code-old-status' => 'Стар статус',
+	'code-new-status' => 'Нов статус',
+	'code-prop-changes' => 'Дневник на статуси и ознаки',
+	'code-no-repo' => 'Нема наместено складиште!',
+	'code-load-diff' => 'Вчитувам разлики...',
+	'code-notes' => 'скорешни коментари',
+	'code-statuschanges' => 'измени на статусот',
 	'code-authors' => 'автори',
+	'code-status' => 'состојби',
 	'code-tags' => 'ознаки',
 	'code-field-id' => 'Ревизија',
 	'code-field-author' => 'Автор',
+	'code-field-message' => 'Опис на измените',
 	'code-field-status' => 'Статус',
 	'code-field-timestamp' => 'Датум',
 	'code-field-comments' => 'Белешки',
+	'code-field-tests' => 'Испробувања',
 	'code-field-path' => 'Пат',
 	'code-field-text' => 'Белешка',
 	'code-rev-author' => 'Автор:',
 	'code-rev-date' => 'Датум:',
 	'code-rev-message' => 'Коментар:',
 	'code-rev-rev' => 'Ревизија:',
+	'code-rev-rev-viewvc' => 'на ViewVC',
+	'code-rev-paths' => 'Изменети врски:',
 	'code-rev-modified-a' => 'додадено',
 	'code-rev-modified-r' => 'заменето',
 	'code-rev-modified-d' => 'избришано',
 	'code-rev-modified-m' => 'изменето',
+	'code-rev-imagediff' => 'Измени на сликите',
 	'code-rev-status' => 'Статус:',
 	'code-rev-status-set' => 'Промени статус',
 	'code-rev-tags' => 'Ознаки:',
@@ -5006,6 +5025,40 @@ $messages['mk'] = array(
 	'code-status-reverted' => 'вратено',
 	'code-status-resolved' => 'разрешено',
 	'code-status-ok' => 'ok',
+	'code-status-verified' => 'потврдено',
+	'code-status-deferred' => 'одложено',
+	'code-rev-submit' => 'Зачувај промени',
+	'code-rev-submit-next' => 'Зачувај и прикажи следно нерешено',
+	'code-batch-status' => 'Измени статус:',
+	'code-batch-tags' => 'Измени ги ознаките:',
+	'codereview-batch-title' => 'Измени ги сите избрани ревизии',
+	'code-release-legend' => 'Создај белешки за изданието',
+	'code-release-startrev' => 'Почетна ревиз:',
+	'code-release-endrev' => 'Последна ревиз:',
+	'code-release-badrange' => 'Опсегот е преголем',
+	'codereview-subtitle' => 'За $1',
+	'codereview-email-body' => 'Корисникот „$1“ објави коментар за r$3.
+
+Полна URL-адреса: $2
+
+Коментар:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Подоцнежни измени',
+	'codereview-email-subj3' => '[$1] [r$2]: Автоматското испробување откри регресија',
+	'codereview-email-body3' => 'Автоматското испробување откри регресија заради промените во r$1.
+
+Полна URL-адреса: $2
+
+Опис на измените:
+
+$3',
+	'repoadmin' => 'Управување со складиштето',
+	'repoadmin-new-legend' => 'Создај ново складиште',
+	'repoadmin-new-button' => 'Создај',
+	'repoadmin-edit-path' => 'Патека до складиштето:',
+	'repoadmin-edit-bug' => 'Патека до Bugzilla:',
+	'repoadmin-edit-view' => 'Патека до ViewVC:',
 );
 
 /** Malayalam (മലയാളം)
@@ -5037,7 +5090,7 @@ $messages['ml'] = array(
 	'code-author-orphan' => 'വിക്കി അംഗത്വവുമായി ഈ രചിയിതാവിന് കണ്ണികളൊന്നുമില്ല',
 	'code-author-dolink' => 'ഈ ഉപയോക്താവിനെ കണ്ണി ചേർക്കേണ്ട  വിക്കി ഉപയോക്താവ്:',
 	'code-author-alterlink' => 'ഈ രചയിതാവുമായി കണ്ണി ചേർക്കപ്പെട്ട വിക്കി ഉപയോക്താവിനെ മാറ്റുക:',
-	'code-author-orunlink' => 'അല്ലങ്കിൽ വിക്കി ഉപയോക്താവിന്റെ കണ്ണി നീക്കം ചെയ്യുക:',
+	'code-author-orunlink' => 'അല്ലെങ്കിൽ വിക്കി ഉപയോക്താവിന്റെ കണ്ണി നീക്കം ചെയ്യുക:',
 	'code-author-name' => 'ഒരു ഉപയോക്തൃനാമം നൽകുക:',
 	'code-author-success' => '$1 എന്ന രചയിതാവ് $2 എന്ന വിക്കി ഉപയോക്താവുമായി കണ്ണി ചേർക്കപ്പെട്ടിരിക്കുന്നു',
 	'code-author-link' => 'കണ്ണി വേണോ?',
@@ -5073,8 +5126,8 @@ $messages['ml'] = array(
 	'code-rev-tag-remove' => 'റ്റാഗുകൾ നീക്കം ചെയ്യുക:',
 	'code-rev-comment-by' => '$1 ഇട്ട അഭിപ്രായം',
 	'code-rev-comment-submit' => 'അഭിപ്രായം സമർപ്പിക്കുക',
-	'code-rev-comment-preview' => 'എങ്ങിനെയുണ്ടെന്ന് കാണുക',
-	'code-rev-inline-preview' => 'എങ്ങിനെയുണ്ടെന്നു കാണുക:',
+	'code-rev-comment-preview' => 'എങ്ങനെയുണ്ടെന്ന് കാണുക',
+	'code-rev-inline-preview' => 'എങ്ങനെയുണ്ടെന്നു കാണുക:',
 	'code-rev-diff' => 'വ്യത്യാസം',
 	'code-rev-diff-link' => 'വ്യത്യാസം',
 	'code-rev-purge-link' => 'ശുദ്ധമാക്കുക',

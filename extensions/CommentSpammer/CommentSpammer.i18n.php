@@ -104,9 +104,10 @@ Da bi ovo izbjegli [[Special:UserLogin|prijavite se ili napravite račun]].',
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Ssola
  */
 $messages['ca'] = array(
-	'commentspammer-log-msg' => 'edició de [[Special:Contributions/$1|$1]] a [[:$2]].',
+	'commentspammer-log-msg' => 'modificació de [[Special:Contributions/$1|$1]] a [[:$2]].',
 );
 
 /** Czech (Česky)
