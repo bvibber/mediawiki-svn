@@ -399,11 +399,11 @@ class SpecialRecordAdmin extends SpecialPage {
 	function cmpCallback( $a, $b, $operator ) {
 		switch ( $operator ) {
 			case '=':
-				$cond = eregi( $b, $a );
+				$cond = preg_match( "|$b|i", $a );
 			break;
 			
 			case '!=':
-				$cond = !eregi( $b, $a );
+				$cond = !preg_match( "|$b|i", $a );
 			break;
 			
 			default:
