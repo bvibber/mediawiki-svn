@@ -14,6 +14,7 @@ $messages = array();
 $messages['en'] = array(
 	'wikieditor-preview-preference' => 'Enable side-by-side preview',
 	'wikieditor-preview-tab' => 'Preview',
+	'wikieditor-preview-changes-tab' => 'Changes',
 	'wikieditor-preview-loading' => 'Loading...',
 );
 
@@ -29,6 +30,7 @@ $messages['qqq'] = array(
 	'wikieditor-preview-tab' => 'Caption of the tab containing the preview
 
 {{Identical|Preview}}',
+	'wikieditor-preview-changes-tab' => "Caption of the tab containing a diff of the user's changes, à la Show changes.",
 	'wikieditor-preview-loading' => 'Alt text for spinner displayed while preview is being loaded
 {{Identical|Loading}}',
 );

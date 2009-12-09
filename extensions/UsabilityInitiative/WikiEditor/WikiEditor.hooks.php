@@ -75,6 +75,7 @@ class WikiEditorHooks {
 			),
 			'messages' => array(
 				'wikieditor-preview-tab',
+				'wikieditor-preview-changes-tab',
 				'wikieditor-preview-loading',
 			),
 		),
