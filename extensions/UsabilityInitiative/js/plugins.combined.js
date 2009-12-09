@@ -1640,7 +1640,7 @@ if ( typeof context == 'undefined' ) {
 			context.$content = $( context.$iframe[0].contentWindow.document.body );
 			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
 			// characters rather than actual HTML tags in the code editor container.
-			context.$content.html( $( '<div />' ).text( context.$textarea.val() ).html() );
+			context.$content.append( $( '<div />' ).text( context.$textarea.val() ).html() );
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
@@ -2257,9 +2257,7 @@ fn: {
 				
 				$.post( wgScriptPath + '/api.php', postdata, function( data ) {
 						// Add diff CSS
-						if ( $( 'head link' )
-								.find( '[href^=' + stylepath + '/common/diff.css]' )
-								.size() == 0 ) {
+						if ( $( 'link[href=' + stylepath + '/common/diff.css]' ).size() == 0 ) {
 							$( 'head' ).append( $( '<link />' ).attr( {
 								'rel': 'stylesheet',
 								'type': 'text/css',
@@ -2443,6 +2441,11 @@ api: {
  */
 evt: {
 	ready: function( context, event ) {
+		// Only run this code if this module is turned on
+		if ( !( '$toc' in context.modules ) ) {
+			return;
+		}
+		
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
 		context.$content.parent()
