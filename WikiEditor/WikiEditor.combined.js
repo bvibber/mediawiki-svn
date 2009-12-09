@@ -886,8 +886,7 @@ mw.addOnloadHook( function() {
 		html: '\
 			<fieldset><table style="width: 100%;"><tr>\
 				<td>\
-					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target"\
-						style="display: inline; float: left;"></label>\
+					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target"></label>\
 					<div id="wikieditor-toolbar-link-int-target-status" style="display: inline; float:right;"></div><br />\
 					<div style="position: relative;"><label rel="wikieditor-toolbar-tool-link-int-target-tooltip"></label>\
 						<input type="text" id="wikieditor-toolbar-link-int-target" style="width: 100%;" /></div>\
