@@ -353,11 +353,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					if ( !preg_match( "|\s*\|\s*$k\s*=|", $text ) ) $text .= "\n|$k=\n|"; # Treat non-existent fields as existing but empty
 					$i = preg_match( "|^\s*\|\s*$k\s*=\s*(.*?)\s*(?=^\s*[\|\}])|sm", $text, $m );
 					$r[$k] = isset( $m[1] ) ? $m[1] : '';
-					if ( $v ) {
-						$cond = eregi( $v, $r[$k] );
-						if ( $operator[$k] == '!=' ) $cond = !$cond;
-						if ( !( $i && $cond ) ) $match = false;
-					}
+					if ( $v && !( $i && $this->cmpCallback( $r[$k], $v, $operator[$k] ) ) ) $match = false;
 				}
 				if ( $invert ) $match = !$match;
 				if ( $match ) $records[] = $r;
@@ -396,7 +392,33 @@ class SpecialRecordAdmin extends SpecialPage {
 	}
 
 	/**
-	 * Compares to arrays by column
+	 * Compares a field value according to its operator
+	 * - $a is the field value for the current row
+	 * - $b is the expression from the recordtable query
+	 */
+	function cmpCallback( $a, $b, $operator ) {
+		switch ( $operator ) {
+			case '=':
+				$cond = eregi( $b, $a );
+			break;
+			
+			case '!=':
+				$cond = !eregi( $b, $a );
+			break;
+			
+			default:
+				if ( !is_numeric( $b ) && ereg( '[0-9]{4}', $b ) && $tmp = strtotime( $b ) ) {
+					$b = $tmp;
+					$a = strtotime( $a );
+				}
+				eval( "\$cond = \$a $operator \$b;" );
+			break;
+		}
+		return $cond;
+	}
+
+	/**
+	 * Compares two arrays by column
 	 */
 	function sortCallback( $row1, $row2 ) {
 		if ( !isset( $row1[$this->orderBy] ) || !isset( $row1[$this->orderBy] ) ) return 0;
