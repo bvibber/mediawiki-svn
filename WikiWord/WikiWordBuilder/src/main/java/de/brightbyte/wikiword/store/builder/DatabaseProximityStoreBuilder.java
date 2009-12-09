@@ -47,13 +47,16 @@ public class DatabaseProximityStoreBuilder
 			proximityThreshold = tweaks.getTweak("proximity.threshold", 0.15);
 		}
 
+		/**
+		 * Builds feature vectors. For a specification, refer to ProximityStoreSchema
+		 */
 		protected int buildFeatures(DatabaseTable t, String conceptField, String featureField, String suffix, double w, String biasField, double biasCoef) throws PersistenceException {
 			if (!conceptStore.areStatsComplete()) throw new IllegalStateException("statistics need to be built before concept infos!");
 
 			String v = ""+w;
 			
 			//NOTE: conider bias of reference target
-			//XXX: also consider local (outgoing) bias? feature vectors will be normalized, so that's not so relevant
+			//FIXME: also consider local (outgoing) bias? feature vectors will be normalized, so that's not so relevant maybe?
 			//NOTE: since there are usually more link than categories, there's a bias in favor of categories!
 			//       number of links grows with article length, number of categories does not!
 			if (biasField!=null && biasCoef>0) {
@@ -76,6 +79,9 @@ public class DatabaseProximityStoreBuilder
 			return n;
 		}
 		
+		/**
+		 * Builds feature vectors. For a specification, refer to ProximityStoreSchema
+		 */
 		public void buildFeatures() throws PersistenceException {
 			DatabaseTable conceptTable = conceptStore.getDatabaseAccess().getTable("concept");
 			DatabaseTable broaderTable = conceptStore.getDatabaseAccess().getTable("broader");
@@ -110,14 +116,14 @@ public class DatabaseProximityStoreBuilder
 				endTask("buildFeatures", "feature#in", n+" entries");
 		    }
 		
-			if (beginTask("buildFeatures", "feature#offset")) {
+			/*if (beginTask("buildFeatures", "feature#offset")) {
 					// apply offset
 					String sql = "UPDATE "+featureTable.getSQLName()+" ";
 					sql += " SET total_weight = total_weight + "+featureVectorFactors.weightOffset;
 					
 					int n = executeChunkedUpdate("buildFeatures", "feature#offset", sql, null, featureTable, "concept");
 					endTask("buildFeatures", "feature#offset", n+" entries");
-			}
+			}*/
 
 			if (beginTask("buildFeatures", "featureMagnitude")) {
 				// apply offset
@@ -245,7 +251,9 @@ public class DatabaseProximityStoreBuilder
 
 		}
 		
-		
+		/**
+		 * Builds concept proximity information. For a specification, refer to ProximityStoreSchema
+		 */
 		public void buildProximity() throws PersistenceException {
 			if (beginTask("buildProximity", "collect")) {
 				CollectProximityQuery query = new CollectProximityQuery("buildProximity", "collect");
@@ -253,6 +261,8 @@ public class DatabaseProximityStoreBuilder
 				endTask("buildProximity", "collect", n+" entries");
 			}
 			
+			//FIXME: assert that the proximity values turn out symetrically!
+			/*
 			if (beginTask("buildProximity", "balance")) {
 				String sql = "UPDATE "+proximityTable.getSQLName()+" as P ";
 				sql += " JOIN "+proximityTable.getSQLName()+" as Q ON Q.concept1 = P.concept2  AND Q.concept2 = P.concept1 ";
@@ -261,6 +271,7 @@ public class DatabaseProximityStoreBuilder
 				int n = executeChunkedUpdate("buildProximity", "balance", sql, null, proximityTable, "P.concept1");
 				endTask("buildProximity", "balance", n+" entries");
 			}
+			*/
 		}	
 		
 }

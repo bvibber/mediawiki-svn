@@ -11,7 +11,7 @@ public interface ProximityStoreBuilder extends WikiWordStoreBuilder {
 		//       number of links grows with article length, number of categories does not!
 
 		public final double selfWeight = 1;
-		public final double weightOffset = 1;
+		//public final double weightOffset = 1;
 		
 		public final double downWeight = 0.5; //having common children is not very relevant
 		public final double downBiasCoef = 0; //if a child has many parents doesn't matter
