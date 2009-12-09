@@ -298,6 +298,15 @@ $messages['nl'] = array(
 	'wikieditor-toc-hide' => 'Inhoud verbergen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'wikieditor-toc-preference' => 'Aktiver navigerbar innholdsfortegnelse',
+	'wikieditor-toc-show' => 'Vis innhold',
+	'wikieditor-toc-hide' => 'Skjul innhold',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

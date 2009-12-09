@@ -801,10 +801,12 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
 	'ct-beginner' => 'დამწყები',
+	'ct-expert' => 'ექსპერტი',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -949,11 +951,14 @@ $messages['ml'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Kurniasan
  */
 $messages['ms'] = array(
 	'clicktracking' => 'Pengesanan klik Inisiatif Kebolehgunaan',
 	'clicktracking-desc' => 'Pengesanan klik, bertujuan untuk mengesan peristiwa-peristiwa yang tidak menyebabkan penyegaran semula sebuah laman.',
+	'ct-total-header' => 'Jumlah klik',
+	'ct-anon-users' => 'Pengguna tanpa nama',
 );
 
 /** Dutch (Nederlands)
@@ -996,10 +1001,12 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  */
 $messages['no'] = array(
 	'clicktracking' => 'Klikksporing for brukervennlighetsprosjektet.',
 	'clicktracking-desc' => 'Sporer klikk som ikke forårsaker lasting av ny side.',
+	'ct-event-name' => 'Hendelsesnavn',
 	'ct-expert-header' => '«Ekspertklikk»',
 	'ct-intermediate-header' => '«Mellomnivåbrukerklikk»',
 	'ct-beginner-header' => '«Nybegynnerklikk»',
@@ -1017,6 +1024,7 @@ $messages['no'] = array(
 	'ct-user-contribs' => 'Totalt antall bidrag',
 	'ct-user-span' => 'Bidrag i tid',
 	'ct-and' => 'og',
+	'ct-update-table' => 'Oppdater tabell',
 );
 
 /** Occitan (Occitan)

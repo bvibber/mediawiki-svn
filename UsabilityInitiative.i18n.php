@@ -385,11 +385,13 @@ $messages['ml'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Kurniasan
  */
 $messages['ms'] = array(
 	'usabilityinitiative' => 'Inisiatif Kebolehgunaan',
 	'usabilityinitiative-desc' => 'Tamplian-tampilan yang dibangunkan oleh Inisiatif Kebolehgunaan Wikipedia demi meningkatkan kebolehgunaan MediaWiki',
+	'prefs-experimental' => 'Ciri ujikaji',
 );
 
 /** Nedersaksisch (Nedersaksisch)
