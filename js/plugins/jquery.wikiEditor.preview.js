@@ -93,9 +93,7 @@ fn: {
 				
 				$.post( wgScriptPath + '/api.php', postdata, function( data ) {
 						// Add diff CSS
-						if ( $( 'head link' )
-								.find( '[href^=' + stylepath + '/common/diff.css]' )
-								.size() == 0 ) {
+						if ( $( 'link[href=' + stylepath + '/common/diff.css]' ).size() == 0 ) {
 							$( 'head' ).append( $( '<link />' ).attr( {
 								'rel': 'stylesheet',
 								'type': 'text/css',
