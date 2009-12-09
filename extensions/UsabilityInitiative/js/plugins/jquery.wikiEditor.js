@@ -338,7 +338,11 @@ if ( typeof context == 'undefined' ) {
 			context.$content = $( context.$iframe[0].contentWindow.document.body );
 			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
 			// characters rather than actual HTML tags in the code editor container.
-			context.$content.append( $( '<div />' ).text( context.$textarea.val() ).html() );
+			
+			context.$content.append(
+				context.$textarea.val().replace( /</g, '&lt;' ).replace( />/g, '&gt;' )
+			);
+			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
@@ -363,12 +367,13 @@ if ( typeof context == 'undefined' ) {
 		 * Gets the complete contents of the iframe
 		 */
 		'getContents': function() {
+			// FIXME: Evil ua-sniffing action!
+			if ( $.browser.name == 'msie' ) {
+				return context.$content.text();
+			}
 			// We use .html() instead of .text() so HTML entities are handled right
 			// Setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
-			
-			return $( '<div />' )
-				.html( context.$content.html().replace( /\<br\>/g, "\n" ) )
-				.text();
+			return $( '<div />' ).html( context.$content.html().replace( /\<br\>/g, "\n" ) ).text();
 		},
 		'setContents': function( options ) {
 			context.$content.text( options.contents );
