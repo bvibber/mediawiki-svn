@@ -407,6 +407,8 @@ class SpecialRecordAdmin extends SpecialPage {
 			break;
 			
 			default:
+				$a = preg_replace( '|(\d\d)[-/](\d\d)[-/](\d\d\d\d)|', '$3/$2/$1', $a ); # hack for dd/mm/yyyy format - best to use yyyy-mm-dd
+				$b = preg_replace( '|(\d\d)[-/](\d\d)[-/](\d\d\d\d)|', '$3/$2/$1', $b );
 				if ( !is_numeric( $b ) && ereg( '[0-9]{4}', $b ) && $tmp = strtotime( $b ) ) {
 					$b = $tmp;
 					$a = strtotime( $a );
