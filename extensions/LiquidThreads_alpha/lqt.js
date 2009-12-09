@@ -1,5 +1,4 @@
 // Prototype in string.trim on browsers that haven't yet implemented
-// See http://blog.stevenlevithan.com/archives/faster-trim-javascript for the reason why /^\s+|\s+$/g is not used as the regex
 if ( typeof String.prototype.trim !== "function" )
 	String.prototype.trim = function(str) { return str.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); };
 
@@ -883,12 +882,6 @@ var liquidThreads = {
 						'slow');
 				}
 			);
-			
-			// Load the new TOC
-			var loadTOCSpinner = $j('<div class="mw-ajax-loader"/>');
-			$j('.lqt_toc').empty().append( loadTOCSpinner );
-			$j('.lqt_toc').load( window.location.href + ' .lqt_toc > *',
-				function() { loadTOCSpinner.remove(); } );
 		}
 		
 		var doneCallback = function(data) {
@@ -926,6 +919,9 @@ var liquidThreads = {
 			editform.empty().hide();
 			
 			callback(data);
+			
+			// Load the new TOC
+			liquidThreads.reloadTOC();
 		};
 		
 		if ( type == 'reply' ) {			
@@ -939,6 +935,17 @@ var liquidThreads = {
 			
 			e.preventDefault();
 		}
+	},
+	
+	'reloadTOC' : function() {
+		var toc = $j('.lqt_toc');
+		var loadTOCSpinner = $j('<div class="mw-ajax-loader"/>');
+		loadTOCSpinner.css( 'height', toc.height() );
+		toc.empty().append( loadTOCSpinner );
+		toc.load( window.location.href + ' .lqt_toc > *',
+			function() {
+				loadTOCSpinner.remove();
+			} );
 	},
 	
 	'doNewThread' : function( talkpage, subject, text, summary, callback, bump ) {
@@ -1035,7 +1042,7 @@ var liquidThreads = {
 	}
 }
 
-js2AddOnloadHook( function() {
+mw.addOnloadHook( function() {
 	// One-time setup for the full page
 	
 	// Update the new thread link

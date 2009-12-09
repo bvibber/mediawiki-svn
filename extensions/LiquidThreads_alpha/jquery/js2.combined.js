@@ -7825,15 +7825,20 @@ $.extend($.ui.tabs.prototype, {
  */
 // Creates global message object if not already in existence
 if ( !gMsg ) var gMsg = {};
+if( ! mw ) var mw = { };
+
 /**
  * Caches a list of messages for later retrieval
  * @param {Object} msgSet Hash of key:value pairs of messages to cache
  */
-function loadGM( msgSet ){
-	for ( var i in msgSet ){
-		gMsg[ i ] = msgSet[i];
+if( ! mw.addMessages ){
+	mw.addMessages = function( msgSet ){
+		for ( var i in msgSet ){
+			gMsg[ i ] = msgSet[i];
+		}
 	}
 }
+
 /**
  * Retieves a message from the global message cache, performing on-the-fly
  * replacements using MediaWiki message syntax ($1, $2, etc.)
@@ -7865,6 +7870,6 @@ $j = jQuery.noConflict();
  * Provides js2 compatible onload hook
  * @param func Function to call when ready
  */
-function js2AddOnloadHook( func ) {
+function mw.addOnloadHook( func ) {
 	$j(document).ready( func );
 }
