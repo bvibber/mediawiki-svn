@@ -384,7 +384,7 @@ remoteSearchDriver.prototype = {
 		// Merge in the options		
 		$j.extend( _this, default_remote_search_options, options );
 
-		// Quick fix for cases where people put ['all'] instead of 'all' for enabled_providers
+		// Quick fix for cases where {object} ['all'] is used instead of {string} 'all' for enabled_providers:
 		if ( _this.enabled_providers.length == 1 && _this.enabled_providers[0] == 'all' )
 			_this.enabled_providers = 'all';
 
@@ -836,7 +836,8 @@ remoteSearchDriver.prototype = {
 	},
 	
 	/**
-	* Once the uploadForm is ready display it for the upload provider 
+	* Once the uploadForm is ready display it for the upload provider
+	* 
 	* @param {Object} provider Provider object for Upload From
 	*/
 	showUploadForm_internal: function( provider ) {
@@ -867,7 +868,7 @@ remoteSearchDriver.prototype = {
 		// Fill in the user uploads:
 		if ( typeof wgUserName != 'undefined' && wgUserName ) {
 			// Load the upload bin with anything the current user has uploaded
-			provider.sObj.getUserRecentUploads( wgUserName, function() {
+			provider.sObj.getUserRecentUploads( wgUserName, function( ) {				
 				_this.showResults();
 			} );
 		} else {
@@ -908,6 +909,7 @@ remoteSearchDriver.prototype = {
 	
 	/**
 	* Show the search tab for a given providerName
+	*
 	* @param {String} providerName name of the content provider
 	* @param {Bollean} resetPaging if the pagging should be reset
 	*/
@@ -917,7 +919,7 @@ remoteSearchDriver.prototype = {
 		var draw_direct_flag = true;
 
 		// Else do showSearchTab
-		var provider = this.content_providers[providerName];
+		var provider = this.content_providers[ providerName ];
 
 		// Check if we need to update:
 		if ( typeof provider.sObj != 'undefined' ) {
@@ -934,6 +936,7 @@ remoteSearchDriver.prototype = {
 		} else {
 			draw_direct_flag = false;
 		}
+		
 		if ( !draw_direct_flag ) {
 			// See if we should reset the paging
 			if ( resetPaging ) {
@@ -983,6 +986,13 @@ remoteSearchDriver.prototype = {
 			);
 		}
 	},
+	
+	/**
+	* Evaluate the result of an api copyURL permision request
+	*
+	* @param {Object} data Result data to be checked
+	* @param {Function} callback Function to call once api returns value
+	*/
 	checkCopyURLApiResult: function( data, callback ) {
 		var _this = this;
 		// Api checks:
@@ -1013,6 +1023,10 @@ remoteSearchDriver.prototype = {
 	 * not really necessary the api request to upload will return appropriate error 
 	 * if the user lacks permission. or $wgAllowCopyUploads is set to false
 	 * (use this function if we want to issue a warning up front)
+	 *
+	 * @param {Function} callback Function to call with URL permision
+	 * @return 
+	 * 	false callback user does not have permision 	   
 	 */
 	checkForCopyURLPermission: function( callback ) {
 		var _this = this;
@@ -1065,10 +1079,10 @@ remoteSearchDriver.prototype = {
 					'</div>' );
 			}
 			return false;
-		}
-		_this.loadSearchLib( provider, function() {
-			// Do the search
-			provider.sObj.getSearchResults();
+		}				
+		_this.loadSearchLib( provider, function( provider ) {
+			// Do the search:						
+			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() );
 			_this.waitForResults( function() {
 				_this.showResults();
 			} );
@@ -1079,7 +1093,8 @@ remoteSearchDriver.prototype = {
 	* Loads a providers search library
 	* 
 	* @param {Object} provider content provider to be loaded
-	* @param {Function} callback function to be called once provider is loaded
+	* @param {Function} callback Function to call once provider is loaded 
+	* ( provider is passed back in callback to avoid possible concurancy issues in multiple load calls)
 	*/
 	loadSearchLib: function( provider, callback ) {
 		var _this = this;
@@ -1103,7 +1118,7 @@ remoteSearchDriver.prototype = {
 			// inherit defaults if not set:
 			provider.limit = provider.limit ? provider.limit : provider.sObj.limit;
 			provider.offset = provider.offset ? provider.offset : provider.sObj.offset;
-			callback();
+			callback( provider );
 		} );
 	},
 
@@ -1720,7 +1735,7 @@ remoteSearchDriver.prototype = {
 					$j( '#embed_vid').embedPlayer ( function() {
 					
 						// Grab information available from the embed instance
-						resource.pSobj.addResourceInfoFromEmbedInstance( resource, 'embed_vid' );
+						resource.pSobj.addEmbedInfo( resource, 'embed_vid' );
 	
 						// Add libraries resizable and hoverIntent to support video edit tools
 						var librarySet = [

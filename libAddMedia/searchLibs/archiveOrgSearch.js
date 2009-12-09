@@ -27,25 +27,28 @@ archiveOrgSearch.prototype = {
 			}
 		}
 	},
+	
 	/**
-	* Get search results from the api query
+	* Get search results from the api query.
+	*
+	* @param {String} search_query Text search string
 	*/
-	getSearchResults:function() {
-		// call parent: 
+	getSearchResults: function( search_query ) {
+	
+		// call parent for common initialisation:  
 		this.parent_getSearchResults();
-		var _this = this;
-		js_log( 'f:getSearchResults for:' + $j( '#rsd_q' ).val() );
 		
-		// Build the query var
-		var q = $j( '#rsd_q' ).val();
+		var _this = this;
+		js_log( 'f:getSearchResults for:' + search_query );
+		
 		
 		// For now force (Ogg video) & url based license
-		q += ' format:(Ogg video)';
-		q += ' licenseurl:(http\\:\\/\\/*)';
+		search_query += ' format:(Ogg video)';
+		search_query += ' licenseurl:(http\\:\\/\\/*)';
 		
 		// Build the request Object
 		var reqObj = {
-			'q': q, // just search for video atm
+			'q': search_query, // just search for video atm
 			'fl':"description,title,identifier,licenseurl,format,license,thumbnail",
 			'wt':'json',
 			'rows' : this.provider.limit,
@@ -63,6 +66,8 @@ archiveOrgSearch.prototype = {
 	},
 	/**
 	* Adds the search results to the local resultsObj
+	* 
+	* @param {Object} data Api result data
 	*/
 	addResults:function( data ) {
 		var _this = this;
@@ -96,6 +101,9 @@ archiveOrgSearch.prototype = {
 	},
 	/**
 	* Get media metadata via a archive.org special entry point "avinfo"
+	*
+	* @param {Object} resource Resrouce to add metadata to.
+	* @param {Function} callbcak Function called once extra metadata is added.
 	*/ 
 	addResourceInfoCallback:function( resource, callback ) {
 		var _this = this;
@@ -116,6 +124,8 @@ archiveOrgSearch.prototype = {
 	
 	/**
 	* Returns html to embed a given result Object ( resource ) 
+	* @param {Object} resrouce Resource to get embed HTML from.
+	* @parma {Object} options Options for the embeding.
 	*/	
 	getEmbedHTML: function( resource , options ) {
 		js_log( 'getEmbedHTML:: ' + resource.poster );

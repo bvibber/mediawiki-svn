@@ -1460,23 +1460,57 @@ var global_req_cb = new Array(); // The global request callback array
 	* @return {String} absolute url
 	*/
 	$.absoluteUrl = function( src, contextUrl ){
-		var pSrc =  mw.parseUri( src );
-		if( pSrc.protocol != '')
+		var parsedSrc =  mw.parseUri( src );		
+		// Source is already absolute return:
+		if( parsedSrc.protocol != '')
 			return src;				
 		
 		// Get parent Url location the context URL	
 		if( contextUrl){	
-			var pUrl = mw.parseUri( contextUrl );			
+			var parsedUrl = mw.parseUri( contextUrl );			
 		} else {
-			var pUrl = mw.parseUri( document.URL );
+			var parsedUrl = mw.parseUri( document.URL );
 		}
-		// If a leading slash:  
+		
+		// Check for leading slash: 
 		if( src.indexOf( '/' ) == 1 ){
-			return pUrl.protocol + '://' + pUrl.authority + src;
+			return parsedUrl.protocol + '://' + parsedUrl.authority + src;
 		}else{
-			return pUrl.protocol + '://' + pUrl.authority + pUrl.directory + src;
+			return parsedUrl.protocol + '://' + parsedUrl.authority + parsedUrl.directory + src;
 		}
 	};
+	
+	/** 
+	* Replace url parammaters via newParams key value pairs
+	* 
+	* @param {String} url Source url to be updated
+	* @param {Object} newParams key, value paris to swap in
+	* @return {String}
+	*	the updated url
+	*/  
+	$.replaceUrlParams = function( url, newParams ) {
+		var parsedUrl = mw.parseUri( url );
+				
+		
+		if ( parsedUrl.protocol != '' ) {
+			var new_url = parsedUrl.protocol + '://' + parsedUrl.authority + parsedUrl.path + '?';
+		} else {
+			var new_url = parsedUrl.path + '?';
+		}
+		
+		// Merge new params: 
+		$j.merge( parsedUrl.queryKey, newParams );
+				
+		// Output to new_url
+		var amp = '';
+		for ( var key in  parsedUrl.queryKey ) {
+			var val = parsedUrl.queryKey[ val ];		
+			new_url += amp + key + '=' + val;
+			amp = '&';
+		}
+		return new_url;
+	}
+	
 	
 	/**
 	* Takes in a string returns an xml dom object 
@@ -2418,32 +2452,6 @@ function mwDojQueryBindings() {
 /*
 * Utility functions:
 */
-// Simple URL rewriter (could probably be refactored into an inline regular exp)
-function getURLParamReplace( url, opt ) {
-	var pSrc = mw.parseUri( url );
-	if ( pSrc.protocol != '' ) {
-		var new_url = pSrc.protocol + '://' + pSrc.authority + pSrc.path + '?';
-	} else {
-		var new_url = pSrc.path + '?';
-	}
-	var amp = '';
-	for ( var key in pSrc.queryKey ) {
-		var val = pSrc.queryKey[ key ];
-		// Do override if requested
-		if ( opt[ key ] )
-			val = opt[ key ];
-		new_url += amp + key + '=' + val;
-		amp = '&';
-	};
-	// Add any vars that were not already there:
-	for ( var i in opt ) {
-		if ( !pSrc.queryKey[i] ) {
-			new_url += amp + i + '=' + opt[i];
-			amp = '&';
-		}
-	}
-	return new_url;
-}
 
 /**
  * Given a float number of seconds, returns npt format response.

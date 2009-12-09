@@ -8,12 +8,12 @@ var metavidSearch = function( iObj ) {
 	return this.init( iObj );
 };
 metavidSearch.prototype = {
-	defaultReq: {  // set up the default request paramaters
-		'order':'recent',
-		'feed_format':'json_rss',
-		'cb_inx': 1 // Not really used (we should update the metavid json retrun system) 
+ 	// Default request parameters
+	defaultReq: { 
+		'order': 'recent',
+		'feed_format': 'json_rss'		
 	},
-	init:function( iObj ) {
+	init: function( iObj ) {
 		// init base class and inherit:
 		var baseSearch = new baseRemoteSearch( iObj );
 		for ( var i in baseSearch ) {
@@ -24,17 +24,27 @@ metavidSearch.prototype = {
 			}
 		}
 	},
-	getSearchResults:function() {
-		// call parent:
+	
+	/**
+	* getSearchResults
+	*
+	* @param {String} search_query Text search string
+	*/
+	getSearchResults: function( search_query ) {
+	
+		// Call parent for common initialisation:  
 		this.parent_getSearchResults();
-		// set local ref:
+		
+		// Set local ref:
 		var _this = this;
+		
 		js_log( 'metavidSearch::getSearchResults()' );
-		// Proccess all options
+		
+		// Process all options
 		var url = this.provider.api_url;
 		var reqObj = $j.extend({}, this.defaultReq);
 		reqObj[ 'f[0][t]' ] = 'match';
-		reqObj[ 'f[0][v]' ] = $j( '#rsd_q' ).val();
+		reqObj[ 'f[0][v]' ] = search_query;
 		
 		// add offset limit:
 		reqObj[ 'limit' ] = this.provider.limit;
@@ -87,17 +97,32 @@ metavidSearch.prototype = {
 			_this.loading = 0;
 		} );
 	},
+	
 	/** 
-	* Get a Title key for the assset name inside the mediaWiki system
+	* Get a Title key for the asset name inside the mediaWiki system
+	* 
+	* @param {Object} resource Resource to get title key from 
 	*/
 	getTitleKey:function( resource ) {
 		return resource['stream_name'] + '_part_' + resource['start_time'].replace(/:/g, '.' ) + '_to_' + resource['end_time'].replace(/:/g, '.' ) + '.ogv';
 	},
+	
+	/**
+	* Get a Title from a resource
+	*
+	* @parma {Object} resoruce Resource to get title from
+	*/
 	getTitle:function( resource ) {
 		var sn = resource['stream_name'].replace( /_/g, ' ' );
 		sn = sn.charAt( 0 ).toUpperCase() + sn.substr( 1 );
 		return gM( 'mwe-stream_title', [ sn, resource.start_time, resource.end_time ] );
 	},
+	
+	/**
+	* Get additional wiki text description
+	* 
+	* @param {Object} resource Resource to get addtional wikitext for. 
+	*/
 	getExtraResourceDescWiki:function( resource ) {
 		var o = "\n";
 		// check for person
@@ -115,7 +140,12 @@ metavidSearch.prototype = {
 			o += '* related to bill: [[' + resource.bill['label'] + ']] more bill [' + resource.bill['url'] + ' video clips]' + "\n";
 		return o;
 	},
-	// format is "quote" followed by [[name of person]]
+	
+	/**
+	* Get inline description 
+	* format is "quote" followed by [[name of person]]
+	* @param {Object} resource Resource to get inline description of.  
+	*/
 	getInlineDescWiki:function( resource ) {
 		var o = this.parent_getInlineDescWiki( resource );
 		// add in person if found
@@ -135,13 +165,19 @@ metavidSearch.prototype = {
 		//		'<ref>[' + resource.link + ' Metavid Source Page] for ' + resource.title +'</ref>';
 		return o;
 	},
-	// give an updated start and end time updates the title and url
+	
+	/** 
+	* Apply an updated start and end time to the resource ( for use with the #embed_vid clip ) 
+	*
+	* @param {Object} resource Resource to be updated 
+	*/
 	applyVideoAdj: function( resource ) {
 		js_log( 'mv ApplyVideoAdj::' );
-		// update the titleKey:
+		
+		// Update the titleKey:
 		resource['titleKey'] =	 this.getTitleKey( resource );
 
-		// update the title:
+		// Update the title:
 		resource['title'] = this.getTitle( resource );
 
 		// update the interface:
@@ -160,18 +196,30 @@ metavidSearch.prototype = {
 			}
 		}
 	},
+	
+	/**
+	* Get html to embed the resource into a page:
+	*
+	* @param {Object} resource Resource to be embed
+	* @param {Object} options Resource  Optiosn for embeind ( like max_width )
+	*/
 	getEmbedHTML:function( resource , options ) {
 	    if ( !options )
 		     options = { };
 		var id_attr = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
-		var style_attr = ( options['max_width'] ) ? ' style="width:' + options['max_width'] + 'px;"':'';
-		// @@maybe check type here ?
+		var style_attr = ( options['max_width'] ) ? ' style="width:' + options['max_width'] + 'px;"':'';		
 		if ( options['only_poster'] ) {
 			return '<img ' + id_attr + ' src="' + resource['poster'] + '" ' + style_attr + '>';
 		} else {
 			return '<video ' + id_attr + ' roe="' + resource['roe_url'] + '"></video>';
 		}
 	},
+	
+	/**
+	* Get Image Transform	
+	*
+	* @param {Object} resource Resource to transform
+	*/
 	getImageTransform:function( resource, opt ) {
 		if ( opt.width <= 80 ) {
 			return getURLParamReplace( resource.poster, { 'size' : "icon" } )
@@ -185,7 +233,13 @@ metavidSearch.prototype = {
 			return getURLParamReplace( resource.poster, { 'size' : 'full' } )
 		}
 	},
-	addResourceInfoFromEmbedInstance : function( resource, embed_id ) {
+	
+	/**
+	* Add information from the embed instance to the resource
+	*
+	* @param {Object} resource Resource to transform
+	*/
+	addEmbedInfo : function( resource, embed_id ) {
 		var sources = $j( '#' + embed_id ).get( 0 ).media_element.getSources();
 		resource.other_versions = '*[' + resource['roe_url'] + ' XML of all Video Formats and Timed Text]' + "\n";
 		for ( var i in sources ) {
@@ -197,6 +251,13 @@ metavidSearch.prototype = {
 		// js_log('set url to: ' + resource['url']);
 		return resource;
 	},
+	
+	/**
+	* Get a date from a media link
+	*
+	* @param {String} link Link url to be parsed
+	* @return {Date Object} 
+	*/ 
 	getDateFromLink:function( link ) {
 		var dateExp = new RegExp( /_([0-9]+)\-([0-9]+)\-([0-9]+)/ );
 		var dParts = link.match ( dateExp );
