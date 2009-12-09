@@ -829,6 +829,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		global $wgTitle;
 		$parser->mOutput->mCacheTime = -1;
 		$filter   = array();
+		$op       = array();
 		$title    = '';
 		$name     = 'wpSelect';
 		$invert   = false;
@@ -839,8 +840,8 @@ class SpecialRecordAdmin extends SpecialPage {
 		$count    = false;
 		$export   = false;
 		foreach ( func_get_args() as $arg ) if ( !is_object( $arg ) ) {
-			if ( preg_match( "|^(.+?)\s*([<>!=]+)\s*(.+)$|i", $arg, $match ) ) {
-				list( , $k, $op, $v ) = $match;
+			if ( preg_match( "|^(.+?)\s*([=!<>]+)\s*(.+)$|i", $arg, $match ) ) {
+				list( , $k, $o, $v ) = $match;
 				if ( $k == 'title' ) $title = $v;
 				elseif ( $k == 'name' )     $name     = $v;
 				elseif ( $k == 'invert' )   $invert   = $v;
@@ -850,7 +851,10 @@ class SpecialRecordAdmin extends SpecialPage {
 				elseif ( $k == 'template' ) $template = $v;
 				elseif ( $k == 'count' )    $count    = $v;
 				elseif ( $k == 'export' )   $export   = $v;
-				else $filter[$match[1]] = $match[2];
+				else {
+					$filter[$k] = $v;
+					$op[$k] = $o;
+				}
 			}
 		}
 		$this->filter = $filter;
