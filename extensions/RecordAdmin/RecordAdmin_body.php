@@ -839,8 +839,8 @@ class SpecialRecordAdmin extends SpecialPage {
 		$count    = false;
 		$export   = false;
 		foreach ( func_get_args() as $arg ) if ( !is_object( $arg ) ) {
-			if ( preg_match( "|^(.+?)\s*=\s*(.+)$|i", $arg, $match ) ) {
-				list( , $k, $v ) = $match;
+			if ( preg_match( "|^(.+?)\s*([<>!=]+)\s*(.+)$|i", $arg, $match ) ) {
+				list( , $k, $op, $v ) = $match;
 				if ( $k == 'title' ) $title = $v;
 				elseif ( $k == 'name' )     $name     = $v;
 				elseif ( $k == 'invert' )   $invert   = $v;
