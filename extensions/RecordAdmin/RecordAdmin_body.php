@@ -353,7 +353,11 @@ class SpecialRecordAdmin extends SpecialPage {
 					if ( !preg_match( "|\s*\|\s*$k\s*=|", $text ) ) $text .= "\n|$k=\n|"; # Treat non-existent fields as existing but empty
 					$i = preg_match( "|^\s*\|\s*$k\s*=\s*(.*?)\s*(?=^\s*[\|\}])|sm", $text, $m );
 					$r[$k] = isset( $m[1] ) ? $m[1] : '';
-					if ( $v && !( $i && eregi( $v, $r[$k] ) ) ) $match = false;
+					if ( $v ) {
+						$cond = eregi( $v, $r[$k] );
+						if ( $operator[$k] == '!=' ) $cond = !$cond;
+						if ( !( $i && $cond ) ) $match = false;
+					}
 				}
 				if ( $invert ) $match = !$match;
 				if ( $match ) $records[] = $r;
