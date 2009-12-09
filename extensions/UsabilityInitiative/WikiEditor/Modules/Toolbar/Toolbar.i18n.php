@@ -98,7 +98,7 @@ $messages['en'] = array(
 | row 2, cell 1
 | row 2, cell 2
 | row 2, cell 3",
-	'wikieditor-toolbar-tool-table-example' => 'Cell text',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Cell text',
 	'wikieditor-toolbar-tool-table-example-header' => 'Header text',
 	'wikieditor-toolbar-tool-table-title' => 'Insert table',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rows',
@@ -106,9 +106,11 @@ $messages['en'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Add header row',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Style with borders',
 	'wikieditor-toolbar-tool-table-sortable' => 'Make table sortable',
+	'wikieditor-toolbar-tool-table-example' => 'Example',
 	'wikieditor-toolbar-tool-table-preview' => 'Preview',
 	'wikieditor-toolbar-tool-table-insert' => 'Insert',
 	'wikieditor-toolbar-tool-table-cancel' => 'Cancel',
+	'wikieditor-toolbar-tool-table-example-text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec purus diam. Sed aliquam imperdiet nunc quis lacinia. Donec rutrum consectetur placerat. Sed volutpat neque non purus faucibus id ultricies enim euismod.',
 	'wikieditor-toolbar-tool-table-toomany' => 'Inserting a table with more than $1 cells is not possible with this dialog.',
 	'wikieditor-toolbar-tool-table-invalidnumber' => 'You have not entered a valid number of rows or columns.',
 	'wikieditor-toolbar-tool-table-zero' => 'You cannot insert a table with zero rows or columns.',
@@ -258,7 +260,8 @@ $messages['qqq'] = array(
 	'wikieditor-toolbar-tool-olist' => '{{Identical|Numbered list}}',
 	'wikieditor-toolbar-group-size' => '{{Identical|Size}}',
 	'wikieditor-toolbar-group-insert' => '{{Identical|Insert}}',
-	'wikieditor-toolbar-tool-table-example' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
+	'wikieditor-toolbar-tool-table-example-cell-text' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
+	'wikieditor-toolbar-tool-table-example' =>  '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-example-header' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-title' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
@@ -266,13 +269,13 @@ $messages['qqq'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-wikitable' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-sortable' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
-	'wikieditor-toolbar-tool-table-preview' => '{{Identical|Preview}}
-
-[[File:Wikieditor-toolbar-tool-table.png|thumb]]This is a noun. See screenshot.',
 	'wikieditor-toolbar-tool-table-insert' => '{{Identical|Insert}}
 
 [[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
+	'wikieditor-toolbar-tool-table-example' => '{{Identical|Example}}
+  [[File:Wikieditor-toolbar-tool-table.png|thumb]]This is a noun. Important to indicate that this is not a preview of what the table will look like, but an example of what it will look similar to. See screenshot.',
 	'wikieditor-toolbar-tool-table-cancel' => '{{Identical|Cancel}}',
+	'wikieditor-toolbar-tool-table-example-text' => 'Placeholder text to help the table example appear to be in the context of an article. Should be lorem ipsum, or equivalent.',
 	'wikieditor-toolbar-tool-table-toomany' => '[[file:Bulbgraph.png|left|22px]]
 This message does not support PLURAL on $1.',
 	'wikieditor-toolbar-tool-replace' => '{{Identical|Search and replace}}',

@@ -1336,31 +1336,36 @@ mw.addOnloadHook( function() {
 				<input type="checkbox" id="wikieditor-toolbar-table-dimensions-header" checked />\
 				<label for="wikieditor-toolbar-table-dimensions-header"\
 					rel="wikieditor-toolbar-tool-table-dimensions-header"></label>\
-			</td><td rowspan="4">\
-				<span rel="wikieditor-toolbar-tool-table-preview"></span>\
-				<table id="wikieditor-toolbar-table-preview" class="wikieditor-toolbar-table-preview wikitable">\
-					<tr class="wikieditor-toolbar-table-preview-header">\
-						<th rel="wikieditor-toolbar-tool-table-example-header"></th>\
-						<th rel="wikieditor-toolbar-tool-table-example-header"></th>\
-						<th rel="wikieditor-toolbar-tool-table-example-header"></th>\
-					</tr><tr class="wikieditor-toolbar-table-preview-hidden" style="display: none;">\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-					</tr><tr>\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-					</tr><tr>\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-					</tr><tr>\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-						<td rel="wikieditor-toolbar-tool-table-example"></td>\
-					</tr>\
-				</table>\
+			</td><td rowspan="4" class="wikieditor-toolbar-table-preview-wrapper" >\
+				<span rel="wikieditor-toolbar-tool-table-example"></span>\
+				<div class="wikieditor-toolbar-table-preview-frame">\
+				<div class="wikieditor-toolbar-table-preview-content">\
+					<span rel="wikieditor-toolbar-tool-table-example-text"></span>\
+					<table id="wikieditor-toolbar-table-preview" class="wikieditor-toolbar-table-preview wikitable">\
+						<tr class="wikieditor-toolbar-table-preview-header">\
+							<th rel="wikieditor-toolbar-tool-table-example-header"></th>\
+							<th rel="wikieditor-toolbar-tool-table-example-header"></th>\
+							<th rel="wikieditor-toolbar-tool-table-example-header"></th>\
+						</tr><tr class="wikieditor-toolbar-table-preview-hidden" style="display: none;">\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+						</tr><tr>\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+						</tr><tr>\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+						</tr><tr>\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+							<td rel="wikieditor-toolbar-tool-table-example-cell-text"></td>\
+						</tr>\
+					</table>\
+				</div>\
+				</div>\
 			</td></tr><tr><td colspan="3">\
 				<input type="checkbox" id="wikieditor-toolbar-table-wikitable" checked />\
 				<label for="wikieditor-toolbar-table-wikitable" rel="wikieditor-toolbar-tool-table-wikitable"></label>\

@@ -16,14 +16,14 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 3 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 2 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 2 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 14 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 15 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 1 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 13 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 14 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 13 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 14 ),
 		),
 	);
 	static $messages = array(
@@ -219,6 +219,7 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-tool-newline',
 				'wikieditor-toolbar-tool-table',
 				'wikieditor-toolbar-tool-table-example-old',
+				'wikieditor-toolbar-tool-table-example-cell-text',
 				'wikieditor-toolbar-tool-table-example',
 				'wikieditor-toolbar-tool-table-example-header',
 				'wikieditor-toolbar-tool-table-title',
@@ -227,9 +228,9 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-tool-table-dimensions-header',
 				'wikieditor-toolbar-tool-table-wikitable',
 				'wikieditor-toolbar-tool-table-sortable',
-				'wikieditor-toolbar-tool-table-preview',
 				'wikieditor-toolbar-tool-table-insert',
 				'wikieditor-toolbar-tool-table-cancel',
+				'wikieditor-toolbar-tool-table-example-text',
 				'wikieditor-toolbar-tool-table-toomany',
 				'wikieditor-toolbar-tool-table-invalidnumber',
 				'wikieditor-toolbar-tool-table-zero',
