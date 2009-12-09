@@ -17,14 +17,15 @@ fn: {
 	 * @param config Configuration object to create module from
 	 */
 	create: function( context, config ) {
-		if ( 'preview' in context.modules ) {
+		if ( 'initialized' in context.modules.preview ) {
 			return;
 		}
 		context.modules.preview = {
+			'initialized': true,
 			'previewText': null,
 			'changesText': null
 		};
-		context.$preview = context.fn.addView( {
+		context.modules.preview.$preview = context.fn.addView( {
 			'name': 'preview',
 			'titleMsg': 'wikieditor-preview-tab',
 			'init': function( context ) {
@@ -34,8 +35,8 @@ fn: {
 				if ( context.modules.preview.previewText == wikitext ) {
 					return;
 				}
-				context.$preview.find( '.wikiEditor-preview-contents' ).empty();
-				context.$preview.find( '.wikiEditor-preview-loading' ).show();
+				context.modules.preview.$preview.find( '.wikiEditor-preview-contents' ).empty();
+				context.modules.preview.$preview.find( '.wikiEditor-preview-loading' ).show();
 				$.post(
 					wgScriptPath + '/api.php',
 					{
@@ -55,8 +56,8 @@ fn: {
 							return;
 						}
 						context.modules.preview.previewText = wikitext;
-						context.$preview.find( '.wikiEditor-preview-loading' ).hide();
-						context.$preview.find( '.wikiEditor-preview-contents' )
+						context.modules.preview.$preview.find( '.wikiEditor-preview-loading' ).hide();
+						context.modules.preview.$preview.find( '.wikiEditor-preview-contents' )
 							.html( data.parse.text['*'] )
 							.find( 'a:not([href^=#])' ).click( function() { return false; } );
 					},
@@ -113,9 +114,9 @@ fn: {
 				);
 			}
 		} );
-
+		
 		var loadingMsg = gM( 'wikieditor-preview-loading' );
-		context.$preview
+		context.modules.preview.$preview
 			.add( context.$changesTab )
 			.append( $( '<div />' )
 				.addClass( 'wikiEditor-preview-loading' )

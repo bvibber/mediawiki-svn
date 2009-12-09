@@ -11,14 +11,14 @@ api : {
 		for ( type in data ) {
 			switch ( type ) {
 				case 'sections':
-					var $sections = context.modules.$toolbar
+					var $sections = context.modules.toolbar.$toolbar
 					.find( 'div.sections' );
-					var $tabs = context.modules.$toolbar
+					var $tabs = context.modules.toolbar.$toolbar
 					.find( 'div.tabs' );
 					for ( section in data[type] ) {
 						if ( section == 'main' ) {
 							// Section
-							context.modules.$toolbar
+							context.modules.toolbar.$toolbar
 							.prepend(
 								$.wikiEditor.modules.toolbar.fn.buildSection(
 									context, section, data[type][section]
@@ -45,7 +45,7 @@ api : {
 					if ( ! ( 'section' in data ) ) {
 						continue;
 					}
-					var $section = context.modules.$toolbar
+					var $section = context.modules.toolbar.$toolbar
 					.find( 'div[rel=' + data.section + '].section' );
 					for ( group in data[type] ) {
 						// Group
@@ -57,7 +57,7 @@ api : {
 					if ( ! ( 'section' in data && 'group' in data ) ) {
 						continue;
 					}
-					var $group = context.modules.$toolbar
+					var $group = context.modules.toolbar.$toolbar
 					.find( 'div[rel=' + data.section + '].section ' + 'div[rel=' + data.group + '].group' );
 					for ( tool in data[type] ) {
 						// Tool
@@ -68,9 +68,9 @@ api : {
 					if ( ! ( 'section' in data ) ) {
 						continue;
 					}
-					var $pages = context.modules.$toolbar
+					var $pages = context.modules.toolbar.$toolbar
 					.find( 'div[rel=' + data.section + '].section .pages' );
-					var $index = context.modules.$toolbar
+					var $index = context.modules.toolbar.$toolbar
 					.find( 'div[rel=' + data.section + '].section .index' );
 					for ( page in data[type] ) {
 						// Page
@@ -86,7 +86,7 @@ api : {
 					if ( ! ( 'section' in data && 'page' in data ) ) {
 						continue;
 					}
-					var $table = context.modules.$toolbar.find(
+					var $table = context.modules.toolbar.$toolbar.find(
 						'div[rel=' + data.section + '].section ' + 'div[rel=' + data.page + '].page table'
 					);
 					for ( row in data[type] ) {
@@ -98,7 +98,7 @@ api : {
 					if ( ! ( 'section' in data && 'page' in data ) ) {
 						continue;
 					}
-					$characters = context.modules.$toolbar.find(
+					$characters = context.modules.toolbar.$toolbar.find(
 						'div[rel=' + data.section + '].section ' + 'div[rel=' + data.page + '].page div'
 					);
 					var actions = $characters.data( 'actions' );
@@ -144,20 +144,20 @@ api : {
 					target += ' table tr:not(:has(th)):eq(' + data.row + ')';
 				} else {
 					// Just a page, remove the index too!
-					context.modules.$toolbar.find( index ).remove();
+					context.modules.toolbar.$toolbar.find( index ).remove();
 					$.wikiEditor.modules.toolbar.fn.updateBookletSelection(
 						context,
 						null,
-						context.modules.$toolbar.find( target ),
-						context.modules.$toolbar.find( index )
+						context.modules.toolbar.$toolbar.find( target ),
+						context.modules.toolbar.$toolbar.find( index )
 					);
 				}
 			} else {
 				// Just a section, remove the tab too!
-				context.modules.$toolbar.find( tab ).remove();
+				context.modules.toolbar.$toolbar.find( tab ).remove();
 			}
 			js_log('target is: ' + target);
-			context.modules.$toolbar.find( target ).remove();
+			context.modules.toolbar.$toolbar.find( target ).remove();
 		}
 	}
 },
@@ -180,14 +180,14 @@ fn: {
 	 * @param {Object} config Configuration object to create module from
 	 */
 	create : function( context, config ) {
-		if ( '$toolbar' in context.modules ) {
+		if ( '$toolbar' in context.modules.toolbar ) {
 			return;
 		}
-		context.modules.$toolbar = $( '<div />' )
+		context.modules.toolbar.$toolbar = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toolbar' )
 			.attr( 'id', 'wikiEditor-ui-toolbar' );
 		$.wikiEditor.modules.toolbar.fn.build( context, config );
-		context.$ui.find( '.wikiEditor-ui-top' ).append( context.modules.$toolbar );
+		context.$ui.find( '.wikiEditor-ui-top' ).append( context.modules.toolbar.$toolbar );
 	},
 	/**
 	 * Performs an operation based on parameters
@@ -484,8 +484,8 @@ fn: {
 						if ( show ) {
 							$section.fadeIn( 'fast' );
 							dH = $section.outerHeight() - dH;
-							if ( context.modules.$toc ) {
-								context.modules.$toc.animate({'height': "+="+dH}, $section.outerHeight() * 2);
+							if ( 'toc' in context.modules ) {
+								context.modules.toc.$toc.animate({'height': "+="+dH}, $section.outerHeight() * 2);
 							}
 							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
 								$(this).css('overflow', 'visible').css('height', 'auto');
@@ -496,8 +496,8 @@ fn: {
 								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() {
 									$(this).css('overflow', 'visible');
 								} );
-							if ( context.modules.$toc ) {
-								context.modules.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);
+							if ( 'toc' in context.modules ) {
+								context.modules.toc.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);
 							}
 						}
 						// Click tracking
@@ -567,13 +567,13 @@ fn: {
 		$selectedIndex.addClass( 'current' );
 	},
 	build : function( context, config ) {
-		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.$toolbar );
-		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.$toolbar );
-		context.modules.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
+		var $tabs = $( '<div />' ).addClass( 'tabs' ).appendTo( context.modules.toolbar.$toolbar );
+		var $sections = $( '<div />' ).addClass( 'sections' ).appendTo( context.modules.toolbar.$toolbar );
+		context.modules.toolbar.$toolbar.append( $( '<div />' ).css( 'clear', 'both' ) );
 		var sectionQueue = [];
 		for ( section in config ) {
 			if ( section == 'main' ) {
-				context.modules.$toolbar.prepend(
+				context.modules.toolbar.$toolbar.prepend(
 					$.wikiEditor.modules.toolbar.fn.buildSection( context, section, config[section] )
 				);
 			} else {
@@ -599,8 +599,8 @@ fn: {
 				var $section = s.$sections.find( '.section:visible' );
 				if ( $section.size() ) {
 					$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function( ) {
-						if ( context.modules.$toc ) {
-							context.modules.$toc.height(
+						if ( 'toc' in context.modules ) {
+							context.modules.toc.$toc.height(
 								context.$ui.find( '.wikiEditor-ui-left' )
 									.outerHeight() - context.$ui.find( '.tab-toc' ).outerHeight()
 							)
