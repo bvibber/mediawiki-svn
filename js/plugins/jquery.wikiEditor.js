@@ -205,6 +205,7 @@ if ( typeof context == 'undefined' ) {
 		}
 	};
 	// Allow modules to extend the API
+	if($.wikiEditor.modules){
 	for ( module in $.wikiEditor.modules ) {
 		if ( 'api' in $.wikiEditor.modules[module] ) {
 			for ( call in $.wikiEditor.modules[module].api ) {
@@ -215,7 +216,7 @@ if ( typeof context == 'undefined' ) {
 				}
 			}
 		}
-	}
+	}}
 	
 	/* 
 	 * Event Handlers
@@ -252,6 +253,7 @@ if ( typeof context == 'undefined' ) {
 	
 	/* Internal Functions */
 	
+	//$(this).data( 'wikiEditor-context', context );
 	context.fn = {
 		'trigger': function( name, event ) {
 			// Event is an optional argument, but from here on out, at least the type field should be dependable
