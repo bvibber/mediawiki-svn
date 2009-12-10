@@ -12,6 +12,7 @@ import de.brightbyte.db.Inserter;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.processor.ImportProgressTracker;
 import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
 
@@ -47,29 +48,29 @@ public class DatabaseProximityStoreBuilder
 			proximityThreshold = tweaks.getTweak("proximity.threshold", 0.15);
 		}
 
+		private static String getBiasFormula(String biasField, double biasCoef) {
+			if ( biasField == null || biasCoef <= 0) return "1";
+			else if (biasCoef==1) return biasField;
+			else if (biasCoef>1) throw new IllegalArgumentException("biasCoef must not be greater than 1");
+			else return "( 1 - ( ( 1 - "+biasField+" ) * "+biasCoef+" ) ) ";
+		}
+		
 		/**
 		 * Builds feature vectors. For a specification, refer to ProximityStoreSchema
 		 */
-		protected int buildFeatures(DatabaseTable t, String conceptField, String featureField, String suffix, double w, String biasField, double biasCoef) throws PersistenceException {
+		protected int buildFeatures(DatabaseTable t, String conceptField, String featureField, String suffix, double w, String baseBiasField, double baseBiasCoef, String targetBiasField, double targetBiasCoef) throws PersistenceException {
 			if (!conceptStore.areStatsComplete()) throw new IllegalStateException("statistics need to be built before concept infos!");
 
 			String v = ""+w;
-			
-			//NOTE: conider bias of reference target
-			//FIXME: also consider local (outgoing) bias? feature vectors will be normalized, so that's not so relevant maybe?
-			//NOTE: since there are usually more link than categories, there's a bias in favor of categories!
-			//       number of links grows with article length, number of categories does not!
-			if (biasField!=null && biasCoef>0) {
-				if (biasCoef==1) v = "D."+biasField+" * "+w;
-				else if (biasCoef>1) throw new IllegalArgumentException("biasCoef must not be greater than 1");
-				else v = "( 1 - ( ( 1 - D."+biasField+" ) * "+biasCoef+" ) ) * "+w;
-			}
+			if (baseBiasField!=null && baseBiasCoef>0) v = getBiasFormula("B."+baseBiasField, baseBiasCoef) + " * "  + v;
+			if (targetBiasField!=null && targetBiasCoef>0) v = getBiasFormula("D."+targetBiasField, targetBiasCoef) + " * "  + v;
 			
 			DatabaseTable degreeTable = conceptStore.getStatisticsStoreBuilder().getDatabaseAccess().getTable("degree");
 			
 			String sql = "INSERT INTO "+featureTable.getSQLName()+" (concept, feature, total_weight) ";
 			sql += " SELECT T."+conceptField+", T."+featureField+", "+v+" FROM "+t.getSQLName()+" as T ";
-			if (biasField!=null && biasCoef!=0) sql += " JOIN "+degreeTable.getSQLName()+" as D ON T."+featureField+" = D.concept ";
+			if (baseBiasField!=null && baseBiasCoef!=0) sql += " JOIN "+degreeTable.getSQLName()+" as B ON T."+conceptField+" = B.concept ";
+			if (targetBiasField!=null && targetBiasCoef!=0) sql += " JOIN "+degreeTable.getSQLName()+" as D ON T."+featureField+" = D.concept ";
 			
 			if (suffix!=null) sql += " "+suffix+" ";
 			
@@ -97,22 +98,22 @@ public class DatabaseProximityStoreBuilder
 			}
 			
 			if (beginTask("buildFeatures", "feature#down")) {
-				int n = buildFeatures(broaderTable, "broad", "narrow", null, featureVectorFactors.downWeight, "up_bias", featureVectorFactors.downBiasCoef);
+				int n = buildFeatures(broaderTable, "broad", "narrow", null, featureVectorFactors.downWeight, "down_bias", featureVectorFactors.downBiasCoef, "up_bias", featureVectorFactors.upBiasCoef);
 				endTask("buildFeatures", "feature#down", n+" entries");
 		    }
 		
 			if (beginTask("buildFeatures", "feature#up")) {
-				int n = buildFeatures(broaderTable, "narrow", "broad", null, featureVectorFactors.upWeight, "down_bias", featureVectorFactors.upBiasCoef);
+				int n = buildFeatures(broaderTable, "narrow", "broad", null, featureVectorFactors.upWeight, "up_bias", featureVectorFactors.upBiasCoef, "down_bias", featureVectorFactors.downBiasCoef);
 				endTask("buildFeatures", "feature#up", n+" entries");
 		    }
 		
 			if (beginTask("buildFeatures", "feature#out")) {
-				int n = buildFeatures(linkTable, "anchor", "target", null, featureVectorFactors.outWeight, "in_bias", featureVectorFactors.outBiasCoef);
+				int n = buildFeatures(linkTable, "anchor", "target", null, featureVectorFactors.outWeight, "out_bias", featureVectorFactors.outBiasCoef, "in_bias", featureVectorFactors.inBiasCoef);
 				endTask("buildFeatures", "feature#out", n+" entries");
 		    }
 		
 			if (beginTask("buildFeatures", "feature#in")) {
-				int n = buildFeatures(linkTable, "target", "anchor", null, featureVectorFactors.inWeight, "out_bias", featureVectorFactors.inBiasCoef);
+				int n = buildFeatures(linkTable, "target", "anchor", null, featureVectorFactors.inWeight, "in_bias", featureVectorFactors.inBiasCoef, "out_bias", featureVectorFactors.outBiasCoef);
 				endTask("buildFeatures", "feature#in", n+" entries");
 		    }
 		
@@ -183,12 +184,17 @@ public class DatabaseProximityStoreBuilder
 			protected String name;
 			protected DatabaseTable conceptTable;
 			protected int lastId ;
+
+			protected ImportProgressTracker conceptTracker;
+			protected ImportProgressTracker featureTracker;
 			
 			public CollectProximityQuery(String context, String name) {
 				super();
 				this.context = context;
 				this.name = name;
 				this.conceptTable = conceptStore.getDatabaseAccess().getTable("concept");
+				this.conceptTracker = new ImportProgressTracker("concepts");
+				this.featureTracker = new ImportProgressTracker("features");
 			}
 
 			public String getChunkField() {
@@ -228,12 +234,25 @@ public class DatabaseProximityStoreBuilder
 				sql += " ORDER BY id ASC";
 				
 				int n = 0;
+				int i = 0;
 				try {
 					ResultSet res = DatabaseProximityStoreBuilder.this.executeQuery(context+"::"+name+"#chunk"+chunk, sql);
 					while (res.next()) {
 						lastId = res.getInt(1);
 						
-						n+= insertProximity(lastId); //TODO: progress tracker!
+						int c = insertProximity(lastId); //TODO: progress tracker!
+						n*= c;
+						i+= 1;
+						
+						conceptTracker.step();
+						featureTracker.step(c);
+						
+						if ( (i % 1000) == 0 ) {
+							conceptTracker.chunk();
+							featureTracker.chunk();
+							log("- "+conceptTracker);
+							log("- "+featureTracker);
+						}
 					}
 					
 					res.close();
@@ -241,6 +260,11 @@ public class DatabaseProximityStoreBuilder
 					throw new PersistenceException(e);
 				}
 				
+				conceptTracker.chunk();
+				featureTracker.chunk();
+				log("- "+conceptTracker);
+				log("- "+featureTracker);
+
 				flush();
 				return n;
 			}

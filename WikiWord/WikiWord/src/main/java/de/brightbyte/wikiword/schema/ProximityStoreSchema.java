@@ -43,18 +43,21 @@ import de.brightbyte.wikiword.TweakSet;
  *   concepts the relation applies to. That is, A's in_degree is the size of the set of all Bs for which in(A, B) applies.
  *   This bias is combined with the bias coefficient for a given relation to form the effective bias for that relation, e.g.:
  *   <tt>in_effective_bias(B) = 1 - ( ( 1 - in_bias(B) ) * in_bias_coef )</tt> which amounts to <tt>1 - ( ( log(in_degree(B)) / log(number_of_concepts) ) * in_bias_coef )</tt>.
- *   For each relation, there's also weight factor provided, which is applied to complement's bias. So if in(A, B) applies, in_w(A, B) is given by:
- *   <tt>in_weight_factor * out_effective_bias(B) </tt>; the feature vector for A is then calculated for each feature B as follows:
- *   <tt>A[B] = w(A,B) =  in_w(A, B) + out_w(A, B) + up_w(A, B) + down_w(A, B)</tt>. Note that A[A] = c, where c is the "self-weight", which usually equals 1. 
+ *   For each relation, there's also weight factor provided, which is applied to complement's bias. 
+ *   To calculate the effective weight an association, the effective bias on both "sides" of the relation is combined with the weight factor for that relation.
+ *   So if in(A, B) applies, in_w(A, B) is given by: <tt>in_weight_factor * in_effective_bias(A) * out_effective_bias(B) </tt>. 
+ *   The feature vector for A is then calculated for each feature B as follows:
+ *   <tt>A[B] = w(A,B) =  in_w(A, B) + out_w(A, B) + up_w(A, B) + down_w(A, B)</tt>. Note that A[A] = c, where c is the "self-weight", which usually equals 1.
+ *   Depending on the weight-factors used, the weight function may or may not be symmetric: in_w(A, B) may always be different from in_w(B, A), however,
+ *   if in_weight_factor = out_weight_factor, then in_w(A, B) = out_w(B, A),  and up_w(A, B) = down_w(B, A) if up_weight_factor = down_weight_factor. 
+ *   Thus, w(A,B) = w(B, A) and A[B] = B[A] if in_weight_factor = out_weight_factor and up_weight_factor = down_weight_factor. 
  *   </p>
  *   
- *   <p>The self, weight, the four bias-coeficients and the four weight-factors are the parameters for the feature vector calculation.
+ *   <p>The self-weight, the four bias-coeficients and the four weight-factors are the parameters for the feature vector calculation.
  *   They can be tweaked to adjust the relative weight given to the different types of relations in the thesaurus with respect to determining the semantic proximity,
  *   that is, the thematic similarity, of concepts. E.g. having similar incoming links (i.e. frequent co-occurrance of references) is a stringer indicator
  *   of similarity than common outgoing links.
  *   </p>
- *  
- *  <p>Note that as a result of the rules above, the weight of the association is not symmetrical: w(A, B) may be different from w(B,A)</p> 
  * 
  * <h4>Table <tt>proximity</tt></h4>
  * <p>Holds statistical figures relating to the entire thesaurus.</p>
@@ -63,8 +66,10 @@ import de.brightbyte.wikiword.TweakSet;
  * 		<dt>concept2</dt><dd>The second concept. Comprises a unique key together with concept1.</dd>
  * 		<dt>proximity</dt><dd>The semantic proximity of concept1 and concept2. This is given by the scalar products
  * 												of the normalized feature vectors of concept1 and concept2, as stored in the feature table.
+ * 												This can be interpreted as the cosin of the angle between the concepts' feature vectors.
  * 												Entries with a low proximity value may be omitted (subject to tweak value <tt>proximity.threshold</tt>).</dd>
  * </dl>
+ * <p>Note that the proximity relation is symmetrical, i.e. prox(A, B) = prox(B, A), regardless if the weight factors used.</p>
  * 
  * @author daniel
  */

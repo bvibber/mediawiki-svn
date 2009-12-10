@@ -44,7 +44,7 @@ public class BuildProximity extends ImportApp<WikiWordConceptStoreBuilder<? exte
 		this.proximityStore.buildProximity();
 
 		section("-- statistics --------------------------------------------------");
-		conceptStore.getConceptStore().getStatisticsStore().dumpStatistics(getLogOutput());
+		conceptStore.getProximityStoreBuilder().dumpTableStats(out);
 	}	
 	
 	public static void main(String[] argv) throws Exception {
