@@ -1,8 +1,4 @@
 /* wikiEditor toc module */
-body.rtl .wikiEditor-ui-text {
-	border-right: none;
-	border-left: solid silver 1px;
-}
 .wikiEditor-ui-toc {
 	/* height and width are set dynamically */
 	/*float: right;*/
@@ -10,16 +6,12 @@ body.rtl .wikiEditor-ui-text {
 	overflow: auto;
 	overflow-x: hidden;
 }
-body.rtl .wikiEditor-ui-toc {
-	/*
-	float: left;
-	right: auto;
-	left: -1px;
-	border-left: none;
-	*/
-}
 .wikiEditor-ui-toc {
 	border-left: solid silver 1px;
+}
+body.rtl .wikiEditor-ui-toc {
+	border-right: solid silver 1px;
+	border-left: none;
 }
 .wikiEditor-ui-toc ul {
 	padding: 0;
@@ -30,10 +22,6 @@ body.rtl .wikiEditor-ui-toc {
 	list-style-position: outside;
 	list-style-type: none;
 	width: 100%;
-}
-body.rtl .wikiEditor-ui-toc ul {
-	border-left: none;
-	border-right: solid silver 1px;
 }
 .tab-toc {
 	/* Should match the toolbar */
@@ -50,7 +38,7 @@ body.rtl .wikiEditor-ui-toc ul {
 }
 body.rtl .tab-toc {
 	background-position: right top;
-	padding-right: 1em;
+	padding-right: 2em;
 }
 .tab-toc a {
 	outline: none;
@@ -181,6 +169,9 @@ body.rtl wikiEditor-ui-toc ul ul ul ul ul ul li div span {
 	cursor: ew-resize;
 	background: url(../images/wikiEditor/toc/grip.png) 50% 50% no-repeat;
 	z-index: 0;
+}
+body.rtl .wikiEditor-ui-right .wikiEditor-ui-toc-resize-grip {
+	right: 2px !important;
 }
 .wikiEditor-ui-toolbar .tab-toc {
 	float: right;

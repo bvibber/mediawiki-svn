@@ -1704,7 +1704,7 @@ mw.addOnloadHook( function() {
 	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.templateEditor && wgWikiEditorPreferences.templateEditor.enable ) ) {
 		return true;
 	}
-	// Add the highlight module
+	// Add the templateEditor module
 	if ( $j.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'templateEditor' );
 	}
