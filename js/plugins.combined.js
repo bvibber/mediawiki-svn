@@ -1654,7 +1654,6 @@ if ( typeof context == 'undefined' ) {
 			context.$content.append(
 				context.$textarea.val().replace( /</g, '&lt;' ).replace( />/g, '&gt;' )
 			);
-			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
@@ -1881,7 +1880,8 @@ if ( typeof context == 'undefined' ) {
 		.attr( {
 			'frameborder': 0,
 			'src': wgScriptPath + '/extensions/UsabilityInitiative/js/plugins/jquery.wikiEditor.html?' +
-				'instance=' + context.instance + '&ts=' + ts
+				'instance=' + context.instance + '&ts=' + ts,
+			'id': 'wikiEditor-iframe-' + context.instance
 		} )
 		.css( {
 			'backgroundColor': 'white',
@@ -2625,7 +2625,7 @@ fn: {
 					}
 				}
 				sanatizedSegment = sanatizedStr.substring( startIndex,endIndex )
-						.replace( /[{}|=]/g 'X' );
+						.replace( /[{}|=]/g , 'X' );
 				sanatizedStr = sanatizedStr.substring( 0, startIndex ) +
 					sanatizedSegment + sanatizedStr.substring( endIndex );
 		};
@@ -2690,10 +2690,11 @@ fn: {
 				// (still offset by oldDivider)
 				nameBegin = currentName.match( /\S+/ ); //first nonwhitespace character
 				if ( nameBegin == null ) {
+					// this is a comment inside a template call/parser abuse. let's not encourage it
 					divider++;
 					currentParamNumber--;
 					continue;
-				} // this is a comment inside a template call/parser abuse. let's not encourage it
+				}
 				nameBeginIndex = nameBegin.index + oldDivider + 1;
 				nameEnd = currentName.match( /[^\s]\s*$/ ); //last nonwhitespace and non } character
 				nameEndIndex = nameEnd.index + oldDivider + 2;

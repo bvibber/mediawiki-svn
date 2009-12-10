@@ -344,7 +344,6 @@ if ( typeof context == 'undefined' ) {
 			context.$content.append(
 				context.$textarea.val().replace( /</g, '&lt;' ).replace( />/g, '&gt;' )
 			);
-			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
@@ -571,7 +570,8 @@ if ( typeof context == 'undefined' ) {
 		.attr( {
 			'frameborder': 0,
 			'src': wgScriptPath + '/extensions/UsabilityInitiative/js/plugins/jquery.wikiEditor.html?' +
-				'instance=' + context.instance + '&ts=' + ts
+				'instance=' + context.instance + '&ts=' + ts,
+			'id': 'wikiEditor-iframe-' + context.instance
 		} )
 		.css( {
 			'backgroundColor': 'white',
