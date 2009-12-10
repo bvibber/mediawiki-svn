@@ -119,20 +119,18 @@ fn: {
 		}
 		markedText = "";
 		var previousIndex = 0;
-		for ( var i = 0; i < this.markers.length; i++ ) {
-			markedText += rawText.substring( previousIndex, currentIndex );
-			
-			for ( var j = 0 ; i < this.markers[i].length; j++ ) {
-				markedText += this.markers[i][j];
-			}
-			
-			previousIndex = currentIndex;
-		}
-		if ( markedText != "" ) {
-			markedText.replace( /\n/g, '<br>' );
-			context.fn.setContents( { contents:markedText } );
-		}
-	}
+	    for(var currentIndex in this.markers){
+	    	markedText+= rawText.substring(previousIndex, currentIndex);
+	    	for(var i = 0 ; i < this.markers[currentIndex].length; i++){
+	    		 markedText += this.markers[currentIndex][i];
+	    	}
+	    	previousIndex = currentIndex;
+	    }
+	    if(markedText != ""){
+	    	 markedText.replace(/\n/g, '<br\>');
+	    	 context.fn.setContents( { contents:markedText } );
+	    }
+	}//mark
 }
 
 }; })( jQuery );
