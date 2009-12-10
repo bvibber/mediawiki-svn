@@ -1,6 +1,6 @@
 /* TOC Module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.toc = {
-
+	
 /**
  * Default width of table of contents
  */
@@ -40,6 +40,12 @@ evt: {
 				context.$textarea.delayedBindCancel( 250, 'mouseup scrollToTop keyup change' );
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
+	},
+	resize: function( context, event ) {
+		context.modules.toc.$toc.height(
+			context.$ui.find( '.wikiEditor-ui-left' ).height() - 
+			context.$ui.find( '.tab-toc' ).outerHeight()
+		);
 	}
 },
 /**
@@ -255,6 +261,7 @@ fn: {
 				.text( gM( 'wikieditor-toc-show' ) );
 			$collapseControl.insertBefore( context.modules.toc.$toc );
 			context.$ui.find( '.wikiEditor-ui-left .wikiEditor-ui-top' ).append( $expandControl );
+			context.fn.trigger( 'resize' );
 		}
 		/**
 		 * Initializes resizing controls on the TOC and sets the width of
@@ -299,9 +306,10 @@ fn: {
 					}
 				});
 			// Convert our east resize handle into a secondary west resize handle
-			context.$ui.find( '.ui-resizable-e' )
-				.removeClass( 'ui-resizable-e' )
-				.addClass( 'ui-resizable-w' )
+			var handle = $j( 'body' ).is( '.rtl' ) ? 'w' : 'e'
+			context.$ui.find( '.ui-resizable-' + handle )
+				.removeClass( 'ui-resizable-' + handle )
+				.addClass( 'ui-resizable-' + ( handle == 'w' ? 'e' : 'w' ) )
 				.addClass( 'wikiEditor-ui-toc-resize-grip' );
 			// Bind collapse and expand event handlers to the TOC
 			context.modules.toc.$toc

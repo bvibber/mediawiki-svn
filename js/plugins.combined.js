@@ -1515,6 +1515,7 @@ if ( typeof context == 'undefined' ) {
 		}
 	};
 	// Allow modules to extend the API
+	if($.wikiEditor.modules){
 	for ( module in $.wikiEditor.modules ) {
 		if ( 'api' in $.wikiEditor.modules[module] ) {
 			for ( call in $.wikiEditor.modules[module].api ) {
@@ -1525,7 +1526,7 @@ if ( typeof context == 'undefined' ) {
 				}
 			}
 		}
-	}
+	}}
 	
 	/* 
 	 * Event Handlers
@@ -1562,6 +1563,7 @@ if ( typeof context == 'undefined' ) {
 	
 	/* Internal Functions */
 	
+	//$(this).data( 'wikiEditor-context', context );
 	context.fn = {
 		'trigger': function( name, event ) {
 			// Event is an optional argument, but from here on out, at least the type field should be dependable
@@ -1648,7 +1650,11 @@ if ( typeof context == 'undefined' ) {
 			context.$content = $( context.$iframe[0].contentWindow.document.body );
 			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
 			// characters rather than actual HTML tags in the code editor container.
-			context.$content.append( $( '<div />' ).text( context.$textarea.val() ).html() );
+			
+			context.$content.append(
+				context.$textarea.val().replace( /</g, '&lt;' ).replace( />/g, '&gt;' )
+			);
+			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
@@ -1673,12 +1679,13 @@ if ( typeof context == 'undefined' ) {
 		 * Gets the complete contents of the iframe
 		 */
 		'getContents': function() {
+			// FIXME: Evil ua-sniffing action!
+			if ( $.browser.name == 'msie' ) {
+				return context.$content.text();
+			}
 			// We use .html() instead of .text() so HTML entities are handled right
 			// Setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
-			
-			return $( '<div />' )
-				.html( context.$content.html().replace( /\<br\>/g, "\n" ) )
-				.text();
+			return $( '<div />' ).html( context.$content.html().replace( /\<br\>/g, "\n" ) ).text();
 		},
 		'setContents': function( options ) {
 			context.$content.text( options.contents );
@@ -2106,7 +2113,7 @@ api: {
  * Internally used event handlers
  */
 evt: {
-	change: function( event ) {
+	change: function( context, event ) {
 		/*
 		 * Triggered on any of the following events, with the intent on detecting if something was added, deleted or
 		 * replaced due to user action.
@@ -2129,8 +2136,13 @@ evt: {
 		 * 			;	Definition
 		 * 			:	Definition
 		 */
+			if(event.data.scope == 'do_not_trigger'){
+				$.wikiEditor.modules.highlight.fn.scan(context, "");
+				$.wikiEditor.modules.highlight.fn.mark(context, "", "");
+			}
 	}
 },
+
 /**
  * Internally used functions
  */
@@ -2157,17 +2169,75 @@ fn: {
 	strip: function( context, division ) {
 		return $( '<div />' ).html( division.html().replace( /\<br[^\>]*\>/g, "\n" ) ).text();
 	},
+	tokenArray : [],
 	scan: function( context, division ) {
 		/*
 		 * We need to look over some text and find interesting areas, then return the positions of those areas as tokens
 		 */
-		return []; // array of tokens?
+		token = function(offset, label){
+			this.offset = offset;
+			this.label = label;
+		}
+		
+		this.tokenArray = new Array();
+		var text = context.fn.getContents();
+		for ( module in $.wikiEditor.modules ) {
+			if ( 'exp' in $.wikiEditor.modules[module] ) {
+			   for(var i = 0; i < $.wikiEditor.modules[module].exp.length; i++){
+					var regex = $.wikiEditor.modules[module].exp[i].regex;
+					var label = $.wikiEditor.modules[module].exp[i].label;
+					var markAfter = false;
+					if(typeof($.wikiEditor.modules[module].exp[i].markAfter) != 'undefined'){
+						markAfter = true;
+					}
+					match = text.match(regex);
+					var oldOffset = 0;
+					while(match != null){
+						var markOffset = 0;
+						if(markAfter){
+							markOffset += match[0].length;
+						}
+						this.tokenArray.push(new token(match.index + oldOffset + markOffset, label));
+						oldOffset += (match.index + match[0].length);
+						newSubstring = text.substring(oldOffset);
+						match = newSubstring.match(regex);
+					}
+			   }
+			}
+		}
+		
+		return this.tokenArray; // array of tokens
 	},
+	markers: [],
 	mark: function( context, division, tokens ) {
 		/*
 		 * We need to markup some text based on some tokens
 		 */
-	}
+		var rawText = context.fn.getContents();
+		
+		
+		//get all markers
+		for ( module in $.wikiEditor.modules ) {
+			if ( 'evt' in $.wikiEditor.modules[module]  && 'mark' in $.wikiEditor.modules[module].evt) {
+				$.wikiEditor.modules[module].evt.mark();
+			}
+		}
+		markedText = "";
+		var previousIndex = 0;
+		for(var currentIndex in this.markers){
+			markedText+= rawText.substring(previousIndex, currentIndex);
+			
+			for(var i = 0 ; i < this.markers[currentIndex].length; i++){
+				markedText += this.markers[currentIndex][i];
+			}
+			
+			previousIndex = currentIndex;
+		}
+		if(markedText != ""){
+			markedText.replace(/\n/g, '<br\>');
+			context.fn.setContents({contents:markedText});
+		}
+	}//endmark
 }
 
 }; })( jQuery );/* Preview module for wikiEditor */
@@ -2429,7 +2499,7 @@ fn: {
 
 }; } )( jQuery );/* TOC Module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.toc = {
-
+	
 /**
  * Default width of table of contents
  */
@@ -2469,6 +2539,12 @@ evt: {
 				context.$textarea.delayedBindCancel( 250, 'mouseup scrollToTop keyup change' );
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
+	},
+	resize: function( context, event ) {
+		context.modules.toc.$toc.height(
+			context.$ui.find( '.wikiEditor-ui-left' ).height() - 
+			context.$ui.find( '.tab-toc' ).outerHeight()
+		);
 	}
 },
 /**
@@ -2684,6 +2760,7 @@ fn: {
 				.text( gM( 'wikieditor-toc-show' ) );
 			$collapseControl.insertBefore( context.modules.toc.$toc );
 			context.$ui.find( '.wikiEditor-ui-left .wikiEditor-ui-top' ).append( $expandControl );
+			context.fn.trigger( 'resize' );
 		}
 		/**
 		 * Initializes resizing controls on the TOC and sets the width of
@@ -2728,9 +2805,10 @@ fn: {
 					}
 				});
 			// Convert our east resize handle into a secondary west resize handle
-			context.$ui.find( '.ui-resizable-e' )
-				.removeClass( 'ui-resizable-e' )
-				.addClass( 'ui-resizable-w' )
+			var handle = $j( 'body' ).is( '.rtl' ) ? 'w' : 'e'
+			context.$ui.find( '.ui-resizable-' + handle )
+				.removeClass( 'ui-resizable-' + handle )
+				.addClass( 'ui-resizable-' + ( handle == 'w' ? 'e' : 'w' ) )
 				.addClass( 'wikiEditor-ui-toc-resize-grip' );
 			// Bind collapse and expand event handlers to the TOC
 			context.modules.toc.$toc
