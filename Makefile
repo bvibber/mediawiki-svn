@@ -25,6 +25,7 @@ PLUGINS := \
 	js/plugins/jquery.wikiEditor.highlight.js\
 	js/plugins/jquery.wikiEditor.preview.js\
 	js/plugins/jquery.wikiEditor.publish.js\
+	js/plugins/jquery.wikiEditor.templateEditor.js\
 	js/plugins/jquery.wikiEditor.toc.js\
 	js/plugins/jquery.wikiEditor.toolbar.js
 
