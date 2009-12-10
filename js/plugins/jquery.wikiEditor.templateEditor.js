@@ -11,7 +11,7 @@ api: {
 evt: {
 	mark: function() {
 			function findOutermostTemplates( tokenStack ) {
-				var templateBeginFound = false;
+				templateBeginFound = false;
 				for ( ;i< tokenStack.length; i++ ) {
 					if ( tokenStack[i].label == "TEMPLATE_BEGIN" ) {
 						templateBeginFound = true;
@@ -48,11 +48,11 @@ evt: {
 				}
 			}; //find outermost templates
 			
-			var markers = $.wikiEditor.modules.highlight.fn.markers;
+			markers = $.wikiEditor.modules.highlight.fn.markers;
 			var tokenStack = $.wikiEditor.modules.highlight.fn.tokenArray;
-			var i = 0;
+			i = 0;
 			var templateBoundaries;
-			var templateBeginFound = false;
+			templateBeginFound = false;
 			
 			while ( templateBoundaries = findOutermostTemplates( tokenStack ) ) {
 				if ( typeof markers[tokenStack[templateBoundaries[0]].offset] == 'undefined' ) {
@@ -61,7 +61,6 @@ evt: {
 				if ( typeof markers[tokenStack[templateBoundaries[1]].offset] == 'undefined' ) {
 					markers[tokenStack[templateBoundaries[1]].offset] = [];
 				}
-				
 				markers[tokenStack[templateBoundaries[0]].offset].push( "<div class='wiki-template'>" );
 				markers[tokenStack[templateBoundaries[1]].offset].push( "</div>" );
 			}
@@ -132,6 +131,8 @@ fn: {
 						.replace( /[{}|=]/g , 'X' );
 				sanatizedStr = sanatizedStr.substring( 0, startIndex ) +
 					sanatizedSegment + sanatizedStr.substring( endIndex );
+			}//while
+			return sanatizedStr;
 		};
 
 		// Whitespace* {{ whitespace* nonwhitespace:
@@ -270,9 +271,13 @@ fn: {
 		
 		//get template name
 		this.getName = function() {
-			return ranges[templateNameIndex].newVal ||
-				wikitext.substring( ranges[templateNameIndex].begin,
-					ranges[templateNameIndex].end );
+			if( typeof ranges[templateNameIndex].newVal == 'undefined' ) {
+				return wikitext.substring( ranges[templateNameIndex].begin,
+						ranges[templateNameIndex].end );
+			
+			} else {
+				return ranges[templateNameIndex].newVal;
+			}
 		};
 		
 		//set template name (if we want to support this)
@@ -309,13 +314,17 @@ fn: {
 		this.getText = function() {
 			newText = "";
 			for ( i = 0 ; i < ranges.length; i++ ) {
-				newText += ranges[i].newVal || wikitext.substring(
-					ranges[i].begin, ranges[i].end );
+				if( typeof ranges[i].newVal == 'undefined' ) {
+					wikitext.substring( ranges[i].begin, ranges[i].end );
+				} else {
+					newText += ranges[i].newVal;
+				}
 			}
 			return newText;
 		};
 	}//template model
-}
+
+}//fn
 
 }; } )( jQuery );
 
