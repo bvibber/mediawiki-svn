@@ -9459,6 +9459,16 @@ window.DP_jQuery = $;
  * the JavaScript space. As such, if we get to the point of merging that stuff
  * into the main branch this code will be uneeded and probably cause issues.
  */
+
+/**
+ * Mimics the no-conflict method used by the js2 stuff
+*/
+$j = jQuery.noConflict();
+
+if( !mw ) 
+	mw = { };
+	
+	
 // Creates global message object if not already in existence
 if ( !gMsg ) var gMsg = {};
 /**
@@ -9493,14 +9503,7 @@ function gM( key, args ) {
 		return '[' + key + ']';
 	}
 }
-/**
- * Mimics the no-conflict method used by the js2 stuff
- */
-$j = jQuery.noConflict();
 
-if( !mw ) 
-	mw = { };
-	
 /**
  * Provides js2 compatible onload hook
  * @param func Function to call when ready

@@ -23,7 +23,7 @@ var defaultAddMediaConfig = {
 mw.addOnloadHook( function() {
 	js_log( "edit page mw.addOnloadHook::" );
 	var amwConf = $j.extend( true, defaultAddMediaConfig, mwAddMediaConfig );
-	// kind of tricky, it would be nice to use run on ready "loader" call here
+	// Kind of tricky, it would be nice to use run on ready "loader" call here
 	var didWikiEditorBind = false;
 	
 	// Set-up the drag drop binding (will only work for html5 upload browsers) 
