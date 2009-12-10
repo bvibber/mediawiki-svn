@@ -115,7 +115,7 @@ seqRemoteSearchDriver.prototype = {
 			clipConfig['poster'] = ( rObj.local_poster ) ? rObj.local_poster : rObj.poster;
 
 			if ( rObj.start_time && rObj.end_time ) {
-				clipConfig['dur'] = npt2seconds( rObj.end_time ) - npt2seconds( rObj.start_time );
+				clipConfig['dur'] = mw.npt2seconds( rObj.end_time ) - mw.npt2seconds( rObj.start_time );
 			} else {
 				// Provide a default duration if none set
 				clipConfig['dur'] = 4;

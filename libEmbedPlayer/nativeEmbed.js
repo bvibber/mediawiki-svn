@@ -1,5 +1,4 @@
-
-/*
+/**
 * Native embed library:
 * 
 * Enables embedPlayer support for native html5 browser playback system
@@ -54,7 +53,7 @@ var nativeEmbed = {
 		// We want to let mwEmbed handle the controls so notice the absence of control attribute
 		// controls=false results in controls being displayed: 
 		// http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-August/016159.html		
-		js_log( "native play url:" + this.getSrc() + ' start_offset: ' + this.start_ntp + ' end: ' + this.end_ntp );
+		js_log( "native play url:" + this.getSrc() + ' startOffset: ' + this.start_ntp + ' end: ' + this.end_ntp );
 		var eb = '<video ' +
 					'id="' + this.pid + '" ' +
 					'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
@@ -63,6 +62,7 @@ var nativeEmbed = {
 				 '</video>';
 		return eb;
 	},	
+	
 	/**
 	* Post element javascript, binds event listeners and starts monitor 
 	*/	
@@ -160,9 +160,7 @@ var nativeEmbed = {
 		this.play();
 		var rfsCount = 0;
 		var readyForSeek = function() {
-			_this.getPlayerElement();
-			if ( _this.playerElement )
-				js_log( 'readyForSeek looking::' + _this.playerElement.duration );
+			_this.getPlayerElement();			
 			// if we have duration then we are ready to do the seek
 			if ( _this.playerElement && _this.playerElement.duration ) {
 				_this.doNativeSeek( percentage );
@@ -197,6 +195,9 @@ var nativeEmbed = {
 	},
 	/**
 	* Do the seek request with a callback
+	* 
+	* @param {Float} position Position in seconds
+	* @param {Function} callback Function to call once seeking completes
 	*/
 	doSeekedCallback : function( position, callback ){
 		var _this = this;			
@@ -214,7 +215,7 @@ var nativeEmbed = {
 	/**
 	* Monitor the video playback & update the currentTime
 	*/
-	monitor : function() {
+	monitor: function() {
 		this.getPlayerElement(); // make sure we have .vid obj
 		if ( !this.playerElement ) {
 			js_log( 'could not find video embed: ' + this.id + ' stop monitor' );
@@ -388,7 +389,7 @@ var nativeEmbed = {
 	
 	/**
 	* Local method for metadata ready
-	*  fired when metadata becomes avaliable
+	*  fired when metadata becomes available
 	*
 	* Used to update the media duration to 
 	* accurately reflect the src duration 

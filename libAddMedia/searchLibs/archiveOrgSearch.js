@@ -133,7 +133,7 @@ archiveOrgSearch.prototype = {
 			options = { };
 		var id_attr = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
 		if ( resource.duration ) {
-			var src = resource.src + '?t=0:0:0/' + seconds2npt( resource.duration );
+			var src = resource.src + '?t=0:0:0/' + mw.seconds2npt( resource.duration );
 		} else {
 			var src = resource.src;
 		}

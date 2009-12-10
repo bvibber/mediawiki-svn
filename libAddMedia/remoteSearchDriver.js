@@ -371,7 +371,7 @@ remoteSearchDriver.prototype = {
 	/*
 	* The initialisation function
 	*
-	* @param {Object} options Options to overide: default_remote_search_options
+	* @param {Object} options Options to override: default_remote_search_options
 	*/
 	init: function( options ) {
 		var _this = this;
@@ -392,7 +392,11 @@ remoteSearchDriver.prototype = {
 		for ( var provider_id in this.content_providers ) {
 			// Set the provider id
 			this.content_providers[ provider_id ][ 'id' ] = provider_id
-			if ( _this.enabled_providers == 'all' && !this.currentProvider  ) {
+			
+			//Set local provider var: 
+			var provider = this.content_providers[ provider_id ];
+			
+			if ( _this.enabled_providers == 'all' && !this.currentProvider && provider.api_url ) {
 				this.currentProvider = provider_id;
 				break;
 			} else {
@@ -418,6 +422,9 @@ remoteSearchDriver.prototype = {
 			&& typeof wgSiteName != 'undefined' )
 		{
 			_this.upload_api_name =  wgSiteName;
+		} else {
+			// Disable upload tab if no target is avaliable 
+			this.content_providers[ 'upload' ].enabled = false;
 		}
 
 		// Set the target to "proxy" if a proxy frame is configured
@@ -797,7 +804,7 @@ remoteSearchDriver.prototype = {
 		js_log( "showUploadTab::" );
 		var _this = this;
 		// set it to loading:
-		mv_set_loading( '#tab-upload' );
+		$j( '#tab-upload' ).loadingSpiner();
 		// Do things async to keep interface snappy
 		setTimeout(
 			function() {
@@ -852,13 +859,13 @@ remoteSearchDriver.prototype = {
 			'<td valign="top" style="width:350px; padding-right: 12px;">' +
 			'<h4>' + uploadMsg + '</h4>' +
 			'<div id="upload_form">' +
-				mv_get_loading_img() +
+				mw.loading_spiner() +
 			'</div>' +
 			'</td>' +
 			'<td valign="top" id="upload_bin_cnt">' +
 			'<h4>' + recentUploadsMsg + '</h4>' +
 			'<div id="upload_bin">' +
-				mv_get_loading_img() +
+				mw.loading_spiner() +
 			'</div>' +
 			'</td>' +
 			'</tr>' +
@@ -944,7 +951,7 @@ remoteSearchDriver.prototype = {
 			}
 
 			// Set the content to loading while we do the search:
-			$j( '#tab-' + providerName ).html( mv_get_loading_img() );
+			$j( '#tab-' + providerName ).html( mw.loading_spiner() );
 
 			// Make sure the search library is loaded and issue the search request
 			this.getLibSearchResults( provider );
@@ -1079,9 +1086,9 @@ remoteSearchDriver.prototype = {
 					'</div>' );
 			}
 			return false;
-		}				
+		}						
 		_this.loadSearchLib( provider, function( provider ) {
-			// Do the search:						
+			// Do the search:									
 			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() );
 			_this.waitForResults( function() {
 				_this.showResults();
@@ -1164,7 +1171,7 @@ remoteSearchDriver.prototype = {
 		s += '<ul>';
 		var content = '';
 		for ( var providerName in this.content_providers ) {
-			var provider = this.content_providers[providerName];
+			var provider = this.content_providers[ providerName ];
 			var tabImage = mw.getMwEmbedPath() + '/skins/common/remote_cp/' + providerName + '_tab.png';
 			if ( provider.enabled && provider.checked && provider.api_url ) {
 				// Add selected default if set
@@ -1242,7 +1249,7 @@ remoteSearchDriver.prototype = {
 	},
 
 	/**
-	* showResults for the currentProvider
+	* Show Results for the currentProvider
 	*/
 	showResults: function() {
 		js_log( 'f:showResults::' + this.currentProvider );
@@ -1254,7 +1261,7 @@ remoteSearchDriver.prototype = {
 			tabSelector = '#upload_bin';
 			var provider = _this.content_providers['this_wiki'];
 		} else {
-			var provider = this.content_providers[this.currentProvider];
+			var provider = this.content_providers[ this.currentProvider ];
 			tabSelector = '#tab-' + this.currentProvider;
 			// Output the results bar / controls
 		}
@@ -1440,7 +1447,7 @@ remoteSearchDriver.prototype = {
 				'style="position:absolute;' + overflowStyle + ';' + 
 				'left:' + ( maxWidth + 20 ) + 'px;right:0px;top:5px;bottom:10px;' + 
 				'padding:5px;" >' +
-			mv_get_loading_img( 'position:absolute;top:30px;left:30px' ) +
+			mw.loading_spiner( 'position:absolute;top:30px;left:30px' ) +
 			'</div>' +
 			'</div>' );
 	},
@@ -1945,7 +1952,7 @@ remoteSearchDriver.prototype = {
 			'<br style="clear both"/>' +
 			'<strong>' + gM( 'mwe-resource_page_desc' ) + '</strong>' +
 			'<div id="rsd_import_desc" style="display:inline;">' +
-			mv_get_loading_img( 'position:absolute;top:5px;left:5px' ) +
+			mw.loading_spiner( 'position:absolute;top:5px;left:5px' ) +
 			'</div>' +
 			'</div>' +
 			'<div id="rds_edit_import_container" ' + 
@@ -1998,7 +2005,7 @@ remoteSearchDriver.prototype = {
 			.btnBind()
 			.click( function() {
 				js_log( " Do preview asset update" );
-				$j( '#rsd_import_desc' ).html( mv_get_loading_img() );
+				$j( '#rsd_import_desc' ).html( mw.loading_spiner() );
 				// load the preview text:
 				_this.parse( 
 					$j( '#rsd_import_ta' ).val(), 
@@ -2204,7 +2211,7 @@ remoteSearchDriver.prototype = {
 				'<div id="rsd_preview_display"' +
 					'style="position:absolute;overflow:hidden;z-index:4;' + 
 					'top:0px;bottom:0px;right:0px;left:0px;background-color:#FFF;">' +
-				mv_get_loading_img( 'top:30px;left:30px' ) +
+				mw.loading_spiner( 'top:30px;left:30px' ) +
 				'</div>' );
 
 			var buttonPaneSelector = _this.target_container + '~ .ui-dialog-buttonpane';

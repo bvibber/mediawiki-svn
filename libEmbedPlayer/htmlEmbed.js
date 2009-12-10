@@ -3,7 +3,8 @@
  * for use with mv_playlist SMIL additions
  */
 var pcHtmlEmbedDefaults = {
-	'dur':4 // default duration of 4 seconds
+	// default duration of 4 seconds	
+	'dur':4 
 }
 
 var htmlEmbed = {
@@ -32,7 +33,7 @@ var htmlEmbed = {
 	currentTime:0,
 	
 	// StartOffset support seeking into the virtual player
-	start_offset:0,
+	startOffset:0,
 	
 	// The local clock used to emulate playback time
 	clockStartTime: 0
@@ -271,7 +272,7 @@ var htmlEmbed = {
 	*/
 	updateVideoTime:function( start_npt, end_npt ) {
 		// since we don't really have timeline for html elements just take the delta and set it as the duration
-		this.pc.dur = npt2seconds( end_ntp ) - npt2seconds( start_ntp );
+		this.pc.dur = mw.npt2seconds( end_ntp ) - mw.npt2seconds( start_ntp );
 	},
 	
 	/**

@@ -382,7 +382,7 @@ mvBaseUploadInterface.prototype = {
 
 		// Set the HTTP box to "loading", in case we don't get an update for some time
 		$j( '#dlbox-centered' ).html( '<h5>' + _this.getProgressTitle() + '</h5>' +
-			mv_get_loading_img( 'left:40%;top:20%' )
+			mw.loading_spiner( 'left:40%;top:20%' )
 		);
 
 		// Set up the request
@@ -707,7 +707,7 @@ mvBaseUploadInterface.prototype = {
 				//check if we have a stashed key:
 				if ( _this.warnings_sessionkey ) {
 					//set to "loading"
-					$j( '#upProgressDialog' ).html( mv_get_loading_img() );
+					$j( '#upProgressDialog' ).html( mw.loading_spiner() );
 					//setup loading:
 					var req = {
 						'action': 'upload',
@@ -817,7 +817,7 @@ mvBaseUploadInterface.prototype = {
 			title_txt = _this.getProgressTitle();
 
 		if ( !msg )
-			msg = mv_get_loading_img( 'left:40%;top:40px;' );
+			msg = mw.loading_spiner( 'left:40%;top:40px;' );
 
 		if ( !buttons ) {
 			// If no buttons are specified, add a close button
