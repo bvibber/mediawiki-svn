@@ -906,10 +906,13 @@ $messages['jv'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author Malafaya
  */
 $messages['ka'] = array(
 	'patrol-revert-reason' => 'მიზეზი:',
+	'group-patroller' => 'პატროლიორები',
+	'group-patroller-member' => 'პატროლიორი',
 );
 
 /** Khmer (ភាសាខ្មែរ)

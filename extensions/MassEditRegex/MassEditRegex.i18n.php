@@ -768,6 +768,12 @@ $messages['pms'] = array(
 La prima espression ëd confront, se bon-a, a sarà rimpiassà con la prima espression ëd rimpiass, e via parèj.
 Varda [http://php.net/manual/en/function.preg-replace.php la funsion PHP preg_replace()] për detaj.',
 	'masseditregex-pagelisttxt' => 'Pàgine da modifiché (deuvra pa në spassi nominal: prefiss):',
+	'masseditregex-matchtxt' => 'Serca:',
+	'masseditregex-replacetxt' => 'Rimpiassa con:',
+	'masseditregex-executebtn' => 'Fà giré',
+	'masseditregex-err-nopages' => 'It deuve spessifié almanch na pàgina da cambié.',
+	'masseditregex-before' => 'Prima',
+	'masseditregex-after' => "D'apress",
 );
 
 /** Portuguese (Português)

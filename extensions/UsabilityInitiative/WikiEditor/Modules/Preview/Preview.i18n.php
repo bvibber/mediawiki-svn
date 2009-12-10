@@ -21,6 +21,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Hamilton Abreu
  * @author Lloffiwr
  * @author Mormegil
  * @author Roan Kattouw
@@ -30,7 +31,9 @@ $messages['qqq'] = array(
 	'wikieditor-preview-tab' => 'Caption of the tab containing the preview
 
 {{Identical|Preview}}',
-	'wikieditor-preview-changes-tab' => "Caption of the tab containing a diff of the user's changes, à la Show changes.",
+	'wikieditor-preview-changes-tab' => "Caption of the tab containing a diff of the user's changes, à la Show changes.
+
+{{Identical|Change}}",
 	'wikieditor-preview-loading' => 'Alt text for spinner displayed while preview is being loaded
 {{Identical|Loading}}',
 );
@@ -60,6 +63,7 @@ $messages['ar'] = array(
 $messages['be-tarask'] = array(
 	'wikieditor-preview-preference' => 'Уключыць папярэдні прагляд адзін каля аднаго',
 	'wikieditor-preview-tab' => 'Папярэдні прагляд',
+	'wikieditor-preview-changes-tab' => 'Зьмены',
 	'wikieditor-preview-loading' => 'Загрузка…',
 );
 
@@ -95,6 +99,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'wikieditor-preview-preference' => 'Omogući pretpregled s obje strane',
 	'wikieditor-preview-tab' => 'Pregled',
+	'wikieditor-preview-changes-tab' => 'Promjene',
 	'wikieditor-preview-loading' => 'Učitavam...',
 );
 
@@ -117,12 +122,14 @@ $messages['cy'] = array(
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author DaSch
  * @author Lyzzy
  * @author MF-Warburg
  */
 $messages['de'] = array(
 	'wikieditor-preview-preference' => 'Gegenüberstellungs-Vorschau ermöglichen',
 	'wikieditor-preview-tab' => 'Vorschau',
+	'wikieditor-preview-changes-tab' => 'Änderungen',
 	'wikieditor-preview-loading' => 'lädt …',
 );
 
@@ -212,6 +219,7 @@ $messages['grc'] = array(
 $messages['gsw'] = array(
 	'wikieditor-preview-preference' => 'Gegeiniberstelligs-Vorschau meglig mache',
 	'wikieditor-preview-tab' => 'Vorschau',
+	'wikieditor-preview-changes-tab' => 'Änderige',
 	'wikieditor-preview-loading' => 'Am Lade ...',
 );
 
@@ -272,6 +280,13 @@ $messages['ja'] = array(
 	'wikieditor-preview-loading' => '読み込み中…',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'wikieditor-preview-loading' => '불러오는 중...',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -296,6 +311,7 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'wikieditor-preview-preference' => 'Овозможи преглед „рамо до рамо“',
 	'wikieditor-preview-tab' => 'Преглед',
+	'wikieditor-preview-changes-tab' => 'Промени',
 	'wikieditor-preview-loading' => 'Вчитувам...',
 );
 
@@ -305,6 +321,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'wikieditor-preview-preference' => 'അരികിലായുള്ള പ്രിവ്യൂ സജ്ജമാക്കുക',
 	'wikieditor-preview-tab' => 'എങ്ങനെയുണ്ടെന്നു കാണുക',
+	'wikieditor-preview-changes-tab' => 'മാറ്റങ്ങൾ',
 	'wikieditor-preview-loading' => 'ശേഖരിക്കുന്നു...',
 );
 
@@ -314,6 +331,7 @@ $messages['ml'] = array(
 $messages['nl'] = array(
 	'wikieditor-preview-preference' => 'Bewerken en voorvertoning naast elkaar',
 	'wikieditor-preview-tab' => 'Voorvertoning',
+	'wikieditor-preview-changes-tab' => 'Wijzigingen',
 	'wikieditor-preview-loading' => 'Bezig met laden...',
 );
 
@@ -358,6 +376,7 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'wikieditor-preview-preference' => 'Abìlita la previsualisassion da part a part',
 	'wikieditor-preview-tab' => 'Previsualisassion',
+	'wikieditor-preview-changes-tab' => 'Cangiament',
 	'wikieditor-preview-loading' => 'A caria ...',
 );
 
@@ -368,6 +387,7 @@ $messages['pms'] = array(
 $messages['pt'] = array(
 	'wikieditor-preview-preference' => 'Possibilitar antevisão lado a lado',
 	'wikieditor-preview-tab' => 'Antevisão',
+	'wikieditor-preview-changes-tab' => 'Alterações',
 	'wikieditor-preview-loading' => 'A carregar...',
 );
 
@@ -445,6 +465,7 @@ $messages['sw'] = array(
  */
 $messages['te'] = array(
 	'wikieditor-preview-tab' => 'మునుజూపు',
+	'wikieditor-preview-changes-tab' => 'మార్పులు',
 	'wikieditor-preview-loading' => 'లోడవుతోంది...',
 );
 
@@ -474,6 +495,7 @@ $messages['uk'] = array(
 $messages['vec'] = array(
 	'wikieditor-preview-preference' => "Ativa l'anteprima parte par parte",
 	'wikieditor-preview-tab' => 'Anteprima',
+	'wikieditor-preview-changes-tab' => 'Canbiamenti',
 	'wikieditor-preview-loading' => "So' drio cargar...",
 );
 
@@ -483,6 +505,7 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'wikieditor-preview-preference' => 'Cho phép so sánh cạnh nhau',
 	'wikieditor-preview-tab' => 'Xem trước',
+	'wikieditor-preview-changes-tab' => 'Các thay đổi',
 	'wikieditor-preview-loading' => 'Đang tải…',
 );
 

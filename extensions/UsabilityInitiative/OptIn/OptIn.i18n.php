@@ -4185,6 +4185,7 @@ Dziękujemy i czekamy na Twoje komentarze!',
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'optin' => "Partissipé a l'inissiativà ëd dovrabilità",
@@ -4237,6 +4238,17 @@ An farìa gòj savèj lòn ch'a pensa ëd nòstra neuva antërfassa, parèj an f
 	'optin-survey-question-browser' => "Che navigador ch'a deuvra?",
 	'optin-survey-answer-browser-other' => 'Àutr navigador:',
 	'optin-survey-question-os' => "Che sistema operativ ch'a deuvra?",
+	'optin-survey-answer-os-other' => 'Àutr sistem operativ:',
+	'optin-survey-question-res' => "Cola ch'a l'é l'arzolussion ëd tò scren?",
+	'optin-survey-question-changes' => "Che cambi it voriës-to vëdde ant l aBeta ant l'avnì (për piasì selession-a tut lòn ch'it veule)?",
+	'optin-survey-answer-changes-nav' => "Rend l'antrega navigassion dël sit pi bel fé da dovré.",
+	'optin-survey-answer-changes-edittools' => "Aumenta e mejora j'utiss ëd modìfica.",
+	'optin-survey-answer-changes-upload' => 'Mejora la caria ëd contnù e ëd multimojen.',
+	'optin-survey-answer-changes-richtext' => "Svilupa utiss ëd modìfica ch'a smijo a editor rich-text.",
+	'optin-survey-answer-changes-lookfeel' => 'Modìfica ël "look and feel" dël sit.',
+	'optin-survey-answer-changes-predictability' => 'Mejora la prevision ëd le prestassion.',
+	'optin-survey-answer-changes-custom' => "Përmëtt pi grande personalisassion a l'utent.",
+	'optin-survey-answer-changes-other' => 'Àutr:',
 );
 
 /** Pashto (پښتو)

@@ -133,7 +133,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'svgzoom-desc' => 'Додава можност на МедијаВики за зумирање и влечење при гледање на SVG податотеки',
+	'svgzoom-desc' => 'Додава можност на МедијаВики за приближување и влечење при гледање на SVG податотеки',
 );
 
 /** Dutch (Nederlands)
@@ -169,5 +169,12 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'svgzoom-desc' => 'Добавляет возможности панорамирования и масштабирования в MediaWiki при просмотре SVG-файлов',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'svgzoom-desc' => 'Bổ sung chức năng chuyển động và thu phóng tập tin SVG trong MediaWiki',
 );
 

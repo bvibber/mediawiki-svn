@@ -724,8 +724,8 @@ $messages['ml'] = array(
 	'ajax-se-title' => 'നിലവില്‍ തിരുത്തിക്കൊണ്ടിരിക്കുന്നത്:',
 	'ajax-se-idling' => '($1 സെക്കന്റുകള്‍ക്ക് മുന്‍പ്)',
 	'ajax-se-pagedoesnotexist' => 'താള്‍ നിലവിലില്ല',
-	'ajax-se-userinvalid' => 'പിശക്: അസാധുവായ ഉപയോക്താവ്',
-	'ajax-se-usernotfound' => 'പിശക്: ഉപയോക്താവിനെ കണ്ടില്ല',
+	'ajax-se-userinvalid' => 'പിഴവ്: അസാധുവായ ഉപയോക്താവ്',
+	'ajax-se-usernotfound' => 'പിഴവ്: ഉപയോക്താവിനെ കണ്ടില്ല',
 );
 
 /** Marathi (मराठी)

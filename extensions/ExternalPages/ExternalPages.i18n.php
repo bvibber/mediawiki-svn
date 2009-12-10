@@ -381,7 +381,7 @@ $messages['ml'] = array(
 	'externalpages-no-project' => 'പദ്ധതികളൊന്നും വ്യക്തമാക്കിയിട്ടില്ല',
 	'externalpages-bad-page' => 'നൽകിയ താൾ തെറ്റാണ്',
 	'externalpages-no-page' => 'താളുകളൊന്നും വ്യക്തമാക്കിയിട്ടില്ല',
-	'externalpages-error-generic' => 'പിശക് നേരിട്ടു',
+	'externalpages-error-generic' => 'പിഴവ് നേരിട്ടു',
 	'externalpages-bad-url' => 'യൂ.ആർ.എൽ. ശേഖരിക്കുന്നതിൽ പരാജയപ്പെട്ടു',
 	'externalpages-bad-url-data' => 'താളിന്റെ ഉള്ളടക്കം ശേഖരിക്കുന്നതിൽ പരാജയപ്പെട്ടു',
 );
@@ -511,5 +511,12 @@ $messages['vec'] = array(
 	'externalpages-error-generic' => 'Xe vegnesto fora un eròr',
 	'externalpages-bad-url' => "No se riesse a recuperar l'URL",
 	'externalpages-bad-url-data' => 'No se riesse a recuperar el contenuto de la pagina',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'externalpages' => 'Trang ngoài',
 );
 

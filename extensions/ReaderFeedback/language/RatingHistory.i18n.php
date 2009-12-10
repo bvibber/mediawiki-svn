@@ -1882,6 +1882,9 @@ $messages['te'] = array(
 	'ratinghistory-year' => 'గత సంవత్సరం',
 	'ratinghistory-3years' => 'గత 3 సంవత్సరాలు',
 	'ratinghistory-ave' => 'సగటు: $1',
+	'ratinghistory-graph' => '"$3" యొక్క $2 ($1 {{PLURAL:$1|సమీక్ష|సమీక్షలు}})',
+	'ratinghistory-table-votes' => 'వోట్లు',
+	'ratinghistory-ratings' => "'''సూచిక:''' '''(1)''' - అత్యల్పం; '''(2)''' - అల్పం; '''(3)''' - పర్లేదు; '''(4)''' - ఉత్తమం; '''(5)''' - అత్యుత్తమం;",
 );
 
 /** Thai (ไทย)

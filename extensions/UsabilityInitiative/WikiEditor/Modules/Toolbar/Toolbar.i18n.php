@@ -261,7 +261,6 @@ $messages['qqq'] = array(
 	'wikieditor-toolbar-group-size' => '{{Identical|Size}}',
 	'wikieditor-toolbar-group-insert' => '{{Identical|Insert}}',
 	'wikieditor-toolbar-tool-table-example-cell-text' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
-	'wikieditor-toolbar-tool-table-example' =>  '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-example-header' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-title' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
@@ -269,11 +268,14 @@ $messages['qqq'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-wikitable' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
 	'wikieditor-toolbar-tool-table-sortable' => '[[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
+	'wikieditor-toolbar-tool-table-example' => '{{Identical|Example}}
+  [[File:Wikieditor-toolbar-tool-table.png|thumb]]This is a noun. Important to indicate that this is not a preview of what the table will look like, but an example of what it will look similar to. See screenshot.',
+	'wikieditor-toolbar-tool-table-preview' => '{{Identical|Preview}}
+
+[[File:Wikieditor-toolbar-tool-table.png|thumb]]This is a noun. See screenshot.',
 	'wikieditor-toolbar-tool-table-insert' => '{{Identical|Insert}}
 
 [[File:Wikieditor-toolbar-tool-table.png|thumb]] See screenshot.',
-	'wikieditor-toolbar-tool-table-example' => '{{Identical|Example}}
-  [[File:Wikieditor-toolbar-tool-table.png|thumb]]This is a noun. Important to indicate that this is not a preview of what the table will look like, but an example of what it will look similar to. See screenshot.',
 	'wikieditor-toolbar-tool-table-cancel' => '{{Identical|Cancel}}',
 	'wikieditor-toolbar-tool-table-example-text' => 'Placeholder text to help the table example appear to be in the context of an article. Should be lorem ipsum, or equivalent.',
 	'wikieditor-toolbar-tool-table-toomany' => '[[file:Bulbgraph.png|left|22px]]
@@ -432,7 +434,7 @@ $messages['af'] = array(
 | ry 2, sel 1
 | ry 2, sel 2
 | ry 2, sel 3',
-	'wikieditor-toolbar-tool-table-example' => 'Selteks',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Selteks',
 	'wikieditor-toolbar-tool-table-example-header' => 'Opskrifteks',
 	'wikieditor-toolbar-tool-table-title' => 'Voeg tabel in',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rye',
@@ -440,6 +442,7 @@ $messages['af'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Voeg opskriflyn in',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Styl met rante',
 	'wikieditor-toolbar-tool-table-sortable' => 'Maak tabel sorteerbaar',
+	'wikieditor-toolbar-tool-table-example' => 'Selteks',
 	'wikieditor-toolbar-tool-table-preview' => 'Voorskou',
 	'wikieditor-toolbar-tool-table-insert' => 'Invoeg',
 	'wikieditor-toolbar-tool-table-cancel' => 'Kanselleer',
@@ -625,7 +628,7 @@ $messages['ar'] = array(
 | صف 2، خلية 1
 | صف 2، خلية 2
 | صف 2، خلية 3',
-	'wikieditor-toolbar-tool-table-example' => 'نص الخلية',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'نص الخلية',
 	'wikieditor-toolbar-tool-table-example-header' => 'نص الترويسة',
 	'wikieditor-toolbar-tool-table-title' => 'إدراج جدول',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'الصفوف',
@@ -633,6 +636,7 @@ $messages['ar'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'ضمّن صف الترويسة',
 	'wikieditor-toolbar-tool-table-wikitable' => 'سمة ذات حدود',
 	'wikieditor-toolbar-tool-table-sortable' => 'اجعل الجدول قابلا للترتيب',
+	'wikieditor-toolbar-tool-table-example' => 'نص الخلية',
 	'wikieditor-toolbar-tool-table-preview' => 'عاين',
 	'wikieditor-toolbar-tool-table-insert' => 'أدرج',
 	'wikieditor-toolbar-tool-table-cancel' => 'ألغِ',
@@ -845,7 +849,7 @@ $messages['be-tarask'] = array(
 | радок 2, ячэйка 1
 | радок 2, ячэйка 2
 | радок 2, ячэйка 3',
-	'wikieditor-toolbar-tool-table-example' => 'Тэкст у ячэйцы',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Тэкст у ячэйцы',
 	'wikieditor-toolbar-tool-table-example-header' => 'Тэкст загалоўку',
 	'wikieditor-toolbar-tool-table-title' => 'Уставіць табліцу',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Радкоў',
@@ -853,6 +857,7 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Дадаць радок загалоўку',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Стыль з межамі',
 	'wikieditor-toolbar-tool-table-sortable' => 'Дадаць у табліцу магчымасьць сартаваньня',
+	'wikieditor-toolbar-tool-table-example' => 'Тэкст у ячэйцы',
 	'wikieditor-toolbar-tool-table-preview' => 'Папярэдні прагляд',
 	'wikieditor-toolbar-tool-table-insert' => 'Уставіць',
 	'wikieditor-toolbar-tool-table-cancel' => 'Адмяніць',
@@ -1087,7 +1092,7 @@ $messages['bn'] = array(
 | সারি ২, ঘর ১
 | সারি ২, ঘর ২
 | সারি ২, ঘর ৩',
-	'wikieditor-toolbar-tool-table-example' => 'ঘরের লেখ',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'ঘরের লেখ',
 	'wikieditor-toolbar-tool-table-example-header' => 'শিরোনামের লেখ',
 	'wikieditor-toolbar-tool-table-title' => 'ছক যোগ করো',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'সারি',
@@ -1095,6 +1100,7 @@ $messages['bn'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'শিরোনাম সারি অন্তর্ভুক্ত করো',
 	'wikieditor-toolbar-tool-table-wikitable' => 'সীমান্ত শৈলী',
 	'wikieditor-toolbar-tool-table-sortable' => 'ছক ক্রমায়ন করো',
+	'wikieditor-toolbar-tool-table-example' => 'ঘরের লেখ',
 	'wikieditor-toolbar-tool-table-preview' => 'প্রাকদর্শন',
 	'wikieditor-toolbar-tool-table-insert' => 'যোগ করো',
 	'wikieditor-toolbar-tool-table-cancel' => 'বাতিল',
@@ -1271,12 +1277,13 @@ $messages['br'] = array(
 | linenn 2, kellig 1
 | linenn 2, kellig 2
 | linenn 2, kellig 3',
-	'wikieditor-toolbar-tool-table-example' => 'Tenstenn er gellig',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Tenstenn er gellig',
 	'wikieditor-toolbar-tool-table-example-header' => 'Testenn an talbenn',
 	'wikieditor-toolbar-tool-table-title' => "Ensoc'hañ un daolenn",
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Linennoù',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Bannoù',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Lakaat  al linenn dalbenn e-barzh',
+	'wikieditor-toolbar-tool-table-example' => 'Tenstenn er gellig',
 	'wikieditor-toolbar-tool-table-preview' => 'Rakwelet',
 	'wikieditor-toolbar-tool-table-insert' => "Ensoc'hañ",
 	'wikieditor-toolbar-tool-table-cancel' => 'Nullañ',
@@ -1459,7 +1466,7 @@ $messages['bs'] = array(
 | red 2, ćelija 1
 | red 2, ćelija 2
 | red 2, ćelija 3',
-	'wikieditor-toolbar-tool-table-example' => 'Tekst ćelije',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Tekst ćelije',
 	'wikieditor-toolbar-tool-table-example-header' => 'Tekst zaglavlja',
 	'wikieditor-toolbar-tool-table-title' => 'Ubaci tabelu',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Redovi',
@@ -1467,6 +1474,7 @@ $messages['bs'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Uključi red zaglavlja',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stil sa okvirima',
 	'wikieditor-toolbar-tool-table-sortable' => 'Napravi sortirajuću tabelu',
+	'wikieditor-toolbar-tool-table-example' => 'Tekst ćelije',
 	'wikieditor-toolbar-tool-table-preview' => 'Pregled',
 	'wikieditor-toolbar-tool-table-insert' => 'Ubaci',
 	'wikieditor-toolbar-tool-table-cancel' => 'Odustani',
@@ -1645,12 +1653,13 @@ $messages['ca'] = array(
 | fila 2, cel·la 1 
 | fila 2, cel·la 2 
 | fila 2, cel·la 3',
-	'wikieditor-toolbar-tool-table-example' => 'Text de cel·la',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Text de cel·la',
 	'wikieditor-toolbar-tool-table-example-header' => 'Text de capçalera',
 	'wikieditor-toolbar-tool-table-title' => 'Insereix taula',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Files',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Columnes',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Inclou-hi una fila de capçalera',
+	'wikieditor-toolbar-tool-table-example' => 'Text de cel·la',
 	'wikieditor-toolbar-tool-table-preview' => 'Previsualització',
 	'wikieditor-toolbar-tool-table-insert' => 'Insereix',
 	'wikieditor-toolbar-tool-table-cancel' => 'Canceŀla',
@@ -1922,7 +1931,7 @@ $messages['cs'] = array(
 | řádek 2, buňka 1
 | řádek 2, buňka 2
 | řádek 2, buňka 3',
-	'wikieditor-toolbar-tool-table-example' => 'Text buňky',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Text buňky',
 	'wikieditor-toolbar-tool-table-example-header' => 'Text záhlaví',
 	'wikieditor-toolbar-tool-table-title' => 'Vložení tabulky',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Řádků',
@@ -1930,6 +1939,7 @@ $messages['cs'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Přidat řádek s hlavičkou',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Styl s okraji',
 	'wikieditor-toolbar-tool-table-sortable' => 'Umožnit řazení tabulky',
+	'wikieditor-toolbar-tool-table-example' => 'Text buňky',
 	'wikieditor-toolbar-tool-table-preview' => 'Náhled',
 	'wikieditor-toolbar-tool-table-insert' => 'Vložit',
 	'wikieditor-toolbar-tool-table-cancel' => 'Storno',
@@ -2127,7 +2137,7 @@ $messages['cy'] = array(
 | rhes 2, cell 1
 | rhes 2, cell 2
 | rhes 2, cell 3',
-	'wikieditor-toolbar-tool-table-example' => 'Testun y gell',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Testun y gell',
 	'wikieditor-toolbar-tool-table-example-header' => 'Testun y pennawd',
 	'wikieditor-toolbar-tool-table-title' => 'Mewnosod tabl',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rhesi',
@@ -2135,6 +2145,7 @@ $messages['cy'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Cynhwysir rhes y penawdau',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Dangos borderi',
 	'wikieditor-toolbar-tool-table-sortable' => 'Gosod tabl y gellir ei drefnu',
+	'wikieditor-toolbar-tool-table-example' => 'Testun y gell',
 	'wikieditor-toolbar-tool-table-preview' => 'Rhagolwg',
 	'wikieditor-toolbar-tool-table-insert' => 'Mewnosod',
 	'wikieditor-toolbar-tool-table-cancel' => 'Diddymu',
@@ -2294,11 +2305,12 @@ $messages['da'] = array(
 {{ns:file}}:Eksempel.jpg|Billedtekst2',
 	'wikieditor-toolbar-tool-newline' => 'Ny linje',
 	'wikieditor-toolbar-tool-table' => 'Tabel',
-	'wikieditor-toolbar-tool-table-example' => 'Række $1, celle $2',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Række $1, celle $2',
 	'wikieditor-toolbar-tool-table-example-header' => 'Række $1, celle $2 (overskrift)',
 	'wikieditor-toolbar-tool-table-title' => 'Indsæt tabel',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rækker',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Kolonner',
+	'wikieditor-toolbar-tool-table-example' => 'Række $1, celle $2',
 	'wikieditor-toolbar-tool-table-insert' => 'Indsæt',
 	'wikieditor-toolbar-tool-table-cancel' => 'Annullér',
 	'wikieditor-toolbar-tool-replace' => 'Søg og erstat',
@@ -2481,7 +2493,7 @@ $messages['de'] = array(
 | Zeile 2, Zelle 1
 | Zeile 2, Zelle 2
 | Zeile 2, Zelle 3',
-	'wikieditor-toolbar-tool-table-example' => 'Zellentext',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Zellentext',
 	'wikieditor-toolbar-tool-table-example-header' => 'Überschrift',
 	'wikieditor-toolbar-tool-table-title' => 'Tabelle einfügen',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Zeilen',
@@ -2489,6 +2501,7 @@ $messages['de'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Kopfzeile einschließen',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Style mit Rahmen',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tabelle sortierbar machen',
+	'wikieditor-toolbar-tool-table-example' => 'Zellentext',
 	'wikieditor-toolbar-tool-table-preview' => 'Vorschau',
 	'wikieditor-toolbar-tool-table-insert' => 'Einfügen',
 	'wikieditor-toolbar-tool-table-cancel' => 'Abbrechen',
@@ -2685,7 +2698,7 @@ $messages['diq'] = array(
 | satır 2, hucre 1
 | satır 2, hucre 2
 | satır 2, hucre 3',
-	'wikieditor-toolbar-tool-table-example' => 'metnê hucreyi',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'metnê hucreyi',
 	'wikieditor-toolbar-tool-table-example-header' => 'metnê sernameyi',
 	'wikieditor-toolbar-tool-table-title' => 'tablo bıerz',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'satıri/rêzi',
@@ -2693,6 +2706,7 @@ $messages['diq'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'satırê sername zi bıger',
 	'wikieditor-toolbar-tool-table-wikitable' => 'sinorê stili',
 	'wikieditor-toolbar-tool-table-sortable' => 'make table rêz bena',
+	'wikieditor-toolbar-tool-table-example' => 'metnê hucreyi',
 	'wikieditor-toolbar-tool-table-preview' => 'seyrkerdışo ewwil',
 	'wikieditor-toolbar-tool-table-insert' => 'têare ker',
 	'wikieditor-toolbar-tool-table-cancel' => 'ibtal',
@@ -2878,7 +2892,7 @@ $messages['dsb'] = array(
 | smužka 2, cela 1
 | smužka 2, cela 2
 | smužka 2, cela 3',
-	'wikieditor-toolbar-tool-table-example' => 'Celowy tekst',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Celowy tekst',
 	'wikieditor-toolbar-tool-table-example-header' => 'Głowowy tekst',
 	'wikieditor-toolbar-tool-table-title' => 'Tabelu zasunuś',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Smužki',
@@ -2886,6 +2900,7 @@ $messages['dsb'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Smužku głowy zapśěgnuś',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stil z ramikami',
 	'wikieditor-toolbar-tool-table-sortable' => 'Sortěrujobna tabela',
+	'wikieditor-toolbar-tool-table-example' => 'Celowy tekst',
 	'wikieditor-toolbar-tool-table-preview' => 'Pśeglěd',
 	'wikieditor-toolbar-tool-table-insert' => 'Zasunuś',
 	'wikieditor-toolbar-tool-table-cancel' => 'Pśetergnuś',
@@ -3065,12 +3080,13 @@ $messages['el'] = array(
 | γραμμή 2, κελί 1
 | γραμμή 2, κελί 2
 | γραμμή 2, κελί 3',
-	'wikieditor-toolbar-tool-table-example' => 'Κείμενο κελιού',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Κείμενο κελιού',
 	'wikieditor-toolbar-tool-table-example-header' => 'Κείμενο κεφαλίδας',
 	'wikieditor-toolbar-tool-table-title' => 'Εισαγωγή πίνακα',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Σειρές',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Στήλες',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Περίληψη σειράς επικεφαλίδας',
+	'wikieditor-toolbar-tool-table-example' => 'Κείμενο κελιού',
 	'wikieditor-toolbar-tool-table-insert' => 'Εισαγωγή',
 	'wikieditor-toolbar-tool-table-cancel' => 'Άκυρο',
 	'wikieditor-toolbar-tool-replace' => 'Αναζήτηση και αντικατάσταση',
@@ -3242,7 +3258,7 @@ $messages['eo'] = array(
 | vico 2, ĉelo 1
 | vico 2, ĉelo 2
 | vico 2, ĉelo 3',
-	'wikieditor-toolbar-tool-table-example' => 'Teksto de ĉelo',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Teksto de ĉelo',
 	'wikieditor-toolbar-tool-table-example-header' => 'Teksto de titolo',
 	'wikieditor-toolbar-tool-table-title' => 'Enmeti tabelon',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Vicoj',
@@ -3250,6 +3266,7 @@ $messages['eo'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Inkluzivi titolan vicon',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stilo kun bordoj',
 	'wikieditor-toolbar-tool-table-sortable' => 'Fari tabelon sortebla',
+	'wikieditor-toolbar-tool-table-example' => 'Teksto de ĉelo',
 	'wikieditor-toolbar-tool-table-preview' => 'Antaŭvido',
 	'wikieditor-toolbar-tool-table-insert' => 'Enmeti',
 	'wikieditor-toolbar-tool-table-cancel' => 'Nuligi',
@@ -3436,7 +3453,7 @@ $messages['es'] = array(
 | fila 2, celda 1
 | fila 2, celda 2
 | fila 2, celda 3',
-	'wikieditor-toolbar-tool-table-example' => 'Texto de celda',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Texto de celda',
 	'wikieditor-toolbar-tool-table-example-header' => 'Texto de encabezado',
 	'wikieditor-toolbar-tool-table-title' => 'Inserte tabla',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Filas',
@@ -3444,6 +3461,7 @@ $messages['es'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Incluir encabezado de fila',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Estilo con bordes',
 	'wikieditor-toolbar-tool-table-sortable' => 'Hacer la tabla organizable',
+	'wikieditor-toolbar-tool-table-example' => 'Texto de celda',
 	'wikieditor-toolbar-tool-table-preview' => 'Previsualización',
 	'wikieditor-toolbar-tool-table-insert' => 'Insertar',
 	'wikieditor-toolbar-tool-table-cancel' => 'Cancelar',
@@ -3619,11 +3637,12 @@ $messages['et'] = array(
 | 2. rida, 1. lahter
 | 2. rida, 2. lahter
 | 2. rida, 3. lahter',
-	'wikieditor-toolbar-tool-table-example' => 'Lahtri tekst',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Lahtri tekst',
 	'wikieditor-toolbar-tool-table-example-header' => 'Päise tekst',
 	'wikieditor-toolbar-tool-table-title' => 'Tabeli lisamine',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Ridu',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Veerge',
+	'wikieditor-toolbar-tool-table-example' => 'Lahtri tekst',
 	'wikieditor-toolbar-tool-table-insert' => 'Lisa',
 	'wikieditor-toolbar-tool-table-cancel' => 'Loobu',
 	'wikieditor-toolbar-tool-replace' => 'Otsi ja asenda',
@@ -3793,12 +3812,13 @@ $messages['eu'] = array(
 | errenkada 2, gela 1
 | errenkada 2, gela 2
 | errenkada 2, gela 3',
-	'wikieditor-toolbar-tool-table-example' => 'Gelatxo testua',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Gelatxo testua',
 	'wikieditor-toolbar-tool-table-example-header' => 'Goiburu testua',
 	'wikieditor-toolbar-tool-table-title' => 'Taula txertatu',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Errenkadak',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Zutabeak',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Goiburu errendaka txertatu',
+	'wikieditor-toolbar-tool-table-example' => 'Gelatxo testua',
 	'wikieditor-toolbar-tool-table-preview' => 'Aurreikuspena',
 	'wikieditor-toolbar-tool-table-insert' => 'Txertatu',
 	'wikieditor-toolbar-tool-table-cancel' => 'Ezeztatu',
@@ -4018,12 +4038,13 @@ $messages['fi'] = array(
 | rivi 2, solu 1
 | rivi 2, solu 2
 | rivi 2, solu 3',
-	'wikieditor-toolbar-tool-table-example' => 'Solun teksti',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Solun teksti',
 	'wikieditor-toolbar-tool-table-example-header' => 'Otsikkoteksti',
 	'wikieditor-toolbar-tool-table-title' => 'Lisää taulukko',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rivit',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Sarakkeet',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tee taulukosta lajiteltava',
+	'wikieditor-toolbar-tool-table-example' => 'Solun teksti',
 	'wikieditor-toolbar-tool-table-preview' => 'Esikatselu',
 	'wikieditor-toolbar-tool-table-insert' => 'Lisää',
 	'wikieditor-toolbar-tool-table-cancel' => 'Peruuta',
@@ -4215,7 +4236,7 @@ $messages['fr'] = array(
 | ligne 2, case 1
 | ligne 2, case 2
 | ligne 2, case 3',
-	'wikieditor-toolbar-tool-table-example' => 'Texte de la cellule',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Texte de la cellule',
 	'wikieditor-toolbar-tool-table-example-header' => "Texte de l'en-tête",
 	'wikieditor-toolbar-tool-table-title' => 'Insérer un tableau',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Lignes',
@@ -4223,6 +4244,7 @@ $messages['fr'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => "Inclure la ligne d'en-tête",
 	'wikieditor-toolbar-tool-table-wikitable' => 'Style avec bordures',
 	'wikieditor-toolbar-tool-table-sortable' => 'Rendre le tableau triable',
+	'wikieditor-toolbar-tool-table-example' => 'Texte de la cellule',
 	'wikieditor-toolbar-tool-table-preview' => 'Prévisualisation',
 	'wikieditor-toolbar-tool-table-insert' => 'Insérer',
 	'wikieditor-toolbar-tool-table-cancel' => 'Annuler',
@@ -4482,7 +4504,7 @@ $messages['gl'] = array(
 | liña 2, cela 1
 | liña 2, cela 2
 | liña 2, cela 3',
-	'wikieditor-toolbar-tool-table-example' => 'Texto da cela',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Texto da cela',
 	'wikieditor-toolbar-tool-table-example-header' => 'Texto da cabeceira',
 	'wikieditor-toolbar-tool-table-title' => 'Inserir unha táboa',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Liñas',
@@ -4490,6 +4512,7 @@ $messages['gl'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Incluír a liña de cabeceira',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Estilo con bordos',
 	'wikieditor-toolbar-tool-table-sortable' => 'Facer que a táboa se poida ordenar',
+	'wikieditor-toolbar-tool-table-example' => 'Texto da cela',
 	'wikieditor-toolbar-tool-table-preview' => 'Vista previa',
 	'wikieditor-toolbar-tool-table-insert' => 'Inserir',
 	'wikieditor-toolbar-tool-table-cancel' => 'Cancelar',
@@ -4772,7 +4795,7 @@ $messages['gsw'] = array(
 | Zyylete 2, Zälle 1
 | Zyylete 2, Zälle 2
 | Zyylete 2, Zälle 3',
-	'wikieditor-toolbar-tool-table-example' => 'Zälletext',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Zälletext',
 	'wikieditor-toolbar-tool-table-example-header' => 'Iberschrift',
 	'wikieditor-toolbar-tool-table-title' => 'Tabälle yyfiege',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Zyle',
@@ -4780,6 +4803,7 @@ $messages['gsw'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Iberschrift yyfiege',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Style mit Ramme',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tabälle sortierbar mache',
+	'wikieditor-toolbar-tool-table-example' => 'Zälletext',
 	'wikieditor-toolbar-tool-table-preview' => 'Vorschau',
 	'wikieditor-toolbar-tool-table-insert' => 'Yyfiege',
 	'wikieditor-toolbar-tool-table-cancel' => 'Abbräche',
@@ -5029,12 +5053,13 @@ $messages['he'] = array(
 | שורה 2, תא 1
 | שורה 2, תא 2
 | שורה 2, תא 3',
-	'wikieditor-toolbar-tool-table-example' => 'טקסט התא',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'טקסט התא',
 	'wikieditor-toolbar-tool-table-example-header' => 'טקסט הכותרת',
 	'wikieditor-toolbar-tool-table-title' => 'הוספת טבלה',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'שורות',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'עמודות',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'כולל שורת הכותרת',
+	'wikieditor-toolbar-tool-table-example' => 'טקסט התא',
 	'wikieditor-toolbar-tool-table-insert' => 'הוספה',
 	'wikieditor-toolbar-tool-table-cancel' => 'ביטול',
 	'wikieditor-toolbar-tool-table-toomany' => 'הוספת טבלה בת יותר מ־$1 תאים אינה אפשרית בתיבת הדו־שיח הזו.',
@@ -5207,11 +5232,12 @@ $messages['hr'] = array(
 {{ns:file}}:Primjer.jpg|Opis2',
 	'wikieditor-toolbar-tool-newline' => 'Novi redak',
 	'wikieditor-toolbar-tool-table' => 'Tablica',
-	'wikieditor-toolbar-tool-table-example' => 'Redak $1, ćelija $2',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Redak $1, ćelija $2',
 	'wikieditor-toolbar-tool-table-example-header' => 'Redak $1, ćelija $2 (zaglavlje)',
 	'wikieditor-toolbar-tool-table-title' => 'Umetni tablicu',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Retci',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Stupci',
+	'wikieditor-toolbar-tool-table-example' => 'Redak $1, ćelija $2',
 	'wikieditor-toolbar-tool-table-insert' => 'Umetni',
 	'wikieditor-toolbar-tool-table-cancel' => 'Odustani',
 	'wikieditor-toolbar-tool-replace' => 'Zamijeni',
@@ -5385,7 +5411,7 @@ $messages['hsb'] = array(
 | rjadka 2, cela 1
 | rjadka 2, cela 2
 | rjadka 2, cela 3',
-	'wikieditor-toolbar-tool-table-example' => 'Celowy tekst',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Celowy tekst',
 	'wikieditor-toolbar-tool-table-example-header' => 'Hłowowy tekst',
 	'wikieditor-toolbar-tool-table-title' => 'Tabelu zasunyć',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rjadki',
@@ -5393,6 +5419,7 @@ $messages['hsb'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Rjadku hłowy zapřijeć',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stil z ramikami',
 	'wikieditor-toolbar-tool-table-sortable' => 'Sortěrujomna tabela',
+	'wikieditor-toolbar-tool-table-example' => 'Celowy tekst',
 	'wikieditor-toolbar-tool-table-preview' => 'Přehlad',
 	'wikieditor-toolbar-tool-table-insert' => 'Zasunyć',
 	'wikieditor-toolbar-tool-table-cancel' => 'Přetorhnyć',
@@ -5580,7 +5607,7 @@ $messages['hu'] = array(
 | 2. sor, 1. cella
 | 2. sor, 2. cella
 | 2. sor, 3. cella',
-	'wikieditor-toolbar-tool-table-example' => 'Cella szövege',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Cella szövege',
 	'wikieditor-toolbar-tool-table-example-header' => 'Fejléc szövege',
 	'wikieditor-toolbar-tool-table-title' => 'Tábla beszúrása',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Sorok száma',
@@ -5588,6 +5615,7 @@ $messages['hu'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'A fejlécet is beleértve',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stílus szegélyekkel',
 	'wikieditor-toolbar-tool-table-sortable' => 'Legyen a táblázat rendezhető',
+	'wikieditor-toolbar-tool-table-example' => 'Cella szövege',
 	'wikieditor-toolbar-tool-table-preview' => 'Előnézet',
 	'wikieditor-toolbar-tool-table-insert' => 'Beszúrás',
 	'wikieditor-toolbar-tool-table-cancel' => 'Mégse',
@@ -5773,7 +5801,7 @@ $messages['hy'] = array(
 | տող 2, սյունակ 1
 | տող 2, սյունակ 2
 | տող 2, սյունակ 3',
-	'wikieditor-toolbar-tool-table-example' => 'Վանդակի տեքստ',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Վանդակի տեքստ',
 	'wikieditor-toolbar-tool-table-example-header' => 'Վերնագրի տեքստ',
 	'wikieditor-toolbar-tool-table-title' => 'Ավելացնել աղյուսակ',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Տողեր',
@@ -5781,6 +5809,7 @@ $messages['hy'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Ավելացնել վերնագրերի տող',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Եզրազարդել աղյուսակը',
 	'wikieditor-toolbar-tool-table-sortable' => 'Աղյուսակը դասավորվող անել',
+	'wikieditor-toolbar-tool-table-example' => 'Վանդակի տեքստ',
 	'wikieditor-toolbar-tool-table-preview' => 'Նախադիտում',
 	'wikieditor-toolbar-tool-table-insert' => 'Ավելացնել',
 	'wikieditor-toolbar-tool-table-cancel' => 'Բեկանել',
@@ -5964,7 +5993,7 @@ $messages['ia'] = array(
 | linea 2, cellula 1
 | linea 2, cellula 2
 | linea 2, cellula 3',
-	'wikieditor-toolbar-tool-table-example' => 'Texto del cellula',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Texto del cellula',
 	'wikieditor-toolbar-tool-table-example-header' => 'Texto del capite',
 	'wikieditor-toolbar-tool-table-title' => 'Inserer tabella',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Lineas',
@@ -5972,6 +6001,7 @@ $messages['ia'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Includer linea de capite',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stilo con bordos',
 	'wikieditor-toolbar-tool-table-sortable' => 'Render tabella assortibile',
+	'wikieditor-toolbar-tool-table-example' => 'Texto del cellula',
 	'wikieditor-toolbar-tool-table-preview' => 'Previsualisation',
 	'wikieditor-toolbar-tool-table-insert' => 'Inserer',
 	'wikieditor-toolbar-tool-table-cancel' => 'Cancellar',
@@ -6160,7 +6190,7 @@ $messages['id'] = array(
 | baris 2, sel 1
 | baris 2, sel 2
 | baris 2, sel 3',
-	'wikieditor-toolbar-tool-table-example' => 'Teks sel',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Teks sel',
 	'wikieditor-toolbar-tool-table-example-header' => 'Teks judul',
 	'wikieditor-toolbar-tool-table-title' => 'Masukkan tabel',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Baris',
@@ -6168,6 +6198,7 @@ $messages['id'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Sertakan baris',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Gaya dengan bingkai',
 	'wikieditor-toolbar-tool-table-sortable' => 'Buat tabel dapat diurutkan',
+	'wikieditor-toolbar-tool-table-example' => 'Teks sel',
 	'wikieditor-toolbar-tool-table-preview' => 'Pratayang',
 	'wikieditor-toolbar-tool-table-insert' => 'Masukkan',
 	'wikieditor-toolbar-tool-table-cancel' => 'Batalkan',
@@ -6373,7 +6404,7 @@ $messages['it'] = array(
 | riga 2, cella 1
 | riga 2, cella 2
 | riga 2, cella 3',
-	'wikieditor-toolbar-tool-table-example' => 'Testo della cella',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Testo della cella',
 	'wikieditor-toolbar-tool-table-example-header' => 'Testo del titolo',
 	'wikieditor-toolbar-tool-table-title' => 'Inserisci tabella',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Righe',
@@ -6381,6 +6412,7 @@ $messages['it'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Includi una riga per i titoli',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stile con bordi',
 	'wikieditor-toolbar-tool-table-sortable' => 'Rendi la tabella ordinabile',
+	'wikieditor-toolbar-tool-table-example' => 'Testo della cella',
 	'wikieditor-toolbar-tool-table-preview' => 'Anteprima',
 	'wikieditor-toolbar-tool-table-insert' => 'Inserisci',
 	'wikieditor-toolbar-tool-table-cancel' => 'Annulla',
@@ -6568,7 +6600,7 @@ $messages['ja'] = array(
 | 行 2、セル 1
 | 行 2、セル 2
 | 行 2、セル 3',
-	'wikieditor-toolbar-tool-table-example' => 'セル内のテキスト',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'セル内のテキスト',
 	'wikieditor-toolbar-tool-table-example-header' => '見出しテキスト',
 	'wikieditor-toolbar-tool-table-title' => '表を挿入',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => '行数',
@@ -6576,6 +6608,7 @@ $messages['ja'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'ヘッダ列を含める',
 	'wikieditor-toolbar-tool-table-wikitable' => '罫線のあるスタイル',
 	'wikieditor-toolbar-tool-table-sortable' => '表を並び替えできるようにする',
+	'wikieditor-toolbar-tool-table-example' => 'セル内のテキスト',
 	'wikieditor-toolbar-tool-table-preview' => 'プレビュー',
 	'wikieditor-toolbar-tool-table-insert' => '挿入',
 	'wikieditor-toolbar-tool-table-cancel' => '中止',
@@ -6697,6 +6730,7 @@ $messages['ka'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'ბმულის ჩასმა',
 	'wikieditor-toolbar-tool-link-int' => 'ვიკი გვერდზე',
 	'wikieditor-toolbar-tool-link-int-target' => 'გვერდის სათაური:',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'შეიყვანეთ გვერდის სახელი',
 	'wikieditor-toolbar-tool-link-cancel' => 'გაუქმება',
 	'wikieditor-toolbar-tool-file' => 'ჩასმული ფაილი',
 	'wikieditor-toolbar-tool-file-example' => 'მაგალითი.jpg',
@@ -6732,6 +6766,7 @@ $messages['ka'] = array(
 {{ns:file}}:Example.jpg|აღწერა2',
 	'wikieditor-toolbar-tool-newline' => 'ახალი ხაზი',
 	'wikieditor-toolbar-tool-table' => 'ტაბულა',
+	'wikieditor-toolbar-tool-table-preview' => 'წინასწარ',
 	'wikieditor-toolbar-tool-table-insert' => 'ჩასმა',
 	'wikieditor-toolbar-tool-table-cancel' => 'გაუქმება',
 	'wikieditor-toolbar-tool-replace-close' => 'გაუქმება',
@@ -7036,7 +7071,7 @@ $messages['ko'] = array(
 | 2행 1열
 | 2행 2열
 | 2행 3열',
-	'wikieditor-toolbar-tool-table-example' => '셀 내용',
+	'wikieditor-toolbar-tool-table-example-cell-text' => '셀 내용',
 	'wikieditor-toolbar-tool-table-example-header' => '표 제목',
 	'wikieditor-toolbar-tool-table-title' => '표 추가하기',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => '행',
@@ -7044,6 +7079,7 @@ $messages['ko'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => '표 제목란을 포함시키기',
 	'wikieditor-toolbar-tool-table-wikitable' => '셀 경계선이 있는 스타일',
 	'wikieditor-toolbar-tool-table-sortable' => '표를 정렬 가능하게 만들기',
+	'wikieditor-toolbar-tool-table-example' => '셀 내용',
 	'wikieditor-toolbar-tool-table-preview' => '미리 보기',
 	'wikieditor-toolbar-tool-table-insert' => '추가',
 	'wikieditor-toolbar-tool-table-cancel' => '취소',
@@ -7228,7 +7264,7 @@ $messages['ksh'] = array(
 | 2. Reij, 1. Shpalldt
 | 2. Reij, 2. Shpalldt
 | 2. Reij, 3. Shpalldt',
-	'wikieditor-toolbar-tool-table-example' => 'Täx en enem Feld en dä Tabäll',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Täx en enem Feld en dä Tabäll',
 	'wikieditor-toolbar-tool-table-example-header' => 'Kopp-Täx',
 	'wikieditor-toolbar-tool-table-title' => 'Tabäll ennfööje',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Zeile ov Reije',
@@ -7236,6 +7272,7 @@ $messages['ksh'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Donn de Övverscherff jäz dobei',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Maach Linnije öm di Tabäll un zwesche de Felder',
 	'wikieditor-toolbar-tool-table-sortable' => 'Maach, dat mer di Tabäll zoteere kan',
+	'wikieditor-toolbar-tool-table-example' => 'Täx en enem Feld en dä Tabäll',
 	'wikieditor-toolbar-tool-table-preview' => '{{int:preview}}',
 	'wikieditor-toolbar-tool-table-insert' => 'Lohß Jonn!',
 	'wikieditor-toolbar-tool-table-cancel' => 'Schloß! Ophüüre!',
@@ -7490,7 +7527,7 @@ $messages['lb'] = array(
 | Rei 2, Zell 1
 | Rei 2, Zell 2
 | Rei 2, Zell 3',
-	'wikieditor-toolbar-tool-table-example' => 'Text an der Zell',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Text an der Zell',
 	'wikieditor-toolbar-tool-table-example-header' => 'Text vun der Iwwerschrëft',
 	'wikieditor-toolbar-tool-table-title' => 'Tabell drasetzen',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Reien',
@@ -7498,6 +7535,7 @@ $messages['lb'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => "D'Rei vun der Iwwerschrëft matabezéien",
 	'wikieditor-toolbar-tool-table-wikitable' => 'Styl mat Ränner',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tabell zortéierbar maachen',
+	'wikieditor-toolbar-tool-table-example' => 'Text an der Zell',
 	'wikieditor-toolbar-tool-table-preview' => 'Kucken ouni ze späicheren',
 	'wikieditor-toolbar-tool-table-insert' => 'Drasetzen',
 	'wikieditor-toolbar-tool-table-cancel' => 'Ofbriechen',
@@ -7817,12 +7855,13 @@ $messages['lv'] = array(
 | 2. rinda, 1. šūna
 | 2. rinda, 2. šūna
 | 2. rinda, 3. šūna',
-	'wikieditor-toolbar-tool-table-example' => 'Rinda $1, šūna $2',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Rinda $1, šūna $2',
 	'wikieditor-toolbar-tool-table-example-header' => 'Rinda $1, šūna $2 (virsraksts)',
 	'wikieditor-toolbar-tool-table-title' => 'Ievietot tabulu',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rindas',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Kolonnas',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Ievietot rindu ar kolonnu virsrakstiem',
+	'wikieditor-toolbar-tool-table-example' => 'Rinda $1, šūna $2',
 	'wikieditor-toolbar-tool-table-insert' => 'Ievietot',
 	'wikieditor-toolbar-tool-table-cancel' => 'Atcelt',
 	'wikieditor-toolbar-tool-table-toomany' => 'Ar šī dialoga loga palīdzību nav iespējams ievietot tabulu, kas satur vairāk nekā $1 šūnas.',
@@ -8005,7 +8044,7 @@ $messages['mk'] = array(
 | ред 2, ќелија 1
 | ред 2, ќелија 2
 | ред 2, ќелија 3',
-	'wikieditor-toolbar-tool-table-example' => 'Текст на ќелијата',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Текст на ќелијата',
 	'wikieditor-toolbar-tool-table-example-header' => 'Текст на наслов',
 	'wikieditor-toolbar-tool-table-title' => 'Вметни табела',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Редови',
@@ -8013,6 +8052,7 @@ $messages['mk'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Вклучи насловен ред',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Стил со граници',
 	'wikieditor-toolbar-tool-table-sortable' => 'Подредлива табела',
+	'wikieditor-toolbar-tool-table-example' => 'Текст на ќелијата',
 	'wikieditor-toolbar-tool-table-preview' => 'Преглед',
 	'wikieditor-toolbar-tool-table-insert' => 'Вметни',
 	'wikieditor-toolbar-tool-table-cancel' => 'Откажи',
@@ -8199,7 +8239,7 @@ $messages['ml'] = array(
 | വരി 2, കളം 1
 | വരി 2, കളം 2
 | വരി 2, കളം 3',
-	'wikieditor-toolbar-tool-table-example' => 'കളത്തിലെ എഴുത്ത്',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'കളത്തിലെ എഴുത്ത്',
 	'wikieditor-toolbar-tool-table-example-header' => 'തലക്കുറി എഴുത്ത്',
 	'wikieditor-toolbar-tool-table-title' => 'പട്ടിക ഉൾപ്പെടുത്തുക',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'വരികൾ',
@@ -8207,6 +8247,7 @@ $messages['ml'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'തലക്കുറിയ്ക്കുള്ള വരി ഉൾപ്പെടുത്തുക',
 	'wikieditor-toolbar-tool-table-wikitable' => 'അതിർവരയോടു കൂടിയ രീതി',
 	'wikieditor-toolbar-tool-table-sortable' => 'പട്ടിക ക്രമപ്പെടുത്താവുന്നതാക്കുക',
+	'wikieditor-toolbar-tool-table-example' => 'കളത്തിലെ എഴുത്ത്',
 	'wikieditor-toolbar-tool-table-preview' => 'എങ്ങനെയുണ്ടെന്നു കാണുക',
 	'wikieditor-toolbar-tool-table-insert' => 'ഉൾപ്പെടുത്തുക',
 	'wikieditor-toolbar-tool-table-cancel' => 'റദ്ദാക്കുക',
@@ -8391,12 +8432,13 @@ $messages['ms'] = array(
 | baris 2, sel 1
 | baris 2, sel 2
 | baris 2, sel 3',
-	'wikieditor-toolbar-tool-table-example' => 'Teks sel',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Teks sel',
 	'wikieditor-toolbar-tool-table-example-header' => 'Teks pengepala',
 	'wikieditor-toolbar-tool-table-title' => 'Sisipkan jadual',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Baris',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Lajur',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Sertakan baris pengepala',
+	'wikieditor-toolbar-tool-table-example' => 'Teks sel',
 	'wikieditor-toolbar-tool-table-insert' => 'Sisipkan',
 	'wikieditor-toolbar-tool-table-cancel' => 'Batal',
 	'wikieditor-toolbar-tool-replace' => 'Ganti',
@@ -8563,12 +8605,13 @@ $messages['mt'] = array(
 | filliera 2, ċellola 1
 | filliera 2, ċellola 2
 | filliera 2, ċellola 3',
-	'wikieditor-toolbar-tool-table-example' => 'Test taċ-ċellola',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Test taċ-ċellola',
 	'wikieditor-toolbar-tool-table-example-header' => 'Test tar-ras',
 	'wikieditor-toolbar-tool-table-title' => 'Daħħal tabella',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Fillieri',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Kolonni',
 	'wikieditor-toolbar-tool-table-dimensions-header' => "Inkludi l-filliera ta' fuq",
+	'wikieditor-toolbar-tool-table-example' => 'Test taċ-ċellola',
 	'wikieditor-toolbar-tool-table-insert' => 'Daħħal',
 	'wikieditor-toolbar-tool-table-cancel' => 'Annulla',
 	'wikieditor-toolbar-tool-replace' => 'Fittex u biddel',
@@ -8896,7 +8939,7 @@ Wilt u er een interne verwijzing van maken?',
 | rij 2, cel 1
 | rij 2, cel 2
 | rij 2, cel 3',
-	'wikieditor-toolbar-tool-table-example' => 'Celtekst',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Celtekst',
 	'wikieditor-toolbar-tool-table-example-header' => 'Koptekst',
 	'wikieditor-toolbar-tool-table-title' => 'Tabel invoegen',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rijen',
@@ -8904,6 +8947,7 @@ Wilt u er een interne verwijzing van maken?',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Koprij toevoegen',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Celranden toevoegen',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tabel sorteerbaar maken',
+	'wikieditor-toolbar-tool-table-example' => 'Celtekst',
 	'wikieditor-toolbar-tool-table-preview' => 'Voorvertoning',
 	'wikieditor-toolbar-tool-table-insert' => 'Invoegen',
 	'wikieditor-toolbar-tool-table-cancel' => 'Annuleren',
@@ -9199,7 +9243,7 @@ $messages['no'] = array(
 | rad 2, celle 1
 | rad 2, celle 2
 | rad 2, celle 3',
-	'wikieditor-toolbar-tool-table-example' => 'Celletekst',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Celletekst',
 	'wikieditor-toolbar-tool-table-example-header' => 'Overskriftstekst',
 	'wikieditor-toolbar-tool-table-title' => 'Sett inn tabell',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rader',
@@ -9207,6 +9251,7 @@ $messages['no'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Inkluder overskriftsrad',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stil med kanter',
 	'wikieditor-toolbar-tool-table-sortable' => 'Gjør tabellen sorterbar',
+	'wikieditor-toolbar-tool-table-example' => 'Celletekst',
 	'wikieditor-toolbar-tool-table-preview' => 'Forhåndsvisning',
 	'wikieditor-toolbar-tool-table-insert' => 'Sett inn',
 	'wikieditor-toolbar-tool-table-cancel' => 'Avbryt',
@@ -9390,7 +9435,7 @@ $messages['oc'] = array(
 | linha 2, casa 1
 | linha 2, casa 2
 | linha 2, casa 3',
-	'wikieditor-toolbar-tool-table-example' => 'Tèxte de la cellula',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Tèxte de la cellula',
 	'wikieditor-toolbar-tool-table-example-header' => "Tèxte de l'entèsta",
 	'wikieditor-toolbar-tool-table-title' => 'Inserir un tablèu',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Linhas',
@@ -9398,6 +9443,7 @@ $messages['oc'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => "Inclure la linha d'entèsta",
 	'wikieditor-toolbar-tool-table-wikitable' => 'Estil amb bordaduras',
 	'wikieditor-toolbar-tool-table-sortable' => 'Far lo tablèu triable',
+	'wikieditor-toolbar-tool-table-example' => 'Tèxte de la cellula',
 	'wikieditor-toolbar-tool-table-preview' => 'Previsualizacion',
 	'wikieditor-toolbar-tool-table-insert' => 'Inserir',
 	'wikieditor-toolbar-tool-table-cancel' => 'Anullar',
@@ -9619,7 +9665,7 @@ $messages['pl'] = array(
 | wiersz 2, komórka 1
 | wiersz 2, komórka 2
 | wiersz 2, komórka 3',
-	'wikieditor-toolbar-tool-table-example' => 'Treść komórki',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Treść komórki',
 	'wikieditor-toolbar-tool-table-example-header' => 'Tekst nagłówka',
 	'wikieditor-toolbar-tool-table-title' => 'Wstaw tabelę',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Wiersze',
@@ -9627,6 +9673,7 @@ $messages['pl'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Dołącz wiersz nagłówka',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Styl z granicami',
 	'wikieditor-toolbar-tool-table-sortable' => 'Dodaj do tabeli możliwość sortowania',
+	'wikieditor-toolbar-tool-table-example' => 'Treść komórki',
 	'wikieditor-toolbar-tool-table-preview' => 'Podgląd',
 	'wikieditor-toolbar-tool-table-insert' => 'Wstaw',
 	'wikieditor-toolbar-tool-table-cancel' => 'Anuluj',
@@ -9813,7 +9860,7 @@ $messages['pms'] = array(
 | linia 2, casela 1
 | linia 2, casela 2
 | linia 2, casela 3',
-	'wikieditor-toolbar-tool-table-example' => 'Test ëd la casela',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Test ëd la casela',
 	'wikieditor-toolbar-tool-table-example-header' => "Test ëd l'antestassion",
 	'wikieditor-toolbar-tool-table-title' => 'Anserì na tàula',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Linie',
@@ -9821,6 +9868,7 @@ $messages['pms'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => "Comprende la linia d'antestassion",
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stil con bordure',
 	'wikieditor-toolbar-tool-table-sortable' => 'Rende la tàula selessionàbil',
+	'wikieditor-toolbar-tool-table-example' => 'Test ëd la casela',
 	'wikieditor-toolbar-tool-table-preview' => 'Previsualisassion',
 	'wikieditor-toolbar-tool-table-insert' => 'Anserì',
 	'wikieditor-toolbar-tool-table-cancel' => 'Scancelé',
@@ -10040,7 +10088,7 @@ $messages['pt'] = array(
 | linha 2, coluna 1
 | linha 2, coluna 2
 | linha 2, coluna 3',
-	'wikieditor-toolbar-tool-table-example' => 'Texto da célula',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Texto da célula',
 	'wikieditor-toolbar-tool-table-example-header' => 'Texto do cabeçalho',
 	'wikieditor-toolbar-tool-table-title' => 'Inserir tabela',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Linhas',
@@ -10048,6 +10096,7 @@ $messages['pt'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Inclui linha de cabeçalho',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Estilo com margens',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tornar a tabela ordenável',
+	'wikieditor-toolbar-tool-table-example' => 'Texto da célula',
 	'wikieditor-toolbar-tool-table-preview' => 'Antevisão',
 	'wikieditor-toolbar-tool-table-insert' => 'Inserir',
 	'wikieditor-toolbar-tool-table-cancel' => 'Cancelar',
@@ -10466,11 +10515,12 @@ $messages['roa-tara'] = array(
 {{ns:file}}:Example.jpg|Titele2',
 	'wikieditor-toolbar-tool-newline' => 'Linèa nove',
 	'wikieditor-toolbar-tool-table' => 'Tabbelle',
-	'wikieditor-toolbar-tool-table-example' => "Teste d'a celle",
+	'wikieditor-toolbar-tool-table-example-cell-text' => "Teste d'a celle",
 	'wikieditor-toolbar-tool-table-example-header' => "Teste d'a testate",
 	'wikieditor-toolbar-tool-table-title' => "'Nzerisce 'na tabbelle",
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Righe',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Culonne',
+	'wikieditor-toolbar-tool-table-example' => "Teste d'a celle",
 	'wikieditor-toolbar-tool-table-preview' => 'Andeprime',
 	'wikieditor-toolbar-tool-table-insert' => 'Inzerisce',
 	'wikieditor-toolbar-tool-table-cancel' => 'Annulle',
@@ -10597,7 +10647,7 @@ $messages['ru'] = array(
 | строка 2, ячейка 1
 | строка 2, ячейка 2
 | строка 2, ячейка 3',
-	'wikieditor-toolbar-tool-table-example' => 'Текст ячейки',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Текст ячейки',
 	'wikieditor-toolbar-tool-table-example-header' => 'Текст заголовка',
 	'wikieditor-toolbar-tool-table-title' => 'Вставить таблицу',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Строк',
@@ -10605,6 +10655,7 @@ $messages['ru'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Добавить заголовочную строку',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Оформление с границами',
 	'wikieditor-toolbar-tool-table-sortable' => 'Сделать таблицу сортируемой',
+	'wikieditor-toolbar-tool-table-example' => 'Текст ячейки',
 	'wikieditor-toolbar-tool-table-preview' => 'Предпросмотр',
 	'wikieditor-toolbar-tool-table-insert' => 'Вставить',
 	'wikieditor-toolbar-tool-table-cancel' => 'Отмена',
@@ -10792,7 +10843,7 @@ $messages['sah'] = array(
 | строка 2, ячейка 1
 | строка 2, ячейка 2
 | строка 2, ячейка 3',
-	'wikieditor-toolbar-tool-table-example' => 'Тиэкис хараҕа',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Тиэкис хараҕа',
 	'wikieditor-toolbar-tool-table-example-header' => 'Баһын аата',
 	'wikieditor-toolbar-tool-table-title' => 'Табылыыссаны угуу',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Устуруоката',
@@ -10800,6 +10851,7 @@ $messages['sah'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Бас устуруоканы эбии',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Хаймыылаах истиил',
 	'wikieditor-toolbar-tool-table-sortable' => 'Таабылы наарданар гын',
+	'wikieditor-toolbar-tool-table-example' => 'Тиэкис хараҕа',
 	'wikieditor-toolbar-tool-table-preview' => 'Эрдэ көрүү',
 	'wikieditor-toolbar-tool-table-insert' => 'Киллэрэргэ',
 	'wikieditor-toolbar-tool-table-cancel' => 'Бигэргэтимэ',
@@ -11016,7 +11068,7 @@ $messages['si'] = array(
 | 2 පේළිය,1 කොටුව
 | 2 පේළිය,2 කොටුව
 | 2 පේළිය,3 කොටුව',
-	'wikieditor-toolbar-tool-table-example' => 'කොටුවේ පෙළ',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'කොටුවේ පෙළ',
 	'wikieditor-toolbar-tool-table-example-header' => 'ශීර්ෂක පෙළ',
 	'wikieditor-toolbar-tool-table-title' => 'වගුවක් ඇතුල් කිරීම',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'පේළි',
@@ -11024,6 +11076,7 @@ $messages['si'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'ශීර්ෂ පේළියක් ඇතුල් කරන්න',
 	'wikieditor-toolbar-tool-table-wikitable' => 'දාර සහිත විලාසය',
 	'wikieditor-toolbar-tool-table-sortable' => 'වර්ග කිරීමේ හැකියාව ඇති වගුවක් කරන්න',
+	'wikieditor-toolbar-tool-table-example' => 'කොටුවේ පෙළ',
 	'wikieditor-toolbar-tool-table-preview' => 'පූර්ව දර්ශනය',
 	'wikieditor-toolbar-tool-table-insert' => 'ඇතුල් කරන්න',
 	'wikieditor-toolbar-tool-table-cancel' => 'අත් හරින්න',
@@ -11210,7 +11263,7 @@ $messages['sk'] = array(
 | riadok 2, bunka 1
 | riadok 2, bunka 2
 | riadok 2, bunka 3',
-	'wikieditor-toolbar-tool-table-example' => 'Text bunky',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Text bunky',
 	'wikieditor-toolbar-tool-table-example-header' => 'Text hlavičky',
 	'wikieditor-toolbar-tool-table-title' => 'Vložiť tabuľku',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Riadkov',
@@ -11218,6 +11271,7 @@ $messages['sk'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Vrátane hlavičkového riadka',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Štýl s okrajmi',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tabuľka so zoraditeľnými hodnotami',
+	'wikieditor-toolbar-tool-table-example' => 'Text bunky',
 	'wikieditor-toolbar-tool-table-preview' => 'Náhľad',
 	'wikieditor-toolbar-tool-table-insert' => 'Vložiť',
 	'wikieditor-toolbar-tool-table-cancel' => 'Zrušiť',
@@ -11381,11 +11435,12 @@ $messages['sl'] = array(
 {{ns:file}}:Primer 2.jpg|Napis 2',
 	'wikieditor-toolbar-tool-newline' => 'Nova vrstica',
 	'wikieditor-toolbar-tool-table' => 'Tabela',
-	'wikieditor-toolbar-tool-table-example' => 'Besedilo celice',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Besedilo celice',
 	'wikieditor-toolbar-tool-table-example-header' => 'Besedilo glave',
 	'wikieditor-toolbar-tool-table-title' => 'Vstavi tabelo',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Vrstice',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Stolpci',
+	'wikieditor-toolbar-tool-table-example' => 'Besedilo celice',
 	'wikieditor-toolbar-tool-table-insert' => 'Vstavi',
 	'wikieditor-toolbar-tool-table-cancel' => 'Prekliči',
 	'wikieditor-toolbar-tool-replace' => 'Zamenjaj',
@@ -11531,9 +11586,10 @@ $messages['sr-ec'] = array(
 | ред 2, ћелија 1
 | ред 2, ћелија 2
 | ред 2, ћелија 3',
-	'wikieditor-toolbar-tool-table-example' => 'Ред $1, ћелија $2',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Ред $1, ћелија $2',
 	'wikieditor-toolbar-tool-table-example-header' => 'Ред $1, ћелија $2 (наслов)',
 	'wikieditor-toolbar-tool-table-title' => 'Убаци табелу',
+	'wikieditor-toolbar-tool-table-example' => 'Ред $1, ћелија $2',
 	'wikieditor-toolbar-tool-replace-close' => 'одустани',
 	'wikieditor-toolbar-characters-page-latin' => 'латиница',
 	'wikieditor-toolbar-characters-page-latinextended' => 'проширена латиница',
@@ -11717,7 +11773,7 @@ $messages['sv'] = array(
 | rad 2, cell 1
 | rad 2, cell 2
 | rad 2, cell 3',
-	'wikieditor-toolbar-tool-table-example' => 'Celltext',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Celltext',
 	'wikieditor-toolbar-tool-table-example-header' => 'Överskriftstext',
 	'wikieditor-toolbar-tool-table-title' => 'Sätt in tabell',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rader',
@@ -11725,6 +11781,7 @@ $messages['sv'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Inkludera överskriftsrad',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stil med kanter',
 	'wikieditor-toolbar-tool-table-sortable' => 'Gör tabell sorterbar',
+	'wikieditor-toolbar-tool-table-example' => 'Celltext',
 	'wikieditor-toolbar-tool-table-preview' => 'Förhandsgranska',
 	'wikieditor-toolbar-tool-table-insert' => 'Sätt in',
 	'wikieditor-toolbar-tool-table-cancel' => 'Avbryt',
@@ -11982,6 +12039,7 @@ $messages['te'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'పేజీ ఉనికిలో లేదు',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'తప్పుడు శీర్షిక',
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'బయటి లింకు',
+	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'పేజీ ఉనికిని సరిచూస్తున్నాం...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'మీరు ఇచ్చిన శీర్షిక సరైనది కాదు.',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'అంతర్గత లంకె',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'బయటి లంకె',
@@ -12014,13 +12072,15 @@ $messages['te'] = array(
 	'wikieditor-toolbar-tool-gallery' => 'చిత్రమాలిక',
 	'wikieditor-toolbar-tool-newline' => 'కొత్త లైను',
 	'wikieditor-toolbar-tool-table' => 'పట్టిక',
-	'wikieditor-toolbar-tool-table-example' => 'గడి పాఠ్యం',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'గడి పాఠ్యం',
 	'wikieditor-toolbar-tool-table-example-header' => 'శీర్షిక పాఠ్యం',
 	'wikieditor-toolbar-tool-table-title' => 'పట్టికని చేర్చండి',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'అడ్డువరుసలు',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'నిలువువరుసలు',
+	'wikieditor-toolbar-tool-table-example' => 'గడి పాఠ్యం',
 	'wikieditor-toolbar-tool-table-preview' => 'మునుజూపు',
 	'wikieditor-toolbar-tool-table-cancel' => 'రద్దు',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'మీరు సరైన అడ్డు లేదా నిలువు వరుసల సంఖ్యని ఇవ్వలేదు.',
 	'wikieditor-toolbar-tool-replace-close' => 'రద్దుచేయి',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'మీ అన్వేషణ దేనికీ సరిపోలలేదు.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'వెతకడానికి ఏమీ ఇవ్వలేదు.',
@@ -12245,7 +12305,7 @@ $messages['tk'] = array(
 | hatar 2, öýjük 1
 | hatar 2, öýjük 2
 | hatar 2, öýjük 3',
-	'wikieditor-toolbar-tool-table-example' => 'Öýjük teksti',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Öýjük teksti',
 	'wikieditor-toolbar-tool-table-example-header' => 'At teksti',
 	'wikieditor-toolbar-tool-table-title' => 'Tablisa giriz',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Hatarlar',
@@ -12253,6 +12313,7 @@ $messages['tk'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'At hataryny giriz',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Çäkli stil',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tablisany sortirlenýän et',
+	'wikieditor-toolbar-tool-table-example' => 'Öýjük teksti',
 	'wikieditor-toolbar-tool-table-preview' => 'Deslapky syn',
 	'wikieditor-toolbar-tool-table-insert' => 'Giriz',
 	'wikieditor-toolbar-tool-table-cancel' => 'Goýbolsun et',
@@ -12439,7 +12500,7 @@ $messages['tr'] = array(
 | satır 2, hücre 1
 | satır 2, hücre 2
 | satır 2, hücre 3',
-	'wikieditor-toolbar-tool-table-example' => 'Hücre metni',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Hücre metni',
 	'wikieditor-toolbar-tool-table-example-header' => 'Başlık metni',
 	'wikieditor-toolbar-tool-table-title' => 'Tablo ekle',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Satırlar',
@@ -12447,6 +12508,7 @@ $messages['tr'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Başlık satırını içer',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Sınırları içeren biçim',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tabloyu sıralanabilir yap',
+	'wikieditor-toolbar-tool-table-example' => 'Hücre metni',
 	'wikieditor-toolbar-tool-table-preview' => 'Önizleme',
 	'wikieditor-toolbar-tool-table-insert' => 'Ekle',
 	'wikieditor-toolbar-tool-table-cancel' => 'İptal',
@@ -12631,7 +12693,7 @@ $messages['uk'] = array(
 | рядок 2, комірка 1
 | рядок 2, комірка 2
 | рядок 2, комірка 3',
-	'wikieditor-toolbar-tool-table-example' => 'Текст комірки',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Текст комірки',
 	'wikieditor-toolbar-tool-table-example-header' => 'Текст заголовка',
 	'wikieditor-toolbar-tool-table-title' => 'Вставити таблицю',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Рядків',
@@ -12639,6 +12701,7 @@ $messages['uk'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Додати рядок заголовка',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Оформлення з рамками',
 	'wikieditor-toolbar-tool-table-sortable' => 'Додати до таблиці можливість сортування',
+	'wikieditor-toolbar-tool-table-example' => 'Текст комірки',
 	'wikieditor-toolbar-tool-table-preview' => 'Попередній перегляд',
 	'wikieditor-toolbar-tool-table-insert' => 'Вставити',
 	'wikieditor-toolbar-tool-table-cancel' => 'Скасувати',
@@ -12824,7 +12887,7 @@ $messages['vec'] = array(
 | riga 2, casèla 1
 | riga 2, casèla 2
 | riga 2, casèla 3',
-	'wikieditor-toolbar-tool-table-example' => 'Testo de la casèla',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Testo de la casèla',
 	'wikieditor-toolbar-tool-table-example-header' => "Testo de l'intestassion",
 	'wikieditor-toolbar-tool-table-title' => 'Inserissi na tabèla',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Lìnie',
@@ -12832,6 +12895,7 @@ $messages['vec'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Includi la riga de intestassion',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stile coi bordi',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tabèla ordinabile',
+	'wikieditor-toolbar-tool-table-example' => 'Testo de la casèla',
 	'wikieditor-toolbar-tool-table-preview' => 'Anteprima',
 	'wikieditor-toolbar-tool-table-insert' => 'Inserissi',
 	'wikieditor-toolbar-tool-table-cancel' => 'Anùla',
@@ -13075,7 +13139,7 @@ $messages['vi'] = array(
 | hàng 2, cột 1
 | hàng 2, cột 2
 | hàng 2, cột 3',
-	'wikieditor-toolbar-tool-table-example' => 'Văn bản ô',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Văn bản ô',
 	'wikieditor-toolbar-tool-table-example-header' => 'Văn bản tiêu đề',
 	'wikieditor-toolbar-tool-table-title' => 'Chèn bảng',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Hàng',
@@ -13083,6 +13147,7 @@ $messages['vi'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Có hàng tiêu đề',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Vẽ khung',
 	'wikieditor-toolbar-tool-table-sortable' => 'Cho phép tự động xếp bảng',
+	'wikieditor-toolbar-tool-table-example' => 'Văn bản ô',
 	'wikieditor-toolbar-tool-table-preview' => 'Xem trước',
 	'wikieditor-toolbar-tool-table-insert' => 'Chèn',
 	'wikieditor-toolbar-tool-table-cancel' => 'Hủy bỏ',
@@ -13282,7 +13347,7 @@ $messages['wo'] = array(
 | rëdd 2, keno 1
 | rëdd 2, keno 2
 | rëdd 2, keno 3',
-	'wikieditor-toolbar-tool-table-example' => 'Mbindum kër gi',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Mbindum kër gi',
 	'wikieditor-toolbar-tool-table-example-header' => 'Mbindum koj bi',
 	'wikieditor-toolbar-tool-table-title' => 'Roof ab xaatim',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rëdd',
@@ -13290,6 +13355,7 @@ $messages['wo'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Duggalaale rëdduw kaw-xët',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Meliin ak wet yi',
 	'wikieditor-toolbar-tool-table-sortable' => 'Def xaatim bi nosuwu',
+	'wikieditor-toolbar-tool-table-example' => 'Mbindum kër gi',
 	'wikieditor-toolbar-tool-table-preview' => 'Wonendi',
 	'wikieditor-toolbar-tool-table-insert' => 'Roof',
 	'wikieditor-toolbar-tool-table-cancel' => 'Neenal',
@@ -13335,9 +13401,10 @@ $messages['yi'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'בלאט עקזיסטירט',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'בלאט עקזיסטירט נישט',
 	'wikieditor-toolbar-tool-big' => 'גרויס',
-	'wikieditor-toolbar-tool-table-example' => 'צעל טעקסט',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'צעל טעקסט',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'שורות',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'עמודים',
+	'wikieditor-toolbar-tool-table-example' => 'צעל טעקסט',
 	'wikieditor-toolbar-tool-table-preview' => 'פֿאראויסשטעלונג',
 	'wikieditor-toolbar-tool-table-cancel' => 'אנולירן',
 	'wikieditor-toolbar-tool-replace-search' => 'זוכן פֿאַר:',
@@ -13413,6 +13480,18 @@ $messages['yue'] = array(
 	'wikieditor-toolbar-tool-newline' => '新行',
 	'wikieditor-toolbar-tool-table' => '表',
 	'wikieditor-toolbar-tool-table-example-old' => '-
+! 表頭 1
+! 表頭 2
+! 表頭 3
+|-
+| 行 1, 格 1
+| 行 1, 格 2
+| 行 1, 格 3
+|-
+| 行 2, 格 1
+| 行 2, 格 2
+| 行 2, 格 3',
+	'wikieditor-toolbar-tool-table-example-cell-text' => '-
 ! 表頭 1
 ! 表頭 2
 ! 表頭 3
@@ -13601,7 +13680,7 @@ $messages['zh-hans'] = array(
 | 第二行第一个单元格
 | 第二行第二个单元格
 | 第二行第三个单元格',
-	'wikieditor-toolbar-tool-table-example' => '单元格文本',
+	'wikieditor-toolbar-tool-table-example-cell-text' => '单元格文本',
 	'wikieditor-toolbar-tool-table-example-header' => '标头文本',
 	'wikieditor-toolbar-tool-table-title' => '插入表格',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => '行',
@@ -13609,6 +13688,7 @@ $messages['zh-hans'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => '包含标题栏',
 	'wikieditor-toolbar-tool-table-wikitable' => '含表格线维基风格',
 	'wikieditor-toolbar-tool-table-sortable' => '使表格内容可排序',
+	'wikieditor-toolbar-tool-table-example' => '单元格文本',
 	'wikieditor-toolbar-tool-table-preview' => '预览',
 	'wikieditor-toolbar-tool-table-insert' => '插入',
 	'wikieditor-toolbar-tool-table-cancel' => '取消',
@@ -13758,6 +13838,18 @@ $messages['zh-hant'] = array(
 	'wikieditor-toolbar-tool-newline' => '換行',
 	'wikieditor-toolbar-tool-table' => '表格',
 	'wikieditor-toolbar-tool-table-example-old' => '-
+! 表頭 1
+! 表頭 2
+! 表頭 3
+|-
+| 行 1, 格 1
+| 行 1, 格 2
+| 行 1, 格 3
+|-
+| 行 2, 格 1
+| 行 2, 格 2
+| 行 2, 格 3',
+	'wikieditor-toolbar-tool-table-example-cell-text' => '-
 ! 表頭 1
 ! 表頭 2
 ! 表頭 3

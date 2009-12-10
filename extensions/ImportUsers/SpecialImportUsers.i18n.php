@@ -1107,6 +1107,36 @@ $messages['mhr'] = array(
 	'importusers-email' => 'электрон почто',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'importusers' => 'Увезување корисници',
+	'importusers-desc' => '[[Special:ImportUsers|Увезува корисници]] групно од CSV-податотека; кодирање: UTF-8',
+	'importusers-uploadfile' => 'Подигни податотека',
+	'importusers-form-caption' => 'Внесете CSV-податотека (UTF-8)',
+	'importusers-form-file' => 'Формат на корисничката податотека (CSV):',
+	'importusers-form-replace-present' => 'Замени постоечки корисници',
+	'importusers-form-button' => 'Увези',
+	'importusers-user-added' => "Корисникот '''$1''' е додаден.",
+	'importusers-user-present-update' => "Корисникот '''$1''' веќе постои.
+Обновено.",
+	'importusers-user-present-not-update' => "Корисникот '''$1''' веќе постои.
+Не е обновен.",
+	'importusers-user-invalid-format' => 'Корисничките податоци во ред #$1 имаат неважечки формат или се празни.
+Прескокнато.',
+	'importusers-log' => 'Дневник на увоз на корисници',
+	'importusers-log-summary' => 'Преглед',
+	'importusers-log-summary-all' => 'Сите',
+	'importusers-log-summary-added' => 'Додадено',
+	'importusers-log-summary-updated' => 'Обновено',
+	'importusers-login-name' => 'Корисничко име',
+	'importusers-password' => 'лозинка',
+	'importusers-email' => 'е-пошта',
+	'importusers-realname' => 'вистинско име',
+	'right-import_users' => 'Групно увезување на корисници',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

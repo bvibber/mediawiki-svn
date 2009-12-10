@@ -2140,7 +2140,7 @@ Komentar tersebut hanya akan muncul setelah ditinjau oleh seorang moderator.',
 $messages['ja'] = array(
 	'wikilog-desc' => 'ブログ機能を追加し、ウィキとブログのハイブリッドを作る',
 	'wikilog-auto' => 'ウィキログ・オート',
-	'wikilog-help' => '{{ns:Help}}:ウィキログ',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'ウィキログの記事にコメントを投稿する',
 	'right-wl-moderation' => 'ウィキログ記事のコメントのモデレーション',
 	'wikilog-specialwikilog-title' => 'ウィキログ',
@@ -2789,6 +2789,7 @@ $messages['nn'] = array(
 $messages['oc'] = array(
 	'wikilog-desc' => 'Apond de foncionalitats de blòg, creant un wiki-blog ibrid',
 	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Postar de comentaris suls articles de wikilog',
 	'right-wl-moderation' => 'Moderacion dels comentaris suls articles de wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogs',
@@ -2800,6 +2801,12 @@ $messages['oc'] = array(
 	'wikilog-log-cmt-rejdel' => 'A regetat lo comentari sus wikilog de [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Accions sus wikilog',
+	'wikilog-missing-wikilog' => 'Aquò es la pagina [[{{int:wikilog-help}}|wikilog]] per [[{{FULLPAGENAME}}]].
+
+Aqueste wikilog existís pas pel moment.
+D\'en primièr, deu èsser creat per poder publicar d\'articles e utilizar las autras foncionalitats de wikilog.
+
+* <span class="plainlkinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Crear aqueste wikilog].</span>',
 	'wikilog-information' => 'Informacion sus wikilog',
 	'wikilog-post-count-published' => 'I a {{PLURAL:$1|$1 article publicat|$1 articles publicats}} sus aqueste wikilog,',
 	'wikilog-post-count-drafts' => 'I a {{PLURAL:£1|un article pas publicat (borrolhon)|$1 articles pas publicats (borrolhons)}},',
@@ -2831,6 +2838,10 @@ $messages['oc'] = array(
 	'wikilog-pager-empty' => "(pas cap d'item)",
 	'wikilog-no-comments' => 'pas de comentari',
 	'wikilog-has-comments' => '{{PLURAl:$1|un comentari|$1 comentaris}}',
+	'wikilog-summary-footer' => 'Postat per $7 dins [[$1|$2]] lo $8 a $9, $10.',
+	'wikilog-summary-footer-single' => 'Postat per $7 lo $8 a $9, $10.',
+	'wikilog-summary-uncategorized' => 'Pas categorizat',
+	'wikilog-summary-categories' => 'Classat dins $2',
 	'wikilog-summary-more' => '[[$3|→ legir la seguida...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discutir]])',
 	'wikilog-comment-by-user' => 'Comentari de $1 ($2)',
@@ -3057,6 +3068,7 @@ A dovrìa o fornì në stranòm si 'nsima për identifiché sò coment, opura \$
 $messages['pt'] = array(
 	'wikilog-desc' => "Adiciona funcionalidades de ''blog'', criando um híbrido ''wiki-blog''",
 	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Criar comentários em artigos wikilog',
 	'right-wl-moderation' => 'Moderação de comentários de artigos wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogs',
