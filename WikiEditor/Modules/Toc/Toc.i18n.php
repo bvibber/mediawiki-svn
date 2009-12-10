@@ -350,6 +350,14 @@ $messages['pt-br'] = array(
 	'wikieditor-toc-preference' => 'Habilita tabela de conteúdo navegável',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikieditor-toc-show' => 'Samiqninta rikuchiy',
+	'wikieditor-toc-hide' => 'Samiqninta pakay',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

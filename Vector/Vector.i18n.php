@@ -151,6 +151,13 @@ $messages['ja'] = array(
 	'vector-desc' => 'ベクター・スキンのユーザーインターフェイス要素を改良する。',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'vector' => '벡터 스킨의 인터페이스 향상',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

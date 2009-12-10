@@ -807,6 +807,7 @@ $messages['ja'] = array(
 $messages['ka'] = array(
 	'ct-beginner' => 'დამწყები',
 	'ct-expert' => 'ექსპერტი',
+	'ct-and' => 'და',
 );
 
 /** Khmer (ភាសាខ្មែរ)
