@@ -129,7 +129,7 @@ fn: {
 					}
 				}
 				sanatizedSegment = sanatizedStr.substring( startIndex,endIndex )
-						.replace( /[{}|=]/g 'X' );
+						.replace( /[{}|=]/g , 'X' );
 				sanatizedStr = sanatizedStr.substring( 0, startIndex ) +
 					sanatizedSegment + sanatizedStr.substring( endIndex );
 		};
