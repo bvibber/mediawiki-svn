@@ -20,7 +20,7 @@ public class DatabaseProximityStoreBuilder
 				extends DatabaseWikiWordStoreBuilder 
 				implements ProximityStoreBuilder {
 	
-	   protected FeatureVectorFactors featureVectorFactors = new FeatureVectorFactors();
+	   protected FeatureVectorFactors featureVectorFactors;
 		
 		protected WikiWordConceptStoreSchema conceptDatabase;
 		
@@ -35,6 +35,7 @@ public class DatabaseProximityStoreBuilder
 			super(database, tweaks, agenda);
 			
 		    this.conceptStore = conceptStore;
+		    this.featureVectorFactors = new FeatureVectorFactors(tweaks);
 			
 			Inserter featureInserter = configureTable("feature", 8*1024, 32);
 			featureTable = (RelationTable)featureInserter.getTable();
