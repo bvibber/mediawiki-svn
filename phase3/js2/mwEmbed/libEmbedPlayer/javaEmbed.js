@@ -135,7 +135,7 @@ var javaEmbed = {
 		
 		if ( this.supportsURLTimeEncoding() ) {
 			this.parent_doSeek( percentage );
-			// this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( percentage * this.getDuration() );						
+			// this.seek_time_sec = mw.npt2seconds( this.start_ntp ) + parseFloat( percentage * this.getDuration() );						
 		   // this.playerElement.setParam('url', this.getSrc( this.seek_time_sec ))
 			// this.playerElement.restart();
 		} else if ( this.playerElement ) {

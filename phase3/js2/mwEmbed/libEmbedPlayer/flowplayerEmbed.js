@@ -1623,7 +1623,7 @@ var flowplayerEmbed = {
 			this.currentTime = flash_state.time;
 			// js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration());
 		} else {
-			this.currentTime = flash_state.time + this.start_offset;
+			this.currentTime = flash_state.time + this.startOffset;
 			// stop buffering if greater than the duration:
 			if ( flash_state.bufferEnd > this.getDuration() + 5 ) {
 				// js_log('should stop buffering (does not seem to work)' + flash_state.bufferEnd + ' > dur: ' + this.getDuration() );
@@ -1631,7 +1631,7 @@ var flowplayerEmbed = {
 			}
 		}
 
-		if ( this.currentTime > npt2seconds( this.start_ntp ) && !this.startedTimedPlayback ) {
+		if ( this.currentTime > mw.npt2seconds( this.start_ntp ) && !this.startedTimedPlayback ) {
 			var fail = false;
 			try
 			{
@@ -1656,12 +1656,12 @@ var flowplayerEmbed = {
 
 		// checks to see if we reached the end of playback:
 		if ( this.duration && this.startedTimedPlayback &&
-			(	 this.currentTime > ( npt2seconds( this.end_ntp ) + 2 )
+			(	 this.currentTime > ( mw.npt2seconds( this.end_ntp ) + 2 )
 				||
-				( this.currentTime > ( npt2seconds( this.end_ntp ) - 1 )
+				( this.currentTime > ( mw.npt2seconds( this.end_ntp ) - 1 )
 					&& this.prevTime == this.currentTime ) )
 			) {
-			js_log( 'prbally reached end of stream: ' + seconds2npt( this.currentTime ) );
+			js_log( 'prbally reached end of stream: ' + mw.seconds2npt( this.currentTime ) );
 			this.onClipDone();
 		}
 
@@ -1670,7 +1670,7 @@ var flowplayerEmbed = {
 
 
 		this.prevTime = this.currentTime;
-		// js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - npt2seconds(this.start_ntp)) +' / ' +(npt2seconds(this.end_ntp)-npt2seconds(this.start_ntp)));
+		// js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - mw.npt2seconds(this.start_ntp)) +' / ' +(mw.npt2seconds(this.end_ntp)-mw.npt2seconds(this.start_ntp)));
 	},
 	restorePlayer:function() {
 		if ( !this.fla )

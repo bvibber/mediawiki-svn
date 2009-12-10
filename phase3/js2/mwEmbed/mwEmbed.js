@@ -18,12 +18,9 @@
  */
 
 // The global scope: will be depreciated once we get everything into mw
-var _global = this;
 
 /*
-* setup the empty global mw object
-* will ensure all our functions and variables are properly namespaced
-* reducing chance of conflicts
+* Setup the mw global: 
 */
 if ( !window['mw'] ) {
 	window['mw'] = { }
@@ -55,7 +52,7 @@ var mwDefaultConf = {
 	* This flag increases page performance on pages that do not use mwEmbed 
 	* and don't already load jQuery 
 	*
-	* For examle when including the mwEmbed.js in your blog template 
+	* For example when including the mwEmbed.js in your blog template 
 	* mwEmbed will only load extra js on blog posts that include the video tag.
 	*
 	* NOTE: Future architecture will probably do away with this flag and refactor it into 
@@ -745,7 +742,7 @@ var global_req_cb = new Array(); // The global request callback array
 		classPaths : { }, 	
 		
 		/**
-		* Style sheet paths for aossicated classes
+		* Style sheet paths for associated classes
 		* @key Name of the class
 		* @value Style sheet path
 		*/	
@@ -781,6 +778,11 @@ var global_req_cb = new Array(); // The global request callback array
 		* @param {Function} callback Function called once loading is complete
 		*/				
 		load: function( loadRequest, callback ){
+			
+			// Check for empty loadRequest ( directly return the callback ) 
+			if( $.isEmpty( loadRequest ) ){
+				callback();
+			}
 			
 			// Check if its a multi-part request: 
 			if( typeof loadRequest == 'object' ){									
@@ -842,15 +844,15 @@ var global_req_cb = new Array(); // The global request callback array
 			// Issue the load request check check loadState to see if we are "done"
 			for( var i in loadSet ){			
 				var loadName = loadSet[ i ];				
-				$.load( loadName, function ( loadName ){								
+				$.load( loadName, function ( loadName ){						
 					loadState[ loadName ] = 1;
-					
+					//js_log( loadName + ' finished of: ' + JSON.stringify( loadState ) );
+					//Check if all load request states are set 1					
 					var loadDone = true;
 					for( var j in loadState ){
 						if( loadState[ j ] === 0 )
 							loadDone = false;			
-					}
-					
+					}					
 					// Run the parent scope callback for "loadMany" 
 					if( loadDone )
 						callback();
@@ -1022,7 +1024,29 @@ var global_req_cb = new Array(); // The global request callback array
 		}
 		return true;
 	}
-		
+	
+	/**
+	* Check if an object is empty ( also look for empty string ) 
+	*
+	* @param {Object} ob Object to be checked
+	*/ 
+	$.isEmpty = function( ob ) {
+		if( typeof ob == 'string' && ob == '' ) 
+			return true;
+		for(var i in ob){ return false;}
+			return true;
+		return true;
+	}
+	
+	/**
+	* Get a loading spiner html
+	* @param {String} [Optional] style Style string to apply to the spiner 
+	*/
+	$.loading_spiner = function( style ) {
+		var style_txt = ( style ) ? style:'';
+		return '<div class="loading_spiner" style="' + style_txt + '"></div>';
+	}
+	
 	
 	//Setup the local mwOnLoadFuncitons array: 
 	var mwOnLoadFuncitons = new Array();
@@ -1083,8 +1107,8 @@ var global_req_cb = new Array(); // The global request callback array
 				
 		// Make sure jQuery is loaded:
 		$.load( 'window.jQuery', function(){			
-			if ( !_global['$j'] ) {
-				_global['$j'] = jQuery.noConflict();
+			if ( !window['$j'] ) {
+				window['$j'] = jQuery.noConflict();
 			}
 			
 			// Set up the skin paths configuration
@@ -1178,6 +1202,7 @@ var global_req_cb = new Array(); // The global request callback array
 			return true;
 		return false;
 	}
+	
 	/**
 	* Get page elements that match the rewritePlayerTags config
 	*
@@ -1212,7 +1237,8 @@ var global_req_cb = new Array(); // The global request callback array
 	* @param {Function} callback Function to call once script is loaded   
 	*/
 	$.getScript = function( url, callback ){
-		// Add on the request paramaters to the url:
+	
+		// Add on the request parameters to the url:
 		url += ( url.indexOf( '?' ) === -1 )? '?' : '&';
 		
 		// Get url Param also updates the "debug" var 
@@ -1260,7 +1286,8 @@ var global_req_cb = new Array(); // The global request callback array
 	*	{Array} url List of urls to be loaded
 	*	{String} url Url of the style sheet to be loaded
 	*/
-	$.getStyleSheet = function( url ) {	
+	$.getStyleSheet = function( url ) {
+		
 		if ( typeof url == 'object' ) {
 			for ( var i in url ) {
 				$.getStyleSheet( url[i] );
@@ -1317,6 +1344,7 @@ var global_req_cb = new Array(); // The global request callback array
 		// Get mwEmbed src:
 		var src = $.getMwEmbedSrc();		
 		var mwpath = null;
+		
 		// Check for direct include of the mwEmbed.js
 		if ( src.indexOf( 'mwEmbed.js' ) !== -1 ) {
 			mwpath =  src.substr( 0, src.indexOf( 'mwEmbed.js' ) );			
@@ -1337,12 +1365,75 @@ var global_req_cb = new Array(); // The global request callback array
 		if( ! mwpath ){
 			js_log( "Error could not get mwEmbed path " );
 			return ;
-		}
-					
+		}		
 		// Update the cached var with the absolute path: 
 		mwEmbedPath = $.absoluteUrl( mwpath )	;			
 		return mwEmbedPath;
 	}
+		
+	/**
+	 * Given a float number of seconds, returns npt format response.
+	 *
+	 * @param {Float} sec Seconds
+	 * @param {Boolean} show_ms If milliseconds should be displayed.
+	 */
+	$.seconds2npt = function( sec, show_ms ) {
+		if ( isNaN( sec ) ) {
+			// js_log("warning: trying to get npt time on NaN:" + sec);
+			return '0:0:0';
+		}
+		var hours = Math.floor( sec / 3600 );
+		var minutes = Math.floor( ( sec / 60 ) % 60 );
+		var seconds = sec % 60;
+		// Round the number of seconds to the required number of significant digits
+		if ( show_ms ) {
+			seconds = Math.round( seconds * 1000 ) / 1000;
+		} else {
+			seconds = Math.round( seconds );
+		}
+		if ( seconds < 10 )
+			seconds = '0' +	seconds;
+		if ( minutes < 10 )
+			minutes = '0' + minutes;
+	
+		return hours + ":" + minutes + ":" + seconds;
+	}
+	
+	/**
+	 * Take hh:mm:ss,ms or hh:mm:ss.ms input, return the number of seconds
+	 *
+	 * @param {String} npt_str NPT time string
+	 */
+	$.npt2seconds = function ( npt_str ) {
+		if ( !npt_str ) {
+			// js_log('npt2seconds:not valid ntp:'+ntp);
+			return false;
+		}
+		// Strip {npt:}01:02:20 or 32{s} from time  if present
+		npt_str = npt_str.replace( /npt:|s/g, '' );
+	
+		var hour = 0;
+		var min = 0;
+		var sec = 0;
+	
+		times = npt_str.split( ':' );
+		if ( times.length == 3 ) {
+			sec = times[2];
+			min = times[1];
+			hour = times[0];
+		} else if ( times.length == 2 ) {
+			sec = times[1];
+			min = times[0];
+		} else {
+			sec = times[0];
+		}
+		// Sometimes a comma is used instead of period for ms
+		sec = sec.replace( /,\s?/, '.' );
+		// Return seconds float
+		return parseInt( hour * 3600 ) + parseInt( min * 60 ) + parseFloat( sec );
+	}
+	
+	
 	
 	// Local mwEmbedSrc variable ( for cache of $.getMwEmbedSrc )
 	var mwEmbedSrc = null; 
@@ -1473,7 +1564,7 @@ var global_req_cb = new Array(); // The global request callback array
 		}
 		
 		// Check for leading slash: 
-		if( src.indexOf( '/' ) == 1 ){
+		if( src.indexOf( '/' ) === 0 ){
 			return parsedUrl.protocol + '://' + parsedUrl.authority + src;
 		}else{
 			return parsedUrl.protocol + '://' + parsedUrl.authority + parsedUrl.directory + src;
@@ -1481,7 +1572,7 @@ var global_req_cb = new Array(); // The global request callback array
 	};
 	
 	/** 
-	* Replace url parammaters via newParams key value pairs
+	* Replace url parameters via newParams key value pairs
 	* 
 	* @param {String} url Source url to be updated
 	* @param {Object} newParams key, value paris to swap in
@@ -1552,8 +1643,10 @@ if ( typeof gMsg != 'undefined' ) {
 	mw.addMessages( gMsg )
 }
 
+// Set gM shortcut:
 var gM = mw.lang.gM;
-// setup legacy global shortcuts:
+
+// Setup legacy global shortcuts:
 var loadRS = mw.lang.loadRS;
 
 /**
@@ -1568,7 +1661,6 @@ var loadRS = mw.lang.loadRS;
  * 
  */
  
-
 mw.addClassFilePaths( {
 	"mwEmbed"			: "mwEmbed.js",
 	"window.jQuery"		: "jquery/jquery-1.3.2.js",
@@ -1652,7 +1744,7 @@ mw.addClassFilePaths( {
 mw.addClassStyleSheets( {
 	'$j.Jcrop'			: 'libClipEdit/Jcrop/css/jquery.Jcrop.css',
 	'$j.fn.ColorPicker'	: 'libClipEdit/colorpicker/css/colorpicker.css'
-})
+} );
 
 /**
 * libEmbedPlayer Dependency Module Loader:
@@ -1679,6 +1771,7 @@ mw.addClassFilePaths( {
 	"vlcEmbed"			: "libEmbedPlayer/vlcEmbed.js"
 
 } );
+
 // Add the module loader function:
 mw.addModuleLoader( 'player', function( callback ){
 	var _this = this;
@@ -1707,33 +1800,36 @@ mw.addModuleLoader( 'player', function( callback ){
 		var cName = $j( playerElem ).attr( 'class' );
 		for( var n=0; n < mw.valid_skins.length ; n++ ){ 
 			if( cName.indexOf( mw.valid_skins[ n ] ) !== -1){
-				mw.skin_list.push( mw.valid_skins[n] );
+				dependencyRequest[0].push(  mw.valid_skins[n]  + 'Config' );
 			}
-		}		
-	} );	
-	
-	// Add any page specific requested skins js ( supports multiple skins per single page )
-	if ( mw.skin_list ) {
-		for ( var i in mw.skin_list  ) {
-			dependencyRequest[0].push( mw.skin_list[i] + 'Config' );
 		}
-	}
-
+	} );	
+		
 	// Add PNG fix if needed:
 	if ( $j.browser.msie || $j.browser.version < 7 )
 		dependencyRequest[0].push( '$j.fn.pngFix' );
 
+	// Do short detection, to avoid extra player library request in ~most~ cases. 
+	//( ie if browser is firefox include native, if browser is ie include java ) 
+	if( $j.browser.msie )
+		dependencyRequest[0].push( 'javaEmbed' )
+	
+	// Safari gets slower load since we have to detect ogg support 
+	if( typeof HTMLVideoElement == 'object' &&  !$j.browser.safari  )
+		dependencyRequest[0].push( 'nativeEmbed' )
+
 	// Load the video libs:
 	mw.load( dependencyRequest, function() {
-		
-		// Detect what players are supported: 
+	
+		// Detect supported players:  
 		embedTypes.init();
-		
+			
 		// Remove no video html elements:
 		$j( '.videonojs' ).remove();
-		
-		//Run the callback
-		callback();		
+		//js_log(" run callback: " + callback );
+					
+		// Run the callback with name of the module  
+		callback( 'player' );		
 	} );
 	
 } ); // done with embedPlayer loader.js
@@ -1780,26 +1876,6 @@ window.onload = function () {
     if ( mwOriginalOnLoad )
         mwOriginalOnLoad();
 	mw.domReady();
-}
-
-
-
-
-
-
-// Get the loading image
-function mv_get_loading_img( style, class_attr ) {
-	var style_txt = ( style ) ? style:'';
-	var class_attr = ( class_attr ) ? 'class="' + class_attr + '"' : 'class="mv_loading_img"';
-	return '<div ' + class_attr + ' style="' + style + '"></div>';
-}
-
-function mv_set_loading( target, load_id ) {
-	var id_attr = ( load_id ) ? ' id="' + load_id + '" ':'';
-	$j( target ).append( '<div ' + id_attr + ' style="position:absolute;top:0px;left:0px;height:100%;width:100%;' +
-		'background-color:#FFF;">' +
-			mv_get_loading_img( 'top:30px;left:30px' ) +
-		'</div>' );
 }
 
 /**
@@ -2080,7 +2156,17 @@ var mvJsLoader = {
 function mwDojQueryBindings() {
 	js_log( 'mv_jqueryBindings' );
 	( function( $ ) {
-		/*
+	
+		/**
+		* Set a given selector html to the loading spiner:
+		*/
+		$.fn.loadingSpiner = function() {
+			if ( this.selector ) {
+				$j( this.selector ).html(  mw.loading_spiner() );
+			}
+		}
+		
+		/**
 		* dragDrop file loader 
 		*/
 		$.fn.dragFileUpload = function ( conf ) {
@@ -2092,10 +2178,12 @@ function mwDojQueryBindings() {
 				} );
 			}
 		}
-		/*
+		
+		/**
 		 * apiProxy Loader loader:
 		 * 
 		 * @param mode is either 'server' or 'client'
+		 * @param {Object} proxyConfig
 		 */
 		$.apiProxy = function( mode, proxyConfig, callback ) {
 			js_log( 'do apiProxy setup' );
@@ -2120,10 +2208,10 @@ function mwDojQueryBindings() {
 		$.addMediaWiz = function( options, callback ) {
 			js_log( ".addMediaWiz call" );
 			// check if already loaded:
-			if ( _global['rsdMVRS'] ) {
-				_global['rsdMVRS'].showDialog();
+			if ( window['rsdMVRS'] ) {
+				window['rsdMVRS'].showDialog();
 				if ( callback )
-					callback( _global['rsdMVRS'] );
+					callback( window['rsdMVRS'] );
 				return ;
 			}
 			// display a loader: 
@@ -2136,7 +2224,7 @@ function mwDojQueryBindings() {
 				amwObj.createUI();
 				// call the parent callback:
 				if ( callback )
-					callback( _global['rsdMVRS'] );
+					callback( window['rsdMVRS'] );
 			} );
 		}
 		
@@ -2166,10 +2254,10 @@ function mwDojQueryBindings() {
 				]
 			], function() {
 				options['instance_name'] = 'rsdMVRS';
-				if ( ! _global['rsdMVRS'] )
-					_global['rsdMVRS'] = new remoteSearchDriver( options );
+				if ( ! window['rsdMVRS'] )
+					window['rsdMVRS'] = new remoteSearchDriver( options );
 				if ( callback ) {
-					callback( _global['rsdMVRS'] );
+					callback( window['rsdMVRS'] );
 				}
 			} );
 		}
@@ -2182,39 +2270,39 @@ function mwDojQueryBindings() {
 			// Issue a request to get the CSS file (if not already included):
 			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
 			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/mv_sequence.css' );
-			// Make sure we have the required mwEmbed libs (they are not loaded when no video
-			// element is on the page)
-			mvJsLoader.eembedPlayerheck( function() {
-				// Load the playlist object and then the jQuery UI stuff:
-				mw.load( [
-					[
-						'mvPlayList',
-						'$j.ui',
-						'$j.contextMenu',
-						'JSON',
-						'mvSequencer'
-					],
-					[
-						'$j.ui.accordion',
-						'$j.ui.dialog',
-						'$j.ui.droppable',
-						'$j.ui.draggable',
-						'$j.ui.progressbar',
-						'$j.ui.sortable',
-						'$j.ui.resizable',
-						'$j.ui.slider',
-						'$j.ui.tabs'
-					]
-				], function() {
-					js_log( 'calling new mvSequencer' );
-					// Initialise the sequence object (it will take over from there)
-					// No more than one mvSeq obj for now:
-					if ( !_global['mvSeq'] ) {
-						_global['mvSeq'] = new mvSequencer( options );
-					} else {
-						js_log( 'mvSeq already init' );
-					}
-				} );
+			// Make sure we have the required mwEmbed libs:			
+			mw.load( [
+				[	//Load the embedPlayer module: 
+					'player',
+				],		
+				[										
+					// Load playlist and its dependencies
+					'mvPlayList',
+					'$j.ui',
+					'$j.contextMenu',
+					'JSON',
+					'mvSequencer'
+				],
+				[
+					'$j.ui.accordion',
+					'$j.ui.dialog',
+					'$j.ui.droppable',
+					'$j.ui.draggable',
+					'$j.ui.progressbar',
+					'$j.ui.sortable',
+					'$j.ui.resizable',
+					'$j.ui.slider',
+					'$j.ui.tabs'
+				]
+			], function() {
+				js_log( 'calling new mvSequencer' );
+				// Initialise the sequence object (it will take over from there)
+				// No more than one mvSeq obj for now:
+				if ( !mw['mvSeq'] ) {
+					mw['mvSeq'] = new mvSequencer( options );
+				} else {
+					js_log( 'mvSeq already init' );
+				}
 			} );
 		}
 		/*
@@ -2391,7 +2479,7 @@ function mwDojQueryBindings() {
 		* @param msg text text of the loader msg
 		*/
 		$.addLoaderDialog = function( msg_txt ) {
-			$.addDialog( msg_txt, msg_txt + '<br>' + mv_get_loading_img() );
+			$.addDialog( msg_txt, msg_txt + '<br>' + mw.loading_spiner() );
 		}
 		
 		/**
@@ -2453,64 +2541,7 @@ function mwDojQueryBindings() {
 * Utility functions:
 */
 
-/**
- * Given a float number of seconds, returns npt format response.
- *
- * @param float Seconds
- * @param boolean If we should show milliseconds or not.
- */
-function seconds2npt( sec, show_ms ) {
-	if ( isNaN( sec ) ) {
-		// js_log("warning: trying to get npt time on NaN:" + sec);
-		return '0:0:0';
-	}
-	var hours = Math.floor( sec / 3600 );
-	var minutes = Math.floor( ( sec / 60 ) % 60 );
-	var seconds = sec % 60;
-	// Round the number of seconds to the required number of significant digits
-	if ( show_ms ) {
-		seconds = Math.round( seconds * 1000 ) / 1000;
-	} else {
-		seconds = Math.round( seconds );
-	}
-	if ( seconds < 10 )
-		seconds = '0' +	seconds;
-	if ( minutes < 10 )
-		minutes = '0' + minutes;
 
-	return hours + ":" + minutes + ":" + seconds;
-}
-/*
- * Take hh:mm:ss,ms or hh:mm:ss.ms input, return the number of seconds
- */
-function npt2seconds( npt_str ) {
-	if ( !npt_str ) {
-		// js_log('npt2seconds:not valid ntp:'+ntp);
-		return false;
-	}
-	// Strip {npt:}01:02:20 or 32{s} from time  if present
-	npt_str = npt_str.replace( /npt:|s/g, '' );
-
-	var hour = 0;
-	var min = 0;
-	var sec = 0;
-
-	times = npt_str.split( ':' );
-	if ( times.length == 3 ) {
-		sec = times[2];
-		min = times[1];
-		hour = times[0];
-	} else if ( times.length == 2 ) {
-		sec = times[1];
-		min = times[0];
-	} else {
-		sec = times[0];
-	}
-	// Sometimes a comma is used instead of period for ms
-	sec = sec.replace( /,\s?/, '.' );
-	// Return seconds float
-	return parseInt( hour * 3600 ) + parseInt( min * 60 ) + parseFloat( sec );
-}
 /*
  * Simple helper to grab an edit token
  *
@@ -2601,7 +2632,7 @@ function do_api_req( options, callback ) {
 			paramAnd = '&';
 		}
 		var fname = 'mycpfn_' + ( mw.cb_count++ );
-		_global[ fname ] = callback;
+		window[ fname ] = callback;
 		req_url += '&' + options.jsonCB + '=' + fname;
 		loadExternalJs( req_url );
 	}

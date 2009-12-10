@@ -1,9 +1,3 @@
-
-// Set the dismiss_playback_warning flag config
-// Set via config so a dismiss on one video embed applies to all video embeds. 
-mw.setConfig( 'dismiss_playback_warning', false );
-
-
 /**
 * Msg text is inherited from embedPlayer 
 */
@@ -51,9 +45,11 @@ ctrlBuilder.prototype = {
 		this.embedObj = embedObj;
 
 		// Check for skin overrides for ctrlBuilder
-		if ( _global[ embedObj.skin_name + 'Config'] ) {
+		if ( window[ embedObj.skin_name + 'Config'] ) {
+		
 			// Clone as to not override prototype: 	
-			var _this = $j.extend( true, { }, this, _global[ embedObj.skin_name + 'Config'] );
+			var _this = $j.extend( true, { }, this, window[ embedObj.skin_name + 'Config'] );
+			
 			return _this;
 		}
 		// Return the ctrlBuilder Object: 
@@ -72,7 +68,7 @@ ctrlBuilder.prototype = {
 
 		js_log( 'f:controlsBuilder:: opt:' + this.options );
 		this.id = ( embedObj.pc ) ? embedObj.pc.pp.id:embedObj.id;
-		this.available_width = embedObj.playerPixelWidth();
+		this.available_width = embedObj.getPlayerWidth();
 		
 		// Make pointer to the embedObj
 		this.embedObj = embedObj;
@@ -122,16 +118,15 @@ ctrlBuilder.prototype = {
 		var _this = this;				
 
 		if ( !$target )
-			$target = $j( '#' + embedObj.id );
-		
-		
+			$target = $j( '#' + embedObj.id );				
+				
 		// Add play hook:
 		$target.find( '.play-btn,.play-btn-large' ).unbind().btnBind().click( function() {
 			embedObj.play();
 		} );
 
 		// Add recommend firefox if we have non-native playback:
-		if ( embedObj.doNativeWarningCheck() ) {
+		if ( _this.doNativeWarningCheck() ) {
 			$j( '#dc_' + embedObj.id ).hover(
 				function() {
 					if ( $j( '#gnp_' + embedObj.id ).length == 0 ) {
@@ -144,22 +139,21 @@ ctrlBuilder.prototype = {
 						'</div>' );
 						$j( '#ffwarn_' + embedObj.id ).click( function() {
 							if ( $j( this ).is( ':checked' ) ) {
-								// set up a cookie for 7 days:
-								$j.cookie( 'dismiss_playback_warning', true, { expires: 7 } );
-								// set the current instance
-								mw.setConfig( 'dismiss_playback_warning', true );
+								// Set up a cookie for 7 days:
+								$j.cookie( 'show_player_warning', false, { expires: 7 } );
+								// Set the current instance
+								mw.setConfig( 'show_player_warning', false );
 								$j( '#gnp_' + embedObj.id ).fadeOut( 'slow' );
 							} else {
-								mw.setConfig( 'dismiss_playback_warning', false );
-								$j.cookie( 'dismiss_playback_warning', false );
+								mw.setConfig( 'show_player_warning', true );
+								$j.cookie( 'show_player_warning', true );
 							}
 
 						} );
 					}
-					if ( ( $j.cookie( 'dismiss_playback_warning' ) !== true ) &&
-						mw.getConfig( 'dismiss_playback_warning' ) === false  ) {
+					// Only show the warrning if cookie and config are true
+					if ( mw.getConfig( 'show_player_warning' ) === true  )
 						$j( '#gnp_' + embedObj.id ).fadeIn( 'slow' );
-					}
 				},
 				function() {
 					$j( '#gnp_' + embedObj.id ).fadeOut( 'slow' );
@@ -200,11 +194,11 @@ ctrlBuilder.prototype = {
 				$j( id + ' .play-btn-large' ).fadeOut( 'fast' );
 				// If playlist always start at 0
 				embedObj.start_time_sec = ( embedObj.instanceOf == 'mvPlayList' ) ? 0:
-								npt2seconds( embedObj.getTimeRange().split( '/' )[0] );
+								mw.npt2seconds( embedObj.getTimeRange().split( '/' )[0] );
 			},
 			slide: function( event, ui ) {
 				var perc = ui.value / 1000;
-				embedObj.jump_time = seconds2npt( parseFloat( parseFloat( embedObj.getDuration() ) * perc ) + embedObj.start_time_sec );
+				embedObj.jump_time = mw.seconds2npt( parseFloat( parseFloat( embedObj.getDuration() ) * perc ) + embedObj.start_time_sec );
 				// js_log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
 				if ( _this.long_time_disp ) {
 					embedObj.setStatus( gM( 'mwe-seek_to', embedObj.jump_time ) );
@@ -227,7 +221,7 @@ ctrlBuilder.prototype = {
 
 					var perc = ui.value / 1000;
 					// set seek time (in case we have to do a url seek)
-					embedObj.seek_time_sec = npt2seconds( embedObj.jump_time, true );
+					embedObj.seek_time_sec = mw.npt2seconds( embedObj.jump_time, true );
 					js_log( 'do jump to: ' + embedObj.jump_time + ' perc:' + perc + ' sts:' + embedObj.seek_time_sec );
 					embedObj.setStatus( gM( 'mwe-seeking' ) );
 					embedObj.doSeek( perc );
@@ -272,7 +266,47 @@ ctrlBuilder.prototype = {
 		if ( this.addSkinControlBindings && typeof( this.addSkinControlBindings ) == 'function' )
 			this.addSkinControlBindings();
 	},
-	/*
+	
+	/**
+	* Issue a warning to non-native playback systems
+	* that they could improve the playback experience with a different browser
+	*
+	* dependent on media_element being setup 
+	*/ 
+	doNativeWarningCheck: function( ) {		
+		// Check cookie to see if user requested to hide it
+		if ( $j.cookie( 'show_player_warning' ) == 'false' ) {
+			return false;
+		}		
+		
+		// If the resolution is too small don't display the warrning
+		if( this.embedObj.getPlayerHeight < 199 )
+			return false;
+				
+		// See if we have native support for ogg: 
+		var supporting_players = embedTypes.players.getMIMETypePlayers( 'video/ogg' );
+		for ( var i = 0; i < supporting_players.length; i++ ) {
+			if ( supporting_players[i].id == 'videoElement' ) {
+				return false;
+			}
+		}
+		// See if we are using mwEmbed without a ogg source in which case no point in promoting firefox :P			
+		if (  this.embedObj.media_element &&  this.embedObj.media_element.sources ) {
+			var foundOgg = false;
+			var playable_sources =  this.embedObj.media_element.getPlayableSources();
+			for ( var sInx = 0; sInx < playable_sources.length; sInx++ ) {
+				var mime_type = playable_sources[sInx].mime_type;
+				if ( mime_type == 'video/ogg' ) {
+					foundOgg = true;
+				}
+			}
+			// No ogg src... no point in download firefox link
+			if ( !foundOgg )
+				return false;
+		}
+		return true;
+	},
+	/**
 	* Binds the volume controls
 	*/
 	doVolumeBinding:function() {
@@ -388,8 +422,8 @@ ctrlBuilder.prototype = {
 								'class'	: "ui-state-default play-btn-large"
 							} )
 							.css( {
-								'left' 	: ( ( ctrlObj.embedObj.playerPixelWidth() - this.w ) / 2 ),
-								'top'	: ( ( ctrlObj.embedObj.playerPixelHeight() - this.h ) / 2 )
+								'left' 	: ( ( ctrlObj.embedObj.getPlayerWidth() - this.w ) / 2 ),
+								'top'	: ( ( ctrlObj.embedObj.getPlayerHeight() - this.h ) / 2 )
 							} )
 							.wrap( '<div/>' ).parent().html();
 			}

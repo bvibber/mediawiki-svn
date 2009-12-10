@@ -273,7 +273,7 @@ mvTextInterface.prototype = {
 		// make sure the clip does not already exist:
 		if ( $j( '#tc_' + text_clip.id ).length == 0 ) {
 			var inserted = false;
-			var text_clip_start_time = npt2seconds( text_clip.start );
+			var text_clip_start_time = mw.npt2seconds( text_clip.start );
 
 			var insertHTML = '<div id="tc_' + text_clip.id + '" ' +
 				'start_sec="' + text_clip_start_time + '" ' +
@@ -362,7 +362,7 @@ mvTextInterface.prototype = {
 				'right:0px;bottom:0px;' +
 				'height:' + ( this.pe.height - 30 ) +
 				'px;overflow:auto;"><span style="display:none;" id="mv_txt_load_' + this.pe.id + '">' +
-					mv_get_loading_img() + '</span>' +
+					mw.loading_spiner() + '</span>' +
 				'</div>';
 	},
 	getTsSelect:function() {
@@ -416,10 +416,10 @@ mvTextInterface.prototype = {
 			// check if the current transcript is already where we want:
 			if ( $j( '#mmbody_' + this.pe.id + ' .tt_scroll_highlight' ).length != 0 ) {
 				var curhl = $j( '#mmbody_' + this.pe.id + ' .tt_scroll_highlight' ).get( 0 );
-				if ( npt2seconds( $j( curhl ).attr( 'start' ) ) < cur_time &&
-				   npt2seconds( $j( curhl ).attr( 'end' ) ) > cur_time ) {
+				if ( mw.npt2seconds( $j( curhl ).attr( 'start' ) ) < cur_time &&
+				   mw.npt2seconds( $j( curhl ).attr( 'end' ) ) > cur_time ) {
 					/*js_log('in range of current hl: ' +
-						npt2seconds($j(curhl).attr('start')) +  ' to ' +  npt2seconds($j(curhl).attr('end')));
+						mw.npt2seconds($j(curhl).attr('start')) +  ' to ' +  mw.npt2seconds($j(curhl).attr('end')));
 					*/
 					search_for_range = false;
 				} else {
@@ -435,8 +435,8 @@ mvTextInterface.prototype = {
 				//  should do binnary search not iterative
 				//  avoid jquery function calls do native loops
 				$j( '#mmbody_' + this.pe.id + ' .mvtt' ).each( function() {
-					if ( npt2seconds( $j( this ).attr( 'start' ) ) < cur_time &&
-					   npt2seconds( $j( this ).attr( 'end' ) ) > cur_time ) {
+					if ( mw.npt2seconds( $j( this ).attr( 'start' ) ) < cur_time &&
+					   mw.npt2seconds( $j( this ).attr( 'end' ) ) > cur_time ) {
 						_this.prevTimeScroll = cur_time;
 						$j( '#mmbody_' + _this.pe.id ).animate( {
 							scrollTop: $j( this ).get( 0 ).offsetTop
@@ -467,7 +467,7 @@ mvTextInterface.prototype = {
 			_this = this;
 			var scroll_to_id = '';
 			$j( '#mmbody_' + this.pe.id + ' .mvtt' ).each( function() {
-				if ( cur_time > npt2seconds( $j( this ).attr( 'start' ) )  ) {
+				if ( cur_time > mw.npt2seconds( $j( this ).attr( 'start' ) )  ) {
 					_this.prevTimeScroll = cur_time;
 					if ( $j( this ).attr( 'id' ) )
 						scroll_to_id = $j( this ).attr( 'id' );
@@ -586,8 +586,8 @@ timedTextCMML = {
 		}
 		// temporal urls: 
 		var req_time = pcurl.queryKey['t'].split( '/' );
-		req_time[0] = npt2seconds( req_time[0] );
-		req_time[1] = npt2seconds( req_time[1] );
+		req_time[0] = mw.npt2seconds( req_time[0] );
+		req_time[1] = mw.npt2seconds( req_time[1] );
 		if ( req_time[1] - req_time[0] > _this.request_length ) {
 			// longer than 5 min will only issue a (request 5 min)
 			req_time[1] = req_time[0] + _this.request_length;
@@ -598,7 +598,7 @@ timedTextCMML = {
 			if ( key != 't' ) {
 				url += key + '=' + val + '&';
 			} else {
-				url += 't=' + seconds2npt( req_time[0] ) + '/' + seconds2npt( req_time[1] ) + '&';
+				url += 't=' + mw.seconds2npt( req_time[0] ) + '/' + mw.seconds2npt( req_time[1] ) + '&';
 			}
 		} );
 		do_request( url, function( data ) {

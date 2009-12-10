@@ -5,7 +5,7 @@
 *
 */
 
-// add our local msgs
+// Add our local msgs
 mw.addMessages( {
 	"mwe-transition_in" : "Transition in",
 	"mwe-transition_out" : "Transition out",
@@ -17,22 +17,34 @@ mw.addMessages( {
 } );
 
 var default_timed_effect_values = {
-	'rObj':	null,		 // the resource object
-	'clip_disp_ct':null, // target clip disp
-	'control_ct':null,	 // control container
 
-	'parent_ct': null,	 // parent container
-	'pSeq': null,	 // parent sequence Object
+	// The Resource Object
+	'rObj':	null,
+			 
+	// Target Display Clip	
+	'clip_disp_ct':null, 
+	
+	// Control container
+	'control_ct':null,	 
 
-	'edit_action': null, // the requested edit action
+	// Parent container
+	'parent_ct': null,
+		 
+	// Parent sequence Object
+	'pSeq': null,	 
+
+	// The requested edit action
+	'edit_action': null, 
 };
 
-var mvTimedEffectsEdit = function( iObj ) {
-	return this.init( iObj );
+var mvTimedEffectsEdit = function( options ) {
+	return this.init( options );
 };
-// set up the mvSequencer object
+
+// Set up the TimedEffectsEdit object
 mvTimedEffectsEdit.prototype = {
-	// the menu_items Object contains: default html, js setup/loader functions
+	
+	// Menu_items Object contains: default html, js setup/loader functions
 	menu_items : {
 		'transin': {
 			'title':gM( 'mwe-transition_in' ),
@@ -57,11 +69,11 @@ mvTimedEffectsEdit.prototype = {
 			}
 		}
 	},
-	init:function( iObj ) {
-		// init object:
+	init:function( options ) {
+		// Init object:
 		for ( var i in default_timed_effect_values ) {
-			if ( iObj[i] ) {
-				this[i] = iObj[i];
+			if ( options[i] ) {
+				this[i] = options[i];
 			}
 		}
 		this.doEditMenu();
@@ -254,8 +266,7 @@ mvTimedEffectsEdit.prototype = {
 		js_log( "getTransitionListControl" );
 		var o = '<h3>' + gM( 'mwe-add-transition' ) + '</h3>';
 		for ( var type in mvTransLib['type'] ) {
-			js_log( 'on tran type: ' + i );
-			var base_trans_name = i;
+			js_log( 'on tran type: ' + type );			
 			var tLibSet = mvTransLib['type'][ type ];
 			for ( var subtype in tLibSet ) {
 				o += '<img style="float:left;padding:10px;" ' +

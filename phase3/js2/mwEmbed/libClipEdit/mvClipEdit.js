@@ -180,7 +180,7 @@ mvClipEdit.prototype = {
 						'<input name="ce_dur" '+
 						'tabindex="1" '+
 						'maxlength="11" '+
-						'value="' +	seconds2npt( _this.resource.getDuration() ) +'" '+
+						'value="' +	mw.seconds2npt( _this.resource.getDuration() ) +'" '+
 						'size="10"/>' +
 					'</div>'
 				).children( "input[name='ce_dur']" ).change( function() {
@@ -203,11 +203,11 @@ mvClipEdit.prototype = {
 				// do clock mouse scroll duration editor
 				var end_ntp = ( _this.resource.embed.end_ntp ) ? _this.resource.embed.end_ntp : _this.resource.embed.getDuration();
 				if ( !end_ntp )
-					end_ntp = seconds2npt( _this.resource.dur );
+					end_ntp = mw.seconds2npt( _this.resource.dur );
 
-				var start_ntp = ( _this.resource.embed.start_ntp ) ? _this.resource.embed.start_ntp : seconds2npt( 0 );
+				var start_ntp = ( _this.resource.embed.start_ntp ) ? _this.resource.embed.start_ntp : mw.seconds2npt( 0 );
 				if ( !start_ntp )
-					seconds2npt( 0 );
+					mw.seconds2npt( 0 );
 				// make sure we have an end time				
 				if ( end_ntp ) {
 					$j( target ).html(
@@ -234,7 +234,7 @@ mvClipEdit.prototype = {
 			'doEdit':function( _this, target ) {
 				// if media type is template we have to query to get its URI to get its parameters
 				if ( _this.getMediaType() == 'template' && !_this.resource.tVars ) {
-					mv_set_loading( '#sub_cliplib_ic' );
+					$j( '#sub_cliplib_ic' ).loadingSpiner()
 					var reqObj = {
 						'action':'query',
 						'prop':'revisions',
@@ -389,7 +389,7 @@ mvClipEdit.prototype = {
 				'title'	: _this.parentSequence.plObj.mTitle,
 				'text'	:	template_wiki_text
 			};
-			$j( _this.resource.embed ).html( mv_get_loading_img() );
+			$j( _this.resource.embed ).html( mw.loading_spiner() );
 
 			var api_url = _this.parentSequence.plObj.interface_url;
 			do_api_req( {
@@ -507,8 +507,8 @@ mvClipEdit.prototype = {
 		// Setup a top level shortcut: 
 		var $target = $j( '#' + this.target_control_display );
 
-		var start_sec = npt2seconds( $target.find( '.startInOut' ).val() );
-		var end_sec   = npt2seconds( $target.find( '.endInOut' ).val() );
+		var start_sec = mw.npt2seconds( $target.find( '.startInOut' ).val() );
+		var end_sec   = mw.npt2seconds( $target.find( '.endInOut' ).val() );
 
 		// If we don't have 0 as start then assume we are in a range request and give some buffer area:
 		var min_slider =  ( start_sec - 60 < 0 ) ? 0 : start_sec - 60;
@@ -525,21 +525,21 @@ mvClipEdit.prototype = {
 			animate: true,
 			values: [start_sec, end_sec],
 			slide: function( event, ui ) {
-				// js_log(" vals:"+  seconds2npt( ui.values[0] ) + ' : ' + seconds2npt( ui.values[1]) );
-				$target.find( '.startInOut' ).val( seconds2npt( ui.values[0] ) );
-				$target.find( '.endInOut' ).val( seconds2npt( ui.values[1] ) );
+				// js_log(" vals:"+  mw.seconds2npt( ui.values[0] ) + ' : ' + mw.seconds2npt( ui.values[1]) );
+				$target.find( '.startInOut' ).val( mw.seconds2npt( ui.values[0] ) );
+				$target.find( '.endInOut' ).val( mw.seconds2npt( ui.values[1] ) );
 			},
 			change:function( event, ui ) {
-				_this.updateVideoTime( seconds2npt( ui.values[0] ), seconds2npt( ui.values[1] ) );
+				_this.updateVideoTime( mw.seconds2npt( ui.values[0] ), mw.seconds2npt( ui.values[1] ) );
 			}
 		} );
 		
 		// Bind up and down press when focus on start or end 
 		$target.find( '.startInOut' ).upDownTimeInputBind( function( inputElm ) {
-			var s_sec = npt2seconds( $j( inputElm ).val() );
-			var e_sec = npt2seconds( $target.find( '.endInOut' ).val() )
+			var s_sec = mw.npt2seconds( $j( inputElm ).val() );
+			var e_sec = mw.npt2seconds( $target.find( '.endInOut' ).val() )
 			if ( s_sec > e_sec )
-				$j( inputElm ).val( seconds2npt( e_sec - 1 ) );
+				$j( inputElm ).val( mw.seconds2npt( e_sec - 1 ) );
 			
 			// Update the slider: 
 			var values = $target.find( '.inOutSlider' ).slider( 'option', 'values' );
@@ -553,10 +553,10 @@ mvClipEdit.prototype = {
 		} );
 		
 		$target.find( '.endInOut' ).upDownTimeInputBind( function( inputElm ) {
-			var s_sec = npt2seconds( $target.find( '.startInOut' ).val() );
-			var e_sec = npt2seconds( $j( inputElm ).val() );
+			var s_sec = mw.npt2seconds( $target.find( '.startInOut' ).val() );
+			var e_sec = mw.npt2seconds( $j( inputElm ).val() );
 			if ( e_sec < s_sec )
-				$j( inputElm ).val(  seconds2npt( s_sec + 1 ) );
+				$j( inputElm ).val(  mw.seconds2npt( s_sec + 1 ) );
 			// update the slider: 
 			$target.find( '.inOutSlider' ).slider( 'option', 'values', [ s_sec, e_sec ] );
 		} );
@@ -901,13 +901,13 @@ mvClipEdit.prototype = {
 			$( this ).addClass( 'ui-state-focus' );
 			// Bind up down keys
 			$( this ).unbind( 'keydown' ).keydown( function ( e ) {
-				var sec = npt2seconds( $j( this ).val() );
+				var sec = mw.npt2seconds( $j( this ).val() );
 				var k = e.which;
 				if ( k == 38 ) {// up												
-					$( this ).val( seconds2npt( sec + 1 ) );
+					$( this ).val( mw.seconds2npt( sec + 1 ) );
 				} else if ( k == 40 ) { // down			
 					var sval = ( ( sec - 1 ) < 0 ) ? 0 : ( sec - 1 )
-					$( this ).val(  seconds2npt( sval ) );
+					$( this ).val(  mw.seconds2npt( sval ) );
 				}
 				// Set the delay updates:
 				if ( k == 38 || k == 40 ) {

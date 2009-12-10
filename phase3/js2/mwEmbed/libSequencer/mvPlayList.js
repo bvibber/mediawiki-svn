@@ -125,12 +125,6 @@ mvPlayList.prototype = {
 			this.ctrlBuilder = new ctrlBuilder( this );
 		}
 	},
-	// the element has now been swapped into the dom: 
-	on_dom_swap:function() {
-		js_log( 'pl: dom swap' );
-		// get and load the html:
-		this.getHTML();
-	},
 	// run inheritEmbedPlayer on every clip (we have changed the playback method) 
 	inheritEmbedPlayer:function() {
 		$j.each( this.tracks, function( i, track ) {
@@ -185,12 +179,15 @@ mvPlayList.prototype = {
 						}
 		this.cur_clip.embed.showShare( embed_code );
 	},
+	
 	checkForTextSource: function() {
 		return false;
 	},
+	
 	getPlaylist:function() {
 		js_log( "f:getPlaylist: " + this.srcType );
-		// @@todo lazy load plLib
+		
+		// Playlist: 
 		eval( 'var plObj = ' + this.srcType + 'Playlist;' );
 		// import methods from the plObj to this
 		for ( var method in plObj ) {
@@ -206,22 +203,24 @@ mvPlayList.prototype = {
 		}
 						 
 		if ( typeof this.doParse == 'function' ) {
-				 if ( this.doParse() ) {
-					 this.doWhenParseDone();
-				 } else {
-					 js_log( "error: failed to parse playlist" );
-					 return false;
-					 // error or parse needs to do ajax requests	
-				 }
+			 if ( this.doParse() ) {
+				 this.doWhenParseDone();
+			 } else {
+				 js_log( "error: failed to parse playlist" );
+				 return false;
+				 // error or parse needs to do ajax requests	
+			 }
 		}
 	},
+	
 	doNativeWarningCheck:function() {
 		var clip =	 this.default_track.clips[0];
 		if ( clip ) {
 			return clip.embed.doNativeWarningCheck();
 		}
 	},
-	doWhenParseDone:function() {
+	
+	doWhenParseDone: function() {
 		js_log( 'f:doWhenParseDone' );
 		// do additional init for clips: 
 		var _this = this;
@@ -239,7 +238,7 @@ mvPlayList.prototype = {
 				continue;
 			}
 			// js_log('clip sources count: '+ clip.embed.media_element.sources.length);		
-			clip.embed.on_dom_swap();
+			clip.embed.checkPlayerSources();
 			if ( clip.embed.loading_external_data == false &&
 				   clip.embed.init_with_sources_loadedDone == false ) {
 					clip.embed.init_with_sources_loaded();
@@ -258,18 +257,16 @@ mvPlayList.prototype = {
 			this.doWhenClipLoadDone();
 		} else {
 			js_log( "only " + _this.clip_ready_count + " clips done, scheduling callback:" );
-			if ( !mvJsLoader.load_error )	// re-issue request if no load error:
-				setTimeout( function(){
-					_this.doWhenParseDone();
-					//debugger;
-				}, 100 );
+			setTimeout( function(){
+				_this.doWhenParseDone()
+			}, 100 );
 		}
 	},
 	doWhenClipLoadDone:function() {
 		js_log( 'mvPlaylist:doWhenClipLoadDone' );
 		this.ready_to_play = true;
 		this.loading = false;
-		this.getHTML();
+		this.showPlayer();
 	},
 	getDuration:function( regen ) {
 		// js_log("GET PL DURRATION for : "+ this.tracks[this.default_track_id].clips.length + 'clips');
@@ -297,7 +294,7 @@ mvPlayList.prototype = {
 	},
 	getTimeRange:function() {
 		// playlist does not really support time request atm ( in theory in the future we could embed playlists with temporal urls)
-		return '0:0:0/' +  seconds2npt( this.getDuration() );
+		return '0:0:0/' +  mw.seconds2npt( this.getDuration() );
 	},
 	getDataSource:function() {
 		js_log( "f:getDataSource " + this.src );
@@ -395,8 +392,8 @@ mvPlayList.prototype = {
 	// takes in the playlist 
 	// inherits all the properties 
 	// swaps in the playlist object html/interface div	
-	getHTML:function() {
-		js_log( 'mvPlaylist:getHTML:  loading:' + this.loading );
+	showPlayer:function() {
+		js_log( 'mvPlaylist:showPlayer:  loading:' + this.loading );
 		if ( this.loading ) {
 			$j( '#' + this.id ).html( 'loading playlist...' );
 			if ( this.loading_external_data ) {
@@ -473,7 +470,7 @@ mvPlayList.prototype = {
 			clip.embed.play_button = false;
 			clip.embed.controls = false;
 			
-			clip.embed.getHTML();// get the thubnails for everything			
+			clip.embed.showPlayer();// get the thubnails for everything			
 
 			$j( clip.embed ).css( {
 				'position':"absolute",
@@ -517,7 +514,7 @@ mvPlayList.prototype = {
 		// if not then we do a call to the server to get a new jpeg thumbnail  
 		this.cur_clip.embed.updateThumbTime( float_sec - pl_sum_time );
 		
-		this.cur_clip.embed.currentTime = ( float_sec - pl_sum_time ) + this.cur_clip.embed.start_offset ;
+		this.cur_clip.embed.currentTime = ( float_sec - pl_sum_time ) + this.cur_clip.embed.startOffset ;
 		this.cur_clip.embed.seek_time_sec = ( float_sec - pl_sum_time );
 		
 		// render effects ontop: (handled by doSmilActions)		
@@ -530,7 +527,7 @@ mvPlayList.prototype = {
 		$j( '#ptitle_' + this.id ).html( '' +
 			'<b>' + this.title + '</b> ' +
 			this.getClipCount() + ' clips, <i>' +
-			seconds2npt( this.getDuration() ) + '</i>' );
+			mw.seconds2npt( this.getDuration() ) + '</i>' );
 		
 		// should probably be based on if we have a provider api url
 		if ( typeof wgEnableWriteAPI != 'undefined' && !this.sequencer ) {
@@ -546,7 +543,7 @@ mvPlayList.prototype = {
 		// render out the dividers on the timeline: 
 		this.colorPlayHead();
 		// update status:
-		this.setStatus( '0:0:00/' + seconds2npt( this.getDuration() ) );
+		this.setStatus( '0:0:00/' + mw.seconds2npt( this.getDuration() ) );
 	},
 	/*setStatus override (could call the jquery directly) */
 	setStatus:function( value ) {
@@ -1077,16 +1074,14 @@ mvPlayList.prototype = {
 		else
 			this.default_track.clips[ clip_inx ][ trans_type ].run_transition();
 	},
-	playerPixelWidth : function()
-	{
+	getPlayerWidth : function(){
 		var player = $j( '#dc_' + this.id ).get( 0 );
 		if ( typeof player != 'undefined' && player['offsetWidth'] )
 			return player.offsetWidth;
 		else
 			return parseInt( this.width );
 	},
-	playerPixelHeight : function()
-	{
+	getPlayerHeight : function(){
 		var player = $j( '#dc_' + this.id ).get( 0 );
 		if ( typeof player != 'undefined' && player['offsetHeight'] )
 			return player.offsetHeight;
@@ -1165,11 +1160,11 @@ mvClip.prototype = {
 		js_log( "f:doAdjust: " + side + ' , ' +  delta );
 		if ( this.embed ) {
 			if ( side == 'start' ) {
-				var start_offset = parseInt( this.embed.start_offset ) + parseInt( delta * -1 );
-				this.embed.updateVideoTime( seconds2npt( start_offset ), seconds2npt ( this.embed.start_offset + this.embed.getDuration() ) );
+				var startOffset = parseInt( this.embed.startOffset ) + parseInt( delta * -1 );
+				this.embed.updateVideoTime( mw.seconds2npt( startOffset ), mw.seconds2npt ( this.embed.startOffset + this.embed.getDuration() ) );
 			} else if ( side == 'end' ) {
-				var end_offset = parseInt( this.embed.start_offset ) + parseInt( this.embed.getDuration() ) + parseInt( delta );
-				this.embed.updateVideoTime( seconds2npt( this.embed.start_offset ), seconds2npt( end_offset ) );
+				var end_offset = parseInt( this.embed.startOffset ) + parseInt( this.embed.getDuration() ) + parseInt( delta );
+				this.embed.updateVideoTime( mw.seconds2npt( this.embed.startOffset ), mw.seconds2npt( end_offset ) );
 			}
 			// update everything: 
 			this.pp.refresh();
@@ -1177,12 +1172,12 @@ mvClip.prototype = {
 			js_log("delta:"+ delta);
 			if(side=='start'){
 				//since we adjust start invert the delta: 
-				var start_offset =parseInt(this.embed.start_offset/1000)+parseInt(delta*-1);
-				this.src = base_src +'?t='+ seconds2npt(start_offset) +'/'+ this.embed.end_ntp;							
+				var startOffset =parseInt(this.embed.startOffset/1000)+parseInt(delta*-1);
+				this.src = base_src +'?t='+ mw.seconds2npt(startOffset) +'/'+ this.embed.end_ntp;							
 			}else if(side=='end'){
 				//put back into seconds for adjustment: 
-				var end_offset = parseInt(this.embed.start_offset/1000) + parseInt(this.embed.duration/1000) + parseInt(delta);
-				this.src = base_src +'?t='+ this.embed.start_ntp +'/'+ seconds2npt(end_offset);
+				var end_offset = parseInt(this.embed.startOffset/1000) + parseInt(this.embed.duration/1000) + parseInt(delta);
+				this.src = base_src +'?t='+ this.embed.start_ntp +'/'+ mw.seconds2npt(end_offset);
 			}				
 			this.embed.updateVideoTime( this.src );
 			//update values
@@ -1217,7 +1212,7 @@ mvClip.prototype = {
 		if(this.desc==null)
 			this.desc=this.pp.desc;
 		//update the embed html: 
-		this.embed.getHTML();
+		this.embed.showPlayer();
 					
 		$j(this.embed).css({ 'position':"absolute",'top':"0px", 'left':"0px"});
 		
@@ -1229,7 +1224,7 @@ mvClip.prototype = {
 			'<div id="pl_desc_txt_'+this.id+'" class="pl_desc" style="position:absolute;left:'+(tw+2)+'px;width:'+twDesc+'px;height:'+th+'px;overflow:auto;">'+
 					'<b>'+this.title+'</b><br>'+			
 					this.desc + '<br>' + 
-					'<b>clip length:</b> '+ seconds2npt( this.embed.getDuration() ); 
+					'<b>clip length:</b> '+ mw.seconds2npt( this.embed.getDuration() ); 
 			'</div>');		
 		}
 	},*/
@@ -1239,18 +1234,18 @@ mvClip.prototype = {
 			
 		return 'untitled clip ' + this.order;
 	},
-	getClipImg:function( start_offset, size ) {
-		js_log( 'f:getClipImg ' + start_offset + ' s:' + size );
+	getClipImg:function( startOffset, size ) {
+		js_log( 'f:getClipImg ' + startOffset + ' s:' + size );
 		if ( !this.img ) {
 			return mv_default_thumb_url;
 		} else {
-			if ( !size && !start_offset ) {
+			if ( !size && !startOffset ) {
 				return this.img;
 			} else {
 				// if a metavid image (has request parameters) use size and time args
 				if ( this.img.indexOf( '?' ) != -1 ) {
-					js_log( 'get with offset: ' + start_offset );
-					var time = seconds2npt( start_offset + ( this.embed.start_offset / 1000 ) );
+					js_log( 'get with offset: ' + startOffset );
+					var time = mw.seconds2npt( startOffset + ( this.embed.startOffset / 1000 ) );
 					js_log( "time is: " + time );
 					this.img = this.img.replace( /t\=[^&]*/gi, "t=" + time );
 					if ( this.img.indexOf( '&size=' ) != -1 ) {
@@ -1334,7 +1329,7 @@ PlMvEmbed.prototype = {
 		this.pe_stop();
 		var pl_height = ( _this.sequencer == 'true' ) ? _this.height + 27:_this.height;
 		
-		this.getHTML();
+		this.showPlayer();
 	},
 	play:function() {
 		// js_log('pl eb play');		
@@ -1524,16 +1519,16 @@ mvPlayList.prototype.monitor = function() {
 	// check if we should be done:
 	if ( this.currentTime >  this.getDuration() )
 		this.stop();
-	
-	
-	var relative_time = ( this.start_offset ) ? ( this.currentTime - this.start_offset) : this.currentTime; 
-	// update the playlist current time: 
-	// check for a trsnOut from the previus clip to subtract
+		
+	var relative_time = ( this.startOffset ) ? ( this.currentTime - this.startOffset) : this.currentTime;
+	 
+	// Update the playlist current time: 
+	// Check for a trsnOut from the previus clip to subtract
 	this.currentTime = this.cur_clip.dur_offset + relative_time;
 		
 	// update slider: 
 	if ( !this.userSlide ) {
-		this.setStatus( seconds2npt( this.currentTime ) + '/' + seconds2npt( this.getDuration() ) );
+		this.setStatus( mw.seconds2npt( this.currentTime ) + '/' + mw.seconds2npt( this.getDuration() ) );
 		this.updatePlayHead( this.currentTime / this.getDuration() );
 	}
 	// pre-load any future clips:
@@ -2014,7 +2009,7 @@ var smilPlaylist = {
 			// set up embed:						
 			clipObj.setUpEmbedObj();
 			// inhreit embedObject (only called on "new media" 
-			clipObj.embed.init_with_sources_loaded();
+			clipObj.embed.sourcesReadyInit();
 			// add clip to track: 
 			this.addCliptoTrack( clipObj , order );
 			
@@ -2176,7 +2171,7 @@ function smilParseTime( time_str ) {
 	time_str = time_str + '';
 	// first check for hh:mm:ss time: 
 	if ( time_str.split( ':' ).length == 3 ) {
-		return npt2seconds( time_str );
+		return mw.npt2seconds( time_str );
 	} else {
 		// assume 34s secconds representation 
 		return parseInt( time_str.replace( 's', '' ) );

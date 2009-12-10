@@ -6,7 +6,7 @@
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
 var mwRemoteVersion = '1.10';
-var mwUseScriptLoader = true;
+var mwUseScriptLoader = false;
 
 // setup up request Params: 
 var reqParts = urlparts[1].substring( 1 ).split( '&' );
@@ -16,21 +16,29 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 	if ( p.length == 2 )
 		mwReqParam[ p[0] ] = p[1];
 }
-
-addOnloadHook( function() {
+//use wikibits onLoad hook: 
+addOnloadHook( function() {	
 	// Only do rewrites if mwEmbed / js2 is "off"
 	if ( typeof mwEmbed_VERSION == 'undefined' ) {
-		doPageSpecificRewrite();
+		setTimeout(function(){
+			doPageSpecificRewrite();
+		}, 200 );
 	}
 } );
 
 function doPageSpecificRewrite() {		
 	// Add media wizard
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {	
-		var jsSetEdit = [ 'remoteSearchDriver', '$j.fn.textSelection', '$j.ui', '$j.ui.sortable' ]
-		loadMwEmbed( jsSetEdit, function() {
-			loadExternalJs( mwEmbedHostPath + '/editPage.js?' + mwGetReqArgs() );
-		} );
+		var jsSetEdit = 
+		loadMwEmbed( [ 
+				'remoteSearchDriver', 
+				'$j.fn.textSelection', 
+				'$j.ui', 
+				'$j.ui.sortable' 
+			], function() {
+				loadExternalJs( mwEmbedHostPath + '/editPage.js?' + mwGetReqArgs() );
+			} 
+		);
 	}
 	
 	// Timed text display:
@@ -45,18 +53,24 @@ function doPageSpecificRewrite() {
 	
 	// Firefogg integration
 	if ( wgPageName == "Special:Upload" ) {	
-		var jsSetUpload = [ 'mvBaseUploadInterface', 'mvFirefogg' , '$j.ui',
-							'$j.ui.progressbar', '$j.ui.dialog', '$j.ui.draggable' ]; 
-		loadMwEmbed( jsSetUpload, function() {
-			loadExternalJs( mwEmbedHostPath + '/uploadPage.js?' + mwGetReqArgs() );
-		} );
+		loadMwEmbed([ 
+				'mvBaseUploadInterface', 
+				'mvFirefogg', 
+				'$j.ui',
+				'$j.ui.progressbar', 
+				'$j.ui.dialog', 
+				'$j.ui.draggable' 
+			], function() {
+				mw.load( mwEmbedHostPath + '/uploadPage.js?' + mwGetReqArgs() );
+			} 
+		);
 	}
 	
 	// Special api proxy page
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
 		var wgEnableIframeApiProxy = true;
-		loadMwEmbed( [ 'mw.proxy' ], function() {			
-			loadExternalJs( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
+		loadMwEmbed( [ 'mw.proxy' ], function() {
+			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
 	}
 	
@@ -79,7 +93,7 @@ function doPageSpecificRewrite() {
 			jsSetVideo.push( 'nativeEmbed' );
 	
 		loadMwEmbed( jsSetVideo, function() {
-			mvJsLoader.embedPlayerCheck( function() {
+			mw.load( 'player', function() {
 				// Do utility rewrite of OggHandler content:
 				rewrite_for_OggHandler( vidIdList );
 			} );
@@ -89,12 +103,15 @@ function doPageSpecificRewrite() {
 // This will be depreciated in favour of updates to OggHandler
 function rewrite_for_OggHandler( vidIdList ) {
 	function procVidId( vidId ) {
-		// don't process empty vids
-		if ( !vidId )
+		
+		// Don't process empty vids
+		if ( !vidId )		
 			return ;
+			
 		js_log( 'vidIdList on: ' + vidId + ' length: ' + vidIdList.length + ' left in the set: ' + vidIdList );
 		
 		tag_type = 'video';
+		
 		// Check type:
 		var pwidth = $j( '#' + vidId ).width();
 		var $pimg = $j( '#' + vidId + ' img:first' );		
@@ -111,8 +128,10 @@ function rewrite_for_OggHandler( vidIdList ) {
 		// Parsed values:
 		var src = '';
 		var duration_attr = '';
+		
 		var wikiTitleKey = $j( '#' + vidId + ' img' ).filter( ':first' ).attr( 'src' ).split( '/' );
 		wikiTitleKey = unescape( wikiTitleKey[ wikiTitleKey.length - 2 ] );
+		
 		var re = new RegExp( /videoUrl(&quot;:?\s*)*([^&]*)/ );
 		src = re.exec( $j( '#' + vidId ).html() )[2];
 
@@ -149,7 +168,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 				.css( 'height', pheight + 30 );
 
 			// Do the actual rewrite 				
-			rewrite_by_id( 'mwe_' + vidId, function() {
+			$j( '#mwe_' + vidId ).embedPlayer( function() {
 				if ( vidIdList.length != 0 ) {
 					setTimeout( function() {
 						procVidId( vidIdList.pop() )
@@ -218,7 +237,7 @@ function loadMwEmbed( classSet, callback ) {
 				rurl += ',window.jQuery';
 			}	
 								
-			// Add requested classSet
+			// Add scriptLoader requested classSet
 			for( var i=0; i < classSet.length; i++ ){
 				var cName =  classSet[i];
 				if( !mwCheckObjectPath( cName ) ){
@@ -246,7 +265,10 @@ function waitMwEmbedReady( callback ) {
 			waitMwEmbedReady( callback );
 		}, 25 );
 	} else {
-		callback();
+		// Make sure mwEmbed is "setup" by using the addOnLoadHook: 
+		mw.addOnloadHook( function(){
+			callback();
+		})
 	}
 }
 /**
@@ -268,3 +290,4 @@ function mwCheckObjectPath ( libVar ) {
 	this.cur_path = cur_path;
 	return true;
 };
+

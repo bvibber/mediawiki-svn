@@ -48,7 +48,7 @@ var kskinConfig = {
 				var embedObj = ctrlObj.embedObj;
 				var o = '' +
 				'<div class="k-menu ui-widget-content" ' +
-					'style="width:' + embedObj.playerPixelWidth() + 'px; height:' + embedObj.playerPixelHeight() + 'px;">' +
+					'style="width:' + embedObj.getPlayerWidth() + 'px; height:' + embedObj.getPlayerHeight() + 'px;">' +
 						'<ul class="k-menu-bar">';
 							// output menu item containers: 
 							for ( i = 0; i < ctrlObj.menu_items.length; i++ ) {
@@ -58,8 +58,8 @@ var kskinConfig = {
 							}
 						o += '</ul>' +
 						// We have to subtract the width of the k-menu-bar
-						'<div class="k-menu-screens" style="width:' + ( embedObj.playerPixelWidth() - 75 ) +
-							'px; height:' + ( embedObj.playerPixelHeight() - ctrlBuilder.height ) + 'px;">';
+						'<div class="k-menu-screens" style="width:' + ( embedObj.getPlayerWidth() - 75 ) +
+							'px; height:' + ( embedObj.getPlayerHeight() - ctrlBuilder.height ) + 'px;">';
 						
 						// Output menu item containers: 
 						for ( i = 0; i < ctrlObj.menu_items.length; i++ ) {
@@ -156,7 +156,7 @@ var kskinConfig = {
 
 		$target.html( '<h2>' + gM( 'mwe-credits' ) + '</h2>'  +
 			'<div class="credits_box ui-corner-all">' +
-				mv_get_loading_img() + 
+				mw.loading_spiner() + 
 			'</div>'								
 		);
 

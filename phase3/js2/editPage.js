@@ -51,12 +51,14 @@ mw.addOnloadHook( function() {
 	setTimeout( function() {
 		if ( $j( '#btn-add-media-wiz' ).length == 0 && $j( '#toolbar' ).length != 0 ) {
 			js_log( 'Do old toolbar bind:' );
-			didWikiEditorBind = true;
+			didWikiEditorBind = true;						
 			$j( '#toolbar' ).append( '<img style="cursor:pointer" id="btn-add-media-wiz" src="' +
-				mw.getConfig( 'skin_img_path' ) + 'Button_add_media.png">' );
+				mw.getConfig( 'skin_img_path' ) + 'Button_add_media.png">' );				
+							
 			$j( '#btn-add-media-wiz' ).addMediaWiz(
 				amwConf
 			);
+			
 		} else {
 			// Make sure the wikieditor got binded: 
 			if ( !didWikiEditorBind ) {
