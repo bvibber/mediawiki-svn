@@ -122,7 +122,7 @@ mediaWikiSearch.prototype = {
 	*  
 	* @param {String} search_query Text search string 
 	*/
-	getSearchResults: function( search_query ) {
+	getSearchResults: function( search_query ) {		
 		// call parent for common initialisation:  
 		this.parent_getSearchResults();
 		// Set local ref:
