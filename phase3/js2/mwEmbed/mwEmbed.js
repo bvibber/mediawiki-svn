@@ -780,16 +780,17 @@ var global_req_cb = new Array(); // The global request callback array
 		* @param {Function} callback Function called once loading is complete
 		*/				
 		load: function( loadRequest, callback ){
-			
+		
 			// Check for empty loadRequest ( directly return the callback ) 
 			if( $.isEmpty( loadRequest ) ){
-				mw.log( ' empty load request ' );
+				mw.log( 'Error: Empty load request ' );
 				callback( loadRequest );
 			}
 			
 			// Check if its a multi-part request: 
 			if( typeof loadRequest == 'object' ){
-			 	if( loadRequest.length > 1 ){									
+			 	if( loadRequest.length > 1 ){
+			 		mw.log("mw.load: LoadMany:: 	" + loadRequest );									
 					this.loadMany ( loadRequest,  callback );
 					return ;
 				}else{
@@ -802,7 +803,7 @@ var global_req_cb = new Array(); // The global request callback array
 			if( this.moduleLoaders[ loadRequest ] && 
 				typeof ( this.moduleLoaders[ loadRequest ] ) == 'function' 
 			){
-				mw.log("loadModule:" + loadRequest );
+				mw.log("mw.load: loadModule:" + loadRequest );
 				//Run the module with the parent callback 
 				this.moduleLoaders[ loadRequest ]( callback );	
 				return ;
@@ -810,7 +811,7 @@ var global_req_cb = new Array(); // The global request callback array
 			
 			// Check for javascript class 
 			if( this.classPaths[ loadRequest ] ){		
-				mw.log('loadClass: ' + loadRequest );
+				mw.log('mw.load: loadClass: ' + loadRequest );
 				this.loadClass( loadRequest, callback );																	
 				return ;
 			}
@@ -833,15 +834,14 @@ var global_req_cb = new Array(); // The global request callback array
 		* @param {Object} loadSet Set of scripts to be loaded
 		* @param {Function} callback Function to call once all scripts are loaded.
 		*/ 
-		loadMany: function( loadSet, callback ) {	
-			//mw.log("LoadMany:: 	" + loadSet );
+		loadMany: function( loadSet, callback ) {				
 			
 			// Setup up the local "loadStates"			
 			var loadStates = { };
 					
 			// Check if we can load via the "script-loader" ( mwEmbed was included via scriptLoader ) 
 			if( $.getScriptLoaderPath() ){				
-				loadStates = this.getGroupLoadState( loadSet );				
+				loadStates = this.getGroupLoadState( loadSet );
 			}else{									
 				// Check if its a dependency set ( nested objects ) 
 				if( typeof loadSet [ 0 ] == 'object' ){				
@@ -891,7 +891,7 @@ var global_req_cb = new Array(); // The global request callback array
 		*/
 		getGroupLoadState: function( loadSet ){
 			var groupedLoadSet = [];			
-			var loadStates = { };
+			var loadStates = { };			
 			// Merge load set into new groupedLoadSet
 			if( typeof loadSet[0] == 'object' ){
 				for( var i in loadSet ){
@@ -899,6 +899,9 @@ var global_req_cb = new Array(); // The global request callback array
 						groupedLoadSet.push( loadSet[i][j] ); 
 					}
 				}
+			}else{
+				// Use the loadSet directly: 
+				groupedLoadSet = loadSet;
 			}
 			
 			// Setup grouped loadStates Set:
@@ -1524,9 +1527,7 @@ var global_req_cb = new Array(); // The global request callback array
 		* No jQuery 
 		*  OR 
 		* In debug mode inject the script instead of doing an ajax request and eval
-		*/
-		mw.log(" no jQuery.getScript, loading with manual insert ");
-			
+		*/			
 		// Load and bind manually:  ( copied from jQuery ajax function )
 		var head = document.getElementsByTagName("head")[0];
 		var script = document.createElement("script");
@@ -1539,11 +1540,9 @@ var global_req_cb = new Array(); // The global request callback array
 					callback( scriptRequest );
 				callback = null;
 			}
-		};
-		mw.log(" do append to head");
+		};		
 		// Append the script to the DOM:
-		head.appendChild( script );	
-		mw.log('append done ' );
+		head.appendChild( script );			
 	}
 	
 	/**

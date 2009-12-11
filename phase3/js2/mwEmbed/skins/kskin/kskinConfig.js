@@ -83,13 +83,13 @@ var kskinConfig = {
 	* Get minimal width for interface overlay
 	*/
 	getOverlayWidth: function(){
-		return ( this.embedObj.getPlayerWidth() < 199 )? 199 : this.embedObj.getPlayerWidth();
+		return ( this.embedObj.getPlayerWidth() < 200 )? 200 : this.embedObj.getPlayerWidth();
 	},	
 	/**
 	* Get minimal height for interface overlay
 	*/
 	getOverlayHeight: function(){
-		return ( this.embedObj.getPlayerHeight() < 159 )? 159 : this.embedObj.getPlayerHeight();
+		return ( this.embedObj.getPlayerHeight() < 160 )? 160 : this.embedObj.getPlayerHeight();
 	},
 	
 	/**
@@ -189,7 +189,7 @@ var kskinConfig = {
 	/**
 	* Do the credit screen (presently specific to kaltura skin:)
 	*/  
-	showCredits:function() {
+	showCredits: function() {
 		//set up the shortcuts:	
 		embedObj = this.embedObj;
 		var _this = this;	
@@ -218,14 +218,15 @@ var kskinConfig = {
 				'Error: no title key to grab credits with' 
 			);
 			return ;
-		}		
+		}
+				
 		// Do the api request to populate the credits via the wikiTitleKey ( tied to "commons" )
 		var request = {
 			// Normalize the File NS (ie sometimes its present in wikiTitleKey other times not
 			'titles' : 'File:' + embedObj.wikiTitleKey.replace(/File:|Image:/, '' ),
 		    'prop' : 'revisions',
 		    'rvprop' : 'content'
-		};
+		};		
 		var req_categories = new Array();
 	    mw.getJSON( mw.commons_api_url, request, function( data ) {
 			if( !data || !data.query || !data.query.pages ){
@@ -260,6 +261,8 @@ var kskinConfig = {
 		var titleStr = embedObj.wikiTitleKey.replace(/_/g, ' ');
 		var titleLink = 'http://commons.wikimedia.org/wiki/File:' + embedObj.wikiTitleKey;
 		
+		var imgWidth = ( this.getOverlayWidth() < 250 )? 45 : 90;
+		
 		// @@FIXME Do a quick check for source line:
 		return $j( '<div/>' ).addClass( 'creditline' )
 			.append(
@@ -269,8 +272,8 @@ var kskinConfig = {
 				}).html( 
 					$j('<img/>').attr( {
 						'border': 0, 
-						'src' : embedObj.thumbnail
-					} )
+						'src' : embedObj.thumbnail						
+					} ).css( 'width', imgWidth )
 				)
 			)
 			.append(			

@@ -133,12 +133,13 @@ function rewrite_for_OggHandler( vidIdList ) {
 		// Parsed values:
 		var src = '';
 		var duration_attr = '';
-		
-		var wikiTitleKey = $j( '#' + vidId + ' img' ).filter( ':first' ).attr( 'src' ).split( '/' );
-		wikiTitleKey = unescape( wikiTitleKey[ wikiTitleKey.length - 2 ] );
+				
 		
 		var re = new RegExp( /videoUrl(&quot;:?\s*)*([^&]*)/ );
 		src = re.exec( $j( '#' + vidId ).html() )[2];
+
+		var wikiTitleKey = src.split( '/' );
+		wikiTitleKey = unescape( wikiTitleKey[ wikiTitleKey.length - 1 ] );			
 
 		var re = new RegExp( /length(&quot;:?\s*)*([^,]*)/ );
 		var dv = re.exec( $j( '#' + vidId ).html() )[2];

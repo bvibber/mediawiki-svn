@@ -1060,7 +1060,7 @@ remoteSearchDriver.prototype = {
 	*/
 	getLibSearchResults: function( provider ) {
 		var _this = this;
-
+		mw.log('f: getLibSearchResults ' );
 		// First check if we should even run the search at all (can we import / insert 
 		// into the page? )
 		if ( !this.isProviderLocal( provider ) && this.import_url_mode == 'autodetect' ) {
@@ -1080,10 +1080,11 @@ remoteSearchDriver.prototype = {
 					'</div>' );
 			}
 			return false;
-		}						
+		}							
 		_this.loadSearchLib( provider, function( provider ) {
 			// Do the search:									
 			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() );
+			
 			_this.waitForResults( function() {
 				_this.showResults();
 			} );
@@ -1099,6 +1100,7 @@ remoteSearchDriver.prototype = {
 	*/
 	loadSearchLib: function( provider, callback ) {
 		var _this = this;
+		mw.log( ' loadSearchLib: ' + provider );
 		// Set up the library req:
 		mw.load( [
 			'baseRemoteSearch',
