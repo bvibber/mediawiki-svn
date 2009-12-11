@@ -2033,7 +2033,7 @@ embedPlayer.prototype = {
 	* @param {String} src New src of thumbnail
 	* @param {Boolean} quick_switch 
 	* 	true switch happens instantly
-	* 	false / undefined annimated cross fade
+	* 	false / undefined animated cross fade
 	*/
 	updateThumbnail : function( src, quick_switch ) {
 		// make sure we don't go to the same url if we are not already updating: 
@@ -2159,7 +2159,7 @@ embedPlayer.prototype = {
 	/**
 	* Follows a linkback. Loads the ROE xml if no linkback is found 
 	*/
-	doLinkBack:function() {
+	doLinkBack: function() {
 		if ( ! this.linkback && this.roe && this.media_element.addedROEData == false ) {
 			var _this = this;
 			this.displayOverlay( gM( 'mwe-loading_txt' ) );
@@ -2807,17 +2807,17 @@ embedPlayer.prototype = {
 	/**
 	* Hides the playhead highlight
 	*/	
-	hideHighlight:function() {
+	hideHighlight: function() {
 		var eid = ( this.pc ) ? this.pc.pp.id:this.id;
 		$j( '#mv_seeker_' + eid + ' .mv_highlight' ).hide();
-		this.setStatus( this.getTimeReq() );
-		thigetTimeRangerValue( 0 );
+		this.setStatus( this.getTimeRange() );		
 	},
 	
 	/**
 	* Updates the player status that displays short text msgs and the play clock 
+	* @param {String} value Status string value to update
 	*/
-	setStatus:function( value ) {
+	setStatus: function( value ) {
 		var eid = ( this.pc ) ? this.pc.pp.id:this.id;
 		// update status:
 		$j( '#' + eid + ' .time-disp' ).html( value );
