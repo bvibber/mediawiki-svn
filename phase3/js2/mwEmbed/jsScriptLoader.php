@@ -468,7 +468,7 @@ class jsScriptLoader {
 		}
 	}
 
-	function getInlineMesgFromClass( $class ){
+	function getInlineMsgFromClass( $class ){
 		$jsmsg = $this->getMsgKeysFromClass( $class );
 		if( $jsmsg ){
 			self::getMsgKeys ( $jsmsg );

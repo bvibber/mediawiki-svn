@@ -5,7 +5,7 @@
  
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = '1.1b';
+var mwRemoteVersion = '1.1c';
 var mwUseScriptLoader = true;
 
 // Setup up request Params: 
@@ -29,8 +29,7 @@ addOnloadHook( function() {
 
 function doPageSpecificRewrite() {		
 	// Add media wizard
-	if ( wgAction == 'edit' || wgAction == 'submit' ) {	
-		var jsSetEdit = 
+	if ( wgAction == 'edit' || wgAction == 'submit' ) {			
 		loadMwEmbed( [ 
 			'remoteSearchDriver', 
 			'$j.fn.textSelection', 
