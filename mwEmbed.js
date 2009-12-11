@@ -1130,9 +1130,21 @@ var global_req_cb = new Array(); // The global request callback array
 		mw.log("run getJSON: " + url + ' data: ' +  data);
 		// Pass off the jQuery getJSON request:
 		$j.getJSON( url, data, callback );		
-	}			
-	
-	
+	}	
+			
+	/**
+	* Metavid spefic helper funtion will be factored out eventually.
+	* @param roe_url to be updated 
+	*/
+	$.getMvJsonUrl = function( roe_url , callback){
+		if ( mw.parseUri( document.URL ).host == mw.parseUri( roe_url ).host ||
+			roe_url.indexOf( '://' ) == -1 ){
+			$j.get( roe_url, callback );	 
+		} else {
+			$j.getJSON( roe_url + '&feed_format=json&cb=?&cb_inx=1', callback );
+		}
+		
+	}
 	/**
 	 * Simple api helper to grab an edit token
 	 *
@@ -1140,7 +1152,7 @@ var global_req_cb = new Array(); // The global request callback array
 	 * @param {String} [api_url] The target API URL
 	 * @param {callback} callback Function to pass the token to
 	 */
-	mw.getToken( title, api_url, callback ) {
+	$.getToken = function( title, api_url, callback ) {
 		if( typeof api_url == 'function' )
 			callback = api_url;	
 		if( typeof title == 'function')
@@ -2499,64 +2511,10 @@ function mwDojQueryBindings() {
 		}
 	} )( jQuery );
 }
-/*
-* Utility functions:
+
+/**
+* Utility functions that override globals
 */
-
-// Do a metavid callback request:
-// NOTE: this contains metavid specific local vs remote api remapping will be removed shortly
-// this should be depreciated and we should use "$j.get" or an api call 
-// (we should not mix the two request types) 
-function do_request( req_url, callback ) {
-	mw.log( 'do_request::req_url:' + mw.parseUri( document.URL ) + ' != ' +  mw.parseUri( req_url ).host );
-	// If we are doing a request to the same domain or relative link, do a normal GET
-	if ( mw.parseUri( document.URL ).host == mw.parseUri( req_url ).host ||
-		req_url.indexOf( '://' ) == -1 ){ // if its a relative url go directly as well
-		// Do a direct request
-		$j.ajax( {
-			type: "GET",
-			url: req_url,
-			async: false,
-			success: function( data ) {
-				callback( data );
-			}
-		} );
-	} else {
-		// Get data via DOM injection with callback
-		global_req_cb.push( callback );
-		// Prepend json_ to feed_format if not already requesting json format (metavid specific) 
-		if ( req_url.indexOf( "feed_format=" ) != -1 && req_url.indexOf( "feed_format=json" ) == -1 )
-			req_url = req_url.replace( /feed_format=/, 'feed_format=json_' );		
-		$j.getScript( req_url + '&cb=mv_jsdata_cb&cb_inx=' + ( global_req_cb.length -1 ) );
-	}
-}
-
-function mv_jsdata_cb( response ) {
-	mw.log( 'f:mv_jsdata_cb:' + response['cb_inx'] );
-	// Run the callback from the global request callback object
-	if ( !global_req_cb[response['cb_inx']] ) {
-		mw.log( 'missing req cb index' );
-		return false;
-	}
-	if ( !response['pay_load'] ) {
-		mw.log( "missing pay load" );
-		return false;
-	}
-	switch( response['content-type'] ) {
-		case 'text/plain':
-		break;
-		case 'text/xml':
-			if ( typeof response['pay_load'] == 'string' ) {
-				 response['pay_load'] = mw.parseXML( response['pay_load'] );
-			}
-		break
-		default:
-			mw.log( 'bad response type' + response['content-type'] );
-			return false;
-		break;
-	}
-	global_req_cb[response['cb_inx']]( response['pay_load'] );
-}
 
 if ( typeof DOMParser == "undefined" ) {
 	DOMParser = function () { }
@@ -2577,7 +2535,4 @@ if ( typeof DOMParser == "undefined" ) {
 		}
 	}
 }
-/*
-* Utility functions
-*/
 

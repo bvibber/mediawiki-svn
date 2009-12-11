@@ -40,8 +40,7 @@ mvTextInterface.prototype = {
 			if ( !this.pe.media_element.addedROEData ) {
 				$j( '#mv_txt_load_' + _this.pe.id ).show(); // show the loading icon
 				if ( _this.pe.roe ) {
-					do_request( _this.pe.roe, function( data )
-					{
+					mw.getMvJsonUrl( _this.pe.roe, function( data ){
 						_this.pe.media_element.addROE( data );
 						_this.getParseTimedText_rowReady();
 					} );
@@ -568,7 +567,7 @@ timedTextCMML = {
 		// check for urls without time keys:
 		if ( typeof pcurl.queryKey['t'] == 'undefined' ) {
 			// in which case just get the full time req:
-			do_request( this.getSRC(), function( data ) {
+			mw.getMvJsonUrl( this.getSRC(), function( data ) {
 				_this.doParse( data );
 				_this.loaded = true;
 				callback();
@@ -592,7 +591,7 @@ timedTextCMML = {
 				url += 't=' + mw.seconds2npt( req_time[0] ) + '/' + mw.seconds2npt( req_time[1] ) + '&';
 			}
 		} );
-		do_request( url, function( data ) {
+		mw.getMvJsonUrl( url, function( data ) {
 			mw.log( "load track clip count:" + data.getElementsByTagName( 'clip' ).length );
 			_this.doParse( data );
 			_this.loaded = true;
@@ -625,7 +624,7 @@ timedTextSRT = {
 		var _this = this;
 		mw.log( 'textSRT: loading : ' + _this.getSRC() );
 		if ( _this.getSRC() ) {
-			do_request( _this.getSRC() , function( data ) {
+			mw.getMvJsonUrl( _this.getSRC() , function( data ) {
 				_this.doParse( data );
 				_this.loaded = true;
 				callback();
