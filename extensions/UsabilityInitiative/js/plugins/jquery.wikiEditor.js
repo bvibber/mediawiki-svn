@@ -365,7 +365,7 @@ if ( typeof context == 'undefined' ) {
 			return context.$content != undefined && context.$content[0].innerHTML != undefined;
 		},
 		/**
-		 * Gets the complete contents of the iframe
+		 * Gets the complete contents of the iframe (text, not HTML)
 		 */
 		'getContents': function() {
 			// FIXME: Evil ua-sniffing action!
@@ -376,6 +376,9 @@ if ( typeof context == 'undefined' ) {
 			// Setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
 			return $( '<div />' ).html( context.$content.html().replace( /\<br\>/g, "\n" ) ).text();
 		},
+		/**
+		 * Sets the complete contents of the iframe (text, not HTML; HTML passed will be converted to entities)
+		 */
 		'setContents': function( options ) {
 			context.$content.text( options.contents );
 			return context.$textarea;
