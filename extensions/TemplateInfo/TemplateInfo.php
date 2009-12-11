@@ -11,7 +11,7 @@
  * Usage: Add the following line in LocalSettings.php:
  * require_once( "$IP/extensions/TemplateInfo/TemplateInfo.php" );
  *
- * @version 0.2.1
+ * @version 0.3
  */
 
 // Check environment
@@ -27,7 +27,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'			=> __FILE__,
 	'name'			=> 'TemplateInfo',
 	'author'		=> array( 'Yaron Koren', 'Roan Kattouw' ),
-	'version'		=> '0.2.1',
+	'version'		=> '0.3',
 	'url'			=> 'http://www.mediawiki.org/wiki/Extension:TemplateInfo',
 	'description'		=> 'Supports templates defining their data structure via XML markup.',
 	'descriptionmsg'	=> 'templateinfo-desc',
