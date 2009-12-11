@@ -2221,20 +2221,18 @@ fn: {
 		}
 		markedText = "";
 		var previousIndex = 0;
-		for ( var i = 0; i < this.markers.length; i++ ) {
-			markedText += rawText.substring( previousIndex, currentIndex );
-			
-			for ( var j = 0 ; i < this.markers[i].length; j++ ) {
-				markedText += this.markers[i][j];
-			}
-			
-			previousIndex = currentIndex;
-		}
-		if ( markedText != "" ) {
-			markedText.replace( /\n/g, '<br>' );
-			context.fn.setContents( { contents:markedText } );
-		}
-	}
+	    for(var currentIndex in this.markers){
+	    	markedText+= rawText.substring(previousIndex, currentIndex);
+	    	for(var i = 0 ; i < this.markers[currentIndex].length; i++){
+	    		 markedText += this.markers[currentIndex][i];
+	    	}
+	    	previousIndex = currentIndex;
+	    }
+	    if(markedText != ""){
+	    	 markedText.replace(/\n/g, '<br\>');
+	    	 context.fn.setContents( { contents:markedText } );
+	    }
+	}//mark
 }
 
 }; })( jQuery );/* Preview module for wikiEditor */
@@ -2507,7 +2505,7 @@ api: {
 evt: {
 	mark: function() {
 			function findOutermostTemplates( tokenStack ) {
-				var templateBeginFound = false;
+				templateBeginFound = false;
 				for ( ;i< tokenStack.length; i++ ) {
 					if ( tokenStack[i].label == "TEMPLATE_BEGIN" ) {
 						templateBeginFound = true;
@@ -2544,11 +2542,11 @@ evt: {
 				}
 			}; //find outermost templates
 			
-			var markers = $.wikiEditor.modules.highlight.fn.markers;
+			markers = $.wikiEditor.modules.highlight.fn.markers;
 			var tokenStack = $.wikiEditor.modules.highlight.fn.tokenArray;
-			var i = 0;
+			i = 0;
 			var templateBoundaries;
-			var templateBeginFound = false;
+			templateBeginFound = false;
 			
 			while ( templateBoundaries = findOutermostTemplates( tokenStack ) ) {
 				if ( typeof markers[tokenStack[templateBoundaries[0]].offset] == 'undefined' ) {
@@ -2557,7 +2555,6 @@ evt: {
 				if ( typeof markers[tokenStack[templateBoundaries[1]].offset] == 'undefined' ) {
 					markers[tokenStack[templateBoundaries[1]].offset] = [];
 				}
-				
 				markers[tokenStack[templateBoundaries[0]].offset].push( "<div class='wiki-template'>" );
 				markers[tokenStack[templateBoundaries[1]].offset].push( "</div>" );
 			}
@@ -2628,6 +2625,8 @@ fn: {
 						.replace( /[{}|=]/g , 'X' );
 				sanatizedStr = sanatizedStr.substring( 0, startIndex ) +
 					sanatizedSegment + sanatizedStr.substring( endIndex );
+			}//while
+			return sanatizedStr;
 		};
 
 		// Whitespace* {{ whitespace* nonwhitespace:
@@ -2766,9 +2765,13 @@ fn: {
 		
 		//get template name
 		this.getName = function() {
-			return ranges[templateNameIndex].newVal ||
-				wikitext.substring( ranges[templateNameIndex].begin,
-					ranges[templateNameIndex].end );
+			if( typeof ranges[templateNameIndex].newVal == 'undefined' ) {
+				return wikitext.substring( ranges[templateNameIndex].begin,
+						ranges[templateNameIndex].end );
+			
+			} else {
+				return ranges[templateNameIndex].newVal;
+			}
 		};
 		
 		//set template name (if we want to support this)
@@ -2805,13 +2808,17 @@ fn: {
 		this.getText = function() {
 			newText = "";
 			for ( i = 0 ; i < ranges.length; i++ ) {
-				newText += ranges[i].newVal || wikitext.substring(
-					ranges[i].begin, ranges[i].end );
+				if( typeof ranges[i].newVal == 'undefined' ) {
+					wikitext.substring( ranges[i].begin, ranges[i].end );
+				} else {
+					newText += ranges[i].newVal;
+				}
 			}
 			return newText;
 		};
 	}//template model
-}
+
+}//fn
 
 }; } )( jQuery );
 
@@ -2982,13 +2989,14 @@ fn: {
 			.animate( { 'width' : openWidth }, 'fast', function() {
 				context.$content.trigger( 'mouseup' );
 				$( this ).css( { 'marginTop': '0', 'position': 'relative', 'right': 'auto', 'top': 'auto' } );
-				// Let the UI know things have moved around
-				context.fn.trigger( 'resize' );
 			 } )
 			.prev()
 			.animate( { 'marginRight': ( parseFloat( openWidth ) * -1 ) }, 'fast' )
 			.children()
-			.animate( { 'marginRight': openWidth }, 'fast' );
+			.animate( { 'marginRight': openWidth }, 'fast', function() {
+				// Let the UI know things have moved around
+				context.fn.trigger( 'resize' );
+			} );
 		$.cookie( 'wikiEditor-' + context.instance + '-toc-width',
 			context.modules.toc.$toc.data( 'openWidth' ) );
 		return false;
@@ -3767,12 +3775,14 @@ fn: {
 							}
 							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
 								$(this).css('overflow', 'visible').css('height', 'auto');
+								context.fn.trigger( 'resize' );
 							} );
 							$(this).addClass( 'current' );
 						} else {
 							$sections.css('height', $section.outerHeight() )
 								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() {
 									$(this).css('overflow', 'visible');
+									context.fn.trigger( 'resize' );
 								} );
 							if ( 'toc' in context.modules ) {
 								context.modules.toc.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);

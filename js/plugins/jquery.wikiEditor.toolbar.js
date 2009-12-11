@@ -489,12 +489,14 @@ fn: {
 							}
 							$sections.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
 								$(this).css('overflow', 'visible').css('height', 'auto');
+								context.fn.trigger( 'resize' );
 							} );
 							$(this).addClass( 'current' );
 						} else {
 							$sections.css('height', $section.outerHeight() )
 								.animate( { 'height': 0 }, $section.outerHeight() * 2, function() {
 									$(this).css('overflow', 'visible');
+									context.fn.trigger( 'resize' );
 								} );
 							if ( 'toc' in context.modules ) {
 								context.modules.toc.$toc.animate({'height': "-="+$section.outerHeight()}, $section.outerHeight() * 2);

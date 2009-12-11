@@ -164,13 +164,14 @@ fn: {
 			.animate( { 'width' : openWidth }, 'fast', function() {
 				context.$content.trigger( 'mouseup' );
 				$( this ).css( { 'marginTop': '0', 'position': 'relative', 'right': 'auto', 'top': 'auto' } );
-				// Let the UI know things have moved around
-				context.fn.trigger( 'resize' );
 			 } )
 			.prev()
 			.animate( { 'marginRight': ( parseFloat( openWidth ) * -1 ) }, 'fast' )
 			.children()
-			.animate( { 'marginRight': openWidth }, 'fast' );
+			.animate( { 'marginRight': openWidth }, 'fast', function() {
+				// Let the UI know things have moved around
+				context.fn.trigger( 'resize' );
+			} );
 		$.cookie( 'wikiEditor-' + context.instance + '-toc-width',
 			context.modules.toc.$toc.data( 'openWidth' ) );
 		return false;
