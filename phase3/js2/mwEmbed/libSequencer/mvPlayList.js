@@ -302,7 +302,7 @@ mvPlayList.prototype = {
 		var pl_parent = this;
 		this.makeURLAbsolute();
 		if ( this.src != null ) {
-			do_request( this.src, function( data ) {
+			mw.getMvJsonUrl( this.src, function( data ) {
 				pl_parent.data = data;
 				pl_parent.getSourceType();
 			} );

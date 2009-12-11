@@ -1266,7 +1266,7 @@ embedPlayer.prototype = {
 		if ( this.roe && this.media_element.sources.length == 0 ) {
 			mw.log( 'checkPlayerSources: loading external data' );
 			this.loading_external_data = true;					 	
-			do_request( this.roe, function( data ){				
+			mw.getMvJsonUrl( this.roe, function( data ){				
 				// Continue					   
 				_this.media_element.addROE( data );
 				mw.log( 'added_roe::' + _this.media_element.sources.length );
@@ -1658,8 +1658,7 @@ embedPlayer.prototype = {
 		)
 		// now load roe if run the showNextPrevLinks
 		if ( this.roe && this.media_element.addedROEData == false ) {
-			do_request( this.roe, function( data )
-			{
+			mw.getMvJsonUrl( this.roe, function( data ){
 				_this.media_element.addROE( data );
 				_this.getNextPrevLinks();
 			} );
@@ -1718,7 +1717,7 @@ embedPlayer.prototype = {
 			mw.log( 'anno data found in cache: ' + request_key );
 			this.showNextPrevLinks();
 		} else {
-			do_request( new_anno_track_url, function( cmml_data ) {
+			mw.getMvJsonUrl( new_anno_track_url, function( cmml_data ) {
 				mw.log( 'raw response: ' + cmml_data );
 				if ( typeof cmml_data == 'string' ) {
 					var parser = new DOMParser();
@@ -2154,7 +2153,7 @@ embedPlayer.prototype = {
 		if ( ! this.linkback && this.roe && this.media_element.addedROEData == false ) {
 			var _this = this;
 			this.displayHTML( gM( 'mwe-loading_txt' ) );
-			do_request( this.roe, function( data ) {
+			mw.getMvJsonUrl( this.roe, function( data ) {
 				_this.media_element.addROE( data );
 				_this.doLinkBack();
 			} );
@@ -2422,7 +2421,7 @@ embedPlayer.prototype = {
 		if ( this.roe && this.media_element.addedROEData == false ) {
 			var _this = this;
 			$target.html( gM( 'loading_txt' ) );
-			do_request( this.roe, function( data ) {
+			mw.getMvJsonUrl( this.roe, function( data ) {
 			   _this.media_element.addROE( data );
 			   $target.html( getShowVideoDownload() );
 			} );
