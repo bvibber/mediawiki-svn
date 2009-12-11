@@ -147,7 +147,7 @@ var default_video_attributes = {
 	"show_meta_link" : true,	
 
 	// If serving an ogg_chop segment use this to offset the presentation time
-	// ( for some plugins that use ogg page time rather than presentaiton time ) 
+	// ( for some plugins that use ogg page time rather than presentation time ) 
 	"startOffset" : null, 
 
 	//If we should display the play button
@@ -642,9 +642,10 @@ mediaSource.prototype = {
 	   	);
 	},
 	
-	/** Title accessor function.
-		@return Title of the source.
-		@type String
+	/** 
+	* Title accessor function.
+	*	@return Title of the source.
+	*	@type String
 	*/
 	getTitle : function() {	
 		if( this.title )
@@ -709,7 +710,7 @@ mediaSource.prototype = {
 	/** 
 	* Attempts to detect the type of a media file based on the URI.
 	*	@param {String} uri URI of the media file.
-	*	@returns {String} The guessed MIME type of the file.
+	*	@return The guessed MIME type of the file.
 	*	@type String
 	*/
 	detectType:function( uri ) {
@@ -827,7 +828,8 @@ mediaElement.prototype = {
 	
 	/**
 	* Check for Timed Text tracks
-	* @return {Boolean} true if text tracks exist, false if no text tracks are found
+	* @return True if text tracks exist, false if no text tracks are found
+	* @type Boolean
 	*/
 	textSourceExists: function() {
 		for ( var i = 0; i < this.sources.length; i++ ) {
@@ -842,7 +844,8 @@ mediaElement.prototype = {
 	* Returns the array of mediaSources of this element.
 	* 
 	* @param {String} mime_filter Filter criteria for set of mediaSources to return
-	* @return {Array} of mediaSource elements.
+	* @return mediaSource elements.
+	* @type Array
 	*/
 	getSources:function( mime_filter ){
 		if ( !mime_filter )
@@ -1908,8 +1911,9 @@ embedPlayer.prototype = {
 			this.play();
 		}
 	},
+	
 	/**
-	* get missing plugin html (check for user included code)
+	* Get missing plugin html (check for user included code)
 	* @param {String} misssing_type missing type mime
 	*/
 	getPluginMissingHTML : function( missing_type ) {
@@ -1924,11 +1928,17 @@ embedPlayer.prototype = {
 		}
 		return out + '</div>';
 	},
+	
+	/**
+	* Update the video time request via a time request string
+	* @param {String} time_req
+	*/
 	updateVideoTimeReq:function( time_req ) {
 		mw.log( 'f:updateVideoTimeReq' );
 		var time_parts = time_req.split( '/' );
 		this.updateVideoTime( time_parts[0], time_parts[1] );
 	},
+	
 	/** 
 	* Update Video time from provided start_npt and end_npt values
 	*
@@ -1956,7 +1966,7 @@ embedPlayer.prototype = {
 	* Render a thumbnail at a given time
 	* NOTE: Should overwrite by embed library if we can render frames natively
 	*
-	* @param {Object} option 
+	* @param {Object} options Options for rendred timeline thumb 
 	*/ 
 	renderTimelineThumbnail:function( options ) {
 		var my_thumb_src = this.media_element.getThumbnailURL();
@@ -2152,7 +2162,7 @@ embedPlayer.prototype = {
 	doLinkBack:function() {
 		if ( ! this.linkback && this.roe && this.media_element.addedROEData == false ) {
 			var _this = this;
-			this.displayHTML( gM( 'mwe-loading_txt' ) );
+			this.displayOverlay( gM( 'mwe-loading_txt' ) );
 			mw.getMvJsonUrl( this.roe, function( data ) {
 				_this.media_element.addROE( data );
 				_this.doLinkBack();
@@ -2163,7 +2173,7 @@ embedPlayer.prototype = {
 			} else if ( this.media_element.linkback ) {
 				window.location = this.media_element.linkback;
 			} else {
-				this.displayHTML( gM( 'mwe-could_not_find_linkback' ) );
+				this.displayOverlay( gM( 'mwe-could_not_find_linkback' ) );
 			}
 		}
 	},
@@ -2266,24 +2276,27 @@ embedPlayer.prototype = {
 	* The code should call the closeDisplayedHTML function to close the
 	* display of the custom HTML and restore the regular mwEmbed display.
 	*		
+	* NOTE: this should be moved to the ctrlBuilder 
+	* 
 	* @param {String} html_code code for the selection list.
 	*/
-	displayHTML:function( html_code )
-	{
+	displayOverlay: function( html_code ) {
 		var sel_id = ( this.pc != null ) ? this.pc.pp.id:this.id;
 		
 		if ( !this.supports['overlays'] )
 			this.stop();
 		
+		
 		// put select list on-top
 		// make sure the parent is relatively positioned:
 		$j( '#' + sel_id ).css( 'position', 'relative' );
 		// set height width (check for playlist container)
-		var width = ( this.pc ) ? this.pc.pp.width:this.getPlayerWidth();
-		var height = ( this.pc ) ? this.pc.pp.height:this.getPlayerHeight();
+		var width = ( this.pc ) ? this.pc.pp.width : this.getPlayerWidth();
+		var height = ( this.pc ) ? this.pc.pp.height : this.getPlayerHeight();						
 		
 		if ( this.pc )
-			height += ( this.pc.pp.pl_layout.title_bar_height + this.pc.pp.pl_layout.control_height );
+			height += ( this.pc.pp.pl_layout.title_bar_height + this.pc.pp.pl_layout.control_height );	  	 
+	  
 	  
 		var fade_in = true;
 		if ( $j( '#blackbg_' + sel_id ).length != 0 )
@@ -2291,9 +2304,9 @@ embedPlayer.prototype = {
 			fade_in = false;
 			$j( '#blackbg_' + sel_id ).remove();
 		}
-		// fade in a black bg div ontop of everything
-		 var div_code = '<div id="blackbg_' + sel_id + '" class="videoComplete" ' +
-			 'style="height:' + parseInt( height ) + 'px;width:' + parseInt( width ) + 'px;">' +
+		// Fade in a black bg div ontop of everything
+		var div_code = '<div id="blackbg_' + sel_id + '" class="videoComplete" ' +
+			 'style="height:' + this.ctrlBuilder.getOverlayHeight() + 'px;width:' + this.ctrlBuilder.getOverlayWidth() + 'px;">' +
 			 	'<span style="float:right;margin-right:10px">' +
 				'<a href="#" style="color:white;" onClick="$j(\'#' + sel_id + '\').get(0).closeDisplayedHTML();return false;">close</a>' +
 			'</span>' +
@@ -2307,12 +2320,20 @@ embedPlayer.prototype = {
 			$j( '#blackbg_' + sel_id ).show();
 		return false; // onclick action return false
 	},
+	
 	/** 
-	* Close the custom HTML displayed using displayHTML and restores the
+	* Close the custom HTML displayed using displayOverlay and restores the
 	* regular mwEmbed display.
 	*/
 	closeDisplayedHTML: function() {
-		  var sel_id = ( this.pc != null ) ? this.pc.pp.id:this.id;
+		 var sel_id = ( this.pc != null ) ? this.pc.pp.id:this.id;
+		 
+		 if( this.orgHeight ) 
+		 	$j( '#' + sel_id ).animate( { 'height': this.orgHeight } );
+		 	
+		 if( this.orgWidth )
+		 	$j( '#' + sel_id ).animate( { 'height': this.orgWidth } );
+		 
 		 $j( '#blackbg_' + sel_id ).fadeOut( "slow", function() {
 			 $j( '#blackbg_' + sel_id ).remove();
 		 } );

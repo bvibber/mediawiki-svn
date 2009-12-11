@@ -14,7 +14,7 @@ var kskinConfig = {
 	// Display time string length
 	long_time_disp: false,
 	
-	// Options are hanndled internnaly
+	// Options are handled internally
 	external_options: false,
 	
 	// Volume control layout is horizontal
@@ -28,7 +28,7 @@ var kskinConfig = {
 		'credits',
 	],
 	
-	// Extends base components with kskin specifc options:
+	// Extends base components with kskin specific options:
 	components: {		
 		'play-btn-large' : {
 			'h' : 55
@@ -48,9 +48,14 @@ var kskinConfig = {
 			'w':0,
 			'o':function( ctrlObj ) {
 				var embedObj = ctrlObj.embedObj;
+				
+				// Setup menu offset ( if player height <  getOverlayHeight )				
+				var menuOffset = ( embedObj.getPlayerHeight() <  ctrlObj.getOverlayHeight() ) ? 
+					'top:' + ( embedObj.getPlayerHeight() + ctrlObj.getControlBarHeight() ) + 'px;'  : '';
+														
 				var o = '' +
 				'<div class="k-menu ui-widget-content" ' +
-					'style="width:' + embedObj.getPlayerWidth() + 'px; height:' + embedObj.getPlayerHeight() + 'px;">' +
+					'style="width:' + ctrlObj.getOverlayWidth() + 'px; height:' +  ctrlObj.getOverlayHeight() + 'px;' + menuOffset + '">' +
 						'<ul class="k-menu-bar">';
 							// Output menu item containers: 
 							for ( i = 0; i < ctrlObj.menu_items.length; i++ ) {
@@ -60,8 +65,8 @@ var kskinConfig = {
 							}
 						o += '</ul>' +
 						// We have to subtract the width of the k-menu-bar
-						'<div class="k-menu-screens" style="width:' + ( embedObj.getPlayerWidth() - 75 ) +
-							'px; height:' + ( embedObj.getPlayerHeight() - ctrlBuilder.height ) + 'px;">';
+						'<div class="k-menu-screens" style="width:' + (  ctrlObj.getOverlayWidth() - 75 ) +
+							'px; height:' + ( ctrlObj.getOverlayHeight() - ctrlObj.getControlBarHeight() ) + 'px;">';
 						
 						// Output menu item containers: 
 						for ( i = 0; i < ctrlObj.menu_items.length; i++ ) {
@@ -72,6 +77,19 @@ var kskinConfig = {
 				return o;
 			}
 		}
+	},
+	
+	/**
+	* Get minimal width for interface overlay
+	*/
+	getOverlayWidth: function(){
+		return ( this.embedObj.getPlayerWidth() < 199 )? 199 : this.embedObj.getPlayerWidth();
+	},	
+	/**
+	* Get minimal height for interface overlay
+	*/
+	getOverlayHeight: function(){
+		return ( this.embedObj.getPlayerHeight() < 159 )? 159 : this.embedObj.getPlayerHeight();
 	},
 	
 	/**
@@ -150,6 +168,7 @@ var kskinConfig = {
 			} );
   		}
 	}, 
+	
 	/**
 	* Shows a selected menu_item
 	* 
@@ -250,7 +269,7 @@ var kskinConfig = {
 				}).html( 
 					$j('<img/>').attr( {
 						'border': 0, 
-						'src' : embedObj.thumbnail, 
+						'src' : embedObj.thumbnail
 					} )
 				)
 			)

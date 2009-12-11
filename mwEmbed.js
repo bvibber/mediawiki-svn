@@ -773,7 +773,7 @@ var global_req_cb = new Array(); // The global request callback array
 		*
 		* 	{Array} {Array} Can be a set of Arrays for loading.		 
 		*		Some browsers execute included scripts out of order. 
-		* 		This lets you chain sets of request for thouse browers.
+		* 		This lets you chain sets of request for those browers.
 		*		If using the script-loader order is preserved in output and 
 		*			a single request will be used.
 		*
@@ -783,7 +783,8 @@ var global_req_cb = new Array(); // The global request callback array
 			
 			// Check for empty loadRequest ( directly return the callback ) 
 			if( $.isEmpty( loadRequest ) ){
-				callback();
+				mw.log( ' empty load request ' );
+				callback( loadRequest );
 			}
 			
 			// Check if its a multi-part request: 
@@ -792,6 +793,7 @@ var global_req_cb = new Array(); // The global request callback array
 					this.loadMany ( loadRequest,  callback );
 					return ;
 				}else{
+					// If an array of length 1 set as first element 
 					loadRequest = loadRequest[0];
 				}				
 			}   
@@ -808,6 +810,7 @@ var global_req_cb = new Array(); // The global request callback array
 			
 			// Check for javascript class 
 			if( this.classPaths[ loadRequest ] ){		
+				mw.log('loadClass: ' + loadRequest );
 				this.loadClass( loadRequest, callback );																	
 				return ;
 			}
@@ -987,12 +990,28 @@ var global_req_cb = new Array(); // The global request callback array
 				$.getStyleSheet( this.stylePaths[ className ] );
 			}
 			
+			// Include class defined check for older browsers
+			var classDone = false;
+			
+			// Check if the class is ready: ( not all browers support onLoad script attribute )
+			// In the case of a "class" we can pull the javascript state untill its ready
+			setTimeout( function(){
+				$.waitForObject( className, function( className ){ 
+					if( callback )
+						callback( className );
+					callback = null;
+				} );
+			}, 25 ); 
+			
 			// Issue the request to load the class (include class name in result callback:					
 			$.getScript( scriptRequest, function( ) {
-				callback( className );
-			} );
+				if( callback )
+					callback( className );
+				callback = null;
+			} );	
+			mw.log( 'done with running 	getScript request ' );			
 												
-		},
+		},				
 		
 		/**
 		* Adds a module to the mwLoader object 
@@ -1210,17 +1229,47 @@ var global_req_cb = new Array(); // The global request callback array
 		}
 		return true;
 	}
+	/**
+	* Waits for a object to be deinfed and the calls callback
+	*
+	* @param {Object} objectName Name of object to be defined
+	* @param {Function} callback Function to call once object is defined
+	* @param {Null} callNumber Used internally to keep track of 
+	*	number of times waitForObject has been called 
+	*/
+	var waitTime = 1200; // About 30 seconds 
+	$.waitForObject = function( objectName, callback, _callNumber){
+		mw.log( 'waitForObject: ' + objectName );
+		if( !_callNumber ) 
+			_callNumber = 1;
+		
+		if( _callNumber > waitTime ){
+			mw.log( "Errro: waiting for object: " + objectName + ' timeout ' );
+			return ; 
+		}
+		
+		if ( $.isset( objectName ) ){
+			callback( objectName )
+		}else{
+			setTimeout( function( ){
+				$.waitForObject( objectName, callback, _callNumber++ );
+			}, 25);
+		}
+	}
 	
 	/**
-	* Check if an object is empty ( also look for empty string ) 
+	* Check if an object is empty or if its an empty string. 
 	*
 	* @param {Object} ob Object to be checked
 	*/ 
-	$.isEmpty = function( ob ) {
-		if( typeof ob == 'string' && ob == '' ) 
-			return true;
-		for(var i in ob){ return false;}
-			return true;
+	$.isEmpty = function( ob ) {		
+		if( typeof ob == 'string' ){ 
+			if( ob == '' ) return true;
+			// Non empty string: 
+			return false;
+		}
+		// Else check as an object: 
+		for(var i in ob){ return false; }
 		return true;
 	}
 	
@@ -1228,33 +1277,37 @@ var global_req_cb = new Array(); // The global request callback array
 	* Log a string msg to the console
 	* 
 	* all mw.log statements will be removed on minification so
-	* lots of js_log calls will not impact performance in non debug mode
+	* lots of mw.log calls will not impact performance in non debug mode
 	*
 	* @param {String} string String to output to console
 	*/
 	$.log = function( string ) {
 		// Add any prepend debug strings if necessary 
+		
 		if ( mw.getConfig( 'pre-append-log' ) )
 			string = mw.getConfig( 'pre-append-log' ) + string;
 				
 		if ( window.console ) {
 			window.console.log( string );
-		} else {
+		} else {	
 			/**
 			 * Old IE and non-Firebug debug: ( commented out for now ) 
 			 */
-			/*var log_elm = document.getElementById('mv_js_log');
+			
+			/*
+			var log_elm = document.getElementById('mv_js_log');
 			if(!log_elm){
 				document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML +
-					'<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:10px;">'+
-					'<textarea id="mv_js_log" cols="120" rows="5"></textarea>'+
+					'<div style="position:absolute;z-index:500;bottom:0px;left:0px;right:0px;height:200px;">'+
+					'<textarea id="mv_js_log" cols="120" rows="12"></textarea>'+
 					'</div>';
 	
 				var log_elm = document.getElementById('mv_js_log');
 			}
 			if(log_elm){
 				log_elm.value+=string+"\n";
-			}*/
+			}
+			*/
 		}
 	}
 	
@@ -1323,10 +1376,9 @@ var global_req_cb = new Array(); // The global request callback array
 			return ;			  
 		mwSetupFlag = true;
 		
-		mw.log( 'mw:setupMwEmbed' );
-				
+		mw.log( 'mw:setupMwEmbed' );			
 		// Make sure jQuery is loaded:
-		$.load( 'window.jQuery', function(){			
+		$.load( 'window.jQuery', function(){				
 			if ( !window['$j'] ) {
 				window['$j'] = jQuery.noConflict();
 			}
@@ -1361,7 +1413,8 @@ var global_req_cb = new Array(); // The global request callback array
 				// Set ready state and run the callback
 				mw.runLoadHooks();
 			}
-		} ); 			
+		} ); 
+		mw.log('ran loader' );			
 	}
 	
 	//Flag to register the domReady has been called
@@ -1472,26 +1525,25 @@ var global_req_cb = new Array(); // The global request callback array
 		*  OR 
 		* In debug mode inject the script instead of doing an ajax request and eval
 		*/
+		mw.log(" no jQuery.getScript, loading with manual insert ");
 			
 		// Load and bind manually:  ( copied from jQuery ajax function )
 		var head = document.getElementsByTagName("head")[0];
 		var script = document.createElement("script");
 		script.setAttribute( 'src', url );		
 				
-		// Attach handlers for all browsers ( might not work in safari < version 2.0 ) 
-		var done = false; 
-		script.onload = script.onreadystatechange = function(){
-			if ( !done && (!this.readyState ||
-					this.readyState == "loaded" || this.readyState == "complete") ) {
-				done = true;
+		// Attach handlers for all browsers ( might not work in safari < version 2.0 ) 		
+		script.onload = script.onreadystatechange = function(){			
+			if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {				
 				if( callback )
 					callback( scriptRequest );
+				callback = null;
 			}
 		};
-		// Note: we could check for "className" here
-				
+		mw.log(" do append to head");
 		// Append the script to the DOM:
 		head.appendChild( script );	
+		mw.log('append done ' );
 	}
 	
 	/**
