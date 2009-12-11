@@ -506,7 +506,7 @@ mvSequencer.prototype = {
 		this.sequenceEditToken = $j( 'input[wpEditToken]' ).val();
 
 		if ( typeof this.sequenceEditToken == 'undefined' && this.getLocalApiUrl() != null ) {
-			get_mw_token( _this.plObj.mTitle, _this.getLocalApiUrl(),
+			mw.getToken( _this.plObj.mTitle, _this.getLocalApiUrl(),
 				function( token ) {
 					if ( token ) {
 						_this.sequenceEditToken = token;

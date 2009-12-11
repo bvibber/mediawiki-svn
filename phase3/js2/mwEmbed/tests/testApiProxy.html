@@ -61,7 +61,7 @@ function doAppend(){
 	getUserName(function(userName){
 		var eTitle = 'User_talk:' + userName;
 		//get a edit token
-		get_mw_token(eTitle, 'proxy', function( token ){
+		mw.getToken( eTitle, 'proxy', function( token ){
 			mw.log("got token: " + token) ;
 			var request = {
 				'action':'edit',

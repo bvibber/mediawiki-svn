@@ -870,18 +870,14 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 		}
 
 		// No edit token. Fetch it asynchronously and then do the upload.
-		get_mw_token(
-			'File:'+ _this.formData['filename'],
-			_this.api_url,
-			function( editToken ) {
-				if( !editToken || editToken == '+\\' ) {
-					_this.updateProgressWin( gM( 'fogg-badtoken' ), gM( 'fogg-badtoken' ) );
-					return false;
-				}
-				_this.editToken = editToken;
-				_this.doChunkUploadWithFormData();
+		mw.getToken( 'File:'+ _this.formData['filename'], _this.api_url, function( editToken ) {
+			if( !editToken || editToken == '+\\' ) {
+				_this.updateProgressWin( gM( 'fogg-badtoken' ), gM( 'fogg-badtoken' ) );
+				return false;
 			}
-		);
+			_this.editToken = editToken;
+			_this.doChunkUploadWithFormData();
+		} );
 	},
 
 	/**

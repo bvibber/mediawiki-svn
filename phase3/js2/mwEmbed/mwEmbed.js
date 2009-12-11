@@ -1134,6 +1134,44 @@ var global_req_cb = new Array(); // The global request callback array
 	
 	
 	/**
+	 * Simple api helper to grab an edit token
+	 *
+	 * @param title The wiki page title you want to edit
+	 * @param {String} [api_url] The target API URL
+	 * @param {callback} callback Function to pass the token to
+	 */
+	mw.getToken( title, api_url, callback ) {
+		if( typeof api_url == 'function' )
+			callback = api_url;	
+		if( typeof title == 'function')
+			callback = title;
+		
+		mw.log( 'mw:getToken' );
+		
+		// If no title is provided get a token for the user page: 
+		if ( typeof title != 'string' && wgUserName ) {
+			title = 'User:' + wgUserName;
+		}		
+		
+		var request = {			
+			'prop': 'info',
+			'intoken': 'edit',
+			'titles': title
+		};		
+		mw.getJSON( api_url, request, function( data ) {
+			for ( var i in data.query.pages ) {
+				if ( data.query.pages[i]['edittoken'] ) {
+					if ( typeof callback == 'function' )
+						callback ( data.query.pages[i]['edittoken'] );
+				}
+			}
+			// No token found:
+			return false;
+		} );
+	}
+	
+	
+	/**
 	* Utility Functions
 	*/		
 	
@@ -2464,41 +2502,6 @@ function mwDojQueryBindings() {
 /*
 * Utility functions:
 */
-
-
-/*
- * Simple helper to grab an edit token
- *
- * @param title The wiki page title you want to edit
- * @param api_url 'optional' The target API URL
- * @param callback The callback function to pass the token to
- */
-function get_mw_token( title, api_url, callback ) {
-	mw.log( ':get_mw_token:' );
-	if ( !title && wgUserName ) {
-		title = 'User:' + wgUserName;
-	}
-	var reqObj = {
-			'action': 'query',
-			'prop': 'info',
-			'intoken': 'edit',
-			'titles': title
-		};
-	do_api_req( {
-		'data': reqObj,
-		'url' : api_url
-		}, function( data ) {
-			for ( var i in data.query.pages ) {
-				if ( data.query.pages[i]['edittoken'] ) {
-					if ( typeof callback == 'function' )
-						callback ( data.query.pages[i]['edittoken'] );
-				}
-			}
-			// No token found:
-			return false;
-		}
-	);
-}
 
 // Do a metavid callback request:
 // NOTE: this contains metavid specific local vs remote api remapping will be removed shortly
