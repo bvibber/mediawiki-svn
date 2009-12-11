@@ -282,7 +282,7 @@ fn: {
 		var label = $.wikiEditor.autoMsg( tool, 'label' );
 		switch ( tool.type ) {
 			case 'button':
-				var src = $.wikiEditor.getIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
+				var src = $.wikiEditor.autoIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
 				$button = $( '<img />' ).attr( {
 					'src' : src,
 					'width' : 22,
