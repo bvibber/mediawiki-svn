@@ -1615,7 +1615,7 @@ var global_req_cb = new Array(); // The global request callback array
 		var mwpath = null;
 		
 		// Check for direct include of the mwEmbed.js
-		if ( src.indexOf( 'mwEmbed.js' ) !== -1 ) {
+		if ( src.indexOf( 'mwEmbed.js' ) !== -1 &&  src.indexOf( 'MediaWiki:Gadget') == -1) {
 			mwpath =  src.substr( 0, src.indexOf( 'mwEmbed.js' ) );			
 		}
 		
