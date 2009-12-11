@@ -47,8 +47,8 @@ class TemplateInfoHooks {
 			$parser->getOutput()->setProperty( 'templateinfo', $input );
 			// TODO - a hook should be called here, to allow other
 			// XML handlers to parse and display this
-			$text = "<p>The (unhandled) XML definition for this template is:</p>\n";
-			$text .= "<pre>" . htmlspecialchars( $input, ENT_QUOTES ) . "</pre>";
+			$text = Html::element('p', null, "The (unhandled) XML definition for this template is:") . "\n";
+			$text .= Html::element('pre', null, $input);
 			return $text;
 		}
 
@@ -59,8 +59,8 @@ class TemplateInfoHooks {
 		} else {
 			// Store error message in the page_props table
 			$parser->getOutput()->setProperty( 'templateinfo', $error_msg );
-			$text = "<p>The (incorrect) XML definition for this template is:</p>\n";
-			$text .= "<pre>" . htmlspecialchars( $input, ENT_QUOTES ) . "</pre>";
+			$text = Html::element('p', null, "The (incorrect) XML definition for this template is:") . "\n";
+			$text .= Html::element('pre', null, $input);
 		}
 
 		// return output
