@@ -131,7 +131,9 @@ class SpecialFundraiserStatistics extends SpecialPage {
 								Xml::element( 'td', $tdLabelAttributes, wfMsg( 'fundraiserstats-contributions' ) ) .
 								Xml::element( 'td', $tdValueAttributes, $wgLang->formatNum( number_format( $day[2] ) ) ) .
 								Xml::element( 'td', $tdLabelAttributes, wfMsg( 'fundraiserstats-avg' ) ) .
-								Xml::element( 'td', $tdValueAttributes, $wgLang->formatNum( number_format( $day[3], 2 ) ) )
+								Xml::element( 'td', $tdValueAttributes, $wgLang->formatNum( number_format( $day[3], 2 ) ) ) .
+								Xml::element( 'td', $tdLabelAttributes, wfMsg( 'fundraiserstats-ytd' ) ) .
+								Xml::element( 'td', $tdValueAttributes, $wgLang->formatNum( number_format( $day[5], 2 ) ) )
 							)
 						)
 					);
@@ -215,7 +217,9 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			)
 		);
 		$totals = array();
+		$ytd = 0;
 		while ( $row = $dbr->fetchRow( $res ) ) {
+			$row[] = $ytd += $row[1];
 			$totals[] = $row;
 		}
 		return $totals;
