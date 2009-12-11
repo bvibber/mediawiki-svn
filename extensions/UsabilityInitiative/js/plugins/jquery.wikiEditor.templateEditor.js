@@ -83,7 +83,8 @@ fn: {
 	 */
 	create: function( context, config ) {
 		
-		// check if text is selected
+		//initializations
+		
 	},
 
 	//template Model
@@ -110,12 +111,16 @@ fn: {
 		var paramsByName = [];
 		var templateNameIndex = 0;
 		
+		//takes all template-specific characters, namely {|=} away if they're not particular to the
+		//template we're looking at
 		function markOffTemplates() {
 			sanatizedStr = wikitext.replace( /{{/, "  " ); //get rid of first {{ with whitespace
 			endBraces = sanatizedStr.match( /}}\s*$/ ); //replace end
 			sanatizedStr = sanatizedStr.substring( 0, endBraces.index ) + "  " +
 				sanatizedStr.substring( endBraces.index + 2 );
 			
+			//match the open braces we just found with equivalent closing braces
+			//note, works for any level of braces
 			while ( sanatizedStr.indexOf( '{{' ) != -1 ) {
 				startIndex = sanatizedStr.indexOf('{{') + 1;
 				openBraces = 2;
@@ -142,6 +147,7 @@ fn: {
 		
 		markOffTemplates();
 		
+		//parse 1 param at a time
 		var doneParsing = false;
 		oldDivider = 0;
 		divider = sanatizedStr.indexOf( '|', oldDivider );
@@ -162,6 +168,8 @@ fn: {
 
 		currentParamNumber = 0;
 		var valueEndIndex;
+		
+		//start looping over params
 		while ( !doneParsing ) {
 			currentParamNumber++;
 			oldDivider = divider;
@@ -301,10 +309,15 @@ fn: {
 		};
 
 		//get a list of all param names (numbers for the anonymous ones)
-		this.getAllParams = function() {
+		this.getAllParamNames = function() {
 			return paramsByName;
 		};
 
+		//get the initial params
+		this.getAllInitialParams = function(){
+			return params;
+		}
+		
 		//get original template text
 		this.getOriginalText = function() {
 			return wikitext;
