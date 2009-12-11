@@ -73,7 +73,7 @@ mvTextInterface.prototype = {
 			'apprefix' : _this.pe.wikiTitleKey,
 			'apnamespace' : timedtext_ns,
 			'prop':'revisions'
-		}'
+		};
 		mw.getJSON( apiUrl, request, function( subData ) {
 			if (	subData.error && subData.error.code == 'apunknown_apnamespace' ) {
 				var request = { 
@@ -350,7 +350,7 @@ mvTextInterface.prototype = {
 		return '<div id="mmbody_' + this.pe.id + '" ' +
 				'style="position:absolute;top:30px;left:0px;' +
 				'right:0px;bottom:0px;' +
-				'height:' + ( this.pe.height - 30 ) +
+				'height:' + ( this.pe.height) +
 				'px;overflow:auto;"><span style="display:none;" id="mv_txt_load_' + this.pe.id + '">' +
 					mw.loading_spiner() + '</span>' +
 				'</div>';

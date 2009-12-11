@@ -544,6 +544,7 @@ var global_req_cb = new Array(); // The global request callback array
 				}
 				/**
 				 * parse template text as template name and named params
+				 * @param {String} ts Template String to be parsed 
 				 */
 				function parseTmplTxt( ts ) {
 					var tObj = { };
@@ -633,8 +634,9 @@ var global_req_cb = new Array(); // The global request callback array
 				
 				// do the recursive magic swap text:
 				this.pOut = recurse_magic_swap( this.pNode );
-			},			
-			/*
+			},	
+					
+			/**
 			 * parsed template api ~loosely based off of ~POM~
 			 * http://www.mediawiki.org/wiki/Extension:Page_Object_Model
 			 */
@@ -773,14 +775,13 @@ var global_req_cb = new Array(); // The global request callback array
 		*
 		* 	{Array} {Array} Can be a set of Arrays for loading.		 
 		*		Some browsers execute included scripts out of order. 
-		* 		This lets you chain sets of request for those browers.
+		* 		This lets you chain sets of request for those browsers.
 		*		If using the script-loader order is preserved in output and 
 		*			a single request will be used.
 		*
 		* @param {Function} callback Function called once loading is complete
 		*/				
 		load: function( loadRequest, callback ){
-		
 			// Check for empty loadRequest ( directly return the callback ) 
 			if( $.isEmpty( loadRequest ) ){
 				mw.log( 'Error: Empty load request ' );
