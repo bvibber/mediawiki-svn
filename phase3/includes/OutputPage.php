@@ -245,7 +245,7 @@ class OutputPage {
 					if( !$this->mScriptLoader )
 						$this->mScriptLoader = new jsScriptLoader();
 
-					$inlineMsg = $this->mScriptLoader->getInlineLoadGMFromClass( $js_class );
+					$inlineMsg = $this->mScriptLoader->getInlineMsgFromClass( $js_class );
 					if( $inlineMsg != '' )
 						$this->addScript( Html::inlineScript( $inlineMsg ));
 				}
