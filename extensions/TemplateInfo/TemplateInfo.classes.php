@@ -49,7 +49,7 @@ END;
 		$data_type = htmlspecialchars($data_type);
 		$content = is_null($value) ? $data_type : "$data_type: " . HTML::element('span', array('class' => 'rowValue'), $value);
 		$cell = HTML::rawElement('td', array('colspan' => 2), $content);
-		$text = HTML::rawElement('tr', array('class' => "$css_class"), $cell);
+		$text = HTML::rawElement('tr', array('class' => $css_class), $cell);
 		$text .= "\n";
 		return $text;
 	}
@@ -57,7 +57,7 @@ END;
 	static function tableMessageRowHTML($css_class, $name, $value) {
 		$cell1 = HTML::element('td', array(), $name);
 		$cell2 = HTML::element('td', array('class' => 'msg'), $value);
-		$text = HTML::rawElement('tr', array('class' => "$css_class"), $cell1 . "\n" . $cell2);
+		$text = HTML::rawElement('tr', array('class' => $css_class), $cell1 . "\n" . $cell2);
 		$text .= "\n";
 		return $text;
 	}
