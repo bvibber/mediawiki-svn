@@ -76,6 +76,7 @@ $messages['en'] = array(
 	'fundraiserstats-contributions' => 'Contributions',
 	'fundraiserstats-total' => 'Total (USD)',
 	'fundraiserstats-avg' => 'Average (USD)',
+	'fundraiserstats-ytd' => 'YTD Total (USD)',
 	// 'fundraiserstats-med' => 'Median (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
 	'fundraiserstats-tab-totals' => 'Totals (USD)',
