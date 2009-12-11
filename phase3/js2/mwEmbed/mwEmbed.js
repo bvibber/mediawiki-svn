@@ -1615,7 +1615,7 @@ var global_req_cb = new Array(); // The global request callback array
 		var mwpath = null;
 		
 		// Check for direct include of the mwEmbed.js
-		if ( src.indexOf( 'mwEmbed.js' ) !== -1 &&  src.indexOf( 'MediaWiki:Gadget') == -1) {
+		if ( src.indexOf( 'mwEmbed.js' ) !== -1 ) {
 			mwpath =  src.substr( 0, src.indexOf( 'mwEmbed.js' ) );			
 		}
 		
@@ -1738,9 +1738,13 @@ var global_req_cb = new Array(); // The global request callback array
 			// Check for mwEmbed.js and/or script loader
 			var src = js_elements[i].getAttribute( "src" );
 			if ( src ) {
-				if ( src.indexOf( 'mwEmbed.js' ) !== -1 || (
-					( src.indexOf( 'mwScriptLoader.php' ) !== -1 || src.indexOf( 'jsScriptLoader.php' ) !== -1 )
-					&& src.indexOf( 'mwEmbed' ) !== -1 ) ) // (check for class=mwEmbed script_loader call)
+				if ( 
+					( src.indexOf( 'mwEmbed.js' ) !== -1 &&  src.indexOf( 'MediaWiki:Gadget') == -1 )
+				 	|| 
+				 	( 
+				 		( src.indexOf( 'mwScriptLoader.php' ) !== -1 || src.indexOf( 'jsScriptLoader.php' ) !== -1 )
+							&& src.indexOf( 'mwEmbed' ) !== -1 ) 
+					) 
 				{
 					mwEmbedSrc = src;
 					return mwEmbedSrc;
