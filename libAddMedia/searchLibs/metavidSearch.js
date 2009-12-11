@@ -38,24 +38,20 @@ metavidSearch.prototype = {
 		// Set local ref:
 		var _this = this;
 		
-		js_log( 'metavidSearch::getSearchResults()' );
+		mw.log( 'metavidSearch::getSearchResults()' );
 		
 		// Process all options
 		var url = this.provider.api_url;
-		var reqObj = $j.extend({}, this.defaultReq);
-		reqObj[ 'f[0][t]' ] = 'match';
-		reqObj[ 'f[0][v]' ] = search_query;
+		var request = $j.extend( {}, this.defaultReq );
+		request[ 'f[0][t]' ] = 'match';
+		request[ 'f[0][v]' ] = search_query;
 		
 		// add offset limit:
-		reqObj[ 'limit' ] = this.provider.limit;
-		reqObj[ 'offset' ] =  this.provider.offset;
-
-		do_api_req({
-			'url' : url,
-			'jsonCB' : 'cb',			
-			'data' : reqObj
-		}, function( data ) {	
-			js_log( 'mvSearch: got data response::' );
+		request[ 'limit' ] = this.provider.limit;
+		request[ 'offset' ] =  this.provider.offset;
+		mw.log("getJSON:  " + url + '&cb=?' );
+		$j.getJSON( url + '&cb=?&cb_inx=1', request, function( data ) {	
+			mw.log( 'mvSearch: got data response::' );
 			var xmldata = ( data && data['pay_load'] ) ? mw.parseXML( data['pay_load'] ) : false;
 			if( !xmldata ){
 				// XML Error or No results: 
@@ -172,7 +168,7 @@ metavidSearch.prototype = {
 	* @param {Object} resource Resource to be updated 
 	*/
 	applyVideoAdj: function( resource ) {
-		js_log( 'mv ApplyVideoAdj::' );
+		mw.log( 'mv ApplyVideoAdj::' );
 		
 		// Update the titleKey:
 		resource['titleKey'] =	 this.getTitleKey( resource );
@@ -181,17 +177,17 @@ metavidSearch.prototype = {
 		resource['title'] = this.getTitle( resource );
 
 		// update the interface:
-		js_log( 'update title to: ' + resource['title'] );
+		mw.log( 'update title to: ' + resource['title'] );
 		$j( '#rsd_resource_title' ).html( gM( 'rsd_resource_edit', resource['title'] ) );
 
 		// if the video is "roe" based select the ogg stream
 		if ( resource.roe_url && resource.pSobj.provider.stream_import_key ) {
 			var source = $j( '#embed_vid' ).get( 0 ).media_element.getSourceById( resource.pSobj.provider.stream_import_key );
 			if ( !source ) {
-				js_error( 'Error::could not find source: ' +  resource.pSobj.provider.stream_import_key );
+				mw.log( 'Error::could not find source: ' +  resource.pSobj.provider.stream_import_key );
 			} else {
 				resource['src'] = source.getSrc();
-				js_log( "g src_key: " + resource.pSobj.provider.stream_import_key + ' src:' + resource['src'] ) ;
+				mw.log( "g src_key: " + resource.pSobj.provider.stream_import_key + ' src:' + resource['src'] ) ;
 				return true;
 			}
 		}
@@ -222,15 +218,15 @@ metavidSearch.prototype = {
 	*/
 	getImageTransform:function( resource, opt ) {
 		if ( opt.width <= 80 ) {
-			return getURLParamReplace( resource.poster, { 'size' : "icon" } )
+			return mw.replaceUrlParams( resource.poster, { 'size' : "icon" } )
 		} else if ( opt.width <= 160 ) {
-			return getURLParamReplace( resource.poster, { 'size' : "small" } )
+			return mw.replaceUrlParams( resource.poster, { 'size' : "small" } )
 		} else if ( opt.width <= 320 ) {
-			return getURLParamReplace( resource.poster, { 'size' : 'medium' } )
+			return mw.replaceUrlParams( resource.poster, { 'size' : 'medium' } )
 		} else if ( opt.width <= 512 ) {
-			return getURLParamReplace( resource.poster, { 'size' : 'large' } )
+			return mw.replaceUrlParams( resource.poster, { 'size' : 'large' } )
 		} else {
-			return getURLParamReplace( resource.poster, { 'size' : 'full' } )
+			return mw.replaceUrlParams( resource.poster, { 'size' : 'full' } )
 		}
 	},
 	
@@ -248,7 +244,7 @@ metavidSearch.prototype = {
 			if ( cur_source.id ==  this.provider.target_source_id )
 				resource['url'] = cur_source.getSrc();
 		}
-		// js_log('set url to: ' + resource['url']);
+		// mw.log('set url to: ' + resource['url']);
 		return resource;
 	},
 	

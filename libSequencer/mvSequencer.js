@@ -204,7 +204,7 @@ mvSequencer.prototype = {
 			this[ i ] = sequencerDefaultValues[i];
 		}
 		for ( var i in iObj ) {
-			// js_log('on '+ i + ' :' + iObj[i]);
+			// mw.log('on '+ i + ' :' + iObj[i]);
 			if ( typeof sequencerDefaultValues[i] != 'undefined' ) { // make sure its a valid property
 				this[i] = iObj[i];
 			}
@@ -212,7 +212,7 @@ mvSequencer.prototype = {
 
 		// check for sequence_container
 		if ( $j( this.target_sequence_container ).length === 0 ) {
-			js_log( "Error: missing target_sequence_container" );
+			mw.log( "Error: missing target_sequence_container" );
 			return false;
 		}
 
@@ -241,17 +241,17 @@ mvSequencer.prototype = {
 			'min-width':'850px'
 		} );
 
-		/*js_log('set: '+this.target_sequence_container + ' html to:'+ "\n"+
+		/*mw.log('set: '+this.target_sequence_container + ' html to:'+ "\n"+
 			$j(this.target_sequence_container).html()
 		);*/
 		
 		// first check if we got a cloned PL object:
 		// (when the editor is invoked with the plalylist already on the page)
 		/*if( this.plObj != 'null' ){
-			js_log('found plObj clone');
+			mw.log('found plObj clone');
 			//extend with mvSeqPlayList object:
 			this.plObj = new mvSeqPlayList(this.plObj);
-			js_log('mvSeqPlayList added: ' + this.plObj.org_control_height );
+			mw.log('mvSeqPlayList added: ' + this.plObj.org_control_height );
 			$j('#'+this.video_container_id).get(0).attachNode( this.plObj );
 			this.plObj.getHTML();
 			this.checkReadyPlObj();
@@ -260,10 +260,10 @@ mvSequencer.prototype = {
 
 		// else check for source based sequence editor (a clean page load of the editor)
 		if ( this.mv_pl_src != 'null' ) {
-			js_log( ' pl src:: ' + this.mv_pl_src );
+			mw.log( ' pl src:: ' + this.mv_pl_src );
 			var src_attr = ' src="' + this.mv_pl_src + '" ';
 		} else {
-			js_log( ' null playlist src .. (start empty) ' );
+			mw.log( ' null playlist src .. (start empty) ' );
 			var src_attr = '';
 		}
 		$j( '#' + this.video_container_id ).html( '<playlist ' + src_attr +
@@ -327,10 +327,7 @@ mvSequencer.prototype = {
 					value: 100
 				} );
 				// run the Seq Save Request:
-				do_api_req( {
-					'data': saveReq,
-					'url' : _this.getLocalApiUrl()
-				}, function( data ) {
+				mw.getJSON( _this.getLocalApiUrl(), saveReq, function( data ) {
 					$j( '#seq_save_dialog' ).html( gM( 'mwe-save_done' ) );
 					$j( '#seq_save_dialog' ).dialog( 'option',
 						'buttons', {
@@ -355,7 +352,7 @@ mvSequencer.prototype = {
 	},
 	// display a menu item (hide the rest)
 	disp:function( item, dispCall ) {
-		js_log( 'menu_item disp: ' + item );
+		mw.log( 'menu_item disp: ' + item );
 		this.disp_menu_item = item;
 		// update the display and item state:
 		if ( this.menu_items[item] ) {
@@ -371,7 +368,7 @@ mvSequencer.prototype = {
 	},
 	// setup the menu items:
 	setupMenuItems:function() {
-		js_log( 'loadInitMenuItems' );
+		mw.log( 'loadInitMenuItems' );
 		var _this = this;
 		// do all the menu_items setup:	 @@we could defer this to once the menu item is requested
 		for ( var i in this.menu_items ) {
@@ -413,7 +410,7 @@ mvSequencer.prototype = {
 			// add tracks:
 			for ( var i in this.plObj.tracks ) {
 				var track = this.plObj.tracks[i];
-				// js_log("on track: "+ i + ' t:'+ $j('#'+this.timeline_id+'_left_cnt').html() );
+				// mw.log("on track: "+ i + ' t:'+ $j('#'+this.timeline_id+'_left_cnt').html() );
 				// set up track based on disp type
 				switch( track.disp_mode ) {
 					case 'timeline_thumb':
@@ -482,7 +479,7 @@ mvSequencer.prototype = {
 		// else keep checking for the playlist to be ready
 		if ( this.plObj.loading ) {
 			if ( this.plReadyTimeout == 200 ) {
-				js_error( 'error playlist never ready' );
+				mw.log( 'error playlist never ready' );
 			} else {
 				this.plReadyTimeout++;
 				setTimeout( this.instance_name + '.checkReadyPlObj()', 25 );
@@ -494,8 +491,8 @@ mvSequencer.prototype = {
 	},
 	plReadyInit:function() {
 		var _this = this;
-		js_log( 'plReadyInit' );
-		js_log( this.plObj );
+		mw.log( 'plReadyInit' );
+		mw.log( this.plObj );
 		// give the playlist a pointer to its parent seq:
 		this.plObj['seqObj'] = this;
 
@@ -602,7 +599,7 @@ mvSequencer.prototype = {
 
 		// Set up key bidnings
 		$j( window ).keydown( function( e ) {
-			js_log( 'pushed down on:' + e.which );
+			mw.log( 'pushed down on:' + e.which );
 			if ( e.which == 16 )
 				_this.key_shift_down = true;
 
@@ -621,7 +618,7 @@ mvSequencer.prototype = {
 
 		} );
 		$j( window ).keyup( function( e ) {
-			js_log( 'key up on ' + e.which );
+			mw.log( 'key up on ' + e.which );
 			// User let go of "shift" turn off multi-select
 			if ( e.which == 16 )
 				_this.key_shift_down = false;
@@ -646,11 +643,11 @@ mvSequencer.prototype = {
 		var _this = this;
 		// if an input or text area has focus disable delete key binding
 		$j( "input,textarea" ).focus( function () {
-			js_log( "inputFocus:true" );
+			mw.log( "inputFocus:true" );
 			_this.inputFocus = true;
 		} );
 		$j( "input,textarea" ).blur( function () {
-			js_log( "inputFocus:blur" );
+			mw.log( "inputFocus:blur" );
 			_this.inputFocus = false;
 		} )
 	},
@@ -666,13 +663,13 @@ mvSequencer.prototype = {
 				'left', 
 				Math.round( jh_time_sec_float / this.timeline_scale ) + 'px' 
 			);
-		// js_log('at time:'+ jh_time_sec + ' px:'+ Math.round(jh_time_sec_float/this.timeline_scale));
+		// mw.log('at time:'+ jh_time_sec + ' px:'+ Math.round(jh_time_sec_float/this.timeline_scale));
 	},
 	/*
 	* Returns a xml or json representation of the current sequence 
 	*/
 	getSeqOutputJSON:function() {
-		js_log( 'json output:' );
+		mw.log( 'json output:' );
 	},
 	
 	/**
@@ -744,7 +741,7 @@ mvSequencer.prototype = {
 	* Handles cases where no clips are selected or multiple clips are selected.  
 	*/
 	doEditSelectedClip:function() {
-		js_log( "f:doEditSelectedClip:" );
+		mw.log( "f:doEditSelectedClip:" );
 		// And only one clip selected
 		if ( $j( '.mv_selected_clip' ).length == 1 ) {
 			this.doEditClip( this.getClipFromSeqID( $j( '.mv_selected_clip' ).parent().attr( 'id' ) ) );
@@ -761,7 +758,7 @@ mvSequencer.prototype = {
 	*/
 	doEditTransitionSelectedClip:function() {
 		var _this = this;
-		js_log( "f:doEditTransitionSelectedClip:" + $j( '.mv_selected_clip' ).length );
+		mw.log( "f:doEditTransitionSelectedClip:" + $j( '.mv_selected_clip' ).length );
 		if ( $j( '.mv_selected_clip' ).length == 1 ) {
 			_this.doEditTransition( _this.getClipFromSeqID( $j( '.mv_selected_clip' ).parent().attr( 'id' ) ) );
 		} else if ( $j( '.mv_selected_clip' ).length === 0 ) {
@@ -777,7 +774,7 @@ mvSequencer.prototype = {
 	* displays the transition edit interface. 
 	*/
 	doEditTransition:function( cObj ) {
-		js_log( "sequence:doEditTransition" );
+		mw.log( "sequence:doEditTransition" );
 		var _this = this;
 		// Add a loading image
 		mw.loading_spiner( '#transitions_ic' );
@@ -799,7 +796,7 @@ mvSequencer.prototype = {
 	* Updates the clip details div if edit resource is set
 	*/
 	doEditClip:function( resource ) {
-		js_log( 'seq:doEditClip' );
+		mw.log( 'seq:doEditClip' );
 		var _this = this;
 
 		mw.loading_spiner( '#clipedit_ic' );
@@ -858,7 +855,7 @@ mvSequencer.prototype = {
 		
 		// Upload clipboard to the server (if possible)
 		if ( mw.parseUri(  document.URL ).host != mw.parseUri( _this.plObj.interface_url ).host ) {
-			js_log( 'error: presently we can\'t copy clips across domains' );
+			mw.log( 'error: presently we can\'t copy clips across domains' );
 		} else {
 			// FIXME we need to add an api entry point to store a "clipboard"
 			// right now this is dependent on a custom hook:			
@@ -872,11 +869,11 @@ mvSequencer.prototype = {
 						"clipboardEditToken": _this.clipboardEditToken
 					} ),
 					success:function( data ) {
-						js_log( 'did clipboard push ' + $j.toJSON( _this.clipboard ) );
+						mw.log( 'did clipboard push ' + $j.toJSON( _this.clipboard ) );
 					}
 				} );
 			} else {
-				js_log( 'error: no clipboardEditToken to uplaod clipboard to server' );
+				mw.log( 'error: no clipboardEditToken to uplaod clipboard to server' );
 			}
 		}
 	},
@@ -884,7 +881,7 @@ mvSequencer.prototype = {
 	* Paste the clipboard clips into the sequence
 	*/
 	pasteClipBoardClips:function() {
-		js_log( 'f:pasteClipBoardClips' );
+		mw.log( 'f:pasteClipBoardClips' );
 		// @@todo query the server for updated clipboard
 		// paste before the "current clip"
 		this.addClips( this.clipboard, this.plObj.cur_clip.order );
@@ -934,13 +931,13 @@ mvSequencer.prototype = {
 		if ( !before_clip_pos )
 			before_clip_pos = this.plObj.default_track.getClipCount();
 
-		js_log( "seq: add clip: at: " + before_clip_pos + ' in track: ' + track_inx );
+		mw.log( "seq: add clip: at: " + before_clip_pos + ' in track: ' + track_inx );
 		var cur_pos = before_clip_pos;
 
 		$j.each( clipSet, function( inx, clipInitDom ) {
 			var mediaElement = document.createElement( 'ref' );
 			for ( var i in clipInitDom ) {
-				js_log( "set: " + i + ' to ' + clipInitDom[i] );
+				mw.log( "set: " + i + ' to ' + clipInitDom[i] );
 				if ( i != 'id' )
 					$j( mediaElement ).attr( i, clipInitDom[i] );
 			}
@@ -957,7 +954,7 @@ mvSequencer.prototype = {
 	removeClips:function( remove_clip_ary ) {
 		var _this = this;
 		var jselect = coma = '';
-		js_log( 'clip count before removal : ' + _this.plObj.default_track.clips.length + ' should remove ' + remove_clip_ary.length );
+		mw.log( 'clip count before removal : ' + _this.plObj.default_track.clips.length + ' should remove ' + remove_clip_ary.length );
 		var afected_tracks = new Array();
 		// add order to track_clip before we start removing:
 		$j.each( remove_clip_ary, function( inx, track_clip ) {
@@ -967,7 +964,7 @@ mvSequencer.prototype = {
 			var track_inx = track_clip[0];
 			var clip_inx = track_clip[1];
 			var clip_rm_order = track_clip['order'];
-			js_log( 'remove t:' + track_inx + ' c:' + clip_inx + ' id:' + ' #track_' + track_inx + '_clip_' + clip_inx + ' order:' + clip_rm_order );
+			mw.log( 'remove t:' + track_inx + ' c:' + clip_inx + ' id:' + ' #track_' + track_inx + '_clip_' + clip_inx + ' order:' + clip_rm_order );
 			// remove the clips from the base tracks
 			for ( var i in _this.plObj.tracks[ track_inx ].clips ) {
 				cur_clip = _this.plObj.tracks[ track_inx ].clips[i]
@@ -985,7 +982,7 @@ mvSequencer.prototype = {
 			_this.plObj.tracks[track_inx].reOrderClips();
 		} );
 
-		js_log( 'clip count after removal : ' + _this.plObj.default_track.clips.length );
+		mw.log( 'clip count after removal : ' + _this.plObj.default_track.clips.length );
 		// animate the removal (@@todo should be able to call the resulting fadeOut only once without a flag)
 		var done_with_refresh = false;
 		$j( jselect ).fadeOut( "slow", function() {
@@ -1013,7 +1010,7 @@ mvSequencer.prototype = {
 				 this.plObj.tracks[e.track_inx].clips[e.clip_inx].doAdjust( 'end', e.delta );
 			break;
 		}
-		js_log( 're render: ' + e.track_inx );
+		mw.log( 're render: ' + e.track_inx );
 		// refresh the playlist after adjustment
 		this.do_refresh_timeline();
 	},
@@ -1050,7 +1047,7 @@ mvSequencer.prototype = {
 	},
 	// toggle cut mode (change icon to cut)
 	cut_mode:function() {
-		js_log( 'do cut mode' );
+		mw.log( 'do cut mode' );
 		// add cut layer ontop of clips
 	},
 	doAdvancedTl:function() {
@@ -1067,7 +1064,7 @@ mvSequencer.prototype = {
 	},
 	// renders updates the timeline based on the current scale
 	render_tracks:function( track_inx ) {
-		js_log( "f::render track: " + track_inx );
+		mw.log( "f::render track: " + track_inx );
 		var _this = this;
 		// inject the tracks into the timeline (if not already there)
 		for ( var track_id in this.plObj.tracks ) {
@@ -1141,7 +1138,7 @@ mvSequencer.prototype = {
 						clip.left_px = Math.round( cur_clip_time / this.timeline_scale );
 						clip.width_px = Math.round( Math.round( clip.getDuration() ) / this.timeline_scale );
 						clip.height_px = 60;
-						js_log( 'at time:' + cur_clip_time + ' left: ' + clip.left_px + ' clip dur: ' +  Math.round( clip.getDuration() ) + ' clip width:' + clip.width_px );
+						mw.log( 'at time:' + cur_clip_time + ' left: ' + clip.left_px + ' clip dur: ' +  Math.round( clip.getDuration() ) + ' clip width:' + clip.width_px );
 
 						// for every clip_width pixle output image
 						if ( track.disp_mode == 'timeline_thumb' ) {
@@ -1172,7 +1169,7 @@ mvSequencer.prototype = {
 
 				}
 
-				// js_log("new htmL for track i: "+track_id + ' html:'+track_html);
+				// mw.log("new htmL for track i: "+track_id + ' html:'+track_html);
 				$j( '#container_track_' + track_id ).html( track_html );
 
 				// apply transition click action
@@ -1225,7 +1222,7 @@ mvSequencer.prototype = {
 					var cur_clip_click = this;
 					// if not in multi select mode remove all existing selections
 					// (except for the current click which is handled down below)
-					js_log( ' ks: ' + _this.key_shift_down + '  ctrl_down:' + _this.key_ctrl_down );
+					mw.log( ' ks: ' + _this.key_shift_down + '  ctrl_down:' + _this.key_ctrl_down );
 					if ( ! _this.key_shift_down && ! _this.key_ctrl_down ) {
 						$j( '.mv_selected_clip' ).each( function( inx, selected_clip ) {
 							if ( $j( this ).parent().attr( 'id' ) != $j( cur_clip_click ).parent().attr( 'id' )
@@ -1259,7 +1256,7 @@ mvSequencer.prototype = {
 								max_order = cur_clip.order;
 						} );
 						// select all non-selected between max or min
-						js_log( 'sOrder: ' + sClipObj.order + ' min:' + min_order + ' max:' + max_order );
+						mw.log( 'sOrder: ' + sClipObj.order + ' min:' + min_order + ' max:' + max_order );
 						if ( sClipObj.order <= min_order ) {
 							for ( var i = sClipObj.order; i <= max_order; i++ ) {
 								$j( '#track_' + track_id + '_clip_' + i + ' > .mv_clip_thumb' ).addClass( 'mv_selected_clip' );
@@ -1277,7 +1274,7 @@ mvSequencer.prototype = {
 				// debugger;
 				if ( this.timeline_mode == 'time' ) {
 					$j( '.ui-resizable-handle' ).mousedown( function() {
-						js_log( 'hid: ' +  $j( this ).attr( 'class' ) );
+						mw.log( 'hid: ' +  $j( this ).attr( 'class' ) );
 						_this.resize_mode = ( $j( this ).attr( 'class' ).indexOf( 'ui-resizable-e' ) != -1 ) ?
 										'resize_end':'resize_start';
 					} );
@@ -1297,7 +1294,7 @@ mvSequencer.prototype = {
 							insert_key = _this.clipDragUpdate( ui, this );
 						},
 						start:function( e, ui ) {
-							js_log( 'start drag:' + this.id );
+							mw.log( 'start drag:' + this.id );
 							// make sure we are ontop
 							$j( this ).css( { top:'0px', zindex:10 } );
 						},
@@ -1336,11 +1333,11 @@ mvSequencer.prototype = {
 								$j( this ).css( { 'border':'solid thin red' } );
 								// fade In Time stats (end or start based on handle)
 								// dragging east (adjusting end time)
-								js_log( 'append to: ' + this.id );
+								mw.log( 'append to: ' + this.id );
 								$j( '#' + this.id + ' > .mv_clip_stats' ).fadeIn( "fast" );
 							},
 							stop: function( e, ui ) {
-								js_log( 'stop resize' );
+								mw.log( 'stop resize' );
 								// restore border
 								$j( this ).css( 'border', 'solid thin white' );
 								// remove stats
@@ -1374,7 +1371,7 @@ mvSequencer.prototype = {
 
 		var insert_key = 'na';
 		// animate re-arrange by left position:
-		// js_log('left: '+ui.position.left);
+		// mw.log('left: '+ui.position.left);
 		// locate clip (based on clip duration not animate)
 		var id_parts = clipElm.id.split( '_' );
 		var track_inx = id_parts[1];
@@ -1423,22 +1420,22 @@ mvSequencer.prototype = {
 		}
 	},
 	getClipFromSeqID:function( clip_seq_id ) {
-		js_log( 'get id from: ' + clip_seq_id );
+		mw.log( 'get id from: ' + clip_seq_id );
 		var ct = clip_seq_id.replace( 'track_', '' ).replace( 'clip_', '' ).split( '_' );
 		return this.plObj.tracks[ ct[0] ].clips[ ct[1] ];
 	},
 	// renders clip frames
 	render_clip_frames:function( clip, frame_offset_count ) {
-		js_log( 'f:render_clip_frames: ' + clip.id + ' foc:' + frame_offset_count );
+		mw.log( 'f:render_clip_frames: ' + clip.id + ' foc:' + frame_offset_count );
 		var clip_frames_html = '';
 		var frame_width = Math.round( this.track_thumb_height * 1.3333333 );
 
 		var pint = ( frame_offset_count == null ) ? 0:frame_offset_count * frame_width;
 
-		// js_log("pinit: "+ pint+ ' < '+clip.width_px+' ++'+frame_width);
+		// mw.log("pinit: "+ pint+ ' < '+clip.width_px+' ++'+frame_width);
 		for ( var p = pint; p < clip.width_px; p += frame_width ) {
 			var clip_time = ( p == 0 ) ? 0:Math.round( p * this.timeline_scale );
-			js_log( 'rendering clip frames: p:' + p + ' pts:' + ( p * this.timeline_scale ) + ' time:' + clip_time + ' height:' + this.track_thumb_height );
+			mw.log( 'rendering clip frames: p:' + p + ' pts:' + ( p * this.timeline_scale ) + ' time:' + clip_time + ' height:' + this.track_thumb_height );
 			clip_frames_html += clip.embed.renderTimelineThumbnail( {
 				'width':  frame_width,
 				'thumb_class':'mv_tl_thumb',
@@ -1447,11 +1444,11 @@ mvSequencer.prototype = {
 				'time':   clip_time
 			} );
 		}
-		js_log( 'render_clip_frames:' + clip_frames_html );
+		mw.log( 'render_clip_frames:' + clip_frames_html );
 		return clip_frames_html;
 	},
 	update_clip_resize:function( clip_element ) {
-		// js_log('update_clip_resize');
+		// mw.log('update_clip_resize');
 		var _this = this;
 		var id_parts = clip_element.id.split( '_' );
 		track_inx = id_parts[1];
@@ -1478,12 +1475,12 @@ mvSequencer.prototype = {
 			var new_end = mw.seconds2npt( mw.npt2seconds( clip.embed.end_ntp ) + clip_dif );
 			clip_desc += '<br>end time: ' + new_end;
 			// also shift all the other clips (after the current)
-			// js_log("track_inx: " + track_inx + ' clip inx:'+clip_inx);
+			// mw.log("track_inx: " + track_inx + ' clip inx:'+clip_inx);
 			// $j('#container_track_'+track_inx+' > .mv_clip_drag :gt('+clip_inx+')').each(function(){
 			$j( '#container_track_' + track_inx + ' > :gt(' + clip_inx + ')' ).each( function() {
 				var move_id_parts = this.id.split( '_' );
 				var move_clip = _this.plObj.tracks[move_id_parts[1]].clips[move_id_parts[3]];
-				// js_log('should move:'+ this.id);
+				// mw.log('should move:'+ this.id);
 				$j( this ).css( 'left', move_clip.left_px + width_dif );
 			} );
 		} else {
@@ -1499,13 +1496,13 @@ mvSequencer.prototype = {
 		var frame_count = $j( '#' + clip_element.id + ' > img' ).length;
 		if ( clip.width_px > ( frame_count *  frame_width ) ) {
 			// if dragging left append
-			js_log( 'width_px:' + clip.width_px + ' framecount:' + frame_count + ' Xcw=' + ( frame_count *  frame_width ) );
+			mw.log( 'width_px:' + clip.width_px + ' framecount:' + frame_count + ' Xcw=' + ( frame_count *  frame_width ) );
 			$j( '#' + clip_element.id ).append( this.render_clip_frames( clip, frame_count ) );
 		}
 	},
 	// renders cnt_time
 	render_playheadhead_seeker:function() {
-		js_log( 'render_playheadhead_seeker' );
+		mw.log( 'render_playheadhead_seeker' );
 		// render out time stamps and time "jump" links
 		// first get total width
 
@@ -1544,10 +1541,10 @@ mvSequencer.prototype = {
 		}
 	},
 	jt:function( jh_time ) {
-		js_log( 'jt:' + jh_time );
+		mw.log( 'jt:' + jh_time );
 		var _this = this;
 		this.playline_time = jh_time;
-		js_log( 'time: ' + mw.seconds2npt( jh_time ) + ' ' + Math.round( jh_time / this.timeline_scale ) );
+		mw.log( 'time: ' + mw.seconds2npt( jh_time ) + ' ' + Math.round( jh_time / this.timeline_scale ) );
 		// render playline at given time
 		$j( '#' + this.timeline_id + '_playline' ).css( 'left', Math.round( jh_time / this.timeline_scale ) + 'px' );
 		cur_pl_time = 0;
@@ -1558,15 +1555,15 @@ mvSequencer.prototype = {
 	zoom_in:function() {
 		this.timeline_scale = this.timeline_scale * .75;
 		this.do_refresh_timeline();
-		js_log( 'zoomed in:' + this.timeline_scale );
+		mw.log( 'zoomed in:' + this.timeline_scale );
 	},
 	zoom_out:function() {
 		this.timeline_scale = this.timeline_scale * ( 1 + ( 1 / 3 ) );
 		this.do_refresh_timeline();
-		js_log( 'zoom out: ' + this.timeline_scale );
+		mw.log( 'zoom out: ' + this.timeline_scale );
 	},
 	do_refresh_timeline:function( preserve_selection ) {
-		js_log( 'Sequencer:do_refresh_timeline()' );
+		mw.log( 'Sequencer:do_refresh_timeline()' );
 		// @@todo should "lock" interface while refreshing timeline
 		var pSelClips = [];
 		if ( preserve_selection ) {
@@ -1614,7 +1611,7 @@ mvSeqPlayList.prototype = {
 		this.pl_layout.control_height = 0;
 	},
 	setSliderValue:function( perc ) {
-		js_log( 'setSliderValue::' + perc );
+		mw.log( 'setSliderValue::' + perc );
 		// get the track_clipThumb_height from parent mvSequencer
 		var frame_width = Math.round( this.pSeq.track_clipThumb_height * 1.3333333 );
 		var container_width = frame_width + 60;
@@ -1622,7 +1619,7 @@ mvSeqPlayList.prototype = {
 		var perc_clip = this.cur_clip.embed.currentTime / this.cur_clip.getDuration();
 
 		var left_px = parseInt( ( this.cur_clip.order * container_width ) + ( frame_width * perc_clip ) ) + 'px';
-		js_log( "set " + perc + ' of cur_clip: ' + this.cur_clip.order + ' lp:' + left_px );
+		mw.log( "set " + perc + ' of cur_clip: ' + this.cur_clip.order + ' lp:' + left_px );
 
 
 		// update the timeline playhead and
@@ -1639,7 +1636,7 @@ mvSeqPlayList.prototype = {
 	},
 	// override renderDisplay
 	renderDisplay:function() {
-		js_log( 'mvSequence:renderDisplay' );
+		mw.log( 'mvSequence:renderDisplay' );
 		// setup layout for title and dc_ clip container
 		$j( this ).html( '<div id="dc_' + this.id + '" style="width:' + this.width + 'px;' +
 				'height:' + ( this.height ) + 'px;position:relative;" />' );

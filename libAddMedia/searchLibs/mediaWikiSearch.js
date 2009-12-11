@@ -30,28 +30,24 @@ mediaWikiSearch.prototype = {
 	*/ 
 	addByTitle:function( title , callback, redirect_count ) {
 	
-		js_log( "AddByTitle::" + title );
+		mw.log( "AddByTitle::" + title );
 		
 		var _this = this;
 		if ( !redirect_count )
 			redirect_count = 0;
 		if ( redirect_count > 5 ) {
-			js_log( 'Error: addByTitle too many redirects' );
+			mw.log( 'Error: addByTitle too many redirects' );
 			callback( false );
 			return false;
 		}
 		var request = {
-			'action':'query',
 			'titles':'File:' + title,
 			'prop':'imageinfo|revisions|categories',
 			'iiprop':'url|mime|size',
 			'iiurlwidth': parseInt( this.rsd.thumb_width ),
 			'rvprop':'content'
 		}
-		do_api_req( {
-			'data':request,
-			'url':this.provider.api_url
-			}, function( data ) {
+		mw.getJSON(this.provider.api_url, request, function( data ) {
 				// check for redirect
 				for ( var i in data.query.pages ) {
 					var page = data.query.pages[i];
@@ -62,7 +58,7 @@ mediaWikiSearch.prototype = {
 							_this.addByTitle( pt[1], callback, redirect_count++ );
 							return ;
 						} else {
-							js_log( 'Error: addByTitle could not proccess redirect' );
+							mw.log( 'Error: addByTitle could not proccess redirect' );
 							callback( false );
 							return false;
 						}
@@ -82,16 +78,13 @@ mediaWikiSearch.prototype = {
 	*/
 	getUserRecentUploads: function( user, callback ) {
 		var _this = this;
-		do_api_req( {
-			'url':this.provider.api_url,
-			'data': {
-				'action':'query',
-				'list':'recentchanges',
-				'rcnamespace':6, // only files
-				'rcuser': user,
-				'rclimit':15 // get last 15 uploaded files 				
-			}			
-		}, function( data ) {
+		var request = {
+			'list':'recentchanges',
+			'rcnamespace':6, // only files
+			'rcuser': user,
+			'rclimit':15 // get last 15 uploaded files 				
+		};
+		mw.getJSON( this.provider.api_url, request, function( data ) {
 			var titleSet = { };
 			var titleStr = ''
 			var pound = '';
@@ -108,17 +101,14 @@ mediaWikiSearch.prototype = {
 			}
 			// Run the actual query ( too bad we can't use recentchanges as a generator )
 			// bug 20563
-			do_api_req( {
-				'data' : {
-					'action'	: 'query',
-					'titles'	: titleStr,
-					'prop'		: 'imageinfo|revisions|categories',
-					'iiprop'	: 'url|mime|size',
-					'iiurlwidth': parseInt( _this.rsd.thumb_width ),
-					'rvprop':'content'
-				},
-				'url': _this.provider.api_url
-			}, function( data ) {
+			var resourceQuery = {				
+				'titles'	: titleStr,
+				'prop'		: 'imageinfo|revisions|categories',
+				'iiprop'	: 'url|mime|size',
+				'iiurlwidth': parseInt( _this.rsd.thumb_width ),
+				'rvprop':'content'
+			};
+			mw.getJSON( _this.provider.api_url, resourceQuery, function( data ) {
 				_this.clearResults();
 				_this.addResults( data );
 				if ( callback )
@@ -138,7 +128,7 @@ mediaWikiSearch.prototype = {
 		// Set local ref:
 		var _this = this;
 				
-		js_log( 'f:getSearchResults for:' + search_query );
+		mw.log( 'f:getSearchResults for:' + search_query );
 
 		// Build the image request 
 		var request = {
@@ -156,10 +146,7 @@ mediaWikiSearch.prototype = {
 		};
 		
 		// Do the api request:  
-		do_api_req( {
-			'data':request,
-			'url': this.provider.api_url
-			}, function( data ) {				
+		mw.getJSON( this.provider.api_url, request, function( data ) {				
 				// Add result data:
 				_this.addResults( data );				
 				_this.loading = false;
@@ -182,7 +169,7 @@ mediaWikiSearch.prototype = {
 	* @param {Boolean} returnFirst Flag to return the first added resource
 	*/
 	addResults:function( data, returnFirst ) {
-		js_log( "f:addResults" );
+		mw.log( "f:addResults" );
 		var _this = this
 		// check if we have 
 		if ( typeof data['query-continue'] != 'undefined' ) {
@@ -218,8 +205,8 @@ mediaWikiSearch.prototype = {
 					'poster'	 : page.imageinfo[0].thumburl,
 					'thumbwidth' : page.imageinfo[0].thumbwidth,
 					'thumbheight': page.imageinfo[0].thumbheight,
-					'orgwidth'	 : page.imageinfo[0].width,
-					'orgheight'	 : page.imageinfo[0].height,
+					'width'	 : page.imageinfo[0].width,
+					'height'	 : page.imageinfo[0].height,
 					'mime'		 : page.imageinfo[0].mime,
 					'src'		 : page.imageinfo[0].url,
 					'desc'		 : page.revisions[0]['*'],
@@ -228,7 +215,7 @@ mediaWikiSearch.prototype = {
 					'meta': {
 						'categories':page.categories
 					}
-				};
+				};				
 				
 				/*
 				 //to use once we get the wiki-text parser in shape
@@ -277,11 +264,11 @@ mediaWikiSearch.prototype = {
 				
 				this.num_results++;
 				// for(var i in this.resultsObj[page_id]){
-				//	js_log('added: '+ i +' '+ this.resultsObj[page_id][i]);
+				//	mw.log('added: '+ i +' '+ this.resultsObj[page_id][i]);
 				// }
 			}
 		} else {
-			js_log( 'no results:' + data );
+			mw.log( 'no results:' + data );
 		}
 	},
 	
@@ -319,30 +306,29 @@ mediaWikiSearch.prototype = {
 		// Set the width: 
 		if ( size.width )
 			request['iiurlwidth'] = size.width;
-		 js_log( 'going to do req: ' + this.provider.api_url + ' ' + request );
-		do_api_req( {
-			'data':request,
-			'url' : this.provider.api_url
-			}, function( data ) {
-				var imObj = { };
-				for ( var page_id in  data.query.pages ) {
-					var iminfo =  data.query.pages[ page_id ].imageinfo[0];
-					// store the orginal width:				 
-					imObj['org_width'] = iminfo.width;
-					// check if thumb size > than image size and is jpeg or png (it will not scale well above its max res)				
-					if ( ( iminfo.mime == 'image/jpeg' || iminfo == 'image/png' ) &&
-						iminfo.thumbwidth > iminfo.width ) {
-						imObj['url'] = iminfo.url;
-						imObj['width'] = iminfo.width;
-						imObj['height'] = iminfo.height;
-					} else {
-						imObj['url'] = iminfo.thumburl;
-						imObj['width'] = iminfo.thumbwidth;
-						imObj['height'] = iminfo.thumbheight;
-					}
+			
+		mw.log( 'going to do req: ' + this.provider.api_url + ' ' + request );
+		
+		mw.getJSON( this.provider.api_url, request, function( data ) {
+			var imObj = { };
+			for ( var page_id in  data.query.pages ) {
+				var iminfo =  data.query.pages[ page_id ].imageinfo[0];
+				// store the orginal width:				 
+				imObj['org_width'] = iminfo.width;
+				// check if thumb size > than image size and is jpeg or png (it will not scale well above its max res)				
+				if ( ( iminfo.mime == 'image/jpeg' || iminfo == 'image/png' ) &&
+					iminfo.thumbwidth > iminfo.width ) {
+					imObj['url'] = iminfo.url;
+					imObj['width'] = iminfo.width;
+					imObj['height'] = iminfo.height;
+				} else {
+					imObj['url'] = iminfo.thumburl;
+					imObj['width'] = iminfo.thumbwidth;
+					imObj['height'] = iminfo.thumbheight;
 				}
-				js_log( 'getImageObj: get: ' + size.width + ' got url:' + imObj.url );
-				callback( imObj );
+			}
+			mw.log( 'getImageObj: get: ' + size.width + ' got url:' + imObj.url );
+			callback( imObj );
 		} );
 	},
 	
@@ -374,7 +360,7 @@ mediaWikiSearch.prototype = {
 		desc = desc.replace( /\=\=[^\=]*\=\=/gi, '' );
 				
 		// else return the title since we could not find the desc:
-		js_log( 'Error: No Description Tag, Using::' + desc );
+		mw.log( 'Error: No Description Tag, Using::' + desc );
 		return desc;
 	},
 	

@@ -33,29 +33,27 @@ mw.addOnloadHook( function() {
     return videoTitle;
   }
   function uploadSubtitles() {
-    do_api_req( {
-      'data': {
-        'meta' : 'siteinfo',
-        'siprop' : 'languages'
-      }
-      }, function( langDataRaw ) {
+  	var request = {
+       'meta' : 'siteinfo',
+       'siprop' : 'languages'
+     };
+    mw.getJSON( request, function( langDataRaw ) {
         var apprefix = wgTitle.split( '.' );
         apprefix.pop();
         apprefix.pop();
         apprefix = apprefix.join( '.' );
-			  do_api_req( {
-					  'data': {
-						  'list' : 'allpages',
-						  'apprefix' : apprefix
-					  }
-			  }, function( subData ) {
-			    var availableSubtitles = { };
-					for ( var i in subData.query.allpages ) {
-						var subPage = subData.query.allpages[i];
-						var langKey = subPage.title.split( '.' );
-						var extension = langKey.pop();
-						langKey = langKey.pop();
-						availableSubtitles[langKey] = subPage.title;
+        var request = {
+		  'list' : 'allpages',
+		  'apprefix' : apprefix
+	    };
+		mw.getJSON(request, function( subData ) {
+			var availableSubtitles = { };
+			for ( var i in subData.query.allpages ) {
+				var subPage = subData.query.allpages[i];
+				var langKey = subPage.title.split( '.' );
+				var extension = langKey.pop();
+				langKey = langKey.pop();
+				availableSubtitles[langKey] = subPage.title;
           }
           var langData = { };
           var languageSelect = '<select id="timed_text_language">';
@@ -100,7 +98,7 @@ mw.addOnloadHook( function() {
                 'cmml': 'text/cmml'
             }
             if ( !mimeTypes[ extension ] ) {
-              js_log( 'Error: unknown extension:' + extension );
+              mw.log( 'Error: unknown extension:' + extension );
             }
             
 
@@ -110,20 +108,18 @@ mw.addOnloadHook( function() {
               $j( '.ui-dialog-buttonpane' ).remove();
 
               var editToken = $j( 'input[name=wpEditToken]' ).val();
-            
-              do_api_req( {
-                'data': {
+              var request = {
                   'action' : 'edit',
                   'title' : title,
                   'text' : srt,
                   'token': editToken
-                }
-              }, function( dialog ) {
+                };
+              mw.getJSON( request, function( dialog ) {
                   return function( result ) {
                     document.location.href = wgArticlePath.replace( '/$1', '?title=' + title + '&action=edit' );
                     $j( dialog ).dialog( 'close' );
-                 } }( this )
-              );
+                 } 
+              }( this ) );
             } else {
               $j( this ).html( gM( "mwe-error-only-srt" ) );
             }

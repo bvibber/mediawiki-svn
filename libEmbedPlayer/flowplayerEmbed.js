@@ -339,7 +339,7 @@
 					extend( self, json );
 					return self;
 				} catch ( e ) {
-					js_log( 'flow player could not set css: ' + json );
+					mw.log( 'flow player could not set css: ' + json );
 				}
 			},
 			show: function() {
@@ -626,7 +626,7 @@ function Player( wrapper, params, conf ) {
 					var ret = ( arg === undefined ) ? api["fp_" + name]() : api["fp_" + name]( arg );
 					return ret == 'undefined' ? self : ret;
 				} catch ( e ) {
-					js_log( 'flowplayer could not access fp_ ' + name );
+					mw.log( 'flowplayer could not access fp_ ' + name );
 				}
 			};
 		}
@@ -1472,7 +1472,7 @@ var flowplayerEmbed = {
 	postEmbedJS: function()
 	{
 		var _this = this;
-		js_log( 'embedFlow: uri:' + this.getSrc() + "\n" + mw.getMwEmbedPath() + 'libEmbedPlayer/binPlayers/flowplayer/flowplayer-3.0.1.swf' ) ;
+		mw.log( 'embedFlow: uri:' + this.getSrc() + "\n" + mw.getMwEmbedPath() + 'libEmbedPlayer/binPlayers/flowplayer/flowplayer-3.0.1.swf' ) ;
 		var flowConfig = {
 			clip: {
 				url: this.getSrc(),
@@ -1556,7 +1556,7 @@ var flowplayerEmbed = {
 		if ( this.fla ) {
 			this.fla.fullscreen();
 		} else {
-			js_log( 'must be playing before you can go fullscreen' );
+			mw.log( 'must be playing before you can go fullscreen' );
 		}
 	},
 	pause : function()
@@ -1565,10 +1565,10 @@ var flowplayerEmbed = {
 		if ( !this.thumbnail_disp ) {
 			this.parent_pause();
 			if ( this.fla ) {
-				js_log( "Flash:Pause: " + this.fla.isPaused() );
+				mw.log( "Flash:Pause: " + this.fla.isPaused() );
 				if ( this.fla['pause'] ) {
 					if ( ! this.fla.isPaused() ) {
-						js_log( 'calling plugin pause' );
+						mw.log( 'calling plugin pause' );
 						this.fla.pause();
 
 						// restore volume and opacity
@@ -1601,7 +1601,7 @@ var flowplayerEmbed = {
 		if ( !this.duration || this.duration == 0 ) {
 			if ( this.fla.getClip() ) {
 				this.duration = this.fla.getClip().fullDuration;
-				js_log( 'set duration via clip value: ' + this.getDuration() );
+				mw.log( 'set duration via clip value: ' + this.getDuration() );
 			}
 		}
 		// update the duration ntp values:
@@ -1621,12 +1621,12 @@ var flowplayerEmbed = {
 		// set the current Time (based on timeFormat)
 		if ( this.supportsURLTimeEncoding() ) {
 			this.currentTime = flash_state.time;
-			// js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration());
+			// mw.log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration());
 		} else {
 			this.currentTime = flash_state.time + this.startOffset;
 			// stop buffering if greater than the duration:
 			if ( flash_state.bufferEnd > this.getDuration() + 5 ) {
-				// js_log('should stop buffering (does not seem to work)' + flash_state.bufferEnd + ' > dur: ' + this.getDuration() );
+				// mw.log('should stop buffering (does not seem to work)' + flash_state.bufferEnd + ' > dur: ' + this.getDuration() );
 				this.fla.stopBuffering();
 			}
 		}
@@ -1639,7 +1639,7 @@ var flowplayerEmbed = {
 			}
 			catch ( err )
 			{
-				js_log( 'failed to set values' );
+				mw.log( 'failed to set values' );
 				fail = true;
 			}
 			if ( !fail )
@@ -1649,7 +1649,7 @@ var flowplayerEmbed = {
 		/* to support local seeks */
 		if ( this.currentTime > 1 && this.seek_time_sec != 0 && !this.supportsURLTimeEncoding() )
 		{
-			js_log( 'flashEmbed: _local_ Seeking to ' + this.seek_time_sec );
+			mw.log( 'flashEmbed: _local_ Seeking to ' + this.seek_time_sec );
 			this.fla.seek( this.seek_time_sec );
 			this.seek_time_sec = 0;
 		}
@@ -1661,7 +1661,7 @@ var flowplayerEmbed = {
 				( this.currentTime > ( mw.npt2seconds( this.end_ntp ) - 1 )
 					&& this.prevTime == this.currentTime ) )
 			) {
-			js_log( 'prbally reached end of stream: ' + mw.seconds2npt( this.currentTime ) );
+			mw.log( 'prbally reached end of stream: ' + mw.seconds2npt( this.currentTime ) );
 			this.onClipDone();
 		}
 
@@ -1670,13 +1670,13 @@ var flowplayerEmbed = {
 
 
 		this.prevTime = this.currentTime;
-		// js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - mw.npt2seconds(this.start_ntp)) +' / ' +(mw.npt2seconds(this.end_ntp)-mw.npt2seconds(this.start_ntp)));
+		// mw.log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - mw.npt2seconds(this.start_ntp)) +' / ' +(mw.npt2seconds(this.end_ntp)-mw.npt2seconds(this.start_ntp)));
 	},
 	restorePlayer:function() {
 		if ( !this.fla )
 			this.getFLA();
 		if ( this.fla ) {
-			js_log( 'f:do restorePlayer' );
+			mw.log( 'f:do restorePlayer' );
 			this.fla.setVolume( 90 );
 			$f().getPlugin( 'screen' ).css( { 'opacity':'1.0' } );
 			// set the fallback date restore flag to true:
@@ -1688,7 +1688,7 @@ var flowplayerEmbed = {
 		this.fla = $f( this.pid );
 	},
 	stop : function() {
-		js_log( 'f:flashEmbed:stop' );
+		mw.log( 'f:flashEmbed:stop' );
 		this.startedTimedPlayback = false;
 		if ( this.monitorTimerId != 0 )
 		{
@@ -1700,7 +1700,7 @@ var flowplayerEmbed = {
 		this.parent_stop();
 	},
 	onStop: function() {
-		js_log( 'f:onStop' );
+		mw.log( 'f:onStop' );
 		// stop updates:
 		if ( this.monitorTimerId != 0 )
 		{
@@ -1709,13 +1709,13 @@ var flowplayerEmbed = {
 		}
 	},
 	onClipDone: function() {
-		js_log( 'f:flash:onClipDone' );
+		mw.log( 'f:flash:onClipDone' );
 		if ( ! this.startedTimedPlayback ) {
-			js_log( 'clip done before timed playback started .. not good. (ignoring) ' );
+			mw.log( 'clip done before timed playback started .. not good. (ignoring) ' );
 			// keep monitoring:
 			this.monitor();
 		} else {
-			js_log( 'clip done and ' + this.startedTimedPlayback );
+			mw.log( 'clip done and ' + this.startedTimedPlayback );
 			// stop the clip if its not stopped already:
 			this.stop();
 			this.setStatus( "Clip Done..." );

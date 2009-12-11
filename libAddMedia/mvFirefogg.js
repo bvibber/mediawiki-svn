@@ -146,7 +146,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 		}
 
 		if ( !this.selector ) {
-			js_log('firefogg: missing selector ');
+			mw.log('firefogg: missing selector ');
 		}
 	},
 
@@ -156,7 +156,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	 */
 	doRewrite: function( callback ) {
 		var _this = this;
-		js_log( 'sel len: ' + this.selector + '::' + $j( this.selector ).length + 
+		mw.log( 'sel len: ' + this.selector + '::' + $j( this.selector ).length + 
 				' tag:' + $j( this.selector ).get( 0 ).tagName );
 		if ( $j( this.selector ).length >= 0 ) {
 			if ( $j( this.selector ).get( 0 ).tagName.toLowerCase() == 'input' ) {
@@ -218,7 +218,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 			var msg = gM( target.replace( /^target_/, 'fogg-' ) );		
 			return '<div style="" class="' + target + '" >' + msg + '</div> ';
 		} else {
-			js_error( 'Invalid target: ' + target );
+			mw.log( 'Invalid target: ' + target );
 			return '';
 		}
 	},
@@ -270,7 +270,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 
 			// Show the "use latest Firefox" message if necessary
 			if ( !( $j.browser.mozilla && $j.browser.version >= '1.9.1' ) ) {
-				js_log( 'show use latest::' + _this.target_use_latest_firefox );
+				mw.log( 'show use latest::' + _this.target_use_latest_firefox );
 				if ( _this.target_use_latest_firefox ) {
 					if ( _this.form_type == 'upload' )
 						$j( _this.target_use_latest_firefox )
@@ -340,7 +340,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	 * Set up the upload form
 	 */
 	setupForm: function() {
-		js_log( 'firefogg::setupForm::' );
+		mw.log( 'firefogg::setupForm::' );
 
 		// Set up the parent if we are in upload mode
 		if ( this.form_type == 'upload' ) {
@@ -377,7 +377,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 		var id = $j( this.selector ).attr( 'name' ) + '_firefogg-control';
 		inputTag += '/><span id="' + id + '"></span>';
 
-		js_log( 'set input: ' + inputTag );
+		mw.log( 'set input: ' + inputTag );
 		
 		$j( this.selector ).replaceWith( inputTag );
 
@@ -445,7 +445,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	onPreviewClick: function( sourceNode ) {
 		var button = $j( sourceNode );
 		var icon = button.children( '.ui-icon' );
-		js_log( "click .fogg_preview" + icon.attr( 'class' ) );
+		mw.log( "click .fogg_preview" + icon.attr( 'class' ) );
 
 		if ( icon.hasClass( 'ui-icon-triangle-1-e' ) ) {
 			// Show preview
@@ -495,7 +495,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 			// Initialize the video if it is not set up already
 			var v = $j( '#fogg_preview_vid' ).get( 0 );
 			if ( v.src != _this.fogg.previewUrl ) {
-				js_log( 'init preview with url:' + _this.fogg.previewUrl );
+				mw.log( 'init preview with url:' + _this.fogg.previewUrl );
 				v.src = _this.fogg.previewUrl;
 
 				// Once it's loaded, seek to the end
@@ -557,11 +557,11 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	 * Update the UI due to the source file changing
 	 */
 	updateSourceFileUI: function() {
-		js_log( 'videoSelectReady' );
+		mw.log( 'videoSelectReady' );
 		var _this = this;
 		if ( !_this.fogg.sourceInfo || !_this.fogg.sourceFilename ) {
 			// Something wrong with the source file?
-			js_log( 'selectSourceFile: sourceInfo/sourceFilename missing' );
+			mw.log( 'selectSourceFile: sourceInfo/sourceFilename missing' );
 			return;
 		}
 
@@ -589,7 +589,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 		}
 
 		// Update the input file name box and show it
-		js_log( " should update: " + _this.target_input_file_name + 
+		mw.log( " should update: " + _this.target_input_file_name + 
 				' to: ' + _this.fogg.sourceFilename );
 				
 		$j( _this.target_input_file_name )
@@ -619,13 +619,13 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	getSourceFileInfo: function() {
 		if ( this.sourceFileInfo == null ) {
 			if ( !this.fogg.sourceInfo ) {
-				js_error( 'No firefogg source info is available' );
+				mw.log( 'No firefogg source info is available' );
 				return false;
 			}
 			try {
 				this.sourceFileInfo = JSON.parse( this.fogg.sourceInfo );
 			} catch ( e ) {
-				js_error( 'error could not parse fogg sourceInfo' );
+				mw.log( 'error could not parse fogg sourceInfo' );
 				return false;
 			}
 		}
@@ -647,7 +647,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	doLocalEncodeAndSave: function() {
 		var _this = this;
 		if ( !this.fogg ) {
-			js_error( 'doLocalEncodeAndSave: no Firefogg object!' );
+			mw.log( 'doLocalEncodeAndSave: no Firefogg object!' );
 			return false;
 		}
 
@@ -665,7 +665,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 				_this.updateProgress( progress );
 			},
 			function /* onDone */ () {
-				js_log( "done with encoding (no upload) " );
+				mw.log( "done with encoding (no upload) " );
 				// Set status to 100% for one second
 				// FIXME: this is either a hack or a waste of time, not sure which
 				_this.updateProgress( 1 );
@@ -731,7 +731,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 			// Grab the extension
 			var sf = this.fogg.sourceFilename;
 			if ( !sf ) {
-				js_error( 'getEncoderSettings(): No Firefogg source filename is available!' );
+				mw.log( 'getEncoderSettings(): No Firefogg source filename is available!' );
 				return false;
 			}
 			var ext = '';
@@ -750,7 +750,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 				settings['passthrough'] = true;
 			}
 
-			js_log( 'base setupAutoEncoder::' + this.getSourceFileInfo().contentType  +
+			mw.log( 'base setupAutoEncoder::' + this.getSourceFileInfo().contentType  +
 				' passthrough:' + settings['passthrough'] );
 			this.current_encoder_settings = settings;
 		}
@@ -779,7 +779,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	 * Get the default title of the progress window
 	 */
 	getProgressTitle: function() {
-		js_log( "fogg:getProgressTitle f:" +  ( this.getFirefogg() ? 'on' : 'off' ) + 
+		mw.log( "fogg:getProgressTitle f:" +  ( this.getFirefogg() ? 'on' : 'off' ) + 
 			' mode:' + this.form_type );
 		// Return the parent's title if we don't have Firefogg turned on
 		if ( !this.getFirefogg() || !this.firefogg_form_action ) {
@@ -796,7 +796,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	 */
 	doUpload: function() {
 		var _this = this;
-		js_log( "firefogg: doUpload:: " + 
+		mw.log( "firefogg: doUpload:: " + 
 			( this.getFirefogg() ? 'on' : 'off' ) + 
 			' up mode:' + _this.upload_mode );
 					
@@ -815,7 +815,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 					_this.updateProgress( progress );
 				},
 				function /* onDone */ () {
-					js_log( 'done with encoding do POST upload:' + _this.form.action );
+					mw.log( 'done with encoding do POST upload:' + _this.form.action );
 					// ignore warnings & set source type
 					//_this.formData[ 'wpIgnoreWarning' ]='true';
 					_this.formData['wpSourceType'] = 'upload';
@@ -830,7 +830,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 				}
 			);
 		} else {
-			js_error( 'Error: unrecongized upload mode: ' + _this.upload_mode );
+			mw.log( 'Error: unrecongized upload mode: ' + _this.upload_mode );
 		}
 	},
 
@@ -839,7 +839,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	 * they become ready.
 	 */
 	doChunkUpload : function() {
-		js_log( 'firefogg::doChunkUpload' );
+		mw.log( 'firefogg::doChunkUpload' );
 		var _this = this;
 		_this.action_done = false;
 
@@ -864,7 +864,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 		}
 
 		if( _this.editToken ) {
-			js_log( 'we already have an edit token: ' + _this.editToken );
+			mw.log( 'we already have an edit token: ' + _this.editToken );
 			_this.doChunkUploadWithFormData();
 			return;
 		}
@@ -889,7 +889,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	 */
 	doChunkUploadWithFormData: function() {
 		var _this = this;
-		js_log( "firefogg::doChunkUploadWithFormData"  + _this.editToken );
+		mw.log( "firefogg::doChunkUploadWithFormData"  + _this.editToken );
 		// Build the API URL
 		var aReq = {
 			'action': 'upload',
@@ -909,8 +909,8 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 			aReq['ignorewarnings'] = _this.formData['ignorewarnings'];
 
 		var encoderSettings = this.getEncoderSettings();
-		js_log( 'do fogg upload/encode call: ' + _this.api_url + ' :: ' + JSON.stringify( aReq ) );
-		js_log( 'foggEncode: ' + JSON.stringify( encoderSettings ) );
+		mw.log( 'do fogg upload/encode call: ' + _this.api_url + ' :: ' + JSON.stringify( aReq ) );
+		mw.log( 'foggEncode: ' + JSON.stringify( encoderSettings ) );
 		_this.fogg.upload( JSON.stringify( encoderSettings ), _this.api_url, 
 			JSON.stringify( aReq ) );
 
@@ -931,7 +931,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 		_this.action_done = false;
 		_this.displayProgressOverlay();
 		var encoderSettings = this.getEncoderSettings();
-		js_log( 'doEncode: with: ' +  JSON.stringify( encoderSettings ) );
+		mw.log( 'doEncode: with: ' +  JSON.stringify( encoderSettings ) );
 		_this.fogg.encode( JSON.stringify( encoderSettings ) );
 
 		//show transcode status:
@@ -957,7 +957,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 				doneCallback();
 			} else if ( _this.fogg.state == 'encoding fail' ) {
 				//@@todo error handling:
-				js_error( 'encoding failed' );
+				mw.log( 'encoding failed' );
 			}
 		}
 		encodingStatus();
@@ -982,18 +982,18 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 					var pstatus = JSON.parse( _this.fogg.uploadstatus() );
 					response_text = pstatus["responseText"];
 				} catch( e ) {
-					js_log( "could not parse uploadstatus / could not get responseText" );
+					mw.log( "could not parse uploadstatus / could not get responseText" );
 				}
 			}
 
 			if ( _this.oldResponseText != response_text ) {
-				js_log( 'new result text:' + response_text + ' state:' + _this.fogg.state );
+				mw.log( 'new result text:' + response_text + ' state:' + _this.fogg.state );
 				_this.oldResponseText = response_text;
 				// Parse the response text and check for errors
 				try {
 					var apiResult = JSON.parse( response_text );
 				} catch( e ) {
-					js_log( "could not parse response_text::" + response_text + 
+					mw.log( "could not parse response_text::" + response_text + 
 						' ...for now try with eval...' );
 					try {
 						var apiResult = eval( response_text );
@@ -1026,7 +1026,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 
 			// Upload done?
 			if ( -1 == $j.inArray( _this.fogg.state, [ 'upload done', 'done', 'encoding done' ] ) ) {
-				js_log( 'Error:firefogg upload error: ' + _this.fogg.state );
+				mw.log( 'Error:firefogg upload error: ' + _this.fogg.state );
 				return;
 			}
 			if ( apiResult && apiResult.resultUrl ) {
@@ -1050,7 +1050,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 				}
 			} else {
 				// Done state with error? Not really possible given how firefogg works...
-				js_log( " Upload done in chunks mode, but no resultUrl!" );
+				mw.log( " Upload done in chunks mode, but no resultUrl!" );
 			}
 			
 		}
@@ -1064,7 +1064,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 		if ( !this.have_firefogg ) {
 			return this.pe_cancel_action();
 		}
-		js_log( 'firefogg:cancel' )
+		mw.log( 'firefogg:cancel' )
 		if ( confirm( gM( 'mwe-cancel-confim' ) ) ) {
 			// FIXME: sillyness ( upstream firefogg cancel fix needed ) 
 			if ( navigator.oscpu && navigator.oscpu.search( 'Win' ) >= 0 ) {

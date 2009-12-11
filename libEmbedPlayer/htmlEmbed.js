@@ -45,7 +45,7 @@ var htmlEmbed = {
 		// call the parent
 		this.parent_play();
 
-		js_log( 'f:play: htmlEmbedWrapper' );
+		mw.log( 'f:play: htmlEmbedWrapper' );
 		var ct = new Date();
 		this.clockStartTime = ct.getTime();
 
@@ -65,10 +65,10 @@ var htmlEmbed = {
 	* Preserves the pause time across for timed playback 
 	*/
 	pause:function() {
-		js_log( 'f:pause: htmlEmbedWrapper' );
+		mw.log( 'f:pause: htmlEmbedWrapper' );
 		var ct = new Date();
 		this.pauseTime = this.currentTime;
-		js_log( 'pause time: ' + this.pauseTime );
+		mw.log( 'pause time: ' + this.pauseTime );
 		
 		window.clearInterval( this.monitorTimerId );
 	},
@@ -99,11 +99,11 @@ var htmlEmbed = {
 	* Monitor tracks of virtual player time
 	*/ 
 	monitor:function() {
-		//js_log('html:monitor: '+ this.currentTime);		
+		//mw.log('html:monitor: '+ this.currentTime);		
 		var ct = new Date();
 		this.currentTime = ( ( ct.getTime() - this.clockStartTime ) / 1000 ) + this.pauseTime;
 		var ct = new Date();
-		// js_log('mvPlayList:monitor trueTime: '+ this.currentTime);
+		// mw.log('mvPlayList:monitor trueTime: '+ this.currentTime);
 		
 		// Once currentTime is updated call parent_monitor
 		this.parent_monitor();
@@ -140,7 +140,7 @@ var htmlEmbed = {
 	* @param {Object} options Thumbnail options
 	*/	
 	renderTimelineThumbnail:function( options ) {
-		js_log( "HTMLembed req w, height: " + options.width + ' ' + options.height );
+		mw.log( "HTMLembed req w, height: " + options.width + ' ' + options.height );
 		// generate a scaled down version _that_ we can clone if nessisary
 		// add a not vissiable container to the body:
 		var do_refresh = ( typeof options['refresh'] != 'undefined' ) ? true:false;
@@ -151,7 +151,7 @@ var htmlEmbed = {
 			// Set the font scale down percentage: (kind of arbitrary)
 			var scale_perc = options.width / this.pc.pp.width;
 			
-			js_log( 'scale_perc:' + options.width + ' / ' + $j( this ).width() + ' = ' + scale_perc );
+			mw.log( 'scale_perc:' + options.width + ' / ' + $j( this ).width() + ' = ' + scale_perc );
 			
 			// Min scale font percent of 70 (overflow is hidden)
 			var font_perc  = ( Math.round( scale_perc * 100 ) < 80 ) ? 80 : Math.round( scale_perc * 100 );
@@ -200,7 +200,7 @@ var htmlEmbed = {
 	* Get the "embed" html for the html player
 	*/
 	getEmbedHTML:function() {
-		js_log( 'f:html:getEmbedHTML: ' + this.id );
+		mw.log( 'f:html:getEmbedHTML: ' + this.id );
 		// set up the css for our parent div:		 
 		$j( this ).css( {
 			'width':this.pc.pp.width,
@@ -223,14 +223,14 @@ var htmlEmbed = {
 			opt = { };
 		var height = ( opt.height ) ? opt.height:this.pc.pp.height;
 		var width = ( opt.width ) ? opt.width: this.pc.pp.width;
-		js_log( '1req ' + opt.height + ' but got: ' + height );
+		mw.log( '1req ' + opt.height + ' but got: ' + height );
 		if ( this.pc.type == 'image/jpeg' ||  this.pc.type == 'image/png' ) {
-			js_log( 'should put src: ' + this.pc.src );
+			mw.log( 'should put src: ' + this.pc.src );
 			out = '<img style="width:' + width + 'px;height:' + height + 'px" src="' + this.pc.src + '">';
 		} else {
 			out = this.pc.wholeText;
 		}
-		// js_log('f:getThumbnailHTML: got thumb: '+out);
+		// mw.log('f:getThumbnailHTML: got thumb: '+out);
 		return out;
 	},
 	
@@ -238,7 +238,7 @@ var htmlEmbed = {
 	* re-show the Thumbnail
 	*/
 	showThumbnail:function() {
-		js_log( 'htmlEmbed:showThumbnail()' );
+		mw.log( 'htmlEmbed:showThumbnail()' );
 		this.getEmbedHTML();
 	},
 	
@@ -246,7 +246,7 @@ var htmlEmbed = {
 	* Display the "embed" html right away 
 	*/
 	getHTML:function() {
-		js_log( 'htmlEmbed::getHTML() ' + this.id );
+		mw.log( 'htmlEmbed::getHTML() ' + this.id );
 		this.getEmbedHTML();
 	},
 	

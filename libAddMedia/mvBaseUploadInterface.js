@@ -64,7 +64,7 @@ mvBaseUploadInterface.prototype = {
 		if ( !options )
 			options = {};
 		$j.extend( this, default_bui_options, options );
-		js_log( "init mvBaseUploadInterface:: " + this.api_url );
+		mw.log( "init mvBaseUploadInterface:: " + this.api_url );
 	},
 
 	/**
@@ -72,12 +72,12 @@ mvBaseUploadInterface.prototype = {
 	 * May remap it to use the API field names.
 	 */
 	setupForm: function() {
-		js_log( "Base::setupForm::" );
+		mw.log( "Base::setupForm::" );
 		var _this = this;
 		// Set up the local pointer to the edit form:
 		this.form = this.getForm();
 		if ( !this.form ) {
-			js_log( "Upload form not found!" );
+			mw.log( "Upload form not found!" );
 			return;
 		}
 
@@ -102,7 +102,7 @@ mvBaseUploadInterface.prototype = {
 	 */
 	onSubmit: function() {
 		var _this = this;
-		js_log( 'Base::onSubmit:' );
+		mw.log( 'Base::onSubmit:' );
 		// Run the original onsubmit (if not run yet set flag to avoid excessive chaining)
 		if ( typeof( this.orig_onsubmit ) == 'function' ) {
 			if ( ! this.orig_onsubmit() ) {
@@ -112,12 +112,12 @@ mvBaseUploadInterface.prototype = {
 		}
 		// Check for post action override
 		if ( this.form_post_override ) {
-			js_log( 'form_post_override is true, do ordinary form submit' );
+			mw.log( 'form_post_override is true, do ordinary form submit' );
 			return true;
 		}
 
 		// Get the input form data into an array
-		js_log( 'update formData::' );
+		mw.log( 'update formData::' );
 		var data = $j( this.form ).serializeArray();
 		this.formData = {};
 		for ( var i = 0; i < data.length; i++ ) {
@@ -139,7 +139,7 @@ mvBaseUploadInterface.prototype = {
 				_this.doUpload();
 			} );
 		} catch( e ) {
-			js_log( '::error in displayProgressOverlay or doUpload' );
+			mw.log( '::error in displayProgressOverlay or doUpload' );
 		}
 
 		// Don't submit the form we will do the post in ajax
@@ -157,16 +157,16 @@ mvBaseUploadInterface.prototype = {
 	 */
 	detectUploadMode: function( callback ) {
 		var _this = this;
-		js_log( 'detectUploadMode::' +  _this.upload_mode );
+		mw.log( 'detectUploadMode::' +  _this.upload_mode );
 		// Check the upload mode
 		if ( _this.upload_mode == 'detect_in_progress' ) {
 			// Don't send another request, wait for the pending one.
 		} else if ( !_this.isCopyUpload() ) {
 			callback( 'post' );
 		} else if ( _this.upload_mode == 'autodetect' ) {
-			js_log( 'detectUploadMode::' + _this.upload_mode + ' api:' + _this.api_url );
+			mw.log( 'detectUploadMode::' + _this.upload_mode + ' api:' + _this.api_url );
 			if( !_this.api_url ) {
-				js_error( 'Error: can\'t autodetect mode without api url' );
+				mw.log( 'Error: can\'t autodetect mode without api url' );
 				return;
 			}
 
@@ -174,29 +174,24 @@ mvBaseUploadInterface.prototype = {
 			_this.upload_mode = 'detect_in_progress';
 
 			// FIXME: move this to configuration and avoid this API request
-			do_api_req(
-				{
-					'data': { 'action' : 'paraminfo', 'modules' : 'upload' },
-					'url' : _this.api_url
-				},
-				function( data ) {
+			mw.getJSON( _this.api_url, { 'action' : 'paraminfo', 'modules' : 'upload' }, function( data ) {
 					if ( typeof data.paraminfo == 'undefined'
 						|| typeof data.paraminfo.modules == 'undefined' )
 					{
-						return js_error( 'Error: bad api results' );
+						return mw.log( 'Error: bad api results' );
 					}
 					if ( typeof data.paraminfo.modules[0].classname == 'undefined' ) {
-						js_log( 'Autodetect Upload Mode: \'post\' ' );
+						mw.log( 'Autodetect Upload Mode: \'post\' ' );
 						_this.upload_mode = 'post';
 						callback( 'post' );
 					} else {
-						js_log( 'Autodetect Upload Mode: api ' );
+						mw.log( 'Autodetect Upload Mode: api ' );
 						_this.upload_mode = 'api';
 						// Check to see if chunks are supported
 						for ( var i in data.paraminfo.modules[0].parameters ) {
 							var pname = data.paraminfo.modules[0].parameters[i].name;
 							if( pname == 'enablechunks' ) {
-								js_log( 'this.chunks_supported = true' );
+								mw.log( 'this.chunks_supported = true' );
 								_this.chunks_supported = true;
 								break;
 							}
@@ -210,7 +205,7 @@ mvBaseUploadInterface.prototype = {
 		} else if ( _this.upload_mode == 'post' ) {
 			callback( 'post' );
 		} else {
-			js_error( 'Error: unrecongized upload mode: ' + _this.upload_mode );
+			mw.log( 'Error: unrecongized upload mode: ' + _this.upload_mode );
 		}
 	},
 
@@ -223,7 +218,7 @@ mvBaseUploadInterface.prototype = {
 		} else if ( this.upload_mode == 'post' ) {
 			this.doPostUpload();
 		} else {
-			js_error( 'Error: unrecongized upload mode: ' + this.upload_mode );
+			mw.log( 'Error: unrecongized upload mode: ' + this.upload_mode );
 		}
 	},
 
@@ -282,7 +277,7 @@ mvBaseUploadInterface.prototype = {
 	doPostUpload: function() {
 		var _this = this;
 		var form = $j( _this.form );
-		js_log( 'mvBaseUploadInterface.doPostUpload' );
+		mw.log( 'mvBaseUploadInterface.doPostUpload' );
 
 		// Issue a normal post request
 		// Get the token from the page
@@ -307,8 +302,8 @@ mvBaseUploadInterface.prototype = {
 		// Set the action to the API URL:
 		form.attr( 'action', _this.api_url );
 
-		js_log( 'Do iframe form submit to: ' +  form.attr( 'target' ) );
-		js_log( ' destName:' + form.find( "[name='filename']" ).val() );
+		mw.log( 'Do iframe form submit to: ' +  form.attr( 'target' ) );
+		mw.log( ' destName:' + form.find( "[name='filename']" ).val() );
 
 		// Do post override
 		_this.form_post_override = true;
@@ -322,8 +317,8 @@ mvBaseUploadInterface.prototype = {
 	 * Do an upload by submitting an API request
 	 */
 	doApiCopyUpload: function() {
-		js_log( 'mvBaseUploadInterface.doApiCopyUpload' );
-		js_log( 'doHttpUpload (no form submit) ' );
+		mw.log( 'mvBaseUploadInterface.doApiCopyUpload' );
+		mw.log( 'doHttpUpload (no form submit) ' );
 		var httpUpConf = {
 			'url'       : $j( '#wpUploadFileURL' ).val(),
 			'filename'  : $j( '#wpDestFile' ).val(),
@@ -358,7 +353,7 @@ mvBaseUploadInterface.prototype = {
 		} else if ( doc.body ) {
 			// Get the json string
 			json = $j( doc.body ).find( 'pre' ).text();
-			//js_log( 'iframe:json::' + json_str + "\nbody:" + $j( doc.body ).html() );
+			//mw.log( 'iframe:json::' + json_str + "\nbody:" + $j( doc.body ).html() );
 			if ( json ) {
 				response = window["eval"]( "(" + json + ")" );
 			} else {
@@ -400,7 +395,7 @@ mvBaseUploadInterface.prototype = {
 
 		// Add the edit token (if available)
 		if( !_this.editToken && _this.api_url ) {
-			js_log( 'Error:doHttpUpload: missing token' );
+			mw.log( 'Error:doHttpUpload: missing token' );
 		} else {
 			request['token'] =_this.editToken;
 		}
@@ -409,10 +404,7 @@ mvBaseUploadInterface.prototype = {
 		_this.action_done = false;
 
 		//do the api request
-		do_api_req({
-			'data': request,
-			'url' : _this.api_url
-		}, function( data ) {
+		mw.getJSON(_this.api_url, request, function( data ) {
 			_this.processApiResult( data );
 		});
 	},
@@ -445,15 +437,9 @@ mvBaseUploadInterface.prototype = {
 	onAjaxUploadStatusTimer: function() {
 		var _this = this;
 		//do the api request:
-		do_api_req(
-			{
-				'data': this.upload_status_request,
-				'url' : this.api_url
-			},
-			function ( data ) {
-				_this.onAjaxUploadStatusResponse( data );
-			}
-		);
+		mw.getJSON( this.api_url, this.upload_status_request, function ( data ) {
+			_this.onAjaxUploadStatusResponse( data );
+		} );
 	},
 
 	/**
@@ -475,7 +461,7 @@ mvBaseUploadInterface.prototype = {
 					apiResult = JSON.parse( data.upload['apiUploadResult'] ) ;
 				} catch ( e ) {
 					//could not parse api result
-					js_log( 'errro: could not parse apiUploadResult' )
+					mw.log( 'errro: could not parse apiUploadResult' )
 				}
 				_this.processApiResult( apiResult );
 			});
@@ -499,7 +485,7 @@ mvBaseUploadInterface.prototype = {
 			);
 		} else if( data.upload['loaded'] ) {
 			_this.updateProgress( 1 );
-			js_log( 'just have loaded (no cotent length: ' + data.upload['loaded'] );
+			mw.log( 'just have loaded (no cotent length: ' + data.upload['loaded'] );
 			//for lack of content-length requests:
 			$j( '#up-status-container' ).html(
 				gM( 'mwe-upload-stats-fileprogress',
@@ -609,7 +595,7 @@ mvBaseUploadInterface.prototype = {
 
 			if ( !error_code || error_code == 'unknown-error' ) {
 				if ( typeof JSON != 'undefined' ) {
-					js_log( 'Error: apiRes: ' + JSON.stringify( apiRes ) );
+					mw.log( 'Error: apiRes: ' + JSON.stringify( apiRes ) );
 				}
 				if ( apiRes.upload.error == 'internal-error' ) {
 					// Do a remote message load
@@ -650,20 +636,20 @@ mvBaseUploadInterface.prototype = {
 				return false;
 			}
 
-			js_log( 'get key: ' + error_msg_key[ error_code ] )
+			mw.log( 'get key: ' + error_msg_key[ error_code ] )
 			gMsgLoadRemote( error_msg_key[ error_code ], function() {
 				_this.updateProgressWin(
 					gM( 'mwe-uploaderror' ),
 					gM( error_msg_key[ error_code ], errorReplaceArg ),
 					buttons );
 			});
-			js_log( "api.error" );
+			mw.log( "api.error" );
 			return false;
 		}
 
 		// Check upload.error
 		if ( apiRes.upload && apiRes.upload.error ) {
-			js_log( ' apiRes.upload.error: ' +  apiRes.upload.error );
+			mw.log( ' apiRes.upload.error: ' +  apiRes.upload.error );
 			_this.updateProgressWin(
 				gM( 'mwe-uploaderror' ),
 				gM( 'mwe-unknown-error' ) + '<br>',
@@ -709,7 +695,7 @@ mvBaseUploadInterface.prototype = {
 					//set to "loading"
 					$j( '#upProgressDialog' ).html( mw.loading_spiner() );
 					//setup loading:
-					var req = {
+					var request = {
 						'action': 'upload',
 						'sessionkey': _this.warnings_sessionkey,
 						'ignorewarnings': 1,
@@ -717,17 +703,11 @@ mvBaseUploadInterface.prototype = {
 						'token' :  _this.editToken
 					};
 					//run the upload from stash request
-					do_api_req(
-						{
-							'data': req,
-							'url' : _this.api_url
-						},
-						function( data ) {
+					mw.getJSON(_this.api_url, request, function( data ) {
 							_this.processApiResult( data );
-						}
-					);
+					} );
 				} else {
-					js_log( 'No session key re-sending upload' )
+					mw.log( 'No session key re-sending upload' )
 					//do a stashed upload
 					$j( '#wpIgnoreWarning' ).attr( 'checked', true );
 					$j( _this.editForm ).submit();
@@ -755,7 +735,7 @@ mvBaseUploadInterface.prototype = {
 	 */
 	processApiResult: function( apiRes ) {
 		var _this = this;
-		js_log( 'processApiResult::' );
+		mw.log( 'processApiResult::' );
 		if ( !_this.isApiSuccess( apiRes ) ) {
 			// Error detected, show it to the user
 			_this.showApiError( apiRes );
@@ -765,7 +745,7 @@ mvBaseUploadInterface.prototype = {
 			// Async upload, do AJAX status polling
 			_this.upload_session_key = apiRes.upload.upload_session_key;
 			_this.doAjaxUploadStatus();
-			js_log( "set upload_session_key: " + _this.upload_session_key );
+			mw.log( "set upload_session_key: " + _this.upload_session_key );
 			return;
 		}
 
@@ -775,7 +755,7 @@ mvBaseUploadInterface.prototype = {
 			// Upload complete.
 			// Call the completion callback if available.
 			if ( _this.done_upload_cb && typeof _this.done_upload_cb == 'function' ) {
-				js_log( "call done_upload_cb" );
+				mw.log( "call done_upload_cb" );
 				// This overrides our normal completion handling so we close the
 				// dialog immediately.
 				$j( '#upProgressDialog' ).dialog( 'destroy' ).remove();
@@ -798,7 +778,7 @@ mvBaseUploadInterface.prototype = {
 					gM( 'mwe-successfulupload' ),
 					gM( 'mwe-upload_done', url),
 					buttons );
-			js_log( 'apiRes.upload.imageinfo::' + url );
+			mw.log( 'apiRes.upload.imageinfo::' + url );
 			return true;
 		}
 	},
@@ -847,7 +827,7 @@ mvBaseUploadInterface.prototype = {
 		if ( this.form_selector && $j( this.form_selector ).length != 0 ) {
 			return $j( this.form_selector ).get( 0 );
 		} else {
-			js_log( "mvBaseUploadInterface.getForm(): no form_selector" );
+			mw.log( "mvBaseUploadInterface.getForm(): no form_selector" );
 			return false;
 		}
 	},
@@ -856,7 +836,7 @@ mvBaseUploadInterface.prototype = {
 	 * Update the progress bar to a given completion fraction (between 0 and 1)
 	 */
 	updateProgress: function( fraction ) {
-		//js_log('update progress: ' + fraction);
+		//mw.log('update progress: ' + fraction);
 		$j( '#up-progressbar' ).progressbar( 'value', parseInt( fraction * 100 ) );
 		$j( '#up-pstatus' ).html( parseInt( fraction * 100 ) + '% - ' );
 	},
@@ -945,7 +925,7 @@ mvBaseUploadInterface.prototype = {
 	 */
 	$.fn.doDestCheck = function( opt ) {
 		var _this = this;
-		js_log( 'doDestCheck::' + _this.selector );
+		mw.log( 'doDestCheck::' + _this.selector );
 
 		// Set up option defaults
 		if ( !opt.warn_target )
@@ -964,19 +944,16 @@ mvBaseUploadInterface.prototype = {
 		$j( _this.selector )
 			.append( '<img id="mw-spinner-wpDestFile" ' +
 				'src ="' + stylepath + '/common/images/spinner.gif" />' );
-
-		// Do the destination check
-		do_api_req(
-			{
-				'data': {
-					//@@todo we may need a more clever way to get a the filename
-					'titles': 'File:' + $j( _this.selector ).val(),
-					'prop':  'imageinfo',
-					'iiprop': 'url|mime|size',
-					'iiurlwidth': 150
-				}
-			},
-			function( data ) {
+				
+		var request =  {			
+			'titles': 'File:' + $j( _this.selector ).val(),
+			'prop':  'imageinfo',
+			'iiprop': 'url|mime|size',
+			'iiurlwidth': 150
+		};
+				
+		// Do the destination check ( on the local wiki )
+		mw.getJSON( request, function( data ) {
 				// Remove spinner
 				$j( '#mw-spinner-wpDestFile' ).remove();
 

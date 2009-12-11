@@ -28,7 +28,7 @@ mw.addOnloadHook( function(){
 	);				
 });
 function doHello(){
-	js_log('to a hello user');
+	mw.log('to a hello user');
 	$j('#helloTarget').html( mw.loading_spiner() );
 	//first get the user name:
 	getUserName(function( user_name ){	
@@ -46,7 +46,7 @@ function getUserName( callback ){
 		function( data ){		
 			//now we get the data back for that domain
 			if( !data.query || !data.query.userinfo ){
-				js_log("Error no query.userinfo ");
+				mw.log("Error no query.userinfo ");
 				return false;
 			}
 			callback( data.query.userinfo.name );									
@@ -62,18 +62,15 @@ function doAppend(){
 		var eTitle = 'User_talk:' + userName;
 		//get a edit token
 		get_mw_token(eTitle, 'proxy', function( token ){
-			js_log("got token: " + token) ;
-			var aReq = {
+			mw.log("got token: " + token) ;
+			var request = {
 				'action':'edit',
 				'title': eTitle,
 				'summary': "Api proxy test edit",
 				'appendtext': "\n\n==== Hello from Api proxy At: " + Date() + " ====",
 				'token': token
 			}
-			do_api_req({
-				'data': aReq,
-				'url': 'proxy'
-			},function(result){
+			mw.getJSON('proxy', request, function( result ){
 				if(result.edit && result.edit.newrevid){				
 					$j('#appendTarget').html( "success: " + JSON.stringify ( result) );
 					url = remote_wiki_host +  remote_script_path + '/index.php/';

@@ -46,7 +46,7 @@ var vlcEmbed = {
 					'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
 				'>' +
 			'</object>';
-		js_log( 'embed with: ' + embed_code );
+		mw.log( 'embed with: ' + embed_code );
 		return embed_code;
 	},
 	
@@ -63,13 +63,13 @@ var vlcEmbed = {
 			this.vlc.playlist.items.clear();
 			var src = mw.absoluteUrl( this.getSrc() ) ;
 			// @@todo if client supports seeking no need to send seek_offset to URI
-			js_log( 'vlc play::' + src );
+			mw.log( 'vlc play::' + src );
 			var itemId = this.vlc.playlist.add( src );
 			if ( itemId != -1 ) {
 				// play
 				this.vlc.playlist.playItem( itemId );
 			} else {
-				js_log( "error:cannot play at the moment !" );
+				mw.log( "error:cannot play at the moment !" );
 			}
 			// if controls enabled start up javascript interface and monitor:
 			if ( this.controls ) {
@@ -79,12 +79,12 @@ var vlcEmbed = {
 			}
 			setTimeout( '$j(\'#' + this.id + '\').get(0).monitor()', 100 );
 		} else {
-			js_log( 'postEmbedJS:vlc not ready' );
+			mw.log( 'postEmbedJS:vlc not ready' );
 			this.pejs_count++;
 			if ( this.pejs_count < 10 ) {
 				setTimeout( 'document.getElementById(\'' + this.id + '\').postEmbedJS()', 100 );
 			} else {
-				js_log( 'vlc never ready' );
+				mw.log( 'vlc never ready' );
 			}
 		}
 	},
@@ -95,7 +95,7 @@ var vlcEmbed = {
 			this.parent_doSeek( perc );
 		} else if ( this.vlc ) {
 			this.seeking = true;
-			js_log( "do vlc http seek to: " + perc )
+			mw.log( "do vlc http seek to: " + perc )
 			if ( ( this.vlc.input.state == 3 ) && ( this.vlc.input.position != perc ) )
 			{
 				this.vlc.input.position = perc;
@@ -107,7 +107,7 @@ var vlcEmbed = {
 		this.parent_monitor();
 	},
 	doPlayThenSeek:function( perc ) {
-		js_log( 'doPlayThenSeekHack' );
+		mw.log( 'doPlayThenSeekHack' );
 		var _this = this;
 		this.play();
 		var rfsCount = 0;
@@ -123,7 +123,7 @@ var vlcEmbed = {
 					setTimeout( readyForSeek, 50 );
 					rfsCount++;
 				} else {
-					js_log( 'error:doPlayThenSeek failed' );
+					mw.log( 'error:doPlayThenSeek failed' );
 				}
 			}
 		}
@@ -141,9 +141,9 @@ var vlcEmbed = {
 		if ( !this.vlc )
 			return ;
 		if ( this.vlc.log ) {
-			// js_log( 'state:' + this.vlc.input.state);
-			// js_log('time: ' + this.vlc.input.time);
-			// js_log('pos: ' + this.vlc.input.position);
+			// mw.log( 'state:' + this.vlc.input.state);
+			// mw.log('time: ' + this.vlc.input.time);
+			// mw.log('pos: ' + this.vlc.input.position);
 			if ( this.vlc.log.messages.count > 0 ) {
 				// there is one or more messages in the log
 				var iter = this.vlc.log.messages.iterator();
@@ -152,7 +152,7 @@ var vlcEmbed = {
 				   var msgtype = msg.type.toString();
 				   if ( ( msg.severity == 1 ) && ( msgtype == "input" ) )
 				   {
-						   js_log( msg.message );
+						   mw.log( msg.message );
 				   }
 				}
 				// clear the log once finished to avoid clogging
@@ -210,7 +210,7 @@ var vlcEmbed = {
 		// for now trust the duration from url over vlc input.length
 		if ( !this.getDuration() && this.vlc.input.length > 0 )
 		{
-			// js_log('setting duration to ' + this.vlc.input.length /1000);			
+			// mw.log('setting duration to ' + this.vlc.input.length /1000);			
 			this.duration = this.vlc.input.length / 1000;
 		}
 		this.currentTime = this.vlc.input.time / 1000;
@@ -219,13 +219,13 @@ var vlcEmbed = {
 		this.parent_pause(); // update the inteface if paused via native control
 	},
 	onStop: function() {
-		js_log( 'vlc:onStop:' );
+		mw.log( 'vlc:onStop:' );
 		if ( !this.seeking )
 			this.onClipDone();
 	},
 	/* js hooks/controls */
 	play : function() {
-		js_log( 'f:vlcPlay' );
+		mw.log( 'f:vlcPlay' );
 			this.getVLC();
 			// call the parent
 		this.parent_play();

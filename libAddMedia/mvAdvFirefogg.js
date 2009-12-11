@@ -303,7 +303,7 @@ mvAdvFirefogg.prototype = {
 	},
 
 	createControls: function() {
-		js_log( "adv createControls" );
+		mw.log( "adv createControls" );
 		var _this = this;
 		// Load presets from the cookie
 		this.loadEncSettings();
@@ -383,7 +383,7 @@ mvAdvFirefogg.prototype = {
 					'class="text ui-widget-content ui-corner-all ' + target + '" ' +
 					'type="text" value="' + text + '" size="60" /> ';
 			default:
-				js_log( 'call : basefogg_getTargetHtml for:' + target );
+				mw.log( 'call : basefogg_getTargetHtml for:' + target );
 				return this.basefogg_getControlHtml( target );
 		}
 	},
@@ -391,7 +391,7 @@ mvAdvFirefogg.prototype = {
 	getPresetControlHtml: function() {
 		var out = '';
 		var _this = this;
-		js_log( 'getPresetControlHtml::' );
+		mw.log( 'getPresetControlHtml::' );
 		if ( typeof this.local_settings.presets != 'undefined' ) {
 			out += '<select class="_preset_select">';
 			$j.each( this.local_settings.presets, function( presetKey, preset ) {
@@ -527,7 +527,7 @@ mvAdvFirefogg.prototype = {
 
 		var helpState = {};
 		// Do some display tweaks
-		js_log( 'tw:' + $j( this.selector ).width() +
+		mw.log( 'tw:' + $j( this.selector ).width() +
 			' ssf:' + $j( this.target_btn_select_new_file ).width() +
 			' sf:' + $j( this.target_btn_save_local_file ).width() );
 
@@ -578,7 +578,7 @@ mvAdvFirefogg.prototype = {
 			$j( this.selector + ' .helpClose_' + configKey )
 				.click(
 					function() {
-						js_log( "close help: " + configKey );
+						mw.log( "close help: " + configKey );
 						// get the config key (assume it's the last class)
 						var configKey = _this.getClassId( this, 'helpClose_' );
 						$j( _this.selector + ' .helpRow_' + configKey ).hide( 'slow' );
@@ -665,7 +665,7 @@ mvAdvFirefogg.prototype = {
 						// Change it to the validated value
 						$j( this ).val( validValue );
 						// update the slider
-						js_log( "update: " + _this.selector + ' .slider' + classId );
+						mw.log( "update: " + _this.selector + ' .slider' + classId );
 						$j( _this.selector + ' .slider' + classId )
 							.slider( 'option', 'value', validValue );
 					});
@@ -690,7 +690,7 @@ mvAdvFirefogg.prototype = {
 	updatePresetSelection: function( presetKey ) {
 		// Update the local configuration
 		this.local_settings['default'] = presetKey;
-		// js_log( 'update preset desc: ' + presetKey );
+		// mw.log( 'update preset desc: ' + presetKey );
 		var presetDesc = '';
 		if ( this.local_settings.presets[presetKey].desc ) {
 			presetDesc = this.local_settings.presets[presetKey].desc;
@@ -714,7 +714,7 @@ mvAdvFirefogg.prototype = {
 		}
 		// Look up the type
 		if ( typeof this.default_encoder_config[confKey] == 'undefined' ) {
-			js_error( 'error: missing default key: ' + confKey );
+			mw.log( 'error: missing default key: ' + confKey );
 			return false;
 		}
 
@@ -741,7 +741,7 @@ mvAdvFirefogg.prototype = {
 	 */
 	updateLocalValue: function( confKey, value ) {
 		if ( typeof this.default_encoder_config[confKey] == 'undefined' ) {
-			js_log( "Error: could not update conf key: " + confKey )
+			mw.log( "Error: could not update conf key: " + confKey )
 			return value;
 		}
 		var confEntry = this.default_encoder_config[confKey];
@@ -765,7 +765,7 @@ mvAdvFirefogg.prototype = {
 			}
 		}*/
 
-		js_log( 'update:local_settings:custom:conf:' + confKey + ' = ' + value );
+		mw.log( 'update:local_settings:custom:conf:' + confKey + ' = ' + value );
 		this.local_settings.presets['custom']['conf'][confKey] = value;
 
 		return value;
@@ -832,7 +832,7 @@ mvAdvFirefogg.prototype = {
 
 		// In passthrough mode, hide encoder controls
 		if ( settings['passthrough'] ) {
-			js_log( "in passthrough mode (hide control)" );
+			mw.log( "in passthrough mode (hide control)" );
 			$j( this.target_control_container ).hide( 'slow' );
 			$j( this.target_passthrough_mode ).show( 'slow' );
 			return;
@@ -935,7 +935,7 @@ mvAdvFirefogg.prototype = {
 	 * Set the HTML control values to whatever is currently present in this.local_settings
 	 */
 	updateValuesInHtml: function() {
-		js_log( 'updateValuesInHtml::' );
+		mw.log( 'updateValuesInHtml::' );
 		var _this = this;
 		var pKey = this.local_settings[ 'default' ];
 		this.updatePresetSelection( pKey );
@@ -953,14 +953,14 @@ mvAdvFirefogg.prototype = {
 	 */
 	loadEncSettings: function( ) {
 		if ( $j.cookie( 'fogg_encoder_config' ) ) {
-			js_log( "load:fogg_encoder_config from cookie " );
+			mw.log( "load:fogg_encoder_config from cookie " );
 			this.local_settings = JSON.parse( $j.cookie( 'fogg_settings' ) );
 		}
 		// set to default if not loaded yet:
 		if ( this.local_settings && this.local_settings.presets 
 			&& this.local_settings.presets['custom']['conf'] ) 
 		{
-			js_log( 'local settings already populated' );
+			mw.log( 'local settings already populated' );
 		} else {
 			this.local_settings = this.default_local_settings;
 		}

@@ -33,7 +33,7 @@ mvTextInterface.prototype = {
 	},
 	// @@todo separate out data loader & data display
 	getTextTracks:function() {
-		// js_log("load timed text from roe: "+ this.pe.roe);
+		// mw.log("load timed text from roe: "+ this.pe.roe);
 		var _this = this;
 		// if roe not yet loaded do load it:
 		if ( this.pe.roe || _this.pe.wikiTitleKey ) {
@@ -50,14 +50,14 @@ mvTextInterface.prototype = {
 					_this.getTextTracksWikiTitle()
 				}
 			} else {
-				js_log( 'row data ready (no roe request)' );
+				mw.log( 'row data ready (no roe request)' );
 				_this.getParseTimedText_rowReady();
 			}
 		} else {
 			if ( this.pe.media_element.textSourceExists() ) {
 				_this.getParseTimedText_rowReady();
 			} else {
-				js_log( 'no roe data or timed text sources' );
+				mw.log( 'no roe data or timed text sources' );
 			}
 		}
 	},
@@ -69,23 +69,19 @@ mvTextInterface.prototype = {
 		if ( typeof wgNamespaceIds != 'undefined' && wgNamespaceIds['timedtext'] ) {
 			timedtext_ns = wgNamespaceIds['timedtext'];
 		}
-		do_api_req( {
-				'url' :	apiUrl,
-				'data': {
-					'list' : 'allpages',
-					'apprefix' : _this.pe.wikiTitleKey,
-					'apnamespace' : timedtext_ns,
-					'prop':'revisions'
-				}
-		}, function( subData ) {
+		var request =  {
+			'list' : 'allpages',
+			'apprefix' : _this.pe.wikiTitleKey,
+			'apnamespace' : timedtext_ns,
+			'prop':'revisions'
+		}'
+		mw.getJSON( apiUrl, request, function( subData ) {
 			if (	subData.error && subData.error.code == 'apunknown_apnamespace' ) {
-				do_api_req( {
-					'url' :	apiUrl,
-					'data': {
-						'list' : 'allpages',
-						'apprefix' : 'TimedText:' + _this.pe.wikiTitleKey,
-					}
-				}, function( subData ) {
+				var request = { 
+					'list' : 'allpages', 
+					'apprefix' : 'TimedText:' + _this.pe.wikiTitleKey 
+				};
+				mw.getJSON( apiUrl, request, function( subData ) {
 					_this.doProcSubPages( subData, wgServer + wgScriptPath );
 				} );
 			} else {
@@ -98,79 +94,74 @@ mvTextInterface.prototype = {
 		// look for text tracks:
 		var foundTextTracks = false;
 		
+		var request ={
+			'meta' : 'siteinfo',
+			'siprop' : 'languages'
+		}
+		var url = hostPath + '/api.php';
 		// get all the known languages:
-		do_api_req( {
-			'url':	hostPath + '/api.php',
-			'data': {
-				'meta' : 'siteinfo',
-				'siprop' : 'languages'
+		mw.getJSON(url , request, function( langDataRaw ) {
+			var langData = { };
+			var lagRaw = langDataRaw.query.languages;
+			for ( var j in lagRaw ) {
+				langData[ lagRaw[j].code ] = lagRaw[j]['*'];
 			}
-		}, function( langDataRaw ) {
-				var langData = { };
-				var lagRaw = langDataRaw.query.languages;
-				for ( var j in lagRaw ) {
-					langData[ lagRaw[j].code ] = lagRaw[j]['*'];
+			for ( var i in subData.query.allpages ) {
+				var subPage = subData.query.allpages[i];
+				var langKey = subPage.title.split( '.' );
+				var extension = langKey.pop();
+				langKey = langKey.pop();
+				if ( ! _this.suportedMime[ extension ] ) {
+					mw.log( 'Error: unknown extension:' + extension );
+					continue;
 				}
-				for ( var i in subData.query.allpages ) {
-					var subPage = subData.query.allpages[i];
-					var langKey = subPage.title.split( '.' );
-					var extension = langKey.pop();
-					langKey = langKey.pop();
-					if ( ! _this.suportedMime[ extension ] ) {
-						js_log( 'Error: unknown extension:' + extension );
-						continue;
-					}
 
-					if ( !langData[ langKey] ) {
-						js_log( 'Error: langkey:' + langKey + ' not found' );
-					} else {
-						var textElm = document.createElement( 'text' );
-						$j( textElm ).attr( {
-							'category' : 'SUB',
-							'lang' 	: langKey,
-							'type' 	: _this.suportedMime[ extension ],
-							'title'	: langData[ langKey]
-						} );
-						// We use the api since ?action raw on the real title has cache issues 
-						$j( textElm ).attr( {
-							'apisrc'	: hostPath + '/api.php',
-							'titleKey' 	: subPage.title
-						} );
-						_this.pe.media_element.tryAddSource( textElm );
-						foundTextTracks = true;
-					}
-				}
-				// after all text loaded (or we have allready checked commons
-				if ( foundTextTracks || hostPath.indexOf( 'commons.wikimedia' ) !== -1 ) {
-					// alert('calling 			getParseTimedText_rowReady ');		
-					_this.getParseTimedText_rowReady();
+				if ( !langData[ langKey] ) {
+					mw.log( 'Error: langkey:' + langKey + ' not found' );
 				} else {
-					_this.checkSharedRepo();
+					var textElm = document.createElement( 'text' );
+					$j( textElm ).attr( {
+						'category' : 'SUB',
+						'lang' 	: langKey,
+						'type' 	: _this.suportedMime[ extension ],
+						'title'	: langData[ langKey]
+					} );
+					// We use the api since ?action raw on the real title has cache issues 
+					$j( textElm ).attr( {
+						'apisrc'	: hostPath + '/api.php',
+						'titleKey' 	: subPage.title
+					} );
+					_this.pe.media_element.tryAddSource( textElm );
+					foundTextTracks = true;
 				}
-			} );	// do_api_req({
+			}
+			// after all text loaded (or we have allready checked commons
+			if ( foundTextTracks || hostPath.indexOf( 'commons.wikimedia' ) !== -1 ) {
+				// alert('calling 			getParseTimedText_rowReady ');		
+				_this.getParseTimedText_rowReady();
+			} else {
+				_this.checkSharedRepo();
+			}
+		} );
 	},
 	checkSharedRepo:function() {
 		var _this = this;
-		js_log( 'checking for shared value of image' );
+		mw.log( 'checking for shared value of image' );
 		// check if its a shared repo
-		do_api_req( {
-			'data': {
-				'action':'query',
-				'titles': 'File:' + _this.pe.wikiTitleKey,
-				'prop' : 'imageinfo'
-			}
-		}, function( data ) {
+		var request =  {			
+			'titles': 'File:' + _this.pe.wikiTitleKey,
+			'prop' : 'imageinfo'
+		};
+		mw.getJSON( request, function( data ) {
 			if ( data.query.pages && data.query.pages['-1'] && data.query.pages['-1'].imagerepository == 'shared' ) {
-				js_log( 'image is shared checking commons for subtitles' );
-				// found shared repo assume commons: 
-				do_api_req( {
-					'url': mw.commons_api_url,
-					'data': {
-						'list' : 'allpages',
-						'apprefix' : _this.pe.wikiTitleKey,
-						'apnamespace' : 102
-					}
-				}, function( data ) {
+				mw.log( 'image is shared checking commons for subtitles' );
+				// found shared repo assume commons:
+				var request = {
+					'list' : 'allpages',
+					'apprefix' : _this.pe.wikiTitleKey,
+					'apnamespace' : 102
+				}; 
+				mw.getJSON( mw.commons_api_url, request, function( data ) {
 					_this.editlink = 'http://commons.wikimedia.org/wiki/TimedText:' +  _this.pe.wikiTitleKey + '.' + wgUserLanguage + '.srt';
 					_this.doProcSubPages( data, 'http://commons.wikimedia.org/w/' );
 				} );
@@ -184,7 +175,7 @@ mvTextInterface.prototype = {
 		var _this = this;
 		var found_tracks = false;
 		// create timedTextObj		
-		js_log( "mv_txt_load_:SHOW mv_txt_load_" );
+		mw.log( "mv_txt_load_:SHOW mv_txt_load_" );
 		$j( '#mv_txt_load_' + _this.pe.id ).show(); // show the loading icon
 
 		// setup edit link: 
@@ -242,13 +233,13 @@ mvTextInterface.prototype = {
 		} );
 	},
 	addTrack: function( track_id ) {
-		js_log( 'f:displayTrack:' + track_id );
+		mw.log( 'f:displayTrack:' + track_id );
 		var _this = this;
 		// set the display flag to true:
 		_this.availableTracks[ track_id ].display = true;
 		// setup the layout:
 		this.setup_layout();
-		js_log( "SHOULD ADD: track:" + track_id + ' count:' +  _this.availableTracks[ track_id ].textNodes.length );
+		mw.log( "SHOULD ADD: track:" + track_id + ' count:' +  _this.availableTracks[ track_id ].textNodes.length );
 
 		// a flag to avoid checking all clips if we know we are adding to the end:
 		_this.add_to_end_on_this_pass = false;
@@ -296,7 +287,7 @@ mvTextInterface.prototype = {
 					}
 				} );
 			}
-			// js_log('should just add to end: '+insertHTML);
+			// mw.log('should just add to end: '+insertHTML);
 			if ( !inserted ) {
 				$j( '#mmbody_' + this.pe.id ).append( insertHTML );
 			}
@@ -309,7 +300,7 @@ mvTextInterface.prototype = {
 				interval:200, // polling interval
 				timeout:200, // delay before onMouseOut
 				over:function () {
-					  js_log( 'mvttseek: over' );
+					  mw.log( 'mvttseek: over' );
 					  $j( this ).parent().addClass( 'tt_highlight' );
 					// do section highlight
 					_this.pe.highlightPlaySection( {
@@ -318,7 +309,7 @@ mvTextInterface.prototype = {
 					} );
 				},
 				out:function () {
-					  js_log( 'mvttseek: out' );
+					  mw.log( 'mvttseek: out' );
 					  $j( this ).parent().removeClass( 'tt_highlight' );
 					  // de highlight section
 					_this.pe.hideHighlight();
@@ -367,7 +358,7 @@ mvTextInterface.prototype = {
 	},
 	getTsSelect:function() {
 		var _this = this;
-		js_log( 'getTsSelect' );
+		mw.log( 'getTsSelect' );
 		var selHTML = '<div id="mvtsel_' + this.pe.id + '" style="position:absolute;background:#FFF;top:30px;left:0px;right:0px;bottom:0px;overflow:auto;">';
 		selHTML += '<b>' + gM( 'mwe-select_transcript_set' ) + '</b><ul>';
 		// debugger;
@@ -418,7 +409,7 @@ mvTextInterface.prototype = {
 				var curhl = $j( '#mmbody_' + this.pe.id + ' .tt_scroll_highlight' ).get( 0 );
 				if ( mw.npt2seconds( $j( curhl ).attr( 'start' ) ) < cur_time &&
 				   mw.npt2seconds( $j( curhl ).attr( 'end' ) ) > cur_time ) {
-					/*js_log('in range of current hl: ' +
+					/*mw.log('in range of current hl: ' +
 						mw.npt2seconds($j(curhl).attr('start')) +  ' to ' +  mw.npt2seconds($j(curhl).attr('end')));
 					*/
 					search_for_range = false;
@@ -428,7 +419,7 @@ mvTextInterface.prototype = {
 					$j( '#mmbody_' + this.pe.id + ' .tt_scroll_highlight' ).removeClass( 'tt_scroll_highlight' );
 				}
 			};
-			/*js_log('search_for_range:'+search_for_range +  ' for: '+ cur_time);*/
+			/*mw.log('search_for_range:'+search_for_range +  ' for: '+ cur_time);*/
 			if ( search_for_range ) {
 				// search for current time: add tt_scroll_highlight to clip
 				// optimize:
@@ -442,7 +433,7 @@ mvTextInterface.prototype = {
 							scrollTop: $j( this ).get( 0 ).offsetTop
 						}, 'slow' );
 						$j( this ).addClass( 'tt_scroll_highlight' );
-						// js_log('should add class to: ' + $j(this).attr('id'));
+						// mw.log('should add class to: ' + $j(this).attr('id'));
 						// done with loop
 						return false;
 					}
@@ -462,7 +453,7 @@ mvTextInterface.prototype = {
 			}
 			// jump to the current position:
 			var cur_time = parseInt ( this.pe.currentTime );
-			js_log( 'cur time: ' + cur_time );
+			mw.log( 'cur time: ' + cur_time );
 
 			_this = this;
 			var scroll_to_id = '';
@@ -534,7 +525,7 @@ var timedTextObj = function( source ) {
 			this.lib = 'SRT';
 		break;
 		default:
-			js_log( source.mime_type + ' is not suported timed text fromat' );
+			mw.log( source.mime_type + ' is not suported timed text fromat' );
 			return ;
 		break;
 	}
@@ -570,7 +561,7 @@ timedTextObj.prototype = {
 timedTextCMML = {
 	load: function( range, callback ) {
 		var _this = this;
-		js_log( 'textCMML: loading track: ' + this.src );
+		mw.log( 'textCMML: loading track: ' + this.src );
 
 		// :: Load transcript range ::
 		var pcurl =  mw.parseUri( _this.getSRC() );
@@ -602,7 +593,7 @@ timedTextCMML = {
 			}
 		} );
 		do_request( url, function( data ) {
-			js_log( "load track clip count:" + data.getElementsByTagName( 'clip' ).length );
+			mw.log( "load track clip count:" + data.getElementsByTagName( 'clip' ).length );
 			_this.doParse( data );
 			_this.loaded = true;
 			callback();
@@ -611,7 +602,7 @@ timedTextCMML = {
 	doParse: function( data ) {
 		var _this = this;
 		$j.each( data.getElementsByTagName( 'clip' ), function( inx, clip ) {
-			// js_log(' on clip ' + clip.id);
+			// mw.log(' on clip ' + clip.id);
 			var text_clip = {
 				start: $j( clip ).attr( 'start' ).replace( 'npt:', '' ),
 				end: $j( clip ).attr( 'end' ).replace( 'npt:', '' ),
@@ -632,7 +623,7 @@ timedTextCMML = {
 timedTextSRT = {
 	load: function( range, callback ) {
 		var _this = this;
-		js_log( 'textSRT: loading : ' + _this.getSRC() );
+		mw.log( 'textSRT: loading : ' + _this.getSRC() );
 		if ( _this.getSRC() ) {
 			do_request( _this.getSRC() , function( data ) {
 				_this.doParse( data );
@@ -640,14 +631,12 @@ timedTextSRT = {
 				callback();
 			} );
 		} else if ( _this.source.apisrc ) {
-			do_api_req( {
-				'url' : _this.source.apisrc,
-				'data': {
-					'titles': _this.source.titleKey,
-					'prop':'revisions',
-					'rvprop':'content'
-				}
-			}, function( data ) {
+			var request = {
+				'titles': _this.source.titleKey,
+				'prop':'revisions',
+				'rvprop':'content'
+			};
+			mw.getJSON( _this.source.apisrc,request, function( data ) {
 				if ( data && data.query && data.query.pages ) {
 					for ( var i in data.query.pages ) {
 						var page = data.query.pages[i];

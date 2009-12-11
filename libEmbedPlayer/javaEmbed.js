@@ -37,7 +37,7 @@ var javaEmbed = {
 	* Get the embed html code:
 	*/
 	getEmbedObj: function() {
-		js_log( "java play url:" + this.getSrc( this.seek_time_sec ) );
+		mw.log( "java play url:" + this.getSrc( this.seek_time_sec ) );
 		// get the duration
 		this.getDuration();
 		// if still unset set to an arbitrary time 60 seconds: 
@@ -108,15 +108,15 @@ var javaEmbed = {
 			if ( this.playerElement && this.playerElement.getPlayPosition ) {
 				try {
 				   // java reads ogg media time.. so no need to add the start or seek offset:
-				   // js_log(' ct: ' + this.playerElement.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
+				   // mw.log(' ct: ' + this.playerElement.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
 				   this.currentTime = this.playerElement.getPlayPosition();
 				   if ( this.playerElement.getPlayPosition() < 0 ) {
-				   		js_log( 'pp:' + this.playerElement.getPlayPosition() );
+				   		mw.log( 'pp:' + this.playerElement.getPlayPosition() );
 						// probably reached clip end					
 						this.onClipDone();
 				   }
 				} catch ( e ) {
-				   js_log( 'could not get time from jPlayer: ' + e );
+				   mw.log( 'could not get time from jPlayer: ' + e );
 				}
 			}
 		}
@@ -130,7 +130,7 @@ var javaEmbed = {
 	* @param {Float} percentage Percentage to seek into the stream
 	*/
 	doSeek:function( percentage ) {	
-		js_log( 'java:seek:p: ' + percentage + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
+		mw.log( 'java:seek:p: ' + percentage + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
 		this.getPlayerElement();
 		
 		if ( this.supportsURLTimeEncoding() ) {
@@ -140,7 +140,7 @@ var javaEmbed = {
 			// this.playerElement.restart();
 		} else if ( this.playerElement ) {
 		   // do a (generally broken) local seek:   
-		   js_log( "cortado javascript seems to always fail ... but here we go... doSeek(" + ( percentage * parseFloat( this.getDuration() ) ) );
+		   mw.log( "cortado javascript seems to always fail ... but here we go... doSeek(" + ( percentage * parseFloat( this.getDuration() ) ) );
 		   this.playerElement.doSeek( percentage * parseFloat( this.getDuration() )  );
 		} else {
 			this.doPlayThenSeek( percentage );
@@ -152,7 +152,7 @@ var javaEmbed = {
 	* @param {Float} percentage Percentage to seek into the stream
 	*/	
 	doPlayThenSeek: function( percentage ) {
-		js_log( 'doPlayThenSeek' );
+		mw.log( 'doPlayThenSeek' );
 		var _this = this;
 		this.play();
 		var rfsCount = 0;
@@ -167,7 +167,7 @@ var javaEmbed = {
 					setTimeout( readyForSeek, 50 );
 					rfsCount++;
 				} else {
-					js_log( 'error:doPlayThenSeek failed' );
+					mw.log( 'error:doPlayThenSeek failed' );
 				}
 			}
 		}

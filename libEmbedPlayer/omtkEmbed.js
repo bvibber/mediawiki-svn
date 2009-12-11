@@ -34,7 +34,7 @@ var omtkEmbed = {
 	getEmbedObj:function() {
 		var player_path = mw.getMwEmbedPath() + 'libEmbedPlayer/binPlayers/omtk-fx/omtkp.swf';
 		// player_path = 'omtkp.swf';
-		js_log( "player path: " + player_path );
+		mw.log( "player path: " + player_path );
 		return  '<object id="' + this.pid + '" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1" height="1">' +
 					'<param name="movie" value="' + player_path + '" />' + "\n" +
 					'<!--[if !IE]>-->' + "\n" +
@@ -53,7 +53,7 @@ var omtkEmbed = {
 	postEmbedJS:function() {
 		this.getPlayerElement();
 		// play the url: 
-		js_log( "play: pid:" + this.pid + ' src:' + this.src );
+		mw.log( "play: pid:" + this.pid + ' src:' + this.src );
 				
 		this.playerElement.play( this.src );
 		
@@ -88,15 +88,15 @@ var omtkEmbed = {
 			this.playerElement = $j( '#' + this.pid + '_ie' ).get( 0 );
 		
 		if ( this.playerElement.play ) {
-			// js_log('omtk obj is missing .play (probably not omtk obj)');
+			// mw.log('omtk obj is missing .play (probably not omtk obj)');
 		}
 	},
 }
 // Some auto-called globals (bad) 
 function OMTK_P_complete() {
-	js_log( 'OMTK_P_complete' );
+	mw.log( 'OMTK_P_complete' );
 }
 
 function OMTK_P_metadataUpdate() {
-	js_log( 'OMTK_P_metadataUpdate' );
+	mw.log( 'OMTK_P_metadataUpdate' );
 }
