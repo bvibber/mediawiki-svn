@@ -8,8 +8,6 @@
 
 class TemplateInfo {
 
-	static $tab = "&nbsp;&nbsp;&nbsp;&nbsp;";
-
 	/* Functions */
 
 	public static function validateXML( $xml, &$error_msg ) {
@@ -47,9 +45,25 @@ END;
 		return $xml_success;
 	}
 
+	static function tableRowHTML($css_class, $data_type, $value = null) {
+		$content = is_null($value) ? $data_type : "$data_type: " . HTML::element('span', array('class' => 'rowValue'), $value);
+		$cell = HTML::rawElement('td', array('colspan' => 2), $content);
+		$text = HTML::rawElement('tr', array('class' => "$css_class"), $cell);
+		$text .= "\n";
+		return $text;
+	}
+
+	static function tableMessageRowHTML($css_class, $name, $value) {
+		$cell1 = HTML::rawElement('td', array(), $name);
+		$cell2 = HTML::rawElement('td', array('class' => 'msg'), $value);
+		$text = HTML::rawElement('tr', array('class' => "$css_class"), $cell1 . "\n" . $cell2);
+		$text .= "\n";
+		return $text;
+	}
+
 	static function parseTemplateInfo($template_info_xml) {
 		$text = "<p>Template description:</p>\n";
-		$text .= "<table>\n";
+		$text .= "<table class=\"templateInfo\">\n";
 		foreach ($template_info_xml->children() as $tag => $child) {
 			if ($tag == 'group') {
 				$text .= self::parseParamGroup($child);
@@ -62,11 +76,8 @@ END;
 	}
 
 	static function parseParamGroup($param_group_xml) {
-		$text = "<tr>\n";
-		$text .= "<td colspan=\"2\" style=\"background: #bbaa88\">";
 		$id = $param_group_xml->attributes()->id;
-		$text .= "&nbsp;Group: <strong>$id</strong></td>";
-		$text .= "</tr>\n";
+		$text = self::tableRowHTML('topRow', 'Group', $id);
 		foreach ($param_group_xml->children() as $child) {
 			$text .= self::parseParam($child);
 		}
@@ -75,7 +86,7 @@ END;
 
 	static function parseParam($param_xml) {
 		$id = $param_xml->attributes()->id;
-		$text = "<tr><td colspan=\"2\" style=\"background: #d3c2a0\">" . self::$tab . "Parameter: <strong>$id</strong></td></tr>\n";
+		$text = self::tableRowHTML('row2', 'Parameter', $id);
 		foreach ($param_xml->children() as $tag_name => $child) {
 			if ($tag_name == 'label') {
 				$text .= self::parseParamLabel($child);
@@ -94,9 +105,9 @@ END;
 
 	static function parseParamLabel($param_label_xml) {
 		if (count($param_label_xml->children()) == 0) {
-			$text .= "<tr><td colspan=\"2\" style=\"background: #eeddbb\">" . self::$tab . self::$tab . "Label: $param_label_xml</td></tr>\n";
+			$text = self::tableRowHTML('row3', 'Label', $param_label_xml);
 		} else {
-			$text .= "<tr><td colspan=\"2\" style=\"background: #eeddbb\">" . self::$tab . self::$tab . "Label</td></tr>\n";
+			$text = self::tableRowHTML('row3', 'Label');
 			foreach ($param_label_xml->children() as $child) {
 				$text .= self::parseMsg($child);
 			}
@@ -106,9 +117,9 @@ END;
 
 	static function parseParamDescription($param_desc_xml) {
 		if (count($param_desc_xml->children()) == 0) {
-			$text = "<tr><td colspan=\"2\" style=\"background: #eeddbb\">" . self::$tab . self::$tab . "Description: $param_desc_xml</td></tr>\n";
+			$text = self::tableRowHTML('row3', 'Description', $param_desc_xml);
 		} else {
-			$text = "<tr><td colspan=\"2\" style=\"background: #eeddbb\">" . self::$tab . self::$tab . "Description</td></tr>\n";
+			$text = self::tableRowHTML('row3', 'Description');
 			foreach ($param_desc_xml->children() as $child) {
 				$text .= self::parseMsg($child);
 			}
@@ -118,12 +129,12 @@ END;
 
 	static function parseParamType($param_type_xml) {
 		$name = $param_type_xml->attributes()->name;
-		$text = "<tr><td colspan=\"2\" style=\"background: #eeddbb\">" . self::$tab . self::$tab . "Type: $name</td></tr>\n";
+		$text = self::tableRowHTML('row3', 'Type', $name);
 		return $text;
 	}
 
 	static function parseParamOptions($param_options_xml) {
-		$text = "<tr><td colspan=\"2\" style=\"background: #ffff77\">" . self::$tab . self::$tab . "Options</td></tr>\n";
+		$text = self::tableRowHTML('optionsTopRow', 'Options');
 		foreach ($param_options_xml->children() as $child) {
 			$text .= self::parseParamOption($child);
 		}
@@ -132,9 +143,9 @@ END;
 
 	static function parseParamOption($param_option_xml) {
 		$name = $param_option_xml->attributes()->name;
-		$text = "<tr><td colspan=\"2\" style=\"background: #ffff99\">" . self::$tab . self::$tab . self::$tab . "Option: <strong>$name</strong></td></tr>\n";
+		$text = self::tableRowHTML('optionsRow2', 'Option', $name);
 		if (count($param_option_xml->children()) == 0) {
-			$text .= "<tr><td colspan=\"2\" style=\"background: #ffffbb\">" . self::$tab . self::$tab . self::$tab . self::$tab . "$param_option_xml</td></tr>\n";
+			$text .= self::tableRowHTML('optionsRow3', $param_option_xml);
 		} else {
 			foreach ($param_option_xml->children() as $child) {
 				$text .= self::parseOptionMsg($child);
@@ -145,19 +156,19 @@ END;
 
 	static function parseMsg($msg_xml) {
 		$language = $msg_xml->attributes()->language;
-		$text = "<tr><td style=\"background: #ffeecc\">" . self::$tab . self::$tab . self::$tab . "$language</td><td style=\"background: white\">$msg_xml</td></tr>\n";
+		$text = self::tableMessageRowHTML('row4', $language, $msg_xml);
 		return $text;
 	}
 
 	static function parseOptionMsg($msg_xml) {
 		$language = $msg_xml->attributes()->language;
-		$text = "<tr><td style=\"background: #ffffbb\">" . self::$tab . self::$tab . self::$tab . self::$tab . "$language</td><td style=\"background: white\">$msg_xml</td></tr>\n";
+		$text = self::tableMessageRowHTML('optionsRow3', $language, $msg_xml);
 		return $text;
 	}
 
 	static function parseParamData($param_data_xml) {
 		$app = $param_data_xml->attributes()->app;
-		$text = "<tr><td colspan=\"2\" style=\"background: #77dd77\">" . self::$tab . self::$tab . "Data for app: <strong>$app</strong></td></tr>\n";
+		$text = self::tableRowHTML('dataTopRow', 'Data for app', $app);
 		foreach ($param_data_xml->children() as $child) {
 			$text .= self::parseField($child);
 		}
@@ -166,7 +177,7 @@ END;
 
 	static function parseField($field_xml) {
 		$name = $field_xml->attributes()->name;
-		$text = "<tr><td style=\"background: #99ff99\">" . self::$tab . self::$tab . self::$tab . "$name</td><td style=\"background: white\">$field_xml</td></tr>\n";
+		$text = self::tableMessageRowHTML('dataRow2', $name, $field_xml);
 		return $text;
 	}
 
