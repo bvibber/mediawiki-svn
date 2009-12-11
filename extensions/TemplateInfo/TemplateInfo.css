@@ -1,0 +1,87 @@
+table.templateInfo {
+}
+
+table.templateInfo td {
+	padding-right: 5px;
+}
+
+table.templateInfo tr.topRow {
+	background: #bbaa88;
+}
+
+table.templateInfo tr.topRow td {
+	padding-left: 5px;
+}
+
+table.templateInfo tr.topRow span.rowValue {
+	font-weight: bold;
+}
+
+table.templateInfo tr.row2 {
+	background: #d3c2a0;
+}
+
+table.templateInfo tr.row2 td {
+	padding-left: 20px;
+}
+
+table.templateInfo tr.row2 span.rowValue {
+	font-weight: bold;
+}
+
+table.templateInfo tr.row3 {
+	background: #eeddbb;
+}
+
+table.templateInfo tr.row3 td {
+	padding-left: 35px;
+}
+
+table.templateInfo tr.row4 {
+	background: #ffeecc;
+}
+
+table.templateInfo tr.row4 td {
+	padding-left: 50px;
+}
+
+table.templateInfo tr.optionsTopRow td {
+	padding-left: 20px;
+	background: #ffff77;
+}
+
+table.templateInfo tr.optionsRow2 td {
+	padding-left: 35px;
+	background: #ffff99;
+}
+
+table.templateInfo tr.optionsRow2 span.rowValue {
+	font-weight: bold;
+}
+
+table.templateInfo tr.optionsRow3 td {
+	padding-left: 50px;
+	background: #ffffbb;
+}
+
+table.templateInfo tr.dataTopRow td {
+	padding-left: 20px;
+	background: #77dd77;
+}
+
+table.templateInfo tr.dataTopRow span.rowValue {
+	font-weight: bold;
+}
+
+table.templateInfo tr.dataRow2 {
+	background: #99ff99;
+}
+
+table.templateInfo tr.dataRow2 td {
+	padding-left: 35px;
+}
+
+table.templateInfo tr td.msg {
+	padding-left: 5px;
+	background: white;
+}
