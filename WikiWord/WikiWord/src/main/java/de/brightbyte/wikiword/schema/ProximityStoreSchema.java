@@ -64,12 +64,30 @@ import de.brightbyte.wikiword.TweakSet;
  * <dl>
  * 		<dt>concept1</dt><dd>The first concept. Comprises a unique key together with concept2.</dd>
  * 		<dt>concept2</dt><dd>The second concept. Comprises a unique key together with concept1.</dd>
- * 		<dt>proximity</dt><dd>The semantic proximity of concept1 and concept2. This is given by the scalar products
- * 												of the normalized feature vectors of concept1 and concept2, as stored in the feature table.
- * 												This can be interpreted as the cosin of the angle between the concepts' feature vectors.
- * 												Entries with a low proximity value may be omitted (subject to tweak value <tt>proximity.threshold</tt>).</dd>
+ * 		<dt>level</dt><dd>The level of the proximity measure. See calculation notes below.</dd>
+ * 		<dt>proximity</dt><dd>The semantic proximity of concept1 and concept2. See below for how this is calculated.</dd>
  * </dl>
+ * <p>Proximity is calculated at different levels (i.e. in a sequence of passes). The base level (0) provides the basis 
+ * for calculating all subsequent levels (with numbers 1, 2, 3, etc).
+ * </p>
+ * <p>Base (level 0) proximity, prox_0(A, B), is given by the COSIM seimilarity measure for the feature vectors of the concepts A and B.
+ *  This is calculated as the scalar product of the normalized feature vectors of A and B,
+ * as stored in the feature table.  This can be interpreted as the cosin of the angle between the concepts' feature vectors.
+ * 	Entries with a proximity value below some constant <tt>min_prox</tt> may be omitted (<tt>min_prox</tt> is taken from the
+ *  tweak value <tt>proximity.threshold</tt>).
+ * </p>
  * <p>Note that the proximity relation is symmetrical, i.e. prox(A, B) = prox(B, A), regardless if the weight factors used.</p>
+ * <p>Further levels of proximity, prox_n(A, B), are calculated from proximity values with lower indeces as follows:
+ * For m &lt; n and k &lt; n, if prox_m(A, B) &gt;= min_prox and prox_k(B, C) &gt;= min_prox and prox(A, C) is not yet known, 
+ * then prox_n(A, C) is set to prox_m(A, B) * prox_k(B, C), if that new value is not smaller than min_prox.
+ * Since porximity values are &lt;=0 and &gt;=1, the product of the two values will be less than (or equal too) the two original proximities,
+ * representing a weaker connection between the two indirectly related concepts.
+ * </p> 
+ * <p>Note that for any pair (A, B) of concepts, proximity is only defined on one level, i.e. there is only one proximity value
+ * prox(A, B) for any pair of concepts, the level on which that value was defined is just a secondary propoerty of the proximity:
+ * prox_level(A, B) = n iff prox_n(A, B) is defined. Also, if prox_n(A, B) is defined, no prox_m(A, B) with m != n is defined.  
+ * </p>
+ * <p>How many levels of proximity measures are built on top of the base proximity is governed by the tweak value <tt>proximity.expansion.passes</tt></p>
  * 
  * @author daniel
  */
@@ -123,8 +141,10 @@ public class ProximityStoreSchema extends WikiWordStoreSchema {
 		proximityTable = new RelationTable(this, "proximity", getDefaultTableAttributes());
 		proximityTable.addField( new ReferenceField(this, "concept1", "INT", null, true, null, "concept", "id", null ));
 		proximityTable.addField( new ReferenceField(this, "concept2", "INT", null, true, KeyType.INDEX, "concept", "id", null ) );
+		proximityTable.addField( new DatabaseField(this, "level", "INT", null, true, null ) );
 		proximityTable.addField( new DatabaseField(this, "proximity", "REAL", "DEFAULT 0", true, null ) );
 		proximityTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concepts", new String[] {"concept1", "concept2"}) );
+		proximityTable.addKey( new DatabaseKey(this, KeyType.INDEX, "level", new String[] {"level", "concept1"}) );
 		proximityTable.setAutomaticField(null);
 		addTable(proximityTable);
 	}

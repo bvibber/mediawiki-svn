@@ -30,6 +30,7 @@ public class DatabaseProximityStoreBuilder
 		
 		private DatabaseWikiWordConceptStoreBuilder conceptStore;
 		private double proximityThreshold;
+		private int proximityExpansionPasses;
 		
 		protected DatabaseProximityStoreBuilder(DatabaseWikiWordConceptStoreBuilder conceptStore, ProximityStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
 			super(database, tweaks, agenda);
@@ -47,6 +48,7 @@ public class DatabaseProximityStoreBuilder
 			proximityTable = (RelationTable)proximityInserter.getTable();
 			
 			proximityThreshold = tweaks.getTweak("proximity.threshold", 0.15);
+			proximityExpansionPasses = tweaks.getTweak("proximity.expansion.passes", 3);
 		}
 
 		private static String getBiasFormula(String biasField, double biasCoef) {
@@ -147,12 +149,13 @@ public class DatabaseProximityStoreBuilder
 			}
 		}
 
-		protected int insertProximity(int concept) throws PersistenceException {
-			String sql = "INSERT INTO "+proximityTable.getSQLName()+" (concept1, concept2, proximity)";
-			sql += " SELECT A.concept, B.concept, sum( A.normal_weight * B.normal_weight ) as proximity ";
+		protected int insertProximity(int concept, int level) throws PersistenceException {
+			String sql = "INSERT INTO "+proximityTable.getSQLName()+" (concept1, concept2, level, proximity)";
+			sql += " SELECT A.concept, B.concept, "+level+", sum( A.normal_weight * B.normal_weight ) as proximity ";
 			sql += " FROM "+featureTable.getSQLName()+" as A ";
 			sql += " JOIN "+featureTable.getSQLName()+" as B ON A.feature = B.feature ";
 			sql += " WHERE A.concept = "+concept+" ";
+			sql += " AND A.concept > B.concept"; //NOTE: only calculate half of the matrix, the other half is added by complementProximity
 			sql += " GROUP BY B.concept ";
 			sql += " HAVING proximity > "+proximityThreshold;
 			
@@ -185,14 +188,16 @@ public class DatabaseProximityStoreBuilder
 			protected String name;
 			protected DatabaseTable conceptTable;
 			protected int lastId ;
+			protected int level;
 
 			protected ImportProgressTracker conceptTracker;
 			protected ImportProgressTracker featureTracker;
 			
-			public CollectProximityQuery(String context, String name) {
+			public CollectProximityQuery(String context, String name, int level) {
 				super();
 				this.context = context;
 				this.name = name;
+				this.level = level;
 				this.conceptTable = conceptStore.getDatabaseAccess().getTable("concept");
 				this.conceptTracker = new ImportProgressTracker("concepts");
 				this.featureTracker = new ImportProgressTracker("features");
@@ -241,7 +246,7 @@ public class DatabaseProximityStoreBuilder
 					while (res.next()) {
 						lastId = res.getInt(1);
 						
-						int c = insertProximity(lastId); //TODO: progress tracker!
+						int c = insertProximity(lastId, level); //TODO: progress tracker!
 						n*= c;
 						i+= 1;
 						
@@ -280,23 +285,86 @@ public class DatabaseProximityStoreBuilder
 		 * Builds concept proximity information. For a specification, refer to ProximityStoreSchema
 		 */
 		public void buildProximity() throws PersistenceException {
+			DatabaseTable conceptTable = conceptStore.getDatabaseAccess().getTable("concept");
+
+			if (beginTask("buildProximity", "proximity#self")) {
+				// add self-proximity
+				String sql = "INSERT INTO "+proximityTable.getSQLName()+" (concept1, concept2, level, proximity) ";
+				sql += "SELECT id, id, 0, 1 FROM "+conceptTable.getSQLName();
+				
+				int n = executeChunkedUpdate("buildProximity", "proximity#self", sql, null, conceptTable, "id");
+				endTask("buildProximity", "proximity#self", n+" entries");
+			}
+
 			if (beginTask("buildProximity", "collect")) {
-				CollectProximityQuery query = new CollectProximityQuery("buildProximity", "collect");
+				// calculate base-proximity from feature vectors
+				CollectProximityQuery query = new CollectProximityQuery("buildProximity", "collectBaseProximity", 0);
 				int n = executeChunkedUpdate(query, 1);
 				endTask("buildProximity", "collect", n+" entries");
 			}
 			
-			//FIXME: assert that the proximity values turn out symetrically!
-			/*
-			if (beginTask("buildProximity", "balance")) {
-				String sql = "UPDATE "+proximityTable.getSQLName()+" as P ";
-				sql += " JOIN "+proximityTable.getSQLName()+" as Q ON Q.concept1 = P.concept2  AND Q.concept2 = P.concept1 ";
-				sql += " SET P.proximity = IF(P.proximity > Q.proximity, P.proximity, Q.proximity) ";
-	
-				int n = executeChunkedUpdate("buildProximity", "balance", sql, null, proximityTable, "P.concept1");
-				endTask("buildProximity", "balance", n+" entries");
+			if (beginTask("buildProximity", "collect.complement#level0")) {
+				int n = complementProximity(0);
+				endTask("buildProximity", "collect.complement#level0", n+" entries");
 			}
-			*/
+			
+			int level= 0;
+			while (true) {
+				level++;
+				if (level>proximityExpansionPasses) break;
+				
+				int n = 0;
+				if (beginTask("buildProximity", "distribute.left#level"+level)) {
+					n += expandProximity(level, true); //top half, left filter
+					endTask("buildProximity", "distribute.left#level"+level, n+" entries");
+				}
+
+				if (beginTask("buildProximity", "distribute.right#level"+level)) {
+					n = expandProximity(level, false); //top half, right filter
+					endTask("buildProximity", "distribute.right#level"+level, n+" entries");
+					if (n==0) break; //shorten out - if nothing changed, nothing will change
+				}
+
+				if (beginTask("buildProximity", "distribute.complement#level"+level)) {
+					n = complementProximity(level); //generate bottom half
+					endTask("buildProximity", "distribute.complement#level"+level, n+" entries");
+				}
+			}
+		}
+
+		protected int complementProximity(int level) throws PersistenceException {
+				String sql = "INSERT IGNORE INTO "+proximityTable.getSQLName()+" (concept1, concept2, level, proximity)";
+				sql += " SELECT concept2, concept1, level, proximity ";
+				sql += " FROM "+proximityTable.getSQLName()+" as P ";
+				
+				String where  = " WHERE level = "+level;        //filter by level to avoid overhead
+				where  += " AND concept1 > concept2 "; //look at upper half of matrix to generate the lower half.
+				
+				return executeChunkedUpdate("complementProximity", "complement#level"+level, sql, where, proximityTable, "P.concept1", -10);
 		}	
+		
+		protected int expandProximity(int level, boolean leftFilter) throws PersistenceException {
+			//NOTE: calculate transitiv proximity: prox(A,C) = prox(A,B) *  prox(B,C)
+			//to make better use of indexes, calculate as prox(A,C) = prox(B,A) *  prox(B,C),
+			//i.e. join on P.concept1 = Q.concept1
+			
+			String sql = "INSERT IGNORE INTO "+proximityTable.getSQLName()+" (concept1, concept2, level, proximity)";
+			sql += " SELECT P.concept2, Q.concept2, "+level+", P.proximity * Q.proximity ";
+			sql += " FROM "+proximityTable.getSQLName()+" as P ";
+			sql += " JOIN "+proximityTable.getSQLName()+" as Q ON P.concept1 = Q.concept1 ";
+			
+			String where  = " WHERE P.proximity * Q.proximity > "+proximityThreshold+" "; //filter by threshold
+			where  += " AND P.concept2 != Q.concept2 "; //no circular proximity
+			where  += " AND P.concept2 != P.concept1 "; //no self-proximity 
+			where  += " AND P.concept2 > Q.concept2 "; //only calculate half of the values, the complementary entries are added by complementProximity
+			
+			//if none of the values was added in the previous pass, the value would have been added earlier
+			//NOTE: condition: P.level = level-1 OR Q.level = level-1; to make better use of indexes,
+			//      we first filter for one (left), then for the other (right) condition.
+			if (leftFilter) where  += " AND P.level = "+(level-1); 
+			else where  += " AND Q.level = "+(level-1); 
+			
+			return executeChunkedUpdate("expandProximity", "expand#level"+level, sql, where, proximityTable, leftFilter ? "P.concept1" : "Q.concept1", 3);
+	}	
 		
 }
