@@ -63,7 +63,7 @@ mvFirefoggRender.prototype = {
 		// Should be externally controlled		
 		if ( options.target_startRender ) {
 			$j( options.target_startRender ).click( function() {
-				js_log( "Start render" );
+				mw.log( "Start render" );
 				_this.startRender();
 			} )
 			this.target_startRender = options.target_startRender;
@@ -111,7 +111,7 @@ mvFirefoggRender.prototype = {
 					if ( _this.continue_rendering ) {
 						doNextFrame();
 					} else {
-						js_log('done with render');
+						mw.log('done with render');
 						// else quit:
 						//_this.doFinalRender();
 					}

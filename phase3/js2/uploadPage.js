@@ -91,7 +91,7 @@ var mwUploadHelper = {
 	* Fill in a destination file-name based on a source asset name.
 	*/
 	doDestinationFill: function( targetElm ) {
-		js_log( "doDestinationFill" )
+		mw.log( "doDestinationFill" )
 		// Remove any previously flagged errors
 		$j( '#mw-upload-permitted,#mw-upload-prohibited' ).hide();
 

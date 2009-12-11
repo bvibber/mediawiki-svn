@@ -71,7 +71,7 @@ mw.addMessages( {
 		}
 				
 		if ( mw.parseUri( $.proxy.server_frame ).host ==  mw.parseUri( document.URL ).host ) {
-			js_log( "Error: trying to proxy local domain? " );
+			mw.log( "Error: trying to proxy local domain? " );
 			return false;
 		}
 		return true;
@@ -93,7 +93,7 @@ mw.addMessages( {
 			'request' : requestQuery
 		}
 		
-		js_log( "Do frame proxy request on src: \n" + $.proxy.server_frame + "\n" + JSON.stringify(  requestQuery ) );
+		mw.log( "Do frame proxy request on src: \n" + $.proxy.server_frame + "\n" + JSON.stringify(  requestQuery ) );
 					
 		// We can't update src's so we have to remove and add all the time :(
 		// @@todo we should support frame msg system 
@@ -109,7 +109,7 @@ mw.addMessages( {
 			setTimeout( function() {
 				if ( !frameProxyOk ) {
 					// we timmed out no api proxy (should make sure the user is "logged in")
-					js_log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
+					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
 					$.proxy.proxyNotReadyDialog();
 				}
 			}, 5000 );
@@ -154,7 +154,7 @@ mw.addMessages( {
 	* @param {Function} callback Function called once the request is complete 
 	*/
 	$.proxy.doRequest = function( requestQuery, callback ) {
-		js_log( "doRequest:: " + JSON.stringify( requestQuery ) );
+		mw.log( "doRequest:: " + JSON.stringify( requestQuery ) );
 		lastApiReq = requestQuery;
 		// setup the callback:
 		$.proxy.callback = callback;
@@ -172,14 +172,14 @@ mw.addMessages( {
 	$.proxy.nested = function( hashResult ) {
 		// Close the loader if present: 
 		$j.closeLoaderDialog();
-		js_log( '$.proxy.nested callback :: ' + unescape( hashResult ) );
+		mw.log( '$.proxy.nested callback :: ' + unescape( hashResult ) );
 		frameProxyOk = true;
 		
 		// Try to parse the hash result 
 		try {
 			var resultObject = JSON.parse( unescape( hashResult ) );
 		} catch ( e ) {
-			js_log( "Error could not parse hashResult" );
+			mw.log( "Error could not parse hashResult" );
 		}
 		
 		// Special callback to frameProxyOk flag 
@@ -259,11 +259,11 @@ mw.addMessages( {
 		try {
 			var clientRequest = JSON.parse( hashMsg );
 		} catch ( e ) {
-			js_log( "ProxyServer:: could not parse anchor" );
+			mw.log( "ProxyServer:: could not parse anchor" );
 		}
 		
 		if ( !clientRequest || !clientRequest.clientFrame ) {
-			js_log( "Error: no client domain provided " );
+			mw.log( "Error: no client domain provided " );
 			$j( 'body' ).append( "no client frame provided" ); 
 			return false;
 		}		
@@ -271,12 +271,12 @@ mw.addMessages( {
 		// Make sure we are logged in 
 		// (its a normal mediaWiki page so all site vars should be defined)		
 		if ( !wgUserName ) {
-			js_log( 'Error Not logged in' );
+			mw.log( 'Error Not logged in' );
 			return false;
 		}
 		
-		js_log( "Setup server on: "  + mw.parseUri( document.URL ).host  );
-		js_log('Client frame: ' + clientRequest.clientFrame );
+		mw.log( "Setup server on: "  + mw.parseUri( document.URL ).host  );
+		mw.log('Client frame: ' + clientRequest.clientFrame );
 				
 		var clientDomain =  mw.parseUri( clientRequest.clientFrame ).host ;
 		/**
@@ -292,7 +292,7 @@ mw.addMessages( {
 		// Check master blacklist
 		for ( var i in proxyConfig.master_blacklist ) {
 			if ( clientDomain == proxyConfig.master_blacklist ) {
-				js_log( 'domain: ' + clientDomain + ' is blacklisted ( no request )' );
+				mw.log( 'domain: ' + clientDomain + ' is blacklisted ( no request )' );
 				return false;
 			}
 		}

@@ -10,7 +10,7 @@ seqRemoteSearchDriver.prototype = {
 	sequence_add_target:false,
 	init:function( mySequence ) {
 		var _this = this;
-		js_log( "init:seqRemoteSearchDriver" );
+		mw.log( "init:seqRemoteSearchDriver" );
 		
 		// Setup remote search driver with a seq parent:
 		this.pSeq = mySequence;
@@ -40,7 +40,7 @@ seqRemoteSearchDriver.prototype = {
 		if ( !this.pSeq.parent_do_refresh_timeline ) {
 			this.pSeq.parent_do_refresh_timeline = this.pSeq.do_refresh_timeline;
 			this.pSeq.do_refresh_timeline = function() {
-				js_log( "seqRemoteSearchDriver::" + _this.pSeq.disp_menu_item );
+				mw.log( "seqRemoteSearchDriver::" + _this.pSeq.disp_menu_item );
 				// call the parent
 				_this.pSeq.parent_do_refresh_timeline();
 				//Add our local bindings
@@ -57,7 +57,7 @@ seqRemoteSearchDriver.prototype = {
 
 		// Add an additional click binding
 		$j( '.rsd_res_item' ).click( function() {
-			js_log( 'SeqRemoteSearch: rsd_res_item: click (remove sequence_add_target)' );
+			mw.log( 'SeqRemoteSearch: rsd_res_item: click (remove sequence_add_target)' );
 			_this.sequence_add_target = false;
 		} );
 
@@ -68,13 +68,13 @@ seqRemoteSearchDriver.prototype = {
 			},
 			revert:'invalid',
 			start:function() {
-				js_log( 'start drag' );
+				mw.log( 'start drag' );
 			}
 		} );
 		$j( ".mv_clip_drag" ).droppable( 'destroy' ).droppable( {
 			accept: '.rsd_res_item',
 			over:function( event, ui ) {
-				// js_log("over : mv_clip_drag: " + $j(this).attr('id') );
+				// mw.log("over : mv_clip_drag: " + $j(this).attr('id') );
 				$j( this ).css( 'border-right', 'solid thick red' );
 			},
 			out:function( event, ui ) {
@@ -82,7 +82,7 @@ seqRemoteSearchDriver.prototype = {
 			},
 			drop: function( event, ui ) {
 				$j( this ).css( 'border-right', 'solid thin white' );
-				js_log( "Droped: " + $j( ui.draggable ).attr( 'id' ) + ' on ' +  $j( this ).attr( 'id' ) );
+				mw.log( "Droped: " + $j( ui.draggable ).attr( 'id' ) + ' on ' +  $j( this ).attr( 'id' ) );
 				_this.sequence_add_target =  $j( this ).attr( 'id' );
 				// load the original draged item
 				var rObj = _this.getResourceFromId( $j( ui.draggable ).attr( 'id' ) );
@@ -93,7 +93,7 @@ seqRemoteSearchDriver.prototype = {
 	},
 	insertResource:function( rObj ) {
 		var _this = this;
-		js_log( "SEQ insert resource after:" + _this.sequence_add_target  + ' of type: ' + rObj.mime );
+		mw.log( "SEQ insert resource after:" + _this.sequence_add_target  + ' of type: ' + rObj.mime );
 		if ( _this.sequence_add_target ) {
 			var tClip = _this.pSeq.getClipFromSeqID( _this.sequence_add_target );
 			var target_order = false;
@@ -126,7 +126,7 @@ seqRemoteSearchDriver.prototype = {
 			
 			// Refresh the timeline:
 			_this.pSeq.do_refresh_timeline();
-			js_log( "run close all: " );
+			mw.log( "run close all: " );
 			_this.closeAll();
 		} );
 	},
@@ -164,7 +164,7 @@ seqRemoteSearchDriver.prototype = {
 		this.parent_showResourceEditor( rObj, rsdElement );
 	},
 	closeAll:function() {
-		js_log( 'should close: seq_resource_import' );
+		mw.log( 'should close: seq_resource_import' );
 		$j( '#seq_resource_import' ).dialog( 'close' ).dialog( 'destroy' ).remove();
 		// Unhide the results container
 		$j( '#rsd_results_container' ).show();
@@ -178,7 +178,7 @@ seqRemoteSearchDriver.prototype = {
 		}
 	},
 	cancelClipEditCB:function() {
-		js_log( 'seqRSD:cancelClipEditCB' );
+		mw.log( 'seqRSD:cancelClipEditCB' );
 		$j( '#seq_resource_import' ).dialog( 'close' ).dialog( 'destroy' ).remove();
 	}
 };

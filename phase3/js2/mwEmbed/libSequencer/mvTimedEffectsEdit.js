@@ -79,7 +79,7 @@ mvTimedEffectsEdit.prototype = {
 		this.doEditMenu();
 	},
 	doEditMenu:function() {
-		js_log( 'mvTimedEffects : doEditMenu::' );
+		mw.log( 'mvTimedEffects : doEditMenu::' );
 		var _this = this;
 		// add in subMenus if set
 		// check for submenu and add to item container
@@ -112,7 +112,7 @@ mvTimedEffectsEdit.prototype = {
 		o += '</div>';
 		// add sub menu container with menu html:
 		$j( '#' + this.control_ct ).html( o ) ;
-		js_log( 'should have set: #' + this.control_ct + ' to: ' + o );
+		mw.log( 'should have set: #' + this.control_ct + ' to: ' + o );
 		// set up bindins:
 		$j( '#mv_submenu_timedeffect' ).tabs( {
 			selected: selected_tab,
@@ -126,9 +126,9 @@ mvTimedEffectsEdit.prototype = {
 	},
 	showEditUI:function( tab_id ) {
 		// @@todo fix the double display of showEditUI
-		js_log( "showEditUI::" );
+		mw.log( "showEditUI::" );
 		if ( !this.menu_items[ tab_id ] ) {
-			js_log( 'error: showEditUI missing item:' + tab_id );
+			mw.log( 'error: showEditUI missing item:' + tab_id );
 		} else {
 			// use the menu_item config to map to function display
 			this.menu_items[tab_id].doEdit( this );
@@ -137,7 +137,7 @@ mvTimedEffectsEdit.prototype = {
 	doEditEffectDisplayEdit:function() {
 		var _this = this;
 		var appendTarget = '#te_effects';
-		js_log( 'type:' + _this.rObj['type'] );
+		mw.log( 'type:' + _this.rObj['type'] );
 		$j( appendTarget ).html( gM( 'mwe-loading_txt' ) );
 		// @@todo integrate into core and loading system:
 		loadExternalJs( mw.getMwEmbedPath() + 'libClipEdit/pixastic-editor/editor.js?' + getMwReqParam() );
@@ -162,7 +162,7 @@ mvTimedEffectsEdit.prototype = {
 	},
 	doTransitionDisplayEdit:function( target_item ) {
 		var _this = this;
-		js_log( "doTransitionDisplayEdit: " + target_item );
+		mw.log( "doTransitionDisplayEdit: " + target_item );
 		var apendTarget = '#te_' + target_item;
 		// check if we have a transition of type clip_attr
 		if ( !this.rObj[ this.menu_items[ target_item ].clip_attr ] ) {
@@ -232,7 +232,7 @@ mvTimedEffectsEdit.prototype = {
 				case 'fadeColor':
 					var cColor = ( cTran['fadeColor'] ) ? cTran['fadeColor']:'';
 					$j( htmlTarget ).append( 'Select Color: <div class="colorSelector"><div class="colorIndicator" style="background-color: ' + cColor + '"></div></div>' );
-					js_log( 'cs target: ' + htmlTarget + ' .colorSelector' );
+					mw.log( 'cs target: ' + htmlTarget + ' .colorSelector' );
 
 
 					$j( htmlTarget + ' .colorSelector' ).ColorPicker( {
@@ -246,7 +246,7 @@ mvTimedEffectsEdit.prototype = {
 						onHide: function ( colpkr ) {
 							$j( colpkr ).fadeOut( 500 );
 							_this.pSeq.plObj.setCurrentTime( 0, function() {
-								js_log( "render ready" );
+								mw.log( "render ready" );
 							} );
 							return false;
 						},
@@ -263,10 +263,10 @@ mvTimedEffectsEdit.prototype = {
 
 	},
 	getTransitionListControl : function( target_out ) {
-		js_log( "getTransitionListControl" );
+		mw.log( "getTransitionListControl" );
 		var o = '<h3>' + gM( 'mwe-add-transition' ) + '</h3>';
 		for ( var type in mvTransLib['type'] ) {
-			js_log( 'on tran type: ' + type );			
+			mw.log( 'on tran type: ' + type );			
 			var tLibSet = mvTransLib['type'][ type ];
 			for ( var subtype in tLibSet ) {
 				o += '<img style="float:left;padding:10px;" ' +

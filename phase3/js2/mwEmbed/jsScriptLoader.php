@@ -26,14 +26,16 @@ class jsScriptLoader {
 	var $rKey = ''; // the request key
 	var $error_msg = '';
 	var $debug = false;
-	var $jsvarurl = false; // whether we should include generated JS (special class '-')
+
+	// Whether we should include generated JS (special class '-')
+	var $jsvarurl = false;
 	var $doProcReqFlag = true;
 
 	function outputFromCache(){
 		// Process the request
-		$this->rKey = $this->preProcRequestVars();
+		$this->requestKey = $this->preProcRequestVars();
 		// Setup file cache object
-		$this->sFileCache = new simpleFileCache( $this->rKey );
+		$this->sFileCache = new simpleFileCache( $this->requestKey );
 		if ( $this->sFileCache->isFileCached() ) {
 			// Just output headers so we can use PHP's @readfile::
 			$this->outputJsHeaders();
@@ -47,30 +49,26 @@ class jsScriptLoader {
 		global 	$wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $IP,
 		$wgEnableScriptMinify, $wgUseFileCache, $wgExtensionMessagesFiles;
 
-		//load the ExtensionMessagesFiles
-		$wgExtensionMessagesFiles['mwEmbed'] = realpath( dirname( __FILE__ ) ) . '/php/languages/mwEmbed.i18n.php';
+		// Load the ExtensionMessagesFiles
+		$wgExtensionMessagesFiles[ 'mwEmbed' ] = realpath( dirname( __FILE__ ) ) . '/php/languages/mwEmbed.i18n.php';
 
-		//reset the rKey:
-		$this->rKey = '';
+		// Reset the requestKey:
+		$this->requestKey = '';
 		//do the post proc request with configuration vars:
 		$this->postProcRequestVars();
 		//update the filename (if gzip is on)
 		$this->sFileCache->getCacheFileName();
 
-		// Setup script loader header info
-		// @@todo we might want to put these into the mw var per class request set
-		// and or include a callback to avoid pulling in old browsers that don't support
-		// the onLoad attribute for script elements.
-		$this->jsout .= 'var mwSlScript = "' .  $_SERVER['SCRIPT_NAME']  . '";' . "\n";
-		$this->jsout .= 'var mwSlGenISODate = "' . date( 'c' ) . '";'  . "\n";
-		$this->jsout .= 'var mwSlURID = "' . htmlspecialchars( $this->urid ) . '";'  . "\n";
+		// Setup script loader header:
+		$this->jsout .= 'var mwScriptLoaderDate = "' . date( 'c' ) . '";'  . "\n";
+		$this->jsout .= 'var mwScriptLoaderRequestKey = "' . htmlspecialchars( $this->requestKey ) . '";'  . "\n";
 		$this->jsout .= 'var mwLang = "' . htmlspecialchars( $this->langCode ) . '";' . "\n";
 		// Build the output
 
 		// Swap in the appropriate language per js_file
 		foreach ( $this->jsFileList as $classKey => $file_name ) {
-			//get the script content
-			$jstxt = $this->getScriptText($classKey, $file_name);
+			// Get the script content
+			$jstxt = $this->getScriptText( $classKey, $file_name );
 			if( $jstxt ){
 				$this->jsout .= $this->doProcessJs( $jstxt );
 			}
@@ -176,10 +174,14 @@ class jsScriptLoader {
 		// Output JS MIME type:
 		header( 'Content-Type: text/javascript' );
 		header( 'Pragma: public' );
-		// Cache for 1 day ( we should always change the request URL
-		// based on the SVN or article version.
-		$one_day = 60 * 60 * 24;
-		header( "Expires: " . gmdate( "D, d M Y H:i:s", time() + $one_day ) . " GM" );
+		if( $this->debug ){
+			header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+			header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+		}else{
+			// Cache for 2 days ( we should always change the request URL so this could be higher in my opinion)
+			$one_day = 60 * 60 * 24 * 2;
+			header( "Expires: " . gmdate( "D, d M Y H:i:s", time() + $one_day ) . " GM" );
+		}
 	}
 
 	function outputJsWithHeaders() {
@@ -269,7 +271,7 @@ class jsScriptLoader {
 						}
 						if( $doAddWT ){
 							$this->jsFileList[$reqClass] = true;
-							$this->rKey .= $reqClass;
+							$this->requestKey .= $reqClass;
 							$this->jsvarurl = true;
 						}
 						continue;
@@ -282,7 +284,7 @@ class jsScriptLoader {
 						$this->error_msg .= 'Requested class: ' . htmlspecialchars( $reqClass ) . ' not found' . "\n";
 					}else{
 						$this->jsFileList[ $reqClass ] = $jsFilePath;
-						$this->rKey .= $reqClass;
+						$this->requestKey .= $reqClass;
 					}
 				}
 			}
@@ -290,14 +292,14 @@ class jsScriptLoader {
 
 
 		// Add the language code to the rKey:
-		$this->rKey .= '_' . $wgContLanguageCode;
+		$this->requestKey .= '_' . $wgContLanguageCode;
 
 		// Add the unique rid
-		$this->rKey .= $this->urid;
+		$this->requestKey .= $this->urid;
 
 		// Add a minify flag
 		if ( $wgEnableScriptMinify ) {
-			$this->rKey .= '_min';
+			$this->requestKey .= '_min';
 		}
 	}
 	/**
@@ -404,7 +406,7 @@ class jsScriptLoader {
 		global $wgEnableScriptLocalization;
 		// Strip out js_log debug lines (if not in debug mode)
 		if( !$this->debug )
-			 $str = preg_replace('/\n\s*js_log\(([^\)]*\))*\s*[\;\n]/U', "\n", $str);
+			 $str = preg_replace('/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $str);
 
 		// Do language swap by index:
 		if ( $wgEnableScriptLocalization ){
@@ -431,7 +433,8 @@ class jsScriptLoader {
 		}
 		$ignorenext = false;
 		$inquote = false;
-		//look for closing } not inside quotes::
+
+		// Look for closing } not inside quotes::
 		for ( $i = $returnIndex['s']; $i < strlen( $str ); $i++ ) {
 			$char = $str[$i];
 			if ( $ignorenext ) {
@@ -478,22 +481,23 @@ class jsScriptLoader {
 
 	static public function getMsgKeys(& $jmsg, $langCode = false){
 		global $wgContLanguageCode;
-		//check the langCode
+		// Check the langCode
 		if(!$langCode)
 			$langCode = $wgContLanguageCode;
 
 		// Get the msg keys for the a json array
 		foreach ( $jmsg as $msgKey => $default_en_value ) {
-			$jmsg[$msgKey] = wfMsgGetKey( $msgKey, true, $langCode, false );
+			$jmsg[ $msgKey ] = wfMsgGetKey( $msgKey, true, $langCode, false );
 		}
 	}
 	function languageMsgReplace( $json_str ) {
 		$jmsg = FormatJson::decode( '{' . $json_str . '}', true );
 		// Do the language lookup
 		if ( $jmsg ) {
-			//see if any msgKey has the PLURAL template tag
+
+			// See if any msgKey has the PLURAL template tag
 			//package in PLURAL mapping
-			self::getMsgKeys($jmsg, $this->langCode);
+			self::getMsgKeys( $jmsg, $this->langCode );
 
 			// Return the updated loadGM JSON with updated msgs:
 			return FormatJson::encode( $jmsg );
@@ -517,20 +521,20 @@ class simpleFileCache {
 	var $rKey = null;
 
 	public function __construct( &$rKey ) {
-		$this->rKey = $rKey;
+		$this->requestKey = $rKey;
 		$this->getCacheFileName();
 	}
 
 	public function getCacheFileName() {
 		global $wgUseGzip, $wgScriptCacheDirectory;
 
-		$hash = md5( $this->rKey );
+		$hash = md5( $this->requestKey );
 		# Avoid extension confusion
-		$key = str_replace( '.', '%2E', urlencode( $this->rKey ) );
+		$key = str_replace( '.', '%2E', urlencode( $this->requestKey ) );
 
 		$hash1 = substr( $hash, 0, 1 );
 		$hash2 = substr( $hash, 0, 2 );
-		$this->filename = "{$wgScriptCacheDirectory}/{$hash1}/{$hash2}/{$this->rKey}.js";
+		$this->filename = "{$wgScriptCacheDirectory}/{$hash1}/{$hash2}/{$this->requestKey}.js";
 
 		// Check for defined files::
 		if( is_file( $this->filename ) )

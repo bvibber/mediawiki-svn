@@ -53,13 +53,13 @@ flickrSearch.prototype = {
 	*/
 	getSearchResults:function( search_query ) {
 		var _this = this;
-		js_log( "flickr::getSearchResults" );
+		mw.log( "flickr::getSearchResults" );
 		
 		// call parent for common initialisation:  
 		this.parent_getSearchResults();
 		
 		// setup the flickr request: 
-		var reqObj = {
+		var request = {
 			'method':'flickr.photos.search',
 			'format':'json',
 			'license':this._license_keys,
@@ -69,11 +69,7 @@ flickrSearch.prototype = {
 			'text': search_query,
 			'extras' :	'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_m, url_o'
 		}
-		do_api_req( {
-			'data': reqObj,
-			'url': this.provider.api_url,
-			'jsonCB':'jsoncallback',
-		},	function( data ) {
+		$j.getJSON( this.provider.api_url + '?jsoncallback=?', request, function( data ) {
 			_this.addResults( data );
 			_this.loading = false;
 		} );

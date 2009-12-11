@@ -60,7 +60,7 @@ baseRemoteSearch.prototype = {
 	* @param {Object} options The set of options for the remote search class
 	*/
 	init: function( options ) {	
-		js_log( 'mvBaseRemoteSearch:init' );
+		mw.log( 'mvBaseRemoteSearch:init' );
 		for ( var i in options ) {
 			this[i] = options[i];
 		}
@@ -99,7 +99,7 @@ baseRemoteSearch.prototype = {
 	* @param {String} provider_url the source url (used to generate absolute links)
 	*/
 	addRSSData:function( data , provider_url ) {
-		js_log( 'f:addRSSData' );
+		mw.log( 'f:addRSSData' );
 		var _this = this;
 		var http_host = '';
 		var http_path = '';
@@ -109,13 +109,13 @@ baseRemoteSearch.prototype = {
 			http_path = pUrl.directory;
 		}
 		var items = data.getElementsByTagName( 'item' );
-		// js_log('found ' + items.length );
-		$j.each( items, function( inx, item ) {		
+		// mw.log('found ' + items.length );
+		$j.each( items, function( inx, item ) {	
 			var resource = { };
 			for ( var attr in rsd_default_rss_item_mapping ) {				
 				_this.mapAttributeToResource( resource, item, attr );
 			}
-			// make relative urls absolute:
+			// Make relative urls absolute:
 			var url_param = new Array( 'src', 'poster' );
 			for ( var j = 0; j < url_param.length; j++ ) {
 				var p = url_param[j];
@@ -123,7 +123,7 @@ baseRemoteSearch.prototype = {
 					if ( resource[p].substr( 0, 1 ) == '/' ) {
 						resource[p] = http_host + resource[p];
 					}
-					if ( mw.parseUri( resource[i] ).host ==  resource[p] ) {
+					if ( mw.parseUri( resource[ j ] ).host ==  resource[p] ) {
 						resource[p] = http_host + http_path + resource[p];
 					}
 				}
@@ -210,13 +210,14 @@ baseRemoteSearch.prototype = {
 		if(! options.width )
 			options.width = resource.width;
 		if(! options.height )
-			options.height = resource.height
+			options.height = resource.height;
 			
 		var outHtml  = '';
 		if ( options['max_height'] ) {
 			options.height = ( options.max_height > resource.height ) ? resource.height : options.max_height;
-			options.width = ( resource.width / resource.height ) * options.height;
-		}
+			options.width = ( resource.width / resource.height ) * options.height;						
+		}		
+		
 		options.style = '';
 		if( options.height )
 			options.style += 'height:' + options.height + 'px;';
@@ -243,14 +244,14 @@ baseRemoteSearch.prototype = {
 			}
 		}
 		
-		// Return the output. Wrap with a description div if remote_insert_description is on.		
+		// Return the output. Wrap with a description div if insert_description is on.		
 		if( outHtml != '')
-			return ( this.rsd['remote_insert_description'] ) ?
-					this.wrapHtmlDesc(resource, options, outHtml) :
-					outHtml;
+			return ( options['insert_description'] ) ?
+				this.wrapHtmlDesc(resource, options, outHtml) :
+				outHtml;
 			
 		// No output give error: 
-		js_log( "ERROR:: no embed code for mime type: " + resource.mime );	
+		mw.log( "ERROR:: no embed code for mime type: " + resource.mime );	
 		return 'Error missing embed code for: ' + escape( resource.mime );
 	},
 	wrapHtmlDesc: function( resource, options, outHtml ) {
@@ -263,8 +264,7 @@ baseRemoteSearch.prototype = {
 									'title="' + cpTitle + '">' +
 									cpTitle + '</a>'; 									
 		return '<div class="mw-imported-resource" '+ 
-				'style="width:' + options.width + 'px;' + 
-					'height:' + ( options.height + 20 ) + 'px;">' +
+				'style="width:' + options.width + 'px;">' +
 					outHtml +
 					gM( 'mwe-import-description',  [titleLink, remoteProviderLink]) + 
 		 		'</div>';
@@ -426,7 +426,9 @@ baseRemoteSearch.prototype = {
 	* @parma {Object} resource Resource to update title on.
 	*/
 	updateTargetResourceTitle:function( resource ) {
-		resource.target_resource_title = resource.titleKey.replace( /^(File:|Image:)/ , '' );
-		resource.target_resource_title = this.provider.resource_prefix + resource.target_resource_title;
+		if( resource.titleKey ){
+			resource.target_resource_title = resource.titleKey.replace( /^(File:|Image:)/ , '' );
+			resource.target_resource_title = this.provider.resource_prefix + resource.target_resource_title;
+		}
 	}
 }

@@ -117,7 +117,7 @@ mvClipEdit.prototype = {
 			this.showEditUI();
 		} else {
 			// check the media_type:
-			// js_log('mvClipEdit:: media type:' + this.media_type + ' base width: ' + this.resource.width + ' bh: ' + this.resource.height);
+			// mw.log('mvClipEdit:: media type:' + this.media_type + ' base width: ' + this.resource.width + ' bh: ' + this.resource.height);
 			// could separate out into media Types objects for now just call method
 			if ( this.getMediaType() == 'image' ) {
 				this.showImageControls();
@@ -168,7 +168,7 @@ mvClipEdit.prototype = {
 			'media' : ['image', 'template'],
 			'doEdit':function( _this, target ) {
 				function doUpdateDur( inputElm ) {
-					js_log( "update duration:" + $j( inputElm ).val() );
+					mw.log( "update duration:" + $j( inputElm ).val() );
 					// update the parent sequence object:
 					_this.resource.dur = smilParseTime( $j( inputElm ).val() );
 					// update the playlist:
@@ -235,7 +235,7 @@ mvClipEdit.prototype = {
 				// if media type is template we have to query to get its URI to get its parameters
 				if ( _this.getMediaType() == 'template' && !_this.resource.tVars ) {
 					$j( '#sub_cliplib_ic' ).loadingSpiner()
-					var reqObj = {
+					var request = {
 						'action':'query',
 						'prop':'revisions',
 						'titles': _this.resource.uri,
@@ -244,26 +244,22 @@ mvClipEdit.prototype = {
 					// get the interface uri from the plObject
 					var api_url = _this.parentSequence.plObj.interface_url;
 					// first check
-					do_api_req( {
-						'data':reqObj,
-						'url':api_url
-						}, function( data ) {
-							if ( typeof data.query.pages == 'undefined' )
+					mw.getJSON( api_url, request, function( data ) {
+						if ( typeof data.query.pages == 'undefined' )
+							return _this.showEditOptions( target );
+						for ( var i in data.query.pages ) {
+							var page = data.query.pages[i];
+							if ( !page['revisions'] || !page['revisions'][0]['*'] ) {
 								return _this.showEditOptions( target );
-							for ( var i in data.query.pages ) {
-								var page = data.query.pages[i];
-								if ( !page['revisions'] || !page['revisions'][0]['*'] ) {
-									return _this.showEditOptions( target );
-								} else {
-									var template_rev = page['revisions'][0]['*'];
-								}
+							} else {
+								var template_rev = page['revisions'][0]['*'];
 							}
-							var parserObj = mw.parser.pNew( template_rev );
-							_this.resource.tVars = parserObj.getTemplateVars();
-							// Run the editor now that we have updated the template variables: 													
-							_this.showEditOptions( target );
 						}
-					);
+						var parserObj = mw.parser.pNew( template_rev );
+						_this.resource.tVars = parserObj.getTemplateVars();
+						// Run the editor now that we have updated the template variables: 													
+						_this.showEditOptions( target );
+					} );
 				} else {
 					_this.showEditOptions( target );
 				}
@@ -374,7 +370,7 @@ mvClipEdit.prototype = {
 
 		// Add update bindings
 		$j( target + ' .ic_tparam' ).change( function() {
-			js_log( "updated tparam::" + $j( this ).attr( "name" ) );
+			mw.log( "updated tparam::" + $j( this ).attr( "name" ) );
 			// Update param value:
 			_this.resource.params[ $j( this ).attr( "name" ) ] = $j( this ).val();
 			// Re-parse & update template
@@ -384,7 +380,7 @@ mvClipEdit.prototype = {
 				template_wiki_text += "\n|" + _this.resource.tVars[i] + ' = ' +  _this.resource.params[ _this.resource.tVars[i] ]  ;
 			}
 			template_wiki_text += "\n}}";
-			var reqObj = {
+			var request = {
 				'action':'parse',
 				'title'	: _this.parentSequence.plObj.mTitle,
 				'text'	:	template_wiki_text
@@ -392,15 +388,12 @@ mvClipEdit.prototype = {
 			$j( _this.resource.embed ).html( mw.loading_spiner() );
 
 			var api_url = _this.parentSequence.plObj.interface_url;
-			do_api_req( {
-				'data':reqObj,
-				'url':api_url
-			}, function( data ) {
+			mw.getJSON( api_url, request, function( data ) {
 				if ( data.parse.text['*'] ) {
 					// update the target
 					$j( _this.resource.embed ).html( data.parse.text['*'] );
 				}
-			} )
+			} );
 		} )
 
 		// Update doFocusBindings
@@ -465,7 +458,7 @@ mvClipEdit.prototype = {
 	showEditUI:function( edit_type ) {
 		if ( !edit_type )
 			return false;
-		js_log( 'showEditUI: ' + edit_type );
+		mw.log( 'showEditUI: ' + edit_type );
 		if ( this.edit_types[ edit_type ].doEdit )
 			this.edit_types[ edit_type ].doEdit( this, '#sc_' + edit_type );
 	},
@@ -474,7 +467,7 @@ mvClipEdit.prototype = {
 	* Show Video Controls for the resource edit
 	*/
 	showVideoControls:function() {
-		js_log( 'showVideoControls:f' );
+		mw.log( 'showVideoControls:f' );
 		var _this = this;
 		var eb = $j( '#embed_vid' ).get( 0 );
 		// turn on preview to avoid onDone actions
@@ -525,7 +518,7 @@ mvClipEdit.prototype = {
 			animate: true,
 			values: [start_sec, end_sec],
 			slide: function( event, ui ) {
-				// js_log(" vals:"+  mw.seconds2npt( ui.values[0] ) + ' : ' + mw.seconds2npt( ui.values[1]) );
+				// mw.log(" vals:"+  mw.seconds2npt( ui.values[0] ) + ' : ' + mw.seconds2npt( ui.values[1]) );
 				$target.find( '.startInOut' ).val( mw.seconds2npt( ui.values[0] ) );
 				$target.find( '.endInOut' ).val( mw.seconds2npt( ui.values[1] ) );
 			},
@@ -543,13 +536,13 @@ mvClipEdit.prototype = {
 			
 			// Update the slider: 
 			var values = $target.find( '.inOutSlider' ).slider( 'option', 'values' );
-			js_log( 'in slider len: ' + $target.find( '.inOutSlider' ).length );
+			mw.log( 'in slider len: ' + $target.find( '.inOutSlider' ).length );
 			 
 			$target.find( '.inOutSlider' ).slider( 'value', 10 );
 			debugger;
 			$target.find( '.inOutSlider' ).slider( 'option', 'values', [s_sec, e_sec] );
 			var values = $target.find( '.inOutSlider' ).slider( 'option', 'values' );
-			js_log( 'values (after update):' + values );
+			mw.log( 'values (after update):' + values );
 		} );
 		
 		$target.find( '.endInOut' ).upDownTimeInputBind( function( inputElm ) {
@@ -581,7 +574,7 @@ mvClipEdit.prototype = {
 		if ( ebvid ) {			
 			ebvid.stop();							
 			ebvid.updateVideoTime( start_time, end_time );
-			js_log( 'update thumb: ' + start_time );
+			mw.log( 'update thumb: ' + start_time );
 			ebvid.updateThumbTimeNPT( start_time );
 		}
 	},
@@ -624,7 +617,7 @@ mvClipEdit.prototype = {
 			o += this.resource.pSobj.getInlineDescWiki( this.resource );
 		}
 		o += '</textarea><br>';
-		// js_log('getInsertHtml: ' + o );
+		// mw.log('getInsertHtml: ' + o );
 		return o;
 	},
 	
@@ -686,7 +679,7 @@ mvClipEdit.prototype = {
 	*/
 	applyEdit:function() {
 		var _this = this;
-		js_log( 'applyEdit::' + this.getMediaType() );
+		mw.log( 'applyEdit::' + this.getMediaType() );
 		if ( this.getMediaType() == 'image' ) {
 			this.applyCrop();
 		} else if ( this.getMediaType() == 'video' ) {
@@ -746,11 +739,11 @@ mvClipEdit.prototype = {
 				);
 				// Add binding: 
 				$j( '#mv_crop_button,.mv_crop_msg,.mv_apply_crop' ).click( function() {
-					js_log( 'click:mv_crop_button: base width: ' + _this.resource.width + ' bh: ' + _this.resource.height );
+					mw.log( 'click:mv_crop_button: base width: ' + _this.resource.width + ' bh: ' + _this.resource.height );
 					if ( $j( '#mv_crop_button' ).hasClass( 'mv_crop_button_selected' ) ) {
 						_this.applyCrop();
 					} else {
-						js_log( 'click:turn on' );
+						mw.log( 'click:turn on' );
 						_this.doCropInterface();
 					}
 				} );
@@ -838,7 +831,7 @@ mvClipEdit.prototype = {
 	* Apply the video Start End Adjustments to the resource
 	*/
 	applyVideoStartEnd:function() {
-		js_log( 'apply Video StartEnd updates::' );
+		mw.log( 'apply Video StartEnd updates::' );
 		$target = $j( '#' + this.target_control_display );
 
 		// Be sure to "stop the video (some plugins can't have DOM elements on top of them)
@@ -879,7 +872,7 @@ mvClipEdit.prototype = {
 		$j( '#mv_crop_button' ).removeClass( 'mv_crop_button_base' ).addClass( 'mv_crop_button_selected' ).attr( 'title', gM( 'mwe-crop_done' ) );
 		$j( '#' + _this.target_clip_display + ' img' ).Jcrop( {
 			 onSelect: function( c ) {
-				 js_log( 'on select:' + c.x + ',' + c.y + ',' + c.x2 + ',' + c.y2 + ',' + c.w + ',' + c.h );
+				 mw.log( 'on select:' + c.x + ',' + c.y + ',' + c.x2 + ',' + c.y2 + ',' + c.w + ',' + c.h );
 				 _this.resource.crop = c;
 			 },
 			 onChange: function( c ) {

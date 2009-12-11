@@ -39,7 +39,7 @@ archiveOrgSearch.prototype = {
 		this.parent_getSearchResults();
 		
 		var _this = this;
-		js_log( 'f:getSearchResults for:' + search_query );
+		mw.log( 'f:getSearchResults for:' + search_query );
 		
 		
 		// For now force (Ogg video) & url based license
@@ -47,22 +47,17 @@ archiveOrgSearch.prototype = {
 		search_query += ' licenseurl:(http\\:\\/\\/*)';
 		
 		// Build the request Object
-		var reqObj = {
+		var request = {
 			'q': search_query, // just search for video atm
 			'fl':"description,title,identifier,licenseurl,format,license,thumbnail",
 			'wt':'json',
 			'rows' : this.provider.limit,
 			'start' : this.provider.offset
 		}
-		do_api_req( {
-			'data':reqObj,
-			'url':this.provider.api_url,
-			'jsonCB':'json.wrf'
-			}, function( data ) {
-				_this.addResults( data );
-				_this.loading = false;
-			}
-		);
+		$j.getJSON( this.provider.api_url + '?json.wrf=?', request, function( data ) {
+			_this.addResults( data );
+			_this.loading = false;
+		} );
 	},
 	/**
 	* Adds the search results to the local resultsObj
@@ -107,18 +102,18 @@ archiveOrgSearch.prototype = {
 	*/ 
 	addResourceInfoCallback:function( resource, callback ) {
 		var _this = this;
-		do_api_req( {
-			'data': { 'avinfo' : 1 },
-			'url':_this.downloadUrl + resource.resourceKey + '/format=Ogg+video'
-		}, function( data ) {
-			if ( data['length'] )
-				resource.duration = data['length'];
-			if ( data['width'] )
-				resource.width = data['width'];
-			if ( data['height'] )
-				resource.height = data['height'];
-								   
-			callback();
+		$j.getJSON( 
+			_this.downloadUrl + resource.resourceKey + '/format=Ogg+video&callback=?',  
+			{ 'avinfo' : 1 }, 
+			function( data ) {
+				if ( data['length'] )
+					resource.duration = data['length'];
+				if ( data['width'] )
+					resource.width = data['width'];
+				if ( data['height'] )
+					resource.height = data['height'];
+														   
+				callback();
 		} );
 	},
 	
@@ -128,7 +123,7 @@ archiveOrgSearch.prototype = {
 	* @parma {Object} options Options for the embeding.
 	*/	
 	getEmbedHTML: function( resource , options ) {
-		js_log( 'getEmbedHTML:: ' + resource.poster );
+		mw.log( 'getEmbedHTML:: ' + resource.poster );
 		if ( !options )
 			options = { };
 		var id_attr = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';

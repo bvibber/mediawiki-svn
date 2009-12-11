@@ -5,8 +5,8 @@
  
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = '1.10';
-var mwUseScriptLoader = false;
+var mwRemoteVersion = '1.1b';
+var mwUseScriptLoader = true;
 
 // setup up request Params: 
 var reqParts = urlparts[1].substring( 1 ).split( '&' );
@@ -16,7 +16,8 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 	if ( p.length == 2 )
 		mwReqParam[ p[0] ] = p[1];
 }
-//use wikibits onLoad hook: 
+
+// Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 addOnloadHook( function() {	
 	// Only do rewrites if mwEmbed / js2 is "off"
 	if ( typeof mwEmbed_VERSION == 'undefined' ) {
@@ -31,14 +32,13 @@ function doPageSpecificRewrite() {
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {	
 		var jsSetEdit = 
 		loadMwEmbed( [ 
-				'remoteSearchDriver', 
-				'$j.fn.textSelection', 
-				'$j.ui', 
-				'$j.ui.sortable' 
-			], function() {
-				loadExternalJs( mwEmbedHostPath + '/editPage.js?' + mwGetReqArgs() );
-			} 
-		);
+			'remoteSearchDriver', 
+			'$j.fn.textSelection', 
+			'$j.ui', 
+			'$j.ui.sortable' 
+		], function() {
+			loadExternalJs( mwEmbedHostPath + '/editPage.js?' + mwGetReqArgs() );
+		} );
 	}
 	
 	// Timed text display:
@@ -52,7 +52,7 @@ function doPageSpecificRewrite() {
 	}
 	
 	// Firefogg integration
-	if ( wgPageName == "Special:Upload" ) {	
+	if ( wgPageName == "Special:Upload" ) {			
 		loadMwEmbed([ 
 				'mvBaseUploadInterface', 
 				'mvFirefogg', 
@@ -82,7 +82,7 @@ function doPageSpecificRewrite() {
 			vidIdList.push( divs[i].getAttribute( "id" ) );
 		}
 	}
-	if ( vidIdList.length > 0 ) {	
+	if ( vidIdList.length > 0 ) {			
 		var jsSetVideo = [ 'embedPlayer', '$j.ui', 'ctrlBuilder', '$j.cookie', '$j.ui.slider', 'kskinConfig' ];		
 		// Quick sniff use java if IE and native if firefox 
 		// ( other browsers will run detect and get on-demand ) 	
@@ -102,13 +102,12 @@ function doPageSpecificRewrite() {
 }
 // This will be depreciated in favour of updates to OggHandler
 function rewrite_for_OggHandler( vidIdList ) {
-	function procVidId( vidId ) {
-		
+	function procVidId( vidId ) {		
 		// Don't process empty vids
 		if ( !vidId )		
 			return ;
 			
-		js_log( 'vidIdList on: ' + vidId + ' length: ' + vidIdList.length + ' left in the set: ' + vidIdList );
+		mw.log( 'vidIdList on: ' + vidId + ' length: ' + vidIdList.length + ' left in the set: ' + vidIdList );
 		
 		tag_type = 'video';
 		
@@ -178,7 +177,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 
 		}		
 	};
-	// process each item in the vidIdList (with setTimeout to avoid locking)
+	// process each item in the vidIdList (with setTimeout to avoid locking)	
 	procVidId( vidIdList.pop() );
 }
 function getRemoteEmbedPath() {
@@ -229,7 +228,7 @@ function loadMwEmbed( classSet, callback ) {
 		
 	// Inject mwEmbed if needed
 	if ( typeof mw == 'undefined' ) {
-		if ( ( mwReqParam['uselang'] || mwReqParam['useloader'] ) && mwUseScriptLoader ) {
+		if ( ( mwReqParam['uselang'] || mwReqParam[ 'useloader' ] ) && mwUseScriptLoader ) {
 			var rurl = mwEmbedHostPath + '/mwEmbed/jsScriptLoader.php?class=mwEmbed';
 			
 			// Add jQuery too if we need it: 
@@ -246,8 +245,7 @@ function loadMwEmbed( classSet, callback ) {
 			}
 			
 			// Add the remaining arguments
-			rurl += '&' + mwGetReqArgs();
-							
+			rurl += '&' + mwGetReqArgs();													
 			importScriptURI( rurl );
 		} else { 
 			// Ingore classSet (will be loaded onDemand )
@@ -266,7 +264,7 @@ function waitMwEmbedReady( callback ) {
 		}, 25 );
 	} else {
 		// Make sure mwEmbed is "setup" by using the addOnLoadHook: 
-		mw.addOnloadHook( function(){
+		mw.addOnloadHook( function(){			
 			callback();
 		})
 	}
@@ -290,4 +288,3 @@ function mwCheckObjectPath ( libVar ) {
 	this.cur_path = cur_path;
 	return true;
 };
-

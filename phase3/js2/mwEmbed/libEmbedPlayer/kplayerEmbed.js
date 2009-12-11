@@ -27,7 +27,7 @@ var kplayerEmbed = {
 		setTimeout(function(){
 			_this.postEmbedJS();
 		}, 50);
-		js_log( "return embed html" );
+		mw.log( "return embed html" );
 		return this.wrapEmebedContainer( embed_code );
 	},
 	
@@ -76,7 +76,7 @@ var kplayerEmbed = {
 						
 			// KDP player likes an absolute url for the src:
 			var src = mw.absoluteUrl( _this.getSrc() );
-			js_log('play src: ' + src);
+			mw.log('play src: ' + src);
 			
 			// Insert the src:	
 			this.playerElement.insertMedia( "-1", src, 'true' );			
@@ -85,7 +85,7 @@ var kplayerEmbed = {
 			// Start the monitor
 			this.monitor();
 		}else{
-			js_log('insert media: not defiend' + typeof this.playerElement.insertMedia );
+			mw.log('insert media: not defiend' + typeof this.playerElement.insertMedia );
 			setTimeout( function(){
 				_this.postEmbedJS();
 			}, 25);
@@ -180,5 +180,5 @@ var kplayerEmbed = {
 * NOTE: playerID is not always passed so we can't use this: 
 */
 function onKdpReady( playerId ) {
- 	 js_log( "player is ready::" + playerId); 	 
+ 	 mw.log( "player is ready::" + playerId); 	 
 }

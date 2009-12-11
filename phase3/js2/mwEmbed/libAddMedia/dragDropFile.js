@@ -9,7 +9,7 @@ mw.addMessages( {
 
 ( function( $ ) {
 	$.fn.dragDropFile = function () {
-		js_log( "drag drop: " + this.selector );
+		mw.log( "drag drop: " + this.selector );
 		// setup drag binding and highlight
 		var dC = $j( this.selector ).get( 0 );
 		dC.addEventListener( "dragenter",

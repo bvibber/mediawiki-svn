@@ -41,7 +41,7 @@ var nativeEmbed = {
 	*/
 	getEmbedHTML : function () {
 		var embed_code =  this.getEmbedObj();
-		js_log( "embed code: " + embed_code )
+		mw.log( "embed code: " + embed_code )
 		setTimeout( '$j(\'#' + this.id + '\').get(0).postEmbedJS()', 150 );
 		return this.wrapEmebedContainer( embed_code );
 	},
@@ -53,7 +53,7 @@ var nativeEmbed = {
 		// We want to let mwEmbed handle the controls so notice the absence of control attribute
 		// controls=false results in controls being displayed: 
 		// http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-August/016159.html		
-		js_log( "native play url:" + this.getSrc() + ' startOffset: ' + this.start_ntp + ' end: ' + this.end_ntp );
+		mw.log( "native play url:" + this.getSrc() + ' startOffset: ' + this.start_ntp + ' end: ' + this.end_ntp );
 		var eb = '<video ' +
 					'id="' + this.pid + '" ' +
 					'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
@@ -68,7 +68,7 @@ var nativeEmbed = {
 	*/	
 	postEmbedJS:function() {
 		var _this = this;
-		js_log( "f:native:postEmbedJS:" );
+		mw.log( "f:native:postEmbedJS:" );
 		this.getPlayerElement();
 		if ( typeof this.playerElement != 'undefined' ) {
 		
@@ -98,10 +98,10 @@ var nativeEmbed = {
 			
 		} else {		
 			// False inserts don't seem to be as much of a problem as before: 
-			js_log( 'Could not grab vid obj trying again:' + typeof this.playerElement );
+			mw.log( 'Could not grab vid obj trying again:' + typeof this.playerElement );
 			this.grab_try_count++;
 			if (	this.grab_count == 20 ) {
-				js_log( 'Could not get vid object after 20 tries re-run: getEmbedObj() ?' ) ;
+				mw.log( 'Could not get vid object after 20 tries re-run: getEmbedObj() ?' ) ;
 			} else {
 				setTimeout( function(){
 					_this.postEmbedJS();
@@ -117,12 +117,12 @@ var nativeEmbed = {
 	* @param {Float} percentage
 	*/
 	doSeek:function( percentage ) {
-		js_log( 'native:seek:p: ' + percentage + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
+		mw.log( 'native:seek:p: ' + percentage + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
 		// @@todo check if the clip is loaded here (if so we can do a local seek)
 		if ( this.supportsURLTimeEncoding() ) {
 			// Make sure we could not do a local seek instead:
 			if ( percentage < this.bufferedPercent && this.playerElement.duration && !this.didSeekJump ) {
-				js_log( "do local seek " + percentage + ' is already buffered < ' + this.bufferedPercent );
+				mw.log( "do local seek " + percentage + ' is already buffered < ' + this.bufferedPercent );
 				this.doNativeSeek( percentage );
 			} else {
 				// We support URLTimeEncoding call parent seek: 
@@ -141,7 +141,7 @@ var nativeEmbed = {
 	* Do a native seek by updating the currentTime
 	*/
 	doNativeSeek:function( percentage ) {
-		js_log( 'native::doNativeSeek::' + percentage );
+		mw.log( 'native::doNativeSeek::' + percentage );
 		this.seek_time_sec = 0;
 		this.playerElement.currentTime = percentage * this.duration;
 		this.monitor();
@@ -155,7 +155,7 @@ var nativeEmbed = {
 	* @param {Float} percentage Percentage of the stream to seek to between 0 and 1
 	*/
 	doPlayThenSeek:function( percentage ) {
-		js_log( 'native::doPlayThenSeek::' );
+		mw.log( 'native::doPlayThenSeek::' );
 		var _this = this;
 		this.play();
 		var rfsCount = 0;
@@ -171,7 +171,7 @@ var nativeEmbed = {
 					setTimeout( readyForSeek, 50 );
 					rfsCount++;
 				} else {
-					js_log( 'error:doPlayThenSeek failed' );
+					mw.log( 'error:doPlayThenSeek failed' );
 				}
 			}
 		}
@@ -183,7 +183,7 @@ var nativeEmbed = {
 	*/
 	setCurrentTime: function( position , callback ) {	
 		var _this = this;
-		js_log( 'native:setCurrentTime::: ' + position + ' :  dur: ' + _this.getDuration() );
+		mw.log( 'native:setCurrentTime::: ' + position + ' :  dur: ' + _this.getDuration() );
 		this.getPlayerElement();
 		if ( !this.playerElement ) {
 			this.load( function() {				
@@ -203,7 +203,7 @@ var nativeEmbed = {
 		var _this = this;			
 		this.getPlayerElement();		
 		var once = function( event ) {
-			js_log("did seek callback");
+			mw.log("did seek callback");
 			callback();
 			_this.playerElement.removeEventListener( 'seeked', once, false );
 		};		
@@ -218,7 +218,7 @@ var nativeEmbed = {
 	monitor: function() {
 		this.getPlayerElement(); // make sure we have .vid obj
 		if ( !this.playerElement ) {
-			js_log( 'could not find video embed: ' + this.id + ' stop monitor' );
+			mw.log( 'could not find video embed: ' + this.id + ' stop monitor' );
 			this.stopMonitor();
 			return false;
 		}
@@ -239,8 +239,7 @@ var nativeEmbed = {
 		// update currentTime				
 		this.currentTime = this.playerElement.currentTime;		
 				
-		// js_log('currentTime:' + this.currentTime);
-		// js_log('this.currentTime: ' + this.currentTime );
+		//mw.log('currentTime:' + this.currentTime);		
 		// once currentTime is updated call parent_monitor
 		this.parent_monitor();
 	},
@@ -334,7 +333,7 @@ var nativeEmbed = {
 		this.getPlayerElement();		
 		if ( !this.playerElement ) {
 			// No vid loaded
-			js_log( 'native::load() ... doEmbed' );
+			mw.log( 'native::load() ... doEmbed' );
 			this.onlyLoadFlag = true;
 			this.doEmbedHTML();
 			this.onLoadedCallback =  callback;
@@ -362,7 +361,7 @@ var nativeEmbed = {
 	*  fired when "seeking" 
 	*/
 	onseeking:function() {
-		js_log( "onseeking" );
+		mw.log( "onseeking" );
 		this.seeking = true;
 		this.setStatus( gM( 'mwe-seeking' ) );
 	},
@@ -372,7 +371,7 @@ var nativeEmbed = {
 	*  fired when done seeking 
 	*/
 	onseeked: function() {
-		js_log("onseeked");
+		mw.log("onseeked");
 		this.seeking = false;
 	},
 	
@@ -381,7 +380,7 @@ var nativeEmbed = {
 	*  fired when done video can play through without re-buffering
 	*/	
 	oncanplaythrough : function() {
-		js_log('f:oncanplaythrough');
+		mw.log('f:oncanplaythrough');
 		this.getPlayerElement();
 		if ( ! this.paused )
 			this.playerElement.play();		
@@ -396,10 +395,10 @@ var nativeEmbed = {
 	*/
 	onloadedmetadata: function() {
 		this.getPlayerElement();
-		js_log( 'f:onloadedmetadata metadata ready (update duration)' );
+		mw.log( 'f:onloadedmetadata metadata ready (update duration)' );
 		// update duration if not set (for now trust the getDuration more than this.playerElement.duration		
 		if ( this.getDuration() == 0  &&  ! isNaN( this.playerElement.duration ) ) {
-			js_log( 'updaed duration via native video duration: ' + this.playerElement.duration )
+			mw.log( 'updaed duration via native video duration: ' + this.playerElement.duration )
 			this.duration = this.playerElement.duration;
 		}
 		
@@ -428,10 +427,10 @@ var nativeEmbed = {
 	onended: function() {
 		var _this = this
 		this.getPlayerElement();
-		js_log( 'native:onended:' + this.playerElement.currentTime + ' real dur:' +  this.getDuration() );
+		mw.log( 'native:onended:' + this.playerElement.currentTime + ' real dur:' +  this.getDuration() );
 		// if we just started (under 1 second played) & duration is much longer.. don't run onClipDone just yet . (bug in firefox native sending onended event early) 
 		if ( this.playerElement.currentTime  < 1 && this.getDuration() > 1 && this.grab_try_count < 5 ) {
-			js_log( 'native on ended called with time:' + this.playerElement.currentTime + ' of total real dur: ' +  this.getDuration() + ' attempting to reload src...' );
+			mw.log( 'native on ended called with time:' + this.playerElement.currentTime + ' of total real dur: ' +  this.getDuration() + ' attempting to reload src...' );
 			var doRetry = function() {
 				_this.urlAppend = 'retry_src=' + _this.grab_try_count;
 				_this.doEmbedHTML();
@@ -439,7 +438,7 @@ var nativeEmbed = {
 			}
 			setTimeout( doRetry, 100 );
 		} else {
-			js_log( 'native onClipDone done call' );
+			mw.log( 'native onClipDone done call' );
 			this.onClipDone();
 		}
 	}

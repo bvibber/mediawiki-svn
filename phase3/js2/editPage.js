@@ -21,7 +21,7 @@ var defaultAddMediaConfig = {
 };
 
 mw.addOnloadHook( function() {
-	js_log( "edit page mw.addOnloadHook::" );
+	mw.log( "edit page mw.addOnloadHook::" );
 	var amwConf = $j.extend( true, defaultAddMediaConfig, mwAddMediaConfig );
 	// Kind of tricky, it would be nice to use run on ready "loader" call here
 	var didWikiEditorBind = false;
@@ -39,7 +39,7 @@ mw.addOnloadHook( function() {
 		            section.groups.insert.tools.file.action = {
 		                'type': 'callback',
 		                'execute': function() {
-		                	js_log( 'click add media wiz' );
+		                	mw.log( 'click add media wiz' );
 		                	$j.addMediaWiz( amwConf );
 		                }
 		            };
@@ -50,7 +50,7 @@ mw.addOnloadHook( function() {
 	// Add to old toolbar if wikiEditor did not remove '#toolbar' from the page:    
 	setTimeout( function() {
 		if ( $j( '#btn-add-media-wiz' ).length == 0 && $j( '#toolbar' ).length != 0 ) {
-			js_log( 'Do old toolbar bind:' );
+			mw.log( 'Do old toolbar bind:' );
 			didWikiEditorBind = true;						
 			$j( '#toolbar' ).append( '<img style="cursor:pointer" id="btn-add-media-wiz" src="' +
 				mw.getConfig( 'skin_img_path' ) + 'Button_add_media.png">' );				
@@ -62,7 +62,7 @@ mw.addOnloadHook( function() {
 		} else {
 			// Make sure the wikieditor got binded: 
 			if ( !didWikiEditorBind ) {
-				js_log( 'Failed to bind via build section bind via target:' );
+				mw.log( 'Failed to bind via build section bind via target:' );
 				$j( ".tool[rel='file']" ).unbind().addMediaWiz( amwConf );
 			}
 		}

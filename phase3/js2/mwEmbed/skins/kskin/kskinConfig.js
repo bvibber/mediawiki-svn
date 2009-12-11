@@ -27,10 +27,12 @@ var kskinConfig = {
 		'share',
 		'credits',
 	],
-	components: {
+	
+	// Extends base components with kskin specifc options:
+	components: {		
 		'play-btn-large' : {
 			'h' : 55
-		},
+		},		
 		'options': {
 			'w':50,
 			'o':function() {
@@ -38,11 +40,11 @@ var kskinConfig = {
 							'<span>' + gM( 'mwe-menu_btn' ) + '</span>' +
 						'</div>'
 			}
-		},
+		},		
 		'time_display': {
 			'w':70
-		},
-		'mv_embedded_options': {
+		},		
+		'options_menu': {
 			'w':0,
 			'o':function( ctrlObj ) {
 				var embedObj = ctrlObj.embedObj;
@@ -50,7 +52,7 @@ var kskinConfig = {
 				'<div class="k-menu ui-widget-content" ' +
 					'style="width:' + embedObj.getPlayerWidth() + 'px; height:' + embedObj.getPlayerHeight() + 'px;">' +
 						'<ul class="k-menu-bar">';
-							// output menu item containers: 
+							// Output menu item containers: 
 							for ( i = 0; i < ctrlObj.menu_items.length; i++ ) {
 								var mk = ctrlObj.menu_items[i];
 								o += '<li class="k-' + mk + '-btn" rel="' + mk + '">' +
@@ -71,6 +73,7 @@ var kskinConfig = {
 			}
 		}
 	},
+	
 	/**
 	* Adds the skin Control Bindings
 	*/
@@ -80,44 +83,16 @@ var kskinConfig = {
 		var $tp = $j( '#' + embedObj.id );
 		
 		// Adds options and bindings: (we do this onClick )  
-		var addMvOptions = function() {
-			if ( $j( '#' + embedObj.id + ' .k-menu' ).length != 0 )
-				return false;
-				
-			$j( '#' + embedObj.id + ' .' + _this.pClass ).prepend(
-				_this.components['mv_embedded_options'].o( $tp.get( 0 ).ctrlBuilder )
-			);
-			
-			// By default its hidden:
-   			$tp.find( '.k-menu' ).hide();
-   			
-   			// Output menu-items: 
-   			for ( i = 0; i < _this.menu_items.length ; i++ ) {
-		        $tp.find( '.k-' +  _this.menu_items[i] + '-btn' ).click( function() {
-		        	var mk = $j( this ).attr( 'rel' );
-		        	$target = $j( '#' + embedObj.id  + ' .menu-' + mk ).hide();
-		        	// Generate the menu html not already done:
-		        	if ( $target.children().length == 0 ) {
-						// call the function show{Menuitem} with target:
-						_this.showMenuItem(	mk );        								
-		        	}
-		        	// Slide out the others 
-		        	 $j( '#' + embedObj.id  + ' .menu-screen' ).hide();
-		        	 $target.fadeIn( "fast" );
-					// don't follow the # link								
-		            return false;
-				} );
-   			}
-		}
+		
 		 		
    		// Options menu display:			
-   		$tp.find( '.k-options' ).click( function() {
+   		$tp.find( '.k-options' ).click( function() {   			
 			if ( $j( '#' + embedObj.id + ' .k-menu' ).length == 0 ) {
 	   			// Stop the player if it does not support overlays:
 				if ( !embedObj.supports['overlay'] )
 					$tp.get( 0 ).stop();
 				// Add the options       				
-				addMvOptions();
+				_this.addOptionsBinding( $tp );
 			}
 	   		// Set up the text and menu:       			 					
 			var $ktxt = $j( this );
@@ -135,7 +110,51 @@ var kskinConfig = {
 			}
 		} );
 	
+	},
+	
+	/**
+	* Adds binding for the options menu
+	*
+	* @param {Object} $tp Target video container for 
+	*/
+	addOptionsBinding: function( $tp ) {
+		var _this = this;
+		var embedObj = this.embedObj;
+		if ( $j( '#' + embedObj.id + ' .k-menu' ).length != 0 )
+			return false;
+				
+		$tp.find( '.' + _this.parentClass ).prepend(
+			_this.components[ 'options_menu' ].o( _this )
+		);
+		
+		// By default its hidden:
+  		$tp.find( '.k-menu' ).hide();
+  			
+  		// Output menu-items: 
+  		for ( i = 0; i < _this.menu_items.length ; i++ ) {
+	        $tp.find( '.k-' +  _this.menu_items[i] + '-btn' ).click( function() {
+	        	var mk = $j( this ).attr( 'rel' );
+	        	$target = $j( '#' + embedObj.id  + ' .menu-' + mk ).hide();
+	        	// Generate the menu html not already done:
+	        	if ( $target.children().length == 0 ) {
+					// call the function show{Menuitem} with target:
+					_this.showMenuItem(	mk );        								
+	        	}
+	        	
+	        	// Slide out the others 
+	        	$j( '#' + embedObj.id  + ' .menu-screen' ).hide();
+	        	$target.fadeIn( "fast" );
+	        	 
+				// Don't follow the # link								
+	            return false;
+			} );
+  		}
 	}, 
+	/**
+	* Shows a selected menu_item
+	* 
+	* @param {String} menu_itme Menu item key to display
+	*/
 	showMenuItem:function( menu_item ) {
 		//handle special k-skin specific display; 
 		if( menu_item == 'credits'){
@@ -147,7 +166,10 @@ var kskinConfig = {
 			);
 		}
 	},	
-	// Do the credit screen (presently specific to kaltura skin:)  
+	
+	/**
+	* Do the credit screen (presently specific to kaltura skin:)
+	*/  
 	showCredits:function() {
 		//set up the shortcuts:	
 		embedObj = this.embedObj;
@@ -179,18 +201,14 @@ var kskinConfig = {
 			return ;
 		}		
 		// Do the api request to populate the credits via the wikiTitleKey ( tied to "commons" )
-		var reqObj = {
-			'action' : 'query',
+		var request = {
 			// Normalize the File NS (ie sometimes its present in wikiTitleKey other times not
 			'titles' : 'File:' + embedObj.wikiTitleKey.replace(/File:|Image:/, '' ),
 		    'prop' : 'revisions',
 		    'rvprop' : 'content'
 		};
 		var req_categories = new Array();
-	    do_api_req( {
-	    	'url'	: mw.commons_api_url,
-			'data'	: reqObj			
-	    }, function( data ) {
+	    mw.getJSON( mw.commons_api_url, request, function( data ) {
 			if( !data || !data.query || !data.query.pages ){
 				$target.find('.credits_box').text(
 					'Error: title key: ' + embedObj.wikiTitleKey + ' not found' 
@@ -208,7 +226,15 @@ var kskinConfig = {
 			}
 	    } );
 	},
-	doCreditLineFromWikiText:function ( wikiText ){
+	
+	/**
+	* Build a clip credit from the resource wikiText page
+	*
+	* NOTE: in the future this should parse the resource page template
+	* 
+	* @parm {String} wikiText Resource wiki text page contents
+	*/
+	doCreditLineFromWikiText: function ( wikiText ){
 		var embedObj = this.embedObj;
 		
 		// Get the title str 
@@ -242,4 +268,4 @@ var kskinConfig = {
 				)
 			);
 	}
-}
+};

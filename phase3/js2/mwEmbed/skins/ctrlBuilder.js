@@ -39,8 +39,10 @@ ctrlBuilder.prototype = {
 	
 	/**
 	* Initialization Object for the control builder
+	*
+	* @param {Object} embedObj EmbedPlayer interface
 	*/ 
-	init:function( embedObj, options ) {
+	init: function( embedObj ) {
 		var _this = this;
 		this.embedObj = embedObj;
 
@@ -60,13 +62,13 @@ ctrlBuilder.prototype = {
 	* Get the controls html
 	* @return {String} html output of controls
 	*/
-	getControls:function() {
+	getControls: function() {
 		// Set up local pointer to the embedObj
 		var embedObj = this.embedObj;
 		// set up local ctrlBuilder
 		var _this = this;
 
-		js_log( 'f:controlsBuilder:: opt:' + this.options );
+		mw.log( 'f:controlsBuilder:: opt:' + this.options );
 		this.id = ( embedObj.pc ) ? embedObj.pc.pp.id:embedObj.id;
 		this.available_width = embedObj.getPlayerWidth();
 		
@@ -87,8 +89,8 @@ ctrlBuilder.prototype = {
 
 
 		// Append options to body (if not already there)
-		if ( _this.body_options && $j( '#mv_vid_options_' + this.id ).length == 0 )
-			$j( 'body' ).append( this.components['mv_embedded_options'].o( this ) );
+		if ( _this.external_options && $j( '#mv_vid_options_' + this.id ).length == 0 )
+			$j( 'body' ).append( this.components[ 'options_menu' ].o( this ) );
 
 		var o = '';
 		for ( var i in this.components ) {
@@ -100,23 +102,24 @@ ctrlBuilder.prototype = {
 					o += this.components[i].o( this  );
 					this.available_width -= this.components[i].w;
 				} else {
-					js_log( 'not enough space for control component:' + i );
+					mw.log( 'not enough space for control component:' + i );
 				}
 			}
 		}
 		return o;
 	},
 	
-	 /*
-	 * addControlHooks
-	 * to be run once controls are attached to the dom
-	 * @param {jQueryObject} $target The target hook position
-	 */
+	/**
+	* addControlHooks
+	* to be run once controls are attached to the dom
+	*
+	* @param {jQueryObject} $target The target hook position
+	*/
 	addControlHooks:function( $target ) {
 		// Set up local pointer to the embedObj
 		var embedObj = this.embedObj;
 		var _this = this;				
-
+		
 		if ( !$target )
 			$target = $j( '#' + embedObj.id );				
 				
@@ -130,7 +133,7 @@ ctrlBuilder.prototype = {
 			$j( '#dc_' + embedObj.id ).hover(
 				function() {
 					if ( $j( '#gnp_' + embedObj.id ).length == 0 ) {
-						var toppos = ( embedObj.instanceOf == 'mvPlayList' ) ? 25:10;
+						var toppos = ( embedObj.instanceOf == 'mvPlayList' ) ? 25 : 10;
 						$j( this ).append( '<div id="gnp_' + embedObj.id + '" class="ui-state-highlight ui-corner-all" ' +
 							'style="position:absolute;display:none;background:#FFF;top:' + toppos + 'px;left:10px;right:10px;">' +
 							gM( 'mwe-for_best_experience' ) +
@@ -151,7 +154,7 @@ ctrlBuilder.prototype = {
 
 						} );
 					}
-					// Only show the warrning if cookie and config are true
+					// Only show the warning if cookie and config are true
 					if ( mw.getConfig( 'show_player_warning' ) === true  )
 						$j( '#gnp_' + embedObj.id ).fadeIn( 'slow' );
 				},
@@ -182,7 +185,7 @@ ctrlBuilder.prototype = {
 		} );
 		
 		// Playhead binding
-		js_log( " should add slider binding: " + $target.find( '.play_head' ).length );
+		mw.log( " should add slider binding: " + $target.find( '.play_head' ).length );
 		$target.find( '.play_head' ).slider( {
 			range: "min",
 			value: 0,
@@ -199,7 +202,7 @@ ctrlBuilder.prototype = {
 			slide: function( event, ui ) {
 				var perc = ui.value / 1000;
 				embedObj.jump_time = mw.seconds2npt( parseFloat( parseFloat( embedObj.getDuration() ) * perc ) + embedObj.start_time_sec );
-				// js_log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
+				// mw.log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
 				if ( _this.long_time_disp ) {
 					embedObj.setStatus( gM( 'mwe-seek_to', embedObj.jump_time ) );
 				} else {
@@ -222,7 +225,7 @@ ctrlBuilder.prototype = {
 					var perc = ui.value / 1000;
 					// set seek time (in case we have to do a url seek)
 					embedObj.seek_time_sec = mw.npt2seconds( embedObj.jump_time, true );
-					js_log( 'do jump to: ' + embedObj.jump_time + ' perc:' + perc + ' sts:' + embedObj.seek_time_sec );
+					mw.log( 'do jump to: ' + embedObj.jump_time + ' perc:' + perc + ' sts:' + embedObj.seek_time_sec );
 					embedObj.setStatus( gM( 'mwe-seeking' ) );
 					embedObj.doSeek( perc );
 				}
@@ -306,6 +309,7 @@ ctrlBuilder.prototype = {
 		}
 		return true;
 	},
+	
 	/**
 	* Binds the volume controls
 	*/
@@ -314,7 +318,7 @@ ctrlBuilder.prototype = {
 		var _this = this;
 		var $target = $j( '#' + embedObj.id );
 		$target.find( '.volume_control' ).unbind().btnBind().click( function() {
-			js_log( 'clicked volume control' );
+			mw.log( 'clicked volume control' );
 			$j( '#' + embedObj.id ).get( 0 ).toggleMute();
 		} );
 		
@@ -352,7 +356,7 @@ ctrlBuilder.prototype = {
 			max: 100,
 			slide: function( event, ui ) {
 				var perc = ui.value / 100;
-				// js_log('update volume:' + perc);
+				// mw.log('update volume:' + perc);
 				embedObj.updateVolumen( perc );
 			},
 			change:function( event, ui ) {
@@ -383,9 +387,9 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
-	* Accessor to get component
+	* Get component
 	*
-	* @param {String} compoent Component key to grab html output
+	* @param {String} component Component key to grab html output
 	*/
 	getComponent:function( component ) {
 		if ( this.components[ component ] ) {
@@ -432,7 +436,7 @@ ctrlBuilder.prototype = {
 		* The options for the player, includes player selection, 
 		* download, and share options
 		*/
-		'mv_embedded_options': {
+		'options_menu': {
 			'w':0,
 			'o':function( ctrlObj ) {
 				var o = '<div id="mv_vid_options_' + ctrlObj.id + '" class="videoOptions">' +

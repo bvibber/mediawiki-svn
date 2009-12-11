@@ -89,7 +89,7 @@ mvPlayList.prototype = {
 		'playlist_swap_loader':true // if the object supports playlist functions		
   	},
 	init : function( element ) {
-		js_log( 'mvPlayList:init:' );
+		mw.log( 'mvPlayList:init:' );
 		this.tracks = { };
 		this.default_track = null;
 		
@@ -102,10 +102,10 @@ mvPlayList.prototype = {
 		 for ( var attr in mv_default_playlist_attributes ) {
 			if ( element.getAttribute( attr ) ) {
 				this[attr] = element.getAttribute( attr );
-				// js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+'elm_val:' + element.getAttribute(attr) + "\n (set by elm)");  
+				// mw.log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+'elm_val:' + element.getAttribute(attr) + "\n (set by elm)");  
 			} else {
 				this[attr] = mv_default_playlist_attributes[attr];
-				// js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");  
+				// mw.log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");  
 			}
 		}
 		// make sure height and width are int:
@@ -185,7 +185,7 @@ mvPlayList.prototype = {
 	},
 	
 	getPlaylist:function() {
-		js_log( "f:getPlaylist: " + this.srcType );
+		mw.log( "f:getPlaylist: " + this.srcType );
 		
 		// Playlist: 
 		eval( 'var plObj = ' + this.srcType + 'Playlist;' );
@@ -194,11 +194,11 @@ mvPlayList.prototype = {
 			// js parent preservation for local overwritten methods
 			if ( this[method] )this['parent_' + method] = this[method];
 			this[method] = plObj[method];
-			js_log( 'inherit:' + method );
+			mw.log( 'inherit:' + method );
 		}
 			
 		if ( typeof this.doParse != 'function' ) {
-			js_log( 'error: method doParse not found in plObj' + this.srcType );
+			mw.log( 'error: method doParse not found in plObj' + this.srcType );
 			return false;
 		}
 						 
@@ -206,7 +206,7 @@ mvPlayList.prototype = {
 			 if ( this.doParse() ) {
 				 this.doWhenParseDone();
 			 } else {
-				 js_log( "error: failed to parse playlist" );
+				 mw.log( "error: failed to parse playlist" );
 				 return false;
 				 // error or parse needs to do ajax requests	
 			 }
@@ -221,7 +221,7 @@ mvPlayList.prototype = {
 	},
 	
 	doWhenParseDone: function() {
-		js_log( 'f:doWhenParseDone' );
+		mw.log( 'f:doWhenParseDone' );
 		// do additional init for clips: 
 		var _this = this;
 		var error = false;
@@ -237,7 +237,7 @@ mvPlayList.prototype = {
 				_this.clip_ready_count++;
 				continue;
 			}
-			// js_log('clip sources count: '+ clip.embed.media_element.sources.length);		
+			// mw.log('clip sources count: '+ clip.embed.media_element.sources.length);		
 			clip.embed.checkPlayerSources();
 			if ( clip.embed.loading_external_data == false &&
 				   clip.embed.init_with_sources_loadedDone == false ) {
@@ -253,23 +253,23 @@ mvPlayList.prototype = {
 			this.load_error = error;
 			this.is_ready = false;
 		} else if ( _this.clip_ready_count == _this.getClipCount() ) {
-			js_log( "done init all clips: " +  _this.clip_ready_count + ' = ' + _this.getClipCount() );
+			mw.log( "done init all clips: " +  _this.clip_ready_count + ' = ' + _this.getClipCount() );
 			this.doWhenClipLoadDone();
 		} else {
-			js_log( "only " + _this.clip_ready_count + " clips done, scheduling callback:" );
+			mw.log( "only " + _this.clip_ready_count + " clips done, scheduling callback:" );
 			setTimeout( function(){
 				_this.doWhenParseDone()
 			}, 100 );
 		}
 	},
 	doWhenClipLoadDone:function() {
-		js_log( 'mvPlaylist:doWhenClipLoadDone' );
+		mw.log( 'mvPlaylist:doWhenClipLoadDone' );
 		this.ready_to_play = true;
 		this.loading = false;
 		this.showPlayer();
 	},
 	getDuration:function( regen ) {
-		// js_log("GET PL DURRATION for : "+ this.tracks[this.default_track_id].clips.length + 'clips');
+		// mw.log("GET PL DURRATION for : "+ this.tracks[this.default_track_id].clips.length + 'clips');
 		if ( !regen && this.pl_duration )
 			return this.pl_duration;
 						
@@ -285,11 +285,11 @@ mvPlayList.prototype = {
 					durSum += clip.getDuration();
 				}
 			} else {
-				js_log( "ERROR: clip " + clip.id + " not ready" );
+				mw.log( "ERROR: clip " + clip.id + " not ready" );
 			}
 		} );
 		this.pl_duration = durSum;
-		// js_log("return dur: " + this.pl_duration);
+		// mw.log("return dur: " + this.pl_duration);
 		return this.pl_duration;
 	},
 	getTimeRange:function() {
@@ -297,7 +297,7 @@ mvPlayList.prototype = {
 		return '0:0:0/' +  mw.seconds2npt( this.getDuration() );
 	},
 	getDataSource:function() {
-		js_log( "f:getDataSource " + this.src );
+		mw.log( "f:getDataSource " + this.src );
 		// determine the type / first is it m3u or xml?	 
 		var pl_parent = this;
 		this.makeURLAbsolute();
@@ -312,12 +312,12 @@ mvPlayList.prototype = {
 		return this.src;
 	},
 	getSourceType:function() {
-		js_log( 'data type of: ' + this.src + ' = ' + typeof ( this.data ) + "\n" + this.data );
+		mw.log( 'data type of: ' + this.src + ' = ' + typeof ( this.data ) + "\n" + this.data );
 		this.srcType = null;
 		// if not external use different detection matrix
 		if ( this.loading_external_data ) {
 			if ( typeof this.data == 'object' ) {
-				js_log( 'object' );
+				mw.log( 'object' );
 				// object assume xml (either xspf or rss) 
 				plElm = this.data.getElementsByTagName( 'playlist' )[0];
 				if ( plElm ) {
@@ -339,10 +339,10 @@ mvPlayList.prototype = {
 					this.srcType = 'smil';
 				}
 			} else if ( typeof this.data == 'string' ) {
-				js_log( 'String' );
+				mw.log( 'String' );
 				// look at the first line: 
 				var first_line = this.data.substring( 0, this.data.indexOf( "\n" ) );
-				js_log( 'first line: ' + first_line );
+				mw.log( 'first line: ' + first_line );
 				// string
 				if ( first_line.indexOf( '#EXTM3U' ) != -1 ) {
 					this.srcType = 'm3u';
@@ -353,11 +353,11 @@ mvPlayList.prototype = {
 			}
 		}
 		if ( this.srcType ) {
-			js_log( 'is of type:' + this.srcType );
+			mw.log( 'is of type:' + this.srcType );
 			this.getPlaylist();
 		} else {
 			// unknown playlist type
-			js_log( 'unknown playlist type?' );
+			mw.log( 'unknown playlist type?' );
 			if ( this.src ) {
 				this.innerHTML = 'error: unknown playlist type at url:<br> ' + this.src;
 			} else {
@@ -393,7 +393,7 @@ mvPlayList.prototype = {
 	// inherits all the properties 
 	// swaps in the playlist object html/interface div	
 	showPlayer:function() {
-		js_log( 'mvPlaylist:showPlayer:  loading:' + this.loading );
+		mw.log( 'mvPlaylist:showPlayer:  loading:' + this.loading );
 		if ( this.loading ) {
 			$j( '#' + this.id ).html( 'loading playlist...' );
 			if ( this.loading_external_data ) {
@@ -414,7 +414,7 @@ mvPlayList.prototype = {
 		}
 	},
 	renderDisplay:function() {
-		js_log( 'mvPlaylist:renderDisplay:: track length: ' + this.default_track.getClipCount() );
+		mw.log( 'mvPlaylist:renderDisplay:: track length: ' + this.default_track.getClipCount() );
 		var _this = this;
 							
 		// append container and videoPlayer; 
@@ -452,7 +452,7 @@ mvPlayList.prototype = {
 		this.doSmilActions();
 	},
 	setupClipDisplay:function() {
-		js_log( 'mvPlaylist:setupClipDisplay:: clip len:' + this.default_track.clips.length );
+		mw.log( 'mvPlaylist:setupClipDisplay:: clip len:' + this.default_track.clips.length );
 		var _this = this;
 		$j.each( this.default_track.clips, function( i, clip ) {
 			var cout = '<div class="clip_container cc_" id="clipDesc_' + clip.id + '" ' +
@@ -478,10 +478,10 @@ mvPlayList.prototype = {
 				'left':"0px"
 			} );
 			if ( $j( '#clipDesc_' + clip.id ).length != 0 ) {
-				js_log( "should set: #clipDesc_" + clip.id + ' to: ' + $j( clip.embed ).html() )
+				mw.log( "should set: #clipDesc_" + clip.id + ' to: ' + $j( clip.embed ).html() )
 				$j( '#clipDesc_' + clip.id ).append( clip.embed );
 			} else {
-				js_log( 'cound not find: clipDesc_' + clip.id );
+				mw.log( 'cound not find: clipDesc_' + clip.id );
 			}
 		} );
 		if ( this.cur_clip )
@@ -496,7 +496,7 @@ mvPlayList.prototype = {
 		// update display & cur_clip:
 		var pl_sum_time = 0;
 		var clip_float_sec = 0;
-		// js_log('seeking clip: ');
+		// mw.log('seeking clip: ');
 		for ( var i in this.default_track.clips ) {
 			var clip = this.default_track.clips[i];
 			if ( ( clip.getDuration() + pl_sum_time ) >= float_sec ) {
@@ -522,7 +522,7 @@ mvPlayList.prototype = {
 	},
 	updateBaseStatus:function() {
 		var _this = this;
-		js_log( 'Playlist:updateBaseStatus' );
+		mw.log( 'Playlist:updateBaseStatus' );
 		
 		$j( '#ptitle_' + this.id ).html( '' +
 			'<b>' + this.title + '</b> ' +
@@ -552,13 +552,13 @@ mvPlayList.prototype = {
 	updatePlayHead:function( value ) {		
 		// slider is on 1000 scale: 
 		var val = parseInt( value * 1000 );
-		//js_log( 'update slider: #' + this.id + ' .play_head to ' + val );
+		//mw.log( 'update slider: #' + this.id + ' .play_head to ' + val );
 		$j( '#' + this.id + ' .play_head' ).slider( 'value', val );
 	},
 	getPlayHeadPos: function( prec_done ) {
 		var	_this = this;
 		if ( $j( '#mv_seeker_' + this.id ).length == 0 ) {
-			js_log( 'no playhead so we can\'t get playhead pos' );
+			mw.log( 'no playhead so we can\'t get playhead pos' );
 			return 0;
 		}
 		var track_len = $j( '#mv_seeker_' + this.id ).css( 'width' ).replace( /px/ , '' );
@@ -585,12 +585,12 @@ mvPlayList.prototype = {
 		// handle offset hack @@todo fix so this is not needed:
 		if ( perc_offset > .66 )
 			perc_offset += ( 8 / track_len );
-		// js_log('perc:'+ perc_offset +' c:'+ clip_perc + '*' + prec_done + ' v:'+(clip_perc*prec_done));
+		// mw.log('perc:'+ perc_offset +' c:'+ clip_perc + '*' + prec_done + ' v:'+(clip_perc*prec_done));
 		return perc_offset + ( clip_perc * prec_done );
 	},
 	// attempts to load the embed object with the playlist
 	loadEmbedPlaylist: function() {
-		// js_log('load playlist');
+		// mw.log('load playlist');
 	},
 	/** mannages the loading of future clips
 	 * called regurally while we are playing clips
@@ -609,9 +609,9 @@ mvPlayList.prototype = {
 			if(curBuffredTime < 0)
 				curBuffredTime = 0;
 				
-			js_log( "curBuffredTime:: " + curBuffredTime );			
+			mw.log( "curBuffredTime:: " + curBuffredTime );			
 			if( curBuffredTime <  this.playlist_buffer_time ){
-				js_log(" we only have " + curBuffredTime + ' buffed but we need: ' +  this.playlist_buffer_time);
+				mw.log(" we only have " + curBuffredTime + ' buffed but we need: ' +  this.playlist_buffer_time);
 						
 				for(var inx = this.cur_clip.order + 1; inx < this.default_track.clips.length; inx++ ){					
 					var cClip = this.default_track.getClip( inx );					
@@ -638,7 +638,7 @@ mvPlayList.prototype = {
 		var next_clip = this.getNextClip();
 		
 		if ( !next_clip ) {
-			js_log( 'play next with no next clip... must be done:' );
+			mw.log( 'play next with no next clip... must be done:' );
 			this.onClipDone();
 			return ;
 		}
@@ -651,17 +651,17 @@ mvPlayList.prototype = {
 		this.cur_clip.embed.play();
 	},
 	onClipDone:function() {
-		js_log( "pl onClipDone" );
+		mw.log( "pl onClipDone" );
 		this.cur_clip.embed.stop();
 	},
 	updateCurrentClip : function( new_clip , into_perc) {
-		js_log( 'f:updateCurrentClip:' + new_clip.id );
+		mw.log( 'f:updateCurrentClip:' + new_clip.id );
 			
 		// keep the active play clip in sync (stop the other clip) 
 		if ( this.cur_clip ) {
 			// make sure we are not switching to the current
 			if ( this.cur_clip.id == new_clip.id ) {
-				js_log( 'trying to updateCurrentClip to same clip' );
+				mw.log( 'trying to updateCurrentClip to same clip' );
 				return false;
 			}
 			
@@ -693,7 +693,7 @@ mvPlayList.prototype = {
 		// advance the playhead to the previous clip			
 		var prev_clip = this.getPrevClip();
 		if ( !prev_clip ) {
-			js_log( "tried to play PrevClip with no prev Clip.. setting prev_clip to start clip" );
+			mw.log( "tried to play PrevClip with no prev Clip.. setting prev_clip to start clip" );
 			prev_clip = this.start_clip;
 		}
 		// @@todo we could do something fancy like use playlist for sets of clips where supported. 
@@ -706,7 +706,7 @@ mvPlayList.prototype = {
 			this.updateCurrentClip( prev_clip );
 			this.cur_clip.embed.play();
 		} else {
-			js_log( 'do prev hard embed swap' );
+			mw.log( 'do prev hard embed swap' );
 			this.switchPlayingClip( prev_clip );
 		}
 	},
@@ -715,7 +715,7 @@ mvPlayList.prototype = {
 		$j( '#mv_ebct_' + this.id ).empty();
 		new_clip.embed.width = this.width;
 		new_clip.embed.height = this.height;
-		// js_log('set embed to: '+ new_clip.embed.getEmbedObj());
+		// mw.log('set embed to: '+ new_clip.embed.getEmbedObj());
 		$j( '#mv_ebct_' + this.id ).html( new_clip.embed.getEmbedObj() );
 		this.cur_clip = new_clip;
 		// run js code: 
@@ -724,7 +724,7 @@ mvPlayList.prototype = {
 	// playlist play
 	play: function() {
 		var _this = this;
-		js_log( 'pl play' );
+		mw.log( 'pl play' );
 		// hide the playlist play button: 
 		$j( this.id + ' .play-btn-large' ).hide();
 		
@@ -743,19 +743,19 @@ mvPlayList.prototype = {
 			// navtive support:
 			// * pre-loads clips
 			// * mv_playlist smil extension, manages transitions animations overlays etc.			 
-			// js_log('clip obj supports playlist swap_loader (ie playlist controlled playback)');							
+			// mw.log('clip obj supports playlist swap_loader (ie playlist controlled playback)');							
 			// @@todo pre-load each clip:
 			// play all active clips (playlist_swap_loader can have more than one clip active)		 
 			$j.each( this.activeClipList.getClipList(), function( inx, clip ) {
 				clip.embed.play();
 			} );
 		} else if ( this.cur_clip.embed.supports['playlist_driver'] ) {
-			// js_log('playlist_driver');
+			// mw.log('playlist_driver');
 			// embedObject is feed the playlist info directly and manages next/prev
 			this.cur_clip.embed.playMovieAt( this.cur_clip.order );
 		} else {
 			// not much playlist support just play the first clip:
-			// js_log('basic play');
+			// mw.log('basic play');
 			// play cur_clip			
 			this.cur_clip.embed.play();
 		}
@@ -773,11 +773,11 @@ mvPlayList.prototype = {
 		this.cur_clip.embed.toggleMute();
 	},
 	pause:function() {
-		// js_log('f:pause: playlist');
+		// mw.log('f:pause: playlist');
 		var ct = new Date();
 		this.pauseTime = this.currentTime;
 		this.paused = true;
-		// js_log('pause time: '+ this.pauseTime + ' call embed pause:');
+		// mw.log('pause time: '+ this.pauseTime + ' call embed pause:');
 
 		// pause all the active clips:
 		$j.each( this.activeClipList.getClipList(), function( inx, clip ) {
@@ -798,10 +798,10 @@ mvPlayList.prototype = {
 			$j( '#volume_bar_' + this_id ).slider( 'value', 0 );
 			this.updateVolumen( 0 );
 		}
-		js_log( 'f:toggleMute::' + this.muted );
+		mw.log( 'f:toggleMute::' + this.muted );
 	},
 	updateVolumen:function( perc ) {
-		js_log( 'update volume not supported with current playback type' );
+		mw.log( 'update volume not supported with current playback type' );
 	},
 	fullscreen:function() {
 		this.cur_clip.embed.fullscreen();
@@ -809,7 +809,7 @@ mvPlayList.prototype = {
 	// playlist stops playback for the current clip (and resets state for start clips)
 	stop:function() {
 		var _this = this;
-		/*js_log("pl stop:"+ this.start_clip.id + ' c:'+this.cur_clip.id);
+		/*mw.log("pl stop:"+ this.start_clip.id + ' c:'+this.cur_clip.id);
 		//if start clip 
 		if(this.start_clip.id!=this.cur_clip.id){
 			//restore clipDesc visibility & hide desc for start clip: 
@@ -858,7 +858,7 @@ mvPlayList.prototype = {
 		// FIXME still some issues with "stoping" and reseting the playlist	
 	},
 	doSeek:function( v ) {
-		js_log( 'pl:doSeek:' + v + ' sts:' + this.seek_time_sec );
+		mw.log( 'pl:doSeek:' + v + ' sts:' + this.seek_time_sec );
 		var _this = this;
 		
 		var time = v * this.getDuration()
@@ -872,7 +872,7 @@ mvPlayList.prototype = {
 		return '';
 	},
 	setCurrentTime: function( time, callback ) {
-		js_log( 'pl:setCurrentTime:' + time );
+		mw.log( 'pl:setCurrentTime:' + time );
 		var _this = this;
 		_this.currentTime = time;
 		
@@ -903,9 +903,9 @@ mvPlayList.prototype = {
 		for ( var i in _this.default_track.clips ) {
 			var clip = _this.default_track.clips[i];
 			next_perc_offset += ( clip.getDuration() /  _this.getDuration() ) ;
-			// js_log('on ' + clip.getDuration() +' next_perc_offset:'+ next_perc_offset);
+			// mw.log('on ' + clip.getDuration() +' next_perc_offset:'+ next_perc_offset);
 			if ( next_perc_offset > pt ) {		 
-				// js_log('seek:'+ pt +' - '+perc_offset + ') /  (' + next_perc_offset +' - '+ perc_offset);
+				// mw.log('seek:'+ pt +' - '+perc_offset + ') /  (' + next_perc_offset +' - '+ perc_offset);
 				var relative_perc =  ( pt - perc_offset ) /  ( next_perc_offset - perc_offset );
 				// update the current clip:								 
 				_this.updateCurrentClip( clip, relative_perc );
@@ -940,12 +940,12 @@ mvPlayList.prototype = {
 		var cur_pixle = 0;
 		// set up _this
 
-		// js_log("do play head total dur: "+pl_duration );
+		// mw.log("do play head total dur: "+pl_duration );
 		$j.each( this.default_track.clips, function( i, clip ) {
 			// (use getSoloDuration to not include transitions and such)	 
 			var perc = ( clip.getSoloDuration() / pl_duration );
 			var pwidth = Math.round( perc * _this.track_len );
-			// js_log('pstatus:c:'+ clip.getDuration() + ' of '+ pl_duration+' %:' + perc + ' width: '+ pwidth + ' of total: ' + _this.track_len);
+			// mw.log('pstatus:c:'+ clip.getDuration() + ' of '+ pl_duration+' %:' + perc + ' width: '+ pwidth + ' of total: ' + _this.track_len);
 			// var pwidth = Math.round( perc  * _this.track_len - (_this.mv_seeker_width*perc) );
 
 			// add the buffer child indicator:						 
@@ -967,13 +967,13 @@ mvPlayList.prototype = {
 
 			$j( '#' + _this.id + ' .play_head' ).append( barHtml );
 																										
-			// js_log('offset:' + cur_pixle +' width:'+pwidth+' add clip'+ clip.id + ' is '+clip.embed.getDuration() +' = ' + perc +' of ' + _this.track_len);
+			// mw.log('offset:' + cur_pixle +' width:'+pwidth+' add clip'+ clip.id + ' is '+clip.embed.getDuration() +' = ' + perc +' of ' + _this.track_len);
 			cur_pixle += pwidth;
 		} );
 	},
 	// @@todo currently not really in use
 	setUpHover:function() {
-		js_log( 'Setup Hover' );
+		mw.log( 'Setup Hover' );
 		// set up hover for prev,next 
 		var th = 50;
 		var tw = th * this.pl_layout.clip_aspect;
@@ -981,10 +981,10 @@ mvPlayList.prototype = {
 		$j( '#mv_prev_link_' + _this.id + ',#mv_next_link_' + _this.id ).hover( function() {
 			  var clip = ( this.id == 'mv_prev_link_' + _this.id ) ? _this.getPrevClip() : _this.getNextClip();
 			  if ( !clip )
-				  return js_log( 'missing clip for Hover' );
+				  return mw.log( 'missing clip for Hover' );
 			  // get the position of #mv_perv|next_link:
 			  var loc = getAbsolutePos( this.id );
-			  // js_log('Hover: x:'+loc.x + ' y:' + loc.y + ' :'+clip.img);
+			  // mw.log('Hover: x:'+loc.x + ' y:' + loc.y + ' :'+clip.img);
 			   $j( "body" ).append( '<div id="mv_Athub" style="position:absolute;' +
 				   'top:' + loc.y + 'px;left:' + loc.x + 'px;width:' + tw + 'px;height:' + th + 'px;">' +
 				'<img style="border:solid 2px ' + clip.getColor() + ';position:absolute;top:0px;left:0px;" width="' + tw + '" height="' + th + '" src="' + clip.img + '"/>' +
@@ -1022,7 +1022,7 @@ mvPlayList.prototype = {
 		} else {
 			var track = this.tracks[ clipObj.track_id ]
 		}
-		js_log( 'add clip:' + clipObj.id + ' to track: at:' + pos );
+		mw.log( 'add clip:' + clipObj.id + ' to track: at:' + pos );
 		// set the first clip to current (maybe deprecated ) 
 		if ( clipObj.order == 0 ) {
 			if ( !this.cur_clip )this.cur_clip = clipObj;
@@ -1032,9 +1032,9 @@ mvPlayList.prototype = {
 	swapClipDesc: function( req_clipID, callback ) {
 		// hide all but the requested
 		var _this = this;
-		js_log( 'r:' + req_clipID + ' cur:' + _this.id );
+		mw.log( 'r:' + req_clipID + ' cur:' + _this.id );
 		if ( req_clipID == _this.cur_clip.id ) {
-			js_log( 'no swap to same clip' );
+			mw.log( 'no swap to same clip' );
 		} else {
 			// fade out clips
 			req_clip = null;
@@ -1058,7 +1058,7 @@ mvPlayList.prototype = {
 	},
 	// this is pretty outdated:	 
 	getPLControls: function() {
-		js_log( 'getPL cont' );
+		mw.log( 'getPL cont' );
 		return	 '<a id="mv_prev_link_' + this.id + '" title="Previus Clip" onclick="document.getElementById(\'' + this.id + '\').playPrev();return false;" href="#">' +
 					getTransparentPng( { id:'mv_prev_btn_' + this.id, style:'float:left', width:'27', height:'27', border:"0",
 						src: mw.getConfig( 'skin_img_path' ) + 'vid_prev_sm.png' } ) +
@@ -1120,14 +1120,14 @@ mvClip.prototype = {
 		for ( var i in o ) {
 			this[i] = o[i];
 		};
-		js_log( 'id is: ' + this.id );
+		mw.log( 'id is: ' + this.id );
 	},
 	// setup the embed object:
 	setUpEmbedObj:function() {
-		js_log( 'mvClip:setUpEmbedObj()' );
+		mw.log( 'mvClip:setUpEmbedObj()' );
 		
 		this.embed = null;
-		// js_log('setup embed for clip '+ this.id + ':id is a function?'); 
+		// mw.log('setup embed for clip '+ this.id + ':id is a function?'); 
 		// set up the pl_mwEmbed object:
 		var init_pl_embed = { id:'e_' + this.id,
 			pc:this, // parent clip
@@ -1152,12 +1152,12 @@ mvClip.prototype = {
 				
 		this.embed = new PlMvEmbed( init_pl_embed );
 					
-		// js_log('media Duration:' + this.embed.getDuration() );
-		// js_log('media element:'+ this.embed.media_element.length);
-		// js_log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);		
+		// mw.log('media Duration:' + this.embed.getDuration() );
+		// mw.log('media element:'+ this.embed.media_element.length);
+		// mw.log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);		
 	},
 	doAdjust:function( side, delta ) {
-		js_log( "f:doAdjust: " + side + ' , ' +  delta );
+		mw.log( "f:doAdjust: " + side + ' , ' +  delta );
 		if ( this.embed ) {
 			if ( side == 'start' ) {
 				var startOffset = parseInt( this.embed.startOffset ) + parseInt( delta * -1 );
@@ -1169,7 +1169,7 @@ mvClip.prototype = {
 			// update everything: 
 			this.pp.refresh();
 			/*var base_src = this.src.substr(0,this.src.indexOf('?'));
-			js_log("delta:"+ delta);
+			mw.log("delta:"+ delta);
 			if(side=='start'){
 				//since we adjust start invert the delta: 
 				var startOffset =parseInt(this.embed.startOffset/1000)+parseInt(delta*-1);
@@ -1201,7 +1201,7 @@ mvClip.prototype = {
 	// output the detail view:
 	// @@todo
 	/*getDetail:function(){
-		//js_log('get detail:' + this.pp.title);
+		//mw.log('get detail:' + this.pp.title);
 		var th=Math.round( this.pl_layout.clip_desc * this.pp.height );	
 		var tw=Math.round( th * this.pl_layout.clip_aspect );		
 		
@@ -1216,7 +1216,7 @@ mvClip.prototype = {
 					
 		$j(this.embed).css({ 'position':"absolute",'top':"0px", 'left':"0px"});
 		
-		//js_log('append child to:#clipDesc_'+this.id);
+		//mw.log('append child to:#clipDesc_'+this.id);
 		if($j('#clipDesc_'+this.id).get(0)){
 			$j('#clipDesc_'+this.id).get(0).appendChild(this.embed);
 			
@@ -1235,7 +1235,7 @@ mvClip.prototype = {
 		return 'untitled clip ' + this.order;
 	},
 	getClipImg:function( startOffset, size ) {
-		js_log( 'f:getClipImg ' + startOffset + ' s:' + size );
+		mw.log( 'f:getClipImg ' + startOffset + ' s:' + size );
 		if ( !this.img ) {
 			return mv_default_thumb_url;
 		} else {
@@ -1244,9 +1244,9 @@ mvClip.prototype = {
 			} else {
 				// if a metavid image (has request parameters) use size and time args
 				if ( this.img.indexOf( '?' ) != -1 ) {
-					js_log( 'get with offset: ' + startOffset );
+					mw.log( 'get with offset: ' + startOffset );
 					var time = mw.seconds2npt( startOffset + ( this.embed.startOffset / 1000 ) );
-					js_log( "time is: " + time );
+					mw.log( "time is: " + time );
 					this.img = this.img.replace( /t\=[^&]*/gi, "t=" + time );
 					if ( this.img.indexOf( '&size=' ) != -1 ) {
 						this.img = this.img.replace( /size=[^&]*/gi, "size=" + size );
@@ -1259,7 +1259,7 @@ mvClip.prototype = {
 		}
 	},
 	getColor: function() {
-		// js_log('get color:'+ num +' : '+  num.toString().substr(num.length-1, 1) + ' : '+colors[ num.toString().substr(num.length-1, 1)] );
+		// mw.log('get color:'+ num +' : '+  num.toString().substr(num.length-1, 1) + ' : '+colors[ num.toString().substr(num.length-1, 1)] );
 		var num = this.id.substr( this.id.length - 1, 1 );
 		if ( !isNaN( num ) ) {
 			num = num.charCodeAt( 0 );
@@ -1270,7 +1270,7 @@ mvClip.prototype = {
 }
 /* mwEmbed extensions for playlists */
 var PlMvEmbed = function( vid_init ) {
-	// js_log('PlMvEmbed: '+ vid_init.id);	
+	// mw.log('PlMvEmbed: '+ vid_init.id);	
 	// create the div container
 	var ve = document.createElement( 'div' );
 	// extend ve with all this 
@@ -1280,7 +1280,7 @@ var PlMvEmbed = function( vid_init ) {
 			ve[method] = this[method];
 		}
 	}
-	js_log( 've src len:' + ve.media_element.sources.length );
+	mw.log( 've src len:' + ve.media_element.sources.length );
 	return ve;
 }
 // all the overwritten and new methods for playlist extension of baseEmbed
@@ -1313,12 +1313,12 @@ PlMvEmbed.prototype = {
 		}
 	},
 	onClipDone:function() {
-		js_log( 'pl onClipDone (should go to next)' );
+		mw.log( 'pl onClipDone (should go to next)' );
 		// go to next in playlist: 
 		this.pc.pp.playNext();
 	},
 	stop:function() {
-		js_log( 'pl:do stop' );
+		mw.log( 'pl:do stop' );
 		// set up convenience pointer to parent playlist
 		var _this = this.pc.pp;
 					
@@ -1332,7 +1332,7 @@ PlMvEmbed.prototype = {
 		this.showPlayer();
 	},
 	play:function() {
-		// js_log('pl eb play');		
+		// mw.log('pl eb play');		
 		var _this = this.pc.pp;
 		// check if we are already playing
 		if ( !this.thumbnail_disp ) {
@@ -1363,7 +1363,7 @@ PlMvEmbed.prototype = {
 		// status updates handled by playlist obj
 	},
 	updatePlayHead:function( value ) {
-		//js_log( 'PlMvEmbed:updatePlayHead:' + value );
+		//mw.log( 'PlMvEmbed:updatePlayHead:' + value );
 		// updatePlayHead handled by playlist obj		
 	}
 }
@@ -1376,17 +1376,17 @@ var m3uPlaylist = {
 		// for each line not # add as clip 
 		var inx = 0;
 		var this_pl = this;
-		// js_log('data:'+ this.data.toString());
+		// mw.log('data:'+ this.data.toString());
 		$j.each( this.data.split( "\n" ), function( i, n ) {
-			// js_log('on line '+i+' val:'+n+' len:'+n.length);
+			// mw.log('on line '+i+' val:'+n+' len:'+n.length);
 			if ( n.charAt( 0 ) != '#' ) {
 				if ( n.length > 3 ) {
 					// @@todo make sure its a valid url
-					// js_log('add url: '+i + ' '+ n);
+					// mw.log('add url: '+i + ' '+ n);
 					var cur_clip = new mvClip( { type:'srcClip', id:'p_' + this_pl.id + '_c_' + inx, pp:this_pl, src:n, order:inx } );
 					// setup the embed object 
 					cur_clip.setUpEmbedObj();
-					js_log( 'm3uPlaylist len:' + thisClip.embed.media_element.sources.length );
+					mw.log( 'm3uPlaylist len:' + thisClip.embed.media_element.sources.length );
 					this_pl.addCliptoTrack( cur_clip );
 					inx++;
 				}
@@ -1406,7 +1406,7 @@ var itunesPlaylist = {
 			tmpElm = this.data.getElementsByTagName( properties[i] )[0];
 			if ( tmpElm ) {
 				this[i] = tmpElm.childNodes[0].nodeValue;
-				// js_log('set '+i+' to '+this[i]);
+				// mw.log('set '+i+' to '+this[i]);
 			}
 		}
 		// image src is nested in itunes rss:
@@ -1426,7 +1426,7 @@ var itunesPlaylist = {
 				tmpElm = clips[i].getElementsByTagName( properties[j] )[0];
 				if ( tmpElm != null ) {
 					cur_clip[j] = tmpElm.childNodes[0].nodeValue;
-					// js_log('set clip property: ' + j+' to '+cur_clip[j]);
+					// mw.log('set clip property: ' + j+' to '+cur_clip[j]);
 				}
 			}
 			// image is nested
@@ -1453,36 +1453,36 @@ var itunesPlaylist = {
  */
 var xspfPlaylist = {
 	doParse:function() {
-		// js_log('do xsfp parse: '+ this.data.innerHTML);
+		// mw.log('do xsfp parse: '+ this.data.innerHTML);
 		var properties = { title:'title', linkback:'info',
 						   author:'creator', desc:'annotation',
 						   poster:'image', date:'date' };
 		var tmpElm = null;
 		// get the first instance of any of the meta tags (ok that may be the meta on the first clip)
-		// js_log('do loop on properties:' + properties);
+		// mw.log('do loop on properties:' + properties);
 		for ( i in properties ) {
-			js_log( 'on property: ' + i );
+			mw.log( 'on property: ' + i );
 			tmpElm = this.data.getElementsByTagName( properties[i] )[0];
 			if ( tmpElm ) {
 				if ( tmpElm.childNodes[0] ) {
 					this[i] = tmpElm.childNodes[0].nodeValue;
-					js_log( 'set pl property: ' + i + ' to ' + this[i] );
+					mw.log( 'set pl property: ' + i + ' to ' + this[i] );
 				}
 			}
 		}
 		var clips = this.data.getElementsByTagName( "track" );
-		js_log( 'found clips:' + clips.length );
+		mw.log( 'found clips:' + clips.length );
 		// add any clip specific properties 
 		properties.src = 'location';
 		for ( var i = 0; i < clips.length; i++ ) {
 			var cur_clip = new mvClip( { id:'p_' + this.id + '_c_' + i, pp:this, order:i } );
-			// js_log('cur clip:'+ cur_clip.id);
+			// mw.log('cur clip:'+ cur_clip.id);
 			for ( var j in properties ) {
 				tmpElm = clips[i].getElementsByTagName( properties[j] )[0];
 				if ( tmpElm != null ) {
 					if ( tmpElm.childNodes.length != 0 ) {
 						cur_clip[j] = tmpElm.childNodes[0].nodeValue;
-						js_log( 'set clip property: ' + j + ' to ' + cur_clip[j] );
+						mw.log( 'set clip property: ' + j + ' to ' + cur_clip[j] );
 					}
 				}
 			}
@@ -1500,7 +1500,7 @@ var xspfPlaylist = {
 			// add the current clip to the clip list
 			this.addCliptoTrack( cur_clip );
 		}
-		// js_log('done with parse');
+		// mw.log('done with parse');
 		return true;
 	}
 }
@@ -1509,13 +1509,13 @@ var xspfPlaylist = {
  *****************************/
 /*playlist driver extensions to the playlist object*/
 mvPlayList.prototype.monitor = function() {
-	// js_log('pl:monitor');			
+	// mw.log('pl:monitor');			
 	// if paused stop updates
 	if ( this.paused ) {
 		// clearInterval( this.smil_monitorTimerId );
 		return ;
 	}
-	// js_log("pl check: " + this.currentTime + ' > '+this.getDuration());
+	// mw.log("pl check: " + this.currentTime + ' > '+this.getDuration());
 	// check if we should be done:
 	if ( this.currentTime >  this.getDuration() )
 		this.stop();
@@ -1549,7 +1549,7 @@ mvPlayList.prototype.monitor = function() {
 // @@todo could be lazy loaded if necessary 
 mvPlayList.prototype.doSmilActions = function( callback ) {
 	var _this = this;
-	// js_log('f:doSmilActions: ' + this.cur_clip.id + ' tid: ' + this.cur_clip.transOut );
+	// mw.log('f:doSmilActions: ' + this.cur_clip.id + ' tid: ' + this.cur_clip.transOut );
 	var offSetTime = 0; // offset time should let us start a transition later on if we have to. 
 	var _clip = this.cur_clip;	// setup a local pointer to cur_clip
 
@@ -1562,7 +1562,7 @@ mvPlayList.prototype.doSmilActions = function( callback ) {
 		if ( _clip.dur <= _clip.embed.currentTime
 			 && _clip.order != _clip.pp.getClipCount() - 1 ) {
 			// force next clip
-			js_log( 'order:'  + _clip.order + ' != count:' + ( _clip.pp.getClipCount() - 1 ) +
+			mw.log( 'order:'  + _clip.order + ' != count:' + ( _clip.pp.getClipCount() - 1 ) +
 				' smil dur: ' + _clip.dur + ' <= curTime: ' + _clip.embed.currentTime + ' go to next clip..' );
 				// do a _play next:
 				_clip.pp.playNext();
@@ -1588,7 +1588,7 @@ mvPlayList.prototype.procTranType = function( tid, callback){
 	eval( 'var tObj =  _clip.' + tid );
 	if ( !tObj )
 		return;
-	// js_log('f:doSmilActions: ' + _clip.id + ' tid:'+tObj.id + ' tclip_id:'+ tObj.pClip.id);					
+	// mw.log('f:doSmilActions: ' + _clip.id + ' tid:'+tObj.id + ' tclip_id:'+ tObj.pClip.id);					
 	// Check if we are in range: 
 	if ( tid == 'transIn' )
 		in_range = ( _clip.embed.currentTime <= tObj.dur ) ? true : false;
@@ -1609,13 +1609,13 @@ mvPlayList.prototype.procTranType = function( tid, callback){
 					callback );
 			}
 		} else if ( tObj.animation_state == 0 ) {
-			js_log( 'init/run_transition ' );
+			mw.log( 'init/run_transition ' );
 			tObj.run_transition();
 		}
 	} else {
 		// Close up transition if done & still onDispaly
 		if ( tObj.overlay_selector_id ) {
-			js_log( 'close up transition :' + tObj.overlay_selector_id );
+			mw.log( 'close up transition :' + tObj.overlay_selector_id );
 			mvTransLib.doCloseTransition( tObj );
 		}
 	}
@@ -1641,24 +1641,24 @@ var mvTransLib = {
 	 * @param offSetTime default value 0 if we need to start rendering from a given time 
 	 */
 	doInitTransition:function( tObj ) {
-		js_log( 'mvTransLib:f:doInitTransition' );		
+		mw.log( 'mvTransLib:f:doInitTransition' );		
 		if ( !tObj.type ) {
-			js_log( 'transition is missing type attribute' );
+			mw.log( 'transition is missing type attribute' );
 			return false;
 		}
 		
 		if ( !tObj.subtype ) {
-			js_log( 'transition is missing subtype attribute' );
+			mw.log( 'transition is missing subtype attribute' );
 			return false;
 		}
 		
 		if ( !this['type'][tObj.type] ) {
-			js_log( 'mvTransLib does not support type: ' + tObj.type );
+			mw.log( 'mvTransLib does not support type: ' + tObj.type );
 			return false;
 		}
 		
 		if ( !this['type'][tObj.type][tObj.subtype] ) {
-			js_log( 'mvTransLib does not support subType: ' + tObj.subtype );
+			mw.log( 'mvTransLib does not support subType: ' + tObj.subtype );
 			return false;
 		}
 				
@@ -1670,7 +1670,7 @@ var mvTransLib = {
 				var other_pClip = tObj.pClip.pp.getNextClip();
 				
 			if ( typeof( other_pClip ) == 'undefined' || other_pClip === false || other_pClip.id == tObj.pClip.pp.cur_clip.id )
-				js_log( 'Error: crossfade without target media asset' );
+				mw.log( 'Error: crossfade without target media asset' );
 			// if not sliding start playback: 
 			if ( !tObj.pClip.pp.userSlide && !tObj.pClip.pp.paused) {
 				other_pClip.embed.play();			
@@ -1686,13 +1686,13 @@ var mvTransLib = {
 		}
 					
 		// all good call function with  tObj param
-		js_log( 'should call: ' + tObj.type + ' ' + tObj.subtype );
+		mw.log( 'should call: ' + tObj.type + ' ' + tObj.subtype );
 		this['type'][tObj.type][tObj.subtype].init( tObj );
 	},
 	doCloseTransition:function( tObj ) {
 		if ( tObj.subtype == 'crossfade' ) {
 			// close up crossfade
-			js_log( "close up crossfade" );
+			mw.log( "close up crossfade" );
 		} else {
 			$j( '#' + tObj.overlay_selector_id ).remove();
 		}
@@ -1701,7 +1701,7 @@ var mvTransLib = {
 	},
 	getOverlaySelector:function( tObj ) {
 		var overlay_selector_id = tObj.transAttrType + tObj.pClip.id;
-		js_log( 'f:getOverlaySelector: ' + overlay_selector_id + ' append to: ' + '#videoPlayer_' + tObj.pClip.embed.id );
+		mw.log( 'f:getOverlaySelector: ' + overlay_selector_id + ' append to: ' + '#videoPlayer_' + tObj.pClip.embed.id );
 		// make sure overlay_selector_id not already here:	
 		if ( $j( '#' + overlay_selector_id ).length == 0  ) {
 			$j( '#videoPlayer_' + tObj.pClip.embed.id ).prepend( '' +
@@ -1724,7 +1724,7 @@ var mvTransLib = {
 			$j( '#' + tObj.overlay_selector_id ).show();
 		
 		// do update:
-		/*	js_log('doing update for: '+ tObj.pClip.id + 
+		/*	mw.log('doing update for: '+ tObj.pClip.id + 
 			' type:' + tObj.transAttrType +
 			' t_type:'+ tObj.type +
 			' subypte:'+ tObj.subtype  + 
@@ -1744,11 +1744,11 @@ var mvTransLib = {
 			fadeFromColor: {
 				'attr' : ['fadeColor'],
 				'init' : function( tObj ) {
-					// js_log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
+					// mw.log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
 					if ( !tObj.fadeColor )
-						js_log( 'missing fadeColor' );
+						mw.log( 'missing fadeColor' );
 					if ( $j( '#' + tObj.overlay_selector_id ).length == 0 ) {
-						js_log( "ERROR can't find: " + tObj.overlay_selector_id );
+						mw.log( "ERROR can't find: " + tObj.overlay_selector_id );
 					}
 					// set the initial state
 					$j( '#' + tObj.overlay_selector_id ).css( {
@@ -1757,7 +1757,7 @@ var mvTransLib = {
 					} );
 				},
 				'u' : function( tObj, percent ) {
-					// js_log(':fadeFromColor:update: '+ percent);
+					// mw.log(':fadeFromColor:update: '+ percent);
 					// fade from color (invert the percent)
 					var percent = 1 - percent;
 					$j( '#' + tObj.overlay_selector_id ).css( {
@@ -1769,9 +1769,9 @@ var mvTransLib = {
 			crossfade: {
 				"attr" : [],
 				"init" : function( tObj ) {
-					js_log( 'f:crossfade: ' + tObj.overlay_selector_id );
+					mw.log( 'f:crossfade: ' + tObj.overlay_selector_id );
 					if ( $j( '#' + tObj.overlay_selector_id ).length == 0 )
-						js_log( "ERROR overlay selector not found: " + tObj.overlay_selector_id );
+						mw.log( "ERROR overlay selector not found: " + tObj.overlay_selector_id );
 					
 					// set the initial state show the zero opacity animation 
 					$j( '#' + tObj.overlay_selector_id ).css( { 'opacity':0 } ).show();
@@ -1844,7 +1844,7 @@ transitionObj.prototype = {
 	 * the main animation loop called every MV_ANIMATION_CB_RATE or 34ms ~around 30frames per second~
 	 */
 	run_transition:function() {
-		// js_log('f:run_transition:' + this.interValCount);
+		// mw.log('f:run_transition:' + this.interValCount);
 
 		// update the time from the video if native:   
 		if ( typeof this.pClip.embed.vid != 'undefined' ) {
@@ -1881,16 +1881,16 @@ transitionObj.prototype = {
 									- ( this.pClip.dur - this.dur )
 							) / this.dur ;
 		
-		/*js_log('percentage = ct:'+this.pClip.embed.currentTime + ' + ic:'+this.interValCount +' * cb:'+MV_ANIMATION_CB_RATE +
+		/*mw.log('percentage = ct:'+this.pClip.embed.currentTime + ' + ic:'+this.interValCount +' * cb:'+MV_ANIMATION_CB_RATE +
 			  ' / ' + this.dur + ' = ' + percentage );
 		*/
 		
-		// js_log('cur percentage of transition: '+percentage);
+		// mw.log('cur percentage of transition: '+percentage);
 		// update state based on current time + cur_time_offset (for now just use pClip.embed.currentTime)
 		mvTransLib.doUpdate( this, percentage );
 		
 		if ( percentage >= 1 ) {
-			js_log( "transition done update with percentage " + percentage );
+			mw.log( "transition done update with percentage " + percentage );
 			this.animation_state = 2;
 			clearInterval( this.timerId );
 			mvTransLib.doCloseTransition( this )
@@ -1926,7 +1926,7 @@ var smilPlaylist = {
 	transitions: { },
 	doParse:function() {
 		var _this = this;
-		js_log( 'f:doParse smilPlaylist' );
+		mw.log( 'f:doParse smilPlaylist' );
 		// @@todo get/parse meta that we are interested in: 
 		var meta_tags = this.data.getElementsByTagName( 'meta' );
 		var metaNames = {
@@ -1938,7 +1938,7 @@ var smilPlaylist = {
 			'mTouchedTime':""
 		};
 		$j.each( meta_tags, function( i, meta_elm ) {
-			// js_log( "on META tag: "+ $j(meta_elm).attr('name') );
+			// mw.log( "on META tag: "+ $j(meta_elm).attr('name') );
 			if ( $j( meta_elm ).attr( 'name' ) in metaNames ) {
 				_this[ $j( meta_elm ).attr( 'name' ) ] = $j( meta_elm ).attr( 'content' );
 			}
@@ -1954,10 +1954,10 @@ var smilPlaylist = {
 			if ( $j( trans_elm ).attr( "id" ) ) {
 				_this.transitions[ $j( trans_elm ).attr( "id" )] = new transitionObj( trans_elm );
 			} else {
-				js_log( 'skipping transition: (missing id) ' + trans_elm );
+				mw.log( 'skipping transition: (missing id) ' + trans_elm );
 			}
 		} );
-		js_log( 'loaded transitions:' + _this.transitions.length );
+		mw.log( 'loaded transitions:' + _this.transitions.length );
 		
 		// Add seq (latter we will have support more than one seq tag) / more than one "track" 
 		var seq_tags = this.data.getElementsByTagName( 'seq' );
@@ -1966,7 +1966,7 @@ var smilPlaylist = {
 			// get all the clips for the given seq:
 			$j.each( seq_elm.childNodes, function( i, mediaElement ) {
 				// ~complex~ @@todo to handle a lot like "switch" "region" etc
-				// js_log('process: ' + mediaElemnt.tagName); 
+				// mw.log('process: ' + mediaElemnt.tagName); 
 				if ( typeof mediaElement.tagName != 'undefined' ) {
 					if ( _this.tryAddMedia( mediaElement, inx ) ) {
 						inx++;
@@ -1974,11 +1974,11 @@ var smilPlaylist = {
 				}
 			} );
 		} );
-		js_log( "done proc seq tags" );
+		mw.log( "done proc seq tags" );
 		return true;
 	},
 	tryAddMediaObj:function( mConfig, order, track_id ) {
-		js_log( 'tryAddMediaObj::' );
+		mw.log( 'tryAddMediaObj::' );
 		var mediaElement = document.createElement( 'div' );
 		for ( var i = 0; i < mv_smil_ref_supported_attributes.length; i++ ) {
 			var attr = 	mv_smil_ref_supported_attributes[i];
@@ -1988,7 +1988,7 @@ var smilPlaylist = {
 		this.tryAddMedia( mediaElement, order, track_id );
 	},
 	tryAddMedia:function( mediaElement, order, track_id ) {
-		js_log( 'SMIL:tryAddMedia:' + mediaElement );
+		mw.log( 'SMIL:tryAddMedia:' + mediaElement );
 
 		var _this = this;
 		// Set up basic mvSMILClip send it the mediaElemnt & mvClip init: 
@@ -2073,7 +2073,7 @@ mvSMILClip.prototype = {
 		
 		if ( sClipElm.firstChild ) {
 			this['wholeText'] = sClipElm.firstChild.nodeValue;
-			js_log( "SET wholeText for: " + this['tagName'] + ' ' + this['wholeText'] );
+			mw.log( "SET wholeText for: " + this['tagName'] + ' ' + this['wholeText'] );
 		}
 		// debugger;
 		// mwEmbed specific property: 
@@ -2147,7 +2147,7 @@ mvSMILClip.prototype = {
 		if ( this.transOut )
 			fulldur -= this.transOut.getDuration();
 
-		// js_log("getSoloDuration:: td: " + this.getDuration() + ' sd:' + fulldur);
+		// mw.log("getSoloDuration:: td: " + this.getDuration() + ' sd:' + fulldur);
 		return fulldur;
 	},
 	// Get the duration of the original media asset (usefull for bounding setting of in-out-points)
@@ -2246,14 +2246,14 @@ trackObj.prototype = {
 		return elmObj;
 	},
 	addClip:function( clipObj, pos ) {
-		js_log( 'pl_Track: AddClip at:' + pos + ' clen: ' + this.clips.length );
+		mw.log( 'pl_Track: AddClip at:' + pos + ' clen: ' + this.clips.length );
 		if ( typeof pos == 'undefined' )
 			pos = this.clips.length;
 		// get everything after pos	
 		this.clips.splice( pos, 0, clipObj );
 		// keep the clip order values accurate:
 		this.reOrderClips();
-		js_log( "did add now cLen: " + this.clips.length );
+		mw.log( "did add now cLen: " + this.clips.length );
 	},
 	getClip:function( inx ) {
 		if ( !this.clips[inx] )

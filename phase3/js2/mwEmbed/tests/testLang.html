@@ -231,15 +231,13 @@ mw.addOnloadHook( function(){
 								var tkey = mKey + '_' + numKey + '_' + langKey;
 								testCount++;
 								$j('#score_card').html('Running Tests <span id="perc_done">0</sapn>% done');	
-								var msgparam = (typeof numVal== 'object')? numVal.join( '|' ) : numVal;		
-								do_api_req({
-									'data': {
-										'action' : 'parse',
-										'uselang' : langKey,
-										'text' : '{{int:' + mKey + '|' + msgparam + '}}'
-									},
-									'url' : '../../../api.php'					
-								}, function( data ) {							
+								var msgparam = (typeof numVal== 'object')? numVal.join( '|' ) : numVal;
+								var request = {
+									'action' : 'parse',
+									'uselang' : langKey,
+									'text' : '{{int:' + mKey + '|' + msgparam + '}}'
+								};		
+								mw.getJSON('../../../api.php', request, function( data ) {							
 									var t = '#'+ tkey ; 								
 									if(data.parse && data.parse.text && data.parse.text['*']){
 										$j(t).html( data.parse.text['*'] );										
