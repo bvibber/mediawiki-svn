@@ -8,7 +8,7 @@ var mwEmbedHostPath = urlparts[0];
 var mwRemoteVersion = '1.1b';
 var mwUseScriptLoader = true;
 
-// setup up request Params: 
+// Setup up request Params: 
 var reqParts = urlparts[1].substring( 1 ).split( '&' );
 var mwReqParam = { };
 for ( var i = 0; i < reqParts.length; i++ ) {
@@ -37,7 +37,7 @@ function doPageSpecificRewrite() {
 			'$j.ui', 
 			'$j.ui.sortable' 
 		], function() {
-			loadExternalJs( mwEmbedHostPath + '/editPage.js?' + mwGetReqArgs() );
+			mw.load( mwEmbedHostPath + '/editPage.js?' + mwGetReqArgs() );
 		} );
 	}
 	
@@ -45,7 +45,7 @@ function doPageSpecificRewrite() {
 	if ( wgPageName.indexOf( "TimedText" ) === 0 ) {
 		loadMwEmbed( function() {
 			// Load with mw loader to get localized interface:
-			mw.load( ['mvTimeTextEdit'], function() {
+			mw.load( 'mvTimeTextEdit', function() {
 				// Could run init here (but mvTimeTextEdit already included onLoad actions)
 			} );
 		} );
@@ -93,6 +93,9 @@ function doPageSpecificRewrite() {
 			jsSetVideo.push( 'nativeEmbed' );
 	
 		loadMwEmbed( jsSetVideo, function() {
+			//Load the "player" module: 
+			// All the actual code was requested in our single script-loader call 
+			//  but the "load" request applies the setup.
 			mw.load( 'player', function() {
 				// Do utility rewrite of OggHandler content:
 				rewrite_for_OggHandler( vidIdList );
@@ -100,7 +103,10 @@ function doPageSpecificRewrite() {
 		} );
 	}
 }
-// This will be depreciated in favour of updates to OggHandler
+/*
+* This will be depreciated when we update to OggHandler
+* @param {Object} vidIdList List of video ids to proccess
+*/
 function rewrite_for_OggHandler( vidIdList ) {
 	function procVidId( vidId ) {		
 		// Don't process empty vids

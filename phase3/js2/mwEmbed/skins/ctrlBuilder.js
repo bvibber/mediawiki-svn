@@ -29,7 +29,7 @@ ctrlBuilder.prototype = {
 	volume_layout : 'vertical',
 	
 	// Default control bar height is 29
-	height:29,
+	height: 29,
 	
 	// Default Extended supported options is merged with embedObject supported types
 	supports: {
@@ -107,6 +107,26 @@ ctrlBuilder.prototype = {
 			}
 		}
 		return o;
+	},
+	
+	/**
+	* Get minimal width for interface overlay
+	*/
+	getOverlayWidth: function(){
+		return ( this.embedObj.getPlayerWidth() < 400 )? 400 : this.embedObj.getPlayerWidth();
+	},	
+	/**
+	* Get minimal height for interface overlay
+	*/
+	getOverlayHeight: function(){
+		return ( this.embedObj.getPlayerHeight() < 300 )? 300 : this.embedObj.getPlayerHeight();
+	},
+	
+	/**
+	* Get the control bar height: 
+	*/
+	getControlBarHeight: function(){
+		return this.height;
 	},
 	
 	/**
@@ -240,25 +260,25 @@ ctrlBuilder.prototype = {
 		//(we can probably refactor this with custom buffering highlighter)
 		$target.find( '.play_head' ).append( this.getBufferHtml() );
 			
-		$opt = $j( '#mv_vid_options_' + embedObj.id );
+		var $opt = $j( '#mv_vid_options_' + embedObj.id );
 		
 		// videoOptions ... @@todo should be merged with something more like kskin.js:
 		$opt.find( '.vo_selection' ).click( function() {
-			embedObj.displayHTML();
-			embedObj.showPlayerSelect( $target.find( '.videoOptionsComplete' ) );
+			embedObj.displayOverlay();
+			embedObj.showPlayerSelect( $target.find( '.videoOptionsComplete' ) );			
 			$opt.hide();
 			return false;
 		} );
 		
 		$opt.find( '.vo_download' ).click( function() {
-			embedObj.displayHTML();
+			embedObj.displayOverlay();
 			embedObj.showDownload( $target.find( '.videoOptionsComplete' ) );
 			$opt.hide();
 			return false;
 		} );
 		
 		$opt.find( '.vo_showcode' ).click( function() {
-			embedObj.displayHTML();
+			embedObj.displayOverlay();
 			embedObj.showShare( $target.find( '.videoOptionsComplete' ) );
 			$opt.hide();
 			return false;
@@ -282,7 +302,7 @@ ctrlBuilder.prototype = {
 			return false;
 		}		
 		
-		// If the resolution is too small don't display the warrning
+		// If the resolution is too small don't display the warning
 		if( this.embedObj.getPlayerHeight < 199 )
 			return false;
 				
@@ -293,6 +313,7 @@ ctrlBuilder.prototype = {
 				return false;
 			}
 		}
+		
 		// See if we are using mwEmbed without a ogg source in which case no point in promoting firefox :P			
 		if (  this.embedObj.media_element &&  this.embedObj.media_element.sources ) {
 			var foundOgg = false;
@@ -372,7 +393,7 @@ ctrlBuilder.prototype = {
 		}
 		
 		if ( this.volume_layout == 'vertical' )
-			sliderConf['orientation'] = "vertical";
+			sliderConf[ 'orientation' ] = "vertical";
 		
 		$target.find( '.volume-slider' ).slider( sliderConf );
 	},
@@ -461,7 +482,8 @@ ctrlBuilder.prototype = {
 				return o;
 			}
 		},
-		/*
+		
+		/**
 		* The fullscreen button for displaying the video fullscreen
 		*/
 		'fullscreen': {
@@ -472,8 +494,9 @@ ctrlBuilder.prototype = {
 						'</div>'
 			}
 		},
-		/*
-		* The options button, diffrent from the options menu above
+		
+		/**
+		* The options button, invokes display of the options menu
 		*/
 		'options': {
 			'w':26,
@@ -483,7 +506,8 @@ ctrlBuilder.prototype = {
 						'</div>';
 			}
 		},
-		/*
+		
+		/**
 		* The pause button
 		*/
 		'pause': {

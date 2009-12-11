@@ -166,7 +166,7 @@ class jsScriptLoader {
 				}
 			}
 		}
-		//if we did not return some js
+		// If we did not return some js
 		$this->error_msg .= "\nUnknown error\n";
 		return false;
 	}
@@ -199,16 +199,25 @@ class jsScriptLoader {
 		}
 	}
 
+	/**
+	 * Checks if client Accepts Gzip response
+	 *
+	 * @return boolean
+	 * 	true if client accepts gzip encoded response
+	 * 	false if client does not accept gzip encoded response
+	 */
 	function clientAcceptsGzip() {
 		$m = array();
-		if( preg_match(
-			'/\bgzip(?:;(q)=([0-9]+(?:\.[0-9]+)))?\b/',
-		$_SERVER['HTTP_ACCEPT_ENCODING'],
-		$m ) ) {
-			if( isset( $m[2] ) && ( $m[1] == 'q' ) && ( $m[2] == 0 ) )
-			return false;
-			//no gzip support found
-			return true;
+		if( isset( $_SERVER['HTTP_ACCEPT_ENCODING'] ) ){
+			if( preg_match(
+				'/\bgzip(?:;(q)=([0-9]+(?:\.[0-9]+)))?\b/',
+			$_SERVER['HTTP_ACCEPT_ENCODING'],
+			$m ) ) {
+				if( isset( $m[2] ) && ( $m[1] == 'q' ) && ( $m[2] == 0 ) )
+				return false;
+				//no gzip support found
+				return true;
+			}
 		}
 		return false;
 	}
