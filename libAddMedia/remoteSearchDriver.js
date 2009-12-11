@@ -2173,7 +2173,7 @@ remoteSearchDriver.prototype = {
 		}
 		// @@todo try to load over ajax if( _this.local_wiki_api_url ) is set
 		// ( for cases where inserting from a normal page view (that did not have wpEditToken)
-		get_mw_token( null, _this.upload_api_target, function( token ) {
+		mw.getToken( _this.upload_api_target, function( token ) {
 			callback( token );
 		} );
 	},
