@@ -47,7 +47,11 @@ END;
 
 	static function tableRowHTML($css_class, $data_type, $value = null) {
 		$data_type = htmlspecialchars($data_type);
-		$content = is_null($value) ? $data_type : "$data_type: " . HTML::element('span', array('class' => 'rowValue'), $value);
+		if (is_null($value)) {
+			$content = $data_type;
+		} else {
+			$content = "$data_type: " . HTML::element('span', array('class' => 'rowValue'), $value);
+		}
 		$cell = HTML::rawElement('td', array('colspan' => 2), $content);
 		$text = HTML::rawElement('tr', array('class' => $css_class), $cell);
 		$text .= "\n";
