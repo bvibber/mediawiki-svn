@@ -804,7 +804,7 @@ remoteSearchDriver.prototype = {
 		mw.log( "showUploadTab::" );
 		var _this = this;
 		// set it to loading:
-		$j( '#tab-upload' ).loadingSpiner();
+		$j( '#tab-upload' ).loadingSpinner();
 		// Do things async to keep interface snappy
 		setTimeout(
 			function() {
@@ -859,13 +859,13 @@ remoteSearchDriver.prototype = {
 			'<td valign="top" style="width:350px; padding-right: 12px;">' +
 			'<h4>' + uploadMsg + '</h4>' +
 			'<div id="upload_form">' +
-				mw.loading_spiner() +
+				mw.loading_spinner() +
 			'</div>' +
 			'</td>' +
 			'<td valign="top" id="upload_bin_cnt">' +
 			'<h4>' + recentUploadsMsg + '</h4>' +
 			'<div id="upload_bin">' +
-				mw.loading_spiner() +
+				mw.loading_spinner() +
 			'</div>' +
 			'</td>' +
 			'</tr>' +
@@ -951,7 +951,7 @@ remoteSearchDriver.prototype = {
 			}
 
 			// Set the content to loading while we do the search:
-			$j( '#tab-' + providerName ).html( mw.loading_spiner() );
+			$j( '#tab-' + providerName ).html( mw.loading_spinner() );
 
 			// Make sure the search library is loaded and issue the search request
 			this.getLibSearchResults( provider );
@@ -1443,7 +1443,7 @@ remoteSearchDriver.prototype = {
 				'style="position:absolute;' + overflowStyle + ';' + 
 				'left:' + ( maxWidth + 20 ) + 'px;right:0px;top:5px;bottom:10px;' + 
 				'padding:5px;" >' +
-			mw.loading_spiner( 'position:absolute;top:30px;left:30px' ) +
+			mw.loading_spinner( 'position:absolute;top:30px;left:30px' ) +
 			'</div>' +
 			'</div>' );
 	},
@@ -1944,7 +1944,7 @@ remoteSearchDriver.prototype = {
 			'<br style="clear both"/>' +
 			'<strong>' + gM( 'mwe-resource_page_desc' ) + '</strong>' +
 			'<div id="rsd_import_desc" style="display:inline;">' +
-			mw.loading_spiner( 'position:absolute;top:5px;left:5px' ) +
+			mw.loading_spinner( 'position:absolute;top:5px;left:5px' ) +
 			'</div>' +
 			'</div>' +
 			'<div id="rds_edit_import_container" ' + 
@@ -1997,7 +1997,7 @@ remoteSearchDriver.prototype = {
 			.btnBind()
 			.click( function() {
 				mw.log( " Do preview asset update" );
-				$j( '#rsd_import_desc' ).html( mw.loading_spiner() );
+				$j( '#rsd_import_desc' ).html( mw.loading_spinner() );
 				// load the preview text:
 				_this.parse( 
 					$j( '#rsd_import_ta' ).val(), 
@@ -2198,7 +2198,7 @@ remoteSearchDriver.prototype = {
 				'<div id="rsd_preview_display"' +
 					'style="position:absolute;overflow:hidden;z-index:4;' + 
 					'top:0px;bottom:0px;right:0px;left:0px;background-color:#FFF;">' +
-				mw.loading_spiner( 'top:30px;left:30px' ) +
+				mw.loading_spinner( 'top:30px;left:30px' ) +
 				'</div>' );
 
 			var buttonPaneSelector = _this.target_container + '~ .ui-dialog-buttonpane';

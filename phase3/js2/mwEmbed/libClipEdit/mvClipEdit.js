@@ -234,7 +234,7 @@ mvClipEdit.prototype = {
 			'doEdit':function( _this, target ) {
 				// if media type is template we have to query to get its URI to get its parameters
 				if ( _this.getMediaType() == 'template' && !_this.resource.tVars ) {
-					$j( '#sub_cliplib_ic' ).loadingSpiner()
+					$j( '#sub_cliplib_ic' ).loadingSpinner()
 					var request = {
 						'action':'query',
 						'prop':'revisions',
@@ -385,7 +385,7 @@ mvClipEdit.prototype = {
 				'title'	: _this.parentSequence.plObj.mTitle,
 				'text'	:	template_wiki_text
 			};
-			$j( _this.resource.embed ).html( mw.loading_spiner() );
+			$j( _this.resource.embed ).html( mw.loading_spinner() );
 
 			var api_url = _this.parentSequence.plObj.interface_url;
 			mw.getJSON( api_url, request, function( data ) {

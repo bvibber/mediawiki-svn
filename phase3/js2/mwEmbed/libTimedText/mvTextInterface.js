@@ -352,7 +352,7 @@ mvTextInterface.prototype = {
 				'right:0px;bottom:0px;' +
 				'height:' + ( this.pe.height) +
 				'px;overflow:auto;"><span style="display:none;" id="mv_txt_load_' + this.pe.id + '">' +
-					mw.loading_spiner() + '</span>' +
+					mw.loading_spinner() + '</span>' +
 				'</div>';
 	},
 	getTsSelect:function() {

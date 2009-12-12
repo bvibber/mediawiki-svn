@@ -416,7 +416,7 @@ EmbedPlayerManager.prototype = {
 			'width' : playerInterface.width,
 			'height' : playerInterface.height
 		} )		
-		.html( mw.loading_spiner() );
+		.html( mw.loading_spinner() );
 		
 		// Apply the Player interface to the DOM element
 		for ( var method in playerInterface ) { // for in loop oky in Element context	
@@ -1047,15 +1047,9 @@ mediaElement.prototype = {
 	addROE: function( roe_data ) {
 		mw.log( 'f:addROE' );
 		this.addedROEData = true;
-		var _this = this;
-		if ( typeof roe_data == 'string' )
-		{
-			var parser = new DOMParser();
-			mw.log( 'ROE data:' + roe_data );
-			roe_data = parser.parseFromString( roe_data, "text/xml" );
-		}
+		var _this = this;		
 		if ( roe_data ) {
-			$j.each( roe_data.getElementsByTagName( 'mediaSource' ), function( inx, source ) {
+			$j( roe_data ).find("mediaSource").each( function( inx, source ) {
 				_this.tryAddSource( source );
 			} );
 			// set the thumbnail:
@@ -2240,7 +2234,7 @@ embedPlayer.prototype = {
 				'height:' + theight + 'px;width:400px;' +
 				'display:none;" ' +
 				'id="metaBox_' + this.id + '">' +
-					mw.loading_spiner() +
+					mw.loading_spinner() +
 				'</div>' );
 		}		
 		// check if textObj present:
