@@ -377,7 +377,7 @@ mvBaseUploadInterface.prototype = {
 
 		// Set the HTTP box to "loading", in case we don't get an update for some time
 		$j( '#dlbox-centered' ).html( '<h5>' + _this.getProgressTitle() + '</h5>' +
-			mw.loading_spiner( 'left:40%;top:20%' )
+			mw.loading_spinner( 'left:40%;top:20%' )
 		);
 
 		// Set up the request
@@ -568,7 +568,7 @@ mvBaseUploadInterface.prototype = {
 				error_msg = apiRes.error;
 
 			// There are many possible error messages here, so we don't load all
-			// message text in advance, instead we use gMsgLoadRemote() for some.
+			// message text in advance, instead we use mw.getRemoteMsg() for some.
 			//
 			// This code is similar to the error handling code formerly in
 			// SpecialUpload::processUpload()
@@ -600,7 +600,7 @@ mvBaseUploadInterface.prototype = {
 				if ( apiRes.upload.error == 'internal-error' ) {
 					// Do a remote message load
 					errorKey = apiRes.upload.details[0];
-					gMsgLoadRemote( errorKey, function() {
+					mw.getRemoteMsg( errorKey, function() {
 						_this.updateProgressWin( gM( 'mwe-uploaderror' ), gM( errorKey ), buttons );
 
 					});
@@ -637,7 +637,7 @@ mvBaseUploadInterface.prototype = {
 			}
 
 			mw.log( 'get key: ' + error_msg_key[ error_code ] )
-			gMsgLoadRemote( error_msg_key[ error_code ], function() {
+			mw.getRemoteMsg( error_msg_key[ error_code ], function() {
 				_this.updateProgressWin(
 					gM( 'mwe-uploaderror' ),
 					gM( error_msg_key[ error_code ], errorReplaceArg ),
@@ -693,7 +693,7 @@ mvBaseUploadInterface.prototype = {
 				//check if we have a stashed key:
 				if ( _this.warnings_sessionkey ) {
 					//set to "loading"
-					$j( '#upProgressDialog' ).html( mw.loading_spiner() );
+					$j( '#upProgressDialog' ).html( mw.loading_spinner() );
 					//setup loading:
 					var request = {
 						'action': 'upload',
@@ -797,7 +797,7 @@ mvBaseUploadInterface.prototype = {
 			title_txt = _this.getProgressTitle();
 
 		if ( !msg )
-			msg = mw.loading_spiner( 'left:40%;top:40px;' );
+			msg = mw.loading_spinner( 'left:40%;top:40px;' );
 
 		if ( !buttons ) {
 			// If no buttons are specified, add a close button

@@ -777,7 +777,7 @@ mvSequencer.prototype = {
 		mw.log( "sequence:doEditTransition" );
 		var _this = this;
 		// Add a loading image
-		mw.loading_spiner( '#transitions_ic' );
+		mw.loading_spinner( '#transitions_ic' );
 		mw.load( [
 			'$j.fn.ColorPicker',
 			'mvTimedEffectsEdit'
@@ -799,7 +799,7 @@ mvSequencer.prototype = {
 		mw.log( 'seq:doEditClip' );
 		var _this = this;
 
-		mw.loading_spiner( '#clipedit_ic' );
+		mw.loading_spinner( '#clipedit_ic' );
 		
 		// Load the clipEdit library if not already loaded:
 		mw.load( [

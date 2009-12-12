@@ -163,7 +163,7 @@ var global_req_cb = new Array(); // The global request callback array
 	* mw.addMessages function
 	* Loads a set of json messages into the messegeCache object.
 	*
-	* @param json msgSet The set of msgs to be loaded
+	* @param {JSON} msgSet The set of msgs to be loaded
 	*/
 	$.addMessages = function( msgSet ) {
 		for ( var i in msgSet ) {
@@ -191,10 +191,10 @@ var global_req_cb = new Array(); // The global request callback array
 	 * the user msg.
 	 *
 	 * @param {String} key The msg key as set by mw.addMessages
-	 * @param [mixed] args  An array of replacement strings
+	 * @param {Array} args  An array of replacement strings
 	 * @return string
 	 */
-	$.lang.gM = function( key , args ) {
+	$.getMsg = function( key , args ) {
 	
 		// Check for missing message key
 		if ( ! messageCache[ key ] )
@@ -208,10 +208,7 @@ var global_req_cb = new Array(); // The global request callback array
 		if ( ms.indexOf( '{{' ) === -1 && ms.indexOf( '[' ) === -1 ) {
 			return ms;
 		}
-
-		// make sure we have the lagMagic setup:
-		// @@todo move to init
-		$.lang.magicSetup();
+				
 		// send the msg key through the parser
 		var pObj = $.parser.pNew( ms );
 		// return the transformed msg
@@ -365,12 +362,12 @@ var global_req_cb = new Array(); // The global request callback array
 	}
 
 	/**
-	 * gMsgLoadRemote loads remote msg strings
+	 * getRemoteMsg loads remote msg strings
 	 *
 	 * @param mixed msgSet the set of msg to load remotely
 	 * @param function callback  the callback to issue once string is ready
 	 */
-	$.lang.gMsgLoadRemote = function( msgSet, callback ) {
+	$.getRemoteMsg = function( msgSet, callback ) {
 		var ammessages = '';
 		if ( typeof msgSet == 'object' ) {
 			for ( var i in msgSet ) {
@@ -465,7 +462,7 @@ var global_req_cb = new Array(); // The global request callback array
 	/**
 	* MediaWiki wikitext "Parser"
 	*
-	* This is not feature complete but we need a way to get at template properties
+	* Not feature complete but we need a way to get at template properties
 	*
 	*
 	* @param {String} wikiText the wikitext to be parsed
@@ -488,9 +485,9 @@ var global_req_cb = new Array(); // The global request callback array
 	}
 
 	// Create a new parser Object
-	$.parser.pNew = function( wikiText, opt ) {
-		var parseObj = function( wikiText, opt ) {
-			return this.init( wikiText, opt )
+	$.parser.pNew = function( wikiText, options ) {
+		var parseObj = function( wikiText, options ) {
+			return this.init( wikiText, options )
 		}
 		parseObj.prototype = {
 			// the wikiText "DOM"... stores the parsed wikiText structure
@@ -763,6 +760,7 @@ var global_req_cb = new Array(); // The global request callback array
 		*		Module loader function should accept a callback argument
 		*
 		*	{String} Name of a class to loaded. 
+		* 		Classes are added via addClassFilePaths function
 		*		Using defined class names avoids loading the same class
 		*		twice by first checking if the "class variable" is defined
 		*	
@@ -776,22 +774,21 @@ var global_req_cb = new Array(); // The global request callback array
 		* 	{Array} {Array} Can be a set of Arrays for loading.		 
 		*		Some browsers execute included scripts out of order. 
 		* 		This lets you chain sets of request for those browsers.
-		*		If using the script-loader order is preserved in output and 
-		*			a single request will be used.
+		*		If using the server side script-loader order is preserved 
+		* 			in output and a single request will be used.
 		*
 		* @param {Function} callback Function called once loading is complete
 		*/				
 		load: function( loadRequest, callback ){
 			// Check for empty loadRequest ( directly return the callback ) 
 			if( $.isEmpty( loadRequest ) ){
-				mw.log( 'Error: Empty load request ' );
+				mw.log( 'Error: Empty load request: ' + loadRequest);
 				callback( loadRequest );
 			}
 			
 			// Check if its a multi-part request: 
 			if( typeof loadRequest == 'object' ){
-			 	if( loadRequest.length > 1 ){
-			 		mw.log("mw.load: LoadMany:: 	" + loadRequest );									
+			 	if( loadRequest.length > 1 ){			 							
 					this.loadMany ( loadRequest,  callback );
 					return ;
 				}else{
@@ -857,7 +854,9 @@ var global_req_cb = new Array(); // The global request callback array
 					loadStates[ loadName ] = 0;					
 				}		
 			}	
-			
+			// We are infact loading many:
+			mw.log("mw.load: LoadMany:: 	" + loadSet );
+						
 			// Issue the load request check check loadStates to see if we are "done"
 			for( var loadName in loadStates ){				
 				//mw.log("loadMany: load: " + loadName ); 					
@@ -1013,8 +1012,7 @@ var global_req_cb = new Array(); // The global request callback array
 					callback( className );
 				callback = null;
 			} );	
-			mw.log( 'done with running 	getScript request ' );			
-												
+			//mw.log( 'done with running 	getScript request ' );
 		},				
 		
 		/**
@@ -1029,7 +1027,7 @@ var global_req_cb = new Array(); // The global request callback array
 		},
 		
 		/**
-		* Adds file path key value pairs
+		* Adds class file path key value pairs
 		*
 		* @param {Object} classSet JSON formated list of 
 		*  class name file path pairs.
@@ -1047,7 +1045,9 @@ var global_req_cb = new Array(); // The global request callback array
 	 	* Add a style sheet to be loaded the same time as the requested class
 	 	*
 		* NOTE: In general style sheets should be loaded via a module loader function. 
-		*  In some cases a single class has a single sheet that can use this function
+		*  In some cases a single class has a single sheet dependency which can be set-up using this function
+		* 
+		* @param {Object} sheetSet ClassKey : sheet location key value paris
 	 	*/
 	 	addClassStyleSheets: function( sheetSet ){
 	 		for(var i in sheetSet ){
@@ -1105,8 +1105,8 @@ var global_req_cb = new Array(); // The global request callback array
 	* Lets you assume a few options:
 	* 	url is optional 
 	* 		( If the first argument is not a string we assume a local mediaWiki api request )
-	*   callback paramater is not needed we setup the callback automatically
-	* 	url param 'action'=>'query' is assumed ( if not set to something else in the "data" parma
+	*   callback parameter is not needed we setup the callback automatically
+	* 	url param 'action'=>'query' is assumed ( if not set to something else in the "data" param
 	* 	format is set to "json" automatically
 	*
 	* @param {Mixed} url or data request
@@ -1234,7 +1234,7 @@ var global_req_cb = new Array(); // The global request callback array
 		return true;
 	}
 	/**
-	* Waits for a object to be deinfed and the calls callback
+	* Waits for a object to be defined and the calls callback
 	*
 	* @param {Object} objectName Name of object to be defined
 	* @param {Function} callback Function to call once object is defined
@@ -1243,7 +1243,7 @@ var global_req_cb = new Array(); // The global request callback array
 	*/
 	var waitTime = 1200; // About 30 seconds 
 	$.waitForObject = function( objectName, callback, _callNumber){
-		mw.log( 'waitForObject: ' + objectName );
+		//mw.log( 'waitForObject: ' + objectName );
 		if( !_callNumber ) 
 			_callNumber = 1;
 		
@@ -1264,16 +1264,16 @@ var global_req_cb = new Array(); // The global request callback array
 	/**
 	* Check if an object is empty or if its an empty string. 
 	*
-	* @param {Object} ob Object to be checked
+	* @param {Object} object Object to be checked
 	*/ 
-	$.isEmpty = function( ob ) {		
-		if( typeof ob == 'string' ){ 
-			if( ob == '' ) return true;
+	$.isEmpty = function( object ) {		
+		if( typeof object == 'string' ){ 
+			if( object == '' ) return true;
 			// Non empty string: 
 			return false;
 		}
 		// Else check as an object: 
-		for(var i in ob){ return false; }
+		for( var i in object ){ return false; }
 		return true;
 	}
 	
@@ -1316,12 +1316,12 @@ var global_req_cb = new Array(); // The global request callback array
 	}
 	
 	/**
-	* Get a loading spiner html
-	* @param {String} [Optional] style Style string to apply to the spiner 
+	* Get a loading spinner html
+	* @param {String} [Optional] style Style string to apply to the spinner 
 	*/
-	$.loading_spiner = function( style ) {
+	$.loading_spinner = function( style ) {
 		var style_txt = ( style ) ? style:'';
-		return '<div class="loading_spiner" style="' + style_txt + '"></div>';
+		return '<div class="loading_spinner" style="' + style_txt + '"></div>';
 	}
 	
 	
@@ -1335,6 +1335,9 @@ var global_req_cb = new Array(); // The global request callback array
 	* Enables load hooks to run once DOM is "ready" 
 	* Will ensure jQuery is available, is in the $j namespace 
 	* and mw interfaces and configuration has been loaded and applied
+	* 
+	* this is different from jQuery(document).ready() 
+	* ( jQuery ready is not friendly with dynamic includes and core interface asynchronous build out.) 
 	*
 	* @param {Function} callback Function to run once DOM and jQuery are ready
 	*/
@@ -1401,6 +1404,9 @@ var global_req_cb = new Array(); // The global request callback array
 			$j.ajaxSetup( {
 				cache: true
 			} );
+			
+			//Update the magic keywords 		
+			$.lang.magicSetup();
 			
 			// Set up mvEmbed jQuery bindings
 			mwDojQueryBindings();
@@ -1592,7 +1598,10 @@ var global_req_cb = new Array(); // The global request callback array
 	}
 	
 	/** 
-	* Get Api URL from mediaWiki output page defined variables
+	* Get Api URL from mediaWiki page defined variables
+	* @return {Mixed}
+	* 	api url
+	* 	false
 	*/
 	$.getLocalApiUrl = function() {
 		if ( typeof wgServer != 'undefined' && typeof wgScriptPath  != 'undefined' ) {
@@ -1939,7 +1948,7 @@ if ( typeof gMsg != 'undefined' ) {
 }
 
 // Set gM shortcut:
-var gM = mw.lang.gM;
+var gM = mw.getMsg;
 
 // Setup legacy global shortcuts:
 var loadRS = mw.lang.loadRS;
@@ -2190,11 +2199,11 @@ function mwDojQueryBindings() {
 	( function( $ ) {
 	
 		/**
-		* Set a given selector html to the loading spiner:
+		* Set a given selector html to the loading spinner:
 		*/
-		$.fn.loadingSpiner = function() {
+		$.fn.loadingSpinner = function() {
 			if ( this.selector ) {
-				$j( this.selector ).html(  mw.loading_spiner() );
+				$j( this.selector ).html(  mw.loading_spinner() );
 			}
 		}
 		
@@ -2511,7 +2520,7 @@ function mwDojQueryBindings() {
 		* @param msg text text of the loader msg
 		*/
 		$.addLoaderDialog = function( msg_txt ) {
-			$.addDialog( msg_txt, msg_txt + '<br>' + mw.loading_spiner() );
+			$.addDialog( msg_txt, msg_txt + '<br>' + mw.loading_spinner() );
 		}
 		
 		/**
@@ -2572,6 +2581,8 @@ function mwDojQueryBindings() {
 
 /**
 * Utility functions that override globals
+* 
+* Will be depreciated once we move all XML parsing to jQuery calls
 */
 
 if ( typeof DOMParser == "undefined" ) {

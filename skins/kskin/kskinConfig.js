@@ -197,7 +197,7 @@ var kskinConfig = {
 
 		$target.html( '<h2>' + gM( 'mwe-credits' ) + '</h2>'  +
 			'<div class="credits_box ui-corner-all">' +
-				mw.loading_spiner() + 
+				mw.loading_spinner() + 
 			'</div>'								
 		);
 

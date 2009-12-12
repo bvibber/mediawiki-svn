@@ -5,7 +5,8 @@
  */
 
 
-//Setup the script local script cache directory (has to be hard coded rather than config based for fast non-mediawiki config hits
+//Setup the script local script cache directory
+// ( has to be hard coded rather than config based for fast non-mediawiki config hits )
 $wgScriptCacheDirectory = realpath( dirname( __FILE__ ) ) . '/php/script-cache';
 
 // Check if we are being invoked in a MediaWiki context or stand alone usage:
@@ -44,7 +45,7 @@ class jsScriptLoader {
 		if ( $this->sFileCache->isFileCached() ) {
 			// Just output headers so we can use PHP's @readfile::
 			$this->outputJsHeaders();
-			$this->sFileCache->outputFromFileCache();
+			$this->sFileCache->loadFromFileCache();
 			return true;
 		}
 		return false;
@@ -233,7 +234,7 @@ class jsScriptLoader {
 	 * 	true if client accepts gzip encoded response
 	 * 	false if client does not accept gzip encoded response
 	 */
-	function clientAcceptsGzip() {
+	static function clientAcceptsGzip() {
 		$m = array();
 		if( isset( $_SERVER['HTTP_ACCEPT_ENCODING'] ) ){
 			if( preg_match(
@@ -248,8 +249,9 @@ class jsScriptLoader {
 		}
 		return false;
 	}
-	/*
-	 * postProcRequestVars uses globals, configuration and mediaWiki to test wiki-titles and files exist etc.
+
+	/**
+	 * Post process request uses globals, configuration and mediaWiki to test wiki-titles and files exist etc.
 	 */
 	function postProcRequestVars(){
 		global $wgContLanguageCode, $wgEnableScriptMinify, $wgJSAutoloadClasses,
@@ -274,7 +276,7 @@ class jsScriptLoader {
 			//make sure its a valid lang code:
 			$this->langCode = preg_replace( "/[^A-Za-z]/", '', $_GET['uselang']);
 		}else{
-			//set english as default
+			//set English as default
 			$this->langCode = 'en';
 		}
 		$this->langCode = self::checkForCommonsLanguageFormHack( $this->langCode );
@@ -325,7 +327,6 @@ class jsScriptLoader {
 				}
 			}
 		}
-
 
 		// Add the language code to the rKey:
 		$this->requestKey .= '_' . $wgContLanguageCode;
@@ -487,8 +488,9 @@ class jsScriptLoader {
 		//return the js str unmodified if we did not transform with the localisation.
 		return $str;
 	}
+
 	/**
-	 * Get the addMesseges index ( for replacing msg text with localized json )
+	 * Get the "addMesseges" function index ( for replacing msg text with localized json )
 	 *
 	 * @param {String} $str Javascript string to grab msg text from
 	 * @return {Array} Array with start and end points character indexes
@@ -564,6 +566,7 @@ class jsScriptLoader {
 
 		return FormatJson::decode( '{' . substr($str, $inx['s'], ($inx['e']-$inx['s'])) . '}', true);
 	}
+
 	/**
 	 * Updates an array of messages with the wfMsgGetKey value
 	 *
@@ -581,6 +584,7 @@ class jsScriptLoader {
 			$jmsg[ $msgKey ] = wfMsgGetKey( $msgKey, true, $langCode, false );
 		}
 	}
+
 	/**
 	 * Replace a string of json msgs with the translated json msgs.
 	 *
@@ -630,9 +634,10 @@ class simpleFileCache {
 	}
 
 	/**
-	 * get Cache file file Name based on $requestKey and if gzip is enabled or not
+	 * Get cache file file Name based on $requestKey and if gzip is enabled or not
+	 * Updates the local filename var
 	 *
-	 * @return unknown
+	 * @return {String} file path
 	 */
 	public function getCacheFileName() {
 		global $wgUseGzip, $wgScriptCacheDirectory;
@@ -649,22 +654,29 @@ class simpleFileCache {
 		if( is_file( $this->filename ) )
 			return $this->filename;
 
+		// Check for non-config based gzip version already there?
 		if( is_file( $this->filename . '.gz') ){
 			$this->filename .= '.gz';
 			return $this->filename;
 		}
-		//check the update the name based on the $wgUseGzip config var
+		//Update the name based on the $wgUseGzip config var
 		if ( isset($wgUseGzip) && $wgUseGzip )
 			$this->filename.='.gz';
 
+		return $this->filename;
 	}
-
+	/**
+	 * Checks if file is cached
+	 */
 	public function isFileCached() {
 		return file_exists( $this->filename );
 	}
 
-	public function outputFromFileCache() {
-		if ( $this->clientAcceptsGzip() && substr( $this->filename, -3 ) == '.gz'  ) {
+	/**
+	 * Loads and outputs the file from file cache
+	 */
+	public function loadFromFileCache() {
+		if ( jsScriptLoader::clientAcceptsGzip() && substr( $this->filename, -3 ) == '.gz'  ) {
 			header( 'Content-Encoding: gzip' );
 			readfile( $this->filename );
 			return true;
@@ -677,19 +689,10 @@ class simpleFileCache {
 		}
 		return true;
 	}
-	public function clientAcceptsGzip(){
-		$m = array();
-		if ( preg_match(
-			'/\bgzip(?:;(q)=([0-9]+(?:\.[0-9]+)))?\b/',
-		$_SERVER['HTTP_ACCEPT_ENCODING'],
-		$m ) ) {
-			if ( isset( $m[2] ) && ( $m[1] == 'q' ) && ( $m[2] == 0 ) )
-			return false;
-
-			return true;
-		}
-		return false;
-	}
+	/**
+	 * Saves text string to file
+	 * @param unknown_type $text
+	 */
 	public function saveToFileCache( &$text ) {
 		global $wgUseFileCache, $wgUseGzip;
 		if ( !$wgUseFileCache ) {
@@ -718,7 +721,9 @@ class simpleFileCache {
 		}
 		return true;
 	}
-
+	/**
+	 * Checks cache directories and makes the dirs if not present
+	 */
 	protected function checkCacheDirs() {
 		$mydir2 = substr( $this->filename, 0, strrpos( $this->filename, '/' ) ); # subdirectory level 2
 		$mydir1 = substr( $mydir2, 0, strrpos( $mydir2, '/' ) ); # subdirectory level 1
