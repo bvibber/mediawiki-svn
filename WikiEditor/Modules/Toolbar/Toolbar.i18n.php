@@ -2698,7 +2698,7 @@ $messages['diq'] = array(
 | satır 2, hucre 1
 | satır 2, hucre 2
 | satır 2, hucre 3',
-	'wikieditor-toolbar-tool-table-example-cell-text' => 'metnê hucreyi',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Metnê hucra',
 	'wikieditor-toolbar-tool-table-example-header' => 'metnê sernameyi',
 	'wikieditor-toolbar-tool-table-title' => 'tablo bıerz',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'satıri/rêzi',
@@ -6766,6 +6766,7 @@ $messages['ka'] = array(
 {{ns:file}}:Example.jpg|აღწერა2',
 	'wikieditor-toolbar-tool-newline' => 'ახალი ხაზი',
 	'wikieditor-toolbar-tool-table' => 'ტაბულა',
+	'wikieditor-toolbar-tool-table-example' => 'მაგალითი',
 	'wikieditor-toolbar-tool-table-preview' => 'წინასწარ',
 	'wikieditor-toolbar-tool-table-insert' => 'ჩასმა',
 	'wikieditor-toolbar-tool-table-cancel' => 'გაუქმება',
@@ -7043,6 +7044,7 @@ $messages['ko'] = array(
 	'wikieditor-toolbar-tool-ulist-example' => '항목',
 	'wikieditor-toolbar-tool-olist' => '순서 있는 목록',
 	'wikieditor-toolbar-tool-olist-example' => '항목',
+	'wikieditor-toolbar-tool-indent' => '들여쓰기',
 	'wikieditor-toolbar-group-size' => '글자 크기',
 	'wikieditor-toolbar-tool-big' => '크게',
 	'wikieditor-toolbar-tool-big-example' => '큰 글자',
@@ -13393,15 +13395,43 @@ $messages['yi'] = array(
 	'wikieditor-toolbar-tool-bold-example' => 'דיקער טעקסט',
 	'wikieditor-toolbar-tool-italic' => 'קורסיוו',
 	'wikieditor-toolbar-tool-italic-example' => 'קורסיווער טעקסט',
+	'wikieditor-toolbar-tool-ilink' => 'אינערער לינק',
 	'wikieditor-toolbar-tool-ilink-example' => 'לינק טיטל',
 	'wikieditor-toolbar-tool-link' => 'לינק',
 	'wikieditor-toolbar-tool-link-int' => 'צו א וויקי בלאט',
 	'wikieditor-toolbar-tool-link-int-target' => 'בלאט טיטל:',
+	'wikieditor-toolbar-tool-link-ext-text' => 'לינק טעקסט:',
 	'wikieditor-toolbar-tool-link-cancel' => 'אנולירן',
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'בלאט עקזיסטירט',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'בלאט עקזיסטירט נישט',
+	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'אומגילטיקער טיטל',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'דרויסנדיקער לינק',
+	'wikieditor-toolbar-tool-link-int-invalid' => 'דעם טיטל איר האט ספעציפֿירט איז אומגילטיק.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'דרויסנדיקער לינק',
+	'wikieditor-toolbar-tool-reference' => 'רעפערענץ',
+	'wikieditor-toolbar-tool-heading' => 'קעפל',
+	'wikieditor-toolbar-group-list' => 'ליסטע',
+	'wikieditor-toolbar-group-size' => 'גרייס',
 	'wikieditor-toolbar-tool-big' => 'גרויס',
+	'wikieditor-toolbar-tool-big-example' => 'גרויסער טעקסט',
+	'wikieditor-toolbar-tool-small' => 'קליין',
+	'wikieditor-toolbar-tool-small-example' => 'קליינער טעקסט',
+	'wikieditor-toolbar-tool-newline' => 'נײַע שורה',
+	'wikieditor-toolbar-tool-table' => 'טאַבעלע',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! קעפל 1
+! קעפל 2
+! קעפל 3
+|-
+| ריי 1, צעל 1
+| ריי 1, צעל 2
+| ריי 1, צעל 3
+|-
+| ריי 2, צעל 1
+| ריי 2, צעל 2
+| ריי 2, צעל 3',
 	'wikieditor-toolbar-tool-table-example-cell-text' => 'צעל טעקסט',
+	'wikieditor-toolbar-tool-table-example-header' => 'קעפל טעקסט',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'שורות',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'עמודים',
 	'wikieditor-toolbar-tool-table-example' => 'צעל טעקסט',
@@ -13412,6 +13442,7 @@ $messages['yi'] = array(
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'אויסטוישן נעקסטע',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'אויסטוישן אלץ',
 	'wikieditor-toolbar-tool-replace-close' => 'אנולירן',
+	'wikieditor-toolbar-characters-page-latin' => 'לאַטייניש',
 	'wikieditor-toolbar-characters-page-symbols' => 'סימבאלן',
 	'wikieditor-toolbar-characters-page-greek' => 'גריכיש',
 	'wikieditor-toolbar-characters-page-cyrillic' => 'ציריליש',
@@ -13427,7 +13458,12 @@ $messages['yi'] = array(
 	'wikieditor-toolbar-help-content-heading2-result' => '<h2>קעפל טעקסט</h2>',
 	'wikieditor-toolbar-help-content-heading3-syntax' => '=== קעפל טעקסט ===',
 	'wikieditor-toolbar-help-content-heading4-syntax' => '==== קעפל טעקסט ====',
+	'wikieditor-toolbar-help-content-ulist-syntax' => '* ליסטע איינצל<br />* ליסטע איינצל',
+	'wikieditor-toolbar-help-content-ulist-result' => '<ul><li>ליסטע איינצל</li><li>ליסטע איינצל</li></ul>',
+	'wikieditor-toolbar-help-content-olist-syntax' => '# ליסטע איינצל<br /># ליסטע איינצל',
+	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>ליסטע איינצל</li><li>ליסטע איינצל</li></ol>',
 	'wikieditor-toolbar-help-content-reference-description' => 'רעפערענץ',
+	'wikieditor-toolbar-help-content-signature-description' => 'חתימה',
 );
 
 /** Yue (粵語)

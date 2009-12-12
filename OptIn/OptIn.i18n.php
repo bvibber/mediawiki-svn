@@ -2999,6 +2999,13 @@ $messages['ko'] = array(
 우리는 당신의 의견에 귀기울일 것입니다. 감사합니다.',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'optin-survey-answer-changes-other' => 'Башха:',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Melancholie
  * @author Purodha
@@ -4240,15 +4247,30 @@ An farìa gòj savèj lòn ch'a pensa ëd nòstra neuva antërfassa, parèj an f
 	'optin-survey-question-os' => "Che sistema operativ ch'a deuvra?",
 	'optin-survey-answer-os-other' => 'Àutr sistem operativ:',
 	'optin-survey-question-res' => "Cola ch'a l'é l'arzolussion ëd tò scren?",
-	'optin-survey-question-changes' => "Che cambi it voriës-to vëdde ant l aBeta ant l'avnì (për piasì selession-a tut lòn ch'it veule)?",
-	'optin-survey-answer-changes-nav' => "Rend l'antrega navigassion dël sit pi bel fé da dovré.",
-	'optin-survey-answer-changes-edittools' => "Aumenta e mejora j'utiss ëd modìfica.",
-	'optin-survey-answer-changes-upload' => 'Mejora la caria ëd contnù e ëd multimojen.',
-	'optin-survey-answer-changes-richtext' => "Svilupa utiss ëd modìfica ch'a smijo a editor rich-text.",
-	'optin-survey-answer-changes-lookfeel' => 'Modìfica ël "look and feel" dël sit.',
-	'optin-survey-answer-changes-predictability' => 'Mejora la prevision ëd le prestassion.',
-	'optin-survey-answer-changes-custom' => "Përmëtt pi grande personalisassion a l'utent.",
+	'optin-survey-question-changes' => "Che cangiament voriës-to vëdde ant la Beta ant l'avnì (për piasì selession-a tut lòn ch'it veule)?",
+	'optin-survey-answer-changes-nav' => "Rende l'antrega navigassion dël sit pi bel fé da dovré.",
+	'optin-survey-answer-changes-edittools' => "Aumenté e amelioré j'utiss ëd modìfica.",
+	'optin-survey-answer-changes-upload' => 'Amelioré ël cariament ëd contnù e ëd multimojen.',
+	'optin-survey-answer-changes-richtext' => "Dësvlupé utiss ëd modìfica ch'a smijo a editor ëd test anrichì.",
+	'optin-survey-answer-changes-lookfeel' => "Modifiché l'aparensa dël sit.",
+	'optin-survey-answer-changes-predictability' => 'Amelioré la prevision ëd le prestassion.',
+	'optin-survey-answer-changes-custom' => "Përmëtte pi grande përsonalisassion a l'utent.",
 	'optin-survey-answer-changes-other' => 'Àutr:',
+	'optin-improvements' => "== Cò' a l'é stàit ameliorà? ==
+[[File:UsabilityNavigation.png|left|link=|Scren dle neuve tàule ëd navigassion]]
+;Navigassion anrichìa
+Ël neuv sistema ëd navigassion a rend pì belfé s-ciairé andoa ch'a l'é e lòn ch'a l'é an camin ch'a fa, e ëdcò andoa a peul andé e coma riveje. Con la casela d'arserca ch'a resta ant ël canton an àut a drita, la fonsion d'arserca a l'é pì belfé a trové e pì lesta a dovré.
+<div style=\"clear:both;\"></div>
+
+[[File:UsabilityToolbar.png|left|link=|Scren dla bara dj'utiss ameliorà]]
+;Ameliorassion dla bara dle modìfiche
+Plance neuve e ameliorà a rendo pì ciàir che assion a fa minca utiss. Session ëslarbàbij a diminuisso ël rabel an goernand j'utiss ch'as deuvro da ràir a portà ëd na selession.
+La session d'agiut a smon n'acess lest a la documentassion për j'usagi comun dle tichëtte wiki.
+<div style=\"clear:both;\"></div>
+== Coma amplichesse ==
+Për savèije ëd pì an sël proget o për amplichesse, për piasì ch'a vìsita l'[http://usability.wikimedia.org Inissiativa për n'usagi pì belfé dla wiki].  Ambelelà a trovrà d'anformassion ansima a nòstri borse, arserca, progetassion + dësvlup e version.  Për fé 'd domande o dé opinion generaj, për piasì ch'a deuvra nòstra [http://usability.wikimedia.org/wiki/Talk:Prototype pàgina ëd discussion dël protòtip].  Për traté dij soget particolar, për piasì ch'a deuvra le pàgine ëd discussion assossià. S'a treuva dij bigat, për piasì ch'a lassa sò coment an sla [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pàgina ëd discussion dla version Acai] o a travers [https://bugzilla.wikimedia.org Bugzilla].
+
+Mersì e speroma d'arsent-se tòst!",
 );
 
 /** Pashto (پښتو)

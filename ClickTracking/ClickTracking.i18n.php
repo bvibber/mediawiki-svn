@@ -839,6 +839,14 @@ $messages['ko'] = array(
 	'ct-update-table' => '표 업데이트',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'ct-and' => 'эм',
+	'ct-update-table' => 'Таблицаны джангырт',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -1292,9 +1300,13 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'ct-title' => 'సంకలిత వాడుకరి నొక్కులు',
 	'ct-event-name' => 'ఘటన పేరు',
+	'ct-expert-header' => '"నిపుణుల" నొక్కులు',
+	'ct-beginner-header' => '"ప్రారంభీకుల" నొక్కులు',
 	'ct-total-header' => 'మొత్తం నొక్కులు',
 	'ct-start-date' => 'ప్రారంభ తేదీ (YYYYMMDD)',
 	'ct-end-date' => 'ముగింపు తేదీ (YYYYMMDD)',
+	'ct-beginner' => 'ప్రారంభీకులు',
+	'ct-expert' => 'నిపుణులు',
 	'ct-editing' => 'ప్రస్తుతం మారుస్తున్నారు:',
 	'ct-anon-users' => 'అజ్ఞాత వాడుకరులు',
 	'ct-and' => 'మరియు',
