@@ -36,7 +36,7 @@ $.wikiEditor = {
 	'browsers': {
 		// Left-to-right languages
 		'ltr': {
-			// The toolbar layout is IE6
+			// The toolbar layout is broken in IE6
 			'msie': [['>=', 7]],
 		    // jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
 			'firefox': [
@@ -79,7 +79,7 @@ $.wikiEditor = {
 	 */
 	'isSupported': function() {
 		// Check for and make use of a cached return value
-		if ( $.wikiEditor.supported != undefined ) {
+		if ( typeof $.wikiEditor.supported != 'undefined' ) {
 			return $.wikiEditor.supported;
 		}
 		// Check if we have any compatiblity information on-hand for the current browser
@@ -194,7 +194,7 @@ if ( typeof context == 'undefined' ) {
 		// General place to shouve bits of data into
 		'data': {},
 		// Unique numeric ID of this instance used both for looking up and differentiating instances of wikiEditor
-		'instance': $.wikiEditor.instances.push( $(this) )
+		'instance': $.wikiEditor.instances.push( $(this) ) - 1
 	};
 	
 	/*
