@@ -1381,6 +1381,7 @@ var global_req_cb = new Array(); // The global request callback array
 		mwSetupFlag = true;
 		
 		mw.log( 'mw:setupMwEmbed' );			
+		
 		// Make sure jQuery is loaded:
 		$.load( 'window.jQuery', function(){				
 			if ( !window['$j'] ) {
@@ -1421,7 +1422,7 @@ var global_req_cb = new Array(); // The global request callback array
 		mw.log('ran loader' );			
 	}
 	
-	//Flag to register the domReady has been called
+	// Flag to register the domReady has been called
 	var mwDomReadyFlag = false;
 	
 	/**
@@ -1743,9 +1744,10 @@ var global_req_cb = new Array(); // The global request callback array
 				 	|| 
 				 	( 
 				 		( src.indexOf( 'mwScriptLoader.php' ) !== -1 || src.indexOf( 'jsScriptLoader.php' ) !== -1 )
-							&& src.indexOf( 'mwEmbed' ) !== -1 ) 
+						&& 
+						src.indexOf( 'mwEmbed' ) !== -1 
 					) 
-				{
+				){
 					mwEmbedSrc = src;
 					return mwEmbedSrc;
 				}

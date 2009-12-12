@@ -31,6 +31,11 @@ class jsScriptLoader {
 	var $jsvarurl = false;
 	var $doProcReqFlag = true;
 
+	/**
+	 * Output the javascript from cache
+	 *
+	 * @return {Boolean} true on success, false on failure
+	 */
 	function outputFromCache(){
 		// Process the request
 		$this->requestKey = $this->preProcRequestVars();
@@ -45,6 +50,15 @@ class jsScriptLoader {
 		return false;
 	}
 
+	/**
+	 * Core scriptLoader driver:
+	 * 	get request key
+	 *  builds javascript string
+	 *  optionally gzips the output
+	 *  checks for errors
+	 *  sends the headers
+	 *  outputs js
+	 */
 	function doScriptLoader() {
 		global 	$wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $IP,
 		$wgEnableScriptMinify, $wgUseFileCache, $wgExtensionMessagesFiles;
@@ -95,7 +109,14 @@ class jsScriptLoader {
 			$this->outputJsWithHeaders();
 		}
 	}
-	function getScriptText($classKey, $file_name=''){
+	/**
+	 * Gets Script Text
+	 *
+	 * @param {String} $classKey Class Key to grab text for
+	 * @param {String} [$file_name] Optional file path to get js text
+	 * @return unknown
+	 */
+	function getScriptText( $classKey, $file_name = '' ){
 		$jsout = '';
 		// Special case: title classes
 		if ( substr( $classKey, 0, 3 ) == 'WT:' ) {
@@ -170,6 +191,9 @@ class jsScriptLoader {
 		$this->error_msg .= "\nUnknown error\n";
 		return false;
 	}
+	/**
+	 * Outputs the script headers
+	 */
 	function outputJsHeaders() {
 		// Output JS MIME type:
 		header( 'Content-Type: text/javascript' );
@@ -184,6 +208,9 @@ class jsScriptLoader {
 		}
 	}
 
+	/**
+	 * Outputs the javascript text with script headers
+	 */
 	function outputJsWithHeaders() {
 		global $wgUseGzip;
 		$this->outputJsHeaders();
@@ -374,6 +401,13 @@ class jsScriptLoader {
 
 		return $rKey;
 	}
+	/**
+	 * Check for the commons language hack.
+ 	 * ( someone had the bright idea to use language keys as message
+	 *  name-spaces for separate upload forms )
+	 *
+	 * @param {String} $langKey The lang key for the form
+	 */
 	public static function checkForCommonsLanguageFormHack( $langKey){
 		$formNames = array( 'ownwork', 'fromflickr', 'fromwikimedia', 'fromgov');
 		foreach($formNames as $formName){
@@ -389,6 +423,12 @@ class jsScriptLoader {
 		//else just return the key unchanged:
 		return $langKey;
 	}
+	/**
+	 * Get a file path for a given class
+	 *
+	 * @param {String} $reqClass Class key to get the path for
+	 * @return path of the class or "false"
+	 */
 	public static function getJsPathFromClass( $reqClass ){
 		global $wgJSAutoloadLocalClasses, $wgJSAutoloadClasses;
 		if ( isset( $wgJSAutoloadLocalClasses[$reqClass] ) ) {
@@ -399,8 +439,16 @@ class jsScriptLoader {
 			return false;
 		}
 	}
+
+	/**
+	 * Retrieve the js file into a string, updates error_msg if not retrivable.
+	 *
+	 * @param {String} $file_path File to get
+	 * @return {String} of the file contents
+	 */
 	function doGetJsFile( $file_path ) {
 		global $IP;
+
 		// Load the file
 		$str = @file_get_contents( "{$IP}/{$file_path}" );
 
@@ -411,6 +459,16 @@ class jsScriptLoader {
 		}
 		return $str;
 	}
+
+	/**
+	 * Process the javascript string
+	 *
+	 * Strips debug statements:  mw.log( 'msg' );
+	 * Localizes the javascript calling the languageMsgReplace function
+	 *
+	 * @param {String} $str Javascript string to be processed.
+	 * @return processed javascript string
+	 */
 	function doProcessJs( $str ){
 		global $wgEnableScriptLocalization;
 		// Strip out js_log debug lines (if not in debug mode)
@@ -419,7 +477,7 @@ class jsScriptLoader {
 
 		// Do language swap by index:
 		if ( $wgEnableScriptLocalization ){
-			$inx = self::getLoadGmIndex( $str );
+			$inx = self::getAddMessagesIndex( $str );
 			if($inx){
 				$translated = $this->languageMsgReplace( substr($str, $inx['s'], ($inx['e']-$inx['s']) ));
 				//return the final string (without double {})
@@ -429,7 +487,13 @@ class jsScriptLoader {
 		//return the js str unmodified if we did not transform with the localisation.
 		return $str;
 	}
-	static public function getLoadGmIndex( $str ){
+	/**
+	 * Get the addMesseges index ( for replacing msg text with localized json )
+	 *
+	 * @param {String} $str Javascript string to grab msg text from
+	 * @return {Array} Array with start and end points character indexes
+	 */
+	static public function getAddMessagesIndex( $str ){
 		$returnIndex = array();
 		preg_match('/mw.addMessages\s*\(\s*\{/', $str, $matches, PREG_OFFSET_CAPTURE );
 		if( count($matches) == 0){
@@ -449,7 +513,7 @@ class jsScriptLoader {
 			if ( $ignorenext ) {
 				$ignorenext = false;
 			} else {
-				//search for a close } that is not in quotes or escaped
+				// Search for a close } that is not in quotes or escaped
 				switch( $char ) {
 					case '"':
 						$inquote = !$inquote;
@@ -467,28 +531,46 @@ class jsScriptLoader {
 			}
 		}
 	}
-
+	/**
+	 * Generates an in-line addMessege call for page output.
+	 * For use with OutputPage when the script-loader is disabled.
+	 *
+	 * @param {String} $class Name of class to get inin-lineline messages for.
+	 * @return in-line msg javascript text or empty string if no msgs need to be localised.
+	 */
 	function getInlineMsgFromClass( $class ){
 		$jsmsg = $this->getMsgKeysFromClass( $class );
 		if( $jsmsg ){
-			self::getMsgKeys ( $jsmsg );
+			self::updateMsgKeys ( $jsmsg );
 			return 'mw.addMessages(' . FormatJson::encode( $jsmsg ) . ');';
 		}else{
 			//if could not parse return empty string:
 			return '';
 		}
 	}
+	/**
+	 * Get the set of message associated with a given javascript class
+	 *
+	 * @param {String} $class Class to restive msgs from
+	 * @return {Array} decoded json array of message key value pairs
+	 */
 	function getMsgKeysFromClass( $class ){
 		$file_path = self::getJsPathFromClass( $class );
 		$str = $this->getScriptText($class,  $file_path);
 
-		$inx = self::getLoadGmIndex( $str );
+		$inx = self::getAddMessagesIndex( $str );
 		if(!$inx)
-		return '';
+			return false;
+
 		return FormatJson::decode( '{' . substr($str, $inx['s'], ($inx['e']-$inx['s'])) . '}', true);
 	}
-
-	static public function getMsgKeys(& $jmsg, $langCode = false){
+	/**
+	 * Updates an array of messages with the wfMsgGetKey value
+	 *
+	 * @param {Array} $jmsg Associative array of message key -> message value pairs
+	 * @param {String} $langCode Language code override
+	 */
+	static public function updateMsgKeys(& $jmsg, $langCode = false){
 		global $wgContLanguageCode;
 		// Check the langCode
 		if(!$langCode)
@@ -499,6 +581,12 @@ class jsScriptLoader {
 			$jmsg[ $msgKey ] = wfMsgGetKey( $msgKey, true, $langCode, false );
 		}
 	}
+	/**
+	 * Replace a string of json msgs with the translated json msgs.
+	 *
+	 * @param {String} $json_str Json string to be replaced
+	 * @return {String} of msgs updated with the given language code
+	 */
 	function languageMsgReplace( $json_str ) {
 		$jmsg = FormatJson::decode( '{' . $json_str . '}', true );
 		// Do the language lookup
@@ -506,7 +594,7 @@ class jsScriptLoader {
 
 			// See if any msgKey has the PLURAL template tag
 			//package in PLURAL mapping
-			self::getMsgKeys( $jmsg, $this->langCode );
+			self::updateMsgKeys( $jmsg, $this->langCode );
 
 			// Return the updated loadGM JSON with updated msgs:
 			return FormatJson::encode( $jmsg );
@@ -523,17 +611,29 @@ class jsScriptLoader {
 	}
 }
 
-// A simple version of HTMLFileCache (@@todo abstract shared pieces)
+/*
+ *  A simple version of HTMLFileCache so that the scriptLoader can operate stand alone
+ */
 class simpleFileCache {
 	var $mFileCache;
 	var $filename = null;
-	var $rKey = null;
+	var $requestKey = null;
 
-	public function __construct( &$rKey ) {
-		$this->requestKey = $rKey;
+	/**
+	 * Constructor
+	 *
+	 * @param {String} $requestKey Request key for unique identifying this cache file
+	 */
+	public function __construct( $requestKey ) {
+		$this->requestKey = $requestKey;
 		$this->getCacheFileName();
 	}
 
+	/**
+	 * get Cache file file Name based on $requestKey and if gzip is enabled or not
+	 *
+	 * @return unknown
+	 */
 	public function getCacheFileName() {
 		global $wgUseGzip, $wgScriptCacheDirectory;
 
@@ -547,15 +647,16 @@ class simpleFileCache {
 
 		// Check for defined files::
 		if( is_file( $this->filename ) )
-		return $this->filename;
+			return $this->filename;
 
-		if( is_file(  $this->filename .'.gz') ){
-			$this->filename.='.gz';
+		if( is_file( $this->filename . '.gz') ){
+			$this->filename .= '.gz';
 			return $this->filename;
 		}
 		//check the update the name based on the $wgUseGzip config var
 		if ( isset($wgUseGzip) && $wgUseGzip )
-		$this->filename.='.gz';
+			$this->filename.='.gz';
+
 	}
 
 	public function isFileCached() {
