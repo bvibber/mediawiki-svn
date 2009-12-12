@@ -2094,6 +2094,9 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
+	'whitelist-desc' => 'Менување на дозволите за пристап на ограничени корисници',
+	'whitelistedit' => 'Уредник на пристап на белата листа',
+	'whitelist' => 'Страници на белата листа',
 	'mywhitelistpages' => 'Мои страници',
 	'whitelistfor' => '<center>Моментални информации за <b>$1</b></center>',
 	'whitelisttablemodify' => 'Измени',
@@ -2108,8 +2111,39 @@ $messages['mk'] = array(
 	'whitelisttableview' => 'Преглед',
 	'whitelisttablenewdate' => 'Нов датум:',
 	'whitelisttablechangedate' => 'Промени датум на истекување',
+	'whitelisttablesetedit' => 'Постави за уредување',
+	'whitelisttablesetview' => 'Постави за преглед',
 	'whitelisttableremove' => 'Отстрани',
+	'whitelistnewpagesfor' => "Додај нови страници во белата листа<b>$1's</b><br />
+Користете  * или % како џокер",
+	'whitelistnewtabledate' => 'Истекува:',
+	'whitelistnewtableedit' => 'Постави за уредување',
+	'whitelistnewtableview' => 'Постави за преглед',
+	'whitelistnowhitelistedusers' => 'Нема корисници во групата „{{MediaWiki:Group-restricted}}“.
+Пред да можете да додавате страници кон белата листа на корисникот ќе морате да [[Special:UserRights|додадете корисници во групата]].',
+	'whitelistnewtableprocess' => 'Процес',
+	'whitelistnewtablereview' => 'Проверка',
+	'whitelistselectrestricted' => '== Одберете корисничко име ==',
+	'whitelistpagelist' => 'Страници за $1 на {{SITENAME}}',
+	'whitelistnocalendar' => "<font color='red' size=3>Изгледа дека [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics] не е инсталирано како што треба, а од него зависи проширувањето.</font>",
+	'whitelistoverview' => '== Преглед на промени за $1 ==',
+	'whitelistoverviewcd' => "* Промена на датум на '''$1''' за [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Додели пристап на '''$1''' за [[:$2|$2]]",
+	'whitelistoverviewrm' => '* Одземи пристап на [[:$1|$1]]',
+	'whitelistoverviewna' => "* Го додавам корисникот [[:$1|$1]] на белста листа со пристап '''$2''' и датум на истекување '''$3'''",
+	'whitelistrequest' => 'Побарај пристап до повеќе страници',
+	'whitelistrequestmsg' => '$1 побара пристап до {{PLURAL:$3|следнава страница|следниве страници}}:
+
+$2',
+	'whitelistrequestconf' => 'Барањето за нови страници е испратено на $1',
+	'whitelistnonrestricted' => "Корисникот '''$1''' не е ограничен корисник.
+Оваа страница важи само за ограничени корисници",
+	'whitelistnever' => 'никогаш',
 	'whitelistnummatches' => '- {{PLURAL:$1|едно совпаѓање|$1 совпаѓања}}',
+	'right-editwhitelist' => 'Менување на белата листа за постоечки корисници',
+	'right-restricttowhitelist' => 'Уредување и прегледување страници само на белата листа',
+	'action-editwhitelist' => 'менување на белата листа за постоечки корисници',
+	'action-restricttowhitelist' => 'уредувај и прегледувај само страници на белата листа',
 	'group-restricted' => 'Ограничени корисници',
 	'group-restricted-member' => 'Ограничен корисник',
 	'group-manager' => 'Раководители',

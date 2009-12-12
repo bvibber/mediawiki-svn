@@ -1017,6 +1017,41 @@ $messages['mhr'] = array(
 	'spamregex-summary-log' => '(Чылаже)',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'spamregex' => 'Филтер за спам',
+	'spamregex-desc' => '[[Special:SpamRegex|Филтрирање]] на непожелни фрази во уредуваните страници, засновано на регуларни изрази',
+	'spamregex-error-unblocking' => 'Грешка при одблокирањето на „$1“. Веројатно нема таква шема.',
+	'spamregex-summary' => 'Текстот е пронајден во описот на страницата.',
+	'spamregex-intro' => 'Користете го овој образец за ефективно блокирање на изрази кои не сакате да можат да се зачувуваат во страници.
+Ако текстот го содржи зададениот израз, промените нема да се зачуваат и на корисникот кој го внел изразот ќе му се појави објаснување.
+Бидете внимателни, зададените изрази не треба да бидат прекратки или пречести.',
+	'spamregex-page-title' => 'Спам-филтер за блокирање на непожелни изрази',
+	'spamregex-currently-blocked' => "'''Моментално блокирани фрази:'''",
+	'spamregex-move' => 'Причината којашто ја внесовте содржеше блокирана фраза.',
+	'spamregex-no-currently-blocked' => "'''Нема блокирани фрази.'''",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 отстрани]) додадено од $5 на $6 во $7",
+	'spamregex-page-title-1' => 'Блокирање на фраза со помош на регуларен израз',
+	'spamregex-unblock-success' => 'Одблокирањето успеа',
+	'spamregex-unblock-message' => "Фразата '''$1''' е одблокирана за уредување.",
+	'spamregex-page-title-2' => 'Блокирање на зачувувањето на фрази со помош на регуларни изрази',
+	'spamregex-block-success' => 'Блокирањето успеа',
+	'spamregex-block-message' => "Фразата '''$1''' е блокирана.",
+	'spamregex-warning-1' => 'Наведете фраза за блокирање.',
+	'spamregex-error-1' => 'Неважечки регуларен израз.',
+	'spamregex-warning-2' => 'Одберете барем еден режим на блокирање.',
+	'spamregex-already-blocked' => '„$1“ е веќе блокирано',
+	'spamregex-phrase-block' => 'Фраза за блокирање:',
+	'spamregex-phrase-block-text' => 'блокирање на фраза во текстот на страницата',
+	'spamregex-phrase-block-summary' => 'блокирање на фраза во описот на измени',
+	'spamregex-block-submit' => 'Блокирај&nbsp;ја&nbsp;оваа&nbsp;фраза',
+	'spamregex-text' => '(Текст)',
+	'spamregex-summary-log' => '(Опис)',
+	'right-spamregex' => 'Блокирање на спам-фрази со помош на [[Special:SpamRegex]]',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

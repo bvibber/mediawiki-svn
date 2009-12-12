@@ -580,6 +580,23 @@ $messages['ja'] = array(
 	'fundraiserportal-tourmaline-close' => '以後このメッセージを非表示にする',
 );
 
+/** Georgian (ქართული)
+ * @author Alsandro
+ */
+$messages['ka'] = array(
+	'fundraiserportal' => 'ფონდების მოზიდვის პორტალი',
+	'fundraiserportal-desc' => 'ამატებს "please donate" პორტალს გვერდითი ველის თავში.',
+	'fundraiserportal-plain-button' => 'მხარი დაუჭირეთ ვიკიპედიას!',
+	'fundraiserportal-ruby-button' => 'შემოგვწირეთ ახლავე',
+	'fundraiserportal-rubytext-button' => 'შემოგვწირეთ ახლავე',
+	'fundraiserportal-rubytext-message' => 'ყოველი შემოწირულობა გვეხმარება შევინარჩუნოთ ვიკიპედია თავისუფალი ყველასთვის.',
+	'fundraiserportal-rubytext-close' => 'დამალე ეს ფორმა ამიერიდან',
+	'fundraiserportal-sapphire-button' => 'შემოგვწირეთ ახლავე',
+	'fundraiserportal-tourmaline-button' => 'შემოგვწირეთ ახლავე',
+	'fundraiserportal-tourmaline-message' => 'ყოველი შემოწირულობა გვეხმარება შევინარჩუნოთ ვიკიპედია თავისუფალი ყველასთვის.',
+	'fundraiserportal-tourmaline-close' => 'დამალე ეს ფორმა ამიერიდან',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author វ័ណថារិទ្ធ
  */

@@ -9512,6 +9512,7 @@ $messages['mhr'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -9525,7 +9526,7 @@ $messages['mk'] = array(
 	'configure-setting-wgUseZhdaemon' => 'Користи ZhDaemon за процесирање на кинески текстови',
 	'configure-setting-wgZhdaemonHost' => 'ZhDaemon хост',
 	'configure-setting-wgZhdaemonPort' => 'ZhDaemon порта',
-	'configure-setting-wgLocaltimezone' => 'Локална временска зона',
+	'configure-setting-wgLocaltimezone' => 'Локална часовна зона',
 );
 
 /** Mongolian (Монгол)

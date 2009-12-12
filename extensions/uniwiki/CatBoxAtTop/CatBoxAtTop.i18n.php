@@ -452,6 +452,14 @@ $messages['ru'] = array(
 	'catboxattop-categories' => 'Категории',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'catboxattop-desc' => 'පිටුවල දකණු පස ඉහළට ප්‍රවර්ග කොටුවක් එකතු කරයි',
+	'catboxattop-categories' => 'ප්‍රවර්ගයන්',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

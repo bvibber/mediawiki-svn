@@ -360,3 +360,16 @@ $messages['sl'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Zaradi potencialnega nepravilnega interpretiranja so podprta samo text/plain sporočila.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'sendmailtowiki-desc' => 'Đăng nội dung wiki bằng cách gửi thư điện tử từ một địa chỉ động',
+	'prefs-sendmailtowiki' => 'Gửi nội dung qua thư điện tử',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'sendmailtowiki-err-pinlength' => 'Số PIN phải có đúng 5 chữ số.',
+	'sendmailtowiki-err-wrongprefix' => 'Tiền tố tài khoản wiki sai; hãy liên lạc với quản lý viên.',
+	'sendmailtowiki-err-invalidaccount' => 'Tài khoản nhận không hợp lệ. Hãy kiểm tra địa chỉ nhận thư điện tử.',
+	'sendmailtowiki-err-invalidsender' => 'Tài khoản gửi không hợp lệ. Hãy kiểm tra địa chỉ gửi thư điện tử.',
+);
+

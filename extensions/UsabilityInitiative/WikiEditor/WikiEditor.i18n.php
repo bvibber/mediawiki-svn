@@ -377,6 +377,13 @@ $messages['vi'] = array(
 	'wikieditor-wikitext-tab' => 'Mã wiki',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'wikieditor-wikitext-tab' => 'וויקיטעקסט',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  * @author PhiLiP

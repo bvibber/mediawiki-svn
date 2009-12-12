@@ -720,6 +720,20 @@ $messages['vep'] = array(
 	'mostrevisors-submit' => 'Tehta',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'mostrevisors' => 'Trang có nhiều người sửa đổi nhất',
+	'mostrevisors-desc' => 'Liệt kê [[Special:MostRevisors|những trang có nhiều người sửa đổi nhất]]',
+	'mostrevisors-namespace' => 'Không gian tên:',
+	'mostrevisors-submit' => 'Xem',
+	'mostrevisors-showredir' => 'Hiện trang đổi hướng',
+	'mostrevisors-hideredir' => 'Ẩn trang đổi hướng',
+	'mostrevisors-users' => '– $1 người sửa đổi',
+	'mostrevisors-viewcontributors' => 'Xem các người đóng góp chính',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

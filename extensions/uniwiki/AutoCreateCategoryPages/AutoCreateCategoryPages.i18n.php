@@ -474,6 +474,15 @@ $messages['ru'] = array(
 	'autocreatecategorypages-editor' => 'Автоматический создатель категорий',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'autocreatecategorypages-desc' => 'ගිලිහුණු ප්‍රවර්ග පිටු සුරැකීමේදී ස්වයංක්‍රීයව නිර්මාණය කිරීම',
+	'autocreatecategorypages-stub' => 'මෙය ප්‍රවර්ග පිටුවකි.
+එය "$1"ප්‍රවර්ගයේ සියලුම පිටු මෙන්ම පවතින්නේනම් "$1" ප්‍රවර්ගයේ සියලුම උප ප්‍රවර්ගයන්ද ලැයිස්තු ගත කරයි.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

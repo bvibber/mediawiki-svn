@@ -928,6 +928,36 @@ $messages['lb'] = array(
 	'right-duplicate' => 'Säite verduebelen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'duplicator' => 'Дуплирање на страница',
+	'duplicator-desc' => 'Создајте независни [[Special:Duplicate|копии на страници]] со полна историја на уредување',
+	'duplicator-toolbox' => 'Дуплирај ја страницата',
+	'duplicator-header' => 'Оваа страница овозможува целосно дуплирање на страница, создавање на независни копии на сите истории.
+Ова е корисно за разделување на страница во две посебни и сл.',
+	'duplicator-options' => 'Нагодувања',
+	'duplicator-source' => 'Извор:',
+	'duplicator-dest' => 'Дестинација:',
+	'duplicator-dotalk' => 'Дуплирај ја страницата за разговор (ако е можно)',
+	'duplicator-submit' => 'Дуплирај',
+	'duplicator-summary' => 'Копирано од [[$1]]',
+	'duplicator-success' => "<big>'''Страницата [[$1]] е ископирана во [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|ревизија беше ископирана|ревизии беа ископирани}}.',
+	'duplicator-success-talkcopied' => 'Ископирана е и страницата за разговор.',
+	'duplicator-success-talknotcopied' => 'Страницата за разговор не можеше да се ископира.',
+	'duplicator-failed' => 'Страницата не можеше да се дуплира.
+Се појави непозната грешка.',
+	'duplicator-source-invalid' => 'Наведете важечки изворен наслов.',
+	'duplicator-source-notexist' => '[[$1]] не постои. Наведете наслов на страница која постои.',
+	'duplicator-dest-invalid' => 'Наведете важечки целен наслов',
+	'duplicator-dest-exists' => '[[$1]] веќе постои. Наведете целен наслов кој не постои.',
+	'duplicator-toomanyrevisions' => '[[$1]] има премногу ($2) ревизии и затоа не може да се ископира.
+Моменталното ограничување е $3 ревизии.',
+	'right-duplicate' => 'Дуплирање страници',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

@@ -3422,6 +3422,57 @@ $messages['mhr'] = array(
 	'viewapc-ls-limit-none' => 'Чыла',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'viewapc-memory-usage' => 'Искористување на меморија',
+	'viewapc-memory-free' => 'Слободно: $1 ($2)',
+	'viewapc-memory-used' => 'Искористено: $1 ($2)',
+	'viewapc-display-attribute' => 'Атрибут',
+	'viewapc-display-value' => 'Вредност',
+	'viewapc-display-device' => 'Уред',
+	'viewapc-display-ttl' => 'Истекува',
+	'viewapc-display-inode' => 'Inode',
+	'viewapc-display-mtime' => 'Изменето',
+	'viewapc-display-creation_time' => 'Создадено',
+	'viewapc-display-deletion_time' => 'Избришано',
+	'viewapc-display-no-delete' => 'Неизбришано',
+	'viewapc-display-access_time' => 'Пристапено',
+	'viewapc-display-ref_count' => 'Број на наводи',
+	'viewapc-display-mem_size' => 'Големина',
+	'viewapc-display-stored-value' => 'Складирана вредност',
+	'viewapc-display-too-big' => "''Содржината е преголема за да може да се прикаже.''",
+	'viewapc-ls-options-legend' => 'Нагодувања',
+	'viewapc-ls-options' => 'Опсег: $1 Сортирање: $2$3$4 Пребарување: $5 $6',
+	'viewapc-ls-submit' => 'Оди!',
+	'viewapc-ls-header-name' => 'Име',
+	'viewapc-ls-header-hits' => 'Погодоци',
+	'viewapc-ls-header-size' => 'Големина',
+	'viewapc-ls-header-accessed' => 'Последен пристап',
+	'viewapc-ls-header-modified' => 'Последна измена',
+	'viewapc-ls-header-created' => 'Создадено',
+	'viewapc-ls-header-deleted' => 'Избришано',
+	'viewapc-ls-header-timeout' => 'Истечено',
+	'viewapc-ls-delete' => '[Избриши сега]',
+	'viewapc-ls-scope-active' => 'Активно',
+	'viewapc-ls-scope-deleted' => 'Избришано',
+	'viewapc-ls-scope-both' => 'Обете',
+	'viewapc-ls-sort-hits' => 'Погодоци',
+	'viewapc-ls-sort-size' => 'Големина',
+	'viewapc-ls-sort-name' => 'Име',
+	'viewapc-ls-sort-accessed' => 'Последен достап',
+	'viewapc-ls-sort-modified' => 'Последна измена',
+	'viewapc-ls-sort-created' => 'Создадено',
+	'viewapc-ls-sort-deleted' => 'Избришано',
+	'viewapc-ls-sort-timeout' => 'Истечено',
+	'viewapc-ls-limit-none' => 'Сите',
+	'viewapc-ls-nodata' => "''Нема совпаѓачки податоци''",
+	'viewapc-version-changelog' => 'Дневник на измени',
+	'viewapc-filecache-cleared' => "'''''Податотечниот кеш е исчистен.'''''",
+	'viewapc-usercache-cleared' => "'''''Кешот на програмот е исчистен.'''''",
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

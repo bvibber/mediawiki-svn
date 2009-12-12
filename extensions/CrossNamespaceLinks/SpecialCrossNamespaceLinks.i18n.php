@@ -817,7 +817,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'crossnamespacelinks' => 'Ligações entre espaços nominais',
-	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Páginas especial]] que lista as ligações entre espaços nominais que não deviam existir na {{SITENAME}}',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Página especial]] que lista as ligações entre espaços nominais que não deviam existir na {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Esta página lista as ligações contidas por páginas do espaço nominal principal, cujo destino são páginas noutros espaços nominais que não {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}. Estas ligações não são aconselháveis.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|liga|ligam}} para $3',
 );

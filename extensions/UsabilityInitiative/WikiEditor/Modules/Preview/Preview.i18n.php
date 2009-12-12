@@ -31,7 +31,7 @@ $messages['qqq'] = array(
 	'wikieditor-preview-tab' => 'Caption of the tab containing the preview
 
 {{Identical|Preview}}',
-	'wikieditor-preview-changes-tab' => "Caption of the tab containing a diff of the user's changes, à la Show changes.
+	'wikieditor-preview-changes-tab' => "Caption of the tab containing a diff of the user's changes, à la ''{{int:Showdiff}}'' ({{msg-mw|Showdiff|notext=1}}).
 
 {{Identical|Change}}",
 	'wikieditor-preview-loading' => 'Alt text for spinner displayed while preview is being loaded
@@ -44,6 +44,7 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'wikieditor-preview-preference' => 'Wysig en voorskou langs mekaar',
 	'wikieditor-preview-tab' => 'Voorskou',
+	'wikieditor-preview-changes-tab' => 'Wysigings',
 	'wikieditor-preview-loading' => 'Besig om te laai...',
 );
 
@@ -109,6 +110,7 @@ $messages['bs'] = array(
 $messages['cs'] = array(
 	'wikieditor-preview-preference' => 'Zapnout náhledy v panelu',
 	'wikieditor-preview-tab' => 'Náhled',
+	'wikieditor-preview-changes-tab' => 'Změny',
 	'wikieditor-preview-loading' => 'Načítá se…',
 );
 
@@ -204,6 +206,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'wikieditor-preview-preference' => 'Activar a vista previa comparativa',
 	'wikieditor-preview-tab' => 'Vista previa',
+	'wikieditor-preview-changes-tab' => 'Cambios',
 	'wikieditor-preview-loading' => 'Cargando...',
 );
 
@@ -257,6 +260,7 @@ $messages['hy'] = array(
 $messages['ia'] = array(
 	'wikieditor-preview-preference' => 'Activar le previsualisation latere a latere',
 	'wikieditor-preview-tab' => 'Previsualisation',
+	'wikieditor-preview-changes-tab' => 'Modificationes',
 	'wikieditor-preview-loading' => 'Cargamento...',
 );
 
@@ -278,6 +282,13 @@ $messages['ja'] = array(
 	'wikieditor-preview-tab' => 'プレビュー',
 	'wikieditor-preview-changes-tab' => '変更',
 	'wikieditor-preview-loading' => '読み込み中…',
+);
+
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'wikieditor-preview-changes-tab' => 'ცვლილებები',
 );
 
 /** Korean (한국어)
@@ -348,6 +359,7 @@ $messages['nn'] = array(
 $messages['no'] = array(
 	'wikieditor-preview-preference' => 'Aktiver forhåndsvisning side-ved-side',
 	'wikieditor-preview-tab' => 'Forhåndsvisning',
+	'wikieditor-preview-changes-tab' => 'Endringer',
 	'wikieditor-preview-loading' => 'Laster…',
 );
 
@@ -416,6 +428,7 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'wikieditor-preview-preference' => 'Включить предпросмотр бок о бок',
 	'wikieditor-preview-tab' => 'Предпросмотр',
+	'wikieditor-preview-changes-tab' => 'Изменения',
 	'wikieditor-preview-loading' => 'Загрузка…',
 );
 
@@ -425,6 +438,7 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'wikieditor-preview-preference' => 'Инники көрүүнү сэргэстэһиннэрэ көрдөр',
 	'wikieditor-preview-tab' => 'Инники көрүү',
+	'wikieditor-preview-changes-tab' => 'Уларыйыылар',
 	'wikieditor-preview-loading' => 'Хачайдана турар...',
 );
 

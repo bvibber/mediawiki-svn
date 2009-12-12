@@ -4973,6 +4973,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'code' => 'Проверка на кодот',
+	'code-rev-title' => 'r$1 - Проверка на кодот',
 	'code-comments' => 'Забелешки',
 	'code-references' => 'Понатамошни ревизии',
 	'code-change-status' => "го измени '''статусот''' на r$1",
@@ -4982,6 +4983,7 @@ $messages['mk'] = array(
 	'code-old-status' => 'Стар статус',
 	'code-new-status' => 'Нов статус',
 	'code-prop-changes' => 'Дневник на статуси и ознаки',
+	'code-desc' => '[[Special:Code|Алатка за проверка на кодот]] со [[Special:RepoAdmin|поддршка за Subversion]]',
 	'code-no-repo' => 'Нема наместено складиште!',
 	'code-load-diff' => 'Вчитувам разлики...',
 	'code-notes' => 'скорешни коментари',
@@ -4989,8 +4991,22 @@ $messages['mk'] = array(
 	'code-authors' => 'автори',
 	'code-status' => 'состојби',
 	'code-tags' => 'ознаки',
+	'code-tests' => 'Барања за испробување',
+	'code-authors-text' => 'Еве листа на автори за складишта подредени подредени по скорешни измени. Сметките на локалните викија се прикажани во загради.',
+	'code-author-haslink' => 'Овој автор е сврзан со корисникот $1',
+	'code-author-orphan' => 'Овој автор нема врска до вики-сметка',
+	'code-author-dolink' => 'Сврзи го овој автор со корисник:',
+	'code-author-alterlink' => 'Сменете го корисникот сврзан со овој автор:',
+	'code-author-orunlink' => 'Или отстранете врска до корисникот',
+	'code-author-name' => 'Внесете корисничко име:',
+	'code-author-success' => 'Авторот $1 е сврзан со корисникот $2',
+	'code-author-link' => 'да ставам врска?',
+	'code-author-unlink' => 'да отстранам врска?',
+	'code-author-unlinksuccess' => 'Отстранета е врската до авторот $1',
+	'code-browsing-path' => "Прелистување на ревизии во '''$1'''",
 	'code-field-id' => 'Ревизија',
 	'code-field-author' => 'Автор',
+	'code-field-user' => 'Коментатор',
 	'code-field-message' => 'Опис на измените',
 	'code-field-status' => 'Статус',
 	'code-field-timestamp' => 'Датум',
@@ -4998,9 +5014,11 @@ $messages['mk'] = array(
 	'code-field-tests' => 'Испробувања',
 	'code-field-path' => 'Пат',
 	'code-field-text' => 'Белешка',
+	'code-field-select' => 'Избери',
 	'code-rev-author' => 'Автор:',
 	'code-rev-date' => 'Датум:',
 	'code-rev-message' => 'Коментар:',
+	'code-rev-repo' => 'Складиште:',
 	'code-rev-rev' => 'Ревизија:',
 	'code-rev-rev-viewvc' => 'на ViewVC',
 	'code-rev-paths' => 'Изменети врски:',
@@ -5017,6 +5035,7 @@ $messages['mk'] = array(
 	'code-rev-comment-by' => 'Забелешка од $1',
 	'code-rev-comment-submit' => 'Потврди забелешка',
 	'code-rev-comment-preview' => 'Преглед',
+	'code-rev-inline-preview' => 'Преглед:',
 	'code-rev-diff' => 'Разлика',
 	'code-rev-diff-link' => 'разлика',
 	'code-rev-purge-link' => 'исчисти',
@@ -5027,16 +5046,26 @@ $messages['mk'] = array(
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'потврдено',
 	'code-status-deferred' => 'одложено',
+	'code-pathsearch-legend' => 'Пребарај ревизии на ова складиште по нивниот пат',
+	'code-pathsearch-path' => 'Патека:',
 	'code-rev-submit' => 'Зачувај промени',
 	'code-rev-submit-next' => 'Зачувај и прикажи следно нерешено',
 	'code-batch-status' => 'Измени статус:',
 	'code-batch-tags' => 'Измени ги ознаките:',
 	'codereview-batch-title' => 'Измени ги сите избрани ревизии',
+	'codereview-batch-submit' => 'Испрати',
+	'code-releasenotes' => 'белешки за изданието',
 	'code-release-legend' => 'Создај белешки за изданието',
 	'code-release-startrev' => 'Почетна ревиз:',
 	'code-release-endrev' => 'Последна ревиз:',
 	'code-release-badrange' => 'Опсегот е преголем',
 	'codereview-subtitle' => 'За $1',
+	'codereview-reply-link' => 'одговори',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|успешна проба|успешни проби}}',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успешна проба|успешни проби}}, $3 {{PLURAL:$4|неуспешна проба|неуспешни проби}}:',
+	'codereview-tests-running' => 'Испробувањето на примери е во тек...',
+	'codereview-tests-aborted' => 'Проверката е откажана.',
+	'codereview-email-subj' => '[$1] [r$2]: Додаден е нов коментар',
 	'codereview-email-body' => 'Корисникот „$1“ објави коментар за r$3.
 
 Полна URL-адреса: $2
@@ -5045,6 +5074,13 @@ $messages['mk'] = array(
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]: Подоцнежни измени',
+	'codereview-email-body2' => 'Корисникот „$1“ направи подоцнежни промени на r$2.
+
+Полна URL-адреса: $3
+
+Опис:
+
+$4',
 	'codereview-email-subj3' => '[$1] [r$2]: Автоматското испробување откри регресија',
 	'codereview-email-body3' => 'Автоматското испробување откри регресија заради промените во r$1.
 
@@ -5055,10 +5091,22 @@ $4',
 $3',
 	'repoadmin' => 'Управување со складиштето',
 	'repoadmin-new-legend' => 'Создај ново складиште',
+	'repoadmin-new-label' => 'Име на складиштето:',
 	'repoadmin-new-button' => 'Создај',
+	'repoadmin-edit-legend' => 'Менување на складиштето „$1“',
 	'repoadmin-edit-path' => 'Патека до складиштето:',
 	'repoadmin-edit-bug' => 'Патека до Bugzilla:',
 	'repoadmin-edit-view' => 'Патека до ViewVC:',
+	'repoadmin-edit-button' => 'ОК',
+	'repoadmin-edit-sucess' => 'Складиштето „[[Special:Code/$1|$1]]“ е успешно изменето.',
+	'right-repoadmin' => 'Раководење со складишта на код',
+	'right-codereview-use' => 'Користење на Special:Code',
+	'right-codereview-add-tag' => 'Додавање нови ознаки кон ревизии',
+	'right-codereview-remove-tag' => 'Отстранување ознаки од ревизии',
+	'right-codereview-post-comment' => 'Додавање коментари кон ревизии',
+	'right-codereview-set-status' => 'Менување статус на ревизии',
+	'right-codereview-link-user' => 'Сврзување на автори со корисници',
+	'specialpages-group-developer' => 'Развојни алатки',
 );
 
 /** Malayalam (മലയാളം)

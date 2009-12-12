@@ -845,6 +845,36 @@ Fir Invitatioune fir eng bestëmmte fonctioun ze kréien, klickt w.e.g. op de je
 	'invitations-invite-success' => 'Dir hutt de(n) $1 invitéiert fir dës Fonctioun ze benotzen!',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'invite-logpage' => 'Дневник на покани',
+	'invite-logpagetext' => 'Ова е дневник на корисниците кои си праќаат покани за користење на разни програмски можности.',
+	'invite-logentry' => 'испрати покана до $1 за да користи <i>$2</i>.',
+	'invitations' => 'Раководење со покани за програмски можности',
+	'invitations-desc' => 'Овозможува [[Special:Invitations|раководење со нови можности]]  со тоа што ги ограничува преку систем на покани',
+	'invitations-invitedlist-description' => 'Имате пристап до следниве програмски можности, достапни само со покана.
+За раководење со поканите за поединечни можности, кликнете на името на можноста.',
+	'invitations-invitedlist-none' => 'Не сте поканети да ја корисите оваа програмска можност, достапна само со покана.',
+	'invitations-invitedlist-item-count' => '(Имате {{PLURAL:$1|една покана|$1 покани}} на располагање)',
+	'invitations-pagetitle' => 'Можности на програмот достапни само со покана',
+	'invitations-uninvitedlist-description' => 'Немате пристап до оваа и други програмски можности, кои се достапни само со покана.',
+	'invitations-uninvitedlist-none' => 'Моментално нема други програмски можности достапни само со покана.',
+	'invitations-feature-pagetitle' => 'Раководење со поканите - $1',
+	'invitations-feature-access' => 'Моментално имате пристап да користите <i>$1</i>.',
+	'invitations-feature-numleft' => '{{PLURAL:$2|Ви преостанува уште една покана|Ви преостануваат уште <b>$1</b> од $2 покани}}.',
+	'invitations-feature-noneleft' => 'Ги искористивте сите покани кои ви следуваат за оваа можност',
+	'invitations-feature-noneyet' => 'Немате добиено следување од покани за оваа можност.',
+	'invitations-feature-notallowed' => 'Немате пристап да користите <i>$1</i>.',
+	'invitations-inviteform-title' => 'Покана до корисник да користи $1',
+	'invitations-inviteform-username' => 'Корисник',
+	'invitations-inviteform-submit' => 'Покани',
+	'invitations-error-baduser' => 'Се чини дека назначениот корисник не постои.',
+	'invitations-error-alreadyinvited' => 'Назначениот корисник веќе има пристап до оваа можност!',
+	'invitations-invite-success' => 'Успешно го поканивте корисникот $1 да ја користи оваа можност!',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

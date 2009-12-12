@@ -965,6 +965,20 @@ $messages['vep'] = array(
 	'index-search' => 'Ectä',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'indexfunc-badtitle' => 'Tựa không hợp lệ: “$1”',
+	'indexfunc-index-exists' => 'Trang “$1” đã tồn tại',
+	'index' => 'Tìm kiếm chỉ mục',
+	'index-legend' => 'Tìm kiếm trong chỉ mục',
+	'index-search' => 'Tìm kiếm:',
+	'index-submit' => 'Tìm kiếm',
+	'index-disambig-start' => "'''$1''' có thể chỉ đến vài trang khác nhau:",
+	'index-hide-detail' => 'Ẩn danh sách trang',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

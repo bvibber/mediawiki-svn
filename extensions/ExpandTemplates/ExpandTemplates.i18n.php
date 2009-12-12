@@ -1086,6 +1086,7 @@ $messages['km'] = array(
 /** Korean (한국어)
  * @author Albamhandae
  * @author Klutzy
+ * @author Kwj2772
  * @author ToePeu
  */
 $messages['ko'] = array(
@@ -1100,6 +1101,7 @@ $messages['ko'] = array(
 	'expand_templates_xml_output' => 'XML 출력',
 	'expand_templates_ok' => '확인',
 	'expand_templates_remove_comments' => '주석 지우기',
+	'expand_templates_remove_nowiki' => '결과에서 <nowiki> 태그를 숨기기',
 	'expand_templates_generate_xml' => 'XML 구문 트리 보기',
 	'expand_templates_preview' => '미리보기',
 );

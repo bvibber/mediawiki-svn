@@ -1551,6 +1551,52 @@ $messages['mhr'] = array(
 	'crosswikiunblock-reason' => 'Амал:',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'crosswikiblock-desc' => 'Овозможува блокирање на корисници на други викија со помош на [[Special:Crosswikiblock|специјална страница]]',
+	'crosswikiblock' => 'Блокирај корисник на друго вики',
+	'crosswikiblock-header' => 'Оваа страница овозможува блокирање на корисници на други викија.
+Проверете дали ви се дозволени такви постапки на ова вики, и дали вашите постапки се во согласност со сите правила.',
+	'crosswikiblock-target' => 'IP-адреса или корисничко име и целно вики:',
+	'crosswikiblock-expiry' => 'Истекува:',
+	'crosswikiblock-reason' => 'Причина:',
+	'crosswikiblock-submit' => 'Блокирај го корисников',
+	'crosswikiblock-anononly' => 'Блокирај само анонимни корисници',
+	'crosswikiblock-nocreate' => 'Оневозможи создавање сметки',
+	'crosswikiblock-autoblock' => 'Автоматски блокирај ја последната IP-адреса употребена од овој корисник, и сите подоцнежни IP-адреси од кои ќе се обиде да уредува',
+	'crosswikiblock-noemail' => 'Оневозможи му на корисникот да испраќа е-пошта',
+	'crosswikiunblock' => 'Одблокирај корисник на друго вики',
+	'crosswikiunblock-header' => 'Оваа страница овозможува одблокирање на корисници на други викија.
+Проверете дали ви се дозволени такви постапки на ова вики, и дали вашите постапки се во согласност со сите правила.',
+	'crosswikiunblock-user' => 'Корисничко име, IP-адреса или ид. бр. на блокот и целното вики:',
+	'crosswikiunblock-reason' => 'Причина:',
+	'crosswikiunblock-submit' => 'Одблокирај го корисников',
+	'crosswikiunblock-success' => "Корисникот '''$1''' е успешно одблокиран.
+
+Назад кон:
+* [[Special:CrosswikiBlock|Образецот за блокирање]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Нема наведено корисничко име',
+	'crosswikiblock-local' => 'Локалните блокирања не се поддржани преку овој интерфејс. Користете [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'Базата на податоци $1 не постои',
+	'crosswikiblock-noname' => '„$1“ не е важечко корисничко име.',
+	'crosswikiblock-nouser' => 'Корисникот „$3“ не е пронајден.',
+	'crosswikiblock-noexpiry' => 'Неважечки рок на истекување: $1.',
+	'crosswikiblock-noreason' => 'Нема наведено причина.',
+	'crosswikiblock-notoken' => 'Неважечки жетон за уредувањето.',
+	'crosswikiblock-alreadyblocked' => 'Корисникот $3 е веќе блокиран.',
+	'crosswikiblock-noblock' => 'Овој корисник не е блокиран.',
+	'crosswikiblock-success' => "Корисникот '''$3''' е успешно блокиран.
+
+Назад кон:
+* [[Special:CrosswikiBlock|Образецот за блокирање]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Локалните одблокирања не се поддржани преку овој интерфејс. Користете [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Блокирање и одблокирање на корисници на други викија',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

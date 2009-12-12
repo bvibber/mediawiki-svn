@@ -1099,6 +1099,40 @@ $messages['li'] = array(
 	'right-closewikis' => "Gesjlaote wiki's",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'closewikis-desc' => 'Овозможува затворање на вики веб-страници во вики-фарми',
+	'closewikis-page' => 'Затвори го викито',
+	'closewikis-page-close' => 'Затвори го викито',
+	'closewikis-page-close-wiki' => 'Вики:',
+	'closewikis-page-close-dreason' => 'Причина (за прикажување):',
+	'closewikis-page-close-reason' => 'Причина (за во дневник):',
+	'closewikis-page-close-submit' => 'Затвори',
+	'closewikis-page-close-success' => 'Викито е успешно затворено',
+	'closewikis-page-reopen' => 'Отвори го викито',
+	'closewikis-page-reopen-wiki' => 'Вики:',
+	'closewikis-page-reopen-reason' => 'Причина:',
+	'closewikis-page-reopen-submit' => 'Отвори',
+	'closewikis-page-reopen-success' => 'Викито е успешно отворено',
+	'closewikis-page-err-nowiki' => 'Назначено е неважечко вики',
+	'closewikis-page-err-closed' => 'Викито е веќе затворено',
+	'closewikis-page-err-opened' => 'Викито не е затворено',
+	'closewikis-list' => 'Листа на затворени викија',
+	'closewikis-list-intro' => 'Оваа листа ги наведува викијата затворени од стјуарди.',
+	'closewikis-list-header-wiki' => 'Вики',
+	'closewikis-list-header-by' => 'Затворил',
+	'closewikis-list-header-timestamp' => 'Затворено на',
+	'closewikis-list-header-dispreason' => 'Причина за прикажување',
+	'closewikis-log' => 'Дневник на затворање на викија',
+	'closewikis-log-header' => 'Еве дневник на сите затворања на викија од страна на стјуарди  и нивни повторни отворања',
+	'closewikis-log-close' => 'затворено $2',
+	'closewikis-log-reopen' => 'отворено $2',
+	'right-editclosedwikis' => 'Уредување на затворени викија',
+	'right-closewikis' => 'Затворање на викија',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

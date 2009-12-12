@@ -830,6 +830,35 @@ Opgepasst: op méi grousse Wikien kann d'Aktualisatioun eng Zäit daueren.",
 	'right-refreshspecial' => 'Spezialsäiten aktualiséieren',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'refreshspecial' => 'Ажурирај специјални страници',
+	'refreshspecial-desc' => 'Овозможува [[Special:RefreshSpecial|рачно ажурирање]] на специјални страници',
+	'refreshspecial-title' => 'Ажурирање на специјални страници',
+	'refreshspecial-help' => "Оваа специјална страница дава начин на рачно ажурирање на специјални страници.
+Откако ќе ги изберете сите страници кои сакате да ги ажурирате, кликнете на копчето „Освежи го одбраното“ подолу за да ги ажурирате тие страници.
+'''Предупредување:''' Ажурирањето може да потрае кај поголеми викија.",
+	'refreshspecial-button' => 'Ажурирај го избраното',
+	'refreshspecial-fail' => 'ОДберете барем една специјална страница за ажурирање.',
+	'refreshspecial-refreshing' => 'ажурирање на специјалните страници',
+	'refreshspecial-skipped' => 'грешка, прескокнато',
+	'refreshspecial-choice' => 'ажурирање на специјалните страници',
+	'refreshspecial-js-disabled' => '(<i>Не можете да ги одберете сите страници кога е исклучен JavaScript</i>)',
+	'refreshspecial-select-all-pages' => 'Одбери ги сите страници',
+	'refreshspecial-link-back' => 'Назад кон специјалната страница',
+	'refreshspecial-none-selected' => 'Немате одбрано ниедна специјална страница. Враќам на основно зададениот избор.',
+	'refreshspecial-db-error' => 'Неуспешно: Грешка во базата на податоци',
+	'refreshspecial-no-page' => 'Нема таква специјална страница',
+	'refreshspecial-slave-lagged' => 'Зависниот сервер заостанува. Чекам...',
+	'refreshspecial-reconnected' => 'Преповрзано.',
+	'refreshspecial-reconnecting' => 'Поврзувањето не успеа. Се преповрзувам за 10 секунди...',
+	'refreshspecial-page-result' => '{{PLURAL:$1|$Внесен е 1 ред|Внесени се $1 реда}} во',
+	'refreshspecial-total-display' => '{{PLURAL:$1|Ажурирана е $1 страница|Ажурирани се $1 страници}}, со вкупно $2 {{PLURAL:$2|ред|реда}} за време $3 (вкупното време откако скриптата работи изнесува $4)',
+	'right-refreshspecial' => 'Ажурирање на специјални страници',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

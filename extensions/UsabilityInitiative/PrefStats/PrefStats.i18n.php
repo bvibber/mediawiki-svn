@@ -2184,6 +2184,18 @@ $messages['xmf'] = array(
 	'prefstats-factor-day' => 'დღა',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'prefstats-factor-hour' => 'שעה',
+	'prefstats-factor-sixhours' => 'זעקס שעה',
+	'prefstats-factor-day' => 'טאָג',
+	'prefstats-factor-week' => 'וואך',
+	'prefstats-factor-twoweeks' => 'צוויי וואכן',
+	'prefstats-factor-fourweeks' => 'פֿיר וואכן',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

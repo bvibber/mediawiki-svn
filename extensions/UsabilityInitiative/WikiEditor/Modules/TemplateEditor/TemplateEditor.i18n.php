@@ -29,11 +29,19 @@ $messages['bs'] = array(
 	'wikieditor-template-editor-preference' => 'Omogućava uređivanje wiki šablon putem obrazaca',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'wikieditor-template-editor-preference' => 'Zapnout formulářovou editaci šablon wiki',
+);
+
 /** German (Deutsch)
  * @author DaSch
+ * @author Umherirrender
  */
 $messages['de'] = array(
-	'wikieditor-template-editor-preference' => 'Aktiviere formularbasiertes Bearbeiten von Vorlagen',
+	'wikieditor-template-editor-preference' => 'Formularbasiertes Bearbeiten von Wiki-Vorlagen aktivieren',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -71,11 +79,25 @@ $messages['hsb'] = array(
 	'wikieditor-template-editor-preference' => 'Wobdźěłowanje wikipředłohow na zakładźe formularow zmóžnić',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'wikieditor-template-editor-preference' => 'Permitter le modification de patronos wiki con formularios',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'wikieditor-template-editor-preference' => 'フォームを利用したテンプレートの編集を有効化する',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'wikieditor-template-editor-preference' => "D'Änner vu Wiki-Schablounen op der Basis vu Formulairen aschalten",
 );
 
 /** Macedonian (Македонски)
@@ -111,6 +133,20 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'wikieditor-template-editor-preference' => 'Possibilitar edição de predefinições com base em formulários',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'wikieditor-template-editor-preference' => 'Включить редактирование шаблонов с помощью форм',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'wikieditor-template-editor-preference' => 'Intaca par i modèi wiki la modifica basà sui mòduli',
 );
 
 /** Vietnamese (Tiếng Việt)
