@@ -1,84 +1,113 @@
-table.templateInfo td {
+.templateInfo td {
 	padding-right: 5px;
 }
 
-table.templateInfo tr.topRow {
-	background: #bbaa88;
-}
-
-table.templateInfo tr.topRow td {
+body.rtl .templateInfo td {
 	padding-left: 5px;
 }
 
-table.templateInfo tr.topRow span.rowValue {
+.templateInfo .paramGroup {
+	background: #bbaa88;
+	padding-left: 5px;
+}
+
+body.rtl .templateInfo .paramGroup {
+	padding-right: 5px;
+}
+
+.templateInfo .paramGroup span.rowValue {
 	font-weight: bold;
 }
 
-table.templateInfo tr.row2 {
+.templateInfo .param {
 	background: #d3c2a0;
-}
-
-table.templateInfo tr.row2 td {
 	padding-left: 20px;
 }
 
-table.templateInfo tr.row2 span.rowValue {
+body.rtl .templateInfo .param {
+	padding-right: 20px;
+}
+
+.templateInfo .param span.rowValue {
 	font-weight: bold;
 }
 
-table.templateInfo tr.row3 {
+.templateInfo .paramAttr {
 	background: #eeddbb;
-}
-
-table.templateInfo tr.row3 td {
 	padding-left: 35px;
 }
 
-table.templateInfo tr.row4 {
-	background: #ffeecc;
+body.rtl .templateInfo .paramAttr {
+	padding-right: 35px;
 }
 
-table.templateInfo tr.row4 td {
+.templateInfo .paramAttrMsg {
+	background: #ffeecc;
 	padding-left: 50px;
 }
 
-table.templateInfo tr.optionsTopRow td {
+body.rtl .templateInfo .paramAttrMsg {
+	padding-right: 50px;
+}
+
+.templateInfo .paramOptions {
 	padding-left: 20px;
 	background: #ffff77;
 }
 
-table.templateInfo tr.optionsRow2 td {
+body.rtl .templateInfo .paramOptions {
+	padding-right: 20px;
+}
+
+.templateInfo .paramOption {
 	padding-left: 35px;
 	background: #ffff99;
 }
 
-table.templateInfo tr.optionsRow2 span.rowValue {
+body.rtl .templateInfo .paramOption {
+	padding-right: 35px;
+}
+
+.templateInfo .paramOption span.rowValue {
 	font-weight: bold;
 }
 
-table.templateInfo tr.optionsRow3 td {
+.templateInfo .paramOptionMsg {
 	padding-left: 50px;
 	background: #ffffbb;
 }
 
-table.templateInfo tr.dataTopRow td {
+body.rtl .templateInfo .paramOptionMsg {
+	padding-right: 50px;
+}
+
+.templateInfo .paramData {
 	padding-left: 20px;
 	background: #77dd77;
 }
 
-table.templateInfo tr.dataTopRow span.rowValue {
+body.rtl .templateInfo .paramData {
+	padding-right: 20px;
+}
+
+.templateInfo .paramData span.rowValue {
 	font-weight: bold;
 }
 
-table.templateInfo tr.dataRow2 {
+.templateInfo .paramDataField {
 	background: #99ff99;
-}
-
-table.templateInfo tr.dataRow2 td {
 	padding-left: 35px;
 }
 
-table.templateInfo tr td.msg {
+body.rtl .templateInfo .paramDataField {
+	padding-right: 35px;
+}
+
+.templateInfo .msg {
 	padding-left: 5px;
 	background: white;
+}
+
+body.rtl .templateInfo .msg {
+	padding-right: 5px;
 }

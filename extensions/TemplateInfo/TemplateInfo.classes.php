@@ -52,16 +52,16 @@ END;
 		} else {
 			$content = "$data_type: " . HTML::element('span', array('class' => 'rowValue'), $value);
 		}
-		$cell = HTML::rawElement('td', array('colspan' => 2), $content);
-		$text = HTML::rawElement('tr', array('class' => $css_class), $cell);
+		$cell = HTML::rawElement('td', array('colspan' => 2, 'class' => $css_class), $content);
+		$text = HTML::rawElement('tr', null, $cell);
 		$text .= "\n";
 		return $text;
 	}
 
 	static function tableMessageRowHTML($css_class, $name, $value) {
-		$cell1 = HTML::element('td', array(), $name);
+		$cell1 = HTML::element('td', array('class' => $css_class), $name);
 		$cell2 = HTML::element('td', array('class' => 'msg'), $value);
-		$text = HTML::rawElement('tr', array('class' => $css_class), $cell1 . "\n" . $cell2);
+		$text = HTML::rawElement('tr', null, $cell1 . "\n" . $cell2);
 		$text .= "\n";
 		return $text;
 	}
@@ -82,7 +82,7 @@ END;
 
 	static function parseParamGroup($param_group_xml) {
 		$id = $param_group_xml->attributes()->id;
-		$text = self::tableRowHTML('topRow', 'Group', $id);
+		$text = self::tableRowHTML('paramGroup', 'Group', $id);
 		foreach ($param_group_xml->children() as $child) {
 			$text .= self::parseParam($child);
 		}
@@ -91,7 +91,7 @@ END;
 
 	static function parseParam($param_xml) {
 		$id = $param_xml->attributes()->id;
-		$text = self::tableRowHTML('row2', 'Parameter', $id);
+		$text = self::tableRowHTML('param', 'Parameter', $id);
 		foreach ($param_xml->children() as $tag_name => $child) {
 			if ($tag_name == 'label') {
 				$text .= self::parseParamLabel($child);
@@ -110,9 +110,9 @@ END;
 
 	static function parseParamLabel($param_label_xml) {
 		if (count($param_label_xml->children()) == 0) {
-			$text = self::tableRowHTML('row3', 'Label', $param_label_xml);
+			$text = self::tableRowHTML('paramAttr', 'Label', $param_label_xml);
 		} else {
-			$text = self::tableRowHTML('row3', 'Label');
+			$text = self::tableRowHTML('paramAttr', 'Label');
 			foreach ($param_label_xml->children() as $child) {
 				$text .= self::parseMsg($child);
 			}
@@ -122,9 +122,9 @@ END;
 
 	static function parseParamDescription($param_desc_xml) {
 		if (count($param_desc_xml->children()) == 0) {
-			$text = self::tableRowHTML('row3', 'Description', $param_desc_xml);
+			$text = self::tableRowHTML('paramAttr', 'Description', $param_desc_xml);
 		} else {
-			$text = self::tableRowHTML('row3', 'Description');
+			$text = self::tableRowHTML('paramAttr', 'Description');
 			foreach ($param_desc_xml->children() as $child) {
 				$text .= self::parseMsg($child);
 			}
@@ -134,12 +134,12 @@ END;
 
 	static function parseParamType($param_type_xml) {
 		$name = $param_type_xml->attributes()->name;
-		$text = self::tableRowHTML('row3', 'Type', $name);
+		$text = self::tableRowHTML('paramAttr', 'Type', $name);
 		return $text;
 	}
 
 	static function parseParamOptions($param_options_xml) {
-		$text = self::tableRowHTML('optionsTopRow', 'Options');
+		$text = self::tableRowHTML('paramOptions', 'Options');
 		foreach ($param_options_xml->children() as $child) {
 			$text .= self::parseParamOption($child);
 		}
@@ -148,9 +148,9 @@ END;
 
 	static function parseParamOption($param_option_xml) {
 		$name = $param_option_xml->attributes()->name;
-		$text = self::tableRowHTML('optionsRow2', 'Option', $name);
+		$text = self::tableRowHTML('paramOption', 'Option', $name);
 		if (count($param_option_xml->children()) == 0) {
-			$text .= self::tableRowHTML('optionsRow3', $param_option_xml);
+			$text .= self::tableRowHTML('paramOptionMsg', $param_option_xml);
 		} else {
 			foreach ($param_option_xml->children() as $child) {
 				$text .= self::parseOptionMsg($child);
@@ -161,19 +161,19 @@ END;
 
 	static function parseMsg($msg_xml) {
 		$language = $msg_xml->attributes()->language;
-		$text = self::tableMessageRowHTML('row4', $language, $msg_xml);
+		$text = self::tableMessageRowHTML('paramAttrMsg', $language, $msg_xml);
 		return $text;
 	}
 
 	static function parseOptionMsg($msg_xml) {
 		$language = $msg_xml->attributes()->language;
-		$text = self::tableMessageRowHTML('optionsRow3', $language, $msg_xml);
+		$text = self::tableMessageRowHTML('paramOptionMsg', $language, $msg_xml);
 		return $text;
 	}
 
 	static function parseParamData($param_data_xml) {
 		$app = $param_data_xml->attributes()->app;
-		$text = self::tableRowHTML('dataTopRow', 'Data for app', $app);
+		$text = self::tableRowHTML('paramData', 'Data for app', $app);
 		foreach ($param_data_xml->children() as $child) {
 			$text .= self::parseField($child);
 		}
@@ -182,7 +182,7 @@ END;
 
 	static function parseField($field_xml) {
 		$name = $field_xml->attributes()->name;
-		$text = self::tableMessageRowHTML('dataRow2', $name, $field_xml);
+		$text = self::tableMessageRowHTML('paramDataField', $name, $field_xml);
 		return $text;
 	}
 
