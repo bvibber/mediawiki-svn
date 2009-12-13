@@ -239,8 +239,8 @@ class SpecialRecordAdmin extends SpecialPage {
 				. '<tr><td>' . $this->form . '</td></tr>'
 				. '<tr><td>' . Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) . '</td></tr>'
 				. '<tr><td>'
-				. Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpFind', 'id' => 'wpFind', 'value' => wfMsg( 'recordadmin-buttonsearch' ) ) )
-				. Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpCreate', 'id' => 'wpCreate', 'value' => wfMsg( 'recordadmin-buttoncreate' ) ) )
+				. Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpFind', 'id' => 'ra-find', 'value' => wfMsg( 'recordadmin-buttonsearch' ) ) )
+				. Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpCreate', 'id' => 'ra-create', 'value' => wfMsg( 'recordadmin-buttoncreate' ) ) )
 				. Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) )
 				. '</td></tr>'
 				. '</table></form>'
