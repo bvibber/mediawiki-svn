@@ -276,6 +276,7 @@ $messages['cy'] = array(
 	'authorprotect-success' => 'Llwyddodd y diogelu!',
 	'authorprotect-failure' => 'Ni lwyddodd y diogelu',
 	'protect-level-author' => 'Diogeler rhag cael ei newid gan neb ond ei hawduron',
+	'restriction-level-author' => 'Cyfyngedig-i-awduron',
 	'right-authorprotect' => "Gallu awdur i ddiogelu tudalennau o'i waith ei hun",
 );
 

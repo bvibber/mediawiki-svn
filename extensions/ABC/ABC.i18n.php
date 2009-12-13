@@ -376,6 +376,14 @@ $messages['ko'] = array(
 	'abcdownload' => '다운로드:',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'abcdesc' => 'ABC музыканы бичер ючюн <tt>&lt;abc&gt;</tt> тегни къошады',
+	'abcdownload' => 'Джюкле:',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -420,6 +420,23 @@ $messages['oc'] = array(
 	'externalpages-bad-url-data' => 'Fracàs per recuperar las donadas de la pagina',
 );
 
+/** Polish (Polski)
+ * @author Wpedzich
+ */
+$messages['pl'] = array(
+	'externalpages' => 'Strony zewnętrzne',
+	'externalpages-desc' => 'Pobiera i wyświetla strony ze zdalnych stron Fundacji Wikimedia',
+	'externalpages-bad-year' => 'Podano nieprawidłowy rok',
+	'externalpages-bad-language' => 'Podano nieprawidłowy język',
+	'externalpages-bad-project' => 'Podano nieprawidłowy projekt',
+	'externalpages-no-project' => 'Nie podano projektu',
+	'externalpages-bad-page' => 'Podano nieprawidłową stronę',
+	'externalpages-no-page' => 'Nie podano strony',
+	'externalpages-error-generic' => 'Wystąpił błąd',
+	'externalpages-bad-url' => 'Nie można pobrać URL',
+	'externalpages-bad-url-data' => 'Nie można pobrać zawartości strony',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
@@ -494,6 +511,23 @@ $messages['sk'] = array(
  */
 $messages['te'] = array(
 	'externalpages' => 'బయటి పేజీలు',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'externalpages' => 'Dış sayfalar',
+	'externalpages-desc' => 'Uzak WMF sitelerinden sayfaları alır ve görüntüler',
+	'externalpages-bad-year' => 'Yanlış yıl belirtildi',
+	'externalpages-bad-language' => 'Yanlış dil belirtildi',
+	'externalpages-bad-project' => 'Yanlış proje belirtildi',
+	'externalpages-no-project' => 'Hiçbir proje belirtilmedi',
+	'externalpages-bad-page' => 'Yanlış sayfa belirtildi',
+	'externalpages-no-page' => 'Hiçbir sayfa belirtilmedi',
+	'externalpages-error-generic' => 'Hatayla karşılaşıldı',
+	'externalpages-bad-url' => 'URL alımı başarısız',
+	'externalpages-bad-url-data' => 'Sayfa içeriği alımı başarısız',
 );
 
 /** Vèneto (Vèneto)

@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'wlfeed-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'wlfeed-desc' => 'Klasse vir die skep van verbeterde voere (feeds)',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

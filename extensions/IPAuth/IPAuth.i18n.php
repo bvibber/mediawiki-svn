@@ -156,6 +156,13 @@ $messages['ja'] = array(
 	'ipauth-desc' => '固定IPアドレスからの自動ログイン',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'ipauth-desc' => 'Дайым IP-адреследен автомат кириу',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -127,6 +127,13 @@ $messages['be-tarask'] = array(
 	'index-details-explain' => 'Запісы са стрэлкамі зьяўляюцца індэкснымі, націсьніце на стрэлку для паказу ўсіх старонак праіндэксаваных пад гэтай назвай.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'index-search' => 'Търсене:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

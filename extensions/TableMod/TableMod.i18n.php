@@ -184,7 +184,9 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'Manipulatioun vu Wiki-Tabellen',
 	'tablemod-msg-remove' => 'Ewechhuelen',
+	'tablemod-error-invalidaction' => 'Net-valabel Aktioun',
 );
 
 /** Macedonian (Македонски)

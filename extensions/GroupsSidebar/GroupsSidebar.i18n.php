@@ -137,6 +137,13 @@ $messages['pt'] = array(
 	'groupssidebar-desc' => 'Esta extensão permite que os administradores disponibilizem certos elementos da barra lateral a grupos específicos de utilizadores',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'groupssidebar-desc' => "Queste estenzione abbilete l'amministrature d'u site a ingludere le elemende d'a barra laterale pe specifeche gruppe de utinde",
+);
+
 /** Russian (Русский)
  * @author Lockal
  */

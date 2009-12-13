@@ -41,6 +41,24 @@ $1 is probably the name of the wiki.',
 	'userrightsnotif-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'userrightsnotifysubject' => 'Groepslidmaatskap is gewysig op $1',
+	'userrightsnotifybody' => 'Hallo $1
+
+Dit is om u in kennis te stel dat u groepslidmaatskap op $2 deur $3 op $4 gewysig is.
+
+Bygevoeg: $5
+Verwyder: $6
+
+Met vriendelike groete,
+
+$2',
+	'userrightsnotif-desc' => 'E-pos kennisgewing aan gebruikers sodra gebruikersregte verander',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author ترجمان05

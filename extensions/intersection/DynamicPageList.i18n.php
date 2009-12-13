@@ -105,10 +105,10 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'intersection-desc' => 'Извежда списък на най-скорошните записи в дадена категория или сечение на няколко категории',
-	'intersection_toomanycats' => 'Error: Твърде много категории!',
-	'intersection_toofewcats' => 'Error: Твърде малко категории!',
-	'intersection_noresults' => 'Error: Няма резултати!',
-	'intersection_noincludecats' => 'Error: Необходимо е да се включи поне една категория или да се посочи именно пространство!',
+	'intersection_toomanycats' => 'Грешка: Твърде много категории!',
+	'intersection_toofewcats' => 'Грешка: Твърде малко категории!',
+	'intersection_noresults' => 'Грешка: Няма резултати!',
+	'intersection_noincludecats' => 'Грешка: Необходимо е да се включи поне една категория или да се посочи именно пространство!',
 );
 
 /** Bengali (বাংলা)

@@ -1149,8 +1149,10 @@ $messages['bg'] = array(
 	'configure-condition-operator-or' => 'Или',
 	'configure-condition-operator-and' => 'И',
 	'configure-condition-operator-not' => 'Не',
+	'configure-condition-name-2' => 'Минимална възраст',
 	'configure-condition-name-4' => 'В групи',
 	'configure-condition-name-5' => 'Потребителски IP адрес',
+	'configure-farmer-extensions' => '[[Special:Extensions|Конфигуриране на разширенията за това уики]].',
 );
 
 /** Breton (Brezhoneg)

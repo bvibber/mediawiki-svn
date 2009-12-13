@@ -1024,6 +1024,7 @@ $messages['lb'] = array(
 	'qp_user_missing_polls_link' => 'Keng Bedeelegung',
 	'qp_not_participated_link' => 'Net matgemaach',
 	'qp_order_by_username' => 'Nom Benotzernumm zortéieren',
+	'qp_order_by_polls_count' => 'No der Zuel vun den Ënfroen zortéieren',
 	'qp_results_line_qupl' => 'Säit "$1" Ëmfro "$2": $3',
 	'qp_results_line_qpl' => 'Säit "$1" Ëmfro "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Säit "$2" Ëmfro "$3" ]',
