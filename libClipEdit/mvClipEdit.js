@@ -255,7 +255,7 @@ mvClipEdit.prototype = {
 								var template_rev = page['revisions'][0]['*'];
 							}
 						}
-						var parserObj = mw.parser.pNew( template_rev );
+						var parserObj = mw.parser( template_rev );
 						_this.resource.tVars = parserObj.getTemplateVars();
 						// Run the editor now that we have updated the template variables: 													
 						_this.showEditOptions( target );

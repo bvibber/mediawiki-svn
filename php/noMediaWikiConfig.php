@@ -1,5 +1,9 @@
 <?php
 
+//Optional set the path for google Closure Compiler ( for improved minification )
+$wgClosureCompilerPath = false;
+$wgJavaPath = false;
+
 // Give us true for MediaWiki
 define( 'MEDIAWIKI', true );
 

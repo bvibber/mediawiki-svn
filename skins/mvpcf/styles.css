@@ -398,7 +398,7 @@ div.floatleft, table.floatleft {
 .mv_scale_button_selected{
 	background-image: url('images/stock-tool-button-scale_over.png');
 }
-.loading_spiner{
+.loading_spinner{
 	width:32px;
 	height:32px;
 	display:inline;

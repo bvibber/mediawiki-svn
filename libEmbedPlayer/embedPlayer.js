@@ -8,6 +8,12 @@
 * 
 */
 
+// Default video size ( if no size provided )
+mw.setConfig( 'video_size', '400x300' );
+	
+// If the k-skin video player should attribute kaltura
+mw.setConfig( 'k_attribution', true );
+
 mw.addMessages( {
 	"mwe-loading_plugin" : "loading plugin ...",
 	"mwe-select_playback" : "Set playback preference",
@@ -86,7 +92,7 @@ var default_video_attributes = {
 	"width" : null,
 	
 	// Height: alternative to "style" to set player height
-	"height" : null,
+	"height" : null,		
 
 	/* 
 	* Base html5 video element attributes / states
@@ -125,10 +131,13 @@ var default_video_attributes = {
 	// Mute state
 	"muted" : false,
 	
-	/*
+	/**
 	* Custom attributes for embedPlayer player:
 	* (not part of the html5 video spec)  
 	*/
+	
+	// Default video aspect ratio
+	'videoAspect': '4:3',
 	
 	// Start time of the clip
 	"start" : 0,
@@ -355,17 +364,39 @@ EmbedPlayerManager.prototype = {
 			if( className.indexOf( mw.valid_skins[ n ] ) !== -1){
 				skinClassRequest.push( mw.valid_skins[n] + 'Config' );
 			}
-		}					
+		}
+		
+		// Firefox gives bogus css values if video has not loaded metadata yet:
+		//  But it does set attr to -1 so we check that and delay 
+		//  swaping in the player interface which calls playerSize 		 
+		var waitForMeta = ( 
+			( 
+			  $j(element).attr('width') == -1 || 
+			  $j(element).attr('height') == -1
+			) 
+		)? true : false;		
+			
 		// Load any skins we need then swap in the interface
 		mw.load( skinClassRequest, function(){							
 			switch( element.tagName.toLowerCase() ) {
 				case 'video':
 				case 'audio':
-					var playerInterface = new embedPlayer( element , attributes);
-					_this.swapEmbedPlayerElement( element, playerInterface );	
+				
+					// Local callback to runPlayer swap once element has metadat
+					function runPlayerSwap(){
+						var playerInterface = new embedPlayer( element , attributes);
+						_this.swapEmbedPlayerElement( element, playerInterface );	
 					
-					// Issue the checkPlayerSources call to the new player interface: 
-					$j( '#' + element_id ).get(0).checkPlayerSources();		
+						// Issue the checkPlayerSources call to the new player interface: 
+						$j( '#' + element_id ).get(0).checkPlayerSources();
+					}		
+				
+					if( waitForMeta ){
+						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
+						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
+					}else{ 
+						runPlayerSwap()
+					}					
 				break;
 				case 'playlist':				
 					// Make sure we have the necessary playlist libs loaded:
@@ -457,7 +488,7 @@ EmbedPlayerManager.prototype = {
 	* Will run all the functions in the this.callbackFunctions array
 	* Once all the player in this.playerList are ready
 	*/
-	waitPlayersReadyCallback : function() {
+	waitPlayersReadyCallback: function() {
 		var _this = this;
 		// mw.log('checkClipsReady');
 		var is_ready = true;
@@ -1181,9 +1212,7 @@ embedPlayer.prototype = {
 		mw.log( "duration is: " +  this.duration );
 		
 						
-		this.setDimSize( element, 'width' );
-		this.setDimSize( element, 'height' ); 				 			 	
-		
+		this.setPlayerSize( element ); 				 			 			
 		// Set the plugin id
 		this.pid = 'pid_' + this.id;
 
@@ -1202,27 +1231,46 @@ embedPlayer.prototype = {
 	},
 	
 	/**
-	* Set width or height from css style attribute, html element attribute, or by default value
-	* ( could be replaced with setPlayerWidth & setPlayerHeight  )
+	* Set the width & height from css style attribute, element attribute, or by default value
+	*	if no css or attribute is provided set a callback to resize.
 	* 
-	* @param {Element} element Source element to grab size from
-	* @param {String} dimension "height" or "width" 
+	* Updates this.width & this.height
+	* 
+	* @param {Element} element Source element to grab size from 
 	*/
-	setDimSize:function( element, dimension ){				
-		var dcss = parseInt( $j(element).css( dimension ).replace( 'px' , '' ) );
-		var dattr = parseInt( $j(element).attr( dimension ) );
-					
-		this[ dimension ] = ( dcss )? dcss : dattr;
+	setPlayerSize:function( element ){				
+		this['height'] = parseInt( $j(element).css( 'height' ).replace( 'px' , '' ) );
+		this['width'] = parseInt( $j(element).css( 'width' ).replace( 'px' , '' ) );				
 		
-		// On load sometimes attr is temporally -1		
-		if( ! this[ dimension ] || this[ dimension ] == -1 ){
-			//special height default for audio tag:  
-			if( element.tagName.toLowerCase() == 'audio' &&  dimension == 'height' )
-				return this[ dimension ] = 0;
-			// Grab width/height from default value (for video) 
-			var dwh = mw.getConfig( 'video_size' ).split( 'x' );
-		 	this[ dimension ] = ( dimension == 'width' )? dwh[0] : dwh[1];
-		 }
+		if( ! this['height']  && ! this['width'] ){
+			this['height'] = parseInt( $j(element).attr( 'height' ) );
+			this['width'] = parseInt( $j(element).attr( 'width' ) );
+		}
+		
+		// Deal with just one height or width being set:
+		if( this['height']  &&  !this['width'] && this.videoAspect  ){
+			var aspect = this.videoAspect.split( ':' );
+			this['width'] = parseInt( this.height * ( aspect[0] / aspect[1] ) );
+		}
+		
+		if( this['width']  &&  !this['height'] && this.videoAspect  ){
+			var aspect = this.videoAspect.split( ':' );
+			this['height'] = parseInt( this.width * ( aspect[1] / aspect[0] ) );
+		}
+		
+		// On load sometimes attr is temporally -1 as we don't have video metadata yet.		 
+		// NOTE: this edge case should be hanndled by waiting for metadata
+		//  in browsers that support metadata for the selected video type.  					
+		if( this['height'] == -1 || this['width'] == -1 ){
+			var defaultSize = mw.getConfig( 'video_size' ).split( 'x' );
+			this['width'] = defaultSize[0];
+			// Special height default for audio tag ( if not set )  
+			if( element.tagName.toLowerCase() == 'audio' ){
+				this['height'] = 0;
+			}else{
+				this['height'] = defaultSize[1];
+			}
+		}		
 	},
 	
 	/**
@@ -1362,10 +1410,10 @@ embedPlayer.prototype = {
 					_this['parent_' + method] = _this[method];
 				_this[method] = embedPlayer[method];
 			}			
-			
-			_this.ready_to_play = true;
+						
 			_this.getDuration();
 			_this.showPlayer();
+			_this.ready_to_play = true;
 			
 			// Run the callback if provided
 			if ( typeof callback == 'function' ) 

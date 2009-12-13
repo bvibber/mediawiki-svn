@@ -66,8 +66,9 @@ mw.addMessages( {
 	"rsd-flickr-title" : "Flickr.com",
 	"rsd-flickr-desc" : "Flickr.com, a online photo sharing site",
 	"rsd-metavid-title" : "Metavid.org",
-	"rsd-metavid-desc" : "Metavid.org, a community archive of US House and Senate floor proceedings"
-
+	"rsd-metavid-desc" : "Metavid.org, a community archive of US House and Senate floor proceedings",
+	
+	"rsd-search-timeout" : "The search request did not complete. The server may be down experiencing heavy load. You can try again later"
 } );
 
 /**
@@ -126,7 +127,10 @@ var default_remote_search_options = {
 	'enabled_providers': 'all', 
 	
 	// Current provider (used internally) 
-	'currentProvider': null 
+	'currentProvider': null,
+	
+	// The timeout for search providers ( in seconds )
+	'search_provider_timeout': 10
 }
 
 /*
@@ -952,7 +956,7 @@ remoteSearchDriver.prototype = {
 
 			// Set the content to loading while we do the search:
 			$j( '#tab-' + providerName ).html( mw.loading_spinner() );
-
+						
 			// Make sure the search library is loaded and issue the search request
 			this.getLibSearchResults( provider );
 		}
@@ -1085,8 +1089,12 @@ remoteSearchDriver.prototype = {
 			// Do the search:									
 			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() );
 			
-			_this.waitForResults( function() {
-				_this.showResults();
+			_this.waitForResults( function( resultStatus ) {
+				if( resultStatus == 'ok' ){
+					_this.showResults();
+				}else{
+					_this.showFailure( resultStatus )
+				}
 			} );
 		} );
 	},
@@ -1128,30 +1136,44 @@ remoteSearchDriver.prototype = {
 	/**
 	* Waits for all results to be finished then calls the callback
 	* 
-	* @param {Function} callback called once loading is done
+	* @param {Function} callback called once loading is done. calls callback with:
+	* 	'ok' search results retrived
+	* 	'error_key' search results not retrived 
+	* @param {Null} _callNumber Used internally to keep track of wait time 
 	*/
-	waitForResults: function( callback ) {
-		// mw.log('rsd:waitForResults');
+	waitForResults: function( callback, _callNumber ) {
+		// mw.log('rsd:waitForResults');		
 		var _this = this;
 		var loading_done = true;
+		
+		if( !_callNumber )
+			_callNumber = 1;
 
 		for ( var cp_id in this.content_providers ) {
 			var cp = this.content_providers[ cp_id ];
 			if ( typeof cp['sObj'] != 'undefined' ) {
 				if ( cp.sObj.loading )
 					loading_done = false;
-			}
+			}		
+		}		
+		if( this.search_provider_timeout &&
+			 (50/1000 * _callNumber) >  this.search_provider_timeout ){
+			callback( 'timeout' )
+			return ;
 		}
+		
 		if ( loading_done ) {
-			callback();
-		} else {
-			setTimeout( 
-				function() {
-					_this.waitForResults( callback );
-				}, 
-				50 
-			);
+			callback( 'ok' );
+			return ;
 		}
+		
+		setTimeout( 
+			function() {
+				_callNumber++;
+				_this.waitForResults( callback, _callNumber );
+			}, 
+			50 
+		);
 	},
 	
 	/**
@@ -1293,6 +1315,17 @@ remoteSearchDriver.prototype = {
 				'</span>' );
 		}
 		this.addResultBindings();
+	},
+	
+	/**
+	 * Show failure 
+	 */
+	showFailure : function( resultStatus ){
+		//only one type of resultStatus right now: 
+		if( resultStatus == 'timeout' )
+			$j( '#tab-' + this.currentProvider ).text(
+				gM('rsd-search-timeout')		
+			)
 	},
 	
 	/**
@@ -1443,7 +1476,7 @@ remoteSearchDriver.prototype = {
 				'style="position:absolute;' + overflowStyle + ';' + 
 				'left:' + ( maxWidth + 20 ) + 'px;right:0px;top:5px;bottom:10px;' + 
 				'padding:5px;" >' +
-			mw.loading_spinner( 'position:absolute;top:30px;left:30px' ) +
+					mw.loading_spinner( 'position:absolute;top:30px;left:30px' ) +
 			'</div>' +
 			'</div>' );
 	},
@@ -1488,6 +1521,8 @@ remoteSearchDriver.prototype = {
 
 	/**
 	* Show the resource editor
+	* @param {Object} resource Resource to be edited
+	* @param {Object} rsdElement Element Image to be swaped with "edit" version of resource
 	*/ 
 	showResourceEditor: function( resource, rsdElement ) {
 		mw.log( 'f:showResourceEditor:' + resource.title );
@@ -1552,7 +1587,7 @@ remoteSearchDriver.prototype = {
 				{ 'width': maxWidth }, 
 				'rsd_edit_img', 
 				function() {
-					$j( '.mv_loading_img' ).remove();
+					$j( '.loading_spinner' ).remove();
 				}
 			);
 		}
@@ -1944,7 +1979,7 @@ remoteSearchDriver.prototype = {
 			'<br style="clear both"/>' +
 			'<strong>' + gM( 'mwe-resource_page_desc' ) + '</strong>' +
 			'<div id="rsd_import_desc" style="display:inline;">' +
-			mw.loading_spinner( 'position:absolute;top:5px;left:5px' ) +
+				mw.loading_spinner( 'position:absolute;top:5px;left:5px' ) +
 			'</div>' +
 			'</div>' +
 			'<div id="rds_edit_import_container" ' + 
