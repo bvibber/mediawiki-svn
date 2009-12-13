@@ -47,8 +47,8 @@ var mwDefaultConf = {
 	* If jQuery / mwEmbed should always be loaded.
 	*
 	* mwEmbedSetup ignores this flag and is run if:  
-	*  If your js calls mw.addOnloadHook ( callback_function )
-	*  If your page includes any tags set in config.rewritePlayerTags 
+	*  Script calls mw.addOnloadHook ( callback_function )
+	*  Page DOM includes any tags set in config.rewritePlayerTags at onDomReady 
 	*
 	* This flag increases page performance on pages that do not use mwEmbed 
 	* and don't already load jQuery 
@@ -57,15 +57,9 @@ var mwDefaultConf = {
 	* mwEmbed will only load extra js on blog posts that include the video tag.
 	*
 	* NOTE: Future architecture will probably do away with this flag and refactor it into 
-	* a smaller "remotePageMwEmbed.js" script similar to remoteMwEmbed.js in the js2 folder
+	* a smaller "remotePageMwEmbed.js" script similar to ../remoteMwEmbed.js
 	*/ 
 	'alwaysSetupMwEmbed' : false,
-	
-	// Default video size ( if no size provided )
-	'video_size' : '400x300',
-	
-	// If the k-skin video player should attribute kaltura
-	'k_attribution' : true,
 	
 	// The mediaWiki path of mvEmbed  
 	'mediaWiki_mwEmbedPath' : 'js2/mwEmbed/',
@@ -210,7 +204,7 @@ var global_req_cb = new Array(); // The global request callback array
 		}
 				
 		// send the msg key through the parser
-		var pObj = $.parser.pNew( ms );
+		var pObj = $.parser( ms );
 		// return the transformed msg
 		return pObj.getHTML();
 	}
@@ -261,7 +255,7 @@ var global_req_cb = new Array(); // The global request callback array
 	$.lang.doneSetup = false;
 	$.lang.magicSetup = function() {
 		if ( !$.lang.doneSetup ) {
-			$.parser.addTemplateTransform ( {
+			$.addTemplateTransform ( {
 				'PLURAL' : $.lang.procPLURAL
 			} )
 
@@ -336,7 +330,8 @@ var global_req_cb = new Array(); // The global request callback array
 		 * Maps a given rule Index to template params:
 		 *
 		 * if index is out of range return last param
-		 * @param
+		 * @param {Object} tObj Template Object
+		 * @param {Object} ruleInx Index of rule to be applied
 		 */
 		function getTempParamFromRuleInx( tObj, ruleInx ) {
 			// mw.log('getTempParamFromRuleInx: ruleInx: ' + ruleInx + ' tempParamLength ' + tObj.param.length );
@@ -428,7 +423,7 @@ var global_req_cb = new Array(); // The global request callback array
 		}
 		// JavaScript does not let you choose the precision when rounding
 		var p = Math.pow( 10, round );
-		var size = Math.round( size * p ) / p;
+		size = Math.round( size * p ) / p;
 		return gM( msg , size );
 	};
 	
@@ -455,275 +450,267 @@ var global_req_cb = new Array(); // The global request callback array
 		}
 		// @@todo read language code and give periods or comas: 
 		return addSeparatorsNF( num, '.', ',' );
+	}	
+
+	// Create a new parser Object	
+	var parseObj = function( wikiText, options ) {
+		return this.init( wikiText, options )
 	}
-	
-	
+	parseObj.prototype = {
+		// the wikiText "DOM"... stores the parsed wikiText structure
+		// wtDOM : {}, (not yet supported )
+
+		pOut : '', // the parser output string container
+		init  :function( wikiText ) {
+			this.wikiText = wikiText;
+		},
+		updateText : function( wikiText ) {
+			this.wikiText = wikiText;
+			// invalidate the output (will force a re-parse )
+			this.pOut = '';
+		},
+		parse : function() {
+			/*
+			 * quickly recursive / parse out templates:
+			 */
+
+			// ~ probably a better algorithm out there / should mirror php parser flow ~
+			//	 (we are already running white-space issues ie php parse strips whitespace differently)
+			// or at least expose something similar to: http://www.mediawiki.org/wiki/Extension:Page_Object_Model
+
+			// ... but I am having fun with recursion so here it is...
+			function rdpp ( txt , cn ) {
+				var node = { };
+				// inspect each char
+				for ( var a = 0; a < txt.length; a++ ) {
+					if ( txt[a] == '{' && txt[a + 1] == '{' ) {
+						a = a + 2;
+						node['p'] = node;
+						if ( !node['c'] )
+							node['c'] = new Array();
+
+						node['c'].push( rdpp( txt.substr( a ), true ) );
+					} else if ( txt[a] == '}' && txt[a + 1] == '}' ) {
+						a = a + 2;
+						if ( !node['p'] ) {
+							return node;
+						}
+						node = node['p'];
+					}
+					if ( !node['t'] )
+						node['t'] = '';
+					// don't put closures into output:
+					if ( txt[a] &&  txt[a] != '}' )
+							node['t'] += txt[a];
+							
+				}
+				return node;
+			}
+			/**
+			 * parse template text as template name and named params
+			 * @param {String} ts Template String to be parsed 
+			 */
+			function parseTmplTxt( ts ) {
+				var tObj = { };
+				// Get template name:
+				tname = ts.split( '\|' ).shift() ;
+				tname = tname.split( '\{' ).shift() ;
+				tname = tname.replace( /^\s+|\s+$/g, "" ); //trim
+
+				// check for arguments:
+				if ( tname.split( ':' ).length == 1 ) {
+					tObj["name"] = tname;
+				} else {
+					tObj["name"] = tname.split( ':' ).shift();
+					tObj["arg"] = tname.split( ':' ).pop();
+				}
+									
+				var pSet = ts.split( '\|' );
+				pSet.splice( 0, 1 );
+				if ( pSet.length ) {
+					tObj.param = new Array();
+					for ( var pInx in pSet ) {
+						var tStr = pSet[ pInx ];
+						// check for empty param
+						if ( tStr == '' ) {
+							tObj.param[ pInx ] = '';
+							continue;
+						}
+						for ( var b = 0 ; b < tStr.length ; b++ ) {
+							if ( tStr[b] == '=' && b > 0 && b < tStr.length && tStr[b - 1] != '\\' ) {
+								// named param
+								tObj.param[ tStr.split( '=' ).shift() ] =	tStr.split( '=' ).pop();
+							} else {
+								// indexed param
+								tObj.param[ pInx ] = tStr;
+							}
+						}
+					}
+				}		
+				return tObj;
+			}
+			function getMagicTxtFromTempNode( node ) {
+				node.tObj = parseTmplTxt ( node.t );
+				// do magic swap if template key found in pMagicSet
+				if ( node.tObj.name in pMagicSet ) {
+					var nt = pMagicSet[ node.tObj.name ]( node.tObj );
+					return nt;
+				} else {
+					// don't swap just return text
+					return node.t;
+				}
+			}
+			/**
+			 * recurse_magic_swap
+			 *
+			 * go last child first swap upward: (could probably be integrated above somehow)
+			 */
+			var pNode = null;
+			function recurse_magic_swap( node ) {
+				if ( !pNode )
+					pNode = node;
+
+				if ( node['c'] ) {
+					// swap all the kids:
+					for ( var i in node['c'] ) {
+						var nt = recurse_magic_swap( node['c'][i] );
+						// swap it into current
+						if ( node.t ) {
+							node.t = node.t.replace( node['c'][i].t, nt );
+						}
+						// swap into parent
+						pNode.t  = pNode.t.replace( node['c'][i].t, nt );
+					}
+					// do the current node:
+					var nt = getMagicTxtFromTempNode( node );
+					pNode.t = pNode.t.replace( node.t , nt );
+					// run the swap for the outer most node
+					return node.t;
+				} else {
+					// node.t = getMagicFromTempObj( node.t )
+					return getMagicTxtFromTempNode( node );
+				}
+			}
+			// parse out the template node structure:
+			this.pNode = rdpp ( this.wikiText );
+			// strip out the parent from the root	
+			this.pNode['p'] = null;
+			
+			// do the recursive magic swap text:
+			this.pOut = recurse_magic_swap( this.pNode );
+		},	
+				
+		/**
+		 * parsed template api ~loosely based off of ~POM~
+		 * http://www.mediawiki.org/wiki/Extension:Page_Object_Model
+		 */
+		
+		/**
+		 * templates
+		 * 
+		 * Get a requested template from the wikitext (if available)
+		 *  
+		 */
+		templates: function( tname ) {
+			this.parse();
+			var tmplSet = new Array();
+			function getMatchingTmpl( node ) {
+				if ( node['c'] ) {
+					for ( var i in node['c'] ) {
+						getMatchingTmpl( node['c'] );
+					}
+				}
+				if ( tname && node.tObj ) {
+					if ( node.tObj['name'] == tname )
+						tmplSet.push( node.tObj );
+				} else if ( node.tObj ) {
+					tmplSet.push( node.tObj );
+				}
+			}
+			getMatchingTmpl( this.pNode );
+			return tmplSet;
+		},
+		
+		/**
+		* getTemplateVars
+		* returns a set of template values in a given wikitext page
+		* 
+		* NOTE: should be integrated with the parser
+		*/
+		getTemplateVars: function(){
+			//mw.log('matching against: ' + wikiText);
+			templateVars = new Array();
+			var tempVars = wikiText.match(/\{\{\{([^\}]*)\}\}\}/gi);
+															
+			// Clean up results:
+			for(var i=0; i < tempVars.length; i++){
+				//match 
+				var tvar = tempVars[i].replace('{{{','').replace('}}}','');
+				
+				// Strip anything after a |
+				if(tvar.indexOf('|') != -1){
+					tvar = tvar.substr(0, tvar.indexOf('|'));
+				}
+				
+				// Check for duplicates:
+				var do_add=true;
+				for(var j=0; j < templateVars.length; j++){
+					if( templateVars[j] == tvar)
+						do_add=false;
+				}
+				
+				// Add the template vars to the output obj
+				if(do_add)
+					templateVars.push( tvar );
+			}
+			return templateVars;
+		},
+		
+		/**
+		 * Returns the transformed wikitext
+		 * 
+		 * Build output from swappable index 
+		 * 		(all transforms must be expanded in parse stage and linearly rebuilt)  
+		 * Alternatively we could build output using a place-holder & replace system 
+		 * 		(this lets us be slightly more sloppy with ordering and indexes, but probably slower)
+		 * 
+		 * Ideal: we build a 'wiki DOM' 
+		 * 		When editing you update the data structure directly
+		 * 		Then in output time you just go DOM->html-ish output without re-parsing anything			   
+		 */
+		getHTML : function() {
+			// wikiText updates should invalidate pOut
+			if ( this.pOut == '' ) {
+				this.parse();
+			}
+			return this.pOut;
+		}
+	};		
 	
 	/**
-	* MediaWiki wikitext "Parser"
-	*
-	* Not feature complete but we need a way to get at template properties
-	*
+	* MediaWiki wikitext "Parser" entry point:
 	*
 	* @param {String} wikiText the wikitext to be parsed
 	* @return {Object} parserObj returns a parser object that has methods for getting at
 	* things you would want
 	*/
-	$.parser = { };
-	var pMagicSet = { };
+	$.parser = function( wikiText, options){
+		// return the parserObj
+		return new parseObj( wikiText, options ) ;	
+	}
 	
+	var pMagicSet = { };	
 	/**
-	 * parser addTemplateTransform
+	 * addTemplateTransform to the parser 
 	 *
 	 * Lets you add a set template key to be transformed by a callback function
 	 *
 	 * @param {Object} magicSet key:callback
 	 */
-	$.parser.addTemplateTransform = function( magicSet ) {
+	$.addTemplateTransform = function( magicSet ) {
 		for ( var i in magicSet )
 			pMagicSet[ i ] = magicSet[i];
 	}
-
-	// Create a new parser Object
-	$.parser.pNew = function( wikiText, options ) {
-		var parseObj = function( wikiText, options ) {
-			return this.init( wikiText, options )
-		}
-		parseObj.prototype = {
-			// the wikiText "DOM"... stores the parsed wikiText structure
-			// wtDOM : {}, (not yet supported )
-
-			pOut : '', // the parser output string container
-			init  :function( wikiText ) {
-				this.wikiText = wikiText;
-			},
-			updateText : function( wikiText ) {
-				this.wikiText = wikiText;
-				// invalidate the output (will force a re-parse )
-				this.pOut = '';
-			},
-			parse : function() {
-				/*
-				 * quickly recursive / parse out templates:
-				 */
-
-				// ~ probably a better algorithm out there / should mirror php parser flow ~
-				//	 (we are already running white-space issues ie php parse strips whitespace differently)
-				// or at least expose something similar to: http://www.mediawiki.org/wiki/Extension:Page_Object_Model
-
-				// ... but I am having fun with recursion so here it is...
-				function rdpp ( txt , cn ) {
-					var node = { };
-					// inspect each char
-					for ( var a = 0; a < txt.length; a++ ) {
-						if ( txt[a] == '{' && txt[a + 1] == '{' ) {
-							a = a + 2;
-							node['p'] = node;
-							if ( !node['c'] )
-								node['c'] = new Array();
-
-							node['c'].push( rdpp( txt.substr( a ), true ) );
-						} else if ( txt[a] == '}' && txt[a + 1] == '}' ) {
-							a = a + 2;
-							if ( !node['p'] ) {
-								return node;
-							}
-							node = node['p'];
-						}
-						if ( !node['t'] )
-							node['t'] = '';
-						// don't put closures into output:
-						if ( txt[a] &&  txt[a] != '}' )
-								node['t'] += txt[a];
-								
-					}
-					return node;
-				}
-				/**
-				 * parse template text as template name and named params
-				 * @param {String} ts Template String to be parsed 
-				 */
-				function parseTmplTxt( ts ) {
-					var tObj = { };
-					// Get template name:
-					tname = ts.split( '\|' ).shift() ;
-					tname = tname.split( '\{' ).shift() ;
-					tname = tname.replace( /^\s+|\s+$/g, "" ); //trim
-
-					// check for arguments:
-					if ( tname.split( ':' ).length == 1 ) {
-						tObj["name"] = tname;
-					} else {
-						tObj["name"] = tname.split( ':' ).shift();
-						tObj["arg"] = tname.split( ':' ).pop();
-					}
-										
-					var pSet = ts.split( '\|' );
-					pSet.splice( 0, 1 );
-					if ( pSet.length ) {
-						tObj.param = new Array();
-						for ( var pInx in pSet ) {
-							var tStr = pSet[ pInx ];
-							// check for empty param
-							if ( tStr == '' ) {
-								tObj.param[ pInx ] = '';
-								continue;
-							}
-							for ( var b = 0 ; b < tStr.length ; b++ ) {
-								if ( tStr[b] == '=' && b > 0 && b < tStr.length && tStr[b - 1] != '\\' ) {
-									// named param
-									tObj.param[ tStr.split( '=' ).shift() ] =	tStr.split( '=' ).pop();
-								} else {
-									// indexed param
-									tObj.param[ pInx ] = tStr;
-								}
-							}
-						}
-					}		
-					return tObj;
-				}
-				function getMagicTxtFromTempNode( node ) {
-					node.tObj = parseTmplTxt ( node.t );
-					// do magic swap if template key found in pMagicSet
-					if ( node.tObj.name in pMagicSet ) {
-						var nt = pMagicSet[ node.tObj.name ]( node.tObj );
-						return nt;
-					} else {
-						// don't swap just return text
-						return node.t;
-					}
-				}
-				/**
-				 * recurse_magic_swap
-				 *
-				 * go last child first swap upward: (could probably be integrated above somehow)
-				 */
-				var pNode = null;
-				function recurse_magic_swap( node ) {
-					if ( !pNode )
-						pNode = node;
-
-					if ( node['c'] ) {
-						// swap all the kids:
-						for ( var i in node['c'] ) {
-							var nt = recurse_magic_swap( node['c'][i] );
-							// swap it into current
-							if ( node.t ) {
-								node.t = node.t.replace( node['c'][i].t, nt );
-							}
-							// swap into parent
-							pNode.t  = pNode.t.replace( node['c'][i].t, nt );
-						}
-						// do the current node:
-						var nt = getMagicTxtFromTempNode( node );
-						pNode.t = pNode.t.replace( node.t , nt );
-						// run the swap for the outer most node
-						return node.t;
-					} else {
-						// node.t = getMagicFromTempObj( node.t )
-						return getMagicTxtFromTempNode( node );
-					}
-				}
-				// parse out the template node structure:
-				this.pNode = rdpp ( this.wikiText );
-				// strip out the parent from the root	
-				this.pNode['p'] = null;
-				
-				// do the recursive magic swap text:
-				this.pOut = recurse_magic_swap( this.pNode );
-			},	
-					
-			/**
-			 * parsed template api ~loosely based off of ~POM~
-			 * http://www.mediawiki.org/wiki/Extension:Page_Object_Model
-			 */
-			
-			/**
-			 * templates
-			 * 
-			 * Get a requested template from the wikitext (if available)
-			 *  
-			 */
-			templates: function( tname ) {
-				this.parse();
-				var tmplSet = new Array();
-				function getMatchingTmpl( node ) {
-					if ( node['c'] ) {
-						for ( var i in node['c'] ) {
-							getMatchingTmpl( node['c'] );
-						}
-					}
-					if ( tname && node.tObj ) {
-						if ( node.tObj['name'] == tname )
-							tmplSet.push( node.tObj );
-					} else if ( node.tObj ) {
-						tmplSet.push( node.tObj );
-					}
-				}
-				getMatchingTmpl( this.pNode );
-				return tmplSet;
-			},
-			
-			/**
-			* getTemplateVars
-			* returns a set of template values in a given wikitext page
-			* 
-			* NOTE: should be integrated with the parser
-			*/
-			getTemplateVars: function(){
-				//mw.log('matching against: ' + wikiText);
-				templateVars = new Array();
-				var tempVars = wikiText.match(/\{\{\{([^\}]*)\}\}\}/gi);
-																
-				// Clean up results:
-				for(var i=0; i < tempVars.length; i++){
-					//match 
-					var tvar = tempVars[i].replace('{{{','').replace('}}}','');
-					
-					// Strip anything after a |
-					if(tvar.indexOf('|') != -1){
-						tvar = tvar.substr(0, tvar.indexOf('|'));
-					}
-					
-					// Check for duplicates:
-					var do_add=true;
-					for(var j=0; j < templateVars.length; j++){
-						if( templateVars[j] == tvar)
-							do_add=false;
-					}
-					
-					// Add the template vars to the output obj
-					if(do_add)
-						templateVars.push( tvar );
-				}
-				return templateVars;
-			},
-			
-			/**
-			 * Returns the transformed wikitext
-			 * 
-			 * Build output from swappable index 
-			 * 		(all transforms must be expanded in parse stage and linearly rebuilt)  
-			 * Alternatively we could build output using a place-holder & replace system 
-			 * 		(this lets us be slightly more sloppy with ordering and indexes, but probably slower)
-			 * 
-			 * Ideal: we build a 'wiki DOM' 
-			 * 		When editing you update the data structure directly
-			 * 		Then in output time you just go DOM->html-ish output without re-parsing anything			   
-			 */
-			getHTML : function() {
-				// wikiText updates should invalidate pOut
-				if ( this.pOut == '' ) {
-					this.parse();
-				}
-				return this.pOut;
-			}
-		};
-		// return the parserObj
-		return new parseObj( wikiText, opt ) ;
-	};		
-		
-	
 	/**
 	* The loader prototype:
 	*/
@@ -2314,7 +2301,7 @@ function mwDojQueryBindings() {
 			// Make sure we have the required mwEmbed libs:			
 			mw.load( [
 				[	//Load the embedPlayer module: 
-					'player',
+					'player'
 				],		
 				[										
 					// Load playlist and its dependencies
@@ -2456,7 +2443,7 @@ function mwDojQueryBindings() {
 			mw.load( [
 				[
 					'mvBaseUploadInterface',
-					'$j.ui',
+					'$j.ui'
 				],
 				[
 					'$j.ui.progressbar',

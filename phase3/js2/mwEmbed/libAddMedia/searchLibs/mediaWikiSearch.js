@@ -219,7 +219,7 @@ mediaWikiSearch.prototype = {
 				
 				/*
 				 //to use once we get the wiki-text parser in shape
-				var pObj = mw.parser.pNew( resource.desc );
+				var pObj = mw.parser( resource.desc );
 				//structured data on commons is based on the "information" template: 
 				var tmplInfo = pObj.templates( 'information' );		
 				resource.desc = tmplInfo.description		

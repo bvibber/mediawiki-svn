@@ -39,7 +39,7 @@ archiveOrgSearch.prototype = {
 		this.parent_getSearchResults();
 		
 		var _this = this;
-		mw.log( 'f:getSearchResults for:' + search_query );
+		mw.log( 'archive_org:getSearchResults for:' + search_query );
 		
 		
 		// For now force (Ogg video) & url based license

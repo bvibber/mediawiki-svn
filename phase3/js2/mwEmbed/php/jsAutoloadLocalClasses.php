@@ -12,8 +12,7 @@ function wfLoadMwEmbedClassPaths ( ) {
 	// Load classes from  mwEmbed.js
 	if ( is_file( $wgMwEmbedDirectory . 'mwEmbed.js' ) ) {
 
-		// NOTE: ideally we could cache this json var and or update it php side per release
-
+		// NOTE: ideally we could cache this json var and or update it php side per svn release
 		// Read the file:
 		$file_content = file_get_contents( $wgMwEmbedDirectory . 'mwEmbed.js' );
 		// Call jsClassPathLoader() for each lcPaths() call in the JS source

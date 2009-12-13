@@ -67,6 +67,10 @@ class jsScriptLoader {
 		// Load the ExtensionMessagesFiles
 		$wgExtensionMessagesFiles[ 'mwEmbed' ] = realpath( dirname( __FILE__ ) ) . '/php/languages/mwEmbed.i18n.php';
 
+		//Load the javascript class paths:
+		require_once( realpath( dirname( __FILE__ ) ) . "/php/jsAutoloadLocalClasses.php");
+		wfLoadMwEmbedClassPaths();
+
 		// Reset the requestKey:
 		$this->requestKey = '';
 		//do the post proc request with configuration vars:
@@ -90,8 +94,7 @@ class jsScriptLoader {
 		}
 		// Check if we should minify the whole thing:
 		if ( !$this->debug ) {
-			// do the minification and output
-			$this->jsout = JSMin::minify( $this->jsout );
+			$this->jsout = self::getMinifiedJs( $this->jsout , $this->requestKey );
 		}
 		// Save to the file cache
 		if ( $wgUseFileCache && !$this->debug ) {
@@ -109,6 +112,53 @@ class jsScriptLoader {
 			// All good, let's output "cache" headers
 			$this->outputJsWithHeaders();
 		}
+	}
+
+	/**
+	 * Get Minified js
+	 *
+	 * Takes the $js_string input
+	 *  and
+	 * returns minified or "compiled" javascript value
+	 */
+	static function getMinifiedJs( & $js_string, $requestKey='' ){
+		global $wgJavaPath, $wgClosureCompilerPath, $wgClosureCompilerLevel;
+		// Check if we support the google closure compiler:
+		if( $wgJavaPath && $wgClosureCompilerPath && wfShellExecEnabled() ){
+			if( is_file( $wgJavaPath ) && is_file( $wgClosureCompilerPath ) ){
+				// Update the requestKey with a random value if no provided:
+				if( $requestKey == '')
+					$requestKey = rand() + microtime();
+
+				// Write the grouped javascript to a temporary file:
+				// ( closure compiler does not support reading from standard in )
+				$td = wfTempDir();
+				$jsFileName = $td . '/' . $requestKey  . '.tmp.js';
+				file_put_contents( $jsFileName,  $js_string );
+				$retval = '';
+				$cmd = $wgJavaPath . ' -jar ' . $wgClosureCompilerPath;
+				$cmd.= ' --js ' . $jsFileName;
+
+				if( $wgClosureCompilerLevel )
+					$cmd.= ' --compilation_level ' .  wfEscapeShellArg( $wgClosureCompilerLevel );
+
+				// only output js ( no warnings )
+				$cmd.= ' --warning_level QUIET';
+				print "run: $cmd";
+				// Run the command:
+				$jsMinVal = wfShellExec($cmd , $retval);
+
+				// Clean up ( remove temporary file )
+				//unlink( $jsFileName );
+
+				if( strlen( $jsMinVal ) != 0 && $retval === 0){
+					die( "used closure" );
+					return $jsMinVal;
+				}
+			}
+		}
+		// Do the minification and output
+		return JSMin::minify( $js_string );
 	}
 	/**
 	 * Gets Script Text
@@ -328,7 +378,7 @@ class jsScriptLoader {
 			}
 		}
 
-		// Add the language code to the rKey:
+		// Add the language code to the requestKey:
 		$this->requestKey .= '_' . $wgContLanguageCode;
 
 		// Add the unique rid
@@ -340,8 +390,8 @@ class jsScriptLoader {
 		}
 	}
 	/**
-	 * Pre-process request variables ~without configuration~ or much utility function~
-	 *  This is to quickly get a rKey that we can check against the cache
+	 * Pre-process request variables ~without configuration~ or any utility functions
+	 *  This is to quickly get a requestKey that we can check against the cache
 	 */
 	function preProcRequestVars() {
 		$rKey = '';
@@ -358,12 +408,12 @@ class jsScriptLoader {
 			die( 'missing urid param');
 		}
 
-		//get the language code (if not provided use the "default" language
+		// Get the language code (if not provided use the "default" language
 		if ( isset( $_GET['uselang'] ) && $_GET['uselang'] != '' ) {
-			//make sure its a valid lang code:
+			// Make sure its just a simple [A-Za-z] value
 			$langCode = preg_replace( "/[^A-Za-z]/", '', $_GET['uselang']);
 		}else{
-			//set english as default
+			// Set English as default
 			$langCode = 'en';
 		}
 
@@ -600,7 +650,7 @@ class jsScriptLoader {
 			//package in PLURAL mapping
 			self::updateMsgKeys( $jmsg, $this->langCode );
 
-			// Return the updated loadGM JSON with updated msgs:
+			// Return the updated JSON with Msgs:
 			return FormatJson::encode( $jmsg );
 		} else {
 			// Could not parse JSON return error: (maybe a alert?)
@@ -609,15 +659,14 @@ class jsScriptLoader {
 			return "\n/*
 * Could not parse JSON language messages in this file,
 * Please check that mw.addMessages call contains valid JSON (not javascript)
-*/\n\n" . $json_str; //include the original fallback loadGM
-
+*/\n\n" . $json_str; //include the original fallback msg string
 		}
 	}
 }
 
 /*
- *  A simple version of HTMLFileCache so that the scriptLoader can operate stand alone
- */
+*  A simple version of HTMLFileCache so that the scriptLoader can operate stand alone
+*/
 class simpleFileCache {
 	var $mFileCache;
 	var $filename = null;
