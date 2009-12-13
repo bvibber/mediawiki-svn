@@ -536,8 +536,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Wpedzich
  */
 $messages['pl'] = array(
+	'wikieditor-publish-preference' => 'Wspomaga publikację materiału krok po kroku',
 	'wikieditor-publish-button-publish' => 'Opublikuj',
 	'wikieditor-publish-button-cancel' => 'Anuluj',
 	'wikieditor-publish-dialog-title' => 'Opublikuj w {{GRAMMAR:MS.lp|{{SITENAME}}}}',

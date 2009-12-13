@@ -304,6 +304,7 @@ $messages['ko'] = array(
 $messages['ksh'] = array(
 	'wikieditor-preview-preference' => "Donn de {{int:preview}} nevve'eneijn zohlohße",
 	'wikieditor-preview-tab' => '{{int:preview}}',
+	'wikieditor-preview-changes-tab' => 'Änderunge',
 	'wikieditor-preview-loading' => 'Ben aam Laade{{int:ellipsis}}',
 );
 
@@ -313,6 +314,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'wikieditor-preview-preference' => 'side-by-side kucken ouni ze späicheren aschalten',
 	'wikieditor-preview-tab' => 'Kucken ouni ze späicheren',
+	'wikieditor-preview-changes-tab' => 'Ännerungen',
 	'wikieditor-preview-loading' => 'Lueden...',
 );
 
@@ -374,10 +376,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Wpedzich
  */
 $messages['pl'] = array(
 	'wikieditor-preview-preference' => 'Włącz sąsiadujący podgląd',
 	'wikieditor-preview-tab' => 'Podgląd',
+	'wikieditor-preview-changes-tab' => 'Zmiany',
 	'wikieditor-preview-loading' => 'Wczytywanie...',
 );
 
@@ -490,6 +494,7 @@ $messages['te'] = array(
 $messages['tr'] = array(
 	'wikieditor-preview-preference' => 'Yan-yana önizlemeyi etkinleştir',
 	'wikieditor-preview-tab' => 'Önizleme',
+	'wikieditor-preview-changes-tab' => 'Değişiklikler',
 	'wikieditor-preview-loading' => 'Yükleniyor...',
 );
 

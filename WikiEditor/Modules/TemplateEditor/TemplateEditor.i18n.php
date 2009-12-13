@@ -93,6 +93,13 @@ $messages['ja'] = array(
 	'wikieditor-template-editor-preference' => 'フォームを利用したテンプレートの編集を有効化する',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikieditor-template-editor-preference' => 'Schablone em Wiki övver Fommulaare ändere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -121,6 +128,13 @@ $messages['nl'] = array(
 	'wikieditor-template-editor-preference' => 'Formuliergebaseerd bewerken van wikisjablonen inschakelen',
 );
 
+/** Polish (Polski)
+ * @author Wpedzich
+ */
+$messages['pl'] = array(
+	'wikieditor-template-editor-preference' => 'Umożliwia edycję szablonów wiki za pomocą formularzy',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
@@ -140,6 +154,13 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'wikieditor-template-editor-preference' => 'Включить редактирование шаблонов с помощью форм',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'wikieditor-template-editor-preference' => 'Viki şablonlarının form-bazlı değiştirilmesini etkinleştir',
 );
 
 /** Vèneto (Vèneto)

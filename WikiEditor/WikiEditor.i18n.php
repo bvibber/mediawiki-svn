@@ -267,10 +267,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Wpedzich
  */
 $messages['pl'] = array(
 	'wikieditor' => 'Zaawansowany interfejs edycji wikitekstu',
 	'wikieditor-desc' => 'Dostarcza rozszerzalny interfejs edycji wikitekstu oraz wiele funkcji oferowane przez moduły',
+	'wikieditor-wikitext-tab' => 'Wikikod',
 );
 
 /** Piedmontese (Piemontèis)
@@ -352,11 +354,13 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'wikieditor' => 'Розширений інтерфейс редагування вікітексту',
 	'wikieditor-desc' => 'Забезпечує розширюваний інтерфейс редагування вікітексту і багато функціональних модулів',
+	'wikieditor-wikitext-tab' => 'Вікітекст',
 );
 
 /** Vèneto (Vèneto)
