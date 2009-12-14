@@ -182,7 +182,7 @@ metavidSearch.prototype = {
 
 		// if the video is "roe" based select the ogg stream
 		if ( resource.roe_url && resource.pSobj.provider.stream_import_key ) {
-			var source = $j( '#embed_vid' ).get( 0 ).media_element.getSourceById( resource.pSobj.provider.stream_import_key );
+			var source = $j( '#embed_vid' ).get( 0 ).mediaElement.getSourceById( resource.pSobj.provider.stream_import_key );
 			if ( !source ) {
 				mw.log( 'Error::could not find source: ' +  resource.pSobj.provider.stream_import_key );
 			} else {
@@ -236,7 +236,7 @@ metavidSearch.prototype = {
 	* @param {Object} resource Resource to transform
 	*/
 	addEmbedInfo : function( resource, embed_id ) {
-		var sources = $j( '#' + embed_id ).get( 0 ).media_element.getSources();
+		var sources = $j( '#' + embed_id ).get( 0 ).mediaElement.getSources();
 		resource.other_versions = '*[' + resource['roe_url'] + ' XML of all Video Formats and Timed Text]' + "\n";
 		for ( var i in sources ) {
 			var cur_source = sources[i];

@@ -21,13 +21,12 @@ var kplayerEmbed = {
 	* Get the Embed html by wraping the embed code in the embed container:
 	*/
 	getEmbedHTML : function () {
-		var embed_code =  this.getEmbedObj();
-		alert
+		var embed_code =  this.getEmbedObj();		
 		var _this = this;
 		setTimeout(function(){
 			_this.postEmbedJS();
 		}, 50);
-		mw.log( "return embed html" );
+		mw.log( "return embed html: " + embed_code );
 		return this.wrapEmebedContainer( embed_code );
 	},
 	
@@ -85,7 +84,7 @@ var kplayerEmbed = {
 			// Start the monitor
 			this.monitor();
 		}else{
-			mw.log('insert media: not defiend' + typeof this.playerElement.insertMedia );
+			mw.log('insert media: not defiend:' + typeof this.playerElement.insertMedia );
 			setTimeout( function(){
 				_this.postEmbedJS();
 			}, 25);

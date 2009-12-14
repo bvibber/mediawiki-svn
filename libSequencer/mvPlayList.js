@@ -237,7 +237,7 @@ mvPlayList.prototype = {
 				_this.clip_ready_count++;
 				continue;
 			}
-			// mw.log('clip sources count: '+ clip.embed.media_element.sources.length);		
+			// mw.log('clip sources count: '+ clip.embed.mediaElement.sources.length);		
 			clip.embed.checkPlayerSources();
 			if ( clip.embed.loading_external_data == false &&
 				   clip.embed.init_with_sources_loadedDone == false ) {
@@ -1153,7 +1153,7 @@ mvClip.prototype = {
 		this.embed = new PlMvEmbed( init_pl_embed );
 					
 		// mw.log('media Duration:' + this.embed.getDuration() );
-		// mw.log('media element:'+ this.embed.media_element.length);
+		// mw.log('media element:'+ this.embed.mediaElementlength);
 		// mw.log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);		
 	},
 	doAdjust:function( side, delta ) {
@@ -1280,7 +1280,7 @@ var PlMvEmbed = function( vid_init ) {
 			ve[method] = this[method];
 		}
 	}
-	mw.log( 've src len:' + ve.media_element.sources.length );
+	mw.log( 've src len:' + ve.mediaElement.sources.length );
 	return ve;
 }
 // all the overwritten and new methods for playlist extension of baseEmbed
@@ -1386,7 +1386,7 @@ var m3uPlaylist = {
 					var cur_clip = new mvClip( { type:'srcClip', id:'p_' + this_pl.id + '_c_' + inx, pp:this_pl, src:n, order:inx } );
 					// setup the embed object 
 					cur_clip.setUpEmbedObj();
-					mw.log( 'm3uPlaylist len:' + thisClip.embed.media_element.sources.length );
+					mw.log( 'm3uPlaylist len:' + thisClip.embed.mediaElement.sources.length );
 					this_pl.addCliptoTrack( cur_clip );
 					inx++;
 				}

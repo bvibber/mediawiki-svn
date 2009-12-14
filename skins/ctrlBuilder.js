@@ -81,10 +81,10 @@ ctrlBuilder.prototype = {
 
 		// Check for timed Text:
 		if ( ( embedObj.roe || embedObj.wikiTitleKey ||
-				( embedObj.media_element.checkForTextSource &&
-				embedObj.media_element.checkForTextSource() )
+				( embedObj.mediaElement.checkForTextSource &&
+				embedObj.mediaElement.checkForTextSource() )
 			)  && embedObj.show_meta_link  ){
-			this.supports['closed_captions'] = true;
+			this.supports['timed_text'] = true;
 		}
 
 
@@ -190,7 +190,7 @@ ctrlBuilder.prototype = {
 
 
 		// Captions binding:
-		$target.find( '.timed-text' ).unbind().btnBind().click( function() {
+		$target.find( '.timed-text' ).unbind().btnBind().click( function() {			
 			embedObj.showTextInterface();
 		} );
 
@@ -294,7 +294,7 @@ ctrlBuilder.prototype = {
 	* Issue a warning to non-native playback systems
 	* that they could improve the playback experience with a different browser
 	*
-	* dependent on media_element being setup 
+	* dependent on mediaElement being setup 
 	*/ 
 	doNativeWarningCheck: function( ) {		
 		// Check cookie to see if user requested to hide it
@@ -315,9 +315,9 @@ ctrlBuilder.prototype = {
 		}
 		
 		// See if we are using mwEmbed without a ogg source in which case no point in promoting firefox :P			
-		if (  this.embedObj.media_element &&  this.embedObj.media_element.sources ) {
+		if (  this.embedObj.mediaElement &&  this.embedObj.mediaElement.sources ) {
 			var foundOgg = false;
-			var playable_sources =  this.embedObj.media_element.getPlayableSources();
+			var playable_sources =  this.embedObj.mediaElement.getPlayableSources();
 			for ( var sInx = 0; sInx < playable_sources.length; sInx++ ) {
 				var mime_type = playable_sources[sInx].mime_type;
 				if ( mime_type == 'video/ogg' ) {
@@ -521,10 +521,10 @@ ctrlBuilder.prototype = {
 		/*
 		* The closed captions button
 		*/
-		'closed_captions': {
+		'timed_text': {
 			'w':23,
 			'o':function( ctrlObj ) {
-				return '<div title="' + gM( 'mwe-closed_captions' ) + '" class="ui-state-default ui-corner-all ui-icon_link rButton timed-text">' +
+				return '<div title="' + gM( 'mwe-timed_text' ) + '" class="ui-state-default ui-corner-all ui-icon_link rButton timed-text">' +
 							'<span class="ui-icon ui-icon-comment"></span>' +
 						'</div>'
 			}
