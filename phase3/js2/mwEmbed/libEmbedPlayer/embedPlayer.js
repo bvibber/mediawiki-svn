@@ -25,7 +25,7 @@ mw.addMessages( {
 	"mwe-pause_clip" : "Pause clip",
 	"mwe-volume_control" : "Volume control",
 	"mwe-player_options" : "Player options",
-	"mwe-closed_captions" : "Closed captions",
+	"mwe-timed_text" : "Timed text",
 	"mwe-player_fullscreen" : "Fullscreen",
 	"mwe-next_clip_msg" : "Play next clip",
 	"mwe-prev_clip_msg" : "Play previous clip",
@@ -177,6 +177,7 @@ var default_video_attributes = {
 
 /**
  * The base source attribute checks
+ * also see: http://dev.w3.org/html5/spec/Overview.html#the-source-element
  */
 var default_source_attributes = new Array(
 	// source id
@@ -184,6 +185,9 @@ var default_source_attributes = new Array(
 	
 	// media url
 	'src',
+	
+	// media codecs attribute ( if provided )	
+	'codecs',
 	
 	// api url ( used for timed text sources ) 
 	'apisrc',
@@ -368,14 +372,20 @@ EmbedPlayerManager.prototype = {
 		
 		// Firefox gives bogus css values if video has not loaded metadata yet:
 		//  But it does set attr to -1 so we check that and delay 
-		//  swaping in the player interface which calls playerSize 		 
+		//  swaping in the player interface which calls playerSize		 		
 		var waitForMeta = ( 
 			( 
 			  $j(element).attr('width') == -1 || 
 			  $j(element).attr('height') == -1
 			) 
-		)? true : false;		
-			
+			&&
+			// If media has video/audio "sources" wait for meta 
+			(
+				$j(element).attr('src') ||
+				$j(element).find("source[src]").filter('[type^=video],[type^=audio]').length != 0
+			) 
+		)? true : false;
+		
 		// Load any skins we need then swap in the interface
 		mw.load( skinClassRequest, function(){							
 			switch( element.tagName.toLowerCase() ) {
@@ -392,6 +402,7 @@ EmbedPlayerManager.prototype = {
 					}		
 				
 					if( waitForMeta ){
+						mw.log("waitForMeta ( video missing height width info and has src )")
 						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
 					}else{ 
@@ -566,10 +577,12 @@ mediaSource.prototype = {
 	/**
 	* MediaSource constructor:
 	*/
-	init : function( element ) {
+	init : function( element ) {		
 		// mw.log('adding mediaSource: ' + element);				
 		this.src = $j( element ).attr( 'src' );
 		this.marked_default = false;
+		
+		// If the top level "video" tag mark as default: 
 		if ( element.tagName.toLowerCase() == 'video' )
 			this.marked_default = true;
 		
@@ -593,8 +606,14 @@ mediaSource.prototype = {
 		else if ( $j( element ).attr( 'content-type' ) )
 			this.mime_type = $j( element ).attr( 'content-type' );
 		else
-			this.mime_type = this.detectType( this.src );				
-
+			this.mime_type = this.detectType( this.src );
+			
+		// Check for parent elements ( supplies catagories in "itext" )
+		if( $j( element ).parent().attr('category') ){
+			this.category =  $j( element ).parent().attr('category');
+		}	
+						
+		// Get the url duration ( if applicable )
 		this.getURLDuration();
 	},
 	
@@ -744,7 +763,7 @@ mediaSource.prototype = {
 	*	@return The guessed MIME type of the file.
 	*	@type String
 	*/
-	detectType:function( uri ) {
+	detectType: function( uri ) {
 		// @@todo if media is on the same server as the javascript
 		// we can issue a HEAD request and read the mime type of the media...
 		// ( this will detect media mime type independently of the url name)
@@ -754,6 +773,9 @@ mediaSource.prototype = {
 		switch( no_param_uri.substr( no_param_uri.lastIndexOf( '.' ), 4 ).toLowerCase() ) {
 			case '.mp4':
 				return 'video/h264';
+			break;
+			case '.srt':
+				return 'text/srt';
 			break;
 			case '.flv':
 				return 'video/x-flv';
@@ -787,8 +809,10 @@ function mediaElement( element )
 };
 
 mediaElement.prototype = {
+	
 	// The array of mediaSource elements.
 	sources:null,
+	
 	// flag for ROE data being added.
 	addedROEData:false,
 	
@@ -838,7 +862,8 @@ mediaElement.prototype = {
 			this.tryAddSource( video_element );
 		
 		// Process all inner <source>, <text> & <itext> elements	
-		$j( video_element ).find( 'source,text,itext' ).each( function( inx, inner_source ) {
+		
+		$j( video_element ).find( 'source,itext' ).each( function( inx, inner_source ) {
 			_this.tryAddSource( inner_source );
 		} );
 	},
@@ -874,15 +899,15 @@ mediaElement.prototype = {
 	/** 
 	* Returns the array of mediaSources of this element.
 	* 
-	* @param {String} mime_filter Filter criteria for set of mediaSources to return
+	* @param {String} [mime_filter] Filter criteria for set of mediaSources to return
 	* @return mediaSource elements.
 	* @type Array
 	*/
-	getSources:function( mime_filter ){
+	getSources: function( mime_filter ){
 		if ( !mime_filter )
 			return this.sources;
 		// apply mime filter: 
-		   var source_set = new Array();
+		var source_set = new Array();
 		for ( var i = 0; i < this.sources.length ; i++ ) {
 			if ( this.sources[i].mime_type.indexOf( mime_filter ) != -1 )
 				source_set.push( this.sources[i] );
@@ -1036,9 +1061,9 @@ mediaElement.prototype = {
 			// make sure an existing element with the same src does not already exist:		 
 			for ( var i = 0; i < this.sources.length; i++ ) {
 				if ( this.sources[i].src == new_src ) {
-					// mw.log('checking existing: '+this.sources[i].getSrc() + ' != '+ new_src);	 
-					// can't add it all but try to update any additional attr: 
+					// Source already exists  update any new attr:  
 					this.sources[i].updateSource( element );
+					return ;
 				}
 			}
 		}
@@ -1080,18 +1105,20 @@ mediaElement.prototype = {
 		this.addedROEData = true;
 		var _this = this;		
 		if ( roe_data ) {
-			$j( roe_data ).find("mediaSource").each( function( inx, source ) {
+			var $roeParsed = $j( roe_data.pay_load );			
+			// Add media sources:
+			$roeParsed.find("mediaSource").each( function( inx, source ) {				
 				_this.tryAddSource( source );
 			} );
-			// set the thumbnail:
-			$j.each( roe_data.getElementsByTagName( 'img' ), function( inx, n ) {
+			// Set the thumbnail:
+			$roeParsed.find( 'img' ).each( function( inx, n ) {
 				if ( $j( n ).attr( "id" ) == "stream_thumb" ) {
 					mw.log( 'roe:set thumb to ' + $j( n ).attr( "src" ) );
 					_this['thumbnail'] = $j( n ).attr( "src" );
 				}
 			} );
-			// set the linkback:
-			$j.each( roe_data.getElementsByTagName( 'link' ), function( inx, n ) {
+			// Set the linkback:
+			$roeParsed.find( 'link' ).each( function( inx, n ) {
 				if ( $j( n ).attr( 'id' ) == 'html_linkback' ) {
 					mw.log( 'roe:set linkback to ' + $j( n ).attr( "href" ) );
 					_this['linkback'] = $j( n ).attr( 'href' );
@@ -1117,7 +1144,7 @@ var embedPlayer = function( element, customAttributes ) {
 
 embedPlayer.prototype = {
 	// The mediaElement object containing all mediaSource objects
-	'media_element' : null,
+	'mediaElement' : null,
 	
 	// Object that describes the supported feature set of the underling plugin / player
 	'supports': { },
@@ -1165,8 +1192,8 @@ embedPlayer.prototype = {
 	* @param {Element} element DOM element that we are building the player interface for.
 	* @param {Object} customAttributes Attributes supplied via argument (rather than applied to the element) 
 	*/
-	init: function( element, customAttributes ) {
-		
+	init: function( element, customAttributes ) {	
+		var _this = this;	
 		// Set customAttributes if unset: 
 		if ( !customAttributes )
 			customAttributes = { };
@@ -1224,7 +1251,19 @@ embedPlayer.prototype = {
 		}
 		
 		// Add the mediaElement object with the elements sources:  
-		this.media_element = new mediaElement( element );
+		this.mediaElement = new mediaElement( element );
+				
+		// Setup the local "ROE" src pointer if added as media source
+		// also see: http://dev.w3.org/html5/spec/Overview.html#the-source-element
+		$j.each(this.mediaElement.getSources( 'text/xml'), function( inx, source ){			
+			var codec_set  = source.codecs.split(',');
+			for( var i in codec_set ){
+				if( codec_set[i] == 'roe' ){
+					_this.roe = source.src;
+				}
+			}	
+		});
+		
 		
 		// Load player skin css:
 		mw.getStyleSheet(  mw.getMwEmbedPath() +  'skins/' + this.skin_name + '/playerSkin.css' );
@@ -1241,6 +1280,12 @@ embedPlayer.prototype = {
 	setPlayerSize:function( element ){				
 		this['height'] = parseInt( $j(element).css( 'height' ).replace( 'px' , '' ) );
 		this['width'] = parseInt( $j(element).css( 'width' ).replace( 'px' , '' ) );				
+		
+		// Special case of default mozilla video tag size (use our default instead of 150x300 )
+		if( this.height == 150 && this.width == 300 ){
+			 this.height = null;
+			 this.width  = null;
+		}
 		
 		if( ! this['height']  && ! this['width'] ){
 			this['height'] = parseInt( $j(element).attr( 'height' ) );
@@ -1305,16 +1350,16 @@ embedPlayer.prototype = {
 	*/
 	checkPlayerSources: function() {
 		mw.log( 'f:checkPlayerSources' );
-		var _this = this;
+		var _this = this;		
 		// Process the provided ROE file. If we don't yet have sources
 		// ( the ROE file provides xml list of sources ) 
-		if ( this.roe && this.media_element.sources.length == 0 ) {
+		if ( this.roe && this.mediaElement.getPlayableSources().length == 0 ) {
 			mw.log( 'checkPlayerSources: loading external data' );
 			this.loading_external_data = true;					 	
 			mw.getMvJsonUrl( this.roe, function( data ){				
 				// Continue					   
-				_this.media_element.addROE( data );
-				mw.log( 'added_roe::' + _this.media_element.sources.length );
+				_this.mediaElement.addROE( data );
+				mw.log( 'added_roe::' + _this.mediaElement.sources.length );
 													   
 				mw.log( 'set loading_external_data=false' );
 				_this.loading_external_data = false;
@@ -1337,10 +1382,10 @@ embedPlayer.prototype = {
 		mw.log( 'f:sourcesReadyInit' );
 				
 		// Autoseletct the source
-		this.media_element.autoSelectSource();
+		this.mediaElement.autoSelectSource();
 		
 		// Auto select player based on default order
-		if ( !this.media_element.selected_source ){
+		if ( !this.mediaElement.selected_source ){
 			// check for parent clip: 
 			if ( typeof this.pc != 'undefined' ) {
 				mw.log( 'no sources, type:' + this.type + ' check for html' );
@@ -1352,7 +1397,7 @@ embedPlayer.prototype = {
 				}
 			}
 		} else {
-			this.selected_player = embedTypes.players.defaultPlayer( this.media_element.selected_source.mime_type );
+			this.selected_player = embedTypes.players.defaultPlayer( this.mediaElement.selected_source.mime_type );
 		}
 		if ( this.selected_player ) {
 			mw.log( "Playback system: " + this.selected_player.library );					
@@ -1363,8 +1408,8 @@ embedPlayer.prototype = {
 			// No source's playable
 			var missing_type = '';
 			var or = '';
-			for ( var i = 0; i < this.media_element.sources.length; i++ ) {
-				missing_type += or + this.media_element.sources[i].mime_type;
+			for ( var i = 0; i < this.mediaElement.sources.length; i++ ) {
+				missing_type += or + this.mediaElement.sources[i].mime_type;
 				or = ' or ';
 			}
 			// Get from parent playlist if set: 		
@@ -1402,13 +1447,13 @@ embedPlayer.prototype = {
 		
 		// Load the selected player
 		this.selected_player.load( function() {		
-			// Get the selected Player embed interface
-			eval( 'var embedPlayer = ' + _this.selected_player.library + 'Embed;' );
+			// Get the selected player Interface
+			eval( ' var playerInterface =' +  _this.selected_player.library + 'Embed;' );
 			
-			for ( var method in embedPlayer ) {  
+			for ( var method in playerInterface ) {  
 				if ( _this[method] )
 					_this['parent_' + method] = _this[method];
-				_this[method] = embedPlayer[method];
+				_this[method] = playerInterface[method];
 			}			
 						
 			_this.getDuration();
@@ -1446,13 +1491,13 @@ embedPlayer.prototype = {
 	getTimeRange: function(){
 		var end_time = (this.ctrlBuilder.long_time_disp)? '/' + mw.seconds2npt( this.getDuration() ) : '';
 		var default_time_range = '0:00:00' + end_time;		
-		if ( !this.media_element )
+		if ( !this.mediaElement )
 			return default_time_range;
-		if ( !this.media_element.selected_source )
+		if ( !this.mediaElement.selected_source )
 			return default_time_range;
-		if ( !this.media_element.selected_source.end_npt )
+		if ( !this.mediaElement.selected_source.end_npt )
 			return default_time_range;		
-		return this.media_element.selected_source.start_npt + this.media_element.selected_source.end_npt;
+		return this.mediaElement.selected_source.start_npt + this.mediaElement.selected_source.end_npt;
 	},
 	
 	/**
@@ -1460,11 +1505,11 @@ embedPlayer.prototype = {
 	*/	
 	getDuration:function() {
 		// Update some local pointers for the selected source:	
-		if ( this.media_element && this.media_element.selected_source && this.media_element.selected_source.duration ) {
-			this.duration = parseFloat( this.media_element.selected_source.duration );
-			this.startOffset = parseFloat( this.media_element.selected_source.startOffset );
-			this.start_npt = this.media_element.selected_source.start_npt;
-			this.end_npt = this.media_element.selected_source.end_npt;
+		if ( this.mediaElement && this.mediaElement.selected_source && this.mediaElement.selected_source.duration ) {
+			this.duration = parseFloat( this.mediaElement.selected_source.duration );
+			this.startOffset = parseFloat( this.mediaElement.selected_source.startOffset );
+			this.start_npt = this.mediaElement.selected_source.start_npt;
+			this.end_npt = this.mediaElement.selected_source.end_npt;
 		}
 		// Update start end_npt if duration !=0 (set from plugin) 
 		if ( !this.start_npt )
@@ -1702,9 +1747,9 @@ embedPlayer.prototype = {
 			}
 		)
 		// now load roe if run the showNextPrevLinks
-		if ( this.roe && this.media_element.addedROEData == false ) {
+		if ( this.roe && this.mediaElement.addedROEData == false ) {
 			mw.getMvJsonUrl( this.roe, function( data ){
-				_this.media_element.addROE( data );
+				_this.mediaElement.addROE( data );
 				_this.getNextPrevLinks();
 			} );
 		} else {
@@ -1721,7 +1766,7 @@ embedPlayer.prototype = {
 		var anno_track_url = null;
 		var _this = this;
 		// check for annoative track
-		$j.each( this.media_element.sources, function( inx, n ) {
+		$j.each( this.mediaElement.sources, function( inx, n ) {
 			if ( n.mime_type == 'text/cmml' ) {
 				if ( n.id == 'Anno_en' ) {
 					anno_track_url = n.src;
@@ -1835,7 +1880,7 @@ embedPlayer.prototype = {
 		}
 		var html = '';
 		if ( link.prev == '' && link.current == '' && link.next == '' ) {
-			html = '<p><a href="' + this.media_element.linkbackgetMsg + '">clip page</a>';
+			html = '<p><a href="' + this.mediaElement.linkbackgetMsg + '">clip page</a>';
 		} else {
 			for ( var link_type in link ) {
 				var link_id = link[link_type];
@@ -1852,8 +1897,8 @@ embedPlayer.prototype = {
 					// do special linkbacks for metavid content: 
 					var regTimeCheck = new RegExp( /[0-9]+:[0-9]+:[0-9]+\/[0-9]+:[0-9]+:[0-9]+/ );
 					html += '<p><a  ';
-					if ( regTimeCheck.test( this.media_element.linkback ) ) {
-						html += ' href="' + this.media_element.linkback.replace( regTimeCheck, time_req ) + '" ';
+					if ( regTimeCheck.test( this.mediaElement.linkback ) ) {
+						html += ' href="' + this.mediaElement.linkback.replace( regTimeCheck, time_req ) + '" ';
 					} else {
 						html += ' href="#" class="playtimerequest" ';
 					}
@@ -1989,7 +2034,7 @@ embedPlayer.prototype = {
 	*/
 	updateVideoTime:function( start_npt, end_npt ) {
 		// update media
-		this.media_element.updateSourceTimes( start_npt, end_npt );
+		this.mediaElement.updateSourceTimes( start_npt, end_npt );
 		
 		// update mv_time
 		this.setStatus( start_npt + '/' + end_npt );
@@ -1998,7 +2043,7 @@ embedPlayer.prototype = {
 		this.updatePlayHead( 0 );
 		
 		// reset seek_offset:
-		if ( this.media_element.selected_source.URLTimeEncoding )
+		if ( this.mediaElement.selected_source.URLTimeEncoding )
 			this.seek_time_sec = 0;
 		else
 			this.seek_time_sec = mw.npt2seconds( start_npt );
@@ -2011,7 +2056,7 @@ embedPlayer.prototype = {
 	* @param {Object} options Options for rendred timeline thumb 
 	*/ 
 	renderTimelineThumbnail:function( options ) {
-		var my_thumb_src = this.media_element.getThumbnailURL();
+		var my_thumb_src = this.mediaElement.getThumbnailURL();
 		// check if our thumbnail has a time attribute: 
 		if ( my_thumb_src.indexOf( 't=' ) !== -1 ) {
 			var time_ntp =  mw.seconds2npt ( options.time + parseInt( this.startOffset ) );
@@ -2046,7 +2091,7 @@ embedPlayer.prototype = {
 		// mw.log('updateThumbTime:'+float_sec);
 		var _this = this;
 		if ( typeof this.org_thum_src == 'undefined' ) {
-			this.org_thum_src = this.media_element.getThumbnailURL();
+			this.org_thum_src = this.mediaElement.getThumbnailURL();
 		}
 		if ( this.org_thum_src.indexOf( 't=' ) !== -1 ) {
 			this.last_thumb_url = mw.replaceUrlParams( this.org_thum_src,
@@ -2133,7 +2178,7 @@ embedPlayer.prototype = {
 		var thumb_html = '';
 		var class_atr = '';
 		var style_atr = '';		
-		this.thumbnail = this.media_element.getThumbnailURL();
+		this.thumbnail = this.mediaElement.getThumbnailURL();
 
 		// put it all in the div container dc_id
 		thumb_html += '<div id="dc_' + this.id + '" style="position:absolute;' +
@@ -2152,7 +2197,7 @@ embedPlayer.prototype = {
 	* Gets code to embed the player remotely
 	*/	
 	getEmbeddingHTML:function() {
-		var thumbnail = this.media_element.getThumbnailURL();
+		var thumbnail = this.mediaElement.getThumbnailURL();
 
 		var embed_thumb_html;
 		if ( thumbnail.substring( 0, 1 ) == '/' ) {
@@ -2202,18 +2247,18 @@ embedPlayer.prototype = {
 	* Follows a linkback. Loads the ROE xml if no linkback is found 
 	*/
 	doLinkBack: function() {
-		if ( ! this.linkback && this.roe && this.media_element.addedROEData == false ) {
+		if ( ! this.linkback && this.roe && this.mediaElement.addedROEData == false ) {
 			var _this = this;
 			this.displayOverlay( gM( 'mwe-loading_txt' ) );
 			mw.getMvJsonUrl( this.roe, function( data ) {
-				_this.media_element.addROE( data );
+				_this.mediaElement.addROE( data );
 				_this.doLinkBack();
 			} );
 		} else {
 			if ( this.linkback ) {
 				window.location = this.linkback;
-			} else if ( this.media_element.linkback ) {
-				window.location = this.media_element.linkback;
+			} else if ( this.mediaElement.linkback ) {
+				window.location = this.mediaElement.linkback;
 			} else {
 				this.displayOverlay( gM( 'mwe-could_not_find_linkback' ) );
 			}
@@ -2264,27 +2309,53 @@ embedPlayer.prototype = {
 	/**
 	* Loads the text interface library and show the text interface near the player. 	 
 	*/
-	showTextInterface:function() {
+	showTextInterface: function() {
 		var _this = this;
-		if( $j( '#metaBox_' + this.id ).is( ':visible' ) ) {
-			$j( '#metaBox_' + this.id ).fadeOut("fast");
-		}else{
-			$j( '#metaBox_' + this.id ).fadeIn( "fast" );
+		mw.log('showTextInterface:');		
+		var $menu = $j( '#timedTextMenu_' + this.id );	
+		var loc = $j( this ).position();
+		if ( $menu.length == 0 ) {			
+			var playerHeight = ( parseInt( this.height ) + this.ctrlBuilder.height );
+			$j( this ).after( 
+				$j('<div>')		
+					.addClass('ui-widget ui-widget-content ui-corner-all')			
+					.attr( 'id', 'timedTextMenu_' + _this.id )
+					.loadingSpinner()			
+					.css( {
+						'position' 	: 'absolute',
+						'z-index' 	: 10,
+						'top' 		: ( loc.top + playerHeight + 4) + 'px',
+						'left' 		: ( parseInt( loc.left ) + parseInt( _this.width ) - 200) + 'px',
+						'height'	: '200px',
+						'width' 	: '200px', 						
+					} ).hide()
+			);		
+		}						
+		// Load text interface if not already loaded:
+		var timedTextRequestSet = [
+			'$j.menu',
+			'mw.timedText' 
+		]; 
+		// Re-get the menu:
+		$menu = $j( '#timedTextMenu_' + this.id );	
+		mw.log( 'menu length: ' + $menu.length );
+		// how the menu
+		if( $menu.is( ':visible' ) ) {
+			$menu.hide( "fast" );
+		}else{			 
+			$menu.show("fast");
 		}
+		
+		mw.load( timedTextRequestSet, function(){
+			$j( _this ).timedText( {
+				'menu_target': '#timedTextMenu_' + this.id
+			} );
+		});
+		
+		/*		
 		// display the text container with loading text: 
 		// @@todo support position config
-		var loc = $j( this ).position();
-		if ( $j( '#metaBox_' + this.id ).length == 0 ) {			
-			var theight = ( ( parseInt( this.height ) + this.ctrlBuilder.height ) < 200 ) ? 200 : ( parseInt( this.height ) + this.ctrlBuilder.height );
-			$j( this ).after( '<div class="ui-widget ui-widget-content ui-corner-all" style="position:absolute;z-index:10;' +
-				'top:' + ( loc.top ) + 'px;' +
-				'left:' + ( parseInt( loc.left ) + parseInt( this.width ) + 10) + 'px;' +
-				'height:' + theight + 'px;width:400px;' +
-				'display:none;" ' +
-				'id="metaBox_' + this.id + '">' +
-					mw.loading_spinner() +
-				'</div>' );
-		}		
+			
 		// check if textObj present:
 		if ( typeof this.textInterface == 'undefined' ) {
 			// load the default text interface:
@@ -2300,7 +2371,7 @@ embedPlayer.prototype = {
 		} else {
 			// show interface
 			this.textInterface.show();
-		}
+		}*/
 	},
 	
 	/**
@@ -2393,10 +2464,10 @@ embedPlayer.prototype = {
 		var o = '';
 		o += '<h2>' + gM( 'mwe-chose_player' ) + '</h2>';
 		var _this = this;
-		$j.each( this.media_element.getPlayableSources(), function( source_id, source ) {
+		$j.each( this.mediaElement.getPlayableSources(), function( source_id, source ) {
 			var playable = embedTypes.players.defaultPlayer( source.getMIMEType() );
 
-			var is_selected = ( source == _this.media_element.selected_source );
+			var is_selected = ( source == _this.mediaElement.selected_source );
 			var image_src =  mw.getConfig( 'skin_img_path' ) ;
 			
 			o += '<h2>' + source.getTitle() + '</h2>';
@@ -2436,10 +2507,10 @@ embedPlayer.prototype = {
 				mw.log( 'source id: ' +  source_id + ' player id: ' + default_player_id );
 
 				$j( '#' + this_id  ).get( 0 ).closeDisplayedHTML();
-				$j( '#' + _this.id ).get( 0 ).media_element.selectSource( source_id );
+				$j( '#' + _this.id ).get( 0 ).mediaElement.selectSource( source_id );
 
 				embedTypes.players.setPlayerPreference( default_player_id,
-					 _this.media_element.sources[ source_id ].getMIMEType() );
+					 _this.mediaElement.sources[ source_id ].getMIMEType() );
 
 				// Issue a stop
 				$j( '#' + this_id  ).get( 0 ).stop();
@@ -2461,7 +2532,7 @@ embedPlayer.prototype = {
 				var out = '<div style="color:white">';
 			var dl_list = '';
 			var dl_txt_list = '';
-			$j.each( _this.media_element.getSources(), function( index, source ) {
+			$j.each( _this.mediaElement.getSources(), function( index, source ) {
 				var dl_line = '<li>' + '<a style="color:white" href="' + source.getSrc() + '"> '
 					+ source.getTitle() + '</a> ' + '</li>' + "\n";
 				if (	 source.getSrc().indexOf( '?t=' ) !== -1 ) {
@@ -2480,12 +2551,12 @@ embedPlayer.prototype = {
 			out += '</div>';
 			return out;
 		}
-		// mw.log('f:showDownload '+ this.roe + ' ' + this.media_element.addedROEData);
-		if ( this.roe && this.media_element.addedROEData == false ) {
+		// mw.log('f:showDownload '+ this.roe + ' ' + this.mediaElement.addedROEData);
+		if ( this.roe && this.mediaElement.addedROEData == false ) {
 			var _this = this;
 			$target.html( gM( 'loading_txt' ) );
 			mw.getMvJsonUrl( this.roe, function( data ) {
-			   _this.media_element.addROE( data );
+			   _this.mediaElement.addROE( data );
 			   $target.html( getShowVideoDownload() );
 			} );
 		} else {
@@ -2877,7 +2948,7 @@ embedPlayer.prototype = {
 	* @return src url	
 	*/
 	getSrc: function() {
-	   return this.media_element.selected_source.getSrc( this.seek_time_sec );
+	   return this.mediaElement.selected_source.getSrc( this.seek_time_sec );
 	},
 	
 	/**
@@ -2889,7 +2960,7 @@ embedPlayer.prototype = {
 	*/
 	supportsURLTimeEncoding: function() {
 		// do head request if on the same domain
-		return this.media_element.selected_source.URLTimeEncoding;
+		return this.mediaElement.selected_source.URLTimeEncoding;
 	}
 }
 
@@ -3131,10 +3202,10 @@ mediaPlayers.prototype =
 		if ( selected_player ) {
 			for ( var i = 0; i < mw.player_list.length; i++ ) {
 				var embed = $j( '#' + mw.player_list[i] ).get( 0 );
-				if ( embed.media_element.selected_source && ( embed.media_element.selected_source.mime_type == mime_type ) )
+				if ( embed.mediaElement.selected_source && ( embed.mediaElement.selected_source.mime_type == mime_type ) )
 				{
 					embed.selectPlayer( selected_player );
-					mw.log( 'using ' + embed.selected_player.getName() + ' for ' + embed.media_element.selected_source.getTitle() );
+					mw.log( 'using ' + embed.selected_player.getName() + ' for ' + embed.mediaElement.selected_source.getTitle() );
 				}
 			}
 		}

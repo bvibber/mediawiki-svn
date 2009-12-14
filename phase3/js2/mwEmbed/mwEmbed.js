@@ -38,10 +38,7 @@ var mwDefaultConf = {
 	
 	// Default jquery ui skin name
 	'jui_skin' : 'redmond',
-	
-	// What tags will be re-written to video player by default
-	// set to empty string or null to avoid automatic rewrites
-	'rewritePlayerTags' : 'video,audio,playlist',
+		
 	
 	/**
 	* If jQuery / mwEmbed should always be loaded.
@@ -1143,18 +1140,26 @@ var global_req_cb = new Array(); // The global request callback array
 	}	
 			
 	/**
-	* Metavid spefic helper funtion will be factored out eventually.
+	* Metavid spefic roe request helper function
+	* 
+	* NOTE: depreciated, will be removed once updates are pushed out to metavid.org 
+	*  
 	* @param roe_url to be updated 
 	*/
-	$.getMvJsonUrl = function( roe_url , callback){
+	$.getMvJsonUrl = function( roe_url , callback){		
 		if ( mw.parseUri( document.URL ).host == mw.parseUri( roe_url ).host ||
 			roe_url.indexOf( '://' ) == -1 ){
 			$j.get( roe_url, callback );	 
-		} else {
-			$j.getJSON( roe_url + '&feed_format=json&cb=?&cb_inx=1', callback );
+		} else {			
+			roe_url = mw.replaceUrlParams(roe_url, {
+					'feed_format':'json_roe',
+					'cb':'?',
+					'cb_inx': '1'
+			})
+			$j.getJSON( roe_url, callback );
 		}
-		
 	}
+	
 	/**
 	 * Simple api helper to grab an edit token
 	 *
@@ -1307,7 +1312,7 @@ var global_req_cb = new Array(); // The global request callback array
 	* @param {String} [Optional] style Style string to apply to the spinner 
 	*/
 	$.loading_spinner = function( style ) {
-		var style_txt = ( style ) ? style:'';
+		var style_txt = ( style ) ? style : '';
 		return '<div class="loading_spinner" style="' + style_txt + '"></div>';
 	}
 	
@@ -1506,8 +1511,7 @@ var global_req_cb = new Array(); // The global request callback array
 		// Add on the request parameters to the url:
 		url += ( url.indexOf( '?' ) === -1 )? '?' : '&';				
 		url += $.getUrlParam();		
-		
-		mw.log( 'mw.getScript: ' + url );		
+				
 		
 		// If jQuery is available and debug is off get the scirpt j 
 		if( $.isset( 'window.jQuery' ) && $.getConfig( 'debug' ) === false ) {
@@ -1517,7 +1521,7 @@ var global_req_cb = new Array(); // The global request callback array
 			}); 
 			return ;
 		}
-		
+		mw.log( 'mw.getScript: ' + url );		
 		/**
 		* No jQuery 
 		*  OR 
@@ -1966,11 +1970,7 @@ mw.addClassFilePaths( {
 	
 	"mw.proxy"		: "libMwApi/mw.proxy.js",
 	
-	"mw.testLang"	:  "tests/testLang.js",
-	
-	"ctrlBuilder"	: "skins/ctrlBuilder.js",
-	"kskinConfig"	: "skins/kskin/kskinConfig.js",
-	"mvpcfConfig"	: "skins/mvpcf/mvpcfConfig.js",
+	"mw.testLang"	:  "tests/testLang.js",		
 
 	"JSON"				: "libMwApi/json2.js",
 	"$j.cookie"			: "jquery/plugins/jquery.cookie.js",
@@ -2022,10 +2022,7 @@ mw.addClassFilePaths( {
 	"mvPlayList"		: "libSequencer/mvPlayList.js",
 	"mvSequencer"		: "libSequencer/mvSequencer.js",
 	"mvFirefoggRender"	: "libSequencer/mvFirefoggRender.js",
-	"mvTimedEffectsEdit": "libSequencer/mvTimedEffectsEdit.js",
-
-	"mvTextInterface"	: "libTimedText/mvTextInterface.js",
-	"mvTimeTextEdit"	: "libTimedText/mvTimeTextEdit.js"
+	"mvTimedEffectsEdit": "libSequencer/mvTimedEffectsEdit.js"
 
 } );
 
@@ -2048,7 +2045,27 @@ mw.addClassStyleSheets( {
 * 
 * Per module loader enables a dynamic set of modules with only minimal
 * loader code per module in the core mwEmbed included js 
+* 
 */
+
+/**
+ * Default module configuration 
+ */
+ 
+// What tags will be re-written to video player by default
+// set to empty string or null to avoid automatic rewrites
+mw.setConfig( 'rewritePlayerTags', 'video,audio,playlist' );
+	
+//If the Timed Text interface should be displayed: 
+// 'always' Displays link and call to contribute always
+// 'auto' Looks for child timed text elements and loads interface
+// 'off' Does not display the timed text interface
+mw.setConfig( 'textInterface', 'auto' ); 
+	
+// Timed Text provider presently just "commons",
+// NOTE: Each player instance can also specify a provider  
+mw.setConfig( 'timedTextProvider', 'commons' );
+
 // Add class file paths: 
 mw.addClassFilePaths( {
 	"embedPlayer"		: "libEmbedPlayer/embedPlayer.js",
@@ -2059,14 +2076,28 @@ mw.addClassFilePaths( {
 	"javaEmbed"			: "libEmbedPlayer/javaEmbed.js",
 	"nativeEmbed"		: "libEmbedPlayer/nativeEmbed.js",
 	"quicktimeEmbed"	: "libEmbedPlayer/quicktimeEmbed.js",
-	"vlcEmbed"			: "libEmbedPlayer/vlcEmbed.js"
+	"vlcEmbed"			: "libEmbedPlayer/vlcEmbed.js",
+	
+	"ctrlBuilder"	: "skins/ctrlBuilder.js",
+	"kskinConfig"	: "skins/kskin/kskinConfig.js",
+	"mvpcfConfig"	: "skins/mvpcf/mvpcfConfig.js",
+	
+	"$j.menu"		: "libTimedText/jQuery.menu.js",
+	"mw.timedText"	: "libTimedText/mw.timedText.js",
+	"Itext" 		: "libTimedText/Itext.js"
 
+} );
+
+// Add style sheet dependencies
+mw.addClassStyleSheets( {
+	"kskinConfig" : "skins/kskin/playerSkin.css",
+	"mvpcfConfig" : "skins/mvpcf/playerSkin.css"
 } );
 
 // Add the module loader function:
 mw.addModuleLoader( 'player', function( callback ){
 	var _this = this;
-	mw.log( 'loadModule: player :' );
+	mw.log( 'loadModule: player :' );	
 	
 	// Set module specific class videonojs to loading:
 	$j( '.videonojs' ).html( gM( 'mwe-loading_txt' ) );
@@ -2084,14 +2115,43 @@ mw.addModuleLoader( 'player', function( callback ){
 		]
 	];
 	
-	// Get any other skins that we need to load 
-	// That way skin js can be part of the single script-loader request:
+	//If we should include the timedText interface
+	var checkForTimedText =false;
+	var timedTextRequestSet = [
+		'$j.menu',
+		'mw.timedText' 
+	]; 
+	switch( mw.getConfig( 'textInterface') ){
+		case 'always':		
+			$j.merge( dependencyRequest[0], timedTextRequestSet );
+		break;
+		case 'auto':
+			checkForTimedText = true;
+		break;		
+	} 
+	
 	var playerElements = mw.getPlayerTagElements();
-	$j.each( playerElements, function(na, playerElem ){
-		var cName = $j( playerElem ).attr( 'class' );
-		for( var n=0; n < mw.valid_skins.length ; n++ ){ 
+	$j.each( playerElements, function(na, playerElement ){		
+		var cName = $j( playerElement ).attr( 'class' );
+		for( var n=0; n < mw.valid_skins.length ; n++ ){
+			// Get any other skins that we need to load 
+			// That way skin js can be part of the single script-loader request: 
 			if( cName.indexOf( mw.valid_skins[ n ] ) !== -1){
 				dependencyRequest[0].push(  mw.valid_skins[n]  + 'Config' );
+			}
+		}
+		if( checkForTimedText ){
+			if( $j( playerElement ).find( 'itext' ).length != 0 ){
+				$j.merge( dependencyRequest[0], timedTextRequestSet );
+			}else{			
+				$j( playerElement ).find( 'source' ).each(function(na, sourceElement){
+					if( $j( sourceElement ).attr('type') == 'text/xml' && 
+						$j( sourceElement ).attr('codec') == 'roe' 
+					){						
+						// Has a roe src
+						$j.merge( dependencyRequest[0], timedTextRequestSet );
+					}
+				});
 			}
 		}
 	} );	
@@ -2108,6 +2168,8 @@ mw.addModuleLoader( 'player', function( callback ){
 	// Safari gets slower load since we have to detect ogg support 
 	if( typeof HTMLVideoElement == 'object' &&  !$j.browser.safari  )
 		dependencyRequest[0].push( 'nativeEmbed' )
+
+	
 
 	// Load the video libs:
 	mw.load( dependencyRequest, function() {
@@ -2165,8 +2227,10 @@ if ( window.onload && typeof  window.onload == 'function' ) {
 }
 // Use the onload method as a backup:
 window.onload = function () {
-    if ( mwOriginalOnLoad )
+    if ( mwOriginalOnLoad ){
         mwOriginalOnLoad();
+        mwOriginalOnLoad=null;
+    }
 	mw.domReady();
 }
 
@@ -2189,9 +2253,10 @@ function mwDojQueryBindings() {
 		* Set a given selector html to the loading spinner:
 		*/
 		$.fn.loadingSpinner = function() {
-			if ( this.selector ) {
-				$j( this.selector ).html(  mw.loading_spinner() );
-			}
+			if ( this ) {
+				$j( this ).html(  mw.loading_spinner() );
+			}			
+			return this;
 		}
 		
 		/**
