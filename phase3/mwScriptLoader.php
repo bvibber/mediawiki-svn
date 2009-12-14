@@ -24,7 +24,7 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-//first do a quick static check for the cached file
+//First do a quick static check for the cached file
 define('MW_CACHE_SCRIPT_CHECK', true);
 require_once( dirname(__FILE__) . '/js2/mwEmbed/jsScriptLoader.php');
 $myScriptLoader = new jsScriptLoader();

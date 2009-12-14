@@ -4336,3 +4336,26 @@ $wgUploadMaintenance = false;
  * Use old names for change_tags indices.
  */
 $wgOldChangeTagsIndex = false;
+
+/**
+ * Path to google closure compiler ( for compiling javascript output code )
+ * ( be sure to up the $wgMaxShellFileSize size for java virtual machine)
+ */
+$wgClosureCompilerPath = false;
+
+/**
+ * Level of compression can be:
+ * WHITESPACE_ONLY, SIMPLE_OPTIMIZATIONS,
+ *     ADVANCED_OPTIMIZATIONS
+ *
+ * See: http://code.google.com/closure/compiler/docs/compilation_levels.html
+ *
+ * This is a mediaWiki option since core scripts will be ADVANCED_OPTIMIZATIONS
+ * compatible, while extensions may only be SIMPLE_OPTIMIZATIONS compatilbe.
+ */
+$wgClosureCompilerLevel = 'SIMPLE_OPTIMIZATIONS';
+
+/**
+ * Path to java runtime ( used for closure compiler )
+ */
+$wgJavaPath = false;
