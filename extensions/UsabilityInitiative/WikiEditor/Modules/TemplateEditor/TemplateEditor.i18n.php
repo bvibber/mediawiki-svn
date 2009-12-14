@@ -79,11 +79,25 @@ $messages['hsb'] = array(
 	'wikieditor-template-editor-preference' => 'Wobdźěłowanje wikipředłohow na zakładźe formularow zmóžnić',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'wikieditor-template-editor-preference' => 'Wiki sablonok űrlap alapú szerkesztésének engedélyezése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'wikieditor-template-editor-preference' => 'Permitter le modification de patronos wiki con formularios',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'wikieditor-template-editor-preference' => 'Aktifkan penyuntingan berbasis form dari templat wiki',
 );
 
 /** Japanese (日本語)
@@ -149,6 +163,13 @@ $messages['pt'] = array(
 	'wikieditor-template-editor-preference' => 'Possibilitar edição de predefinições com base em formulários',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikieditor-template-editor-preference' => 'Abbilete le cangiaminde basate sus a le module de le template de uicchi',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -156,11 +177,25 @@ $messages['ru'] = array(
 	'wikieditor-template-editor-preference' => 'Включить редактирование шаблонов с помощью форм',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'wikieditor-template-editor-preference' => 'Povoliť úpravu šablón wiki prostredníctvom formulárov',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */
 $messages['tr'] = array(
 	'wikieditor-template-editor-preference' => 'Viki şablonlarının form-bazlı değiştirilmesini etkinleştir',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'wikieditor-template-editor-preference' => 'Увімкнути редагування шаблонів за допомогою форм',
 );
 
 /** Vèneto (Vèneto)

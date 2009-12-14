@@ -1293,12 +1293,17 @@ $messages['uk'] = array(
 	'errorhandler-error-fatal' => 'Фатальна помилка',
 	'errorhandler-error-warning' => 'Попередження',
 	'errorhandler-error-parse' => 'Помилка парсеру',
+	'errorhandler-error-deprecated' => 'Заборонені',
 	'errorhandler-error-core-error' => 'Помилка ядра',
 	'errorhandler-error-core-warning' => 'Попередження ядра',
 	'errorhandler-error-compile-error' => 'Помилка компіляції',
 	'errorhandler-error-compile-warning' => 'Попередження компіляції',
 	'errorhandler-error-user-error' => 'Помилка користувача',
 	'errorhandler-error-user-warning' => 'Попередження користувача',
+	'errorhandler-error-user-deprecated' => 'Заборона корустувача',
+	'errorhandler-msg-text' => '$1 : $2 в $3 (рядок $4)',
+	'errorhandler-trace-line' => '$1 (рядок $2): $3',
+	'errorhandler-trace-line-internal' => '[внутрішня функція]: $1',
 );
 
 /** Veps (Vepsan kel')

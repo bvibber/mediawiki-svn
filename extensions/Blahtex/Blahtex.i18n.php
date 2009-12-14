@@ -1196,7 +1196,7 @@ Nume ei Index isch erlaubt.',
 	'math_DoubleSuperscript' => 'S sin zwee Exponente an dr glyyche Basis vorchu.
 Nume ein Exponent isch erlaubt.',
 	'math_IllegalCharacter' => 'Nit giltig Zeiche in dr Yygab',
-	'math_IllegalCommandInMathMode' => 'm mathematische Modus isch d Aawyysig „$1“ nit erlaubt',
+	'math_IllegalCommandInMathMode' => 'Im mathematische Modus isch d Aawyysig „$1“ nit erlaubt',
 	'math_IllegalCommandInMathModeWithHint' => 'Im mathematische Modus isch d Aawyysig „$1“ nit erlaubt.
 Villicht witt „$2“ defir bruuche?',
 	'math_IllegalCommandInTextMode' => 'Im Texmodus isch d Aawyysig „$1“ nit erlaubt',

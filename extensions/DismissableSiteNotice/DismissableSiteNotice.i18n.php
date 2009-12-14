@@ -917,6 +917,13 @@ $messages['wa'] = array(
 	'sitenotice_close' => 'muchyî',
 );
 
+/** Yiddish (ייִדיש)
+ * @author Jiddisch
+ */
+$messages['yi'] = array(
+	'sitenotice_close' => 'צומאַכן',
+);
+
 /** Yue (粵語) */
 $messages['yue'] = array(
 	'sitenotice_close' => '閂咗佢',

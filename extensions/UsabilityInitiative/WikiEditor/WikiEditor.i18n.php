@@ -196,6 +196,13 @@ $messages['ja'] = array(
 	'wikieditor-wikitext-tab' => 'ウィキテキスト',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'wikieditor-wikitext-tab' => 'ვიკიტექსტი',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -300,6 +307,7 @@ $messages['pt'] = array(
 $messages['roa-tara'] = array(
 	'wikieditor' => "Wikitext avanzate pe le cangiaminde de l'inderfacce",
 	'wikieditor-desc' => "Dè 'nu wikitext estendibbele pe le cangiaminde de l'inderfacce e 'nu sbuenne de funzionalità de cchiù previste sus a le module",
+	'wikieditor-wikitext-tab' => 'Uicchiteste',
 );
 
 /** Russian (Русский)

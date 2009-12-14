@@ -78,6 +78,17 @@ $messages['br'] = array(
 	'sendmailtowiki-err-onlyplain' => "Abalamour da gammgeradurioù posupl ne vo degemret nemet ar c'hemennadennoù a ya testenn-rik d'o ober.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'prefs-sendmailtowiki' => 'Slanje sadržaja putem e-maila',
+	'sendmailtowiki-inemail' => 'Namjenska e-mail adresa:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'sendmailtowiki-err-pinlength' => 'PIN mora sadržavati tačno 5 cifara.',
+	'sendmailtowiki-err-invalidpin' => 'Nevaljan PIN. Pristup onemogućen.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -256,6 +267,7 @@ $messages['lb'] = array(
 	'prefs-sendmailtowiki' => 'Den Inhalt per E-Mail verschécken',
 	'sendmailtowiki-inpin' => 'PIN:',
 	'sendmailtowiki-err-pinlength' => 'De PIN muss genee 5 Zifferen hunn.',
+	'sendmailtowiki-err-invalidaccount' => "Net valabele Kont. Kuckt w.e.g. d'E-Mailadress no op déi Dir Äre Mail schécke wëllt.",
 	'sendmailtowiki-err-invalidpin' => 'PIN net valabel. Zougang refüséiert',
 );
 

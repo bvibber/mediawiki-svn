@@ -572,12 +572,13 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Broad-Sky
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'ajax-se-desc' => '同じページを編集している利用者を表示する',
 	'ajax-se-title' => '現在編集中:',
-	'ajax-se-pending' => '更新します(この枠内をクリックするか編集を始めてください)',
+	'ajax-se-pending' => '更新します… (この枠内をクリックするか編集を始めてください)',
 	'ajax-se-idling' => '($1秒前)',
 	'ajax-se-pagedoesnotexist' => 'このページは一度も保存されていません',
 	'ajax-se-userinvalid' => 'エラー: 不正な利用者です',

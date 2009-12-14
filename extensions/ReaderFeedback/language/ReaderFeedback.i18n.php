@@ -2074,6 +2074,7 @@ $messages['tr'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'readerfeedback-desc' => 'Перевірка сторінок дозволяє читачам залишати відгуки у формі оцінок за категоріями',
 	'readerfeedback' => 'Що ви думаєте про цю сторінку?',
 	'readerfeedback-text' => "''Будь ласка, оцініть цю сторінку. Ваші відгуки дуже цінні для нас, вони допомагають нам працювати над покращенням сайту.''",
 	'readerfeedback-reliability' => 'Достовірність',

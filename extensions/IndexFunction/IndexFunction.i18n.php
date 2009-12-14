@@ -965,6 +965,13 @@ $messages['te'] = array(
 	'index-submit' => 'దాఖలుచెయ్యి',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'indexfunc-desc' => 'Функція парсера для створення автоматичних перенаправлень і сторінок неоднозначностей',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

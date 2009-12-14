@@ -2117,6 +2117,7 @@ $messages['ug-latn'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'changeauthor' => 'Зміна автора редагування',
@@ -2138,10 +2139,11 @@ $messages['uk'] = array(
 	'changeauthor-weirderror' => 'Відбулася дуже дивна помилка.
 Будь ласка, повторіть ваш запит.
 Якщо помилка виникне знову, то це означає, що база даних імовірно зіпсована',
-	'changeauthor-invalidform' => 'Будь ласка, використовуйте форму на сторінці Special:ChangeAuthor, а не якусь іншу.',
+	'changeauthor-invalidform' => 'Будь ласка, використовуйте форму на [[Special:ChangeAuthor|спеціальній сторінці]], а не якусь іншу.',
 	'changeauthor-success' => 'Ваш запити успішно оброблений.',
 	'changeauthor-logentry' => 'Змінено автора $2 $1 з $3 на $4',
 	'changeauthor-logpagename' => 'Журнал змін авторів',
+	'right-changeauthor' => 'Зміна автора редагування',
 );
 
 /** Vèneto (Vèneto)

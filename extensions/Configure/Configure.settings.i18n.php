@@ -2204,6 +2204,7 @@ $messages['bg'] = array(
 	'configure-setting-wgUseTeX' => 'Разрешаване на TeX',
 	'configure-setting-wgRawHtml' => 'Позволяване на суров, непроверен HTML-код в <nowiki><html>{{int:ellipsis}}</html></nowiki> етикети.',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Именно пространство',
+	'configure-setting-wgLocaltimezone' => 'Местна часова зона',
 	'configure-setting-wgUseAjax' => 'Включване поддръжката на AJAX',
 	'configure-setting-wgSharedUploadDBname' => 'База от данни за споделени качвания',
 	'configure-setting-wgUseSharedUploads' => 'Използване на споделено качване',

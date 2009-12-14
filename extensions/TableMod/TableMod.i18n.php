@@ -134,6 +134,18 @@ $messages['hsb'] = array(
 	'tablemod-error-missingid' => 'Falowacy atribut ident w tafličce.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'Wikitáblázat szerkesztő',
+	'tablemod-msg-remove' => 'Eltávolítás',
+	'tablemod-error-format' => 'Ez a tag csak egy egyszerű táblázatot támogat tag-enként, ami előtt és mögött nem lehet szöveg.',
+	'tablemod-error-invalidsort' => 'Érvénytelen rendezési paraméterek.',
+	'tablemod-error-invalidaction' => 'Érvénytelen művelet.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

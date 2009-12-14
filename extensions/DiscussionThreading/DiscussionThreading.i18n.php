@@ -600,7 +600,11 @@ $messages['tr'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'discussionthreading-desc' => 'Додає гілки обговорень на сторінки обговорень',
 	'discussionthreading-replysection' => 'відповідь',
+	'discussionthreading-replysectionhint' => 'Відповісти на це повідомлення',
+	'discussionthreading-threadnewsection' => 'нові',
+	'discussionthreading-threadnewsectionhint' => 'Створити нову тему',
 );
 
 /** Veps (Vepsan kel')
