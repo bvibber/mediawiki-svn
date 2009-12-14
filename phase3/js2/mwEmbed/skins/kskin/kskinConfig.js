@@ -104,7 +104,7 @@ var kskinConfig = {
 		
 		 		
    		// Options menu display:			
-   		$tp.find( '.k-options' ).click( function() {   			
+   		$tp.find( '.k-options' ).unbind().click( function() {   			
 			if ( $j( '#' + embedObj.id + ' .k-menu' ).length == 0 ) {
 	   			// Stop the player if it does not support overlays:
 				if ( !embedObj.supports['overlay'] )
