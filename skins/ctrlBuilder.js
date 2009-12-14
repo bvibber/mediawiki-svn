@@ -19,7 +19,7 @@ ctrlBuilder.prototype = {
 	// Parent css Class name
 	parentClass : 'mv-player',
 	
-	// Long string dsipaly of time value 
+	// Long string display of time value 
 	long_time_disp: true,
 	
 	// If the options menu outside of player 
@@ -303,7 +303,7 @@ ctrlBuilder.prototype = {
 		}		
 		
 		// If the resolution is too small don't display the warning
-		if( this.embedObj.getPlayerHeight < 199 )
+		if( this.embedObj.getPlayerHeight() < 199 )
 			return false;
 				
 		// See if we have native support for ogg: 
@@ -484,6 +484,18 @@ ctrlBuilder.prototype = {
 		},
 		
 		/**
+		* The options button, invokes display of the options menu
+		*/
+		'options': {
+			'w':26,
+			'o':function( ctrlObj ) {
+				return '<div title="' + gM( 'mwe-player_options' ) + '" class="ui-state-default ui-corner-all ui-icon_link rButton options-btn">' +
+							'<span class="ui-icon ui-icon-wrench"></span>' +
+						'</div>';
+			}
+		},
+		
+		/**
 		* The fullscreen button for displaying the video fullscreen
 		*/
 		'fullscreen': {
@@ -495,17 +507,6 @@ ctrlBuilder.prototype = {
 			}
 		},
 		
-		/**
-		* The options button, invokes display of the options menu
-		*/
-		'options': {
-			'w':26,
-			'o':function( ctrlObj ) {
-				return '<div title="' + gM( 'mwe-player_options' ) + '" class="ui-state-default ui-corner-all ui-icon_link rButton options-btn">' +
-							'<span class="ui-icon ui-icon-wrench"></span>' +
-						'</div>';
-			}
-		},
 		
 		/**
 		* The pause button

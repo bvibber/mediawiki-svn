@@ -44,8 +44,8 @@
 			mw.log("TimedText:ShowMenu");
 			// Get local refrence to all timed text sources
 			var cat = this.embedPlayer;
-			//var sources = this.embedPlayer.mediaElement.getSources( 'text' );
-			// 	
+			var sources = this.embedPlayer.mediaElement.getSources( 'text' );
+			debugger;
 		}
 		
 	}

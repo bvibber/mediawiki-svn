@@ -60,8 +60,10 @@
 	background-position: -16px -17px;
 }
 
-.k-player .control-bar {
-	border: 0px;
+.k-player .control-bar {	
+	border:1px solid #c8c8c8;
+	border-top: 0px;
+	border-right: 0px;
 	height: 21px;
 	padding: 2px 0 0 6px;
 	margin-top: 0px;
@@ -123,7 +125,7 @@
 	cursor: pointer;
 	float: right;
 	list-style: none outside none;
-	margin: 2px;
+	margin: 1px;
 	padding: 0px 0;
 	width: 23px;
 	height: 16px;

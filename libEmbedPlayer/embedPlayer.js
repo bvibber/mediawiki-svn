@@ -370,16 +370,19 @@ EmbedPlayerManager.prototype = {
 			}
 		}
 		
-		// Firefox gives bogus css values if video has not loaded metadata yet:
-		//  But it does set attr to -1 so we check that and delay 
-		//  swaping in the player interface which calls playerSize		 		
+		// Firefox gives 300x150 css values OR -1 if video has not loaded metadata yet:
+		//  We check that and delay swaping in the player interface		 		
 		var waitForMeta = ( 
 			( 
-			  $j(element).attr('width') == -1 || 
-			  $j(element).attr('height') == -1
-			) 
+			  ( 
+			  	$j(element).attr('width') == -1 || 
+			  	$j(element).attr('height') == -1
+			  ) 
+			  ||
+			  ( this.height == 150 && this.width == 300 ) 
+			) 						 
 			&&
-			// If media has video/audio "sources" wait for meta 
+			// If media has video/audio "sources" wait for meta: 
 			(
 				$j(element).attr('src') ||
 				$j(element).find("source[src]").filter('[type^=video],[type^=audio]').length != 0
@@ -619,9 +622,9 @@ mediaSource.prototype = {
 	
 	/**
 	* Update Source title via Element
-	* @param Element: 	
+	* @param {Element} element Source element to update attributes from
 	*/
-	updateSource:function( element ) {
+	updateSource: function( element ) {
 		// for now just update the title: 
 		if ( $j( element ).attr( "title" ) )
 			this.title = $j( element ).attr( "title" );
@@ -632,7 +635,7 @@ mediaSource.prototype = {
 	 * @param {String} start_time: in NPT format
 	 * @param {String} end_time: in NPT format
 	 */
-	updateSrcTime:function ( start_npt, end_npt ) {
+	updateSrcTime: function ( start_npt, end_npt ) {
 		// mw.log("f:updateSrcTime: "+ start_npt+'/'+ end_npt + ' from org: ' + this.start_npt+ '/'+this.end_npt);
 		// mw.log("pre uri:" + this.src);
 		// if we have time we can use:
@@ -722,8 +725,8 @@ mediaSource.prototype = {
 	},
 	
 	/** Index accessor function.
-		@return the source's index within the enclosing mediaElement container.
-		@type Integer
+	*	@return the source's index within the enclosing mediaElement container.
+	*	@type Integer
 	*/
 	getIndex : function() {
 		return this.index;
@@ -803,8 +806,7 @@ mediaSource.prototype = {
 *	@param {element} video_element <video> element used for initialization.
 *	@constructor
 */
-function mediaElement( element )
-{
+function mediaElement( element ){
 	this.init( element );
 };
 
@@ -1277,15 +1279,9 @@ embedPlayer.prototype = {
 	* 
 	* @param {Element} element Source element to grab size from 
 	*/
-	setPlayerSize:function( element ){				
+	setPlayerSize:function( element ){		
 		this['height'] = parseInt( $j(element).css( 'height' ).replace( 'px' , '' ) );
-		this['width'] = parseInt( $j(element).css( 'width' ).replace( 'px' , '' ) );				
-		
-		// Special case of default mozilla video tag size (use our default instead of 150x300 )
-		if( this.height == 150 && this.width == 300 ){
-			 this.height = null;
-			 this.width  = null;
-		}
+		this['width'] = parseInt( $j(element).css( 'width' ).replace( 'px' , '' ) );							
 		
 		if( ! this['height']  && ! this['width'] ){
 			this['height'] = parseInt( $j(element).attr( 'height' ) );
@@ -1304,9 +1300,9 @@ embedPlayer.prototype = {
 		}
 		
 		// On load sometimes attr is temporally -1 as we don't have video metadata yet.		 
-		// NOTE: this edge case should be hanndled by waiting for metadata
-		//  in browsers that support metadata for the selected video type.  					
-		if( this['height'] == -1 || this['width'] == -1 ){
+		// NOTE: this edge case should be handled by waiting for metadata see: "waitForMeta" in addElement 		
+		if( ( !this['height'] || !this['width'] ) ||
+			( this['height'] == -1 || this['width'] == -1 )   ){
 			var defaultSize = mw.getConfig( 'video_size' ).split( 'x' );
 			this['width'] = defaultSize[0];
 			// Special height default for audio tag ( if not set )  
@@ -2327,7 +2323,7 @@ embedPlayer.prototype = {
 						'top' 		: ( loc.top + playerHeight + 4) + 'px',
 						'left' 		: ( parseInt( loc.left ) + parseInt( _this.width ) - 200) + 'px',
 						'height'	: '200px',
-						'width' 	: '200px', 						
+						'width' 	: '200px' 						
 					} ).hide()
 			);		
 		}						
@@ -2575,8 +2571,9 @@ embedPlayer.prototype = {
 	*  seeking =false
 	*  paused = false
 	* Updates pause button
+	* Starts the "monitor" 
 	*/
-	play : function() {
+	play: function() {
 		var eid = ( this.pc != null ) ? this.pc.pp.id:this.id;
 						
 		// check if thumbnail is being displayed and embed html
@@ -2599,8 +2596,7 @@ embedPlayer.prototype = {
 		 $j( '#' + eid + ' .play-btn span' ).removeClass( 'ui-icon-play' ).addClass( 'ui-icon-pause' );
 		 $j( '#' + eid + ' .play-btn' ).unbind().btnBind().click( function() {
 		 	$j( '#' + eid ).get( 0 ).pause();
-	   	 } ).attr( 'title', gM( 'mwe-pause_clip' ) );
-		   
+	   	 } ).attr( 'title', gM( 'mwe-pause_clip' ) );		   
 	},
 	
 	/**
