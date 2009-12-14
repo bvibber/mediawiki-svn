@@ -30,6 +30,7 @@ mw.addMessages({
 	"wah-needs-firefogg": "To participate in Wiki@Home you need to install Firefogg.",
 
 	"wah-api-error" : "There has been an error with the API. Please try back later."
+
 });
 
 
@@ -42,7 +43,7 @@ wahConfig = {
 //mw.addOnloadHook ensures that the dom and core libraries are ready:
 mw.addOnloadHook(function(){
 	//set up the dependency load request:
-	mw.load( [
+	var depReq = [
 		[
 			'mvBaseUploadInterface',
 			'mvFirefoggRender',
@@ -55,13 +56,14 @@ mw.addOnloadHook(function(){
 			'$j.ui.tabs',
 			'$j.cookie'
 		]
-	], function(){
+	];
+	mvJsLoader.doLoadDepMode( depReq, function(){
 		WikiAtHome.init( wahConfig );
 	});
 });
 
 var WikiAtHome = {
-	menu_items:['jobs','stats', 'pref'],
+	menu_items: ['jobs', 'stats', 'pref'],
 	init: function(){
 		var _this = this;
 		//proc config:
@@ -249,7 +251,7 @@ var WikiAtHome = {
 				_this.source_url = data.query.pages[i].imageinfo[0].url;
 			}
 			//have firefogg download the file:
-			js_log("do selectVideoUrl:: " + _this.source_url);
+			mw.log("do selectVideoUrl:: " + _this.source_url);
 			_this.fogg.selectVideoUrl( _this.source_url );
 
 
@@ -261,7 +263,7 @@ var WikiAtHome = {
 					//loop update:
 					setTimeout(updateDownloadState, 100);
 				}else if( _this.fogg.state == 'downloaded'){
-						js_log('download is done, run encode:' + JSON.stringify( job.job_json.encodeSettings ) );
+						mw.log('download is done, run encode:' + JSON.stringify( job.job_json.encodeSettings ) );
 						//we can now issue the encode call
 						_this.fogg.encode(
 							JSON.stringify(
@@ -270,7 +272,7 @@ var WikiAtHome = {
 						);
 						updateEncodeState();
 				}else if( _this.fogg.state == "download failed"){
-					js_log('download state failed');
+					mw.log('download state failed');
 				}
 			}
 
@@ -283,7 +285,7 @@ var WikiAtHome = {
 			var updateEncodeState = function(){
 				_this.updateProgress( _this.fogg.progress(), 'wah-encoding' );
 				if( _this.fogg.state == 'encoding done' ){
-					js_log('encoding done , do upload');
+					mw.log('encoding done , do upload');
 					_this.fogg.post( mwGetLocalApiUrl(),
 						'file',
 						JSON.stringify({
@@ -297,7 +299,7 @@ var WikiAtHome = {
 					updateUploadState();
 					return true;
 				}else if( _this.fogg.state == 'encoding failed'){
-					js_log('encoding failed');
+					mw.log('encoding failed');
 					//maybe its time to refresh the window?
 					$j('#tab-jobs .progress-status').html(
 						gM( 'wah-encoding-fail' )
@@ -317,15 +319,15 @@ var WikiAtHome = {
 							   var pstatus = JSON.parse( _this.fogg.uploadstatus() );
 							   response_text = pstatus["responseText"];
 						   }catch(e){
-							   js_log("could not parse uploadstatus / could not get responseText");
+							   mw.log("could not parse uploadstatus / could not get responseText");
 						   }
 					}
-					js_log("got upload response:: " + response_text);
+					mw.log("got upload response:: " + response_text);
 					//see if we can parse the result
 					try{
 						resultObj = JSON.parse( response_text );
 					}catch(e){
-						js_log("could not parse result of upload :: " +response_text);
+						mw.log("could not parse result of upload :: " +response_text);
 					}
 					
 					if( resultObj['wikiathome'] && resultObj['wikiathome']['chunkaccepted']){
