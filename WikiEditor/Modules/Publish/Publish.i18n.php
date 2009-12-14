@@ -593,6 +593,7 @@ $messages['pt-br'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'wikieditor-publish-preference' => "Abbilete 'a pubblecazione passe pe passe",
 	'wikieditor-publish-button-publish' => 'Pubbleche',
 	'wikieditor-publish-button-cancel' => 'Annulle',
 	'wikieditor-publish-dialog-title' => 'Pubbleche sus a {{SITENAME}}',
@@ -717,6 +718,7 @@ $messages['tr'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'wikieditor-publish-preference' => 'Увімкнути публікацію крок за кроком',
 	'wikieditor-publish-button-publish' => 'Зберегти',
 	'wikieditor-publish-button-cancel' => 'Скасувати',
 	'wikieditor-publish-dialog-title' => 'Опублікувати на {{SITENAME}}',

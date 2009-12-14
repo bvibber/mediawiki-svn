@@ -238,10 +238,12 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'wikieditor-preview-preference' => 'Előnézet egymás mellett engedélyezése',
 	'wikieditor-preview-tab' => 'Előnézet',
+	'wikieditor-preview-changes-tab' => 'Változtatások',
 	'wikieditor-preview-loading' => 'Betöltés…',
 );
 
@@ -270,6 +272,7 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'wikieditor-preview-preference' => 'Aktifkan pratayang bersisian',
 	'wikieditor-preview-tab' => 'Pratayang',
+	'wikieditor-preview-changes-tab' => 'Perubahan',
 	'wikieditor-preview-loading' => 'Memuat...',
 );
 
@@ -458,6 +461,7 @@ $messages['si'] = array(
 $messages['sk'] = array(
 	'wikieditor-preview-preference' => 'Zapnúť náhľad vedľa úprav',
 	'wikieditor-preview-tab' => 'Náhľad',
+	'wikieditor-preview-changes-tab' => 'Zmeny',
 	'wikieditor-preview-loading' => 'Načítava sa...',
 );
 
@@ -505,6 +509,7 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'wikieditor-preview-preference' => 'Увімкнути додаткову панель швидкого перемикання: "Редагувати" — "Попередній перегляд"',
 	'wikieditor-preview-tab' => 'Попередній перегляд',
+	'wikieditor-preview-changes-tab' => 'Зміни',
 	'wikieditor-preview-loading' => 'Завантаження...',
 );
 

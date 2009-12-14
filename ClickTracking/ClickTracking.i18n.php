@@ -805,8 +805,11 @@ $messages['ja'] = array(
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
+	'ct-start-date' => 'დაწყების თარიღი (წწწწთთდდ)',
+	'ct-end-date' => 'დამთავრების თარიღი (წწწწთთდდ)',
 	'ct-beginner' => 'დამწყები',
 	'ct-expert' => 'ექსპერტი',
+	'ct-user-span' => 'მომხმარებლის წვლილი პერიოდში',
 	'ct-and' => 'და',
 );
 
