@@ -735,7 +735,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			$dbw->update( 'mv_mvd_index', $update_ary,
 				array( 'mv_page_id' => $mvd_row->mv_page_id ) );
 			$lq = $dbw->lastQuery();
-			// print "js_log(\"sql:$lq \");";
+			// print "mw.log(\"sql:$lq \");";
 		} else {
 			// print "NOT VALID MOVE";
 			// @@todo better error handling (tyring to move a MVD data into bad request form)

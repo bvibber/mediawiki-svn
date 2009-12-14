@@ -22,14 +22,14 @@ var MV_EMBED_VIDEO_HANDLER = true; // if we should use mv_embed for all ogg_hanl
 if(typeof gMsg == 'undefined'){
     gMsg = {};
 }
-if(typeof loadGM == 'undefined'){  
-    function loadGM( msgSet ){
+if(typeof mw.addMessages == 'undefined'){  
+    function mw.addMessages( msgSet ){
         for(var i in msgSet){
             gMsg[ i ] = msgSet[i];
         }
     }
 }
-loadGM( { 
+mw.addMessages( { 
     'add_media_to_page' : "Add Media to this Page"
 });
 

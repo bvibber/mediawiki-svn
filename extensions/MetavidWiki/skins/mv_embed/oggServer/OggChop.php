@@ -1,7 +1,6 @@
 <?php
 
 define('OGGCHOP_META_VERSION', 1);
-
 define('OGGCHOP_META_EXT', '.meta');
 
 $oggDir = dirname(__FILE__);
@@ -19,6 +18,8 @@ class OggChop {
 
 	//header values:
 	var $contentLength = 0;
+	var $contentRanges = array();
+	var $boundary = '';
 
 	function __construct( $oggPath ){
 		$this->oggPath = $oggPath;
@@ -34,17 +35,16 @@ class OggChop {
 		$this->loadMeta();
 
 		//get http byte range headers::
-		$this->getByteRangeRequest();
+		if( !$this->getByteRangeRequest() ){
+			//failed to get byte range
+			header("Status: 416 Requested range not satisfiable");
+    		header("Content-Range: */$filesize");
+    		exit();
+
+		}
 
 		//if both start and end are false send the full file:
 		if(!$start_sec && !$end_sec){
-			//set from full file context::
-			$this->contentLength = filesize( $this->oggPath );
-			$this->contentRange = array(
-				's' => 0,
-				'e' => $this->contentLength -1,
-				't' => $this->contentLength
-			);
 			$this->duration = $this->getMeta('duration');
 			$this->sendHeaders();
 			//output the full file:
@@ -53,9 +53,30 @@ class OggChop {
 			while (ob_get_level() > 0) {
 		   		ob_end_flush();
 			}
-			@readfile( $this->oggPath );
-			//exit the application (might be a cleaner way to do this)
-			die();
+			//check for byte range output:
+			if( count( $this->contentRanges) ){
+				//byte range request send the requested byte ranges:
+				if( count( $this->contentRanges)>1){
+					//output the content
+					foreach ($this->contentRanges as $range){
+						echo "\r\n--$boundary\r\n";
+						echo "Content-Type: {$this->contentType}\r\n";
+						echo "Content-Range: bytes ". $range['s'] . "-" .
+								$range['e'] . "/". filesize( $this->oggPath ) . "\r\n\r\n";
+						$this->outputByteRange( $range['s'], $range['e'] );
+					}
+				}else{
+				  //A single range is requested.
+			      $range = $this->contentRanges[0];
+			      $this->outputByteRange( $range['s'], $range['e'] );
+
+				}
+			}else{
+				//just start sending the whole file
+				@readfile( $this->oggPath );
+			}
+			//exit the application
+			exit();
 		}else{
 			$kEnd = false;
 			//we have a temporal request
@@ -85,11 +106,12 @@ class OggChop {
 			print "End Byte:" . print_r($kEnd, true) . "\n";
 			die();
 
-			@@todo build the ogg skeleton header
-			1) that gives the offset between
-			// $kStart time and the requested time.
+			@@todo build the ogg skeleton header from stream set
+			$kStart time and the requested time.
+			*/
 			*/
 			//for now just start output at the given byte range
+			//(DOES NOT WORK) can't play stream without header
 			$this->outputByteRange( $kStart[1], $kEnd[1]);
 		}
 
@@ -134,13 +156,111 @@ class OggChop {
 			}
 			echo fread($this->fp, $chunkSize);
 		}
+		//flush the buffer (make sure we are not buffering the above output)
+		flush();
 	}
 	function getByteRangeRequest(){
 		//set local vars for byte range request handling
+		if ($_SERVER['REQUEST_METHOD']=='GET' && isset($_SERVER['HTTP_RANGE'])){
+			$range = stristr( trim ( $_SERVER['HTTP_RANGE'] ) , 'bytes=' );
+			if(!$range)
+				return ;
+			$range 	= substr($range,6);
+			$ranges = explode( ',', $range );
+
+			//set to a variable to support segment byte range requests
+			$reqestedFileSize = filesize( $this->oggPath );
+			//also see: http://www.w3.org/Protocols/rfc2616/rfc2616.html
+			foreach( $ranges as $range ){
+				$rParts = explode( $range );
+				if( count( $rParts ) != 2){
+					return false;
+				}
+				list($start, $end) = $rParts;
+				if( $start == '' && $end != ''){
+					//get last bytes -500
+					$this->contentRanges[] = array(
+						's' => $reqestedFileSize - $end,
+						'e' => $reqestedFileSize -1
+					);
+					continue;
+				}
+				if( $end == '' && $start != ''){
+					//get start bytes ( 500-
+					$this->contentRanges[] = array(
+						's' => $start,
+						'e' => $reqestedFileSize -1
+					);
+					continue;
+				}
+				if( $start != '' && $end != ''){
+					//get start and end: (0-500)
+					$this->contentRanges[] = array(
+						's' => $start,
+						'e' => $end
+					);
+					continue;
+				}
+				//check for not valid request range:
+				if( $start > $end ){
+					return false;
+				}
+				//did not fit any of the above
+				return false;
+			}
+			//done with byte ranges:
+			return true;
+		}else{
+			//set from full file context::
+			$this->contentLength = filesize( $this->oggPath );
+			$this->contentRanges = array(
+				array(
+					's' => 0,
+					'e' => $this->contentLength -1
+				)
+			);
+			return true;
+		}
+
 	}
 	function sendHeaders(){
 		header ("Accept-Ranges: bytes");
 
+		//only set type to
+		$this->contentType = 'video/ogg';
+
+		//set content range see spec:
+		// http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16
+		if( count( $this->contentRanges ) ){
+			//we are sending out partial content set the header:
+			header("HTTP/1.1 206 Partial content");
+
+			if( count( $this->contentRanges) > 1){
+				//set a random boundary:
+				$this->boundary = '4qf5xy4z0084c7cb30zwvcm33' ;
+				//multiple ranges build the content length:
+				$content_length=0;
+				foreach($this->contentRanges as $range ){
+					$content_length += strlen( "\r\n--$boundary\r\n" );
+			        $content_length += strlen( "Content-Range: bytes ". $range['s'] . "-" .
+			        	$range['e'] . "/" . filesize( $this->oggPath ) ."\r\n\r\n" );
+			        $content_length += $last-$first+1;
+				}
+				$content_length+=strlen("\r\n--$boundary--\r\n");
+				header("Content-Type: multipart/x-byteranges; boundary=$boundary");
+				$this->contentLength = $content_length;
+			}else{
+				$range = $this->contentRanges[0];
+				//single range:
+				header ( "Content-Range: bytes " .
+					$range['s'] . "-" .
+					$range['e'] . "/" .
+					filesize( $this->oggPath )
+				);
+				//set mime type
+				header ("Content-Type: $this->contentType");
+			}
+		}
 		//set range conditional headers:
 		if( $this->contentLength )
 			header ( "Content-Length: " . $this->contentLength );
@@ -149,27 +269,12 @@ class OggChop {
 		if( $this->duration )
 			header ( "X-Content-Duration: " . $this->duration );
 
-		//set content range see spec:
-		// http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16
-		if( $this->contentRange	)
-			header ( "Content-Range: bytes " .
-				$this->contentRange['s'] . "-" .
-				$this->contentRange['e'] . "/" .
-				$this->contentRange['t']
-			);
-
 		//constant headers (for video)
 		if( isset($this->meta['height']) )
 			header( "X-Content-Video-Height: " . $this->meta['height'] );
 
 		if( isset($this->meta['width']) )
 			header( "X-Content-Video-Width: " . $this->meta['width'] );
-
-		//set mime type (only video for now)
-		header ("Content-Type: video/ogg");
-
-	}
-	function sendByteRange( $startByte, $endByte){
 
 	}
 	/*
@@ -198,7 +303,7 @@ class OggChop {
 					return false;
 				}else{
 					//some other request is "loading" metadata sleep for 5 seconds and try again
-					sleep(5);
+					sleep( 5 );
 					$this->loadWaitCount++;
 					return $this->loadMeta();
 				}
@@ -252,7 +357,7 @@ class OggChop {
 				}
 			}
 			$this->meta['duration'] = $f->getLength();
-			//cahce the metadata::
+			//cache the metadata::
 			file_put_contents( $this->oggPath . OGGCHOP_META_EXT, serialize( $this->meta) );
 			return true;
 		}

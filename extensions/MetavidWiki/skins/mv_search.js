@@ -1,12 +1,10 @@
-js2AddOnloadHook( mv_pre_setup_search);
+mw.addOnloadHook( mv_pre_setup_search);
 var mvSearchSetupFlag =false;
 var maxFilters = 8;
 var mv_search_action='';
 function mv_pre_setup_search(req_mode){
     //make sure we have jQuery and any base required libs:
-    mvJsLoader.jQueryCheck(function(){
-        mv_setup_search(req_mode);
-    });
+    mv_setup_search(req_mode);
 }
 function mv_setup_search(req_mode){
     if(!mvSearchSetupFlag)
@@ -14,7 +12,7 @@ function mv_setup_search(req_mode){
     mvSearchSetupFlag=true;
 }
 function mv_do_setup_search(req_mode){    
-    js_log('f:mv_setup_search: ');
+    mw.log('f:mv_setup_search: ');
     add_highlight_function();
     //look for existing auto completes:
     for(i=0;i<maxFilters;i++){
@@ -42,27 +40,27 @@ function mv_do_setup_search(req_mode){
             id_parts = $j(this).attr('id').split('_');
             var type = id_parts[1];
             var inx = id_parts[2];
-            //js_log('looking at: '+ $j("#"+this.id+" option:selected").val())
+            //mw.log('looking at: '+ $j("#"+this.id+" option:selected").val())
             if($j("#"+this.id+" option:selected").val()=='date_range'){
                 add_date_binddings(inx, mvDateInitObj);
             }
         });
     }else{
-        js_log('mvDateInitObj is undefined');
+        mw.log('mvDateInitObj is undefined');
     }
     //remove all old search_text bindings:
     $j('.mv_search_select').unbind();
     //set up actions:
     $j('.mv_search_select').each(function(){
-        js_log("SHOULD ADD change for: " + this.id);
+        mw.log("SHOULD ADD change for: " + this.id);
     });
     $j('.mv_search_select').change(function(){
-        js_log('mv_search_select:' + $j("#"+this.id+" option:selected").val());
+        mw.log('mv_search_select:' + $j("#"+this.id+" option:selected").val());
         //get mv_sel_# number
         id_parts = $j(this).attr('id').split('_');
         var type = id_parts[1];
         var inx = id_parts[2];
-        js_log("id: "+$j(this).attr('id')+" got t:" + type+ ' Index:' + inx + ' val:' + $j("#"+this.id + " option:selected").val() );
+        mw.log("id: "+$j(this).attr('id')+" got t:" + type+ ' Index:' + inx + ' val:' + $j("#"+this.id + " option:selected").val() );
         switch($j("#"+this.id+" option:selected").val()){
             case 'category':
                 $j('#mvs_'+inx+'_tc').html('<input class="mv_search_text"' +
@@ -115,7 +113,7 @@ function mv_do_setup_search(req_mode){
                     .clone().css('display','inline').attr('id', 'mv_person_'+inx).children().each(function(){
                         //append the inx to each:
                         $j(this).attr('id', $j(this).attr('id')+'_'+inx);
-                        js_log('' + this.id);
+                        mw.log('' + this.id);
                     }));
                 //update the input name:
                 $j('#mv_person_input_'+inx).attr({'name':'f['+inx+'][v]', 'onclick':'this.value=\'\';'});
@@ -135,13 +133,13 @@ function mv_do_setup_search(req_mode){
             case 'smw_property':
             break;
             default:
-                js_log('no select action for:'+ $j("#"+this.id+" option:selected").val());
+                mw.log('no select action for:'+ $j("#"+this.id+" option:selected").val());
             break;
         };
     });
 }
 function mv_do_ajax_search(){
-    js_log('mv_do_ajax_search ');
+    mw.log('mv_do_ajax_search ');
     //build req url:
     var req_query=(mv_search_action.indexOf('?')!==-1)?'&':'?';
      req_query+= 'seq_inline=true';
@@ -165,7 +163,7 @@ function mv_do_ajax_search_request(url){
         if(typeof mv_ajax_search_callback == 'function'){
             mv_ajax_search_callback();
         }else{
-            js_log('ajax_search_callback type was: '+ typeof mv_ajax_search_callback);
+            mw.log('ajax_search_callback type was: '+ typeof mv_ajax_search_callback);
         }
     });
 }
@@ -195,13 +193,13 @@ function add_date_binddings(inx, mvDateInitObj){
         renderCallback:function($td, thisDate, month, year){
             //@@todo fix upstream...month seems to be off by 1 ? or it starts at 0?
             month= thisDate.getMonth()+1;
-            //js_log('renderCallback: '+ thisDate.getDate() +' '+ month +' '+ year );
-            //js_log(mvDateInitObj['sdays']);
+            //mw.log('renderCallback: '+ thisDate.getDate() +' '+ month +' '+ year );
+            //mw.log(mvDateInitObj['sdays']);
             //check if thisDate is in db (mvDateInitObj)
             if(typeof mvDateInitObj['sdays'][year] != 'undefined'){
                 if(typeof mvDateInitObj['sdays'][year][month] != 'undefined'){
                     if(typeof mvDateInitObj['sdays'][year][month][thisDate.getDate()]!='undefined'){
-                        js_log("FOUND date match" + thisDate.getDate());
+                        mw.log("FOUND date match" + thisDate.getDate());
                         $td.addClass('has_streams');
                         $td.attr('title',mvDateInitObj['sdays'][year][month][thisDate.getDate()] + ' Streams');
                     }
@@ -245,7 +243,7 @@ function mv_pl(mvd_id){
         {action:'ajax',rs:'mv_pl_wt', "rsargs[0]":mvd_id, 'size':'small'},
         function(data){
             //run highlighter on data:
-            //js_log('set to: '+ data);
+            //mw.log('set to: '+ data);
             $j('#mvimg_'+mvd_id).html(data);
             //rewrite video tag:
             rewrite_by_id('vid_'+mvd_id);
@@ -253,7 +251,7 @@ function mv_pl(mvd_id){
 }
 function mv_ex(mvd_id){
     uri = wgServer +((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);
-    js_log('expand ' + mvd_id);
+    mw.log('expand ' + mvd_id);
     //swap the image:
     img_parts = $j('#mv_img_ex_'+mvd_id).attr('src').split('/');
     if(img_parts.pop()=='closed.png'){
@@ -274,7 +272,7 @@ function mv_ex(mvd_id){
         {action:'ajax',rs:'mv_expand_wt', "rsargs[0]":mvd_id, "st":terms},
         function(data){
             //run highlighter on data:
-            //js_log('set to: '+ data);
+            //mw.log('set to: '+ data);
             $j('#mvr_'+mvd_id).html(data);
             hl_search_terms('#mvr_'+mvd_id);
             //rewrite video tag:
@@ -295,7 +293,7 @@ function hl_search_terms(result_selector){
     var terms = new Array();
 
     $j('.mv_hl_text').each(function(){
-        js_log('on val: '+ $j(this).val());
+        mw.log('on val: '+ $j(this).val());
         //do_node_replace($j(result_selector).get(0), $j(this).val());
         result = $j(this).val().replace(/\'|"/g, '');
         result = result.split(/[\s,\+\.]+/);
@@ -306,7 +304,7 @@ function hl_search_terms(result_selector){
     $j(result_selector).each(function(){
         for(i in terms){
             term = terms[i];
-            //js_log("do hl call: "+ term);
+            //mw.log("do hl call: "+ term);
             $j.highlight(this, term);
         }
     });
@@ -320,7 +318,7 @@ function hl_search_terms(result_selector){
     //}
 }
 /*function do_node_replace(node, te) {
-   js_log('n_id:'+ node.id +' '+ node.tagName +' inner:'+ node.innerHTML);
+   mw.log('n_id:'+ node.id +' '+ node.tagName +' inner:'+ node.innerHTML);
    var pos, skip, spannode, middlebit, endbit, middleclone;
    skip = 0;
    if (node.nodeType == 3) {
@@ -350,14 +348,14 @@ function mv_add_ac(id){
 // and abstract auto_complete functions from mv_stream.js to mv_common.js
 function mv_add_bill_ac(inx){
     uri = wgServer + ((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);
-    js_log('looking for: '+ '#mv_bill_choices_'+inx);
+    mw.log('looking for: '+ '#mv_bill_choices_'+inx);
     $j('#mv_bill_choices_'+inx).prependTo("body");
     $j('#mv_bill_input_'+inx).autocomplete(
         uri,
         {
             autoFill:true,
             onItemSelect:function(v){
-                js_log('selected:' + v.innerHTML );
+                mw.log('selected:' + v.innerHTML );
                 //update the image:
                 $j('#mv_person_img_'+inx).attr('src', $j(v).children('img').attr('src'));
             },
@@ -383,7 +381,7 @@ function mv_add_person_ac(inx){
         {
             autoFill:true,
             onItemSelect:function(v){
-                js_log('selected:' + v.innerHTML );
+                mw.log('selected:' + v.innerHTML );
                 //update the image:
                 $j('#mv_person_img_'+inx).attr('src', $j(v).children('img').attr('src'));
                 //update the text: 
@@ -469,7 +467,7 @@ $j(function() {
      (Complicated) version for Mozilla and Opera using span tags.
     */
       function(node, te) {
-       js_log('hl:'+ te + ' nt:'+node.nodeType + ' tn:' + node.tagName);
+       mw.log('hl:'+ te + ' nt:'+node.nodeType + ' tn:' + node.tagName);
        var pos, skip, spannode, middlebit, endbit, middleclone;
        skip = 0;
        if (node.nodeType == 3) {

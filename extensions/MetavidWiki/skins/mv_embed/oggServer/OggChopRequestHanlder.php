@@ -16,8 +16,8 @@
 */
 
 //for now just hard code the request:
-//$oggPath = '/var/www/house_proceeding_01-04-07.ogg';
-$oggPath = '/var/www/lucky.ogv';
+$oggPath = '/var/www/house_proceeding_01-04-07.ogg';
+//$oggPath = '/var/www/lucky.ogv';
 $time = '0:0:10/0:0:20';
 
 require_once( 'OggChop.php' );

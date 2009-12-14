@@ -279,10 +279,10 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		global $wgOut, $wgUser, $wgEnableParserCache;
 		// $mvdTile = Title::makeTitle(MV_NS_MVD, $mvd_page->wiki_title );
 		$mvdTitle = new MV_Title( $mvd_page->wiki_title );
-		// print "js_log('outputMVD: ".$mvdTitle->getText()."');\n";
+		// print "mw.log('outputMVD: ".$mvdTitle->getText()."');\n";
 		$mvdArticle = new Article( $mvdTitle );
 		if ( !$mvdArticle->exists() ) {
-			// print "js_log('missing: " .$mvd_page->wiki_title."');\n";
+			// print "mw.log('missing: " .$mvd_page->wiki_title."');\n";
 			return ;
 		}
 		// use the cache by default:
@@ -301,12 +301,12 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			$parserOutput=false;
 		}
 		if ( $parserOutput !== false ) {
-			// print "js_log('found in cache: with hash: " . $MvParserCache->getKey( $mvdArticle, $wgUser )."');\n";
+			// print "mw.log('found in cache: with hash: " . $MvParserCache->getKey( $mvdArticle, $wgUser )."');\n";
 			// found in cache output and be done with it:
 			$wgOut->addParserOutput( $parserOutput );
 		} else {
-			// print "js_log('not found in cache');\n";
-			// print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
+			// print "mw.log('not found in cache');\n";
+			// print "mw.log('titleDB: ".$tsTitle->getDBkey() ."');\n";
 			if ( $mvdTitle->exists() ) {
 				// grab the article text:
 				$curRevision = Revision::newFromTitle( $mvdTitle );
@@ -317,7 +317,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 				} else {
 					// @@todo throw error:
 					// print "error article: "	.  $mvd_page->wiki_title . " not there \n";
-					print "js_log('missing: " . $mvd_page->wiki_title . "');\n";
+					print "mw.log('missing: " . $mvd_page->wiki_title . "');\n";
 					return ;
 				}
 			}
@@ -876,8 +876,8 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			$wgOut->addWikiText( '<p class="error">' . wfMsg( $error ) . "</p>\n" );
 			return array( 'status' => 'error', 'error_txt' => $wgOut->getHTML() );
 		} else {
-			/*print "js_log('should have moved the page');\n";
-			print "js_log('new page title: ".$nt->getText()."');\n";
+			/*print "mw.log('should have moved the page');\n";
+			print "mw.log('new page title: ".$nt->getText()."');\n";
 			//clear cache for title:
 			//$nt->invalidateCache();
 			//Article::onArticleEdit($nt);
@@ -886,7 +886,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			//try again:
 			$newTitle = Title::newFromText($nt->getText(), MV_NS_MVD);
 			$na = new Article($newTitle);
-			print "js_log('new page content: " .$na->getContent() . "');\n";
+			print "mw.log('new page content: " .$na->getContent() . "');\n";
 			*/
 		}
 		//wfRunHooks( 'SpecialMovepageAfterMove', array( &$this , &$ot , &$nt ) )	;
@@ -925,11 +925,11 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		// MV_MVD::disableCache($this->mvd_pages, $mvd_id);
 
 		// $tsTitle = Title::newFromText( $newTitle, MV_NS_MVD);
-		// print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
+		// print "mw.log('titleDB: ".$tsTitle->getDBkey() ."');\n";
 		/*if($tsTitle->exists()){
-			print "js_log('{$tsTitle->getDBkey()}  present:');\n";
+			print "mw.log('{$tsTitle->getDBkey()}  present:');\n";
 		}else{
-			print "js_log('{$tsTitle->getDBkey()}  not present');\n";
+			print "mw.log('{$tsTitle->getDBkey()}  not present');\n";
 		}*/
 
 		# return the javascript object (so that the inteface can update the user)

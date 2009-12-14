@@ -30,8 +30,7 @@ class MyFLV extends FLV {
 		//@@todo cache byte offsets in memcache if available
 		if( $end_time_sec)
 			$this->mDuration = $end_time_sec - $start_time_sec;
-		//print "SET metaDuration to:  " . $this->metaDuration . "\n";
-		//print_r($fullMeta);
+
 		$meta = $this->getKeyFrameMetaData();
 		//die;
 		$start_byte=$end_byte=null;

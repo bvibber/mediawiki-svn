@@ -14,23 +14,21 @@ if(typeof wgScriptPath=='undefined')
 	var wgScriptPath = '/w';		
 
 var gMvd={};
-js2AddOnloadHook(function(){
-	js_log("mv embed done loading now setup 'all page'");		
-	//make sure we have jQuery and any base required libs:
-	mvJsLoader.jQueryCheck(function(){ 		
- 		js_log('allpage_ did jquery check'); 		
- 		mvJsLoader.doLoad( [
- 			'$j.fn.autocomplete' 			
- 		], function(){
-			//js_log('allpage_ auto and hover check'+mv_setup_allpage_flag);
-			if( ! mv_setup_allpage_flag ){
-				mv_setup_search_ac();
-				mv_do_mvd_link_rewrite();
-				mv_page_specific_rewrites();
-				//set the flag:
-				mv_setup_allpage_flag=true;
-			}
-		});
+mw.addOnloadHook(function(){
+	mw.log("mv embed done loading now setup 'all page'");		
+	//make sure we have jQuery and any base required libs:	 	
+	mw.log('allpage_ did jquery check'); 		
+	mw.load( [
+			'$j.fn.autocomplete' 			
+	], function(){
+		//mw.log('allpage_ auto and hover check'+mv_setup_allpage_flag);
+		if( ! mv_setup_allpage_flag ){
+			mv_setup_search_ac();
+			mv_do_mvd_link_rewrite();
+			mv_page_specific_rewrites();
+			//set the flag:
+			mv_setup_allpage_flag=true;
+		}
 	});
 });
 function mv_do_sequence_edit_swap(mode){
@@ -41,7 +39,7 @@ function mv_do_sequence_edit_swap(mode){
         $j('#mv_text_edit_container,#switch_seq_wysiwyg').hide();
         $j('#seq_edit_container,#swich_seq_text').show();
         if( mode == 'seq_update' ){
-            js_log('do server side text parse');
+            mw.log('do server side text parse');
             //$j('#seq_edit_container').html( gMsg('loading') );
         }
         //check if the seq is already ready: 
@@ -60,7 +58,7 @@ function mv_page_specific_rewrites(){
     //add in rss-media feed link if on Special:Ask page
     if(typeof wgPageName!='undefined'){
         if(wgPageName=='Special:Ask'){
-            js_log("url : " + document.location);
+            mw.log("url : " + document.location);
             var sURL = parseUri(document.location);
             var podLink=wgArticlePath.replace('$1',  mvAskTitle);
             if(sURL.queryKey['title']){
@@ -91,13 +89,13 @@ function mv_page_specific_rewrites(){
             var pLink = $j('#'+this.id+' .smwfooter a').attr('href').replace('Special:Ask',mvAskTitle );
             var colspan = $j('.smwfooter .sortbottom').attr('colspan');
             var pHTML = '<a title="'+msg_video_rss+'" href="'+pLink+'">'+rssImg+'</a>';
-            js_log("plink: "+pLink + ' colspan:'+ colspan + ' ph:'+pHTML);
+            mw.log("plink: "+pLink + ' colspan:'+ colspan + ' ph:'+pHTML);
             $j('#'+this.id+' tbody').prepend('<tr><td colspan="'+colspan+'">'+pHTML+'</td></tr>');
         }
     });
 }
 function mv_do_mvd_link_rewrite(){
-    js_log('mv_do_mvd_link_rewrite');
+    mw.log('mv_do_mvd_link_rewrite');
     var patt_mvd = new RegExp("MVD:([^:]*):([^\/]*)\/([0-9]+:[0-9]+:[^\/]+)\/([0-9]+:[0-9]+:[^\&]+)(&?.*)");
     var i =0;
     $j('a').each(function(){
@@ -108,7 +106,7 @@ function mv_do_mvd_link_rewrite(){
                 if(res){
                     if(res[5]!='')return ;
                     //skip if res[4] not at end:
-                    //js_log(res);
+                    //mw.log(res);
                     i++;
                     if(!gMvd[i])gMvd[i]={};
                     gMvd[i]['url']=res[0];
@@ -116,8 +114,8 @@ function mv_do_mvd_link_rewrite(){
                     gMvd[i]['st']=res[3]; //start time
                     gMvd[i]['et']=res[4]; //end time
 
-                    //js_log(this.href);
-                    //js_log(res);
+                    //mw.log(this.href);
+                    //mw.log(res);
                     //replace with:
                     //check if we are instance of smwb-title (if so reduce font size) 
                     var fsize = ( $j(this).parents().is(".smwb-title") )? '50%':'100%';
@@ -132,14 +130,14 @@ function mv_do_mvd_link_rewrite(){
                     });
                     $j('#mv_pglink_'+i).click(function(){
                         inx = this.id.substr(10);
-                        js_log('inx: '+ inx);
+                        mw.log('inx: '+ inx);
                         window.location = wgArticlePath.replace('$1',gMvd[inx]['url']);
                     })
                 }
             }
         }
     });
-    js_log('got to I: '+i);
+    mw.log('got to I: '+i);
     $j('#mvd_link_'+i).after('<div style="clear:both"></div>')
 }
 function get_mvdrw_img(i, size){
@@ -155,9 +153,9 @@ function get_mvdrw_img(i, size){
                     '<a title="'+stream_desc+'" href="'+stream_link+'">'+stream_desc+'</a><br>';
 }
 function mv_ext(inx){
-    js_log('f:inx:'+inx);
+    mw.log('f:inx:'+inx);
     //grow the window to 300+240 540
-    js_log('i: is '+ inx);
+    mw.log('i: is '+ inx);
     $j('#mvd_link_'+inx).animate({width:'400px','height':'370px'},1000);
     $j('#mvd_link_im_'+inx).animate({width:'400px','height':'300px'},1000,function(){
         //do mv_embed swap
@@ -190,7 +188,7 @@ function mv_cxt(inx){
 }
 /* toggles advanced search */
 function mv_toggle_advs(){
-    js_log('called mv_toggle_advs:' + $j('#advs').val());
+    mw.log('called mv_toggle_advs:' + $j('#advs').val());
     if($j('#advs').val()=='0'){
         $j('#advs').val('1');
         //sync values from basic -> avanced
@@ -224,7 +222,7 @@ function mv_toggle_advs(){
 }
 function mv_do_disp_adv_search(){
     $j('#tmp_loading_txt').remove();
-    js_log('should fade in: .advs_adv');
+    mw.log('should fade in: .advs_adv');
     $j('.advs_adv').fadeIn('fast', function(){
         $j(this).css('display', 'inline');
     });
@@ -249,7 +247,7 @@ function mv_setup_search_ac(){
         sf_pos = $j('#searchInput').offset();
         sf_pos['top']=sf_pos['top']+40;
         sf_pos['left']=sf_pos['left']-220;
-        //js_log("moved sugest to: " + sf_pos['top'] + ' '+ sf_pos['left']);
+        //mw.log("moved sugest to: " + sf_pos['top'] + ' '+ sf_pos['left']);
         $j('#suggestions').css(sf_pos);
     }
     //add hook:

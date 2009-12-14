@@ -40,7 +40,9 @@ function do_request(){
 	}
 	//additional filtering to avoid directory traversing:
 	$file_req = str_replace(array('../','./'), '', $file_req);
-	if($file_req=='')die('error: missing file name');
+	if($file_req=='')
+		die('error: missing file name');
+
 	$file_loc =BASE_LOCAL_CLIP_PATH.'/'.$file_req;
 	if(!is_file($file_loc))
 		die('error: requested file not found:'. $file_loc);
