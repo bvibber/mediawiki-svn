@@ -340,6 +340,7 @@ $messages['en'] = array(
 	 * js file: /skins/kskin/kskin.js
 	 */
 	'mwe-credit-title' => 'Title: $1',
+	'mwe-kaltura-platform-title' => 'Kaltura open source video platform',
 
 	/*
 	 * js file: /libEmbedPlayer/embedPlayer.js

@@ -21,7 +21,7 @@ var nativeEmbed = {
 	// NOTE: this bug workaround may no longer be applicable	
 	urlAppend:'',
 	
-	// The previus "currentTime" to snif seek actions 
+	// The previous "currentTime" to sniff seek actions 
 	// NOTE the bug where onSeeked does not seem fire consistently may no longer be applicable	 
 	prevCurrentTime: -1,
 	
@@ -36,6 +36,7 @@ var nativeEmbed = {
 		'overlays':true,
 		'playlist_swap_loader':true // if the object supports playlist functions		
 	},	
+	
 	/**
 	* Wraps the embed object and returns the output
 	*/
@@ -47,7 +48,7 @@ var nativeEmbed = {
 	},
 	
 	/**
-	* Get the native embeed  code
+	* Get the native embed  code
 	*/
 	getEmbedObj:function() {
 		// We want to let mwEmbed handle the controls so notice the absence of control attribute

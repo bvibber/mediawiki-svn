@@ -2222,8 +2222,10 @@ if ( document.addEventListener ) {
 }
 // Preserve any existing window.onload binding: 
 var mwOriginalOnLoad;
-if ( window.onload && typeof  window.onload == 'function' ) {
+var mwOrgLoadCheck = false;
+if ( window.onload && typeof  window.onload == 'function' && !mwOrgLoadCheck) {
     mwOriginalOnLoad = window.onload;
+    mwOrgLoadCheck = true;
 }
 // Use the onload method as a backup:
 window.onload = function () {

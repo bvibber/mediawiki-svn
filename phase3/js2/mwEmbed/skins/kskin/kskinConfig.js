@@ -53,6 +53,11 @@ var kskinConfig = {
 				var menuOffset = ( embedObj.getPlayerHeight() <  ctrlObj.getOverlayHeight() ) ? 
 					'top:' + ( embedObj.getPlayerHeight() + ctrlObj.getControlBarHeight() ) + 'px;'  : '';
 														
+				// Special common overflow hack: 
+				// NOTE: should refactor to just append menu to top body when it does not "fit" in the player
+				if(   menuOffset != '' )
+					$j( embedObj ).parents( '.thumbinner' ).css( 'overflow', 'visible' );				
+														
 				var o = '' +
 				'<div class="k-menu ui-widget-content" ' +
 					'style="width:' + ctrlObj.getOverlayWidth() + 'px; height:' +  ctrlObj.getOverlayHeight() + 'px;' + menuOffset + '">' +
@@ -126,8 +131,8 @@ var kskinConfig = {
 				} );
 				$tp.find( '.play-btn-large' ).fadeOut( 'fast' );
 			}
-		} );
-	
+		} );				
+		
 	},
 	
 	/**
@@ -140,10 +145,12 @@ var kskinConfig = {
 		var embedObj = this.embedObj;
 		if ( $j( '#' + embedObj.id + ' .k-menu' ).length != 0 )
 			return false;
-				
+		
+		  
 		$tp.find( '.' + _this.parentClass ).prepend(
 			_this.components[ 'options_menu' ].o( _this )
-		);
+		);		
+		
 		
 		// By default its hidden:
   		$tp.find( '.k-menu' ).hide();
