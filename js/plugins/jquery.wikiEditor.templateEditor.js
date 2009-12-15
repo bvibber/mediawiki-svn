@@ -61,6 +61,52 @@ fn: {
 	create: function( context, config ) {
 		// Initialize module within the context
 	},
+	stylize: function( context ) {
+		var $templates = context.$content.find( '.wiki-template' );
+		$templates.each( function(){
+			if ( typeof $( this ).data( 'model' )  != 'undefined' ) {
+				// We have a model, so all this init stuff has already happened
+				return;
+			}
+			// Hide this
+			$(this).addClass('wikieditor-nodisplay');
+			// Build a model for this
+			$( this ).data( 'model' , new model( $( this ).text() ) );
+			var model = $( this ).data( 'model' );
+			// Expand
+			function expandTemplate($displayDiv){ 
+				// Housekeeping
+				$displayDiv.removeClass( 'wiki-collapsed-template' );
+				$displayDiv.addClass( 'wiki-expanded-template' );
+				$displayDiv.data( 'mode' ) = "expanded";
+				$displayDiv.text( model.getText() );
+			};
+			// Collapse
+			function collapseTemplate($displayDiv){ 
+				// Housekeeping
+				$displayDiv.addClass( 'wiki-collapsed-template' );
+				$displayDiv.removeClass( 'wiki-expanded-template' );
+				$displayDiv.data( 'mode' ) = "collapsed";
+				$displayDiv.text( model.getName() );
+			};
+			// Build the collapsed version of this template
+			var $visibleDiv = $( "<div></div>" ).addClass( 'wikieditor-noinclude' );
+			// Let these two know about eachother
+			$(this).data( 'display' , $visibleDiv );
+			$visibleDiv.data( 'wikitext-node', $(this) );
+			$(this).after( $visibleDiv );			
+			// Add click handler
+			$visibleDiv.click( function(){
+				// Is collapsed, switch to expand
+				if ( $(this).data('mode') == 'collapsed' ) {
+					expandTemplate( $(this) );
+				} else {
+					collapseTemplate( $(this) );
+				}
+			});
+			collapseTemplate( $visibleDiv );
+		});
+	},
 	/**
 	 * Builds a template model from given wikitext representation, allowing object-oriented manipulation of the contents
 	 * of the template while preserving whitespace and formatting.
