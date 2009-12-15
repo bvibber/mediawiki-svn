@@ -5,7 +5,7 @@
  
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = '1.1c';
+var mwRemoteVersion = '1.1d';
 var mwUseScriptLoader = true;
 
 // Setup up request Params: 
@@ -27,6 +27,9 @@ addOnloadHook( function() {
 	}
 } );
 
+/**
+* Page specific rewrites for mediaWiki
+*/
 function doPageSpecificRewrite() {		
 	// Add media wizard
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {			
@@ -104,7 +107,7 @@ function doPageSpecificRewrite() {
 }
 /*
 * This will be depreciated when we update to OggHandler
-* @param {Object} vidIdList List of video ids to proccess
+* @param {Object} vidIdList List of video ids to process
 */
 function rewrite_for_OggHandler( vidIdList ) {
 	function procVidId( vidId ) {		
@@ -183,7 +186,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 
 		}		
 	};
-	// process each item in the vidIdList (with setTimeout to avoid locking)	
+	// Process each item in the vidIdList (with setTimeout to avoid locking)	
 	procVidId( vidIdList.pop() );
 }
 function getRemoteEmbedPath() {
@@ -220,6 +223,7 @@ function mwGetReqArgs() {
 	}
 	return rurl;
 }
+
 /**
 * Load the mwEmbed library:
 *
@@ -254,21 +258,22 @@ function loadMwEmbed( classSet, callback ) {
 			rurl += '&' + mwGetReqArgs();													
 			importScriptURI( rurl );
 		} else { 
-			// Ingore classSet (will be loaded onDemand )
+			// Ignore classSet (will be loaded onDemand )
 			importScriptURI( mwEmbedHostPath + '/mwEmbed/mwEmbed.js?' + mwGetReqArgs() );
 		}
 	}
 	waitMwEmbedReady( callback );
 }
+
 /**
-* waits for mwEmbed to be ready
+* Waits for mwEmbed to be ready
 */
 function waitMwEmbedReady( callback ) {
 	if( ! mwCheckObjectPath( 'mw.version' ) ){
 		setTimeout( function() {
 			waitMwEmbedReady( callback );
 		}, 25 );
-	} else {
+	} else {				
 		// Make sure mwEmbed is "setup" by using the addOnLoadHook: 
 		mw.addOnloadHook( function(){			
 			callback();
@@ -277,6 +282,7 @@ function waitMwEmbedReady( callback ) {
 }
 /**
 * Checks an object path to see if its defined
+* @param {String} libVar The objectPath to be checked
 */
 function mwCheckObjectPath ( libVar ) {
 	if ( !libVar )

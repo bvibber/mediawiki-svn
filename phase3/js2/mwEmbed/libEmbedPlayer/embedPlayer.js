@@ -14,6 +14,9 @@ mw.setConfig( 'video_size', '400x300' );
 // If the k-skin video player should attribute kaltura
 mw.setConfig( 'k_attribution', true );
 
+// The global player list per page
+mw.player_list = new Array();
+
 mw.addMessages( {
 	"mwe-loading_plugin" : "loading plugin ...",
 	"mwe-select_playback" : "Set playback preference",
@@ -271,34 +274,10 @@ mw.setConfig( 'show_player_warning', true );
 		
 		// Pointer to Selector:
 		var j_selector = this.selector;
-				
-		// Process selected elements: 
-		// ie8 does not play well with the jQuery video,audio,playlist selector use native:			
-		if ( $.browser.msie && $j.browser.version >= 8 ) {
-			var ie_compatible_selector = '';
-			var jtags = j_selector.split( ',' );
-			var coma = '';
-			for ( var i = 0; i < jtags.length; i++ ) {
-				if ( jtags[i] === 'video' || 
-					 jtags[i] === 'audio' ||
-					 jtags[i] === 'playlist' ) {
-					// Use native ElementsByTagName selector 
-					$( document.getElementsByTagName( jtags[i] ) ).each( function() {
-						mw.playerManager.addElement( this, attributes);
-					} );					
-				}else{
-					ie_compatible_selector +=  coma + jtags[i]
-					coma = ',';
-				}
-			}
-			//Set the selector to IE compatible set and continue processing
-			j_selector = ie_compatible_selector;			
-		} 
 		
-		// Run the selector
-		$j( j_selector ).each( function() {
-			mw.playerManager.addElement( this, attributes);
-		} );
+		$j( mw.getPlayerTagElements( j_selector ) ).each( function(na, playerElement){
+			mw.playerManager.addElement( playerElement, attributes);
+		} );					
 		
 		// Once we are done adding new players start to check if players are ready:
 		mw.playerManager.waitPlayersReadyCallback(); 
@@ -1676,7 +1655,7 @@ embedPlayer.prototype = {
 						}
 					 }
 				};
-			} ); // end do_api_req
+			} ); // end $j.getJSON
 		};
 	},
 	
@@ -3193,7 +3172,7 @@ mediaPlayers.prototype =
 	*/
 	setFormatPreference : function ( mime_format ) {
 		 this.preference['format_preference'] = mime_format;
-		 this.savePreferences();
+		 mw.setUserConfig( 'playerPref', this.preference);		 
 	},
 	
 	/**
@@ -3208,8 +3187,9 @@ mediaPlayers.prototype =
 			if ( this.players[i].id == player_id ) {
 				selected_player = this.players[i];
 				mw.log( 'choosing ' + player_id + ' for ' + mime_type );
-				this.preference[mime_type] = player_id;
-				this.savePreferences();
+				this.preference[ mime_type ] = player_id;
+				
+				mw.setUserConfig( 'playerPref', this.preference);
 				break;
 			}
 		}
@@ -3231,30 +3211,8 @@ mediaPlayers.prototype =
 	loadPreferences : function ( ) { 
 		this.preference = new Object();
 		// see if we have a cookie set to a clientSupported type:
-		var cookieVal = $j.cookie( 'ogg_player_exp' );
-		if ( cookieVal ) {
-			var pairs = cookieVal.split( '&' );
-			for ( var i = 0; i < pairs.length; i++ )
-			{
-				var name_value = pairs[i].split( '=' );
-				this.preference[name_value[0]] = name_value[1];
-				// mw.log('load preference for ' + name_value[0] + ' is ' + name_value[1]);
-			}
-		}
-	},
-	
-	/**
-	* Saves the user preference settings to a cookie
-	*/	
-	savePreferences : function() {
-		var cookieVal = '';
-		for ( var i in this.preference )
-			cookieVal += i + '=' + this.preference[i] + '&';
-			
-		cookieVal = cookieVal.substr( 0, cookieVal.length -1 );
-		var week = 7 * 86400 * 1000;
-		$j.cookie( 'ogg_player_exp', cookieVal, { 'expires':week } );
-	}
+		mw.setUserConfig( 'playerPref' );
+	}	
 };
 
 /**

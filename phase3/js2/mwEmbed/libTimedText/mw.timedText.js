@@ -6,11 +6,14 @@
  * 	timed text loading request
  *  timed text edit requests
  * 	timed text search & seek interface ( version 2 ) 
+ *
+ * @author: Michael Dale
  * 
  * Some code borrowed from: http://www.annodex.net/~silvia/itext/elephant_no_skin_v2.html
  * ( Licenced under: MPL 1.1/GPL 2.0/LGPL 2.1 )
  * Contributor(s):
  *  Silvia Pfeiffer <silvia@siliva-pfeiffer.de>
+ *
  */ 
 
 mw.addMessages( {
@@ -106,8 +109,7 @@ mw.addMessages( {
 			
 		/**
 		 * @constructor
-		 * @param {Object} embedPlayer Host player for timedText interfaces 
-		 * 
+		 * @param {Object} embedPlayer Host player for timedText interfaces  
 		 */
 		init: function( embedPlayer, options ){
 			var _this = this;
@@ -120,7 +122,7 @@ mw.addMessages( {
 			embedPlayer.addHook( 'monitor', function(){
 				_this.monitor();
 			} )	
-			// @@TODO: Load cookie / page prefrences
+			// @@TODO: Load cookie / page preferences
 		
 			// Load textSources
 			_this.loadTextSources( function(){
@@ -137,12 +139,17 @@ mw.addMessages( {
 		/**
 		* Monitor video time and update timed text filed[s]  
 		*/ 
-		monitor: function(){
-			mw.log(' timedText monitor ');
+		monitor: function( embedPlayer ){
+			//setup local refrence to currentTime: 
+			var currentTime = embedPlayer.currentTime;
+			
+			for( var i in enabledSource) {
+				
+			}
 		},
 		
 		/**
-		 * Loads all the avaliable text sources from the inline embed
+		 * Loads all the available text sources from the inline embed
 		 * 	or from a timedTextProvider
 		 */
 		loadTextSources: function( callback ){
@@ -210,7 +217,7 @@ mw.addMessages( {
 		},
 		
 		/**
-		* Selection of a meun item
+		* Selection of a menu item
 		* 
 		* @param {Element} item Item selected
 		*/
@@ -395,10 +402,12 @@ mw.addMessages( {
 				this[i] = source[i];	
 			}			
 		},
+		
 		/**
 		 * Function to load and parse the source text
 		 */
 		load: function(){
+			var _this = this;
 			// Set parser handler: 
 			switch( this.getMIMEType() ){
 				case 'text/x-srt':				
@@ -420,7 +429,7 @@ mw.addMessages( {
 			//	mw.log("Error can't load non-json src via jsonp:" + this.getSrc() )
 			//	return ;
 			//} 
-			$j.get( this.getSrc(), function(){		
+			$j.get( this.getSrc(), function( data ){		
 				// Parse and load captions:
 				_this.captions = handler( data );
 				// Update the loaded state:

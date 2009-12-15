@@ -1,6 +1,7 @@
 /*
-	mvClipEdit hanndles the edit interfaces for images and video
+*	mvClipEdit handles the edit interfaces for images and video
 */
+
 // set gMsg object:
 mw.addMessages( {
 	"mwe-crop" : "Crop image",
@@ -32,7 +33,7 @@ mw.addMessages( {
 } );
 
 /**
-* The default clipedit values
+* The default clipEdit values
 */
 var default_clipedit_values = {
 	

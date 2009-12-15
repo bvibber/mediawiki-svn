@@ -402,8 +402,8 @@ mvBaseUploadInterface.prototype = {
 
 		// Reset the done with action flag
 		_this.action_done = false;
-
-		//do the api request
+		
+		// Do the api request:
 		mw.getJSON(_this.api_url, request, function( data ) {
 			_this.processApiResult( data );
 		});
