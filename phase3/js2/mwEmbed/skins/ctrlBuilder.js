@@ -79,11 +79,10 @@ ctrlBuilder.prototype = {
 			_this.supports[i] = embedObj.supports[i];
 		};
 
-		// Check for timed Text:
-		if ( ( embedObj.roe || embedObj.wikiTitleKey ||
-				( embedObj.mediaElement.checkForTextSource &&
-				embedObj.mediaElement.checkForTextSource() )
-			)  && embedObj.show_meta_link  ){
+		// Check for timed text		
+		if ( ( embedObj.roe || embedObj.wikiTitleKey ||				
+				embedObj.mediaElement.textSourceExists() )
+			 && embedObj.show_meta_link  ){
 			this.supports['timed_text'] = true;
 		}
 

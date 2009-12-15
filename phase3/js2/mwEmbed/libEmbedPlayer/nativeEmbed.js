@@ -396,7 +396,7 @@ var nativeEmbed = {
 	*/
 	onloadedmetadata: function() {
 		this.getPlayerElement();
-		mw.log( 'f:onloadedmetadata metadata ready (update duration)' );
+		mw.log( 'f:onloadedmetadata metadata ready Update duration:' + this.playerElement.duration);
 		// update duration if not set (for now trust the getDuration more than this.playerElement.duration		
 		if ( this.getDuration() == 0  &&  ! isNaN( this.playerElement.duration ) ) {
 			mw.log( 'updaed duration via native video duration: ' + this.playerElement.duration )

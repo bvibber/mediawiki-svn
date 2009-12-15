@@ -1187,8 +1187,8 @@ var global_req_cb = new Array(); // The global request callback array
 		mw.log("run getJSON: " + url + ' data: ' +  data);
 		// Pass off the jQuery getJSON request:
 		$j.getJSON( url, data, callback );		
-	}	
-			
+	}		
+	
 	/**
 	* Metavid spefic roe request helper function
 	* 
@@ -2099,7 +2099,7 @@ mw.addClassStyleSheets( {
 */
 
 /**
- * Default module configuration 
+ * Default player module configuration 
  */
  
 // What tags will be re-written to video player by default
