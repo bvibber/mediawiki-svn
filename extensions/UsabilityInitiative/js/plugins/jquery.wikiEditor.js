@@ -531,10 +531,15 @@ if ( typeof context == 'undefined' ) {
 		 * @param force If true, scroll the element even if it's already visible
 		 */
 		'scrollToTop': function( $element, force ) {
-			var html = context.$content.closest( 'html' );
+			var html = context.$content.closest( 'html' ),
+				body = context.$content.closest( 'body' );
 			var y = $element.offset().top - context.$content.offset().top;
-			if ( force || y < html.scrollTop() || y > html.scrollTop() + context.$iframe.height() )
-				html.scrollTop( y );
+			if ( force || y < html.scrollTop() || y < body.scrollTop() 
+				|| y > html.scrollTop() + context.$iframe.height() 
+				|| y > body.scrollTop() + context.$iframe.height() ) {
+					html.scrollTop( y );
+					body.scrollTop( y );
+				}
 			$element.trigger( 'scrollToTop' );
 		},
 		/**
