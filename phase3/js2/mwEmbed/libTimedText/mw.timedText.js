@@ -70,7 +70,7 @@ mw.addMessages( {
 		/**
 		 * The list of enabled sources
 		 */
-		enabledSources: { },
+		enabledSources: [ ],
 		
 		/**
 		* Text sources ( a set of textSource objects )
@@ -120,8 +120,8 @@ mw.addMessages( {
 			embedPlayer.addHook( 'monitor', function(){
 				_this.monitor();
 			} )	
-			// Load cookie / page prefrences
-			// 		
+			// @@TODO: Load cookie / page prefrences
+		
 			// Load textSources
 			_this.loadTextSources( function(){
 			
@@ -153,7 +153,8 @@ mw.addMessages( {
 				// make a new textSource:
 				var source = new textSource( inlineSources[i] );
 				this.textSources.push( source );
-			}
+			}			
+			callback();
 		},
 		
 		/**
@@ -178,7 +179,7 @@ mw.addMessages( {
 			for(var i in this.enabledSources ){
 				var enabledSource = this.enabledSources[ i ];
 				if( ! enabledSource.loaded )
-					this.loadAndParseSource( enabledSource );	
+					enabledSource.load();	
 			}
 		},
 		
@@ -312,7 +313,7 @@ mw.addMessages( {
 		*/		
 		getLayoutMenu: function(){
 			var _this = this;
-			var layoutOptions = [ 'ontop', 'off', 'below' ];
+			var layoutOptions = [ 'ontop', 'below', 'off' ];
 			$ul = $j('<ul>');
 			$j.each(layoutOptions, function( na, layoutMode ){
 				var icon = ( _this.config.layout == layoutMode )? 'bullet' : 'radio-on';   
@@ -415,11 +416,11 @@ mw.addMessages( {
 				return ;
 			}
 			// Issue the load request ( if we can ) 
-			if ( mw.parseUri( document.URL ).host != mw.parseUri( this.getSrc() ).host ){
-				mw.log("Error can't load non-json src via jsonp:" + this.getSrc() )
-				return ;
-			} 
-			var XHR = $j.get( this.getSrc(), function(){		
+			//if ( mw.parseUri( document.URL ).host != mw.parseUri( this.getSrc() ).host ){
+			//	mw.log("Error can't load non-json src via jsonp:" + this.getSrc() )
+			//	return ;
+			//} 
+			$j.get( this.getSrc(), function(){		
 				// Parse and load captions:
 				_this.captions = handler( data );
 				// Update the loaded state:
