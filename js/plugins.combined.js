@@ -1570,7 +1570,7 @@ if ( typeof context == 'undefined' ) {
 			switch ( event.type ) {
 				case 'keypress':
 					if ( /* TODO: test if something interesting was deleted */ true ) {
-						event.data.scope = 'division';
+						event.data.scope = 'keydown';
 					} else {
 						event.data.scope = 'character';
 					}
@@ -1696,7 +1696,13 @@ if ( typeof context == 'undefined' ) {
 			}
 			// We use .html() instead of .text() so HTML entities are handled right
 			// Setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
-			return $( '<div />' ).html( context.$content.html().replace( /\<br\>/g, "\n" ) ).text();
+			
+			
+			//get rid of the noincludes when getting text
+			var $dummyDiv = $( '<div />' ).html( context.$content.html().replace( /\<br\>/g, "\n" ) );
+			$dummyDiv.find( ".wiki-editor-noinclude" ).each( function() { $( this ).remove(); } );
+			return $dummyDiv.text();
+			
 		},
 		/**
 		 * Sets the complete contents of the iframe (in plain text, not HTML; HTML passed will be converted to entities)
@@ -1835,10 +1841,10 @@ if ( typeof context == 'undefined' ) {
 		 * @param force If true, scroll the element even if it's already visible
 		 */
 		'scrollToTop': function( $element, force ) {
-			var body = context.$content.closest( 'body' );
+			var html = context.$content.closest( 'html' );
 			var y = $element.offset().top - context.$content.offset().top;
-			if ( force || y < body.scrollTop() || y > body.scrollTop() + body.height() )
-				body.scrollTop( y );
+			if ( force || y < html.scrollTop() || y > html.scrollTop() + context.$iframe.height() )
+				html.scrollTop( y );
 			$element.trigger( 'scrollToTop' );
 		},
 		/**
