@@ -29,7 +29,7 @@ $messages['en'] = array(
 	'configure-ext-settings-dep-error'    => '$1: required value: $2, current value: $3',
 	'configure-ext-use-extension'         => 'Use this extension',
 	'configure-ext-use'                   => 'Use',
-	'configure-form-reason'               => 'Reason for change:',
+	'configure-form-reason'               => 'Reason:',
 	'configure-customised'                => "''This setting has been customised''",
 
 	'configure-arrayinput-oneperline'     => "''(one per line)''",
