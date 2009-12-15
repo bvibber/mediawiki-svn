@@ -2168,7 +2168,6 @@ evt: {
 			'type': 'text/css',
 			'href': wgScriptPath + '/extensions/UsabilityInitiative/css/wikiEditor.highlight.css',
 		} ) );
-		
 		// Highlight stuff for the first time
 		$.wikiEditor.modules.highlight.fn.scan( context, "" );
 		$.wikiEditor.modules.highlight.fn.mark( context, "", "" );
@@ -2227,8 +2226,9 @@ fn: {
 			this.offset = offset;
 			this.label = label;
 		}
+		// Reset tokens
+		var tokenArray = context.modules.highlight.tokenArray = [];
 		// We need to look over some text and find interesting areas, then return the positions of those areas as tokens
-		context.modules.highlight.tokenArray = [];
 		var text = context.fn.getContents();
 		for ( module in $.wikiEditor.modules ) {
 			if ( 'exp' in $.wikiEditor.modules[module] ) {
@@ -2246,7 +2246,7 @@ fn: {
 						if ( markAfter ) {
 							markOffset += match[0].length;
 						}
-						context.modules.highlight.tokenArray.push(
+						tokenArray.push(
 							new Token( match.index + oldOffset + markOffset, label )
 						);
 						oldOffset += match.index + match[0].length;
@@ -2256,9 +2256,8 @@ fn: {
 				}
 			}
 		}
-		
-		context.modules.highlight.tokenArray.sort( function( a, b ) { return a.offset - b.offset; } );
-		return context.modules.highlight.tokenArray; // array of tokens
+		tokenArray.sort( function( a, b ) { return a.offset - b.offset; } );
+		context.fn.trigger( 'scan' );
 	},
 	/**
 	 * Marks up text with HTML
@@ -2268,26 +2267,19 @@ fn: {
 	 */
 	// FIXME: What do division and tokens do?
 	mark: function( context, division, tokens ) {
+		// Reset markers
+		var markers = context.modules.highlight.markers = [];
 		// Get all markers
-		context.modules.highlight.markers = [];
-		for ( module in $.wikiEditor.modules ) {
-			if ( 'evt' in $.wikiEditor.modules[module]  && 'mark' in $.wikiEditor.modules[module].evt ) {
-				$.wikiEditor.modules[module].evt.mark( context ); // FIXME: event?
-			}
-		}
-		var markers = context.modules.highlight.markers;
+		context.fn.trigger( 'mark' );
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
-		
-		// Traverse the iframe DOM, inserting markers where they're needed
-		// The loop traverses all leaf nodes in the DOM, and uses DOM methods
-		// rather than jQuery because it has to work with text nodes and for performance
+		// Traverse the iframe DOM, inserting markers where they're needed. The loop traverses all leaf nodes in the
+		// DOM, and uses DOM methods rather than jQuery because it has to work with text nodes and for performance.
 		var pos = 0;
 		var node = context.$content.get( 0 );
 		var next = null;
 		var i = 0; // index for markers[]
 		var startNode = null;
 		var depth = 0, nextDepth = 0, startDepth = null;
-		
 		// Find the leftmost leaf node in the tree
 		while ( node.firstChild ) {
 			node = node.firstChild;
@@ -2307,17 +2299,16 @@ fn: {
 				nextDepth++;
 			}
 			next = p;
-			
 			if ( node.nodeName != '#text' ) {
-				if ( node.nodeName == 'BR' )
+				if ( node.nodeName == 'BR' ) {
 					pos++;
+				}
 				// Skip this node
 				node = next;
 				depth = nextDepth;
 				continue;
 			}
 			var newPos = pos + node.nodeValue.length;
-			
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or end halfway one.
 			if ( !startNode && markers[i].start >= pos && markers[i].start < newPos ) {
@@ -2332,30 +2323,22 @@ fn: {
 				startNode = node;
 				startDepth = depth;
 			}
-			
 			// TODO: What happens when wrapping a zero-length string?
 			// TODO: Detect that something's already been wrapped and leave it alone
 			if ( startNode && markers[i].end > pos && markers[i].end <= newPos ) {
 				// The marker ends somewhere in this textNode
 				if ( markers[i].end < newPos ) {
-					// Split off the suffix
-					// This puts the suffix in a new node and leaves the rest
-					// in the current node. We have to make sure the split-off
-					// node will be visited correctly
-					
+					// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
+					// node. We have to make sure the split-off node will be visited correctly
 					// node.nodeValue.length - ( newPos - markers[i].end )
 					next = node.splitText( node.nodeValue.length - newPos + markers[i].end );
 					newPos = markers[i].end;
 				}
-				
-				// Now wrap everything between startNode and node (may be equal).
-				// First find the common ancestor of startNode and node.
-				// ca1 and ca2 will be children of this common ancestor, such that
-				// ca1 is an ancestor of startNode and ca2 of node.
-				// We also check that startNode and node are the leftmost and rightmost
-				// leaves in the subtrees rooted at ca1 and ca2 respectively; if this is
-				// not the case, we can't cleanly wrap things without misnesting and we
-				// silently fail.
+				// Now wrap everything between startNode and node (may be equal). First find the common ancestor of
+				// startNode and node. ca1 and ca2 will be children of this common ancestor, such that ca1 is an
+				// ancestor of startNode and ca2 of node. We also check that startNode and node are the leftmost and
+				// rightmost leaves in the subtrees rooted at ca1 and ca2 respectively; if this is not the case, we
+				// can't cleanly wrap things without misnesting and we silently fail.
 				var ca1 = startNode, ca2 = node;
 				// Correct for startNode and node possibly not having the same depth
 				if ( startDepth > depth ) {
@@ -2377,38 +2360,37 @@ fn: {
 						ca2 = ca2.parentNode;
 					}
 				}
-				
 				if ( ca1 && ca2 ) {
-					// We have to store things like .parentNode and .nextSibling
-					// because appendChild() changes these properties
+					// We have to store things like .parentNode and .nextSibling because appendChild() changes these
+					// properties
 					var newNode = markers[i].wrapElement;
-					if ( typeof newNode == 'function' )
+					if ( typeof newNode == 'function' ) {
 						newNode = newNode();
-					if ( newNode.jquery )
+					}
+					if ( newNode.jquery ) {
 						newNode = newNode.get( 0 );
+					}
 					var commonAncestor = ca1.parentNode;
 					var nextNode = ca2.nextSibling;
-					
-					// Append all nodes between ca1 and ca2 (inclusive)
-					// to newNode
+					// Append all nodes between ca1 and ca2 (inclusive) to newNode
 					var n = ca1;
 					while ( n != nextNode ) {
 						var ns = n.nextSibling;
 						newNode.appendChild( n );
 						n = ns;
 					}
-					
 					// Insert newNode in the right place
-					if ( nextNode )
+					if ( nextNode ) {
 						commonAncestor.insertBefore( newNode, nextNode );
-					else
+					} else {
 						commonAncestor.appendChild( newNode );
+					}
 				}
-				startNode = null; // Clear for next iteration
+				// Clear for next iteration
+				startNode = null;
 				startDepth = null;
 				i++;
 			}
-			
 			pos = newPos;
 			node = next;
 			depth = nextDepth;
@@ -2671,59 +2653,39 @@ fn: {
  */
 evt: {
 	mark: function( context, event ) {
-		// This is shared by both the closure findOutermostTemplates and the calling code - is this a good idea?
-		var i = 0;
-		/**
-		 * Finds the left and right character positions of the outer-most template declaration, playing nicely with
-		 * nested template calls of any depth. This function acts as an iterator, which is why the i var is shared - but
-		 * this seems a bit scary seeing as 'i' is so often used in loops.
-		 * 
-		 * @param tokenStack Array of tokens to find boundries within
-		 */
-		function findOutermostTemplates( tokenStack ) {
-			var templateBeginFound = false;
-			for ( ; i < tokenStack.length; i++ ) {
-				if ( tokenStack[i].label == 'TEMPLATE_BEGIN' ) {
-					templateBeginFound = true;
-					break;
-				}
-			}
-			var j = i++;
-			if ( !templateBeginFound ) {
-				return false;
-			} else {
-				// This is only designed to find the outermost template boundaries, the model handles nested template
-				// and template-like objects better
-				var nestedBegins = 1;
-				while ( nestedBegins > 0  && j < tokenStack.length ) {
-					var label = tokenStack[++j].label;
-					nestedBegins += label == 'TEMPLATE_END' ? -1 : label == 'TEMPLATE_BEGIN' ? 1 : 0;
-				}
-				if ( nestedBegins == 0 ) {
-					// Outer template begins at tokenStack[i].offset and ends at tokenStack[j].offset + 2
-					var leftMarker = i -1;
-					var rightMarker = j;
-					i = j;
-					return [leftMarker, rightMarker];
-				} else {
-					return false;
-				}
-			}
-		};
-		// Get the markers and tokens from the current context
+		// Get refrences to the markers and tokens from the current context
 		var markers = context.modules.highlight.markers;
-		var tokenStack = context.modules.highlight.tokenArray;
-		// Scan through and detect the boundries of template calls
-		var templateBeginFound = false;
-		var templateBoundaries;
-		while ( templateBoundaries = findOutermostTemplates( tokenStack ) ) {
-			context.modules.highlight.markers.push( {
-				start: tokenStack[templateBoundaries[0]].offset,
-				end: tokenStack[templateBoundaries[1]].offset,
-				wrapElement: function() {
-					return $( '<div />' ).addClass( 'wikiEditor-highlight-template' );
+		var tokenArray = context.modules.highlight.tokenArray;
+		// Collect matching level 0 template call boundries from the tokenArrray
+		var level = 0;
+		var boundries = [];
+		var boundry = 0;
+		for ( token in tokenArray ) {
+			if ( tokenArray[token].label == 'TEMPLATE_BEGIN' ) {
+				if ( level++ == 0 ) {
+					boundry = boundries.push( { 'begin': tokenArray[token].offset } ) - 1;
 				}
-			} );
+			} else if ( tokenArray[token].label == 'TEMPLATE_END' ) {
+				if ( --level == 0 ) {
+					boundries[boundry].end = tokenArray[token].offset;
+				}
+			}
+		}
+		// Add encapsulations to markers at the offsets of matching sets of level 0 template call boundries
+		for ( boundry in boundries ) {
+			if ( 'begin' in boundries[boundry] && 'end' in boundries[boundry] ) {
+				// Ensure arrays exist at the begining and ending offsets for boundry
+				if ( !( boundries[boundry].begin in markers ) ) {
+					markers[boundries[boundry].begin] = [];
+				}
+				if ( !( boundries[boundry].end in markers ) ) {
+					markers[boundries[boundry].end] = [];
+				}
+				// Append boundry markers
+				markers[boundries[boundry].begin].push( "<div class='wiki-template'>" );
+				markers[boundries[boundry].end].push( "</div>" );
+	
+			}
 		}
 	}
 },
@@ -2975,15 +2937,17 @@ fn: {
 				valueEndIndex = valueEnd.index + oldDivider + 2;
 				ranges.push( new Range( ranges[ranges.length-1].end,
 					valueBeginIndex ) ); //all the chars upto now
-				nameIndex = ranges.push( new Range( valueBeginIndex, valueBeginIndex ) );
-				nameIndex--;
-				equalsIndex = ranges.push( new Range( valueBeginIndex, valueBeginIndex ) );
-				equalsIndex--;
-				valueIndex = ranges.push( new Range( valueBeginIndex, valueEndIndex ) );
-				valueIndex--;
-				params.push( new Param( currentParamNumber,
+				nameIndex = ranges.push( new Range( valueBeginIndex, valueBeginIndex ) ) - 1;
+				equalsIndex = ranges.push( new Range( valueBeginIndex, valueBeginIndex ) ) - 1;
+				valueIndex = ranges.push( new Range( valueBeginIndex, valueEndIndex ) ) - 1;
+				params.push( new Param(
+					currentParamNumber,
 					wikitext.substring( ranges[valueIndex].begin, ranges[valueIndex].end ),
-					currentParamNumber, nameIndex, equalsIndex, valueIndex ) );
+					currentParamNumber,
+					nameIndex,
+					equalsIndex,
+					valueIndex
+				) );
 				paramsByName[currentParamNumber] = currentParamNumber;
 			} else {
 				// There's an equals, could be comment or a value pair

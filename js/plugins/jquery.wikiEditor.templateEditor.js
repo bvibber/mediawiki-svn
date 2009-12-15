@@ -6,59 +6,39 @@
  */
 evt: {
 	mark: function( context, event ) {
-		// This is shared by both the closure findOutermostTemplates and the calling code - is this a good idea?
-		var tokenIterator = 0;
-		/**
-		 * Finds the left and right character positions of the outer-most template declaration, playing nicely with
-		 * nested template calls of any depth. This function acts as an iterator, which is why the i var is shared - but
-		 * this seems a bit scary seeing as 'i' is so often used in loops.
-		 * 
-		 * @param tokenStack Array of tokens to find boundries within
-		 */
-		function findOutermostTemplates( tokenStack ) {
-			var templateBeginFound = false;
-			for ( ; tokenIterator < tokenStack.length; tokenIterator++ ) {
-				if ( tokenStack[tokenIterator].label == 'TEMPLATE_BEGIN' ) {
-					templateBeginFound = true;
-					break;
-				}
-			}
-			var j = tokenIterator++;
-			if ( !templateBeginFound ) {
-				return false;
-			} else {
-				// This is only designed to find the outermost template boundaries, the model handles nested template
-				// and template-like objects better
-				var nestedBegins = 1;
-				while ( nestedBegins > 0  && j < tokenStack.length ) {
-					var label = tokenStack[++j].label;
-					nestedBegins += label == 'TEMPLATE_END' ? -1 : label == 'TEMPLATE_BEGIN' ? 1 : 0;
-				}
-				if ( nestedBegins == 0 ) {
-					// Outer template begins at tokenStack[i].offset and ends at tokenStack[j].offset + 2
-					var leftMarker = tokenIterator -1;
-					var rightMarker = j;
-					tokenIterator = j;
-					return [leftMarker, rightMarker];
-				} else {
-					return false;
-				}
-			}
-		};
-		// Get the markers and tokens from the current context
+		// Get refrences to the markers and tokens from the current context
 		var markers = context.modules.highlight.markers;
-		var tokenStack = context.modules.highlight.tokenArray;
-		// Scan through and detect the boundries of template calls
-		var templateBeginFound = false;
-		var templateBoundaries;
-		while ( templateBoundaries = findOutermostTemplates( tokenStack ) ) {
-			context.modules.highlight.markers.push( {
-				start: tokenStack[templateBoundaries[0]].offset,
-				end: tokenStack[templateBoundaries[1]].offset,
-				wrapElement: function() {
-					return $( '<div />' ).addClass( 'wikiEditor-highlight-template' );
+		var tokenArray = context.modules.highlight.tokenArray;
+		// Collect matching level 0 template call boundries from the tokenArrray
+		var level = 0;
+		var boundries = [];
+		var boundry = 0;
+		for ( token in tokenArray ) {
+			if ( tokenArray[token].label == 'TEMPLATE_BEGIN' ) {
+				if ( level++ == 0 ) {
+					boundry = boundries.push( { 'begin': tokenArray[token].offset } ) - 1;
 				}
-			} );
+			} else if ( tokenArray[token].label == 'TEMPLATE_END' ) {
+				if ( --level == 0 ) {
+					boundries[boundry].end = tokenArray[token].offset;
+				}
+			}
+		}
+		// Add encapsulations to markers at the offsets of matching sets of level 0 template call boundries
+		for ( boundry in boundries ) {
+			if ( 'begin' in boundries[boundry] && 'end' in boundries[boundry] ) {
+				// Ensure arrays exist at the begining and ending offsets for boundry
+				if ( !( boundries[boundry].begin in markers ) ) {
+					markers[boundries[boundry].begin] = [];
+				}
+				if ( !( boundries[boundry].end in markers ) ) {
+					markers[boundries[boundry].end] = [];
+				}
+				// Append boundry markers
+				markers[boundries[boundry].begin].push( "<div class='wiki-template'>" );
+				markers[boundries[boundry].end].push( "</div>" );
+	
+			}
 		}
 	}
 },
@@ -90,69 +70,6 @@ fn: {
 	model: function( wikitext ) {
 		
 		/* Private Functions */
-	},
-
-	
-	stylize: function( context ) {
-		var $templates = context.$content.find( ".wiki-template" );
-		$templates.each( function(){
-			if( typeof $( this ).data( 'model' )  != 'undefined' ){
-				//we have a model, so all this init stuff has already happened
-				return;
-			}
-			
-			//hide this
-			$(this).addClass('wikieditor-nodisplay');
-			
-			//build a model for this
-			$( this ).data( 'model' , new model( $( this ).text() ) );
-			var model = $( this ).data( 'model' );
-			
-			
-			//expand
-			function expandTemplate($displayDiv){ 
-				//housekeeping
-				$displayDiv.removeClass('wiki-collapsed-template');
-				$displayDiv.addClass('wiki-expanded-template');
-				$displayDiv.data('mode') = "expanded";
-				
-				$displayDiv.text( model.getText() );
-				
-			};
-			
-			//collapse
-			function collapseTemplate($displayDiv){ 
-				//housekeeping
-				$displayDiv.addClass('wiki-collapsed-template');
-				$displayDiv.removeClass('wiki-expanded-template');
-				$displayDiv.data('mode') = "collapsed";
-				
-				$displayDiv.text( model.getName() );
-				
-			};
-			
-			//build the collapsed version of this template
-			var $visibleDiv = $( "<div></div>" ).addClass( 'wikieditor-noinclude' );
-			
-			//let these two know about eachother
-			$(this).data( 'display' , $visibleDiv );
-			$visibleDiv.data('wikitext-node', $(this));
-			$(this).after( $visibleDiv );
-			
-			//onClick
-			$visibleDiv.click( function(){
-				//is collapsed, switch to expand
-				if( $(this).data('mode') == 'collapsed' ){
-					expandTemplate( $(this) );
-				}
-				else{
-					collapseTemplate( $(this) );
-				}
-			});//click
-			
-			collapseTemplate($visibleDiv);
-		});	
-	},
 		
 		/**
 		 * Builds a Param object.
@@ -373,15 +290,17 @@ fn: {
 				valueEndIndex = valueEnd.index + oldDivider + 2;
 				ranges.push( new Range( ranges[ranges.length-1].end,
 					valueBeginIndex ) ); //all the chars upto now
-				nameIndex = ranges.push( new Range( valueBeginIndex, valueBeginIndex ) );
-				nameIndex--;
-				equalsIndex = ranges.push( new Range( valueBeginIndex, valueBeginIndex ) );
-				equalsIndex--;
-				valueIndex = ranges.push( new Range( valueBeginIndex, valueEndIndex ) );
-				valueIndex--;
-				params.push( new Param( currentParamNumber,
+				nameIndex = ranges.push( new Range( valueBeginIndex, valueBeginIndex ) ) - 1;
+				equalsIndex = ranges.push( new Range( valueBeginIndex, valueBeginIndex ) ) - 1;
+				valueIndex = ranges.push( new Range( valueBeginIndex, valueEndIndex ) ) - 1;
+				params.push( new Param(
+					currentParamNumber,
 					wikitext.substring( ranges[valueIndex].begin, ranges[valueIndex].end ),
-					currentParamNumber, nameIndex, equalsIndex, valueIndex ) );
+					currentParamNumber,
+					nameIndex,
+					equalsIndex,
+					valueIndex
+				) );
 				paramsByName[currentParamNumber] = currentParamNumber;
 			} else {
 				// There's an equals, could be comment or a value pair
