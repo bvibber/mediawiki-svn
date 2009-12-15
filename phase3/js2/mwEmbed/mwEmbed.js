@@ -708,6 +708,56 @@ var global_req_cb = new Array(); // The global request callback array
 		for ( var i in magicSet )
 			pMagicSet[ i ] = magicSet[i];
 	}
+	
+	/**
+	* Add a hook system for a target object / interface	
+	*
+	* This can be used as an alternative to heavy inheritance systems.
+	*
+	* @param {Object} targetObj Interface Object to add hook system to.   
+	*/
+	$.addHookSystem = function( targetObj ){
+	
+		// Setup the target object hook holder:
+		targetObj[ 'hooks' ] = { };
+		 
+		/**
+		* Adds a hook to the target object
+		* 
+		* Should be called by clients to setup named hooks
+		*
+		* @param {String} hookName Name of hook to be added
+		* @param {Function} hookFunction Function to be called at hook time
+		*/
+		targetObj.addHook = function( hookName, hookFunction ){
+			if( ! this.hooks[ hookName ] )
+				this.hooks[ hookName ] = [ ];
+			this.hooks[ hookName ].push( hookFunction )
+		}
+		
+		/**
+		* Runs all the hooks by a given name with refrence to the host object
+		*
+		* Should be called by the host object at named execution points 
+		* 
+		* @param {String} hookName Name of hook to be called
+		* @return Value of hook result 
+		* 	true interface should continue function execution
+		*	false interface should stop or return from method
+		*/
+		targetObj.runHook = function( hookName ){
+			if( this.hooks[ hookName ] ){
+				for( var i in this.hooks[ hookName ]){
+					if( typeof( this.hooks[ hookName ][ i ] ) == 'function'){
+						return this.hooks[ hookName ][ i ]( this );
+					}
+				}
+			}
+		}
+	} 
+	
+	
+	
 	/**
 	* The loader prototype:
 	*/
@@ -805,7 +855,7 @@ var global_req_cb = new Array(); // The global request callback array
 			}
 			
 			//possible error? 
-			mw.log( "Error could not handle load request" );
+			mw.log( "Error could not handle load request: " + loadRequest );
 		},
 		
 		
@@ -974,7 +1024,7 @@ var global_req_cb = new Array(); // The global request callback array
 								
 			// Check for any associated style sheets that should be loaded 
 			if( typeof this.stylePaths[ className ] != 'undefined' ){
-				$.getStyleSheet( this.stylePaths[ className ] );
+				$.getStyleSheet( mw.getMwEmbedPath() + this.stylePaths[ className ] );
 			}
 			
 			// Include class defined check for older browsers
@@ -2091,7 +2141,8 @@ mw.addClassFilePaths( {
 // Add style sheet dependencies
 mw.addClassStyleSheets( {
 	"kskinConfig" : "skins/kskin/playerSkin.css",
-	"mvpcfConfig" : "skins/mvpcf/playerSkin.css"
+	"mvpcfConfig" : "skins/mvpcf/playerSkin.css",
+	"$j.menu" 	: "libTimedText/jQuery.menu.css"
 } );
 
 // Add the module loader function:

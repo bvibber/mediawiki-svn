@@ -18,35 +18,56 @@ var allUIMenus = [];
 (function($) {
 	
 
-$.fn.menu = function(options){
+$.fn.menu = function( options ){
 	var caller = this;
 	var options = options;
-	var m = new Menu(caller, options);	
-	allUIMenus.push(m);
 	
-	$(this)
-	.mousedown(function(){
-		if (!m.menuOpen) { m.showLoading(); };
-	})	
-	.click(function(){
-		if (m.menuOpen == false) { m.showMenu(); }
-		else { m.kill(); };
-		return false;
-	});	
+	if( ! caller.m ){ 	
+		caller.m = new Menu(caller, options);	
+		allUIMenus.push( caller.m );
+		
+		//Check for autoShow menu option
+		if( options.autoShow )
+			caller.m.showMenu();
+	
+		//Set up bindings: 
+		$(this)
+		.mousedown(function(){
+			if (!caller.m.menuOpen) { caller.m.showLoading(); };
+		})	
+		.click(function(){
+			if (caller.m.menuOpen == false) { caller.m.showMenu(); }
+			else { caller.m.kill(); };
+			return false;
+		});
+	}
+	//Else process the request:   
+	if( options == 'show' )	
+		caller.m.showMenu();	
 };
 
 function Menu(caller, options){
 	var menu = this;
 	var caller = $(caller);
-	var container = $('<div class="fg-menu-container ui-widget ui-widget-content ui-corner-all">'+options.content+'</div>');
+	
+	mw.log( 'target container: ' + options.targetContainer );
+	 
+	var callerClassList = 'fg-menu-container ui-widget ui-widget-content ui-corner-all'; 
+	if( options.targetContainer ){		
+		var container = $( options.targetContainer ).addClass( callerClassList ).html( options.content );
+	}else{
+		var container = $('<div>').addClass( callerClassList ).html( options.content );
+	}	
 	
 	this.menuOpen = false;
 	this.menuExists = false;
 	
 	var options = jQuery.extend({
 		content: null,
+		autoShow: false,
 		width: 180, // width of menu container, must be set or passed in to calculate widths of child menus
 		maxHeight: 180, // max height of menu (if a drilldown: height does not include breadcrumb)
+		targetContainer: null,
 		positionOpts: {
 			posX: 'left', 
 			posY: 'bottom',
@@ -102,6 +123,7 @@ function Menu(caller, options){
 	};
 
 	this.showMenu = function(){
+		mw.log('$j.menu:: show menu' );		
 		killAllMenus();
 		if (!menu.menuExists) { menu.create() };
 		caller
@@ -211,7 +233,7 @@ function Menu(caller, options){
 			else { menu.drilldown(container, options); }	
 		}
 		else {
-			container.find('a').click(function(){
+			container.find('a').click(function(){									 
 				menu.chooseItem(this);
 				return false;
 			});
@@ -247,10 +269,9 @@ function Menu(caller, options){
 	};
 	
 	this.chooseItem = function(item){
-		menu.kill();
-		// edit this for your own custom function/callback:
-		$('#menuSelection').text($(item).text());	
-		// location.href = $(item).attr('href');
+		menu.kill();				
+		if( options.selectItemCallback )
+			options.selectItemCallback( item );			
 	};
 };
 
@@ -649,4 +670,4 @@ Number.prototype.pxToEm = String.prototype.pxToEm = function(settings){
 	return result;
 };
 
-})(jQuery);
+} )(jQuery);

@@ -1199,7 +1199,10 @@ embedPlayer.prototype = {
 		// Set customAttributes if unset: 
 		if ( !customAttributes )
 			customAttributes = { };
-			
+		
+		//Add a hook system to the embedPlayer 	
+		mw.addHookSystem( _this );
+					
 		// Setup the player Interface from supported attributes:
 		for ( var attr in default_video_attributes ) {
 			if ( customAttributes[ attr ] ){
@@ -1253,7 +1256,7 @@ embedPlayer.prototype = {
 		}
 		
 		// Add the mediaElement object with the elements sources:  
-		this.mediaElement = new mediaElement( element );
+		this.mediaElement = new mediaElement( element );		
 				
 		// Setup the local "ROE" src pointer if added as media source
 		// also see: http://dev.w3.org/html5/spec/Overview.html#the-source-element
@@ -1264,12 +1267,12 @@ embedPlayer.prototype = {
 					_this.roe = source.src;
 				}
 			}	
-		});
-		
-		
-		// Load player skin css:
+		} );
+				
+		// Make sure we have the player skin css:
 		mw.getStyleSheet(  mw.getMwEmbedPath() +  'skins/' + this.skin_name + '/playerSkin.css' );
 	},
+		
 	
 	/**
 	* Set the width & height from css style attribute, element attribute, or by default value
@@ -1286,7 +1289,8 @@ embedPlayer.prototype = {
 		if( ! this['height']  && ! this['width'] ){
 			this['height'] = parseInt( $j(element).attr( 'height' ) );
 			this['width'] = parseInt( $j(element).attr( 'width' ) );
-		}
+		}		
+		
 		
 		// Deal with just one height or width being set:
 		if( this['height']  &&  !this['width'] && this.videoAspect  ){
@@ -1302,7 +1306,12 @@ embedPlayer.prototype = {
 		// On load sometimes attr is temporally -1 as we don't have video metadata yet.		 
 		// NOTE: this edge case should be handled by waiting for metadata see: "waitForMeta" in addElement 		
 		if( ( !this['height'] || !this['width'] ) ||
-			( this['height'] == -1 || this['width'] == -1 )   ){
+			( this['height'] == -1 || this['width'] == -1 )   ||
+				// Check for firefox defaults
+				// Note: ideally firefox would not do random guesses at css values 	
+				( (this.height == 150 || this.height == 64 ) && this.width == 300 )
+			){
+			
 			var defaultSize = mw.getConfig( 'video_size' ).split( 'x' );
 			this['width'] = defaultSize[0];
 			// Special height default for audio tag ( if not set )  
@@ -2322,8 +2331,9 @@ embedPlayer.prototype = {
 						'z-index' 	: 10,
 						'top' 		: ( loc.top + playerHeight + 4) + 'px',
 						'left' 		: ( parseInt( loc.left ) + parseInt( _this.width ) - 200) + 'px',
-						'height'	: '200px',
-						'width' 	: '200px' 						
+						'height'	: '180px',
+						'width' 	: '180px', 	
+						'font-size'	: '12px'					
 					} ).hide()
 			);		
 		}						
@@ -2343,8 +2353,8 @@ embedPlayer.prototype = {
 		}
 		
 		mw.load( timedTextRequestSet, function(){
-			$j( _this ).timedText( {
-				'menu_target': '#timedTextMenu_' + this.id
+			$j( '#' + _this.id ).timedText( {
+				'targetContainer': '#timedTextMenu_' + _this.id
 			} );
 		});
 		
@@ -2817,6 +2827,7 @@ embedPlayer.prototype = {
 				}, 250 );
 			}
 		}
+		this.runHook( 'monitor' );
 	},
 	
 	/**
