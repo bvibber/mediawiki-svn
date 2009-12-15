@@ -46,22 +46,19 @@ evt: {
 			}
 		};
 		// Get the markers and tokens from the current context
-		var markers = context.modules.highlight.data.markers;
-		var tokenStack = context.modules.highlight.data.tokenArray;
+		var markers = context.modules.highlight.markers;
+		var tokenStack = context.modules.highlight.tokenArray;
 		// Scan through and detect the boundries of template calls
 		var templateBeginFound = false;
 		var templateBoundaries;
 		while ( templateBoundaries = findOutermostTemplates( tokenStack ) ) {
-			// Ensure indexes exist for left and right boundry markers
-			if ( typeof markers[tokenStack[templateBoundaries[0]].offset] == 'undefined' ) {
-				markers[tokenStack[templateBoundaries[0]].offset] = [];
-			}
-			if ( typeof markers[tokenStack[templateBoundaries[1]].offset] == 'undefined' ) {
-				markers[tokenStack[templateBoundaries[1]].offset] = [];
-			}
-			// Append boundry markers
-			markers[tokenStack[templateBoundaries[0]].offset].push( "<div class='wiki-template'>" );
-			markers[tokenStack[templateBoundaries[1]].offset].push( "</div>" );
+			context.modules.highlight.markers.push( {
+				start: tokenStack[templateBoundaries[0]].offset,
+				end: tokenStack[templateBoundaries[1]].offset,
+				wrapElement: function() {
+					return $( '<div />' ).addClass( 'wikiEditor-highlight-template' );
+				}
+			} );
 		}
 	}
 },

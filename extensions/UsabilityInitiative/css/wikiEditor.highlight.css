@@ -1,0 +1,13 @@
+/* CSS for highlight module. Note that this CSS is loaded in the iframe,
+ * not in the main document. For that reason, it's also not in the combined and
+ * minified files.
+ */
+.wikiEditor-highlight-template {
+	display: inline;
+	color: red;
+}
+
+.wikiEditor-toc-header { /* TODO: move parsing to highlight module and rename this */
+	display: inline;
+	font-weight: bold;
+}
