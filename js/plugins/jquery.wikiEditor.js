@@ -390,7 +390,7 @@ if ( typeof context == 'undefined' ) {
 			
 			//get rid of the noincludes when getting text
 			var $dummyDiv = $( '<div />' ).html( context.$content.html().replace( /\<br\>/g, "\n" ) );
-			$dummyDiv.find( ".wiki-editor-noinclude" ).each( function() { $( this ).remove(); } );
+			$dummyDiv.find( ".wikieditor-noinclude" ).each( function() { $( this ).remove(); } );
 			return $dummyDiv.text();
 			
 		},
