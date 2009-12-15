@@ -91,7 +91,8 @@ function Menu(caller, options){
 		backLinkText: 'Back',
 		flyOut: false, // multi-level menus are ipod-style by default; this parameter overrides to make a flyout instead
 		flyOutOnState: 'ui-state-default',
-		nextMenuLink: 'ui-icon-triangle-1-e', // class to style the link (specifically, a span within the link) used in the multi-level menu to show the next level
+		// class to style the link (specifically, a span within the link) used in the multi-level menu to show the next level
+		nextMenuLink: 'ui-icon-triangle-1-e',
 		topLinkText: 'All',
 		nextCrumbLink: 'ui-icon-carat-1-e'	
 	}, options);
@@ -290,24 +291,27 @@ Menu.prototype.flyout = function(container, options) {
 		
 		allSubLists.css({ left: linkWidth, width: linkWidth }).hide();
 			
-		$(this).find('a:eq(0)').addClass('fg-menu-indicator').html('<span>' + $(this).find('a:eq(0)').text() + '</span><span class="ui-icon '+options.nextMenuLink+'"></span>').hover(
-			function(){
-				clearTimeout(hideTimer);
-				var subList = $(this).next();
-				if (!fitVertical(subList, $(this).offset().top)) { subList.css({ top: 'auto', bottom: 0 }); };
-				if (!fitHorizontal(subList, $(this).offset().left + 100)) { subList.css({ left: 'auto', right: linkWidth, 'z-index': 999 }); };
-				showTimer = setTimeout(function(){
-					subList.addClass('ui-widget-content').show(options.showSpeed).attr('aria-expanded', 'true');	
-				}, 300);	
-			},
-			function(){
-				clearTimeout(showTimer);
-				var subList = $(this).next();
-				hideTimer = setTimeout(function(){
-					subList.removeClass('ui-widget-content').hide(options.showSpeed).attr('aria-expanded', 'false');
-				}, 400);	
-			}
-		);
+		$(this).find('a:eq(0)').addClass('fg-menu-indicator').html(
+			'<span>' + $(this).find('a:eq(0)').html() + 
+			'</span><span class="ui-icon '+options.nextMenuLink+'"></span>')
+			.hover(
+				function(){
+					clearTimeout(hideTimer);
+					var subList = $(this).next();
+					if (!fitVertical(subList, $(this).offset().top)) { subList.css({ top: 'auto', bottom: 0 }); };
+					if (!fitHorizontal(subList, $(this).offset().left + 100)) { subList.css({ left: 'auto', right: linkWidth, 'z-index': 999 }); };
+					showTimer = setTimeout(function(){
+						subList.addClass('ui-widget-content').show(options.showSpeed).attr('aria-expanded', 'true');	
+					}, 300);	
+				},
+				function(){
+					clearTimeout(showTimer);
+					var subList = $(this).next();
+					hideTimer = setTimeout(function(){
+						subList.removeClass('ui-widget-content').hide(options.showSpeed).attr('aria-expanded', 'false');
+					}, 400);	
+				}
+			);
 
 		$(this).find('ul a').hover(
 			function(){
@@ -351,7 +355,7 @@ Menu.prototype.drilldown = function(container, options) {
 	
 	var checkMenuHeight = function(el){
 		if (el.height() > options.maxHeight) { el.addClass('fg-menu-scroll') };	
-		el.css({ height: options.maxHeight });
+		el.css({ height: options.maxHeight-26 });
 	};
 	
 	var resetChildMenu = function(el){ el.removeClass('fg-menu-scroll').removeClass('fg-menu-current').height('auto'); };
@@ -385,7 +389,7 @@ Menu.prototype.drilldown = function(container, options) {
 		if ($(this).next().is('ul')) {
 			$(this)
 				.addClass('fg-menu-indicator')
-				.each(function(){ $(this).html('<span>' + $(this).text() + '</span><span class="ui-icon '+options.nextMenuLink+'"></span>'); })
+				.each(function(){ $(this).html('<span>' + $(this).html() + '</span><span class="ui-icon '+options.nextMenuLink+'"></span>'); })
 				.click(function(){ // ----- show the next menu			
 					var nextList = $(this).next();
 		    		var parentUl = $(this).parents('ul:eq(0)');   		

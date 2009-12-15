@@ -157,7 +157,7 @@ var default_video_attributes = {
 
 	// If serving an ogg_chop segment use this to offset the presentation time
 	// ( for some plugins that use ogg page time rather than presentation time ) 
-	"startOffset" : null, 
+	"startOffset" : 0, 
 
 	//If we should display the play button
 	"play_button" : true,
@@ -577,6 +577,7 @@ mediaSource.prototype = {
 	// End time in npt format
 	end_npt: null,
 	
+	
 	/**
 	* MediaSource constructor:
 	*/
@@ -612,8 +613,11 @@ mediaSource.prototype = {
 			this.mime_type = this.detectType( this.src );
 			
 		// Check for parent elements ( supplies catagories in "itext" )
-		if( $j( element ).parent().attr('category') ){
+		if( $j( element ).parent().attr('category') ){			
 			this.category =  $j( element ).parent().attr('category');
+			mw.log("added category: " + this.category);
+		}else{
+			mw.log(" had no category" + this.id);
 		}	
 						
 		// Get the url duration ( if applicable )
@@ -778,7 +782,7 @@ mediaSource.prototype = {
 				return 'video/h264';
 			break;
 			case '.srt':
-				return 'text/srt';
+				return 'text/x-srt';
 			break;
 			case '.flv':
 				return 'video/x-flv';
@@ -865,8 +869,9 @@ mediaElement.prototype = {
 		
 		// Process all inner <source>, <text> & <itext> elements	
 		
-		$j( video_element ).find( 'source,itext' ).each( function( inx, inner_source ) {
-			_this.tryAddSource( inner_source );
+		$j( video_element ).find( 'source,itext' ).each( function( ) {
+			mw.log( 'pcat: ' + $j(this).parent().attr( 'category' ) + ' tagName:' + $j(this).parent().get(0).tagName );			
+			_this.tryAddSource( this );
 		} );
 	},
 	
@@ -891,7 +896,8 @@ mediaElement.prototype = {
 	*/
 	textSourceExists: function() {
 		for ( var i = 0; i < this.sources.length; i++ ) {
-			if (	this.sources[i].mime_type == 'text/cmml' ||
+			mw.log( this.sources[i].mime_type );
+			if ( this.sources[i].mime_type == 'text/cmml' ||
 				this.sources[i].mime_type == 'text/x-srt' )
 					return true;
 		};
@@ -1092,7 +1098,7 @@ mediaElement.prototype = {
 			 if ( this.isPlayableType( this.sources[i].mime_type ) ) {
 				 playable_sources.push( this.sources[i] );
 			 } else {
-				 mw.log( "type " + this.sources[i].mime_type + 'is not playable' );
+				 //mw.log( "type " + this.sources[i].mime_type + 'is not playable' );
 			 }
 		 };
 		 return playable_sources;
@@ -2777,17 +2783,18 @@ embedPlayer.prototype = {
 	*/
 	monitor: function() {
 		var _this = this;		
-		//mw.log(' ct: ' + this.currentTime + ' dur: ' + ( parseInt( this.duration ) + 1 )  + ' is seek: ' + this.seeking );
+		//mw.log(' ct: ' + this.currentTime + ' dur: ' + ( parseInt( this.duration ) + 1 )  + ' is seek: ' + this.seeking );		
 		if ( this.currentTime && this.currentTime > 0  && this.duration ) {
-			if ( !this.userSlide && !this.seeking ) {
+			if ( !this.userSlide && !this.seeking ) {				
 				if ( parseInt( this.startOffset ) != 0 ) {				
 					// If start offset include that calculation 
 					this.updatePlayHead( ( this.currentTime - this.startOffset ) / this.duration );
 					var et = ( this.ctrlBuilder.long_time_disp ) ? '/' + mw.seconds2npt( parseFloat( this.startOffset ) + parseFloat( this.duration ) ) : '';
 					this.setStatus( mw.seconds2npt( this.currentTime ) + et );
 				} else {					
-					this.updatePlayHead( this.currentTime / this.duration );
-					var et = ( this.ctrlBuilder.long_time_disp ) ? '/' + mw.seconds2npt( this.duration ):'';
+					this.updatePlayHead( this.currentTime / this.duration );					
+					// Only include the end time if long_time_disp is enabled:
+					var et = ( this.ctrlBuilder.long_time_disp ) ? '/' + mw.seconds2npt( this.duration ) : '';
 					this.setStatus( mw.seconds2npt( this.currentTime ) + et );
 				}
 			}
@@ -3162,7 +3169,7 @@ mediaPlayers.prototype =
 	* 	null if no player found
 	*/
 	defaultPlayer : function( mime_type ) {
-		mw.log( "get defaultPlayer for " + mime_type );
+		//mw.log( "get defaultPlayer for " + mime_type );
 		var mime_players = this.getMIMETypePlayers( mime_type );
 		if ( mime_players.length > 0 )
 		{
@@ -3175,7 +3182,7 @@ mediaPlayers.prototype =
 			// (it will be chosen according to the default_players list
 			return mime_players[0];
 		}
-		mw.log( 'No default player found for ' + mime_type );
+		//mw.log( 'No default player found for ' + mime_type );
 		return null;
 	},
 	
