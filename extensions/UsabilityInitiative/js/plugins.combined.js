@@ -3836,15 +3836,14 @@ fn: {
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
 						var show = $section.css( 'display' ) == 'none';
 						$previousSections = $section.parent().find( '.section:visible' );
-						var dH = $previousSections.outerHeight();
 						$previousSections.css( 'position', 'absolute' );
 						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
-						$sections.css('overflow', 'hidden');
+						$sections.css( 'overflow', 'hidden' );
 						if ( show ) {
 							$section.fadeIn( 'fast' );
-							dH = $section.outerHeight() - dH;
 							$sections
+								.css( 'display', 'block' )
 								.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
 									$(this).css( 'overflow', 'visible' ).css( 'height', 'auto' );
 									context.fn.trigger( 'resize' );
@@ -3854,7 +3853,7 @@ fn: {
 							$sections
 								.css( 'height', $section.outerHeight() )
 								.animate( { 'height': 'hide' }, $section.outerHeight() * 2, function() {
-									$(this).css( 'overflow', 'visible' );
+									$(this).css( { 'overflow': 'visible', 'height': 0 } );
 									context.fn.trigger( 'resize' );
 								} );
 						}
@@ -3862,7 +3861,7 @@ fn: {
 						if($.trackAction != undefined){
 							$.trackAction($section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
 						}
-						//
+						// Save the currently visible section
 						$.cookie(
 							'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
 							show ? $section.attr( 'rel' ) : null
