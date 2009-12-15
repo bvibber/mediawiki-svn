@@ -37,8 +37,7 @@ var mwDefaultConf = {
 	'skin_name' : 'mvpcf',
 	
 	// Default jquery ui skin name
-	'jui_skin' : 'redmond',
-		
+	'jui_skin' : 'redmond',	
 	
 	/**
 	* If jQuery / mwEmbed should always be loaded.
@@ -56,18 +55,19 @@ var mwDefaultConf = {
 	* NOTE: Future architecture will probably do away with this flag and refactor it into 
 	* a smaller "remotePageMwEmbed.js" script similar to ../remoteMwEmbed.js
 	*/ 
-	'alwaysSetupMwEmbed' : false,
+	'runSetupMwEmbed' : false,
 	
 	// The mediaWiki path of mvEmbed  
 	'mediaWiki_mwEmbedPath' : 'js2/mwEmbed/',
 	
+	// Api actions that must be submited in a POST, and need an api proxy for cross domain calls
+	'apiPostActions': [ 'login', 'purge', 'rollback', 'delete', 'undelete',
+		'protect', 'block', 'unblock', 'move', 'edit', 'upload', 'emailuser',
+		'import', 'userrights' ],
+	
 	//If we are in debug mode ( results in fresh debugg javascript includes )
 	'debug' : false
-}
-
-
-// @@todo move these into mw
-var global_req_cb = new Array(); // The global request callback array
+};
 
 /**
 * The global mw object:
@@ -93,20 +93,21 @@ var global_req_cb = new Array(); // The global request callback array
 	*/	
 	$.skin_list = new Array();
 	$.init_done = false;
-	$.cb_count = 0;
-	$.player_list = new Array(), // The global player list per page
-	$.req_cb = new Array() // The global request callback array	
+	$.cb_count = 0;		
 
 	/**
 	* Configuration System: 
 	* 
-	* Simple system of inherit defauts, with getter setter functions: 	
+	* Simple system of inherit defaults, with getter setter functions: 	
 	*/	
 		
 	// Local scope configuration var:
-	mwConfig = { };
+	var mwConfig = { };
 	
-	for(var i in mwDefaultConf){
+	//Local scope mwUserConfig var. Stores user configuration 
+	var mwUserConfig = { };
+	
+	for( var i in mwDefaultConf ){
 		if( typeof mwConfig[ i ] == 'undefined' )
 			mwConfig[ i ] = mwDefaultConf[ i ];
 	}
@@ -119,7 +120,7 @@ var global_req_cb = new Array(); // The global request callback array
 	*/
 	$.setConfig = function ( name, value ){
 		mwConfig[ name ] = value;
-	}
+	}	
 	
 	/**
 	* Getter for configuration values
@@ -129,11 +130,75 @@ var global_req_cb = new Array(); // The global request callback array
 	* 	returns "false" if key not found
 	*/
 	$.getConfig = function ( name ){
-		if(mwConfig[ name ] )
+		if( mwConfig[ name ] )
 			return mwConfig[ name ];
 		return false;
 	}
 
+	/**
+	* Loads the mwUserConfig from a cookie.
+	* 
+	* Modules that want to use "User Config" should call
+	* this setup function in their moduleLoader code. 
+	*
+	* For performance interfaces should load '$j.cookie' & 'JSON' 
+	*  in their grouped load request
+	*
+	* By abstracting user preference we could eventually integrate 
+	*  a persistent per-account preference system on the server.
+	*
+	* @parma {Function} callback Function to be called once userPrefrences are loaded 
+	*/
+	var setupUserConfigFlag = false;
+	$.setupUserConfig = function( callback ){
+		if( setupUserConfigFlag ){
+			if( callback ) 
+				callback();
+		}
+		// Do Setup user config: 		
+		mw.load( [ '$j.cookie', 'JSON' ], function(){
+			if( $j.cookie( 'mwUserConfig' ) ){
+				mwUserConfig = JSON.parse( $j.cookie( 'mwUserConfig' ) );
+			}
+			if( callback ) 
+				callback();			
+			setupUserConfigFlag = true;
+		});				
+	}
+
+	/**
+	* Save a user configuration var to a cookie & local global variable
+	* Loads the cookie plugin if not already loaded
+	*
+	* @param {String} name Name of user configuration value
+	* @param {String} value Value of configuration name 	
+	*/
+		
+	
+	$.setUserConfig = function ( name, value, cookieOptions ){				
+		// Update local value
+		mwUserConfig[ name ] = value;
+		
+		// Update the cookie ( '$j.cookie' & 'JSON' should already be loaded )
+		mw.load( [ '$j.cookie', 'JSON' ], function(){			
+			$j.cookie( 'mwUserConfig', JSON.stringify( mwUserConfig ) );
+		});
+	}
+	
+	/**
+	* Save a user configuration var to a cookie & local global variable
+	* Loads the cookie plugin if not already loaded
+	*
+	* @param {String} name Name of user configuration value
+	* @return 
+	*	value of the configuration name
+	* 	false if the configuration name could not be found
+	*/	
+	$.getUserConfig = function ( name ){
+		if( mwUserConfig[ name ] )
+			return mwUserConfig
+		return false;
+	}
 
 	/**
 	* Language classes mw.lang
@@ -1031,7 +1096,7 @@ var global_req_cb = new Array(); // The global request callback array
 			var classDone = false;
 			
 			// Check if the class is ready: ( not all browers support onLoad script attribute )
-			// In the case of a "class" we can pull the javascript state untill its ready
+			// In the case of a "class" we can pull the javascript state until its ready
 			setTimeout( function(){
 				$.waitForObject( className, function( className ){ 
 					if( callback )
@@ -1042,9 +1107,13 @@ var global_req_cb = new Array(); // The global request callback array
 			
 			// Issue the request to load the class (include class name in result callback:					
 			$.getScript( scriptRequest, function( ) {
-				if( callback )
-					callback( className );
-				callback = null;
+				if(! $.isset( className )){
+					mw.log( 'ClassName not set in time ( Use waitForObject )' );
+				}else{
+					if( callback )
+						callback( className );
+					callback = null;
+				}
 			} );	
 			//mw.log( 'done with running 	getScript request ' );
 		},				
@@ -1142,12 +1211,13 @@ var global_req_cb = new Array(); // The global request callback array
 	*   callback parameter is not needed we setup the callback automatically
 	* 	url param 'action'=>'query' is assumed ( if not set to something else in the "data" param
 	* 	format is set to "json" automatically
+	* 	automatically issues request over "POST" if action={postActions}
 	*
 	* @param {Mixed} url or data request
 	* @param {Mixed} data or callback
 	* @param {Mixed} callbcak
 	*
-	*/
+	*/	
 	$.getJSON = function( arg1, arg2, arg3 ){
 		
 		// Set up the url		
@@ -1168,13 +1238,7 @@ var global_req_cb = new Array(); // The global request callback array
 		if( !url ){ 
 			mw.log( 'Error: no api url for api request' );
 			return false;
-		}
-		
-		// Add the callback to the url if unset  
-		if( url.indexOf( 'callback=' ) == -1 || data[ 'callback' ] == -1 ){
-			// jQuery specific: ( second ? is replaced with the callback ) 
-			url += ( url.indexOf('?') == -1 ) ? '?callback=?' : '&callback=?';
-		}
+		}		
 		
 		// Add default action if unset:
 		if( !data['action'] )
@@ -1184,21 +1248,35 @@ var global_req_cb = new Array(); // The global request callback array
 		if( !data['format'] ) 
 			data['format'] = 'json';
 		
-		mw.log("run getJSON: " + url + ' data: ' +  data);
-		// Pass off the jQuery getJSON request:
-		$j.getJSON( url, data, callback );		
+		mw.log("run getJSON: " + url + ' data: ' +  data['action'] + ' apiPost: ' +mw.getConfig( 'apiPostActions' ) );
+		
+		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ){
+			if( ! $.isLocalDomain( url ) ){
+				mw.log( "Error:: should setup proxy here" );
+			}
+			$j.post( url, data, callback, 'json');
+		}else{
+			//If cross domain setup a callback: 
+			if( ! $.isLocalDomain( url ) ){				 
+				if( url.indexOf( 'callback=' ) == -1 || data[ 'callback' ] == -1 ){
+					// jQuery specific: ( second ? is replaced with the callback ) 
+					url += ( url.indexOf('?') == -1 ) ? '?callback=?' : '&callback=?';
+				}				 
+			}
+			// Pass off the jQuery getJSON request:
+			$j.getJSON( url, data, callback );
+		}		
 	}		
 	
 	/**
-	* Metavid spefic roe request helper function
+	* Metavid specific roe request helper function
 	* 
 	* NOTE: depreciated, will be removed once updates are pushed out to metavid.org 
 	*  
 	* @param roe_url to be updated 
 	*/
 	$.getMvJsonUrl = function( roe_url , callback){		
-		if ( mw.parseUri( document.URL ).host == mw.parseUri( roe_url ).host ||
-			roe_url.indexOf( '://' ) == -1 ){
+		if ( $.isLocalDomain( roe_url ) ){
 			$j.get( roe_url, callback );	 
 		} else {			
 			roe_url = mw.replaceUrlParams(roe_url, {
@@ -1208,6 +1286,19 @@ var global_req_cb = new Array(); // The global request callback array
 			})
 			$j.getJSON( roe_url, callback );
 		}
+	}
+	
+	/**
+	* Checks if the url is a request for the local domain
+	*  relative paths are "local" domain
+	* @param {String} url Url for local domain
+	*/
+	$.isLocalDomain = function( url ) {
+		if( mw.parseUri( document.URL ).host == mw.parseUri( url ).host ||
+			url.indexOf( '://' ) == -1 ){
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -1383,14 +1474,23 @@ var global_req_cb = new Array(); // The global request callback array
 	*
 	* @param {Function} callback Function to run once DOM and jQuery are ready
 	*/
-	$.addOnloadHook = function( callback ){				
+	$.addOnloadHook = function( callback ){		
+		mw.log('addOnloadHook:: ' );		
 		if( mwReadyFlag === false ){
 		
 			// Add the callbcak to the onLoad function stack
 			mwOnLoadFuncitons.push ( callback );
 						
-			// Run the setup call ( won't run if already called earlier) 
-			$.setupMwEmbed();
+			// Set the mwSetup flag. So that onLoad functions can 
+			// be called once mwEmbed interfaces are setup.
+			if( !mwDomReadyFlag ){ 
+				mw.log( 'set config flag' );
+				mw.setConfig( 'runSetupMwEmbed', true );
+			}else{
+				mw.log( 'run setup directly' );
+				//DOM is already ready run setup directly:
+				$.setupMwEmbed(); 
+			} 			
 			
 			return ;
 		}
@@ -1460,14 +1560,15 @@ var global_req_cb = new Array(); // The global request callback array
 					// Rewrite the rewritePlayerTags with the 
 					$j( $.getConfig( 'rewritePlayerTags' ) ).embedPlayer()
 					// Run mw hooks:
+					mw.log("SetupDone ( player ) run hooks:" ) ;
 					mw.runLoadHooks();
 				} );
-			}else{			
+			}else{	
+				mw.log("SetupDone run hooks ( no rewrite players found ):" ) ;		
 				// Set ready state and run the callback
 				mw.runLoadHooks();
 			}
-		} ); 
-		mw.log('ran loader' );			
+		} ); 			
 	}
 	
 	// Flag to register the domReady has been called
@@ -1485,7 +1586,7 @@ var global_req_cb = new Array(); // The global request callback array
 		mwDomReadyFlag = true;
 		
 		// Check for the force setup flag:
-		if ( $.getConfig( 'alwaysSetupMwEmbed' ) ){
+		if ( $.getConfig( 'runSetupMwEmbed' ) ){
 			$.setupMwEmbed();
 			return ;
 		}
@@ -1506,8 +1607,8 @@ var global_req_cb = new Array(); // The global request callback array
 	/**
 	* Check the current DOM for any tags in "rewritePlayerTags"
 	*/
-	$.documentHasPlayerTags = function(){		
-		var tagElm = $.getPlayerTagElements( true );
+	$.documentHasPlayerTags = function(){				
+		var tagElm = $.getPlayerTagElements( $.getConfig( 'rewritePlayerTags' ),  true );
 		if( tagElm && tagElm.length )
 			return true;
 		return false;
@@ -1516,26 +1617,62 @@ var global_req_cb = new Array(); // The global request callback array
 	/**
 	* Get page elements that match the rewritePlayerTags config
 	*
-	* @param {Boolean} getOne Flag to retive only one tag ( faster for simple has tag checks )  
+	* @@NOTE we should probably exclud "video" that have already be rewritten
+	*
+	* @param {Boolean} getOne Flag to retrieve only one tag ( faster for simple has tag checks )  
 	*/
-	$.getPlayerTagElements = function( getOne ){
-		var tagString = $.getConfig( 'rewritePlayerTags' );
-		if( ! tagString || tagString == '' )
+	$.getPlayerTagElements = function( selector, getOneFlag ){
+		
+		if( ! selector ){
+			selector = $.getConfig( 'rewritePlayerTags' );
+		}
+		
+		if( ! selector  ){
 			return false;
-			
-		// Tags should be separated by "," 
-		var tags = tagString.split(',');
-		var tagsInDOM = [ ];
-		// Check for tags: 
-		for( var i in tags ){
-			var tagElements = document.getElementsByTagName( tags[ i ] );			
-			for(var j = 0; j < tagElements.length; j++ ){								
-				tagsInDOM.push( tagElements[ j ] );
-				if( getOne )
-					return tagsInDOM;
+		}
+		var tagsInDOM = [ ];		
+		// Check for tags: 		
+		// IE8 does not play well with the jQuery video,audio,playlist selector use native:
+		// NOTE: we should re-confirm this bug in-case IE pushes out an update			
+		if ( $j.browser.msie && $j.browser.version >= 8 ) {
+			var ie_compatible_selector = '';
+			var jtags = selector.split( ',' );
+			var coma = '';
+			for ( var i = 0; i < jtags.length; i++ ) {
+				if ( jtags[i] === 'video' || 
+					 jtags[i] === 'audio' ||
+					 jtags[i] === 'playlist' ) {
+					// Use native ElementsByTagName selector 
+					$( document.getElementsByTagName( jtags[i] ) ).each( function() {						
+						tagsInDOM.push( this );
+						if( getOneFlag ) 
+							return false;
+					} );				
+					
+					//If only returning the first found element return: 
+					if( tagsInDOM.length != 0 && getOneFlag )
+						return 	tagsInDOM[0]
+				}else{
+					ie_compatible_selector +=  coma + jtags[i]
+					coma = ',';
+				}
 			}
-		}		
-		return tagsInDOM;	
+			//Set the selector to IE compatible set and continue processing
+			selector = ie_compatible_selector;			
+		} 				
+		// Run the selector
+		$j( selector ).each( function() {		
+			tagsInDOM.push( this );
+			if( getOneFlag )
+				return false;
+		} );
+				
+		//If only returning the first found element return: 
+		if( tagsInDOM.length != 0 && getOneFlag )
+			return tagsInDOM
+			
+		// Return all the player tags: 			
+		return tagsInDOM;
 	}
 	
 	/**
@@ -2159,7 +2296,8 @@ mw.addModuleLoader( 'player', function( callback ){
 			'$j.ui',
 			'embedPlayer',
 			'ctrlBuilder',
-			'$j.cookie'
+			'$j.cookie',
+			'JSON'
 		],
 		[
 			'$j.ui.slider'
@@ -2224,17 +2362,20 @@ mw.addModuleLoader( 'player', function( callback ){
 
 	// Load the video libs:
 	mw.load( dependencyRequest, function() {
-	
-		// Detect supported players:  
-		embedTypes.init();
+		//Setup userConfig 
+		mw.setupUserConfig( function(){
+			// Detect supported players:  
+			embedTypes.init();
+				
+			// Remove no video html elements:
+			$j( '.videonojs' ).remove();
+			//mw.log(" run callback: " + callback );
+						
+			// Run the callback with name of the module  
+			if( callback )		
+				callback( 'player' );		
 			
-		// Remove no video html elements:
-		$j( '.videonojs' ).remove();
-		//mw.log(" run callback: " + callback );
-					
-		// Run the callback with name of the module  
-		if( callback )		
-			callback( 'player' );		
+		} ); // setupUserConfig
 	} );
 	
 } ); // done with embedPlayer loader.js
@@ -2265,7 +2406,9 @@ mw.addMessages( {
 /**
 * Set DOM-ready call 
 * Does not use jQuery( document ).ready( ) because 
-*  mwEmbed could have been included without jQuery. 
+*  mwEmbed could have been included without jQuery.
+* 
+* mw.domReady function has checks to only be run once
 */
 // For Mozilla / modern browsers
 if ( document.addEventListener ) {
@@ -2286,6 +2429,17 @@ window.onload = function () {
     }
 	mw.domReady();
 }
+// If inserted into an already loaded document: 
+if( document.readyState == 'complete'){
+	mw.domReady();
+}
+//And just to be sure ( for dynamic inserts ) ... check if "body" tag exists after 25ms
+setTimeout( function(){
+	if( document.getElementsByTagName('body')[0] ){
+		mw.domReady();	
+	}
+}, 25 );
+
 
 /*
  * Store all the mwEmbed jQuery-specific bindings

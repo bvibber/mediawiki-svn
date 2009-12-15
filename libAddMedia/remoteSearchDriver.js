@@ -151,10 +151,13 @@ var remoteSearchDriver = function( options ) {
 }
 
 remoteSearchDriver.prototype = {
+
 	// Result cleared flag
 	results_cleared: false,
-	// Caret possition of target text area ( lazy initialised )
+	
+	// Caret position of target text area ( lazy initialised )
 	caretPos: null, 
+	
 	// Text area value ( lazy initialised )
 	textboxValue: null, 
 
@@ -1721,13 +1724,14 @@ remoteSearchDriver.prototype = {
 
 	/**
 	 * Internal function called by showResourceEditor() to show an image editor
-	 * @param {Object} resource Show Image Editor for this resource
+	 * @param {Object} resource Resource for Image Editor display
 	 */
 	showImageEditor: function( resource ) {
 		var _this = this;
 		var options = _this.getClipEditOptions( resource );
+		
 		// Display the mvClipEdit obj once we are done loading:
-		mw.load( ['mvClipEdit'], function() {
+		mw.load( 'mvClipEdit', function() {			
 			// Run the image clip tools
 			_this.clipEdit = new mvClipEdit( options );
 		} );
@@ -2150,7 +2154,7 @@ remoteSearchDriver.prototype = {
 	* @param {Function} callback Function to be called once api import call is done
 	*/
 	doApiImport: function( resource, callback ) {
-		var _this = this;
+		var _this = this;		
 		mw.log( ":doApiImport:" );
 		$j.addLoaderDialog( gM( 'mwe-importing_asset' ) );
 		
@@ -2224,7 +2228,10 @@ remoteSearchDriver.prototype = {
 		
 			// If status is missing show import UI
 			if ( status === 'missing' ) {
-				_this.showImportUI( resource, callback );
+				_this.showImportUI( resource, function(){
+					// Once the image is imported re-issue the showPreview request: 
+					_this.showPreview( resource );
+				} );
 				return;
 			}
 
@@ -2251,6 +2258,7 @@ remoteSearchDriver.prototype = {
 				.click( function() {
 					_this.insertResource( resource );
 				} );
+				
 			// Update cancel button
 			$j( buttonPaneSelector )
 				.append( '<a href="#" class="preview_close">Do More Modification</a>' )
@@ -2269,8 +2277,8 @@ remoteSearchDriver.prototype = {
 				_this.target_title,
 				function( phtml ) {
 					$j( '#rsd_preview_display' ).html( phtml );
-					// update the display of video tag items (if any)
-					mwdomReady( true );
+					// Update the display of video tag items (if any) 
+					$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer();
 				}
 			);
 		} );
@@ -2331,15 +2339,12 @@ remoteSearchDriver.prototype = {
 	* @param {String} title Context title of the content to be parsed
 	* @param {Function} callback Function called with api parser output 
 	*/
-	parse: function( wikitext, title, callback ) {
-		do_api_req( 
+	parse: function( wikitext, title, callback ) {		
+		mw.getJSON( this.local_wiki_api_url, 
 			{
-				'data': {
-					'action': 'parse',
-					'title' : title,
-					'text': wikitext
-				},
-				'url': this.local_wiki_api_url
+				'action': 'parse',
+				'title' : title,
+				'text': wikitext
 			}, function( data ) {
 				callback( data.parse.text['*'] );
 			}

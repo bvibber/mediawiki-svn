@@ -41,7 +41,7 @@ function getUserName( callback ){
 		'action':'query',
 		'meta':'userinfo'
 	}
-	//we use normal do_api_req with keywork 'proxy' for the url 
+	// Do proxy request 
 	mw.proxy.doRequest( rObj,
 		function( data ){		
 			//now we get the data back for that domain
