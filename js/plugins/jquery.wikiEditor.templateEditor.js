@@ -7,7 +7,7 @@
 evt: {
 	mark: function( context, event ) {
 		// This is shared by both the closure findOutermostTemplates and the calling code - is this a good idea?
-		var i = 0;
+		var tokenIterator = 0;
 		/**
 		 * Finds the left and right character positions of the outer-most template declaration, playing nicely with
 		 * nested template calls of any depth. This function acts as an iterator, which is why the i var is shared - but
@@ -17,13 +17,13 @@ evt: {
 		 */
 		function findOutermostTemplates( tokenStack ) {
 			var templateBeginFound = false;
-			for ( ; i < tokenStack.length; i++ ) {
-				if ( tokenStack[i].label == 'TEMPLATE_BEGIN' ) {
+			for ( ; tokenIterator < tokenStack.length; tokenIterator++ ) {
+				if ( tokenStack[tokenIterator].label == 'TEMPLATE_BEGIN' ) {
 					templateBeginFound = true;
 					break;
 				}
 			}
-			var j = i++;
+			var j = tokenIterator++;
 			if ( !templateBeginFound ) {
 				return false;
 			} else {
@@ -36,9 +36,9 @@ evt: {
 				}
 				if ( nestedBegins == 0 ) {
 					// Outer template begins at tokenStack[i].offset and ends at tokenStack[j].offset + 2
-					var leftMarker = i -1;
+					var leftMarker = tokenIterator -1;
 					var rightMarker = j;
-					i = j;
+					tokenIterator = j;
 					return [leftMarker, rightMarker];
 				} else {
 					return false;
@@ -90,6 +90,69 @@ fn: {
 	model: function( wikitext ) {
 		
 		/* Private Functions */
+	},
+
+	
+	stylize: function( context ) {
+		var $templates = context.$content.find( ".wiki-template" );
+		$templates.each( function(){
+			if( typeof $( this ).data( 'model' )  != 'undefined' ){
+				//we have a model, so all this init stuff has already happened
+				return;
+			}
+			
+			//hide this
+			$(this).addClass('wikieditor-nodisplay');
+			
+			//build a model for this
+			$( this ).data( 'model' , new model( $( this ).text() ) );
+			var model = $( this ).data( 'model' );
+			
+			
+			//expand
+			function expandTemplate($displayDiv){ 
+				//housekeeping
+				$displayDiv.removeClass('wiki-collapsed-template');
+				$displayDiv.addClass('wiki-expanded-template');
+				$displayDiv.data('mode') = "expanded";
+				
+				$displayDiv.text( model.getText() );
+				
+			};
+			
+			//collapse
+			function collapseTemplate($displayDiv){ 
+				//housekeeping
+				$displayDiv.addClass('wiki-collapsed-template');
+				$displayDiv.removeClass('wiki-expanded-template');
+				$displayDiv.data('mode') = "collapsed";
+				
+				$displayDiv.text( model.getName() );
+				
+			};
+			
+			//build the collapsed version of this template
+			var $visibleDiv = $( "<div></div>" ).addClass( 'wikieditor-noinclude' );
+			
+			//let these two know about eachother
+			$(this).data( 'display' , $visibleDiv );
+			$visibleDiv.data('wikitext-node', $(this));
+			$(this).after( $visibleDiv );
+			
+			//onClick
+			$visibleDiv.click( function(){
+				//is collapsed, switch to expand
+				if( $(this).data('mode') == 'collapsed' ){
+					expandTemplate( $(this) );
+				}
+				else{
+					collapseTemplate( $(this) );
+				}
+			});//click
+			
+			collapseTemplate($visibleDiv);
+		});	
+	},
 		
 		/**
 		 * Builds a Param object.
