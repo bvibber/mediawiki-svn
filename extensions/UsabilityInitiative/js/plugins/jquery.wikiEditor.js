@@ -260,7 +260,7 @@ if ( typeof context == 'undefined' ) {
 			switch ( event.type ) {
 				case 'keypress':
 					if ( /* TODO: test if something interesting was deleted */ true ) {
-						event.data.scope = 'division';
+						event.data.scope = 'keydown';
 					} else {
 						event.data.scope = 'character';
 					}
@@ -386,7 +386,13 @@ if ( typeof context == 'undefined' ) {
 			}
 			// We use .html() instead of .text() so HTML entities are handled right
 			// Setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
-			return $( '<div />' ).html( context.$content.html().replace( /\<br\>/g, "\n" ) ).text();
+			
+			
+			//get rid of the noincludes when getting text
+			var $dummyDiv = $( '<div />' ).html( context.$content.html().replace( /\<br\>/g, "\n" ) );
+			$dummyDiv.find( ".wiki-editor-noinclude" ).each( function() { $( this ).remove(); } );
+			return $dummyDiv.text();
+			
 		},
 		/**
 		 * Sets the complete contents of the iframe (in plain text, not HTML; HTML passed will be converted to entities)
