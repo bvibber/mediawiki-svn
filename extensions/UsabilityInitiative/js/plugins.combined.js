@@ -2656,34 +2656,34 @@ evt: {
 		// Get refrences to the markers and tokens from the current context
 		var markers = context.modules.highlight.markers;
 		var tokenArray = context.modules.highlight.tokenArray;
-		// Collect matching level 0 template call boundries from the tokenArrray
+		// Collect matching level 0 template call boundaries from the tokenArrray
 		var level = 0;
-		var boundries = [];
-		var boundry = 0;
+		var boundaries = [];
+		var boundary = 0;
 		for ( token in tokenArray ) {
 			if ( tokenArray[token].label == 'TEMPLATE_BEGIN' ) {
 				if ( level++ == 0 ) {
-					boundry = boundries.push( { 'begin': tokenArray[token].offset } ) - 1;
+					boundary = boundaries.push( { 'begin': tokenArray[token].offset } ) - 1;
 				}
 			} else if ( tokenArray[token].label == 'TEMPLATE_END' ) {
 				if ( --level == 0 ) {
-					boundries[boundry].end = tokenArray[token].offset;
+					boundaries[boundary].end = tokenArray[token].offset;
 				}
 			}
 		}
-		// Add encapsulations to markers at the offsets of matching sets of level 0 template call boundries
-		for ( boundry in boundries ) {
-			if ( 'begin' in boundries[boundry] && 'end' in boundries[boundry] ) {
-				// Ensure arrays exist at the begining and ending offsets for boundry
-				if ( !( boundries[boundry].begin in markers ) ) {
-					markers[boundries[boundry].begin] = [];
+		// Add encapsulations to markers at the offsets of matching sets of level 0 template call boundaries
+		for ( boundary in boundaries ) {
+			if ( 'begin' in boundaries[boundary] && 'end' in boundaries[boundary] ) {
+				// Ensure arrays exist at the begining and ending offsets for boundary
+				if ( !( boundaries[boundary].begin in markers ) ) {
+					markers[boundaries[boundary].begin] = [];
 				}
-				if ( !( boundries[boundry].end in markers ) ) {
-					markers[boundries[boundry].end] = [];
+				if ( !( boundaries[boundary].end in markers ) ) {
+					markers[boundaries[boundary].end] = [];
 				}
-				// Append boundry markers
-				markers[boundries[boundry].begin].push( "<div class='wiki-template'>" );
-				markers[boundries[boundry].end].push( "</div>" );
+				// Append boundary markers
+				markers[boundaries[boundary].begin].push( "<div class='wiki-template'>" );
+				markers[boundaries[boundary].end].push( "</div>" );
 	
 			}
 		}
