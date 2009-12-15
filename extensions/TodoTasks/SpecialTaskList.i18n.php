@@ -218,6 +218,7 @@ Za spisak valjanih projekata, pogledajte [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistchooseproj' => 'Odaberite projekat:',
 	'tasklistprojdisp' => 'Prikaz',
 	'tasklistbyname' => '== Spisak za uraditi za %s ==',
+	'tasklistnowguseprojects' => 'Postavili ste $wgUseProjects na "false" i ne možete koristiti ovu stranicu.',
 	'tasklistnoprojects' => "Greška: Izgleda da ste omogućili '''\$wgUseProjects''', ali niste napravili [[MediaWiki:TodoTasksValidProjects]]. Pogledajte [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 objašnjenja za instalaciju] za više detalja.",
 	'tasklistemailbody' => ',
 
@@ -909,6 +910,7 @@ $messages['mk'] = array(
 	'tasklistchooseproj' => 'Изберете проект:',
 	'tasklistprojdisp' => 'Прикажи',
 	'tasklistbyname' => '== Листа на задачи за %s ==',
+	'tasklistnowguseprojects' => 'Го имате наместено $wgUseProjects на „false“ и затоа не можете да ја користите оваа страница.',
 	'tasklistnoprojects' => "Грешка: Изгледа сте овозможиле '''\$wgUseProjects''', но не сте создале [[MediaWiki:TodoTasksValidProjects]]. Видете [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Напатствија за инсталирање] за повеќе детали.",
 	'tasklistemailbody' => 'Некој ви доделилнова Задача на %s.
 
@@ -1135,6 +1137,7 @@ Për na lista ëd proget bon, varda [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistchooseproj' => 'Proget selessionà:',
 	'tasklistprojdisp' => 'Visualisa',
 	'tasklistbyname' => '== Lista da fé për %s ==',
+	'tasklistnowguseprojects' => 'It l\'has ampostà $wgUseProjects a "fàuss" e it peule pa dovré sta pàgina-sì.',
 	'tasklistnoprojects' => "Eror: A smija ch'it l'abie ativà '''\$wgUseProjects''', ma it l'abie pa creà [[MediaWiki:TodoTasksValidProjects]]. varda [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Istrussion d'Instalassion] për savèjne ëd pì.",
 	'tasklistemailbody' => ",
 

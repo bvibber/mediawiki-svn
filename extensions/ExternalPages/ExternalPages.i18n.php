@@ -552,10 +552,15 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'externalpages' => 'Trang ngoài',
+	'externalpages-desc' => 'Lấy và hiển thị nội dung của các trang khác trực thuộc Quỹ Wikimedia',
 	'externalpages-bad-year' => 'Đã định rõ năm không hợp lệ',
 	'externalpages-bad-language' => 'Đã định rõ ngôn ngữ không hợp lệ',
 	'externalpages-bad-project' => 'Đã định rõ dự án không hợp lệ',
 	'externalpages-no-project' => 'Chưa định rõ dự án',
 	'externalpages-bad-page' => 'Đã định rõ trang không hợp lệ',
+	'externalpages-no-page' => 'Chưa định rõ trang',
+	'externalpages-error-generic' => 'Đã gặp lỗi',
+	'externalpages-bad-url' => 'Không thể truy cập URL',
+	'externalpages-bad-url-data' => 'Không thể lấy nội dung trang',
 );
 

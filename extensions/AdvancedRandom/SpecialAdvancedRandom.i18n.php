@@ -641,6 +641,13 @@ $messages['uk'] = array(
 	'advancedrandom-desc' => 'Видає випадкову сторінку, з підсторінки або сторінки обговорення якої є посилання на зазначену сторінку. Може використовуватися за зразком [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]], щоб отримати випадкову вибрану статтю, або [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], щоб отримати випадковий GFDL-файл.',
 );
 
+/** Vèneto (Vèneto)
+ * @author Vajotwo
+ */
+$messages['vec'] = array(
+	'advancedrandom' => 'Random avansà',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

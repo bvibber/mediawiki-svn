@@ -2092,10 +2092,16 @@ $messages['uk'] = array(
 	'readerfeedback-main' => 'Можуть бути оцінені тільки сторінки основного простору.',
 	'readerfeedback-success' => "'''Дякуємо за оцінку цієї сторінки!''' ([$2 результати]) ([$3 Є коментарі чи запитання?]).",
 	'readerfeedback-voted' => "'''Схоже, ви вже оцінювали цю сторінку''' ([$2 результати]) ([$3 Є коментарі чи запитання?]).",
+	'readerfeedback-error' => "'''При оцінюванні сторінки сталася помилка''' ([$2 результати]) ([$3 Є коментарі чи запитання?]).",
 	'readerfeedback-submitting' => 'Надсилання…',
 	'readerfeedback-finished' => 'Дякуємо!',
 	'readerfeedback-tagfilter' => 'Мітка:',
+	'readerfeedback-tierfilter' => 'Оцінка:',
+	'readerfeedback-tier-high' => 'Висока',
+	'readerfeedback-tier-medium' => 'Середня',
+	'readerfeedback-tier-poor' => 'Низька',
 	'tooltip-ca-ratinghist' => 'Читацька оцінка цієї сторінки',
+	'specialpages-group-feedback' => 'Читацька думка',
 );
 
 /** Vèneto (Vèneto)

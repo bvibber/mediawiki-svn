@@ -883,6 +883,17 @@ $messages['ug-arab'] = array(
 	'ajaxlogin-create' => 'ھېساباتتىن بىرنى قۇر',
 );
 
+/** Vèneto (Vèneto)
+ * @author Vajotwo
+ */
+$messages['vec'] = array(
+	'ajaxLogin1' => "Par completare l'aceso xè nesesario inserire na nova pasword.
+Ciò ve porterà via da sta pajina de modifega e se rischia de perdare ła modifega atuałe.",
+	'ajaxLogin2' => 'Sito sicuro?
+Se podaria perdare łe modifeghe aportae a sta pajina se se lassa ła pajina ora.',
+	'ajaxlogin-create' => "Crea n'acaunt",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

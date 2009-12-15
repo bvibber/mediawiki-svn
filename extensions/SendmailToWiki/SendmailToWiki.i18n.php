@@ -268,6 +268,7 @@ $messages['lb'] = array(
 	'sendmailtowiki-inpin' => 'PIN:',
 	'sendmailtowiki-err-pinlength' => 'De PIN muss genee 5 Zifferen hunn.',
 	'sendmailtowiki-err-invalidaccount' => "Net valabele Kont. Kuckt w.e.g. d'E-Mailadress no op déi Dir Äre Mail schécke wëllt.",
+	'sendmailtowiki-err-invalidsender' => 'Net valabelen Ofsender. Kuckt déi e-Mailadress no vun däer Dir de Mail fortschéckt.',
 	'sendmailtowiki-err-invalidpin' => 'PIN net valabel. Zougang refüséiert',
 );
 

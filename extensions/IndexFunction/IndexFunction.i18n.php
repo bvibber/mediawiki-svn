@@ -990,7 +990,9 @@ $messages['vi'] = array(
 	'index-search' => 'Tìm kiếm:',
 	'index-submit' => 'Tìm kiếm',
 	'index-disambig-start' => "'''$1''' có thể chỉ đến vài trang khác nhau:",
+	'index-emptylist' => 'Không có trang nào liên quan đến “$1”',
 	'index-hide-detail' => 'Ẩn danh sách trang',
+	'index-no-results' => 'Không có kết quả tìm kiếm',
 );
 
 /** Yiddish (ייִדיש)

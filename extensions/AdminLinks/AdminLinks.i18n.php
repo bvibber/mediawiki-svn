@@ -1173,6 +1173,23 @@ $messages['uk'] = array(
 	'right-adminlinks' => 'Бачити [[Special:AdminLinks|посилання для адміністраторів]]',
 );
 
+/** Vèneto (Vèneto)
+ * @author Vajotwo
+ */
+$messages['vec'] = array(
+	'adminlinks' => 'Paneło admin',
+	'adminlinks_documentation' => '$1 documentasion',
+	'adminlinks_general' => 'Xenerałe',
+	'adminlinks_editsidebar' => 'Modifega sidebar',
+	'adminlinks_editcss' => 'Modifega file CSS',
+	'adminlinks_editmainpagename' => 'Modifega el nome deła pajina prinsipałe',
+	'adminlinks_users' => 'Utenti',
+	'adminlinks_createuser' => "Crea n'acaunt",
+	'adminlinks_browsesearch' => 'Visuałisa e riserca',
+	'adminlinks_importexport' => 'Inporta ed esporta',
+	'right-adminlinks' => 'Vede el cołegamento al [[Special:AdminLinks|Paneło Admin]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

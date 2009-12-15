@@ -642,12 +642,16 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Ahonc
  */
 $messages['uk'] = array(
+	'ratedpages' => 'Сторінки, оцінені користувачами',
+	'ratedpages-leg' => 'Знайти сторінки, із значним числом оцінок',
 	'ratedpages-list' => "Нижче поданий список сторінок, відсортованих за оцінкою за допомогою зворотного зв'язку читачів.",
 	'ratedpages-none' => 'У цьому списку нема сторінок',
 	'ratedpages-graphs' => 'дані рейтингу',
+	'ratedpages-count' => '$1 {{PLURAL:$1|оцінка|оцінки|оцінок}}',
 );
 
 /** Vèneto (Vèneto)

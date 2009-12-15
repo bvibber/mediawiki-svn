@@ -718,7 +718,7 @@ $messages['tr'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'wikieditor-publish-preference' => 'Увімкнути публікацію крок за кроком',
+	'wikieditor-publish-preference' => 'Увімкнути покрокову публікацію',
 	'wikieditor-publish-button-publish' => 'Зберегти',
 	'wikieditor-publish-button-cancel' => 'Скасувати',
 	'wikieditor-publish-dialog-title' => 'Опублікувати на {{SITENAME}}',
