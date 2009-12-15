@@ -2,12 +2,6 @@
 ( function( $ ) { $.wikiEditor.modules.highlight = {
 
 /**
- * API accessible functions
- */
-api: {
-	//
-},
-/**
  * Internally used event handlers
  */
 evt: {
@@ -40,43 +34,61 @@ evt: {
 		}
 	}
 },
-
 /**
  * Internally used functions
  */
 fn: {
 	/**
 	 * Creates a highlight module within a wikiEditor
-	 * @param context Context object of editor to create module in
+	 * 
 	 * @param config Configuration object to create module from
 	 */
 	create: function( context, config ) {
 		// hook $.wikiEditor.modules.highlight.evt.change to context.evt.change
 	},
+	/**
+	 * Divides text into divisions
+	 */
 	divide: function( context ) {
 		/*
 		 * We need to add some markup to the iframe content to encapsulate divisions
 		 */
 	},
+	/**
+	 * Isolates division which was affected by most recent change
+	 */
 	isolate: function( context ) {
 		/*
 		 * A change just occured, and we need to know which sections were affected
 		 */
 		return []; // array of sections?
 	},
+	/**
+	 * Strips division of HTML
+	 * 
+	 * @param division
+	 */
 	strip: function( context, division ) {
 		return $( '<div />' ).html( division.html().replace( /\<br[^\>]*\>/g, "\n" ) ).text();
 	},
-	tokenArray: [],
+	/**
+	 * Scans text division for tokens
+	 * 
+	 * @param division
+	 */
 	scan: function( context, division ) {
-		// We need to look over some text and find interesting areas, then return the
-		// positions of those areas as tokens
+		/**
+		 * Builds a Token object
+		 * 
+		 * @param offset
+		 * @param label
+		 */
 		function Token( offset, label ) {
 			this.offset = offset;
 			this.label = label;
 		}
-		
-		this.tokenArray = [];
+		// We need to look over some text and find interesting areas, then return the positions of those areas as tokens
+		context.modules.highlight.tokenArray = [];
 		var text = context.fn.getContents();
 		for ( module in $.wikiEditor.modules ) {
 			if ( 'exp' in $.wikiEditor.modules[module] ) {
@@ -94,8 +106,9 @@ fn: {
 						if ( markAfter ) {
 							markOffset += match[0].length;
 						}
-						this.tokenArray.push( new Token(
-							match.index + oldOffset + markOffset, label ) );
+						context.modules.highlight.tokenArray.push(
+							new Token( match.index + oldOffset + markOffset, label )
+						);
 						oldOffset += match.index + match[0].length;
 						newSubstring = text.substring( oldOffset );
 						match = newSubstring.match( regex );
@@ -104,9 +117,14 @@ fn: {
 			}
 		}
 		
-		return this.tokenArray; // array of tokens
+		return context.modules.highlight.tokenArray; // array of tokens
 	},
-	markers: [],
+	/**
+	 * Marks up text with HTML
+	 * 
+	 * @param division
+	 * @param tokens
+	 */
 	mark: function( context, division, tokens ) {
 		// We need to markup some text based on some tokens
 		var rawText = context.fn.getContents();
@@ -117,20 +135,20 @@ fn: {
 				$.wikiEditor.modules[module].evt.mark();
 			}
 		}
-		markedText = "";
+		markedText = '';
 		var previousIndex = 0;
-	    for(var currentIndex in this.markers){
-	    	markedText+= rawText.substring(previousIndex, currentIndex);
-	    	for(var i = 0 ; i < this.markers[currentIndex].length; i++){
-	    		 markedText += this.markers[currentIndex][i];
+	    for ( var currentIndex in context.modules.highlight.markers ){
+	    	markedText += rawText.substring( previousIndex, currentIndex );
+	    	for( var i = 0 ; i < context.modules.highlight.markers[currentIndex].length; i++ ){
+	    		 markedText += context.modules.highlight.markers[currentIndex][i];
 	    	}
 	    	previousIndex = currentIndex;
 	    }
-	    if(markedText != ""){
-	    	 markedText.replace(/\n/g, '<br\>');
+	    if ( markedText != '' ){
+	    	 markedText.replace( /\n/g, '<br\>' );
 	    	 context.fn.setContents( { contents:markedText } );
 	    }
-	}//mark
+	}
 }
 
 }; })( jQuery );

@@ -2042,14 +2042,14 @@ fn: {
 						.appendTo( $( 'body' ) )
 						.each( module.init )
 						.dialog( configuration );
-					if ( !( 'resizeme' in module ) || module.resizeme )
+					if ( !( 'resizeme' in module ) || module.resizeme ) {
 						dialogDiv
 							.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
 							.find( '.ui-tabs' ).bind( 'tabsshow', function() {
 								$(this).closest( '.ui-dialog-content' ).each(
 									$.wikiEditor.modules.dialogs.fn.resize );
 							});
-					
+					}
 					// Add tabindexes to dialog form elements
 					// Find the highest tabindex in use
 					var maxTI = 0;
@@ -2069,7 +2069,6 @@ fn: {
 			}
 		});
 	},
-	
 	/**
 	 * Resize a dialog so its contents fit
 	 *
@@ -2079,48 +2078,37 @@ fn: {
 	resize: function() {
 		var wrapper = $(this).closest( '.ui-dialog' );
 		var oldWidth = wrapper.width();
-		// Make sure elements don't wrapped so we get an accurate idea
-		// of whether they really fit. Also temporarily show hidden
-		// elements.
-		
-		// Work around jQuery bug where <div style="display:inline;" />
-		// inside a dialog is both :visible and :hidden
+		// Make sure elements don't wrapped so we get an accurate idea of whether they really fit. Also temporarily show
+		// hidden elements. Work around jQuery bug where <div style="display:inline;" /> inside a dialog is both
+		// :visible and :hidden
 		var oldHidden = $(this).find( '*' ).not( ':visible' );
-		
-		// Save the style attributes of the hidden elements to restore
-		// them later. Calling hide() after show() messes up for
-		// elements hidden with a class
+		// Save the style attributes of the hidden elements to restore them later. Calling hide() after show() messes up
+		// for elements hidden with a class
 		oldHidden.each( function() {
 			$(this).data( 'oldstyle', $(this).attr( 'style' ) );
 		});
 		oldHidden.show();
 		var oldWS = $(this).css( 'white-space' );
 		$(this).css( 'white-space', 'nowrap' );
-		
 		if ( wrapper.width() <= $(this).get(0).scrollWidth ) {
 			var thisWidth = $(this).data( 'thisWidth' ) ? $(this).data( 'thisWidth' ) : 0;
 			thisWidth = Math.max( $(this).get(0).scrollWidth, thisWidth );
 			$(this).width( thisWidth );
 			$(this).data( 'thisWidth', thisWidth );
-			
 			var wrapperWidth = $(this).data( 'wrapperWidth' ) ? $(this).data( 'wrapperWidth' ) : 0;
 			wrapperWidth = Math.max( wrapper.get(0).scrollWidth, wrapperWidth );
 			wrapper.width( wrapperWidth );
 			$(this).data( 'wrapperWidth', wrapperWidth );
-			
 			$(this).dialog( { 'width': wrapper.width() } );
-			wrapper.css( 'left',
-				parseInt( wrapper.css( 'left' ) ) -
-				( wrapper.width() - oldWidth ) / 2 );
+			wrapper.css( 'left', parseInt( wrapper.css( 'left' ) ) - ( wrapper.width() - oldWidth ) / 2 );
 		}
-		
 		$(this).css( 'white-space', oldWS );
 		oldHidden.each( function() {
 			$(this).attr( 'style', $(this).data( 'oldstyle' ) );
-		});
-		
+		});		
 	}
 },
+// This stuff is just hanging here, perhaps we could come up with a better home for this stuff
 modules: {},
 quickDialog: function( body, settings ) {
 	$( '<div />' )
@@ -2133,16 +2121,9 @@ quickDialog: function( body, settings ) {
 		.dialog( 'open' );
 }
 
-}; } ) ( jQuery );
-/* Highlight module for wikiEditor */
+}; } ) ( jQuery );/* Highlight module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.highlight = {
 
-/**
- * API accessible functions
- */
-api: {
-	//
-},
 /**
  * Internally used event handlers
  */
@@ -2176,43 +2157,61 @@ evt: {
 		}
 	}
 },
-
 /**
  * Internally used functions
  */
 fn: {
 	/**
 	 * Creates a highlight module within a wikiEditor
-	 * @param context Context object of editor to create module in
+	 * 
 	 * @param config Configuration object to create module from
 	 */
 	create: function( context, config ) {
 		// hook $.wikiEditor.modules.highlight.evt.change to context.evt.change
 	},
+	/**
+	 * Divides text into divisions
+	 */
 	divide: function( context ) {
 		/*
 		 * We need to add some markup to the iframe content to encapsulate divisions
 		 */
 	},
+	/**
+	 * Isolates division which was affected by most recent change
+	 */
 	isolate: function( context ) {
 		/*
 		 * A change just occured, and we need to know which sections were affected
 		 */
 		return []; // array of sections?
 	},
+	/**
+	 * Strips division of HTML
+	 * 
+	 * @param division
+	 */
 	strip: function( context, division ) {
 		return $( '<div />' ).html( division.html().replace( /\<br[^\>]*\>/g, "\n" ) ).text();
 	},
-	tokenArray: [],
+	/**
+	 * Scans text division for tokens
+	 * 
+	 * @param division
+	 */
 	scan: function( context, division ) {
-		// We need to look over some text and find interesting areas, then return the
-		// positions of those areas as tokens
+		/**
+		 * Builds a Token object
+		 * 
+		 * @param offset
+		 * @param label
+		 */
 		function Token( offset, label ) {
 			this.offset = offset;
 			this.label = label;
 		}
-		
-		this.tokenArray = [];
+		// We need to look over some text and find interesting areas, then return the positions of those areas as tokens
+		context.modules.highlight.tokenArray = [];
 		var text = context.fn.getContents();
 		for ( module in $.wikiEditor.modules ) {
 			if ( 'exp' in $.wikiEditor.modules[module] ) {
@@ -2230,8 +2229,9 @@ fn: {
 						if ( markAfter ) {
 							markOffset += match[0].length;
 						}
-						this.tokenArray.push( new Token(
-							match.index + oldOffset + markOffset, label ) );
+						context.modules.highlight.tokenArray.push(
+							new Token( match.index + oldOffset + markOffset, label )
+						);
 						oldOffset += match.index + match[0].length;
 						newSubstring = text.substring( oldOffset );
 						match = newSubstring.match( regex );
@@ -2240,9 +2240,14 @@ fn: {
 			}
 		}
 		
-		return this.tokenArray; // array of tokens
+		return context.modules.highlight.tokenArray; // array of tokens
 	},
-	markers: [],
+	/**
+	 * Marks up text with HTML
+	 * 
+	 * @param division
+	 * @param tokens
+	 */
 	mark: function( context, division, tokens ) {
 		// We need to markup some text based on some tokens
 		var rawText = context.fn.getContents();
@@ -2253,31 +2258,25 @@ fn: {
 				$.wikiEditor.modules[module].evt.mark();
 			}
 		}
-		markedText = "";
+		markedText = '';
 		var previousIndex = 0;
-	    for(var currentIndex in this.markers){
-	    	markedText+= rawText.substring(previousIndex, currentIndex);
-	    	for(var i = 0 ; i < this.markers[currentIndex].length; i++){
-	    		 markedText += this.markers[currentIndex][i];
+	    for ( var currentIndex in context.modules.highlight.markers ){
+	    	markedText += rawText.substring( previousIndex, currentIndex );
+	    	for( var i = 0 ; i < context.modules.highlight.markers[currentIndex].length; i++ ){
+	    		 markedText += context.modules.highlight.markers[currentIndex][i];
 	    	}
 	    	previousIndex = currentIndex;
 	    }
-	    if(markedText != ""){
-	    	 markedText.replace(/\n/g, '<br\>');
+	    if ( markedText != '' ){
+	    	 markedText.replace( /\n/g, '<br\>' );
 	    	 context.fn.setContents( { contents:markedText } );
 	    }
-	}//mark
+	}
 }
 
 }; })( jQuery );/* Preview module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.preview = {
 
-/**
- * API accessible functions
- */
-api: {
-	//
-},
 /**
  * Internally used functions
  */
@@ -2417,12 +2416,6 @@ fn: {
 ( function( $ ) { $.wikiEditor.modules.publish = {
 
 /**
- * API accessible functions
- */
-api: {
-	//
-},
-/**
  * Internally used functions
  */
 fn: {
@@ -2526,80 +2519,80 @@ fn: {
 	}
 }
 
-}; } )( jQuery );/* template forms module for wikiEditor */
+}; } )( jQuery );/* TemplateEditor module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.templateEditor = {
 
 /**
- * API accessible functions
+ * Event handlers
  */
-api: {
-	//
-},
-
 evt: {
-	mark: function() {
-			function findOutermostTemplates( tokenStack ) {
-				templateBeginFound = false;
-				for ( ;i< tokenStack.length; i++ ) {
-					if ( tokenStack[i].label == "TEMPLATE_BEGIN" ) {
-						templateBeginFound = true;
-						break;
-					}
+	mark: function( context, event ) {
+		// This is shared by both the closure findOutermostTemplates and the calling code - is this a good idea?
+		var i = 0;
+		/**
+		 * Finds the left and right character positions of the outer-most template declaration, playing nicely with
+		 * nested template calls of any depth. This function acts as an iterator, which is why the i var is shared - but
+		 * this seems a bit scary seeing as 'i' is so often used in loops.
+		 * 
+		 * @param tokenStack Array of tokens to find boundries within
+		 */
+		function findOutermostTemplates( tokenStack ) {
+			var templateBeginFound = false;
+			for ( ; i < tokenStack.length; i++ ) {
+				if ( tokenStack[i].label == 'TEMPLATE_BEGIN' ) {
+					templateBeginFound = true;
+					break;
 				}
-				var j = i;
-				i++;
-				if ( !templateBeginFound ) {
-					return false;
-				} else {
-					// This is only designed to find the outermost template boundaries, the model handles nested template
-					// and template-like objects better
-					var nestedBegins = 1;
-					while ( nestedBegins > 0  && j < tokenStack.length ) {
-						j++;
-						if ( tokenStack[j].label == "TEMPLATE_END" ) {
-							nestedBegins--;
-						}
-						if ( tokenStack[j].label == "TEMPLATE_BEGIN" ) {
-							nestedBegins++;
-						}
-					}
-					if ( nestedBegins == 0 ) {
-						// outer template begins at tokenStack[i].offset
-						// and ends at tokenStack[j].offset + 2
-						var leftMarker = i -1;
-						var rightMarker = j;
-						i = j;
-						return [ leftMarker, rightMarker ];
-					} else {
-						return false;
-					}
-				}
-			}; //find outermost templates
-			
-			markers = $.wikiEditor.modules.highlight.fn.markers;
-			var tokenStack = $.wikiEditor.modules.highlight.fn.tokenArray;
-			i = 0;
-			var templateBoundaries;
-			templateBeginFound = false;
-			
-			while ( templateBoundaries = findOutermostTemplates( tokenStack ) ) {
-				if ( typeof markers[tokenStack[templateBoundaries[0]].offset] == 'undefined' ) {
-					markers[tokenStack[templateBoundaries[0]].offset] = [];
-				}
-				if ( typeof markers[tokenStack[templateBoundaries[1]].offset] == 'undefined' ) {
-					markers[tokenStack[templateBoundaries[1]].offset] = [];
-				}
-				markers[tokenStack[templateBoundaries[0]].offset].push( "<div class='wiki-template'>" );
-				markers[tokenStack[templateBoundaries[1]].offset].push( "</div>" );
 			}
+			var j = i++;
+			if ( !templateBeginFound ) {
+				return false;
+			} else {
+				// This is only designed to find the outermost template boundaries, the model handles nested template
+				// and template-like objects better
+				var nestedBegins = 1;
+				while ( nestedBegins > 0  && j < tokenStack.length ) {
+					var label = tokenStack[++j].label;
+					nestedBegins += label == 'TEMPLATE_END' ? -1 : label == 'TEMPLATE_BEGIN' ? 1 : 0;
+				}
+				if ( nestedBegins == 0 ) {
+					// Outer template begins at tokenStack[i].offset and ends at tokenStack[j].offset + 2
+					var leftMarker = i -1;
+					var rightMarker = j;
+					i = j;
+					return [leftMarker, rightMarker];
+				} else {
+					return false;
+				}
+			}
+		};
+		// Get the markers and tokens from the current context
+		var markers = context.modules.highlight.data.markers;
+		var tokenStack = context.modules.highlight.data.tokenArray;
+		// Scan through and detect the boundries of template calls
+		var templateBeginFound = false;
+		var templateBoundaries;
+		while ( templateBoundaries = findOutermostTemplates( tokenStack ) ) {
+			// Ensure indexes exist for left and right boundry markers
+			if ( typeof markers[tokenStack[templateBoundaries[0]].offset] == 'undefined' ) {
+				markers[tokenStack[templateBoundaries[0]].offset] = [];
+			}
+			if ( typeof markers[tokenStack[templateBoundaries[1]].offset] == 'undefined' ) {
+				markers[tokenStack[templateBoundaries[1]].offset] = [];
+			}
+			// Append boundry markers
+			markers[tokenStack[templateBoundaries[0]].offset].push( "<div class='wiki-template'>" );
+			markers[tokenStack[templateBoundaries[1]].offset].push( "</div>" );
 		}
+	}
 },
-
+/**
+ * Regular expressions that produce tokens
+ */
 exp: [
-		{ regex: /{{/, label: "TEMPLATE_BEGIN" },
-		{ regex: /}}/, label: "TEMPLATE_END", markAfter: true }
+	{ 'regex': /{{/, 'label': "TEMPLATE_BEGIN" },
+	{ 'regex': /}}/, 'label': "TEMPLATE_END", 'markAfter': true }
 ],
-
 /**
  * Internally used functions
  */
@@ -2610,14 +2603,28 @@ fn: {
 	 * @param config Configuration object to create module from
 	 */
 	create: function( context, config ) {
-		
-		//initializations
-		
+		// Initialize module within the context
 	},
-
-	//template Model
+	/**
+	 * Builds a template model from given wikitext representation, allowing object-oriented manipulation of the contents
+	 * of the template while preserving whitespace and formatting.
+	 * 
+	 * @param wikitext String of wikitext content
+	 */
 	model: function( wikitext ) {
-		// Param object
+		
+		/* Private Functions */
+		
+		/**
+		 * Builds a Param object.
+		 * 
+		 * @param name
+		 * @param value
+		 * @param number
+		 * @param nameIndex
+		 * @param equalsIndex
+		 * @param valueIndex
+		 */
 		function Param( name, value, number, nameIndex, equalsIndex, valueIndex ) {
 			this.name = name;
 			this.value = value;
@@ -2626,56 +2633,167 @@ fn: {
 			this.equalsIndex = equalsIndex;
 			this.valueIndex = valueIndex;
 		}
-		
-		// Range object
+		/**
+		 * Builds a Range object.
+		 * 
+		 * @param begin
+		 * @param end
+		 */
 		function Range( begin, end ) {
 			this.begin = begin;
 			this.end = end;
 		}
-		
-		var ranges = [];
-		var sanatizedStr = "";
-		var params = [];
-		var paramsByName = [];
-		var templateNameIndex = 0;
-		
-		//takes all template-specific characters, namely {|=} away if they're not particular to the
-		//template we're looking at
-		function markOffTemplates() {
-			sanatizedStr = wikitext.replace( /{{/, "  " ); //get rid of first {{ with whitespace
-			endBraces = sanatizedStr.match( /}}\s*$/ ); //replace end
-			sanatizedStr = sanatizedStr.substring( 0, endBraces.index ) + "  " +
-				sanatizedStr.substring( endBraces.index + 2 );
-			
-			//match the open braces we just found with equivalent closing braces
-			//note, works for any level of braces
-			while ( sanatizedStr.indexOf( '{{' ) != -1 ) {
-				startIndex = sanatizedStr.indexOf('{{') + 1;
-				openBraces = 2;
-				endIndex = startIndex;
-				while ( openBraces > 0 ) {
-					endIndex++;
-					switch ( sanatizedStr[endIndex] ) {
-						case '}': openBraces--; break;
-						case '{': openBraces++; break;
-					}
+		/**
+		 * Set 'original' to true if you want the original value irrespective of whether the model's been changed
+		 * 
+		 * @param name
+		 * @param value
+		 * @param original
+		 */
+		function getSetValue( name, value, original ) {
+			var valueRange;
+			var rangeIndex;
+			var retVal;
+			if ( isNaN( name ) ) {
+				// It's a string!
+				if ( typeof paramsByName[name] == 'undefined' ) {
+					// Does not exist
+					return "";
 				}
-				sanatizedSegment = sanatizedStr.substring( startIndex,endIndex )
-						.replace( /[{}|=]/g , 'X' );
-				sanatizedStr = sanatizedStr.substring( 0, startIndex ) +
-					sanatizedSegment + sanatizedStr.substring( endIndex );
-			}//while
-			return sanatizedStr;
+				rangeIndex = paramsByName[name];
+			} else {
+				// It's a number!
+				rangeIndex = parseInt( name );
+			}
+			if ( typeof params[rangeIndex]  == 'undefined' ) {
+				// Does not exist
+				return "";
+			}
+			valueRange = ranges[params[rangeIndex].valueIndex];
+			if ( typeof valueRange.newVal == 'undefined' || original ) {
+				// Value unchanged, return original wikitext
+				retVal = wikitext.substring( valueRange.begin, valueRange.end );
+			} else {
+				// New value exists, return new value
+				retVal = valueRange.newVal;
+			}
+			if ( value != null ) {
+				ranges[params[rangeIndex].valueIndex].newVal = value;
+			}
+			return retVal;
 		};
-
+		
+		/* Public Functions */
+		
+		/**
+		 * Get template name
+		 */
+		this.getName = function() {
+			if( typeof ranges[templateNameIndex].newVal == 'undefined' ) {
+				return wikitext.substring( ranges[templateNameIndex].begin, ranges[templateNameIndex].end );
+			} else {
+				return ranges[templateNameIndex].newVal;
+			}
+		};
+		/**
+		 * Set template name (if we want to support this)
+		 * 
+		 * @param name
+		 */
+		this.setName = function( name ) {
+			ranges[templateNameIndex].newVal = name;
+		};
+		/**
+		 * Set value for a given param name / number
+		 * 
+		 * @param name
+		 * @param value
+		 */
+		this.setValue = function( name, value ) {
+			return getSetValue( name, value, false );
+		};
+		/**
+		 * Get value for a given param name / number
+		 * 
+		 * @param name
+		 */
+		this.getValue = function( name ) {
+			return getSetValue( name, null, false );
+		};
+		/**
+		 * Get original value of a param
+		 * 
+		 * @param name
+		 */
+		this.getOriginalValue = function( name ) {
+			return getSetValue( name, null, true );
+		};
+		/**
+		 * Get a list of all param names (numbers for the anonymous ones)
+		 */
+		this.getAllParamNames = function() {
+			return paramsByName;
+		};
+		/**
+		 * Get the initial params
+		 */
+		this.getAllInitialParams = function(){
+			return params;
+		}
+		/**
+		 * Get original template text
+		 */
+		this.getOriginalText = function() {
+			return wikitext;
+		};
+		/**
+		 * Get modified template text
+		 */
+		this.getText = function() {
+			newText = "";
+			for ( i = 0 ; i < ranges.length; i++ ) {
+				if( typeof ranges[i].newVal == 'undefined' ) {
+					wikitext.substring( ranges[i].begin, ranges[i].end );
+				} else {
+					newText += ranges[i].newVal;
+				}
+			}
+			return newText;
+		};
+		
 		// Whitespace* {{ whitespace* nonwhitespace:
 		if ( wikitext.match( /\s*{{\s*\S*:/ ) ) {
-			// we have a parser function!
+			// We have a parser function!
 		}
-		
-		markOffTemplates();
-		
-		//parse 1 param at a time
+		/*
+		 * Take all template-specific characters that are not particular to the template we're looking at, namely {|=},
+		 * and convert them into something harmless, in this case 'X'
+		 */
+		// Get rid of first {{ with whitespace
+		var sanatizedStr = wikitext.replace( /{{/, "  " );
+		// Replace end
+		endBraces = sanatizedStr.match( /}}\s*$/ );
+		sanatizedStr =
+			sanatizedStr.substring( 0, endBraces.index ) + "  " + sanatizedStr.substring( endBraces.index + 2 );
+		// Match the open braces we just found with equivalent closing braces note, works for any level of braces
+		while ( sanatizedStr.indexOf( '{{' ) != -1 ) {
+			startIndex = sanatizedStr.indexOf('{{') + 1;
+			openBraces = 2;
+			endIndex = startIndex;
+			while ( openBraces > 0 ) {
+				var brace = sanatizedStr[++endIndex];
+				openBraces += brace == '}' ? -1 : brace == '{' ? 1 : 0;
+			}
+			sanatizedSegment = sanatizedStr.substring( startIndex,endIndex ).replace( /[{}|=]/g , 'X' );
+			sanatizedStr =
+				sanatizedStr.substring( 0, startIndex ) + sanatizedSegment + sanatizedStr.substring( endIndex );
+		}
+		/*
+		 * Parse 1 param at a time
+		 */
+		var ranges = [];
+		var params = [];
+		var templateNameIndex = 0;
 		var doneParsing = false;
 		oldDivider = 0;
 		divider = sanatizedStr.indexOf( '|', oldDivider );
@@ -2693,11 +2811,12 @@ fn: {
 				ranges[templateNameIndex].end );
 		}
 		params.push( ranges[templateNameIndex].old ); //put something in params (0)
-
-		currentParamNumber = 0;
+		/*
+		 * Start looping over params
+		 */
+		var currentParamNumber = 0;
 		var valueEndIndex;
-		
-		//start looping over params
+		var paramsByName = [];
 		while ( !doneParsing ) {
 			currentParamNumber++;
 			oldDivider = divider;
@@ -2726,162 +2845,63 @@ fn: {
 					currentParamNumber, nameIndex, equalsIndex, valueIndex ) );
 				paramsByName[currentParamNumber] = currentParamNumber;
 			} else {
-				// there's an equals, could be comment or a value pair
+				// There's an equals, could be comment or a value pair
 				currentName = currentField.substring( 0, currentField.indexOf( '=' ) );
-				// (still offset by oldDivider)
-				nameBegin = currentName.match( /\S+/ ); //first nonwhitespace character
+				// Still offset by oldDivider - first nonwhitespace character
+				nameBegin = currentName.match( /\S+/ );
 				if ( nameBegin == null ) {
-					// this is a comment inside a template call/parser abuse. let's not encourage it
+					// This is a comment inside a template call / parser abuse. let's not encourage it
 					divider++;
 					currentParamNumber--;
 					continue;
 				}
 				nameBeginIndex = nameBegin.index + oldDivider + 1;
-				nameEnd = currentName.match( /[^\s]\s*$/ ); //last nonwhitespace and non } character
+				// Last nonwhitespace and non } character
+				nameEnd = currentName.match( /[^\s]\s*$/ );
 				nameEndIndex = nameEnd.index + oldDivider + 2;
-			
-				ranges.push( new Range( ranges[ranges.length-1].end,
-					nameBeginIndex ) ); //all the chars upto now 
-				nameIndex = ranges.push( new Range( nameBeginIndex, nameEndIndex ) );
-				nameIndex--;
+				// All the chars upto now 
+				ranges.push( new Range( ranges[ranges.length-1].end, nameBeginIndex ) );
+				nameIndex = ranges.push( new Range( nameBeginIndex, nameEndIndex ) ) - 1;
 				currentValue = currentField.substring( currentField.indexOf( '=' ) + 1);
 				oldDivider += currentField.indexOf( '=' ) + 1;
-				valueBegin = currentValue.match( /\S+/ ); //first nonwhitespace character
+				// First nonwhitespace character
+				valueBegin = currentValue.match( /\S+/ );
 				valueBeginIndex = valueBegin.index + oldDivider + 1;
-				valueEnd = currentValue.match( /[^\s]\s*$/ ); //last nonwhitespace and non } character
+				// Last nonwhitespace and non } character
+				valueEnd = currentValue.match( /[^\s]\s*$/ );
 				valueEndIndex = valueEnd.index + oldDivider + 2;
-				equalsIndex = ranges.push( new Range( ranges[ranges.length-1].end,
-					valueBeginIndex) ); //all the chars upto now 
-				equalsIndex--;
-				valueIndex = ranges.push( new Range( valueBeginIndex, valueEndIndex ) );
-				valueIndex--;
-				params.push( new Param( wikitext.substring( nameBeginIndex, nameEndIndex ),
+				// All the chars upto now
+				equalsIndex = ranges.push( new Range( ranges[ranges.length-1].end, valueBeginIndex) ) - 1;
+				valueIndex = ranges.push( new Range( valueBeginIndex, valueEndIndex ) ) - 1;
+				params.push( new Param(
+					wikitext.substring( nameBeginIndex, nameEndIndex ),
 					wikitext.substring( valueBeginIndex, valueEndIndex ),
-					currentParamNumber, nameIndex, equalsIndex, valueIndex ) );
+					currentParamNumber,
+					nameIndex,
+					equalsIndex,
+					valueIndex
+				) );
 				paramsByName[wikitext.substring( nameBeginIndex, nameEndIndex )] = currentParamNumber;
 			}
 		}
-		//the rest of the string
+		// The rest of the string
 		ranges.push( new Range( valueEndIndex, wikitext.length ) );
-		
-		//FUNCTIONS
-		//set 'original' to true if you want the original value irrespective of whether the model's been changed
-		function getSetValue( name, value, original ) {
-			var valueRange;
-			var rangeIndex;
-			var retVal;
-			if ( isNaN( name ) ) {
-				// it's a string!
-				if ( typeof paramsByName[name] == 'undefined' ) {
-					//does not exist
-					return "";
-				}
-				rangeIndex = paramsByName[name];
-			} else {
-				//it's a number!
-				rangeIndex = parseInt( name );
-			}
-			
-			if ( typeof params[rangeIndex]  == 'undefined' ) {
-				//does not exist
-				return "";
-			}
-			valueRange = ranges[params[rangeIndex].valueIndex];
-			
-			if ( typeof valueRange.newVal == 'undefined' || original ) {
-				//value unchanged, return original wikitext
-				retVal = wikitext.substring( valueRange.begin, valueRange.end );
-			} else {
-				//new value exists, return new value
-				retVal = valueRange.newVal;
-			}
-			
-			if ( value != null ) {
-				ranges[params[rangeIndex].valueIndex].newVal = value;
-			}
-			
-			return retVal;
-		};
-		
-		//'public' functions
-		
-		//get template name
-		this.getName = function() {
-			if( typeof ranges[templateNameIndex].newVal == 'undefined' ) {
-				return wikitext.substring( ranges[templateNameIndex].begin,
-						ranges[templateNameIndex].end );
-			
-			} else {
-				return ranges[templateNameIndex].newVal;
-			}
-		};
-		
-		//set template name (if we want to support this)
-		this.setName = function( name ) {
-			ranges[templateNameIndex].newVal = name;
-		};
-		
-		//set value for a given param name/number
-		this.setValue = function( name, value ) {
-			return getSetValue( name, value, false );
-		};
-
-		//get value for a given param name/number
-		this.getValue = function( name ) {
-			return getSetValue( name, null, false );
-		};
-		
-		//get original value of a param
-		this.getOriginalValue = function( name ) {
-			return getSetValue( name, null, true );
-		};
-
-		//get a list of all param names (numbers for the anonymous ones)
-		this.getAllParamNames = function() {
-			return paramsByName;
-		};
-
-		//get the initial params
-		this.getAllInitialParams = function(){
-			return params;
-		}
-		
-		//get original template text
-		this.getOriginalText = function() {
-			return wikitext;
-		};
-
-		//get modified template text
-		this.getText = function() {
-			newText = "";
-			for ( i = 0 ; i < ranges.length; i++ ) {
-				if( typeof ranges[i].newVal == 'undefined' ) {
-					wikitext.substring( ranges[i].begin, ranges[i].end );
-				} else {
-					newText += ranges[i].newVal;
-				}
-			}
-			return newText;
-		};
-	}//template model
-
-}//fn
+	} // model
+}
 
 }; } )( jQuery );
-
-
 /* TOC Module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.toc = {
-	
+
 /**
- * Default width of table of contents
+ * Configuration
  */
-defaultWidth: '166px',
-/**
- * Minimum width to allow resizing to before collapsing the table of contents
- * Only used if resizing and collapsing is enabled
- */
-minimumWidth: '70px',
+cfg: {
+	// Default width of table of contents
+	defaultWidth: '166px',
+	// Minimum width to allow resizing to before collapsing the table of contents - used when resizing and collapsing
+	minimumWidth: '70px',
+},
 /**
  * API accessible functions
  */
@@ -2940,15 +2960,15 @@ fn: {
 			.addClass( 'wikiEditor-ui-toc' )
 			.data( 'context', context );
 		context.$ui.find( '.wikiEditor-ui-right' )
-			.css( 'width', $.wikiEditor.modules.toc.defaultWidth )
+			.css( 'width', $.wikiEditor.modules.toc.cfg.defaultWidth )
 			.append( context.modules.toc.$toc );
 		context.modules.toc.$toc.height(
 			context.$ui.find( '.wikiEditor-ui-left' ).height()
 		);
 		context.$ui.find( '.wikiEditor-ui-left' )
-			.css( 'marginRight', "-" + $.wikiEditor.modules.toc.defaultWidth )
+			.css( 'marginRight', "-" + $.wikiEditor.modules.toc.cfg.defaultWidth )
 			.children()
-			.css( 'marginRight', $.wikiEditor.modules.toc.defaultWidth );
+			.css( 'marginRight', $.wikiEditor.modules.toc.cfg.defaultWidth );
 	},
 	
 	unhighlight: function( context ) {
@@ -3152,7 +3172,14 @@ fn: {
 						// Toss a transparent cover over our iframe
 						$( '<div />' )
 							.addClass( 'wikiEditor-ui-resize-mask' )
-							.css( { 'position': 'absolute', 'z-index': 2, 'left': 0, 'top': 0, 'bottom': 0, 'right': 0 } )
+							.css( {
+								'position': 'absolute',
+								'z-index': 2,
+								'left': 0,
+								'top': 0,
+								'bottom': 0,
+								'right': 0
+							} )
 							.appendTo( context.$ui.find( '.wikiEditor-ui-left' ) );
 						$this.resizable( 'option', 'maxWidth', $this.parent().width() - 450 );
 					},
@@ -3168,7 +3195,7 @@ fn: {
 					stop: function ( e, ui ) {
 						context.$ui.find( '.wikiEditor-ui-resize-mask' ).remove();
 						context.$content.trigger( 'mouseup' );
-						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.minimumWidth ) ) {
+						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) ) {
 							context.modules.toc.$toc.trigger( 'collapse' );
 						} else {
 							context.modules.toc.$toc.data( 'openWidth', ui.size.width );
@@ -3188,14 +3215,14 @@ fn: {
 			context.modules.toc.$toc
 				.bind( 'collapse.wikiEditor-toc', $.wikiEditor.modules.toc.fn.collapse )
 				.bind( 'expand.wikiEditor-toc', $.wikiEditor.modules.toc.fn.expand  );
-			context.modules.toc.$toc.data( 'openWidth', $.wikiEditor.modules.toc.defaultWidth );
+			context.modules.toc.$toc.data( 'openWidth', $.wikiEditor.modules.toc.cfg.defaultWidth );
 			// If the toc-width cookie is set, reset the widths based upon that
 			if ( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) == 0 ) {
 				context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc', { data: context } );
 			} else if ( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) > 0 ) {
 				var initialWidth = $.cookie( 'wikiEditor-' + context.instance + '-toc-width' );
-				if( initialWidth < parseFloat( $.wikiEditor.modules.toc.minimumWidth ) )
-					initialWidth = parseFloat( $.wikiEditor.modules.toc.minimumWidth ) + 1;
+				if( initialWidth < parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) )
+					initialWidth = parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) + 1;
 				context.modules.toc.$toc.data( 'openWidth', initialWidth + 'px' );
 				context.$ui.find( '.wikiEditor-ui-right' )
 					.css( 'width', initialWidth + 'px' );

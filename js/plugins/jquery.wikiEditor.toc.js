@@ -1,15 +1,15 @@
 /* TOC Module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.toc = {
-	
+
 /**
- * Default width of table of contents
+ * Configuration
  */
-defaultWidth: '166px',
-/**
- * Minimum width to allow resizing to before collapsing the table of contents
- * Only used if resizing and collapsing is enabled
- */
-minimumWidth: '70px',
+cfg: {
+	// Default width of table of contents
+	defaultWidth: '166px',
+	// Minimum width to allow resizing to before collapsing the table of contents - used when resizing and collapsing
+	minimumWidth: '70px',
+},
 /**
  * API accessible functions
  */
@@ -68,15 +68,15 @@ fn: {
 			.addClass( 'wikiEditor-ui-toc' )
 			.data( 'context', context );
 		context.$ui.find( '.wikiEditor-ui-right' )
-			.css( 'width', $.wikiEditor.modules.toc.defaultWidth )
+			.css( 'width', $.wikiEditor.modules.toc.cfg.defaultWidth )
 			.append( context.modules.toc.$toc );
 		context.modules.toc.$toc.height(
 			context.$ui.find( '.wikiEditor-ui-left' ).height()
 		);
 		context.$ui.find( '.wikiEditor-ui-left' )
-			.css( 'marginRight', "-" + $.wikiEditor.modules.toc.defaultWidth )
+			.css( 'marginRight', "-" + $.wikiEditor.modules.toc.cfg.defaultWidth )
 			.children()
-			.css( 'marginRight', $.wikiEditor.modules.toc.defaultWidth );
+			.css( 'marginRight', $.wikiEditor.modules.toc.cfg.defaultWidth );
 	},
 	
 	unhighlight: function( context ) {
@@ -280,7 +280,14 @@ fn: {
 						// Toss a transparent cover over our iframe
 						$( '<div />' )
 							.addClass( 'wikiEditor-ui-resize-mask' )
-							.css( { 'position': 'absolute', 'z-index': 2, 'left': 0, 'top': 0, 'bottom': 0, 'right': 0 } )
+							.css( {
+								'position': 'absolute',
+								'z-index': 2,
+								'left': 0,
+								'top': 0,
+								'bottom': 0,
+								'right': 0
+							} )
 							.appendTo( context.$ui.find( '.wikiEditor-ui-left' ) );
 						$this.resizable( 'option', 'maxWidth', $this.parent().width() - 450 );
 					},
@@ -296,7 +303,7 @@ fn: {
 					stop: function ( e, ui ) {
 						context.$ui.find( '.wikiEditor-ui-resize-mask' ).remove();
 						context.$content.trigger( 'mouseup' );
-						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.minimumWidth ) ) {
+						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) ) {
 							context.modules.toc.$toc.trigger( 'collapse' );
 						} else {
 							context.modules.toc.$toc.data( 'openWidth', ui.size.width );
@@ -316,14 +323,14 @@ fn: {
 			context.modules.toc.$toc
 				.bind( 'collapse.wikiEditor-toc', $.wikiEditor.modules.toc.fn.collapse )
 				.bind( 'expand.wikiEditor-toc', $.wikiEditor.modules.toc.fn.expand  );
-			context.modules.toc.$toc.data( 'openWidth', $.wikiEditor.modules.toc.defaultWidth );
+			context.modules.toc.$toc.data( 'openWidth', $.wikiEditor.modules.toc.cfg.defaultWidth );
 			// If the toc-width cookie is set, reset the widths based upon that
 			if ( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) == 0 ) {
 				context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc', { data: context } );
 			} else if ( $.cookie( 'wikiEditor-' + context.instance + '-toc-width' ) > 0 ) {
 				var initialWidth = $.cookie( 'wikiEditor-' + context.instance + '-toc-width' );
-				if( initialWidth < parseFloat( $.wikiEditor.modules.toc.minimumWidth ) )
-					initialWidth = parseFloat( $.wikiEditor.modules.toc.minimumWidth ) + 1;
+				if( initialWidth < parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) )
+					initialWidth = parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) + 1;
 				context.modules.toc.$toc.data( 'openWidth', initialWidth + 'px' );
 				context.$ui.find( '.wikiEditor-ui-right' )
 					.css( 'width', initialWidth + 'px' );

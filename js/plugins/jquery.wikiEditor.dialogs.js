@@ -69,14 +69,14 @@ fn: {
 						.appendTo( $( 'body' ) )
 						.each( module.init )
 						.dialog( configuration );
-					if ( !( 'resizeme' in module ) || module.resizeme )
+					if ( !( 'resizeme' in module ) || module.resizeme ) {
 						dialogDiv
 							.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
 							.find( '.ui-tabs' ).bind( 'tabsshow', function() {
 								$(this).closest( '.ui-dialog-content' ).each(
 									$.wikiEditor.modules.dialogs.fn.resize );
 							});
-					
+					}
 					// Add tabindexes to dialog form elements
 					// Find the highest tabindex in use
 					var maxTI = 0;
@@ -96,7 +96,6 @@ fn: {
 			}
 		});
 	},
-	
 	/**
 	 * Resize a dialog so its contents fit
 	 *
@@ -106,48 +105,37 @@ fn: {
 	resize: function() {
 		var wrapper = $(this).closest( '.ui-dialog' );
 		var oldWidth = wrapper.width();
-		// Make sure elements don't wrapped so we get an accurate idea
-		// of whether they really fit. Also temporarily show hidden
-		// elements.
-		
-		// Work around jQuery bug where <div style="display:inline;" />
-		// inside a dialog is both :visible and :hidden
+		// Make sure elements don't wrapped so we get an accurate idea of whether they really fit. Also temporarily show
+		// hidden elements. Work around jQuery bug where <div style="display:inline;" /> inside a dialog is both
+		// :visible and :hidden
 		var oldHidden = $(this).find( '*' ).not( ':visible' );
-		
-		// Save the style attributes of the hidden elements to restore
-		// them later. Calling hide() after show() messes up for
-		// elements hidden with a class
+		// Save the style attributes of the hidden elements to restore them later. Calling hide() after show() messes up
+		// for elements hidden with a class
 		oldHidden.each( function() {
 			$(this).data( 'oldstyle', $(this).attr( 'style' ) );
 		});
 		oldHidden.show();
 		var oldWS = $(this).css( 'white-space' );
 		$(this).css( 'white-space', 'nowrap' );
-		
 		if ( wrapper.width() <= $(this).get(0).scrollWidth ) {
 			var thisWidth = $(this).data( 'thisWidth' ) ? $(this).data( 'thisWidth' ) : 0;
 			thisWidth = Math.max( $(this).get(0).scrollWidth, thisWidth );
 			$(this).width( thisWidth );
 			$(this).data( 'thisWidth', thisWidth );
-			
 			var wrapperWidth = $(this).data( 'wrapperWidth' ) ? $(this).data( 'wrapperWidth' ) : 0;
 			wrapperWidth = Math.max( wrapper.get(0).scrollWidth, wrapperWidth );
 			wrapper.width( wrapperWidth );
 			$(this).data( 'wrapperWidth', wrapperWidth );
-			
 			$(this).dialog( { 'width': wrapper.width() } );
-			wrapper.css( 'left',
-				parseInt( wrapper.css( 'left' ) ) -
-				( wrapper.width() - oldWidth ) / 2 );
+			wrapper.css( 'left', parseInt( wrapper.css( 'left' ) ) - ( wrapper.width() - oldWidth ) / 2 );
 		}
-		
 		$(this).css( 'white-space', oldWS );
 		oldHidden.each( function() {
 			$(this).attr( 'style', $(this).data( 'oldstyle' ) );
-		});
-		
+		});		
 	}
 },
+// This stuff is just hanging here, perhaps we could come up with a better home for this stuff
 modules: {},
 quickDialog: function( body, settings ) {
 	$( '<div />' )

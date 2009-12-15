@@ -2,12 +2,6 @@
 ( function( $ ) { $.wikiEditor.modules.publish = {
 
 /**
- * API accessible functions
- */
-api: {
-	//
-},
-/**
  * Internally used functions
  */
 fn: {
