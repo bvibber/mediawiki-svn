@@ -25,11 +25,46 @@ $messages['qqq'] = array(
 {{desc}}",
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'geolite-desc' => 'Liggewig GeoIP-gebaseerde aanstuur',
+);
+
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'geolite' => 'جيو لايت',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'geolite-desc' => 'Палегчанае перанакіраваньне GeoIp',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
 $messages['br'] = array(
 	'geolite-desc' => 'Adheñchadenn Geolp skañv',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'geolite-desc' => 'Jednoduché přesměrování GeoIp',
+);
+
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'geolite-desc' => 'Lightweight GeoIp Reyna Neqili',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -58,6 +93,14 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'geolite-desc' => 'Eifachi GeoIp-Wyterleitig',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'geolite-desc' => 'הפניה ל־GeoIp קלת משקל',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -95,11 +138,25 @@ $messages['ksh'] = array(
 	'geolite-desc' => 'En eijfaache Ömlängkung för GeoIP.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'geolite-desc' => 'Liicht Viruleedung op GeoIP',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
 	'geolite-desc' => 'Просто GeoIp пренасочување',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'geolite-desc' => 'ലഘുവായ ജിയോഐപി തിരിച്ചുവിടൽ',
 );
 
 /** Dutch (Nederlands)
@@ -114,6 +171,13 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'geolite-desc' => 'Redireccion GeoIp leugièra',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'geolite-desc' => 'Proste przekierowanie GeoIP',
 );
 
 /** Piedmontese (Piemontèis)

@@ -15,7 +15,7 @@ class SpecialGeoLite extends UnlistedSpecialPage {
 	
 	public function execute( $sub ) {
 		global $wgOut, $wgRequest;
-		global $wgLandingPageBase, $wgChaptersPageBase, $wgChapterLandingPages, $wgLandingPageDefaultTarget;
+		global $wgLandingPageBase, $wgChapterLandingPages, $wgLandingPageDefaultTarget;
 		
 		$lang = ( preg_match( '/^[A-Za-z-]+$/', $wgRequest->getVal( 'lang' ) ) ) ? $wgRequest->getVal( 'lang' ) : 'en' ;
 		$utm_source = $wgRequest->getVal( 'utm_source' );
@@ -40,12 +40,29 @@ class SpecialGeoLite extends UnlistedSpecialPage {
 		if ( IP::isValid( $ip ) ) {
 			$country = geoip_country_code_by_name( $ip );
 			if ( is_string ( $country ) && array_key_exists( $country, $wgChapterLandingPages ) ) {
-				$wgOut->redirect( $wgChaptersPageBase . '/' . $wgChapterLandingPages[$country] . $tracking );
+				$wgOut->redirect( $this->getDestination( $utm_source ) . '/' . $wgChapterLandingPages[$country] . $tracking );
 				return;
 			}
 		}
 		// No valid IP or chapter page - let's just go for the general one
 		$wgOut->redirect( $wgLandingPageBase . $target . '/' . $lang . $tracking );
+	}
+
+	public function getDestination( $utm_source ) {
+		global $wgChaptersPageBase, $wgAppealPageBase;
+
+		$utm_source = substr( $utm_source, 5, 12 );
+
+		switch( $utm_source ) {
+			case 'Jimmy_Appeal':
+				$dest = $wgAppealPageBase;
+				break;
+			default:
+				$dest = $wgChaptersPageBase;
+				break;
+		}
+
+		return $dest;
 	}
 
 }
