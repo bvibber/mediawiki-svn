@@ -79,6 +79,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			'anonymous' => '',
 			'optout' => '',
 			'token' => $token,
+			'contribution_tracking_id' => '',
 		);
 
 		$error[] = '';
@@ -86,8 +87,8 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		// find out if amount was a radio button or textbox, set amount
 		if( isset( $_REQUEST['amount'] ) && preg_match( '/^\d+(\.(\d+)?)?$/', $wgRequest->getText( 'amount' ) ) ) {
 			$amount = $wgRequest->getText( 'amount' );
-		} elseif( isset( $_REQUEST['amount2'] ) && preg_match( '/^\d+(\.(\d+)?)?$/', $wgRequest->getText( 'amount2' ) ) ) { 
-				$amount = number_format( $wgRequest->getText( 'amount2' ), 2, '.', '' );
+		} elseif( isset( $_REQUEST['amountGiven'] ) && preg_match( '/^\d+(\.(\d+)?)?$/', $wgRequest->getText( 'amountGiven' ) ) ) { 
+				$amount = number_format( $wgRequest->getText( 'amountGiven' ), 2, '.', '' );
 		} elseif( isset( $_REQUEST['amount'] ) ) { 
 				$amount = '0.00';
 		} else {
@@ -127,6 +128,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			'anonymous' => $wgRequest->getText( 'comment-option' ),
 			'optout' => $wgRequest->getText( 'email' ),
 			'test_string' => $wgRequest->getText( 'process' ), //for showing payflow string during testing
+			'contribution_tracking_id' => $wgRequest->getText( 'contribution_tracking_id' ),
 		);
 		
 		// Get array of default account values necessary for Payflow 
@@ -257,6 +259,10 @@ class PayflowProGateway extends UnlistedSpecialPage {
     		}
 		
 		// intro text
+		if ( $wgWikipediForeverTheme ) {
+			$wgOut->addWikiText( '{{2009/Donate-header/' . $data[language] . '}}' );
+		}	
+
 		$form = Xml::openElement( 'div', array( 'id' => 'mw-creditcard' ) ) .
 			Xml::openElement( 'div', array( 'id' => 'mw-creditcard-intro' ) ) .
 			Xml::tags( 'p', array( 'class' => 'mw-creditcard-intro-msg' ), wfMsg( 'payflowpro_gateway-form-message' ) ) .
@@ -380,7 +386,8 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			Xml::hidden( 'payment_method', 'processed' ) .
 			Xml::hidden( 'token', $data['token'] ) .
 			Xml::hidden( 'orderid', $data['order_id'] ) .
-			Xml::hidden( 'numAttempt', $data['numAttempt'] );
+			Xml::hidden( 'numAttempt', $data['numAttempt'] ) .
+			Xml::hidden( 'contribution_tracking_id', $data['contribution_tracking_id'] );
 				
 		// submit button and close form
 		$form .= Xml::openElement( 'div', array( 'class' => 'mw-donate-submessage' ) ) .
@@ -675,7 +682,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		if( $errorCode == '1' ) {
 			$this->fnPayflowDisplayApprovedResults( $data, $responseArray, $responseMsg );
 			// give user a second chance to enter incorrect data
-		} elseif( ( $errorCode == '3' ) && ( $data['numAttempt'] < '3' ) ) {
+		} elseif( ( $errorCode == '3' ) && ( $data['numAttempt'] < '5' ) ) {
 			// pass responseMsg as an array key as required by displayForm
 				$tryAgainResponse['retryMsg'] = $responseMsg;
 				$this->fnPayflowDisplayForm( $data, $tryAgainResponse );
@@ -757,28 +764,11 @@ class PayflowProGateway extends UnlistedSpecialPage {
 	 * @param $responseMsg String: message supplied by getResults function
 	 */
 	function fnPayflowDisplayApprovedResults( $data, $responseArray, $responseMsg ) {
-		global $wgOut;
+		require_once( 'includes/countryCodes.inc' );
+
+		global $wgOut, $wgThankYouPage;
 		$transaction = '';
 		$tracked = '';
-
-		require_once( 'includes/countryCodes.inc' );
-		
-		// display response message
-		$wgOut->addHTML( '<h3 class="response_message">' . $responseMsg . '</h3>' );
-
-		// translate country code into text 
-		$countries = countryCodes();
-
-		$rows = array(
-			'title' => array( wfMsg( 'payflowpro_gateway-post-transaction' ) ),
-			'amount' => array( wfMsg( 'payflowpro_gateway-donor-amount' ), $data['amount'] ),
-			'email' => array( wfMsg( 'payflowpro_gateway-donor-email' ), $data['email'] ),
-			'name' => array( wfMsg( 'payflowpro_gateway-donor-name' ), $data['fname'], $data['mname'], $data['lname'] ),
-			'address' => array( wfMsg( 'payflowpro_gateway-donor-address' ), $data['street'], $data['city'], $data['state'], $data['zip'], $countries[$data['country']] ),
-		);
-
-		// if we want to show the response
-		$wgOut->addHTML( Xml::buildTable( $rows, array( 'class' => 'submitted-response' ) ) );
 
 		// push to ActiveMQ server 
 		// include response message
@@ -791,12 +781,29 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		// put all data into one array
 		$transaction += array_merge( $data, $responseArray );
 		
-		//enable if we need this to get the Civi data to display correctly
-		$transaction['optout'] = ($transaction['optout'] == "1") ? '0' : '1';
-		$transaction['anonymous'] = ($transaction['anonymous'] == "1") ? '0' : '1';
-	
 		// hook to call stomp functions
 		wfRunHooks( 'gwStomp', array( &$transaction ) );
+
+		if ( $wgExternalThankYou ) {
+			$wgOut->redirect( $wgThankYouPage . $data[language] );
+		} else {
+			// display response message
+			$wgOut->addHTML( '<h3 class="response_message">' . $responseMsg . '</h3>' );
+
+			// translate country code into text 
+			$countries = countryCodes();
+
+			$rows = array(
+				'title' => array( wfMsg( 'payflowpro_gateway-post-transaction' ) ),
+				'amount' => array( wfMsg( 'payflowpro_gateway-donor-amount' ), $data['amount'] ),
+				'email' => array( wfMsg( 'payflowpro_gateway-donor-email' ), $data['email'] ),
+				'name' => array( wfMsg( 'payflowpro_gateway-donor-name' ), $data['fname'], $data['mname'], $data['lname'] ),
+				'address' => array( wfMsg( 'payflowpro_gateway-donor-address' ), $data['street'], $data['city'], $data['state'], $data['zip'], $countries[$data['country']] ),
+			);
+
+			// if we want to show the response
+			$wgOut->addHTML( Xml::buildTable( $rows, array( 'class' => 'submitted-response' ) ) );
+		}
 	}
 
 	/**
