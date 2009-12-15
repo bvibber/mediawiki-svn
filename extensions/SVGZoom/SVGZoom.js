@@ -3,18 +3,11 @@
 // whether to display debugging output
 var svgDebug = true;
 
-// whether we are locally debugging (i.e. the page is downloaded to our
-// hard drive and served from a local server to ease development)
-var localDebug = true;
-
 // the full URL to where svg.js is located
-// Note: Update this before putting on production
-var svgSrcURL;
-if (localDebug) {
-  svgSrcURL = wgScriptPath + '/extensions/SVGZoom/src/svg.js';
-} else {
-  svgSrcURL = wgScriptPath + '/extensions/SVGZoom/src/svg.js';
-}
+var svgSrcURL = wgScriptPath + '/extensions/SVGZoom/src/svg.js';
+
+// the full path to where our SVG Web source files are located
+var svgDataPath = wgScriptPath + '/extensions/SVGZoom/src';
 
 // whether the pan and zoom UI is initialized
 var svgUIReady = false;
@@ -42,33 +35,17 @@ if (navigator.userAgent.indexOf('Gecko') >= 0) {
 
 // the location of our images
 var imageBundle;
-if (localDebug) {
-  // for local debugging
-  var imageRoot = '/images/';
-  imageBundle = {
-    'searchtool': imageRoot + 'searchtool.png',
-    'controls-north-mini': imageRoot + 'north-mini.png',
-    'controls-west-mini': imageRoot + 'west-mini.png',
-    'controls-east-mini': imageRoot + 'east-mini.png',
-    'controls-south-mini': imageRoot + 'south-mini.png',
-    'controls-zoom-plus-mini': imageRoot + 'zoom-plus-mini.png',
-    'controls-zoom-world-mini': imageRoot + 'zoom-world-mini.png',
-    'controls-zoom-minus-mini': imageRoot + 'zoom-minus-mini.png'
-  };
-} else {
-  // Note: update this before putting on production
-  var imageRoot = wgScriptPath + '/extensions/SVGZoom/images/';
-  imageBundle = {
-    'searchtool': imageRoot + 'searchtool.png',
-    'controls-north-mini': imageRoot + 'north-mini.png',
-    'controls-west-mini': imageRoot + 'west-mini.png',
-    'controls-east-mini': imageRoot + 'east-mini.png',
-    'controls-south-mini': imageRoot + 'south-mini.png',
-    'controls-zoom-plus-mini': imageRoot + 'zoom-plus-mini.png',
-    'controls-zoom-world-mini': imageRoot + 'zoom-world-mini.png',
-    'controls-zoom-minus-mini': imageRoot + 'zoom-minus-mini.png'
-  };
-}
+var imageRoot = wgScriptPath + '/extensions/SVGZoom/images/';
+imageBundle = {
+  'searchtool': imageRoot + 'searchtool.png',
+  'controls-north-mini': imageRoot + 'north-mini.png',
+  'controls-west-mini': imageRoot + 'west-mini.png',
+  'controls-east-mini': imageRoot + 'east-mini.png',
+  'controls-south-mini': imageRoot + 'south-mini.png',
+  'controls-zoom-plus-mini': imageRoot + 'zoom-plus-mini.png',
+  'controls-zoom-world-mini': imageRoot + 'zoom-world-mini.png',
+  'controls-zoom-minus-mini': imageRoot + 'zoom-minus-mini.png'
+};
 
 // determines if we are at a Wikimedia Commons detail page for an SVG file
 function isSVGPage() {
@@ -96,7 +73,7 @@ function hasAnnotation() {
 function insertSVGWeb() {
    document.write('<script type="text/javascript" '
                   + 'src="' + svgSrcURL + '" '
-                  + 'data-path="../../../../src" ' /* Note: remove before production */
+                  + 'data-path="' + svgDataPath + '" '
                   + 'data-debug="' + svgDebug + '"></script>');
 }
 
@@ -169,13 +146,15 @@ function initUI() {
   }
   
   // reveal the SVG object and controls
-  svgObject.parentNode.style.zIndex = 1000;
   svgControls.style.display = 'block';
+  var container = svgObject.parentNode;
+  container.style.zIndex = 1000;
+  container.style.top = '0px';
+  container.style.left = '0px';
 
   // make the cursor a hand when over the SVG; not all browsers support
   // this property yet
   svgRoot.setAttribute('cursor', 'pointer');
-  // TODO: Get hand cursor showing up in SVG Web's Flash renderer
   
   // add drag listeners on the SVG root
   svgRoot.addEventListener('mousedown', mouseDown, false);
@@ -191,7 +170,7 @@ function createSVGObject() {
   if (hasAnnotation()) {
     thumbnail = thumbnail.childNodes[0].childNodes[0];
   }
-  
+
   // create the SVG OBJECT that will replace our thumbnail container
   var obj = document.createElement('object', true);
   obj.setAttribute('type', 'image/svg+xml');
@@ -234,21 +213,14 @@ function createSVGObject() {
   // reset our absolutely positioned elements to be relative to our parent
   // so we have correct coordinates
   thumbnail.style.position = 'relative';
-  // position object behind the PNG image; do it in a DIV to avoid any
-  // strange style + OBJECT interactions
+  // position object behind the PNG image and move it off screen; do it in 
+  // a DIV to avoid any strange style + OBJECT interactions
   var container = document.createElement('div');
   container.id = 'SVGZoom.container';
   container.style.zIndex = -1000;
   container.style.position = 'absolute';
-  // FIXME: This is a hack; figure out why the Flash version of Commons-logo.svg
-  // is off by one 1 pixel on x and y
-  if (!hasAnnotation() && svgweb.getHandlerType() == 'flash') {
-    container.style.top = '-1px';
-    container.style.left = '-1px';
-  } else {
-    container.style.top = '0px';
-    container.style.left = '0px';
-  }
+  container.style.top = '-1000px';
+  container.style.left = '-1000px';
   if (thumbnail.lastChild.nodeType == 1 
       && thumbnail.lastChild.nodeName.toLowerCase() == 'br') {
     thumbnail.insertBefore(container, thumbnail.lastChild);
