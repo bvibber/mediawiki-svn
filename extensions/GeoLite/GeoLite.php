@@ -13,6 +13,7 @@ $wgChapterLandingPages = array();
 $wgLandingPageBase = 'http://wikimediafoundation.org/wiki/';
 $wgLandingPageDefaultTarget = 'Support_Wikipedia';
 $wgChaptersPageBase = 'http://wikimediafoundation.org/wiki/Global_Support';
+$wgAppealPageBase = 'http://wikimediafoundation.org/wiki/AppealCH';
 
 //wgChapterLandingPages set which landing pages we know about
 
