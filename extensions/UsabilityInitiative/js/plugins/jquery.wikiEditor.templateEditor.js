@@ -13,28 +13,28 @@ evt: {
 		var level = 0;
 		
 		var tokenIndex = 0;
-		while( tokenIndex < tokenArray.length ){
-			while( tokenIndex < tokenArray.length && tokenArray[tokenIndex].label != 'TEMPLATE_BEGIN'){
+		while ( tokenIndex < tokenArray.length ){
+			while ( tokenIndex < tokenArray.length && tokenArray[tokenIndex].label != 'TEMPLATE_BEGIN' ) {
 				tokenIndex++;
 			}
 			//open template
-			if(tokenIndex < tokenArray.length){
+			if ( tokenIndex < tokenArray.length ) {
 				var beginIndex = tokenIndex;
 				var endIndex = -1; //no match found
 				var openTemplates = 1;
 				var templatesMatched = false;
-				while(tokenIndex < tokenArray.length &&  (endIndex == -1) ){
+				while ( tokenIndex < tokenArray.length && endIndex == -1 ) {
 					tokenIndex++;
-					if(tokenArray[tokenIndex].label == 'TEMPLATE_BEGIN'){
+					if ( tokenArray[tokenIndex].label == 'TEMPLATE_BEGIN' ) {
 						openTemplates++;
-					} else if(tokenArray[tokenIndex].label == 'TEMPLATE_END') {
+					} else if ( tokenArray[tokenIndex].label == 'TEMPLATE_END' ) {
 						openTemplates--;
-						if(openTemplates == 0){
+						if ( openTemplates == 0 ) {
 							endIndex = tokenIndex;
 						} //we can stop looping
 					}
 				}//while finding template ending
-				if(endIndex != -1){
+				if ( endIndex != -1 ) {
 					markers.push( {
 						start: tokenArray[beginIndex].offset,
 						end: tokenArray[endIndex].offset,
@@ -72,18 +72,18 @@ fn: {
 	},
 	stylize: function( context ) {
 		var $templates = context.$content.find( '.wiki-template' );
-		$templates.each( function(){
-			if ( typeof $( this ).data( 'model' )  != 'undefined' ) {
+		$templates.each( function() {
+			if ( typeof $(this).data( 'model' ) != 'undefined' ) {
 				// We have a model, so all this init stuff has already happened
 				return;
 			}
 			// Hide this
-			$(this).addClass('wikieditor-nodisplay');
+			$(this).addClass( 'wikieditor-nodisplay' );
 			// Build a model for this
-			$( this ).data( 'model' , new model( $( this ).text() ) );
-			var model = $( this ).data( 'model' );
+			$(this).data( 'model' , new model( $( this ).text() ) );
+			var model = $(this).data( 'model' );
 			// Expand
-			function expandTemplate($displayDiv){ 
+			function expandTemplate( $displayDiv ) {
 				// Housekeeping
 				$displayDiv.removeClass( 'wiki-collapsed-template' );
 				$displayDiv.addClass( 'wiki-expanded-template' );
@@ -91,7 +91,7 @@ fn: {
 				$displayDiv.text( model.getText() );
 			};
 			// Collapse
-			function collapseTemplate($displayDiv){ 
+			function collapseTemplate( $displayDiv ) {
 				// Housekeeping
 				$displayDiv.addClass( 'wiki-collapsed-template' );
 				$displayDiv.removeClass( 'wiki-expanded-template' );
@@ -103,11 +103,11 @@ fn: {
 			// Let these two know about eachother
 			$(this).data( 'display' , $visibleDiv );
 			$visibleDiv.data( 'wikitext-node', $(this) );
-			$(this).after( $visibleDiv );			
+			$(this).after( $visibleDiv );
 			// Add click handler
-			$visibleDiv.click( function(){
+			$visibleDiv.click( function() {
 				// Is collapsed, switch to expand
-				if ( $(this).data('mode') == 'collapsed' ) {
+				if ( $(this).data( 'mode' ) == 'collapsed' ) {
 					expandTemplate( $(this) );
 				} else {
 					collapseTemplate( $(this) );
@@ -284,11 +284,11 @@ fn: {
 		var sanatizedStr = wikitext.replace( /{{/, "  " );
 		// Replace end
 		endBraces = sanatizedStr.match( /}}\s*$/ );
-		sanatizedStr =
-			sanatizedStr.substring( 0, endBraces.index ) + "  " + sanatizedStr.substring( endBraces.index + 2 );
+		sanatizedStr = sanatizedStr.substring( 0, endBraces.index ) + "  " +
+			sanatizedStr.substring( endBraces.index + 2 );
 		// Match the open braces we just found with equivalent closing braces note, works for any level of braces
 		while ( sanatizedStr.indexOf( '{{' ) != -1 ) {
-			startIndex = sanatizedStr.indexOf('{{') + 1;
+			startIndex = sanatizedStr.indexOf( '{{' ) + 1;
 			openBraces = 2;
 			endIndex = startIndex;
 			while ( openBraces > 0 ) {
@@ -313,7 +313,7 @@ fn: {
 			doneParsing = true;
 		}
 		nameMatch = wikitext.substring( oldDivider, divider ).match( /[^{\s]+/ );
-		if(nameMatch != undefined){
+		if ( nameMatch != undefined ) {
 			ranges.push( new Range( oldDivider,nameMatch.index ) ); //whitespace and squiggles upto the name
 			templateNameIndex = ranges.push( new Range( nameMatch.index,
 				nameMatch.index + nameMatch[0].length ) );
