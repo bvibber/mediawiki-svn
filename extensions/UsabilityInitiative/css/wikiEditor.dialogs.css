@@ -28,8 +28,13 @@ div.suggestions {
 	border-color: #cccccc;
 }
 .ui-dialog .ui-dialog-buttonpane {
+	margin-top: 0 !important;
 	padding:0.3em 1em 0.5em 1em !important;
 }
 body.rtl .ui-dialog .ui-dialog-buttonpane button {
 	float: left;
+}
+.ui-dialog-content fieldset{ 
+	border: none !important;
+	margin: 0 !important;
 }
