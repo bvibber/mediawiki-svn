@@ -2163,10 +2163,12 @@ evt: {
 	},
 	ready: function( context, event ) {
 		// Add our CSS to the iframe
+		// Style version for wikiEditor.highlight.css is here
+		// FIXME: That's not ideal
 		context.$content.parent().find( 'head' ).append( $j( '<link />' ).attr( {
 			'rel': 'stylesheet',
 			'type': 'text/css',
-			'href': wgScriptPath + '/extensions/UsabilityInitiative/css/wikiEditor.highlight.css',
+			'href': wgScriptPath + '/extensions/UsabilityInitiative/css/wikiEditor.highlight.css?0',
 		} ) );
 		// Highlight stuff for the first time
 		$.wikiEditor.modules.highlight.fn.scan( context, "" );
@@ -2653,39 +2655,47 @@ fn: {
  */
 evt: {
 	mark: function( context, event ) {
-		// Get refrences to the markers and tokens from the current context
+		// Get references to the markers and tokens from the current context
 		var markers = context.modules.highlight.markers;
 		var tokenArray = context.modules.highlight.tokenArray;
-		// Collect matching level 0 template call boundaries from the tokenArrray
+		// Collect matching level 0 template call boundaries from the tokenArray
 		var level = 0;
-		var boundaries = [];
-		var boundary = 0;
-		for ( token in tokenArray ) {
-			if ( tokenArray[token].label == 'TEMPLATE_BEGIN' ) {
-				if ( level++ == 0 ) {
-					boundary = boundaries.push( { 'begin': tokenArray[token].offset } ) - 1;
-				}
-			} else if ( tokenArray[token].label == 'TEMPLATE_END' ) {
-				if ( --level == 0 ) {
-					boundaries[boundary].end = tokenArray[token].offset;
-				}
+		
+		var tokenIndex = 0;
+		while( tokenIndex < tokenArray.length ){
+			while( tokenIndex < tokenArray.length && tokenArray[tokenIndex].label != 'TEMPLATE_BEGIN'){
+				tokenIndex++;
 			}
-		}
-		// Add encapsulations to markers at the offsets of matching sets of level 0 template call boundaries
-		for ( boundary in boundaries ) {
-			if ( 'begin' in boundaries[boundary] && 'end' in boundaries[boundary] ) {
-				// Ensure arrays exist at the begining and ending offsets for boundary
-				if ( !( boundaries[boundary].begin in markers ) ) {
-					markers[boundaries[boundary].begin] = [];
+			//open template
+			if(tokenIndex < tokenArray.length){
+				var beginIndex = tokenIndex;
+				var endIndex = -1; //no match found
+				var openTemplates = 1;
+				var templatesMatched = false;
+				while(tokenIndex < tokenArray.length &&  (endIndex == -1) ){
+					tokenIndex++;
+					if(tokenArray[tokenIndex].label == 'TEMPLATE_BEGIN'){
+						openTemplates++;
+					} else if(tokenArray[tokenIndex].label == 'TEMPLATE_END') {
+						openTemplates--;
+						if(openTemplates == 0){
+							endIndex = tokenIndex;
+						} //we can stop looping
+					}
+				}//while finding template ending
+				if(endIndex != -1){
+					markers.push( {
+						start: tokenArray[beginIndex].offset,
+						end: tokenArray[endIndex].offset,
+						wrapElement: function() {
+							return $( '<div />' ).addClass( 'wikiEditor-highlight-template' );
+						}
+					} );
+				} else { //else this was an unmatched opening
+					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';
+					tokenIndex = beginIndex;
 				}
-				if ( !( boundaries[boundary].end in markers ) ) {
-					markers[boundaries[boundary].end] = [];
-				}
-				// Append boundary markers
-				markers[boundaries[boundary].begin].push( "<div class='wiki-template'>" );
-				markers[boundaries[boundary].end].push( "</div>" );
-	
-			}
+			}//if opentemplates
 		}
 	}
 },
@@ -2707,6 +2717,7 @@ fn: {
 	 */
 	create: function( context, config ) {
 		// Initialize module within the context
+		context.modules.templateEditor = {};
 	},
 	stylize: function( context ) {
 		var $templates = context.$content.find( '.wiki-template' );
