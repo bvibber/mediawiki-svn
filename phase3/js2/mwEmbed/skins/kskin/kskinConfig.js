@@ -54,7 +54,7 @@ var kskinConfig = {
 					'top:' + ( embedObj.getPlayerHeight() + ctrlObj.getControlBarHeight() ) + 'px;'  : '';
 														
 				// Special common overflow hack: 
-				// NOTE: should refactor to just append menu to top body when it does not "fit" in the player
+				// NOTE: should re-factor to just append menu to top body when it does not "fit" in the player
 				if(   menuOffset != '' )
 					$j( embedObj ).parents( '.thumbinner' ).css( 'overflow', 'visible' );				
 														
@@ -90,6 +90,7 @@ var kskinConfig = {
 	getOverlayWidth: function(){
 		return ( this.embedObj.getPlayerWidth() < 200 )? 200 : this.embedObj.getPlayerWidth();
 	},	
+	
 	/**
 	* Get minimal height for interface overlay
 	*/
@@ -280,7 +281,10 @@ var kskinConfig = {
 					$j('<img/>').attr( {
 						'border': 0, 
 						'src' : embedObj.thumbnail						
-					} ).css( 'width', imgWidth )
+					} ).css( {
+						'width' : imgWidth,
+						'height': parseInt( imgWidth * ( embedObj.height / embedObj.width ) )
+					} )
 				)
 			)
 			.append(			

@@ -272,12 +272,10 @@ mw.setConfig( 'show_player_warning', true );
 		if( typeof callback == 'function' )  
 			mw.playerManager.addCallback( callback );
 		
-		// Pointer to Selector:
-		var j_selector = this.selector;
-		
-		$j( mw.getPlayerTagElements( j_selector ) ).each( function(na, playerElement){
+		// Add each selected element to the player manager:		
+		$j( this.selector ).each( function(na, playerElement){
 			mw.playerManager.addElement( playerElement, attributes);
-		} );					
+		} );	
 		
 		// Once we are done adding new players start to check if players are ready:
 		mw.playerManager.waitPlayersReadyCallback(); 
@@ -1274,10 +1272,9 @@ embedPlayer.prototype = {
 		if( ! this['height']  && ! this['width'] ){
 			this['height'] = parseInt( $j(element).attr( 'height' ) );
 			this['width'] = parseInt( $j(element).attr( 'width' ) );
-		}		
+		}			
 		
-		
-		// Deal with just one height or width being set:
+		// Use default aspect ration to get height or width
 		if( this['height']  &&  !this['width'] && this.videoAspect  ){
 			var aspect = this.videoAspect.split( ':' );
 			this['width'] = parseInt( this.height * ( aspect[0] / aspect[1] ) );
@@ -1286,7 +1283,7 @@ embedPlayer.prototype = {
 		if( this['width']  &&  !this['height'] && this.videoAspect  ){
 			var aspect = this.videoAspect.split( ':' );
 			this['height'] = parseInt( this.width * ( aspect[1] / aspect[0] ) );
-		}
+		}				
 		
 		// On load sometimes attr is temporally -1 as we don't have video metadata yet.		 
 		// NOTE: this edge case should be handled by waiting for metadata see: "waitForMeta" in addElement 		
@@ -1305,7 +1302,8 @@ embedPlayer.prototype = {
 			}else{
 				this['height'] = defaultSize[1];
 			}
-		}		
+		}	
+		
 	},
 	
 	/**
