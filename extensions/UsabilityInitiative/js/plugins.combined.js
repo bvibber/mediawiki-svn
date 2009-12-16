@@ -2130,6 +2130,12 @@ quickDialog: function( body, settings ) {
 ( function( $ ) { $.wikiEditor.modules.highlight = {
 
 /**
+ * Configuration
+ */
+cfg: {
+	'styleVersion': 2
+},
+/**
  * Internally used event handlers
  */
 evt: {
@@ -2168,7 +2174,8 @@ evt: {
 		context.$content.parent().find( 'head' ).append( $j( '<link />' ).attr( {
 			'rel': 'stylesheet',
 			'type': 'text/css',
-			'href': wgScriptPath + '/extensions/UsabilityInitiative/css/wikiEditor.highlight.css?1',
+			'href': wgScriptPath + '/extensions/UsabilityInitiative/css/wikiEditor.highlight.css?' +
+				$.wikiEditor.modules.highlight.cfg.styleVersion,
 		} ) );
 		// Highlight stuff for the first time
 		$.wikiEditor.modules.highlight.fn.scan( context, "" );
