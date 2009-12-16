@@ -1,0 +1,75 @@
+/* wikiEditor toc module */
+
+.wikiEditor-ui-text {
+	border-right: solid silver 1px;
+}
+body.rtl .wikiEditor-ui-text {
+	border-right: none;
+	border-left: solid silver 1px;
+}
+.wikiEditor-ui-toc {
+	/* height and width are set dynamically */
+	float: right;
+	padding: 0;
+	overflow: auto;
+	overflow-x: hidden;
+}
+body.rtl .wikiEditor-ui-toc {
+	right: auto;
+	left: -1px;
+	border-left: none;
+}
+.wikiEditor-ui-toc ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	/* IE needs to be told in great detail how to act, or it misbehaves */
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	width: 100%;
+}
+.wikiEditor-ui-toc li {
+	padding: 0;
+	margin: 0;
+}
+.wikiEditor-ui-toc ul ul {
+	padding: 0;
+	margin: 0;
+	margin-bottom: 0 !important;
+	margin-top: 0 !important;
+	list-style: none;
+}
+.wikiEditor-ui-toc ul li div {
+	display: block;
+	font-size: 0.9em;
+	padding: 0.125em;
+	padding-left: 1em;
+	cursor: pointer;
+	color: #0645ad;
+}
+.wikiEditor-ui-toc ul ul li div {
+	padding-left: 2em;
+}
+.wikiEditor-ui-toc ul ul ul li div {
+	padding-left: 3em;
+}
+.wikiEditor-ui-toc ul ul ul ul li div {
+	padding-left: 4em;
+}
+.wikiEditor-ui-toc ul ul ul ul ul li div {
+	padding-left: 5em;
+}
+.wikiEditor-ui-toc ul ul ul ul ul ul li div {
+	padding-left: 6em;
+}
+.wikiEditor-ui-toc ul li div.current {
+	background-color: #FAFAFA;
+	color: #333333;
+}
+.wikiEditor-ui-toc ul li div.section-0 {
+	font-size: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	border-bottom: solid 1px #DDDDDD;
+}
