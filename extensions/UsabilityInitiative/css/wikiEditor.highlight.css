@@ -2,11 +2,27 @@
  * not in the main document. For that reason, it's also not in the combined and
  * minified files.
  */
-.wikiEditor-highlight-template {
-	display: inline;
-	color: red;
+
+/* Wikitext that's folded away and shouldn't be displayed */
+.wikiEditor-nodisplay {
+	display: none;
 }
 
+/* A collapsed template */
+.wikiEditor-template-collapsed {
+	display: inline;
+	cursor: pointer;
+	color: red;
+	text-decoration: underline;
+}
+
+/* An expanded template */
+.wikiEditor-template-expanded {
+	display: inline;
+	cursor: pointer;
+}
+
+/* == Header == */
 .wikiEditor-toc-header { /* TODO: move parsing to highlight module and rename this */
 	display: inline;
 	font-weight: bold;
