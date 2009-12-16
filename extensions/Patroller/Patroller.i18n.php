@@ -232,9 +232,12 @@ $messages['br'] = array(
 	'patrol-revert' => 'Assevel',
 	'patrol-revert-reason' => 'Abeg :',
 	'patrol-skip' => 'Lezel a-gostez',
+	'patrol-reverting' => 'Nuladennoù: $1',
 	'patrol-resume' => "Klikit amañ evit kenderc'hel.",
 	'group-patroller' => 'Patrouilherien',
 	'group-patroller-member' => 'patrouilher',
+	'grouppage-patroller' => '{{ns:project}}: Patrouilher',
+	'right-patroller' => 'Pajennoù patrouilhañ',
 );
 
 /** Bosnian (Bosanski)

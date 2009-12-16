@@ -465,9 +465,15 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'ogg-short-audio' => 'Restr son Ogg $1, $2',
+	'ogg-short-video' => 'Fichennaoueg video Ogg $1, $2',
+	'ogg-short-general' => 'Fichennaoueg media Ogg $1, $2',
+	'ogg-long-audio' => '(Fichennaoueg son Ogg $1, padelezh $2, $3)',
+	'ogg-long-video' => '(Fichennaoueg video Ogg $1, padelezh $2, $4×$5 pixels, $3)',
+	'ogg-long-general' => '(Fichennadoueg media Ogg , padelezh $2, $3)',
 	'ogg-long-error' => '(Restr ogg direizh : $1)',
 	'ogg-play' => 'Lenn',
 	'ogg-pause' => 'Ehan',

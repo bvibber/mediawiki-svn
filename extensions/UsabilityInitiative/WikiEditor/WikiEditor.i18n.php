@@ -324,6 +324,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'wikieditor' => 'Биики тиэкиһи эрэдээксийэлиир кэҥэтиллибит интерфейс',
+	'wikieditor-desc' => 'Биики тиэкис кэҥэтиллэр интерфейсын уонна модуллар көмөлөрүнэн атын кыахтары хааччыйар',
 	'wikieditor-wikitext-tab' => 'Биики тиэкис',
 );
 
@@ -342,6 +343,7 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'wikieditor' => 'Avancerat gränssnitt för redigering av wikitext',
 	'wikieditor-desc' => 'Tillhandahåller ett utökat gränssnitt för redigering av wikitext och många moduler som tillhandahåller funktioner',
+	'wikieditor-wikitext-tab' => 'Wikitext',
 );
 
 /** Telugu (తెలుగు)

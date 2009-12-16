@@ -305,10 +305,14 @@ $messages['br'] = array(
 	'qp_order_by_username' => 'Urzhiañ dre anv implijer',
 	'qp_results_line_qupl' => 'Pajenn "$1" Sontadeg "$2" : $3',
 	'qp_results_line_qpl' => 'Pajenn "$1" Sontadeg "$2" : $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Pajenn "$2" Sontadeg "$3" ]',
 	'qp_export_to_xls' => "Ezporzhiañ ar stadegoù d'ar furmad XLS",
+	'qp_users_answered_questions' => "$1 {{PLURAL:$1|implijer|implijerien}} o deus respontet d'ar goulennoù",
+	'qp_func_no_such_poll' => "N'eus ket eus ar sontadeg-mañ ($1)",
 	'qp_error_vote_dependance_poll' => 'Mar plij, votit evit ar sontadeg $1 da gentañ.',
 	'qp_error_category_name_empty' => 'Goullo eo anv ar rummad',
 	'qp_error_proposal_text_empty' => "Goullo eo testenn ar c'hinnig",
+	'qp_error_no_answer' => 'Kinnig direspont',
 );
 
 /** Bosnian (Bosanski)
@@ -1040,6 +1044,73 @@ $messages['lb'] = array(
 	'qp_error_proposal_text_empty' => 'Den Text vum Virschlag ass eidel',
 	'qp_error_too_few_categories' => 'Et musse mindestens zwou Kategorien definéiert sinn',
 	'qp_error_no_answer' => 'Propos ouni Äntwert',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'pollresults' => 'Резултати од анкетите на оваа веб-страница',
+	'qp_desc' => 'Овозможува создавање на анкети',
+	'qp_desc-sp' => '[[Special:PollResults|Специјална страница]] за преглед на резултати од анкетите',
+	'qp_result_NA' => 'Без одговор',
+	'qp_result_error' => 'Синтаксна грешка',
+	'qp_vote_button' => 'Гласај',
+	'qp_vote_again_button' => 'Прегласај',
+	'qp_polls_list' => 'Листа на сите анкети',
+	'qp_users_list' => 'Листа на сите корисници',
+	'qp_browse_to_poll' => 'Прелистај до $1',
+	'qp_browse_to_user' => 'Прелистај до $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|глас|гласа}}',
+	'qp_source_link' => 'Извор',
+	'qp_stats_link' => 'Статистики',
+	'qp_users_link' => 'Корисници',
+	'qp_voice_link' => 'Кориснички глас',
+	'qp_voice_link_inv' => 'Кориснички глас?',
+	'qp_user_polls_link' => 'Учествувал во $1 {{PLURAL:$1|анкета|анкети}}',
+	'qp_user_missing_polls_link' => 'Без одзив',
+	'qp_not_participated_link' => 'Не учествувале',
+	'qp_order_by_username' => 'Подреди по корисничко име',
+	'qp_order_by_polls_count' => 'Подреди по број на анкети',
+	'qp_results_line_qupl' => 'Страница „$1“ Анкета „$2“: $3',
+	'qp_results_line_qpl' => 'Страница „$1“ Анкета „$2“: $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Страница „$2“ Анкета „$3“ ]',
+	'qp_export_to_xls' => 'Извези ги статистиките во XLS формат',
+	'qp_users_answered_questions' => 'На прашањата $1 {{PLURAL:$1|одговорил $1 корисник|одговориле $1 корисници}}',
+	'qp_func_no_such_poll' => 'Нема таква анкета ($1)',
+	'qp_func_missing_question_id' => 'Назначете постоечки идентификатор (id) за прашањето (започнувајќи со 1) за анкетата $1',
+	'qp_func_invalid_question_id' => 'Неважечки идентификатор на прашање id=$2 (не е број) за анкетата $1',
+	'qp_func_missing_proposal_id' => 'Назначете постоечки id-број за предлогот (започнувајќи со 0) за анкетата $1, прашање $2',
+	'qp_func_invalid_proposal_id' => 'Неважечки идентификатор id=$3 на предлог (не е број) за анкетата $1, прашање $2',
+	'qp_error_no_such_poll' => 'Нема таква анкета ($1).
+Проверете дали анкетата е утврдена и зачувана, и осигурајте се дека во адресата користите разграничен знак #',
+	'qp_error_id_in_stats_mode' => 'Не може да се утврди ID-број за анкетата во статистички режим',
+	'qp_error_dependance_in_stats_mode' => 'Не можете да утврдите ланец на зависност за анкетата во статистички режим',
+	'qp_error_no_stats' => 'Нема достапни статистички податоци, бидејќи сè уште никој нема гласано на оваа анкета (address=$1)',
+	'qp_error_address_in_decl_mode' => 'Не може да се дава адреса на анкетата во утврдувачки режим',
+	'qp_error_question_not_implemented' => 'Прашањата од таков тип не се имплементираат: $1',
+	'qp_error_invalid_question_type' => 'Неважечки тип на прашање: $1',
+	'qp_error_type_in_stats_mode' => 'Не може да се определува тип на прашање во статистички режим: $1',
+	'qp_error_no_poll_id' => 'Ознаката на анкетата нема определено атрибут за id-број.',
+	'qp_error_invalid_poll_id' => 'Неважечки id-број на анкетата (id=$1).
+id-бројот може да содржи само букви, бројки и знак за место (проред)',
+	'qp_error_already_used_poll_id' => 'id-бројот на анкетата веќе се користи на оваа страница (id=$1).',
+	'qp_error_invalid_dependance_value' => 'Ланецот на зависност за анкетата (id=$1) има неважечка вредност во атрибутот за зависност (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'Анкетата (id=$1) е зависна од друга анкета (id=$3) од страницата [[$2]], но насловот [[$2]] не беше најден.
+Или отстранете го атрибутот за зависност, или вратете ја страницата [[$2]]',
+	'qp_error_missed_dependance_poll' => 'Анкетата (id=$1) е зависна од друга анкета (id=$3) на страницата $2, но таа анкета не постои или сè уште не е зачувана.
+Или отстранете го атрибутот за зависност, или создајде анкета со id=$3 на страницата $2 и зачувајте ја.
+За да зачувате анкета, притиснете на „Гласај“ но притоа без да одговорите на ниеден предлог (прашање).',
+	'qp_error_vote_dependance_poll' => 'Прво одговорете на анкетата $1.',
+	'qp_error_too_many_spans' => 'Премногу класи на категории за определените поткатегории',
+	'qp_error_unanswered_span' => 'Неодговорена поткатегорија',
+	'qp_error_non_unique_choice' => 'Ова прашање бара одговор кој не е даден претходно',
+	'qp_error_category_name_empty' => 'Името на категоријата е празно',
+	'qp_error_proposal_text_empty' => 'Текстот за предлог е празен',
+	'qp_error_too_few_categories' => 'Мора да определите барем две категории',
+	'qp_error_too_few_spans' => 'Секоја класа на категории бара да определите барем два можни одговора',
+	'qp_error_no_answer' => 'Неодговорен предлог',
+	'qp_error_unique' => 'Прашањето од типот unique() има определено повеќе предлози од можни одговори: одговарањето на прашањето е неизводливо',
 );
 
 /** Dutch (Nederlands)

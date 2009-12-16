@@ -3041,16 +3041,26 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Ravichandra
  * @author Veeven
  */
 $messages['te'] = array(
+	'math_CannotChangeDirectory' => 'పనిచేస్తున్న డైరెక్టరీని మార్చలేకున్నాము',
 	'math_CannotCreateTexFile' => 'tex ఫైలు సృష్టించలేకున్నాం',
 	'math_CannotRunDvipng' => 'dvipngని నడపలేకున్నాం',
 	'math_CannotRunLatex' => 'latexని నడపలేకున్నాం',
+	'math_CannotWriteTexFile' => 'tex ఫైలు లోకి రాయలేకున్నాము',
+	'math_DoubleSubscript' => 'ఒకే అక్షరానికి రెండు పాదాక్షరాలు చేర్చలేరు. 
+కేవలం ఒకటి మాత్రమే చేర్చగలరు.',
+	'math_IllegalCharacter' => 'ఇన్‌పుట్ లో అనుమతిలేని అక్షరాలున్నాయి',
+	'math_IllegalCommandInMathMode' => '"$1" అనే కమాండ్ గణిత సందర్భంలో అనుమతించబడదు.',
 	'math_IllegalRedefinition' => '"$1" అనే ఆదేశం ఈపాటికే నిర్వచించబడిందిచ మీరు దాన్నీ మళ్ళీ నిర్వచించలేరు',
 	'math_InvalidColour' => '"$1" అనే రంగు సరైంది కాదు',
+	'math_MismatchedBeginAndEnd' => '"$1" మరియు "$2" కమాండ్లు సరిపోల్చలేకున్నాము',
+	'math_MisplacedLimits' => '"$1" అనే కమాండు ఒక గణిత ఆపరేటర్ తర్వాత మాత్రమే వాడాలి. "\\mathop" వాడడానికి ప్రయత్నించండి.',
 	'math_TooManyTokens' => 'ఇన్&zwnj;పుట్ మరీ పెద్దగా ఉంది',
 	'math_UnavailableSymbolFontCombination' => '"$1" అనే గుర్తు "$2" ఫాంటులో లేదు.',
+	'math_UnmatchedRight' => 'ఒక "\\right" జతకు సరిపోయే "\\left" కనిపించలేదు',
 	'math_UnrecognisedCommand' => '"$1" అనేది గుర్తుతెలియని ఆదేశం',
 );
 

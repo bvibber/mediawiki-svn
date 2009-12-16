@@ -177,11 +177,25 @@ $messages['ru'] = array(
 	'wikieditor-template-editor-preference' => 'Включить редактирование шаблонов с помощью форм',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'wikieditor-template-editor-preference' => 'Халыыптары форма көмөтүнэн уларытары холбоо',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
 	'wikieditor-template-editor-preference' => 'Povoliť úpravu šablón wiki prostredníctvom formulárov',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'wikieditor-template-editor-preference' => 'Aktivera form-baserad redigering av wikimallar',
 );
 
 /** Turkish (Türkçe)

@@ -258,6 +258,7 @@ $messages['br'] = array(
 	'povwatch_subscribed' => "Koumanantet oc'h da PovWatch bremañ",
 	'povwatch_invalid_title' => 'Direizh eo an titl diferet',
 	'povwatch_unknown_subpage' => 'Ispajenn dianav.',
+	'povwatch_push' => 'Bountañ',
 	'povwatch_title' => 'Titl :',
 	'povwatch_comment' => 'Addispleg evit an deizlevr :',
 	'povwatch_no_subscribers' => "N'eus ket koumananterien.",

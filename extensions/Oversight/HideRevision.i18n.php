@@ -503,6 +503,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'right-hiderevision' => "Kuzhat kemmoù d'ar verourien",
 	'hiderevision-continue' => "Kenderc'hel",
 	'hiderevision-reason' => 'Abeg (enrollet e vo en un doare distag) :',
 	'hiderevision-tab' => 'Kuzat an adweladenn',

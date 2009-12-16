@@ -213,14 +213,18 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'importusers' => 'Enporzhiañ implijerien',
 	'importusers-uploadfile' => 'Kargañ ar restr',
 	'importusers-form-button' => 'Enporzhiañ',
+	'importusers-user-added' => "Ouzhpennet eo bet an implijer '''$1'''.",
 	'importusers-log-summary' => 'Diverradur',
+	'importusers-log-summary-all' => 'Pep tra',
 	'importusers-log-summary-added' => 'Ouzhpennet',
 	'importusers-log-summary-updated' => 'Hizivaet',
+	'importusers-login-name' => 'Anv implijer',
 	'importusers-password' => 'ger-tremen',
 	'importusers-email' => 'postel',
 	'importusers-realname' => 'gwir anv',

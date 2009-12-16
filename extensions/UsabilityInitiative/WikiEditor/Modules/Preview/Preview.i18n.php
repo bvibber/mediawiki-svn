@@ -471,6 +471,7 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'wikieditor-preview-preference' => 'Aktivera förhandsgranskning sida-vid-sida',
 	'wikieditor-preview-tab' => 'Förhandsgranska',
+	'wikieditor-preview-changes-tab' => 'Ändringar',
 	'wikieditor-preview-loading' => 'Laddar...',
 );
 

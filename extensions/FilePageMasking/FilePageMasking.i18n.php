@@ -238,6 +238,13 @@ $messages['sk'] = array(
 	'filepagemasking-desc' => 'Prepisuje „.xxx“ na „_xxx“ v odkazoch na popisných stránkach súborov',
 );
 
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'filepagemasking-desc' => 'ఫైలు వర్ణన పేజీ లంకెలలో ".xxx" నుంచి "_xxx" అని మార్చబడుతుంది',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

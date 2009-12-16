@@ -225,6 +225,13 @@ $messages['sr-ec'] = array(
 	'conditionalshowsection-desc' => 'Додаје cshow таг за условно приказивање и скривање одељака вики-текста.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'conditionalshowsection-desc' => 'వికీపాఠ్యంలోని ఒక భాగం షరతుల ప్రకారం చూపడానికి/దాచడానికి cshow పట్టీను తగిలిస్తున్నాం.',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

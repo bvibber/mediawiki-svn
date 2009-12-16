@@ -101,7 +101,9 @@ $messages['br'] = array(
 	'plotters' => 'Treserioù grafek',
 	'plotters-title' => 'Treserioù grafek',
 	'plotters-uses' => 'Implij',
+	'plotters-missing-arguments' => "Arguzenn ebet n'eo bet spisaet.",
 	'plotters-no-data' => "N'eus bet pourchaset roadenn ebet.",
+	'plotters-errors' => '{{PLURAL:$1|fazi|fazioù}}: treselloù',
 );
 
 /** Bosnian (Bosanski)

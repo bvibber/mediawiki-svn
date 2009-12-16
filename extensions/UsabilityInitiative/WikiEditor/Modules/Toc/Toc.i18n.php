@@ -132,9 +132,12 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Peter17
  */
 $messages['es'] = array(
 	'wikieditor-toc-preference' => 'Habilitar tabla de contenidos navegable',
+	'wikieditor-toc-show' => 'Mostrar el contenido',
+	'wikieditor-toc-hide' => 'Ocultar el contenido',
 );
 
 /** Basque (Euskara)

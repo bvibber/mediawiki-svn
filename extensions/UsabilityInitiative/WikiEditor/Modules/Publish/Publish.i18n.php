@@ -659,6 +659,7 @@ $messages['sk'] = array(
  * @author Boivie
  */
 $messages['sv'] = array(
+	'wikieditor-publish-preference' => 'Aktivera steg-efter-steg-publicering',
 	'wikieditor-publish-button-publish' => 'Publicera',
 	'wikieditor-publish-button-cancel' => 'Avbryt',
 	'wikieditor-publish-dialog-title' => 'Publicera i {{SITENAME}}',

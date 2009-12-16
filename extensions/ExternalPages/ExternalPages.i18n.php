@@ -318,6 +318,21 @@ $messages['ja'] = array(
 	'externalpages-bad-url-data' => 'ページ内容の読み込みに失敗',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'externalpages-bad-year' => 'წელი შეცდომითაა მითითებული',
+	'externalpages-bad-language' => 'ენა შეცდომითაა მითითებული',
+	'externalpages-bad-project' => 'პროექტი შეცდომითა მითითებული',
+	'externalpages-no-project' => 'პროექტი არ არის მითითებული',
+	'externalpages-bad-page' => 'გვერდი შეცდომითაა მითითებული',
+	'externalpages-no-page' => 'გვერდი არ არის მითითებული',
+	'externalpages-error-generic' => 'მოხდა შეცდომა',
+	'externalpages-bad-url' => 'ვერ მოხერხდა URL-ს მიღება',
+	'externalpages-bad-url-data' => 'ვერ მოხერხდა გვერდის შიგთავსის მიღება',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

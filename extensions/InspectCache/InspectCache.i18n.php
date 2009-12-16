@@ -143,9 +143,12 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'inspectcache-ok' => 'Mat eo',
+	'inspectcache-general' => 'Krubuilh hollek',
+	'inspectcache-message' => 'Krubuilh ar gemenadennoù',
 	'inspectcache-get' => 'Tapout',
 	'inspectcache-delete' => '
 Diverkañ',
+	'inspectcache-deleted' => 'Krubuilh bet diverket',
 	'inspectcache-list' => 'Roll',
 );
 

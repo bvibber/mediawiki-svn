@@ -346,6 +346,7 @@ $messages['br'] = array(
 	'changeauthor-comment' => 'Notenn :',
 	'changeauthor-changeauthors-multi' => 'Kemmañ {{PLURAL:$1|an aozer|an aozerien}}',
 	'changeauthor-changeauthors-single' => 'Cheñch aozer',
+	'changeauthor-invalid-username' => 'Anv implijer "$1" fall.',
 	'changeauthor-nosuchuser' => 'Implijer "$1" ebet.',
 	'changeauthor-revview' => 'Adweladenn #$1 eus $2',
 	'changeauthor-nosuchtitle' => 'N\'eus pajenn ebet anvet "$1".',

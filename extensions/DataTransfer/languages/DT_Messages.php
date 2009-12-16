@@ -463,6 +463,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Peter17
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -482,6 +483,7 @@ $messages['es'] = array(
 	'dt_xml_freetext' => 'Texto libre',
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Por favor seleccione el archivo $1 a importar:',
+	'dt_import_encodingtype' => 'Tipo de codificación',
 	'dt_import_editsummary' => '$1 importación',
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '$1 {{PLURAL:$1|página|páginas}} serán creadas del archivo $2.',

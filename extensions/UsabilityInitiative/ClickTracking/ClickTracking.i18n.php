@@ -1228,8 +1228,12 @@ $messages['sah'] = array(
 	'ct-intermediate' => 'Бороохтуйбут кыттааччы',
 	'ct-expert' => 'Эксперт',
 	'ct-date-range' => 'Күн-дьыл диапазона',
+	'ct-editing' => 'Билиҥҥи көннөрүү:',
 	'ct-anon-users' => 'Ааттамматах кыттааччылар',
+	'ct-user-contribs' => 'Кыттааччылар бүттүүн кылааттара',
+	'ct-user-span' => 'Ханнык эрэ быстах кэмҥэ кыттааччылар кылааттара',
 	'ct-and' => 'уонна',
+	'ct-update-table' => 'Таабылы саҥардыы',
 );
 
 /** Slovak (Slovenčina)

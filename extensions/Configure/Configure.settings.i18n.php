@@ -14377,11 +14377,16 @@ $messages['sw'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Ravichandra
  * @author Veeven
  */
 $messages['te'] = array(
 	'configure-setting-wgSitename' => 'సైటు పేరు',
 	'configure-setting-wgActionPaths-key' => 'చర్య',
+	'configure-setting-wgActionPaths-value' => 'URL మూస',
+	'configure-setting-wgDBpassword' => '$wgDBuser యొక్క సంకేతపదం',
+	'configure-setting-wgDBuser' => 'డేటాబేస్ లోకి ప్రవేశించడానికి సభ్యనామం',
+	'configure-setting-wgAllowImageMoving' => 'ఫైలు పేరు తిరిగి మార్చడానికి అవకాశమివ్వు',
 	'configure-setting-wgArticleRobotPolicies-key' => 'పేజీ శీర్షిక',
 	'configure-setting-wgExtraLanguageNames-value' => 'పేరు',
 	'configure-setting-wgSiteNotice' => 'సైటు గమనిక',
@@ -14389,8 +14394,12 @@ $messages['te'] = array(
 	'configure-setting-wgLogNames' => 'చిట్టాల పేర్లు',
 	'configure-setting-wgLogRestrictions-key' => 'చిట్టా రకం',
 	'configure-setting-wgLogTypes' => 'చిట్టా రకాలు',
+	'configure-setting-wgSpecialPageGroups-key' => 'సమూహం',
 	'configure-setting-wgAutopromote-value' => 'షరతులు',
 	'configure-setting-wgDebugLogGroups-value' => 'ఫైలు',
+	'configure-setting-wgHooks' => 'కొక్కేలు',
+	'configure-setting-wgGroupPermissions-value' => 'ఆపాదించబడిన హక్కులు',
+	'configure-setting-wgValidSkinNames-key' => 'అంతర్గత పేరు',
 	'configure-setting-wgValidSkinNames-value' => 'చూపించే పేరు',
 	'configure-setting-wgNamespaceAliases-key' => 'మారు పేరు',
 	'configure-setting-wgRightsIcon' => 'కాపీహక్కుల ప్రతీకం',

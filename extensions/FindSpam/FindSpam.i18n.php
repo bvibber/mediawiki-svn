@@ -606,7 +606,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'findspam' => 'സ്പാം(spam) കണ്ടെത്തുക',
 	'findspam-desc' => 'പുതുതായി ചേര്‍ക്കപ്പെട്ട സ്പാം കണ്ടെത്താനുതകുന്ന [[Special:FindSpam|പ്രത്യേക താള്‍]] ചേര്‍ക്കുന്നു',
-	'findspam-ip' => 'ഐപി വിലാസം:',
+	'findspam-ip' => 'ഐ.പി. വിലാസം:',
 	'findspam-ok' => 'ശരി',
 	'findspam-notextfound' => 'സംഭാവനകളൊന്നും കണ്ടെത്താനായില്ല',
 );

@@ -965,6 +965,7 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'badaccess-read' => "'''ווארענונג:''' \"\$1\" ווערט אָנגעוויזן אַהער, אבער איר האט נישט גענוג דערלויבנישן צו האָבן צוטריט צו אים.",
 	'security-type-category' => 'קאַטעגאריע',
 	'security-type-namespace' => 'נאָמענטייל',
 );
