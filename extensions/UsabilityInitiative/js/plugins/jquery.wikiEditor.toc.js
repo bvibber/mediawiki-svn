@@ -414,9 +414,8 @@ fn: {
 			outline[h] = { 'text': match[2], 'wrapper': div, 'level': match[1].length, 'index': h + 1 };
 			h++;
 		}
-		context.$content.html( context.$content.html().replace( /\r?\n/g, "<br>" ) );
 		context.$content.each( traverseTextNodes );
-				
+		
 		// Normalize heading levels for list creation
 		// This is based on Linker::generateTOC(), so it should behave like the
 		// TOC on rendered articles does - which is considdered to be correct
