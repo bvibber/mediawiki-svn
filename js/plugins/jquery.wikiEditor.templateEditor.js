@@ -38,9 +38,11 @@ evt: {
 					markers.push( {
 						start: tokenArray[beginIndex].offset,
 						end: tokenArray[endIndex].offset,
-						wrapElement: function() {
-							return $( '<div />' ).addClass( 'wikiEditor-highlight-template' );
-						}
+						needsWrap: function( ca1, ca2 ) {
+							return !$( ca1.parentNode ).is( 'div.wikiEditor-template' ) ||
+								ca1.previousSibling != null || ca1.nextSibling != null;
+						},
+						afterWrap: $.wikiEditor.modules.templateEditor.fn.stylize
 					} );
 				} else { //else this was an unmatched opening
 					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';
@@ -70,44 +72,41 @@ fn: {
 		// Initialize module within the context
 		context.modules.templateEditor = {};
 	},
-	stylize: function( context ) {
-		var $templates = context.$content.find( '.wiki-template' );
-		$templates.each( function() {
+	stylize: function( wrappedTemplate ) {
+		$( wrappedTemplate ).each( function() {
 			if ( typeof $(this).data( 'model' ) != 'undefined' ) {
 				// We have a model, so all this init stuff has already happened
 				return;
 			}
 			// Hide this
-			$(this).addClass( 'wikieditor-nodisplay' );
+			$(this).addClass( 'wikiEditor-nodisplay wikiEditor-template' );
 			// Build a model for this
-			$(this).data( 'model' , new model( $( this ).text() ) );
+			$(this).data( 'model' , new $.wikiEditor.modules.templateEditor.fn.model( $(this).text() ) );
 			var model = $(this).data( 'model' );
 			// Expand
 			function expandTemplate( $displayDiv ) {
 				// Housekeeping
-				$displayDiv.removeClass( 'wiki-collapsed-template' );
-				$displayDiv.addClass( 'wiki-expanded-template' );
-				$displayDiv.data( 'mode' ) = "expanded";
+				$displayDiv.removeClass( 'wikiEditor-template-collapsed' );
+				$displayDiv.addClass( 'wikiEditor-template-expanded' );
 				$displayDiv.text( model.getText() );
 			};
 			// Collapse
 			function collapseTemplate( $displayDiv ) {
 				// Housekeeping
-				$displayDiv.addClass( 'wiki-collapsed-template' );
-				$displayDiv.removeClass( 'wiki-expanded-template' );
-				$displayDiv.data( 'mode' ) = "collapsed";
+				$displayDiv.addClass( 'wikiEditor-template-collapsed' );
+				$displayDiv.removeClass( 'wikiEditor-template-expanded' );
 				$displayDiv.text( model.getName() );
 			};
 			// Build the collapsed version of this template
-			var $visibleDiv = $( "<div></div>" ).addClass( 'wikieditor-noinclude' );
-			// Let these two know about eachother
-			$(this).data( 'display' , $visibleDiv );
-			$visibleDiv.data( 'wikitext-node', $(this) );
+			var $visibleDiv = $( "<div />" ).addClass( 'wikiEditor-noinclude' );
+			// Let these two know about each other
+			$(this).data( 'display', $visibleDiv );
+			$visibleDiv.data( 'wikitext', $(this) );
 			$(this).after( $visibleDiv );
 			// Add click handler
-			$visibleDiv.click( function() {
+			$visibleDiv.mousedown( function() {
 				// Is collapsed, switch to expand
-				if ( $(this).data( 'mode' ) == 'collapsed' ) {
+				if ( $(this).hasClass( 'wikiEditor-template-collapsed' ) ) {
 					expandTemplate( $(this) );
 				} else {
 					collapseTemplate( $(this) );
@@ -264,7 +263,7 @@ fn: {
 			newText = "";
 			for ( i = 0 ; i < ranges.length; i++ ) {
 				if( typeof ranges[i].newVal == 'undefined' ) {
-					wikitext.substring( ranges[i].begin, ranges[i].end );
+					newText += wikitext.substring( ranges[i].begin, ranges[i].end );
 				} else {
 					newText += ranges[i].newVal;
 				}
@@ -399,6 +398,13 @@ fn: {
 		}
 		// The rest of the string
 		ranges.push( new Range( valueEndIndex, wikitext.length ) );
+		
+		// Save vars
+		this.ranges = ranges;
+		this.wikitext = wikitext;
+		this.params = params;
+		this.paramsByName = paramsByName;
+		this.templateNameIndex = templateNameIndex;
 	} // model
 }
 
