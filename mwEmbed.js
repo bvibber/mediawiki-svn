@@ -1512,170 +1512,6 @@ var mwDefaultConf = {
 	}
 	
 	/**
-	* One time "setup" for mwEmbed 
-	* run onDomReady ( so calls to setConfg apply to setup )
-	*/
-	
-	// Flag to ensure setup is only run once:
-	var mwSetupFlag = false;
-	
-	$.setupMwEmbed = function ( ) {			
-		// Only run the setup once: 
-		if( mwSetupFlag )
-			return ;			  
-		mwSetupFlag = true;
-		
-		mw.log( 'mw:setupMwEmbed' );			
-		
-		// Make sure jQuery is loaded:
-		$.load( 'window.jQuery', function(){				
-			if ( !window['$j'] ) {
-				window['$j'] = jQuery.noConflict();
-			}
-			
-			// Set up the skin paths configuration
-			$.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
-			$.setConfig( 'skin_img_path', mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/images/' ); 
-			$.setConfig( 'default_video_thumb', mw.getConfig( 'skin_img_path' ) + 'vid_default_thumb.jpg' );
-
-			// Make Core skin/style sheets are always available:
-			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
-
-			// Set up AJAX to not send dynamic URLs for loading scripts
-			$j.ajaxSetup( {
-				cache: true
-			} );
-			
-			//Update the magic keywords 		
-			$.lang.magicSetup();
-			
-			// Set up mvEmbed jQuery bindings
-			mwDojQueryBindings();
-				
-			// Check for tag-rewrites ( sometimes checked twice but ensures fresh dom check )  
-			if( $.documentHasPlayerTags() ){
-				// Load the embedPlayer module ( then run queued hooks )
-				mw.load( 'player', function ( ) {
-					// Rewrite the rewritePlayerTags with the 
-					$j( $.getConfig( 'rewritePlayerTags' ) ).embedPlayer()
-					// Run mw hooks:
-					mw.log("SetupDone ( player ) run hooks:" ) ;
-					mw.runLoadHooks();
-				} );
-			}else{	
-				mw.log("SetupDone run hooks ( no rewrite players found ):" ) ;		
-				// Set ready state and run the callback
-				mw.runLoadHooks();
-			}
-		} ); 			
-	}
-	
-	// Flag to register the domReady has been called
-	var mwDomReadyFlag = false;
-	
-	/**
- 	* This will get called when the DOM is ready 
- 	* Will check configuration and issue a mw.setupMwEmbed call if needed
-	*/
-	$.domReady = function ( ) {
-		if( mwDomReadyFlag )
-			return ;
-		mw.log( 'run:domReady' );
-		// Set the onDomReady Flag
-		mwDomReadyFlag = true;
-		
-		// Check for the force setup flag:
-		if ( $.getConfig( 'runSetupMwEmbed' ) ){
-			$.setupMwEmbed();
-			return ;
-		}
-		
-		// Check for rewrite tags: 		
-		if ( $.documentHasPlayerTags() ) {
-			$.setupMwEmbed();
-			return ;
-		}		
-		
-		// Check for queued functions that use mw interfaces: 
-		if ( mwOnLoadFuncitons.length ){
-			$.setupMwEmbed();
-			return ;
-		}	
-	}
-	
-	/**
-	* Check the current DOM for any tags in "rewritePlayerTags"
-	*/
-	$.documentHasPlayerTags = function(){				
-		var tagElm = $.getPlayerTagElements( $.getConfig( 'rewritePlayerTags' ),  true );
-		if( tagElm && tagElm.length )
-			return true;
-		return false;
-	}
-	
-	/**
-	* Get page elements that match the rewritePlayerTags config
-	*
-	* @@NOTE we should probably exclud "video" that have already be rewritten
-	*
-	* @param {Boolean} getOne Flag to retrieve only one tag ( faster for simple has tag checks )  
-	*/
-	$.getPlayerTagElements = function( selector, getOneFlag ){
-		
-		if( ! selector ){
-			selector = $.getConfig( 'rewritePlayerTags' );
-		}
-		
-		if( ! selector  ){
-			return false;
-		}
-		var tagsInDOM = [ ];		
-		// Check for tags: 		
-		// IE8 does not play well with the jQuery video,audio,playlist selector use native:
-		// NOTE: we should re-confirm this bug in-case IE pushes out an update			
-		if ( $j.browser.msie && $j.browser.version >= 8 ) {
-			var ie_compatible_selector = '';
-			var jtags = selector.split( ',' );
-			var coma = '';
-			for ( var i = 0; i < jtags.length; i++ ) {
-				if ( jtags[i] === 'video' || 
-					 jtags[i] === 'audio' ||
-					 jtags[i] === 'playlist' ) {
-					// Use native ElementsByTagName selector 
-					$( document.getElementsByTagName( jtags[i] ) ).each( function() {						
-						tagsInDOM.push( this );
-						if( getOneFlag ) 
-							return false;
-					} );				
-					
-					//If only returning the first found element return: 
-					if( tagsInDOM.length != 0 && getOneFlag )
-						return 	tagsInDOM[0]
-				}else{
-					ie_compatible_selector +=  coma + jtags[i]
-					coma = ',';
-				}
-			}
-			//Set the selector to IE compatible set and continue processing
-			selector = ie_compatible_selector;			
-		} 				
-		// Run the selector
-		$j( selector ).each( function() {		
-			tagsInDOM.push( this );
-			if( getOneFlag )
-				return false;
-		} );
-				
-		//If only returning the first found element return: 
-		if( tagsInDOM.length != 0 && getOneFlag )
-			return tagsInDOM
-			
-		// Return all the player tags: 			
-		return tagsInDOM;
-	}
-	
-	/**
 	* Wrapper for jQuery getScript, 
 	* Uses the scriptLoader if enabled
 	* 
@@ -2117,8 +1953,124 @@ var mwDefaultConf = {
 			return false;
 		}		
 		return xmldata;
+	}
+
+
+/**
+* mwEmbed Setup functions. 
+* jQuery is not necessarily available 
+*/
+	
+	/**
+	* Check the current DOM for any tags in "rewritePlayerTags"
+	* 
+	* NOTE: this function and setup can run prior to jQuery being ready
+	*/
+	$.documentHasPlayerTags = function(){	
+		var rewriteTags = $.getConfig( 'rewritePlayerTags' );			
+		if( rewriteTags ){
+			var jtags = rewriteTags.split( ',' );
+			for ( var i = 0; i < jtags.length; i++ ) {	
+				if( document.getElementsByTagName( jtags[i] )[0] )
+					return true;
+			};
+		}
+		return false;
 	}	
+	
+	/**
+	* One time "setup" for mwEmbed 
+	* run onDomReady ( so calls to setConfg apply to setup )
+	*/
+	// Flag to ensure setup is only run once:
+	var mwSetupFlag = false;	
+	$.setupMwEmbed = function ( ) {			
+		// Only run the setup once: 
+		if( mwSetupFlag )
+			return ;			  
+		mwSetupFlag = true;
+		
+		mw.log( 'mw:setupMwEmbed' );			
+		
+		// Make sure jQuery is loaded 
+		$.load( 'window.jQuery', function(){				
+			if ( !window['$j'] ) {
+				window['$j'] = jQuery.noConflict();
+			}
+			
+			// Set up the skin paths configuration
+			$.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
+			$.setConfig( 'skin_img_path', mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/images/' ); 
+			$.setConfig( 'default_video_thumb', mw.getConfig( 'skin_img_path' ) + 'vid_default_thumb.jpg' );
+
+			// Make Core skin/style sheets are always available:
+			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
+			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
+
+			// Set up AJAX to not send dynamic URLs for loading scripts
+			$j.ajaxSetup( {
+				cache: true
+			} );
+			
+			//Update the magic keywords 		
+			$.lang.magicSetup();
+			
+			// Set up mvEmbed jQuery bindings
+			mwDojQueryBindings();
+				
+			// Check for tag-rewrites ( sometimes checked twice but ensures fresh dom check )  
+			if( $.documentHasPlayerTags() ){
+				// Load the embedPlayer module ( then run queued hooks )
+				mw.load( 'player', function ( ) {
+					// Rewrite the rewritePlayerTags with the 
+					$j( $.getConfig( 'rewritePlayerTags' ) ).embedPlayer()
+					// Run mw hooks:
+					mw.runLoadHooks();
+				} );
+			}else{		
+				// Set ready state and run the callback
+				mw.runLoadHooks();
+			}
+		} ); 			
+	}
+	
+	// Flag to register the domReady has been called
+	var mwDomReadyFlag = false;
+	
+	/**
+ 	* This will get called when the DOM is ready 
+ 	* Will check configuration and issue a mw.setupMwEmbed call if needed
+	*/
+	$.domReady = function ( ) {
+		if( mwDomReadyFlag )
+			return ;
+		mw.log( 'run:domReady' );
+		// Set the onDomReady Flag
+		mwDomReadyFlag = true;
+		
+		// Check for the force setup flag:
+		if ( $.getConfig( 'runSetupMwEmbed' ) ){
+			$.setupMwEmbed();
+			return ;
+		}
+		
+		// Check for rewrite tags: 		
+		if ( $.documentHasPlayerTags() ) {
+			$.setupMwEmbed();
+			return ;
+		}		
+		
+		// Check for queued functions that use mw interfaces: 
+		if ( mwOnLoadFuncitons.length ){
+			$.setupMwEmbed();
+			return ;
+		}	
+	}	
+
 } )( window.mw );
+
+
+
 
 // Load in js2 stopgap into proper location: 
 if ( typeof gMsg != 'undefined' ) {
@@ -2132,16 +2084,17 @@ var gM = mw.getMsg;
 var loadRS = mw.lang.loadRS;
 
 /**
- * --  Load Class Paths --
- *
- * MUST BE VALID JSON (NOT JS)
- * This is used by the script loader to auto-load classes (so we only define
- * this once for PHP & JavaScript)
- *
- * Right now the PHP AutoLoader only reads this mwEmbed.js file.
- * In the future we could have multiple "loader" files
- * 
- */
+* --  Load Class Paths --
+*
+* MUST BE VALID JSON (NOT JS)
+* This is used by the script loader to auto-load classes (so we only define
+* this once for PHP & JavaScript)
+*
+* Right now the PHP AutoLoader only reads this mwEmbed.js file.
+* In the future we could have multiple "loader" files 
+* 	where addClassFilePaths JSON is read in each "loader"
+* 
+*/
  
 mw.addClassFilePaths( {
 	"mwEmbed"			: "mwEmbed.js",
@@ -2318,9 +2271,9 @@ mw.addModuleLoader( 'player', function( callback ){
 			checkForTimedText = true;
 		break;		
 	} 
-	
-	var playerElements = mw.getPlayerTagElements();
-	$j.each( playerElements, function(na, playerElement ){		
+		
+	$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function(){
+		var playerElement = this;		
 		var cName = $j( playerElement ).attr( 'class' );
 		for( var n=0; n < mw.valid_skins.length ; n++ ){
 			// Get any other skins that we need to load 
