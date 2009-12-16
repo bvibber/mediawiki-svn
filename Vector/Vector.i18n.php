@@ -256,6 +256,14 @@ $messages['ru'] = array(
 	'vector-desc' => 'Улучшения пользовательского интерфейса для темы оформления «Векторное»',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'vector' => '"Вектор" диэн тиэмэни тупсарар',
+	'vector-desc' => 'Вектор диэн тиэмэ туттар интерфейсын тупсарыы',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

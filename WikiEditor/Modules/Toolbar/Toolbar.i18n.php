@@ -3382,6 +3382,7 @@ $messages['eo'] = array(
  * @author Imre
  * @author Locos epraix
  * @author Omnipaedista
+ * @author Peter17
  * @author Translationista
  */
 $messages['es'] = array(
@@ -3411,6 +3412,7 @@ $messages['es'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'La página existe',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'No existe la página',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Título inválido',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Enlace externo',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Revisando existencia de la página...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'El título que ha especificado no es válido.',
 	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'EL URL que has especificado parece que tenia como finalidad ser un vínculo para otra página wiki. ¿Deseas hacerlo un vínculo interno?',
@@ -11729,7 +11731,9 @@ $messages['sv'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Lägg till länk',
 	'wikieditor-toolbar-tool-link-int' => 'Till en wikisida',
 	'wikieditor-toolbar-tool-link-int-target' => 'Sidtitel:',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Ange sidtiteln',
 	'wikieditor-toolbar-tool-link-int-text' => 'Länktext:',
+	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Ange texten som skulle visas',
 	'wikieditor-toolbar-tool-link-ext' => 'Till extern webbsida',
 	'wikieditor-toolbar-tool-link-ext-target' => 'Länkadress:',
 	'wikieditor-toolbar-tool-link-ext-text' => 'Länktext:',
@@ -11738,6 +11742,7 @@ $messages['sv'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'Sidan existerar',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'Sidan existerar inte',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Ogiltig titel',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Extern länk',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Kontrollerar om sidan existerar...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'Titeln du angav är ogiltig.',
 	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'URL:et du specificerade ser ut att vara avsett som en länk till en annan wikisida. Vill du göra det till en intern länk?',
@@ -11762,6 +11767,8 @@ $messages['sv'] = array(
 	'wikieditor-toolbar-tool-ulist-example' => 'Punktlistelement',
 	'wikieditor-toolbar-tool-olist' => 'Numrerad lista',
 	'wikieditor-toolbar-tool-olist-example' => 'Numrerad listelement',
+	'wikieditor-toolbar-tool-indent' => 'Indentering',
+	'wikieditor-toolbar-tool-indent-example' => 'Indenterad rad',
 	'wikieditor-toolbar-group-size' => 'Storlek',
 	'wikieditor-toolbar-tool-big' => 'Stor',
 	'wikieditor-toolbar-tool-big-example' => 'Stor text',
@@ -13429,11 +13436,15 @@ $messages['yi'] = array(
 	'wikieditor-toolbar-tool-reference' => 'רעפערענץ',
 	'wikieditor-toolbar-tool-heading' => 'קעפל',
 	'wikieditor-toolbar-group-list' => 'ליסטע',
+	'wikieditor-toolbar-tool-indent' => 'אָפרוקונג',
+	'wikieditor-toolbar-tool-indent-example' => 'אָפגערוקטע שורה',
 	'wikieditor-toolbar-group-size' => 'גרייס',
 	'wikieditor-toolbar-tool-big' => 'גרויס',
 	'wikieditor-toolbar-tool-big-example' => 'גרויסער טעקסט',
 	'wikieditor-toolbar-tool-small' => 'קליין',
 	'wikieditor-toolbar-tool-small-example' => 'קליינער טעקסט',
+	'wikieditor-toolbar-tool-superscript' => 'הייבונג',
+	'wikieditor-toolbar-tool-superscript-example' => 'געהויבענער טעקסט',
 	'wikieditor-toolbar-tool-newline' => 'נײַע שורה',
 	'wikieditor-toolbar-tool-table' => 'טאַבעלע',
 	'wikieditor-toolbar-tool-table-example-old' => '-
