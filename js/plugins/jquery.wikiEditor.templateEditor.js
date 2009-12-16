@@ -13,30 +13,49 @@ evt: {
 		var level = 0;
 		var boundaries = [];
 		var boundary = 0;
-		for ( token in tokenArray ) {
-			if ( tokenArray[token].label == 'TEMPLATE_BEGIN' ) {
-				if ( level++ == 0 ) {
-					boundary = boundaries.push( { 'begin': tokenArray[token].offset } ) - 1;
-				}
-			} else if ( tokenArray[token].label == 'TEMPLATE_END' ) {
-				if ( --level == 0 ) {
-					boundaries[boundary].end = tokenArray[token].offset;
-				}
+		
+		var tokenIndex = 0;
+		while( tokenIndex < tokenArray.length ){
+			while( tokenIndex < tokenArray.length && tokenArrray[tokenIndex].label != 'TEMPLATE_BEGIN'){
+				tokenIndex++;
 			}
+			//open template
+			if(tokenIndex < tokenArray.length){
+				var beginIndex = tokenIndex;
+				var endIndex = -1; //no match found
+				var openTemplates = 1;
+				var templatesMatched = false;
+				while(tokenIndex < tokenArray.length &&  (endIndex == -1) ){
+					tokenIndex++;
+					if(tokenArray[tokenIndex].label == 'TEMPLATE_BEGIN'){
+						openTemplates++;
+					} else if(tokenArray[tokenIndex].label == 'TEMPLATE_END') {
+						openTemplates--;
+						if(openTemplates == 0){
+							endIndex = tokenIndex;
+						} //we can stop looping
+					}
+				}//while finding template ending
+				if(endIndex != -1){
+					boundaries.push([beginIndex,endIndex]); //push the boundaries
+				} else { //else this was an unmatched opening
+					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';
+					tokenIndex = beginIndex;
+				}
+			}//if opentemplates
 		}
+				
 		// Add encapsulations to markers at the offsets of matching sets of level 0 template call boundaries
 		for ( boundary in boundaries ) {
-			if ( 'begin' in boundaries[boundary] && 'end' in boundaries[boundary] ) {
-				// Ensure arrays exist at the begining and ending offsets for boundary
-				if ( !( boundaries[boundary].begin in markers ) ) {
-					markers[boundaries[boundary].begin] = [];
+				if ( !( boundaries[boundary][0] in markers ) ) {
+					markers[boundaries[boundary][0]] = [];
 				}
-				if ( !( boundaries[boundary].end in markers ) ) {
-					markers[boundaries[boundary].end] = [];
+				if ( !( boundaries[boundary][1] in markers ) ) {
+					markers[boundaries[boundary][1]] = [];
 				}
 				// Append boundary markers
-				markers[boundaries[boundary].begin].push( "<div class='wiki-template'>" );
-				markers[boundaries[boundary].end].push( "</div>" );
+				markers[boundaries[boundary][0]].push( "<div class='wiki-template'>" );
+				markers[boundaries[boundary][1]].push( "</div>" );
 	
 			}
 		}
