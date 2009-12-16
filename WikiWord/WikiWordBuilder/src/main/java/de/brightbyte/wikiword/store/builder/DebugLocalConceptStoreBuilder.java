@@ -425,8 +425,12 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			log("* buildFeatures *");
 		}
 
-		public void buildProximity() throws PersistenceException {
-			log("* buildProximity *");
+		public void buildBaseProximity() throws PersistenceException {
+			log("* buildBaseProximity *");
+		}
+
+		public void buildExtendedProximity() throws PersistenceException {
+			log("* buildExtendedProximity *");
 		}
 
 	}

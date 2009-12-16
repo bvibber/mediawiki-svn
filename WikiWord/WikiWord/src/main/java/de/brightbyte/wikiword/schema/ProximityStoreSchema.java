@@ -109,14 +109,51 @@ public class ProximityStoreSchema extends WikiWordStoreSchema {
 		init(global, tweaks);
 	}
 	
-	private void init(boolean global, TweakSet tweaks) {
-		featureTable = new RelationTable(this, "feature", getDefaultTableAttributes());
+	public RelationTable makeFeatureTable(String suffix) {
+		String name = "feature";
+		if (suffix!=null) name = name+suffix;
+			
+		RelationTable featureTable = new RelationTable(this, name, getDefaultTableAttributes());
 		featureTable.addField( new ReferenceField(this, "concept", "INT", null, true, null, "concept", "id", null ));
 		featureTable.addField( new ReferenceField(this, "feature", "INT", null, true, KeyType.INDEX, "concept", "id", null ) );
 		featureTable.addField( new DatabaseField(this, "total_weight", "REAL", "DEFAULT 0", true, null ) );
 		featureTable.addField( new DatabaseField(this, "normal_weight", "REAL", "DEFAULT 0", true, null ) );
 		featureTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concept_feature", new String[] {"concept", "feature"}) );
 		featureTable.setAutomaticField(null);
+		
+		return featureTable;
+	}
+	
+	public RelationTable makeProximityTable(String suffix) {
+		String name = "proximity";
+		if (suffix!=null) name = name+suffix;
+			
+		RelationTable proximityTable = new RelationTable(this, name, getDefaultTableAttributes());
+		proximityTable.addField( new ReferenceField(this, "concept1", "INT", null, true, null, "concept", "id", null ));
+		proximityTable.addField( new ReferenceField(this, "concept2", "INT", null, true, KeyType.INDEX, "concept", "id", null ) );
+		proximityTable.addField( new DatabaseField(this, "level", "INT", null, true, null ) );
+		proximityTable.addField( new DatabaseField(this, "proximity", "REAL", "DEFAULT 0", true, null ) );
+		proximityTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concepts", new String[] {"concept1", "concept2"}) );
+		proximityTable.addKey( new DatabaseKey(this, KeyType.INDEX, "level", new String[] {"level", "concept1"}) );
+		proximityTable.setAutomaticField(null);
+		
+		return proximityTable;
+	}
+	
+	public EntityTable makeFeatureMagnitudeTable(String suffix) {
+		String name = "feature_magnitude";
+		if (suffix!=null) name = name+suffix;
+			
+		EntityTable featureMagnitudeTable = new EntityTable(this, name, getDefaultTableAttributes());
+		featureMagnitudeTable.addField( new ReferenceField(this, "concept", "INT", null, true, KeyType.PRIMARY, "concept", "id", null ));
+		featureMagnitudeTable.addField( new DatabaseField(this, "magnitude", "REAL", "DEFAULT 0", true, null ) );
+		featureMagnitudeTable.setAutomaticField(null);
+		
+		return featureMagnitudeTable;
+	}
+	
+	private void init(boolean global, TweakSet tweaks) {
+		featureTable = makeFeatureTable(null);
 		addTable(featureTable);
 
 		/*
@@ -132,20 +169,10 @@ public class ProximityStoreSchema extends WikiWordStoreSchema {
 		featureProductTable.setAutomaticField(null);
 		addTable(featureProductTable);*/
 
-		featureMagnitudeTable = new EntityTable(this, "feature_magnitude", getDefaultTableAttributes());
-		featureMagnitudeTable.addField( new ReferenceField(this, "concept", "INT", null, true, KeyType.PRIMARY, "concept", "id", null ));
-		featureMagnitudeTable.addField( new DatabaseField(this, "magnitude", "REAL", "DEFAULT 0", true, null ) );
-		featureMagnitudeTable.setAutomaticField(null);
+		featureMagnitudeTable = makeFeatureMagnitudeTable(null);
 		addTable(featureMagnitudeTable);
 
-		proximityTable = new RelationTable(this, "proximity", getDefaultTableAttributes());
-		proximityTable.addField( new ReferenceField(this, "concept1", "INT", null, true, null, "concept", "id", null ));
-		proximityTable.addField( new ReferenceField(this, "concept2", "INT", null, true, KeyType.INDEX, "concept", "id", null ) );
-		proximityTable.addField( new DatabaseField(this, "level", "INT", null, true, null ) );
-		proximityTable.addField( new DatabaseField(this, "proximity", "REAL", "DEFAULT 0", true, null ) );
-		proximityTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concepts", new String[] {"concept1", "concept2"}) );
-		proximityTable.addKey( new DatabaseKey(this, KeyType.INDEX, "level", new String[] {"level", "concept1"}) );
-		proximityTable.setAutomaticField(null);
+		proximityTable = makeProximityTable(null);
 		addTable(proximityTable);
 	}
 

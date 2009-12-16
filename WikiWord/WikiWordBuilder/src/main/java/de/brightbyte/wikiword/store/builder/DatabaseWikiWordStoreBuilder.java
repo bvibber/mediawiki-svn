@@ -449,7 +449,7 @@ public class DatabaseWikiWordStoreBuilder
 				boolean optional = opt;
 				if (t.equals("warning")) optional = true;
 				
-				database.createTable(t, optional);
+				database.createTable(t, optional, false);
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e);

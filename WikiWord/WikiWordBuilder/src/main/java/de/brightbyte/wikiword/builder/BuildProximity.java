@@ -40,8 +40,11 @@ public class BuildProximity extends ImportApp<WikiWordConceptStoreBuilder<? exte
 		section("-- build features --------------------------------------------------");
 		this.proximityStore.buildFeatures();
 
-		section("-- build proximity --------------------------------------------------");
-		this.proximityStore.buildProximity();
+		section("-- build base proximity --------------------------------------------------");
+		this.proximityStore.buildBaseProximity();
+
+		section("-- build extended proximity --------------------------------------------------");
+		this.proximityStore.buildExtendedProximity();
 
 		section("-- statistics --------------------------------------------------");
 		conceptStore.getProximityStoreBuilder().dumpTableStats(out);
