@@ -67,7 +67,7 @@ mw.addMessages( {
 			// Layout for basic "timedText" type can be 'ontop', 'off', 'below'
 			'layout': 'below',
 			//Set the default local ( should be grabbed from the browser )			
-			'userLanugage': 'en'
+			'userLanugage': 'en'			
 		},
 		
 		/**
@@ -121,7 +121,7 @@ mw.addMessages( {
 			//Set up embedPlayer monitor hook: 
 			embedPlayer.addHook( 'monitor', function(){
 				_this.monitor();
-			} )	
+			} )
 			// @@TODO: Load cookie / page preferences
 		
 			// Load textSources
@@ -140,11 +140,17 @@ mw.addMessages( {
 		* Monitor video time and update timed text filed[s]  
 		*/ 
 		monitor: function( embedPlayer ){
+			mw.log(" timed Text monitor: " );
+			embedPlayer = this.embedPlayer;
 			//setup local refrence to currentTime: 
 			var currentTime = embedPlayer.currentTime;
 			
-			for( var i in enabledSource) {
-				
+			for( var i in this.enabledSources ) {
+				var source =  this.enabledSources[ i ];
+				// Get text for "this" time:
+				var text = source.getTextTime (  currentTime );
+				mw.log('should set text: ' + text );
+				// Set the display handle
 			}
 		},
 		
@@ -386,12 +392,17 @@ mw.addMessages( {
 		return this.init( source );
 	}
 	textSource.prototype = {
+	
 		//The load state:
 		loaded: false,
 		
 		// Container for the captions
 		// captions include "start", "end" and "content" fields
 		captions: [],
+		
+		// The previus index of the timed text served
+		// Avoids searching the entire array on time updates. 
+		prevIndex: 0,
 		
 		/**
 		 * @constructor Inherits mediaSource from embedPlayer
@@ -435,18 +446,52 @@ mw.addMessages( {
 				// Update the loaded state:
 				_this.loaded = true;
 			}, 'text' );
+		},
+		
+		/**
+		* Returns the text content for requested time
+		*
+		* @param {String} time Time in seconds
+		*/				
+		getTextTime: function ( requestedTime ){
+			//debugger;		
+			var prevCaption =  this.captions[ this.prevIndex ];
+			
+			// Setup the startIndex: 
+			if( requestedTime >= prevCaption.start ){
+				var startIndex = this.prevIndex;
+			}else{
+				//If a backwards seek start searching at the start: 
+				var startIndex = 0;
+			}			 			
+			// Start looking for the text via time, return first match: 
+			for( var i = startIndex ; i < this.captions.length; i ++ ){
+				caption = this.captions[ i ];				
+				if( requestedTime >= caption.start  && 
+					requestedTime <= caption.end ){
+					this.prevIndex = i;
+					return caption.text;
+				}
+			}
+			//No text found in range return false: 
+			return false;
 		}
 	}
 	/**
 	 * srt timed text parse hanndle:
 	 * @param {String} data Srt string to be parsed
 	 */
-	function parseSrt( data ) {
-	    var srt = data.replace(/\r+/g, ''); // remove dos newlines
-	    srt = srt.replace(/^\s+|\s+$/g, ''); // trim white space start and end
-	    srt = srt.replace(/<[a-zA-Z\/][^>]*>/g, ''); // remove all html tags for security reasons
+	function parseSrt( data ) {		
+		// Remove dos newlines
+	    var srt = data.replace(/\r+/g, '');
+	     
+	    // Trim white space start and end
+	    srt = srt.replace(/^\s+|\s+$/g, '');
+	    
+	    // Remove all html tags for security reasons
+	    srt = srt.replace(/<[a-zA-Z\/][^>]*>/g, ''); 
 	
-	    // get captions
+	    // Get captions
 	    var captions = [ ];
 	    var caplist = srt.split('\n\n');
 	    for (var i = 0; i < caplist.length; i=i+1) {
@@ -454,7 +499,7 @@ mw.addMessages( {
 	        var content, start, end, s;
 	        caption = caplist[i];
 	        s = caption.split(/\n/);
-	        if (s[0].match(/^\d+$/) && s[1].match(/\d+:\d+:\d+/)) {
+	        if (s[0].match(/^\d+$/) && s[1].match(/\d+:\d+:\d+/)) {	        	
 	            // ignore caption number in s[0]
 	            // parse time string
 	            var m = s[1].match(/(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?/);
@@ -479,7 +524,11 @@ mw.addMessages( {
 	            // file format error or comment lines
 	            continue;
 	        }
-	        captions.push({start: start, end: end, content: content});
+	        captions.push({
+	        	'start' : start,
+	        	'end' : end, 
+	        	'content' : content
+	        } );
 	    }
 	
 	    return captions;
@@ -503,7 +552,11 @@ mw.addMessages( {
 					content = bn.text;
 				}
 			} );
-			captions.push({start: start, end: end, content: content});
+			captions.push ( {
+				'start': start, 
+				'end' : end, 
+				'content' : content
+			} );
 		} );
 		
 		return captions;

@@ -2322,7 +2322,7 @@ embedPlayer.prototype = {
 		}						
 		// Load text interface if not already loaded:
 		var timedTextRequestSet = [
-			'$j.menu',
+			'$j.fn.menu',
 			'mw.timedText' 
 		]; 
 		// Re-get the menu:
