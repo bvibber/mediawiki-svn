@@ -16,7 +16,7 @@ NOTE: mvEmbed will switch to jquery ui menu once that is released
 var allUIMenus = [];
 
 (function($) {
-	
+
 
 $.fn.menu = function( options ){
 	var caller = this;
@@ -674,4 +674,4 @@ Number.prototype.pxToEm = String.prototype.pxToEm = function(settings){
 	return result;
 };
 
-} )(jQuery);
+} )(jQuery);	

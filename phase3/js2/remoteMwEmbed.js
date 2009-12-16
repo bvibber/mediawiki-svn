@@ -6,7 +6,7 @@
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
 var mwRemoteVersion = '1.1d';
-var mwUseScriptLoader = true;
+var mwUseScriptLoader = false;
 
 // Setup up request Params: 
 var reqParts = urlparts[1].substring( 1 ).split( '&' );

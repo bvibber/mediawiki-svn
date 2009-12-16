@@ -1,4 +1,4 @@
-/*
+/**
  * ~mwEmbed ~
  * For details see: http://www.mediawiki.org/wiki/MwEmbed
  *
@@ -1057,7 +1057,7 @@ var mwDefaultConf = {
 		* @param {Function} callback Function to run once class is loaded 
 		*/
 		loadClass: function( className , callback){		
-													
+			var _this = this;			
 			// Make sure the class is not already defined:
 			if ( $.isset( className ) ){
 				mw.log( 'Class ( ' + className + ' ) already defined ' );
@@ -1094,21 +1094,13 @@ var mwDefaultConf = {
 			
 			// Include class defined check for older browsers
 			var classDone = false;
-			
-			// Check if the class is ready: ( not all browers support onLoad script attribute )
-			// In the case of a "class" we can pull the javascript state until its ready
-			setTimeout( function(){
-				$.waitForObject( className, function( className ){ 
-					if( callback )
-						callback( className );
-					callback = null;
-				} );
-			}, 25 ); 
+				
 			
 			// Issue the request to load the class (include class name in result callback:					
-			$.getScript( scriptRequest, function( ) {
+			$.getScript( scriptRequest, function( scriptRequest ) {
+				mw.log(" on : " + scriptRequest );
 				if(! $.isset( className )){
-					mw.log( 'ClassName not set in time ( Use waitForObject )' );
+					mw.log( ' Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.classPaths[ className ] );
 				}else{
 					if( callback )
 						callback( className );
@@ -1116,6 +1108,18 @@ var mwDefaultConf = {
 				}
 			} );	
 			//mw.log( 'done with running 	getScript request ' );
+			
+			// Check if the class is ready: ( not all browsers support onLoad script attribute )
+			// In the case of a "class" we can pull the javascript state until its ready
+			setTimeout( function(){
+				$.waitForObject( className, function( className ){								
+					if( callback ){
+						mw.log( " waitForObject callback for: " + className );
+						callback( className );
+						callback = null;
+					}
+				} );
+			}, 25 ); 
 		},				
 		
 		/**
@@ -1366,6 +1370,7 @@ var mwDefaultConf = {
 		}
 		return true;
 	}
+	
 	/**
 	* Waits for a object to be defined and the calls callback
 	*
@@ -1376,20 +1381,25 @@ var mwDefaultConf = {
 	*/
 	var waitTime = 1200; // About 30 seconds 
 	$.waitForObject = function( objectName, callback, _callNumber){
-		//mw.log( 'waitForObject: ' + objectName );
-		if( !_callNumber ) 
+		//mw.log( 'waitForObject: ' + objectName  + ' cn: ' + _callNumber);
+				
+		// Increment callNumber: 
+		if( !_callNumber ){ 
 			_callNumber = 1;
-		
-		if( _callNumber > waitTime ){
-			mw.log( "Errro: waiting for object: " + objectName + ' timeout ' );
-			return ; 
+		} else {
+			_callNumber++;
 		}
 		
-		if ( $.isset( objectName ) ){
+		if( _callNumber > waitTime ){
+			mw.log( "Error: waiting for object: " + objectName + ' timeout ' );
+			callback( false ); 
+		}
+		
+		if ( $.isset( objectName ) ){			
 			callback( objectName )
 		}else{
 			setTimeout( function( ){
-				$.waitForObject( objectName, callback, _callNumber++ );
+				$.waitForObject( objectName, callback, _callNumber);
 			}, 25);
 		}
 	}
@@ -1559,8 +1569,7 @@ var mwDefaultConf = {
 		script.onload = script.onreadystatechange = function(){			
 			if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {				
 				if( callback )
-					callback( scriptRequest );
-				callback = null;
+					callback( scriptRequest );				
 			}
 		};		
 		// Append the script to the DOM:
@@ -2222,7 +2231,7 @@ mw.addClassFilePaths( {
 	"kskinConfig"	: "skins/kskin/kskinConfig.js",
 	"mvpcfConfig"	: "skins/mvpcf/mvpcfConfig.js",
 	
-	"$j.menu"		: "libTimedText/jQuery.menu.js",
+	"$j.fn.menu"	: "libTimedText/jQuery.menu.js",
 	"mw.timedText"	: "libTimedText/mw.timedText.js",
 	"Itext" 		: "libTimedText/Itext.js"
 
@@ -2232,7 +2241,7 @@ mw.addClassFilePaths( {
 mw.addClassStyleSheets( {
 	"kskinConfig" : "skins/kskin/playerSkin.css",
 	"mvpcfConfig" : "skins/mvpcf/playerSkin.css",
-	"$j.menu" 	: "libTimedText/jQuery.menu.css"
+	"$j.fn.menu" 	: "libTimedText/jQuery.menu.css"
 } );
 
 // Add the module loader function:
@@ -2260,7 +2269,7 @@ mw.addModuleLoader( 'player', function( callback ){
 	//If we should include the timedText interface
 	var checkForTimedText =false;
 	var timedTextRequestSet = [
-		'$j.menu',
+		'$j.fn.menu',
 		'mw.timedText' 
 	]; 
 	switch( mw.getConfig( 'textInterface') ){
