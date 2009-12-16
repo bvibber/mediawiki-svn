@@ -6,17 +6,15 @@
  */
 evt: {
 	mark: function( context, event ) {
-		// Get refrences to the markers and tokens from the current context
+		// Get references to the markers and tokens from the current context
 		var markers = context.modules.highlight.markers;
 		var tokenArray = context.modules.highlight.tokenArray;
-		// Collect matching level 0 template call boundaries from the tokenArrray
+		// Collect matching level 0 template call boundaries from the tokenArray
 		var level = 0;
-		var boundaries = [];
-		var boundary = 0;
 		
 		var tokenIndex = 0;
 		while( tokenIndex < tokenArray.length ){
-			while( tokenIndex < tokenArray.length && tokenArrray[tokenIndex].label != 'TEMPLATE_BEGIN'){
+			while( tokenIndex < tokenArray.length && tokenArray[tokenIndex].label != 'TEMPLATE_BEGIN'){
 				tokenIndex++;
 			}
 			//open template
@@ -37,27 +35,18 @@ evt: {
 					}
 				}//while finding template ending
 				if(endIndex != -1){
-					boundaries.push([beginIndex,endIndex]); //push the boundaries
+					markers.push( {
+						start: tokenArray[beginIndex].offset,
+						end: tokenArray[endIndex].offset,
+						wrapElement: function() {
+							return $( '<div />' ).addClass( 'wikiEditor-highlight-template' );
+						}
+					} );
 				} else { //else this was an unmatched opening
 					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';
 					tokenIndex = beginIndex;
 				}
 			}//if opentemplates
-		}
-				
-		// Add encapsulations to markers at the offsets of matching sets of level 0 template call boundaries
-		for ( boundary in boundaries ) {
-				if ( !( boundaries[boundary][0] in markers ) ) {
-					markers[boundaries[boundary][0]] = [];
-				}
-				if ( !( boundaries[boundary][1] in markers ) ) {
-					markers[boundaries[boundary][1]] = [];
-				}
-				// Append boundary markers
-				markers[boundaries[boundary][0]].push( "<div class='wiki-template'>" );
-				markers[boundaries[boundary][1]].push( "</div>" );
-	
-			}
 		}
 	}
 },
@@ -79,6 +68,7 @@ fn: {
 	 */
 	create: function( context, config ) {
 		// Initialize module within the context
+		context.modules.templateEditor = {};
 	},
 	stylize: function( context ) {
 		var $templates = context.$content.find( '.wiki-template' );
