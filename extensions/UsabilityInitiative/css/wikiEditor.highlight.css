@@ -1,6 +1,8 @@
 /* CSS for highlight module. Note that this CSS is loaded in the iframe,
  * not in the main document. For that reason, it's also not in the combined and
  * minified files.
+ *
+ * When you edit this please update the style version in js/plugins/jquery.wikiEditor.highlight.js
  */
 
 /* Wikitext that's folded away and shouldn't be displayed */
