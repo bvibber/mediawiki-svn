@@ -310,7 +310,9 @@ $messages['br'] = array(
 	'crosswikiblock-submit' => 'Stankañ an implijer-mañ',
 	'crosswikiunblock-reason' => 'Abeg :',
 	'crosswikiunblock-submit' => 'Distankañ an implijer-mañ',
+	'crosswikiblock-dbnotfound' => "N'eus ket eus an diaz roadennoù $1",
 	'crosswikiblock-nouser' => 'N\'eo ket bet kavet an implijer "$3".',
+	'crosswikiblock-noreason' => "N'eus bet diferet abeg ebet.",
 	'crosswikiblock-alreadyblocked' => 'Stanket eo an implijer $3 dija.',
 	'crosswikiblock-noblock' => "N'eo ket stanket an implijer-mañ.",
 );
@@ -2735,5 +2737,13 @@ Geikön lü:
 $messages['yi'] = array(
 	'crosswikiblock-reason' => 'אורזאַך:',
 	'crosswikiunblock-reason' => 'אורזאַך:',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'crosswikiblock-reason' => '原因：',
+	'crosswikiunblock-reason' => '原因：',
 );
 

@@ -261,9 +261,12 @@ $messages['br'] = array(
 	'dt_xml_pages' => 'Pajennoù',
 	'dt_xml_page' => 'Pajenn',
 	'dt_xml_template' => 'Patrom',
+	'dt_xml_field' => 'Maezienn',
 	'dt_xml_name' => 'Anv',
 	'dt_xml_title' => 'Titl',
 	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Testenn dieub',
+	'importxml' => 'Enporzhiañ  XML',
 	'dt_import_importing' => "Oc'h enporzhiañ...",
 );
 

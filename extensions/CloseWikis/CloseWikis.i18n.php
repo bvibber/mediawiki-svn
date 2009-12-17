@@ -226,6 +226,7 @@ $messages['br'] = array(
 	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-list-header-by' => 'Serret gant',
 	'closewikis-list-header-timestamp' => "Serret d'an",
+	'closewikis-list-header-dispreason' => 'Abeg diskwelet',
 	'closewikis-log-close' => '{{Gender:.|en|he}} deus serret $2',
 	'closewikis-log-reopen' => '{{Gender:.|en|he}} deus addigoret $2',
 	'right-editclosedwikis' => 'Aozañ ar wikioù serret',
@@ -1890,5 +1891,12 @@ $messages['yi'] = array(
 	'closewikis-page-reopen-wiki' => 'וויקי:',
 	'closewikis-page-reopen-reason' => 'אורזאַך:',
 	'closewikis-list-header-wiki' => 'וויקי:',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'closewikis-page-reopen-reason' => '原因：',
 );
 

@@ -91,6 +91,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'wikieditor-preview-preference' => 'Gweredekaat ar rakweled skoaz-ouzh-skoaz',
 	'wikieditor-preview-tab' => 'Rakwelet',
+	'wikieditor-preview-changes-tab' => 'Kemmoù',
 	'wikieditor-preview-loading' => 'O kargañ...',
 );
 

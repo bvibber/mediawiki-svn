@@ -137,6 +137,13 @@ $messages['de'] = array(
 	'abcdownload' => 'Herunterladen:',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'abcdownload' => 'Bar ke:',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

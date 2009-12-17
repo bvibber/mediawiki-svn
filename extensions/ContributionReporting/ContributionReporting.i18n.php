@@ -485,6 +485,7 @@ $messages['br'] = array(
 	'contrib-hist-name' => 'Anv',
 	'contrib-hist-date' => 'Deiziad hag eur',
 	'contrib-hist-amount' => 'Sammad',
+	'contrib-hist-anonymous' => 'Dizanv',
 	'contribstats-day' => 'Deiz',
 	'contribstats-month' => 'Miz',
 	'contribstats-currency' => 'Moneiz',
@@ -493,10 +494,15 @@ $messages['br'] = array(
 	'contribstats-avg' => 'Keitat (SUA)',
 	'contribstats-percentage-ytd' => 'Dregantad (er bl.-mañ)',
 	'contribstats-total-ytd' => 'Hollad (er bloaz-mañ)',
+	'contribstats-value-under' => 'Dindan $1',
+	'contribstats-value-over' => 'Ouzhpenn $1',
 	'contribstats-day-totals' => 'Hollad an deiz',
 	'contribstats-week' => 'Sizhun',
 	'contribstats-clicks' => 'Klikoù',
 	'contribstats-template' => 'Patrom',
+	'contribstats-average' => 'Keitad',
+	'fundraiserstats-date' => 'Deiziad',
+	'fundraiserstats-total' => 'Hollad (USD)',
 	'fundraiserstats-tab-totals' => 'Hollad (dollaroù SUA)',
 );
 

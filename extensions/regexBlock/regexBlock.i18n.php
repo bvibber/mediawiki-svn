@@ -400,6 +400,7 @@ $messages['br'] = array(
 	'regexblock-form-match' => 'Klotadur rik',
 	'regexblock-form-submit' => 'Stankañ an implijer-mañ',
 	'regexblock-form-submit-expiry' => 'Diferit un termen, mar plij.',
+	'regexblock-nodata-found' => "N'eus ket bet kavet roadennoù",
 	'regexblock-view-blocked' => 'Gwelet ar stankadurioù gant :',
 	'regexblock-view-all' => 'Pep tra',
 	'regexblock-view-go' => 'Mont',

@@ -677,6 +677,7 @@ $messages['br'] = array(
 	'wikilog-summary-footer' => "Embannet gant $7 e [[$1|$2]] d'an $8 da $9, $10.",
 	'wikilog-summary-footer-single' => "Embannet gant $7 d'ar $8 da $9, $10.",
 	'wikilog-summary-uncategorized' => 'Anrummatet',
+	'wikilog-summary-categories' => 'Rummet e-barzh $2',
 	'wikilog-summary-more' => "[[$3|→ kenderc'hel da lenn...]]",
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|kaozeal]])',
 	'wikilog-edit-fieldset-legend' => 'Dibarzhioù wikilog :',
@@ -2797,6 +2798,16 @@ $messages['nn'] = array(
 	'wikilog-show-published' => 'Publisert',
 	'wikilog-show-drafts' => 'Utkast',
 	'wikilog-history-lc' => 'historikk',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'wikilog-help' => '{{ns:Help}}:Wikilogg',
+	'wikilog-specialwikilog-title' => 'Wikilogger',
+	'wikilog-specialwikilog' => 'Wikilogg',
+	'wikilog-tab' => 'Wikilogg',
 );
 
 /** Occitan (Occitan)

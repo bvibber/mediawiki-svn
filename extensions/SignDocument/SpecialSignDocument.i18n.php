@@ -617,6 +617,7 @@ $messages['br'] = array(
 	'sig-private' => '<i>Prevez</i>',
 	'sign-sigdetails' => 'Munudoù ar sinadur',
 	'sign-viewfield-stricken' => 'Barrennet',
+	'sign-viewfield-reviewedby' => 'Adweler',
 	'sign-viewfield-reviewcomment' => 'Addispleg',
 	'sign-reviewsig' => 'Adwelet ar sinadur',
 	'sign-review-comment' => 'Addispleg',

@@ -188,6 +188,13 @@ Benutzernamen können sich in der Groß- und Kleinschreibung unterscheiden.
 Bitte prüfen Sie die Schreibweise.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'ajaxlogin-create' => 'Yew hesab vıraze',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

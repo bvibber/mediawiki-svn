@@ -196,12 +196,14 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'passwordreset' => 'Adderaouekaat ar ger-tremen',
 	'passwordreset-invalidusername' => 'Anv implijer direizh',
 	'passwordreset-username' => 'Anv implijer :',
 	'passwordreset-newpass' => 'Ger-tremen nevez :',
 	'passwordreset-confirmpass' => 'Kadarnaat ar ger-tremen :',
 	'passwordreset-submit' => 'Adderaouekaat ar ger-tremen',
 	'passwordreset-disableuser' => 'Diweredekaat ar gont implijer ?',
+	'passwordreset-accountdisabled' => 'Diweredekaet eo bet ar gont',
 	'disabledusers' => 'Implijerien diweredekaet',
 );
 

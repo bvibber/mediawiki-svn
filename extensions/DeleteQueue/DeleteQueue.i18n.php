@@ -825,19 +825,23 @@ $messages['br'] = array(
 	'deletequeue-prod-title' => 'Kinnig diverkañ "$1"',
 	'deletequeue-delnom-reason' => "Abeg ar c'hinnig :",
 	'deletequeue-delnom-otherreason' => 'Abeg all',
+	'deletequeue-delnom-extra' => 'Titouroù ouzhpenn :',
 	'deletequeue-delnom-submit' => 'Kas an anvadur',
 	'right-prod-nominate' => 'Kinnig diverkañ pajennoù',
 	'deletequeue-queue-speedy' => 'Dilamadenn brim',
 	'deletequeue-queue-prod' => 'Diverkadenn kinniget',
+	'deletequeue-review-action' => 'Ober da seveniñ :',
 	'deletequeue-review-delete' => 'Dilemel ar bajenn.',
 	'deletequeue-review-reason' => 'Addisplegoù :',
 	'deletequeue-review-newreason' => 'Abeg nevez :',
+	'deletequeue-review-newextra' => 'Titouroù ouzhpenn :',
 	'deletequeue-vote-reason' => 'Evezhiadennoù :',
 	'deletequeue-vote-submit' => 'Kas',
 	'deletequeue-list-search-legend' => 'Klask pajennoù',
 	'deletequeue-list-status' => 'Statud :',
 	'deletequeue-list-search' => 'Klask',
 	'deletequeue-list-header-page' => 'Pajenn',
+	'deletequeue-list-header-discusspage' => 'Pajenn divizout',
 	'deletequeue-case-page' => 'Pajenn :',
 	'deletequeue-case-reason' => 'Abeg :',
 );
@@ -5684,6 +5688,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author PhiLiP
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
@@ -5703,6 +5708,7 @@ $messages['zh-hans'] = array(
 	'deletequeue-list-anyqueue' => '（任何）',
 	'deletequeue-list-votes' => '投票列表',
 	'deletequeue-list-header-page' => '页面',
+	'deletequeue-case-reason' => '原因：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

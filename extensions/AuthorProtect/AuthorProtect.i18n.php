@@ -308,6 +308,13 @@ $messages['de-formal'] = array(
 	'authorprotect-notauthor' => 'Sie sind nicht der Autor dieser Seite',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'authorprotect-reason' => 'Sebeb',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

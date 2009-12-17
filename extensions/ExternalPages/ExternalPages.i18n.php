@@ -92,6 +92,7 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  * @author Y-M D
  */
@@ -100,6 +101,7 @@ $messages['br'] = array(
 	'externalpages-bad-year' => 'Bloavezh lakaet direizh',
 	'externalpages-bad-language' => 'Yezh lakaet direizh',
 	'externalpages-bad-project' => 'Raktres lakaet direizh',
+	'externalpages-no-project' => "N'eus bet diferet raktres ebet",
 	'externalpages-bad-page' => 'Pajenn lakaet direizh',
 	'externalpages-no-page' => "N'eus bet resisaet anv pajenn ebet",
 	'externalpages-error-generic' => 'Kavet ez eus bet ur fazi',

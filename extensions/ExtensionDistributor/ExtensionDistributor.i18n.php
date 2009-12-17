@@ -263,6 +263,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'extensiondistributor' => 'Pellgargañ an astenn MediaWiki',
 	'extdist-submit-extension' => "Kenderc'hel",
 	'extdist-submit-version' => "Kenderc'hel",
 	'extdist-want-more' => 'Tapout un astenn all',

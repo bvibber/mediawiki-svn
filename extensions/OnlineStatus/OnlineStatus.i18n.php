@@ -132,10 +132,12 @@ $messages['bg'] = array(
  * @author Fohanno
  */
 $messages['br'] = array(
+	'onlinestatus-js-changed' => 'Cheñchet eo bet ho statud da « $1 »',
 	'onlinestatus-subtitle-offline' => 'Ezlinenn eo an implijer-mañ evit bremañ',
 	'onlinestatus-subtitle-online' => 'Enlinenn eo an implijer-mañ evit bremañ',
 	'onlinestatus-tab' => 'Statud',
 	'onlinestatus-toggles-desc' => 'Ho statud :',
+	'onlinestatus-toggles-show' => 'Diskouez ma statud war ma fajenn implijer',
 	'onlinestatus-toggle-offline' => 'Ezlinenn',
 	'onlinestatus-toggle-online' => 'Enlinenn',
 );

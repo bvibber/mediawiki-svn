@@ -57,6 +57,13 @@ $messages['be-tarask'] = array(
 	'tablemod-error-missingid' => 'Адсутнічае атрыбут «ident» у тэге.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'tablemod-msg-remove' => 'Lemel',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -1066,6 +1066,16 @@ $messages['de-formal'] = array(
 	'viewapc-clear-confirm' => 'Möchten Sie den Cache leeren?',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'viewapc-display-filename' => 'Namey dosya',
+	'viewapc-display-info' => 'Name',
+	'viewapc-ls-submit' => 'Şo!',
+	'viewapc-ls-sort-name' => 'Name',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

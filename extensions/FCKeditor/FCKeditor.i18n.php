@@ -317,13 +317,35 @@ $messages['es'] = array(
 );
 
 /** Basque (Euskara)
+ * @author Agonirena
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'fckeditor-desc' => 'FCKeditor editoreak eskaintzen duen WYSIWYG edizio modua gaitu',
 	'textrichditor' => 'Aberastutako Editorea',
 	'prefs-fckeditor' => 'Aberastutako Editorea',
 	'tog-riched_disable' => 'Ezgaitu aberastutako editorea',
+	'tog-riched_disable_ns_main' => 'Ezgaitu aberastutako editorea izen-tarte nagusian',
+	'tog-riched_disable_ns_talk' => 'Ezgaitu aberastutako editorea "{{ns:talk}}" izen-tartean',
+	'tog-riched_disable_ns_user' => 'Ezgaitu aberastutako editorea "{{ns:user}}" izen-tartean',
+	'tog-riched_disable_ns_user_talk' => 'Ezgaitu aberastutako editorea "{{ns:user_talk}}" izen-tartean',
+	'tog-riched_disable_ns_project' => 'Ezgaitu aberastutako editorea "{{ns:project}}" izen-tartean',
+	'tog-riched_disable_ns_project_talk' => 'Ezgaitu aberastutako editorea "{{ns:project_talk}}" izen-tartean',
+	'tog-riched_disable_ns_image' => 'Ezgaitu aberastutako editorea "{{ns:file}}" izen-tartean',
+	'tog-riched_disable_ns_image_talk' => 'Ezgaitu aberastutako editorea "{{ns:file_talk}}" izen-tartean',
+	'tog-riched_disable_ns_mediawiki' => 'Ezgaitu aberastutako editorea "{{ns:mediawiki}}" izen-tartean',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Ezgaitu aberastutako editorea "{{ns:mediawiki_talk}}" izen-tartean',
+	'tog-riched_disable_ns_template' => 'Ezgaitu aberastutako editorea "{{ns:template}}" izen-tartean',
+	'tog-riched_disable_ns_template_talk' => 'Ezgaitu aberastutako editorea "{{ns:template_talk}}" izen-tartean',
+	'tog-riched_disable_ns_help' => 'Ezgaitu aberastutako editorea "{{ns:help}}" izen-tartean',
+	'tog-riched_disable_ns_help_talk' => 'Ezgaitu aberastutako editorea "{{ns:help_talk}}" izen-tartean',
+	'tog-riched_disable_ns_category' => 'Ezgaitu aberastutako editorea "{{ns:category}}" izen-tartean',
+	'tog-riched_disable_ns_category_talk' => 'Ezgaitu aberastutako editorea "{{ns:category_talk}}" izen-tartean',
 	'rich_editor_new_window' => 'Ireki Aberastutako editorea leiho berri batean',
+	'tog-riched_start_disabled' => 'Hasi editore aberastua ezgaitua dagoela',
+	'tog-riched_use_popup' => 'Editore aberastua laster-leiho batean ireki',
+	'tog-riched_use_toggle' => 'Erabili testu eremu gainean dagoen esteka wikitext edo editore aberastua hautatzeko (testu eremua editore aberastuarekin erabiltzeko)',
+	'tog-riched_toggle_remember_state' => 'Gogoratu erabilitako azken editore hautua',
 );
 
 /** Persian (فارسی) */

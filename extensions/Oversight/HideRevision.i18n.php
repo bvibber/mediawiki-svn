@@ -506,6 +506,7 @@ $messages['br'] = array(
 	'right-hiderevision' => "Kuzhat kemmoù d'ar verourien",
 	'hiderevision-continue' => "Kenderc'hel",
 	'hiderevision-reason' => 'Abeg (enrollet e vo en un doare distag) :',
+	'hiderevision-submit' => 'Kuzhat ar roadennoù-mañ da vat',
 	'hiderevision-tab' => 'Kuzat an adweladenn',
 	'hiderevision-link' => 'degasadennoù kuzhet an implijer',
 	'hiderevision-status' => 'Adweladenn $1 : $2',
@@ -1953,6 +1954,7 @@ Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenen
 $messages['ka'] = array(
 	'hiderevision' => 'სამუდამოდ დამალე ცვლილებები',
 	'group-oversight' => 'რევიზორები',
+	'hiderevision-continue' => 'გაგრძელება',
 	'hiderevision-link' => 'მომხმარებლის დამალული წვლილი',
 	'hiderevision-success' => 'წარმატებით დაარქივდა და წაიშალა',
 	'oversight-view' => 'დეტალები',

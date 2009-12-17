@@ -177,6 +177,7 @@ $messages['br'] = array(
 	'deletebatch-or' => '<b>pe</b>',
 	'deletebatch-delete' => 'Dilemel',
 	'deletebatch-page' => 'Pajennoù da ziverkañ :',
+	'deletebatch-file-bad-format' => 'Ar restr a zle bezañ testenn blaen',
 	'deletebatch-select-yourself' => "C'hwi",
 );
 

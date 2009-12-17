@@ -263,6 +263,13 @@ $messages['de'] = array(
 	'right-adminlinks' => 'Link nach [[Special:AdminLinks|Links für Administratoren]] sehen',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'adminlinks_users' => 'Karberi',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -145,6 +145,17 @@ $messages['qqq'] = array(
 * $4 is a link to the poll statistics with link label {{msg-mw|qp_stats_link}}
 * $5 is a link to the users that participated in the poll with link label {{msg-mw|qp_users_link}}
 * $6 is a link to the with link label {{msg-mw|qp_not_participated_link}}',
+	'qp_error_missed_dependance_poll' => 'Parameters:
+{| cellpadding="0" cellspacing="0" border="0"
+!$1||&nbsp;
+| is the poll ID of the poll having an error.
+|-
+!$2||
+|is a link to the page with the poll, that this erroneous poll depends on.
+|-
+!$3||
+|is the poll ID of the poll, which this erroneous poll depends on.
+|}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -309,6 +320,7 @@ $messages['br'] = array(
 	'qp_export_to_xls' => "Ezporzhiañ ar stadegoù d'ar furmad XLS",
 	'qp_users_answered_questions' => "$1 {{PLURAL:$1|implijer|implijerien}} o deus respontet d'ar goulennoù",
 	'qp_func_no_such_poll' => "N'eus ket eus ar sontadeg-mañ ($1)",
+	'qp_error_invalid_question_type' => 'Seurt goulenn direizh : $1',
 	'qp_error_vote_dependance_poll' => 'Mar plij, votit evit ar sontadeg $1 da gentañ.',
 	'qp_error_category_name_empty' => 'Goullo eo anv ar rummad',
 	'qp_error_proposal_text_empty' => "Goullo eo testenn ar c'hinnig",
@@ -941,11 +953,13 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'pollresults' => 'Wat bei dä Affschtemmunge en heh däm Wiki eruß gekumme es',
+	'qp_parentheses' => '(<code>$1</code>)',
+	'qp_full_category_name' => '$1(<code>$2</code>)',
 	'qp_desc' => 'Määt Affschtemmunge müjjelesch.',
 	'qp_desc-sp' => '[[Special:PollResults|{{int:nstab-special}}]] för aanzeloore, wat bei Affschtemmunge erus kohm.',
 	'qp_result_NA' => 'Kein Antwoot jejovve',
 	'qp_result_error' => 'Ene Fähler en dä Syntax es opjefalle',
-	'qp_vote_button' => 'Schtemm',
+	'qp_vote_button' => 'Afschtemme!',
 	'qp_vote_again_button' => 'Donn Ding Shtemm ändere',
 	'qp_polls_list' => 'Alle Affschtemmunge opleste',
 	'qp_users_list' => 'Alle Metmaacher opleste',
@@ -965,6 +979,9 @@ $messages['ksh'] = array(
 	'qp_results_line_qupl' => 'Sigg „$1“ Affschtemmung „$2“: $3',
 	'qp_results_line_qpl' => 'Sigg „$1“ Affschtemmung „$2“: $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Sigg „$2“ Affschtemmung „$3“ ]',
+	'qp_results_line_qpul' => '$1: $2',
+	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
+	'qp_results_line_qucl' => '$1: $2 $3',
 	'qp_export_to_xls' => 'Donn de Schtatistike em <i lang="en">XLS</i> Fommaat äxpotteere',
 	'qp_users_answered_questions' => '{{PLURAL:$1|Eine|$1|Keine}} Metmaacher {{PLURAL:$1|hät|han|hät}} op di Froore jeantwoot \\',
 	'qp_func_no_such_poll' => 'Esu en Affschtemmung ham_mer nit ($1)',
@@ -976,7 +993,7 @@ $messages['ksh'] = array(
 Bes sescher, dat di Affschtemmung wennjerescht es un affjeschpeijschert, un bes sescher, dat De dat Bejränzungszeijsche # en dä Addräß bruche deihß.',
 	'qp_error_id_in_stats_mode' => 'Mer künne kein Kännung (<code lang="en">id=</code>) fö di Affschtemmung en de Enschtellung för de Schtatistike faßlääje',
 	'qp_error_dependance_in_stats_mode' => 'Mer künne kein Kett vun Affhängeschkeite fö di Affschtemmung en de Enschtellung för de Schtatistike faßlääje',
-	'qp_error_no_stats' => 'Ner han kein schtatistesche Daate, weil noch keiner för heh di Affjeschtemmung affjeschtemmp hät. (<code>address=$1</code>) \\',
+	'qp_error_no_stats' => 'Ner han kein schtatistesche Daate, weil noch keiner för heh di Affjeschtemmung affjeschtemmp hät. (<code>address=$1</code>)',
 	'qp_error_address_in_decl_mode' => 'Mer künne kein Addräß vun dä Affschtemmung beij em Fäßlääje vun de Enschtellung un Eijeschaffte krijje',
 	'qp_error_question_not_implemented' => 'Froore vun dä Zoot sin nit em Projramm: $1',
 	'qp_error_invalid_question_type' => 'Dat es en onjöltijje Zoot Frooch: $1',
@@ -987,14 +1004,14 @@ Doh dörfe nur Bochschtabe, Zeffere, un Affschtänd dren sin.',
 	'qp_error_already_used_poll_id' => 'Di Kännung för en Affschtemmung (<code>id=$1</code>) es ald ens op heh dä Sigg jebruch woode.',
 	'qp_error_invalid_dependance_value' => 'Di Affschtemmung fö di Kännung (<code>id=$1</code>) ier Kett vun Afhängeschkeite hät en onjöltesch Eijeschaff (dependance="$2")',
 	'qp_error_missed_dependance_title' => 'Di Affschtemmung met dä Kännung (<code>id=$1</code>) hängk aff vun ene andere Affschtemmung met dä Kännung (<code>id=$3</code>) op dä Sigg „[[$2]]“, ävver di ham_mer nit jefonge.
-Entweder donn die Eijeschff met dä Affhängeschkeit fott, udder holl di Sigg „[[$2]]“ wider en et Wiki,',
-	'qp_error_missed_dependance_poll' => 'Di Affschtemmung met dä Kännung (<code>id=$1</code>) hängk aff vun ene andere Affschtemmung met dä Kännung (<code>id=$3</code>) op dä Sigg „[[:$2]]“, ävver di Affschtemmung ham_mer doh nit jefonge.
-Entweder donn die Eijeschaff met dä Affhängeschkeit fott, udder donn en Affschtemmung met dä Kännung (<code>id=$3</code>) op di Sigg „[[:$2]]“ un donn se afschpeijschere.
+Entweder donn die Eijeschaff met dä Affhängeschkeit fott, udder holl di Sigg „[[$2]]“ wider en et Wiki,',
+	'qp_error_missed_dependance_poll' => 'Di Affschtemmung met dä Kännung (<code>id=$1</code>) hängk aff vun ene andere Affschtemmung met dä Kännung (<code>id=$3</code>) op dä Sigg „$2“, ävver di Affschtemmung ham_mer doh nit jefonge.
+Entweder donn die Eijeschaff met dä Affhängeschkeit fott, udder donn en Affschtemmung met dä Kännung (<code>id=$3</code>) op di Sigg „$2“ un donn se afschpeijschere.
 Öm en Afschtemmung reschtesch ze schpeijschere, donn dat, der ohne op en Frooch jeantwoot ze han.',
 	'qp_error_vote_dependance_poll' => 'Bes esu joot un donn övver „$1“ et eets affschtemme',
-	'qp_error_too_many_spans' => 'Zoh vill Knubbel Classes sin för de Ungerknubbel aanjejovve',
-	'qp_error_unanswered_span' => 'Onger-Knubber oohne Antwoot',
-	'qp_error_non_unique_choice' => 'Di Frooch bruch ene einzelne Vörschlaach för en Antwoot \\',
+	'qp_error_too_many_spans' => 'Et sinn_er zoh vill Zoote för de Ongerknubbelle aanjejovve',
+	'qp_error_unanswered_span' => 'Ongerknubbel oohne Antwoot',
+	'qp_error_non_unique_choice' => 'Di Frooch bruch ene einzelne Vörschlaach för en Antwoot',
 	'qp_error_category_name_empty' => 'Dä Name för dä Knubbel es läddesch',
 	'qp_error_proposal_text_empty' => 'En däm Täx för dä Vörschlaach schteiht nix dren',
 	'qp_error_too_few_categories' => 'Winnischsdens zweij Knubbelle möße doh sin',

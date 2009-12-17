@@ -952,6 +952,16 @@ Sie werden sich nicht mehr mit dieser OpenID anmelden können.',
 	'openid-provider-label-other-username' => 'Geben Sie Ihren „$1“-Benutzernamen an',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'openidlanguage' => 'Zıwan',
+	'openidtimezone' => 'Warey saete',
+	'openidchoosepassword' => 'parola:',
+	'openid-urls-delete' => 'Bıestere',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

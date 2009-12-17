@@ -269,6 +269,16 @@ $messages['de'] = array(
 	'amazonplus-less' => 'weniger',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'amazonplus-german' => 'Almanki',
+	'amazonplus-french' => 'Fransızki',
+	'amazonplus-japanese' => 'Japonki',
+	'amazonplus-new' => 'newe',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

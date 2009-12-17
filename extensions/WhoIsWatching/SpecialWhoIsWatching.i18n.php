@@ -513,6 +513,19 @@ $messages['mr'] = array(
 	'specialwhoiswatchingaddbtn' => 'निवडलेले सदस्य वाढवा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'whoiswatching' => 'Siapa memantau laman wiki',
+	'whoiswatching-desc' => 'Menyediakan senarai nama pengguna memantau laman wiki',
+	'specialwhoiswatchingthepage' => 'Siapa memantau %',
+	'specialwhoiswatchingusage' => 'Laman khas ini tidak boleh digunakan sendirian.
+Sila gunakan laman [[MediaWiki:Number_of_watching_users_pageview]] untuk menakrifkan titik masuk ke laman khas ini.',
+	'specialwhoiswatchingaddusers' => 'Tambah pengguna untuk memantau laman',
+	'specialwhoiswatchingaddbtn' => 'Tambah pengguna terpilih',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
