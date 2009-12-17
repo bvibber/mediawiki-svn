@@ -2061,7 +2061,10 @@ var mwDefaultConf = {
 	* cache its result
 	* 
 	* @param {String} styleRule Style rule name to check
-	* 
+	* @return 
+	*	true if the rule exists
+	*	false if the rule does not exist
+	* @type {Boolean}
 	*/
 	$.styleRuleExists = function ( styleRule ){
 		// Set up the skin paths configuration
@@ -2071,11 +2074,11 @@ var mwDefaultConf = {
 				rules = document.styleSheets[i].cssRules
 			else if (document.styleSheets[0].rules)
 				rules = document.styleSheets[i].rules
-			for(var j=0 ; j < rules.length ; j++ ){		
+			for(var j=0 ; j < rules.length ; j++ ){
 				var rule = rules[j].selectorText;												
 				if( rule.indexOf( styleRule ) != -1 ){
 					return true;
-				}			
+				}		
 			}
 		}
 		return false;	

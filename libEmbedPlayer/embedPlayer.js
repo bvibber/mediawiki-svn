@@ -1274,16 +1274,18 @@ embedPlayer.prototype = {
 			this['width'] = parseInt( $j(element).attr( 'width' ) );
 		}			
 		
-		// Use default aspect ration to get height or width
-		if( this['height']  &&  !this['width'] && this.videoAspect  ){
-			var aspect = this.videoAspect.split( ':' );
-			this['width'] = parseInt( this.height * ( aspect[0] / aspect[1] ) );
+		// Use default aspect ration to get height or width ( if rewriting a non-audio player )
+		if(  element.tagName.toLowerCase() != 'audio' ){
+			if( this['height']  &&  !this['width'] && this.videoAspect  ){
+				var aspect = this.videoAspect.split( ':' );
+				this['width'] = parseInt( this.height * ( aspect[0] / aspect[1] ) );
+			}
+			
+			if( this['width']  &&  !this['height'] && this.videoAspect  ){
+				var aspect = this.videoAspect.split( ':' );
+				this['height'] = parseInt( this.width * ( aspect[1] / aspect[0] ) );
+			}				
 		}
-		
-		if( this['width']  &&  !this['height'] && this.videoAspect  ){
-			var aspect = this.videoAspect.split( ':' );
-			this['height'] = parseInt( this.width * ( aspect[1] / aspect[0] ) );
-		}				
 		
 		// On load sometimes attr is temporally -1 as we don't have video metadata yet.		 
 		// NOTE: this edge case should be handled by waiting for metadata see: "waitForMeta" in addElement 		
