@@ -30,7 +30,7 @@ if ( !window['mw'] ) {
 
 /**
 * Default global config values. Configuration values are set via mw.setConfig
-* Configuration values should generaly be set prior to dom-ready 
+* Configuration values should generally be set prior to dom-ready 
 */  
 var mwDefaultConf = {
 	// Default skin name
@@ -175,14 +175,16 @@ var mwDefaultConf = {
 	*/
 		
 	
-	$.setUserConfig = function ( name, value, cookieOptions ){				
+	$.setUserConfig = function ( name, value, cookieOptions ){		
+		if( setupUserConfigFlag ){ 
+			mw.log( "Error: userConfig not setup" );
+			return false; 		
+		}
 		// Update local value
 		mwUserConfig[ name ] = value;
 		
-		// Update the cookie ( '$j.cookie' & 'JSON' should already be loaded )
-		mw.load( [ '$j.cookie', 'JSON' ], function(){			
-			$j.cookie( 'mwUserConfig', JSON.stringify( mwUserConfig ) );
-		});
+		// Update the cookie ( '$j.cookie' & 'JSON' should already be loaded )	
+		$j.cookie( 'mwUserConfig', JSON.stringify( mwUserConfig ) );
 	}
 	
 	/**
@@ -1696,6 +1698,8 @@ var mwDefaultConf = {
 	 *
 	 * @param {Float} sec Seconds
 	 * @param {Boolean} show_ms If milliseconds should be displayed.
+	 * @return String npt format  
+	 * @type {Float} 
 	 */
 	$.seconds2npt = function( sec, show_ms ) {
 		if ( isNaN( sec ) ) {
@@ -1723,6 +1727,8 @@ var mwDefaultConf = {
 	* Take hh:mm:ss,ms or hh:mm:ss.ms input, return the number of seconds
 	*
 	* @param {String} npt_str NPT time string
+	* @return Number of seconds 
+	* @type {Float} 
 	*/
 	$.npt2seconds = function ( npt_str ) {
 		if ( !npt_str ) {
@@ -2009,7 +2015,7 @@ var mwDefaultConf = {
 			
 					
 			// Only load jquery ui sheet if ui-widget does not exist. 
-			if( $.styleRuleExists( 'ui-widget' ) ){
+			if( ! $.styleRuleExists( 'ui-widget' ) ){
 				$.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
 			}
 			
@@ -2059,7 +2065,6 @@ var mwDefaultConf = {
 	*/
 	$.styleRuleExists = function ( styleRule ){
 		// Set up the skin paths configuration
-		var loadUiStyle = true;			
 		for( var i=0 ; i < document.styleSheets.length ; i++ ){
 			var rules = null;			
 			if (document.styleSheets[i].cssRules)
@@ -2069,11 +2074,11 @@ var mwDefaultConf = {
 			for(var j=0 ; j < rules.length ; j++ ){		
 				var rule = rules[j].selectorText;												
 				if( rule.indexOf( styleRule ) != -1 ){
-					loadUiStyle = false;
-					break;
+					return true;
 				}			
 			}
-		}	
+		}
+		return false;	
 	}
 	// Flag to register the domReady has been called
 	var mwDomReadyFlag = false;
