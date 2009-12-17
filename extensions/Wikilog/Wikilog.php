@@ -369,6 +369,9 @@ class Wikilog
 	static function getWikilogInfo( $title ) {
 		global $wgWikilogNamespaces;
 
+		if ( !$title )
+			return NULL;
+
 		$ns = MWNamespace::getSubject( $title->getNamespace() );
 		if ( in_array( $ns, $wgWikilogNamespaces ) ) {
 			return new WikilogInfo( $title );

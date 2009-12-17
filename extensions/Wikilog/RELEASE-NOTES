@@ -19,6 +19,9 @@
 * (mw:bug 21657) Message wikilog-item-brief-header/footer replaced by
   wikilog-summary-header/footer and others, with proper PLURAL support.
 * (wl:issue 1) Improve header/footer item messages.
+* Disabled minimum feed cache age check ($wgFeedCacheTimeout) in WikilogFeed,
+  since this causes the wrong Last-modified header to be output. Waiting for a
+  fix for the same problem found in ChangesFeed. Noted by Vitaliy Filippov.
 
 == Wikilog 1.0.1 ==
 

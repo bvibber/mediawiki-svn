@@ -436,12 +436,18 @@ class WikilogFeed
 		if ( ( $wgFeedCacheTimeout > 0 ) && $tsCache ) {
 			$age = time() - wfTimestamp( TS_UNIX, $tsCache );
 
-			if ( $age < $wgFeedCacheTimeout ) {
+			# XXX: Minimum feed cache age check disabled. This code is
+			# shadowed from ChangesFeed::loadFromCache(), but Vitaliy Filippov
+			# noticed that this causes the old cached feed to output with the
+			# updated last-modified timestamp, breaking cache behavior.
+			# For now, it is disabled, since this is just a performance
+			# optimization.
+			/* if ( $age < $wgFeedCacheTimeout ) {
 				wfDebug( "Wikilog: loading feed from cache -- " .
 					"too young: age ($age) < timeout ($wgFeedCacheTimeout) " .
 					"($feedkey; $tsCache; $tsData)\n" );
 				return $messageMemc->get( $feedkey );
-			} else if ( $tsCache >= $tsData ) {
+			} else */ if ( $tsCache >= $tsData ) {
 				wfDebug( "Wikilog: loading feed from cache -- " .
 					"not modified: cache ($tsCache) >= data ($tsData)" .
 					"($feedkey)\n" );
