@@ -50,7 +50,7 @@ EOT;
  * @addtogroup Extensions
  *
  * @author Amgine <amgine.saewyc@gmail.com>
- * @copyright Copyright © 2009, Amgine
+ * @copyright Copyright Â© 2009, Amgine
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 $wgExtensionCredits['specialpage'][] = array(

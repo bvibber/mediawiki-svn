@@ -20,11 +20,11 @@ $aliases['en'] = array(
     'GNSM' => array( 'Google News SiteMap', 'SpecialGNSM' ),
 );
 
-/** Français
+/** Fran√ßais
  * @author Amgine
  **/
 $aliases['fr'] = array(
-    'GNSM' => array( 'GNSMSpécial' ),
+    'GNSM' => array( 'GNSMSp√©cial' ),
 );
 
 /** Nederlands
@@ -34,7 +34,7 @@ $aliases['nl'] = array(
     'GNSM' => array( 'GNSMSpeciaal' )
 );
 
-/** Norsk (bokmål)
+/** Norsk (bokm√•l)
  * @author Amgine
  **/
 $aliases['no'] = array(

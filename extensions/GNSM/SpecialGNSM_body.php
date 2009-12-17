@@ -634,4 +634,4 @@ class SitemapFeed extends feedSMItem{
 	echo '</urlset>';
     }
 
-}?>
+}
