@@ -61,11 +61,11 @@ function Menu(caller, options){
 	var menu = this;
 	var caller = $(caller);
 	
-	mw.log( 'target container: ' + options.targetContainer );
+	mw.log( 'target container: ' + options.targetMenuContainer );
 	 
 	var callerClassList = 'fg-menu-container ui-widget ui-widget-content ui-corner-all'; 
-	if( options.targetContainer ){		
-		var container = $( options.targetContainer ).addClass( callerClassList ).html( options.content );
+	if( options.targetMenuContainer ){		
+		var container = $( options.targetMenuContainer ).addClass( callerClassList ).html( options.content );
 	}else{
 		var container = $('<div>').addClass( callerClassList ).html( options.content );
 	}	
@@ -78,7 +78,7 @@ function Menu(caller, options){
 		autoShow: false,
 		width: 180, // width of menu container, must be set or passed in to calculate widths of child menus
 		maxHeight: 180, // max height of menu (if a drilldown: height does not include breadcrumb)
-		targetContainer: null,
+		targetMenuContainer: null,
 		positionOpts: {
 			posX: 'left', 
 			posY: 'bottom',

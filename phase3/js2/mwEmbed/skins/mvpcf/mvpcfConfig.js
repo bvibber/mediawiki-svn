@@ -3,5 +3,5 @@ mvpcf skin config
 */
 
 var mvpcfConfig = {
-	parentClass : 'mv-player'
+	playerClass : 'mv-player'
 };
