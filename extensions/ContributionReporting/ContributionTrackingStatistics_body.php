@@ -40,7 +40,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				Xml::element( 'td', array( 'align' => 'right' ), wfTimestamp( TS_DB ) . ' (UTC)') 
 		); 
 		$htmlOut .= Xml::tags( 'tr', null,
-				Xml::element( 'td', array( 'align' => 'left' ), wfMsg( 'contribstats-fraud-note' ) )
+				Xml::element( 'td', array( 'align' => 'left' ), wfMsg( 'contribstats-fraud-note' ) . " " . wfMsg( 'contribstats-unaudited' ) )
 		);
 		$htmlOut .= Xml::tags( 'tr', null,
 				Xml::element(  'td', array( 'align' => 'left' ), 'PP = ' . wfMsg( 'contribstats-paypal-donations' ) . ', ' .

@@ -74,7 +74,8 @@ $messages['en'] = array(
 	'contribstats-imperfect-data' => 'This data is not perfect as tracking donors without using session tracking has it\'s limitations.',
 	'contribstats-paypal-donations' => 'PayPal Donations',
 	'contribstats-credit-card' => 'Credit Card',
-	'contribstats-fraud-note' => 'Some fraudulent donations exist. These are unaudited totals.',
+	'contribstats-fraud-note' => 'Some fraudulent donations exist.',
+	'contribstats-unaudited' =>  'These are unaudited totals.',
 
 	// Fundraiser statistics
 	'fundraiserstatistics' => 'Fundraiser statistics',
