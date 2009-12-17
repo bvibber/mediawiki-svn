@@ -59,15 +59,19 @@ mw.addMessages( {
 	TimedText.prototype = {
 		
 		/** 
-		* Prefrences config order is presently: 
+		* Preferences config order is presently: 
 		* 1) user cookie
 		* 2) defaults provided in this config var: 
 		*/
 		config: {
 			// Layout for basic "timedText" type can be 'ontop', 'off', 'below'
-			'layout': 'below',
+			'layout': 'ontop',
+			
 			//Set the default local ( should be grabbed from the browser )			
-			'userLanugage': 'en'			
+			'userLanugage': 'en',
+			
+			//Set the default category of timedText to display ( un-categorized timed-text is by default "SUB"  )
+			'userCategory': 'SUB'
 		},
 		
 		/**
@@ -118,7 +122,8 @@ mw.addMessages( {
 				'targetContainer' : null
 			}, options )
 			
-			//Set up embedPlayer monitor hook: 
+			//Set up embedPlayer hooks:
+			 
 			embedPlayer.addHook( 'monitor', function(){
 				_this.monitor();
 			} )
@@ -126,7 +131,10 @@ mw.addMessages( {
 		
 			// Load textSources
 			_this.loadTextSources( function(){
-			
+				
+				// Does an autolayout based on player and 
+				_this.autoLayout();
+				
 				// Enable a default source and issue a request to "load it"
 				_this.autoSelectSource();
 			
@@ -170,6 +178,7 @@ mw.addMessages( {
 			callback();
 		},
 		
+		
 		/**
 		* Auto selects a source given the local configuration 
 		*/
@@ -179,7 +188,10 @@ mw.addMessages( {
 				for( var i in this.textSources ){
 					var source = this.textSources[ i ];					
 					if( source.lang == this.config.userLanugage ){
-						this.enabledSources.push( source );
+						// Check for category if avaliable 
+						if(  source.category.toLowerCase() == this.config.userCategory.toLowerCase() ){  
+							this.enabledSources.push( source );
+						}
 					}					
 				}
 			}
@@ -252,20 +264,20 @@ mw.addMessages( {
 		* calls a few sub-functions:		
 		* Basic menu layout:
 		*		Chose Language
-		*			All Subtiles here (if we have categories list them ) 
+		*			All Subtiles here ( if we have categories list them ) 
 		*		Layout	
 		*			Bellow video
 		*			Ontop video ( only available to supported plugins )									
 		*		[ Search Text ]
+		*			[ This video ] 
+		*			[ All videos ]
 		*		[ Chapters ] seek to chapter
-		*		 
 		*/
 		buildMenu: function(){
 			var _this = this; 
 			//build the source list menu item: 						
 			
-			return $j( '<ul>' ).append(			
-			
+			return $j( '<ul>' ).append(						
 				// Chose language option:  											
 				_this.getLi( gM( 'mwe-chose-text') ).append(
 					_this.getLanguageMenu()
@@ -275,6 +287,9 @@ mw.addMessages( {
 				_this.getLi( gM( 'mwe-layout' ) ).append(
 					_this.getLayoutMenu()
 				)			
+				
+				// Search Menu option
+				_this.getLI( gm('mwe-search'),  
 			);					
 		},
 		

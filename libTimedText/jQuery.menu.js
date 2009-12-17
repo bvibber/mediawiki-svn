@@ -26,9 +26,6 @@ $.fn.menu = function( options ){
 		caller.m = new Menu(caller, options);	
 		allUIMenus.push( caller.m );
 		
-		//Check for autoShow menu option
-		if( options.autoShow )
-			caller.m.showMenu();
 	
 		//Set up bindings: 
 		$(this)
@@ -36,11 +33,25 @@ $.fn.menu = function( options ){
 			if (!caller.m.menuOpen) { caller.m.showLoading(); };
 		})	
 		.click(function(){
-			if (caller.m.menuOpen == false) { caller.m.showMenu(); }
-			else { caller.m.kill(); };
+			if (caller.m.menuOpen == false) { 
+				caller.m.showMenu(); 
+			}else { 
+				caller.m.kill(); 
+			};
 			return false;
 		});
 	}
+	
+	//Check for autoShow menu option
+	if( options.autoShow ){
+		// ( handle async build out)		
+		setTimeout(function(){
+			caller.m.showLoading();	
+			caller.m.showMenu();
+		}, 0 );
+	}
+	
+	
 	//Else process the request:   
 	if( options == 'show' )	
 		caller.m.showMenu();	

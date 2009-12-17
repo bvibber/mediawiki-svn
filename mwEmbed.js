@@ -2007,8 +2007,12 @@ var mwDefaultConf = {
 				window['$j'] = jQuery.noConflict();
 			}
 			
-			// Set up the skin paths configuration
-			$.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
+					
+			// Only load jquery ui sheet if ui-widget does not exist. 
+			if( $.styleRuleExists( 'ui-widget' ) ){
+				$.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
+			}
+			
 			$.setConfig( 'skin_img_path', mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/images/' ); 
 			$.setConfig( 'default_video_thumb', mw.getConfig( 'skin_img_path' ) + 'vid_default_thumb.jpg' );
 
@@ -2043,6 +2047,34 @@ var mwDefaultConf = {
 		} ); 			
 	}
 	
+	/**
+	* Checks if a css style rule exists 
+	*
+	* On a page with lots of rules it can take some time 
+	* so avoid calling this function where possible and 
+	* cache its result
+	* 
+	* @param {String} styleRule Style rule name to check
+	* 
+	*/
+	$.styleRuleExists = function ( styleRule ){
+		// Set up the skin paths configuration
+		var loadUiStyle = true;			
+		for( var i=0 ; i < document.styleSheets.length ; i++ ){
+			var rules = null;			
+			if (document.styleSheets[i].cssRules)
+				rules = document.styleSheets[i].cssRules
+			else if (document.styleSheets[0].rules)
+				rules = document.styleSheets[i].rules
+			for(var j=0 ; j < rules.length ; j++ ){		
+				var rule = rules[j].selectorText;												
+				if( rule.indexOf( styleRule ) != -1 ){
+					loadUiStyle = false;
+					break;
+				}			
+			}
+		}	
+	}
 	// Flag to register the domReady has been called
 	var mwDomReadyFlag = false;
 	
