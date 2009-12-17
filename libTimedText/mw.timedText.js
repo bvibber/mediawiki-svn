@@ -20,6 +20,8 @@ mw.addMessages( {
 	"mwe-back-btn" : "Back",	
 	"mwe-chose-text" : "Chose text",
 	
+	"mwe-search" : "Search clip",
+	
 	"mwe-layout" : "Layout", 
 	"mwe-layout-ontop" : "Ontop of video",
 	"mwe-layout-below": "Below video", 
@@ -132,22 +134,22 @@ mw.addMessages( {
 			// Load textSources
 			_this.loadTextSources( function(){
 				
-				// Does an autolayout based on player and 
+				// Does an autolayout based on player and supported ovelrays 
 				_this.autoLayout();
 				
 				// Enable a default source and issue a request to "load it"
 				_this.autoSelectSource();
 			
-				// Load and parse the text value of active sources:
-				_this.loadActiveSources();
+				// Load and parse the text value of enabled text sources:
+				_this.loadEnabledSources();
 					
 			} );					
 		},
 		
 		/**
-		* Monitor video time and update timed text filed[s]  
+		* Monitor video time and update timed text filed[s]  		
 		*/ 
-		monitor: function( embedPlayer ){
+		monitor: function( ){
 			mw.log(" timed Text monitor: " );
 			embedPlayer = this.embedPlayer;
 			//setup local refrence to currentTime: 
@@ -163,8 +165,9 @@ mw.addMessages( {
 		},
 		
 		/**
-		 * Loads all the available text sources from the inline embed
+		 * Load all the available text sources from the inline embed
 		 * 	or from a timedTextProvider
+		 * @param {Function} callback Function to call once text sources are loaded
 		 */
 		loadTextSources: function( callback ){
 			// Get local reference to all timed text sources: ( text/xml, text/x-srt etc )			
@@ -178,6 +181,15 @@ mw.addMessages( {
 			callback();
 		},
 		
+		/**
+		* Do an auto selection of layout options and updates the local configuration
+		* Takes into consideration: 
+		* 	Playback method overlays support ( have to put subitles bellow video )
+		* 	 
+		*/
+		autoLayout: function(){
+		
+		},
 		
 		/**
 		* Auto selects a source given the local configuration 
@@ -198,9 +210,9 @@ mw.addMessages( {
 		},
 		
 		/**
-		* Makes sure all enabled Sources are loaded
+		* Issue a request to load all enabled Sources
 		*/
-		loadActiveSources: function(){
+		loadEnabledSources: function(){
 			for(var i in this.enabledSources ){
 				var enabledSource = this.enabledSources[ i ];
 				if( ! enabledSource.loaded )
@@ -286,10 +298,10 @@ mw.addMessages( {
 				// Layout Menu option
 				_this.getLi( gM( 'mwe-layout' ) ).append(
 					_this.getLayoutMenu()
-				)			
+				),
 				
 				// Search Menu option
-				_this.getLI( gm('mwe-search'),  
+				_this.getLi( gM('mwe-search'),  'search')
 			);					
 		},
 		
