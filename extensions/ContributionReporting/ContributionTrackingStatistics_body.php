@@ -10,7 +10,6 @@
 class SpecialContributionTrackingStatistics extends SpecialPage {
 
 	public static $number_of_days_to_show = 7;
-	
 	/* Functions */
 
 	public function __construct() {
@@ -22,16 +21,39 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	}
 	
 	public function execute( $sub ) {
+		global $wgOut;
+
 		// Begin output
 		$this->setHeaders();
+
+		// Build Header
+		$htmlOut = Xml::openElement( 'table',
+				array(
+					'boder' => 0,
+					'cellpadding' => 1,
+					'width' => '100%',	
+				)
+		);
+
+		$htmlOut .=  Xml::tags( 'tr', null,
+				Xml::element( 'td', array( 'align' => 'left' ), wfMsg( 'contribstats-imperfect-data' ) ) .
+				Xml::element( 'td', array( 'align' => 'right' ), wfTimestamp( TS_DB ) . ' (UTC)') 
+		); 
+		$htmlOut .= Xml::tags( 'tr', null,
+				Xml::element( 'td', array( 'align' => 'left' ), wfMsg( 'contribstats-fraud-note' ) )
+		);
+		$htmlOut .= Xml::tags( 'tr', null,
+				Xml::element(  'td', array( 'align' => 'left' ), 'PP = ' . wfMsg( 'contribstats-paypal-donations' ) . ', ' .
+										 'CC = ' . wfMsg( 'contribstats-credit-card' ) )
+		);
+		$htmlOut .= Xml::closeElement( 'table' );
 		
+		$wgOut->addHTML( $htmlOut );
+
 		// Show day totals
 		$this->showDayTotals();
 		
 		$this->showDayTotalsForLastDays(SpecialContributionTrackingStatistics::$number_of_days_to_show);
-		
-		// Show weekly total
-		//$this->showWeeklyTotals();
 	}
 	
 	/* Wrapper */
@@ -74,15 +96,14 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 		if ( isset ( $totals ) ) {
 			// Table headers
-			$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-template' ) ) ;
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-banner' ) ) ;
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-landingpage' ) ) ;
-			$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-donatepage' ) ) ;
-			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-clicks' ) );
-			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-donations' ) );
-			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-amount' ) );
-			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-average' ) );
-			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-max' ) );
-			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-conversion' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'center' ), wfMsg( 'contribstats-payment-type' ) ) ;
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'center' ), wfMsg( 'contribstats-payment-type-hits' ) ) ;
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'center' ), wfMsg( 'contribstats-donations' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'center' ), wfMsg( 'contribstats-amount' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'center' ), wfMsg( 'contribstats-average' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'center' ), wfMsg( 'contribstats-max' ) );
 
 			foreach( $totals as $template ) {
 
@@ -100,7 +121,6 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 					continue;
 				}
 				// Pull together templates, clicks, donations, conversion rate
-				$conversion_rate = ( $template[2] == 0 ) ? 0 : ( $template[2] / ( $template[1] + $template[2] ) ) * 100;
 				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
 
 				$link = $wgContributionReportingBaseURL.$expanded_template[0];
@@ -115,13 +135,12 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				$htmlOut .= Xml::tags( 'tr', null,
 						Xml::tags( 'td', array( 'align' => 'left'), $template_link ) .
 						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[1] ) .
-						Xml::element( 'td', array( 'align' => 'left'), $expanded_template[2] ) .
-						Xml::element( 'td', array( 'align' => 'right'), $template[1] + $template[2] ) .
-						Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
-						Xml::element( 'td', array( 'align' => 'right'), $amount ) .
-						Xml::element( 'td', array( 'align' => 'right'), round($average, 2) ) .
-						Xml::element( 'td', array( 'align' => 'right'), $template[4] ) .
-						Xml::element( 'td', array( 'align' => 'right'), $wgLang->formatNum( number_format( $conversion_rate, 2 ) ) ) 
+						Xml::element( 'td', array( 'align' => 'center'), $expanded_template[2] ) .
+						Xml::element( 'td', array( 'align' => 'center'), $template[1] + $template[2] ) .
+						Xml::element( 'td', array( 'align' => 'center'), $template[2] ) .
+						Xml::element( 'td', array( 'align' => 'center'), $amount ) .
+						Xml::element( 'td', array( 'align' => 'center'), round($average, 2) ) .
+						Xml::element( 'td', array( 'align' => 'center'), $template[4] ) 
 				);
 
 			}

@@ -59,6 +59,9 @@ $messages['en'] = array(
 	'contribstats-day-totals' => 'Total for day',
 	'contribstats-week' => 'Week',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total for this week|Weekly totals for the past $1 weeks inclusive}}',
+	'contribstats-payment-type' => 'Payment Type',
+	'contribstats-banner' => 'Banner',
+	'contribstats-payment-type-hits' => 'Payment Type Hits',
 	'contribstats-clicks' => 'Clicks',
 	'contribstats-donations' => 'Donations',
 	'contribstats-conversion' => 'Conversion rate (%)',
@@ -68,6 +71,10 @@ $messages['en'] = array(
 	'contribstats-donatepage' => 'Donate page',
 	'contribstats-average' => 'Average',
 	'contribstats-max' => 'Highest Donation',
+	'contribstats-imperfect-data' => 'This data is not perfect as tracking donors without using session tracking has it\'s limitations.',
+	'contribstats-paypal-donations' => 'PayPal Donations',
+	'contribstats-credit-card' => 'Credit Card',
+	'contribstats-fraud-note' => 'Some fraudulent donations exist. These are unaudited totals.',
 
 	// Fundraiser statistics
 	'fundraiserstatistics' => 'Fundraiser statistics',
