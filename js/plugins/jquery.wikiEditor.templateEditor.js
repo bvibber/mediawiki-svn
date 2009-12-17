@@ -90,22 +90,22 @@ fn: {
 				$displayDiv.addClass( 'wikiEditor-template-expanded' );
 				
 				//$displayDiv.text( model.getText() );
-				$keyValueTable = $("<table></table>")
+				$keyValueTable = $( '<table />' )
 					.appendTo( $displayDiv );
-				$header_row = $("<tr></tr>")
+				$header_row = $( '<tr />' )
 					.appendTo( $keyValueTable );
-				$("<th></th>")
-					.attr('colspan', '2');
+				$( '<th />' )
+					.attr( 'colspan', '2' )
 					.text( model.getName() )
 					.appendTo( $header_row );
 				for( param in model.getAllParamNames() ){
-					$keyVal_row = $("<tr></tr>")
+					$keyVal_row = $( '<tr />' )
 						.appendTo( $keyValueTable );
-					$("<td></td>")
+					
+					$( '<td />' )
 						.text( param )
 						.appendTo( $keyVal_row );
-					
-					$("<td></td>")
+					$( '<td />' )
 						.text( model.getValue( param ) )
 						.appendTo( $keyVal_row );
 				}

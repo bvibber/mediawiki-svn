@@ -2742,7 +2742,27 @@ fn: {
 				// Housekeeping
 				$displayDiv.removeClass( 'wikiEditor-template-collapsed' );
 				$displayDiv.addClass( 'wikiEditor-template-expanded' );
-				$displayDiv.text( model.getText() );
+				
+				//$displayDiv.text( model.getText() );
+				$keyValueTable = $( '<table />' )
+					.appendTo( $displayDiv );
+				$header_row = $( '<tr />' )
+					.appendTo( $keyValueTable );
+				$( '<th />' )
+					.attr( 'colspan', '2' )
+					.text( model.getName() )
+					.appendTo( $header_row );
+				for( param in model.getAllParamNames() ){
+					$keyVal_row = $( '<tr />' )
+						.appendTo( $keyValueTable );
+					
+					$( '<td />' )
+						.text( param )
+						.appendTo( $keyVal_row );
+					$( '<td />' )
+						.text( model.getValue( param ) )
+						.appendTo( $keyVal_row );
+				}
 			};
 			// Collapse
 			function collapseTemplate( $displayDiv ) {
