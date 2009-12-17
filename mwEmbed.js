@@ -783,8 +783,7 @@ var mwDefaultConf = {
 	*
 	* @param {Object} targetObj Interface Object to add hook system to.   
 	*/
-	$.addHookSystem = function( targetObj ){
-	
+	$.addHookSystem = function( targetObj ){		
 		// Setup the target object hook holder:
 		targetObj[ 'hooks' ] = { };
 		 
@@ -812,7 +811,12 @@ var mwDefaultConf = {
 		* 	true interface should continue function execution
 		*	false interface should stop or return from method
 		*/
-		targetObj.runHook = function( hookName ){
+		targetObj.runHook = function( hookName ){		
+			var cat = targetObj;
+			var catHook = targetObj.hooks[ hookName ]; 	
+			var dog = this;			
+			var dogHOok = this.hooks[ hookName ];
+					
 			if( this.hooks[ hookName ] ){
 				for( var i in this.hooks[ hookName ]){
 					if( typeof( this.hooks[ hookName ][ i ] ) == 'function'){
@@ -883,8 +887,9 @@ var mwDefaultConf = {
 		load: function( loadRequest, callback ){
 			// Check for empty loadRequest ( directly return the callback ) 
 			if( $.isEmpty( loadRequest ) ){
-				mw.log( 'Error: Empty load request: ' + loadRequest);
+				mw.log( 'Empty load request: ' + loadRequest);
 				callback( loadRequest );
+				return ;
 			}
 			
 			// Check if its a multi-part request: 
@@ -922,7 +927,7 @@ var mwDefaultConf = {
 			}
 			
 			//possible error? 
-			mw.log( "Error could not handle load request: " + loadRequest );
+			mw.log( "Error could not handle load request: " + loadRequest  );			
 		},
 		
 		
@@ -1417,6 +1422,9 @@ var mwDefaultConf = {
 			// Non empty string: 
 			return false;
 		}
+		// If an array check length:
+		if( object.constructor == Array && object.length == 0 )
+			return true;
 		// Else check as an object: 
 		for( var i in object ){ return false; }
 		return true;
@@ -2247,7 +2255,7 @@ mw.setConfig( 'rewritePlayerTags', 'video,audio,playlist' );
 	
 //If the Timed Text interface should be displayed: 
 // 'always' Displays link and call to contribute always
-// 'auto' Looks for child timed text elements and loads interface
+// 'auto' Looks for child timed text elements or "wikiTitleKey" & load interface
 // 'off' Does not display the timed text interface
 mw.setConfig( 'textInterface', 'auto' ); 
 	
@@ -2306,20 +2314,17 @@ mw.addModuleLoader( 'player', function( callback ){
 		]
 	];
 	
+	
 	//If we should include the timedText interface
-	var checkForTimedText =false;
 	var timedTextRequestSet = [
 		'$j.fn.menu',
 		'mw.timedText' 
 	]; 
-	switch( mw.getConfig( 'textInterface') ){
-		case 'always':		
-			$j.merge( dependencyRequest[0], timedTextRequestSet );
-		break;
-		case 'auto':
-			checkForTimedText = true;
-		break;		
-	} 
+	
+	// Merge in the timed text libs 
+	if( mw.getConfig( 'textInterface') == 'always' )		
+		$j.merge( dependencyRequest[0], timedTextRequestSet );			
+		
 		
 	$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function(){
 		var playerElement = this;		
@@ -2331,19 +2336,18 @@ mw.addModuleLoader( 'player', function( callback ){
 				dependencyRequest[0].push(  mw.valid_skins[n]  + 'Config' );
 			}
 		}
-		if( checkForTimedText ){
-			if( $j( playerElement ).find( 'itext' ).length != 0 ){
-				$j.merge( dependencyRequest[0], timedTextRequestSet );
-			}else{			
-				$j( playerElement ).find( 'source' ).each(function(na, sourceElement){
-					if( $j( sourceElement ).attr('type') == 'text/xml' && 
-						$j( sourceElement ).attr('codec') == 'roe' 
-					){						
-						// Has a roe src
-						$j.merge( dependencyRequest[0], timedTextRequestSet );
-					}
-				});
-			}
+		//Also add the text library to request set if any video elment has text sources:
+		if( $j( playerElement ).find( 'itext' ).length != 0 ){
+			$j.merge( dependencyRequest[0], timedTextRequestSet );
+		}else{			
+			$j( playerElement ).find( 'source' ).each(function(na, sourceElement){
+				if( $j( sourceElement ).attr('type') == 'text/xml' && 
+					$j( sourceElement ).attr('codec') == 'roe' 
+				){						
+					// Has a roe src
+					$j.merge( dependencyRequest[0], timedTextRequestSet );
+				}
+			});
 		}
 	} );	
 		
@@ -2366,11 +2370,12 @@ mw.addModuleLoader( 'player', function( callback ){
 	mw.load( dependencyRequest, function() {
 		//Setup userConfig 
 		mw.setupUserConfig( function(){
-			// Detect supported players:  
-			embedTypes.init();
-				
 			// Remove no video html elements:
 			$j( '.videonojs' ).remove();
+			
+			// Detect supported players:  
+			embedTypes.init();		
+			
 			//mw.log(" run callback: " + callback );
 						
 			// Run the callback with name of the module  

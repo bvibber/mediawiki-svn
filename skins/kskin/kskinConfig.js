@@ -9,7 +9,7 @@ mw.addMessages( {
 
 var kskinConfig = {
 	// The parent class for all kskin css: 
-	parentClass: 'k-player',
+	playerClass: 'k-player',
 	
 	// Display time string length
 	long_time_disp: false,
@@ -148,7 +148,7 @@ var kskinConfig = {
 			return false;
 		
 		  
-		$tp.find( '.' + _this.parentClass ).prepend(
+		$tp.find( '.' + _this.playerClass ).prepend(
 			_this.components[ 'options_menu' ].o( _this )
 		);		
 		

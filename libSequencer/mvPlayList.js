@@ -429,7 +429,7 @@ mvPlayList.prototype = {
 			// append title:
 			$j( '#dc_' + _this.id ).append(
 				'<div style="font-size:13px;border:solid thin;width:' + this.width + 'px;" id="ptitle_' + this.id + '"></div>' +
-				'<div class="' + this.ctrlBuilder.parentClass + '" style="position:absolute;top:' + cpos + 'px">' +
+				'<div class="' + this.ctrlBuilder.playerClass + '" style="position:absolute;top:' + cpos + 'px">' +
 				'<div class="ui-widget-header ui-helper-clearfix control-bar" ' +
 					'style="width:' + _this.width + 'px" >' +
 						 _this.getControlsHTML() +
@@ -442,7 +442,7 @@ mvPlayList.prototype = {
 		} else {
 			// just append the video: 
 			$j( '#dc_' + _this.id ).append(
-				'<div class="' + this.ctrlBuilder.parentClass + '" style="position:absolute;top:' + ( _this.height + _this.pl_layout.title_bar_height + 4 ) + 'px"></div>'
+				'<div class="' + this.ctrlBuilder.playerClass + '" style="position:absolute;top:' + ( _this.height + _this.pl_layout.title_bar_height + 4 ) + 'px"></div>'
 			);
 		}
 		this.setupClipDisplay();

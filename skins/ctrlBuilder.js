@@ -17,7 +17,7 @@ ctrlBuilder.prototype = {
 	//Default Local values: 
 	
 	// Parent css Class name
-	parentClass : 'mv-player',
+	playerClass : 'mv-player',
 	
 	// Long string display of time value 
 	long_time_disp: true,
@@ -29,14 +29,13 @@ ctrlBuilder.prototype = {
 	volume_layout : 'vertical',
 	
 	// Default control bar height is 29
-	height: 29,
+	height: 29,		
 	
-	// Default Extended supported options is merged with embedObject supported types
-	supports: {
+	// Default supported componets is merged with embedObject supported types
+	supportedComponets: {
 	  'options':true,
 	  'borders':true
 	},
-	
 	/**
 	* Initialization Object for the control builder
 	*
@@ -75,25 +74,23 @@ ctrlBuilder.prototype = {
 		// Make pointer to the embedObj
 		this.embedObj = embedObj;
 		var _this = this;
-		for ( var i in embedObj.supports ) {
-			_this.supports[i] = embedObj.supports[i];
-		};
-
-		// Check for timed text		
-		if ( ( embedObj.roe || embedObj.wikiTitleKey ||				
-				embedObj.mediaElement.textSourceExists() )
-			 && embedObj.show_meta_link  ){
-			this.supports['timed_text'] = true;
+		this.supportedComponets = $j.extend(this.supportedComponets, embedObj.supports);
+		
+		//Check for timed text support:
+		if( embedObj.isTimedTextSupported() ){
+			this.supportedComponets['timed_text'] = true;
 		}
-
-
+			
 		// Append options to body (if not already there)
 		if ( _this.external_options && $j( '#mv_vid_options_' + this.id ).length == 0 )
 			$j( 'body' ).append( this.components[ 'options_menu' ].o( this ) );
 
 		var o = '';
+		
+		//Build component output: 
 		for ( var i in this.components ) {
-			if ( this.supports[i] ) {
+			// Make sure the given components is supported:
+			if ( this.supportedComponets[ i ] ) {
 				if ( this.available_width > this.components[i].w ) {
 					// Special case with playhead don't add unless we have 60px
 					if ( i == 'play_head' && this.available_width < 60 )
@@ -425,14 +422,7 @@ ctrlBuilder.prototype = {
 	*
 	* components can be overwritten by skin javascript
 	*/
-	components: {
-		/* Borders */ 
-		'borders': {
-			'w':8,
-			'o':function( ctrlObj ) {
-				return	'';
-			}
-		},
+	components: {		
 		/*
 		* The large play button in center of the player
 		*/

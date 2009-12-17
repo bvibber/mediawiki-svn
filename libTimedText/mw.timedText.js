@@ -80,6 +80,13 @@ mw.addMessages( {
 		 * The list of enabled sources
 		 */
 		enabledSources: [ ],
+				
+		
+		/**
+		 * Stores the last text string per category to avoid dom checks 
+		 * for updated text 
+		 */
+		prevText: [],
 		
 		/**
 		* Text sources ( a set of textSource objects )
@@ -119,50 +126,68 @@ mw.addMessages( {
 		 */
 		init: function( embedPlayer, options ){
 			var _this = this;
+			mw.log("TimedText: init() ")
 			this.embedPlayer = embedPlayer;	
-			this.options = $j.extend( {
-				'targetContainer' : null
-			}, options )
+			this.options = options;
 			
-			//Set up embedPlayer hooks:
-			 
+			//Set up embedPlayer hooks:			
 			embedPlayer.addHook( 'monitor', function(){
 				_this.monitor();
 			} )
-			// @@TODO: Load cookie / page preferences
-		
+							
 			// Load textSources
-			_this.loadTextSources( function(){
-				
-				// Does an autolayout based on player and supported ovelrays 
-				_this.autoLayout();
+			_this.loadTextSources( function(){			
 				
 				// Enable a default source and issue a request to "load it"
 				_this.autoSelectSource();
 			
 				// Load and parse the text value of enabled text sources:
 				_this.loadEnabledSources();
-					
+				
 			} );					
 		},
+		
+		/**
+		* Show the timed text menu
+		* @param {Object} target to display the menu
+		*/
+		showMenu: function( target ){
+			var _this = this;
+			mw.log("TimedText:ShowMenu");
+									
+			// NOTE: Button target should be an option or config thing
+			var $menuButton = $j('#' + this.embedPlayer.id + ' .timed-text');				
+			$menuButton.unbind().menu( {
+				'content'	: this.buildMenu(),
+				'crumbDefaultText' : ' ',
+				'targetMenuContainer' : target,
+				'autoShow' : true,
+				'backLinkText' : gM( 'mwe-back-btn' ),
+				'selectItemCallback' : function( item ){
+					_this.selectMenuItem( item );
+				}				
+			} );
+			 
+		},			
 		
 		/**
 		* Monitor video time and update timed text filed[s]  		
 		*/ 
 		monitor: function( ){
-			mw.log(" timed Text monitor: " );
+			mw.log(" timed Text monitor: " + this.enabledSources.length );
 			embedPlayer = this.embedPlayer;
 			//setup local refrence to currentTime: 
-			var currentTime = embedPlayer.currentTime;
+			var currentTime = embedPlayer.currentTime;					
+			
+			//Get the text per category
+			var textCategories = [ ];
 			
 			for( var i in this.enabledSources ) {
 				var source =  this.enabledSources[ i ];
-				// Get text for "this" time:
-				var text = source.getTextTime (  currentTime );
-				mw.log('should set text: ' + text );
-				// Set the display handle
+				this.updateSourceDisplay( source, currentTime );
+				
 			}
-		},
+		},			
 		
 		/**
 		 * Load all the available text sources from the inline embed
@@ -182,28 +207,33 @@ mw.addMessages( {
 		},
 		
 		/**
-		* Do an auto selection of layout options and updates the local configuration
+		* Get the layout mode
+		* 
 		* Takes into consideration: 
 		* 	Playback method overlays support ( have to put subitles bellow video )
 		* 	 
 		*/
-		autoLayout: function(){
-		
+		getLayoutMode: function(){
+		 	// Re-map "ontop" to "below" if player does not support 
+		 	if( this.config.layout == 'ontop' && !this.embedPlayer.supports['overlays']  ){
+		 		this.config.layout = 'below';
+		 	}	
+		 	return this.config.layout;	
 		},
 		
 		/**
 		* Auto selects a source given the local configuration 
 		*/
-		autoSelectSource: function(){			
+		autoSelectSource: function(){					
 			// Check if any source matches our "local"
 			if( this.config.userLanugage ){
 				for( var i in this.textSources ){
 					var source = this.textSources[ i ];					
-					if( source.lang == this.config.userLanugage ){
+					if( source.lang.toLowerCase() == this.config.userLanugage ){	
 						// Check for category if avaliable 
 						if(  source.category.toLowerCase() == this.config.userCategory.toLowerCase() ){  
 							this.enabledSources.push( source );
-						}
+						}						
 					}					
 				}
 			}
@@ -211,40 +241,15 @@ mw.addMessages( {
 		
 		/**
 		* Issue a request to load all enabled Sources
+		*  Should be called anytime enabled Source list is updatd
 		*/
-		loadEnabledSources: function(){
+		loadEnabledSources: function(){			
 			for(var i in this.enabledSources ){
 				var enabledSource = this.enabledSources[ i ];
 				if( ! enabledSource.loaded )
-					enabledSource.load();	
+					enabledSource.load();								
 			}
-		},
-		
-		/**
-		* Show the timed text menu
-		* @param {Object} jQuery selector to display the target
-		*/
-		showMenu: function( ){
-			var _this = this;
-			mw.log("TimedText:ShowMenu");
-			
-			// Build out menu with bindings ( with jquery calls )				
-			var menuOptions = {
-				'content'	: this.buildMenu(),
-				'crumbDefaultText' : ' ',
-				'targetContainer' : this.options.targetContainer,
-				'autoShow' : true,
-				'backLinkText' : gM( 'mwe-back-btn' ),
-				'selectItemCallback' : function( item ){
-					_this.selectMenuItem( item );
-				}				
-			};
-			var $menuButton = $j('#' + this.embedPlayer.id + ' .timed-text');				
-			$menuButton.unbind().menu( 
-				menuOptions 
-			);
-			 
-		},
+		},			
 		
 		/**
 		* Selection of a menu item
@@ -336,6 +341,8 @@ mw.addMessages( {
 		
 		/**
 		* Get line item ( li ) from text string
+		* @param {String} string Text to display for the menu item
+		* @param {String} icon jQuery UI icon key 
 		*/
 		getLi: function( string, icon ){			
 			var $li = $j( '<li>' ).append(		
@@ -353,12 +360,22 @@ mw.addMessages( {
 		*/		
 		getLayoutMenu: function(){
 			var _this = this;
-			var layoutOptions = [ 'ontop', 'below', 'off' ];
-			$ul = $j('<ul>');
-			$j.each(layoutOptions, function( na, layoutMode ){
+			var layoutOptions = [ ];
+			
+			//Only display the "ontop" option if the player supports it: 
+			if( this.embedPlayer.supports['overlays'] )
+				layoutOptions.push( 'ontop' );
+				
+			//Add below and "off" options: 	
+			layoutOptions.push( 'below' );
+			layoutOptions.push( 'off' );
+									
+			$ul = $j('<ul>');			
+			$j.each(layoutOptions, function( na, layoutMode ){				
 				var icon = ( _this.config.layout == layoutMode )? 'bullet' : 'radio-on';   
-				$ul.append( _this.getLi( gM( 'mwe-layout-' + layoutMode), icon ) );
+				$ul.append( _this.getLi( gM( 'mwe-layout-' + layoutMode), icon ) );				
 			});
+			
 			return $ul;
 		},
 		
@@ -372,6 +389,7 @@ mw.addMessages( {
 			// See if we have categories to worry about:
 			
 			var catSourceList = [ ];	
+			// ( All sources should have a category (depreciate ) 
 			var sourcesWithoutCategory = [ ];	
 			for( var i in this.textSources ) {
 				var source = this.textSources[ i ];
@@ -387,6 +405,7 @@ mw.addMessages( {
 						_this.getLiSource( source )
 					)		
 				}else{
+					// ( All sources should have a category (depreciate ) 
 					sourcesWithoutCategory.push( _this.getLiSource( source ) );
 				}
 			}
@@ -404,13 +423,97 @@ mw.addMessages( {
 					)
 				);				 
 			}
+			// ( All sources should have a category (depreciate ) 
 			for(var i in sourcesWithoutCategory){
 				$langMenu.append( sourcesWithoutCategory[i] )
 			}			
 			return $langMenu; 
-		}			
+		},			
+		
+		/**
+		 * Updates a source display in the interface for a given time
+		 */
+		updateSourceDisplay: function ( source, time ){
+			
+			// Get the source text for the requested time: 		
+			var text = source.getTimedText( time );
+			
+			// We do a type comparison so that "undefined" != "false" 
+			if( text === this.prevText[ source.category ] )
+				return ;
+			
+			mw.log( ' updateTextDisplay: ' + text );	
+					
+			var $player =  $j( '#' + this.embedPlayer.id);	
+			var $textTarget = $player.find( '.itext_' + source.category + ' span');
+			
+			// If we are missing the target add it: 		
+			if( $textTarget.length == 0){
+				this.addItextDiv( source.category )
+			}
+			
+			// If text is "false" fade out the subtitle: 
+			if( text === false ){
+				$textTarget.fadeOut('fast');
+			}else{
+				// Fade in the target if not visible
+				if( ! $textTarget.is(':visible') ){
+					$textTarget.fadeIn('fast');
+				}					
+				// Update text ( use "html" instead of "text" so that parsers can swap in html for formating
+				$textTarget.html( text );
+			}
+			
+			// Update the prev text:
+			this.prevText[ source.category ] = text;		
+			
+		},
+		/**
+		 * Add an itext div to the embedPlayer
+		 */
+		addItextDiv: function( category ){			 					
+			//get the relative positioned player class from the ctrlBuilder:
+			var $player =  $j( '#' + this.embedPlayer.id + ' .' + this.embedPlayer.ctrlBuilder.playerClass );
+			
+			//Remove any existing itext divs for this player;
+			$player.find('.itext_' + category ).remove();
+			
+			// Setup the display text div: 
+			var layoutMode = this.getLayoutMode();
+			if( layoutMode == 'ontop' ){				  
+				$player.append(
+					$j('<div>').addClass( 'itext' + ' ' + 'itext_' + category )					
+						.css( {
+							"max-width": ( this.embedPlayer.width - 20 ), 
+							'position':'absolute',
+							'bottom': ( this.embedPlayer.ctrlBuilder.height + 10 ),
+							'width': '100%',
+							'display': 'block',
+    						'opacity': .8,
+							'text-align':'center',							
+						}).append(
+							$j('<span>').css({
+								'color':'white',
+								'background-color':'#333'
+							})
+						)    						
+				)
+			}else if ( layoutMode == 'below'){
+				// Append before controls: 
+				$player.find( '.control-bar' ).before(
+					$j('<div>').addClass( 'itext' + ' ' + 'itext_' + category )
+						.css({
+							'display': 'block',
+							'width': '100%',
+							'height': '50px',
+							'background-color':'#000'
+						}) 
+				);				
+			}	
+			mw.log( 'should have been appended: ' + $player.find('.itext').length );		
+		}
 	}		 
-	
+		
 	/**
 	 * TextSource object extends a base mediaSource object 
 	 *  with some timedText features 
@@ -439,6 +542,10 @@ mw.addMessages( {
 			for( var i in source){
 				this[i] = source[i];	
 			}			
+			// Set default category to subtitle if unset: 
+			if( ! this.category ){
+				this.category = 'SUB';
+			}
 		},
 		
 		/**
@@ -467,6 +574,7 @@ mw.addMessages( {
 			//	mw.log("Error can't load non-json src via jsonp:" + this.getSrc() )
 			//	return ;
 			//} 
+			
 			$j.get( this.getSrc(), function( data ){		
 				// Parse and load captions:
 				_this.captions = handler( data );
@@ -480,12 +588,11 @@ mw.addMessages( {
 		*
 		* @param {String} time Time in seconds
 		*/				
-		getTextTime: function ( requestedTime ){
-			//debugger;		
+		getTimedText: function ( time ){			
 			var prevCaption =  this.captions[ this.prevIndex ];
 			
 			// Setup the startIndex: 
-			if( requestedTime >= prevCaption.start ){
+			if( prevCaption && time >= prevCaption.start ){
 				var startIndex = this.prevIndex;
 			}else{
 				//If a backwards seek start searching at the start: 
@@ -494,15 +601,15 @@ mw.addMessages( {
 			// Start looking for the text via time, return first match: 
 			for( var i = startIndex ; i < this.captions.length; i ++ ){
 				caption = this.captions[ i ];				
-				if( requestedTime >= caption.start  && 
-					requestedTime <= caption.end ){
+				if( time >= caption.start  && 
+					time <= caption.end ){
 					this.prevIndex = i;
-					return caption.text;
+					return caption.content;
 				}
 			}
 			//No text found in range return false: 
 			return false;
-		}
+		}		
 	}
 	/**
 	 * srt timed text parse hanndle:
@@ -600,15 +707,24 @@ mw.addMessages( {
 	* 
 	* @param {Object} options Options for the timed text menu 
 	*/
-	$.fn.timedText = function ( options ){		
+	$.fn.timedText = function ( action, target  ){	
+		if( !target )
+			options = action;
+		if( !options )
+			options = {};
+		
 		$j( this.selector ).each(function(){
 			var embedPlayer = $j(this).get(0);			
+			
 			// Setup timed text for the given player: 
 			if( ! embedPlayer.timedText )
 				embedPlayer.timedText = new mw.timedText( embedPlayer, options);			
 			
-			// Run the default "showMenu" action:
-			embedPlayer.timedText.showMenu();
+			//
+			if( action == 'showMenu' ) {
+				// setup "showMenu" binding
+				embedPlayer.timedText.showMenu( target );
+			}
 		} );		
 	}
 } )( jQuery );

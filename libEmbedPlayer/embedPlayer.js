@@ -154,9 +154,6 @@ var default_video_attributes = {
 	// ROE url ( for xml based metadata )
 	// also see: http://wiki.xiph.org/ROE
 	"roe" : null,
-	
-	// If roe includes metadata tracks we can expose a link to metadata
-	"show_meta_link" : true,	
 
 	// If serving an ogg_chop segment use this to offset the presentation time
 	// ( for some plugins that use ogg page time rather than presentation time ) 
@@ -339,7 +336,7 @@ EmbedPlayerManager.prototype = {
 		this.playerList.push( $j( element ).attr( "id" ) );
 		
 		// Check for class based player skin ( could have been loaded before in 'player' loader module ) 			
-		var skinClassRequest = [];
+		var skinClassRequest = [ ];
 		var className = $j( element ).attr( 'class' );
 		for( var n=0; n < mw.valid_skins.length ; n++ ){ 
 			if( className.indexOf( mw.valid_skins[ n ] ) !== -1){
@@ -382,7 +379,7 @@ EmbedPlayerManager.prototype = {
 					}		
 				
 					if( waitForMeta ){
-						mw.log("waitForMeta ( video missing height width info and has src )")
+						mw.log(" WaitForMeta ( video missing height width info and has src )")
 						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
 					}else{ 
@@ -1354,26 +1351,61 @@ embedPlayer.prototype = {
 				mw.log( 'set loading_external_data=false' );
 				_this.loading_external_data = false;
 				
-				_this.sourcesReadyInit();
+				_this.checkForTimedText();
 			} );
 		}else{
-			_this.sourcesReadyInit();
+			_this.checkForTimedText();
+		}
+	},
+	
+	
+	
+	/**
+	* Check if we should load the timedText interface or not.
+	* 
+	* Checks 
+	* 
+	* Note we check for text sources outside of
+	*/
+	isTimedTextSupported: function(){
+		// Check for timed text sources or api/ roe url		
+		if ( ( this.roe || this.wikiTitleKey ||				
+			this.mediaElement.textSourceExists() ) ){			
+			return true;
+		} else {
+			return false;
 		}
 	},
 	
 	/**
-	* Sources Ready Initialisation
+	* Check for timed Text support 
+	* and load nessesary libraries
+	* 
+	* @param {Function} callback Function to call once timed text check is done
+	*/
+	checkForTimedText: function( ){
+		var _this = this;
+		// Check for timedText support
+		if( this.isTimedTextSupported() ){			
+			mw.load( [ '$j.fn.menu', 'mw.timedText' ],function(){
+				$j( '#' + _this.id ).timedText();
+				_this.setupSourcePlayer();
+			}); 										
+		}
+		_this.setupSourcePlayer();
+	},
+	
+	
+	/**
+	* Set up the select source player
 	*
 	* issues autoSelectSource call  
 	*
 	* Sets load error if no source is playable 
-	*/
-	sourcesReadyInit: function(){
-		mw.log( 'f:sourcesReadyInit' );
-				
-		// Autoseletct the source
-		this.mediaElement.autoSelectSource();
-		
+	*/	
+	setupSourcePlayer: function(){
+		// Autoseletct the media source
+		this.mediaElement.autoSelectSource();	
 		// Auto select player based on default order
 		if ( !this.mediaElement.selected_source ){
 			// check for parent clip: 
@@ -1959,7 +1991,7 @@ embedPlayer.prototype = {
 		var _this = this;
 		var html_code = '';
 		html_code = '<div id="videoPlayer_' + this.id + '" style="width:' + this.width + 'px;position:relative;"' +
-						'class="' + this.ctrlBuilder.parentClass + '">';
+						'class="' + this.ctrlBuilder.playerClass + '">';
 		html_code += '<div style="width:' + parseInt( this.width ) + 'px;height:' + parseInt( this.height ) + 'px;"  id="mv_embedded_player_' + this.id + '">' +
 						this.getThumbnailHTML() +
 					'</div>';
@@ -2301,10 +2333,21 @@ embedPlayer.prototype = {
 	*/
 	showTextInterface: function() {
 		var _this = this;
-		mw.log('showTextInterface:');		
-		var $menu = $j( '#timedTextMenu_' + this.id );	
-		var loc = $j( this ).position();
-		if ( $menu.length == 0 ) {			
+		mw.log('showTextInterface:');							
+		
+		 
+		var $menu = $j( '#timedTextMenu_' + this.id );			
+		//This may be unnessesary .. we just need to show a spiner somewhere
+		if ( $menu.length != 0 ) {
+			// Hide show the menu:		
+			if( $menu.is( ':visible' ) ) {
+				$menu.hide( "fast" );
+			}else{			 
+				$menu.show("fast");
+			}	
+		}else{			
+			var loc = $j( this ).position();
+			//Setup the menu: 
 			var playerHeight = ( parseInt( this.height ) + this.ctrlBuilder.height );
 			$j( this ).after( 
 				$j('<div>')		
@@ -2320,49 +2363,13 @@ embedPlayer.prototype = {
 						'width' 	: '180px', 	
 						'font-size'	: '12px'					
 					} ).hide()
-			);		
-		}						
-		// Load text interface if not already loaded:
-		var timedTextRequestSet = [
-			'$j.fn.menu',
-			'mw.timedText' 
-		]; 
-		// Re-get the menu:
-		$menu = $j( '#timedTextMenu_' + this.id );	
-		mw.log( 'menu length: ' + $menu.length );
-		// how the menu
-		if( $menu.is( ':visible' ) ) {
-			$menu.hide( "fast" );
-		}else{			 
-			$menu.show("fast");
-		}
-		
-		mw.load( timedTextRequestSet, function(){
-			$j( '#' + _this.id ).timedText( {
-				'targetContainer': '#timedTextMenu_' + _this.id
-			} );
-		});
-		
-		/*		
-		// display the text container with loading text: 
-		// @@todo support position config
-			
-		// check if textObj present:
-		if ( typeof this.textInterface == 'undefined' ) {
-			// load the default text interface:
-			mw.load( [
-					'mvTextInterface',
-					'$j.fn.hoverIntent'
-				], function() {
-					_this.textInterface = new mvTextInterface( _this );
-					// show interface
-					_this.textInterface.show();
-				}
 			);
-		} else {
-			// show interface
-			this.textInterface.show();
-		}*/
+			
+			// Load text interface ( if not already loaded )
+			mw.load( [ '$j.fn.menu', 'mw.timedText' ], function(){
+				$j( '#' + _this.id ).timedText( 'showMenu', '#timedTextMenu_' + _this.id );
+			});		
+		}			
 	},
 	
 	/**
@@ -2591,7 +2598,9 @@ embedPlayer.prototype = {
 		 $j( '#' + eid + ' .play-btn span' ).removeClass( 'ui-icon-play' ).addClass( 'ui-icon-pause' );
 		 $j( '#' + eid + ' .play-btn' ).unbind().btnBind().click( function() {
 		 	$j( '#' + eid ).get( 0 ).pause();
-	   	 } ).attr( 'title', gM( 'mwe-pause_clip' ) );		   
+	   	 } ).attr( 'title', gM( 'mwe-pause_clip' ) );
+	   	 		
+	   	 this.runHook( 'play' );   
 	},
 	
 	/**
@@ -2812,7 +2821,7 @@ embedPlayer.prototype = {
 					}
 				}, 250 );
 			}
-		}
+		}		
 		this.runHook( 'monitor' );
 	},
 	
