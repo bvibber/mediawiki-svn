@@ -18,8 +18,6 @@
  *
  */
 
-// The global scope: will be depreciated once we get everything into mw
-
 /*
 * Setup the mw global: 
 */
@@ -150,20 +148,26 @@ var mwDefaultConf = {
 	* @parma {Function} callback Function to be called once userPrefrences are loaded 
 	*/
 	var setupUserConfigFlag = false;
-	$.setupUserConfig = function( callback ){
+	$.setupUserConfig = function( callback ){	
 		if( setupUserConfigFlag ){
 			if( callback ) 
 				callback();
 		}
 		// Do Setup user config: 		
-		mw.load( [ '$j.cookie', 'JSON' ], function(){
+		//mw.load( [ '$j.cookie', 'JSON' ], function(){
 			if( $j.cookie( 'mwUserConfig' ) ){
 				mwUserConfig = JSON.parse( $j.cookie( 'mwUserConfig' ) );
 			}
-			if( callback ) 
-				callback();			
+			mw.log( 'mw: ' +  $j.cookie( 'mwUserConfig' ) );
+			for(var i in mwUserConfig ){
+				mw.log( 'i: ' + i + ' ' + mwUserConfig[ i ] ) ;
+			}
+			//debugger;
+			
 			setupUserConfigFlag = true;
-		});				
+			if( callback ) 
+				callback();				
+		//});				
 	}
 
 	/**
@@ -173,17 +177,15 @@ var mwDefaultConf = {
 	* @param {String} name Name of user configuration value
 	* @param {String} value Value of configuration name 	
 	*/
-		
-	
-	$.setUserConfig = function ( name, value, cookieOptions ){		
-		if( setupUserConfigFlag ){ 
+	$.setUserConfig = function ( name, value, cookieOptions ){
+		if( ! setupUserConfigFlag ){ 
 			mw.log( "Error: userConfig not setup" );
 			return false; 		
-		}
+		}		
 		// Update local value
 		mwUserConfig[ name ] = value;
 		
-		// Update the cookie ( '$j.cookie' & 'JSON' should already be loaded )	
+		// Update the cookie ( '$j.cookie' & 'JSON' should already be loaded )			
 		$j.cookie( 'mwUserConfig', JSON.stringify( mwUserConfig ) );
 	}
 	
@@ -198,7 +200,7 @@ var mwDefaultConf = {
 	*/	
 	$.getUserConfig = function ( name ){
 		if( mwUserConfig[ name ] )
-			return mwUserConfig
+			return mwUserConfig[ name ];
 		return false;
 	}
 
@@ -1423,8 +1425,10 @@ var mwDefaultConf = {
 			return false;
 		}
 		// If an array check length:
-		if( object.constructor == Array && object.length == 0 )
+		if( Object.prototype.toString.call( object ) === "[object Array]"
+			&& object.length == 0 ){
 			return true;
+		}
 		// Else check as an object: 
 		for( var i in object ){ return false; }
 		return true;

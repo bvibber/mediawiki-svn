@@ -81,7 +81,8 @@ function doPageSpecificRewrite() {
 	var divs = document.getElementsByTagName( 'div' );
 	for ( var i = 0; i < divs.length; i++ ) {
 		if ( divs[i].id && divs[i].id.substring( 0, 11 ) == 'ogg_player_' ) {
-			vidIdList.push( divs[i].getAttribute( "id" ) );
+			if( divs[i].getAttribute( "id" ) != 'ogg_player_2' )
+				vidIdList.push( divs[i].getAttribute( "id" ) );
 		}
 	}
 	if ( vidIdList.length > 0 ) {			
@@ -105,7 +106,8 @@ function doPageSpecificRewrite() {
 		} );
 	}
 }
-/*
+
+/**
 * This will be depreciated when we update to OggHandler
 * @param {Object} vidIdList List of video ids to process
 */
@@ -117,8 +119,8 @@ function rewrite_for_OggHandler( vidIdList ) {
 			
 		mw.log( 'vidIdList on: ' + vidId + ' length: ' + vidIdList.length + ' left in the set: ' + vidIdList );
 		
-		tag_type = 'video';
-		
+		tag_type = 'video';	
+				
 		// Check type:
 		var pwidth = $j( '#' + vidId ).width();
 		var $pimg = $j( '#' + vidId + ' img:first' );		
@@ -149,7 +151,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 			duration_attr = 'durationHint="' + dv + '" ';
 		}
 
-		var re = new RegExp( /offset(&quot;:?\s*)*([^&]*)/ );
+		var re = new RegExp( /offset(&quot;:?\s*)*([^,&]*)/ );
 		offset = re.exec( $j( '#' + vidId ).html() )[2];
 		var offset_attr = offset ? 'startOffset="' + offset + '"' : '';
 
@@ -189,6 +191,10 @@ function rewrite_for_OggHandler( vidIdList ) {
 	// Process each item in the vidIdList (with setTimeout to avoid locking)	
 	procVidId( vidIdList.pop() );
 }
+
+/**
+* Get the remote embed Path
+*/
 function getRemoteEmbedPath() {
 	for ( var i = 0; i < document.getElementsByTagName( 'script' ).length; i++ ) {
 		var s = document.getElementsByTagName( 'script' )[i];
@@ -206,6 +212,10 @@ function getRemoteEmbedPath() {
 		}
 	}
 }
+
+/**
+* Get the request arguments
+*/ 
 function mwGetReqArgs() {
 	var rurl = '';
 	if ( mwReqParam['debug'] )
@@ -228,8 +238,7 @@ function mwGetReqArgs() {
 * Load the mwEmbed library:
 *
 * @param {mixed} function or classSet to preload
-* classSet saves round trips to the server by grabbing things we will likely need in the first request. 
-* ( this is essentially a shortcut to mv_jqueryBindings in mwEmbed.js )   
+* 	classSet saves round trips to the server by grabbing things we will likely need in the first request. 
 * @param {callback} function callback to be called once mwEmbed is ready
 */
 function loadMwEmbed( classSet, callback ) {	
@@ -267,6 +276,7 @@ function loadMwEmbed( classSet, callback ) {
 
 /**
 * Waits for mwEmbed to be ready
+* @param callback
 */
 function waitMwEmbedReady( callback ) {
 	if( ! mwCheckObjectPath( 'mw.version' ) ){

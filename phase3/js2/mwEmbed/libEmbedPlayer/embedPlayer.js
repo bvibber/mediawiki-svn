@@ -15,7 +15,7 @@ mw.setConfig( 'video_size', '400x300' );
 mw.setConfig( 'k_attribution', true );
 
 // The global player list per page
-mw.player_list = new Array();
+mw.playerList = new Array();
 
 mw.addMessages( {
 	"mwe-loading_plugin" : "loading plugin ...",
@@ -295,9 +295,6 @@ EmbedPlayerManager.prototype = {
 	// Functions to run after the video interface is ready
 	callbackFunctions : null,
 	
-	// A list of players being managed by the EmbedPlayerManager
-	playerList : null,
-	
 	/**
 	* Constructor initialises callbackFunctions and playerList  
 	*/
@@ -328,12 +325,12 @@ EmbedPlayerManager.prototype = {
 		if ( $j( element ).attr( "id" ) == '' ) {
 			$j( element ).attr( "id", 'v' + this.playerList.length );
 		}
-		var element_id = $j( element ).attr( "id" );
+		var element_id = $j( element ).attr( "id" );				
 		
 		mw.log( "mvEmbed::rewrite:: " + $j( element ).attr( "id" ) + ' tag: ' + element.tagName.toLowerCase() );		
 		
 		// Add the element id to playerList
-		this.playerList.push( $j( element ).attr( "id" ) );
+		mw.playerList.push( $j( element ).attr( "id" ) );
 		
 		// Check for class based player skin ( could have been loaded before in 'player' loader module ) 			
 		var skinClassRequest = [ ];
@@ -1390,7 +1387,8 @@ embedPlayer.prototype = {
 			mw.load( [ '$j.fn.menu', 'mw.timedText' ],function(){
 				$j( '#' + _this.id ).timedText();
 				_this.setupSourcePlayer();
-			}); 										
+			}); 							
+			return ;			
 		}
 		_this.setupSourcePlayer();
 	},
@@ -1424,7 +1422,7 @@ embedPlayer.prototype = {
 		if ( this.selected_player ) {
 			mw.log( "Playback system: " + this.selected_player.library );					
 						
-			// Inherit the playback system of the selected player:
+			// Inherit the playback system of the selected player:			
 			this.inheritEmbedPlayer();
 		} else {
 			// No source's playable
@@ -1449,11 +1447,11 @@ embedPlayer.prototype = {
 	* @param {Function} callback Function to be called once playback-system has been inherited
 	*/
 	inheritEmbedPlayer: function( callback ) {
-		mw.log( "inheritEmbedPlayer:duration is: " +  this.getDuration() );
+		mw.log( "inheritEmbedPlayer:duration is: " +  this.getDuration() );		
 		
 		// Clear out any non-base embedObj methods:
 		if ( this.instanceOf ) {
-			eval( 'tmpObj = ' + this.instanceOf );
+			eval( 'var tmpObj = ' + this.instanceOf );
 			for ( var i in tmpObj ) { // for in loop oky for object  
 				if ( this['parent_' + i] ) {
 					this[i] = this['parent_' + i];
@@ -1473,10 +1471,12 @@ embedPlayer.prototype = {
 			eval( ' var playerInterface =' +  _this.selected_player.library + 'Embed;' );
 			
 			for ( var method in playerInterface ) {  
-				if ( _this[method] )
+				if ( _this[method] ){
 					_this['parent_' + method] = _this[method];
-				_this[method] = playerInterface[method];
+				}
+				_this[ method ] = playerInterface[method];
 			}			
+			mw.log( ' play: ' + _this.play + ' parent_play' + _this.parent_play );
 						
 			_this.getDuration();
 			_this.showPlayer();
@@ -1494,13 +1494,13 @@ embedPlayer.prototype = {
 	* @param {Object} player Player playback system to be selected
 	* 	player playback system include vlc, native, java etc. 
 	*/
-	selectPlayer: function( player ) {
+	selectPlayer: function( player ) {		
 		var _this = this;
 		if ( this.selected_player.id != player.id ) {
-			this.selected_player = player;
+			this.selected_player = player;			
 			this.inheritEmbedPlayer( function(){ 
 				// Update the controls for the new selected player
-				this.refreshControls();
+				_this.refreshControls();
 			});			
 		}
 	},		
@@ -1599,7 +1599,7 @@ embedPlayer.prototype = {
 	* issues a loading request
 	*/
 	setupEmbedPlayer:function() {
-		mw.log( 'f:setupEmbedPlayer' );
+		mw.log( 'f:setupEmbedPlayer::' + this.selected_player.id );
 		mw.log( 'thum disp:' + this.thumbnail_disp );
 		var _this = this;				
 		
@@ -2400,18 +2400,11 @@ embedPlayer.prototype = {
 		
 		// put select list on-top
 		// make sure the parent is relatively positioned:
-		$j( '#' + sel_id ).css( 'position', 'relative' );
-		// set height width (check for playlist container)
-		var width = ( this.pc ) ? this.pc.pp.width : this.getPlayerWidth();
-		var height = ( this.pc ) ? this.pc.pp.height : this.getPlayerHeight();						
-		
-		if ( this.pc )
-			height += ( this.pc.pp.pl_layout.title_bar_height + this.pc.pp.pl_layout.control_height );	  	 
+		$j( '#' + sel_id ).css( 'position', 'relative' );		
 	  
 	  
 		var fade_in = true;
-		if ( $j( '#blackbg_' + sel_id ).length != 0 )
-		{
+		if ( $j( '#blackbg_' + sel_id ).length != 0 ){
 			fade_in = false;
 			$j( '#blackbg_' + sel_id ).remove();
 		}
@@ -2511,7 +2504,7 @@ embedPlayer.prototype = {
 					 _this.mediaElement.sources[ source_id ].getMIMEType() );
 
 				// Issue a stop
-				$j( '#' + this_id  ).get( 0 ).stop();
+				$j( '#' + this_id  ).get( 0 ).stop();				
 
 				// Don't follow the empty # link:
 				return false;
@@ -3078,7 +3071,7 @@ mediaPlayers.prototype =
 	players : null,
 	
 	// Store per mime-type prefrences for players
-	preference : null,
+	preference : { },
 	
 	// Stores the default set of players for a given mime type
 	default_players : { },
@@ -3190,21 +3183,21 @@ mediaPlayers.prototype =
 	* @param {String} player_id Prefered player id
 	* @param {String} mime_type Mime type for the associated player stream
 	*/
-	setPlayerPreference : function( player_id, mime_type ) {
-		var selected_player = null;
+	setPlayerPreference : function( player_id, mime_type ) {	
+		var selected_player = null;		
 		for ( var i = 0; i < this.players.length; i++ ) {
 			if ( this.players[i].id == player_id ) {
 				selected_player = this.players[i];
 				mw.log( 'choosing ' + player_id + ' for ' + mime_type );
-				this.preference[ mime_type ] = player_id;
-				
-				mw.setUserConfig( 'playerPref', this.preference);
+				this.preference[ mime_type ] = player_id;		
+				mw.setUserConfig( 'playerPref', this.preference );
 				break;
 			}
 		}
-		if ( selected_player ) {
-			for ( var i = 0; i < mw.player_list.length; i++ ) {
-				var embed = $j( '#' + mw.player_list[i] ).get( 0 );
+		// Update All the player instances:		
+		if ( selected_player ) {			 
+			for ( var i = 0; i < mw.playerList.length; i++ ) {
+				var embed = $j( '#' + mw.playerList[i] ).get( 0 );
 				if ( embed.mediaElement.selected_source && ( embed.mediaElement.selected_source.mime_type == mime_type ) )
 				{
 					embed.selectPlayer( selected_player );
@@ -3218,9 +3211,13 @@ mediaPlayers.prototype =
 	* Loads the user preference settings from a cookie
 	*/	
 	loadPreferences : function ( ) { 
-		this.preference = new Object();
+		this.preference = { };
 		// see if we have a cookie set to a clientSupported type:
-		mw.setUserConfig( 'playerPref' );
+		preferenceConfig = mw.getUserConfig( 'playerPref' );
+		if( typeof preferenceConfig == 'object' ) {
+			this.preference = preferenceConfig;
+		}
+		//debugger;
 	}	
 };
 

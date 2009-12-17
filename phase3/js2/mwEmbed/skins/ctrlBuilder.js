@@ -109,13 +109,13 @@ ctrlBuilder.prototype = {
 	* Get minimal width for interface overlay
 	*/
 	getOverlayWidth: function(){
-		return ( this.embedObj.getPlayerWidth() < 400 )? 400 : this.embedObj.getPlayerWidth();
+		return ( this.embedObj.getPlayerWidth() < 300 )? 300 : this.embedObj.getPlayerWidth();
 	},	
 	/**
 	* Get minimal height for interface overlay
 	*/
 	getOverlayHeight: function(){
-		return ( this.embedObj.getPlayerHeight() < 300 )? 300 : this.embedObj.getPlayerHeight();
+		return ( this.embedObj.getPlayerHeight() < 200 )? 200 : this.embedObj.getPlayerHeight();
 	},
 	
 	/**
@@ -508,6 +508,7 @@ ctrlBuilder.prototype = {
 						'</div>';
 			}
 		},
+		
 		/*
 		* The closed captions button
 		*/
@@ -519,6 +520,7 @@ ctrlBuilder.prototype = {
 						'</div>'
 			}
 		},
+		
 		/*
 		* The volume control interface html
 		*/
@@ -541,8 +543,9 @@ ctrlBuilder.prototype = {
 				return o;
 			}
 		},
+		
 		/*
-		* The time dispaly area
+		* The time display area
 		*/
 		'time_display': {
 			'w':90,
@@ -556,7 +559,7 @@ ctrlBuilder.prototype = {
 		'play_head': {
 			'w':0, // special case (takes up remaining space)
 			'o':function( ctrlObj ) {
-				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 34 ) + 'px;"></div>';
+				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 40 ) + 'px;"></div>';
 			}
 		}
 	}
