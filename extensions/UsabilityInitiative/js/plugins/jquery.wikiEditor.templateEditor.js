@@ -90,25 +90,25 @@ fn: {
 				$displayDiv.addClass( 'wikiEditor-template-expanded' );
 				
 				//$displayDiv.text( model.getText() );
-				$keyValueTable = $("<table></table>");
-				$header_row = $("<tr></tr>");
-				$title_cell = $("<th></th>").attr('colspan', '2');
-				$title_cell.text( model.getName() );
-				$header_row.append( $title_cell );
-				$keyValueTable.append($header_row);
+				$keyValueTable = $("<table></table>")
+					.appendTo( $displayDiv );
+				$header_row = $("<tr></tr>")
+					.appendTo( $keyValueTable );
+				$("<th></th>")
+					.attr('colspan', '2');
+					.text( model.getName() )
+					.appendTo( $header_row );
 				for( param in model.getAllParamNames() ){
-					$keyVal_row = $("<tr></tr>");
-					$param_name = $("<td></td>");
-					$param_name.text( param );
+					$keyVal_row = $("<tr></tr>")
+						.appendTo( $keyValueTable );
+					$("<td></td>")
+						.text( param )
+						.appendTo( $keyVal_row );
 					
-					$param_value = $("<td></td>");
-					$param_value.text( model.getValue( param ) );
-					
-					$keyVal_row.append( $param_name );
-					$keyVal_row.append( $param_value );
-					$keyValueTable.append( $keyVal_row );
+					$("<td></td>")
+						.text( model.getValue( param ) )
+						.appendTo( $keyVal_row );
 				}
-				$displayDiv.append( $keyValueTable );
 			};
 			// Collapse
 			function collapseTemplate( $displayDiv ) {
