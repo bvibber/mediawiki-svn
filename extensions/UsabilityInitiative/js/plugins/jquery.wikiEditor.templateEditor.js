@@ -88,7 +88,27 @@ fn: {
 				// Housekeeping
 				$displayDiv.removeClass( 'wikiEditor-template-collapsed' );
 				$displayDiv.addClass( 'wikiEditor-template-expanded' );
-				$displayDiv.text( model.getText() );
+				
+				//$displayDiv.text( model.getText() );
+				$keyValueTable = $("<table></table>");
+				$header_row = $("<tr></tr>");
+				$title_cell = $("<th></th>").attr('colspan', '2');
+				$title_cell.text( model.getName() );
+				$header_row.append( $title_cell );
+				$keyValueTable.append($header_row);
+				for( param in model.getAllParamNames() ){
+					$keyVal_row = $("<tr></tr>");
+					$param_name = $("<td></td>");
+					$param_name.text( param );
+					
+					$param_value = $("<td></td>");
+					$param_value.text( model.getValue( param ) );
+					
+					$keyVal_row.append( $param_name );
+					$keyVal_row.append( $param_value );
+					$keyValueTable.append( $keyVal_row );
+				}
+				$displayDiv.append( $keyValueTable );
 			};
 			// Collapse
 			function collapseTemplate( $displayDiv ) {
