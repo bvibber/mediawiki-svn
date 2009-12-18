@@ -87,7 +87,7 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 			if (is_object( $ptitle )) {
 				if ( $ptitle->isLocal() ) {
 					$tURL = $ptitle->getLocalUrl();
-					$aClass='iconlink';
+					$aClass='class="iconlink"';
 				} else {
 					$tURL = $ptitle->getFullURL();
 					$aClass = 'class="extiw iconlink"';
