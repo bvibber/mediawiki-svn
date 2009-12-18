@@ -120,6 +120,7 @@ $messages['cs'] = array(
  */
 $messages['cy'] = array(
 	'wikieditor-preview-tab' => 'Rhagolwg',
+	'wikieditor-preview-changes-tab' => 'Newidiadau',
 	'wikieditor-preview-loading' => "Wrthi'n llwytho...",
 );
 

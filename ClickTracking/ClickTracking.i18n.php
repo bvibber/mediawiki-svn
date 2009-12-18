@@ -1014,10 +1014,12 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Laaknor
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'clicktracking' => 'Klikksporing for brukervennlighetsprosjektet.',
 	'clicktracking-desc' => 'Sporer klikk som ikke forårsaker lasting av ny side.',
+	'ct-title' => 'Oppsamlede brukerklikk',
 	'ct-event-name' => 'Hendelsesnavn',
 	'ct-expert-header' => '«Ekspertklikk»',
 	'ct-intermediate-header' => '«Mellomnivåbrukerklikk»',
