@@ -84,7 +84,7 @@ var kplayerEmbed = {
 			// Start the monitor
 			this.monitor();
 		}else{
-			mw.log('insert media: not defiend:' + typeof this.playerElement.insertMedia );
+			//mw.log('insert media: not defiend:' + typeof this.playerElement.insertMedia );
 			setTimeout( function(){
 				_this.postEmbedJS();
 			}, 25);

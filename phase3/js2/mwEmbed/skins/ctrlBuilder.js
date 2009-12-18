@@ -46,10 +46,10 @@ ctrlBuilder.prototype = {
 		this.embedObj = embedObj;
 
 		// Check for skin overrides for ctrlBuilder
-		if ( window[ embedObj.skin_name + 'Config'] ) {
+		if ( window[ embedObj.skinName + 'Config'] ) {
 		
 			// Clone as to not override prototype: 	
-			var _this = $j.extend( true, { }, this, window[ embedObj.skin_name + 'Config'] );
+			var _this = $j.extend( true, { }, this, window[ embedObj.skinName + 'Config'] );
 			
 			return _this;
 		}

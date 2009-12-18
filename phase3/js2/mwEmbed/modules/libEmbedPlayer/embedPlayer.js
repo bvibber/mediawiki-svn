@@ -1196,14 +1196,14 @@ embedPlayer.prototype = {
 		if ( sn && sn != '' ) {
 			for ( var n = 0; n < mw.valid_skins.length; n++ ) {
 				if ( sn.indexOf( mw.valid_skins[n] ) !== -1 ) {
-					this.skin_name = mw.valid_skins[ n ];
+					this.skinName = mw.valid_skins[ n ];
 				}
 			}
 		}
 		
 		// Set the default skin if unset: 
-		if ( !this.skin_name )
-			this.skin_name = mw.getConfig( 'skin_name' );
+		if ( !this.skinName )
+			this.skinName = mw.getConfig( 'skinName' );
 			
 		
 		// Make sure startOffset is cast as an float:		   
@@ -1247,7 +1247,7 @@ embedPlayer.prototype = {
 		} );
 				
 		// Make sure we have the player skin css:
-		mw.getStyleSheet(  mw.getMwEmbedPath() +  'skins/' + this.skin_name + '/playerSkin.css' );
+		mw.getStyleSheet(  mw.getMwEmbedPath() +  'skins/' + this.skinName + '/playerSkin.css' );
 	},
 		
 	
@@ -1475,9 +1475,8 @@ embedPlayer.prototype = {
 					_this['parent_' + method] = _this[method];
 				}
 				_this[ method ] = playerInterface[method];
-			}			
-			mw.log( ' play: ' + _this.play + ' parent_play' + _this.parent_play );
-						
+			}						
+									
 			_this.getDuration();
 			_this.showPlayer();
 			_this.ready_to_play = true;

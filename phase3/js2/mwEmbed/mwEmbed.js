@@ -32,7 +32,7 @@ if ( !window['mw'] ) {
 */  
 var mwDefaultConf = {
 	// Default skin name
-	'skin_name' : 'mvpcf',
+	'skinName' : 'mvpcf',
 	
 	// Default jquery ui skin name
 	'jui_skin' : 'redmond',	
@@ -73,25 +73,25 @@ var mwDefaultConf = {
 * Any global functions/classes that are not jQuery plugins should make
 * there way into the mw namespace
 */
-( function( $ ) {
+( function( mw ) {
 	
 	// List valid skins here:
-	$.valid_skins = [ 'mvpcf', 'kskin' ];
+	mw.valid_skins = [ 'mvpcf', 'kskin' ];
 	
 	// The version of mwEmbed
-	$.version = '1.1';
+	mw.version = '1.1';
 	
 	// Special case of commons api url 
 	// ( used for default subtitles and related video server for "wikiTitleKey" where no api is provided)
 	// NOTE: we need to fix that with a standard "roe" jsonp url source ( instead of a non-standard custom attribute )  
-	$.commons_api_url = 'http://commons.wikimedia.org/w/api.php';
+	mw.commons_api_url = 'http://commons.wikimedia.org/w/api.php';
 	
 	/**
 	* Some global containers flags 
 	*/	
-	$.skin_list = new Array();
-	$.init_done = false;
-	$.cb_count = 0;		
+	mw.skin_list = new Array();
+	mw.init_done = false;
+	mw.cb_count = 0;		
 
 	/**
 	* Configuration System: 
@@ -116,7 +116,7 @@ var mwDefaultConf = {
 	* @param {String} name Name of configuration value
 	* @param {String} value Value of configuration name 
 	*/
-	$.setConfig = function ( name, value ){
+	mw.setConfig = function ( name, value ){
 		mwConfig[ name ] = value;
 	}	
 	
@@ -127,7 +127,7 @@ var mwDefaultConf = {
 	* @return {Mixed} value of configuration key
 	* 	returns "false" if key not found
 	*/
-	$.getConfig = function ( name ){
+	mw.getConfig = function ( name ){
 		if( mwConfig[ name ] )
 			return mwConfig[ name ];
 		return false;
@@ -148,13 +148,13 @@ var mwDefaultConf = {
 	* @parma {Function} callback Function to be called once userPrefrences are loaded 
 	*/
 	var setupUserConfigFlag = false;
-	$.setupUserConfig = function( callback ){	
+	mw.setupUserConfig = function( callback ){	
 		if( setupUserConfigFlag ){
 			if( callback ) 
 				callback();
 		}
 		// Do Setup user config: 		
-		//mw.load( [ '$j.cookie', 'JSON' ], function(){
+		mw.load( [ '$j.cookie', 'JSON' ], function(){
 			if( $j.cookie( 'mwUserConfig' ) ){
 				mwUserConfig = JSON.parse( $j.cookie( 'mwUserConfig' ) );
 			}
@@ -167,7 +167,7 @@ var mwDefaultConf = {
 			setupUserConfigFlag = true;
 			if( callback ) 
 				callback();				
-		//});				
+		});				
 	}
 
 	/**
@@ -177,7 +177,7 @@ var mwDefaultConf = {
 	* @param {String} name Name of user configuration value
 	* @param {String} value Value of configuration name 	
 	*/
-	$.setUserConfig = function ( name, value, cookieOptions ){
+	mw.setUserConfig = function ( name, value, cookieOptions ){
 		if( ! setupUserConfigFlag ){ 
 			mw.log( "Error: userConfig not setup" );
 			return false; 		
@@ -198,7 +198,7 @@ var mwDefaultConf = {
 	*	value of the configuration name
 	* 	false if the configuration name could not be found
 	*/	
-	$.getUserConfig = function ( name ){
+	mw.getUserConfig = function ( name ){
 		if( mwUserConfig[ name ] )
 			return mwUserConfig[ name ];
 		return false;
@@ -211,7 +211,7 @@ var mwDefaultConf = {
 	* It contains methods for loading and transforming msg text
 	*
 	*/
-	$.lang = { };
+	mw.lang = { };
 	
 	/**
 	* Setup the lang object
@@ -225,7 +225,7 @@ var mwDefaultConf = {
 	*
 	* @param {JSON} msgSet The set of msgs to be loaded
 	*/
-	$.addMessages = function( msgSet ) {
+	mw.addMessages = function( msgSet ) {
 		for ( var i in msgSet ) {
 			messageCache[ i ] = msgSet[i];
 		}
@@ -237,7 +237,7 @@ var mwDefaultConf = {
 	*
 	* @param json ruleSet The ruleset object ( extends  gRuleSet )
 	*/
-	$.lang.loadRS = function( ruleSet ) {
+	mw.lang.loadRS = function( ruleSet ) {
 		for ( var i in ruleSet ) {
 			gRuleSet[ i ] = ruleSet[ i ];
 		}
@@ -254,14 +254,14 @@ var mwDefaultConf = {
 	 * @param {Array} args  An array of replacement strings
 	 * @return string
 	 */
-	$.getMsg = function( key , args ) {
+	mw.getMsg = function( key , args ) {
 	
 		// Check for missing message key
 		if ( ! messageCache[ key ] )
 			return '&lt;' + key + '&gt;';
 
 		// swap in the arg values
-		var ms =  $.lang.gMsgSwap( key, args );				
+		var ms =  mw.lang.gMsgSwap( key, args );				
 		
 		// a quick check to see if we need to send the msg via the 'parser'
 		// (we can add more detailed check once we support more wiki syntax)
@@ -270,7 +270,7 @@ var mwDefaultConf = {
 		}
 				
 		// send the msg key through the parser
-		var pObj = $.parser( ms );
+		var pObj = mw.parser( ms );
 		// return the transformed msg
 		return pObj.getHTML();
 	}
@@ -282,7 +282,7 @@ var mwDefaultConf = {
 	* @param [mixed] args  An array or string to be replaced
 	* @return string
 	*/
-	$.lang.gMsgSwap = function( key , args ) {
+	mw.lang.gMsgSwap = function( key , args ) {
 		if ( ! messageCache[ key ] )
 			return '&lt;' + key + '&gt;';// Missing key placeholder
 		// get the message string:
@@ -306,7 +306,7 @@ var mwDefaultConf = {
 	*
 	* @returns string The msg key without transforming it
 	*/
-	$.lang.gMsgNoTrans = function( key ) {
+	mw.lang.gMsgNoTrans = function( key ) {
 		if ( messageCache[ key ] )
 			return messageCache[ key ]
 
@@ -318,14 +318,14 @@ var mwDefaultConf = {
 	* Add Supported Magic Words to parser
 	*/
 	// Set the setupflag to false:
-	$.lang.doneSetup = false;
-	$.lang.magicSetup = function() {
-		if ( !$.lang.doneSetup ) {
-			$.addTemplateTransform ( {
-				'PLURAL' : $.lang.procPLURAL
+	mw.lang.doneSetup = false;
+	mw.lang.magicSetup = function() {
+		if ( !mw.lang.doneSetup ) {
+			mw.addTemplateTransform ( {
+				'PLURAL' : mw.lang.procPLURAL
 			} )
 
-			$.lang.doneSetup = true;
+			mw.lang.doneSetup = true;
 		}
 
 	}
@@ -333,7 +333,7 @@ var mwDefaultConf = {
 	/**
 	* Process the PLURAL special language template key:
 	*/
-	$.lang.procPLURAL = function( tObj ) {
+	mw.lang.procPLURAL = function( tObj ) {
 		// setup shortcuts
 		// (gRuleSet is loaded from script-loader to contains local ruleset)
 		var rs = gRuleSet['PLURAL'];
@@ -425,20 +425,25 @@ var mwDefaultConf = {
 	/**
 	 * getRemoteMsg loads remote msg strings
 	 *
-	 * @param mixed msgSet the set of msg to load remotely
+	 * @param {Mixed} msgSet the set of msg to load remotely
 	 * @param function callback  the callback to issue once string is ready
 	 */
-	$.getRemoteMsg = function( msgSet, callback ) {
+	mw.getRemoteMsg = function( msgSet, callback ) {
 		var ammessages = '';
 		if ( typeof msgSet == 'object' ) {
 			for ( var i in msgSet ) {
-				ammessages += msgSet[i] + '|';
+				if( !messageCache[ i ] ){ 
+					ammessages += msgSet[i] + '|';
+				}
 			}
 		} else if ( typeof msgSet == 'string' ) {
-			ammessages += msgSet;
+			if( !messageCache[ i ] ){
+				ammessages += msgSet;
+			}
 		}
 		if ( ammessages == '' ) {
-			mw.log( 'gMsgLoadRemote: no message set requested' );
+			mw.log( 'no remote msgs to get' );
+			callback();
 			return false;
 		}
 		var request = {
@@ -465,7 +470,7 @@ var mwDefaultConf = {
 	 * @param size Size to format
 	 * @return string Plain text (not HTML)
 	 */
-	$.lang.formatSize = function ( size ) {
+	mw.lang.formatSize = function ( size ) {
 		// For small sizes no decimal places are necessary
 		var round = 0;
 		var msg = '';
@@ -493,7 +498,7 @@ var mwDefaultConf = {
 		return gM( msg , size );
 	};
 	
-	$.lang.formatNumber = function( num ) {
+	mw.lang.formatNumber = function( num ) {
 		/*
 		*	addSeparatorsNF
 		* @param Str: The number to be formatted, as a string or number.		
@@ -760,7 +765,7 @@ var mwDefaultConf = {
 	* @return {Object} parserObj returns a parser object that has methods for getting at
 	* things you would want
 	*/
-	$.parser = function( wikiText, options){
+	mw.parser = function( wikiText, options){
 		// return the parserObj
 		return new parseObj( wikiText, options ) ;	
 	}
@@ -773,7 +778,7 @@ var mwDefaultConf = {
 	 *
 	 * @param {Object} magicSet key:callback
 	 */
-	$.addTemplateTransform = function( magicSet ) {
+	mw.addTemplateTransform = function( magicSet ) {
 		for ( var i in magicSet )
 			pMagicSet[ i ] = magicSet[i];
 	}
@@ -785,7 +790,7 @@ var mwDefaultConf = {
 	*
 	* @param {Object} targetObj Interface Object to add hook system to.   
 	*/
-	$.addHookSystem = function( targetObj ){		
+	mw.addHookSystem = function( targetObj ){		
 		// Setup the target object hook holder:
 		targetObj[ 'hooks' ] = { };
 		 
@@ -834,7 +839,7 @@ var mwDefaultConf = {
 	/**
 	* The loader prototype:
 	*/
-	$.loader = {
+	mw.loader = {
 		/*
 		* Javascript Module Loader functions 
 		* @key Name of Module
@@ -888,7 +893,7 @@ var mwDefaultConf = {
 		*/				
 		load: function( loadRequest, callback ){
 			// Check for empty loadRequest ( directly return the callback ) 
-			if( $.isEmpty( loadRequest ) ){
+			if( mw.isEmpty( loadRequest ) ){
 				mw.log( 'Empty load request: ' + loadRequest);
 				callback( loadRequest );
 				return ;
@@ -924,7 +929,7 @@ var mwDefaultConf = {
 			
 			// Try loading as a "file"
 			if( loadRequest ) { 
-				$.getScript( loadRequest, callback );
+				mw.getScript( loadRequest, callback );
 				return ;
 			}
 			
@@ -946,7 +951,7 @@ var mwDefaultConf = {
 			var loadStates = { };
 					
 			// Check if we can load via the "script-loader" ( mwEmbed was included via scriptLoader ) 
-			if( $.getScriptLoaderPath() ){				
+			if( mw.getScriptLoaderPath() ){				
 				loadStates = this.getGroupLoadState( loadSet );
 			}else{									
 				// Check if its a dependency set ( nested objects ) 
@@ -1068,7 +1073,7 @@ var mwDefaultConf = {
 		loadClass: function( className , callback){		
 			var _this = this;			
 			// Make sure the class is not already defined:
-			if ( $.isset( className ) ){
+			if ( mw.isset( className ) ){
 				mw.log( 'Class ( ' + className + ' ) already defined ' );
 				callback( className );
 				return ; 									
@@ -1078,7 +1083,7 @@ var mwDefaultConf = {
 			var scriptRequest = null;
 			
 			// If the scriptloader is enabled use the className as the scriptRequest: 
-			if( $.getScriptLoaderPath() ){
+			if( mw.getScriptLoaderPath() ){
 				scriptRequest =  className;
 			}else{
 				// Get the class url:
@@ -1086,7 +1091,7 @@ var mwDefaultConf = {
 				// Add the mwEmbed path if not a root path or a full url
 				if( baseClassPath.indexOf( '/' ) !== 0 && 
 					baseClassPath.indexOf('://') === -1 ){
-					scriptRequest = $.getMwEmbedPath() + baseClassPath;
+					scriptRequest = mw.getMwEmbedPath() + baseClassPath;
 				}else{
 					scriptRequest = baseClassPath;
 				}				
@@ -1098,7 +1103,7 @@ var mwDefaultConf = {
 								
 			// Check for any associated style sheets that should be loaded 
 			if( typeof this.stylePaths[ className ] != 'undefined' ){
-				$.getStyleSheet( mw.getMwEmbedPath() + this.stylePaths[ className ] );
+				mw.getStyleSheet( mw.getMwEmbedPath() + this.stylePaths[ className ] );
 			}
 			
 			// Include class defined check for older browsers
@@ -1106,9 +1111,9 @@ var mwDefaultConf = {
 				
 			
 			// Issue the request to load the class (include class name in result callback:					
-			$.getScript( scriptRequest, function( scriptRequest ) {
+			mw.getScript( scriptRequest, function( scriptRequest ) {
 				mw.log(" on : " + scriptRequest );
-				if(! $.isset( className )){
+				if(! mw.isset( className )){
 					mw.log( ' Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.classPaths[ className ] );
 				}else{
 					if( callback )
@@ -1121,7 +1126,7 @@ var mwDefaultConf = {
 			// Check if the class is ready: ( not all browsers support onLoad script attribute )
 			// In the case of a "class" we can pull the javascript state until its ready
 			setTimeout( function(){
-				$.waitForObject( className, function( className ){								
+				mw.waitForObject( className, function( className ){								
 					if( callback ){
 						mw.log( " waitForObject callback for: " + className );
 						callback( className );
@@ -1181,29 +1186,29 @@ var mwDefaultConf = {
 	/**
 	* Load Object entry point: Loads a requested set of javascript 
 	*/	
-	$.load = function( loadRequest, callback ){
-		return $.loader.load( loadRequest, callback );
+	mw.load = function( loadRequest, callback ){
+		return mw.loader.load( loadRequest, callback );
 	}
 	
 	/**
 	* Add module entry point: Adds a module to the mwLoader object 
 	*/
-	$.addModuleLoader = function ( name, loaderFunction ){
-		return $.loader.addModuleLoader( name, loaderFunction );		
+	mw.addModuleLoader = function ( name, loaderFunction ){
+		return mw.loader.addModuleLoader( name, loaderFunction );		
 	}
 	
 	/**
 	* Add Class File Paths entry point:  
 	*/
-	$.addClassFilePaths = function ( classSet )	{	
-		return $.loader.addClassFilePaths( classSet );
+	mw.addClassFilePaths = function ( classSet )	{	
+		return mw.loader.addClassFilePaths( classSet );
 	}
 			
 	/**
 	* Add Class Style Sheet entry point:  	 
 	*/
-	$.addClassStyleSheets = function( sheetSet ){
-		return $.loader.addClassStyleSheets( sheetSet );
+	mw.addClassStyleSheets = function( sheetSet ){
+		return mw.loader.addClassStyleSheets( sheetSet );
 	}
 	
 	
@@ -1231,7 +1236,7 @@ var mwDefaultConf = {
 	* @param {Mixed} callbcak
 	*
 	*/	
-	$.getJSON = function( arg1, arg2, arg3 ){
+	mw.getJSON = function( arg1, arg2, arg3 ){
 		
 		// Set up the url		
 		var url = false;
@@ -1264,13 +1269,13 @@ var mwDefaultConf = {
 		mw.log("run getJSON: " + url + ' data: ' +  data['action'] + ' apiPost: ' +mw.getConfig( 'apiPostActions' ) );
 		
 		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ){
-			if( ! $.isLocalDomain( url ) ){
+			if( ! mw.isLocalDomain( url ) ){
 				mw.log( "Error:: should setup proxy here" );
 			}
 			$j.post( url, data, callback, 'json');
 		}else{
 			//If cross domain setup a callback: 
-			if( ! $.isLocalDomain( url ) ){				 
+			if( ! mw.isLocalDomain( url ) ){				 
 				if( url.indexOf( 'callback=' ) == -1 || data[ 'callback' ] == -1 ){
 					// jQuery specific: ( second ? is replaced with the callback ) 
 					url += ( url.indexOf('?') == -1 ) ? '?callback=?' : '&callback=?';
@@ -1288,8 +1293,8 @@ var mwDefaultConf = {
 	*  
 	* @param roe_url to be updated 
 	*/
-	$.getMvJsonUrl = function( roe_url , callback){		
-		if ( $.isLocalDomain( roe_url ) ){
+	mw.getMvJsonUrl = function( roe_url , callback){		
+		if ( mw.isLocalDomain( roe_url ) ){
 			$j.get( roe_url, callback );	 
 		} else {			
 			roe_url = mw.replaceUrlParams(roe_url, {
@@ -1306,7 +1311,7 @@ var mwDefaultConf = {
 	*  relative paths are "local" domain
 	* @param {String} url Url for local domain
 	*/
-	$.isLocalDomain = function( url ) {
+	mw.isLocalDomain = function( url ) {
 		if( mw.parseUri( document.URL ).host == mw.parseUri( url ).host ||
 			url.indexOf( '://' ) == -1 ){
 			return true;
@@ -1321,7 +1326,7 @@ var mwDefaultConf = {
 	 * @param {String} [api_url] The target API URL
 	 * @param {callback} callback Function to pass the token to
 	 */
-	$.getToken = function( title, api_url, callback ) {
+	mw.getToken = function( title, api_url, callback ) {
 		if( typeof api_url == 'function' )
 			callback = api_url;	
 		if( typeof title == 'function')
@@ -1365,7 +1370,7 @@ var mwDefaultConf = {
 	* 	true if objectPath exists
 	*	false if objectPath is undefined
 	*/	
-	$.isset = function( objectPath ) {
+	mw.isset = function( objectPath ) {
 		if ( !objectPath )
 			return false;
 		var pathSet = objectPath.split( '.' );
@@ -1389,7 +1394,7 @@ var mwDefaultConf = {
 	*	number of times waitForObject has been called 
 	*/
 	var waitTime = 1200; // About 30 seconds 
-	$.waitForObject = function( objectName, callback, _callNumber){
+	mw.waitForObject = function( objectName, callback, _callNumber){
 		//mw.log( 'waitForObject: ' + objectName  + ' cn: ' + _callNumber);
 				
 		// Increment callNumber: 
@@ -1402,13 +1407,14 @@ var mwDefaultConf = {
 		if( _callNumber > waitTime ){
 			mw.log( "Error: waiting for object: " + objectName + ' timeout ' );
 			callback( false ); 
+			return ;
 		}
 		
-		if ( $.isset( objectName ) ){			
+		if ( mw.isset( objectName ) ){			
 			callback( objectName )
 		}else{
 			setTimeout( function( ){
-				$.waitForObject( objectName, callback, _callNumber);
+				mw.waitForObject( objectName, callback, _callNumber);
 			}, 25);
 		}
 	}
@@ -1418,7 +1424,7 @@ var mwDefaultConf = {
 	*
 	* @param {Object} object Object to be checked
 	*/ 
-	$.isEmpty = function( object ) {		
+	mw.isEmpty = function( object ) {		
 		if( typeof object == 'string' ){ 
 			if( object == '' ) return true;
 			// Non empty string: 
@@ -1442,7 +1448,7 @@ var mwDefaultConf = {
 	*
 	* @param {String} string String to output to console
 	*/
-	$.log = function( string ) {
+	mw.log = function( string ) {
 		// Add any prepend debug strings if necessary 
 		
 		if ( mw.getConfig( 'pre-append-log' ) )
@@ -1474,9 +1480,11 @@ var mwDefaultConf = {
 	
 	/**
 	* Get a loading spinner html
+	* NOTE: remove this 
+	
 	* @param {String} [Optional] style Style string to apply to the spinner 
 	*/
-	$.loading_spinner = function( style ) {
+	mw.loading_spinner = function( style ) {
 		var style_txt = ( style ) ? style : '';
 		return '<div class="loading_spinner" style="' + style_txt + '"></div>';
 	}
@@ -1498,7 +1506,7 @@ var mwDefaultConf = {
 	*
 	* @param {Function} callback Function to run once DOM and jQuery are ready
 	*/
-	$.addOnloadHook = function( callback ){		
+	mw.addOnloadHook = function( callback ){		
 		mw.log('addOnloadHook:: ' );		
 		if( mwReadyFlag === false ){
 		
@@ -1513,7 +1521,7 @@ var mwDefaultConf = {
 			}else{
 				mw.log( 'run setup directly' );
 				//DOM is already ready run setup directly:
-				$.setupMwEmbed(); 
+				mw.setupMwEmbed(); 
 			} 			
 			
 			return ;
@@ -1525,7 +1533,7 @@ var mwDefaultConf = {
 	/**
 	* Runs all the queued functions
 	*/ 
-	$.runLoadHooks = function ( ){		
+	mw.runLoadHooks = function ( ){		
 		// Run all the queued functions: 
 		while( mwOnLoadFuncitons.length )
 			mwOnLoadFuncitons.pop()();
@@ -1544,11 +1552,11 @@ var mwDefaultConf = {
 	* @param {String} scriptRequest The requested path or classNames for the scriptLoader
 	* @param {Function} callback Function to call once script is loaded   
 	*/
-	$.getScript = function( scriptRequest, callback ){
+	mw.getScript = function( scriptRequest, callback ){
 	
 		// Set the base url based scriptLoader availability & type of scriptRequest
 		// ( presently script loader only handles "classes" not relative urls: 
-		var slpath = $.getScriptLoaderPath();
+		var slpath = mw.getScriptLoaderPath();
 		if( slpath && scriptRequest.indexOf('://') == -1 && scriptRequest.indexOf('/') !== 0 ) {
 			url = slpath + '?class=' + scriptRequest;
 		}else{
@@ -1557,11 +1565,11 @@ var mwDefaultConf = {
 	
 		// Add on the request parameters to the url:
 		url += ( url.indexOf( '?' ) === -1 )? '?' : '&';				
-		url += $.getUrlParam();		
+		url += mw.getUrlParam();		
 				
 		
 		// If jQuery is available and debug is off get the scirpt j 
-		if( $.isset( 'window.jQuery' ) && $.getConfig( 'debug' ) === false ) {
+		if( mw.isset( 'window.jQuery' ) && mw.getConfig( 'debug' ) === false ) {
 			$j.getScript( url, function(){
 				if( callback )
 					callback( scriptRequest );
@@ -1599,11 +1607,11 @@ var mwDefaultConf = {
 	*	{Array} url List of urls to be loaded
 	*	{String} url Url of the style sheet to be loaded
 	*/
-	$.getStyleSheet = function( url ) {
+	mw.getStyleSheet = function( url ) {
 		
 		if ( typeof url == 'object' ) {
 			for ( var i in url ) {
-				$.getStyleSheet( url[i] );
+				mw.getStyleSheet( url[i] );
 			}
 			return ;
 		}
@@ -1640,25 +1648,25 @@ var mwDefaultConf = {
 	* 	api url
 	* 	false
 	*/
-	$.getLocalApiUrl = function() {
+	mw.getLocalApiUrl = function() {
 		if ( typeof wgServer != 'undefined' && typeof wgScriptPath  != 'undefined' ) {
 			return wgServer + wgScriptPath + '/api.php';
 		}
 		return false;
 	}	
 	
-	// Local mwEmbedPath variable ( for cache of $.getMwEmbedPath )
+	// Local mwEmbedPath variable ( for cache of mw.getMwEmbedPath )
 	var mwEmbedPath = null;
 				
 	/**
 	* Gets the path to the mwEmbed folder
 	*/
-	$.getMwEmbedPath = function() {
+	mw.getMwEmbedPath = function() {
 		if ( mwEmbedPath )
 			return mwEmbedPath;	
 			
 		// Get mwEmbed src:
-		var src = $.getMwEmbedSrc();		
+		var src = mw.getMwEmbedSrc();		
 		var mwpath = null;
 		
 		// Check for direct include of the mwEmbed.js
@@ -1669,7 +1677,7 @@ var mwDefaultConf = {
 		// Check for scriptLoader include of mwEmbed: 
 		if ( src.indexOf( 'mwScriptLoader.php' ) !== -1 ) {
 			// Script loader is in the root of MediaWiki, Include the default mwEmbed extension path:
-			mwpath =  src.substr( 0, src.indexOf( 'mwScriptLoader.php' ) ) + $.getConfig( 'mediaWiki_mwEmbedPath' );						
+			mwpath =  src.substr( 0, src.indexOf( 'mwScriptLoader.php' ) ) + mw.getConfig( 'mediaWiki_mwEmbedPath' );						
 		}
 		
 		// Script-loader has jsScriptLoader name when local:
@@ -1683,7 +1691,7 @@ var mwDefaultConf = {
 			return ;
 		}		
 		// Update the cached var with the absolute path: 
-		mwEmbedPath = $.absoluteUrl( mwpath )	;			
+		mwEmbedPath = mw.absoluteUrl( mwpath )	;			
 		return mwEmbedPath;
 	}
 	
@@ -1694,8 +1702,8 @@ var mwDefaultConf = {
 	* 	Url of the scriptLodaer
 	*	false if the scriptLoader is not used
 	*/
-	$.getScriptLoaderPath = function(){		
-		var src = $.getMwEmbedSrc();
+	mw.getScriptLoaderPath = function(){		
+		var src = mw.getMwEmbedSrc();
 		if ( src.indexOf( 'mwScriptLoader.php' ) !== -1  ||
 			src.indexOf( 'jsScriptLoader.php' ) !== -1 )
 		{
@@ -1713,7 +1721,7 @@ var mwDefaultConf = {
 	 * @return String npt format  
 	 * @type {Float} 
 	 */
-	$.seconds2npt = function( sec, show_ms ) {
+	mw.seconds2npt = function( sec, show_ms ) {
 		if ( isNaN( sec ) ) {
 			// mw.log("warning: trying to get npt time on NaN:" + sec);
 			return '0:0:0';
@@ -1742,7 +1750,7 @@ var mwDefaultConf = {
 	* @return Number of seconds 
 	* @type {Float} 
 	*/
-	$.npt2seconds = function ( npt_str ) {
+	mw.npt2seconds = function ( npt_str ) {
 		if ( !npt_str ) {
 			// mw.log('npt2seconds:not valid ntp:'+ntp);
 			return false;
@@ -1773,13 +1781,13 @@ var mwDefaultConf = {
 	
 	
 	
-	// Local mwEmbedSrc variable ( for cache of $.getMwEmbedSrc )
+	// Local mwEmbedSrc variable ( for cache of mw.getMwEmbedSrc )
 	var mwEmbedSrc = null; 
 	
 	/**
 	* Gets the mwEmbed script src attribute
 	*/
-	$.getMwEmbedSrc = function() {
+	mw.getMwEmbedSrc = function() {
 		if ( mwEmbedSrc )
 			return mwEmbedSrc;
 			
@@ -1807,17 +1815,17 @@ var mwDefaultConf = {
 		return false;
 	}	
 	
-	// Local mwUrlParam variable ( for cache of $.getUrlParam )
+	// Local mwUrlParam variable ( for cache of mw.getUrlParam )
 	var mwUrlParam = null;
 	
 	/**
 	* Get URL Parameters per parameters in the host script include
 	*/
-	$.getUrlParam = function() {
+	mw.getUrlParam = function() {
 		if ( mwUrlParam )
 			return mwUrlParam;
 			
-		var mwEmbedSrc = $.getMwEmbedSrc();		
+		var mwEmbedSrc = mw.getMwEmbedSrc();		
 		var req_param = '';
 		
 		// If we already have a URI, add it to the param request:
@@ -1825,7 +1833,7 @@ var mwDefaultConf = {
 		
 		// If we're in debug mode, get a fresh unique request key and pass on "debug" param
 		if ( mw.parseUri( mwEmbedSrc ).queryKey['debug'] == 'true' ) {		
-			$.setConfig( 'debug', true );
+			mw.setConfig( 'debug', true );
 			var d = new Date();
 			req_param += 'urid=' + d.getTime() + '&debug=true';			
 					
@@ -1855,7 +1863,7 @@ var mwDefaultConf = {
 	* @return {String}
 	*	the updated url
 	*/  
-	$.replaceUrlParams = function( url, newParams ) {
+	mw.replaceUrlParams = function( url, newParams ) {
 		var parsedUrl = mw.parseUri( url );
 				
 		
@@ -1885,8 +1893,8 @@ var mwDefaultConf = {
 	* (c) Steven Levithan <stevenlevithan.com>
 	*  MIT License
 	*/		
-	$.parseUri = function (str) {
-		var	o   = $.parseUri.options,
+	mw.parseUri = function (str) {
+		var	o   = mw.parseUri.options,
 			m   = o.parser[o.strictMode ? "strict" : "loose"].exec(str),
 			uri = {},
 			i   = 14;
@@ -1907,7 +1915,7 @@ var mwDefaultConf = {
 	* For documentation on its usage see: 
 	* http://stevenlevithan.com/demo/parseuri/js/
 	*/
-	$.parseUri.options = {
+	mw.parseUri.options = {
 		strictMode: false,
 		key: ["source", "protocol", "authority", "userInfo", "user","password","host","port","relative","path","directory","file","query","anchor"],
 		q:   {
@@ -1926,7 +1934,7 @@ var mwDefaultConf = {
 	* @param {String} src path or url
 	* @return {String} absolute url
 	*/
-	$.absoluteUrl = function( src, contextUrl ){
+	mw.absoluteUrl = function( src, contextUrl ){
 		var parsedSrc =  mw.parseUri( src );		
 		// Source is already absolute return:
 		if( parsedSrc.protocol != '')
@@ -1957,7 +1965,7 @@ var mwDefaultConf = {
 	*	false If XML could not be parsed 
 	*
 	*/
-	$.parseXML = function ( str ){
+	mw.parseXML = function ( str ){
 		if ( $j.browser.msie ) {
 			// Attempt to parse as XML for IE
 			var xmldata = new ActiveXObject( "Microsoft.XMLDOM" );
@@ -1993,8 +2001,8 @@ var mwDefaultConf = {
 	* 
 	* NOTE: this function and setup can run prior to jQuery being ready
 	*/
-	$.documentHasPlayerTags = function(){	
-		var rewriteTags = $.getConfig( 'rewritePlayerTags' );			
+	mw.documentHasPlayerTags = function(){	
+		var rewriteTags = mw.getConfig( 'rewritePlayerTags' );			
 		if( rewriteTags ){
 			var jtags = rewriteTags.split( ',' );
 			for ( var i = 0; i < jtags.length; i++ ) {	
@@ -2011,7 +2019,7 @@ var mwDefaultConf = {
 	*/
 	// Flag to ensure setup is only run once:
 	var mwSetupFlag = false;	
-	$.setupMwEmbed = function ( ) {			
+	mw.setupMwEmbed = function ( ) {			
 		// Only run the setup once: 
 		if( mwSetupFlag )
 			return ;			  
@@ -2020,23 +2028,23 @@ var mwDefaultConf = {
 		mw.log( 'mw:setupMwEmbed' );			
 		
 		// Make sure jQuery is loaded 
-		$.load( 'window.jQuery', function(){				
+		mw.load( 'window.jQuery', function(){				
 			if ( !window['$j'] ) {
 				window['$j'] = jQuery.noConflict();
 			}
 			
 					
 			// Only load jquery ui sheet if ui-widget does not exist. 
-			if( ! $.styleRuleExists( 'ui-widget' ) ){
-				$.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
+			if( ! mw.styleRuleExists( 'ui-widget' ) ){
+				mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
 			}
 			
-			$.setConfig( 'skin_img_path', mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/images/' ); 
-			$.setConfig( 'default_video_thumb', mw.getConfig( 'skin_img_path' ) + 'vid_default_thumb.jpg' );
+			mw.setConfig( 'skin_img_path', mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/images/' ); 
+			mw.setConfig( 'default_video_thumb', mw.getConfig( 'skin_img_path' ) + 'vid_default_thumb.jpg' );
 
 			// Make Core skin/style sheets are always available:
 			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
+			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/styles.css' );
 
 			// Set up AJAX to not send dynamic URLs for loading scripts
 			$j.ajaxSetup( {
@@ -2044,17 +2052,17 @@ var mwDefaultConf = {
 			} );
 			
 			//Update the magic keywords 		
-			$.lang.magicSetup();
+			mw.lang.magicSetup();
 			
 			// Set up mvEmbed jQuery bindings
 			mwDojQueryBindings();
 				
 			// Check for tag-rewrites ( sometimes checked twice but ensures fresh dom check )  
-			if( $.documentHasPlayerTags() ){
+			if( mw.documentHasPlayerTags() ){
 				// Load the embedPlayer module ( then run queued hooks )
 				mw.load( 'player', function ( ) {
 					// Rewrite the rewritePlayerTags with the 
-					$j( $.getConfig( 'rewritePlayerTags' ) ).embedPlayer()
+					$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer()
 					// Run mw hooks:
 					mw.runLoadHooks();
 				} );
@@ -2078,7 +2086,7 @@ var mwDefaultConf = {
 	*	false if the rule does not exist
 	* @type {Boolean}
 	*/
-	$.styleRuleExists = function ( styleRule ){
+	mw.styleRuleExists = function ( styleRule ){
 		// Set up the skin paths configuration
 		for( var i=0 ; i < document.styleSheets.length ; i++ ){
 			var rules = null;			
@@ -2102,7 +2110,7 @@ var mwDefaultConf = {
  	* This will get called when the DOM is ready 
  	* Will check configuration and issue a mw.setupMwEmbed call if needed
 	*/
-	$.domReady = function ( ) {
+	mw.domReady = function ( ) {
 		if( mwDomReadyFlag )
 			return ;
 		mw.log( 'run:domReady' );
@@ -2110,20 +2118,20 @@ var mwDefaultConf = {
 		mwDomReadyFlag = true;
 		
 		// Check for the force setup flag:
-		if ( $.getConfig( 'runSetupMwEmbed' ) ){
-			$.setupMwEmbed();
+		if ( mw.getConfig( 'runSetupMwEmbed' ) ){
+			mw.setupMwEmbed();
 			return ;
 		}
 		
 		// Check for rewrite tags: 		
-		if ( $.documentHasPlayerTags() ) {
-			$.setupMwEmbed();
+		if ( mw.documentHasPlayerTags() ) {
+			mw.setupMwEmbed();
 			return ;
 		}		
 		
 		// Check for queued functions that use mw interfaces: 
 		if ( mwOnLoadFuncitons.length ){
-			$.setupMwEmbed();
+			mw.setupMwEmbed();
 			return ;
 		}	
 	}	
@@ -2165,15 +2173,15 @@ mw.addClassFilePaths( {
 	"$j.fn.hoverIntent"	: "jquery/plugins/jquery.hoverIntent.js",
 	"$j.fn.datePicker"	: "jquery/plugins/jquery.datePicker.js",
 	"$j.ui"				: "jquery/jquery.ui/ui/ui.core.js",
-	"$j.fn.ColorPicker"	: "libClipEdit/colorpicker/js/colorpicker.js",
-	"$j.Jcrop"			: "libClipEdit/Jcrop/js/jquery.Jcrop.js",
-	"$j.fn.simpleUploadForm" : "libAddMedia/simpleUploadForm.js",
+	"$j.fn.ColorPicker"	: "modules/libClipEdit/colorpicker/js/colorpicker.js",
+	"$j.Jcrop"			: "modules/libClipEdit/Jcrop/js/jquery.Jcrop.js",
+	"$j.fn.simpleUploadForm" : "modules/libAddMedia/simpleUploadForm.js",
 	
-	"mw.proxy"		: "libMwApi/mw.proxy.js",
+	"mw.proxy"		: "modules/libMwApi/mw.proxy.js",
 	
 	"mw.testLang"	:  "tests/testLang.js",		
 
-	"JSON"				: "libMwApi/json2.js",
+	"JSON"				: "modules/libMwApi/json2.js",
 	"$j.cookie"			: "jquery/plugins/jquery.cookie.js",
 	"$j.contextMenu"	: "jquery/plugins/jquery.contextMenu.js",
 	"$j.fn.suggestions"	: "jquery/plugins/jquery.suggestions.js",
@@ -2204,26 +2212,26 @@ mw.addClassFilePaths( {
 	"$j.ui.draggable"		: "jquery/jquery.ui/ui/ui.draggable.js",
 	"$j.ui.selectable"		: "jquery/jquery.ui/ui/ui.selectable.js",
 
-	"$j.fn.dragDropFile"		: "libAddMedia/dragDropFile.js",
-	"mvFirefogg"			: "libAddMedia/mvFirefogg.js",
-	"mvAdvFirefogg"			: "libAddMedia/mvAdvFirefogg.js",
-	"mvBaseUploadInterface"	: "libAddMedia/mvBaseUploadInterface.js",
-	"remoteSearchDriver"	: "libAddMedia/remoteSearchDriver.js",
-	"seqRemoteSearchDriver" : "libSequencer/seqRemoteSearchDriver.js",
+	"$j.fn.dragDropFile"		: "modules/libAddMedia/dragDropFile.js",
+	"mvFirefogg"			: "modules/libAddMedia/mvFirefogg.js",
+	"mvAdvFirefogg"			: "modules/libAddMedia/mvAdvFirefogg.js",
+	"mvBaseUploadInterface"	: "modules/libAddMedia/mvBaseUploadInterface.js",
+	"remoteSearchDriver"	: "modules/libAddMedia/remoteSearchDriver.js",
+	"seqRemoteSearchDriver" : "modules/libSequencer/seqRemoteSearchDriver.js",
 
-	"baseRemoteSearch"		: "libAddMedia/searchLibs/baseRemoteSearch.js",
-	"mediaWikiSearch"		: "libAddMedia/searchLibs/mediaWikiSearch.js",
-	"metavidSearch"			: "libAddMedia/searchLibs/metavidSearch.js",
-	"archiveOrgSearch"		: "libAddMedia/searchLibs/archiveOrgSearch.js",
-	"flickrSearch"			: "libAddMedia/searchLibs/flickrSearch.js",
-	"baseRemoteSearch"		: "libAddMedia/searchLibs/baseRemoteSearch.js",
+	"baseRemoteSearch"		: "modules/libAddMedia/searchLibs/baseRemoteSearch.js",
+	"mediaWikiSearch"		: "modules/libAddMedia/searchLibs/mediaWikiSearch.js",
+	"metavidSearch"			: "modules/libAddMedia/searchLibs/metavidSearch.js",
+	"archiveOrgSearch"		: "modules/libAddMedia/searchLibs/archiveOrgSearch.js",
+	"flickrSearch"			: "modules/libAddMedia/searchLibs/flickrSearch.js",
+	"baseRemoteSearch"		: "modules/libAddMedia/searchLibs/baseRemoteSearch.js",
 
-	"mvClipEdit"			: "libClipEdit/mvClipEdit.js",
+	"mvClipEdit"			: "modules/libClipEdit/mvClipEdit.js",
 	
-	"mvPlayList"		: "libSequencer/mvPlayList.js",
-	"mvSequencer"		: "libSequencer/mvSequencer.js",
-	"mvFirefoggRender"	: "libSequencer/mvFirefoggRender.js",
-	"mvTimedEffectsEdit": "libSequencer/mvTimedEffectsEdit.js"
+	"mvPlayList"		: "modules/libSequencer/mvPlayList.js",
+	"mvSequencer"		: "modules/libSequencer/mvSequencer.js",
+	"mvFirefoggRender"	: "modules/libSequencer/mvFirefoggRender.js",
+	"mvTimedEffectsEdit": "modules/libSequencer/mvTimedEffectsEdit.js"
 
 } );
 
@@ -2235,11 +2243,15 @@ mw.addClassStyleSheets( {
 	'$j.fn.ColorPicker'	: 'libClipEdit/colorpicker/css/colorpicker.css'
 } );
 
+
+
+
+
 /**
 * libEmbedPlayer Dependency Module Loader:
 *
 * NOTE: this code block could eventually be put in: 
-* "libEmbedPlayer/loader.js" 
+* "modules/libEmbedPlayer/loader.js" 
 * 
 * Then it could be dynamically inserted into mwEmbed requests 
 * at point of release or at runtime via the script-loader.
@@ -2269,23 +2281,23 @@ mw.setConfig( 'timedTextProvider', 'commons' );
 
 // Add class file paths: 
 mw.addClassFilePaths( {
-	"embedPlayer"		: "libEmbedPlayer/embedPlayer.js",
-	"flowplayerEmbed"	: "libEmbedPlayer/flowplayerEmbed.js",
-	"kplayerEmbed"		: "libEmbedPlayer/kplayerEmbed.js",
-	"genericEmbed"		: "libEmbedPlayer/genericEmbed.js",
-	"htmlEmbed"			: "libEmbedPlayer/htmlEmbed.js",
-	"javaEmbed"			: "libEmbedPlayer/javaEmbed.js",
-	"nativeEmbed"		: "libEmbedPlayer/nativeEmbed.js",
-	"quicktimeEmbed"	: "libEmbedPlayer/quicktimeEmbed.js",
-	"vlcEmbed"			: "libEmbedPlayer/vlcEmbed.js",
+	"embedPlayer"		: "modules/libEmbedPlayer/embedPlayer.js",
+	"flowplayerEmbed"	: "modules/libEmbedPlayer/flowplayerEmbed.js",
+	"kplayerEmbed"		: "modules/libEmbedPlayer/kplayerEmbed.js",
+	"genericEmbed"		: "modules/libEmbedPlayer/genericEmbed.js",
+	"htmlEmbed"			: "modules/libEmbedPlayer/htmlEmbed.js",
+	"javaEmbed"			: "modules/libEmbedPlayer/javaEmbed.js",
+	"nativeEmbed"		: "modules/libEmbedPlayer/nativeEmbed.js",
+	"quicktimeEmbed"	: "modules/libEmbedPlayer/quicktimeEmbed.js",
+	"vlcEmbed"			: "modules/libEmbedPlayer/vlcEmbed.js",
 	
 	"ctrlBuilder"	: "skins/ctrlBuilder.js",
 	"kskinConfig"	: "skins/kskin/kskinConfig.js",
 	"mvpcfConfig"	: "skins/mvpcf/mvpcfConfig.js",
 	
-	"$j.fn.menu"	: "libTimedText/jQuery.menu.js",
-	"mw.timedText"	: "libTimedText/mw.timedText.js",
-	"Itext" 		: "libTimedText/Itext.js"
+	"$j.fn.menu"	: "modules/libTimedText/jQuery.menu.js",
+	"mw.timedText"	: "modules/libTimedText/mw.timedText.js",
+	"Itext" 		: "modules/libTimedText/Itext.js"
 
 } );
 
@@ -2293,7 +2305,7 @@ mw.addClassFilePaths( {
 mw.addClassStyleSheets( {
 	"kskinConfig" : "skins/kskin/playerSkin.css",
 	"mvpcfConfig" : "skins/mvpcf/playerSkin.css",
-	"$j.fn.menu" 	: "libTimedText/jQuery.menu.css"
+	"$j.fn.menu" 	: "modules/libTimedText/jQuery.menu.css"
 } );
 
 // Add the module loader function:
@@ -2493,8 +2505,9 @@ function mwDojQueryBindings() {
 		/**
 		 * apiProxy Loader loader:
 		 * 
-		 * @param mode is either 'server' or 'client'
-		 * @param {Object} proxyConfig
+		 * @param {String} mode Mode is either 'server' or 'client'
+		 * @param {Object} proxyConfig Proxy configuration
+		 * @param {Function} callback The function called once proxy request is done
 		 */
 		$.apiProxy = function( mode, proxyConfig, callback ) {
 			mw.log( 'do apiProxy setup' );
@@ -2549,7 +2562,7 @@ function mwDojQueryBindings() {
 
 			// Load the mwEmbed_base skin:
 			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
+			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/styles.css' );
 			// Load all the required libs:
 			mw.load( [
 				[	'remoteSearchDriver',
@@ -2580,7 +2593,7 @@ function mwDojQueryBindings() {
 			options['target_sequence_container'] = this.selector;
 			// Issue a request to get the CSS file (if not already included):
 			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/mv_sequence.css' );
+			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/mv_sequence.css' );
 			// Make sure we have the required mwEmbed libs:			
 			mw.load( [
 				[	//Load the embedPlayer module: 
@@ -2627,7 +2640,7 @@ function mwDojQueryBindings() {
 				
 			// Add the base theme CSS:
 			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skin_name' ) + '/styles.css' );
+			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/styles.css' );
 
 			// Check if we already have Firefogg loaded (the call just updates the element's
 			// properties)			
