@@ -39,8 +39,5 @@ body.rtl .ui-dialog .ui-dialog-buttonpane button {
 	margin: 0 !important;
 }
 .wikieditor-toolbar-table-preview-content * {
-	
-}
-.wikieditor-toolbar-table-preview-content *:hover {
 	cursor: default;
 }
