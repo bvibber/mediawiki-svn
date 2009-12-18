@@ -130,6 +130,12 @@ mw.addMessages( {
 			this.embedPlayer = embedPlayer;	
 			this.options = options;
 			
+			//Load user prefrences config:  
+			preferenceConfig = mw.getUserConfig( 'timedTextConfig' );
+			if( typeof preferenceConfig == 'object' ) {
+				this.config = preferenceConfig;
+			}
+			
 			//Set up embedPlayer hooks:			
 			embedPlayer.addHook( 'monitor', function(){
 				_this.monitor();
@@ -151,37 +157,42 @@ mw.addMessages( {
 		* Show the timed text menu
 		* @param {Object} target to display the menu
 		*/
-		showMenu: function( target ){
+		bindMenu: function( target , autoShow ){
 			var _this = this;
-			mw.log("TimedText:ShowMenu");
-									
+			mw.log( "TimedText:bindMenu" );
+			_this.menuTarget = 	target;							
 			// NOTE: Button target should be an option or config thing
 			var $menuButton = $j('#' + this.embedPlayer.id + ' .timed-text');				
 			$menuButton.unbind().menu( {
 				'content'	: this.buildMenu(),
 				'crumbDefaultText' : ' ',
-				'targetMenuContainer' : target,
-				'autoShow' : true,
-				'backLinkText' : gM( 'mwe-back-btn' ),
-				'selectItemCallback' : function( item ){
-					_this.selectMenuItem( item );
-				}				
+				'targetMenuContainer' : _this.menuTarget,
+				'autoShow' : autoShow,
+				'backLinkText' : gM( 'mwe-back-btn' )							
 			} );
 			 
 		},			
 		
 		/**
+		* Refresh the menu
+		*/
+		refreshMenu: function( ){
+			// Bind the menu without showing it: 
+			this.bindMenu(  this.menuTarget, false );
+		},
+		
+		/**
 		* Monitor video time and update timed text filed[s]  		
 		*/ 
 		monitor: function( ){
-			mw.log(" timed Text monitor: " + this.enabledSources.length );
+			//mw.log(" timed Text monitor: " + this.enabledSources.length );
 			embedPlayer = this.embedPlayer;
-			//setup local refrence to currentTime: 
+			// Setup local reference to currentTime: 
 			var currentTime = embedPlayer.currentTime;					
 			
-			//Get the text per category
+			// Get the text per category
 			var textCategories = [ ];
-			
+						
 			for( var i in this.enabledSources ) {
 				var source =  this.enabledSources[ i ];
 				this.updateSourceDisplay( source, currentTime );
@@ -256,7 +267,7 @@ mw.addMessages( {
 		* 
 		* @param {Element} item Item selected
 		*/
-		selectMenuItem: function( item ){
+		selectMenuItem: function( item ){			
 			mw.log("selectMenuItem: " + $j( item ).find('a').attr('class') );
 		},	
 		
@@ -292,7 +303,7 @@ mw.addMessages( {
 		*/
 		buildMenu: function(){
 			var _this = this; 
-			//build the source list menu item: 						
+			// Build the source list menu item: 						
 			
 			return $j( '<ul>' ).append(						
 				// Chose language option:  											
@@ -319,22 +330,30 @@ mw.addMessages( {
 		
 		/**
 		* Get line item (li) from source object
+		* @param {Object} source Source to get menu line item from
 		*/
-		getLiSource: function( source ){			
+		getLiSource: function( source ){		
+			var _this = this;
 			//See if the source is currently "on"
 			var sourceIcon = ( this.isSourceEnabled( source ) )? 'bullet' : 'radio-on'; 
 			
-			if( source.title )
-				return this.getLi( source.title, sourceIcon )
+			if( source.title ){
+				return this.getLi( source.title, sourceIcon, function(){
+					mw.log(" call selectTextSource");
+					_this.selectTextSource( source ); 
+				});
+			}
 			
 			if( source.lang ){
 				var langKey = source.lang.toLowerCase();
 				mw.languages[ langKey ];
-				return this.getLi( gM('mwe-key-language', 
-					[
-						langKey,  
-						unescape( mw.languages[ source.lang ] ) 
-					] ), sourceIcon 
+				return this.getLi( 
+					gM('mwe-key-language', [langKey,	unescape( mw.languages[ source.lang ] )	] ), 
+					sourceIcon,
+					function(){
+						mw.log(" call selectTextSource");
+						_this.selectTextSource( source ); 
+					} 
 				);
 			}			
 		},				
@@ -344,10 +363,11 @@ mw.addMessages( {
 		* @param {String} string Text to display for the menu item
 		* @param {String} icon jQuery UI icon key 
 		*/
-		getLi: function( string, icon ){			
+		getLi: function( string, icon , callback){			
 			var $li = $j( '<li>' ).append(		
 				$j('<a>')
-					.attr('href', '#')			
+					.attr('href', '#')
+					.click( callback )			
 			)
 			if( icon )
 				$li.find( 'a' ).append(	$j('<span style="float:left;" class="ui-icon ui-icon-' + icon + '"/>') )				
@@ -372,11 +392,79 @@ mw.addMessages( {
 									
 			$ul = $j('<ul>');			
 			$j.each(layoutOptions, function( na, layoutMode ){				
-				var icon = ( _this.config.layout == layoutMode )? 'bullet' : 'radio-on';   
-				$ul.append( _this.getLi( gM( 'mwe-layout-' + layoutMode), icon ) );				
-			});
-			
+				var icon = ( _this.config.layout == layoutMode ) ? 'bullet' : 'radio-on';   
+				$ul.append( 
+					_this.getLi( 
+						gM( 'mwe-layout-' + layoutMode), 
+						icon,
+						function(){		
+							_this.selectLayout( layoutMode );							
+						} ) 
+					)		
+			});			
 			return $ul;
+		},
+		
+		/**
+		* Select a new layout
+		* @param {Object} layoutMode The selected layout mode
+		*/
+		selectLayout: function( layoutMode ){
+			var _this = this;
+			if( layoutMode != _this.config.layout ){			
+				// Update the config and redraw layout
+				_this.config.layout = layoutMode;
+				
+				// Update the user config: 
+				mw.setUserConfig( 'timedTextConfig', _this.config);
+						 
+				// Update the display: 
+				_this.updateLayout();
+			}
+		},
+		
+		/**
+		* Updates the timed text layout ( should be called when  config.layout changes )
+		*/
+		updateLayout: function(){
+			var $player =  $j( '#' + this.embedPlayer.id);	
+			$player.find('.itext').remove();
+			this.refreshDisplay();
+		},
+		
+		/**
+		* Select a new source
+		*
+		* @param {Object} source Source object selected
+		*/
+		selectTextSource: function( source ){
+			mw.log(" select source: " + source.lang );
+			// Remove any other sources selected in sources category
+			if( source.category ){
+				var newEnabledSource = [ ];
+				for( var i in this.enabledSources  ){
+					if( this.enabledSources[i].category != source.category ){
+						newEnabledSource.push( this.enabledSources[i] );
+					}
+				}
+				this.enabledSources = [ ];
+				this.enabledSources = newEnabledSource;
+			}
+			
+			// Refresh the interface: 
+			this.refreshDisplay();			
+		},
+		
+		/**
+		* Refresh the display, updates the timedText layout, menu, and text display 
+		*/
+		refreshDisplay: function(){
+			//Empyt out previus text to force an interface update: 
+			this.prevText = [];
+			// Refresh the Menu:
+			this.refreshMenu();
+			// Issues a "monitor" command to update the timed text for the new layout
+			this.monitor();
 		},
 		
 		/**
@@ -397,19 +485,18 @@ mw.addMessages( {
 					var catKey = source.category ;
 					// Init Category menu item if it does not already exist: 
 					if( !catSourceList[ catKey ] ){						
-						//set up catList pointer: 
+						// Set up catList pointer: 
 						catSourceList[ catKey ] = [ ]						
 					}
-					//append to the source category key menu item:
+					// Append to the source category key menu item:
 					catSourceList[ catKey ].push(
 						_this.getLiSource( source )
 					)		
-				}else{
-					// ( All sources should have a category (depreciate ) 
+				}else{			
 					sourcesWithoutCategory.push( _this.getLiSource( source ) );
 				}
 			}
-			var $langMenu = $j('<ul>')
+			var $langMenu = $j('<ul>');
 			for(var catKey in catSourceList){				
 				$catChildren = $j('<ul>');
 				for(var i in catSourceList[ catKey ]){
@@ -422,8 +509,7 @@ mw.addMessages( {
 						$catChildren
 					)
 				);				 
-			}
-			// ( All sources should have a category (depreciate ) 
+			}		
 			for(var i in sourcesWithoutCategory){
 				$langMenu.append( sourcesWithoutCategory[i] )
 			}			
@@ -432,6 +518,7 @@ mw.addMessages( {
 		
 		/**
 		 * Updates a source display in the interface for a given time
+		 * @param {Object} source Source to update
 		 */
 		updateSourceDisplay: function ( source, time ){
 			
@@ -442,15 +529,18 @@ mw.addMessages( {
 			if( text === this.prevText[ source.category ] )
 				return ;
 			
-			mw.log( ' updateTextDisplay: ' + text );	
+			mw.log( 'updateTextDisplay: ' + text );	
 					
 			var $player =  $j( '#' + this.embedPlayer.id);	
-			var $textTarget = $player.find( '.itext_' + source.category + ' span');
+			var $textTarget = $player.find( '.itext_' + source.category + ' span' );
 			
 			// If we are missing the target add it: 		
 			if( $textTarget.length == 0){
 				this.addItextDiv( source.category )
+				// Re-grab the textTarget:
+				$textTarget = $player.find( '.itext_' + source.category + ' span' );
 			}
+			
 			
 			// If text is "false" fade out the subtitle: 
 			if( text === false ){
@@ -463,15 +553,16 @@ mw.addMessages( {
 				// Update text ( use "html" instead of "text" so that parsers can swap in html for formating
 				$textTarget.html( text );
 			}
-			
+			mw.log( ' len: ' + $textTarget.length + ' ' + $textTarget.html() );
 			// Update the prev text:
 			this.prevText[ source.category ] = text;		
-			
 		},
+		
 		/**
 		 * Add an itext div to the embedPlayer
 		 */
-		addItextDiv: function( category ){			 					
+		addItextDiv: function( category ){			 		
+			mw.log(" addItextDiv: " +  category )			
 			//get the relative positioned player class from the ctrlBuilder:
 			var $player =  $j( '#' + this.embedPlayer.id + ' .' + this.embedPlayer.ctrlBuilder.playerClass );
 			
@@ -490,7 +581,7 @@ mw.addMessages( {
 							'width': '100%',
 							'display': 'block',
     						'opacity': .8,
-							'text-align':'center',							
+							'text-align':'center',											
 						}).append(
 							$j('<span>').css({
 								'color':'white',
@@ -505,9 +596,15 @@ mw.addMessages( {
 						.css({
 							'display': 'block',
 							'width': '100%',
-							'height': '50px',
-							'background-color':'#000'
-						}) 
+							'height': '60px',
+							'background-color':'#000',
+							'text-align':'center',
+							'padding-top':'5px'
+						} ).append(
+							$j('<span>').css( {
+								'color':'white'													
+							} )
+						) 
 				);				
 			}	
 			mw.log( 'should have been appended: ' + $player.find('.itext').length );		
@@ -722,8 +819,8 @@ mw.addMessages( {
 			
 			//
 			if( action == 'showMenu' ) {
-				// setup "showMenu" binding
-				embedPlayer.timedText.showMenu( target );
+				// Bind the menu to the target with autoShow = true
+				embedPlayer.timedText.bindMenu( target, true );
 			}
 		} );		
 	}

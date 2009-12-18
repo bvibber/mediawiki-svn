@@ -7,7 +7,7 @@
 
 //Setup the script local script cache directory
 // ( has to be hard coded rather than config based for fast non-mediawiki config hits )
-$wgScriptCacheDirectory = realpath( dirname( __FILE__ ) ) . '/php/script-cache';
+$wgScriptCacheDirectory = realpath( dirname( __FILE__ ) ) . '/includes/script-cache';
 
 // Check if we are being invoked in a MediaWiki context or stand alone usage:
 if ( !defined( 'MEDIAWIKI' ) && !defined( 'MW_CACHE_SCRIPT_CHECK' ) ){
@@ -16,7 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) && !defined( 'MW_CACHE_SCRIPT_CHECK' ) ){
 	if( $myScriptLoader->outputFromCache() )
 		exit();
 	//Else load up all the config and do normal stand alone ScriptLoader process:
-	require_once( realpath( dirname( __FILE__ ) ) . '/php/noMediaWikiConfig.php' );
+	require_once( realpath( dirname( __FILE__ ) ) . '/includes/noMediaWikiConfig.php' );
 	$myScriptLoader->doScriptLoader();
 }
 
@@ -65,10 +65,10 @@ class jsScriptLoader {
 		$wgEnableScriptMinify, $wgUseFileCache, $wgExtensionMessagesFiles;
 
 		// Load the ExtensionMessagesFiles
-		$wgExtensionMessagesFiles[ 'mwEmbed' ] = realpath( dirname( __FILE__ ) ) . '/php/languages/mwEmbed.i18n.php';
+		$wgExtensionMessagesFiles[ 'mwEmbed' ] = realpath( dirname( __FILE__ ) ) . '/includes/languages/mwEmbed.i18n.php';
 
 		//Load the javascript class paths:
-		require_once( realpath( dirname( __FILE__ ) ) . "/php/jsAutoloadLocalClasses.php");
+		require_once( realpath( dirname( __FILE__ ) ) . "/includes/jsAutoloadLocalClasses.php");
 		wfLoadMwEmbedClassPaths();
 
 		// Reset the requestKey:

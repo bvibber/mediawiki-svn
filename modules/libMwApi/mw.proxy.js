@@ -67,7 +67,7 @@ mw.addMessages( {
 		} else {
 			// Set to default via mediaWiki vars: 
 			
-			$.proxy.client_frame_path =  wgServer + wgScriptPath + '/js2/mwEmbed/libMwApi/NestedCallbackIframe.html';
+			$.proxy.client_frame_path =  wgServer + wgScriptPath + '/js/mwEmbed/libMwApi/NestedCallbackIframe.html';
 		}
 				
 		if ( mw.parseUri( $.proxy.server_frame ).host ==  mw.parseUri( document.URL ).host ) {

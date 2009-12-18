@@ -253,10 +253,10 @@ var vlcEmbed = {
 	/**
 	* Handles play requests
 	*/
-	play : function() {
-		mw.log( 'f:vlcPlay' );		
-		// Call the parent
-		this.parent_play();
+	play : function() {		
+		mw.log( 'f:vlcPlay' );
+		// Update the interface
+		this.parent_play();				
 		if ( this.getPlayerElement() ) {
 			// plugin is already being present send play call: 
 			// clear the message log and enable error logging
