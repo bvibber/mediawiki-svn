@@ -213,7 +213,7 @@ class OutputPage {
 
 		// Load the javascript script class paths
 		if( ! $this->mLoadedJavascriptClasses ){
-			require_once("$IP/js2/mwEmbed/php/jsAutoloadLocalClasses.php");
+			require_once("$IP/js/mwEmbed/includes/jsAutoloadLocalClasses.php");
 			// Issue the load request:
 			wfLoadMwEmbedClassPaths();
 			// Set the flag to true
@@ -289,7 +289,7 @@ class OutputPage {
 		$uriParam = 'uselang=' . $wgLang->getCode();
 
 		if( $wgDebugJavaScript ) {
-			return $uriParam . '&urid=' . time();
+			return $uriParam . '&urid=' . time() . '&debug=true';
 		} else {
 			//support single class_name attr
 			if( gettype( $classAry) == 'string'  ){

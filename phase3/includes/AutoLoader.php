@@ -131,9 +131,9 @@ $wgAutoloadLocalClasses = array(
 	'IndexPager' => 'includes/Pager.php',
 	'Interwiki' => 'includes/Interwiki.php',
 	'IP' => 'includes/IP.php',
-	'JSMin' => 'js2/mwEmbed/php/minify/JSMin.php',
-	'JSMinException' => 'js2/mwEmbed/php/minify/JSMin.php',
-	'jsScriptLoader' => 'js2/mwEmbed/jsScriptLoader.php',
+	'JSMin' => 'js/mwEmbed/includes/minify/JSMin.php',
+	'JSMinException' => 'js/mwEmbed/includes/minify/JSMin.php',
+	'jsScriptLoader' => 'js/mwEmbed/jsScriptLoader.php',
 	'Job' => 'includes/JobQueue.php',
 	'LCStore_DB' => 'includes/LocalisationCache.php',
 	'LCStore_CDB' => 'includes/LocalisationCache.php',
@@ -200,7 +200,7 @@ $wgAutoloadLocalClasses = array(
 	'ReverseChronologicalPager' => 'includes/Pager.php',
 	'Revision' => 'includes/Revision.php',
 	'RSSFeed' => 'includes/Feed.php',
-	'simpleFileCache' => 'js2/mwEmbed/jsScriptLoader.php',
+	'simpleFileCache' => 'js/mwEmbed/jsScriptLoader.php',
 	'Sanitizer' => 'includes/Sanitizer.php',
 	'SiteConfiguration' => 'includes/SiteConfiguration.php',
 	'SiteStats' => 'includes/SiteStats.php',
@@ -633,10 +633,10 @@ $wgJSAutoloadLocalClasses = array(
 	'wikibits' => 'skins/common/wikibits.js',
 
 	// phase 2 javascript:
-	'uploadPage' => 'js2/uploadPage.js',
-	'editPage' => 'js2/editPage.js',
-	'ajaxCategories' => 'js2/ajaxcategories.js',
-	'apiProxyPage'	=> 'js2/apiProxyPage.js'
+	'uploadPage' => 'js/uploadPage.js',
+	'editPage' => 'js/editPage.js',
+	'ajaxCategories' => 'js/ajaxcategories.js',
+	'apiProxyPage'	=> 'js/apiProxyPage.js'
 );
 
 class AutoLoader {

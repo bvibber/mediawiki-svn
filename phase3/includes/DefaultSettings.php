@@ -2847,9 +2847,9 @@ $wgEnableIframeApiProxy = false;
 $wgEnableScriptLocalization = true;
 
 /*
- * path for mwEmbed normally js2/mwEmbed/
+ * path for mwEmbed normally js/mwEmbed/
  */
-$wgMwEmbedDirectory = "js2/mwEmbed/";
+$wgMwEmbedDirectory = "js/mwEmbed/";
 
 /*
  * Turn on debugging for the javascript script-loader & forces fresh copies

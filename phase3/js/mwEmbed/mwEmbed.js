@@ -56,7 +56,7 @@ var mwDefaultConf = {
 	'runSetupMwEmbed' : false,
 	
 	// The mediaWiki path of mvEmbed  
-	'mediaWiki_mwEmbedPath' : 'js2/mwEmbed/',
+	'mediaWiki_mwEmbedPath' : 'js/mwEmbed/',
 	
 	// Api actions that must be submited in a POST, and need an api proxy for cross domain calls
 	'apiPostActions': [ 'login', 'purge', 'rollback', 'delete', 'undelete',

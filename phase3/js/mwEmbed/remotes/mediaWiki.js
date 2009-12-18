@@ -196,19 +196,20 @@ function rewrite_for_OggHandler( vidIdList ) {
 * Get the remote embed Path
 */
 function getRemoteEmbedPath() {
+	//debugger;
 	for ( var i = 0; i < document.getElementsByTagName( 'script' ).length; i++ ) {
 		var s = document.getElementsByTagName( 'script' )[i];
-		if ( s.src.indexOf( '/remoteMwEmbed.js' ) != - 1 ) {
+		if ( s.src.indexOf( '/mediaWiki.js' ) != - 1 ) {
 			var reqStr = '';
 			var scriptPath = '';
 			if ( s.src.indexOf( '?' ) != - 1 ) {
 				reqStr = s.src.substr( s.src.indexOf( '?' ) );
-				scriptPath = s.src.substr( 0,  s.src.indexOf( '?' ) ).replace( '/remoteMwEmbed.js', '' );
+				scriptPath = s.src.substr( 0,  s.src.indexOf( '?' ) ).replace( '/mediaWiki.js', '' );
 			} else {
-				scriptPath = s.src.replace( '/remoteMwEmbed.js', '' )
+				scriptPath = s.src.replace( '/mediaWiki.js', '' )
 			}
 			// Use the external_media_wizard path:
-			return [scriptPath, reqStr];
+			return [scriptPath + '/../../', reqStr];
 		}
 	}
 }
