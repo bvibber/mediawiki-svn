@@ -197,6 +197,12 @@ body.rtl .ui-dialog .ui-dialog-buttonpane button {
 .ui-dialog-content fieldset{ 
 	border: none !important;
 	margin: 0 !important;
+}
+.wikieditor-toolbar-table-preview-content * {
+	
+}
+.wikieditor-toolbar-table-preview-content *:hover {
+	cursor: default;
 }/* wikiEditor toc module */
 .wikiEditor-ui-toc {
 	/* height and width are set dynamically */
