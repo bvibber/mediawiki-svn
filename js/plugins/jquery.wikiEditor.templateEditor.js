@@ -331,11 +331,12 @@ fn: {
 			divider = sanatizedStr.length;
 			doneParsing = true;
 		}
-		nameMatch = wikitext.substring( oldDivider, divider ).match( /[^{\s]+/ );
+		nameMatch = wikitext.substring( 0, divider ).match( /[^{\s]+/ );
 		if ( nameMatch != undefined ) {
-			ranges.push( new Range( oldDivider,nameMatch.index ) ); //whitespace and squiggles upto the name
+			ranges.push( new Range( 0 ,nameMatch.index ) ); //whitespace and squiggles upto the name
+			nameEndMatch = sanatizedStr.substring( 0 , divider ).match( /[^\s]\s*$/ ); //last nonwhitespace character
 			templateNameIndex = ranges.push( new Range( nameMatch.index,
-				nameMatch.index + nameMatch[0].length ) );
+				nameEndMatch.index + 1 ) );
 			templateNameIndex--; //push returns 1 less than the array
 			ranges[templateNameIndex].old = wikitext.substring( ranges[templateNameIndex].begin,
 				ranges[templateNameIndex].end );
@@ -359,7 +360,7 @@ fn: {
 			if ( currentField.indexOf( '=' ) == -1 ) {
 				// anonymous field, gets a number
 				valueBegin = currentField.match( /\S+/ ); //first nonwhitespace character
-				valueBeginIndex = valueBegin.index + oldDivider + 1;
+				valueBeginIndex = valueBegin.index + oldDivider+1;
 				valueEnd = currentField.match( /[^\s]\s*$/ ); //last nonwhitespace character
 				valueEndIndex = valueEnd.index + oldDivider + 2;
 				ranges.push( new Range( ranges[ranges.length-1].end,
@@ -383,7 +384,6 @@ fn: {
 				nameBegin = currentName.match( /\S+/ );
 				if ( nameBegin == null ) {
 					// This is a comment inside a template call / parser abuse. let's not encourage it
-					divider++;
 					currentParamNumber--;
 					continue;
 				}
