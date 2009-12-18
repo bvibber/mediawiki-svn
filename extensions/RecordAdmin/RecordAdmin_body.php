@@ -224,7 +224,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			# Process Find submission (select and render records)
 			if ( count( $posted ) && $wgRequest->getText( 'wpFind' ) ) {
 				$wgOut->addWikiText( "== " . wfMsg( 'recordadmin-searchresult' ) . " ==\n" );
-				$records = $this->getRecords( $type, $posted, $wpTitle, $invert );
+				$records = $this->getRecords( $type, $posted, '=', $wpTitle, $invert );
 				$wgOut->addHTML( $this->renderRecords( $records ) );
 			}
 
