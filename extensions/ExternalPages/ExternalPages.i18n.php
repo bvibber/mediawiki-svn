@@ -438,19 +438,20 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Wpedzich
  */
 $messages['pl'] = array(
 	'externalpages' => 'Strony zewnętrzne',
-	'externalpages-desc' => 'Pobiera i wyświetla strony ze zdalnych stron Fundacji Wikimedia',
+	'externalpages-desc' => 'Pobiera i wyświetla strony ze zdalnych witryn Fundacji Wikimedia',
 	'externalpages-bad-year' => 'Podano nieprawidłowy rok',
 	'externalpages-bad-language' => 'Podano nieprawidłowy język',
 	'externalpages-bad-project' => 'Podano nieprawidłowy projekt',
-	'externalpages-no-project' => 'Nie podano projektu',
-	'externalpages-bad-page' => 'Podano nieprawidłową stronę',
-	'externalpages-no-page' => 'Nie podano strony',
+	'externalpages-no-project' => 'Nie określono projektu',
+	'externalpages-bad-page' => 'Określono nieprawidłową stronę',
+	'externalpages-no-page' => 'Nie określono strony',
 	'externalpages-error-generic' => 'Wystąpił błąd',
-	'externalpages-bad-url' => 'Nie można pobrać URL',
+	'externalpages-bad-url' => 'Nie można pobrać z URL',
 	'externalpages-bad-url-data' => 'Nie można pobrać zawartości strony',
 );
 

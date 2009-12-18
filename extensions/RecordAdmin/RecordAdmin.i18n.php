@@ -1522,20 +1522,21 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'recordadmin' => "Aministrassion d'anotassion",
-	'recordadmin-desc' => "Na [[Special:RecordAdmin|pàgina special]] për trové e modifiché pàgine d'anotassion an dovrand na forma",
-	'recordadmin-categoryempty' => "Al moment a-i é pa gnun sòrt d'anotassion. Për piasì categorisa jë stamp dle anotassion an [[:$1|$1]]",
+	'recordadmin-desc' => "Na [[Special:RecordAdmin|pàgina special]] për trové e modifiché pàgine d'anotassion an dovrand un formolari",
+	'recordadmin-categoryempty' => "Al moment a-i é pa gnun-a sòrt d'anotassion. Për piasì categorisa jë stamp dj'anotassion an [[:$1|$1]]",
 	'recordadmin-select' => 'Selession-a',
-	'recordadmin-createtype' => "Ansëriss ël nòm ëd na neuva sòrt d'anotassion da creé",
+	'recordadmin-createtype' => "Anseriss ël nòm ëd na neuva sòrt d'anotassion da creé",
 	'recordadmin-recordtype' => "sòrt d'anotassion",
 	'recordadmin-newsearch' => 'Neuva $1 arserca',
 	'recordadmin-newrecord' => "Selession-a n'àutra sòrt d'anotassion",
 	'recordadmin-submit' => 'Spediss',
 	'recordadmin-create' => 'Treuva o crea l\'anotassion "$1"',
-	'recordadmin-alreadyexist' => 'Spiasent, "$1" a esist già!',
+	'recordadmin-alreadyexist' => 'Darmagi, "$1" a esist già!',
 	'recordadmin-createsuccess' => 'Creà $1',
 	'recordadmin-createerror' => "A l'é capitaje n'eror an tentand ëd creé ël $1!",
 	'recordadmin-badtitle' => 'Tìtol pa bon!',
@@ -1551,17 +1552,17 @@ $messages['pms'] = array(
 	'recordadmin-updatesuccess' => '$1 modificà',
 	'recordadmin-updateerror' => "A l'é capitaje n'eror an mente dla modìfica",
 	'recordadmin-buttonsave' => 'Salva',
-	'recordadmin-noform' => 'A-i é pa gnun-e forme associà con l\'anotassion "$1"!',
+	'recordadmin-noform' => 'A-i é gnun formolari associà con l\'anotassion "$1"!',
 	'recordadmin-createlink' => 'crea un',
-	'recordadmin-newcreated' => 'Creà $1 neuv da na forma pùblica',
+	'recordadmin-newcreated' => "Creà $1 neuv da 'n formolari pùblich",
 	'recordadmin-summary-typecreated' => 'Creà $1 neuv',
 	'recordadmin-viewlink' => 'varda',
 	'recordadmin-editlink' => 'modìfica',
 	'recordadmin-created' => 'Creà',
 	'recordadmin-modified' => 'Modificà',
 	'recordadmin-actions' => 'Assion',
-	'recordadmin-needscontent' => 'Gionta contnù ...',
-	'recordadmin-editwithform' => 'Modìfica con forma',
+	'recordadmin-needscontent' => 'Gionté contnù ...',
+	'recordadmin-editwithform' => 'Modifiché con un formolari',
 	'recordadmin-typeinfo' => '$1 anotassion',
 	'right-recordadmin' => "Treuva e modifica pàgine d'anotassion",
 );

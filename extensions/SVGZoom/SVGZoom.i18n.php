@@ -171,6 +171,13 @@ $messages['ru'] = array(
 	'svgzoom-desc' => 'Добавляет возможности панорамирования и масштабирования в MediaWiki при просмотре SVG-файлов',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'svgzoom-desc' => 'Lägger till panorerings och zoom-funktioner i MediaWiki när SVG filer visas',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -635,6 +635,7 @@ $messages['sr-el'] = array(
  */
 $messages['sv'] = array(
 	'useroptionstats' => 'Statistik för användarinställningar',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Special page]] för rapport över användarinställnings användandet på MediaWiki',
 	'uos-warn' => 'PHPlot är inte installerat!',
 	'uos-choose' => 'Välj en av följande inställningar: $1',
 	'uos-unknown' => '*Standard',

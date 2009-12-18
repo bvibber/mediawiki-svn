@@ -1182,8 +1182,11 @@ $messages['ja'] = array(
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'readerfeedback' => 'რას ფიქრობთ ამ გვერდის შესახებ?',
 	'readerfeedback-level-1' => 'დაბალი',
 	'readerfeedback-level-3' => 'მაღალი',
+	'readerfeedback-level-4' => 'ჩინებულია',
+	'readerfeedback-submit' => 'გაგზავნა',
 	'readerfeedback-finished' => 'გმადლობთ!',
 );
 
@@ -1527,6 +1530,7 @@ $messages['no'] = array(
 	'readerfeedback-submitting' => 'Sender …',
 	'readerfeedback-finished' => 'Takk!',
 	'readerfeedback-tagfilter' => 'Tagg:',
+	'readerfeedback-tierfilter' => 'Karakter:',
 	'readerfeedback-tier-high' => 'Høy',
 	'readerfeedback-tier-medium' => 'Middels',
 	'readerfeedback-tier-poor' => 'Dårlig',

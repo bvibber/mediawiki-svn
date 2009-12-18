@@ -2285,6 +2285,7 @@ $messages['br'] = array(
 	'configure-setting-wgAllowUserJs' => 'Aotreañ an implijerien da gaout o fajenn JavaScript',
 	'configure-setting-wgUseAjax' => 'Gweredekaat AJAX',
 	'configure-setting-wgLogo' => "URL logo al lec'hienn",
+	'configure-setting-wgUsePathInfo' => 'Implijout URLoù « koant »',
 );
 
 /** Bosnian (Bosanski)

@@ -142,6 +142,13 @@ $messages['nl'] = array(
 	'wikieditor-template-editor-preference' => 'Formuliergebaseerd bewerken van wikisjablonen inschakelen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'wikieditor-template-editor-preference' => 'Aktiver skjemabasert redigering av wikimaler',
+);
+
 /** Polish (Polski)
  * @author Wpedzich
  */

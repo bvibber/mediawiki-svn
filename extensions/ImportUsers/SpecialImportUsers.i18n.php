@@ -220,6 +220,8 @@ $messages['br'] = array(
 	'importusers-uploadfile' => 'Kargañ ar restr',
 	'importusers-form-button' => 'Enporzhiañ',
 	'importusers-user-added' => "Ouzhpennet eo bet an implijer '''$1'''.",
+	'importusers-user-present-update' => "An implijer '''$1''' zo anezhañ dija.
+Hizivaet eo bet.",
 	'importusers-log-summary' => 'Diverradur',
 	'importusers-log-summary-all' => 'Pep tra',
 	'importusers-log-summary-added' => 'Ouzhpennet',

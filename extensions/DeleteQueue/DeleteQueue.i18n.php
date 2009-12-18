@@ -822,6 +822,7 @@ $messages['br'] = array(
 ** Strob
 ** Trezalc'h
 ** E maez ar raktres",
+	'deletequeue-nom-alreadyqueued' => 'Emañ ar bajenn-mañ en ul lostad dilemel dija.',
 	'deletequeue-prod-title' => 'Kinnig diverkañ "$1"',
 	'deletequeue-delnom-reason' => "Abeg ar c'hinnig :",
 	'deletequeue-delnom-otherreason' => 'Abeg all',
@@ -841,6 +842,7 @@ $messages['br'] = array(
 	'deletequeue-list-status' => 'Statud :',
 	'deletequeue-list-search' => 'Klask',
 	'deletequeue-list-header-page' => 'Pajenn',
+	'deletequeue-list-header-queue' => 'Lostad',
 	'deletequeue-list-header-discusspage' => 'Pajenn divizout',
 	'deletequeue-case-page' => 'Pajenn :',
 	'deletequeue-case-reason' => 'Abeg :',

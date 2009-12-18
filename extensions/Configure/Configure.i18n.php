@@ -5049,6 +5049,13 @@ $messages['kaa'] = array(
 	'configure-section-users' => 'Paydalanıwshılar',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Piivaat
+ */
+$messages['kl'] = array(
+	'configure-section-recentchanges' => 'Allannguutit nutaanerusut',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith

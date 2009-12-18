@@ -626,6 +626,9 @@ Dette vil føre deg vekk fra denne redigeringssiden, og du kan miste den nåvær
 	'ajaxLogin2' => 'Er du sikker?
 Du kan miste alle endringene du gjorde på denne siden om du forlater denne siden nå.',
 	'ajaxlogin-create' => 'Opprett en konto',
+	'al-nosuchuser' => 'Det finnes ingen bruker med navnet "$1".
+Brukernavnet skiller mellom store og små bokstaver.
+Kontroller stavingen.',
 );
 
 /** Occitan (Occitan)
