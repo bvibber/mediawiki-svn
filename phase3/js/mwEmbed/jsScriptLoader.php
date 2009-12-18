@@ -144,7 +144,7 @@ class jsScriptLoader {
 
 				// only output js ( no warnings )
 				$cmd.= ' --warning_level QUIET';
-				print "run: $cmd";
+				//print "run: $cmd";
 				// Run the command:
 				$jsMinVal = wfShellExec($cmd , $retval);
 
@@ -152,7 +152,7 @@ class jsScriptLoader {
 				//unlink( $jsFileName );
 
 				if( strlen( $jsMinVal ) != 0 && $retval === 0){
-					die( "used closure" );
+					//die( "used closure" );
 					return $jsMinVal;
 				}
 			}
