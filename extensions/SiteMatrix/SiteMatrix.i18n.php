@@ -946,6 +946,13 @@ $messages['kk-latn'] = array(
 	'sitematrix-others' => 'Basqa Wikimedia jobaları',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Piivaat
+ */
+$messages['kl'] = array(
+	'sitematrix-language' => 'Oqaatsit',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

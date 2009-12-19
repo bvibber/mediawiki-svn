@@ -70,6 +70,39 @@ $3 is the page name for the rated page.',
 	'right-feedback' => '{{doc-right|feedback}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'ratinghistory' => 'Geskiedenis van bladsygraderings',
+	'ratinghistory-leg' => 'Historiese graderingsdata vir [[:$1|$1]]',
+	'ratinghistory-tab' => 'gradering',
+	'ratinghistory-link' => 'Bladsygradering',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Dankie vir u tyd en moeite om die bladsy te gradeer!</font>''",
+	'ratinghistory-period' => 'Tydperk:',
+	'ratinghistory-month' => 'afgelope maand',
+	'ratinghistory-3months' => 'laaste 3 maande',
+	'ratinghistory-year' => 'verlede jaar',
+	'ratinghistory-3years' => 'afgelope 3 jaar',
+	'ratinghistory-ave' => 'Gemiddeld: $1',
+	'ratinghistory-chart' => 'Gradering van lesers oor tyd',
+	'ratinghistory-purge' => 'maak kas skoon',
+	'ratinghistory-table' => 'Oorsig van lesers se graderings',
+	'ratinghistory-users' => 'Gebruikers wat graderings gedoen het',
+	'ratinghistory-graph' => '$2 van "$3" ($1 {{PLURAL:$1|gradering|graderings}})',
+	'ratinghistory-svg' => 'Wys as SVG',
+	'ratinghistory-table-rating' => 'Gradering',
+	'ratinghistory-table-votes' => 'Stemme',
+	'ratinghistory-none' => "Daar is onvoldoende terugvoer van lesers om 'n grafiek op te trek.",
+	'ratinghistory-ratings' => "'''Sleutel:''' '''(1)''' - Swak; '''(2)''' - Laag; '''(3)''' - Redelik; '''(4)''' - Hoog; '''(5)''' - Uitstekend;",
+	'ratinghistory-legend' => "Die '''aantal daaglikse graderings''' <font color=\"red\">''(rooi)''</font>, die '''daaglikse gemiddelde gradering''' <font color=\"blue\">''(blou)''</font> en die '''gemiddelde gradering oor die aangegewe periode''' <font color=\"green\">''(groen)''</font> word hieronder in die grafiek volgens datum vertoon.
+Die '''gemiddelde gradering oor die aangegewe periode''' is die gemiddelde van alle daaglikse gemiddelde graderings ''binne'' die tydperk vir elke dag.
+
+'''(1)''' - Swak; '''(2)''' - Laag; '''(3)''' - Redelik; '''(4)''' - Hoog; '''(5)''' - Uitstekend;",
+	'ratinghistory-graph-scale' => "'''Waarderings per dag''' <font color=\"red\">''(rooi)''</font> word weergegee op die skaal ''1:\$1''.",
+	'right-feedback' => "Gebruik die terugvoervorm om 'n bladsy te waardeer",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -1404,11 +1437,12 @@ $messages['no'] = array(
 	'ratinghistory-table-votes' => 'Stemmer',
 	'ratinghistory-none' => 'Det er ikke nok leservurderinger til å vise grafer ennå.',
 	'ratinghistory-ratings' => "'''Forklaring:''' '''(1)''' – dårlig; '''(2)''' – lav; '''(3)''' – middels; '''(4)''' – høy; '''(5)''' – meget god;",
-	'ratinghistory-legend' => "Den '''daglige gjennomsnittsvurderingen''' <font color=\"blue\">''(blå)''</font> og '''løpende gjennomsnittsvurdering''' <font color=\"green\">''(grønn)''</font> vises i grafen under, etter dato. Den '''løpende gjennomsnittsvurderingen''' er rett og slett gjennomsnittet av all de daglige vurderingene ''innen'' denne tidsperioden for hver dag.
+	'ratinghistory-legend' => "Det '''daglige antall vurderinger''' <font color=\"red\">''(rød)''</font>, den '''daglige gjennomsnittsvurderingen''' <font color=\"blue\">''(blå)''</font> og '''løpende gjennomsnittsvurdering''' <font color=\"green\">''(grønn)''</font> vises i grafen under etter dato.
+Den '''løpende gjennomsnittsvurderingen''' er rett og slett gjennomsnittet av all de daglige vurderingene ''innen'' denne tidsperioden for hver dag.
+Vurderingene er som følger:
 
-Skala: '''[1]''' - Veldig dårlig; '''[2]''' - Dårlig; '''[3]''' - OK; '''[4]''' - Bra; '''[5]''' - Veldig bra;
-
-'''Antallet vurderinger per dag''' <font color=\"red\">''(rød)''</font> vises i grafen under, med skalaen ''1:\$1''.",
+'''[1]''' - Veldig dårlig; '''[2]''' - Dårlig; '''[3]''' - OK; '''[4]''' - Bra; '''[5]''' - Veldig bra;",
+	'ratinghistory-graph-scale' => "'''Vurderinger per dag''' <font color=\"red\">''(rød)''</font> vist i forholdet ''1:\$1''.",
 	'right-feedback' => 'Bruke tilbakemeldingsskjemaet for å vurdere en side',
 );
 

@@ -1406,6 +1406,7 @@ Dette gjer han ved å kalla dei relevante parsersetega frå MediaWiki sjølv.',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'expandtemplates' => 'Utvid maler',
@@ -1417,6 +1418,7 @@ $messages['no'] = array(
 	'expand_templates_xml_output' => 'XML-resultat',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Fjern kommentarer',
+	'expand_templates_remove_nowiki' => 'Ikke vis <nowiki>-merkelapper i resultatet',
 	'expand_templates_generate_xml' => 'Vis parsetre som XML',
 	'expand_templates_preview' => 'Forhåndsvisning',
 );

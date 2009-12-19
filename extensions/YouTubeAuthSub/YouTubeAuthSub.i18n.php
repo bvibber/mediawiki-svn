@@ -1606,6 +1606,21 @@ $messages['ko'] = array(
 	'youtubeauthsub_jserror_nodesc' => '영상에 대한 설명을 입력해 주세요.',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'youtubeauthsub' => 'YouTube видеону джюкле',
+	'youtubeauthsub_title' => 'Башлыкъ',
+	'youtubeauthsub_description' => 'Ачыкълау',
+	'youtubeauthsub_category' => 'Категория',
+	'youtubeauthsub_uploadhere' => 'Видеогъуз былайдан джюкленсин:',
+	'youtubeauthsub_uploadbutton' => 'Джюкле',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Бу видеогъа къараргъа]',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

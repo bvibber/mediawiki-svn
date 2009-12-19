@@ -456,12 +456,15 @@ $messages['nn'] = array(
  * @author Harald Khan
  * @author Jon Harald Søby
  * @author Laaknor
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'ratedpages' => 'Leservurderte sider',
 	'ratedpages-leg' => 'Finn sider med et stort antall vurderinger',
 	'ratedpages-list' => 'Nedenfor er en liste over sider sortert etter lesernes vurdering av dem',
 	'ratedpages-none' => 'Det er ingen sider i denne listen',
 	'ratedpages-graphs' => 'vurderingsdata',
+	'ratedpages-count' => '$1 {{PLURAL:$1|anmeldelse|anmeldelser}}',
 );
 
 /** Occitan (Occitan)

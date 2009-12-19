@@ -308,14 +308,17 @@ $messages['br'] = array(
 	'crosswikiblock' => 'Stankañ an implijer war ur wiki all',
 	'crosswikiblock-reason' => 'Abeg :',
 	'crosswikiblock-submit' => 'Stankañ an implijer-mañ',
+	'crosswikiblock-anononly' => 'Stankañ an implijerien dianv hepken',
 	'crosswikiunblock-reason' => 'Abeg :',
 	'crosswikiunblock-submit' => 'Distankañ an implijer-mañ',
+	'crosswikiblock-nousername' => "N'eo bet roet anv implijer ebet",
 	'crosswikiblock-dbnotfound' => "N'eus ket eus an diaz roadennoù $1",
 	'crosswikiblock-noname' => '« $1 » n’eo ket un anv implijer reizh.',
 	'crosswikiblock-nouser' => 'N\'eo ket bet kavet an implijer "$3".',
 	'crosswikiblock-noreason' => "N'eus bet diferet abeg ebet.",
 	'crosswikiblock-alreadyblocked' => 'Stanket eo an implijer $3 dija.',
 	'crosswikiblock-noblock' => "N'eo ket stanket an implijer-mañ.",
+	'right-crosswikiblock' => 'Stankañ ha distankañ implijerien war wikioù all',
 );
 
 /** Bosnian (Bosanski)

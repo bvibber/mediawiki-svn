@@ -306,6 +306,23 @@ $messages['nl'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Vanwege mogelijke interpretatieproblemen worden alleen berichten in platte tekst (MIME-type text/plain) geaccepteerd.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'sendmailtowiki-desc' => 'Postar lo contengut wiki via una adreça de corrièl dedicada dinamica',
+	'prefs-sendmailtowiki' => 'Publicacion del contengut per corrièl',
+	'sendmailtowiki-inemail' => 'Adreça de corrièl dedicada :',
+	'sendmailtowiki-inpin' => 'PIN :',
+	'prefs-help-sendmailtowiki_pin' => 'Un camp void pel numèro PIN desactiva la publicacion de contengut sul wiki amb vòstre compte.',
+	'sendmailtowiki-err-pinlength' => 'Lo PIN deu conténer exactament 5 chifras.',
+	'sendmailtowiki-err-wrongprefix' => "Prefix de compte wiki erronèu. Contactatz l'administrator.",
+	'sendmailtowiki-err-invalidaccount' => "Compte invalid. Verificatz l'adreça de corrièl de destinacion.",
+	'sendmailtowiki-err-invalidsender' => "Expeditor invalid. Verificatz l'adreça de corrièl d'emission.",
+	'sendmailtowiki-err-invalidpin' => 'PIN invalid. Accès refusat.',
+	'sendmailtowiki-err-onlyplain' => "En rason d'eventualas errors d'interpretacions, sols los messatges que contenon de tèxte brut son acceptats.",
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

@@ -107,11 +107,13 @@ $messages['br'] = array(
 Un evezhiadenn bennak hoc\'h eus d\'ober diwar-benn ar bajenn-mañ ? Ouzhpennit anezhi amañ pe <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} kemmit ar bajenn war-eeun]</span>.',
 	'commentbox-savebutton' => 'Enrollañ an evezhiadenn',
 	'commentbox-name' => 'Anv :',
+	'commentbox-name-explanation' => "<small>(Korvigell: Ma [[Special:UserLogin|lugit amañ]], n'ho po ket da leuniañ gant an dorn ho anv amañ)</small>",
 	'commentbox-log' => 'Evezhiadennoù nevez',
 	'commentbox-first-comment-heading' => '== Evezhiadennoù ==',
 	'commentbox-regex' => '/\\n==\\s*Evezhiadennoù\\s*==\\s*\\n/i',
 	'commentbox-errorpage-title' => 'Ur fazi a zo bet e-pad krouidigezh an evezhiadenn',
 	'commentbox-error-page-nonexistent' => "N'eus ket eus ar bajenn-se!",
+	'commentbox-error-namespace' => "N'eo ket aotreet an evezhiadennoù el lec'h-mañ !",
 	'commentbox-error-empty-comment' => "N'eo ket aotreet an evezhiadennoù goullo",
 );
 
@@ -539,13 +541,23 @@ Har du ein kommentar til denne sida? Legg han til her eller <span class="plainli
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
  * @author Simny
  */
 $messages['no'] = array(
+	'commentbox-desc' => 'Legger til en kommentarboks til enkelte sider',
+	'commentbox-intro' => '== Legg til en kommentar... ==
+Har du en kommentar til denne siden? Legg den til her eller <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} endre siden direkte]</span>.',
+	'commentbox-savebutton' => 'Lagre kommentar',
 	'commentbox-name' => 'Navn:',
+	'commentbox-name-explanation' => '<small>(Tips: Du slipper å skrive inn navnet ditt manuelt her dersom du [[Special:UserLogin|logger inn]].)</small>',
 	'commentbox-log' => 'Nye kommentarer',
 	'commentbox-first-comment-heading' => '== Kommentarer ==',
+	'commentbox-regex' => '/\\n==\\s*Kommentarer\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Det oppsto en feil under oppretting av kommentaren',
 	'commentbox-error-page-nonexistent' => 'Denne siden finnes ikke!',
+	'commentbox-error-namespace' => 'Kommentarer er ikke tillatt i dette navnerommet!',
+	'commentbox-error-empty-comment' => 'Tomme kommentarer er ikke tillatt!',
 );
 
 /** Occitan (Occitan)

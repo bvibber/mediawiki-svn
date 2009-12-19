@@ -47,11 +47,12 @@ The id you need to provide is the numbers and letters between "$2" and "$3".',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Nghtwlkr
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'imstatus-desc' => 'Short description of the IMStatus extension, shown on [[Special:Version]].',
+	'imstatus-desc' => 'Kort beskrivelse av IMStatus-utvidelsen, vist i [[Special:Version]].',
 	'imstatus_default' => '{{Identical|Default}}',
 	'imstatus_example' => '{{Identical|Example}}',
 	'imstatus_live_get_code' => 'The parameters are pieces of static text to help a user find what he needs.
@@ -1028,6 +1029,11 @@ ID\'en du må oppgje er tala og bokstavane mellom  «$2» og «$3».',
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'imstatus-desc' => 'Legg til merkelapper for å vise forskjellige påloggingsstatuser i direktemeldingsprogram (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Syntaks',
+	'imstatus_default' => 'Standard',
+	'imstatus_example' => 'Eksempel',
+	'imstatus_possible_val' => 'Mulige verdier',
 	'imstatus_max' => 'max',
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'eller',

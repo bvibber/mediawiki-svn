@@ -446,6 +446,19 @@ $messages['nn'] = array(
 	'webchat-desc' => 'Legg til ei [[Special:WebChat|spesialside]] for å samtala i realtid med andre wikibrukarar',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'webchat' => 'Nettprat',
+	'webchat-desc' => 'Legger til en [[Special:WebChat|spesialside]] for å prate i sanntid med andre wikibrukere',
+	'webchat-header' => 'Denne spesialsiden tillater deg å samarbeide med andre brukere av wikien i sanntid.
+For å koble på, bare trykk på «Koble til»-knappen.
+Dersom du logget på vil brukernavnet ditt allerede være fyllt inn.
+Anonyme brukere blir automatisk gitt et generert navn, men dette kan endres.',
+	'right-webchat' => 'Tillatt å bruke [[Special:WebChat|nettpraten]]',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

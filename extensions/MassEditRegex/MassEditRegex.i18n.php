@@ -676,6 +676,47 @@ $messages['lb'] = array(
 	'masseditregex-tooltip-execute' => 'Dës Ännerungen op all Säit uwenden',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'masseditregex' => 'Групно уредување со помош на регуларни изрази',
+	'masseditregex-desc' => 'Користете регуларни изрази за да [[Special:MassEditRegex|уредите многу страници во една операција]]',
+	'masseditregextext' => 'Внесете еден или повеќе регуларни изрази (по еден во секој ред) за наоѓање ан совпаѓања, и еден или повеќе изрази кои би го замениле најденото.
+Првиот совпаднат израз, ако е успешно најден, ќе биде заменет со првиот израз за замена, и тн.
+Погледајте го [http://php.net/manual/en/function.preg-replace.php описот на PHP-функцијата preg_replace()] за повеќе детали.',
+	'masseditregex-pagelisttxt' => 'Страници за уредување (не користете префикс со именски простор):',
+	'masseditregex-matchtxt' => 'Пребарај:',
+	'masseditregex-replacetxt' => 'Замени со:',
+	'masseditregex-executebtn' => 'Изврши',
+	'masseditregex-err-nopages' => 'Мора да назначите барем една страница за менување.',
+	'masseditregex-before' => 'Пред',
+	'masseditregex-after' => 'По',
+	'masseditregex-max-preview-diffs' => 'Прегледот е ограничен на {{PLURAL:$1|првото $1 совпаѓање|првите $1 совпаѓања}}.',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|промена|промени}}',
+	'masseditregex-page-not-exists' => '$1 не постои',
+	'masseditregex-num-articles-changed' => '{{PLURAL:$1|Уредена е една $1 страница|Уредени се $1 страници}}',
+	'masseditregex-view-full-summary' => 'Целосен опис на уредувањето',
+	'masseditregex-hint-intro' => 'Еве некои совети и примери за извршување на најчестите задачи:',
+	'masseditregex-hint-headmatch' => 'Совпаѓање',
+	'masseditregex-hint-headreplace' => 'Замена',
+	'masseditregex-hint-headeffect' => 'Резултат',
+	'masseditregex-hint-toappend' => 'Приложете некој текст на крајот на страницата - одлично за додавање страници во категории',
+	'masseditregex-hint-remove' => 'Отстранување на извесен текст од сите страници на листата',
+	'masseditregex-hint-removecat' => 'Отстранете ги сите категории од една страница (обратете внимание на исклучувањето на квадратните загради од викикодот.)
+Вредностите за заменување не треба да се исклучуваат.',
+	'masseditregex-listtype-intro' => 'Ова е листа на:',
+	'masseditregex-listtype-pagenames' => 'Имиња на страниците (уредете ги тие страници)',
+	'masseditregex-listtype-pagename-prefixes' => 'Префикси на имиња на страници (уредете ги страниците чие име започнува со овој текст)',
+	'masseditregex-listtype-categories' => 'Имиња на категориите (уредете ја секоја страница во тие категории; изборот на именски простори се занемарува)',
+	'masseditregex-listtype-backlinks' => 'Обратни врски (уредете страници кои имаат врски до овие)',
+	'masseditregex-namespace-intro' => 'Сите овие страници се наоѓаат во именскиот простор:',
+	'masseditregex-exprnomatch' => 'На изразот „$1“ не му соодветствува ниту една страница.',
+	'masseditregex-badregex' => 'Неважечки регуларен израз:',
+	'masseditregex-editfailed' => 'Уредувањето не успеа:',
+	'masseditregex-tooltip-execute' => 'Примени ги истите промени во секоја страница',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -717,6 +758,13 @@ Voor de te vervangen tekst is escapen niet nodig.',
 	'masseditregex-badregex' => 'Ongeldige reguliere expressie:',
 	'masseditregex-editfailed' => 'Bewerking mislukt:',
 	'masseditregex-tooltip-execute' => 'Deze wijzigingen op iedere pagina toepassen',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'masseditregex-page-not-exists' => '$1 finnes ikke',
 );
 
 /** Occitan (Occitan)

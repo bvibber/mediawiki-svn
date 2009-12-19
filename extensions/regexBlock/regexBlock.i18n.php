@@ -2173,6 +2173,7 @@ Se sètz segur{{GENDER:||a}} que s’agís d’una error, [[$1|contactatz-nos]].
 	'regexblock-form-submit-empty' => 'Indicatz un nom d’utilizaire o una adreça IP de blocar.',
 	'regexblock-form-submit-regex' => 'Expression regulara incorrècta.',
 	'regexblock-form-submit-expiry' => 'Precisatz un periòde d’expiracion.',
+	'regexblock-link' => 'blocar amb una expression racionala',
 	'regexblock-match-stats-record' => "$1 a blocat « $2 » lo « $3 » a « $4 », connectat dempuèi l'adreça « $5 »",
 	'regexblock-nodata-found' => 'Cap de donada pas trobada',
 	'regexblock-stats-title' => 'Estatisticas dels blocatges per expressions regularas',

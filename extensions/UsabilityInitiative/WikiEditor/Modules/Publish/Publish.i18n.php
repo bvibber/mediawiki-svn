@@ -429,6 +429,7 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'wikieditor-publish-dialog-minor' => 'მცირე შესწორება',
+	'wikieditor-publish-dialog-watch' => 'ამ გვერდის თვალთვალი',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -532,6 +533,15 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'wikieditor-publish-preference' => 'Activar la publicacion etapa per etapa',
+	'wikieditor-publish-button-publish' => 'Publicar',
+	'wikieditor-publish-button-cancel' => 'Anullar',
+	'wikieditor-publish-dialog-title' => 'Publicar sus {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => "Resumit de modificacion (descrivètz brèvament los cambiaments qu'avètz aportats) :",
+	'wikieditor-publish-dialog-minor' => 'Modificacion menora',
+	'wikieditor-publish-dialog-watch' => 'Seguir aquesta pagina',
+	'wikieditor-publish-dialog-publish' => 'Publicar',
+	'wikieditor-publish-dialog-goback' => 'Retorn',
 );
 
 /** Polish (Polski)

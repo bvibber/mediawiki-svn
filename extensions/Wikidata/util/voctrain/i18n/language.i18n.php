@@ -750,6 +750,7 @@ $messages['ca'] = array(
 );
 
 /** Czech (Česky)
+ * @author Kuvaly
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
@@ -760,6 +761,11 @@ $messages['cs'] = array(
 	'voctrain_continue' => 'pokračovat',
 	'voctrain_Questions' => 'Otázky',
 	'voctrain_Answers' => 'Odpovědi',
+	'voctrain_User_name' => 'Uživatelské jméno',
+	'voctrain_Password' => 'Heslo',
+	'voctrain_Login' => 'Přihlášení',
+	'voctrain_Create_new_user' => 'Vytvořit nového uživatele',
+	'voctrain_Switch_language' => 'Vyberte jazyk',
 	'voctrain_Language' => 'Jazyk',
 	'voctrain_Log_in' => 'Přihlásit se',
 );

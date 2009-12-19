@@ -744,10 +744,27 @@ Klik op de pijl om alle onder die paginaam geïndexeerde pagina's weer te geven.
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
  * @author Simny
  */
 $messages['no'] = array(
+	'indexfunc-badtitle' => 'Ugyldig tittel: «$1»',
+	'indexfunc-editwarning' => 'Advarsel:
+Denne tittelen brukes i innholdsfortegnelsen for følgende {{PLURAL:$2|side|sider}}:
+$1
+Forsikre deg om at siden du forsøker å opprette ikke allerede eksisterer under en annen tittel.
+Dersom du oppretter denne siden, fjern denne tittelen fra <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|siden|sidene}} over.',
+	'indexfunc-index-exists' => 'Siden «$1» finnes allerede',
+	'indexfunc-movewarn' => 'Advarsel:
+«$1» brukes i innholdsfortegnelsen for følgende {{PLURAL:$3|side|sider}}:
+$2
+Fjern «$1» fra <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|siden|sidene}} over.',
 	'index-search' => 'Søk:',
+	'index-submit' => 'Send',
+	'index-disambig-start' => "'''$1''' kan referere til flere sider:",
+	'index-emptylist' => 'Det er ingen sider koblet til «$1»',
+	'index-hide-detail' => 'Gjem listen over sider',
+	'index-no-results' => 'Søket ga ingen treff',
 );
 
 /** Occitan (Occitan)

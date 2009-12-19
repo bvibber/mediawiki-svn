@@ -700,6 +700,7 @@ Untuk melihat daftar proyek yang valid, gunakan [[MediaWiki:TodoTasksValidProjec
 	'tasklistchooseproj' => 'Pilih proyek:',
 	'tasklistprojdisp' => 'Tayangan',
 	'tasklistbyname' => '== Daftar tugas untuk %s ==',
+	'tasklistnowguseprojects' => 'Anda telah mengatur $wgUseProjects menjadi "false" dan tidak dapat menggunakan halaman ini.',
 	'tasklistnoprojects' => "Kesalahan: Tampaknya Anda mengaktifkan '''\$wgUseProjects''', tapi tidak membuat [[MediaWiki:TodoTasksValidProjects]]. Lihat [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Petunjuk Instalasi] untuk detail lebih lanjut.",
 	'tasklistemailbody' => ',
 
@@ -1075,6 +1076,7 @@ $messages['oc'] = array(
 	'tasklistchooseproj' => 'Projècte seleccionat :',
 	'tasklistprojdisp' => 'Afichar',
 	'tasklistbyname' => '== Lista de prètzfaches de far per %s ==',
+	'tasklistnowguseprojects' => 'Avètz definit $wgUseProjects a « false » e doncas, podètz pas utilizar aquesta pagina.',
 	'tasklistnoprojects' => "Error : sembla qu'avètz activat '''\$wgUseProjects''', mas sens aver creat [[MediaWiki:TodoTasksValidProjects]]. Legissètz las [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instruccions d'installacion] per mai de detalhs.",
 	'tasklistemailbody' => ",
 

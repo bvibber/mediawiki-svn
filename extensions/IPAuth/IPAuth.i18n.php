@@ -191,6 +191,13 @@ $messages['nl'] = array(
 	'ipauth-desc' => 'Automatisch aanmelden van vaste IP-adressen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'ipauth-desc' => 'Automatisk innlogging fra faste IP-adresser',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

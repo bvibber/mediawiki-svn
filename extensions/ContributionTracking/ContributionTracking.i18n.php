@@ -605,7 +605,7 @@ $messages['mk'] = array(
 	'contrib-tracking-error' => 'Грешка',
 	'contrib-tracking-error-text' => 'Неважечко поднесување на образецот',
 	'contrib-tracking-submitting' => 'Поднесувам на обработувачот на плаќања...',
-	'contrib-tracking-continue' => 'Ако не ве пренасочат автоматски, кликнете на копчето за да ја довршите донацијата на PayPal.',
+	'contrib-tracking-continue' => 'Ако се случи да не бидете пренасочени автоматски, кликнете на копчето за да ја довршите донацијата на PayPal.',
 	'contrib-tracking-button' => 'Продолжи',
 );
 

@@ -284,6 +284,16 @@ $messages['nn'] = array(
 	'right-getfamily' => 'Opprett ei familie for pywikipediabot',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'getfamily-desc' => 'Genererer en familiefil for pywikipediabot',
+	'getfamily' => 'Få pywikipediabot-familie',
+	'getfamily-interwikierror' => 'Feil: ikke riktig oppsatt interwiki, kontakt din lokale admin.',
+	'right-getfamily' => 'Opprett en familiefil for pywikipediabot',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

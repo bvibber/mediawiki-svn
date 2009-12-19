@@ -997,6 +997,20 @@ $messages['nn'] = array(
 	'wah-doneuploading' => 'Opplastinga er ferdig. Takk for bidraget ditt.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'wah-short-audio' => '$1-lydfil, $2',
+	'wah-short-video' => '$1-videofil, $2',
+	'wah-short-general' => '$1-mediafil, $2',
+	'wah-long-audio' => '($1-lydfil, lengde $2, $3)',
+	'wah-long-video' => '($1-videofil, lengde $2, $4x$5 pixler, $3)',
+	'wah-long-multiplexed' => '(multiplexet lyd-/videofil, $1, lengde $2, $4x$5 pixler, $3 totalt)',
+	'wah-long-general' => '(mediafil, lengde $2, $3)',
+	'wah-long-error' => '(ffmpeg kunne ikke lese denne filen: $1)',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

@@ -224,7 +224,9 @@ $messages['br'] = array(
 	'formarticleexists' => 'Ar bajenn zo anezhi dija',
 	'formarticleexiststext' => 'Ar bajenn [[$1]] zo anezhi dija.',
 	'formbadpagename' => 'Anv fall evit ar bajenn',
+	'formsavesummary' => "Pajenn nevez oc'h implijout  [[Special:Form/$1|ar furmskrid $1]]",
 	'formsaveerror' => 'Fazi en ur enrollañ ar furmskrid',
+	'formsaveerrortext' => 'Ur fazi a ro bet pa veze enrollet ar bajenn "$1".',
 );
 
 /** Bosnian (Bosanski)

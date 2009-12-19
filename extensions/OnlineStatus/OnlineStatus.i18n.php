@@ -130,6 +130,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'onlinestatus-js-changed' => 'Cheñchet eo bet ho statud da « $1 »',
@@ -140,6 +141,8 @@ $messages['br'] = array(
 	'onlinestatus-toggles-show' => 'Diskouez ma statud war ma fajenn implijer',
 	'onlinestatus-toggle-offline' => 'Ezlinenn',
 	'onlinestatus-toggle-online' => 'Enlinenn',
+	'onlinestatus-pref-onlineonlogin' => "Kemmañ va statud da en linenn p'en em lugan",
+	'onlinestatus-pref-offlineonlogout' => "Kemmañ va statud da ezlinenn p'en em zilugañ",
 );
 
 /** Bosnian (Bosanski)

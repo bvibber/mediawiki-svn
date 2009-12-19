@@ -193,7 +193,9 @@ $messages['br'] = array(
 	'refreshspecial-button' => 'Freskaat ar re ziuzet',
 	'refreshspecial-refreshing' => 'o freskaat ar pajennoù arbennik',
 	'refreshspecial-select-all-pages' => 'Diuzañ an holl bajennoù',
+	'refreshspecial-link-back' => "Distreiñ d'ar bajennoù ispisial",
 	'refreshspecial-db-error' => "C'hwitet : fazi gant an diaz roadennoù",
+	'refreshspecial-no-page' => "N'eus ket a bajenn ispisial",
 	'refreshspecial-reconnected' => 'Adkevreet.',
 	'right-refreshspecial' => 'Freskaat ar pajennoù arbennik',
 );

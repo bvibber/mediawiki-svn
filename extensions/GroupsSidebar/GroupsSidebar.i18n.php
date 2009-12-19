@@ -123,6 +123,20 @@ $messages['nl'] = array(
 	'groupssidebar-desc' => 'Maakt het mogelijk om gebruikersgroepspecifieke elementen in de menubalk weer te geven',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'groupssidebar-desc' => 'Denne utvidelsen tillater sideadminer å inkludere sidebar-element for spesifikke brukergrupper',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'groupssidebar-desc' => "Aquesta extension permet als administrators del site d'enclure d'elements dins la barra laterala en foncion dels gropes de l'utilizaire",
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  */

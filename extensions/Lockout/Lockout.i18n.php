@@ -176,6 +176,13 @@ $messages['nl'] = array(
 	'lockout-desc' => 'Zorgt ervoor dat geblokkeerde gebruikers niet kunnen aanmelden',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'lockout-desc' => 'Forhindre blokkerte brukere fra å logge inn',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -238,6 +245,13 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'lockout-desc' => 'Онемогућава блокиране кориснике да се пријаве',
+);
+
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'lockout-desc' => 'Hindra blockerade användare från att logga in',
 );
 
 /** Turkish (Türkçe)

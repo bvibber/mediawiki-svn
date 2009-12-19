@@ -510,6 +510,7 @@ $messages['br'] = array(
 	'hiderevision-tab' => 'Kuzat an adweladenn',
 	'hiderevision-link' => 'degasadennoù kuzhet an implijer',
 	'hiderevision-status' => 'Adweladenn $1 : $2',
+	'hiderevision-error-missing' => "N'eo ket bet kavet er bank roadennoù.",
 	'oversight' => 'Oversight',
 	'oversight-view' => 'munudoù',
 	'oversight-hidden' => 'Adweladennoù kuzhet',

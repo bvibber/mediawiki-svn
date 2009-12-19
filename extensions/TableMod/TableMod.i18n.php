@@ -247,6 +247,21 @@ $messages['nl'] = array(
 	'tablemod-error-missingid' => 'De eigenschap "ident" ontbreekt in de tag.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'Manipulacion de las wikitaulas',
+	'tablemod-msg-remove' => 'Suprimir',
+	'tablemod-error-format' => 'Aquesta balisa supòrta unicament una taula simpla per balisa, sens cap de tèxte abans o aprèp aquela.',
+	'tablemod-error-colcount' => 'Aquesta balisa supòrta unicament las taulas amb un nombre egal de colomnas per linha al moment de la supression.',
+	'tablemod-error-headcount' => 'Aquesta balisa supòrta unicament las entèstas de taulas sus una sola colomna al moment de la supression.',
+	'tablemod-error-invalidsort' => 'Paramètres de triada invalids.',
+	'tablemod-error-invalidaction' => 'Accion invalida.',
+	'tablemod-error-missingid' => 'Atribut ident mancant dins la balisa.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

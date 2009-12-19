@@ -452,6 +452,7 @@ $messages['no'] = array(
 	'protectsection_desc' => 'Lar godkjente brukere beskytte deler av en side ved å bruke taggen <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Du prøvde å legge til eller fjerne en beskyttet seksjon',
 	'protectsection_modify' => 'Du prøvde å endre beskyttet tekst',
+	'protectsection_add_above' => 'Du forsøkte å legge til tekst foran et beskyttet avsnitt',
 	'protectsection_forbidden' => 'Forbudt',
 	'right-protectsection' => 'Beskytt sideseksjoner',
 );

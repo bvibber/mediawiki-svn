@@ -558,8 +558,15 @@ $messages['br'] = array(
 	'openidxrds' => 'Restr Yadis',
 	'openidconvert' => 'Amdroer OpenID',
 	'openiderror' => 'Fazi gwiriañ',
+	'openidconfigerror' => 'Fazi kefluniadur OpenID',
+	'openidpermission' => 'Fazi gant an aotre OpenID',
+	'openidcancel' => 'Nullet eo bet ar wiriekadur',
 	'openidfailure' => "C'hwitet eo ar gwiriadur",
+	'openidsuccess' => 'Graet eo bet ar wiriekadur',
+	'openidsuccesstext' => "Graet eo bet gwiriekadur ar c'homlec'h OpenID.",
 	'openidusernameprefix' => 'Implijer OpenID',
+	'openidtrustinstructions' => "Gevaskit m'ho peus c'hoant kenrannañ an titouroù gant $1.",
+	'openidallowtrust' => "Aotreañ $1 da gaout fiziañs d'ar gont implijer-se.",
 	'openidoptional' => 'Diret',
 	'openidrequired' => 'Rekis',
 	'openidnickname' => 'Lesanv',
@@ -568,17 +575,23 @@ $messages['br'] = array(
 	'openidlanguage' => 'Yezh',
 	'openidtimezone' => 'Takad eur :',
 	'openidchoosefull' => "Hoc'h anv klok ($1)",
+	'openidchooseurl' => 'Un anv a zo bet dibabet adalek ho OpenID ($1)',
 	'openidchoosemanual' => "Un anv dibabet ganeoc'h :",
 	'openidchooseexisting' => 'Ur gont zo anezhi dija war ar wiki-mañ :',
 	'openidchoosepassword' => 'ger-tremen :',
+	'openidconvertsuccess' => 'Amdroet eo bet davet OpenID',
 	'openidconvertyourstext' => 'Ho OpenID eo dija.',
 	'openidconvertothertext' => 'OpenID un implijer all eo dija.',
 	'openidnousername' => "N'eus bet diferet anv implijer ebet.",
+	'openidbadusername' => 'Un anv implijer fall a zo bet lakaet.',
 	'openidloginlabel' => 'URL OpenID',
 	'openidupdateuserinfo' => 'Hizivaat ma zitouroù personel',
 	'openiddelete' => 'Dilemel an OpenID',
 	'openiddelete-button' => 'Kadarnaat',
+	'openiddelete-sucess' => 'Tennet eo bet an OpenID eus ho kont.',
 	'openid-prefstext' => 'Penndibaboù an [http://openid.net/ OpenID]',
+	'openid-pref-hide' => "Kuzhet ho OpenID war ho pajenn implijer, m'en em lugoc'h gant OpenID.",
+	'openid-urls-desc' => 'OpenID kevredet gant ho kont :',
 	'openid-urls-action' => 'Ober',
 	'openid-urls-delete' => 'Dilemel',
 	'openid-add-url' => 'Ouzhpennañ un OpenID nevez',
@@ -2576,6 +2589,13 @@ panjenengan bisa milih salah siji saka opsi ing ngisor iki.',
  */
 $messages['ka'] = array(
 	'openidtimezone' => 'სასაათო სარტყელი',
+);
+
+/** Kalaallisut (Kalaallisut)
+ * @author Piivaat
+ */
+$messages['kl'] = array(
+	'openidlanguage' => 'Oqaatsit',
 );
 
 /** Khmer (ភាសាខ្មែរ)

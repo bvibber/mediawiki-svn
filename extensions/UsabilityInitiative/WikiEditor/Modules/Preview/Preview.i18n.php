@@ -138,11 +138,13 @@ $messages['de'] = array(
 );
 
 /** Zazaki (Zazaki)
+ * @author Mirzali
  * @author Xoser
  */
 $messages['diq'] = array(
 	'wikieditor-preview-preference' => 'verqeyde miqeyese a bike',
 	'wikieditor-preview-tab' => 'Verqeyd',
+	'wikieditor-preview-changes-tab' => 'Vurnayışi',
 	'wikieditor-preview-loading' => 'Ho bar keno...',
 );
 
@@ -294,6 +296,7 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'wikieditor-preview-changes-tab' => 'ცვლილებები',
+	'wikieditor-preview-loading' => 'იტვირთება...',
 );
 
 /** Korean (한국어)
@@ -376,6 +379,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'wikieditor-preview-preference' => 'Activar la previsualizacion còsta a còsta',
 	'wikieditor-preview-tab' => 'Previsualizacion',
+	'wikieditor-preview-changes-tab' => 'Cambiaments',
 	'wikieditor-preview-loading' => 'Cargament...',
 );
 

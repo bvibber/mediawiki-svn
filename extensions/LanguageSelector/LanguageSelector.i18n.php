@@ -492,6 +492,13 @@ $messages['kk-latn'] = array(
 	'languageselector-setlang' => 'anıqtaw',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Piivaat
+ */
+$messages['kl'] = array(
+	'languageselector' => 'Oqaatsit',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Thearith

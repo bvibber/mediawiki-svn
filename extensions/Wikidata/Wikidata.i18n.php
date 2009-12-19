@@ -6565,6 +6565,13 @@ $messages['kk-tr'] = array(
 	'langman_title' => 'Tilderdi meñgerw',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Piivaat
+ */
+$messages['kl'] = array(
+	'ow_Language' => 'Oqaatsit',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -8383,7 +8390,7 @@ $messages['no'] = array(
 	'datasearch_search_text' => 'Søketekst:',
 	'datasearch_within_words' => 'Innen ordene:',
 	'datasearch_within_ext_ids' => 'Innen eksterne identifikatorer:',
-	'datasearch_showing_only' => 'Viser bare et maksimum av {{PLURAL:$1|ett treff|$1 treff}}.',
+	'datasearch_showing_only' => 'Viser bare et maksimum av {{PLURAL:$1|ett treff|$1 treff}} (utav $2).',
 	'datasearch_match_ext_ids' => 'Eksterne identifikatorer som svarer til <i>$1</i>',
 	'datasearch_match_words' => 'Ord som tilsvarer <i>$1</i> og assosierte betydninger',
 	'datasearch_match_words_lang' => 'Ord i <i>$1</i> som tilsvarer <i>$2</i> og assosierte betydninger',
@@ -8496,7 +8503,7 @@ Velg en samlign for eksportering. Skriv inn en kommaseparert liste av ISO 639-3-
 	'ow_Language' => 'Språk',
 	'ow_LevelAnnotation' => 'Merknad',
 	'ow_LinkAttributeHeader' => 'Lenkeegenskap',
-	'ow_Multiple_meanings' => 'Flere betydninger:',
+	'ow_Multiple_meanings' => 'Flere betydninger av «$1»',
 	'ow_NewExactMeaning' => 'Ny eksakt betydning',
 	'ow_OptionAttribute' => 'Egenskap',
 	'ow_OptionAttributeHeader' => 'Egenskap for alternativ',
@@ -8569,6 +8576,7 @@ Velg en samlign for eksportering. Skriv inn en kommaseparert liste av ISO 639-3-
 	'ow_nstab_definedmeaning' => 'definert betydning',
 	'ow_nstab_edit_copy' => 'endre kopi',
 	'right-addlanguage' => 'Legg til og endre språkinnstillinger',
+	'ow_shown_datasets' => 'Viste datasett',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -8622,7 +8630,7 @@ $messages['oc'] = array(
 	'datasearch_search_text' => 'Tèxte de recercar :',
 	'datasearch_within_words' => 'Dins los mots :',
 	'datasearch_within_ext_ids' => 'Dins los identificators extèrnes :',
-	'datasearch_showing_only' => "Afichatge d'al maximum $1 {{PLURAL:$1|correspondéncia|correspondéncias}}.",
+	'datasearch_showing_only' => "Afichatge d'al maximum {{PLURAL:$1|una correspondéncia|$1 correspondéncias}} ($2 al total).",
 	'datasearch_match_ext_ids' => 'Identificators extèrnes que correspondon a <i>$1</i>',
 	'datasearch_match_words' => 'Mots que correspondon a <i>$1</i> e lor significacion associada',
 	'datasearch_match_words_lang' => 'Los mots en <i>$1</i> que correspondon a <i>$2</i> e lor significacion',
@@ -8738,7 +8746,7 @@ als senses definits dins las autras donadas.</p>",
 	'ow_Language' => 'Lenga',
 	'ow_LevelAnnotation' => 'Anotacion',
 	'ow_LinkAttributeHeader' => 'Atribut del ligam',
-	'ow_Multiple_meanings' => 'Senses multiples :',
+	'ow_Multiple_meanings' => 'Definicions de « $1 »',
 	'ow_NewExactMeaning' => 'Sens exacte novèl',
 	'ow_OptionAttribute' => 'Proprietat',
 	'ow_OptionAttributeHeader' => "Atribut de l'opcion",

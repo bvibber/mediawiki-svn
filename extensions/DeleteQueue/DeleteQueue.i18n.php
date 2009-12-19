@@ -3939,6 +3939,7 @@ Du kan [{{fullurl:{{FULLPAGENAME}}|action=delvote}} leggja inn di eiga støtta f
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Harald Khan
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  * @author Simny
  */
 $messages['no'] = array(
@@ -4025,6 +4026,7 @@ Forsikre deg om at siden kan hurtigslettes ifm. retningslinjene.",
 	'deletequeue-vote-endorse' => 'Støtt sletting.',
 	'deletequeue-vote-object' => 'Gå imot sletting.',
 	'deletequeue-vote-reason' => 'Kommentarer:',
+	'deletequeue-vote-submit' => 'Send',
 	'deletequeue-vote-success-endorse' => 'Du har støttet forslaget om sletting av denne sida.',
 	'deletequeue-vote-success-object' => 'Du har gått imot sletting av denne sida',
 	'deletequeue-showvotes-showingonly-endorse' => 'Viser bare støtte',

@@ -862,6 +862,9 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'code' => "Adweladenn ar c'hod",
+	'code-rev-title' => "r$1 - Adweladenn ar c'hod",
+	'code-comments' => 'Evezhiadennoù',
 	'code-change-removed' => 'lamet :',
 	'code-change-added' => 'ouzhpennet :',
 	'code-old-status' => 'Statud kozh',
@@ -905,6 +908,8 @@ $messages['br'] = array(
 	'code-rev-tags' => 'Balizennoù :',
 	'code-rev-tag-add' => 'Ouzhpennañ balizennoù :',
 	'code-rev-tag-remove' => 'Dilemel balizennoù :',
+	'code-rev-comment-by' => 'Evezhiadenn gant $1',
+	'code-rev-comment-submit' => 'Kinnig an evezhiadenn',
 	'code-rev-comment-preview' => 'Rakwelet',
 	'code-rev-inline-preview' => 'Rakwelet :',
 	'code-rev-diff-link' => 'dif',
@@ -918,6 +923,7 @@ $messages['br'] = array(
 	'code-pathsearch-path' => 'Hent moned :',
 	'code-rev-submit' => "Enrollañ ar c'hemmoù",
 	'code-rev-submit-next' => "Enrollañ & kudenn war-lerc'h",
+	'code-batch-status' => 'Kemmañ ar statud :',
 	'code-batch-tags' => 'Kemmañ ar balizennoù :',
 	'codereview-batch-title' => 'Kemmañ an holl adweladennoù diuzet',
 	'codereview-batch-submit' => 'Kas',
@@ -927,6 +933,7 @@ $messages['br'] = array(
 	'repoadmin-edit-bug' => 'Hent moned Bugzilla :',
 	'repoadmin-edit-view' => 'Hent moned ViewVC :',
 	'repoadmin-edit-button' => 'Mat eo',
+	'specialpages-group-developer' => 'Ostilhoù an diorroer',
 );
 
 /** Bosnian (Bosanski)
@@ -5796,11 +5803,14 @@ $messages['no'] = array(
 	'code-change-tags' => "endret '''taggene''' for r$1",
 	'code-change-removed' => 'fjernet:',
 	'code-change-added' => 'la til:',
+	'code-old-status' => 'Gammel status',
+	'code-new-status' => 'Ny status',
 	'code-prop-changes' => 'Logg for status og tagging',
 	'code-desc' => '[[Special:Code|Kodegjennomgangsverktøy]] med [[Special:RepoAdmin|støtte for Subversion]]',
 	'code-no-repo' => 'Ingen database konfigurert!',
 	'code-load-diff' => 'Laster diff...',
 	'code-notes' => 'Siste kommentarer',
+	'code-statuschanges' => 'statusendringer',
 	'code-authors' => 'forfattere',
 	'code-status' => 'status',
 	'code-tags' => 'tagger',

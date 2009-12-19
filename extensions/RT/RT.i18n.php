@@ -449,6 +449,7 @@ Du prøvde: '''$1'''",
 Du prøvde: '''$1'''",
 	'rt-badowner' => "Ugyldig owner (o) argument: må være et gyldig brukernavn.
 Du prøvde: '''$1'''",
+	'rt-nomatches' => 'Ingen matchende RT-billetter ble funnet',
 );
 
 /** Occitan (Occitan)

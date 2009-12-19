@@ -196,8 +196,12 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'spamdifftool' => 'Merañ roll du ar stroboù',
+	'spamdifftool_cantedit' => "Digarezit - n'oc'h ket aotreet kemmañ marilh du ar stroboù",
+	'spamdifftool_summary' => 'Ouzhpennañ da roll du ar stroboù',
 	'spamdifftool_no_urls_detected' => "N'eus bet dinoet url ebet.
 Klikit <a href='$1'>amañ</a> evit distreiñ.",
+	'spamdifftool_spam_link_text' => "ouzhpennañ d'ar stroboù",
 	'spamdifftool_option_none' => 'netra',
 	'spamdifftool_block' => 'Stankañ :',
 	'spamdifftool_submit_buttom' => 'Kas',

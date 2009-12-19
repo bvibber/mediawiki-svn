@@ -503,6 +503,13 @@ Zie ook de [[Special:MostRevisors|'''pagina's met de meeste bewerkers''']] en [[
 	'cooperationstatistics-legendmore' => 'of meer bewerkers.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|side|sider}}',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

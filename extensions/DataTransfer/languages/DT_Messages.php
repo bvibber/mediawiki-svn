@@ -267,7 +267,9 @@ $messages['br'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Testenn dieub',
 	'importxml' => 'Enporzhiañ  XML',
+	'dt_import_editsummary' => 'Emporzhadur $1',
 	'dt_import_importing' => "Oc'h enporzhiañ...",
+	'dt_import_success' => '$1 {{PLURAL:$1|pajenn|pajenn}} a vo krouet adalek ar restr $2.',
 );
 
 /** Bosnian (Bosanski)

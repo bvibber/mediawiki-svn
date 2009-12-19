@@ -210,6 +210,13 @@ $messages['nl'] = array(
 Doe dit als volgt: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'stockcharts-desc' => 'Legger til en <nowiki><stockchart ticker="AAPL"/></nowiki>-merkelapp for et interaktivt aksjekart',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -281,6 +288,15 @@ $messages['sk'] = array(
 	'stockcharts-desc' => 'Pridáva značku <nowiki><stockchart ticker="AAPL"/></nowiki> pre interaktívny graf finančnej burzy',
 	'stockcharts-missingticker' => 'Na vloženie grafu burzy musíte uviesť aspoň atribút ticker.
 Použite: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'stockcharts-desc' => 'Lägger till en <nowiki><stockchart ticker="AAPL"/></nowiki>-tag för ett interaktivt aktiediagram',
+	'stockcharts-missingticker' => 'För att lägga in ett aktiediagram måste du ange minst en ticker.
+Använd: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
 /** Vietnamese (Tiếng Việt)

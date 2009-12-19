@@ -1210,6 +1210,18 @@ $messages['nn'] = array(
 	'qp_stats_link' => 'Statistikk',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'qp_vote_button' => 'Stem',
+	'qp_vote_again_button' => 'Endre din stemme',
+	'qp_votes_count' => '{{PLURAL:$1|Én stemme|$1 stemmer}}',
+	'qp_source_link' => 'Kilde',
+	'qp_stats_link' => 'Statistikk',
+	'qp_users_link' => 'Brukere',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

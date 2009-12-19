@@ -260,6 +260,8 @@ $messages['br'] = array(
 	'imagetagging-article' => 'Pajenn :',
 	'imagetagging-imghistory' => 'Istor',
 	'imagetagging-images' => 'skeudennoù',
+	'imagetagging-inthisimage' => 'Er skeudenn-se : $1',
+	'imagetagging-new' => '<sup><span style="color:red">Nevez!</span></sup>',
 	'imagetagging-removetag' => 'Lemel ar valizenn',
 	'imagetagging-done-button' => 'Graet eo ar balizennañ',
 	'imagetagging-tag-button' => 'Balizenn',

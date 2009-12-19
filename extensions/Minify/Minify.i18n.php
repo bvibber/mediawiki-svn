@@ -193,6 +193,13 @@ $messages['nl'] = array(
 	'minify-desc' => 'Verkleint CSS- en JavaScript-uitvoer van action=raw',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'minify-desc' => 'Minimerer CSS- og JavaScript-utdata fra action=raw',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

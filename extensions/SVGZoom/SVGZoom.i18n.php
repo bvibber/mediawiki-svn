@@ -143,6 +143,20 @@ $messages['nl'] = array(
 	'svgzoom-desc' => 'Voegt mogelijkheden toe om SVG-bestanden te roteren, vergroten en verkleinen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'svgzoom-desc' => 'Legger til panorerings- og zoomegenskaper i MediaWiki når SVG-filer vises',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'svgzoom-desc' => 'Apond a MediaWiki las capacitats de zoom e de vista panoramica al moment de la visualizacion de fichièrs SVG',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

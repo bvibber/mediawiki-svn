@@ -203,6 +203,13 @@ $messages['nl'] = array(
 	'interlanguage-desc' => 'Haalt intertaalverwijzingen uit een andere wiki',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'interlanguage-desc' => 'Henter språklenker fra andre wikier',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

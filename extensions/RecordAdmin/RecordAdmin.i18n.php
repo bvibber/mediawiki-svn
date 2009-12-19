@@ -1412,6 +1412,23 @@ $messages['nn'] = array(
 	'right-recordadmin' => 'Finn og gjer endringar på oppføringssider',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'recordadmin-select' => 'Velg',
+	'recordadmin-buttonsearch' => 'Søk',
+	'recordadmin-buttoncreate' => 'Opprett',
+	'recordadmin-buttonreset' => 'Nullstill',
+	'recordadmin-searchresult' => 'Søkeresultat',
+	'recordadmin-viewlink' => 'vis',
+	'recordadmin-editlink' => 'endre',
+	'recordadmin-created' => 'Opprettet',
+	'recordadmin-modified' => 'Endret',
+	'recordadmin-actions' => 'Handlinger',
+	'recordadmin-needscontent' => 'Legg til innhold...',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

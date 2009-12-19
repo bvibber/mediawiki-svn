@@ -2254,10 +2254,14 @@ $messages['br'] = array(
 	'configure-setting-wgFileStore' => "Pelec'h stokañ ar restroù dilamet",
 	'configure-setting-wgHTTPProxy' => 'Proksi HTTP da implijout',
 	'configure-setting-wgVersion' => 'Stumm MediaWiki',
+	'configure-setting-wgLogHeaders' => 'Deskrivadur ar marilhoù',
 	'configure-setting-wgLogNames' => 'Anvioù ar marilhoù',
+	'configure-setting-wgLogRestrictions-key' => 'Doare ar marilh',
+	'configure-setting-wgLogTypes' => 'Doare ar marilhoù',
 	'configure-setting-wgSpecialPageGroups-key' => 'Strollad',
 	'configure-setting-wgAutopromote-value' => 'Divizoù',
 	'configure-setting-wgEnableAPI' => 'Gweredekaat an API',
+	'configure-setting-wgPasswordSalt' => 'Rinegadenn diorroet ar gerioù tremen.',
 	'configure-setting-wgSMTP' => 'Servijer SMTP',
 	'configure-setting-wgDebugLogGroups-value' => 'Restr',
 	'configure-setting-wgCookieSecure' => 'Toupinoù suraet',
@@ -10701,6 +10705,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'configure-setting-wgExtraLanguageNames-value' => 'Navn',
 	'configure-setting-wgVersion' => 'MediaWiki-versjon',
 	'configure-setting-wgAllowSpecialInclusion' => 'Tillat inkludering av spesialsider',
 	'configure-setting-wgExportAllowHistory' => 'Tillat eksportering for å inkludere hele historikken',
