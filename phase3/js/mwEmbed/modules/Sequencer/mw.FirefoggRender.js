@@ -1,7 +1,7 @@
 /*
  * Handles driving the firefogg render system 
 */
-var mvFirefoggRender = function( options ) {
+mw.FirefoggRender = function( options ) {
 	return this.init( options );
 };
 var default_render_options = {
@@ -13,8 +13,8 @@ var default_FirefoggRender_options = {
 	// if we should save to disk (if false setup upload stuff below) 
 	save_to_disk:true
 }
-// set up the mvPlaylist object
-mvFirefoggRender.prototype = {
+// Set up the mvPlaylist object
+mw.FirefoggRender.prototype = {
 	// default empty render options: 
 	renderOptions: { },
 	continue_rendering:false,

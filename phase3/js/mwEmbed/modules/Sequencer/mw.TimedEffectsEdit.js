@@ -37,12 +37,12 @@ var default_timed_effect_values = {
 	'edit_action': null, 
 };
 
-var mvTimedEffectsEdit = function( options ) {
+mw.TimedEffectsEdit = function( options ) {
 	return this.init( options );
 };
 
 // Set up the TimedEffectsEdit object
-mvTimedEffectsEdit.prototype = {
+mw.TimedEffectsEdit.prototype = {
 	
 	// Menu_items Object contains: default html, js setup/loader functions
 	menu_items : {

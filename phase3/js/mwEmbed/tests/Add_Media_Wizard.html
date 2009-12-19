@@ -14,25 +14,26 @@
  	<script type="text/javascript" src="../mwEmbed.js?debug=true"></script> 
  	<!-- <script type="text/javascript" src="../jsScriptLoader.php?class=window.jQuery,mwEmbed,remoteSearchDriver,$j.ui,$j.ui.resizable,$j.ui.draggable,$j.ui.dialog,$j.ui.tabs,$j.ui.sortable,$j.cookie,baseRemoteSearch&urid=1257728132531&debug=true&uselang=en"></script> -->
  	<script type="text/javascript">
- 	mw.addOnloadHook(function(){
- 	
- 		$j('#add_media_link').addMediaWiz( {
-			'profile' : 'html_edit',			
-			'target_textbox' : '#wpTextbox1',
-			'target_render_area' : '#inline_append',			
-			'import_url_mode' : 'remote_link',	
-			'remote_insert_description' : true,
-			//note selections in the textbox will take over the default query
-			'default_query': 'fish',	
-			
-			//we only enabled commons
-        	//(since javascript includes from other servers would be problamatic ) in a default install
-            //** but you can set this to 'all' to pull from multiple repositories  
-            'enabled_providers' : ['all'],        	
-			
-			//the local wiki api url: 
-			'local_wiki_api_url': 'none'
-		});					
+ 	mw.ready(function(){
+ 		mw.load( 'AddMedia.addMediaWizard', function(){
+ 			$j('#add_media_link').addMediaWizard( {
+				'profile' : 'html_edit',			
+				'target_textbox' : '#wpTextbox1',
+				'target_render_area' : '#inline_append',			
+				'import_url_mode' : 'remote_link',	
+				'remote_insert_description' : true,
+				//note selections in the textbox will take over the default query
+				'default_query': 'fish',	
+				
+				//we only enabled commons
+	        	//(since javascript includes from other servers would be problamatic ) in a default install
+	            //** but you can set this to 'all' to pull from multiple repositories  
+	            'enabled_providers' : ['all'],        	
+				
+				//the local wiki api url: 
+				'local_wiki_api_url': 'none'
+			} );			
+ 		} ); 			
 	});	
 	
  	</script> 

@@ -36,7 +36,7 @@ if( $myScriptLoader->outputFromCache() ){
 
 // include WebStart.php
 ob_start();
-require_once('includes/WebStart.php');
+require_once('includes/WebStart.php'); //60ms
 $webstartwhitespace = ob_end_clean();
 
 wfProfileIn( 'mwScriptLoader.php' );

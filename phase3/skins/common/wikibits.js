@@ -36,7 +36,7 @@ if (!window.onloadFuncts) {
 	var onloadFuncts = [];
 }
 
-// code that is dependent on js2 functions should use mw.addOnloadHook
+// code that is dependent on js2 functions should use mw.ready
 function addOnloadHook(hookFunct) {
 	// Allows add-on scripts to add onload functions
 	if(!doneOnloadHook) {

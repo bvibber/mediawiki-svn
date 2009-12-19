@@ -25,12 +25,35 @@ if ( !window['mw'] ) {
 	window['mw'] = { }
 }
 
-
 /**
 * Default global config values. Configuration values are set via mw.setConfig
 * Configuration values should generally be set prior to dom-ready 
 */  
 var mwDefaultConf = {
+
+	/**
+	* The set of modules that you want enable. 
+	*
+	* Modules must define a loader.js file in the root
+	*  of the module folder. 
+	*
+	* The loader file only defines entry points and dependencies
+	*  Enabling a module will only result in the module code being loaded 
+	*  if its used. 
+	*
+	* When using the scriptLoader the enabledModules loader code
+	*  is transcluded into base mwEmbed class include.  
+	*/
+	'enabledModules' : [
+		'AddMedia',
+		'ClipEdit',
+		'EmbedPlayer',
+		'ApiProxy',
+		'Sequencer',
+		'TimedText'	
+	],
+
+
 	// Default skin name
 	'skinName' : 'mvpcf',
 	
@@ -38,10 +61,10 @@ var mwDefaultConf = {
 	'jui_skin' : 'redmond',	
 	
 	/**
-	* If jQuery / mwEmbed should always be loaded.
+	* If jQuery / mwEmbed should be loaded.
 	*
-	* mwEmbedSetup ignores this flag and is run if:  
-	*  Script calls mw.addOnloadHook ( callback_function )
+	* This flag is automatically set to true if: 
+	*  any script calls mw.ready ( callback_function )
 	*  Page DOM includes any tags set in config.rewritePlayerTags at onDomReady 
 	*
 	* This flag increases page performance on pages that do not use mwEmbed 
@@ -55,6 +78,10 @@ var mwDefaultConf = {
 	*/ 
 	'runSetupMwEmbed' : false,
 	
+	// What tags will be re-written to video player by default
+	// Set to empty string or null to avoid automatic tag rewrites 
+	'rewritePlayerTags': 'video,audio,playlist',
+
 	// The mediaWiki path of mvEmbed  
 	'mediaWiki_mwEmbedPath' : 'js/mwEmbed/',
 	
@@ -818,12 +845,7 @@ var mwDefaultConf = {
 		* 	true interface should continue function execution
 		*	false interface should stop or return from method
 		*/
-		targetObj.runHook = function( hookName ){		
-			var cat = targetObj;
-			var catHook = targetObj.hooks[ hookName ]; 	
-			var dog = this;			
-			var dogHOok = this.hooks[ hookName ];
-					
+		targetObj.runHook = function( hookName ){								
 			if( this.hooks[ hookName ] ){
 				for( var i in this.hooks[ hookName ]){
 					if( typeof( this.hooks[ hookName ][ i ] ) == 'function'){
@@ -869,7 +891,6 @@ var mwDefaultConf = {
 		* 	{String} Name of a module to be loaded
 		* 		Modules are added via addModuleLoader and can define custom
 		* 		code needed to load the module dependencies
-		*		Module loader function should accept a callback argument
 		*
 		*	{String} Name of a class to loaded. 
 		* 		Classes are added via addClassFilePaths function
@@ -927,8 +948,12 @@ var mwDefaultConf = {
 				return ;
 			}
 			
-			// Try loading as a "file"
+			// Try loading as a "file"?
 			if( loadRequest ) { 
+				mw.log("Loading as \"file\" : " + loadRequest );
+				if( loadRequest.indexOf( '.js' ) == -1 ){
+					mw.log( 'Error: are you sure ' + loadRequest + ' is a file ( is it missing a class path? ) ' );
+				}
 				mw.getScript( loadRequest, callback );
 				return ;
 			}
@@ -1112,7 +1137,7 @@ var mwDefaultConf = {
 			
 			// Issue the request to load the class (include class name in result callback:					
 			mw.getScript( scriptRequest, function( scriptRequest ) {
-				mw.log(" on : " + scriptRequest );
+				mw.log(" got : " + scriptRequest );
 				if(! mw.isset( className )){
 					mw.log( ' Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.classPaths[ className ] );
 				}else{
@@ -1127,8 +1152,7 @@ var mwDefaultConf = {
 			// In the case of a "class" we can pull the javascript state until its ready
 			setTimeout( function(){
 				mw.waitForObject( className, function( className ){								
-					if( callback ){
-						mw.log( " waitForObject callback for: " + className );
+					if( callback ){						
 						callback( className );
 						callback = null;
 					}
@@ -1394,9 +1418,8 @@ var mwDefaultConf = {
 	*	number of times waitForObject has been called 
 	*/
 	var waitTime = 1200; // About 30 seconds 
-	mw.waitForObject = function( objectName, callback, _callNumber){
-		//mw.log( 'waitForObject: ' + objectName  + ' cn: ' + _callNumber);
-				
+	mw.waitForObject = function( objectName, callback, _callNumber){	
+		//mw.log( 'waitForObject: ' + objectName  + ' cn: ' + _callNumber);				
 		// Increment callNumber: 
 		if( !_callNumber ){ 
 			_callNumber = 1;
@@ -1501,12 +1524,13 @@ var mwDefaultConf = {
 	* Will ensure jQuery is available, is in the $j namespace 
 	* and mw interfaces and configuration has been loaded and applied
 	* 
-	* this is different from jQuery(document).ready() 
-	* ( jQuery ready is not friendly with dynamic includes and core interface asynchronous build out.) 
+	* This is different from jQuery(document).ready() 
+	* ( jQuery ready is not friendly with dynamic includes
+	*  and core interface asynchronous build out. ) 
 	*
 	* @param {Function} callback Function to run once DOM and jQuery are ready
 	*/
-	mw.addOnloadHook = function( callback ){		
+	mw.ready = function( callback ){		
 		mw.log('addOnloadHook:: ' );		
 		if( mwReadyFlag === false ){
 		
@@ -1520,7 +1544,7 @@ var mwDefaultConf = {
 				mw.setConfig( 'runSetupMwEmbed', true );
 			}else{
 				mw.log( 'run setup directly' );
-				//DOM is already ready run setup directly:
+				//DOM is already ready run setup directly ( will run mwOnLoadFuncitons on finish )
 				mw.setupMwEmbed(); 
 			} 			
 			
@@ -1557,17 +1581,22 @@ var mwDefaultConf = {
 		// Set the base url based scriptLoader availability & type of scriptRequest
 		// ( presently script loader only handles "classes" not relative urls: 
 		var slpath = mw.getScriptLoaderPath();
-		if( slpath && scriptRequest.indexOf('://') == -1 && scriptRequest.indexOf('/') !== 0 ) {
+		// Check if its a relative path name, ( ie does not start with "/" and does not include :// 
+		var isRelativePath = ( scriptRequest.indexOf('://') == -1 && scriptRequest.indexOf('/') !== 0 )? true : false; 
+		if( slpath &&  isRelativePath ) {
 			url = slpath + '?class=' + scriptRequest;
 		}else{
-			url = scriptRequest;
+			// Add the mwEmbed path if a relative path request
+			url = ( isRelativePath )? mw.getMwEmbedPath() : '';
+			url+= scriptRequest; 
 		}
 	
 		// Add on the request parameters to the url:
-		url += ( url.indexOf( '?' ) === -1 )? '?' : '&';				
+		url += ( url.indexOf( '?' ) == -1 )? '?' : '&';				
 		url += mw.getUrlParam();		
 				
-		
+				
+		mw.log( 'mw.getScript: ' + url );
 		// If jQuery is available and debug is off get the scirpt j 
 		if( mw.isset( 'window.jQuery' ) && mw.getConfig( 'debug' ) === false ) {
 			$j.getScript( url, function(){
@@ -1575,8 +1604,7 @@ var mwDefaultConf = {
 					callback( scriptRequest );
 			}); 
 			return ;
-		}
-		mw.log( 'mw.getScript: ' + url );		
+		}			
 		/**
 		* No jQuery 
 		*  OR 
@@ -2001,7 +2029,7 @@ var mwDefaultConf = {
 	* 
 	* NOTE: this function and setup can run prior to jQuery being ready
 	*/
-	mw.documentHasPlayerTags = function(){	
+	mw.documentHasPlayerTags = function(){
 		var rewriteTags = mw.getConfig( 'rewritePlayerTags' );			
 		if( rewriteTags ){
 			var jtags = rewriteTags.split( ',' );
@@ -2029,12 +2057,14 @@ var mwDefaultConf = {
 		
 		// Make sure jQuery is loaded 
 		mw.load( 'window.jQuery', function(){				
+						
 			if ( !window['$j'] ) {
 				window['$j'] = jQuery.noConflict();
 			}
 			
-					
-			// Only load jquery ui sheet if ui-widget does not exist. 
+			mw.log(" loadded all ~loaders~ " );
+				
+			// Only load jquery ui theme sheet if ui-widget does not exist. 
 			if( ! mw.styleRuleExists( 'ui-widget' ) ){
 				mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
 			}
@@ -2054,23 +2084,50 @@ var mwDefaultConf = {
 			//Update the magic keywords 		
 			mw.lang.magicSetup();
 			
-			// Set up mvEmbed jQuery bindings
+			// Set up mvEmbed utility jQuery bindings
 			mwDojQueryBindings();
-				
-			// Check for tag-rewrites ( sometimes checked twice but ensures fresh dom check )  
-			if( mw.documentHasPlayerTags() ){
-				// Load the embedPlayer module ( then run queued hooks )
-				mw.load( 'player', function ( ) {
-					// Rewrite the rewritePlayerTags with the 
-					$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer()
-					// Run mw hooks:
+			
+			//Make sure we have all the module loaders
+			mw.moduleLoaderCheck( function(){
+			
+				// Check DOM for tag-rewrites  
+				if( mw.documentHasPlayerTags() ){
+					// Load the embedPlayer module ( then run queued hooks )
+					mw.load( 'EmbedPlayer', function ( ) {
+						// Rewrite the rewritePlayerTags with the 
+						$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer()
+						// Run mw hooks:
+						mw.runLoadHooks();
+					} );
+				} else {		
+					// Set ready state and run the callback
 					mw.runLoadHooks();
-				} );
-			}else{		
-				// Set ready state and run the callback
-				mw.runLoadHooks();
-			}
+				}
+			});
 		} ); 			
+	}
+	
+	/**
+	* Check for module loaders
+	*  loads module loaders if we are not using a scriptLoader entry point
+	*/
+	mw.moduleLoaderCheck = function( callback ){
+		mw.log( 'doLoaderCheck::' );
+		// Check if we are using scriptloader ( handles loader include automatically ) 
+		if( mw.getScriptLoaderPath() ){
+			callback();	
+			return ;
+		}
+		
+		// Load all the "loaders" of the enabled modules:
+		var loaderRequest = [];			
+		var enabledModules = mw.getConfig( 'enabledModules' );
+		for( var i in enabledModules ){
+			loaderRequest.push( 'modules/' + enabledModules[i] + '/loader.js' );
+		} 
+		mw.load( loaderRequest, function(){
+			callback();
+		} );
 	}
 	
 	/**
@@ -2154,34 +2211,29 @@ var loadRS = mw.lang.loadRS;
 
 /**
 * --  Load Class Paths --
-*
-* MUST BE VALID JSON (NOT JS)
-* This is used by the script loader to auto-load classes (so we only define
-* this once for PHP & JavaScript)
-*
-* Right now the PHP AutoLoader only reads this mwEmbed.js file.
-* In the future we could have multiple "loader" files 
-* 	where addClassFilePaths JSON is read in each "loader"
+* 
+* PHP AutoLoader reads this mwEmbed.js file along with 
+* all the "loader.js" files to determin script-loader 
+* class paths
 * 
 */
  
 mw.addClassFilePaths( {
 	"mwEmbed"			: "mwEmbed.js",
 	"window.jQuery"		: "jquery/jquery-1.3.2.js",
+	
+	"ctrlBuilder"	: "skins/ctrlBuilder.js",
+	"kskinConfig"	: "skins/kskin/kskinConfig.js",
+	"mvpcfConfig"	: "skins/mvpcf/mvpcfConfig.js",
+	
 	"$j.fn.pngFix"		: "jquery/plugins/jquery.pngFix.js",
 	"$j.fn.autocomplete": "jquery/plugins/jquery.autocomplete.js",
 	"$j.fn.hoverIntent"	: "jquery/plugins/jquery.hoverIntent.js",
 	"$j.fn.datePicker"	: "jquery/plugins/jquery.datePicker.js",
-	"$j.ui"				: "jquery/jquery.ui/ui/ui.core.js",
-	"$j.fn.ColorPicker"	: "modules/libClipEdit/colorpicker/js/colorpicker.js",
-	"$j.Jcrop"			: "modules/libClipEdit/Jcrop/js/jquery.Jcrop.js",
-	"$j.fn.simpleUploadForm" : "modules/libAddMedia/simpleUploadForm.js",
-	
-	"mw.proxy"		: "modules/libMwApi/mw.proxy.js",
+	"$j.ui"				: "jquery/jquery.ui/ui/ui.core.js",	
 	
 	"mw.testLang"	:  "tests/testLang.js",		
 
-	"JSON"				: "modules/libMwApi/json2.js",
 	"$j.cookie"			: "jquery/plugins/jquery.cookie.js",
 	"$j.contextMenu"	: "jquery/plugins/jquery.contextMenu.js",
 	"$j.fn.suggestions"	: "jquery/plugins/jquery.suggestions.js",
@@ -2210,28 +2262,7 @@ mw.addClassFilePaths( {
 	"$j.effects.slide"		: "jquery/jquery.ui/ui/effects.slide.js",
 	"$j.ui.accordion"		: "jquery/jquery.ui/ui/ui.accordion.js",
 	"$j.ui.draggable"		: "jquery/jquery.ui/ui/ui.draggable.js",
-	"$j.ui.selectable"		: "jquery/jquery.ui/ui/ui.selectable.js",
-
-	"$j.fn.dragDropFile"		: "modules/libAddMedia/dragDropFile.js",
-	"mvFirefogg"			: "modules/libAddMedia/mvFirefogg.js",
-	"mvAdvFirefogg"			: "modules/libAddMedia/mvAdvFirefogg.js",
-	"mvBaseUploadInterface"	: "modules/libAddMedia/mvBaseUploadInterface.js",
-	"remoteSearchDriver"	: "modules/libAddMedia/remoteSearchDriver.js",
-	"seqRemoteSearchDriver" : "modules/libSequencer/seqRemoteSearchDriver.js",
-
-	"baseRemoteSearch"		: "modules/libAddMedia/searchLibs/baseRemoteSearch.js",
-	"mediaWikiSearch"		: "modules/libAddMedia/searchLibs/mediaWikiSearch.js",
-	"metavidSearch"			: "modules/libAddMedia/searchLibs/metavidSearch.js",
-	"archiveOrgSearch"		: "modules/libAddMedia/searchLibs/archiveOrgSearch.js",
-	"flickrSearch"			: "modules/libAddMedia/searchLibs/flickrSearch.js",
-	"baseRemoteSearch"		: "modules/libAddMedia/searchLibs/baseRemoteSearch.js",
-
-	"mvClipEdit"			: "modules/libClipEdit/mvClipEdit.js",
-	
-	"mvPlayList"		: "modules/libSequencer/mvPlayList.js",
-	"mvSequencer"		: "modules/libSequencer/mvSequencer.js",
-	"mvFirefoggRender"	: "modules/libSequencer/mvFirefoggRender.js",
-	"mvTimedEffectsEdit": "modules/libSequencer/mvTimedEffectsEdit.js"
+	"$j.ui.selectable"		: "jquery/jquery.ui/ui/ui.selectable.js"	
 
 } );
 
@@ -2244,170 +2275,6 @@ mw.addClassStyleSheets( {
 } );
 
 
-
-
-
-/**
-* libEmbedPlayer Dependency Module Loader:
-*
-* NOTE: this code block could eventually be put in: 
-* "modules/libEmbedPlayer/loader.js" 
-* 
-* Then it could be dynamically inserted into mwEmbed requests 
-* at point of release or at runtime via the script-loader.
-* 
-* Per module loader enables a dynamic set of modules with only minimal
-* loader code per module in the core mwEmbed included js 
-* 
-*/
-
-/**
- * Default player module configuration 
- */
- 
-// What tags will be re-written to video player by default
-// set to empty string or null to avoid automatic rewrites
-mw.setConfig( 'rewritePlayerTags', 'video,audio,playlist' );
-	
-//If the Timed Text interface should be displayed: 
-// 'always' Displays link and call to contribute always
-// 'auto' Looks for child timed text elements or "wikiTitleKey" & load interface
-// 'off' Does not display the timed text interface
-mw.setConfig( 'textInterface', 'auto' ); 
-	
-// Timed Text provider presently just "commons",
-// NOTE: Each player instance can also specify a provider  
-mw.setConfig( 'timedTextProvider', 'commons' );
-
-// Add class file paths: 
-mw.addClassFilePaths( {
-	"embedPlayer"		: "modules/libEmbedPlayer/embedPlayer.js",
-	"flowplayerEmbed"	: "modules/libEmbedPlayer/flowplayerEmbed.js",
-	"kplayerEmbed"		: "modules/libEmbedPlayer/kplayerEmbed.js",
-	"genericEmbed"		: "modules/libEmbedPlayer/genericEmbed.js",
-	"htmlEmbed"			: "modules/libEmbedPlayer/htmlEmbed.js",
-	"javaEmbed"			: "modules/libEmbedPlayer/javaEmbed.js",
-	"nativeEmbed"		: "modules/libEmbedPlayer/nativeEmbed.js",
-	"quicktimeEmbed"	: "modules/libEmbedPlayer/quicktimeEmbed.js",
-	"vlcEmbed"			: "modules/libEmbedPlayer/vlcEmbed.js",
-	
-	"ctrlBuilder"	: "skins/ctrlBuilder.js",
-	"kskinConfig"	: "skins/kskin/kskinConfig.js",
-	"mvpcfConfig"	: "skins/mvpcf/mvpcfConfig.js",
-	
-	"$j.fn.menu"	: "modules/libTimedText/jQuery.menu.js",
-	"mw.timedText"	: "modules/libTimedText/mw.timedText.js",
-	"Itext" 		: "modules/libTimedText/Itext.js"
-
-} );
-
-// Add style sheet dependencies
-mw.addClassStyleSheets( {
-	"kskinConfig" : "skins/kskin/playerSkin.css",
-	"mvpcfConfig" : "skins/mvpcf/playerSkin.css",
-	"$j.fn.menu" 	: "modules/libTimedText/jQuery.menu.css"
-} );
-
-// Add the module loader function:
-mw.addModuleLoader( 'player', function( callback ){
-	var _this = this;
-	mw.log( 'loadModule: player :' );	
-	
-	// Set module specific class videonojs to loading:
-	$j( '.videonojs' ).html( gM( 'mwe-loading_txt' ) );
-	
-	// Set up the embed video player class request: (include the skin js as well)
-	var dependencyRequest = [
-		[
-			'$j.ui',
-			'embedPlayer',
-			'ctrlBuilder',
-			'$j.cookie',
-			'JSON'
-		],
-		[
-			'$j.ui.slider'
-		]
-	];
-	
-	
-	//If we should include the timedText interface
-	var timedTextRequestSet = [
-		'$j.fn.menu',
-		'mw.timedText' 
-	]; 
-	
-	// Merge in the timed text libs 
-	if( mw.getConfig( 'textInterface') == 'always' )		
-		$j.merge( dependencyRequest[0], timedTextRequestSet );			
-		
-		
-	$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function(){
-		var playerElement = this;		
-		var cName = $j( playerElement ).attr( 'class' );
-		for( var n=0; n < mw.valid_skins.length ; n++ ){
-			// Get any other skins that we need to load 
-			// That way skin js can be part of the single script-loader request: 
-			if( cName.indexOf( mw.valid_skins[ n ] ) !== -1){
-				dependencyRequest[0].push(  mw.valid_skins[n]  + 'Config' );
-			}
-		}
-		//Also add the text library to request set if any video elment has text sources:
-		if( $j( playerElement ).find( 'itext' ).length != 0 ){
-			$j.merge( dependencyRequest[0], timedTextRequestSet );
-		}else{			
-			$j( playerElement ).find( 'source' ).each(function(na, sourceElement){
-				if( $j( sourceElement ).attr('type') == 'text/xml' && 
-					$j( sourceElement ).attr('codec') == 'roe' 
-				){						
-					// Has a roe src
-					$j.merge( dependencyRequest[0], timedTextRequestSet );
-				}
-			});
-		}
-	} );	
-		
-	// Add PNG fix if needed:
-	if ( $j.browser.msie || $j.browser.version < 7 )
-		dependencyRequest[0].push( '$j.fn.pngFix' );
-
-	// Do short detection, to avoid extra player library request in ~most~ cases. 
-	//( If browser is firefox include native, if browser is IE include java ) 
-	if( $j.browser.msie )
-		dependencyRequest[0].push( 'javaEmbed' )
-	
-	// Safari gets slower load since we have to detect ogg support 
-	if( typeof HTMLVideoElement == 'object' &&  !$j.browser.safari  )
-		dependencyRequest[0].push( 'nativeEmbed' )
-
-	
-
-	// Load the video libs:
-	mw.load( dependencyRequest, function() {
-		//Setup userConfig 
-		mw.setupUserConfig( function(){
-			// Remove no video html elements:
-			$j( '.videonojs' ).remove();
-			
-			// Detect supported players:  
-			embedTypes.init();		
-			
-			//mw.log(" run callback: " + callback );
-						
-			// Run the callback with name of the module  
-			if( callback )		
-				callback( 'player' );		
-			
-		} ); // setupUserConfig
-	} );
-	
-} ); // done with embedPlayer loader.js
-
-
-
-
-
-
 // Add the core mvEmbed Messages ( will be localized by script server ) 
 mw.addMessages( {
 	"mwe-loading_txt" : "Loading ...",
@@ -2416,7 +2283,6 @@ mw.addMessages( {
 	"mwe-size-kilobytes" : "$1 K",
 	"mwe-size-bytes" : "$1 B",
 	"mwe-error_load_lib" : "Error: JavaScript $1 was not retrievable or does not define $2",
-	"mwe-loading-add-media-wiz" : "Loading add media wizard",
 	"mwe-apiproxy-setup" : "Setting up API proxy",
 	"mwe-load-drag-item" : "Loading dragged item",
 	"mwe-ok" : "OK",
@@ -2465,14 +2331,8 @@ setTimeout( function(){
 
 
 /*
- * Store all the mwEmbed jQuery-specific bindings
- * ( to be run after jQuery is available ).
- *
- * These functions are generally are loaders that do the dynamic mapping of
- * dependencies for a given component
- *
- * Should be repaced by "loader" calls
- * 
+ * Utility jQuery bindings
+ * ( to be run after jQuery is available ). 
  *
  */
 function mwDojQueryBindings() {
@@ -2500,256 +2360,7 @@ function mwDojQueryBindings() {
 					$j( _this.selector ).dragDropFile();
 				} );
 			}
-		}
-		
-		/**
-		 * apiProxy Loader loader:
-		 * 
-		 * @param {String} mode Mode is either 'server' or 'client'
-		 * @param {Object} proxyConfig Proxy configuration
-		 * @param {Function} callback The function called once proxy request is done
-		 */
-		$.apiProxy = function( mode, proxyConfig, callback ) {
-			mw.log( 'do apiProxy setup' );
-			mw.load( [
-				'mw.proxy',
-				'JSON'
-			], function() {				
-				// do the proxy setup or 
-				if ( mode == 'client' ) {
-					// just do the setup (no callbcak for client setup) 
-					mw.proxy.client( proxyConfig );
-					if ( callback )
-						callback();
-				} else if ( mode == 'server' ) {
-					// Do the request with the callback
-					mw.proxy.server( proxyConfig , callback );
-				}
-			} );
-		}
-		
-		// non selector based add-media-wizard direct invocation with loader
-		$.addMediaWiz = function( options, callback ) {
-			mw.log( ".addMediaWiz call" );
-			// check if already loaded:
-			if ( window['rsdMVRS'] ) {
-				window['rsdMVRS'].showDialog();
-				if ( callback )
-					callback( window['rsdMVRS'] );
-				return ;
-			}
-			// display a loader: 
-			$.addLoaderDialog( gM( 'mwe-loading-add-media-wiz' ) );
-			// load the addMedia wizard without a target: 
-			$.fn.addMediaWiz ( options, function( amwObj ) {
-				// close the dialog
-				$.closeLoaderDialog();
-				// do the add-media-wizard display
-				amwObj.createUI();
-				// call the parent callback:
-				if ( callback )
-					callback( window['rsdMVRS'] );
-			} );
-		}
-		
-		$.fn.addMediaWiz = function( options, callback ) {
-			if ( this.selector ) {
-				// First set the cursor for the button to "loading"
-				$j( this.selector ).css( 'cursor', 'wait' ).attr( 'title', gM( 'mwe-loading_txt' ) );
-				// set the target: 
-				options['target_invoke_button'] = this.selector;
-			}
-
-			// Load the mwEmbed_base skin:
-			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/styles.css' );
-			// Load all the required libs:
-			mw.load( [
-				[	'remoteSearchDriver',
-					'$j.cookie',
-					'$j.fn.textSelection',
-					'$j.ui'
-				], [
-					'$j.ui.resizable',
-					'$j.ui.draggable',
-					'$j.ui.dialog',
-					'$j.ui.tabs',
-					'$j.ui.sortable'
-				]
-			], function() {
-				options['instance_name'] = 'rsdMVRS';
-				if ( ! window['rsdMVRS'] )
-					window['rsdMVRS'] = new remoteSearchDriver( options );
-				if ( callback ) {
-					callback( window['rsdMVRS'] );
-				}
-			} );
-		}
-		/*
-		* Sequencer loader
-		*/
-		$.fn.sequencer = function( options, callback ) {
-			// Debugger
-			options['target_sequence_container'] = this.selector;
-			// Issue a request to get the CSS file (if not already included):
-			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/mv_sequence.css' );
-			// Make sure we have the required mwEmbed libs:			
-			mw.load( [
-				[	//Load the embedPlayer module: 
-					'player'
-				],		
-				[										
-					// Load playlist and its dependencies
-					'mvPlayList',
-					'$j.ui',
-					'$j.contextMenu',
-					'JSON',
-					'mvSequencer'
-				],
-				[
-					'$j.ui.accordion',
-					'$j.ui.dialog',
-					'$j.ui.droppable',
-					'$j.ui.draggable',
-					'$j.ui.progressbar',
-					'$j.ui.sortable',
-					'$j.ui.resizable',
-					'$j.ui.slider',
-					'$j.ui.tabs'
-				]
-			], function() {
-				mw.log( 'calling new mvSequencer' );
-				// Initialise the sequence object (it will take over from there)
-				// No more than one mvSeq obj for now:
-				if ( !mw['mvSeq'] ) {
-					mw['mvSeq'] = new mvSequencer( options );
-				} else {
-					mw.log( 'mvSeq already init' );
-				}
-			} );
-		}
-		/*
-		 * The Firefogg jQuery function:
-		 * @@note This Firefogg invocation could be made to work more like real jQuery plugins
-		 */
-		var queuedFirefoggConf = { };
-		$.fn.firefogg = function( options, callback ) {
-			if ( !options )
-				options = { };
-				
-			// Add the base theme CSS:
-			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/styles.css' );
-
-			// Check if we already have Firefogg loaded (the call just updates the element's
-			// properties)			
-			var sElm = $j( this.selector ).get( 0 );
-			if ( sElm['firefogg'] ) {
-				if ( sElm['firefogg'] == 'loading' ) {
-					mw.log( "Queued firefogg operations ( firefogg " +
-						"not done loading ) " );
-					$j.extend( queuedFirefoggConf, options );
-					return false;
-				}
-				// Update properties
-				for ( var i in options ) {
-					mw.log( "firefogg::updated: " + i + ' to ' + options[i] );
-					sElm['firefogg'][i] = options[i];
-				}
-				return sElm['firefogg'];
-			} else {
-				// Avoid concurrency
-				sElm['firefogg'] = 'loading';
-			}
-			// Add the selector
-			options['selector'] = this.selector;
-
-			var loadSet = [
-				[
-					'mvBaseUploadInterface',
-					'mvFirefogg',
-					'$j.ui'
-				],
-				[
-					'$j.ui.progressbar',
-					'$j.ui.dialog',
-					'$j.ui.draggable'
-				]
-			];
-			if ( options.encoder_interface ) {
-				loadSet.push( [
-					'mvAdvFirefogg',
-					'$j.cookie',
-					'$j.ui.accordion',
-					'$j.ui.slider',
-					'$j.ui.datepicker'
-				] );
-			}
-			// Make sure we have everything loaded that we need:
-			mw.load( loadSet, function() {
-					mw.log( 'firefogg libs loaded. target select:' + options.selector );
-					// Select interface provider based on whether we want to include the
-					// encoder interface or not
-					if ( options.encoder_interface ) {
-						var myFogg = new mvAdvFirefogg( options );
-					} else {
-						var myFogg = new mvFirefogg( options );
-					}
-					if ( myFogg ) {
-						myFogg.doRewrite( callback );
-						var selectorElement = $j( options.selector ).get( 0 );
-						selectorElement['firefogg'] = myFogg;
-						
-						mw.log( 'pre:' + selectorElement['firefogg']['firefogg_form_action'] )
-						if ( queuedFirefoggConf )
-							$j.extend( selectorElement['firefogg'], queuedFirefoggConf );
-						mw.log( 'post:' + selectorElement['firefogg']['firefogg_form_action'] )
-					}
-			} );
-		}
-		// Take an input player as the selector and expose basic rendering controls
-		$.fn.firefoggRender = function( options, callback ) {
-			// Check if we already have render loaded then just pass on updates/actions
-			var sElm = $j( this.selector ).get( 0 );
-			//add a special attribute to the selector: 
-			if ( sElm['fogg_render'] ) {
-				if ( sElm['fogg_render'] == 'loading' ) {
-					mw.log( "Error: called firefoggRender while loading" );
-					return false;
-				}
-				// Call or update the property:
-			}
-			sElm['fogg_render'] = 'loading';
-			// Add the selector
-			options['player_target'] = this.selector;
-			mw.load( [
-				'mvBaseUploadInterface',
-				'mvFirefogg',
-				'mvFirefoggRender'
-			], function() {
-				// Attach the firefoggRender obj to the selected elm: 
-				sElm['fogg_render'] = new mvFirefoggRender( options );
-				if ( callback && typeof callback == 'function' )
-					callback( sElm['fogg_render'] );
-			} );
-		}
-
-		$.fn.baseUploadInterface = function( options ) {
-			mw.load( [
-				[
-					'mvBaseUploadInterface',
-					'$j.ui'
-				],
-				[
-					'$j.ui.progressbar',
-					'$j.ui.dialog'
-				]
-			], function() {
-				myUp = new mvBaseUploadInterface( options );
-				myUp.setupForm();
-			} );
-		}
+		}							
 
 		// Shortcut to a themed button
 		$.btnHtml = function( msg, className, iconId, opt ) {
@@ -2775,8 +2386,9 @@ function mwDojQueryBindings() {
 			)
 			return this;
 		}
+		
 		/**
-		* resize the dialog to fit the window
+		* Resize the dialog to fit the window
 		*/
 		$.fn.dialogFitWindow = function( opt ) {
 			var opt_default = { 'hspace':50, 'vspace':50 };

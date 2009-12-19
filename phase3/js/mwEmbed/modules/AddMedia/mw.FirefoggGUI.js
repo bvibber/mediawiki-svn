@@ -67,7 +67,29 @@ mw.addMessages({
 	"fogg-contact-help" : "Contact link"
 });
 
-var mvAdvFirefogg = function( iObj ) {
+/**
+* Setup firefoggGUI jquery binding
+*/
+( function( $ ){ 
+	$.fn.firefoggGUI = function( options ) {
+		if ( !options )
+			options = { };			
+	
+		// Add the selector
+		options['selector'] = this.selector;
+				
+		// Setup the firefogg interface: 
+		var myFogg = new mw.FirefoggGUI( options );
+				
+		if ( myFogg ) {
+			myFogg.setupForm( );
+			var selectorElement = $j( options.selector ).get( 0 );
+			selectorElement['firefogg'] = myFogg;		
+		}
+	}
+} )( jQuery );
+
+mw.FirefoggGUI = function( iObj ) {
 	return this.init( iObj );
 }
 var default_mvAdvFirefogg_config = {
@@ -84,7 +106,7 @@ var default_mvAdvFirefogg_config = {
 	'target_control_container': false
 }
 
-mvAdvFirefogg.prototype = {
+mw.FirefoggGUI.prototype = {
 	// The configuration group names
 	config_groups: [ 'preset', 'range', 'quality', 'meta', 'advVideo', 'advAudio' ],
 
@@ -284,20 +306,21 @@ mvAdvFirefogg.prototype = {
 			if ( typeof default_mvAdvFirefogg_config[key] != 'undefined' ) {
 				this[key] = options[key];
 			}
-		}
+		}		
 		// Inherit the base mvFirefogg class:
-		var baseFirefogg = new mvFirefogg( options );
-		for ( var key in baseFirefogg ) {
+		var baseFirefogg = new mw.Firefogg( options );
+		for ( var key in baseFirefogg ) {						
 			if ( typeof this[key] != 'undefined' ) {
 				this[ 'basefogg_' + key ] = baseFirefogg[ key ];
 			} else {
 				this[ key ] = baseFirefogg[ key ];
 			}
 		}
+		return this;
 	},
 
-	setupForm: function() {
-		basefogg_setupForm();
+	setupForm: function() {				
+		this.basefogg_setupForm();
 		this.createControls();
 		this.bindControls();
 	},

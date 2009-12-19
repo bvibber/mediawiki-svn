@@ -40,11 +40,11 @@ if ( typeof wgServer == 'undefined' ) {
  * The playlist Object implements ~most~ of embedPlayer but we don't inherit (other than to use the control builder)  
  * because pretty much every function has to be changed for the playlist context
  */
-var mvPlayList = function( element ) {
+mw.PlayList = function( element ) {
 	return this.init( element );
 };
 // set up the mvPlaylist object
-mvPlayList.prototype = {
+mw.PlayList.prototype = {
 	instanceOf:'mvPlayList',
 	pl_duration:null,
 	update_tl_hook:null,
@@ -1508,7 +1508,7 @@ var xspfPlaylist = {
  * SMIL CODE (could be put into another js file / lazy_loaded for improved basic playlist performance / modularity)
  *****************************/
 /*playlist driver extensions to the playlist object*/
-mvPlayList.prototype.monitor = function() {
+mw.PlayList.prototype.monitor = function() {
 	// mw.log('pl:monitor');			
 	// if paused stop updates
 	if ( this.paused ) {
@@ -1547,7 +1547,7 @@ mvPlayList.prototype.monitor = function() {
 
 // handles the rendering of overlays load of future clips (if necessary)
 // @@todo could be lazy loaded if necessary 
-mvPlayList.prototype.doSmilActions = function( callback ) {
+mw.PlayList.prototype.doSmilActions = function( callback ) {
 	var _this = this;
 	// mw.log('f:doSmilActions: ' + this.cur_clip.id + ' tid: ' + this.cur_clip.transOut );
 	var offSetTime = 0; // offset time should let us start a transition later on if we have to. 
@@ -1581,7 +1581,7 @@ mvPlayList.prototype.doSmilActions = function( callback ) {
 * @param {string} tid the transition type [transIn|transOut]
 * @param {function} callback the callback function passed onto doUPdate
 */
-mvPlayList.prototype.procTranType = function( tid, callback){
+mw.PlayList.prototype.procTranType = function( tid, callback){
 	// Setup local clip pointer:
 	var _clip = this.cur_clip;	
 	

@@ -323,4 +323,4 @@ var ajaxCategories = {
 	}
 };
 
-mw.addOnloadHook( ajaxCategories.setupAJAXCategories );
+mw.ready( ajaxCategories.setupAJAXCategories );

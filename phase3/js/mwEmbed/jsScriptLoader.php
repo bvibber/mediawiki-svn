@@ -7,7 +7,7 @@
 
 //Setup the script local script cache directory
 // ( has to be hard coded rather than config based for fast non-mediawiki config hits )
-$wgScriptCacheDirectory = realpath( dirname( __FILE__ ) ) . '/includes/script-cache';
+$wgScriptCacheDirectory = realpath( dirname( __FILE__ ) ) . '/includes/cache';
 
 // Check if we are being invoked in a MediaWiki context or stand alone usage:
 if ( !defined( 'MEDIAWIKI' ) && !defined( 'MW_CACHE_SCRIPT_CHECK' ) ){

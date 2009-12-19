@@ -54,6 +54,26 @@ mw.addMessages( {
 	"mwe-contextmenu_opt" : "Enable context menus",
 	"mwe-sequencer_credit_line" : "Developed by <a href=\"http:\/\/kaltura.com\">Kaltura, Inc.<\/a> in partnership with the <a href=\"http:\/\/wikimediafoundation.org\/wiki\/Home\">Wikimedia Foundation<\/a> (<a href=\"#\">more information<\/a>)."
 } );
+
+/*
+* Setup the sequencer jQuery binding:
+*/
+( function( $ ){
+	$.fn.sequencer = function( options, callback ) {
+		// Debugger
+		options['target_sequence_container'] = this.selector;
+		// Issue a request to get the CSS file (if not already included):	
+		mw.log( 'calling new mvSequencer' );
+		// Initialise the sequence object (it will take over from there)
+		// No more than one mvSeq obj for now:
+		if ( !mw['mvSeq'] ) {
+			mw['mvSeq'] = new mw.Sequencer( options );
+		} else {
+			mw.log( 'mvSeq already init' );
+		}
+	}
+} )( jQuery );
+
  // used to set default values and validate the passed init object
 var sequencerDefaultValues = {
 
@@ -122,11 +142,11 @@ var sequencerDefaultValues = {
 	// Track Object 
 	tracks: { }
 }
-var mvSequencer = function( iObj ) {
+mw.Sequencer = function( iObj ) {
 	return this.init( iObj );
 };
 // Set up the mvSequencer object
-mvSequencer.prototype = {
+mw.Sequencer.prototype = {
 	// The menu_items Object contains: default html, js setup/loader functions
 	menu_items : {
 		'clipedit': {

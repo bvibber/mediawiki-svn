@@ -20,8 +20,8 @@ var defaultAddMediaConfig = {
 		'local_wiki_api_url': wgServer + wgScriptPath + '/api.php'
 };
 
-mw.addOnloadHook( function() {
-	mw.log( "edit page mw.addOnloadHook::" );
+mw.ready( function() {
+	mw.log( "edit page mw.ready::" );
 	var amwConf = $j.extend( true, defaultAddMediaConfig, mwAddMediaConfig );
 	// Kind of tricky, it would be nice to use run on ready "loader" call here
 	var didWikiEditorBind = false;
@@ -39,8 +39,13 @@ mw.addOnloadHook( function() {
 		            section.groups.insert.tools.file.action = {
 		                'type': 'callback',
 		                'execute': function() {
-		                	mw.log( 'click add media wiz' );
-		                	$j.addMediaWiz( amwConf );
+		                	mw.log( 'Added via wikiEditor bind' );
+		                	// Display a loader ( since its triggered onClick )  
+							$.addLoaderDialog( gM( 'mwe-loading-add-media-wiz' ) );		
+		                	mw.load( 'AddMedia.addMediaWizard', function(){
+		                		$.closeLoaderDialog();
+		                		$j.addMediaWiz( amwConf );
+		                	});
 		                }
 		            };
 		        }
@@ -53,17 +58,23 @@ mw.addOnloadHook( function() {
 			mw.log( 'Do old toolbar bind:' );
 			didWikiEditorBind = true;						
 			$j( '#toolbar' ).append( '<img style="cursor:pointer" id="btn-add-media-wiz" src="' +
-				mw.getConfig( 'skin_img_path' ) + 'Button_add_media.png">' );				
-							
-			$j( '#btn-add-media-wiz' ).addMediaWiz(
-				amwConf
-			);
+				mw.getConfig( 'skin_img_path' ) + 'Button_add_media.png">' );			
+			
+			$j( '#btn-add-media-wiz' ).attr( 'title', gM( 'mwe-loading-add-media-wiz' ) );			
+			mw.load( 'AddMedia.addMediaWizard', function(){				
+				$j( '#btn-add-media-wiz' ).addMediaWiz(
+					amwConf
+				);
+			});
 			
 		} else {
 			// Make sure the wikieditor got binded: 
 			if ( !didWikiEditorBind ) {
 				mw.log( 'Failed to bind via build section bind via target:' );
-				$j( ".tool[rel='file']" ).unbind().addMediaWiz( amwConf );
+				$j( ".tool[rel='file']" ).attr( 'title', gM( 'mwe-loading-add-media-wiz' ) );
+				mw.load( 'AddMedia.addMediaWizard', function(){
+					$j( ".tool[rel='file']" ).unbind().addMediaWiz( amwConf );
+				});
 			}
 		}
 	}, 120 )

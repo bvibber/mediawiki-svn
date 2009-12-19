@@ -21,7 +21,7 @@ var mwApiProxyDefaultConfig = {
 };
 
 // User white_list should also be checked and configured at runtime.
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	
 	// Build our configuration from the default and mwApiProxyConfig vars
 	mwApiProxyConfig = $j.extend( true, mwApiProxyDefaultConfig,  mwApiProxyConfig );

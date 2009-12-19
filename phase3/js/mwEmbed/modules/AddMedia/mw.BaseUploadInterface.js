@@ -40,11 +40,11 @@ var default_bui_options = {
 	'upload_mode': 'api'
 
 }
-var mvBaseUploadInterface = function( options ) {
+mw.BaseUploadInterface = function( options ) {
 	return this.init( options );
 }
 
-mvBaseUploadInterface.prototype = {
+mw.BaseUploadInterface.prototype = {
 	parent_uploader: false,
 	formData: {}, // The form data to be submitted
 	warnings_sessionkey: null,

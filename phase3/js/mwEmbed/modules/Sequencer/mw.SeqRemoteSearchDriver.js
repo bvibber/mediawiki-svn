@@ -2,11 +2,11 @@
 *	extends the base remote search driver for use in the sequencer 
 */
 
-var seqRemoteSearchDriver = function( mySequence ) {
+mw.SeqRemoteSearchDriver = function( mySequence ) {
 	return this.init( mySequence )
 }
 
-seqRemoteSearchDriver.prototype = {
+mw.SeqRemoteSearchDriver.prototype = {
 	sequence_add_target:false,
 	init:function( mySequence ) {
 		var _this = this;

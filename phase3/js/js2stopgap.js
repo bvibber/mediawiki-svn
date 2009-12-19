@@ -9508,7 +9508,7 @@ function gM( key, args ) {
  * Provides js2 compatible onload hook
  * @param func Function to call when ready
  */
-mw.addOnloadHook = function( func ) {
+mw.ready = function( func ) {
 	$j(document).ready( func );
 }
 
