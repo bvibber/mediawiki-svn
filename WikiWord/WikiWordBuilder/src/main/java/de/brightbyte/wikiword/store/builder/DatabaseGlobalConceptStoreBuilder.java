@@ -958,7 +958,7 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	}
 	
 	protected DatabaseProximityStoreBuilder newProximityStoreBuilder() throws SQLException {
-		ProximityStoreSchema schema = new ProximityStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), true, tweaks, false);
+		ProximityStoreSchema schema = new ProximityStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), null, true, tweaks, false);
 		schema.setBackgroundErrorHandler(database.getBackgroundErrorHandler());
 		return new DatabaseProximityStoreBuilder(this, schema, tweaks, getAgenda());
 	}

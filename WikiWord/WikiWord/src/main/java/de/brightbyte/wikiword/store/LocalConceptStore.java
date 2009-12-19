@@ -2,7 +2,6 @@ package de.brightbyte.wikiword.store;
 
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.model.TermReference;

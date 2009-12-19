@@ -11,6 +11,7 @@ import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.KeyType;
 import de.brightbyte.db.ReferenceField;
 import de.brightbyte.db.RelationTable;
+import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
 
@@ -97,21 +98,23 @@ public class ProximityStoreSchema extends WikiWordStoreSchema {
 	protected EntityTable featureMagnitudeTable;
 	protected RelationTable featureProductTable;
 	protected RelationTable proximityTable;
+	protected String suffix;
+	private TweakSet tweaks;
+	private boolean isGlobal;
+	private boolean useFlushQueue;
 
-
-	public ProximityStoreSchema(DatasetIdentifier dataset, Connection connection, boolean global, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
+	public ProximityStoreSchema(DatasetIdentifier dataset, Connection connection, String suffix, boolean global, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
 		super(dataset, connection, tweaks, useFlushQueue );
-		init(global, tweaks);
+		init(global, tweaks, suffix, useFlushQueue);
 	}
 
-	public ProximityStoreSchema(DatasetIdentifier dataset, DataSource connectionInfo, boolean global, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
+	public ProximityStoreSchema(DatasetIdentifier dataset, DataSource connectionInfo, String suffix, boolean global, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
 		super(dataset, connectionInfo, tweaks, useFlushQueue);
-		init(global, tweaks);
+		init(global, tweaks, suffix, useFlushQueue);
 	}
 	
-	public RelationTable makeFeatureTable(String suffix) {
+	public RelationTable makeFeatureTable() {
 		String name = "feature";
-		if (suffix!=null) name = name+suffix;
 			
 		RelationTable featureTable = new RelationTable(this, name, getDefaultTableAttributes());
 		featureTable.addField( new ReferenceField(this, "concept", "INT", null, true, null, "concept", "id", null ));
@@ -124,9 +127,8 @@ public class ProximityStoreSchema extends WikiWordStoreSchema {
 		return featureTable;
 	}
 	
-	public RelationTable makeProximityTable(String suffix) {
+	public RelationTable makeProximityTable() {
 		String name = "proximity";
-		if (suffix!=null) name = name+suffix;
 			
 		RelationTable proximityTable = new RelationTable(this, name, getDefaultTableAttributes());
 		proximityTable.addField( new ReferenceField(this, "concept1", "INT", null, true, null, "concept", "id", null ));
@@ -140,7 +142,7 @@ public class ProximityStoreSchema extends WikiWordStoreSchema {
 		return proximityTable;
 	}
 	
-	public EntityTable makeFeatureMagnitudeTable(String suffix) {
+	public EntityTable makeFeatureMagnitudeTable() {
 		String name = "feature_magnitude";
 		if (suffix!=null) name = name+suffix;
 			
@@ -152,8 +154,13 @@ public class ProximityStoreSchema extends WikiWordStoreSchema {
 		return featureMagnitudeTable;
 	}
 	
-	private void init(boolean global, TweakSet tweaks) {
-		featureTable = makeFeatureTable(null);
+	private void init(boolean global, TweakSet tweaks, String suffix, boolean useFlushQueue) {
+		this.suffix = suffix;
+		this.tweaks = tweaks;
+		this.isGlobal = global;
+		this.useFlushQueue = useFlushQueue;
+		
+		featureTable = makeFeatureTable();
 		addTable(featureTable);
 
 		/*
@@ -169,11 +176,19 @@ public class ProximityStoreSchema extends WikiWordStoreSchema {
 		featureProductTable.setAutomaticField(null);
 		addTable(featureProductTable);*/
 
-		featureMagnitudeTable = makeFeatureMagnitudeTable(null);
+		featureMagnitudeTable = makeFeatureMagnitudeTable();
 		addTable(featureMagnitudeTable);
 
-		proximityTable = makeProximityTable(null);
+		proximityTable = makeProximityTable();
 		addTable(proximityTable);
+	}
+	
+	public ProximityStoreSchema derive(String suffix) throws PersistenceException {
+		try {
+			return new ProximityStoreSchema(getDataset(), getConnection(), suffix, isGlobal, tweaks, useFlushQueue);
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
 	}
 
 	@Override

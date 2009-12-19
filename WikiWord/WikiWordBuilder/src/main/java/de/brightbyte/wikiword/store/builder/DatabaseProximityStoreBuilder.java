@@ -14,14 +14,11 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.processor.ImportProgressTracker;
 import de.brightbyte.wikiword.schema.ProximityStoreSchema;
-import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
 
 public class DatabaseProximityStoreBuilder 
 				extends DatabaseWikiWordStoreBuilder 
 				implements ProximityStoreBuilder {
 	
-		protected WikiWordConceptStoreSchema conceptDatabase;
-		
 		private DatabaseWikiWordConceptStoreBuilder conceptStore;
 		private int proximityExpansionPasses;
 
@@ -90,12 +87,16 @@ public class DatabaseProximityStoreBuilder
 			protected ProximityStoreBuilder.ProximityParameters proximityParameters;
 		
 			protected FeatureBuilder( ProximityStoreSchema database, String suffix, ProximityStoreBuilder.ProximityParameters proximityParameters, boolean temp) throws PersistenceException {
-				this( database.makeFeatureTable(suffix),
-						database.makeFeatureMagnitudeTable(suffix), 
-						database.makeProximityTable(suffix),  
+				this(database.derive(suffix), proximityParameters, temp) ;
+			}
+			
+			protected FeatureBuilder( ProximityStoreSchema database, ProximityStoreBuilder.ProximityParameters proximityParameters, boolean temp) throws PersistenceException {
+				this( database.makeFeatureTable(),
+						database.makeFeatureMagnitudeTable(), 
+						database.makeProximityTable(),  
 						proximityParameters );
 				
-				if (suffix!=null)  {
+				if (database.getTableSuffix()!=null && database.getTableSuffix().length()>0)  {
 					try {
 						database.createTable(proximityTable, !temp, temp);
 						database.createTable(featureMagnitudeTable, !temp, temp);
@@ -509,10 +510,12 @@ public class DatabaseProximityStoreBuilder
 
 		}
 
-		protected FeatureBuilder makeBuilder(ProximityParameters params, String suffix) {
-			RelationTable targetFeatureTable = ((ProximityStoreSchema)database).makeFeatureTable(suffix);
-			EntityTable targetFeatureMagnitudeTable = ((ProximityStoreSchema)database).makeFeatureMagnitudeTable(suffix);
-			RelationTable targetProximityTable = ((ProximityStoreSchema)database).makeProximityTable(suffix);
+		protected FeatureBuilder makeBuilder(ProximityParameters params, String suffix) throws PersistenceException {
+			ProximityStoreSchema db = ((ProximityStoreSchema)database).derive(suffix);
+			
+			RelationTable targetFeatureTable = db.makeFeatureTable();
+			EntityTable targetFeatureMagnitudeTable = db.makeFeatureMagnitudeTable();
+			RelationTable targetProximityTable = db.makeProximityTable();
 			
 			return new FeatureBuilder(targetFeatureTable, targetFeatureMagnitudeTable, targetProximityTable, params);
 		}
