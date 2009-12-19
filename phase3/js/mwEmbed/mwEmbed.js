@@ -33,13 +33,17 @@ var mwDefaultConf = {
 
 	/**
 	* The set of modules that you want enable. 
+	* 
+	* Each enabledModules array value should be a name
+	* of a folder in mwEmbed/modules 
 	*
 	* Modules must define a loader.js file in the root
 	*  of the module folder. 
-	*
-	* The loader file only defines entry points and dependencies
-	*  Enabling a module will only result in the module code being loaded 
-	*  if its used. 
+	* 
+	* The loader file should be short and only include:
+	*  Class paths of the module classes
+	*  Sytle sheets of the module
+	*  Loader function(s) that load module classes 
 	*
 	* When using the scriptLoader the enabledModules loader code
 	*  is transcluded into base mwEmbed class include.  
@@ -1503,7 +1507,7 @@ var mwDefaultConf = {
 	
 	/**
 	* Get a loading spinner html
-	* NOTE: remove this 
+	* NOTE: this is depreciated use jQuery binding "loadingSpinner" instead 
 	
 	* @param {String} [Optional] style Style string to apply to the spinner 
 	*/
@@ -2351,7 +2355,9 @@ function mwDojQueryBindings() {
 		*/
 		$.fn.loadingSpinner = function() {
 			if ( this ) {
-				$j( this ).html(  mw.loading_spinner() );
+				$j( this ).html(
+					$j( '<div class="loading_spinner">' )  
+				 );
 			}			
 			return this;
 		}

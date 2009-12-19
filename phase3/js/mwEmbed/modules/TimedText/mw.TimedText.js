@@ -27,6 +27,8 @@ mw.addMessages( {
 	"mwe-layout-below": "Below video", 
 	"mwe-layout-off" : "Hide subtitles",
 	
+	"mwe-loading-text" : "Loading text ...",
+	
 	"mwe-key-language": "($1) $2",
 	
 	"mwe-textcat-cc" : "Captions",
@@ -62,13 +64,13 @@ mw.addMessages( {
 		*/
 		config: {
 			// Layout for basic "timedText" type can be 'ontop', 'off', 'below'
-			'layout': 'ontop',
+			'layout' : 'ontop',
 			
 			//Set the default local ( should be grabbed from the browser )			
-			'userLanugage': 'en',
+			'userLanugage' : 'en',
 			
 			//Set the default category of timedText to display ( un-categorized timed-text is by default "SUB"  )
-			'userCategory': 'SUB'
+			'userCategory' : 'SUB'
 		},
 		
 		/**
@@ -386,7 +388,7 @@ mw.addMessages( {
 			layoutOptions.push( 'off' );
 									
 			$ul = $j('<ul>');			
-			$j.each(layoutOptions, function( na, layoutMode ){				
+			$j.each( layoutOptions, function( na, layoutMode ){				
 				var icon = ( _this.config.layout == layoutMode ) ? 'bullet' : 'radio-on';   
 				$ul.append( 
 					_this.getLi( 
@@ -433,28 +435,36 @@ mw.addMessages( {
 		* @param {Object} source Source object selected
 		*/
 		selectTextSource: function( source ){
+			var _this = this;
 			mw.log(" select source: " + source.lang );
-			// Remove any other sources selected in sources category
-			if( source.category ){
-				var newEnabledSource = [ ];
-				for( var i in this.enabledSources  ){
-					if( this.enabledSources[i].category != source.category ){
-						newEnabledSource.push( this.enabledSources[i] );
-					}
-				}
-				this.enabledSources = [ ];
-				this.enabledSources = newEnabledSource;
-			}
 			
-			// Refresh the interface: 
-			this.refreshDisplay();			
+			// Update the config language if the source includes language
+			if( source.lang )
+				this.config.userLanugage =  source.lang;
+			
+			// (@@todo update category & setup category language buckets? )
+			
+			// Remove any other sources selected in sources category
+			this.enabledSources = [];
+			
+			this.autoSelectSource();
+			//Set any existing text target to "loading"
+			if( !source.loaded ) {
+				var $player =  $j( '#' + this.embedPlayer.id + ' .' + this.embedPlayer.ctrlBuilder.playerClass ); 			
+				$player.find('.itext').text( gM('mwe-loading-text') );
+			}
+			// Load the text:
+			source.load( function(){
+				// Refresh the interface: 
+				_this.refreshDisplay();
+			})								
 		},
 		
 		/**
 		* Refresh the display, updates the timedText layout, menu, and text display 
 		*/
 		refreshDisplay: function(){
-			//Empyt out previus text to force an interface update: 
+			// Empyt out previus text to force an interface update: 
 			this.prevText = [];
 			// Refresh the Menu:
 			this.refreshMenu();
@@ -515,8 +525,7 @@ mw.addMessages( {
 		 * Updates a source display in the interface for a given time
 		 * @param {Object} source Source to update
 		 */
-		updateSourceDisplay: function ( source, time ){
-			
+		updateSourceDisplay: function ( source, time ){			
 			// Get the source text for the requested time: 		
 			var text = source.getTimedText( time );
 			
@@ -552,6 +561,7 @@ mw.addMessages( {
 			// Update the prev text:
 			this.prevText[ source.category ] = text;		
 		},
+		
 		
 		/**
 		 * Add an itext div to the embedPlayer
@@ -642,9 +652,16 @@ mw.addMessages( {
 		
 		/**
 		 * Function to load and parse the source text
+		 * @param {Function} callback Function called once text source is loaded
 		 */
-		load: function(){
+		load: function( callback ){
 			var _this = this;
+			//check if its already loaded:
+			if( _this.loaded ){
+				if( callback ){ 
+					callback();
+				}
+			}
 			// Set parser handler: 
 			switch( this.getMIMEType() ){
 				case 'text/x-srt':				
@@ -672,6 +689,9 @@ mw.addMessages( {
 				_this.captions = handler( data );
 				// Update the loaded state:
 				_this.loaded = true;
+				if( callback ){ 
+					callback();
+				}
 			}, 'text' );
 		},
 		
