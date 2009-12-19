@@ -270,6 +270,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'wikieditor' => 'Interfàcia avançada de modificacion de wikitèxte',
 	'wikieditor-desc' => 'Provesís una interfàcia de modificacion de wikitèxte extensible e mantuna foncionalitats.',
+	'wikieditor-wikitext-tab' => 'Wikitèxte',
 );
 
 /** Polish (Polski)

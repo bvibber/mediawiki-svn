@@ -315,6 +315,8 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'wikieditor-toc-preference' => "Activar l'ensenhador navigable",
+	'wikieditor-toc-show' => 'Afichar lo contengut',
+	'wikieditor-toc-hide' => 'Amagar lo contengut',
 );
 
 /** Polish (Polski)

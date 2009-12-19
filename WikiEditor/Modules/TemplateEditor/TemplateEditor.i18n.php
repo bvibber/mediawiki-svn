@@ -44,6 +44,13 @@ $messages['de'] = array(
 	'wikieditor-template-editor-preference' => 'Formularbasiertes Bearbeiten von Wiki-Vorlagen aktivieren',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'wikieditor-template-editor-preference' => 'Vurnayışê form-bıngeyınê şablonanê wikiy feal ke',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -147,6 +154,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'wikieditor-template-editor-preference' => 'Aktiver skjemabasert redigering av wikimaler',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'wikieditor-template-editor-preference' => 'Activar la modificacion a basa de formularis dels modèls wiki',
 );
 
 /** Polish (Polski)
