@@ -351,7 +351,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				foreach ( array_keys( $this->types ) as $k ) {
 					$v = isset( $posted[$k] ) ? ( $this->types[$k] == 'bool' ? 'yes' : $posted[$k] ) : '';
 					if ( !preg_match( "|\s*\|\s*$k\s*=|", $text ) ) $text .= "\n|$k=\n|"; # Treat non-existent fields as existing but empty
-					$i = preg_match( "|^\s*\|\s*$k\s*=\s*(.*?)\s*(?=^\s*[\|\}])|sm", $text, $m );
+					$i = preg_match( "|^\s*\|\s*$k\s*= *(.*?) *(?=^\s*[\|\}])|sm", $text, $m );
 					$r[$k] = isset( $m[1] ) ? $m[1] : '';
 					if ( $v && !( $i && $this->cmpCallback( $r[$k], $v, $operator[$k] ) ) ) $match = false;
 				}
@@ -760,7 +760,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function valuesFromText( $text ) {
 		$values = array();
-		preg_match_all( "|^\s*\|\s*(.+?)\s*=\s*(.*?)\s*(?=^\s*[\|\}])|sm", $text, $m );
+		preg_match_all( "|^\s*\|\s*(.+?)\s*= *(.*?) *(?=^\s*[\|\}])|sm", $text, $m );
 		foreach ( $m[1] as $i => $k ) $values[$k] = $m[2][$i];
 		return $values;
 	}
