@@ -2297,37 +2297,44 @@ mw.addMessages( {
 * Does not use jQuery( document ).ready( ) because 
 *  mwEmbed could have been included without jQuery.
 * 
-* mw.domReady function has checks to only be run once
 */
-// For Mozilla / modern browsers
-if ( document.addEventListener ) {
-	document.addEventListener( "DOMContentLoaded", mw.domReady, false );
+function domReadyCheck() {
+  mw.domReady();
 }
-// Preserve any existing window.onload binding: 
-var mwOriginalOnLoad;
-var mwOrgLoadCheck = false;
-if ( window.onload && typeof  window.onload == 'function' && !mwOrgLoadCheck) {
-    mwOriginalOnLoad = window.onload;
-    mwOrgLoadCheck = true;
-}
-// Use the onload method as a backup:
-window.onload = function () {
-    if ( mwOriginalOnLoad ){
-        mwOriginalOnLoad();
-        mwOriginalOnLoad=null;
-    }
-	mw.domReady();
-}
-// If inserted into an already loaded document: 
-if( document.readyState == 'complete'){
-	mw.domReady();
-}
-//And just to be sure ( for dynamic inserts ) ... check if "body" tag exists after 25ms
-setTimeout( function(){
-	if( document.getElementsByTagName('body')[0] ){
-		mw.domReady();	
-	}
-}, 25 );
+(function(i) {
+  var u = navigator.userAgent.toLowerCase();
+  var ie = /*@cc_on!@*/false;
+  if (/webkit/.test(u)) {
+    // safari
+    timeout = setTimeout(function(){
+			if ( document.readyState == "loaded" || 
+				document.readyState == "complete" ) {
+				i();
+			} else {
+			  setTimeout(arguments.callee,10);
+			}
+		}, 10); 
+  } else if ((/mozilla/.test(u) && !/(compatible)/.test(u)) ||
+             (/opera/.test(u))) {
+    // opera/moz
+    document.addEventListener("DOMContentLoaded",i,false);
+  } else if (ie) {
+    // IE
+    (function (){ 
+      var tempNode = document.createElement('document:ready'); 
+      try {
+        tempNode.doScroll('left'); 
+        i(); 
+        tempNode = null; 
+      } catch(e) { 
+        setTimeout(arguments.callee, 0); 
+      } 
+    })();
+  } else {
+    window.onload = i;
+  }
+})(domReadyCheck);
+
 
 
 /*
