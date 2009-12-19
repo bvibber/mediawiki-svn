@@ -305,9 +305,19 @@ EmbedPlayerManager.prototype = {
 	
 	/**
 	* Adds a callback to the callbackFunctions list
+	*  the callback functions are called once the players are ready.
+	*
+	* @param {Function} callback Function to be called once players are ready 
 	*/
 	addCallback: function( callback ) {
 		this.callbackFunctions.push( callback );
+	},
+	
+	/**
+	* get the list of players
+	*/
+	getPlayerList: function( ){
+		return this.playerList;	
 	},
 	
 	/**
@@ -326,13 +336,11 @@ EmbedPlayerManager.prototype = {
 			$j( element ).attr( "id", 'v' + this.playerList.length );
 		}
 		var element_id = $j( element ).attr( "id" );				
-		
-		mw.log( "mvEmbed::rewrite:: " + $j( element ).attr( "id" ) + ' tag: ' + element.tagName.toLowerCase() );		
-		
+				
 		// Add the element id to playerList
-		mw.playerList.push( $j( element ).attr( "id" ) );
+		this.playerList.push( $j( element ).attr( "id" ) );		
 		
-		// Check for class based player skin ( could have been loaded before in 'player' loader module ) 			
+		// Check for class based player skin ( could have been loaded before in 'EmbedPlayer' loader module ) 			
 		var skinClassRequest = [ ];
 		var className = $j( element ).attr( 'class' );
 		for( var n=0; n < mw.valid_skins.length ; n++ ){ 
@@ -364,23 +372,25 @@ EmbedPlayerManager.prototype = {
 		mw.load( skinClassRequest, function(){							
 			switch( element.tagName.toLowerCase() ) {
 				case 'video':
-				case 'audio':
-				
-					// Local callback to runPlayer swap once element has metadat
-					function runPlayerSwap(){
-						var playerInterface = new embedPlayer( element , attributes);
-						_this.swapEmbedPlayerElement( element, playerInterface );	
+				case 'audio':				
+					var element_id = element_id;
+					var playerInx = _this.playerList.length;
 					
+					// Local callback to runPlayer swap once element has metadat
+					function runPlayerSwap(){						
+						var playerInterface = new mw.EmbedPlayer( element , attributes);
+						_this.swapEmbedPlayerElement( element, playerInterface );	
+											
 						// Issue the checkPlayerSources call to the new player interface: 
-						$j( '#' + element_id ).get(0).checkPlayerSources();
-					}		
-				
+						$j( '#' + $j( element ).attr('id') ).get(0).checkPlayerSources();
+					}
+									
 					if( waitForMeta ){
-						mw.log(" WaitForMeta ( video missing height width info and has src )")
+						mw.log(" WaitForMeta ( video missing height width info and has src )");
 						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
 					}else{ 
-						runPlayerSwap()
+						runPlayerSwap( element_id )
 					}					
 				break;
 				case 'playlist':				
@@ -390,7 +400,7 @@ EmbedPlayerManager.prototype = {
 					], function() {
 					
 						// Create playlist player interface
-						var playlistPlayer = new mvPlayList( element, attributes );
+						var playlistPlayer = new mw.PlayList( element, attributes );
 						
 						// Swap in playlist player interface
 						_this.swapEmbedPlayerElement( element, playlistPlayer );
@@ -585,11 +595,8 @@ mediaSource.prototype = {
 			
 		// Check for parent elements ( supplies catagories in "itext" )
 		if( $j( element ).parent().attr('category') ){			
-			this.category =  $j( element ).parent().attr('category');
-			mw.log("added category: " + this.category);
-		}else{
-			mw.log(" had no category" + this.id);
-		}	
+			this.category =  $j( element ).parent().attr('category');			
+		}
 						
 		// Get the url duration ( if applicable )
 		this.getURLDuration();
@@ -1117,11 +1124,11 @@ mediaElement.prototype = {
 *					that are not already element attributes
 * @constructor
 */
-var embedPlayer = function( element, customAttributes ) {
+mw.EmbedPlayer = function( element, customAttributes ) {
 	return this.init( element, customAttributes );
 };
 
-embedPlayer.prototype = {
+mw.EmbedPlayer.prototype = {
 	// The mediaElement object containing all mediaSource objects
 	'mediaElement' : null,
 	
@@ -1384,10 +1391,10 @@ embedPlayer.prototype = {
 		var _this = this;
 		// Check for timedText support
 		if( this.isTimedTextSupported() ){			
-			mw.load( [ '$j.fn.menu', 'mw.timedText' ],function(){
+			mw.load( 'TimedText', function(){
 				$j( '#' + _this.id ).timedText();
 				_this.setupSourcePlayer();
-			}); 							
+			});			
 			return ;			
 		}
 		_this.setupSourcePlayer();
@@ -2365,7 +2372,7 @@ embedPlayer.prototype = {
 			);
 			
 			// Load text interface ( if not already loaded )
-			mw.load( [ '$j.fn.menu', 'mw.timedText' ], function(){
+			mw.load( 'TimedText', function(){
 				$j( '#' + _this.id ).timedText( 'showMenu', '#timedTextMenu_' + _this.id );
 			});		
 		}			
@@ -3194,9 +3201,10 @@ mediaPlayers.prototype =
 			}
 		}
 		// Update All the player instances:		
-		if ( selected_player ) {			 
-			for ( var i = 0; i < mw.playerList.length; i++ ) {
-				var embed = $j( '#' + mw.playerList[i] ).get( 0 );
+		if ( selected_player ) {
+			var playerList = mw.playerManager.getPlayerList();			 
+			for ( var i = 0; i < playerList.length; i++ ) {
+				var embed = $j( '#' + playerList[i] ).get( 0 );
 				if ( embed.mediaElement.selected_source && ( embed.mediaElement.selected_source.mime_type == mime_type ) )
 				{
 					embed.selectPlayer( selected_player );

@@ -96,10 +96,10 @@ function doPageSpecificRewrite() {
 			jsSetVideo.push( 'nativeEmbed' );
 	
 		loadMwEmbed( jsSetVideo, function() {
-			//Load the "player" module: 
+			//Load the "EmbedPlayer" module: 
 			// All the actual code was requested in our single script-loader call 
 			//  but the "load" request applies the setup.
-			mw.load( 'player', function() {
+			mw.load( 'EmbedPlayer', function() {
 				// Do utility rewrite of OggHandler content:
 				rewrite_for_OggHandler( vidIdList );
 			} );
@@ -286,7 +286,7 @@ function waitMwEmbedReady( callback ) {
 		}, 25 );
 	} else {				
 		// Make sure mwEmbed is "setup" by using the addOnLoadHook: 
-		mw.addOnloadHook( function(){			
+		mw.ready( function(){			
 			callback();
 		})
 	}

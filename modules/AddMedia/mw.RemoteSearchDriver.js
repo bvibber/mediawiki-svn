@@ -131,7 +131,31 @@ var default_remote_search_options = {
 	
 	// The timeout for search providers ( in seconds )
 	'search_provider_timeout': 10
-}
+};
+
+/*
+* Set the jQuery bindings: 
+*/ 
+( function( $ ) {
+
+	$.fn.addMediaWizard = function( options, callback ) {
+		options['target_invoke_button'] = this.selector;
+		options['instance_name'] = 'rsdMVRS';
+		window['rsdMVRS'] = new mw.RemoteSearchDriver( options );
+		if( callback ) {
+			callback( window['rsdMVRS'] );
+		}
+	}
+	
+	$.addMediaWiz = function( options ){
+		$.fn.addMediaWiz ( options, function( amwObj ) {
+			// do the add-media-wizard display
+			amwObj.createUI();
+		} )
+	}
+	
+} )( jQuery );
+
 
 /*
 * Set the mediaWiki globals if unset
@@ -146,11 +170,11 @@ if ( typeof stylepath == 'undefined' )
 /*
  * Base remoteSearch Driver interface
  */
-var remoteSearchDriver = function( options ) {
+mw.RemoteSearchDriver = function( options ) {
 	return this.init( options );
 }
 
-remoteSearchDriver.prototype = {
+mw.RemoteSearchDriver.prototype = {
 
 	// Result cleared flag
 	results_cleared: false,
@@ -387,7 +411,6 @@ remoteSearchDriver.prototype = {
 		for ( var cp_id in this.content_providers ) {
 			this.content_providers[ cp_id ].id = cp_id;
 		}
-
 		// Merge in the options		
 		$j.extend( _this, default_remote_search_options, options );
 
@@ -446,22 +469,23 @@ remoteSearchDriver.prototype = {
 			} else {
 				_this.upload_api_target = _this.local_wiki_api_url;
 			}
-		}
-
+		}		
+		
 		// Set up the "add media wizard" button, which invokes this object
-		if ( $j( this.target_invoke_button ).length == 0 ) {
+		if ( !this.target_invoke_button || $j( this.target_invoke_button ).length == 0 ) {
 			mw.log( "RemoteSearchDriver:: no target invocation provided " + 
-				"(will have to run your own createUI() )" );
+				"(will have to run your own createUI() )" );				
 		} else {
-			if ( this.target_invoke_button ) {
+			if ( this.target_invoke_button ) {				
 				$j( this.target_invoke_button )
 					.css( 'cursor', 'pointer' )
 					.attr( 'title', gM( 'mwe-add_media_wizard' ) )
-					.click( function() {
+					.click( function() {						
 						_this.createUI();
 					} );
 			}
 		}
+		return this;
 	},
 
 	/**
@@ -1731,9 +1755,9 @@ remoteSearchDriver.prototype = {
 		var options = _this.getClipEditOptions( resource );
 		
 		// Display the mvClipEdit obj once we are done loading:
-		mw.load( 'mvClipEdit', function() {			
+		mw.load( 'mw.ClipEdit', function() {			
 			// Run the image clip tools
-			_this.clipEdit = new mvClipEdit( options );
+			_this.clipEdit = new mw.ClipEdit( options );
 		} );
 	},
 
@@ -1754,8 +1778,8 @@ remoteSearchDriver.prototype = {
 		// (but archive.org has another query for more media meta)
 		resource.pSobj.addResourceInfoCallback( resource, function() {		
 			var runFlag = false;
-			// Make sure we have the 'player' module:
-			mw.load( 'player', function() {
+			// Make sure we have the 'EmbedPlayer' module:
+			mw.load( 'EmbedPlayer', function() {
 				// Strange concurrency issue with callbacks
 				// @@todo try and figure out why this callback is fired twice
 				if ( !runFlag ) {

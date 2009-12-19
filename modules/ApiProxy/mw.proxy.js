@@ -43,6 +43,32 @@ mw.addMessages( {
 	"mwe-remember-loging" : "General security reminder: Only login to web sites when your address bar displays that site's address."
 } );
 
+
+
+
+/**
+ * apiProxy jQuery binding
+ * 
+ * Note: probably should split up "server" and "client" binding 
+ * 
+ * @param {String} mode Mode is either 'server' or 'client'
+ * @param {Object} proxyConfig Proxy configuration
+ * @param {Function} callback The function called once proxy request is done
+ */
+$.apiProxy = function( mode, proxyConfig, callback ) {
+	mw.log( 'do apiProxy setup' );				
+	// do the proxy setup or 
+	if ( mode == 'client' ) {
+		// just do the setup (no callbcak for client setup) 
+		mw.proxy.client( proxyConfig );
+		if ( callback )
+			callback();
+	} else if ( mode == 'server' ) {
+		// Do the request with the callback
+		mw.proxy.server( proxyConfig , callback );
+	}
+}
+
 ( function( $ ) {
 
 	/**

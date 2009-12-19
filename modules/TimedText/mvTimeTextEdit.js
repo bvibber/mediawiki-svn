@@ -18,7 +18,7 @@ mw.addMessages( {
 } )
 
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
   function getSubtitle( f ) {
       var name = f.files[0].name;
       var srtData = f.files[0].getAsBinary();

@@ -10,7 +10,7 @@
  * @author: Michael Dale
  * 
  * Some code borrowed from: http://www.annodex.net/~silvia/itext/elephant_no_skin_v2.html
- * ( Licenced under: MPL 1.1/GPL 2.0/LGPL 2.1 )
+ * ( Licensed under: MPL 1.1/GPL 2.0/LGPL 2.1 )
  * Contributor(s):
  *  Silvia Pfeiffer <silvia@siliva-pfeiffer.de>
  *
@@ -44,21 +44,16 @@ mw.addMessages( {
 } );
 
 // Bind to mw (for uncluttered global namespace) 
-( function( $ ) {	
-	
-	
-	$.timedText = function ( embedPlayer, options ){
-		return new TimedText( embedPlayer, options );
-	}
+( function( $ ) {				
 	
 	/** 
 	 * Timed Text Object
 	 * @param embedPlayer Host player for timedText interfaces 
 	 */
-	TimedText = function( embedPlayer, options ) {
+	mw.TimedText = function( embedPlayer, options ) {
 		return this.init( embedPlayer, options);
 	}
-	TimedText.prototype = {
+	mw.TimedText.prototype = {
 		
 		/** 
 		* Preferences config order is presently: 
@@ -815,7 +810,7 @@ mw.addMessages( {
 			
 			// Setup timed text for the given player: 
 			if( ! embedPlayer.timedText )
-				embedPlayer.timedText = new mw.timedText( embedPlayer, options);			
+				embedPlayer.timedText = new mw.TimedText( embedPlayer, options);			
 			
 			//
 			if( action == 'showMenu' ) {

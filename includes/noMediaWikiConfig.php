@@ -51,7 +51,7 @@ require_once( realpath( dirname( __FILE__ ) ) . '/jsAutoloadLocalClasses.php' );
 wfLoadMwEmbedClassPaths();
 
 // Get the JSmin class:
-require_once( realpath( dirname( __FILE__ ) ) . '/minify/JSMin.php' );
+require_once( realpath( dirname( __FILE__ ) ) . '/library/JSMin.php' );
 
 // Get the messages file:
 require_once( realpath( dirname( __FILE__ ) ) . '/languages/mwEmbed.i18n.php' );

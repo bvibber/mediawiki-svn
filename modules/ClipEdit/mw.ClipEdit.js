@@ -1,5 +1,5 @@
 /*
-*	mvClipEdit handles the edit interfaces for images and video
+*	mw.ClipEdit handles the edit interfaces for images and video
 */
 
 // set gMsg object:
@@ -78,10 +78,10 @@ var default_clipedit_values = {
 	// Edit profile either "inpage" or "sequence"
 	'profile': 'inpage' 
 }
-var mvClipEdit = function( iObj ) {
+mw.ClipEdit = function( iObj ) {
 	return this.init( iObj );
 };
-mvClipEdit.prototype = {
+mw.ClipEdit.prototype = {
 	// Selected tool
 	selectedTool : null, 
 	

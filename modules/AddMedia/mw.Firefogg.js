@@ -89,12 +89,10 @@ var default_firefogg_options = {
 	'enable_chunks' : false
 };
 
-
-var mvFirefogg = function( options ) {
+mw.Firefogg = function( options ) {
 	return this.init( options );
 };
-
-mvFirefogg.prototype = { // extends mvBaseUploadInterface
+mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 	min_firefogg_version: '0.9.9.5',
 	default_encoder_settings: { // @@todo allow the server to set these
 		'maxSize'        : '400',
@@ -131,9 +129,9 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 			}
 		}
 
-		// Inherit from mvBaseUploadInterface (unless we're in only_firefogg mode)
+		// Inherit from mw.BaseUploadInterface (unless we're in only_firefogg mode)
 		if ( !this.only_firefogg ) {
-			var myBUI = new mvBaseUploadInterface( options );
+			var myBUI = new mw.BaseUploadInterface( options );
 
 			// Prefix conflicting members with pe_
 			for ( var i in myBUI ) {
@@ -341,14 +339,14 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	 */
 	setupForm: function() {
 		mw.log( 'firefogg::setupForm::' );
-
+		var _this = this;
 		// Set up the parent if we are in upload mode
 		if ( this.form_type == 'upload' ) {
 			this.pe_setupForm();
 		}
-
+		
 		// If Firefogg is not available, just show a "please install" message
-		if ( !this.getFirefogg() ) {
+		if ( !_this.getFirefogg() ) {
 			if ( !this.target_please_install ) {
 				$j( this.selector ).after( this.getControlHtml( 'target_please_install' ) );
 				this.target_please_install = this.selector + ' ~ .target_please_install';
@@ -392,7 +390,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	},
 
 	/**
-	 * Display an upload progress overlay. Overrides the function in mvBaseUploadInterface.
+	 * Display an upload progress overlay. Overrides the function in mw.BaseUploadInterface.
 	 */
 	displayProgressOverlay: function() {
 		this.pe_displayProgressOverlay();		
@@ -524,7 +522,7 @@ mvFirefogg.prototype = { // extends mvBaseUploadInterface
 	/**
 	 * Get the DOMNode of the form element we are rewriting.
 	 * Returns false if it can't be found.
-	 * Overrides mvBaseUploadInterface.getForm().
+	 * Overrides mw.BaseUploadInterface.getForm().
 	 */
 	getForm: function() {
 		if ( this.form_selector ) {
