@@ -34,8 +34,7 @@ mw.addClassFilePaths( {
 // Add style sheet dependencies ( From ROOT )
 mw.addClassStyleSheets( {
 	"kskinConfig" : "skins/kskin/playerSkin.css",
-	"mvpcfConfig" : "skins/mvpcf/playerSkin.css",
-	"$j.fn.menu" 	: "modules/libTimedText/jquery.menu.css"
+	"mvpcfConfig" : "skins/mvpcf/playerSkin.css"	
 } );
 
 // Add the module loader function:
@@ -62,9 +61,10 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 	
 	
 	//If we should include the timedText interface
+	// ( we include it here to get everything at once) 
 	var timedTextRequestSet = [
 		'$j.fn.menu',
-		'mw.timedText' 
+		'mw.TimedText' 
 	]; 
 	
 	// Merge in the timed text libs 

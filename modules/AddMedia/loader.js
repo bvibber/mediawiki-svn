@@ -8,6 +8,7 @@ mw.addMessages( {
 mw.addClassFilePaths( {
 	"$j.fn.dragDropFile"	: "modules/AddMedia/jquery.dragDropFile.js",	
 	"$j.fn.simpleUploadForm": "modules/AddMedia/jquery.simpleUploadForm.js",
+	
 	"mw.BaseUploadInterface": "modules/AddMedia/mw.BaseUploadInterface.js",
 	"mw.Firefogg"			: "modules/AddMedia/mw.Firefogg.js",
 	"mw.FirefoggGUI"		: "modules/AddMedia/mw.FirefoggGUI.js",
