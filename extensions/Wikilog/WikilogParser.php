@@ -35,6 +35,11 @@ if ( !defined( 'MEDIAWIKI' ) )
 class WikilogParser
 {
 	/**
+	 * Anchor printed when a --more-- separator is substituted.
+	 */
+	const MORE_ANCHOR = "<span id=\"wl-more\"></span>";
+
+	/**
 	 * True if parsing articles with feed output specific settings.
 	 * This is an horrible hack needed because of many MediaWiki misdesigns.
 	 */
@@ -73,7 +78,10 @@ class WikilogParser
 	 * ParserClearState hook handler function.
 	 */
 	public static function ClearState( &$parser ) {
+		# These two parser attributes contain our private information.
+		# They take a piggyback ride on the parser object.
 		$parser->mExtWikilog = new WikilogParserOutput;
+		$parser->mExtWikilogInfo = NULL;
 
 		# Disable TOC in feeds.
 		if ( self::$feedParsing ) {
@@ -83,9 +91,9 @@ class WikilogParser
 	}
 
 	/**
-	 * ParserBeforeInternalParse hook handler function.
+	 * ParserBeforeStrip hook handler function.
 	 */
-	public static function BeforeInternalParse( &$parser, &$text, &$stripState ) {
+	public static function BeforeStrip( &$parser, &$text, &$stripState ) {
 		global $wgUser;
 
 		# Do nothing if a title is not set.
@@ -93,13 +101,13 @@ class WikilogParser
 			return true;
 
 		# Do nothing if it is not a wikilog article.
-		if ( ! ( $wi = Wikilog::getWikilogInfo( $parser->getTitle() ) ) )
+		if ( ! ( $parser->mExtWikilogInfo = Wikilog::getWikilogInfo( $title ) ) )
 			return true;
 
-		if ( $wi->isItem() ) {
+		if ( $parser->mExtWikilogInfo->isItem() ) {
 			# By default, use the item name as the default sort in categories.
 			# This can be overriden by {{DEFAULTSORT:...}} if the user wants.
-			$parser->setDefaultSort( $wi->getItemName() );
+			$parser->setDefaultSort( $parser->mExtWikilogInfo->getItemName() );
 		}
 
 		return true;
@@ -114,10 +122,52 @@ class WikilogParser
 	}
 
 	/**
+	 * InternalParseBeforeLinks hook handler function. Called after nowiki,
+	 * comments and templates are treated.
+	 * For wikilog pages, look for the "--more--" marker and extract the
+	 * article summary before it. If not found, look for the first heading
+	 * and use the text before it (intro section).
+	 */
+	public static function InternalParseBeforeLinks( &$parser, &$text, &$stripState ) {
+		if ( $parser->mExtWikilogInfo && $parser->mExtWikilogInfo->isItem() ) {
+			static $moreRegex = false;
+			if ( $moreRegex === false ) {
+				$mwMore =& MagicWord::get( 'wlk-more' );
+				$words = $mwMore->getBaseRegex();
+				$flags = $mwMore->getRegexCase();
+				$moreRegex = "/(?<=^|\\n)--+ *(?:$words) *--+\s*/$flags";
+			}
+
+			# Find and replace the --more-- marker. Extract summary.
+			# We do it anyway even if the summary is already set, in order
+			# to replace the marker with an invisible anchor.
+			$p = preg_split( $moreRegex, $text, 2 );
+			if ( count( $p ) > 1 ) {
+				self::trySetSummary( $parser, trim( $p[0] ) );
+				$anchor = $parser->insertStripItem( self::MORE_ANCHOR );
+				$text = $p[0] . $anchor . $p[1];
+			} else if ( !$parser->mExtWikilog->mSummary ) {
+				# Otherwise, make a summary from the intro section.
+				# Why we don't use $parser->getSection()? Because it has the
+				# side-effect of clearing the parser state, which is bad here
+				# since this hook happens during parsing. Instead, we
+				# anticipate the $parser->doHeadings() call and extract the
+				# text before the first heading.
+				$text = $parser->doHeadings( $text );
+				$p = preg_split( '/<(h[1-6])\\b.*?>.*?<\\/\\1\\s*>/i', $text, 2 );
+				if ( count( $p ) > 1 ) {
+					self::trySetSummary( $parser, trim( $p[0] ) );
+				}
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * GetLocalURL hook handler function.
 	 * Expands local URL @a $url if self::$expandingUrls is true.
 	 */
-	static function GetLocalURL( &$title, &$url, $query ) {
+	public static function GetLocalURL( &$title, &$url, $query ) {
 		if ( self::$expandingUrls ) {
 			$url = wfExpandUrl( $url );
 		}
@@ -132,7 +182,7 @@ class WikilogParser
 	 * from Title::getLocalURL() in situations where action != 'render'.
 	 * @todo Report this bug to MediaWiki bugzilla.
 	 */
-	static function GetFullURL( &$title, &$url, $query ) {
+	public static function GetFullURL( &$title, &$url, $query ) {
 		global $wgServer;
 		if ( self::$expandingUrls ) {
 			$l = strlen( $wgServer );
@@ -155,13 +205,7 @@ class WikilogParser
 
 		# Remove extra space to make block rendering easier.
 		$text = trim( $text );
-
-		if ( !$parser->mExtWikilog->mSummary ) {
-			$popt = $parser->getOptions();
-			$popt->enableLimitReport( false );
-			$output = $parser->parse( $text, $parser->getTitle(), $popt, true, false );
-			$parser->mExtWikilog->mSummary = $output->getText();
-		}
+		self::trySetSummary( $parser, $text );
 
 		$hidden = WikilogUtils::arrayMagicKeyGet( $params, $mwHidden );
 		return $hidden ? '<!-- -->' : $parser->recursiveTagParse( $text );
@@ -399,6 +443,23 @@ class WikilogParser
 	###
 	## Internal stuff.
 	#
+
+	/**
+	 * Set the article summary, ignore if already set.
+	 * @return True if set, false otherwise.
+	 */
+	private static function trySetSummary( &$parser, $text ) {
+		if ( !$parser->mExtWikilog->mSummary ) {
+			$popt = clone $parser->getOptions();
+			$popt->enableLimitReport( false );
+			$output = $parser->parse( $text, $parser->getTitle(), $popt, true, false );
+			$parser->mExtWikilog->mSummary = $output->getText();
+// 			wfDebug( "Wikilog summary set to:\n----\n" . $parser->mExtWikilog->mSummary . "\n----\n" );
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	/**
 	 * Adds an author to the current article. If too many authors, warns.

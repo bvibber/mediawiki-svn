@@ -13,6 +13,10 @@
   others replaced by wikilog-summary-header/footer, wikilog-entry-header/footer
   and others, with better support for plural and gender inflection, separate
   date and time, and also support to category and tag lists.
+* (wl:issue 2) Improved article summary extraction. Now a "--more--" marker
+  alone in a line breaks the summary (above) from the rest of the article
+  (below). The <summary> tag has precedence over this new marker. If neither
+  is found, the first section is used.
 
 === Bug fixes ===
 

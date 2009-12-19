@@ -127,8 +127,9 @@ $wgHooks['LinksUpdate'][] = 'WikilogLinksUpdate::LinksUpdate';
 // WikilogParser hooks
 $wgHooks['ParserFirstCallInit'][] = 'WikilogParser::FirstCallInit';
 $wgHooks['ParserClearState'][] = 'WikilogParser::ClearState';
-$wgHooks['ParserBeforeInternalParse'][] = 'WikilogParser::BeforeInternalParse';
+$wgHooks['ParserBeforeStrip'][] = 'WikilogParser::BeforeStrip';
 $wgHooks['ParserAfterTidy'][] = 'WikilogParser::AfterTidy';
+$wgHooks['InternalParseBeforeLinks'][] = 'WikilogParser::InternalParseBeforeLinks';
 $wgHooks['GetLocalURL'][] = 'WikilogParser::GetLocalURL';
 $wgHooks['GetFullURL'][] = 'WikilogParser::GetFullURL';
 

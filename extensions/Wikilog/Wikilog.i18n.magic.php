@@ -21,6 +21,7 @@ $magicWords['en'] = array(
 	'wlk-subtitle' => array( 0, 'subtitle' ),
 	'wlk-summary'  => array( 1, 'summary' ),
 	'wlk-hidden'   => array( 0, 'hidden' ),
+	'wlk-more'     => array( 0, 'more' ),
 );
 
 $magicWords['ml'] = array(
@@ -40,6 +41,7 @@ $magicWords['pt'] = array(
 	'wlk-subtitle'   => array( '0', 'subtítulo', 'subtitle' ),
 	'wlk-summary'    => array( '1', 'resumo', 'summary' ),
 	'wlk-hidden'     => array( '0', 'oculto', 'hidden' ),
+	'wlk-more'       => array( '0', 'mais', 'more' ),
 );
 
 /**
@@ -54,4 +56,5 @@ $magicWords['pt-br'] = array(
 	'wlk-subtitle'   => array( '0', 'subtítulo', 'subtitle' ),
 	'wlk-summary'    => array( '1', 'resumo', 'summary' ),
 	'wlk-hidden'     => array( '0', 'oculto', 'hidden' ),
+	'wlk-more'       => array( '0', 'mais', 'more' ),
 );

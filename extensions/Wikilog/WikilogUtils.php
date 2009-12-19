@@ -237,31 +237,39 @@ class WikilogUtils
 	}
 
 	/**
-	 * Split summary of a wikilog post from the contents.
-	 * If summary was provided in <summary>...</summary> tags, use it,
-	 * otherwise, use some heuristics to find it in the content.
+	 * Split summary of a wikilog article from the contents.
+	 * If summary is part of the parser output, use it; otherwise, try to
+	 * extract it from the content text (section zero, before the first
+	 * heading).
+	 *
+	 * @param $parserOutput ParserOutput object.
+	 * @return Two-element array with summary and content. Summary may be
+	 *   NULL if nonexistent.
 	 */
 	public static function splitSummaryContent( $parserOutput ) {
+		global $wgUseTidy;
+
 		$content = Sanitizer::removeHTMLcomments( $parserOutput->getText() );
 
 		if ( isset( $parserOutput->mExtWikilog ) && $parserOutput->mExtWikilog->mSummary ) {
+			# Parser output contains wikilog output and summary, use it.
 			$summary = Sanitizer::removeHTMLcomments( $parserOutput->mExtWikilog->mSummary );
 		} else {
-			$blocks = preg_split( '/< (h[1-6]) .*? > .*? <\\/\\1>/ix', $content );
-
+			# Try to extract summary from the content text.
+			$blocks = preg_split( '/<(h[1-6]).*?>.*?<\\/\\1>/i', $content, 2 );
 			if ( count( $blocks ) > 1 ) {
-				# Long article, get only the first paragraph.
-				$pextr = '/<(p)
-					( \\s+ (?: [^\'"\\/>] | \'[^\']*\' | "[^"]*" )* )?
-					(?: > .*? <\\/\\1\\s*> | \\/> )/isx';
-
-				if ( preg_match_all( $pextr, $blocks[0], $m ) ) {
-					$summary = implode( "\n", $m[0] );
-				} else {
-					$summary = NULL;
+				# Long article with multiple sections, use only the first one.
+				$summary = $blocks[0];
+				# It is possible for the regex to split on a heading that is
+				# not a child of the root element (e.g. <div><h2>...</h2>
+				# </div> leaving an open <div> tag). In order to handle such
+				# cases, we pass the summary through tidy if it is available.
+				if ( $wgUseTidy ) {
+					$summary = MWTidy::tidy( $summary );
 				}
 			} else {
-				# Short article, no summary.
+				# Short article with a single section, use no summary and
+				# leave to the caller to decide what to do.
 				$summary = NULL;
 			}
 		}
