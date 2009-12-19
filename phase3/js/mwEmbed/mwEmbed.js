@@ -1143,7 +1143,7 @@ var mwDefaultConf = {
 			mw.getScript( scriptRequest, function( scriptRequest ) {
 				mw.log(" got : " + scriptRequest );
 				if(! mw.isset( className )){
-					mw.log( ' Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.classPaths[ className ] );
+					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.classPaths[ className ] );
 				}else{
 					if( callback )
 						callback( className );
@@ -2338,7 +2338,17 @@ function domReadyCheck() {
     window.onload = i;
   }
 })(domReadyCheck);
-
+// As a backup check if "body" is not null ( for dynamic inserts )
+var mwCheckBody = function(){
+	if( document.getElementsByTagName('body')[0] ){
+		 mw.domReady();
+	}else{
+		setTimeout( function(){
+			mwCheckBody();
+		}, 25);
+	}
+} 
+mwCheckBody();
 
 
 /*
