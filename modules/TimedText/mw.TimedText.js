@@ -111,9 +111,10 @@ mw.addMessages( {
 		/**
 		* Set of timedText providers
 		*/
-		timedTextProvider:{
+		timedTextProviders:{
 			'commons':{
-				'api_url': mw.commons_api_url
+				'api_url': mw.commons_api_url,
+				'lib' :	'mediaWiki'				
 			}				
 		},		
 			
@@ -199,7 +200,7 @@ mw.addMessages( {
 		
 		/**
 		 * Load all the available text sources from the inline embed
-		 * 	or from a timedTextProvider
+		 * 	or from a timedTextProviders
 		 * @param {Function} callback Function to call once text sources are loaded
 		 */
 		loadTextSources: function( callback ){
@@ -211,7 +212,33 @@ mw.addMessages( {
 				var source = new textSource( inlineSources[i] );
 				this.textSources.push( source );
 			}			
-			callback();
+			
+			//If there are no inline sources check timedTextProviders & wikiTitleKey
+			// ( hard coded to "commons" right now )
+			var textProviderId = 'commons';
+			if( !this.embedPlayer.wikiTitleKey || !this.timedTextProviders){
+				//no other sources just issue the callback: 						
+				callback();
+				return ;
+			}
+			// Else try to get sources from text provider: 
+			var provider = this.timedTextProviders[ textProviderId ];
+			var assetKey = 	this.embedPlayer.wikiTitleKey;		
+			switch(  provider.lib ){
+				case 'mediaWiki':
+					this.textProvider = new mw.MediaWikiTextProvider( {
+						api_url: provider.api_url
+					});
+				break;
+			}			
+			// Load the textProvider sources
+			this.textProvider.loadSources( assetKey,  function( textSources ){
+				for( var i in textSources ){
+					var source = textSources[ i ];
+					this.textSources.push( source );
+				}
+				callback();
+			} );		
 		},
 		
 		/**
@@ -441,6 +468,9 @@ mw.addMessages( {
 			// Update the config language if the source includes language
 			if( source.lang )
 				this.config.userLanugage =  source.lang;
+				
+			if( source.category )
+				this.config.userCategory = source.category;
 			
 			// (@@todo update category & setup category language buckets? )
 			
@@ -799,7 +829,7 @@ mw.addMessages( {
 				}
 			} );
 			captions.push ( {
-				'start': start, 
+				'start' : start, 
 				'end' : end, 
 				'content' : content
 			} );
@@ -807,6 +837,164 @@ mw.addMessages( {
 		
 		return captions;
 	}
+	
+	
+	
+	/**
+	 * Text Providers
+	 * 
+	 * text provier objects let you map your player to a timed text provier 
+	 * can provide discovery, and contirbution push back
+	 * 
+	
+	// Will add a base class once we are serving more than just mediaWiki "commons"  
+	mw.BaseTextProvider = function(){
+		return this.init(); 	
+	}
+	mw.BaseTextProvider.prototype = {
+		init: function(){
+			
+		}
+	} 
+
+	 */
+	 
+	 mw.MediaWikiTextProvider = function( options ){
+	 	this.init( options )
+	 }	
+	 mw.MediaWikiTextProvider.prototype = {
+	 	api_url: null,
+	 	timedTextNS: null,
+	 	/**
+	 	* @constructor
+	 	* @param {Object} options Set of options for the provider
+	 	*/
+	 	init: function( options ){
+	 		//Set the api url: 
+	 		if( options.api_url ){
+	 			this.api_url = options.api_url
+	 		}
+	 		if( options.timedTextNS ){
+	 			this.timedTextNS = options.timedTextNS
+	 		}	 		
+	 	},
+	 	
+	 	/**
+	 	 * Loads all available source for a given assetKey
+	 	 *
+	 	 * @param {String} assetKey  For mediaWiki the assetKey is the "wiki title"
+	 	 */
+	 	loadSources: function( assetKey, callback ){
+	 		var request = {};
+	 		this.getSubPages( assetKey, function( subPages ){
+	 			mw.log(' got sub pages... ');
+	 			if( !subData.query.allpages ){
+	 				mw.log( 'no subtitle pages found');
+	 				callback();
+	 				return ;
+	 			}
+	 			_this.getSources( subPages )
+	 		} ); 		
+	 	},
+	 	
+	 	/*
+	 	 * Get the subtitle pages
+	 	 * @param {String} titleKey Title to get subtitles for
+	 	 * @param {Function} callback Function to call once NS subs are grabbed 
+	 	 */ 
+	 	getSubPages: function( titleKey, callback ){
+	 		var _this = this;
+		 	var request =  {
+				'list' : 'allpages',
+				'apprefix' : titleKey,
+				'apnamespace' : this.getTimedTextNS(),
+				'prop':'revisions'
+			};
+			mw.getJSON( this.api_url, request, function( subPages ) {
+				if (	subPages.error && subPages.error.code == 'apunknown_apnamespace' ) {
+					var request = { 
+						'list' : 'allpages', 
+						'apprefix' : _this.getCanonicalTimedTextNS() + ':' + _this.pe.wikiTitleKey 
+					};
+					mw.getJSON( apiUrl, request, function( subData ) {
+						callback( subPages )
+					} );
+				} else {
+					callback( subPages );
+				}
+			} );	
+	 	},
+	 	/**
+	 	 * Return the namespace (if not encoded on the page return default
+	 	 */
+	 	getTimedTextNS: function(){
+	 		if( this.timedTextNS )
+	 			return this.timedTextNS;
+			if ( typeof wgNamespaceIds != 'undefined' && wgNamespaceIds['timedtext'] ) {
+				this.timedTextNS = wgNamespaceIds['timedtext'];
+			}else{
+				//default value is 102 ( probably should store this elsewhere )
+				this.timedTextNS = 102;
+			}
+			return this.timedTextNS;
+	 	},
+	 	/*
+	 	 * Return the namespace text 
+	 	 */
+	 	getCanonicalTimedTextNS: function(){
+	 		return 'TimedText';
+	 	},
+	 	/**
+	 	 * Populate the sources
+	 	 */
+	 	getSources: function( subData  ) {
+			var _this = this;
+			// look for text tracks:
+			var foundTextTracks = false;
+	
+			for ( var i in subData.query.allpages ) {
+				
+				var subPage = subData.query.allpages[i];
+				var langKey = subPage.title.split( '.' );
+				var extension = langKey.pop();
+				langKey = langKey.pop();
+				
+				if ( ! _this.suportedMime[ extension ] ) {
+					mw.log( 'Error: unknown extension:' + extension );
+					continue;
+				}
+
+				if ( !langData[ langKey] ) {
+					mw.log( 'Error: langkey:' + langKey + ' not found' );
+				} else {
+					var textElm = document.createElement( 'text' );
+					$j( textElm ).attr( {
+						'category' : 'SUB',
+						'lang' 	: langKey,
+						'type' 	: _this.suportedMime[ extension ],
+						'title'	: langData[ langKey]
+					} );
+					// We use the api since ?action raw on the real title has cache issues 
+					$j( textElm ).attr( {
+						'apisrc'	: hostPath + '/api.php',
+						'titleKey' 	: subPage.title
+					} );
+					_this.pe.media_element.tryAddSource( textElm );
+					foundTextTracks = true;
+				}
+			}
+			// after all text loaded (or we have allready checked commons
+			if ( foundTextTracks || hostPath.indexOf( 'commons.wikimedia' ) !== -1 ) {
+				// alert('calling 			getParseTimedText_rowReady ');		
+				_this.getParseTimedText_rowReady();
+			} else {
+				_this.checkSharedRepo();
+			}
+	 	}
+	 	
+	 }
+	
+	
 } )( window.mw );
 
 /**

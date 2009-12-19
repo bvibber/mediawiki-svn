@@ -92,8 +92,8 @@ ctrlBuilder.prototype = {
 			// Make sure the given components is supported:
 			if ( this.supportedComponets[ i ] ) {
 				if ( this.available_width > this.components[i].w ) {
-					// Special case with playhead don't add unless we have 60px
-					if ( i == 'play_head' && this.available_width < 60 )
+					// Special case with playhead don't add unless we have 50px
+					if ( i == 'play_head' && this.available_width < 50 )
 						continue;
 					o += this.components[i].o( this  );
 					this.available_width -= this.components[i].w;
@@ -559,7 +559,7 @@ ctrlBuilder.prototype = {
 		'play_head': {
 			'w':0, // special case (takes up remaining space)
 			'o':function( ctrlObj ) {
-				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 40 ) + 'px;"></div>';
+				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 35 ) + 'px;"></div>';
 			}
 		}
 	}

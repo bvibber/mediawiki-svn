@@ -44,6 +44,15 @@ var kskinConfig = {
 		'time_display': {
 			'w':70
 		},		
+		/*
+		* The playhead html
+		*/
+		'play_head': {
+			'w':0, // special case (takes up remaining space)
+			'o':function( ctrlObj ) {
+				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 20 ) + 'px;"></div>';
+			}
+		},
 		'options_menu': {
 			'w':0,
 			'o':function( ctrlObj ) {
