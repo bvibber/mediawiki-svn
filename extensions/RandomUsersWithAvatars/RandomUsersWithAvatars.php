@@ -6,8 +6,9 @@
  *
  * @file
  * @ingroup Extensions
- * @version 1.0
- * @author Wikia New York Team
+ * @version 1.1
+ * @author David Pean <david.pean@gmail.com>
+ * @author Jack Phoenix <jack@countervandalism.net>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  * @link http://www.mediawiki.org/wiki/Extension:RandomUsersWithAvatars Documentation
  */
@@ -16,32 +17,33 @@
  * Protect against register_globals vulnerabilities.
  * This line must be present before any global variable is referenced.
  */
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
-
-$wgHooks['ParserFirstCallInit'][] = 'wfRandomUsersWithAvatars';
+}
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'RandomUsersWithAvatars',
-	'version' => '1.0',
-	'author' => 'Wikia New York Team',
+	'version' => '1.1',
+	'author' => array( 'David Pean', 'Jack Phoenix' ),
 	'description' => 'Adds <tt>&lt;randomuserswithavatars&gt;</tt> tag to display the avatars of randomly chosen users',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RandomUsersWithAvatars',
 	'descriptionmsg' => 'random-users-avatars-desc',
 );
 
-$dir = dirname(__FILE__) . '/';
+// Internationalization messages
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['RandomUsersWithAvatars'] = $dir . 'RandomUsersWithAvatars.i18n.php';
 
+$wgHooks['ParserFirstCallInit'][] = 'wfRandomUsersWithAvatars';
 function wfRandomUsersWithAvatars( &$parser ) {
 	$parser->setHook( 'randomuserswithavatars', 'GetRandomUsersWithAvatars' );
 	return true;
 }
 
-function GetRandomUsersWithAvatars( $input, $args, &$parser ){
-	global $wgUser, $wgUploadDirectory, $wgDBname, $wgMemc;
+function GetRandomUsersWithAvatars( $input, $args, $parser ) {
+	global $wgUploadDirectory, $wgDBname, $wgMemc;
 	wfLoadExtensionMessages( 'RandomUsersWithAvatars' );
 
 	wfProfileIn( __METHOD__ );
@@ -54,9 +56,9 @@ function GetRandomUsersWithAvatars( $input, $args, &$parser ){
 	// Try cache
 	$key = wfMemcKey( 'users', 'random', 'avatars', $count, $per_row );
 	$data = $wgMemc->get( $key );
-	if( !$data ){
+	if( !$data ) {
 		$files = glob( $wgUploadDirectory . "/avatars/{$wgDBname}_*_ml.*" );
-		$wgMemc->set( $key, $files, 60 * 60);
+		$wgMemc->set( $key, $files, 60 * 60 );
 	} else {
 		wfDebug( "Got random users with avatars from cache\n" );
 		$files = $data;
@@ -70,8 +72,9 @@ function GetRandomUsersWithAvatars( $input, $args, &$parser ){
 
 	$x = 1;
 
-	if( count( $files ) < $count )
+	if( count( $files ) < $count ) {
 		$count = count( $files );
+	}
 	if( $count > 0 ) {
 		$random_keys = array_rand( $files, $count );
 	} else {
@@ -84,7 +87,7 @@ function GetRandomUsersWithAvatars( $input, $args, &$parser ){
 		preg_match( "/{$wgDBname}_(.*)_/i", $avatar_name, $matches );
 		$user_id = $matches[1];
 
-		if( $user_id ){
+		if( $user_id ) {
 			// Load user
 			$user = User::newFromId( $user_id );
 			$user->loadFromDatabase();
@@ -95,7 +98,7 @@ function GetRandomUsersWithAvatars( $input, $args, &$parser ){
 
 			$output .= '<a href="' . $user_link->escapeFullURL() . '" rel="nofollow">' . $avatar->getAvatarURL() . '</a>';
 
-			if( $x == $count || $x != 1 && $x%$per_row == 0 ){
+			if( $x == $count || $x != 1 && $x%$per_row == 0 ) {
 				$output .= '<div class="cleared"></div>';
 			}
 			$x++;
