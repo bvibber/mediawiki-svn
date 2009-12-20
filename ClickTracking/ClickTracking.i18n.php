@@ -178,12 +178,16 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'clicktracking' => 'Heuliañ klikoù an intrudu implijadusted',
 	'clicktracking-desc' => "Heuliañ klikoù, talvezout a ra da heuliañ an darvoudoù na vez ket adkarget ur bajenn d'ho heul",
 	'ct-title' => "Sammad ar c'hlikoù implijerien",
 	'ct-event-name' => 'Anv an darvoud',
+	'ct-expert-header' => 'Klikoù "arbenigourien"',
+	'ct-intermediate-header' => 'Klikoù "implijerien etre"',
+	'ct-beginner-header' => 'Klikoù "deraouad"',
 	'ct-total-header' => "Hollad ar c'hlikoù",
 	'ct-start-date' => 'Deiziad kregiñ (AAAAMMJJ)',
 	'ct-end-date' => 'Deiziad echuiñ (AAAAMMJJ)',

@@ -220,6 +220,13 @@ $messages['nl'] = array(
 	'userdailycontribs-desc' => 'Dagelijkse gebruikersbijdragen voor de uitbreiding om gebruikerskliks mee te volgen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'userdailycontribs-desc' => 'Daglige brukerbidrag for tilleggsfunksjonen klikksporing',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

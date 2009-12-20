@@ -529,6 +529,7 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'optin-title-optedout' => 'Amprouiñ Beta',
@@ -561,6 +562,7 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-answer-whyoptout-didntwork' => "Ne'z ae ket plaen en-dro.",
 	'optin-survey-answer-whyoptout-notpredictable' => "Ne'z ae ket en-dro en un doare poellek.",
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Ne blije ket din an tres anezhañ.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => "N'on ket bet plijet gant an ivinelloù nevez hag an aozadur nevez.",
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ne blije ket din ar varrenn ostilhoù nevez.',
 	'optin-survey-answer-whyoptout-other' => 'Abeg all :',
 	'optin-survey-question-browser' => 'Peseurt merdeer a rit gantañ ?',
@@ -2830,6 +2832,13 @@ $messages['ka'] = array(
 პროექტზე მეტი ინფორმაციის ან მასში მონაწილეობის მისაღებად, გთხოვთ ეწვიოთ [http://usability.wikimedia.org გამოყენებადობის ინიციატივის ვიკის].  აქ თქვენ იპოვით ინფორმაციას ჩვენს გრანტზე, კვლევაზე, დიზაინსა და დამუშავებაზე. შეკითხვებისთვის ან ზოგადი მოსაზრებებისთვის, გთხოვთ გამოიყენოთ ჩვენი [http://usability.wikimedia.org/wiki/Talk:Prototype განხილვის გვერდის პროტოტიპი].  კონკრეტული თემების განხილვისთვის, გთხოვთ გამოიყენოთ მათთან დაკავშირებული განხილვის გვერდები. თუ პროგრამაში შეცდომებს იპოვით, გთხოვთ კომენტარი დატოვოთ [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai რელიზის განხილვის გვერზე] ან [https://bugzilla.wikimedia.org ბაგზილას] გამოყენებით.
 
 გმადლობთ და ველით თქვენს გამოხმაურებებს!',
+);
+
+/** Kalaallisut (Kalaallisut)
+ * @author Piivaat
+ */
+$messages['kl'] = array(
+	'optin-title-optedout' => 'Beta misiliguk',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -687,6 +687,7 @@ $messages['no'] = array(
 	'optin-leave' => 'Forlat Beta',
 	'tooltip-pt-optin-leave' => 'Slå av de nye funksjonene',
 	'optin-feedback' => 'Beta tilbakemelding',
+	'tooltip-pt-optin-feedback' => 'Gi tilbakemelding på din opplevelse med disse nye funksjonene',
 );
 
 /** Occitan (Occitan)
