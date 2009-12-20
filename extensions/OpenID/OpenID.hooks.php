@@ -5,7 +5,7 @@ class OpenIDHooks {
 		global $wgOpenIDOnly, $wgOpenIDClientOnly;
 
 		if ( $wgOpenIDOnly ) {
-			$list['Userlogin'] = array( 'SpecialRedirectToSpecial', 'Userlogin', 'OpenIDLogin', false, array('returnto') );
+			$list['Userlogin'] = array( 'SpecialRedirectToSpecial', 'Userlogin', 'OpenIDLogin', false, array( 'returnto', 'returntoquery' ) );
 			# Used in 1.12.x and above
 			$list['CreateAccount'] = array( 'SpecialRedirectToSpecial', 'CreateAccount', 'OpenIDLogin' );
 		}

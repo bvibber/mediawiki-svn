@@ -63,7 +63,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 		default: # Main entry point
 			if ( $wgRequest->getText( 'returnto' ) ) {
-				$this->setReturnTo( $wgRequest->getText( 'returnto' ) );
+				$this->setReturnTo( $wgRequest->getText( 'returnto' ), $wgRequest->getVal( 'returntoquery' ) );
 			}
 
 			$openid_url = $wgRequest->getText( 'openid_url' );
@@ -86,7 +86,8 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiMsg( 'openidalreadyloggedin', $wgUser->getName() );
-		$wgOut->returnToMain( false, $this->returnTo() );
+		list( $returnto, $returntoquery ) = $this->returnTo();
+		$wgOut->returnToMain( false, $returnto, $returntoquery );
 	}
 
 	/**
@@ -490,7 +491,8 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiMsg( 'openidsuccess', $wgUser->getName(), $openid );
 		$wgOut->addHtml( $inject_html );
-		$wgOut->returnToMain( false, $this->returnTo() );
+		list( $returnto, $returntoquery ) = $this->returnTo();
+		$wgOut->returnToMain( false, $returnto, $returntoquery );
 	}
 
 	function createUser( $openid, $sreg, $name ) {
@@ -697,10 +699,13 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	}
 
 	function returnTo() {
-		return isset( $_SESSION['openid_consumer_returnto'] ) ? $_SESSION['openid_consumer_returnto'] : '';
+		$returnto = isset( $_SESSION['openid_consumer_returnto'] ) ? $_SESSION['openid_consumer_returnto'] : '';
+		$returntoquery = isset( $_SESSION['openid_consumer_returntoquery'] ) ? $_SESSION['openid_consumer_returntoquery'] : '';
+		return array( $returnto, $returntoquery );
 	}
 
-	function setReturnTo( $returnto ) {
+	function setReturnTo( $returnto, $returntoquery ) {
 		$_SESSION['openid_consumer_returnto'] = $returnto;
+		$_SESSION['openid_consumer_returntoquery'] = $returntoquery;
 	}
 }
