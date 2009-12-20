@@ -174,17 +174,34 @@ class OpenIDHooks {
 		return true;
 	}
 	public static function onLoadExtensionSchemaUpdates() {
-		global $wgDBtype, $wgExtNewTables;
+		global $wgDBtype, $wgUpdates, $wgExtNewTables;
 
 		$base = dirname( __FILE__ );
 
 		if ( $wgDBtype == 'mysql' ) {
 			$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.sql" );
+			$wgUpdates['mysql'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
 		} else if ( $wgDBtype == 'postgres' ) {
 			$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.pg.sql" );
+			$wgUpdates['postgres'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
 		}
 
 		return true;
+	}
+
+	public static function makeUoiUserNotUnique() {
+		$db = wfGetDB( DB_MASTER );
+		if ( !$db->tableExists( 'user_openid' ) )
+			return;
+
+		$info = $db->fieldInfo( 'user_openid', 'uoi_user' );
+		if ( !$info->isMultipleKey() ) {
+			wfOut( "Making uoi_user filed not unique..." );
+			$db->sourceFile( dirname( __FILE__ ) . '/patch-uoi_user-not-unique.sql' );
+			wfOut( " done.\n" );
+		} else {
+			wfOut( "...uoi_user field is already not unique\n" );
+		}
 	}
 
 	private static function loginStyle() {
