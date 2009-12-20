@@ -183,7 +183,9 @@ class OpenIDHooks {
 			$wgUpdates['mysql'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
 		} else if ( $wgDBtype == 'postgres' ) {
 			$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.pg.sql" );
-			$wgUpdates['postgres'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
+			# This doesn't work since MediaWiki doesn't use $wgUpdates when
+			# updating a PostgreSQL database
+			#$wgUpdates['postgres'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
 		}
 
 		return true;
@@ -200,7 +202,7 @@ class OpenIDHooks {
 			$db->sourceFile( dirname( __FILE__ ) . '/patch-uoi_user-not-unique.sql' );
 			wfOut( " done.\n" );
 		} else {
-			wfOut( "...uoi_user field is already not unique\n" );
+			wfOut( "...uoi_user field is already not unique.\n" );
 		}
 	}
 
