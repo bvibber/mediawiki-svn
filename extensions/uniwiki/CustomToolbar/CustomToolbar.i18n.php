@@ -624,6 +624,7 @@ Pšosym pśekontrolěruj swój blokěrowak wuskokowańskich woknow.',
 );
 
 /** Greek (Ελληνικά)
+ * @author Geraki
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -665,6 +666,7 @@ $wgCustomToolbarMessages['el'] = array(
 	'ct_submit' => 'Πήγαινε!',
 	'ct_close' => 'Κλείσιμο παραθύρου',
 	'ct_success' => 'Φόρτωση αρχείου επιτυχής!',
+	'ct_popupblocked' => 'Το αναδυόμενο παράθυρο επιφόρτωσης εμποδίστηκε να ανοίξει. Παρακαλούμε ελέγξτε την φραγή αναδυόμενων παραθύρων.',
 	'ct_user_user' => 'Χρήστης',
 	'ct_user_tip' => 'Εισαγωγή ενός συνδέσμου σε μια σελίδα χρήστη',
 	'ct_user_caption' => 'Σύνδεσμος χρήστη',

@@ -76,6 +76,13 @@ $messages['eu'] = array(
 	'autoincrement-desc' => '<nowiki>{{AUTOINCREMENT}}</nowiki> autogehiketa aldagaia txertatzen duen estensio aldagai bat',
 );
 
+/** Finnish (Suomi)
+ * @author ZeiP
+ */
+$messages['fi'] = array(
+	'autoincrement-desc' => 'Laajennus, joka lisää automaattisesti kasvavan muuttujan <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** French (Français)
  * @author IAlex
  */

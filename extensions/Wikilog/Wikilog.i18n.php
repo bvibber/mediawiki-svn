@@ -194,7 +194,9 @@ The comment will only appear after it is reviewed by a moderator.',
  * @author Fryed-peach
  * @author Juliano
  * @author McDutchie
+ * @author Nghtwlkr
  * @author Purodha
+ * @author Raymond
  * @author Siebrand
  * @author Umherirrender
  */
@@ -313,6 +315,8 @@ Parameters:
 * $1 is the invalid date',
 	'wikilog-invalid-tag' => 'Parameters:
 * $1 is the invalid tag',
+	'wikilog-invalid-file' => 'Parametre:
+* $1 er den ugyldige filen',
 	'wikilog-file-not-found' => 'Parameters:
 * $1 is the non-existing file',
 	'wikilog-not-an-image' => 'Parameters:
@@ -637,16 +641,20 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'wikilog-desc' => "Ouzhpennañ arc'hweladurioù blog, o krouiñ ur wiki-blog gwellaet",
 	'wikilog-auto' => 'Wikilog Aoto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Postañ addisplegoù da bennadoù wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogoù',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Marilh an oberoù war wikilog',
+	'wikilog-log-pagetext' => "Da heul e kavoc'h ur roll eus oberoù ar wikilog.",
 	'wikilog-log-cmt-approve' => 'addispleg aprouet [[$1]]',
 	'wikilog-log-cmt-reject' => 'addispleg distaolet [[$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Oberoù wikilog',
 	'wikilog-information' => 'Titouroù war wikilog',
+	'wikilog-post-count-published' => 'Bez ez eus {{PLURAL:$1|ur pennad|$1 pennad}} war ar wikilog-mañ.',
 	'wikilog-new-item' => 'Krouiñ ur pennad wikilog nevez',
 	'wikilog-new-item-go' => 'Krouiñ',
 	'wikilog-item-name' => 'Anv ar pennad :',
@@ -719,6 +727,7 @@ $messages['br'] = array(
 	'wikilog-form-status' => 'Statud :',
 	'wikilog-form-preview' => 'Rakwelet :',
 	'wikilog-form-comment' => 'Addispleg :',
+	'wikilog-show-all' => 'An holl postoù',
 	'wikilog-show-published' => 'Embannet',
 	'wikilog-show-drafts' => 'Brouilhedoù',
 	'wikilog-submit' => 'Kas',
@@ -1002,6 +1011,19 @@ Komentar buźo se akle pokazaś, za tym až moderator jo jen pśeglědał.',
 	'wikilog-page-lc' => 'bok',
 	'wikilog-history-lc' => 'historija',
 	'wikilog-doc-import-comment' => 'Importěrowana wikilogowa dokumentacija',
+);
+
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'wikilog-new-item-go' => 'Δημιουργία',
+	'wikilog-updated' => 'Ενημερωμένος',
+	'wikilog-draft' => 'Προσχέδιο',
+	'wikilog-title' => 'Τίτλος',
+	'wikilog-comments' => 'Σχόλια',
+	'wikilog-view-summary' => 'Σύνοψη',
+	'wikilog-draft-title-mark' => '(προσχέδιο)',
 );
 
 /** Esperanto (Esperanto)
@@ -1457,6 +1479,8 @@ O comentario non aparecerá ata que sexa revisado por un moderador.',
  */
 $messages['grc'] = array(
 	'wikilog-new-item-go' => 'Ποιεῖν',
+	'wikilog-updated' => 'Ἐνημερωθέν',
+	'wikilog-title' => 'Ἐπιγραφή',
 	'wikilog-actions' => 'Δράσεις',
 	'wikilog-comments' => 'Σχόλια',
 	'wikilog-view-summary' => 'Σύνοψις',
@@ -3042,6 +3066,15 @@ $messages['pdc'] = array(
 	'wikilog-form-tag' => 'Daag:',
 	'wikilog-form-comment' => 'Anmaerricking:',
 	'wikilog-page-lc' => 'Blatt',
+);
+
+/** Polish (Polski)
+ * @author Odder
+ */
+$messages['pl'] = array(
+	'wikilog-title' => 'Tytuł',
+	'wikilog-form-category' => 'Kategoria:',
+	'wikilog-form-author' => 'Autor:',
 );
 
 /** Piedmontese (Piemontèis)

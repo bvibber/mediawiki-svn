@@ -1380,6 +1380,7 @@ $messages['eu'] = array(
  * @author Str4nd
  * @author Varusmies
  * @author Vililikku
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'openid-desc' => 'Kirjaudu wikiin [http://openid.net/ OpenID:llä] ja muille OpenID-tuetuille sivustoille wiki-käyttäjätilillä.',
@@ -1424,7 +1425,9 @@ Voit valita omasi alla olevista vaihtoehdoista.',
 	'openidchooseexisting' => 'Olemassa oleva tunnus tässä wikissä',
 	'openidchoosepassword' => 'salasana:',
 	'openidconvertinstructions' => 'Tällä lomakkeella voit muuttaa käyttäjätilisi käyttämään OpenID-osoitetta tai lisätä OpenID-osoitteita.',
+	'openidconvertoraddmoreids' => 'Siirry OpenID:hen tai lisää uusi OpenID-osoite.',
 	'openidconvertsuccess' => 'Muutettiin onnistuneesti OpenID:hen.',
+	'openidconvertsuccesstext' => 'OpenID:si on muunnettu $1:ksi.',
 	'openidconvertyourstext' => 'Tämä on jo OpenID:si.',
 	'openidconvertothertext' => 'Tämä on jonkun muun OpenID.',
 	'openidalreadyloggedin' => "'''Olet jo kirjautuneena sisään, $1!'''
@@ -1436,13 +1439,24 @@ Jos haluat käyttää OpenID:tä kirjautumiseen jatkossa, voit [[Special:OpenIDC
 Muussa tapauksessa valitse <code>Continue</code> (Jatka).',
 	'openidclientonlytext' => 'Et voi käyttää tämän wikin käyttäjätunnuksia OpenID-tunnuksina muilla sivustoilla.',
 	'openidloginlabel' => 'OpenID-URL',
+	'openidlogininstructions' => '{{SITENAME}} tukee [http://openid.net/ OpenID]-standardia yhden tunnuksen käyttämiseksi eri Web-sivustoilla.
+OpenID antaa sinun kirjautua useille eri Web-sivustoille tarvitsematta eri salasanaa jokaiseen.
+(Katso [http://en.wikipedia.org/wiki/OpenID Wikipedian OpenID-artikkeli] saadaksesi lisätietoja.)
+
+Jos sinulla on jo tunnus {{SITENAME}}, voit [[Special:UserLogin|kirjautua sisään]] käyttäjätunnuksellasi ja salasanallasi kuten normaalistikin.
+Käyttääksesi tulevaisuudessa OpenID:tä, voit [[Special:OpenIDConvert|muuntaa tilisi OpenID:een]] normaalin sisäänkirjautumisen jälkeen.
+
+Tarjolla on monia eri [http://openid.net/get/ OpenID-tarjoajia], ja sinulla saattaa jo olla OpenID:tä tarjoava tunnus toisessa palvelussa.',
 	'openidupdateuserinfo' => 'Päivitä minun henkilökohtaiset tietoni.',
 	'openiddelete' => 'Poista OpenID',
+	'openiddelete-text' => 'Klikkaamalla "{{int:openiddelete-button}}"-paniketta, voit poistaa OpenID:n $1 tunnuksestasi.
+Et voi enää kirjautua sisälle tällä OpenID:llä.',
 	'openiddelete-button' => 'Vahvista',
 	'openiddelete-sucess' => 'OpenID on onnistuneesti poistettu tilistäsi.',
 	'openiddelete-error' => 'Virhe poistettaessa OpenID:tä tilistäsi.',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-asetukset',
 	'openid-pref-hide' => 'Piilota OpenID:si käyttäjäsivultani, jos kirjaudun sisään OpenID-tunnuksilla.',
+	'openid-pref-update-userinfo-on-login' => 'Päivitä seuraavat tiedot OpenID-tiedoista jokaisella kirjautumisella:',
 	'openid-urls-desc' => 'Tiliisi liitetyt OpenID:eet:',
 	'openid-urls-action' => 'Toiminto',
 	'openid-urls-delete' => 'Poista',

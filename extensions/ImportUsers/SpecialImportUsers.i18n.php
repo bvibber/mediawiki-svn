@@ -622,6 +622,7 @@ $messages['grc'] = array(
 	'importusers-form-button' => 'Εἰσάγειν',
 	'importusers-log-summary' => 'Σύνοψις',
 	'importusers-log-summary-all' => 'Ἅπασαι',
+	'importusers-log-summary-updated' => 'Ἐνημερωθέν',
 	'importusers-password' => 'σύνθημα',
 	'importusers-email' => 'ἠλ-ταχυδρομεῖον',
 	'importusers-realname' => 'ἀληθὲς ὄνομα',

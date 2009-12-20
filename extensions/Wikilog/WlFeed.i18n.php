@@ -57,6 +57,13 @@ $messages['dsb'] = array(
 	'wlfeed-desc' => 'Pólěpšone klase kanaloweje generacije',
 );
 
+/** Finnish (Suomi)
+ * @author ZeiP
+ */
+$messages['fi'] = array(
+	'wlfeed-desc' => 'Parannetut syötteiden luontiluokat',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

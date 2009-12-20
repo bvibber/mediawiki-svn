@@ -414,7 +414,7 @@ $messages['be-tarask'] = array(
 	'contribstats-landingpage' => 'Прывітальная старонка',
 	'contribstats-donatepage' => 'Старонка ахвяраваньняў',
 	'contribstats-average' => 'Сярэдняе',
-	'contribstats-imperfect-data' => 'Гэтыя зьвесткі не зьяўляюцца поўнасьцю дакладнымі, таму што сачэньне за ахвяравальнікамі без выкарыстаньня сачэньня за сэсіямі мае сае абмежаваньні.',
+	'contribstats-imperfect-data' => 'Гэтыя зьвесткі не зьяўляюцца поўнасьцю дакладнымі, таму што сачэньне за ахвяравальнікамі без выкарыстаньня сачэньня за сэсіямі мае свае абмежаваньні.',
 	'contribstats-paypal-donations' => 'Ахвяраваньні праз PayPal',
 	'contribstats-credit-card' => 'Ахвяраваньні з крэдытных картак',
 	'contribstats-fraud-note' => 'Некаторыя ахвяраваньні зьяўляюцца махлярскімі.',
@@ -705,6 +705,9 @@ $messages['cs'] = array(
 	'contribstats-day-totals' => 'Denní součet',
 	'contribstats-week' => 'Týden',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Celkem za tento týden|Celkové týdenní výsledky za poslední $1 týdny včetně|Celkové týdenní výsledky za posledních $1 týdnů včetně}}',
+	'contribstats-payment-type' => 'Způsob platby',
+	'contribstats-banner' => 'Proužek',
+	'contribstats-payment-type-hits' => 'Návštěv způsobu platby',
 	'contribstats-clicks' => 'Kliknutí',
 	'contribstats-donations' => 'Příspěvky',
 	'contribstats-conversion' => 'Konverzní poměr (%)',
@@ -713,6 +716,11 @@ $messages['cs'] = array(
 	'contribstats-landingpage' => 'Cílová stránka',
 	'contribstats-donatepage' => 'Přispívací stránka',
 	'contribstats-average' => 'Průměr',
+	'contribstats-imperfect-data' => 'Uvedená data nejsou dokonalá, sledování dárců bez sledování sezení má svá omezení.',
+	'contribstats-paypal-donations' => 'Dary přes PayPal',
+	'contribstats-credit-card' => 'Kreditní karta',
+	'contribstats-fraud-note' => 'Existují podvodné platby.',
+	'contribstats-unaudited' => 'Jedná se o neprověřené součty.',
 	'fundraiserstatistics' => 'Statistika příspěvkové kampaně',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => '$2, $1. den',
@@ -725,6 +733,7 @@ $messages['cs'] = array(
 	'fundraiserstats-tab-contributions' => 'Počty příspěvků',
 	'fundraiserstats-tab-averages' => 'Průměry (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
+	'fundraiserstats-tab-ytd' => 'Od začátku roku (USD)',
 	'specialpages-group-contribution' => 'Příspěvky/financování',
 );
 
@@ -843,6 +852,7 @@ $messages['de'] = array(
 	'contribstats-average' => 'Durchschnitt',
 	'contribstats-paypal-donations' => 'PayPal-Spenden',
 	'contribstats-credit-card' => 'Kreditkarte',
+	'contribstats-fraud-note' => 'Es existieren einige Falschspenden.',
 	'fundraiserstatistics' => 'Spendenstatistiken',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Tag $1 von $2',
@@ -859,6 +869,7 @@ $messages['de'] = array(
 );
 
 /** Zazaki (Zazaki)
+ * @author Mirzali
  * @author Xoser
  */
 $messages['diq'] = array(
@@ -899,9 +910,9 @@ $messages['diq'] = array(
 	'contribstats-day-totals' => 'Ena roc de yekun',
 	'contribstats-week' => 'Hefte',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Ena hefte de yekunî|Ena hefte de yekunî u $1 hefte verînî dehil o}}',
-	'contribstats-payment-type' => 'Metodê pere dayişi',
-	'contribstats-banner' => 'Tablo',
-	'contribstats-payment-type-hits' => 'Hitanê tipan pere dayişi',
+	'contribstats-payment-type' => 'Şeklê Peredayışi',
+	'contribstats-banner' => 'Desmale',
+	'contribstats-payment-type-hits' => 'Serkewtışê Şeklê Peredayışi',
 	'contribstats-clicks' => 'Klikan',
 	'contribstats-donations' => 'Yardimê pere',
 	'contribstats-conversion' => 'Reytinê vurnayîşî (%)',
@@ -910,18 +921,18 @@ $messages['diq'] = array(
 	'contribstats-landingpage' => 'Pelê erdi',
 	'contribstats-donatepage' => 'Pelê bexşi',
 	'contribstats-average' => 'Orta',
-	'contribstats-imperfect-data' => 'Ena data mukemel niyo çunki bexş dayogani track kerdiş de limitan estê.',
-	'contribstats-paypal-donations' => 'Bexşê PayPal',
-	'contribstats-credit-card' => 'Kardê Kredi',
-	'contribstats-fraud-note' => 'Tay bexşanê sexte estê.',
-	'contribstats-unaudited' => 'Ena yekun qontrol nibiyo.',
+	'contribstats-imperfect-data' => 'Eno dae bê ronıştışteqibkerdışi zey beğşteqibkerdışi mıkemel niyo, tede taê sinori gurêniyenê.',
+	'contribstats-paypal-donations' => 'Beğşê PayPali',
+	'contribstats-credit-card' => 'Karta Kredi',
+	'contribstats-fraud-note' => 'Taê beğşê sextey estê.',
+	'contribstats-unaudited' => 'Enê yekuni qontrol nêbiyê.',
 	'fundraiserstatistics' => 'Îstatistkê pere berz kerdoğ',
 	'fundraiserstats-date' => 'Wext',
 	'fundraiserstats-day' => 'Rocê $1î u $2',
 	'fundraiserstats-contributions' => 'Destek dayoğan',
 	'fundraiserstats-total' => 'Hemî (USD)',
 	'fundraiserstats-avg' => 'Orta (USD)',
-	'fundraiserstats-ytd' => 'Yekun (USD)',
+	'fundraiserstats-ytd' => 'Yekuno kumulatif (USD)',
 	'fundraiserstats-max' => 'Tewr zaf (USD)',
 	'fundraiserstats-tab-totals' => 'Hemî (USD)',
 	'fundraiserstats-tab-contributions' => 'Amarê destek dayoğan',
@@ -999,6 +1010,7 @@ $messages['dsb'] = array(
 	'fundraiserstats-tab-contributions' => 'Licba pśinoskow',
 	'fundraiserstats-tab-averages' => 'Pśerězki (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
+	'fundraiserstats-tab-ytd' => 'Doněnta w lěśe (USD)',
 	'specialpages-group-contribution' => 'Dary/Pósćiwańska akcija',
 );
 
@@ -1461,6 +1473,7 @@ $messages['fi'] = array(
  * @author Jean-Frédéric
  * @author Korrigan
  * @author Peter17
+ * @author PieRRoMaN
  * @author Quentinv57
  * @author Toliño
  * @author Verdy p
@@ -1531,6 +1544,7 @@ $messages['fr'] = array(
 	'fundraiserstats-tab-contributions' => 'Nombre de contributions',
 	'fundraiserstats-tab-averages' => 'Moyennes (dollars US)',
 	'fundraiserstats-tab-maximums' => 'Maximums (dollars US)',
+	'fundraiserstats-tab-ytd' => 'Année en cours (USD)',
 	'specialpages-group-contribution' => 'Contributions / levée de fonds',
 );
 
@@ -1613,6 +1627,7 @@ $messages['gl'] = array(
 	'fundraiserstats-tab-contributions' => 'Número de contribucións',
 	'fundraiserstats-tab-averages' => 'Promedio (dólar estadounidense)',
 	'fundraiserstats-tab-maximums' => 'Máximas (dólar estadounidense)',
+	'fundraiserstats-tab-ytd' => 'Total anual ata o de agora (USD)',
 	'specialpages-group-contribution' => 'Contribucións/Recadación',
 );
 
@@ -1894,6 +1909,7 @@ $messages['hsb'] = array(
 	'fundraiserstats-tab-contributions' => 'Ličba přinoškow',
 	'fundraiserstats-tab-averages' => 'Přerězki (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
+	'fundraiserstats-tab-ytd' => 'Dotal w lěće (USD)',
 	'specialpages-group-contribution' => 'Dary/Darjenska akcija',
 );
 
@@ -2259,6 +2275,7 @@ $messages['ja'] = array(
 	'fundraiserstats-tab-contributions' => '寄付件数',
 	'fundraiserstats-tab-averages' => '平均 (米ドル)',
 	'fundraiserstats-tab-maximums' => '最大 (米ドル)',
+	'fundraiserstats-tab-ytd' => '年度累計 (米ドル)',
 	'specialpages-group-contribution' => '寄付/資金調達',
 );
 
@@ -2558,6 +2575,7 @@ $messages['lb'] = array(
 	'fundraiserstats-tab-contributions' => 'Zuel vun den Donen',
 	'fundraiserstats-tab-averages' => 'Duerchschnëtt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximumen (USD)',
+	'fundraiserstats-tab-ytd' => 'Joer-bis-Datum (USD)',
 	'specialpages-group-contribution' => 'Donen/Quêteur',
 );
 
@@ -2943,6 +2961,9 @@ $messages['nl'] = array(
 	'contribstats-day-totals' => 'Totaal voor dag',
 	'contribstats-week' => 'Week',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Totaal voor deze week|Wekelijkse totalen inclusief de afgelopen $1 weken}}',
+	'contribstats-payment-type' => 'Betaalwijze',
+	'contribstats-banner' => 'Banner',
+	'contribstats-payment-type-hits' => 'Betaalwijzehits',
 	'contribstats-clicks' => 'Klikken',
 	'contribstats-donations' => 'Donaties',
 	'contribstats-conversion' => 'Conversiepercentage',
@@ -2951,6 +2972,11 @@ $messages['nl'] = array(
 	'contribstats-landingpage' => 'Ingangspagina',
 	'contribstats-donatepage' => 'Donatiepagina',
 	'contribstats-average' => 'Gemiddelde',
+	'contribstats-imperfect-data' => 'Deze gegevens zijn niet perfect omdat het volgen van donateurs zonder het volgen van de sessie zijn beperkingen kent.',
+	'contribstats-paypal-donations' => 'PayPal-donaties',
+	'contribstats-credit-card' => 'Creditcard',
+	'contribstats-fraud-note' => 'Bevat gefingeerde donaties.',
+	'contribstats-unaudited' => 'Deze totalen zijn niet gecontroleerd.',
 	'fundraiserstatistics' => 'Fondswervingstatistieken',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dag $1 van $2',
@@ -2963,6 +2989,7 @@ $messages['nl'] = array(
 	'fundraiserstats-tab-contributions' => 'Aantal donaties',
 	'fundraiserstats-tab-averages' => 'Gemiddelden (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
+	'fundraiserstats-tab-ytd' => 'Jaar tot op heden (USD)',
 	'specialpages-group-contribution' => 'Giften/Fondsenwervingsactie',
 );
 
@@ -3509,6 +3536,7 @@ $messages['ru'] = array(
 	'fundraiserstats-tab-contributions' => 'Число вкладов',
 	'fundraiserstats-tab-averages' => 'Средние (USD)',
 	'fundraiserstats-tab-maximums' => 'Максимумы (USD)',
+	'fundraiserstats-tab-ytd' => 'На данный год (USD)',
 	'specialpages-group-contribution' => 'Пожертвования/Сбор средств',
 );
 
@@ -3785,6 +3813,7 @@ $messages['te'] = array(
 	'contribstats-value-over' => '$1 పైబడి',
 	'contribstats-day-totals' => 'నేటి మొత్తం',
 	'contribstats-week' => 'వారం',
+	'contribstats-payment-type' => 'చెల్లింపు రకం',
 	'contribstats-clicks' => 'నొక్కులు',
 	'contribstats-donations' => 'విరాళాలు',
 	'contribstats-template' => 'మూస',

@@ -1222,6 +1222,14 @@ $messages['no'] = array(
 	'qp_users_link' => 'Brukere',
 );
 
+/** Polish (Polski)
+ * @author Odder
+ */
+$messages['pl'] = array(
+	'qp_source_link' => 'Źródło',
+	'qp_stats_link' => 'Statystyki',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

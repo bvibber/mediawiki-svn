@@ -254,10 +254,11 @@ Mesedez [[MediaWiki:Number_of_watching_users_pageview]] orria erabili sarrerako 
  * @author Silvonen
  * @author Str4nd
  * @author Vililikku
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'whoiswatching' => 'Kuka on tarkkailemassa wikisivua',
-	'whoiswatching-desc' => 'Mahdollistaa wikisivun tarkkailijoidan listauksen.',
+	'whoiswatching-desc' => 'Mahdollistaa wikisivun tarkkailijoiden listauksen.',
 	'specialwhoiswatchingthepage' => 'Kuka tarkkailee sivua %s',
 	'specialwhoiswatchingusage' => 'Tätä toimintosivua ei voi käyttää sellaisenaan.
 Käytä sivua [[MediaWiki:Number_of_watching_users_pageview]] määritelläksesi liityntäkohdan tähän toimintosivuun.',

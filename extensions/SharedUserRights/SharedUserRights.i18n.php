@@ -511,8 +511,10 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Fluff
+ * @author Per
  */
 $messages['sv'] = array(
+	'shareduserrights' => 'Administration av delade användarrättigheter',
 	'gblrights-desc' => 'Enkel [[Special:SharedUserRights|administration av globala användarrättigheter]]',
 	'gblrights-logpage' => 'Logg över globala rättigheter',
 	'gblrights-pagetext' => 'Detta är en logg över de förändringar som görs i wikifamiljens globala rättighetstabell',

@@ -125,6 +125,14 @@ $messages['fa'] = array(
 	'tog-microid' => 'یک <a href="http://microid.org/">MicroID</a> منتشر کنید تا حساب کاربری با خدمات خارجی را تایید کنید',
 );
 
+/** Finnish (Suomi)
+ * @author ZeiP
+ */
+$messages['fi'] = array(
+	'microid-desc' => 'Lisää [http://www.microid.org/ MicroID:n] käyttäjäsivuille vahvistaakseen tunnuksen ulkoisille palveluille',
+	'tog-microid' => 'Julkaise <a href="http://microid.org/">MicroID</a> vahvistaaksesi tunnuksen ulkoisille palveluille.',
+);
+
 /** French (Français)
  * @author Dereckson
  * @author Grondin

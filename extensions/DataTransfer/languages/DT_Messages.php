@@ -1308,6 +1308,7 @@ $messages['no'] = array(
 	'dt_import_importing' => 'Importerer...',
 	'dt_import_success' => '{{PLURAL:$1|Én side|$1 sider}} vil bli importert fra $2-filen.',
 	'importcsv' => 'Importer CSV',
+	'dt_importcsv_badheader' => "Feil: kolonneoverskriften $1, '$2', må være enten '$3', '$4' eller på formen 'malnavn[feltnavn]'",
 	'right-datatransferimport' => 'Importer data',
 );
 

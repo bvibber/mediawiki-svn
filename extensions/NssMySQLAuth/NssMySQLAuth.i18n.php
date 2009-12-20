@@ -821,7 +821,7 @@ $messages['pt'] = array(
 	'nss-create-account-header' => 'Criar nova conta',
 	'nss-create-account' => 'Criar conta',
 	'nss-no-mail' => 'Não enviar correio electrónico',
-	'nss-welcome-mail' => 'Uma conta com nome de utilizador $1 e palavra-chave $2 foi criada para si.',
+	'nss-welcome-mail' => 'Foi criada para si uma conta com nome de utilizador $1 e palavra-chave $2.',
 	'nss-welcome-mail-subject' => 'Criação de conta',
 	'nss-db-error' => 'Erro na leitura da base de dados de autenticação',
 );

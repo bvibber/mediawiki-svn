@@ -292,11 +292,13 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Geraki
  * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'player' => 'Παίκτης',
+	'player-desc' => 'Ενσωματωμένη αναπαραγωγή πολυμέσων με την χρήση κοινών πρόσθετων των browser, και μια [[Special:Player|ειδική σελίδα]]',
 	'player-title' => 'Παίκτης',
 	'player-playertitle' => 'Παίκτης: $1',
 	'player-file' => 'Όνομα αρχείου',

@@ -69,6 +69,7 @@ $messages['en'] = array(
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
+ * @author Raymond
  * @author Siebrand
  */
 $messages['qqq'] = array(
@@ -892,6 +893,7 @@ $messages['lb'] = array(
 	'wah-downloading' => "D'Erofluede vum Fichier <i>$1%</i> ass fäerdeg",
 	'wah-uploading' => 'De Fichier <i>$1</i> gouf komplett eropgelueden',
 	'wah-uploadfail' => 'Eroplueden hue tnet fonctionnéiert',
+	'wah-doneuploading' => 'Eroplueden ofgeschloss. Merci fir Äre Beitrag.',
 );
 
 /** Macedonian (Македонски)

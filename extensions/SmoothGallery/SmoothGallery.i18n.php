@@ -548,6 +548,8 @@ Setzt w.e.g. mindestens ee Bild derbäi.",
 	'smoothgallery-no-images' => 'An dëser Gallerie goufe keng Biller fonnt.
 Vergewëssert Iech datt et{{PLURAL:$3|dat ugefrote Bild|déi ugefrote Biller}} gëtt.
 {{PLURAL:$2|Dëst Bild gouf|Dës Biller goufe}} fonnt: $1',
+	'smoothgallery-unexpected-error' => 'Et gouf en onerwaarte Feeler.
+Fëllt w.e.g. eng Feelermeldung (bug report) aus.',
 	'smoothgallery-javascript-disabled' => 'JavaScriot gëtt gebraucht fir dës Gallerie korrekt ze gesinn.',
 );
 

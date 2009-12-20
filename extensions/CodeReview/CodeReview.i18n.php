@@ -4342,6 +4342,7 @@ $4',
 $messages['ka'] = array(
 	'code' => 'კოდის შემოწმება',
 	'code-old-status' => 'ძველი სტატუსი',
+	'code-new-status' => 'ახალი სტატუსი',
 	'code-notes' => 'ბოლო კომენტარები',
 	'code-authors' => 'ავტორები',
 	'code-author-link' => 'კავშირის დამყარება?',

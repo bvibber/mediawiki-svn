@@ -574,11 +574,14 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Odder
  */
 $messages['pl'] = array(
 	'mostrevisors' => 'Strony z największą liczbą odwiedzających',
 	'mostrevisors-desc' => 'Lista [[Special:MostRevisors|stron z największą liczbą odwiedzających]]',
 	'mostrevisors-header' => "'''Ta strona zawiera {{PLURAL:$1|stronę|listę $1 stron}} z największa liczbą odwiedzających na tej wiki.'''",
+	'mostrevisors-showredir' => 'Pokaż przekierowania',
+	'mostrevisors-hideredir' => 'Ukryj przekierowania',
 );
 
 /** Piedmontese (Piemontèis)
@@ -695,6 +698,25 @@ $messages['sk'] = array(
 	'mostrevisors-hideredir' => 'Skryť presmerovacie stránky',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|používateľ|používatelia|používateľov}}',
 	'mostrevisors-viewcontributors' => 'Zobraziť hlavných prispievateľov',
+);
+
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'mostrevisors' => 'Sidor med flest bidragsgivare',
+	'mostrevisors-desc' => 'Lista [[Special:MostRevisors|sidor med flest bidragsgivare]]',
+	'mostrevisors-header' => "'''Denna sida listar {{PLURAL:$1|den sida|de $1 sidor}} med flest bidragsgivare på wikin.'''",
+	'mostrevisors-limitlinks' => 'Visa upp till $1 sidor',
+	'mostrevisors-namespace' => 'Namnrymd:',
+	'mostrevisors-none' => 'Inga inlägg hittades',
+	'mostrevisors-ns-header' => "'''Denna sida listar {{PLURAL:$1|den sida|de $1 sidor}} med flest bidragsgivare i namnrymden $2.'''",
+	'mostrevisors-showing' => 'Listar {{PLURAL:$1|sida|$1 sidor}}:',
+	'mostrevisors-submit' => 'Kör',
+	'mostrevisors-showredir' => 'Visa omdirigeringssidor',
+	'mostrevisors-hideredir' => 'Dölj omdirigeringssidor',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|bidragsgivare|bidragsgivare}}',
+	'mostrevisors-viewcontributors' => 'Se huvudbidragsgivarna',
 );
 
 /** Telugu (తెలుగు)

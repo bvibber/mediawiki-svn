@@ -390,6 +390,20 @@ $messages['sl'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Zaradi potencialnega nepravilnega interpretiranja so podprta samo text/plain sporočila.',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'prefs-sendmailtowiki' => 'Postar innehåll via e-post',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Om PIN-koden lämnas blank så omöjliggörs det att posta innehåll till wikin med ditt konto.',
+	'sendmailtowiki-err-pinlength' => 'PIN-koden måste bestå av exakt 5 siffror.',
+	'sendmailtowiki-err-invalidaccount' => 'Ogiltigt konto. Kontrollera e-postadressen du skickar till.',
+	'sendmailtowiki-err-invalidsender' => 'Ogiltig sändare. Kontrollera e-postadressen du skickar ifrån.',
+	'sendmailtowiki-err-invalidpin' => 'Ogiltig PIN. Åtkomst nekad.',
+	'sendmailtowiki-err-onlyplain' => 'Pågrund av risken för feltolkningar så är endast rena textmeddelanden tillåtna.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
