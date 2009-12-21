@@ -362,41 +362,36 @@ mw.addMessages( {
 			// Chouse text menu item ( if there are sources)
 			if( _this.textSources.length != 0 ){  											
 				$menu.append( 
-					_this.getLi( gM( 'mwe-chose-text') ).append(
+					_this.getLi( gM( 'mwe-chose-text'), 'comment' ).append(
 						_this.getLanguageMenu()
-					)
-				)					
-			}else{
-				// Put in the "Make Transcript" link
-				$menu.append(
-					_this.getLi( gM( 'mwe-add-timed-text'), 'script', function(){
-						_this.showTimedTextEditUI( 'add' );
-					} )
-				); 
-				
+					),
+						// Layout Menu option
+					_this.getLi( gM( 'mwe-layout' ), 'image' ).append(
+						_this.getLayoutMenu()
+					),
+					
+					// Search Menu option
+					_this.getLi( gM('mwe-search'),  'search')
+				);					
 			}
-			$menu.append(	
-				// Layout Menu option
-				_this.getLi( gM( 'mwe-layout' ) ).append(
-					_this.getLayoutMenu()
-				),
+			// Put in the "Make Transcript" link
+			$menu.append(
+				_this.getLiAddText()
+			); 
 				
-				// Search Menu option
-				_this.getLi( gM('mwe-search'),  'search')
-			);					
+										
 			return $menu;
 		},
 		
 		/**
 		 * Shows the timed text edit ui
-		 */
-		
+		 */		
 		showTimedTextEditUI: function( mode ){
 			var _this = this;
 			// Show a loader:
 			$j.addLoaderDialog( gM( 'mwe-loading-text-edit' ));
 			// Load the timedText edit interface
-			mw.load( 'mw.TimedTextEdit', function(){
+			mw.load( 'TimedText.Edit', function(){
 				$j.closeLoaderDialog();
 				if( ! _this.editText ){
 					_this.editText = new mw.TimedTextEdit();
@@ -409,7 +404,18 @@ mw.addMessages( {
 		* Get menu line item (li) html:  <li><a> msgKey </a></li> 
 		*
 		* @param {String} msgKey Msg key for menu item
-		*/		
+		*/
+		
+		/**
+		 * get the add text menu item: 
+		 */		
+		getLiAddText: function(){
+			var _this = this;
+			return '';
+			return _this.getLi( gM( 'mwe-add-timed-text'), 'script', function(){
+				_this.showTimedTextEditUI( 'add' );
+			} )
+		},
 		
 		/**
 		* Get line item (li) from source object
@@ -453,7 +459,9 @@ mw.addMessages( {
 					.click( callback )			
 			)
 			if( icon )
-				$li.find( 'a' ).append(	$j('<span style="float:left;" class="ui-icon ui-icon-' + icon + '"/>') )				
+				$li.find( 'a' ).append(	
+					$j('<span style="float:left;">').addClass( 'ui-icon ui-icon-' + icon ) 
+				)				
 			$li.find( 'a' ).append( $j('<span>').text( string ) );
 			return $li;
 		},
@@ -629,6 +637,12 @@ mw.addMessages( {
 			for(var i in sourcesWithoutCategory){
 				$langMenu.append( sourcesWithoutCategory[i] )
 			}			
+			
+			//Add in the "add text" to the end of the interface: 
+			$langMenu.append( 
+				_this.getLiAddText() 
+			);
+			
 			return $langMenu; 
 		},			
 		

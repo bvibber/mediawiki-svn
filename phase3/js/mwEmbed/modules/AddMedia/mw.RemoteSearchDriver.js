@@ -717,12 +717,19 @@ mw.RemoteSearchDriver.prototype = {
 
 		_this.target_container = '#rsd_modal_target';
 		$j( 'body' ).append(
-			'<div ' + 
-				'id="rsd_modal_target" ' + 
-				'style="position:absolute;top:3em;left:0px;bottom:3em;right:0px;" ' + 
-				'title="' + gM( 'mwe-add_media_wizard' ) + '" >' + 
-			'</div>' );
-
+			$j('<div>')
+				.attr({
+					'id' : 'rsd_modal_target',
+					'title' : gM( 'mwe-add_media_wizard' ) 
+				})
+				.css( {
+					'position' : 'absolute',
+					'top' : '3em',
+					'left' : '0px',
+					'bottom' : '3em',
+					'right' : '0px'
+				})
+		);
 		// Get layout
 		mw.log( 'width: ' + $j( window ).width() +  ' height: ' + $j( window ).height() );
 		
@@ -1426,7 +1433,7 @@ mw.RemoteSearchDriver.prototype = {
 		o += '<div id="mv_result_' + resIndex + '" class="mv_clip_list_result" style="width:90%">';
 		o += '<img ' + 
 				'title="' + resource.title + '" ' + 
-				'class="rsd_res_item" id="res_' + cp_id + '__' + resIndex + '" ' + 
+				'class="rsd_res_item" id="res_' + provider.id + '__' + resIndex + '" ' + 
 				'style="float:left;width:' + this.thumb_width + 'px;" ' +
 				'src="' + provider.sObj.getImageTransform( resource, { 'width': this.thumb_width } ) + '">';
 				
@@ -1802,7 +1809,7 @@ mw.RemoteSearchDriver.prototype = {
 
 					// Add libraries resizable and hoverIntent to support video edit tools
 					var librarySet = [
-						'mvClipEdit', 
+						'mw.ClipEdit', 
 						'$j.ui.resizable',
 						'$j.fn.hoverIntent'
 					] 
@@ -1810,7 +1817,7 @@ mw.RemoteSearchDriver.prototype = {
 						// Make sure the rsd_edit_img is removed:
 						$j( '#rsd_edit_img' ).remove();
 						// Run the image clip tools
-						_this.clipEdit = new mvClipEdit( options );
+						_this.clipEdit = new mw.ClipEdit( options );
 					} );
 				} );
 			} );
@@ -2185,14 +2192,14 @@ mw.RemoteSearchDriver.prototype = {
 		// Load the BaseUploadInterface:
 		mw.load( 
 			[
-				'mvBaseUploadInterface',
+				'mw.BaseUploadInterface',
 				'$j.ui.progressbar'
 			], 
 			function() {
 				mw.log( 'mvBaseUploadInterface ready' );
 				// Initiate a upload object ( similar to url copy ):
 				// ( mvBaseUploadInterface handles upload errors ) 
-				var uploader = new mvBaseUploadInterface( {
+				var uploader = new mw.BaseUploadInterface( {
 					'api_url' : _this.upload_api_target,
 					'done_upload_cb':function() {
 						mw.log( 'doApiImport:: run callback::' );
@@ -2261,11 +2268,20 @@ mw.RemoteSearchDriver.prototype = {
 
 			// Put another window ontop:
 			$j( _this.target_container ).append( 
-				'<div id="rsd_preview_display"' +
-					'style="position:absolute;overflow:hidden;z-index:4;' + 
-					'top:0px;bottom:0px;right:0px;left:0px;background-color:#FFF;">' +
-				mw.loading_spinner( 'top:30px;left:30px' ) +
-				'</div>' );
+				$j('<div>').attr({
+					'id': 'rsd_preview_display'
+				})
+				.css({
+					'position' : 'absolute',
+					'overflow' : 'auto',
+					'z-index' : 4,
+					'top' : '0px',
+					'bottom' : '0px',
+					'right' : '0px',
+					'left' : '0px',
+					'background-color' : '#FFF'
+				})				
+			)
 
 			var buttonPaneSelector = _this.target_container + '~ .ui-dialog-buttonpane';
 			var origTitle = $j( _this.target_container ).dialog( 'option', 'title' );
@@ -2301,8 +2317,12 @@ mw.RemoteSearchDriver.prototype = {
 				_this.target_title,
 				function( phtml ) {
 					$j( '#rsd_preview_display' ).html( phtml );
-					// Update the display of video tag items (if any) 
-					$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer();
+					if( mw.documentHasPlayerTags() ){
+						mw.load( 'EmbedPlayer', function(){							
+							// Update the display of video tag items (if any) 
+							$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer();
+						});
+					}
 				}
 			);
 		} );
@@ -2440,14 +2460,17 @@ mw.RemoteSearchDriver.prototype = {
 		var _this = this;
 		mw.log( "close all:: "  + _this.target_container );
 		_this.onCancelClipEdit();
+		
+		$j( _this.target_container ).dialog( 'close' );		
 		// Give a chance for the events to complete
 		// (somehow at least in firefox a rare condition occurs where
 		// the modal of the edit-box stick around even after the
-		// close request has been issued. )
+		// close request has been issued. )		
 		setTimeout( 
 			function() {
 				$j( _this.target_container ).dialog( 'close' );
-			}, 10 
+				$j( '#rsd_modal_target').remove();
+			}, 25 
 		);
 	},
 	/**

@@ -41,9 +41,9 @@ mw.ready( function() {
 		                'execute': function() {
 		                	mw.log( 'Added via wikiEditor bind' );
 		                	// Display a loader ( since its triggered onClick )  
-							$.addLoaderDialog( gM( 'mwe-loading-add-media-wiz' ) );		
+							$j.addLoaderDialog( gM( 'mwe-loading-add-media-wiz' ) );		
 		                	mw.load( 'AddMedia.addMediaWizard', function(){
-		                		$.closeLoaderDialog();
+		                		$j.closeLoaderDialog();
 		                		$j.addMediaWizard( amwConf );
 		                	});
 		                }

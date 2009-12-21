@@ -1057,7 +1057,7 @@ var mwDefaultConf = {
 				if( this.classPaths[ loadName ] ) {
 					groupClassKey += coma + loadName
 					coma = ',';
-				}else if( moduleLoaders[ loadName ] ) {
+				}else if( this.moduleLoaders[ loadName ] ) {
 					// Module loaders break up grouped script requests ( add the current groupClassKey )
 					if( groupClassKey != '' ){
 						loadStates[ groupClassKey ] = 0;
@@ -2273,14 +2273,6 @@ mw.addClassFilePaths( {
 
 } );
 
-/*
-* Adds style sheets to be loaded with particular classes   
-*/
-mw.addClassStyleSheets( {
-	'$j.Jcrop'			: 'libClipEdit/Jcrop/css/jquery.Jcrop.css',
-	'$j.fn.ColorPicker'	: 'libClipEdit/colorpicker/css/colorpicker.css'
-} );
-
 
 // Add the core mvEmbed Messages ( will be localized by script server ) 
 mw.addMessages( {
@@ -2420,7 +2412,7 @@ function mwDojQueryBindings() {
 			var opt_default = { 'hspace':50, 'vspace':50 };
 			if ( !opt )
 				var opt = { };
-			$j.extend( opt, opt_default );
+			opt = $j.extend( opt_default, opt );
 			$j( this.selector ).dialog( 'option', 'width', $j( window ).width() - opt.hspace );
 			$j( this.selector ).dialog( 'option', 'height', $j( window ).height() - opt.vspace );
 			$j( this.selector ).dialog( 'option', 'position', 'center' );
