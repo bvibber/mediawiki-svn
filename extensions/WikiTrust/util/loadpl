@@ -1,0 +1,1 @@
+./load_db.sh /raid/plwiki-20091010/sql plwiki.log |  mysql -u wikiuser -pwikiword plwikidb

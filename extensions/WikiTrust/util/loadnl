@@ -1,0 +1,1 @@
+./load_db.sh /raid/nlwiki-20091118 nlwiki.log |  mysql -u wikiuser -pwikiword nlwikidb
