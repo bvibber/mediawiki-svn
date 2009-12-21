@@ -74,7 +74,7 @@ archiveOrgSearch.prototype = {
 				var resource = data.response.docs[resource_id];
 				var resource = {
 					// @@todo we should add .ogv or oga if video or audio:
-					'titleKey'	 :  resource.identifier + '.ogg',
+					'titleKey'	 :  resource.identifier + '.ogv',
 					'resourceKey':  resource.identifier,
 					'link'		 : _this.detailsUrl + resource.identifier,
 					'title'		 : resource.title,

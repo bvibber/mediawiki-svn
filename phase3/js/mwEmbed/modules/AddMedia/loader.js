@@ -4,6 +4,7 @@
 mw.addMessages( {
 	"mwe-loading-add-media-wiz" : "Loading add media wizard"
 });
+
 // Add class file paths ( From ROOT )
 mw.addClassFilePaths( {
 	"$j.fn.dragDropFile"	: "modules/AddMedia/jquery.dragDropFile.js",	

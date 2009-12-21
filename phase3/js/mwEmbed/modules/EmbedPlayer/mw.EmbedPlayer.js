@@ -189,12 +189,6 @@ var default_source_attributes = new Array(
 	// media codecs attribute ( if provided )	
 	'codecs',
 	
-	// api url ( used for timed text sources ) 
-	'apisrc',
-	
-	// titleKey ( used for api lookups )  
-	'titleKey',
-	
 	// Title string for the source asset 
 	'title',
 	
@@ -219,7 +213,16 @@ var default_source_attributes = new Array(
 	'default',
 	
 	// Language key used for subtitle tracks
-	'lang'
+	'lang',
+	
+	// titleKey ( used for api lookups )  
+	'titleKey',
+	
+	// The provider type ( for what type of api querie to make )
+	'provider_type',
+													
+	// The api url for the provider
+	'provider_url'  
 );
 
 // Set the browser player warning flag to true by default ( applies to all players so its not part of attribute defaults above ) 
@@ -375,9 +378,13 @@ EmbedPlayerManager.prototype = {
 				case 'audio':				
 					var element_id = element_id;
 					var playerInx = _this.playerList.length;
-					
+					var ranPlayerSwapFlag = false;
 					// Local callback to runPlayer swap once element has metadat
-					function runPlayerSwap(){						
+					function runPlayerSwap(){			
+						mw.log("runPlayerSwap" );	
+						if( ranPlayerSwapFlag )
+							return ;	
+						ranPlayerSwapFlag = true;	
 						var playerInterface = new mw.EmbedPlayer( element , attributes);
 						_this.swapEmbedPlayerElement( element, playerInterface );	
 											
@@ -389,6 +396,8 @@ EmbedPlayerManager.prototype = {
 						mw.log(" WaitForMeta ( video missing height width info and has src )");
 						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
+						// Time-out of 3 seconds ( maybe still playable but no timely metadata ) 
+						setTimeout( runPlayerSwap, 3000 );
 					}else{ 
 						runPlayerSwap( element_id )
 					}					
@@ -558,6 +567,11 @@ mediaSource.prototype = {
 	// End time in npt format
 	end_npt: null,
 	
+	// A provider "id" to idenfiy api request type 
+	provider_type : null,
+													
+	// The api url for the provider
+	provider_url : null,  	
 	
 	/**
 	* MediaSource constructor:
@@ -623,11 +637,13 @@ mediaSource.prototype = {
 		// if we have time we can use:
 		if ( this.URLTimeEncoding ) {
 			// make sure its a valid start time / end time (else set default) 
-			if ( !mw.npt2seconds( start_npt ) )
+			if ( !mw.npt2seconds( start_npt ) ){
 				start_npt = this.start_npt;
-				
-			if ( !mw.npt2seconds( end_npt ) )
+			}
+			
+			if ( !mw.npt2seconds( end_npt ) ){
 				end_npt = this.end_npt;
+			}
 										  
 			this.src = mw.replaceUrlParams( this.src, { 
 				't': start_npt + '/' + end_npt 
@@ -839,7 +855,7 @@ mediaElement.prototype = {
 			this.durationHint = $j( video_element ).attr( 'durationHint' );
 			// Convert duration hint if needed:
 			this.duration = mw.npt2seconds(  this.durationHint );
-		}			
+		}							
 		
 		// Process the video_element as a source element:
 		if ( $j( video_element ).attr( "src" ) )
@@ -1049,7 +1065,7 @@ mediaElement.prototype = {
 				if ( this.sources[i].src == new_src ) {
 					// Source already exists  update any new attr:  
 					this.sources[i].updateSource( element );
-					return ;
+					return this.sources[i];
 				}
 			}
 		}
@@ -1062,7 +1078,8 @@ mediaElement.prototype = {
 			source.startOffset = praserFloat( this.startOffset );
 		
 		mw.log( 'pushed source to stack' + source + 'sl:' + this.sources.length );
-		this.sources.push( source );		
+		this.sources.push( source );	
+		return source;
 	},
 	
 	/**
@@ -1266,11 +1283,11 @@ mw.EmbedPlayer.prototype = {
 	* 
 	* @param {Element} element Source element to grab size from 
 	*/
-	setPlayerSize:function( element ){		
+	setPlayerSize:function( element ){				
 		this['height'] = parseInt( $j(element).css( 'height' ).replace( 'px' , '' ) );
 		this['width'] = parseInt( $j(element).css( 'width' ).replace( 'px' , '' ) );							
 		
-		if( ! this['height']  && ! this['width'] ){
+		if( !this['height']  && !this['width'] ){
 			this['height'] = parseInt( $j(element).attr( 'height' ) );
 			this['width'] = parseInt( $j(element).attr( 'width' ) );
 		}			
@@ -1290,8 +1307,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// On load sometimes attr is temporally -1 as we don't have video metadata yet.		 
 		// NOTE: this edge case should be handled by waiting for metadata see: "waitForMeta" in addElement 		
-		if( ( !this['height'] || !this['width'] ) ||
-			( this['height'] == -1 || this['width'] == -1 )   ||
+		if( ( this['height'] == -1 || this['width'] == -1 )   ||
 				// Check for firefox defaults
 				// Note: ideally firefox would not do random guesses at css values 	
 				( (this.height == 150 || this.height == 64 ) && this.width == 300 )
@@ -2530,14 +2546,16 @@ mw.EmbedPlayer.prototype = {
 			var dl_list = '';
 			var dl_txt_list = '';
 			$j.each( _this.mediaElement.getSources(), function( index, source ) {
-				var dl_line = '<li>' + '<a style="color:white" href="' + source.getSrc() + '"> '
-					+ source.getTitle() + '</a> ' + '</li>' + "\n";
-				if (	 source.getSrc().indexOf( '?t=' ) !== -1 ) {
-					out += dl_line;
-				} else if ( this.getMIMEType() == "text/cmml" || this.getMIMEType() == "text/x-srt" ) {
-					dl_txt_list += dl_line;
-				} else {
-					dl_list += dl_line;
+				if(  source.getSrc() ){
+					var dl_line = '<li>' + '<a style="color:white" href="' + source.getSrc() + '"> '
+						+ source.getTitle() + '</a> ' + '</li>' + "\n";
+					if ( source.getSrc().indexOf( '?t=' ) !== -1 ) {
+						out += dl_line;
+					} else if ( this.getMIMEType() == "text/cmml" || this.getMIMEType() == "text/x-srt" ) {
+						dl_txt_list += dl_line;
+					} else {
+						dl_list += dl_line;
+					}
 				}
 			} );
 			

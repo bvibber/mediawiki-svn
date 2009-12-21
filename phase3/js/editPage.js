@@ -44,7 +44,7 @@ mw.ready( function() {
 							$.addLoaderDialog( gM( 'mwe-loading-add-media-wiz' ) );		
 		                	mw.load( 'AddMedia.addMediaWizard', function(){
 		                		$.closeLoaderDialog();
-		                		$j.addMediaWiz( amwConf );
+		                		$j.addMediaWizard( amwConf );
 		                	});
 		                }
 		            };
@@ -62,7 +62,7 @@ mw.ready( function() {
 			
 			$j( '#btn-add-media-wiz' ).attr( 'title', gM( 'mwe-loading-add-media-wiz' ) );			
 			mw.load( 'AddMedia.addMediaWizard', function(){				
-				$j( '#btn-add-media-wiz' ).addMediaWiz(
+				$j( '#btn-add-media-wiz' ).addMediaWizard(
 					amwConf
 				);
 			});
@@ -73,7 +73,9 @@ mw.ready( function() {
 				mw.log( 'Failed to bind via build section bind via target:' );
 				$j( ".tool[rel='file']" ).attr( 'title', gM( 'mwe-loading-add-media-wiz' ) );
 				mw.load( 'AddMedia.addMediaWizard', function(){
-					$j( ".tool[rel='file']" ).unbind().addMediaWiz( amwConf );
+					if( $j( ".tool[rel='file']" ).length != 0 ){
+						$j( ".tool[rel='file']" ).unbind().addMediaWizard( amwConf );
+					}
 				});
 			}
 		}

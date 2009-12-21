@@ -20,17 +20,23 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 addOnloadHook( function() {	
 	// Only do rewrites if mwEmbed / js2 is "off"
-	if ( typeof mwEmbed_VERSION == 'undefined' ) {
-		setTimeout(function(){
-			doPageSpecificRewrite();
-		}, 200 );
+	if ( typeof mwEmbed_VERSION == 'undefined' ) {		
+		doPageSpecificRewrite();
 	}
 } );
 
 /**
 * Page specific rewrites for mediaWiki
 */
-function doPageSpecificRewrite() {		
+
+// Deal with multiple doPageSpecificRewrite 
+if( !ranRewrites){
+	var ranRewrites = 'none';
+}
+function doPageSpecificRewrite() {
+	if( ranRewrites != 'none')
+		return ;	
+	ranRewrites = 'done';	
 	// Add media wizard
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {			
 		loadMwEmbed( [ 
@@ -80,11 +86,10 @@ function doPageSpecificRewrite() {
 	var vidIdList = [];
 	var divs = document.getElementsByTagName( 'div' );
 	for ( var i = 0; i < divs.length; i++ ) {
-		if ( divs[i].id && divs[i].id.substring( 0, 11 ) == 'ogg_player_' ) {
-			if( divs[i].getAttribute( "id" ) != 'ogg_player_2' )
-				vidIdList.push( divs[i].getAttribute( "id" ) );
+		if ( divs[i].id && divs[i].id.substring( 0, 11 ) == 'ogg_player_' ) {			
+			vidIdList.push( divs[i].getAttribute( "id" ) );
 		}
-	}
+	}	
 	if ( vidIdList.length > 0 ) {			
 		var jsSetVideo = [ 'embedPlayer', '$j.ui', 'ctrlBuilder', '$j.cookie', '$j.ui.slider', 'kskinConfig' ];		
 		// Quick sniff use java if IE and native if firefox 
@@ -117,14 +122,14 @@ function rewrite_for_OggHandler( vidIdList ) {
 		if ( !vidId )		
 			return ;
 			
-		mw.log( 'vidIdList on: ' + vidId + ' length: ' + vidIdList.length + ' left in the set: ' + vidIdList );
+		mw.log( 'vidIdList on: ' + vidId + ' id:' +  $j('#' + vidId ).length + ' length: ' + vidIdList.length + ' left in the set: ' + vidIdList );
 		
 		tag_type = 'video';	
 				
 		// Check type:
 		var pwidth = $j( '#' + vidId ).width();
 		var $pimg = $j( '#' + vidId + ' img:first' );		
-		if( $pimg.attr('src').split('/').pop() == 'play.png'){
+		if(  $pimg.attr('src') && $pimg.attr('src').split('/').pop() == 'play.png'){
 			tag_type = 'audio';
 			poster_attr = '';		
 			pheight = 0;
@@ -132,27 +137,32 @@ function rewrite_for_OggHandler( vidIdList ) {
 			var poster_attr = 'poster = "' + $pimg.attr( 'src' ) + '" ';			
 			var pheight = $pimg.attr( 'height' );				
 		}
-
-
+		
 		// Parsed values:
 		var src = '';
 		var duration_attr = '';
-				
+		var rewriteHTML = $j( '#' + vidId ).html();
 		
+		if( rewriteHTML == ''){
+			mw.log( "Error: empty rewrite html" );
+			return ;
+		}else{
+			mw.log(" rewrite: " + rewriteHTML + "\n of type: " + typeof rewriteHTML);
+		}		
 		var re = new RegExp( /videoUrl(&quot;:?\s*)*([^&]*)/ );
-		src = re.exec( $j( '#' + vidId ).html() )[2];
+		src = re.exec( rewriteHTML )[2];
 
 		var wikiTitleKey = src.split( '/' );
 		wikiTitleKey = unescape( wikiTitleKey[ wikiTitleKey.length - 1 ] );			
 
 		var re = new RegExp( /length(&quot;:?\s*)*([^,]*)/ );
-		var dv = re.exec( $j( '#' + vidId ).html() )[2];
+		var dv = re.exec( rewriteHTML )[2];
 		if ( dv ) {
 			duration_attr = 'durationHint="' + dv + '" ';
 		}
 
 		var re = new RegExp( /offset(&quot;:?\s*)*([^,&]*)/ );
-		offset = re.exec( $j( '#' + vidId ).html() )[2];
+		offset = re.exec( rewriteHTML )[2];
 		var offset_attr = offset ? 'startOffset="' + offset + '"' : '';
 
 		if ( src ) {
@@ -166,7 +176,11 @@ function rewrite_for_OggHandler( vidIdList ) {
 					'class="kskin" ';
 								
 			if ( tag_type == 'audio' ) {
-				html_out = '<audio' + common_attr + ' style="width:' + pwidth + 'px;"></audio>';
+				if( pwidth < 250 ){
+					pwidth = 250;
+				}
+				html_out = '<audio' + common_attr + ' ' +
+						'style="width:' + pwidth + 'px;height:0px;"></audio>';
 			} else {
 				html_out = '<video' + common_attr +
 				poster_attr + ' ' +
@@ -179,10 +193,10 @@ function rewrite_for_OggHandler( vidIdList ) {
 
 			// Do the actual rewrite 				
 			$j( '#mwe_' + vidId ).embedPlayer( function() {
-				if ( vidIdList.length != 0 ) {
+				if ( vidIdList.length != 0 ) {					
 					setTimeout( function() {
 						procVidId( vidIdList.pop() )
-					}, 10 );
+					}, 10	 );
 				}
 			} );
 

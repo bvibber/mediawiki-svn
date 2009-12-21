@@ -26,36 +26,39 @@ if ( !window['mw'] ) {
 }
 
 /**
+* The set of modules that you want enable. 
+* 
+* Each enabledModules array value should be a name
+* of a folder in mwEmbed/modules 
+*
+* Modules must define a loader.js file in the root
+*  of the module folder. 
+* 
+* The loader file should be short and only include:
+*  Class paths of the module classes
+*  Sytle sheets of the module
+*  Loader function(s) that load module classes 
+*
+* When using the scriptLoader the enabledModules loader code
+*  is transcluded into base mwEmbed class include.  
+*/
+var mwEnabledModuleList =  [
+	'AddMedia',
+	'ClipEdit',
+	'EmbedPlayer',
+	'ApiProxy',
+	'Sequencer',
+	'TimedText'	
+];
+
+/**
 * Default global config values. Configuration values are set via mw.setConfig
 * Configuration values should generally be set prior to dom-ready 
 */  
 var mwDefaultConf = {
 
-	/**
-	* The set of modules that you want enable. 
-	* 
-	* Each enabledModules array value should be a name
-	* of a folder in mwEmbed/modules 
-	*
-	* Modules must define a loader.js file in the root
-	*  of the module folder. 
-	* 
-	* The loader file should be short and only include:
-	*  Class paths of the module classes
-	*  Sytle sheets of the module
-	*  Loader function(s) that load module classes 
-	*
-	* When using the scriptLoader the enabledModules loader code
-	*  is transcluded into base mwEmbed class include.  
-	*/
-	'enabledModules' : [
-		'AddMedia',
-		'ClipEdit',
-		'EmbedPlayer',
-		'ApiProxy',
-		'Sequencer',
-		'TimedText'	
-	],
+
+	'enabledModules' : mwEnabledModuleList,
 
 
 	// Default skin name
