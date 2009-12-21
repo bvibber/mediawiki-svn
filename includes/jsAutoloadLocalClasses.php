@@ -3,25 +3,73 @@
 if ( !defined( 'MEDIAWIKI' ) ) die( 1 );
 
 global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
+global $wgJSModuleList;
+
+// NOTE this is growing in complexity and globals sloppiness
+// we should refactor as a class with some static methods
+
+//Initialize $wgJSModuleList
+$wgJSModuleList = array();
+
+//Initialize $wgLoaderJs
+$wgMwEmbedLoaderJs = '';
 
 /**
- * loads javascript class name paths from mwEmbed.js
+ * Loads javascript class name paths from mwEmbed.js
  */
 function wfLoadMwEmbedClassPaths ( ) {
-	global $wgMwEmbedDirectory;
+	global $wgMwEmbedDirectory, $wgJSModuleList, $wgMwEmbedLoaderJs;
+	//Set up the replace key:
+	$ClassReplaceKey = '/mw\.addClassFilePaths\s*\(\s*{(.*)}\s*\)\s*\;/siU';
 	// Load classes from  mwEmbed.js
 	if ( is_file( $wgMwEmbedDirectory . 'mwEmbed.js' ) ) {
-
-		// NOTE: ideally we could cache this json var and or update it php side per svn release
 		// Read the file:
 		$file_content = file_get_contents( $wgMwEmbedDirectory . 'mwEmbed.js' );
 		// Call jsClassPathLoader() for each lcPaths() call in the JS source
 		$replace_test = preg_replace_callback(
-			'/mw\.addClassFilePaths\s*\(\s*{(.*)}\s*\)\s*/siU',
+			$ClassReplaceKey,
 			'wfClassPathLoader',
 			$file_content
 		);
+
+		// Get the list of enabled modules into $wgJSModuleList
+		$replace_test = preg_replace_callback(
+			'/mwEnabledModuleList\s*\=\s*\[(.*)\]/siU',
+			'wfBuildModuleList',
+			$file_content
+		);
+
+		// Get all the classes from the loader files:
+		foreach( $wgJSModuleList as  $na => $moduleName){
+			$file_content = file_get_contents(
+				$wgMwEmbedDirectory . 'modules/' . $moduleName . '/loader.js'
+			);
+			// Add the mwEmbed loader js to its global collector:
+			$wgMwEmbedLoaderJs .=  $file_content;
+
+			$replace_test.= preg_replace_callback(
+				$ClassReplaceKey,
+				'wfClassPathLoader',
+				$file_content
+			);
+		}
 	}
+}
+function wfBuildModuleList( $jsvar ){
+	global $wgMwEmbedDirectory, $wgJSModuleList;
+	if(! isset( $jsvar[1] )){
+		return false;
+	}
+	$moduleSet = explode(',', $jsvar[1] );
+
+	foreach( $moduleSet as $na => $module ){
+		$moduleName = str_replace( array( '../', '\'', '"'), '', trim( $module ));
+		// Check if there is there are module loader files
+		if( is_file( $wgMwEmbedDirectory . 'modules/' . $moduleName . '/loader.js' )){
+			array_push( $wgJSModuleList, $moduleName );
+		}
+	}
+	return '';
 }
 function wfClassPathLoader( $jvar ) {
 	global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;

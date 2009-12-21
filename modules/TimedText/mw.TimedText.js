@@ -19,6 +19,8 @@
 mw.addMessages( {
 	"mwe-back-btn" : "Back",	
 	"mwe-chose-text" : "Chose text",
+	"mwe-add-timed-text" : "Add timed text",
+	"mwe-loading-text-edit" : "Loading timed text editor", 
 	
 	"mwe-search" : "Search clip",
 	
@@ -74,7 +76,7 @@ mw.addMessages( {
 		},
 		
 		/**
-		 * The list of enabled sources
+		 * The list of enabled sources 
 		 */
 		enabledSources: [ ],
 				
@@ -107,7 +109,15 @@ mw.addMessages( {
 	        "LIN",
 	        "CUE"
 		],
-		 
+		
+		/**
+		 * Timed text extension to mime map
+		 */
+		timedTextExtMime: {
+		    'srt': 'text/x-srt',
+		    'cmml': 'text/cmml'
+		},
+		
 		/**
 		* Set of timedText providers
 		*/
@@ -154,6 +164,7 @@ mw.addMessages( {
 		/**
 		* Show the timed text menu
 		* @param {Object} target to display the menu
+		* @param {Bollean} autoShow If the menu should be displayed 
 		*/
 		bindMenu: function( target , autoShow ){
 			var _this = this;
@@ -193,8 +204,7 @@ mw.addMessages( {
 						
 			for( var i in this.enabledSources ) {
 				var source =  this.enabledSources[ i ];
-				this.updateSourceDisplay( source, currentTime );
-				
+				this.updateSourceDisplay( source, currentTime );			
 			}
 		},			
 		
@@ -204,12 +214,14 @@ mw.addMessages( {
 		 * @param {Function} callback Function to call once text sources are loaded
 		 */
 		loadTextSources: function( callback ){
+			var _this = this;
+			this.textSources = [ ];
 			// Get local reference to all timed text sources: ( text/xml, text/x-srt etc )			
 			var inlineSources = this.embedPlayer.mediaElement.getSources( 'text' );
 			//add all the sources to textSources
 			for( var i in inlineSources ){
 				// make a new textSource:
-				var source = new textSource( inlineSources[i] );
+				var source = new TextSource( inlineSources[i] );
 				this.textSources.push( source );
 			}			
 			
@@ -221,22 +233,39 @@ mw.addMessages( {
 				callback();
 				return ;
 			}
-			// Else try to get sources from text provider: 
+			// Try to get sources from text provider: 
 			var provider = this.timedTextProviders[ textProviderId ];
 			var assetKey = 	this.embedPlayer.wikiTitleKey;		
 			switch(  provider.lib ){
 				case 'mediaWiki':
 					this.textProvider = new mw.MediaWikiTextProvider( {
-						api_url: provider.api_url
+						'provider_id' : textProviderId,						
+						'api_url': provider.api_url,
+						'embedPlayer': this.embedPlayer
 					});
 				break;
-			}			
+			}		
 			// Load the textProvider sources
 			this.textProvider.loadSources( assetKey,  function( textSources ){
-				for( var i in textSources ){
-					var source = textSources[ i ];
-					this.textSources.push( source );
-				}
+				for( var i in textSources ){					
+					var textSource = textSources[ i ];					
+					// Try to insert the itext source: 
+					var textElm = document.createElement( 'itext' );
+					$j( textElm ).attr( {
+						'category' : 'SUB',
+						'lang' 	: textSource.lang,
+						'type' 	: _this.timedTextExtMime[ textSource.extension ],
+						'titleKey' 	: textSource.titleKey
+					} );
+					//debugger;
+					// Add the sources to the parent embedPlayer 
+					// ( in case other interfaces want to access them )
+					var embedSource = _this.embedPlayer.mediaElement.tryAddSource( textElm );	
+					// Get a "textSource" object:
+					var source = new TextSource( embedSource, _this.textProvider);
+					_this.textSources.push( source );				
+				}								
+				// All sources loaded run callback: 
 				callback();
 			} );		
 		},
@@ -329,12 +358,24 @@ mw.addMessages( {
 			var _this = this; 
 			// Build the source list menu item: 						
 			
-			return $j( '<ul>' ).append(						
-				// Chose language option:  											
-				_this.getLi( gM( 'mwe-chose-text') ).append(
-					_this.getLanguageMenu()
-				),
+			$menu = $j( '<ul>' );						
+			// Chouse text menu item ( if there are sources)
+			if( _this.textSources.length != 0 ){  											
+				$menu.append( 
+					_this.getLi( gM( 'mwe-chose-text') ).append(
+						_this.getLanguageMenu()
+					)
+				)					
+			}else{
+				// Put in the "Make Transcript" link
+				$menu.append(
+					_this.getLi( gM( 'mwe-add-timed-text'), 'script', function(){
+						_this.showTimedTextEditUI( 'add' );
+					} )
+				); 
 				
+			}
+			$menu.append(	
 				// Layout Menu option
 				_this.getLi( gM( 'mwe-layout' ) ).append(
 					_this.getLayoutMenu()
@@ -343,8 +384,26 @@ mw.addMessages( {
 				// Search Menu option
 				_this.getLi( gM('mwe-search'),  'search')
 			);					
+			return $menu;
 		},
 		
+		/**
+		 * Shows the timed text edit ui
+		 */
+		
+		showTimedTextEditUI: function( mode ){
+			var _this = this;
+			// Show a loader:
+			$j.addLoaderDialog( gM( 'mwe-loading-text-edit' ));
+			// Load the timedText edit interface
+			mw.load( 'mw.TimedTextEdit', function(){
+				$j.closeLoaderDialog();
+				if( ! _this.editText ){
+					_this.editText = new mw.TimedTextEdit();
+				}
+				_this.editText.showUI();
+			})
+		},
 		/**
 		* Utility function to assist in menu build out:
 		* Get menu line item (li) html:  <li><a> msgKey </a></li> 
@@ -370,7 +429,7 @@ mw.addMessages( {
 			
 			if( source.lang ){
 				var langKey = source.lang.toLowerCase();
-				mw.languages[ langKey ];
+				_this.getLanguageName ( langKey );
 				return this.getLi( 
 					gM('mwe-key-language', [langKey,	unescape( mw.languages[ source.lang ] )	] ), 
 					sourceIcon,
@@ -398,6 +457,15 @@ mw.addMessages( {
 			$li.find( 'a' ).append( $j('<span>').text( string ) );
 			return $li;
 		},
+		/**
+	 	 * Get lagnuage name from language key
+	 	 */
+	 	getLanguageName: function( lang_key ){
+	 		if( mw.languages[ lang_key ]){
+	 			return mw.languages[ lang_key ];
+	 		}
+	 		return false
+	 	},	
 		
 		/** 
 		* Builds and returns the "layout" menu 
@@ -463,7 +531,7 @@ mw.addMessages( {
 		*/
 		selectTextSource: function( source ){
 			var _this = this;
-			mw.log(" select source: " + source.lang );
+			mw.log(" select source: " + source.lang );			
 			
 			// Update the config language if the source includes language
 			if( source.lang )
@@ -531,20 +599,33 @@ mw.addMessages( {
 					sourcesWithoutCategory.push( _this.getLiSource( source ) );
 				}
 			}
-			var $langMenu = $j('<ul>');
-			for(var catKey in catSourceList){				
-				$catChildren = $j('<ul>');
-				for(var i in catSourceList[ catKey ]){
-					$catChildren.append(
-						catSourceList[ catKey ][i]
-					) 
+			var $langMenu = $j('<ul>');			
+			// Check if we have multiple categories ( if not just list them under the parent menu item)
+			if( catSourceList.length > 1 ){			
+				for(var catKey in catSourceList){				
+					$catChildren = $j('<ul>');
+					for(var i in catSourceList[ catKey ]){
+						$catChildren.append(
+							catSourceList[ catKey ][i]
+						) 
+					}
+					// Append a cat menu item for each category list
+					$langMenu.append(
+						_this.getLi( gM( 'mwe-textcat-' + catKey.toLowerCase() ) ).append(
+							$catChildren
+						)
+					);
 				}
-				$langMenu.append(
-					_this.getLi( gM( 'mwe-textcat-' + catKey.toLowerCase() ) ).append(
-						$catChildren
-					)
-				);				 
+			} else {
+				for(var catKey in catSourceList){		
+					for(var i in catSourceList[ catKey ]){
+						$langMenu.append(
+							catSourceList[ catKey ][i]
+						) 
+					}
+				}
 			}		
+			
 			for(var i in sourcesWithoutCategory){
 				$langMenu.append( sourcesWithoutCategory[i] )
 			}			
@@ -566,8 +647,7 @@ mw.addMessages( {
 			mw.log( 'updateTextDisplay: ' + text );	
 					
 			var $player =  $j( '#' + this.embedPlayer.id);	
-			var $textTarget = $player.find( '.itext_' + source.category + ' span' );
-			
+			var $textTarget = $player.find( '.itext_' + source.category + ' span' );			
 			// If we are missing the target add it: 		
 			if( $textTarget.length == 0){
 				this.addItextDiv( source.category )
@@ -650,10 +730,10 @@ mw.addMessages( {
 	 * TextSource object extends a base mediaSource object 
 	 *  with some timedText features 
 	 */
-	var textSource = function( source ){
-		return this.init( source );
+	TextSource = function( source , textProvider){
+		return this.init( source, textProvider );
 	}
-	textSource.prototype = {
+	TextSource.prototype = {
 	
 		//The load state:
 		loaded: false,
@@ -670,13 +750,17 @@ mw.addMessages( {
 		 * @constructor Inherits mediaSource from embedPlayer
 		 * @param {source} Base source element
 		 */
-		init: function( source ){
+		init: function( source , textProvider){
 			for( var i in source){
 				this[i] = source[i];	
 			}			
 			// Set default category to subtitle if unset: 
 			if( ! this.category ){
 				this.category = 'SUB';
+			}
+			//Set the textProvider if provided
+			if( textProvider ){
+				this.textProvider = textProvider;
 			}
 		},
 		
@@ -686,6 +770,7 @@ mw.addMessages( {
 		 */
 		load: function( callback ){
 			var _this = this;
+						
 			//check if its already loaded:
 			if( _this.loaded ){
 				if( callback ){ 
@@ -700,6 +785,9 @@ mw.addMessages( {
 				case 'text/cmml':
 					var handler = parseCMML; 
 				break;
+				case 'text/html': 
+					var handler = parseSrtHTML;
+				break;
 				default: 
 					var hanlder = null;
 				break;
@@ -707,22 +795,38 @@ mw.addMessages( {
 			if( !handler ){
 				mw.log("Error: no handler for type: " + this.getMIMEType() );
 				return ;
-			}
-			// Issue the load request ( if we can ) 
-			//if ( mw.parseUri( document.URL ).host != mw.parseUri( this.getSrc() ).host ){
-			//	mw.log("Error can't load non-json src via jsonp:" + this.getSrc() )
-			//	return ;
-			//} 
-			
-			$j.get( this.getSrc(), function( data ){		
-				// Parse and load captions:
-				_this.captions = handler( data );
-				// Update the loaded state:
-				_this.loaded = true;
-				if( callback ){ 
-					callback();
+			}						
+			// Try to load src via src attr:			
+			if( this.getSrc() ){
+				// Issue the load request ( if we can ) 
+				if ( mw.parseUri( document.URL ).host != mw.parseUri( this.getSrc() ).host ){
+					mw.log("Error can't load non-json src via jsonp:" + this.getSrc() )
+					return ;
 				}
-			}, 'text' );
+				$j.get( this.getSrc(), function( data ){		
+					// Parse and load captions:
+					_this.captions = handler( data );
+					// Update the loaded state:
+					_this.loaded = true;
+					if( callback ){ 
+						callback();
+					}
+				}, 'text' );
+				return ;
+			}			
+			
+			// Try to load src via provider:
+			if( this.textProvider && this.titleKey ){
+				this.textProvider.loadTitleKey( this.titleKey, function( data ){
+					if( data ){
+						_this.captions = handler( data );					
+					}					
+					if( callback ){ 
+						callback();
+					}
+					return ;
+				});
+			}
 		},
 		
 		/**
@@ -858,25 +962,64 @@ mw.addMessages( {
 	} 
 
 	 */
-	 
+	 var default_textProvider_attr = [
+	 	'api_url',
+	 	'provider_id',
+	 	'timed_text_NS',
+	 	'embedPlayer'
+	 ];
+	 	
 	 mw.MediaWikiTextProvider = function( options ){
 	 	this.init( options )
 	 }	
 	 mw.MediaWikiTextProvider.prototype = {
+	 	
+	 	// The api url:
 	 	api_url: null,
-	 	timedTextNS: null,
+	 	
+	 	// The timed text namespace
+	 	timed_text_NS: null,
+	 	
 	 	/**
 	 	* @constructor
 	 	* @param {Object} options Set of options for the provider
 	 	*/
 	 	init: function( options ){
-	 		//Set the api url: 
-	 		if( options.api_url ){
-	 			this.api_url = options.api_url
-	 		}
-	 		if( options.timedTextNS ){
-	 			this.timedTextNS = options.timedTextNS
+	 		for(var i in default_textProvider_attr){
+	 			var attr =  default_textProvider_attr[ i ];
+	 			if( options[ attr ] )
+	 				this[ attr ] = options[ attr ];
+	 				
 	 		}	 		
+	 	},
+	 	
+	 	/**   
+	 	 * Loads a single text source by titleKey
+	 	 * @param {titleKey}  
+	 	 */
+	 	loadTitleKey: function( titleKey, callback ){
+	 		var request = {
+				'titles': titleKey,
+				'prop':'revisions',
+				'rvprop':'content'
+			};
+			mw.getJSON( this.api_url, request, function( data ){
+				if ( data && data.query && data.query.pages ) {
+					for ( var i in data.query.pages ) {
+						var page = data.query.pages[i];
+						if ( page.revisions ) {
+							for ( var j in page.revisions ) {
+								if ( page.revisions[j]['*'] ) {
+									callback(  page.revisions[j]['*'] );
+									return ;
+								}
+							}
+						}
+					}
+				}
+				mw.log("Error: could not load:" + titleKey);
+				callback( false );
+			} );
 	 	},
 	 	
 	 	/**
@@ -886,23 +1029,26 @@ mw.addMessages( {
 	 	 */
 	 	loadSources: function( assetKey, callback ){
 	 		var request = {};
-	 		this.getSubPages( assetKey, function( subPages ){
-	 			mw.log(' got sub pages... ');
-	 			if( !subData.query.allpages ){
+	 		var _this = this;
+	 		this.getSourcePages( assetKey, function( sourcePages ){
+	 			mw.log(' got sub pages... ');	 			
+	 			if( ! sourcePages.query.allpages ){
+	 				//Check if a shared asset
 	 				mw.log( 'no subtitle pages found');
 	 				callback();
 	 				return ;
 	 			}
-	 			_this.getSources( subPages )
-	 		} ); 		
+	 			// We have sources put them into the player	 			
+	 			callback( _this.getSources( sourcePages ) );
+	 		} );
 	 	},
 	 	
-	 	/*
+	 	/**
 	 	 * Get the subtitle pages
 	 	 * @param {String} titleKey Title to get subtitles for
 	 	 * @param {Function} callback Function to call once NS subs are grabbed 
 	 	 */ 
-	 	getSubPages: function( titleKey, callback ){
+	 	getSourcePages: function( titleKey, callback ){
 	 		var _this = this;
 		 	var request =  {
 				'list' : 'allpages',
@@ -910,87 +1056,81 @@ mw.addMessages( {
 				'apnamespace' : this.getTimedTextNS(),
 				'prop':'revisions'
 			};
-			mw.getJSON( this.api_url, request, function( subPages ) {
-				if (	subPages.error && subPages.error.code == 'apunknown_apnamespace' ) {
+			mw.getJSON( this.api_url, request, function( sourcePages ) {
+				if (	sourcePages.error && sourcePages.error.code == 'apunknown_apnamespace' ) {
 					var request = { 
 						'list' : 'allpages', 
 						'apprefix' : _this.getCanonicalTimedTextNS() + ':' + _this.pe.wikiTitleKey 
 					};
-					mw.getJSON( apiUrl, request, function( subData ) {
-						callback( subPages )
+					mw.getJSON( apiUrl, request, function( sourcePages ) {
+						callback( sourcePages )
 					} );
 				} else {
-					callback( subPages );
+					callback( sourcePages );
 				}
 			} );	
 	 	},
+	 	
 	 	/**
-	 	 * Return the namespace (if not encoded on the page return default
+	 	 * get the sources from sourcePages data object
+	 	 * Put valid sources into the embedPlayer 
 	 	 */
-	 	getTimedTextNS: function(){
-	 		if( this.timedTextNS )
-	 			return this.timedTextNS;
-			if ( typeof wgNamespaceIds != 'undefined' && wgNamespaceIds['timedtext'] ) {
-				this.timedTextNS = wgNamespaceIds['timedtext'];
-			}else{
-				//default value is 102 ( probably should store this elsewhere )
-				this.timedTextNS = 102;
-			}
-			return this.timedTextNS;
-	 	},
-	 	/*
-	 	 * Return the namespace text 
-	 	 */
-	 	getCanonicalTimedTextNS: function(){
-	 		return 'TimedText';
-	 	},
-	 	/**
-	 	 * Populate the sources
-	 	 */
-	 	getSources: function( subData  ) {
+	 	getSources: function( sourcePages  ) {
 			var _this = this;
 			// look for text tracks:
 			var foundTextTracks = false;
-	
-			for ( var i in subData.query.allpages ) {
+			var sources = [];
+			for ( var i in sourcePages.query.allpages ) {
 				
-				var subPage = subData.query.allpages[i];
+				var subPage = sourcePages.query.allpages[i];
 				var langKey = subPage.title.split( '.' );
 				var extension = langKey.pop();
 				langKey = langKey.pop();
-				
-				if ( ! _this.suportedMime[ extension ] ) {
-					mw.log( 'Error: unknown extension:' + extension );
-					continue;
-				}
 
-				if ( !langData[ langKey] ) {
-					mw.log( 'Error: langkey:' + langKey + ' not found' );
+				if ( ! _this.isSuportedLang( langKey ) ) {
+					mw.log( 'Error: langkey:' + langKey + ' not supported' );
 				} else {
-					var textElm = document.createElement( 'text' );
-					$j( textElm ).attr( {
-						'category' : 'SUB',
-						'lang' 	: langKey,
-						'type' 	: _this.suportedMime[ extension ],
-						'title'	: langData[ langKey]
-					} );
-					// We use the api since ?action raw on the real title has cache issues 
-					$j( textElm ).attr( {
-						'apisrc'	: hostPath + '/api.php',
-						'titleKey' 	: subPage.title
-					} );
-					_this.pe.media_element.tryAddSource( textElm );
-					foundTextTracks = true;
+					sources.push( {
+						'extension': extension,
+						'lang': langKey,
+						'titleKey': subPage.title
+					} );										
 				}
 			}
-			// after all text loaded (or we have allready checked commons
-			if ( foundTextTracks || hostPath.indexOf( 'commons.wikimedia' ) !== -1 ) {
-				// alert('calling 			getParseTimedText_rowReady ');		
-				_this.getParseTimedText_rowReady();
-			} else {
-				_this.checkSharedRepo();
+			return sources;
+	 	},
+	 	
+	 	/**
+	 	 * Return the namespace (if not encoded on the page return default 102 )
+	 	 */
+	 	getTimedTextNS: function(){
+	 		if( this.timed_text_NS )
+	 			return this.timed_text_NS;
+			if ( typeof wgNamespaceIds != 'undefined' && wgNamespaceIds['timedtext'] ) {
+				this.timed_text_NS = wgNamespaceIds['timedtext'];
+			}else{
+				//default value is 102 ( probably should store this elsewhere )
+				this.timed_text_NS = 102;
 			}
-	 	}
+			return this.timed_text_NS;
+	 	},
+	 	
+	 	/**
+	 	 * Get the Canonical timed text namespace text 
+	 	 */
+	 	getCanonicalTimedTextNS: function(){
+	 		return 'TimedText';
+	 	},	 	
+	 	
+	 	/**
+	 	 * Check if the language is supported
+	 	 */
+	 	isSuportedLang: function( lang_key ){
+	 		if( mw.languages[ lang_key ]){
+	 			return true;
+	 		}
+	 		return false;
+	 	} 		 
 	 	
 	 }
 	

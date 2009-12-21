@@ -91,7 +91,14 @@ class jsScriptLoader {
 			if( $jstxt ){
 				$this->jsout .= $this->doProcessJs( $jstxt );
 			}
+
+			// If the special mwEmbed class entry point (include loader js
+			if( $classKey == 'mwEmbed' ){
+				global $wgMwEmbedLoaderJs;
+				$this->jsout .= $wgMwEmbedLoaderJs;
+			}
 		}
+
 		// Check if we should minify the whole thing:
 		if ( !$this->debug ) {
 			$this->jsout = self::getMinifiedJs( $this->jsout , $this->requestKey );
@@ -106,7 +113,7 @@ class jsScriptLoader {
 		if ( $this->error_msg != '' ) {
 			//just set the content type (don't send cache header)
 			header( 'Content-Type: text/javascript' );
-			echo 'alert(\'Error With ScriptLoader.php ::' . str_replace( "\n", '\'+"\n"+' . "\n'", $this->error_msg ) . '\');';
+			echo 'alert(\'Error With ScriptLoader ::' . str_replace( "\n", '\'+"\n"+' . "\n'", $this->error_msg ) . '\');';
 			echo trim( $this->jsout );
 		} else {
 			// All good, let's output "cache" headers

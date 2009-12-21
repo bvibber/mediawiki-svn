@@ -147,8 +147,8 @@ var default_remote_search_options = {
 		}
 	}
 	
-	$.addMediaWiz = function( options ){
-		$.fn.addMediaWiz ( options, function( amwObj ) {
+	$.addMediaWizard = function( options ){
+		$.fn.addMediaWizard ( options, function( amwObj ) {
 			// do the add-media-wizard display
 			amwObj.createUI();
 		} )
