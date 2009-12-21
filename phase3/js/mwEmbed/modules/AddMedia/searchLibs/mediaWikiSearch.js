@@ -299,7 +299,7 @@ mediaWikiSearch.prototype = {
 		var request = {
 			'action':'query',
 			'format':'json',
-			'titles':resource.titleKey,
+			'titles' : resource.titleKey,
 			'prop':'imageinfo',
 			'iiprop':'url|size|mime'
 		}
@@ -307,11 +307,16 @@ mediaWikiSearch.prototype = {
 		if ( size.width )
 			request['iiurlwidth'] = size.width;
 			
-		mw.log( 'going to do req: ' + this.provider.api_url + ' ' + request );
+		mw.log( 'going to do req: ' + this.provider.api_url + ' ' + resource.titleKey );
 		
-		mw.getJSON( this.provider.api_url, request, function( data ) {
+		mw.getJSON( this.provider.api_url, request, function( data ) {			
 			var imObj = { };
 			for ( var page_id in  data.query.pages ) {
+				if( page_id == -1 ){
+					mw.log( 'Error: missing page for title: ' + resource.titleKey )
+					continue;
+				}
+					
 				var iminfo =  data.query.pages[ page_id ].imageinfo[0];
 				// store the orginal width:				 
 				imObj['org_width'] = iminfo.width;

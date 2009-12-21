@@ -65,7 +65,7 @@ archiveOrgSearch.prototype = {
 	* @param {Object} data Api result data
 	*/
 	addResults:function( data ) {
-		var _this = this;
+		var _this = this;		
 		if ( data.response && data.response.docs ) {
 			// Set result info: 
 			this.num_results = data.response.numFound;

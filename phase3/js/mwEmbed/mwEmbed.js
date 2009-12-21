@@ -1297,7 +1297,7 @@ var mwDefaultConf = {
 		if( !data['format'] ) 
 			data['format'] = 'json';
 		
-		mw.log("run getJSON: " + url + ' data: ' +  data['action'] + ' apiPost: ' +mw.getConfig( 'apiPostActions' ) );
+		mw.log("run getJSON: " + url + ' data: ' +  data['action'] );
 		
 		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ){
 			if( ! mw.isLocalDomain( url ) ){

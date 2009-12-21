@@ -57,6 +57,9 @@ mw.addMessages( {
 	"rsd-wiki_commons-title": "Wikimedia Commons",
 	"rsd-wiki_commons": "Wikimedia Commons, an archive of freely-licensed educational media content (images, sound and video clips)",
 
+	"rsd-kaltura-title" : "Kaltura search",
+	"rsd-kaltura" : "Kaltura agragated search for free-licenced media across multiple search providers",
+
 	"rsd-this_wiki-title" : "This wiki",
 	"rsd-this_wiki-desc" : "The local wiki install",
 
@@ -126,8 +129,11 @@ var default_remote_search_options = {
 	// Enabled providers can be keyword 'all' or an array of enabled content provider keys
 	'enabled_providers': 'all', 
 	
+	// Set a default provider 
+	'default_provider': null,
+	
 	// Current provider (used internally) 
-	'currentProvider': null,
+	'current_provider': null,
 	
 	// The timeout for search providers ( in seconds )
 	'search_provider_timeout': 10
@@ -243,7 +249,7 @@ mw.RemoteSearchDriver.prototype = {
 			'tab_img': false
 		},
 		
-		/*
+		/**
 		* Wikipedia Commons search provider configuration
 		*/
 		'wiki_commons': {
@@ -265,6 +271,18 @@ mw.RemoteSearchDriver.prototype = {
 			// If we should search the title
 			'search_title': false 
 		
+		},
+		
+		/*
+		* Kaltura aggregated search
+		*/ 
+		'kaltura': {
+			'enabled': 1,
+			'checked': 1,
+			'homepage': 'http://kaltura.com',
+			'api_url': 'http://kaldev.kaltura.com/michael/federator.php',
+			'lib': 'kaltura',
+			'tab_image':false
 		},
 		
 		/**
@@ -399,7 +417,7 @@ mw.RemoteSearchDriver.prototype = {
 	// A flag for proxy setup. 
 	proxySetupDone: null,
 	
-	/*
+	/**
 	* The initialisation function
 	*
 	* @param {Object} options Options to override: default_remote_search_options
@@ -418,24 +436,27 @@ mw.RemoteSearchDriver.prototype = {
 		if ( _this.enabled_providers.length == 1 && _this.enabled_providers[0] == 'all' )
 			_this.enabled_providers = 'all';
 
+		// Set the current_provider from default_provider
+		if( this.default_provider && this.content_providers[ this.default_provider ] ){
+			this.current_provider = this.default_provider;
+		}
+
 		// Set up content_providers
 		for ( var provider_id in this.content_providers ) {
-			// Set the provider id
-			this.content_providers[ provider_id ][ 'id' ] = provider_id
-			
-			//Set local provider var: 
 			var provider = this.content_providers[ provider_id ];
-			
-			if ( _this.enabled_providers == 'all' && !this.currentProvider && provider.api_url ) {
-				this.currentProvider = provider_id;
+			// Set the provider id
+			provider[ 'id' ] = provider_id
+				
+			if ( _this.enabled_providers == 'all' && !this.current_provider && provider.api_url ) {
+				this.current_provider = provider_id;
 				break;
 			} else {
 				if ( $j.inArray( provider_id, _this.enabled_providers ) != -1 ) {
 					// This provider is enabled
 					this.content_providers[ provider_id ].enabled = true;
 					// Set the current provider to the first enabled one
-					if ( !this.currentProvider ) {
-						this.currentProvider = provider_id;
+					if ( !this.current_provider ) {
+						this.current_provider = provider_id;
 					}
 				} else {
 					// This provider is disabled
@@ -634,6 +655,13 @@ mw.RemoteSearchDriver.prototype = {
 	showDialog: function() {
 		var _this = this;
 		mw.log( "showDialog::" );
+		
+		// Check if dialog target is present: 
+		if( $j( _this.target_container ).length == 0 ){
+			this.createUI();
+			return ;
+		}
+		
 		_this.clearTextboxCache();
 		var query = _this.getDefaultQuery();
 		if ( query !=  $j( '#rsd_q' ).val() ) {
@@ -682,7 +710,7 @@ mw.RemoteSearchDriver.prototype = {
 		return this.textboxValue;
 	},
 	
-	/*
+	/**
 	* Get the default query from the text selection
 	*/
 	getDefaultQuery: function() {
@@ -942,13 +970,13 @@ mw.RemoteSearchDriver.prototype = {
 	},
 	
 	/**
-	* Show the current tab ( based on currentProvider var ) 
+	* Show the current tab ( based on current_provider var ) 
 	*/
 	showCurrentTab: function() {
-		if ( this.currentProvider == 'upload' ) {
+		if ( this.current_provider == 'upload' ) {
 			this.showUploadTab();
 		} else {
-			this.showSearchTab( this.currentProvider, false );
+			this.showSearchTab( this.current_provider, false );
 		}
 	},
 	
@@ -1108,11 +1136,11 @@ mw.RemoteSearchDriver.prototype = {
 			} );
 			return false;
 		} else if ( !this.isProviderLocal( provider ) && this.import_url_mode == 'none' ) {
-			if (  this.currentProvider == 'combined' ) {
+			if (  this.current_provider == 'combined' ) {
 				// combined results are harder to error handle just ignore that repo
 				provider.sObj.loading = false;
 			} else {
-				$j( '#tab-' + this.currentProvider ).html( 
+				$j( '#tab-' + this.current_provider ).html( 
 					'<div style="padding:10px">' + 
 					gM( 'mwe-no_import_by_url' ) + 
 					'</div>' );
@@ -1149,12 +1177,12 @@ mw.RemoteSearchDriver.prototype = {
 			provider.lib + 'Search'
 		], function() {
 			mw.log( "loaded lib:: " + provider.lib );
-			// else we need to run the search:
+			// Else we need to run the search:
 			var options = {
 				'provider': provider,
 				'rsd': _this
 			};
-			eval( 'provider.sObj = new ' + provider.lib + 'Search( options );' );
+			provider.sObj = new window[ provider.lib + 'Search' ]( options );
 			if ( !provider.sObj ) {
 				mw.log( 'Error: could not find search lib for ' + cp_id );
 				return false;
@@ -1227,7 +1255,7 @@ mw.RemoteSearchDriver.prototype = {
 			var tabImage = mw.getMwEmbedPath() + '/skins/common/remote_cp/' + providerName + '_tab.png';
 			if ( provider.enabled && provider.checked && provider.api_url ) {
 				// Add selected default if set
-				if ( this.currentProvider == providerName )
+				if ( this.current_provider == providerName )
 					selected_tab = index;
 
 				s += '<li class="rsd_cp_tab">';
@@ -1252,7 +1280,7 @@ mw.RemoteSearchDriver.prototype = {
 				gM( 'mwe-upload_tab' ) + 
 				'</a></li>';
 			content += '<div id="tab-upload" />';
-			if ( this.currentProvider == 'upload' )
+			if ( this.current_provider == 'upload' )
 				selected_tab = index++;
 		}
 		s += '</ul>';
@@ -1301,33 +1329,33 @@ mw.RemoteSearchDriver.prototype = {
 	},
 
 	/**
-	* Show Results for the currentProvider
+	* Show Results for the current_provider
 	*/
 	showResults: function() {
-		mw.log( 'f:showResults::' + this.currentProvider );
+		mw.log( 'f:showResults::' + this.current_provider );
 		var _this = this;
 		var o = '';
 		var tabSelector = '';
 
-		if ( this.currentProvider == 'upload' ) {
+		if ( this.current_provider == 'upload' ) {
 			tabSelector = '#upload_bin';
 			var provider = _this.content_providers['this_wiki'];
 		} else {
-			var provider = this.content_providers[ this.currentProvider ];
-			tabSelector = '#tab-' + this.currentProvider;
+			var provider = this.content_providers[ this.current_provider ];
+			tabSelector = '#tab-' + this.current_provider;
 			// Output the results bar / controls
 		}
 		
 		// Empty the existing results:
 		$j( tabSelector ).empty();
 				
-		if ( this.currentProvider != 'upload' ) {
+		if ( this.current_provider != 'upload' ) {
 			_this.showResultsHeader();
 		}
 
 		var numResults = 0;
 
-		// Output all the results for the current currentProvider
+		// Output all the results for the current current_provider
 		if ( typeof provider['sObj'] != 'undefined' ) {
 			$j.each( provider.sObj.resultsObj, function( resIndex, resource ) {
 				o += _this.getResultHtml( provider, resIndex, resource );				
@@ -1357,7 +1385,7 @@ mw.RemoteSearchDriver.prototype = {
 	showFailure : function( resultStatus ){
 		//only one type of resultStatus right now: 
 		if( resultStatus == 'timeout' )
-			$j( '#tab-' + this.currentProvider ).text(
+			$j( '#tab-' + this.current_provider ).text(
 				gM('rsd-search-timeout')		
 			)
 	},
@@ -1397,7 +1425,7 @@ mw.RemoteSearchDriver.prototype = {
 		// Get a thumb with proper resolution transform if possible:
 		var thumbUrl = provider.sObj.getImageTransform( resource, 
 			{ 'width' : this.thumb_width } );
-
+		
 		o += '<img title="' + resource.title  + '" ' +
 			'class="rsd_res_item" id="res_' + provider.id + '__' + resIndex + '" ' +
 			'style="width:' + this.thumb_width + 'px;" ' + 
@@ -1879,8 +1907,8 @@ mw.RemoteSearchDriver.prototype = {
 		var proto = {};
 		proto.prototype = resource;
 		var myRes = new proto;
-		*/
-
+		*/		
+		
 		// Update base target_resource_title:
 		resource.target_resource_title = resource.titleKey.replace( /^(File:|Image:)/ , '' )
 
@@ -1948,7 +1976,8 @@ mw.RemoteSearchDriver.prototype = {
 			}
 		} );
 	},
-	/*
+	
+	/**
 	* Show Import User Interface 
 	* 
 	* @param {Object} resource Resource Object to be imported
@@ -2484,12 +2513,12 @@ mw.RemoteSearchDriver.prototype = {
 		var darkListUrl = mw.getConfig( 'skin_img_path' ) + 'list_layout_icon_dark.png';
 		var lightListUrl = mw.getConfig( 'skin_img_path' ) + 'list_layout_icon.png';
 
-		if ( !this.content_providers[ this.currentProvider ] ) {
+		if ( !this.content_providers[ this.current_provider ] ) {
 			return;
 		}
-		var cp = this.content_providers[this.currentProvider];
+		var cp = this.content_providers[this.current_provider];
 		var resultsFromMsg = gM( 'mwe-results_from', 
-			[ cp.homepage, gM( 'rsd-' + this.currentProvider + '-title' ) ] );
+			[ cp.homepage, gM( 'rsd-' + this.current_provider + '-title' ) ] );
 		var defaultBoxUrl, defaultListUrl;
 		if ( _this.displayMode == 'box' ) {
 			defaultBoxUrl = darkBoxUrl;
@@ -2502,7 +2531,7 @@ mw.RemoteSearchDriver.prototype = {
 		var about_desc = '<span style="position:relative;top:0px;font-style:italic;">' +
 			'<i>' + resultsFromMsg + '</i></span>';
 
-		$j( '#tab-' + this.currentProvider ).append( '<div id="rds_results_bar">' +
+		$j( '#tab-' + this.current_provider ).append( '<div id="rds_results_bar">' +
 			'<span style="float:left;top:0px;font-style:italic;">' +
 			gM( 'rsd_layout' ) + ' ' +
 			'<img id="msc_box_layout" ' +
@@ -2552,19 +2581,19 @@ mw.RemoteSearchDriver.prototype = {
 	},
 	
 	/**
-	* Shows pagging for a given target for a given currentProvider
+	* Shows pagging for a given target for a given current_provider
 	*
 	* @param {String} target jQuery Selector for pagging Header output  
 	*/
 	showPagingHeader: function( target ) {
 		var _this = this;
-		if ( _this.currentProvider == 'upload' ) {
+		if ( _this.current_provider == 'upload' ) {
 			var provider = _this.content_providers['this_wiki'];
 		} else {
-			var provider = _this.content_providers[ _this.currentProvider ];
+			var provider = _this.content_providers[ _this.current_provider ];
 		}
 		var search = provider.sObj;
-		mw.log( 'showPagingHeader:' + _this.currentProvider + ' len: ' + search.num_results );
+		mw.log( 'showPagingHeader:' + _this.current_provider + ' len: ' + search.num_results );
 		var to_num = ( provider.limit > search.num_results ) ?
 			( parseInt( provider.offset ) + parseInt( search.num_results ) ) :
 			( parseInt( provider.offset ) + parseInt( provider.limit ) );
@@ -2610,8 +2639,8 @@ mw.RemoteSearchDriver.prototype = {
 	*/
 	selectTab: function( provider_id ) {
 		mw.log( 'select tab: ' + provider_id );
-		this.currentProvider = provider_id;
-		if ( this.currentProvider == 'upload' ) {
+		this.current_provider = provider_id;
+		if ( this.current_provider == 'upload' ) {
 			this.showUploadTab();
 		} else {
 			// update the search results:
