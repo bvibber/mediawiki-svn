@@ -187,8 +187,6 @@ border:none !important;
 margin:0 !important;
 }
 .wikieditor-toolbar-table-preview-content *{
-}
-.wikieditor-toolbar-table-preview-content *:hover{
 cursor:default;
 }
 .wikiEditor-ui-toc{

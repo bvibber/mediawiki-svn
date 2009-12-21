@@ -140,13 +140,9 @@ fn: {
 			}
 		}
 		//sort by offset, or if offset same, sort by start
-		tokenArray.sort( function( a, b ) { 
-							if( a.offset - b.offset == 0 ){
-								return a.tokenStart- b.tokenStart;
-							} else { 
-								return a.offset - b.offset;
-							}
-						 } );
+		tokenArray.sort( function( a, b ) {
+			return a.offset - b.offset || a.tokenStart - b.tokenStart;
+		} );
 		context.fn.trigger( 'scan' );
 	},
 	/**
