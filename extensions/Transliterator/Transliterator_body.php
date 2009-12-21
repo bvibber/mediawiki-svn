@@ -402,7 +402,6 @@ class ExtTransliterator  {
 	 * $other   is an error messsage to display if $answer is blank and an invalid map is specified
 	 */
 	function render( &$parser, $mapname = '', $word = '', $format = '$1', $answer = '', $other = '' ) {
-
 		if ( trim( $format ) == '' ) { // Handle the case when people use {{#transliterate:<>|<>||<>}}
 			$format = '$1';
 		}
@@ -418,7 +417,9 @@ class ExtTransliterator  {
 			return $other == '' ? str_replace( "$1", "{{#transliterate:$mapname|$word}}", $format ) : $other;
 
 		} else if ( strlen( $prefix ) < 3 ) {
-			return '<span class="transliterator error">'.wfMsg( 'transliterator-error-prefix', 3, 'transliterator-prefix' ).'</span>';
+			return '<span class="transliterator error">' .
+				wfMsgExt( 'transliterator-error-prefix', 'parsemag', 3, 'transliterator-prefix' ) .
+				'</span>';
 
 		}
 
