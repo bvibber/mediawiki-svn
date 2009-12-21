@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package MediaWiki
  * @subpackage Extensions
@@ -27,28 +26,30 @@
  *     made ^ act more like $ (i.e. ^μπ => doesn't prevent μ => from matching), fix bug with cache refresh
  * @version 1.3.2 
  *     cache getExistingMapNames query - still not sure caching is optimal.
+ * @version 1.3.3
+ *     check prefix length, minor bug with very decomposed characters
  */
 
 /**
-    Extension:Transliterator Copyright (C) 2009 Conrad.Irwin
+	Extension:Transliterator Copyright (C) 2009 Conrad.Irwin
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-    die( 'This file is a MediaWiki extension, not a valid entry point.' );
+	die( 'This file is a MediaWiki extension, not a valid entry point.' );
 }
 
 // adjustable parameters
@@ -56,12 +57,12 @@ $wgTransliteratorRuleCount = 255;	// maximum number of permitted rules per map.
 $wgTransliteratorRuleSize  =  10;	// maximum number of characters in left side of a rule.
 
 $wgExtensionCredits['parserhook'][] = array(
-    'name' => 'Transliterator',
-    'version' => '1.2.2',
-    'descriptionmsg' => 'transliterator-desc',
-    'author' => 'Conrad Irwin',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:Transliterator',
-    'path' => __FILE__,
+	'name' => 'Transliterator',
+	'version' => '1.2.2',
+	'descriptionmsg' => 'transliterator-desc',
+	'author' => 'Conrad Irwin',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Transliterator',
+	'path' => __FILE__,
 );
 
 $wgAutoloadClasses['ExtTransliterator'] = dirname( __FILE__ ) . "/Transliterator_body.php";
@@ -73,5 +74,3 @@ $wgHooks['NewRevisionFromEditComplete'][]  = 'ExtTransliterator::purgeArticle';
 $wgHooks['ArticlePurge'][]  = 'ExtTransliterator::purgeArticle';
 $wgHooks['ArticleUndelete'][]  = 'ExtTransliterator::purgeTitle';
 $wgHooks['TitleMoveComplete'][] = 'ExtTransliterator::purgeNewtitle';
-
-?>

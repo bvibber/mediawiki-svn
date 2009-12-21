@@ -21,12 +21,15 @@ $messages['en'] = array(
 	// $1 is the limit on number of rules
 	'transliterator-error-rulecount' => "More than $1 {{PLURAL:$1|rule|rules}} in [[MediaWiki:$2]]",
 	// $3 is the limit on the length of the left hand side (e.g. 'alpha => beta' has 5)
-	'transliterator-error-rulesize' => "Rule <code>$1</code> has more than $3 {{PLURAL:$3|character|characters}} on the left in [[MediaWiki:$2]]",
+		'transliterator-error-rulesize' => "Rule <code>$1</code> has more than $3 {{PLURAL:$3|character|characters}} on the left in [[MediaWiki:$2]]",
+		// $1 is the minimum transliterator prefix length, $2 is the name of the message containing the prefix
+		'transliterator-error-prefix' => "[[MediaWiki:$2]] must be at least $1 characters long."
 );
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
  * @author Purodha
+ * @author Conrad.Irwin
  */
 $messages['qqq'] = array(
 	'transliterator-desc' => 'This is a short description of the extension. It is shown in [[Special:Version]].',
@@ -45,6 +48,10 @@ This is a prefix for the transliteration maps, used in the MediaWiki namespace l
 * $1 is the line from the map, such as: <code>a => z</code>
 * $2 is the map-page including the prefix {{msg-mw|transliterator-invoke}}
 * $3 is the limit on the length of the left hand side (e.g. <code>alpha => beta</code> has 5)',
+	'transliterator-error-prefix' => 'Parameters:
+* $1 is the length of the shortest transliteration prefix, needs to be enforced due to performance concerns.
+* $2 is the name of the transliterator-prefix message
+	'
 );
 
 /** Afrikaans (Afrikaans)
@@ -380,4 +387,3 @@ $messages['vi'] = array(
 	'transliterator-error-rulecount' => 'Hơn $1 quy tắc trong [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Quy tắc <code>$1</code> có hơn $3 ký tự vào bên trái trong [[MediaWiki:$2]]',
 );
-
