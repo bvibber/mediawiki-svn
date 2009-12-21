@@ -87,6 +87,7 @@ function DynamicPageList( $input ) {
 	$iNamespace = 0;
 	
 	$bShowCurId = false;
+	$bGoogleHack = false;
 
 	$bSuppressErrors = false;
 	$bShowNamespace = true;
@@ -275,6 +276,13 @@ function DynamicPageList( $input ) {
 			else
 				$bShowCurId = true;
 		}
+		else if ('googlehack' == $sType)
+		{
+			if ('false' == $sArg)
+				$bGoogleHack = false;
+			else
+				$bGoogleHack = true;
+		}
 	}
 
 	$iCatCount = count($aCategories);
@@ -446,6 +454,8 @@ function DynamicPageList( $input ) {
 		$query = array();
 		if (true == $bShowCurId)
 			$query['curid'] = intval($row->page_id);
+		if ($bGoogleHack)
+			$query['dpl_id'] = intval($row->page_id);
 
 		if (true == $bShowNamespace)
 			$titleText = $title->getPrefixedText();
