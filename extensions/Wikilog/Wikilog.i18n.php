@@ -32,14 +32,12 @@ $messages['en'] = array(
 	# Wikilog tab
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Wikilog actions',
-	'wikilog-missing-wikilog' => "
-This is the [[{{int:wikilog-help}}|wikilog]] page for [[{{FULLPAGENAME}}]].
+	'wikilog-missing-wikilog' => "This is the [[{{int:wikilog-help}}|wikilog]] page for [[{{FULLPAGENAME}}]].
 
 This wikilog does not exist yet.
 In order to publish articles and enable other wikilog features, it has to be created first.
 
-* <span class=\"plainlinks\">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Create this wikilog].</span>
-",
+* <span class=\"plainlinks\">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Create this wikilog].</span>",
 	'wikilog-information' => 'Wikilog information',
 	'wikilog-post-count-published' => 'There {{PLURAL:$1|is one published article|are $1 published articles}} in this wikilog',
 	'wikilog-post-count-drafts' => 'There {{PLURAL:$1|is one unpublished (draft) article|are $1 unpublished (draft) articles}}',
