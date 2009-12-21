@@ -96,6 +96,7 @@ var mwBaseFirefoggReq = [
 mw.addModuleLoader( 'AddMedia.firefogg', function( callback ){
 	// Get addMedia style sheets
 	mw.getStyleSheet( addMediaSheets );
+	
 	//Load firefogg libs
 	mw.load( mwBaseFirefoggReq, function() {
 		callback( 'AddMedia.firefogg' );

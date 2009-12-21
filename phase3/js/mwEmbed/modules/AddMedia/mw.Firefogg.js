@@ -89,6 +89,29 @@ var default_firefogg_options = {
 	'enable_chunks' : false
 };
 
+/**
+* Setup firefogg jquery binding
+*/
+( function( $ ){ 
+	$.fn.firefogg = function( options ) {
+		if ( !options )
+			options = { };
+	
+		// Add the selector
+		options['selector'] = this.selector;
+				
+		// Setup the firefogg Firefogg: 
+		var myFogg = new mw.Firefogg( options );
+				
+		if ( myFogg ) {
+			myFogg.doRewrite( );
+			var selectorElement = $j( options.selector ).get( 0 );			
+			selectorElement[ 'firefogg' ] = myFogg;		
+		}
+	}
+} )( jQuery );
+
+
 mw.Firefogg = function( options ) {
 	return this.init( options );
 };

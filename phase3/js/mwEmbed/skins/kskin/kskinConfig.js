@@ -50,7 +50,7 @@ var kskinConfig = {
 		'play_head': {
 			'w':0, // special case (takes up remaining space)
 			'o':function( ctrlObj ) {
-				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 20 ) + 'px;"></div>';
+				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 25 ) + 'px;"></div>';
 			}
 		},
 		'options_menu': {

@@ -13,21 +13,23 @@ var mwUploadHelper = {
 			wgEnableFirefogg = true;
 
 		if ( wgEnableFirefogg ) {
-			// Set up the upload handler to Firefogg. Should work with the HTTP uploads too.
-			$j( '#wpUploadFile' ).firefogg( {
-				// An API URL (we won't submit directly to action of the form)
-				'api_url': wgServer + wgScriptPath + '/api.php',
-				'form_rewrite': true,
-				// MediaWiki API supports chunk uploads: 
-				'enable_chunks' : true, 
-				'edit_form_selector': mwUploadFormSelector,
-				'new_source_cb': function( orgFilename, oggName ) {
-					$j( '#wpDestFile' ).val( oggName );
-					$j( '#wpDestFile' ).doDestCheck( {
-						'warn_target': '#wpDestFile-warning'
-					} );
-				}
-			} );
+			mw.load( 'AddMedia.firefogg', function(){
+				// Set up the upload handler to Firefogg. Should work with the HTTP uploads too.
+				$j( '#wpUploadFile' ).firefogg( {
+					// An API URL (we won't submit directly to action of the form)
+					'api_url': wgServer + wgScriptPath + '/api.php',
+					'form_rewrite': true,
+					// MediaWiki API supports chunk uploads: 
+					'enable_chunks' : true, 
+					'edit_form_selector': mwUploadFormSelector,
+					'new_source_cb': function( orgFilename, oggName ) {
+						$j( '#wpDestFile' ).val( oggName );
+						$j( '#wpDestFile' ).doDestCheck( {
+							'warn_target': '#wpDestFile-warning'
+						} );
+					}
+				} );
+			} )
 		} else {
 			// Add basic upload profile support ( http status monitoring, progress box for
 			// browsers that support it, etc.)
