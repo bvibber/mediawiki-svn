@@ -21,7 +21,8 @@ mw.addClassFilePaths( {
 	"metavidSearch"			: "modules/AddMedia/searchLibs/metavidSearch.js",
 	"archiveOrgSearch"		: "modules/AddMedia/searchLibs/archiveOrgSearch.js",
 	"flickrSearch"			: "modules/AddMedia/searchLibs/flickrSearch.js",
-	"baseRemoteSearch"		: "modules/AddMedia/searchLibs/baseRemoteSearch.js"
+	"baseRemoteSearch"		: "modules/AddMedia/searchLibs/baseRemoteSearch.js",
+	"kalturaSearch"			: "modules/AddMedia/searchLibs/kalturaSearch.js"
 });
 
 /**

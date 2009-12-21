@@ -117,7 +117,7 @@ metavidSearch.prototype = {
 	/**
 	* Get additional wiki text description
 	* 
-	* @param {Object} resource Resource to get addtional wikitext for. 
+	* @param {Object} resource Resource to get additional wikitext for. 
 	*/
 	getExtraResourceDescWiki:function( resource ) {
 		var o = "\n";
