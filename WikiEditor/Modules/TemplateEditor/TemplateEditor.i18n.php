@@ -22,6 +22,13 @@ $messages['be-tarask'] = array(
 	'wikieditor-template-editor-preference' => 'Дазволіць рэдагаваньне шаблёнаў вікі праз формы',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'wikieditor-template-editor-preference' => "Gweredekaat ar c'hemmañ partromoù wiki diwar furmskridoù",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
