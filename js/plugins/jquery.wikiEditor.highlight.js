@@ -34,7 +34,7 @@ evt: {
 		 * 			;	Definition
 		 * 			:	Definition
 		 */
-		if ( event.data.scope == 'keydown' ) {
+		if ( event.data.scope == 'none' ) {
 			$.wikiEditor.modules.highlight.fn.scan( context, "" );
 			$.wikiEditor.modules.highlight.fn.mark( context, "", "" );
 		}
@@ -103,9 +103,10 @@ fn: {
 		 * @param offset
 		 * @param label
 		 */
-		function Token( offset, label ) {
+		function Token( offset, label, tokenStart ) {
 			this.offset = offset;
 			this.label = label;
+			this.tokenStart = tokenStart;
 		}
 		// Reset tokens
 		var tokenArray = context.modules.highlight.tokenArray = [];
@@ -124,11 +125,12 @@ fn: {
 					var oldOffset = 0;
 					while ( match != null ) {
 						var markOffset = 0;
+						var tokenStart = match.index + oldOffset + markOffset;
 						if ( markAfter ) {
 							markOffset += match[0].length;
 						}
 						tokenArray.push(
-							new Token( match.index + oldOffset + markOffset, label )
+							new Token( match.index + oldOffset + markOffset, label, tokenStart )
 						);
 						oldOffset += match.index + match[0].length;
 						newSubstring = text.substring( oldOffset );
@@ -137,7 +139,14 @@ fn: {
 				}
 			}
 		}
-		tokenArray.sort( function( a, b ) { return a.offset - b.offset; } );
+		//sort by offset, or if offset same, sort by start
+		tokenArray.sort( function( a, b ) { 
+							if( a.offset - b.offset == 0 ){
+								return a.tokenStart- b.tokenStart;
+							} else { 
+								return a.offset - b.offset;
+							}
+						 } );
 		context.fn.trigger( 'scan' );
 	},
 	/**
