@@ -334,8 +334,14 @@ mw.addMessages( {
 		isSourceEnabled: function( source ){
 			for(var i in this.enabledSources ){
 				var enabledSource = this.enabledSources[i];
-				if( source.id == enabledSource.id )
-					return true;
+				if( source.id ){
+					if( source.id == enabledSource.id )
+						return true;
+				}
+				if( source.lang ){
+					if( source.lang == enabledSource.lang )
+						return true;
+				}
 			}	
 			return false;
 		},
