@@ -501,6 +501,14 @@ $messages['ru'] = array(
 	'categoryonupload-label' => 'Категория:',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'categoryonupload-desc' => 'Билэни хачайдыыр кэмҥэ кыттааччыга категорияны таларын көҥүллүүр/хааччыйар',
+	'categoryonupload-label' => 'Категория:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

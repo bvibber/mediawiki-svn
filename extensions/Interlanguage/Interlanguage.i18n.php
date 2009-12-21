@@ -90,6 +90,13 @@ $messages['eu'] = array(
 	'interlanguage-desc' => 'Beste wiki bateko hizkuntzen arteko loturak hartzen ditu',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'interlanguage-desc' => 'Ottaa kieltenväliset linkit toisesta wikistä.',
+);
+
 /** French (Français)
  * @author Verdy p
  */

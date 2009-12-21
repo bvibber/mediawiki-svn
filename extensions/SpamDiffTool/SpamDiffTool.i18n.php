@@ -469,6 +469,7 @@ $messages['fa'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'spamdifftool' => 'Hallitse mainosestolistaa',
@@ -478,6 +479,13 @@ $messages['fi'] = array(
 <a href='$1'>Napsauta jatkaaksesi</a>.",
 	'spamdifftool_confirm' => "Vahvista, että haluat lisätä nämä mainosestolistalle. (Napsauta <a href='$1' target='new'>tästä</a> ilmoittaaksesi ongelmasta.)",
 	'spamdifftool_summary' => 'Lisätään mainosestolistalle',
+	'spamdifftool_urls_detected' => 'Seuraavat URL:it havaittiin muokkauksissa.
+Mitkä näistä haluat lisätä roskamuokkausten mustalle listalle?
+Vaihtoehdot ovat järjestyksessä rajoittavimmasta vähiten rajoittavaan, koko domain-nimen estäminen estää kaikki linkit jotka osoittavat johonkin domain-nimessä olevaan.
+
+Varmista ettet estä kokonaisia domaineja jotka sisältävät käyttäjätunnuksia, kuten blogspot.com, geocities.com, jne.',
+	'spamdifftool_no_urls_detected' => "Osoitteita ei havaittu.
+Napsauta <a href='$1'>palataksesi</a>.",
 	'spamdifftool_spam_link_text' => 'lisää mainosestolistaan',
 	'spamdifftool_option_domain' => 'kaikki tästä verkkotunnuksesta',
 	'spamdifftool_option_subdomain' => 'kaikki tästä aliverkkotunnuksesta',

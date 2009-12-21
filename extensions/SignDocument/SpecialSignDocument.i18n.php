@@ -591,6 +591,7 @@ $messages['br'] = array(
 	'sign-phone' => 'Niverenn bellgomz :',
 	'sign-bday' => 'Oad :',
 	'sign-email' => "Chomlec'h postel :",
+	'sign-list-anonymous' => 'Listennañ en un doare dianv',
 	'sign-list-hideaddress' => "Chom hep menegiñ ar chomlec'h",
 	'sign-list-hidephone' => 'chom hep menegiñ an niverenn bellgomz',
 	'sign-list-hidebday' => 'Chom hep menegiñ an oad',
@@ -606,6 +607,7 @@ $messages['br'] = array(
 	'sign-viewfield-country' => 'Bro',
 	'sign-viewfield-zip' => 'Kod-post',
 	'sign-viewfield-ip' => "Chomlec'h IP",
+	'sign-viewfield-agent' => 'Graer implijer',
 	'sign-viewfield-phone' => 'Pellgomz',
 	'sign-viewfield-email' => 'Postel',
 	'sign-viewfield-age' => 'Oad',
@@ -2571,6 +2573,98 @@ $messages['lt'] = array(
  */
 $messages['mhr'] = array(
 	'sign-viewfield-email' => 'Электрон почто',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'signdocument' => 'Потпиши документ',
+	'sign-nodocselected' => 'Одберете го документот што сакате да го потпишете.',
+	'sign-selectdoc' => 'Документ:',
+	'sign-docheader' => '<div class="noarticletext">Употребете го овој образец за да го потпишете документот „[[$1]]“, прикажан подолу.
+Испрочитајте го целиот документ, и ако сакате да му изразите поддршка, пополнете ги бараните полиња за да го потпишете.</div>',
+	'sign-error-nosuchdoc' => 'Документот кој го побаравте ($1) не постои.',
+	'sign-realname' => 'Име:',
+	'sign-address' => 'Адреса:',
+	'sign-city' => 'Град:',
+	'sign-state' => 'Сојуз. држава',
+	'sign-zip' => 'Поштенски број:',
+	'sign-country' => 'Земја:',
+	'sign-phone' => 'Телефон:',
+	'sign-bday' => 'Возраст:',
+	'sign-email' => 'Е-пошта:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> задолжително поле.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Напомена: Информациите кои нема да се прикажат сепак ќе бидат видливи за модераторите.</i></small>',
+	'sign-list-anonymous' => 'Анонимно',
+	'sign-list-hideaddress' => 'Не прикажувај адреса',
+	'sign-list-hideextaddress' => 'Не прикажувај град, сојузна држава, поштенски број и земја',
+	'sign-list-hidephone' => 'Не прикажувај телефон',
+	'sign-list-hidebday' => 'Не прикажувај возраст',
+	'sign-list-hideemail' => 'Не прикажувај е-пошта',
+	'sign-submit' => 'Потпиши',
+	'sign-information' => '<div class="noarticletext">Ви благодариме што посветивте време за да го прочитате овој документ.
+Доколку се согласувате со него, изразете ја вашата поддршка со пополнување на бараните полиња подолу и кликнување на „Потпиши“.
+Проверете дали вашите лични податоци се точни и дека имаме некаков начин да ве исконтактираме за да го провериме вашиот идентитет.
+Имајте на ум дека вашата IP-адреса и другите идентификациони информации ќе се запишат со овој образец и ќе им послужат на модераторите за елиминирање на дуплирани потписи и за потврдување на исправноста на вашите лични податоци.
+Бидејќи употребата на отворени и анонимизирачки посредници (проксија) ни попречува во извршувањето на оваа задача, најверојатно е дека потписите од такви проксија нема да се сметаат.
+Ако моментално сте поврзани преку прокси-сервер, исклучете се и користете обично поврзување додека се потпишувате.</div>
+
+$1',
+	'sig-success' => 'Успешно го потпишавте документот.',
+	'sign-view-selectfields' => '<b>Полиња за прикажување:</b>',
+	'sign-viewfield-entryid' => 'ID на записот',
+	'sign-viewfield-timestamp' => 'Датум и време',
+	'sign-viewfield-realname' => 'Име',
+	'sign-viewfield-address' => 'Адреса',
+	'sign-viewfield-city' => 'Град',
+	'sign-viewfield-state' => 'Сојуз. држава',
+	'sign-viewfield-country' => 'Земја',
+	'sign-viewfield-zip' => 'Поштенски број',
+	'sign-viewfield-ip' => 'IP-адреса',
+	'sign-viewfield-agent' => 'Прелистувач',
+	'sign-viewfield-phone' => 'Телефон',
+	'sign-viewfield-email' => 'Е-пошта',
+	'sign-viewfield-age' => 'Возраст',
+	'sign-viewfield-options' => 'Нагодувања',
+	'sign-viewsigs-intro' => 'Подолу се прикажани потписи собрани за <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'Потпишувањето на овој документ е моментално овозможено.',
+	'sign-sigadmin-close' => 'Оневозможи потпишување',
+	'sign-sigadmin-currentlyclosed' => 'Потпишувањето на овој документ е моментално оневозможено.',
+	'sign-sigadmin-open' => 'Овозможи потпишување',
+	'sign-signatures' => 'Потписи',
+	'sign-sigadmin-closesuccess' => 'Потпишувањето е успешно оневозможено.',
+	'sign-sigadmin-opensuccess' => 'Потпишувањето е успешно овозможено.',
+	'sign-viewsignatures' => 'види потписи',
+	'sign-closed' => 'затворено',
+	'sign-error-closed' => 'Потпишувањето на овој документ е моментално оневозможено.',
+	'sig-anonymous' => '<i>Анонимен</i>',
+	'sig-private' => '<i>Приватен</i>',
+	'sign-sigdetails' => 'Подробности за потписот',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|разговор]] • <!--
+-->[[Special:Contributions/$1|придонеси]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|блокирај]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} дневник на блокирања] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} провери])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Прецртано',
+	'sign-viewfield-reviewedby' => 'Проверувач',
+	'sign-viewfield-reviewcomment' => 'Коментар',
+	'sign-detail-uniquequery' => 'Слични записи',
+	'sign-detail-uniquequery-run' => 'Исполни барање',
+	'sign-detail-strike' => 'Прецртај потпис',
+	'sign-reviewsig' => 'Провери потпис',
+	'sign-review-comment' => 'Коментар',
+	'sign-submitreview' => 'Поднеси проверка',
+	'sign-uniquequery-similarname' => 'Слично име',
+	'sign-uniquequery-similaraddress' => 'Слична адреса',
+	'sign-uniquequery-similarphone' => 'Сличен телефон',
+	'sign-uniquequery-similaremail' => 'Слична е-пошта',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] се потпиша на [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Malayalam (മലയാളം)

@@ -234,6 +234,10 @@ $messages['br'] = array(
 	'patrol-skip' => 'Lezel a-gostez',
 	'patrol-reverting' => 'Nuladennoù: $1',
 	'patrol-reverted-ok' => 'Nullet eo bet an embann-se.',
+	'patrol-skipped-ok' => 'Dianavezout an embann.',
+	'patrol-reasons' => '* Vandalerezh simpl
+* Amprouadennoù tud nevez
+* Gwelet ar bajenn kaozeadenn',
 	'patrol-another' => "Diskouez ur c'hemm all, ma 'z eo posubl.",
 	'patrol-resume' => "Klikit amañ evit kenderc'hel.",
 	'group-patroller' => 'Patrouilherien',

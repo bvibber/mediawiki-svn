@@ -126,10 +126,11 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'microid-desc' => 'Lisää [http://www.microid.org/ MicroID:n] käyttäjäsivuille vahvistaakseen tunnuksen ulkoisille palveluille',
+	'microid-desc' => 'Lisää [http://www.microid.org/ MicroID:n] käyttäjäsivuille vahvistaakseen tunnuksen ulkoisille palveluille.',
 	'tog-microid' => 'Julkaise <a href="http://microid.org/">MicroID</a> vahvistaaksesi tunnuksen ulkoisille palveluille.',
 );
 

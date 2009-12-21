@@ -254,6 +254,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'ratinghistory-tab' => 'istimadur',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Trugarez da vezañ kemmeret amzer evit adlenn ar bajenn !</font>''",
 	'ratinghistory-period' => 'Prantad :',
 	'ratinghistory-month' => 'miz diwezhañ',
 	'ratinghistory-3months' => '3 miz diwezhañ',
@@ -261,7 +262,9 @@ $messages['br'] = array(
 	'ratinghistory-3years' => 'tri bloaz diwezhañ',
 	'ratinghistory-ave' => 'Keidenn : $1',
 	'ratinghistory-purge' => 'riñsañ ar grubuilh',
+	'ratinghistory-graph' => '$2 war "$3" ($1 {{PLURAL:$1|adweladenn|adweladenn}})',
 	'ratinghistory-svg' => 'Gwelet evel SVG',
+	'ratinghistory-table-rating' => 'Priziañ',
 	'ratinghistory-table-votes' => 'Mouezhioù',
 );
 

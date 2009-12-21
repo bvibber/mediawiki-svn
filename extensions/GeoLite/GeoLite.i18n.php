@@ -53,6 +53,13 @@ $messages['br'] = array(
 	'geolite-desc' => 'Adheñchadenn Geolp skañv',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'geolite-desc' => 'Pojednostavljeno GeoIp preusmjerenje',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -171,6 +178,13 @@ $messages['ml'] = array(
  */
 $messages['nl'] = array(
 	'geolite-desc' => 'Eenvoudige GeoIP-gebaseerde doorverwijzing',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'geolite-desc' => 'Lettvekts-GeoIp-omdirigering',
 );
 
 /** Occitan (Occitan)

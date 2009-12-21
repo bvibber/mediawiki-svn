@@ -224,6 +224,7 @@ Please create it or change it to use this extension.',
  * @author Jon Harald Søby
  * @author Meno25
  * @author Purodha
+ * @author Raymond
  * @author Siebrand
  * @author Umherirrender
  */
@@ -1185,6 +1186,8 @@ $messages['br'] = array(
 	'configure-js-remove-row' => 'Diverkañ ar gasadenn-mañ',
 	'configure-js-biglist-show' => '[diskouez dre ar munud]',
 	'configure-js-biglist-hide' => '[kuzhat ar munudoù]',
+	'configure-js-summary-none' => 'Arventenn ebet',
+	'configure-js-search-legend' => 'Klask arventennoù',
 	'configure-js-search-prompt' => 'Reked :',
 	'configure-old' => 'Stummoù kozh',
 	'configure-old-changes' => 'kemmoù',
@@ -1199,6 +1202,7 @@ $messages['br'] = array(
 	'configure-section-email' => 'Postel',
 	'configure-section-localization' => "Lec'hiadur",
 	'configure-section-timezone' => 'Takad eur',
+	'configure-section-debug' => 'Divugañ',
 	'configure-section-skin' => 'Gwiskadurioù',
 	'configure-section-category' => 'Rummadoù',
 	'configure-section-cache' => 'Krubuilh',
@@ -1251,15 +1255,24 @@ $messages['br'] = array(
 	'configure-throttle-group' => 'Seurt',
 	'configure-throttle-limit' => 'Harz',
 	'configure-throttle-none' => 'Harz ebet',
+	'configure-condition-operator' => 'Oberataer :',
 	'configure-condition-operator-or' => 'Pe',
 	'configure-condition-operator-and' => 'Ha(g)',
+	'configure-condition-operator-xor' => 'Xor',
 	'configure-condition-operator-not' => 'Nann',
 	'configure-condition-name' => 'Diviz',
+	'configure-condition-requirement' => 'Redi',
+	'configure-condition-name-1' => "Niver a gemmoù d'an nebeutañ",
 	'configure-condition-name-2' => 'Oad izelañ',
 	'configure-condition-name-3' => 'Postel kadarnaet',
 	'configure-condition-name-4' => 'E strolladoù',
+	'configure-condition-name-5' => "Chomlec'h IP an implijer",
+	'configure-condition-name-6' => "Chomlec'h IP an implijer a zo el lijorenn CIDR",
+	'configure-condition-description-1' => "Niver a gemmoù d'an nebeutañ : $1",
 	'configure-condition-description-3' => 'Postel kadarnaet',
 	'configure-boolop-description-and' => 'An holl zivizoù a rank bezañ gwir',
+	'configure-boolop-description-or' => "Un diviz a rank bezañ gwir d'an nebeutañ",
+	'configure-boolop-description-xor' => 'Un diviz a rank bezañ gwir',
 );
 
 /** Bosnian (Bosanski)
@@ -2718,7 +2731,7 @@ $messages['fi'] = array(
 	'configure-ext-settings' => 'Asetukset',
 	'configure-ext-use-extension' => 'Käytä tätä laajennosta',
 	'configure-ext-use' => 'Käytä',
-	'configure-form-reason' => 'Syy muutokseen',
+	'configure-form-reason' => 'Syy',
 	'configure-customised' => "''Tätä asetusta on muutettu''",
 	'configure-arrayinput-oneperline' => "''(yksi riviä kohti)''",
 	'configure-summary' => 'Tämä toimintosivu mahdollistaa tämän wikin asetusten muuttamisen. Lisätietoja löytyy sivulta [http://www.mediawiki.org/wiki/Manual:Configuration_settings Asetukset].',

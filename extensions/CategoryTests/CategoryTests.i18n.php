@@ -232,6 +232,13 @@ $messages['nl'] = array(
 	'categorytests-desc' => 'Functies voor categorietests',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'categorytests-desc' => 'Funksjonar for kategoritesting',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Simny
  */

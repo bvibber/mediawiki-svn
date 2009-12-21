@@ -17,6 +17,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'minify-desc' => 'Short description of the extension. Shown in [[Special:Version]].

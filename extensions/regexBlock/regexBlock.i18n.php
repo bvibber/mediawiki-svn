@@ -394,6 +394,8 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'regexblock-already-blocked' => '$1 zo stanket dija.',
+	'regexblock-block-success' => 'Stanket eo bet an implijer',
+	'regexblock-expire-duration' => '1 eurvezh,2 eurvezh,4 eurvezh,6 eurvezh,1 devez,3 devez,1 sizhunvezh,2 sizhunvezh,1 miz,3 miz,6 miz,1 vloaz, da viken',
 	'regexblock-form-username' => "Chomlec'h IP pe anv implijer :",
 	'regexblock-form-reason' => 'Abeg :',
 	'regexblock-form-expiry' => 'Termen :',
@@ -401,6 +403,7 @@ $messages['br'] = array(
 	'regexblock-form-submit' => 'Stankañ an implijer-mañ',
 	'regexblock-form-submit-expiry' => 'Diferit un termen, mar plij.',
 	'regexblock-nodata-found' => "N'eus ket bet kavet roadennoù",
+	'regexblock-unblock-success' => 'Distanket eo bet an implijer',
 	'regexblock-view-blocked' => 'Gwelet ar stankadurioù gant :',
 	'regexblock-view-all' => 'Pep tra',
 	'regexblock-view-go' => 'Mont',

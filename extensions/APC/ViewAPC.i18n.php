@@ -663,6 +663,7 @@ $messages['br'] = array(
 	'viewapc-memory-free' => 'Dieub : $1 ($2)',
 	'viewapc-memory-used' => 'Implijet : $1 ($2)',
 	'viewapc-memory-miss' => 'Mankoù : $1 ($2)',
+	'viewapc-display-attribute' => 'Doareenn',
 	'viewapc-display-value' => 'Talvoud',
 	'viewapc-display-filename' => 'Anv ar restr',
 	'viewapc-display-device' => 'Trobarzhell',

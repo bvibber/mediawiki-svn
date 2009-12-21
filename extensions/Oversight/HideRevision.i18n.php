@@ -513,6 +513,7 @@ $messages['br'] = array(
 	'hiderevision-error-missing' => "N'eo ket bet kavet er bank roadennoù.",
 	'oversight' => 'Oversight',
 	'oversight-view' => 'munudoù',
+	'oversight-prev' => 'Adweladenn ziwezhañ en a-raok',
 	'oversight-hidden' => 'Adweladennoù kuzhet',
 	'oversight-offender' => 'Aozer an adweladenn :',
 );

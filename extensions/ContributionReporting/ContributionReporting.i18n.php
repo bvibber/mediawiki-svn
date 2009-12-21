@@ -406,6 +406,7 @@ $messages['be-tarask'] = array(
 	'contribstats-weekly-totals' => 'Усяго за {{PLURAL:$1|апошні $1 тыдзень|апошнія $1 тыдні|апошніх $1 тыдняў}} уключна',
 	'contribstats-payment-type' => 'Тып плацяжу',
 	'contribstats-banner' => 'Лёзунг',
+	'contribstats-payment-type-hits' => 'Статыстыка па тыпах плацяжоў',
 	'contribstats-clicks' => 'Пераходы',
 	'contribstats-donations' => 'Ахвяраваньні',
 	'contribstats-conversion' => 'Узровень канвэрсіі (%)',
@@ -431,6 +432,7 @@ $messages['be-tarask'] = array(
 	'fundraiserstats-tab-contributions' => 'Колькасьць ахвяраваньняў',
 	'fundraiserstats-tab-averages' => 'Сярэдні (USD)',
 	'fundraiserstats-tab-maximums' => 'Максымальныя (USD)',
+	'fundraiserstats-tab-ytd' => 'На цяперашні год (USD)',
 	'specialpages-group-contribution' => 'Ахвяраваньні/Збор сродкаў',
 );
 
@@ -585,6 +587,9 @@ $messages['bs'] = array(
 	'contribstats-day-totals' => 'Ukupno za dan',
 	'contribstats-week' => 'Sedmica',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Ukupno za ovu sedmicu|Ukupno sedmično za protekle $1 sedmice zaključno}}',
+	'contribstats-payment-type' => 'Vrsta plaćanja',
+	'contribstats-banner' => 'Baner',
+	'contribstats-payment-type-hits' => 'Pogoci vrste plaćanja',
 	'contribstats-clicks' => 'Klikovi',
 	'contribstats-donations' => 'Donacije',
 	'contribstats-conversion' => 'Stopa pretvaranja (%)',
@@ -593,6 +598,11 @@ $messages['bs'] = array(
 	'contribstats-landingpage' => 'Ciljna stranica',
 	'contribstats-donatepage' => 'Stranica donacija',
 	'contribstats-average' => 'Prosjek',
+	'contribstats-imperfect-data' => 'Ovi podaci nisu savršeni za praćenje donatora bez korištenja praćenja sesija i imaju svoja ograničenja.',
+	'contribstats-paypal-donations' => 'Donacije preko PayPala',
+	'contribstats-credit-card' => 'Kreditna kartica',
+	'contribstats-fraud-note' => 'Postoje neke zloupotrijebljene donacije.',
+	'contribstats-unaudited' => 'Postoje neprovjerene sume.',
 	'fundraiserstatistics' => 'Statistike donatora',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dan $1 od $2',
@@ -605,6 +615,7 @@ $messages['bs'] = array(
 	'fundraiserstats-tab-contributions' => 'Broj doprinosa',
 	'fundraiserstats-tab-averages' => 'Prosjek (USD)',
 	'fundraiserstats-tab-maximums' => 'Najviše (USD)',
+	'fundraiserstats-tab-ytd' => 'Od početka godine (USD)',
 	'specialpages-group-contribution' => 'Doprinosi/donacije',
 );
 
@@ -2249,7 +2260,7 @@ $messages['ja'] = array(
 	'contribstats-weekly-totals' => '{{PLURAL:$1|今週の合計|過去$1週間の1週あたりの合計}}',
 	'contribstats-payment-type' => '支払い型式',
 	'contribstats-banner' => 'バナー',
-	'contribstats-payment-type-hits' => '支払い型式のヒット',
+	'contribstats-payment-type-hits' => '支払い型式のヒット数',
 	'contribstats-clicks' => 'クリック数',
 	'contribstats-donations' => '寄付数',
 	'contribstats-conversion' => 'コンバージョン率 (%)',
@@ -2710,6 +2721,9 @@ $messages['mk'] = array(
 	'contribstats-day-totals' => 'Вкупно за денот',
 	'contribstats-week' => 'Седмица',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Вкупно за оваа седмица|Седмични вкупни износи за изминатите $1 недели, заклучно со последната}}',
+	'contribstats-payment-type' => 'Тип на плаќање',
+	'contribstats-banner' => 'Плакат',
+	'contribstats-payment-type-hits' => 'Искорист. типови на плаќање',
 	'contribstats-clicks' => 'Кликања',
 	'contribstats-donations' => 'Донации',
 	'contribstats-conversion' => 'Стапка на придобивање на придонесувачи (%)',
@@ -2718,6 +2732,11 @@ $messages['mk'] = array(
 	'contribstats-landingpage' => 'Проследна страница',
 	'contribstats-donatepage' => 'Страница за донирање',
 	'contribstats-average' => 'Просечно',
+	'contribstats-imperfect-data' => 'Овие податоци не се апсолутно точни бидејќи следењето на дарители без да се користи следење на сесии има свои ограничувања.',
+	'contribstats-paypal-donations' => 'PayPal донации',
+	'contribstats-credit-card' => 'Кредитна картичка',
+	'contribstats-fraud-note' => 'Постојат извесни измамнички донации.',
+	'contribstats-unaudited' => 'Ова се непроверени податоци.',
 	'fundraiserstatistics' => 'Статистики за собирањето на средства',
 	'fundraiserstats-date' => 'Датум',
 	'fundraiserstats-day' => 'Ден $1 од $2',
@@ -2730,6 +2749,7 @@ $messages['mk'] = array(
 	'fundraiserstats-tab-contributions' => 'Број на придонеси',
 	'fundraiserstats-tab-averages' => 'Просеци (USD)',
 	'fundraiserstats-tab-maximums' => 'Највисоки (USD)',
+	'fundraiserstats-tab-ytd' => 'Догодина на овој ден (USD)',
 	'specialpages-group-contribution' => 'Придонеси/Обезб. средства',
 );
 
@@ -3208,6 +3228,7 @@ $messages['pdc'] = array(
 /** Polish (Polski)
  * @author Leinad
  * @author Maikking
+ * @author Odder
  * @author Qblik
  * @author Sp5uhe
  * @author Wpedzich
@@ -3260,6 +3281,7 @@ $messages['pl'] = array(
 	'contribstats-landingpage' => 'Strona powitalna',
 	'contribstats-donatepage' => 'Strona darowizn',
 	'contribstats-average' => 'Średnio',
+	'contribstats-paypal-donations' => 'Wpłaty PayPal',
 	'contribstats-credit-card' => 'Karta kredytowa',
 	'fundraiserstatistics' => 'Statystyka zebranych funduszy',
 	'fundraiserstats-date' => 'Data',

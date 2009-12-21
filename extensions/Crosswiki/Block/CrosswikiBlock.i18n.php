@@ -306,6 +306,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'crosswikiblock' => 'Stankañ an implijer war ur wiki all',
+	'crosswikiblock-expiry' => 'Termen :',
 	'crosswikiblock-reason' => 'Abeg :',
 	'crosswikiblock-submit' => 'Stankañ an implijer-mañ',
 	'crosswikiblock-anononly' => 'Stankañ an implijerien dianv hepken',
@@ -315,6 +316,7 @@ $messages['br'] = array(
 	'crosswikiblock-dbnotfound' => "N'eus ket eus an diaz roadennoù $1",
 	'crosswikiblock-noname' => '« $1 » n’eo ket un anv implijer reizh.',
 	'crosswikiblock-nouser' => 'N\'eo ket bet kavet an implijer "$3".',
+	'crosswikiblock-noexpiry' => 'Termen fall : $1.',
 	'crosswikiblock-noreason' => "N'eus bet diferet abeg ebet.",
 	'crosswikiblock-alreadyblocked' => 'Stanket eo an implijer $3 dija.',
 	'crosswikiblock-noblock' => "N'eo ket stanket an implijer-mañ.",

@@ -481,6 +481,7 @@ $messages['br'] = array(
 	'ogg-play-video' => 'Lenn ar video',
 	'ogg-play-sound' => 'Lenn ar son',
 	'ogg-player-videoElement' => 'Skor ar merdeer orin',
+	'ogg-player-oggPlugin' => 'Modulenn ouzhpenn ar merdeer',
 	'ogg-player-thumbnail' => 'Skeudenn statek hepken',
 	'ogg-player-soundthumb' => 'Lenner ebet',
 	'ogg-player-selected' => '(diuzet)',

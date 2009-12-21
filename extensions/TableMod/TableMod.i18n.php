@@ -59,9 +59,11 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'tablemod-msg-remove' => 'Lemel',
+	'tablemod-error-invalidaction' => "Ne c'heller ket ober an oberezh-se.",
 );
 
 /** Bosnian (Bosanski)
@@ -81,7 +83,7 @@ $messages['dsb'] = array(
 	'tablemod-msg-remove' => 'Wótpóraś',
 	'tablemod-error-format' => 'Toś ta toflicka pódpěra jano jadnoru tabelu na toflicku, bźez teksta pśed abo za njeju.',
 	'tablemod-error-colcount' => 'Toś ta toflicka pódpěrujo jano tabele ze samskeju licbu słupow na smužku pśi wótwónoźowanju.',
-	'tablemod-error-headcount' => 'Toś ta toflicka pódpěra jano tabele z jadnotliwymi słupowymi głowami pśi wótwónoźenju.',
+	'tablemod-error-headcount' => 'Toś ta toflicka pódpěra jano tabele z jadnotliwymi słupowymi głowami pśi sortěrowanju.',
 	'tablemod-error-invalidsort' => 'Njepłaśiwe sortěrowańske parametry.',
 	'tablemod-error-invalidaction' => 'Njepłaśiwa akcija.',
 	'tablemod-error-missingid' => 'Felujucy atribut ident w toflicce.',
@@ -170,7 +172,7 @@ $messages['ia'] = array(
 	'tablemod-msg-remove' => 'Remover',
 	'tablemod-error-format' => 'Iste etiquetta supporta solmente un simple tabella per etiquetta, sin texto ante o post illo.',
 	'tablemod-error-colcount' => 'Iste etiquetta supporta solmente tabellas con equal numeros de columnas per linea al remover.',
-	'tablemod-error-headcount' => 'Iste etiquetta supporta solmente tabellas con singule capites de columna al remover.',
+	'tablemod-error-headcount' => 'Iste etiquetta pote solmente ordinar tabulas con capites super omne columna.',
 	'tablemod-error-invalidsort' => 'Parametros invalide de assortimento.',
 	'tablemod-error-invalidaction' => 'Action invalide.',
 	'tablemod-error-missingid' => 'Le attributo "ident" manca in le etiquetta.',
@@ -272,7 +274,7 @@ $messages['pms'] = array(
 	'tablemod-msg-remove' => 'Gava',
 	'tablemod-error-format' => 'Sta tichëtta-sì a manten mach na tàula sempia për tichëtta, sensa gnun test dëdnans o dapress.',
 	'tablemod-error-colcount' => "Sta tichëtta-sì a manten mach tàule con ël midem nùmer ëd colone për riga quand ch'as gava.",
-	'tablemod-error-headcount' => "Sta tichëtta-sì a manten mach tàule su na testà ëd colòna sola quand ch'as gavo.",
+	'tablemod-error-headcount' => 'Sta tichëtta-sì a manten mach tàule su na testà ëd colòna sola durant la selession.',
 	'tablemod-error-invalidsort' => 'Paràmetr ëd sòrt pa bon.',
 	'tablemod-error-invalidaction' => 'Assion pa bon-a.',
 	'tablemod-error-missingid' => "Atribù dl'ident mancant ant la tichëtta.",

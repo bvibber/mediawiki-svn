@@ -565,6 +565,8 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-answer-whyoptout-didntlike-layout' => "N'on ket bet plijet gant an ivinelloù nevez hag an aozadur nevez.",
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ne blije ket din ar varrenn ostilhoù nevez.',
 	'optin-survey-answer-whyoptout-other' => 'Abeg all :',
+	'optin-survey-question-usedtoolbar-ifyes' => "Ma ya, petra en deus plijet deoc'h ? Ha petra n'en deus ket plijet deoc'h ?",
+	'optin-survey-question-usedtoolbar-ifno' => "Ma nann, perak ? Hag implij a reoc'h anezhañ en dazont ? Displegit.",
 	'optin-survey-question-browser' => 'Peseurt merdeer a rit gantañ ?',
 	'optin-survey-answer-browser-other' => 'Merdeer all :',
 	'optin-survey-question-os' => 'Peseurt reizhiad korvoiñ a rit gantañ ?',

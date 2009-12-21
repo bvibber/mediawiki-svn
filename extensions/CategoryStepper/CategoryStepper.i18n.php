@@ -527,6 +527,14 @@ $messages['ru'] = array(
 	'categorystepper-start' => '(начало категории)',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'categorystepper-end' => '(Категория түмүктэниитэ)',
+	'categorystepper-start' => '(Категория саҕаланыыта)',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

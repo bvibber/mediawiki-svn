@@ -233,6 +233,7 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'wah-desc' => "Talvezout a ra da zasparzh al labour treuzkodañ videoioù d'ar c'hliantoù dre firefogg",
@@ -255,6 +256,7 @@ $messages['br'] = array(
 	'wah-menu-pref' => 'Penndibaboù',
 	'wah-lookingforjob' => 'O klask un tamm labour ...',
 	'wah-notoken-login' => "Ha kevreet oc'h ? Ma n'oc'h ket, kevreit da gentañ, mar plij.",
+	'wah-doing-job' => 'Labour: <i>$1</i> war : <i>$2</i>',
 	'wah-downloading' => 'Echu eo pellgargañ ar restr <i>$1%</i>',
 	'wah-encoding' => 'Echu eo kodañ ar restr <i>$1%</i>',
 	'wah-uploading' => 'Echu eo kargañ ar restr <i>$1</i>',

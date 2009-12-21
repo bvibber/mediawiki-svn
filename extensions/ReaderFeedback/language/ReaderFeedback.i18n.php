@@ -1510,6 +1510,7 @@ $messages['nn'] = array(
  * @author Stigmj
  */
 $messages['no'] = array(
+	'readerfeedback-desc' => 'Sidebedømmelse gir mulighet for lese å gi tilbakemeldinger innen flere kategorier',
 	'readerfeedback' => 'Hva synes du om denne siden?',
 	'readerfeedback-text' => "''Vennligst ta noen minutter for å vurdere denne siden nedenfor. Din tilbakemelding er verdifull og hjelper oss med å forbedre nettstedet vårt.''",
 	'readerfeedback-reliability' => 'Pålitelighet',

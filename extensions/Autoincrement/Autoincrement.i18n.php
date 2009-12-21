@@ -77,10 +77,11 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'autoincrement-desc' => 'Laajennus, joka lisää automaattisesti kasvavan muuttujan <nowiki>{{AUTOINCREMENT}}</nowiki>',
+	'autoincrement-desc' => 'Laajennus, joka lisää automaattisesti kasvavan muuttujan <nowiki>{{AUTOINCREMENT}}</nowiki>.',
 );
 
 /** French (Français)

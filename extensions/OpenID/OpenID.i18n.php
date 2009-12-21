@@ -1449,8 +1449,8 @@ Käyttääksesi tulevaisuudessa OpenID:tä, voit [[Special:OpenIDConvert|muuntaa
 Tarjolla on monia eri [http://openid.net/get/ OpenID-tarjoajia], ja sinulla saattaa jo olla OpenID:tä tarjoava tunnus toisessa palvelussa.',
 	'openidupdateuserinfo' => 'Päivitä minun henkilökohtaiset tietoni.',
 	'openiddelete' => 'Poista OpenID',
-	'openiddelete-text' => 'Klikkaamalla "{{int:openiddelete-button}}"-paniketta, voit poistaa OpenID:n $1 tunnuksestasi.
-Et voi enää kirjautua sisälle tällä OpenID:llä.',
+	'openiddelete-text' => 'Napsauttamalla {{int:openiddelete-button}}-paniketta, voit poistaa OpenID:n $1 tunnuksestasi.
+Et voi enää kirjautua sisään tällä OpenID:llä.',
 	'openiddelete-button' => 'Vahvista',
 	'openiddelete-sucess' => 'OpenID on onnistuneesti poistettu tilistäsi.',
 	'openiddelete-error' => 'Virhe poistettaessa OpenID:tä tilistäsi.',

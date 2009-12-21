@@ -197,6 +197,7 @@ $messages['br'] = array(
 	'refreshspecial-db-error' => "C'hwitet : fazi gant an diaz roadennoù",
 	'refreshspecial-no-page' => "N'eus ket a bajenn ispisial",
 	'refreshspecial-reconnected' => 'Adkevreet.',
+	'refreshspecial-page-result' => 'Kaout $1 {{PLURAL:$1|linenn |linenn}} e',
 	'right-refreshspecial' => 'Freskaat ar pajennoù arbennik',
 );
 

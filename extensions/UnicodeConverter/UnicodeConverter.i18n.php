@@ -223,10 +223,11 @@ $messages['eu'] = array(
  * @author Crt
  * @author Silvonen
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'unicodeconverter' => 'Unicode-muunnin',
-	'unicodeconverter-desc' => '[[Special:UnicodeConverter|Muuntaa annetun UTF-8-merkkijonon]] HTML-entiteetiksi, jota voi käyttää ISO 8859-1 -verkkosivulla.',
+	'unicodeconverter-desc' => 'Yksinkertainen esimerkki toimintosivulisäosasta. Muuntaa [[Special:UnicodeConverter|annetun UTF-8-merkkijonon]] HTML-entiteeteiksi, joita voi käyttää ISO 8859-1 -verkkosivulla.',
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Alkuperäinen teksti',
 	'unicodeconverter-newtext' => 'Muunnettu teksti',

@@ -1345,6 +1345,7 @@ $messages['br'] = array(
 	'mv_tool_search' => 'Klask',
 	'mv_tool_navigate' => 'Merdeiñ',
 	'mv_tool_export' => 'Ezporzhiañ',
+	'mv_tool_embed' => 'Enklozañ',
 	'mv_tool_mang_layers' => 'Merañ ar gwiskadoù',
 	'mv_update_layers' => 'Hizivaat ar gwiskadoù',
 	'mv_watch_clip' => "Sellet ouzh ar c'hlip video",

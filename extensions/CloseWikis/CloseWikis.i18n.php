@@ -219,6 +219,7 @@ $messages['br'] = array(
 	'closewikis-page-close-reason' => 'Abeg (enrollet) :',
 	'closewikis-page-close-submit' => 'Serriñ',
 	'closewikis-page-close-success' => 'Serret eo ar wiki',
+	'closewikis-page-reopen' => 'Addigeriñ ar wiki',
 	'closewikis-page-reopen-wiki' => 'Wiki :',
 	'closewikis-page-reopen-reason' => 'Abeg :',
 	'closewikis-page-reopen-submit' => 'Addigeriñ',

@@ -19,6 +19,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Mormegil
  * @author Pietrodn
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'ratedpages' => 'Title of [[Special:RatedPages]]',

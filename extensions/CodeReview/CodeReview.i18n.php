@@ -929,10 +929,41 @@ $messages['br'] = array(
 	'codereview-batch-submit' => 'Kas',
 	'codereview-subtitle' => 'Evit $1',
 	'codereview-reply-link' => 'respont',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|arnod a zo deuet a-benn|arnod a zo deuet a-benn}}',
+	'codereview-tests-failed2' => "$1 {{PLURAL:$2|arnod a zo deuet a-benn|arnod a zo deuet a-benn}},  $3 {{PLURAL:$4|arnod o deus c'hwitet|arnod o deus c'hwitet}}:",
+	'codereview-email-subj' => '[$1] [r$2] : evezhiadenn nevez bet ouzhpennet',
+	'codereview-email-body' => 'An implijer "$1" en deus embannet un evezhiadenn war r$3.
+
+URL klok : $2
+
+Evezhiadenn :
+
+$4',
+	'codereview-email-subj2' => "[$1] [r$2] : Heuliadenn ar c'hemm",
+	'codereview-email-body2' => 'An implijer "$1" en deus degaset kemmoù liammet gant r$2.
+
+URL klok : $3
+
+Diverañ eus ar c\'hemmoù :
+
+$4',
+	'codereview-email-subj3' => '[$1] [r$2] : an arnod emgefre en deus merzhet ur regresadur',
+	'codereview-email-body3' => "An arnod emgefre en deus merzhet ur regresadur en abeg d'ar c'hemmoù bet graet er stumm r$1.
+
+URL klok : $2
+
+Diverañ e-pad an arnod :
+
+$3",
+	'repoadmin-new-legend' => "Krouiñ un dastumlec'h nevez",
+	'repoadmin-new-label' => "Anv an dastumlec'h :",
 	'repoadmin-new-button' => 'Krouiñ',
+	'repoadmin-edit-path' => "Hent an dastumlec'h :",
 	'repoadmin-edit-bug' => 'Hent moned Bugzilla :',
 	'repoadmin-edit-view' => 'Hent moned ViewVC :',
 	'repoadmin-edit-button' => 'Mat eo',
+	'right-codereview-use' => 'Implijout Special:Code',
+	'right-codereview-post-comment' => "Ouzhpennañ evezhiadennoù d'an adweladennoù",
 	'specialpages-group-developer' => 'Ostilhoù an diorroer',
 );
 
@@ -5833,6 +5864,7 @@ $messages['no'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Dato',
 	'code-field-comments' => 'Notater',
+	'code-field-tests' => 'Tester',
 	'code-field-path' => 'Sti',
 	'code-field-text' => 'Notat',
 	'code-field-select' => 'Velg',
@@ -5856,6 +5888,7 @@ $messages['no'] = array(
 	'code-rev-comment-by' => 'Kommentar av $1',
 	'code-rev-comment-submit' => 'Send inn kommentar',
 	'code-rev-comment-preview' => 'Forhåndsvisning',
+	'code-rev-inline-preview' => 'Forhåndsvisning:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
 	'code-rev-purge-link' => 'Rense',
@@ -5880,6 +5913,9 @@ $messages['no'] = array(
 	'code-release-endrev' => 'Siste revisjon:',
 	'codereview-subtitle' => 'For $1',
 	'codereview-reply-link' => 'svar',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|test var vellykket|tester var vellykkede}}',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test var vellykket|tester var vellykkede}}, $3 {{PLURAL:$4|test|tester}} feilet',
+	'codereview-tests-aborted' => 'Testkjøring avbrutt.',
 	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar lagt inn',
 	'codereview-email-body' => 'Bruker $1 la inn en kommentar på r$3
 
@@ -7566,6 +7602,7 @@ $messages['te'] = array(
 	'code-statuschanges' => 'స్థితి మార్పులు',
 	'code-authors' => 'రచయితలు',
 	'code-status' => 'స్థితులు',
+	'code-author-name' => 'ఒక వాడుకరిపేరుని ఇవ్వండి:',
 	'code-field-author' => 'రచయిత',
 	'code-field-user' => 'వ్యాఖ్యాత',
 	'code-field-message' => 'కమిట్ వ్యాఖ్య',

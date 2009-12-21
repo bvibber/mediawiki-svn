@@ -170,6 +170,14 @@ $messages['nl'] = array(
 	'templateinfo-header' => 'De XML-definitie voor dit sjabloon luidt als volgt:',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'templateinfo-desc' => 'Støttar malar som definerer datastrukturen sin gjennom XML-markering.',
+	'templateinfo-header' => 'XML-definisjonen til denne malen er:',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

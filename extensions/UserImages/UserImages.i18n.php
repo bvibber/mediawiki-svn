@@ -252,6 +252,7 @@ $messages['fa'] = array(
  * @author Crt
  */
 $messages['fi'] = array(
+	'userimages-desc' => 'Luo käyttäjien tallentamista kuvista gallerioita koodilla <code><nowiki><userimage /></nowiki></code>.',
 	'userimages-caption' => 'Kuvat, jotka $1 on lähettänyt',
 	'userimages-noname' => 'Virheellinen käyttäjätunnus tai käyttäjätunnusta ei määritelty.',
 	'userimages-noimages' => '$1 ei ole lähettänyt kuvatiedostoja.',

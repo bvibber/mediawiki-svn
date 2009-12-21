@@ -1820,6 +1820,20 @@ $messages['ru'] = array(
 	'right-changeauthor' => 'изменение автора правки',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'changeauthor' => 'Көннөрүү ааптарын уларытыы',
+	'changeauthor-desc' => 'Көннөрүү аапатарын уларытары хааччыйар',
+	'changeauthor-title' => 'Көннөрүү ааптарын уларытыы',
+	'changeauthor-search-box' => 'Барыллары көрдөөһүн',
+	'changeauthor-pagename-or-revid' => 'Ыстатыйа аата эбэтэр көннөрүү нүөмэрэ:',
+	'changeauthor-pagenameform-go' => 'Бардыбыт',
+	'changeauthor-comment' => 'Комментарий:',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Ааптары|Ааптардары}} уларытыы',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -552,9 +552,12 @@ $messages['li'] = array(
 	'sitenotice-desc' => 'Stelt gebroekers in staat de siteberichten te sluite',
 );
 
-/** Lithuanian (Lietuvių) */
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
 $messages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
+	'sitenotice-desc' => 'Leisti naudotojams paslėpti pranešimą',
 );
 
 /** Literary Chinese (文言) */

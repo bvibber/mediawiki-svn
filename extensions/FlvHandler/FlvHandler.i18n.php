@@ -207,6 +207,14 @@ $messages['nl'] = array(
 	'flv-long-desc' => '(Flash Video, $1 × $2 pixels, bestandsgrootte: $3)',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'flvhandler_desc' => 'Tillat Flash Video-filer (.flv) å verta nytta som standardfiler (t.d. <nowiki>[[</nowiki>{{ns:file}}:Film.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => '(Flash Video, $1 × $2 pikslar, filstorleik: $3)',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */

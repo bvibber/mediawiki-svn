@@ -182,6 +182,8 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'invite-logpage' => 'Marilh ar pedadennoù',
+	'invite-logentry' => "pedet en deus $1 da implijout arc'hweladur <i>$2</i>.",
+	'invitations-feature-notallowed' => "Ne c'helloc'h ket dont tre evit implijout <i>$1</i>.",
 	'invitations-inviteform-title' => 'Pediñ un implijer da implijout $1',
 	'invitations-inviteform-username' => 'Implijer da bediñ',
 	'invitations-inviteform-submit' => 'Pediñ',

@@ -272,6 +272,9 @@ $messages['br'] = array(
 	'todo-invalid-item' => 'Elfenn diank pe direizh',
 	'todo-unrecognize-type' => "Seurt n'eo ket bet anavezet",
 	'todo-item-list' => "Hoc'h elfennoù",
+	'todo-no-item' => "N'eus elfenn ebet d'ober.",
+	'todo-add-queue' => "Ouzhpennañ d'al listenn gortoz...",
+	'todo-move-queue' => "Dilec'hiañ davet al listenn gortoz...",
 	'todo-list-for' => "Roll traoù d'ober gant $1",
 	'todo-list-change' => 'Kemmañ',
 	'todo-list-cancel' => 'Nullañ',
@@ -279,6 +282,7 @@ $messages['br'] = array(
 	'todo-issue-summary' => 'Diverrañ eus ar gudenn :',
 	'todo-form-details' => 'Munudoù :',
 	'todo-form-submit' => 'Kas ar reked',
+	'right-todo' => 'Kaout ur roll "traoù d\'ober".',
 );
 
 /** Bosnian (Bosanski)

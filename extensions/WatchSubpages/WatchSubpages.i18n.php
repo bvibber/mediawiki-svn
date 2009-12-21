@@ -282,6 +282,10 @@ $messages['fi'] = array(
 	'watchsubpages-addtitles' => 'Lisää sivut',
 	'watchsubpages-addtitlestowatchlist' => 'Lisää sivut tarkkailulistalle',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Lisää kaikki sivun alasivut]] tarkkailulistalle.',
+	'watchsubpages-form' => 'Valitse tarkkailulistallesi lisättävä sivut alta.
+Lisätäksesi sivun, valitse sen vieressä oleva laatikko ja napsauta ”Lisää sivut”.
+
+Kun lisäät tai poistat useita sivuja, vaihtonäppäimen painaminen antaa sinun valita peräkkäisiä laatikoita napsauttamalla vain ensimmäisen ja viimeisen laatikon.',
 );
 
 /** French (Français)
