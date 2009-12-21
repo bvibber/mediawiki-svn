@@ -135,6 +135,17 @@ fn: {
 			collapseTemplate( $visibleDiv );
 		});
 	},
+	
+	
+	/**
+	 * Gets templateInfo node from templateInfo extension, if it exists
+	 */
+	getTemplateInfo: function ( templateName ){
+		var templateInfo = '';
+		//API call here
+		return $( templateInfo );
+	},
+	
 	/**
 	 * Builds a template model from given wikitext representation, allowing object-oriented manipulation of the contents
 	 * of the template while preserving whitespace and formatting.
