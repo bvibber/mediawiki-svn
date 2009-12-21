@@ -1,5 +1,6 @@
-/*
- * remoteSearchDriver
+/**
+ * mw.RemoteSearchDriver
+ *
  * Provides a base interface for the Add-Media-Wizard
  * supporting remote searching of http archives for free images/audio/video assets
  *
