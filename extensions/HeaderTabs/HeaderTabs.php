@@ -138,36 +138,18 @@ function htReplaceFirstLevelHeaders( &$parser, &$text ) {
 function htAddHTMLHeader( &$wgOut ) {
 	global $htScriptPath, $htYUIBase, $htUseHistory;
 
-	$wgOut->addScript( '<script type="text/javascript" src="' . $htYUIBase . 'utilities/utilities.js"></script>' );
-	$wgOut->addScript( '<script type="text/javascript" src="' . $htYUIBase . 'tabview/tabview-min.js"></script>' );
-	$wgOut->addScript( '<script type="text/javascript" src="' . $htYUIBase . 'event/event-min.js"></script>' );
-
 	if ( $htUseHistory ) {
 		// TODO Rewrite it using latest History package so we can update $htYUIBase to latest version
-		$wgOut->addScript( '<script type="text/javascript" src="' . $htYUIBase . 'history/history-min.js"></script>' );
+		$wgOut->addScript( '<script type="text/javascript" src="'.$htScriptPath.'/skins/combined-history-min.js"></script>' );
+	} else {
+		$wgOut->addScript( '<script type="text/javascript" src="'.$htScriptPath.'/skins/combined-min.js"></script>' );
 	}
-
-	$wgOut->addLink( array(
-	       'rel'   => 'stylesheet',
-	       'type'  => 'text/css',
-	       'media' => 'screen, projection',
-	       'href'  => $htYUIBase . 'fonts/fonts-min.css'
-	) );
-
-	$wgOut->addScript( '<script type="text/javascript" src="' . $htScriptPath . '/skins/headertabs.js"></script>' );
-
-	$wgOut->addLink( array(
-	       'rel'   => 'stylesheet',
-	       'type'  => 'text/css',
-	       'media' => 'screen, projection',
-	       'href'  => $htYUIBase . 'tabview/assets/skins/sam/tabview.css'
-	) );
 
 	$wgOut->addLink( array(
 		'rel'   => 'stylesheet',
 		'type'  => 'text/css',
 		'media' => 'screen, projection',
-		'href'  => $htScriptPath . '/skins/headertabs.css'
+		'href'  => $htScriptPath . '/skins/combined-min.css'
 	) );
 
 	return true;
