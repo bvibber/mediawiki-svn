@@ -112,7 +112,6 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 	if( typeof HTMLVideoElement == 'object' &&  !$j.browser.safari  ){
 		dependencyRequest[0].push( 'nativeEmbed' )
 	}
-
 	
 
 	// Load the video libs:
