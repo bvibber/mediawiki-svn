@@ -43,7 +43,8 @@ mw.addOnloadHook( function() {
 	}
 	// Add the toc module
 	if ( $j.wikiEditor ) {
-		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'toc' );
+		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule',
+			{ 'toc' : { 'rtl' : ( $j( 'body' ).is( '.rtl' ) ? true : false ) } } );
 	}
 });
 /* JavaScript for WikiEditor Toolbar module */
