@@ -27,10 +27,10 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Roan Kattouw',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ApiSVGProxy',
 	'version' => '1.0',
-	'description' => "Proxies SVG files from a (possibly remote) file repository to the local domain",
+	'description' => 'Proxies SVG files from a (possibly remote) file repository to the local domain',
 );
 
 // Set up the new special page
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiSVGProxy'] = $dir . 'ApiSVGProxy.body.php';
 $wgAPIModules['svgproxy'] = 'ApiSVGProxy';

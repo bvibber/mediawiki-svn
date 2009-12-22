@@ -20,70 +20,68 @@ EOT;
 	exit( 1 );
 }
 
-class ApiSVGProxy extends ApiBase
-{
-	public function __construct($main, $action)
-	{
-		parent::__construct($main, $action);
+class ApiSVGProxy extends ApiBase {
+	public function __construct( $main, $action ) {
+		parent::__construct( $main, $action );
 	}
-	
-	public function execute()
-	{
+
+	public function execute() {
 		$params = $this->extractRequestParams();
-		$title = Title::newFromText($params['file']);
-		$file = wfFindFile($title);
-		
+		$title = Title::newFromText( $params['file'] );
+		$file = wfFindFile( $title );
+
 		// Verify that the file exists and is an SVG file
-		if(!$file)
+		if( !$file ) {
 			$this->dieUsage('The specified file does not exist',
 				'nosuchfile', 404);
-		if($file->getExtension() != 'svg' || $file->getMimeType() != 'image/svg+xml')
+		}
+		if( $file->getExtension() != 'svg' || $file->getMimeType() != 'image/svg+xml' ) {
 			$this->dieUsage('The specified file is not an SVG file',
 				'notsvg', 403);
-		
+		}
+
 		// Grab the file's contents
-		$contents = Http::get($file->getFullUrl());
-		if($contents === false)
+		$contents = Http::get( $file->getFullUrl() );
+		if( $contents === false ) {
 			$this->dieUsage('The specified file could not be fetched',
 				'fetchfailed', 500);
-		
+		}
+
 		// Output the file's contents raw
-		$this->getResult()->addValue(null, 'text', $contents);
-		$this->getResult()->addValue(null, 'mime', 'image/svg+xml');
+		$this->getResult()->addValue( null, 'text', $contents );
+		$this->getResult()->addValue( null, 'mime', 'image/svg+xml' );
 	}
-	
-	public function getCustomPrinter()
-	{
-		return new ApiFormatRaw($this->getMain(),
-			$this->getMain()->createPrinterByName('xml'));
+
+	public function getCustomPrinter() {
+		return new ApiFormatRaw(
+			$this->getMain(),
+			$this->getMain()->createPrinterByName( 'xml' )
+		);
 	}
-	
-	public function getAllowedParams()
-	{
+
+	public function getAllowedParams() {
 		return array(
 			'file' => null,
 		);
 	}
-	
-	public function getParamDescription()
-	{
+
+	public function getParamDescription() {
 		return array(
 			'file' => 'Name of the file to proxy (including File: prefix)',
 		);
 	}
-	
-	public function getDescription()
-	{
-		return array('Proxy an SVG file from a (possibly remote) repository.',
+
+	public function getDescription() {
+		return array(
+			'Proxy an SVG file from a (possibly remote) repository.',
 			'The file must have the .svg extension and the image/svg+xml MIME type.',
 			'If not, this module will return a 403 response. If the file doesn\'t exist,',
 			'a 404 response will be returned. If fetching the file failed, a 500 response',
 			'will be returned.',
 		);
 	}
-	
-	public function getVersion()
-	{
+
+	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
 }
