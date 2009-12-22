@@ -61,14 +61,15 @@ class VectorHooks {
 	 */
 	
 	/**
-	 * BeforePageDislay hook
+	 * BeforePageDisplay hook
 	 * Adds the modules to the edit form
 	 */
-	 public static function addModules( &$out, &$sk ) {
-		global $wgUser, $wgJsMimeType;
+	 public static function addModules() {
+		global $wgUser, $wgJsMimeType, $wgOut;
 		global $wgVectorModules, $wgUsabilityInitiativeResourceMode;
 		
 		// Modules
+		UsabilityInitiativeHooks::initialize();
 		$preferences = array();
 		foreach ( $wgVectorModules as $module => $enable ) {
 			if (
@@ -78,7 +79,6 @@ class VectorHooks {
 					&& $wgUser->getOption( self::$modules[$module]['preferences']['enable']['key'] )
 				)
 			) {
-				UsabilityInitiativeHooks::initialize();
 				// Messages
 				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {
 					wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
@@ -111,7 +111,7 @@ class VectorHooks {
 			);
 		}
 		// Preferences (maybe the UsabilityInitiative class could do most of this for us?)
-		$out->addScript(
+		$wgOut->addScript(
 			Xml::tags(
 				'script',
 				array( 'type' => $wgJsMimeType ),

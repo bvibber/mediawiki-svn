@@ -105,6 +105,8 @@ class UsabilityInitiativeHooks {
 		global $wgEnableJS2system, $wgEditToolbarRunTests;
 		global $wgStyleVersion;
 		
+		wfRunHooks( 'UsabilityInitiativeLoadModules' );
+		
 		if ( !self::$doOutput )
 			return true;
 		
