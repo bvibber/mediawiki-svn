@@ -12,18 +12,24 @@ class VectorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
+			array( 'src' => 'Modules/CollapsibleLeftNav/CollapsibleLeftNav.js', 'version' => 1 ),
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 5 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 3 ),
 			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 3 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 6 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 7 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 6 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 7 ),
 		),
 	);
 	static $modules = array(
+		'collapsibleleftnav' => array(
+			'variables' => array(
+				'wgVectorUseCollapsibleLeftNav'
+			)
+		),
 		'collapsibletabs' => array(
 			// Configuration stuff here
 		),

@@ -8,6 +8,6 @@ mw.addOnloadHook( function() {
 	// Add the toc module
 	if ( $j.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule',
-			{ 'toc' : { 'rtl' : ( $j( 'body' ).is( '.rtl' ) ? true : false ) } } );
+			{ 'toc' : { 'rtl' : ( $j( 'body' ).is( '.rtl' ) ) } } );
 	}
 });

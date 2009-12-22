@@ -20,6 +20,7 @@
 
 // Each module may be configured individually to be globally on/off or user preference based
 $wgVectorModules = array(
+	'collapsibleleftnav' => array( 'global' => true, 'user' => false ),
 	'collapsibletabs' => array( 'global' => true, 'user' => false ),
 	'editwarning' => array( 'global' => false, 'user' => true ),
 	'simplesearch' => array( 'global' => true, 'user' => false ),

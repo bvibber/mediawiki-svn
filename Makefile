@@ -3,6 +3,7 @@
 #
 
 CSS := \
+	css/collapsibleLeftNav.css\
 	css/suggestions.css\
 	css/wikiEditor.css\
 	css/wikiEditor.dialogs.css\
@@ -38,6 +39,7 @@ WIKIEDITOR_MODULES := \
 	WikiEditor/Modules/TemplateEditor/TemplateEditor.js
 
 VECTOR_MODULES := \
+	Vector/Modules/CollapsibleLeftNav/CollapsibleLeftNav.js\
 	Vector/Modules/CollapsibleTabs/CollapsibleTabs.js\
 	Vector/Modules/EditWarning/EditWarning.js\
 	Vector/Modules/SimpleSearch/SimpleSearch.js
