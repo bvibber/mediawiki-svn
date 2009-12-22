@@ -41,3 +41,10 @@ body.rtl .ui-dialog .ui-dialog-buttonpane button {
 .wikieditor-toolbar-table-preview-content * {
 	cursor: default;
 }
+body.rtl .ui-dialog .ui-dialog-titlebar-close {
+	left: 0.75em;
+	right: auto;
+}
+body.rtl .ui-dialog .ui-dialog-title {
+	float:right;
+}

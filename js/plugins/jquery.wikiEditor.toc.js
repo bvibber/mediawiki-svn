@@ -9,6 +9,8 @@ cfg: {
 	defaultWidth: '166px',
 	// Minimum width to allow resizing to before collapsing the table of contents - used when resizing and collapsing
 	minimumWidth: '70px',
+	// Boolean var indicating text direction
+	rtl: false, 
 },
 /**
  * API accessible functions
@@ -62,6 +64,7 @@ fn: {
 		if ( '$toc' in context.modules.toc ) {
 			return;
 		}
+		$.wikiEditor.modules.toc.cfg.rtl = config.rtl;
 		
 		var height = context.$ui.find( '.wikiEditor-ui-left' ).height();
 		context.modules.toc.$toc = $( '<div />' )
@@ -130,7 +133,12 @@ fn: {
 		var $this = $( this ), context = $this.data( 'context' ),
 			pT = $this.parent().position().top - 1;
 		$this.parent()
-			.css( { 'marginTop': '1px', 'position': 'absolute', 'left': 'auto', 'right': 0, 'top': pT } )
+			.css( { 
+				'marginTop' : '1px', 
+				'position' : 'absolute', 
+				'left' : $.wikiEditor.modules.toc.cfg.rtl ? 0 : 'auto', 
+				'right' : $.wikiEditor.modules.toc.cfg.rtl ? 'auto' : 0, 
+				'top' : pT } )
 			.fadeOut( 'fast', function() {
 				$( this ).hide()
 				.css( { 'marginTop': '0', 'width': '1px' } );
@@ -163,7 +171,12 @@ fn: {
 			.css( 'marginTop', '1px' )
 			.animate( { 'width' : openWidth }, 'fast', function() {
 				context.$content.trigger( 'mouseup' );
-				$( this ).css( { 'marginTop': '0', 'position': 'relative', 'right': 'auto', 'top': 'auto' } );
+				$( this ).css( {
+					'marginTop' : '0',
+					'position' : 'relative',
+					'right' : 'auto',
+					'left' : 'auto',
+					'top': 'auto' } );
 			 } )
 			.prev()
 			.animate( { 'marginRight': ( parseFloat( openWidth ) * -1 ) }, 'fast' )
@@ -314,7 +327,7 @@ fn: {
 					}
 				});
 			// Convert our east resize handle into a secondary west resize handle
-			var handle = $j( 'body' ).is( '.rtl' ) ? 'w' : 'e'
+			var handle = $.wikiEditor.modules.toc.cfg.rtl ? 'w' : 'e';
 			context.$ui.find( '.ui-resizable-' + handle )
 				.removeClass( 'ui-resizable-' + handle )
 				.addClass( 'ui-resizable-' + ( handle == 'w' ? 'e' : 'w' ) )
