@@ -49,5 +49,5 @@ $wgExtensionMessagesFiles['VectorEditWarning'] = dirname( __FILE__ ) . '/Modules
 $wgExtensionMessagesFiles['VectorSimpleSearch'] = dirname( __FILE__ ) . '/Modules/SimpleSearch/SimpleSearch.i18n.php';
 
 // Register Hooks
-$wgHooks['BeforePageDisplay'][] = 'VectorHooks::addModules';
+$wgHooks['UsabilityInitiativeLoadModules'][] = 'VectorHooks::addModules';
 $wgHooks['GetPreferences'][] = 'VectorHooks::addPreferences';
