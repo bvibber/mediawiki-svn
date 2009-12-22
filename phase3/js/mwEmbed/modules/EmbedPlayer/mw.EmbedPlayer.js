@@ -405,7 +405,7 @@ EmbedPlayerManager.prototype = {
 				case 'playlist':				
 					// Make sure we have the necessary playlist libs loaded:
 					mw.load( [
-						'mvPlayList'					
+						'mw.PlayList'					
 					], function() {
 					
 						// Create playlist player interface
@@ -424,8 +424,8 @@ EmbedPlayerManager.prototype = {
 							'</div>' 
 						);
 						
-						// Issue the checkPlayerSources call to the new playlist interface: 
-						$j( '#' + element_id ).get(0).showPlayer();		
+						// Issue the checkPlayerSources call to the new playlist interface: 				
+						$j( '#' + playlistPlayer.id ).get(0).showPlayer();		
 					} );
 				break;
 		   }
@@ -1186,7 +1186,7 @@ mw.EmbedPlayer.prototype = {
 	// Percent of the clip buffered:	
 	'bufferedPercent' : 0,	
 	
-	// Holds the timmer interval function
+	// Holds the timer interval function
 	'monitorTimerId' : null,
 	
 	/**
@@ -1352,8 +1352,9 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* Check player sources if we need to get media sources
-	*  form an external file that request is issued here 
+	* Check player for sources.  
+	* If we need to get media sources form an external file 
+	* 	that request is issued here 
 	*/
 	checkPlayerSources: function() {
 		mw.log( 'f:checkPlayerSources' );
