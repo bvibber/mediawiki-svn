@@ -27,7 +27,7 @@ mw.SeqRemoteSearchDriver.prototype = {
 			
 	
 		// Inherit the remoteSearchDriver properties:n
-		var tmpRemoteSearchDriver = new remoteSearchDriver( options );
+		var tmpRemoteSearchDriver = new mw.RemoteSearchDriver( options );
 		for ( var i in tmpRemoteSearchDriver ) {
 			if ( this[i] ) {
 				this['parent_' + i] = tmpRemoteSearchDriver[i];

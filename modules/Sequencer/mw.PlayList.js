@@ -179,7 +179,9 @@ mw.PlayList.prototype = {
 						}
 		this.cur_clip.embed.showShare( embed_code );
 	},
-	
+	isTimedTextSupported: function(){
+		return false;
+	},
 	checkForTextSource: function() {
 		return false;
 	},
@@ -1296,7 +1298,7 @@ PlMvEmbed.prototype = {
 				ve.setAttribute( i, vid_init[i] );
 			}
 		}
-		var videoInterface = new embedPlayer( ve );
+		var videoInterface = new mw.EmbedPlayer( ve );
 		// inherit the videoInterface
 		for ( method in videoInterface ) {
 			if ( method != 'style' ) {
@@ -2008,8 +2010,8 @@ var smilPlaylist = {
 		if ( clipObj ) {
 			// set up embed:						
 			clipObj.setUpEmbedObj();
-			// inhreit embedObject (only called on "new media" 
-			clipObj.embed.sourcesReadyInit();
+			// Check for player sources:  
+			clipObj.embed.checkPlayerSources();
 			// add clip to track: 
 			this.addCliptoTrack( clipObj , order );
 			

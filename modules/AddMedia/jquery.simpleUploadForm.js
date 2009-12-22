@@ -138,24 +138,26 @@ var default_form_options = {
 
 			// Set up the binding per the config
 			if ( options.enable_fogg ) {
-				$j( "#wpUploadFile" ).firefogg( {
-					// An api url (we won't submit directly to action of the form)
-					'api_url' : options.api_target,
-					
-					// If we should do a form rewrite
-					'form_rewrite': true,
-										
-					// MediaWiki API supports chunk uploads: 
-					'enable_chunks' : true,
-										
-					'edit_form_selector' : '#suf-upload',
-					'new_source_cb' : function( orgFilename, oggName ) {
-						$j( "#wpDestFile" ).val( oggName ).doDestCheck( {
-							warn_target: "#wpDestFile-warning"
-						} );
-					},
-					'done_upload_cb' : options.ondone_callback
-				} );
+				mw.load( 'AddMedia.firefogg', function(){
+					$j( "#wpUploadFile" ).firefogg( {
+						// An api url (we won't submit directly to action of the form)
+						'api_url' : options.api_target,
+						
+						// If we should do a form rewrite
+						'form_rewrite': true,
+											
+						// MediaWiki API supports chunk uploads: 
+						'enable_chunks' : true,
+											
+						'edit_form_selector' : '#suf-upload',
+						'new_source_cb' : function( orgFilename, oggName ) {
+							$j( "#wpDestFile" ).val( oggName ).doDestCheck( {
+								warn_target: "#wpDestFile-warning"
+							} );
+						},
+						'done_upload_cb' : options.ondone_callback
+					} );
+				});
 			}
 		} );
 	}

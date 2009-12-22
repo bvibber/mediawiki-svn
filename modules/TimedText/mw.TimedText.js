@@ -416,8 +416,7 @@ mw.addMessages( {
 		 * get the add text menu item: 
 		 */		
 		getLiAddText: function(){
-			var _this = this;
-			return '';
+			var _this = this;			
 			return _this.getLi( gM( 'mwe-add-timed-text'), 'script', function(){
 				_this.showTimedTextEditUI( 'add' );
 			} )

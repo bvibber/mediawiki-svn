@@ -103,7 +103,6 @@ var htmlEmbed = {
 		var ct = new Date();
 		this.currentTime = ( ( ct.getTime() - this.clockStartTime ) / 1000 ) + this.pauseTime;
 		var ct = new Date();
-		// mw.log('mvPlayList:monitor trueTime: '+ this.currentTime);
 		
 		// Once currentTime is updated call parent_monitor
 		this.parent_monitor();

@@ -13,8 +13,7 @@ mw.addModuleLoader( 'Sequencer', function( callback ){
 	mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/mv_sequence.css' );
 	// Make sure we have the required mwEmbed libs:			
 	mw.load( [
-		[	// Load the EmbedPlayer Module ( includes lots of dependent classes )
-			// ( we can't predictavly script-load it )   
+		[	// Load the EmbedPlayer Module ( includes lots of dependent classes )   
 			'EmbedPlayer'
 		],		
 		[										

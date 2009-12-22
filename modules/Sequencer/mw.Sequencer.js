@@ -79,7 +79,9 @@ var sequencerDefaultValues = {
 
 	instance_name:'mvSeq', // for now only one instance by name mvSeq is allowed
 
-	target_sequence_container:null,// text value (so that its a valid property)
+	// Target sequence container
+	target_sequence_container:null,
+	
 	target_form_text: null,
 
 	// what is our save mode:
@@ -176,10 +178,10 @@ mw.Sequencer.prototype = {
 			'js':function( this_seq ) {
 				// Load the search interface with sequence tool targets
 				mw.load( [
-					'remoteSearchDriver',
-					'seqRemoteSearchDriver'
+					'mw.RemoteSearchDriver',
+					'mw.SeqRemoteSearchDriver'
 				], function() {
-					 this_seq.mySearch = new seqRemoteSearchDriver( this_seq );
+					 this_seq.mySearch = new mw.SeqRemoteSearchDriver( this_seq );
 					 this_seq.mySearch.createUI();
 				} );
 			}
@@ -216,7 +218,7 @@ mw.Sequencer.prototype = {
 	key_ctrl_down:false,
 	inputFocus:false,
 
-	init:function( iObj ) {
+	init: function( iObj ) {
 		// set up pointer to _this for current scope:
 		var _this = this;
 		// set the default values:
@@ -485,16 +487,21 @@ mw.Sequencer.prototype = {
 			}
 		}
 	},
-	// once playlist is ready continue
+	// Once playlist is ready continue
 	checkReadyPlObj: function() {
+		var _this = this;
 		// set up pointers from sequencer to pl obj
 		this.plObj = $j( '#' + this.plObj_id ).get( 0 );
+		
 		// & from seq obj to sequencer
 		this.plObj.pSeq = this;
 
-		if ( this.plObj )
-			if ( ! this.plObj.loading )
+		if ( this.plObj ){
+			if ( ! this.plObj.loading ){
 				this.plReadyInit();
+				return ;
+			}
+		}
 
 		// else keep checking for the playlist to be ready
 		if ( this.plObj.loading ) {
@@ -502,7 +509,9 @@ mw.Sequencer.prototype = {
 				mw.log( 'error playlist never ready' );
 			} else {
 				this.plReadyTimeout++;
-				setTimeout( this.instance_name + '.checkReadyPlObj()', 25 );
+				setTimeout( function(){
+					_this.checkReadyPlObj();
+				}, 25 );
 			}
 		}
 	},
@@ -513,10 +522,11 @@ mw.Sequencer.prototype = {
 		var _this = this;
 		mw.log( 'plReadyInit' );
 		mw.log( this.plObj );
-		// give the playlist a pointer to its parent seq:
+		
+		// Give the playlist a pointer to its parent seq:
 		this.plObj['seqObj'] = this;
 
-		// update playlist (if its empty right now)
+		// Update playlist (if its empty right now)
 		if ( this.plObj.getClipCount() == 0 ) {
 			$j( '#' + this.plObj_id ).html( 'empty playlist' );
 		}
@@ -800,7 +810,7 @@ mw.Sequencer.prototype = {
 		mw.loading_spinner( '#transitions_ic' );
 		mw.load( [
 			'$j.fn.ColorPicker',
-			'mvTimedEffectsEdit'
+			'mw.TimedEffectsEdit'
 		], function() {
 			// For some reason we lose scope in the options passed to mvTimedEffectsEdit
 			// so we re refrence the sequence here: 
@@ -823,7 +833,7 @@ mw.Sequencer.prototype = {
 		
 		// Load the clipEdit library if not already loaded:
 		mw.load( [
-			'mvClipEdit'
+			'mw.ClipEdit'
 		], function() {
 			// Zero out the current editor: 			
 			_this.myClipEditor = { };
@@ -1608,13 +1618,13 @@ mw.Sequencer.prototype = {
 	}
 
 }
-/* extension to mvPlayList to support sequencer features properties */
-var mvSeqPlayList = function( element ) {
+/* extension to mw.PlayList to support sequencer features properties */
+mw.SeqPlayList = function( element ) {
 	return this.init( element );
 }
-mvSeqPlayList.prototype = {
+mw.SeqPlayList.prototype = {
 	init:function( element ) {
-		var myPlObj = new mvPlayList( element );
+		var myPlObj = new mw.PlayList( element );
 
 		// inherit mvClip
 		for ( var method in myPlObj ) {

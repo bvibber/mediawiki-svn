@@ -459,8 +459,6 @@ ui-widget-overlay{
 
 .ui-dialog .ui-dialog-buttonpane button { float: left !important; }
 
-.ui-widget-content a { text-decoration: underline; }
-
 
 .vol_container{
 	z-index:99;
