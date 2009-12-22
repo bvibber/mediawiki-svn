@@ -143,10 +143,10 @@ class SpecialFundraiserStatistics extends SpecialPage {
 									'td',
 									array( 'colspan' => 6 ),
 									Xml::element( 'h3', array( 'style' => 'float:right;color:gray;' ), $day[0] ) .
-									Xml::element(
+									Xml::tags(
 										'h3',
 										array( 'style' => 'float:left;color:black;' ),
-										wfMsg( 'fundraiserstats-day', $i + 1, $fundraiser['title'] )
+										wfMsgExt( 'fundraiserstats-day', array( 'parseinline' ), $i + 1, $fundraiser['title'] )
 									) .
 									Xml::element( 'div', array( 'style' => 'clear:both;' ), '', false )
 								)
