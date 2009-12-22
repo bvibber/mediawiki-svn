@@ -18,6 +18,7 @@ class UsabilityInitiativeHooks {
 	private static $styleFiles = array(
 		'base_sets' => array(
 			'raw' => array(
+				array( 'src' => 'css/collapsibleLeftNav.css', 'version' => 1 ),
 				array( 'src' => 'css/suggestions.css', 'version' => 6 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 7 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 8 ),
@@ -27,11 +28,11 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 41 ),
+				array( 'src' => 'css/combined.css', 'version' => 42 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 41 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 42 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)

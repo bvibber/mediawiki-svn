@@ -15,15 +15,15 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 2 ),
 			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 3 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 2 ),
-			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 3 ),
+			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 4 ),
 			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 16 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 1 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 16 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 17 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 16 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 17 ),
 		),
 	);
 	static $messages = array(
