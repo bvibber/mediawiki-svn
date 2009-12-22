@@ -101,13 +101,13 @@ Either remove the dependance attribute, or restore [[$2]]',
 Either remove the dependance attribute, or create the poll with id=$3 at the page $2 and save it.
 To save a poll, submit it while not answering to any proposal questions.',
 	'qp_error_vote_dependance_poll' => 'Please vote for poll $1 first.',
-	'qp_error_too_many_spans' => 'Too many category classes for the subcategories defined',
+	'qp_error_too_many_spans' => 'Too many category groups for the total number of subcategories defined',
 	'qp_error_unanswered_span' => 'Unanswered subcategory',
 	'qp_error_non_unique_choice' => 'This question requires unique proposal answer',
 	'qp_error_category_name_empty' => 'Category name is empty',
 	'qp_error_proposal_text_empty' => 'Proposal text is empty',
 	'qp_error_too_few_categories' => 'At least two categories must be defined',
-	'qp_error_too_few_spans' => 'Every category class requires at least two possible answers defined',
+	'qp_error_too_few_spans' => 'Every category group must contain at least two subcategories',
 	'qp_error_no_answer' => 'Unanswered proposal',
 	'qp_error_unique' => 'Question of type unique() has more proposals than possible answers defined: impossible to complete'
 );
@@ -121,14 +121,14 @@ To save a poll, submit it while not answering to any proposal questions.',
  */
 $messages['qqq'] = array(
 	'pollresults' => 'Special page name in [[Special:SpecialPages]]',
-	'qp_desc' => '{{desc}}',
+	'qp_desc' => '{{desc}} Important notice: Categories can be grouped into category groups, which are internally referred as "spans". Such grouped categories become "subcategories". While the extension evolved, these groups were consequentially called as "spans", "metacategories", "category groups". Please read the on-line documentation carefully before translating.',
 	'qp_result_error' => '{{Identical|Syntax error}}',
 	'qp_vote_button' => '{{Identical|Vote}}',
 	'qp_source_link' => '"Source" is the link text for a link to the page where the poll is defined.
 {{Identical|Source}}',
 	'qp_stats_link' => '{{Identical|Statistics}}',
 	'qp_users_link' => '{{Identical|User}}',
-	'qp_voice_link_inv' => "What '?' means?",
+	'qp_voice_link_inv' => "At the moment of query generation there was no user answer for the selected poll yet. Question mark encourages wiki administrator to re-submit the query again.",
 	'qp_user_polls_link' => 'Parameters:
 * $1 is the number of polls participated in.
 * $2 is the name of the user this message refers to (optional - use for GENDER)',
@@ -156,6 +156,8 @@ $messages['qqq'] = array(
 !$3||
 |is the poll ID of the poll, which this erroneous poll depends on.
 |}',
+	'qp_error_too_many_spans' => 'There cannot be more category groups defined than the total count of subcategories.',
+	'qp_error_too_few_spans' => 'Every category group should include at least two subcategories',
 );
 
 /** Afrikaans (Afrikaans)
