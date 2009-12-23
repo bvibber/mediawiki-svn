@@ -113,7 +113,7 @@ mw.ready( function() {
                   'title' : title,
                   'text' : srt,
                   'token': editToken
-                };
+              };
               mw.getJSON( request, function( dialog ) {
                   return function( result ) {
                     document.location.href = wgArticlePath.replace( '/$1', '?title=' + title + '&action=edit' );

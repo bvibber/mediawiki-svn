@@ -131,7 +131,7 @@ function doJsonMerge( $json_txt ) {
 				if ( $messages['en'][$k] != $v ) {
 					$doReplaceFlag = true;
 					if( $showInfo )
-						print "'$k'does not match:\n" . $messages['en'][$k] . "\n!=\n" . $v . "\n";
+						print "'$k' does not match:\n" . $messages['en'][$k] . "\n!=\n" . $v . "\n In: {$curFileName} \n";
 				}
 				// add the actual value: (replace new lines (not compatible json)
 				// $jsMsgAry[$k] = str_replace("\n", '\\n', $messages['en'][$k]);

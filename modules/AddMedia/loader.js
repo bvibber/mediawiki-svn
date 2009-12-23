@@ -29,15 +29,9 @@ mw.addClassFilePaths( {
 * Note: We should move relevant parts of these style sheets to the addMedia/css folder 
 * phase 2: We should separate out sheet sets per sub-module:
 */ 
-var addMediaSheets = [
-	mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css', 
-	mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/styles.css' 	
-]
 
 //Setup the addMediaWizard module
 mw.addModuleLoader( 'AddMedia.addMediaWizard', function( callback ){
-	// Get addMedia style sheets
-	mw.getStyleSheet( addMediaSheets );
 	// Load all the required libs:
 	mw.load( [
 		[	'mw.RemoteSearchDriver',

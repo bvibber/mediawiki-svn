@@ -528,6 +528,9 @@ ui-widget-overlay{
 	margin:0 0 6px 35px;
 	padding:0;
 }
+.related_vids a{
+	color:#FAFAFA;
+}
 
 .related_vids li div {
 	float:right;

@@ -540,7 +540,7 @@ mw.PlayList.prototype = {
 					_this.doEditor();
 					return false;
     			} ).appendTo( '#ptitle_' + this.id );
-    		$j( '.editBtn_' + this.id ).btnBind();
+    		$j( '.editBtn_' + this.id ).buttonHover();
 		}
 		// render out the dividers on the timeline: 
 		this.colorPlayHead();

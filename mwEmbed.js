@@ -57,7 +57,9 @@ var mwEnabledModuleList =  [
 */  
 var mwDefaultConf = {
 
+
 	'enabledModules' : mwEnabledModuleList,
+
 
 	// Default skin name
 	'skinName' : 'mvpcf',
@@ -197,8 +199,8 @@ var mwDefaultConf = {
 			//debugger;
 			
 			setupUserConfigFlag = true;
-			if( callback )
-				callback();
+			if( callback ) 
+				callback();				
 		});				
 	}
 
@@ -954,8 +956,7 @@ var mwDefaultConf = {
 			}
 			
 			// Try loading as a "file"?
-			if( loadRequest ) { 
-				mw.log("Loading as \"file\" : " + loadRequest );
+			if( loadRequest ) { 				
 				if( loadRequest.indexOf( '.js' ) == -1 && !mw.getScriptLoaderPath() ){
 					mw.log( 'Error: are you sure ' + loadRequest + ' is a file ( is it missing a class path? ) ' );
 				}
@@ -982,12 +983,11 @@ var mwDefaultConf = {
 					
 			// Check if we can load via the "script-loader" ( mwEmbed was included via scriptLoader ) 
 			if( mw.getScriptLoaderPath() ){				
-				loadStates = this.getGroupLoadState( loadSet );				
-				//if loadStates is empty issue the callback direclty:
+				loadStates = this.getGroupLoadState( loadSet );
 				if( mw.isEmpty( loadStates ) ){
+					mw.log( 'loadMany:all classes already loaded');
 					callback();
-					return ;
-				}
+				}				
 			}else{									
 				// Check if its a dependency set ( nested objects ) 
 				if( typeof loadSet [ 0 ] == 'object' ){				
@@ -1019,7 +1019,7 @@ var mwDefaultConf = {
 					}					
 					// Run the parent scope callback for "loadMany" 
 					if( loadDone ){						
-						callback( );
+						callback( loadName );
 					}
 				} );
 			}
@@ -1030,7 +1030,7 @@ var mwDefaultConf = {
 		* Groups the loadSet into a single sequential array
 		* 
 		* Groups the scriptRequest where possible: 
-		* 	Modules include "loader code" so they are separated
+		* 	Modules include "loader code" so they are seperated
 		* 	into pre-condition code to be run for subsequent requests
 		*
 		* @param {Object} loadSet Loadset to return grouped
@@ -1040,7 +1040,6 @@ var mwDefaultConf = {
 		getGroupLoadState: function( loadSet ){
 			var groupedLoadSet = [];			
 			var loadStates = { };			
-			
 			// Merge load set into new groupedLoadSet
 			if( typeof loadSet[0] == 'object' ){
 				for( var i in loadSet ){
@@ -1053,15 +1052,22 @@ var mwDefaultConf = {
 				groupedLoadSet = loadSet;
 			}
 			
-			// Build the loadStates Set as a single string: 
+			// Setup grouped loadStates Set:
 			var groupClassKey = ''; 
 			var coma = '';			
 			for( var i=0; i < groupedLoadSet.length; i++ ) {										
 				var loadName = groupedLoadSet[ i ];	
-				//Check if its a classPath key, if so make sure it does not exist (before adding it to the grouped request) 
-				if( this.classPaths[ loadName ] && ! mw.isset( loadName ) ) {
-					groupClassKey += coma + loadName
-					coma = ',';
+				if( this.classPaths[ loadName ]  ) {
+					// Only add to group request if not already set: 
+					if ( !mw.isset( loadName ) ){
+						groupClassKey += coma + loadName
+						coma = ',';
+					}
+					// Issue a request for any dependent style sheets ( won't load if already present )
+					if( typeof this.stylePaths[ loadName ] != 'undefined' ){
+						mw.getStyleSheet( mw.getMwEmbedPath() + this.stylePaths[ loadName ] );
+					}
+					
 				}else if( this.moduleLoaders[ loadName ] ) {
 					// Module loaders break up grouped script requests ( add the current groupClassKey )
 					if( groupClassKey != '' ){
@@ -1073,13 +1079,12 @@ var mwDefaultConf = {
 				}					
 			}				
 			
-			// Add groupClassKey is empty return false 
+			// Add groupClassKey if set: 
 			if( groupClassKey != '' ){
-				//return the loadStates 
-				loadStates [ groupClassKey ] = 0;				
-			}					
+				loadStates [ groupClassKey ] = 0;
+			}
 			
-			return loadStates;						
+			return loadStates;
 		},
 		
 				
@@ -1303,7 +1308,7 @@ var mwDefaultConf = {
 		if( !data['format'] ) 
 			data['format'] = 'json';
 		
-		mw.log("run getJSON: " + url + ' data: ' +  data['action'] );
+		mw.log("run getJSON: " + url + ' data: ' +  data['action'] + ' apiPost: ' +mw.getConfig( 'apiPostActions' ) );
 		
 		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ){
 			if( ! mw.isLocalDomain( url ) ){
@@ -1359,7 +1364,7 @@ var mwDefaultConf = {
 	/**
 	 * Simple api helper to grab an edit token
 	 *
-	 * @param title The wiki page title you want to edit
+	 * @param {String} [title] The wiki page title you want to edit
 	 * @param {String} [api_url] The target API URL
 	 * @param {callback} callback Function to pass the token to
 	 */
@@ -1372,9 +1377,15 @@ var mwDefaultConf = {
 		mw.log( 'mw:getToken' );
 		
 		// If no title is provided get a token for the user page: 
-		if ( typeof title != 'string' && wgUserName ) {
-			title = 'User:' + wgUserName;
-		}		
+		if ( typeof title != 'string' ) {
+			if( wgUserName ){
+				title = 'User:' + wgUserName;
+			}else{
+				//Try maintalk page:
+				title = 'Talk:Main_Page';
+			}
+		}
+				
 		
 		var request = {			
 			'prop': 'info',
@@ -1397,6 +1408,65 @@ var mwDefaultConf = {
 	/**
 	* Utility Functions
 	*/		
+	
+	/**
+	* addLoaderDialog
+	*  small helper for putting a loading dialog box on top of everything
+	* (helps block for request that
+	*
+	* @param msg text text of the loader msg
+	*/
+	mw.addLoaderDialog = function( msg_txt ) {
+		mw.addDialog( msg_txt, msg_txt + '<br>' + mw.loading_spinner() );
+	}
+		
+	/**
+	* add a dialog window:
+	*/
+	mw.addDialog = function ( title, msg_txt, btn ) {
+		$j( '#mwe_tmp_loader' ).remove();
+		// append the style free loader ontop: 
+		$j( 'body' ).append( '<div id="mwe_tmp_loader" style="display:none" title="' + title + '" >' +
+				msg_txt +
+		'</div>' );
+		// special btn == ok gives empty give a single "oky" -> "close"
+		if ( btn == 'ok' ) {
+			btn[ gM( 'mwe-ok' ) ] = function() {
+				$j( '#mwe_tmp_loader' ).close();
+			}
+		}
+		// turn the loader into a real dialog loader: 
+		mw.load( [
+			[
+				'$j.ui'
+			],
+			[
+				'$j.ui.dialog'
+			]
+		], function() {
+			$j( '#mwe_tmp_loader' ).dialog( {
+				bgiframe: true,
+				draggable: false,
+				resizable: false,
+				modal: true,
+				width:400,
+				buttons: btn
+			} );
+		} );
+	}
+	mw.closeLoaderDialog = function() {
+		mw.load( [
+			[
+				'$j.ui'
+			],
+			[
+				'$j.ui.dialog'
+			]
+		], function() {
+			$j( '#mwe_tmp_loader' ).dialog( 'destroy' ).remove();
+		} );
+	}
+	
 	
 	/**
 	* Similar to php isset function checks if the variable exists.
@@ -1544,7 +1614,7 @@ var mwDefaultConf = {
 	* @param {Function} callback Function to run once DOM and jQuery are ready
 	*/
 	mw.ready = function( callback ){		
-		mw.log('addOnloadHook:: ' );		
+		mw.log('addOnloadHook:: ' );			
 		if( mwReadyFlag === false ){
 		
 			// Add the callbcak to the onLoad function stack
@@ -1649,7 +1719,7 @@ var mwDefaultConf = {
 	*	{String} url Url of the style sheet to be loaded
 	*/
 	mw.getStyleSheet = function( url ) {
-		
+		// Load a set of style sheets:
 		if ( typeof url == 'object' ) {
 			for ( var i in url ) {
 				mw.getStyleSheet( url[i] );
@@ -1664,9 +1734,19 @@ var mwDefaultConf = {
 		
 		// Check if style sheet is already included:
 		var foundSheet = false; 
-		$j( 'link' ).each( function(){		
-			if( $j( this) .attr( 'href' ) == url )				 
-				foundSheet = true;
+		$j( 'link' ).each( function(){
+			var currentSheet = $j( this) .attr( 'href' );
+			var sheetParts = currentSheet.split('?');		
+			var urlParts = url.split('?');
+			//if the base url's match check the pamaters:
+			if( sheetParts[0] == urlParts[0] && sheetParts[1]){
+				mw.log(" sheet compare: " + sheetParts[1].split( '&' ).sort().join('') + ' != ' + urlParts[1].split('&').sort().join(''));
+				//Check if url params match ( sort to do string compare )						
+				if( sheetParts[1].split( '&' ).sort().join('') ==
+						urlParts[1].split('&').sort().join('') ){	 
+					foundSheet = true;
+				}
+			}
 		} );					
 		if( foundSheet ){
 			mw.log( 'sheet: ' + url + ' already included ' );
@@ -1874,12 +1954,13 @@ var mwDefaultConf = {
 		
 		// If we're in debug mode, get a fresh unique request key and pass on "debug" param
 		if ( mw.parseUri( mwEmbedSrc ).queryKey['debug'] == 'true' ) {		
-			mw.setConfig( 'debug', true );
+
+			mw.setConfig( 'debug', true );			
 			var d = new Date();
 			req_param += 'urid=' + d.getTime() + '&debug=true';			
-					
-		} else if ( urid ) { // Just pass on the existing urid:			
-					
+				
+		} else if ( urid ) {
+			 // Just pass on the existing urid:							
 			req_param += 'urid=' + urid;			
 		} else {
 			// Otherwise, Use the mwEmbed version
@@ -2066,7 +2147,7 @@ var mwDefaultConf = {
 			return ;			  
 		mwSetupFlag = true;
 		
-		mw.log( 'mw:setupMwEmbed' );			
+		mw.log( 'mw:setupMwEmbed :: ' + mw.getMwEmbedSrc() );			
 		
 		// Make sure jQuery is loaded 
 		mw.load( 'window.jQuery', function(){				
@@ -2076,17 +2157,18 @@ var mwDefaultConf = {
 			}
 			
 			mw.log(" loadded all ~loaders~ " );
-				
+			
+			mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
+			
 			// Only load jquery ui theme sheet if ui-widget does not exist. 
-			if( ! mw.styleRuleExists( 'ui-widget' ) ){
-				mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
+			if( ! mw.styleRuleExists( 'ui-widget' ) ){				
+				mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
 			}
 			
 			mw.setConfig( 'skin_img_path', mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/images/' ); 
 			mw.setConfig( 'default_video_thumb', mw.getConfig( 'skin_img_path' ) + 'vid_default_thumb.jpg' );
 
-			// Make Core skin/style sheets are always available:
-			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
+			// Make Core skin/style sheets are always available:			
 			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/styles.css' );
 
 			// Set up AJAX to not send dynamic URLs for loading scripts
@@ -2398,8 +2480,37 @@ function mwDojQueryBindings() {
 				className + '"><span class="ui-icon ui-icon-' + iconId + '" ></span>' +
 				'<span class="btnText">' + msg + '</span></a>';
 		}
+		// Shortcut to jQuery button ( should replace all btnHtml with button )
+		var mw_default_button_options = {
+			// The class name for the button link
+			'class':'',
+			
+			// The style properties for the button link
+			'style': { },
+			
+			// The text of the button link
+			'text': '',
+			
+			// The icon id that precceeds the button link:
+			'icon_id': 'carat-1-n' 
+		}
+		$.button = function( options ) {
+			var options = $j.extend( mw_default_button_options, options);
+			return $j('<a>')
+					.css( options.css )
+					.attr( 'href', '#' )
+					.addClass( 'ui-state-default ui-corner-all ui-icon_link' )
+					.addClass( options['class'] )
+					.append(
+						$j('<span>').addClass( 'ui-icon ui-icon-' + options.icon_id ),
+						$j('<span>').addClass( 'btnText' )
+							.text( options.text )
+					)
+				
+		}
+		
 		// Shortcut to bind hover state
-		$.fn.btnBind = function() {
+		$.fn.buttonHover = function() {
 			$j( this ).hover(
 				function() {
 					$j( this ).addClass( 'ui-state-hover' );
@@ -2429,65 +2540,7 @@ function mwDojQueryBindings() {
 				'right':'0px',
 				'bottom':'0px'
 			} );
-		}
-		
-		/**
-		* addLoaderDialog
-		*  small helper for putting a loading dialog box on top of everything
-		* (helps block for request that
-		*
-		* @param msg text text of the loader msg
-		*/
-		$.addLoaderDialog = function( msg_txt ) {
-			$.addDialog( msg_txt, msg_txt + '<br>' + mw.loading_spinner() );
-		}
-		
-		/**
-		* shortcut jquery binding to add a dialog window:
-		*/
-		$.addDialog = function ( title, msg_txt, btn ) {
-			$( '#mwe_tmp_loader' ).remove();
-			// append the style free loader ontop: 
-			$( 'body' ).append( '<div id="mwe_tmp_loader" style="display:none" title="' + title + '" >' +
-					msg_txt +
-			'</div>' );
-			// special btn == ok gives empty give a single "oky" -> "close"
-			if ( btn == 'ok' ) {
-				btn[ gM( 'mwe-ok' ) ] = function() {
-					$j( '#mwe_tmp_loader' ).close();
-				}
-			}
-			// turn the loader into a real dialog loader: 
-			mw.load( [
-				[
-					'$j.ui'
-				],
-				[
-					'$j.ui.dialog'
-				]
-			], function() {
-				$( '#mwe_tmp_loader' ).dialog( {
-					bgiframe: true,
-					draggable: false,
-					resizable: false,
-					modal: true,
-					width:400,
-					buttons: btn
-				} );
-			} );
-		}
-		$.closeLoaderDialog = function() {
-			mw.load( [
-				[
-					'$j.ui'
-				],
-				[
-					'$j.ui.dialog'
-				]
-			], function() {
-				$j( '#mwe_tmp_loader' ).dialog( 'destroy' ).remove();
-			} );
-		}
+		}			
 	
 		$.mwProxy = function( apiConf ) {
 			mw.load( ['mw.apiProxy'],

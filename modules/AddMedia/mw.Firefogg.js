@@ -455,7 +455,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 		}
 
 		// Bind the preview button
-		$j( '#upProgressDialog .fogg_preview' ).btnBind().click( function() {
+		$j( '#upProgressDialog .fogg_preview' ).buttonHover().click( function() {
 			return _this.onPreviewClick( this );
 		});
 	},

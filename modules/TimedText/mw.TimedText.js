@@ -31,7 +31,7 @@ mw.addMessages( {
 	
 	"mwe-loading-text" : "Loading text ...",
 	
-	"mwe-key-language": "($1) $2",
+	"mwe-key-language": "$1, $2",
 	
 	"mwe-textcat-cc" : "Captions",
     "mwe-textcat-sub" : "Subtitles",
@@ -175,7 +175,9 @@ mw.addMessages( {
 		setupTextSources: function( callback ){
 			var _this = this;
 			if( this.textSourceSetupFlag ){
-				callback();
+				if( callback ){
+					callback();
+				}
 				return ;		
 			}
 			// Load textSources
@@ -196,10 +198,10 @@ mw.addMessages( {
 		
 		/**
 		* Binds the timed text menu 
-		* 	and updates its content from "getMenu"
+		* 	and updates its content from "getMainMenu"
 		*
 		* @param {Object} target to display the menu
-		* @param {Bollean} autoShow If the menu should be displayed 
+		* @param {Boolean} autoShow If the menu should be displayed 
 		*/
 		bindMenu: function( target , autoShow){
 			var _this = this;
@@ -213,22 +215,14 @@ mw.addMessages( {
 			_this.setupTextSources( function(){
 				// NOTE: Button target should be an option or config						
 				$menuButton.unbind().menu( {
-					'content'	: _this.getMenu(),
+					'content'	: _this.getMainMenu(),
 					'crumbDefaultText' : ' ',
 					'targetMenuContainer' : _this.menuTarget,
 					'autoShow' : autoShow,
 					'backLinkText' : gM( 'mwe-back-btn' )							
 				} );
 			});								 
-		},			
-		
-		/**
-		* Refresh the menu
-		*/
-		refreshMenu: function( ){
-			// update the menu 
-			this.bindMenu(  this.menuTarget, false );
-		},
+		},					
 		
 		/**
 		* Monitor video time and update timed text filed[s]  		
@@ -404,7 +398,7 @@ mw.addMessages( {
 		*			[ All videos ]
 		*		[ Chapters ] seek to chapter
 		*/
-		getMenu: function(){
+		getMainMenu: function(){
 			var _this = this; 			
 		
 			
@@ -422,10 +416,7 @@ mw.addMessages( {
 					),
 					
 					// Search Menu option
-					_this.getLi( gM('mwe-search'),  'search'),
-					
-					//Include the "make transcript" link:
-					_this.getLiAddText()
+					_this.getLi( gM('mwe-search'),  'search')					
 				);					
 			}
 			// Put in the "Make Transcript" link
@@ -443,12 +434,12 @@ mw.addMessages( {
 		showTimedTextEditUI: function( mode ){
 			var _this = this;
 			// Show a loader:
-			$j.addLoaderDialog( gM( 'mwe-loading-text-edit' ));
+			mw.addLoaderDialog( gM( 'mwe-loading-text-edit' ));
 			// Load the timedText edit interface
 			mw.load( 'TimedText.Edit', function(){
-				$j.closeLoaderDialog();
+				mw.closeLoaderDialog();
 				if( ! _this.editText ){
-					_this.editText = new mw.TimedTextEdit();
+					_this.editText = new mw.TimedTextEdit( _this );
 				}
 				_this.editText.showUI();
 			})
@@ -477,10 +468,10 @@ mw.addMessages( {
 		getLiSource: function( source ){		
 			var _this = this;
 			//See if the source is currently "on"
-			var sourceIcon = ( this.isSourceEnabled( source ) )? 'bullet' : 'radio-on'; 
+			var source_icon = ( this.isSourceEnabled( source ) )? 'bullet' : 'radio-on'; 
 			
 			if( source.title ){
-				return this.getLi( source.title, sourceIcon, function(){
+				return this.getLi( source.title, source_icon, function(){
 					mw.log(" call selectTextSource");
 					_this.selectTextSource( source ); 
 				});
@@ -491,7 +482,7 @@ mw.addMessages( {
 				_this.getLanguageName ( langKey );
 				return this.getLi( 
 					gM('mwe-key-language', [langKey,	unescape( mw.languages[ source.lang ] )	] ), 
-					sourceIcon,
+					source_icon,
 					function(){
 						mw.log(" call selectTextSource");
 						_this.selectTextSource( source ); 
@@ -536,7 +527,7 @@ mw.addMessages( {
 			var layoutOptions = [ ];
 			
 			//Only display the "ontop" option if the player supports it: 
-			if( this.embedPlayer.supports['overlays'] )
+			if( this.embedPlayer.supports[ 'overlays' ] )
 				layoutOptions.push( 'ontop' );
 				
 			//Add below and "off" options: 	
@@ -626,7 +617,7 @@ mw.addMessages( {
 			// Empyt out previus text to force an interface update: 
 			this.prevText = [];
 			// Refresh the Menu:
-			this.refreshMenu();
+			this.bindMenu(  this.menuTarget, false );
 			// Issues a "monitor" command to update the timed text for the new layout
 			this.monitor();
 		},
@@ -711,7 +702,7 @@ mw.addMessages( {
 			if( text === this.prevText[ source.category ] )
 				return ;
 			
-			mw.log( 'updateTextDisplay: ' + text );	
+			//mw.log( 'updateTextDisplay: ' + text );	
 					
 			var $player =  $j( '#' + this.embedPlayer.id);	
 			var $textTarget = $player.find( '.itext_' + source.category + ' span' );			
@@ -734,7 +725,7 @@ mw.addMessages( {
 				// Update text ( use "html" instead of "text" so that parsers can swap in html for formating
 				$textTarget.html( text );
 			}
-			mw.log( ' len: ' + $textTarget.length + ' ' + $textTarget.html() );
+			//mw.log( ' len: ' + $textTarget.length + ' ' + $textTarget.html() );
 			// Update the prev text:
 			this.prevText[ source.category ] = text;		
 		},

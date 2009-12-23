@@ -6,7 +6,7 @@
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
 var mwRemoteVersion = '1.1d';
-var mwUseScriptLoader = false;
+var mwUseScriptLoader = true;
 
 // Setup up request Params: 
 var reqParts = urlparts[1].substring( 1 ).split( '&' );
@@ -40,7 +40,7 @@ function doPageSpecificRewrite() {
 	// Add media wizard
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {			
 		loadMwEmbed( [ 
-			'remoteSearchDriver', 
+			'mw.RemoteSearchDriver', 
 			'$j.fn.textSelection', 
 			'$j.ui', 
 			'$j.ui.sortable' 
@@ -59,11 +59,24 @@ function doPageSpecificRewrite() {
 		} );
 	}
 	
+	// Remote Sequencer
+	if( wgPageName.indexOf( "Sequence" ) === 0 ){		
+		// If on a view page set content to "loading" 
+		var body = document.getElementById('bodyContent');
+		body.innerHTML = 'loading sequence <blink>...</blink>';
+		loadMwEmbed( function(){
+			mw.load( 'Sequencer', function(){
+				mw.load( mwEmbedHostPath + '/mwEmbed/Sequencer/mw.Sequencer.js?' + mwGetReqArgs() );
+			} );
+		} );	
+	}
+	
+	
 	// Firefogg integration
 	if ( wgPageName == "Special:Upload" ) {			
 		loadMwEmbed([ 
-				'mvBaseUploadInterface', 
-				'mvFirefogg', 
+				'mw.BaseUploadInterface', 
+				'mw.Firefogg', 
 				'$j.ui',
 				'$j.ui.progressbar', 
 				'$j.ui.dialog', 
@@ -90,8 +103,21 @@ function doPageSpecificRewrite() {
 			vidIdList.push( divs[i].getAttribute( "id" ) );
 		}
 	}	
-	if ( vidIdList.length > 0 ) {			
-		var jsSetVideo = [ 'embedPlayer', '$j.ui', 'ctrlBuilder', '$j.cookie', '$j.ui.slider', 'kskinConfig' ];		
+	if ( vidIdList.length > 0 ) {
+		//Load the video style sheets:
+		importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/styles.css?' + mwGetReqArgs() );
+		importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/kskin/playerSkin.css?' + mwGetReqArgs() );
+				
+		var jsSetVideo = [ 		
+			'mw.EmbedPlayer', 
+			'$j.ui', 
+			'ctrlBuilder', 
+			'$j.cookie', 
+			'$j.ui.slider', 
+			'kskinConfig',
+			'$j.fn.menu',
+			'mw.TimedText' 
+		];		
 		// Quick sniff use java if IE and native if firefox 
 		// ( other browsers will run detect and get on-demand ) 	
 		if (navigator.userAgent.indexOf("MSIE") != -1)
@@ -197,7 +223,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 			if ( vidIdList.length != 0 ) {					
 				setTimeout( function() {
 					procVidId( vidIdList.pop() )
-				}, 1	 );
+				}, 1 );
 			}
 
 		}		
@@ -223,7 +249,7 @@ function getRemoteEmbedPath() {
 				scriptPath = s.src.replace( '/mediaWiki.js', '' )
 			}
 			// Use the external_media_wizard path:
-			return [scriptPath + '/../../', reqStr];
+			return [scriptPath + '/../..', reqStr];
 		}
 	}
 }

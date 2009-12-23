@@ -140,7 +140,7 @@ ctrlBuilder.prototype = {
 			$target = $j( '#' + embedObj.id );				
 				
 		// Add play hook:
-		$target.find( '.play-btn,.play-btn-large' ).unbind().btnBind().click( function() {
+		$target.find( '.play-btn,.play-btn-large' ).unbind().buttonHover().click( function() {
 			embedObj.play();
 		} );
 
@@ -186,17 +186,17 @@ ctrlBuilder.prototype = {
 
 
 		// Captions binding:
-		$target.find( '.timed-text' ).unbind().btnBind().click( function() {			
+		$target.find( '.timed-text' ).unbind().buttonHover().click( function() {			
 			embedObj.showTextInterface();
 		} );
 
 		// Options binding:
-		$target.find( '.options-btn' ).unbind().btnBind().click( function() {
+		$target.find( '.options-btn' ).unbind().buttonHover().click( function() {
 			embedObj.doOptionsHTML();
 		} );
 
 		// Fullscreen binding:
-		$target.find( '.fullscreen-btn' ).unbind().btnBind().click( function() {
+		$target.find( '.fullscreen-btn' ).unbind().buttonHover().click( function() {
 			embedObj.fullscreen();
 		} );
 		
@@ -334,7 +334,7 @@ ctrlBuilder.prototype = {
 		var embedObj = this.embedObj;
 		var _this = this;
 		var $target = $j( '#' + embedObj.id );
-		$target.find( '.volume_control' ).unbind().btnBind().click( function() {
+		$target.find( '.volume_control' ).unbind().buttonHover().click( function() {
 			mw.log( 'clicked volume control' );
 			$j( '#' + embedObj.id ).get( 0 ).toggleMute();
 		} );
