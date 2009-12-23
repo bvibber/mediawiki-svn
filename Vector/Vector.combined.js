@@ -5,24 +5,26 @@
 /* $wgVectorUseCollapsibleLeftNav = true; */
 
 mw.addOnloadHook( function() {
-	if( !wgVectorUseCollapsibleLeftNav ) return;
-	$j( "#panel" ).addClass( "collapsible-nav" );
-	$j( "#panel > div.portal" ).toggleClass( "collapsed" );
-	$j( "#panel > div.portal:first" )
-		.toggleClass( "expanded" )
-		.toggleClass( "collapsed" )
-		.find( "div.body" )
-		.slideToggle( "fast" );
+	if( !wgVectorUseCollapsibleLeftNav )
+		return;
+	$j( '#panel' ).addClass( 'collapsible-nav' );
+	$j( '#panel > div.portal' ).toggleClass( 'collapsed' );
+	$j( '#panel > div.portal:first' )
+		.toggleClass( 'expanded' )
+		.toggleClass( 'collapsed' )
+		.find( 'div.body' )
+		.slideToggle( 'fast' );
 	// Toggle the selected menu's class and expand or collapse the menu
-	$j( "#panel > div.portal > h5" ).click( function() {
+	$j( '#panel > div.portal > h5' ).click( function() {
 		$j( this )
 			.parent()
-			.toggleClass("expanded")
-			.toggleClass("collapsed")
-			.find("div.body")
-			.slideToggle("fast");
+			.toggleClass( 'expanded' )
+			.toggleClass( 'collapsed' )
+			.find( 'div.body' )
+			.slideToggle( 'fast' );
 	} );
-} );mw.addOnloadHook( function() {
+} );
+mw.addOnloadHook( function() {
 	
 	var rtl = $j( 'body' ).is( '.rtl' ) ? true : false;
 	
@@ -99,7 +101,8 @@ mw.addOnloadHook( function() {
 			}
 		}
 	} );
-} );/* JavaScript for EditWarning extension */
+} );
+/* JavaScript for EditWarning extension */
 
 mw.addOnloadHook( function() {
 	// Check preferences for editwarning
