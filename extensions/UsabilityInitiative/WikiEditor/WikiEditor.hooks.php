@@ -16,14 +16,14 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 4 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 3 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 5 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 17 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 18 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 2 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 18 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 19 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 18 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 19 ),
 		),
 	);
 	static $messages = array(
