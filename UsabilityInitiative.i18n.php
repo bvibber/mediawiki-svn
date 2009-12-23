@@ -57,9 +57,12 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
 	'usabilityinitiative' => 'Инициатива по ползваемост',
+	'usabilityinitiative-desc' => 'Софтуерни възможности, разработени от Инициативата за ползваемост на Уикипедия с цел за подобряване ползваемостта на МедияУики',
+	'prefs-experimental' => 'Софтуерни възможности в експериментална фаза',
 );
 
 /** Bengali (বাংলা)
@@ -475,6 +478,16 @@ $messages['pt-br'] = array(
 	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Wikipedia Usability Initiative, para melhorar a usabilidade do MediaWiki',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'usabilityinitiative' => 'Iniţiativa de utilizabilitate',
+	'usabilityinitiative-desc' => 'Funcţionalităţi dezvoltate de Wikipedia Usability Initiative pentru a spori gradul de folosire a MediaWiki',
+	'prefs-experimental' => 'Funcţii experimentale',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -623,10 +636,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => '由維基百科可用性小組開發的新功能，用以增強MediaWiki的可用性',
+	'prefs-experimental' => '實驗功能',
 );
 

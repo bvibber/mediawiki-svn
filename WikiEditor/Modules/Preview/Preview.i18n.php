@@ -49,11 +49,13 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
 	'wikieditor-preview-preference' => 'مكّن المعاينة جنبًا لجنب',
 	'wikieditor-preview-tab' => 'عاين',
+	'wikieditor-preview-changes-tab' => 'تغييرات',
 	'wikieditor-preview-loading' => 'يحمّل...',
 );
 
@@ -70,8 +72,11 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
+	'wikieditor-preview-tab' => 'Предварителен преглед',
+	'wikieditor-preview-changes-tab' => 'Промени',
 	'wikieditor-preview-loading' => 'Зареждане...',
 );
 
@@ -103,6 +108,14 @@ $messages['bs'] = array(
 	'wikieditor-preview-tab' => 'Pregled',
 	'wikieditor-preview-changes-tab' => 'Promjene',
 	'wikieditor-preview-loading' => 'Učitavam...',
+);
+
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'wikieditor-preview-tab' => 'Previsualització',
+	'wikieditor-preview-changes-tab' => 'Canvis',
 );
 
 /** Czech (Česky)
@@ -170,9 +183,11 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author PerroVerd
  */
 $messages['es'] = array(
 	'wikieditor-preview-tab' => 'Previsualizar',
+	'wikieditor-preview-changes-tab' => 'Cambios',
 	'wikieditor-preview-loading' => 'Cargando...',
 );
 
@@ -181,6 +196,7 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'wikieditor-preview-tab' => 'Aurreikuspena',
+	'wikieditor-preview-changes-tab' => 'Aldaketak',
 	'wikieditor-preview-loading' => 'Kargatzen...',
 );
 
@@ -190,6 +206,7 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'wikieditor-preview-tab' => 'Esikatselu',
+	'wikieditor-preview-changes-tab' => 'Muutokset',
 	'wikieditor-preview-loading' => 'Ladataan...',
 );
 
@@ -278,6 +295,14 @@ $messages['id'] = array(
 	'wikieditor-preview-tab' => 'Pratayang',
 	'wikieditor-preview-changes-tab' => 'Perubahan',
 	'wikieditor-preview-loading' => 'Memuat...',
+);
+
+/** Italian (Italiano)
+ * @author Aushulz
+ */
+$messages['it'] = array(
+	'wikieditor-preview-tab' => 'Anteprima',
+	'wikieditor-preview-changes-tab' => 'Modifiche',
 );
 
 /** Japanese (日本語)
@@ -426,6 +451,16 @@ $messages['pt-br'] = array(
 	'wikieditor-preview-loading' => 'Carregando...',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'wikieditor-preview-preference' => 'Activează previzualizarea parte cu parte',
+	'wikieditor-preview-tab' => 'Previzualizare',
+	'wikieditor-preview-changes-tab' => 'Modificări',
+	'wikieditor-preview-loading' => 'Încărcare...',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -498,6 +533,16 @@ $messages['te'] = array(
 	'wikieditor-preview-loading' => 'లోడవుతోంది...',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'wikieditor-preview-preference' => 'Egin-egne deslapky syny aç',
+	'wikieditor-preview-tab' => 'Deslapky syn',
+	'wikieditor-preview-changes-tab' => 'Üýtgeşmeler',
+	'wikieditor-preview-loading' => 'Ýüklenilýär...',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Vito Genovese
@@ -549,5 +594,15 @@ $messages['zh-hans'] = array(
 	'wikieditor-preview-tab' => '预览',
 	'wikieditor-preview-changes-tab' => '修订',
 	'wikieditor-preview-loading' => '载入中……',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hant'] = array(
+	'wikieditor-preview-preference' => '啟用雙列對比預覽',
+	'wikieditor-preview-tab' => '預覽',
+	'wikieditor-preview-changes-tab' => '修訂',
+	'wikieditor-preview-loading' => '載入中...',
 );
 

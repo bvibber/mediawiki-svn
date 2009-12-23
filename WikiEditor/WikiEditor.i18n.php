@@ -28,12 +28,20 @@ I guess that 'feature-providing modules' means the same as 'modules providing fe
 	'wikieditor-wikitext-tab' => 'Caption of the tab containing the edit box',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'wikieditor-wikitext-tab' => 'Wikiteks',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
 	'wikieditor' => 'واجعة تعديل نص ويكي متقدمة',
+	'wikieditor-desc' => 'يوفر واجهة تعديل نص ويكي قابلة للتمديد والعديد من العناصر الموفرة للخصائص',
 	'wikieditor-wikitext-tab' => 'نص ويكي',
 );
 
@@ -44,6 +52,14 @@ $messages['be-tarask'] = array(
 	'wikieditor' => 'Пашыраны інтэрфэйс рэдагаваньня вікі-тэксту',
 	'wikieditor-desc' => 'Дадае пашыраны інтэрфэйс рэдагаваньня вікі-тэксту і шмат модульных магчымасьцяў',
 	'wikieditor-wikitext-tab' => 'Вікі-тэкст',
+);
+
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'wikieditor' => 'Подобрен интерфейс за редактиране на уикитекст',
+	'wikieditor-wikitext-tab' => 'Уикитекст',
 );
 
 /** Bengali (বাংলা)
@@ -120,6 +136,27 @@ $messages['dsb'] = array(
  */
 $messages['eo'] = array(
 	'wikieditor' => 'Progresa redaktilo por vikiteksto',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'wikieditor-wikitext-tab' => 'Wikitexto',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'wikieditor-wikitext-tab' => 'Wikitestua',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'wikieditor-wikitext-tab' => 'Wikiteksti',
 );
 
 /** French (Français)
@@ -302,6 +339,15 @@ $messages['pt'] = array(
 	'wikieditor-wikitext-tab' => 'Texto Wiki',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'wikieditor' => 'Interfaţă de modificare wikitext avansată',
+	'wikieditor-desc' => 'Afişează o interfaţă de modificare wikitext ce se poate extinde cu multe funcţionalităţi',
+	'wikieditor-wikitext-tab' => 'Wikitext',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -352,6 +398,14 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'wikieditor-wikitext-tab' => 'వికీపాఠ్యం',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'wikieditor' => 'Giňeldilen wikitekst redaktirleme interfeýsi',
+	'wikieditor-wikitext-tab' => 'Wikitekst',
 );
 
 /** Turkish (Türkçe)
@@ -407,5 +461,13 @@ $messages['zh-hans'] = array(
 	'wikieditor' => '高级维基文本编辑界面',
 	'wikieditor-desc' => '提供可扩充的维基文本编辑界面及功能组件',
 	'wikieditor-wikitext-tab' => 'Wiki文本',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hant'] = array(
+	'wikieditor' => '高級維基文本編輯界面',
+	'wikieditor-wikitext-tab' => '維基文本',
 );
 

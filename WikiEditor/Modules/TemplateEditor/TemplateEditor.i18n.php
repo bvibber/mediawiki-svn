@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'wikieditor-template-editor-preference' => 'Enable form-based editing of wiki templates',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'wikieditor-template-editor-preference' => 'فعل تعديل قوالب الويكي المعتمد على النماذج',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -191,6 +198,13 @@ $messages['pt'] = array(
 	'wikieditor-template-editor-preference' => 'Possibilitar edição de predefinições com base em formulários',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'wikieditor-template-editor-preference' => 'Activează modificarea formatelor wiki prin formulare',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -252,5 +266,19 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'wikieditor-template-editor-preference' => 'Sửa đổi bản mẫu wiki trong biểu mẫu',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'wikieditor-template-editor-preference' => '启用维基模板的表单式编辑',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hant'] = array(
+	'wikieditor-template-editor-preference' => '啟用維基模板的表單式編輯',
 );
 

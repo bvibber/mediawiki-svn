@@ -68,9 +68,11 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'wikieditor-publish-preference' => 'فعل النشر خطوة بخطوة',
 	'wikieditor-publish-button-publish' => 'انشر',
 	'wikieditor-publish-button-cancel' => 'ألغِ',
 	'wikieditor-publish-dialog-title' => 'انشر في {{SITENAME}}',
@@ -99,12 +101,17 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
+ * @author Turin
  */
 $messages['bg'] = array(
+	'wikieditor-publish-button-publish' => 'Публикуване',
 	'wikieditor-publish-button-cancel' => 'Отказване',
+	'wikieditor-publish-dialog-summary' => 'Резюме на редакцията (кратко описание на текущо направените промени):',
 	'wikieditor-publish-dialog-minor' => 'Малка промяна',
 	'wikieditor-publish-dialog-watch' => 'Наблюдаване на страницата',
 	'wikieditor-publish-dialog-publish' => 'Публикуване',
+	'wikieditor-publish-dialog-goback' => 'Назад',
 );
 
 /** Bengali (বাংলা)
@@ -150,6 +157,14 @@ $messages['bs'] = array(
 	'wikieditor-publish-dialog-watch' => 'Prati ovu stranicu',
 	'wikieditor-publish-dialog-publish' => 'Objavi',
 	'wikieditor-publish-dialog-goback' => 'Vrati se nazad',
+);
+
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'wikieditor-publish-button-publish' => 'Publica',
+	'wikieditor-publish-button-cancel' => 'Cancel·la',
 );
 
 /** Czech (Česky)
@@ -409,6 +424,19 @@ $messages['id'] = array(
 	'wikieditor-publish-dialog-goback' => 'Kembali',
 );
 
+/** Italian (Italiano)
+ * @author Aushulz
+ * @author PaoloRomano
+ */
+$messages['it'] = array(
+	'wikieditor-publish-button-publish' => 'Pubblica',
+	'wikieditor-publish-button-cancel' => 'Annulla',
+	'wikieditor-publish-dialog-title' => 'Pubblica su {{SITENAME}}',
+	'wikieditor-publish-dialog-minor' => 'Modifica di minore importanza',
+	'wikieditor-publish-dialog-publish' => 'Pubblica',
+	'wikieditor-publish-dialog-goback' => 'Indietro',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -594,9 +622,26 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Hamilton Abreu
+ * @author Lijealso
  */
 $messages['pt-br'] = array(
+	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-dialog-title' => 'Publicar em {{SITENAME}}',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'wikieditor-publish-preference' => 'Activează publicarea pas cu pas',
+	'wikieditor-publish-button-publish' => 'Salvează pagina',
+	'wikieditor-publish-button-cancel' => 'Anulează',
+	'wikieditor-publish-dialog-title' => 'Publică pe {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Descrierea modificărilor (descrieţi pe scurt modificările făcute):',
+	'wikieditor-publish-dialog-minor' => 'Modificare minoră',
+	'wikieditor-publish-dialog-watch' => 'Urmăreşte pagina',
+	'wikieditor-publish-dialog-publish' => 'Salvează pagina',
+	'wikieditor-publish-dialog-goback' => 'Înapoi',
 );
 
 /** Tarandíne (Tarandíne)
@@ -708,6 +753,18 @@ $messages['te'] = array(
 	'wikieditor-publish-dialog-goback' => 'వెనక్కి వెళ్ళు',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'wikieditor-publish-button-publish' => 'Neşir et',
+	'wikieditor-publish-button-cancel' => 'Goýbolsun et',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}} taslamasynda neşir et',
+	'wikieditor-publish-dialog-minor' => 'Ujypsyzja özgerdiş',
+	'wikieditor-publish-dialog-watch' => 'Sahypany gözegçilige al',
+	'wikieditor-publish-dialog-goback' => 'Yza gaýt',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Vito Genovese
@@ -772,6 +829,7 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author Gaoxuewei
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
@@ -779,10 +837,25 @@ $messages['zh-hans'] = array(
 	'wikieditor-publish-button-publish' => '发表',
 	'wikieditor-publish-button-cancel' => '取消',
 	'wikieditor-publish-dialog-title' => '发表到{{SITENAME}}',
-	'wikieditor-publish-dialog-summary' => '编辑摘要（简要描述您作出编辑）：',
+	'wikieditor-publish-dialog-summary' => '编辑摘要（简要描述您作出的编辑）：',
 	'wikieditor-publish-dialog-minor' => '小修改',
 	'wikieditor-publish-dialog-watch' => '监视本页',
 	'wikieditor-publish-dialog-publish' => '发表',
 	'wikieditor-publish-dialog-goback' => '后退',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hant'] = array(
+	'wikieditor-publish-preference' => '啟用逐步發表功能',
+	'wikieditor-publish-button-publish' => '發表',
+	'wikieditor-publish-button-cancel' => '取消',
+	'wikieditor-publish-dialog-title' => '發表到{{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => '編輯摘要（簡要描述您做出的編輯）：',
+	'wikieditor-publish-dialog-minor' => '小修改',
+	'wikieditor-publish-dialog-watch' => '監視本頁',
+	'wikieditor-publish-dialog-publish' => '發表',
+	'wikieditor-publish-dialog-goback' => '後退',
 );
 

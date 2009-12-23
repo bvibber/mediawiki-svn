@@ -95,11 +95,15 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'clicktracking' => 'تتبع نقرات مبادرة الاستخدامية',
+	'clicktracking-desc' => 'تتبع الضغطات لتتبع الاحداث التي لا تسبب تحديث الصفحة',
+	'ct-title' => 'ضغطات المستخدمين المجمعة',
 	'ct-event-name' => 'اسم الحدث',
 	'ct-expert-header' => 'نقرات "الخبراء"',
 	'ct-intermediate-header' => 'نقرات "المتوسطين"',
 	'ct-beginner-header' => 'نقرات "المبتدئين"',
 	'ct-total-header' => 'مجموع النقرات',
+	'ct-start-date' => 'تاريخ البدء (YYYYMMDD)',
+	'ct-end-date' => 'تاريخ النهاية (YYYYMMDD)',
 	'ct-increment-by' => 'عدد الأيام التي تمثلها كل نقطة بيانات',
 	'ct-change-graph' => 'غير الرسم البياني',
 	'ct-beginner' => 'مبتدئ',
@@ -146,9 +150,12 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Turin
  */
 $messages['bg'] = array(
+	'ct-anon-users' => 'Анонимни потребители',
 	'ct-and' => 'и',
+	'ct-update-table' => 'Обновяване на таблицата',
 );
 
 /** Bengali (বাংলা)
@@ -813,6 +820,7 @@ $messages['ka'] = array(
 	'ct-end-date' => 'დამთავრების თარიღი (წწწწთთდდ)',
 	'ct-beginner' => 'დამწყები',
 	'ct-expert' => 'ექსპერტი',
+	'ct-anon-users' => 'ანონიმური მომხმარებლები',
 	'ct-user-span' => 'მომხმარებლის წვლილი პერიოდში',
 	'ct-and' => 'და',
 );
@@ -1178,6 +1186,30 @@ $messages['pt-br'] = array(
 	'ct-expert' => 'Experiente',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'ct-event-name' => 'Numele evenimentului',
+	'ct-expert-header' => 'Clickuri de către "experţi"',
+	'ct-intermediate-header' => 'Clicuri „intermediare”',
+	'ct-beginner-header' => 'Clicuri „începătoare”',
+	'ct-total-header' => 'Clickuri totale',
+	'ct-start-date' => 'Data de start (AAAALLZZ)',
+	'ct-end-date' => 'Data de sfârşit (AAAALLZZ)',
+	'ct-change-graph' => 'Grafic de schimbări',
+	'ct-beginner' => 'Începători',
+	'ct-intermediate' => 'Intermediar',
+	'ct-expert' => 'Expert',
+	'ct-editing' => 'Editare curentă:',
+	'ct-anon-users' => 'Utilizatori anonimi',
+	'ct-user-contribs' => 'Contribuţiile totale ale utilizatorului',
+	'ct-user-span' => 'Contribuţiile utilizatorului în intervalul de timp',
+	'ct-and' => 'şi',
+	'ct-update-table' => 'Actualizează tabel',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -1323,6 +1355,7 @@ $messages['te'] = array(
 	'ct-editing' => 'ప్రస్తుతం మారుస్తున్నారు:',
 	'ct-anon-users' => 'అజ్ఞాత వాడుకరులు',
 	'ct-and' => 'మరియు',
+	'ct-update-table' => 'పట్టికని తాజాకరించు',
 );
 
 /** Turkmen (Türkmençe)
@@ -1331,6 +1364,10 @@ $messages['te'] = array(
 $messages['tk'] = array(
 	'ct-start-date' => 'Başlangyç senesi (YYYYMMDD)',
 	'ct-end-date' => 'Gutaryş senesi (YYYYMMDD)',
+	'ct-anon-users' => 'Anonim ulanyjylar',
+	'ct-user-contribs' => 'Jemi ulanyjy goşantlary',
+	'ct-and' => 'we',
+	'ct-update-table' => 'Tablisany täzele',
 );
 
 /** Turkish (Türkçe)
@@ -1473,6 +1510,7 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author Gaoxuewei
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -1480,9 +1518,9 @@ $messages['zh-hans'] = array(
 	'clicktracking-desc' => '点击追踪，追踪对象为不造成页面刷新的事件',
 	'ct-title' => '整合用户点击统计',
 	'ct-event-name' => '事件名称',
-	'ct-expert-header' => '“专业”点击',
+	'ct-expert-header' => '“专家”点击数',
 	'ct-intermediate-header' => '“中级”点击',
-	'ct-beginner-header' => '“新手”点击',
+	'ct-beginner-header' => '“新手”点击数',
 	'ct-total-header' => '总点击数',
 	'ct-start-date' => '开始日期（年月日）',
 	'ct-end-date' => '结束日期（年月日）',
@@ -1490,8 +1528,8 @@ $messages['zh-hans'] = array(
 	'ct-change-graph' => '更改图像',
 	'ct-beginner' => '新手',
 	'ct-intermediate' => '中级',
-	'ct-expert' => '专业',
-	'ct-date-range' => '数据范围',
+	'ct-expert' => '专家',
+	'ct-date-range' => '日期范围',
 	'ct-editing' => '当前编辑：',
 	'ct-anon-users' => '匿名用户',
 	'ct-user-contribs' => '总用户贡献',
@@ -1501,10 +1539,31 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'clicktracking' => '可用性倡議點擊追蹤',
 	'clicktracking-desc' => '點擊追蹤，不在重載頁面的情況中用來追蹤點擊',
+	'ct-title' => '整合用戶點擊統計',
+	'ct-event-name' => '事件名稱',
+	'ct-expert-header' => '“專家”點擊數',
+	'ct-intermediate-header' => '“中級”點擊數',
+	'ct-beginner-header' => '“新手”點擊數',
+	'ct-total-header' => '總點擊數',
+	'ct-start-date' => '開始日期（年月日）',
+	'ct-end-date' => '結束日期（年月日）',
+	'ct-increment-by' => '每個數據點代表的天數',
+	'ct-change-graph' => '更改圖像',
+	'ct-beginner' => '新手',
+	'ct-intermediate' => '中級',
+	'ct-expert' => '專家',
+	'ct-date-range' => '日期範圍',
+	'ct-editing' => '當前編輯：',
+	'ct-anon-users' => '匿名用戶',
+	'ct-user-contribs' => '用戶貢獻合計',
+	'ct-user-span' => '時間範圍內的用戶貢獻',
+	'ct-and' => '和',
+	'ct-update-table' => '更新表格',
 );
 
