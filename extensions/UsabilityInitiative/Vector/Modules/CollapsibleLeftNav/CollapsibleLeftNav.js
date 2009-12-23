@@ -19,5 +19,6 @@ mw.addOnloadHook( function() {
 			.toggleClass( 'collapsed' )
 			.find( 'div.body' )
 			.slideToggle( 'fast' );
+		return false;
 	} );
 } );
