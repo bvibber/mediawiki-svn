@@ -2,11 +2,11 @@
 
 mw.addOnloadHook( function() {
 	// Check preferences for highlight
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.highlight && wgWikiEditorPreferences.highlight.enable ) ) {
+	if ( !wgWikiEditorEnabledModules.highlight ) {
 		return true;
 	}
 	// Add the highlight module
-	if ( $j.wikiEditor ) {
+	if ( $j.fn.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'highlight' );
 	}
 });
@@ -14,23 +14,23 @@ mw.addOnloadHook( function() {
 
 mw.addOnloadHook( function() {
 	// Check preferences for preview
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.preview && wgWikiEditorPreferences.preview.enable ) ) {
+	if ( !wgWikiEditorEnabledModules.preview ) {
 		return true;
 	}
 	// Add the preview module
-	if ( $j.wikiEditor ) {
+	if ( $j.fn.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'preview' );
 	}
 });
 /* JavaScript for WikiEditor Publish module */
 
 mw.addOnloadHook( function() {
-	// Check preferences for preview
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.publish && wgWikiEditorPreferences.publish.enable ) ) {
+	// Check preferences for publish
+	if ( !wgWikiEditorEnabledModules.preview ) {
 		return true;
 	}
-	// Add the preview module
-	if ( $j.wikiEditor ) {
+	// Add the publish module
+	if ( $j.fn.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'publish' );
 	}
 });
@@ -42,7 +42,7 @@ mw.addOnloadHook( function() {
 		return true;
 	}
 	// Add the toc module
-	if ( $j.wikiEditor ) {
+	if ( $j.fn.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule',
 			{ 'toc' : { 'rtl' : ( $j( 'body' ).is( '.rtl' ) ) } } );
 	}
@@ -51,7 +51,7 @@ mw.addOnloadHook( function() {
 
 mw.addOnloadHook( function() {
 	// Check preferences for toolbar
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.toolbar && wgWikiEditorPreferences.toolbar.enable ) ) {
+	if ( !wgWikiEditorEnabledModules.toolbar ) {
 		return true;
 	}
 	// Only show content generation dialogs if enabled
@@ -59,7 +59,7 @@ mw.addOnloadHook( function() {
 		$j( '#wpTextbox1' ).addClass( 'toolbar-dialogs' );
 	}
 	// Add the toolbar module
-	if ( $j.wikiEditor ) {
+	if ( $j.fn.wikiEditor ) {
 		// Remove the old toolbar
 		$j( '#toolbar' ).remove();
 		// Add toolbar module
@@ -1701,12 +1701,12 @@ mw.addOnloadHook( function() {
 /* JavaScript for WikiEditor Template Editor module */
 
 mw.addOnloadHook( function() {
-	// Check preferences for highlight
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.templateEditor && wgWikiEditorPreferences.templateEditor.enable ) ) {
+	// Check preferences for templateEditor
+	if ( !wgWikiEditorEnabledModules.templateEditor ) {
 		return true;
 	}
 	// Add the templateEditor module
-	if ( $j.wikiEditor ) {
+	if ( $j.fn.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'templateEditor' );
 	}
 });

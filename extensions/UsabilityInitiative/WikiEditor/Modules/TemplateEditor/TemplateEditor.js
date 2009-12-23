@@ -1,12 +1,12 @@
 /* JavaScript for WikiEditor Template Editor module */
 
 mw.addOnloadHook( function() {
-	// Check preferences for highlight
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.templateEditor && wgWikiEditorPreferences.templateEditor.enable ) ) {
+	// Check preferences for templateEditor
+	if ( !wgWikiEditorEnabledModules.templateEditor ) {
 		return true;
 	}
 	// Add the templateEditor module
-	if ( $j.wikiEditor ) {
+	if ( $j.fn.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'templateEditor' );
 	}
 });

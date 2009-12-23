@@ -8,13 +8,13 @@ if ( typeof os_autoload_inputs !== 'undefined' && os_autoload_forms !== 'undefin
 
 mw.addOnloadHook( function() {
 	// Only use this function in conjuction with the Vector skin
-	if( skin != 'vector' ) {
-		return;
+	if( !wgVectorEnabledModules.simplesearch || skin != 'vector' ) {
+		return true;
 	}
 	// Add form submission handler
 	$j( 'div#simpleSearch > input#searchInput' )
 		.each( function() {
-			$j( '<label></label>' )
+			$j( '<label />' )
 				.text( gM( 'vector-simplesearch-search' ) )
 				.css({
 					'display': 'none',

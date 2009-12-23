@@ -1,8 +1,12 @@
 mw.addOnloadHook( function() {
+	// Check if CollapsibleTabs is enabled
+	if ( !wgVectorEnabledModules.collapsibletabs ) {
+		return true;
+	}
 	
-	var rtl = $j( 'body' ).is( '.rtl' ) ? true : false;
+	var rtl = $j( 'body' ).is( '.rtl' );
 	
-	//Overloading the moveToCollapsed function to animate the transition 
+	// Overloading the moveToCollapsed function to animate the transition 
 	$j.collapsibleTabs.moveToCollapsed = function( ele ) {
 		var $moving = $j( ele );
 		$j( $moving.data( 'collapsibleTabsSettings' ).expandedContainer )
@@ -55,18 +59,18 @@ mw.addOnloadHook( function() {
 		$j( "#p-cactions h5" ).animate( { 'width':'1px' }, 370, function() {
 			$j( this ).attr( 'style', '' ).parent().addClass( "emptyPortlet" ).removeClass( "filledPortlet" );
 		});
-	}).collapsibleTabs({
+	}).collapsibleTabs( {
 		expandCondition: function( eleWidth ) {
 			if( rtl ){
-				return ( $j( '#right-navigation' ).position().left + $j( '#right-navigation' ).width() + 1 ) 
-					< ( $j( '#left-navigation' ).position().left - eleWidth);
+				return ( $j( '#right-navigation' ).position().left + $j( '#right-navigation' ).width() + 1 )
+					< ( $j( '#left-navigation' ).position().left - eleWidth );
 			} else {
-				return ( $j( '#left-navigation' ).position().left + $j( '#left-navigation' ).width() + 1 ) 
+				return ( $j( '#left-navigation' ).position().left + $j( '#left-navigation' ).width() + 1 )
 					< ( $j( '#right-navigation' ).position().left - eleWidth );
 			}
 		},
 		collapseCondition: function() {
-			if( rtl ){
+			if( rtl ) {
 				return ( $j( '#right-navigation' ).position().left + $j( '#right-navigation' ).width() )
 					> $j( '#left-navigation' ).position().left;
 			} else {

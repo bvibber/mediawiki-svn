@@ -1,8 +1,8 @@
 /* JavaScript for EditWarning extension */
 
 mw.addOnloadHook( function() {
-	// Check preferences for editwarning
-	if ( !wgVectorPreferences || !( wgVectorPreferences.editwarning && wgVectorPreferences.editwarning.enable ) ) {
+	// Check if EditWarning is enabled
+	if ( !wgVectorEnabledModules.editwarning ) {
 		return true;
 	}
 	// Get the original values of some form elements

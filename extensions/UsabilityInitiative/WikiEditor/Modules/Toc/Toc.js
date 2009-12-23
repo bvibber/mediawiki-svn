@@ -6,7 +6,7 @@ mw.addOnloadHook( function() {
 		return true;
 	}
 	// Add the toc module
-	if ( $j.wikiEditor ) {
+	if ( $j.fn.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule',
 			{ 'toc' : { 'rtl' : ( $j( 'body' ).is( '.rtl' ) ) } } );
 	}

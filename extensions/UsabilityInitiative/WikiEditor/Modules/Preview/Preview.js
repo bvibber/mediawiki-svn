@@ -2,11 +2,11 @@
 
 mw.addOnloadHook( function() {
 	// Check preferences for preview
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.preview && wgWikiEditorPreferences.preview.enable ) ) {
+	if ( !wgWikiEditorEnabledModules.preview ) {
 		return true;
 	}
 	// Add the preview module
-	if ( $j.wikiEditor ) {
+	if ( $j.fn.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'preview' );
 	}
 });

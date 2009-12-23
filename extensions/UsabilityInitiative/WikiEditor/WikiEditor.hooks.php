@@ -12,18 +12,18 @@ class WikiEditorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 2 ),
-			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 3 ),
-			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 2 ),
-			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 4 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 16 ),
-			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 1 ),
+			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 3 ),
+			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 4 ),
+			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 3 ),
+			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 5 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 17 ),
+			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 2 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 17 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 18 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 17 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 18 ),
 		),
 	);
 	static $messages = array(
@@ -351,6 +351,7 @@ class WikiEditorHooks {
 		
 		// Modules
 		$preferences = array();
+		$enabledModules = array();
 		$modules = $wgWikiEditorModules;
 		$modules['global'] = true;
 		foreach ( $modules as $module => $enable ) {
@@ -362,6 +363,7 @@ class WikiEditorHooks {
 				) || $module == 'global'
 			) {
 				UsabilityInitiativeHooks::initialize();
+				$enabledModules[$module] = true;
 				// Messages
 				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {
 					wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
@@ -379,13 +381,15 @@ class WikiEditorHooks {
 				// Preferences
 				if ( isset( self::$modules[$module]['preferences'] ) ) {
 					foreach ( self::$modules[$module]['preferences'] as $name => $preference ) {
-						if ( !isset( $preferences[$module] ) ) {			
+						if ( !isset( $preferences[$module] ) ) {
 							$preferences[$module] = array();
 						}
 						$preferences[$module][$name] = $wgUser->getOption( $preference['key'] );
 					}
 				}
 			}
+			else
+				$enabledModules[$module] = false;
 		}
 		// Load global messages
 		wfLoadExtensionMessages( 'WikiEditor' );
@@ -401,7 +405,8 @@ class WikiEditorHooks {
 			Xml::tags(
 				'script',
 				array( 'type' => $wgJsMimeType ),
-				'var wgWikiEditorPreferences = ' . FormatJson::encode( $preferences, true ) . ';'
+				'var wgWikiEditorPreferences = ' . FormatJson::encode( $preferences, true ) . ";\n" .
+				'var wgWikiEditorEnabledModules = ' . FormatJson::encode( $enabledModules, true ) . ';'
 			)
 		);
 		return true;

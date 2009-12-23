@@ -20,7 +20,7 @@
 }
 #panel.collapsible-nav div.collapsed h5:hover {
 	color: #2daae1;
-	background: url(../../../skins/vector/images/left-nav-arrow-right-over.png) 0 50% no-repeat #e7e8e9;	
+	background: url(../../../skins/vector/images/left-nav-arrow-right-over.png) 0 50% no-repeat #e7e8e9;
 }
 #panel.collapsible-nav div.portal div.body {
 	display: none;
