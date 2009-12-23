@@ -2,7 +2,7 @@
 
 mw.addOnloadHook( function() {
 	// Check preferences for toolbar
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.toolbar && wgWikiEditorPreferences.toolbar.enable ) ) {
+	if ( !wgWikiEditorEnabledModules.toolbar ) {
 		return true;
 	}
 	// Only show content generation dialogs if enabled
@@ -10,7 +10,7 @@ mw.addOnloadHook( function() {
 		$j( '#wpTextbox1' ).addClass( 'toolbar-dialogs' );
 	}
 	// Add the toolbar module
-	if ( $j.wikiEditor ) {
+	if ( $j.fn.wikiEditor ) {
 		// Remove the old toolbar
 		$j( '#toolbar' ).remove();
 		// Add toolbar module

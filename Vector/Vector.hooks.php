@@ -12,26 +12,22 @@ class VectorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/CollapsibleLeftNav/CollapsibleLeftNav.js', 'version' => 1 ),
-			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 5 ),
-			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 3 ),
-			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 3 ),
+			array( 'src' => 'Modules/CollapsibleLeftNav/CollapsibleLeftNav.js', 'version' => 2 ),
+			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 6 ),
+			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 4 ),
+			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 4 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 7 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 8 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 7 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 8 ),
 		),
 	);
 	static $modules = array(
 		'collapsibleleftnav' => array(
-			'variables' => array(
-				'wgVectorUseCollapsibleLeftNav'
-			)
 		),
 		'collapsibletabs' => array(
-			// Configuration stuff here
 		),
 		'editwarning' => array(
 			'i18n' => 'VectorEditWarning',
@@ -75,8 +71,8 @@ class VectorHooks {
 		global $wgVectorModules, $wgUsabilityInitiativeResourceMode;
 		
 		// Modules
-		UsabilityInitiativeHooks::initialize();
 		$preferences = array();
+		$enabledModules = array();
 		foreach ( $wgVectorModules as $module => $enable ) {
 			if (
 				$enable['global'] || (
@@ -85,6 +81,8 @@ class VectorHooks {
 					&& $wgUser->getOption( self::$modules[$module]['preferences']['enable']['key'] )
 				)
 			) {
+				UsabilityInitiativeHooks::initialize();
+				$enabledModules[$module] = true;
 				// Messages
 				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {
 					wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
@@ -109,6 +107,8 @@ class VectorHooks {
 					}
 				}
 			}
+			else
+				$enabledModules[$module] = false;
 		}
 		// Add all scripts
 		foreach ( self::$scripts[$wgUsabilityInitiativeResourceMode] as $script ) {
@@ -121,7 +121,8 @@ class VectorHooks {
 			Xml::tags(
 				'script',
 				array( 'type' => $wgJsMimeType ),
-				'var wgVectorPreferences = ' . FormatJson::encode( $preferences, true ) . ';'
+				'var wgVectorPreferences = ' . FormatJson::encode( $preferences, true ) . ";\n" .
+				'var wgVectorEnabledModules = ' . FormatJson::encode( $enabledModules, true ) . ';'
 			)
 		);
 		return true;

@@ -1,12 +1,9 @@
 /* Prototype code to show collapsing left nav options */
 /* First draft and will be changing greatly */
 
-/* To enable add the following line to LocalSettings.php */
-/* $wgVectorUseCollapsibleLeftNav = true; */
-
 mw.addOnloadHook( function() {
-	if( !wgVectorUseCollapsibleLeftNav )
-		return;
+	if( !wgVectorEnabledModules.collapsibleleftnav )
+		return true;
 	$j( '#panel' ).addClass( 'collapsible-nav' );
 	$j( '#panel > div.portal' ).toggleClass( 'collapsed' );
 	$j( '#panel > div.portal:first' )
@@ -25,10 +22,14 @@ mw.addOnloadHook( function() {
 	} );
 } );
 mw.addOnloadHook( function() {
+	// Check if CollapsibleTabs is enabled
+	if ( !wgVectorEnabledModules.collapsibletabs ) {
+		return true;
+	}
 	
-	var rtl = $j( 'body' ).is( '.rtl' ) ? true : false;
+	var rtl = $j( 'body' ).is( '.rtl' );
 	
-	//Overloading the moveToCollapsed function to animate the transition 
+	// Overloading the moveToCollapsed function to animate the transition 
 	$j.collapsibleTabs.moveToCollapsed = function( ele ) {
 		var $moving = $j( ele );
 		$j( $moving.data( 'collapsibleTabsSettings' ).expandedContainer )
@@ -81,18 +82,18 @@ mw.addOnloadHook( function() {
 		$j( "#p-cactions h5" ).animate( { 'width':'1px' }, 370, function() {
 			$j( this ).attr( 'style', '' ).parent().addClass( "emptyPortlet" ).removeClass( "filledPortlet" );
 		});
-	}).collapsibleTabs({
+	}).collapsibleTabs( {
 		expandCondition: function( eleWidth ) {
 			if( rtl ){
-				return ( $j( '#right-navigation' ).position().left + $j( '#right-navigation' ).width() + 1 ) 
-					< ( $j( '#left-navigation' ).position().left - eleWidth);
+				return ( $j( '#right-navigation' ).position().left + $j( '#right-navigation' ).width() + 1 )
+					< ( $j( '#left-navigation' ).position().left - eleWidth );
 			} else {
-				return ( $j( '#left-navigation' ).position().left + $j( '#left-navigation' ).width() + 1 ) 
+				return ( $j( '#left-navigation' ).position().left + $j( '#left-navigation' ).width() + 1 )
 					< ( $j( '#right-navigation' ).position().left - eleWidth );
 			}
 		},
 		collapseCondition: function() {
-			if( rtl ){
+			if( rtl ) {
 				return ( $j( '#right-navigation' ).position().left + $j( '#right-navigation' ).width() )
 					> $j( '#left-navigation' ).position().left;
 			} else {
@@ -105,8 +106,8 @@ mw.addOnloadHook( function() {
 /* JavaScript for EditWarning extension */
 
 mw.addOnloadHook( function() {
-	// Check preferences for editwarning
-	if ( !wgVectorPreferences || !( wgVectorPreferences.editwarning && wgVectorPreferences.editwarning.enable ) ) {
+	// Check if EditWarning is enabled
+	if ( !wgVectorEnabledModules.editwarning ) {
 		return true;
 	}
 	// Get the original values of some form elements
@@ -156,13 +157,13 @@ if ( typeof os_autoload_inputs !== 'undefined' && os_autoload_forms !== 'undefin
 
 mw.addOnloadHook( function() {
 	// Only use this function in conjuction with the Vector skin
-	if( skin != 'vector' ) {
-		return;
+	if( !wgVectorEnabledModules.simplesearch || skin != 'vector' ) {
+		return true;
 	}
 	// Add form submission handler
 	$j( 'div#simpleSearch > input#searchInput' )
 		.each( function() {
-			$j( '<label></label>' )
+			$j( '<label />' )
 				.text( gM( 'vector-simplesearch-search' ) )
 				.css({
 					'display': 'none',

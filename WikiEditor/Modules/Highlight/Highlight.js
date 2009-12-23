@@ -2,11 +2,11 @@
 
 mw.addOnloadHook( function() {
 	// Check preferences for highlight
-	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.highlight && wgWikiEditorPreferences.highlight.enable ) ) {
+	if ( !wgWikiEditorEnabledModules.highlight ) {
 		return true;
 	}
 	// Add the highlight module
-	if ( $j.wikiEditor ) {
+	if ( $j.fn.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'highlight' );
 	}
 });

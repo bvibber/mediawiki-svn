@@ -1,12 +1,9 @@
 /* Prototype code to show collapsing left nav options */
 /* First draft and will be changing greatly */
 
-/* To enable add the following line to LocalSettings.php */
-/* $wgVectorUseCollapsibleLeftNav = true; */
-
 mw.addOnloadHook( function() {
-	if( !wgVectorUseCollapsibleLeftNav )
-		return;
+	if( !wgVectorEnabledModules.collapsibleleftnav )
+		return true;
 	$j( '#panel' ).addClass( 'collapsible-nav' );
 	$j( '#panel > div.portal' ).toggleClass( 'collapsed' );
 	$j( '#panel > div.portal:first' )
