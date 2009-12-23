@@ -422,7 +422,11 @@ class WikiEditorHooks {
 		foreach ( $wgWikiEditorModules as $module => $enable ) {
 			if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['preferences'] ) ) {
 				wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
-				foreach ( self::$modules[$module]['preferences'] as $preference ) {
+				foreach ( self::$modules[$module]['preferences'] as $key => $preference ) {
+					if ( $key == 'enable' && !$enable['user'] ) {
+						continue;
+					}
+					
 					// The preference with the key 'enable' determines if the rest are even relevant, so in the future
 					// setting up some dependencies on that might make sense
 					$defaultPreferences[$preference['key']] = $preference['ui'];
