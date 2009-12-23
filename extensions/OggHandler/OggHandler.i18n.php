@@ -3009,6 +3009,23 @@ $messages['th'] = array(
 	'ogg-play-sound' => 'เล่นเสียง',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'ogg-short-audio' => 'Ogg $1 ses faýly, $2',
+	'ogg-short-video' => 'Ogg $1 wideo faýly, $2',
+	'ogg-short-general' => 'Ogg $1 media faýly, $2',
+	'ogg-long-audio' => '(Ogg $1 ses faýly, uzynlyk $2, $3)',
+	'ogg-long-video' => '(Ogg $1 wideo faýly, uzynlyk $2, $4×$5 piksel, $3)',
+	'ogg-player-soundthumb' => 'Pleýer ýok',
+	'ogg-player-selected' => '(saýlanylan)',
+	'ogg-use-player' => 'Pleýer ulan:',
+	'ogg-more' => 'Has köp...',
+	'ogg-dismiss' => 'Ýap',
+	'ogg-desc-link' => 'Bu faýl hakda',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -3275,7 +3292,9 @@ $messages['yue'] = array(
 	'ogg-desc-link' => '關於呢個檔案',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
 $messages['zh-hans'] = array(
 	'ogg-desc' => 'Ogg Theora 和 Vorbis 文件的处理器，含 JavaScript 播放器',
 	'ogg-short-audio' => 'Ogg $1 声音文件，$2',
@@ -3292,6 +3311,8 @@ $messages['zh-hans'] = array(
 	'ogg-play-video' => '播放视频',
 	'ogg-play-sound' => '播放声音',
 	'ogg-no-player' => '抱歉，您的系统并无任何可以支持播放的播放器。请安装<a href="http://www.java.com/zh_CN/download/manual.jsp">Java</a>。',
+	'ogg-no-player-js' => '抱歉，您的系统未启用JavaScript或者没有安装任何受支持的播放器。<br />
+您可以<a href="$1">下载该片段</a>或者<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下载一个播放器</a> ，以便在您的浏览器中播放该片段。',
 	'ogg-no-xiphqt' => '您似乎没有给QuickTime用的XiphQT组件。在未有这个组件的情况下，QuickTime是不能播放Ogg文件的。请<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下载XiphQT</a>或者选取另一个播放器。',
 	'ogg-player-videoElement' => '<video>元素',
 	'ogg-player-oggPlugin' => 'Ogg插件',
@@ -3305,7 +3326,9 @@ $messages['zh-hans'] = array(
 	'ogg-desc-link' => '关于这个文件',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
+ */
 $messages['zh-hant'] = array(
 	'ogg-desc' => 'Ogg Theora 和 Vorbis 檔案的處理器，含 JavaScript 播放器',
 	'ogg-short-audio' => 'Ogg $1 聲音檔案，$2',
@@ -3322,6 +3345,8 @@ $messages['zh-hant'] = array(
 	'ogg-play-video' => '播放影片',
 	'ogg-play-sound' => '播放聲音',
 	'ogg-no-player' => '抱歉，您的系統並無任何可以支援播放的播放器。請安裝<a href="http://www.java.com/zh_TW/download/manual.jsp">Java</a>。',
+	'ogg-no-player-js' => '抱歉，您的系統未啟用JavaScript或者沒有安裝任何受支持的播放器。 <br />
+您可以<a href="$1">下載該片段</a>或者<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下載一個播放器</a> ，以便在您的瀏覽器中播放該片段。',
 	'ogg-no-xiphqt' => '您似乎沒有給QuickTime用的XiphQT組件。在未有這個組件的情況下，QuickTime是不能播放Ogg檔案的。請<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下載XiphQT</a>或者選取另一個播放器。',
 	'ogg-player-videoElement' => '<video>元素',
 	'ogg-player-oggPlugin' => 'Ogg插件',

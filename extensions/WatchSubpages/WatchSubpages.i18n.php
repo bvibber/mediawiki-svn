@@ -873,6 +873,13 @@ Para magdagdag ng isang pahina, lagyan ng tsek ang kahong katabi nito, at pindut
 Kapag naglalagay o nagtatanggal ng mga tsek sa maramihang mga pahina, ang matagalang pagpindot sa "susing pampalit" (\'\'shift key\'\') ay magpapahintulot sa iyong makapili ng magkakasunod na mga kahon sa pamamagitan ng pagpindot sa bawat katapusan ng saklaw na paglalagyan ng tsek.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'watchsubpages-addtitles' => 'Sayfa ekle',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

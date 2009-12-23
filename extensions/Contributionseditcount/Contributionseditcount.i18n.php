@@ -164,6 +164,13 @@ $messages['es'] = array(
 	'contributionseditcount-desc' => 'Muestra un contador de ediciones en la [[Special:Contributions|página de contribuciones del usuario]]',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'contributionseditcount' => 'See kasutaja on teinud {{PLURAL:$1|ühe muudatuse|$1 muudatust}}.',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

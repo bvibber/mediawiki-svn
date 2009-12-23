@@ -1256,9 +1256,14 @@ Por favor, {{PLURAL:$2|preencha-o|preencha-os}}.',
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'form' => 'Formular',
+	'formnoname' => 'Niciun nume pentru formular',
+	'formbadname' => 'Nume incorect',
+	'formtitlepattern' => 'Adaugă nou $1',
 	'formsave' => 'Salvează',
 	'formarticleexists' => 'Pagina există',
 	'formarticleexiststext' => 'Pagina [[$1]] deja există.',

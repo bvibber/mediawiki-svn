@@ -848,6 +848,15 @@ $messages['tg-cyrl'] = array(
 	'intersection_noincludecats' => 'Error: Шумо ҳадди ақал бояд як гурӯҳро ворид кунед, ё як фазои номро мушаххас кунед!',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'intersection_toomanycats' => 'Säwlik: Aşa köp kategoriýa!',
+	'intersection_toofewcats' => 'Säwlik: Örän az kategoriýa!',
+	'intersection_noresults' => 'Säwlik: Netije ýok!',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

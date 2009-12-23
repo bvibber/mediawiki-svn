@@ -560,6 +560,8 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'globaluserrights' => 'సార్వత్రిక వాడుకరి హక్కుల నిర్వహణ',
+	'gur-rightslog-name' => 'సార్వత్రిక హక్కుల చిట్టా',
+	'gur-rightslog-header' => 'ఇది సార్వత్రిక హక్కులకి జరిగిన మార్పుల యొక్క చిట్టా.',
 );
 
 /** Tagalog (Tagalog)

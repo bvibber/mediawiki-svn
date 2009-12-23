@@ -1521,7 +1521,18 @@ $wgGoogleMapsMessages['es'] = array(
 $wgGoogleMapsMessages['et'] = array(
 	'gm-balloon-title' => 'Pealkiri:',
 	'gm-refresh-list' => 'Värskenda loendit',
+	'gm-searching' => 'otsin...',
 	'gm-are-you-sure' => 'Oled sa kindel?',
+	'gm-large' => 'Suur',
+	'gm-medium' => 'Keskmine',
+	'gm-small' => 'Väike',
+	'gm-yes' => 'Jah',
+	'gm-no' => 'Ei',
+	'gm-meters' => 'meetrit',
+	'gm-miles' => 'miili',
+	'gm-earth' => 'Maa',
+	'gm-moon' => 'Kuu',
+	'gm-mars' => 'Marss',
 );
 
 /** Basque (Euskara)

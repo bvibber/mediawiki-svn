@@ -3645,6 +3645,7 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Homonihilis
  * @author Joseph
  * @author Karduelis
  */
@@ -3656,6 +3657,7 @@ $messages['tr'] = array(
 	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Merhaba, %username, omega dil eğitmenine hoşgeldiniz',
 	'voctrain_continue' => 'devam et',
 	'voctrain_Languages' => 'Diller',
+	'voctrain_Answers' => 'Cevaplar',
 	'voctrain_other' => 'diğer',
 );
 

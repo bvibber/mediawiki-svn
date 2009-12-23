@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'conditionalshowsection-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'conditionalshowsection-desc' => 'إضافة وسم cshow لعرض/إخفاء شرطيا قسم من نص الويكي',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

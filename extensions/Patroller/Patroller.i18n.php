@@ -71,6 +71,8 @@ $messages['af'] = array(
 	'patrol-revert' => 'Rol terug',
 	'patrol-revert-reason' => 'Rede:',
 	'patrol-skip' => 'Slaan oor',
+	'group-patroller' => 'Kontroleurs',
+	'group-patroller-member' => 'Kontroleur',
 );
 
 /** Amharic (አማርኛ)
@@ -543,9 +545,12 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'patrol-revert-reason' => 'Rêson :',
+	'group-patroller' => 'Patrolyors',
+	'group-patroller-member' => 'Patrolyor',
 );
 
 /** Western Frisian (Frysk)
@@ -1447,7 +1452,9 @@ $messages['rm'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'patrol' => 'Patrulează modificări',
 	'patrol-revert-reason' => 'Motiv:',
+	'patrol-skip' => 'Sari peste',
 	'patrol-another' => 'Arată altă modificare, dacă e posibil.',
 	'patrol-resume' => 'Apăsaţi aici pentru a reveni.',
 	'group-patroller' => 'Patrule',
@@ -1729,6 +1736,14 @@ $messages['tg-cyrl'] = array(
 $messages['th'] = array(
 	'patrol-revert-reason' => 'เหตุผล:',
 	'patrol-skip' => 'ข้าม',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'group-patroller' => 'Patrullar',
+	'group-patroller-member' => 'patrul',
 );
 
 /** Tagalog (Tagalog)

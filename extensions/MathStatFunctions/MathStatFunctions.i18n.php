@@ -633,6 +633,15 @@ $messages['tl'] = array(
 	'msfunc_div_zero' => 'Hatiin sa pamamagitan ng wala',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'msfunc_nan' => 'Sonuç değeri bir sayı değildir',
+	'msfunc_inf' => 'Sonuç değeri sonsuzluktur',
+	'msfunc_div_zero' => 'Sıfıra bölme',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

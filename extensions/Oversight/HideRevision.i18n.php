@@ -1270,7 +1270,7 @@ Anulâd d’abôrd cél changement en rètabléssent la vèrsion devant.',
 La publecacion de ceta enformacion pôt portar a consèquence la pèrta des privilèjos de Supèrvision.',
 	'oversight-legend' => 'Jornal de les rechèrches de les vèrsions cachiês',
 	'oversight-oversighter' => 'Supèrvisor :',
-	'oversight-offender' => 'Difamator :',
+	'oversight-offender' => 'Ôtor de la vèrsion :',
 );
 
 /** Friulian (Furlan)
@@ -3112,10 +3112,20 @@ $messages['rmy'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'hiderevision' => 'Ascuns permanent reviziile',
+	'hiderevision-desc' => 'Ascunde reviziile individuale pentru toţi utilizatorii pentru motive legale, etc.',
+	'group-oversight' => 'Supraveghetori',
+	'group-oversight-member' => 'supraveghetori',
+	'grouppage-oversight' => '{{ns:project}}:Supraveghetori',
+	'right-hiderevision' => 'Ascunde reviziile de la administratori',
+	'hiderevision-prompt' => 'Numărul reviziei pentru a elimina:',
+	'hiderevision-continue' => 'Cuntinuă',
 	'hiderevision-reason' => 'Motiv (va fi înregistrat separat):',
 	'hiderevision-submit' => 'Ascunde permanent această revizie',
 	'hiderevision-tab' => 'Ascunde revizia',
@@ -3129,7 +3139,13 @@ $messages['ro'] = array(
 Anuleaz-o pe aceasta şi revino la cea precedentă mai întâi.',
 	'hiderevision-error-delete' => 'Nu a putut fi arhivat; a fost deja şters?',
 	'hiderevision-archive-status' => 'Ştergerea reviziei din $1: $2',
+	'oversight-log-hiderev' => 'a eliminat o modificare de la $1',
+	'oversight' => 'Supraveghere',
 	'oversight-view' => 'detalii',
+	'oversight-prev' => 'Ultima modificare trecută',
+	'oversight-hidden' => 'Revizii ascunse',
+	'oversight-oversighter' => 'Supraveghetor:',
+	'oversight-offender' => 'Autorul reviziei:',
 );
 
 /** Russian (Русский)
@@ -3705,6 +3721,21 @@ $messages['tg-cyrl'] = array(
 	'oversight-offender' => 'Мутахалиф:',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'hiderevision-continue' => 'Dowam et',
+	'hiderevision-submit' => 'Bu maglumaty möhletsiz gizle',
+	'hiderevision-tab' => 'Wersiýany gizle',
+	'hiderevision-link' => 'Gizlenilgi ulanyjy goşantlary',
+	'hiderevision-norevisions' => 'Öçürmek üçin hiç hili wersiýa görkezilmedi.',
+	'hiderevision-status' => 'Wersiýa $1: $2',
+	'hiderevision-error-missing' => 'Maglumat bazasynda tapylmady',
+	'oversight-view' => 'jikme-jiklikler',
+	'oversight-hidden' => 'Gizlenilen wersiýa',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -4058,32 +4089,32 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Alex S.H. Lin
+ * @author Gaoxuewei
  * @author Gzdavidwong
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'hiderevision' => '永久隐藏修订版本',
-	'hiderevision-desc' => '隐藏所有用户因法律原因等之个别修订',
+	'hiderevision-desc' => '由于法律等原因隐藏所有用户的修改',
 	'group-oversight' => '监督者',
-	'group-oversight-member' => '监督',
-	'grouppage-oversight' => '{{ns:project}}:监督',
-	'right-oversight' => '查看一个之前隐藏过之修订',
-	'right-hiderevision' => '从管理员隐藏版本',
-	'hiderevision-prompt' => '要隐藏的修订版本号码:',
+	'group-oversight-member' => '监督者',
+	'grouppage-oversight' => '{{ns:project}}:监督者',
+	'right-oversight' => '查看之前的隐藏修改',
+	'right-hiderevision' => '隐藏管理员做出的修改',
+	'hiderevision-prompt' => '要删除的修订版本号:',
 	'hiderevision-continue' => '继续',
-	'hiderevision-text' => "'''注意！'''本工具'''只能'''在以下情况才能使用：
-* 这个修订版本含有不适当的个人隐私资讯。
-*: ''例如一个人的住处地址、电话号码、身分证号码等等…''
+	'hiderevision-text' => "本工具'''只能'''在以下情况使用：
+* 这个修订版本含有不适当的个人隐私信息
+*: ''例如家庭住址、电话号码、身份证号码等''
 
-'''滥用此工具，最终将会失去使用此工具的特殊权限！'''
+'''滥用此工具将会被剥夺权限。'''
 
-删除这个项目，将会使这个网站上何任人都无法看到此项目,
-如果您误删了修订版本，必须请管理员从资料库中手动恢复。",
+这个网站上何任人都无法看到删除的项目，但是删除动作会被记录。如果您误删了项目，数据库管理员可以手动恢复。",
 	'hiderevision-reason' => '理由 （这个记录将不会公开）:',
 	'hiderevision-submit' => '永久隐藏这项资料',
 	'hiderevision-tab' => '隐藏此修订',
 	'hiderevision-link' => '隐藏用户贡献',
-	'hiderevision-norevisions' => '没有指定的修订版本被删除',
+	'hiderevision-norevisions' => '没有指定删除的修订版本',
 	'hiderevision-noreason' => '您必须说明隐藏这个修订版本的理由。',
 	'hiderevision-status' => '修订版本 $1: $2',
 	'hiderevision-success' => '已经完成隐藏与记录此操作',
@@ -4103,10 +4134,12 @@ $messages['zh-hans'] = array(
 	'oversight-header' => '以下列示的是已经永久隐藏的修订版本。请注意！泄漏这些讯息将会永远丧失{{int:Oversight}}权限！',
 	'oversight-legend' => '搜寻修订隐藏日志',
 	'oversight-oversighter' => '监督者：',
+	'oversight-offender' => '修订者：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
+ * @author Gaoxuewei
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -4116,7 +4149,7 @@ $messages['zh-hant'] = array(
 	'group-oversight-member' => '監督',
 	'grouppage-oversight' => '{{ns:project}}:監督',
 	'right-oversight' => '查看一個之前隱藏過之修訂',
-	'right-hiderevision' => '去檢討和恢復由操作員隱藏之修訂',
+	'right-hiderevision' => '隱藏管理員做出的修改',
 	'hiderevision-prompt' => '要隱藏的修訂版本號碼:',
 	'hiderevision-continue' => '繼續',
 	'hiderevision-text' => "'''注意！'''本工具'''只能'''在以下情況才能使用：
@@ -4151,5 +4184,6 @@ $messages['zh-hant'] = array(
 	'oversight-header' => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
 	'oversight-legend' => '搜尋修訂隱藏日誌',
 	'oversight-oversighter' => '監督者:',
+	'oversight-offender' => '修訂者：',
 );
 

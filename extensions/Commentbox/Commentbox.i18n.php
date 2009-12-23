@@ -51,8 +51,12 @@ $messages['af'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'commentbox-desc' => 'يضيف صندوق تعليق لصفحات معينة',
+	'commentbox-intro' => '== أضف تعليقا... ==
+لديك تعليق على هذه الصفحة؟ أضفه هنا أو <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} عدل الصفحة مباشرة]</span>.',
 	'commentbox-savebutton' => 'احفظ التعليق',
 	'commentbox-name' => 'الاسم:',
+	'commentbox-name-explanation' => '<small>(نصيحة: لو أنك [[Special:UserLogin|ستسجل الدخول]]، فلن تحتاج إلى ملأ اسمك هنا يدويا)</small>',
 	'commentbox-log' => 'تعليقات جديدة',
 	'commentbox-first-comment-heading' => '== تعليقات ==',
 	'commentbox-regex' => '/\\n==\\s*نعليقات\\s*==\\s*\\n/i',
@@ -217,6 +221,17 @@ Tienes un comentario a esta página? Agrégalo aquí o <span class="plainlinks">
 	'commentbox-error-page-nonexistent' => 'Esta página no existe!',
 	'commentbox-error-namespace' => 'Los comentarios no estan permitidos en este espacio de nombre!',
 	'commentbox-error-empty-comment' => 'Comentarios vacíos no están permitidos!',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'commentbox-savebutton' => 'Salvesta kommentaar',
+	'commentbox-name' => 'Nimi:',
+	'commentbox-first-comment-heading' => '== Kommentaarid ==',
+	'commentbox-error-page-nonexistent' => 'Seda lehekülge ei ole!',
+	'commentbox-error-namespace' => 'Siin nimeruumis ei ole kommentaarid lubatud.',
 );
 
 /** Finnish (Suomi)
@@ -724,6 +739,7 @@ $messages['te'] = array(
 	'commentbox-name' => 'పేరు:',
 	'commentbox-log' => 'కొత్త వ్యాఖ్యలు',
 	'commentbox-first-comment-heading' => '== వ్యాఖ్యలు ==',
+	'commentbox-regex' => '/\\n==\\s*వ్యాఖ్యలు\\s*==\\s*\\n/i',
 	'commentbox-errorpage-title' => 'వ్యాఖ్యని సృష్టించునప్పుడు పొరపాటు జరిగింది',
 	'commentbox-error-page-nonexistent' => 'ఈ పేజీ లేనే లేదు!',
 	'commentbox-error-namespace' => 'ఈ పేరుబరిలో వ్యాఖ్యలకు అనుమతి లేదు!',
@@ -747,11 +763,12 @@ $messages['uk'] = array(
 );
 
 /** Vèneto (Vèneto)
+ * @author Candalua
  * @author Vajotwo
  */
 $messages['vec'] = array(
-	'commentbox-intro' => '== Ajungi on comento ... ==
-Gheto comenti so sta paxena? Ajungi qui o <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} modifega diretamente a paxena]</span>.',
+	'commentbox-intro' => '== Zonta on comento ... ==
+Gheto comenti so sta paxena? Zonta qui o <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} modifega diretamente a paxena]</span>.',
 	'commentbox-savebutton' => 'Salva comento',
 	'commentbox-name' => 'Nome:',
 	'commentbox-name-explanation' => "<small>(Sujerimento: Se se [[Special:UserLogin|effetua l'acesso]], non se deve inserire manualmente qui el proprio nome)</small>",

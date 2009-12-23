@@ -606,6 +606,13 @@ $messages['tl'] = array(
 	'piwik-browsers' => 'Mga pantingin-tingin',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'piwik-countries' => 'Ülkeler',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

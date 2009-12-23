@@ -11,6 +11,13 @@ $messages['qqq'] = array(
 	'groupssidebar-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'groupssidebar-desc' => 'هذا الامتداد يوفر لإداريي الموقع القدرة على تضمين عناصر الشريط الجانبي لمجموعات مستخدم محددة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

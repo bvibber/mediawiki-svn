@@ -301,6 +301,7 @@ $messages['fi'] = array(
 	'security-info-toggle' => 'turvallisuusrajoitukset',
 	'security-inforestrict' => '$1 on rajoitettu ryhmälle $2',
 	'security-infosysops' => 'Rajoitukset eivät koske sinua, koska kuulut ylläpitäjäryhmään',
+	'security-manygroups' => 'ryhmät $1 ja $2',
 	'security-type-category' => 'luokka',
 	'security-type-namespace' => 'nimiavaruus',
 );
@@ -687,12 +688,25 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
  * @author Simny
  */
 $messages['no'] = array(
+	'security' => 'Sikkerhetslogg',
+	'security-desc' => 'Utvider MediaWiki sin funksjon for sidevern til å tillate restriksjoner mot innsyn i sideinnhold',
+	'security-logpage' => 'Sikkerhetslogg',
+	'security-logpagetext' => 'Dette er en handlingslogg blokkert av [http://www.mediawiki.org/wiki/Extension:SimpleSecurity SimpleSecurity-utvidelsen].',
+	'badaccess-read' => "'''Advarsel:''' «$1» blir henvist hit, men du har ikke tilstrekkelige rettigheter til å nå den.",
 	'security-info' => 'Det finnes $1 på denne siden',
 	'security-info-toggle' => 'sikkerhetsrelaterte begrensninger',
+	'security-inforestrict' => '$1 er avgrenset til $2',
+	'security-desc-LS' => '(gjelder fordi denne siden er i «$2 $1»)',
+	'security-infosysops' => 'Ingen restriksjoner er virksomme fordi du er medlem av administratorgruppen',
+	'security-manygroups' => 'gruppene $1 og $2',
+	'security-unchain' => 'Endre handligene individuelt',
 	'security-type-category' => 'kategori',
+	'security-type-namespace' => 'navnerom',
+	'security-restricttogroup' => 'Tilgang til innholdet er begrenset til medlemmer av «$1»',
 );
 
 /** Occitan (Occitan)
@@ -895,6 +909,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'security-info-toggle' => 'భద్రతా నియంత్రణలు',
 	'security-type-category' => 'వర్గం',
+	'security-type-namespace' => 'పేరుబరి',
 );
 
 /** Thai (ไทย)

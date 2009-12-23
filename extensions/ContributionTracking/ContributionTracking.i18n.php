@@ -773,9 +773,11 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'contrib-tracking-error' => 'Eroare',
+	'contrib-tracking-button' => 'Continuaţi',
 );
 
 /** Tarandíne (Tarandíne)
@@ -868,6 +870,14 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'contrib-tracking-error' => 'Хато',
 	'contrib-tracking-button' => 'Идома',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'contrib-tracking-error' => 'Säwlik',
+	'contrib-tracking-button' => 'Dowam et',
 );
 
 /** Tagalog (Tagalog)

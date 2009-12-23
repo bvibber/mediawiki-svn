@@ -110,9 +110,14 @@ U terugvoer is waardevol en help ons om ons webwerf te verbeter.''",
 	'readerfeedback-main' => 'Slegs inhoudelike bladsye kan gegradeer word.',
 	'readerfeedback-success' => "Dankie vir u waardering van hierdie bladsy!''' ([$2 sien resultate]) ([$3 kommentaar of vrae?]).",
 	'readerfeedback-voted' => "'''U het reeds 'n waardering van die bladsy gemaak''' ([$2 sien resultate]) ([$3 kommentaar of vrae?]).",
+	'readerfeedback-error' => "''''n Fout het voorgekom met die beoordeling van hierdie bladsy''' ([$2 resultate]) ([$3 opmerkings of vrae?])",
 	'readerfeedback-submitting' => 'Besig om in te dien…',
 	'readerfeedback-finished' => 'Baie dankie!',
 	'readerfeedback-tagfilter' => 'Etiket:',
+	'readerfeedback-tierfilter' => 'Waardering:',
+	'readerfeedback-tier-high' => 'Hoog',
+	'readerfeedback-tier-medium' => 'Gemiddeld',
+	'readerfeedback-tier-poor' => 'Laag',
 	'tooltip-ca-ratinghist' => 'Lesers se graderings van hierdie bladsy',
 	'specialpages-group-feedback' => 'Mening van die leser',
 );
@@ -125,6 +130,7 @@ U terugvoer is waardevol en help ons om ons webwerf te verbeter.''",
  * @author Prof.Sherif
  */
 $messages['ar'] = array(
+	'readerfeedback-desc' => 'تحقيق الصفحة يسمح للقراء بإعطاء تعليقات في صورة تقييمات تصنيفية',
 	'readerfeedback' => 'ماذا تظن بهذه الصفحة؟',
 	'readerfeedback-text' => "''من فضلك دقيقة لتقييم هذه الصفحة بالأسفل. تعليقك قيم ويساعدنا في تحسين موقعنا.''",
 	'readerfeedback-reliability' => 'الاعتمادية',
@@ -141,7 +147,8 @@ $messages['ar'] = array(
 	'readerfeedback-submit' => 'تنفيذ',
 	'readerfeedback-main' => 'فقط صفحات المحتوى يمكن تقييمها.',
 	'readerfeedback-success' => "'''شكرا لك على مراجعة هذه الصفحة!''' ([$2 شاهد النتيجة]) ([$3 تعليقات أو أسئلة؟]).",
-	'readerfeedback-voted' => "'''يبدو أنك قيمت هذه الصفحة بالفعل.'''. ([$3 تعليقات أو أسئلة؟]).",
+	'readerfeedback-voted' => "'''يبدو أنك قيمت هذه الصفحة بالفعل''' ([$2 انظر النتائج]) ([$3 تعليقات أو أسئلة؟]).",
+	'readerfeedback-error' => "'''حدث خطأ أثناء تقييم هذه الصفحة''' ([$2 انظر النتائج]) ([$3 تعليقات او أسئلة؟]).",
 	'readerfeedback-submitting' => 'جاري التنفيذ...',
 	'readerfeedback-finished' => 'شكرا لك!',
 	'readerfeedback-tagfilter' => 'وسم:',
@@ -259,6 +266,7 @@ $messages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author Borislav
  * @author DCLXVI
+ * @author Turin
  */
 $messages['bg'] = array(
 	'readerfeedback' => 'Какво мислите за тази страница?',
@@ -266,6 +274,7 @@ $messages['bg'] = array(
 	'readerfeedback-submit' => 'Изпращане',
 	'readerfeedback-submitting' => 'Изпращане...',
 	'readerfeedback-finished' => 'Благодарим ви!',
+	'readerfeedback-tagfilter' => 'Етикет:',
 );
 
 /** Breton (Brezhoneg)
@@ -660,6 +669,14 @@ $messages['es'] = array(
 	'specialpages-group-feedback' => 'Opinión del espectador',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'readerfeedback-level-1' => 'Madal',
+	'readerfeedback-level-2' => 'Võrdne',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Bengoa
@@ -815,8 +832,8 @@ $messages['frp'] = array(
 	'readerfeedback-level-4' => 'Famox',
 	'readerfeedback-submit' => 'Sometre',
 	'readerfeedback-main' => 'Solament les pâges de contegnu pôvont étre èstimâs.',
-	'readerfeedback-success' => "'''Marci d’avêr revu ceta pâge !''' ([$3 Des quèstions ou ben des comentèros ?])",
-	'readerfeedback-voted' => "'''Semble que vos èyâd ja èstimâ ceta pâge.''' ([$3 Des quèstions ou ben des comentèros ?])",
+	'readerfeedback-success' => "'''Marci d’avêr revu ceta pâge !''' ([$2 vêre los rèsultats]) ([$3 des quèstions ou ben des comentèros ?])",
+	'readerfeedback-voted' => "'''Semble que vos èyâd ja èstimâ ceta pâge.''' ([$2 vêre los rèsultats]) ([$3 des quèstions ou ben des comentèros ?])",
 	'readerfeedback-submitting' => 'Somission...',
 	'readerfeedback-finished' => 'Grant-marci !',
 	'tooltip-ca-ratinghist' => 'Èstimacions de ceta pâge per los liésors',
@@ -1734,6 +1751,12 @@ $messages['ro'] = array(
 	'readerfeedback-submitting' => 'Trimit ...',
 	'readerfeedback-finished' => 'Mulţumim!',
 	'readerfeedback-tagfilter' => 'Etichetă:',
+	'readerfeedback-tierfilter' => 'Evalutare:',
+	'readerfeedback-tier-high' => 'Ridicat',
+	'readerfeedback-tier-medium' => 'Moderat',
+	'readerfeedback-tier-poor' => 'Slab',
+	'tooltip-ca-ratinghist' => 'Evaluările cititorilor despre această pagină',
+	'specialpages-group-feedback' => 'Opinia cititorilor',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1980,7 +2003,10 @@ $messages['te'] = array(
 	'readerfeedback-level-4' => 'అత్యుత్తమం',
 	'readerfeedback-submit' => 'దాఖలుచేయి',
 	'readerfeedback-success' => "'''ఈ పేజీని సమీక్షించినందుకు కృతజ్ఞతలు!'''  ([$2 ఫలితాలను చూడండి]) ([$3 సందేహాలు లేదా సూచనలున్నాయా?]).",
+	'readerfeedback-voted' => "'''ఈ పేజీకి మీరు ఇప్పటికే రేటింగు ఇచ్చినట్టు అనిపిస్తుంది''' ([$2 ఫలితాలను చూడండి]) ([$3 సందేహాలు లేదా సూచనలు ఉన్నాయా?]).",
+	'readerfeedback-error' => "'''ఈ పేజీకి రేటింగుని ఇవ్వడంలో పొరపాటు దొర్లింది''' ([$2 ఫలితాలను చూడండి]) ([$3 సందేహాలు లేదా సూచనలు ఉన్నాయా?]).",
 	'readerfeedback-finished' => 'ధన్యవాదాలు!',
+	'readerfeedback-tier-medium' => 'సామాన్యం',
 	'specialpages-group-feedback' => 'వీక్షకుల అభిప్రాయం',
 );
 
@@ -2007,6 +2033,31 @@ $messages['th'] = array(
 	'readerfeedback-tier-poor' => 'แย่',
 	'tooltip-ca-ratinghist' => 'การจัดอันดับโดยผู้อ่านของหน้านี้',
 	'specialpages-group-feedback' => 'ความคิดเห็นจากผู้เข้าชม',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'readerfeedback-reliability' => 'Ygtybarlylyk',
+	'readerfeedback-completeness' => 'Dolulyk',
+	'readerfeedback-npov' => 'Bitaraplyk',
+	'readerfeedback-presentation' => 'Prezentasiýa',
+	'readerfeedback-overall' => 'Umumy baha',
+	'readerfeedback-level-none' => '(ynamsyz)',
+	'readerfeedback-level-0' => 'Ýaramaz',
+	'readerfeedback-level-1' => 'Pes',
+	'readerfeedback-level-2' => 'Orta gürp',
+	'readerfeedback-level-3' => 'Ýagşy',
+	'readerfeedback-level-4' => 'Ajaýyp',
+	'readerfeedback-submit' => 'Tabşyr',
+	'readerfeedback-submitting' => 'Tabşyrylýar...',
+	'readerfeedback-finished' => 'Sag boluň!',
+	'readerfeedback-tagfilter' => 'Teg:',
+	'readerfeedback-tierfilter' => 'Derejelendirme:',
+	'readerfeedback-tier-high' => 'Ýokary',
+	'readerfeedback-tier-medium' => 'Orta tap',
+	'readerfeedback-tier-poor' => 'Ýaramaz',
 );
 
 /** Tagalog (Tagalog)
@@ -2217,20 +2268,71 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
+ * @author Gaoxuewei
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'readerfeedback' => '您对这个页面有什么意见？',
+	'readerfeedback-text' => "''请花一点时间来评价下面这个页面。您反馈的意见将帮助我们改进我们的网站。''",
+	'readerfeedback-reliability' => '可靠性',
+	'readerfeedback-completeness' => '完整性',
+	'readerfeedback-npov' => '中立性',
+	'readerfeedback-presentation' => '展示',
+	'readerfeedback-overall' => '总结',
+	'readerfeedback-level-none' => '（不确定）',
+	'readerfeedback-level-0' => '差',
+	'readerfeedback-level-1' => '不好',
+	'readerfeedback-level-2' => '一般',
+	'readerfeedback-level-3' => '好',
+	'readerfeedback-level-4' => '极好',
 	'readerfeedback-submit' => '提交',
+	'readerfeedback-main' => '只有内容页才可被评级。',
+	'readerfeedback-success' => "'''感谢您对本页的评论！'''（[$2 查看结果]） （[$3 留言或者有疑问？]）",
+	'readerfeedback-voted' => "'''您已经对本页评论过了'''（[$2 查看结果]） （[$3 留言或者有疑问？]）",
+	'readerfeedback-error' => "'''评论本页时出现了一个错误'''（[$2 查看结果]） （[$3 留言或者有疑问？]）",
+	'readerfeedback-submitting' => '提交中...',
+	'readerfeedback-finished' => '谢谢您！',
+	'readerfeedback-tagfilter' => '标签：',
+	'readerfeedback-tierfilter' => '评级：',
+	'readerfeedback-tier-high' => '高',
+	'readerfeedback-tier-medium' => '中',
+	'readerfeedback-tier-poor' => '低',
+	'tooltip-ca-ratinghist' => '读者对本页的评级',
+	'specialpages-group-feedback' => '浏览者意见',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Gaoxuewei
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'readerfeedback' => '您對這個頁面有什麽意見？',
+	'readerfeedback-text' => "''請花一點時間來評價下面這個頁面。您反饋的意見將幫助我們改進我們的網站。''",
+	'readerfeedback-reliability' => '可靠性',
+	'readerfeedback-completeness' => '完整性',
+	'readerfeedback-npov' => '中立性',
+	'readerfeedback-presentation' => '展示',
+	'readerfeedback-overall' => '總結',
+	'readerfeedback-level-none' => '（不確定）',
+	'readerfeedback-level-0' => '差',
+	'readerfeedback-level-1' => '不好',
+	'readerfeedback-level-2' => '一般',
+	'readerfeedback-level-3' => '好',
+	'readerfeedback-level-4' => '極好',
 	'readerfeedback-submit' => '提交',
+	'readerfeedback-main' => '只有內容頁才可被評級。',
+	'readerfeedback-success' => "'''感謝您對本頁的評論 !'''（[$2 查看結果]） （[$3 留言或者有疑問？]）",
+	'readerfeedback-voted' => "'''您已經對本頁評論過了'''（[$2 查看結果]） （[$3 留言或者有疑問？]）",
+	'readerfeedback-error' => "'''評論本頁時出現了一個錯誤'''（[$2 查看結果]） （[$3 留言或者有疑問？]）",
+	'readerfeedback-submitting' => '提交中...',
 	'readerfeedback-finished' => '謝謝！',
 	'readerfeedback-tagfilter' => '標籤：',
+	'readerfeedback-tierfilter' => '評級：',
+	'readerfeedback-tier-high' => '高',
+	'readerfeedback-tier-medium' => '中',
+	'readerfeedback-tier-poor' => '低',
 	'tooltip-ca-ratinghist' => '本頁面的讀者評分',
+	'specialpages-group-feedback' => '瀏覽者意見',
 );
 

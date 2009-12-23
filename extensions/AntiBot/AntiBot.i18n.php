@@ -405,6 +405,13 @@ $messages['pt-br'] = array(
 	'antibot-desc' => 'Simples painel de controle para checagem de spambots e trigger payloads',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'antibot-desc' => 'Cadru simplu pentru verificări spambot şi sarcinile utile de declanşare',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

@@ -204,6 +204,13 @@ No puedes crear esta página, pero puedes [{{fullurl:{{FULLPAGENAME}}|action=edi
 <createbox>break=no</createbox>",
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'createbox-create' => 'Loo',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

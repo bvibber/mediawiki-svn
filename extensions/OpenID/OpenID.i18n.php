@@ -704,6 +704,7 @@ $messages['ca'] = array(
 	'openidxrds' => 'Fitxer Yadis',
 	'openidconvert' => 'Conversor OpenID',
 	'openiderror' => 'Error de verificació',
+	'openidfailure' => 'Verificació fallida',
 	'openidusernameprefix' => 'Usuari OpenID',
 	'openidoptional' => 'Opcional',
 	'openidrequired' => 'Requerit',
@@ -711,11 +712,14 @@ $messages['ca'] = array(
 	'openidfullname' => 'Nom complet',
 	'openidemail' => 'Adreça de correu electrònic',
 	'openidlanguage' => 'Idioma',
+	'openidtimezone' => 'Zona horaria',
 	'openidchooseinstructions' => 'Tots els usuaris cal que tinguin un sobrenom;
 podeu triar-ne un de les opcions a continuació.',
 	'openidchoosefull' => 'El vostre nom complet ($1)',
 	'openidchooseexisting' => 'Un compte existent en aquest wiki:',
 	'openidchoosepassword' => 'contrasenya:',
+	'openid-urls-action' => 'Acció',
+	'openid-urls-delete' => 'Elimina',
 	'openid-provider-label-other-username' => "Introduïu el vostre $1 nom d'usuari",
 );
 
@@ -1350,6 +1354,7 @@ $messages['et'] = array(
 Kui soovid kasutada avatud ID-d tulevikus sisselogimiseks, võid [[Special:OpenIDConvert|konvertida oma konto, kasutamaks avatud ID-d]].",
 	'openidnousername' => 'Kasutajanimi määratlemata.',
 	'openidbadusername' => 'Märgitud kasutajanimi on vigane.',
+	'openiddelete-button' => 'Kinnita',
 	'openid-urls-delete' => 'Kustuta',
 	'openid-provider-label-google' => "Logi sisse oma Google'i konto kaudu",
 	'openid-provider-label-yahoo' => 'Logi sisse oma Yahoo konto kaudu',
@@ -3925,6 +3930,7 @@ Você não poderá mais efetuar autenticação com este OpenID.',
 $messages['ro'] = array(
 	'openidlogin' => 'Autentificare cu OpenID',
 	'openidserver' => 'Server OpenID',
+	'openidconvert' => 'Convertor OpenID',
 	'openiderror' => 'Eroare de verificare',
 	'openiderrortext' => 'A avut loc o eroare în timpul verificării URL-ului OpenID',
 	'openidconfigerror' => 'Eroare de configurare OpenID',
@@ -4557,6 +4563,7 @@ Det finns många [http://openid.net/get/ leverantörer av OpenID], och du kan re
  */
 $messages['te'] = array(
 	'openidlogin' => 'ఓపెన్ఐడీతో ప్రవేశించండి',
+	'openidserver' => 'ఓపెన్ఐడీ సేవకి',
 	'openidpermission' => 'ఓపెన్ఐడీ అనుమతుల పొరపాటు',
 	'openidcancel' => 'తనిఖీ రద్దయింది',
 	'openidfailure' => 'తనిఖీ విఫలమైంది',
@@ -4577,6 +4584,7 @@ $messages['te'] = array(
 	'openidconvertyourstext' => 'అది ఇప్పటికే మీ ఓపెన్ఐడీ.',
 	'openidconvertothertext' => 'ఇది వేరొకరి ఓపెన్ ఐడి',
 	'openidnousername' => 'వాడుకరిపేరు ఇవ్వలేదు.',
+	'openidclientonlytext' => 'ఈ వికీ లోని ఖాతాలను మీరు వేరే సైట్లలో ఓపెన్ఐడీలుగా ఉపయోగించలేరు.',
 	'openidupdateuserinfo' => 'నా వ్యక్తిగత సమాచారాన్ని తాజాకరించు',
 	'openiddelete' => 'ఓపెన్ ఐడి తొలగించు',
 	'openiddelete-button' => 'నిర్ధారించు',

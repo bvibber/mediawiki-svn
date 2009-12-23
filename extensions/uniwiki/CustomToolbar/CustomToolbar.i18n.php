@@ -924,9 +924,9 @@ Veuillez vérifier vos paramètres de blocage des fenêtres intruses.',
  * @author ChrisPtDe
  */
 $wgCustomToolbarMessages['frp'] = array(
-	'ct_bold_sample' => 'Tèxto grâs',
+	'ct_bold_sample' => 'Tèxto en grâs',
 	'ct_bold_caption' => 'Grâs',
-	'ct_italic_sample' => 'Tèxto étalico',
+	'ct_italic_sample' => 'Tèxto en étalico',
 	'ct_internal_caption' => 'Lim de dedens',
 	'ct_external_caption' => 'Lim de defôr',
 	'ct_math_caption' => 'Formula',
@@ -2101,6 +2101,7 @@ $wgCustomToolbarMessages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $wgCustomToolbarMessages['ro'] = array(
@@ -2113,6 +2114,7 @@ $wgCustomToolbarMessages['ro'] = array(
 	'ct_italic_tip_ins' => 'Inserează text cursiv',
 	'ct_italic_tip_wrap' => 'Fă acest text cursiv',
 	'ct_italic_caption' => 'Cursiv',
+	'ct_internal_sample' => 'Numele paginii',
 	'ct_internal_tip_ins' => 'Inserează o legătură internă',
 	'ct_internal_tip_wrap' => 'Fă acest text o legătură internă',
 	'ct_internal_caption' => 'Legătură internă',
@@ -2130,10 +2132,12 @@ $wgCustomToolbarMessages['ro'] = array(
 	'ct_nowiki_sample' => 'Inserează text neformatat aici',
 	'ct_nowiki_tip_ins' => 'Ignoră formatarea wiki',
 	'ct_nowiki_tip_wrap' => 'Ignoră formatarea wiki pentru acest text',
+	'ct_nowiki_caption' => 'Niciun wiki',
 	'ct_horizontal_tip' => 'Inserează o linie orizontală (folosiţi-o cumpătat)',
 	'ct_horizontal_caption' => 'Linie orizontală',
 	'ct_upload' => 'Încarcă $1',
 	'ct_select' => 'Selectează $1 pentru încărcare:',
+	'ct_submit' => 'Salt',
 	'ct_close' => 'Închide fereastra',
 	'ct_success' => 'Încărcare a fişierului cu succes!',
 	'ct_user_user' => 'Utilizator',
@@ -2650,11 +2654,22 @@ Pakisuri ang iyong panghadlang ng sulpot-litaw.",
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $wgCustomToolbarMessages['tr'] = array(
+	'ct_bold_sample' => 'Kalın metin',
 	'ct_italic_sample' => 'Italik metin',
+	'ct_italic_tip_ins' => 'İtalik metin gir',
 	'ct_italic_caption' => 'İtalik',
 	'ct_internal_sample' => 'MaddeAdı',
+	'ct_internal_tip_wrap' => 'Bu metni iç bağlantıya dönüştür',
+	'ct_internal_caption' => 'İç bağlantı',
+	'ct_external_tip_ins' => 'Dış bağlantı ekle',
+	'ct_external_tip_wrap' => 'Bu metni dış bağlantıya dönüştür',
+	'ct_image_caption' => 'Resim ekle',
+	'ct_math_caption' => 'Formül',
+	'ct_user_user' => 'Kullanıcı',
+	'ct_user_tip' => 'Kullanıcı sayfasına bir bağlantı ekle',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

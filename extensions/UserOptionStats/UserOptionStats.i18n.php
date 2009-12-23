@@ -47,14 +47,17 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
 	'useroptionstats' => 'إحصاءات خيارات المساهمين',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|صفحة خاصة]] للإبلاغ عن استخدام خيارات مستخدمي ميدياويكي',
 	'uos-warn' => 'PHPlot غير مثبّت!',
 	'uos-choose' => 'اختر واحدة من خيارات المستخدم التالية: $1',
 	'uos-unknown' => '*مبدئي',
 	'uos-other' => '*أخرى',
+	'uos-title' => 'توزيع القيم لخيار المستخدم $1',
 );
 
 /** Bavarian (Boarisch)
@@ -648,7 +651,17 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'useroptionstats' => 'వాడుకరి ఎంపికల గణాంకాలు',
+	'uos-unknown' => '*అప్రమేయం',
 	'uos-other' => '*ఇతర',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'useroptionstats' => 'Kullanıcı seçenek istatistikleri',
+	'uos-warn' => 'PHPlot kurulu değil!',
+	'uos-choose' => 'Aşağıdaki kullanıcı seçeneklerinden birini seçin: $1',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

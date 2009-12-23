@@ -2864,6 +2864,8 @@ Această pagină este aplicabilă doar utilizatorilor restricţionaţi",
 	'whitelistnever' => 'niciodată',
 	'group-restricted' => 'Utilizatori restricţionaţi',
 	'group-restricted-member' => 'Utilizator restricţionat',
+	'group-manager' => 'Manageri',
+	'group-manager-member' => 'Manager',
 );
 
 /** Tarandíne (Tarandíne)
@@ -3352,6 +3354,7 @@ $messages['te'] = array(
 	'whitelisttableedit' => 'మార్చు',
 	'whitelisttableview' => 'చూడండి',
 	'whitelisttablenewdate' => 'కొత్త తేదీ:',
+	'whitelisttablechangedate' => 'కాలపరిమితి తేదీని మార్చు',
 	'whitelisttableremove' => 'తొలగించు',
 	'whitelistnewtabledate' => 'కాల పరిమితి:',
 	'whitelistnewtablereview' => 'సమీక్షించు',
@@ -3361,6 +3364,8 @@ $messages['te'] = array(
 
 $2',
 	'whitelistrequestconf' => 'కొత్త పేజీలకై అభ్యర్థనని $1 కి పంపించాం',
+	'whitelistnonrestricted' => "వాడుకరి '''$1''' నియంత్రిత వాడుకరి కాదు.
+ఈ పేజీ నియంత్రిత వాడుకరులకు మాత్రమే వర్తిస్తుంది",
 	'whitelistnummatches' => ' - {{PLURAL:$1|ఒక పోలిక|$1 పోలికలు}}',
 	'group-restricted' => 'నియంత్రిత వాడుకరులు',
 	'group-restricted-member' => 'నియంత్రిత వాడుకరి',

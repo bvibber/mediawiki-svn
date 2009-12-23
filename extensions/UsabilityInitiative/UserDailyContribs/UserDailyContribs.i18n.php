@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 "user" is a plural here.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'userdailycontribs-desc' => 'مساهمات المستخدمين اليويمة لامتداد تتبع الضغطات',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

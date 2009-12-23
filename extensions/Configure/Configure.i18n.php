@@ -439,7 +439,7 @@ $messages['ar'] = array(
 	'configure-ext-settings-dep-error' => '$1: القيمة المطلوبة: $2، القيمة الحالية: $3',
 	'configure-ext-use-extension' => 'استخدم هذا الامتداد',
 	'configure-ext-use' => 'استخدام',
-	'configure-form-reason' => 'سبب التغيير',
+	'configure-form-reason' => 'السبب:',
 	'configure-customised' => "''هذا الإعداد تم تخصيصه''",
 	'configure-arrayinput-oneperline' => "''(واحد في السطر)''",
 	'configure-summary' => 'هذه الصفحة الخاصة تسمح لك بضبط هذا الويكي، انظر [http://www.mediawiki.org/wiki/Manual:Configuration_settings إعدادات الضبط] لمزيد من المعلومات.',
@@ -546,7 +546,7 @@ $messages['ar'] = array(
 	'configure-section-output' => 'مُخرج',
 	'configure-select-wiki' => 'اختيار الويكي',
 	'configure-select-wiki-desc' => 'اختر الويكي الذي تريد ضبطه.',
-	'configure-select-wiki-view-desc' => 'اختر ويكي تود رؤية النسخ له.',
+	'configure-select-wiki-view-desc' => 'اختر الويكي الذي تريد رؤية نسخ الضبط له.',
 	'configure-select-wiki-view-all' => 'كل الويكيهات',
 	'configure-select-wiki-view-specific' => ': ويكي معينة',
 	'configure-select-wiki-submit' => 'اختر',
@@ -2465,7 +2465,7 @@ $messages['es'] = array(
 	'configure-ext-settings-dep-error' => '$1: valor requerido: $2, valor actual: $3',
 	'configure-ext-use-extension' => 'Usar esta extensión',
 	'configure-ext-use' => 'Usar',
-	'configure-form-reason' => 'Razones para cambiar:',
+	'configure-form-reason' => 'Razón:',
 	'configure-customised' => "''Esta configuración ha sido personalizada''",
 	'configure-arrayinput-oneperline' => "''(uno por línea)''",
 	'configure-summary' => 'Esta página especial le permite configurar esta wiki, vea [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] para mas información',
@@ -2614,6 +2614,31 @@ Por favor, créelo o cámbielo para usar esta extensión.',
 	'configure-farmer-settings' => '[[Special:Configure|Configurar este wiki]].',
 	'configure-farmer-extensions' => '[[Special:Extensions|Configurar extensiones para este wiki]].',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Listar extensiones disponibles para este wiki]].',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'configure-form-reason' => 'Põhjus:',
+	'configure-js-remove' => 'Kustuta',
+	'configure-js-remove-row' => 'Kustuta see sissekanne',
+	'configure-js-biglist-show' => '[näita üksikasju]',
+	'configure-js-biglist-hide' => '[peida üksikasjad]',
+	'configure-old' => 'Vanad versioonid',
+	'configure-section-email' => 'E-post',
+	'configure-section-cookie' => 'Küpsised',
+	'configure-section-images' => 'Failid',
+	'configure-section-antivirus' => 'Viirustõrje',
+	'configure-throttle-action-edit' => 'Redigeeri',
+	'configure-throttle-action-emailuser' => 'Saada e-kiri',
+	'configure-throttle-group' => 'Tüüp',
+	'configure-condition-operator-or' => 'Või',
+	'configure-condition-operator-and' => 'Ja',
+	'configure-condition-operator-not' => 'Mitte',
+	'configure-condition-name-5' => 'Kasutaja IP-aadress',
+	'configure-condition-description-3' => 'E-postiaadress kinnitatud',
 );
 
 /** Basque (Euskara)
@@ -3531,7 +3556,7 @@ $messages['he'] = array(
 	'configure-ext-settings-dep-error' => '$1: ערך נדרש: $2, ערך נוכחי: $3',
 	'configure-ext-use-extension' => 'הפעלת הרחבה זו',
 	'configure-ext-use' => 'הפעלה',
-	'configure-form-reason' => 'הסיבה לשינוי:',
+	'configure-form-reason' => 'הסיבה:',
 	'configure-customised' => "''הגדרה זו שונתה''.",
 	'configure-arrayinput-oneperline' => "''(אחד בכל שורה)''",
 	'configure-summary' => 'דף מיוחד זה מאפשר את שינוי הגדרות הוויקי, ראו את [http://www.mediawiki.org/wiki/Manual:Configuration_settings הגדרות התצורה] למידע נוסף.',
@@ -7940,7 +7965,7 @@ $messages['sk'] = array(
 	'configure-ext-settings-dep-error' => '$1: požadovaná hodnota: $2, aktuálna hodnota: $3',
 	'configure-ext-use-extension' => 'Používať toto rozšírenie',
 	'configure-ext-use' => 'Používať',
-	'configure-form-reason' => 'Dôvod zmeny:',
+	'configure-form-reason' => 'Dôvod:',
 	'configure-customised' => "''Toto nastavenie bolo prispôsobené''",
 	'configure-arrayinput-oneperline' => "''(jeden na riadok)''",
 	'configure-summary' => 'Táto špeciálna stránka vám umožňuje konfiguráciu tejto wiki. Ďalšie informácie nájdete na stránke[http://www.mediawiki.org/wiki/Manual:Configuration_settings Nastavenie konfigurácie].',
@@ -8785,7 +8810,7 @@ $messages['te'] = array(
 	'configure-edit-core' => 'మీడియావికీ',
 	'configure-edit-ext' => 'పొడగింతలు',
 	'configure-ext-settings' => 'అమరికలు',
-	'configure-form-reason' => 'మార్చడానికి కారణం:',
+	'configure-form-reason' => 'కారణం:',
 	'configure-arrayinput-oneperline' => "''(లైనుకి ఒకటి)''",
 	'configure-btn-save' => 'అమరికలు భద్రపరచు',
 	'configure-js-group-exists' => 'పొరపాటు: ఆ గుంపు ఇప్పటికే ఉంది.',
@@ -8796,6 +8821,7 @@ $messages['te'] = array(
 	'configure-js-search-legend' => 'అన్వేషణ అమరికలు',
 	'configure-old' => 'పాత కూర్పులు',
 	'configure-old-changes' => 'మార్పులు',
+	'configure-section-features' => 'సౌలభ్యాలు',
 	'configure-section-general' => 'సాధారణ అమరికలు',
 	'configure-section-pages' => 'పేజీలు',
 	'configure-section-db' => 'డాటాబేసు',
@@ -8825,8 +8851,10 @@ $messages['te'] = array(
 	'configure-setting-not-available' => 'ఈ మీడియావికీ సంచికలో ఆ అమరిక అందుబాటులో  లేదు',
 	'configure-view' => 'చూడండి',
 	'configure-view-not-allowed' => 'ఈ అమరికని చూడడానికి మీకు అనుమతి లేదు',
+	'right-configure-all' => 'అన్ని వికీ అమరికలనూ స్వరూపించగలగడం',
 	'configure-throttle-action-rollback' => 'రద్దుచేయి',
 	'configure-throttle-group-anon' => 'అందరు అజ్ఞాత వాడుకరులు',
+	'configure-throttle-count' => 'అనుమతించే చర్యలు:',
 	'configure-throttle-group' => 'రకం',
 	'configure-throttle-limit' => 'పరిమితి',
 	'configure-throttle-none' => 'పరిమితి లేదు',
@@ -9045,6 +9073,7 @@ Pakilikha ito o baguhin ito upang magamit ang ganitong karugtong.',
  * @author Joseph
  * @author Karduelis
  * @author Mach
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'configure' => 'Vikiyi yapılandır',
@@ -9090,10 +9119,26 @@ $messages['tr'] = array(
 	'configure-section-copyright' => 'Telif hakları',
 	'configure-select-wiki-view-all' => 'Bütün vikiler',
 	'configure-view-default' => 'Varsayılan ayarlar',
+	'right-viewconfig' => 'Viki konfigürasyonunu görür',
+	'right-viewconfig-all' => 'Tüm viki konfigürasyonlarını görür',
+	'right-viewconfig-interwiki' => 'Yabancı viki konfigürasyonunu görür',
+	'viewconfig' => 'Viki konfigürasyonunu görür',
 	'configure-throttle-action-move' => 'Taşı',
 	'configure-throttle-action-emailuser' => 'E-posta gönder',
+	'configure-throttle-count' => 'İzin verilen işlemler:',
+	'configure-throttle-group' => 'Tür',
 	'configure-throttle-limit' => 'Sınır',
 	'configure-throttle-none' => 'Sınırsız',
+	'configure-condition-operator' => 'Operatör:',
+	'configure-condition-operator-or' => 'Veya',
+	'configure-condition-operator-and' => 'Ve',
+	'configure-condition-operator-xor' => 'Xor',
+	'configure-condition-operator-not' => 'Değil',
+	'configure-condition-name' => 'Koşul',
+	'configure-condition-requirement' => 'Gereklilik',
+	'configure-condition-name-1' => 'Asgari değişiklik sayısı',
+	'configure-condition-name-2' => 'Asgari yaş',
+	'configure-condition-description-5' => 'Kullanıcının IP adresi $1',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

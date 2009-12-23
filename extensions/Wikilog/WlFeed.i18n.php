@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'wlfeed-desc' => 'Klasse vir die skep van verbeterde voere (feeds)',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'wlfeed-desc' => 'رتب توليد تلقيم ممددة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -148,6 +155,13 @@ $messages['nl'] = array(
 	'wlfeed-desc' => 'Klassen voor het aanmaken van verbeterde feeds',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'wlfeed-desc' => 'Avanserte genereringsklasser for mating',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -189,6 +203,13 @@ $messages['ru'] = array(
  */
 $messages['si'] = array(
 	'wlfeed-desc' => 'වර්ධිත සංග්‍රහ ප්‍රවේණි පංති',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'wlfeed-desc' => 'Gelişmiş besleme oluşturma sınıfları',
 );
 
 /** Ukrainian (Українська)

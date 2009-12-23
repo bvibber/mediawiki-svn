@@ -1098,6 +1098,22 @@ $messages['tl'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Palitan ang katayuan ko bilang hindi nakakunekta sa internet kapag umaalis sa pagkakalagda',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'onlinestatus-js-anon' => 'Hata: bu özelliği kullanabilmeniz için oturum açmış olmanız gerekiyor',
+	'onlinestatus-js-changed' => 'Durumunuz "$1" olarak değiştirildi',
+	'onlinestatus-subtitle-offline' => 'Bu kullanıcı şu an çevrimdışı',
+	'onlinestatus-subtitle-online' => 'Bu kullanıcı şu an çevrimiçi',
+	'onlinestatus-tab' => 'Durum',
+	'onlinestatus-toggles-desc' => 'Durumunuz:',
+	'onlinestatus-toggle-offline' => 'Çevrimdışı',
+	'onlinestatus-toggle-online' => 'Çevrimiçi',
+	'onlinestatus-pref-onlineonlogin' => 'Oturum açtığımda durumumu çevrimiçi olarak değiştir',
+	'onlinestatus-pref-offlineonlogout' => 'Oturumu kapadığımda durumumu çevrimdışı olarak değiştir',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

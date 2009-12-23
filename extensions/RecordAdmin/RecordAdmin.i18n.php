@@ -1883,6 +1883,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'recordadmin-submit' => 'దాఖలుచేయి',
 	'recordadmin-alreadyexist' => 'క్షమించండి, "$1" ఇప్పటికే ఉంది!',
 	'recordadmin-badtitle' => 'తప్పు శీర్షిక!',
 	'recordadmin-buttonsearch' => 'వెతుకు',

@@ -638,6 +638,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'newschannel' => 'వార్తా వాహిని',
 	'newschannel_limit' => 'పరిమితి:',
 	'newschannel_include_category' => 'అదనపు వర్గం:',
 );
@@ -653,6 +654,17 @@ $messages['tl'] = array(
 	'newschannel_include_category' => 'Karagdagang kaurian:',
 	'newschannel_exclude_category' => 'Huwag isali ang kaurian:',
 	'newschannel_submit_button' => 'Lumikha ng pasubo/pakain',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'newschannel' => 'Haber kanalı',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Sınır:',
+	'newschannel_include_category' => 'Ek kategori:',
+	'newschannel_submit_button' => 'Besleme oluştur',
 );
 
 /** Ukrainian (Українська)

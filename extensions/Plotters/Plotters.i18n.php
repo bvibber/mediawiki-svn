@@ -58,12 +58,25 @@ $1 = number of messages following. Can be used with PLURAL.',
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'plotters-desc' => 'يدع المستخدمين يستخدمون جافاسكريبت معدلة في وسوم jsplot',
+	'plotters' => 'رسامات',
+	'plotters-title' => 'رسامات',
+	'plotters-pagetext' => 'بالأسفل قائمة بالرسامين الخاصين يمكن للمستخدمين استخدامها في وسوم jsplot، كما هو معرف بواسطة [[MediaWiki:Plotters-definition]].
+هذا العرض العام يوفر وصولا سهلا لصفحات رسائل النظام التي تعرف وصف وكود كل رسام.',
 	'plotters-uses' => 'تستخدم',
 	'plotters-missing-script' => 'لا سكربت مُعرّف.',
 	'plotters-missing-arguments' => 'لا معطى محدّد.',
 	'plotters-excessively-long-scriptname' => 'اسم السكربت طويل جدًا.
 من فضلك عرّف سكربتًا اسمه لا يتجاوز 255 حرفًا.',
+	'plotters-excessively-long-preprocessorname' => 'اسم المعالج الأولي طويل جدا.
+من فضلك عرف معالجا أوليا، اسمه طوله 255 حرفا كحد أقصى.',
+	'plotters-excessively-long-name' => 'اسم الرسام طويل جدا.
+من فضلك عرف اسم رسام به 255 حرف كحد أقصى.',
+	'plotters-excessively-long-tableclass' => 'رتبة الجدول طويلة جدا.
+من فضلك عرف رتبة جدول لديها 255 حرف كحد أقصى.',
 	'plotters-no-data' => 'لا بيانات متوفرة.',
+	'plotters-invalid-renderer' => 'عارض غير صحيح تم اختياره.',
+	'plotters-errors' => '{{PLURAL:$1|خطأ|أخطاء}} الرسام:',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -220,8 +233,10 @@ Por favor define un preprocesador, cuyo nombre tenga 255 caracteres de longitud 
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  */
 $messages['fi'] = array(
+	'plotters-uses' => 'Käyttää',
 	'plotters-missing-script' => 'Mitään skriptiä ei määritetty.',
 	'plotters-excessively-long-scriptname' => 'Skriptin nimi on liian pitkä.
 Nimeä skripti jonka nimi on enimmiltään 255 merkkiä pitkä.',
@@ -682,6 +697,20 @@ Tento prehľad poskytuje jednoduchý prístup k stránkam systémových správ, 
 	'plotters-no-data' => 'Neboli poskytnuté žiadne údaje.',
 	'plotters-invalid-renderer' => 'Bol vybraný neplatný vykresľovač.',
 	'plotters-errors' => '<b>{{PLURAL:$1|Chyba|Chyby}} plotrov:</b>',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'plotters-uses' => 'వాడుకలు',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'plotters-uses' => 'Kullanımları',
 );
 
 /** Veps (Vepsan kel')

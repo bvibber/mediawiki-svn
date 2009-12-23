@@ -1108,12 +1108,15 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'player' => 'Jucător',
 	'player-title' => 'Jucător',
+	'player-playertitle' => 'Jucător: $1',
 	'player-file' => 'Nume fişier',
 	'player-play' => 'Redare',
 	'player-not-allowed' => 'format nepermis',
 	'player-not-found' => 'fişier negăsit',
 	'player-invalid-title' => 'titlu incorect',
+	'player-clicktoplay' => 'Joacă $1',
 	'player-goto-player' => 'jucător',
 	'player-goto-page' => 'Pagină',
 	'player-goto-file' => 'fişier',

@@ -1315,6 +1315,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'editmsg-target' => 'లక్ష్యిత సందేశం:',
 	'editmsg-search' => 'అన్వేషణ',
 	'editmsg-new-search' => 'కొత్త అన్వేషణ',
 );

@@ -484,6 +484,7 @@ $messages['et'] = array(
  */
 $messages['eu'] = array(
 	'sitematrix' => 'Wikimediako beste hizkuntzatako proiektuen zerrenda',
+	'sitematrix-summary' => 'Orrialde berezi honek Wikimedia wiki guztiak zerrendatzen ditu.',
 	'sitematrix-language' => 'Hizkuntza',
 	'sitematrix-others' => 'Wikimediaren beste proiektuak',
 	'sitematrix-sitetotal' => 'Guztira',
@@ -1694,6 +1695,22 @@ $messages['th'] = array(
 	'sitematrix-total' => "'''จำนวนทั้งหมด: $1 เว็บไซต์'''",
 	'sitematrix-sitetotal' => 'รวม',
 	'sitematrix-private' => 'ส่วนตัว',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'sitematrix' => 'Wikimedia wikileriniň sanawy',
+	'sitematrix-summary' => 'Bu ýörite sahypa ähli Wikimedia wikileriniň sanawyny görkezýär.',
+	'sitematrix-desc' => '[[Special:SiteMatrix|Wikimedia wikileriniň sanawyny]] görkezýär',
+	'sitematrix-language' => 'Dil',
+	'sitematrix-project' => 'Taslamanyň ady, taslama-ara çykgyt we wikiara çykgyt',
+	'sitematrix-others' => 'Wikimedianyň başga taslamalary',
+	'sitematrix-total' => "'''Jemi sany: $1'''",
+	'sitematrix-sitetotal' => 'Jemi',
+	'sitematrix-private' => 'hususy',
+	'sitematrix-fishbowl' => 'redaktirlemek çäklendirildi',
 );
 
 /** Tagalog (Tagalog)

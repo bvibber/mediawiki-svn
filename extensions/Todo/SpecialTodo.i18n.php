@@ -1351,6 +1351,7 @@ $4',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'todo' => 'Oppgaveliste',
@@ -1382,6 +1383,8 @@ $4',
 	'todo-form-details' => 'Detaljer:',
 	'todo-form-email' => 'Skriv inn e-postadressen din her for å mottå beskjed på e-post når oppgaven er fullført:',
 	'todo-form-submit' => 'Utfør',
+	'right-todo' => 'Ha en å gjøre-liste',
+	'right-todosubmit' => 'Begrens en brukers å gjøre-listerettigheter',
 );
 
 /** Occitan (Occitan)
@@ -1601,7 +1604,12 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'todo' => 'Listă de făcut',
+	'todo-tab' => 'de făcut',
+	'todo-new-queue' => 'nou',
 	'todo-unrecognize-type' => 'Tip nerecunoscut',
+	'todo-item-list' => 'Elementele dumneavoastră',
+	'todo-add-queue' => 'Adaugă coadă...',
 	'todo-list-change' => 'Modifică',
 	'todo-list-cancel' => 'Anulează',
 	'todo-new-item' => 'Element nou',
@@ -1815,6 +1823,7 @@ $4',
  */
 $messages['te'] = array(
 	'todo' => 'చేయాల్సిన జాబితా',
+	'todo-desc' => 'ప్రయోగాత్మక వ్యక్తిగత [[Special:Todo|పనుల జాబితా]] పొడగింత',
 	'todo-new-queue' => 'కొత్తది',
 	'todo-unrecognize-type' => 'గుర్తుతెలియని రకం',
 	'todo-item-list' => 'మీ అంశాలు',

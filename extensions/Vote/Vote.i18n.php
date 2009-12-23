@@ -1800,8 +1800,11 @@ $messages['te'] = array(
 	'vote-registered' => 'మీ వోటు నమోదయ్యింది.',
 	'vote-view-results' => 'ఫలితాలు చూడండి',
 	'vote-results' => 'వోటు ఫలితాలు',
+	'vote-results-choice' => 'ఎంపిక',
 	'vote-results-count' => 'లెక్క',
+	'vote-login' => 'వోటేయడానికి మీరు [$1 ప్రవేశించి] ఉండాలి.',
 	'right-vote' => 'వోటు',
+	'right-voteadmin' => 'వోటు ఫలితాలను చూడండి',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -1869,6 +1872,7 @@ riddler|''Riddler'' (\"Mambubugtong\")",
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'vote' => 'Oy',
@@ -1886,6 +1890,8 @@ $messages['tr'] = array(
 	'vote-results-none' => 'Şu anda hiç bir oy yerleştirilmemiş.',
 	'vote-login' => 'Oy kullanmak için [$1 giriş yap]malısınız.',
 	'vote-invalid-choice' => 'Müsait seçeneklerden birini seçmelisiniz.',
+	'right-vote' => 'Oy verir',
+	'right-voteadmin' => 'Oylama sonuçlarını görür',
 );
 
 /** Ukrainian (Українська)

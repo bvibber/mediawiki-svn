@@ -2250,12 +2250,19 @@ Se tiver alguma questão sobre este sistema de distribuição de extensões, por
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'extensiondistributor' => 'Descarcă extensia MediaWiki',
 	'extdist-no-such-extension' => 'Extensia "$1" inexistentă',
 	'extdist-no-such-version' => 'Extensia "$1" nu există în versiunea "$2".',
 	'extdist-submit-extension' => 'Continuă',
+	'extdist-current-version' => 'Versiune dezvoltare (trunchi)',
+	'extdist-choose-version' => '<big>Descărcaţi extensia <b>$1</b>.</big>
+
+Alegeţi versiunea dvs MediaWiki.
+
+Cele mai multe extensii funcţionează în mai multe versiuni de MediaWiki, deci dacă versiunea dvs MediaWiki nu este aici sau dacă aveţi nevoie de cele mai recente funcţionalităţi pentru extensii, încercaţi să folosiţi versiunea curentă.',
 	'extdist-submit-version' => 'Continuă',
 	'extdist-want-more' => 'Obţine altă extensie',
 );
@@ -2478,8 +2485,17 @@ Om du har några frågor om programtilläggets distributionssystem, gå till [[E
  * @author Veeven
  */
 $messages['te'] = array(
+	'extdist-no-such-extension' => '"$1" అనే పొడగింత లేదు',
 	'extdist-submit-extension' => 'కొనసాగించు',
 	'extdist-submit-version' => 'కొనసాగించు',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'extdist-submit-extension' => 'Dowam et',
+	'extdist-submit-version' => 'Dowam et',
 );
 
 /** Tagalog (Tagalog)

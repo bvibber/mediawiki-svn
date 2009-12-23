@@ -27,6 +27,13 @@ $messages['qqq'] = array(
 	'semanticinternalobjects-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'semanticinternalobjects-desc' => 'ضبط الأشياء الداخلية في ميدياويكي الدلالي',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

@@ -135,6 +135,13 @@ $messages['fr'] = array(
 	'uploadblacklist-desc' => 'Ajoute une fonctionnalité de liste noire pour les téléversements',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'uploadblacklist-desc' => 'Apond una fonccionalitât de lista nêre por los tèlèchargements.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -298,6 +305,13 @@ $messages['pt-br'] = array(
 	'uploadblacklist-desc' => 'Adiciona uma funcionalidade de lista negra para carregamento de arquivos',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'uploadblacklist-desc' => 'Adaugă funcţionalitatea unei liste negre de încărcare',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -381,5 +395,12 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'uploadblacklist-desc' => '添加上传黑名单功能',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author KaiesTse
+ */
+$messages['zh-hant'] = array(
+	'uploadblacklist-desc' => '加入上傳黑名單功能',
 );
 

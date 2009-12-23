@@ -53,6 +53,10 @@ $messages['ar'] = array(
 	'multiboilerplate-desc' => 'يسمح لقالب أن يختار من صندوق منسدل موجود فوق استمارة التعديل أثناء تعديل الصفحات',
 	'multiboilerplate-legend' => 'اختر طبق البويلر',
 	'multiboilerplate-submit' => 'تحميل',
+	'boilerplates' => 'القوالب الجاهزة المتوفرة',
+	'multiboilerplate-special-pagetext' => 'هذه القوالب يمكن تحميلها مسبقا عند إنشاء الصفحات. (<span class=plainlinks>[{{fullurl:This page does not exist|action=edit}} تجربة]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'القوالب الجاهزة معرفة في LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'القوالب الجاهزة معرفة في [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

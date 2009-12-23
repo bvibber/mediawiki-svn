@@ -23,12 +23,28 @@ $messages['qqq'] = array(
 	'vector-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'vector' => 'تحسينات واجهة المستخدم لفكتور',
+	'vector-desc' => 'تحسينات في عناصر واجهة المستخدم لواجهة فكتور.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
 	'vector' => 'Паляпшэньні інтэрфэйсу карыстальніка для афармленьня «Вэктар»',
 	'vector-desc' => 'Паляпшае элемэнты інтэрфэйсу карыстальніка для афармленьня «Вэктар».',
+);
+
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'vector' => 'Подобрения на потребителския интерфейс за облик Вектор',
+	'vector-desc' => 'Подобрява елементите от потребителския интерфейс на облик Вектор.',
 );
 
 /** Bengali (বাংলা)
@@ -238,6 +254,14 @@ $messages['pms'] = array(
 $messages['pt'] = array(
 	'vector' => 'Melhorias da IU do Vector',
 	'vector-desc' => 'Melhora a interface do utilizador do tema Vector',
+);
+
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'vector' => 'Îmbunătăţiri la nivelul interfaţei pentru Vector',
+	'vector-desc' => 'Îmbunătăţiri la elementele interfaţei a temei Vector.',
 );
 
 /** Tarandíne (Tarandíne)

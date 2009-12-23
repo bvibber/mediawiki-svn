@@ -130,13 +130,13 @@ $messages['ar'] = array(
 	'ratinghistory-table-rating' => 'تقييم',
 	'ratinghistory-table-votes' => 'أصوات',
 	'ratinghistory-none' => 'لا توجد بيانات كافية من القراء متوفرة للرسومات في هذا الوقت.',
-	'ratinghistory-legend' => "'''التقيم المتوسط اليومي''' <font color=\"blue\">''(أزرق)''</font> و  
-'''التقييم المتوسط العامل''' <font color=\"green\">''(أخضر)''</font> مرسومان بالأسفل, حسب التاريخ. 
-'''التقييم المتوسط العامل''' هو ببساطة متوسط كل التقييمات اليومية ''بداخل'' هذا الإطار الزمني لكل يوم.
+	'ratinghistory-ratings' => "'''المفتاح:''' '''(1)''' - فقير; '''(2)''' - منخفض; '''(3)''' - معقول; '''(4)''' - مرتفع; '''(5)''' - ممتاز;",
+	'ratinghistory-legend' => "'''عدد المراجعات اليومي''' <font color=\"red\">''(أحمر)''</font>, '''التقييم اليومي المتوسط''' <font color=\"blue\">''(أزرق)''</font>,
+و '''التقييم التشغيلي المتوسط''' <font color=\"green\">''(أخضر)''</font> مرسومون بالأسفل، حسب التاريخ.
+'''التقييم التشغيلي المتوسط''' هو ببساطة متوسط كل التقييمات اليومية ''في'' هذا الإطار الزمني لكل يوم.
+التقييمات هي كالتالي:
 
-المقياس: '''[1]''' - فقير؛ '''[2]''' - منخفض؛ '''[3]''' - معقول؛ '''[4]''' - مرتفع؛ '''[5]''' - ممتاز؛
-
-'''عدد المراجعات لكل يوم''' <font color=\"red\">''(أحمر)''</font> معروض على الرسومات بالأسفل، بمقياس ''1:\$1''.",
+'''(1)''' - فقير; '''(2)''' - منخفض; '''(3)''' - معقول; '''(4)''' - مرتفع; '''(5)''' - ممتاز;",
 	'ratinghistory-graph-scale' => "'''المراجعات لكل يوم''' <font color=\"red\">''(أحمر)''</font> معروض على مقياس ''1:\$1''.",
 	'right-feedback' => 'استخدام استمارة الآراء لتقييم صفحة',
 );
@@ -227,6 +227,7 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Turin
  */
 $messages['bg'] = array(
 	'ratinghistory-tab' => 'рейтинг',
@@ -234,6 +235,8 @@ $messages['bg'] = array(
 	'ratinghistory-month' => 'последния месец',
 	'ratinghistory-year' => 'последната година',
 	'ratinghistory-3years' => 'последните 3 години',
+	'ratinghistory-svg' => 'Преглед като SVG',
+	'ratinghistory-table-votes' => 'Гласове',
 );
 
 /** Bengali (বাংলা)
@@ -624,6 +627,7 @@ $messages['eu'] = array(
 	'ratinghistory-3years' => 'azken 3 urteak',
 	'ratinghistory-svg' => 'SVG bezala bistaratu',
 	'ratinghistory-table-votes' => 'Bozkak',
+	'ratinghistory-ratings' => "'''Legend:''' '''(1)''' - Txarra; '''(2)''' - Baxua; '''(3)''' - Bidezkoa; '''(4)''' - Altua; '''(5)''' - Bikaina;",
 );
 
 /** Persian (فارسی)
@@ -1655,6 +1659,7 @@ As avaliações são as seguintes:
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  */
@@ -1670,8 +1675,10 @@ $messages['ro'] = array(
 	'ratinghistory-year' => 'ultimul an',
 	'ratinghistory-3years' => 'ultimii 3 ani',
 	'ratinghistory-ave' => 'Medie: $1',
+	'ratinghistory-chart' => 'Evaluările cititorilor de-a lungul timpului',
 	'ratinghistory-purge' => 'curăţa cache-ul',
 	'ratinghistory-table' => 'Privire de ansamblu asupra evaluării cititorilor',
+	'ratinghistory-users' => 'Utilizatori care şi-au exprimat opinia',
 	'ratinghistory-svg' => 'Vizualizează drept SVG',
 	'ratinghistory-table-rating' => 'Evaluare',
 	'ratinghistory-table-votes' => 'Voturi',
@@ -1921,6 +1928,7 @@ $messages['te'] = array(
 	'ratinghistory-3years' => 'గత 3 సంవత్సరాలు',
 	'ratinghistory-ave' => 'సగటు: $1',
 	'ratinghistory-graph' => '"$3" యొక్క $2 ($1 {{PLURAL:$1|సమీక్ష|సమీక్షలు}})',
+	'ratinghistory-svg' => 'SVGగా చూడండి',
 	'ratinghistory-table-votes' => 'వోట్లు',
 	'ratinghistory-ratings' => "'''సూచిక:''' '''(1)''' - అత్యల్పం; '''(2)''' - అల్పం; '''(3)''' - పర్లేదు; '''(4)''' - ఉత్తమం; '''(5)''' - అత్యుత్తమం;",
 );
@@ -1935,6 +1943,26 @@ $messages['th'] = array(
 	'ratinghistory-3years' => '3 ปีที่แล้ว',
 	'ratinghistory-ave' => 'เฉลี่ย: $1',
 	'ratinghistory-users' => 'ผู้ใช้ที่มีส่วนร่วมจัดอันดับ',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'ratinghistory' => 'Sahypa derejelendirme geçmişi',
+	'ratinghistory-leg' => '[[:$1|$1]] üçin derejelendirme geçmişi maglumaty',
+	'ratinghistory-tab' => 'derejelendirme',
+	'ratinghistory-link' => 'Sahypa derejelendirmesi',
+	'ratinghistory-period' => 'Wagt periody:',
+	'ratinghistory-month' => 'geçen aý',
+	'ratinghistory-3months' => 'geçen 3 aý',
+	'ratinghistory-year' => 'geçen ýyl',
+	'ratinghistory-3years' => 'geçen 3 ýyl',
+	'ratinghistory-ave' => 'Ort: $1',
+	'ratinghistory-users' => 'Derejelendirme beren ulanyjylar',
+	'ratinghistory-svg' => 'SVG edip görkez',
+	'ratinghistory-table-rating' => 'Derejelendirme',
+	'ratinghistory-table-votes' => 'Sesler',
 );
 
 /** Tagalog (Tagalog)
@@ -2153,29 +2181,64 @@ $messages['vo'] = array(
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'ratinghistory' => '页面评级历史',
+	'ratinghistory-leg' => '[[:$1|$1]]的评级历史数据',
 	'ratinghistory-tab' => '评分',
 	'ratinghistory-link' => '页面评分',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">谢谢您对本页的评论！</font>''",
 	'ratinghistory-period' => '时间段：',
 	'ratinghistory-month' => '上月',
 	'ratinghistory-3months' => '过去3个月',
 	'ratinghistory-year' => '去年',
 	'ratinghistory-3years' => '过去3年',
+	'ratinghistory-ave' => '平均： $1',
+	'ratinghistory-purge' => '清除缓存',
+	'ratinghistory-table' => '读者评论总览',
 	'ratinghistory-users' => '给出评价的用户',
 	'ratinghistory-svg' => '作为SVG浏览',
+	'ratinghistory-table-rating' => '评级',
+	'ratinghistory-table-votes' => '投票',
+	'ratinghistory-none' => '目前没有足够的读者反馈数据来制作图表。',
+	'ratinghistory-ratings' => "'''图例：''' '''(1)''' - 差； '''(2)''' - 不好； '''(3)''' - 一般； '''(4)''' - 好； '''(5)''' - 极好；",
+	'ratinghistory-legend' => "'''每日评论数量'''<font color=\"red\">''（红色）''</font>，'''每日平均评级'''<font color=\"blue\">''（蓝色）''</font>，以及'''移动平均评级'''<font color=\"green\">''（绿色）''</font>如下图所示。
+'''移动平均评级'''是在某一天前后一段时间''内''每日评级的平均数。
+评级结果如下：
+
+'''(1)''' - 差； '''(2)''' - 不好； '''(3)''' - 一般； '''(4)''' - 好； '''(5)''' - 极好；",
+	'ratinghistory-graph-scale' => "'''每天评论'''<font color=\"red\">''（红色）''</font>以''1:\$1''的比例显示。",
+	'right-feedback' => '使用反馈表单来对页面评级',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'ratinghistory' => '頁面評級歷史',
+	'ratinghistory-leg' => '[[:$1|$1]]的評級歷史數據',
 	'ratinghistory-tab' => '評分',
 	'ratinghistory-link' => '頁面評分',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">謝謝您對本頁的評論！</font>''",
+	'ratinghistory-period' => '時間段：',
 	'ratinghistory-month' => '過去一個月',
 	'ratinghistory-3months' => '過去三個月',
 	'ratinghistory-year' => '過去一年',
 	'ratinghistory-3years' => '過去三年',
 	'ratinghistory-ave' => '平均：$1',
+	'ratinghistory-purge' => '清空緩存',
+	'ratinghistory-table' => '讀者評論總覽',
+	'ratinghistory-users' => '給出評價的用戶',
 	'ratinghistory-svg' => '以SVG檢視',
 	'ratinghistory-table-rating' => '評分',
+	'ratinghistory-table-votes' => '投票',
+	'ratinghistory-none' => '目前沒有足夠的讀者反饋數據來製作圖表。',
+	'ratinghistory-ratings' => "'''圖例：''' '''(1)''' - 差； '''(2)''' - 不好； '''(3)''' - 一般； '''(4 )''' - 好； '''(5)''' - 極好；",
+	'ratinghistory-legend' => "'''每日評論數量'''<font color=\"red\">''（紅色）''</font>，'''每日平均評級'''<font color=\"blue\">'' （藍色）''</font>，以及'''移動平均評級'''<font color=\"green\">''（綠色）''</font>如下圖所示。
+'''移動平均評級'''是在某一天前後一段時間''內''每日評級的平均數。
+評級結果如下：
+
+'''(1)''' - 差； '''(2)''' - 不好； '''(3)''' - 一般； '''(4)''' - 好； ' ''(5)''' - 極好；",
+	'ratinghistory-graph-scale' => "'''每天評論'''<font color=\"red\">''（紅色）''</font>以''1:\$1''的比例顯示。",
+	'right-feedback' => '使用反饋表單來對頁面評級',
 );
 

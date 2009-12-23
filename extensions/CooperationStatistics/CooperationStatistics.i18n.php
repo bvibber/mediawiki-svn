@@ -52,9 +52,17 @@ $messages['qqq'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'cooperationstatistics' => 'إحصاءات الشركات',
+	'cooperationstatistics-desc' => 'اعرض [[Special:CooperationStatistics|إحصاءات الشركات في النطاق الرئيسي]].',
+	'cooperationstatistics-text' => "اعرض إحصاءات الشركة في النطاق الرئيسي.
+من [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] إلى [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] مراجعين.<br />
+انظر أيضا [[Special:MostRevisors|'''الصفحات بأكثر المراجعين''']] و [[Special:MostRevisions|الصفحات بأكثر المراجعات]].",
 	'cooperationstatistics-tablearticle' => 'عدد الصفحات',
 	'cooperationstatistics-tablevalue' => 'عدد المحررين',
 	'cooperationstatistics-articles' => '{{PLURAL:$1||صفحة واحدة|صفحتان|$1 صفحات|$1 صفحة}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|به|به}} $1 {{PLURAL:$1|محرر|محررين}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|به|به}} $1 {{PLURAL:$1|محرر|أو محررين أقل}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|به|به}} $1 أو أقل محررين',
 	'cooperationstatistics-legendmore' => 'أو أكثر من المحررين.',
 );
 
@@ -193,6 +201,14 @@ $messages['es'] = array(
 	'cooperationstatistics-tablevalue' => 'Número de editores',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|página|páginas}}',
 	'cooperationstatistics-legendmore' => 'o más editores.',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'cooperationstatistics-tablevalue' => 'Toimetajate hulk',
+	'cooperationstatistics-legendmore' => 'või rohkem toimetajaid.',
 );
 
 /** Basque (Euskara)

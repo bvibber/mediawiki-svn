@@ -1455,6 +1455,28 @@ Ang id na dapat mong ibigay ay ang mga bilang at mga titik na nasa pagitan ng "$
 	'imstatus_yahoo_style' => 'estilo ng pindutan, mula $1 (pinakamaliit) hanggang $2 (pinakamalaki), para sa "liham na may tinig" (\'\'voicemail\'\') ang $3 at $4.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'imstatus_default' => 'Varsayılan',
+	'imstatus_example' => 'Örnek',
+	'imstatus_possible_val' => 'Olası değerler',
+	'imstatus_max' => 'maks',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'veya',
+	'imstatus_style' => 'durum göstergesi biçemi',
+	'imstatus_action' => 'düğmeye tıklandığında etkin',
+	'imstatus_gtalk_code' => 'google talk kodunuz',
+	'imstatus_gtalk_get_code' => 'google talk kodunuz: $1 kaynağından alın.',
+	'imstatus_gtalk_height' => 'kutunun piksel cinsinden yüksekliği.',
+	'imstatus_gtalk_width' => 'kutunun piksel cinsinden genişliği.',
+	'imstatus_icq_id' => 'ICQ numaranız',
+	'imstatus_icq_style' => '0 ile 26 arasında bir rakam (evet, 27 kullanılabilir biçem mevcut)',
+	'imstatus_live_code' => 'Live Messenger web sitesi kimliğiniz',
+	'imstatus_xfire_size' => 'düğme boyutu, $1 (en büyük) ile $2 (en küçük) arasında.',
+);
+
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ерней
  */

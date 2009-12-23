@@ -538,6 +538,13 @@ $messages['pt-br'] = array(
 	'right-purgecache' => 'Limpar a tabela OBJECTCACHE',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'purgecache' => 'Treci peste cache',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -645,6 +652,13 @@ $messages['tl'] = array(
 	'purgecache-warning' => 'Pupurgahin (lilinisin) nito ang mga tabla ng taguan.',
 	'purgecache-purged' => 'Napurga/nalinis na ang taguan.',
 	'purgecache-button' => 'Purgahin (linisin)',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'purgecache' => 'Önbelleği boşalt',
 );
 
 /** Ukrainian (Українська)

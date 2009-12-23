@@ -85,6 +85,7 @@ $messages['ar'] = array(
 	'tasklistchooseproj' => 'اختر المشروع:',
 	'tasklistprojdisp' => 'عرض',
 	'tasklistbyname' => '== قائمة العمل ل%s ==',
+	'tasklistnowguseprojects' => 'أنت ضبطت $wgUseProjects ك"false" ولا يمكنك استخدام هذه الصفحة.',
 	'tasklistnoprojects' => "خطأ: يبدو أنك فعلت '''\$wgUseProjects'''، لكن لم تنشيء [[MediaWiki:TodoTasksValidProjects]]. انظر [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 تعليمات التنصيب] لمزيد من التفاصيل.",
 	'tasklistemailbody' => '،
 
@@ -1030,6 +1031,7 @@ Frå %ss varslingssystem',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'tasklist' => 'Oppgaveliste',
@@ -1047,6 +1049,7 @@ $messages['no'] = array(
 	'tasklistchooseproj' => 'Velg prosjekt:',
 	'tasklistprojdisp' => 'Vis',
 	'tasklistbyname' => '== Oppgaveliste for %s ==',
+	'tasklistnowguseprojects' => 'Du har satt $wgUseProjects til «false» og kan ikke bruke denne siden.',
 	'tasklistnoprojects' => "FEIL: Det ser ut som om du har slått på '''\$wgUseProjects''' uten å opprette [[MediaWiki:TodoTasksValidProjects]]. Se [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installasjonsintruksjonene] for flere detaljer.",
 	'tasklistemailbody' => ',
 
@@ -1239,6 +1242,8 @@ $messages['ro'] = array(
 	'tasklistincorrectuser' => 'Nume de utilizator incorect',
 	'tasklistemail' => 'Dragă %s',
 	'tasklistmytasks' => 'Sarcinile mele',
+	'tasklistchooseproj' => 'Alegeţi proiectul:',
+	'tasklistprojdisp' => 'Afişare',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1421,10 +1426,18 @@ $messages['te'] = array(
 	'tasklistunknownproject' => 'తెలియని ప్రాజెక్టు',
 	'tasklistincorrectuser' => 'తప్పుడు వాడుకరిపేరు',
 	'tasklistemail' => 'ప్రియమైన %s',
+	'tasklistemailsubject' => '[%s] పనుల జాబితా మార్పు',
 	'tasklistmytasks' => 'నా పనులు',
 	'tasklistchooseproj' => 'ప్రాజెక్టుని ఎంచుకోండి:',
 	'tasklistprojdisp' => 'చూపించు',
 	'tasklistbyname' => '== %s కొరకు చేయాల్సిన పనుల జాబితా ==',
+	'tasklistemailbody' => ',
+
+%s లో మీకు ఎవరో ఒక కొత్త పనిని అప్పగించారు.
+
+మీ పూర్తి పనుల జాబితాని చూడటానికి %s కి వెళ్ళండి.
+
+మీ స్నేహపూర్వక %s గమనింపు వ్యవస్థ',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

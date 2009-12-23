@@ -725,6 +725,8 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'mostrevisors-showing' => '{{PLURAL:$1|పేజీని|$1 పేజీలను}} చూపిస్తున్నాం:',
 	'mostrevisors-submit' => 'వెళ్ళు',
+	'mostrevisors-showredir' => 'దారిమార్పు పేజీలను చూపించు',
+	'mostrevisors-hideredir' => 'దారిమార్పు పేజీలను దాచు',
 );
 
 /** Thai (ไทย)
@@ -732,6 +734,17 @@ $messages['te'] = array(
  */
 $messages['th'] = array(
 	'mostrevisors-namespace' => 'เนมสเปซ:',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'mostrevisors-namespace' => 'İsim alanı:',
+	'mostrevisors-none' => 'Girdi bulunamadı.',
+	'mostrevisors-submit' => 'Git',
+	'mostrevisors-showredir' => 'Yönlendirme sayfalarını göster',
+	'mostrevisors-viewcontributors' => 'Ana katkı sahiplerini göster',
 );
 
 /** Veps (Vepsan kel')

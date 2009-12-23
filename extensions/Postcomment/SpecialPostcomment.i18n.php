@@ -286,6 +286,8 @@ $messages['et'] = array(
 	'postcomment_youareloggedinas' => 'Oled sisse loginud kasutajana $1',
 	'postcomment_addcommentdiscussionpage' => 'Lisa oma kommentaar sellele arutelulehele',
 	'postcomment_leavemessagefor' => 'Jäta teade kasutajale $1',
+	'postcomment_said' => 'ütles',
+	'postcomment_invalidrequest' => 'Vigane päring.',
 );
 
 /** Basque (Euskara)

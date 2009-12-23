@@ -238,6 +238,7 @@ Kliknite <a href='$1'>ovdje</a> za povratak.",
  * @author Solde
  */
 $messages['ca'] = array(
+	'spamdifftool_option_none' => 'res',
 	'spamdifftool_submit_buttom' => 'Envia',
 );
 

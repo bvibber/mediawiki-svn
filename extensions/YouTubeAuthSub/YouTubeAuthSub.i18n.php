@@ -806,6 +806,7 @@ $messages['et'] = array(
 	'youtubeauthsub_summary' => "YouTube'i video üleslaadimine",
 	'youtubeauthsub_uploading' => 'Sinu videot laetakse üles.
 Ole kannatlik.',
+	'youtubeauthsub_viewpage' => 'Võid [[$1|videot vaadata ka siit]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Palun sisesta 1 või rohkem võtmesõnu.',
 	'youtubeauthsub_jserror_notitle' => 'Palun sisesta videole pealkiri.',
 	'youtubeauthsub_jserror_nodesc' => 'Palun sisesta videole kirjeldus.',
@@ -1572,11 +1573,12 @@ $messages['kn'] = array(
 /** Korean (한국어)
  * @author Klutzy
  * @author Kwj2772
+ * @author ToePeu
  * @author Yknok29
  */
 $messages['ko'] = array(
 	'youtubeauthsub' => '유튜브 동영상 올리기',
-	'youtubeauthsub-desc' => '문서 내에 유튜브 비디오를 넣는 기능과 유튜브에 영상을 올리는 기능을 추가합니다.',
+	'youtubeauthsub-desc' => '유튜브에 [[Special:YouTubeAuthSub|동영상 올리기]] 기능을 추가합니다.',
 	'youtubeauthsub_info' => '유튜브에 영상을 올리려면 아래 칸에 정보를 채워 주세요:',
 	'youtubeauthsub_title' => '제목',
 	'youtubeauthsub_description' => '설명',
@@ -1683,6 +1685,13 @@ $messages['kw'] = array(
 	'youtubeauthsub_category' => 'Class',
 	'youtubeauthsub_uploadbutton' => 'Ughcarga',
 	'youtubeauthsub_summary' => 'Owth ughcarga video YouTube',
+);
+
+/** Ladino (Ladino)
+ * @author Universal Life
+ */
+$messages['lad'] = array(
+	'youtubeauthsub_category' => 'Categoría',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -2964,6 +2973,13 @@ $messages['te'] = array(
 	'youtubeauthsub_submit' => 'దాఖలుచెయ్యి',
 	'youtubeauthsub_clickhere' => 'యూట్యూబ్ లోనికి ప్రవేశించడానికి ఇక్కడ నొక్కండి',
 	'youtubeauthsub_tokenerror' => 'గుర్తింపు టోకేనును సృష్టించడంలో పొరపాటు జరిగినది, మళ్లీ ప్రయత్నించండి.',
+	'youtubeauthsub_success' => "అభినందనలు!
+మీ దృశ్యకాన్ని ఎక్కించాం.
+<a href='http://www.youtube.com/watch?v=$1'>మీ దృశ్యకాన్ని చూడండి</a>.
+మీ దృశ్యకాన్ని పరిక్రియాపించడానికి యూట్యూబ్ మరికొంత సమయం తీసుకోవచ్చు, కాబట్టి అదింకా తయారుగా ఉండకపోవచ్చు.
+
+మీ దృశ్యకాన్ని వికీ పేజీలలో ఉంచడానికి, పేజీలో ఈ క్రింది సంకేతాన్ని ఉపయోగించండి:
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'ఒక వీడియోని ఎగుమతి చేయడానికి, మీరు ముందు యూట్యూబు లోనికి ప్రవేశించాల్సివుంటుంది.',
 	'youtubeauthsub_uploadhere' => 'మీ వీడియోని ఇక్కడ నుండి ఎగుమతి చేయండి:',
 	'youtubeauthsub_uploadbutton' => 'ఎగుమతిచెయ్యండి',
@@ -3340,6 +3356,7 @@ $messages['yi'] = array(
 	'youtubeauthsub_keywords' => 'שליסלווערטער',
 	'youtubeauthsub_category' => 'קאַטעגאריע',
 	'youtubeauthsub_submit' => 'אײַנגעבן',
+	'youtubeauthsub_uploadhere' => 'לאָדט אַרויף אייער ווידעא פֿון דאַנעט:',
 	'youtubeauthsub_uploadbutton' => 'ארויפֿלאָדן',
 	'youtubeauthsub_summary' => 'אַרויפֿלאָדן יוטוב ווידעא',
 );

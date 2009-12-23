@@ -84,6 +84,15 @@ $messages['be-tarask'] = array(
 	'externalpages-bad-url-data' => 'Не атрымалася атрымаць зьмест старонкі',
 );
 
+/** Bulgarian (Български)
+ * @author Turin
+ */
+$messages['bg'] = array(
+	'externalpages' => 'Външни страници',
+	'externalpages-no-project' => 'Не е указан проект',
+	'externalpages-no-page' => 'Не е указана страница',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -176,12 +185,21 @@ $messages['dsb'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Translationista
  */
 $messages['es'] = array(
+	'externalpages' => 'Páginas externas',
 	'externalpages-no-project' => 'No se ha especificado un proyecto',
 	'externalpages-no-page' => 'No se ha especificado una página',
 	'externalpages-error-generic' => 'Se ha encontrado un error',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'externalpages' => 'Ulkoiset sivut',
 );
 
 /** French (Français)
@@ -233,6 +251,23 @@ $messages['gsw'] = array(
 	'externalpages-error-generic' => 'Fähler gfunde',
 	'externalpages-bad-url' => 'Abruef vu dr URL fählgschlaa',
 	'externalpages-bad-url-data' => 'Abruef vum Syteinhalt fählgschlaa',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'externalpages' => 'דפים חיצוניים',
+	'externalpages-desc' => 'אחזור והצגה של עמודים מאתרים מרוחקים של קרן ויקימדיה',
+	'externalpages-bad-year' => 'השנה שצוינה שגויה',
+	'externalpages-bad-language' => 'השפה שצוינה שגויה',
+	'externalpages-bad-project' => 'המיזם שצוין שגוי',
+	'externalpages-no-project' => 'לא צוין דף',
+	'externalpages-bad-page' => 'הדף שצוין שגוי',
+	'externalpages-no-page' => 'לא צוין דף',
+	'externalpages-error-generic' => 'ארעה שגיאה',
+	'externalpages-bad-url' => 'ארע כשל באיחזור הכתובת',
+	'externalpages-bad-url-data' => 'ארע כשל באיחזור תכני הדף',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -420,6 +455,24 @@ $messages['nl'] = array(
 	'externalpages-bad-url-data' => 'Het was niet mogelijk de paginainhoud op te halen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'externalpages' => 'Eksterne sider',
+	'externalpages-desc' => 'Henter og viser sider fra andre WMF-steder',
+	'externalpages-bad-year' => 'Ugyldig år spesifisert',
+	'externalpages-bad-language' => 'Feil språk valgt',
+	'externalpages-bad-project' => 'Feil prosjekt valgt',
+	'externalpages-no-project' => 'Inget prosjekt spesifisert',
+	'externalpages-bad-page' => 'Ugyldig side spesifisert',
+	'externalpages-no-page' => 'Ingen side spesifisert',
+	'externalpages-error-generic' => 'Feil oppstått',
+	'externalpages-bad-url' => 'Feilet ved henting av URL',
+	'externalpages-bad-url-data' => 'Klarte ikke å hente sideinnhold',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -490,6 +543,22 @@ $messages['pt'] = array(
 	'externalpages-bad-url-data' => 'Importação do conteúdo da página falhou',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'externalpages' => 'Pagini externe',
+	'externalpages-bad-year' => 'An greşit specificat',
+	'externalpages-bad-language' => 'Limbă greşită specificată',
+	'externalpages-bad-project' => 'Proiect greşit specificat',
+	'externalpages-no-project' => 'Niciun proiect specificat',
+	'externalpages-bad-page' => 'Pagină greşită specificată',
+	'externalpages-no-page' => 'Nicio pagină specificată',
+	'externalpages-error-generic' => 'Eroare întâlnită',
+	'externalpages-bad-url' => 'Acţiune eşuată pentru a prelua URL',
+	'externalpages-bad-url-data' => 'Acţiune eşuată pentru a prelua conţinutul paginii',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -529,6 +598,24 @@ $messages['sk'] = array(
  */
 $messages['te'] = array(
 	'externalpages' => 'బయటి పేజీలు',
+	'externalpages-bad-year' => 'తప్పుడు సంవత్సరాన్ని ఇచ్చారు',
+	'externalpages-bad-language' => 'తప్పుడు భాషని ఇచ్చారు',
+	'externalpages-no-project' => 'ప్రాజెక్టుని పేర్కొనలేదు',
+	'externalpages-bad-page' => 'తప్పుడు పేజీని ఇచ్చారు',
+	'externalpages-no-page' => 'పేజీని పేర్కొనలేదు',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'externalpages' => 'Daşarky Sahypalar',
+	'externalpages-bad-year' => 'Nädogry ýyl görkezildi',
+	'externalpages-bad-language' => 'Nädogry dil görkezildi',
+	'externalpages-bad-project' => 'Nädogry taslama görkezildi',
+	'externalpages-no-project' => 'Hiç hili taslama görkezilmedi',
+	'externalpages-bad-page' => 'Nädogry sahypa görkezildi',
+	'externalpages-no-page' => 'Hiç hili sahypa görkezilmedi',
 );
 
 /** Turkish (Türkçe)

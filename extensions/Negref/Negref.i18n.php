@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'negref-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'negref-desc' => 'يوفر وسما للتفاوض على موقع أي وسوم <nowiki><ref/></nowiki> داخل النص المدخل لإصلاح بعض حالات استخدام القوالب',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

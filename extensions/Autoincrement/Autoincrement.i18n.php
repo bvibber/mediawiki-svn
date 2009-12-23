@@ -20,6 +20,13 @@ $messages['af'] = array(
 	'autoincrement-desc' => "Maak 'n veranderlike <nowiki>{{AUTOINCREMENT}}</nowiki> beskikbaar vir outomatiese inkrementering.",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'autoincrement-desc' => 'خطاف متغير يضيف المتغير الزائد تلقائيا <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

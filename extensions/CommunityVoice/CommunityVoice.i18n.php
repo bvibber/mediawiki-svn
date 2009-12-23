@@ -697,8 +697,10 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Se trimite...',
 	'communityvoice-ratings-scale-status-error' => 'Eroare la trimitere!',
 	'communityvoice-ratings-scale-status-thanks' => 'Mulţumim pentru vot!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vot exprimat|voturi exprimate}})',
@@ -798,6 +800,16 @@ $messages['te'] = array(
 	'communityvoice-ratings-scale-status-error' => 'పంపించడంలో పొరపాటు!',
 	'communityvoice-ratings-scale-status-thanks' => 'వోటేసినందుకు కృతజ్ఞతలు!',
 	'communityvoice-ratings-error-no-title' => 'మెచ్చుకోలు యందు ’శీర్షిక’ అనే అంశం లేదు',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Iberilýär...',
+	'communityvoice-ratings-scale-status-error' => 'Iberiş säwligi!',
+	'communityvoice-ratings-scale-status-thanks' => 'Ses berendigiňiz üçin sag boluň!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|ses|ses}} berildi)',
 );
 
 /** Tagalog (Tagalog)

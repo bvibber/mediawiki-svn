@@ -29,6 +29,17 @@ Do not translate "<code>poolcounter.py</code>"
 A pool counter keeps track of the running processes on a cluster of processors, and may or may not grant a job access to the processing pool. (Note, the word "counter" relates to the counter in a shop, bank, or hotel, not to the verb "to count")',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'poolcounter-desc' => 'عميل ميدياويكي لمشرف مجموعة daemon poolcounter.py',
+	'poolcounter-connection-error' => 'خطأ توصيل إلى خادم مشرف المجموعة: $1',
+	'poolcounter-read-error' => 'خطأ قراءة من خادم مشرف المجموعة',
+	'poolcounter-write-error' => 'خطأ كتابة إلى خادم مشرف المجموعة',
+	'poolcounter-remote-error' => 'خطأ خادم مشرف المجموعة: $1',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

@@ -1014,9 +1014,12 @@ Nais mo bang baguhin ang umiiral na pahina?',
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'createpage' => 'Bir sayfa oluştur',
+	'createpage_instructions' => 'Oluşturmak istediğiniz sayfanın başlığını girin:',
+	'createpage_entertitle' => 'Lütfen sayfanız için bir başlık girin.',
 	'createpage-badtitle' => '"$1" bir sayfa başlığı olarak kullanılamaz',
 );
 

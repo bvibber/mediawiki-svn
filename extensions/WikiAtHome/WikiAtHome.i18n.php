@@ -134,6 +134,7 @@ Probeer later weer.',
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
@@ -144,6 +145,7 @@ $messages['ar'] = array(
 	'wah-short-general' => 'ملف وسائط $1، $2',
 	'wah-long-audio' => '(ملف صوتي، طوله $2، $3 $1)',
 	'wah-long-video' => '(ملف فيديو، طوله $2، $4×$5 بكسل، $3 $1)',
+	'wah-long-multiplexed' => '(ملف صوت/فيديو, $1, الطول $2, $4×$5 بكسل، $3 إجمالا)',
 	'wah-long-general' => '(ملف وسائط طوله $2، $3)',
 	'wah-long-error' => '(لم يتمكن ffmpeg من قراءة هذا الملف: $1)',
 	'wah-transcode-working' => 'تتم الآن معالجة الفيديو، من فضلك حاول لاحقًا مرة أخرى',
@@ -458,6 +460,7 @@ $messages['eu'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author Silvonen
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'wah-user-desc' => 'Wiki@Homen avulla yhteisön jäsenet voivat lahjoittaa käyttämätöntä suoritinaikaa paljon resursseja kuluttaviin operaatioihin.',
@@ -472,7 +475,11 @@ $messages['fi'] = array(
 	'wah-transcode-fail' => 'Tämä tiedosto ei transkoodautunut.',
 	'wah-javascript-off' => 'JavaScriptin on oltava käytössä, jotta voit osallistua Wiki@Homeen',
 	'wah-loading' => 'ladataan Wiki@Home-käyttöliittymää...',
+	'wah-menu-jobs' => 'Työt',
+	'wah-menu-stats' => 'Tilastot',
 	'wah-menu-pref' => 'Asetukset',
+	'wah-uploading' => 'Tiedoston <i>$1</i> tallennus onnistui',
+	'wah-uploadfail' => 'Tallennus epäonnistui',
 );
 
 /** French (Français)
@@ -614,6 +621,21 @@ $messages['he'] = array(
 	'wah-transcode-fail' => 'קידוד קובץ זה נכשל.',
 	'wah-javascript-off' => 'עליכם להפעיל את תכונת ה־JavaScript כדי לקחת חלק ב־Wiki@Home',
 	'wah-loading' => 'ממשק Wiki@Home נטען כעת ...',
+	'wah-menu-jobs' => 'משימות',
+	'wah-menu-stats' => 'סטטיסטיקה',
+	'wah-menu-pref' => 'העדפות',
+	'wah-lookingforjob' => 'מתבצע חיפוש אחר משימה ...',
+	'wah-start-on-visit' => 'יש להפעיל את Wiki@Home בכל פעם שאבקר באתר זה.',
+	'wah-nojobfound' => 'לא נמצאה משימה. נסיון חוזר בעוד $1.',
+	'wah-notoken-login' => 'האם ביצעתם כניסה? אם לא, אנא הכנסו תחילה.',
+	'wah-doing-job' => 'משימה: <i>$1</i> על: <i>$2</i>',
+	'wah-downloading' => 'הורדת הקובץ <i>$1%</i> הושלמה',
+	'wah-encoding' => 'קידוד הקובץ <i>$1%</i> הושלם',
+	'wah-encoding-fail' => 'הקידוד נכשל. יש לטעון דף זה מחדש או לנסות שוב מאוחר יותר.',
+	'wah-uploading' => 'העלאת הקובץ <i>$1</i> הושלמה',
+	'wah-uploadfail' => 'ההעלאה נכשלה',
+	'wah-doneuploading' => 'ההעלאה הושלמה. תודה לכם על תרומכתם.',
+	'wah-api-error' => 'ארעה שגיאה במנשק תפעול התוכנית. יש לנסות שוב מאוחר יותר.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1005,6 +1027,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'wah-user-desc' => 'Wiki@Home tillater samfunnsmedlemmer å donere bort ubrukt prosessortid for å hjelpe til med ressurskrevende oppgaver',
 	'wah-short-audio' => '$1-lydfil, $2',
 	'wah-short-video' => '$1-videofil, $2',
 	'wah-short-general' => '$1-mediafil, $2',
@@ -1013,6 +1036,25 @@ $messages['no'] = array(
 	'wah-long-multiplexed' => '(multiplexet lyd-/videofil, $1, lengde $2, $4x$5 pixler, $3 totalt)',
 	'wah-long-general' => '(mediafil, lengde $2, $3)',
 	'wah-long-error' => '(ffmpeg kunne ikke lese denne filen: $1)',
+	'wah-transcode-working' => 'Denne videoen blir bearbeidet, vennligst prøv igjen senere',
+	'wah-javascript-off' => 'Du må aktivere JavaScript for å delta i Wiki@Home',
+	'wah-loading' => 'laster grensesnittet for Wiki@Home ...',
+	'wah-menu-jobs' => 'Oppgaver',
+	'wah-menu-stats' => 'Statistikk',
+	'wah-menu-pref' => 'Innstillinger',
+	'wah-lookingforjob' => 'Leter etter en oppgave...',
+	'wah-start-on-visit' => 'Start Wiki@Home hver gang jeg besøker dette nettstedet.',
+	'wah-jobs-while-away' => 'Bare kjør oppgaver når jeg har vært borte fra nettleseren i 20 minutt.',
+	'wah-nojobfound' => 'Ingen oppgave funnet. Prøver igjen om $1.',
+	'wah-notoken-login' => 'Er du innlogget? Om ikke, vennligst logg inn først.',
+	'wah-apioff' => 'Wiki@Home-API-en ser ut til å være av. Vennligst kontakt en wikiadministrator.',
+	'wah-doing-job' => 'Oppgave: <i>$1</i> på: <i>$2</i>',
+	'wah-downloading' => 'Nedlasting av filen er <i>$1%</i> ferdig',
+	'wah-uploading' => 'Opplasting av filen <i>$1</i> er ferdig',
+	'wah-uploadfail' => 'Opplastingen feilet',
+	'wah-doneuploading' => 'Opplasting ferdig. Takk for bidraget ditt.',
+	'wah-needs-firefogg' => 'For å delta i Wiki@Home må du innstallere <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Det har oppstått en feil med API-en. Vennligst prøv igjen senere.',
 );
 
 /** Occitan (Occitan)
@@ -1179,6 +1221,7 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
@@ -1189,6 +1232,12 @@ $messages['ro'] = array(
 	'wah-long-video' => '(fişier video $1, lungime $2, $4×$5 pixeli, $3)',
 	'wah-long-general' => '(fişier media, lungime $2, $3)',
 	'wah-transcode-working' => 'Acest video este procesat, încercaţi mai târziu',
+	'wah-menu-jobs' => 'Job-uri',
+	'wah-menu-stats' => 'Statistici',
+	'wah-menu-pref' => 'Preferinţe',
+	'wah-notoken-login' => 'Sunteţi autentificat? Dacă nu, vă rugăm să vă autentificaţi înainte.',
+	'wah-downloading' => 'Descărcarea fişierului <i>$1%</i> terminată',
+	'wah-uploadfail' => 'Încărcarea eşuată',
 );
 
 /** Russian (Русский)
@@ -1371,8 +1420,18 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'wah-short-audio' => '$1 శ్రవణ ఫైలు, $2',
+	'wah-short-video' => '$1 దృశ్యక ఫైలు, $2',
+	'wah-short-general' => '$1 మాధ్యమ ఫైలు, $2',
+	'wah-long-audio' => '($1 శ్రవణ ఫైలు, నిడివి $2, $3)',
+	'wah-long-video' => '($1 దృశ్యక ఫైలు, నిడివి $2, $4×$5 పిక్సెళ్ళు, $3)',
+	'wah-long-general' => '(మాధ్యమ ఫైలు, నిడివి $2, $3)',
 	'wah-menu-stats' => 'గణాంకాలు',
 	'wah-menu-pref' => 'అభిరుచులు',
+	'wah-notoken-login' => 'మీరు ప్రవేశించి ఉన్నారా? లేకపోతే, ముందు ప్రవేశించండి.',
+	'wah-downloading' => '<i>$1%</i> ఫైలు దింపుకోలు పూర్తయింది',
+	'wah-uploading' => '<i>$1</i> ఫైలు ఎక్కింపు పూర్తయ్యింది',
+	'wah-uploadfail' => 'ఎక్కింపు విఫలమైంది',
 );
 
 /** Yiddish (ייִדיש)

@@ -1185,6 +1185,7 @@ $messages['uk'] = array(
 );
 
 /** Vèneto (Vèneto)
+ * @author Candalua
  * @author Vajotwo
  */
 $messages['vec'] = array(
@@ -1195,7 +1196,7 @@ $messages['vec'] = array(
 	'adminlinks_editcss' => 'Modifega file CSS',
 	'adminlinks_editmainpagename' => 'Modifega el nome deła pajina prinsipałe',
 	'adminlinks_users' => 'Utenti',
-	'adminlinks_createuser' => "Crea n'acaunt",
+	'adminlinks_createuser' => 'Crea na utensa',
 	'adminlinks_browsesearch' => 'Visuałisa e riserca',
 	'adminlinks_importexport' => 'Inporta ed esporta',
 	'right-adminlinks' => 'Vede el cołegamento al [[Special:AdminLinks|Paneło Admin]]',

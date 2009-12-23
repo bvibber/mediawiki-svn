@@ -178,10 +178,12 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'templatelink' => 'Mallinelinkki',
+	'templatelink_newtitle' => '$1 (sisällytetty)',
 );
 
 /** French (Français)

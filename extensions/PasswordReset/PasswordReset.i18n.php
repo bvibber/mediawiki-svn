@@ -1550,11 +1550,18 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'passwordreset' => 'Parola sıfırlama',
+	'passwordreset-invalidusername' => 'Geçersiz kullanıcı adı',
+	'passwordreset-emptyusername' => 'Boş kullanıcı adı',
+	'passwordreset-nopassmatch' => 'Parolalar eşleşmiyor',
+	'passwordreset-username' => 'Kullanıcı adı:',
 	'passwordreset-newpass' => 'Yeni parola:',
+	'passwordreset-confirmpass' => 'Parolayı doğrula:',
 	'passwordreset-submit' => 'parola sıfırla',
+	'passwordreset-accountdisabled' => 'Hesap devre dışı bırakıldı',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

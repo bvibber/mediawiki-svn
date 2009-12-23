@@ -750,8 +750,10 @@ $messages['tl'] = array(
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'unicodeconverter' => 'Unicode dönüştürücüsü',
 	'unicodeconverter-ok' => 'Tamam',
 	'unicodeconverter-oldtext' => 'Orjinal metin:',
 	'unicodeconverter-newtext' => 'Dönüştürülmüş metin:',

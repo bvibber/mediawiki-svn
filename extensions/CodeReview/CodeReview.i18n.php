@@ -376,7 +376,7 @@ $messages['ar'] = array(
 	'code-status' => 'الحالات',
 	'code-tags' => 'وسوم',
 	'code-tests' => 'حالات الاختبار',
-	'code-authors-text' => 'بالأسفل قائمة بمؤلفي المستودع حسب تاريخ عمليات الكوميت.',
+	'code-authors-text' => 'بالأسفل قائمة بمؤلفي المستودع حسب تاريخ عمليات الكوميت. حسابات الويكي المحلية معروضة بين أقواس.',
 	'code-author-haslink' => 'هذا المؤلف موصول بمستخدم الويكي $1',
 	'code-author-orphan' => 'هذا المؤلف ليس له وصلة لحساب ويكي',
 	'code-author-dolink' => 'صل هذا المؤلف بمستخدم ويكي :',
@@ -387,6 +387,7 @@ $messages['ar'] = array(
 	'code-author-link' => 'وصلة؟',
 	'code-author-unlink' => 'أزل الوصلة؟',
 	'code-author-unlinksuccess' => 'المؤلف $1 تمت إزالة وصله',
+	'code-browsing-path' => "تصفح المراجعات في '''$1'''",
 	'code-field-id' => 'مراجعة',
 	'code-field-author' => 'مؤلف',
 	'code-field-user' => 'معلق',
@@ -444,6 +445,10 @@ $messages['ar'] = array(
 	'code-release-badrange' => 'النطاق كبير للغاية!',
 	'codereview-subtitle' => 'ل$1',
 	'codereview-reply-link' => 'رد',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|اختبار ناجح|اختبارات ناجحة}}',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|اختبار ناجح|اختبارات ناجحة}}, $3 {{PLURAL:$4|اختبار فاشل|اختبارات فاشلة}}:',
+	'codereview-tests-running' => 'حالات الاختبار تجرى...',
+	'codereview-tests-aborted' => 'تشغيل الاختبار تم إيقافه.',
 	'codereview-email-subj' => '[$1] [r$2]: تعليق جديد تمت إضافته',
 	'codereview-email-body' => 'المستخدم "$1" كتب تعليقا على r$3.
 
@@ -460,6 +465,14 @@ $4',
 ملخص الارتكاب:
 
 $4',
+	'codereview-email-subj3' => '[$1] [ن$2]: الاختبار الأوتوماتيكي أظهر ريجريشن',
+	'codereview-email-body3' => 'الاختبار الأوتوماتيكي أظهر ريجريشن نتيجة للتغييرات في ن$1.
+
+المسار الكامل: $2
+
+ملخص الكوميت:
+
+$3',
 	'repoadmin' => 'إدارة المستودع',
 	'repoadmin-new-legend' => 'إنشاء مستودع جديد',
 	'repoadmin-new-label' => 'اسم المستودع:',
@@ -1174,6 +1187,7 @@ $messages['ca'] = array(
 	'code-pathsearch-path' => 'Ruta:',
 	'code-rev-submit' => 'Desar canvis',
 	'codereview-batch-submit' => 'Envia',
+	'codereview-subtitle' => 'Per $1',
 	'codereview-reply-link' => 'Contesta',
 	'codereview-email-subj' => '[$1] [r$2]: Nou comentari afegit',
 	'codereview-email-body' => 'L\'usuari "$1" ha fet un comentari a r$3
@@ -2253,6 +2267,7 @@ $4',
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'code-comments' => 'Kommentaarid',
@@ -2277,9 +2292,15 @@ $messages['et'] = array(
 	'code-rev-status' => 'Olek:',
 	'code-rev-status-set' => 'Muuda olekut',
 	'code-rev-comment-preview' => 'Eelvaade',
+	'code-rev-inline-preview' => 'Eelvaade:',
+	'code-rev-diff' => 'Erinevused',
+	'code-rev-diff-link' => 'erinevused',
 	'code-status-new' => 'uus',
+	'code-status-ok' => 'ok',
+	'code-status-verified' => 'kinnitatud',
 	'code-rev-submit' => 'Salvesta muudatused',
 	'repoadmin-new-button' => 'Loo',
+	'repoadmin-edit-button' => 'Sobib',
 );
 
 /** Basque (Euskara)
@@ -2329,6 +2350,7 @@ $messages['eu'] = array(
 	'code-rev-comment-by' => '$1(e)k komentatuta',
 	'code-rev-comment-submit' => 'Komentarioa bidali',
 	'code-rev-comment-preview' => 'Aurreikuspena',
+	'code-rev-inline-preview' => 'Aurrikuspena:',
 	'code-rev-diff' => 'Ezb',
 	'code-rev-diff-link' => 'ezb',
 	'code-rev-purge-link' => 'berritu',
@@ -2565,8 +2587,10 @@ $messages['fi'] = array(
 	'code-release-legend' => 'Luo julkaisuhuomautukset',
 	'code-release-startrev' => 'Ensimmäinen versio',
 	'code-release-endrev' => 'Viimeinen versio',
+	'code-release-badrange' => 'Alue on liian suuri!',
 	'codereview-subtitle' => 'Varastolle $1',
 	'codereview-reply-link' => 'vastaa',
+	'codereview-tests-aborted' => 'Testiajo keskeytetty.',
 	'codereview-email-subj' => '[$1] [r$2]: Uusi kommentti lisätty',
 	'codereview-email-body' => 'Käyttäjä $1 jätti kommentin versioon r$3.
 
@@ -5844,9 +5868,10 @@ $messages['no'] = array(
 	'code-notes' => 'Siste kommentarer',
 	'code-statuschanges' => 'statusendringer',
 	'code-authors' => 'forfattere',
-	'code-status' => 'status',
+	'code-status' => 'tilstander',
 	'code-tags' => 'tagger',
-	'code-authors-text' => 'Nedenfor er en liste over repo-forfattere sortert etter siste commits.',
+	'code-tests' => 'Testtilfeller',
+	'code-authors-text' => 'Nedenfor er en liste over repo-forfattere sortert etter siste bidrag. Lokale wikikontoer vises i parantes.',
 	'code-author-haslink' => 'Denne forfatteren er lenket til wikibruker $1',
 	'code-author-orphan' => 'Denne forfatteren har ingen lenke til en wiki-konto',
 	'code-author-dolink' => 'Lenk denne forfatteren til en wikibruker:',
@@ -5857,6 +5882,7 @@ $messages['no'] = array(
 	'code-author-link' => 'lenke?',
 	'code-author-unlink' => 'fjern lenke?',
 	'code-author-unlinksuccess' => 'Forfatter $1 er ikke lenger lenket',
+	'code-browsing-path' => "Blar igjennom revisjoner i '''$1'''",
 	'code-field-id' => 'Revisjon',
 	'code-field-author' => 'Forfatter',
 	'code-field-user' => 'Kommentator',
@@ -5911,10 +5937,12 @@ $messages['no'] = array(
 	'code-release-legend' => 'Lag versjonsnotater',
 	'code-release-startrev' => 'Start revisjon:',
 	'code-release-endrev' => 'Siste revisjon:',
+	'code-release-badrange' => 'Intervallet er for stort!',
 	'codereview-subtitle' => 'For $1',
 	'codereview-reply-link' => 'svar',
 	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|test var vellykket|tester var vellykkede}}',
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test var vellykket|tester var vellykkede}}, $3 {{PLURAL:$4|test|tester}} feilet',
+	'codereview-tests-running' => 'Testtilfeller kjører...',
 	'codereview-tests-aborted' => 'Testkjøring avbrutt.',
 	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar lagt inn',
 	'codereview-email-body' => 'Bruker $1 la inn en kommentar på r$3
@@ -5932,6 +5960,14 @@ Full nettadresse: $3
 Sammendrag:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Automatisk testing oppdaget regresjon',
+	'codereview-email-body3' => 'Automatisk testing har oppdaget regresjon grunnet endringer i r$1.
+
+Full nettadresse: $2
+
+Sammendrag av bidrag:
+
+$3',
 	'repoadmin' => 'Databaseadministrasjon',
 	'repoadmin-new-legend' => 'Lag en ny database',
 	'repoadmin-new-label' => 'Databasenavn',
@@ -6577,22 +6613,35 @@ $3',
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'code' => 'Revizualizare cod',
 	'code-comments' => 'Comentarii',
+	'code-change-removed' => 'şters:',
+	'code-change-added' => 'adăugat:',
 	'code-old-status' => 'Statut vechi',
 	'code-new-status' => 'Statut nou',
 	'code-authors' => 'autori',
+	'code-tags' => 'etichete',
 	'code-tests' => 'Cazuri de test',
+	'code-author-name' => 'Introduceţi un nume de utilizator:',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentator',
+	'code-field-status' => 'Statut',
 	'code-field-timestamp' => 'Dată',
 	'code-field-tests' => 'Teste',
+	'code-field-path' => 'Cale',
+	'code-field-select' => 'Alege',
 	'code-rev-author' => 'Autor:',
 	'code-rev-date' => 'Dată:',
 	'code-rev-message' => 'Comentariu:',
+	'code-rev-modified-r' => 'înlocuit',
+	'code-rev-modified-d' => 'şters',
+	'code-rev-tag-remove' => 'Elimină etichetele:',
 	'code-rev-comment-submit' => 'Trimite comentariu',
 	'code-rev-comment-preview' => 'Previzualizare',
+	'code-rev-inline-preview' => 'Previzualizare:',
 	'code-rev-diff' => 'Diferenţă',
 	'code-rev-diff-link' => 'dif',
 	'code-rev-purge-link' => 'curăţă',
@@ -6600,7 +6649,11 @@ $messages['ro'] = array(
 	'code-status-ok' => 'ok',
 	'code-pathsearch-path' => 'Cale:',
 	'code-rev-submit' => 'Salvează schimbări',
+	'code-batch-status' => 'Schimbă statut:',
+	'code-batch-tags' => 'Schimbă etichete:',
 	'codereview-batch-submit' => 'Trimite',
+	'codereview-subtitle' => 'De la $1',
+	'codereview-reply-link' => 'răspunde',
 	'repoadmin-new-button' => 'Creează',
 	'repoadmin-edit-button' => 'OK',
 );
@@ -7609,6 +7662,7 @@ $messages['te'] = array(
 	'code-field-status' => 'స్థితి',
 	'code-field-timestamp' => 'తేదీ',
 	'code-field-comments' => 'గమనికలు',
+	'code-field-tests' => 'పరీక్షలు',
 	'code-field-text' => 'గమనిక',
 	'code-rev-author' => 'రచయిత:',
 	'code-rev-date' => 'తేది:',
@@ -7619,6 +7673,8 @@ $messages['te'] = array(
 	'code-rev-imagediff' => 'బొమ్మ మార్పులు',
 	'code-rev-status' => 'స్థితి:',
 	'code-rev-status-set' => 'మార్పు స్థితి',
+	'code-rev-comment-by' => '$1 యొక్క వ్యాఖ్య',
+	'code-rev-comment-submit' => 'వ్యాఖ్యని దాఖలుచేయి',
 	'code-rev-comment-preview' => 'మునుజూపు',
 	'code-rev-inline-preview' => 'మునుజూపు:',
 	'code-rev-diff' => 'తేడా',
@@ -7631,6 +7687,8 @@ $messages['te'] = array(
 	'codereview-reply-link' => 'స్పందించు',
 	'repoadmin-new-button' => 'సృష్టించు',
 	'repoadmin-edit-button' => 'సరే',
+	'right-codereview-post-comment' => 'కూర్పులపై వ్యాఖ్యలు చేర్చగలగడం',
+	'right-codereview-set-status' => 'కూర్పుల స్థితిని మార్చగలగడం',
 	'specialpages-group-developer' => 'వికాసకుల పనిముట్లు',
 );
 
@@ -7766,6 +7824,42 @@ $messages['th'] = array(
 	'code-rev-modified-d' => 'ถูกลบ',
 	'code-rev-comment-preview' => 'ดูตัวอย่าง',
 	'code-status-new' => 'ใหม่',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'code-comments' => 'Teswirler',
+	'code-notes' => 'ýaňy-ýakyndaky teswirler',
+	'code-statuschanges' => 'status üýtgeşmeleri',
+	'code-authors' => 'awtorlar',
+	'code-status' => 'status',
+	'code-tags' => 'tegler',
+	'code-field-author' => 'Awtor',
+	'code-field-user' => 'Teswirçi',
+	'code-field-status' => 'Status',
+	'code-field-timestamp' => 'Sene',
+	'code-field-comments' => 'Bellikler',
+	'code-field-text' => 'Bellik',
+	'code-field-select' => 'Saýla',
+	'code-rev-author' => 'Awtor:',
+	'code-rev-date' => 'Sene:',
+	'code-rev-message' => 'Teswir:',
+	'code-rev-modified-a' => 'goşuldy',
+	'code-rev-modified-r' => 'çalşyryldy',
+	'code-rev-modified-d' => 'öçürildi',
+	'code-rev-modified-m' => 'üýtgedildi',
+	'code-rev-imagediff' => 'Surat üýtgeşmeleri',
+	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Statusy üýtget',
+	'code-rev-tags' => 'Tegler:',
+	'code-rev-tag-add' => 'Teg goş:',
+	'code-rev-tag-remove' => 'Teg aýyr:',
+	'code-status-new' => 'täze',
+	'code-status-ok' => 'bolýar',
+	'codereview-batch-submit' => 'Tabşyr',
+	'codereview-reply-link' => 'jogap ber',
 );
 
 /** Tagalog (Tagalog)

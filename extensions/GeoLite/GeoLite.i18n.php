@@ -36,6 +36,7 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'geolite-desc' => 'تحويل GeoIp خفيف',
 	'geolite' => 'جيو لايت',
 );
 
@@ -185,6 +186,13 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'geolite-desc' => 'Lettvekts-GeoIp-omdirigering',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'geolite-desc' => 'Lettvekts GeoIp-omdirigering',
 );
 
 /** Occitan (Occitan)

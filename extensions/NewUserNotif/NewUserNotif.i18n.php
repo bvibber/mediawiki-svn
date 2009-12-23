@@ -639,6 +639,7 @@ Ett nytt användar konto, $2, har skapats på $3 som $4.',
  */
 $messages['te'] = array(
 	'newusernotifsubj' => '$1 కోసం కొత్తవాడుకరి నోటిఫికేషన్',
+	'newusernotif-desc' => 'వాడుకరి ఖాతాలను సృష్టించినప్పుడు ఈ-మెయిలు గమనింపులు పంపుతుంది',
 	'newusernotifbody' => 'హలో $1,
 
 $3లో $2 అనే కొత్త వాడుకరి ఖాతాని $4కి సృష్టించాం.',

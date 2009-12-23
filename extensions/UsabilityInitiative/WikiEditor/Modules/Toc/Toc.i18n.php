@@ -27,6 +27,14 @@ $messages['qqq'] = array(
 	'wikieditor-toc-hide' => 'Label of the show/hide link when the navigable table of contents is visible',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'wikieditor-toc-show' => 'Wys inhoud',
+	'wikieditor-toc-hide' => 'Versteek inhoud',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -45,6 +53,16 @@ $messages['be-tarask'] = array(
 	'wikieditor-toc-preference' => 'Дазволіць навігацыйныя табліцы зьместу',
 	'wikieditor-toc-show' => 'Паказаць зьмест',
 	'wikieditor-toc-hide' => 'Схаваць зьмест',
+);
+
+/** Bulgarian (Български)
+ * @author Spiritia
+ * @author Turin
+ */
+$messages['bg'] = array(
+	'wikieditor-toc-preference' => 'Разрешена навигируема таблица на съдържанието',
+	'wikieditor-toc-show' => 'Показване на съдържанието',
+	'wikieditor-toc-hide' => 'Скриване на съдържанието',
 );
 
 /** Bengali (বাংলা)
@@ -238,6 +256,14 @@ $messages['id'] = array(
 	'wikieditor-toc-hide' => 'Sembunyikan isi',
 );
 
+/** Italian (Italiano)
+ * @author PaoloRomano
+ */
+$messages['it'] = array(
+	'wikieditor-toc-show' => 'Mostra i contenuti',
+	'wikieditor-toc-hide' => 'Nascondi i contenuti',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Whym
@@ -363,6 +389,15 @@ $messages['qu'] = array(
 	'wikieditor-toc-hide' => 'Samiqninta pakay',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'wikieditor-toc-preference' => 'Activează cuprins navigabil',
+	'wikieditor-toc-show' => 'Arată',
+	'wikieditor-toc-hide' => 'Ascunde',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -434,6 +469,15 @@ $messages['te'] = array(
 	'wikieditor-toc-hide' => 'విషయసూచికని దాచు',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'wikieditor-toc-preference' => 'Nawigasiýaly mazmun tablisasyny aç',
+	'wikieditor-toc-show' => 'Mazmuny görkez',
+	'wikieditor-toc-hide' => 'Mazmuny gizle',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Vito Genovese
@@ -481,5 +525,14 @@ $messages['zh-hans'] = array(
 	'wikieditor-toc-preference' => '启用可导航目录',
 	'wikieditor-toc-show' => '显示内容',
 	'wikieditor-toc-hide' => '隐藏内容',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hant'] = array(
+	'wikieditor-toc-preference' => '啟用可導航目錄',
+	'wikieditor-toc-show' => '顯示內容',
+	'wikieditor-toc-hide' => '隱藏內容',
 );
 

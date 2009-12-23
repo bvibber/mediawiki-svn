@@ -1514,6 +1514,7 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'importusers' => 'Importaţi utilizatori',
 	'importusers-uploadfile' => 'Încarcă fişier',
 	'importusers-form-button' => 'Importă',
 	'importusers-log-summary' => 'Rezumat',
@@ -1834,8 +1835,10 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'importusers' => 'Kullanıcıları içe aktar',
 	'importusers-uploadfile' => 'Dosya yükle',
 	'importusers-log-summary' => 'Özet',
 	'importusers-log-summary-all' => 'Hepsi',

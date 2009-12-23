@@ -99,6 +99,7 @@ $messages['ar'] = array(
 	'amazonplus-none' => 'لا نُسخ من هذا العنصر معروضة للبيع.',
 	'amazonplus-cp-none' => 'لا شيء',
 	'amazonplus-cp-usd' => 'دولار أمريكي',
+	'amazonplus-cp-cad' => 'دولار كندي',
 	'amazonplus-cp-gbp' => 'جنيه إسترليني',
 	'amazonplus-cp-eur' => 'يورو',
 	'amazonplus-cp-jpy' => 'ين ياباني',

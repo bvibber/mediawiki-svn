@@ -280,6 +280,13 @@ $messages['eu'] = array(
 	'framedvideo_helppage' => 'Help:Bideoa',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'framedvideo_helppage' => 'Help:Video',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -833,8 +840,10 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'framedvideo_error' => 'Bir hata oluştu!',
 	'framedvideo_helppage' => 'Help:Video',
 );
 

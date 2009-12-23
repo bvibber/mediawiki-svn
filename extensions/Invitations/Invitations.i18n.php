@@ -1172,10 +1172,12 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|O invitaţie disponibilă|$1 invitaţii disponibile}})',
+	'invitations-inviteform-submit' => 'Invitaţi',
 	'invitations-error-baduser' => 'Utilizatorul specificat pare să nu existe.',
 	'invitations-error-alreadyinvited' => 'Utilizatorul specificat are deja acces la această funcţionalitate!',
 );
@@ -1361,6 +1363,18 @@ Para mapamahalaan ang mga paanyaya para sa isang partikular na kasangkapang-kata
 	'invitations-error-baduser' => 'Tila hindi pa umiiral ang tinukoy mong tagagamit.',
 	'invitations-error-alreadyinvited' => 'Ang tinukoy mong tagagamit ay nakakapunta na sa ganitong kasangkapang-katangian!',
 	'invitations-invite-success' => 'Matagumpay mong naanyayahan si $1 upang magamit ang kasangkapang-katangiang ito!',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'invite-logpage' => 'Davet kaydı',
+	'invitations-pagetitle' => 'Sadece davete dayanan yazılım özellikleri',
+	'invitations-inviteform-username' => 'Davet edilecek kullanıcı',
+	'invitations-inviteform-submit' => 'Davet et',
+	'invitations-error-baduser' => 'Belirttiğiniz kullanıcı görünüşe göre mevcut değil.',
+	'invitations-error-alreadyinvited' => 'Belirttiğiniz kullanıcı zaten bu özelliğe erişime sahip!',
 );
 
 /** Ukrainian (Українська)

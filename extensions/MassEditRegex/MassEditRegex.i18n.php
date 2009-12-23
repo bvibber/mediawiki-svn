@@ -87,16 +87,37 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'masseditregextext' => 'أدخل تعبيرا نتظما واحدا أو أكثر (واحد لكل سطر) للمطابقة, وتعبير واحد أو أكثر لاستبدال كل مطابقة به.
+أول مطابقة تعبير، لو كان ناجحا، سيتم استبداله بأول تعبير استبدال، وهكذا.
+انظر [http://php.net/manual/en/function.preg-replace.php وظيفة PHP preg_replace()] للتفاصيل.',
 	'masseditregex-matchtxt' => 'ابحث عن:',
 	'masseditregex-replacetxt' => 'استبدل بـ:',
 	'masseditregex-executebtn' => 'شغّل',
 	'masseditregex-err-nopages' => 'يجب أن تحدّد صفحة واحدة على الأقل لتغييرها.',
+	'masseditregex-before' => 'قبل',
+	'masseditregex-after' => 'بعد',
+	'masseditregex-max-preview-diffs' => 'المعاينة تم قصرها على أول $1 {{PLURAL:$1|مطابقة|مطابقات}}.',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|تغيير|تغييرات}}',
+	'masseditregex-page-not-exists' => '$1 غير موجود',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|صفحة|صفحات}} تم تعديلها',
+	'masseditregex-view-full-summary' => 'عرض ملخص التعديل الكامل',
+	'masseditregex-hint-headmatch' => 'مطابقة',
 	'masseditregex-hint-headreplace' => 'استبدل',
+	'masseditregex-hint-headeffect' => 'تأثير',
+	'masseditregex-hint-removecat' => 'أزل كل التصنيفات من صفحة (لاحظ هروب الأقواس المربعة في كود الويكي.)
+قيم الاستبدال لا ينبغي تهريبها.',
 	'masseditregex-listtype-intro' => 'هذه قائمة بـ:',
+	'masseditregex-listtype-pagenames' => 'أسماء الصفحات (عدل هذه الصفحات)',
+	'masseditregex-listtype-pagename-prefixes' => 'بادئات أسماء الصفحات (عدل الصفحات بأسماء تبدأ بهذا النص)',
+	'masseditregex-listtype-categories' => 'أسماء التصنيفات (عدل كل صفحة في هذه التصنيفات؛ اختيار النطاق يتم تجاهله)',
+	'masseditregex-listtype-backlinks' => 'الوصلات الراجعة (عدل الصفحات التي تصل إلى هذه الصفحات)',
+	'masseditregex-namespace-intro' => 'كل هذه الصفحات في هذا النطاق:',
 	'masseditregex-badregex' => 'عبارة منطقية غير صالحة:',
+	'masseditregex-editfailed' => 'التعديل فشل:',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -287,6 +308,20 @@ $messages['es'] = array(
 	'masseditregex-badregex' => 'Expresión regular inválida:',
 	'masseditregex-editfailed' => 'Edición fallida:',
 	'masseditregex-tooltip-execute' => 'Aplicar estos cambios a cada página',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'masseditregex-executebtn' => 'Suorita',
+	'masseditregex-before' => 'Ennen',
+	'masseditregex-after' => 'Jälkeen',
+	'masseditregex-view-full-summary' => 'Näytä koko muokkausyhteenveto',
+	'masseditregex-hint-headreplace' => 'Korvaa',
+	'masseditregex-editfailed' => 'Muokkaus epäonnistui:',
+	'masseditregex-tooltip-execute' => 'Käytä näitä muutoksia joka sivuun',
 );
 
 /** French (Français)
@@ -888,6 +923,20 @@ Os valores de troca não devem ter o ''escape''.",
 	'masseditregex-tooltip-execute' => 'Aplicar estas alterações a cada página',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'masseditregex-matchtxt' => 'Caută:',
+	'masseditregex-replacetxt' => 'Înlocuieşte cu:',
+	'masseditregex-executebtn' => 'Execută',
+	'masseditregex-before' => 'Înainte',
+	'masseditregex-after' => 'După',
+	'masseditregex-hint-headmatch' => 'Potrivire',
+	'masseditregex-hint-headreplace' => 'Înlocuieşte',
+	'masseditregex-hint-headeffect' => 'Efect',
+);
+
 /** Russian (Русский)
  * @author Rubin
  * @author Александр Сигачёв
@@ -934,8 +983,29 @@ $messages['ru'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'masseditregex-err-nopages' => 'మీరు కనీసం ఒక్క మార్చాల్సిన పేజీని అయినా పేర్కొనాలి.',
 	'masseditregex-before' => 'ముందు',
 	'masseditregex-after' => 'తర్వాత',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|మార్పు|మార్పులు}}',
+	'masseditregex-page-not-exists' => '$1 లేనే లేదు',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|పేజీని|పేజీలను}} మార్చారు',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'masseditregex-matchtxt' => 'Şunu ara:',
+	'masseditregex-replacetxt' => 'Şununla değiştir:',
+	'masseditregex-err-nopages' => 'Değiştirilecek en az bir sayfa belirtmelisiniz.',
+	'masseditregex-before' => 'Önce',
+	'masseditregex-after' => 'Sonra',
+	'masseditregex-view-full-summary' => 'Değişiklik özetinin tamamını gör',
+	'masseditregex-hint-headmatch' => 'Eşleşme',
+	'masseditregex-hint-headreplace' => 'Değiştir',
+	'masseditregex-hint-headeffect' => 'Etki',
+	'masseditregex-editfailed' => 'Değişiklik başarısız oldu:',
+	'masseditregex-tooltip-execute' => 'Bu değişiklikleri tüm sayfalara uygula',
 );
 
 /** Veps (Vepsan kel')

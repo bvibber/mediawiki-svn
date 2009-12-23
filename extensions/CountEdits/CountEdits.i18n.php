@@ -370,6 +370,7 @@ No juzgue a los contribuyentes por el número de sus ediciones.",
 $messages['et'] = array(
 	'countedits-username' => 'Kasutajanimi:',
 	'countedits-ok' => 'Otsi',
+	'countedits-nosuchuser' => 'Kasutajat §1 ei ole.',
 	'countedits-mostactive' => 'Kõige aktiivsemad kaastöötajad',
 	'countedits-nocontribs' => 'Seda wikit ei ole muudetud.',
 );
@@ -1428,10 +1429,12 @@ Huwag hadulat ang mga tagapag-ambag ayon sa bilang ng kanilang pamamatnugot.",
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'countedits-username' => 'Kullanıcı:',
 	'countedits-ok' => 'Tamam',
+	'countedits-nocontribs' => 'Bu vikiye herhangi bir katkıda bulunulmadı.',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

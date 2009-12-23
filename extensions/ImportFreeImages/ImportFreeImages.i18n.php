@@ -343,6 +343,15 @@ Para hacerlo, por favor obtén una [http://www.flickr.com/services/api/misc.api_
 	'importfreeimages_nophpflickr' => 'Ud. no tiene instalado phpFlickr: por favor configure $wgIFphpFlickr en su archivo LocalSettings.php.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'importfreeimages' => 'Too vabasid pilte',
+	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_next' => 'Järgmised $1',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

@@ -169,6 +169,7 @@ $messages['ar'] = array(
 	'dt_import_importing' => 'جاري الاستيراد...',
 	'dt_import_success' => 'سوف تُنشأ {{PLURAL:$1||صفحة واحدة|صفحتين|$1 صفحات|$1 صفحة}} من ملف $2.',
 	'importcsv' => 'استورد CSV',
+	'dt_importcsv_badheader' => "خطأ: عنوان العامود $1، '$2'، يجب أن يكون إما '$3'، '$4' أو من الصيغة 'template_name[field_name]'",
 	'right-datatransferimport' => 'استورد بيانات',
 );
 
@@ -496,6 +497,21 @@ $messages['es'] = array(
 	'right-datatransferimport' => 'Importar datos',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'dt_viewxml_categories' => 'Kategooriad',
+	'dt_viewxml_namespaces' => 'Nimeruumid',
+	'dt_viewxml_simplifiedformat' => 'Lihtsustatud vorming',
+	'dt_xml_namespace' => 'Nimeruum',
+	'dt_xml_pages' => 'Leheküljed',
+	'dt_xml_page' => 'Lehekülg',
+	'dt_xml_template' => 'Mall',
+	'dt_xml_name' => 'Nimi',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -537,6 +553,7 @@ $messages['fi'] = array(
 	'dt_xml_freetext' => 'Vapaa teksti',
 	'importxml' => 'XML-tuonti',
 	'dt_import_encodingtype' => 'Merkistötyyppi',
+	'dt_import_editsummary' => '$1-tuonti',
 	'dt_import_importing' => 'Tuodaan...',
 	'importcsv' => 'CSV-tuonti',
 );

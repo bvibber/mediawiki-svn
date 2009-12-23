@@ -29,6 +29,13 @@ $messages['be-tarask'] = array(
 	'wikieditor-highlight-preference' => 'Уключыць падсьветку сынтаксісу пад час рэдагаваньня',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'wikieditor-highlight-preference' => 'Разрешено осветяване на синтаксиса при редактиране',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -134,6 +141,13 @@ $messages['id'] = array(
 	'wikieditor-highlight-preference' => 'Aktifkan penyorotan sintaks sewaktu menyunting',
 );
 
+/** Italian (Italiano)
+ * @author Aushulz
+ */
+$messages['it'] = array(
+	'wikieditor-highlight-preference' => 'Attiva il controllo ortografico durante la modifica',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -211,6 +225,13 @@ $messages['pt'] = array(
 	'wikieditor-highlight-preference' => 'Possibilitar realce da sintaxe durante a edição',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'wikieditor-highlight-preference' => 'Activaţi evidenţierea sintaxei când modificaţi',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -279,5 +300,12 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'wikieditor-highlight-preference' => '编辑时启用语法高亮',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hant'] = array(
+	'wikieditor-highlight-preference' => '編輯時啟用語法高亮',
 );
 

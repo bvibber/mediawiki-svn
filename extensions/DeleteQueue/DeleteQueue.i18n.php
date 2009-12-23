@@ -1641,6 +1641,28 @@ Puedes [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registrar tu propio apoyo, u
 	'deletequeue-case-needs-review' => 'Este caso requiere [[$1|revisión]].',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'deletequeue-delnom-otherreason' => 'Muu põhjus',
+	'deletequeue-delnom-extra' => 'Lisainfo:',
+	'deletequeue-review-delete' => 'Kustuta lehekülg.',
+	'deletequeue-review-reason' => 'Kommentaarid:',
+	'deletequeue-review-newreason' => 'Uus põhjus:',
+	'deletequeue-review-newextra' => 'Lisainfo:',
+	'deletequeue-vote-reason' => 'Kommentaarid:',
+	'deletequeue-list-search' => 'Otsi',
+	'deletequeue-list-votes' => 'Häälte loend',
+	'deletequeue-list-header-page' => 'Lehekülg',
+	'deletequeue-list-header-expiry' => 'Aegumistähtaeg',
+	'deletequeue-list-header-discusspage' => 'Aruteluleht',
+	'deletequeue-list-header-reason' => 'Kustutamise põhjus',
+	'deletequeue-case-page' => 'Lehekülg:',
+	'deletequeue-case-reason' => 'Põhjus:',
+	'deletequeue-case-expiry' => 'Aegub:',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
@@ -5366,16 +5388,30 @@ Du kan själv [{{fullurl:\$1|action=delvote}} bifalla eller invända] mot raderi
 $messages['te'] = array(
 	'deletequeue-delnom-otherreason' => 'ఇతర కారణం',
 	'deletequeue-delnom-extra' => 'అదనపు సమాచారం:',
+	'deletequeue-queue-prod' => 'ప్రతిపాదిత తొలగింపు',
+	'deletequeue-queue-deletediscuss' => 'తొలగింపు చర్చ',
+	'deletequeue-review-action' => 'తీసుకోవాల్సిన చర్య:',
+	'deletequeue-review-delete' => 'ఈ పేజీని తొలగించు.',
+	'deletequeue-review-change' => 'ఈ పేజీని తొలగించు, కానీ వేరే కారణంతో.',
+	'deletequeue-review-dequeue' => 'ఏమీ చేయకు, మరియు ఈ పేజీని తొలగింపు వరుస నుండి తీసేయి.',
 	'deletequeue-review-reason' => 'వ్యాఖ్యలు:',
 	'deletequeue-review-newreason' => 'కొత్త కారణం:',
 	'deletequeue-review-newextra' => 'అదనపు సమాచారం:',
+	'deletequeue-review-success' => 'మీరు విజయవంతంగా ఈ పేజీ యొక్క తొలగింపుని సమీక్షించారు',
+	'deletequeue-review-success-title' => 'సమీక్ష పూర్తి',
+	'deletequeue-discusscreate-text' => 'ఈ కారణం వల్ల తొలగింపుని ప్రతిపాదించారు: $2',
 	'deletequeue-vote-reason' => 'వ్యాఖ్యలు:',
+	'deletequeue-showvotes-none-object' => 'ఈ పేజీని తొలగించడానికి అభ్యంతరాలు ఏమీ లేవు.',
+	'deletequeue' => 'తొలగింపు వరుస',
+	'deletequeue-list-text' => 'తొలగింపు వ్యవస్థలో ఉన్న అన్నీ పేజీలనూ ఈ పేజీ చూపిస్తుంది.',
 	'deletequeue-list-status' => 'స్థితి:',
 	'deletequeue-list-search' => 'వెతుకు',
 	'deletequeue-list-anyqueue' => '(ఏదైనా)',
 	'deletequeue-list-header-page' => 'పేజీ',
 	'deletequeue-list-header-discusspage' => 'చర్చా పేజీ',
+	'deletequeue-case-intro' => 'ఈ పేజీ ఒక ప్రత్యేక తొలగింపు కేసుపై సమాచారాన్ని చూపిస్తుంది.',
 	'deletequeue-list-header-reason' => 'తొలగింపుకి కారణం',
+	'deletequeue-case-votes' => 'సమ్మతులు/అభ్యంతరాలు:',
 	'deletequeue-case-details' => 'ప్రాధమిక వివరాలు',
 	'deletequeue-case-page' => 'పేజీ:',
 	'deletequeue-case-reason' => 'కారణం:',

@@ -27,6 +27,13 @@ $messages['af'] = array(
 	'interlanguage-desc' => "Gryp tussentaalskakels vanaf 'n ander wiki",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'interlanguage-desc' => 'يجلب الوصلات بين اللغات من ويكي آخر',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

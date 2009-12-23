@@ -594,6 +594,14 @@ $messages['pt-br'] = array(
 	'simpleantispam-desc' => 'Adiciona um verificador simples de spam/robôs em formulários',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'simpleantispam-label' => "Verificare antispam.
+'''NU''' completaţi !",
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -669,6 +677,16 @@ $messages['sv'] = array(
 	'simpleantispam-label' => "Anti-spam koll.
 Fyll '''INTE''' i det här!",
 	'simpleantispam-desc' => 'Lägger till en enkel spam/robot koll till formulär',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'simpleantispam' => 'Özgerdişiňiz anti-spam mehanizmini işletdi',
+	'simpleantispam-label' => "Anti-spam barlagy.
+Muny '''DOLDURMAŇ'''!",
+	'simpleantispam-desc' => 'Formlara ýönekeý spam/bot barlagyny goşýar',
 );
 
 /** Tagalog (Tagalog)

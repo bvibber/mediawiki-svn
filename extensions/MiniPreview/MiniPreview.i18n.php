@@ -807,8 +807,11 @@ Halimbawa na, hindi ipapakita ng "* PD-" ang lahat ng mga kauriang nagsisimula s
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'minipreview-files_in_category' => "Bu kategori, '''$1''' {{PLURAL:$1|dosya|dosya}} içermektedir.",
+	'minipreview-no_more_files_here' => 'Bu yönde başka dosya bulunmamaktadır.',
 	'minipreview-no_category_gallery' => 'Hiçbir kategori veya galeri yok !',
 );
 

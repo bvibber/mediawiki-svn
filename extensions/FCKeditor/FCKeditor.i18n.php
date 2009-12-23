@@ -49,6 +49,7 @@ $messages['qqq'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'fckeditor-desc' => 'يسمح بالتعديل باستخدام محرر الWYSIWYG FCKeditor',
 	'textrichditor' => 'محرر متقدم',
 	'prefs-fckeditor' => 'محرّر غني',
 	'tog-riched_disable' => 'عطل المحرر المتقدم',
@@ -69,7 +70,10 @@ $messages['ar'] = array(
 	'tog-riched_disable_ns_category' => 'عطل المحرر المتقدم في نطاق "{{ns:category}}"',
 	'tog-riched_disable_ns_category_talk' => 'عطل المحرر المتقدم في نطاق "{{ns:category_talk}}"',
 	'rich_editor_new_window' => 'افتح المحرر الغني في نافذة جديدة',
+	'tog-riched_start_disabled' => 'ابدأ بتعطيل المحرر الغني',
 	'tog-riched_use_popup' => 'افتح المحرر الغني في نافذة منبثقة',
+	'tog-riched_use_toggle' => 'استخدم التبديل للتغيير بين نص الويكي والمحرر الغني (استبدل مساحة النص بالمحرر الغني)',
+	'tog-riched_toggle_remember_state' => 'تذكر آخر حالة تبديل',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -1113,6 +1117,18 @@ $messages['te'] = array(
 	'textrichditor' => 'సిరి కూర్పరి',
 	'prefs-fckeditor' => 'సిరి కూర్పరి',
 	'tog-riched_disable' => 'సిరి కూర్పరిని అచేతనం చేయండి',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'textrichditor' => 'Zengin Editör',
+	'prefs-fckeditor' => 'Zengin Editör',
+	'tog-riched_disable' => 'Zengin editörü devre dışı bırak',
+	'tog-riched_disable_ns_main' => 'Zengin editörü ana isim alanında devre dışı bırak',
+	'tog-riched_disable_ns_talk' => 'Zengin editörü "{{ns:talk}}" isim alanında devre dışı bırak',
+	'tog-riched_disable_ns_user' => 'Zengin editörü "{{ns:user}}" isim alanında devre dışı bırak',
 );
 
 /** Vietnamese (Tiếng Việt)

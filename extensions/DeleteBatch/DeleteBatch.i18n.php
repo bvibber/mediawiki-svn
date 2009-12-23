@@ -172,6 +172,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'deletebatch' => 'Diverkañ ur strollad pajennoù',
 	'deletebatch-caption' => 'Roll ar pajennoù :',
 	'deletebatch-link-back' => "Distreiñ d'ar bajenn dibar",
 	'deletebatch-or' => '<b>pe</b>',
@@ -355,6 +356,14 @@ $messages['es'] = array(
 	'deletebatch-file-missing' => 'Incapaz de leer archivo dado',
 	'deletebatch-select-yourself' => 'usted',
 	'deletebatch-no-page' => 'Por favor especifique al menos una página a borrar O escoja un archivo conteniendo una lista de páginas.',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'deletebatch-or' => '<b>või</b>',
+	'deletebatch-delete' => 'Kustuta',
 );
 
 /** Basque (Euskara)

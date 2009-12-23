@@ -461,9 +461,12 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'stalkerlog-log-login' => 'autentificat',
+	'stalkerlog-log-logout' => 'deconectat',
 	'stalkerlog-log-type' => 'Jurnalul autentificărilor utilizatorilor',
 );
 

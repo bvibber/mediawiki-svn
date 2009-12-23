@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'lockout-desc' => 'Sorg dat geblokkeerde gebruikers nie kan aanteken nie',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'lockout-desc' => 'يمنع المستخدمين الممنوعين من تسجيل الدخول',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -76,6 +83,13 @@ $messages['el'] = array(
  */
 $messages['es'] = array(
 	'lockout-desc' => 'Prevenir inicio de sesión de usuarios bloqueados',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'lockout-desc' => 'Estää estettyjä käyttäjiä kirjautumasta sisään.',
 );
 
 /** French (Français)

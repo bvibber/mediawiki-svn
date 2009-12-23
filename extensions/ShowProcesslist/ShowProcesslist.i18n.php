@@ -824,13 +824,17 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'showprocesslist-id' => 'ID',
 	'showprocesslist-user' => 'Utilizator',
+	'showprocesslist-host' => 'Găzduire',
+	'showprocesslist-db' => 'Baza de date',
 	'showprocesslist-command' => 'Comandă',
 	'showprocesslist-time' => 'Timp',
+	'showprocesslist-info' => 'Informaţii',
 );
 
 /** Tarandíne (Tarandíne)
@@ -949,9 +953,11 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'showprocesslist' => 'ప్రక్రియల జాబితా చూపించు',
 	'showprocesslist-user' => 'వాడుకరి',
+	'showprocesslist-db' => 'డాటాబేసు',
 	'showprocesslist-command' => 'ఆదేశం',
 	'showprocesslist-time' => 'సమయం',
 	'showprocesslist-state' => 'స్థితి',
+	'showprocesslist-info' => 'సమాచారం',
 );
 
 /** Tetum (Tetun)

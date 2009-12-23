@@ -21,6 +21,15 @@ $messages['qqq'] = array(
 	'stockcharts-missingticker' => '{{doc-important|Do not translate or change "<nowiki>&amp;lt;stockchart ticker="AAPL"/&amp;gt;</nowiki>"}}',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'stockcharts-desc' => 'يضيف وسم <nowiki><stockchart ticker="AAPL"/></nowiki> لرسم أسهم تجاري متفاعل',
+	'stockcharts-missingticker' => 'لتضمين رسم أسهم، تحتاج على الاقل إلى تحديد تيكر.
+استخدم: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

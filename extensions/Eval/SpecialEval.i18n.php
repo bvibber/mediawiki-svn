@@ -540,6 +540,7 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
+	'eval_submit' => 'Evaluaţi',
 	'eval_code' => 'Cod',
 );
 

@@ -852,6 +852,7 @@ $messages['pt-br'] = array(
  * @author Silviubogan
  */
 $messages['ro'] = array(
+	'accountmanager' => 'Administratorul conturilor',
 	'am-username' => 'nume de utilizator',
 	'am-email' => 'e-mail',
 	'am-active' => 'activ',
@@ -971,11 +972,17 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'accountmanager' => 'ఖాతా నిర్వాహకి',
 	'am-username' => 'వాడుకరిపేరు',
 	'am-email' => 'ఈ-మెయిల్',
+	'am-active' => 'చేతనం',
+	'am-updated' => 'మీ మార్పులు విజయవంతంగా భద్రమయ్యాయి',
 	'nss-rights' => 'హక్కులు',
 	'nss-save-changes' => 'మార్పులను భద్రపరచు',
 	'nss-create-account-header' => 'కొత్త ఖాతాని సృష్టించండి',
+	'nss-create-account' => 'ఖాతాని సృష్టించు',
+	'nss-no-mail' => 'ఈమెయిలు పంపించకు',
+	'nss-welcome-mail' => '$1 వాడుకరిపేరు మరియు $2 సంకేతపదంతో మీకోసం ఖాతాని సృష్టించారు.',
 	'nss-welcome-mail-subject' => 'ఖాతా సృష్టింపు',
 );
 
@@ -1001,9 +1008,20 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'accountmanager' => 'Hesap yöneticisi',
+	'am-username' => 'kullanıcı adı',
 	'am-email' => 'e-posta',
+	'am-active' => 'etkin',
+	'am-updated' => 'Değişiklikleriniz başarıyla kaydedildi',
+	'nss-rights' => 'haklar',
+	'nss-save-changes' => 'Değişiklikleri kaydet',
+	'nss-create-account-header' => 'Yeni hesap oluştur',
+	'nss-create-account' => 'Hesap oluştur',
+	'nss-no-mail' => 'E-posta göndermeyin',
+	'nss-welcome-mail-subject' => 'Hesap oluşturma',
 );
 
 /** Veps (Vepsan kel')

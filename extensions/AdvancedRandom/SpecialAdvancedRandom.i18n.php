@@ -209,8 +209,8 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'advancedrandom' => 'Accès a l’hasârd avanciê',
-	'advancedrandom-desc' => 'At una pâge a l’hasârd dens quint que seye èspâço de noms que la pâge de sujèt ou ben de discussion est liyê a una pâge balyê.
-Pôt étre utilisâ coment [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] por avêr per hasârd la pâge de discussion d’un articllo de qualitât, ou ben coment [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] por avêr un fichiér desot Licence de documentacion abada GNU (GFDL).',
+	'advancedrandom-desc' => 'At una pâge a l’hasârd dens un èspâço de noms quint que seye que la pâge de sujèt ou ben de discussion est liyê a una pâge balyê.
+Pôt étre utilisâ coment [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] por avêr per hasârd la pâge de discussion d’un articllo de qualitât, ou ben coment [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] por avêr un fichiér desot licence de documentacion abada GNU (GFDL).',
 );
 
 /** Galician (Galego)

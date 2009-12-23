@@ -712,6 +712,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'searchbox-search' => 'వెతుకు',
 	'searchbox-go' => 'వెళ్ళు',
+	'searchbox-namespaces' => 'పేరుబరులు:',
 );
 
 /** Thai (ไทย)

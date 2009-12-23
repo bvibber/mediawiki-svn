@@ -35,6 +35,7 @@ $messages['ar'] = array(
 	'protectsection_desc' => 'يسمح للمستخدمين الموثوقين بحماية أجزاء من صفحة باستخدام الوسم <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'أنت حاولت إضافة أو إزالة قسم محمي',
 	'protectsection_modify' => 'أنت حاولت تعديل نص محمي',
+	'protectsection_add_above' => 'أنت حاولت إدخال نص أمام قسم محمي',
 	'protectsection_forbidden' => 'ممنوع',
 	'right-protectsection' => 'حماية أقسام الصفحات',
 );
@@ -610,8 +611,10 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'protectsection_modify' => 'Koruma altındaki metni değiştirmeye çalıştınız',
 	'protectsection_forbidden' => 'Yasaklanmış',
 );
 

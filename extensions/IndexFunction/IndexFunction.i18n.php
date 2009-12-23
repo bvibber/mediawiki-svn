@@ -875,6 +875,7 @@ $messages['ro'] = array(
 	'indexfunc-badtitle' => 'Titlu invalid: "$1"',
 	'indexfunc-index-exists' => 'Pagina "$1" există deja',
 	'index-search' => 'Căutare:',
+	'index-submit' => 'Trimitere',
 	'index-disambig-start' => "'''$1''' se poate referi la mai multe pagini:",
 	'index-emptylist' => 'Nu există pagini asociate cu "$1"',
 	'index-expand-detail' => 'Arată paginile indexate sub acest titlu',
@@ -976,10 +977,19 @@ Klicka på pilen för att se hela innehållsförteckningen.',
 
 /** Telugu (తెలుగు)
  * @author Kiranmayee
+ * @author Veeven
  */
 $messages['te'] = array(
+	'indexfunc-badtitle' => 'చెల్లని శీర్షిక: "$1"',
 	'index-search' => 'వెతుకు:',
 	'index-submit' => 'దాఖలుచెయ్యి',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'index-no-results' => 'Aramada sonuç bulunamadı',
 );
 
 /** Ukrainian (Українська)
@@ -1017,6 +1027,18 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'index-search' => 'זוכן:',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
+ */
+$messages['zh-hans'] = array(
+	'indexfunc-badtitle' => '无效标题：“$1”',
+	'indexfunc-index-exists' => '“$1”页面已存在',
+	'index-search' => '搜索：',
+	'index-submit' => '提交',
+	'index-hide-detail' => '隐藏页面列表',
+	'index-no-results' => '无任何搜索结果',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

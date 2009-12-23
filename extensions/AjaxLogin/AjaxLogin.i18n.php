@@ -49,6 +49,9 @@ $messages['ar'] = array(
 	'ajaxLogin2' => 'هل أنت متأكد؟
 ربما تفقد تغييراتك لهذه الصفحة لو أنك تركت هذه الصفحة الآن.',
 	'ajaxlogin-create' => 'إنشاء حساب',
+	'al-nosuchuser' => 'لا يوجد مستخدم بالاسم "$1".
+أسماء المستخدمين حساسة لحالة الحروف.
+تحقق من إملائك.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -894,6 +897,7 @@ $messages['ug-arab'] = array(
 );
 
 /** Vèneto (Vèneto)
+ * @author Candalua
  * @author Vajotwo
  */
 $messages['vec'] = array(
@@ -901,7 +905,7 @@ $messages['vec'] = array(
 Ciò ve porterà via da sta pajina de modifega e se rischia de perdare ła modifega atuałe.",
 	'ajaxLogin2' => 'Sito sicuro?
 Se podaria perdare łe modifeghe aportae a sta pajina se se lassa ła pajina ora.',
-	'ajaxlogin-create' => "Crea n'acaunt",
+	'ajaxlogin-create' => 'Crea na utensa',
 );
 
 /** Vietnamese (Tiếng Việt)

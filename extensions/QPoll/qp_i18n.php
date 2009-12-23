@@ -128,7 +128,7 @@ $messages['qqq'] = array(
 {{Identical|Source}}',
 	'qp_stats_link' => '{{Identical|Statistics}}',
 	'qp_users_link' => '{{Identical|User}}',
-	'qp_voice_link_inv' => "At the moment of query generation there was no user answer for the selected poll yet. Question mark encourages wiki administrator to re-submit the query again.",
+	'qp_voice_link_inv' => 'At the moment of query generation there was no user answer for the selected poll yet. Question mark encourages wiki administrator to re-submit the query again.',
 	'qp_user_polls_link' => 'Parameters:
 * $1 is the number of polls participated in.
 * $2 is the name of the user this message refers to (optional - use for GENDER)',
@@ -225,6 +225,49 @@ Om \'n peiling te stoor, stuur dit sonder dat enig voorstel beantwoord word.',
 	'qp_error_too_few_spans' => 'Vir elke kategorieklas moet daar ten minste twee moontlike antwoorde gedefinieerd wees',
 	'qp_error_no_answer' => 'Onbeantwoorde voorstel',
 	'qp_error_unique' => 'Vir die vraag van die tipe unique() is daar meer voorstelle as moontlike antwoorde gedefinieer. Dit is nie reg voorberei nie.',
+);
+
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'pollresults' => 'نتائج الاستقصاءات في هذا الموقع',
+	'qp_desc' => 'يسمح بإنشاء اقتراعات',
+	'qp_result_NA' => 'غير مجاب عنه',
+	'qp_result_error' => 'خطأ صياغة',
+	'qp_vote_button' => 'تصويت',
+	'qp_vote_again_button' => 'غير صوتك',
+	'qp_polls_list' => 'عرض كل الاقتراعات',
+	'qp_users_list' => 'عرض كل المستخدمين',
+	'qp_browse_to_poll' => 'اذهب إلى $1',
+	'qp_browse_to_user' => 'اذهب إلى $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|صوت|أصوات}}',
+	'qp_source_link' => 'مصدر',
+	'qp_stats_link' => 'إحصاءات',
+	'qp_users_link' => 'مستخدمون',
+	'qp_voice_link' => 'صوت المستخدم',
+	'qp_voice_link_inv' => 'صوت المستخدم؟',
+	'qp_user_missing_polls_link' => 'لا مشاركة',
+	'qp_not_participated_link' => 'لم يشارك',
+	'qp_order_by_username' => 'رتب حسب اسم المستخدم',
+	'qp_order_by_polls_count' => 'رتب حسب عداد الاقتراعات',
+	'qp_error_no_such_poll' => 'لا اقتراع كهذا ($1).
+تأكد من أن الاقتراع معلن عنه ومحفوظ، وتأكد أيضا من استخدام حرف فصل العنوان #',
+	'qp_error_dependance_in_stats_mode' => 'لا يمكن الإعلان عن سلسلة اعتماد الاقتراع في نمط الإحصاءات',
+	'qp_error_question_not_implemented' => 'الأسئلة من هذا النوع غير مطبقة: $1',
+	'qp_error_invalid_poll_id' => 'رقم اقتراع غير صحيح (id=$1).
+رقم الاقتراع يمكن ان يحتوي فقط على حروف، أرقام وحرف الفراغ',
+	'qp_error_invalid_dependance_value' => 'سلسة اعتماد الاقتراع (id=$1) بها قيمة غير صحيحة لمحدد الاعتماد (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'الاقتراع (id=$1) معتمد على اقتراع آخر (id=$3) من الصفحة [[$2]]، لكن العنوان [[$2]] لم يتم العثور عليه.
+إما أن تزيل محدد الاعتماد، أو تسترجع [[$2]]',
+	'qp_error_missed_dependance_poll' => 'الاقتراع (id=$1) معتمد على اقتراع آخر (id=$3) في الصفحة $2، لكن هذا الاقتراع غير موجود أو لم يتم حفظه بعد.
+إما أن تزيل محدد الاعتماد، أو تنشئ الاقتراع بالرقم id=$3 في الصفحة $2 وتحفظه.
+لحفظ اقتراع، نفذه مع عدم الإجابة على أي أسئلة مطروحة.',
+	'qp_error_vote_dependance_poll' => 'من فضلك صوت للاقتراع $1 أولا.',
+	'qp_error_unanswered_span' => 'تصنيف فرعي غير مجاب عليه',
+	'qp_error_category_name_empty' => 'اسم التصنيف فارغ',
+	'qp_error_proposal_text_empty' => 'نص الاقتراح فارغ',
+	'qp_error_no_answer' => 'اقتراح غير مجاب عليه',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -340,6 +383,12 @@ $messages['bs'] = array(
 	'qp_users_link' => 'Korisnici',
 );
 
+/** German (Deutsch) */
+$messages['de'] = array(
+	'qp_source_link' => 'Quelle',
+	'qp_users_link' => 'Benutzer',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -430,6 +479,20 @@ $messages['es'] = array(
 	'qp_error_too_few_categories' => 'Se debe definir al menos dos categorías',
 	'qp_error_too_few_spans' => 'Cada clase de categoría requiere de al menos dos respuestas possibles definidas',
 	'qp_error_no_answer' => 'Propuesta no respondida',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'qp_result_NA' => 'Ei vastattu',
+	'qp_result_error' => 'Syntaksivirhe',
+	'qp_vote_button' => 'Äänestä',
+	'qp_vote_again_button' => 'Vaihda ääntäsi',
+	'qp_source_link' => 'Lähde',
+	'qp_stats_link' => 'Tilastot',
+	'qp_users_link' => 'Käyttäjät',
 );
 
 /** French (Français)
@@ -1234,6 +1297,73 @@ $messages['pl'] = array(
 	'qp_stats_link' => 'Statystyki',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'pollresults' => 'Arzultà dij sondagi an sto sit-sì',
+	'qp_desc' => 'A përmëtt la creassion ëd sondagi',
+	'qp_desc-sp' => "[[Special:PollResults|Pàgina special]] për vëdde j'arzultà dij sondagi",
+	'qp_result_NA' => 'Pa arspondù',
+	'qp_result_error' => 'Eror ëd sintass',
+	'qp_vote_button' => 'Vot',
+	'qp_vote_again_button' => 'Cangia tò vot',
+	'qp_polls_list' => 'Lista tùit ij sondagi',
+	'qp_users_list' => "Lista tùit j'utent",
+	'qp_browse_to_poll' => 'Scanucia $1',
+	'qp_browse_to_user' => 'Scanucia $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|vot|vot}}',
+	'qp_source_link' => 'Sorziss',
+	'qp_stats_link' => 'Statìstiche',
+	'qp_users_link' => 'Utent',
+	'qp_voice_link' => "Vos ëd l'utent",
+	'qp_voice_link_inv' => "Vos ëd l'utent?",
+	'qp_user_polls_link' => 'Partessipà a $1 {{PLURAL:$1|sondagi|sondagi}}',
+	'qp_user_missing_polls_link' => 'Gnun-e partessipassion',
+	'qp_not_participated_link' => 'Pa partessipà',
+	'qp_order_by_username' => 'Ordina për nòm utent',
+	'qp_order_by_polls_count' => 'Ordina për contador ëd sondagi',
+	'qp_results_line_qupl' => 'Pàgina "$1" Sondagi "$2": "$3"',
+	'qp_results_line_qpl' => 'Pàgina "$1" Sondagi "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Pàgina "$2" Sondagi "$3" ]',
+	'qp_export_to_xls' => 'Espòrta statìstiche an formà XLS',
+	'qp_users_answered_questions' => "$1 {{PLURAL:$1|utent|utent}} a l'han arspondù a la custion",
+	'qp_func_no_such_poll' => 'Ël sondagi a esist pa ($1)',
+	'qp_func_missing_question_id' => "Për piasì specìfica n'id ëd custion esistent (partend da 1) për ël sondagi $1",
+	'qp_func_invalid_question_id' => 'Id custion=$2 pa bon (pa un nùmer) për ël sondagi $1',
+	'qp_func_missing_proposal_id' => "Për piasì specifica n'id propòsta esistenta (an partend da 0) për ël sondagi $1, custion $2",
+	'qp_func_invalid_proposal_id' => 'Id propòsta=$3 pa bon (pa un nùmer) për ël sondagi $1, custin $2',
+	'qp_error_no_such_poll' => "Sondagi pa esistent ($1).
+Sicurte che ël sondagi a sia diciarà e salvà, ëdcò sicurte ëd dovré ël caràter delimitador d'adrësse #",
+	'qp_error_id_in_stats_mode' => "As peul pa diciaresse n'ID ëd sondagi an manera statìstica",
+	'qp_error_dependance_in_stats_mode' => 'As peul pa diciaresse na caden-a ëd dipendensa dël sondagi an manera statìstica',
+	'qp_error_no_stats' => "Pa gnun dat statìstich a son disponìbij, përchè pa gnun a l'ha votà për sto sondagi-sì, anco' (adrëssa=$1)",
+	'qp_error_address_in_decl_mode' => "As peul pa pijé n'adrëssa dël sondagi an manera diciarativa",
+	'qp_error_question_not_implemented' => 'Custin dë sta sòrt-sì a son pa amplementà: $1',
+	'qp_error_invalid_question_type' => 'Sòrt ëd custion pa bon-a: $1',
+	'qp_error_type_in_stats_mode' => 'Le Sòrt ëd custion a peulo pa esse definìe an manera statìstica: $1',
+	'qp_error_no_poll_id' => "L'etichëtta dël sondagi a l'ha gnun atribù definì.",
+	'qp_error_invalid_poll_id' => "Id dël sondagi pa bon (id=$1).
+L'id dël sondagi a peul conten-e mach litre, nùmer e caràter spassi",
+	'qp_error_already_used_poll_id' => "L'id dël sondagi a l'é già stàit dovrà an sta pàgine (id=$1).",
+	'qp_error_invalid_dependance_value' => 'La caden-a ëd dipendensa dël sondagi (id=$1) a l\'ha valor pa bon ëd l\'atribù ëd dipendensa (dipendensa="$2")',
+	'qp_error_missed_dependance_title' => "Ël sondagi (id=$1) a l'é dipendent da n'àutr sondagi (id=$3) ëd pàgina [[$2]], ma ël tìtol [[$2]] a l'é pa stàit trovà.
+O gava l'atribù ëd dipendensa, o torna buté [[$2]]",
+	'qp_error_missed_dependance_poll' => "Ël sondagi (id=$1) a l'é dipendent da n'àutr sondagi (id=$3) a pàgina $2, ma ël sondagi a esist pa o a l'é stàit anco' pa salvà.
+O gava l'atribù ëd dipendensa, o crea ël sondagi con id=$3 a la pàgina $2 e salvlo.
+Për salvé un sondagi, spedisslo sensa arsponde a gnun-e custion ëd propòsta.",
+	'qp_error_vote_dependance_poll' => 'Për piasì vòta për ël sondagi $1 prima.',
+	'qp_error_too_many_spans' => 'Tròpi grup ëd categorìe për ël nùmer tota ëd sotcategorìe definìe',
+	'qp_error_unanswered_span' => 'Sotcategorìe pa arspondùe',
+	'qp_error_non_unique_choice' => 'Sta custion-sì a veul na sola arspòsta ëd propòsta',
+	'qp_error_category_name_empty' => "Ël nòm categorìa a l'é veuid",
+	'qp_error_proposal_text_empty' => "Ël test ëd propòsta a l'é veuid",
+	'qp_error_too_few_categories' => 'Almanch doe categorìe a deuvo esse definìe',
+	'qp_error_too_few_spans' => 'Minca grup ëd categorìe a deuv conten-e almanch doe sotcategorìe',
+	'qp_error_no_answer' => 'Propòsta pa arspondùa',
+	'qp_error_unique' => "La custion ëd sòrt unique() a l'ha pi propòste che arspòste possìbij definìe: ampossìbil completé",
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -1314,6 +1444,20 @@ $messages['pt-br'] = array(
 	'qp_vote_again_button' => 'Alterar o seu voto',
 	'qp_polls_list' => 'Listar todas as enquetes',
 	'qp_users_list' => 'Listar todos os usuários',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'qp_vote_button' => 'Votaţi',
+	'qp_polls_list' => 'Arătaţi toate sondajele',
+	'qp_users_list' => 'Arătaţi toţi utilizatorii',
+	'qp_source_link' => 'Sursa',
+	'qp_stats_link' => 'Statistici',
+	'qp_users_link' => 'Utilizatori',
+	'qp_voice_link' => 'Vocea utilizatorului',
+	'qp_voice_link_inv' => 'Vocea utilizatorului?',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1398,7 +1542,21 @@ $messages['te'] = array(
 	'qp_votes_count' => '$1 {{PLURAL:$1|వోటు|వోట్లు}}',
 	'qp_stats_link' => 'గణాంకాలు',
 	'qp_users_link' => 'వాడుకరులు',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|వాడుకరి|గురు వాడుకరులు}} ప్రశ్నలకు జవాబిచ్చారు',
 	'qp_error_category_name_empty' => 'వర్గం పేరు ఖాళీగా ఉంది',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'qp_result_NA' => 'Cevaplanmadı',
+	'qp_source_link' => 'Kaynak',
+	'qp_stats_link' => 'İstatistikler',
+	'qp_user_missing_polls_link' => 'Katılım yok',
+	'qp_not_participated_link' => 'Katılmadı',
+	'qp_error_too_few_spans' => 'Tüm kategori grupları en az iki alt kategori içermelidir',
+	'qp_error_no_answer' => 'Cevaplanmamış teklif',
 );
 
 /** Ukrainian (Українська)

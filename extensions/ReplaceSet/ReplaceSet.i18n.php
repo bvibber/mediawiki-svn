@@ -38,6 +38,16 @@ $messages['qqq'] = array(
 	'replaceset-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'replaceset-desc' => 'يضيف وظيفة محلل <nowiki>{{#replaceset}}</nowiki> تستخدم لاستبدال أقسام من النصوص ببيانات مهيئة',
+	'replaceset-error-calllimit' => 'حد استدعاء ReplaceSet تم الوصول إليه.',
+	'replaceset-error-regexnoend' => 'نمط الريجيكس "$1" يفقد فاصل النهاية \'$2\'',
+	'replaceset-error-regexbadmodifier' => "معدل الريجيكس '$1' غير صحيح.",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

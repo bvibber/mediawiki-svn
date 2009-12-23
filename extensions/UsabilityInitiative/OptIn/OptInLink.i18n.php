@@ -84,6 +84,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'optin-try' => 'Изпробвайте Бета',
+	'tooltip-pt-optin-try' => 'Изпробвайте нови възможности',
 );
 
 /** Bengali (বাংলা)
@@ -775,11 +776,15 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'optin-try' => 'Încercaţi Beta',
+	'tooltip-pt-optin-try' => 'Încercaţi funcţii noi',
 	'optin-leave' => 'Părăsiţi Beta',
+	'tooltip-pt-optin-leave' => 'Dezactivaţi funcţiile noi',
 	'optin-feedback' => 'Părere despre Beta',
+	'tooltip-pt-optin-feedback' => 'Furnizaţi un feedback cu privire la experienţa cu noile funcţionalităţi',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1056,11 +1061,15 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'optin-try' => '試試測試版',
+	'tooltip-pt-optin-try' => '嘗試新功能',
 	'optin-leave' => '離開測試版',
+	'tooltip-pt-optin-leave' => '嘗試新功能',
 	'optin-feedback' => '測試版反饋',
+	'tooltip-pt-optin-feedback' => '提供您對新功能的反饋意見',
 );
 

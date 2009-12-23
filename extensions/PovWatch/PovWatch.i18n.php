@@ -2235,6 +2235,8 @@ $messages['te'] = array(
 	'povwatch_comment' => 'చిట్టా వ్యాఖ్య:',
 	'povwatch_no_log' => 'దినచర్యలో అంశాలేమీ లేవు.',
 	'povwatch_no_subscribers' => 'చందాదార్లు ఎవరూ లేరు.',
+	'povwatch_unsubscribe' => 'చందామాను',
+	'povwatch_subscribe' => 'చందాచేరు',
 	'povwatch_added' => 'చేర్చాం',
 );
 

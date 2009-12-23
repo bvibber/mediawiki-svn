@@ -205,7 +205,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'scanset_no_name' => 'Fazi : Rankout a rit reiñ un anv d\'an hollad restroù niverelaet, da skouer &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Fazi : Mankout a ra ar strobad restroù niverelaet pe direizh eo.',
-	'scanset_unrecognised_index_format' => 'Fazi : dianav eo ar furmad menegeriñ',
+	'scanset_unrecognised_index_format' => 'Fazi : dianav eo furmad ar meneger',
 	'scanset_opendir_error' => "Fazi : N'eo ket posupl digeriñ ar c'havlec'h $1",
 	'scanset_no_files' => "Fazi : N'eus restr ebet er c'havlec'h spisaet.",
 	'scanset_no_volumes' => "Fazi : N'eus ket bet kavet kavlec'hioù pezhienn",
@@ -467,7 +467,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'scanset-desc' => 'Montre les émâges de pâges numerisâs dês los ensemblos de CD/DVD a Andréas Grosz.',
+	'scanset-desc' => 'Montre les émâges de pâges numerisâs dês los ensemblos de CD / DVD a Andréas Grosz.',
 	'scanset_no_name' => 'Èrror : vos dête spècefiar un nom por l’ensemblo de documents numerisâs, per ègzemplo &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Èrror : ensemblo de documents numerisâs envalido ou ben manquent.',
 	'scanset_unrecognised_index_format' => 'Èrror : format d’endèxo encognu.',
@@ -1285,6 +1285,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'scanset_opendir_error' => 'పొరపాటు: $1 సంచయాన్ని తెరవలేకున్నాం',
 	'scanset_no_files' => 'Error: మీరు చెప్పిన డైరెక్టరీలో ఫైళ్ళు ఏమీ లేవు.',
 	'scanset_missing_index_file' => 'Error: $1 అనే సూచిక ఫైలు కనబడలేదు',
 	'scanset_next' => 'తర్వాత &gt;',
@@ -1323,6 +1324,17 @@ $messages['th'] = array(
 	'scanset_opendir_error' => 'ผิดพลาด: ไม่สามารถเปิดไดเรคทอรี $1 ได้',
 	'scanset_next' => 'ต่อไป &gt;',
 	'scanset_prev' => '&lt; ก่อนหน้า',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'scanset_unrecognised_index_format' => 'Säwlik: Näbelli indeks formaty',
+	'scanset_missing_index_file' => 'Säwlik: $1 indeks faýly tapylmady',
+	'scanset_invalid_volume' => 'Säwlik: Näbelli tom',
+	'scanset_next' => 'Indiki &gt;',
+	'scanset_prev' => '&lt; Öňki',
 );
 
 /** Tagalog (Tagalog)

@@ -420,6 +420,17 @@ El límite actual es $3.',
 	'right-duplicate' => 'Duplicar páginas',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'duplicator' => 'Dubleeri lehekülg',
+	'duplicator-toolbox' => 'Dubleeri see lehekülg',
+	'duplicator-success-talkcopied' => 'Aruteluleht kopeeriti samuti.',
+	'right-duplicate' => 'Dubleerida lehekülgi',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

@@ -41,6 +41,15 @@ $messages['af'] = array(
 	'tablemod-error-missingid' => 'Die "ident"-eienskap ontbreek in die etiket.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'tablemod-msg-remove' => 'أزل',
+	'tablemod-error-invalidsort' => 'محددات ترتيب غير صحيحة.',
+	'tablemod-error-invalidaction' => 'فعل غير صحيح.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -89,6 +98,20 @@ $messages['dsb'] = array(
 	'tablemod-error-missingid' => 'Felujucy atribut ident w toflicce.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'tablemod-msg-remove' => 'Kendu',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'tablemod-msg-remove' => 'Poista',
+);
+
 /** French (Français)
  * @author McDutchie
  * @author PieRRoMaN
@@ -130,7 +153,7 @@ $messages['gsw'] = array(
 	'tablemod-msg-remove' => 'Uuseneh',
 	'tablemod-error-format' => 'Die Markierig unterstitzt nume ei eifachi Tabälle, ohni Text dervor oder derno.',
 	'tablemod-error-colcount' => 'Die Markierig unterstitzt nume Tabälle mit ere glyyche Aazahl vu Spalte pro Zyyle bim Uuseneh.',
-	'tablemod-error-headcount' => 'Die Markierig unterstitzt nume Tabälle mit ere eizyylige Chopfzyyle bim Uuseneh.',
+	'tablemod-error-headcount' => 'Die Markierig unterstitzt nume Tabälle zem Sortiere, wu alli spalte ne Chopfyytrag hän.',
 	'tablemod-error-invalidsort' => 'Nit giltige Sortierigsparameter.',
 	'tablemod-error-invalidaction' => 'Nit giltigi Aktion.',
 	'tablemod-error-missingid' => 'Ident-Eigeschafte in dr Markierig fähle.',
@@ -249,6 +272,16 @@ $messages['nl'] = array(
 	'tablemod-error-missingid' => 'De eigenschap "ident" ontbreekt in de tag.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'tablemod' => 'TableMod',
+	'tablemod-msg-remove' => 'Fjern',
+	'tablemod-error-invalidsort' => 'Ugyldige sorteringsparametre.',
+	'tablemod-error-invalidaction' => 'Ugyldig handling.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -258,7 +291,7 @@ $messages['oc'] = array(
 	'tablemod-msg-remove' => 'Suprimir',
 	'tablemod-error-format' => 'Aquesta balisa supòrta unicament una taula simpla per balisa, sens cap de tèxte abans o aprèp aquela.',
 	'tablemod-error-colcount' => 'Aquesta balisa supòrta unicament las taulas amb un nombre egal de colomnas per linha al moment de la supression.',
-	'tablemod-error-headcount' => 'Aquesta balisa supòrta unicament las entèstas de taulas sus una sola colomna al moment de la supression.',
+	'tablemod-error-headcount' => "Aquesta balisa supòrta unicament las taulas amb d'entèstas sus una sola colomna al moment de la triada.",
 	'tablemod-error-invalidsort' => 'Paramètres de triada invalids.',
 	'tablemod-error-invalidaction' => 'Accion invalida.',
 	'tablemod-error-missingid' => 'Atribut ident mancant dins la balisa.',
@@ -295,6 +328,13 @@ $messages['pt'] = array(
 	'tablemod-error-missingid' => "Falta o atributo de identificação ''ident'' num elemento.",
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'tablemod-msg-remove' => 'Elimină',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -321,6 +361,20 @@ $messages['sl'] = array(
 	'tablemod-error-invalidsort' => 'Neveljavni parametri sortiranja.',
 	'tablemod-error-invalidaction' => 'Neveljavna akcija.',
 	'tablemod-error-missingid' => 'Mankajoč ident atribut v znački.',
+);
+
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'tablemod-msg-remove' => 'Ta bort',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'tablemod-msg-remove' => 'తొలగించు',
 );
 
 /** Vietnamese (Tiếng Việt)

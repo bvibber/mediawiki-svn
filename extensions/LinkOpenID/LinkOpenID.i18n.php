@@ -448,6 +448,13 @@ Isto permite-lhe usar a sua página de utilizador como um OpenID também.',
 	'linkopenid-prefstext-v2url' => 'URL do servidor para OpenID versão 2:',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'linkopenid-prefstext-openid' => 'OpenID-ul dumneavoastră:',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv

@@ -2707,6 +2707,7 @@ $messages['te'] = array(
 	'inplace_scaler_not_enough_params' => 'సరిపడ పారామీటర్లు లేవు.',
 	'inplace_scaler_invalid_image' => 'తప్పుడు బొమ్మ, పరిమాణాన్ని నిర్ణయించలేకున్నాం.',
 	'webstore_path_invalid' => 'ఫైలుపేరు తప్పుగా ఉంది.',
+	'webstore_dest_open' => '"$1" అనే గమ్యస్థానపు ఫైలుని తెరవలేకున్నాం.',
 	'webstore_dest_exists' => 'పొరపాటు, "$1" అనే గమ్యస్థానపు ఫైలు ఇప్పటికే ఉంది.',
 	'webstore_temp_open' => '"$1" అనే తాత్కాలిక ఫైలుని తెరవడంలో పొరపాటు.',
 	'webstore_temp_close' => '"$1" అనే తాత్కాలిక ఫైలుని మూయడంలో పొరపాటు.',

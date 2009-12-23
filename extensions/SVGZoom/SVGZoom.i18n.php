@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'svgzoom-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'svgzoom-desc' => 'يضيف إمكانيات قص وتقريب لميدياويكي عند رؤية ملفات SVG',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

@@ -37,6 +37,13 @@ $messages['be-tarask'] = array(
 	'vector-editwarning-preference' => 'Папярэджваць мяне, калі я буду пакідаць старонку рэдагаваньня зь незахаванымі зьменамі',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'vector-editwarning-preference' => 'Предупреди ме, ако понеча да изляза от страница в режим на редактиране без да запазя промените',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -487,6 +494,15 @@ $messages['pt-br'] = array(
 	'vector-editwarning-warning' => 'Abandonar esta página pode fazer com que você perca todas as alterações que fez.
 Se você estiver autenticado, você pode desabilitar este aviso na seção "{{int:prefs-editing}}" de suas preferências.',
 	'vector-editwarning-preference' => 'Me avisar quando eu deixar uma janela de edição sem ter salvo as alterações',
+);
+
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'vector-editwarning-warning' => 'Părăsind această pagină se poate provoca ca să pierdeţi orice schimbare aţi făcut dvs.
+Dacă sunteţi logat, puteţi dezactiva această avertizare în secţiunea „{{int:prefs-editing}}” a preferinţelor dvs.',
+	'vector-editwarning-preference' => 'Avertizează-mă când voi părăsi o pagină de editare cu schimbări nesalvate',
 );
 
 /** Tarandíne (Tarandíne)

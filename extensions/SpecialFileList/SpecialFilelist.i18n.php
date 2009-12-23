@@ -685,6 +685,7 @@ $messages['qu'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
+	'filelist' => 'Listă de fişiere',
 	'filelist-show-list' => 'Arată lista',
 	'filelist-show-gallery' => 'Arată galeria',
 	'filelist-image-desc' => 'desc',

@@ -31,9 +31,12 @@ $messages['qqq'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'ratedpages' => 'صفحات قيمها قراء',
+	'ratedpages-leg' => 'أوجد الصفحات المقيمة بعدد تقييمات معقول',
 	'ratedpages-list' => 'بالأسفل قائمة بالصفحات مرتبة بواسطة تقييم قرائها.',
 	'ratedpages-none' => 'لا توجد صفحات في هذه القائمة',
 	'ratedpages-graphs' => 'بيانات التقييم',
+	'ratedpages-count' => '$1 {{PLURAL:$1|مراجعة|مراجعات}}',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -530,10 +533,12 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  */
 $messages['ro'] = array(
+	'ratedpages' => 'Pagini evalutate de cititori',
 	'ratedpages-list' => 'Mai jos este o listă de pagini sortate după evaluarea venită de la cititori.',
 	'ratedpages-none' => 'Nu există pagini în această listă',
 );
@@ -624,6 +629,14 @@ $messages['te'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|సమీక్ష|సమీక్షలు}}',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'ratedpages-none' => 'Bu sanawda sahypa ýok',
+	'ratedpages-graphs' => 'derejelendirme maglumaty',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -690,18 +703,24 @@ $messages['vi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'ratedpages' => '读者已评级的页面',
+	'ratedpages-leg' => '寻找有一定数量评级的页面',
 	'ratedpages-list' => '以下是按读者评分排序的页面列表。',
 	'ratedpages-none' => '本列表没有任何页面。',
 	'ratedpages-graphs' => '评分资料',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'ratedpages' => '讀者已評級的頁面',
+	'ratedpages-leg' => '尋找有一定數量評級的頁面',
 	'ratedpages-list' => '以下是按讀者評分排序的頁面清單。',
 	'ratedpages-none' => '本清單沒有任何頁面',
 	'ratedpages-graphs' => '評分資料',

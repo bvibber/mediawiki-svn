@@ -728,6 +728,7 @@ $messages['fi'] = array(
 	'usagestatisticsforallusers' => '<h2>Käyttötilastot kaikilta käyttäjiltä</h2>',
 	'usagestatisticsinterval' => 'Aikaväli',
 	'usagestatisticsnamespace' => 'Nimiavaruus:',
+	'usagestatisticsexcluderedirects' => 'Jätä pois ohjaukset',
 	'usagestatisticstype' => 'Tyyppi',
 	'usagestatisticsstart' => 'Aloituspäivä',
 	'usagestatisticsend' => 'Lopetuspäivä',
@@ -1818,6 +1819,7 @@ $messages['ro'] = array(
 	'specialuserstats' => 'Statistici de utilizare',
 	'usagestatistics' => 'Statistici de utilizare',
 	'usagestatisticsinterval' => 'Interval',
+	'usagestatisticsnamespace' => 'Spaţiu de nume:',
 	'usagestatisticstype' => 'Tip',
 	'usagestatisticsstart' => 'Dată început',
 	'usagestatisticsend' => 'Dată sfârşit',
@@ -2063,6 +2065,7 @@ $messages['stq'] = array(
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
+ * @author Per
  * @author Poxnar
  * @author Sannab
  */
@@ -2073,7 +2076,11 @@ $messages['sv'] = array(
 	'usagestatisticsfor' => '<h2>Användarstatistik för [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Användarstatistik för alla användare</h2>',
 	'usagestatisticsinterval' => 'Intervall:',
-	'usagestatisticstype' => 'Typ',
+	'usagestatisticsnamespace' => 'Namnrymd:',
+	'usagestatisticsexcluderedirects' => 'Exkludera omdirigeringar',
+	'usagestatistics-namespace' => 'Detta är statistik för namnrymden [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => 'Det har inte tagits hänsyn till [[Special:ListRedirects|omdirigeringar]].',
+	'usagestatisticstype' => 'Typ:',
 	'usagestatisticsstart' => 'Startdatum:',
 	'usagestatisticsend' => 'Slutdatum:',
 	'usagestatisticssubmit' => 'Visa statistik',
@@ -2105,7 +2112,9 @@ $messages['te'] = array(
 	'usagestatisticsfor' => '<h2>[[User:$1|$1]] కు వాడుక గణాంకాలు</h2>',
 	'usagestatisticsforallusers' => '<h2>అందరు వాడుకరుల వాడుక గణాంకాలు</h2>',
 	'usagestatisticsinterval' => 'సమయాంతరం:',
+	'usagestatisticsnamespace' => 'పేరుబరి:',
 	'usagestatisticsexcluderedirects' => 'దారిమార్పులను మినహాయించు',
+	'usagestatistics-namespace' => 'ఇవి [[Special:Allpages/$1|$2]] పేరుబరిలోని గణాంకాలు.',
 	'usagestatistics-noredirects' => '[[Special:ListRedirects|దారిమార్పల]]ని పరిగణన లోనికి తీసుకోలేదు.',
 	'usagestatisticstype' => 'రకం',
 	'usagestatisticsstart' => 'ప్రారంభ తేదీ:',
@@ -2195,11 +2204,19 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'usagestatisticsinterval' => 'Zaman',
-	'usagestatisticsstart' => 'Başlangıç tarihi',
-	'usagestatisticsend' => 'Bitiş tarihi',
+	'specialuserstats' => 'Kullanım istatistikleri',
+	'usagestatistics' => 'Kullanım istatistikleri',
+	'usagestatisticsinterval' => 'Aralık:',
+	'usagestatisticsnamespace' => 'İsim alanı:',
+	'usagestatisticstype' => 'Tür:',
+	'usagestatisticsstart' => 'Başlangıç tarihi:',
+	'usagestatisticsend' => 'Bitiş tarihi:',
+	'usagestatisticssubmit' => 'İstatistik oluştur',
+	'usagestatisticsnostart' => 'Lütfen bir başlangıç tarihi girin',
+	'usagestatisticsnoend' => 'Lütfen bir bitiş tarihi girin',
 	'usagestatisticsintervalday' => 'Gün',
 	'usagestatisticsintervalweek' => 'Hafta',
 	'usagestatisticsintervalmonth' => 'Ay',

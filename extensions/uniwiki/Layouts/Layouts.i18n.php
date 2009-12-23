@@ -688,12 +688,14 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'layouts_title' => 'Creează o pagină',
 	'layouts_continue' => 'Continuă',
 	'layouts_choosecategory' => 'Alegeţi o categorie pentru $1:',
+	'layouts_unknown' => 'Necunoscut',
 );
 
 /** Tarandíne (Tarandíne)

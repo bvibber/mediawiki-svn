@@ -1546,6 +1546,13 @@ $messages['tg-cyrl'] = array(
 	'imagemap_description' => 'Дар бораи ин акс',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'imagemap_description' => 'Bu surat hakda',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

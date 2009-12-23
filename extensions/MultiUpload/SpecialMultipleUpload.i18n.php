@@ -472,6 +472,7 @@ $messages['et'] = array(
 	'multipleupload' => 'Lae üles mitu faili',
 	'multipleupload-saveallfiles' => 'Salvesta kõik failid',
 	'multiupload-fileuploaded' => 'Fail on üles laetud.',
+	'multiupload-blank' => 'Ühtegi faili ei ole valitud',
 );
 
 /** Basque (Euskara)

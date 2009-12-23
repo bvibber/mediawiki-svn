@@ -417,6 +417,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  * @author Simny
  */
 $messages['no'] = array(
@@ -424,6 +425,7 @@ $messages['no'] = array(
 	'signature-desc' => 'Slår på [[Special:SignDocument|dokumentsignering]]',
 	'signaturelogpagetext' => 'Dette er en logg over [[Special:SignDocument|alle signaturer lagt til dokumenter]].',
 	'signaturelogentry' => 'signerte dokumentet $1',
+	'right-sigadmin' => 'Administrer dokumentsignering',
 	'right-createsigndocument' => 'Lag dokumenter som kan signeres',
 );
 

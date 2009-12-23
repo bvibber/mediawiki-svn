@@ -79,6 +79,17 @@ $messages['be-tarask'] = array(
 	'fundraiserportal-tourmaline-close' => 'Схаваць гэта',
 );
 
+/** Bulgarian (Български)
+ * @author Turin
+ */
+$messages['bg'] = array(
+	'fundraiserportal-plain-button' => 'Подкрепете Уикипедия!',
+	'fundraiserportal-ruby-button' => 'Дарете сега',
+	'fundraiserportal-rubytext-button' => 'Дарете сега',
+	'fundraiserportal-sapphire-button' => 'Дарете сега',
+	'fundraiserportal-tourmaline-button' => 'Дарете сега',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -919,6 +930,22 @@ $messages['te'] = array(
 	'fundraiserportal-sapphire-button' => 'విరాళమివ్వండి',
 	'fundraiserportal-tourmaline-button' => 'ఇప్పుడే విరాళమివ్వండి',
 	'fundraiserportal-tourmaline-message' => 'ప్రతీ విరాళమూ వికీపీడియాని అందరికీ ఉచితంగా ఆందించడానికి సహాయపడుతుంది.',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'fundraiserportal' => 'Bagyş Portaly',
+	'fundraiserportal-plain-button' => 'Wikipediýany goldaň!',
+	'fundraiserportal-ruby-button' => 'Häzir Bagyşlaň',
+	'fundraiserportal-rubytext-button' => 'Häzir Bagyşlaň',
+	'fundraiserportal-rubytext-message' => 'Her bir bagyş biziň Wikipediýany hemmeler üçin mugt etmegimize ýardam berýär.',
+	'fundraiserportal-rubytext-close' => 'Indiden beýläk görkezme',
+	'fundraiserportal-sapphire-button' => 'Häzir Bagyşlaň',
+	'fundraiserportal-tourmaline-button' => 'Häzir Bagyşlaň',
+	'fundraiserportal-tourmaline-message' => 'Her bir bagyş biziň Wikipediýany hemmeler üçin mugt etmegimize ýardam berýär.',
+	'fundraiserportal-tourmaline-close' => 'Indiden beýläk görkezme',
 );
 
 /** Turkish (Türkçe)

@@ -162,6 +162,7 @@ $messages['af'] = array(
 	'sign-viewfield-options' => 'Opsies',
 	'sign-signatures' => 'Handtekeninge',
 	'sig-private' => '<i>Privaat</i>',
+	'sign-viewfield-reviewedby' => 'Resensent',
 	'sign-viewfield-reviewcomment' => 'Opmerking',
 	'sign-review-comment' => 'Opmerking',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ondertekende [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
@@ -3669,6 +3670,7 @@ $messages['rm'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'signdocument' => 'Semnaţi documentul',
 	'sign-selectdoc' => 'Document:',
 	'sign-realname' => 'Nume:',
 	'sign-address' => 'Adresă stradă:',
@@ -3683,6 +3685,7 @@ $messages['ro'] = array(
 	'sign-list-hidephone' => 'Nu afişa telefonul',
 	'sign-list-hidebday' => 'Nu afişa vârsta',
 	'sign-list-hideemail' => 'Nu afişa adresa de e-mail',
+	'sign-submit' => 'Semnaţi documentul',
 	'sign-viewfield-entryid' => 'ID intrare',
 	'sign-viewfield-timestamp' => 'Data şi ora',
 	'sign-viewfield-realname' => 'Nume',
@@ -3704,6 +3707,7 @@ $messages['ro'] = array(
 	'sign-signatures' => 'Semnături',
 	'sign-sigadmin-closesuccess' => 'Semnarea dezactivată cu succes.',
 	'sign-sigadmin-opensuccess' => 'Semnarea activată cu succes.',
+	'sign-viewsignatures' => 'vedeţi semnături',
 	'sign-closed' => 'închis',
 	'sign-error-closed' => 'Semnarea acestui document este momentan dezactivată.',
 	'sig-anonymous' => '<i>Anonim</i>',

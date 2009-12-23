@@ -188,6 +188,16 @@ $messages['es'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Empezar un nuevo tema',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'discussionthreading-replysection' => 'vasta',
+	'discussionthreading-replysectionhint' => 'Vasta sellele sõnumile',
+	'discussionthreading-threadnewsection' => 'uus',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */

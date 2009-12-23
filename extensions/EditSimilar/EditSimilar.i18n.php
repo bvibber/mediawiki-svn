@@ -622,8 +622,10 @@ Kolla {{PLURAL:$2|denna relaterade sida|dessa relaterade sidor}}: $1.',
 
 /** Telugu (తెలుగు)
  * @author Kiranmayee
+ * @author Veeven
  */
 $messages['te'] = array(
+	'editsimilar-desc' => 'ఒక పేజీని భద్రపరిచిన తర్వాత అలాంటి పేజీలని దిద్దుబాటు చేయడానికి వాడుకరులను ప్రోత్సహిస్తుంది',
 	'editsimilar-link-disable' => 'అభిరుచులను పేర్కొను',
 );
 

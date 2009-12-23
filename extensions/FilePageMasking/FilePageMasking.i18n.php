@@ -25,6 +25,13 @@ $messages['af'] = array(
 	'filepagemasking-desc' => 'Herskryf ".xxx" na "_xxx" in skakels na die lêerbeskrywingsblad.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'filepagemasking-desc' => 'يعيد كتابة ".xxx" إلى "_xxx" في وصلات صفحات وصف الملفات',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

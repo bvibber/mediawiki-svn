@@ -767,6 +767,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'dplforum-by' => '$1 చే',
+	'dplforum-edited' => '- చివరి మార్పు',
 );
 
 /** Tetum (Tetun)

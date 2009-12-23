@@ -906,6 +906,13 @@ $messages['tl'] = array(
 	'watchers_less_than_x' => 'Mas kakaunti kaysa $1 {{PLURAL:$1|mga tagagamit|mga tagagamit}} ang mayroon ng pahinang ito sa kanilang talaan ng mga binabantayan.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'watchers' => 'İzleyenler',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

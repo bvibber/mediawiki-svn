@@ -1896,9 +1896,11 @@ Var god vänta tills den föregående handlingen är färdig.',
  */
 $messages['te'] = array(
 	'imagetagging-article' => 'పేజీ:',
+	'imagetagging-canteditothermessage' => 'మీరు ఈ పేజీని మార్చలేరు, ఎందుకంటే అందుకు మీరు అనుమతులు లేవు లేదా ఇతర కారణాల వల్ల ఈ పేజీకి తాళం వేసారు.',
 	'imagetagging-imghistory' => 'చరిత్ర',
 	'imagetagging-images' => 'బొమ్మలు',
 	'imagetagging-inthisimage' => 'ఈ బొమ్మలో: $1',
+	'imagetagging-new' => '<sup><span style="color:red">కొత్తది!</span></sup>',
 	'imagetagging-tagcancel-button' => 'రద్దుచేయి',
 );
 

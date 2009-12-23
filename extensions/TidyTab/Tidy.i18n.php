@@ -353,6 +353,14 @@ $messages['pt-br'] = array(
 	'untidy' => 'Desarrumado',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'tidy' => 'Curăţă',
+	'untidy' => 'Împrăştie',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

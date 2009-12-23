@@ -954,10 +954,12 @@ $messages['tl'] = array(
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'profiling-ok' => 'Tamam',
 	'profiling-data-count' => 'Say',
+	'profiling-no-data' => 'Eşleşen veri bulunamadı',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

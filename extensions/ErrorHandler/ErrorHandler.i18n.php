@@ -1249,6 +1249,7 @@ $messages['te'] = array(
 	'errorhandler-errors' => 'పొరపాట్లు:',
 	'errorhandler-error-warning' => 'హెచ్చరిక',
 	'errorhandler-error-notice' => 'గమనిక',
+	'errorhandler-error-user-error' => 'వాడుకరి పొరపాటు',
 	'errorhandler-error-user-warning' => 'వాడుకరి హెచ్చరిక',
 	'errorhandler-error-user-notice' => 'వాడుకరి గమనిక',
 	'errorhandler-trace-line' => '$1 (లైను $2): $3',

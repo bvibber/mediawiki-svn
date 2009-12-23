@@ -540,6 +540,7 @@ $messages['qu'] = array(
  */
 $messages['ro'] = array(
 	'vector-simplesearch-search' => 'Căutaţi',
+	'vector-simplesearch-containing' => 'conţinând...',
 );
 
 /** Tarandíne (Tarandíne)
@@ -726,9 +727,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'vector-simplesearch-search' => '搜尋',
+	'vector-simplesearch-containing' => '包含...',
 );
 

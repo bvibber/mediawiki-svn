@@ -34,6 +34,14 @@ $messages['af'] = array(
 	'templateinfo-header' => 'Die XML-definisie vir die sjabloon is:',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'templateinfo-desc' => 'يدعم القوالب التي تعرف هيكل بياناتها من خلال علامات XML',
+	'templateinfo-header' => 'تعريف XML لهذا القالب هو:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -176,6 +184,14 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'templateinfo-desc' => 'Støttar malar som definerer datastrukturen sin gjennom XML-markering.',
 	'templateinfo-header' => 'XML-definisjonen til denne malen er:',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'templateinfo-desc' => 'Støtter maler som definerer datastrukturen sin gjennom XML-markering',
+	'templateinfo-header' => 'XML-definisjonen for denne malen er:',
 );
 
 /** Occitan (Occitan)

@@ -438,11 +438,13 @@ $messages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
+ * @author Turin
  */
 $messages['bg'] = array(
 	'optin-title-optedout' => 'Изпробвайте Бета',
 	'optin-accept-long' => 'Изпробвайте Бета',
 	'optin-accept-long-anon' => 'Влезте в системата и изпробвайте Бета',
+	'optin-deny-long' => 'Връщане към предишната страница',
 	'optin-survey-yes' => 'Да',
 	'optin-survey-no' => 'Не',
 	'optin-survey-intro' => 'Благодарим ви, че изпробвахте Бета. Бихме искали да знаем какво мислите за новия ни интерфейс и ще се радваме, ако решите да отговорите на въпросите от проучването по-долу, като щракнете на връзката "[[#leave|{{int:optin-submit-out}}]]".',
@@ -473,6 +475,7 @@ $messages['bg'] = array(
 	'optin-survey-answer-changes-edittools' => 'Да се подобрят и улеснят инструментите за редактиране.',
 	'optin-survey-answer-changes-upload' => 'Да се подобри качването на текстово и мултимедийно съдържание.',
 	'optin-survey-answer-changes-richtext' => 'Да се разработят инструменти за редактиране, подобни на тези в текстообработващите офис приложения.',
+	'optin-survey-answer-changes-other' => 'Друго:',
 );
 
 /** Bengali (বাংলা)
@@ -4493,13 +4496,26 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'optin' => 'Optaţo pentru Usability Initiative',
 	'optin-title-optedout' => 'Încercaţi Beta',
 	'optin-title-optedin' => 'Părăsiţi Beta',
 	'optin-title-justoptedin' => 'Bine ati venit la Beta',
 	'optin-title-justoptedout' => 'Vă mulţumim că aţi încercat Beta',
 	'optin-title-feedback' => 'Păreri în legătură cu Beta',
+	'optin-needlogin' => 'Trebuie să vă [$1 autentificaţi] pentru a încerca Beta.',
+	'optin-intro' => 'Wikipedia Usability Inititiative a fost lucrat din greu pentru a îmbunătăţi gradul de utilizare al Wikipedia.
+Doriţi să încercaţi versiunea noastră Beta ?',
+	'optin-feedback-intro' => 'Mulţumesc că folosiţi versiunea Beta.
+Ne-am dori să ştim ce părere aveţi de noua noastră interfaţă, aşadar am aprecia dacă aţi completat sondajul opţional de mai jos.',
+	'optin-feedback-back' => 'Dacă nu doriţi să completaţi sondajul puteţi să reveniţi la $1.',
+	'optin-success-in' => 'Încercaţi acum versiunea Beta.
+Puteţi opta înapoi în orice moment, făcând clic pe legătura „{{int:optin-leave}}” pe partea de sus a paginii.',
+	'optin-leave-cancel' => 'Dacă doriţi să continuaţi folosirea versiunii Beta, puteţi să reveniţi la $1.',
+	'optin-success-out' => 'Aţi părăsit cu succes versiunea Beta.
+Puteţi să încercaţi iar în orice moment apăsând clic pe legătura „{{int:optin-try}}” pe partea de sus a paginii.',
 	'optin-success-feedback' => 'Vă mulţumim pentru părere!',
 	'optin-accept-short' => 'S-o facem!',
 	'optin-accept-long' => 'Încercaţi Beta',
@@ -4510,13 +4526,39 @@ $messages['ro'] = array(
 	'optin-submit-feedback' => 'Trimiteţi-vă părerea',
 	'optin-survey-yes' => 'Da',
 	'optin-survey-no' => 'Nu',
+	'optin-survey-intro' => 'Mulţumesc că folosiţi versiunea Beta.
+Ne-am dori să ştim ce părere aveţi despre noua noastră interfaţă, aşadar am aprecia dacă aţi completa sondajul opţional de mai jos înainte de a da clic pe „[[#leave|{{int:optin-submit-out}}]]”.',
+	'optin-survey-question-likedislike' => 'Ce v-a plăcut la versiunea Beta ? Ce nu v-a plăcut la versiunea Beta ?',
+	'optin-survey-question-whyoptout' => 'De ce părăsiţi versiunea Beta ? (Vă rugăm selectaţi toate care se aplică.)',
+	'optin-survey-answer-whyoptout-hard' => 'A fost prea greu de folosit.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Nu a funcţionat cum trebuie.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Nu s-a comportat predictibil.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Nu mi-a plăcut cum arată.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Nu mi-au plăcut filele noi şi aspectul.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Nu mi-a plăcut noua bară de unelte.',
 	'optin-survey-answer-whyoptout-other' => 'Alt motiv:',
+	'optin-survey-question-explain' => 'Vă rugăm explicaţi sau elaboraţi răspunsul dumneavoastră mai jos:',
+	'optin-survey-question-techfail' => 'Aţi trecut prin vreo defecţiune tehnică în timp ce aţi utilizat versiunea Beta ?',
+	'optin-survey-question-techfail-ifyes' => 'Dacă da, vă rugăm elaboraţi sau explicaţi:',
+	'optin-survey-question-usedtoolbar' => 'Aţi folosit noua bara de unelte expansibilă pentru a modifica o pagină ?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Dacă da, ce ţi-a plăcut la ea ? Ce nu ţi-a plăcut la ea ?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Dacă nu, de ce nu ? Veţi dori în viitor ? Vă rugăm explicaţi.',
+	'optin-survey-question-different' => 'Ce am fi putut face diferit pentru a nu părăsi versiunea Beta ?',
+	'optin-survey-question-feedback' => 'Vă rugăm înştiinţaţi-ne prin orice alte comentarii, preocupări sau gânduri ai pentru noi - toate mesajele sunt utile:',
+	'optin-survey-question-browser' => 'Ce navigator web folosiţi ?',
 	'optin-survey-answer-browser-other' => 'Alt browser:',
+	'optin-survey-question-os' => 'Ce sistem de operare folosiţi ?',
 	'optin-survey-answer-os-other' => 'Alt sistem de operare:',
+	'optin-survey-question-res' => 'Care este rezoluţia monitorului dvs ?',
+	'optin-survey-question-changes' => 'Ce modificări v-ar plăcea să vedeţi în versiunea Beta în viitor (vă rugăm selectaţi tot ce se aplică) ?',
+	'optin-survey-answer-changes-nav' => 'Să facă navigarea generală a saitului mai uşoară de folosit.',
+	'optin-survey-answer-changes-edittools' => 'Să crească şi să îmbunătăţească uneltele de editare.',
+	'optin-survey-answer-changes-upload' => 'Să îmbunătăţească conţinutul şi încărcările media.',
+	'optin-survey-answer-changes-richtext' => 'Să dezvolte unelte de editare similare ca editoarele „rich-text”.',
+	'optin-survey-answer-changes-lookfeel' => 'Să actualizeze „aspectul şi simţul” saitului.',
+	'optin-survey-answer-changes-predictability' => 'Să se îmbunătăţească predictibilitatea de performanţă.',
+	'optin-survey-answer-changes-custom' => 'Să se permită personalizarea utilizatorului mai mare',
+	'optin-survey-answer-changes-other' => 'Altul:',
 );
 
 /** Tarandíne (Tarandíne)
@@ -5828,11 +5870,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'optin' => '可用性倡議加入',
-	'optin-desc' => '容許用戶選擇性去加入可用性倡議的可用性增強',
+	'optin-desc' => '允許用戶使用Usability Initiative測試版提供的最新的可用性增強功能',
 	'optin-title-optedout' => '試用測試版',
 	'optin-title-optedin' => '離開測試版',
 	'optin-title-justoptedin' => '歡迎來到測試版',
@@ -5846,6 +5889,7 @@ $messages['zh-hant'] = array(
 	'optin-feedback-back' => '如果你不想完成下面嘅調查，你可以回到$1。',
 	'optin-success-in' => '您已經成功地加入到可用性小組的可用性增強。
 您可以隨時點擊上面的"{{int:ooptin-leave}}"去退出。',
+	'optin-leave-cancel' => '如果您想繼續使用測試版，您可以返回$1',
 	'optin-success-out' => '您已經成功地退出自可用性小組的可用性增強。
 您可以隨時點擊上面的"{{int:optin-try}}"去加入。',
 	'optin-success-feedback' => '多謝你的反饋！',
@@ -5894,23 +5938,19 @@ $messages['zh-hant'] = array(
 	'optin-survey-answer-changes-custom' => '容許更加有彈性的用戶自定。',
 	'optin-survey-answer-changes-other' => '其它：',
 	'optin-improvements' => '== 有什麼改善？ ==
-[[File:UsabilityNavigation.png|left|link=]]
-;導航加強
-新的導航系統會更加容易地令您知道您在哪裏以及正在做什麼，您可以去哪裏以及怎樣哪裏。搜尋方塊放在右上角，令它的功能更加容易找到，使用得更快。
+[[File:UsabilityNavigation.png|left|link=|新導航欄截圖]]
+;增強導航功能
+新的導航系統會使您更容易地了解到您所處的位置與所做的事，以及您可以前往哪里和怎樣前往。我們把搜索框移到了右上角，這樣您將能更容易地找到並使用它的功能。
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|新的編輯欄截圖]]
 ;編輯欄改進
-新和改善的圖示更加清楚看見每一個工具去做什麼。可以擴展的小節減少混亂，點擊一個按鈕就可以隱藏一些不常用的工具。
-而幫助小節提供常用wiki語法的快捷途徑。
+新近改善的圖標讓您更加清楚每個工具的實際用途。可擴展的小節減少了混亂：不常用的工具被隱藏了起來，只需單擊就可展開。新的幫助小節則提供了常用wiki語法的快速參考途徑。
 <div style="clear:both;"></div>
 == 怎樣加入 ==
-要知更多有關專案或者加入，請參閱[http://usability.wikimedia.org Usability Initiative wiki]。
-在那裏您就會找到我們的准許、研究、設計開發，以及發佈。
-去問問題或者給予一般反饋，請用我們的[http://usability.wikimedia.org/wiki/Talk:Prototype 模型討論頁面]。
-去解決特定的主題，請用有關的討論頁面。
-如果您找到臭蟲，請在[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai發佈討論版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
+要知更多有關專案或者加入，請參閱[http://usability.wikimedia.org Usability Initiative wiki]。在那裏您能找到關於我們的許可、研究、設計開發以及發布的相關信息。去問問題或者給予一般反饋，請用我們的[http://usability.wikimedia.org/wiki/Talk:Prototype 模型討論頁面]。
+去解決特定的主題，請用有關的討論頁面。如果您找到軟件錯誤，請在[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai發佈討論版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
 
-多謝，我們會等待您的意見！',
+感謝您的參與，我們期待您的反饋！',
 );
 

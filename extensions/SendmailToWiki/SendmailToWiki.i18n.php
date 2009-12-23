@@ -43,6 +43,15 @@ $messages['af'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Om moontlike misinterpretasie te voorkom word slegs suiwer teks (MIME-type text/plain) aanvaar.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'sendmailtowiki-inpin' => 'بي آي إن:',
+	'sendmailtowiki-err-invalidaccount' => 'حساب غير صحيح. تحقق من عنوان البريد الإلكتروني الذي ترسل إليه.',
+	'sendmailtowiki-err-invalidsender' => 'مرسل غير صحيح. تحقق من عنوان البريد الإلكتروني الذي ترسل منه.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -304,6 +313,23 @@ $messages['nl'] = array(
 	'sendmailtowiki-err-invalidsender' => 'Ongeldige afzenden. Controleer het e-mailadres waar u uw e-mails vandaan zendt.',
 	'sendmailtowiki-err-invalidpin' => 'Ongeldige PIN-code. Geen toegang.',
 	'sendmailtowiki-err-onlyplain' => 'Vanwege mogelijke interpretatieproblemen worden alleen berichten in platte tekst (MIME-type text/plain) geaccepteerd.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'sendmailtowiki-desc' => 'Legg inn wikiinnhold gjennom en dedikert dynamisk e-postadresse',
+	'prefs-sendmailtowiki' => 'Legger til innhold via e-post',
+	'sendmailtowiki-inemail' => 'Dedikert e-postadresse:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Om feltet for PIN-kode står tomt blir posting av innhold til wiki slått av for din konto.',
+	'sendmailtowiki-err-pinlength' => 'PIN-koden må være akkurat 5 siffer.',
+	'sendmailtowiki-err-wrongprefix' => 'Feil wikikontoprefiks. Kontakt din administrator.',
+	'sendmailtowiki-err-invalidaccount' => 'Ugyldig konto. Sjekk e-postadressen du sender til.',
+	'sendmailtowiki-err-invalidsender' => 'Ugyldig sender. Sjekk e-postadressen du sender fra.',
+	'sendmailtowiki-err-invalidpin' => 'Ugyldig PIN. Ingen tilgang.',
+	'sendmailtowiki-err-onlyplain' => 'På grunn av risikoen for feiltolkninger er kun rene tekstmeldinger tillatt.',
 );
 
 /** Occitan (Occitan)

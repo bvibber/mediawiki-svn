@@ -731,6 +731,19 @@ $messages['tl'] = array(
 	'categorywatch-autocat' => 'Kusang minatyagan ni $1',
 );
 
+/** Turkish (Türkçe)
+ * @author Homonihilis
+ */
+$messages['tr'] = array(
+	'categorywatch-desc' => 'İzlenen kategoriler altındaki sayfaların kategori değişikliklerini bildirmek yoluyla izleme listesi işlevselliğini artırır.',
+	'categorywatch-emailsubject' => 'İzlenen "$1" kategorisini içeren değişiklik',
+	'categorywatch-catmovein' => '$1 sayfası, $3 altından $2 altına taşındı',
+	'categorywatch-catmoveout' => '$1 sayfası, $2 altından çıkarılıp $3 altına taşındı',
+	'categorywatch-catadd' => '$1 sayfası $2 altına eklendi',
+	'categorywatch-catsub' => '$1 sayfası, $2 altından çıkarıldı',
+	'categorywatch-autocat' => '$1 tarafından otomatik olarak izleniyor',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

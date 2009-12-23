@@ -1204,6 +1204,8 @@ $messages['te'] = array(
 	'edituser-dosearch' => 'వెతుకు',
 	'edituser-nouser' => 'ఆ వాడుకరి లేనేలేరు.',
 	'edituser-exempt' => 'ఆ వాడుకరిని మార్చలేరు',
+	'right-edituser' => 'ఇతర వాడుకరుల అభిరుచులని మార్చగలగడం',
+	'right-edituser-exempt' => 'ఇతరులు ఈ వాడుకరి యొక్క అభిరుచులను మార్చలేకుండటం',
 );
 
 /** Tetum (Tetun)

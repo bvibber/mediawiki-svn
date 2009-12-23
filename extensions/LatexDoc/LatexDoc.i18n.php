@@ -937,6 +937,22 @@ $3',
 	'latexdoc-desc' => 'Tulungang pamamatnugot ng mga kasulatang LaTeX',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'latexdoc_error' => 'LaTeX hatası
+
+Komut: $1
+
+Sonuç: $2
+
+$3',
+	'latexdoc_get_dvi' => 'DVI al',
+	'latexdoc_get_pdf' => 'PDF al',
+	'latexdoc-desc' => 'LaTeX belgelerinin işbirliğine dayanan düzenlemesi',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -1872,6 +1872,18 @@ $messages['th'] = array(
 	'expand_templates_preview' => 'ตัวอย่างผลแสดง',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'expandtemplates' => 'Şablonlary giňelt',
+	'expand_templates_output' => 'Netije',
+	'expand_templates_ok' => 'Bolýar',
+	'expand_templates_remove_comments' => 'Teswirleri aýyr',
+	'expand_templates_remove_nowiki' => 'Netijelerde <nowiki> teglerini bökdäň',
+	'expand_templates_preview' => 'Deslapky syn',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

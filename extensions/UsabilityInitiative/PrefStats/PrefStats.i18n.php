@@ -1692,6 +1692,7 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Stelistcristi
  * @author Strainu
  */
 $messages['ro'] = array(
@@ -1700,12 +1701,19 @@ $messages['ro'] = array(
 	'prefstats-title' => 'Statistici despre preferinţe',
 	'prefstats-list-intro' => 'În prezent, sunt urmărite următoarele preferinţe.
 Apăsaţi pe ele pentru a vizualiza statistici despre ele.',
+	'prefstats-noprefs' => 'Nicio preferinţă nu este în prezent urmărită.
+Configuraţi $wgPrefStatsTrackPrefs pentru a urmări preferinţe.',
+	'prefstats-xaxis' => 'Durată (ore)',
+	'prefstats-factors' => 'Vizualizări pe: $1',
 	'prefstats-factor-hour' => 'oră',
 	'prefstats-factor-sixhours' => 'şase ore',
 	'prefstats-factor-day' => 'zi',
 	'prefstats-factor-week' => 'săptămână',
 	'prefstats-factor-twoweeks' => 'două săptămâni',
 	'prefstats-factor-fourweeks' => 'patru săptămâni',
+	'prefstats-factor-default' => 'înapoi la scala iniţială',
+	'prefstats-legend-out' => 'Renunţat',
+	'prefstats-legend-in' => 'Optat',
 );
 
 /** Tarandíne (Tarandíne)
