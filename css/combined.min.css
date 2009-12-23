@@ -9,6 +9,7 @@ color:#414142;
 font-weight:normal;
 background:url(../images/vector/left-nav-arrow-down.png) 0 50% no-repeat;
 padding:8px  0 8px 1.5em;
+margin-bottom:0;
 }
 #panel.collapsible-nav div.collapsed h5{
 color:#ccc;
@@ -22,10 +23,18 @@ color:#2daae1;
 background:url(../images/vector/left-nav-arrow-right-over.png) 0 50% no-repeat #e7e8e9;
 }
 #panel.collapsible-nav div.portal div.body{
+padding-top:4px;
 display:none;
 }
 #panel.collapsible-nav div.portal div.body{
 background:none !important;
+}
+#panel.collapsible-nav #p-navigation{
+border-top:none;
+margin-top:0px;
+}
+#panel.collapsible-nav #p-navigation h5{
+display:none;
 }
 .suggestions{
 overflow:hidden;
