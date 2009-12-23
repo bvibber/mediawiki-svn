@@ -412,7 +412,9 @@ class jsScriptLoader {
 		if ( isset( $_GET['urid'] ) && $_GET['urid'] != '' ) {
 			$urid = htmlspecialchars( $_GET['urid'] );
 		}else{
-			die( 'missing urid param');
+			// If no urid is set use special "cache" version.
+			// (this requires that the cache is removed for updates to take effect.)
+			$urid = 'cache';
 		}
 
 		// Get the language code (if not provided use the "default" language

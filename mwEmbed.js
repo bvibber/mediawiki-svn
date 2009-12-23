@@ -57,9 +57,7 @@ var mwEnabledModuleList =  [
 */  
 var mwDefaultConf = {
 
-
 	'enabledModules' : mwEnabledModuleList,
-
 
 	// Default skin name
 	'skinName' : 'mvpcf',
@@ -199,8 +197,8 @@ var mwDefaultConf = {
 			//debugger;
 			
 			setupUserConfigFlag = true;
-			if( callback ) 
-				callback();				
+			if( callback )
+				callback();
 		});				
 	}
 
@@ -958,7 +956,7 @@ var mwDefaultConf = {
 			// Try loading as a "file"?
 			if( loadRequest ) { 
 				mw.log("Loading as \"file\" : " + loadRequest );
-				if( loadRequest.indexOf( '.js' ) == -1 ){
+				if( loadRequest.indexOf( '.js' ) == -1 && !mw.getScriptLoaderPath() ){
 					mw.log( 'Error: are you sure ' + loadRequest + ' is a file ( is it missing a class path? ) ' );
 				}
 				mw.getScript( loadRequest, callback );
@@ -984,7 +982,12 @@ var mwDefaultConf = {
 					
 			// Check if we can load via the "script-loader" ( mwEmbed was included via scriptLoader ) 
 			if( mw.getScriptLoaderPath() ){				
-				loadStates = this.getGroupLoadState( loadSet );
+				loadStates = this.getGroupLoadState( loadSet );				
+				//if loadStates is empty issue the callback direclty:
+				if( mw.isEmpty( loadStates ) ){
+					callback();
+					return ;
+				}
 			}else{									
 				// Check if its a dependency set ( nested objects ) 
 				if( typeof loadSet [ 0 ] == 'object' ){				
@@ -1016,7 +1019,7 @@ var mwDefaultConf = {
 					}					
 					// Run the parent scope callback for "loadMany" 
 					if( loadDone ){						
-						callback( loadName );
+						callback( );
 					}
 				} );
 			}
@@ -1027,7 +1030,7 @@ var mwDefaultConf = {
 		* Groups the loadSet into a single sequential array
 		* 
 		* Groups the scriptRequest where possible: 
-		* 	Modules include "loader code" so they are seperated
+		* 	Modules include "loader code" so they are separated
 		* 	into pre-condition code to be run for subsequent requests
 		*
 		* @param {Object} loadSet Loadset to return grouped
@@ -1037,6 +1040,7 @@ var mwDefaultConf = {
 		getGroupLoadState: function( loadSet ){
 			var groupedLoadSet = [];			
 			var loadStates = { };			
+			
 			// Merge load set into new groupedLoadSet
 			if( typeof loadSet[0] == 'object' ){
 				for( var i in loadSet ){
@@ -1049,12 +1053,13 @@ var mwDefaultConf = {
 				groupedLoadSet = loadSet;
 			}
 			
-			// Setup grouped loadStates Set:
+			// Build the loadStates Set as a single string: 
 			var groupClassKey = ''; 
 			var coma = '';			
 			for( var i=0; i < groupedLoadSet.length; i++ ) {										
 				var loadName = groupedLoadSet[ i ];	
-				if( this.classPaths[ loadName ] ) {
+				//Check if its a classPath key, if so make sure it does not exist (before adding it to the grouped request) 
+				if( this.classPaths[ loadName ] && ! mw.isset( loadName ) ) {
 					groupClassKey += coma + loadName
 					coma = ',';
 				}else if( this.moduleLoaders[ loadName ] ) {
@@ -1068,12 +1073,13 @@ var mwDefaultConf = {
 				}					
 			}				
 			
-			// Add groupClassKey if set: 
+			// Add groupClassKey is empty return false 
 			if( groupClassKey != '' ){
-				loadStates [ groupClassKey ] = 0;
-			}
+				//return the loadStates 
+				loadStates [ groupClassKey ] = 0;				
+			}					
 			
-			return loadStates;
+			return loadStates;						
 		},
 		
 				

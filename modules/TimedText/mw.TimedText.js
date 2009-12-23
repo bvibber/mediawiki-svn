@@ -78,19 +78,24 @@ mw.addMessages( {
 		/**
 		 * The list of enabled sources 
 		 */
-		enabledSources: [ ],
+		enabledSources: null,
 				
 		
 		/**
 		 * Stores the last text string per category to avoid dom checks 
 		 * for updated text 
 		 */
-		prevText: [],
+		prevText: null,
 		
 		/**
 		* Text sources ( a set of textSource objects )
 		*/
-		textSources: [ ],
+		textSources: null,
+		
+		/**
+		* Text Source(s) Setup Flag
+		*/
+		textSourceSetupFlag: null,
 		
 		/**
 		* Valid "iText" categories
@@ -138,6 +143,12 @@ mw.addMessages( {
 			this.embedPlayer = embedPlayer;	
 			this.options = options;
 			
+			//Init internal variables: 
+			this.enabledSources = [];
+			this.prevText = '';
+			this.textSources = [];
+			this.textSourceSetupFlag = false;
+			
 			//Load user prefrences config:  
 			preferenceConfig = mw.getUserConfig( 'timedTextConfig' );
 			if( typeof preferenceConfig == 'object' ) {
@@ -149,6 +160,24 @@ mw.addMessages( {
 				_this.monitor();
 			} )
 							
+			embedPlayer.addHook( 'play', function(){
+				// Will load and setup timedText sources (if not loaded already loaded )
+				_this.setupTextSources();
+			} );					
+		},
+		
+		/**
+		* Setups available text sources
+		*   loads text sources
+		* 	auto-selects a source based on the user language
+		* @param {Function} callback Function to be called once text sources are setup. 
+		*/
+		setupTextSources: function( callback ){
+			var _this = this;
+			if( this.textSourceSetupFlag ){
+				callback();
+				return ;		
+			}
 			// Load textSources
 			_this.loadTextSources( function(){			
 				
@@ -158,35 +187,46 @@ mw.addMessages( {
 				// Load and parse the text value of enabled text sources:
 				_this.loadEnabledSources();
 				
-			} );					
-		},
+				_this.textSourceSetupFlag = true;
+				
+				if( callback )
+					callback();
+			} );
+		},		
 		
 		/**
-		* Show the timed text menu
+		* Binds the timed text menu 
+		* 	and updates its content from "getMenu"
+		*
 		* @param {Object} target to display the menu
 		* @param {Bollean} autoShow If the menu should be displayed 
 		*/
-		bindMenu: function( target , autoShow ){
+		bindMenu: function( target , autoShow){
 			var _this = this;
 			mw.log( "TimedText:bindMenu" );
-			_this.menuTarget = 	target;							
-			// NOTE: Button target should be an option or config thing
-			var $menuButton = $j('#' + this.embedPlayer.id + ' .timed-text');				
-			$menuButton.unbind().menu( {
-				'content'	: this.buildMenu(),
-				'crumbDefaultText' : ' ',
-				'targetMenuContainer' : _this.menuTarget,
-				'autoShow' : autoShow,
-				'backLinkText' : gM( 'mwe-back-btn' )							
-			} );
-			 
+			_this.menuTarget = 	target;		
+			var $menuButton = $j('#' + this.embedPlayer.id + ' .timed-text');
+					
+			// Else bind and show the menu 			
+			// We already have a loader in embedPlayer so the delay of
+			// setupTextSources is already taken into account
+			_this.setupTextSources( function(){
+				// NOTE: Button target should be an option or config						
+				$menuButton.unbind().menu( {
+					'content'	: _this.getMenu(),
+					'crumbDefaultText' : ' ',
+					'targetMenuContainer' : _this.menuTarget,
+					'autoShow' : autoShow,
+					'backLinkText' : gM( 'mwe-back-btn' )							
+				} );
+			});								 
 		},			
 		
 		/**
 		* Refresh the menu
 		*/
 		refreshMenu: function( ){
-			// Bind the menu without showing it: 
+			// update the menu 
 			this.bindMenu(  this.menuTarget, false );
 		},
 		
@@ -347,7 +387,11 @@ mw.addMessages( {
 		},
 		
 		/**
-		* Builds the core timed Text menu
+		* Builds the core timed Text menu and 
+		* returns the binded jquery object / dom set
+		*
+		* Assumes text sources have been setup: (  _this.setupTextSources )
+		* 
 		* calls a few sub-functions:		
 		* Basic menu layout:
 		*		Chose Language
@@ -360,15 +404,16 @@ mw.addMessages( {
 		*			[ All videos ]
 		*		[ Chapters ] seek to chapter
 		*/
-		buildMenu: function(){
-			var _this = this; 
-			// Build the source list menu item: 						
+		getMenu: function(){
+			var _this = this; 			
+		
 			
+			// Build the source list menu item:	
 			$menu = $j( '<ul>' );						
 			// Chouse text menu item ( if there are sources)
 			if( _this.textSources.length != 0 ){  											
 				$menu.append( 
-					_this.getLi( gM( 'mwe-chose-text'), 'comment' ).append(
+					_this.getLi( gM( 'mwe-chose-text'), 'comment' ).append(										
 						_this.getLanguageMenu()
 					),
 						// Layout Menu option
@@ -377,7 +422,10 @@ mw.addMessages( {
 					),
 					
 					// Search Menu option
-					_this.getLi( gM('mwe-search'),  'search')
+					_this.getLi( gM('mwe-search'),  'search'),
+					
+					//Include the "make transcript" link:
+					_this.getLiAddText()
 				);					
 			}
 			// Put in the "Make Transcript" link
@@ -819,7 +867,7 @@ mw.addMessages( {
 			if( this.getSrc() ){
 				// Issue the load request ( if we can ) 
 				if ( mw.parseUri( document.URL ).host != mw.parseUri( this.getSrc() ).host ){
-					mw.log("Error can't load non-json src via jsonp:" + this.getSrc() )
+					mw.log("Error: host mis-match: " + mw.parseUri( document.URL ).host != mw.parseUri( this.getSrc() ).host )
 					return ;
 				}
 				$j.get( this.getSrc(), function( data ){		
