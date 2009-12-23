@@ -147,7 +147,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 			mw.log( "Error: empty rewrite html" );
 			return ;
 		}else{
-			mw.log(" rewrite: " + rewriteHTML + "\n of type: " + typeof rewriteHTML);
+			//mw.log(" rewrite: " + rewriteHTML + "\n of type: " + typeof rewriteHTML);
 		}		
 		var re = new RegExp( /videoUrl(&quot;:?\s*)*([^&]*)/ );
 		src = re.exec( rewriteHTML )[2];
@@ -192,13 +192,13 @@ function rewrite_for_OggHandler( vidIdList ) {
 				.css( 'height', pheight + 30 );
 
 			// Do the actual rewrite 				
-			$j( '#mwe_' + vidId ).embedPlayer( function() {
-				if ( vidIdList.length != 0 ) {					
-					setTimeout( function() {
-						procVidId( vidIdList.pop() )
-					}, 10	 );
-				}
-			} );
+			$j( '#mwe_' + vidId ).embedPlayer();
+			//issue an async request to rewrite the next clip
+			if ( vidIdList.length != 0 ) {					
+				setTimeout( function() {
+					procVidId( vidIdList.pop() )
+				}, 1	 );
+			}
 
 		}		
 	};

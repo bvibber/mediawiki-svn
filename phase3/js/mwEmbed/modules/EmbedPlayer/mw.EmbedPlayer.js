@@ -84,12 +84,6 @@ var default_video_attributes = {
 	
 	// id: Auto-populated if unset   
 	"id" : null,
-
-	// Class: used to set the player "skin" 
-	"class" : null,
-	
-	// Style: used to set player width and height  
-	"style" : null,
 	
 	// Width: alternate to "style" to set player width
 	"width" : null,
@@ -334,14 +328,15 @@ EmbedPlayerManager.prototype = {
 	*/
 	addElement: function( element,  attributes ) {
 		var _this = this;
-		
-		if ( $j( element ).attr( "id" ) == '' ) {
-			$j( element ).attr( "id", 'v' + this.playerList.length );
+		var element_id = $j( element ).attr( "id" );	
+		if ( element_id == '' ) {
+			element_id = 'v' + this.playerList.length;
+			$j( element ).attr( "id",  element_id);
 		}
-		var element_id = $j( element ).attr( "id" );				
+					
 				
 		// Add the element id to playerList
-		this.playerList.push( $j( element ).attr( "id" ) );		
+		this.playerList.push( element_id );		
 		
 		// Check for class based player skin ( could have been loaded before in 'EmbedPlayer' loader module ) 			
 		var skinClassRequest = [ ];
@@ -380,10 +375,10 @@ EmbedPlayerManager.prototype = {
 					var playerInx = _this.playerList.length;
 					var ranPlayerSwapFlag = false;
 					// Local callback to runPlayer swap once element has metadat
-					function runPlayerSwap(){			
-						mw.log("runPlayerSwap" );	
+					function runPlayerSwap(){							
 						if( ranPlayerSwapFlag )
 							return ;	
+						mw.log("runPlayerSwap::" + $j( element ).attr('id') );
 						ranPlayerSwapFlag = true;	
 						var playerInterface = new mw.EmbedPlayer( element , attributes);
 						_this.swapEmbedPlayerElement( element, playerInterface );	
@@ -396,10 +391,10 @@ EmbedPlayerManager.prototype = {
 						mw.log(" WaitForMeta ( video missing height width info and has src )");
 						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
-						// Time-out of 3 seconds ( maybe still playable but no timely metadata ) 
-						setTimeout( runPlayerSwap, 3000 );
+						// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
+						setTimeout( runPlayerSwap, 5000 );
 					}else{ 
-						runPlayerSwap( element_id )
+						runPlayerSwap()
 					}					
 				break;
 				case 'playlist':				
@@ -444,7 +439,7 @@ EmbedPlayerManager.prototype = {
 	swapEmbedPlayerElement: function( targetElement, playerInterface ) {	
 		
 		// Create a new element to swap the player interface into
-		var swapPlayerElement = document.createElement( 'div' );
+		var swapPlayerElement = document.createElement( 'div' );				
 		
 		// Make sure the new swapPlayerElement has height / width set:
 		$j( swapPlayerElement ).css( {
@@ -453,28 +448,11 @@ EmbedPlayerManager.prototype = {
 		} )		
 		.html( mw.loading_spinner() );
 		
-		// Apply the Player interface to the DOM element
-		for ( var method in playerInterface ) { // for in loop oky in Element context	
+		for ( var method in playerInterface ) {
 			if ( method != 'readyState' ) { // readyState crashes IE ( don't include ) 
-				if ( method == 'style' ) {
-						swapPlayerElement.setAttribute( 'style', playerInterface[method] );
-				} else if ( method == 'class' ) {
-					if ( $j.browser.msie )
-						swapPlayerElement.setAttribute( "className", playerInterface['class'] );
-					else
-						swapPlayerElement.setAttribute( "class", playerInterface['class'] );
-				} else {
-					// Normal interface method:
-					swapPlayerElement[method] = playerInterface[method];
-				}
+				swapPlayerElement[method] = playerInterface[method];
 			}
-			// String -> Boolean:
-			if ( swapPlayerElement[method] == "false" )
-				swapPlayerElement[method] = false;
-				
-			if ( swapPlayerElement[method] == "true" )
-				swapPlayerElement[method] = true;
-		}
+		}					
 				  
 		// Now Swap out the video element for the embed_video obj:	  
 		$j( targetElement )
@@ -497,17 +475,10 @@ EmbedPlayerManager.prototype = {
 		// mw.log('checkClipsReady');
 		var is_ready = true;
 		for ( var i = 0; i < this.playerList.length; i++ ) {
-			  if ( $j( '#' + this.playerList[i] ).length != 0 ) {
-				var player =  $j( '#' + this.playerList[i] ).get( 0 );
-				
+			var player =  $j( '#' + this.playerList[i] ).get( 0 );
+			if ( player ) {
 				// Check if the current video is ready 
-				is_ready = ( player.ready_to_play ) ? is_ready : false;
-				
-				if ( !is_ready && player.load_error ) {
-					is_ready = true;
-					// Update the player with its load error:
-					$j( player ).html( player.load_error );
-				}
+				is_ready = ( player.ready_to_play || player.load_error ) ? is_ready : false;				
 			}
 		}
 		if ( is_ready ) {
@@ -519,7 +490,7 @@ EmbedPlayerManager.prototype = {
 			// Continue checking the playerList
 			setTimeout( function(){
 				_this.waitPlayersReadyCallback();
-			}, 25 );
+			}, 10 );
 		 }
 	}
 }
@@ -594,20 +565,22 @@ mediaSource.prototype = {
 		}
 		for ( var i = 0; i < default_source_attributes.length; i++ ) { // array loop:
 			var attr = default_source_attributes[ i ];
-			if ( $j( element ).attr( attr ) ) {
-				this[ attr ] =  $j( element ).attr( attr );
+			var attr_value = element.getAttribute( attr );
+			if ( attr_value ) {
+				this[ attr ] =  attr_value;
 			}
 		}
 					
 			
-		if ( $j( element ).attr( 'type' ) )
+		if ( $j( element ).attr( 'type' ) ){
 			this.mime_type = $j( element ).attr( 'type' );
-		else if ( $j( element ).attr( 'content-type' ) )
+		}else if ( $j( element ).attr( 'content-type' ) ){
 			this.mime_type = $j( element ).attr( 'content-type' );
-		else
+		}else{
 			this.mime_type = this.detectType( this.src );
+		}
 			
-		// Check for parent elements ( supplies catagories in "itext" )
+		// Check for parent elements ( supplies categories in "itext" )
 		if( $j( element ).parent().attr('category') ){			
 			this.category =  $j( element ).parent().attr('category');			
 		}
@@ -1058,8 +1031,8 @@ mediaElement.prototype = {
 	*/
 	tryAddSource: function( element ) {
 		mw.log( 'f:tryAddSource:' + $j( element ).attr( "src" ) );
-		if ( $j( element ).attr( "src" ) ) {
-			var new_src = $j( element ).attr( 'src' );
+		var new_src = $j( element ).attr( 'src' );
+		if ( new_src ) {			
 			// make sure an existing element with the same src does not already exist:		 
 			for ( var i = 0; i < this.sources.length; i++ ) {
 				if ( this.sources[i].src == new_src ) {
@@ -1250,9 +1223,9 @@ mw.EmbedPlayer.prototype = {
 		this.pid = 'pid_' + this.id;
 
 		// Grab any innerHTML and set it to missing_plugin_html
-		// @@todo we should strip source tags instead of checking and skipping
+		// @@todo we should strip "source" tags instead of checking and skipping
 		if ( element.innerHTML != '' && element.getElementsByTagName( 'source' ).length == 0 ) {
-			mw.log( 'innerHTML: ' + element.innerHTML );
+			//mw.log( 'innerHTML: ' + element.innerHTML );
 			this.user_missing_plugin_html = element.innerHTML;
 		}
 		
@@ -1331,11 +1304,7 @@ mw.EmbedPlayer.prototype = {
 	* @return {Number} pixle height of the video
 	*/	
 	getPlayerWidth: function(){
-		var player = $j( '#mv_embedded_player_' + this.id ).get( 0 );
-		if ( typeof player != 'undefined' && player['offsetWidth'] )
-			return player.offsetWidth;
-		else
-			return parseInt( this.width );
+		return parseInt( this.width );
 	},
 	
 	/**
@@ -1343,12 +1312,8 @@ mw.EmbedPlayer.prototype = {
 	*
 	* @return {Number} pixle height of the video
 	*/
-	getPlayerHeight: function(){
-		var player = $j( '#mv_embedded_player_' + this.id ).get( 0 );
-		if ( typeof player != 'undefined' && player['offsetHeight'] )
-			return player.offsetHeight;
-		else
-			return parseInt( this.height );
+	getPlayerHeight: function(){		
+		return parseInt( this.height );
 	},
 	
 	/**
@@ -1400,7 +1365,7 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Check for timed Text support 
-	* and load nessesary libraries
+	* and load necessary libraries
 	* 
 	* @param {Function} callback Function to call once timed text check is done
 	*/
@@ -1461,7 +1426,7 @@ mw.EmbedPlayer.prototype = {
 				var missing_type = this.pc.type;
 														
 			mw.log( 'No player found for given source type ' + missing_type );
-			this.load_error = this.getPluginMissingHTML( missing_type );
+			$(this).html( this.getPluginMissingHTML( missing_type ) );
 		}
 	},
 	
@@ -2005,7 +1970,7 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Show the player
-	* NOTE: the player area is dobule <div> encapsulation will be factored out shortly
+	* NOTE: the player area is double <div> encapsulation will be factored out shortly
 	*/
 	showPlayer : function () {		
 		// set-up the local ctrlBuilder instance: 
