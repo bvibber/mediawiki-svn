@@ -452,7 +452,7 @@ EmbedPlayerManager.prototype = {
 			if ( method != 'readyState' ) { // readyState crashes IE ( don't include ) 
 				swapPlayerElement[method] = playerInterface[method];
 			}
-		}					
+		}
 				  
 		// Now Swap out the video element for the embed_video obj:	  
 		$j( targetElement )
@@ -2579,7 +2579,7 @@ mw.EmbedPlayer.prototype = {
 		}
 		
 		 $j( '#' + eid + ' .play-btn span' ).removeClass( 'ui-icon-play' ).addClass( 'ui-icon-pause' );
-		 $j( '#' + eid + ' .play-btn' ).unbind().btnBind().click( function() {
+		 $j( '#' + eid + ' .play-btn' ).unbind().buttonHover().click( function() {
 		 	$j( '#' + eid ).get( 0 ).pause();
 	   	 } ).attr( 'title', gM( 'mwe-pause_clip' ) );
 	   	 		
@@ -2611,7 +2611,7 @@ mw.EmbedPlayer.prototype = {
 		var $pt = $j( '#' + eid);
 		// update the ctrl "paused state"				
 		$pt.find('.play-btn span' ).removeClass( 'ui-icon-pause' ).addClass( 'ui-icon-play' );
-		 $pt.find('.play-btn' ).unbind().btnBind().click( function() {
+		 $pt.find('.play-btn' ).unbind().buttonHover().click( function() {
 				_this.play();
 		} ).attr( 'title', gM( 'mwe-play_clip' ) );
 	},

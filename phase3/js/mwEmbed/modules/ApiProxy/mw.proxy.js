@@ -149,11 +149,11 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 	$.proxy.proxyNotReadyDialog = function() {
 		var buttons = { };
 		buttons[ gM( 'mwe-re-try' ) ] = function() {
-			$j.addLoaderDialog( gM( 'mwe-re-trying' ) );
+			mw.addLoaderDialog( gM( 'mwe-re-trying' ) );
 			$.proxy.doFrameProxy( lastApiReq );
 		}
 		buttons[ gM( 'mwe-cancel' ) ] = function() {
-			$j.closeLoaderDialog();
+			mw.closeLoaderDialog();
 		}
 		var pUri =  mw.parseUri( $.proxy.server_frame );
 		
@@ -163,7 +163,7 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 		var login_url = pUri.protocol + '://' + pUri.host;
 		login_url += pUri.path.replace( 'MediaWiki:ApiProxy', 'Special:UserLogin' );
 		
-		$j.addDialog( 
+		mw.addDialog( 
 			gM( 'mwe-proxy-not-ready' ), 
 			gM( 'mwe-please-login', [ login_url, pUri.host] ) +
 				'<p style="font-size:small">' + 

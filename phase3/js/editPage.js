@@ -15,7 +15,7 @@ var defaultAddMediaConfig = {
 		'default_query': wgTitle,
 		'target_title': wgPageName,
 		// Here we can setup the content provider overrides
-		'enabled_providers':['upload'],
+		'enabled_providers':['wiki_commons'],
 		// The local wiki API URL:
 		'local_wiki_api_url': wgServer + wgScriptPath + '/api.php'
 };
@@ -41,9 +41,9 @@ mw.ready( function() {
 		                'execute': function() {
 		                	mw.log( 'Added via wikiEditor bind' );
 		                	// Display a loader ( since its triggered onClick )  
-							$j.addLoaderDialog( gM( 'mwe-loading-add-media-wiz' ) );		
+							mw.addLoaderDialog( gM( 'mwe-loading-add-media-wiz' ) );		
 		                	mw.load( 'AddMedia.addMediaWizard', function(){
-		                		$j.closeLoaderDialog();
+		                		mw.closeLoaderDialog();
 		                		$j.addMediaWizard( amwConf );
 		                	});
 		                }

@@ -170,13 +170,13 @@
   background: #ffd;
   border:none;
 }
-
+/*
 .TimedTextEdit input[type=text]
 {
   background: #ffd;
-  border:none;
-  width:70%;
+  border:none;  
 }
+*/
 
 .TimedTextEdit .hotkeybox {
   background: #333;

@@ -86,7 +86,7 @@ mw.addMessages( {
 							'</td>' +
 						'</tr>'
 					);
-					/*$j.addDialog( "upload this image", '<img width="300" src="' + files[i].getAsDataURL() + '">' +
+					/*mw.addDialog( "upload this image", '<img width="300" src="' + files[i].getAsDataURL() + '">' +
 						'<br>name: ' + files[i].name + '</br>' +
 						'<br>size: ' + files[i].fileSize + '</br>' +
 						'<br>mime: ' + files[i].mediaType + '</br>');

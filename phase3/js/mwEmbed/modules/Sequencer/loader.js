@@ -9,7 +9,7 @@ mw.addClassFilePaths( {
 } );
 
 mw.addModuleLoader( 'Sequencer', function( callback ){
-	mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
+	//Get sequencer style sheet	
 	mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/mv_sequence.css' );
 	// Make sure we have the required mwEmbed libs:			
 	mw.load( [

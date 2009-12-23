@@ -164,7 +164,7 @@ var default_remote_search_options = {
 } )( jQuery );
 
 
-/*
+/**
 * Set the mediaWiki globals if unset
 */
 if ( typeof wgServer == 'undefined' )
@@ -174,9 +174,9 @@ if ( typeof wgScriptPath == 'undefined' )
 if ( typeof stylepath == 'undefined' )
 	stylepath = '';
 
-/*
- * Base remoteSearch Driver interface
- */
+/**
+* Base remoteSearch Driver interface
+*/
 mw.RemoteSearchDriver = function( options ) {
 	return this.init( options );
 }
@@ -826,7 +826,7 @@ mw.RemoteSearchDriver.prototype = {
 			'</div>';
 		$j( this.target_container ).html( o );
 		// add simple styles:
-		$j( this.target_container + ' .rms_search_button' ).btnBind().click( function() {
+		$j( this.target_container + ' .rms_search_button' ).buttonHover().click( function() {
 			_this.showCurrentTab();
 		} );
 
@@ -1737,7 +1737,7 @@ mw.RemoteSearchDriver.prototype = {
 		$j( b_target )
 			.html( $j.btnHtml( gM( 'mwe-cancel' ) , 'mv_cancel_rsd', 'close' ) )
 			.children( '.mv_cancel_rsd' )
-			.btnBind()
+			.buttonHover()
 			.click( function() {
 				$j( _this.target_container ).dialog( 'close' );
 			} );
@@ -1852,9 +1852,11 @@ mw.RemoteSearchDriver.prototype = {
 			} );
 		} );
 	},
-	
+	 
 	/**
-	* Checks if a given content provider is local.  
+	* Check if a given content provider is local.  
+	* @param {Object} provider Provider object to be checked
+	* @return 
 	*/
 	isProviderLocal: function( provider ) {
 		if ( provider.local ) {
@@ -1877,10 +1879,13 @@ mw.RemoteSearchDriver.prototype = {
 	 * Check if the file is either a local upload, or if it has already been 
 	 * imported under the standard filename scheme. 
 	 *
+	 * @param {Object} resource Resouce to check for local file
+	 * @param {Function} callback Function to call once check is done
+	 * 
 	 * Calls the callback with two parameters:
 	 *     callback( resource, status )
 	 *
-	 * resource: a resource object pointing to the local file if there is one,
+	 * resource: A resource object pointing to the local file if there is one,
 	 *    or false if not
 	 *
 	 * status: may be 'local', 'shared', 'imported' or 'missing'
@@ -1888,11 +1893,11 @@ mw.RemoteSearchDriver.prototype = {
 	isFileLocallyAvailable: function( resource, callback ) {
 		var _this = this;
 		// Add a loader on top
-		$j.addLoaderDialog( gM( 'mwe-checking-resource' ) );
+		mw.addLoaderDialog( gM( 'mwe-checking-resource' ) );
 
 		// Extend the callback, closing the loader dialog before chaining
 		var myCallback = function( status ) {
-			$j.closeLoaderDialog();
+			mw.closeLoaderDialog();
 			if ( typeof callback == 'function' ) {
 				callback( status );
 			}
@@ -2094,7 +2099,7 @@ mw.RemoteSearchDriver.prototype = {
 		
 		// Add bindings:
 		$j( _this.target_container + ' .rsd_import_apreview' )
-			.btnBind()
+			.buttonHover()
 			.click( function() {
 				mw.log( " Do preview asset update" );
 				$j( '#rsd_import_desc' ).html( mw.loading_spinner() );
@@ -2110,7 +2115,7 @@ mw.RemoteSearchDriver.prototype = {
 			} );
 		
 		$j( buttonPaneSelector + ' .rsd_import_doimport' )
-			.btnBind()
+			.buttonHover()
 			.click( function() {
 				mw.log( "do import asset:" + _this.import_url_mode );
 				// check import mode:
@@ -2127,7 +2132,7 @@ mw.RemoteSearchDriver.prototype = {
 				}
 			} );
 		$j( buttonPaneSelector + ' .rsd_import_acancel' )
-			.btnBind()
+			.buttonHover()
 			.click( function() {
 				$j( '#rsd_resource_import' ).fadeOut( "fast", function() {
 					$j( this ).remove();
@@ -2217,7 +2222,7 @@ mw.RemoteSearchDriver.prototype = {
 	doApiImport: function( resource, callback ) {
 		var _this = this;		
 		mw.log( ":doApiImport:" );
-		$j.addLoaderDialog( gM( 'mwe-importing_asset' ) );
+		mw.addLoaderDialog( gM( 'mwe-importing_asset' ) );
 		
 		// Load the BaseUploadInterface:
 		mw.load( 
@@ -2246,7 +2251,7 @@ mw.RemoteSearchDriver.prototype = {
 					uploader.editToken = token;
 
 					// Close the loader now that we are ready to present the progress dialog::
-					$j.closeLoaderDialog();
+					mw.closeLoaderDialog();
 					uploader.doHttpUpload( {
 						'url': resource.src,
 						'filename': resource.target_resource_title,

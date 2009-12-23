@@ -29,7 +29,7 @@ mw.addMessages( {
 	"mwe-inline-description" : "Caption",
 	"mwe-edit-video-tools" : "Edit video tools:",
 	"mwe-duration" : "Duration:",
-	"mwe-layout" : "Layout:"
+	"mwe-layout" : "Layout"
 } );
 
 /**
@@ -556,7 +556,7 @@ mw.ClipEdit.prototype = {
 		} );
 		
 		// Preview button:
-		$j( '#' + this.target_control_display + ' .inOutPreviewClip' ).btnBind().click( function() {
+		$j( '#' + this.target_control_display + ' .inOutPreviewClip' ).buttonHover().click( function() {
 			$j( '#embed_vid' ).get( 0 ).stop();
 			$j( '#embed_vid' ).get( 0 ).play();
 		} );
@@ -637,7 +637,7 @@ mw.ClipEdit.prototype = {
 				case 'insert_seq':
 					$j( b_target ).append( $j.btnHtml( gM( 'mwe-insert_into_sequence' ), 'mv_insert_sequence', 'check' ) + ' ' )
 						.children( '.mv_insert_sequence' )
-						.btnBind()
+						.buttonHover()
 						.click( function() {
 							_this.applyEdit();
 							_this.controlActionsCallback['insert_seq'](  _this.resource );
@@ -646,7 +646,7 @@ mw.ClipEdit.prototype = {
 				case 'insert':
 					$j( b_target ).append(  $j.btnHtml( gM( 'mwe-insert_image_page' ), 'mv_insert_image_page', 'check' ) + ' ' )
 						.children( '.mv_insert_image_page' )
-						.btnBind()
+						.buttonHover()
 						.click( function() {
 							_this.applyEdit();
 							_this.controlActionsCallback['insert'](  _this.resource );
@@ -655,7 +655,7 @@ mw.ClipEdit.prototype = {
 				case 'preview':
 					$j( b_target ).append( $j.btnHtml( gM( 'mwe-preview_insert' ), 'mv_preview_insert', 'refresh' ) + ' ' )
 						.children( '.mv_preview_insert' )
-						.btnBind()
+						.buttonHover()
 						.click( function() {
 							_this.applyEdit();
 							_this.controlActionsCallback['preview'](  _this.resource );
@@ -664,7 +664,7 @@ mw.ClipEdit.prototype = {
 				case 'cancel':
 					$j( b_target ).append( $j.btnHtml( gM( 'mwe-cancel_image_insert' ), 'mv_cancel_img_edit', 'close' ) + ' ' )
 						.children( '.mv_cancel_img_edit' )
-						.btnBind()
+						.buttonHover()
 						.click( function() {
 							// no cancel action;
 							_this.controlActionsCallback['cancel'](  _this.resource );

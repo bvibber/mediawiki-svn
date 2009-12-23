@@ -20,8 +20,7 @@ var allUIMenus = [];
 
 $.fn.menu = function( options ){
 	var caller = this;
-	var options = options;
-	
+	var options = options;	
 	if( ! caller.m ){ 	
 		caller.m = new Menu(caller, options);	
 		allUIMenus.push( caller.m );
@@ -54,7 +53,9 @@ $.fn.menu = function( options ){
 	
 	//Else process the request:   
 	if( options == 'show' )	
-		caller.m.showMenu();	
+		caller.m.showMenu();
+			
+	return this;
 };
 
 function Menu(caller, options){
@@ -310,7 +311,7 @@ Menu.prototype.flyout = function(container, options) {
 					clearTimeout(hideTimer);
 					var subList = $(this).next();
 					if (!fitVertical(subList, $(this).offset().top)) { subList.css({ top: 'auto', bottom: 0 }); };
-					if (!fitHorizontal(subList, $(this).offset().left + 100)) { subList.css({ left: 'auto', right: linkWidth, 'z-index': 999 }); };
+					if (!fitHorizontal(subList, $(this).offset().left + 100)) { subList.css({ left: 'auto', right: linkWidth, 'z-index': 1005 }); };
 					showTimer = setTimeout(function(){
 						subList.addClass('ui-widget-content').show(options.showSpeed).attr('aria-expanded', 'true');	
 					}, 300);	
