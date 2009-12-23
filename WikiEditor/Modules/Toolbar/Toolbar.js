@@ -772,7 +772,7 @@ mw.addOnloadHook( function() {
 					{
 						'description': { htmlMsg: 'wikieditor-toolbar-help-content-file-description' },
 						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-file-syntax' },
-						'result': { htmlMsg: 'wikieditor-toolbar-help-content-file-result' }
+						'result': { htmlMsg: [ 'wikieditor-toolbar-help-content-file-result', stylepath ] }
 					}
 				]
 			},

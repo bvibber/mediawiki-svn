@@ -1439,7 +1439,12 @@ $.wikiEditor = {
 		if ( property in object ) {
 			return object[property];
 		} else if ( property + 'Msg' in object ) {
-			return gM( object[property + 'Msg'] );
+			if ( typeof object[property + 'Msg' ] == 'object' ) {
+				// [ messageKey, arg1, arg2, ... ]
+				return gM.apply( this, object[property + 'Msg' ] );
+			} else {
+				return gM( object[property + 'Msg'] );
+			}
 		} else {
 			return '';
 		}
