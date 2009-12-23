@@ -1308,7 +1308,7 @@ var mwDefaultConf = {
 		if( !data['format'] ) 
 			data['format'] = 'json';
 		
-		mw.log("run getJSON: " + url + ' data: ' +  data['action'] + ' apiPost: ' +mw.getConfig( 'apiPostActions' ) );
+		mw.log("run getJSON: " + url + ' data: ' +  data['action'] );
 		
 		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ){
 			if( ! mw.isLocalDomain( url ) ){
@@ -1421,17 +1421,21 @@ var mwDefaultConf = {
 	}
 		
 	/**
-	* add a dialog window:
+	* Add a dialog window:
+	* @param {String} title Title string for the dialog
+	* @param {String} msg_txt String to be inserted in msg box
+	* @param {Mixed} buttons A button object for the dialog 
+	*					Can be 'ok' for oky button.
 	*/
-	mw.addDialog = function ( title, msg_txt, btn ) {
+	mw.addDialog = function ( title, msg_txt, buttons ) {
 		$j( '#mwe_tmp_loader' ).remove();
-		// append the style free loader ontop: 
+		// Append the style free loader ontop: 
 		$j( 'body' ).append( '<div id="mwe_tmp_loader" style="display:none" title="' + title + '" >' +
 				msg_txt +
 		'</div>' );
 		// special btn == ok gives empty give a single "oky" -> "close"
-		if ( btn == 'ok' ) {
-			btn[ gM( 'mwe-ok' ) ] = function() {
+		if ( buttons == 'ok' ) {
+			buttons[ gM( 'mwe-ok' ) ] = function() {
 				$j( '#mwe_tmp_loader' ).close();
 			}
 		}
@@ -1445,12 +1449,12 @@ var mwDefaultConf = {
 			]
 		], function() {
 			$j( '#mwe_tmp_loader' ).dialog( {
-				bgiframe: true,
-				draggable: false,
-				resizable: false,
-				modal: true,
-				width:400,
-				buttons: btn
+				'bgiframe': true,
+				'draggable': false,
+				'resizable': false,
+				'modal': true,
+				'width':400,
+				'buttons': buttons
 			} );
 		} );
 	}
