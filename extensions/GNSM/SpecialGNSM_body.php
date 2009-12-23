@@ -134,7 +134,8 @@ class GNSM extends IncludableSpecialPage {
 		$title = Title::makeTitle( $row->page_namespace, $row->page_title);
 		
 		if ( $title ){
-		    print $this->params['nameSpace'];
+		   //This is printing things in places it shouldn't
+                   // print $this->params['nameSpace'];
 		    
 		    $titleText = ( true == $this->params['nameSpace'] ) ? $title->getPrefixedText() : $title->getText();
 		    
@@ -289,7 +290,7 @@ class GNSM extends IncludableSpecialPage {
         $this->params['orderMethod'] = 'categoryadd';
 	$this->params['order'] = 'descending';
 	$this->params['redirects'] = 'exclude';
-	$this->params['stable'] = $quality = 'only';
+	$this->params['stable'] = $this->params['quality'] = 'only';
         
         $this->params['nameSpace'] = false;
         $this->params['iNameSpace'] = 0;
@@ -456,7 +457,7 @@ class GNSM extends IncludableSpecialPage {
         $this->params['notCatCount'] = count( $this->notCategories );
         $totalCatCount = $this->params['catCount'] + $this->params['notCatCount'];
        
-        if (( $this->params['catCount'] < 1 && false == $this->params['nameSpace'] ) || ( $totalCatCount < $this->wgDPLminCategories )){
+        if (( $this->params['catCount'] < 1 && false == $this->params['nameSpace'] ) || ( $totalCatCount < $this->wgDPlminCategories )){
 	    //echo "Boom on catCount\n";
             $parser = new Parser;
             $poptions = new ParserOptions;
@@ -501,16 +502,18 @@ class GNSM extends IncludableSpecialPage {
 		$list = explode( "\n*", "\n$msg");
 		foreach($list as $item) {
 			$mapping = explode('|', $item, 2);
-			if ( trim( $mapping[1] ) == '__MASK__') {
-				$catMask[trim($mapping[0])] = true;
-			} else {
-				$catMap[trim($mapping[0])] = trim($mapping[1]);
+			if ( count( $mapping ) == 2 ) {
+				if ( trim( $mapping[1] ) == '__MASK__') {
+					$catMask[trim($mapping[0])] = true;
+				} else {
+					$catMap[trim($mapping[0])] = trim($mapping[1]);
+				}
 			}
 		}
 	}
 	foreach ( $cats as $key => $val ){
 	    $cat = str_replace( '_', ' ', trim( substr( $key, strpos( $key, ':' ) + 1 ) ) );
-            if (!$catMask[$cat]) {
+            if (!isset($catMask[$cat])) {
                 if (isset($catMap[$cat])) {
                    $str .= ', ' . str_replace( '_', ' ', trim ( $catMap[$cat] ) );
                 } else {
