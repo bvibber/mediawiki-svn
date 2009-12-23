@@ -136,7 +136,9 @@ class VectorHooks {
 		global $wgVectorModules;
 		
 		foreach ( $wgVectorModules as $module => $enable ) {
-			if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['preferences'] ) ) {
+			if ( ( $enable['global'] || $enable['user'] ) &&
+					isset( self::$modules[$module]['i18n'] ) &&
+					isset( self::$modules[$module]['preferences'] ) ) {
 				wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
 				foreach ( self::$modules[$module]['preferences'] as $key => $preference ) {
 					if ( $key == 'enable' && !$enable['user'] ) {
