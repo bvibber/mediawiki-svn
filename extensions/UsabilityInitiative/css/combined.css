@@ -27,7 +27,8 @@
 }
 #panel.collapsible-nav div.portal div.body {
 	background: none !important;
-}/* suggestions plugin */
+}
+/* suggestions plugin */
 
 .suggestions {
 	overflow: hidden;
@@ -77,7 +78,8 @@
 	background-color: Highlight;
 	color: white;
 	color: HighlightText;
-}/* wikiEditor plugin */
+}
+/* wikiEditor plugin */
 
 /* This ID (#editform) could change in MediaWiki */
 form#editform {
@@ -187,7 +189,8 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-right {
 }
 .wikiEditor-ui-tabs div.current a:hover {
 	text-decoration: none;
-}/* wikiEditor dialogs module */
+}
+/* wikiEditor dialogs module */
 
 .ui-widget table {
 	margin-top: 0.75em;
@@ -236,7 +239,8 @@ body.rtl .ui-dialog .ui-dialog-titlebar-close {
 }
 body.rtl .ui-dialog .ui-dialog-title {
 	float:right;
-}/* wikiEditor toc module */
+}
+/* wikiEditor toc module */
 .wikiEditor-ui-toc {
 	/* height and width are set dynamically */
 	/*float: right;*/
@@ -440,7 +444,6 @@ body.rtl .wikiEditor-ui-toc-expandControl {
 .wikiEditor-ui-text textarea:focus {
 	outline: none;
 }
-
 /* wikiEditor toolbar module */
 
 .wikiEditor-ui-toolbar {
@@ -810,7 +813,8 @@ body.rtl .wikiEditor-ui-toolbar .page-characters > div > a,
 .ui-widget table td.wikieditor-toolbar-table-preview-wrapper {
 	background: #e5e5e5;
 	padding: 10px;
-}/* CSS for wikiEditor preview plugin */
+}
+/* CSS for wikiEditor preview plugin */
 
 .wikiEditor-preview-loading {
 	padding: 1em;
