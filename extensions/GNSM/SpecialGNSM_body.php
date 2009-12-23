@@ -123,6 +123,7 @@ class GNSM extends IncludableSpecialPage {
             
             // FIXME: figure out how to fail with no results gracefully
             if ( $dbr->numRows( $res ) == 0 ){
+		$feed->outFooter();
 		if ( false == $this->params['suppressErrors'] ) 
 			return htmlspecialchars( wfMsg( 'gnsm_noresults' ) );
 		else
@@ -492,10 +493,32 @@ class GNSM extends IncludableSpecialPage {
     function getKeywords ( $title ){
 	$cats = $title->getParentCategories();
 	$str = '';
-	foreach ( $cats as $key => $val ){
-	    $str .= ', ' . str_replace( '_', ' ', trim( substr( $key, strpos( $key, ':' ) + 1 ) ) );
+        #the following code is based (stolen) from r56954 of flagged revs.
+	$catMap = Array();
+	$catMask = Array();
+	$msg = wfMsg( 'gnsm_categorymap' );
+	if ( !wfEmptyMsg( 'gnsm_categorymap', $msg ) ) {
+		$list = explode( "\n*", "\n$msg");
+		foreach($list as $item) {
+			$mapping = explode('|', $item, 2);
+			if ( trim( $mapping[1] ) == '__MASK__') {
+				$catMask[trim($mapping[0])] = true;
+			} else {
+				$catMap[trim($mapping[0])] = trim($mapping[1]);
+			}
+		}
 	}
-	$str = substr( $str, 2 );
+	foreach ( $cats as $key => $val ){
+	    $cat = str_replace( '_', ' ', trim( substr( $key, strpos( $key, ':' ) + 1 ) ) );
+            if (!$catMask[$cat]) {
+                if (isset($catMap[$cat])) {
+                   $str .= ', ' . str_replace( '_', ' ', trim ( $catMap[$cat] ) );
+                } else {
+                    $str .= ', ' . $cat;
+                }
+            }
+	}
+	$str = substr( $str, 2 ); #to remove leading ', '
 	return $str;
     }
 

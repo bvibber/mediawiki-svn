@@ -15,6 +15,7 @@ $messages= array();
 $messages['en'] = array(
     'gnsm'                  => 'Google News SiteMap',
     'gnsm-desc'             => 'Outputs an Atom/RSS feed as a Google News Sitemap.',
+    'gnsm_categorymap'      => '', #default empty. list of categories to map to keywords. do not translate.
     'gnsm_toomanycats'      => 'Error: Too many categories!',
     'gnsm_toofewcats'       => 'Error: Too few categories!',
     'gnsm_noresults'        => 'Error: No results!',
@@ -31,5 +32,5 @@ $messages['fr'] = array(
     'gnsm_toomanycats'      => 'Erreur: Trop de nombreuses catégories!',
     'gnsm_toofewcats'       => 'Erreur: Trop peu de catégories!',
     'gnsm_noresults'        => 'Erreur: Pas de résultats!',
-    'gnsm_noincludecats'    => 'Erreur: Vous devez inclure au moins une catégorie, ou spécifier un nom d''espace !'
+    'gnsm_noincludecats'    => 'Erreur: Vous devez inclure au moins une catégorie, ou spécifier un nom d\'espace !'
 );
