@@ -8,19 +8,19 @@
 #panel.collapsible-nav div.portal h5 {
 	color: #414142;
 	font-weight: normal;
-	background: url(../../../skins/vector/images/left-nav-arrow-down.png) 0 50% no-repeat;
+	background: url(../images/vector/left-nav-arrow-down.png) 0 50% no-repeat;
 	padding: 8px  0 8px 1.5em;
 }
 #panel.collapsible-nav div.collapsed h5 {
 	color: #ccc;
-	background: url(../../../skins/vector/images/left-nav-arrow-right.png) 0 50% no-repeat;
+	background: url(../images/vector/left-nav-arrow-right.png) 0 50% no-repeat;
 }
 #panel.collapsible-nav div h5:hover {
 	cursor: pointer;
 }
 #panel.collapsible-nav div.collapsed h5:hover {
 	color: #2daae1;
-	background: url(../../../skins/vector/images/left-nav-arrow-right-over.png) 0 50% no-repeat #e7e8e9;
+	background: url(../images/vector/left-nav-arrow-right-over.png) 0 50% no-repeat #e7e8e9;
 }
 #panel.collapsible-nav div.portal div.body {
 	display: none;
