@@ -131,11 +131,20 @@ $messages['dsb'] = array(
 	'wikieditor-wikitext-tab' => 'WikiTekst',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'wikieditor-wikitext-tab' => 'Βικικείμενο',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'wikieditor' => 'Progresa redaktilo por vikiteksto',
+	'wikieditor-desc' => 'Ebligas redaktan interfacon por etendebla vikiteksto kaj multaj utilaj moduloj',
+	'wikieditor-wikitext-tab' => 'Vikiteksto',
 );
 
 /** Spanish (Español)
@@ -167,6 +176,15 @@ $messages['fr'] = array(
 	'wikieditor' => 'Interface avancée de modification de wikitexte',
 	'wikieditor-desc' => 'Fournit un interface de modification de wikitexte extensible et plusieurs fonctionnalités.',
 	'wikieditor-wikitext-tab' => 'WikiTexte',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikieditor' => 'Entèrface de changement de vouiquitèxto avanciê',
+	'wikieditor-desc' => 'Balye una entèrface de changement de vouiquitèxto èxtensibla et un mouél de fonccionalitâts.',
+	'wikieditor-wikitext-tab' => 'Vouiquitèxto',
 );
 
 /** Galician (Galego)

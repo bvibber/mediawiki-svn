@@ -252,11 +252,13 @@ $messages['ca'] = array(
 );
 
 /** Czech (Česky)
+ * @author Matěj Grabovský
  * @author Mormegil
  */
 $messages['cs'] = array(
 	'clicktracking' => 'Sledování kliknutí pro Iniciativu použitelnosti',
 	'clicktracking-desc' => 'Sledování kliknutí pro sledování událostí, které nezpůsobují znovunačtení stránky',
+	'ct-title' => 'Agregovaná kliknutí',
 	'ct-event-name' => 'Název události',
 	'ct-expert-header' => 'Kliknutí „expertů“',
 	'ct-intermediate-header' => 'Kliknutí „pokročilých“',
@@ -275,6 +277,7 @@ $messages['cs'] = array(
 	'ct-user-contribs' => 'Celkem příspěvků uživatele',
 	'ct-user-span' => 'Příspěvků uživatele během',
 	'ct-and' => 'a zároveň',
+	'ct-update-table' => 'Aktualizovat tabulku',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -390,7 +393,11 @@ $messages['el'] = array(
 	'ct-beginner' => 'Αρχάριος',
 	'ct-intermediate' => 'Μέτριος',
 	'ct-expert' => 'Ειδικός',
+	'ct-editing' => 'Τρέχουσα επεξεργασία:',
+	'ct-anon-users' => 'Ανώνυμοι χρήστες',
+	'ct-user-contribs' => 'Συνολικές συνεισφορές χρήστη',
 	'ct-and' => 'και',
+	'ct-update-table' => 'Πίνακας ενημερώσεων',
 );
 
 /** Esperanto (Esperanto)
@@ -398,7 +405,9 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'clicktracking' => 'Klakspurado de Iniciato de Uzebleco',
 	'clicktracking-desc' => 'Sekvado de klakoj, por sekvi klakeventojn kiu ne kaŭzas paĝan refreŝigon',
+	'ct-title' => 'Kunkontitaj klakoj de uzantoj',
 	'ct-event-name' => 'Eventa nomo',
 	'ct-expert-header' => 'Klakoj de "Spertuloj"',
 	'ct-intermediate-header' => 'Klakoj de "progresantoj"',
@@ -406,12 +415,18 @@ $messages['eo'] = array(
 	'ct-total-header' => 'Sumo de klakoj',
 	'ct-start-date' => 'Komenca Dato (JJJJMMTT)',
 	'ct-end-date' => 'Fina Dato (JJJJMMTT)',
+	'ct-increment-by' => 'Po tagoj por ĉiu datumpunkto',
+	'ct-change-graph' => 'Ŝanĝi diagramon',
 	'ct-beginner' => 'Novulo',
 	'ct-intermediate' => 'Progresanto',
 	'ct-expert' => 'Spertulo',
+	'ct-date-range' => 'Data intervalo',
 	'ct-editing' => 'Nune redaktante:',
 	'ct-anon-users' => 'Sennomaj uzantoj',
+	'ct-user-contribs' => 'Tuto de uzulaj kontribuoj',
+	'ct-user-span' => 'Uzulaj kontribuoj en tempintervalo',
 	'ct-and' => 'kaj',
+	'ct-update-table' => 'Ĝisdatigi tabelon',
 );
 
 /** Spanish (Español)
@@ -1362,10 +1377,22 @@ $messages['te'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'ct-title' => 'Agregirlenen ulanyjy tyklamalary',
+	'ct-event-name' => 'Waka ady',
+	'ct-expert-header' => '"Ekspert" tyklamalary',
+	'ct-intermediate-header' => '"Orta tap" tyklamalary',
+	'ct-beginner-header' => '"Öwrenje" tyklamalary',
+	'ct-total-header' => 'Jemi tyklama',
 	'ct-start-date' => 'Başlangyç senesi (YYYYMMDD)',
 	'ct-end-date' => 'Gutaryş senesi (YYYYMMDD)',
+	'ct-beginner' => 'Öwrenje',
+	'ct-intermediate' => 'Orta tap',
+	'ct-expert' => 'Ekspert',
+	'ct-date-range' => 'Sene aralygy',
+	'ct-editing' => 'Şu wagt redaktirleýär:',
 	'ct-anon-users' => 'Anonim ulanyjylar',
 	'ct-user-contribs' => 'Jemi ulanyjy goşantlary',
+	'ct-user-span' => 'Wagtyň dowamynda ulanyjy goşantlary',
 	'ct-and' => 'we',
 	'ct-update-table' => 'Tablisany täzele',
 );

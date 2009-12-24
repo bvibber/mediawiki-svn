@@ -122,6 +122,13 @@ $messages['fr'] = array(
 	'userdailycontribs-desc' => "Contributions quotidiennes par utilisateur pour l'extension de suivi des clics",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'userdailycontribs-desc' => 'Contribucions de tôs los jorns per utilisator por l’èxtension de survelyence des clics',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

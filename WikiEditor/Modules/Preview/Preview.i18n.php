@@ -171,6 +171,15 @@ $messages['dsb'] = array(
 	'wikieditor-preview-loading' => 'Zacytujo se...',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'wikieditor-preview-tab' => 'Προεπισκόπηση',
+	'wikieditor-preview-changes-tab' => 'Αλλαγές',
+	'wikieditor-preview-loading' => 'Φόρτωση...',
+);
+
 /** Esperanto (Esperanto)
  * @author Lucas
  * @author Yekrats
@@ -178,6 +187,7 @@ $messages['dsb'] = array(
 $messages['eo'] = array(
 	'wikieditor-preview-preference' => 'Ŝalti kolumnecan antaŭvidon',
 	'wikieditor-preview-tab' => 'Antaŭvida',
+	'wikieditor-preview-changes-tab' => 'Ŝanĝoj',
 	'wikieditor-preview-loading' => 'Ŝarĝante',
 );
 
@@ -217,6 +227,16 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'wikieditor-preview-preference' => 'Activer la prévisualisation côte à côte',
 	'wikieditor-preview-tab' => 'Prévisualisation',
+	'wikieditor-preview-changes-tab' => 'Changements',
+	'wikieditor-preview-loading' => 'Chargement...',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikieditor-preview-preference' => 'Activar la prèvisualisacion a châ couta',
+	'wikieditor-preview-tab' => 'Prèvisualisacion',
 	'wikieditor-preview-changes-tab' => 'Changements',
 	'wikieditor-preview-loading' => 'Chargement...',
 );
@@ -299,10 +319,12 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Aushulz
+ * @author F. Cosoleto
  */
 $messages['it'] = array(
 	'wikieditor-preview-tab' => 'Anteprima',
 	'wikieditor-preview-changes-tab' => 'Modifiche',
+	'wikieditor-preview-loading' => 'Caricamento...',
 );
 
 /** Japanese (日本語)
@@ -467,6 +489,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'wikieditor-preview-preference' => "Abbilite l'andeprime da na vanne a l'otre",
 	'wikieditor-preview-tab' => 'Andeprime',
+	'wikieditor-preview-changes-tab' => 'Cangiaminde',
 	'wikieditor-preview-loading' => 'Carecamende...',
 );
 
@@ -528,9 +551,19 @@ $messages['sw'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'wikieditor-preview-preference' => 'మార్చేపెట్టె పక్క మునుజూపుని చేతనంచేయి',
 	'wikieditor-preview-tab' => 'మునుజూపు',
 	'wikieditor-preview-changes-tab' => 'మార్పులు',
 	'wikieditor-preview-loading' => 'లోడవుతోంది...',
+);
+
+/** Thai (ไทย)
+ * @author Woraponboonkerd
+ */
+$messages['th'] = array(
+	'wikieditor-preview-preference' => 'เปิดคุณสมบัติดูหน้าแบบสองฝั่ง',
+	'wikieditor-preview-changes-tab' => 'ความเปลี่ยนแปลง',
+	'wikieditor-preview-loading' => 'กำลังโหลด...',
 );
 
 /** Turkmen (Türkmençe)

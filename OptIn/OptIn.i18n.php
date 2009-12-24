@@ -4571,7 +4571,9 @@ $messages['roa-tara'] = array(
 	'optin-title-feedback' => 'Segnale a Beta',
 	'optin-needlogin' => 'Tu è abbesogne de [$1 trasè] pe pruvà Beta.',
 	'optin-accept-short' => 'Facimele!',
+	'optin-accept-long' => 'Spicce de pruvà Beta',
 	'optin-deny-short' => 'No grazie',
+	'optin-submit-out' => 'Lasse Beta',
 	'optin-submit-feedback' => "Danne 'na segnalazione",
 	'optin-survey-yes' => 'Sìne',
 	'optin-survey-no' => 'None',
@@ -5307,6 +5309,11 @@ Täze interfeýsimiz baradaky pikiriňizi bilesimiz gelýär, şonuň üçinem "
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Täze gural panelini halamadym.',
 	'optin-survey-answer-whyoptout-other' => 'Başga sebäp:',
 	'optin-survey-answer-browser-other' => 'Başga brauzer:',
+	'optin-survey-question-os' => 'Haýsy operasion ulgamy ulanýarsyňyz?',
+	'optin-survey-answer-os-other' => 'Başga operasion ulgam:',
+	'optin-survey-question-res' => 'Ekran çözgüdiňiz näçe?',
+	'optin-survey-answer-changes-edittools' => 'Redaktirleme gurallaryny köpeldiň we güýçlendiriň.',
+	'optin-survey-answer-changes-upload' => 'Mazmuny we media ýüklemelerini gowulandyryň.',
 	'optin-survey-answer-changes-other' => 'Başga:',
 );
 
@@ -5952,5 +5959,14 @@ $messages['zh-hant'] = array(
 去解決特定的主題，請用有關的討論頁面。如果您找到軟件錯誤，請在[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai發佈討論版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
 
 感謝您的參與，我們期待您的反饋！',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Mark85296341
+ */
+$messages['zh-tw'] = array(
+	'optin-survey-question-os' => '您用哪套作業系統？',
+	'optin-survey-question-res' => '您的螢幕解析度之大小有多大？',
+	'optin-survey-answer-changes-custom' => '容許更加有彈性的使用者自定。',
 );
 

@@ -103,12 +103,28 @@ $messages['dsb'] = array(
 	'vector-desc' => 'Pólěpša elementy wužywarskego pówjercha za suknju Vector.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'vector' => 'Plibonigado de grafika interfaco por Vector',
+	'vector-desc' => 'Plibonigas la elementojn de la uzula interfaco de la Vector-etoso.',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'vector' => 'Améliorations IU pour Vector',
 	'vector-desc' => "Améliorations des éléments de l'interface utilisateur de l'habillage Vector.",
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'vector' => 'Mèlyoracions EU por « Vèctor »',
+	'vector-desc' => 'Mèlyoracions des èlèments de l’entèrface utilisator de l’habelyâjo « Vèctor ».',
 );
 
 /** Galician (Galego)
@@ -302,6 +318,13 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'vector' => 'Användargränssnittsförbättringar för Vector',
 	'vector-desc' => 'Förbättrar element i användargränssnittet för Vector-utseendet.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'vector' => 'వెక్టర్ కొరకు ముఖాంతరపు మెరుగులు',
 );
 
 /** Turkish (Türkçe)

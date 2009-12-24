@@ -222,6 +222,15 @@ $messages['fr'] = array(
 	'prefs-experimental' => 'Fonctionnalités expérimentales',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'usabilityinitiative' => 'Iniciativa d’utilisabilitât',
+	'usabilityinitiative-desc' => 'Fonccionalitâts dèvelopâs per l’iniciativa d’utilisabilitât de Vouiquipèdia por mèlyorar l’utilisabilitât de MediaWiki.',
+	'prefs-experimental' => 'Fonccionalitâts èxpèrimentâles',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

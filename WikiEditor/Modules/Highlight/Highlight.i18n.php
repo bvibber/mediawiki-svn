@@ -99,6 +99,13 @@ $messages['fr'] = array(
 	'wikieditor-highlight-preference' => 'Activer la coloration syntaxique lors dans la fenêtre de modification',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikieditor-highlight-preference' => 'Activar la coloracion sintaxica pendent lo changement',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

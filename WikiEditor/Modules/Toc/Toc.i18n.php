@@ -139,6 +139,14 @@ $messages['dsb'] = array(
 	'wikieditor-toc-hide' => 'Wopśimjeśe schowaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'wikieditor-toc-show' => 'Εμφάνιση περιεχομένων',
+	'wikieditor-toc-hide' => 'Απόκρυψη περιεχομένων',
+);
+
 /** Esperanto (Esperanto)
  * @author Lucas
  * @author Yekrats
@@ -146,6 +154,7 @@ $messages['dsb'] = array(
 $messages['eo'] = array(
 	'wikieditor-toc-preference' => 'Ŝalti navigeblan tabelon de enhavo',
 	'wikieditor-toc-show' => 'Montri enhavon',
+	'wikieditor-toc-hide' => 'Kaŝi enhavon',
 );
 
 /** Spanish (Español)
@@ -184,6 +193,15 @@ $messages['fr'] = array(
 	'wikieditor-toc-hide' => 'Masquer le contenu',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikieditor-toc-preference' => 'Activar la trâbla de les matiéres navigâbla',
+	'wikieditor-toc-show' => 'Fâre vêre lo contegnu',
+	'wikieditor-toc-hide' => 'Cachiér lo contegnu',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -204,9 +222,12 @@ $messages['gsw'] = array(
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'wikieditor-toc-preference' => 'הפעלת תוכן עניינים עם אפשרות ניווט',
+	'wikieditor-toc-show' => 'הצגת התכנים',
+	'wikieditor-toc-hide' => 'הסתרת התכנים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -467,6 +488,15 @@ $messages['sw'] = array(
 $messages['te'] = array(
 	'wikieditor-toc-show' => 'విషయసూచికని చూపించు',
 	'wikieditor-toc-hide' => 'విషయసూచికని దాచు',
+);
+
+/** Thai (ไทย)
+ * @author Woraponboonkerd
+ */
+$messages['th'] = array(
+	'wikieditor-toc-preference' => 'ให้สารบัญนำทางได้',
+	'wikieditor-toc-show' => 'แสดงเนื้อหา',
+	'wikieditor-toc-hide' => 'ซ่อนเนื้อหา',
 );
 
 /** Turkmen (Türkmençe)
