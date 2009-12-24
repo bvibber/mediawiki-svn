@@ -1,5 +1,6 @@
 /**
-* Stop-gap for php sequencer support
+* Stop-gap for php sequencer support does some tranformations 
+* to normal page views to pretend the support sequences.
 * 
 * Supports basic "sequencer" functionality as a javascript rewrite system.
 */
@@ -19,4 +20,4 @@ mw.ready( function(){
 	// update page with sequence and 
 });
 
-alert('seq rw');
+var RemoteMwSequencer = { };

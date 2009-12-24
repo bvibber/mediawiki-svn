@@ -367,7 +367,9 @@ Menu.prototype.drilldown = function(container, options) {
 	
 	var checkMenuHeight = function(el){
 		if (el.height() > options.maxHeight) { el.addClass('fg-menu-scroll') };	
-		el.css({ height: options.maxHeight-26 });
+		el.css({ 
+			height: options.maxHeight-30
+		});
 	};
 	
 	var resetChildMenu = function(el){ el.removeClass('fg-menu-scroll').removeClass('fg-menu-current').height('auto'); };

@@ -318,7 +318,7 @@ mediaWikiSearch.prototype = {
 				}
 					
 				var iminfo =  data.query.pages[ page_id ].imageinfo[0];
-				// store the orginal width:				 
+				// store the original width:				 
 				imObj['org_width'] = iminfo.width;
 				// check if thumb size > than image size and is jpeg or png (it will not scale well above its max res)				
 				if ( ( iminfo.mime == 'image/jpeg' || iminfo == 'image/png' ) &&
@@ -370,7 +370,7 @@ mediaWikiSearch.prototype = {
 	},
 	
 	/**
-	* Returns the wikitext for embeding the resource in a wiki article
+	* Returns the wikitext for embedding the resource in a wiki article
 	* 
 	* @param {Object} resource Resource to get wiki text embed code
 	*/ 

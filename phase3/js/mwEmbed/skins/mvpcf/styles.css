@@ -401,9 +401,8 @@ div.floatleft, table.floatleft {
 .loading_spinner{
 	width:32px;
 	height:32px;
-	display:inline;
+	display:block;
 	padding:0px;
-	position:absolute;
 	background-image: url('images/loading_ani.gif');
 }
 .mv_loading_bar_img{

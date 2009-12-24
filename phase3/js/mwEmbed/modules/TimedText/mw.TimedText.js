@@ -147,9 +147,9 @@ mw.addMessages( {
 			this.enabledSources = [];
 			this.prevText = '';
 			this.textSources = [];
-			this.textSourceSetupFlag = false;
+			this.textSourceSetupFlag = false;						
 			
-			//Load user prefrences config:  
+			// Load user preferences config:  
 			preferenceConfig = mw.getUserConfig( 'timedTextConfig' );
 			if( typeof preferenceConfig == 'object' ) {
 				this.config = preferenceConfig;
@@ -205,8 +205,8 @@ mw.addMessages( {
 		*/
 		bindMenu: function( target , autoShow){
 			var _this = this;
-			mw.log( "TimedText:bindMenu" );
-			_this.menuTarget = 	target;		
+			mw.log( "TimedText:bindMenu:" + target );
+			_this.menuTarget = 	target;				
 			var $menuButton = $j('#' + this.embedPlayer.id + ' .timed-text');
 					
 			// Else bind and show the menu 			
@@ -267,6 +267,7 @@ mw.addMessages( {
 				callback();
 				return ;
 			}
+			
 			// Try to get sources from text provider: 
 			var provider = this.timedTextProviders[ textProviderId ];
 			var assetKey = 	this.embedPlayer.wikiTitleKey;		
@@ -276,9 +277,10 @@ mw.addMessages( {
 						'provider_id' : textProviderId,						
 						'api_url': provider.api_url,
 						'embedPlayer': this.embedPlayer
-					});
+					} );
 				break;
-			}		
+			}
+					
 			// Load the textProvider sources
 			this.textProvider.loadSources( assetKey,  function( textSources ){
 				for( var i in textSources ){					
@@ -308,7 +310,7 @@ mw.addMessages( {
 		* Get the layout mode
 		* 
 		* Takes into consideration: 
-		* 	Playback method overlays support ( have to put subitles bellow video )
+		* 	Playback method overlays support ( have to put subtiles bellow video )
 		* 	 
 		*/
 		getLayoutMode: function(){
@@ -336,7 +338,7 @@ mw.addMessages( {
 				}
 			}
 		},
-		
+				
 		/**
 		* Issue a request to load all enabled Sources
 		*  Should be called anytime enabled Source list is updatd
@@ -377,6 +379,17 @@ mw.addMessages( {
 						return true;
 				}
 			}	
+			return false;
+		},
+		/*
+		* Get a source object by language, returns "false" if not found
+		*/
+		getSourceByLanguage: function ( langKey ){
+			for(var i in this.textSources){
+				var source = this.textSources[ i ];
+				if( source.lang == langKey )
+					return source;
+			}
 			return false;
 		},
 		
@@ -616,8 +629,9 @@ mw.addMessages( {
 		refreshDisplay: function(){
 			// Empyt out previus text to force an interface update: 
 			this.prevText = [];
-			// Refresh the Menu:
-			this.bindMenu(  this.menuTarget, false );
+			// Refresh the Menu (if it has a target to refresh) 
+			if( this.menuTarget )
+				this.bindMenu(  this.menuTarget, false );
 			// Issues a "monitor" command to update the timed text for the new layout
 			this.monitor();
 		},
@@ -1215,8 +1229,9 @@ mw.addMessages( {
 			var embedPlayer = $j(this).get(0);			
 			
 			// Setup timed text for the given player: 
-			if( ! embedPlayer.timedText )
-				embedPlayer.timedText = new mw.TimedText( embedPlayer, options);			
+			if( ! embedPlayer.timedText ){
+				embedPlayer.timedText = new mw.TimedText( embedPlayer, options);
+			}			
 			
 			//
 			if( action == 'showMenu' ) {
