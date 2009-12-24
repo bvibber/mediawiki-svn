@@ -15,7 +15,7 @@ class ExtTransliterator  {
 	/**
 	 * Split a word into letters (not bytes or codepoints) implicitly in NFC due to MediaWiki.
 	 */
-	function letters( $word ) {
+	static function letters( $word ) {
 		global $utfCombiningClass;
 		UtfNormal::loadData();
 
@@ -120,7 +120,7 @@ class ExtTransliterator  {
 			$map = $wgMemc->get( wfMemcKey( self::CACHE_PREFIX, $mappage ) );
 			if (! $map ) {
 
-				$map = $this->readMap( wfMsg( $mappage ), $mappage );
+				$map = self::readMap( wfMsg( $mappage ), $mappage );
 
 				if ( $map )
 					$wgMemc->set( wfMemcKey( self::CACHE_PREFIX, $mappage ), $map);
@@ -156,8 +156,8 @@ class ExtTransliterator  {
 	 * $map['__decompose__'] indicates that NFD should be used instead of characters
 	 * $map['__sensitive__'] indicates that the automatic first-letter upper-case fall-through should not be tried
 	 */
-	function readMap( $input, $mappage ) {
-	global $wgTransliteratorRuleCount, $wgTransliteratorRuleSize;
+	static function readMap( $input, $mappage ) {
+		global $wgTransliteratorRuleCount, $wgTransliteratorRuleSize;
 
 		$map = array();
 		$decompose = false;
