@@ -157,6 +157,11 @@ mw.addMessages( {
 			this.textSources = [];
 			this.textSourceSetupFlag = false;						
 			
+			//Set default langauge via wgUserLanguage if set
+			if( wgUserLanguage){
+				this.config.userLanugage = wgUserLanguage;
+			}
+			
 			// Load user preferences config:  
 			preferenceConfig = mw.getUserConfig( 'timedTextConfig' );
 			if( typeof preferenceConfig == 'object' ) {
