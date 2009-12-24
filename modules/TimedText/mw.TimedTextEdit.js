@@ -17,7 +17,7 @@ mw.addMessages( {
 	"mwe-upload-text-desc-help": "The upload text file interface accepts .srt files",
 	"mwe-upload-text-desc-help-browse": "Browse your local computer for the srt file you want to upload",
 	"mwe-upload-text-desc-help-select" : "Select the language of the file",
-	"mwe-upload-text-desc-help-review" : "Review the preview and press upload to add the text",
+	"mwe-upload-text-desc-help-review" : "Review / edit the text content and then press upload to add the text",
 	"mwe-upload-text-preview" : "Review text",
 	
 	"mwe-upload-text-success" : "Upload of timed text was successful", 
