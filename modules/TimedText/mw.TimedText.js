@@ -97,6 +97,13 @@ mw.addMessages( {
 		*/
 		textSourceSetupFlag: null,
 		
+		
+		/*
+		 * Hard coded to "commons" right now .. but we will want to support per-asset provider id's
+		 * in addition to a standard "callback" system from cross domain grabbing of srt's
+		 */
+		textProviderId : 'commons',
+		
 		/**
 		* Valid "iText" categories
 		*/
@@ -120,6 +127,7 @@ mw.addMessages( {
 		 */
 		timedTextExtMime: {
 		    'srt': 'text/x-srt',
+		    'mw-srt': 'text/mw-srt',
 		    'cmml': 'text/cmml'
 		},
 		
@@ -260,8 +268,6 @@ mw.addMessages( {
 			}			
 			
 			//If there are no inline sources check timedTextProviders & wikiTitleKey
-			// ( hard coded to "commons" right now )
-			var textProviderId = 'commons';
 			if( !this.embedPlayer.wikiTitleKey || !this.timedTextProviders){
 				//no other sources just issue the callback: 						
 				callback();
@@ -269,12 +275,12 @@ mw.addMessages( {
 			}
 			
 			// Try to get sources from text provider: 
-			var provider = this.timedTextProviders[ textProviderId ];
+			var provider = this.timedTextProviders[ this.textProviderId ];
 			var assetKey = 	this.embedPlayer.wikiTitleKey;		
 			switch(  provider.lib ){
 				case 'mediaWiki':
 					this.textProvider = new mw.MediaWikiTextProvider( {
-						'provider_id' : textProviderId,						
+						'provider_id' : this.textProviderId,						
 						'api_url': provider.api_url,
 						'embedPlayer': this.embedPlayer
 					} );
@@ -443,6 +449,8 @@ mw.addMessages( {
 		
 		/**
 		 * Shows the timed text edit ui
+		 * 
+		 * @param {String} mode Mode or page to display ( to diffrenciate between edit vs new transcript) 
 		 */		
 		showTimedTextEditUI: function( mode ){
 			var _this = this;
@@ -851,14 +859,15 @@ mw.addMessages( {
 			}
 			// Set parser handler: 
 			switch( this.getMIMEType() ){
+				//Special mediaWiki srt format ( support wiki-text in srt's )
+				case 'text/mw-srt':
+					var handler = parseMwSrt;
+				break;
 				case 'text/x-srt':				
 					var handler = parseSrt;
 				break;
 				case 'text/cmml':
 					var handler = parseCMML; 
-				break;
-				case 'text/html': 
-					var handler = parseSrtHTML;
 				break;
 				default: 
 					var hanlder = null;
@@ -928,6 +937,72 @@ mw.addMessages( {
 			//No text found in range return false: 
 			return false;
 		}		
+	}
+	/**	
+	 * parse mediaWiki html srt 
+	 */
+	function parseMwSrt( data ){
+		var captions = [ ];
+		var curentCap = [];
+		var parseNextAsTime = false;		
+		// Optimize: we could use javascript strings instead of XML parsing  		
+		$j( '<div>' + data + '</div>' ).find('p').each( function(){					
+			currentPtext = $j(this).html();
+			mw.log( currentPtext );
+			
+			//Check if the p matches the "all in one line" match: 
+			var m = currentPtext.replace('--&gt;', '-->').match(/\d+\s(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?(.*)/);
+            if (m) {               
+               captions.push({
+				'start': 
+					(parseInt(m[1], 10) * 60 * 60) +
+			        (parseInt(m[2], 10) * 60) +
+			        (parseInt(m[3], 10)) +
+			        (parseInt(m[4], 10) / 1000),
+				'end':
+                  	(parseInt(m[5], 10) * 60 * 60) +
+                 	(parseInt(m[6], 10) * 60) +
+                  	(parseInt(m[7], 10)) +
+                  	(parseInt(m[8], 10) / 1000),
+               	'content': $j.trim( m[9] )
+               });
+               return 'next';
+            } 
+            // Else check for multi-line match:
+            if( parseInt( currentPtext ) ==  currentPtext ){
+            	if( curentCap.length != 0) {
+            		captions.push( curentCap );
+            	}
+				curentCap = {
+					'content': ''
+				};	
+				return 'next';
+			}
+			//Check only for time match:
+			var m = currentPtext.replace('--&gt;', '-->').match(/(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?/);
+			if (m) {
+				curentCap['start']= 
+					(parseInt(m[1], 10) * 60 * 60) +
+			        (parseInt(m[2], 10) * 60) +
+			        (parseInt(m[3], 10)) +
+			        (parseInt(m[4], 10) / 1000);
+				curentCap['end']=
+                  	(parseInt(m[5], 10) * 60 * 60) +
+                 	(parseInt(m[6], 10) * 60) +
+                  	(parseInt(m[7], 10)) +
+                  	(parseInt(m[8], 10) / 1000);
+                return 'next';
+			}
+			//Else content for the curentCap
+			if( currentPtext != '<br>' ){
+				curentCap['content'] +=  currentPtext;
+			}           		
+		});
+		//Push last subtitle: 
+		if( curentCap.length != 0){
+    		captions.push( curentCap );
+    	}		
+		return captions;
 	}
 	/**
 	 * srt timed text parse hanndle:
@@ -1071,23 +1146,13 @@ mw.addMessages( {
 	 	 */
 	 	loadTitleKey: function( titleKey, callback ){
 	 		var request = {
-				'titles': titleKey,
-				'prop':'revisions',
-				'rvprop':'content'
+				'action': 'parse',
+				'page': titleKey
 			};
-			mw.getJSON( this.api_url, request, function( data ){
-				if ( data && data.query && data.query.pages ) {
-					for ( var i in data.query.pages ) {
-						var page = data.query.pages[i];
-						if ( page.revisions ) {
-							for ( var j in page.revisions ) {
-								if ( page.revisions[j]['*'] ) {
-									callback(  page.revisions[j]['*'] );
-									return ;
-								}
-							}
-						}
-					}
+			mw.getJSON( this.api_url, request, function( data ){							
+				if ( data && data.parse && data.parse.text['*'] ) {		
+					callback(  data.parse.text['*']  );			
+					return;		
 				}
 				mw.log("Error: could not load:" + titleKey);
 				callback( false );
@@ -1158,7 +1223,13 @@ mw.addMessages( {
 				var langKey = subPage.title.split( '.' );
 				var extension = langKey.pop();
 				langKey = langKey.pop();
-
+				
+				//NOTE: we hard code the mw-srt type
+				// ( This is because mediaWiki srt files can have wiki-text and parsed as such )
+				if( extension == 'srt' ){ 
+					extension = 'mw-srt';
+				}
+				
 				if ( ! _this.isSuportedLang( langKey ) ) {
 					mw.log( 'Error: langkey:' + langKey + ' not supported' );
 				} else {

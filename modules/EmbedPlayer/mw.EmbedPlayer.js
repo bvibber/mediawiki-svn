@@ -1463,8 +1463,7 @@ mw.EmbedPlayer.prototype = {
 					_this['parent_' + method] = _this[method];
 				}
 				_this[ method ] = playerInterface[method];
-			}						
-									
+			}											
 			_this.getDuration();
 			_this.showPlayer();
 			_this.ready_to_play = true;

@@ -2,7 +2,7 @@
 * Stop-gap for mediaWiki timed text support 
 *
 * Does some tranformations to normal wiki timed Text pages to make them look
-* like the php output that we will eventually want to support 
+* like the php output that we will eventually want to have 
 */
 mw.addMessages( {
 	"mwe-language-subtiles-for-clip": "$1 subtitles for clip: $2",
@@ -105,6 +105,9 @@ mw.ready( function(){
 						mw.log("Error: no timedText method on embedPlayer" );
 						return ;
 					}
+					// Set the userLanguage:					
+					player.timedText.config.userLanugage = langKey;
+					
 					//Make sure the timed text sources are loaded: 
 					player.timedText.setupTextSources( function(){
 						
