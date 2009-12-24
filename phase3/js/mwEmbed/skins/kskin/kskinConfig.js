@@ -119,11 +119,14 @@ var kskinConfig = {
 		
 		 		
    		// Options menu display:			
-   		$tp.find( '.k-options' ).unbind().click( function() {   			
-			if ( $j( '#' + embedObj.id + ' .k-menu' ).length == 0 ) {
+   		$tp.find( '.k-options' ).unbind().click( function() {
+   			// Get an updated refrence to the embed object   	  	
+   			var embedObj = $tp.get( 0 );    			
+			if ( $j( '#' + embedObj.id + ' .k-menu' ).length == 0 ) {							
 	   			// Stop the player if it does not support overlays:
-				if ( !embedObj.supports['overlay'] )
+				if ( !embedObj.supports['overlays'] ){				
 					$tp.get( 0 ).stop();
+				}
 				// Add the options       				
 				_this.addOptionsBinding( $tp );
 			}
