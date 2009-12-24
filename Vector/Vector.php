@@ -11,7 +11,7 @@
  * require_once( "$IP/extensions/UsabilityInitiative/Vector/Vector.php" );
  *
  * @author Trevor Parscal <trevor@wikimedia.org>, Roan Kattouw <roan.kattouw@gmail.com>,
- *         Nimish Goutam <nimish@wikimedia.org>, Adam Miller <amiller@wikimedia.org>
+ *         Nimish Gautam <nimish@wikimedia.org>, Adam Miller <amiller@wikimedia.org>
  * @license GPL v2 or later
  * @version 0.2.0
  */
@@ -32,7 +32,7 @@ $wgVectorModules = array(
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Vector',
-	'author' => array( 'Trevor Parscal', 'Roan Kattouw', 'Nimish Goutam', 'Adam Miller' ),
+	'author' => array( 'Trevor Parscal', 'Roan Kattouw', 'Nimish Gautam', 'Adam Miller' ),
 	'version' => '0.2.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'vector-desc',
