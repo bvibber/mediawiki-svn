@@ -88,8 +88,6 @@ var mwBaseFirefoggReq = [
 ];
 
 mw.addModuleLoader( 'AddMedia.firefogg', function( callback ){
-	// Get addMedia style sheets
-	mw.getStyleSheet( addMediaSheets );
 	
 	//Load firefogg libs
 	mw.load( mwBaseFirefoggReq, function() {
@@ -98,8 +96,6 @@ mw.addModuleLoader( 'AddMedia.firefogg', function( callback ){
 } );
 
 mw.addModuleLoader( 'AddMedia.FirefoggGUI', function( callback ){
-	// Get addMedia style sheets
-	mw.getStyleSheet( addMediaSheets );
 	
 	//Clone the array: 
 	var request = mwBaseFirefoggReq.slice( 0 ) ;	
