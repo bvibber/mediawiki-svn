@@ -252,8 +252,7 @@ mw.setConfig( 'show_player_warning', true );
 	* @param [ Optional ] {Function} callback Function to be called once video interfaces are ready
 	*
 	*/
-	$.fn.embedPlayer = function( attributes, callback ){
-		
+	$.fn.embedPlayer = function( attributes, callback ){		
 		//Handle optional include of attributes argument:
 		if( typeof attributes == 'function' && typeof( callback ) != 'function' )
 			callback = attributes;		
@@ -326,8 +325,8 @@ EmbedPlayerManager.prototype = {
 	* @param {Element} element DOM element to be swapped 
 	* @param {Object} [Optional] attributes Extra attributes to apply to the player interface 
 	*/
-	addElement: function( element,  attributes ) {
-		var _this = this;
+	addElement: function( element,  attributes ) {	
+		var _this = this;		
 		var element_id = $j( element ).attr( "id" );	
 		if ( element_id == '' ) {
 			element_id = 'v' + this.playerList.length;
@@ -367,36 +366,8 @@ EmbedPlayerManager.prototype = {
 		)? true : false;
 		
 		// Load any skins we need then swap in the interface
-		mw.load( skinClassRequest, function(){							
+		mw.load( skinClassRequest, function(){										
 			switch( element.tagName.toLowerCase() ) {
-				case 'video':
-				case 'audio':				
-					var element_id = element_id;
-					var playerInx = _this.playerList.length;
-					var ranPlayerSwapFlag = false;
-					// Local callback to runPlayer swap once element has metadat
-					function runPlayerSwap(){							
-						if( ranPlayerSwapFlag )
-							return ;	
-						mw.log("runPlayerSwap::" + $j( element ).attr('id') );
-						ranPlayerSwapFlag = true;	
-						var playerInterface = new mw.EmbedPlayer( element , attributes);
-						_this.swapEmbedPlayerElement( element, playerInterface );	
-											
-						// Issue the checkPlayerSources call to the new player interface: 
-						$j( '#' + $j( element ).attr('id') ).get(0).checkPlayerSources();
-					}
-									
-					if( waitForMeta ){
-						mw.log(" WaitForMeta ( video missing height width info and has src )");
-						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
-						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
-						// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
-						setTimeout( runPlayerSwap, 5000 );
-					}else{ 
-						runPlayerSwap()
-					}					
-				break;
 				case 'playlist':				
 					// Make sure we have the necessary playlist libs loaded:
 					mw.load( [
@@ -423,6 +394,34 @@ EmbedPlayerManager.prototype = {
 						$j( '#' + playlistPlayer.id ).get(0).showPlayer();		
 					} );
 				break;
+				case 'video':
+				case 'audio':
+				default:		
+					var playerInx = _this.playerList.length;
+					var ranPlayerSwapFlag = false;
+					// Local callback to runPlayer swap once element has metadata
+					function runPlayerSwap(){									
+						if( ranPlayerSwapFlag )
+							return ;	
+						mw.log("runPlayerSwap::" + $j( element ).attr('id') );
+						ranPlayerSwapFlag = true;	
+						var playerInterface = new mw.EmbedPlayer( element , attributes);
+						_this.swapEmbedPlayerElement( element, playerInterface );	
+											
+						// Issue the checkPlayerSources call to the new player interface: 
+						$j( '#' + $j( element ).attr('id') ).get(0).checkPlayerSources();
+					}
+									
+					if( waitForMeta ){
+						mw.log(" WaitForMeta ( video missing height width info and has src )");
+						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
+						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
+						// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
+						setTimeout( runPlayerSwap, 5000 );
+					}else{ 
+						runPlayerSwap()
+					}					
+				break;				
 		   }
 	   });
 	},
@@ -1426,7 +1425,7 @@ mw.EmbedPlayer.prototype = {
 				var missing_type = this.pc.type;
 														
 			mw.log( 'No player found for given source type ' + missing_type );
-			$(this).html( this.getPluginMissingHTML( missing_type ) );
+			$j(this).html( this.getPluginMissingHTML( missing_type ) );
 		}
 	},
 	

@@ -19,19 +19,18 @@
   margin: auto;
 }
 
-.TimedTextEdit .rightcolumn
-{  
-  padding: 10px;
-  width: 350px;  
-  background-color: #606060;
-  color: #efefef;
-  border: 0px solid black;
-  line-height:100%;
-  margin-left: 300px;
-  position: absolute;
-  right: 10px;
-  top: 50px;
-  bottom: 75px;
+.TimedTextEdit .rightcolumn {
+	background-color:#606060;
+	border:0 solid black;
+	bottom:5px;
+	color:#EFEFEF;
+	left:215px;
+	line-height:100%;
+	margin-left:300px;
+	padding:10px;
+	position:absolute;
+	right:5px;
+	top:5px;
 }
 
 .TimedTextEdit .tabs

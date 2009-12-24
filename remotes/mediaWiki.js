@@ -2,7 +2,6 @@
  * This file exposes some of the functionality of mwEmbed to wikis
  * that do not yet have js2 enabled
  */
- 
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
 var mwRemoteVersion = '1.1d';
@@ -28,7 +27,6 @@ addOnloadHook( function() {
 /**
 * Page specific rewrites for mediaWiki
 */
-
 // Deal with multiple doPageSpecificRewrite 
 if( !ranRewrites){
 	var ranRewrites = 'none';
@@ -36,7 +34,7 @@ if( !ranRewrites){
 function doPageSpecificRewrite() {
 	if( ranRewrites != 'none')
 		return ;	
-	ranRewrites = 'done';	
+	ranRewrites = 'done';
 	// Add media wizard
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {			
 		loadMwEmbed( [ 
@@ -50,20 +48,22 @@ function doPageSpecificRewrite() {
 	}
 	
 	// Timed text display:
-	if ( wgPageName.indexOf( "TimedText" ) === 0 ) {
-		loadMwEmbed( function() {
-			// Load with mw loader to get localized interface:
-			mw.load( 'mvTimeTextEdit', function() {
-				// Could run init here (but mvTimeTextEdit already included onLoad actions)
-			} );
-		} );
+	if ( wgPageName.indexOf( "TimedText" ) === 0 ) {		
+		if( wgAction == 'view' ){
+			mwSetPageToloading();
+		}
+		//load the "player" ( includes call to  loadMwEmbed )
+		mwLoadPlayer(function(){
+			// Now load MediaWiki TimedText Remote: 			
+			mw.load( 'RemoteMwTimedText' );
+		} );			
 	}
 	
 	// Remote Sequencer
 	if( wgPageName.indexOf( "Sequence" ) === 0 ){		
 		// If on a view page set content to "loading" 
-		var body = document.getElementById('bodyContent');
-		body.innerHTML = 'loading sequence <blink>...</blink>';
+		mwSetPageToLoading();
+		// Loading with loadMwEmbed not so big a deal since "sequencer is huge
 		loadMwEmbed( function(){
 			mw.load( 'Sequencer', function(){
 				mw.load( mwEmbedHostPath + '/mwEmbed/Sequencer/mw.Sequencer.js?' + mwGetReqArgs() );
@@ -104,29 +104,7 @@ function doPageSpecificRewrite() {
 		}
 	}	
 	if ( vidIdList.length > 0 ) {
-		//Load the video style sheets:
-		importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/styles.css?' + mwGetReqArgs() );
-		importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/kskin/playerSkin.css?' + mwGetReqArgs() );
-				
-		var jsSetVideo = [ 		
-			'mw.EmbedPlayer', 
-			'$j.ui', 
-			'ctrlBuilder', 
-			'$j.cookie', 
-			'$j.ui.slider', 
-			'kskinConfig',
-			'$j.fn.menu',
-			'mw.TimedText' 
-		];		
-		// Quick sniff use java if IE and native if firefox 
-		// ( other browsers will run detect and get on-demand ) 	
-		if (navigator.userAgent.indexOf("MSIE") != -1)
-			jsSetVideo.push( 'javaEmbed' );
-			
-		if ( navigator.userAgent &&  navigator.userAgent.indexOf("Firefox") != -1 )
-			jsSetVideo.push( 'nativeEmbed' );
-	
-		loadMwEmbed( jsSetVideo, function() {
+		mwLoadPlayer(function(){
 			//Load the "EmbedPlayer" module: 
 			// All the actual code was requested in our single script-loader call 
 			//  but the "load" request applies the setup.
@@ -136,6 +114,45 @@ function doPageSpecificRewrite() {
 			} );
 		} );
 	}
+}
+/*
+* Sets the mediaWiki content to "loading" 
+*/
+function mwSetPageToloading(){
+	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/styles.css?' + mwGetReqArgs() );
+	var body = document.getElementById('bodyContent');
+	body.innerHTML = '<div class="loading_spinner"></div>';
+}
+/**
+* Similar to the player loader in /modules/embedPlayer/loader.js
+* ( front-loaded to avoid extra requests )
+*/
+function mwLoadPlayer( callback ){
+	//Load the video style sheets:
+	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/styles.css?' + mwGetReqArgs() );
+	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/kskin/playerSkin.css?' + mwGetReqArgs() );
+			
+	var jsSetVideo = [ 		
+		'mw.EmbedPlayer', 
+		'$j.ui', 
+		'ctrlBuilder', 
+		'$j.cookie', 
+		'$j.ui.slider', 
+		'kskinConfig',
+		'$j.fn.menu',
+		'mw.TimedText' 
+	];		
+	// Quick sniff use java if IE and native if firefox 
+	// ( other browsers will run detect and get on-demand ) 	
+	if (navigator.userAgent.indexOf("MSIE") != -1)
+		jsSetVideo.push( 'javaEmbed' );
+		
+	if ( navigator.userAgent &&  navigator.userAgent.indexOf("Firefox") != -1 )
+		jsSetVideo.push( 'nativeEmbed' );
+
+	loadMwEmbed( jsSetVideo, function() {
+		callback();
+	});
 }
 
 /**

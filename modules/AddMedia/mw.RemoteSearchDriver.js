@@ -281,7 +281,7 @@ mw.RemoteSearchDriver.prototype = {
 			'enabled': 1,
 			'checked': 1,
 			'homepage': 'http://kaltura.com',
-			'api_url': 'http://kaldev.kaltura.com/michael/federator.php',
+			'api_url': 'http://kaldev.kaltura.com/michael/aggregator.php',
 			'lib': 'kaltura',
 			'tab_image':false
 		},

@@ -4,7 +4,9 @@
 mw.addClassFilePaths( {
 	"mw.TimedText" : "modules/TimedText/mw.TimedText.js",
 	"mw.TimedTextEdit" : "modules/TimedText/mw.TimedTextEdit.js",
-	"$j.fn.menu" : "modules/TimedText/jquery.menu.js" 
+	"$j.fn.menu" : "modules/TimedText/jquery.menu.js",
+	
+	"RemoteMwTimedText" : "modules/TimedText/remotes/RemoteMwTimedText.js"
 });
 
 //Add css dependency: 
@@ -25,6 +27,8 @@ mw.addModuleLoader( 'TimedText.Edit', function( callback ){
 	mw.load([ 
 		[
 			'$j.ui',
+			'$j.fn.menu', 
+			'mw.TimedText',
 			'mw.TimedTextEdit'
 		],
 		[

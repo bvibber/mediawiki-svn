@@ -440,6 +440,7 @@ var mwDefaultConf = {
 			// else return the requested index:
 			return tObj.param[ ruleInx ];
 		}
+		
 		var rCount = 0
 		// run the actual rule lookup:
 		for ( var ruleInx in rs ) {
@@ -1154,8 +1155,7 @@ var mwDefaultConf = {
 				
 			
 			// Issue the request to load the class (include class name in result callback:					
-			mw.getScript( scriptRequest, function( scriptRequest ) {
-				mw.log(" got : " + scriptRequest );
+			mw.getScript( scriptRequest, function( scriptRequest ) {				
 				if(! mw.isset( className )){
 					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.classPaths[ className ] );
 				}else{
@@ -1278,21 +1278,25 @@ var mwDefaultConf = {
 	* @param {Mixed} callbcak
 	*
 	*/	
-	mw.getJSON = function( arg1, arg2, arg3 ){
-		
+	mw.getJSON = function( arg1, arg2, arg3 ){		
 		// Set up the url		
 		var url = false;
 		url = ( typeof arg1 == 'string' ) ? arg1 : mw.getLocalApiUrl();		
 		
 		// Set up the data: 
-		var data = { };
-		data = ( typeof arg1 == 'object' ) ? arg1 : { };
-		data = ( typeof arg2 == 'object' ) ? arg2 : { }; 
+		var data = null;
+		data = ( typeof arg1 == 'object' ) ? arg1 : null;
+		if( !data && typeof arg2 == 'object' ){
+			data = arg2;
+		} 
 		
 		// Setup the callback
 		var callback = false;
-		callbcak = ( typeof arg2 == 'function') ? arg2 : false;
-		callback = ( typeof arg3 == 'function') ? arg3 : false;		
+		callback = ( typeof arg2 == 'function') ? arg2 : false;
+		if( ! callback && ( typeof arg3 == 'function') ){
+			callback = arg3;	
+		}
+		
 				
 		// Make sure we got a url:
 		if( !url ){ 
@@ -1381,7 +1385,7 @@ var mwDefaultConf = {
 			if( wgUserName ){
 				title = 'User:' + wgUserName;
 			}else{
-				//Try maintalk page:
+				// Try maintalk page:	
 				title = 'Talk:Main_Page';
 			}
 		}
@@ -1433,8 +1437,9 @@ var mwDefaultConf = {
 		$j( 'body' ).append( '<div id="mwe_tmp_loader" style="display:none" title="' + title + '" >' +
 				msg_txt +
 		'</div>' );
-		// special btn == ok gives empty give a single "oky" -> "close"
+		// Special buttons == ok gives empty give a single "oky" -> "close"
 		if ( buttons == 'ok' ) {
+			buttons = { };
 			buttons[ gM( 'mwe-ok' ) ] = function() {
 				$j( '#mwe_tmp_loader' ).close();
 			}

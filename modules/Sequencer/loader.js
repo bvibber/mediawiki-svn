@@ -5,7 +5,9 @@ mw.addClassFilePaths( {
 	"mw.PlayList"			: "modules/Sequencer/mw.PlayList.js",
 	"mw.Sequencer"			: "modules/Sequencer/mw.Sequencer.js",
 	"mw.SeqRemoteSearchDriver" : "modules/Sequencer/mw.SeqRemoteSearchDriver.js",	
-	"mw.TimedEffectsEdit"	: "modules/Sequencer/mvTimedEffectsEdit.js"
+	"mw.TimedEffectsEdit"	: "modules/Sequencer/mvTimedEffectsEdit.js",
+	
+	"RemoteMwSequencer" :	"modules/Sequencer/remotes/RemoteMwSequencer.js"
 } );
 
 mw.addModuleLoader( 'Sequencer', function( callback ){
