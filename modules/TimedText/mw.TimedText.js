@@ -348,6 +348,23 @@ mw.addMessages( {
 					}					
 				}
 			}
+			//If not source enabled Try enabling english
+			if( this.enabledSources.length == 0 ){
+				for( var i in this.textSources ){
+					var source = this.textSources[ i ];					
+					if( source.lang.toLowerCase() == 'en' ){
+						this.enabledSources.push( source );
+					}
+				}	
+			}
+			//If still no source try the first source we get; 
+			if( this.enabledSources.length == 0 ){
+				for( var i in this.textSources ){
+					var source = this.textSources[ i ];										
+					this.enabledSources.push( source );
+					return ;
+				}	
+			}
 		},
 				
 		/**
