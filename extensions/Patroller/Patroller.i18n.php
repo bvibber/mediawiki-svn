@@ -284,6 +284,14 @@ $messages['ca'] = array(
 	'patrol-revert-reason' => 'Motiu:',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'group-patroller' => 'Strážci',
+	'group-patroller-member' => 'strážce',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  * @author Masz
@@ -1732,10 +1740,13 @@ $messages['tg-cyrl'] = array(
 /** Thai (ไทย)
  * @author Mopza
  * @author Octahedron80
+ * @author Woraponboonkerd
  */
 $messages['th'] = array(
 	'patrol-revert-reason' => 'เหตุผล:',
 	'patrol-skip' => 'ข้าม',
+	'group-patroller' => 'ผู้ตรวจการ',
+	'group-patroller-member' => 'ผู้ตรวจการ',
 );
 
 /** Turkmen (Türkmençe)

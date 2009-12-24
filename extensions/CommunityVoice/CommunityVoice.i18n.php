@@ -806,6 +806,7 @@ $messages['te'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'communityvoice-ratings' => 'Derejelendirmeler',
 	'communityvoice-ratings-scale-status-sending' => 'Iberilýär...',
 	'communityvoice-ratings-scale-status-error' => 'Iberiş säwligi!',
 	'communityvoice-ratings-scale-status-thanks' => 'Ses berendigiňiz üçin sag boluň!',
@@ -840,6 +841,14 @@ $messages['tr'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|oy|oy}} verildi)',
 	'communityvoice-ratings-error-no-category' => 'Derecelendirme etiketinde kategori niteliği eksik.',
 	'communityvoice-ratings-error-no-title' => 'Derecelendirme etiketinde başlık niteliği eksik.',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Надсилання...',
+	'communityvoice-ratings-scale-status-error' => 'Помилка при відправленні!',
 );
 
 /** Vèneto (Vèneto)

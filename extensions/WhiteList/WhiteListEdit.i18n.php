@@ -3341,6 +3341,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'whitelist-desc' => 'నియంత్రిత వాడుకరుల అందుబాటు అనుమతులను మార్చండి',
 	'mywhitelistpages' => 'నా పేజీలు',
 	'whitelistfor' => '<center><b>$1</b> కొరకు ప్రస్తుత సమాచారం</center>',
 	'whitelisttablemodify' => 'మార్చు',

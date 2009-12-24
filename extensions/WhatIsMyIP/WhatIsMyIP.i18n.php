@@ -72,8 +72,9 @@ $messages['arc'] = array(
  */
 $messages['arz'] = array(
 	'whatismyip' => 'ما هو الأيبى الخاص بي',
-	'whatismyip-desc' => 'يظهر عنوان أيبى اليوزر الحالى فى [[Special:WhatIsMyIP|صفحة خاصة]]',
+	'whatismyip-desc' => 'يظهر [[Special:WhatIsMyIP|أيبي]] اليوزر الحالي',
 	'whatismyip-out' => 'الأيبى الخاص بك:',
+	'right-whatismyip' => 'رؤية [[Special:WhatIsMyIP|عنوان الأيبي الشخصي]]',
 );
 
 /** Azerbaijani (Azərbaycan)

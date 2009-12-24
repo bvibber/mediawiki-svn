@@ -243,11 +243,25 @@ $messages['dsb'] = array(
 	'wikieditor-publish-dialog-goback' => 'Slědk',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'wikieditor-publish-button-publish' => 'Δημοσίευση',
+	'wikieditor-publish-button-cancel' => 'Άκυρο',
+	'wikieditor-publish-dialog-title' => 'Δημοσίευση στο {{SITENAME}}',
+	'wikieditor-publish-dialog-minor' => '"Μικρή" επεξεργασία',
+	'wikieditor-publish-dialog-watch' => 'Παρακολούθηση αυτής της σελίδας',
+	'wikieditor-publish-dialog-publish' => 'Δημοσίευση',
+	'wikieditor-publish-dialog-goback' => 'Πήγαινε πίσω',
+);
+
 /** Esperanto (Esperanto)
  * @author Lucas
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'wikieditor-publish-preference' => 'Ŝalti po-paŝan eldonadon',
 	'wikieditor-publish-button-publish' => 'Konservi',
 	'wikieditor-publish-button-cancel' => 'Nuligi',
 	'wikieditor-publish-dialog-title' => 'Konservi al {{SITENAME}}',
@@ -312,6 +326,21 @@ $messages['fr'] = array(
 	'wikieditor-publish-dialog-goback' => 'Retour',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikieditor-publish-preference' => 'Activar la publecacion a châ ètapa',
+	'wikieditor-publish-button-publish' => 'Publeyér',
+	'wikieditor-publish-button-cancel' => 'Anular',
+	'wikieditor-publish-dialog-title' => 'Publeyér dessus {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Rèsumâ de changement (dècrîde en grôs los changements que vos éd fêts) :',
+	'wikieditor-publish-dialog-minor' => 'Petiôt changement',
+	'wikieditor-publish-dialog-watch' => 'Siuvre ceta pâge',
+	'wikieditor-publish-dialog-publish' => 'Publeyér',
+	'wikieditor-publish-dialog-goback' => 'Retôrn',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -347,6 +376,15 @@ $messages['gsw'] = array(
 	'wikieditor-publish-dialog-watch' => 'Die Syte beobachte',
 	'wikieditor-publish-dialog-publish' => 'Publiziere',
 	'wikieditor-publish-dialog-goback' => 'Zruck',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'wikieditor-publish-button-publish' => 'פרסום',
+	'wikieditor-publish-button-cancel' => 'ביטול',
+	'wikieditor-publish-dialog-title' => 'פרסום אל {{SITENAME}}',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -426,6 +464,7 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Aushulz
+ * @author F. Cosoleto
  * @author PaoloRomano
  */
 $messages['it'] = array(
@@ -433,6 +472,7 @@ $messages['it'] = array(
 	'wikieditor-publish-button-cancel' => 'Annulla',
 	'wikieditor-publish-dialog-title' => 'Pubblica su {{SITENAME}}',
 	'wikieditor-publish-dialog-minor' => 'Modifica di minore importanza',
+	'wikieditor-publish-dialog-watch' => 'Osserva questa pagina',
 	'wikieditor-publish-dialog-publish' => 'Pubblica',
 	'wikieditor-publish-dialog-goback' => 'Indietro',
 );
@@ -458,6 +498,13 @@ $messages['ja'] = array(
 $messages['ka'] = array(
 	'wikieditor-publish-dialog-minor' => 'მცირე შესწორება',
 	'wikieditor-publish-dialog-watch' => 'ამ გვერდის თვალთვალი',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'wikieditor-publish-dialog-minor' => '사소한 편집',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -753,6 +800,19 @@ $messages['te'] = array(
 	'wikieditor-publish-dialog-goback' => 'వెనక్కి వెళ్ళు',
 );
 
+/** Thai (ไทย)
+ * @author Woraponboonkerd
+ */
+$messages['th'] = array(
+	'wikieditor-publish-button-publish' => 'แผยแพร่',
+	'wikieditor-publish-button-cancel' => 'ยกเลิก',
+	'wikieditor-publish-dialog-title' => 'เผยแพร่ไปยัง {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'สรุปการแก้ไข (อธิบายย่อๆ ถึงการเปลี่ยนแปลงที่คุณกระทำ):',
+	'wikieditor-publish-dialog-minor' => 'เป็นการแก้ไขเล็กน้อย',
+	'wikieditor-publish-dialog-watch' => 'เฝ้าดูหน้านี้',
+	'wikieditor-publish-dialog-publish' => 'แผยแพร่',
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */
@@ -762,6 +822,7 @@ $messages['tk'] = array(
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} taslamasynda neşir et',
 	'wikieditor-publish-dialog-minor' => 'Ujypsyzja özgerdiş',
 	'wikieditor-publish-dialog-watch' => 'Sahypany gözegçilige al',
+	'wikieditor-publish-dialog-publish' => 'Neşir et',
 	'wikieditor-publish-dialog-goback' => 'Yza gaýt',
 );
 

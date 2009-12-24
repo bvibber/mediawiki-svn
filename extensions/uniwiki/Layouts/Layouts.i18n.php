@@ -254,6 +254,14 @@ $messages['es'] = array(
 	'layouts_tagline' => 'Esta página se generó con el diseño <strong>$1</strong>.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'layouts_title' => 'Loo lehekülg',
+	'layouts_continue' => 'Jätka',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */

@@ -1484,6 +1484,13 @@ $messages['tt-cyrl'] = array(
 	'imstatus_default' => 'Килешү буенча',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'imstatus_example' => 'Приклад',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

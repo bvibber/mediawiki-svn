@@ -927,9 +927,11 @@ $messages['te'] = array(
 	'fundraiserportal-ruby-button' => 'విరాళమివ్వండి',
 	'fundraiserportal-rubytext-button' => 'ఇప్పుడే విరాళమివ్వండి',
 	'fundraiserportal-rubytext-message' => 'ప్రతీ విరాళమూ వికీపీడియాని అందరికీ ఉచితంగా ఆందించడానికి సహాయపడుతుంది.',
+	'fundraiserportal-rubytext-close' => 'ఇప్పటి నుండి దీన్ని దాచు',
 	'fundraiserportal-sapphire-button' => 'విరాళమివ్వండి',
 	'fundraiserportal-tourmaline-button' => 'ఇప్పుడే విరాళమివ్వండి',
 	'fundraiserportal-tourmaline-message' => 'ప్రతీ విరాళమూ వికీపీడియాని అందరికీ ఉచితంగా ఆందించడానికి సహాయపడుతుంది.',
+	'fundraiserportal-tourmaline-close' => 'ఇప్పటి నుండి దీన్ని దాచు',
 );
 
 /** Turkmen (Türkmençe)
@@ -937,6 +939,7 @@ $messages['te'] = array(
  */
 $messages['tk'] = array(
 	'fundraiserportal' => 'Bagyş Portaly',
+	'fundraiserportal-desc' => 'Gapdalky paneliň iň ýokarsyna "haýyr-yhsan ediň" portalyny goşýar.',
 	'fundraiserportal-plain-button' => 'Wikipediýany goldaň!',
 	'fundraiserportal-ruby-button' => 'Häzir Bagyşlaň',
 	'fundraiserportal-rubytext-button' => 'Häzir Bagyşlaň',

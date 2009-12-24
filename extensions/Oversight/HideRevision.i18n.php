@@ -265,7 +265,7 @@ $messages['arz'] = array(
 تطليع المعلومات دى بره ممكن يتسبب فى سحب صلاحيات الاوفرسايت منك و على طول.',
 	'oversight-legend' => 'دور فى سجل تخبية المراجعات',
 	'oversight-oversighter' => 'ناظر:',
-	'oversight-offender' => 'مسىء:',
+	'oversight-offender' => 'مؤلف المراجعة:',
 );
 
 /** Asturian (Asturianu)
@@ -409,6 +409,7 @@ $messages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author Borislav
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
 	'hiderevision' => 'Постоянно скриване на версии',
@@ -417,7 +418,7 @@ $messages['bg'] = array(
 	'group-oversight-member' => 'Ревизор',
 	'grouppage-oversight' => '{{ns:project}}:Ревизори',
 	'right-oversight' => 'Преглеждане на предишни скрити версии',
-	'right-hiderevision' => 'преглед и възстановяване на версии, скрити от администраторите',
+	'right-hiderevision' => 'Прикриване на версии от администраторите',
 	'hiderevision-prompt' => 'Номер на версия за премахване:',
 	'hiderevision-continue' => 'Продължаване',
 	'hiderevision-text' => "Тази страница следва да се използва '''само''' при следните случаи:
@@ -430,6 +431,7 @@ $messages['bg'] = array(
 	'hiderevision-reason' => 'Причина (ще бъде записана в скрит дневник):',
 	'hiderevision-submit' => 'Постоянно скриване на информацията',
 	'hiderevision-tab' => 'Скриване на редакцията',
+	'hiderevision-link' => 'прикрити потребителски приноси',
 	'hiderevision-norevisions' => 'Не са посочени редакции за изтриване.',
 	'hiderevision-noreason' => 'Необходимо е да се посочи причина за това премахване.',
 	'hiderevision-status' => 'Редакция $1: $2',
@@ -443,6 +445,7 @@ $messages['bg'] = array(
 *тази скрита версия е първата версия на страницата',
 	'oversight-log-hiderev' => 'премахната редакция от $1',
 	'oversight-view' => 'детайли',
+	'oversight-difference' => '(Разлика с последната останала видима версия)',
 	'oversight-prev' => 'Последна предишна версия',
 	'oversight-hidden' => 'Скрита редакция',
 	'oversight-header' => 'По-долу е посочен списък на версии, които наскоро са били перманентно премахнати от публичния архив.
@@ -3730,10 +3733,14 @@ $messages['tk'] = array(
 	'hiderevision-tab' => 'Wersiýany gizle',
 	'hiderevision-link' => 'Gizlenilgi ulanyjy goşantlary',
 	'hiderevision-norevisions' => 'Öçürmek üçin hiç hili wersiýa görkezilmedi.',
+	'hiderevision-noreason' => 'Bu aýyrmanyň sebäbini ýazmalysyňyz.',
 	'hiderevision-status' => 'Wersiýa $1: $2',
+	'hiderevision-success' => 'Şowly arhiwlendi we öçürildi.',
 	'hiderevision-error-missing' => 'Maglumat bazasynda tapylmady',
+	'hiderevision-error-delete' => 'Arhiwläp bolmady; ozal öçürilen bolaýmasyn?',
 	'oversight-view' => 'jikme-jiklikler',
 	'oversight-hidden' => 'Gizlenilen wersiýa',
+	'oversight-offender' => 'Wersiýanyň awtory:',
 );
 
 /** Tagalog (Tagalog)

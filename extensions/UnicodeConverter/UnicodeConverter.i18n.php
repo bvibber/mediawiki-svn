@@ -207,6 +207,14 @@ $messages['es'] = array(
 	'unicodeconverter-newtext' => 'Texto convertido:',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Originaaltekst:',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

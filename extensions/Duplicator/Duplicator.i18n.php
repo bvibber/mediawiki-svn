@@ -1590,6 +1590,13 @@ $messages['tr'] = array(
 	'duplicator-dest' => 'Hedef:',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'duplicator-source' => 'Джерело:',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

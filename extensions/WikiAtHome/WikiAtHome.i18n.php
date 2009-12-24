@@ -388,7 +388,11 @@ $messages['el'] = array(
 	'wah-long-general' => '(αρχείο μέσου, διάρκεια $2, $3)',
 	'wah-long-error' => '(το ffmpeg δεν μπορούσε να διαβάσει αυτό το αρχείο: $1)',
 	'wah-transcode-working' => 'Αυτό το βίντεο προωθείται, παρακαλώ δοκιμαστε ξανά αργότερα',
+	'wah-menu-jobs' => 'Εργασίες',
+	'wah-menu-stats' => 'Στατιστικά',
 	'wah-menu-pref' => 'Προτιμήσεις',
+	'wah-lookingforjob' => 'Αναζήτηση νέας εργασίας ...',
+	'wah-uploadfail' => 'Η φόρτωση απέτυχε',
 );
 
 /** Esperanto (Esperanto)
@@ -1426,12 +1430,14 @@ $messages['te'] = array(
 	'wah-long-audio' => '($1 శ్రవణ ఫైలు, నిడివి $2, $3)',
 	'wah-long-video' => '($1 దృశ్యక ఫైలు, నిడివి $2, $4×$5 పిక్సెళ్ళు, $3)',
 	'wah-long-general' => '(మాధ్యమ ఫైలు, నిడివి $2, $3)',
+	'wah-javascript-off' => 'Wiki@Homeలో పాల్గొనడానికి మీకు జావాస్క్రిప్టుని చేతనం చేసి ఉండాలి',
 	'wah-menu-stats' => 'గణాంకాలు',
 	'wah-menu-pref' => 'అభిరుచులు',
 	'wah-notoken-login' => 'మీరు ప్రవేశించి ఉన్నారా? లేకపోతే, ముందు ప్రవేశించండి.',
 	'wah-downloading' => '<i>$1%</i> ఫైలు దింపుకోలు పూర్తయింది',
 	'wah-uploading' => '<i>$1</i> ఫైలు ఎక్కింపు పూర్తయ్యింది',
 	'wah-uploadfail' => 'ఎక్కింపు విఫలమైంది',
+	'wah-doneuploading' => 'ఎక్కింపు పూర్తయింది. మీ తోడ్పాటుకి ధన్యవాదాలు.',
 );
 
 /** Yiddish (ייִדיש)

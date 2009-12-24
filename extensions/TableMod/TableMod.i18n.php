@@ -98,6 +98,13 @@ $messages['dsb'] = array(
 	'tablemod-error-missingid' => 'Felujucy atribut ident w toflicce.',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'tablemod-msg-remove' => 'Αφαίρεση',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */
@@ -238,6 +245,7 @@ $messages['lb'] = array(
 	'tablemod' => 'TableMod',
 	'tablemod-desc' => 'Manipulatioun vu Wiki-Tabellen',
 	'tablemod-msg-remove' => 'Ewechhuelen',
+	'tablemod-error-invalidsort' => 'Net valabel Parameter fir ze zortéieren',
 	'tablemod-error-invalidaction' => 'Net-valabel Aktioun',
 );
 

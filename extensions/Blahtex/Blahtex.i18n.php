@@ -2407,20 +2407,21 @@ Spróbuj użyć polecenia „$3{...}”.',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'math_noblahtex' => "A peul pa fé giré blahtex, ch'a dovrìa esse a $1",
 	'math-desc' => "MathML arzultà për l'etichëtta &lt;math&gt;",
-	'math_AmbiguousInfix' => 'Piassadura ambigua ëd "$1".
-Preuva an dovrand paréntesi adissionaj "( ... )" për disambigué.',
-	'math_CannotChangeDirectory' => 'As peul pa cambié directory ëd travaj',
-	'math_CannotCreateTexFile' => 'As peul pa creé file tex',
+	'math_AmbiguousInfix' => 'La posission ëd "$1" a l\'é nen ciàira.
+Preuva an dovrand paréntesi adissionaj "( ... )" për ës-ciairì.',
+	'math_CannotChangeDirectory' => 'As peul pa cambié dossié ëd travaj',
+	'math_CannotCreateTexFile' => "As peul pa creé n'archivi tex",
 	'math_CannotRunDvipng' => 'As peul pa fé giré dvipng',
 	'math_CannotRunLatex' => 'As peul pa fé giré latex',
-	'math_CannotWritePngDirectory' => 'As peul pa scrive ant la directory PNG',
-	'math_CannotWriteTexFile' => 'As peul pa scrive ant ël file tex',
-	'math_CasesRowTooBig' => 'A-i peule esse mach doe intrà an minca riga d\'un blòch "cases"',
+	'math_CannotWritePngDirectory' => "As peul pa scrivse ant ël dossié d'archivi PNG",
+	'math_CannotWriteTexFile' => "As peul pa scrive an n'archivi tex",
+	'math_CasesRowTooBig' => 'A-i peulo esse mach doe intrade ëd dàit an minca riga d\'un blòch "cases"',
 	'math_DoubleSubscript' => 'Trovà doi sotscrit tacà a la midema bas.
 As peul mach butessne un.',
 	'math_DoubleSuperscript' => 'Trovà doi superscrit tacà a la midema bas.
@@ -2428,52 +2429,52 @@ As peul mach butessne un.',
 	'math_IllegalCharacter' => 'Caràter an ingress pa bon.',
 	'math_IllegalCommandInMathMode' => 'Ël comand "$1" a l\'é pa legal an manera math',
 	'math_IllegalCommandInMathModeWithHint' => 'Ël comand "$1" a l\'é pa legal an manera math.
-Miraco it vorìe dovré "$2" anvece?',
+Miraco it vorìe dovré "$2" a sò pòst?',
 	'math_IllegalCommandInTextMode' => 'Ël comand "$1" a l\'é pa legal an manera test',
 	'math_IllegalCommandInTextModeWithHint' => 'Ël cmand "$1" a l\'é pa legal an manera test.
-Miraco it vorìe dovré "$2" anvece?',
+Miraco it vorìe dovré "$2" a sò pòst?',
 	'math_IllegalDelimiter' => 'Delimitador pa legal daré "$1"',
-	'math_IllegalFinalBackslash' => 'Backslash "\\" pa legal a la fin ëd l\'input',
-	'math_IllegalNestedFontEncodings' => 'Ij comand ëd codìfica dij font a peulo pa esse anidà',
-	'math_IllegalRedefinition' => 'Ël comand "$1" a l\'é già stàit definì; it peule pa redefinilo',
+	'math_IllegalFinalBackslash' => 'Bara andré "\\" pa legal a la fin ëd l\'ingress ëd dàit',
+	'math_IllegalNestedFontEncodings' => 'Ij comand ëd codìfica dij caràter a peulo pa esse anidà',
+	'math_IllegalRedefinition' => 'Ël comand "$1" a l\'é già stàit definì; it peule pa definilo torna',
 	'math_InvalidColour' => 'Ël color "$1" a l\'é pa bon',
-	'math_InvalidUtf8Input' => "La stringa d'input a l'era pa UTF-8 bon",
-	'math_LatexFontNotSpecified' => 'Pa gnun font LaTex a l\'é stàit specificà për "$1"',
-	'math_LatexPackageUnavailable' => 'Pa bon a fé ël rendering PNG përchè ël pachet LaTeX "$1" a l\'é pa disponìbil',
+	'math_InvalidUtf8Input' => "La stringa d'ingress a l'era pa bon-a an UTF-8",
+	'math_LatexFontNotSpecified' => 'Pa gnun caràter LaTex a l\'é stàit specificà për "$1"',
+	'math_LatexPackageUnavailable' => 'Pa bon a rende ël PNG përchè ël pachet LaTeX "$1" a l\'é pa disponìbil',
 	'math_MismatchedBeginAndEnd' => 'Ij comand "$1" e "$2" a corispondo pa',
 	'math_MisplacedLimits' => 'Ël comand "$1" a peul mach esse d\'apress a n\'operador math.
 Consìdera ëd dovré "\\mathop".',
 	'math_MissingCommandAfterNewcommand' => 'Nòm comand neuv mancant o pa bon d\'apress ëd "|newcommand".
-A-i deuv esse mach un comand definì;
-a deuv ancaminé con un backslash "\\" e conten-e mach caràter alfabétich.',
+A dev essie mach un comand definì;
+a dev ancaminé con na bara a l\'andarera "\\" e conten-e mach caràter alfabétich.',
 	'math_MissingDelimiter' => 'Delimitador mancant d\'apress ëd "$1"',
-	'math_MissingOpenBraceAfter' => 'Paréntesi doverta mancanta "{" d\'apress "$1"',
-	'math_MissingOpenBraceAtEnd' => 'Paréntesi doverta "{" mancanta a la fin ëd l\'input',
-	'math_MissingOpenBraceBefore' => 'Paréntesi doverta mancanta "{" d\'apress "$1"',
-	'math_MissingOrIllegalParameterCount' => 'Contador ëd paràmetr mancant o pa bon ant la definission ëd "$1".
-A deuv esse un sol nùmer tra 1 e 9 comprèis.',
-	'math_MissingOrIllegalParameterIndex' => 'Indes dij paràmetr mancant o pa bon ant a definission ëd "$1"',
-	'math_NonAsciiInMathMode' => 'Ij caràter nen-ASCII a peul mach esse dovrà an manera test.
-Preuva a saré ij caràter dël problema an "\\text{...}".',
-	'math_NotEnoughArguments' => 'Pa basta argoment a son ëstàit dàit për "$1"',
+	'math_MissingOpenBraceAfter' => 'Paréntesi duverta mancanta "{" dapress "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Paréntesi duverta "{" mancanta a la fin ëd l\'ingress',
+	'math_MissingOpenBraceBefore' => 'Paréntesi duverta mancanta "{" dapress "$1"',
+	'math_MissingOrIllegalParameterCount' => 'Conteur ëd paràmetr mancant o pa bon ant la definission ëd "$1".
+A dev esse un nùmer sol tra 1 e 9 comprèis.',
+	'math_MissingOrIllegalParameterIndex' => 'Ìndes dij paràmetr mancant o pa bon ant la definission ëd "$1"',
+	'math_NonAsciiInMathMode' => 'Ij caràter nen-ASCII a peulo mach esse dovrà an manera test.
+Preuva a saré ij caràter problemàtich an "\\text{...}".',
+	'math_NotEnoughArguments' => 'Pa basta d\'argoment a son ëstàit dàit për "$1"',
 	'math_PngIncompatibleCharacter' => 'Pa bon a generé da bin PNG contenent ël caràter $1',
 	'math_ReservedCommand' => 'Ël comand "$1" a l\'é riservà per usagi antern da blahtex',
-	'math_SubstackRowTooBig' => 'A-i peul esse mach na intrà an minca riga d\'un blòch Ëd "substack"',
-	'math_TooManyMathmlNodes' => "A-i tròpi grop ant l'erbo MathML",
-	'math_TooManyTokens' => "L'input a l'é tròp longh",
-	'math_UnavailableSymbolFontCombination' => 'Ël sìmbol "$1" a l\'é pa disponìbil ant ël font "$2"',
-	'math_UnexpectedNextCell' => 'Ël comand "&" a peul mach esse an drinta a un blòch "\\begin ... \\end"',
-	'math_UnexpectedNextRow' => 'Ël comand "\\\\" a peul mach esse an drinta a un blòch "\\begin .. \\end"',
+	'math_SubstackRowTooBig' => 'A-i peul esse mach un ingress an minca riga d\'un blòch "sot-baronà"',
+	'math_TooManyMathmlNodes' => "A-i son tròpi neu ant l'erbo MathML",
+	'math_TooManyTokens' => "L'ingress a l'é tròp longh",
+	'math_UnavailableSymbolFontCombination' => 'Ël sìmbol "$1" a l\'é pa disponìbil ant ij caràter "$2"',
+	'math_UnexpectedNextCell' => 'Ël comand "&" a peul mach esse andrinta a un blòch "\\begin ... \\end"',
+	'math_UnexpectedNextRow' => 'Ël comand "\\\\" a peul mach esse andrinta a un blòch "\\begin .. \\end"',
 	'math_UnmatchedBegin' => 'Ancontrà un "\\begin" sensa un "\\end" corispondent',
-	'math_UnmatchedCloseBrace' => 'Trovà paréntesi sarà "}" sensa corispondent paréntesi doverta "{"',
-	'math_UnmatchedEnd' => 'Trovà "\\end" sensa cosrispndent "\\begin"',
+	'math_UnmatchedCloseBrace' => 'Trovà paréntesi sarà "}" sensa corispondenta paréntesi duverta "{"',
+	'math_UnmatchedEnd' => 'Trovà "\\end" sensa corëspondent "\\begin"',
 	'math_UnmatchedLeft' => 'Trovà "\\left" sensa corispondent "\\right"',
-	'math_UnmatchedOpenBrace' => 'Trovà paréntesi doverta "{" sensa corispondent paréntesi sarà "}"',
-	'math_UnmatchedOpenBracket' => 'Trovà paréntesi doverta "[" sensa corispondent paréntesi sarà "]"',
+	'math_UnmatchedOpenBrace' => 'Trovà paréntesi duverta "{" sensa corispondenta paréntesi sarà "}"',
+	'math_UnmatchedOpenBracket' => 'Trovà paréntesi duverta "[" sensa corispondenta paréntesi sarà "]"',
 	'math_UnmatchedRight' => 'Trovà "\\right" sensa corispondent "\\left"',
 	'math_UnrecognisedCommand' => 'Comand pa arconossù "$1"',
-	'math_WrongFontEncoding' => 'Ël sìmbol "$1" a peul pa esse ant la codìfica dij font "$2"',
-	'math_WrongFontEncodingWithHint' => 'Ël sìmbol "$1" a peul pa esse ant la codìfica dij font "$2".
+	'math_WrongFontEncoding' => 'Ël sìmbol "$1" a peul pa esse ant la codìfica dij caràter "$2"',
+	'math_WrongFontEncodingWithHint' => 'Ël sìmbol "$1" a peul pa esse ant la codìfica dij caràter "$2".
 Preuva a dovré ël comand "$3{...}".',
 );
 

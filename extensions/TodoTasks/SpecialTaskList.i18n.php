@@ -423,6 +423,15 @@ Para ver su lista completa de Tareas vaya a %s.
 Su sistema de notificación amigable %s',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'tasklistunknownproject' => 'Tundmatu projekt',
+	'tasklistincorrectuser' => 'Vigane kasutajanimi',
+	'tasklistchooseproj' => 'Vali projekt:',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

@@ -523,6 +523,9 @@ Zie ook de [[Special:MostRevisors|'''pagina's met de meeste bewerkers''']] en [[
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'cooperationstatistics' => 'Samarbeidsstatistikk',
+	'cooperationstatistics-desc' => 'Vis [[Special:CooperationStatistics|samarbeidsstatistikk i hovednavnerommet]].',
+	'cooperationstatistics-tablearticle' => 'Sideantall',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|side|sider}}',
 );
 

@@ -352,7 +352,7 @@ $messages['arz'] = array(
 	'openidchoosemanual' => 'اسم من اختيارك:',
 	'openidchooseexisting' => 'حساب موجود فى هذه الويكي:',
 	'openidchoosepassword' => 'كلمة السر:',
-	'openidconvertinstructions' => 'هذه الإستمارة تسمح لك بتغيير حساب مستخدمك ليستعمل مسار هوية مفتوحة.',
+	'openidconvertinstructions' => 'هذه الاستمارة تتيح لك تغيير حساب المستخدم الخاص بك لكي تستخدم OpenID URL او لاضافة المزيد من OpenID URLs .',
 	'openidconvertsuccess' => 'تم التحول بنجاح إلى الهوية المفتوحة',
 	'openidconvertsuccesstext' => 'أنت حولت بنجاح هويتك المفتوحة إلى $1.',
 	'openidconvertyourstext' => 'هذه بالفعل هويتك المفتوحة.',
@@ -366,19 +366,14 @@ $messages['arz'] = array(
 لو لا، جرب زر "Continue".',
 	'openidclientonlytext' => 'أنت لا يمكنك استخدام الحسابات من هذا الويكى كهوية مفتوحة على موقع آخر.',
 	'openidloginlabel' => 'مسار الهوية المفتوحة',
-	'openidlogininstructions' => "{{SITENAME}} تدعم معيار [http://openid.net/ الهوية المفتوحة] للدخول الفردى بين مواقع الويب.
+	'openidlogininstructions' => '{{SITENAME}} تدعم معيار [http://openid.net/ الهوية المفتوحة] للدخول الفردي بين مواقع الويب.
 الهوية المفتوحة تسمح لك بتسجيل الدخول إلى مواقع ويب عديدة مختلفة بدون استخدام كلمة سر مختلفة لكل موقع.
-(انظر [http://en.wikipedia.org/wiki/OpenID مقالة الهوية المفتوحة فى يويكيبيديا] لمزيد من المعلومات.)
+(انظر [http://en.wikipedia.org/wiki/OpenID مقالة الهوية المفتوحة في يويكيبيديا] لمزيد من المعلومات.)
 
-لو أنك لديك بالفعل حساب فى {{SITENAME}}، يمكنك [[Special:UserLogin|تسجيل الدخول]] باسم مستخدمك وكلمة السر الخاصة بك كالمعتاد.
-لاستخدام الهوية المفتوحة فى المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك إلى الهوية المفتوحة]] بعد تسجيل دخولك بشكل عادي.
+لو أنك لديك بالفعل حساب في {{SITENAME}}، يمكنك [[Special:UserLogin|تسجيل الدخول]] باسم مستخدمك وكلمة السر الخاصة بك كالمعتاد.
+لاستخدام الهوية المفتوحة في المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك إلى الهوية المفتوحة]] بعد تسجيل دخولك بشكل عادي.
 
-يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفرى الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.
-
-; الويكيات الأخرى : لو أنك لديك حساب على ويكى مفعل الهوية المفتوحة، مثل [http://wikitravel.org/ ويكى ترافيل]، [http://www.wikihow.com/ ويكى هاو]، [http://vinismo.com/ فينيزمو]، [http://aboutus.org/ أبوت أس] أو [http://kei.ki/ كيكي]، يمكنك تسجيل الدخول إلى {{SITENAME}} بواسطة إدخال '''المسار الكامل''' لصفحة مستخدمك على هذا الويكى الآخر فى الصندوق بالأعلى. على سبيل المثال، ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
-; [http://openid.yahoo.com/ ياهو!] : إذا لديك حساب مع ياهو!، يمكنك تسجيل الدخول إلى هذا الموقع بواسطة إدخال هويتك المفتوحة الموفرة بواسطة ياهو! فى الصندوق بالأعلى. مسارات هوية ياهو! المفتوحة تأخذ الصيغة ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
-; [http://dev.aol.com/aol-and-63-million-openids إيه أو إل] : لو لديك حساب مع [http://www.aol.com/ إيه أو إل]، مثل حساب [http://www.aim.com/ إيه أى إم]، يمكنك تسجيل الدخول إلى {{SITENAME}} بواسطة إدخال هويتك المفتوحة الموفرة بواسطة AOL فى الصندوق بالأعلى. مسارات هوية AOL المفتوحة تأخذ الصيغة ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. اسم مستخدمك ينبغى أن يكون كله حروفا صغيرة، لا مسافات.
-; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html بلوجر], [http://faq.wordpress.com/2007/03/06/what-is-openid/ وورد بريس دوت كوم]، [http://www.livejournal.com/openid/about.bml ليف جورنال]، [http://bradfitz.vox.com/library/post/openid-for-vox.html فوكس] : لو لديك مدونة على أى من هذه الخدمات، أدخل مسار مدونتك فى الصندوق بالأعلى. على سبيل المثال، ''<nowiki>http://yourusername.blogspot.com/</nowiki>''، ''<nowiki>http://yourusername.wordpress.com/</nowiki>''، ''<nowiki>http://yourusername.livejournal.com/</nowiki>''، أو ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفري الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.',
 	'openid-pref-hide' => 'أخف هويتك هويتك المفتوحة على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
 );
 
@@ -4562,12 +4557,22 @@ Det finns många [http://openid.net/get/ leverantörer av OpenID], och du kan re
  * @author Veeven
  */
 $messages['te'] = array(
+	'openid-desc' => '[http://openid.net/ ఓపెన్ఐడీ]తో వికీ లోనికి ప్రవేశించండి, మరియు వికీ వాడుకరి ఖాతాతో ఓపెన్ఐడీని అంగీకరించే ఇతర వెబ్ సైట్లలోనికి ప్రవేశించండి',
 	'openidlogin' => 'ఓపెన్ఐడీతో ప్రవేశించండి',
 	'openidserver' => 'ఓపెన్ఐడీ సేవకి',
+	'openiderror' => 'తనిఖీ పొరపాటు',
+	'openiderrortext' => 'ఓపెన్ఐడీ చిరునామాని తనిఖీ చేయడంలో పొరపాటు జరిగింది.',
 	'openidpermission' => 'ఓపెన్ఐడీ అనుమతుల పొరపాటు',
+	'openidpermissiontext' => 'మీరు ఇచ్చిన ఓపెన్ఐడీకి ఈ సేవకి లోనికి ప్రవేశించే అనుమతి లేదు.',
 	'openidcancel' => 'తనిఖీ రద్దయింది',
+	'openidcanceltext' => 'ఓపెన్ఐడీ చిరునామా యొక్క తనిఖీని రద్దుచేసారు.',
 	'openidfailure' => 'తనిఖీ విఫలమైంది',
+	'openidfailuretext' => 'ఓపెన్ఐడీ చిరునామా యొక్క తనిఖీ విఫలమైంది. పొరపాటు సందేశం: "$1"',
 	'openidsuccess' => 'తనిఖీ విజయవంతమైంది',
+	'openidserverlogininstructions' => '$3 లోనికి $2 (వాడుకరి పేజీ $1) అనే వాడుకరిగా ప్రవేశించడానికి మీ సంకేతపదం ఇవ్వండి.',
+	'openidallowtrust' => 'ఈ వాడుకరి ఖాతాని విశ్వసించడానికి $1ని అనుమతించు.',
+	'openidnopolicy' => 'సైటు అంతరంగికత విధానాన్ని పేర్కొనలేదు.',
+	'openidpolicy' => 'మరింత సమాచారం కొరకు <a target="_new" href="$1">అంతరంగికత విధానా</a>న్ని చూడండి.',
 	'openidoptional' => 'ఐచ్చికం',
 	'openidrequired' => 'తప్పనిసరి',
 	'openidnickname' => 'ముద్దుపేరు',
@@ -4575,22 +4580,36 @@ $messages['te'] = array(
 	'openidemail' => 'ఈ-మెయిల్ చిరునామా',
 	'openidlanguage' => 'భాష',
 	'openidtimezone' => 'కాలమానం',
+	'openidnotavailable' => 'మీరు ఎంచుకున్న పేరు ($1) ఇప్పటికే మరొక వాడుకరిచే వాడుకలో ఉంది.',
 	'openidchooseinstructions' => 'సభ్యులందరికీ ముద్దు పేరు ఉండవలెను. 
 క్రింద పేర్కొన్న వాటిలో ఒకటి ఎంచుకోండి',
 	'openidchoosefull' => 'మీ పూర్తి పేరు ($1)',
+	'openidchooseurl' => 'మీ ఓపెన్ఐడీ నుండి తీసుకున్న పేరు ($1)',
 	'openidchoosemanual' => 'మీరు ఎన్నుకున్న పేరు:',
 	'openidchooseexisting' => 'ఈ వికీలో ఇప్పటికే ఉన్న ఖాతా:',
 	'openidchoosepassword' => 'సంకేతపదం:',
+	'openidconvertinstructions' => 'మీ ఖాతాని ఓపెన్ఐడీ చిరునామా ఉపయోగించేలా మార్చడానికి లేదా మరిన్ని ఓపెన్ఐడీ చిరునామాలు చేర్చుకోడానికి ఈ ఫారం వీలుకల్పిస్తుంది',
+	'openidconvertsuccess' => 'విజయవంతంగా ఓపెనిఐడీకి మారారు',
+	'openidconvertsuccesstext' => 'మీ ఓపెన్ఐడీని $1కి విజయవంతంగా మార్చుకున్నారు.',
 	'openidconvertyourstext' => 'అది ఇప్పటికే మీ ఓపెన్ఐడీ.',
 	'openidconvertothertext' => 'ఇది వేరొకరి ఓపెన్ ఐడి',
 	'openidnousername' => 'వాడుకరిపేరు ఇవ్వలేదు.',
+	'openidbadusername' => 'తప్పుడు వాడుకరిపేరుని ఇచ్చారు.',
 	'openidclientonlytext' => 'ఈ వికీ లోని ఖాతాలను మీరు వేరే సైట్లలో ఓపెన్ఐడీలుగా ఉపయోగించలేరు.',
+	'openidloginlabel' => 'ఓపెన్ఐడీ చిరునామా',
 	'openidupdateuserinfo' => 'నా వ్యక్తిగత సమాచారాన్ని తాజాకరించు',
 	'openiddelete' => 'ఓపెన్ ఐడి తొలగించు',
 	'openiddelete-button' => 'నిర్ధారించు',
+	'openiddelete-sucess' => 'మీ ఖాతా నుండి ఆ ఓపెన్ఐడీని విజయవంతంగా తొలగించాం.',
+	'openiddelete-error' => 'మీ ఖాతా నుండి ఓపెన్ఐడీని తొలగించడంలో పొరపాటు జరిగింది.',
 	'openid-prefstext' => '[http://openid.net/ ఓపెన్ఐడీ] అభిరుచులు',
+	'openid-pref-hide' => 'నేను ఓపెన్ఐడీతో ప్రవేశిస్తే, నా ఓపెన్ఐడీ చిరునామాని నా వాడుకరి పేజీలో కనబడకుండా దాచు.',
+	'openid-urls-desc' => 'మీ ఖాతాతో సంధానమై ఉన్న ఓపెన్ఐడీలు:',
 	'openid-urls-action' => 'చర్య',
 	'openid-urls-delete' => 'తొలగించు',
+	'openid-add-url' => 'కొత్త ఓపెన్ఐడీని చేర్చు',
+	'openidsigninorcreateaccount' => 'ప్రవేశించండి లేదా కొత్త ఖాతాని సృష్టించుకోండి',
+	'openid-provider-label-openid' => 'మీ ఓపెన్ఐడీ చిరునామాని ఇవ్వండి',
 	'openid-provider-label-google' => 'మీ గూగుల్ ఖాతాని ఉపయోగించి ప్రవేశించండి',
 	'openid-provider-label-yahoo' => 'మీ యాహూ ఖాతాని ఉపయోగించి ప్రవేశించండి',
 	'openid-provider-label-aol' => 'మీ ఎఓఎల్ స్క్రీన్ నామము ఇవ్వండి',

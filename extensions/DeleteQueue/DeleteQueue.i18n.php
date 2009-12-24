@@ -3999,6 +3999,9 @@ $messages['no'] = array(
 * Om du mener at denne siden kvalifiserer for ''hurtigsletting'', kan du foreslå det [{{fullurl:{{FULLPAGENAMEE}}|action=delnom&queue=speedy}} her].
 * Om siden ikke kvalifserer for hurtigsletting, men ''sletting likevel vil være ukontroversielt'', kan du [{{fullurl:{{FULLPAGENAMEE}}|action=delnom&queue=prod}} foreslå sletting her].
 * Om det er sannsynlig at sletting av siden ''vil bli omdiskutert'', burde du [{{fullurl:{{FULLPAGENAMEE}}|action=delnom&queue=deletediscuss}} åpne en diskusjon].",
+	'deletequeue-action-text-queued' => 'Du kan se de følgende sidene for denne slettekandidaten:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Se nåværande støtte og motstand].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Støtt eller gå imot sletting av siden].',
 	'deletequeue-permissions-noedit' => 'Du må kunne redigere en side for å kunne påvirke dens slettingsstatus.',
 	'deletequeue-generic-reasons' => '* Vanlige årsaker
   ** Hæverk
@@ -4006,6 +4009,7 @@ $messages['no'] = array(
   ** Reklame
   ** Vedlikehold
   ** Ikke relevant for prosjektet',
+	'deletequeue-nom-alreadyqueued' => 'Denne siden er allerede i en sletningskø.',
 	'deletequeue-speedy-title' => 'Merk «$1» for hurtigsletting',
 	'deletequeue-speedy-text' => "Du kan bruke dette skjemaet for å merke siden «'''$1'''» for hurtigsletting.
 
@@ -4066,9 +4070,28 @@ Forsikre deg om at siden kan hurtigslettes ifm. retningslinjene.",
 	'deletequeue-reviewprod-tab' => 'Behandle slettingsforslag',
 	'deletequeue-reviewprod-title' => 'Behandle slettingsforslag av «$1»',
 	'deletequeue-reviewprod-text' => "Du kan bruke dette skjemaet for å behandle sletting av «'''$1'''».",
+	'deletequeue-reviewdeletediscuss-tab' => 'Revider sletting',
+	'deletequeue-reviewdeletediscuss-title' => 'Revider slettediskusjonen for «$1»',
+	'deletequeue-reviewdeletediscuss-text' => "Du kan bruke dette skjemaet for å revidere slettediskusjonen til «'''$1'''».
+
+En [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} liste] over bifall av og innvendinger mot denne slettingen er tilgjengelig og selve diskusjonen kan bli funnet på [[$2]].
+Forsikre deg om at du tar en avgjørelse i samsvar med konsensus i diskusjonen.",
+	'deletequeue-review-success' => 'Du har revidert slettingen av denne siden',
+	'deletequeue-review-success-title' => 'Revidering fullført',
+	'deletequeue-deletediscuss-discussionpage' => 'Dette er diskusjonssiden for sletting av [[$1]].
+Det er nå {{PLURAL:$2|én bruker|$2 brukere}} som er for sletting og {{PLURAL:$3|én bruker|$3 brukere}} som er imot.
+Du ønsker kanskje å [{{fullurl:$1|action=delvote}} støtte eller gå imot] en sletting, eller [{{fullurl:$1|action=delvoiewvotes}} vise alle bifall og innvendinger].',
+	'deletequeue-discusscreate-summary' => 'Opprett diskusjon for sletting av [[$1]].',
+	'deletequeue-discusscreate-text' => 'Sletting foreslått på grunn av følgende årsaker: $2',
+	'deletequeue-role-nominator' => 'opprinnelig nominert av',
 	'deletequeue-role-vote-endorse' => 'støtter sletting',
 	'deletequeue-role-vote-object' => 'er imot sletting',
 	'deletequeue-vote-tab' => 'Stem over slettinga',
+	'deletequeue-vote-title' => 'Støtt eller gå imot sletting av «$1»',
+	'deletequeue-vote-text' => "Du kan bruke dette skjemaet for å støtte eller gå imot slettingen av «'''$1'''».
+Denne handligen vil overskrive eventuelle tidligere bifall/innvendinger du har gitt mot slettingen av denne siden.
+Du kan [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} vise] eksisterende bifall og innvendinger.
+Oppgitt grunn for nominasjonen var ''$2''.",
 	'deletequeue-vote-legend' => 'Støtt/gå imot sletting',
 	'deletequeue-vote-action' => 'Anbefaling:',
 	'deletequeue-vote-endorse' => 'Støtt sletting.',
@@ -4077,24 +4100,44 @@ Forsikre deg om at siden kan hurtigslettes ifm. retningslinjene.",
 	'deletequeue-vote-submit' => 'Send',
 	'deletequeue-vote-success-endorse' => 'Du har støttet forslaget om sletting av denne sida.',
 	'deletequeue-vote-success-object' => 'Du har gått imot sletting av denne sida',
+	'deletequeue-vote-requeued' => 'Du har gått imot slettingen av denne siden.
+På grunn av din motstand har siden blitt flyttet til køen $1.',
+	'deletequeue-showvotes' => 'Bifall av og innvendinger mot sletting av «$1»',
+	'deletequeue-showvotes-text' => "Under er bifall og innvendinger mot sletting av siden «'''$1'''».
+Du kan [{{fullurl:{{FULLPAGENAME}}|action=delvote}} legge inn ditt eget bifall av eller innvending mot] denne slettingen.",
+	'deletequeue-showvotes-restrict-endorse' => 'Bare vis bifall',
+	'deletequeue-showvotes-restrict-object' => 'Bare vis innvendinger',
+	'deletequeue-showvotes-restrict-none' => 'Vis alle bifall og innvendinger',
+	'deletequeue-showvotes-vote-endorse' => "'''Bifalt''' sletting den $1 $2",
+	'deletequeue-showvotes-vote-object' => "'''Innvendte mot''' sletting den $1 $2",
 	'deletequeue-showvotes-showingonly-endorse' => 'Viser bare støtte',
 	'deletequeue-showvotes-showingonly-object' => 'Viser bare innvendinger',
+	'deletequeue-showvotes-none' => 'Det er ingen bifall av eller innvendinger mot slettingen av denne siden.',
+	'deletequeue-showvotes-none-endorse' => 'Det er ingen bifall av slettingen av denne siden.',
+	'deletequeue-showvotes-none-object' => 'Det er ingen innvendinger mot slettingen av denne siden.',
 	'deletequeue' => 'Slettingskø',
+	'deletequeue-list-text' => 'Denne siden viser alle sider som er i slettesystemet.',
 	'deletequeue-list-search-legend' => 'Søk etter sider',
 	'deletequeue-list-queue' => 'Kø:',
 	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-expired' => 'Bare vis nominasjoner som må avsluttes.',
 	'deletequeue-list-search' => 'Søk',
 	'deletequeue-list-anyqueue' => '(noen)',
 	'deletequeue-list-votes' => 'Liste over stemmer',
+	'deletequeue-list-votecount' => '{{PLURAL:$1|Ett bifall|$1 bifall}}, {{PLURAL:$2|en innvending|$2 innvendinger}}',
 	'deletequeue-list-header-page' => 'Side',
 	'deletequeue-list-header-queue' => 'Kø',
 	'deletequeue-list-header-expiry' => 'Varighet',
 	'deletequeue-list-header-discusspage' => 'Diskusjonsside',
+	'deletequeue-case-intro' => 'Denne siden lister opp informasjon om en spesifikk slettesak.',
 	'deletequeue-list-header-reason' => 'Slettingsårsak:',
+	'deletequeue-case-votes' => 'Bifall/innvendinger:',
+	'deletequeue-case-title' => 'Slettesakdeltajer',
 	'deletequeue-case-details' => 'Grunnleggende detaljer',
 	'deletequeue-case-page' => 'Side:',
 	'deletequeue-case-reason' => 'Årsak:',
 	'deletequeue-case-expiry' => 'Utgår:',
+	'deletequeue-case-needs-review' => 'Denne saken krever [[$1|revidering]].',
 );
 
 /** Novial (Novial)
@@ -5596,10 +5639,12 @@ Maaari mong [{{fullurl:{{FULLPAGENAME}}|action=delvote}} itala ang sarili mong p
 );
 
 /** Turkish (Türkçe)
+ * @author Homonihilis
  * @author Karduelis
  * @author Mach
  */
 $messages['tr'] = array(
+	'deletequeue-delnom-reason' => 'Adaylık gerekçesi:',
 	'deletequeue-delnom-otherreason' => 'Diğer nedenler',
 	'deletequeue-queue-speedy' => 'Hızlı silme',
 	'deletequeue-queue-deletediscuss' => 'Silme tartışması',
@@ -5614,6 +5659,13 @@ $messages['tr'] = array(
 $messages['ug-latn'] = array(
 	'deletequeue-list-header-page' => 'Bet',
 	'deletequeue-case-page' => 'Bet:',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'deletequeue-case-reason' => 'Причина:',
 );
 
 /** Veps (Vepsan kel')

@@ -382,3 +382,19 @@ $messages['vi'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Số sự kiện gần đây được địa chỉ IP kích hoạt, theo Dự Án Hũ Mật',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'honeypot-desc' => '提供可与MediaWiki站点集成的[http://projecthoneypot.org/ Project Honey Pot]程式',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => '根据Project Honey Pot的设定，最近事件的数量激活了IP地址规则。',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hant'] = array(
+	'honeypot-desc' => '提供可与MediaWiki站点集成的[http://projecthoneypot.org/ Project Honey Pot]程式',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => '根據Project Honey Pot的設定，最近事件的數量激活了IP地址規則。',
+);
+

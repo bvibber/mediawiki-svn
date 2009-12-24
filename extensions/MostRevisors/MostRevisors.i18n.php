@@ -553,6 +553,19 @@ $messages['nl'] = array(
 	'mostrevisors-viewcontributors' => 'De grootste bijdragers bekijken',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'mostrevisors-limitlinks' => 'Vis inntil $1 sider',
+	'mostrevisors-namespace' => 'Navnerom:',
+	'mostrevisors-none' => 'Ingen oppføringer ble funnet.',
+	'mostrevisors-showing' => 'Lister opp {{PLURAL:$1|én side|$1 sider}}:',
+	'mostrevisors-showredir' => 'Vis omdirigeringssider',
+	'mostrevisors-hideredir' => 'Gjem omdirigeringssider',
+	'mostrevisors-viewcontributors' => 'Vis hovedbidragsytere',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

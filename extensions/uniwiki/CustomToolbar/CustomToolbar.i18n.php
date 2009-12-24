@@ -773,6 +773,28 @@ $wgCustomToolbarMessages['es'] = array(
 	'ct_user_sample' => 'Nombre de usuario',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$wgCustomToolbarMessages['et'] = array(
+	'ct_bold_sample' => 'Paks kiri',
+	'ct_bold_tip_ins' => 'Sisesta paks kiri',
+	'ct_bold_tip_wrap' => 'Tee see kiri paksuks',
+	'ct_bold_caption' => 'Paks',
+	'ct_italic_sample' => 'Kaldkiri',
+	'ct_italic_tip_ins' => 'Sisesta kaldkirjas tekst',
+	'ct_italic_tip_wrap' => 'Pane see tekst kaldkirja',
+	'ct_italic_caption' => 'Kaldkiri',
+	'ct_internal_tip_ins' => 'Lisa siselink',
+	'ct_internal_tip_wrap' => 'Tee sellest tekstist siselink',
+	'ct_internal_caption' => 'Siselink',
+	'ct_external_tip_ins' => 'Sisesta välislink',
+	'ct_external_tip_wrap' => 'Tee sellest tekstist välislink',
+	'ct_external_caption' => 'Välislink',
+	'ct_image_tip' => 'Sisesta pilt',
+	'ct_image_caption' => 'Lisa pilt',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

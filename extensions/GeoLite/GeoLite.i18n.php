@@ -287,3 +287,17 @@ $messages['vi'] = array(
 	'geolite-desc' => 'Đổi hướng GeoIP nhẹ nhàng',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'geolite-desc' => '轻量级 GeoIp',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hant'] = array(
+	'geolite-desc' => '輕量級 GeoIp',
+);
+

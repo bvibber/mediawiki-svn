@@ -168,6 +168,13 @@ $messages['es'] = array(
 	'catboxattop-categories' => 'Categorías',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'catboxattop-categories' => 'Kategooriad',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

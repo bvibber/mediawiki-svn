@@ -1331,7 +1331,11 @@ $messages['th'] = array(
  */
 $messages['tk'] = array(
 	'scanset_unrecognised_index_format' => 'Säwlik: Näbelli indeks formaty',
+	'scanset_opendir_error' => 'Säwlik: $1 direktoriýasyny açyp bolmaýar',
+	'scanset_no_files' => 'Säwlik: Görkezilen direktoriýada hiç hili faýl ýok.',
+	'scanset_no_volumes' => 'Säwlik: Hiç hili tom direktioriýasy tapylmady',
 	'scanset_missing_index_file' => 'Säwlik: $1 indeks faýly tapylmady',
+	'scanset_index_file_error' => 'Säwlik: $1 belgili setirdäki indeks faýly formatynda säwlik',
 	'scanset_invalid_volume' => 'Säwlik: Näbelli tom',
 	'scanset_next' => 'Indiki &gt;',
 	'scanset_prev' => '&lt; Öňki',

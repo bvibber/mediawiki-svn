@@ -91,7 +91,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'multipleupload' => 'رفع الملفات',
+	'multipleupload' => 'رفع ملفات متعددة',
 	'multipleupload-desc' => 'يسمح لليوزرز [[Special:MultipleUpload|بتحميل عدة ملفات فى وقت واحد]]',
 	'multipleupload-ignoreallwarnings' => "تجاهل '''كل التحذيرات''' واحفظ الملفات على أية حال.",
 	'multipleupload-saveallfiles' => 'حفظ كل الملفات',

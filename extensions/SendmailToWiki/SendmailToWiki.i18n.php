@@ -115,6 +115,13 @@ $messages['dsb'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Dla potentcielnych wopacnych interpretacijow akceptěruju se jano powěsći z lutnym tekstom.',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'sendmailtowiki-inpin' => 'ΡΙΝ:',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

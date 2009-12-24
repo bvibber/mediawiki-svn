@@ -456,6 +456,31 @@ Aby składował napšašowanje, wótpósćel jo, mimo až sy wótegronił na nar
 	'qp_error_unique' => 'Pšašanje typa unique() ma wěcej naraźenjow ako móžne wótegrona su definěrowane: njemóžno pókšacowaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'qp_result_NA' => 'Αναπάντητο',
+	'qp_result_error' => 'Συντακτικό σφάλμα',
+	'qp_vote_button' => 'Ψήφισε',
+	'qp_vote_again_button' => 'Αλλαγή ψήφου',
+	'qp_polls_list' => 'Καταγραφή όλων των δημοσκοπήσεων',
+	'qp_users_list' => 'Καταγραφή όλων των χρηστών',
+	'qp_browse_to_poll' => 'Πλοήγηση σε $1',
+	'qp_browse_to_user' => 'Πλοήγηση σε $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|ψήφος|ψήφοι}}',
+	'qp_source_link' => 'Πηγή',
+	'qp_stats_link' => 'Στατιστικά',
+	'qp_users_link' => 'Χρήστες',
+	'qp_voice_link' => 'Φωνή χρήστη',
+	'qp_voice_link_inv' => 'Φωνή χρήστη;',
+	'qp_user_polls_link' => 'Συμμετοχή σε $1 {{PLURAL:$1|δημοσκόπηση|δημοσκοπήσεις}}',
+	'qp_user_missing_polls_link' => 'Καμία συμμετοχή',
+	'qp_not_participated_link' => 'Δεν συμμετείχε',
+	'qp_results_line_qupl' => 'Σελίδα "$1" Δημοσκόπηση "$2": $3',
+	'qp_func_no_such_poll' => 'Καμιά τέτοια δημοσκόπηση ($1)',
+);
+
 /** Spanish (Español)
  * @author Translationista
  */
@@ -1281,12 +1306,66 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'pollresults' => 'Resultater fra spørreundersøkelsen på denne siden',
+	'qp_desc' => 'Tillater opprettelse av spørreundersøkelser',
+	'qp_desc-sp' => '[[Special:PollResults|Spesialside]] for visning av resultater fra spørreundersøkelsene',
+	'qp_result_NA' => 'Ikke besvart',
+	'qp_result_error' => 'Syntaksfeil',
 	'qp_vote_button' => 'Stem',
 	'qp_vote_again_button' => 'Endre din stemme',
+	'qp_polls_list' => 'List opp alle spørreundersøkelser',
+	'qp_users_list' => 'List opp alle brukere',
+	'qp_browse_to_poll' => 'Bla igjennom til $1',
+	'qp_browse_to_user' => 'Bla igjennom til $1',
 	'qp_votes_count' => '{{PLURAL:$1|Én stemme|$1 stemmer}}',
 	'qp_source_link' => 'Kilde',
 	'qp_stats_link' => 'Statistikk',
 	'qp_users_link' => 'Brukere',
+	'qp_voice_link' => 'Brukerstemme',
+	'qp_voice_link_inv' => 'Brukerstemme?',
+	'qp_user_polls_link' => 'Deltok i {{PLURAL:$1|én spørreundersøkelse|$1 spørreundersøkelser}}',
+	'qp_user_missing_polls_link' => 'Ingen deltakelse',
+	'qp_not_participated_link' => 'Ikke deltatt',
+	'qp_order_by_username' => 'Sorter etter brukernavn',
+	'qp_order_by_polls_count' => 'Sorter etter antall spørreundersøkelser',
+	'qp_results_line_qupl' => 'Side «$1» Spørreundersøkelse «$2»: $3',
+	'qp_results_line_qpl' => 'Side «$1» Spørreundersøkelse «$2»: $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Side «$2» Spørreundersøkelse «$3» ]',
+	'qp_export_to_xls' => 'Eksporter statistikk til XLS-format',
+	'qp_users_answered_questions' => '{{PLURAL:$1|Én bruker|$1 brukere}} besvarte spørsmålene',
+	'qp_func_no_such_poll' => 'Ingen slik spørreundersøkelse ($1)',
+	'qp_func_missing_question_id' => 'Vennligst oppgi en eksisterende spørsmåls-ID (starter fra 1) for spørreundersøkelsen $1',
+	'qp_func_invalid_question_id' => 'Ugyldig spørsmåls-id=$2 (ikke et tall) for spørreundersøkelsen $1',
+	'qp_func_missing_proposal_id' => 'Vennligst oppgi en eksisterende forslags-id (starter fra 0) for spørreundersøkelsen $1, spørsmål $2',
+	'qp_func_invalid_proposal_id' => 'Ugyldig forslags-id=$3 (ikke et tall) for spørreundersøkelsen $1, spørsmål $2',
+	'qp_error_no_such_poll' => 'Ingen slik spørreundersøkelse ($1).
+Vær sikker på at spørreundersøkelsen ble deklarert og lagret, vær også sikker på at tegnet # blir brukt som addresse avgrenser',
+	'qp_error_id_in_stats_mode' => 'Kan ikke deklarere en ID for spørreundersøkelsen i statistikkmodus',
+	'qp_error_dependance_in_stats_mode' => 'Kan ikke deklarere kjede av avhengigheter for spørreundersøkelsen i statistikkmodus',
+	'qp_error_no_stats' => 'Ingen statistiske data er tilgjengelig fordi ingen har stemt for denne spørreundersøkelsen enda (address=$1)',
+	'qp_error_address_in_decl_mode' => 'Kan ikke få en adresse for spørreundersøkelsen i deklareringsmodus',
+	'qp_error_question_not_implemented' => 'Spørsmål av en slik type er ikke implementert: $1',
+	'qp_error_invalid_question_type' => 'Ugyldig spørsmålstype: $1',
+	'qp_error_no_poll_id' => 'Spørreundersøkelsesmerkelappen har ingen definerte id-atributter.',
+	'qp_error_invalid_poll_id' => 'Ugyldig spørreundersøkelses-id (id=$1).
+Spørreundersøkelses-id kan kun inneholde bokstaver, tall og mellomrom',
+	'qp_error_already_used_poll_id' => 'Spørreundersøkelses-id-en har allerede blitt brukt på denne siden (id=$1).',
+	'qp_error_invalid_dependance_value' => 'Spørreundersøkelsens (id=$1) kjede av avhengigheter har en ugyldig verdi av avhengighetsatributter (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'Spørreundersøkelsen (id=$1) avhenger av en annen spørreundersøkelse (id=$3) fra side [[$2]], men tittelen [[$2]] ble ikke funnet.
+Enten fjern avhengighetsatributten, eller gjenopprett [[$2]]',
+	'qp_error_missed_dependance_poll' => 'Spørreundersøkelsen (id=$1) avhenger av en annen spørreundersøkelse (id=$3) på side $2, men den spørreundersøkelsen finnes ikke eller har ikke blitt lagret enda.
+Enten fjern avhengighetsatributten eller opprett spørreundersøkelsen med id=$3 på siden $2 og lagre den.
+For å lagre en spørreundersøkelse, send den mens du ikke svarer på noen forslagsspørsmål.',
+	'qp_error_vote_dependance_poll' => 'Vennligst stem for spørreundersøkelsen $1 først.',
+	'qp_error_too_many_spans' => 'For mange kategorigrupper for det totale antall underkategorier definert',
+	'qp_error_unanswered_span' => 'Ubesvart underkategori',
+	'qp_error_non_unique_choice' => 'Dette spørsmålet krever unikt forslagssvar',
+	'qp_error_category_name_empty' => 'Kategorinavn er tomt',
+	'qp_error_proposal_text_empty' => 'Forslagstekst er tom',
+	'qp_error_too_few_categories' => 'Minst to kategorier må defineres',
+	'qp_error_too_few_spans' => 'Hver kategorigruppe må inneholde minst to underkategorier',
+	'qp_error_no_answer' => 'Ubesvart forslag',
+	'qp_error_unique' => 'Spørsmål av typen unique() har flere forslag enn mulige definerte svar: umulig å gjennomføre',
 );
 
 /** Polish (Polski)
@@ -1298,22 +1377,23 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'pollresults' => 'Arzultà dij sondagi an sto sit-sì',
-	'qp_desc' => 'A përmëtt la creassion ëd sondagi',
+	'qp_desc' => 'A përmet la creassion ëd sondagi',
 	'qp_desc-sp' => "[[Special:PollResults|Pàgina special]] për vëdde j'arzultà dij sondagi",
 	'qp_result_NA' => 'Pa arspondù',
-	'qp_result_error' => 'Eror ëd sintass',
+	'qp_result_error' => 'Eror ëd sintassi',
 	'qp_vote_button' => 'Vot',
 	'qp_vote_again_button' => 'Cangia tò vot',
 	'qp_polls_list' => 'Lista tùit ij sondagi',
 	'qp_users_list' => "Lista tùit j'utent",
-	'qp_browse_to_poll' => 'Scanucia $1',
-	'qp_browse_to_user' => 'Scanucia $1',
+	'qp_browse_to_poll' => 'Andé fin-a a $1',
+	'qp_browse_to_user' => 'Andé fin-a a $1',
 	'qp_votes_count' => '$1 {{PLURAL:$1|vot|vot}}',
-	'qp_source_link' => 'Sorziss',
+	'qp_source_link' => 'Sorgiss',
 	'qp_stats_link' => 'Statìstiche',
 	'qp_users_link' => 'Utent',
 	'qp_voice_link' => "Vos ëd l'utent",
@@ -1321,8 +1401,8 @@ $messages['pms'] = array(
 	'qp_user_polls_link' => 'Partessipà a $1 {{PLURAL:$1|sondagi|sondagi}}',
 	'qp_user_missing_polls_link' => 'Gnun-e partessipassion',
 	'qp_not_participated_link' => 'Pa partessipà',
-	'qp_order_by_username' => 'Ordina për nòm utent',
-	'qp_order_by_polls_count' => 'Ordina për contador ëd sondagi',
+	'qp_order_by_username' => 'Ordiné për nòm utent',
+	'qp_order_by_polls_count' => 'Ordiné për nùmer ëd sondagi',
 	'qp_results_line_qupl' => 'Pàgina "$1" Sondagi "$2": "$3"',
 	'qp_results_line_qpl' => 'Pàgina "$1" Sondagi "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Pàgina "$2" Sondagi "$3" ]',
@@ -1331,37 +1411,37 @@ $messages['pms'] = array(
 	'qp_func_no_such_poll' => 'Ël sondagi a esist pa ($1)',
 	'qp_func_missing_question_id' => "Për piasì specìfica n'id ëd custion esistent (partend da 1) për ël sondagi $1",
 	'qp_func_invalid_question_id' => 'Id custion=$2 pa bon (pa un nùmer) për ël sondagi $1',
-	'qp_func_missing_proposal_id' => "Për piasì specifica n'id propòsta esistenta (an partend da 0) për ël sondagi $1, custion $2",
-	'qp_func_invalid_proposal_id' => 'Id propòsta=$3 pa bon (pa un nùmer) për ël sondagi $1, custin $2',
+	'qp_func_missing_proposal_id' => "Për piasì specifica n'id propòsta esistent (an partend da 0) për ël sondagi $1, chestion $2",
+	'qp_func_invalid_proposal_id' => 'Id propòsta=$3 pa bon (pa un nùmer) për ël sondagi $1, chestion $2',
 	'qp_error_no_such_poll' => "Sondagi pa esistent ($1).
 Sicurte che ël sondagi a sia diciarà e salvà, ëdcò sicurte ëd dovré ël caràter delimitador d'adrësse #",
 	'qp_error_id_in_stats_mode' => "As peul pa diciaresse n'ID ëd sondagi an manera statìstica",
 	'qp_error_dependance_in_stats_mode' => 'As peul pa diciaresse na caden-a ëd dipendensa dël sondagi an manera statìstica',
-	'qp_error_no_stats' => "Pa gnun dat statìstich a son disponìbij, përchè pa gnun a l'ha votà për sto sondagi-sì, anco' (adrëssa=$1)",
+	'qp_error_no_stats' => "Pa gnun dat statìstich a son disponìbij, përchè gnun a l'ha votà për sto sondagi-sì, për adess (adrëssa=$1)",
 	'qp_error_address_in_decl_mode' => "As peul pa pijé n'adrëssa dël sondagi an manera diciarativa",
-	'qp_error_question_not_implemented' => 'Custin dë sta sòrt-sì a son pa amplementà: $1',
+	'qp_error_question_not_implemented' => 'Chestion dë sta sòrt-sì a son pa sostnùe: $1',
 	'qp_error_invalid_question_type' => 'Sòrt ëd custion pa bon-a: $1',
 	'qp_error_type_in_stats_mode' => 'Le Sòrt ëd custion a peulo pa esse definìe an manera statìstica: $1',
 	'qp_error_no_poll_id' => "L'etichëtta dël sondagi a l'ha gnun atribù definì.",
 	'qp_error_invalid_poll_id' => "Id dël sondagi pa bon (id=$1).
-L'id dël sondagi a peul conten-e mach litre, nùmer e caràter spassi",
-	'qp_error_already_used_poll_id' => "L'id dël sondagi a l'é già stàit dovrà an sta pàgine (id=$1).",
+L'id dël sondagi a peul conten-e mach litre, nùmer e caràter dë spassi",
+	'qp_error_already_used_poll_id' => "L'id dël sondagi a l'é già stàit dovrà an sta pàgina (id=$1).",
 	'qp_error_invalid_dependance_value' => 'La caden-a ëd dipendensa dël sondagi (id=$1) a l\'ha valor pa bon ëd l\'atribù ëd dipendensa (dipendensa="$2")',
 	'qp_error_missed_dependance_title' => "Ël sondagi (id=$1) a l'é dipendent da n'àutr sondagi (id=$3) ëd pàgina [[$2]], ma ël tìtol [[$2]] a l'é pa stàit trovà.
-O gava l'atribù ëd dipendensa, o torna buté [[$2]]",
-	'qp_error_missed_dependance_poll' => "Ël sondagi (id=$1) a l'é dipendent da n'àutr sondagi (id=$3) a pàgina $2, ma ël sondagi a esist pa o a l'é stàit anco' pa salvà.
-O gava l'atribù ëd dipendensa, o crea ël sondagi con id=$3 a la pàgina $2 e salvlo.
-Për salvé un sondagi, spedisslo sensa arsponde a gnun-e custion ëd propòsta.",
+Ch'a gava l'atribù ëd dipendensa, o ch'a buta torna [[$2]]",
+	'qp_error_missed_dependance_poll' => "Ël sondagi (id=$1) a l'é dipendent da n'àutr sondagi (id=$3) a pàgina $2, ma ël sondagi a esist pa o a l'é pa stàit ancor salvà.
+Ch'a gava l'atribù ëd dipendensa, o ch'a crea ël sondagi con id=$3 a la pàgina $2 e ch'a lo salva.
+Për salvé un sondagi, ch'a lo spedissa sensa arsponde a gnun-e custion ëd propòsta.",
 	'qp_error_vote_dependance_poll' => 'Për piasì vòta për ël sondagi $1 prima.',
-	'qp_error_too_many_spans' => 'Tròpi grup ëd categorìe për ël nùmer tota ëd sotcategorìe definìe',
+	'qp_error_too_many_spans' => 'Tròpe partìe ëd categorìe për ël nùmer total ëd sot-categorìe definìe',
 	'qp_error_unanswered_span' => 'Sotcategorìe pa arspondùe',
 	'qp_error_non_unique_choice' => 'Sta custion-sì a veul na sola arspòsta ëd propòsta',
 	'qp_error_category_name_empty' => "Ël nòm categorìa a l'é veuid",
 	'qp_error_proposal_text_empty' => "Ël test ëd propòsta a l'é veuid",
-	'qp_error_too_few_categories' => 'Almanch doe categorìe a deuvo esse definìe',
-	'qp_error_too_few_spans' => 'Minca grup ëd categorìe a deuv conten-e almanch doe sotcategorìe',
-	'qp_error_no_answer' => 'Propòsta pa arspondùa',
-	'qp_error_unique' => "La custion ëd sòrt unique() a l'ha pi propòste che arspòste possìbij definìe: ampossìbil completé",
+	'qp_error_too_few_categories' => 'Almanch doe categorìe a devo esse definìe',
+	'qp_error_too_few_spans' => 'Minca partìa ëd categorìe a deuv conten-e almanch doe sot-categorìe',
+	'qp_error_no_answer' => 'Propòsta sensa rispòsta',
+	'qp_error_unique' => "La custion ëd sòrt ùnica() a l'ha pi propòste che arspòste possìbij definìe: impossìbil da completé",
 );
 
 /** Portuguese (Português)
@@ -1533,6 +1613,26 @@ $messages['ru'] = array(
 	'qp_error_too_few_spans' => 'Каждая подкатегория вопроса требует по меньшей мере два варианта ответа',
 	'qp_error_no_answer' => 'Нет ответа на вопрос',
 	'qp_error_unique' => 'Опрос, имеющий тип unique(), не должен иметь больше ответов чем вопросов',
+);
+
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'qp_result_NA' => 'Inte besvarad',
+	'qp_vote_button' => 'Rösta',
+	'qp_vote_again_button' => 'Ändra din röst',
+	'qp_polls_list' => 'Lista alla röstningar',
+	'qp_users_list' => 'Lista alla användare',
+	'qp_source_link' => 'Källa',
+	'qp_stats_link' => 'Statistik',
+	'qp_users_link' => 'Användare',
+	'qp_user_missing_polls_link' => 'Ingen deltagelse',
+	'qp_not_participated_link' => 'Inte deltagit',
+	'qp_order_by_username' => 'Sortera efter användarnanm',
+	'qp_error_category_name_empty' => 'Kategorinamn är tomt',
+	'qp_error_proposal_text_empty' => 'Förslagstext är tom',
+	'qp_error_too_few_spans' => 'Varje kategorigrupp måste innehålla minst två underkategorier',
 );
 
 /** Telugu (తెలుగు)

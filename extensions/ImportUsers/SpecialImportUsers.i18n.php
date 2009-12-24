@@ -1870,6 +1870,7 @@ $messages['ug-latn'] = array(
  */
 $messages['uk'] = array(
 	'importusers-log-summary' => 'Всього',
+	'importusers-email' => 'електронна пошта',
 );
 
 /** Veps (Vepsan kel')

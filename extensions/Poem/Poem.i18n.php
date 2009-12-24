@@ -546,6 +546,13 @@ $messages['tg-cyrl'] = array(
 	'poem-desc' => 'Барчасби <tt>&lt;poem&gt;</tt>-ро барои қолаббандиҳои шеърҳо илова мекунад',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'poem-desc' => 'Goşgy formatirlemesi üçin <tt>&lt;poem&gt;</tt> tegini goşýar',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

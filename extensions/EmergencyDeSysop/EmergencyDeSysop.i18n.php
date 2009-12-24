@@ -214,12 +214,14 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'emergencydesysop' => 'Επείγουσα αφαίρεση δικαιωμάτων διαχειριστή',
 	'emergencydesysop-reason' => 'Αιτία για την αφαίρεση:',
 	'emergencydesysop-submit' => 'Υποβολή',
 	'emergencydesysop-nogroups' => 'Κανένα',
+	'emergencydesysop-invalidtarget' => 'Ο συγκεκριμένος χρήστης δεν υπάρχει.',
 );
 
 /** Esperanto (Esperanto)

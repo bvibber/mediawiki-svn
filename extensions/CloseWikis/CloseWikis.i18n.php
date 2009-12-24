@@ -1804,6 +1804,13 @@ $messages['tr'] = array(
 	'right-closewikis' => 'Vikileri kapat',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'closewikis-page-reopen-reason' => 'Причина:',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

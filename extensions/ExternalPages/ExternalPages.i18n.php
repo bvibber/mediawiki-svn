@@ -133,6 +133,23 @@ $messages['bs'] = array(
 	'externalpages-bad-url-data' => 'Nije uspjelo preuzimanje sadržaja stranice',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'externalpages' => 'Externí stránky',
+	'externalpages-desc' => 'Získává a zobrazuje stránky ze stránek WMF',
+	'externalpages-bad-year' => 'Uveden špatný rok',
+	'externalpages-bad-language' => 'Uveden špatný jazyk',
+	'externalpages-bad-project' => 'Uveden špatný projekt',
+	'externalpages-no-project' => 'Nebyl uveden projekt',
+	'externalpages-bad-page' => 'Uvedena špatná stránka',
+	'externalpages-no-page' => 'Nebyla uvedena stránka',
+	'externalpages-error-generic' => 'Vyskytla se chyba',
+	'externalpages-bad-url' => 'Nepodařilo se získat URL',
+	'externalpages-bad-url-data' => 'Nepodařilo se získat obsah stránky',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -182,6 +199,19 @@ $messages['dsb'] = array(
 	'externalpages-error-generic' => 'Zmólka namakana',
 	'externalpages-bad-url' => 'URL njejo se dał wótwołaś',
 	'externalpages-bad-url-data' => 'Wopśimjeśe boka njejo se dało wótwołaś',
+);
+
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'externalpages' => 'Εξωτερικές Σελίδες',
+	'externalpages-bad-year' => 'Λανθασμένη χρονιά',
+	'externalpages-bad-language' => 'Λανθασμένη γλώσσα',
+	'externalpages-bad-project' => 'Λανθασμένο εγχείρημα',
+	'externalpages-no-project' => 'Δεν διευκρινίζεται κάποιο εγχείρημα',
+	'externalpages-bad-page' => 'Λανθασμένη σελίδα',
+	'externalpages-no-page' => 'Δεν διευκρινίζεται κάποια σελίδα',
 );
 
 /** Spanish (Español)
@@ -336,6 +366,20 @@ $messages['id'] = array(
 	'externalpages-error-generic' => 'Ditemukan kesalahan',
 	'externalpages-bad-url' => 'Gagal mengambil URL',
 	'externalpages-bad-url-data' => 'Gagal mengambil isi halaman',
+);
+
+/** Italian (Italiano)
+ * @author Aushulz
+ */
+$messages['it'] = array(
+	'externalpages-bad-year' => "Errore nell'immissione dell'anno",
+	'externalpages-bad-language' => "Errore nell'immissione della lingua",
+	'externalpages-bad-project' => "Errore nell'immissione del progetto",
+	'externalpages-no-project' => 'Nessun progetto specificato',
+	'externalpages-bad-page' => "Errore nell'immissione della pagina",
+	'externalpages-error-generic' => 'Errore incontrato',
+	'externalpages-bad-url' => "Non è stato possibile ottenere l'URL",
+	'externalpages-bad-url-data' => 'Non è stato possibile ottenere i contenuti della pagina',
 );
 
 /** Japanese (日本語)
@@ -633,6 +677,18 @@ $messages['tr'] = array(
 	'externalpages-error-generic' => 'Hatayla karşılaşıldı',
 	'externalpages-bad-url' => 'URL alımı başarısız',
 	'externalpages-bad-url-data' => 'Sayfa içeriği alımı başarısız',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'externalpages-bad-year' => 'Неправильно вказаний рік',
+	'externalpages-bad-language' => 'Неправильно вказана мова',
+	'externalpages-bad-project' => 'Неправильно вказаний проект',
+	'externalpages-no-project' => 'Жоден проект не вказано',
+	'externalpages-bad-page' => 'Неправильно вказана сторінка',
+	'externalpages-no-page' => 'Жодної сторінки не вказано',
 );
 
 /** Vèneto (Vèneto)

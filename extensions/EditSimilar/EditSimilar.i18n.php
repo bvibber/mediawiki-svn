@@ -61,9 +61,9 @@ $messages['ar'] = array(
 $messages['arz'] = array(
 	'editsimilar-desc' => 'يشجع المستخدمين على تعديل صفحة مشابهة بعد حفظ صفحة',
 	'editsimilar-thanks' => 'شكرا لمساهمتك.
-تحقق من هذه الصفحات المرتبطة: $1.',
+تحقق من {{PLURAL:$2|هذه الصفحه المرتبطه|هذه الصفحه المرتبطه|هاتان الصفحتان المرتبطتان|هذه الصفحات المرتبطه|هذه الصفحات المرتبطه|هذه الصفحات المرتبطه}}: $1',
 	'editsimilar-thanks-notsimilar' => 'شكرا لمساهمتك.
-هذه الصفحات يمكن أيضا أن تستخدم مساعدتك: $1.',
+{{PLURAL:$2|هذه الصفحه|هذه الصفحات}} يمكن أيضا أن تستخدم مساعدتك: $1.',
 	'editsimilar-thankyou' => 'شكرا لمساهمتك، $1!',
 	'editsimilar-link-disable' => 'ضبط الخيارات',
 	'tog-edit-similar' => 'تفعيل اقتراحات الصفحات المشابهة',
@@ -176,9 +176,11 @@ Woglědaj se {{PLURAL:$2|toś ten bok|toś tej boka|toś te pódobne boki|toś t
 
 /** Greek (Ελληνικά)
  * @author Konsnos
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'editsimilar-desc' => 'Παροτρύνει τους χρήστες να επεξεργαστούν παρόμοιες σελίδες αφού αποθήκευσαν μία σελίδα',
+	'editsimilar-link-disable' => 'ρύθμιση προτιμήσεων',
 );
 
 /** Esperanto (Esperanto)

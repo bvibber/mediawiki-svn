@@ -876,6 +876,7 @@ $messages['tg-cyrl'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'contributiontracking' => 'Goşant trekingi',
 	'contrib-tracking-error' => 'Säwlik',
 	'contrib-tracking-button' => 'Dowam et',
 );

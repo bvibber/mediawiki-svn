@@ -92,6 +92,13 @@ $messages['el'] = array(
 	'mwreleases-desc' => 'Προσθέτει μία [[Mediawiki:Mwreleases-list|λίστα]] υποστηριζόμενων εκδόσεων, προσβάσιμων μέσω API',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'mwreleases-desc' => 'Aldonas [[Mediawiki:Mwreleases-list|liston]] de subtenitaj eldonoj, atingeblaj per la API',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

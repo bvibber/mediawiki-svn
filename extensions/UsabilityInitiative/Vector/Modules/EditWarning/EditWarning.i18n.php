@@ -228,6 +228,15 @@ Si vous êtes connecté avec votre compte, vous pouvez retirer cet avertissement
 	'vector-editwarning-preference' => 'M’avertir quand je quitte une page de modification sans publier les changements',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'vector-editwarning-warning' => 'Quitar ceta pâge vos farat pèrdre tôs los changements que vos éd fêts.
+Se vos éte branchiê avouéc voutron compto, vos pouede enlevar ceti avèrtissement dens la sèccion « {{int:prefs-editing}} » de voutres prèferences.',
+	'vector-editwarning-preference' => 'M’avèrtir quand quito una pâge de changement sen sôvar los changements',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -573,10 +582,22 @@ Unaweza kuondoa ilani hii ukienda kwenye sehemu ya "{{int:prefs-editing}}" kweny
 	'vector-editwarning-preference' => 'Unionyeshe ilani ninapotaka kutoka kwenye ukurasa ninouhariri, bila kuhifadhi mabadiliko',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'vector-editwarning-warning' => 'ఈ పేజీని వదిలివెళ్ళడం వల్ల మీరు చేసిన మార్పులను కోల్పోయే అవకాశం ఉంది.
+మీరు ప్రవేశించివుంటే, ఈ హెచ్చరికని మీ అభిరుచులలో "{{int:prefs-editing}}" అనే విభాగంలో అచేతనం చేసుకోవచ్చు.',
+	'vector-editwarning-preference' => 'ఏదైనా పేజీని నేను వదిలివెళ్తున్నప్పుడు దానిలో భద్రపరచని మార్పులు ఉంటే నన్ను హెచ్చరించు',
+);
+
 /** Thai (ไทย)
  * @author Ans
+ * @author Woraponboonkerd
  */
 $messages['th'] = array(
+	'vector-editwarning-warning' => 'การออาจากหน้านี้อาจจะทำให้ความเปลี่ยนแปลงที่คุณกระทำสูญหาย
+ถ้าคุณลงชื่อเข้าใช้แล้ว คุณสามารถยกเลิกคำเตือนนี้ได้ที่หน้าตั้งค่าของคุณในส่วนของ "{{int:prefs-editing}}"',
 	'vector-editwarning-preference' => 'เตือนฉัน เมื่อฉันกำลังจะออกจากหน้าแก้ไขโดยมีข้อมูลที่ยังไม่ได้บันทึก',
 );
 

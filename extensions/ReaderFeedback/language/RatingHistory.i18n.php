@@ -165,13 +165,12 @@ $messages['arz'] = array(
 	'ratinghistory-table-rating' => 'تقييم',
 	'ratinghistory-table-votes' => 'الاصوات',
 	'ratinghistory-none' => 'لا توجد بيانات كافية من القراء متوفرة للرسومات فى هذا الوقت.',
-	'ratinghistory-legend' => "'''التقييم اليومى المتوسط''' <font color=\"blue\">''(ازرق)''</font> و  
-'''التقييم المتوسط الجاري''' <font color=\"green\">''(اخضر)''</font> مرسومين تحت, على حسب التاريخ.   
-'''التقييم المتوسط الجاري''' هوه ببساطه المتوسط بتاع كل التقييمات اليوميه ''فى'' فى الفترة دى من كل يوم.
+	'ratinghistory-legend' => "'''عدد المراجعات اليومي''' <font color=\"red\">''(أحمر)''</font>, '''التقييم اليومي المتوسط''' <font color=\"blue\">''(أزرق)''</font>,
+و '''التقييم التشغيلي المتوسط''' <font color=\"green\">''(أخضر)''</font> مرسومون بالأسفل، حسب التاريخ.
+'''التقييم التشغيلي المتوسط''' هو ببساطة متوسط كل التقييمات اليومية ''في'' هذا الإطار الزمني لكل يوم.
+التقييمات هي كالتالي:
 
-المقاس: '''[1]''' - فقير; '''[2]''' - واطي; '''[3]''' - نص نص; '''[4]''' - عالى; '''[5]''' - ممتاز;
-
-'''عدد المراجعات فى اليوم''' <font color=\"red\">''(احمر)''</font> معروضين فى الجرافات اللى تحت, بمقاس ''1:\$1''.",
+'''(1)''' - فقير; '''(2)''' - منخفض; '''(3)''' - معقول; '''(4)''' - مرتفع; '''(5)''' - ممتاز;",
 	'right-feedback' => 'استخدام استمارة الآراء لتقييم صفحة',
 );
 
@@ -559,12 +558,14 @@ $messages['eo'] = array(
 	'ratinghistory-table-rating' => 'Takso',
 	'ratinghistory-table-votes' => 'Voĉdonoj',
 	'ratinghistory-none' => 'Ne sufiĉas datenoj de legintoj por grafeoj ĉi-momente.',
+	'ratinghistory-ratings' => "'''Klarigeto:''' '''(1)''' - Malbonega; '''(2)''' - Malbona; '''(3)''' - Mezgrada; '''(4)''' - Bona; '''(5)''' - Bonega;",
 	'ratinghistory-legend' => "La '''tage averaĝa taksado''' <font color=\"blue\">''(blua)''</font> kaj 
 '''intervalaveraĝa taksado''' <font color=\"green\">''(verda)''</font> estas montrita en la jena grafeo, laŭ dato. La
 '''intervalaveraĝa taksado''' estas simiple la averaĝo de ĉiuj tagaj taksaĵoj ''inter'' ĉi tiu tempdaŭro por ĉiu tago.
 Jen la taksada skalo:
 
 '''[1]''' - Malbonega; '''[2]''' - Malbonkvalita; '''[3]''' - Mezkvalita; '''[4]''' - Bonkvalita; '''[5]''' - Bonega;",
+	'ratinghistory-graph-scale' => "'''Kontroloj por tago''' <font color=\"red\">''(red)''</font> montrata po ''1:\$1'' skalo.",
 	'right-feedback' => 'Uzu la kontrolan sekcion por kontroli paĝon',
 );
 
@@ -2195,17 +2196,18 @@ $messages['zh-hans'] = array(
 	'ratinghistory-purge' => '清除缓存',
 	'ratinghistory-table' => '读者评论总览',
 	'ratinghistory-users' => '给出评价的用户',
+	'ratinghistory-graph' => '"$3" 的 $2 （$1 {{PLURAL:$1|复审|复审}}）',
 	'ratinghistory-svg' => '作为SVG浏览',
 	'ratinghistory-table-rating' => '评级',
 	'ratinghistory-table-votes' => '投票',
 	'ratinghistory-none' => '目前没有足够的读者反馈数据来制作图表。',
 	'ratinghistory-ratings' => "'''图例：''' '''(1)''' - 差； '''(2)''' - 不好； '''(3)''' - 一般； '''(4)''' - 好； '''(5)''' - 极好；",
-	'ratinghistory-legend' => "'''每日评论数量'''<font color=\"red\">''（红色）''</font>，'''每日平均评级'''<font color=\"blue\">''（蓝色）''</font>，以及'''移动平均评级'''<font color=\"green\">''（绿色）''</font>如下图所示。
+	'ratinghistory-legend' => "逐日的'''每日审核数量'''<font color=\"red\">''（红色）''</font>，'''每日平均评级'''<font color=\"blue\">''（蓝色）''</font>，以及'''移动平均评级'''<font color=\"green\">''（绿色）''</font>如下图所示。
 '''移动平均评级'''是在某一天前后一段时间''内''每日评级的平均数。
 评级结果如下：
 
 '''(1)''' - 差； '''(2)''' - 不好； '''(3)''' - 一般； '''(4)''' - 好； '''(5)''' - 极好；",
-	'ratinghistory-graph-scale' => "'''每天评论'''<font color=\"red\">''（红色）''</font>以''1:\$1''的比例显示。",
+	'ratinghistory-graph-scale' => "'''每日审核'''<font color=\"red\">''（红色）''</font>以''1:\$1''的比例显示。",
 	'right-feedback' => '使用反馈表单来对页面评级',
 );
 

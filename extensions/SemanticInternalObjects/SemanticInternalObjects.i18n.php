@@ -182,6 +182,13 @@ $messages['nl'] = array(
 	'semanticinternalobjects-desc' => 'Interne objecten in Semantic MediaWiki instellen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'semanticinternalobjects-desc' => 'Innstilling for interne objekt i Semantic MediaWiki',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

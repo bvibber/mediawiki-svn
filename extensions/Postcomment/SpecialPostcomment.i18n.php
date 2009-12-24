@@ -964,6 +964,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'postcomment_desc' => 'వాడుకరులకి నేరుగా చర్చాపేజీలలో వ్యాఖ్యలు వ్రాసే వీలుకల్పిస్తుంది.',
 	'postcomment_discussionprotected' => 'తదుపరి చర్చలనుండి ఈ చర్చా పేజీని సంరక్షించారు.',
 	'postcomment_notloggedin' => 'మీరు లోనికి ప్రవేశించలేదు.',
 	'postcomment_youareloggedinas' => 'మీరు $1గా లోనికి ప్రవేశించారు',

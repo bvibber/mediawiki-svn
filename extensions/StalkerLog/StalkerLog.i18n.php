@@ -155,6 +155,14 @@ $messages['es'] = array(
 	'stalkerlog-log-text' => 'Este es un registro de inicios y cierres de sesión de usuario.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'stalkerlog-log-login' => 'sisse logitud.',
+	'stalkerlog-log-logout' => 'välja logitud.',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

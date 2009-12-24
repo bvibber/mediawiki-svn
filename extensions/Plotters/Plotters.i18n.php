@@ -526,10 +526,20 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
  * @author Simny
  */
 $messages['no'] = array(
 	'plotters-uses' => 'Brukere',
+	'plotters-missing-script' => 'Ingen skript ble definert.',
+	'plotters-missing-arguments' => 'Ingen argument spesifisert.',
+	'plotters-excessively-long-scriptname' => 'Skriptnavnet er for langt.
+Vennligst definer et skript med et navn som er maksimalt 255 tegn langt.',
+	'plotters-excessively-long-name' => 'Plottnavnet er for langt.
+Vennligst definer et plottnavn som er maksimalt 255 tegn langt.',
+	'plotters-excessively-long-tableclass' => 'Tabellklassen er for lang.
+Vennligst definer en tabellklasse som er maksimalt 255 tegn langt.',
+	'plotters-no-data' => 'Ingen data var tilgjengelig.',
 );
 
 /** Occitan (Occitan)

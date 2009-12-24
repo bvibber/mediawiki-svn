@@ -231,6 +231,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'vector-simplesearch-search' => 'Rechèrche',
+	'vector-simplesearch-containing' => 'que contint...',
 );
 
 /** Galician (Galego)
@@ -637,6 +638,14 @@ $messages['sw'] = array(
  */
 $messages['te'] = array(
 	'vector-simplesearch-search' => 'వెతుకు',
+);
+
+/** Thai (ไทย)
+ * @author Woraponboonkerd
+ */
+$messages['th'] = array(
+	'vector-simplesearch-search' => 'ค้นหา',
+	'vector-simplesearch-containing' => 'ประกอบไปด้วย...',
 );
 
 /** Turkmen (Türkmençe)

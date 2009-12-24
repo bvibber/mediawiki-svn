@@ -2387,6 +2387,14 @@ $messages['pl'] = array(
 	'right-readold' => 'Wyświetl treść starych wersji i różnice',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'grouppermissions' => 'Gestiss ij përmess ëd le partìa',
+	'sortpermissions' => 'Órdina ij përmess',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -3078,6 +3086,7 @@ $messages['ug-latn'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'grouppermissions-comment' => 'Коментар:',
 	'grouppermissions-sp-remove' => 'вилучити',
 );
 

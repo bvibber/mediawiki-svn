@@ -827,6 +827,8 @@ $messages['eo'] = array(
 	'ogg-play-sound' => 'Aŭdigi sonon',
 	'ogg-no-player' => 'Ŝajnas ke via sistemo malhavas ian medilegilan programon por legi tian dosieron. 
 Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">elŝuti iun</a>.',
+	'ogg-no-player-js' => 'Bedaŭrinde, via sistema aŭ estas JavaScript-malŝalta, aŭ ne havas iun subtenitan medio-ludanton.<br />
+Vi povas <a href="$1">elŝuti la dosieron</a> aŭ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">elŝuti medio-ludanton</a> por ludi la dosieron en via retumilo.',
 	'ogg-no-xiphqt' => 'Ŝajnas ke vi malhavas la XiphQT-komponaĵon por QuickTime. 
 QuickTime ne kapablas aŭdigi sondosierojn sentiu komponaĵo. 
 Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">elŝuti XiphQT</a> aux elektu alian legilon.',
@@ -3018,6 +3020,9 @@ $messages['tk'] = array(
 	'ogg-short-general' => 'Ogg $1 media faýly, $2',
 	'ogg-long-audio' => '(Ogg $1 ses faýly, uzynlyk $2, $3)',
 	'ogg-long-video' => '(Ogg $1 wideo faýly, uzynlyk $2, $4×$5 piksel, $3)',
+	'ogg-long-multiplexed' => '(Ogg multipleks audio/wideo faýly, $1, uzynlyk $2, $4×$5 piksel, $3 jemi)',
+	'ogg-long-general' => '(Ogg media faýly, uzynlyk $2, $3)',
+	'ogg-long-error' => '(Nädogry ogg faýly: $1)',
 	'ogg-player-soundthumb' => 'Pleýer ýok',
 	'ogg-player-selected' => '(saýlanylan)',
 	'ogg-use-player' => 'Pleýer ulan:',

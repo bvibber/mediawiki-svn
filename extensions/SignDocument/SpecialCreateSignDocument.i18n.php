@@ -1783,6 +1783,13 @@ $messages['ug-latn'] = array(
 	'createsigndoc-pagename' => 'Bet:',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'createsigndoc-email' => 'Адреса електронної пошти:',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

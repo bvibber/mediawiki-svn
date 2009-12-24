@@ -168,9 +168,12 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'ratedpages' => 'Kontrolataj paĝoj de legantaro',
+	'ratedpages-leg' => 'Trovi paĝojn taksitajn kun granda nombro de taksoj',
 	'ratedpages-list' => 'Jen listo de paĝoj ordigitaj de la taksado de legintoj.',
 	'ratedpages-none' => 'Ne estas paĝoj en ĉi tiu listo',
 	'ratedpages-graphs' => 'datenoj de taksado',
+	'ratedpages-count' => '$1 {{PLURAL:$1|kontrolo|kontroloj}}',
 );
 
 /** Spanish (Español)
@@ -712,6 +715,7 @@ $messages['zh-hans'] = array(
 	'ratedpages-list' => '以下是按读者评分排序的页面列表。',
 	'ratedpages-none' => '本列表没有任何页面。',
 	'ratedpages-graphs' => '评分资料',
+	'ratedpages-count' => '$1 {{PLURAL:$1|复审|复审}}',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -2637,6 +2637,14 @@ Geri dön:
 	'right-crosswikiblock' => 'Diğer vikilerdeki kullanıcıları engelleyin veya kullanıcıların engellemelerini kaldırın',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'crosswikiblock-reason' => 'Причина:',
+	'crosswikiunblock-reason' => 'Причина:',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

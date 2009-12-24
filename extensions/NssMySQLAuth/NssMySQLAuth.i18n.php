@@ -1024,6 +1024,13 @@ $messages['tr'] = array(
 	'nss-welcome-mail-subject' => 'Hesap oluşturma',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'am-email' => 'електронна пошта',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

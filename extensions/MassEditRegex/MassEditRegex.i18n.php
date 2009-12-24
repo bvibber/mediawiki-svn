@@ -91,6 +91,7 @@ $messages['af'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'masseditregex' => 'تعديل كمي باستخدام التعبيرات المنتظمة',
 	'masseditregextext' => 'أدخل تعبيرا نتظما واحدا أو أكثر (واحد لكل سطر) للمطابقة, وتعبير واحد أو أكثر لاستبدال كل مطابقة به.
 أول مطابقة تعبير، لو كان ناجحا، سيتم استبداله بأول تعبير استبدال، وهكذا.
 انظر [http://php.net/manual/en/function.preg-replace.php وظيفة PHP preg_replace()] للتفاصيل.',
@@ -118,6 +119,7 @@ $messages['ar'] = array(
 	'masseditregex-namespace-intro' => 'كل هذه الصفحات في هذا النطاق:',
 	'masseditregex-badregex' => 'عبارة منطقية غير صالحة:',
 	'masseditregex-editfailed' => 'التعديل فشل:',
+	'masseditregex-tooltip-execute' => 'طبق هذه التغييرات على كل صفحة',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -271,10 +273,22 @@ Glědaj [http://php.net/manual/de/function.preg-replace.php the PHP function pre
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'masseditregex' => 'Μαζική επεξεργασία με χρήση τακτικών εκφράσεων',
+	'masseditregex-matchtxt' => 'Αναζήτηση για:',
+	'masseditregex-replacetxt' => 'Αντικατάσταση με:',
 	'masseditregex-executebtn' => 'Εκτέλεση',
+	'masseditregex-before' => 'Πριν',
+	'masseditregex-after' => 'Μετά',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|αλλαγή|αλλαγές}}',
+	'masseditregex-page-not-exists' => '$1 δεν υπάρχει',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|σελίδα|σελίδες}} επεξεργασμένες',
+	'masseditregex-hint-headreplace' => 'Αντικατάσταση',
+	'masseditregex-hint-headeffect' => 'Αποτέλεσμα',
+	'masseditregex-listtype-intro' => 'Αυτή είναι μια λίστα από:',
+	'masseditregex-editfailed' => 'Αποτυχία επεξεργασίας:',
 );
 
 /** Spanish (Español)
@@ -799,7 +813,27 @@ Voor de te vervangen tekst is escapen niet nodig.',
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'masseditregex-matchtxt' => 'Søk etter:',
+	'masseditregex-replacetxt' => 'Erstatt med:',
+	'masseditregex-executebtn' => 'Utfør',
+	'masseditregex-err-nopages' => 'Du må oppgi minst en side å endre.',
+	'masseditregex-before' => 'Før',
+	'masseditregex-after' => 'Etter',
+	'masseditregex-max-preview-diffs' => 'Forhåndsvisning har blitt begrenset til {{PLURAL:$1|det første treffet|de $1 første treffene}}.',
+	'masseditregex-num-changes' => '$1: {{PLURAL:$2|én endring|$2 endringer}}',
 	'masseditregex-page-not-exists' => '$1 finnes ikke',
+	'masseditregex-num-articles-changed' => '{{PLURAL:$1|én side|$1 sider}} endret',
+	'masseditregex-view-full-summary' => 'Vis fullstendig endringssammendrag',
+	'masseditregex-hint-intro' => 'Her er noen hint og eksempler for utføring av vanlige oppgaver:',
+	'masseditregex-hint-headreplace' => 'Erstatt',
+	'masseditregex-hint-remove' => 'Fjern noe tekst fra alle sidene i listen',
+	'masseditregex-listtype-intro' => 'Dette er en liste over:',
+	'masseditregex-listtype-pagenames' => 'Sidenavn (endre disse sidene)',
+	'masseditregex-listtype-pagename-prefixes' => 'Sidenavnprefiks (endre sider som har navn som begynner med denne teksten)',
+	'masseditregex-listtype-categories' => 'Kategorinavn (endre hver side innen disse kategoriene; navneromvalg ignoreres)',
+	'masseditregex-namespace-intro' => 'Alle disse sidene er i dette navnerommet:',
+	'masseditregex-editfailed' => 'Endring feilet:',
+	'masseditregex-tooltip-execute' => 'Utfør disse endringene på hver side',
 );
 
 /** Occitan (Occitan)

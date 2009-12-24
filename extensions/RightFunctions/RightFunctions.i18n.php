@@ -33,6 +33,7 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'rightfunctions-desc' => 'دوال محلل تعتمد على السماحات',
+	'rightfunctions-sep' => '،',
 	'rightfunctions-casc' => '(من مصادر مضمنة)',
 	'rightfunctions-local' => '(من صفحة محلية)',
 	'rightfunctions-ns' => '(من حماية نطاق)',

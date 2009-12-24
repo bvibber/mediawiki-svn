@@ -181,6 +181,13 @@ $messages['nl'] = array(
 	'filepagemasking-desc' => 'Herschrijft ".xxx" naar "_xxx" in verwijzingen naar de bestandsbeschrijvingspagina\'s',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'filepagemasking-desc' => 'Skriver om «.xxx» til «_xxx» i lenker til filbeskrivelsessider',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

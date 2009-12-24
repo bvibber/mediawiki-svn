@@ -242,10 +242,10 @@ $messages['arz'] = array(
 ملاحظة: عناوين الأيبى الجزئية سيتم معاملتها بواسطة أسماء مستخدمين فى تحديد المنع.
 لو لم يتم تحديد سبب، سيتم استخدام سبب افتراضى تلقائي.\'\'',
 	'regexblock-page-title-1' => 'منع عنوان باستخدام تعبيرات منتظمة',
-	'regexblock-reason-ip' => 'عنوان الأيبى هذا ممنوع نتيجة للتخريب أو إساءة أخرى بواسطتك أو بواسطة شخص يشارك فى عنوان الأيبى الخاص بك.
-لو كنت تعتقد أن هذا خطأ، من فضلك $1',
+	'regexblock-reason-ip' => 'عنوان الأيبي هذا ممنوع نتيجة للتخريب أو إساءة أخرى بواسطتك أو بواسطة شخص يشارك في عنوان الأيبي الخاص بك.
+لو أنك تعتقد أن هذا خطأ، من فضلك [[$1|اتصل بنا]]',
 	'regexblock-reason-name' => 'اسم المستخدم هذا ممنوع من التحرير نتيجة للتخريب أو إساءة أخرى.
-لو كنت تعتقد أن هذا خطأ، من فضلك $1',
+لو كنت تعتقد أن هذا خطأ، من فضلك [[$1|اتصل بنا]]',
 	'regexblock-reason-regex' => 'اسم اليوزر ده ممنوع من التحرير نتيجة للتخريب أو إساءة تانيه بواسطة يوزر بإسم مشابه.
 من فضلك أنشىء اسم يوزر بديل أو [[$1|اتصل بينا]] بخصوص المشكلة',
 	'regexblock-form-username' => 'عنوان الأيبى أو اسم المستخدم:',
@@ -2287,31 +2287,32 @@ Prawdopodobnie brak takiego użytkownika.',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'regexblock' => 'Blòch regex',
+	'regexblock' => 'Blocagi regex',
 	'regexblock-already-blocked' => "$1 a l'é già blocà",
 	'regexblock-block-log' => "Ël nòm utent o l'adrëssa IP '''$1''' a l'é stàit blocà.",
-	'regexblock-block-success' => 'Blòch bin fàit',
+	'regexblock-block-success' => 'Blocagi bin fàit',
 	'regexblock-currently-blocked' => 'Adrësse blocà al moment:',
-	'regexblock-desc' => 'Estension dovrà për bloché nòm utent e adrësse IP con espression regolar. A conten ël mecanism ëd blòch e na [[Special:Regexblock|pàgina special]] për gionté/gestì ij blòch.',
-	'regexblock-expire-duration' => '1 ora, 2 ore, 4 ore, 6 ore, 1 di, 3 di, 1 sman-a, 2 sman-e, 1 meis, 3 meis, 6 meis, 1 ann, sensa fin',
-	'regexblock-page-title' => "Blòch dël nòm ëd l'espression regolar",
-	'regexblockstats' => 'Statìstiche ëd blòch regex',
-	'regexblock-help' => "Dòvra la forma sota për bloché l'acess an scritura a na specìfica adrëssa IP o nòm utent.
-Sòn-sì a dovrìa esse fàit mach për evité vandalism, e d'acòrdi con la polìtica.
-''Sta pàgina-sì at përmëtt ëd bloché ëdcò utent pa esistent, e a blòca ëdcò utent con nòm smijant a col dàit, visadì \"Test\" a sarà blocà ansema a \"Test 2\" etc.
-It peule ëdcò bloché adrësse IP, visadì che pa pi gnun intrand da lì a podrà modifiché dle pàgine.
-Nòta: adrësse IP parsiaj a saran tratà com nòm utent për determiné ël bòch.
-Se pa gnun-e rason a son specificà, na rason genérica ëd default a sarà dovrà.''",
+	'regexblock-desc' => 'Estension dovrà për bloché nòm utent e adrësse IP con espression regolar. A conten ël mecanism ëd blocagi e na [[Special:Regexblock|pàgina special]] për gionté/gestì ij blocagi.',
+	'regexblock-expire-duration' => '1 ora, 2 ore, 4 ore, 6 ore, 1 di, 3 di, 1 sman-a, 2 sman-e, 1 mèis, 3 mèis, 6 mèis, 1 ann, sensa fin',
+	'regexblock-page-title' => "Blocagi dël nòm con n'espression regolar",
+	'regexblockstats' => 'Statìstiche ëd blocagi regex',
+	'regexblock-help' => "Deuvra ël formolari sì-sota për bloché l'acess an scritura a na specìfica adrëssa IP o nòm utent.
+Sòn a dovrìa esse fàit mach për evité vandalism, e d'acòrdi con ij deuit.
+''Sta pàgina-sì at përmët ëd bloché ëdcò utent pa esistent, e a blòca ëdcò utent con nòm smijant a col dàit, visadì \"Test\" a sarà blocà ansema a \"Test 2\" e via fòrt.
+It peule ëdcò bloché adrësse IP, visadì che pi gnun intrand da lì a podrà modifiché dle pàgine.
+Nòta: adrësse IP parsiaj a saran tratà com nòm utent për determiné ël blocagi.
+Se gnun-e rason a son specificà, a sarà dovrà na rason genérica stàndard.''",
 	'regexblock-page-title-1' => 'Blòca adrëssa an dovrand espression regolar',
 	'regexblock-reason-ip' => "St'adrëssa IP-sì a peul pa modifiché për vandalism o àutr dann fàit da ti o da cheicun che a condivid  toa adrëssa IP.
-S'it chërde che sto-sì a sia un eror, për piasì [[$1|contatne]]",
+S'it chërde che son a sia n'eror, për piasì [[$1|contatne]]",
 	'regexblock-reason-name' => "Sto nòm utent-sì a peul pa modifiché për vandalism o àutr dann.
-S'it chërde che a sia un eror, për piasì [[$1|contatne]]",
-	'regexblock-reason-regex' => "Sto nòm utent-sì a peul pa modifichè për vandalism o àutr dann fàit na n'utent con nòm smijant.
-Për piasì crea n'àutr nòm utent o [[$1|contatne]] për parlé dël problem.",
+S'it chërde che a sia n'eror, për piasì [[$1|contatne]]",
+	'regexblock-reason-regex' => "Sto nòm utent-sì a peul pa modifichè për vandalism o àutr dann fàit na n'utent con nòm ësmijant.
+Për piasì crea n'àutr nòm utent o [[$1|contatne]] për parlé dël problema.",
 	'regexblock-form-username' => 'Adrëssa IP o nòm utent:',
 	'regexblock-form-reason' => 'rason:',
 	'regexblock-form-expiry' => 'Fin:',
@@ -2324,27 +2325,27 @@ Për piasì crea n'àutr nòm utent o [[$1|contatne]] për parlé dël problem."
 	'regexblock-link' => 'blòca con espression regolar',
 	'regexblock-match-stats-record' => "$1 a l'ha blocà '$2' su '$3' a '$4', registrand da l'adrëssa '$5'",
 	'regexblock-nodata-found' => 'Pa gnun dat trovà',
-	'regexblock-stats-title' => 'Statìstiche dij blòch regex',
-	'regexblock-unblock-success' => 'Sblòch andàit bin',
+	'regexblock-stats-title' => 'Statìstiche dij blocagi regex',
+	'regexblock-unblock-success' => 'Dësblocagi andàit bin',
 	'regexblock-unblock-log' => "Ël nòm utent o l'adrëssa IP '''$1''' a l'é stàit blocà.",
-	'regexblock-unblock-error' => 'Eror sblocand $1.
+	'regexblock-unblock-error' => 'Eror an dësblocand $1.
 A peul esse che a-i sia pa col utent.',
 	'regexblock-regex-filter' => '  o valor regex:',
 	'regexblock-view-blocked' => 'Visualisassion blocà da:',
 	'regexblock-view-all' => 'Tùit',
 	'regexblock-view-go' => 'Va',
 	'regexblock-view-match' => '(pròpi parèj)',
-	'regexblock-view-regex' => '(regex a quadra)',
-	'regexblock-view-account' => '(blòch ëd la creassion ëd cont)',
+	'regexblock-view-regex' => '(corëspondensa regex)',
+	'regexblock-view-account' => '(blocagi ëd la creassion ëd cont)',
 	'regexblock-view-reason' => 'rason: $1',
 	'regexblock-view-reason-default' => 'rason genérica',
-	'regexblock-view-block-infinite' => 'blòch përmanent',
+	'regexblock-view-block-infinite' => 'blocagi përmanent',
 	'regexblock-view-block-by' => 'blocà da:',
-	'regexblock-view-block-unblock' => 'sblòca',
+	'regexblock-view-block-unblock' => 'dësbloché',
 	'regexblock-view-stats' => 'statìstiche',
 	'regexblock-view-empty' => "La lista ëd nòm e adrësse blocà a l'é veuida.",
 	'regexblock-view-time' => 'dzora $1',
-	'right-regexblock' => "Blòca utent për le modìfiche an dzora a tute le wiki dl'insema ëd wiki",
+	'right-regexblock' => "Blòca utent për le modìfiche dzora a tute le wiki dl'ansema ëd wiki",
 );
 
 /** Pashto (پښتو)
@@ -2927,6 +2928,13 @@ $messages['ug-arab'] = array(
  */
 $messages['ug-latn'] = array(
 	'regexblock-view-go' => 'Köchüsh',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'regexblock-form-reason' => 'Причина:',
 );
 
 /** Veps (Vepsan kel')

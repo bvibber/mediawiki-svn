@@ -726,6 +726,13 @@ Cliquez sur l'une d'entre elles pour voir les statistiques à son propos.",
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'prefstats' => 'Statistiques de les prèferences',
+	'prefstats-desc' => 'Statistiques sur lo nombro d’utilisators qu’ont quârques prèferences activâs.',
+	'prefstats-title' => 'Statistiques de les prèferences',
+	'prefstats-list-intro' => 'Ora, cetes prèferences sont siuvues.
+Clicâd dessus yona d’entre-lor por vêre les statistiques a son propôs.',
+	'prefstats-noprefs' => 'Ora, niona prèference est siuvua.
+Configurar $wgPrefStatsTrackPrefs por siuvre des prèferences.',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'siéx hores',
 	'prefstats-factor-day' => 'jorn',

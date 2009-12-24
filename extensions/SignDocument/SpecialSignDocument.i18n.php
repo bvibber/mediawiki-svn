@@ -4461,6 +4461,20 @@ $messages['ug-latn'] = array(
 	'sign-viewfield-email' => 'Élxet',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'sign-city' => 'Місто:',
+	'sign-state' => 'Штат:',
+	'sign-email' => 'Адреса електронної пошти:',
+	'sign-viewfield-address' => 'Адреса',
+	'sign-viewfield-city' => 'Місто',
+	'sign-viewfield-state' => 'Штат',
+	'sign-viewfield-email' => 'Електронна пошта',
+	'sign-review-comment' => 'Коментар',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

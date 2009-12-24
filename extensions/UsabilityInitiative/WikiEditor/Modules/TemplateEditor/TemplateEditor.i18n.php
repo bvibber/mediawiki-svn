@@ -29,6 +29,13 @@ $messages['be-tarask'] = array(
 	'wikieditor-template-editor-preference' => 'Дазволіць рэдагаваньне шаблёнаў вікі праз формы',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'wikieditor-template-editor-preference' => 'Разрешено редактирането на уикишаблони чрез формуляр',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -72,11 +79,25 @@ $messages['dsb'] = array(
 	'wikieditor-template-editor-preference' => 'Wobźěłowanje wikipśedłogow na zakłaźe formularow zmóžniś',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'wikieditor-template-editor-preference' => 'Ŝalti formularan redaktadon de vikiaj ŝablonoj',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'wikieditor-template-editor-preference' => 'Activer la modification à base de formulaires des modèles wiki',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikieditor-template-editor-preference' => 'Activar lo changement a bâsa de formulèros des modèlos vouiqui',
 );
 
 /** Galician (Galego)

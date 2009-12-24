@@ -291,6 +291,7 @@ $messages['dsb'] = array(
  * @author Consta
  * @author Crazymadlover
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'errorhandler-errors' => 'Σφάλματα:',
@@ -300,6 +301,7 @@ $messages['el'] = array(
 	'errorhandler-error-notice' => 'Σημείωση',
 	'errorhandler-error-deprecated' => 'Αποδοκιμασμένος',
 	'errorhandler-error-core-error' => 'Σφάλμα κώδικα',
+	'errorhandler-error-core-warning' => 'Προειδοποίηση πυρήνα',
 	'errorhandler-error-compile-error' => 'Σφάλμα μεταγλώττισης',
 	'errorhandler-error-compile-warning' => 'Προειδοποίηση μεταγλώττισης',
 	'errorhandler-error-user-error' => 'Σφάλμα χρήστη',
@@ -1284,10 +1286,12 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Homonihilis
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'errorhandler-errors' => 'Hatalar:',
+	'errorhandler-error-user-error' => 'Kullanıcı hatası',
 );
 
 /** Ukrainian (Українська)
@@ -1308,6 +1312,7 @@ $messages['uk'] = array(
 	'errorhandler-error-user-warning' => 'Попередження користувача',
 	'errorhandler-error-user-deprecated' => 'Заборона корустувача',
 	'errorhandler-msg-text' => '$1 : $2 в $3 (рядок $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> у <b>$3</b> (рядок <b>$4</b>)',
 	'errorhandler-trace-line' => '$1 (рядок $2): $3',
 	'errorhandler-trace-line-internal' => '[внутрішня функція]: $1',
 );

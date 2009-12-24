@@ -1422,17 +1422,45 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'recordadmin' => 'Oppføringshåndtering',
+	'recordadmin-desc' => 'En [[Special:RecordAdmin|spesialside]] for å finne og redigere oppføringer ved å bruke et skjema',
+	'recordadmin-categoryempty' => 'Det er for tiden ingen oppføringstyper. Vennligst kategoriser oppføringsmalene i [[:$1|$1]].',
 	'recordadmin-select' => 'Velg',
+	'recordadmin-createtype' => 'Skriv inn navnet på en ny oppføringstype som du vil opprette',
+	'recordadmin-recordtype' => 'oppføringstype',
+	'recordadmin-newsearch' => 'Nytt søk etter $1',
+	'recordadmin-newrecord' => 'Velg en annen oppføringstype',
+	'recordadmin-submit' => 'Send',
+	'recordadmin-create' => 'Finn eller opprett «$1»-oppføringer',
+	'recordadmin-alreadyexist' => 'Beklager, «$1» finnes allerede!',
+	'recordadmin-createsuccess' => '$1 ble opprettet',
+	'recordadmin-createerror' => 'En feil oppsto under opprettelsen av $1!',
+	'recordadmin-badtitle' => 'Ugyldig tittel!',
+	'recordadmin-recordid' => 'Oppførings-ID/-navn:',
+	'recordadmin-invert' => 'Inverter valget',
 	'recordadmin-buttonsearch' => 'Søk',
 	'recordadmin-buttoncreate' => 'Opprett',
 	'recordadmin-buttonreset' => 'Nullstill',
 	'recordadmin-searchresult' => 'Søkeresultat',
+	'recordadmin-nomatch' => 'Ingen samsvarende oppføringer funnet!',
+	'recordadmin-edit' => 'Endre $2 oppføring «$1»',
+	'recordadmin-typeupdated' => 'Egenskapene til $1 ble oppdatert',
+	'recordadmin-updatesuccess' => '$1 ble oppdatert',
+	'recordadmin-updateerror' => 'En feil oppsto under oppdatering',
+	'recordadmin-buttonsave' => 'Lagre',
+	'recordadmin-noform' => 'Det finnes ikke et skjema tilknyttet oppføringen «$1»!',
+	'recordadmin-createlink' => 'opprett en',
+	'recordadmin-newcreated' => 'Ny $1 opprettet fra offentlig skjema',
+	'recordadmin-summary-typecreated' => 'Ny $1 opprettet',
 	'recordadmin-viewlink' => 'vis',
 	'recordadmin-editlink' => 'endre',
 	'recordadmin-created' => 'Opprettet',
 	'recordadmin-modified' => 'Endret',
 	'recordadmin-actions' => 'Handlinger',
 	'recordadmin-needscontent' => 'Legg til innhold...',
+	'recordadmin-editwithform' => 'Endre med skjema',
+	'recordadmin-typeinfo' => 'Oppføringstype $1',
+	'right-recordadmin' => 'Finn og endre oppføringssider',
 );
 
 /** Occitan (Occitan)
@@ -1872,11 +1900,22 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Fluff
  * @author Gabbe.g
+ * @author Per
  */
 $messages['sv'] = array(
 	'recordadmin' => 'Rekordadministration',
 	'recordadmin-desc' => 'En [[Special:RecordAdmin|specialsida]] för att hitta och ändra titelinformation med hjälp av ett formulär.',
+	'recordadmin-select' => 'Välj',
+	'recordadmin-newsearch' => 'Ny $1 säkning',
+	'recordadmin-createsuccess' => '$1 skapad',
+	'recordadmin-buttonsearch' => 'Sök',
+	'recordadmin-buttoncreate' => 'Skapa',
+	'recordadmin-buttonreset' => 'Återställ',
+	'recordadmin-searchresult' => 'Sökresultat',
+	'recordadmin-created' => 'Skapad',
+	'recordadmin-modified' => 'Ändrad',
 	'recordadmin-actions' => 'Åtgärder',
+	'recordadmin-needscontent' => 'Lägg till innehåll...',
 );
 
 /** Telugu (తెలుగు)

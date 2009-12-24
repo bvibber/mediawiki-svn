@@ -2486,8 +2486,15 @@ Om du har några frågor om programtilläggets distributionssystem, gå till [[E
  */
 $messages['te'] = array(
 	'extdist-no-such-extension' => '"$1" అనే పొడగింత లేదు',
+	'extdist-choose-extension' => 'మీరు ఏ పొడగింతని దింపుకోవాలనుకుంటున్నారో ఎంచుకోండి:',
 	'extdist-submit-extension' => 'కొనసాగించు',
+	'extdist-choose-version' => '<big>మీరు <b>$1</b> పొడగింతని దింపుకోబోతున్నారు.</big>
+
+మీ మిడియావికీ సంచికని ఎంచుకోండి.
+
+చాలా పొడగింతలు పలు మీడియావికీ సంచికల్లో పనిచేస్తాయి, కాబట్టి మీ మీడియావికీ సంచిక ఇక్కడ లేకపోతే, లేదా మీకు పొడగింతల సరికొత్త సౌలభ్యాల అవసరం ఉంటే, ప్రస్తుత సంచికని ఉపయోగించండి.',
 	'extdist-submit-version' => 'కొనసాగించు',
+	'extdist-want-more' => 'మరొక పొడగింతని పొందండి',
 );
 
 /** Turkmen (Türkmençe)

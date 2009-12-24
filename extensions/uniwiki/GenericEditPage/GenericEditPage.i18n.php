@@ -426,6 +426,16 @@ Agrega algunas secciones utilizando las herramientas en la barra de menús.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'gep-categories' => 'Kategooriad',
+	'gep-addcategory' => 'Lisa kategooria',
+	'gep-addcategorybutton' => 'Lisa',
+	'gep-suggestcategory' => 'Soovita kategooriat',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
