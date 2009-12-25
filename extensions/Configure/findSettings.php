@@ -131,8 +131,18 @@ if ( isset( $options['ext'] ) ) {
 		$m = array();
 		preg_match_all( '/\[\[[Mm]anual:\$(wg[A-Za-z0-9]+)\|/', $cont, $m );
 		$allSettings = array_unique( $m[1] );
+		$ignoreList = array(
+			'wgEnableNewpagesUserFilter', 'wgOldChangeTagsIndex', 'wgVectorExtraStyles'
+		);
 	} else {
 		$allSettings = array_keys( $coreSettings->getAllSettings() );
+		$ignoreList = array(
+			'wgAuth', 'wgCommandLineMode', 'wgCheckSerialized', 'wgConf','wgDBconnection',
+			'wgEnableNewpagesUserFilter', 'wgEnableSerializedMessages', 'wgEnforceHtmlIds',
+			'wgLegacySchemaConversion', 'wgMaintenanceScripts', 'wgMemCachedDebug',
+			'wgOldChangeTagsIndex', 'wgProxyKey', 'wgValidSkinNames', 'wgVectorExtraStyles',
+			'wgVersion'
+		);
 	}
 
 	// Now we'll need to open DefaultSettings.php
@@ -150,7 +160,7 @@ if ( isset( $options['ext'] ) ) {
 	}
 
 	// let's show the results:
-	printArray( 'missing', $missing );
+	printArray( 'missing', array_diff( $missing, $ignoreList ) );
 	printArray( 'obsolete', $obsolete );
 
 	if ( count( $missing ) == 0 && count( $obsolete ) == 0 )
