@@ -270,6 +270,13 @@ $messages['pt'] = array(
 	'userdailycontribs-desc' => 'Contribuições diárias dos utilizadores para a extensão de monitorização de cliques',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'userdailycontribs-desc' => 'Contribuţiile zilnice ale contribuitorilor pentru monitorizarea gradului de click-uri',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -345,5 +352,12 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'userdailycontribs-desc' => '点击跟踪扩展的用户每日贡献',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'userdailycontribs-desc' => '點擊跟蹤擴展的用戶每日貢獻',
 );
 

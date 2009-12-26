@@ -425,8 +425,11 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
+ * @author Harald Khan
  */
 $messages['nn'] = array(
+	'usabilityinitiative' => 'Brukarvenlegheitsinitiativet',
+	'usabilityinitiative-desc' => 'Funksjonar utvikla av Wikipedia-brukarvenlegheitsinitiativet for å betra brukarvenlegheita til MediaWiki',
 	'prefs-experimental' => 'Eksperimentelle funksjonar',
 );
 

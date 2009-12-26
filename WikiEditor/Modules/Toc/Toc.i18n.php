@@ -177,8 +177,10 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Str4nd
  */
 $messages['fi'] = array(
+	'wikieditor-toc-preference' => 'Ota käyttöön navigoitava sisällysluettelo',
 	'wikieditor-toc-show' => 'Näytä sisältö',
 	'wikieditor-toc-hide' => 'Piilota sisältö',
 );

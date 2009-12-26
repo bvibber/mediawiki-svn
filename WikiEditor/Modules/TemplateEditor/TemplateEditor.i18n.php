@@ -22,6 +22,13 @@ $messages['ar'] = array(
 	'wikieditor-template-editor-preference' => 'فعل تعديل قوالب الويكي المعتمد على النماذج',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'wikieditor-template-editor-preference' => 'فعل تعديل قوالب الويكى عن طريق النموذج',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -112,6 +119,13 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'wikieditor-template-editor-preference' => 'Formatbasiert Bearbeite vu Wikivorlage meglig mache',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'wikieditor-template-editor-preference' => 'הפעלת עריכה מבוססת טופס של תבניות ויקי',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

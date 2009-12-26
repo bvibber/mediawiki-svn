@@ -733,12 +733,24 @@ $messages['frp'] = array(
 Clicâd dessus yona d’entre-lor por vêre les statistiques a son propôs.',
 	'prefstats-noprefs' => 'Ora, niona prèference est siuvua.
 Configurar $wgPrefStatsTrackPrefs por siuvre des prèferences.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|utilisator a|utilisators on}}t activâ ceta prèference dês que les statistiques de prèferences ont étâ activâs
+** $2 {{PLURAL:$2|utilisator l’a|utilisators l’on}}t adés activâ
+** $3 {{PLURAL:$3|utilisator l’a|utilisators l’on}}t dèsactivâ',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|utilisator a|utilisators on}}t activâ ceta prèference dês que les statistiques de prèferences ont étâ activâs
+** $2 {{PLURAL:$2|utilisator l’a|utilisators l’on}}t adés activâ
+** $3 {{PLURAL:$3|utilisator l’a|utilisators l’on}}t dèsactivâ
+* En tot, $4 {{PLURAL:$4|utilisator a|utilisators on}}t dèfeni ceta prèference',
+	'prefstats-xaxis' => 'Temps (hores)',
+	'prefstats-factors' => 'Fâre vêre per : $1',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'siéx hores',
 	'prefstats-factor-day' => 'jorn',
 	'prefstats-factor-week' => 'semana',
 	'prefstats-factor-twoweeks' => 'doves semanes',
 	'prefstats-factor-fourweeks' => 'quatro semanes',
+	'prefstats-factor-default' => 'tornar a l’èchiéla per dèfôt',
+	'prefstats-legend-out' => 'Vôt pas més participar',
+	'prefstats-legend-in' => 'Vôt participar',
 );
 
 /** Galician (Galego)
@@ -1733,6 +1745,13 @@ $messages['roa-tara'] = array(
 	'prefstats-list-intro' => 'Pe mò, le seguende preferenze stonne avènene tracciate.
 Cazze sus a une de le statisteche da vedè.',
 	'prefstats-noprefs' => 'Nisciuna preferenze ha state tracciate pe mò. Configure $wgPrefStatsTrackPrefs pe traccià le preferenze.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|utende ave|utinde onne}} abbilitate sta preferenze da quanne le statisteche sus a le preferenze onne state attivate<br />
+** $2 {{PLURAL:$2|utende a tène angore|utinde a tènene angore}} abbilitate<br />
+** $3 {{PLURAL:$3|utende a tène|utinde a tènene}} disabbilitate',
+	'prefstats-counters-expensive' => "* $1 {{PLURAL:$1|utende ave|utinde onne}} abbilitate sta preferenze da quanne le statisteche sus a le preferenze onne state attivate<br />
+** $2 {{PLURAL:$2|utende a tène angore|utinde a tènene angore}} abbilitate<br />
+** $3 {{PLURAL:$3|utende a tène|utinde a tènene}} disabbilitate <br />
+* In totale, $4 {{PLURAL:$4|utende ave|utinde onne}} st'inzieme de preferenze",
 	'prefstats-xaxis' => 'Durate (ore)',
 	'prefstats-factors' => 'Visite pe: $1',
 	'prefstats-factor-hour' => 'ore',
@@ -1742,6 +1761,8 @@ Cazze sus a une de le statisteche da vedè.',
 	'prefstats-factor-twoweeks' => 'doje sumáne',
 	'prefstats-factor-fourweeks' => 'quattre sumáne',
 	'prefstats-factor-default' => "tuèrne a 'a scale de base",
+	'prefstats-legend-out' => 'Nò partecipà cchiù',
+	'prefstats-legend-in' => 'Pigghie parte',
 );
 
 /** Russian (Русский)

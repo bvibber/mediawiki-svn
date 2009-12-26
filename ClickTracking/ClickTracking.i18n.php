@@ -198,12 +198,16 @@ $messages['br'] = array(
 	'ct-total-header' => "Hollad ar c'hlikoù",
 	'ct-start-date' => 'Deiziad kregiñ (AAAAMMJJ)',
 	'ct-end-date' => 'Deiziad echuiñ (AAAAMMJJ)',
+	'ct-increment-by' => 'Niver a zevezioù a dalvez pep poent roadenn.',
+	'ct-change-graph' => 'Cheñch grafik',
 	'ct-beginner' => 'Deraouad',
 	'ct-intermediate' => 'Etre',
 	'ct-expert' => 'Mailh',
+	'ct-date-range' => 'Emled an deiziad',
 	'ct-editing' => "Oc'h aozañ er mare-mañ :",
 	'ct-anon-users' => 'implijerien dizanv',
 	'ct-user-contribs' => 'Sammad hollek degasadennoù an implijer',
+	'ct-user-span' => 'Degasadennoù an implijer war ur badelezh amzer',
 	'ct-and' => 'ha(g)',
 	'ct-update-table' => 'Hizivaat an daolenn',
 );
@@ -560,6 +564,33 @@ $messages['fr'] = array(
 	'ct-update-table' => 'Mettre à jour la table',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'clicktracking' => 'Survelyence des clics de l’iniciativa d’utilisabilitât',
+	'ct-title' => 'Agrègacion des clics d’utilisators',
+	'ct-event-name' => 'Nom de l’èvènement',
+	'ct-expert-header' => 'Clics « èxpèrts »',
+	'ct-intermediate-header' => 'Clics « entèrmèdièros »',
+	'ct-beginner-header' => 'Clics « comencients »',
+	'ct-total-header' => 'Soma des clics',
+	'ct-start-date' => 'Dâta de comencement (AAAAMMJJ)',
+	'ct-end-date' => 'Dâta de fin (AAAAMMJJ)',
+	'ct-increment-by' => 'Nombro de jorns que reprèsente châque pouent de balyê',
+	'ct-change-graph' => 'Changiér lo diagramo',
+	'ct-beginner' => 'Comencient',
+	'ct-intermediate' => 'Entèrmèdièro',
+	'ct-expert' => 'Èxpèrt',
+	'ct-date-range' => 'Portâ de la dâta',
+	'ct-editing' => 'Aprés étre changiê per :',
+	'ct-anon-users' => 'Utilisators pas encartâs',
+	'ct-user-contribs' => 'Contribucions totâles ux utilisators',
+	'ct-user-span' => 'Contribucions a l’utilisator sur lo temps',
+	'ct-and' => 'et',
+	'ct-update-table' => 'Betar a jorn la trâbla',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -851,6 +882,13 @@ $messages['km'] = array(
 	'ct-and' => 'និង​',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'ct-and' => 'ಮತ್ತು',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Kwj2772
@@ -1030,12 +1068,14 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'ct-start-date' => 'Startdato (ÅÅÅÅMMDD)',
 	'ct-expert' => 'Ekspert',
 	'ct-date-range' => 'Datoer som visast',
 	'ct-anon-users' => 'Anonyme brukarar',
+	'ct-and' => 'og',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1206,6 +1246,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'ct-title' => 'Clicuri utilizator cumulate',
 	'ct-event-name' => 'Numele evenimentului',
 	'ct-expert-header' => 'Clickuri de către "experţi"',
 	'ct-intermediate-header' => 'Clicuri „intermediare”',
@@ -1377,6 +1418,8 @@ $messages['te'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'clicktracking' => 'Oňaýlylyk Başlangyjy tyklama trekingi',
+	'clicktracking-desc' => 'Sahypa täzelemesine sebäp bolmaýan wakalary treklemek üçin tyklama trekingi',
 	'ct-title' => 'Agregirlenen ulanyjy tyklamalary',
 	'ct-event-name' => 'Waka ady',
 	'ct-expert-header' => '"Ekspert" tyklamalary',
@@ -1385,6 +1428,8 @@ $messages['tk'] = array(
 	'ct-total-header' => 'Jemi tyklama',
 	'ct-start-date' => 'Başlangyç senesi (YYYYMMDD)',
 	'ct-end-date' => 'Gutaryş senesi (YYYYMMDD)',
+	'ct-increment-by' => 'Her maglumat nokadyny görkezýän gün sany',
+	'ct-change-graph' => 'Grafigi üýtget',
 	'ct-beginner' => 'Öwrenje',
 	'ct-intermediate' => 'Orta tap',
 	'ct-expert' => 'Ekspert',
@@ -1567,6 +1612,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
@@ -1581,7 +1627,7 @@ $messages['zh-hant'] = array(
 	'ct-start-date' => '開始日期（年月日）',
 	'ct-end-date' => '結束日期（年月日）',
 	'ct-increment-by' => '每個數據點代表的天數',
-	'ct-change-graph' => '更改圖像',
+	'ct-change-graph' => '更改圖片',
 	'ct-beginner' => '新手',
 	'ct-intermediate' => '中級',
 	'ct-expert' => '專家',

@@ -205,6 +205,14 @@ $messages['gsw'] = array(
 	'wikieditor-wikitext-tab' => 'WikiText',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'wikieditor' => 'מנשק מתקדם לעריכת טקסט ויקי',
+	'wikieditor-wikitext-tab' => 'ויקיטקסט',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -305,9 +313,11 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'wikieditor' => 'Avansert grensesnitt for endring av wikitekst',
+	'wikieditor-wikitext-tab' => 'Wikitekst',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -423,6 +433,7 @@ $messages['te'] = array(
  */
 $messages['tk'] = array(
 	'wikieditor' => 'Giňeldilen wikitekst redaktirleme interfeýsi',
+	'wikieditor-desc' => 'Giňeldilýän wikitekst redkatirleme interfeýsini we köp aýratynlykly modullary üpjün edýär',
 	'wikieditor-wikitext-tab' => 'Wikitekst',
 );
 
@@ -483,9 +494,11 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Liangent
  */
 $messages['zh-hant'] = array(
 	'wikieditor' => '高級維基文本編輯界面',
+	'wikieditor-desc' => '提供可擴充的維基文本編輯界面及功能組件',
 	'wikieditor-wikitext-tab' => '維基文本',
 );
 
