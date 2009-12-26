@@ -261,6 +261,13 @@ $messages['pt-br'] = array(
 	'mwreleases-desc' => "Adiciona uma [[Mediawiki:Mwreleases-list|lista]] de 'releases' suportados, acessível via API",
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'mwreleases-desc' => 'Adăugaţi o [[Mediawiki:Mwreleases-list|listă]] cu lansările susţinute, accesibile prin API',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

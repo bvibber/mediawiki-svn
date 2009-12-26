@@ -901,11 +901,16 @@ $messages['jv'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author Malafaya
  * @author Sopho
  */
 $messages['ka'] = array(
+	'sitematrix' => 'ვიკიმედიის პროექტების სია',
+	'sitematrix-summary' => 'ეს სპეციალური გვერდი წარმოადგენს ვიკიმედიის ვიკი-პროექტების სიას',
+	'sitematrix-desc' => 'აჩვენებს [[Special:SiteMatrix|ვიკიმედიის პროექტების სიას]]',
 	'sitematrix-language' => 'ენა',
+	'sitematrix-project' => 'პროექტის სახელი, ინტერპროექტის ბმული და ინტერვიკები',
 	'sitematrix-others' => 'ვიკიმედიას სხვა პროექტები',
 	'sitematrix-total' => "'''საერთო რაოდენობა: $1'''",
 	'sitematrix-sitetotal' => 'სულ',
@@ -1437,11 +1442,13 @@ $messages['rm'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  * @author לערי ריינהארט
  */
 $messages['ro'] = array(
 	'sitematrix' => 'Lista proiectelor Wikimedia',
 	'sitematrix-summary' => 'Această pagină specială afişează toate proiectele wiki ale Wikimedia.',
+	'sitematrix-desc' => 'Afişaţi o [[Special:SiteMatrix|listă de wikiuri ale Wikimedia]]',
 	'sitematrix-language' => 'Limbă',
 	'sitematrix-others' => 'Alte proiecte Wikimedia',
 	'sitematrix-total' => "'''Număr total: $1'''",

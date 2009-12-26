@@ -326,6 +326,13 @@ $messages['km'] = array(
 	'authors_anonymous' => 'អនាមិក',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'authors_authors' => 'ಕರ್ತೃಗಳು',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

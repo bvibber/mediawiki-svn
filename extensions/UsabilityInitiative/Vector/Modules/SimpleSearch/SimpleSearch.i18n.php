@@ -353,9 +353,11 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author Alsandro
+ * @author BRUTE
  */
 $messages['ka'] = array(
 	'vector-simplesearch-search' => 'ძიება',
+	'vector-simplesearch-containing' => 'შეიცავს...',
 );
 
 /** Khmer (ភាសាខ្មែរ)

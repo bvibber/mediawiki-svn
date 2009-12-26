@@ -2954,18 +2954,32 @@ $1',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'inplace_access_disabled' => '所有用戶端均不能使用本服務。',
+	'inplace_access_denied' => '您的IP無法訪問本服務。',
+	'inplace_scaler_no_temp' => '無法識別的臨時目錄。
+請設置 $wgLocalTmpDirectory 到一個可寫入的目錄。',
 	'inplace_scaler_not_enough_params' => '參數不足。',
-	'inplace_scaler_invalid_image' => '圖像無效，不能判斷大小。',
-	'inplace_scaler_failed' => '在縮放圖像其間遇到錯誤: $1',
+	'inplace_scaler_invalid_image' => '圖片無效，不能判斷大小。',
+	'inplace_scaler_failed' => '在縮放圖片其間遇到錯誤: $1',
+	'webstore_access' => '您的IP無法訪問本服務。',
 	'webstore_path_invalid' => '檔名無效。',
+	'webstore_dest_open' => '無法打開目標文件"$1"。',
+	'webstore_dest_mkdir' => '無法創建目錄"$1"。',
+	'webstore_src_open' => '無法打開源文件"$1"。',
 	'webstore_src_close' => '關閉來源檔案"$1"時發生錯誤。',
 	'webstore_src_delete' => '刪除來源檔案"$1"時發生錯誤。',
+	'webstore_rename' => '文件"$1"修改名稱為"$2"時出現錯誤。',
+	'webstore_dest_exists' => '出錯啦，目標文件"$1"已經存在。',
 	'webstore_temp_open' => '開啟暫存檔案"$1"時發生錯誤。',
+	'webstore_temp_copy' => '拷貝臨時文件"$1"至目標文件"$2"時出錯。',
 	'webstore_temp_close' => '關閉暫存檔案"$1"時發生錯誤。',
 	'webstore_no_file' => '沒有上載檔案。',
+	'webstore_move_uploaded' => '移動上傳的文件"$1"至臨時地址"$2"時出錯。',
 	'webstore_404' => '找不到檔案。',
 	'webstore_php_warning' => 'PHP警告: $1',
 	'webstore_metadata_not_found' => '找不到檔案: $1',
@@ -2973,6 +2987,9 @@ $messages['zh-hant'] = array(
 
 $1',
 	'webstore_no_response' => '伺服器沒有回應',
+	'webstore_backend_error' => '存儲服務器出現錯誤：
+
+$1',
 	'webstore_php_error' => '遇到PHP錯誤:',
 );
 

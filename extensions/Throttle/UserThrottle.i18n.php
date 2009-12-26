@@ -501,3 +501,19 @@ $messages['vo'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'Kalijaf pablokon itjäfidiko dü timüls anik bi brefabüo edabinons ninädamasteifüls tu mödiks. Stebedolös dü minuts anik e steifülolös nogna.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'acct_creation_global_soft_throttle_hit' => '因受到短时间内大量账户登录的影响，注册功能被自动暂停。请稍等片刻后重试。',
+	'acct_creation_global_hard_throttle_hit' => '因为受到短时间内注册大量账号的攻击，账号注册被自动暂停。请稍等片刻后点击浏览器的“刷新”按钮重新提交。',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'acct_creation_global_soft_throttle_hit' => '因受到短時間內大量賬戶登錄的影響，註冊功能被自動暫停。請稍等片刻后重試。',
+	'acct_creation_global_hard_throttle_hit' => '因為受到短時間內註冊大量賬號的攻擊，賬號註冊被自動暫停。請稍等片刻後點擊瀏覽器的“刷新”按鈕重新提交。',
+);
+

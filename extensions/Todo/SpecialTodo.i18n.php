@@ -267,12 +267,24 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'todo' => 'Roll traoù da ober',
+	'todo-desc' => "Astenn arnod evit ur [[Special:Todo|roll hiniennel eus an traoù d'ober]]",
 	'todo-tab' => "d'ober",
 	'todo-new-queue' => 'nevez',
+	'todo-mail-subject' => "Graet eo bet an elfenn e roll an traoù d'ober eus $1",
+	'todo-mail-body' => "Goulennet ho peus resevout ur postel kemenn pa 'vo echuet gant un elfenn ho peus lakaet e roll an traoù d'ober a zo da $1.
+
+Elfenn : $2
+Kaset : $3
+
+Merket eo bet an elfenn-mañ evel echuet, gant an evezhiadenn-mañ :
+$4",
 	'todo-invalid-item' => 'Elfenn diank pe direizh',
+	'todo-update-else-item' => 'Ho klask hizivaat elfennoù unan all',
 	'todo-unrecognize-type' => "Seurt n'eo ket bet anavezet",
+	'todo-user-invalide' => "N'eo ket mat an dra d'ober o peus lakaet pe ez eus un diouer outi pe n'en deus ket an implijer e roll eus an traoù d'ober.",
 	'todo-item-list' => "Hoc'h elfennoù",
 	'todo-no-item' => "N'eus elfenn ebet d'ober.",
+	'todo-invalid-owner' => "Perc'henn fall eus an elfenn-mañ",
 	'todo-add-queue' => "Ouzhpennañ d'al listenn gortoz...",
 	'todo-move-queue' => "Dilec'hiañ davet al listenn gortoz...",
 	'todo-list-for' => "Roll traoù d'ober gant $1",
@@ -281,8 +293,10 @@ $messages['br'] = array(
 	'todo-new-item' => 'Elfenn nevez',
 	'todo-issue-summary' => 'Diverrañ eus ar gudenn :',
 	'todo-form-details' => 'Munudoù :',
+	'todo-form-email' => "Evit resevout ur postel kemenn pa 'vo serret an elfenn, roit ho postel er framm da heul :",
 	'todo-form-submit' => 'Kas ar reked',
 	'right-todo' => 'Kaout ur roll "traoù d\'ober".',
+	'right-todosubmit' => "Bevenniñ gwirioù rolloù an traoù d'ober eus an implijerien",
 );
 
 /** Bosnian (Bosanski)
@@ -1957,17 +1971,22 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'todo-new-queue' => '新',
+	'todo-list-change' => '更改',
 	'todo-list-cancel' => '取消',
+	'todo-form-submit' => '递交查询',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'todo-new-queue' => '新',
 	'todo-list-change' => '更改',
 	'todo-list-cancel' => '取消',
 	'todo-form-submit' => '遞交查詢',

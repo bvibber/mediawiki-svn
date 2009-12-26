@@ -366,6 +366,13 @@ $messages['tr'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Project Honey Pot'a göre, IP adresinin tetiklediği son olayların sayısı",
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'honeypot-desc' => 'Забезпечує інтеграцію з [http://projecthoneypot.org/ проектом Honey Pot] для сайтів MediaWiki',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

@@ -2000,7 +2000,9 @@ $messages['tr'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'recordadmin-buttonreset' => 'Скинути',
 	'recordadmin-editlink' => 'ред.',
+	'recordadmin-actions' => 'Дії',
 );
 
 /** Veps (Vepsan kel')
@@ -2055,16 +2057,22 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'recordadmin-badtitle' => '标题错误！',
+	'recordadmin-invert' => '反向选择',
+	'recordadmin-buttonsearch' => '搜寻',
 	'recordadmin-buttonreset' => '重置',
 	'recordadmin-buttonsave' => '保存',
+	'recordadmin-viewlink' => '检视',
+	'recordadmin-editlink' => '编辑',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -2072,6 +2080,7 @@ $messages['zh-hant'] = array(
 	'recordadmin-invert' => '反向選擇',
 	'recordadmin-buttonsearch' => '搜尋',
 	'recordadmin-buttonreset' => '重置',
+	'recordadmin-buttonsave' => '保存',
 	'recordadmin-viewlink' => '檢視',
 	'recordadmin-editlink' => '編輯',
 );

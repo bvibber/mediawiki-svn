@@ -178,11 +178,19 @@ $messages['br'] = array(
 	'errorhandler-errors' => 'Fazioù :',
 	'errorhandler-error-fatal' => 'Fazi diremed',
 	'errorhandler-error-warning' => 'Evezhiadenn',
+	'errorhandler-error-parse' => 'Fazi parser',
 	'errorhandler-error-notice' => 'Notennig',
+	'errorhandler-error-deprecated' => "Dic'hizet",
 	'errorhandler-error-core-error' => 'Fazi gant ar galonenn',
 	'errorhandler-error-core-warning' => 'Kemenn eus ar galonenn',
+	'errorhandler-error-compile-error' => 'Fazi kempunadur',
+	'errorhandler-error-compile-warning' => 'Kemenadenn diwall ar kempunadur',
 	'errorhandler-error-user-error' => 'Fazi implijer',
 	'errorhandler-error-user-warning' => 'Kemenn implijer',
+	'errorhandler-error-user-notice' => 'Notennig implijer',
+	'errorhandler-error-user-deprecated' => "Implijer dic'hizet",
+	'errorhandler-error-strict' => 'Standart strizh',
+	'errorhandler-error-recoverable' => "Fazi diremed a c'hell bezañ tapet",
 	'errorhandler-msg-text' => '$1 : $2 e $3 (linenn $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> e <b>$3</b> (linenn <b>$4</b>)',
 	'errorhandler-trace' => 'roud :',
@@ -1295,6 +1303,7 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
@@ -1310,7 +1319,7 @@ $messages['uk'] = array(
 	'errorhandler-error-compile-warning' => 'Попередження компіляції',
 	'errorhandler-error-user-error' => 'Помилка користувача',
 	'errorhandler-error-user-warning' => 'Попередження користувача',
-	'errorhandler-error-user-deprecated' => 'Заборона корустувача',
+	'errorhandler-error-user-deprecated' => 'Користувач заборонений',
 	'errorhandler-msg-text' => '$1 : $2 в $3 (рядок $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> у <b>$3</b> (рядок <b>$4</b>)',
 	'errorhandler-trace-line' => '$1 (рядок $2): $3',
@@ -1383,10 +1392,31 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'errorhandler-desc' => 'MediaWiki的錯誤處理程序',
 	'errorhandler-errors' => '錯誤:',
+	'errorhandler-error-fatal' => '致命錯誤',
 	'errorhandler-error-warning' => '警告',
+	'errorhandler-error-parse' => '解析器錯誤',
+	'errorhandler-error-notice' => '提示',
+	'errorhandler-error-deprecated' => '不推薦使用',
+	'errorhandler-error-core-error' => '核心錯誤',
+	'errorhandler-error-core-warning' => '核心警告',
+	'errorhandler-error-compile-error' => '編譯錯誤',
+	'errorhandler-error-compile-warning' => '編譯警告',
+	'errorhandler-error-user-error' => '用戶錯誤',
+	'errorhandler-error-user-warning' => '用戶警告',
+	'errorhandler-error-user-notice' => '用戶提示',
+	'errorhandler-error-user-deprecated' => '用戶不推薦使用',
+	'errorhandler-error-strict' => '嚴格的標準',
+	'errorhandler-error-recoverable' => '可捕獲的致命錯誤',
+	'errorhandler-msg-text' => '$1 : $2 在 $3 中 （第$4行）',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> 在 <b>$3</b> 中（第 <b>$4</b> 行）',
+	'errorhandler-trace' => '跟蹤：',
+	'errorhandler-trace-line' => '$1 （第$2行）: $3',
+	'errorhandler-trace-line-internal' => '[內部函數]: $1',
 );
 

@@ -173,6 +173,15 @@ $messages['ar'] = array(
 	'wah-api-error' => 'وُجد خطأ في الواجهة البرمجية. من فضلك حاول مرة أخرى لاحقًا.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'wah-menu-jobs' => 'وظايف',
+	'wah-menu-pref' => 'تفضيلات',
+	'wah-uploadfail' => 'الرفع فشل',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -257,12 +266,20 @@ $messages['br'] = array(
 	'wah-menu-stats' => 'Stadegoù',
 	'wah-menu-pref' => 'Penndibaboù',
 	'wah-lookingforjob' => 'O klask un tamm labour ...',
+	'wah-start-on-visit' => "Lañsañ Wiki@Home bep tro ma welladennan al lec'hienn-mañ.",
+	'wah-jobs-while-away' => "Lañsañ un trevell hepken pa n'am eus ket implijet va merdeer e-pad 20 munutenn.",
+	'wah-nojobfound' => "N'eo bet kavet trevell ebet. Adklask e $1.",
 	'wah-notoken-login' => "Ha kevreet oc'h ? Ma n'oc'h ket, kevreit da gentañ, mar plij.",
+	'wah-apioff' => 'War a seblant ne za ket en-dro API Wiki@Home. Mar plij kit e darempred gant merour wiki.',
 	'wah-doing-job' => 'Labour: <i>$1</i> war : <i>$2</i>',
 	'wah-downloading' => 'Echu eo pellgargañ ar restr <i>$1%</i>',
 	'wah-encoding' => 'Echu eo kodañ ar restr <i>$1%</i>',
+	'wah-encoding-fail' => "N'eo ket deuet a-benn an enkodañ. Mar plij adkargit ar bajenn-mañ pe adklaskit diwezhatoc'h.",
 	'wah-uploading' => 'Echu eo kargañ ar restr <i>$1</i>',
 	'wah-uploadfail' => "C'hwitet eo ar gargadenn",
+	'wah-doneuploading' => 'Pellgargañ bet graet. Trugarez evit ho skodenn.',
+	'wah-needs-firefogg' => 'Evit kemer perzh e Wiki@Home e rankoc\'h staliañ <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => "Ur gudenn a zo bet gant an API. Mar plij adklaskit diwezhatoc'h",
 );
 
 /** Bosnian (Bosanski)
@@ -291,6 +308,7 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Imre
  * @author Pill
  * @author Sebastian Wallroth
  * @author Umherirrender
@@ -314,6 +332,7 @@ $messages['de'] = array(
 	'wah-menu-jobs' => 'Aufgaben',
 	'wah-menu-stats' => 'Statistiken',
 	'wah-menu-pref' => 'Einstellungen',
+	'wah-lookingforjob' => 'Aufgabensuche...',
 	'wah-start-on-visit' => 'Wiki@Home bei jedem Besuch dieser Seite aufrufen.',
 	'wah-jobs-while-away' => 'Aufgaben nur ausführen, wenn ich mindestens 20 Minuten keine Browseraktivität hatte',
 	'wah-nojobfound' => 'Keine Aufgabe gefunden. Versuche die Prozedur erneut in $1.',
@@ -321,9 +340,13 @@ $messages['de'] = array(
 	'wah-apioff' => 'Die Wiki@Home-API scheint abgeschaltet zu sein. Bitte kontaktiere den Administrator des Wikis.',
 	'wah-doing-job' => 'Aufgabe: <i>$1</i> auf: <i>$2</i>',
 	'wah-downloading' => 'Herunterladen der Datei zu <i>$1 %</i> abgeschlossen.',
+	'wah-encoding' => 'Dateiverschlüsselung zu <i>$1%</i> fertiggestellt',
+	'wah-encoding-fail' => 'Verschlüsselung fehlgeschlagen. Bitte lade diese Seite erneut oder versuche es später noch einmal.',
 	'wah-uploading' => '<i>$1</i> wurde erfolgreich hochgeladen.',
 	'wah-uploadfail' => 'Hochladen nicht erfolgreich',
 	'wah-doneuploading' => 'Hochladen erfolgreich. Vielen Dank für deinen Beitrag.',
+	'wah-needs-firefogg' => 'Um an Wiki@Home teilzunehmen, müssen Sie <a href="http://firefogg.org">Firefogg</a> installieren.',
+	'wah-api-error' => 'Es ist ein Fehler mit dem API aufgetreten. Bitte versuche es später noch einmal.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -333,7 +356,12 @@ $messages['de'] = array(
 $messages['de-formal'] = array(
 	'wah-transcode-helpout' => 'Sie können dabei helfen dieses Video zu verarbeiten, indem Sie [[Special:WikiAtHome|Wiki@Home]] besuchen',
 	'wah-javascript-off' => 'Sie müssen JavaScript aktiviert haben, um bei Wiki@Home teilnehmen zu können',
+	'wah-notoken-login' => 'Sind Sie bereits angemeldet? Falls nicht, holen Sie dies bitte zuerst nach.',
 	'wah-apioff' => 'Die Wiki@Home-API scheint abgeschaltet zu sein. Bitte kontaktieren Sie den Administrator des Wikis.',
+	'wah-encoding-fail' => 'Verschlüsselung fehlgeschlagen. Bitte laden Sie diese Seite erneut oder versuchen Sie es später noch einmal.',
+	'wah-doneuploading' => 'Hochladen erfolgreich. Vielen Dank für Ihren Beitrag.',
+	'wah-needs-firefogg' => 'Um an Wiki@Home teilzunehmen müssen Sie <a href="http://firefogg.org">Firefogg</a> installieren.',
+	'wah-api-error' => 'Es ist ein Fehler mit dem API aufgetreten. Bitte versuchen Sie es später noch einmal.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -482,8 +510,13 @@ $messages['fi'] = array(
 	'wah-menu-jobs' => 'Työt',
 	'wah-menu-stats' => 'Tilastot',
 	'wah-menu-pref' => 'Asetukset',
+	'wah-lookingforjob' => 'Etsitään työtä...',
+	'wah-start-on-visit' => 'Käynnistä Wiki@Home aina kun vierailen tällä sivulla.',
 	'wah-uploading' => 'Tiedoston <i>$1</i> tallennus onnistui',
 	'wah-uploadfail' => 'Tallennus epäonnistui',
+	'wah-doneuploading' => 'Lähetys valmis. Kiitos osallistumisestasi.',
+	'wah-needs-firefogg' => 'Osallistuaksesi Wiki@Homeen sinun täytyy asentaa <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'API-virhe. Yritä myöhemmin uudelleen.',
 );
 
 /** French (Français)
@@ -1471,10 +1504,20 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'wah-short-audio' => '$1聲音文件，$2',
+	'wah-short-video' => '$1視頻文件，$2',
+	'wah-short-general' => '$1媒體文件，$2',
+	'wah-long-audio' => '（$1聲音文件，長度$2，$3）',
+	'wah-long-video' => '（$1視頻文件，長度$2，$4×$5像素，$3）',
+	'wah-long-general' => '（媒體文件，長度$2，$3）',
+	'wah-long-error' => '（ffmpeg不能讀取這個文件：$1）',
 	'wah-transcode-working' => '本影片正在處理中，請稍後再試',
+	'wah-transcode-fail' => '這個文件轉碼失敗',
+	'wah-javascript-off' => '你必須啟用JavaScript以參與Wiki@Home',
 	'wah-loading' => '正在載入Wiki@Home介面...',
 );
 

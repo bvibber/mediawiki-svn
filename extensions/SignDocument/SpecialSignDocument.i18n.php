@@ -330,7 +330,7 @@ $messages['arz'] = array(
 	'sign-hide-note' => '<small><i><font color="red">**</font> ملاحظة: المعلومات غير المعروضة ستظل مرئية للمديرين.</i></small>',
 	'sign-list-anonymous' => 'عرض كمجهول',
 	'sign-list-hideaddress' => 'لا تعرض العنوان',
-	'sign-list-hideextaddress' => 'لا تعرض المدينة، الولاية، الرقم البريدي، أو البلد',
+	'sign-list-hideextaddress' => 'لا تعرض المدينة، الولاية، الرقم البريدى، أو البلد',
 	'sign-list-hidephone' => 'لا تعرض الهاتف',
 	'sign-list-hidebday' => 'لا تعرض العمر',
 	'sign-list-hideemail' => 'لا تعرض البريد الإلكتروني',
@@ -340,7 +340,7 @@ $messages['arz'] = array(
 من فضلك تأكد من أن معلوماتك الشخصية صحيحة وأننا نملك وسيلة للاتصال بك للتأكد من هويتك.
 لاحظ أن عنوان الأيبى الخاص بك ومعلومات التعريف الأخرى سيتم تسجيلها بواسطة هذه الاستمارة وسيتم استخدامها بواسطة المديرين لتحجيم التوقيعات المكررة وتأكيد صحة معلوماتك الشخصية.
 بما أن استخدام البروكسيهات المجهولة والمفتوحة يمنع قدرتنا على أداء هذه المهمة، التوقيعات من هذه البروكسيهات على الأرجح لن يتم احتسابها.
-لو أنك موصول حاليا بواسطة خادم بروكسي، من فضلك اقطع التوصيل منه واستخدم اتصالا قياسيا أثناء التوقيع.</div>
+لو أنك موصول حاليا بواسطة خادم بروكسى، من فضلك اقطع التوصيل منه واستخدم اتصالا قياسيا أثناء التوقيع.</div>
 
 $1',
 	'sig-success' => 'لقد وقعت الوثيقة بنجاح.',
@@ -2375,9 +2375,14 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'sign-realname' => 'ಹೆಸರು:',
+	'sign-state' => 'ರಾಜ್ಯ:',
+	'sign-country' => 'ದೇಶ:',
+	'sign-bday' => 'ವಯಸ್ಸು:',
 	'sign-viewfield-realname' => 'ಹೆಸರು',
+	'sign-viewfield-address' => 'ವಿಳಾಸ',
 	'sign-viewfield-country' => 'ದೇಶ',
 	'sign-viewfield-email' => 'ಇ-ಅಂಚೆ',
+	'sign-viewfield-age' => 'ವಯಸ್ಸು',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -4335,6 +4340,13 @@ $messages['th'] = array(
 	'sign-viewfield-ip' => 'หมายเลขไอพี',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'sign-viewfield-reviewedby' => 'Gözden geçiriji',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -4674,16 +4686,36 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
+	'sign-realname' => '姓名：',
+	'sign-address' => '街道地址：',
+	'sign-city' => '城市：',
+	'sign-state' => '州份/省份：',
+	'sign-zip' => '邮政编号：',
+	'sign-country' => '国家地区：',
+	'sign-phone' => '电话号码：',
+	'sign-bday' => '年龄：',
+	'sign-email' => '电邮地址：',
+	'sign-list-hideaddress' => '不要列出地址',
+	'sign-list-hideextaddress' => '不要列出城市、州份／省份、邮政编号或国家地区',
+	'sign-list-hidephone' => '不要列出电话',
+	'sign-list-hidebday' => '不要列出年龄',
+	'sign-list-hideemail' => '不要列出电邮',
 	'sign-viewfield-realname' => '姓名',
 	'sign-viewfield-address' => '地址',
+	'sign-viewfield-city' => '城市',
+	'sign-viewfield-state' => '州份/省份',
+	'sign-viewfield-country' => '国家地区',
+	'sign-viewfield-zip' => '邮政编号',
 	'sign-viewfield-ip' => 'IP地址',
 	'sign-viewfield-phone' => '电话',
 	'sign-viewfield-email' => '电子邮件',
 	'sign-viewfield-age' => '年龄',
 	'sign-viewfield-options' => '选项',
+	'sign-closed' => '已关闭',
 	'sign-viewfield-reviewcomment' => '评论',
 	'sign-review-comment' => '评论',
 	'sign-uniquequery-similarname' => '近似姓名',
@@ -4693,6 +4725,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -4722,6 +4755,8 @@ $messages['zh-hant'] = array(
 	'sign-viewfield-age' => '年齡',
 	'sign-viewfield-options' => '選項',
 	'sign-closed' => '已關閉',
+	'sign-viewfield-reviewcomment' => '評論',
+	'sign-review-comment' => '評論',
 	'sign-uniquequery-similarname' => '近似姓名',
 	'sign-uniquequery-similaraddress' => '近似地址',
 	'sign-uniquequery-similarphone' => '近似電話',

@@ -34,7 +34,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'breadcrumbs-desc' => 'يعرض مسار المستخدمين خلال الويكي.',
+	'breadcrumbs-desc' => 'يعرض مسار المستخدمين خلال الويكى.',
 );
 
 /** Bavarian (Boarisch)

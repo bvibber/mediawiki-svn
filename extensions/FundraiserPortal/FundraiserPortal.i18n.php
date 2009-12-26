@@ -86,8 +86,10 @@ $messages['bg'] = array(
 	'fundraiserportal-plain-button' => 'Подкрепете Уикипедия!',
 	'fundraiserportal-ruby-button' => 'Дарете сега',
 	'fundraiserportal-rubytext-button' => 'Дарете сега',
+	'fundraiserportal-rubytext-close' => 'Скриване на това занапред',
 	'fundraiserportal-sapphire-button' => 'Дарете сега',
 	'fundraiserportal-tourmaline-button' => 'Дарете сега',
+	'fundraiserportal-tourmaline-close' => 'Скриване на това занапред',
 );
 
 /** Bengali (বাংলা)
@@ -932,6 +934,20 @@ $messages['te'] = array(
 	'fundraiserportal-tourmaline-button' => 'ఇప్పుడే విరాళమివ్వండి',
 	'fundraiserportal-tourmaline-message' => 'ప్రతీ విరాళమూ వికీపీడియాని అందరికీ ఉచితంగా ఆందించడానికి సహాయపడుతుంది.',
 	'fundraiserportal-tourmaline-close' => 'ఇప్పటి నుండి దీన్ని దాచు',
+);
+
+/** Thai (ไทย)
+ * @author Woraponboonkerd
+ */
+$messages['th'] = array(
+	'fundraiserportal-ruby-button' => 'บริจาคตอนนี้',
+	'fundraiserportal-rubytext-button' => 'บริจาคตอนนี้',
+	'fundraiserportal-rubytext-message' => 'ทุกๆ การบริจาคช่วยให้วิกิพีเดียยังคงใช้ได้ฟรีสำหรับทุกคน',
+	'fundraiserportal-rubytext-close' => 'ซ่อนส่วนนี้นับตั้งแต่นี้ไป',
+	'fundraiserportal-sapphire-button' => 'บริจาคตอนนี้',
+	'fundraiserportal-tourmaline-button' => 'บริจาคตอนนี้',
+	'fundraiserportal-tourmaline-message' => 'ทุกๆ การบริจาคช่วยให้วิกิพีเดียยังคงใช้ได้ฟรีสำหรับทุกคน',
+	'fundraiserportal-tourmaline-close' => 'ซ่อนส่วนนี้นับตั้งแต่นี้ไป',
 );
 
 /** Turkmen (Türkmençe)

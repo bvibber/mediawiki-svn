@@ -865,3 +865,10 @@ $messages['zh-hans'] = array(
 	'dplforum-never' => '从不',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'dplforum-never' => '從不',
+);
+

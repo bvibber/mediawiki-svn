@@ -194,12 +194,14 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
+ * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'protectsection_desc' => 'Antaa valtuutettujen käyttäjien suojata osia sivusta <tt>&lt;protect&gt;</tt>-elementillä.',
 	'protectsection_add_remove' => 'Yritit lisätä tai poistaa suojatun osion.',
 	'protectsection_modify' => 'Yritit muokata suojattua tekstiä.',
+	'protectsection_add_above' => 'Yritit lisätä tekstiä suojatun osion eteen',
 	'protectsection_forbidden' => 'Estetty',
 	'right-protectsection' => 'Suojata sivun osiot',
 );

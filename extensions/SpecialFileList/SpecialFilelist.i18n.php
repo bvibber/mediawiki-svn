@@ -932,9 +932,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'filelist' => '檔案清單',
+	'filelist-show-list' => '顯示列表',
+	'filelist-show-gallery' => '顯示畫廊',
 );
 

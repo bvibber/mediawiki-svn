@@ -32,6 +32,13 @@ $messages['ar'] = array(
 	'uploadblacklist-desc' => 'يضيف وظيفة قائمة رفع سوداء',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'uploadblacklist-desc' => 'يزود وظيفه بلاكليست للرفع',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -352,6 +359,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'uploadblacklist-desc' => 'Lägger till en funktion för att svartlista vissa uppladdningar',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'uploadblacklist-desc' => 'Ýükleme gara sanawy funksionallygyny goşýar',
 );
 
 /** Turkish (Türkçe)

@@ -481,7 +481,7 @@ $messages['arz'] = array(
 	'deletequeue-prod-title' => 'اقتراح حذف "$1"',
 	'deletequeue-prod-text' => "أنت يمكنك استخدام هذه الاستمارة لاقتراح حذف \"'''\$1'''\".
 
-لو، بعد خمسة أيام، لا أحد اعترض على حذف هذه الصفحة، سيتم حذفها بعد مراجعة نهائية بواسطة إداري.",
+لو، بعد خمسة أيام، لا أحد اعترض على حذف هذه الصفحة، سيتم حذفها بعد مراجعة نهائية بواسطة إدارى.",
 	'deletequeue-delnom-reason' => 'السبب للترشيح:',
 	'deletequeue-delnom-otherreason' => 'سبب آخر',
 	'deletequeue-delnom-extra' => 'معلومات إضافية:',
@@ -1175,6 +1175,9 @@ Du kannst deine eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{F
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'deletequeue-action-text-queued' => 'Sie können die folgenden Seiten für den Löschantrag aufrufen:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Pros und Contras].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Stimme zu diesem Löschantrag abgeben].',
 	'deletequeue-permissions-noedit' => 'Sie müssen eine Seite bearbeiten können, um ihren Löschstatus zu verändern.',
 	'deletequeue-speedy-text' => "Auf dieser Seite können Sie „'''$1'''“ zur Schnelllöschung vorschlagen.
 
@@ -1183,18 +1186,37 @@ Sie müssen einen Löschgrund aus dem untenstehenden Dropdown-Menü auswählen u
 	'deletequeue-prod-text' => "Auf dieser Seite können Sie „'''$1'''“ zur Löschung vorschlagen.
 
 Wenn nach fünf Tagen niemand Einspruch gegen die Löschung eingelegt hat, wird die Seite nach Begutachtung durch einen Administrator gelöscht.",
+	'deletequeue-page-prod' => "Diese Seite wurde zur Löschung vorgeschlagen.
+Der angegebene Grund lautet ''$1''.
+Wenn hiergegen bis zum ''$3, $4 Uhr'' kein Widerspruch eingelegt wird, wird diese Seite gelöscht werden.
+Sie können gegen diesen Löschantrag [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Widerspruch einlegen].",
 	'deletequeue-notqueued' => 'Die von Ihnen ausgewählte Seite ist momentan in keiner Lösch-Warteschlange',
 	'deletequeue-actiondisabled-involved' => 'Die folgende Aktion ist deaktiviert, weil Sie in dieser Löschsache bereits als $1 teilgenommen haben:',
 	'deletequeue-review-badaction' => 'Sie haben eine ungültige Aktion angegeben',
 	'deletequeue-review-actiondenied' => 'Sie haben eine Aktion angegeben, die für diese Seite deaktiviert ist',
+	'deletequeue-review-objections' => "'''Warnung''': Gegen die Löschung dieser Seite wurde [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} Widerspruch eingelegt].
+Bitte prüfen Sie die Widerspruchs-Argumente, bevor Sie diese Seite löschen.",
 	'deletequeue-reviewspeedy-text' => "Auf dieser Seite können Sie den Schnelllöschantrag für „'''$1'''“ überprüfen.
 Bitte stellen Sie sicher, dass diese Seite in Übereinstimmung mit den Richtlinien schnellgelöscht werden kann.",
 	'deletequeue-reviewprod-text' => "Auf dieser Seite können Sie den unumstrittenen Löschantrag für „'''$1'''“ prüfen.",
+	'deletequeue-reviewdeletediscuss-text' => "Auf dieser Seite können Sie die Löschdiskussion von „'''$1'''“ prüfen.
+
+Es gibt eine [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Liste] mit Stimmen für und gegen die Löschung; die eigentliche Diskussion ist unter [[$2]] zu finden.
+Bitte achten Sie darauf, dass Ihre Entscheidung mit dem Konsens der Diskussion vereinbar ist.",
 	'deletequeue-review-success' => 'Sie haben erfolgreich die Löschung dieser Seite geprüft',
+	'deletequeue-deletediscuss-discussionpage' => 'Dies ist die Diskussionsseite für die Löschung von [[$1]].
+Momentan {{PLURAL:$2|unterstützt ein|unterstützen $2}} Benutzer die Löschung, während $3 Benutzer sie ablehnen.
+Sie können die Löschung [{{fullurl:$1|action=delvote}} befürworten oder ablehnen] oder [{{fullurl:$1|action=delviewvotes}} alle Stimmen ansehen].',
+	'deletequeue-vote-text' => "Auf dieser Seite können Sie die Löschung von „'''$1'''“ befürworten oder ablehnen.
+Diese Aktion überschreibt alle Stimmen, die Sie vorher zur Löschung dieser Seite abgegeben haben.
+Sie können die bereits abgegebenen Stimmen [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} ansehen].
+Der Löschantragsgrund war ''$2''.",
 	'deletequeue-vote-success-endorse' => 'Sie haben erfolgreich die Löschung dieser Seite befürwortet.',
 	'deletequeue-vote-success-object' => 'Sie haben erfolgreich die Löschung dieser Seite abgelehnt.',
 	'deletequeue-vote-requeued' => 'Sie haben erfolgreich die Löschung dieser Seite abgelehnt.
 Durch Ihren Widerspruch wurde die Seite in die Lösch-Warteschlange $1 verschoben.',
+	'deletequeue-showvotes-text' => "Untenstehend sind die Befürwortungen und Ablehnungen der Löschung von „'''$1'''“.
+Sie können Ihre eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{FULLPAGENAME}}|action=delvote}} hier] eintragen.",
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -3361,6 +3383,13 @@ $messages['km'] = array(
 	'deletequeue-case-expiry' => 'ផុតកំណត់​៖',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'deletequeue-case-reason' => 'ಕಾರಣ:',
+);
+
 /** Krio (Krio)
  * @author Jose77
  */
@@ -4127,6 +4156,7 @@ Du kan [{{fullurl:{{FULLPAGENAME}}|action=delvote}} legge inn ditt eget bifall a
 	'deletequeue-list-votecount' => '{{PLURAL:$1|Ett bifall|$1 bifall}}, {{PLURAL:$2|en innvending|$2 innvendinger}}',
 	'deletequeue-list-header-page' => 'Side',
 	'deletequeue-list-header-queue' => 'Kø',
+	'deletequeue-list-header-votes' => 'Bifall og innvendinger',
 	'deletequeue-list-header-expiry' => 'Varighet',
 	'deletequeue-list-header-discusspage' => 'Diskusjonsside',
 	'deletequeue-case-intro' => 'Denne siden lister opp informasjon om en spesifikk slettesak.',
@@ -5665,6 +5695,7 @@ $messages['ug-latn'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'deletequeue-vote-submit' => 'Відправити',
 	'deletequeue-case-reason' => 'Причина:',
 );
 
@@ -5831,6 +5862,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -5845,8 +5877,11 @@ $messages['zh-hant'] = array(
 	'deletequeue-vote-submit' => '提交',
 	'deletequeue-showvotes-restrict-endorse' => '只顯示贊成票',
 	'deletequeue-showvotes-restrict-object' => '只顯示反對票',
+	'deletequeue-list-status' => '狀態：',
 	'deletequeue-list-search' => '搜尋',
 	'deletequeue-list-anyqueue' => '（任何）',
 	'deletequeue-list-votes' => '投票清單',
+	'deletequeue-list-header-page' => '頁面',
+	'deletequeue-case-reason' => '原因：',
 );
 

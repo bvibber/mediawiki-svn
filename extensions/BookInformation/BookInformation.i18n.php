@@ -944,6 +944,13 @@ $messages['km'] = array(
 	'bookinfo-provider' => 'អ្នកផ្គត់ផ្គង់ទិន្នន័យ៖ $1',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'bookinfo-result-author' => 'ಕರ್ತೃ:',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Kwj2772

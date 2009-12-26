@@ -74,7 +74,7 @@ $messages['arz'] = array(
 	'whatismyip' => 'ما هو الأيبى الخاص بي',
 	'whatismyip-desc' => 'يظهر [[Special:WhatIsMyIP|أيبي]] اليوزر الحالي',
 	'whatismyip-out' => 'الأيبى الخاص بك:',
-	'right-whatismyip' => 'رؤية [[Special:WhatIsMyIP|عنوان الأيبي الشخصي]]',
+	'right-whatismyip' => 'رؤية [[Special:WhatIsMyIP|عنوان الأيبى الشخصي]]',
 );
 
 /** Azerbaijani (Azərbaycan)
@@ -802,9 +802,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'whatismyip' => '顯示我的IP',
+	'whatismyip-desc' => '顯示當前用戶的[[Special:WhatIsMyIP|IP地址]]',
 	'whatismyip-out' => '您的IP位址：',
+	'right-whatismyip' => '查看[[Special:WhatIsMyIP|自己的IP地址]]',
 );
 

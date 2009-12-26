@@ -858,6 +858,14 @@ Samo: „* PD-“ no ojenon kladis valik, kels primons me: „PD-“ , äs „PD
 * Self',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'minipreview-files_in_category' => "本分类包含'''$1'''个档案。",
+	'minipreview-files_in_gallery' => "本图片廊包含'''$1'''个档案。",
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

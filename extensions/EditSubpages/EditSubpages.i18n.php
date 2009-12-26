@@ -743,3 +743,19 @@ $messages['zh-hans'] = array(
   #</pre><!-- 本行需要保留 -->',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'editsubpages-desc' => '允許系統管理員通過[[MediaWiki:Unlockedpages]]將一個頁面及其子頁面解除封鎖，以便任何用戶都可以編輯。',
+	'unlockedpages' => ' #<!-- 本行需要保留 --><pre>
+# 使用這個形式，將您想解除封鎖的頁面寫於下方
+# * 頁面名稱
+# 解除封鎖的頁面必須以星號開頭
+# 否則無效
+# 頁面名稱可以是 [[鏈接]] 的形式，並且所羅列的頁面名稱對簡繁體敏感
+# 討論頁將會隨着頁面自動解除封鎖
+# 請瀏覽 http://www.mediawiki.org/wiki/Extension:EditSubpages 以獲得更多幫助
+  #</pre><!-- 本行需要保留 -->',
+);
+

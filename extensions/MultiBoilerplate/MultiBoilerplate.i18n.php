@@ -257,6 +257,13 @@ $messages['haw'] = array(
 	'multiboilerplate-submit' => 'Ho‘ouka',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'multiboilerplate-submit' => 'טעינה',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

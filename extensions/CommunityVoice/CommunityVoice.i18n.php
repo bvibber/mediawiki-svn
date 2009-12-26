@@ -102,10 +102,12 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Turin
  */
 $messages['bg'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Изпращане...',
 	'communityvoice-ratings-scale-status-error' => 'Грешка при изпращането!',
+	'communityvoice-ratings-scale-status-thanks' => 'Благодарим за гласуването!',
 );
 
 /** Breton (Brezhoneg)
@@ -844,11 +846,19 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'communityvoice' => 'Голос спільноти',
+	'communityvoice-desc' => 'Інструменти участі спільноти',
+	'communityvoice-ratings' => 'Рейтинги',
 	'communityvoice-ratings-scale-status-sending' => 'Надсилання...',
 	'communityvoice-ratings-scale-status-error' => 'Помилка при відправленні!',
+	'communityvoice-ratings-scale-status-thanks' => 'Дякуємо за участь у голосуванні!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 (отримано $2 {{PLURAL:$2|голос|голоси|голосів}})',
+	'communityvoice-ratings-error-no-category' => 'Відсутній атрибут категорії тегу рейтингу.',
+	'communityvoice-ratings-error-no-title' => 'Відсутній атрибут назви тегу рейтингу.',
 );
 
 /** Vèneto (Vèneto)

@@ -51,6 +51,13 @@ $messages['bs'] = array(
 	'svgzoom-desc' => 'Dodaje mogućnosti pomijeranja i zumiranja na MediaWiki pri pregledavanju SVG datoteka',
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'svgzoom-desc' => 'Fügt Schwenk- und Zoomfunktionen für SVG-Dateien in MediaWiki hinzu',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -986,12 +986,16 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'watchers' => '監視者',
 	'watchers_link_title' => '誰在監視此頁？',
 	'watchers_error_article' => "'''錯誤：'''頁面不存在。",
+	'watchers_header' => '監視"$1"的{{PLURAL:$2|用戶|用戶}}',
 	'watchers_noone_watches' => '沒有人監視此頁面。',
+	'watchers_x_or_more' => '$1 或者更多的{{PLURAL:$1|用戶|用戶}}將本頁加入了他們的監視列表。',
+	'watchers_less_than_x' => '少於$1的{{PLURAL:$1|用戶|用戶}}將本頁加入了他們的監視列表。',
 );
 

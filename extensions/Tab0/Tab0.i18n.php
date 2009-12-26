@@ -413,3 +413,10 @@ $messages['zh-hans'] = array(
 	'tab0-desc' => '添加“0”选项卡，链接到页面的第一节的编辑页面',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'tab0-desc' => '添加“0”選項卡，鏈接到頁面的第一節的編輯頁面',
+);
+

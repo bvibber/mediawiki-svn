@@ -212,6 +212,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'closewikis-desc' => "Aotreañ a ra da brennañ lec'hiennoù wiki er merour wiki-mañ",
 	'closewikis-page' => 'Serriñ ar wiki',
 	'closewikis-page-close' => 'Serriñ ar wiki',
 	'closewikis-page-close-wiki' => 'Wiki :',
@@ -224,13 +225,17 @@ $messages['br'] = array(
 	'closewikis-page-reopen-reason' => 'Abeg :',
 	'closewikis-page-reopen-submit' => 'Addigeriñ',
 	'closewikis-page-reopen-success' => 'Wiki bet addigoret',
+	'closewikis-page-err-nowiki' => "N'eo ket mat ar wiki bet lakaet",
 	'closewikis-page-err-closed' => 'Serret eo ar wiki dija',
 	'closewikis-page-err-opened' => "N'eo ket serret ar wiki",
 	'closewikis-list' => 'Roll ar wikioù serret',
+	'closewikis-list-intro' => 'Er roll-mañ ez eus ar wikioù serret gant ar stewarded.',
 	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-list-header-by' => 'Serret gant',
 	'closewikis-list-header-timestamp' => "Serret d'an",
 	'closewikis-list-header-dispreason' => 'Abeg diskwelet',
+	'closewikis-log' => 'Marilh ar wikioù serret',
+	'closewikis-log-header' => 'Amañ ez eo ur marilh eus prennadurioù hag addigoradurioù wikioù bet graet gant stewarded',
 	'closewikis-log-close' => '{{Gender:.|en|he}} deus serret $2',
 	'closewikis-log-reopen' => '{{Gender:.|en|he}} deus addigoret $2',
 	'right-editclosedwikis' => 'Aozañ ar wikioù serret',
@@ -521,8 +526,12 @@ $messages['et'] = array(
 	'closewikis-list-header-wiki' => 'Viki',
 	'closewikis-list-header-by' => 'Sulgeja:',
 	'closewikis-list-header-timestamp' => 'Suletud',
+	'closewikis-list-header-dispreason' => 'Põhjus esitatud',
+	'closewikis-log' => 'Wikide sulgemislogi',
 	'closewikis-log-close' => 'suleti $2',
 	'closewikis-log-reopen' => 'taasavati $2',
+	'right-editclosedwikis' => 'Redigeeri suletud wikisid',
+	'right-closewikis' => 'Sulge wikisid',
 );
 
 /** Basque (Euskara)
@@ -992,6 +1001,13 @@ $messages['km'] = array(
 	'closewikis-log-close' => 'បានបិទ$2',
 	'closewikis-log-reopen' => 'បាន​បើកឡើងវិញ $2',
 	'right-closewikis' => 'បិទវិគី',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'closewikis-page-reopen-reason' => 'ಕಾರಣ:',
 );
 
 /** Korean (한국어)
@@ -1908,6 +1924,13 @@ $messages['yi'] = array(
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'closewikis-page-reopen-reason' => '原因：',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
 	'closewikis-page-reopen-reason' => '原因：',
 );
 

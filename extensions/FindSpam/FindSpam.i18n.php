@@ -1080,11 +1080,16 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'findspam' => '查找垃圾鏈接',
+	'findspam-desc' => '添加一頁[[Special:FindSpam|特殊頁面]]來查找最近加入的垃圾鏈接',
 	'findspam-ip' => 'IP位址：',
 	'findspam-ok' => '確定',
+	'findspam-notextfound' => '沒有查找到貢獻',
+	'right-findspam' => '搜索最近增加的垃圾鏈接',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)

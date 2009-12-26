@@ -35,6 +35,13 @@ $messages['ar'] = array(
 	'categorytests-desc' => 'دوال لاختبار التاصنيف',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'categorytests-desc' => 'Funkzionen zum Testn vu Kategorien',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

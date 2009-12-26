@@ -140,11 +140,13 @@ $messages['bs'] = array(
 	'commentbox-error-empty-comment' => 'Prazni komentari nisu dozvoljeni!',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Imre
+ */
 $messages['de'] = array(
 	'commentbox-desc' => 'Fügt in bestimmte Seiten ein Kommentarfeld ein',
 	'commentbox-intro' => '== Kommentar hinzufügen … ==
-Du hast einen Kommentar zu dieser Seite? Trag ihn hier ein oder <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbeite die Seite direkt]</span>.',
+Du hast einen Kommentar zu dieser Seite? Trage ihn hier ein oder <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbeite die Seite direkt]</span>.',
 	'commentbox-savebutton' => 'Kommentar speichern',
 	'commentbox-name' => 'Name:',
 	'commentbox-name-explanation' => '<small>(Tipp: Wenn du dich [[Special:UserLogin|anmeldest]], musst du hier nicht mehr deinen Namen angeben)</small>',
@@ -155,6 +157,15 @@ Du hast einen Kommentar zu dieser Seite? Trag ihn hier ein oder <span class="pla
 	'commentbox-error-page-nonexistent' => 'Die Seite existiert nicht!',
 	'commentbox-error-namespace' => 'Kommentare sind in diesem Namensraum nicht erlaubt!',
 	'commentbox-error-empty-comment' => 'Leere Kommentare sind nicht erlaubt!',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'commentbox-intro' => '== Kommentar hinzufügen … ==
+Sie haben einen Kommentar zu dieser Seite? Tragen Sie ihn hier ein oder <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbeiten Sie die Seite direkt]</span>.',
+	'commentbox-name-explanation' => '<small>(Tipp: Wenn Sie sich [[Special:UserLogin|anmelden]], müssen Sie hier nicht mehr Ihren Namen angeben)</small>',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -726,6 +737,21 @@ Chcete túto stránku okomentovať? Napíšte to sem alebo <span class="plainlin
 	'commentbox-error-page-nonexistent' => 'Táto stránka neexistuje!',
 	'commentbox-error-namespace' => 'Komentáre nie sú v tomto mennom priestore povolené!',
 	'commentbox-error-empty-comment' => 'Prázdne komentáre nie sú povolené!',
+);
+
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'commentbox-savebutton' => 'Spara kommentar',
+	'commentbox-name' => 'Namn:',
+	'commentbox-log' => 'Nya kommentarer',
+	'commentbox-first-comment-heading' => '== Kommentarer ==',
+	'commentbox-regex' => '/\\n==\\s*Kommentarer\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Ett fel uppstod när kommentaren skapades',
+	'commentbox-error-page-nonexistent' => 'Denna sidan existerar inte!',
+	'commentbox-error-namespace' => 'Kommentarer är inte tillåtna i denna namnrymd!',
+	'commentbox-error-empty-comment' => 'Tomma kommentarer är inte tillåtna!',
 );
 
 /** Telugu (తెలుగు)

@@ -748,6 +748,7 @@ Klik op de pijl om alle onder die paginaam geïndexeerde pagina's weer te geven.
  * @author Simny
  */
 $messages['no'] = array(
+	'indexfunc-desc' => 'Parserfunksjone for å opprette automatiske omdirigeringer og pekersider',
 	'indexfunc-badtitle' => 'Ugyldig tittel: «$1»',
 	'indexfunc-editwarning' => 'Advarsel:
 Denne tittelen brukes i innholdsfortegnelsen for følgende {{PLURAL:$2|side|sider}}:
@@ -759,12 +760,20 @@ Dersom du oppretter denne siden, fjern denne tittelen fra <nowiki>{{#index:}}</n
 «$1» brukes i innholdsfortegnelsen for følgende {{PLURAL:$3|side|sider}}:
 $2
 Fjern «$1» fra <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|siden|sidene}} over.',
+	'index' => 'Registersøk',
+	'index-legend' => 'Søk i registeret',
 	'index-search' => 'Søk:',
 	'index-submit' => 'Send',
 	'index-disambig-start' => "'''$1''' kan referere til flere sider:",
 	'index-emptylist' => 'Det er ingen sider koblet til «$1»',
+	'index-expand-detail' => 'Vis sider registrert under denne tittelen',
 	'index-hide-detail' => 'Gjem listen over sider',
 	'index-no-results' => 'Søket ga ingen treff',
+	'index-search-explain' => 'Denne siden bruker registersøk.
+
+Skriv inn de første tegnene og trykk på send-knappen for å søke etter sidetitler og registerinnlegg som starter med søkestrengen',
+	'index-details-explain' => 'Innlegg med piler er registerinnlegg.
+Klikk på pilen for å vise alle sider registrert under den tittelen.',
 );
 
 /** Occitan (Occitan)
@@ -1042,11 +1051,15 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'indexfunc-badtitle' => '無效標題：“$1”',
+	'indexfunc-index-exists' => '“$1”頁面已存在',
 	'index-search' => '搜尋：',
 	'index-submit' => '遞交',
 	'index-hide-detail' => '隱藏頁面清單',
+	'index-no-results' => '無任何搜索結果',
 );
 

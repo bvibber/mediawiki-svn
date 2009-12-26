@@ -701,6 +701,7 @@ $messages['no'] = array(
 	'security-info-toggle' => 'sikkerhetsrelaterte begrensninger',
 	'security-inforestrict' => '$1 er avgrenset til $2',
 	'security-desc-LS' => '(gjelder fordi denne siden er i «$2 $1»)',
+	'security-desc-PR' => '(kan settes fra «beskytt»-fanen)',
 	'security-infosysops' => 'Ingen restriksjoner er virksomme fordi du er medlem av administratorgruppen',
 	'security-manygroups' => 'gruppene $1 og $2',
 	'security-unchain' => 'Endre handligene individuelt',
@@ -983,6 +984,13 @@ $messages['yi'] = array(
 	'badaccess-read' => "'''ווארענונג:''' \"\$1\" ווערט אָנגעוויזן אַהער, אבער איר האט נישט גענוג דערלויבנישן צו האָבן צוטריט צו אים.",
 	'security-type-category' => 'קאַטעגאריע',
 	'security-type-namespace' => 'נאָמענטייל',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'security-type-namespace' => '名字空间',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

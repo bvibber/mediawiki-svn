@@ -234,7 +234,7 @@ $messages['arz'] = array(
 لو سمحت تنزل < a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">الجافا</a>.',
 	'ogg-no-xiphqt' => 'الظاهر انه ماعندكش مكون الـ XiphQT لكويك تايم.
 كويك تايم مش ممكن يعرض ملفات Ogg  من غير المكون دا.
-لو سمحت <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">تنزل XiphQT</a> أو تختار برنامج تاني.',
+لو سمحت <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">تنزل XiphQT</a> أو تختار برنامج تانى.',
 	'ogg-player-videoElement' => 'دعم البراوزر الاصلي',
 	'ogg-player-oggPlugin' => 'اضافة براوزر',
 	'ogg-player-cortado' => 'كورتادو (جافا)',
@@ -2586,6 +2586,7 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'ogg-short-audio' => 'Fişier de sunet ogg $1, $2',
@@ -2605,6 +2606,7 @@ $messages['ro'] = array(
 Te rog <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarcă un program de redare</a>.',
 	'ogg-player-videoElement' => 'Navigator cu suport nativ',
 	'ogg-player-oggPlugin' => 'Insert navigator',
+	'ogg-player-thumbnail' => 'Încă imaginea doar',
 	'ogg-player-soundthumb' => 'Niciun program de redare',
 	'ogg-player-selected' => '(selectat)',
 	'ogg-use-player' => 'Foloseşte programul de redare:',
@@ -3333,6 +3335,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
 	'ogg-desc' => 'Ogg Theora 和 Vorbis 檔案的處理器，含 JavaScript 播放器',
@@ -3355,7 +3358,7 @@ $messages['zh-hant'] = array(
 	'ogg-no-xiphqt' => '您似乎沒有給QuickTime用的XiphQT組件。在未有這個組件的情況下，QuickTime是不能播放Ogg檔案的。請<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下載XiphQT</a>或者選取另一個播放器。',
 	'ogg-player-videoElement' => '<video>元素',
 	'ogg-player-oggPlugin' => 'Ogg插件',
-	'ogg-player-thumbnail' => '只有靜止圖像',
+	'ogg-player-thumbnail' => '只有靜止圖片',
 	'ogg-player-soundthumb' => '沒有播放器',
 	'ogg-player-selected' => '（已選取）',
 	'ogg-use-player' => '使用播放器:',

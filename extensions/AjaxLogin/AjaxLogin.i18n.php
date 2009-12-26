@@ -311,7 +311,7 @@ Vérifiez l'orthographe.",
  */
 $messages['frp'] = array(
 	'ajaxlogin-desc' => 'Formulèro dinamico que pèrmèt ux utilisators de sè branchiér et pués retegnir lor mot de pâssa.',
-	'ajaxLogin1' => 'Por complètar voutron branchement, vos dête buchiér un novél mot de pâssa.
+	'ajaxLogin1' => 'Por complètar voutron branchement, vos dête buchiér un mot de pâssa novél.
 Cen vos farat quitar ceta pâge et pués vos porriâd pèrdre voutros changements que sont aprés étre fêts.',
 	'ajaxLogin2' => 'Éte-vos de sûr ?
 Vos porriâd pèrdre voutros changements que sont aprés étre fêts sur ceta pâge se vos la quitâd ora.',
@@ -948,10 +948,14 @@ $messages['zh-cn'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Wmr89502270
  * @author 許瑜真 (Yuchen Hsu/KaurJmeb)
  */
 $messages['zh-hans'] = array(
+	'ajaxlogin-desc' => '使用动态视窗登入及记忆密码',
+	'ajaxLogin1' => '为完成登入，您必需输入一组新密码。
+这将可以让您不损失任何编辑资料直接登入。',
 	'ajaxLogin2' => '这动作可能会使你跳离编辑页面，可能会损失编辑结果。确定要离开吗？',
 	'ajaxlogin-create' => '创建一个账户',
 );

@@ -67,6 +67,14 @@ $messages['bs'] = array(
 	'templateinfo-header' => 'XML definicija za ovaj šablon je:',
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'templateinfo-desc' => 'Unterstützt Vorlagen, die ihre Datenstruktur über XML auszeichnen',
+	'templateinfo-header' => 'Die XML-Definition für diese Vorlage ist:',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

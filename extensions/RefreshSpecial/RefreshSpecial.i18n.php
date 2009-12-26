@@ -134,12 +134,12 @@ $messages['arz'] = array(
 	'refreshspecial-js-disabled' => '(<i>أنت لا يمكنك اختيار كل الصفحات عندما تكون الجافاسكريبت معطلة</i>)',
 	'refreshspecial-select-all-pages' => 'اختار كل الصفحات',
 	'refreshspecial-link-back' => 'رجوع إلى الامتداد',
-	'refreshspecial-none-selected' => 'أنت لم تختر أى صفحة خاصة. استرجاع إلى الاختيار الافتراضي.',
+	'refreshspecial-none-selected' => 'أنت لم تختر أى صفحة خاصة. استرجاع إلى الاختيار الافتراضى.',
 	'refreshspecial-db-error' => 'فشل: خطأ قاعدة بيانات',
 	'refreshspecial-no-page' => 'لا توجد صفحة خاصة كهذه',
 	'refreshspecial-slave-lagged' => 'الخادم التابع تأخر، جارى الانتظار...',
 	'refreshspecial-reconnected' => 'تمت إعادة التوصيل.',
-	'refreshspecial-reconnecting' => 'التوصيل فشل، إعادة التوصيل خلال 10 ثواني...',
+	'refreshspecial-reconnecting' => 'التوصيل فشل، إعادة التوصيل خلال 10 ثوانى...',
 	'refreshspecial-page-result' => 'حصل على $1 {{PLURAL:$1|صف|صف}} فى',
 	'refreshspecial-total-display' => 'تحديث $1 {{PLURAL:$1|صفحة|صفحة}} بإجمالى $2 {{PLURAL:$2|صف|صف}} فى وقت $3 (الزمن الإجمالى لعمل السكريبت هو $4)',
 	'right-refreshspecial' => 'إنعاش الصفحات الخاصة',
@@ -189,15 +189,28 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'refreshspecial' => 'Freskaat ar bajennoù ispisial',
+	'refreshspecial-desc' => 'Aotreañ a ra ar [[Special:RefreshSpecial|freskadur gant an dorn]] eus ar bajennoù ispisial',
 	'refreshspecial-title' => 'Freskaat ar pajennoù arbennik',
+	'refreshspecial-help' => "Ar bajenn ispisial-mañ a ro an tro da freskaat pajennoù ispisial gant an dorn.
+P'ho peus dibabet an holl pajennoù ho peus c'hoant freskaat klikit war \"Freskaat\" amañ dindan evit diskouez ar bajennoù dibabet.
+'''Diwallit :''' war ar wikioù bras e c'hell padout an traoù un tamm.",
 	'refreshspecial-button' => 'Freskaat ar re ziuzet',
+	'refreshspecial-fail' => "Mar plij gevaskit ur bajenn ispisial da freskaat d'an nebeutañ.",
 	'refreshspecial-refreshing' => 'o freskaat ar pajennoù arbennik',
+	'refreshspecial-skipped' => 'diwar gorre, lammet',
+	'refreshspecial-choice' => 'o freskaat pajennoù ispisial',
+	'refreshspecial-js-disabled' => "(<i>Ne c'helloc'h ket dibab an holl pajennoù pa 'z eo diweredekaet JavaScript</i>)",
 	'refreshspecial-select-all-pages' => 'Diuzañ an holl bajennoù',
 	'refreshspecial-link-back' => "Distreiñ d'ar bajennoù ispisial",
+	'refreshspecial-none-selected' => "N'ho peus dibabet pajenn ispisial ebet. Distro davet an dibab dre ziouer.",
 	'refreshspecial-db-error' => "C'hwitet : fazi gant an diaz roadennoù",
 	'refreshspecial-no-page' => "N'eus ket a bajenn ispisial",
+	'refreshspecial-slave-lagged' => 'Dale war ar servijer sklav, o gortoz...',
 	'refreshspecial-reconnected' => 'Adkevreet.',
+	'refreshspecial-reconnecting' => "N'oc'h ket bet kevreadet, adkevreadenn a-benn 10 eilenn...",
 	'refreshspecial-page-result' => 'Kaout $1 {{PLURAL:$1|linenn |linenn}} e',
+	'refreshspecial-total-display' => '$1 pajenn freskaet{{PLURAL:$1||}} evit un hollad a $2 linenn{{PLURAL:$2||}} e-pad $3 (sevenadur hollek ar skript en deus padet $4)',
 	'right-refreshspecial' => 'Freskaat ar pajennoù arbennik',
 );
 

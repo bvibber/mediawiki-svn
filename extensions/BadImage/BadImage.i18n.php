@@ -1237,6 +1237,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'badimages-name' => 'ಹೆಸರು:',
+	'badimages-reason' => 'ಕಾರಣ:',
 );
 
 /** Korean (한국어)
@@ -2544,6 +2545,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
@@ -2567,5 +2569,6 @@ $messages['zh-hant'] = array(
 	'badimages-log-add' => '已經加入 [[$1]] 到壞圖像列表',
 	'badimages-log-remove' => '已經由壞圖像列表中移除 [[$1]]',
 	'badimages-page' => '{{ns:help}}:壞圖像列表',
+	'right-badimages' => '更新不雅圖像列表',
 );
 

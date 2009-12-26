@@ -120,6 +120,13 @@ $messages['gsw'] = array(
 	'wikieditor-highlight-preference' => 'Syntaxmarkierig bim Bearbeite meglig mache',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'wikieditor-highlight-preference' => 'הפעלת הדגשת תחביר בעת העריכה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

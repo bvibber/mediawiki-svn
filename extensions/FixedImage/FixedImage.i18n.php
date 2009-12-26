@@ -532,9 +532,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'fixedimage-desc' => '加入 <tt><nowiki><fundraising></nowiki></tt> 標籤作為一幅圖像',
+	'fixedimage-desc' => '加入 <tt><nowiki><fundraising></nowiki></tt> 標籤作為一幅圖片',
 );
 

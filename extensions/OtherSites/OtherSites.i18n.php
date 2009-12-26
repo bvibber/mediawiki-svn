@@ -38,6 +38,14 @@ $messages['arz'] = array(
 	'othersites-desc' => 'ينقل وصلات الإنترويكى غير وصلات اللغة إلى مكانها الخاص',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'othersites' => 'ãndare Seitn',
+	'othersites-desc' => "Vaschiabt Intawiki-Links in a eigene Box, wãun's kane Språchn-Links san",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -483,5 +491,12 @@ $messages['vo'] = array(
  */
 $messages['zh-hans'] = array(
 	'othersites' => '其他网站',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'othersites' => '其他網站',
 );
 

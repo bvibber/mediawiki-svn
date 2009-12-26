@@ -133,11 +133,15 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'onlinestatus-desc' => "Ouzhpennañ a ran un arvenntenn evit diskouez ma 'z eo amañ an implijer pe get",
+	'onlinestatus-js-anon' => "Fazi : rankout a reoc'h bezañ luget evit implijout an arc'hweladur-mañ",
 	'onlinestatus-js-changed' => 'Cheñchet eo bet ho statud da « $1 »',
+	'onlinestatus-js-error' => 'Diposubl eo cheñch ar statud, n\'eo ket mat an dalvoudenn "$1"',
 	'onlinestatus-subtitle-offline' => 'Ezlinenn eo an implijer-mañ evit bremañ',
 	'onlinestatus-subtitle-online' => 'Enlinenn eo an implijer-mañ evit bremañ',
 	'onlinestatus-tab' => 'Statud',
 	'onlinestatus-toggles-desc' => 'Ho statud :',
+	'onlinestatus-toggles-explain' => "Aotreañ a ra an implijerien all da c'houzout ma 'z oc'h enlinenn pe get en ur sellet ouzh ho pajenn implijer.",
 	'onlinestatus-toggles-show' => 'Diskouez ma statud war ma fajenn implijer',
 	'onlinestatus-toggle-offline' => 'Ezlinenn',
 	'onlinestatus-toggle-online' => 'Enlinenn',
@@ -1183,15 +1187,22 @@ $messages['zh-hans'] = array(
 	'onlinestatus-subtitle-offline' => '这个用户当前离线',
 	'onlinestatus-subtitle-online' => '这个用户当前在线',
 	'onlinestatus-tab' => '状态',
+	'onlinestatus-toggles-desc' => '您的状态：',
 	'onlinestatus-toggles-show' => '在我的用户页显示在线状态',
+	'onlinestatus-toggle-offline' => '离线',
+	'onlinestatus-toggle-online' => '在线',
+	'onlinestatus-pref-onlineonlogin' => '当登入时把我的状态设为在线',
+	'onlinestatus-pref-offlineonlogout' => '当登出时把我的状态设为离线',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'onlinestatus-subtitle-offline' => '這用戶現正離線',
 	'onlinestatus-subtitle-online' => '這用戶現正在線',
+	'onlinestatus-tab' => '狀態',
 	'onlinestatus-toggles-desc' => '您的狀態：',
 	'onlinestatus-toggles-show' => '在我的用戶頁面顯示在線狀態',
 	'onlinestatus-toggle-offline' => '離線',

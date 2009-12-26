@@ -667,7 +667,7 @@ $messages['arz'] = array(
 	'configure-form-reason' => 'سبب:',
 	'configure-customised' => '"الاعداد دا اتعدل"',
 	'configure-arrayinput-oneperline' => "''(واحد فى السطر)''",
-	'configure-summary' => 'هذه الصفحة الخاصة تسمح لك بضبط هذا الويكي، انظر [http://www.mediawiki.org/wiki/Manual:Configuration_settings إعدادات الضبط] لمزيد من المعلومات.',
+	'configure-summary' => 'هذه الصفحة الخاصة تسمح لك بضبط هذا الويكى، انظر [http://www.mediawiki.org/wiki/Manual:Configuration_settings إعدادات الضبط] لمزيد من المعلومات.',
 	'configure-btn-save' => 'حفظ الاعدادات',
 	'configure-db-error' => 'قاعدة البيانت اللى انت حددتها عشان تاخد الاعداد ($1) مش موجوده.
 لو سمحت تنشأها و طبق configure.sql او تصحح اسمها.',
@@ -777,7 +777,7 @@ $messages['arz'] = array(
 	'configure-select-wiki-view-specific' => ':ويكى معينة',
 	'configure-select-wiki-submit' => 'اختيار',
 	'configure-setting-not-available' => 'هذا الإعداد غير متاح فى هذه النسخة من ميدياويكي',
-	'configure-transwiki-not-in-range' => 'الويكي المطلوب، $1، ليس ضمن {{PLURAL:$3|القيمة|القيم}} المسموح بها: $2.',
+	'configure-transwiki-not-in-range' => 'الويكى المطلوب، $1، ليس ضمن {{PLURAL:$3|القيمة|القيم}} المسموح بها: $2.',
 	'configure-view' => 'شوف',
 	'configure-view-all-versions' => 'القائمة الكاملة للنسخ',
 	'configure-view-default' => 'الإعدادات الإفتراضية',
@@ -2020,6 +2020,7 @@ Bitte erstellen Sie sie und führen Sie configure.sql darin aus oder korrigieren
 	'configure-db-table-error' => 'Die Datenbank, die Sie angegeben haben, enthält nicht die benötigten Tabellen. Bitte führen Sie configure.sql in dieser Datenbank aus.',
 	'configure-edit-old' => "'''Achtung:''' Sie bearbeiten eine <strong>alte</strong> Version der Konfiguration (vom $2, $3 Uhr).",
 	'configure-js-image-error' => 'Beim Abruf der URL ist ein Fehler aufgetreten. Bitte stellen Sie sicher, dass die Datei existiert.',
+	'configure-no-setup' => '<code>efConfigureSetup()</code> muss explizit in Ihrer LocalSettings.php aufgerufen werden, um diese Erweiterung nutzen zu können.',
 	'configure-no-transwiki' => 'Sie haben keine Berechtigung, Einstellungen in anderen Wikis zu ändern',
 	'configure-old-not-available' => 'Die alte Version der Einstellungen, die Sie angefragt haben, $1, ist nicht vorhanden',
 	'configure-image-url-explanation' => 'Geben Sie die URL zu einem Bild oder den Namen eines Bildes auf diesem Wiki (ohne den Namensraum) an. Wenn Sie das Feld verlassen, wird eine Vorschau angezeigt.',
@@ -5266,8 +5267,11 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'configure-form-reason' => 'ಕಾರಣ:',
 	'configure-section-email' => 'ಇ-ಅಂಚೆ',
 	'configure-section-timezone' => 'ಸಮಯ ವಲಯ',
+	'configure-section-category' => 'ವರ್ಗಗಳು',
+	'configure-condition-operator-and' => 'ಮತ್ತು',
 );
 
 /** Korean (한국어)
@@ -9235,6 +9239,7 @@ $messages['uk'] = array(
 	'configure-section-debug' => 'Налагодження',
 	'configure-section-profiling' => 'Профілювання',
 	'configure-section-css-js' => 'CSS і JavaScript',
+	'configure-select-wiki-submit' => 'Вибрати',
 	'configure-throttle-action-edit' => 'Змінити',
 	'configure-condition-operator-xor' => 'Виключне АБО',
 );
@@ -9546,10 +9551,20 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
+	'configure' => '站务设置',
+	'configure-desc' => '让使用者可以透过Web介面来[[Special:Configure|调整]]本站的内部设定资讯',
+	'configure-desc-group' => '群组',
+	'configure-desc-key' => '键',
+	'configure-desc-ns' => '页面名称空间',
+	'configure-desc-val' => '值',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => '扩充套件',
+	'configure-ext-doc' => '检视线上文件',
 	'configure-ext-settings' => '设置',
 	'configure-form-reason' => '原因：',
 	'configure-section-search' => '搜索',
@@ -9558,6 +9573,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Liangent
  */
 $messages['zh-hant'] = array(
 	'configure' => '站務設置',
@@ -9569,5 +9585,9 @@ $messages['zh-hant'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => '擴充套件',
 	'configure-ext-doc' => '檢視線上文件',
+	'configure-ext-settings' => '設置',
+	'configure-form-reason' => '原因：',
+	'configure-section-search' => '搜索',
+	'configure-condition-operator-and' => '和',
 );
 

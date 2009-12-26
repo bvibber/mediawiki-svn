@@ -121,6 +121,7 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'emergencydesysop-otheradmin' => 'Merourien all da zistrollañ',
 	'emergencydesysop-reason' => 'Abeg evit lemel',
 	'emergencydesysop-submit' => 'Kas',
 	'emergencydesysop-notasysop' => "An implijer buket n'emañ ket er strollad merourien.",

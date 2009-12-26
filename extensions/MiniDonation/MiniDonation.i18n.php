@@ -553,8 +553,11 @@ $messages['zh-hans'] = array(
 	'donationform-submit' => '经PayPal捐款',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
 $messages['zh-hant'] = array(
+	'donationform-desc' => '加入<tt>&lt;donateform&gt;</tt>標籤以支持使用PayPal的捐贈',
 	'donationform-submit' => '經PayPal捐款',
 );
 

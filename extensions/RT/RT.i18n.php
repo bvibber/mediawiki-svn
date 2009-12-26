@@ -100,7 +100,19 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'rt-desc' => 'Etrefas evit RT (Request Tracker)',
 	'rt-inactive' => "An astenn RT n'eo ket oberiant",
+	'rt-badquery' => "Ur fazi a zo bet gant an astenn RT a-pad ur reked d'an diaz roadennoù",
+	'rt-badlimit' => "N'eo ket mat an arguzenn LIMIT (l) : rankout a ra bezañ un niver.
+Klasket ho peus : '''$1'''",
+	'rt-badorderby' => "N'eo ket mat an arguzenn ORDER BY (ob) : rankout a ra bezañ ur maezienn skoueriek (gwelet an teuliadur).
+Klasket ho peus : '''$1'''",
+	'rt-badstatus' => "N'eo ket mat ar status queue (o) : rankout a ra bezañ ur maezienn skoueriek (gwelet an teuliadur).
+Klasket ho peus : '''$1'''",
+	'rt-badqueue' => "N'eo ket mat an arguzenn queue (o) : rankout a ra bezañ ur ger eeun.
+Klasket ho peus : '''$1'''",
+	'rt-badowner' => "N'eo ket mat an arguzenn owner (o) : rankout a ra bezañ un anv gwiriek.
+Klasket ho peus : '''$1'''",
 	'rt-nomatches' => "N'eo bet kavet tiked RT ebet",
 );
 

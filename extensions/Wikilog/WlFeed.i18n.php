@@ -36,6 +36,13 @@ $messages['ar'] = array(
 	'wlfeed-desc' => 'رتب توليد تلقيم ممددة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'wlfeed-desc' => 'رتب توليد تلقيم ممددة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -55,6 +62,13 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'wlfeed-desc' => 'Napredno generisanje klasa fida',
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'wlfeed-desc' => 'Vylepšené třídy pro vytváření kanálů',
 );
 
 /** Lower Sorbian (Dolnoserbski)

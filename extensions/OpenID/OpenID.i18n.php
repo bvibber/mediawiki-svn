@@ -352,7 +352,7 @@ $messages['arz'] = array(
 	'openidchoosemanual' => 'اسم من اختيارك:',
 	'openidchooseexisting' => 'حساب موجود فى هذه الويكي:',
 	'openidchoosepassword' => 'كلمة السر:',
-	'openidconvertinstructions' => 'هذه الاستمارة تتيح لك تغيير حساب المستخدم الخاص بك لكي تستخدم OpenID URL او لاضافة المزيد من OpenID URLs .',
+	'openidconvertinstructions' => 'هذه الاستمارة تتيح لك تغيير حساب المستخدم الخاص بك لكى تستخدم OpenID URL او لاضافة المزيد من OpenID URLs .',
 	'openidconvertsuccess' => 'تم التحول بنجاح إلى الهوية المفتوحة',
 	'openidconvertsuccesstext' => 'أنت حولت بنجاح هويتك المفتوحة إلى $1.',
 	'openidconvertyourstext' => 'هذه بالفعل هويتك المفتوحة.',
@@ -366,14 +366,14 @@ $messages['arz'] = array(
 لو لا، جرب زر "Continue".',
 	'openidclientonlytext' => 'أنت لا يمكنك استخدام الحسابات من هذا الويكى كهوية مفتوحة على موقع آخر.',
 	'openidloginlabel' => 'مسار الهوية المفتوحة',
-	'openidlogininstructions' => '{{SITENAME}} تدعم معيار [http://openid.net/ الهوية المفتوحة] للدخول الفردي بين مواقع الويب.
+	'openidlogininstructions' => '{{SITENAME}} تدعم معيار [http://openid.net/ الهوية المفتوحة] للدخول الفردى بين مواقع الويب.
 الهوية المفتوحة تسمح لك بتسجيل الدخول إلى مواقع ويب عديدة مختلفة بدون استخدام كلمة سر مختلفة لكل موقع.
-(انظر [http://en.wikipedia.org/wiki/OpenID مقالة الهوية المفتوحة في يويكيبيديا] لمزيد من المعلومات.)
+(انظر [http://en.wikipedia.org/wiki/OpenID مقالة الهوية المفتوحة فى يويكيبيديا] لمزيد من المعلومات.)
 
-لو أنك لديك بالفعل حساب في {{SITENAME}}، يمكنك [[Special:UserLogin|تسجيل الدخول]] باسم مستخدمك وكلمة السر الخاصة بك كالمعتاد.
-لاستخدام الهوية المفتوحة في المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك إلى الهوية المفتوحة]] بعد تسجيل دخولك بشكل عادي.
+لو أنك لديك بالفعل حساب فى {{SITENAME}}، يمكنك [[Special:UserLogin|تسجيل الدخول]] باسم مستخدمك وكلمة السر الخاصة بك كالمعتاد.
+لاستخدام الهوية المفتوحة فى المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك إلى الهوية المفتوحة]] بعد تسجيل دخولك بشكل عادى.
 
-يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفري الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.',
+يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفرى الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.',
 	'openid-pref-hide' => 'أخف هويتك هويتك المفتوحة على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
 );
 
@@ -571,10 +571,13 @@ $messages['br'] = array(
 	'openidtimezone' => 'Takad eur :',
 	'openidchoosefull' => "Hoc'h anv klok ($1)",
 	'openidchooseurl' => 'Un anv a zo bet dibabet adalek ho OpenID ($1)',
+	'openidchooseauto' => 'Un anv krouet emgefre ($1)',
 	'openidchoosemanual' => "Un anv dibabet ganeoc'h :",
 	'openidchooseexisting' => 'Ur gont zo anezhi dija war ar wiki-mañ :',
 	'openidchoosepassword' => 'ger-tremen :',
+	'openidconvertoraddmoreids' => "Amdreiñ da OpenID pe ouzhpennañ ur chomlec'h OpenID all",
 	'openidconvertsuccess' => 'Amdroet eo bet davet OpenID',
+	'openidconvertsuccesstext' => 'Amdroet ho peus ho OpenID davet $1.',
 	'openidconvertyourstext' => 'Ho OpenID eo dija.',
 	'openidconvertothertext' => 'OpenID un implijer all eo dija.',
 	'openidnousername' => "N'eus bet diferet anv implijer ebet.",
@@ -584,6 +587,7 @@ $messages['br'] = array(
 	'openiddelete' => 'Dilemel an OpenID',
 	'openiddelete-button' => 'Kadarnaat',
 	'openiddelete-sucess' => 'Tennet eo bet an OpenID eus ho kont.',
+	'openiddelete-error' => "Ur fazi a zo bet pa oac'h o klask tennañ an OpenID eus ho kont.",
 	'openid-prefstext' => 'Penndibaboù an [http://openid.net/ OpenID]',
 	'openid-pref-hide' => "Kuzhet ho OpenID war ho pajenn implijer, m'en em lugoc'h gant OpenID.",
 	'openid-urls-desc' => 'OpenID kevredet gant ho kont :',
@@ -5225,29 +5229,80 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'openid-desc' => '使用一個[http://openid.net/ OpenID]來登錄到這個wiki，以及使用wiki用戶帳號登錄到其他接受OpenID的網站',
 	'openidlogin' => '使用OpenID登入',
 	'openidserver' => 'OpenID伺服器',
+	'openidxrds' => 'Yadis文件',
 	'openidconvert' => 'OpenID轉換器',
 	'openiderror' => '驗證錯誤',
+	'openiderrortext' => '在驗證OpenID地址時出現了一個錯誤。',
+	'openidconfigerror' => 'OpenID配製出錯',
+	'openidconfigerrortext' => '這個維基的OpenID存儲設置無法使用。
+請通知[[Special:ListUsers/sysop|管理員]]。',
+	'openidpermission' => 'OpenID許可錯誤',
+	'openidpermissiontext' => '您提供的OpenID不允許在本服務器上登錄。',
 	'openidcancel' => '驗證已取消',
+	'openidcanceltext' => 'OpenID地址驗證被取消。',
 	'openidfailure' => '驗證失敗',
+	'openidfailuretext' => 'OpenID地址驗證失敗。錯誤信息："$1"',
 	'openidsuccess' => '驗證成功',
+	'openidsuccesstext' => 'OpenID地址驗證成功。',
+	'openidusernameprefix' => 'OpenID用戶',
+	'openidserverlogininstructions' => '請在下面輸入您的密碼以便以用戶$2登陸$3 （用戶頁面$1）。',
+	'openidtrustinstructions' => '請確認您是否願與$1分享數據。',
+	'openidallowtrust' => '允許$1信任這個用戶的賬戶。',
+	'openidnopolicy' => '站點沒有提供隱私政策。',
+	'openidpolicy' => '如要獲得更多信息，請參見<a target="_new" href="$1">隱私政策</a>。',
+	'openidoptional' => '可選',
+	'openidrequired' => '必選',
 	'openidnickname' => '暱稱',
 	'openidfullname' => '全名',
 	'openidemail' => '電郵地址',
 	'openidlanguage' => '語言',
 	'openidtimezone' => '時區',
+	'openidnotavailable' => '您選擇的昵稱（$1）已經被其他用戶使用。',
+	'openidnotprovided' => '您的OpenID服務器沒有提供昵稱（可能無法提供，或者您選擇不提供）。',
+	'openidchooseinstructions' => '所有的用戶都需要提供昵稱；
+您可以從下面任選一個。',
 	'openidchoosefull' => '您的全名 （$1）',
+	'openidchooseurl' => '從您的OpenID獲取的名稱（$1）',
+	'openidchooseauto' => '自動生成的名稱（$1）',
+	'openidchoosemanual' => '您選擇的名稱：',
+	'openidchooseexisting' => '本維基已經存在的帳戶：',
 	'openidchoosepassword' => '密碼：',
+	'openidconvertinstructions' => '本表單可以將您的用戶賬號修改為OpenID地址。',
+	'openidconvertoraddmoreids' => '轉換到OpenID或添加另一個OpenID URL',
+	'openidconvertsuccess' => '成功轉換為OpenID',
+	'openidconvertsuccesstext' => '您已經成功的將您的OpenID轉化為$1。',
 	'openidconvertyourstext' => '這已是您的OpenID了。',
+	'openidconvertothertext' => '這是別人的OpenID。',
+	'openidalreadyloggedin' => "'''您已經成功登陸了，$1！'''
+
+如果您想以後使用OpenID登陸，您可以[[Special:OpenIDConvert|轉換您的帳戶使用OpenID]]。",
+	'openidnousername' => '沒有指定用戶名。',
+	'openidbadusername' => '指定的用戶名是錯誤的。',
+	'openidautosubmit' => '本頁包含的表單在啟用JavaScript的情況下可以自動提交。
+如果沒有自動提交，請按 "Continue" （繼續）按鈕。',
+	'openidclientonlytext' => '你不能在其他站點上使用這個wiki的帳號作為OpenID。',
 	'openidloginlabel' => 'OpenID網址',
+	'openidupdateuserinfo' => '更新我的個人信息',
+	'openiddelete' => '刪除OpenID',
 	'openiddelete-button' => '確認',
+	'openid-prefstext' => '[http://openid.net/ OpenID]參數設置',
+	'openid-pref-hide' => '如果使用OpenID登陸，您可以在您的用戶頁隱藏您的OpenID。',
+	'openid-urls-desc' => '和你的帳號關聯的OpenID：',
+	'openid-urls-action' => '動作',
 	'openid-urls-delete' => '删除',
 	'openid-add-url' => '加入一個新的OpenID',
+	'openidsigninorcreateaccount' => '登錄或創建新帳號',
+	'openid-provider-label-openid' => '輸入你的OpenID URL',
 	'openid-provider-label-google' => '以您的Google帳戶登入',
 	'openid-provider-label-yahoo' => '以您的Yahoo帳戶登入',
+	'openid-provider-label-aol' => '輸入你的AOL屏幕名稱',
+	'openid-provider-label-other-username' => '輸入你的$1用戶名',
 );
 

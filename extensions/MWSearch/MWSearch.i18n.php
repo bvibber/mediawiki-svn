@@ -434,6 +434,13 @@ $messages['pt-br'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

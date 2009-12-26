@@ -642,6 +642,13 @@ $messages['vi'] = array(
 	'right-webchat' => '[[Special:WebChat|Chat trên Web]]',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'webchat' => '网上聊天',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

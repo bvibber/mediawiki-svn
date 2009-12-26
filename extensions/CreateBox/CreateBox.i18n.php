@@ -160,6 +160,17 @@ Du kannst diese Seite nicht anlegen, aber du kannst sie [{{fullurl:{{FULLPAGENAM
 <createbox>break=no</createbox>",
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'createbox-exists' => "„'''{{FULLPAGENAME}}'''“ existiert bereits.
+
+Sie können diese Seite nicht anlegen, aber Sie können sie [{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbeiten], [{{fullurl:{{FULLPAGENAME}}}} lesen] oder eine andere Seite mithilfe des untenstehenden Eingabefeldes anlegen.
+
+<createbox>break=no</createbox>",
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

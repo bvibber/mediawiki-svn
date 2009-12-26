@@ -60,6 +60,13 @@ $messages['ar'] = array(
 	'uos-title' => 'توزيع القيم لخيار المستخدم $1',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'uos-other' => '*تانى',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -704,6 +711,7 @@ $messages['yi'] = array(
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'uos-warn' => '尚未安装PHPlot！',
 	'uos-unknown' => '*默认',
 	'uos-other' => '*其他',
 );

@@ -355,3 +355,10 @@ $messages['zh-hans'] = array(
 	'gotocategory-desc' => "检查的搜索字词的种类：名字空间的到'跳转到页'的功能",
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'gotocategory-desc' => "檢查的搜索字詞的種類：名字空間的到'跳轉到頁'的功能",
+);
+

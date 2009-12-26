@@ -261,7 +261,7 @@ $messages['arz'] = array(
 	'oversight-difference' => '(الفرق من المراجعة المتبقية اللى فاتت)',
 	'oversight-prev' => 'اخر مراجعه فاتت',
 	'oversight-hidden' => 'مراجعة متخبية',
-	'oversight-header' => 'تحت فى لستة بالتغييرات اللى اتخبت قريب و على طول من العرض العمومي.
+	'oversight-header' => 'تحت فى لستة بالتغييرات اللى اتخبت قريب و على طول من العرض العمومى.
 تطليع المعلومات دى بره ممكن يتسبب فى سحب صلاحيات الاوفرسايت منك و على طول.',
 	'oversight-legend' => 'دور فى سجل تخبية المراجعات',
 	'oversight-oversighter' => 'ناظر:',
@@ -3126,6 +3126,7 @@ $messages['ro'] = array(
 	'group-oversight' => 'Supraveghetori',
 	'group-oversight-member' => 'supraveghetori',
 	'grouppage-oversight' => '{{ns:project}}:Supraveghetori',
+	'right-oversight' => 'Vedeţi o revizie ascunsă mai înainte',
 	'right-hiderevision' => 'Ascunde reviziile de la administratori',
 	'hiderevision-prompt' => 'Numărul reviziei pentru a elimina:',
 	'hiderevision-continue' => 'Cuntinuă',
@@ -3145,8 +3146,10 @@ Anuleaz-o pe aceasta şi revino la cea precedentă mai întâi.',
 	'oversight-log-hiderev' => 'a eliminat o modificare de la $1',
 	'oversight' => 'Supraveghere',
 	'oversight-view' => 'detalii',
+	'oversight-difference' => '(Diferenţă de la revizia rămasă anterior)',
 	'oversight-prev' => 'Ultima modificare trecută',
 	'oversight-hidden' => 'Revizii ascunse',
+	'oversight-legend' => 'Caută jurnalul ascuns al reviziei',
 	'oversight-oversighter' => 'Supraveghetor:',
 	'oversight-offender' => 'Autorul reviziei:',
 );

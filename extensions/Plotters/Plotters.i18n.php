@@ -709,6 +709,14 @@ Tento prehľad poskytuje jednoduchý prístup k stránkam systémových správ, 
 	'plotters-errors' => '<b>{{PLURAL:$1|Chyba|Chyby}} plotrov:</b>',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'plotters-uses' => 'Använder',
+	'plotters-no-data' => 'Ingen data var tillgänglig.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -240,9 +240,9 @@ $messages['arz'] = array(
 \'\'هذه الصفحة ستسمح لك بمنع حتى المستخدمين غير الموجودين، وستمنع أيضا المستخدمين بأسماء مشابهة للمعطاة،أى أن "Test" سيتم منعها بالإضافة إلى "Test 2"إلى آخره.
 يمكنك أيضا منع عناوين أيبى كاملة، مما يعنى أنه لا أحد مسجلا للدخول منها سيمكنه تعديل الصفحات.
 ملاحظة: عناوين الأيبى الجزئية سيتم معاملتها بواسطة أسماء مستخدمين فى تحديد المنع.
-لو لم يتم تحديد سبب، سيتم استخدام سبب افتراضى تلقائي.\'\'',
+لو لم يتم تحديد سبب، سيتم استخدام سبب افتراضى تلقائى.\'\'',
 	'regexblock-page-title-1' => 'منع عنوان باستخدام تعبيرات منتظمة',
-	'regexblock-reason-ip' => 'عنوان الأيبي هذا ممنوع نتيجة للتخريب أو إساءة أخرى بواسطتك أو بواسطة شخص يشارك في عنوان الأيبي الخاص بك.
+	'regexblock-reason-ip' => 'عنوان الأيبى هذا ممنوع نتيجة للتخريب أو إساءة أخرى بواسطتك أو بواسطة شخص يشارك فى عنوان الأيبى الخاص بك.
 لو أنك تعتقد أن هذا خطأ، من فضلك [[$1|اتصل بنا]]',
 	'regexblock-reason-name' => 'اسم المستخدم هذا ممنوع من التحرير نتيجة للتخريب أو إساءة أخرى.
 لو كنت تعتقد أن هذا خطأ، من فضلك [[$1|اتصل بنا]]',
@@ -553,6 +553,7 @@ Bitte melde dich mit einem anderen Benutzernamen an oder [[$1|nimm Kontakt mit u
 	'regexblock-form-submit-empty' => 'Einen Benutzernamen oder eine IP-Adresse für die Sperrung angeben.',
 	'regexblock-form-submit-regex' => 'Ungültiger regulärer Ausdruck.',
 	'regexblock-form-submit-expiry' => 'Bitte wähle einen Ablaufzeitraum.',
+	'regexblock-link' => 'mit regulärem Ausdruck sperren',
 	'regexblock-match-stats-record' => '$1 sperrte „$2“ auf „$3“ am $6 um $7 Uhr, angemeldet von Adresse „$5“',
 	'regexblock-nodata-found' => 'Keine Daten gefunden',
 	'regexblock-stats-title' => 'Regex-Sperrstatistiken',
@@ -1624,6 +1625,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'regexblock-form-reason' => 'ಕಾರಣ:',
 	'regexblock-view-go' => 'ಹೋಗು',
 );
 
@@ -2078,6 +2080,7 @@ Truleg finst det ingen brukar med dette namnet.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Audun
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'regexblock' => 'Regex-blokkering',
@@ -2103,6 +2106,7 @@ $messages['no'] = array(
 	'regexblock-form-submit-empty' => 'Angi et brukernavn eller en IP-adresse å blokkere.',
 	'regexblock-form-submit-regex' => 'Ugyldig regulært uttrykk',
 	'regexblock-form-submit-expiry' => 'Angi en utløpstid.',
+	'regexblock-link' => 'blokker med et regulært uttrykk',
 	'regexblock-match-stats-record' => "$1 blokkerte '$2' på '$3' den '$4',fra IP-adressen '$5'",
 	'regexblock-nodata-found' => 'Ingen data funnet',
 	'regexblock-stats-title' => 'Statistikk for blokkering med regulære uttrykk',
@@ -3051,6 +3055,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'regexblock-block-success' => '封禁成功',
@@ -3058,6 +3063,10 @@ $messages['zh-hans'] = array(
 	'regexblock-form-reason' => '原因：',
 	'regexblock-form-expiry' => '到期日：',
 	'regexblock-form-submit' => '封禁这位用户',
+	'regexblock-nodata-found' => '找不到数据',
+	'regexblock-view-reason' => '原因：$1',
+	'regexblock-view-reason-default' => '一般原因',
+	'regexblock-view-block-infinite' => '永久封禁',
 	'regexblock-view-stats' => '（统计）',
 );
 

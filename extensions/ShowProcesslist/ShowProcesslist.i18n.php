@@ -1061,11 +1061,13 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
 	'showprocesslist-user' => '用户',
 	'showprocesslist-time' => '时间',
+	'showprocesslist-state' => '状态',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

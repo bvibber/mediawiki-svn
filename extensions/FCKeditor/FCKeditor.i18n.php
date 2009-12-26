@@ -872,9 +872,12 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'fckeditor-desc' => 'Tillatt redigeringer med «WYSIWYG»-editoren FCKeditor',
 	'textrichditor' => 'Rik tekstredigering',
+	'prefs-fckeditor' => 'Rik editor',
 	'tog-riched_disable' => 'Slå av rik tekstredigering',
 	'tog-riched_disable_ns_main' => 'Slå av rik tekstredigering i hovednavnerommet',
 	'tog-riched_disable_ns_talk' => 'Slå av rik tekstredigering i «{{ns:talk}}»-navnerommet',
@@ -892,6 +895,8 @@ $messages['no'] = array(
 	'tog-riched_disable_ns_help_talk' => 'Slå av rik tekstredigering i «{{ns:help_talk}}»-navnerommet',
 	'tog-riched_disable_ns_category' => 'Slå av rik tekstredigering i «{{ns:category}}»-navnerommet',
 	'tog-riched_disable_ns_category_talk' => 'Slå av rik tekstredigering i «{{ns:category_talk}}»-navnerommet',
+	'rich_editor_new_window' => 'Åpne rik editor i nytt vindu',
+	'tog-riched_use_popup' => 'Åpne rik editor i et sprettoppvindu',
 );
 
 /** Occitan (Occitan)
@@ -1192,6 +1197,37 @@ $messages['zh-hans'] = array(
 	'tog-riched_use_popup' => '在弹出窗口中使用富文本编辑器',
 	'tog-riched_use_toggle' => '使用开关在wiki文本和富文本编辑器间切换（用富文本编辑器替换textarea）',
 	'tog-riched_toggle_remember_state' => '记住上次切换状态',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'fckeditor-desc' => '允許在編輯時使用所見即所得工具FCKeditor',
+	'textrichditor' => '富文本編輯器',
+	'prefs-fckeditor' => '富文本編輯器',
+	'tog-riched_disable' => '禁用富文本編輯器',
+	'tog-riched_disable_ns_main' => '在主名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_talk' => '在“{{ns:talk}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_user' => '在“{{ns:user}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_user_talk' => '在“{{ns:user_talk}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_project' => '在“{{ns:project}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_project_talk' => '在“{{ns:project_talk}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_image' => '在“{{ns:file}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_image_talk' => '在“{{ns:file_talk}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_mediawiki' => '在“{{ns:mediawiki}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_mediawiki_talk' => '在“{{ns:mediawiki_talk}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_template' => '在“{{ns:template}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_template_talk' => '在“{{ns:template_talk}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_help' => '在“{{ns:help}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_help_talk' => '在“{{ns:help_talk}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_category' => '在“{{ns:category}}”名字空間禁用富文本編輯器',
+	'tog-riched_disable_ns_category_talk' => '在“{{ns:category_talk}}”名字空間禁用富文本編輯器',
+	'rich_editor_new_window' => '在新窗口打開富文本編輯器',
+	'tog-riched_start_disabled' => '默認禁用富文本編輯器',
+	'tog-riched_use_popup' => '在彈出窗口中使用富文本編輯器',
+	'tog-riched_use_toggle' => '使用開關在wiki文本和富文本編輯器間切換（用富文本編輯器替換textarea）',
+	'tog-riched_toggle_remember_state' => '記住上次切換狀態',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

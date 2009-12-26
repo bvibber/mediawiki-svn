@@ -4117,6 +4117,80 @@ Spróbuj użyć najnowszej wersji <a href="http://www.microsoft.com/ie">Internet
 	'gm-mars' => 'Mars',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$wgGoogleMapsMessages['pms'] = array(
+	'gm-desc' => 'Creé facilment mape con marcador an stil wiki',
+	'gm-incompatible-browser' => "Për vëdde la mapa ch'a-i sarà an sto spassi-sì, it l'has dabzògn ëd dovré un navigador web compatìbil.",
+	'gm-incompatible-browser-link' => 'Sgnaca sì për vëdde na lista ëd navigador compatìbij.',
+	'gm-no-editor' => 'Për maleur, to navigador a apògia pa le possibilità ëd fé mape antërative. Preuva l\'ùltima vërsion ëd <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, e Linux).',
+	'gm-balloon-title' => 'Tìtol:',
+	'gm-balloon-link-article' => 'Colegament a sta pàgina-sì (opsinal):',
+	'gm-make-marker' => 'Dissitura (marcador wiki OK):',
+	'gm-remove' => 'gava',
+	'gm-caption' => 'Dissidura',
+	'gm-tab-title' => 'Tìtol dël tab',
+	'gm-tab' => 'Tab',
+	'gm-start-path' => 'prinsipia un përcors',
+	'gm-trace-area' => "trassa n'area",
+	'gm-save-point' => 'salva &amp; sara',
+	'gm-load-map-from-article' => 'Caria na mapa da la pàgina:',
+	'gm-no-maps' => "Pa gnun-e mape an sta pàgina-s' da carié.",
+	'gm-refresh-list' => 'Rinfrësca la lista',
+	'gm-load-map' => 'Caria mapa',
+	'gm-clip-result' => 'Gionta a mapa',
+	'gm-no-results' => 'Spiasent, pa gnun arzultà',
+	'gm-searching' => 'serché ...',
+	'gm-map' => 'Mapa',
+	'gm-note' => 'Nòta: sicurte ëd copié lòn ch\'it veule salvé ant la pàgina (sota) prima dë sgnaché "Caria mapa", "Salva" o "Previsualisa"!',
+	'gm-instructions' => 'Sota a-i é ël marcador Wiki për creé la mapa dzora.',
+	'gm-are-you-sure' => 'It ses-to sicur?',
+	'gm-clear-all-points' => 'Scansela tùit ij pont',
+	'gm-refresh-points' => 'Rinfrësca ij pont',
+	'gm-width' => 'Larghëssa',
+	'gm-height' => 'Autëssa',
+	'gm-scale-control' => 'Scala',
+	'gm-overview-control' => "Vista a l'ingròss",
+	'gm-selector-control' => 'Seletor mapa/Setélite',
+	'gm-zoom-control' => 'Navigassion',
+	'gm-large' => 'Largh',
+	'gm-medium' => 'Medi',
+	'gm-small' => 'Cit',
+	'gm-no-zoom-control' => 'Gnun',
+	'gm-yes' => 'É!',
+	'gm-no' => 'Nò',
+	'gm-search-preface' => 'Sgnaca la mapa për gionté un pont, o sauté a na sità, nassion, adrëssa o afé:',
+	'gm-geocode-preface' => 'Sgnaca la mapa për gionté un pont, o sauté a na sità, nassion, o adrëssa:',
+	'gm-no-search-preface' => 'Sgnaca la mapa për gionté un pont',
+	'gm-search' => 'Serca',
+	'gm-clear-search' => "scansela arzultà d'arserca",
+	'gm-meters' => 'méter',
+	'gm-miles' => 'mija',
+	'gm-editing-path' => 'Sgnaca la mapa për gionté pi pont a sto përcors-sì.',
+	'gm-save-path' => 'Salva',
+	'gm-edit-path' => 'gionta pont',
+	'gm-show-path' => 'mosta pont',
+	'gm-color-path' => 'cangia color',
+	'gm-color-fill' => 'cangia color ëd vempiment',
+	'gm-add-fill' => 'vemp area',
+	'gm-remove-fill' => 'gava-vemp',
+	'gm-fill-color' => 'Color ëd vempiment',
+	'gm-line-color' => 'Color ëd linia',
+	'gm-opacity' => 'Opassità',
+	'gm-line-width' => 'Larghëssa',
+	'gm-make-map' => 'fa na mapa',
+	'gm-hide-map' => 'stërma mapa',
+	'gm-back' => 'andré',
+	'gm-kml-include' => 'KML/GeoRss estern:',
+	'gm-kml-include-link' => 'gionta a mapa',
+	'gm-kml-loading' => 'carié ...',
+	'gm-kml-export' => 'Espòrta sta mapa-sì a KML',
+	'gm-earth' => 'Tèra',
+	'gm-moon' => 'Lun-a',
+	'gm-mars' => 'Mart',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -6018,9 +6092,11 @@ $wgGoogleMapsMessages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Roc michael
  */
 $wgGoogleMapsMessages['zh-hant'] = array(
+	'gm-desc' => '輕鬆地創建地圖的wiki-fied標誌',
 	'gm-incompatible-browser' => '您必須使用相容的網頁瀏覽器以利設查看所設定於此處的地圖',
 	'gm-incompatible-browser-link' => '按此處以查看相容瀏覽器的清單。',
 	'gm-no-editor' => '很遺憾！您的瀏覽器不支援此互動式地圖製作元件，請試試看最新版的 <a href="http://www.microsoft.com/ie">IE</a> 或<a href="http://www.mozilla.org/products/firefox">火狐狸（Firefox）</a>',

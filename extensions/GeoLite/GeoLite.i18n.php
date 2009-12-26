@@ -259,6 +259,13 @@ $messages['sr-ec'] = array(
 	'geolite-desc' => 'Редирекције за Lightweight GeoIp',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'geolite-desc' => 'Ýeňil GeoIP gönükdirmesi',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

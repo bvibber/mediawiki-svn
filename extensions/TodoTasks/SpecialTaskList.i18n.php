@@ -187,6 +187,8 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'tasklist' => 'Roll trevelloù',
+	'tasklist-parser-desc' => 'Ouzhpenn a ra <nowiki>{{#todo:}}</nowiki> ur fonksion parser evit deverkañ trevelloù',
+	'tasklist-special-desc' => 'Ouzhpenn a ra ur bajenn ispisial evit adwelet an [[Special:TaskList|trevelloù deverket]]',
 	'tasklistbyproject' => 'Roll trevelloù dre raktres',
 	'tasklistunknownproject' => 'Raktres dianav',
 	'tasklistunspecuser' => "N'eo ket diferet an implijer",
@@ -194,9 +196,21 @@ $messages['br'] = array(
 	'tasklistemail' => '%s ker',
 	'tasklistemailsubject' => '[%s] Kemmoù e roll an trevelloù',
 	'tasklistmytasks' => 'Ma zrevelloù',
+	'tasklistbyprojectbad' => "N'eo ket mat ar raktres '''%s'''.
+Evit kaout ur roll eus ar raktresoù a za en-dro gwellet [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Trevelloù deverket evit '''%s'''.",
 	'tasklistchooseproj' => 'Diuzañ ur raktres :',
 	'tasklistprojdisp' => 'Diskwel',
 	'tasklistbyname' => '== Roll an traoù da ober gant $s ==',
+	'tasklistnowguseprojects' => 'Termenet ho peus $wgUseProjects da "false", dre-se ne c\'helloc\'h ket implij ar bajenn-se.',
+	'tasklistnoprojects' => "Fazi : Seblantout a ra ho pefe gweredekaet '''\$wgUseProjects''', met n'eo ket bet krouet [[MediaWiki:TodoTasksValidProjects]]. Kit da welet  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 c'hemennadennoù staliñ] evit muic'h a ditouroù.",
+	'tasklistemailbody' => ",
+
+Unan bennak en deus deverket deoc'h un trevell nevez war %s.
+
+Evit gwellet roll klok ho trevelloù, kit war %s.
+
+Ho sistem kemenn %s karet",
 );
 
 /** Bosnian (Bosanski)
@@ -276,6 +290,7 @@ Váš přátelský upozorňovací systém %s',
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author Melancholie
  * @author Purodha
  * @author Revolus
@@ -296,6 +311,7 @@ $messages['de'] = array(
 	'tasklistchooseproj' => 'Projekt auswählen:',
 	'tasklistprojdisp' => 'Anzeigen',
 	'tasklistbyname' => '== Aufgabenliste für %s ==',
+	'tasklistnowguseprojects' => 'Du hast $wgUseProjects auf "false" gesetzt und kannst diese Seite nicht benutzen.',
 	'tasklistnoprojects' => "Fehler: Es sieht so aus, als wenn '''\$wgUseProjects''' aktiviert wäre, aber es wurde keine Seiten [[MediaWiki:TodoTasksValidProjects]] erstellt. Siehe die [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanweisungen] für weitere Details.",
 	'tasklistemailbody' => ',
 
@@ -310,6 +326,7 @@ Dein freundliches %s-Benachrichtungssystem',
  * @author Imre
  */
 $messages['de-formal'] = array(
+	'tasklistnowguseprojects' => 'Sie haben $wgUseProjects auf "false" gesetzt und können diese Seite nicht benutzen.',
 	'tasklistemailbody' => ',
 
 Jemand hat Ihnen eine neue Aufgabe bei %s zugeordnet.
@@ -891,6 +908,7 @@ Fir eng Lëschtvun den disponibele Projeten, kuckt w.e.g. [[MediaWiki:TodoTasksV
 	'tasklistchooseproj' => 'Projet auswielen:',
 	'tasklistprojdisp' => 'Weisen',
 	'tasklistbyname' => '== Lëscht vun den Aufgabe fir %s ==',
+	'tasklistnowguseprojects' => 'Dir hutt $wgUseProjects op "false" gesat a kënnt dës Säit net benotzen.',
 	'tasklistnoprojects' => "FEELER: Et gesäit esou aus wéi wann Dir '''\$wgUseProjects''' ageschalt hätt, mee Dir hutt [[MediaWiki:TodoTasksValidProjects]] net erstalt. Kuckt [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installatiouns Instructiounen] fir méi Informatiounen.",
 	'tasklistemailbody' => ',
 
@@ -1597,13 +1615,34 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'tasklist' => '任務清單',
+	'tasklist-parser-desc' => '增加了<nowiki>{{#todo:}}</nowiki>語句，用來分配任務',
+	'tasklist-special-desc' => '增加了一個特殊頁面，用以查看[[Special:TaskList|分配到的任務]]',
+	'tasklistbyproject' => '項目任務列表',
+	'tasklistunknownproject' => '未知的項目',
+	'tasklistunspecuser' => '未認證用戶',
 	'tasklistincorrectuser' => '使用者名稱錯誤',
+	'tasklistemail' => '親愛的 %s',
+	'tasklistemailsubject' => '[%s] 任務列表有變化',
 	'tasklistmytasks' => '我的任務',
+	'tasklistbyprojectbad' => "任務 '''%s''' 無法識別。
+如要查看可執行的任務，請見[[MediaWiki:TodoTasksValidProjects]]。",
+	'tasklistbyprojname' => "'''%s'''的指定任務",
+	'tasklistchooseproj' => '選擇項目：',
 	'tasklistprojdisp' => '顯示',
+	'tasklistbyname' => '== %s 的任務列表 ==',
+	'tasklistnoprojects' => "錯誤：您啟動了'''\$wgUseProjects'''，但是沒有創建[[MediaWiki:TodoTasksValidProjects]]。參見[http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions]以獲得更多信息。",
+	'tasklistemailbody' => '，
+
+某人在 %s 上給您指定了新的任務。
+
+如要查看您的完整任務列表，請到 %s。
+
+%s 提示系統敬上',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

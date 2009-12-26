@@ -824,6 +824,13 @@ $messages['km'] = array(
 	'restriction-level-author' => 'ត្រូវបានការពារដោយអ្នកនិពន្ឋ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'authorprotect-reason' => 'ಕಾರಣ',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Kwj2772
@@ -1572,9 +1579,12 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'authorprotect' => '防止非作者編輯頁面',
+	'authorprotect-desc' => '允許頁面的作者禁止其他用戶編輯',
 	'authorprotect-notauthor' => '您並非本頁面的原作者',
 	'authorprotect-confirm' => '更改保護等級',
 	'authorprotect-expiry' => '終止時間',

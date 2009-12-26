@@ -779,7 +779,7 @@ $messages['arz'] = array(
 	'ao_file_MPEG2' => 'Archive.org - إم بى إى جي2 أصلي',
 	'ao_file_flash_flv' => 'Archive.org - فيديو فلاش',
 	'mv_error_stream_missing' => '<span class="error">خطأ: لا يوجد ملف فيديو مصاحب لهذا الستريم.</span><br />
-من فضلك أبلغ هذا إلى [[{{MediaWiki:Grouppage-sysop}}|إداري الموقع]].',
+من فضلك أبلغ هذا إلى [[{{MediaWiki:Grouppage-sysop}}|إدارى الموقع]].',
 	'mv_stream_added' => 'أنت أضفت الستريم $1',
 	'mv_stream_meta' => 'صفحة ستريم',
 	'mv_add_stream' => 'أضف ستريم ميتافيد',
@@ -811,7 +811,7 @@ $messages['arz'] = array(
 	'mv_missing_stream_text' => 'الستريم الذى طلبته <b>$1</b> غير متوفر.<br />
 ربما تريد فحص <a href="$2">قائمة الستريم</a><br />
 أو ربما ترغب فى <a href="$3">إضافة الستريم</a>.',
-	'mv_user_cant_edit' => 'ربما ينبغي عليك [$1 الولوج] للتعديل، $2',
+	'mv_user_cant_edit' => 'ربما ينبغى عليك [$1 الولوج] للتعديل، $2',
 	'mv_add_stream_file' => 'أضف ملف ستريم',
 	'mv_media_path' => 'مسار الميديا',
 	'mv_file_list' => 'ملفات الستريم',
@@ -877,7 +877,7 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'video_feed_cat' => 'تلقيم فيديو للتصنيف:',
 	'mv_cat_search_note' => 'ملاحظة: التصنيفات تعرض فقط التصنيفات العليا.
 لكل بيانات الميتا فى بحث نطاقات التصنيف عن $1',
-	'mv-category-media-count' => '$1 {{PLURAL:$1|عامود|عامود}} ميديا في التصنيف',
+	'mv-category-media-count' => '$1 {{PLURAL:$1|عامود|عامود}} ميديا فى التصنيف',
 	'mv_mvd_linkback' => 'جزء من الستريم $1 <br />
 القفز إلى عرض الستريم: $2',
 	'mvBadMVDtitle' => 'نوع مفقود، ستريم مفقود، أو صيغة وقت غير صحيحة',
@@ -2684,6 +2684,8 @@ $messages['fi'] = array(
 	'mv_view_wiki_page' => 'Näytä wikisivu',
 	'mv_media_search' => 'Mediahaku',
 	'mv_editor_mode' => 'Muokkaustila',
+	'mv_save_sequence' => 'Tallenna kohtaus',
+	'mv_sequence_page_desc' => 'Tallenna nykyinen kohtaus',
 	'mv_sequence_add_manual' => 'Lisää nimenmukaisesti',
 	'mv_sequence_add_search' => 'Lisää haunmukaisesti',
 	'mv_sequence_edit_text' => 'Siirry tekstimuotoiseen editoriin',
@@ -3595,7 +3597,11 @@ $messages['haw'] = array(
 $messages['he'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software עורך נתוני וידאו וחיפוש מדיה]',
 	'metavid' => 'דף MetaVid',
+	'mv_ogg_high_quality' => 'איכות גבוהה - Ogg Theora 900 קסל"ש',
+	'mv_move_delete_msg' => 'הועבר אל $1',
+	'mv_path_type_url_anx' => 'כתובת המדיה המלאה',
 	'mv_path_type_label' => 'סוג הנתיב',
+	'mv_base_offset_label' => 'קיזוז בסיס',
 	'mv_duration_label' => 'משך',
 	'mv_save_changes' => 'שמירת השינויים',
 	'mv_media_path' => 'נתיב המדיה',
@@ -3607,7 +3613,17 @@ $messages['he'] = array(
 	'mv_tool_navigate' => 'ניווט',
 	'mv_tool_export' => 'ייצוא',
 	'mv_tool_embed' => 'הטמעה',
+	'mv_results_found' => 'תוצאות וידאו <b>$1</b> עד <b>$2</b> מתוך <b>$3</b>',
+	'mv_tool_mang_layers' => 'ניהול שכבות',
+	'mv_update_layers' => 'עדכון שכבות',
+	'mv_watch_clip' => 'צפייה בסרטון',
+	'mv_close_clip' => 'סגירת הסרטון',
+	'mv_people_matches' => 'אנשים תואמים',
+	'mv_category_matches' => 'קטגוריות תואמות',
 	'mv_click_to_edit' => 'לחצו לעריכה',
+	'mvd_default_mismatch' => 'שגיאה בקובץ ההגדרות',
+	'mv_time_separator' => '$1 עד $2',
+	'video_feed_cat' => 'הזנת וידאו עבור הקטגוריה:',
 	'mv_play' => 'ניגון',
 	'mv_edit' => 'עריכה',
 	'mv_history' => 'היסטוריה',
@@ -3626,7 +3642,6 @@ $messages['he'] = array(
 	'mv_adjust_ok_move' => 'הפעולה הושלמה בהצלחה. מכוונן...',
 	'mv_start_desc' => 'זמן ההתחלה',
 	'mv_end_desc' => 'זמן הסיום',
-	'mv_of' => '&#32;מתוך&#32;',
 	'mv_edit_metadata' => 'עריכת נתוני הקובץ',
 	'mv_advanced_edit' => 'עריכה מתקדמת',
 	'mv_basic_edit' => 'עריכה בסיסית',
@@ -3707,6 +3722,7 @@ $messages['he'] = array(
 	'mv_add_clip_by_name' => 'הוספת קטע לפי שם',
 	'mv_export_cmml' => 'ייצוא CMML',
 	'mv_embed_options' => 'אפשרויות הטמעה',
+	'mv_overlay' => 'פקדים צפים',
 	'mv_tool_missing' => 'הכלי המבוקש אינו קיים',
 	'mv_prev_cat' => 'הקטגוריה הקודמת: $1',
 	'mv_next_cat' => 'הקטגוריה הבאה: $1',
@@ -5321,6 +5337,8 @@ $messages['km'] = array(
 $messages['kn'] = array(
 	'mv_history' => 'ಇತಿಹಾಸ',
 	'mv_existing_categories' => '{{PLURAL:$1|ವರ್ಗ|ವರ್ಗಗಳು}}:',
+	'mv_search_categories' => 'ವರ್ಗಗಳು',
+	'mv_search_category' => 'ವರ್ಗ',
 );
 
 /** Korean (한국어)
@@ -5698,7 +5716,6 @@ $messages['lb'] = array(
 	'mv_adjust_title' => 'Ufanks- a Schlusszäit upassen',
 	'mv_adjust_old_title_missing' => "D'Säit déi dir versich vun ($1) ze réckele gëtt et net",
 	'mv_start_desc' => 'Ufankszäit',
-	'mv_of' => '&#32;vu(n)&#32;',
 	'mv_edit_metadata' => 'Meta-Donnéeën änneren',
 	'mv_advanced_edit' => 'Erweidert Ännerung',
 	'mv_basic_edit' => 'Elementar Ännerung',
@@ -5724,6 +5741,7 @@ $messages['lb'] = array(
 	'mv_search_or' => 'oder',
 	'mv_search_not' => 'net',
 	'mv_search_stream_name' => 'Numm vum Stream',
+	'mv_date_range' => 'Zäitraum',
 	'mv_date_last_week' => 'Lescht Woch',
 	'mv_category_results' => 'REsultater aus de r Kategorie',
 	'mv_intrest_group_results' => 'Interessegruppen',
@@ -5755,6 +5773,7 @@ $messages['lb'] = array(
 	'mv_seconds_singular' => '1 Sekonn(en)',
 	'mv_stream_length' => 'Gesamtdauer vum Video:',
 	'mv_edit_sequence_desc_help' => 'Beschreiwung vun der Sequenz',
+	'mv_seq_summary' => 'Resumé vun der Ännerung vun der Sequenz',
 	'mv_add_clip_by_name' => 'Clip nom Numm derbäisetzen',
 	'mv_export_cmml' => 'CMML exportéieren',
 	'mv_stream_overview' => 'Iwwersiicht vum Stream',
@@ -6792,7 +6811,16 @@ Denne overleggstypen kan brukes for å kategorisere seksjoner av videoer eller t
 	'mv_error_mvd_not_found' => 'Feil: mvd ikke funnet',
 	'mv_edit_sequence' => 'Redigerer sekvens: $1',
 	'mv_sequence_player_title' => 'sekvensspiller',
+	'mv_resource_not_found' => "Fant ikke ressursen '''$1'''",
+	'mv_resource_not_supported' => "Ressurstypen '''$1''' støttes ikke",
+	'mv_resource_locator' => 'Ressurslokalisator',
+	'mv_unknown_clipboard_action' => 'Ukjent utklippstavlehandling',
 	'mv_media_search' => 'Mediasøk',
+	'mv_editor_options' => 'Editorinnstillinger',
+	'mv_editor_mode' => 'Editormodus',
+	'mv_simple_editor_desc' => 'enkel editor (iMovie-lignende)',
+	'mv_advanced_editor_desc' => 'avansert editor (Final Cut-lignende)',
+	'mv_transitions' => 'Overganger',
 	'mv_save_sequence' => 'Lagre sekvens',
 	'mv_sequence_page_desc' => 'Lagre nåværende sekvens',
 	'mv_sequence_add' => 'Legg til klipp',
@@ -6801,7 +6829,10 @@ Denne overleggstypen kan brukes for å kategorisere seksjoner av videoer eller t
 	'mv_sequence_add_search' => 'Legg til etter søk',
 	'mv_sequence_add_search_desc' => 'Legg til klipp etter mediesøk',
 	'mv_seq_add_end' => 'Legg til sekvensslutt',
+	'mv_sequence_edit_text' => 'Bytt til teksteditor',
+	'mv_sequence_edit_visual_editor' => 'Bytt til visuell editor',
 	'mv_other_options' => 'Andre alternativ',
+	'mv_contextmenu_opt' => 'Aktiver kontekstmenyer',
 	'mv_days' => '$1 {{PLURAL:$1|dag|dager}}',
 	'mv_hours' => '$1 {{PLURAL:$1|time|timer}}',
 	'mv_hours_singular' => '1 time',
@@ -6815,8 +6846,11 @@ Denne overleggstypen kan brukes for å kategorisere seksjoner av videoer eller t
 	'mv_edithelpsequence' => 'Help:Sekvensredigering',
 	'mv_seq_summary' => 'Sammendrag av sekvensredigering',
 	'mv_add_clip_by_name' => 'Legg til klipp etter navn',
+	'mv_stream_resource_export' => 'Eksport av strømningsressurser',
 	'mv_export_cmml' => 'Eksporter CMML',
 	'mv_navigate_stream' => 'Naviger full dataflyt',
+	'mv_stream_overview' => 'Strømningsoversikt',
+	'mv_edit_time' => 'Redigeringstid',
 	'mv_embed_options' => 'Inkluderingsvalg',
 	'mv_overlay' => 'Overleggkontroll',
 	'mv_stream_tool_heading' => 'Dataflytverktøy',
@@ -6837,6 +6871,7 @@ Denne overleggstypen kan brukes for å kategorisere seksjoner av videoer eller t
 	'mv_protect_source_material' => 'Originalt kildemateriale beskyttet mot redigeringer',
 	'right-mv_delete_mvd' => 'Slett MetaVid-metadata',
 	'action-mv_delete_mvd' => 'slett dette MetaVid-metadatasegmentet',
+	'right-mv_edit_stream' => 'Rediger strømningsfiler',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -9151,10 +9186,12 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'mv_remove' => 'вилучити',
+	'mv_existing_categories' => '{{PLURAL:$1|категорія|категорії|категорій}}:',
 );
 
 /** Veps (Vepsan kel')
@@ -9479,23 +9516,60 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author PhiLiP
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
+	'metavid' => 'MetaVid页面',
+	'mv_stream_meta' => '串流页面',
+	'mv_add_stream' => 'MetaVid加入串流',
+	'mv_edit_stream' => 'MetaVid编辑串流',
+	'mvexportsearch' => 'MetaVid汇出',
+	'mvexportstream' => 'MetaVid汇出串流',
+	'mv_move_delete_msg' => '已移动到$1',
+	'mv_add_stream_page' => 'MetaVid加入串流',
+	'mv_add_stream_submit' => '加入串流',
 	'mv_edit_stream_files' => '编辑流文件',
 	'mv_path_type_mp4_stream' => 'MP4流服务器',
+	'mv_path_type_label' => '路径类型',
+	'mv_save_changes' => '储存变更',
 	'mv_file_list' => '流文件',
 	'mv_label_stream_name' => '流名称',
+	'mv_error_stream_insert' => '插入串流失败',
+	'mv_label_stream_type' => '串流类型',
 	'mv_upload_file' => '上载文件',
 	'mv_external_file' => '外部文件',
 	'mv_tool_search' => '搜索',
+	'mv_tool_export' => '汇出',
+	'mv_watch_clip' => '观看短片',
+	'mv_close_clip' => '关闭短片',
+	'mv_improve_transcript' => '改进字幕',
+	'ht_en' => '字幕',
 	'mv_remove' => '移除',
+	'mv_start_desc' => '开始时间',
+	'mv_end_desc' => '结束时间',
+	'mv_search_or' => '或',
 	'mv_search_stream_name' => '流名称',
 	'mv_stream_name' => '流名称',
+	'mv_date_last_week' => '过去一星期',
+	'mv_resource_not_found' => "找不到资源'''$1'''",
+	'mv_sequence_add' => '加入短片',
+	'mv_other_options' => '其他选项',
+	'mv_days' => '$1天',
+	'mv_hours' => '$1小时',
+	'mv_hours_singular' => '1小时',
+	'mv_minutes' => '$1分',
+	'mv_minutes_singular' => '1分',
+	'mv_seconds' => '$1秒',
+	'mv_seconds_singular' => '1秒',
+	'mv_add_clip_by_name' => '按名称加入短片',
+	'mv_stream_tool_heading' => '串流工具',
+	'right-mv_edit_stream' => '编辑串流档案',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -9524,6 +9598,7 @@ $messages['zh-hant'] = array(
 	'mv_close_clip' => '關閉短片',
 	'mv_improve_transcript' => '改進字幕',
 	'ht_en' => '字幕',
+	'mv_remove' => '移除',
 	'mv_start_desc' => '開始時間',
 	'mv_end_desc' => '結束時間',
 	'mv_search_or' => '或',

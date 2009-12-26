@@ -954,11 +954,14 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'watchsubpages' => '監視子頁面',
+	'watchsubpages-addedtowatchlist' => '如下已經添加到您的監視列表中。',
 	'watchsubpages-addtitles' => '增加頁面',
 	'watchsubpages-addtitlestowatchlist' => '增加頁面至監視清單',
+	'watchsubpages-desc' => '快速[[Special:WatchSubpages|添加所有的子頁]]到監視列表',
 );
 

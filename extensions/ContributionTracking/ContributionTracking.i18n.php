@@ -982,3 +982,10 @@ $messages['zh-hans'] = array(
 	'contrib-tracking-error' => '错误',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'contrib-tracking-error' => '錯誤',
+);
+

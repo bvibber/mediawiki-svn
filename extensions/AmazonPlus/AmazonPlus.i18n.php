@@ -1472,12 +1472,25 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
+	'amazonplus-desc' => '输出Amazon网站资讯的高自定性扩展',
+	'amazonplus-nores' => '错误：找不到任何资料！',
+	'amazonplus-noidres' => '错误：找不到产品代码',
+	'amazonplus-fgcerr' => '错误：无法从Amazon接收资料！',
+	'amazonplus-slserr' => '错误：无法处理来自Amazon的资料！',
+	'amazonplus-used' => '二手',
 	'amazonplus-german' => '德语',
 	'amazonplus-french' => '法语',
 	'amazonplus-japanese' => '日语',
+	'amazonplus-amazon' => 'Amazon价格',
+	'amazonplus-new' => '全新',
+	'amazonplus-none' => '本产品目前无货可销售',
+	'amazonplus-cp-none' => '无',
+	'amazonplus-more' => '更多',
+	'amazonplus-less' => '最少',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

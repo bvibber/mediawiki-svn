@@ -742,9 +742,12 @@ $messages['zh-hans'] = array(
 一个新的用户账号$2，已经在$4于$3创建。',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
 $messages['zh-hant'] = array(
 	'newusernotifsubj' => '$1的新用戶通知',
+	'newusernotif-desc' => '當用戶創建時，發送郵件確認電子郵件地址',
 	'newusernotifbody' => '你好 $1，
 
 一個新的用戶帳號$2，已經在$4於$3創建。',

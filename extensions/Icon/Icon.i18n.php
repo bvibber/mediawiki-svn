@@ -686,16 +686,21 @@ $messages['vo'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'icon-badimage' => '损坏的图像',
+	'icon-badwidth' => '宽度错误',
+	'icon-desc' => '增加icon参数以产生于图片上的连结',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
-	'icon-badimage' => '圖像錯誤',
+	'icon-badimage' => '圖片錯誤',
 	'icon-badwidth' => '寬度錯誤',
-	'icon-desc' => '增加icon參數以產生於圖像上的連結',
+	'icon-desc' => '增加icon參數以產生於圖片上的連結',
 );
 

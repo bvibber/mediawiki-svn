@@ -230,12 +230,15 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'patrol' => "Gwiriekadur ar c'hemmoù",
 	'patrol-endorse' => 'Aprouiñ',
 	'patrol-revert' => 'Assevel',
 	'patrol-revert-reason' => 'Abeg :',
 	'patrol-skip' => 'Lezel a-gostez',
 	'patrol-reverting' => 'Nuladennoù: $1',
+	'patrol-endorsed-failed' => "N'eo ket bet merket an embann evel gwiriekaet.",
 	'patrol-reverted-ok' => 'Nullet eo bet an embann-se.',
+	'patrol-reverted-failed' => "N'eus ket bet tu nulañ ar c'hemm-se",
 	'patrol-skipped-ok' => 'Dianavezout an embann.',
 	'patrol-reasons' => '* Vandalerezh simpl
 * Amprouadennoù tud nevez
@@ -957,6 +960,13 @@ $messages['km'] = array(
 	'group-patroller-member' => 'អ្នកតាមដាន',
 	'grouppage-patroller' => '{{ns:project}}:អ្នកតាមដាន',
 	'right-patroller' => 'ទំព័រតាមដាន',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'patrol-revert-reason' => 'ಕಾರಣ:',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -184,7 +184,7 @@ $messages['arn'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'dt-desc' => 'يسمح باستيراد وتصدير بيانات هيكلية محتواة فى استدعاءات قالب',
+	'dt-desc' => 'يسمح باستيراد وتصدير بيانات محتواة فى استدعاءات قالب',
 	'viewxml' => 'عرض XML',
 	'dt_viewxml_docu' => 'من فضلك اختر من بين التصنيفات والنطاقات التالية للعرض فى صيغة XML.',
 	'dt_viewxml_categories' => 'تصنيفات',
@@ -257,7 +257,12 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'dt-desc' => 'Aotreañ a ra da enporzhiañ hag ezporzhiañ roadennoù eus galvoù patromoù',
+	'viewxml' => 'Gwelet XML',
+	'dt_viewxml_docu' => 'Mar plij dibabit e-barzh ar rummadoù hag an esaouennoù anv da heul evit gwelet er furmad XML.',
 	'dt_viewxml_categories' => 'Rummadoù',
+	'dt_viewxml_namespaces' => 'esaouennoù anv',
+	'dt_viewxml_simplifiedformat' => 'Furmad eeunet',
 	'dt_xml_namespace' => 'Esaouenn anv',
 	'dt_xml_pages' => 'Pajennoù',
 	'dt_xml_page' => 'Pajenn',
@@ -268,9 +273,14 @@ $messages['br'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Testenn dieub',
 	'importxml' => 'Enporzhiañ  XML',
+	'dt_import_selectfile' => 'Mar plij dibabit ar restr $1 da enporzhiañ :',
+	'dt_import_encodingtype' => 'Doare enkodañ',
 	'dt_import_editsummary' => 'Emporzhadur $1',
 	'dt_import_importing' => "Oc'h enporzhiañ...",
 	'dt_import_success' => '$1 {{PLURAL:$1|pajenn|pajenn}} a vo krouet adalek ar restr $2.',
+	'importcsv' => 'Enporzh CSV',
+	'dt_importcsv_badheader' => 'Fazi : titl ar golonenn $1 , "$2", a rank bezañ "$3", "$4" pe gant ar stumm "anv_ar_patrom[anv_ar_maezienn]"',
+	'right-datatransferimport' => 'Enporzhiañ roadennoù',
 );
 
 /** Bosnian (Bosanski)
@@ -1023,6 +1033,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'dt_viewxml_categories' => 'ವರ್ಗಗಳು',
 	'dt_xml_name' => 'ಹೆಸರು',
 );
 
@@ -1907,6 +1918,24 @@ $messages['zh-hans'] = array(
 	'dt_xml_page' => '页面',
 	'dt_xml_name' => '名称',
 	'dt_xml_title' => '标题',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => '自由文本',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'dt-desc' => '允許根據模板的要求導入導出結構化的數據',
+	'viewxml' => '查看XML',
+	'dt_viewxml_docu' => '請在下列分類、名稱空間中選擇，以使用XML格式查看。',
+	'dt_viewxml_categories' => '分類',
+	'dt_viewxml_namespaces' => '名稱空間',
+	'dt_viewxml_simplifiedformat' => '簡化格式',
+	'dt_xml_namespace' => '名稱空間',
+	'dt_xml_page' => '頁面',
+	'dt_xml_name' => '名稱',
+	'dt_xml_title' => '標題',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => '自由文本',
 );

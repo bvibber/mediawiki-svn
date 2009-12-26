@@ -114,6 +114,8 @@ $messages['br'] = array(
 	'externalpages-bad-page' => 'Pajenn lakaet direizh',
 	'externalpages-no-page' => "N'eus bet resisaet anv pajenn ebet",
 	'externalpages-error-generic' => 'Kavet ez eus bet ur fazi',
+	'externalpages-bad-url' => "N'eo ket bet adtapet an URL",
+	'externalpages-bad-url-data' => "N'eo ket bet adtapet danvez ar bajenn",
 );
 
 /** Bosnian (Bosanski)
@@ -220,6 +222,8 @@ $messages['el'] = array(
  */
 $messages['es'] = array(
 	'externalpages' => 'Páginas externas',
+	'externalpages-bad-language' => 'Idioma especificado mal',
+	'externalpages-bad-project' => 'Proyecto especificado mal',
 	'externalpages-no-project' => 'No se ha especificado un proyecto',
 	'externalpages-no-page' => 'No se ha especificado una página',
 	'externalpages-error-generic' => 'Se ha encontrado un error',
@@ -654,12 +658,16 @@ $messages['te'] = array(
  */
 $messages['tk'] = array(
 	'externalpages' => 'Daşarky Sahypalar',
+	'externalpages-desc' => 'Uzak WMF saýtlaryndan sahypalary alýar we görkezýär',
 	'externalpages-bad-year' => 'Nädogry ýyl görkezildi',
 	'externalpages-bad-language' => 'Nädogry dil görkezildi',
 	'externalpages-bad-project' => 'Nädogry taslama görkezildi',
 	'externalpages-no-project' => 'Hiç hili taslama görkezilmedi',
 	'externalpages-bad-page' => 'Nädogry sahypa görkezildi',
 	'externalpages-no-page' => 'Hiç hili sahypa görkezilmedi',
+	'externalpages-error-generic' => 'Säwlige duçar bolundy',
+	'externalpages-bad-url' => 'URL almaklyk şowsuz',
+	'externalpages-bad-url-data' => 'Sahypa mazmunyny almaklyk şowsuz',
 );
 
 /** Turkish (Türkçe)
@@ -680,15 +688,21 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'externalpages' => 'Зовнішні сторінки',
+	'externalpages-desc' => 'Отримує і показує сторінки з віддалених WMF сайтів',
 	'externalpages-bad-year' => 'Неправильно вказаний рік',
 	'externalpages-bad-language' => 'Неправильно вказана мова',
 	'externalpages-bad-project' => 'Неправильно вказаний проект',
-	'externalpages-no-project' => 'Жоден проект не вказано',
+	'externalpages-no-project' => 'Не вказано проект',
 	'externalpages-bad-page' => 'Неправильно вказана сторінка',
-	'externalpages-no-page' => 'Жодної сторінки не вказано',
+	'externalpages-no-page' => 'Не вказано сторінку',
+	'externalpages-error-generic' => 'Виникла помилка',
+	'externalpages-bad-url' => 'Не вдалося отримати URL',
+	'externalpages-bad-url-data' => 'Не вдалося отримати зміст сторінки',
 );
 
 /** Vèneto (Vèneto)

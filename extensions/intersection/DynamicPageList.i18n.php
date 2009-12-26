@@ -852,9 +852,11 @@ $messages['tg-cyrl'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'intersection-desc' => 'Bir kategoriýada bar bolan iň soňky elemntleriň markirlenen sanawyny ýa-da birnäçe kategoriýanyň birleşmesini öndürýär',
 	'intersection_toomanycats' => 'Säwlik: Aşa köp kategoriýa!',
 	'intersection_toofewcats' => 'Säwlik: Örän az kategoriýa!',
 	'intersection_noresults' => 'Säwlik: Netije ýok!',
+	'intersection_noincludecats' => 'Säwlik: Iň bolmanda bir kategoriýa goşmaly ýa-da at giňişligi görkezmeli!',
 );
 
 /** Tagalog (Tagalog)

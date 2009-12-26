@@ -111,6 +111,14 @@ $messages['eo'] = array(
 	'vector-desc' => 'Plibonigas la elementojn de la uzula interfaco de la Vector-etoso.',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'vector' => 'Käyttöliittymän parannukset Vectorille',
+	'vector-desc' => 'Parantaa käyttöliittymän osia Vector-ulkonäöstä.',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */
@@ -141,6 +149,13 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'vector' => 'BI-Verbesserige fir Vektor',
 	'vector-desc' => 'Verbesserige an dr Elemänt vu dr Benutzeroberflechi bim Vector-skin',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'vector' => 'שיפורי מנשק משתמש עבור וקטור',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -365,5 +380,13 @@ $messages['vi'] = array(
 $messages['zh-hans'] = array(
 	'vector' => 'Vector用户界面改进',
 	'vector-desc' => '改进Vector皮肤中的用户界面元素。',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'vector' => 'Vector用戶界面改進',
+	'vector-desc' => '改進Vector皮膚中的用戶界面元素。',
 );
 

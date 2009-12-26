@@ -5982,6 +5982,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -5990,6 +5991,7 @@ $messages['zh-hant'] = array(
 	'viewapc-php-version' => 'PHP版本',
 	'viewapc-upload-support' => '檔案上載支援',
 	'viewapc-display-filename' => '檔名',
+	'viewapc-ls-options-legend' => '選項',
 	'viewapc-ls-sort-modified' => '最近更改',
 	'viewapc-version-info' => '版本資料',
 );

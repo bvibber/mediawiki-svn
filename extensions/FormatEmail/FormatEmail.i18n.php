@@ -768,3 +768,14 @@ $messages['zh-hans'] = array(
 $2',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'email-desc' => '給用戶的電子郵件中，您可以自行設計頁眉和頁腳',
+	'email_footer' => '----------------------------------------------------------------------------
+這封電子郵件由 $1 通過 {{SITENAME}} 的電子郵件系統寄出。
+
+$2',
+);
+

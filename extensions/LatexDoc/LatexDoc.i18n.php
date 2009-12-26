@@ -125,6 +125,7 @@ Ezvont : $2
 $3',
 	'latexdoc_get_dvi' => 'Kaout DVI',
 	'latexdoc_get_pdf' => 'Kaout PDF',
+	'latexdoc-desc' => 'Kemm kenlabour eus ar restroù LaTeX.',
 );
 
 /** Bosnian (Bosanski)
@@ -986,6 +987,7 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'latexdoc_no_text' => '页面未包含文字，无法生成DVI文件',
@@ -998,14 +1000,28 @@ $messages['zh-hans'] = array(
 输出: $2
 
 $3',
+	'latexdoc_get_dvi' => '取得DVI',
+	'latexdoc_get_pdf' => '取得PDF',
 	'latexdoc-desc' => '协作编辑 LaTex 文件',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'latexdoc_no_text' => '頁面未包含文字，無法生成DVI文件',
+	'latexdoc_cant_create_dir' => '無法生成臨時目錄 $1',
+	'latexdoc_cant_write' => '$1 無法創建',
+	'latexdoc_error' => 'LaTeX 出現錯誤
+
+命令: $1
+
+輸出: $2
+
+$3',
 	'latexdoc_get_dvi' => '取得DVI',
 	'latexdoc_get_pdf' => '取得PDF',
+	'latexdoc-desc' => '協作編輯 LaTex 文件',
 );
 

@@ -1000,10 +1000,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'languageselector' => '語言',
+	'languageselector-desc' => '在每一頁面上添加語言選擇項，對匿名訪問者亦有效',
 	'languageselector-setlang' => '設定',
 );
 

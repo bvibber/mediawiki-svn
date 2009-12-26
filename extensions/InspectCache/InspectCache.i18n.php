@@ -142,8 +142,11 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'inspectcache' => "Ensellañ ar c'hrubuilh",
+	'inspectcache-desc' => "Un ostilh debuggañ simpl evit ensellañ an elfennoù er c'hrubuilh kevrannet.",
 	'inspectcache-ok' => 'Mat eo',
 	'inspectcache-general' => 'Krubuilh hollek',
+	'inspectcache-parser' => 'Krubuilh ar parseroù',
 	'inspectcache-message' => 'Krubuilh ar gemenadennoù',
 	'inspectcache-get' => 'Tapout',
 	'inspectcache-delete' => '

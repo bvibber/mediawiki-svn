@@ -408,9 +408,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'pnghandler-desc' => '使用pngds調整PNG圖像大小',
+	'pnghandler-desc' => '使用pngds調整PNG圖片大小',
 );
 

@@ -340,17 +340,26 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'changeauthor' => 'Kemmañ aozer an adweladennoù',
+	'changeauthor-desc' => "Aotreañ a ra da gemm anv oberour ur c'hemm",
 	'changeauthor-title' => 'Kemmañ aozer un adweladenn',
 	'changeauthor-search-box' => 'Klask adweladennoù',
 	'changeauthor-pagename-or-revid' => 'Anv ar bajenn pe niver an adweladenn :',
 	'changeauthor-pagenameform-go' => 'Mont',
 	'changeauthor-comment' => 'Notenn :',
 	'changeauthor-changeauthors-multi' => 'Kemmañ {{PLURAL:$1|an aozer|an aozerien}}',
+	'changeauthor-explanation-multi' => 'Gant ar furmskrid-mañ e c\'heloc\'h kemmañ aozer un adweladenn.
+Kemmit dindan anv un pe meur a aozerien, ouzhpennit un evezhiadenn (diret) ha klikit war ar bouton "Kemmañ an aozer(ien)".',
 	'changeauthor-changeauthors-single' => 'Cheñch aozer',
+	'changeauthor-explanation-single' => 'Gant ar furmskrid-mañ e c\'heloc\'h kemmañ aozer un adweladenn.
+Cheñchit dindan anv an aozer, ouzhpennit un evezhiadenn (diret) ha klikit war ar bouton "Kemmañ an aozer".',
 	'changeauthor-invalid-username' => 'Anv implijer "$1" fall.',
 	'changeauthor-nosuchuser' => 'Implijer "$1" ebet.',
 	'changeauthor-revview' => 'Adweladenn #$1 eus $2',
 	'changeauthor-nosuchtitle' => 'N\'eus pajenn ebet anvet "$1".',
+	'changeauthor-weirderror' => "Ur fazi souezhus-tre a zo bet.
+Mar plij adklaskit ho reked.
+Ma 'z eus bet meur a wech eus ar fazi-se e talvez ez eo sur a-walc'h torret an diaz roadennoù",
+	'changeauthor-invalidform' => 'Mar plij implijit ar furmskrid krouet gant ar [[Special:ChangeAuthor|bajenn ispisial]], ha ket ur furmskrid hiniennel',
 	'changeauthor-success' => 'Tretet eo bet ho reked.',
 	'changeauthor-logentry' => 'Kemmoù an aozer $2 da $1 eus $3 davet $4',
 	'changeauthor-logpagename' => "Marilh ar c'hemmoù graet gant an aozer",

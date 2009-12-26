@@ -188,6 +188,8 @@ $messages['arz'] = array(
 	'usagestatisticsfor' => '<h2>إحصاءات الاستخدام ل[[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>إحصاءات الاستخدام لكل اليوزرز</h2>',
 	'usagestatisticsinterval' => 'مدة:',
+	'usagestatisticsnamespace' => 'النطاق:',
+	'usagestatisticsexcluderedirects' => 'ماتحسبش التحويلات',
 	'usagestatisticstype' => 'نوع',
 	'usagestatisticsstart' => 'تاريخ البدء:',
 	'usagestatisticsend' => 'تاريخ الانتهاء:',
@@ -730,6 +732,7 @@ $messages['fi'] = array(
 	'usagestatisticsinterval' => 'Aikaväli',
 	'usagestatisticsnamespace' => 'Nimiavaruus:',
 	'usagestatisticsexcluderedirects' => 'Jätä pois ohjaukset',
+	'usagestatistics-namespace' => 'Nämä ovat tilastot nimiavaruudessa [[Special:Allpages/$1|$2]].',
 	'usagestatisticstype' => 'Tyyppi',
 	'usagestatisticsstart' => 'Aloituspäivä',
 	'usagestatisticsend' => 'Lopetuspäivä',
@@ -2392,11 +2395,32 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'specialuserstats' => '使用分析',
+	'usagestatistics' => '使用分析',
+	'usagestatistics-desc' => '顯示每個用戶與整個維基的使用分析',
+	'usagestatisticsfor' => '<h2>[[User:$1|$1]]的使用分析</h2>',
+	'usagestatisticsforallusers' => '<h2>所有用戶的使用分析</h2>',
+	'usagestatisticsinterval' => '區間',
 	'usagestatisticstype' => '類型',
 	'usagestatisticsstart' => '開始日期',
 	'usagestatisticsend' => '結束日期',
+	'usagestatisticssubmit' => '生成統計',
+	'usagestatisticsnostart' => '請選擇開始日期',
+	'usagestatisticsnoend' => '請選擇結束日期',
+	'usagestatisticsbadstartend' => '<b><i>開始</i>或者<i>結束</i>日期錯誤！</b>',
+	'usagestatisticsintervalday' => '日',
+	'usagestatisticsintervalweek' => '周',
+	'usagestatisticsintervalmonth' => '月',
+	'usagestatisticsincremental' => '增量',
+	'usagestatisticsincremental-text' => '增量',
+	'usagestatisticscumulative' => '累積',
+	'usagestatisticscumulative-text' => '累積',
+	'usagestatisticscalselect' => '選擇',
+	'usagestatistics-editindividual' => '用戶$1編輯統計分析',
+	'usagestatistics-editpages' => '用戶$1統計分析',
 );
 

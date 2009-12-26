@@ -716,6 +716,15 @@ $messages['tg-cyrl'] = array(
 	'assert_edit_message' => 'Таъйиди мавриди назар ($1) номувофиқ буд.',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'assert_edit_title' => 'Tassyklama şowsuz',
+	'assert_edit_desc' => 'Botlar tarapyndan ulanmak üçin özgerdiş tassyklamalaryny goşýar',
+	'assert_edit_message' => 'Görkezilen tassyklama ($1) şowsuz.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

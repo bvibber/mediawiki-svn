@@ -868,10 +868,12 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'unicodeconverter' => 'Unicode轉換器',
+	'unicodeconverter-ok' => '確定',
 	'unicodeconverter-oldtext' => '原文字：',
 	'unicodeconverter-newtext' => '轉換後文字：',
 );

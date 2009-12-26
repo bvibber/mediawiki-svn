@@ -215,15 +215,24 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'form-desc' => 'Un [[Special:Form|etrefas furmskrid]] evit kregiñ gant pajennoù nevez',
 	'form' => 'Furmskrid',
 	'formnoname' => 'Anv ebet',
+	'formnonametext' => 'Roit anv ar furmskrid, gant ar stumm "Ispisial:Furmskrid/AnvArFurmskrid".',
 	'formbadname' => 'Anv furmskrid fall',
+	'formbadnametext' => "N'eus furmskrid ebet gant an anv-se.",
 	'formpattern' => 'furmskrid-$1',
 	'formtitlepattern' => 'Ouzhpennañ un $1 nevez',
 	'formsave' => 'Enrollañ',
+	'formindexmismatch-title' => 'Ne glot ket livaoueg an anvioù gant ar patrom',
+	'formindexmismatch' => 'Ar furm skrid-mañ en deus patromoù ne glotont ket adalek $1.',
 	'formarticleexists' => 'Ar bajenn zo anezhi dija',
 	'formarticleexiststext' => 'Ar bajenn [[$1]] zo anezhi dija.',
 	'formbadpagename' => 'Anv fall evit ar bajenn',
+	'formbadrecaptcha' => 'Talvoudoù fall evit reCaptcha. Klaskit adarre.',
+	'formbadpagenametext' => 'Ar roadennoù o peus lakaet a grou un anv fall evit ar bajenn,  "$1".',
+	'formrequiredfielderror' => "Ezhomm 'zo eus ar maezienn{{PLURAL:$2||où}} $1 er furmskrid.
+Mar plij leunit {{PLURAL:$2|anezhañ|anezho}}.",
 	'formsavesummary' => "Pajenn nevez oc'h implijout  [[Special:Form/$1|ar furmskrid $1]]",
 	'formsaveerror' => 'Fazi en ur enrollañ ar furmskrid',
 	'formsaveerrortext' => 'Ur fazi a ro bet pa veze enrollet ar bajenn "$1".',
@@ -1596,16 +1605,24 @@ $messages['zh-hans'] = array(
 	'formsave' => '保存',
 	'formarticleexists' => '页面存在',
 	'formbadpagename' => '错误的表单名',
+	'formsaveerror' => '储存表格时发生错误',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'form' => '表格',
 	'formnoname' => '未有表格名稱',
+	'formnonametext' => '你必須提供一個表單名，如“Special:Form/表單名”。',
+	'formbadname' => '錯誤的表單名',
+	'formbadnametext' => '沒有這個名字的表單。',
+	'formpattern' => '$1-表單',
+	'formtitlepattern' => '添加新的$1',
 	'formsave' => '儲存',
 	'formarticleexists' => '頁面存在',
+	'formbadpagename' => '錯誤的表單名',
 	'formsaveerror' => '儲存表格時發生錯誤',
 );
 

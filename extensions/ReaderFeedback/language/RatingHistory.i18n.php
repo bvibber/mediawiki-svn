@@ -165,10 +165,10 @@ $messages['arz'] = array(
 	'ratinghistory-table-rating' => 'تقييم',
 	'ratinghistory-table-votes' => 'الاصوات',
 	'ratinghistory-none' => 'لا توجد بيانات كافية من القراء متوفرة للرسومات فى هذا الوقت.',
-	'ratinghistory-legend' => "'''عدد المراجعات اليومي''' <font color=\"red\">''(أحمر)''</font>, '''التقييم اليومي المتوسط''' <font color=\"blue\">''(أزرق)''</font>,
-و '''التقييم التشغيلي المتوسط''' <font color=\"green\">''(أخضر)''</font> مرسومون بالأسفل، حسب التاريخ.
-'''التقييم التشغيلي المتوسط''' هو ببساطة متوسط كل التقييمات اليومية ''في'' هذا الإطار الزمني لكل يوم.
-التقييمات هي كالتالي:
+	'ratinghistory-legend' => "'''عدد المراجعات اليومي''' <font color=\"red\">''(أحمر)''</font>, '''التقييم اليومى المتوسط''' <font color=\"blue\">''(أزرق)''</font>,
+و '''التقييم التشغيلى المتوسط''' <font color=\"green\">''(أخضر)''</font> مرسومون بالأسفل، حسب التاريخ.
+'''التقييم التشغيلى المتوسط''' هو ببساطة متوسط كل التقييمات اليومية ''في'' هذا الإطار الزمنى لكل يوم.
+التقييمات هى كالتالي:
 
 '''(1)''' - فقير; '''(2)''' - منخفض; '''(3)''' - معقول; '''(4)''' - مرتفع; '''(5)''' - ممتاز;",
 	'right-feedback' => 'استخدام استمارة الآراء لتقييم صفحة',
@@ -234,6 +234,7 @@ $messages['bg'] = array(
 	'ratinghistory-month' => 'последния месец',
 	'ratinghistory-year' => 'последната година',
 	'ratinghistory-3years' => 'последните 3 години',
+	'ratinghistory-ave' => 'Средно: $1',
 	'ratinghistory-svg' => 'Преглед като SVG',
 	'ratinghistory-table-votes' => 'Гласове',
 );
@@ -746,7 +747,7 @@ $messages['frp'] = array(
 	'ratinghistory-leg' => 'Balyês de l’historico de les èstimacions por [[:$1|$1]]',
 	'ratinghistory-tab' => 'èstimacion',
 	'ratinghistory-link' => 'Èstimacion de la pâge',
-	'ratinghistory-thanks' => "''<font color=\"darkred\">Marci d’avêr consacrâ de temps por revêre ceta pâge !</font>''",
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Grant-marci d’avêr consacrâ de temps por revêre ceta pâge !</font>''",
 	'ratinghistory-period' => 'Temps :',
 	'ratinghistory-month' => 'mês passâ',
 	'ratinghistory-3months' => '3 mês passâs',
@@ -1160,6 +1161,7 @@ $messages['ko'] = array(
 	'ratinghistory-3years' => '지난 3년',
 	'ratinghistory-ave' => '평균: $1',
 	'ratinghistory-svg' => 'SVG로 보기',
+	'ratinghistory-ratings' => "'''범례:''' '''(1)''' - 최하, '''(2)''' - 낮음, '''(3)''' - 양호, '''(4)''' - 높음, '''(5)''' - 우수",
 	'right-feedback' => '문서를 평가하는 피드백 양식을 이용',
 );
 
@@ -1960,10 +1962,13 @@ $messages['tk'] = array(
 	'ratinghistory-year' => 'geçen ýyl',
 	'ratinghistory-3years' => 'geçen 3 ýyl',
 	'ratinghistory-ave' => 'Ort: $1',
+	'ratinghistory-purge' => 'keşi boşat',
 	'ratinghistory-users' => 'Derejelendirme beren ulanyjylar',
 	'ratinghistory-svg' => 'SVG edip görkez',
 	'ratinghistory-table-rating' => 'Derejelendirme',
 	'ratinghistory-table-votes' => 'Sesler',
+	'ratinghistory-ratings' => "'''Şertli belgi:''' '''(1)''' - Ýaramaz; '''(2)''' - Pes; '''(3)''' - Orta gürp; '''(4)''' - Ýagşy; '''(5)''' - Ajaýyp;",
+	'right-feedback' => 'Sahypa derejelendirmek üçin seslenme formuny ulanyň',
 );
 
 /** Tagalog (Tagalog)
@@ -2213,6 +2218,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -2230,6 +2236,7 @@ $messages['zh-hant'] = array(
 	'ratinghistory-purge' => '清空緩存',
 	'ratinghistory-table' => '讀者評論總覽',
 	'ratinghistory-users' => '給出評價的用戶',
+	'ratinghistory-graph' => '"$3" 的 $2 （$1 {{PLURAL:$1|複審|複審}}）',
 	'ratinghistory-svg' => '以SVG檢視',
 	'ratinghistory-table-rating' => '評分',
 	'ratinghistory-table-votes' => '投票',

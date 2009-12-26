@@ -819,9 +819,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'searchbox-desc' => '允許列入搜索形式',
 	'searchbox-search' => '搜尋',
+	'searchbox-go' => '搜',
+	'searchbox-namespaces' => '名稱空間：',
 );
 

@@ -125,9 +125,19 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'framedvideo_errors' => "Meur a fazi zo c'hoarvezet !",
 	'framedvideo_error' => 'Ur fazi zo bet !',
+	'framedvideo_error_unknown_type' => 'Dianav eo ID ar servij  video ("$1") : adwelit an arventenn "seurt".',
+	'framedvideo_error_no_id_given' => 'Mankout a ra an arventenn "id".',
+	'framedvideo_error_height_required' => 'Ar seurt video "$1" en deus ezhomm eus an arventenn "height".',
+	'framedvideo_error_height_required_not_only_width' => 'Ar seurt video "$1" en deus ezhomm eus an arventenn "height", ha ket hepken an arventenn "width".',
+	'framedvideo_error_width_too_big' => 'Re vras eo an talvoudenn bet roet d\'an arventenn "width".',
+	'framedvideo_error_height_too_big' => 'Re vras eo an talvoudenn bet roet d\'an arventenn "height".',
 	'framedvideo_error_no_integer' => 'An talvoud roet "$1" n\'eo ket un niver pozitivel.',
 	'framedvideo_error_limit' => '$1 eo an dalvoudenn uhelañ aotreet.',
+	'framedvideo_error_full_size_not_allowed' => 'N\'eo ket aotreet an talvoudenn "full" evit an arventenn "size" evit ar servij video gant ID "$1".',
 	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_see_help' => "[[{{MediaWiki:Framedvideo_helppage}}|Muioc'h a ditouroù da geñver an ereadurezh]].",
+	'framedvideo_error_height_and_width_required' => 'Ar seurt video "$1" en deus ezhomm eus an arventennoù "height" pe "width2" pe "width".',
+	'framedvideo-desc' => "Aotreañ a ra da ouzhpennañ videioù eus lec'hiennoù wed disheñvel en ur implijout ar balizenn <tt><nowiki><video></nowiki></tt>",
 );
 
 /** Bosnian (Bosanski)

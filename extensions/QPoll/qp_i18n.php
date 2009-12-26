@@ -229,10 +229,12 @@ Om \'n peiling te stoor, stuur dit sonder dat enig voorstel beantwoord word.',
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'pollresults' => 'نتائج الاستقصاءات في هذا الموقع',
 	'qp_desc' => 'يسمح بإنشاء اقتراعات',
+	'qp_desc-sp' => '[[Special:PollResults|صفحة خاصة]] لرؤية نتائج الاقتراعات',
 	'qp_result_NA' => 'غير مجاب عنه',
 	'qp_result_error' => 'خطأ صياغة',
 	'qp_vote_button' => 'تصويت',
@@ -247,16 +249,34 @@ $messages['ar'] = array(
 	'qp_users_link' => 'مستخدمون',
 	'qp_voice_link' => 'صوت المستخدم',
 	'qp_voice_link_inv' => 'صوت المستخدم؟',
+	'qp_user_polls_link' => 'شارك في $1 {{PLURAL:$1|اقتراع|اقتراعات}}',
 	'qp_user_missing_polls_link' => 'لا مشاركة',
 	'qp_not_participated_link' => 'لم يشارك',
 	'qp_order_by_username' => 'رتب حسب اسم المستخدم',
 	'qp_order_by_polls_count' => 'رتب حسب عداد الاقتراعات',
+	'qp_results_line_qupl' => 'الصفحة "$1" الاقتراع "$2": $3',
+	'qp_results_line_qpl' => 'الصفحة "$1" الاقتراع "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ الصفحة "$2" الاقتراع "$3" ]',
+	'qp_export_to_xls' => 'صدر الإحصاءات بصيغة XLS',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|مستخدم|مستخدم}} أجاب على الأسئلة',
+	'qp_func_no_such_poll' => 'لا استطلاع كهذا ($1)',
+	'qp_func_missing_question_id' => 'من فضلك حدد رقم سؤال موجود (بدءا من 1) للاقتراع $1',
+	'qp_func_invalid_question_id' => 'سؤال غير صحيح id=$2 (ليس رقما) للاقتراع $1',
+	'qp_func_missing_proposal_id' => 'من فضلك حدد رقم اقتراح موجود (بدءا من 0) للاقتراع $1, السؤال $2',
+	'qp_func_invalid_proposal_id' => 'عرض غير صحيح id=$3 (ليس رقما) للاقتراع $1, السؤال $2',
 	'qp_error_no_such_poll' => 'لا اقتراع كهذا ($1).
 تأكد من أن الاقتراع معلن عنه ومحفوظ، وتأكد أيضا من استخدام حرف فصل العنوان #',
+	'qp_error_id_in_stats_mode' => 'لا يمكن إعلان رقم للاقتراع في نمط الإحصاءات',
 	'qp_error_dependance_in_stats_mode' => 'لا يمكن الإعلان عن سلسلة اعتماد الاقتراع في نمط الإحصاءات',
+	'qp_error_no_stats' => 'لا بيانات إحصائية متوفرة، لأنه لا أحد صوت في هذا الاقتراع بعد (address=$1)',
+	'qp_error_address_in_decl_mode' => 'لا يمكن الحصول على عنوان في نمط الإعلان',
 	'qp_error_question_not_implemented' => 'الأسئلة من هذا النوع غير مطبقة: $1',
+	'qp_error_invalid_question_type' => 'نوع سؤال غير صالح: $1',
+	'qp_error_type_in_stats_mode' => 'نوع السؤال لا يمكن تعريفه في نمط العرض الإحصائي: $1',
+	'qp_error_no_poll_id' => 'وسم الاقتراع ليس به معرف رقم محدد.',
 	'qp_error_invalid_poll_id' => 'رقم اقتراع غير صحيح (id=$1).
 رقم الاقتراع يمكن ان يحتوي فقط على حروف، أرقام وحرف الفراغ',
+	'qp_error_already_used_poll_id' => 'رقم الاقتراع تم استخدامه بالفعل في هذه الصفحة (id=$1).',
 	'qp_error_invalid_dependance_value' => 'سلسة اعتماد الاقتراع (id=$1) بها قيمة غير صحيحة لمحدد الاعتماد (dependance="$2")',
 	'qp_error_missed_dependance_title' => 'الاقتراع (id=$1) معتمد على اقتراع آخر (id=$3) من الصفحة [[$2]]، لكن العنوان [[$2]] لم يتم العثور عليه.
 إما أن تزيل محدد الاعتماد، أو تسترجع [[$2]]',
@@ -264,10 +284,15 @@ $messages['ar'] = array(
 إما أن تزيل محدد الاعتماد، أو تنشئ الاقتراع بالرقم id=$3 في الصفحة $2 وتحفظه.
 لحفظ اقتراع، نفذه مع عدم الإجابة على أي أسئلة مطروحة.',
 	'qp_error_vote_dependance_poll' => 'من فضلك صوت للاقتراع $1 أولا.',
+	'qp_error_too_many_spans' => 'عدد كبير من مجموعات التصنيفات للعدد الإجمالي المعرف من التصنيفات الفرعية',
 	'qp_error_unanswered_span' => 'تصنيف فرعي غير مجاب عليه',
+	'qp_error_non_unique_choice' => 'يجب أن يتوفر للسؤال إجابة مُقترحة فريدة',
 	'qp_error_category_name_empty' => 'اسم التصنيف فارغ',
 	'qp_error_proposal_text_empty' => 'نص الاقتراح فارغ',
+	'qp_error_too_few_categories' => 'يجب أن تُعرّف تصنيفين على الأقل',
+	'qp_error_too_few_spans' => 'كل مجموعة تصنيف يجب أن تحتوي على الأقل على تصنيفين فرعيين',
 	'qp_error_no_answer' => 'اقتراح غير مجاب عليه',
+	'qp_error_unique' => 'السؤال من نوع unique() لديه اقتراحات أكثر من الأجوبة المحتملة المعرفة: مستحيل الإكمال',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -383,10 +408,36 @@ $messages['bs'] = array(
 	'qp_users_link' => 'Korisnici',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Imre
+ */
 $messages['de'] = array(
+	'pollresults' => 'Abstimmungsergebnisse auf dieser Seite',
+	'qp_desc' => 'Ermöglicht die Erstellung von Abstimmungen',
+	'qp_desc-sp' => '[[Special:PollResults|Spezialseite]] um Abstimmungsergebnisse anzuzeigen',
+	'qp_result_NA' => 'Nicht beantwortet',
+	'qp_result_error' => 'Syntaxfehler',
+	'qp_vote_button' => 'Abstimmen',
+	'qp_polls_list' => 'Alle Abstimmungen auflisten',
+	'qp_users_list' => 'Alle Benutzer anzeigen',
+	'qp_browse_to_poll' => 'Nach $1 wechseln',
+	'qp_browse_to_user' => 'Nach $1 wechseln',
+	'qp_votes_count' => '$1 {{PLURAL:$1|Stimme|Stimmen}}',
 	'qp_source_link' => 'Quelle',
+	'qp_stats_link' => 'Statistik',
 	'qp_users_link' => 'Benutzer',
+	'qp_user_polls_link' => 'Hat an $1 {{PLURAL:$1|Abstimmung|Abstimmungen}} teilgenommen',
+	'qp_user_missing_polls_link' => 'Keine Teilnahme',
+	'qp_not_participated_link' => 'Nicht teilgenommen',
+	'qp_order_by_username' => 'Nach Benutzernamen ordnen',
+	'qp_results_line_qupl' => 'Seite "$1" Abstimmung "$2": $3',
+	'qp_results_line_qpl' => 'Seite "$1" Abstimmung "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Seite "$2" Abstimmung "$3" ]',
+	'qp_export_to_xls' => 'Statistiken in das XLS-Format exportieren',
+	'qp_users_answered_questions' => '$1 Benutzer haben auf die Fragen geantwortet',
+	'qp_func_no_such_poll' => 'Abstimmung nicht vorhanden ($1)',
+	'qp_error_too_few_categories' => 'Es müssen mindestens zwei Kategorien festgelegt werden',
+	'qp_error_no_answer' => 'Unbeantworteter Vorschlag',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -518,6 +569,8 @@ $messages['fi'] = array(
 	'qp_source_link' => 'Lähde',
 	'qp_stats_link' => 'Tilastot',
 	'qp_users_link' => 'Käyttäjät',
+	'qp_order_by_username' => 'Lajittele käyttäjänimen mukaan',
+	'qp_error_category_name_empty' => 'Luokan nimi on tyhjä',
 );
 
 /** French (Français)
@@ -723,6 +776,27 @@ Go ne Abstimmig spychere due si ibertrage ohni ne Antwort gee uf irged e Vorschl
 	'qp_error_too_few_spans' => 'Fir jedi Kategorieklasse brucht s zmindescht zwo definierti Antworte',
 	'qp_error_no_answer' => 'Vorschlag ohni Antwort',
 	'qp_error_unique' => 'Fir d Frog vum Typ unique() git s meh Vorschleg wie Antworte definiert sin: cha nit abgschlosse wäre',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'qp_result_NA' => 'לא נענה',
+	'qp_result_error' => 'שגיאת תחביר',
+	'qp_vote_button' => 'הצבעה',
+	'qp_vote_again_button' => 'שינוי הצבעתכם',
+	'qp_polls_list' => 'הצגת כל הסקרים',
+	'qp_users_list' => 'הצגת כל המשתמשים',
+	'qp_votes_count' => '{{PLURAL:$1|הצבעה אחת|$1 הצבעות}}',
+	'qp_source_link' => 'מקור',
+	'qp_stats_link' => 'סטטיסטיקה',
+	'qp_users_link' => 'משתמשים',
+	'qp_voice_link' => 'קול המשתמש',
+	'qp_voice_link_inv' => 'קול המשתמש?',
+	'qp_func_no_such_poll' => 'אין כזה סקר ($1)',
+	'qp_error_category_name_empty' => 'שם הקטגוריה ריק',
+	'qp_error_proposal_text_empty' => 'טקסט ההצעה ריק',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1346,6 +1420,7 @@ Vær sikker på at spørreundersøkelsen ble deklarert og lagret, vær også sik
 	'qp_error_address_in_decl_mode' => 'Kan ikke få en adresse for spørreundersøkelsen i deklareringsmodus',
 	'qp_error_question_not_implemented' => 'Spørsmål av en slik type er ikke implementert: $1',
 	'qp_error_invalid_question_type' => 'Ugyldig spørsmålstype: $1',
+	'qp_error_type_in_stats_mode' => 'Spørsmålstypen kan ikke defineres i statistisk visningsmodus: $1',
 	'qp_error_no_poll_id' => 'Spørreundersøkelsesmerkelappen har ingen definerte id-atributter.',
 	'qp_error_invalid_poll_id' => 'Ugyldig spørreundersøkelses-id (id=$1).
 Spørreundersøkelses-id kan kun inneholde bokstaver, tall og mellomrom',
@@ -1624,15 +1699,25 @@ $messages['sv'] = array(
 	'qp_vote_again_button' => 'Ändra din röst',
 	'qp_polls_list' => 'Lista alla röstningar',
 	'qp_users_list' => 'Lista alla användare',
+	'qp_votes_count' => '$1 {{PLURAL:$1|röst|röster}}',
 	'qp_source_link' => 'Källa',
 	'qp_stats_link' => 'Statistik',
 	'qp_users_link' => 'Användare',
 	'qp_user_missing_polls_link' => 'Ingen deltagelse',
 	'qp_not_participated_link' => 'Inte deltagit',
 	'qp_order_by_username' => 'Sortera efter användarnanm',
+	'qp_export_to_xls' => 'Exportera statistik till XLS-format',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|användare|användare}} besvarade frågorna',
+	'qp_func_no_such_poll' => 'Ingen sådan undersökning ($1)',
+	'qp_error_vote_dependance_poll' => 'Vänligen rösta i undersökningen $1 först.',
+	'qp_error_too_many_spans' => 'För många kategorigrupper för det totala antalet underkategorier definerade',
+	'qp_error_unanswered_span' => 'Obesvarad underkategori',
+	'qp_error_non_unique_choice' => 'Denna fråga kräver unika svarsförslag',
 	'qp_error_category_name_empty' => 'Kategorinamn är tomt',
 	'qp_error_proposal_text_empty' => 'Förslagstext är tom',
+	'qp_error_too_few_categories' => 'Minst två kategorier måste definieras',
 	'qp_error_too_few_spans' => 'Varje kategorigrupp måste innehålla minst två underkategorier',
+	'qp_error_no_answer' => 'Obesvarat förslag',
 );
 
 /** Telugu (తెలుగు)

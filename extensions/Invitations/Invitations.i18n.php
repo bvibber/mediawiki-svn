@@ -1421,6 +1421,13 @@ $messages['vi'] = array(
 	'invitations-invite-success' => 'Bạn đã mời $1 sử dụng tính năng này!',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'invite-logpage' => '邀请记录',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

@@ -1121,6 +1121,9 @@ Guvans bevüresodatopäda at no gididons demü ninäd küpetas at.',
  */
 $messages['zh-hans'] = array(
 	'talkhere-desc' => '把讨论页内容转移至页面',
+	'talkhere-foottext' => '此上方可能有讨论留言
+
+在此的留言不代表本站立场，站长对站内之留言不负任何责任',
 	'talkhere-talkpage' => '对话页',
 	'talkhere-notalk' => "''（还没有评论）''",
 	'talkhere-addcomment' => '添加评论',

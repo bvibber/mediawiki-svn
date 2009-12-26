@@ -143,12 +143,12 @@ $messages['arz'] = array(
 	'extdist-choose-extension' => 'اختر أى امتدات تريد تنزيله:',
 	'extdist-wc-empty' => 'مجلد نسخة العمل المضبوط ليس به امتدادات قابلة للتوزيع!',
 	'extdist-submit-extension' => 'استمر',
-	'extdist-current-version' => 'النسخة الحالية (جذع)',
+	'extdist-current-version' => 'نسخة التطوير (جذع)',
 	'extdist-choose-version' => '<big>أنت تقوم بتنزيل امتداد <b>$1</b>.</big>
 
 اختر نسخة ميدياويكى الخاصة بك.
 
-معظم الامتدادات تعمل خلال نسخ متعددة من ميدياويكي، لذا إذا كانت نسخة ميدياويكى الخاصة بك ليست هنا، أو لو كانت لديك حاجة لأحدث خواص الامتداد، حاول استخدام النسخة الحالية.',
+معظم الامتدادات تعمل خلال نسخ متعددة من ميدياويكى، لذا إذا كانت نسخة ميدياويكى الخاصة بك ليست هنا، أو لو كانت لديك حاجة لأحدث خواص الامتداد، حاول استخدام النسخة الحالية.',
 	'extdist-no-versions' => 'الامتداد المختار ($1) غير متوفر فى أى نسخة!',
 	'extdist-submit-version' => 'استمرار',
 	'extdist-no-remote' => 'غير قادر على الاتصال بعميل سب فيرجن البعيد.',
@@ -171,7 +171,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 على ويندوز، يمكنك استخدام [http://www.7-zip.org/ 7-زيب] لاستخراج الملفات.
 
-لو أن الويكى الخاص بك على خادم بعيد، استخرج الملفات إلى مجلد مؤقت على حاسوبك المحلي، ثم ارفع '''كل''' الملفات المستخرجة إلى مجلد الامتدادات على الخادم.
+لو أن الويكى الخاص بك على خادم بعيد، استخرج الملفات إلى مجلد مؤقت على حاسوبك المحلى، ثم ارفع '''كل''' الملفات المستخرجة إلى مجلد الامتدادات على الخادم.
 
 لاحظ أن بعض الامتدادات تحتاج إلى ملف يسمى ExtensionFunctions.php، موجود فى <tt>extensions/ExtensionFunctions.php</tt>، هذا, فى المجلد ''الأب'' لمجلد الامتدادات المحدد هذا. اللقطة لهذه الامتدادات تحتوى على هذا الملف كتار بومب، يتم استخراجها إلى ./ExtensionFunctions.php. لا تتجاهل رفع هذا الملف إلى خادمك البعيد.
 
@@ -264,8 +264,13 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'extensiondistributor' => 'Pellgargañ an astenn MediaWiki',
+	'extdist-wc-missing' => "N'eus ket eus kavlec'h evit an eilad labour kefluniet !",
+	'extdist-no-such-extension' => 'N\'eus ket eus an astenn "$1"',
+	'extdist-no-such-version' => 'N\'eus ket eus an astenn "$1" en doare "$2".',
 	'extdist-submit-extension' => "Kenderc'hel",
+	'extdist-current-version' => 'Doare diorroiñ (trunk)',
 	'extdist-submit-version' => "Kenderc'hel",
+	'extdist-tar-error' => "Tar en deus adtroet ar c'hod dont er-maez $1 :",
 	'extdist-want-more' => 'Tapout un astenn all',
 );
 
@@ -467,6 +472,27 @@ $messages['de-formal'] = array(
 Bitte wählen Sie ihre MediaWiki-Version.
 
 Die meisten Erweiterungen arbeiten mit vielen MediaWiki-Versionen zusammen. Wenn Ihre MediaWiki-Version hier nicht aufgeführt ist oder Sie die neuesten Fähigkeiten der Erweiterung nutzen möchtest, versuche es mit der aktuellen Version.',
+	'extdist-created' => "Ein Schnappschuss der Version <b>$2</b> der MediaWiki-Erweiterung <b>$1</b> wurde erstellt (MediaWiki-Version <b>$3</b>). Der Download startet automatisch in 5 Sekunden.
+
+Die URL für den Schnappschuss lautet:
+:$4
+Die URL ist nur zum sofortigen Download gedacht, bitte speichern Sie sie nicht als Lesezeichen ab, da der Dateiinhalt nicht aktualisiert wird und zu einem späteren Zeitpunkt gelöscht werden kann.
+
+Das .tar-Archiv sollte in das Erweiterungs-Verzeichnis entpackt werden. Auf einem Unix-ähnlichen Betriebssystem mit:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Unter Windows können Sie das Programm [http://www.7-zip.org/ 7-zip] zum Entpacken der Dateien verwenden.
+
+Wenn Ihr Wiki auf einem entfernten Server läuft, entpacken Sie die Dateien in ein temporäres Verzeichnis auf Ihrem lokalen Computer und laden Sie dann '''alle''' entpackten Dateien auf den entfernten Server hoch.
+
+Bitte beachte, dass einige Erweiterungen die Datei <tt>ExtensionFunctions.php</tt> benötigen. Sie liegt unter <tt>extensions/ExtensionFunctions.php</tt>, dem Heimatverzeichnis der Erweiterungen. Der Schnappschuss dieser Erweiterung enthält diese Datei als tarbomb, entpackt nach <tt>./ExtensionFunctions.php</tt>. Vergiss nicht, auch diese Datei auf deinen entfernten Server hochzuladen.
+
+Nachdem Sie die Dateien entpackt haben, müssen Sie die Erweiterung in der <tt>LocalSettings.php</tt> registrieren. Die Dokumentation zur Erweiterung sollte eine Anleitung dazu enthalten.
+
+Wenn Sie Fragen zu diesem Erweiterungs-Verteil-System haben, gehen Sie bitte zur Seite [[Extension talk:ExtensionDistributor]].",
 );
 
 /** Zazaki (Zazaki)
@@ -2495,6 +2521,40 @@ $messages['te'] = array(
 చాలా పొడగింతలు పలు మీడియావికీ సంచికల్లో పనిచేస్తాయి, కాబట్టి మీ మీడియావికీ సంచిక ఇక్కడ లేకపోతే, లేదా మీకు పొడగింతల సరికొత్త సౌలభ్యాల అవసరం ఉంటే, ప్రస్తుత సంచికని ఉపయోగించండి.',
 	'extdist-submit-version' => 'కొనసాగించు',
 	'extdist-want-more' => 'మరొక పొడగింతని పొందండి',
+);
+
+/** Thai (ไทย)
+ * @author Woraponboonkerd
+ */
+$messages['th'] = array(
+	'extdist-submit-extension' => 'ดำเนินการต่อ',
+	'extdist-choose-version' => '<big>คุณกำลังจะดาวน์โหลดซอฟต์แวร์เสริมชื่อ <b>$1</b> </big>
+
+กรุณาเลือกรุ่นปรับปรุงของ MediaWiki ที่คุณใช้อยู่
+
+ซอฟต์แวร์เสริมส่วนใหญ่สามารถใช้งานได้บนหลายรุ่นปรับปรุงของ MediaWiki ดังนั้นถ้ารุ่นปรับปรุงของ MediaWiki ของคุณไม่ปรากฎในนี้ หรือถ้าคุณต้องการใช้คุณสมบัติล่าสุดของซอฟต์แวร์เสริมนี้ ให้ลองใช้ซอฟต์แวร์เสริมรุ่นปรับปรุงปัจจุบัน',
+	'extdist-submit-version' => 'ดำเนินการต่อ',
+	'extdist-created' => "ไฟล์คัดลอกของซอฟต์แวร์เสริมของ MediaWiki <b>$3</b> ชื่อ <b>$1</b> รุ่นหมายเลข <b>$2</b> ได้ถูกสร้างขึ้นแล้ว และการดาวน์โหลดไฟล์ของคุณจะเริ่มต้นโดยอัติโนมัติภายใน 5 วินาที
+
+URL สำหรับไฟล์คัดลอกคือ:
+:$4
+ซึ่งสามารถใช้สำหรับการดาวน์โหลดโดยตรงจากเซิร์ฟเวอร์ได้ แต่กรุณาอย่าคั่นหน้านี้ไว้เนื่องจากเนื้อหาของไฟล์จะไม่ถูกปรับปรุงเป็นรุ่นล่าสุด และอาจจะถูกลบได้ในภายหลัง
+
+ไฟล์ภายในของไฟล์ tar ควรจะถูกดึงออกมาวางไว้ที่ไดเร็กทอรีซอฟต์แวร์เสริมของคุณ ตัวอย่างเช่น ในระบบปฏิบัติการ UNIX หรือคล้ายคลึง:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+สำหรับบนระบบปฏิบัติการวินโดวส์ คุณสามารถใช้โปรแกรม [http://www.7-zip.org/ 7-zip] เพิ่อดึงไฟล์ออกมา
+
+ถ้าวิกิของคุณอยู่ในเซิร์ฟเวอร์สั่งการทางไกล ให้ดึงไฟล์ออกมาวางไว้ที่โฟลเดอร์ชั่วคราวบนคอมพิวเตอร์ของคุณก่อน แล้วจึงอัพโหลดไฟล์'''ทั้งหมด'''ไปยังไดเร็กทอรีของซอฟต์แวร์เสริมบนเซิร์ฟเวอร์
+
+อย่าลืมว่าซอฟต์แวร์เสริมบางอย่างต้องการไฟล์ที่ชื่อว่า ExtensionFunctions.php ซึ่งอยู่ที่ <tt>extensions/ExtensionFunctions.php</tt> ซึ่งนั่นก็คือไดเร็กทอรี''หลัก''ของซอฟต์แวร์เสริมนั้นๆ ไฟล์คัดลอกของซอฟต์แวร์เสริมเหล่านี้มีไฟล์ภายในที่อยู่ในลักษณะ tarbomb และถูกดึงออกไว้ที่ ./ExtensionFunctions.php ดังนั้นห้ามเว้นการอัพโหลดไฟล์นี้ไปยังเซิร์ฟเวอร์สั้งการของคุณ
+
+หลังจากที่คุณดึงไฟล์ออกมาแล้ว คุณจำเป็นต้องลงทะเบียนซอฟต์แวร์เสริมใน LocalSettings.php ซึ่งเอกสารแนบที่มากับซอฟต์แวร์เสริมจะมีขั้นตอนการทำอยู่
+
+ถ้าคุณยังมีข้อสงสัยประการใดเกี่ยวกับระบบการแผยแพร่ซอฟต์แวร์เสริมนี้ กรุณาไปที่ [[Extension talk:ExtensionDistributor]].",
 );
 
 /** Turkmen (Türkmençe)

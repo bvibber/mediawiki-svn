@@ -829,6 +829,13 @@ $messages['km'] = array(
 	'gep-nocategories' => 'សូម​ជ្រើសយក​ចំណាត់ថ្នាក់ក្រុម​យ៉ាងហោច​មួយ​មុនពេល​រក្សាទុក',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'gep-categories' => 'ವರ್ಗಗಳು',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -1568,15 +1575,25 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'gep-desc' => '使編輯頁面對用戶更加友好',
+	'gep-emailsubject' => '[$1] 分類建議： $2',
+	'gep-emailbody' => '用戶 "$1" 建議將站點 "$3" 分類為 "$2" 。',
+	'gep-emailfailure' => '抱歉，您的建議無法被處理。',
+	'gep-emailsuccess' => '感謝您推薦分類： $1。',
 	'gep-categories' => '頁面分類',
 	'gep-addcategory' => '增加一個分類',
 	'gep-addcategorybutton' => '增加',
 	'gep-suggestcategory' => '建議一個分類',
 	'gep-suggestcategorybutton' => '提交',
+	'gep-sections' => '節',
 	'gep-addsection' => '增加一個段落',
 	'gep-addsectionbutton' => '增加',
+	'gep-classicmode' => '經典模式',
+	'gep-genericmode' => '通用模式',
+	'gep-nocategories' => '請在保存前至少選擇一個分類',
 );
 

@@ -134,10 +134,10 @@ $messages['arz'] = array(
 	'povwatch' => 'مراقبة بى أو في',
 	'povwatch_desc' => 'امتداد [[Special:PovWatch|لدفع الصفحات إلى قوائم مراقبة]] المستخدمين الآخرين',
 	'povwatch_no_session' => 'خطأ: لم يمكن تنفيذ الاستمارة نتيجة فقد فى بيانات الجلسة.',
-	'povwatch_not_allowed_push' => 'أنت لست إدارى مراقبة بى أو في، لا يمكنك دفع صفحات إلى قوائم مراقبة.',
+	'povwatch_not_allowed_push' => 'أنت لست إدارى مراقبة بى أو فى، لا يمكنك دفع صفحات إلى قوائم مراقبة.',
 	'povwatch_already_subscribed' => 'أنت مشترك بالفعل فى مراقبة بى أو في',
 	'povwatch_subscribed' => 'أنت الآن مشترك فى مراقبة بى أو في',
-	'povwatch_not_subscribed' => 'أنت غير مشترك فى مراقبة بى أو في، لذا فلا يمكنك إلغاء الاشتراك.',
+	'povwatch_not_subscribed' => 'أنت غير مشترك فى مراقبة بى أو فى، لذا فلا يمكنك إلغاء الاشتراك.',
 	'povwatch_unsubscribed' => 'أنت الآن ألغيت الاشتراك فى مراقبة بى أو في',
 	'povwatch_invalid_title' => 'العنوان المحدد كان غير صحيح',
 	'povwatch_pushed' => '[[$1]] تم دفعها بنجاح إلى $2 {{PLURAL:$2|قائمة مراقبة مستخدم|قائمة مراقبة مستخدم}}',
@@ -146,7 +146,7 @@ $messages['arz'] = array(
 السجل بعمليات دفع قوائم المراقبة الحديثة متوفر فى [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|قائمة المشتركين]] متوفرة.',
 	'povwatch_subscriber_list_intro' => '<strong>قائمة المشتركين</strong>',
-	'povwatch_not_allowed_subscribers' => 'أنت غير مسموح لك برؤية قائمة المشتركين فى مراقبة بى أو في.',
+	'povwatch_not_allowed_subscribers' => 'أنت غير مسموح لك برؤية قائمة المشتركين فى مراقبة بى أو فى.',
 	'povwatch_unknown_subpage' => 'صفحة فرعية غير معروفة.',
 	'povwatch_push' => 'دفع',
 	'povwatch_push_intro' => 'استخدم الاستمارة بالأسفل لدفع صفحات إلى قوائم مراقبة المستخدمين المشتركين.
@@ -155,10 +155,10 @@ $messages['arz'] = array(
 	'povwatch_comment' => 'تعليق السجل',
 	'povwatch_no_log' => 'لا توجد مدخلات سجل.',
 	'povwatch_no_subscribers' => 'لا يوجد مشتركون.',
-	'povwatch_unsubscribe_intro' => 'أنت مشترك فى مراقبة بى أو في.
+	'povwatch_unsubscribe_intro' => 'أنت مشترك فى مراقبة بى أو فى.
 اضغط الزر بالأسفل لإلغاء الاشتراك.',
 	'povwatch_unsubscribe' => 'إنهاء الاشتراك',
-	'povwatch_subscribe_intro' => 'أنت غير مشترك فى مراقبة بى أو في.
+	'povwatch_subscribe_intro' => 'أنت غير مشترك فى مراقبة بى أو فى.
 اضغط الزر بالأسفل للاشتراك.',
 	'povwatch_subscribe' => 'اشتراك',
 	'povwatch_added' => 'تمت الإضافة',
@@ -256,6 +256,7 @@ $messages['br'] = array(
 	'povwatch' => 'PovWatch',
 	'povwatch_already_subscribed' => "Koumanantet oc'h da bPovWatch dija",
 	'povwatch_subscribed' => "Koumanantet oc'h da PovWatch bremañ",
+	'povwatch_unsubscribed' => 'Tennet eo bet ho enskrivadur da PovWatch.',
 	'povwatch_invalid_title' => 'Direizh eo an titl diferet',
 	'povwatch_unknown_subpage' => 'Ispajenn dianav.',
 	'povwatch_push' => 'Bountañ',
@@ -263,6 +264,8 @@ $messages['br'] = array(
 	'povwatch_comment' => 'Addispleg evit an deizlevr :',
 	'povwatch_no_subscribers' => "N'eus ket koumananterien.",
 	'povwatch_unsubscribe' => 'Digoumanantiñ',
+	'povwatch_subscribe_intro' => "N'oc'h ket enskrivet da PovWatch.
+Evit en em enskrivañ klikit war ar bouton da-heul.",
 	'povwatch_subscribe' => 'Koumanantiñ',
 	'povwatch_added' => 'ouzhpennet',
 );
@@ -2474,6 +2477,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -2483,6 +2487,7 @@ $messages['zh-hant'] = array(
 	'povwatch_unsubscribed' => '您已取消訂閱PovWatch',
 	'povwatch_subscriber_list_intro' => '<strong>訂閱用戶清單</strong>',
 	'povwatch_title' => '標題：',
+	'povwatch_comment' => '日誌註釋:',
 	'povwatch_no_subscribers' => '現時沒有訂閱用戶。',
 	'povwatch_unsubscribe' => '取消訂閱',
 	'povwatch_subscribe_intro' => '您並未訂閱PovWatch。

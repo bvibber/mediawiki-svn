@@ -123,7 +123,7 @@ $messages['arz'] = array(
 	'countedits-resultheader' => 'النتائج ل $1',
 	'countedits-resulttext' => '$1 عنده$2 {{PLURAL:$2|تعديل|تعديل}}',
 	'countedits-mostactive' => 'أكثر المساهمين نشاطا',
-	'countedits-nocontribs' => 'لا يوجد مساهمون فى هذه الويكي.',
+	'countedits-nocontribs' => 'لا يوجد مساهمون فى هذه الويكى.',
 );
 
 /** Kotava (Kotava)

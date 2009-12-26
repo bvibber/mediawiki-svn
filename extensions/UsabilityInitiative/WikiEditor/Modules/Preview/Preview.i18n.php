@@ -267,6 +267,15 @@ $messages['gsw'] = array(
 	'wikieditor-preview-loading' => 'Am Lade ...',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'wikieditor-preview-tab' => 'תצוגה מקדימה',
+	'wikieditor-preview-changes-tab' => 'שינויים',
+	'wikieditor-preview-loading' => 'נטען...',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -405,8 +414,12 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
+ * @author Harald Khan
  */
 $messages['nn'] = array(
+	'wikieditor-preview-tab' => 'Førehandsvising',
+	'wikieditor-preview-changes-tab' => 'Endringar',
+	'wikieditor-preview-loading' => 'Lastar…',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -816,10 +816,11 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author KilluaZaoldyeck
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'userimages-caption' => '$1上傳的圖像',
+	'userimages-caption' => '$1上傳的圖片',
 	'userimages-noname' => '無效或未有填寫帳號名稱。',
-	'userimages-noimages' => '$1沒有上傳圖像。',
+	'userimages-noimages' => '$1沒有上傳圖片。',
 );
 

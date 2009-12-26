@@ -1075,7 +1075,9 @@ $messages['frp'] = array(
 	'math_MismatchedBeginAndEnd' => 'Les comandes « $1 » et « $2 » corrèspondont pas.',
 	'math_MisplacedLimits' => 'La comanda « $1 » dêt aparêtre aprés un opèrator quand en fôrma math
 (consèly : èprovâd « mathop »).',
-	'math_MissingCommandAfterNewcommand' => 'Un novél nom de comanda est manquent ou fôtif aprés « \\newcommand » (dêt y avêr cllârament una comanda dèfenia, dêt comenciér per « \\ » et contegnir ren que des caractèros alfabèticos).',
+	'math_MissingCommandAfterNewcommand' => 'Un novél nom de comanda est manquent ou ben fôx aprés « \\newcommand »
+(y dêt avêr cllârament una comanda dèfenia ;
+dêt comenciér per « \\ » et pués contegnir ren que des caractèros alfabèticos).',
 	'math_MissingDelimiter' => 'Un dèlimitior manque aprés « $1 ».',
 	'math_MissingOpenBraceAfter' => 'La balisa « { » manque aprés « $1 ».',
 	'math_MissingOpenBraceAtEnd' => 'La balisa « { » manque a la fin de la buchiê.',
@@ -1952,6 +1954,10 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'math_noblahtex' => 'Не можам да го пуштам blahtex, кој треба да се наоѓа во $1',
+	'math-desc' => 'MathML извод за &lt;math&gt; ознаки',
+	'math_AmbiguousInfix' => 'Местото на „$1“ е недоволно јасно.
+Обидете се со употреба на дополнителни загради „{ ... }“ за појаснување.',
 	'math_CannotChangeDirectory' => 'Не можам да го сменам работниот директориум',
 	'math_CannotCreateTexFile' => 'Не можам да создадам tex-податотека',
 	'math_CannotRunDvipng' => 'Не можам да го пуштам dvipng',
@@ -1961,8 +1967,43 @@ $messages['mk'] = array(
 	'math_CasesRowTooBig' => 'Може да има само два записа во секој ред на блок „cases“',
 	'math_DoubleSubscript' => 'Сретнати се два долни индекса на една иста основа.
 Дозволен е само еден индекс.',
+	'math_DoubleSuperscript' => 'Најдени се два горни индекса на една иста основа.
+Дозволен е само еден.',
+	'math_IllegalCharacter' => 'Внесен е недозволен знак',
+	'math_IllegalCommandInMathMode' => 'Наредбата „$1“ е недозволена во математички режим',
+	'math_IllegalCommandInMathModeWithHint' => 'Наредбата „$1“ е недозволена во математички режим.
+Можеби мислевте на „$2“?',
+	'math_IllegalCommandInTextMode' => 'Наредбата „$1“ е недозволена во текстуален режим',
+	'math_IllegalCommandInTextModeWithHint' => 'Наредбата „$1“ е недозволена во текстуален режим.
+Можеби мислевте на „$2“?',
+	'math_IllegalDelimiter' => 'Недозволен разделител „$1“',
+	'math_IllegalFinalBackslash' => 'Недозволена обратна коса црта „\\“ на крајот на вносот',
+	'math_IllegalNestedFontEncodings' => 'Наредбите за кодирање на фонт не можат да се вгнездат',
+	'math_IllegalRedefinition' => 'Наредбата „$1“ веќе е определена; таа не може да се преопределува',
+	'math_InvalidColour' => 'Бојата „$1“ е неважечка',
+	'math_InvalidUtf8Input' => 'Внесената низа не претставува дозволен UTF-8 код',
+	'math_LatexFontNotSpecified' => 'Нема назначено LaTeX фонт за „$1“',
+	'math_LatexPackageUnavailable' => 'Не може да се создаде PNG бидејќи LaTeX-пакетот „$1“ е недостапен',
+	'math_MismatchedBeginAndEnd' => 'Наредбите „$1“ и „$2“ не се совпаѓаат',
+	'math_MisplacedLimits' => 'Наредбата „$1“ може да стои само по математички оператор.
+Препорачуваме да употребите „\\mathop“.',
+	'math_MissingCommandAfterNewcommand' => 'По „\\newcommand“ нема име на наредба, или името е недозволено.
+Мора да има определено точно една наредба;
+таа мора да почнува со коса црта „\\“ и да содржи само букви.',
+	'math_MissingDelimiter' => 'Недостасува разделител по „$1“',
+	'math_MissingOpenBraceAfter' => 'Недостасува отворена заграда „{“ по „$1“',
+	'math_MissingOpenBraceAtEnd' => 'Недостасува отворена заграда „{“ на крајот на внесеното',
+	'math_MissingOpenBraceBefore' => 'Недостасува отворена заграда „{“ пред „$1“',
+	'math_MissingOrIllegalParameterCount' => 'Отсутен или недопуштен број на параметри во определувањето на „$1“.
+Ова мора да биде една бројка од 1 до 9.',
+	'math_MissingOrIllegalParameterIndex' => 'Отсутен или недозволен параметарски индекс во определувањето на „$1“',
 	'math_NonAsciiInMathMode' => 'Знаците кои не припаѓаат на ASCII може да се користат само во текстуален режим.
 Обидете се да ги затворите проблематичните знаци во „\\text{...}“.',
+	'math_NotEnoughArguments' => 'Нема наведено доволно аргументи за „$1“',
+	'math_PngIncompatibleCharacter' => 'Не можам правилно да создадам PNG кој го содржи знакот $1',
+	'math_ReservedCommand' => 'Наредбата „$1“ е резервирана за интерна употреба од blahtex',
+	'math_SubstackRowTooBig' => 'Може да стои само еден апис во секој ред на „substack“ блок',
+	'math_TooManyMathmlNodes' => 'Има премногу јазли во MathML-дрвото',
 	'math_TooManyTokens' => 'Внесеното е предолго',
 	'math_UnavailableSymbolFontCombination' => 'Симболот „$1“ не е достапен во фонтот „$2“',
 	'math_UnexpectedNextCell' => 'Наредбата „&“ може да стои само во блок „\\begin ... \\end“',
@@ -1976,6 +2017,8 @@ $messages['mk'] = array(
 	'math_UnmatchedRight' => 'Сретнато е „\\right“ без соодветно „\\left“',
 	'math_UnrecognisedCommand' => 'Непризнаена наредба „$1“',
 	'math_WrongFontEncoding' => 'Симболот „$1“ може да не се прикаже пред кодирање „$2“',
+	'math_WrongFontEncodingWithHint' => 'Знакот „$1“ не смее да стои во фонтовото кодирање „$2“.
+Обидете се со наредбата „$3{...}“.',
 );
 
 /** Malayalam (മലയാളം)

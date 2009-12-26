@@ -1350,11 +1350,18 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'edituser-desc' => '允許特許用戶改變其他用戶的個人偏好',
 	'edituser' => '編輯使用者',
 	'edituser-logout' => '把使用者登出',
+	'edituser-username' => '用戶名',
 	'edituser-dosearch' => '搜尋',
+	'edituser-nouser' => '指定的用戶不存在',
+	'edituser-exempt' => '指定的用戶無法被編輯',
+	'right-edituser' => '編輯其他用戶的參數設置',
+	'right-edituser-exempt' => '他人無法編輯這個用戶的參數設置',
 );
 

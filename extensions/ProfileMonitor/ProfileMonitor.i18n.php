@@ -1053,10 +1053,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'profiling' => '檢核資料',
+	'profiling-desc' => '[[Special:Profiling|特殊頁面]]用以查找和檢查配置信息',
 	'profiling-process' => '處理字串:',
 	'profiling-wildcard' => '使用萬用字元',
 	'profiling-ok' => '確定',

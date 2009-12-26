@@ -49,6 +49,15 @@ $messages['arz'] = array(
 	'rightfunctions-ns' => '(من حماية نطاق)',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'rightfunctions-casc' => '(vu ana kaskadiaradn Quöin)',
+	'rightfunctions-local' => '(vu lokale Seitn)',
+	'rightfunctions-ns' => '(vu da Nãmensraumsperrung)',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

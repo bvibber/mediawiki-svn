@@ -3673,12 +3673,47 @@ $2',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'whitelisttablemodify' => '修改',
+	'whitelisttablemodifyall' => '全選',
+	'whitelisttablemodifynone' => '全不選',
+	'whitelisttablepage' => '維基頁面',
+	'whitelisttableexpires' => '失效日期',
+	'whitelisttablemodby' => '最後修改者',
+	'whitelisttablemodon' => '最後修改於',
 	'whitelisttableedit' => '編輯',
 	'whitelisttableview' => '檢視',
+	'whitelisttablenewdate' => '新日期：',
+	'whitelisttablechangedate' => '修改失效日期',
+	'whitelisttableremove' => '移除',
+	'whitelistnewtabledate' => '結束日期：',
+	'whitelistnowhitelistedusers' => '"{{MediaWiki:Group-restricted}}"組中沒有用戶。
+您必須[[Special:UserRights|將用戶添加到組]]后，才能將頁面添加到一個用戶的白名單中。',
 	'whitelistnewtableprocess' => '處理',
+	'whitelistnewtablereview' => '評論',
+	'whitelistselectrestricted' => '== 選擇受限制的用戶名 ==',
+	'whitelistpagelist' => '$1 的{{SITENAME}}頁面',
+	'whitelistoverview' => '== 查看 $1 的更改 ==',
+	'whitelistoverviewcd' => "* [[:$2|$2]]，修改日期為 '''$1'''",
+	'whitelistrequestmsg' => '$1請求訪問以下頁面：
+
+$2',
+	'whitelistrequestconf' => '新頁面請求已發送到$1',
+	'whitelistnonrestricted' => "用戶'''$1'''不是一個受限制的用戶。
+這個頁面只適用於受限制的用戶",
+	'whitelistnever' => '從不',
+	'whitelistnummatches' => '  - {{PLURAL:$1|1個匹配|$1 個匹配}}',
+	'right-editwhitelist' => '修改現有用戶的白名單',
+	'right-restricttowhitelist' => '編輯、查看白名單上的頁面',
+	'action-editwhitelist' => '修改現有用戶的白名單',
+	'action-restricttowhitelist' => '編輯、查看白名單上的頁面',
+	'group-restricted' => '受限用戶',
+	'group-restricted-member' => '受限用戶',
+	'group-manager' => '管理員',
+	'group-manager-member' => '管理員',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

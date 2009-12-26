@@ -1596,10 +1596,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'contributors' => '貢獻者',
+	'contributors-desc' => '將主要參與者匯總到一頁',
 	'contributors-toolbox' => '主要貢獻者',
 	'contributors-legend' => '列示這篇條目的主要貢獻者',
 	'contributors-target' => '標題:',

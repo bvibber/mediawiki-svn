@@ -392,3 +392,10 @@ $messages['zh-hans'] = array(
 	'tspoll-id-error' => '没有提供ID！',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'tspoll-id-error' => '沒有提供ID！',
+);
+

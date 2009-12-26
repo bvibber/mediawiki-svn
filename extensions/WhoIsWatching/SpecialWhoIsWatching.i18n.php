@@ -867,6 +867,13 @@ $messages['vo'] = array(
 	'specialwhoiswatchingaddbtn' => 'Läükön gebanis pevälöl',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'specialwhoiswatchingthepage' => '谁正观看%s',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

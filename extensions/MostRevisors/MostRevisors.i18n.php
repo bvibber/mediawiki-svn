@@ -340,6 +340,8 @@ $messages['he'] = array(
 	'mostrevisors' => 'הדפים בעלי מספר הבודקים הגבוה ביותר',
 	'mostrevisors-namespace' => 'מרחב שם:',
 	'mostrevisors-none' => 'לא נמצאו רשומות.',
+	'mostrevisors-showing' => 'הצגת {{PLURAL:$1|דף אחד|$1 דפים}}:',
+	'mostrevisors-submit' => 'מעבר',
 	'mostrevisors-showredir' => 'הצגת דפי הפניה',
 	'mostrevisors-hideredir' => 'הסתרת דפי הפניה',
 	'mostrevisors-users' => '- {{PLURAL:$1|עורך אחד|$1 עורכים}}',
@@ -780,6 +782,16 @@ $messages['vi'] = array(
 	'mostrevisors-hideredir' => 'Ẩn trang đổi hướng',
 	'mostrevisors-users' => '– $1 người sửa đổi',
 	'mostrevisors-viewcontributors' => 'Xem các người đóng góp chính',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'mostrevisors-namespace' => '名字空间：',
+	'mostrevisors-showredir' => '显示重定向页面',
+	'mostrevisors-hideredir' => '隐藏重定向页面',
+	'mostrevisors-viewcontributors' => '检视主要贡献者',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -213,6 +213,13 @@ $messages['de'] = array(
 	'wikieditor-publish-dialog-goback' => 'Zurück',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'wikieditor-publish-dialog-summary' => 'Zusammenfassung (kurze Beschreibung der von Ihnen vorgenommenen Änderungen):',
+);
+
 /** Zazaki (Zazaki)
  * @author Xoser
  */
@@ -304,6 +311,7 @@ $messages['eu'] = array(
 $messages['fi'] = array(
 	'wikieditor-publish-button-publish' => 'Julkaise',
 	'wikieditor-publish-button-cancel' => 'Peruuta',
+	'wikieditor-publish-dialog-summary' => 'Muokkausyhteenveto (kuvaa lyhyesti tekemiäsi muutoksia):',
 	'wikieditor-publish-dialog-minor' => 'Pieni muutos',
 	'wikieditor-publish-dialog-watch' => 'Tarkkaile tätä sivua',
 	'wikieditor-publish-dialog-publish' => 'Julkaise',
@@ -382,9 +390,15 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
+	'wikieditor-publish-preference' => 'הפעלת פרסום "צעד־אחר־צעד"',
 	'wikieditor-publish-button-publish' => 'פרסום',
 	'wikieditor-publish-button-cancel' => 'ביטול',
 	'wikieditor-publish-dialog-title' => 'פרסום אל {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'תקציר העריכה (תיאור קצר של השינויים שערכתם):',
+	'wikieditor-publish-dialog-minor' => 'עריכה משנית',
+	'wikieditor-publish-dialog-watch' => 'מעקב אחר דף זה',
+	'wikieditor-publish-dialog-publish' => 'פרסום',
+	'wikieditor-publish-dialog-goback' => 'חזרה אחורה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -817,9 +831,11 @@ $messages['th'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'wikieditor-publish-preference' => 'Ädimme-ädim neşir etmekligi aç',
 	'wikieditor-publish-button-publish' => 'Neşir et',
 	'wikieditor-publish-button-cancel' => 'Goýbolsun et',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} taslamasynda neşir et',
+	'wikieditor-publish-dialog-summary' => 'Özgerdiş düşündirişi (eden üýtgeşmeleriňizi gysgaça düşündiriň):',
 	'wikieditor-publish-dialog-minor' => 'Ujypsyzja özgerdiş',
 	'wikieditor-publish-dialog-watch' => 'Sahypany gözegçilige al',
 	'wikieditor-publish-dialog-publish' => 'Neşir et',

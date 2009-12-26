@@ -305,21 +305,45 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'crosswikiblock-desc' => 'Aotreañ a ra da stankañ implijerien war ur wiki all en ur implijout ur [[Special:Crosswikiblock|bajenn ispisial]]',
 	'crosswikiblock' => 'Stankañ an implijer war ur wiki all',
+	'crosswikiblock-header' => "Ar bajenn-mañ a aotre stankañ un implijer war ur wiki all.
+Gwiriekait ez oc'h aotreet oberañ war ar wiki-se hag e touj ho oberoù gant an holl reolennoù.",
+	'crosswikiblock-target' => "Chomlec'h IP pe anv an implijer hag ar wiki ho peus c'hoant tizhout :",
 	'crosswikiblock-expiry' => 'Termen :',
 	'crosswikiblock-reason' => 'Abeg :',
 	'crosswikiblock-submit' => 'Stankañ an implijer-mañ',
 	'crosswikiblock-anononly' => 'Stankañ an implijerien dianv hepken',
+	'crosswikiblock-nocreate' => "Nac'hañ a ra krouidigezh ur gont",
+	'crosswikiblock-autoblock' => "Stankañ a ra emgefre ar chomlec'h IP ziwezhañ bet implijet gant an implijer-mañ, hag an holl IPoù da heul ho defe c'hoant kemmañ",
+	'crosswikiblock-noemail' => "Nac'hañ d'an implijer kas posteloù",
+	'crosswikiunblock' => 'Distankañ un implijer war ur wiki all',
+	'crosswikiunblock-header' => "Ar bajenn-mañ a aotre da zistankañ un implijer war wikioù all.
+Gwiriekait ez oc'h aotreet oberañ war ar wiki-se hag e touj ho oberoù ouzh an holl reolennoù.",
+	'crosswikiunblock-user' => "Anv an implijer, chomlec'h IP pe an ID da stankañ hag ar wiki ho peus c'hoant tizhout :",
 	'crosswikiunblock-reason' => 'Abeg :',
 	'crosswikiunblock-submit' => 'Distankañ an implijer-mañ',
+	'crosswikiunblock-success' => "Distanket eo bet an implijer '''$1'''.
+
+Distreiñ da:
+* [[Special:CrosswikiBlock|furmskrid ar stankadennoù]]
+* [[$2]]",
 	'crosswikiblock-nousername' => "N'eo bet roet anv implijer ebet",
+	'crosswikiblock-local' => "Ne vez ket degemeret gant an etrefas-mañ an distankadennoù lec'hel. Implijit [[Special:BlockIP|{{int:blockip}}]].",
 	'crosswikiblock-dbnotfound' => "N'eus ket eus an diaz roadennoù $1",
 	'crosswikiblock-noname' => '« $1 » n’eo ket un anv implijer reizh.',
 	'crosswikiblock-nouser' => 'N\'eo ket bet kavet an implijer "$3".',
 	'crosswikiblock-noexpiry' => 'Termen fall : $1.',
 	'crosswikiblock-noreason' => "N'eus bet diferet abeg ebet.",
+	'crosswikiblock-notoken' => "N'eo ket mat ar jedouer kemm.",
 	'crosswikiblock-alreadyblocked' => 'Stanket eo an implijer $3 dija.',
 	'crosswikiblock-noblock' => "N'eo ket stanket an implijer-mañ.",
+	'crosswikiblock-success' => "Stanket eo bet an implijer '''$3'''.
+
+Distreiñ da:
+* [[Special:CrosswikiBlock|furmskrid ar stankadennoù]]
+* [[$4]]",
+	'crosswikiunblock-local' => "Ne vez ket degemeret gant an etrefas-mañ an distankadennoù lec'hel. Implijit [[Special:IPBlockList|{{int:ipblocklist}}]]",
 	'right-crosswikiblock' => 'Stankañ ha distankañ implijerien war wikioù all',
 );
 
@@ -1404,6 +1428,14 @@ $messages['km'] = array(
 ត្រឡប់ទៅកាន់:
 * [[Special:CrosswikiBlock|ទម្រង់បែបបទសម្រាប់ការហាមឃាត់]]
 * [[$4]]",
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'crosswikiblock-reason' => 'ಕಾರಣ:',
+	'crosswikiunblock-reason' => 'ಕಾರಣ:',
 );
 
 /** Korean (한국어)
@@ -2757,6 +2789,14 @@ $messages['yi'] = array(
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'crosswikiblock-reason' => '原因：',
+	'crosswikiunblock-reason' => '原因：',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
 	'crosswikiblock-reason' => '原因：',
 	'crosswikiunblock-reason' => '原因：',
 );

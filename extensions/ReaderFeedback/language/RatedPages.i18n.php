@@ -539,11 +539,13 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'ratedpages' => 'Pagini evalutate de cititori',
 	'ratedpages-list' => 'Mai jos este o listă de pagini sortate după evaluarea venită de la cititori.',
 	'ratedpages-none' => 'Nu există pagini în această listă',
+	'ratedpages-graphs' => 'evaluarea datelor',
 );
 
 /** Tarandíne (Tarandíne)
@@ -636,6 +638,7 @@ $messages['te'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'ratedpages' => 'Okyjylaryň derejelendiren sahypalary',
 	'ratedpages-none' => 'Bu sanawda sahypa ýok',
 	'ratedpages-graphs' => 'derejelendirme maglumaty',
 );
@@ -720,6 +723,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -728,5 +732,6 @@ $messages['zh-hant'] = array(
 	'ratedpages-list' => '以下是按讀者評分排序的頁面清單。',
 	'ratedpages-none' => '本清單沒有任何頁面',
 	'ratedpages-graphs' => '評分資料',
+	'ratedpages-count' => '$1 {{PLURAL:$1|複審|複審}}',
 );
 

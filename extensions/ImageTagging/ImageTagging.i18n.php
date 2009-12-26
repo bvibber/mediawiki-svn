@@ -256,18 +256,32 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'taggedimages' => 'Skeudennoù balizennet',
 	'imagetagging-addimagetag' => 'Balizennañ ar skeudenn-mañ',
 	'imagetagging-article' => 'Pajenn :',
+	'imagetagging-articletotag' => 'Pajenn da valizennañ',
+	'imagetagging-canteditothermessage' => "Ne c'helloc'h ket kemmañ ar bajenn-mañ, pe n'oc'h ket aotreet d'en ober pe ez eo gwarezet ar bajenn-mañ evit abegoù all.",
 	'imagetagging-imghistory' => 'Istor',
 	'imagetagging-images' => 'skeudennoù',
 	'imagetagging-inthisimage' => 'Er skeudenn-se : $1',
+	'imagetagging-logentry' => 'Balizenn bet tennet eus ar bajenn [[$1]] gant $2',
+	'imagetagging-log-tagged' => "Ar skeudenn [[$1|$2]] a zo bet balizennet d'ar bajenn [[$3]] gant $4",
 	'imagetagging-new' => '<sup><span style="color:red">Nevez!</span></sup>',
 	'imagetagging-removetag' => 'Lemel ar valizenn',
 	'imagetagging-done-button' => 'Graet eo ar balizennañ',
 	'imagetagging-tag-button' => 'Balizenn',
 	'imagetagging-tagcancel-button' => 'Nullañ',
+	'imagetagging-tagging-instructions' => 'Klikañ war an dud pe an traoù er skeudenn evit balizennañ anezho.',
+	'imagetagging-addingtag' => "Oc'h ouzhpennañ ur balizenn...",
+	'imagetagging-removingtag' => 'O tennañ ur balizenn...',
 	'imagetagging-addtagsuccess' => 'Ouzhpennet eo ar valizenn',
+	'imagetagging-removetagsuccess' => 'Tennet eo bet ar balizenn.',
+	'imagetagging-oneuniquetagmessage' => 'Ar skeudenn-mañ he deus dija ur balizenn gant an anv-se.',
+	'imagetagging-imagetag-seemoreimages' => 'Gwelet muioc\'h a skeudennoù eus "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Skeudennoù eus « $1 »',
+	'imagetagging-taggedimages-displaying' => 'Diskwel ar skeudennoù $1 – $2 war $3 eus "$4"',
+	'tag-logpagename' => 'Marilh ar balizennañ',
+	'tag-logpagetext' => 'Ar bajenn-mañ a zo marilh an holl balizennoù skeudennoù bet ouzhpennet pe tennet.',
 );
 
 /** Bosnian (Bosanski)
@@ -2034,20 +2048,35 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Wmr89502270
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
+	'imagetagging-addimagetag' => '标签这幅图片',
 	'imagetagging-article' => '页面：',
+	'imagetagging-images' => '图片',
+	'imagetagging-removetag' => '移除标签',
+	'imagetagging-done-button' => '完成标签',
+	'imagetagging-tag-button' => '标签',
 	'imagetagging-tagcancel-button' => '取消',
+	'imagetagging-addingtag' => '正在新增标签...',
+	'imagetagging-removingtag' => '正在移除标签...',
+	'imagetagging-addtagsuccess' => '已新增标签。',
+	'imagetagging-removetagsuccess' => '已移除标签。',
+	'tag-logpagename' => '标签记录',
+	'tag-logpagetext' => '这是所有新增及移除图片标签的记录。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'imagetagging-addimagetag' => '標籤這幅圖像',
-	'imagetagging-images' => '圖像',
+	'imagetagging-addimagetag' => '標籤這幅圖片',
+	'imagetagging-article' => '頁面：',
+	'imagetagging-images' => '圖片',
 	'imagetagging-removetag' => '移除標籤',
 	'imagetagging-done-button' => '完成標籤',
 	'imagetagging-tag-button' => '標籤',
@@ -2057,6 +2086,6 @@ $messages['zh-hant'] = array(
 	'imagetagging-addtagsuccess' => '已新增標籤。',
 	'imagetagging-removetagsuccess' => '已移除標籤。',
 	'tag-logpagename' => '標籤記錄',
-	'tag-logpagetext' => '這是所有新增及移除圖像標籤的記錄。',
+	'tag-logpagetext' => '這是所有新增及移除圖片標籤的記錄。',
 );
 

@@ -1133,6 +1133,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -1143,8 +1144,10 @@ $messages['zh-hant'] = array(
 	'postcomment_addcommentdiscussionpage' => '在此討論頁加入您的評論',
 	'postcomment_leavemessagefor' => '為$1留言',
 	'postcomment_post' => '張貼',
+	'postcomment_on' => '於',
 	'postcomment_said' => '說',
 	'postcomment_invalidrequest' => '請求無效。',
 	'postcomment_replyto' => '回應$1',
+	'postcomment_nopostingtoadd' => '沒有可加入的評論。',
 );
 

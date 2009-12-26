@@ -45,9 +45,15 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'tablemod' => 'جدول مود',
+	'tablemod-desc' => 'التعلاعب بجداول الويكي',
 	'tablemod-msg-remove' => 'أزل',
+	'tablemod-error-format' => 'هذا الوسم يدعم فقط جدول بسيط واحد لكل وسم، بدون أي نص قبله أو بعده.',
+	'tablemod-error-colcount' => 'هذا الوسم يدعم الجداول بعدد متساو من الأعمدة لكل صف عند الإزالة.',
+	'tablemod-error-headcount' => 'هذا الوسم يدعم فقط الجداول بعناوين ذات عامود واحد عند الترتيب.',
 	'tablemod-error-invalidsort' => 'محددات ترتيب غير صحيحة.',
 	'tablemod-error-invalidaction' => 'فعل غير صحيح.',
+	'tablemod-error-missingid' => 'محدد هوية مفقود في الوسم.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -83,6 +89,14 @@ $messages['bs'] = array(
 	'tablemod-error-invalidaction' => 'Nevaljana akcija.',
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'tablemod-msg-remove' => 'Entfernen',
+	'tablemod-error-invalidaction' => 'Ungültige Aktion.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -103,6 +117,13 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'tablemod-msg-remove' => 'Αφαίρεση',
+);
+
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'tablemod-msg-remove' => 'Quitar',
 );
 
 /** Basque (Euskara)
@@ -164,6 +185,15 @@ $messages['gsw'] = array(
 	'tablemod-error-invalidsort' => 'Nit giltige Sortierigsparameter.',
 	'tablemod-error-invalidaction' => 'Nit giltigi Aktion.',
 	'tablemod-error-missingid' => 'Ident-Eigeschafte in dr Markierig fähle.',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'tablemod-msg-remove' => 'הסרה',
+	'tablemod-error-invalidsort' => 'הפרמטרים למיון בלתי תקינים.',
+	'tablemod-error-invalidaction' => 'פעולה בלתי תקינה.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

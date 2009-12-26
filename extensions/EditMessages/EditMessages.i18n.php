@@ -173,11 +173,14 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'editmessages' => 'Aozañ kemennadennoù',
+	'editmsg-target' => "Kemenadenn a vez c'hoant tizhout :",
 	'editmsg-search' => 'Klask',
 	'editmsg-new-search' => 'Klask nevez',
+	'editmsg-warning-parse3' => '* Dibenn an arouezennoù nann-kavet : $1',
 );
 
 /** Bosnian (Bosanski)
@@ -1467,6 +1470,15 @@ $messages['yi'] = array(
  */
 $messages['zh-hans'] = array(
 	'editmessages' => '编辑消息',
+	'editmsg-search' => '搜索',
+	'editmsg-new-search' => '新搜索',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'editmessages' => '編輯消息',
 	'editmsg-search' => '搜索',
 	'editmsg-new-search' => '新搜索',
 );

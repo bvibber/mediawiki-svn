@@ -375,7 +375,7 @@ $messages['frp'] = array(
 	'am-username' => 'Nom d’utilisator',
 	'am-email' => 'mèssâjo',
 	'nss-save-changes' => 'Sôvar los changements',
-	'nss-create-account-header' => 'Fâre un novél compto',
+	'nss-create-account-header' => 'Fâre un compto novél',
 	'nss-create-account' => 'Fâre lo compto',
 );
 
@@ -960,12 +960,20 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Najami
+ * @author Per
  */
 $messages['sv'] = array(
+	'accountmanager' => 'Administrera konto',
 	'am-username' => 'användarnamn',
 	'am-email' => 'e-post',
 	'am-active' => 'aktiv',
 	'am-updated' => 'Dina ändringar har sparats',
+	'nss-save-changes' => 'Spara ändringar',
+	'nss-create-account-header' => 'Skapa nytt konto',
+	'nss-create-account' => 'Skapa konto',
+	'nss-no-mail' => 'Skicka inte e-post',
+	'nss-welcome-mail' => 'Ett konto med användarnamnet $1 och lösenord $2 har skapats åt dig.',
+	'nss-welcome-mail-subject' => 'Skapande av konto',
 );
 
 /** Telugu (తెలుగు)
@@ -1097,14 +1105,17 @@ $messages['zh-hans'] = array(
 	'am-active' => '活跃',
 	'nss-rights' => '权利',
 	'nss-save-changes' => '保存更改',
+	'nss-no-mail' => '不要传送电邮',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'am-username' => '使用者名稱',
 	'am-email' => '電郵',
+	'am-active' => '活躍',
 	'nss-rights' => '權限',
 	'nss-save-changes' => '儲存變更',
 	'nss-no-mail' => '不要傳送電郵',

@@ -938,6 +938,13 @@ $messages['vo'] = array(
 	'smoothgallery-gallery-not-found' => 'Magodem pavilöl no dabinon.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'smoothgallery-javascript-disabled' => '需要JavaScript以正常检视本图片廊。',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

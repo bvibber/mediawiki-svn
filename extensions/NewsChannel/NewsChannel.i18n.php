@@ -726,11 +726,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'newschannel' => '新聞頻道',
 	'newschannel_format' => '格式：',
 	'newschannel_limit' => '限制：',
+	'newschannel_submit_button' => '創建供稿',
 );
 

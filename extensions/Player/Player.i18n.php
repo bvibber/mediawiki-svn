@@ -1411,12 +1411,15 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'player' => '播放器',
 	'player-title' => '播放器',
+	'player-playertitle' => '播放器：$1',
 	'player-file' => '文件名',
+	'player-play' => '播放',
 	'player-not-found' => '找不到文件',
 	'player-clicktoplay' => '播放$1',
 	'player-goto-player' => '播放器',
@@ -1425,6 +1428,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -1434,6 +1438,7 @@ $messages['zh-hant'] = array(
 	'player-file' => '檔案名稱',
 	'player-play' => '播放',
 	'player-not-found' => '找不到檔案',
+	'player-clicktoplay' => '播放$1',
 	'player-goto-player' => '播放器',
 	'player-goto-page' => '頁面',
 	'player-goto-file' => '檔案',

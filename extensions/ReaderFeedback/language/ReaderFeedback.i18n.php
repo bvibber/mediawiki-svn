@@ -847,7 +847,7 @@ $messages['frp'] = array(
 	'readerfeedback-level-4' => 'Famox',
 	'readerfeedback-submit' => 'Sometre',
 	'readerfeedback-main' => 'Solament les pâges de contegnu pôvont étre èstimâs.',
-	'readerfeedback-success' => "'''Marci d’avêr revu ceta pâge !''' ([$2 vêre los rèsultats]) ([$3 des quèstions ou ben des comentèros ?])",
+	'readerfeedback-success' => "'''Grant-marci d’avêr revu ceta pâge !''' ([$2 vêre los rèsultats]) ([$3 des quèstions ou ben des comentèros ?])",
 	'readerfeedback-voted' => "'''Semble que vos èyâd ja èstimâ ceta pâge.''' ([$2 vêre los rèsultats]) ([$3 des quèstions ou ben des comentèros ?])",
 	'readerfeedback-submitting' => 'Somission...',
 	'readerfeedback-finished' => 'Grant-marci !',
@@ -1253,6 +1253,7 @@ $messages['ko'] = array(
 	'readerfeedback-reliability' => '가독성',
 	'readerfeedback-completeness' => '완성도',
 	'readerfeedback-npov' => '중립성',
+	'readerfeedback-level-none' => '(모름)',
 	'readerfeedback-level-0' => '최하',
 	'readerfeedback-level-1' => '낮음',
 	'readerfeedback-level-2' => '양호',
@@ -1265,6 +1266,7 @@ $messages['ko'] = array(
 	'readerfeedback-finished' => '감사합니다!',
 	'readerfeedback-tagfilter' => '태그:',
 	'tooltip-ca-ratinghist' => '이 문서에 대한 평가',
+	'specialpages-group-feedback' => '독자 의견',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -1746,8 +1748,11 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'readerfeedback' => 'Ce părere aveţi despre această pagină ?',
+	'readerfeedback-text' => "''Vă rugăm luaţi-vă un moment pentru a evalua această pagină de mai jos. Feedback-ul este valoros şi ne ajută să îmbunătăţim saitul.''",
 	'readerfeedback-reliability' => 'Fiabilitate',
 	'readerfeedback-completeness' => 'Complet',
 	'readerfeedback-npov' => 'Neutralitate',
@@ -1763,6 +1768,7 @@ $messages['ro'] = array(
 	'readerfeedback-main' => 'Doar conţinutul paginilor poate fi evaluat.',
 	'readerfeedback-success' => "'''Mulţumim pentru că aţi revizuit această pagină!''' ([$3 Comentarii sau întrebări?]).",
 	'readerfeedback-voted' => "'''Aţi evaluat deja această pagină''' ([$3 Comentarii sau întrebări?]).",
+	'readerfeedback-error' => "'''A apărut o eroare în timp ce era evaluată această pagină''' ([$2 vedeţi rezultatele]) ([$3 comentarii sau întrebări ?]).",
 	'readerfeedback-submitting' => 'Trimit ...',
 	'readerfeedback-finished' => 'Mulţumim!',
 	'readerfeedback-tagfilter' => 'Etichetă:',

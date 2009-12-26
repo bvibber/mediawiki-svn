@@ -92,9 +92,11 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'masseditregex' => 'تعديل كمي باستخدام التعبيرات المنتظمة',
+	'masseditregex-desc' => 'استخدم التعبيرات القياسية [[Special:MassEditRegex|لتعديل صفحات كثيرة في عملية واحدة]]',
 	'masseditregextext' => 'أدخل تعبيرا نتظما واحدا أو أكثر (واحد لكل سطر) للمطابقة, وتعبير واحد أو أكثر لاستبدال كل مطابقة به.
 أول مطابقة تعبير، لو كان ناجحا، سيتم استبداله بأول تعبير استبدال، وهكذا.
 انظر [http://php.net/manual/en/function.preg-replace.php وظيفة PHP preg_replace()] للتفاصيل.',
+	'masseditregex-pagelisttxt' => 'الصفحات للتعديل (لا تستخدم بادئة نطاق:):',
 	'masseditregex-matchtxt' => 'ابحث عن:',
 	'masseditregex-replacetxt' => 'استبدل بـ:',
 	'masseditregex-executebtn' => 'شغّل',
@@ -106,9 +108,12 @@ $messages['ar'] = array(
 	'masseditregex-page-not-exists' => '$1 غير موجود',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|صفحة|صفحات}} تم تعديلها',
 	'masseditregex-view-full-summary' => 'عرض ملخص التعديل الكامل',
+	'masseditregex-hint-intro' => 'هنا بعض النصائح والأمثلة لتنفيذ المهام الشائعة:',
 	'masseditregex-hint-headmatch' => 'مطابقة',
 	'masseditregex-hint-headreplace' => 'استبدل',
 	'masseditregex-hint-headeffect' => 'تأثير',
+	'masseditregex-hint-toappend' => 'أضف بعض النصوص إلى نهاية الصفحة - رائع لإضافة الصفحات إلى التصنيفات',
+	'masseditregex-hint-remove' => 'أزل بعض النصوص من كل الصفحات في القائمة',
 	'masseditregex-hint-removecat' => 'أزل كل التصنيفات من صفحة (لاحظ هروب الأقواس المربعة في كود الويكي.)
 قيم الاستبدال لا ينبغي تهريبها.',
 	'masseditregex-listtype-intro' => 'هذه قائمة بـ:',
@@ -117,6 +122,7 @@ $messages['ar'] = array(
 	'masseditregex-listtype-categories' => 'أسماء التصنيفات (عدل كل صفحة في هذه التصنيفات؛ اختيار النطاق يتم تجاهله)',
 	'masseditregex-listtype-backlinks' => 'الوصلات الراجعة (عدل الصفحات التي تصل إلى هذه الصفحات)',
 	'masseditregex-namespace-intro' => 'كل هذه الصفحات في هذا النطاق:',
+	'masseditregex-exprnomatch' => 'التعبير "$1" لم يطابق أي صفحة.',
 	'masseditregex-badregex' => 'عبارة منطقية غير صالحة:',
 	'masseditregex-editfailed' => 'التعديل فشل:',
 	'masseditregex-tooltip-execute' => 'طبق هذه التغييرات على كل صفحة',
@@ -220,15 +226,40 @@ $messages['bs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author Pill
  * @author Tbleher
  */
 $messages['de'] = array(
 	'masseditregex-matchtxt' => 'Suchen nach:',
 	'masseditregex-replacetxt' => 'Ersetzen durch:',
+	'masseditregex-executebtn' => 'Ausführen',
+	'masseditregex-err-nopages' => 'Du musst mindestens eine Seite festlegen, die geändert werden soll.',
+	'masseditregex-before' => 'Vorher',
+	'masseditregex-after' => 'Nachher',
+	'masseditregex-max-preview-diffs' => 'Die Vorschau wurde auf {{PLURAL:$1|den|die}} ersten $1 Treffer begrenzt.',
 	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|Änderung|Änderungen}}',
+	'masseditregex-page-not-exists' => '$1 existiert nicht',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|Seite|Seiten}} bearbeitet',
+	'masseditregex-view-full-summary' => 'Vollständigen Bearbeitungskommentar anzeigen',
+	'masseditregex-hint-headmatch' => 'Treffer',
+	'masseditregex-hint-headreplace' => 'Ersetzen',
+	'masseditregex-hint-headeffect' => 'Effekt',
+	'masseditregex-hint-toappend' => 'Text an das Ende der Seite anhängen - großartig um Seiten Kategorien hinzuzufügen',
+	'masseditregex-hint-remove' => 'Text von allen Seiten in der Liste entfernen',
+	'masseditregex-listtype-intro' => 'Dies ist eine Liste von:',
+	'masseditregex-listtype-pagenames' => 'Seitennamen (diese Seiten bearbeiten)',
+	'masseditregex-exprnomatch' => 'Der Ausdruck „$1“ ergab keinen Treffer.',
 	'masseditregex-badregex' => 'Ungültiger regulärer Ausdruck:',
+	'masseditregex-editfailed' => 'Bearbeitung fehlgeschlagen:',
+	'masseditregex-tooltip-execute' => 'Diese Änderungen an jeder Seite durchführen',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'masseditregex-err-nopages' => 'Sie müssen mindestens eine Seite festlegen, die geändert werden soll.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -456,6 +487,33 @@ Bim Text, wu yygsetzt wird, isch d Richtig nit relevant.',
 	'masseditregex-badregex' => 'Nit giltige reguläre Uusdruck:',
 	'masseditregex-editfailed' => 'Bearbeitige sin fähl gschlaa:',
 	'masseditregex-tooltip-execute' => 'Die Änderige in jedere Syte vorneh',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'masseditregex' => 'עריכה המונית באמצעות ביטויים רגולאריים',
+	'masseditregex-desc' => 'שימוש בביטויים רגלואריים כדי [[Special:MassEditRegex|לערוך דפים רבים בבת אחת]]',
+	'masseditregex-pagelisttxt' => 'דפים לעריכה (אין להשתמש בקידומת שם המרחב:):',
+	'masseditregex-matchtxt' => 'חיפוש אחר:',
+	'masseditregex-replacetxt' => 'החלפה ב־:',
+	'masseditregex-executebtn' => 'הפעלה',
+	'masseditregex-err-nopages' => 'עליך לציין לפחות דף אחד לשינוי.',
+	'masseditregex-before' => 'לפני',
+	'masseditregex-after' => 'אחרי',
+	'masseditregex-num-changes' => '$1: {{PLURAL:$2|שינוי אחד|$2 שינויים}}',
+	'masseditregex-page-not-exists' => '$1 לא קיים',
+	'masseditregex-num-articles-changed' => '{{PLURAL:$1|דף אחד נערך|$1 דפים נערכו}}',
+	'masseditregex-view-full-summary' => 'צפייה בתקציר העריכה המלא',
+	'masseditregex-hint-headmatch' => 'התאמה',
+	'masseditregex-hint-headreplace' => 'החלפה',
+	'masseditregex-hint-headeffect' => 'אפקט',
+	'masseditregex-listtype-intro' => 'זוהי רשימה של:',
+	'masseditregex-listtype-pagenames' => 'שמות הדפים (עריכת דפים אלה)',
+	'masseditregex-badregex' => 'ביטוי רגולארי שגוי:',
+	'masseditregex-editfailed' => 'העריכה נכשלה:',
+	'masseditregex-tooltip-execute' => 'החלת שינויים אלה לכל דף',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -813,6 +871,12 @@ Voor de te vervangen tekst is escapen niet nodig.',
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'masseditregex' => 'Masseredigering ved bruk av regulære uttrykk',
+	'masseditregex-desc' => 'Bruk regulære uttrykk for å [[Special:MassEditRegex|redigere mange sider i en handling]]',
+	'masseditregextext' => 'Skriv inn ett eller fler regulære uttrykk (en per linje) for treff, og ett eller flere uttrykk å erstatte hvert treff med.
+Det første treff-uttrykket, om vellykket, vil bli erstattet med det første erstatt-uttrykket, og så videre.
+Se [http://php.net/manual/en/function.preg-replace.php PHP-funksjonen preg_replace()] for detaljer.',
+	'masseditregex-pagelisttxt' => 'Sider å redigere (ikke bruk et navnerom: prefiks):',
 	'masseditregex-matchtxt' => 'Søk etter:',
 	'masseditregex-replacetxt' => 'Erstatt med:',
 	'masseditregex-executebtn' => 'Utfør',
@@ -825,13 +889,20 @@ $messages['no'] = array(
 	'masseditregex-num-articles-changed' => '{{PLURAL:$1|én side|$1 sider}} endret',
 	'masseditregex-view-full-summary' => 'Vis fullstendig endringssammendrag',
 	'masseditregex-hint-intro' => 'Her er noen hint og eksempler for utføring av vanlige oppgaver:',
+	'masseditregex-hint-headmatch' => 'Treff',
 	'masseditregex-hint-headreplace' => 'Erstatt',
+	'masseditregex-hint-headeffect' => 'Effekt',
+	'masseditregex-hint-toappend' => 'Legg til noe tekst på slutten av siden - flott for å legge sider til i kategorier',
 	'masseditregex-hint-remove' => 'Fjern noe tekst fra alle sidene i listen',
+	'masseditregex-hint-removecat' => 'Fjern alle kategorier fra en side (merk at hakeparantesene i wikikoden unnslipper.)
+Erstatningsverdiene bør ikke unnslippes.',
 	'masseditregex-listtype-intro' => 'Dette er en liste over:',
 	'masseditregex-listtype-pagenames' => 'Sidenavn (endre disse sidene)',
 	'masseditregex-listtype-pagename-prefixes' => 'Sidenavnprefiks (endre sider som har navn som begynner med denne teksten)',
 	'masseditregex-listtype-categories' => 'Kategorinavn (endre hver side innen disse kategoriene; navneromvalg ignoreres)',
 	'masseditregex-namespace-intro' => 'Alle disse sidene er i dette navnerommet:',
+	'masseditregex-exprnomatch' => 'Uttrykket «$1» traff ingen sider.',
+	'masseditregex-badregex' => 'Ugyldig regulært uttrykk:',
 	'masseditregex-editfailed' => 'Endring feilet:',
 	'masseditregex-tooltip-execute' => 'Utfør disse endringene på hver side',
 );
@@ -1011,6 +1082,21 @@ $messages['ru'] = array(
 	'masseditregex-badregex' => 'Ошибочное регулярное выражение:',
 	'masseditregex-editfailed' => 'Ошибка редактирования:',
 	'masseditregex-tooltip-execute' => 'Применить эти изменения для каждой страницы',
+);
+
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'masseditregex' => 'Använd regulära uttryck för att massredigera.',
+	'masseditregex-matchtxt' => 'Sök efter:',
+	'masseditregex-replacetxt' => 'Ersätt med:',
+	'masseditregex-executebtn' => 'Genomför',
+	'masseditregex-err-nopages' => 'Du måste specificera minst en sida att ändra.',
+	'masseditregex-before' => 'Före',
+	'masseditregex-after' => 'Efter',
+	'masseditregex-hint-headreplace' => 'Ersätt',
+	'masseditregex-listtype-intro' => 'Detta är en lista över:',
 );
 
 /** Telugu (తెలుగు)

@@ -600,3 +600,15 @@ $messages['zh-hans'] = array(
 	'right-userrights-global' => '管理全域用户权限',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'globaluserrights' => '全域用戶權限管理',
+	'gur-desc' => '簡單的[[Special:GlobalUserRights|全域用戶權限]]管理信息',
+	'gur-rightslog-name' => '全域權限歷史記錄',
+	'gur-rightslog-header' => '這是改變全域用戶權限的歷史記錄',
+	'gur-rightslog-entry' => '為$1改變全域用戶組權限自$2到$3',
+	'right-userrights-global' => '管理全域用戶權限',
+);
+

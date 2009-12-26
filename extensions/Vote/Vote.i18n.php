@@ -143,6 +143,8 @@ $messages['arz'] = array(
 	'vote-results-none' => 'ماحدش ادى صوته فى الوقت دا',
 	'vote-login' => 'لازم تكون [$1 دخول] علشان تصوت.',
 	'vote-invalid-choice' => 'لازم تختار واحد من الاختيارات  الموجودة',
+	'right-vote' => 'صوت',
+	'right-voteadmin' => 'شوف نتايج التصويت',
 );
 
 /** Bikol Central (Bikol Central)

@@ -47,9 +47,17 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'sendmailtowiki-desc' => 'أرسل محتوى الويكي من خلال عنوان بريد إلكتروني ديناميكي مخصص',
+	'prefs-sendmailtowiki' => 'إرسال المحتوى بالبريد الإلكتروني',
+	'sendmailtowiki-inemail' => 'عنوان البريد الإلكتروني المخصص:',
 	'sendmailtowiki-inpin' => 'بي آي إن:',
+	'prefs-help-sendmailtowiki_pin' => 'حقل فارغ لPIN يعطل إرسال المحتوى للويكي بحسابك.',
+	'sendmailtowiki-err-pinlength' => 'PIN يجب أن يحتوي على 5 أرقام بالضبط.',
+	'sendmailtowiki-err-wrongprefix' => 'بادئة حساب ويكي خاطئة. اتصل بإداريك.',
 	'sendmailtowiki-err-invalidaccount' => 'حساب غير صحيح. تحقق من عنوان البريد الإلكتروني الذي ترسل إليه.',
 	'sendmailtowiki-err-invalidsender' => 'مرسل غير صحيح. تحقق من عنوان البريد الإلكتروني الذي ترسل منه.',
+	'sendmailtowiki-err-invalidpin' => 'PIN غير صحيح. الدخول مرفوض.',
+	'sendmailtowiki-err-onlyplain' => 'بسبب إساءة الفهم المحتملة فالرسائل النصية النقية فقط مقبولة.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -98,6 +106,28 @@ $messages['bs'] = array(
 	'sendmailtowiki-err-invalidpin' => 'Nevaljan PIN. Pristup onemogućen.',
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'prefs-sendmailtowiki' => 'Sende Inhalte über E-Mail',
+	'sendmailtowiki-inemail' => 'Zugewiesene E-Mail-Adresse:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'sendmailtowiki-err-pinlength' => 'Die PIN muss genau 5 Ziffern enthalten.',
+	'sendmailtowiki-err-invalidaccount' => 'Ungültiges Benutzerkonto. Überprüfe die E-Mail-Adresse, an die du sendest.',
+	'sendmailtowiki-err-invalidsender' => 'Ungültiger Sender. Überprüfe die E-Mail-Adresse, von der du sendest.',
+	'sendmailtowiki-err-invalidpin' => 'Ungültige PIN. Zugriff abgelehnt.',
+	'sendmailtowiki-err-onlyplain' => 'Aufgrund potenzieller Fehlinterpretationen werden nur reine Textnachrichten akzeptiert.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'sendmailtowiki-err-invalidaccount' => 'Ungültiges Benutzerkonto. Überprüfen Sie die E-Mail-Adresse, an die Sie senden.',
+	'sendmailtowiki-err-invalidsender' => 'Ungültiger Sender. Überprüfen Sie die E-Mail-Adresse, von der Sie senden.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -120,6 +150,14 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'sendmailtowiki-inpin' => 'ΡΙΝ:',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'prefs-sendmailtowiki' => 'Enviando contenido con correo electrónico',
+	'sendmailtowiki-err-onlyplain' => 'Debido a potenciales malentendidos solamente mensajes de puro texto son aceptados.',
 );
 
 /** French (Français)
@@ -171,6 +209,13 @@ $messages['gsw'] = array(
 	'sendmailtowiki-err-invalidsender' => 'Nit giltige Absänder. Iberprief d E-Mail-Adräss, wu Du as Absänder aagee hesch.',
 	'sendmailtowiki-err-invalidpin' => 'Nit giltige PIN-Code. Zuegang verweigeret.',
 	'sendmailtowiki-err-onlyplain' => 'Wäg meglige Fählinterpretatione sin nume Nochrichte mit reinem Text zuegloo.',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'sendmailtowiki-desc' => 'פרסום תוכן ויקי דרך כתובת דוא"ל דינמית ייעודית',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

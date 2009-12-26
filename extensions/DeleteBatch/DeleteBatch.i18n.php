@@ -172,14 +172,30 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'deletebatch' => 'Diverkañ ur strollad pajennoù',
+	'deletebatch' => 'Dilemel ur strollad pajennoù',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Dilemel ur strollad pajennoù]]',
+	'deletebatch-help' => "Dilemel ur strollad pajennoù.
+Tu 'zo deoc'h lañsañ un dilemadur eeun pe dilemel pajennoù listennet en ur restr.
+Dibabit un iplijer a vo lakaet e marilh an dilamadennoù.
+Ur restr enporzhiet a c'hello bezañ ennañ : anv ur bajenn hag un abeg (diret) evit he dilemel, rankout a raio bezañ dispartiet gant ur \"|\" evit pep linenn.",
 	'deletebatch-caption' => 'Roll ar pajennoù :',
+	'deletebatch-title' => 'Dilemel ur strollad',
 	'deletebatch-link-back' => "Distreiñ d'ar bajenn dibar",
+	'deletebatch-as' => 'Lañsañ ar skript evel :',
+	'deletebatch-both-modes' => 'Mar plij dibabit pe ur bajenn roet pe ur roll roet a bajennoù',
 	'deletebatch-or' => '<b>pe</b>',
 	'deletebatch-delete' => 'Dilemel',
-	'deletebatch-page' => 'Pajennoù da ziverkañ :',
+	'deletebatch-page' => 'Pajennoù da zilemel :',
+	'deletebatch-processing-from-file' => 'o tilemel pajennoù adalek ur restr gant ur roll',
+	'deletebatch-processing-from-form' => 'o tilemel pajennoù adalek ar furmskrid',
+	'deletebatch-omitting-nonexistant' => "Mank ar bajenn $1 ha n'eus ket diouti.",
+	'deletebatch-omitting-invalid' => 'Mank ar bajenn fall $1.',
 	'deletebatch-file-bad-format' => 'Ar restr a zle bezañ testenn blaen',
+	'deletebatch-file-missing' => 'Diposubl eo lenn ar restr roet',
+	'deletebatch-select-script' => 'Skript evit dilemel pajennoù',
 	'deletebatch-select-yourself' => "C'hwi",
+	'deletebatch-no-page' => "Mar plij roit ur bajenn da zilemel d'an nebeutañ PE dibabit ur restr ennañ ur roll pajennoù",
+	'right-deletebatch' => 'Dilemel pajennoù dre strolladoù',
 );
 
 /** Bosnian (Bosanski)
@@ -266,6 +282,9 @@ Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional ein
  * @author Imre
  */
 $messages['de-formal'] = array(
+	'deletebatch-help' => 'Löschen Sie eine Reihe von Seiten. Sie können einerseits eine einzelne Seite löschen, aber auch mehrere Seiten, die Sie in einer Datei aufzählen.
+Wählen Sie einen Benutzer, der im Löschlogbuch angezeigt werden soll.
+Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional einen mit einem senkrechten Strich („|“) abgetrennten Löschgrund enthalten.',
 	'deletebatch-link-back' => 'Sie können zur Erweiterung zurückgehen',
 	'deletebatch-select-yourself' => 'Sie',
 );

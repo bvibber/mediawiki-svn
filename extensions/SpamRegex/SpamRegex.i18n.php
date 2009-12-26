@@ -1766,3 +1766,11 @@ $messages['zh-hans'] = array(
 	'spamregex-summary-log' => '（摘要）',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'spamregex-text' => '（文字）',
+	'spamregex-summary-log' => '（摘要）',
+);
+

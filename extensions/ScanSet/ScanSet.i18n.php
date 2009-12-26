@@ -203,6 +203,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'scanset-desc' => 'Diskouez a ra skeudennoù niverelaet adalek arventennoù CD/DVD Andreas Grosz',
 	'scanset_no_name' => 'Fazi : Rankout a rit reiñ un anv d\'an hollad restroù niverelaet, da skouer &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Fazi : Mankout a ra ar strobad restroù niverelaet pe direizh eo.',
 	'scanset_unrecognised_index_format' => 'Fazi : dianav eo furmad ar meneger',
@@ -1130,8 +1131,18 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author Mihai
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'scanset_no_name' => 'Eroare: Trebuie să specificaţi numele de serie, de exemplu &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Eroare: Nume de serie invalid sau lipseşte.',
+	'scanset_unrecognised_index_format' => 'Eroare: Format de index necunoscut',
+	'scanset_opendir_error' => 'Eroare: Nu se poate deschide directorul $1',
+	'scanset_no_files' => 'Eroare: Niciun fişier prezent în directorul specificat.',
+	'scanset_no_volumes' => 'Eroare: Niciun director de volum găsit',
+	'scanset_missing_index_file' => 'Eroare: Fişierul de index $1 negăsit',
+	'scanset_index_file_error' => 'Eroare: Eroare în formatul fişierului de index la linia $1',
+	'scanset_invalid_volume' => 'Eroare: Volum invalid',
 	'scanset_next' => 'Următor &gt;',
 	'scanset_prev' => '&lt; Anterior',
 );
@@ -1330,6 +1341,9 @@ $messages['th'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'scanset-desc' => 'Skanirlenen sahypa şekillerini Andreas Groszyň CD/DVD toplumlaryndan görkez',
+	'scanset_no_name' => 'Säwlik: Skanirleme toplumynyň adyny ýazmaly, meselem, &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Säwlik: Nädogry ýa-da ýok skanirleme toplumy.',
 	'scanset_unrecognised_index_format' => 'Säwlik: Näbelli indeks formaty',
 	'scanset_opendir_error' => 'Säwlik: $1 direktoriýasyny açyp bolmaýar',
 	'scanset_no_files' => 'Säwlik: Görkezilen direktoriýada hiç hili faýl ýok.',
@@ -1499,10 +1513,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'scanset-desc' => '於 Andreas Grosz 的 CD/DVD 中看已掃瞄的頁面圖像',
+	'scanset-desc' => '於 Andreas Grosz 的 CD/DVD 中看已掃瞄的頁面圖片',
 	'scanset_no_name' => 'ScanSet: 您必須要指定一個 scan set 的名字，例如 &lt;scanset name="EB1911" /&gt;。',
 	'scanset_invalid_name' => 'ScanSet: 無效或遺失 scan set。',
 	'scanset_unrecognised_index_format' => 'ScanSet: 未知的索引格式',

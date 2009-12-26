@@ -368,7 +368,7 @@ $messages['frc'] = array(
  */
 $messages['frp'] = array(
 	'ajax-se-desc' => 'Montre los utilisators que sont aprés changiér la méma pâge.',
-	'ajax-se-title' => 'En cors de changement per :',
+	'ajax-se-title' => 'Aprés étre changiê per :',
 	'ajax-se-pending' => 'actualisacion en atenta... (clicâd sur ceti mèssâjo ou ben changiéd la pâge)',
 	'ajax-se-idling' => '(cen fât $1 s)',
 	'ajax-se-pagedoesnotexist' => 'la pâge ègziste pas',

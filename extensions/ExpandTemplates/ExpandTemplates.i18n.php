@@ -1083,6 +1083,13 @@ $messages['km'] = array(
 	'expand_templates_preview' => 'បង្ហាញការមើលជាមុន',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'expand_templates_preview' => 'ಮುನ್ನೋಟ',
+);
+
 /** Korean (한국어)
  * @author Albamhandae
  * @author Klutzy

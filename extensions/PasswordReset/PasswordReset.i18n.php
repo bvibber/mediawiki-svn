@@ -465,7 +465,7 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'passwordreset-invalidusername' => 'Nom d’utilisator encognu',
 	'passwordreset-username' => 'Nom d’utilisator :',
-	'passwordreset-newpass' => 'Novél mot de pâssa :',
+	'passwordreset-newpass' => 'Mot de pâssa novél :',
 );
 
 /** Western Frisian (Frysk)

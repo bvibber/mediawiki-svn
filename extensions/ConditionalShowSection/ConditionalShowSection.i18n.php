@@ -29,6 +29,13 @@ $messages['ar'] = array(
 	'conditionalshowsection-desc' => 'إضافة وسم cshow لعرض/إخفاء شرطيا قسم من نص الويكي',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'conditionalshowsection-desc' => 'Викитекст бүлеген шартлы күрһәтеү йәки йәшереү өсөн cshow тегы өҫтәй',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

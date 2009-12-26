@@ -151,7 +151,7 @@ $messages['arz'] = array(
 	'importusers-user-present-update' => "المستخدم '''$1''' موجود بالفعل. تم التحديث.",
 	'importusers-user-present-not-update' => "المستخدم '''$1''' موجود بالفعل. لم يتم التحديث.",
 	'importusers-user-invalid-format' => 'بيانات المستخدم فى السطر #$1 لها صيغة غير صحيحة أو فارغة. تم تجاهلها.',
-	'importusers-log' => 'استيراد السجل',
+	'importusers-log' => 'استيراد سجل المستخدمين',
 	'importusers-log-summary' => 'ملخص',
 	'importusers-log-summary-all' => 'الكل',
 	'importusers-log-summary-added' => 'تمت الإضافة',
@@ -217,11 +217,20 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'importusers' => 'Enporzhiañ implijerien',
+	'importusers-desc' => '[[Special:ImportUsers|Enporzhiañ a ran implijerien]] dre vern adalek ur restr CVS ; enkoderezh : UTF-8.',
 	'importusers-uploadfile' => 'Kargañ ar restr',
+	'importusers-form-caption' => 'Lakait ur restr CSV (UTF-8)',
+	'importusers-form-file' => 'Furmad ar restr implijer (CSV) :',
+	'importusers-form-replace-present' => "Erlec'hiañ an implijerien a zo diouto",
 	'importusers-form-button' => 'Enporzhiañ',
 	'importusers-user-added' => "Ouzhpennet eo bet an implijer '''$1'''.",
 	'importusers-user-present-update' => "An implijer '''$1''' zo anezhañ dija.
 Hizivaet eo bet.",
+	'importusers-user-present-not-update' => "Bez ez eus dija eus an implijer '''$1'''.
+N'eo ket bet hizivaet.",
+	'importusers-user-invalid-format' => "N'eo ket mat er furmad mat (pe n'eus ket) ar roadennoù implijer el linenn #$1.
+Disoñjet",
+	'importusers-log' => 'Marilh enporzhiadur an implijerien',
 	'importusers-log-summary' => 'Diverradur',
 	'importusers-log-summary-all' => 'Pep tra',
 	'importusers-log-summary-added' => 'Ouzhpennet',
@@ -230,6 +239,7 @@ Hizivaet eo bet.",
 	'importusers-password' => 'ger-tremen',
 	'importusers-email' => 'postel',
 	'importusers-realname' => 'gwir anv',
+	'right-import_users' => 'Enporzhiañ implijerien dre vern',
 );
 
 /** Bosnian (Bosanski)
@@ -1954,11 +1964,18 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
+	'importusers' => '汇入使用者',
 	'importusers-uploadfile' => '上载文件',
+	'importusers-form-button' => '汇入',
+	'importusers-log-summary-added' => '已加入',
+	'importusers-log-summary-updated' => '已更新',
 	'importusers-password' => '密码',
+	'importusers-email' => '电邮',
+	'importusers-realname' => '真实姓名',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -712,6 +712,13 @@ $messages['km'] = array(
 	'importfreeimages_returntoform' => "ឬក៏ចុច<a href='$1'>ទីនេះ</a>ដើម្បីត្រឡប់ទៅកាន់លទ្ឋផលស្វែងរករបស់អ្នក",
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'importfreeimages_owner' => 'ಕರ್ತೃ',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
@@ -1377,18 +1384,39 @@ Ad dunön osi, dagetolös kiki-API [http://www.flickr.com/services/api/misc.api_
 	'importfreeimages_returntoform' => "U välolös <a href='$1'>is</a> me mugaparat ad geikön lü sukaseks olik",
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'importfreeimages' => '汇入自由版权图片',
+	'importfreeimages-desc' => '为从[http://www.flickr.com flickr][[Special:ImportFreeImages|汇入有合适版权的相片]]提供方法',
+	'importfreeimages_description' => '这页面让你可以从flickr找寻合适版权的相片，并汇入到你的围纪内。',
+	'importfreeimages_noapikey' => '你还未设定你的Flickr API Key。
+请到[http://www.flickr.com/services/api/misc.api_keys.html 这里]取得Flickr Key，并在 ImportFreeImages.php 设定 $wgFlickrAPIKey  值。',
+	'importfreeimages_nophotosfound' => '没有相片符合你提出的「$1」搜寻要求，请再试。',
+	'importfreeimages_invalidurl' => '「$1」这个URL里的并不是正确的Flickr图片。',
+	'importfreeimages_owner' => '作者',
+	'importfreeimages_importthis' => '汇入这个',
+	'importfreeimages_next' => '下一个 $1',
+	'importfreeimages_filefromflickr' => '在 flickr 由用户 $1 拍摄的 <b>[$2]</b>。原来的URL',
+	'importfreeimages_promptuserforfilename' => '请输入目标档名：',
+	'importfreeimages_returntoform' => "又或，点选<a href='$1'>这里</a>回到你的搜寻结果",
+	'importfreeimages_nophpflickr' => '您尚未安装phpFlickr，请在您的LocalSettings.php设定$wgIFphpFlickr。',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Tomchiukc
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'importfreeimages' => '匯入自由版權影像',
+	'importfreeimages' => '匯入自由版權圖片',
 	'importfreeimages-desc' => '為從[http://www.flickr.com flickr][[Special:ImportFreeImages|匯入有合適版權的相片]]提供方法',
 	'importfreeimages_description' => '這頁面讓你可以從flickr找尋合適版權的相片，並匯入到你的圍紀內。',
 	'importfreeimages_noapikey' => '你還未設定你的Flickr API Key。
 請到[http://www.flickr.com/services/api/misc.api_keys.html 這裡]取得Flickr Key，並在 ImportFreeImages.php 設定 $wgFlickrAPIKey  值。',
 	'importfreeimages_nophotosfound' => '沒有相片符合你提出的「$1」搜尋要求，請再試。',
-	'importfreeimages_invalidurl' => '「$1」這個URL裡的並不是正確的Flickr影像。',
+	'importfreeimages_invalidurl' => '「$1」這個URL裡的並不是正確的Flickr圖片。',
 	'importfreeimages_owner' => '作者',
 	'importfreeimages_importthis' => '匯入這個',
 	'importfreeimages_next' => '下一個 $1',

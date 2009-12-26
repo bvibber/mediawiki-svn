@@ -1216,3 +1216,21 @@ $2',
 	'userrightsnotif-desc' => '在权限改变时给用户发送电子邮件通知',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'userrightsnotifysubject' => '$1上的用戶群組資格改變',
+	'userrightsnotifybody' => '$1您好，
+
+這個消息通知您您在$2的用戶權限已在$4被$3更改。
+
+添加了：$5
+移除了：$6
+
+此致，
+
+$2',
+	'userrightsnotif-desc' => '在權限改變時給用戶發送電子郵件通知',
+);
+

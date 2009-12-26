@@ -125,6 +125,7 @@ $messages['ca'] = array(
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Imre
  */
 $messages['de'] = array(
 	'transliterator-desc' => 'Stellt eine konfigurierbare Parserfunktion zur Transliteration bereit.',
@@ -132,6 +133,7 @@ $messages['de'] = array(
 	'transliterator-error-syntax' => 'Fehlerhafte Syntax in Regel <code>$1</code> in [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Mehr als die {{PLURAL:$1|erlaubte eine Regel|die erlaubten $1 Regeln}} in [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'In der Regel <code>$1</code> {{PLURAL:$3|ist|sind}} mehr als $3 Zeichen auf der linken Seite in [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] muss mindestens $1 Zeichen lang sein.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -331,6 +333,8 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'transliterator-error-syntax' => 'Ugyldig syntaks <code>$1</code> i [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Mer enn {{PLURAL:$1|én regel|$1 regler}} i [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Regelen <code>$1</code> har mer enn {{PLURAL:$3|ett tegn|$3 tegn}} til venstre i [[MediaWiki:$2]]',
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] må være minst {{PLURAL:$1|ett tegn|$1 tegn}} langt.',
 );
 
