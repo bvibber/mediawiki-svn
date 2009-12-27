@@ -125,7 +125,7 @@
 	cursor: pointer;
 	float: right;
 	list-style: none outside none;
-	margin: 1px;
+	margin-top: 2px;
 	padding: 0px 0;
 	width: 23px;
 	height: 16px;
@@ -367,7 +367,7 @@
 }
 
 .k-player .volume_control {
-	margin-right: 0px;
+	margin-right: 2px;
 	width: 16px;
 }
 
