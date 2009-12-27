@@ -135,7 +135,7 @@ $wgConfigureEditRestrictions = array();
 
 /**
  * Array of not editable settings, by anyone.
- * They won't be saved in conf-now.ser.
+ * They won't be saved in conf-now.php.
  * Superseded, use the explicit whitelist.
  */
 $wgConfigureNotEditableSettings = array();
