@@ -79,7 +79,7 @@ if ( isset( $options['ext'] ) ) {
 		'wgErrorHandlerErrors', 'wgErrorHandlerOutputDone',
 		'wgFlaggedRevStyleVersion',
 		'wgGoogleAdSenseCssLocation',
-		'wgOggScriptVersion',
+		'wgOggScriptVersion', 'wgEnableJS2system',
 		'wgPFHookStub',
 		'sdgIP', 'sdgScriptPath', 'sdgNamespaceIndex',
 		'sfgIP', 'sfgScriptPath', 'sfgNamespaceIndex',
@@ -95,6 +95,9 @@ if ( isset( $options['ext'] ) ) {
 		'wgWatchersAddCache',
 		'wgWikiArticleFeedsParser', 'wgWikiFeedPresent',
 	);
+	$ignoreObsolete = array(
+		'wgCommentSpammerLog',
+	);
 	foreach ( $exts as $ext ) {
 		if( !$ext->isInstalled() ) continue; // must exist
 		$file = file_get_contents( $ext->getFile() );
@@ -105,7 +108,7 @@ if ( isset( $options['ext'] ) ) {
 		$allSettings = array_keys( $ext->getSettings() );
 
 		$remain = array_diff( $definedSettings, $allSettings );
-		$obsolete = array_diff( $allSettings, $definedSettings );
+		$obsolete = array_diff( $allSettings, $definedSettings, $ignoreObsolete );
 		$missing = array();
 		foreach ( $remain as $setting ) {
 			if ( !$coreSettings->isSettingAvailable( $setting ) && !in_array( $setting, $ignoreList ) )
