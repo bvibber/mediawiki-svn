@@ -267,6 +267,13 @@ $messages['sr-ec'] = array(
 	'autoincrement-desc' => 'Закачка (hook) која додаље самоувећавајућу променљиву <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
+ */
+$messages['sr-el'] = array(
+	'autoincrement-desc' => 'Zakačka (hook) koja dodalje samouvećavajuću promenljivu <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  */

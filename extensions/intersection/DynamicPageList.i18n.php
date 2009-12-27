@@ -848,6 +848,17 @@ $messages['tg-cyrl'] = array(
 	'intersection_noincludecats' => 'Error: Шумо ҳадди ақал бояд як гурӯҳро ворид кунед, ё як фазои номро мушаххас кунед!',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'intersection-desc' => 'Fehristi gululae az sahifahoe ba namoiş dar meojad, ki ba tozagī dar jak jo cand gurūh vorid şudaand',
+	'intersection_toomanycats' => "Error: Te'dodi gurūhho zijod ast!",
+	'intersection_toofewcats' => "Error: Te'dodi gurūhho kam ast!",
+	'intersection_noresults' => 'Error: Natiçae vuçud nadorad!',
+	'intersection_noincludecats' => 'Error: Şumo haddi aqal bojad jak gurūhro vorid kuned, jo jak fazoi nomro muşaxxas kuned!',
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */

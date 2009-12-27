@@ -525,6 +525,13 @@ $messages['tg-cyrl'] = array(
 	'doublewiki-desc' => 'Як саҳифа ва тарҷумаи онро аз як вики дигар дар ду сутун дар ҳамон саҳифа намоиш медиҳад',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'doublewiki-desc' => 'Jak sahifa va tarçumai onro az jak viki digar dar du sutun dar hamon sahifa namoiş medihad',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

@@ -1018,6 +1018,21 @@ $messages['tg-cyrl'] = array(
 	'talkhere-collapse' => 'пинҳон кардани вироишгар',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'talkhere-foottext' => "Tavzehoti dar bolo ovarda şuda az tarafi taşrifovardagon cop şudaand.
+
+Şaxsoni muttasadiji somona bar dūşi xud mas'ulijat baroi mūhtavoi cunin tavzehot girifta nametavonand.",
+	'talkhere-talkpage' => 'sahifai bahs',
+	'talkhere-notalk' => "''(hanūz tavzehot nest)''",
+	'talkhere-addcomment' => 'ilova kardani tavzehot',
+	'talkhere-beforeinput' => 'Şumo metavoned dar zer jak tavzeh ilova kuned',
+	'talkhere-loading' => 'dar holi borgiriji viroişgar…',
+	'talkhere-collapse' => 'pinhon kardani viroişgar',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

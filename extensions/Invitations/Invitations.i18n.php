@@ -1335,6 +1335,17 @@ $messages['tg-cyrl'] = array(
 	'invitations-invite-success' => 'Барои истифодаи ин хусусия шумо $1-ро бо муваффақият таклиф кардед',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'invitations-inviteform-username' => 'Korbar baroi taklif',
+	'invitations-inviteform-submit' => 'Taklif',
+	'invitations-error-baduser' => 'Korbari şumo muşaxxas karda ba nazar merasad, ki vuçud nadorad',
+	'invitations-error-alreadyinvited' => 'Korbari şumo muşaxxas karda allakaj ba in xususijat dastrasī dorad!',
+	'invitations-invite-success' => 'Baroi istifodai in xususija şumo $1-ro bo muvaffaqijat taklif karded',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

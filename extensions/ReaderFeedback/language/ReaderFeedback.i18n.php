@@ -284,9 +284,15 @@ $messages['bg'] = array(
 	'readerfeedback-level-3' => 'Висока',
 	'readerfeedback-level-4' => 'Отлична',
 	'readerfeedback-submit' => 'Изпращане',
+	'readerfeedback-main' => 'Могат да бъдат оценямани само страници със съдържание.',
 	'readerfeedback-submitting' => 'Изпращане...',
 	'readerfeedback-finished' => 'Благодарим ви!',
 	'readerfeedback-tagfilter' => 'Етикет:',
+	'readerfeedback-tierfilter' => 'Оценка:',
+	'readerfeedback-tier-high' => 'Висока',
+	'readerfeedback-tier-medium' => 'Средна',
+	'readerfeedback-tier-poor' => 'Ниска',
+	'tooltip-ca-ratinghist' => 'Читателска оценка на страницата',
 );
 
 /** Breton (Brezhoneg)
@@ -832,6 +838,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'readerfeedback-desc' => 'La validacion d’articllos pèrmèt ux liésors de rendre lor avis desot fôrma d’èstimacions per catègorie.',
 	'readerfeedback' => 'Què pensâd-vos de ceta pâge ?',
 	'readerfeedback-text' => "''Volyéd consacrar un moment por èstimar ceta pâge ce-desot. Voutres emprèssions ont de valor et pués nos édont a mèlyorar noutron seto vouèbe.''",
 	'readerfeedback-reliability' => 'Fiabilitât',
@@ -849,9 +856,16 @@ $messages['frp'] = array(
 	'readerfeedback-main' => 'Solament les pâges de contegnu pôvont étre èstimâs.',
 	'readerfeedback-success' => "'''Grant-marci d’avêr revu ceta pâge !''' ([$2 vêre los rèsultats]) ([$3 des quèstions ou ben des comentèros ?])",
 	'readerfeedback-voted' => "'''Semble que vos èyâd ja èstimâ ceta pâge.''' ([$2 vêre los rèsultats]) ([$3 des quèstions ou ben des comentèros ?])",
+	'readerfeedback-error' => "'''Una èrror est arrevâ pendent l’èstimacion de ceta pâge''' ([$2 vêre los rèsultats]) ([$3 remârques ou ben quèstions ?]).",
 	'readerfeedback-submitting' => 'Somission...',
 	'readerfeedback-finished' => 'Grant-marci !',
+	'readerfeedback-tagfilter' => 'Balisa :',
+	'readerfeedback-tierfilter' => 'Èstimacion :',
+	'readerfeedback-tier-high' => 'Bôna',
+	'readerfeedback-tier-medium' => 'Moyena',
+	'readerfeedback-tier-poor' => 'Crouye',
 	'tooltip-ca-ratinghist' => 'Èstimacions de ceta pâge per los liésors',
+	'specialpages-group-feedback' => 'Avis u liésor',
 );
 
 /** Galician (Galego)
@@ -2077,6 +2091,7 @@ $messages['tk'] = array(
 	'readerfeedback-level-3' => 'Ýagşy',
 	'readerfeedback-level-4' => 'Ajaýyp',
 	'readerfeedback-submit' => 'Tabşyr',
+	'readerfeedback-success' => "'''Bu sahypany gözden geçireniňiz üçin sag boluň!''' ([$2 netijeleri gör]) ([$3 teswirler ýa-da soraglar?]).",
 	'readerfeedback-submitting' => 'Tabşyrylýar...',
 	'readerfeedback-finished' => 'Sag boluň!',
 	'readerfeedback-tagfilter' => 'Teg:',

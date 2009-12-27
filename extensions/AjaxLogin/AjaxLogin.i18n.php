@@ -806,6 +806,7 @@ $messages['sr-ec'] = array(
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -815,6 +816,9 @@ Ova akcija će vas odvesti sa ove strane za ozmeni članka i mogli biste da izgu
 	'ajaxLogin2' => 'Da li ste sigurni?
 Mogli biste da izgubite sve nesnimljene izmene na ovoj strani ako je sada napustite.',
 	'ajaxlogin-create' => 'Napravite nalog',
+	'al-nosuchuser' => 'Nema korisnika pod imenom "$1".
+Korisnička imena razlikuju veličinu slova.
+Proverite da li ste ga dobro ukucali.',
 );
 
 /** Swedish (Svenska)

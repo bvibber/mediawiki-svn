@@ -1766,6 +1766,19 @@ $messages['tg-cyrl'] = array(
 	'dt_xml_freetext' => 'Матни дилхоҳ',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'dt_viewxml_categories' => 'Gurūhho',
+	'dt_viewxml_namespaces' => 'Fazohoi nom',
+	'dt_xml_namespace' => 'Fazoinom',
+	'dt_xml_page' => 'Sahifa',
+	'dt_xml_name' => 'Nom',
+	'dt_xml_title' => 'Unvon',
+	'dt_xml_freetext' => 'Matni dilxoh',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

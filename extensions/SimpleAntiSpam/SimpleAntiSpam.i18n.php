@@ -285,6 +285,16 @@ Ne '''RIEN''' inscrire ici !",
 	'simpleantispam-desc' => 'Ajoute au formulaire la vérification d’un bot spammeur',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'simpleantispam' => 'Voutron changement at dècllenchiê lo mècanismo anti-spame',
+	'simpleantispam-label' => "Contrôlo anti-spame.
+Enscrîde '''REN''' ique !",
+	'simpleantispam-desc' => 'Apond u formulèro lo contrôlo d’un bot spamor.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

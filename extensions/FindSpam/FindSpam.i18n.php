@@ -948,6 +948,16 @@ $messages['tg-cyrl'] = array(
 	'findspam-notextfound' => 'Ҳеҷ ҳиссагузорие ёфт нашуд',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'findspam' => 'Joftani haraznoma',
+	'findspam-desc' => '[[Special:FindSpam|Sahifai viƶaero]] ilova mekunad, ki imkoni darjofti haraznomai batozagī ilovaşudaro medihad',
+	'findspam-ip' => 'Nişonai IP:',
+	'findspam-notextfound' => 'Heç hissaguzorie joft naşud',
+);
+
 /** Thai (ไทย)
  * @author Mopza
  * @author Octahedron80

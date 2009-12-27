@@ -716,6 +716,13 @@ $messages['tg-cyrl'] = array(
 	'createbox-create' => 'Эҷод',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'createbox-create' => 'Eçod',
+);
+
 /** Thai (ไทย)
  * @author Ans
  */

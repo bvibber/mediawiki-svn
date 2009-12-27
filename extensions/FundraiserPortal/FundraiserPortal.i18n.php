@@ -83,12 +83,15 @@ $messages['be-tarask'] = array(
  * @author Turin
  */
 $messages['bg'] = array(
+	'fundraiserportal' => 'Портал за набиране на средства',
 	'fundraiserportal-plain-button' => 'Подкрепете Уикипедия!',
 	'fundraiserportal-ruby-button' => 'Дарете сега',
 	'fundraiserportal-rubytext-button' => 'Дарете сега',
+	'fundraiserportal-rubytext-message' => 'Всяко дарение ни помага да запазваме Уикипедия свободна и безплатна за всички.',
 	'fundraiserportal-rubytext-close' => 'Скриване на това занапред',
 	'fundraiserportal-sapphire-button' => 'Дарете сега',
 	'fundraiserportal-tourmaline-button' => 'Дарете сега',
+	'fundraiserportal-tourmaline-message' => 'Всяко дарение ни помага да запазваме Уикипедия свободна и безплатна за всички.',
 	'fundraiserportal-tourmaline-close' => 'Скриване на това занапред',
 );
 
@@ -271,6 +274,7 @@ $messages['eo'] = array(
 	'fundraiserportal-rubytext-close' => 'Kaŝi ĉi tion ekde nun',
 	'fundraiserportal-sapphire-button' => 'Donacu Nun',
 	'fundraiserportal-tourmaline-button' => 'Donacu Nun',
+	'fundraiserportal-tourmaline-message' => 'Ĉiu mondonaco helpas al ni farigi Vikipedion senpagan por ĉiuj.',
 	'fundraiserportal-tourmaline-close' => 'Kaŝi ĉi tion ekde nun',
 );
 

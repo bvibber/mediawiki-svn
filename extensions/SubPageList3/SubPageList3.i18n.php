@@ -471,6 +471,15 @@ $messages['tg-cyrl'] = array(
 	'spl3_nosubpages' => '$1 дорои ҳеҷ зерсаҳифаҳое барои феҳристкунӣ нест.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'spl3-desc' => 'Bo rohi xudkor fehristi zersahifahoi sahifai barcasbi <code><nowiki><splist /></nowiki></code> istifodaburdaro eçod mekunad',
+	'spl3_debug' => 'Qimati noşinos baroi ixtijori $1.',
+	'spl3_nosubpages' => '$1 doroi heç zersahifahoe baroi fehristkunī nest.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

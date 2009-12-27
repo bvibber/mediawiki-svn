@@ -919,6 +919,25 @@ $3',
 	'latexdoc-desc' => 'Вироиши ҳамдастии парвандаҳои LaTeX',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'latexdoc_no_text' => 'Sahifai dori matn nest, nametavon DVI tavlid kard',
+	'latexdoc_cant_create_dir' => 'Nametavon pūşai muvaqqatiji $1 eçod kard',
+	'latexdoc_cant_write' => 'Nametavon ba parvandai $1 navişt',
+	'latexdoc_error' => 'Xatoi LaTeX
+
+Farmon: $1
+
+Mahsul: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Giriftani DVI',
+	'latexdoc_get_pdf' => 'Giriftani PDF',
+	'latexdoc-desc' => 'Viroişi hamdastiji parvandahoi LaTeX',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

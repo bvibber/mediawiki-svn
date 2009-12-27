@@ -664,6 +664,14 @@ $messages['tg-cyrl'] = array(
 	'categoryintersection-results' => 'Ҷустуҷӯ бо $1 {{PLURAL:$1|натиҷа|натоиҷ}} баргашт.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'categoryintersection-doit' => 'Sahifahoi dar hamai in gurūhho buda fehrist şavad',
+	'categoryintersection-results' => 'Çustuçū bo $1 {{PLURAL:$1|natiça|natoiç}} bargaşt.',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

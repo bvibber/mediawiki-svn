@@ -354,6 +354,13 @@ $messages['tg-cyrl'] = array(
 	'randomrootpage' => 'Саҳифаи решавии тасодуфӣ',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'randomrootpage' => 'Sahifai reşaviji tasodufī',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

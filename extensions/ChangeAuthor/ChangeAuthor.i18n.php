@@ -2063,6 +2063,33 @@ $messages['tg-cyrl'] = array(
 	'changeauthor-logpagename' => 'Гузориши тағйири муаллиф',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'changeauthor' => 'Taƣjiri muallifi nusxa',
+	'changeauthor-desc' => 'Baroi taƣjir dodani muallifi nusxa içozat medihad',
+	'changeauthor-title' => 'Taƣjir dodani muallifi nusxa',
+	'changeauthor-search-box' => 'Çustuçūi nusxaho',
+	'changeauthor-pagename-or-revid' => 'Nomi sahifa jo nişonai nusxa:',
+	'changeauthor-pagenameform-go' => 'Birav',
+	'changeauthor-comment' => 'Tavzeh:',
+	'changeauthor-explanation-multi' => "Bo in form şumo metavoned muallifoni nusxaro taƣjir dihed.
+Basoddagī jak jo jakcand nomhoi korbariro dar fehristi zer taƣjir dihed, tavzehotero ilova kuned (ixtijorī) va tugmai 'Taƣjiri muallif(on)'-ro paxş kuned.",
+	'changeauthor-changeauthors-single' => 'Taƣjiri muallif',
+	'changeauthor-explanation-single' => "Bo in form şumo metavoned muallifi nusxaero taƣjir dihed. Basoddagī nomi korbariji zerro taƣjir dihed, tavzehotero ilova kuned (ixtijorī) va tugmai 'Taƣjiri muallif'-ro paxş kuned.",
+	'changeauthor-invalid-username' => 'Nomi korbariji nomū\'tabar "$1".',
+	'changeauthor-nosuchuser' => 'Cunin korbar nest "$1".',
+	'changeauthor-revview' => 'Nusxai #$1 az $2',
+	'changeauthor-nosuchtitle' => 'Sahifae bo unvoni "$1" nest.',
+	'changeauthor-weirderror' => 'Xatoi xele ƣajrioddī rux dod.
+Lutfan dubora darxosti xudro takror kuned.
+Agar in xato takroran namoiş şavad, ehtimolan pojgohi doda şikasta ast.',
+	'changeauthor-success' => 'Darxosti şumo bo muvaffaqijat pardoziş şud.',
+	'changeauthor-logentry' => 'Muallifi $2 az nusxai $1 az $3 ba $4 ivaz şud',
+	'changeauthor-logpagename' => 'Guzorişi taƣjiri muallif',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

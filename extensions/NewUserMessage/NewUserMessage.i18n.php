@@ -248,6 +248,14 @@ $messages['fr'] = array(
 	'newuseredit-summary' => 'Ajoute [[{{int:newusermessage-template}}|un message de bienvenue]] dans la page de discussion d’un nouvel utilisateur',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'newusermessage-desc' => 'Apond un mèssâjo dens la pâge de discussion a un novél utilisator.',
+	'newuseredit-summary' => 'Apond un [[{{int:newusermessage-template}}|mèssâjo de benvegnua]] dens la pâge de discussion a un novél utilisator',
+);
+
 /** Friulian (Furlan)
  * @author Klenje
  */

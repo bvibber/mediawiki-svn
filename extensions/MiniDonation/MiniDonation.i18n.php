@@ -500,6 +500,13 @@ $messages['tg-cyrl'] = array(
 	'donationform-submit' => 'Ҳадя тавассути PayPal',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'donationform-submit' => 'Hadja tavassuti PayPal',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

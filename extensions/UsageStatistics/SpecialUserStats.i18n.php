@@ -2162,19 +2162,49 @@ $messages['tg-cyrl'] = array(
 	'usagestatisticscalselect' => 'Интихоб кардан',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'specialuserstats' => 'Omori istifoda',
+	'usagestatistics' => 'Omori istifoda',
+	'usagestatisticstype' => "Nav'",
+	'usagestatisticssubmit' => 'Hosil kardani omor',
+	'usagestatisticsnostart' => "Lutfan ta'rixi oƣozro muşaxxas kuned",
+	'usagestatisticsnoend' => "Lutfan ta'rixi xotimaro muşaxxas kuned",
+	'usagestatisticsbadstartend' => "<b>Ta'rixi <i>oƣozi</i> va/jo <i>xotimai</i> nomusoid!</b>",
+	'usagestatisticsintervalday' => 'Rūz',
+	'usagestatisticsintervalweek' => 'Hafta',
+	'usagestatisticsintervalmonth' => 'Moh',
+	'usagestatisticsincremental' => 'Afzoişī',
+	'usagestatisticsincremental-text' => 'afzoişī',
+	'usagestatisticscumulative' => 'Anboşta',
+	'usagestatisticscumulative-text' => 'anboşta',
+	'usagestatisticscalselect' => 'Intixob kardan',
+);
+
 /** Thai (ไทย)
  * @author Ans
+ * @author Horus
  * @author Manop
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'specialuserstats' => 'สถิติการใช้งาน',
+	'usagestatistics' => 'สถิติการใช้งาน',
+	'usagestatistics-desc' => 'แสดงชื่อผู้ใช้เฉพาะบุคคลและสถิติการใช้งานวิกิโดยรวม',
+	'usagestatisticsfor' => '<h2>สถิติการใช้งานสำหรับ[[ผู้ใช้:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>สถิติการใช้งานสำหรับผู้ใช้ทุกคน</h2>',
 	'usagestatisticsnamespace' => 'เนมสเปซ:',
+	'usagestatisticsexcluderedirects' => 'ไม่รวมการเปลี่ยนทาง',
 	'usagestatisticsstart' => 'วันที่เริ่มต้น:',
 	'usagestatisticsend' => 'วันที่สิ้นสุด:',
 	'usagestatisticsintervalday' => 'วัน',
 	'usagestatisticsintervalweek' => 'อาทิตย์',
 	'usagestatisticsintervalmonth' => 'เดือน',
 	'usagestatisticscalselect' => 'เลือก',
+	'usagestatistics-editindividual' => 'สถิติการแก้ไขเฉพาะผู้ใช้ $1',
+	'right-viewsystemstats' => 'ดู [[Special:UserStats|สถิติการใช้วิกิ]]',
 );
 
 /** Tagalog (Tagalog)

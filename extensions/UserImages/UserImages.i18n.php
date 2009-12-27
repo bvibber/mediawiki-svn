@@ -740,6 +740,14 @@ $messages['tg-cyrl'] = array(
 	'userimages-noimages' => '$1 дорои боргузориҳои аксе нест.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'userimages-caption' => 'Aksho tavassuti $1 borguzorī şudaand',
+	'userimages-noimages' => '$1 doroi borguzorihoi akse nest.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

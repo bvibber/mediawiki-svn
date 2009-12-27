@@ -1052,6 +1052,14 @@ $messages['tg-cyrl'] = array(
 	'inspectcache-list' => 'Феҳрист',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'inspectcache-delete' => 'Hafz',
+	'inspectcache-list' => 'Fehrist',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

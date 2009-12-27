@@ -800,6 +800,13 @@ $messages['tg-cyrl'] = array(
 	'specialwhoiswatchingaddbtn' => 'Илова кардани Корбарони интихобшуда',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'specialwhoiswatchingaddbtn' => 'Ilova kardani Korbaroni intixobşuda',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

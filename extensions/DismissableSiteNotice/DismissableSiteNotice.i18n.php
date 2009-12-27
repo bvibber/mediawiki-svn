@@ -840,6 +840,14 @@ $messages['tg-cyrl'] = array(
 	'sitenotice-desc' => 'Ба корбарон иҷозат медиҳад, ки эълоноти сомонаро пинҳон кунанд',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'sitenotice_close' => 'bastan',
+	'sitenotice-desc' => "Ba korbaron içozat medihad, ki e'lonoti somonaro pinhon kunand",
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

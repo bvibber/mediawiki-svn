@@ -3154,6 +3154,21 @@ Anuleaz-o pe aceasta şi revino la cea precedentă mai întâi.',
 	'oversight-offender' => 'Autorul reviziei:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'hiderevision' => 'Scunneminde permanende de le revisiune',
+	'hiderevision-desc' => "Scunne le revisiune individuale da tutte l'utinde pe mutive legale, ecc.",
+	'group-oversight' => 'Oversighter',
+	'group-oversight-member' => 'oversight',
+	'grouppage-oversight' => '{{ns:project}}:Oversight',
+	'right-oversight' => "Vide 'na precedende revisiona scunnute",
+	'right-hiderevision' => "Scunne le revisiune pe l'amministrature",
+	'hiderevision-prompt' => 'Numere de revisione da luà:',
+	'hiderevision-continue' => 'Condinue',
+);
+
 /** Russian (Русский)
  * @author Ahonc
  * @author Ferrer
@@ -3725,6 +3740,52 @@ $messages['tg-cyrl'] = array(
 	'oversight-header' => 'Дар зер феҳристе аз нусхаҳои, ки ба тозагӣ аз диди умум барои ҳамеша пинҳон шударо мебинед. Мунташир кардани ин иттилоот метавонад ба натиҷаи аз даст додани ҳамешагии ихтиёроти шумо оварда расонад.',
 	'oversight-oversighter' => 'Нозир:',
 	'oversight-offender' => 'Мутахалиф:',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'hiderevision' => 'Bo hameşagī pinhon kardani nusxaho',
+	'hiderevision-desc' => 'Pinhon kardani nusxahoi xos az tamomi korbaron ba daleli qonunī va ƣajra.',
+	'group-oversight' => 'Noziron',
+	'group-oversight-member' => 'Nozir',
+	'grouppage-oversight' => '{{ns:project}}:Nazorat',
+	'right-oversight' => 'Didani nusxahoi qablan pinhonbuda',
+	'hiderevision-prompt' => 'Şumorai nusxahoe, ki hazf meşavand:',
+	'hiderevision-continue' => 'Idoma',
+	'hiderevision-text' => "In qobilijat '''faqat''' dar mavoridi zer bojad istifoda şavad:
+* Ittilooti şaxsiji nomunosib
+*: ''nişoniji manzil va şumorai telefon, va ƣajra''
+
+'''Sūistifoda az imkonot mumkin ba az dast dodani ixtijorot ovarda rasonad.'''
+
+Mavoride, ki hazf meşavand tavassuti heç korbar dar somona qobili didan naxohad bud,
+ammo in mavorid dar guzorişi marbut ba on sabt meşavand va agar iştibohe surat bigirad, tavassuti mudironi pojgohi doda qobili bargaşt xohad bud.",
+	'hiderevision-reason' => 'Dalel (ba tavri xususī sabt meşavad):',
+	'hiderevision-submit' => 'Pinhon kardan in doda bo hameşagī',
+	'hiderevision-tab' => 'Pinhon kardani nusxa',
+	'hiderevision-link' => 'Hissaguzorihoi korbari pinhonī',
+	'hiderevision-norevisions' => 'Nusxae baroi hazf muşaxxas naşuda bud.',
+	'hiderevision-noreason' => 'Şumo bojad daleli in hazfro tavzeh dihed.',
+	'hiderevision-status' => 'Nusxa $1: $2',
+	'hiderevision-success' => 'Bo muvaffaqijat bojgonī va hazf şud.',
+	'hiderevision-error-missing' => 'Dar pojgohi doda pajdo naşud.',
+	'hiderevision-error-current' => 'Oxirin viroişi jak sahifaro nametavon hazf kard. Ibtido oxirin taƣjirotro vogardonī kuned.',
+	'hiderevision-error-delete' => 'Imkoni bojgonī kardan vuçud nadoşt; ojo qablan hazf şudaast?',
+	'hiderevision-archive-status' => 'Nusxae az $1ro hazf kard: $2',
+	'oversight-nodiff' => 'Imkoni dunbol kardani taƣjirot vuçud nadorad, cunki in sahifa dar holi hozir nusxai kūhnaterro nadorad. 
+Ehtimolan:
+*Sahifa hazf şudaast
+*Nusxai pinhonşuda avvalin nusxai sahifa budaast',
+	'oversight-log-hiderev' => 'nusxae az $1ro hazf kard',
+	'oversight' => 'Nazar',
+	'oversight-view' => 'beştar',
+	'oversight-difference' => '(Tafovut az qablan nusxai boqimonda)',
+	'oversight-prev' => 'Oxirin nusxai qablī',
+	'oversight-hidden' => 'Nusxai pinhonşuda',
+	'oversight-header' => 'Dar zer fehriste az nusxahoi, ki ba tozagī az didi umum baroi hameşa pinhon şudaro mebined. Muntaşir kardani in ittiloot metavonad ba natiçai az dast dodani hameşagiji ixtijoroti şumo ovarda rasonad.',
+	'oversight-oversighter' => 'Nozir:',
 );
 
 /** Turkmen (Türkmençe)

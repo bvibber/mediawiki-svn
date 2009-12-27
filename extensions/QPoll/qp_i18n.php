@@ -566,11 +566,15 @@ $messages['fi'] = array(
 	'qp_result_error' => 'Syntaksivirhe',
 	'qp_vote_button' => 'Äänestä',
 	'qp_vote_again_button' => 'Vaihda ääntäsi',
+	'qp_votes_count' => '$1 {{PLURAL:$1|ääni|ääntä}}',
 	'qp_source_link' => 'Lähde',
 	'qp_stats_link' => 'Tilastot',
 	'qp_users_link' => 'Käyttäjät',
 	'qp_order_by_username' => 'Lajittele käyttäjänimen mukaan',
+	'qp_export_to_xls' => 'Vie tilastot XLS-muotoon',
 	'qp_error_category_name_empty' => 'Luokan nimi on tyhjä',
+	'qp_error_proposal_text_empty' => 'Ehdotusteksti on tyhjä',
+	'qp_error_too_few_categories' => 'Ainakin kaksi luokkaa pitää määritellä',
 );
 
 /** French (Français)
@@ -782,6 +786,7 @@ Go ne Abstimmig spychere due si ibertrage ohni ne Antwort gee uf irged e Vorschl
  * @author YaronSh
  */
 $messages['he'] = array(
+	'qp_desc' => 'מאפשר יצירת סקרים',
 	'qp_result_NA' => 'לא נענה',
 	'qp_result_error' => 'שגיאת תחביר',
 	'qp_vote_button' => 'הצבעה',
@@ -794,6 +799,10 @@ $messages['he'] = array(
 	'qp_users_link' => 'משתמשים',
 	'qp_voice_link' => 'קול המשתמש',
 	'qp_voice_link_inv' => 'קול המשתמש?',
+	'qp_user_missing_polls_link' => 'אין השתתפות',
+	'qp_not_participated_link' => 'לא השתתף',
+	'qp_order_by_username' => 'מיון לפי שם משתמש',
+	'qp_order_by_polls_count' => 'מיון לפי מספר הסקרים',
 	'qp_func_no_such_poll' => 'אין כזה סקר ($1)',
 	'qp_error_category_name_empty' => 'שם הקטגוריה ריק',
 	'qp_error_proposal_text_empty' => 'טקסט ההצעה ריק',
@@ -1219,6 +1228,7 @@ $messages['lb'] = array(
 	'qp_users_answered_questions' => "$1 {{PLURAL:$1|Benotzer huet|Benotzer hun}} op d'Froe geäntwert",
 	'qp_func_no_such_poll' => 'Et gëtt keng esou eng Ëmfro ($1)',
 	'qp_error_no_stats' => 'Et gëtt keng statistesch Donnéeën, well bis elo (Adress=$1) kee fir dës Ëmfro gestëmmt huet.',
+	'qp_error_question_not_implemented' => 'Froe vun esou engem Typ sinn net implementéiert: $1',
 	'qp_error_invalid_question_type' => 'Net-valabelen Typ vu Fro: $1',
 	'qp_error_already_used_poll_id' => "D'Ëmfro-Nummer (poll id) gouf op dëser Säit scho benotzt (id=$1).",
 	'qp_error_vote_dependance_poll' => "Stëmmt w.e.g. fir d'éischt bäi der Ëmfro $1 of.",

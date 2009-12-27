@@ -546,6 +546,13 @@ $messages['tg-cyrl'] = array(
 	'poem-desc' => 'Барчасби <tt>&lt;poem&gt;</tt>-ро барои қолаббандиҳои шеърҳо илова мекунад',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'poem-desc' => "Barcasbi <tt>&lt;poem&gt;</tt>-ro baroi qolabbandihoi şe'rho ilova mekunad",
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */

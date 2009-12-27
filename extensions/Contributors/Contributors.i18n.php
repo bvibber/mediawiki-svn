@@ -1444,6 +1444,19 @@ $messages['tg-cyrl'] = array(
 	'contributors-nosuchpage' => 'Саҳифаи $1 вуҷуд надорад.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'contributors' => 'Hissaguzoron',
+	'contributors-toolbox' => 'Hissaguzoroni asosī',
+	'contributors-legend' => 'Hissaguzoroni asosiro ba jak sahifa fehrist kun',
+	'contributors-target' => 'Unvon:',
+	'contributors-subtitle' => 'Hissaguzoronī asosī ba $1',
+	'contributors-badtitle' => "Unvoni nomū'tabar",
+	'contributors-nosuchpage' => 'Sahifai $1 vuçud nadorad.',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  * @author Passawuth

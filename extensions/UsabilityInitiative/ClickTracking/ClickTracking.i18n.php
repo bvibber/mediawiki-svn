@@ -153,6 +153,9 @@ $messages['be-tarask'] = array(
  * @author Turin
  */
 $messages['bg'] = array(
+	'ct-event-name' => 'Име на събитието',
+	'ct-start-date' => 'Начална дата (ГГГГММДД)',
+	'ct-end-date' => 'Крайна дата (ГГГГММДД)',
 	'ct-anon-users' => 'Анонимни потребители',
 	'ct-and' => 'и',
 	'ct-update-table' => 'Обновяване на таблицата',
@@ -569,6 +572,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'clicktracking' => 'Survelyence des clics de l’iniciativa d’utilisabilitât',
+	'clicktracking-desc' => 'Survelyence des clics, visent a tracar los èvènements que côsont pas un rechargement de pâge',
 	'ct-title' => 'Agrègacion des clics d’utilisators',
 	'ct-event-name' => 'Nom de l’èvènement',
 	'ct-expert-header' => 'Clics « èxpèrts »',
@@ -862,13 +866,20 @@ $messages['ja'] = array(
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
+	'ct-event-name' => 'მოვლენის სახელი',
+	'ct-expert-header' => '"ექსპერტის" დაჭერა',
 	'ct-start-date' => 'დაწყების თარიღი (წწწწთთდდ)',
 	'ct-end-date' => 'დამთავრების თარიღი (წწწწთთდდ)',
+	'ct-change-graph' => 'გრაფიკის შეცვლა',
 	'ct-beginner' => 'დამწყები',
 	'ct-expert' => 'ექსპერტი',
+	'ct-date-range' => 'თარიღის დიაპაზონი',
+	'ct-editing' => 'ამჟამად რედაქტირდება:',
 	'ct-anon-users' => 'ანონიმური მომხმარებლები',
+	'ct-user-contribs' => 'მომხმარებლების საერთო წვლილი',
 	'ct-user-span' => 'მომხმარებლის წვლილი პერიოდში',
 	'ct-and' => 'და',
+	'ct-update-table' => 'ცხრილის განახლება',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1243,6 +1254,7 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Lionbeat
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -1258,6 +1270,7 @@ $messages['ro'] = array(
 	'ct-beginner' => 'Începători',
 	'ct-intermediate' => 'Intermediar',
 	'ct-expert' => 'Expert',
+	'ct-date-range' => 'Interval în timp',
 	'ct-editing' => 'Editare curentă:',
 	'ct-anon-users' => 'Utilizatori anonimi',
 	'ct-user-contribs' => 'Contribuţiile totale ale utilizatorului',
@@ -1270,8 +1283,28 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'clicktracking' => "Iniziative de Ausabbeletà cazze 'u tracciamende",
+	'clicktracking-desc' => "Cazze tracciamende pu tracciamende de le evende ca non ge causane l'aggiornamende d'a pàgene.",
+	'ct-title' => "Cazzaminde de l'utinde aggregate",
+	'ct-event-name' => "Nome de l'evende",
+	'ct-expert-header' => 'Cazzaminde de l\'"esperrte"',
+	'ct-intermediate-header' => 'Cazzaminde de l\'"Indermedie"',
+	'ct-beginner-header' => 'Cazzaminde de le "Curciule"',
+	'ct-total-header' => 'Cazzaminde totale',
+	'ct-start-date' => 'Date de Inizie (YYYYMMD)',
+	'ct-end-date' => 'Date de Fine (YYYYMMD)',
+	'ct-increment-by' => 'Numere de sciurne ca ogne punde de date rappresende',
+	'ct-change-graph' => "Cange 'u grafeche",
+	'ct-beginner' => 'Curciule',
+	'ct-intermediate' => 'Intermedie',
 	'ct-expert' => 'Esperte',
+	'ct-date-range' => 'Indervalle de date',
+	'ct-editing' => 'Cangiaminde de mò:',
+	'ct-anon-users' => 'Utinde anonime',
+	'ct-user-contribs' => "Condrebbute totale de l'utende",
+	'ct-user-span' => "Condrebbute de l'utende sus a 'u timbe",
 	'ct-and' => 'e',
+	'ct-update-table' => "Aggiorne 'a tabbelle",
 );
 
 /** Russian (Русский)
@@ -1406,6 +1439,7 @@ $messages['te'] = array(
 	'ct-total-header' => 'మొత్తం నొక్కులు',
 	'ct-start-date' => 'ప్రారంభ తేదీ (YYYYMMDD)',
 	'ct-end-date' => 'ముగింపు తేదీ (YYYYMMDD)',
+	'ct-change-graph' => 'గ్రాఫుని మార్చు',
 	'ct-beginner' => 'ప్రారంభీకులు',
 	'ct-expert' => 'నిపుణులు',
 	'ct-editing' => 'ప్రస్తుతం మారుస్తున్నారు:',

@@ -465,11 +465,12 @@ $messages['br'] = array(
 	'tasks_plain_text_only' => '(testenn blaen, 256 arouezenn hepken)',
 	'tasks_help_page' => 'Trevelloù',
 	'tasks_more_like_it' => "muioc'h",
+	'tasks_task_types' => '1:cleanup:Netaat|2:wikify:Wikify|3:rewrite:Adskrivañ|4:delete:Dilemel|5:create:Krouiñ|6:write:Skrivañ|7:check:Gwiriañ',
 	'tasks_event_on_creation' => 'gwiriañ',
 	'tasks_event_on_creation_anon' => 'gwiriañ',
 	'tasks_on_creation_comment' => 'Trevell emgefre, krouet pa grouer ar bajenn',
 	'tasks_link_your_assignments' => 'deverkadennoù digor',
-	'tasks_see_your_assignments' => '$1 deverkadenn digor o peus er mare-mañ. Gwellit ho $2.',
+	'tasks_see_your_assignments' => '$1 deverkadenn{{PLURAL:$1||}} digor o peus er mare-mañ. Gwellit ho $2.',
 	'tasks_my_assignments' => 'Ho {{PLURAL:$1|deverkadenn|deverkadennoù}} a-vremañ',
 	'tasks_table_header_page' => 'Pajenn',
 	'tasks_you_have_no_assignments' => "N'ho peus deverkadenn digor ebet",
@@ -2749,6 +2750,13 @@ $messages['pl'] = array(
 	'tasks_logpagetext' => 'To jest rejestr zmian dotyczących zadań',
 	'tasks_logentry' => 'Dla „[[$1]]“',
 	'tasks-pref-showtaskcomments' => 'Wklej stronę dyskusji zadania.',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'tasks' => 'Atività',
 );
 
 /** Pashto (پښتو)

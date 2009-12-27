@@ -543,6 +543,13 @@ $messages['tg-cyrl'] = array(
 	'breadcrumbs-desc' => 'Роҳи корбар тариқи викиро нишон медиҳад.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'breadcrumbs-desc' => 'Rohi korbar tariqi vikiro nişon medihad.',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

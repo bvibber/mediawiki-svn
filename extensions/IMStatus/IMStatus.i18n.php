@@ -200,6 +200,10 @@ $messages['br'] = array(
 	'imstatus_or' => 'pe',
 	'imstatus_your_name' => "hoc'h anv $1",
 	'imstatus_gtalk_code' => 'ho kod Google Talk',
+	'imstatus_icq_id' => 'ho ID ICQ',
+	'imstatus_live_code' => "ho ID war lec'hienn Live Messenger",
+	'imstatus_xfire_size' => 'ment ar bouton, eus $1 (an hini vrasañ) da $2 (an hini vihanañ).',
+	'imstatus_yahoo_style' => 'doare ar bouton, eus $1 (an hini vihanañ) da $2 (an hini vrasañ), $3 ha $4 a zo kemenadennoù dre gomz.',
 );
 
 /** Bosnian (Bosanski)

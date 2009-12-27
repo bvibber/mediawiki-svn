@@ -279,6 +279,13 @@ $messages['sr-ec'] = array(
 	'magicnonumberedheadings-desc' => 'Додаје магичну реч "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
+ */
+$messages['sr-el'] = array(
+	'magicnonumberedheadings-desc' => 'Dodaje magičnu reč "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  */

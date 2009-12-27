@@ -148,6 +148,14 @@ $messages['es'] = array(
 	'mediafunctions-not-exist' => '«$1» no existe',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'mediafunctions-invalid-title' => '"$1" ei ole sobiv pealkiri',
+	'mediafunctions-not-exist' => 'Faili "$1" ei ole olemas',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Theklan

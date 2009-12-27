@@ -892,3 +892,25 @@ $messages['vi'] = array(
 	'communityvoice-ratings-error-no-title' => 'Thiếu thuộc tính tiêu đề trong thẻ xếp hạng.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'communityvoice' => '社群之声',
+	'communityvoice-desc' => '社群参与工具',
+	'communityvoice-ratings' => '评分',
+	'communityvoice-ratings-scale-status-error' => '发送错误！',
+	'communityvoice-ratings-scale-status-thanks' => '感谢投票！',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'communityvoice' => '社群之聲',
+	'communityvoice-desc' => '社群參與工具',
+	'communityvoice-ratings' => '評分',
+	'communityvoice-ratings-scale-status-error' => '發送錯誤！',
+	'communityvoice-ratings-scale-status-thanks' => '感謝投票！',
+);
+

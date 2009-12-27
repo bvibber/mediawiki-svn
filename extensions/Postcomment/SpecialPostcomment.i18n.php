@@ -990,6 +990,19 @@ $messages['tg-cyrl'] = array(
 	'postcomment_replyto' => 'Посух ба $1',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'postcomment_notloggedin' => 'Şumo vurud naşudaed.',
+	'postcomment_youareloggedinas' => 'Şumo cun $1 vurud şudaed',
+	'postcomment_addcommentdiscussionpage' => 'Tavzehoti xudro dar in sahifai bahs ilova kuned',
+	'postcomment_leavemessagefor' => 'Guzoştani pajom baroi $1',
+	'postcomment_said' => 'guft',
+	'postcomment_invalidrequest' => "Darxosti nomū'tabar.",
+	'postcomment_replyto' => 'Posux ba $1',
+);
+
 /** Thai (ไทย)
  * @author Ans
  * @author Manop

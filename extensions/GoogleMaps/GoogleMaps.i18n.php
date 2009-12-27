@@ -5331,6 +5331,52 @@ $wgGoogleMapsMessages['tg-cyrl'] = array(
 	'gm-mars' => 'Марс',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$wgGoogleMapsMessages['tg-latn'] = array(
+	'gm-incompatible-browser-link' => 'Baroi didani fehristi mururgaroni sozgor inço klik kuned.',
+	'gm-balloon-title' => 'Unvon:',
+	'gm-balloon-link-article' => 'Ba in sahifa pajvast kuned (ixtijorī):',
+	'gm-remove' => 'hazf',
+	'gm-caption' => 'Unvon',
+	'gm-tab-title' => 'Unvoni barga',
+	'gm-tab' => 'Barga',
+	'gm-load-map-from-article' => 'Bor kardani jak xaritae az sahifa:',
+	'gm-refresh-list' => 'Barūz kardani fehrist',
+	'gm-load-map' => 'Bor kardani xarita',
+	'gm-clip-result' => 'Ilova ba xarita',
+	'gm-no-results' => 'Bubaxşed, heç natoiçe nest',
+	'gm-searching' => 'dar holi çustuçū…',
+	'gm-map' => 'Xarita',
+	'gm-are-you-sure' => 'Ojo şumo mutmained?',
+	'gm-clear-all-points' => 'Toza kardani nuqtaho',
+	'gm-width' => "Vase'ī",
+	'gm-height' => 'Balandī',
+	'gm-scale-control' => 'Tanosub',
+	'gm-selector-control' => 'Intixobkunandai Xarita/Mohvora',
+	'gm-zoom-control' => 'Gaştan',
+	'gm-large' => 'Kalon',
+	'gm-medium' => 'Mijona',
+	'gm-small' => 'Xurd',
+	'gm-no-zoom-control' => 'Heç',
+	'gm-yes' => 'Ha',
+	'gm-no' => 'Ne',
+	'gm-search' => 'Çustuçū',
+	'gm-clear-search' => 'toza kardani natoiçi çustuçū',
+	'gm-meters' => 'metr',
+	'gm-miles' => 'mil',
+	'gm-save-path' => 'Zaxira',
+	'gm-color-path' => 'taƣjiri rang',
+	'gm-line-width' => "Vase'ī",
+	'gm-make-map' => 'soxtani jak xarita',
+	'gm-kml-include-link' => 'ba xarita ilova kuned',
+	'gm-kml-loading' => 'dar holi bor şudan…',
+	'gm-earth' => 'Zamin',
+	'gm-moon' => 'Moh',
+	'gm-mars' => 'Mars',
+);
+
 /** Thai (ไทย)
  * @author Manop
  * @author Octahedron80

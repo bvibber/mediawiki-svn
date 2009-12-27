@@ -341,6 +341,13 @@ $messages['sk'] = array(
 	'delaydef-error-redef' => 'Chyba: Pokus o predefinovanie $1.',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'delaydef-error-no-name' => 'Fel: Ingen parameter angiven.',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  */

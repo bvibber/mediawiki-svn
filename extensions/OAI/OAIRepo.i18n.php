@@ -169,6 +169,13 @@ $messages['fr'] = array(
 	'oairepository' => 'Dépôt OAI',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'oai-desc' => 'Balye una entèrface de dèpôt [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH].',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

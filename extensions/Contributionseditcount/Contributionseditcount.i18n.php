@@ -606,6 +606,13 @@ $messages['tg-cyrl'] = array(
 	'contributionseditcount' => 'Ин корбар $1 вироишҳо дорад.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'contributionseditcount' => 'In korbar $1 viroişho dorad.',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

@@ -205,6 +205,15 @@ $messages['es'] = array(
 	'right-viewpiwik' => 'Ver [[Special:Piwik|estadísticas Piwik]]',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'piwik-lastvisits' => 'Viimased külastused',
+	'piwik-countries' => 'Maad',
+	'piwik-browsers' => 'Veebilehitsejad',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */
@@ -545,6 +554,7 @@ $messages['sr-ec'] = array(
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -552,6 +562,7 @@ $messages['sr-el'] = array(
 	'piwik-lastvisits' => 'Poslednje posete',
 	'piwik-countries' => 'Zemlje',
 	'piwik-browsers' => 'Brauzeri',
+	'right-viewpiwik' => 'Pregled [[Special:Piwik|Piwik statistika]]',
 );
 
 /** Seeltersk (Seeltersk)

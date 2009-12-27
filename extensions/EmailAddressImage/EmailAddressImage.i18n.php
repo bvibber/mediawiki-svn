@@ -457,6 +457,13 @@ $messages['tg-cyrl'] = array(
 	'emailaddressimage-desc' => 'Барои намои нишонаи почтаи электронӣ чун акс <tt>&lt;email&gt;</tt>-ро илова мекунад',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'emailaddressimage-desc' => 'Baroi namoi nişonai poctai elektronī cun aks <tt>&lt;email&gt;</tt>-ro ilova mekunad',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

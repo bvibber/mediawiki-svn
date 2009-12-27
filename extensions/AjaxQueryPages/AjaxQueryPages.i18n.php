@@ -528,6 +528,13 @@ $messages['tg-cyrl'] = array(
 	'ajax-qp-desc' => 'Илова кардани чанде аз АҶАКС ба СаҳифаҳоиПурсиш монанди [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'ajax-qp-desc' => 'Ilova kardani cande az AÇAKS ba SahifahoiPursiş monandi [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

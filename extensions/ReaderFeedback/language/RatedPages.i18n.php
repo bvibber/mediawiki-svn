@@ -70,6 +70,15 @@ $messages['be-tarask'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|адзнака|адзнакі|адзнакаў}}',
 );
 
+/** Bulgarian (Български)
+ * @author Turin
+ */
+$messages['bg'] = array(
+	'ratedpages' => 'Оценени от читатели страници',
+	'ratedpages-none' => 'Няма страници в този списък',
+	'ratedpages-graphs' => 'данни за оценката',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -201,8 +210,10 @@ $messages['fa'] = array(
  * @author Crt
  * @author Jaakonam
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
+	'ratedpages' => 'Lukijoiden arvostelemat sivut',
 	'ratedpages-list' => 'Alla näkyvä sivuluettelo on järjestetty käyttäjien antaman palautearvosanan mukaan.',
 	'ratedpages-none' => 'Tässä luettelossa ei ole sivuja',
 	'ratedpages-graphs' => 'arvostelutiedot',
@@ -226,9 +237,12 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'ratedpages' => 'Pâges èstimâs per los liésors',
+	'ratedpages-leg' => 'Trovar les pâges èstimâs avouéc un nombro d’èstimacions prod grant',
 	'ratedpages-list' => 'Vê-que una lista de les pâges triyês d’aprés lor èstimacion per los liésors.',
 	'ratedpages-none' => 'Y at gins de pâge dens ceta lista.',
 	'ratedpages-graphs' => 'balyês d’èstimacion',
+	'ratedpages-count' => '$1 rèvision{{PLURAL:$1||s}}',
 );
 
 /** Galician (Galego)
@@ -641,6 +655,7 @@ $messages['tk'] = array(
 	'ratedpages' => 'Okyjylaryň derejelendiren sahypalary',
 	'ratedpages-none' => 'Bu sanawda sahypa ýok',
 	'ratedpages-graphs' => 'derejelendirme maglumaty',
+	'ratedpages-count' => '$1 {{PLURAL:$1|gözden geçirme|gözden geçirme}}',
 );
 
 /** Tagalog (Tagalog)

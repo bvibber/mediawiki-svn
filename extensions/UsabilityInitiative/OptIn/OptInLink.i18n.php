@@ -888,11 +888,15 @@ $messages['sr-ec'] = array(
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'optin-try' => 'Probajte beta-verziju',
 	'tooltip-pt-optin-try' => 'Probajte nove mogućnosti',
+	'optin-leave' => 'Napustite beta-verziju',
 	'tooltip-pt-optin-leave' => 'Ugasite nove mogućnosti',
+	'optin-feedback' => 'Povratna informacija o beta-verziji',
 );
 
 /** Seeltersk (Seeltersk)

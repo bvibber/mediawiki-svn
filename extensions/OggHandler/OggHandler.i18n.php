@@ -1067,6 +1067,8 @@ $messages['frp'] = array(
 	'ogg-play-sound' => 'Liére lo son',
 	'ogg-no-player' => 'Dèsolâ, aparament voutron sistèmo at gins de liésor recognu.
 Volyéd enstalar <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">yon des liésors recognus</a>.',
+	'ogg-no-player-js' => 'Dèsolâ, sur voutron sistèmo, ou ben JavaScript est dèsactivâ, ou ben vos avéd gins de liésor recognu.<br />
+Vos pouede <a href="$1">tèlèchargiér lo clipe</a> ou ben <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">tèlèchargiér un liésor</a> por liére lo clipe dens voutron navigator.',
 	'ogg-no-xiphqt' => 'Aparament vos avéd pas lo composent XiphQT por QuickTime.
 QuickTime pôt pas liére los fichiérs Ogg sen cél composent.
 Volyéd <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">tèlèchargiér XiphQT</a> ou ben chouèsir un ôtro liésor.',
@@ -3003,6 +3005,36 @@ $messages['tg-cyrl'] = array(
 	'ogg-dismiss' => 'Бастан',
 	'ogg-download' => 'Боргирии парванда',
 	'ogg-desc-link' => 'Дар бораи ин парванда',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'ogg-desc' => 'Ba dastgirandae baroi parvandahoi  Ogg Theora va Vorbis, bo paxşkunandai JavaScript',
+	'ogg-short-audio' => 'Ogg $1 parvandai savtī, $2',
+	'ogg-short-video' => 'Ogg $1 parvandai navorī, $2',
+	'ogg-short-general' => 'Ogg $1 parvandai rasona, $2',
+	'ogg-long-audio' => '(Ogg $1 parvandai savtī, tūl $2, $3)',
+	'ogg-long-video' => '(Ogg $1 parvandai navorī, tūl $2, $4×$5 pikselho, $3)',
+	'ogg-long-multiplexed' => "(Parvandai Ogg savtī/navorī pecida, $1, tūl $2, $4×$5 pikselho, dar maçmū' $3)",
+	'ogg-long-general' => '(Parvandai rasonai Ogg, tūl $2, $3)',
+	'ogg-long-error' => '(Parvandai ƣajrimiçozi ogg: $1)',
+	'ogg-play' => 'Paxş',
+	'ogg-pause' => 'Sukut',
+	'ogg-stop' => "Qat'",
+	'ogg-play-video' => 'Paxşi navor',
+	'ogg-play-sound' => 'Paxşi ovoz',
+	'ogg-no-player' => 'Bubaxşed, dastgohi şumo narmafzori paxşkunandai munosibe nadorad. Lutfan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">jak barnomai paxşkunandaro borgirī kuned</a>.',
+	'ogg-no-xiphqt' => 'Afzunai XiphQT baroi QuickTime ba nazar namerasad. QuickTime nametavonad biduni in afzuna parvandahoi Ogg-ro paxş kunad. Lutfan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT-ro borgirī kuned</a>  jo digar narmafzori paxşkunandaro intixob namoed.',
+	'ogg-player-thumbnail' => 'Faqat aks hanūz',
+	'ogg-player-soundthumb' => 'Paxşkunanda nest',
+	'ogg-player-selected' => '(intixobşuda)',
+	'ogg-use-player' => 'Istifoda az paxşkunanda:',
+	'ogg-more' => 'Beştar...',
+	'ogg-dismiss' => 'Bastan',
+	'ogg-download' => 'Borgiriji parvanda',
+	'ogg-desc-link' => 'Dar borai in parvanda',
 );
 
 /** Thai (ไทย)

@@ -371,6 +371,13 @@ $messages['tg-cyrl'] = array(
 	'randomimage-desc' => 'Бо истифодаи <tt>&lt;randomimage /&gt;</tt> чинандаи расонаи тасодуфиро пешкаш мекунад',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'randomimage-desc' => 'Bo istifodai <tt>&lt;randomimage /&gt;</tt> cinandai rasonai tasodufiro peşkaş mekunad',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

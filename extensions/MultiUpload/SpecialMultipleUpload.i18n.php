@@ -472,6 +472,8 @@ $messages['et'] = array(
 	'multipleupload' => 'Lae üles mitu faili',
 	'multipleupload-saveallfiles' => 'Salvesta kõik failid',
 	'multiupload-fileuploaded' => 'Fail on üles laetud.',
+	'multiupload-toolbox' => 'Laadi üles mitu faili',
+	'multiupload-no-files' => 'Palun vali vähemalt üks fail üleslaadimiseks',
 	'multiupload-blank' => 'Ühtegi faili ei ole valitud',
 );
 
@@ -1570,6 +1572,23 @@ $messages['tg-cyrl'] = array(
 Парвандаҳои номуносиб мустақиман ҳазф хоҳанд шуд, нигаред ба [[{{MediaWiki:Multipleupload-page}}|сиёсати ҳазфи парванда]].",
 	'multiupload-fileuploaded' => 'Парванда боргузорӣ шуд.',
 	'multiupload-toolbox' => 'Боргузории парвандаҳои чандгона',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'multipleupload-saveallfiles' => 'Zaxirai hamai parvandaho',
+	'multipleupload-text' => "Parvandhoi candgonaro borguzorī kuned.
+
+Tugmai 'Murur'-ro paxş kuned va har parvandaero intixob kuned, ki şumo mexohed borguzorī kuned.
+Şumo dar jak vaqt az 1 to $1 parvandahoro metavoned borguzorī kuned.
+
+Şumo metavoned ixtijorī '''Nomi parvandai maqsad''' va '''Xulosa''' bo tavsifi kardani parvandai xud vorid kuned.
+
+Parvandahoi nomunosib mustaqiman hazf xohand şud, nigared ba [[{{MediaWiki:Multipleupload-page}}|sijosati hazfi parvanda]].",
+	'multiupload-fileuploaded' => 'Parvanda borguzorī şud.',
+	'multiupload-toolbox' => 'Borguzoriji parvandahoi candgona',
 );
 
 /** Thai (ไทย)

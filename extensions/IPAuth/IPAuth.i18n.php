@@ -254,6 +254,13 @@ $messages['sr-ec'] = array(
 	'ipauth-desc' => 'Аутоматско пријављивање са фиксних IP адреса',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
+ */
+$messages['sr-el'] = array(
+	'ipauth-desc' => 'Automatsko prijavljivanje sa fiksnih IP adresa',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

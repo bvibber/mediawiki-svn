@@ -416,6 +416,14 @@ $messages['tg-cyrl'] = array(
 	'untidy' => 'Номуратаб',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'tidy' => 'Muratab',
+	'untidy' => 'Nomuratab',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

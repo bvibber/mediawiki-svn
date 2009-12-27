@@ -3417,6 +3417,35 @@ $2',
 	'whitelistnummatches' => ' - $1 мутобиқат мекунад',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'whitelist-desc' => 'Içozahoi dastrasiji korbaroni mahdudşudaro viroiş kuned',
+	'whitelist' => 'Sahifahoi Fehristi safed',
+	'mywhitelistpages' => 'Sahifahoi Man',
+	'whitelistfor' => '<center>Ittilooti kununī baroi <b>$1</b></center>',
+	'whitelisttablemodify' => 'Pirostan',
+	'whitelisttablemodifyall' => 'Hama',
+	'whitelisttablemodifynone' => 'Heç',
+	'whitelisttablepage' => 'Sahifai Viki',
+	'whitelisttabletype' => "Nav'i Dastrasī",
+	'whitelisttableexpires' => 'Siparī meşavad dar',
+	'whitelisttablemodby' => 'Oxirin marotiba pirosta şuda bud tavassuti',
+	'whitelisttablemodon' => 'Oxirin marotiba pirosta şuda bud dar',
+	'whitelisttableedit' => 'Viroiş',
+	'whitelisttableview' => 'Didan',
+	'whitelisttablenewdate' => "Ta'rixi Nav:",
+	'whitelisttablechangedate' => "Taƣjiri Ta'rixi Baintihorasī",
+	'whitelisttableremove' => 'Hazf',
+	'whitelistnewtabledate' => "Ta'rixi Baintihorasī:",
+	'whitelistnewtableprocess' => 'Ravand',
+	'whitelistnewtablereview' => 'Peşnamoiş',
+	'whitelistrequest' => 'Ba sahifahoi beştar dastrasiro darxost kuned',
+	'whitelistrequestconf' => 'Darxost baroi sahifahoi çadid ba $1 firistoda şud',
+	'whitelistnever' => 'heçgoh',
+);
+
 /** Thai (ไทย)
  * @author Manop
  * @author Octahedron80

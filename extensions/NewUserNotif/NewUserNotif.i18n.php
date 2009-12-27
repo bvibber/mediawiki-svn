@@ -199,6 +199,15 @@ $messages['es'] = array(
 Ha sido creada una nueva cuenta de usuario, $2, en $3 a las $4',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'newusernotifbody' => 'Tere, §1!
+
+Uus kasutajakonto, §2 on loodud §3 kell §4.',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike
@@ -665,6 +674,17 @@ $messages['tg-cyrl'] = array(
 	'newusernotifbody' => 'Салом $1,
 
 Ҳисоби корбарии ҷадид, $2, дар $3 дар $4 эҷод шуд.',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'newusernotifsubj' => 'Ogohsoziji korbariji çadid baroi $1',
+	'newusernotif-desc' => 'Dar holat eçod şudani hisobhoi korbarī pajomi ogohsozī tariqi poctai elektronī bifirist.',
+	'newusernotifbody' => 'Salom $1,
+
+Hisobi korbariji çadid, $2, dar $3 dar $4 eçod şud.',
 );
 
 /** Tagalog (Tagalog)

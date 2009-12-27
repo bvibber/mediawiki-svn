@@ -1676,6 +1676,16 @@ $messages['tg-cyrl'] = array(
 	'spamregex-summary-log' => '(Хулоса)',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'spamregex-error-1' => "Iborai oddiji nomū'tabar",
+	'spamregex-already-blocked' => '"$1" allakaj basta şudaast',
+	'spamregex-text' => '(Matn)',
+	'spamregex-summary-log' => '(Xulosa)',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

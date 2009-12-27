@@ -1650,16 +1650,41 @@ $messages['eu'] = array(
  * @author Crt
  * @author Silvonen
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
+	'wikilog-desc' => 'Lisää blogiominaisuudet, jolloin saat wiki–blogi-yhdistelmän.',
+	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
+	'right-wl-postcomment' => 'Lähettää kommentteja wikilog-artikkeleihin',
+	'right-wl-moderation' => 'Moderoida wikilog-artikkeleiden kommentteja',
+	'wikilog-specialwikilog-title' => 'Wikilogit',
+	'wikilog-specialwikilog' => 'Wikilog',
+	'wikilog-log-pagename' => 'Wikilog-toimintoloki',
+	'wikilog-log-pagetext' => 'Alla on lista wikilog-toiminnoista.',
 	'wikilog-log-cmt-approve' => 'hyväksytty kommentti ”[[$1]]”',
 	'wikilog-log-cmt-reject' => 'hyväksytty kommentti ”[[$1]]”',
+	'wikilog-log-cmt-rejdel' => 'Hylätty wikilog-kommentti käyttäjältä [[Special:Contributions/$1|$1]]',
+	'wikilog-tab' => 'Wikilog',
+	'wikilog-tab-title' => 'Wikilog-toiminnot',
+	'wikilog-missing-wikilog' => 'Tämä on sivun [[{{FULLPAGENAME}}]] [[{{int:wikilog-help}}|wikilog]]-sivu.
+
+Tätä wikilogia ei vielä ole olemassa.
+Julkaistaksesi artikkeleita ja ottaaksesi muut wikilogin ominaisuudet käyttöön, se tulee ensin luoda.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Luo tämä wikilog].</span>',
+	'wikilog-information' => 'Wikilog-tiedot',
+	'wikilog-post-count-published' => 'Tässä wikilogissa on {{PLURAL:$1|yksi julkaistu artikkeli|$1 julkaistua artikkelia}}',
+	'wikilog-post-count-drafts' => '$1 {{PLURAL:$1|julkaisematon|julkaisematonta}} {{PLURAL:$1|luonnosartikkeli|luonnosartikkelia}}',
+	'wikilog-post-count-all' => 'Yhteensä {{PLURAL:$1|yksi artikkeli|$1 artikkelia}}.',
+	'wikilog-new-item' => 'Luo uusi wikilog-artikkeli',
 	'wikilog-new-item-go' => 'Luo',
 	'wikilog-item-name' => 'Artikkelin nimi',
 	'wikilog-published' => 'Julkaistu',
 	'wikilog-updated' => 'Päivitetty',
 	'wikilog-draft' => 'Luonnos',
 	'wikilog-authors' => 'Tekijät',
+	'wikilog-wikilog' => 'Wikilog',
 	'wikilog-title' => 'Otsikko',
 	'wikilog-actions' => 'Toiminnot',
 	'wikilog-comments' => 'Kommentit',
@@ -1670,27 +1695,78 @@ $messages['fi'] = array(
 	'wikilog-anonymous-mark' => '(nimetön)',
 	'wikilog-pager-newer-n' => '← uudemmat $1',
 	'wikilog-pager-older-n' => 'vanhemmat $1 →',
+	'wikilog-pager-newest' => '←← uusin',
+	'wikilog-pager-oldest' => 'vanhin →→',
 	'wikilog-pager-prev' => '← edellinen',
 	'wikilog-pager-next' => 'seuraava →',
+	'wikilog-pager-first' => '←← ensimmäinen',
+	'wikilog-pager-last' => 'viimeinen →→',
+	'wikilog-pager-empty' => '(ei kohteita)',
 	'wikilog-no-comments' => 'ei kommentteja',
+	'wikilog-has-comments' => '{{PLURAL:$1|yksi kommentti|$1 kommenttia}}',
+	'wikilog-summary-footer' => 'Lähettänyt $7 kohteeseen [[$1|$2]] ($8 kello $9), $10.',
+	'wikilog-summary-footer-single' => 'Lähettänyt $7 ($8 kello $9), $10.',
 	'wikilog-summary-uncategorized' => 'Luokittelematon',
+	'wikilog-summary-categories' => 'Luokiteltu {{PLURAL:$1|luokkaan|luokkiin}} $2',
+	'wikilog-summary-more' => '[[$3|→ jatka lukemista...]]',
+	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|keskustelu]])',
+	'wikilog-edit-fieldset-legend' => 'Wikilog-asetukset:',
+	'wikilog-edit-signpub' => 'Allekirjoita ja julkaise tämä artikkeli',
+	'wikilog-edit-signpub-tooltip' => 'Aiheuttaa tämän artikkelin allekirjoituksen ja julkaisemisen wikilogiinsa tallennettaessa.
+Poista tämän laatikon valinta pitääksesi artikkelin luonnoksena.',
+	'wikilog-comment-by-user' => 'Kommentin jätti $1 ($2)',
+	'wikilog-comment-by-anon' => 'Kommentin jätti $3 (nimetön)',
+	'wikilog-comment-pending' => 'Tämä kommentti odottaa hyväksyntää.',
 	'wikilog-comment-deleted' => 'Tämä kommentti oli poistettu.',
+	'wikilog-comment-edited' => 'Tätä kommenttia muokattiin viimeksi $3 kello $4 ($2).',
+	'wikilog-comment-autosumm' => 'Uusi kommentti käyttäjältä $1: $2',
 	'wikilog-reply-to-comment' => 'Vastaa tähän kommenttiin',
+	'wikilog-comment-page' => 'Siirry tälle kommenttisivulle',
 	'wikilog-comment-edit' => 'Muokkaa tätä kommenttia',
 	'wikilog-comment-delete' => 'Poista tämä kommentti',
+	'wikilog-comment-history' => 'Näytä kommenttihistoria',
+	'wikilog-comment-approve' => 'Hyväksy tämä kommentti (välitön toiminto)',
+	'wikilog-comment-reject' => 'Hylkää tämä kommentti (välitön toiminto)',
+	'wikilog-newtalk-text' => '<!-- Wikilogin luoma tyhjä sivu -->',
+	'wikilog-newtalk-summary' => 'Wikilogin automaattisesti luoma',
+	'wikilog-feed-description' => 'Lue tämän syötteen uusimmat merkinnät.',
 	'wikilog-title-comments' => 'Kommentit – $1',
+	'wikilog-error-msg' => 'Wikilog: $1',
+	'wikilog-error-title' => 'Wikilog-virhe',
+	'wikilog-invalid-param' => 'Virheellinen parametri: $1.',
+	'wikilog-invalid-author' => 'Virheellinen tekijä: $1.',
+	'wikilog-invalid-date' => 'Virheellinen päivämäärä: $1.',
+	'wikilog-invalid-tag' => 'Virheellinen tagi: $1.',
+	'wikilog-invalid-file' => 'Virheellinen tiedosto: $1.',
+	'wikilog-file-not-found' => 'Olematon tiedosto: $1.',
+	'wikilog-not-an-image' => 'Tiedosto ei ole kuva: $1.',
+	'wikilog-out-of-context' => 'Varoitus: Wikilog-tageja on käytetty väärässä paikassa.
+Niitä tulee käyttää ainoastaan Wikilog-nimiavaruuden artikkeleissa.',
+	'wikilog-too-many-authors' => 'Varoitus: Tälle Wikilog-merkinnälle on listattu liian monta tekijää.',
+	'wikilog-too-many-tags' => 'Varoitus: Tälle Wikilog-merkinnälle on listattu liian monta tagia.',
 	'wikilog-comment-is-empty' => 'Lähetetty kommentti on tyhjä.',
 	'wikilog-comment-too-long' => 'Lähetetty kommentti on liian pitkä.',
 	'wikilog-comment-invalid-name' => 'Annettu nimi ei kelpaa.',
+	'wikilog-no-such-article' => 'Pyydettyä Wikilog-artikkelia ei ole olemassa.',
+	'wikilog-reading-draft' => 'Tämä Wikilog-artikkeli on luonnos, sitä ei ole vielä julkaistu.',
+	'wikilog-posting-anonymously' => 'Et ole kirjautunut sisään;
+kommenttisi lähetetään nimettömänä, lähettäjä tunnistetaan Internet-yhteytesi osoitteen perusteella.
+Sinun tulisi joko antaa nimimerkki yllä kommenttisi tunnistamiseen tai $1 sen nimeämiseksi oikein.',
+	'wikilog-anonymous-moderated' => 'Kun olet lähettänyt kommenttisi, se ei tule näkyville tälle sivulle välittömästi. 
+Kommentti näkyy vasta kun moderaattori on tarkistanut sen.',
 	'wikilog-post-comment' => 'Lähetä uusi kommentti',
 	'wikilog-post-reply' => 'Lähetä uusi vastaus',
+	'wikilog-form-legend' => 'Hae Wikilog-merkintöjä',
+	'wikilog-form-wikilog' => 'Wikilog:',
 	'wikilog-form-category' => 'Luokka:',
 	'wikilog-form-name' => 'Nimi',
 	'wikilog-form-author' => 'Tekijä',
+	'wikilog-form-tag' => 'Tagi:',
 	'wikilog-form-date' => 'Päiväys',
 	'wikilog-form-status' => 'Tila',
 	'wikilog-form-preview' => 'Esikatselu',
 	'wikilog-form-comment' => 'Kommentti',
+	'wikilog-show-all' => 'Kaikki merkinnät',
 	'wikilog-show-published' => 'Julkaistu',
 	'wikilog-show-drafts' => 'Luonnokset',
 	'wikilog-submit' => 'Lähetä',
@@ -1702,6 +1778,7 @@ $messages['fi'] = array(
 	'wikilog-reject-lc' => 'hylkää',
 	'wikilog-page-lc' => 'sivu',
 	'wikilog-history-lc' => 'historia',
+	'wikilog-doc-import-comment' => 'Tuodut Wikilog-ohjeet',
 );
 
 /** French (Français)
@@ -3187,10 +3264,25 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Junaidpv
+ * @author Praveenp
  */
 $messages['ml'] = array(
 	'wikilog-new-item-go' => 'സൃഷ്ടിക്കുക',
 	'wikilog-item-name' => 'ലേഖനത്തിന്റെ പേര്:',
+	'wikilog-published' => 'പ്രസിദ്ധപ്പെടുത്തി',
+	'wikilog-updated' => 'പുതുക്കി',
+	'wikilog-draft' => 'കരട്',
+	'wikilog-authors' => 'രചയിതാക്കൾ',
+	'wikilog-title' => 'തലക്കെട്ട്',
+	'wikilog-actions' => 'പ്രവൃത്തികൾ',
+	'wikilog-replies' => 'മറുപടികൾ',
+	'wikilog-view-summary' => 'ചുരുക്കം',
+	'wikilog-draft-title-mark' => '(കരട്)',
+	'wikilog-anonymous-mark' => '(അജ്ഞാതം)',
+	'wikilog-pager-older-n' => 'പഴയ $1 →',
+	'wikilog-pager-newest' => '←← ഏറ്റവും പുതിയവ',
+	'wikilog-pager-oldest' => 'ഏറ്റവും പഴയവ →→',
+	'wikilog-pager-prev' => '← മുമ്പ്',
 );
 
 /** Malay (Bahasa Melayu)
@@ -4467,6 +4559,7 @@ $messages['si'] = array(
 /** Swedish (Svenska)
  * @author Elias Bröms
  * @author Per
+ * @author Tetraedycal
  */
 $messages['sv'] = array(
 	'wikilog-desc' => 'Lägger till bloggfunktioner, skapar en wiki-blogg-hybrid.',
@@ -4517,9 +4610,11 @@ $messages['sv'] = array(
 	'wikilog-summary-footer' => 'Skrivet av $7 på [[$1|$2]] den $8 klockan $9, $10.',
 	'wikilog-summary-footer-single' => 'Skrivet av $7 den $8 klockan $9, $10.',
 	'wikilog-summary-uncategorized' => 'Okategoriserat',
+	'wikilog-summary-categories' => 'Lagrad under $2',
 	'wikilog-summary-more' => '[[$3|→ fortsätt läsa...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|diskussion]])',
-	'wikilog-edit-signpub' => 'Signera och publisera denna artikel',
+	'wikilog-edit-fieldset-legend' => 'Wikilog-alternativ:',
+	'wikilog-edit-signpub' => 'Signera och publicera denna artikel',
 	'wikilog-comment-by-user' => 'Kommentar av $1 ($2)',
 	'wikilog-comment-by-anon' => 'Kommentar av $3 (anonym)',
 	'wikilog-comment-pending' => 'Denna kommentar väntar på godkännande.',
@@ -4530,7 +4625,7 @@ $messages['sv'] = array(
 	'wikilog-comment-page' => 'Gå till denna kommentars sida',
 	'wikilog-comment-edit' => 'Redigera denna kommentar',
 	'wikilog-comment-delete' => 'Radera denna kommentar',
-	'wikilog-comment-history' => 'Se kommentarshistoria',
+	'wikilog-comment-history' => 'Se kommentarshistorik',
 	'wikilog-comment-approve' => 'Godkänn denna kommentar (omedelbart utfört)',
 	'wikilog-comment-reject' => 'Avslå denna kommentar (omedelbart utfört)',
 	'wikilog-newtalk-text' => '<!-- tom sida skapad av Wikilog -->',

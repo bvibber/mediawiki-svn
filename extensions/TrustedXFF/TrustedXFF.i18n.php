@@ -145,6 +145,13 @@ $messages['fr'] = array(
 	'trustedxff-desc' => 'Gestion d’une liste d’adresses de serveurs mandataires de confiance ([http://meta.wikimedia.org/wiki/XFF_project projet XFF])',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'trustedxff-desc' => "Administracion d’una lista d’adrèces de sèrvors mandatèros (''proxies'') de fiance ([http://meta.wikimedia.org/wiki/XFF_project projèt XFF])",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

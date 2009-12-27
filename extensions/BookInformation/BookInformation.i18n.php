@@ -1622,6 +1622,23 @@ $messages['tg-cyrl'] = array(
 	'bookinfo-provider' => 'Муҳаёкунандаи иттилоот: $1',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'bookinfo-header' => 'Ittilooti kitob',
+	'bookinfo-result-title' => 'Unvon:',
+	'bookinfo-result-author' => 'Muallif:',
+	'bookinfo-result-publisher' => 'Naşrijot:',
+	'bookinfo-result-year' => 'Soli intişor:',
+	'bookinfo-error-invalidisbn' => 'ISBN-iji ƣajrimiçoz vorid şudaast.',
+	'bookinfo-error-nosuchitem' => 'In mavrid vuçud nadorad jo pajdo naşud.',
+	'bookinfo-error-nodriver' => 'Rohandozi munosibi ittilooti kitob qobil ba korgirī nest.',
+	'bookinfo-error-noresponse' => 'Posuxe vuçud nadoşt jo mūhlati darxost siparī şud.',
+	'bookinfo-purchase' => 'Xaridani in kitob az $1',
+	'bookinfo-provider' => 'Muhajokunandai ittiloot: $1',
+);
+
 /** Thai (ไทย)
  * @author Ans
  * @author Manop

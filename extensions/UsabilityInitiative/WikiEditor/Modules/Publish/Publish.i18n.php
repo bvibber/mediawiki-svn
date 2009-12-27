@@ -107,6 +107,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'wikieditor-publish-button-publish' => 'Публикуване',
 	'wikieditor-publish-button-cancel' => 'Отказване',
+	'wikieditor-publish-dialog-title' => 'Публикуване в {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'Резюме на редакцията (кратко описание на текущо направените промени):',
 	'wikieditor-publish-dialog-minor' => 'Малка промяна',
 	'wikieditor-publish-dialog-watch' => 'Наблюдаване на страницата',
@@ -307,10 +308,13 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
+	'wikieditor-publish-preference' => 'Ota käyttöön vaiheittainen julkaisu',
 	'wikieditor-publish-button-publish' => 'Julkaise',
 	'wikieditor-publish-button-cancel' => 'Peruuta',
+	'wikieditor-publish-dialog-title' => 'Julkaise {{GRAMMAR:inessive|{{SITENAME}}}}',
 	'wikieditor-publish-dialog-summary' => 'Muokkausyhteenveto (kuvaa lyhyesti tekemiäsi muutoksia):',
 	'wikieditor-publish-dialog-minor' => 'Pieni muutos',
 	'wikieditor-publish-dialog-watch' => 'Tarkkaile tätä sivua',
@@ -518,6 +522,7 @@ $messages['ka'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'wikieditor-publish-button-cancel' => '취소',
 	'wikieditor-publish-dialog-minor' => '사소한 편집',
 );
 

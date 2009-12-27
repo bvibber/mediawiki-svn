@@ -718,6 +718,15 @@ $messages['tg-cyrl'] = array(
 	'block_title_error' => 'Бубахшед, захира намудани саҳифае, ки чунин сарлавҳа дорад манъ аст.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'block_title_error_page_title' => 'Sarlavhahoi bastaşuda',
+	'block_title_error-desc' => "Roxhoi asosiro baroi çilavgirī az zaxira jo ecod kardani sahifahoe bo ba'ze unvonhoro peşnihod mekunad",
+	'block_title_error' => "Bubaxşed, zaxira namudani sahifae, ki cunin sarlavha dorad man' ast.",
+);
+
 /** Thai (ไทย)
  * @author Woraponboonkerd
  */

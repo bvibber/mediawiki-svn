@@ -553,6 +553,13 @@ $messages['tg-cyrl'] = array(
 	'charinsert-desc' => 'Имкони эҷоди қуттиҳои ҶаваСкриптро барои [[MediaWiki:Edittools|дохил кардани аломатҳои ғайристандарӣ]] пешниҳод мекунад',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'charinsert-desc' => 'Imkoni eçodi quttihoi ÇavaSkriptro baroi [[MediaWiki:Edittools|doxil kardani alomathoi ƣajristandarī]] peşnihod mekunad',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

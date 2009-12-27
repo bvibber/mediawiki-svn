@@ -5492,6 +5492,13 @@ $messages['tg-cyrl'] = array(
 	'viewapc-display-value' => 'Қимат',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'viewapc-display-value' => 'Qimat',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

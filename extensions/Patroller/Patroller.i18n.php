@@ -1747,6 +1747,14 @@ $messages['tg-cyrl'] = array(
 	'patrol-skip' => 'Ҷаҳиш',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'patrol-revert-reason' => 'Sabab:',
+	'patrol-skip' => 'Çahiş',
+);
+
 /** Thai (ไทย)
  * @author Mopza
  * @author Octahedron80

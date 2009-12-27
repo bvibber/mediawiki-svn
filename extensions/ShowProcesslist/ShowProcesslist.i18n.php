@@ -975,6 +975,14 @@ $messages['tg-cyrl'] = array(
 	'showprocesslist-time' => 'Вақт',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'showprocesslist-user' => 'Korbar',
+	'showprocesslist-time' => 'Vaqt',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

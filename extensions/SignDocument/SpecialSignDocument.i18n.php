@@ -4331,6 +4331,32 @@ $messages['tg-cyrl'] = array(
 	'sign-review-comment' => 'Тавзеҳ',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'sign-realname' => 'Nom:',
+	'sign-address' => 'Nişonai kūca:',
+	'sign-city' => 'Şahr:',
+	'sign-state' => 'Vilojat:',
+	'sign-country' => 'Kişvar:',
+	'sign-phone' => 'Şumorai telefon:',
+	'sign-bday' => 'Sinnu sol:',
+	'sign-email' => 'Nişonai E-mail:',
+	'sign-viewfield-realname' => 'Nom',
+	'sign-viewfield-address' => 'Nişona',
+	'sign-viewfield-city' => 'Şahr',
+	'sign-viewfield-state' => 'Vilojat',
+	'sign-viewfield-country' => 'Kişvar',
+	'sign-viewfield-zip' => 'Indeks',
+	'sign-viewfield-ip' => 'Nişonai IP',
+	'sign-viewfield-phone' => 'Telefon',
+	'sign-viewfield-email' => 'Poctai elektronī',
+	'sign-viewfield-options' => 'Ixtijorot',
+	'sign-viewfield-reviewcomment' => 'Tavzehot',
+	'sign-review-comment' => 'Tavzeh',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  * @author Passawuth
@@ -4477,6 +4503,7 @@ $messages['ug-latn'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'sign-address' => 'Поштова адреса:',
 	'sign-city' => 'Місто:',
 	'sign-state' => 'Штат:',
 	'sign-email' => 'Адреса електронної пошти:',

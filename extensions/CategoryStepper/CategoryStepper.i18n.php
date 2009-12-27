@@ -613,6 +613,14 @@ $messages['tg-cyrl'] = array(
 	'categorystepper-start' => '(Оғози гурӯҳ)',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'categorystepper-end' => '(Pojoni gurūh)',
+	'categorystepper-start' => '(Oƣozi gurūh)',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

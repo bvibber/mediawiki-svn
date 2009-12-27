@@ -364,6 +364,7 @@ $messages['fi'] = array(
 	'masseditregex-before' => 'Ennen',
 	'masseditregex-after' => 'Jälkeen',
 	'masseditregex-view-full-summary' => 'Näytä koko muokkausyhteenveto',
+	'masseditregex-hint-headmatch' => 'Osuma',
 	'masseditregex-hint-headreplace' => 'Korvaa',
 	'masseditregex-editfailed' => 'Muokkaus epäonnistui:',
 	'masseditregex-tooltip-execute' => 'Käytä näitä muutoksia joka sivuun',

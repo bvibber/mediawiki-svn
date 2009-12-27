@@ -154,6 +154,13 @@ $messages['es'] = array(
 	'minnamelength-desc' => 'Exige una longitud mínima para el nombre de usuario',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'minnamelength-error' => 'Sinu kasutajanimi on liiga lühike. Minimaalne pikkus on §1.',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -508,6 +515,13 @@ $messages['te'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'minnamelength-error' => 'Номи корбарии шумо хеле кӯтоҳ аст. Дарозии он дасти кам $1 бошад.',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'minnamelength-error' => 'Nomi korbariji şumo xele kūtoh ast. Daroziji on dasti kam $1 boşad.',
 );
 
 /** Tagalog (Tagalog)

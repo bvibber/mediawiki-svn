@@ -3719,6 +3719,14 @@ Nie będziesz już mógł więcej logować się korzystając z tego OpenID.',
 	'openid-provider-label-other-username' => 'Wprowadź swoją nazwę użytkownika $1',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'openidlogin' => 'Intra con OpenID',
+	'openidserver' => 'server OpenID',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -4648,6 +4656,24 @@ $messages['tg-cyrl'] = array(
 	'openidemail' => 'Нишонаи почтаи электронӣ',
 	'openidlanguage' => 'Забон',
 	'openidchoosepassword' => 'гузарвожа:',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'openid-desc' => 'Ba viki bo [http://openid.net/ OpenID] vurud kuned, va ba digar somonahoi OpenID bo hisobi korbariji viki vurud kuned',
+	'openidlogin' => 'Bo OpenID vurud kuned',
+	'openidserver' => 'Xidmatguzori OpenID',
+	'openidxrds' => 'Parvandai Yadis',
+	'openidconvert' => 'Tabdilkunandai OpenID',
+	'openiderror' => 'Xatoi tasdiq',
+	'openiderrortext' => 'Dar holati tasdiqi nişonai OpenID xatoe rux dod.',
+	'openidconfigerror' => 'Xatoi Tanzimoti OpenID',
+	'openidoptional' => 'Ixtijorī',
+	'openidemail' => 'Nişonai poctai elektronī',
+	'openidlanguage' => 'Zabon',
+	'openidchoosepassword' => 'guzarvoƶa:',
 );
 
 /** Thai (ไทย)

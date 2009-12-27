@@ -113,6 +113,13 @@ $messages['fr'] = array(
 	'mwreleases-desc' => 'Ajoute une [[Mediawiki:Mwreleases-list|liste]] des versions supportées, accessible via l’API',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'mwreleases-desc' => 'Apond una [[Mediawiki:Mwreleases-list|lista]] de les vèrsions recognues, accèssibla avouéc l’API.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

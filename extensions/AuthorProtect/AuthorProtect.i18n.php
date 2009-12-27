@@ -1329,6 +1329,7 @@ $messages['sr-ec'] = array(
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1345,6 +1346,7 @@ $messages['sr-el'] = array(
 	'authorprotect-failure' => 'Zaštita neuspešna',
 	'protect-level-author' => 'Zaštiti od ne-autora',
 	'restriction-level-author' => 'Korisnički zaštićeno',
+	'right-authorprotect' => 'Zaštita strana od strane autora',
 );
 
 /** Seeltersk (Seeltersk)

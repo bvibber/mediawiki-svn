@@ -164,6 +164,13 @@ $messages['fr'] = array(
 	'skinperpage-desc' => 'ajoute la balise <tt>&lt;skin&gt;</tt> pour utiliser différentes interfaces par page',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'skinperpage-desc' => 'Apond la balisa <tt>&lt;skin&gt;</tt> por utilisar difèrentes entèrfaces per pâge.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

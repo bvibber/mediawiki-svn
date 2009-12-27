@@ -611,6 +611,14 @@ $messages['tg-cyrl'] = array(
 	'advancedrandom-desc' => 'Гирифтани саҳифаи тасодуфӣ аз пайвандҳои баҳси киҳо ё саҳифаи мавзӯъ, ки ба саҳифа дода шудаанд, метавонанд монанди [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] барои дастрас кардани мақолаи барҷастаи тасодуфии барҷаста ё монанди [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] барои дастрас кардани парвандаи тасодуфии GFDL истифода шаванд',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'advancedrandom' => 'Tasodufi peşrafta',
+	'advancedrandom-desc' => "Giriftani sahifai tasodufī az pajvandhoi bahsi kiho jo sahifai mavzū', ki ba sahifa doda şudaand, metavonand monandi [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] baroi dastras kardani maqolai barçastai tasodufiji barçasta jo monandi [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] baroi dastras kardani parvandai tasodufiji GFDL istifoda şavand",
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

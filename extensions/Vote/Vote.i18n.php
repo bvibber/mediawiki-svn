@@ -1829,6 +1829,25 @@ $messages['tg-cyrl'] = array(
 	'vote-invalid-choice' => 'Шумо бояд яке аз ихтиёрҳои мавҷудро интихоб кунед.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'vote' => "Ra'jgirī",
+	'vote-header' => "Şumo dar inço metavoned baroi '''Arbobi Oliji Çahon''' ra'j bidihed!",
+	'vote-current' => "Ra'ji fe'liji şumo baroi '''$1''' ast.",
+	'vote-legend' => "Ra'ji xudro vorid jo isloh namoed",
+	'vote-caption' => 'Intixobi şumo:',
+	'vote-submit' => "Sabti ra'j",
+	'vote-registered' => "Ra'ji şumo sabt şud.",
+	'vote-view-results' => 'Muşohidai natoiç',
+	'vote-results' => "Natoiçi ra'jgirī",
+	'vote-results-choice' => 'Intixob',
+	'vote-results-count' => 'Şumoriş',
+	'vote-results-none' => "Dar holi hozir heç ra'je sabt naşudaast.",
+	'vote-invalid-choice' => 'Şumo bojad jake az ixtijorhoi mavçudro intixob kuned.',
+);
+
 /** Thai (ไทย)
  * @author Manop
  * @author Mopza
@@ -2036,6 +2055,7 @@ riddler|谜人',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Shinjiman
  * @author Wrightbus
  */
@@ -2056,7 +2076,7 @@ riddler|謎人',
 	'vote-results-choice' => '選擇',
 	'vote-results-count' => '數量',
 	'vote-results-none' => '在這個時間無放任何投票。',
-	'vote-login' => '您一定要[$1 登入]先可以投票。',
+	'vote-login' => '你必須[$1 登錄]以投票。',
 	'vote-invalid-choice' => '您一定要在可以選擇的選項中選擇一個。',
 	'right-vote' => '投票',
 	'right-voteadmin' => '觀看投票結果',

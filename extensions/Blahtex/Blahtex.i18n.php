@@ -3250,6 +3250,75 @@ $messages['tg-cyrl'] = array(
 Ба истифодаи фармони "$3{...}" кӯшиш кунед.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'math_noblahtex' => 'Nametavon blahtex içro kard, cun on bojad dar $1 boşad',
+	'math-desc' => 'Dodahoi xuruçiji MathML baroi barcasbhoi &lt;math&gt;',
+	'math_AmbiguousInfix' => 'Çojgirkuniji nofahmoi "$1".
+Baroi ibhomzudoī kūşiş kuned az qafshoi ilovagiji "{ ... }" istifoda bared.',
+	'math_CannotChangeDirectory' => 'Pūşai dar holi korro nametavon taƣjir dod',
+	'math_CannotCreateTexFile' => 'Nametavon parvandai tex eçod kard',
+	'math_CannotRunDvipng' => 'Nametavon dvipng-ro ba kor andoxt',
+	'math_CannotRunLatex' => 'Nametavon latex-ro ba kor andoxt',
+	'math_CannotWritePngDirectory' => 'Nametavon ba pūşai suduri PNG navişt',
+	'math_CannotWriteTexFile' => 'Nametavon ba parvandani tex navişt',
+	'math_CasesRowTooBig' => 'Tanho du sabt dar har satri ça\'bai "mavorid" boşad',
+	'math_DoubleSubscript' => 'Bo du zerskript pajvasta ba jak pojgoh barxūrd.
+Tanho ba jake içozat ast.',
+	'math_DoubleSuperscript' => 'Bo du zerskript pajvasta ba jak pojgoh barxūrd.
+Tanho ba jake içozat ast.',
+	'math_IllegalCharacter' => 'Alomati ƣajri miçoz dar vurudi',
+	'math_IllegalCommandInMathMode' => 'Farmoni "$1"  dar tarzi rijozī ƣajri miçoz ast',
+	'math_IllegalCommandInMathModeWithHint' => 'Farmoni "$1" dar tarzi rijozī ƣajri miçoz ast
+Şojad şumo mexosted baçoi on az "$2" istifoda bared?',
+	'math_IllegalCommandInTextMode' => 'Farmoni "$1"  dar tarzi matnī ƣajri miçoz ast',
+	'math_IllegalCommandInTextModeWithHint' => 'Farmoni "$1" dar tarzi matnī ƣajri miçoz ast
+Şojad şumo mexosted baçoi on az "$2" istifoda bared?',
+	'math_IllegalDelimiter' => 'Mahdudkunandai ƣajri miçoz ba\'d az "$1"',
+	'math_IllegalFinalBackslash' => 'Kasri ƣajri miçoz "\\" dar oxiri vurudi',
+	'math_IllegalNestedFontEncodings' => 'Farmonhoi ramzguzoriji huruf nametavonad oşjonavī şavad',
+	'math_IllegalRedefinition' => 'Farmoni "$1" allakaj muşaxxas şudaast; şumo nametavoned onro dubora muşaxxas kuned',
+	'math_InvalidColour' => 'Rangi "$1" nomū\'tabar ast',
+	'math_InvalidUtf8Input' => "Riştai vurudi UTF-8-i mū'tabar nest",
+	'math_LatexFontNotSpecified' => 'Heç hurufi LaTeX baroi "$1" muşaxxas naşudaast',
+	'math_LatexPackageUnavailable' => 'Nametavon PNG-ro iroa\' doda cun bastai LaTeX "$1" dastnoras ast',
+	'math_MismatchedBeginAndEnd' => 'Farmonhoi "$1" va "$2" rost nameojand',
+	'math_MisplacedLimits' => 'Farmoni "$1" tanho metavonad ba\'d az amalgari rijozī namojon şavad.
+Istifodai "\\mathop" ba nazar gired.',
+	'math_MissingCommandAfterNewcommand' => 'Nomi farmoni çadid ba\'d az "\\newcommand" nopadid jo nomū\'tabar ast.\\nDaqiqan jak farmon bojad muşaxxas şavad;\\non bojad bo kasr şurū\' şavad "\\" va doroi tanho alomathoi alifboī boşad.',
+	'math_MissingDelimiter' => 'Mahdudkunandai nopadid ba\'d az "$1"',
+	'math_MissingOpenBraceAfter' => 'Qafsi kuşodi nopadid "{" ba\'d az "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Qafsi kuşodi nopadid "{" dar oxiri vurudi',
+	'math_MissingOpenBraceBefore' => 'Qafsi kuşodi nopadid "{" peş az "$1"',
+	'math_MissingOrIllegalParameterCount' => 'Parametri şumori nopadid jo nomū\'tabar dar ta\'rifi "$1".
+Bojad adadi şomili tanxo bajni 1 va 9 boşad.',
+	'math_MissingOrIllegalParameterIndex' => 'Parametri indeksi gumşuda jo ƣajrimiçoz dar ta\'rifi "$1"',
+	'math_NonAsciiInMathMode' => 'Alomathoi ƣajri-ASCII metavonand tanho dar tarzi matnī istifoda şavand
+Ba mijon guzoştani alomathoi muşkil kūşiş kuned "\\text{...}".',
+	'math_NotEnoughArguments' => 'Munozirai nokifoja baroi "$1" peşnihod şudaast',
+	'math_PngIncompatibleCharacter' => 'Nametavon dururst PNG-i alomati $1 doştaro tavlid kard',
+	'math_ReservedCommand' => 'Farmoni "$1" baroi istifodai doxilī tavassuti blahtex band karda şudaast',
+	'math_SubstackRowTooBig' => 'Tanho jak mudoxila metavonad dar har qatori bloki "zertūda" boşad',
+	'math_TooManyMathmlNodes' => "Te'dodi xele zijodi girehho dar şoxai MathML",
+	'math_TooManyTokens' => 'Vurudi xele daroz ast',
+	'math_UnavailableSymbolFontCombination' => 'Alomati "$1" dar hurufi "$2" dastras nest',
+	'math_UnexpectedNextCell' => 'Farmoni "&" metavonad tanho bajni bloki "\\begin ... \\end" namojon şavad',
+	'math_UnexpectedNextRow' => 'Farmoni "\\\\" metavonad tanho bajni bloki "\\begin ... \\end" namojon şavad',
+	'math_UnmatchedBegin' => 'Barxūrd bo "\\begin" biduni mutobiqat bo "\\end"',
+	'math_UnmatchedCloseBrace' => 'Barxūrd bo qafsi pūşida "}" biduni mutobiqat bo qafsi kuşoda "{"',
+	'math_UnmatchedEnd' => 'Barxūrd bo "\\end" biduni mutobiqat bo "\\begin"',
+	'math_UnmatchedLeft' => 'Barxūrd bo "\\left" biduni mutobiqat bo "\\right"',
+	'math_UnmatchedOpenBrace' => 'Barxūrd bo qafsi kuşod "{" biduni mutobiqat bo qafsi pūşida "}"',
+	'math_UnmatchedOpenBracket' => 'Barxūrd bo qolabi kuşod "[" biduni mutobiqat bo qolabi pūşida "]"',
+	'math_UnmatchedRight' => 'Barxūrd bo "\\right" biduni mutobiqat bo "\\left',
+	'math_UnrecognisedCommand' => 'Farmoni noşinosi "$1"',
+	'math_WrongFontEncoding' => 'Alomati "$1" nametavonad dar ramzguzoriji hurufi "$2" namojon şavad',
+	'math_WrongFontEncodingWithHint' => 'Alomati "$1" nametavonad dar ramzguzoriji hurufi "$2" namojon şavad.
+Ba istifodai farmoni "$3{...}" kūşiş kuned.',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

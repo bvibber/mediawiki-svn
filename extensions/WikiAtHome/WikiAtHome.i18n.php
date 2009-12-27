@@ -306,6 +306,45 @@ $messages['bs'] = array(
 	'wah-menu-pref' => 'Postavke',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'wah-desc' => 'Umožňuje distribuci úloh překódování videa klientům pomocí Firefogg',
+	'wah-user-desc' => 'Wiki@Home umožňuje členům komunity věnovat nevyužitý čas procesoru na pomoc při operacích náročných na zdroje',
+	'wah-short-audio' => '$1 zvukový soubor, $2',
+	'wah-short-video' => '$1 videosoubor, $2',
+	'wah-short-general' => '$1 multimediální soubor, $2',
+	'wah-long-audio' => '($1 zvukový soubor, délka: $2, $3)',
+	'wah-long-video' => '($1 videosoubor, délka: $2, $4×$5 pixelů, $3)',
+	'wah-long-multiplexed' => '(multiplexovaný audio/videsoubor, $1, délka: $2, $4×$5 pixels, celkem $3)',
+	'wah-long-general' => '(multimediální soubor, délka: $2, $3)',
+	'wah-long-error' => '(ffmpeg nedokázal načíst následující soubor: $1)',
+	'wah-transcode-working' => 'Toto video se zpracovává, zkuste to prosím později',
+	'wah-transcode-helpout' => 'Můžete pomoci s překódováním tohoto videa navštívením [[Special:WikiAtHome|Wiki@Home]].',
+	'wah-transcode-fail' => 'Tento soubor se nepodařilo překódovat.',
+	'wah-javascript-off' => 'Abyste se mohli zúčastnit Wiki@Home, musíte mít zapnutý JavaScript',
+	'wah-loading' => 'načítám rozhraní Wiki@Home …',
+	'wah-menu-jobs' => 'Úlohy',
+	'wah-menu-stats' => 'Statistiky',
+	'wah-menu-pref' => 'Nastavení',
+	'wah-lookingforjob' => 'Hledá se úloha…',
+	'wah-start-on-visit' => 'Spustit Wiki@Home vždy, když navštívím tuto stránku.',
+	'wah-jobs-while-away' => 'Spouštět úlohy pouze, pokud jsem prohlížeč nepoužíval více než 20 minut.',
+	'wah-nojobfound' => 'Nebyla nalezena žádná úloha. Opětovný pokus za $1.',
+	'wah-notoken-login' => 'Jste přihlášeni? Pokud ne, přihlašte se, prosím.',
+	'wah-apioff' => 'Zdá se, že API Wiki@Home je vypnuto. Zkontaktuje prosím správce wiki.',
+	'wah-doing-job' => 'Úloha: <i>$1</i>: <i>$2</i>',
+	'wah-downloading' => 'Stahování souboru <i>$1%</i> dokončeno',
+	'wah-encoding' => 'Kódování souboru <i>$1%</i> dokončeno',
+	'wah-encoding-fail' => 'Kódování selhalo. Znovu načtěte tuto stránku nebo to zkuste pozěji.',
+	'wah-uploading' => 'Nahrávání souboru <i>$1</i> dokončeno',
+	'wah-uploadfail' => 'Nahrávání selhalo',
+	'wah-doneuploading' => 'Nahrávání dokončeno. Děkujeme vám za příspěvek.',
+	'wah-needs-firefogg' => 'Abyste se mohli zúčastnit Wiki@Home, musíte mít nainstalovaný <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Objevila se chyba týkající se API. Zkuste to prosím později.',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Imre

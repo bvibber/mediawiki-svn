@@ -1348,6 +1348,22 @@ $messages['tg-cyrl'] = array(
 	'editmsg-patch-success' => 'Бо муваффақият васила карда шуд.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'editmessages' => 'Viroişi pajomho',
+	'editmsg-target' => 'Pajomi maqsad:',
+	'editmsg-search' => 'Çustuçū',
+	'editmsg-show-list' => 'Dar holi namoişi qimatho baroi nomi pajom "$1"',
+	'editmsg-get-patch' => 'Tavlidi vasila',
+	'editmsg-new-search' => 'Çustuçūi çadid',
+	'editmsg-apply-patch' => 'Içroi vasila',
+	'editmsg-no-patch' => 'Nametavon farmoni "vasilaro" içro kard',
+	'editmsg-patch-failed' => 'Vasila bo holati xoriç şudan $1 nomuvaffaq şud',
+	'editmsg-patch-success' => 'Bo muvaffaqijat vasila karda şud.',
+);
+
 /** Thai (ไทย)
  * @author Manop
  * @author Octahedron80

@@ -2258,6 +2258,14 @@ $messages['tg-cyrl'] = array(
 	'povwatch_title' => 'Унвон:',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'povwatch_unknown_subpage' => 'Zersahifai noşinos.',
+	'povwatch_title' => 'Unvon:',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

@@ -91,6 +91,9 @@ $messages['bg'] = array(
 	'externalpages' => 'Външни страници',
 	'externalpages-no-project' => 'Не е указан проект',
 	'externalpages-no-page' => 'Не е указана страница',
+	'externalpages-error-generic' => 'Възникна грешка',
+	'externalpages-bad-url' => 'Неуспех при получаване на URL-адреса',
+	'externalpages-bad-url-data' => 'Неуспех при получаване съдържанието на страницата',
 );
 
 /** Bengali (বাংলা)
@@ -216,6 +219,14 @@ $messages['el'] = array(
 	'externalpages-no-page' => 'Δεν διευκρινίζεται κάποια σελίδα',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'externalpages' => 'Eksteraj Paĝoj',
+	'externalpages-error-generic' => 'Eraraj okazis',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Translationista
@@ -231,9 +242,20 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'externalpages' => 'Ulkoiset sivut',
+	'externalpages-desc' => 'Hakee ja näyttää sivuja ei-paikallisilta WMF-sivustoilta.',
+	'externalpages-bad-year' => 'Annettu vuosi virheellinen',
+	'externalpages-bad-language' => 'Annettu kieli virheellinen',
+	'externalpages-bad-project' => 'Annettu projekti virheellinen',
+	'externalpages-no-project' => 'Projektia ei annettu',
+	'externalpages-bad-page' => 'Annetti sivu virheellinen',
+	'externalpages-no-page' => 'Sivua ei annettu',
+	'externalpages-error-generic' => 'Tapahtui virhe',
+	'externalpages-bad-url' => 'URL-osoitteen hakeminen epäonnistui',
+	'externalpages-bad-url-data' => 'Sivun sisällön hakeminen epäonnistui',
 );
 
 /** French (Français)
@@ -737,5 +759,19 @@ $messages['vi'] = array(
 	'externalpages-error-generic' => 'Đã gặp lỗi',
 	'externalpages-bad-url' => 'Không thể truy cập URL',
 	'externalpages-bad-url-data' => 'Không thể lấy nội dung trang',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'externalpages-bad-url-data' => '获取页面内容失败',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'externalpages-bad-url-data' => '獲取頁面內容失敗',
 );
 

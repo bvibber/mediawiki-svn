@@ -601,6 +601,13 @@ $messages['tg-cyrl'] = array(
 	'protectsection_forbidden' => 'Мамнӯъ',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'protectsection_forbidden' => "Mamnū'",
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

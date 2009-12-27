@@ -371,6 +371,7 @@ $messages['he'] = array(
 	'emergencydesysop-submit' => 'שליחה',
 	'emergencydesysop-incomplete' => 'כל שדות הטופס נדרשים, אנא נסו שוב.',
 	'emergencydesysop-notasysop' => 'משתמש היעד איננו בקבוצת מפעילי המערכת.',
+	'emergencydesysop-nogroups' => 'אין',
 	'emergencydesysop-invalidtarget' => 'משתמש היעד אינו קיים.',
 );
 

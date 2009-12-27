@@ -229,14 +229,22 @@ $messages['be-tarask'] = array(
  * @author Turin
  */
 $messages['bg'] = array(
+	'ratinghistory' => 'История на оценката на страницата',
+	'ratinghistory-leg' => 'Данни за историята на оценката на [[:$1|$1]]',
 	'ratinghistory-tab' => 'рейтинг',
+	'ratinghistory-link' => 'Оценка на страницата',
 	'ratinghistory-period' => 'Период от време:',
 	'ratinghistory-month' => 'последния месец',
 	'ratinghistory-year' => 'последната година',
 	'ratinghistory-3years' => 'последните 3 години',
 	'ratinghistory-ave' => 'Средно: $1',
+	'ratinghistory-chart' => 'Читателската оценка през времето',
+	'ratinghistory-table' => 'Преглед на читателските оценки',
+	'ratinghistory-users' => 'Потребители, които са дали оценка',
 	'ratinghistory-svg' => 'Преглед като SVG',
+	'ratinghistory-table-rating' => 'Оценка',
 	'ratinghistory-table-votes' => 'Гласове',
+	'ratinghistory-ratings' => "'''Легенда:''' '''(1)''' - Много ниска; '''(2)''' - Ниска; '''(3)''' - Средна; '''(4)''' - Висока; '''(5)''' - Отлична;",
 );
 
 /** Bengali (বাংলা)
@@ -763,12 +771,14 @@ $messages['frp'] = array(
 	'ratinghistory-table-rating' => 'Èstimacion',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'Por lo moment, y at pas prod d’avis èxprimâs per des liésors por fâre vêre des diagramos.',
+	'ratinghistory-ratings' => "'''Lègenda :''' '''(1)''' - Crouyo ; '''(2)''' - Prod moyen ; '''(3)''' - Moyen ; '''(4)''' - Bon ; '''(5)''' - Famox.",
 	'ratinghistory-legend' => "Lo '''nombro de rèvisions per jorn''' <font color=\"red\">''(rojo)''</font>, l’'''èstimacion moyena per jorn''' <font color=\"blue\">''(blu)''</font>
 et l’'''èstimacion moyena por lo temps chouèsi''' <font color=\"green\">''(vèrd)''</font> sont reprèsentâs desot fôrma de diagramo ce-desot, per dâta.
 L’'''èstimacion moyena por lo temps chouèsi''' est simplament la moyena de totes les èstimacions de tôs los jorns ''dedens'' lo temps chouèsi.
 Les èstimacions sont cetes :
 
 '''(1)''' - Crouyo ; '''(2)''' - Prod moyen ; '''(3)''' - Moyen ; '''(4)''' - Bon ; '''(5)''' - Famox.",
+	'ratinghistory-graph-scale' => "'''Èstimacions per jorn''' <font color=\"red\">''(rojo)''</font> montrâs a l’èchiéla ''1:\$1''.",
 	'right-feedback' => 'Utilisar lo formulèro de retôrn d’enformacions por èstimar una pâge',
 );
 
@@ -1956,18 +1966,30 @@ $messages['tk'] = array(
 	'ratinghistory-leg' => '[[:$1|$1]] üçin derejelendirme geçmişi maglumaty',
 	'ratinghistory-tab' => 'derejelendirme',
 	'ratinghistory-link' => 'Sahypa derejelendirmesi',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Bu sahypany gözden geçirmek üçin wagt tapanyňyz üçin sag boluň!</font>''",
 	'ratinghistory-period' => 'Wagt periody:',
 	'ratinghistory-month' => 'geçen aý',
 	'ratinghistory-3months' => 'geçen 3 aý',
 	'ratinghistory-year' => 'geçen ýyl',
 	'ratinghistory-3years' => 'geçen 3 ýyl',
 	'ratinghistory-ave' => 'Ort: $1',
+	'ratinghistory-chart' => 'Ähli wagtky okyjy derejelendirmeleri',
 	'ratinghistory-purge' => 'keşi boşat',
+	'ratinghistory-table' => 'Okyjy derejelendirmelerine umumy syn',
 	'ratinghistory-users' => 'Derejelendirme beren ulanyjylar',
+	'ratinghistory-graph' => '"$3" sahypasynda $2 ($1 {{PLURAL:$1|gözden geçirme|gözden geçirme}})',
 	'ratinghistory-svg' => 'SVG edip görkez',
 	'ratinghistory-table-rating' => 'Derejelendirme',
 	'ratinghistory-table-votes' => 'Sesler',
+	'ratinghistory-none' => 'Grafikalar üçin häzirki wagtda ýeterlik mukdarda okyjy seslenmesi ýok.',
 	'ratinghistory-ratings' => "'''Şertli belgi:''' '''(1)''' - Ýaramaz; '''(2)''' - Pes; '''(3)''' - Orta gürp; '''(4)''' - Ýagşy; '''(5)''' - Ajaýyp;",
+	'ratinghistory-legend' => "'''günlük ortaça gözden geçirme''' <font color=\"red\">''(gyzyl)''</font>, '''günlük ortaça derejelendirme''' <font color=\"blue\">''(gök)''</font>
+we '''häzirki ortaça derejelendirme''' <font color=\"green\">''(ýaşyl)''</font> aşakda sene boýunça çyzyldy.
+'''häzirki ortaça derejelendirme''' her bir gün üçin şu böleginiň ''dowamynda'' günlük derejelendirmeleriniň ortaça bahasydyr.
+Derejelendirmeler aşakdaky ýalydyr:
+
+'''(1)''' - Ýaramaz; '''(2)''' - Pes; '''(3)''' - Orta gürp; '''(4)''' - Ýagşy; '''(5)''' - Ajaýyp;",
+	'ratinghistory-graph-scale' => "'''Günlük gözden geçirmeler''' <font color=\"red\">''(gyzyl)''</font> ''1:\$1'' masştabynda görkezilýär.",
 	'right-feedback' => 'Sahypa derejelendirmek üçin seslenme formuny ulanyň',
 );
 

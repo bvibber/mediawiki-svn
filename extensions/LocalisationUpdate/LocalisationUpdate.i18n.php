@@ -353,6 +353,13 @@ $messages['sr-ec'] = array(
 	'localisationupdate-desc' => 'Ажурира локализоване поруке колико је то могуће',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
+ */
+$messages['sr-el'] = array(
+	'localisationupdate-desc' => 'Ažurira lokalizovane poruke koliko je to moguće',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

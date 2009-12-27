@@ -430,6 +430,7 @@ $messages['he'] = array(
 	'index' => 'חיפוש באינדקס',
 	'index-legend' => 'חיפוש באינדקס',
 	'index-search' => 'חיפוש:',
+	'index-submit' => 'שליחה',
 	'index-disambig-start' => "המונח '''$1''' עשוי להתייחס למספר דפים:",
 	'index-hide-detail' => 'הסתרת רשימת הדפים',
 	'index-no-results' => 'החיפוש לא החזיר תוצאות',

@@ -329,6 +329,13 @@ $messages['sr-ec'] = array(
 	'i18ntags-desc' => 'Приступа i18n функцијама за форматирање бројева, граматику и множину у било ком доступном језику',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
+ */
+$messages['sr-el'] = array(
+	'i18ntags-desc' => 'Pristupa i18n funkcijama za formatiranje brojeva, gramatiku i množinu u bilo kom dostupnom jeziku',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

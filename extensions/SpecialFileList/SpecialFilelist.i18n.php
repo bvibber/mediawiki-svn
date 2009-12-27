@@ -834,6 +834,16 @@ $messages['tg-cyrl'] = array(
 	'filelist-image-desc' => 'тавсиф',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'filelist' => 'Fehristi parvanda',
+	'filelist-show-list' => 'Namoişi fehrist',
+	'filelist-show-gallery' => 'Namoişi nigoriston',
+	'filelist-image-desc' => 'tavsif',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

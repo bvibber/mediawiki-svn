@@ -134,10 +134,12 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'tablemod-msg-remove' => 'Poista',
+	'tablemod-error-invalidaction' => 'Epäkelpo toiminto.',
 );
 
 /** French (Français)

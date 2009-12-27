@@ -164,6 +164,13 @@ $messages['fr'] = array(
 	'titlekey-desc' => 'Mécanisme de suggestion de recherche par préfixe de titre',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'titlekey-desc' => 'Mècanismo de consèly de rechèrche per prèfixo de titro.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

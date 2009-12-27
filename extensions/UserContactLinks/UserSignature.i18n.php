@@ -541,6 +541,13 @@ $messages['tg-cyrl'] = array(
 	'usercontactlink-baduser' => 'номи корбарии нодуруст',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'usercontactlink-baduser' => 'nomi korbariji nodurust',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

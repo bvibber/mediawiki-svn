@@ -498,6 +498,7 @@ $messages['eo'] = array(
 	'expand_templates_xml_output' => 'XML-eligo',
 	'expand_templates_ok' => 'Ek!',
 	'expand_templates_remove_comments' => 'Forigi komentojn',
+	'expand_templates_remove_nowiki' => 'Nuligi <nowiki> etikedojn en rezulto',
 	'expand_templates_generate_xml' => 'Montri XML-sintaksarbon',
 	'expand_templates_preview' => 'Antaŭrigardo',
 );
@@ -1748,6 +1749,7 @@ $messages['sr-ec'] = array(
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1763,6 +1765,7 @@ Do ovoga dolazi tako što se zove odgovarajuće stanje parsera iz samog MedijaVi
 	'expand_templates_xml_output' => 'XML izlaz',
 	'expand_templates_ok' => 'U redu',
 	'expand_templates_remove_comments' => 'Ukloni komentare',
+	'expand_templates_remove_nowiki' => 'Poništava efekat <nowiki> tagova u prikazu članaka',
 	'expand_templates_generate_xml' => 'prikaži XML stablo',
 	'expand_templates_preview' => 'Prikaz',
 );
@@ -1870,6 +1873,26 @@ $messages['tg-cyrl'] = array(
 	'expand_templates_preview' => 'Пешнамоиш',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'expandtemplates' => 'Bastdodani şablonho',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Şablonho, dasturhoi taçzehkunanda va mutaƣjirhoro gustariş medihad]], to matni nihoiro namoiş dihad va sahifaro ba peşnamoiş darovarad',
+	'expand_templates_intro' => "In sahifai viƶa matnero darjoft karda va tamomi şablonhoi ba kor rafta dar onro ba tavri bozgaşte bast medihad. Hamcunin tobehoi taçzeh
+<nowiki>{{</nowiki>#if:...}}, va mutaƣjirhoe cun
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;ro ham bast medihad – dar voqe' taqriban har ciro ki doxili du akulot boşad.
+In kor bo sado zadani marhilai taçzehi marbut dar xudi MediaViki surat megirad.",
+	'expand_templates_title' => "Unvoni mavzū', baroi {{PAGENAME}} va ƣajra.:",
+	'expand_templates_input' => 'Matni vurudī:',
+	'expand_templates_output' => 'Natiça',
+	'expand_templates_xml_output' => 'Xuruçī XML',
+	'expand_templates_ok' => "Ta'jid",
+	'expand_templates_remove_comments' => 'Hazfi tavzehot',
+	'expand_templates_generate_xml' => 'Namoişi daraxti taçzehi XML',
+	'expand_templates_preview' => 'Peşnamoiş',
+);
+
 /** Thai (ไทย)
  * @author Ans
  * @author Octahedron80
@@ -1884,10 +1907,20 @@ $messages['th'] = array(
  */
 $messages['tk'] = array(
 	'expandtemplates' => 'Şablonlary giňelt',
+	'expandtemplates-desc' => 'Giňeldilen wikiteksti görkezmek we işlenilen sahypany deslapky synlamak üçin [[Special:ExpandTemplates|şablonlary, parser funksiýalaryny we üýtgeýänleri giňeldýär]]',
+	'expand_templates_intro' => 'Bu ýörite sahypa birazajyk tekst alýar we onuň içindäki ähli şablonlary rekursiw giňeldýär.
+Şeýlede şu hili parser funksiýalaryny hem giňeldýär
+<nowiki>{{</nowiki>#if:…}} we şuňa meňzeş üýtgeýänleri
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;aslynda jübüt ýaýly ähli zatlary diýen ýaly.
+Ol muny degişli parser sepgidini MediaWikiniň özünden çagyryp edýär.',
+	'expand_templates_title' => 'Kontekst ady, {{PAGENAME}} we ş.m. üçin:',
+	'expand_templates_input' => 'Giriş teksti:',
 	'expand_templates_output' => 'Netije',
+	'expand_templates_xml_output' => 'XML önümi',
 	'expand_templates_ok' => 'Bolýar',
 	'expand_templates_remove_comments' => 'Teswirleri aýyr',
 	'expand_templates_remove_nowiki' => 'Netijelerde <nowiki> teglerini bökdäň',
+	'expand_templates_generate_xml' => 'XML ýygnama agajyny görkez',
 	'expand_templates_preview' => 'Deslapky syn',
 );
 

@@ -174,6 +174,13 @@ $messages['es'] = array(
 	'multiboilerplate-submit' => 'Cargar',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'multiboilerplate-submit' => 'Laadi',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

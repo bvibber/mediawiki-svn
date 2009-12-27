@@ -1320,6 +1320,7 @@ $messages['uk'] = array(
 	'refreshspecial-button' => 'Оновити вибрані',
 	'refreshspecial-fail' => 'Будь ласка, оберіть принаймні одну спеціальну сторінку для оновлення.',
 	'refreshspecial-refreshing' => 'оновлення спеціальних сторінок',
+	'refreshspecial-skipped' => 'незначна помилка, пропущена',
 	'refreshspecial-choice' => 'оновлення спеціальних сторінок',
 	'refreshspecial-js-disabled' => '(<i>Ви не можете вибрати всі сторінки, коли відключений JavaScript</i>)',
 	'refreshspecial-select-all-pages' => 'Виділити всі сторінки',

@@ -99,6 +99,14 @@ $messages['bn'] = array(
 	'abcdownload' => 'ডাউনলোড:',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'abcdesc' => 'ABC music পাজালানির কা <tt>&lt;abc&gt;</tt> টেগহান তিলকর',
+	'abcdownload' => 'ডাউনলোড:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

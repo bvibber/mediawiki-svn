@@ -195,6 +195,13 @@ $messages['fr'] = array(
 	'mwsearch-desc' => 'Plug-in pour les recherches dans MediaWiki',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'mwsearch-desc' => 'Modulo d’èxtension por les rechèrches dens MediaWiki.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -509,6 +516,13 @@ $messages['te'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'mwsearch-desc' => 'Афзунаи MWSearch',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'mwsearch-desc' => 'Afzunai MWSearch',
 );
 
 /** Tagalog (Tagalog)

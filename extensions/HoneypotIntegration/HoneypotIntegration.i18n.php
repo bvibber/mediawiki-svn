@@ -371,6 +371,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'honeypot-desc' => 'Забезпечує інтеграцію з [http://projecthoneypot.org/ проектом Honey Pot] для сайтів MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Кількість останніх подій, створених IP-адресами, у відповідності до проекту Honey Pot',
 );
 
 /** Vèneto (Vèneto)

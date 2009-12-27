@@ -157,6 +157,13 @@ $messages['fr'] = array(
 	'opensearchxml-desc' => 'Interface XML pour [http://www.opensearch.org OpenSearch] avec des extraits du texte',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'opensearchxml-desc' => 'Entèrface XML por [http://www.opensearch.org OpenSearch] avouéc des èxtrèts du tèxto.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

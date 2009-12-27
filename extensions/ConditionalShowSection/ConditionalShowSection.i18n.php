@@ -239,6 +239,13 @@ $messages['sr-ec'] = array(
 	'conditionalshowsection-desc' => 'Додаје cshow таг за условно приказивање и скривање одељака вики-текста.',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
+ */
+$messages['sr-el'] = array(
+	'conditionalshowsection-desc' => 'Dodaje cshow tag za uslovno prikazivanje i skrivanje odeljaka viki-teksta.',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  */

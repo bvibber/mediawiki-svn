@@ -1802,6 +1802,22 @@ $messages['tg-cyrl'] = array(
 	'importusers-realname' => 'номи аслӣ',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'importusers' => 'Vorid kardani Korbaron',
+	'importusers-uploadfile' => 'Firistodani parvanda',
+	'importusers-user-added' => "Korbar '''$1''' ilova şud.",
+	'importusers-user-present-update' => "Korbar '''$1''' allakaj vuçud dorad. Barūz şudaast.",
+	'importusers-user-present-not-update' => "Korbar '''$1''' allakaj vuçud dorad. Barūz naşudaast.",
+	'importusers-log-summary' => 'Xulosa',
+	'importusers-log-summary-all' => 'Hama',
+	'importusers-password' => 'guzarvoƶa',
+	'importusers-email' => 'poctai elektronī',
+	'importusers-realname' => 'nomi aslī',
+);
+
 /** Thai (ไทย)
  * @author Mopza
  * @author Octahedron80

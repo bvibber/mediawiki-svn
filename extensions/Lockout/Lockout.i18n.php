@@ -261,6 +261,13 @@ $messages['sr-ec'] = array(
 	'lockout-desc' => 'Онемогућава блокиране кориснике да се пријаве',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
+ */
+$messages['sr-el'] = array(
+	'lockout-desc' => 'Onemogućava blokirane korisnike da se prijave',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

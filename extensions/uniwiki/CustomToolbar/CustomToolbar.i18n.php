@@ -2611,6 +2611,16 @@ $wgCustomToolbarMessages['tg-cyrl'] = array(
 	'ct_attachment_tip' => 'Иловаи як замима',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$wgCustomToolbarMessages['tg-latn'] = array(
+	'ct_external_caption' => 'Pajvandi beruna',
+	'ct_image_tip' => 'Ilovai jak aks',
+	'ct_image_caption' => 'Ilovai aks',
+	'ct_attachment_tip' => 'Ilovai jak zamima',
+);
+
 /** Thai (ไทย)
  * @author Woraponboonkerd
  */
@@ -2886,6 +2896,7 @@ $wgCustomToolbarMessages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author Liangent
  */
 $wgCustomToolbarMessages['zh-hans'] = array(
 	'ct-desc' => '增加了可扩展工具栏',
@@ -2919,7 +2930,7 @@ $wgCustomToolbarMessages['zh-hans'] = array(
 	'ct_horizontal_tip' => '插入水平线（小心使用）',
 	'ct_horizontal_caption' => '水平线',
 	'ct_upload' => '上传 $1',
-	'ct_select' => '选择要上传的$1',
+	'ct_select' => '选择要上传的$1：',
 	'ct_caption' => '添加标题（可选）',
 	'ct_link' => '添加链接名称（可选）',
 	'ct_submit' => 'Go!',

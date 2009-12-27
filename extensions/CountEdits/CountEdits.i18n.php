@@ -1285,6 +1285,7 @@ $messages['sr-ec'] = array(
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
  * @author Michaello
  * @author Sasa Stefanovic
  */
@@ -1296,7 +1297,7 @@ $messages['sr-el'] = array(
 	'countedits-ok' => 'U redu',
 	'countedits-nosuchuser' => 'Ne postoji korisnik sa imenom $1.',
 	'countedits-resultheader' => 'Rezultati za $1',
-	'countedits-resulttext' => '$1 ima $2 izmena',
+	'countedits-resulttext' => '$1 je nepravio $2 {{PLURAL:$2|izmenu|izmena}}',
 	'countedits-mostactive' => 'Najaktivniji korisnici',
 	'countedits-nocontribs' => 'Ne postoje prilozi na ovoj viki.',
 );
@@ -1400,6 +1401,17 @@ $messages['tg-cyrl'] = array(
 	'countedits-username' => 'Номи корбарӣ:',
 	'countedits-nosuchuser' => 'Корбаре бо номи $1 вуҷуд надорад.',
 	'countedits-resultheader' => 'Натоиҷ барои $1',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'countedits-warning' => "'''Huşdor:''' Ba kitobro az rūi muqovaaş baho nadihed.
+Ba hissaguzoron az rūi te'dodi viroişaşon baho nadihed.",
+	'countedits-username' => 'Nomi korbarī:',
+	'countedits-nosuchuser' => 'Korbare bo nomi $1 vuçud nadorad.',
+	'countedits-resultheader' => 'Natoiç baroi $1',
 );
 
 /** Thai (ไทย)

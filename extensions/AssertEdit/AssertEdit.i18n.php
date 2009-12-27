@@ -716,6 +716,15 @@ $messages['tg-cyrl'] = array(
 	'assert_edit_message' => 'Таъйиди мавриди назар ($1) номувофиқ буд.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'assert_edit_title' => "Ta'jid nomuvaffaq şud",
+	'assert_edit_desc' => "Imkoni ta'jidi viroişhoro baroi istifodai robotho ilova mekunad",
+	'assert_edit_message' => "Ta'jidi mavridi nazar ($1) nomuvofiq bud.",
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */

@@ -1483,6 +1483,22 @@ $messages['tg-cyrl'] = array(
 	'tasklistprojdisp' => 'Намоиш',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'tasklist' => 'Fehristi Vazifa',
+	'tasklistbyproject' => 'Fehristi Vazifa Tavassuti Loiha',
+	'tasklistunknownproject' => 'Loihai noşinos',
+	'tasklistunspecuser' => 'Korbari muşaxxasnaşuda',
+	'tasklistincorrectuser' => 'Nomi korbariji nodurust',
+	'tasklistemail' => 'Mūhtaram %s',
+	'tasklistmytasks' => 'Vazifahoi man',
+	'tasklistbyprojname' => "Vazifahoi ta'jin şuda baroi '''%s'''",
+	'tasklistchooseproj' => 'Intixobi Loiha:',
+	'tasklistprojdisp' => 'Namoiş',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

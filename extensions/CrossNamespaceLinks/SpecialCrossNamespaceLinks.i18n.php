@@ -993,6 +993,16 @@ $messages['tg-cyrl'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|пайванд|пайвандҳо}} ба $3',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'crossnamespacelinks' => 'Pajvandhoe az jak fazoi nom ba fazoi nomi digar',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Pajvandhoi bajnivikiro fehrist mekunad]], ki nabojad dar {{SITENAME}} vuçud doşta boşand',
+	'crossnamespacelinks-summary' => "In sahifa fehriste az pajvandhoe, ki az jak sahifa dar fazoi nomi aslī ba jak sahifa dar digar fazoi nom (ba ƣajr az {{ns:special}}, {{ns:talk}}, {{ns:project}} va {{ns:template}} namespaces), vuçud dorad iroa' mekunad, ki istifoda az onho tavzeh nameşavad.",
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|pajvand|pajvandho}} ba $3',
+);
+
 /** Thai (ไทย)
  * @author Manop
  */

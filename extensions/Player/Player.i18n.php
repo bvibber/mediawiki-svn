@@ -1296,6 +1296,17 @@ $messages['tg-cyrl'] = array(
 	'player-goto-file' => 'парванда',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'player-file' => 'Nomi parvanda',
+	'player-not-found' => 'parvanda joft naşud',
+	'player-invalid-title' => "unvoni nomū'tabar",
+	'player-goto-page' => 'Sahifa',
+	'player-goto-file' => 'parvanda',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

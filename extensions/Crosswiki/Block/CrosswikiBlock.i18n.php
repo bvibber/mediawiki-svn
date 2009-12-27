@@ -2550,6 +2550,38 @@ $messages['tg-cyrl'] = array(
 * [[$4]]",
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'crosswikiblock-target' => 'Nişonai IP jo nomi korbarī va vikiji maqsad:',
+	'crosswikiblock-reason' => 'Dalel:',
+	'crosswikiblock-submit' => 'Bastani in korbar',
+	'crosswikiblock-anononly' => 'Faqat bastani korbaroni gumnom',
+	'crosswikiblock-nocreate' => 'Çilavgirī az eçodi hisob',
+	'crosswikiblock-noemail' => 'Çilavgiriji korbar az firistodani poctai elektronī',
+	'crosswikiunblock' => 'Az bastan ozod kardani korbar dar digar viki',
+	'crosswikiunblock-user' => 'Nomi korbarī, nişonai IP  jo nişonai bastan va vikiji maqsad:',
+	'crosswikiunblock-reason' => 'Sabab:',
+	'crosswikiunblock-submit' => 'Boz kardani in korbar',
+	'crosswikiunblock-success' => "Korbar '''$1''' bo muvaffaqijat boz şud.
+
+Bargarded ba:
+* [[Special:CrosswikiBlock|Formi bastan]]
+* [[$2]]",
+	'crosswikiblock-dbnotfound' => 'Pojgohi dodai $1 vuçud nadorad',
+	'crosswikiblock-noname' => '"$1" nomi korbariji nomū\'tabar ast.',
+	'crosswikiblock-nouser' => 'Korbar "$3" joft naşud.',
+	'crosswikiblock-noreason' => 'Sababe muşaxxas naşudaast.',
+	'crosswikiblock-alreadyblocked' => 'Korbar $3 allakaj basta şudaast.',
+	'crosswikiblock-noblock' => 'In korbar basta naşudaast.',
+	'crosswikiblock-success' => "Korbar '''$3''' bo muvaffaqijat basta şud.
+
+Bargarded ba:
+* [[Special:CrosswikiBlock|Formi bastan]]
+* [[$4]]",
+);
+
 /** Thai (ไทย)
  * @author Mopza
  * @author Octahedron80

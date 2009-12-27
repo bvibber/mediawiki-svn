@@ -1440,6 +1440,18 @@ $messages['tg-cyrl'] = array(
 	'spamdifftool_submit_buttom' => 'Ирсол',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'spamdifftool' => 'Fehristi sijohi xarobkoriro idora kuned',
+	'spamdifftool_cantedit' => 'Bubaxşed - şumo içozai viroişi fehristi sijohi haraznomaro nadored.',
+	'spamdifftool_spam_link_text' => 'ba haraznoma ilova kuned',
+	'spamdifftool_option_none' => 'heçciz',
+	'spamdifftool_block' => 'Bastan:',
+	'spamdifftool_submit_buttom' => 'Irsol',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

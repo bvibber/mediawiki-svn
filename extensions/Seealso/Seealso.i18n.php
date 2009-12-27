@@ -587,6 +587,13 @@ $messages['tg-cyrl'] = array(
 	'seealso' => 'Нигаред низ',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'seealso' => 'Nigared niz',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

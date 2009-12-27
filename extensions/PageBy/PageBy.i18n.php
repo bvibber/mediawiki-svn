@@ -632,6 +632,14 @@ $messages['tg-cyrl'] = array(
 	'pageby-contributors' => 'Ҳиссагузорон:',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'pageby-first' => 'Sahifai eçodşuda tavassuti $1, $2',
+	'pageby-contributors' => 'Hissaguzoron:',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

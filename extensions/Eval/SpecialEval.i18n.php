@@ -617,6 +617,16 @@ $messages['tg-cyrl'] = array(
 	'eval_code' => 'Рамз',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'eval_submit' => 'Arzjobī',
+	'eval_escape' => 'Rahoji tavlid',
+	'eval_out' => 'Tavlid',
+	'eval_code' => 'Ramz',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

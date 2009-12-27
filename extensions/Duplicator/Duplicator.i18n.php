@@ -1546,6 +1546,32 @@ $messages['tg-cyrl'] = array(
 Маҳдудияти кунунӣ $3 аст.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'duplicator' => 'Sahifaero takrorī kuned',
+	'duplicator-toolbox' => 'In sahifaro takrorī kuned',
+	'duplicator-header' => "In sahifa imkoni komilan takror kardani sahifaero peşnihod mekunad, bo eçodi nusxahoi mustaqili tamomi ta'rixho.
+In baroi eçodi şoxahoi sahifaho va ƣajraho sudmand ast.",
+	'duplicator-options' => 'Ixtijorot',
+	'duplicator-source' => "Manba':",
+	'duplicator-dest' => 'Maqsad:',
+	'duplicator-dotalk' => 'Takrorī kardani sahifai bahs (agar munosib boşad)',
+	'duplicator-submit' => 'Takrorī kardan',
+	'duplicator-summary' => 'Az [[$1]] nusxabardorī şudaast',
+	'duplicator-success' => "<big>'''[[$1]] ba [[$2]] nusxabardorī şud.'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|nusxa|nusxaho}} nusxabardorī {{PLURAL:|şud|şudand}}.',
+	'duplicator-success-talknotcopied' => 'Sahifai bahs nametavonad nusxabardorī şavad.',
+	'duplicator-failed' => 'Sahifa qobili takrorī şudan nest.
+Xatoi noşinos rux dod.',
+	'duplicator-source-invalid' => "Lutfan unvoni mū'tabari manba'ro peşkaş kuned.",
+	'duplicator-source-notexist' => '[[$1]] vuçud nadorad. Lutfan unvoni sahifai vuçuddoştaro peşkaş kuned.',
+	'duplicator-dest-invalid' => "Lutfan unvoni maqsadi mū'tabarero peşkaş kuned.",
+	'duplicator-toomanyrevisions' => '[[$1]] xele zijod ($2) nusxaho dorad va qobili nusxabardorī nest.
+Mahdudijati kununī $3 ast.',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

@@ -109,11 +109,13 @@ $messages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
+ * @author Turin
  */
 $messages['bg'] = array(
 	'contributiontracking-desc' => 'Проследяване на даренията в дарителската акция на Уикимедия',
 	'contributiontracking' => 'Проследяване на дарението',
 	'contrib-tracking-error' => 'Грешка',
+	'contrib-tracking-continue' => 'Ако не бъдете пренасочени автоматично, натиснете бутона, за да завършите дарението през PayPal.',
 	'contrib-tracking-button' => 'Продължаване',
 );
 
@@ -872,6 +874,14 @@ $messages['tg-cyrl'] = array(
 	'contrib-tracking-button' => 'Идома',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'contrib-tracking-error' => 'Xato',
+	'contrib-tracking-button' => 'Idoma',
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */
@@ -977,9 +987,13 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'contrib-tracking-error' => '错误',
+	'contrib-tracking-error-text' => '无效的表单提交',
+	'contrib-tracking-submitting' => '正在提交到支付处理器……',
+	'contrib-tracking-button' => '继续',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -987,5 +1001,8 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'contrib-tracking-error' => '錯誤',
+	'contrib-tracking-error-text' => '無效的表單提交',
+	'contrib-tracking-submitting' => '正在提交到支付處理器……',
+	'contrib-tracking-button' => '繼續',
 );
 

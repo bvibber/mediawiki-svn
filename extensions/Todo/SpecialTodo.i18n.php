@@ -1868,6 +1868,18 @@ $messages['tg-cyrl'] = array(
 	'todo-issue-summary' => 'Хулосаи амал:',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'todo-new-queue' => 'nav',
+	'todo-unrecognize-type' => "Nav'i noşinos",
+	'todo-list-change' => 'Taƣjir',
+	'todo-list-cancel' => 'Laƣv',
+	'todo-new-item' => 'Mavodi çadid',
+	'todo-issue-summary' => 'Xulosai amal:',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

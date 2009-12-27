@@ -82,6 +82,13 @@ $messages['dsb'] = array(
 	'geolite-desc' => 'Dalejpósrědnjenje lažkego GeoIp',
 );
 
+/** Finnish (Suomi)
+ * @author ZeiP
+ */
+$messages['fi'] = array(
+	'geolite-desc' => 'Kevyt GeoIP-uudelleenohjaus',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -257,6 +264,13 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'geolite-desc' => 'Редирекције за Lightweight GeoIp',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
+ */
+$messages['sr-el'] = array(
+	'geolite-desc' => 'Redirekcije za Lightweight GeoIp',
 );
 
 /** Turkmen (Türkmençe)

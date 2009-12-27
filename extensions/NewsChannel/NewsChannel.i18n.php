@@ -215,6 +215,15 @@ $messages['es'] = array(
 	'newschannel_submit_button' => 'Crear sindicación',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'newschannel' => 'Uudistekanal',
+	'newschannel_format' => 'Formaat:',
+	'newschannel_include_category' => 'Lisakategooria:',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

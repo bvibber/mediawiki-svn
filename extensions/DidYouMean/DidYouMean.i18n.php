@@ -514,6 +514,13 @@ $messages['tg-cyrl'] = array(
 	'didyoumean-desc' => 'Ба саҳифаҳои бо унвонҳои "монандӣ" пайвандҳо илова кунед',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'didyoumean-desc' => 'Ba sahifahoi bo unvonhoi "monandī" pajvandho ilova kuned',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

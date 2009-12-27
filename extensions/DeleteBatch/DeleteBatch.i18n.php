@@ -1214,6 +1214,7 @@ Nahraný súbor by mal na každom riadku obsahovať názov stránky a nepovinne 
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Najami
+ * @author Per
  */
 $messages['sv'] = array(
 	'deletebatch' => 'Radera serier av sidor',
@@ -1227,6 +1228,7 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
 	'deletebatch-as' => 'Kör skriptet som:',
 	'deletebatch-both-modes' => 'Var god välj antingen en specifierad sida eller en lista över sidor.',
 	'deletebatch-or' => '<b>ELLER</b>',
+	'deletebatch-delete' => 'Radera',
 	'deletebatch-page' => 'Sidor som ska raderas:',
 	'deletebatch-omitting-nonexistant' => 'Utelämna ej existerande sida $1.',
 	'deletebatch-omitting-invalid' => 'Utelämna ogiltig sida $1.',
@@ -1257,6 +1259,13 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'deletebatch-caption' => 'Феҳристи саҳифа',
 	'deletebatch-select-yourself' => 'шумо',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'deletebatch-select-yourself' => 'şumo',
 );
 
 /** Tagalog (Tagalog)

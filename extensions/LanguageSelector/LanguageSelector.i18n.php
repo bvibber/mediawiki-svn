@@ -903,6 +903,14 @@ $messages['tg-cyrl'] = array(
 	'languageselector-desc' => 'Забон интихобкунанда дар ҳар саҳифа, барои ташрифоварандагон низ',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'languageselector' => 'Zabon',
+	'languageselector-desc' => 'Zabon intixobkunanda dar har sahifa, baroi taşrifovarandagon niz',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

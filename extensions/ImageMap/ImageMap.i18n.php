@@ -428,6 +428,7 @@ $messages['es'] = array(
 );
 
 /** Estonian (Eesti)
+ * @author Avjoska
  * @author Pikne
  * @author Silvar
  */
@@ -435,6 +436,7 @@ $messages['et'] = array(
 	'imagemap_desc' => 'Lubab kliendipoolse klõpsatava pildi ala, mis kasutab <tt><nowiki><imagemap></nowiki></tt>-märgendit.',
 	'imagemap_no_image' => 'Viga: esimesel real peab määrama pildi',
 	'imagemap_invalid_image' => 'Viga: pilt on vigane või teda ei eksisteeri',
+	'imagemap_bad_image' => 'Viga: pilt on siin lehel mustas nimekirjas',
 	'imagemap_no_link' => 'Viga: ei leidnud sobivat linki, rea number $1 lõpust',
 	'imagemap_invalid_title' => 'Viga: Vigane lingi pealkiri, rea number $1 lõpus',
 	'imagemap_missing_coord' => 'Viga: real number $1 on kujundi jaoks vähe kordinaate',
@@ -1547,6 +1549,23 @@ $messages['tg-cyrl'] = array(
 	'imagemap_invalid_coord' => 'Error: баробарии ғайримиҷоз дар сатри $1, бояд адад бошад',
 	'imagemap_invalid_desc' => 'Error: тавзеҳоти ғайримиҷоз, бояд яке аз ин маворид бошад: <tt>$1</tt>',
 	'imagemap_description' => 'Дар бораи ин акс',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'imagemap_desc' => 'Imkoni eçodi naqşahoi tasvirī qobili klik kardan dar samti korbarro bo istifoda az barcasbi  <tt><nowiki><imagemap></nowiki></tt> faroham meovarad',
+	'imagemap_no_image' => 'Error: bojad dar satri avval jak aksro muşaxxas kuned',
+	'imagemap_invalid_image' => 'Error: aks ƣajrimiçoz ast jo vuçud nadorad',
+	'imagemap_no_link' => 'Error: heç pajvandi miçoze to intihoi satri $1 pajdo naşud',
+	'imagemap_invalid_title' => 'Error: unvoni ƣajrimiçoz dar pajvandi satri $1',
+	'imagemap_missing_coord' => "Error: te'dodi hamohangī dar satri $1 baroi şakl kofī nest",
+	'imagemap_unrecognised_shape' => 'Error: şakli noşinoxta dar satri $1, har satr bojad bo jake az in dasturot oƣoz şavad: default, rect, circle jo poly',
+	'imagemap_no_areas' => 'Error: dasti kam bojad jak muşaxxasoti fazo bojad vuçud doşta boşad',
+	'imagemap_invalid_coord' => 'Error: barobariji ƣajrimiçoz dar satri $1, bojad adad boşad',
+	'imagemap_invalid_desc' => 'Error: tavzehoti ƣajrimiçoz, bojad jake az in mavorid boşad: <tt>$1</tt>',
+	'imagemap_description' => 'Dar borai in aks',
 );
 
 /** Turkmen (Türkmençe)

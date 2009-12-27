@@ -364,3 +364,17 @@ $messages['vi'] = array(
 	'clientside-desc' => 'Cung cấp các hàm để cho ra mã trong định dạng trình khác như là HTML, CSS, và JavaScript',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'clientside-desc' => '提供生成客户端格式代码（如HTML、CSS和JavaScript）的功能',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
+ */
+$messages['zh-hant'] = array(
+	'clientside-desc' => '提供生成客戶端格式代碼（如HTML、CSS和JavaScript）的功能',
+);
+

@@ -856,6 +856,15 @@ $messages['tg-cyrl'] = array(
 	'backforth-prev' => 'Қаблӣ ($1)',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'backforth-next' => "Ba'dī ($1)",
+	'backforth-desc' => 'Ba boloi sahifahoi tartibiji az rūi alifbo pajvandhoi "Ba\'dī" va "Qablī" ilova mekunad',
+	'backforth-prev' => 'Qablī ($1)',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

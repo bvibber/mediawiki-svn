@@ -93,6 +93,13 @@ $messages['eo'] = array(
 	'wikieditor-template-editor-preference' => 'Ŝalti formularan redaktadon de vikiaj ŝablonoj',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'wikieditor-template-editor-preference' => 'Ota käyttöön wikimallineiden lomakepohjainen muokkaus',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

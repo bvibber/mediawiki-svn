@@ -545,6 +545,13 @@ $messages['tg-cyrl'] = array(
 	'forcepreview' => 'Захираи саҳифа (пешнамоишро аввал истифода баред)',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'forcepreview' => 'Zaxirai sahifa (peşnamoişro avval istifoda bared)',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

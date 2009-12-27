@@ -633,12 +633,13 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'formatchanges-desc' => '将[[Special:RecentChanges|最近更新]]重新格式化',
 	'formatchanges-anonymous' => '匿名',
-	'formatchanges-createdby' => '$1 - 由 $2 创建 （$3）',
-	'formatchanges-editedby' => '$1 - 由 $2 编辑 （$3）',
+	'formatchanges-createdby' => '$1 - 由$2创建（$3）',
+	'formatchanges-editedby' => '$1 - 由$2编辑（$3）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -648,7 +649,7 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'formatchanges-desc' => '將[[Special:RecentChanges|最近更新]]重新格式化',
 	'formatchanges-anonymous' => '匿名',
-	'formatchanges-createdby' => '$1-建立者：$2 （$3）',
-	'formatchanges-editedby' => '$1-編輯者：$2 （$3）',
+	'formatchanges-createdby' => '$1 - 由$2創建（$3）',
+	'formatchanges-editedby' => '$1 - 由$2編輯（$3）',
 );
 

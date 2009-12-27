@@ -5507,6 +5507,16 @@ $messages['tg-cyrl'] = array(
 	'deletequeue-list-header-discusspage' => 'Саҳифаи баҳс',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'deletequeue-list-search-legend' => 'Çustuçūi sahifaho',
+	'deletequeue-list-search' => 'Çustuçū',
+	'deletequeue-list-header-page' => 'Sahifa',
+	'deletequeue-list-header-discusspage' => 'Sahifai bahs',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

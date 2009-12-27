@@ -390,6 +390,18 @@ $messages['es'] = array(
 	'right-passwordreset' => 'Reestablecer contraseña de un usuario ([[Special:PasswordReset|página especial]])',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'passwordreset-invalidusername' => 'Vigane kasutajanimi',
+	'passwordreset-emptyusername' => 'Tühi kasutajanimi',
+	'passwordreset-nopassmatch' => 'Paroolid ei ühildu',
+	'passwordreset-username' => 'Kasutajanimi:',
+	'passwordreset-newpass' => 'Uus parool:',
+	'passwordreset-confirmpass' => 'Kinnita parool:',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -1498,6 +1510,13 @@ $messages['tg-cyrl'] = array(
 	'passwordreset-username' => 'Номи корбарӣ',
 	'passwordreset-newpass' => 'Гузарвожаи ҷадид',
 	'passwordreset-confirmpass' => 'Тасдиқи гузарвожа',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'passwordreset-invalidusername' => "Nomi korbariji nomū'tabar",
 );
 
 /** Thai (ไทย)

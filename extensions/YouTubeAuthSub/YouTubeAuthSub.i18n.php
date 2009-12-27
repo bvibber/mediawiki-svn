@@ -3043,6 +3043,33 @@ YouTube метавонад каме вақтеро барои пешкаш ка�
 	'youtubeauthsub_jserror_nodesc' => 'Лутфан як тавсиф барои навор ворид кунед.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'youtubeauthsub' => 'Navorero ba YouTube borguzorī kuned',
+	'youtubeauthsub-desc' => 'Ba korbaron imkoni bevosita [[Special:YouTubeAuthSub|borguzori kardani navorhoro]] ba YouTube medihad',
+	'youtubeauthsub_info' => 'Baroi borguzori kardani navore ba YouTube baroi şomile sahife kardan, ittiloote zerinro pur kuned:',
+	'youtubeauthsub_title' => 'Unvon',
+	'youtubeauthsub_description' => 'Tavsifot',
+	'youtubeauthsub_password' => 'YouTube Guzarvoƶa',
+	'youtubeauthsub_username' => 'YouTube Nomi korbarī',
+	'youtubeauthsub_keywords' => 'Kalidvoƶaho',
+	'youtubeauthsub_category' => 'Gurūh',
+	'youtubeauthsub_submit' => 'Irsol',
+	'youtubeauthsub_clickhere' => 'Baroi vurud şudan ba YouTube inço klik kuned',
+	'youtubeauthsub_tokenerror' => 'Dar tavlidi içozai ramzī bo xatoe barxūrd, sahifaro az nav bor kuned.',
+	'youtubeauthsub_authsubinstructions' => 'Baroi borguzorī kardani navor, avval ba şumo lozim ast ba YouTube vorid şaved.',
+	'youtubeauthsub_uploadhere' => 'Navorhojatonro az inço borguzorī kuned:',
+	'youtubeauthsub_uploadbutton' => 'Borguzorī',
+	'youtubeauthsub_summary' => 'Dar holi boguzoriji navor ba YouTube',
+	'youtubeauthsub_uploading' => 'Navori şumo dar holi borguzorī ast.
+Lutfan sabr kuned.',
+	'youtubeauthsub_jserror_nokeywords' => 'Lutfan 1 jo jakcand kalidvoƶahoro vorid kuned.',
+	'youtubeauthsub_jserror_notitle' => 'Lutfan jak unvonero baroi navor vorid kuned.',
+	'youtubeauthsub_jserror_nodesc' => 'Lutfan jak tavsif baroi navor vorid kuned.',
+);
+
 /** Thai (ไทย)
  * @author Manop
  * @author Passawuth

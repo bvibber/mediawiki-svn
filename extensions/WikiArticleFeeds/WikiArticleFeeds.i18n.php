@@ -85,6 +85,14 @@ $messages['ca'] = array(
 	'wikiarticlefeeds-desc' => 'Produeix fils RSS generats per les pàgines MediaWiki',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'wikiarticlefeeds-desc' => 'Vytváří kanály ze stránek MediaWiki.',
+	'wikiarticlefeeds_combined_description' => 'Toto je kombinovaný kanál obsahující položky z několika zdrojů kanálů.',
+);
+
 /** German (Deutsch)
  * @author Umherirrender
  */

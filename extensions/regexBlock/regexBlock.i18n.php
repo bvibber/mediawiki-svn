@@ -2837,6 +2837,39 @@ $messages['tg-cyrl'] = array(
 	'regexblock-view-time' => 'дар $1',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'regexblock-already-blocked' => '"$1" allakaj basta şudaast.',
+	'regexblock-block-log' => "Nomi korbarī jo nişonai '''$1''' basta şud.",
+	'regexblock-block-success' => 'Bastan muvaffaq şud',
+	'regexblock-currently-blocked' => 'Nişonahoi bastaşudai kununī:',
+	'regexblock-form-username' => 'Nişonai IP jo nomi korbarī:',
+	'regexblock-form-reason' => 'Dalel:',
+	'regexblock-form-match' => 'Mutobiqati daqiq',
+	'regexblock-form-account-block' => 'Eçodi bastani hisobhoi çadid',
+	'regexblock-form-submit' => 'Bastani in Korbar',
+	'regexblock-form-submit-empty' => 'Baroi bastan nomi korbarī jo nişonai IP dihed.',
+	'regexblock-form-submit-regex' => "Iborai oddiji nomū'tabar.",
+	'regexblock-form-submit-expiry' => 'Lutfan davrai ba xotimarasiro muşaxxas kuned.',
+	'regexblock-stats-title' => 'Omori Bastani Regex',
+	'regexblock-unblock-success' => 'Boz kardan az bastan muvaffaq şud',
+	'regexblock-unblock-log' => "Nomi korbarī jo nişonai IP '''$1''' az bastan boz şud.",
+	'regexblock-unblock-error' => 'Xato dar boz kardani $1.
+Ehtimolan cunin korbare nest.',
+	'regexblock-view-all' => 'Hama',
+	'regexblock-view-go' => 'Birav',
+	'regexblock-view-match' => '(mutobiqati daqiq)',
+	'regexblock-view-account' => '(bastani eçodi hisobi çadid)',
+	'regexblock-view-reason' => 'dalel: $1',
+	'regexblock-view-reason-default' => 'daleli umumī',
+	'regexblock-view-block-infinite' => 'bastani doimī',
+	'regexblock-view-block-unblock' => 'boz kardan',
+	'regexblock-view-empty' => 'Fehristi nomho va nişonahoi basta şuda xolī ast.',
+	'regexblock-view-time' => 'dar $1',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

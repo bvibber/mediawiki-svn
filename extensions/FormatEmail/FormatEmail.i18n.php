@@ -692,6 +692,15 @@ $messages['tg-cyrl'] = array(
 $2',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'email_footer' => 'In nomai elektronī ba şumo tariqi sistemei poctai elektroniji {{SITENAME}} tavassuti $1 firistoda şud.
+
+$2',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

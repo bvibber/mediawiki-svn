@@ -1145,6 +1145,19 @@ $messages['tg-cyrl'] = array(
 	'chemFunctions_Formula' => 'Қоида',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'chemicalsources' => 'Sarcaşmahoi kimjoī',
+	'chemicalsource-desc' => 'Barcasbi <nowiki><chemform></nowiki>-ro baroi qoidahoi kimjoī ilova mekunad',
+	'chemFunctions_ListPage' => 'Sarcaşmahoi kimjoī',
+	'chemFunctions_DataList' => 'Dar zer fehristi pajvandho ba somonahoe, ki ehtimolan metavonand baroi şumo ittilooti çustuçū karda istodaaton oidi moddai kimjoī peşkaş kunand.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula dar NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS dar Donişgohi Oksford (Ingliston) (qobili çustuçū nest)</a><br />',
+	'chemFunctions_Formula' => 'Qoida',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

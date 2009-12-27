@@ -1256,6 +1256,17 @@ $messages['tg-cyrl'] = array(
 	'importfreeimages_promptuserforfilename' => 'Лутфан номи парвандаи мақсадро ворид кунед:',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'importfreeimages' => 'Vorid kardani Akshoi Ozod',
+	'importfreeimages_owner' => 'Muallif',
+	'importfreeimages_importthis' => 'inro vorid kuned',
+	'importfreeimages_next' => "Ba'dī $1",
+	'importfreeimages_promptuserforfilename' => 'Lutfan nomi parvandai maqsadro vorid kuned:',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

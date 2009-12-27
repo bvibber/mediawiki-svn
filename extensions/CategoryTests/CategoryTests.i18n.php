@@ -323,6 +323,13 @@ $messages['sr-ec'] = array(
 	'categorytests-desc' => 'Функције за тестирање категорија',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
+ */
+$messages['sr-el'] = array(
+	'categorytests-desc' => 'Funkcije za testiranje kategorija',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

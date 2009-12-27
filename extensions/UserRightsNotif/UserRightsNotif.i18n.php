@@ -1100,6 +1100,33 @@ $2
 $2',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'userrightsnotifybody' => "Hello $1.
+
+This is to inform you that your group memberships on $2 were changed by $3 at $4.
+
+Added: $5
+Removed: $6
+
+With regards,
+
+$2
+-----
+Salom $1.
+
+Ba ittilo'i şumo merasonem, ki uzvijati şumo dar $2 tavassuti $3 dar $4 taƣjir doda şud.
+
+Ilova şud: $5
+Pok şud: $6
+
+Bo salom,
+
+$2",
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

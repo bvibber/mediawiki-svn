@@ -630,6 +630,14 @@ $messages['tg-cyrl'] = array(
 	'cspammer-log-page' => 'Гузориши Ҳаразнигорро тавзеҳ диҳед',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'commentspammer-log-msg' => 'viroiş az [[Special:Contributions/$1|$1]] ba [[:$2]].',
+	'cspammer-log-page' => 'Guzorişi Haraznigorro tavzeh dihed',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

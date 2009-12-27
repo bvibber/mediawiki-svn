@@ -172,10 +172,16 @@ $messages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
+ * @author Turin
  */
 $messages['bg'] = array(
+	'scanset_unrecognised_index_format' => 'Грешка: непознат формат на индекса',
 	'scanset_opendir_error' => 'Error: Грешка, не може да бъде отворена директория $1',
 	'scanset_no_files' => 'Грешка: В указаната директория няма налични файлове.',
+	'scanset_no_volumes' => 'Грешка: не са открити директории за том',
+	'scanset_missing_index_file' => 'Грешка: индексният файл $1 не е открит',
+	'scanset_index_file_error' => 'Грешка: грешен форма на индексния файл на ред $1',
+	'scanset_invalid_volume' => 'Грешка: неправилен том',
 	'scanset_next' => 'Следващи &gt;',
 	'scanset_prev' => '&lt; Предишни',
 );
@@ -471,12 +477,12 @@ $messages['frp'] = array(
 	'scanset-desc' => 'Montre les émâges de pâges numerisâs dês los ensemblos de CD / DVD a Andréas Grosz.',
 	'scanset_no_name' => 'Èrror : vos dête spècefiar un nom por l’ensemblo de documents numerisâs, per ègzemplo &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Èrror : ensemblo de documents numerisâs envalido ou ben manquent.',
-	'scanset_unrecognised_index_format' => 'Èrror : format d’endèxo encognu.',
+	'scanset_unrecognised_index_format' => 'Èrror : format d’endèxe encognu.',
 	'scanset_opendir_error' => 'Èrror : empossiblo d’uvrir lo rèpèrtouèro $1.',
 	'scanset_no_files' => 'Èrror : lo rèpèrtouèro spècefiâ contint gins de fichiér.',
 	'scanset_no_volumes' => 'Èrror : rèpèrtouèros de volumo entrovâblos.',
-	'scanset_missing_index_file' => 'Èrror : fichiér d’endèxo $1 entrovâblo.',
-	'scanset_index_file_error' => 'Èrror : format de fichiér d’endèxo fôx a la legne $1.',
+	'scanset_missing_index_file' => 'Èrror : fichiér d’endèxe $1 entrovâblo.',
+	'scanset_index_file_error' => 'Èrror : format de fichiér d’endèxe fôx a la legne $1.',
 	'scanset_invalid_volume' => 'Èrror : volumo envalido.',
 	'scanset_next' => 'Aprés &gt;',
 	'scanset_prev' => '&lt; Devant',
@@ -1151,6 +1157,16 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'scanset-desc' => 'Face vedè le immaggine de le scansiune da le CD/DVD de Andreas Grosz',
+	'scanset_no_name' => 'Errore: Tu a specificà \'nu nome pe l\'inzieme de le scanziune, pe esembie &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Errore: Inzieme de scanziune manganne o invalide.',
+	'scanset_unrecognised_index_format' => "Errore: Formate de l'indice scanusciute",
+	'scanset_opendir_error' => "Errore: Non ge pozze aprè 'a cartelle $1",
+	'scanset_no_files' => "Errore: Nisciune file jè presende jndr'à cartelle specificate.",
+	'scanset_no_volumes' => 'Errore: Nisciuna cartelle de volume acchiate',
+	'scanset_missing_index_file' => 'Errore: File de indice $1 none acchiate',
+	'scanset_index_file_error' => "Errore: Errore jndr'à 'u formate d'u file de indice a 'a linèe $1",
+	'scanset_invalid_volume' => 'Errore: Volume invalide',
 	'scanset_next' => 'Prossime &gt;',
 	'scanset_prev' => '&lt; Precedende',
 );
@@ -1326,6 +1342,24 @@ $messages['tg-cyrl'] = array(
 	'scanset_invalid_volume' => 'Error: Ҷилди ғайримиҷоз',
 	'scanset_next' => 'Баъдӣ &gt;',
 	'scanset_prev' => '&lt; Қаблӣ',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'scanset-desc' => 'Muşohidai akshoi pūjişşuda az lahfi fişurdai CD/DVD Andreas Grosz',
+	'scanset_no_name' => 'Error: Şumo bojad nomi maçmū\'ro muşaxxas kuned, misol. &lt;anset  name="EB1911" /&gt;.',
+	'scanset_invalid_name' => "Error: Maçmū'i ƣajrimiçoz jo gumşuda.",
+	'scanset_unrecognised_index_format' => 'Error: Boftai nomuşaxxasi indeks',
+	'scanset_opendir_error' => 'Error: Xato, şoxai $1ro nametavon boz kard',
+	'scanset_no_files' => 'Error: Heç parvandae dar şoxai muşaxxasşuda vuçud nadorad.',
+	'scanset_no_volumes' => 'Error: Fehristi çildho pajdo naşud',
+	'scanset_missing_index_file' => 'Error: Parvandai indeksiji $1 pajdo naşud',
+	'scanset_index_file_error' => 'Error: Xato dar qolabi parvandai indeks dar satri $1',
+	'scanset_invalid_volume' => 'Error: Çildi ƣajrimiçoz',
+	'scanset_next' => "Ba'dī &gt;",
+	'scanset_prev' => '&lt; Qablī',
 );
 
 /** Thai (ไทย)

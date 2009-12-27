@@ -1342,6 +1342,17 @@ $messages['tg-cyrl'] = array(
 	'lookupuser-registration' => 'Таърихи сабти ном: $1',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'lookupuser-nonexistent' => 'Xato: Korbar vuçud nadorad',
+	'lookupuser-email' => 'Firistodani E-mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'peşnihod naşudaast',
+	'lookupuser-realname' => 'Nomi aslī: $1',
+	'lookupuser-registration' => "Ta'rixi sabti nom: $1",
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

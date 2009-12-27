@@ -548,6 +548,14 @@ $messages['tg-cyrl'] = array(
 	'templatelink_empty' => 'Шумо бояд параметре пешниҳод кунед.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'templatelink' => 'Pajvandi Şablon',
+	'templatelink_empty' => 'Şumo bojad parametre peşnihod kuned.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

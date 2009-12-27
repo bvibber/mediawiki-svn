@@ -2740,6 +2740,22 @@ $messages['tg-cyrl'] = array(
 	'webstore_php_error' => 'Хатоҳои PHP рух доданд:',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'inplace_scaler_not_enough_params' => 'Parametrho nokifoja.',
+	'webstore_path_invalid' => "Nomi parvanda nomū'tabar bud.",
+	'webstore_no_file' => 'Heç parvandae bor naşudaast.',
+	'webstore_invalid_zone' => 'Nohijai nomū\'tabar "$1".',
+	'webstore_no_deleted' => 'Heç pūşai bojgonī baroi parvandahoi hazfşuda muşaxxas naşudaast.',
+	'webstore_404' => 'Parvanda joft naşud.',
+	'webstore_php_warning' => 'Huşdori PHP: $1',
+	'webstore_metadata_not_found' => 'Parvanda joft naşud: $1',
+	'webstore_postfile_not_found' => 'Parvanda baroi firistodan joft naşud.',
+	'webstore_php_error' => 'Xatohoi PHP rux dodand:',
+);
+
 /** Thai (ไทย)
  * @author Manop
  */

@@ -2312,6 +2312,32 @@ $messages['tg-cyrl'] = array(
 	'badimages-page' => '{{ns:help}}:Феҳристи акси номусоид',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'badimages' => 'Fehristi aksi nomusoid',
+	'badimages-desc' => "Qobilijathoi fehristi aksi nomusoidi MediaVikiro vase' kuned",
+	'badimages-add-btn' => 'Ilova',
+	'badimages-added' => '$1 ba fehrist ilova şuda bud.',
+	'badimages-count' => "Fehristi akshoi nomusoid doroi '''$1''' {{PLURAL:$1|aks|aksho}} meboşad.",
+	'badimages-name' => 'Nom:',
+	'badimages-not-added' => 'Aksro nametavon ilova namud.',
+	'badimages-not-removed' => 'Aks nametavonad pok şavad.',
+	'badimages-reason' => 'Sabab:',
+	'badimages-remove' => '(hazf)',
+	'badimages-remove-btn' => 'Hazf',
+	'badimages-remove-confirm' => "Lutfan ta'jid kuned, ki şumo mexohed $1ro az fehrist pok kuned:",
+	'badimages-removed' => '$1 az fehrist pok şuda bud.',
+	'badimages-subheading' => 'Mavodhoi kununī',
+	'badimages-unprivileged' => '(Şumo baroi taƣjiri fehriste içozati kofī nadored)',
+	'badimages-log-name' => 'Fehristi aksi nomusoid',
+	'badimages-log-header' => 'In guzorişi taƣjirot ba [[{{MediaWiki:Badimages-page}}|fehristi aksi nomusoid]] ast.',
+	'badimages-log-add' => '[[$1]] ba fehristi aksi nomusoid ilova şud',
+	'badimages-log-remove' => '[[$1]] az fehristi aksi nomusoid pok şud',
+	'badimages-page' => '{{ns:help}}:Fehristi aksi nomusoid',
+);
+
 /** Thai (ไทย)
  * @author Manop
  * @author Octahedron80

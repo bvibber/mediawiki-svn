@@ -939,6 +939,18 @@ $messages['tg-cyrl'] = array(
 	'randomincategory-submit' => 'Бирав',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'randomincategory' => 'Sahifai tasodufī dar gurūh',
+	'randomincategory-desc' => '[[Special:Randomincategory|Sahifai viƶa]] baroi giriftani sahifai tasodufī dar gurūh',
+	'randomincategory-toolbox' => 'Sahifai tasodufī',
+	'randomincategory-nocategory' => 'Gurūhi $1 vuçud nadorad jo xolī ast',
+	'randomincategory-label' => 'Gurūh:',
+	'randomincategory-submit' => 'Birav',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

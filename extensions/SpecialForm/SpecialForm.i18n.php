@@ -1483,6 +1483,23 @@ $messages['tg-cyrl'] = array(
 	'formsaveerrortext' => "Дар ҳоли захираи саҳифаи '$1' хатои ношиносе буд.",
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'formnonametext' => 'Şumo bojad nomi formro, ba monandi "Special:Form/Nameofform" peşnihod kuned.',
+	'formbadname' => 'Nomi formi nomunosib',
+	'formbadnametext' => 'Heç forme bo on nom nest.',
+	'formtitlepattern' => 'Ilova $1i nav',
+	'formsave' => 'Zaxira kardan',
+	'formarticleexists' => 'Sahifa vuçud dorad',
+	'formarticleexiststext' => 'Sahifa [[$1]] allakaj vuçud dorad.',
+	'formbadpagename' => 'Nomi sahifa nomunosib',
+	'formbadpagenametext' => 'Dodai forme, ki şumo vorid kardaed nomi nomunosibe ba sahifa, "$1" mekunad.',
+	'formsaveerror' => 'Xato dar holi zaxirai form',
+	'formsaveerrortext' => "Dar holi zaxirai sahifai '$1' xatoi noşinose bud.",
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

@@ -1089,6 +1089,13 @@ $messages['tg-cyrl'] = array(
 	'call-save-success' => 'Матни зерин ба саҳифа <big>[[$1]]</big> захира шуд.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'call-save-success' => 'Matni zerin ba sahifa <big>[[$1]]</big> zaxira şud.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

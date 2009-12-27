@@ -1168,6 +1168,22 @@ $messages['tg-cyrl'] = array(
 	'querysuccessful' => 'Дархост бо муваффақият',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'asksql' => 'Pursişi SQL',
+	'asksql-desc' => 'Tariqi [[Special:Asksql|sahifai viƶa]] pursişhoi SQL guzaroned',
+	'asksqltext' => "Baroi pursişi çustuçūi mustaqimi pojgohi doda az formi zerin istifoda bared.
+Baroi mahdud kardani riştahoi harfho az noxunaki jakka ('monandi in') istifoda bared.
+In amal metavonad ba xidmatguzor bori zijode ilova kunad, binobar in lutfan in amalro kam istifoda bared.",
+	'sqlislogged' => 'Lutfan tavaççūh kuned, ki hamai pursişho sabt meşavand.',
+	'sqlquery' => 'Vorid kardani darxost',
+	'querybtn' => 'Firistodani darxost',
+	'selectonly' => 'Tanho pursişhoi faqat-xondan içozat doda şudaand.',
+	'querysuccessful' => 'Darxost bo muvaffaqijat',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

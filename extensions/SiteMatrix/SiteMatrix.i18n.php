@@ -204,6 +204,7 @@ $messages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
+ * @author Turin
  * @author לערי ריינהארט
  */
 $messages['bg'] = array(
@@ -215,6 +216,7 @@ $messages['bg'] = array(
 	'sitematrix-others' => 'Други проекти на Уикимедия',
 	'sitematrix-total' => "'''Общ брой: $1'''",
 	'sitematrix-sitetotal' => 'Общо',
+	'sitematrix-fishbowl' => 'редактирането е ограничено',
 );
 
 /** Bengali (বাংলা)
@@ -1461,8 +1463,16 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'sitematrix' => 'Elenghe de le Uicchi de UicchiMedia',
+	'sitematrix-summary' => 'Sta pàgena speciale elenghe tutte le Uicchi de UicchiMedia.',
+	'sitematrix-desc' => "Face vedè 'n'[[Special:SiteMatrix|elenghe de le Uicchi de UicchiMedia]]",
+	'sitematrix-language' => 'Lènghe',
+	'sitematrix-project' => "Nome de proggette, collegamende 'mbrà inderproggette e collegamende 'mbrà inderuicchi",
+	'sitematrix-others' => 'Otre pruggette de UicchiMedia',
+	'sitematrix-total' => "'''Condegge totale: $1'''",
 	'sitematrix-sitetotal' => 'Totele',
 	'sitematrix-private' => 'private',
+	'sitematrix-fishbowl' => 'cangiaminde limitate',
 );
 
 /** Russian (Русский)
@@ -1689,6 +1699,22 @@ $messages['tg-cyrl'] = array(
 	'sitematrix-sitetotal' => 'Кул',
 	'sitematrix-private' => 'шахсӣ',
 	'sitematrix-fishbowl' => 'вироишкунӣ маҳдуд шудааст',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'sitematrix' => 'Fehristi vikihoi Vikimedia',
+	'sitematrix-summary' => 'In sahifai viƶa tamomi vikihoi Vikimediaro fehrist mekunad.',
+	'sitematrix-desc' => '[[Special:SiteMatrix|Fehristi vikihoi Vikimedia]]ro namoiş medihad',
+	'sitematrix-language' => 'Zabon',
+	'sitematrix-project' => 'Nomi loiha, pajvandi mijoniloiha va pajvandi mijoniviki',
+	'sitematrix-others' => 'Digar loihahoi Vikimedia',
+	'sitematrix-total' => "'''Çam'i kul: $1'''",
+	'sitematrix-sitetotal' => 'Kul',
+	'sitematrix-private' => 'şaxsī',
+	'sitematrix-fishbowl' => 'viroişkunī mahdud şudaast',
 );
 
 /** Thai (ไทย)

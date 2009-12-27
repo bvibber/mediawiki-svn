@@ -617,6 +617,14 @@ $messages['tg-cyrl'] = array(
 	'icon-badwidth' => 'Васеъии номуносиб',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'icon-badimage' => 'Aksi nomunosib',
+	'icon-badwidth' => "Vase'iji nomunosib",
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

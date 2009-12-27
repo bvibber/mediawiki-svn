@@ -1229,6 +1229,18 @@ $messages['tg-cyrl'] = array(
 	'edituser-exempt' => 'Корбари мушаххасшударо наметавон вироиш кард',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'edituser' => 'Viroiş kardani Korbar',
+	'edituser-logout' => 'Berun kardani korbar',
+	'edituser-username' => 'Nom',
+	'edituser-dosearch' => 'Çustuçū',
+	'edituser-nouser' => 'Korbari muşaxxasşuda vuçud nadorad',
+	'edituser-exempt' => 'Korbari muşaxxasşudaro nametavon viroiş kard',
+);
+
 /** Thai (ไทย)
  * @author Harley Hartwell
  * @author Manop

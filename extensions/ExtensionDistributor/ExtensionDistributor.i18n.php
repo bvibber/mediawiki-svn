@@ -236,6 +236,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Turin
  */
 $messages['bg'] = array(
 	'extensiondistributor' => 'Сваляне на разширения за MediaWiki',
@@ -244,7 +245,7 @@ $messages['bg'] = array(
 	'extdist-no-such-version' => 'Разширението „$1“ не съществува във версия „$2“.',
 	'extdist-choose-extension' => 'Изберете разширение, което желаете да свалите:',
 	'extdist-submit-extension' => 'Продължаване',
-	'extdist-current-version' => 'Текуща версия (trunk)',
+	'extdist-current-version' => 'Разработвана версия (trunk)',
 	'extdist-choose-version' => '<big>На път сте да изтеглите разширението <b>$1</b>.</big>
 
 Изберете вашата версия на MediaWiki.
@@ -256,6 +257,8 @@ $messages['bg'] = array(
 	'extdist-remote-error' => 'Грешка от отдалечения subversion клиент: <pre>$1</pre>',
 	'extdist-remote-invalid-response' => 'Невалиден отговор от отдалечения Subversion клиент.',
 	'extdist-svn-error' => 'Възникна грешка в Subversion: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Грешка при обработване на XML, върнат от командата "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar върна код за грешка $1:',
 );
 
 /** Breton (Brezhoneg)
@@ -802,10 +805,12 @@ $messages['fa'] = array(
  * @author Crt
  * @author Nike
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'extensiondistributor' => 'Lataa MediaWikin laajennus',
 	'extdist-desc' => 'Laajennus laajennusten tilannevedosarkistojen jakelulle.',
+	'extdist-not-configured' => 'Aseta $wgExtDistTarDir ja $wgExtDistWorkingCopy.',
 	'extdist-wc-missing' => 'Määritettyä työkopiohakemistoa ei ole olemassa.',
 	'extdist-no-such-extension' => 'Laajennusta ”$1” ei löydy',
 	'extdist-no-such-version' => 'Laajennus ”$1” ei sisälly versioon ”$2”.',
@@ -2861,6 +2866,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Shinjiman
  * @author Wmr89502270
  */
@@ -2874,7 +2880,7 @@ $messages['zh-hans'] = array(
 	'extdist-choose-extension' => '选择您要去下载的扩展:',
 	'extdist-wc-empty' => '设置的工作复本目录无可发布之扩展！',
 	'extdist-submit-extension' => '继续',
-	'extdist-current-version' => '开发员版 （trunk）',
+	'extdist-current-version' => '开发版本（trunk）',
 	'extdist-choose-version' => '
 <big>您现正下载 <b>$1</b> 扩展。</big>
 
@@ -2914,6 +2920,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
@@ -2926,7 +2933,7 @@ $messages['zh-hant'] = array(
 	'extdist-choose-extension' => '選擇您要去下載的擴展:',
 	'extdist-wc-empty' => '設定的工作複本目錄無可發佈之擴展！',
 	'extdist-submit-extension' => '繼續',
-	'extdist-current-version' => '現時版本 （trunk）',
+	'extdist-current-version' => '開發版本（trunk）',
 	'extdist-choose-version' => '
 <big>您現正下載 <b>$1</b> 擴展。</big>
 

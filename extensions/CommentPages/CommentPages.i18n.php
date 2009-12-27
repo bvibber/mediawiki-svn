@@ -557,6 +557,13 @@ $messages['tg-cyrl'] = array(
 	'nstab-comments' => 'Тафсир',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'nstab-comments' => 'Tafsir',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

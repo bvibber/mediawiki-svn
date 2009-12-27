@@ -1727,6 +1727,23 @@ $messages['tg-cyrl'] = array(
 	'createsigndoc-error-pagenoexist' => 'Хато: Саҳифаи [[$1]] вуҷуд надорад.',
 );
 
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'createsigndoc-pagename' => 'Sahifa:',
+	'createsigndoc-email' => 'Nişonai E-mail:',
+	'createsigndoc-address' => 'Suroƣai Xona:',
+	'createsigndoc-extaddress' => 'Şahr, Vilojat, Kişvar:',
+	'createsigndoc-phone' => 'Şumorai telefon:',
+	'createsigndoc-bday' => 'Zodrūz:',
+	'createsigndoc-introtext' => 'Şinosoī:',
+	'createsigndoc-optional' => 'Ixtijorī',
+	'createsigndoc-create' => 'Eçod',
+	'createsigndoc-error-generic' => 'Xato: $1',
+	'createsigndoc-error-pagenoexist' => 'Xato: Sahifai [[$1]] vuçud nadorad.',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

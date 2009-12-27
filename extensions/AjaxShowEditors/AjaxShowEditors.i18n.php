@@ -194,10 +194,11 @@ $messages['cs'] = array(
 $messages['cy'] = array(
 	'ajax-se-desc' => "Yn dangos i ddefnyddwyr sydd wrthi'n golygu enwau'r rhai eraill sydd hefyd yn golygu'r un dudalen",
 	'ajax-se-title' => "Wrthi'n golygu:",
+	'ajax-se-pending' => "er mwyn diweddaru'r wybodaeth... (cliciwch y blwch hwn neu dechreuwch olygu)",
 	'ajax-se-idling' => '($1 eiliad yn ôl)',
 	'ajax-se-pagedoesnotexist' => "nid yw'r dudalen ar gael",
 	'ajax-se-userinvalid' => 'Gwall: defnyddiwr annilys',
-	'ajax-se-usernotfound' => "Gwall: ni chafwyd hyd i'r defnyddwyr",
+	'ajax-se-usernotfound' => "Gwall: ni chafwyd hyd i'r defnyddiwr",
 );
 
 /** Danish (Dansk)
@@ -1095,6 +1096,19 @@ $messages['tg-cyrl'] = array(
 	'ajax-se-pagedoesnotexist' => 'саҳифа вуҷуд надорад',
 	'ajax-se-userinvalid' => 'ERR: корбари номӯътабар',
 	'ajax-se-usernotfound' => 'ERR: корбар ёфт нашуд',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'ajax-se-desc' => 'Korbarone, ki dar holi viroişi jak sahifabudaro namoiş medihad',
+	'ajax-se-title' => 'Dar holi viroiş:',
+	'ajax-se-pending' => "dar taji toza kardan… (in quttiro klik kuned jo ba viroiş şurū' kuned)",
+	'ajax-se-idling' => '($1c peş)',
+	'ajax-se-pagedoesnotexist' => 'sahifa vuçud nadorad',
+	'ajax-se-userinvalid' => "ERR: korbari nomū'tabar",
+	'ajax-se-usernotfound' => 'ERR: korbar joft naşud',
 );
 
 /** Thai (ไทย)
