@@ -2,7 +2,11 @@ This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
 0.14.18 - 27 December 2009
-  Updated ignored settings list in findSettings.php.
+  * Updated ignored settings list in findSettings.php.
+  * Updated AbuseFilter, AmazonPlus, BreadCrumbs, Collection, ExternalData,
+    FlaggedRevs, LocalisationUpdate, OggHandler, RT, SemanticDrilldown,
+    SemanticMediaWiki, Translate and WikiAtHome extensions
+  * Removed Makesysop and Makebot extensions
 
 0.14.17 - 26 December 2009
   * Added $wgWikiId, $wgCrossSiteAJAXdomains, $wgCrossSiteAJAXdomainExceptions,

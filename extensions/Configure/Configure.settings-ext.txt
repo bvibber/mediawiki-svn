@@ -19,9 +19,6 @@ settings[] = wgAbuseFilterEmergencyDisableThreshold: text
 settings[] = wgAbuseFilterEmergencyDisableCount: int
 settings[] = wgAbuseFilterEmergencyDisableAge: int
 settings[] = wgAbuseFilterParserClass: text
-settings[] = wgAbuseFilterNativeParser: text
-settings[] = wgAbuseFilterNativeSyntaxCheck: text
-settings[] = wgAbuseFilterNativeExpressionEvaluator: text
 settings[] = wgAbuseFilterRestrictedActions: array
 settings[] = wgAbuseFilterUDPAddress: text
 settings[] = wgAbuseFilterUDPPort: int
@@ -60,7 +57,10 @@ url = http://www.mediawiki.org/wiki/Extension:AjaxShowEditors
 
 AmazonPlus
 settings[] = wgAmazonPlusJSVersion: int
-settings[] = wgAmazonPlusAWS: text, wgAmazonPlusDefaultSearch: text, wgAmazonPlusDecimal: text
+settings[] = wgAmazonPlusAWS: text
+settings[] = wgAmazonPlusSecretKey: text
+settings[] = wgAmazonPlusDefaultSearch: text
+settings[] = wgAmazonPlusDecimal: text
 settings[] = wgAmazonPlusAssociates: array
 array[] = wgAmazonPlusAssociates: assoc
 url = http://www.mediawiki.org/wiki/Extension:AmazonPlus
@@ -136,7 +136,9 @@ array[] = wgBookInformationService: assoc,
 url = http://www.mediawiki.org/wiki/Extension:BookInformation
 
 BreadCrumbs
-settings[] = wgBreadCrumbsDelimiter: text, wgBreadCrumbsCount: int
+settings[] = wgBreadCrumbsDelimiter: text
+settings[] = wgBreadCrumbsCount: int
+settings[] = wgBreadCrumbsShowAnons: bool
 url = http://www.mediawiki.org/wiki/Extension:BreadCrumbs
 
 Call
@@ -281,7 +283,7 @@ settings[] = wgCollectionMWServeCert: text, wgCollectionArticleNamespaces: array
 settings[] = wgCommunityCollectionNamespace: int, wgCollectionMaxArticles: int
 settings[] = wgCollectionLicenseName: text, wgCollectionLicenseURL: text
 settings[] = wgCollectionPortletForLoggedInUsersOnly: bool, wgCollectionPortletFormats: array
-settings[] = wgCollectionFormats: array, wgCollectionNavPopups: bool
+settings[] = wgCollectionFormats: array
 settings[] = wgCollectionMaxSuggestions: int, wgCollectionSuggestCheapWeightThreshhold: int
 settings[] = wgCollectionSuggestThreshhold: int
 array[] = wgCollectionArticleNamespaces: ns-simple, wgCollectionFormats: assoc
@@ -449,7 +451,7 @@ url = http://www.mediawiki.org/wiki/Extension:ExpandTemplates
 
 ExternalData
 settings[] = edgStringReplacements: array, edgCacheExpireTime: int
-settings[] = edgCacheTable: text
+settings[] = edgCacheTable: text, edgAllowSSL: bool
 array[] = edgStringReplacements: assoc
 empty[] = edgCacheTable: null
 url = http://www.mediawiki.org/wiki/Extension:External_Data
@@ -468,11 +470,9 @@ settings[] = wgFlaggedRevsPatrolNamespaces: array
 settings[] = wgFlaggedRevsWhitelist: array
 settings[] = wgFlaggedRevsOverride: bool
 settings[] = wgFlaggedRevsReviewForDefault: bool
-settings[] = wgFlaggedRevsUIForDefault:bool
 settings[] = wgFlaggedRevsPrecedence: bool
 settings[] = wgFlaggedRevsExceptions: array
 settings[] = wgFlaggedRevsComments: bool
-settings[] = wgReviewChangesAfterEdit: bool
 settings[] = wgFlaggedRevsAutoReview: bool
 settings[] = wgFlaggedRevsAutoReviewNew: bool
 settings[] = wgUseCurrentTemplates: bool
@@ -481,6 +481,7 @@ settings[] = wgFlaggedRevTags: array
 settings[] = wgFlagRestrictions: array
 settings[] = wgFlagAvailability: array
 settings[] = wgFlaggedRevsPatrolLevel: int
+settings[] = wgFlaggedRevsProtectLevels: array
 settings[] = wgReviewCodes: array
 settings[] = wgFlaggedRevsRestrictionLevels: array
 settings[] = wgFlaggedRevsStylePath: text
@@ -501,6 +502,7 @@ array[] = wgFlaggedRevsExceptions: simple
 array[] = wgFlaggedRevTags: array
 array[] = wgFlagRestrictions: array
 array[] = wgFlagAvailability: array
+array[] = wgFlaggedRevsProtectLevels: array
 array[] = wgReviewCodes: simple
 array[] = wgFlaggedRevsRestrictionLevels: simple
 array[] = wgFlaggedRevsAutopromote: assoc
@@ -566,21 +568,14 @@ InterwikiList
 url = http://mediawiki.org/wiki/Extension:InterwikiList
 
 LocalisationUpdate
-settings[] = wgLocalisationUpdateRetryAttempts: true
+settings[] = wgLocalisationUpdateRetryAttempts: int
 settings[] = wgLocalisationUpdateSVNURL: text
+settings[] = wgLocalisationUpdateDirectory: text
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:LocalisationUpdate
 
 Maintenance
 url = http://www.mediawiki.org/wiki/Extension:Maintenance
-
-MakeBot
-settings[] = wgMakeBotPrivileged: bool
-url = http://www.mediawiki.org/wiki/Extension:MakeBot
-
-Makesysop
-file = SpecialMakesysop.php
-url = http://www.mediawiki.org/wiki/Extension:Makesysop
 
 NewUserMessage
 settings[] = wgNewUserSuppressRC: bool, wgNewUserMinorEdit: bool
@@ -596,6 +591,7 @@ settings[] = wgPlayerStatsCollection: bool, wgFFmpegLocation: text
 settings[] = wgEnableTemporalOggUrls: bool, wgCortadoJarFile: text
 settings[] = wgJs2VideoTagOut: bool, wgEnableIframeEmbed: bool,
 settings[] = wgOggAudioTypes: array, wgOggVideoTypes: array
+settings[] = wgOggThumbLocation: text, wgffmpeg2theoraPath: text
 array[] = wgOggAudioTypes: simple, wgOggVideoTypes: simple
 url = http://www.mediawiki.org/wiki/Extension:OggHandler
 
@@ -677,15 +673,14 @@ settings[] = wgRequestTracker_TIMEFORMAT_RESOLVED: text, wgRequestTracker_TIMEFO
 settings[] = wgRequestTracker_TIMEFORMAT_NOW: text
 settings[] = wgRequestTracker_URL: text, wgRequestTracker_DBconn: text
 settings[] = wgRequestTracker_Cachepage: bool, wgRequestTracker_Useballoons: bool, wgRequestTracker_Active: bool
-settings[] = wgRequestTracker_Formats: array
+settings[] = wgRequestTracker_Sortable: bool, wgRequestTracker_Formats: array
 array[] = wgRequestTracker_Formats: assoc
 url = http://www.mediawiki.org/wiki/Extension:RT
 
 SemanticDrilldown
 file = includes/SD_Settings.php
 settings[] = sdgListSeparator: text
-settings[] = sdgNumResultsColumns: int
-settings[] = sdgNumResultsPerPage : int
+settings[] = sdgNumResultsPerPage: int
 settings[] = sdgFiltersSmallestFontSize: int
 settings[] = sdgFiltersLargestFontSize: int
 extensions-dependencies[] = SemanticMediaWiki
@@ -710,6 +705,8 @@ settings[] = smwgShowFactbox: text
 settings[] = smwgShowFactboxEdit: text
 settings[] = smwgToolboxBrowseLink: bool
 settings[] = smwgInlineErrors: bool
+settings[] = smwgUseCategoryHierarchy: bool
+settings[] = smwgCategoriesAsInstances: bool
 settings[] = smwgLinksInValues: bool
 settings[] = smwgDefaultNumRecurringEvents: int
 settings[] = smwgMaxNumRecurringEvents: int
@@ -722,6 +719,7 @@ settings[] = smwgPropertyPagingLimit: int
 settings[] = smwgMaxPropertyValues: int
 settings[] = smwgQEnabled: bool
 settings[] = smwgQMaxLimit: int
+settings[] = smwgIgnoreQueryErrors: bool
 settings[] = smwgQSubcategoryDepth: int
 settings[] = smwgQSubpropertyDepth: int
 settings[] = smwgQEqualitySupport: { 0: none, 1: some, 2: full }
@@ -742,6 +740,7 @@ settings[] = smwgQConceptFeatures: int
 settings[] = smwgQConceptCacheLifetime: int
 settings[] = smwgResultFormats: array
 settings[] = smwgQuerySources: array
+settings[] = smwgResultAliases: array
 settings[] = smwgPDefaultType: text
 settings[] = smwgRSSEnabled: bool
 settings[] = smwgRSSWithPages: bool
@@ -757,6 +756,7 @@ settings[] = smwgTranslate: bool
 settings[] = smwgAdminRefreshStore: bool
 array[] = smwgResultFormats: simple
 array[] = smwgQuerySources: assoc
+array[] = smwgResultAliases: assoc
 array[] = smwgNamespacesWithSemanticLinks: ns-text
 empty[] = smwgNamespace: null
 schema = true
@@ -828,6 +828,7 @@ settings[] = wgTranslateMessageNamespaces: array, wgTranslateAC: array
 settings[] = wgTranslateGroupStructure: array, wgTranslateAddMWExtensionGroups: bool
 settings[] = wgTranslateEC: array, wgTranslateCC: array, wgTranslateTasks: array
 settings[] = wgTranslatePHPlot: text, wgTranslatePHPlotFont: text
+settings[] = wgTranslateYamlLibrary: text
 settings[] = wgTranslateGroupRoot: text, wgTranslateGroupFiles: array
 settings[] = wgTranslateTM: array
 array[] = wgTranslateLanguageFallbacks: assoc, wgTranslateBlacklist: array
@@ -977,7 +978,6 @@ WikiAtHome
 settings[] = wgClientSearchInterval: int, wgEnabledDerivatives: array
 settings[] = wgJobTimeOut: int, wgJobTypeConfig: array
 settings[] = wgNumberOfClientsPerJobSet: int, wgOggCat: text
-settings[] = wgffmpeg2theora: text
 array[] = wgEnabledDerivatives: simple, wgJobTypeConfig: array
 schema = true
 extensions-dependencies[] = OggHandler
