@@ -147,6 +147,7 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author Turin
  */
 $messages['bg'] = array(
 	'prefstats' => 'Статистики за настройките',
@@ -171,6 +172,7 @@ $messages['bg'] = array(
 	'prefstats-factor-week' => 'една седмица',
 	'prefstats-factor-twoweeks' => 'две седмици',
 	'prefstats-factor-fourweeks' => 'четири седмици',
+	'prefstats-factor-default' => 'връщане към подразбиращия се мащаб',
 );
 
 /** Bengali (বাংলা)
@@ -351,6 +353,7 @@ Cliciwch ar un i weld yr ystadegau amdano.',
 	'prefstats-factor-twoweeks' => 'pythefnos',
 	'prefstats-factor-fourweeks' => 'pedair wythnos',
 	'prefstats-factor-default' => 'adfer y raddfa diofyn',
+	'prefstats-legend-in' => 'Wedi dewis ymuno',
 );
 
 /** Danish (Dansk)
@@ -665,6 +668,7 @@ $messages['fa'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'prefstats' => 'Asetusten tilastot',
@@ -674,6 +678,13 @@ $messages['fi'] = array(
 Tilastot näkyvät painamalla asetusta.',
 	'prefstats-noprefs' => 'Yhtään asetusta ei seurata tällä hetkellä.
 Aseta $wgPrefStatsTrackPrefs asetusten seuraamiseksi.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|käyttäjä|käyttäjää}} on ottanut tämän asetuksen käyttöön asetustilastojen käyttöönoton jälkeen
+** $2 käyttäjällä on se edelleen käytössä
+** $3 {{PLURAL:$3|käyttäjä|käyttäjää}} on poistanut sen käytöstä sen jälkeen',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|käyttäjä|käyttäjää}} on ottanut tämän asetuksen käyttöön asetustilastojen käyttöönoton jälkeen
+** $2 käyttäjällä on se edelleen käytössä
+** $3 {{PLURAL:$3|käyttäjä|käyttäjää}} on poistanut sen käytöstä sen jälkeen
+* Yhteensä $4 käyttäjällä on tämä asetus käytössä',
 	'prefstats-xaxis' => 'Kesto (tuntia)',
 	'prefstats-factors' => 'Järjestä: $1',
 	'prefstats-factor-hour' => 'tunti',
@@ -2004,6 +2015,16 @@ $messages['tg-cyrl'] = array(
 	'prefstats-factor-sixhours' => 'шаш соат',
 	'prefstats-factor-day' => 'рӯз',
 	'prefstats-factor-week' => 'ҳафта',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'prefstats-factor-hour' => 'soat',
+	'prefstats-factor-sixhours' => 'şaş soat',
+	'prefstats-factor-day' => 'rūz',
+	'prefstats-factor-week' => 'hafta',
 );
 
 /** Thai (ไทย)

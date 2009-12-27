@@ -213,8 +213,10 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
+	'wikieditor-preview-preference' => 'Ota käyttöön vierekkäinen esikatselu',
 	'wikieditor-preview-tab' => 'Esikatselu',
 	'wikieditor-preview-changes-tab' => 'Muutokset',
 	'wikieditor-preview-loading' => 'Ladataan...',
@@ -351,6 +353,7 @@ $messages['ja'] = array(
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'wikieditor-preview-tab' => 'წინასწარ',
 	'wikieditor-preview-changes-tab' => 'ცვლილებები',
 	'wikieditor-preview-loading' => 'იტვირთება...',
 );

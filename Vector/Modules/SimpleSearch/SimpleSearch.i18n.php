@@ -603,10 +603,12 @@ $messages['sr-ec'] = array(
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
  * @author Michaello
  */
 $messages['sr-el'] = array(
 	'vector-simplesearch-search' => 'Pretraga',
+	'vector-simplesearch-containing' => 'sadrži...',
 );
 
 /** Sundanese (Basa Sunda)

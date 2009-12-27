@@ -1035,12 +1035,16 @@ $messages['bg'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Невалидно заглавие',
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Външна препратка',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Проверка дали страницата съществува...',
+	'wikieditor-toolbar-tool-link-int-invalid' => 'Зададеното заглавие е недопустимо.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'URL-адресът, който сте задали, изглежда като връзка към друга уики-страница. Искате ли препратката да бъде вътрешна?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Вътрешна препратка',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Външна препратка',
+	'wikieditor-toolbar-tool-link-empty' => 'Не сте въвели адрес на препратката.',
 	'wikieditor-toolbar-tool-file' => 'Вграден файл',
 	'wikieditor-toolbar-tool-file-example' => 'Пример.jpg',
 	'wikieditor-toolbar-tool-reference-example' => 'Въведете тук текст на бележка под линия',
 	'wikieditor-toolbar-tool-signature' => 'Подпис, дата и час',
+	'wikieditor-toolbar-section-advanced' => 'Допълнително',
 	'wikieditor-toolbar-tool-heading' => 'Заглавие',
 	'wikieditor-toolbar-tool-heading-1' => 'Ниво 1',
 	'wikieditor-toolbar-tool-heading-2' => 'Ниво 2',
@@ -1053,6 +1057,8 @@ $messages['bg'] = array(
 	'wikieditor-toolbar-tool-ulist-example' => 'Елемент от точкуван списък',
 	'wikieditor-toolbar-tool-olist' => 'Номериран списък',
 	'wikieditor-toolbar-tool-olist-example' => 'Елемент от номериран списък',
+	'wikieditor-toolbar-tool-indent' => 'Отстъп',
+	'wikieditor-toolbar-tool-indent-example' => 'Ред с отстъп',
 	'wikieditor-toolbar-group-size' => 'Размер',
 	'wikieditor-toolbar-tool-big' => 'Голям',
 	'wikieditor-toolbar-tool-big-example' => 'Голям текст',
@@ -1078,10 +1084,14 @@ $messages['bg'] = array(
 | ред 2, клетка 1
 | ред 2, клетка 2
 | ред 2, клетка 3',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Текст в клетката',
 	'wikieditor-toolbar-tool-table-example-header' => 'Текст на заглавието',
 	'wikieditor-toolbar-tool-table-title' => 'Вмъкване на таблица',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Редове',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Колони',
+	'wikieditor-toolbar-tool-table-dimensions-header' => 'Добавяне на заглавен ред',
+	'wikieditor-toolbar-tool-table-wikitable' => 'Изглед с рамки',
+	'wikieditor-toolbar-tool-table-sortable' => 'Подреждаема таблица',
 	'wikieditor-toolbar-tool-table-example' => 'Пример',
 	'wikieditor-toolbar-tool-table-preview' => 'Предварителен преглед',
 	'wikieditor-toolbar-tool-table-insert' => 'Вмъкване',
@@ -1111,10 +1121,12 @@ $messages['bg'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'Арабски',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Иврит',
 	'wikieditor-toolbar-characters-page-telugu' => 'Телугу',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Синхалски',
 	'wikieditor-toolbar-characters-page-gujarati' => 'Гуджарати',
 	'wikieditor-toolbar-section-help' => 'Помощ',
 	'wikieditor-toolbar-help-heading-description' => 'Описание',
 	'wikieditor-toolbar-help-page-format' => 'Форматиране',
+	'wikieditor-toolbar-help-page-link' => 'Препратки',
 	'wikieditor-toolbar-help-page-heading' => 'Заглавия',
 	'wikieditor-toolbar-help-page-list' => 'Списъци',
 	'wikieditor-toolbar-help-page-file' => 'Файлове',
@@ -4157,6 +4169,7 @@ $messages['fa'] = array(
  * @author Crt
  * @author Silvonen
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'wikieditor-toolbar' => 'Työkalupalkki muokkaukseen',
@@ -4176,7 +4189,9 @@ $messages['fi'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Lisää linkki',
 	'wikieditor-toolbar-tool-link-int' => 'Wikisivuun',
 	'wikieditor-toolbar-tool-link-int-target' => 'Artikkelin otsikko:',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Syötä sivun otsikko',
 	'wikieditor-toolbar-tool-link-int-text' => 'Linkin teksti:',
+	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Syötä näytettävä teksti',
 	'wikieditor-toolbar-tool-link-ext' => 'Ulkoiseen sivustoon',
 	'wikieditor-toolbar-tool-link-ext-target' => 'Linkin URL:',
 	'wikieditor-toolbar-tool-link-ext-text' => 'Linkin teksti:',
@@ -4188,8 +4203,10 @@ $messages['fi'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Ulkoinen linkki',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Tarkastetaan sivun olemassaolo…',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'Määrittämäsi otsikko ei ole toimiva.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'URL-osoite, jonka annoit näyttää siltä kuin se olisi linkki toiselle wikisivulle. Haluatko tehdä siitä sisäisen linkin?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Sisäinen linkki',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Ulkoinen linkki',
+	'wikieditor-toolbar-tool-link-empty' => 'Et syöttänyt mitään linkitettävää.',
 	'wikieditor-toolbar-tool-file' => 'Tallennettu tiedosto',
 	'wikieditor-toolbar-tool-file-example' => 'Esimerkki.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Lähde',
@@ -4246,10 +4263,12 @@ $messages['fi'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Lisää otsikkorivi',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Tyylitellyt reunat',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tee taulukosta lajiteltava',
-	'wikieditor-toolbar-tool-table-example' => 'Solun teksti',
+	'wikieditor-toolbar-tool-table-example' => 'Esimerkki',
 	'wikieditor-toolbar-tool-table-preview' => 'Esikatselu',
 	'wikieditor-toolbar-tool-table-insert' => 'Lisää',
 	'wikieditor-toolbar-tool-table-cancel' => 'Peruuta',
+	'wikieditor-toolbar-tool-table-toomany' => 'Tällä toiminnolla ei voi tehdä taulukkoa, jossa on yli $1 solua.',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'Et syöttänyt kelvollista rivi- tai sarakemäärää.',
 	'wikieditor-toolbar-tool-table-zero' => 'Et voi lisätä taulukkoa, jossa ei ole yhtään riviä tai saraketta.',
 	'wikieditor-toolbar-tool-replace' => 'Etsi ja korvaa',
 	'wikieditor-toolbar-tool-replace-title' => 'Etsi ja korvaa',
@@ -4264,6 +4283,7 @@ $messages['fi'] = array(
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Hakusi ei tuottanut osumia.',
 	'wikieditor-toolbar-tool-replace-success' => '$1 korvausta tehty.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Et antanut mitään haettavaa.',
+	'wikieditor-toolbar-tool-replace-invalidregex' => 'Syöttämäsi säännöllinen lauseke ei ole kelvollinen: $1',
 	'wikieditor-toolbar-section-characters' => 'Erikoismerkit',
 	'wikieditor-toolbar-characters-page-latin' => 'Latina',
 	'wikieditor-toolbar-characters-page-latinextended' => 'Laajennettu latina',
@@ -4274,6 +4294,8 @@ $messages['fi'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'Arabia',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Heprea',
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhali',
+	'wikieditor-toolbar-characters-page-gujarati' => 'Gudžarati',
 	'wikieditor-toolbar-section-help' => 'Ohje',
 	'wikieditor-toolbar-help-heading-description' => 'Kuvaus',
 	'wikieditor-toolbar-help-heading-syntax' => 'Mitä kirjoitat',
@@ -5359,6 +5381,7 @@ $messages['he'] = array(
 	'wikieditor-toolbar-tool-olist' => 'רשימה ממוספרת',
 	'wikieditor-toolbar-tool-olist-example' => 'פריט רשימה ממוספרת',
 	'wikieditor-toolbar-tool-indent' => 'הזחה',
+	'wikieditor-toolbar-tool-indent-example' => 'שורה מוזחת',
 	'wikieditor-toolbar-group-size' => 'גודל הטקסט',
 	'wikieditor-toolbar-tool-big' => 'גדול',
 	'wikieditor-toolbar-tool-big-example' => 'טקסט מוגדל',
@@ -5393,6 +5416,8 @@ $messages['he'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'שורות',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'עמודות',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'כולל שורת הכותרת',
+	'wikieditor-toolbar-tool-table-wikitable' => 'סגנון עם מסגרות',
+	'wikieditor-toolbar-tool-table-sortable' => 'הפיכת הטבלה לניתנת למיון',
 	'wikieditor-toolbar-tool-table-example' => 'טקסט התא',
 	'wikieditor-toolbar-tool-table-preview' => 'תצוגה מקדימה',
 	'wikieditor-toolbar-tool-table-insert' => 'הוספה',
@@ -7125,11 +7150,13 @@ $messages['ka'] = array(
 	'wikieditor-toolbar-tool-newline' => 'ახალი ხაზი',
 	'wikieditor-toolbar-tool-table' => 'ტაბულა',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'სვეტები',
+	'wikieditor-toolbar-tool-table-sortable' => 'სორტირებული ცხრილის შექმნა',
 	'wikieditor-toolbar-tool-table-example' => 'მაგალითი',
 	'wikieditor-toolbar-tool-table-preview' => 'წინასწარ',
 	'wikieditor-toolbar-tool-table-insert' => 'ჩასმა',
 	'wikieditor-toolbar-tool-table-cancel' => 'გაუქმება',
 	'wikieditor-toolbar-tool-replace-search' => 'ძიება:',
+	'wikieditor-toolbar-tool-replace-replace' => 'შეცვლა:',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'შემდეგის ჩანაცვლება',
 	'wikieditor-toolbar-tool-replace-close' => 'გაუქმება',
 	'wikieditor-toolbar-section-characters' => 'სპეციალური სიმბოლოები',
@@ -12228,6 +12255,7 @@ $messages['sr-ec'] = array(
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
+ * @author Liangent
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -12240,6 +12268,18 @@ $messages['sr-el'] = array(
 	'wikieditor-toolbar-tool-ilink-example' => 'Naslov veze',
 	'wikieditor-toolbar-tool-xlink' => 'Spoljašnja veza (ne zaboravite <a href="http://">http://</a> prefiks)',
 	'wikieditor-toolbar-tool-xlink-example' => '<a href="http://www.example.com">http://www.example.com</a> naslov veze',
+	'wikieditor-toolbar-tool-link' => 'Veza',
+	'wikieditor-toolbar-tool-link-title' => 'Ubaci vezu',
+	'wikieditor-toolbar-tool-link-int-target' => 'Naslov strane:',
+	'wikieditor-toolbar-tool-link-int-text' => 'Tekst veze:',
+	'wikieditor-toolbar-tool-link-ext-target' => 'Putanja veze (URL):',
+	'wikieditor-toolbar-tool-link-ext-text' => 'Tekst veze:',
+	'wikieditor-toolbar-tool-link-cancel' => 'Prekini',
+	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'Stranica postoji',
+	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'Stranica ne postoji',
+	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Pogrešan naslov',
+	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Provera postojanja stranice...',
+	'wikieditor-toolbar-tool-link-int-invalid' => 'Naslov koji ste izabrali nije validan',
 	'wikieditor-toolbar-tool-file-example' => 'Primer.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referenca',
 	'wikieditor-toolbar-tool-reference-example' => 'Unesite tekst fusnote ovde',
@@ -12253,6 +12293,47 @@ $messages['sr-el'] = array(
 	'wikieditor-toolbar-tool-heading-example' => 'Tekst odeljka',
 	'wikieditor-toolbar-group-list' => 'Spisak',
 	'wikieditor-toolbar-group-size' => 'Veličina',
+	'wikieditor-toolbar-tool-big' => 'Velik',
+	'wikieditor-toolbar-tool-big-example' => 'Velik tekst',
+	'wikieditor-toolbar-tool-small' => 'Mali',
+	'wikieditor-toolbar-tool-small-example' => 'Mali tekst',
+	'wikieditor-toolbar-group-insert' => 'Ubaci',
+	'wikieditor-toolbar-tool-gallery' => 'Galerija slika',
+	'wikieditor-toolbar-tool-newline' => 'Nova linija',
+	'wikieditor-toolbar-tool-table' => 'Tabela',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! naslov 1
+! naslov 2
+! naslov 3
+|-
+| red 1, ćelija 1
+| red 1, ćelija 2
+| red 1, ćelija 3
+|-
+| red 2, ćelija 1
+| red 2, ćelija 2
+| red 2, ćelija 3',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Red $1, ćelija $2',
+	'wikieditor-toolbar-tool-table-example-header' => 'Red $1, ćelija $2 (naslov)',
+	'wikieditor-toolbar-tool-table-title' => 'Ubaci tabelu',
+	'wikieditor-toolbar-tool-table-example' => 'Red $1, ćelija $2',
+	'wikieditor-toolbar-tool-replace-close' => 'odustani',
+	'wikieditor-toolbar-characters-page-latin' => 'latinica',
+	'wikieditor-toolbar-characters-page-latinextended' => 'proširena latinica',
+	'wikieditor-toolbar-characters-page-ipa' => 'IPA',
+	'wikieditor-toolbar-characters-page-symbols' => 'Simboli',
+	'wikieditor-toolbar-characters-page-greek' => 'grčki',
+	'wikieditor-toolbar-characters-page-cyrillic' => 'ćirilica',
+	'wikieditor-toolbar-characters-page-arabic' => 'arapski',
+	'wikieditor-toolbar-characters-page-telugu' => 'telugu',
+	'wikieditor-toolbar-section-help' => 'Pomoć',
+	'wikieditor-toolbar-help-heading-description' => 'Opis',
+	'wikieditor-toolbar-help-heading-syntax' => 'Šta kucate',
+	'wikieditor-toolbar-help-heading-result' => 'Šta dobijete',
+	'wikieditor-toolbar-help-page-format' => 'Formatiranje',
+	'wikieditor-toolbar-help-page-link' => 'Veze',
+	'wikieditor-toolbar-help-page-heading' => 'Naslovi',
+	'wikieditor-toolbar-help-page-list' => 'Spiskovi',
 	'wikieditor-toolbar-help-content-heading1-description' => 'odeljak prvog nivoa',
 	'wikieditor-toolbar-help-content-heading1-syntax' => '= Naslov odeljka =',
 	'wikieditor-toolbar-help-content-heading1-result' => '<h1>Naslov odeljka</h1>',
@@ -12651,6 +12732,7 @@ $messages['te'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'బయటి లింకు',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'పేజీ ఉనికిని సరిచూస్తున్నాం...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'మీరు ఇచ్చిన శీర్షిక సరైనది కాదు.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'మీరు ఇచ్చిన చిరునామాని బట్టి మీరు మరో వికీ పేజీకి లంకె చేర్చాలని ఉద్దేశించినట్టుంది. దాన్ని అంతర్గత లంకెగా మార్చాలనుకుంటున్నారా?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'అంతర్గత లంకె',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'బయటి లంకె',
 	'wikieditor-toolbar-tool-link-empty' => 'మీరు దేనికి లంకె వెయ్యాలో పేర్కొనలేదు.',
@@ -12788,6 +12870,14 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'wikieditor-toolbar-tool-link' => 'Пайванд',
 	'wikieditor-toolbar-tool-link-cancel' => 'Лағв',
+);
+
+/** Tajik (Latin) (Тоҷикӣ (Latin))
+ * @author Liangent
+ */
+$messages['tg-latn'] = array(
+	'wikieditor-toolbar-tool-link' => 'Pajvand',
+	'wikieditor-toolbar-tool-link-cancel' => 'Laƣv',
 );
 
 /** Thai (ไทย)

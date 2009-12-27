@@ -163,8 +163,11 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author ZeiP
  */
 $messages['fi'] = array(
+	'wikieditor' => 'Edistynyt wikitext-muokkauskäyttöliittymä',
+	'wikieditor-desc' => 'Tarjoaa laajennettavan wikitext-muokkauskäyttöliittymän ja monia toimintoja tarjoavia laajennuksia.',
 	'wikieditor-wikitext-tab' => 'Wikiteksti',
 );
 

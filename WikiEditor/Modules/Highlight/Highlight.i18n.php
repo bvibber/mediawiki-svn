@@ -92,6 +92,13 @@ $messages['eo'] = array(
 	'wikieditor-highlight-preference' => 'Ŝalti sintaksan kolorigadon dum redakto',
 );
 
+/** Finnish (Suomi)
+ * @author ZeiP
+ */
+$messages['fi'] = array(
+	'wikieditor-highlight-preference' => 'Ota käyttöön muokkauksenaikainen syntaksin korostus',
+);
+
 /** French (Français)
  * @author IAlex
  */
