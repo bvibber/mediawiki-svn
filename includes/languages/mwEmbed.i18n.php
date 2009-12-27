@@ -67,6 +67,12 @@ $messages['en'] = array(
 	'mwe-sequencer_credit_line' => 'Developed by <a href="http://kaltura.com">Kaltura, Inc.</a> in partnership with the <a href="http://wikimediafoundation.org/wiki/Home">Wikimedia Foundation</a> (<a href="#">more information</a>).',
 
 	/*
+	 * js file: /modules/Sequencer/remotes/RemoteMwSequencer.js
+	 */
+	'mwe-no-sequence-create' => 'No sequence exists named $1, You can $2',
+	'mwe-sequence-create-one' => 'start a sequence',
+
+	/*
 	 * js file: /modules/TimedText/old_mvTimeTextEdit.js
 	 */
 	'mwe-upload-subs-file' => 'Upload subtitle',
@@ -131,8 +137,8 @@ $messages['en'] = array(
 	/*
 	 * js file: /modules/TimedText/remotes/RemoteMwTimedText.js
 	 */
-	'mwe-language-subtiles-for-clip' => '$1 subtitles for clip: $2',
-	'mwe-language-no-subtiles-for-clip' => 'No $1 subtitles where found for clip: $2',
+	'mwe-language-subtitles-for-clip' => '$1 subtitles for clip: $2',
+	'mwe-language-no-subtitles-for-clip' => 'No $1 subtitles where found for clip: $2',
 
 	/*
 	 * js file: /modules/EmbedPlayer/mw.EmbedPlayer.js

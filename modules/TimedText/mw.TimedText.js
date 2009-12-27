@@ -830,7 +830,10 @@ mw.addMessages( {
 		
 	/**
 	 * TextSource object extends a base mediaSource object 
-	 *  with some timedText features 
+	 *  with some timedText features
+	 *
+	 * @param {Object} source Source object to extend
+	 * @param {Object} {Optional} textProvider The text provider interface ( to load source from api ) 
 	 */
 	TextSource = function( source , textProvider){
 		return this.init( source, textProvider );
@@ -844,7 +847,7 @@ mw.addMessages( {
 		// captions include "start", "end" and "content" fields
 		captions: [],
 		
-		// The previus index of the timed text served
+		// The previous index of the timed text served
 		// Avoids searching the entire array on time updates. 
 		prevIndex: 0,
 		
@@ -901,7 +904,7 @@ mw.addMessages( {
 			}						
 			// Try to load src via src attr:			
 			if( this.getSrc() ){
-				// Issue the load request ( if we can ) 
+				// Issue the direct load request ( if we can ) 
 				if ( mw.parseUri( document.URL ).host != mw.parseUri( this.getSrc() ).host ){
 					mw.log("Error: host mis-match: " + mw.parseUri( document.URL ).host != mw.parseUri( this.getSrc() ).host )
 					return ;
@@ -918,7 +921,7 @@ mw.addMessages( {
 				return ;
 			}			
 			
-			// Try to load src via provider:
+			// Try to load src via textProvider:
 			if( this.textProvider && this.titleKey ){
 				this.textProvider.loadTitleKey( this.titleKey, function( data ){
 					if( data ){
@@ -962,15 +965,16 @@ mw.addMessages( {
 	}
 	/**	
 	 * parse mediaWiki html srt 
+	 * @param {Object} data XML data string to be parsed
 	 */
 	function parseMwSrt( data ){
 		var captions = [ ];
 		var curentCap = [];
 		var parseNextAsTime = false;		
-		// Optimize: we could use javascript strings instead of XML parsing  		
+		// Optimize: we could use javascript strings functions instead of jQuery XML parsing:  		
 		$j( '<div>' + data + '</div>' ).find('p').each( function(){					
 			currentPtext = $j(this).html();
-			mw.log( currentPtext );
+			//mw.log( currentPtext );
 			
 			//Check if the p matches the "all in one line" match: 
 			var m = currentPtext.replace('--&gt;', '-->').match(/\d+\s(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?(.*)/);
@@ -1027,7 +1031,7 @@ mw.addMessages( {
 		return captions;
 	}
 	/**
-	 * srt timed text parse hanndle:
+	 * srt timed text parse handle:
 	 * @param {String} data Srt string to be parsed
 	 */
 	function parseSrt( data ) {		
@@ -1116,8 +1120,8 @@ mw.addMessages( {
 	/**
 	 * Text Providers
 	 * 
-	 * text provier objects let you map your player to a timed text provier 
-	 * can provide discovery, and contirbution push back
+	 * text provider objects let you map your player to a timed text provider 
+	 * can provide discovery, and contribution push back
 	 * 
 	
 	// Will add a base class once we are serving more than just mediaWiki "commons"  
