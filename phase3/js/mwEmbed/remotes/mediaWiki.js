@@ -50,7 +50,7 @@ function doPageSpecificRewrite() {
 	// Timed text display:
 	if ( wgPageName.indexOf( "TimedText" ) === 0 ) {		
 		if( wgAction == 'view' ){
-			mwSetPageToloading();
+			mwSetPageToLoading();
 		}
 		//load the "player" ( includes call to  loadMwEmbed )
 		mwLoadPlayer(function(){
@@ -60,13 +60,14 @@ function doPageSpecificRewrite() {
 	}
 	
 	// Remote Sequencer
-	if( wgPageName.indexOf( "Sequence" ) === 0 ){		
+	if( wgPageName.indexOf( "Sequence" ) === 0 ){	
+		console.log( 'spl: ' + typeof mwSetPageToLoading );	
 		// If on a view page set content to "loading" 
 		mwSetPageToLoading();
 		// Loading with loadMwEmbed not so big a deal since "sequencer is huge
 		loadMwEmbed( function(){
 			mw.load( 'Sequencer', function(){
-				mw.load( mwEmbedHostPath + '/mwEmbed/Sequencer/mw.Sequencer.js?' + mwGetReqArgs() );
+				mw.load( 'RemoteMwSequencer' );
 			} );
 		} );	
 	}
@@ -104,7 +105,7 @@ function doPageSpecificRewrite() {
 		}
 	}	
 	if ( vidIdList.length > 0 ) {
-		//reverse order the array so videos at the "top" get swaped first:
+		// Reverse order the array so videos at the "top" get swaped first:
 		vidIdList = vidIdList.reverse();
 		mwLoadPlayer(function(){
 			//Load the "EmbedPlayer" module: 
@@ -120,10 +121,11 @@ function doPageSpecificRewrite() {
 /*
 * Sets the mediaWiki content to "loading" 
 */
-function mwSetPageToloading(){
+function mwSetPageToLoading(){
 	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/styles.css?' + mwGetReqArgs() );
 	var body = document.getElementById('bodyContent');
 	body.innerHTML = '<div class="loading_spinner"></div>';
+	return ;
 }
 /**
 * Similar to the player loader in /modules/embedPlayer/loader.js

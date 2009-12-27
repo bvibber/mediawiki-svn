@@ -10,7 +10,8 @@ mw.addMessages( {
 	"mwe-language-subtitles-for-clip": "$1 subtitles for clip: $2",
 	"mwe-language-no-subtitles-for-clip": "No $1 subtitles where found for clip: $2"
 });
-var RemoteMwTimedText = function( options ){
+
+RemoteMwTimedText = function( options ){
 	return this.init( options );
 } 
 RemoteMwTimedText.prototype = {
@@ -139,7 +140,7 @@ RemoteMwTimedText.prototype = {
 					var pt = page.revisions[0]['*'].match( re );
 					if ( pt[1] ) {
 						mw.log( 'found redirect tyring: ' + pt[1] )
-						RemoteMwTimedText.embedByTitle( pt[1], callback);
+						_this.embedByTitle( pt[1], callback);
 						return ;
 					} else {
 						mw.log( 'Error: addByTitle could not process redirect' );
@@ -170,9 +171,11 @@ RemoteMwTimedText.prototype = {
 	}
 }
 
+
+// Setup config on init: ( remotes drive page actions on init ) 
 mw.ready( function(){
 	//Setup the remote configuration
-	myRemote = new RemoteMwTimedText( {
+	var myRemote = new RemoteMwTimedText( {
 		'action': wgAction,
 		'title' : wgTitle,
 		'target': '#bodyContent'
