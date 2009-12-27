@@ -1747,9 +1747,9 @@ var mwDefaultConf = {
 			var currentSheet = $j( this) .attr( 'href' );
 			var sheetParts = currentSheet.split('?');		
 			var urlParts = url.split('?');
-			//if the base url's match check the pamaters:
+			//if the base url's match check the parameters:
 			if( sheetParts[0] == urlParts[0] && sheetParts[1]){
-				mw.log(" sheet compare: " + sheetParts[1].split( '&' ).sort().join('') + ' != ' + urlParts[1].split('&').sort().join(''));
+				//mw.log(" sheet compare: " + sheetParts[1].split( '&' ).sort().join('') + ' != ' + urlParts[1].split('&').sort().join(''));
 				//Check if url params match ( sort to do string compare )						
 				if( sheetParts[1].split( '&' ).sort().join('') ==
 						urlParts[1].split('&').sort().join('') ){	 
@@ -1758,7 +1758,7 @@ var mwDefaultConf = {
 			}
 		} );					
 		if( foundSheet ){
-			mw.log( 'sheet: ' + url + ' already included ' );
+			mw.log( 'skiped sheet: ' + url);
 			return ;
 		}
 		
@@ -1819,7 +1819,8 @@ var mwDefaultConf = {
 		if( ! mwpath ){
 			mw.log( "Error could not get mwEmbed path " );
 			return ;
-		}		
+		}
+		
 		// Update the cached var with the absolute path: 
 		mwEmbedPath = mw.absoluteUrl( mwpath )	;			
 		return mwEmbedPath;

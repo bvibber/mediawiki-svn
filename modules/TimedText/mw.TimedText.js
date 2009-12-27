@@ -321,7 +321,7 @@ mw.addMessages( {
 		* Get the layout mode
 		* 
 		* Takes into consideration: 
-		* 	Playback method overlays support ( have to put subtiles bellow video )
+		* 	Playback method overlays support ( have to put subtitles bellow video )
 		* 	 
 		*/
 		getLayoutMode: function(){
@@ -1213,6 +1213,7 @@ mw.addMessages( {
 				'list' : 'allpages',
 				'apprefix' : titleKey,
 				'apnamespace' : this.getTimedTextNS(),
+				'aplimit' : 200,
 				'prop':'revisions'
 			};
 			mw.getJSON( this.api_url, request, function( sourcePages ) {

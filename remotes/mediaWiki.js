@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r60371';
+var mwRemoteVersion = 'r72';
 var mwUseScriptLoader = true;
 
 // Setup up request Params: 
@@ -104,6 +104,8 @@ function doPageSpecificRewrite() {
 		}
 	}	
 	if ( vidIdList.length > 0 ) {
+		//reverse order the array so videos at the "top" get swaped first:
+		vidIdList = vidIdList.reverse();
 		mwLoadPlayer(function(){
 			//Load the "EmbedPlayer" module: 
 			// All the actual code was requested in our single script-loader call 
@@ -234,7 +236,8 @@ function rewrite_for_OggHandler( vidIdList ) {
 			$j( '#' + vidId ).html( html_out )
 				.css( 'height', pheight + 30 );
 
-			// Do the actual rewrite 				
+			// Do the actual rewrite 			
+			mw.log("rewrite: "+ vidId );	
 			$j( '#mwe_' + vidId ).embedPlayer();
 			//issue an async request to rewrite the next clip
 			if ( vidIdList.length != 0 ) {					
@@ -245,7 +248,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 
 		}		
 	};
-	// Process each item in the vidIdList (with setTimeout to avoid locking)	
+	// Process current top item in vidIdList	
 	procVidId( vidIdList.pop() );
 }
 
