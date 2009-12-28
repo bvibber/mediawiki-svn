@@ -551,11 +551,14 @@ mw.addMessages( {
 					.attr('href', '#')
 					.click( callback )			
 			)
-			if( icon )
+			if( icon ){
 				$li.find( 'a' ).append(	
-					$j('<span style="float:left;">').addClass( 'ui-icon ui-icon-' + icon ) 
-				)				
-			$li.find( 'a' ).append( $j('<span>').text( string ) );
+					$j('<span style="float:left;"></span>')
+						.addClass( 'ui-icon ui-icon-' + icon ) 
+				)		
+			}		
+			$li.find( 'a' ).append( $j('<span>').text( string ) );			
+			//mw.log(' li html: ' + $j('<div>').append( $li ).html() );
 			return $li;
 		},
 		
