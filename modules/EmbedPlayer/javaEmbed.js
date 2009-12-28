@@ -105,7 +105,7 @@ var javaEmbed = {
 	monitor:function() {
 		this.getPlayerElement();
 		if ( this.isPlaying() ) {
-			if ( this.playerElement && this.playerElement.getPlayPosition ) {
+			if ( this.playerElement ) {
 				try {
 				   // java reads ogg media time.. so no need to add the start or seek offset:
 				   // mw.log(' ct: ' + this.playerElement.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
