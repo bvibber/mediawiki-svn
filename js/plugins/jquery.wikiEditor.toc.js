@@ -92,20 +92,24 @@ fn: {
 	 */
 	update: function( context ) {
 		$.wikiEditor.modules.toc.fn.unhighlight( context );
-		var position = context.$textarea.textSelection( 'getCaretPosition' );
+		
+		// Find the section we're in. Theoretically, this could use a .data() on the divs, but that would need
+		// to be updated when sections are added and linear search through a few dozen sections is relatively
+		// fast, so I'm not sure it's worth it
+		// TODO: Actually benchmark that
+		var div = context.fn.beforeSelection( 'div.wikiEditor-toc-header' );
 		var section = 0;
 		if ( context.data.outline.length > 0 ) {
 			// If the caret is before the first heading, you must be in section
 			// 0, and there is no need to look any farther - otherwise check
 			// that the caret is before each section, and when it's not, we now
 			// know what section it is in
-			if ( !( position < context.data.outline[0].position - 1 ) ) {
-				while (
-					section < context.data.outline.length && context.data.outline[section].position - 1 < position
-				) {
+			if ( div.size() > 0 ) {
+				while ( section < context.data.outline.length &&
+						context.data.outline[section].wrapper.get( 0 ) != div.get( 0 ) ) {
 					section++;
 				}
-				section = Math.max( 0, section );
+				section++;
 			}
 			var sectionLink = context.modules.toc.$toc.find( 'div.section-' + section );
 			sectionLink.addClass( 'current' );
