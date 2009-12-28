@@ -511,14 +511,18 @@ if ( typeof context == 'undefined' ) {
 			while ( ec.firstChild && ec.nodeName != '#text' ) {
 				ec = ec.firstChild;
 			}
-			// TODO: Can this be done in one call? sel.addRange()?
-			//sel.removeAllRanges();
+			var oldSC = sel.getRangeAt(0).startContainer;
+			var oldSO = sel.getRangeAt(0).startOffset;
 			sel.extend( sc, options.start );
-			//if ( sel.
-			sel.collapseToStart();
+			if ( oldSC == sel.getRangeAt(0).startContainer && oldSO == sel.getRangeAt(0).startOffset ) {
+				sel.collapseToEnd();
+			} else {
+				sel.collapseToStart();
+			}
 			if ( options.end != options.start || sc != ec ) {
 				sel.extend( ec, options.end );
 			}
+			context.$iframe[0].contentWindow.focus();
 		},
 		/**
 		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()
