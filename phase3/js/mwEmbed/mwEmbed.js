@@ -923,7 +923,7 @@ var mwDefaultConf = {
 		load: function( loadRequest, callback ){
 			// Check for empty loadRequest ( directly return the callback ) 
 			if( mw.isEmpty( loadRequest ) ){
-				mw.log( 'Empty load request: ' + loadRequest);
+				mw.log( 'Empty load request: ' + loadRequest );
 				callback( loadRequest );
 				return ;
 			}
@@ -978,7 +978,7 @@ var mwDefaultConf = {
 		* @param {Function} callback Function to call once all scripts are loaded.
 		*/ 
 		loadMany: function( loadSet, callback ) {				
-			
+			var _this = this;
 			// Setup up the local "loadStates"			
 			var loadStates = { };
 					
@@ -988,12 +988,14 @@ var mwDefaultConf = {
 				if( mw.isEmpty( loadStates ) ){
 					mw.log( 'loadMany:all classes already loaded');
 					callback();
+					return ;
 				}				
 			}else{									
 				// Check if its a dependency set ( nested objects ) 
-				if( typeof loadSet [ 0 ] == 'object' ){				
+				if( typeof loadSet [ 0 ] == 'object' ){		
+					_this.dependencyChainCallFlag[loadSet] = false;
 					//Load sets of classes ( to preserver order for some browsers )
-					this.loadDependencyChain( loadSet, callback );
+					_this.loadDependencyChain( loadSet, callback );
 					return ;
 				}
 				
@@ -1095,14 +1097,25 @@ var mwDefaultConf = {
 		* @param {Object} loadChain A set of javascript arrays to be loaded. 
 		*	Sets are requested in array order. 		   
 		*/ 
+		dependencyChainCallFlag: { },
+		
 		loadDependencyChain: function( loadChain, callback ){
-			var _this = this;							
+			var _this = this;						
 			// Load with dependency checks
-			this.load( loadChain.shift(), function() {									
+			var callSet = loadChain.shift();
+			this.load( callSet, function( cbname ) {				
 				if ( loadChain.length != 0 ) {
 					_this.loadDependencyChain( loadChain, callback );
 				} else {
-					callback();
+					// NOTE: IE is playing tricks with me 
+					//  Need to figure out why this callback gets called twice 
+					//  and remove this flag
+					if( _this.dependencyChainCallFlag[ callSet ] == callback ){
+						mw.log("... already called this callback for " + callSet );
+						return ;
+					}
+					_this.dependencyChainCallFlag[ callSet ] = callback;										
+					callback( );					
 				}
 			} );
 		},
