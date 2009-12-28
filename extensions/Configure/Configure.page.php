@@ -7,7 +7,6 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @ingroup Extensions
  */
 abstract class ConfigurationPage extends SpecialPage {
-	protected $mRequireWebConf = true;
 	protected $mCanEdit = true;
 	protected $conf;
 	protected $mConfSettings;
@@ -39,19 +38,17 @@ abstract class ConfigurationPage extends SpecialPage {
 			return;
 		}
 
-		if ( $this->mRequireWebConf ) {
-			// Since efConfigureSetup() should be explicitly called, don't go
-			// further if that function wasn't called
-			if ( !$wgConf instanceof WebConfiguration ) {
-				$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>', 'configure-no-setup' );
-				return;
-			}
+		// Since efConfigureSetup() should be explicitly called, don't go
+		// further if that function wasn't called
+		if ( !$wgConf instanceof WebConfiguration ) {
+			$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>', 'configure-no-setup' );
+			return;
+		}
 
-			$ret = $wgConf->doChecks();
-			if ( count( $ret ) ) {
-				$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>', $ret );
-				return;
-			}
+		$ret = $wgConf->doChecks();
+		if ( count( $ret ) ) {
+			$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>', $ret );
+			return;
 		}
 
 		$wikiParam = ( $this->mCanEdit && $wgRequest->wasPosted() ) ? 'wpWiki' : 'wiki';
@@ -69,10 +66,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			}
 			$this->mWiki = $wiki;
 		} else {
-			if ( $wgConf instanceof WebConfiguration )
-				$this->mWiki = $wgConf->getWiki();
-			else
-				$this->mWiki = 'default';
+			$this->mWiki = $wgConf->getWiki();
 		}
 
 		$this->outputHeader();
@@ -314,9 +308,6 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Get the version
 	 */
 	protected function getVersion() {
-		if ( !$this->mRequireWebConf )
-			return true;
-
 		global $wgConf, $wgOut, $wgRequest, $wgLang;
 
 		if ( $version = $wgRequest->getVal( 'version' ) ) {
@@ -353,7 +344,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					array( 'configure-old-not-available', $version ) );
 				return false;
 			}
-		} else {
+		} elseif ( $this->mCanEdit ) {
 			$this->conf = $wgConf->getCurrent( $this->mWiki );
 		}
 		return true;

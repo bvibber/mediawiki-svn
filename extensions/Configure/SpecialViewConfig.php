@@ -8,8 +8,6 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @ingroup Extensions
  */
 class SpecialViewConfig extends ConfigurationPage {
-	protected $isWebConfig;
-	protected $mRequireWebConf = false;
 	protected $mCanEdit = false;
 
 	/**
@@ -21,52 +19,6 @@ class SpecialViewConfig extends ConfigurationPage {
 
 	protected function getSettingMask() {
 		return CONF_SETTINGS_BOTH;
-	}
-
-	protected function getVersion() {
-		global $wgOut, $wgRequest, $wgConf;
-
-		$this->isWebConfig = $wgConf instanceof WebConfiguration;
-
-		if ( $this->isWebConfig && $version = $wgRequest->getVal( 'version' ) ) {
-			$versions = $wgConf->listArchiveVersions();
-			if ( in_array( $version, $versions ) || $version == 'default' ) {
-				$conf = $wgConf->getOldSettings( $version );
-
-				if ($version == 'default') { ## Yucky special case.
-					$conf[$this->mWiki] = $conf['default'];
-				}
-
-				if ( $this->isUserAllowedAll() ) {
-					$wiki = $wgRequest->getVal( 'wiki', $wgConf->getWiki() );
-				} else {
-					$wiki = $wgConf->getWiki();
-				}
-
-				$this->version = $version;
-
-				if ( $diff = $wgRequest->getVal( 'diff' ) ) {
-					if ( !in_array( $diff, $versions ) && $diff != 'default' ) {
-						$msg = wfMsgNoTrans( 'configure-old-not-available', $diff );
-						$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
-						return;
-					}
-					$this->diff = $diff;
-				}
-
-				if ( isset( $conf[$wiki] ) ) {
-					$this->conf = $conf[$wiki];
-				} else {
-					$this->conf = array();
-				}
-			} else {
-				$msg = wfMsgNoTrans( 'configure-old-not-available', $version );
-				$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
-				return false;
-			}
-		}
-
-		return true;
 	}
 
 	/**
@@ -91,7 +43,7 @@ class SpecialViewConfig extends ConfigurationPage {
 	protected function showForm() {
 		global $wgOut, $wgRequest;
 
-		if ( !$this->isWebConfig || !empty( $this->conf ) || isset( $this->diff ) ) {
+		if ( !empty( $this->conf ) || isset( $this->diff ) ) {
 			if ( isset( $this->diff ) ) {
 				$this->showDiff();
 			} else {
@@ -117,8 +69,6 @@ class SpecialViewConfig extends ConfigurationPage {
 	 */
 	protected function buildOldVersionSelect() {
 		global $wgConf, $wgLang, $wgUser, $wgRequest, $wgScript;
-		if ( !$this->isWebConfig )
-			return '';
 
 		$self = $this->getTitle();
 		$pager = $wgConf->getPager();
