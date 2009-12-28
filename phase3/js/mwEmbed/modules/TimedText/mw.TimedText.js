@@ -543,7 +543,7 @@ mw.addMessages( {
 		/**
 		* Get line item ( li ) from text string
 		* @param {String} string Text to display for the menu item
-		* @param {String} icon jQuery UI icon key 
+		* @param {String} icon jQuery UI icon key displayed to the left of the menu item
 		*/
 		getLi: function( string, icon , callback){			
 			var $li = $j( '<li>' ).append(		
