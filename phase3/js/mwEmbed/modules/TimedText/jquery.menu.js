@@ -34,7 +34,7 @@ $.fn.menu = function( options ){
 		.click(function(){
 			if (caller.m.menuOpen == false) { 
 				caller.m.showMenu(); 
-			}else { 
+			}else { 				
 				caller.m.kill(); 
 			};
 			return false;
@@ -47,7 +47,7 @@ $.fn.menu = function( options ){
 		setTimeout(function(){
 			caller.m.showLoading();	
 			caller.m.showMenu();
-		}, 0 );
+		}, 0 );		
 	}
 	
 	
@@ -115,7 +115,7 @@ function Menu(caller, options){
 		});
 	};
 	
-	this.kill = function(){
+	this.kill = function(){		
 		caller
 			.removeClass(options.loadingState)
 			.removeClass('fg-menu-open')
@@ -142,7 +142,10 @@ function Menu(caller, options){
 		caller
 			.addClass('fg-menu-open')
 			.addClass(options.callerOnState);
-		container.parent().show().click(function(){ menu.kill(); return false; });
+		container.parent().show().click(function(){
+			menu.kill(); 
+			return false; 
+		});
 		container.hide().slideDown(options.showSpeed).find('.fg-menu:eq(0)');
 		menu.menuOpen = true;
 		caller.removeClass(options.loadingState);
@@ -281,7 +284,7 @@ function Menu(caller, options){
 		menu.menuExists = true;
 	};
 	
-	this.chooseItem = function(item){
+	this.chooseItem = function(item){		
 		menu.kill();				
 		if( options.selectItemCallback )
 			options.selectItemCallback( item );			

@@ -1706,7 +1706,7 @@ var mvTransLib = {
 		mw.log( 'f:getOverlaySelector: ' + overlay_selector_id + ' append to: ' + '#videoPlayer_' + tObj.pClip.embed.id );
 		// make sure overlay_selector_id not already here:	
 		if ( $j( '#' + overlay_selector_id ).length == 0  ) {
-			$j( '#videoPlayer_' + tObj.pClip.embed.id ).prepend( '' +
+			$j( '#' + tObj.pClip.embed.id ).prepend( '' +
 				'<div id="' + overlay_selector_id + '" ' +
 					'style="position:absolute;top:0px;left:0px;' +
 					'height:' + parseInt( tObj.pClip.pp.height ) + 'px;' +

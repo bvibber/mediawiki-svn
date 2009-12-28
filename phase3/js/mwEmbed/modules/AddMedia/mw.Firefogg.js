@@ -46,7 +46,7 @@ var default_firefogg_options = {
 	// Callback which is called when the source name changes
 	'new_source_cb': false,
 
-	// CSS selector identifying the target control container or form (can't be left null)
+	// jQuery selector identifying the target control container or form (can't be left null)
 	'selector': '',
 
 	// May be "upload" to if we are rewriting an upload form, or "local" if we are encoding a local file	

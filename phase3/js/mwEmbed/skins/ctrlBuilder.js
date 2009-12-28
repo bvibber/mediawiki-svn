@@ -82,8 +82,9 @@ ctrlBuilder.prototype = {
 		}
 			
 		// Append options to body (if not already there)
-		if ( _this.external_options && $j( '#mv_vid_options_' + this.id ).length == 0 )
+		if ( _this.external_options && $j( '#mv_vid_options_' + this.id ).length == 0 ){
 			$j( 'body' ).append( this.components[ 'options_menu' ].o( this ) );
+		}
 
 		var o = '';
 		
@@ -127,17 +128,14 @@ ctrlBuilder.prototype = {
 	
 	/**
 	* addControlHooks
-	* to be run once controls are attached to the dom
-	*
-	* @param {jQueryObject} $target The target hook position
+	* Adds control hooks once controls are in the DOM
 	*/
-	addControlHooks:function( $target ) {
+	addControlHooks:function( ) {
 		// Set up local pointer to the embedObj
 		var embedObj = this.embedObj;
 		var _this = this;				
-		
-		if ( !$target )
-			$target = $j( '#' + embedObj.id );				
+		// Setup target shortcut to	control-bar
+		$target = embedObj.$target;
 				
 		// Add play hook:
 		$target.find( '.play-btn,.play-btn-large' ).unbind().buttonHover().click( function() {
@@ -259,26 +257,27 @@ ctrlBuilder.prototype = {
 		var $opt = $j( '#mv_vid_options_' + embedObj.id );
 		
 		// videoOptions ... @@todo should be merged with something more like kskin.js:
-		$opt.find( '.vo_selection' ).click( function() {
-			embedObj.displayOverlay();
-			embedObj.showPlayerSelect( $target.find( '.videoOptionsComplete' ) );			
+		$opt.find( '.vo_selection' ).click( function() {			
+			embedObj.displayOverlay();			
+			embedObj.showPlayerSelect( embedObj.$target.find( '.videoOptionsComplete' ) );			
 			$opt.hide();
 			return false;
 		} );
 		
 		$opt.find( '.vo_download' ).click( function() {
 			embedObj.displayOverlay();
-			embedObj.showDownload( $target.find( '.videoOptionsComplete' ) );
+			embedObj.showDownload(  embedObj.$target.find( '.videoOptionsComplete' ) );
 			$opt.hide();
 			return false;
 		} );
 		
 		$opt.find( '.vo_showcode' ).click( function() {
 			embedObj.displayOverlay();
-			embedObj.showShare( $target.find( '.videoOptionsComplete' ) );
+			embedObj.showShare(  embedObj.$target.find( '.videoOptionsComplete' ) );
 			$opt.hide();
 			return false;
 		} );
+		
 		this.doVolumeBinding();
 		
 		// Check if we have any custom skin Bindings to run
@@ -333,10 +332,10 @@ ctrlBuilder.prototype = {
 	doVolumeBinding:function() {
 		var embedObj = this.embedObj;
 		var _this = this;
-		var $target = $j( '#' + embedObj.id );
+		var $target = $j( '#' + embedObj.id ).parent('.control_wrap');
 		$target.find( '.volume_control' ).unbind().buttonHover().click( function() {
 			mw.log( 'clicked volume control' );
-			$j( '#' + embedObj.id ).get( 0 ).toggleMute();
+			embedObj.toggleMute();
 		} );
 		
 		// Add vertical volume display hover
@@ -442,7 +441,8 @@ ctrlBuilder.prototype = {
 							.wrap( '<div/>' ).parent().html();
 			}
 		},
-		/*
+		
+		/**
 		* The options for the player, includes player selection, 
 		* download, and share options
 		*/
