@@ -68,7 +68,7 @@ var kskinConfig = {
 					$j( embedObj ).parents( '.thumbinner' ).css( 'overflow', 'visible' );				
 														
 				var o = '' +
-				'<div class="k-menu ui-widget-content" ' +
+				'<div id="blackbg_' + embedObj.id +'" class="k-menu ui-widget-content" ' +
 					'style="width:' + ctrlObj.getOverlayWidth() + 'px; height:' +  ctrlObj.getOverlayHeight() + 'px;' + menuOffset + '">' +
 						'<ul class="k-menu-bar">';
 							// Output menu item containers: 
@@ -112,37 +112,36 @@ var kskinConfig = {
 	*/
 	addSkinControlBindings: function() {
 		var embedObj = this.embedObj;
-		var _this = this;
-		var $tp = $j( '#' + embedObj.id );
+		var _this = this;		
 		
-		// Adds options and bindings: (we do this onClick )  
-		
+		// Set up control bar pointer
+		var $playerTarget = embedObj.$target;
 		 		
    		// Options menu display:			
-   		$tp.find( '.k-options' ).unbind().click( function() {
-   			// Get an updated refrence to the embed object   	  	
-   			var embedObj = $tp.get( 0 );    			
-			if ( $j( '#' + embedObj.id + ' .k-menu' ).length == 0 ) {							
+   		$playerTarget.find( '.k-options' )
+   		.unbind()
+   		.click( function() {     					 	
+			if ( $playerTarget.find( '.k-menu' ).length == 0 ) {							
 	   			// Stop the player if it does not support overlays:
 				if ( !embedObj.supports['overlays'] ){				
-					$tp.get( 0 ).stop();
+					embedObj.stop();
 				}
-				// Add the options       				
-				_this.addOptionsBinding( $tp );
+				// Add the menu binding        				
+				_this.addMeunBinding();
 			}
 	   		// Set up the text and menu:       			 					
 			var $ktxt = $j( this );
-			var $kmenu = $tp.find( '.k-menu' );
+			var $kmenu = $playerTarget.find( '.k-menu' );
 			if ( $kmenu.is( ':visible' ) ) {
 				$kmenu.fadeOut( "fast", function() {
 					$ktxt.find( 'span' ).html ( gM( 'mwe-menu_btn' ) );
 				} );
-				$tp.find( '.play-btn-large' ).fadeIn( 'fast' );
+				$playerTarget.find( '.play-btn-large' ).fadeIn( 'fast' );
 			} else {
 				$kmenu.fadeIn( "fast", function() {
 					$ktxt.find( 'span' ).html ( gM( 'mwe-close_btn' ) );
 				} );
-				$tp.find( '.play-btn-large' ).fadeOut( 'fast' );
+				$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
 			}
 		} );				
 		
@@ -153,35 +152,38 @@ var kskinConfig = {
 	*
 	* @param {Object} $tp Target video container for 
 	*/
-	addOptionsBinding: function( $tp ) {
+	addMeunBinding: function() {
 		var _this = this;
 		var embedObj = this.embedObj;
-		if ( $j( '#' + embedObj.id + ' .k-menu' ).length != 0 )
+		// Set local player target pointer:
+		var $playerTarget = embedObj.$target;
+		
+		// check if k-menu already exists:
+		if ( $playerTarget.find( '.k-menu' ).length != 0 )
 			return false;
 		
-		  
-		$tp.find( '.' + _this.playerClass ).prepend(
+		// Add options menu to top of player target children: 
+		$playerTarget.prepend(
 			_this.components[ 'options_menu' ].o( _this )
 		);		
 		
 		
 		// By default its hidden:
-  		$tp.find( '.k-menu' ).hide();
+  		$playerTarget.find( '.k-menu' ).hide();
   			
-  		// Output menu-items: 
+  		// Add menu-items bindings:  
   		for ( i = 0; i < _this.menu_items.length ; i++ ) {
-	        $tp.find( '.k-' +  _this.menu_items[i] + '-btn' ).click( function() {
+	        $playerTarget.find( '.k-' +  _this.menu_items[i] + '-btn' ).click( function() {	        	
 	        	var mk = $j( this ).attr( 'rel' );
-	        	$target = $j( '#' + embedObj.id  + ' .menu-' + mk ).hide();
-	        	// Generate the menu html not already done:
-	        	if ( $target.children().length == 0 ) {
-					// call the function show{Menuitem} with target:
-					_this.showMenuItem(	mk );        								
-	        	}
+	        	// hide menu items	        	
+	        	$targetItem = $playerTarget.find( '.menu-' + mk );	
+				// call the function showMenuItem
+				_this.showMenuItem(	mk );        									        	
+	        	// Hide the others 
+	        	$playerTarget.find( '.menu-screen' ).hide();
 	        	
-	        	// Slide out the others 
-	        	$j( '#' + embedObj.id  + ' .menu-screen' ).hide();
-	        	$target.fadeIn( "fast" );
+	        	// Show the target menu item:
+	        	$targetItem.fadeIn( "fast" );
 	        	 
 				// Don't follow the # link								
 	            return false;
@@ -195,25 +197,33 @@ var kskinConfig = {
 	* @param {String} menu_itme Menu item key to display
 	*/
 	showMenuItem:function( menu_item ) {
+		var embedObj = this.embedObj;
 		//handle special k-skin specific display; 
 		if( menu_item == 'credits'){
 			this.showCredits(); 
 		}else{
-			//call the base embedObj "show{Item}"
+			// Call the base embedObj "show{Item}"
 			this.embedObj['show' + menu_item.charAt( 0 ).toUpperCase() + menu_item.substring( 1 )](
-				$j( '#' + this.embedObj.id + ' .menu-' + menu_item )
+				embedObj.$target.find( '.menu-' + menu_item )
 			);
 		}
 	},	
 	
 	/**
-	* Do the credit screen (presently specific to kaltura skin:)
+	* Show the "edit with kaltura" screen (  specific to kaltura skin )
+	*/
+	showKalturaEdit: function(){
+		
+	},	
+	
+	/**
+	* Show the credit screen (presently specific to kaltura skin )
 	*/  
 	showCredits: function() {
 		//set up the shortcuts:	
 		embedObj = this.embedObj;
 		var _this = this;	
-		$target = $j( '#' + embedObj.id + ' .menu-credits' );
+		$target = embedObj.$target.find( '.menu-credits' );
 
 		$target.html( '<h2>' + gM( 'mwe-credits' ) + '</h2>'  +
 			'<div class="credits_box ui-corner-all">' +

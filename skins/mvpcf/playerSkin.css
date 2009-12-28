@@ -25,7 +25,7 @@
 .mv-player a:hover {color: #75a5e4; text-decoration: underline;}
 .mv-player img, .mv-player img a, .mv-player img a:hover {border: 0;}
 
-.mv-player h1, .mv-player h2, .mv-player h3, .mv-player h4, .mv-player h5, .mv-player h6 {color: #242424; margin: 5px 0; padding: 0;}
+.mv-player h1, .mv-player h2, .mv-player h3, .mv-player h4, .mv-player h5, .mv-player h6 { margin: 5px 0; padding: 0;}
 .mv-player h1 {font-size: 24px;}
 .mv-player h2 {font-size: 18px;}
 .mv-player h3 {font-size: 16px;}
@@ -196,7 +196,7 @@
 	padding:2px 5px;
 }
 .mv-player .videoOptionsComplete div.ui-state-highlight a {
-	color:#FFE96E;
+	color:#eee;
 	font-weight:bold;
 }
 

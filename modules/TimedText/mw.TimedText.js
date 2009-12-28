@@ -158,7 +158,7 @@ mw.addMessages( {
 			this.textSourceSetupFlag = false;						
 			
 			//Set default langauge via wgUserLanguage if set
-			if( wgUserLanguage){
+			if( typeof wgUserLanguage != 'undefined'){
 				this.config.userLanugage = wgUserLanguage;
 			}
 			
@@ -220,7 +220,7 @@ mw.addMessages( {
 			var _this = this;
 			mw.log( "TimedText:bindMenu:" + target );
 			_this.menuTarget = 	target;				
-			var $menuButton = $j('#' + this.embedPlayer.id + ' .timed-text');
+			var $menuButton = this.embedPlayer.$target.find( '.timed-text' );
 					
 			// Else bind and show the menu 			
 			// We already have a loader in embedPlayer so the delay of
@@ -233,7 +233,7 @@ mw.addMessages( {
 					'targetMenuContainer' : _this.menuTarget,
 					'autoShow' : autoShow,
 					'backLinkText' : gM( 'mwe-back-btn' )							
-				} );
+				} );				
 			});								 
 		},					
 		
@@ -334,30 +334,34 @@ mw.addMessages( {
 		
 		/**
 		* Auto selects a source given the local configuration 
+		* 
+		* NOTE: presently this selects a "single" source. 
+		* In the future we could support multiple "enabled sources" 
 		*/
-		autoSelectSource: function(){					
-			// Check if any source matches our "local"
-			if( this.config.userLanugage ){
-				for( var i in this.textSources ){
-					var source = this.textSources[ i ];					
-					if( source.lang.toLowerCase() == this.config.userLanugage ){	
-						// Check for category if avaliable 
-						if(  source.category.toLowerCase() == this.config.userCategory.toLowerCase() ){  
-							this.enabledSources.push( source );
-						}						
-					}					
-				}
+		autoSelectSource: function(){	
+			this.enabledSources = [];
+									
+			// Check if any source matches our "local"		
+			for( var i in this.textSources ){
+				var source = this.textSources[ i ];		
+				if( this.config.userLanugage  &&
+					this.config.userLanugage == source.lang.toLowerCase() ){	
+					// Check for category if avaliable  
+					this.enabledSources.push( source );
+					return ;			
+				} 
 			}
-			//If not source enabled Try enabling english
+			// If no userLang, source try enabling english:
 			if( this.enabledSources.length == 0 ){
 				for( var i in this.textSources ){
 					var source = this.textSources[ i ];					
 					if( source.lang.toLowerCase() == 'en' ){
 						this.enabledSources.push( source );
+						return ;
 					}
 				}	
 			}
-			//If still no source try the first source we get; 
+			// If still no source try the first source we get; 
 			if( this.enabledSources.length == 0 ){
 				for( var i in this.textSources ){
 					var source = this.textSources[ i ];										
@@ -425,7 +429,7 @@ mw.addMessages( {
 		* Builds the core timed Text menu and 
 		* returns the binded jquery object / dom set
 		*
-		* Assumes text sources have been setup: (  _this.setupTextSources )
+		* Assumes text sources have been setup: (  _this.setupTextSources() )
 		* 
 		* calls a few sub-functions:		
 		* Basic menu layout:
@@ -479,14 +483,16 @@ mw.addMessages( {
 			// Show a loader:
 			mw.addLoaderDialog( gM( 'mwe-loading-text-edit' ));
 			// Load the timedText edit interface
-			mw.load( 'TimedText.Edit', function(){
-				mw.closeLoaderDialog();
+			mw.load( 'TimedText.Edit', function(){				
 				if( ! _this.editText ){
 					_this.editText = new mw.TimedTextEdit( _this );
 				}
+				// Close the loader:
+				mw.closeLoaderDialog();
 				_this.editText.showUI();
 			})
 		},
+		
 		/**
 		* Utility function to assist in menu build out:
 		* Get menu line item (li) html:  <li><a> msgKey </a></li> 
@@ -495,7 +501,7 @@ mw.addMessages( {
 		*/
 		
 		/**
-		 * get the add text menu item: 
+		 * Get the add text menu item: 
 		 */		
 		getLiAddText: function(){
 			var _this = this;			
@@ -552,8 +558,10 @@ mw.addMessages( {
 			$li.find( 'a' ).append( $j('<span>').text( string ) );
 			return $li;
 		},
+		
 		/**
 	 	 * Get lagnuage name from language key
+	 	 * @param {String} lang_key Language key
 	 	 */
 	 	getLanguageName: function( lang_key ){
 	 		if( mw.languages[ lang_key ]){
@@ -564,6 +572,8 @@ mw.addMessages( {
 		
 		/** 
 		* Builds and returns the "layout" menu 
+		* @return {Object} 
+		* 	The jquery menu dom object
 		*/		
 		getLayoutMenu: function(){
 			var _this = this;
@@ -614,8 +624,8 @@ mw.addMessages( {
 		* Updates the timed text layout ( should be called when  config.layout changes )
 		*/
 		updateLayout: function(){
-			var $player =  $j( '#' + this.embedPlayer.id);	
-			$player.find('.itext').remove();
+			var $playerTarget =  this.embedPlayer.$target;	
+			$playerTarget.find('.itext').remove();
 			this.refreshDisplay();
 		},
 		
@@ -640,11 +650,11 @@ mw.addMessages( {
 			// Remove any other sources selected in sources category
 			this.enabledSources = [];
 			
-			this.autoSelectSource();
+			this.enabledSources.push( source );
 			//Set any existing text target to "loading"
 			if( !source.loaded ) {
-				var $player =  $j( '#' + this.embedPlayer.id + ' .' + this.embedPlayer.ctrlBuilder.playerClass ); 			
-				$player.find('.itext').text( gM('mwe-loading-text') );
+				var $playerTarget = this.embedPlayer.$target; 			
+				$playerTarget.find('.itext').text( gM('mwe-loading-text') );
 			}
 			// Load the text:
 			source.load( function(){
@@ -660,8 +670,9 @@ mw.addMessages( {
 			// Empyt out previus text to force an interface update: 
 			this.prevText = [];
 			// Refresh the Menu (if it has a target to refresh) 
-			if( this.menuTarget )
-				this.bindMenu(  this.menuTarget, false );
+			if( this.menuTarget ){				
+				this.bindMenu(  this.menuTarget, false )
+			}
 			// Issues a "monitor" command to update the timed text for the new layout
 			this.monitor();
 		},
@@ -748,13 +759,13 @@ mw.addMessages( {
 			
 			//mw.log( 'updateTextDisplay: ' + text );	
 					
-			var $player =  $j( '#' + this.embedPlayer.id);	
-			var $textTarget = $player.find( '.itext_' + source.category + ' span' );			
+			var $playerTarget =  this.embedPlayer.$target;	
+			var $textTarget = $playerTarget.find( '.itext_' + source.category + ' span' );			
 			// If we are missing the target add it: 		
 			if( $textTarget.length == 0){
 				this.addItextDiv( source.category )
 				// Re-grab the textTarget:
-				$textTarget = $player.find( '.itext_' + source.category + ' span' );
+				$textTarget = $playerTarget.find( '.itext_' + source.category + ' span' );
 			}
 			
 			
@@ -780,16 +791,16 @@ mw.addMessages( {
 		 */
 		addItextDiv: function( category ){			 		
 			mw.log(" addItextDiv: " +  category )			
-			//get the relative positioned player class from the ctrlBuilder:
-			var $player =  $j( '#' + this.embedPlayer.id + ' .' + this.embedPlayer.ctrlBuilder.playerClass );
+			// Get the relative positioned player class from the ctrlBuilder:
+			var $playerTarget =  this.embedPlayer.$target;
 			
 			//Remove any existing itext divs for this player;
-			$player.find('.itext_' + category ).remove();
+			$playerTarget.find('.itext_' + category ).remove();
 			
 			// Setup the display text div: 
 			var layoutMode = this.getLayoutMode();
 			if( layoutMode == 'ontop' ){				  
-				$player.append(
+				$playerTarget.append(
 					$j('<div>').addClass( 'itext' + ' ' + 'itext_' + category )					
 						.css( {
 							"max-width": ( this.embedPlayer.width - 20 ), 
@@ -805,10 +816,14 @@ mw.addMessages( {
 								'background-color':'#333'
 							})
 						)    						
-				)
+				);				
+				// Make sure the outer player height is player + ctrlBuilder
+				$j( '#' + this.embedPlayer.id ).parent('.control_wrap').animate({
+					'height': this.embedPlayer.height + this.embedPlayer.ctrlBuilder.height
+				})	
 			}else if ( layoutMode == 'below'){
 				// Append before controls: 
-				$player.find( '.control-bar' ).before(
+				$playerTarget.find( '.control-bar' ).before(
 					$j('<div>').addClass( 'itext' + ' ' + 'itext_' + category )
 						.css({
 							'display': 'block',
@@ -822,9 +837,16 @@ mw.addMessages( {
 								'color':'white'													
 							} )
 						) 
-				);				
+				);		
+				var height = 62 + this.embedPlayer.height + this.embedPlayer.ctrlBuilder.height;
+				mw.log( 'set height:' + height );
+				// Add 60px to outer player height
+				$j( '#' + this.embedPlayer.id ).parent('.control_wrap').animate({
+					'height': height
+				})		
+				mw.log( ' height of ' + this.embedPlayer.id + ' is now: ' + $j( '#' + this.embedPlayer.id ).height() );
 			}	
-			mw.log( 'should have been appended: ' + $player.find('.itext').length );		
+			mw.log( 'should have been appended: ' + $playerTarget.find('.itext').length );		
 		}
 	}		 
 		

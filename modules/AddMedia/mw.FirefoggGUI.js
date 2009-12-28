@@ -301,12 +301,14 @@ mw.FirefoggGUI.prototype = {
 	 * Initialise this object
 	 */
 	init: function( options ) {	
+		
 		// Set up a supported object:
 		for ( var key in options ) {
 			if ( typeof default_mvAdvFirefogg_config[key] != 'undefined' ) {
 				this[key] = options[key];
 			}
 		}		
+		
 		// Inherit the base mvFirefogg class:
 		var baseFirefogg = new mw.Firefogg( options );
 		for ( var key in baseFirefogg ) {						
@@ -320,7 +322,8 @@ mw.FirefoggGUI.prototype = {
 	},
 
 	setupForm: function() {				
-		this.basefogg_setupForm();
+		//empty out the selector: 
+		$j(this.selector).empty();
 		this.createControls();
 		this.bindControls();
 	},

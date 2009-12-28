@@ -5,7 +5,7 @@
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
 var mwRemoteVersion = 'r72';
-var mwUseScriptLoader = true;
+var mwUseScriptLoader = false;
 
 // Setup up request Params: 
 var reqParts = urlparts[1].substring( 1 ).split( '&' );
@@ -235,8 +235,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 				'</video>';
 			}
 			// Set the video tag inner html and update the height
-			$j( '#' + vidId ).html( html_out )
-				.css( 'height', pheight + 30 );
+			$j( '#' + vidId ).after( html_out ).remove();				
 
 			// Do the actual rewrite 			
 			mw.log("rewrite: "+ vidId );	

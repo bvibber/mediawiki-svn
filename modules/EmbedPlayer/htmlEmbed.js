@@ -209,7 +209,7 @@ var htmlEmbed = {
 		// @@todo support more smil animation layout stuff: 
 
 		// wrap output in videoPlayer_ div:
-		$j( this ).html( '<div id="videoPlayer_' + this.id + '">' + this.getThumbnailHTML() + '</div>' );
+		$j( this ).html( this.getThumbnailHTML() );
 	},
 	
 	/**

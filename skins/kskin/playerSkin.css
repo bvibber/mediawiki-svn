@@ -426,3 +426,9 @@
 	height : 12px;
 	cursor: pointer;
 }
+.k-player .itext a{
+	color: #bbf;
+}
+.k-player .itext a:visited{
+	color: #aaf;
+} 
