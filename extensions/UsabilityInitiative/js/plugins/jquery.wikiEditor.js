@@ -552,18 +552,43 @@ if ( typeof context == 'undefined' ) {
 			$element.trigger( 'scrollToTop' );
 		},
 		/**
-		 * Get the first element before the selection matching a certain selector
+		 * Get the first element before the selection matching a certain selector.
 		 * @param selector Selector to match. Defaults to '*'
-		 * @param getAll If true, get all matching elements before the selection
+		 * @param strict If true, the element the selection starts in cannot match (default: false)
+		 * @return jQuery object
 		 */
-		'beforeSelection': function( selector, getAll ) {
+		'beforeSelection': function( selector, strict ) {
 			if ( typeof selector == 'undefined' )
 				selector = '*';
-			var retval = [];
 			var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
 			// Start at the selection's start and traverse the DOM backwards
+			// This is done by traversing an element's children first, then the
+			// element itself, then its parent
 			var e = range.startContainer;
-			//TODO continue
+			if ( e.nodeName != '#text' ) {
+				// The selection is not in a textnode, but between two non-text nodes
+				// (usually inside the <body> between two <br>s). Go to the rightmost
+				// child of the node just before the selection
+				var newE = e.firstChild;
+				for ( var i = 0; i < range.startOffset - 1 && newE; i++ ) {
+					newE = newE.nextSibling;
+				}
+				while ( newE && newE.lastChild ) {
+					newE = newE.lastChild;
+				}
+				e = newE;
+			}
+			while ( e ) {
+				if ( $( e ).is( selector ) && !strict )
+					return $( e );
+				var next = e.previousSibling;
+				while ( next && next.lastChild ) {
+					next = next.lastChild;
+				}
+				e = next || e.parentNode;
+				strict = false;
+			}
+			return $( [] );
 		}
 		
 		/**

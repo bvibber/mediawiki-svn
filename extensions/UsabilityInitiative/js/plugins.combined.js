@@ -1862,18 +1862,43 @@ if ( typeof context == 'undefined' ) {
 			$element.trigger( 'scrollToTop' );
 		},
 		/**
-		 * Get the first element before the selection matching a certain selector
+		 * Get the first element before the selection matching a certain selector.
 		 * @param selector Selector to match. Defaults to '*'
-		 * @param getAll If true, get all matching elements before the selection
+		 * @param strict If true, the element the selection starts in cannot match (default: false)
+		 * @return jQuery object
 		 */
-		'beforeSelection': function( selector, getAll ) {
+		'beforeSelection': function( selector, strict ) {
 			if ( typeof selector == 'undefined' )
 				selector = '*';
-			var retval = [];
 			var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
 			// Start at the selection's start and traverse the DOM backwards
+			// This is done by traversing an element's children first, then the
+			// element itself, then its parent
 			var e = range.startContainer;
-			//TODO continue
+			if ( e.nodeName != '#text' ) {
+				// The selection is not in a textnode, but between two non-text nodes
+				// (usually inside the <body> between two <br>s). Go to the rightmost
+				// child of the node just before the selection
+				var newE = e.firstChild;
+				for ( var i = 0; i < range.startOffset - 1 && newE; i++ ) {
+					newE = newE.nextSibling;
+				}
+				while ( newE && newE.lastChild ) {
+					newE = newE.lastChild;
+				}
+				e = newE;
+			}
+			while ( e ) {
+				if ( $( e ).is( selector ) && !strict )
+					return $( e );
+				var next = e.previousSibling;
+				while ( next && next.lastChild ) {
+					next = next.lastChild;
+				}
+				e = next || e.parentNode;
+				strict = false;
+			}
+			return $( [] );
 		}
 		
 		/**
@@ -3202,20 +3227,24 @@ fn: {
 	 */
 	update: function( context ) {
 		$.wikiEditor.modules.toc.fn.unhighlight( context );
-		var position = context.$textarea.textSelection( 'getCaretPosition' );
+		
+		// Find the section we're in. Theoretically, this could use a .data() on the divs, but that would need
+		// to be updated when sections are added and linear search through a few dozen sections is relatively
+		// fast, so I'm not sure it's worth it
+		// TODO: Actually benchmark that
+		var div = context.fn.beforeSelection( 'div.wikiEditor-toc-header' );
 		var section = 0;
 		if ( context.data.outline.length > 0 ) {
 			// If the caret is before the first heading, you must be in section
 			// 0, and there is no need to look any farther - otherwise check
 			// that the caret is before each section, and when it's not, we now
 			// know what section it is in
-			if ( !( position < context.data.outline[0].position - 1 ) ) {
-				while (
-					section < context.data.outline.length && context.data.outline[section].position - 1 < position
-				) {
+			if ( div.size() > 0 ) {
+				while ( section < context.data.outline.length &&
+						context.data.outline[section].wrapper.get( 0 ) != div.get( 0 ) ) {
 					section++;
 				}
-				section = Math.max( 0, section );
+				section++;
 			}
 			var sectionLink = context.modules.toc.$toc.find( 'div.section-' + section );
 			sectionLink.addClass( 'current' );
