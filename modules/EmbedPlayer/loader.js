@@ -127,7 +127,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 			//mw.log(" run callback: " + callback );
 						
 			// Run the callback with name of the module  
-			if( callback )		
+			if( typeof callback == 'function' )		
 				callback( 'EmbedPlayer' );		
 			
 		} ); // setupUserConfig

@@ -252,7 +252,9 @@ mw.setConfig( 'show_player_warning', true );
 	* @param [ Optional ] {Function} callback Function to be called once video interfaces are ready
 	*
 	*/
-	$.fn.embedPlayer = function( attributes, callback ){		
+	$.fn.embedPlayer = function( attributes, callback ){	
+		mw.log('fn:embedPlayer on: ' + this.selector);
+		var player_select = this.selector;
 		//Handle optional include of attributes argument:
 		if( typeof attributes == 'function' && typeof( callback ) != 'function' )
 			callback = attributes;		
@@ -265,8 +267,37 @@ mw.setConfig( 'show_player_warning', true );
 		if( typeof callback == 'function' )  
 			mw.playerManager.addCallback( callback );
 		
+		//IE not working well with selector
+		var ie_safe_selector = coma = '';
+		if( $j.browser.msie ){
+			var selectors = player_select.split(',');											
+								
+					/*var tagset = document.getElementsByTagName( selectors[i] );											
+					for(var j in tagset){
+						var element =  tagset[j];
+						for( var z in element ){
+							mw.log(" has: " + z + ' elm: ' + element[z] );
+						}
+						mw.log(" add: " + $j( element ).attr('src') );
+						mw.playerManager.addElement( tagset[j], attributes );
+					}*/						
+			for( var i=0; i < selectors.length; i++){	
+				if( selectors[i] == 'video' || 
+					selectors[i] == 'playlist' || 
+					selectors[i] == 'audio'
+				){				
+					$j( document.getElementsByTagName( selectors[i] )).each(function(){
+						mw.playerManager.addElement(this, attributes );
+					});
+				}else{
+					ie_safe_selector += coma + selectors[i];
+					coma = ',';
+				}
+			}
+			player_select = ie_safe_selector;
+		}
 		// Add each selected element to the player manager:		
-		$j( this.selector ).each( function(na, playerElement){
+		$j( player_select ).each( function(na, playerElement){
 			mw.playerManager.addElement( playerElement, attributes);
 		} );	
 		
@@ -326,13 +357,14 @@ EmbedPlayerManager.prototype = {
 	* @param {Object} [Optional] attributes Extra attributes to apply to the player interface 
 	*/
 	addElement: function( element,  attributes ) {	
-		var _this = this;		
+		var _this = this;			
 		var element_id = $j( element ).attr( "id" );	
 		if ( element_id == '' ) {
 			element_id = 'v' + this.playerList.length;
 			$j( element ).attr( "id",  element_id);
 		}
-					
+		
+		mw.log('EmbedPlayerManager: addElement:: ' + element.id );
 				
 		// Add the element id to playerList
 		this.playerList.push( element_id );		
@@ -341,7 +373,7 @@ EmbedPlayerManager.prototype = {
 		var skinClassRequest = [ ];
 		var className = $j( element ).attr( 'class' );
 		for( var n=0; n < mw.valid_skins.length ; n++ ){ 
-			if( className.indexOf( mw.valid_skins[ n ] ) !== -1){
+			if( className && className.indexOf( mw.valid_skins[ n ] ) !== -1){
 				skinClassRequest.push( mw.valid_skins[n] + 'Config' );
 			}
 		}
@@ -837,8 +869,9 @@ mediaElement.prototype = {
 		}							
 		
 		// Process the video_element as a source element:
-		if ( $j( video_element ).attr( "src" ) )
+		if ( $j( video_element ).attr( "src" ) ){
 			this.tryAddSource( video_element );
+		}
 		
 		// Process all inner <source>, <text> & <itext> elements	
 		
@@ -1783,7 +1816,7 @@ mw.EmbedPlayer.prototype = {
 	* Get nearby Clip links 
 	* Mostly metavid specific ( should be factored into a separate module )
 	*/
-	getNearbyClipLinks:function() {
+	getNearbyClipLinks: function() {
 		mw.log( 'f:getNextPrevLinks' );
 		var anno_track_url = null;
 		var _this = this;
@@ -1863,7 +1896,7 @@ mw.EmbedPlayer.prototype = {
 	* Display the nearby clip links
 	* Mostly metavid specific ( should be factored into a separate module )
 	*/
-	showNearbyClipLinks:function() {
+	showNearbyClipLinks: function() {
 		// mw.log('f:showNextPrevLinks');
 		// int requested links: 
 		var link = {
@@ -3302,8 +3335,9 @@ var embedTypes = {
 		 var uniqueMimesOnly = $j.browser.opera || $j.browser.safari;
 		 // Opera will switch off javaEnabled in preferences if java can't be found.
 		 // And it doesn't register an application/x-java-applet mime type like Mozilla does.
-		 if ( javaEnabled )
+		 if ( javaEnabled ){
 			 this.players.addPlayer( cortadoPlayer );
+		 }
 		
 		 // ActiveX plugins
 		 if ( $j.browser.msie ) {
@@ -3435,13 +3469,14 @@ var embedTypes = {
 	* @param {String} name Name of ActiveXObject to look for 
 	*/
 	testActiveX : function ( name ) {
-		 var hasObj = true;
-		 try {
-			 // No IE, not a class called "name", it's a variable
-			 var obj = new ActiveXObject( '' + name );
-		 } catch ( e ) {
-			 hasObj = false;
-		 }
-		 return hasObj;
+		mw.log(" test testActiveX: " + name);
+		var hasObj = true;
+		try {
+			// No IE, not a class called "name", it's a variable
+			var obj = new ActiveXObject( '' + name );
+		} catch ( e ) {
+			hasObj = false;
+		}
+		return hasObj;
 	}
 };
