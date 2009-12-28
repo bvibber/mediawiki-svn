@@ -136,7 +136,7 @@ function Menu(caller, options){
 	};
 
 	this.showMenu = function(){
-		mw.log('$j.menu:: show menu' );		
+		mw.log('$j.menu:: show menu' );				
 		killAllMenus();
 		if (!menu.menuExists) { menu.create() };
 		caller
@@ -506,7 +506,7 @@ Menu.prototype.drilldown = function(container, options) {
 		- detectH/V: detect the viewport horizontally / vertically
 		- linkToFront: copy the menu link and place it on top of the menu (visual effect to make it look like it overlaps the object) */
 
-Menu.prototype.setPosition = function(widget, caller, options) { 
+Menu.prototype.setPosition = function(widget, caller, options) {
 	var el = widget;
 	var referrer = caller;
 	var dims = {
@@ -518,9 +518,20 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 	var options = options;
 	var xVal, yVal;
 	
-	var helper = $('<div class="positionHelper"></div>');
-	helper.css({ position: 'absolute', left: dims.refX, top: dims.refY, width: dims.refW, height: dims.refH });
-	el.wrap(helper);
+	var helper = $( '<div class="positionHelper">' );	
+	// Hard code width heigh of button if unset ( crazy IE )
+	if(  isNaN( dims.refW ) ||  isNaN( dims.refH ) ){
+		dims.refH = 16;
+		dims.refW = 23;
+	}
+	helper.css({ 
+		'position': 'absolute', 
+		'left': dims.refX, 
+		'top': dims.refY, 
+		'width': dims.refW, 
+		'height': dims.refH 
+	});
+	el.wrap( helper );
 	
 	// get X pos
 	switch(options.positionOpts.posX) {

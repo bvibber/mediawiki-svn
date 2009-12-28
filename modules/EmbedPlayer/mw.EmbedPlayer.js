@@ -267,43 +267,33 @@ mw.setConfig( 'show_player_warning', true );
 		if( typeof callback == 'function' )  
 			mw.playerManager.addCallback( callback );
 		
-		//IE not working well with selector
+		// IE not working well with jQuery selector on "VIDEO", "AUDIO" etc. 
 		var ie_safe_selector = coma = '';
 		if( $j.browser.msie ){
-			var selectors = player_select.split(',');											
-								
-					/*var tagset = document.getElementsByTagName( selectors[i] );											
-					for(var j in tagset){
-						var element =  tagset[j];
-						for( var z in element ){
-							mw.log(" has: " + z + ' elm: ' + element[z] );
-						}
-						mw.log(" add: " + $j( element ).attr('src') );
-						mw.playerManager.addElement( tagset[j], attributes );
-					}*/						
+			var selectors = player_select.split(',');		
 			for( var i=0; i < selectors.length; i++){	
 				if( selectors[i] == 'video' || 
 					selectors[i] == 'playlist' || 
 					selectors[i] == 'audio'
 				){				
-					$j( document.getElementsByTagName( selectors[i] )).each(function(){
+					$j( document.getElementsByTagName( selectors[i] )).each(function(){														
 						mw.playerManager.addElement(this, attributes );
 					});
 				}else{
 					ie_safe_selector += coma + selectors[i];
 					coma = ',';
 				}
-			}
+			}			
 			player_select = ie_safe_selector;
 		}
-		// Add each selected element to the player manager:		
-		$j( player_select ).each( function(na, playerElement){
-			mw.playerManager.addElement( playerElement, attributes);
-		} );	
-		
+		if( player_select != ''){
+			// Add each selected element to the player manager:		
+			$j( player_select ).each( function(na, playerElement){			
+				mw.playerManager.addElement( playerElement, attributes);
+			} );	
+		}		
 		// Once we are done adding new players start to check if players are ready:
-		mw.playerManager.waitPlayersReadyCallback(); 
-		
+		mw.playerManager.waitPlayersReadyCallback();		
 	}	
 
 } )( jQuery );
@@ -357,7 +347,7 @@ EmbedPlayerManager.prototype = {
 	* @param {Object} [Optional] attributes Extra attributes to apply to the player interface 
 	*/
 	addElement: function( element,  attributes ) {	
-		var _this = this;			
+		var _this = this;					
 		var element_id = $j( element ).attr( "id" );	
 		if ( element_id == '' ) {
 			element_id = 'v' + this.playerList.length;
@@ -435,6 +425,7 @@ EmbedPlayerManager.prototype = {
 				break;
 				case 'video':
 				case 'audio':
+				// By default treat the rewrite request as "video"
 				default:		
 					var playerInx = _this.playerList.length;
 					var ranPlayerSwapFlag = false;
@@ -475,20 +466,19 @@ EmbedPlayerManager.prototype = {
 	* @param {Object}  playerInterface Interface to swap into the target element
 	*/
 	swapEmbedPlayerElement: function( targetElement, playerInterface ) {	
-		
+		mw.log( 'swapEmbedPlayerElement: ' + targetElement.id );
 		// Create a new element to swap the player interface into
-		var swapPlayerElement = document.createElement( 'div' );				
-		
-		// Make sure the new swapPlayerElement has height / width set:
-		$j( swapPlayerElement ).css( {
+		var swapPlayerElement = document.createElement('div');
+		// set swapPlayerElement has height / width set:		
+		$j( swapPlayerElement ).css( {			
 			'width' : playerInterface.width,
 			'height' : playerInterface.height
-		} )		
-		.html( mw.loading_spinner() );
-		
-		for ( var method in playerInterface ) {
-			if ( method != 'readyState' ) { // readyState crashes IE ( don't include ) 
-				swapPlayerElement[method] = playerInterface[method];
+		} ).loadingSpinner();
+				
+		// get properties / methods from playerInterface
+		for ( var method in playerInterface ) {			
+			if ( method != 'readyState' ) { // readyState crashes IE ( don't include ) 			
+				swapPlayerElement[ method ] = playerInterface[ method ];
 			}
 		}
 				  
@@ -873,8 +863,7 @@ mediaElement.prototype = {
 			this.tryAddSource( video_element );
 		}
 		
-		// Process all inner <source>, <text> & <itext> elements	
-		
+		// Process all inner <source>, & <itext> elements			
 		$j( video_element ).find( 'source,itext' ).each( function( ) {
 			mw.log( 'pcat: ' + $j(this).parent().attr( 'category' ) + ' tagName:' + $j(this).parent().get(0).tagName );			
 			_this.tryAddSource( this );
@@ -1317,14 +1306,16 @@ mw.EmbedPlayer.prototype = {
 			}				
 		}
 		
-		// On load sometimes attr is temporally -1 as we don't have video metadata yet.		 
-		// NOTE: this edge case should be handled by waiting for metadata see: "waitForMeta" in addElement 		
-		if( ( this['height'] == -1 || this['width'] == -1 )   ||
+		// On load sometimes attr is temporally -1 as we don't have video metadata yet.	
+		// or in IE we get NaN for width height
+		// 	 
+		// NOTE: browsers that do support height width should set "waitForMeta" flag in addElement 		
+		if( ( isNaN( this['height'] ) && isNaN( this['width'] ) ) ||
+			( this['height'] == -1 || this['width'] == -1 )   ||
 				// Check for firefox defaults
 				// Note: ideally firefox would not do random guesses at css values 	
 				( (this.height == 150 || this.height == 64 ) && this.width == 300 )
-			){
-			
+			){			
 			var defaultSize = mw.getConfig( 'video_size' ).split( 'x' );
 			this['width'] = defaultSize[0];
 			// Special height default for audio tag ( if not set )  
@@ -2501,9 +2492,13 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Shows the Player Select interface
+	* 
+	* NOTE: this should be switched over to jQuery style DOM construction
+	* 
 	* @param {Object} $target jQuery target to output to
 	*/
 	showPlayerSelect: function( $target ) {	
+		mw.log('showPlayerSelect');
 		// Get id (in case where we have a parent container)
 		var _this = this;
 		var o = '';
@@ -2525,8 +2520,9 @@ mw.EmbedPlayer.prototype = {
 				for ( var i = 0; i < supporting_players.length ; i++ ) {
 					if ( _this.selected_player.id == supporting_players[i].id && is_selected ) {
 						o += '<li>' +
-							'<a href="#" class="active" rel="sel_source" id="sc_' + source_id + '_' + supporting_players[i].id + '">' +
-								supporting_players[i].getName() +
+								'<a href="#" class="active" rel="sel_source" id="sc_' + source_id + '_' + supporting_players[i].id + '">' +
+									supporting_players[i].getName() +
+								'</a>' +
 							'</li>';
 					} else {
 		                o += '<li>' +
@@ -2540,7 +2536,7 @@ mw.EmbedPlayer.prototype = {
 			} else {
 				o += source.getTitle() + ' - no player available';
 			}
-		} );
+		} );		
 		$target.html( o );
 
 		// Set up the click bindings:
