@@ -23,7 +23,7 @@ CREATE TABLE config_version (
 	cv_user_text TEXT NOT NULL,
 	cv_user_wiki TEXT NOT NULL,
 	
-	-- Reason - not used yet but maybe in the future.
+	-- Reason
 	cv_reason TEXT NOT NULL
 );
 CREATE INDEX cv_timestamp ON config_version( cv_timestamp );

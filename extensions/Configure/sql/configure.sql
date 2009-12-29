@@ -22,7 +22,7 @@ CREATE TABLE config_version (
 	cv_user_text varchar(255) NOT NULL,
 	cv_user_wiki varbinary(255) NOT NULL,
 	
-	-- Reason - not used yet but maybe in the future.
+	-- Reason
 	cv_reason TINYBLOB NOT NULL,
 
 	PRIMARY KEY ( cv_id ),
