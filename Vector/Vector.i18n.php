@@ -156,6 +156,7 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'vector' => 'שיפורי מנשק משתמש עבור וקטור',
+	'vector-desc' => 'משפר את פריטי מנשק המשתמש של ערכת התצוגה וקטור.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

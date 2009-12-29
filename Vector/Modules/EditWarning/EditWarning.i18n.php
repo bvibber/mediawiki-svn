@@ -17,6 +17,13 @@ If you are logged in, you can disable this warning in the "{{int:prefs-editing}}
 	'vector-editwarning-preference' => 'Warn me when I leave an edit page with unsaved changes',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'vector-editwarning-preference' => "Waarsku my as ek 'n gewysigde bladsy verlaat alvorens dit gestoor is",
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -343,10 +350,12 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'vector-editwarning-warning' => 'სხვა გვერდზე გადასვლა გამოიწვევს ცვლილებების დაკარგვას.',
+	'vector-editwarning-preference' => 'გამაფრთხილე, როდესაც დავტოვებ რედაქტირებად გვერდს, დაუმახსოვრებელი ცვლილებებით',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -72,6 +72,8 @@ $messages['lzz'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'prefstats' => 'Voorkeur-statistieke',
+	'prefstats-title' => 'Voorkeur-statistieke',
 	'prefstats-xaxis' => 'Tydsduur (ure)',
 	'prefstats-factors' => 'Wys per: $1',
 	'prefstats-factor-hour' => 'uur',
@@ -80,6 +82,7 @@ $messages['af'] = array(
 	'prefstats-factor-week' => 'week',
 	'prefstats-factor-twoweeks' => 'twee weke',
 	'prefstats-factor-fourweeks' => 'vier weke',
+	'prefstats-factor-default' => 'terug na die verstek-skaal',
 );
 
 /** Arabic (العربية)
@@ -344,6 +347,15 @@ $messages['cy'] = array(
 	'prefstats-title' => 'Ystadegau dewisiadau',
 	'prefstats-list-intro' => 'Ar hyn o bryd, dilynir hynt y dewisiadau canlynol.
 Cliciwch ar un i weld yr ystadegau amdano.',
+	'prefstats-noprefs' => 'Ni ddilynir unrhyw ddewisiadau ar hyn o bryd.
+Mae angen ffurfweddu $wgPrefStatsTrackPrefs er mwyn dilyn dewisiadau defnyddwyr.',
+	'prefstats-counters' => "* {{PLURAL:$1|Nid oes dim defnyddwyr|Mae $1 defnyddiwr|Mae $1 ddefnyddiwr|Mae $1 defnyddiwr|Mae $1 defnyddiwr|Mae $1 o ddefnyddwyr}} wedi galluogi'r dewis hwn ers y dechreuwyd dilyn ystadegau dewisiadau.
+** {{PLURAL:$2|Nid oes neb|Mae $1 defnyddiwr|Mae $1 ddefnyddiwr|Mae $1 defnyddiwr|Mae $1 defnyddiwr|Mae $1 o ddefnyddwyr}} o hyd wedi ei alluogi
+*** {{PLURAL:$3|Nid oes neb|Mae $1 defnyddiwr|Mae $1 ddefnyddiwr|Mae $1 defnyddiwr|Mae $1 defnyddiwr|Mae $1 o ddefnyddwyr}} wedi ei analluogi wedi hynny",
+	'prefstats-counters-expensive' => "* {{PLURAL:$1|Nid oes dim defnyddwyr|Mae $1 defnyddiwr|Mae $1 ddefnyddiwr|Mae $1 defnyddiwr|Mae $1 defnyddiwr|Mae $1 o ddefnyddwyr}} wedi galluogi'r dewis hwn ers y dechreuwyd dilyn ystadegau dewisiadau.
+** {{PLURAL:$2|Nid oes neb|Mae $1 defnyddiwr|Mae $1 ddefnyddiwr|Mae $1 defnyddiwr|Mae $1 defnyddiwr|Mae $1 o ddefnyddwyr}} o hyd wedi ei alluogi
+*** {{PLURAL:$3|Nid oes neb|Mae $1 defnyddiwr|Mae $1 ddefnyddiwr|Mae $1 defnyddiwr|Mae $1 defnyddiwr|Mae $1 o ddefnyddwyr}} wedi ei analluogi wedi hynny
+* {{PLURAL:$4|Nid oes neb|Mae un defnyddiwr|Mae 2 ddefnyddiwr|Mae 3 defnyddiwr|Mae cyfanswm o $4 defnyddiwr|Mae cyfanswm o $4 o ddefnyddwyr}} yn defnyddio'r dewis hwn",
 	'prefstats-xaxis' => 'Parhad (oriau)',
 	'prefstats-factors' => 'Cyfnod y blociau ar y graff: $1',
 	'prefstats-factor-hour' => 'awr',
@@ -353,6 +365,7 @@ Cliciwch ar un i weld yr ystadegau amdano.',
 	'prefstats-factor-twoweeks' => 'pythefnos',
 	'prefstats-factor-fourweeks' => 'pedair wythnos',
 	'prefstats-factor-default' => 'adfer y raddfa diofyn',
+	'prefstats-legend-out' => 'Wedi tynnu allan',
 	'prefstats-legend-in' => 'Wedi dewis ymuno',
 );
 

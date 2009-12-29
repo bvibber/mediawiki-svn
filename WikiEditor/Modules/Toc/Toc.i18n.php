@@ -31,6 +31,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'wikieditor-toc-preference' => 'Aktiveer navigeerbare inhoudsopgawe',
 	'wikieditor-toc-show' => 'Wys inhoud',
 	'wikieditor-toc-hide' => 'Versteek inhoud',
 );
@@ -165,6 +166,16 @@ $messages['es'] = array(
 	'wikieditor-toc-preference' => 'Habilitar tabla de contenidos navegable',
 	'wikieditor-toc-show' => 'Mostrar el contenido',
 	'wikieditor-toc-hide' => 'Ocultar el contenido',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'wikieditor-toc-preference' => 'Kasuta navigeerimist võimaldavat sisukorda',
+	'wikieditor-toc-show' => 'Näita sisu',
+	'wikieditor-toc-hide' => 'Peida sisu',
 );
 
 /** Basque (Euskara)
