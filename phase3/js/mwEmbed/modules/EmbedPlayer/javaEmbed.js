@@ -26,11 +26,15 @@ var javaEmbed = {
 	* Wraps the embed object html output:
 	*/
 	getEmbedHTML: function () {
+		var _this = this;
 		// big delay on embed html cuz its just for status updates and ie6 is crazy. 
-		if ( this.controls )
-			setTimeout( 'document.getElementById(\'' + this.id + '\').postEmbedJS()', 500 );
+		if ( this.controls ){
+			setTimeout( function(){
+				_this.postEmbedJS();
+			}, 250);			
+		}
 		// set a default duration of 30 seconds: cortao should detect duration.
-		return this.wrapEmebedContainer( this.getEmbedObj() );
+		return this.getEmbedObj();
 	},
 	
 	/**

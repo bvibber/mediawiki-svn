@@ -397,30 +397,17 @@ EmbedPlayerManager.prototype = {
 		// Load any skins we need then swap in the interface
 		mw.load( skinClassRequest, function(){										
 			switch( element.tagName.toLowerCase() ) {
-				case 'playlist':				
+				case 'playlist':
 					// Make sure we have the necessary playlist libs loaded:
-					mw.load( [
-						'mw.PlayList'					
-					], function() {
-					
+					mw.load( 'mw.PlayList', function() {						
 						// Create playlist player interface
 						var playlistPlayer = new mw.PlayList( element, attributes );
 						
 						// Swap in playlist player interface
-						_this.swapEmbedPlayerElement( element, playlistPlayer );
-						
-						// Add playlistPlayer title height
-						var added_height = playlistPlayer.pl_layout.title_bar_height + playlistPlayer.pl_layout.control_height;
-						
-						// Wrap a blocking display container with height + controls + title height: 
-						$j( '#' + playlistPlayer.id ).wrap( 
-							'<div class="control_wrap" style="display:block;' +
-								'height:' + ( playlistPlayer.height + added_height ) + 'px;">' +						
-							'</div>' 
-						);
+						_this.swapEmbedPlayerElement( element, playlistPlayer );												
 						
 						// Issue the checkPlayerSources call to the new playlist interface: 				
-						$j( '#' + playlistPlayer.id ).get(0).showPlayer();		
+						$j( '#' + playlistPlayer.id ).get(0).checkPlayerSources();		
 					} );
 				break;
 				case 'video':
@@ -792,6 +779,9 @@ mediaSource.prototype = {
 			case '.anx':
 				return 'video/ogg';
 			break;
+			case '.xml':
+				return 'text/xml';
+			break;
 		}
 	}
 };
@@ -867,7 +857,7 @@ mediaElement.prototype = {
 		$j( video_element ).find( 'source,itext' ).each( function( ) {
 			mw.log( 'pcat: ' + $j(this).parent().attr( 'category' ) + ' tagName:' + $j(this).parent().get(0).tagName );			
 			_this.tryAddSource( this );
-		} );
+		} );		
 	},
 	
 	/** 
@@ -1262,13 +1252,15 @@ mw.EmbedPlayer.prototype = {
 				
 		// Setup the local "ROE" src pointer if added as media source
 		// also see: http://dev.w3.org/html5/spec/Overview.html#the-source-element
-		$j.each(this.mediaElement.getSources( 'text/xml'), function( inx, source ){			
-			var codec_set  = source.codecs.split(',');
-			for( var i in codec_set ){
-				if( codec_set[i] == 'roe' ){
-					_this.roe = source.src;
-				}
-			}	
+		$j.each(this.mediaElement.getSources( 'text/xml'), function( inx, source ){	
+			if( source.codecs ){		
+				var codec_set  = source.codecs.split(',');
+				for( var i in codec_set ){
+					if( codec_set[i] == 'roe' ){
+						_this.roe = source.src;
+					}
+				}	
+			}
 		} );
 				
 		// Make sure we have the player skin css:
@@ -1557,24 +1549,7 @@ mw.EmbedPlayer.prototype = {
 			this.end_npt = mw.seconds2npt( this.duration );
 		// Return the duration
 		return this.duration;
-	},
-	
-	/**
-	* wraps the embed code into a container to better support playlist function
-	* (where embed element is swapped for next clip
-	* (where plugin method does not support playlist)
-	* 
-	* NOTE: will be factored out once we fix playlist stuff 
-	*  
-	* @param {String} embed_code Embed code to be wraped
-	*/
-	wrapEmebedContainer:function( embed_code ) {
-		// Check if parent clip is set( ie we are in a playlist so name the embed container by playlistID)
-		var id = ( this.pc != null ) ? this.pc.pp.id:this.id;
-		return '<div id="mv_ebct_' + id + '" style="width:' + this.width + 'px;height:' + this.height + 'px;">' +
-					embed_code +
-				'</div>';
-	},
+	},	
 	
 	/**
 	* Get the plugin embed html ( should be implemented by embed player interface )

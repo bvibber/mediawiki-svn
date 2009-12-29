@@ -21,13 +21,12 @@ var kplayerEmbed = {
 	* Get the Embed html by wraping the embed code in the embed container:
 	*/
 	getEmbedHTML : function () {
-		var embed_code =  this.getEmbedObj();		
 		var _this = this;
 		setTimeout(function(){
 			_this.postEmbedJS();
 		}, 50);
 		mw.log( "return embed html: " + embed_code );
-		return this.wrapEmebedContainer( embed_code );
+		return this.getEmbedObj();	
 	},
 	
 	/**

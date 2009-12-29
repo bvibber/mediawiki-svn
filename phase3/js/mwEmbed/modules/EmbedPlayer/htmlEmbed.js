@@ -36,7 +36,7 @@ var htmlEmbed = {
 	startOffset:0,
 	
 	// The local clock used to emulate playback time
-	clockStartTime: 0
+	clockStartTime: 0,
 	
 	/**
 	*  Play function starts the v
