@@ -77,6 +77,13 @@ $messages['cs'] = array(
 	'categorytests-desc' => 'Funkce pro testování kategorií',
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'categorytests-desc' => 'Funktionen für Kategorietests',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -307,6 +314,13 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'categorytests-desc' => 'Функции для проверки категорий',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'categorytests-desc' => 'Категориялары тургутар функциялар',
 );
 
 /** Slovak (Slovenčina)

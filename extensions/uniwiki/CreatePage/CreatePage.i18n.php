@@ -299,6 +299,19 @@ $messages['es'] = array(
 	'createpage-badtitle' => '"$1" no puede ser usada como un título de página',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'createpage' => 'Loo lehekülg',
+	'createpage_instructions' => 'Sisesta pealkiri leheküljele, mida soovid luua:',
+	'createpage_entertitle' => 'Palun sisesta pealkiri oma leheküljele.',
+	'createpage_titleexists' => 'Lehekülg pealkirjaga [[$1]] on juba olemas.
+Kas soovid redigeerida olemasolevat lehekülge?',
+	'createpage_editexisting' => 'Jah. Soovin redigeerida olemasolevat lehekülge.',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
@@ -994,6 +1007,13 @@ $messages['te'] = array(
  */
 $messages['th'] = array(
 	'createpage_submitbutton' => 'ตกลง',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'createpage_submitbutton' => 'Tabşyr',
 );
 
 /** Tagalog (Tagalog)

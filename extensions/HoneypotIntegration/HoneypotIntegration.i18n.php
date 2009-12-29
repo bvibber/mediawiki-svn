@@ -114,6 +114,14 @@ $messages['el'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Αριθμός προσφάτων γεγονότων που προξένησε αυτή η διεὐθυνση IP, σύμφωνα με το εγχείρημα Honey Pot',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'honeypot-desc' => 'Provizas integradon kun [http://projecthoneypot.org/ Project Honey Pot] por MediaWiki-retejoj',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Nombro de lastatempaj eventoj kiun la IP-adreso spronis, laŭ Project Honey Pot',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Sanbec
@@ -123,12 +131,27 @@ $messages['es'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Número de eventos recientes que la dirección IP ha desencadenado en relación con el proyecto Honey Pot',
 );
 
+/** Finnish (Suomi)
+ * @author ZeiP
+ */
+$messages['fi'] = array(
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Tämän IP-osoitteen laukaisemien tuoreiden tapahtumien määrä Honey Pot -projektin mukaan',
+);
+
 /** French (Français)
  * @author IAlex
  */
 $messages['fr'] = array(
 	'honeypot-desc' => "Permet d'intégrer des sites MediaWiki avec le [http://projecthoneypot.org/ Projet Honey Pot]",
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Nombre d'événements récents que l'adresse IP a fait, en accord avec le projet Honey Pot",
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'honeypot-desc' => 'Pèrmèt d’apondre des setos MediaWiki u [http://projecthoneypot.org/ projèt Honey Pot].',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Nombro de novéls èvènements que l’adrèce IP at fêt, en acôrd avouéc lo projèt Honey Pot',
 );
 
 /** Galician (Galego)

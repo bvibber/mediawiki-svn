@@ -190,8 +190,14 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
+	'shareduserrights' => 'Jaettujen käyttöoikeuksien hallinta',
+	'gblrights-desc' => 'Helppo työkalu [[Special:SharedUserRights|globaalikäyttöoikeuksien hallintaan]]',
+	'gblrights-logpage' => 'Globaalikäyttöoikeusloki',
+	'gblrights-pagetext' => 'Tämä on loki kaikista wiki-perheen globaaliin käyttöoikeustauluun tehdyistä muutoksista',
+	'gblrights-rights-entry' => 'muutti käyttäjän $1 globaalit ryhmäjäsenyydet ryhmistä $2 ryhmiin $3',
 	'right-userrights-shared' => 'Hallita käyttöoikeuksia',
 );
 

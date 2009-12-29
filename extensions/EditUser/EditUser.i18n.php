@@ -1258,6 +1258,13 @@ $messages['th'] = array(
 	'right-edituser-exempt' => 'ผู้ใช้่อื่นไม่สามารถแก้ไขการตั้งค่าของผู้ใช้คนนี้ได้',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'edituser-username' => 'At',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

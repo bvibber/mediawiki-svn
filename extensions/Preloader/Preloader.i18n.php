@@ -331,6 +331,13 @@ $messages['tl'] = array(
 	'preloader-desc' => 'Nagbibigay na maipapasadyang pang-bawat espasyo ng pangalang teksto ng pakuluang-bakal para sa bagong mga pahina',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'preloader-desc' => 'Yeni sayfalar için isim alanına özel kişiselleştirilebilir hazır metinler sunar',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

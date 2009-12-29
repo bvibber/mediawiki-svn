@@ -120,6 +120,13 @@ $messages['es'] = array(
 	'formatsearch-desc' => 'Limpia la página de resultados de búsqueda',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'formatsearch-desc' => 'Puhastab otsingutulemuste lehekülje',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

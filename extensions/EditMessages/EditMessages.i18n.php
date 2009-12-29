@@ -179,8 +179,11 @@ $messages['br'] = array(
 	'editmessages' => 'Aozañ kemennadennoù',
 	'editmsg-target' => "Kemenadenn a vez c'hoant tizhout :",
 	'editmsg-search' => 'Klask',
+	'editmsg-show-list' => 'Diskouez talvoudoù evit anv ar gemenadenn "$1"',
+	'editmsg-get-patch' => 'Krouiñ ur patch',
 	'editmsg-new-search' => 'Klask nevez',
 	'editmsg-warning-parse3' => '* Dibenn an arouezennoù nann-kavet : $1',
+	'editmsg-patch-success' => 'Lakaet eo bet e pleustr ar patch.',
 );
 
 /** Bosnian (Bosanski)

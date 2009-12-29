@@ -39,6 +39,7 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'newusermessage-desc' => "Plaas 'n boodskap op alle nuwe gebruikers se besprekingsbladsye",
+	'newuseredit-summary' => 'Plaas [[{{int:newusermessage-template}}|welkomboodskap]] op nuwe gebruiker se besprekingsblad',
 );
 
 /** Old English (Anglo-Saxon)
@@ -621,6 +622,14 @@ $messages['te'] = array(
 $messages['th'] = array(
 	'newusermessage-desc' => 'เพิ่มข้อความไปยังหน้าคุยกับผู้ใช้ที่ถูกสร้างขึ้นใหม่',
 	'newuseredit-summary' => 'เพิ่ม[[{{int:newusermessage-template}}|ข้อความต้อนรับ]]ไปยังหน้าคุยกับผู้ใช้ใหม่',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'newusermessage-desc' => 'Täze döredilen ulanyjy pikir alyşma sahypalaryna habarlaşyk goşýar',
+	'newuseredit-summary' => 'Täze ulanyjynyň pikir alyşma sahypasyna [[{{int:newusermessage-template}}|hoş geldiňiz habarlaşygy]] goşulýar',
 );
 
 /** Tagalog (Tagalog)

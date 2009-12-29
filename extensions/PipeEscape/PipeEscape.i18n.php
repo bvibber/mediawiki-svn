@@ -295,6 +295,13 @@ $messages['tl'] = array(
 	'pipeescape-desc' => 'Tungkulin ng banghay na <code>#!</code> para sa kung kailan mo naising maging isang panitik na tubo lamang ang isang panitik na tubo',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'pipeescape-desc' => 'Bir boru karakterinin sadece bir boru karakteri olmasını istediğiniz zamanlar için ayrıştırıcı fonksiyon <code>#!</code>',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

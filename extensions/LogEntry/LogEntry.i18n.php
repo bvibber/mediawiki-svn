@@ -479,6 +479,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'logentry-append' => 'Mitte in code',
 	'logentry-invalidpage' => 'Pàgene invalide',
+	'logentry-invalidtoken' => 'Token invalide',
 );
 
 /** Russian (Русский)

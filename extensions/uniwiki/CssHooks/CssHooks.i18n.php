@@ -379,6 +379,13 @@ $messages['tl'] = array(
 	'csshooks-desc' => 'Nagdaragdag ng CSS sa inilalabas na produktong HTML ng mga pahina para sa mas mainam na pag-iistilo.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'csshooks-desc' => 'Daha iyi biçem için sayfaların HTML çıktısına CSS ekler',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

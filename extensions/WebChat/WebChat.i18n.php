@@ -120,9 +120,16 @@ $messages['ca'] = array(
 );
 
 /** Czech (Česky)
+ * @author Matěj Grabovský
  * @author Mormegil
  */
 $messages['cs'] = array(
+	'webchat' => 'Webový chat',
+	'webchat-desc' => 'Přidává [[Special:WebChat|speciální stránku]] pro konverzaci v reálném čase s ostatními uživateli wiki',
+	'webchat-header' => 'Tato speciální stránka vám umožňuje v reálném čase spolupracovat s ostatními uživateli wiki.
+Připojíte se jednoduše stisknutím tlačítka „Připojit“.
+Pokud jste přihlášeni, vaše přezdívka bude předvyplněna.
+Anonymní uživatelé dostanou automaticky vytvořenou přezdívku, ale je možné ji změnit.',
 	'right-webchat' => 'Používání [[Special:WebChat|webové diskuse]]',
 );
 

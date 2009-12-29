@@ -210,8 +210,18 @@ $messages['ca'] = array(
  * @author MF-Warburg
  */
 $messages['de'] = array(
+	'indexfunc-desc' => 'Parserfunktion um automatische Weiterleitungen und Begriffsklärungsseiten zu erstellen',
 	'indexfunc-badtitle' => 'Ungültiger Titel: „$1“',
+	'indexfunc-editwarning' => 'Achtung:
+Dieser Titel ist ein Indextitel für die {{PLURAL:$2|folgende Seite|folgenden Seiten}}:
+$1
+Stelle sicher, dass die Seite, die du erstellst, nicht bereits unter anderem Titel existiert.
+Wenn du diese Seite erstellst, entferne diesen Titel vom <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$2|der obigen Seite|den obigen Seiten}}.',
 	'indexfunc-index-exists' => 'Die Seite „$1“ ist bereits vorhanden',
+	'indexfunc-movewarn' => 'Achtung:
+"$1" ist ein Indextitel für die {{PLURAL:$3|folgende Seite|folgenden Seiten}}:
+$2
+Bitte entferne "$1" von <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$3|obiger Seite|obigen Seiten}}.',
 	'index' => 'Indexsuche',
 	'index-legend' => 'Den Index durchsuchen',
 	'index-search' => 'Suche:',
@@ -221,6 +231,11 @@ $messages['de'] = array(
 	'index-expand-detail' => 'Zeige Seiten, die unter diesem Titel indiziert sind',
 	'index-hide-detail' => 'Seitenliste verstecken',
 	'index-no-results' => 'Die Suche ergab keine Ergebnisse',
+	'index-search-explain' => 'Diese Seite benutzt eine Präfix-Suche.
+
+Gib die ersten Zeichen ein und drücke die {{int:index-submit ("Enviar")}}-Schaltfläche, um nach Seitentiteln und Indexeinträgen zu suchen, die mit dem Suchstring beginnen',
+	'index-details-explain' => 'Einträge mit Pfeilen sind Indexeinträge.
+Klicke auf den Pfeil, um alle unter diesem Titel indizierten Seiten anzuzeigen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -432,8 +447,12 @@ $messages['he'] = array(
 	'index-search' => 'חיפוש:',
 	'index-submit' => 'שליחה',
 	'index-disambig-start' => "המונח '''$1''' עשוי להתייחס למספר דפים:",
+	'index-emptylist' => '"$1"אין דפים המשוייכים ל־',
 	'index-hide-detail' => 'הסתרת רשימת הדפים',
 	'index-no-results' => 'החיפוש לא החזיר תוצאות',
+	'index-search-explain' => 'דף זה משתמש בחיפוש קידומות.
+
+יש להקליד את האותיות הראשונות וללחוץ על לחצן השליחה כדי לחפש אחר שמות דפים ורשומות באינדקס המתחילים במחרוזת החיפוש',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -993,6 +1012,13 @@ $messages['te'] = array(
 	'indexfunc-badtitle' => 'చెల్లని శీర్షిక: "$1"',
 	'index-search' => 'వెతుకు:',
 	'index-submit' => 'దాఖలుచెయ్యి',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'index-submit' => 'Tabşyr',
 );
 
 /** Turkish (Türkçe)

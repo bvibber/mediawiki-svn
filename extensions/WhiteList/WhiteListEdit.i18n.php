@@ -1032,6 +1032,17 @@ Está página sólo es aplicable a usuarios restringidos",
 	'group-manager-member' => 'Gestor',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'whitelisttablemodifyall' => 'Kõik',
+	'whitelisttablemodifynone' => 'Ei midagi',
+	'whitelisttableexpires' => 'Aegub',
+	'whitelisttableedit' => 'Redigeeri',
+	'whitelisttableview' => 'Vaata',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
@@ -3463,6 +3474,15 @@ $messages['th'] = array(
 	'whitelistpagelist' => 'หน้า {{SITENAME}} สำหรับ $1',
 	'group-manager' => 'ผู้จัดการ',
 	'group-manager-member' => 'ผู้จัดการ',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'whitelisttablemodifyall' => 'Ählisi',
+	'whitelisttableedit' => 'Redaktirle',
+	'whitelisttableremove' => 'Aýyr',
 );
 
 /** Tagalog (Tagalog)

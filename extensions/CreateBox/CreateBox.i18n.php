@@ -736,6 +736,13 @@ $messages['th'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'createbox-create' => 'Döret',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

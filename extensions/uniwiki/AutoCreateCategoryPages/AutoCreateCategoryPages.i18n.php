@@ -168,6 +168,13 @@ Aqx se enumeran todas las páginas en la categoría "$1" asx como todas las subc
 	'autocreatecategorypages-editor' => 'Creador automático de categorías',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'autocreatecategorypages-editor' => 'Automaatne kategooriate looja',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

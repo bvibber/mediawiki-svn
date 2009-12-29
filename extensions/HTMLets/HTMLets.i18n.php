@@ -322,6 +322,13 @@ $messages['tl'] = array(
 	'htmlets-desc' => 'Nagpapahintulot sa iyo na maihanay sa guhit ang maliliit na mga piraso ng HTML mula sa mga talaksan na ginagamit ang tatak na <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'htmlets-desc' => '<tt><nowiki><htmlet></nowiki></tt> etiketini kullanarak dosyalardan alınan HTML parçalarını hizalamanızı sağlar',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

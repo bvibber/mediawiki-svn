@@ -250,14 +250,24 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'spamregex' => 'Strob regex (Spam regex)',
+	'spamregex-error-unblocking' => 'Fazi distankañ "$1". Sur a-walc\'h n\'eus ket a batrom.',
+	'spamregex-no-currently-blocked' => "'''N'eus frazenn stanket ebet.'''",
+	'spamregex-log' => "* '''$1''' $2  ([{{SERVER}}$3&text=$4 dilemel]) ouzhpennet gant $5 d'ar $6 da $7",
 	'spamregex-unblock-success' => 'Distanket eo bet an implijer.',
+	'spamregex-unblock-message' => "Distanket eo bet ar bajenn '''$1''' evit an embann.",
 	'spamregex-block-success' => 'Graet eo ar stankadur',
 	'spamregex-block-message' => "Stanket eo bet ar frazenn '''$1'''",
 	'spamregex-warning-1' => 'Reiñ ur frazenn da stankañ.',
+	'spamregex-warning-2' => "Mar plij dibabit d'an nebeutañ un doare stankañ.",
 	'spamregex-already-blocked' => '« $1 » zo stanket dija',
 	'spamregex-phrase-block' => 'Frazenn da stankañ :',
+	'spamregex-phrase-block-text' => 'stankañ ar frazenn e testenn ar bajenn',
+	'spamregex-phrase-block-summary' => 'stankañ ar frazenn en evezhiadenn',
+	'spamregex-block-submit' => 'Stankañ&nbsp;ar&nbsp;frazenn-se',
 	'spamregex-text' => '(Testenn)',
 	'spamregex-summary-log' => '(Diverradur)',
+	'right-spamregex' => 'Stankañ stroboù dre [[Special:SpamRegex]]',
 );
 
 /** Bosnian (Bosanski)
@@ -1684,6 +1694,13 @@ $messages['tg-latn'] = array(
 	'spamregex-already-blocked' => '"$1" allakaj basta şudaast',
 	'spamregex-text' => '(Matn)',
 	'spamregex-summary-log' => '(Xulosa)',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'spamregex-text' => '(Tekst)',
 );
 
 /** Tagalog (Tagalog)

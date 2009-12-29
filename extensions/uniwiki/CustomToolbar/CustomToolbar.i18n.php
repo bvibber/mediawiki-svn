@@ -775,12 +775,13 @@ $wgCustomToolbarMessages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $wgCustomToolbarMessages['et'] = array(
-	'ct_bold_sample' => 'Paks kiri',
-	'ct_bold_tip_ins' => 'Sisesta paks kiri',
+	'ct_bold_sample' => 'Rasvane kiri',
+	'ct_bold_tip_ins' => 'Sisesta rasvane tekst',
 	'ct_bold_tip_wrap' => 'Tee see kiri paksuks',
-	'ct_bold_caption' => 'Paks',
+	'ct_bold_caption' => 'Rasvane',
 	'ct_italic_sample' => 'Kaldkiri',
 	'ct_italic_tip_ins' => 'Sisesta kaldkirjas tekst',
 	'ct_italic_tip_wrap' => 'Pane see tekst kaldkirja',
@@ -791,8 +792,17 @@ $wgCustomToolbarMessages['et'] = array(
 	'ct_external_tip_ins' => 'Sisesta välislink',
 	'ct_external_tip_wrap' => 'Tee sellest tekstist välislink',
 	'ct_external_caption' => 'Välislink',
-	'ct_image_tip' => 'Sisesta pilt',
+	'ct_image_tip' => 'Lisa pilt',
 	'ct_image_caption' => 'Lisa pilt',
+	'ct_math_caption' => 'Valem',
+	'ct_nowiki_tip_ins' => 'Ignoreeri vikindamist',
+	'ct_nowiki_tip_wrap' => 'Ignoreeri vikindamist selles tekstis',
+	'ct_horizontal_caption' => 'Rõhtjoon',
+	'ct_upload' => 'Laadi üles $1',
+	'ct_close' => 'Sulge aken',
+	'ct_success' => 'Faili üleslaadimine õnnestus.',
+	'ct_user_user' => 'Kasutaja',
+	'ct_user_sample' => 'Kasutajanimi',
 );
 
 /** Basque (Euskara)
@@ -2633,6 +2643,15 @@ $wgCustomToolbarMessages['th'] = array(
 	'ct_italic_tip_ins' => 'ใส่ตัวอักษรเอียง',
 	'ct_italic_tip_wrap' => 'ทำเป็นตัวอักษรเอียง',
 	'ct_italic_caption' => 'ตัวเอียง',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$wgCustomToolbarMessages['tk'] = array(
+	'ct_submit' => 'Git!',
+	'ct_user_user' => 'Ulanyjy',
+	'ct_user_sample' => 'Ulanyjy ady',
 );
 
 /** Tagalog (Tagalog)

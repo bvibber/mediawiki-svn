@@ -1268,6 +1268,13 @@ $messages['tg-latn'] = array(
 	'deletebatch-select-yourself' => 'şumo',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'deletebatch-delete' => 'Öçür',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

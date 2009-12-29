@@ -57,6 +57,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'wikieditor-publish-preference' => 'Aktiveer stap-vir-stap publisering',
 	'wikieditor-publish-button-publish' => 'Publiseer',
 	'wikieditor-publish-button-cancel' => 'Kanselleer',
 	'wikieditor-publish-dialog-title' => 'Publiseer na {{SITENAME}}',
@@ -282,14 +283,31 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Imre
  */
 $messages['es'] = array(
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancelar',
+	'wikieditor-publish-dialog-title' => 'Publicar en {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Resumen de edición (describe brevemente los cambios que has realizado):',
 	'wikieditor-publish-dialog-minor' => 'Edición menor',
 	'wikieditor-publish-dialog-watch' => 'Vigilar esta página',
 	'wikieditor-publish-dialog-publish' => 'Publicar',
 	'wikieditor-publish-dialog-goback' => 'Regresar',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'wikieditor-publish-button-publish' => 'Avalda',
+	'wikieditor-publish-button-cancel' => 'Loobu',
+	'wikieditor-publish-dialog-summary' => 'Redaktsiooni kokkuvõte (kirjelda lühidalt tehtud muudatusi):',
+	'wikieditor-publish-dialog-minor' => 'Pisimuudatus',
+	'wikieditor-publish-dialog-watch' => 'Jälgi seda lehekülge',
+	'wikieditor-publish-dialog-publish' => 'Avalda',
+	'wikieditor-publish-dialog-goback' => 'Tagasi',
 );
 
 /** Basque (Euskara)

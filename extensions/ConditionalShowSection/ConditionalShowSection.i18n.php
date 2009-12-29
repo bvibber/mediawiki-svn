@@ -183,6 +183,13 @@ $messages['nl'] = array(
 	'conditionalshowsection-desc' => 'Voegt de tag <code><nowiki>cshow</nowiki></code> toe om conditioneel een paragraaf wikitekst weer te geven of te verbergen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'conditionalshowsection-desc' => 'Bruk cshow-merkelappen for å velge vis/skjul en seksjon av wikitekst',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -223,6 +230,13 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'conditionalshowsection-desc' => 'Добавляет тег cshow для условного показа или сокрытия раздела викитекста.',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'conditionalshowsection-desc' => 'Биики тиэксин көрдөрөр/кистиир cshow тиэги эбэр',
 );
 
 /** Slovak (Slovenčina)

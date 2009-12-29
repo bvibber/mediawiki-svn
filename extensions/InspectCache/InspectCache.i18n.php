@@ -1068,6 +1068,13 @@ $messages['th'] = array(
 	'inspectcache-delete' => 'ลบ',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'inspectcache-delete' => 'Öçür',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

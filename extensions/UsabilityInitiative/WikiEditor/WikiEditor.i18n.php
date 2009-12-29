@@ -32,6 +32,7 @@ I guess that 'feature-providing modules' means the same as 'modules providing fe
  * @author Naudefj
  */
 $messages['af'] = array(
+	'wikieditor' => 'Uitgebreide teksverwerker vir wikiteks',
 	'wikieditor-wikitext-tab' => 'Wikiteks',
 );
 
@@ -101,14 +102,17 @@ $messages['cs'] = array(
  */
 $messages['cy'] = array(
 	'wikieditor' => 'Rhyngwyneb golygu testun wici uwch',
+	'wikieditor-wikitext-tab' => 'Testun wici',
 );
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Imre
  * @author Metalhead64
  */
 $messages['de'] = array(
 	'wikieditor' => 'Fortgeschrittener Wikitext-Editor',
+	'wikieditor-desc' => 'Stellt eine erweiterbare Oberfläche zur Wikitext-Beabeitung sowie weitere funktionelle Module zur Verfügung',
 	'wikieditor-wikitext-tab' => 'Wikitext',
 );
 
@@ -152,6 +156,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitexto',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'wikieditor-wikitext-tab' => 'Vikitekst',
 );
 
 /** Basque (Euskara)
@@ -213,6 +224,7 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'wikieditor' => 'מנשק מתקדם לעריכת טקסט ויקי',
+	'wikieditor-desc' => 'מספקת מנשק עריכת ויקיטקסט הניתן להרחבה ומודולים המאפשרים להוסיף יכולות',
 	'wikieditor-wikitext-tab' => 'ויקיטקסט',
 );
 
@@ -428,6 +440,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'wikieditor' => 'ఉన్నత వికీపాఠ్య దిద్దుబాటు ముఖాంతరం',
 	'wikieditor-wikitext-tab' => 'వికీపాఠ్యం',
 );
 

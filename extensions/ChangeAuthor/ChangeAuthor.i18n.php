@@ -2090,6 +2090,13 @@ Agar in xato takroran namoiş şavad, ehtimolan pojgohi doda şikasta ast.',
 	'changeauthor-logpagename' => 'Guzorişi taƣjiri muallif',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'changeauthor-pagenameform-go' => 'Git',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

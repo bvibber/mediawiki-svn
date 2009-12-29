@@ -457,8 +457,10 @@ $messages['eu'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author Jack Phoenix
+ * @author ZeiP
  */
 $messages['fi'] = array(
+	'form-desc' => '[[Special:Form|Lomake]] uusien sivujen luomiseen',
 	'form' => 'Lomake',
 	'formnoname' => 'Ei lomakkeen nimeä',
 	'formnonametext' => 'Sinun tulee antaa lomakkeen nimi, kuten "Special:Form/Lomakkeennimi".',
@@ -1505,6 +1507,13 @@ $messages['tg-latn'] = array(
  */
 $messages['th'] = array(
 	'formsave' => 'บันทึก',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'formsave' => 'Ýazdyr',
 );
 
 /** Tagalog (Tagalog)

@@ -1069,6 +1069,34 @@ $messages['es'] = array(
 	'tasks-pref-showtaskcomments' => 'Transcluir página de comentarios de tareas.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'tasks' => 'Ülesanded',
+	'tasks_tab' => 'Ülesanded',
+	'tasks_form_new' => 'Loo uus ülesanne',
+	'tasks_form_comment' => 'Kommenteeri',
+	'tasks_error1' => 'Ülesannet ei loodud: selline ülesanne on juba olemas.',
+	'tasks_ok1' => 'Uus ülesanne on loodud!',
+	'tasks_create_header' => 'Loo uus ülesanne',
+	'tasks_close' => 'Sulge ülesanne',
+	'tasks_delete' => 'Kustuta',
+	'tasks_no_task_delete_title' => 'Ei ole lubatud',
+	'tasks_no_task_delete_texe' => 'Sa ei saa ülesannet kustutada. Ainult administraatorid saavad seda teha.',
+	'tasks_action_delete' => 'Ülesanne kustutatud.',
+	'tasks_task_was_deleted' => 'Üelesanne edukalt kustutatud.',
+	'tasks_discussion_page_link' => 'Ülesande aruteluleht',
+	'tasks_see_page_tasks' => '(selle lehekülje ülesanded)',
+	'tasks_plain_text_only' => '(lihttekst, ainult 256 tähemärki)',
+	'tasks_previous' => 'Eelmine',
+	'tasks_next' => 'Järgmine',
+	'tasks_sort' => 'Sordi',
+	'tasks_ascending' => 'Vanemad enne',
+	'tasks_status_closed' => 'Suletud',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
@@ -2757,6 +2785,8 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'tasks' => 'Atività',
+	'tasks_tab' => 'Atività',
+	'tasks_title' => 'Atività për "$1"',
 );
 
 /** Pashto (پښتو)
@@ -3509,6 +3539,14 @@ $messages['te'] = array(
 $messages['th'] = array(
 	'tasks_delete' => 'ลบ',
 	'tasks_search_form_title' => 'สืบค้น',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'tasks_delete' => 'Öçür',
+	'tasks_table_header_page' => 'Sahypa',
 );
 
 /** Tagalog (Tagalog)

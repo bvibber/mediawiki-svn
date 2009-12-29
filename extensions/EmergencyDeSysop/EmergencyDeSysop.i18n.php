@@ -373,6 +373,7 @@ $messages['he'] = array(
 	'emergencydesysop-notasysop' => 'משתמש היעד איננו בקבוצת מפעילי המערכת.',
 	'emergencydesysop-nogroups' => 'אין',
 	'emergencydesysop-invalidtarget' => 'משתמש היעד אינו קיים.',
+	'emergencydesysop-blocked' => 'לא ניתן לגשת לדף זה בעודכם חסומים',
 );
 
 /** Croatian (Hrvatski)
@@ -903,6 +904,13 @@ $messages['te'] = array(
  */
 $messages['th'] = array(
 	'emergencydesysop-nogroups' => 'ไม่มี',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'emergencydesysop-submit' => 'Tabşyr',
 );
 
 /** Tagalog (Tagalog)

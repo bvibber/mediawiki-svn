@@ -74,8 +74,12 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'extensiondistributor' => 'Laai MediaWiki-uitbreiding af',
+	'extdist-not-configured' => 'Stel asseblief $wgExtDistTarDir en $wgExtDistWorkingCopy',
+	'extdist-no-such-extension' => 'Die uitbreiding "$1" bestaan nie',
 	'extdist-submit-extension' => 'Gaan voort',
+	'extdist-current-version' => 'Ontwikkelingsweergawe (trunc)',
 	'extdist-submit-version' => 'Gaan voort',
+	'extdist-tar-error' => 'TAR stuur die volgende kode terug $1:',
 );
 
 /** Arabic (العربية)
@@ -661,9 +665,11 @@ $messages['eo'] = array(
 	'extensiondistributor' => 'Elŝuti kromprogramon por MediaWiki',
 	'extdist-desc' => 'Kromprogramo por distribui statikajn arkivojn de kromprogramoj',
 	'extdist-not-configured' => 'Bonvolu konfiguri $wgExtDistTarDir kaj $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'La konfigurita laborspaca dosierujo ne ekzistas!',
 	'extdist-no-such-extension' => 'Kromprogramo "$1" ne ekzistas',
 	'extdist-no-such-version' => 'La kromprogramo "$1" ne ekzistas en la versio "$2".',
 	'extdist-choose-extension' => 'Elektu kiun kromprogramon tiun vi volas elŝuti.',
+	'extdist-wc-empty' => 'La konfigurita laborspaca dosierujo ne havas doneblaj kromprogramoj!',
 	'extdist-submit-extension' => 'Daŭri',
 	'extdist-current-version' => 'Disvolvada versio (bazo)',
 	'extdist-choose-version' => '<big>Vi elŝutas la <b>$1</b> kromprogramon.</big>
@@ -677,6 +683,7 @@ Pliparto de kromprogramoj funkcias trans pluraj versioj de MediaWiki, do se via 
 	'extdist-remote-error' => 'Eraro de la ekstera kliento de subversion: <pre>$1</pre>',
 	'extdist-remote-invalid-response' => 'Nevalida respondo de ekstera kliento de Subversion.',
 	'extdist-svn-error' => 'Subversion renkontis eraron: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Ne eblas trakti la XML de "svn info": <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar donis elirkodon $1:',
 	'extdist-created' => "Statika kopio de versio <b>$2</b> de la <b>$1</b> kromprogramo por MediaWiki <b>$3</b> estis kreita. Via elŝuto komencos aŭtomate post 5 sekundoj.
 
@@ -818,11 +825,11 @@ $messages['fi'] = array(
 	'extdist-wc-empty' => 'Määritetyssä työkopiohakemistossa ei ole jaeltavia laajennuksia.',
 	'extdist-submit-extension' => 'Jatka',
 	'extdist-current-version' => 'Kehitysversio (trunk)',
-	'extdist-choose-version' => '<big>Olet lataamassa laajennusta ”<b>$1</b>”.</big>
+	'extdist-choose-version' => '<big>Olet lataamassa laajennusta <b>$1</b>.</big>
 
 Valitse MediaWikisi versio.
 
-Useimmat laajennukset toimivat useiden MediaWikin versioiden välillä. Jos MediaWikisi versiota ei ole täällä tai tarvit viimeisimpiä ominaisuuksia laajennuksesta, kokeile nykyistä versiota.',
+Useimmat laajennukset toimivat useiden MediaWikin versioiden välillä. Jos MediaWikisi versiota ei ole täällä tai tarvitset viimeisimpiä ominaisuuksia laajennuksesta, kokeile nykyistä versiota.',
 	'extdist-no-versions' => 'Valitusta laajennuksesta ($1) ei ole saatavilla yhtään versiota!',
 	'extdist-submit-version' => 'Jatka',
 	'extdist-no-remote' => 'Subversion-asiakasohjelmaan ei saatu yhteyttä.',
@@ -907,6 +914,14 @@ Une fois les fichiers extraits et installés, il vous faudra enregistrer l’ext
 
 Si vous avez des questions concernant ce système de distribution des extensions, veuillez consulter [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Obtenir une autre extension',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'extdist-submit-extension' => 'Continuar',
+	'extdist-submit-version' => 'Continuar',
 );
 
 /** Galician (Galego)
@@ -1847,6 +1862,7 @@ Wenn du Fragen to dit Extensions-Verdeel-System hest, gah man na de Sied [[Exten
 );
 
 /** Dutch (Nederlands)
+ * @author Naudefj
  * @author SPQRobin
  * @author Siebrand
  */
@@ -1873,7 +1889,7 @@ De meeste uitbreidingen werken met meerdere versies van MediaWiki, dus als uw ve
 	'extdist-remote-invalid-response' => 'Ongeldig antwoord van de externe subversionclient.',
 	'extdist-svn-error' => 'Subversion geeft de volgende foutmelding: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Het was niet mogelijk de XML van "svn info" te verwerken: <pre>$1</pre>',
-	'extdist-tar-error' => 'Tat gaf de volgende exitcode $1:',
+	'extdist-tar-error' => 'Tar gaf de volgende exitcode $1:',
 	'extdist-created' => 'De snapshot voor versie <b>$2</b> voor de uitbreiding <b>$1</b> voor MediaWiki <b>$3</b> is aangemaakt. Uw download start automatisch over 5 seconden.
 
 De URL voor de snapshot is:

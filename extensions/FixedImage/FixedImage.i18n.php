@@ -424,6 +424,13 @@ $messages['ru'] = array(
 	'fixedimage-desc' => 'Добавляет тег <tt><nowiki><fundraising></nowiki></tt> как изображение',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> тиэги ойуу курдук эбэр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

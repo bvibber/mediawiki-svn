@@ -951,6 +951,14 @@ $messages['tg-latn'] = array(
 	'randomincategory-submit' => 'Birav',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'randomincategory-label' => 'Kategoriýa:',
+	'randomincategory-submit' => 'Git',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

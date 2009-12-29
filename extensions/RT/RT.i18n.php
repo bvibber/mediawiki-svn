@@ -141,10 +141,15 @@ Vi ste pokušali: '''$1'''",
  * @author Pill
  */
 $messages['de'] = array(
+	'rt-desc' => 'Modischer Interface für RT (Request Tracker)',
 	'rt-inactive' => 'Die RT-Erweiterung ist nicht aktiv',
 	'rt-badquery' => 'Die RT-Erweiterung hat einen Fehler bei der Kommunikation mit der RT-Datenbank festgestellt',
 	'rt-badlimit' => "Parameter „LIMIT (l)“ ungültig: Muss eine Zahl sein.
 Deine Eingabe: '''$1'''",
+	'rt-badorderby' => "Ungültiger ORDER BY (ob)-Parameter: muss ein Standardfeld sein (siehe Dokumentation).
+Versuchte Eingabe: '''$1'''",
+	'rt-badstatus' => "Ungültiger status (s)-Parameter: muss ein Standardfeld sein (siehe Dokumentation).
+Versuchte Eingabe: '''$1'''",
 	'rt-badqueue' => "Parameter „queue (q)“ ungültig: Muss ein einfaches Wort sein.
 Deine Eingabe: '''$1'''",
 	'rt-badowner' => "Parameter „owner (o)“ ungültig: Muss ein gültiger Benutzername sein.

@@ -38,7 +38,9 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'optin-try' => 'Probeer Beta',
+	'tooltip-pt-optin-try' => 'Probeer nuwe funksies',
 	'optin-leave' => 'Verlaat Beta',
+	'tooltip-pt-optin-leave' => 'Skakel nuwe funksies af',
 	'optin-feedback' => 'Beta terugvoer',
 );
 
@@ -86,7 +88,10 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'optin-try' => 'Изпробвайте Бета',
 	'tooltip-pt-optin-try' => 'Изпробвайте нови възможности',
+	'optin-leave' => 'Напускане на Бета',
 	'tooltip-pt-optin-leave' => 'Изключване на новите възможности',
+	'optin-feedback' => 'Обратна връзка за Бета',
+	'tooltip-pt-optin-feedback' => 'Дайте обратна връзка за опита си с новите функционалности',
 );
 
 /** Bengali (বাংলা)
@@ -939,7 +944,9 @@ $messages['te'] = array(
 	'optin-try' => 'బీటాను ప్రయత్నించండి',
 	'tooltip-pt-optin-try' => 'కొత్త విశేషాలను ప్రయత్నించండి',
 	'optin-leave' => 'బీటాను విడిచి వెళ్ళు',
+	'tooltip-pt-optin-leave' => 'కొత్త సౌలభ్యాలను ఆపివేయి',
 	'optin-feedback' => 'బీటాపై అభిప్రాయాలు',
+	'tooltip-pt-optin-feedback' => 'కొత్త సౌలభ్యాలతో మీ అనుభవం గురించి తెలియజేయండి',
 );
 
 /** Thai (ไทย)

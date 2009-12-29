@@ -234,3 +234,10 @@ $messages['sk'] = array(
 	'negref-desc' => 'Poskytuje značku na vyjednanie umiestnenia akýchkoľvek značiek <nowiki><ref/></nowiki> v zadávanom texte na opravu niektorých prípadov použitia šablón.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'negref-desc' => 'Bazı şablon kullanım durumlarını düzeltmek için girilen metnin içinde bulunan <nowiki><ref/></nowiki> etiketlerinin konumunu ayarlayacak bir etiket sağlar',
+);
+

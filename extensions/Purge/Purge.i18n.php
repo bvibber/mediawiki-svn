@@ -463,9 +463,11 @@ $messages['to'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'purge' => 'Temizle',
+	'purge-desc' => 'Tüm normal sayfalara bir temizleme sekmesi ekler ve anonim kullanıcılar için temizleme kontrolünü geçerek ön belleğin hızlı temizlenmesini sağlar',
 );
 
 /** Ukrainian (Українська)

@@ -156,9 +156,10 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
-	'minnamelength-error' => 'Sinu kasutajanimi on liiga lühike. Minimaalne pikkus on §1.',
+	'minnamelength-error' => 'Sinu kasutajanimi on liiga lühike. Alammääraline pikkus on $1.',
 );
 
 /** Basque (Euskara)

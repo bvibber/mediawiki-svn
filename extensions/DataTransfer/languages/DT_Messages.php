@@ -1788,6 +1788,14 @@ $messages['th'] = array(
 	'dt_xml_namespace' => 'เนมสเปซ',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'dt_xml_page' => 'Sahypa',
+	'dt_xml_name' => 'At',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

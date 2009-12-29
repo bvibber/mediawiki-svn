@@ -1943,6 +1943,16 @@ $messages['th'] = array(
 	'recordadmin-editlink' => 'แก้ไข',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'recordadmin-submit' => 'Tabşyr',
+	'recordadmin-buttoncreate' => 'Döret',
+	'recordadmin-buttonsave' => 'Ýazdyr',
+	'recordadmin-editlink' => 'redaktirle',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

@@ -243,7 +243,7 @@ $messages['cs'] = array(
 	'watchers_error_article' => '<b>Chyba:</b> Článek neexistuje.',
 	'watchers_header' => '{{PLURAL:$2|Uživatel|Uživatelé}} sledující stránku „$1”',
 	'watchers_noone_watches' => 'Nikdo nesleduje tuto stránku',
-	'watchers_x_or_more' => '$1 nebo více uživatelů sleduje tuto stránku.',
+	'watchers_x_or_more' => '$1 nebo více uživatelů sleduje tuto stránku.{{PLURAL:$1||}}',
 	'watchers_less_than_x' => 'Méně než $1 {{PLURAL:|uživatel sleduje|uživatelé sledují|uživatelů sleduje}} tuto stránku.',
 );
 

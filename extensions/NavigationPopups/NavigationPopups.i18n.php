@@ -340,6 +340,13 @@ $messages['tl'] = array(
 	'navigationpopups-desc' => "Nagkakarga sa MediaWiki ng pangpaglilibot na mga panitik ng mga \"sulpot-litaw\" (''popup'') ni Lupin",
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'navigationpopups-desc' => "MediaWiki'de Lupin'in gezinti pencereleri betiğini yükler",
+);
+
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na

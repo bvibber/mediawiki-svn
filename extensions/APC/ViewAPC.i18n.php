@@ -1404,6 +1404,7 @@ APC no parece estar ejecutándose.',
 	'viewapc-memory-usage' => 'Uso de memoria',
 	'viewapc-memory-free' => 'Libre: $1 ($2)',
 	'viewapc-memory-used' => 'Usado: $1 ($2)',
+	'viewapc-memory-hits' => 'Resultados: $1 ($2)',
 	'viewapc-memoryfragmentation' => 'Uso de memoria detallado y fragmentación',
 	'viewapc-fragmentation-none' => 'Fragmentación: sin fragmentación',
 	'viewapc-display-attribute' => 'Atributo',
@@ -1415,6 +1416,7 @@ APC no parece estar ejecutándose.',
 	'viewapc-display-inode' => 'Inodo',
 	'viewapc-display-type' => 'Tipo',
 	'viewapc-display-type-file' => 'archivo en cache',
+	'viewapc-display-num_hits' => 'Resultados',
 	'viewapc-display-mtime' => 'Modificado',
 	'viewapc-display-creation_time' => 'Creado',
 	'viewapc-display-deletion_time' => 'Borrado',
@@ -1427,6 +1429,7 @@ APC no parece estar ejecutándose.',
 	'viewapc-ls-options-legend' => 'Opciones',
 	'viewapc-ls-submit' => 'Ir!',
 	'viewapc-ls-header-name' => 'Nombre',
+	'viewapc-ls-header-hits' => 'Resultados',
 	'viewapc-ls-header-size' => 'Tamaño',
 	'viewapc-ls-header-accessed' => 'Último accesado',
 	'viewapc-ls-header-modified' => 'Último modificado',
@@ -1437,6 +1440,7 @@ APC no parece estar ejecutándose.',
 	'viewapc-ls-scope-active' => 'Activo',
 	'viewapc-ls-scope-deleted' => 'Borrado',
 	'viewapc-ls-scope-both' => 'Ambos',
+	'viewapc-ls-sort-hits' => 'Resultados',
 	'viewapc-ls-sort-size' => 'Tamaño',
 	'viewapc-ls-sort-name' => 'Nombre',
 	'viewapc-ls-sort-accessed' => 'Último accesado',
@@ -5504,6 +5508,17 @@ $messages['tg-latn'] = array(
  */
 $messages['th'] = array(
 	'viewapc-ls-limit-none' => 'ทั้งหมด',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'viewapc-display-info' => 'At',
+	'viewapc-ls-submit' => 'Git!',
+	'viewapc-ls-header-name' => 'At',
+	'viewapc-ls-sort-name' => 'At',
+	'viewapc-ls-limit-none' => 'Ählisi',
 );
 
 /** Tagalog (Tagalog)

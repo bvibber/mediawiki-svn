@@ -123,6 +123,18 @@ $messages['ca'] = array(
 	'transliterator-error-rulesize' => "La regla <code>$1</code> té més {{PLURAL:$3|d'un caràcter|de $3 caràcters}} a l'esquerra a [[MediaWiki:$2]]",
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'transliterator-desc' => 'Poskytuje konfigurovatelnou funkci parseru pro transliteraci',
+	'transliterator-error-ambiguous' => 'Nejednoznačné pravidlo <code>$1</code> v [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Neplatná syntaxe <code>$1</code> v [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Více než $1 {{PLURAL:$1|pravidlo|pravidla|pravidel}} v [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Pravidlo <code>$1</code> má více než $3 {{PLURAL:$3|znak|znaky|znaků}} nalevo od [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] musí být dlouhé alespoň $1 {{PLURAL:$1|znak|znaky|znaků}}.',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author Imre
@@ -133,7 +145,7 @@ $messages['de'] = array(
 	'transliterator-error-syntax' => 'Fehlerhafte Syntax in Regel <code>$1</code> in [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Mehr als die {{PLURAL:$1|erlaubte eine Regel|die erlaubten $1 Regeln}} in [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'In der Regel <code>$1</code> {{PLURAL:$3|ist|sind}} mehr als $3 Zeichen auf der linken Seite in [[MediaWiki:$2]]',
-	'transliterator-error-prefix' => '[[MediaWiki:$2]] muss mindestens $1 Zeichen lang sein.',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] muss mindestens $1 {{PLURAL:$1|Zeichen|Zeichen}} lang sein.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

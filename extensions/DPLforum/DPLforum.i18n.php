@@ -473,10 +473,16 @@ $messages['lb'] = array(
 );
 
 /** Eastern Mari (Олык Марий)
+ * @author Azim
  * @author Сай
  */
 $messages['mhr'] = array(
+	'dplforum-desc' => 'DPL негызеш каҥашымашын кумдаҥдымашыже',
+	'dplforum-by' => '$1 деч',
+	'dplforum-edited' => '- Пытартыш тӧрлатымаш',
 	'dplforum-never' => 'Нигунам',
+	'dplforum-toofew' => 'DPL Каҥашымаш: пеш шагал категорий!',
+	'dplforum-toomany' => 'DPL Каҥашымаш: пеш шуко категорий!',
 );
 
 /** Macedonian (Македонски)

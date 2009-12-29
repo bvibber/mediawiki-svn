@@ -451,6 +451,7 @@ $messages['ckb-arab'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'specialuserstats' => 'Statistika uživatelů',
@@ -459,6 +460,10 @@ $messages['cs'] = array(
 	'usagestatisticsfor' => '<h2>Statistika používanosti pro uživatele [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Statistika využití pro všechny uživatele</h2>',
 	'usagestatisticsinterval' => 'Interval:',
+	'usagestatisticsnamespace' => 'Jmenný prostor:',
+	'usagestatisticsexcluderedirects' => 'Vynechat přesměrování',
+	'usagestatistics-namespace' => 'Toto jsou statistiky jmenného prostoru [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Přesměrování]] jsou vynechána.',
 	'usagestatisticstype' => 'Typ',
 	'usagestatisticsstart' => 'Počáteční datum:',
 	'usagestatisticsend' => 'Konečné datum:',
@@ -476,6 +481,7 @@ $messages['cs'] = array(
 	'usagestatisticscalselect' => 'Vybrat',
 	'usagestatistics-editindividual' => 'Statistika úprav jednotlivého uživatele $1',
 	'usagestatistics-editpages' => 'Statistika stránek jednotlivého uživatele $1',
+	'right-viewsystemstats' => 'Prohlížení [[Special:UserStats|statistik využití wiki]]',
 );
 
 /** Danish (Dansk)
@@ -666,17 +672,27 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'specialuserstats' => 'Kasutuse statistika',
 	'usagestatistics' => 'Kasutuse statistika',
-	'usagestatisticsinterval' => 'Intervall',
+	'usagestatisticsinterval' => 'Ajavahemik:',
+	'usagestatisticsnamespace' => 'Nimeruum:',
+	'usagestatisticsexcluderedirects' => 'Jäta ümbersuunamisleheküljed välja',
 	'usagestatisticstype' => 'Tüüp',
-	'usagestatisticsstart' => 'Alguse kuupäev',
-	'usagestatisticsend' => 'Lõpu kuupäev',
+	'usagestatisticsstart' => 'Alguse kuupäev:',
+	'usagestatisticsend' => 'Lõpu kuupäev:',
+	'usagestatisticsnostart' => 'Palun märgi alguse kuupäev',
+	'usagestatisticsnoend' => 'Palun märgi lõpu kuupäev',
 	'usagestatisticsintervalday' => 'Päev',
 	'usagestatisticsintervalweek' => 'Nädal',
 	'usagestatisticsintervalmonth' => 'Kuu',
+	'usagestatisticsincremental' => 'Kuhjuv',
+	'usagestatisticsincremental-text' => 'kuhjuvad',
+	'usagestatisticscumulative' => 'Kogunenud',
+	'usagestatisticscumulative-text' => 'kogunenud',
+	'usagestatisticscalselect' => 'Vali',
 );
 
 /** Basque (Euskara)

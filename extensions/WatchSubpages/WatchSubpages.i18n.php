@@ -260,6 +260,14 @@ Para agregar una página, marque la cuadrícula próxima a ella, y haga click en
 Cuando marque o desmarque múltiples páginas, Mantener presionada la tecla shift le permite seleccionar cuadrículas de marcado consecutivas haciendo click al final de cada rango a ser marcado.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'watchsubpages-addtitles' => 'Lisa lehekülgi',
+	'watchsubpages-addtitlestowatchlist' => 'Lisa lehekülgi jälgimisloendisse',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

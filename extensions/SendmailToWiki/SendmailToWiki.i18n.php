@@ -110,10 +110,13 @@ $messages['bs'] = array(
  * @author Imre
  */
 $messages['de'] = array(
+	'sendmailtowiki-desc' => 'Wiki-Inhalt über zugewiesene dynamische E-Mail-Adresse senden',
 	'prefs-sendmailtowiki' => 'Sende Inhalte über E-Mail',
 	'sendmailtowiki-inemail' => 'Zugewiesene E-Mail-Adresse:',
 	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Freies PIN-Eingabefeld deaktiviert Inhaltsübermittlung an Wiki von deinem Konto.',
 	'sendmailtowiki-err-pinlength' => 'Die PIN muss genau 5 Ziffern enthalten.',
+	'sendmailtowiki-err-wrongprefix' => 'Falsches Benutzerkonto-Prefix. Bitte Administrator kontaktieren.',
 	'sendmailtowiki-err-invalidaccount' => 'Ungültiges Benutzerkonto. Überprüfe die E-Mail-Adresse, an die du sendest.',
 	'sendmailtowiki-err-invalidsender' => 'Ungültiger Sender. Überprüfe die E-Mail-Adresse, von der du sendest.',
 	'sendmailtowiki-err-invalidpin' => 'Ungültige PIN. Zugriff abgelehnt.',
@@ -154,10 +157,31 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Imre
  */
 $messages['es'] = array(
 	'prefs-sendmailtowiki' => 'Enviando contenido con correo electrónico',
+	'sendmailtowiki-inemail' => 'Dirección de correo electrónico asignada:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'sendmailtowiki-err-invalidpin' => 'PIN no válido. Acceso denegado.',
 	'sendmailtowiki-err-onlyplain' => 'Debido a potenciales malentendidos solamente mensajes de puro texto son aceptados.',
+);
+
+/** Finnish (Suomi)
+ * @author ZeiP
+ */
+$messages['fi'] = array(
+	'sendmailtowiki-desc' => 'Lähetä wiki-sisältöä erillisen dynaamisen sähköpostiosoitteen kautta',
+	'prefs-sendmailtowiki' => 'Sisällön lähettäminen sähköpostilla',
+	'sendmailtowiki-inemail' => 'Varattu sähköpostiosoite:',
+	'sendmailtowiki-inpin' => 'Tunnusluku:',
+	'prefs-help-sendmailtowiki_pin' => 'Tyhjä tunnusluku poistaa sisällön lähettämisen wikiin käytöstä tunnuksellasi.',
+	'sendmailtowiki-err-pinlength' => 'Tunnusluvun tulee olla tasan 5 numeroa pitkä.',
+	'sendmailtowiki-err-wrongprefix' => 'Väärä wiki-tunnusetuliite. Ota yhteyttä ylläpitäjään.',
+	'sendmailtowiki-err-invalidaccount' => 'Virheellinen tunnus. Tarkista kohdesähköpostiosoite.',
+	'sendmailtowiki-err-invalidsender' => 'Virheellinen lähettäjä. Tarkista sähköpostiosoite, josta lähetät.',
+	'sendmailtowiki-err-invalidpin' => 'Virheellinen tunnusluku. Pääsy kielletty.',
+	'sendmailtowiki-err-onlyplain' => 'Mahdollisten väärinkäsitysten vuoksi ainoastaan vain teksti -muotoiset viestit hyväksytään.',
 );
 
 /** French (Français)
@@ -216,6 +240,8 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'sendmailtowiki-desc' => 'פרסום תוכן ויקי דרך כתובת דוא"ל דינמית ייעודית',
+	'sendmailtowiki-err-invalidaccount' => 'החשבון שגוי. אנא בדקו שוב את כתובת הדוא"ל אליה אתם שולחים.',
+	'sendmailtowiki-err-invalidsender' => 'השולח שגוי. אנא בדקו את כתובת הדוא"ל ממנה אתם שולחים.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

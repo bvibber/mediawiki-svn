@@ -191,6 +191,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'imstatus-desc' => 'Ouzhpennañ balizennoù evit diskouez enlinenn ar statud (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Ereadur',
 	'imstatus_default' => 'Dre ziouer',
 	'imstatus_example' => 'Skouer',
@@ -198,10 +199,20 @@ $messages['br'] = array(
 	'imstatus_max' => 'muiañ',
 	'imstatus_min' => 'nebeutañ',
 	'imstatus_or' => 'pe',
+	'imstatus_style' => 'stil ar merker statud',
+	'imstatus_action' => "obererezh pa 'vez kliket ar bouton",
+	'imstatus_details_saa' => "Evit kaout muioc'h a ditouroù diwar-benn ar stiloù hag an obererezhioù, kit wa welet $1.",
 	'imstatus_your_name' => "hoc'h anv $1",
+	'imstatus_aim_presence' => "$1 a ziskouez ho statud gant ul liamm hag a lañso AIM evit ma c'helfe un implijer kas deoc'h ur gemenadenn war eeun, m'en deus staliet pep tra.",
+	'imstatus_aim_api' => '$1 a ziskouez ho statud gant ul liamm hag a lañso ur <b>merdeer</b>, un doare javascript eus AIM evit kas ur gemenadenn war eeun.',
 	'imstatus_gtalk_code' => 'ho kod Google Talk',
+	'imstatus_gtalk_get_code' => 'ho kod Google Talk : tapit anezhañ war $1.',
+	'imstatus_gtalk_height' => 'uhelder ar boest, e piksel.',
+	'imstatus_gtalk_width' => 'ledander ar boest, e piksel.',
 	'imstatus_icq_id' => 'ho ID ICQ',
+	'imstatus_icq_style' => "un niver etre 0 ha 26 (ya, tu 'zo kaout 27 stil disheñvel).",
 	'imstatus_live_code' => "ho ID war lec'hienn Live Messenger",
+	'imstatus_skype_nbstyle' => "Notenn : ma tibaboc'h ur stil hag a zo ivez un obererezh, ho tibab obererezh a vo flastret gant an obererezh a glot gant ar stil ho peus dibabet.",
 	'imstatus_xfire_size' => 'ment ar bouton, eus $1 (an hini vrasañ) da $2 (an hini vihanañ).',
 	'imstatus_yahoo_style' => 'doare ar bouton, eus $1 (an hini vihanañ) da $2 (an hini vrasañ), $3 ha $4 a zo kemenadennoù dre gomz.',
 );

@@ -918,6 +918,13 @@ $messages['th'] = array(
 	'languageselector' => 'ภาษา',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'languageselector' => 'Dil',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

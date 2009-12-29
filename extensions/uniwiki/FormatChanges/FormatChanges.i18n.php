@@ -180,6 +180,13 @@ $messages['es'] = array(
 	'formatchanges-editedby' => '$1 - editado por $2 ($3)',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'formatchanges-anonymous' => 'Anonüümne',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

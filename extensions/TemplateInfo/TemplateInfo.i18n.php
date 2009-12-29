@@ -114,6 +114,13 @@ $messages['gsw'] = array(
 	'templateinfo-header' => 'D XML-Definition fir die Vorlag isch:',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'templateinfo-header' => 'הגדרת ה־XML עבור תבנית זו היא:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -339,6 +339,13 @@ $messages['ru'] = array(
 	'gnuplot-desc' => 'Добавляет тег <code><nowiki><gnuplot></nowiki></code> для использования Gnuplot',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'gnuplot-desc' => 'Gnuplot туһанарга <code><nowiki><gnuplot></nowiki></code> тиэги эбэр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

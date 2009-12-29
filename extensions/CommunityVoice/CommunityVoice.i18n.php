@@ -250,6 +250,7 @@ $messages['eo'] = array(
 	'communityvoice-ratings-scale-status-thanks' => 'Dankon pro via voĉdono!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|voĉdono sendita|voĉdonoj senditaj}})',
 	'communityvoice-ratings-error-no-category' => 'Kategoria atributo mankas en voĉdona etikedo.',
+	'communityvoice-ratings-error-no-title' => 'Mankas titola atributo en taksa etikedo.',
 );
 
 /** Spanish (Español)

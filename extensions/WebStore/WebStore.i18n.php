@@ -812,6 +812,15 @@ $1',
 	'webstore_no_handler' => 'No hay procesador para transformar este tipo MIME.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'webstore_404' => 'Faili ei leitud.',
+	'webstore_metadata_not_found' => 'Faili ei leitud: $1',
+	'webstore_no_response' => 'Server ei vasta',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

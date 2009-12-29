@@ -334,6 +334,13 @@ $messages['tl'] = array(
 	'gotocategory-desc' => "Nagsusuri ng mga salitang panghanap laban sa espasyo ng pangalang Kaurian: para sa sa katungkulang Gawin 'tumalon papunta sa pahina'",
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'gotocategory-desc' => "Git 'sayfaya atla' işlevi için Kategori: isim alanı ile aranan kelimeleri karşılaştırır",
+);
+
 /** Ukrainian (Українська)
  * @author NickK
  */

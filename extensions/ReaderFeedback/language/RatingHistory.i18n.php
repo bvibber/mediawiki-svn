@@ -264,7 +264,10 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'ratinghistory' => 'Istor priziadenn ar bajenn',
+	'ratinghistory-leg' => 'Roadennoù istor ar priziadennoù evit [[:$1|$1]]',
 	'ratinghistory-tab' => 'istimadur',
+	'ratinghistory-link' => 'Priziadenn ar bajenn',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">Trugarez da vezañ kemmeret amzer evit adlenn ar bajenn !</font>''",
 	'ratinghistory-period' => 'Prantad :',
 	'ratinghistory-month' => 'miz diwezhañ',
@@ -273,10 +276,12 @@ $messages['br'] = array(
 	'ratinghistory-3years' => 'tri bloaz diwezhañ',
 	'ratinghistory-ave' => 'Keidenn : $1',
 	'ratinghistory-purge' => 'riñsañ ar grubuilh',
+	'ratinghistory-users' => 'Implijerien o deus priziet traoù',
 	'ratinghistory-graph' => '$2 war "$3" ($1 {{PLURAL:$1|adweladenn|adweladenn}})',
 	'ratinghistory-svg' => 'Gwelet evel SVG',
 	'ratinghistory-table-rating' => 'Priziañ',
 	'ratinghistory-table-votes' => 'Mouezhioù',
+	'ratinghistory-ratings' => "'''Alc'hwez :''' '''(1)''' - Fall ; '''(2)''' - Dister ; '''(3)''' - Etre ; '''(4)''' - Mat ; '''(5)''' - Dreist.",
 );
 
 /** Bosnian (Bosanski)
@@ -676,6 +681,7 @@ $messages['fa'] = array(
  * @author Crt
  * @author Nike
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'ratinghistory' => 'Sivun arvosteluhistoria',
@@ -693,6 +699,7 @@ $messages['fi'] = array(
 	'ratinghistory-purge' => 'tyhjennä välimuisti',
 	'ratinghistory-table' => 'Katsaus lukijoiden arvioinneista',
 	'ratinghistory-users' => 'Käyttäjät, jotka esittivät arvionsa',
+	'ratinghistory-graph' => 'Sivun $3 $2 ($1 {{PLURAL:$1|arvostelu|arvostelua}})',
 	'ratinghistory-svg' => 'Näytä SVG-muodossa',
 	'ratinghistory-table-rating' => 'Arvostelu',
 	'ratinghistory-table-votes' => 'Äänet',

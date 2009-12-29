@@ -171,6 +171,13 @@ $messages['oc'] = array(
 	'svgzoom-desc' => 'Apond a MediaWiki las capacitats de zoom e de vista panoramica al moment de la visualizacion de fichièrs SVG',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'svgzoom-desc' => 'Dodaje do MediaWiki przy podglądzie plików w formacie SVG funkcjonalność przewijania i przybliżania',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
@@ -204,6 +211,13 @@ $messages['ru'] = array(
  */
 $messages['sv'] = array(
 	'svgzoom-desc' => 'Lägger till panorerings och zoom-funktioner i MediaWiki när SVG filer visas',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'svgzoom-desc' => "MediaWiki'ye SVG dosyalarını görüntülerken kaydırma ve yakınlaşma imkanı ekler",
 );
 
 /** Vietnamese (Tiếng Việt)

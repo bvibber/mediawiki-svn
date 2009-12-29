@@ -564,6 +564,13 @@ $messages['tl'] = array(
 	'breadcrumbs-desc' => 'Nagpapakita ng daanan ng mga tagagamit sa pamamagitan ng wiki.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'breadcrumbs-desc' => 'Vikide kullanıcıların konumunu gösterir',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

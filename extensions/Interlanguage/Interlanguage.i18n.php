@@ -282,6 +282,13 @@ $messages['ru'] = array(
 	'interlanguage-desc' => 'Захватывает межъязыковые ссылки из другой вики',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'interlanguage-desc' => 'Атын тылларынан суруллубут биикилэртэн сигэлэри булар',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

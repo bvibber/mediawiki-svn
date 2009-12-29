@@ -637,6 +637,7 @@ $messages['tl'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'msfunc_desc' => 'Matematiksel ve istatistiksel fonksiyonlar koleksiyonu',
 	'msfunc_nan' => 'Sonuç değeri bir sayı değildir',
 	'msfunc_inf' => 'Sonuç değeri sonsuzluktur',
 	'msfunc_div_zero' => 'Sıfıra bölme',

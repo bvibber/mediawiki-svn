@@ -77,8 +77,15 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'Itrikadur ar Wiki-table',
 	'tablemod-msg-remove' => 'Lemel',
+	'tablemod-error-format' => 'Ne tegemer nemetken ar balizenn-mañ un daolenn eeun dre balizenn, hep testenn ebet a-raok pe goude.',
+	'tablemod-error-colcount' => 'Ne tegemer nemetken ar balizenn-mañ an taolennoù gant un niver kevatal a golonennoù dre linenn e-pad an dilamadenn.',
+	'tablemod-error-headcount' => 'Ne tegemer nemetken ar balizenn-mañ an taolennoù gant talbennoù war ur golonenn hepken e-pad ar rummañ.',
+	'tablemod-error-invalidsort' => "N'eo ket mat an arventennoù rummañ.",
 	'tablemod-error-invalidaction' => "Ne c'heller ket ober an oberezh-se.",
+	'tablemod-error-missingid' => 'Mankout a ra an doareenn ident er balizenn.',
 );
 
 /** Bosnian (Bosanski)
@@ -93,8 +100,15 @@ $messages['bs'] = array(
  * @author Imre
  */
 $messages['de'] = array(
+	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'Wikitable-Verarbeitung',
 	'tablemod-msg-remove' => 'Entfernen',
+	'tablemod-error-format' => 'Dieses Tag unterstützt pro Instanz nur eine einfache Tabelle ohne vorhergehenden oder folgenden Text.',
+	'tablemod-error-colcount' => 'Dieses Tag unterstützt beim Entfernen ausschließlich Tabellen mit gleicher Anzahl von Spalten pro Zeile.',
+	'tablemod-error-headcount' => 'Dieses Tag unterstützt während der Sortierung nur Tabellen mit einspaltiger Überschrift.',
+	'tablemod-error-invalidsort' => 'Ungültige Sortierungs-Parameter.',
 	'tablemod-error-invalidaction' => 'Ungültige Aktion.',
+	'tablemod-error-missingid' => 'Fehlendes ident-Merkmal im Tag.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -123,7 +137,9 @@ $messages['el'] = array(
  * @author Imre
  */
 $messages['es'] = array(
+	'tablemod' => 'TableMod',
 	'tablemod-msg-remove' => 'Quitar',
+	'tablemod-error-invalidaction' => 'Acción no válida.',
 );
 
 /** Basque (Euskara)
@@ -415,6 +431,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'tablemod-msg-remove' => 'తొలగించు',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'tablemod-msg-remove' => 'Aýyr',
 );
 
 /** Vietnamese (Tiếng Việt)

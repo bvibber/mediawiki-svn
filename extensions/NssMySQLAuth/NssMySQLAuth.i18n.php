@@ -994,6 +994,13 @@ $messages['te'] = array(
 	'nss-welcome-mail-subject' => 'ఖాతా సృష్టింపు',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'am-username' => 'ulanyjy ady',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

@@ -361,6 +361,13 @@ $messages['tl'] = array(
 	'newsextension-desc' => 'Nagpapakita ng ipinasadyang kamakailang mga pagbabago sa isang pahina ng wiki o bilang pakaing RSS o Atom',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'newsextension-desc' => 'Bir viki sayfasında ya da RSS veya Atom beslemesi olarak özelleştirilmiş son değişiklikleri gösterir',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

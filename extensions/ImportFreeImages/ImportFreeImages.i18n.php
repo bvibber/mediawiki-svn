@@ -155,6 +155,7 @@ $messages['br'] = array(
 	'importfreeimages_importthis' => 'enporzhiañ an dra-se',
 	'importfreeimages_next' => "$1 war-lerc'h",
 	'importfreeimages_promptuserforfilename' => 'Mar plij lakait anv ar restr tal :',
+	'importfreeimages_returntoform' => "pe, klikit <a href='$1'>amañ</a> evit distreiñ d'ho roll disoc'hoù.",
 );
 
 /** Bosnian (Bosanski)

@@ -104,13 +104,31 @@ $2 = revision status',
  * @author Naudefj
  */
 $messages['af'] = array(
+	'hiderevision' => 'Weergawes permanent versteek',
+	'hiderevision-desc' => 'Verberg wysigings vir alle gebruikers om wetlike redes, ens.',
 	'group-oversight' => 'Toesighouers',
 	'group-oversight-member' => 'Toesighouer',
+	'right-oversight' => 'Wys voorheen versteekte weergawes',
+	'right-hiderevision' => 'Versteek weergawes van administrateurs',
+	'hiderevision-prompt' => 'Weergawenommers om te verwyder:',
 	'hiderevision-continue' => 'Gaan voort',
+	'hiderevision-reason' => 'Rede (sal privaat geboekstaaf word):',
+	'hiderevision-submit' => 'Steek hierdie data permanent weg',
+	'hiderevision-tab' => 'Versteek weergawe',
+	'hiderevision-link' => 'verborge gebruikersbydraes',
+	'hiderevision-norevisions' => 'Geen weergawes is vir verwydering gespesifiseer nie.',
+	'hiderevision-noreason' => "U moet 'n rede vir die verwydering verskaf.",
+	'hiderevision-status' => 'Weergawe $1: $2',
+	'hiderevision-success' => 'Argivering en verwydering is suksesvol uitgevoer.',
 	'hiderevision-error-missing' => 'Nie in databasis gevind nie.',
+	'hiderevision-archive-status' => 'Geskrapte weergawes van $1: $2',
+	'oversight-log-hiderev' => "verwyder 'n wysiging vanuit $1",
 	'oversight' => 'Toesigkomitee',
 	'oversight-view' => 'details',
+	'oversight-prev' => 'Laaste vorige weergawe',
+	'oversight-hidden' => 'Verborge weergawe',
 	'oversight-oversighter' => 'Toesighouer:',
+	'oversight-offender' => 'Outeur van weergawe:',
 );
 
 /** Aragonese (Aragonés)
@@ -506,18 +524,26 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'hiderevision' => 'Kuzhat adweladennoù da viken',
+	'right-oversight' => 'Gwelet un adweladenn kuzhet a-raok',
 	'right-hiderevision' => "Kuzhat kemmoù d'ar verourien",
+	'hiderevision-prompt' => 'Niverenn an adweladenn da dennañ :',
 	'hiderevision-continue' => "Kenderc'hel",
 	'hiderevision-reason' => 'Abeg (enrollet e vo en un doare distag) :',
 	'hiderevision-submit' => 'Kuzhat ar roadennoù-mañ da vat',
 	'hiderevision-tab' => 'Kuzat an adweladenn',
 	'hiderevision-link' => 'degasadennoù kuzhet an implijer',
+	'hiderevision-noreason' => "Rankout a reoc'h menegiñ an abeg resis evit an dilamadur-se.",
 	'hiderevision-status' => 'Adweladenn $1 : $2',
+	'hiderevision-success' => 'Diellaouet ha dilammet eo bet.',
 	'hiderevision-error-missing' => "N'eo ket bet kavet er bank roadennoù.",
+	'hiderevision-archive-status' => 'Adweladennoù dilammet eus $1 : $2',
+	'oversight-log-hiderev' => "en deus dilemet ur c'hemm eus $1",
 	'oversight' => 'Oversight',
 	'oversight-view' => 'munudoù',
 	'oversight-prev' => 'Adweladenn ziwezhañ en a-raok',
 	'oversight-hidden' => 'Adweladennoù kuzhet',
+	'oversight-legend' => 'Marilh klaskoù ar stummoù kuzhet',
 	'oversight-offender' => 'Aozer an adweladenn :',
 );
 
@@ -1021,7 +1047,7 @@ $messages['et'] = array(
 	'right-hiderevision' => 'Peita redaktsioone administraatorite eest',
 	'hiderevision-continue' => 'Jätka',
 	'hiderevision-submit' => 'Peida need andmed jäädavalt',
-	'hiderevision-link' => 'peidetud kaastööd',
+	'hiderevision-link' => 'peidetud kaastöö',
 	'hiderevision-norevisions' => 'Kustutatavad redaktsioonid on määramata.',
 	'hiderevision-noreason' => 'Eemaldamist tuleb põhjendada.',
 	'hiderevision-success' => 'Arhiveerimine ja kustutamine õnnestus.',
@@ -3167,6 +3193,40 @@ $messages['roa-tara'] = array(
 	'right-hiderevision' => "Scunne le revisiune pe l'amministrature",
 	'hiderevision-prompt' => 'Numere de revisione da luà:',
 	'hiderevision-continue' => 'Condinue',
+	'hiderevision-text' => "Sta funzione adda essere ausate''sulamende'' jndr'à le case seguende:
+* Date personale none approppriate
+*: ''indirizze postale, numere de telefone, codece fiscale, ecc.''
+
+'''Qualungue abbuse d'u sisteme comborte 'a perdite de le privilegge acquisite.'''
+
+Le eleminde scunnute sonde invisibbele pe tutte chidde sus a 'u site, ma esiste 'n'archivije de le revisiune scunnute e jè possibbele repristinà a mane da 'n'amministratore d'u database ce è fatte 'n'errore.",
+	'hiderevision-reason' => "Mutive (pe l'archivije riservate):",
+	'hiderevision-submit' => 'Scunne ste date pe sembre',
+	'hiderevision-tab' => "Scunne 'a revisione",
+	'hiderevision-link' => "scunne le condrebbute de l'utende",
+	'hiderevision-norevisions' => 'Nisciuna revisione specificate da scangellà.',
+	'hiderevision-noreason' => 'Tu a descrivere le mutive pe sta scangellazione.',
+	'hiderevision-status' => 'Revisione $1: $2',
+	'hiderevision-success' => 'Archiviate e scangellate correttamende.',
+	'hiderevision-error-missing' => "Ninde acchiate jndr'à 'u database.",
+	'hiderevision-error-current' => "Non ge se pò scangellà l'urteme cangiamende d'a pàgene.<br />
+Repristene stu cangiamende apprime.",
+	'hiderevision-error-delete' => 'Non ge se pò archivià, no è ca stavane scangellazziune apprime?',
+	'hiderevision-archive-status' => 'Revisione scangellate da $1: $2',
+	'oversight-nodiff' => "'Mbossibbele fà vedè le cangiaminde purcé non ge sonde presende revisiune precedende d'a pàgene. Pò essere ca:
+*'A pàgene ha state scangellate
+*Sta revisione scunnute ere 'a prime pe sta pàgene",
+	'oversight-log-hiderev' => "luate 'nu cangiamende da $1",
+	'oversight' => 'Oversight',
+	'oversight-view' => 'dettaglie',
+	'oversight-difference' => "(Differenze 'mbrà 'a revisione remanende precedende)",
+	'oversight-prev' => 'Urtema revisione precedende',
+	'oversight-hidden' => 'Revisiona scunnute',
+	'oversight-header' => "Sotte stè 'n'elenghe de revisiune scunnute pe sembre recendemende da 'a vista pubbleche.<br />
+Relassanne sta 'mbormazione se pò avè 'na perdita definitive de le privilegge de Oversight.",
+	'oversight-legend' => "Cirche jndr'à l'archivije de le revisiune scunnute",
+	'oversight-oversighter' => 'Oversighter:',
+	'oversight-offender' => "Autore d'a revisione:",
 );
 
 /** Russian (Русский)
@@ -3792,6 +3852,10 @@ Ehtimolan:
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'hiderevision' => 'Wersiýalary hemişelik gizle',
+	'group-oversight' => 'Esewançylar',
+	'group-oversight-member' => 'esewan',
+	'grouppage-oversight' => '{{ns:project}}:Esewan',
 	'hiderevision-continue' => 'Dowam et',
 	'hiderevision-submit' => 'Bu maglumaty möhletsiz gizle',
 	'hiderevision-tab' => 'Wersiýany gizle',
@@ -3802,8 +3866,12 @@ $messages['tk'] = array(
 	'hiderevision-success' => 'Şowly arhiwlendi we öçürildi.',
 	'hiderevision-error-missing' => 'Maglumat bazasynda tapylmady',
 	'hiderevision-error-delete' => 'Arhiwläp bolmady; ozal öçürilen bolaýmasyn?',
+	'oversight' => 'Esewan',
 	'oversight-view' => 'jikme-jiklikler',
 	'oversight-hidden' => 'Gizlenilen wersiýa',
+	'oversight-header' => 'Aşakda ýaňy-ýakynda köpçülikden hemişelik gizlenilen wersiýalaryň sanawy görkezilýär.
+Bu maglumaty ýaýratmak Esewan hukuklaryny hemişelik ýitirmeklige getirip biler.',
+	'oversight-oversighter' => 'Esewançy:',
 	'oversight-offender' => 'Wersiýanyň awtory:',
 );
 

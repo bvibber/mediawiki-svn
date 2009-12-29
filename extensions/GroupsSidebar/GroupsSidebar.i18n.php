@@ -39,6 +39,13 @@ $messages['bs'] = array(
 	'groupssidebar-desc' => 'Ovo proširenje omoguće administratorima stranice da uključe elemente sa alatne trake za određene grupe korisnika',
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'groupssidebar-desc' => 'Diese Erweiterung ermöglicht es Seitenadministratoren, für bestimmte Benutzer Elemente zur Seitenleiste hinzuzufügen',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -144,6 +151,13 @@ $messages['oc'] = array(
 	'groupssidebar-desc' => "Aquesta extension permet als administrators del site d'enclure d'elements dins la barra laterala en foncion dels gropes de l'utilizaire",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'groupssidebar-desc' => 'Rozszerzenie umożliwia administratorom witryny załączanie informacji w nagłówku dla wybranych grup użytkowników',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  */
@@ -170,5 +184,12 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'groupssidebar-desc' => 'Это расширение позволяет администраторам сайта включать элементы боковой панели для определённых групп участников',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'groupssidebar-desc' => 'Bu eklenti, site hizmetlilerinin spesifik kullanıcı grupları için kenar çubuğu bileşenlerini etkinleştirmesini sağlar',
 );
 

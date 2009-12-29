@@ -1452,6 +1452,13 @@ $messages['tg-latn'] = array(
 	'spamdifftool_submit_buttom' => 'Irsol',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'spamdifftool_submit_buttom' => 'Tabşyr',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

@@ -79,6 +79,16 @@ $messages['bs'] = array(
 	'replaceset-error-regexbadmodifier' => "Modifikator regularnih izraza '$1' nije valjan.",
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'replaceset-desc' => 'Fügt die Parserfunktion <nowiki>{{#replaceset}}</nowiki> hinzu, um Textabschnitte mit formatierten Daten zu ersetzen',
+	'replaceset-error-calllimit' => 'Das Abruflimit für ReplaceSet wurde erreicht.',
+	'replaceset-error-regexnoend' => 'Im Regex-Muster „$1“ fehlt der Endbegrenzer „$2“',
+	'replaceset-error-regexbadmodifier' => 'Der Regex-Modifier „$1“ ist nicht gültig.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

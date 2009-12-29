@@ -260,6 +260,8 @@ $messages['es'] = array(
 $messages['et'] = array(
 	'layouts_title' => 'Loo lehekülg',
 	'layouts_continue' => 'Jätka',
+	'layouts_choosecategory' => 'Vali $1 jaoks kategooria:',
+	'layouts_unknown' => 'Tundmatu',
 );
 
 /** Basque (Euskara)
@@ -842,8 +844,10 @@ $messages['tl'] = array(
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'layouts-desc' => 'Sayfalar için ortak bir yapı aşılama amacıyla yeni oluşturulmuş sayfalara değiştirilebilir "tasarımlar" ekler',
 	'layouts_title' => 'Bir sayfa oluştur',
 	'layouts_chooselayout' => '$1 için bir düzen seçin:',
 	'layouts_nolayout' => 'Düzen yok',

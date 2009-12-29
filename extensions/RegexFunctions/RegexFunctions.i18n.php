@@ -334,6 +334,13 @@ $messages['tl'] = array(
 	'regexfunctions-desc' => 'Mga tungkuling pambanghay ng pangkaraniwang pagsasaad',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'regexfunctions-desc' => 'Kurallı ifade ayrıştırıcı fonksiyonları',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

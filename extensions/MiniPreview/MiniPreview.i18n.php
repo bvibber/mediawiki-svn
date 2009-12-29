@@ -233,14 +233,25 @@ Por ejemplo, "* PD-" No mostrará todas las categorías que comiencen con "PD-",
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Nike
  * @author Vililikku
+ * @author ZeiP
  */
 $messages['fi'] = array(
+	'minipreview-desc' => 'MiniPreview näyttää kuvan vieressä pieniä esikatseluita muista medioista, jotka ovat samoissa luokissa tai samoilla sivuilla.',
 	'minipreview-files_in_category' => "Tämä luokka sisältää '''$1''' {{PLURAL:$1|tiedoston|tiedostoa}}.",
 	'minipreview-files_in_gallery' => "Tämä galleria sisältää '''$1''' {{PLURAL:$1|tiedoston|tiedostoa}}.",
 	'minipreview-no_more_files_here' => 'Ei enempää tiedostoja tässä suunnassa.',
 	'minipreview-no_category_gallery' => 'Luokkia tai gallerioita ei ole.',
+	'minipreview-ignore_categories' => 'Alla on lista luokkanimistä tai nimien aluista.
+MiniPreview ei näytä näitä luokkia.
+Esimerkiksi ”* PD-” ei näytä luokkia jotka alkavat merkkijonolla ”PD-”, esimerkiksi ”PD-vanhat”.
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
 );
 
 /** French (Français)

@@ -1978,14 +1978,16 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'badimages' => 'Көҥүллэммэт ойуулар испииһэктэрэ',
+	'badimages-desc' => 'MediaWiki бырайыакка көҥүллэммэт ойуулар тиһиктэрин кытта үлэни тупсарар',
 	'badimages-add-btn' => 'Эбэн биэр',
 	'badimages-added' => 'Испииһэккэ $1 эбилиннэ.',
-	'badimages-count' => "'''$1''' ойуу көҥүллэммэт ойуулар испииһэктэригэр киирэ сылдьар.",
+	'badimages-count' => "Көҥүллэммэт ойуулар тиһиктэригэр '''$1''' {{PLURAL:$1|соҕотох ойуу|ойуу}} киирэ сылдьар.",
 	'badimages-name' => 'Аата:',
 	'badimages-not-added' => 'Ойуу кыайан киирбэтэ.',
 	'badimages-not-removed' => 'Ойуу кыайан сотуллубата.',
 	'badimages-reason' => 'Быһаарыыта:',
 	'badimages-remove' => '(соторго)',
+	'badimages-remove-btn' => 'Соторго',
 	'badimages-remove-confirm' => 'Испииһэктэн маны: $1 соторгун бигэргэт:',
 	'badimages-removed' => '$1 испииһэктэн сотулунна.',
 	'badimages-subheading' => 'Билигин бааллар',
@@ -1994,6 +1996,8 @@ $messages['sah'] = array(
 	'badimages-log-header' => 'Бу билэ [[{{MediaWiki:Badimages-page}}|көҥүллэммэт ойуулар испииһэктэрин]] уларыйыытын көрдөрөр.',
 	'badimages-log-add' => '[[$1]] көҥүллэммэт ойуулар испииһэктэригэр киирдэ',
 	'badimages-log-remove' => '[[$1]] көҥүллэммэт ойуулар испииһэктэриттэн сотулунна',
+	'badimages-page' => '{{ns:help}}:Көҥүллэммэт ойуулар тиһиктэрэ',
+	'right-badimages' => 'Хара сирэйдэр тиһиктэрин саҥардыы',
 );
 
 /** Sicilian (Sicilianu)
@@ -2353,6 +2357,15 @@ $messages['th'] = array(
 	'badimages-remove-btn' => 'เอาออก',
 	'badimages-log-name' => 'รายการภาพที่เสีย',
 	'badimages-page' => '{{ns:help}}:รายการภาพที่เสีย',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'badimages-name' => 'At:',
+	'badimages-remove' => '(aýyr)',
+	'badimages-remove-btn' => 'Aýyr',
 );
 
 /** Tagalog (Tagalog)

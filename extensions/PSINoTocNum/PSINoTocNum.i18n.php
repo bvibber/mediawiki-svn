@@ -364,6 +364,13 @@ $messages['tl'] = array(
 	'psinotocnum-desc' => 'Bagong masalamangkang salita na "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'psinotocnum-desc' => 'Yeni sihirli kelime "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

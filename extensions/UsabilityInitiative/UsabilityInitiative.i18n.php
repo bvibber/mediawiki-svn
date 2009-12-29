@@ -117,6 +117,7 @@ $messages['cs'] = array(
  */
 $messages['cy'] = array(
 	'usabilityinitiative' => 'Cynllun Defnyddioldeb',
+	'prefs-experimental' => 'Nodweddion arbrofol',
 );
 
 /** Danish (Dansk)

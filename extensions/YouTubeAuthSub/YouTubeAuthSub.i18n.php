@@ -628,6 +628,7 @@ Bitte haben Sie Geduld.',
  * @author Mirzali
  */
 $messages['diq'] = array(
+	'youtubeauthsub_description' => 'Tarif',
 	'youtubeauthsub_category' => 'Kategoriye',
 	'youtubeauthsub_uploadbutton' => 'Bar ke',
 );
@@ -2665,7 +2666,7 @@ $messages['sli'] = array(
 	'youtubeauthsub_description' => 'Beschreibung',
 	'youtubeauthsub_password' => 'YouTube-Passwurt',
 	'youtubeauthsub_username' => 'YouTube-Benutzernoame',
-	'youtubeauthsub_category' => 'Kategorie',
+	'youtubeauthsub_category' => 'Heetgruppe',
 );
 
 /** Albanian (Shqip)
@@ -3107,6 +3108,18 @@ $messages['th'] = array(
 	'youtubeauthsub_jserror_nokeywords' => 'กรุณาใส่คำสำคัญอย่างน้อย 1 คำ หรือ มากกว่า',
 	'youtubeauthsub_jserror_notitle' => 'กรุณาใส่ชื่อสำหรับคลิปวิดีโอด้วย',
 	'youtubeauthsub_jserror_nodesc' => 'กรุณาใส่คำอธิบายสำหรับคลิปวิดีโอนี้ด้วย',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'youtubeauthsub_description' => 'Düşündiriş',
+	'youtubeauthsub_password' => 'YouTube paroly',
+	'youtubeauthsub_username' => 'YouTube ulanyjy ady',
+	'youtubeauthsub_category' => 'Kategoriýa',
+	'youtubeauthsub_submit' => 'Tabşyr',
+	'youtubeauthsub_uploadbutton' => 'Ýükle',
 );
 
 /** Tagalog (Tagalog)

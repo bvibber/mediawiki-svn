@@ -221,6 +221,7 @@ $messages['es'] = array(
 	'mostrevisors' => 'Páginas con más revisores',
 	'mostrevisors-limitlinks' => 'Mostrar hasta $1 páginas',
 	'mostrevisors-namespace' => 'Espacio de nombres:',
+	'mostrevisors-showing' => 'Listando {{PLURAL:$1|página|$1 páginas}}:',
 	'mostrevisors-submit' => 'Ir',
 	'mostrevisors-showredir' => 'Mostrar página de redirección',
 	'mostrevisors-hideredir' => 'Esconder páginas de redirección',
@@ -338,6 +339,7 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'mostrevisors' => 'הדפים בעלי מספר הבודקים הגבוה ביותר',
+	'mostrevisors-limitlinks' => 'הצגת עד $1 דפים',
 	'mostrevisors-namespace' => 'מרחב שם:',
 	'mostrevisors-none' => 'לא נמצאו רשומות.',
 	'mostrevisors-showing' => 'הצגת {{PLURAL:$1|דף אחד|$1 דפים}}:',
@@ -749,6 +751,13 @@ $messages['te'] = array(
  */
 $messages['th'] = array(
 	'mostrevisors-namespace' => 'เนมสเปซ:',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'mostrevisors-submit' => 'Git',
 );
 
 /** Turkish (Türkçe)

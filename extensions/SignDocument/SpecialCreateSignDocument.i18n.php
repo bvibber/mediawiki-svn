@@ -307,11 +307,17 @@ Ne možete ga potpisati po drugi put.',
 /** Catalan (Català)
  * @author Loupeter
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
 	'createsigndoc-pagename' => 'Pàgina:',
+	'createsigndoc-email' => 'Correu electrònic:',
+	'createsigndoc-phone' => 'Telèfon:',
+	'createsigndoc-minage' => 'Edat mínima:',
+	'createsigndoc-introtext' => 'Introducció:',
 	'createsigndoc-hidden' => 'Amagat',
 	'createsigndoc-create' => 'Crear',
+	'createsigndoc-error-generic' => 'Error: $1',
 );
 
 /** Corsican (Corsu) */
@@ -1749,6 +1755,14 @@ $messages['tg-latn'] = array(
  */
 $messages['th'] = array(
 	'createsigndoc-email' => 'อีเมล:',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'createsigndoc-pagename' => 'Sahypa:',
+	'createsigndoc-create' => 'Döret',
 );
 
 /** Tagalog (Tagalog)

@@ -161,6 +161,8 @@ $messages['de'] = array(
 Bitte lege ein Skript fest, dessen Titel 255 Zeichen nicht übersteigt.',
 	'plotters-excessively-long-preprocessorname' => 'Der Name des Präprozessors ist zu lang.
 Bitte lege einen Präprozessor fest, dessen Name 255 Zeichen nicht übersteigt.',
+	'plotters-excessively-long-name' => 'Der Entwurfsname ist zu lang. 
+Bitte definiere einen Entwurfsnamen, der aus höchstens 255 Zeichen besteht.',
 	'plotters-no-data' => 'Es wurden keine Daten angegeben.',
 	'plotters-invalid-renderer' => 'Es wurde ein ungültiger Renderer ausgewählt.',
 	'plotters-errors' => 'Plotter{{PLURAL:$1|fehler|fehler}}:',
@@ -236,6 +238,7 @@ Por favor define un preprocesador, cuyo nombre tenga 255 caracteres de longitud 
  * @author Crt
  */
 $messages['fi'] = array(
+	'plotters-desc' => 'Mahdollistaa käyttäjille mukautetun JavaScriptin käytön jsplot-elementeissä.',
 	'plotters-uses' => 'Käyttää',
 	'plotters-missing-script' => 'Mitään skriptiä ei määritetty.',
 	'plotters-excessively-long-scriptname' => 'Skriptin nimi on liian pitkä.

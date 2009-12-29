@@ -259,6 +259,16 @@ $messages['es'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'filelist' => 'Failide loetelu',
+	'filelist-show-list' => 'Näita loetelu',
+	'filelist-show-gallery' => 'Näita galeriid',
+	'filelist-image-desc' => 'kirjeldus',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */
@@ -842,6 +852,13 @@ $messages['tg-latn'] = array(
 	'filelist-show-list' => 'Namoişi fehrist',
 	'filelist-show-gallery' => 'Namoişi nigoriston',
 	'filelist-image-desc' => 'tavsif',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'filelist-image-desc' => 'düşündiriş',
 );
 
 /** Tagalog (Tagalog)

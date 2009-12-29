@@ -36,9 +36,16 @@ $messages['qqq'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Naudefj
  * @author SPQRobin
  */
 $messages['af'] = array(
+	'imagemap_no_image' => "Fout: moet 'n beeld op die eerste lyn spesifiseer",
+	'imagemap_invalid_image' => 'Fout: beeld is ongeldig of bestaan nie',
+	'imagemap_bad_image' => 'Fout: beeld is op die swartlys vir hierdie bladsy',
+	'imagemap_no_link' => 'Fout: geen geldige skakel was aan die einde van lyn $1 gevind nie',
+	'imagemap_invalid_title' => 'Fout: ongeldige titel in skakel op lyn $1',
+	'imagemap_missing_coord' => 'Fout: nie genoeg koördinate vir vorm op lyn $1',
 	'imagemap_description' => 'Beeldinligting',
 );
 
@@ -1321,7 +1328,19 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'imagemap_desc' => "Permette le mappe de immaggine cazzabbele late cliende ausanne 'u tag <tt><nowiki><imagemap></nowiki></tt>",
+	'imagemap_no_image' => "Errore: a specifià 'n'immaggine jndr'à prima righe",
+	'imagemap_invalid_image' => "Errore: l'immaggine jè invalide o non g'esiste",
+	'imagemap_bad_image' => "Errore: l'immaggine sus a sta pàgene jè jndr'à lista gnore",
+	'imagemap_no_link' => "Errore: nisciune collegamende valide ha state acchiate a fine d'a linèe $1",
+	'imagemap_invalid_title' => "Errore: titele invalide jndr'à 'u collegamende a 'a linèe $1",
+	'imagemap_missing_coord' => "Errore: non ge stonne abbastanze coordinate pa figure a 'a linèe $1",
+	'imagemap_unrecognised_shape' => "Errore: figure none recanusciute a 'a linèe $1, ogne linèe adda accumenzà cu une de quiste: default, rect, circle o poly",
+	'imagemap_no_areas' => "Errore: almene 'na specifiche de arèe adda essere date",
+	'imagemap_invalid_coord' => "Errore: coordinate invalide a 'a linèe $1, adda essere 'nu numere",
+	'imagemap_invalid_desc' => "Errore: specificazione d'a descrizione (desc) invalide, adda essere une de <tt>$1</tt>",
 	'imagemap_description' => "Sus a st'immaggine",
+	'imagemap_poly_odd' => "Errore: acchiate 'nu poligone cu numere dispare de coordinate sus a linèe $1",
 );
 
 /** Russian (Русский)
@@ -1572,7 +1591,19 @@ $messages['tg-latn'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'imagemap_desc' => '<tt><nowiki><imagemap></nowiki></tt> tegini ulanyp, müşderi tarapyndan tyklanyp boljak surat kartalaryna rugsat berýär',
+	'imagemap_no_image' => 'Säwlik: birinji setirde bir surat görkezmeli',
+	'imagemap_invalid_image' => 'Säwlik: surat nädogry ýa-da ýok',
+	'imagemap_bad_image' => 'Säwlik: surat bu sahypada gara sanawda',
+	'imagemap_no_link' => 'Säwlik: $1 setiriň ahyrynda dogry çykgyt tapylmady',
+	'imagemap_invalid_title' => 'Säwlik: $1 setirdäki çykgytda nädogry at',
+	'imagemap_missing_coord' => 'Säwlik: $1 setirde surat üçin ýeterlik koordinata ýok',
+	'imagemap_unrecognised_shape' => 'Säwlik: $1 setirde ykrar edilmedik şekil, her setir şulardan biri bilen başlamaly: default, rect, cirle ýa-da poly',
+	'imagemap_no_areas' => 'Säwlik: iň bolmanda bir sany meýdan spesifikasiýasy berilmelidir',
+	'imagemap_invalid_coord' => 'Säwlik: $1 setirde nädogry koordinata, san bolmaly',
+	'imagemap_invalid_desc' => 'Säwlik: nädogry desc bahasy, şulardan biri bolmaly: <tt>$1</tt>',
 	'imagemap_description' => 'Bu surat hakda',
+	'imagemap_poly_odd' => 'Säwlik: $1 setirde täk sanly koordinata eýe poly tapyldy',
 );
 
 /** Tagalog (Tagalog)

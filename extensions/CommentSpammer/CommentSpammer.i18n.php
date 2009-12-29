@@ -572,6 +572,13 @@ $messages['ru'] = array(
 	'cspammer-log-page' => 'Журнал спам-комментариев',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'cspammer-log-page' => 'Спам-комментарийдар сурунааллара',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -182,11 +182,22 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'invite-logpage' => 'Marilh ar pedadennoù',
+	'invite-logpagetext' => "Setu ur marilh eus an implijerien o pediñ implijerien all evit implijout an arc'hweladur eus meziantoù disheñvel",
 	'invite-logentry' => "pedet en deus $1 da implijout arc'hweladur <i>$2</i>.",
+	'invitations' => "Merañ pedadennoù an arc'hweladurioù meziant",
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Ur bedadenn|$1 pedadenn}} posupl a zo)',
+	'invitations-feature-pagetitle' => 'Merañ ar bedadenn - $1',
+	'invitations-feature-access' => 'Er mare-mañ ho peus ar moned evit implijout <i>$1</i>.',
+	'invitations-feature-numleft' => "{{PLURAL:$2|Ur bedadenn|<b>$1</b> pedadenn diwar $2 pedadenn}} ho peus c'hoazh.",
+	'invitations-feature-noneleft' => "Implijet ho peus o holl pedadennoù aotreet evit an arc'hweladur-mañ",
+	'invitations-feature-noneyet' => "N'ho peus ket resevet ho pedadennoù evit an arc'hweladur-mañ.",
 	'invitations-feature-notallowed' => "Ne c'helloc'h ket dont tre evit implijout <i>$1</i>.",
 	'invitations-inviteform-title' => 'Pediñ un implijer da implijout $1',
 	'invitations-inviteform-username' => 'Implijer da bediñ',
 	'invitations-inviteform-submit' => 'Pediñ',
+	'invitations-error-baduser' => "War a seblant n'ez eus ket eus an implijer ho peus meneget.",
+	'invitations-error-alreadyinvited' => "An implijer ho peus meneget en deus dija ar moned d'an arc'hweladur-mañ !",
+	'invitations-invite-success' => "Pedet ho peus $1 evit implijout an arc'hweladur-mañ !",
 );
 
 /** Bosnian (Bosanski)

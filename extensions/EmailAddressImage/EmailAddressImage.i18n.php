@@ -394,6 +394,13 @@ $messages['ru'] = array(
 	'emailaddressimage-desc' => 'Добавляет <tt>&lt;email&gt;</tt> чтобы показывать адреса электронной почты в виде изображений',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'emailaddressimage-desc' => 'Электроннай почта аадырыстарын ойуу курджук таһаарар <tt>&lt;email&gt;</tt> тиэги эбэр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

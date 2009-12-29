@@ -1999,19 +1999,26 @@ $messages['ca'] = array(
 	'ow_transaction_remove' => 'Suprimeix',
 	'ow_transaction_summary' => 'Resum',
 	'ow_dm_OK' => 'OK',
+	'ow_Annotation' => 'Anotació',
 	'ow_Class' => 'Classe',
+	'ow_ClassAttributeAttribute' => 'Atribut',
 	'ow_ClassAttributeLevel' => 'Nivell',
 	'ow_ClassAttributeType' => 'Tipus',
 	'ow_Definition' => 'Definició',
 	'ow_Expression' => 'Expressió',
+	'ow_Expressions' => 'Expressions',
 	'ow_Language' => 'Idioma',
+	'ow_LevelAnnotation' => 'Anotació',
 	'ow_OptionAttributeOption' => 'Opció',
 	'ow_OptionAttributeOptions' => 'Opcions',
+	'ow_PopupAnnotation' => 'Anotació',
 	'ow_Relations' => 'Relacions',
 	'ow_Remove' => 'Elimina',
 	'ow_Synonyms' => 'Sinònims',
 	'ow_SynonymsAndTranslations' => 'Sinònims i traduccions',
+	'ow_Source' => 'Font',
 	'ow_Text' => 'Text',
+	'ow_TextAttribute' => 'Propietat',
 	'ow_Time' => 'Hora',
 	'ow_TranslatedTextAttribute' => 'Propietat',
 	'ow_TranslatedText' => 'Text traduït',
@@ -3478,6 +3485,7 @@ Contacta por favor el operador o el administrador del servicio.',
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  * @author Silvar
  */
 $messages['et'] = array(
@@ -3512,7 +3520,7 @@ $messages['et'] = array(
 	'ow_ClassAttributes' => 'Klassi tunnused',
 	'ow_ClassAttributeLevel' => 'Tase',
 	'ow_ClassAttributeType' => 'Tüüp',
-	'ow_ClassMembership' => 'Klassi liikmelisus',
+	'ow_ClassMembership' => 'Klassi liikmesus',
 	'ow_Spelling' => 'Õigekiri',
 	'ow_Synonyms' => 'Sünonüümid',
 	'ow_SynonymsAndTranslations' => 'Sünonüümid ja tõlked',
@@ -11159,7 +11167,7 @@ $messages['sli'] = array(
 	'importlangnames' => 'Wikidata: Sproachanoama importiera',
 	'importlangnames_title' => 'Sproachanoama importiera',
 	'datasearch_language' => 'Sproache:',
-	'datasearch_search_text' => 'Suchtext:',
+	'datasearch_search_text' => 'Sichtext:',
 );
 
 /** Somali (Soomaaliga)
@@ -12431,10 +12439,23 @@ $messages['th'] = array(
 );
 
 /** Turkmen (Türkmençe)
+ * @author Hanberke
  * @author Runningfridgesrule
  */
 $messages['tk'] = array(
+	'datasearch_language' => 'Dil:',
+	'ow_exporttsv_languages' => 'Diller:',
+	'ow_save' => 'Ýazdyr',
 	'ow_history' => 'Geçmiş',
+	'ow_transaction_user' => 'Ulanyjy ady:',
+	'ow_transaction_remove' => 'Aýyr',
+	'ow_Language' => 'Dil',
+	'ow_Remove' => 'Aýyr',
+	'ow_Text' => 'Tekst',
+	'ow_TranslatedTextAttributeValue' => 'Tekst',
+	'ow_Link' => 'Çykgyt',
+	'ow_User' => 'Ulanyjy',
+	'ow_create' => 'Döret',
 );
 
 /** Tagalog (Tagalog)

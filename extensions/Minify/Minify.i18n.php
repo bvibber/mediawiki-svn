@@ -265,6 +265,13 @@ $messages['sv'] = array(
 	'minify-desc' => 'Minimerar CSS och JavaScript i utdata från action=raw',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'minify-desc' => 'action=way kaynağından alınan CSS ve JavaScript çıktılarını küçültür',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -379,6 +379,13 @@ $messages['tl'] = array(
 	'pnghandler-desc' => "Muling bigyan ng sukat ang mga PNG sa pamamagitan ng paggamit ng ''pngds''",
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'pnghandler-desc' => "Pngds kullanarak PNG'lerin boyutunu düzenler",
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

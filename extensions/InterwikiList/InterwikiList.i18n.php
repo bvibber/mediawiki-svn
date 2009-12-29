@@ -576,7 +576,12 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'interwikilist' => 'Elenghe de le inderuicchi',
+	'interwikilist-desc' => "Aggiunge 'na [[Special:Interwikilist|pàgena speciale]] pe vedè le collegaminde a le inderuicchi disponibbele",
+	'interwikilist-linkname' => 'Collegamende de le inderuicchi',
 	'interwikilist-target' => 'URL de destinazione',
+	'interwikilist-filter' => 'Elenghe de le filtre',
+	'interwikilist-prefix' => 'Prefisse inderuicchi:',
 );
 
 /** Russian (Русский)

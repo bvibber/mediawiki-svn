@@ -688,7 +688,20 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'sign-realname' => 'Nom:',
+	'sign-address' => 'Adreça:',
+	'sign-city' => 'Ciutat:',
+	'sign-state' => 'Estat:',
+	'sign-zip' => 'Codi postal:',
+	'sign-country' => 'País:',
+	'sign-phone' => 'Telèfon:',
+	'sign-bday' => 'Edat:',
+	'sign-email' => 'Correu electrònic:',
+	'sign-viewfield-timestamp' => 'Fus horari',
 	'sign-viewfield-realname' => 'Nom',
+	'sign-viewfield-address' => 'Adreça',
+	'sign-viewfield-city' => 'Ciutat',
+	'sign-viewfield-state' => 'Estat',
+	'sign-viewfield-country' => 'País',
 	'sign-viewfield-ip' => 'Adreça IP',
 	'sign-viewfield-email' => 'Correu electrònic',
 	'sign-viewfield-options' => 'Opcions',
@@ -4370,6 +4383,8 @@ $messages['th'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'sign-realname' => 'At:',
+	'sign-viewfield-realname' => 'At',
 	'sign-viewfield-reviewedby' => 'Gözden geçiriji',
 );
 

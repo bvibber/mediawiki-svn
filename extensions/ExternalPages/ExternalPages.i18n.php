@@ -217,6 +217,9 @@ $messages['el'] = array(
 	'externalpages-no-project' => 'Δεν διευκρινίζεται κάποιο εγχείρημα',
 	'externalpages-bad-page' => 'Λανθασμένη σελίδα',
 	'externalpages-no-page' => 'Δεν διευκρινίζεται κάποια σελίδα',
+	'externalpages-error-generic' => 'Αντιμετωπίστηκε σφάλμα',
+	'externalpages-bad-url' => 'Αποτυχία ανάκτησης του URL',
+	'externalpages-bad-url-data' => 'Αποτυχία ανάκτησης περιεχομένων σελίδας',
 );
 
 /** Esperanto (Esperanto)
@@ -224,7 +227,16 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'externalpages' => 'Eksteraj Paĝoj',
+	'externalpages-desc' => 'Trovas kaj montras paĝojn de eksteraj WMF-retejoj',
+	'externalpages-bad-year' => 'Malĝusta jaro estis enigita',
+	'externalpages-bad-language' => 'Malĝusta lingvo eniĝis',
+	'externalpages-bad-project' => 'Malĝusta projekto estis enigita',
+	'externalpages-no-project' => 'Neniu projekto estis enigita',
+	'externalpages-bad-page' => 'Malĝusta paĝo specifiĝis',
+	'externalpages-no-page' => 'Neniu paĝo estis enigita',
 	'externalpages-error-generic' => 'Eraraj okazis',
+	'externalpages-bad-url' => 'Malsukcesis ricevi URL-on',
+	'externalpages-bad-url-data' => 'Malsukcesis ricevi paĝenhavon',
 );
 
 /** Spanish (Español)
@@ -273,6 +285,13 @@ $messages['fr'] = array(
 	'externalpages-error-generic' => 'Erreur rencontrée',
 	'externalpages-bad-url' => "Échec pour récupérer l'URL",
 	'externalpages-bad-url-data' => 'Échec pour récupérer les données de la page',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'externalpages' => 'Pâges de defôr',
 );
 
 /** Galician (Galego)
@@ -627,6 +646,14 @@ $messages['ro'] = array(
 	'externalpages-error-generic' => 'Eroare întâlnită',
 	'externalpages-bad-url' => 'Acţiune eşuată pentru a prelua URL',
 	'externalpages-bad-url-data' => 'Acţiune eşuată pentru a prelua conţinutul paginii',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'externalpages' => 'Pàggene esterne',
+	'externalpages-no-page' => 'Nisciuna pàgene specificate',
 );
 
 /** Russian (Русский)

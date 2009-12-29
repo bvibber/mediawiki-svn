@@ -514,9 +514,10 @@ $messages['sk'] = array(
 
 /** Lower Silesian (Schläsch)
  * @author Jonny84
+ * @author Schläsinger
  */
 $messages['sli'] = array(
-	'forcepreview' => 'Seite speichern (zuerst Vorschau anzeigen)',
+	'forcepreview' => 'Seyte speichern (zuerst Vurschau oazeiga)',
 	'forcepreview-desc' => 'Vorschau für unprivilegierte Benutzer erzwingen',
 	'right-forcepreviewexempt' => 'Speichern ohne Erzwingung der Vorschau',
 );

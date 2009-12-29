@@ -68,6 +68,13 @@ $messages['cs'] = array(
 	'geolite-desc' => 'Jednoduché přesměrování GeoIp',
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'geolite-desc' => 'Lightweight GeoIp-Umleitung',
+);
+
 /** Zazaki (Zazaki)
  * @author Xoser
  */
@@ -82,6 +89,13 @@ $messages['dsb'] = array(
 	'geolite-desc' => 'Dalejpósrědnjenje lažkego GeoIp',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'geolite-desc' => 'Malpeza Alidirektilo GeoIP',
+);
+
 /** Finnish (Suomi)
  * @author ZeiP
  */
@@ -94,6 +108,13 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'geolite-desc' => 'Redirection GeoIp légère',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'geolite-desc' => 'Redirèccion GeoIp legiére.',
 );
 
 /** Galician (Galego)

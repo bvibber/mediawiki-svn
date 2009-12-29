@@ -1307,6 +1307,13 @@ $messages['tg-latn'] = array(
 	'player-goto-file' => 'parvanda',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'player-goto-page' => 'Sahypa',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

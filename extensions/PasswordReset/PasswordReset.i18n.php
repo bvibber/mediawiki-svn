@@ -138,6 +138,13 @@ $messages['arz'] = array(
 	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:PasswordReset|صفحة خاصة]])',
 );
 
+/** Azerbaijani (Azərbaycan)
+ * @author Wertuose
+ */
+$messages['az'] = array(
+	'passwordreset-submit' => 'Parolu sıfırla',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -392,11 +399,12 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'passwordreset-invalidusername' => 'Vigane kasutajanimi',
 	'passwordreset-emptyusername' => 'Tühi kasutajanimi',
-	'passwordreset-nopassmatch' => 'Paroolid ei ühildu',
+	'passwordreset-nopassmatch' => 'Paroolid ei ühti',
 	'passwordreset-username' => 'Kasutajanimi:',
 	'passwordreset-newpass' => 'Uus parool:',
 	'passwordreset-confirmpass' => 'Kinnita parool:',
@@ -1541,6 +1549,13 @@ $messages['th'] = array(
 	'disabledusers' => 'ผู้ใช้ที่ถูกระงับ',
 	'disabledusers-summary' => 'นี่คือรายชื่อของผู้ใช้ที่ถูกระงับโดยการล้างรหัสผ่าน',
 	'right-passwordreset' => 'เปลี่ยนรหัสผ่านของผู้ใช้ ([[Special:PasswordReset|หน้าพิเศษ]])',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'passwordreset-username' => 'Ulanyjy ady:',
 );
 
 /** Tagalog (Tagalog)

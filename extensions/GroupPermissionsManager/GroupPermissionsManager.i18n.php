@@ -871,34 +871,59 @@ $messages['eu'] = array(
  * @author Nike
  * @author Silvonen
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'grouppermissions' => 'Hallitse ryhmien oikeuksia',
 	'sortpermissions' => 'Lajittele käyttöoikeudet',
 	'removeunusedgroups' => 'Poista käyttämättömät ryhmät',
+	'grouppermissions-desc' => 'Hallitse ryhmäoikeuksia [[Special:GroupPermissions|toimintosivun]] kautta',
+	'grouppermissions-desc2' => 'Laajennettu käyttöoikeusjärjestelmä',
+	'grouppermissions-desc3' => 'Mahdollistaa sisältötoiminteiden (välilehdet) mukauttamisen',
+	'grouppermissions-desc4' => 'Mahdollistaa elementtien lisäämisen työkalulaatikkoon',
+	'grouppermissions-desc-nsm' => 'Hallitse nimiavaruuksia toimintosivun kautta',
+	'grouppermissions-header' => 'Voit käyttää tätä sivua muuttaaksesi eri käyttäjäryhmien oikeuksia',
 	'grouppermissions-search' => 'Ryhmä',
 	'grouppermissions-dologin' => 'Kirjaudu sisään',
 	'grouppermissions-dosearch' => 'Siirry',
 	'grouppermissions-searchlabel' => 'Etsi ryhmää',
 	'grouppermissions-deletelabel' => 'Poista ryhmä',
+	'grouppermissions-error' => 'Tuntematon virhe on tapahtunut, käytä selaimesi takaisin-painiketta ja yritä uudestaan',
+	'grouppermissions-change' => 'Muuta ryhmäoikeuksia',
 	'grouppermissions-add' => 'Lisää ryhmä',
 	'grouppermissions-delete' => 'Poista ryhmä',
 	'grouppermissions-comment' => 'Kommentti',
 	'grouppermissions-addsuccess' => '$1 lisättiin',
 	'grouppermissions-deletesuccess' => '$1 poistettiin',
+	'grouppermissions-changesuccess' => 'Oikeudet ryhmälle $1 on onnistuneesti muutettu',
 	'grouppermissions-true' => 'Kyllä',
 	'grouppermissions-false' => 'Ei',
 	'grouppermissions-never' => 'Ei koskaan',
+	'grouppermissions-nooldrev' => 'Virhe yrittäessä arkistoida nykyistä asetustiedostoa. Arkistoa ei tehdä',
 	'grouppermissions-sort-read' => 'Lukeminen',
 	'grouppermissions-sort-edit' => 'Muokkaaminen',
+	'grouppermissions-sort-manage' => 'Hallinta',
+	'grouppermissions-sort-admin' => 'Ylläpito',
+	'grouppermissions-sort-tech' => 'Tekninen',
+	'grouppermissions-sort-misc' => 'Sekalainen',
 	'grouppermissions-log-add' => 'lisätty ryhmä ”$2”',
+	'grouppermissions-log-change' => 'muutti ryhmän ”$2” oikeuksia',
 	'grouppermissions-log-delete' => 'poistettu ryhmä ”$2”',
+	'grouppermissions-log-name' => 'Ryhmäoikeusloki',
+	'grouppermissions-log-header' => 'Tämä sivu seuraa muutoksia käyttäjäryhmien oikeuksiin.',
 	'grouppermissions-needjs' => "'''Varoitus:''' JavaScript on suljettu selaimestasi. Jotkin ominaisuudet eivät saata toimia!",
+	'grouppermissions-sp-header' => 'Voit käyttää tätä sivua hallitaksesi oikeuksien lajittelua ja lisätäksesi uusia oikeuksia. Pidä hiiren kursoria oikeuden päällä lukeaksesi sen kuvauksen',
+	'grouppermissions-sp-sort' => 'Lajittele käyttöoikeudet',
 	'grouppermissions-sp-save' => 'Tallenna',
+	'grouppermissions-sp-success' => 'Käyttöoikeudet on lajiteltu onnistuneesti',
 	'grouppermissions-sp-addtype' => 'Lisää lajittelutyyppi',
 	'grouppermissions-sp-addperm' => 'Lisää käyttöoikeus',
 	'grouppermissions-sp-remove' => 'poista',
+	'grouppermissions-sp-deltype' => 'Poista lajittelutyyppi',
+	'grouppermissions-rug-header' => 'Voit käyttää tätä sivua poistaaksesi käyttäjät käyttämättömistä (poistetuista) ryhmistä.',
+	'grouppermissions-rug-success' => 'Poistettu onnistuneesti käyttäjät käyttämättömistä ryhmistä!',
 	'grouppermissions-rug-confirm' => 'Poista käyttäjiä käyttämättömistä ryhmistä',
+	'right-grouppermissions' => 'Hallita ryhmien käyttöoikeuksia',
 	'right-viewsource' => 'Katsoa suojattujen sivujen wikikoodeja',
 	'right-raw' => 'Katsoa jäsentämättömiä sivuja',
 	'right-render' => 'Katsoa jäsennettyjä sivuja ilman valikkoa',
@@ -3034,6 +3059,15 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'grouppermissions-never' => 'Nunka',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'grouppermissions-dosearch' => 'Git',
+	'grouppermissions-sp-save' => 'Ýazdyr',
+	'grouppermissions-sp-remove' => 'aýyr',
 );
 
 /** Tagalog (Tagalog)

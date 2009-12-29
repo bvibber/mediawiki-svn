@@ -1421,6 +1421,13 @@ $messages['th'] = array(
 	'countedits-ok' => 'ตกลง',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'countedits-username' => 'Ulanyjy ady:',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

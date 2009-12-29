@@ -613,9 +613,11 @@ $messages['eu'] = array(
  * @author Crt
  * @author Silvonen
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'todo' => 'Tehtävälista',
+	'todo-desc' => 'Kokeellinen laajennus henkilökohtaisille [[Special:Todo|tehtävälistoille]]',
 	'todo-tab' => 'tehtävät',
 	'todo-new-queue' => 'uusi',
 	'todo-mail-subject' => 'Suoritettu tehtävä $1:n muistilistalta',
@@ -641,6 +643,7 @@ $4',
 	'todo-new-item' => 'Uusi tehtävä',
 	'todo-issue-summary' => 'Tehtävän yhteenveto',
 	'todo-form-details' => 'Tiedot',
+	'todo-form-email' => 'Saadaksesi ilmoituksen sähköpostitse kun tämä merkintä on suljettu, syötä sähköpostiosoitteesi:',
 	'todo-form-submit' => 'Lähetä kysely',
 	'right-todo' => 'Käyttää tehtäväluetteloa',
 	'right-todosubmit' => 'Rajoittaa käyttäjien tehtäväluettelojen oikeuksia',

@@ -281,6 +281,13 @@ $messages['te'] = array(
 	'autoincrement-desc' => 'దాని అంతట అదే పెరిగే వేరియబుల్ <nowiki>{{AUTOINCREMENT}}</nowiki> కి ఒక వేరియబుల్ కొక్కెం',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'autoincrement-desc' => '<nowiki>{{AUTOINCREMENT}}</nowiki> otomatik artış değişkenini ekleyen bir değişken çengel',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

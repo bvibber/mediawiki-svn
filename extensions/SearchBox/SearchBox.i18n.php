@@ -725,6 +725,13 @@ $messages['th'] = array(
 	'searchbox-namespaces' => 'เนมสเปซ:',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'searchbox-go' => 'Git',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

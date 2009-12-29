@@ -435,6 +435,13 @@ $messages['tl'] = array(
 	'tooltip-desc' => 'Nagdaragdag ng tatak na <tt><nowiki><tooltip></nowiki></tt> at <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'tooltip-desc' => '<tt><nowiki><tooltip></nowiki></tt> ve <tt><nowiki>{{#tooltip:}}</nowiki></tt> etiketini ekler',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

@@ -143,8 +143,10 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Solde
  */
 $messages['ca'] = array(
+	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Usuari',
 	'showprocesslist-db' => 'Base de dades',
 	'showprocesslist-command' => 'Ordre',
@@ -981,6 +983,13 @@ $messages['tg-cyrl'] = array(
 $messages['tg-latn'] = array(
 	'showprocesslist-user' => 'Korbar',
 	'showprocesslist-time' => 'Vaqt',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'showprocesslist-user' => 'Ulanyjy',
 );
 
 /** Tagalog (Tagalog)

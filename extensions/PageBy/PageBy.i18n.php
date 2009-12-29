@@ -209,10 +209,12 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
+	'pageby-desc' => 'Näyttää muokkaajat wikisivun sisällössä käyttäen tagia <code><nowiki><pageby></nowiki></code>.',
 	'pageby-first' => 'Sivun loi $1 $2',
 	'pageby-last' => 'Viimeksi <a href="$3">muokannut</a> käyttäjä $1 $2',
 	'pageby-contributors' => 'Osallistujat:',

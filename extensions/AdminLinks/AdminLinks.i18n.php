@@ -1126,6 +1126,13 @@ $messages['th'] = array(
 	'adminlinks_importexport' => 'นำเข้าและส่งออก',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'adminlinks_users' => 'Ulanyjylar',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

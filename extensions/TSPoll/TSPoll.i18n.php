@@ -65,6 +65,15 @@ $messages['bs'] = array(
 	'tspoll-id-error' => 'Nije naveden ID!',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'tspoll-desc' => 'Přidává [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] jako HTML značku',
+	'tspoll-fetch-error' => 'Chyba při získávání URL!',
+	'tspoll-id-error' => 'Nebylo zadáno ID!',
+);
+
 /** German (Deutsch)
  * @author Jan Luca
  * @author Purodha

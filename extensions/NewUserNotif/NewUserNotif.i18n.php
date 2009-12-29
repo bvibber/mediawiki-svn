@@ -201,11 +201,14 @@ Ha sido creada una nueva cuenta de usuario, $2, en $3 a las $4',
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
-	'newusernotifbody' => 'Tere, §1!
+	'newusernotifbody' => 'Tere, $1!
 
-Uus kasutajakonto, §2 on loodud §3 kell §4.',
+Võrgukohas $3 loodi uus kasutajakonto $2.
+
+Konto loomise aeg: $4',
 );
 
 /** Finnish (Suomi)

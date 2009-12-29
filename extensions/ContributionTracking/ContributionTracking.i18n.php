@@ -882,6 +882,16 @@ $messages['tg-latn'] = array(
 	'contrib-tracking-button' => 'Idoma',
 );
 
+/** Thai (ไทย)
+ * @author Woraponboonkerd
+ */
+$messages['th'] = array(
+	'contrib-tracking-error' => 'เกิดความผิดพลาด',
+	'contrib-tracking-submitting' => 'กำลังส่งไปยังผู้ดำเนินการจ่ายเงิน...',
+	'contrib-tracking-continue' => 'ถ้าคุณยังไม่ได้ถูกนำทางไปหน้าอื่นโดยอัติโนมัติ คลิกที่ปุ่มเพื่อเสร็จสิ้นการบริจาคที่ PayPal',
+	'contrib-tracking-button' => 'ดำเนินการต่อ',
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */

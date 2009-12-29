@@ -418,6 +418,7 @@ $messages['de'] = array(
 	'qp_result_NA' => 'Nicht beantwortet',
 	'qp_result_error' => 'Syntaxfehler',
 	'qp_vote_button' => 'Abstimmen',
+	'qp_vote_again_button' => 'Stimme ändern',
 	'qp_polls_list' => 'Alle Abstimmungen auflisten',
 	'qp_users_list' => 'Alle Benutzer anzeigen',
 	'qp_browse_to_poll' => 'Nach $1 wechseln',
@@ -426,18 +427,51 @@ $messages['de'] = array(
 	'qp_source_link' => 'Quelle',
 	'qp_stats_link' => 'Statistik',
 	'qp_users_link' => 'Benutzer',
+	'qp_voice_link' => 'Benutzerstimme',
+	'qp_voice_link_inv' => 'Benutzerstimme?',
 	'qp_user_polls_link' => 'Hat an $1 {{PLURAL:$1|Abstimmung|Abstimmungen}} teilgenommen',
 	'qp_user_missing_polls_link' => 'Keine Teilnahme',
 	'qp_not_participated_link' => 'Nicht teilgenommen',
 	'qp_order_by_username' => 'Nach Benutzernamen ordnen',
+	'qp_order_by_polls_count' => 'Nach Abstimmungszahl ordnen',
 	'qp_results_line_qupl' => 'Seite "$1" Abstimmung "$2": $3',
 	'qp_results_line_qpl' => 'Seite "$1" Abstimmung "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Seite "$2" Abstimmung "$3" ]',
 	'qp_export_to_xls' => 'Statistiken in das XLS-Format exportieren',
-	'qp_users_answered_questions' => '$1 Benutzer haben auf die Fragen geantwortet',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|Benutzer|Benutzer}} haben auf die Fragen geantwortet',
 	'qp_func_no_such_poll' => 'Abstimmung nicht vorhanden ($1)',
+	'qp_func_missing_question_id' => 'Bitte lege eine existierende Frage-ID (ab 1 aufwärts) für die Abstimmung $1 fest',
+	'qp_func_invalid_question_id' => 'Ungültige Frage ID=$2 (keine Nummer) für die Abstimmung $1',
+	'qp_func_missing_proposal_id' => 'Bitte lege eine existierende Vorschlagskennung für die Abstimmung $1 fest (ab 0 aufwärts), Frage $2.',
+	'qp_func_invalid_proposal_id' => 'Ungültige Vorschlagskennung id=$3 (keine Nummer) für die Abstimmung $1, Frage $2',
+	'qp_error_no_such_poll' => 'Abstimmung nicht vorhanden ($1).
+Stelle sicher, dass die Abstimmung festgelegt und gespeichert ist und dass # als Trennsymbol für Adressen verwendet wird',
+	'qp_error_id_in_stats_mode' => 'Kann keine Kennung für diese Abstimmung im Statistik-Modus festlegen.',
+	'qp_error_dependance_in_stats_mode' => 'Kann Abhängigkeitskette der Abstimmung im statistischen Modus nicht festlegen',
+	'qp_error_no_stats' => 'Es sind keine statistischen Daten verfügbar, da noch niemand für diese Abstimmung gestimmt hat (Adresse=$1)',
+	'qp_error_address_in_decl_mode' => 'Kann keine Adresse der Abstimmung im Festlegungs-Modus ermitteln',
+	'qp_error_question_not_implemented' => 'Fragen diesen Typs sind nicht implementiert: $1',
+	'qp_error_invalid_question_type' => 'Ungültiger Fragetyp: $1',
+	'qp_error_type_in_stats_mode' => 'Der Fragetyp kann im statistischen Anzeigemodus nicht definiert werden: $1',
+	'qp_error_invalid_poll_id' => 'Ungültige Abstimmungskennung (id=$1).
+Abstimmungskennung darf nur Buchstaben, Zahlen und Leerstellen enthalten.',
+	'qp_error_already_used_poll_id' => 'Die Abstimmungskennung wurde bereits auf dieser Seite benutzt (id=$1).',
+	'qp_error_invalid_dependance_value' => 'Die Abhängigkeitskette der Abstimmung (id=$1) hat einen ungültigen Wert in der Abhängigkeits-Attribute (Abhängigkeit="$2")',
+	'qp_error_missed_dependance_title' => 'Die Abstimmung (id=$1) ist abhängig von einer anderen Abstimmung (id=$3) auf der Seite [[$2]], aber der Titel [[$2]] wurde nicht gefunden.
+Entferne entweder die Abhängigkeits-Attribute, oder stelle [[$2]] wieder her',
+	'qp_error_missed_dependance_poll' => 'Die Abstimmung (id=$1) ist abhängig von einer anderen Abstimmung (id=$3) auf Seite $2, aber diese Abstimmung existiert nicht oder wurde noch nicht gespeichert.
+Entferne entweder die Abhängigkeits-Attribute oder erstelle die Abstimmung mit id=$3 auf Seite $2 und speichere sie.
+Um die Abstimmung zu speichern, übermittle sie während du nicht auf eine Antragsanfrage antwortest.',
+	'qp_error_vote_dependance_poll' => 'Bitte erst für $1 abstimmen.',
+	'qp_error_too_many_spans' => 'Zu viele Kategoriegruppen für die Gesamtzahl der Unterrubriken definiert',
+	'qp_error_unanswered_span' => 'Unbeantwortete Unterrubrik',
+	'qp_error_non_unique_choice' => 'Diese Frage benötigt eindeutige Antragsbeantwortung',
+	'qp_error_category_name_empty' => 'Kategoriename ist leer',
+	'qp_error_proposal_text_empty' => 'Vorschlagstext ist leer',
 	'qp_error_too_few_categories' => 'Es müssen mindestens zwei Kategorien festgelegt werden',
+	'qp_error_too_few_spans' => 'Jede Kategoriengruppe muss mindestens zwei Unterrubriken enthalten',
 	'qp_error_no_answer' => 'Unbeantworteter Vorschlag',
+	'qp_error_unique' => 'Die Frage des Typs unique() hat mehr Vorschläge, als mögliche Antworten definiert sind: Ausführung unmöglich',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -533,6 +567,7 @@ $messages['el'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Translationista
  */
 $messages['es'] = array(
@@ -541,10 +576,16 @@ $messages['es'] = array(
 	'qp_vote_button' => 'Vota',
 	'qp_vote_again_button' => 'Cambia tu voto',
 	'qp_users_list' => 'Hacer una lista de todos los usuarios',
+	'qp_votes_count' => '$1 {{PLURAL:$1|voto|votos}}',
 	'qp_source_link' => 'Fuente',
 	'qp_stats_link' => 'Estadísticas',
 	'qp_users_link' => 'Usuarios',
+	'qp_voice_link' => 'Voz de usuario',
+	'qp_voice_link_inv' => '¿Voz de usuario?',
 	'qp_order_by_username' => 'Organizar por nombre de usuario',
+	'qp_results_line_qupl' => 'Página "$1" Votación "$2": $3',
+	'qp_results_line_qpl' => 'Página "$1" Votación "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Página "$2" Votación "$3" ]',
 	'qp_export_to_xls' => 'Exportar estadísticas a formato XLS',
 	'qp_error_invalid_question_type' => 'Tipo de pregunta inválido: $1',
 	'qp_error_type_in_stats_mode' => 'El tipo de pregunta no puede definirse en modo de visualización estadística: $1',
@@ -786,7 +827,9 @@ Go ne Abstimmig spychere due si ibertrage ohni ne Antwort gee uf irged e Vorschl
  * @author YaronSh
  */
 $messages['he'] = array(
+	'pollresults' => 'תוצאות הסקרים באתר',
 	'qp_desc' => 'מאפשר יצירת סקרים',
+	'qp_desc-sp' => '[[Special:PollResults|דף מיוחד]] לצפייה בתוצאות הסקרים',
 	'qp_result_NA' => 'לא נענה',
 	'qp_result_error' => 'שגיאת תחביר',
 	'qp_vote_button' => 'הצבעה',
@@ -799,13 +842,27 @@ $messages['he'] = array(
 	'qp_users_link' => 'משתמשים',
 	'qp_voice_link' => 'קול המשתמש',
 	'qp_voice_link_inv' => 'קול המשתמש?',
+	'qp_user_polls_link' => 'השתתף ב{{PLURAL:$1|סקר אחד|־$1 סקרים}}',
 	'qp_user_missing_polls_link' => 'אין השתתפות',
 	'qp_not_participated_link' => 'לא השתתף',
 	'qp_order_by_username' => 'מיון לפי שם משתמש',
 	'qp_order_by_polls_count' => 'מיון לפי מספר הסקרים',
+	'qp_header_line_qpul' => '$1 [ דף "$2" סקר "$3" ]',
+	'qp_export_to_xls' => 'ייצוא הסטטיסטיקה לקובץ מסוג XLS',
+	'qp_users_answered_questions' => '{{PLURAL:$1|משתמש אחד ענה|$1 משתמשים ענו}} על השאלות',
 	'qp_func_no_such_poll' => 'אין כזה סקר ($1)',
+	'qp_func_missing_question_id' => "יש לציין מס' שאלה קיים (החל מ־1) עבור הסקר $1",
+	'qp_error_id_in_stats_mode' => "לא ניתן להצהיר על מס' עבור הסקר במצב סטטיסטי",
+	'qp_error_no_stats' => 'אין נתונים סטטיסטיים זמינים כיוון שאף אחד עוד לא הצביע בסקר הזה, עדיין (כתובת=$1)',
+	'qp_error_address_in_decl_mode' => 'לא ניתן לאחזר את כתובת הסקר במצב הצהרה',
+	'qp_error_invalid_question_type' => 'סוג השאלה שגוי: $1',
+	'qp_error_type_in_stats_mode' => 'סוג השאלה לא ניתן להגדרה במצב תצוגה סטטיסטית: $1',
+	'qp_error_vote_dependance_poll' => 'יש להצביע עבור הסקר $1 תחילה.',
 	'qp_error_category_name_empty' => 'שם הקטגוריה ריק',
 	'qp_error_proposal_text_empty' => 'טקסט ההצעה ריק',
+	'qp_error_too_few_categories' => 'יש להגדיר לפחות שתי קטגוריות',
+	'qp_error_too_few_spans' => 'כל קבוצת קטגוריות חייבת להכיל לפחות שתי תת־קטגוריות',
+	'qp_error_no_answer' => 'הצעה שלא נענתה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1739,6 +1796,13 @@ $messages['te'] = array(
 	'qp_users_link' => 'వాడుకరులు',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|వాడుకరి|గురు వాడుకరులు}} ప్రశ్నలకు జవాబిచ్చారు',
 	'qp_error_category_name_empty' => 'వర్గం పేరు ఖాళీగా ఉంది',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'qp_users_link' => 'Ulanyjylar',
 );
 
 /** Turkish (Türkçe)

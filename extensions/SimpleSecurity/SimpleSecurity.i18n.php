@@ -920,6 +920,13 @@ $messages['th'] = array(
 	'security-type-namespace' => 'เนมสเปซ',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'security-type-category' => 'kategoriýa',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

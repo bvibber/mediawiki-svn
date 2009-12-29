@@ -95,6 +95,13 @@ $messages['el'] = array(
 	'clientside-desc' => 'Παρέχει συναρτήσεις για την παραγωγή κώδικα σε φορμά πλευράς client όπως HTML, CSS και JavaScript',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'clientside-desc' => 'Provizas funkciojn por generante kodon en klient-flankaj formatoj kiel HTML, CSS, kaj JavaScript',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */

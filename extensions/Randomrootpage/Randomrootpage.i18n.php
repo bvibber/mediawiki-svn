@@ -371,9 +371,11 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'randomrootpage' => 'Rastgele kök sayfası',
+	'randomrootpage-desc' => 'Rastgele bir kök sayfasını getiren [[Special:Randomrootpage|özel sayfa]]',
 );
 
 /** Vietnamese (Tiếng Việt)

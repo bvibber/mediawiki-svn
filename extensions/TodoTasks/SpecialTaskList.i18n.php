@@ -1139,6 +1139,7 @@ Listę poprawnych projektów znajdziesz na stronie [[MediaWiki:TodoTasksValidPro
 	'tasklistchooseproj' => 'Wybierz projekt:',
 	'tasklistprojdisp' => 'Wyświetl',
 	'tasklistbyname' => '== Lista zadań do wykonania dla %s ==',
+	'tasklistnowguseprojects' => 'Nie możesz korzystać z tej strony ponieważ opcja $wgUseProjects została ustawiona na „false“.',
 	'tasklistnoprojects' => "BŁĄD: Najprawdopodobniej włączono zmienną '''\$wgUseProjects''', lecz nie utworzono pliku [[MediaWiki:TodoTasksValidProjects]]. Szczegóły w pliku [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instrukcja instalacji].",
 	'tasklistemailbody' => ',
 

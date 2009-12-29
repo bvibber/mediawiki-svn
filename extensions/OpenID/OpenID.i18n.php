@@ -569,6 +569,8 @@ $messages['br'] = array(
 	'openidemail' => "Chomlec'h postel",
 	'openidlanguage' => 'Yezh',
 	'openidtimezone' => 'Takad eur :',
+	'openidchooseinstructions' => "An holl implijerien o deus ezhomm ul lesanv ;
+tu 'zo deoc'h dibab unan eus ar c'hinnigoù a-is.",
 	'openidchoosefull' => "Hoc'h anv klok ($1)",
 	'openidchooseurl' => 'Un anv a zo bet dibabet adalek ho OpenID ($1)',
 	'openidchooseauto' => 'Un anv krouet emgefre ($1)',
@@ -975,6 +977,7 @@ $messages['diq'] = array(
 	'openidlanguage' => 'Zıwan',
 	'openidtimezone' => 'Warey saete',
 	'openidchoosepassword' => 'parola:',
+	'openiddelete-button' => 'Tesdiq',
 	'openid-urls-delete' => 'Bıestere',
 );
 
@@ -1230,8 +1233,10 @@ Se ne, klaku la butonon "Continue" (Daŭri).',
 	'openid-urls-delete' => 'Forigi',
 	'openid-add-url' => 'Aldoni novan OpenID',
 	'openidsigninorcreateaccount' => 'Ensaluti aŭ Krei Novan Konton',
+	'openid-provider-label-openid' => 'Enigi vian OpenID-URL-on',
 	'openid-provider-label-google' => 'Ensaluti per via Google-konto',
 	'openid-provider-label-yahoo' => 'Ensaluti per via Yahoo-konto',
+	'openid-provider-label-aol' => 'Enigi vian AOL-salutnomon',
 	'openid-provider-label-other-username' => 'Enigi vian salutnomon de $1',
 );
 
@@ -2609,6 +2614,14 @@ $messages['ka'] = array(
 	'openidtimezone' => 'სასაათო სარტყელი',
 );
 
+/** Kirmanjki (Kırmancki)
+ * @author Mirzali
+ */
+$messages['kiu'] = array(
+	'openidlanguage' => 'Zon',
+	'openidtimezone' => 'Warê sate',
+);
+
 /** Kalaallisut (Kalaallisut)
  * @author Piivaat
  */
@@ -3720,11 +3733,12 @@ Nie będziesz już mógł więcej logować się korzystając z tego OpenID.',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'openidlogin' => 'Intra con OpenID',
-	'openidserver' => 'server OpenID',
+	'openidlogin' => 'Intré ant ël sistema con OpenID',
+	'openidserver' => 'servent OpenID',
 );
 
 /** Pashto (پښتو)
@@ -4681,6 +4695,14 @@ $messages['tg-latn'] = array(
  */
 $messages['th'] = array(
 	'openidemail' => 'อีเมล',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'openidlanguage' => 'Dil',
+	'openid-urls-delete' => 'Öçür',
 );
 
 /** Tagalog (Tagalog)

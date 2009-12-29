@@ -692,10 +692,21 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
+	'readerfeedback-reliability' => 'Usaldusväärsus',
+	'readerfeedback-completeness' => 'Täielikkus',
+	'readerfeedback-npov' => 'Erapooletus',
+	'readerfeedback-level-none' => '(ebakindel)',
+	'readerfeedback-level-0' => 'Väga nõrk',
 	'readerfeedback-level-1' => 'Madal',
 	'readerfeedback-level-2' => 'Võrdne',
+	'readerfeedback-level-3' => 'Kõrge',
+	'readerfeedback-level-4' => 'Suurepärane',
+	'readerfeedback-finished' => 'Aitäh!',
+	'readerfeedback-tier-high' => 'Kõrge',
+	'readerfeedback-tier-poor' => 'Nõrk',
 );
 
 /** Basque (Euskara)
@@ -755,6 +766,7 @@ $messages['fa'] = array(
  * @author Jaakonam
  * @author Nike
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'readerfeedback-desc' => 'Sivun tarkistaminen mahdollistaa lukijoiden antaa palautteensa luokkakohtaisten arvosanojen muodossa.',
@@ -775,6 +787,7 @@ $messages['fi'] = array(
 	'readerfeedback-main' => 'Vain sisältösivuja voi arvioida.',
 	'readerfeedback-success' => "'''Kiitos tämän sivun arvioimisesta.''' ([$2 näytä tulokset]) ([$3 kommentteja tai kysymyksiä?]).",
 	'readerfeedback-voted' => "'''Näyttää siltä, että olet jo arvioinut tämän sivun''' ([$2 näytä tulokset]) ([$3 kommentteja tai kysymyksiä?]).",
+	'readerfeedback-error' => "'''Virhe tapahtui tätä sivua arvosteltaessa''' ([$2 katso tulokset]) ([$3 kommentteja tai kysymyksiä?]).",
 	'readerfeedback-submitting' => 'Lähetetään…',
 	'readerfeedback-finished' => 'Kiitos!',
 	'readerfeedback-tagfilter' => 'Merkintä:',
@@ -1229,6 +1242,7 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'readerfeedback' => 'რას ფიქრობთ ამ გვერდის შესახებ?',
+	'readerfeedback-level-none' => '(არაა არჩეული)',
 	'readerfeedback-level-1' => 'დაბალი',
 	'readerfeedback-level-3' => 'მაღალი',
 	'readerfeedback-level-4' => 'ჩინებულია',
@@ -2045,7 +2059,9 @@ $messages['te'] = array(
 	'readerfeedback-success' => "'''ఈ పేజీని సమీక్షించినందుకు కృతజ్ఞతలు!'''  ([$2 ఫలితాలను చూడండి]) ([$3 సందేహాలు లేదా సూచనలున్నాయా?]).",
 	'readerfeedback-voted' => "'''ఈ పేజీకి మీరు ఇప్పటికే రేటింగు ఇచ్చినట్టు అనిపిస్తుంది''' ([$2 ఫలితాలను చూడండి]) ([$3 సందేహాలు లేదా సూచనలు ఉన్నాయా?]).",
 	'readerfeedback-error' => "'''ఈ పేజీకి రేటింగుని ఇవ్వడంలో పొరపాటు దొర్లింది''' ([$2 ఫలితాలను చూడండి]) ([$3 సందేహాలు లేదా సూచనలు ఉన్నాయా?]).",
+	'readerfeedback-submitting' => 'దాఖలుచేస్తున్నాం …',
 	'readerfeedback-finished' => 'ధన్యవాదాలు!',
+	'readerfeedback-tier-high' => 'ఉన్నతం',
 	'readerfeedback-tier-medium' => 'సామాన్యం',
 	'specialpages-group-feedback' => 'వీక్షకుల అభిప్రాయం',
 );
@@ -2079,6 +2095,9 @@ $messages['th'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'readerfeedback-desc' => 'Sahypa barlagy okyjylaryň kategoriki derejelendirme görnüşinde seslenme bermegine mümkinçilik berýär',
+	'readerfeedback' => 'Bu sahypa hakda pikiriňiz nähili?',
+	'readerfeedback-text' => "''Aşakdaky sahypany derejelendirmegiňizi haýyş edýäris. Seslenmäňiz gymmatly we ol web saýtymyzy ösdürmäge kömek eder.''",
 	'readerfeedback-reliability' => 'Ygtybarlylyk',
 	'readerfeedback-completeness' => 'Dolulyk',
 	'readerfeedback-npov' => 'Bitaraplyk',
@@ -2091,7 +2110,10 @@ $messages['tk'] = array(
 	'readerfeedback-level-3' => 'Ýagşy',
 	'readerfeedback-level-4' => 'Ajaýyp',
 	'readerfeedback-submit' => 'Tabşyr',
+	'readerfeedback-main' => 'Diňe mazmunly sahypalary derejelendirip bolýar.',
 	'readerfeedback-success' => "'''Bu sahypany gözden geçireniňiz üçin sag boluň!''' ([$2 netijeleri gör]) ([$3 teswirler ýa-da soraglar?]).",
+	'readerfeedback-voted' => "'''Bu sahypany eýýäm derejelendiripsiňiz ýaly-la''' ([$2 netijeleri gör]) ([$3 teswirler ýa-da soraglar?]).",
+	'readerfeedback-error' => "'''Bu sahypany derejelendireniňizde säwlik ýüze çykdy''' ([$2 netijeleri gör]) ([$3 teswirler ýa-da soraglar?]).",
 	'readerfeedback-submitting' => 'Tabşyrylýar...',
 	'readerfeedback-finished' => 'Sag boluň!',
 	'readerfeedback-tagfilter' => 'Teg:',
@@ -2099,6 +2121,8 @@ $messages['tk'] = array(
 	'readerfeedback-tier-high' => 'Ýokary',
 	'readerfeedback-tier-medium' => 'Orta tap',
 	'readerfeedback-tier-poor' => 'Ýaramaz',
+	'tooltip-ca-ratinghist' => 'Bu sahypanyň okyjy derejelendirmeleri',
+	'specialpages-group-feedback' => 'Synlaýjy garaýşy',
 );
 
 /** Tagalog (Tagalog)

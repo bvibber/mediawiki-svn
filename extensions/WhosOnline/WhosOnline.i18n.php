@@ -129,6 +129,14 @@ $messages['ca'] = array(
 	'whosonline-desc' => "Mostra [[Special:WhosOnline|una llista]] d'usuaris identificats i anònims que hi ha en línia en aquest moment",
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'whosonline' => 'Kdo je online',
+	'whosonline-desc' => 'Zobrazuje [[Special:WhosOnline|seznam]] přihlášených a anonymních uživatelů, kteří jsou momentálně online',
+);
+
 /** Danish (Dansk)
  * @author Tomas Jensen
  */

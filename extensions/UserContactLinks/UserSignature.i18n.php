@@ -479,9 +479,10 @@ $messages['sk'] = array(
 
 /** Lower Silesian (Schläsch)
  * @author Jonny84
+ * @author Schläsinger
  */
 $messages['sli'] = array(
-	'usercontactlink-baduser' => 'falscher Benutzername',
+	'usercontactlink-baduser' => 'foalscher Nutzernoame',
 	'usercontactlink-desc' => 'Macht es möglich, Benutzernamen einfach mit ^^^Benutzer^^^ zu verlinken',
 );
 
@@ -558,9 +559,11 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'usercontactlink-baduser' => 'Hatalı kullanıcı adı',
+	'usercontactlink-desc' => '^^^Kullanıcı^^^ sözdizimi kullanılarak basit ve sürekli bir şekilde diğer kullanıcı adlarını ekleme imkanı sağlar',
 );
 
 /** Vèneto (Vèneto)

@@ -1016,6 +1016,24 @@ $messages['ru'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: ошибка ввода!',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'chemicalsources' => 'Химияҕа источниктар',
+	'chemicalsource-desc' => 'Химия формулаларыгар <nowiki><chemform></nowiki> тиэги эбэр',
+	'chemFunctions_ListPage' => 'Химия источниктара',
+	'chemFunctions_DataList' => 'Манна көрдөрүллүбүт саайтарга сэргиир бэссэстибэҥ туһунан баар буолуон сөп.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">NIST саайка холбонуу $MIXCASNameFormula</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS Оксфорд универститетын саайтыгар (Великобритания) (көрдөөһүнэ суох)</a><br />',
+	'chemFunctions_CAS' => 'CAS-чыыһыла',
+	'chemFunctions_ATCCode' => 'ATCCode',
+	'chemFunctions_ECNumber' => 'ECNumber',
+	'chemFunctions_Formula' => 'Фуормула',
+	'chemFunctions_Name' => 'ИЮПАК (IUPAC) аат',
+	'chemFunctions_ChemFormInputError' => 'Chemform: киллэрии алҕаһа!',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

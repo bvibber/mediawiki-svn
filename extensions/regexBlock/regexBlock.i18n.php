@@ -1117,6 +1117,7 @@ $messages['he'] = array(
 	'regexblock-form-submit-empty' => 'כתבו שם משתמש או כתובת IP לחסימה.',
 	'regexblock-form-submit-regex' => 'ביטוי רגולרי בלתי תקין.',
 	'regexblock-form-submit-expiry' => 'אנא ציינו את משך הזמן עד לפקיעת החסימה.',
+	'regexblock-link' => 'חסימה באמצעות ביטויים רגולאריים',
 	'regexblock-match-stats-record' => "$1 נחסם '$2' ב־'$3' ב־'$4', בעת התחברות מהכתובת '$5'",
 	'regexblock-nodata-found' => 'לא נמצאו נתונים',
 	'regexblock-stats-title' => 'סטטיסטיקת הנתונים הרגולריים',
@@ -1588,6 +1589,13 @@ Yèn ora ana alesan sing diwènèhaké, sawijining alesan umum baku bakal diengg
  */
 $messages['ka'] = array(
 	'regexblock-form-reason' => 'მიზეზი:',
+);
+
+/** Kalaallisut (Kalaallisut)
+ * @author Piivaat
+ */
+$messages['kl'] = array(
+	'regexblock-expire-duration' => '1 tiimi,2 tiimit,4 tiimit,6 tiimit,ulloq 1,ullut 3,sap akunn 1,sap akunn 2,1 qaammat,qaammatit 3,qaammatit 6,ukioq 1,killeqanngitsoq',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -2235,7 +2243,7 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'regexblock' => 'Blokada z użyciem wyrażenia regularnego',
-	'regexblock-already-blocked' => '$1 jest już zablokowany',
+	'regexblock-already-blocked' => '$1 jest już zablokowany.',
 	'regexblock-block-log' => "Nazwa użytkownika lub adres IP '''$1''' zostały zablokowane.",
 	'regexblock-block-success' => 'Pomyślnie zablokowano',
 	'regexblock-currently-blocked' => 'Obecnie zablokowane adresy:',
@@ -2265,6 +2273,7 @@ Utwórz inną nazwę użytkownika lub [[$1|skontaktuj się z nami]] w celu rozwi
 	'regexblock-form-submit-empty' => 'Podaj nazwę użytkownika lub adres IP do zablokowania.',
 	'regexblock-form-submit-regex' => 'Nieprawidłowe wyrażenie regularne',
 	'regexblock-form-submit-expiry' => 'Określ czas zakończenia blokady.',
+	'regexblock-link' => 'blokada z wykorzystaniem wyrażenia regularnego',
 	'regexblock-match-stats-record' => '$1 zablokowało „$2” w „$3” o „$4”, zalogowanego „$5”',
 	'regexblock-nodata-found' => 'Nie odnaleziono danych',
 	'regexblock-stats-title' => 'Statystyki blokad z użyciem wyrażeń regularnych',
@@ -2877,6 +2886,14 @@ $messages['th'] = array(
 	'regexblock-expire-duration' => '1 ชั่วโมง,2 ชั่วโมง,4 ชั่วโมง,6 ชั่วโมง,1 วัน,3 วัน,1 สัปดาห์,2 สัปดาห์,1 เดือน,3 เดือน,6 เดือน,1 ปี,ตลอดกาล',
 	'regexblock-form-reason' => 'เหตุผล:',
 	'regexblock-view-all' => 'ทั้งหมด',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'regexblock-view-all' => 'Ählisi',
+	'regexblock-view-go' => 'Git',
 );
 
 /** Tagalog (Tagalog)

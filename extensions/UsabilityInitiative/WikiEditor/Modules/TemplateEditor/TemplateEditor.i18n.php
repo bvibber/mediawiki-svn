@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'wikieditor-template-editor-preference' => 'Enable form-based editing of wiki templates',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'wikieditor-template-editor-preference' => 'Aktiveer vorm-gebaseerde wysiging van wikisjablone',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

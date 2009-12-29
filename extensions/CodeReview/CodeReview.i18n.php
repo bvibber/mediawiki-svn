@@ -238,6 +238,10 @@ $1 = Repository name',
  */
 $messages['af'] = array(
 	'code-comments' => 'Opmerkings',
+	'code-references' => 'Weergawes met korreksies',
+	'code-change-status' => "het die '''status''' vir weergawe r$1 gewysig",
+	'code-change-tags' => "het die '''etikette''' vir weergawe r$1 gewysig",
+	'code-change-removed' => 'verwyder:',
 	'code-change-added' => 'bygevoeg:',
 	'code-old-status' => 'Ou status',
 	'code-new-status' => 'Nuwe status',
@@ -249,6 +253,7 @@ $messages['af'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Notas',
+	'code-field-tests' => 'Toetse',
 	'code-field-path' => 'Pad',
 	'code-field-text' => 'Opmerking',
 	'code-field-select' => 'Kies',
@@ -264,9 +269,12 @@ $messages['af'] = array(
 	'code-rev-status' => 'Status:',
 	'code-rev-status-set' => 'Wysigingsstatus',
 	'code-rev-tags' => 'Etikette:',
+	'code-rev-tag-add' => 'Voeg etikette by:',
 	'code-rev-comment-by' => 'Opmerking van $1',
 	'code-rev-comment-preview' => 'Voorskou',
 	'code-rev-inline-preview' => 'Voorskou:',
+	'code-rev-diff' => 'Veranderinge',
+	'code-rev-diff-link' => 'veranderinge',
 	'code-status-new' => 'nuut',
 	'code-status-resolved' => 'opgelos',
 	'code-status-ok' => 'ok',
@@ -900,21 +908,32 @@ $messages['br'] = array(
 	'code' => "Adweladenn ar c'hod",
 	'code-rev-title' => "r$1 - Adweladenn ar c'hod",
 	'code-comments' => 'Evezhiadennoù',
+	'code-change-status' => "en deus kemmet '''statud''' r$1",
+	'code-change-tags' => "en deus kemmet ar '''balizennoù''' evit r$1",
 	'code-change-removed' => 'lamet :',
 	'code-change-added' => 'ouzhpennet :',
 	'code-old-status' => 'Statud kozh',
 	'code-new-status' => 'Statud nevez',
+	'code-prop-changes' => 'Marilh ar statudoù hag ar balizenniñ',
+	'code-desc' => '[[Special:Code|Ostilh adwelet ar c\'hodoù]] gant ar [[Special:RepoAdmin|skor "Subversion"]]',
+	'code-no-repo' => "N'eus ket a dastumlec'h kefluniet !",
 	'code-load-diff' => "O kargañ an diforc'hioù...",
 	'code-notes' => 'Evezhiadennoù diwezhañ',
 	'code-statuschanges' => 'kemmoù statud',
 	'code-authors' => 'aozerien',
 	'code-status' => 'statudoù',
 	'code-tags' => 'balizennoù',
+	'code-author-haslink' => 'An oberour-mañ a zo liammet gant ar gont wiki $1',
+	'code-author-orphan' => "An oberour-mañ n'en deus liamm ebet gant ur gont wiki",
+	'code-author-dolink' => "Liammañ an implijer-mañ gant un implijer wiki lec'hel :",
+	'code-author-alterlink' => 'Kemmañ an implijer wiki liammet gant an implijer-mañ :',
 	'code-author-orunlink' => 'pe diliammañ an implijer wiki-mañ :',
 	'code-author-name' => 'Merkit un anv implijer :',
+	'code-author-success' => 'An implijer $1 a zo bet liammet gant an implijer wiki $2',
 	'code-author-link' => 'liammañ ?',
 	'code-author-unlink' => 'diliammañ ?',
 	'code-author-unlinksuccess' => 'Diliammet eo bet an aozer $1',
+	'code-browsing-path' => "Hentad an adweladennoù a-benn '''$1'''",
 	'code-field-id' => 'Adweladenn',
 	'code-field-author' => 'Aozer',
 	'code-field-user' => 'Saver an evezhiadenn',
@@ -955,6 +974,7 @@ $messages['br'] = array(
 	'code-status-resolved' => 'diskoulmet',
 	'code-status-ok' => 'mat eo',
 	'code-status-verified' => 'Gwiriet',
+	'code-pathsearch-legend' => "Klask adweladennoù en dastumlec'h dre an hent",
 	'code-pathsearch-path' => 'Hent moned :',
 	'code-rev-submit' => "Enrollañ ar c'hemmoù",
 	'code-rev-submit-next' => "Enrollañ & kudenn war-lerc'h",
@@ -962,10 +982,15 @@ $messages['br'] = array(
 	'code-batch-tags' => 'Kemmañ ar balizennoù :',
 	'codereview-batch-title' => 'Kemmañ an holl adweladennoù diuzet',
 	'codereview-batch-submit' => 'Kas',
+	'code-releasenotes' => 'notennoù embann',
+	'code-release-legend' => 'Genel an notennoù embann',
+	'code-release-badrange' => 'Re vras eo al levezon !',
 	'codereview-subtitle' => 'Evit $1',
 	'codereview-reply-link' => 'respont',
 	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|arnod a zo deuet a-benn|arnod a zo deuet a-benn}}',
 	'codereview-tests-failed2' => "$1 {{PLURAL:$2|arnod a zo deuet a-benn|arnod a zo deuet a-benn}},  $3 {{PLURAL:$4|arnod o deus c'hwitet|arnod o deus c'hwitet}}:",
+	'codereview-tests-running' => 'Ho amprouiñ...',
+	'codereview-tests-aborted' => 'Ehanet eo bet an amprouadenn.',
 	'codereview-email-subj' => '[$1] [r$2] : evezhiadenn nevez bet ouzhpennet',
 	'codereview-email-body' => 'An implijer "$1" en deus embannet un evezhiadenn war r$3.
 
@@ -993,12 +1018,18 @@ $3",
 	'repoadmin-new-legend' => "Krouiñ un dastumlec'h nevez",
 	'repoadmin-new-label' => "Anv an dastumlec'h :",
 	'repoadmin-new-button' => 'Krouiñ',
+	'repoadmin-edit-legend' => 'Kemmañ an dastumlec\'h "$1"',
 	'repoadmin-edit-path' => "Hent an dastumlec'h :",
 	'repoadmin-edit-bug' => 'Hent moned Bugzilla :',
 	'repoadmin-edit-view' => 'Hent moned ViewVC :',
 	'repoadmin-edit-button' => 'Mat eo',
+	'repoadmin-edit-sucess' => 'Kemmet eo bet an dastumlec\'h "[[Special:Code/$1|$1]]".',
 	'right-codereview-use' => 'Implijout Special:Code',
+	'right-codereview-add-tag' => "Ouzhpennañ balizennoù nevez d'an adweladennoù",
+	'right-codereview-remove-tag' => "Tennañ balizennoù d'an adweladennoù",
 	'right-codereview-post-comment' => "Ouzhpennañ evezhiadennoù d'an adweladennoù",
+	'right-codereview-set-status' => 'Kemmañ statud an adweladennoù',
+	'right-codereview-link-user' => "Liammañ an oberourien d'an implijerien wiki",
 	'specialpages-group-developer' => 'Ostilhoù an diorroer',
 );
 
@@ -2072,6 +2103,7 @@ $messages['eo'] = array(
 	'code-author-link' => 'ĉu ligigi?',
 	'code-author-unlink' => 'ĉu malligigi?',
 	'code-author-unlinksuccess' => 'Aŭtoro $1 estis malligita',
+	'code-browsing-path' => "Rigardante reviziojn en '''$1'''",
 	'code-field-id' => 'Versio',
 	'code-field-author' => 'Aŭtoro',
 	'code-field-user' => 'Komentanto',
@@ -2129,6 +2161,10 @@ $messages['eo'] = array(
 	'code-release-badrange' => 'Intervalo estas tro granda!',
 	'codereview-subtitle' => 'Por $1',
 	'codereview-reply-link' => 'respondo',
+	'codereview-tests-succeeded2' => '$1 sukcesis {{PLURAL:$2|teston|testojn}}',
+	'codereview-tests-failed2' => '$1 sukcesis {{PLURAL:$2|teston|testojn}}, $3 malsukcesis {{PLURAL:$4|teston|testojn}}:',
+	'codereview-tests-running' => 'Testkazoj funkcias...',
+	'codereview-tests-aborted' => 'Testfunkciigo haltiĝis.',
 	'codereview-email-subj' => '[$1] [r$2]: Nova komento estis aldonita',
 	'codereview-email-body' => 'Uzanto "$1" afiŝis komenton de $3.
 
@@ -2138,6 +2174,14 @@ Komento:
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]: Postatentaj ŝanĝoj',
+	'codereview-email-body2' => 'Uzanto "$1" faris postatentadajn ŝanĝojn al r$2.
+
+Plena URL: $3
+
+Resumo de ŝanĝoj:
+
+$4',
+	'codereview-email-subj3' => '[$1] [r$2]: Aŭtomata testado detektis regresion',
 	'codereview-email-body3' => 'Aŭtomata testado malkaŝis regresion pro la ŝanĝoj en r$1.
 
 Plena URL: $2
@@ -2324,17 +2368,20 @@ $messages['et'] = array(
 	'code-rev-inline-preview' => 'Eelvaade:',
 	'code-rev-diff' => 'Erinevused',
 	'code-rev-diff-link' => 'erinevused',
+	'code-rev-purge-link' => 'tühjenda',
 	'code-status-new' => 'uus',
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'kinnitatud',
+	'code-status-deferred' => 'edasi lükatud',
 	'code-rev-submit' => 'Salvesta muudatused',
+	'code-batch-status' => 'Muuda olekut:',
 	'code-release-startrev' => 'Esimene redaktsioon:',
 	'code-release-endrev' => 'Viimane redaktsioon:',
 	'codereview-reply-link' => 'vasta',
 	'repoadmin-new-button' => 'Loo',
 	'repoadmin-edit-button' => 'Sobib',
-	'right-codereview-post-comment' => 'Lisa redaktsioonidele kommentaare',
-	'right-codereview-set-status' => 'Muuda redaktsioonide staatust',
+	'right-codereview-post-comment' => 'Lisada redaktsioonidele kommentaare',
+	'right-codereview-set-status' => 'Muuta redaktsioonide olekut',
 );
 
 /** Basque (Euskara)
@@ -2534,6 +2581,7 @@ $4',
  * @author Nike
  * @author Str4nd
  * @author Tarmo
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'code' => 'Koodintarkistus',
@@ -2556,7 +2604,7 @@ $messages['fi'] = array(
 	'code-status' => 'tilat',
 	'code-tags' => 'merkinnät',
 	'code-tests' => 'Kokeilu tapauksia',
-	'code-authors-text' => 'Alla on luettelo varastoon kirjoittaneista viimeisimpien lisäysten mukaisessa järjestyksessä.',
+	'code-authors-text' => 'Alla on luettelo varastoon kirjoittaneista viimeisimpien lisäysten mukaisessa järjestyksessä. Paikalliset wiki-tunnukset näytetään suluissa.',
 	'code-author-haslink' => 'Tämä tekijä on kytketty wikikäyttäjään $1',
 	'code-author-orphan' => 'Tätä tekijää ei ole kytketty wiki-tunnukseen',
 	'code-author-dolink' => 'Kytke tämä tekijä wiki-käyttäjään:',
@@ -3313,6 +3361,8 @@ $messages['he'] = array(
 	'code-release-badrange' => 'הטווח גדול מדי!',
 	'codereview-subtitle' => 'עבור $1',
 	'codereview-reply-link' => 'תגובה',
+	'codereview-tests-succeeded2' => '{{PLURAL:$2|בדיקה אחת שהצליחה|$1 בדיקות שהצליחו}}',
+	'codereview-tests-failed2' => '{{PLURAL:$2|בדיקה אחת שהצליחה|$1 בדיקות שהצליחו}},{{PLURAL:$2|בדיקה אחת שנכשלה|$1 בדיקות שנכשלו}}',
 	'codereview-tests-running' => 'הבדיקות רצות כעת...',
 	'codereview-tests-aborted' => 'הבדיקות הופסקו.',
 	'codereview-email-subj' => '[$1] [גרסה $2]: נוספה הערה חדשה',
@@ -6789,12 +6839,14 @@ $messages['roa-tara'] = array(
 	'code-rev-comment-by' => 'Commende de $1',
 	'code-rev-comment-submit' => "Reggistre 'u commende",
 	'code-rev-comment-preview' => 'Andeprime',
+	'code-rev-inline-preview' => 'Andeprime:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
 	'code-status-new' => 'nueve',
 	'code-status-fixme' => 'aggiusteme',
 	'code-status-ok' => 'ok',
 	'code-pathsearch-path' => 'Percorse:',
+	'code-release-badrange' => 'Indervalle troppe larie!',
 	'codereview-subtitle' => 'Pe $1',
 	'codereview-reply-link' => 'respunne',
 	'codereview-email-body' => 'Utende "$1" ha postete \'nu commende sus a r$3.
@@ -6989,6 +7041,7 @@ $messages['sah'] = array(
 	'code-author-link' => 'холбуурга?',
 	'code-author-unlink' => 'араарарга?',
 	'code-author-unlinksuccess' => '$1 ааптар сигэниитэ сотулунна',
+	'code-browsing-path' => "Ревизиялары көрүү: '''$1'''",
 	'code-field-id' => 'Торум',
 	'code-field-author' => 'Ааптар',
 	'code-field-user' => 'Ырытааччы',
@@ -7020,6 +7073,7 @@ $messages['sah'] = array(
 	'code-rev-comment-by' => 'Баччатааҕы быһаарыы: $1',
 	'code-rev-comment-submit' => 'Быһаарыыта хааллар (ыыт)',
 	'code-rev-comment-preview' => 'Ыытыах иннинэ көрүү',
+	'code-rev-inline-preview' => 'Эрдэ көрүү:',
 	'code-rev-diff' => 'Уларытыы',
 	'code-rev-diff-link' => 'уларытыы',
 	'code-rev-purge-link' => 'кээһи ыраастаа',
@@ -7749,6 +7803,7 @@ $messages['te'] = array(
 	'code-statuschanges' => 'స్థితి మార్పులు',
 	'code-authors' => 'రచయితలు',
 	'code-status' => 'స్థితులు',
+	'code-author-orphan' => 'ఈ రచయితకి వికీ ఖాతాలో లంకె లేదు',
 	'code-author-name' => 'ఒక వాడుకరిపేరుని ఇవ్వండి:',
 	'code-field-author' => 'రచయిత',
 	'code-field-user' => 'వ్యాఖ్యాత',
@@ -8019,6 +8074,7 @@ $messages['tk'] = array(
 	'code' => 'Kod Gözden Geçirmesi',
 	'code-rev-title' => 'r$1 - Kod Gözden Geçirmesi',
 	'code-comments' => 'Teswirler',
+	'code-references' => 'Wersiýalary yzarla',
 	'code-change-status' => "r$1-ň '''statusyny''' üýtgetdi",
 	'code-change-tags' => "r$1 üçin '''tegleri''' üýtgetdi",
 	'code-change-removed' => 'aýyryldy:',
@@ -8026,6 +8082,7 @@ $messages['tk'] = array(
 	'code-old-status' => 'Köne status',
 	'code-new-status' => 'Täze status',
 	'code-prop-changes' => 'Status & tegleme gündeligi',
+	'code-desc' => '[[Special:Code|Kod gözden geçirme guraly]], [[Special:RepoAdmin|Subversion goldawy]] bilen bilelikde',
 	'code-no-repo' => 'Hiç bir ammar konfigurirlenmedi!',
 	'code-load-diff' => 'Aratapwutlary ýükleýär...',
 	'code-notes' => 'ýaňy-ýakyndaky teswirler',
@@ -8034,6 +8091,8 @@ $messages['tk'] = array(
 	'code-status' => 'status',
 	'code-tags' => 'tegler',
 	'code-tests' => 'Synag ýagdaýlary',
+	'code-authors-text' => 'Aşakdaky sanaw ýaňy-ýakyndaky tabşyrmalara görä düzülen awtorlary görkezýär. Ýerli wiki hasaplary ýaýyň içinde görkezilýär.',
+	'code-author-haslink' => 'Bu awtor $1 wiki ulanyjysyna çykgytlydyr',
 	'code-author-orphan' => 'Bu awtoryň haýsydyr bir wiki hasaba çykgydy ýok.',
 	'code-author-dolink' => 'Bu awtory haýsydyr bir wiki ulanyjysyna çykgytla:',
 	'code-author-alterlink' => 'Bu awtora çykgytlanan wiki ulanyjysyny üýtget:',
@@ -8103,6 +8162,8 @@ $messages['tk'] = array(
 	'codereview-reply-link' => 'jogap ber',
 	'codereview-tests-succeeded2' => '$1 şowly {{PLURAL:$2|synag|synag}}',
 	'codereview-tests-failed2' => '$1 şowly {{PLURAL:$2|synag|synag}}, $3 şowsuz {{PLURAL:$4|synag|synag}}:',
+	'codereview-tests-running' => 'Synag ýagdaýlary işleýär...',
+	'codereview-tests-aborted' => 'Synagyň işlemegi togtadyldy.',
 	'codereview-email-subj' => '[$1] [r$2]: Täze teswir goşuldy',
 	'codereview-email-body' => 'r$3-de ulanyjy "$1" bir teswir iberdi.
 
@@ -8111,6 +8172,22 @@ Doly URL: $2
 Teswir:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Yzarlama üýtgeşmeleri',
+	'codereview-email-body2' => 'Ulanyjy "$1" r$2 üçin yzarlama üýtgeşmeleri etdi.
+
+Doly URL: $3
+
+Tabşyrma düşündirişi:
+
+$4',
+	'codereview-email-subj3' => '[$1] [r$2]: Awtomatik synag regressiýany ýüze çykardy',
+	'codereview-email-body3' => 'r$1 üçin üýtgeşmeler zerarly awtomatik synag bir regressiýany ýüze çykardy. 
+
+Doly URL: $2
+
+Tabşyrma düşündirişi:
+
+$3',
 	'repoadmin' => 'Ammar Dolandyryşy',
 	'repoadmin-new-legend' => 'Täze ammar döret',
 	'repoadmin-new-label' => 'Ammar ady:',
@@ -8127,6 +8204,8 @@ $4',
 	'right-codereview-remove-tag' => 'Wersiýalardan teg aýyr',
 	'right-codereview-post-comment' => 'Wersiýalara teswir goş',
 	'right-codereview-set-status' => 'Wersiýalaryň statusyny üýtget',
+	'right-codereview-link-user' => 'Awtorlary wiki ulanyjylaryna çykgytla',
+	'specialpages-group-developer' => 'Ösdürimçi gurallary',
 );
 
 /** Tagalog (Tagalog)

@@ -451,9 +451,11 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'othersites' => 'Diğer siteler',
+	'othersites-desc' => 'Dil bağlantıları dışındaki interviki bağlantılarını kendi portletine taşır',
 );
 
 /** Vèneto (Vèneto)

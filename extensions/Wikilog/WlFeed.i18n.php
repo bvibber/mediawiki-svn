@@ -183,6 +183,13 @@ $messages['oc'] = array(
 	'wlfeed-desc' => 'Classas de generacion de fluses melhorats',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'wlfeed-desc' => 'Rozszerzone klasy generowania kanałów',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  */

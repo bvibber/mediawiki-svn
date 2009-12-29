@@ -580,6 +580,13 @@ $messages['tet'] = array(
 	'categoryonupload-label' => 'Kategoria:',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'categoryonupload-label' => 'Kategoriýa:',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

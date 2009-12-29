@@ -384,6 +384,13 @@ $messages['tl'] = array(
 	'wikitextloggedinout-desc' => "Mga pangawit na may dalawang banghay (''parser''), <tt>&lt;nakalagda&gt;</tt> at <tt>&lt;hindinakalagda&gt;</tt> para makapagpakita ng ibang teksto na nakasalalay sa kalagayan ng paglagda ng mga tagagamit",
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'wikitextloggedinout-desc' => 'Kullanıcıların oturum açma durumuna bağlı olarak farklı metin göstermesi için <tt>&lt;loggedin&gt;</tt> ve <tt>&lt;loggedout&gt;</tt> olmak üzere iki ayırıcı çengel',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Prima klasy4na

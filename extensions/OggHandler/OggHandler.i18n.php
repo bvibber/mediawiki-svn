@@ -901,7 +901,9 @@ $messages['et'] = array(
 	'ogg-play-sound' => 'Esita heli',
 	'ogg-no-player' => 'Kahjuks ei paista su süsteemis olevat ühtki ühilduvat esitustarkvara.
 Palun <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laadi tarkvara alla</a>.',
+	'ogg-player-soundthumb' => 'Mängijat ei ole',
 	'ogg-player-selected' => '(valitud)',
+	'ogg-use-player' => 'Kasuta mängijat:',
 	'ogg-more' => 'Lisa...',
 	'ogg-dismiss' => 'Sule',
 	'ogg-download' => 'Laadi fail alla',
@@ -2622,7 +2624,37 @@ Te rog <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'ogg-desc' => "Gestore pe le file Ogg Theora e Vorbis, cu 'nu programme de riproduzione JavaScript",
+	'ogg-short-audio' => 'File audie Ogg $1, $2',
+	'ogg-short-video' => 'File video Ogg $1, $2',
+	'ogg-short-general' => 'File media Ogg $1, $2',
+	'ogg-long-audio' => '(File audie Ogg $1, lunghezze $2, $3)',
+	'ogg-long-video' => '(File video Ogg $1, lunghezze $2, $4 x $5 pixel, $3)',
+	'ogg-long-multiplexed' => '(File multiplexed audie e video Ogg $1, lunghezze $2, $4 x $5 pixel, $3 in totale)',
+	'ogg-long-general' => '(File media Ogg, lunghezze $2, $3)',
+	'ogg-long-error' => '(Ogg file invalide: $1)',
+	'ogg-play' => 'Riproduce',
+	'ogg-pause' => 'Mitte in pause',
+	'ogg-stop' => 'Stuèppe',
+	'ogg-play-video' => "Riproduce 'u video",
+	'ogg-play-sound' => 'Riproduce le suène',
+	'ogg-no-player' => "Ne dispiace, 'u sisteme tune pare ca non ge tène nisciune softuare p'a riproduzione.<br />
+Pe piacere, <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">scareche 'u reproduttore</a>.",
+	'ogg-no-player-js' => "Ne dispiace, 'u sisteme tune tène disabilitate 'u JavaScript oppure non ge tène nisicune reproduttore supportate.<br />
+Tu puè <a href=\"\$1\">scarecà 'u clip</a> o <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">scarecà 'nu reproduttore</a> pe reproducere 'u clip jndr'à 'u browser tune.",
+	'ogg-no-xiphqt' => "Non ge pare ca tìne 'u combonende XiphQT pu QuickTime.<br />
+QuickTime non ge pò reproducere file Ogg senze stu combonende.<br />
+Pe piacere <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">scareche XiphQT</a> o scacchie 'n'otre reproduttore.",
+	'ogg-player-videoElement' => 'Supporte browser native',
+	'ogg-player-oggPlugin' => "Plugin d'u browser",
+	'ogg-player-thumbnail' => 'Angore sulamende immaggine',
+	'ogg-player-soundthumb' => 'Nisciune reproduttore',
+	'ogg-player-selected' => '(scacchiate)',
+	'ogg-use-player' => "Ause 'u reproduttore:",
+	'ogg-more' => 'De cchiù...',
 	'ogg-dismiss' => 'Chiude',
+	'ogg-download' => 'Scareche stu file',
+	'ogg-desc-link' => "'Mbormaziune sus a stu file",
 );
 
 /** Russian (Русский)
@@ -3062,6 +3094,7 @@ $messages['tk'] = array(
 	'ogg-use-player' => 'Pleýer ulan:',
 	'ogg-more' => 'Has köp...',
 	'ogg-dismiss' => 'Ýap',
+	'ogg-download' => 'Faýl düşür',
 	'ogg-desc-link' => 'Bu faýl hakda',
 );
 

@@ -896,6 +896,7 @@ $messages['no'] = array(
 	'tog-riched_disable_ns_category' => 'Slå av rik tekstredigering i «{{ns:category}}»-navnerommet',
 	'tog-riched_disable_ns_category_talk' => 'Slå av rik tekstredigering i «{{ns:category_talk}}»-navnerommet',
 	'rich_editor_new_window' => 'Åpne rik editor i nytt vindu',
+	'tog-riched_start_disabled' => 'Start med rik editor deaktivert',
 	'tog-riched_use_popup' => 'Åpne rik editor i et sprettoppvindu',
 );
 

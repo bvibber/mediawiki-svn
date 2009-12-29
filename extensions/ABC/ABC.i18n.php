@@ -149,6 +149,7 @@ $messages['de'] = array(
  * @author Mirzali
  */
 $messages['diq'] = array(
+	'abcdesc' => 'Semedê şekldaena ABC-muziki etiketê <tt>&lt;abc&gt;</tt>y ilawe keno',
 	'abcdownload' => 'Bar ke:',
 );
 
@@ -374,6 +375,14 @@ $messages['jv'] = array(
  */
 $messages['ka'] = array(
 	'abcdownload' => 'ჩამოტვირთვა:',
+);
+
+/** Kirmanjki (Kırmancki)
+ * @author Mirzali
+ */
+$messages['kiu'] = array(
+	'abcdesc' => 'Seba sıkıldaena ABC-muziki etiketê <tt>&lt;abc&gt;</tt>y ilawe keno',
+	'abcdownload' => 'Bar ke:',
 );
 
 /** Khmer (ភាសាខ្មែរ)

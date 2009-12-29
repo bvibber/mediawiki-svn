@@ -27,6 +27,13 @@ $messages['qqq'] = array(
 	'ratedpages-graphs' => '{{identical|flaggedrevs-graphs}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'ratedpages-none' => 'Daar is geen bladsye in hierdie lys nie',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -214,9 +221,11 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'ratedpages' => 'Lukijoiden arvostelemat sivut',
+	'ratedpages-leg' => 'Hae sivut, joilla on merkittävä määrä arvosteluja',
 	'ratedpages-list' => 'Alla näkyvä sivuluettelo on järjestetty käyttäjien antaman palautearvosanan mukaan.',
 	'ratedpages-none' => 'Tässä luettelossa ei ole sivuja',
 	'ratedpages-graphs' => 'arvostelutiedot',
+	'ratedpages-count' => '$1 {{PLURAL:$1|arvostelu|arvostelua}}',
 );
 
 /** French (Français)
@@ -653,6 +662,8 @@ $messages['te'] = array(
  */
 $messages['tk'] = array(
 	'ratedpages' => 'Okyjylaryň derejelendiren sahypalary',
+	'ratedpages-leg' => 'Ep-esli mukdarda derejelendirilen sahypalary tap',
+	'ratedpages-list' => 'Aşakda okyjy seslenmesi derejesine görä düzülen sahypalaryň sanawy görkezilýär.',
 	'ratedpages-none' => 'Bu sanawda sahypa ýok',
 	'ratedpages-graphs' => 'derejelendirme maglumaty',
 	'ratedpages-count' => '$1 {{PLURAL:$1|gözden geçirme|gözden geçirme}}',

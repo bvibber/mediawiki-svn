@@ -346,6 +346,13 @@ $messages['ru'] = array(
 	'contributorsaddon-desc' => 'Добавляет всплывающее JavaScript-поле для ссылки «Основные авторы»',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'contributorsaddon-desc' => '"Сүрүн ааптардар" диэн сигэни көрдөрөр тахсан кэлэр JavaScript-түннүгү эбэр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

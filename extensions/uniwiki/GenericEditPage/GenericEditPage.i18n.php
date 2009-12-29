@@ -434,6 +434,7 @@ $messages['et'] = array(
 	'gep-addcategory' => 'Lisa kategooria',
 	'gep-addcategorybutton' => 'Lisa',
 	'gep-suggestcategory' => 'Soovita kategooriat',
+	'gep-addsectionbutton' => 'Lisa',
 );
 
 /** Basque (Euskara)

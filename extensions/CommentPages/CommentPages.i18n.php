@@ -502,6 +502,14 @@ $messages['ru'] = array(
 	'nstab-comments' => 'Примечание',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'commentpages-desc' => 'Сүрун аат далын быһаарыыларын (комментарийдарын) сирэйдэрэ',
+	'nstab-comments' => 'Быһаарыы',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

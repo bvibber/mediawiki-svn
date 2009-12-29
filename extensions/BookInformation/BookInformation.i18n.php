@@ -1444,7 +1444,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'bookinfo-header' => 'Кинигэ туһунан',
-	'bookinfo-desc' => 'Ситим (Веб) сулууспаларын сибидиэнньэлэринэн [[Special:Booksources]] кэҥэтэр',
+	'bookinfo-desc' => 'Ситим (Веб) сулууспаларын сибидиэнньэлэринэн [[Special:Booksources|кинигэлэр источниктарын туһунан анал сирэйи]] кэҥэтэр',
 	'bookinfo-result-title' => 'Аата:',
 	'bookinfo-result-author' => 'Суруйааччы:',
 	'bookinfo-result-publisher' => 'Кинигэ кыһата:',

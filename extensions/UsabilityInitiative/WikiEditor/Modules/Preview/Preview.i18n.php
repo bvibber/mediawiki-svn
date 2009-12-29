@@ -201,6 +201,16 @@ $messages['es'] = array(
 	'wikieditor-preview-loading' => 'Cargando...',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'wikieditor-preview-tab' => 'Eelvaade',
+	'wikieditor-preview-changes-tab' => 'Muudatused',
+	'wikieditor-preview-loading' => 'Laadin...',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */
@@ -560,7 +570,8 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'wikieditor-preview-tab' => 'Hakikisho',
-	'wikieditor-preview-loading' => 'Unapakiwa...',
+	'wikieditor-preview-changes-tab' => 'Mabadiliko',
+	'wikieditor-preview-loading' => 'Inapakiwa...',
 );
 
 /** Telugu (తెలుగు)

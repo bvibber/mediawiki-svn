@@ -375,6 +375,13 @@ $messages['ru'] = array(
 	'editown-desc' => 'Участники без права «editall» могут править только страницы, которые сами создали',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'editown-desc' => '«Editall» кыаҕа суох кыттааччылар бэйэлэрэ айбыт эрэ сирэйдэрин көннөрөр кыахтаахтар',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

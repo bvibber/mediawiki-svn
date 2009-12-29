@@ -772,6 +772,13 @@ $messages['te'] = array(
 	'commentbox-error-empty-comment' => 'ఖాళీ వ్యాఖ్యలని అనుమతించము!',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'commentbox-name' => 'At:',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

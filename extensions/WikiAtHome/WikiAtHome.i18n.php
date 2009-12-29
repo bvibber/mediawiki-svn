@@ -306,6 +306,13 @@ $messages['bs'] = array(
 	'wah-menu-pref' => 'Postavke',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'wah-menu-jobs' => 'Feines',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -509,6 +516,17 @@ $messages['es'] = array(
 	'wah-doneuploading' => 'Subida completada. Gracias por su colaboración.',
 	'wah-needs-firefogg' => 'Para participar en Wiki@Home, necesitas instalar <a href="http://firefogg.org">Firefogg</a>',
 	'wah-api-error' => 'Ha habido un error con el API. Por favor, inténtelo de nuevo más tarde.',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'wah-menu-stats' => 'Arvandmestik',
+	'wah-menu-pref' => 'Eelistused',
+	'wah-notoken-login' => 'Kas oled sisse logitud? Kui ei, logi palun esiteks sisse.',
+	'wah-uploadfail' => 'Üleslaadimine ebaõnnestus',
 );
 
 /** Basque (Euskara)

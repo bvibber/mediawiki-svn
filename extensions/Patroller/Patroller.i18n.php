@@ -671,6 +671,7 @@ $messages['he'] = array(
 	'patrol-reasons' => '* השחתה פשוטה
 * נסיון של חדשים
 * ראו בדף השיחה',
+	'patrol-another' => 'הצגת עריכה נוספת, אם ניתן.',
 	'patrol-resume' => 'לחצו כאן להמשך.',
 	'group-patroller' => 'בודקי עריכות',
 	'group-patroller-member' => 'בודק עריכות',

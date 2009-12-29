@@ -216,8 +216,10 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
+	'userimages-caption' => 'Pildid, mille $1 on üles laadinud',
 	'userimages-noimages' => '$1 ei ole faile üles laadinud.',
 );
 

@@ -259,6 +259,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'tidy-desc' => 'Setzt en Tab klasséieren oder net klasséieren (hänkt vun $wgUseTidy of) op normal Säiten derbäi fir déi global HTML-Tidy-Astellung fir eng eenzel Siicht z\'iwwerschreiwen',
 	'tidy' => 'Klasséieren',
 	'untidy' => 'Net klasséieren',
 );

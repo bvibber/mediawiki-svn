@@ -506,6 +506,7 @@ $messages['es'] = array(
 /** Estonian (Eesti)
  * @author Avjoska
  * @author KalmerE.
+ * @author Pikne
  */
 $messages['et'] = array(
 	'closewikis-page' => 'Sulge wiki',
@@ -527,11 +528,11 @@ $messages['et'] = array(
 	'closewikis-list-header-by' => 'Sulgeja:',
 	'closewikis-list-header-timestamp' => 'Suletud',
 	'closewikis-list-header-dispreason' => 'Põhjus esitatud',
-	'closewikis-log' => 'Wikide sulgemislogi',
+	'closewikis-log' => 'Vikide sulgemislogi',
 	'closewikis-log-close' => 'suleti $2',
 	'closewikis-log-reopen' => 'taasavati $2',
-	'right-editclosedwikis' => 'Redigeeri suletud wikisid',
-	'right-closewikis' => 'Sulge wikisid',
+	'right-editclosedwikis' => 'Redigeerida suletud vikisid',
+	'right-closewikis' => 'Sulgeda vikisid',
 );
 
 /** Basque (Euskara)
@@ -1529,6 +1530,24 @@ $messages['ru'] = array(
 	'closewikis-log-reopen' => 'открыта $2',
 	'right-editclosedwikis' => 'Править закрытые вики',
 	'right-closewikis' => 'Закрытие вики',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'closewikis-page' => 'Биикини сабыы',
+	'closewikis-page-close' => 'Биикини сап',
+	'closewikis-page-close-wiki' => 'Биики:',
+	'closewikis-page-close-dreason' => 'Төрүөтэ (көстөрө):',
+	'closewikis-page-close-reason' => 'Төрүөтэ (сурунаалга суруллара):',
+	'closewikis-page-close-submit' => 'Сап',
+	'closewikis-page-close-success' => 'Биики сөпкө сабылынна',
+	'closewikis-page-reopen' => 'Биикини арый',
+	'closewikis-page-reopen-reason' => 'Төрүөтэ:',
+	'closewikis-page-reopen-success' => 'Биики сөпкө арылынна',
+	'closewikis-list-header-dispreason' => 'Көстөр төрүөтэ',
+	'closewikis-log-close' => 'сабыллыбыт $2',
 );
 
 /** Slovak (Slovenčina)

@@ -375,6 +375,13 @@ $messages['tl'] = array(
 	'javascript-desc' => 'Nagdaragdag ng uniwiki.js sa bawat pahinang naglalaman ng kodigong JavaScript na pinagsasaluhan sa pagitan ng mga karugtong na pang-Uniwiki',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'javascript-desc' => "Univiki eklentileri arasında paylaşılan Java kodlarını içeren tüm sayfalara uniwiki.js'yi ekler",
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

@@ -53,6 +53,13 @@ $messages['bs'] = array(
 	'filepagemasking-desc' => 'Mijenja ".xxx" u "_xxx" u linkovima stranica opisa datoteke',
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'filepagemasking-desc' => 'Schreibt „.xxx“ in den Links auf Dateibeschreibungsseiten nach „_xxx“ um',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -257,6 +264,13 @@ $messages['sk'] = array(
  */
 $messages['te'] = array(
 	'filepagemasking-desc' => 'ఫైలు వర్ణన పేజీ లంకెలలో ".xxx" నుంచి "_xxx" అని మార్చబడుతుంది',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'filepagemasking-desc' => 'Tanım sayfa bağlantılarında "_xxx" yerine ".xxx" yazar',
 );
 
 /** Ukrainian (Українська)

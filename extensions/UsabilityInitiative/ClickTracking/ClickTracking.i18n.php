@@ -71,6 +71,7 @@ $messages['lzz'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'ct-title' => 'Saamgevoegde gebruikersklieks',
 	'ct-event-name' => 'Gebeurtenis',
 	'ct-expert-header' => '"Deskundige"-klieks',
 	'ct-intermediate-header' => '"Gemiddeld"-klieks',
@@ -78,6 +79,8 @@ $messages['af'] = array(
 	'ct-total-header' => 'Totaal klieke',
 	'ct-start-date' => 'Begindatum (JJJJMMDD)',
 	'ct-end-date' => 'Einddatum (JJJJMMDD)',
+	'ct-increment-by' => 'Aantal dae wat elke data-punt verteenwoordig',
+	'ct-change-graph' => 'Wysig grafiek',
 	'ct-beginner' => 'Beginner',
 	'ct-intermediate' => 'Gemiddeld',
 	'ct-expert' => 'Deskundige',
@@ -154,8 +157,17 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'ct-event-name' => 'Име на събитието',
+	'ct-expert-header' => 'Натискания от "специалисти"',
+	'ct-intermediate-header' => 'Натискания от "средно напреднали"',
+	'ct-beginner-header' => 'Натискания от "начинаещи"',
+	'ct-total-header' => 'Общо натискания',
 	'ct-start-date' => 'Начална дата (ГГГГММДД)',
 	'ct-end-date' => 'Крайна дата (ГГГГММДД)',
+	'ct-change-graph' => 'Смяна на графиката',
+	'ct-beginner' => 'Начинаещ',
+	'ct-intermediate' => 'Средно напреднал',
+	'ct-expert' => 'Специалист',
+	'ct-editing' => 'В момента се редактира:',
 	'ct-anon-users' => 'Анонимни потребители',
 	'ct-and' => 'и',
 	'ct-update-table' => 'Обновяване на таблицата',
@@ -400,6 +412,7 @@ $messages['el'] = array(
 	'ct-beginner' => 'Αρχάριος',
 	'ct-intermediate' => 'Μέτριος',
 	'ct-expert' => 'Ειδικός',
+	'ct-date-range' => 'Σειρά ημερομηνίας',
 	'ct-editing' => 'Τρέχουσα επεξεργασία:',
 	'ct-anon-users' => 'Ανώνυμοι χρήστες',
 	'ct-user-contribs' => 'Συνολικές συνεισφορές χρήστη',
@@ -469,6 +482,7 @@ $messages['es'] = array(
 );
 
 /** Estonian (Eesti)
+ * @author Avjoska
  * @author Pikne
  */
 $messages['et'] = array(
@@ -477,15 +491,19 @@ $messages['et'] = array(
 	'ct-expert-header' => 'Asjatundjaklõpsud',
 	'ct-intermediate-header' => 'Edasijõudnuklõpsud',
 	'ct-beginner-header' => 'Algajaklõpsud',
+	'ct-total-header' => 'Kõik klõpsud',
 	'ct-start-date' => 'Alguskuupäev (AAAAKKPP)',
 	'ct-end-date' => 'Lõpukuupäev (AAAAKKPP)',
+	'ct-change-graph' => 'Muuda graafikut',
 	'ct-beginner' => 'Algaja',
 	'ct-intermediate' => 'Edasijõudnu',
 	'ct-expert' => 'Asjatundja',
 	'ct-date-range' => 'Kuupäevavahemik',
 	'ct-editing' => 'Parajasti muutmisel:',
 	'ct-anon-users' => 'Nimetud kasutajad',
+	'ct-user-contribs' => 'Kõik kasutaja muudatused',
 	'ct-and' => 'ja',
+	'ct-update-table' => 'Uuenda tabelit',
 );
 
 /** Basque (Euskara)

@@ -375,6 +375,7 @@ $messages['cy'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author DaSch
+ * @author Imre
  * @author Melancholie
  * @author Purodha
  * @author Revolus
@@ -397,7 +398,7 @@ $messages['de'] = array(
 	'imagetagging-done-button' => 'Tagging erledigt',
 	'imagetagging-tag-button' => 'Taggen',
 	'imagetagging-tagcancel-button' => 'Abbrechen',
-	'imagetagging-tagging-instructions' => 'Klick auf Personen oder Dinge in dem Bild um sie mit einem Tag zu versehen.',
+	'imagetagging-tagging-instructions' => 'Klicke auf Personen oder Dinge in dem Bild um sie mit einem Tag zu versehen.',
 	'imagetagging-addingtag' => 'Füge Tag hinzu …',
 	'imagetagging-removingtag' => 'Entferne Tag …',
 	'imagetagging-addtagsuccess' => 'Hinzugefügte Tags.',
@@ -1924,6 +1925,14 @@ $messages['te'] = array(
 $messages['tet'] = array(
 	'imagetagging-imghistory' => 'Istória',
 	'imagetagging-tagcancel-button' => 'Para',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'imagetagging-article' => 'Sahypa:',
+	'imagetagging-imghistory' => 'Geçmiş',
 );
 
 /** Tagalog (Tagalog)

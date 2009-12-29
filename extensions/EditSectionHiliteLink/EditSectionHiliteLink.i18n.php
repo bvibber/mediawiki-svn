@@ -275,6 +275,13 @@ $messages['ru'] = array(
 	'editsectionhilitelink-desc' => 'Подсвечивает на странице соответствующий раздел, когда вы перемещаете указатель мыши на ссылку «править»',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'editsectionhilitelink-desc' => 'Мышка көмөтүнэн "көннөрөргө" диэн тимэҕи туһаайдаххына туһааннаах салааны сырдатан көрдөрөр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

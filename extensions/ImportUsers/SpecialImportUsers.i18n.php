@@ -470,6 +470,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'importusers' => 'Importar usuarios',
 	'importusers-uploadfile' => 'Subir archivo',
+	'importusers-form-caption' => 'Introducir archivo CSV (UTF-8)',
 	'importusers-form-replace-present' => 'Reemplazar usuarios existentes',
 	'importusers-form-button' => 'Importar',
 	'importusers-user-added' => "Usuario '''$1''' ha sido agregado.",
@@ -1830,6 +1831,13 @@ $messages['th'] = array(
 	'importusers-password' => 'รหัสผ่าน',
 	'importusers-email' => 'อีเมลของผู้ใช้',
 	'importusers-realname' => 'ชื่อจริง',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'importusers-log-summary-all' => 'Ählisi',
 );
 
 /** Tagalog (Tagalog)

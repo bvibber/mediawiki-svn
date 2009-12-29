@@ -37,11 +37,17 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'fundraiserportal' => 'Fondsinsamelings-portaal',
+	'fundraiserportal-desc' => 'Voeg \'n "Skenk asseblief"-portaal boaan die kantstrook.',
 	'fundraiserportal-plain-button' => 'Steun Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Skenk nou',
 	'fundraiserportal-rubytext-button' => 'Skenk nou',
+	'fundraiserportal-rubytext-message' => 'Elke skenking help ons om Wikipedia vir almal vry beskikbaar te hou.',
+	'fundraiserportal-rubytext-close' => 'Steek dit van nou af weg',
 	'fundraiserportal-sapphire-button' => 'Skenk nou',
 	'fundraiserportal-tourmaline-button' => 'Skenk nou',
+	'fundraiserportal-tourmaline-message' => 'Elke skenking help ons om Wikipedia vir almal vry beskikbaar te hou.',
+	'fundraiserportal-tourmaline-close' => 'Steek dit van nou af weg',
 );
 
 /** Arabic (العربية)
@@ -380,6 +386,23 @@ $messages['fr'] = array(
 	'fundraiserportal-tourmaline-button' => 'Faîtes un don dès maintenant',
 	'fundraiserportal-tourmaline-message' => 'Chaque don nous permet de garder Wikipédia libre pour tout le monde.',
 	'fundraiserportal-tourmaline-close' => 'Masquer ceci maintenant',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'fundraiserportal' => 'Portâl de dons',
+	'fundraiserportal-desc' => 'Apond un portâl por « Balyér » vers lo d’amont de la bârra de fllanc.',
+	'fundraiserportal-plain-button' => 'Sotegnéd Vouiquipèdia !',
+	'fundraiserportal-ruby-button' => 'Balyéd orendrêt',
+	'fundraiserportal-rubytext-button' => 'Balyéd orendrêt',
+	'fundraiserportal-rubytext-message' => 'Châque don nos pèrmèt de gouardar Vouiquipèdia abada por tot lo mondo.',
+	'fundraiserportal-rubytext-close' => 'Cachiér cen dês ora',
+	'fundraiserportal-sapphire-button' => 'Balyéd orendrêt',
+	'fundraiserportal-tourmaline-button' => 'Balyéd orendrêt',
+	'fundraiserportal-tourmaline-message' => 'Châque don nos pèrmèt de gouardar Vouiquipèdia abada por tot lo mondo.',
+	'fundraiserportal-tourmaline-close' => 'Cachiér cen dês ora',
 );
 
 /** Irish (Gaeilge)
@@ -855,6 +878,16 @@ $messages['ro'] = array(
 	'fundraiserportal-tourmaline-button' => 'Donează acum',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'fundraiserportal-ruby-button' => 'Done mò',
+	'fundraiserportal-rubytext-button' => 'Done mò',
+	'fundraiserportal-sapphire-button' => 'Done mò',
+	'fundraiserportal-tourmaline-button' => 'Done mò',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв
@@ -944,6 +977,8 @@ $messages['te'] = array(
  * @author Woraponboonkerd
  */
 $messages['th'] = array(
+	'fundraiserportal' => 'แหล่งระดมทุน',
+	'fundraiserportal-plain-button' => 'สนับสนุนวิกิพีเดีย!',
 	'fundraiserportal-ruby-button' => 'บริจาคตอนนี้',
 	'fundraiserportal-rubytext-button' => 'บริจาคตอนนี้',
 	'fundraiserportal-rubytext-message' => 'ทุกๆ การบริจาคช่วยให้วิกิพีเดียยังคงใช้ได้ฟรีสำหรับทุกคน',

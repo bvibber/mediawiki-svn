@@ -50,6 +50,13 @@ $messages['bs'] = array(
 	'nsfilerepo-desc' => 'Omogućuje osobine zasnovane na imenskim prostorima za postavljene datoteke',
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'nsfilerepo-desc' => 'Namensraum-basierte Eigenschaften für den Dateiupload',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -231,6 +238,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'nsfilerepo-desc' => 'Poskytuje nahraným súborom možnosti menných priestorov',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'nsfilerepo-desc' => 'Yüklenmiş dosyalar için isim alanını temel alan özellikler sağlar',
 );
 
 /** Ukrainian (Українська)

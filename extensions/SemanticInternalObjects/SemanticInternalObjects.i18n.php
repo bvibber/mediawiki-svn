@@ -55,6 +55,13 @@ $messages['bs'] = array(
 	'semanticinternalobjects-desc' => 'Postavljanje unutrašnjih objekata u Semantic MediaWiki',
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'semanticinternalobjects-desc' => 'Einstellung interner Objekte in Semantic MediaWiki',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -243,6 +250,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'semanticinternalobjects-desc' => 'Nastavenie vnútorných objektov v Semantic MediaWiki',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'semanticinternalobjects-desc' => "Anlamsal MediaWiki'deki iç nesnelerin ayarlanması",
 );
 
 /** Vietnamese (Tiếng Việt)

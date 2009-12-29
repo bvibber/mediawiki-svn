@@ -106,6 +106,13 @@ $messages['es'] = array(
 	'mwreleases-desc' => 'Agregar una [[Mediawiki:Mwreleases-list|lista]] de versiones soportadas, accesibles a través de API',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'mwreleases-desc' => 'Lisää tuetuista julkaisuista [[Mediawiki:Mwreleases-list|listan]], jota voi käyttää rajapinnan kautta.',
+);
+
 /** French (Français)
  * @author Crochet.david
  */
