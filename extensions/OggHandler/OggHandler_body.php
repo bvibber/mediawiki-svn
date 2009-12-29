@@ -393,38 +393,6 @@ class OggHandler extends MediaHandler {
 	function canRender( $file ) { return true; }
 	function mustRender( $file ) { return true; }
 
-	/*
-	function formatMetadata( $image, $metadata ) {
-		if ( !$this->isMetadataValid( $image, $metadata ) ) {
-			return false;
-		}
-		$metadata = unserialize( $metadata );
-		$formatted = array();
-		if ( isset( $metadata['error'] ) ) {
-			self::addMeta( $formatted, 'visible', 'ogg', 'error', $metadata['error']['message'] );
-			return $formatted;
-		}
-		$formatted = array();
-		$n = 0;
-		foreach ( $metadata['streams'] as $stream ) {
-			$prefix = "Stream $n ";
-			$type = strtolower( $stream['type'] );
-			self::addMeta( $formatted, 'visible', 'ogg', 'type', $stream['type'], $n );
-			self::addMeta( $formatted, 'visible', 'ogg', 'vendor', $stream['vendor'], $n );
-			self::addMeta( $formatted, 'visible', 'ogg', 'length', $stream['length'], $n );
-			self::addMeta( $formatted, 'visible', 'ogg', 'size', $stream['size'], $n );
-
-			foreach ( $stream['header'] as $name => $value ) {
-				self::addMeta( $formatted, 'visible', $type, $name, $value, $n );
-				$visible[$prefix . $name] = wfEscapeWikiText( $value );
-			}
-			foreach ( $stream['comments'] as $name => $value ) {
-				self::addMeta( $formatted, 'visible', $type, $name, $value, $n );
-			}
-		}
-		return $formatted;
-	}*/
-
 	function getLength( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -535,11 +503,20 @@ class OggHandler extends MediaHandler {
 
 	function setHeaders( $out ) {
 		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer, $wgUser, $wgScriptPath,
-				$wgPlayerStatsCollection, $wgJs2VideoTagOut, $wgEnableJS2system;
+				$wgPlayerStatsCollection, $wgVideoTagOut, $wgEnableJS2system;
 
-		if( $wgJs2VideoTagOut && $wgEnableJS2system){
-			//all javascript is localized via script-loader
-			//and loaded on DOM ready if video tag is present
+		if( $wgVideoTagOut && $wgEnableJS2system){
+			// We could add "video" tag module stuff here if want. specifically:
+
+			// <script type="text/javascript" src="js/mwEmbed/jsScriptLoader.php?class=window.jQuery,mwEmbed,$j.ui,mw.EmbedPlayer,nativeEmbed,ctrlBuilder,mvpcfConfig,kskinConfig,$j.fn.menu,$j.cookie,$j.ui.slider,mw.TimedText&debug=true"></script>
+			//<link rel="stylesheet" href="js/mwEmbed/skins/styles.css" type="text/css" media="screen" />
+			//<link rel="stylesheet" href="js/mwEmbed/skins/kskin/playerSkin.css" type="text/css" media="screen" />
+
+			// The above is loaded on-dom-ready for faster dom readyness.
+			// but that has the disadvantage of video player interfaces not being "instantly" ready
+			// on page load. So its a trade off.
+			// Loading dynamically also lets us avoid unnecessary code
+			// ie firefox does not need "JSON.js" and IE ~maybe~ needs cortado embed etc.
 		}else{
 			if ( $out->hasHeadItem( 'OggHandler' ) ) {
 				return;
@@ -654,7 +631,9 @@ class OggTransformOutput extends MediaTransformOutput {
 	}
 
 	function toHtml( $options = array() ) {
-		global $wgEnableTemporalOggUrls, $wgJs2VideoTagOut, $wgEnableJS2system;
+		global $wgEnableTemporalOggUrls, $wgVideoTagOut, $wgEnableJS2system,
+			$wgScriptPath;
+
 		wfLoadExtensionMessages( 'OggHandler' );
 		if ( count( func_get_args() ) == 2 ) {
 			throw new MWException( __METHOD__ .' called in the old style' );
@@ -677,8 +656,8 @@ class OggTransformOutput extends MediaTransformOutput {
 		$thumbDivAttribs = array();
 		$showDescIcon = false;
 
-		//check if outputing to video tag or oggHandler
-		if( $wgJs2VideoTagOut	&& $wgEnableJS2system ){
+		//check if outputting to video tag or oggHandler
+		if( $wgVideoTagOut	&& $wgEnableJS2system ){
 			//video tag output:
 			if ( $this->isVideo ) {
 				$playerHeight = $height;
@@ -705,8 +684,51 @@ class OggTransformOutput extends MediaTransformOutput {
 					'startOffset' => $offset,
 					'linkback' => $linkAttribs['href']
 		    );
+
+
 		    if( $this->file->getRepoName() == 'shared' ){
 				$videoAttr['sharedWiki'] = true;
+		    }else{
+		   		// Get the list of subtitles available
+				$params = new FauxRequest( array (
+					'action' => 'query',
+					'list' => 'allpages',
+					'apnamespace' => NS_TIMEDTEXT,
+					'aplimit' => 200,
+					'apprefix' => $this->file->getTitle()->getDBKey()
+				));
+				$api = new ApiMain( $params );
+				$api->execute();
+				$data = & $api->getResultData();
+
+				// Get the list of language Names
+				$langNames = Language::getLanguageNames();
+
+				$timedTextSources = '';
+				if($data['query'] && $data['query']['allpages'] ){
+					foreach( $data['query']['allpages'] as $na => $page ){
+						$pageTitle = $page['title'];
+						$tileParts = explode( '.', $pageTitle );
+						if( count( $tileParts) >= 3 ){
+							$subtitle_extension = array_pop( $tileParts );
+							$languageKey = array_pop( $tileParts );
+						}
+						//If there is no valid language continue:
+
+						if( !isset( $langNames[ $languageKey ] ) ){
+							continue;
+						}
+						// NOTE: I don't know if api.php pointer is the cleanest path system
+						// At any rate we need a strip XML call for desktop srt players
+						$textAttr = array(
+							'src' => "{$wgServer}{$wgScriptPath}/api.php?" .
+								'action=parse&format=json&page=' . $pageTitle,
+							'lang' =>  $languageKey,
+							'type' => 'text/mw-srt'
+						);
+						$timedTextSources.= Xml::tags( 'itext', $textAttr, '' );
+					}
+				}
 		    }
 
 		    if( $wgEnableTemporalOggUrls )
@@ -720,7 +742,8 @@ class OggTransformOutput extends MediaTransformOutput {
 								"border:solid thin black;padding:5px;"
 						),
 						wfMsg('ogg-no-player-js', $url)
-					)
+					) .
+					$timedTextSources
 				);
 
 			return $s;
