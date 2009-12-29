@@ -25,7 +25,7 @@ var omtkEmbed = {
 		setTimeout( function(){
 			_this.postEmbedJS();
 		}, 2000 );
-		return this.wrapEmebedContainer( embed_code );
+		return embed_code;
 	},
 	
 	/**

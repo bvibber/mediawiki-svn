@@ -1,5 +1,5 @@
 /*
- * mvSequencer.js Created on Oct 17, 2007
+ * mw.Sequencer.js Created on Oct 17, 2007
  *
  * All Metavid Wiki code is Released under the GPL2
  * for more info visit http://metavid.org/wiki/Code
@@ -76,8 +76,9 @@ mw.addMessages( {
 
  // used to set default values and validate the passed init object
 var sequencerDefaultValues = {
-
-	instance_name:'mvSeq', // for now only one instance by name mvSeq is allowed
+	
+ 	// Instance name of sequencer
+	instance_name:'mvSeq',
 
 	// Target sequence container
 	target_sequence_container:null,
@@ -129,7 +130,7 @@ var sequencerDefaultValues = {
 	// The time the sequence was last touched (grabbed at time of startup)
 	sequenceTouchedTime:null,
 	
-	// the default config for the add media wizard
+	// Default config for the add media wizard
 	amw_conf: { },
 
 	

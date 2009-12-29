@@ -38,7 +38,7 @@ var vlcEmbed = {
 		setTimeout( function(){
 			_this.postEmbedJS();
 		}, 150 );
-		   return this.getEmbedObj();
+		return this.getEmbedObj();
 	},
 	
 	/**

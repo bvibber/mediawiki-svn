@@ -41,10 +41,13 @@ var nativeEmbed = {
 	* Wraps the embed object and returns the output
 	*/
 	getEmbedHTML : function () {
+		var _this = this;
 		var embed_code =  this.getEmbedObj();
 		mw.log( "embed code: " + embed_code )
-		setTimeout( '$j(\'#' + this.id + '\').get(0).postEmbedJS()', 150 );
-		return this.wrapEmebedContainer( embed_code );
+		setTimeout( function(){
+			_this.postEmbedJS();
+		}, 150 );
+		return embed_code;
 	},
 	
 	/**

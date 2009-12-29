@@ -1456,7 +1456,7 @@ var flowplayerEmbed = {
 	},
 	getEmbedHTML: function () {
 		setTimeout( 'document.getElementById(\'' + this.id + '\').postEmbedJS()', 150 );
-		return this.wrapEmebedContainer( this.getEmbedObj() );
+		return this.getEmbedObj();
 	},
 	getEmbedObj:function() {
 		// give the embed element a unique pid (work around for flowplayer persistence)

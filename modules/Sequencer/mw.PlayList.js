@@ -114,7 +114,8 @@ mw.PlayList.prototype = {
 		
 		// if style is set override width and height
 		if ( element.style.width )this.width = parseInt( element.style.width.replace( 'px', '' ) );
-		if ( element.style.height )this.height = parseInt( element.style.height.replace( 'px', '' ) );
+		if ( element.style.height )this.height = parseInt( element.style.height.replace( 'px', '' ) );				
+		
 				
 		// if controls=false hide the title and the controls:
 		if ( this.controls === false ) {
@@ -123,7 +124,7 @@ mw.PlayList.prototype = {
 		} else {
 			// setup the controlBuilder object:
 			this.ctrlBuilder = new ctrlBuilder( this );
-		}
+		}		
 	},
 	// run inheritEmbedPlayer on every clip (we have changed the playback method) 
 	inheritEmbedPlayer:function() {
@@ -406,24 +407,39 @@ mw.PlayList.prototype = {
 				this.getSourceType();
 			}
 		} else {
-			// check for empty playlist otherwise renderDisplay:		
+			// check for empty playlist otherwise showPlayer:		
 			if ( this.default_track.getClipCount() == 0 ) {
 				$j( this ).html( 'empty playlist' );
 				return ;
 			} else {
-				this.renderDisplay();
+				this.showPlayer();
 			}
 		}
 	},
-	renderDisplay:function() {
-		mw.log( 'mvPlaylist:renderDisplay:: track length: ' + this.default_track.getClipCount() );
+	showPlayer:function() {
+		mw.log( 'mvPlaylist:showPlayer:: track length: ' + this.default_track.getClipCount() );
 		var _this = this;
 							
-		// append container and videoPlayer; 
-		$j( this ).html( '<div id="dc_' + this.id + '" style="width:' + this.width + 'px;' +
-				'height:' + ( this.height + this.pl_layout.title_bar_height +
-				this.pl_layout.control_height ) + 'px;position:relative;">' +
-			'</div>' );
+		//make sure we have control_wrap
+		if( $j( this ).parent('.control_wrap').length == 0 ){
+			// Select "player"				
+			$j( this )
+			// Add interface control class:		
+			.css({
+				'position': 'relative'
+			})
+			.wrap( 
+				$j('<div>')
+				.addClass('control_wrap ' + this.ctrlBuilder.playerClass)
+				.css({				
+					'width': parseInt( this.width ),
+					'height': parseInt( this.height )
+				})
+			)
+		}
+				
+		// Update the target player:
+		this.$target = $j(this).parent('.control_wrap');
 		if ( this.controls == true ) {
 			var cpos = _this.height + _this.pl_layout.title_bar_height;
 			// give more space if not in sequence:
