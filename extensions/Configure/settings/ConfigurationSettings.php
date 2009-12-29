@@ -41,7 +41,7 @@ class ConfigurationSettings {
 
 		wfProfileIn( __METHOD__ );
 
-		require( dirname( __FILE__ ) . '/Configure.settings-core.php' );
+		require( dirname( __FILE__ ) . '/Settings-core.php' );
 		$this->settings = $settings;
 		$this->arrayDefs = $arrayDefs;
 		$this->emptyValues = $emptyValues;
@@ -60,7 +60,7 @@ class ConfigurationSettings {
 		wfProfileIn( __METHOD__ );
 
 		global $wgConfigureAdditionalExtensions;
-		$coreExtensions = TxtDef::loadFromFile( dirname( __FILE__ ) . '/Configure.settings-ext.txt', array( 'key' => 'name' ) );
+		$coreExtensions = TxtDef::loadFromFile( dirname( __FILE__ ) . '/Settings-ext.txt', array( 'key' => 'name' ) );
 		$extensions = array_merge( $coreExtensions, $wgConfigureAdditionalExtensions );
 		usort( $extensions, array( __CLASS__, 'compExt' ) );
 		$list = array();

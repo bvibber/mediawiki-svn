@@ -1,46 +1,56 @@
 <?php
 
 /**
- * Helper class for the writePHP.php script
+ * Maintenance script that helps to do maintenance with configuration files.
  *
+ * @file
  * @ingroup Extensions
  * @author Alexandre Emsenhuber
+ * @license GPLv2 or higher
  */
-class ConfigurationWriter {
-	public $options, $file;
 
-	public function __construct( $options ){
-		$this->options = $options;
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false )
+	$IP = dirname( __FILE__ ) . '/../../..';
+
+require_once( "$IP/maintenance/Maintenance.php" );
+
+class ConfigurationWriter extends Maintenance {
+	public $file;
+
+	public function __construct(){
+		parent::__construct();
+		$this->mDescription = 'Script that writes the configuration';
+		$this->addOption( 'file', 'write to a specific file (default: STDOUT)', false, true );
+		$this->addOption( 'version', 'version to write', false, true );
+		$this->addOption( 'wiki', 'write the file for that wiki', false, true );
+		$this->addOption( 'wgConf', 'write \$wgConf->settings' );
 	}
 
 	/**
 	 * Main execution point
 	 */
-	public function run(){
+	public function execute(){
 		global $wgConf;
 
-		if( isset( $this->options['help'] ) )
-			$this->help();
-
 		if( !$wgConf instanceof WebConfiguration ){
-			echo "You need to call efConfigureSetup() to use this maintenance script.";
-			die( 1 );
+			$this->error( "You need to call efConfigureSetup() to use this maintenance script.", true );
 		}
 
 		# Maybe we have a specific file
-		if( isset( $this->options['file'] ) )
-			$this->file = fopen( $this->options['file'], 'w' );
+		if( $this->hasOption( 'file' ) )
+			$this->file = fopen( $this->getOption( 'file' ), 'w' );
 		else
 			$this->file = STDOUT;
 
 		# Get the version
-		if( isset( $this->options['version'] ) )
-			$version = $this->options['version'];
+		if( $this->hasOption( 'version' ) )
+			$version = $this->getOption( 'version' );
 		else
 			$version = false;
 
 		# Write the configuration
-		if( isset( $this->options['wgConf'] ) ){
+		if( $this->hasOption( 'wgConf' ) ){
 			$this->writeWgConf( $version );
 		} else {
 			$this->writeSettings( $version );
@@ -144,18 +154,17 @@ HEADER;
 	 */
 	protected function writeSettings( $version ){
 		global $wgConf, $IP;
-		if( isset( $this->options['wiki'] ) )
-			$wiki = $this->options['wiki'];
+		if( $this->hasOption( 'wiki' ) )
+			$wiki = $this->getOption('wiki' );
 		else
 			$wiki = $wgConf->getWiki();
 		if( $version ){
 			$arr = $wgConf->getOldSettings( $version );
 			if( !count( $arr ) ){
-				fwrite( STDERR, "The version given ($version) is invalid\n" );
-				return;
+				$this->error( "The version given ($version) is invalid\n", true );
 			}
 			if( !isset( $arr[$wiki] ) ){
-				fwrite( STDERR, "'$wiki' could not be found in this version\n" );
+				$this->error( "'$wiki' could not be found in this version\n", true );
 				return;
 			}
 			$settingsVal = $arr[$wiki];
@@ -315,19 +324,7 @@ HEADER;
 		# Should no happend
 		return var_export( $val, true );
 	}
-
-	protected function help(){
-		echo "Script that writes the configuration.\n";
-		echo "\n";
-		echo "Usage:\n";
-		echo "  php writePHP.php [--file file] [--wiki wiki|--wgConf] [--help]\n";
-		echo "\n";
-		echo "options:\n";
-		echo "--file: write to a specific file (default: STDOUT)\n";
-		echo "--help: display this screen\n";
-		echo "--wiki: write the file for that wiki\n";
-		echo "--wgConf: write \$wgConf->settings\n";
-		echo "\n";
-		exit;
-	}
 }
+
+$maintClass = 'ConfigurationWriter';
+require_once( DO_MAINTENANCE );

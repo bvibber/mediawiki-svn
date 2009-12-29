@@ -1,11 +1,17 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.15.0 - 29 December 2009
+  * Updated maintenance scripts to subclass the Maintenance class and moved them
+    to the scripts/ subdirectory
+  * Moved some files to subdirectories
+
+
 0.14.19 - 28 December 2009
   (bug 21957) Removed broken Special:ViewConfig's "Read only mode"
 
 0.14.18 - 27 December 2009
-  * Updated ignored settings list in findSettings.php.
+  * Updated ignored settings list in scripts/findSettings.php.
   * Updated AbuseFilter, AmazonPlus, BreadCrumbs, Collection, ExternalData,
     FlaggedRevs, LocalisationUpdate, OggHandler, RT, SemanticDrilldown,
     SemanticMediaWiki, Translate and WikiAtHome extensions
@@ -28,7 +34,7 @@ Localisation updates are done on betawiki and aren't listed here.
     $wgActiveUserDays and $wgActiveUserEditCount
 
 0.14.16 - 25 December 2009
-  findSettings.php now ignores some MediaWiki settings.
+  scripts/findSettings.php now ignores some MediaWiki settings.
 
 0.14.15 - 26 November 2009
   Removed ScriptLoader usage (removed from MediaWiki).
@@ -196,8 +202,8 @@ Localisation updates are done on betawiki and aren't listed here.
 
 0.12.5 - 24 February 2009
   Added foreign key constraint in the PostgreSQL's schema.
-  User who used Configure.pg.sql schema in older versions can use the
-  patch-cs_id_fkey.pg.sql patch.
+  User who used sql/configure.pg.sql schema in older versions can use the
+  sql/patch-cs_id_fkey.pg.sql patch.
 
 0.12.4 - 19 February 2009
   Groups in $wgGroupPermissions are now sorted alphabetically.
@@ -329,7 +335,7 @@ Localisation updates are done on betawiki and aren't listed here.
     to put a comment for each version
   * File handler now uses PHP files instead of serialized files.
   NOTE FOR PEOPLE USING FILES HANDLER: OLD SERIALIZED  FILES WON'T WORK ANYMORE
-  IN THIS VERSION, PLEASE RUN THE migrateFiles.php SCRIPT.
+  IN THIS VERSION, PLEASE RUN THE scripts/migrateFiles.php SCRIPT.
 
 0.10.10 - 30 November 2008
   * Editable settings are now restricted by default to some settings, if you
@@ -357,8 +363,8 @@ Localisation updates are done on betawiki and aren't listed here.
     Special:Extensions
   * Added links for the user who made each config change.
   THIS REQUIRES A DATABASE SCHEMA UPDATE FOR PEOPLE USING DATABASE HANDLER.
-  Please apply patch-cv_user_reason.sql if you used the database schema on an
-  older version than this one.
+  Please apply sql/patch-cv_user_reason.sql if you used the database schema on
+  an older version than this one.
 
 0.10.6 - 24 November 2008
   * Fixed overflowing bug for small screens in Special:Configure
@@ -368,7 +374,7 @@ Localisation updates are done on betawiki and aren't listed here.
   * New section "Popular settings" replacing "General settings" at the beginning
     of Special:Configure
   * Hide massive settings like group permissions with a collapse box
-  * Fixed a fatal error in writePHP.php
+  * Fixed a fatal error in scripts/writePHP.php
 
 0.10.4 - 22 November 2008
   * MediaWiki: added $wgNamespacesToBeSearchedProject and $wgUsePrivateIPs.
@@ -500,7 +506,7 @@ Localisation updates are done on betawiki and aren't listed here.
   $wgCachedMessageArrays is obsolete since MediaWiki 1.8.0.
 
 0.7.10 - 21 September 2008
-  * findSettings.php now works for extensions (--ext option)
+  * scripts/findSettings.php now works for extensions (--ext option)
   * Updated extensions settings
 
 0.7.9 - 20 September 2008
@@ -533,8 +539,8 @@ Localisation updates are done on betawiki and aren't listed here.
   Added $wgPhpCli and $wgLinkHolderBatchSize.
 
 0.7.0 - 26 August 2008
-  * Added writePHP.php, a maintenance script that write the configuration in PHP
-    code
+  * Added scripts/writePHP.php, a maintenance script that write the
+    configuration in PHP code
   * Changed status to beta
 
 
@@ -551,7 +557,7 @@ Localisation updates are done on betawiki and aren't listed here.
   Added $wgEnablePersistentCookies and $wgEnableHtmlDiff.
 
 0.6.11 - 13 August 2008
-  Added --alpha option to findSettings.php script.
+  Added --alpha option to scripts/findSettings.php script.
 
 0.6.10 - 12 August 2008
   Updated extensions settings.
@@ -581,7 +587,7 @@ Localisation updates are done on betawiki and aren't listed here.
 
 0.6.2 - 18 July 2008
   * maintenance scripts now use MW_INSTALL_PATH env variable to locate the wiki.
-  * findSettings.php was broken since 0.6.0, now fixed.
+  * scripts/findSettings.php was broken since 0.6.0, now fixed.
   * Renamed $wgDefaultDirectoryChmod to $wgDirectoryMode.
 
 0.6.1 - 17 July 2008
@@ -638,8 +644,8 @@ Localisation updates are done on betawiki and aren't listed here.
   Added localized names for special pages.
 
 0.4.4 - 15 June 2008
-  Added manage.php maintenance script to do maintenance with configuration
-  files.
+  Added scripts/manage.php maintenance script to do maintenance with
+  configuration files.
 
 0.4.3 - 12 June 2008
   $wgEnableCascadingProtection is obsolete in 1.13 +
@@ -726,8 +732,8 @@ Localisation updates are done on betawiki and aren't listed here.
 0.2.2 - 3 May 2008
   * Fixed a bug when $wgSharedDB is set to an empty string
   * Added $wgDBpassword and $wgAllowImageMoving to the list of settings
-  * Added an option to findSettings.php to also compare DefaultSettings.php with
-    online documentation
+  * Added an option to configuration findSettings.php to also compare
+    DefaultSettings.php with online documentation
 
 0.2.1 - 2 May 2008
   Added a maintenance script to find missing settings in this extension and

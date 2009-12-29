@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.14.19',
+	'version' => '0.15.0',
 );
 
 # Configuration part
@@ -209,7 +209,7 @@ require_once( $dir . 'Configure.func.php' );
 
 # Adding internationalisation...
 $wgExtensionMessagesFiles['Configure'] = $dir . 'Configure.i18n.php';
-$wgExtensionMessagesFiles['ConfigureSettings'] = $dir . 'Configure.settings.i18n.php';
+$wgExtensionMessagesFiles['ConfigureSettings'] = $dir . 'settings/Settings.i18n.php';
 
 # And special pages aliases...
 $wgExtensionAliasesFiles['Configure'] = $dir . 'Configure.alias.php';
@@ -227,25 +227,25 @@ $wgHooks['FarmerManageExtensions'][] = 'efConfigureFarmerManageExtensions';
 $wgHooks['AdminLinks'][] = 'efConfigureAddToAdminLinks';
 
 # Handlers
-$wgAutoloadClasses['ConfigureHandler'] = $dir . 'Configure.handler.php';
-$wgAutoloadClasses['ConfigureHandlerFiles'] = $dir . 'Configure.handler-files.php';
-$wgAutoloadClasses['ConfigureHandlerDb'] = $dir . 'Configure.handler-db.php';
+$wgAutoloadClasses['ConfigureHandler'] = $dir . 'handler/Handler.php';
+$wgAutoloadClasses['ConfigureHandlerFiles'] = $dir . 'handler/HandlerFiles.php';
+$wgAutoloadClasses['ConfigureHandlerDb'] = $dir . 'handler/HandlerDb.php';
 
 # Adding the new special pages...
 # Common code
-$wgAutoloadClasses['ConfigurationPage'] = $dir . 'Configure.page.php';
+$wgAutoloadClasses['ConfigurationPage'] = $dir . 'specials/ConfigurationPage.php';
 # Special:Configure
-$wgAutoloadClasses['SpecialConfigure'] = $dir . 'SpecialConfigure.php';
+$wgAutoloadClasses['SpecialConfigure'] = $dir . 'specials/SpecialConfigure.php';
 $wgSpecialPages['Configure'] = 'SpecialConfigure';
 # Special:ViewConfig
-$wgAutoloadClasses['SpecialViewConfig'] = $dir . 'SpecialViewConfig.php';
+$wgAutoloadClasses['SpecialViewConfig'] = $dir . 'specials/SpecialViewConfig.php';
 $wgSpecialPages['ViewConfig'] = 'SpecialViewConfig';
 # Special:Extensions
-$wgAutoloadClasses['SpecialExtensions'] = $dir . 'SpecialExtensions.php';
+$wgAutoloadClasses['SpecialExtensions'] = $dir . 'specials/SpecialExtensions.php';
 $wgSpecialPages['Extensions'] = 'SpecialExtensions';
 
 # Helper for Special:Extension
-$wgAutoloadClasses['WebExtension'] = $dir . 'Configure.ext.php';
+$wgAutoloadClasses['WebExtension'] = $dir . 'settings/WebExtension.php';
 
 # Core settings
 define( 'CONF_SETTINGS_CORE', 1 );
@@ -257,8 +257,8 @@ define( 'CONF_SETTINGS_EXT', 2 );
 define( 'CONF_SETTINGS_BOTH', 3 );
 
 # Helper for configuration settings
-$wgAutoloadClasses['ConfigurationSettings'] = $dir . 'Configure.settings.php';
-$wgAutoloadClasses['TxtDef'] = $dir . 'TxtDef.php';
+$wgAutoloadClasses['ConfigurationSettings'] = $dir . 'settings/ConfigurationSettings.php';
+$wgAutoloadClasses['TxtDef'] = $dir . 'load_txt_def/TxtDef.php';
 
 # Groups
 $wgSpecialPageGroups['Configure'] = 'wiki';
@@ -272,9 +272,9 @@ $wgAutoloadClasses['ExtPreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['HistoryConfigurationDiff'] = $dir . 'Configure.diff.php';
 
 # Pager stuff
-$wgAutoloadClasses['ConfigurationPager'] = $dir . 'Configure.pager.php';
-$wgAutoloadClasses['ConfigurationPagerDb'] = $dir . 'Configure.pager-db.php';
-$wgAutoloadClasses['ConfigurationPagerFiles'] = $dir . 'Configure.pager-files.php';
+$wgAutoloadClasses['ConfigurationPager'] = $dir . 'pager/Pager.php';
+$wgAutoloadClasses['ConfigurationPagerDb'] = $dir . 'pager/PagerDb.php';
+$wgAutoloadClasses['ConfigurationPagerFiles'] = $dir . 'pager/PagerFiles.php';
 
 # API module
 $wgAutoloadClasses['ApiConfigure'] = $dir . 'Configure.api.php';

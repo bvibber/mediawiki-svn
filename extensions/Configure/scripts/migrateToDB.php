@@ -1,43 +1,52 @@
 <?php
 
 /**
- * Helper class for the migrateToDB.php script
+ * Maintenance script that migrate configuration from files to database.
  *
+ * @file
  * @ingroup Extensions
  * @author Alexandre Emsenhuber
+ * @license GPLv2 or higher
  */
-class FilesToDB {
+
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false )
+	$IP = dirname( __FILE__ ) . '/../../..';
+
+require_once( "$IP/maintenance/Maintenance.php" );
+
+class FilesToDB extends Maintenance {
 	protected $mFilesHandler;
 	protected $mDBHandler;
 	protected $mOptions;
 	protected $mPreviousVersion = array();
 	protected $mLatest = array();
 
-	public function __construct( $options ){
-		$this->mOptions = $options;
-		$this->mFilesHandler = new ConfigureHandlerFiles();
-		$this->mDBHandler = new ConfigureHandlerDb();
+	public function __construct(){
+		parent::__construct();
+		$this->mDescription = "Maintenance script that migrate configuration from files to database";
 	}
 
-	public function run(){
-		if( isset( $this->mOptions['help'] ) ){
-			$this->doHelp();
-			return;
-		}
+	public function execute(){
+		$this->mFilesHandler = new ConfigureHandlerFiles();
+		$this->mDBHandler = new ConfigureHandlerDb();
+
 		if( !$this->doChecks() )
 			return;
+
 		$this->saveLatest();
+
 		foreach( $this->getVersions() as $version ){
 			$this->migrateVersion( $version );
 		}
 		$this->restoreLatest();
-		echo "done\n";
+		$this->output( "done\n" );
 	}
 
 	protected function doChecks(){
 		$ret = $this->mDBHandler->doChecks();
 		if( count( $ret ) ){
-			fwrite( STDERR, "You have an error with your database, please check it and then run this script again.\n" );
+			$this->error( "You have an error with your database, please check it and then run this script again.\n" );
 			return false;
 		} else {
 			return true;
@@ -67,25 +76,18 @@ class FilesToDB {
 
 	protected function migrateVersion( $version ){
 		$now = $this->mFilesHandler->getOldSettings( $version );
-		echo "doing $version...\n";
+		$this->output( "doing $version...\n" );
 		foreach( $now as $wiki => $settings ){
 			if( !isset( $this->mPreviousVersion[$wiki] ) || $this->mPreviousVersion[$wiki] != $settings ){
-				echo "	$wiki...";
+				$this->output( "	$wiki..." );
 				$this->mDBHandler->saveNewSettings( $now, $wiki, $version );
-				echo "ok\n";
+				$this->output( "ok\n" );
 			}
 		}
 		$this->mPreviousVersion = $now;
 	}
-
-	protected function doHelp(){
-		echo "Maintenance script that migrate configuration from files to database.\n";
-		echo "\n";
-		echo "Usage:\n";
-		echo "  php migrateToDB.php [--help]\n";
-		echo "\n";
-		echo "options:\n";
-		echo "--help: display this screen\n";
-		echo "\n";
-	}
 }
+
+$maintClass = 'FilesToDB';
+require_once( DO_MAINTENANCE );
+
