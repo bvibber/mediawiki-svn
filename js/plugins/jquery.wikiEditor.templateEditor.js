@@ -38,11 +38,16 @@ evt: {
 					markers.push( {
 						start: tokenArray[beginIndex].offset,
 						end: tokenArray[endIndex].offset,
-						needsWrap: function( ca1, ca2 ) {
-							return !$( ca1.parentNode ).is( 'div.wikiEditor-template' ) ||
-								ca1.previousSibling != null || ca1.nextSibling != null;
+						afterWrap: $.wikiEditor.modules.templateEditor.fn.stylize,
+						beforeUnwrap: function( node ) {
+							$( node ).data( 'display' ).remove();
 						},
-						afterWrap: $.wikiEditor.modules.templateEditor.fn.stylize
+      						getWrapper: function( ca1, ca2 ) {
+							return $( ca1.parentNode ).is( 'div.wikiEditor-template' ) &&
+									ca1.previousSibling == null &&
+									ca1.nextSibling == null ?
+								ca1.parentNode : null;
+						}
 					} );
 				} else { //else this was an unmatched opening
 					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';

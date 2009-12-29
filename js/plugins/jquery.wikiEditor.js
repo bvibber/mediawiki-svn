@@ -511,17 +511,12 @@ if ( typeof context == 'undefined' ) {
 			while ( ec.firstChild && ec.nodeName != '#text' ) {
 				ec = ec.firstChild;
 			}
-			var oldSC = sel.getRangeAt(0).startContainer;
-			var oldSO = sel.getRangeAt(0).startOffset;
-			sel.extend( sc, options.start );
-			if ( oldSC == sel.getRangeAt(0).startContainer && oldSO == sel.getRangeAt(0).startOffset ) {
-				sel.collapseToEnd();
-			} else {
-				sel.collapseToStart();
-			}
-			if ( options.end != options.start || sc != ec ) {
-				sel.extend( ec, options.end );
-			}
+			
+			var range = document.createRange();
+			range.setStart( sc, options.start );
+			range.setEnd( ec, options.end );
+			sel.removeAllRanges();
+			sel.addRange( range );
 			context.$iframe[0].contentWindow.focus();
 		},
 		/**
