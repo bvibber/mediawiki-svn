@@ -103,10 +103,11 @@ fn: {
 		 * @param offset
 		 * @param label
 		 */
-		function Token( offset, label, tokenStart ) {
+		function Token( offset, label, tokenStart, match ) {
 			this.offset = offset;
 			this.label = label;
 			this.tokenStart = tokenStart;
+			this.match = match;
 		}
 		// Reset tokens
 		var tokenArray = context.modules.highlight.tokenArray = [];
@@ -129,9 +130,8 @@ fn: {
 						if ( markAfter ) {
 							markOffset += match[0].length;
 						}
-						tokenArray.push(
-							new Token( match.index + oldOffset + markOffset, label, tokenStart )
-						);
+						tokenArray.push( new Token( match.index + oldOffset + markOffset,
+							label, tokenStart, match ) );
 						oldOffset += match.index + match[0].length;
 						newSubstring = text.substring( oldOffset );
 						match = newSubstring.match( regex );
@@ -158,6 +158,7 @@ fn: {
 		// Get all markers
 		context.fn.trigger( 'mark' );
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
+		
 		// Traverse the iframe DOM, inserting markers where they're needed. The loop traverses all leaf nodes in the
 		// DOM, and uses DOM methods rather than jQuery because it has to work with text nodes and for performance.
 		var pos = 0;
@@ -170,6 +171,10 @@ fn: {
 		while ( node.firstChild ) {
 			node = node.firstChild;
 			depth++;
+			// Filter nodes with the wikiEditor-noinclude class
+			while ( node && $( node ).hasClass( 'wikiEditor-noinclude' ) ) {
+				node = node.nextSibling;
+			}
 		}
 		while ( i < markers.length && node ) {
 			// Find the next leaf node
@@ -179,27 +184,31 @@ fn: {
 				p = p.parentNode;
 				nextDepth--;
 			}
+			// Filter nodes with the wikiEditor-noinclude class
 			p = p ? p.nextSibling : null;
+			while ( p && $( p ).hasClass( 'wikiEditor-noinclude' ) ) {
+				p = p.nextSibling;
+			}
 			while ( p && p.firstChild ) {
 				p = p.firstChild;
 				nextDepth++;
 			}
 			next = p;
-			if ( node.nodeName != '#text' ) {
-				if ( node.nodeName == 'BR' ) {
-					pos++;
-				}
+			if ( node.nodeName != '#text' && node.nodeName != 'BR' ) {
 				// Skip this node
 				node = next;
 				depth = nextDepth;
 				continue;
 			}
-			var newPos = pos + node.nodeValue.length;
+			var newPos = node.nodeName == '#text' ? pos + node.nodeValue.length : pos + 1;
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or end halfway one.
 			if ( !startNode && markers[i].start >= pos && markers[i].start < newPos ) {
-				// The next marker starts somewhere in this textNode
+				// The next marker starts somewhere in this textNode or at this BR
 				if ( markers[i].start > pos ) {
+					// node must be a textnode at this point because
+					// start > pos and start < pos+1 can't both be true
+					
 					// Split off the prefix
 					// This leaves the prefix in the current node and puts
 					// the rest in a new node, which we immediately advance to
@@ -210,65 +219,82 @@ fn: {
 				startDepth = depth;
 			}
 			// TODO: What happens when wrapping a zero-length string?
-			// TODO: Detect that something is wrapped but shouldn't be any more and unwrap it
 			if ( startNode && markers[i].end > pos && markers[i].end <= newPos ) {
-				// The marker ends somewhere in this textNode
+				// The marker ends somewhere in this textNode or at this BR
 				if ( markers[i].end < newPos ) {
+					// node must be a textnode at this point because
+					// end > pos and end < pos+1 can't both be true
+					
 					// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
 					// node. We have to make sure the split-off node will be visited correctly
 					// node.nodeValue.length - ( newPos - markers[i].end )
 					next = node.splitText( node.nodeValue.length - newPos + markers[i].end );
 					newPos = markers[i].end;
 				}
-				// Now wrap everything between startNode and node (may be equal). First find the common ancestor of
-				// startNode and node. ca1 and ca2 will be children of this common ancestor, such that ca1 is an
-				// ancestor of startNode and ca2 of node. We also check that startNode and node are the leftmost and
+				
+				// Don't wrap leading or trailing BRs, doing that causes weird issues
+				var endNode = node;
+				while ( startNode.nodeName == 'BR' && startNode != endNode )
+					startNode = startNode.nextSibling;
+
+				while ( endNode.nodeName == 'BR' && endNode != startNode )
+					endNode = endNode.previousSibling;
+				
+				// Now wrap everything between startNode and endNode (may be equal). First find the common ancestor of
+				// startNode and endNode. ca1 and ca2 will be children of this common ancestor, such that ca1 is an
+				// ancestor of startNode and ca2 of endNode. We also check that startNode and endNode are the leftmost and
 				// rightmost leaves in the subtrees rooted at ca1 and ca2 respectively; if this is not the case, we
 				// can't cleanly wrap things without misnesting and we silently fail.
-				var ca1 = startNode, ca2 = node;
+				var ca1 = startNode, ca2 = endNode;
 				// Correct for startNode and node possibly not having the same depth
 				if ( startDepth > depth ) {
 					for ( var j = 0; j < startDepth - depth && ca1; j++ ) {
-						ca1 = ca1.parentNode;
+						ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
 					}
 				}
 				else if ( startDepth < depth ) {
 					for ( var j = 0; j < depth - startDepth && ca2; j++ ) {
-						ca2 = ca2.parentNode;
+						ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
 					}
 				}
+				// Now that ca1 and ca2 have the same depth, have them walk up the tree simultaneously
+				// to find the common ancestor
 				while ( ca1 && ca2 && ca1.parentNode != ca2.parentNode ) {
-					if ( ca1.parentNode.firstChild != ca1 || ca2.parentNode.lastChild != ca2 ) {
-						// startNode and node are not the leftmost and rightmost leaves
-						ca1 = ca2 = null;
-					} else {
-						ca1 = ca1.parentNode;
-						ca2 = ca2.parentNode;
-					}
+					ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
+					ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
 				}
-				if ( ca1 && ca2 && markers[i].needsWrap( ca1, ca2 ) ) {
-					// We have to store things like .parentNode and .nextSibling because appendChild() changes these
-					// properties
-					var newNode = ca1.ownerDocument.createElement( 'div' );
-					var commonAncestor = ca1.parentNode;
-					var nextNode = ca2.nextSibling;
-					// Append all nodes between ca1 and ca2 (inclusive) to newNode
-					var n = ca1;
-					while ( n != nextNode ) {
-						var ns = n.nextSibling;
-						newNode.appendChild( n );
-						n = ns;
-					}
-					
-					// Insert newNode in the right place
-					if ( nextNode ) {
-						commonAncestor.insertBefore( newNode, nextNode );
+				if ( ca1 && ca2 ) {
+					var wrapper = markers[i].getWrapper( ca1, ca2 );
+					if ( !wrapper ) {
+						// We have to store things like .parentNode and .nextSibling because appendChild() changes these
+						// properties
+						var newNode = ca1.ownerDocument.createElement( 'div' );
+						var commonAncestor = ca1.parentNode;
+						var nextNode = ca2.nextSibling;
+						// Append all nodes between ca1 and ca2 (inclusive) to newNode
+						var n = ca1;
+						while ( n != nextNode ) {
+							var ns = n.nextSibling;
+							newNode.appendChild( n );
+							n = ns;
+						}
+						
+						// Insert newNode in the right place
+						if ( nextNode ) {
+							commonAncestor.insertBefore( newNode, nextNode );
+						} else {
+							commonAncestor.appendChild( newNode );
+						}
+						
+						$( newNode ).data( 'marker', markers[i] )
+							.addClass( 'wikiEditor-highlight wikiEditor-highlight-tmp' );
+						
+						// Allow the module adding this marker to manipulate it
+						markers[i].afterWrap( newNode, markers[i] );
 					} else {
-						commonAncestor.appendChild( newNode );
+						// Temporarily add a class for bookkeeping purposes
+						$( wrapper ).addClass( 'wikiEditor-highlight-tmp' );
 					}
-					
-					// Allow the module adding this marker to manipulate it
-					markers[i].afterWrap( newNode );
 				}
 				// Clear for next iteration
 				startNode = null;
@@ -279,6 +305,19 @@ fn: {
 			node = next;
 			depth = nextDepth;
 		}
+		
+		// Remove markers that were previously inserted but weren't passed to this function
+		context.$content.find( 'div.wikiEditor-highlight:not(.wikiEditor-highlight-tmp)' ).each( function() {
+			if ( typeof $(this).data( 'marker' ).unwrap == 'function' )
+				$(this).data( 'marker' ).unwrap( this );
+			if ( $(this).children().size() > 0 ) {
+				$(this).replaceWith( $(this).children() );
+			} else {
+				$(this).replaceWith( $(this).html() );
+			}
+		});
+		// Remove temporary class
+		context.$content.find( 'div.wikiEditor-highlight-tmp' ).removeClass( 'wikiEditor-highlight-tmp' );
 	}
 }
 

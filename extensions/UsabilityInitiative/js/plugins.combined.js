@@ -1821,17 +1821,12 @@ if ( typeof context == 'undefined' ) {
 			while ( ec.firstChild && ec.nodeName != '#text' ) {
 				ec = ec.firstChild;
 			}
-			var oldSC = sel.getRangeAt(0).startContainer;
-			var oldSO = sel.getRangeAt(0).startOffset;
-			sel.extend( sc, options.start );
-			if ( oldSC == sel.getRangeAt(0).startContainer && oldSO == sel.getRangeAt(0).startOffset ) {
-				sel.collapseToEnd();
-			} else {
-				sel.collapseToStart();
-			}
-			if ( options.end != options.start || sc != ec ) {
-				sel.extend( ec, options.end );
-			}
+			
+			var range = document.createRange();
+			range.setStart( sc, options.start );
+			range.setEnd( ec, options.end );
+			sel.removeAllRanges();
+			sel.addRange( range );
 			context.$iframe[0].contentWindow.focus();
 		},
 		/**
@@ -2265,10 +2260,11 @@ fn: {
 		 * @param offset
 		 * @param label
 		 */
-		function Token( offset, label, tokenStart ) {
+		function Token( offset, label, tokenStart, match ) {
 			this.offset = offset;
 			this.label = label;
 			this.tokenStart = tokenStart;
+			this.match = match;
 		}
 		// Reset tokens
 		var tokenArray = context.modules.highlight.tokenArray = [];
@@ -2291,9 +2287,8 @@ fn: {
 						if ( markAfter ) {
 							markOffset += match[0].length;
 						}
-						tokenArray.push(
-							new Token( match.index + oldOffset + markOffset, label, tokenStart )
-						);
+						tokenArray.push( new Token( match.index + oldOffset + markOffset,
+							label, tokenStart, match ) );
 						oldOffset += match.index + match[0].length;
 						newSubstring = text.substring( oldOffset );
 						match = newSubstring.match( regex );
@@ -2320,6 +2315,7 @@ fn: {
 		// Get all markers
 		context.fn.trigger( 'mark' );
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
+		
 		// Traverse the iframe DOM, inserting markers where they're needed. The loop traverses all leaf nodes in the
 		// DOM, and uses DOM methods rather than jQuery because it has to work with text nodes and for performance.
 		var pos = 0;
@@ -2332,6 +2328,10 @@ fn: {
 		while ( node.firstChild ) {
 			node = node.firstChild;
 			depth++;
+			// Filter nodes with the wikiEditor-noinclude class
+			while ( node && $( node ).hasClass( 'wikiEditor-noinclude' ) ) {
+				node = node.nextSibling;
+			}
 		}
 		while ( i < markers.length && node ) {
 			// Find the next leaf node
@@ -2341,27 +2341,31 @@ fn: {
 				p = p.parentNode;
 				nextDepth--;
 			}
+			// Filter nodes with the wikiEditor-noinclude class
 			p = p ? p.nextSibling : null;
+			while ( p && $( p ).hasClass( 'wikiEditor-noinclude' ) ) {
+				p = p.nextSibling;
+			}
 			while ( p && p.firstChild ) {
 				p = p.firstChild;
 				nextDepth++;
 			}
 			next = p;
-			if ( node.nodeName != '#text' ) {
-				if ( node.nodeName == 'BR' ) {
-					pos++;
-				}
+			if ( node.nodeName != '#text' && node.nodeName != 'BR' ) {
 				// Skip this node
 				node = next;
 				depth = nextDepth;
 				continue;
 			}
-			var newPos = pos + node.nodeValue.length;
+			var newPos = node.nodeName == '#text' ? pos + node.nodeValue.length : pos + 1;
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or end halfway one.
 			if ( !startNode && markers[i].start >= pos && markers[i].start < newPos ) {
-				// The next marker starts somewhere in this textNode
+				// The next marker starts somewhere in this textNode or at this BR
 				if ( markers[i].start > pos ) {
+					// node must be a textnode at this point because
+					// start > pos and start < pos+1 can't both be true
+					
 					// Split off the prefix
 					// This leaves the prefix in the current node and puts
 					// the rest in a new node, which we immediately advance to
@@ -2372,65 +2376,82 @@ fn: {
 				startDepth = depth;
 			}
 			// TODO: What happens when wrapping a zero-length string?
-			// TODO: Detect that something is wrapped but shouldn't be any more and unwrap it
 			if ( startNode && markers[i].end > pos && markers[i].end <= newPos ) {
-				// The marker ends somewhere in this textNode
+				// The marker ends somewhere in this textNode or at this BR
 				if ( markers[i].end < newPos ) {
+					// node must be a textnode at this point because
+					// end > pos and end < pos+1 can't both be true
+					
 					// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
 					// node. We have to make sure the split-off node will be visited correctly
 					// node.nodeValue.length - ( newPos - markers[i].end )
 					next = node.splitText( node.nodeValue.length - newPos + markers[i].end );
 					newPos = markers[i].end;
 				}
-				// Now wrap everything between startNode and node (may be equal). First find the common ancestor of
-				// startNode and node. ca1 and ca2 will be children of this common ancestor, such that ca1 is an
-				// ancestor of startNode and ca2 of node. We also check that startNode and node are the leftmost and
+				
+				// Don't wrap leading or trailing BRs, doing that causes weird issues
+				var endNode = node;
+				while ( startNode.nodeName == 'BR' && startNode != endNode )
+					startNode = startNode.nextSibling;
+
+				while ( endNode.nodeName == 'BR' && endNode != startNode )
+					endNode = endNode.previousSibling;
+				
+				// Now wrap everything between startNode and endNode (may be equal). First find the common ancestor of
+				// startNode and endNode. ca1 and ca2 will be children of this common ancestor, such that ca1 is an
+				// ancestor of startNode and ca2 of endNode. We also check that startNode and endNode are the leftmost and
 				// rightmost leaves in the subtrees rooted at ca1 and ca2 respectively; if this is not the case, we
 				// can't cleanly wrap things without misnesting and we silently fail.
-				var ca1 = startNode, ca2 = node;
+				var ca1 = startNode, ca2 = endNode;
 				// Correct for startNode and node possibly not having the same depth
 				if ( startDepth > depth ) {
 					for ( var j = 0; j < startDepth - depth && ca1; j++ ) {
-						ca1 = ca1.parentNode;
+						ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
 					}
 				}
 				else if ( startDepth < depth ) {
 					for ( var j = 0; j < depth - startDepth && ca2; j++ ) {
-						ca2 = ca2.parentNode;
+						ca2 = ca2.parentNode.firstChild == ca2 ? ca2.parentNode : null;
 					}
 				}
+				// Now that ca1 and ca2 have the same depth, have them walk up the tree simultaneously
+				// to find the common ancestor
 				while ( ca1 && ca2 && ca1.parentNode != ca2.parentNode ) {
-					if ( ca1.parentNode.firstChild != ca1 || ca2.parentNode.lastChild != ca2 ) {
-						// startNode and node are not the leftmost and rightmost leaves
-						ca1 = ca2 = null;
-					} else {
-						ca1 = ca1.parentNode;
-						ca2 = ca2.parentNode;
-					}
+					ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
+					ca2 = ca2.parentNode.firstChild == ca2 ? ca2.parentNode : null;
 				}
-				if ( ca1 && ca2 && markers[i].needsWrap( ca1, ca2 ) ) {
-					// We have to store things like .parentNode and .nextSibling because appendChild() changes these
-					// properties
-					var newNode = ca1.ownerDocument.createElement( 'div' );
-					var commonAncestor = ca1.parentNode;
-					var nextNode = ca2.nextSibling;
-					// Append all nodes between ca1 and ca2 (inclusive) to newNode
-					var n = ca1;
-					while ( n != nextNode ) {
-						var ns = n.nextSibling;
-						newNode.appendChild( n );
-						n = ns;
-					}
-					
-					// Insert newNode in the right place
-					if ( nextNode ) {
-						commonAncestor.insertBefore( newNode, nextNode );
+				if ( ca1 && ca2 ) {
+					var wrapper = markers[i].getWrapper( ca1, ca2 );
+					if ( !wrapper ) {
+						// We have to store things like .parentNode and .nextSibling because appendChild() changes these
+						// properties
+						var newNode = ca1.ownerDocument.createElement( 'div' );
+						var commonAncestor = ca1.parentNode;
+						var nextNode = ca2.nextSibling;
+						// Append all nodes between ca1 and ca2 (inclusive) to newNode
+						var n = ca1;
+						while ( n != nextNode ) {
+							var ns = n.nextSibling;
+							newNode.appendChild( n );
+							n = ns;
+						}
+						
+						// Insert newNode in the right place
+						if ( nextNode ) {
+							commonAncestor.insertBefore( newNode, nextNode );
+						} else {
+							commonAncestor.appendChild( newNode );
+						}
+						
+						$( newNode ).data( 'marker', markers[i] )
+							.addClass( 'wikiEditor-highlight wikiEditor-highlight-tmp' );
+						
+						// Allow the module adding this marker to manipulate it
+						markers[i].afterWrap( newNode, markers[i] );
 					} else {
-						commonAncestor.appendChild( newNode );
+						// Temporarily add a class for bookkeeping purposes
+						$( wrapper ).addClass( 'wikiEditor-highlight-tmp' );
 					}
-					
-					// Allow the module adding this marker to manipulate it
-					markers[i].afterWrap( newNode );
 				}
 				// Clear for next iteration
 				startNode = null;
@@ -2441,6 +2462,19 @@ fn: {
 			node = next;
 			depth = nextDepth;
 		}
+		
+		// Remove markers that were previously inserted but weren't passed to this function
+		context.$content.find( 'div.wikiEditor-highlight:not(.wikiEditor-highlight-tmp)' ).each( function() {
+			if ( typeof $(this).data( 'marker' ).unwrap == 'function' )
+				$(this).data( 'marker' ).unwrap( this );
+			if ( $(this).children().size() > 0 ) {
+				$(this).replaceWith( $(this).children() );
+			} else {
+				$(this).replaceWith( $(this).html() );
+			}
+		});
+		// Remove temporary class
+		context.$content.find( 'div.wikiEditor-highlight-tmp' ).removeClass( 'wikiEditor-highlight-tmp' );
 	}
 }
 
@@ -2731,11 +2765,16 @@ evt: {
 					markers.push( {
 						start: tokenArray[beginIndex].offset,
 						end: tokenArray[endIndex].offset,
-						needsWrap: function( ca1, ca2 ) {
-							return !$( ca1.parentNode ).is( 'div.wikiEditor-template' ) ||
-								ca1.previousSibling != null || ca1.nextSibling != null;
+						afterWrap: $.wikiEditor.modules.templateEditor.fn.stylize,
+						beforeUnwrap: function( node ) {
+							$( node ).data( 'display' ).remove();
 						},
-						afterWrap: $.wikiEditor.modules.templateEditor.fn.stylize
+      						getWrapper: function( ca1, ca2 ) {
+							return $( ca1.parentNode ).is( 'div.wikiEditor-template' ) &&
+									ca1.previousSibling == null &&
+									ca1.nextSibling == null ?
+								ca1.parentNode : null;
+						}
 					} );
 				} else { //else this was an unmatched opening
 					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';
@@ -3161,20 +3200,8 @@ evt: {
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
 		context.$content.parent()
-			.delayedBind( 250, 'mouseup scrollToTop keyup change',
-				function() {
-					$(this).eachAsync( {
-						bulk: 0,
-						loop: function() {
-							$.wikiEditor.modules.toc.fn.build( context );
-							$.wikiEditor.modules.toc.fn.update( context );
-						}
-					} );
-				}
-			)
 			.blur( function( event ) {
 				var context = event.data.context;
-				context.$textarea.delayedBindCancel( 250, 'mouseup scrollToTop keyup change' );
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
 	},
@@ -3183,8 +3210,46 @@ evt: {
 			context.$ui.find( '.wikiEditor-ui-left' ).height() - 
 			context.$ui.find( '.tab-toc' ).outerHeight()
 		);
+	},
+	mark: function( context, event ) {
+		var markers = context.modules.highlight.markers;
+		var tokenArray = context.modules.highlight.tokenArray;
+		var outline = context.data.outline = [];
+		var h = 0;
+		for ( var i = 0; i < tokenArray.length; i++ ) {
+			if ( tokenArray[i].label != 'TOC_HEADER' ) {
+				continue;
+			}
+			h++;
+			markers.push( {
+				index: h,
+				start: tokenArray[i].tokenStart,
+				end: tokenArray[i].offset,
+				afterWrap: function( node ) {
+					var marker = $( node ).data( 'marker' );
+					$( node ).addClass( 'wikiEditor-toc-header' )
+						.addClass( 'wikiEditor-toc-section-' + marker.index )
+						.data( 'section', marker.index );
+				},
+				getWrapper: function( ca1, ca2 ) {
+					return $( ca1.parentNode ).is( 'div.wikiEditor-toc-header' ) &&
+							ca1.previousSibling == null && ca1.nextSibling == null ?
+						ca1.parentNode : null;
+				}
+			} );
+			outline.push ( {
+				'text': tokenArray[i].match[2],
+				'level': tokenArray[i].match[1].length,
+				'index': h
+			} );
+		}
+		$.wikiEditor.modules.toc.fn.build( context );
+		$.wikiEditor.modules.toc.fn.update( context );
 	}
 },
+exp: [
+	{ 'regex': /^(={1,6})(.+?)\1\s*$/m, 'label': 'TOC_HEADER', 'markAfter': true }
+],
 /**
  * Internally used functions
  */
@@ -3228,24 +3293,9 @@ fn: {
 	update: function( context ) {
 		$.wikiEditor.modules.toc.fn.unhighlight( context );
 		
-		// Find the section we're in. Theoretically, this could use a .data() on the divs, but that would need
-		// to be updated when sections are added and linear search through a few dozen sections is relatively
-		// fast, so I'm not sure it's worth it
-		// TODO: Actually benchmark that
 		var div = context.fn.beforeSelection( 'div.wikiEditor-toc-header' );
-		var section = 0;
+		var section = div.data( 'section' ) || 0;
 		if ( context.data.outline.length > 0 ) {
-			// If the caret is before the first heading, you must be in section
-			// 0, and there is no need to look any farther - otherwise check
-			// that the caret is before each section, and when it's not, we now
-			// know what section it is in
-			if ( div.size() > 0 ) {
-				while ( section < context.data.outline.length &&
-						context.data.outline[section].wrapper.get( 0 ) != div.get( 0 ) ) {
-					section++;
-				}
-				section++;
-			}
 			var sectionLink = context.modules.toc.$toc.find( 'div.section-' + section );
 			sectionLink.addClass( 'current' );
 			
@@ -3357,22 +3407,30 @@ fn: {
 			return sections;
 		}
 		/**
-		 * Bulds unordered list HTML object from structured outline
+		 * Builds unordered list HTML object from structured outline
 		 *
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
 			var list = $( '<ul />' );
 			for ( i in structure ) {
+				var wrapper = context.$content.find( '.wikiEditor-toc-section-' + structure[i].index );
+				if ( wrapper.size() == 0 )
+					wrapper = context.$content;
 				var div = $( '<div />' )
 					.addClass( 'section-' + structure[i].index )
-					.data( 'wrapper', structure[i].wrapper )
+					.data( 'wrapper', wrapper )
 					.click( function( event ) {
 						context.fn.scrollToTop( $(this).data( 'wrapper' ) );
 						context.$textarea.textSelection( 'setSelection', {
 							'start': 0,
 							'startContainer': $(this).data( 'wrapper' )
 						} );
+						
+						// Highlight the clicked link
+						$.wikiEditor.modules.toc.fn.unhighlight( context );
+						$(this).addClass( 'current' );
+						
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
 						event.preventDefault();
@@ -3493,85 +3551,11 @@ fn: {
 			}
 		}
 		
-		// Build outline from wikitext
-		var outline = [], h = 0;
-		
-		// Traverse all text nodes in context.$content
-		function traverseTextNodes() {
-			if ( this.nodeName != '#text' ) {
-				$( this.childNodes ).each( traverseTextNodes );
-				return;
-			}
-			var text = this.nodeValue;
-			
-			// Get the previous and next node in Euler tour order
-			var p = this;
-			while( !p.previousSibling )
-				p = p.parentNode;
-			var prev = p ? p.previousSibling : null;
-			
-			p = this;
-			while ( p && !p.nextSibling )
-				p = p.parentNode;
-			var next = p ? p.nextSibling : null;
-			
-			// Edge case: there are more equals signs,
-			// but they're not all in the <div>. Eat them.
-			if ( prev && prev.nodeName == '#text' ) {
-				var prevText = prev.nodeValue;
-				while ( prevText.substr( -1 ) == '=' ) {
-					prevText = prevText.substr( 0, prevText.length - 1 );
-					text = '=' + text;
-				}
-				prev.nodeValue = prevText;
-			}
-			var next = this.nextSibling;
-			if ( next && next.nodeName == '#text' ) {
-				var nextText = next.nodeValue;
-				while ( nextText.substr( 0, 1 ) == '=' ) {
-					nextText = nextText.substr( 1 );
-					text = text + '=';
-				}
-				next.nodeValue = nextText;
-			}
-			if ( text != this.nodeValue )
-				this.nodeValue = text;
-			
-			var match = text.match( /^(={1,6})(.+?)\1\s*$/ );
-			if ( !match ) {
-				if ( $(this).parent().is( '.wikiEditor-toc-header' ) )
-					// Header has become invalid
-					// Remove the class but keep the <div> intact
-					// to prevent issues with Firefox
-					// TODO: Fix this issue
-					//$(this).parent()
-					//	.removeClass( 'wikiEditor-toc-header' );
-					$(this).parent().replaceWith( text );
-				return;
-			}
-			
-			// Wrap the header in a <div>, unless it's already wrapped
-			var div;
-			if ( $(this).parent().is( '.wikiEditor-toc-header' ) )
-				div = $(this).parent();
-			else if ( $(this).parent().is( 'div' ) )
-				div = $(this).parent().addClass( 'wikiEditor-toc-header' );
-			else {
-				div = $( '<div />' )
-					.text( text )
-					.css( 'display', 'inline' )
-					.addClass( 'wikiEditor-toc-header' );
-				$(this).replaceWith( div );
-			}
-			outline[h] = { 'text': match[2], 'wrapper': div, 'level': match[1].length, 'index': h + 1 };
-			h++;
-		}
-		context.$content.each( traverseTextNodes );
-		
 		// Normalize heading levels for list creation
 		// This is based on Linker::generateTOC(), so it should behave like the
 		// TOC on rendered articles does - which is considdered to be correct
 		// at this point in time.
+		var outline = context.data.outline;
 		var lastLevel = 0;
 		var nLevel = 0;
 		for ( var i = 0; i < outline.length; i++ ) {
@@ -3591,8 +3575,7 @@ fn: {
 		// section 0, if needed
 		var structure = buildStructure( outline );
 		if ( $( 'input[name=wpSection]' ).val() == '' ) {
-			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0,
-				'wrapper': context.$content } );
+			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0 } );
 		}
 		context.modules.toc.$toc.html( buildList( structure ) );
 		
@@ -3601,8 +3584,6 @@ fn: {
 			buildCollapseControls();
 		}
 		context.modules.toc.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
-		// Cache the outline for later use
-		context.data.outline = outline;
 	}
 }
 

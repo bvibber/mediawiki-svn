@@ -26,20 +26,8 @@ evt: {
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
 		context.$content.parent()
-			.delayedBind( 250, 'mouseup scrollToTop keyup change',
-				function() {
-					$(this).eachAsync( {
-						bulk: 0,
-						loop: function() {
-							$.wikiEditor.modules.toc.fn.build( context );
-							$.wikiEditor.modules.toc.fn.update( context );
-						}
-					} );
-				}
-			)
 			.blur( function( event ) {
 				var context = event.data.context;
-				context.$textarea.delayedBindCancel( 250, 'mouseup scrollToTop keyup change' );
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
 	},
@@ -48,8 +36,46 @@ evt: {
 			context.$ui.find( '.wikiEditor-ui-left' ).height() - 
 			context.$ui.find( '.tab-toc' ).outerHeight()
 		);
+	},
+	mark: function( context, event ) {
+		var markers = context.modules.highlight.markers;
+		var tokenArray = context.modules.highlight.tokenArray;
+		var outline = context.data.outline = [];
+		var h = 0;
+		for ( var i = 0; i < tokenArray.length; i++ ) {
+			if ( tokenArray[i].label != 'TOC_HEADER' ) {
+				continue;
+			}
+			h++;
+			markers.push( {
+				index: h,
+				start: tokenArray[i].tokenStart,
+				end: tokenArray[i].offset,
+				afterWrap: function( node ) {
+					var marker = $( node ).data( 'marker' );
+					$( node ).addClass( 'wikiEditor-toc-header' )
+						.addClass( 'wikiEditor-toc-section-' + marker.index )
+						.data( 'section', marker.index );
+				},
+				getWrapper: function( ca1, ca2 ) {
+					return $( ca1.parentNode ).is( 'div.wikiEditor-toc-header' ) &&
+							ca1.previousSibling == null && ca1.nextSibling == null ?
+						ca1.parentNode : null;
+				}
+			} );
+			outline.push ( {
+				'text': tokenArray[i].match[2],
+				'level': tokenArray[i].match[1].length,
+				'index': h
+			} );
+		}
+		$.wikiEditor.modules.toc.fn.build( context );
+		$.wikiEditor.modules.toc.fn.update( context );
 	}
 },
+exp: [
+	{ 'regex': /^(={1,6})(.+?)\1\s*$/m, 'label': 'TOC_HEADER', 'markAfter': true }
+],
 /**
  * Internally used functions
  */
@@ -93,24 +119,9 @@ fn: {
 	update: function( context ) {
 		$.wikiEditor.modules.toc.fn.unhighlight( context );
 		
-		// Find the section we're in. Theoretically, this could use a .data() on the divs, but that would need
-		// to be updated when sections are added and linear search through a few dozen sections is relatively
-		// fast, so I'm not sure it's worth it
-		// TODO: Actually benchmark that
 		var div = context.fn.beforeSelection( 'div.wikiEditor-toc-header' );
-		var section = 0;
+		var section = div.data( 'section' ) || 0;
 		if ( context.data.outline.length > 0 ) {
-			// If the caret is before the first heading, you must be in section
-			// 0, and there is no need to look any farther - otherwise check
-			// that the caret is before each section, and when it's not, we now
-			// know what section it is in
-			if ( div.size() > 0 ) {
-				while ( section < context.data.outline.length &&
-						context.data.outline[section].wrapper.get( 0 ) != div.get( 0 ) ) {
-					section++;
-				}
-				section++;
-			}
 			var sectionLink = context.modules.toc.$toc.find( 'div.section-' + section );
 			sectionLink.addClass( 'current' );
 			
@@ -222,22 +233,30 @@ fn: {
 			return sections;
 		}
 		/**
-		 * Bulds unordered list HTML object from structured outline
+		 * Builds unordered list HTML object from structured outline
 		 *
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
 			var list = $( '<ul />' );
 			for ( i in structure ) {
+				var wrapper = context.$content.find( '.wikiEditor-toc-section-' + structure[i].index );
+				if ( wrapper.size() == 0 )
+					wrapper = context.$content;
 				var div = $( '<div />' )
 					.addClass( 'section-' + structure[i].index )
-					.data( 'wrapper', structure[i].wrapper )
+					.data( 'wrapper', wrapper )
 					.click( function( event ) {
 						context.fn.scrollToTop( $(this).data( 'wrapper' ) );
 						context.$textarea.textSelection( 'setSelection', {
 							'start': 0,
 							'startContainer': $(this).data( 'wrapper' )
 						} );
+						
+						// Highlight the clicked link
+						$.wikiEditor.modules.toc.fn.unhighlight( context );
+						$(this).addClass( 'current' );
+						
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
 						event.preventDefault();
@@ -358,85 +377,11 @@ fn: {
 			}
 		}
 		
-		// Build outline from wikitext
-		var outline = [], h = 0;
-		
-		// Traverse all text nodes in context.$content
-		function traverseTextNodes() {
-			if ( this.nodeName != '#text' ) {
-				$( this.childNodes ).each( traverseTextNodes );
-				return;
-			}
-			var text = this.nodeValue;
-			
-			// Get the previous and next node in Euler tour order
-			var p = this;
-			while( !p.previousSibling )
-				p = p.parentNode;
-			var prev = p ? p.previousSibling : null;
-			
-			p = this;
-			while ( p && !p.nextSibling )
-				p = p.parentNode;
-			var next = p ? p.nextSibling : null;
-			
-			// Edge case: there are more equals signs,
-			// but they're not all in the <div>. Eat them.
-			if ( prev && prev.nodeName == '#text' ) {
-				var prevText = prev.nodeValue;
-				while ( prevText.substr( -1 ) == '=' ) {
-					prevText = prevText.substr( 0, prevText.length - 1 );
-					text = '=' + text;
-				}
-				prev.nodeValue = prevText;
-			}
-			var next = this.nextSibling;
-			if ( next && next.nodeName == '#text' ) {
-				var nextText = next.nodeValue;
-				while ( nextText.substr( 0, 1 ) == '=' ) {
-					nextText = nextText.substr( 1 );
-					text = text + '=';
-				}
-				next.nodeValue = nextText;
-			}
-			if ( text != this.nodeValue )
-				this.nodeValue = text;
-			
-			var match = text.match( /^(={1,6})(.+?)\1\s*$/ );
-			if ( !match ) {
-				if ( $(this).parent().is( '.wikiEditor-toc-header' ) )
-					// Header has become invalid
-					// Remove the class but keep the <div> intact
-					// to prevent issues with Firefox
-					// TODO: Fix this issue
-					//$(this).parent()
-					//	.removeClass( 'wikiEditor-toc-header' );
-					$(this).parent().replaceWith( text );
-				return;
-			}
-			
-			// Wrap the header in a <div>, unless it's already wrapped
-			var div;
-			if ( $(this).parent().is( '.wikiEditor-toc-header' ) )
-				div = $(this).parent();
-			else if ( $(this).parent().is( 'div' ) )
-				div = $(this).parent().addClass( 'wikiEditor-toc-header' );
-			else {
-				div = $( '<div />' )
-					.text( text )
-					.css( 'display', 'inline' )
-					.addClass( 'wikiEditor-toc-header' );
-				$(this).replaceWith( div );
-			}
-			outline[h] = { 'text': match[2], 'wrapper': div, 'level': match[1].length, 'index': h + 1 };
-			h++;
-		}
-		context.$content.each( traverseTextNodes );
-		
 		// Normalize heading levels for list creation
 		// This is based on Linker::generateTOC(), so it should behave like the
 		// TOC on rendered articles does - which is considdered to be correct
 		// at this point in time.
+		var outline = context.data.outline;
 		var lastLevel = 0;
 		var nLevel = 0;
 		for ( var i = 0; i < outline.length; i++ ) {
@@ -456,8 +401,7 @@ fn: {
 		// section 0, if needed
 		var structure = buildStructure( outline );
 		if ( $( 'input[name=wpSection]' ).val() == '' ) {
-			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0,
-				'wrapper': context.$content } );
+			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0 } );
 		}
 		context.modules.toc.$toc.html( buildList( structure ) );
 		
@@ -466,8 +410,6 @@ fn: {
 			buildCollapseControls();
 		}
 		context.modules.toc.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
-		// Cache the outline for later use
-		context.data.outline = outline;
 	}
 }
 
