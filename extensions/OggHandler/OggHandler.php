@@ -32,38 +32,6 @@ $wgParserOutputHooks['OggHandler'] = array( 'OggHandler', 'outputHook' );
 $wgHooks['LanguageGetMagic'][] = 'OggHandler::registerMagicWords';
 
 
-/**
- * Handle Adding of "timedText" NameSpace
- */
-$wgTimedTextNS = null;
-
-// Make sure $wgExtraNamespaces in an array (set to NULL by default) :
-if ( !is_array( $wgExtraNamespaces ) ) {
-	$wgExtraNamespaces = array();
-}
-// Check for "TimedText" NS
-$maxNS = 101; // content pages need "even" namespaces
-foreach($wgExtraNamespaces as $ns => $nsTitle ){
-	if( $nsTitle == 'TimedText' ){
-		$wgTimedTextNS = $ns;
-	}
-	if( $ns > $maxNS ){
-		$maxNs = $ns;
-	}
-}
-// If not found add Add a custom timedText NS
-if( !$wgTimedTextNS ){
-	$wgTimedTextNS = ( $maxNS + 1 );
-	$wgExtraNamespaces[	$wgTimedTextNS ] = 'TimedText';
-	$wgExtraNamespaces[ $wgTimedTextNS +1 ] =  'TimedText_talk';
-}
-define( "NS_TIMEDTEXT", $wgTimedTextNS);
-// Assume $wgTimedTextNS +1 for talk
-define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1);
-
-
-// end of handling timedText
-
 //Setup a hook for iframe=true (will strip the interface and only output the player)
 $wgHooks['ArticleFromTitle'][] = 'OggHandler::iframeOutputHook';
 
@@ -87,10 +55,13 @@ $wgPlayerStatsCollection=false;
 
 //if $wgEnableJS2system = true  and the below variable is set to true
 // then we can output the <video> tag and its re-written by mv_embed
-$wgVideoTagOut = true;
+$wgVideoTagOut = false;
 
-//if we should enable iframe embedding of form ?title=File:name&iframe=true
-$wgEnableIframeEmbed = true;
+// Support striped player iframe output for remote embedding
+$wgEnableIframeEmbed = false;
+
+// If timedText is enabled
+$wgEnableTimedText = false;
 
 //Location of oggThumb binary (used over the ffmpeg version)
 $wgOggThumbLocation = '/usr/bin/oggThumb';
@@ -121,3 +92,38 @@ $wgEnableTemporalOggUrls = false;
 // prevent the applet from loading them.
 //
 $wgCortadoJarFile = "cortado-ovt-stripped-0.5.1.jar";
+
+/******************* CONFIGURATION ENDS HERE **********************/
+
+if( $wgEnableTimedText ){
+/**
+ * Handle Adding of "timedText" NameSpace
+ */
+$wgTimedTextNS = null;
+
+// Make sure $wgExtraNamespaces in an array (set to NULL by default) :
+if ( !is_array( $wgExtraNamespaces ) ) {
+	$wgExtraNamespaces = array();
+}
+// Check for "TimedText" NS
+$maxNS = 101; // content pages need "even" namespaces
+foreach($wgExtraNamespaces as $ns => $nsTitle ){
+	if( $nsTitle == 'TimedText' ){
+		$wgTimedTextNS = $ns;
+	}
+	if( $ns > $maxNS ){
+		$maxNs = $ns;
+	}
+}
+// If not found add Add a custom timedText NS
+if( !$wgTimedTextNS ){
+	$wgTimedTextNS = ( $maxNS + 1 );
+	$wgExtraNamespaces[	$wgTimedTextNS ] = 'TimedText';
+	$wgExtraNamespaces[ $wgTimedTextNS +1 ] =  'TimedText_talk';
+}
+define( "NS_TIMEDTEXT", $wgTimedTextNS);
+// Assume $wgTimedTextNS +1 for talk
+define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1);
+
+
+} // end of handling timedText

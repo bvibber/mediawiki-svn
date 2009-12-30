@@ -467,9 +467,9 @@ class OggHandler extends MediaHandler {
 
 	function setHeaders( $out ) {
 		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer, $wgUser, $wgScriptPath,
-				$wgPlayerStatsCollection, $wgVideoTagOut, $wgEnableJS2system;
+				$wgPlayerStatsCollection, $wgVideoTagOut;
 
-		if( $wgVideoTagOut && $wgEnableJS2system){
+		if( $wgVideoTagOut ){
 			// We could add "video" tag module stuff here if want. specifically:
 
 			// <script type="text/javascript" src="js/mwEmbed/jsScriptLoader.php?class=window.jQuery,mwEmbed,$j.ui,mw.EmbedPlayer,nativeEmbed,ctrlBuilder,mvpcfConfig,kskinConfig,$j.fn.menu,$j.cookie,$j.ui.slider,mw.TimedText&debug=true"></script>
@@ -524,7 +524,7 @@ EOT
 );
 		}
 
-		//if collecting stats add relevant code:
+		// If collecting stats add relevant code:
 		if( $wgPlayerStatsCollection ){
 			//the player stats js file  MUST be on the same server as OggHandler
 			$playerStats_js = htmlspecialchars ( $wgScriptPath ). '/extensions/PlayerStatsGrabber/playerStats.js';
@@ -595,8 +595,8 @@ class OggTransformOutput extends MediaTransformOutput {
 	}
 
 	function toHtml( $options = array() ) {
-		global $wgEnableTemporalOggUrls, $wgVideoTagOut, $wgEnableJS2system,
-			$wgScriptPath;
+		global $wgEnableTemporalOggUrls, $wgVideoTagOut,
+			$wgScriptPath, $wgEnableTimedText;
 
 		wfLoadExtensionMessages( 'OggHandler' );
 		if ( count( func_get_args() ) == 2 ) {
@@ -620,8 +620,8 @@ class OggTransformOutput extends MediaTransformOutput {
 		$thumbDivAttribs = array();
 		$showDescIcon = false;
 
-		//check if outputting to video tag or oggHandler
-		if( $wgVideoTagOut	&& $wgEnableJS2system ){
+		// Check if outputting to video tag or oggHandler
+		if( $wgVideoTagOut ){
 			//video tag output:
 			if ( $this->isVideo ) {
 				$playerHeight = $height;
@@ -648,11 +648,12 @@ class OggTransformOutput extends MediaTransformOutput {
 					'startOffset' => $offset,
 					'linkback' => $linkAttribs['href']
 		    );
-
+			// Init $timedTextSources string
+			$timedTextSources = '';
 
 		    if( $this->file->getRepoName() == 'shared' ){
 				$videoAttr['sharedWiki'] = true;
-		    }else{
+		    }else if( $wgEnableTimedText ){
 		   		// Get the list of subtitles available
 				$params = new FauxRequest( array (
 					'action' => 'query',
@@ -668,7 +669,7 @@ class OggTransformOutput extends MediaTransformOutput {
 				// Get the list of language Names
 				$langNames = Language::getLanguageNames();
 
-				$timedTextSources = '';
+
 				if($data['query'] && $data['query']['allpages'] ){
 					foreach( $data['query']['allpages'] as $na => $page ){
 						$pageTitle = $page['title'];
@@ -678,12 +679,9 @@ class OggTransformOutput extends MediaTransformOutput {
 							$languageKey = array_pop( $tileParts );
 						}
 						//If there is no valid language continue:
-
 						if( !isset( $langNames[ $languageKey ] ) ){
 							continue;
 						}
-						// NOTE: I don't know if api.php pointer is the cleanest path system
-						// At any rate we need a strip XML call for desktop srt players
 						$textAttr = array(
 							'src' => "{$wgServer}{$wgScriptPath}/api.php?" .
 								'action=parse&format=json&page=' . $pageTitle,
@@ -695,8 +693,9 @@ class OggTransformOutput extends MediaTransformOutput {
 				}
 		    }
 
-		    if( $wgEnableTemporalOggUrls )
+		    if( $wgEnableTemporalOggUrls ){
 		        $videoAttr['URLTimeEncoding'] = 'true';
+		    }
 
 			$s = Xml::tags( 'video', $videoAttr,
 					Xml::tags('div', array(
