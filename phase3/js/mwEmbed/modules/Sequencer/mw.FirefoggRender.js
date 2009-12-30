@@ -16,10 +16,9 @@
 
 var default_render_options = {
 	"videoQuality" : 8,
-	"framerate"	: 30	 
-	
-	
+	"framerate"	: 30
 }
+
 var default_FirefoggRender_options = {
 	start_time:0,
 	// if we should save to disk (if false setup upload stuff below) 
@@ -132,8 +131,8 @@ mw.FirefoggRender.prototype = {
 		// issue a load request on the player:
 		this.player.load(function(){
 			$j( this.target_timeStatus ).val( "player ready" );
-			//now issue the save video as call (to avoid running "expired" code			
-			//_this.fogg.saveVideoAs();		
+			//now issue the save video as call
+			_this.fogg.saveVideoAs();		
 			_this.doNextFrame();
 		});
 	},
@@ -145,7 +144,7 @@ mw.FirefoggRender.prototype = {
 			
 		_this.player.setCurrentTime( _this.render_time, function() {					
 			//mw.log(	'addFrame:' + $j( _this.player_target ).attr( 'id' ) );		
-			//_this.fogg.addFrame( $j( _this.player_target ).attr( 'id' ) );
+			_this.fogg.addFrame( $j( _this.player_target ).attr( 'id' ) );
 			_this.render_time += _this.interval;				
 			if ( _this.render_time >= _this.player.getDuration() ) {
 				_this.doFinalRender();
