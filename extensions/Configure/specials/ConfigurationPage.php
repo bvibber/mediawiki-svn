@@ -305,10 +305,23 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected abstract function buildAllSettings();
 
 	/**
+	 * Show "you are editing old version" message
+	 */
+	protected function showOldVersionMessage( $version ) {
+		global $wgOut, $wgLang;
+
+		$wgOut->addWikiMsg( 'configure-edit-old',
+			$wgLang->timeAndDate( $version ),
+			$wgLang->date( $version ),
+			$wgLang->time( $version )
+		);
+	}
+
+	/**
 	 * Get the version
 	 */
 	protected function getVersion() {
-		global $wgConf, $wgOut, $wgRequest, $wgLang;
+		global $wgConf, $wgOut, $wgRequest;
 
 		if ( $version = $wgRequest->getVal( 'version' ) ) {
 			if ( $version == 'default' || $wgConf->versionExists( $version ) ) {
@@ -334,11 +347,9 @@ abstract class ConfigurationPage extends SpecialPage {
 							$this->conf[$name] += $current[$name];
 					}
 				}
-				$wgOut->addWikiMsg( 'configure-edit-old',
-					$wgLang->timeAndDate( $version ),
-					$wgLang->date( $version ),
-					$wgLang->time( $version )
-				);
+
+				if ( !$this->showOldVersionMessage( $version ) )
+					return false;
 			} else {
 				$wgOut->wrapWikiMsg( '<div class="errorbox">$1</div>',
 					array( 'configure-old-not-available', $version ) );

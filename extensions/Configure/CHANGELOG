@@ -2,7 +2,9 @@ This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
 0.15.1 - 30 December 2009
-  scripts/manage.php now adds a reason while reverting to a version.
+  * scripts/manage.php now adds a reason while reverting to a version.
+  * fixed a bug introduced in 0.14.19, Special:ViewConfig was unable to display
+    diffs
 
 0.15.0 - 29 December 2009
   * Updated maintenance scripts to subclass the Maintenance class and moved them

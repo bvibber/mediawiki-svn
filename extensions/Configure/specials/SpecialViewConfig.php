@@ -21,6 +21,22 @@ class SpecialViewConfig extends ConfigurationPage {
 		return CONF_SETTINGS_BOTH;
 	}
 
+	protected function showOldVersionMessage( $version ) {
+		global $wgConf, $wgOut, $wgRequest;
+
+		$this->version = $version;
+
+		if ( $diff = $wgRequest->getVal( 'diff' ) ) {
+			if ( !$wgConf->versionExists( $diff ) ) {
+				$wgOut->wrapWikiMsg( '<div class="errorbox">$1</div>',
+					array( 'configure-old-not-available', $diff ) );
+				return false;
+			}
+			$this->diff = $diff;
+		}
+		return true;
+	}
+
 	/**
 	 * Just in case, security
 	 */
