@@ -88,6 +88,13 @@ $messages['bs'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitekst',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'wikieditor-wikitext-tab' => 'Wikitext',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

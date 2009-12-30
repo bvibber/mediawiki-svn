@@ -93,6 +93,14 @@ $messages['bs'] = array(
 	'wikieditor-toc-hide' => 'Sakrij sadržaj',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'wikieditor-toc-show' => 'Mostra el contingut',
+	'wikieditor-toc-hide' => 'Amaga el contingut',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
