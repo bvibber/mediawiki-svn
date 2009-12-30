@@ -1610,9 +1610,9 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* Searches for related clipes from titleKey
+	* Searches for related clips from titleKey
 	*/
-	getRelatedFromTitleKey:function() {
+	getRelatedFromTitleKey: function() {
 		var _this = this;
 		var request = {			
 			//normalize the File NS (ie sometimes its present in wikiTitleKey other times not
