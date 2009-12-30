@@ -220,7 +220,7 @@ mw.addMessages( {
 			var _this = this;
 			mw.log( "TimedText:bindMenu:" + target );
 			_this.menuTarget = 	target;				
-			var $menuButton = this.embedPlayer.$target.find( '.timed-text' );
+			var $menuButton = this.embedPlayer.$interface.find( '.timed-text' );
 					
 			// Else bind and show the menu 			
 			// We already have a loader in embedPlayer so the delay of
@@ -458,10 +458,10 @@ mw.addMessages( {
 						// Layout Menu option
 					_this.getLi( gM( 'mwe-layout' ), 'image' ).append(
 						_this.getLayoutMenu()
-					),
+					)
 					
 					// Search Menu option
-					_this.getLi( gM('mwe-search'),  'search')					
+					//_this.getLi( gM('mwe-search'),  'search')					
 				);					
 			}
 			// Put in the "Make Transcript" link
@@ -627,7 +627,7 @@ mw.addMessages( {
 		* Updates the timed text layout ( should be called when  config.layout changes )
 		*/
 		updateLayout: function(){
-			var $playerTarget =  this.embedPlayer.$target;	
+			var $playerTarget =  this.embedPlayer.$interface;	
 			$playerTarget.find('.itext').remove();
 			this.refreshDisplay();
 		},
@@ -656,7 +656,7 @@ mw.addMessages( {
 			this.enabledSources.push( source );
 			//Set any existing text target to "loading"
 			if( !source.loaded ) {
-				var $playerTarget = this.embedPlayer.$target; 			
+				var $playerTarget = this.embedPlayer.$interface; 			
 				$playerTarget.find('.itext').text( gM('mwe-loading-text') );
 			}
 			// Load the text:
@@ -762,7 +762,7 @@ mw.addMessages( {
 			
 			//mw.log( 'updateTextDisplay: ' + text );	
 					
-			var $playerTarget =  this.embedPlayer.$target;	
+			var $playerTarget =  this.embedPlayer.$interface;	
 			var $textTarget = $playerTarget.find( '.itext_' + source.category + ' span' );			
 			// If we are missing the target add it: 		
 			if( $textTarget.length == 0){
@@ -795,7 +795,7 @@ mw.addMessages( {
 		addItextDiv: function( category ){			 		
 			mw.log(" addItextDiv: " +  category )			
 			// Get the relative positioned player class from the ctrlBuilder:
-			var $playerTarget =  this.embedPlayer.$target;
+			var $playerTarget =  this.embedPlayer.$interface;
 			
 			//Remove any existing itext divs for this player;
 			$playerTarget.find('.itext_' + category ).remove();
@@ -820,8 +820,8 @@ mw.addMessages( {
 							})
 						)    						
 				);				
-				// Make sure the outer player height is player + ctrlBuilder
-				$j( '#' + this.embedPlayer.id ).parent('.control_wrap').animate({
+				// Resize the interface for layoutMode == 'ontop' 
+				this.embedPlayer.$interface.animate({
 					'height': this.embedPlayer.height + this.embedPlayer.ctrlBuilder.height
 				})	
 			}else if ( layoutMode == 'below'){
@@ -843,8 +843,8 @@ mw.addMessages( {
 				);		
 				var height = 62 + this.embedPlayer.height + this.embedPlayer.ctrlBuilder.height;
 				mw.log( 'set height:' + height );
-				// Add 60px to outer player height
-				$j( '#' + this.embedPlayer.id ).parent('.control_wrap').animate({
+				// Resize the interface for layoutMode == 'below' 
+				this.embedPlayer.$interface.animate({
 					'height': height
 				})		
 				mw.log( ' height of ' + this.embedPlayer.id + ' is now: ' + $j( '#' + this.embedPlayer.id ).height() );

@@ -38,7 +38,7 @@ var nativeEmbed = {
 	},	
 	
 	/**
-	* Wraps the embed object and returns the output
+	* Return the embed code
 	*/
 	getEmbedHTML : function () {
 		var _this = this;
@@ -53,7 +53,7 @@ var nativeEmbed = {
 	/**
 	* Get the native embed  code
 	*/
-	getEmbedObj:function() {
+	getEmbedObj: function() {
 		// We want to let mwEmbed handle the controls so notice the absence of control attribute
 		// controls=false results in controls being displayed: 
 		// http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-August/016159.html		
@@ -70,7 +70,7 @@ var nativeEmbed = {
 	/**
 	* Post element javascript, binds event listeners and starts monitor 
 	*/	
-	postEmbedJS:function() {
+	postEmbedJS: function() {
 		var _this = this;
 		mw.log( "f:native:postEmbedJS:" );
 		this.getPlayerElement();
@@ -78,9 +78,7 @@ var nativeEmbed = {
 		
 			// Setup some bindings:
 			var vid = $j( this.playerElement ).get(0);
-			var wtf = function(){
-				alert("wtf");
-			}			
+			
 			// Bind events to local js methods:			
 			vid.addEventListener( 'canplaythrough',  function(){ _this.canplaythrough }, true);			 
 			vid.addEventListener( 'loadedmetadata', function(){ _this.onloadedmetadata() }, true);
@@ -89,7 +87,7 @@ var nativeEmbed = {
 			vid.addEventListener( 'seeking', function(){ _this.onseeking() }, true);
 			vid.addEventListener( 'seeked', function(){ _this.onseeked() }, true);			
 		
-			// Always load the media:
+			// Check for load flag
 			if ( this.onlyLoadFlag ) {
 				this.playerElement.load();
 			} else {
@@ -187,14 +185,14 @@ var nativeEmbed = {
 	*/
 	setCurrentTime: function( position , callback ) {	
 		var _this = this;
-		mw.log( 'native:setCurrentTime::: ' + position + ' :  dur: ' + _this.getDuration() );
+		//mw.log( 'native:setCurrentTime::: ' + position + ' :  dur: ' + _this.getDuration() );
 		this.getPlayerElement();
 		if ( !this.playerElement ) {
 			this.load( function() {				
-				_this.doSeekedCb( position, callback );		
+				_this.doSeekedCallback( position, callback );		
 			} );
 		} else {
-			_this.doSeekedCb( position, callback );		
+			_this.doSeekedCallback( position, callback );		
 		}
 	},
 	/**
@@ -206,8 +204,7 @@ var nativeEmbed = {
 	doSeekedCallback : function( position, callback ){
 		var _this = this;			
 		this.getPlayerElement();		
-		var once = function( event ) {
-			mw.log("did seek callback");
+		var once = function( event ) {			
 			callback();
 			_this.playerElement.removeEventListener( 'seeked', once, false );
 		};		
@@ -339,7 +336,7 @@ var nativeEmbed = {
 			// No vid loaded
 			mw.log( 'native::load() ... doEmbed' );
 			this.onlyLoadFlag = true;
-			this.doEmbedHTML();
+			this.doEmbedPlayer();
 			this.onLoadedCallback =  callback;
 		} else {
 			// Should not happen offten
@@ -365,7 +362,7 @@ var nativeEmbed = {
 	*  fired when "seeking" 
 	*/
 	onseeking:function() {
-		mw.log( "onseeking" );
+		//mw.log( "onseeking" );
 		this.seeking = true;
 		this.setStatus( gM( 'mwe-seeking' ) );
 	},
@@ -375,7 +372,7 @@ var nativeEmbed = {
 	*  fired when done seeking 
 	*/
 	onseeked: function() {
-		mw.log("onseeked");
+		//mw.log("onseeked");
 		this.seeking = false;
 	},
 	
@@ -436,7 +433,7 @@ var nativeEmbed = {
 			mw.log( 'native on ended called with time:' + this.playerElement.currentTime + ' of total real dur: ' +  this.getDuration() + ' attempting to reload src...' );
 			var doRetry = function() {
 				_this.urlAppend = 'retry_src=' + _this.grab_try_count;
-				_this.doEmbedHTML();
+				_this.doEmbedPlayer();
 				_this.grab_try_count++;
 			}
 			setTimeout( doRetry, 100 );

@@ -6,8 +6,8 @@
 * ctrlBuilder object
 *	@param the embedPlayer element we are targeting
 */
-var ctrlBuilder = function( embedObj, options ) {
-	return this.init( embedObj, options );
+var ctrlBuilder = function( embedPlayer, options ) {
+	return this.init( embedPlayer, options );
 };
 
 /*
@@ -31,7 +31,7 @@ ctrlBuilder.prototype = {
 	// Default control bar height is 29
 	height: 29,		
 	
-	// Default supported componets is merged with embedObject supported types
+	// Default supported components is merged with embedPlayerect supported types
 	supportedComponets: {
 	  'options':true,
 	  'borders':true
@@ -39,17 +39,17 @@ ctrlBuilder.prototype = {
 	/**
 	* Initialization Object for the control builder
 	*
-	* @param {Object} embedObj EmbedPlayer interface
+	* @param {Object} embedPlayer EmbedPlayer interface
 	*/ 
-	init: function( embedObj ) {
+	init: function( embedPlayer ) {
 		var _this = this;
-		this.embedObj = embedObj;
+		this.embedPlayer = embedPlayer;
 
 		// Check for skin overrides for ctrlBuilder
-		if ( window[ embedObj.skinName + 'Config'] ) {
+		if ( window[ embedPlayer.skinName + 'Config'] ) {
 		
 			// Clone as to not override prototype: 	
-			var _this = $j.extend( true, { }, this, window[ embedObj.skinName + 'Config'] );
+			var _this = $j.extend( true, { }, this, window[ embedPlayer.skinName + 'Config'] );
 			
 			return _this;
 		}
@@ -61,34 +61,61 @@ ctrlBuilder.prototype = {
 	* Get the controls html
 	* @return {String} html output of controls
 	*/
-	getControls: function() {
-		// Set up local pointer to the embedObj
-		var embedObj = this.embedObj;
-		// set up local ctrlBuilder
+	addControls: function() {
+		// Set up local pointer to the embedPlayer
+		var embedPlayer = this.embedPlayer;
+		
+		// Set up local ctrlBuilder
 		var _this = this;
 
-		mw.log( 'f:controlsBuilder:: opt:' + this.options );
-		this.id = ( embedObj.pc ) ? embedObj.pc.pp.id:embedObj.id;
-		this.available_width = embedObj.getPlayerWidth();
-		
-		// Make pointer to the embedObj
-		this.embedObj = embedObj;
+		// Remove any old controls: 
+		embedPlayer.$interface.find('.control-bar').remove();
+			
+		// Add some space to control_wrap for the controls 
+		embedPlayer.$interface.css({
+			'height' : parseInt( embedPlayer.height + this.height)
+		});
+		embedPlayer.$interface.append(
+			$j('<div>')
+			.addClass( 'ui-state-default ui-widget-header ui-helper-clearfix control-bar' )
+			.html(
+				this.buildControls()
+			)
+		);
+		// Add hooks once Controls are in DOM
+		this.addControlHooks();
+	},
+	
+	/**
+	* Builds the interface controls
+	* @returns the interface html string
+	*/ 
+	buildControls: function(){
 		var _this = this;
-		this.supportedComponets = $j.extend(this.supportedComponets, embedObj.supports);
+		mw.log( 'f:controlsBuilder:: opt:' + this.options );
+		// Set up local pointer to the embedPlayer
+		var embedPlayer = this.embedPlayer;
 		
-		//Check for timed text support:
-		if( embedObj.isTimedTextSupported() ){
+		this.available_width = embedPlayer.getPlayerWidth();
+		
+		// Make pointer to the embedPlayer
+		this.embedPlayer = embedPlayer;
+		var _this = this;
+		this.supportedComponets = $j.extend(this.supportedComponets, embedPlayer.supports);
+		
+		// Check for timed text support:
+		if( embedPlayer.isTimedTextSupported() ){
 			this.supportedComponets['timed_text'] = true;
 		}
 			
 		// Append options to body (if not already there)
-		if ( _this.external_options && $j( '#mv_vid_options_' + this.id ).length == 0 ){
+		if ( this.external_options && $j( '#mv_vid_options_' + this.id ).length == 0 ){
 			$j( 'body' ).append( this.components[ 'options_menu' ].o( this ) );
 		}
 
-		var o = '';
+		var s = '';
 		
-		//Build component output: 
+		// Build component output: 
 		for ( var i in this.components ) {
 			// Make sure the given components is supported:
 			if ( this.supportedComponets[ i ] ) {
@@ -96,27 +123,27 @@ ctrlBuilder.prototype = {
 					// Special case with playhead don't add unless we have 50px
 					if ( i == 'play_head' && this.available_width < 50 )
 						continue;
-					o += this.components[i].o( this  );
+					s += this.components[i].o( this  );
 					this.available_width -= this.components[i].w;
 				} else {
 					mw.log( 'not enough space for control component:' + i );
 				}
 			}
 		}
-		return o;
+		return s;
 	},
 	
 	/**
 	* Get minimal width for interface overlay
 	*/
 	getOverlayWidth: function(){
-		return ( this.embedObj.getPlayerWidth() < 300 )? 300 : this.embedObj.getPlayerWidth();
+		return ( this.embedPlayer.getPlayerWidth() < 300 )? 300 : this.embedPlayer.getPlayerWidth();
 	},	
 	/**
 	* Get minimal height for interface overlay
 	*/
 	getOverlayHeight: function(){
-		return ( this.embedObj.getPlayerHeight() < 200 )? 200 : this.embedObj.getPlayerHeight();
+		return ( this.embedPlayer.getPlayerHeight() < 200 )? 200 : this.embedPlayer.getPlayerHeight();
 	},
 	
 	/**
@@ -131,36 +158,37 @@ ctrlBuilder.prototype = {
 	* Adds control hooks once controls are in the DOM
 	*/
 	addControlHooks:function( ) {
-		// Set up local pointer to the embedObj
-		var embedObj = this.embedObj;
-		var _this = this;				
+		// Set up local pointer to the embedPlayer
+		var embedPlayer = this.embedPlayer;
+		var _this = this;		
+		
 		// Setup target shortcut to	control-bar
-		$target = embedObj.$target;
+		$target = embedPlayer.$interface;
 				
 		// Add play hook:
 		$target.find( '.play-btn,.play-btn-large' ).unbind().buttonHover().click( function() {
-			embedObj.play();
+			embedPlayer.play();
 		} );
 
 		// Add recommend firefox if we have non-native playback:
 		if ( _this.doNativeWarningCheck() ) {
-			$j( '#dc_' + embedObj.id ).hover(
+			$j( '#dc_' + embedPlayer.id ).hover(
 				function() {
-					if ( $j( '#gnp_' + embedObj.id ).length == 0 ) {
-						var toppos = ( embedObj.instanceOf == 'mvPlayList' ) ? 25 : 10;
-						$j( this ).append( '<div id="gnp_' + embedObj.id + '" class="ui-state-highlight ui-corner-all" ' +
+					if ( $j( '#gnp_' + embedPlayer.id ).length == 0 ) {
+						var toppos = ( embedPlayer.instanceOf == 'mvPlayList' ) ? 25 : 10;
+						$j( this ).append( '<div id="gnp_' + embedPlayer.id + '" class="ui-state-highlight ui-corner-all" ' +
 							'style="position:absolute;display:none;background:#FFF;top:' + toppos + 'px;left:10px;right:10px;">' +
 							gM( 'mwe-for_best_experience' ) +
-						'<br><input id="ffwarn_' + embedObj.id + '" type=\"checkbox\">' +
+						'<br><input id="ffwarn_' + embedPlayer.id + '" type=\"checkbox\">' +
 							gM( 'mwe-do_not_warn_again' ) +
 						'</div>' );
-						$j( '#ffwarn_' + embedObj.id ).click( function() {
+						$j( '#ffwarn_' + embedPlayer.id ).click( function() {
 							if ( $j( this ).is( ':checked' ) ) {
 								// Set up a cookie for 7 days:
 								$j.cookie( 'show_player_warning', false, { expires: 7 } );
 								// Set the current instance
 								mw.setConfig( 'show_player_warning', false );
-								$j( '#gnp_' + embedObj.id ).fadeOut( 'slow' );
+								$j( '#gnp_' + embedPlayer.id ).fadeOut( 'slow' );
 							} else {
 								mw.setConfig( 'show_player_warning', true );
 								$j.cookie( 'show_player_warning', true );
@@ -170,32 +198,32 @@ ctrlBuilder.prototype = {
 					}
 					// Only show the warning if cookie and config are true
 					if ( mw.getConfig( 'show_player_warning' ) === true  )
-						$j( '#gnp_' + embedObj.id ).fadeIn( 'slow' );
+						$j( '#gnp_' + embedPlayer.id ).fadeIn( 'slow' );
 				},
 				function() {
-					$j( '#gnp_' + embedObj.id ).fadeOut( 'slow' );
+					$j( '#gnp_' + embedPlayer.id ).fadeOut( 'slow' );
 				}
 			);
 		}
 
 		if ( $j.browser.msie  &&  $j.browser.version <= 6 ) {
-			$j( embedObj.id + ' .play-btn-large' ).pngFix();
+			$j( embedPlayer.id + ' .play-btn-large' ).pngFix();
 		}
 
 
 		// Captions binding:
 		$target.find( '.timed-text' ).unbind().buttonHover().click( function() {			
-			embedObj.showTextInterface();
+			embedPlayer.showTextInterface();
 		} );
 
 		// Options binding:
 		$target.find( '.options-btn' ).unbind().buttonHover().click( function() {
-			embedObj.doOptionsHTML();
+			embedPlayer.doOptionsHTML();
 		} );
 
 		// Fullscreen binding:
 		$target.find( '.fullscreen-btn' ).unbind().buttonHover().click( function() {
-			embedObj.fullscreen();
+			embedPlayer.fullscreen();
 		} );
 		
 		// Playhead binding
@@ -206,42 +234,42 @@ ctrlBuilder.prototype = {
 			min: 0,
 			max: 1000,
 			start: function( event, ui ) {
-				var id = ( embedObj.pc != null ) ? embedObj.pc.pp.id:embedObj.id;
-				embedObj.userSlide = true;
+				var id = ( embedPlayer.pc != null ) ? embedPlayer.pc.pp.id:embedPlayer.id;
+				embedPlayer.userSlide = true;
 				$j( id + ' .play-btn-large' ).fadeOut( 'fast' );
 				// If playlist always start at 0
-				embedObj.start_time_sec = ( embedObj.instanceOf == 'mvPlayList' ) ? 0:
-								mw.npt2seconds( embedObj.getTimeRange().split( '/' )[0] );
+				embedPlayer.start_time_sec = ( embedPlayer.instanceOf == 'mvPlayList' ) ? 0:
+								mw.npt2seconds( embedPlayer.getTimeRange().split( '/' )[0] );
 			},
 			slide: function( event, ui ) {
 				var perc = ui.value / 1000;
-				embedObj.jump_time = mw.seconds2npt( parseFloat( parseFloat( embedObj.getDuration() ) * perc ) + embedObj.start_time_sec );
-				// mw.log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
+				embedPlayer.jump_time = mw.seconds2npt( parseFloat( parseFloat( embedPlayer.getDuration() ) * perc ) + embedPlayer.start_time_sec );
+				// mw.log('perc:' + perc + ' * ' + embedPlayer.getDuration() + ' jt:'+  this.jump_time);
 				if ( _this.long_time_disp ) {
-					embedObj.setStatus( gM( 'mwe-seek_to', embedObj.jump_time ) );
+					embedPlayer.setStatus( gM( 'mwe-seek_to', embedPlayer.jump_time ) );
 				} else {
-					embedObj.setStatus( embedObj.jump_time );
+					embedPlayer.setStatus( embedPlayer.jump_time );
 				}
 				// Update the thumbnail / frame
-				if ( embedObj.isPlaying == false ) {
-					embedObj.updateThumbPerc( perc );
+				if ( embedPlayer.isPlaying == false ) {
+					embedPlayer.updateThumbPerc( perc );
 				}
 			},
 			change:function( event, ui ) {
 				// Only run the onChange event if done by a user slide 
 				// (otherwise it runs times it should not)
-				if ( embedObj.userSlide ) {
-					embedObj.userSlide = false;
-					embedObj.seeking = true;
+				if ( embedPlayer.userSlide ) {
+					embedPlayer.userSlide = false;
+					embedPlayer.seeking = true;
 					// Stop the monitor timer (if we can)				
-					embedObj.stopMonitor();
+					embedPlayer.stopMonitor();
 
 					var perc = ui.value / 1000;
 					// set seek time (in case we have to do a url seek)
-					embedObj.seek_time_sec = mw.npt2seconds( embedObj.jump_time, true );
-					mw.log( 'do jump to: ' + embedObj.jump_time + ' perc:' + perc + ' sts:' + embedObj.seek_time_sec );
-					embedObj.setStatus( gM( 'mwe-seeking' ) );
-					embedObj.doSeek( perc );
+					embedPlayer.seek_time_sec = mw.npt2seconds( embedPlayer.jump_time, true );
+					mw.log( 'do jump to: ' + embedPlayer.jump_time + ' perc:' + perc + ' sts:' + embedPlayer.seek_time_sec );
+					embedPlayer.setStatus( gM( 'mwe-seeking' ) );
+					embedPlayer.doSeek( perc );
 				}
 			}
 		} );
@@ -254,26 +282,26 @@ ctrlBuilder.prototype = {
 		//(we can probably refactor this with custom buffering highlighter)
 		$target.find( '.play_head' ).append( this.getBufferHtml() );
 			
-		var $opt = $j( '#mv_vid_options_' + embedObj.id );
+		var $opt = $j( '#mv_vid_options_' + embedPlayer.id );
 		
 		// videoOptions ... @@todo should be merged with something more like kskin.js:
 		$opt.find( '.vo_selection' ).click( function() {			
-			embedObj.displayOverlay();			
-			embedObj.showPlayerSelect( embedObj.$target.find( '.videoOptionsComplete' ) );			
+			embedPlayer.displayOverlay();			
+			embedPlayer.showPlayerSelect( embedPlayer.$interface.find( '.videoOptionsComplete' ) );			
 			$opt.hide();
 			return false;
 		} );
 		
 		$opt.find( '.vo_download' ).click( function() {
-			embedObj.displayOverlay();
-			embedObj.showDownload(  embedObj.$target.find( '.videoOptionsComplete' ) );
+			embedPlayer.displayOverlay();
+			embedPlayer.showDownload(  embedPlayer.$interface.find( '.videoOptionsComplete' ) );
 			$opt.hide();
 			return false;
 		} );
 		
 		$opt.find( '.vo_showcode' ).click( function() {
-			embedObj.displayOverlay();
-			embedObj.showShare(  embedObj.$target.find( '.videoOptionsComplete' ) );
+			embedPlayer.displayOverlay();
+			embedPlayer.showShare(  embedPlayer.$interface.find( '.videoOptionsComplete' ) );
 			$opt.hide();
 			return false;
 		} );
@@ -286,8 +314,7 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
-	* Issue a warning to non-native playback systems
-	* that they could improve the playback experience with a different browser
+	* check if a warning should be issued to non-native playback systems 
 	*
 	* dependent on mediaElement being setup 
 	*/ 
@@ -298,7 +325,7 @@ ctrlBuilder.prototype = {
 		}		
 		
 		// If the resolution is too small don't display the warning
-		if( this.embedObj.getPlayerHeight() < 199 )
+		if( this.embedPlayer.getPlayerHeight() < 199 )
 			return false;
 				
 		// See if we have native support for ogg: 
@@ -310,9 +337,9 @@ ctrlBuilder.prototype = {
 		}
 		
 		// See if we are using mwEmbed without a ogg source in which case no point in promoting firefox :P			
-		if (  this.embedObj.mediaElement &&  this.embedObj.mediaElement.sources ) {
+		if (  this.embedPlayer.mediaElement &&  this.embedPlayer.mediaElement.sources ) {
 			var foundOgg = false;
-			var playable_sources =  this.embedObj.mediaElement.getPlayableSources();
+			var playable_sources =  this.embedPlayer.mediaElement.getPlayableSources();
 			for ( var sInx = 0; sInx < playable_sources.length; sInx++ ) {
 				var mime_type = playable_sources[sInx].mime_type;
 				if ( mime_type == 'video/ogg' ) {
@@ -330,24 +357,23 @@ ctrlBuilder.prototype = {
 	* Binds the volume controls
 	*/
 	doVolumeBinding:function() {
-		var embedObj = this.embedObj;
-		var _this = this;
-		var $target = $j( '#' + embedObj.id ).parent('.control_wrap');
-		$target.find( '.volume_control' ).unbind().buttonHover().click( function() {
+		var embedPlayer = this.embedPlayer;
+		var _this = this;		
+		embedPlayer.$interface.find( '.volume_control' ).unbind().buttonHover().click( function() {
 			mw.log( 'clicked volume control' );
-			embedObj.toggleMute();
+			embedPlayer.toggleMute();
 		} );
 		
 		// Add vertical volume display hover
 		if ( this.volume_layout == 'vertical' ) {
 			// Default volume binding:
 			var hoverOverDelay = false;
-			var $targetvol = $target.find( '.vol_container' );
-			$target.find( '.volume_control' ).hover(
+			var $targetvol = embedPlayer.$interface.find( '.vol_container' );
+			embedPlayer.$interface.find( '.volume_control' ).hover(
 				function() {
 					$targetvol.addClass( 'vol_container_top' );
 					// Set to "below" if playing and embedType != native
-					if ( embedObj && embedObj.isPlaying && embedObj.isPlaying() && !embedObj.supports['overlays'] ) {
+					if ( embedPlayer && embedPlayer.isPlaying && embedPlayer.isPlaying() && !embedPlayer.supports['overlays'] ) {
 						$targetvol.removeClass( 'vol_container_top' ).addClass( 'vol_container_below' );
 					}
 					$targetvol.fadeIn( 'fast' );
@@ -373,24 +399,24 @@ ctrlBuilder.prototype = {
 			slide: function( event, ui ) {
 				var perc = ui.value / 100;
 				// mw.log('update volume:' + perc);
-				embedObj.updateVolumen( perc );
+				embedPlayer.updateVolumen( perc );
 			},
 			change:function( event, ui ) {
 				var perc = ui.value / 100;
 				if ( perc == 0 ) {
-					$target.find( '.volume_control span' ).removeClass( 'ui-icon-volume-on' ).addClass( 'ui-icon-volume-off' );
+					embedPlayer.$interface.find( '.volume_control span' ).removeClass( 'ui-icon-volume-on' ).addClass( 'ui-icon-volume-off' );
 				} else {
-					$target.find( '.volume_control span' ).removeClass( 'ui-icon-volume-off' ).addClass( 'ui-icon-volume-on' );
+					embedPlayer.$interface.find( '.volume_control span' ).removeClass( 'ui-icon-volume-off' ).addClass( 'ui-icon-volume-on' );
 				}
 				var perc = ui.value / 100;
-				embedObj.updateVolumen( perc );
+				embedPlayer.updateVolumen( perc );
 			}
 		}
 		
 		if ( this.volume_layout == 'vertical' )
 			sliderConf[ 'orientation' ] = "vertical";
 		
-		$target.find( '.volume-slider' ).slider( sliderConf );
+		embedPlayer.$interface.find( '.volume-slider' ).slider( sliderConf );
 	},
 	
 	/** 
@@ -399,7 +425,7 @@ ctrlBuilder.prototype = {
 	getBufferHtml:function() {
 		return '<div class="ui-slider-range ui-slider-range-min ui-widget-header ' +
 				'ui-state-highlight ui-corner-all ' +
-				'mv_buffer" style="width:0px;height:100%;z-index:1;top:0px" />';
+				'mw_buffer" style="width:0px;height:100%;z-index:1;top:0px" />';
 	},
 	
 	/**
@@ -417,7 +443,7 @@ ctrlBuilder.prototype = {
 	
 	/**
 	* Components Object
-	* Take in the embedObj and return some html for the given component.
+	* Take in the embedPlayer and return some html for the given component.
 	*
 	* components can be overwritten by skin javascript
 	*/
@@ -435,8 +461,8 @@ ctrlBuilder.prototype = {
 								'class'	: "ui-state-default play-btn-large"
 							} )
 							.css( {
-								'left' 	: ( ( ctrlObj.embedObj.getPlayerWidth() - this.w ) / 2 ),
-								'top'	: ( ( ctrlObj.embedObj.getPlayerHeight() - this.h ) / 2 )
+								'left' 	: ( ( ctrlObj.embedPlayer.getPlayerWidth() - this.w ) / 2 ),
+								'top'	: ( ( ctrlObj.embedPlayer.getPlayerHeight() - this.h ) / 2 )
 							} )
 							.wrap( '<div/>' ).parent().html();
 			}
@@ -461,7 +487,7 @@ ctrlBuilder.prototype = {
 						'<p class="short_match vo_showcode"><a href="#"><span>' + gM( 'mwe-share' ) + '</span></a></p>';
 
 					// link to the stream page if we are not already there:
-					if ( ( ctrlObj.embedObj.roe || ctrlObj.embedObj.linkback ) && typeof mv_stream_interface == 'undefined' )
+					if ( ( ctrlObj.embedPlayer.roe || ctrlObj.embedPlayer.linkback ) && typeof mv_stream_interface == 'undefined' )
 						o += '<p class="short_match"><a href="javascript:$j(\'#' + ctrlObj.id + '\').get(0).doLinkBack()"><span><strong>Source Page</strong></span></a></p>';
 
 				o += '</div>' +
@@ -550,7 +576,7 @@ ctrlBuilder.prototype = {
 		'time_display': {
 			'w':90,
 			'o':function( ctrlObj ) {
-				return '<div class="ui-widget time-disp">' + ctrlObj.embedObj.getTimeRange() + '</div>';
+				return '<div class="ui-widget time-disp">' + ctrlObj.embedPlayer.getTimeRange() + '</div>';
 			}
 		},
 		/*
@@ -559,7 +585,7 @@ ctrlBuilder.prototype = {
 		'play_head': {
 			'w':0, // special case (takes up remaining space)
 			'o':function( ctrlObj ) {
-				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 35 ) + 'px;"></div>';
+				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 37 ) + 'px;"></div>';
 			}
 		}
 	}

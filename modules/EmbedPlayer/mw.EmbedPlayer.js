@@ -407,14 +407,13 @@ EmbedPlayerManager.prototype = {
 						_this.swapEmbedPlayerElement( element, playlistPlayer );												
 						
 						// Issue the checkPlayerSources call to the new playlist interface: 				
-						$j( '#' + playlistPlayer.id ).get(0).checkPlayerSources();		
+						$j( '#' + playlistPlayer.id ).get(0).showPlayer();		
 					} );
 				break;
 				case 'video':
 				case 'audio':
 				// By default treat the rewrite request as "video"
 				default:		
-					var playerInx = _this.playerList.length;
 					var ranPlayerSwapFlag = false;
 					// Local callback to runPlayer swap once element has metadata
 					function runPlayerSwap(){									
@@ -424,7 +423,6 @@ EmbedPlayerManager.prototype = {
 						ranPlayerSwapFlag = true;	
 						var playerInterface = new mw.EmbedPlayer( element , attributes);
 						_this.swapEmbedPlayerElement( element, playerInterface );	
-											
 						// Issue the checkPlayerSources call to the new player interface: 
 						$j( '#' + $j( element ).attr('id') ).get(0).checkPlayerSources();
 					}
@@ -1204,6 +1202,9 @@ mw.EmbedPlayer.prototype = {
 			} else {
 				this[attr] = default_video_attributes[attr];
 			}
+			// string -> bollean
+			if( this[attr] == "false" ) this[attr] = false;
+			if( this[attr] == "true" ) this[attr] = true;
 		}
 		
 		// Set the skin name from the class  
@@ -1582,7 +1583,7 @@ mw.EmbedPlayer.prototype = {
 	 * Seeks to the requested time and issues a callback when ready 
 	 * (should be overwritten by client that supports frame serving)
 	 */
-	setCurrentTime:function( time, callback ) {
+	setCurrentTime: function( time, callback ) {
 		mw.log( 'Error: base embed setCurrentTime can not frame serve (override via plugin)' );
 	},
 	
@@ -1590,8 +1591,8 @@ mw.EmbedPlayer.prototype = {
 	* Setup the embed player 
 	* issues a loading request
 	*/
-	setupEmbedPlayer:function() {
-		mw.log( 'f:setupEmbedPlayer::' + this.selected_player.id );
+	doEmbedPlayer: function() {
+		mw.log( 'f:doEmbedPlayer::' + this.selected_player.id );
 		mw.log( 'thum disp:' + this.thumbnail_disp );
 		var _this = this;				
 		
@@ -1604,9 +1605,8 @@ mw.EmbedPlayer.prototype = {
 		
 		// Make sure the player is		
 		mw.log( 'performing embed for ' + _this.id );
-		var embed_code = _this.getEmbedHTML();
 		// mw.log('shopuld embed:' + embed_code);
-		$j( '#' + _this.id ).html( embed_code );
+		$j( '#' + _this.id ).html( _this.getEmbedHTML() );
 	},
 	
 	/**
@@ -1707,13 +1707,13 @@ mw.EmbedPlayer.prototype = {
 		//if k-attribution and k-skin show the "credits" screen: 
 		if( mw.getConfig( 'k_attribution' ) && this.ctrlBuilder.showCredits ){
 			// Call a "credit" menu display:
-			this.$target.find( '.k-options' ).click();
+			this.$interface.find( '.k-options' ).click();
 			this.ctrlBuilder.showCredits();
 			return ;
 		}
 			
 		$j( '#img_thumb_' + this.id ).css( 'zindex', 1 );
-		this.$target.find( '.play-btn-large' ).hide();
+		this.$interface.find( '.play-btn-large' ).hide();
 
 		// add black background
 		$j( '#dc_' + this.id ).append( '<div id="black_back_' + this.id + '" ' +
@@ -1972,24 +1972,16 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* Maps the getControls request to the ctrl Builder
-	* 	requires this.ctrlBuilder to be setup
-	*/
-	getControls: function() {
-		return this.ctrlBuilder.getControls( this );
-	},
-	
-	/**
 	* Show the player
-	* NOTE: the player area is double <div> encapsulation will be factored out shortly
+	* 
 	*/
 	showPlayer : function () {		
 		// set-up the local ctrlBuilder instance: 
 		this.ctrlBuilder = new ctrlBuilder( this );
 						
 		var _this = this;
-		//make sure we have control_wrap
-		if( $j( this ).parent('.control_wrap').length == 0 ){
+		//make sure we have interface_wrap
+		if( $j( this ).parent('.interface_wrap').length == 0 ){
 			// Select "player"				
 			$j( this )
 			// Add interface control class:		
@@ -1998,55 +1990,26 @@ mw.EmbedPlayer.prototype = {
 			})
 			.wrap( 
 				$j('<div>')
-				.addClass('control_wrap ' + this.ctrlBuilder.playerClass)
+				.addClass('interface_wrap ' + this.ctrlBuilder.playerClass)
 				.css({				
 					'width': parseInt( this.width ),
 					'height': parseInt( this.height )
 				})
 			)
 		}
+		//Set up local jQuery refrence to "interface_wrap" 
+		this.$interface = $j(this).parent('.interface_wrap');
 		
-		// Update Thumbnail html
+		// Update Thumbnail for the "player" 
 		$j( this ).html( 
 			this.getThumbnailHTML()
-		)
-		
+		)		
 
 		// Add controls if enabled: 											
 		if ( this.controls ) {			
-			mw.log( "embedPlayer:showPlayer::AddControls" );
-			
-			// Remove any old controls: 
-			$j( this ).parent('.control_wrap').find('.control-bar').remove();
-			
-			// Block out some space for controls by encapsulating the top player div 
-			$j( this ).parent( '.control_wrap' ).css({
-				'height' : parseInt( this.height + this.ctrlBuilder.height)
-			});
-			$j( this ).after(
-				$j('<div>')
-				.addClass( 'ui-state-default ui-widget-header ui-helper-clearfix control-bar' )
-				.html(
-					this.getControls()
-				)
-			);
-			/*html_code += '<div class="" >';
-			html_code += ;
-			html_code += '</div>';
-			*/
-			
-		}
-		//Set up local jQuery refrence to "control_wrap" 
-		this.$target = $j(this).parent('.control_wrap');
-		
-		
-		//html_code += '</div>'; // videoPlayer div close		
-
-		// mw.log('should set: '+this.id);
-			
-		
-		// Add hooks once Controls are in DOM
-		this.ctrlBuilder.addControlHooks();
+			mw.log( "embedPlayer:showPlayer::AddControls" );			
+			this.ctrlBuilder.addControls();						
+		}					
 						  
 		
 		if ( this.autoplay ) {
@@ -2290,7 +2253,7 @@ mw.EmbedPlayer.prototype = {
 	* Display the options div
 	*/
 	doOptionsHTML:function() {
-		var pos = this.$target.find( '.options-btn' ).offset();
+		var pos = this.$interface.find( '.options-btn' ).offset();
 		pos['top'] = pos['top'] + 24;
 		pos['left'] = pos['left'] -124;
 		// mw.log('pos of options button: t:'+pos['top']+' l:'+ pos['left']);
@@ -2379,7 +2342,7 @@ mw.EmbedPlayer.prototype = {
 				$menu.show("fast");
 			}	
 		}else{			
-			var loc = this.$target.position();
+			var loc = this.$interface.position();
 			//Setup the menu: 
 			var playerHeight = ( parseInt( this.height ) + this.ctrlBuilder.height );
 			$j('body').append( 
@@ -2445,7 +2408,7 @@ mw.EmbedPlayer.prototype = {
 			  '<div class="videoOptionsComplete">' +					
 			  '</div>'+
 			 '</div>';		
-		this.$target.prepend( div_code );
+		this.$interface.prepend( div_code );
 		if ( fade_in )
 			$j( '#blackbg_' + this.id ).fadeIn( "slow" );
 		else
@@ -2604,7 +2567,7 @@ mw.EmbedPlayer.prototype = {
 				// this.innerHTML = this.getPluginMissingHTML();				
 				$j( '#' + this.id ).html( this.getPluginMissingHTML() );
 			} else {
-				this.setupEmbedPlayer();
+				this.doEmbedPlayer();
 				this.paused = false;
 				this.thumbnail_disp = false;
 			}
@@ -2614,11 +2577,11 @@ mw.EmbedPlayer.prototype = {
 			this.seeking = false;
 		}
 		
-		this.$target.find('.play-btn span')
+		this.$interface.find('.play-btn span')
 		.removeClass( 'ui-icon-play' )
 		.addClass( 'ui-icon-pause' );
 			
-		this.$target.find('.play-btn' )
+		this.$interface.find('.play-btn' )
 		.unbind()
 		.buttonHover()
 		.click( function() {
@@ -2634,7 +2597,7 @@ mw.EmbedPlayer.prototype = {
 	* Maps the html5 load request. 
 	* There is no genneral way to "load" clips so underling plugin-player libs should overide. 
 	*/
-	load:function() {
+	load: function() {
 		// should be done by child (no base way to pre-buffer video)
 		mw.log( 'baseEmbed:load call' );
 	},	
@@ -2650,13 +2613,14 @@ mw.EmbedPlayer.prototype = {
 		var _this = this;		
 		// mw.log('mwEmbed:do pause');		
 		// (playing) do pause		
-		this.paused = true;		
+		this.paused = true;
+				
 		// update the ctrl "paused state"				
-		this.$target.find('.play-btn span' )
+		this.$interface.find('.play-btn span' )
 		.removeClass( 'ui-icon-pause' )
 		.addClass( 'ui-icon-play' );
 		
-		this.$target.find('.play-btn' )
+		this.$interface.find('.play-btn' )
 		.unbind()
 		.buttonHover()
 		.click( function() {
@@ -2702,7 +2666,7 @@ mw.EmbedPlayer.prototype = {
 		}
 		
 		//Bind play-btn-large play 
-		this.$target.find( '.play-btn-large' )
+		this.$interface.find( '.play-btn-large' )
 		.unbind( 'click' )
 		.click( function() {
 			_this.play();
@@ -2718,11 +2682,11 @@ mw.EmbedPlayer.prototype = {
 	toggleMute:function() {		
 		if ( this.muted ) {
 			this.muted = false;
-			this.$target.find( '.volume-slider' ).slider( 'value', 100 );
+			this.$interface.find( '.volume-slider' ).slider( 'value', 100 );
 			this.updateVolumen( 1 );
 		} else {
 			this.muted = true;
-			this.$target.find( '.volume-slider' ).slider( 'value', 0 );
+			this.$interface.find( '.volume-slider' ).slider( 'value', 0 );
 			this.updateVolumen( 0 );
 		}
 		mw.log( 'f:toggleMute::' + this.muted );
@@ -2867,7 +2831,7 @@ mw.EmbedPlayer.prototype = {
 	*/
 	updateBufferStatus: function() {		
 		// Get the buffer target based for playlist vs clip 
-		$buffer = $j( this ).parent('.control_wrap').find('.mv_buffer');
+		$buffer = this.$interface.find( '.mw_buffer' );
 			
 		// Update the buffer progress bar (if available )
 		if ( this.bufferedPercent != 0 ) {
@@ -2889,7 +2853,7 @@ mw.EmbedPlayer.prototype = {
 	* @param {Float} perc Value between 0 and 1 for position of playhead
 	*/
 	updatePlayHead: function( perc ) {
-		$play_head = $j(this).parent( '.control_wrap' ).find( '.play_head' );
+		$play_head = this.$interface.find( '.play_head' );
 		if ( this.controls &&  $play_head.length != 0 ) {
 			var val = parseInt( perc * 1000 );
 			$play_head.slider( 'value', val );
@@ -2960,7 +2924,7 @@ mw.EmbedPlayer.prototype = {
 	*/
 	setStatus: function( value ) {		
 		// update status:
-		this.$target.find( '.time-disp' ).html( value );
+		this.$interface.find( '.time-disp' ).html( value );
 	},
 	
 	
@@ -3129,6 +3093,8 @@ mediaPlayers.prototype =
 		this.default_players['image/jpeg'] = ['html'];
 		this.default_players['image/png'] = ['html'];
 		this.default_players['image/svg'] = ['html'];
+		
+		
 		
 	},
 	
