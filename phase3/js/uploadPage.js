@@ -30,7 +30,7 @@ var mwUploadHelper = {
 					}
 				} );
 			} )
-		} else {
+		} else {			
 			// Add basic upload profile support ( http status monitoring, progress box for
 			// browsers that support it, etc.)
 			if ( $j( '#wpUploadFileURL' ).length != 0 ) {
@@ -81,13 +81,7 @@ var mwUploadHelper = {
 
 		$j( '#wpSourceTypeURL' ).attr( 'checked', !set );
 		$j( '#wpUploadFileURL' ).attr( 'disabled', set );
-
-		// If Firefogg is enabled, toggle action according to wpSourceTypeFile selection
-		if ( wgEnableFirefogg ) {
-			$j( '#wpUploadFile' ).firefogg( {
-				'firefogg_form_action': $j( '#wpSourceTypeFile' ).attr( 'checked' )
-			} );
-		}
+		
 	},
 	/**
 	* Fill in a destination file-name based on a source asset name.
