@@ -1,5 +1,5 @@
 /*
- * Handles driving the firefogg render system 
+* Handles driving the firefogg render system 
 */
 
 /*
