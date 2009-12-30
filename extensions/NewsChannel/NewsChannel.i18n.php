@@ -670,9 +670,11 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'newschannel' => 'Haber kanalı',
+	'newschannel-desc' => 'Bir haber kanalını dinamik bir [[Special:NewsChannel|özel sayfa]] olarak uygulamaya koyar',
 	'newschannel_format' => 'Format:',
 	'newschannel_limit' => 'Sınır:',
 	'newschannel_include_category' => 'Ek kategori:',
+	'newschannel_exclude_category' => 'Şu kategoriyi hariç tut:',
 	'newschannel_submit_button' => 'Besleme oluştur',
 );
 

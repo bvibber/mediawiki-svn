@@ -41,7 +41,12 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'postcomment_post' => 'Pos',
+	'postcomment_on' => 'Op',
 	'postcomment_said' => 'het gesê',
+	'postcomment_invalidrequest' => 'Ongeldige versoek.',
+	'postcomment_replyto' => 'Antwoord aan $1',
+	'postcomment_nopostingtoadd' => 'Niks om by te voeg nie.',
 );
 
 /** Arabic (العربية)
@@ -152,6 +157,13 @@ $messages['bs'] = array(
 	'postcomment_invalidrequest' => 'Nevaljan upit.',
 	'postcomment_replyto' => 'Odgovor za $1',
 	'postcomment_nopostingtoadd' => 'Nema ništa za dodati.',
+);
+
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'postcomment_leavemessagefor' => 'Deixa un missatge per $1',
 );
 
 /** Czech (Česky)

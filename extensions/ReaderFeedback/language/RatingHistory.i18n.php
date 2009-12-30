@@ -235,16 +235,20 @@ $messages['bg'] = array(
 	'ratinghistory-link' => 'Оценка на страницата',
 	'ratinghistory-period' => 'Период от време:',
 	'ratinghistory-month' => 'последния месец',
+	'ratinghistory-3months' => 'последни 3 месеца',
 	'ratinghistory-year' => 'последната година',
 	'ratinghistory-3years' => 'последните 3 години',
 	'ratinghistory-ave' => 'Средно: $1',
 	'ratinghistory-chart' => 'Читателската оценка през времето',
+	'ratinghistory-purge' => 'изчистване на кеш-паметта',
 	'ratinghistory-table' => 'Преглед на читателските оценки',
 	'ratinghistory-users' => 'Потребители, които са дали оценка',
 	'ratinghistory-svg' => 'Преглед като SVG',
 	'ratinghistory-table-rating' => 'Оценка',
 	'ratinghistory-table-votes' => 'Гласове',
+	'ratinghistory-none' => 'В момента няма достатъчно читателска обратна връзка за графиките.',
 	'ratinghistory-ratings' => "'''Легенда:''' '''(1)''' - Много ниска; '''(2)''' - Ниска; '''(3)''' - Средна; '''(4)''' - Висока; '''(5)''' - Отлична;",
+	'right-feedback' => 'Използвайте страницата за обратна връзка, за да оцените страница',
 );
 
 /** Bengali (বাংলা)
@@ -325,12 +329,15 @@ Rejtinzi su slijedeći:
  * @author Solde
  */
 $messages['ca'] = array(
+	'ratinghistory-tab' => 'valoració',
+	'ratinghistory-link' => 'Valoració de la pàgina',
 	'ratinghistory-period' => 'Període de temps:',
 	'ratinghistory-month' => 'últim mes',
 	'ratinghistory-3months' => 'últims 3 mesos',
 	'ratinghistory-year' => 'últim any',
 	'ratinghistory-3years' => 'últims 3 anys',
 	'ratinghistory-ave' => 'Mit: $1',
+	'ratinghistory-table-rating' => 'Valoració',
 	'ratinghistory-table-votes' => 'Vots',
 );
 
@@ -620,6 +627,7 @@ Las valoraciones son como siguen:
 );
 
 /** Estonian (Eesti)
+ * @author Avjoska
  * @author Silvar
  */
 $messages['et'] = array(
@@ -628,6 +636,8 @@ $messages['et'] = array(
 	'ratinghistory-3months' => 'viimased 3 kuud',
 	'ratinghistory-year' => 'viimane aasta',
 	'ratinghistory-3years' => 'viimased 3 aastat',
+	'ratinghistory-table-rating' => 'Hindamine',
+	'ratinghistory-table-votes' => 'Hääled',
 );
 
 /** Basque (Euskara)

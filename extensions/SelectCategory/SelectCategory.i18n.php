@@ -524,6 +524,15 @@ $messages['tl'] = array(
 	'selectcategory-subtitle' => "Gamitin ang ''Shift-mouse'' upang mapili ang sunud-sunod/magkakadikit na mga entrada (mga ipapasok/ilalagay), gamitin ang ''Ctrl-mouse'' upang mapili naman ang hindi magkakasunod/magkakadikit na mga entrada.",
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'selectcategory-title' => 'Kategorileri seç',
+	'selectcategory-desc' => 'Bir sayfada değişiklik yaparken kullanıcının mevcut kategorilerden seçim yapmasını sağlar',
+	'selectcategory-subtitle' => 'Birden fazla bitiş girdi seçmek için Shift-fare, bitişik olmayan girdileri seçmek için Ctrl-fare kombinasyonunu kullanın.',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

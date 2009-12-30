@@ -385,6 +385,15 @@ $messages['sv'] = array(
 	'tspoll-id-error' => 'Inget ID är angivet!',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'tspoll-desc' => '[http://www.toolserver.org/~jan/poll/index.php Toolserver Havuz Betiğini] bir HTML etiketi olarak ekler',
+	'tspoll-fetch-error' => 'URL getirmede hata!',
+	'tspoll-id-error' => 'Kimlik girilmedi!',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

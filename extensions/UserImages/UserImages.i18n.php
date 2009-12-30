@@ -766,8 +766,12 @@ $1: Ang pangalan ng tagagamit',
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'userimages-desc' => '<code><nowiki><userimage /></nowiki></code> ile kullanıcı tarafından yüklenen resimlerin galerini oluşturur',
+	'userimages-caption' => '$1 tarafından yüklenen resimler',
+	'userimages-noname' => 'Geçersiz ya da girilmemiş kullanıcı adı.',
 	'userimages-noimages' => '$1 resmi yüklenemedi.',
 );
 

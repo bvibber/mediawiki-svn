@@ -65,6 +65,13 @@ $messages['be-tarask'] = array(
 	'oai-desc' => 'Дадае інтэрфэйс да сховішча [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Bulgarian (Български)
+ * @author Turin
+ */
+$messages['bg'] = array(
+	'oai-desc' => 'Осигурява интерфейс към хранилище [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

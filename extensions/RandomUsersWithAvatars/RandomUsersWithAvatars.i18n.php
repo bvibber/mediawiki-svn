@@ -365,6 +365,14 @@ $messages['tl'] = array(
 	'random-users-avatars-desc' => "Nagdaragdag ng tatak na <tt>&lt;randomuserswithavatars&gt;</tt> upang maipakita/mapalitaw ang mga abatar/huwaran ng mga tagagamit na napili ayon sa ibinigay ng pagkakataon/tsansa (''random'')",
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'random-users-avatars-title' => 'Topluluk ile tanış',
+	'random-users-avatars-desc' => 'Rastgele seçilen kullanıcıların avatarlarını görüntülemek için <tt>&lt;randomuserswithavatars&gt;</tt> etiketini ekler',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

@@ -210,12 +210,12 @@ $messages['ca'] = array(
  * @author MF-Warburg
  */
 $messages['de'] = array(
-	'indexfunc-desc' => 'Parserfunktion um automatische Weiterleitungen und Begriffsklärungsseiten zu erstellen',
+	'indexfunc-desc' => 'Parserfunktion, um automatische Weiterleitungen und Begriffsklärungsseiten zu erstellen',
 	'indexfunc-badtitle' => 'Ungültiger Titel: „$1“',
 	'indexfunc-editwarning' => 'Achtung:
 Dieser Titel ist ein Indextitel für die {{PLURAL:$2|folgende Seite|folgenden Seiten}}:
 $1
-Stelle sicher, dass die Seite, die du erstellst, nicht bereits unter anderem Titel existiert.
+Stelle sicher, dass die Seite, die du erstellst, nicht bereits unter einem anderem Titel existiert.
 Wenn du diese Seite erstellst, entferne diesen Titel vom <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$2|der obigen Seite|den obigen Seiten}}.',
 	'indexfunc-index-exists' => 'Die Seite „$1“ ist bereits vorhanden',
 	'indexfunc-movewarn' => 'Achtung:
@@ -233,7 +233,7 @@ Bitte entferne "$1" von <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$3|obiger Seit
 	'index-no-results' => 'Die Suche ergab keine Ergebnisse',
 	'index-search-explain' => 'Diese Seite benutzt eine Präfix-Suche.
 
-Gib die ersten Zeichen ein und drücke die {{int:index-submit ("Enviar")}}-Schaltfläche, um nach Seitentiteln und Indexeinträgen zu suchen, die mit dem Suchstring beginnen',
+Gib die ersten Zeichen ein und drücke die {{int:index-submit}}-Schaltfläche, um nach Seitentiteln und Indexeinträgen zu suchen, die mit dem Suchstring beginnen',
 	'index-details-explain' => 'Einträge mit Pfeilen sind Indexeinträge.
 Klicke auf den Pfeil, um alle unter diesem Titel indizierten Seiten anzuzeigen.',
 );

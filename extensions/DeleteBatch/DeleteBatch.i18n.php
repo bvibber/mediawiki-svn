@@ -358,6 +358,7 @@ Alŝutita dosiero enhavu paĝan nomon kaj nedevigan kialon apartigita de signo "
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -373,6 +374,7 @@ $messages['es'] = array(
 	'deletebatch-omitting-invalid' => 'Omitiendo página inválida $1.',
 	'deletebatch-file-bad-format' => 'El archivo debería ser texto simple',
 	'deletebatch-file-missing' => 'Incapaz de leer archivo dado',
+	'deletebatch-select-script' => 'Borrar el script de la página',
 	'deletebatch-select-yourself' => 'usted',
 	'deletebatch-no-page' => 'Por favor especifique al menos una página a borrar O escoja un archivo conteniendo una lista de páginas.',
 );
@@ -1304,9 +1306,23 @@ Dapat na naglalaman ang ikinargang talaksan ng pangalan ng pahina at maaaring hi
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Mach
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'deletebatch' => 'Sayfa gruplarını sil',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Bir sayfa grubunu siler]]',
 	'deletebatch-caption' => 'Sayfa listesi:',
+	'deletebatch-link-back' => 'Özel sayfaya geri dön',
+	'deletebatch-or' => '<b>veya</b>',
+	'deletebatch-delete' => 'Sil',
+	'deletebatch-page' => 'Silinecek sayfalar:',
+	'deletebatch-processing-from-file' => 'dosya listesindeki sayfalar siliniyor',
+	'deletebatch-file-bad-format' => 'Dosya düz metin olmalı',
+	'deletebatch-file-missing' => 'Verilen dosya okunamıyor',
+	'deletebatch-select-script' => 'Sayfa betiğini sil',
+	'deletebatch-select-yourself' => 'Siz',
+	'deletebatch-no-page' => 'Sayfa listesini içeren bir sayfayı silmek ya da seçmek için lütfen en az bir sayfa belirtin.',
+	'right-deletebatch' => 'Sayfaları toplu siler',
 );
 
 /** Ukrainian (Українська)

@@ -169,9 +169,12 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Imre
  */
 $messages['es'] = array(
+	'multiboilerplate-legend' => 'Seleccionar plantilla',
 	'multiboilerplate-submit' => 'Cargar',
+	'boilerplates' => 'Plantillas disponibles',
 );
 
 /** Estonian (Eesti)

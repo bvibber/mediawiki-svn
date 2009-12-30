@@ -163,10 +163,12 @@ $messages['bg'] = array(
 	'ct-total-header' => 'Общо натискания',
 	'ct-start-date' => 'Начална дата (ГГГГММДД)',
 	'ct-end-date' => 'Крайна дата (ГГГГММДД)',
+	'ct-increment-by' => 'Брой дни, представяни от всяка точка',
 	'ct-change-graph' => 'Смяна на графиката',
 	'ct-beginner' => 'Начинаещ',
 	'ct-intermediate' => 'Средно напреднал',
 	'ct-expert' => 'Специалист',
+	'ct-date-range' => 'Обхват дати',
 	'ct-editing' => 'В момента се редактира:',
 	'ct-anon-users' => 'Анонимни потребители',
 	'ct-and' => 'и',
@@ -1262,12 +1264,15 @@ $messages['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author Hamilton Abreu
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'clicktracking' => 'Monitoramento de cliques da Iniciativa de Usabilidade',
 	'clicktracking-desc' => 'Monitoramento de cliques, destinado ao monitoramento de eventos que não causem uma atualização de página',
 	'ct-intermediate' => 'Intermediário',
 	'ct-expert' => 'Experiente',
+	'ct-anon-users' => 'Usuários anônimos',
+	'ct-and' => 'e',
 );
 
 /** Romanian (Română)

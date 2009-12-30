@@ -355,6 +355,16 @@ $messages['sv'] = array(
 	'replaceset-error-regexnoend' => 'Det reguljära uttrycket "$1" saknar en avslutande avgränsare \'$2\'',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'replaceset-desc' => 'Biçimlendirilmiş veri içeren metin bölümlerinin değiştirilmesi için <nowiki>{{#replaceset}}</nowiki> ayrıştırıcı fonksiyonu ekler',
+	'replaceset-error-calllimit' => 'ReplaceSet çağrı sınırına ulaşıldı.',
+	'replaceset-error-regexnoend' => 'Regex örüntüsü "$1", \'$2\' sınırlayıcısına sahip değil',
+	'replaceset-error-regexbadmodifier' => "Regex değiştiricisi '$1' geçerli değil.",
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

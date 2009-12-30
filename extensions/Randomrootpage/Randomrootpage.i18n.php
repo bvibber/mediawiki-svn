@@ -102,6 +102,13 @@ $messages['el'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Ειδική σελίδα]] η οποία εξάγει τυχαία σελίδα ρίζα',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'randomrootpage' => 'Hazarda radika paĝo',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

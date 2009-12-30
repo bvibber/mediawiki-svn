@@ -209,6 +209,8 @@ $messages['eo'] = array(
 	'mostrevisors-limitlinks' => 'Montri ĝis $1 paĝoj',
 	'mostrevisors-namespace' => 'Nomspaco:',
 	'mostrevisors-submit' => 'Ek',
+	'mostrevisors-showredir' => 'Montri alidirektilojn',
+	'mostrevisors-hideredir' => 'Kaŝi alidirektilojn',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|redaktanto|redaktantoj}}',
 	'mostrevisors-viewcontributors' => 'Vidi ĉefajn kontribuantojn',
 );

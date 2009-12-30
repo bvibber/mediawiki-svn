@@ -489,6 +489,15 @@ $messages['tl'] = array(
 	'spl3_nosubpages' => 'Walang maitatalang kabahaging mga pahina ang $1.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'spl3-desc' => '<code><nowiki><splist /></nowiki></code> etiketi kullanılarak otomatik olarak bir sayfaya ait altsayfaların listesini oluşturur',
+	'spl3_debug' => '$1 seçeneği için bilinmeyen değer.',
+	'spl3_nosubpages' => '$1, listelenecek altsayfalara sahip değil.',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

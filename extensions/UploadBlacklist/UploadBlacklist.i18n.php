@@ -46,6 +46,13 @@ $messages['be-tarask'] = array(
 	'uploadblacklist-desc' => 'Дадае магчымасьць выкарыстаньня чорнага сьпісу загрузак',
 );
 
+/** Bulgarian (Български)
+ * @author Turin
+ */
+$messages['bg'] = array(
+	'uploadblacklist-desc' => 'Добавяне възможност за черен списък за качванията',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

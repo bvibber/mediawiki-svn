@@ -621,7 +621,11 @@ $messages['tl'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'piwik-desc' => 'Takip için MediaWiki sayfalarına Piwik betiğini yerleştirir ve [[Special:Piwik|bazı istatistikleri]] ekler',
+	'piwik-lastvisits' => 'Son ziyaretler',
 	'piwik-countries' => 'Ülkeler',
+	'piwik-browsers' => 'Tarayıcılar',
+	'right-viewpiwik' => '[[Special:Piwik|Piwik istatistiklerini]] görür',
 );
 
 /** Ukrainian (Українська)

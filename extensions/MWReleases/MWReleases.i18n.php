@@ -43,6 +43,13 @@ $messages['be-tarask'] = array(
 	'mwreleases-desc' => 'Дадае [[Mediawiki:Mwreleases-list|сьпіс]] вэрсіяў, якія падтрымліваюцца, даступны праз API',
 );
 
+/** Bulgarian (Български)
+ * @author Turin
+ */
+$messages['bg'] = array(
+	'mwreleases-desc' => 'Добавя [[Mediawiki:Mwreleases-list|списък]] на поддържаните версии, достъпни през API',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

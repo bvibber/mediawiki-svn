@@ -355,3 +355,13 @@ $messages['te'] = array(
 	'delaydef-error-no-name' => "పొరపాటు: 'పేరు' అనబడే ఏ పారామీటర్ను పేర్కొనలేదు",
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'delaydef-desc' => 'Kodun yeniden konumlandırılmasını mümkün kılmak için &lt;define&gt; ve &lt;display&gt; ekler',
+	'delaydef-error-missing-def' => 'Hata: &lt;display name="$1"&gt; için ihtiyaç duyulan tanım bulunamadı.',
+	'delaydef-error-no-name' => 'Hata: Ad parametresi belirtilmedi.',
+	'delaydef-error-redef' => 'Hata: $1 için yeniden tanımlama denemesi.',
+);
+

@@ -471,9 +471,11 @@ $messages['eo'] = array(
 	'dt_xml_title' => 'Titolo',
 	'dt_xml_id' => 'identigo',
 	'dt_xml_freetext' => 'Libera Teksto',
+	'importxml' => 'Importi XML',
 	'dt_import_editsummary' => '$1 importo',
 	'dt_import_importing' => 'Importante...',
 	'importcsv' => 'Importi CSV',
+	'right-datatransferimport' => 'Importi datenojn',
 );
 
 /** Spanish (Español)
@@ -1826,6 +1828,7 @@ $messages['tl'] = array(
  * @author Joseph
  * @author Karduelis
  * @author Mach
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'dt-desc' => 'Şablon çağrılarında içerilen verilerin içe ve dışa aktarımına izin verir',
@@ -1845,9 +1848,13 @@ $messages['tr'] = array(
 	'dt_xml_freetext' => 'Özgür Metin',
 	'importxml' => 'XML içe aktar',
 	'dt_import_selectfile' => 'Lütfen içe aktarmak için $1 dosyasını seçin:',
+	'dt_import_encodingtype' => 'Kodlama türü',
 	'dt_import_editsummary' => '$1 içe aktarımı',
 	'dt_import_importing' => 'İçe aktarıyor...',
 	'dt_import_success' => '$2 dosyasından $1 {{PLURAL:$1|sayfa|sayfa}} oluşturulacak.',
+	'importcsv' => "CSV'yi içe aktar",
+	'dt_importcsv_badheader' => "Hata: $1 kolonunun başlığı olan '$2', '$3', '$4' ya da 'şablon_adı[alan_adı]' şeklinde olmalıdır",
+	'right-datatransferimport' => 'Verileri içe aktarır',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

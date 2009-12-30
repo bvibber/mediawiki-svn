@@ -614,6 +614,7 @@ $messages['eo'] = array(
 	'usagestatisticsforallusers' => '<h2>Uzadaj statistikoj por ĉiuj uzantoj</h2>',
 	'usagestatisticsinterval' => 'Intervalo:',
 	'usagestatisticsnamespace' => 'Nomspaco:',
+	'usagestatisticsexcluderedirects' => 'Ekskluzivi alidirektilojn',
 	'usagestatisticstype' => 'Speco',
 	'usagestatisticsstart' => 'Komencodato:',
 	'usagestatisticsend' => 'Findato:',

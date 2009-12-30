@@ -690,6 +690,17 @@ $messages['tl'] = array(
 	'categoryintersection-results' => 'Nagbalik ang paghahanap ng $1 {{PLURAL:$1|kinalabasan|mga kinalabasan}}.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'categoryintersection' => 'Kategori kesişimi',
+	'categoryintersection-desc' => 'Bir sayfadaki [[Special:CategoryIntersection|kategori kesişmeleri]] için sağlama değerlerinden oluşan bir tablo tutar',
+	'categoryintersection-doit' => 'Tüm bu kategorilerdeki sayfaları listele',
+	'categoryintersection-maxcategories' => 'İzin verilen azami kesişen kategori sayısı $1 şeklindedir.',
+	'categoryintersection-results' => 'Arama, $1 {{PLURAL:$1|sonuç|sonuç}} verdi.',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

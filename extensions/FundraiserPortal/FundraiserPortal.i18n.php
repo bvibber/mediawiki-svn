@@ -309,10 +309,11 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
+	'fundraiserportal' => 'Korjandusvärav',
 	'fundraiserportal-plain-button' => 'Toeta Vikipeediat!',
 	'fundraiserportal-ruby-button' => 'Anneta nüüd',
 	'fundraiserportal-rubytext-button' => 'Anneta nüüd',
-	'fundraiserportal-rubytext-message' => 'Iga annetus aitab meil hoida Wikipedia kõigile vabana.',
+	'fundraiserportal-rubytext-message' => 'Iga annetus aitab meil hoida Vikipeedia kõigile vabana.',
 	'fundraiserportal-rubytext-close' => 'Peida see edaspidi',
 	'fundraiserportal-sapphire-button' => 'Anneta nüüd',
 	'fundraiserportal-tourmaline-button' => 'Anneta nüüd',

@@ -961,6 +961,9 @@ $3',
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'latexdoc_no_text' => 'Sayfa metin içermiyor, DVI oluşturulamadı',
+	'latexdoc_cant_create_dir' => 'Geçici dizin $1 oluşturulamıyor',
+	'latexdoc_cant_write' => '$1 dosyasına yazılamıyor',
 	'latexdoc_error' => 'LaTeX hatası
 
 Komut: $1

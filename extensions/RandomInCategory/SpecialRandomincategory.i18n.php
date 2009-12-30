@@ -974,12 +974,15 @@ $messages['tl'] = array(
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'randomincategory' => 'Kategoriye göre rastgele sayfa',
 	'randomincategory-desc' => 'Kategoride rasgele bir sayfa için [[Special:Randomincategory|özel sayfa]]',
 	'randomincategory-toolbox' => 'Rastgele sayfa',
+	'randomincategory-nocategory' => '$1 kategorisi mevcut değil ya da boş',
 	'randomincategory-label' => 'Kategori:',
+	'randomincategory-submit' => 'Git',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

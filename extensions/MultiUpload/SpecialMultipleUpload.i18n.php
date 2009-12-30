@@ -62,6 +62,18 @@ $messages['gom-latn'] = array(
 	'multipleupload' => 'fayleo dhadd',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'multipleupload' => 'Laai veelvuldige lêers op',
+	'multipleupload-saveallfiles' => 'Stoor alle lêers',
+	'multiupload-fileuploaded' => 'Lêer opgelaai.',
+	'multiupload-toolbox' => 'Laai veelvuldige lêers op',
+	'multiupload-no-files' => 'Kies ten minste een lêer om te laai',
+	'multiupload-blank' => 'Geen lêer gekies nie',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

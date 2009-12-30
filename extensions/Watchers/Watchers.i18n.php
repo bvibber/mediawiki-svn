@@ -911,6 +911,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'watchers' => 'İzleyenler',
+	'watchers-desc' => '[[Special:Watchers|Hangi kullanıcıların bu sayfayı izleme listesine aldığını]] gösterir',
+	'watchers_link_title' => 'Bu sayfayı kim izliyor?',
+	'watchers_error_article' => "'''Hata:''' Sayfa mevcut değil.",
+	'watchers_header' => '"$1" adlı sayfayı izleyen {{PLURAL:$2|kullanıcı|kullanıcılar}}',
+	'watchers_noone_watches' => 'Sayfayı kimse izlemiyor.',
+	'watchers_x_or_more' => '$1 veya daha fazla {{PLURAL:$1|kullanıcı|kullanıcı}} bu sayfayı izleme listesine almış durumda.',
+	'watchers_less_than_x' => '$1 sayısının altında {{PLURAL:$1|kullanıcı|kullanıcı}} bu sayfayı izleme listesine almış durumda.',
 );
 
 /** Vèneto (Vèneto)

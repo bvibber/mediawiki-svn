@@ -1031,12 +1031,15 @@ $messages['tr'] = array(
 	'am-email' => 'e-posta',
 	'am-active' => 'etkin',
 	'am-updated' => 'Değişiklikleriniz başarıyla kaydedildi',
+	'nss-desc' => 'Bir libnss-mysql veritaban ile kimlik doğrulaması için bir eklenti. Bir [[Special:AccountManager|hesap yöneticisi]] içerir',
 	'nss-rights' => 'haklar',
 	'nss-save-changes' => 'Değişiklikleri kaydet',
 	'nss-create-account-header' => 'Yeni hesap oluştur',
 	'nss-create-account' => 'Hesap oluştur',
 	'nss-no-mail' => 'E-posta göndermeyin',
+	'nss-welcome-mail' => 'Sizin için $1 kullanıcı adı ve $2 parolası ile bir hesap oluşturuldu.',
 	'nss-welcome-mail-subject' => 'Hesap oluşturma',
+	'nss-db-error' => 'Kimlik doğrulama veritabanından okuma sırasında hata',
 );
 
 /** Ukrainian (Українська)

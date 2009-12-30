@@ -641,8 +641,14 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => '<code>eval()</code> fonksiyonuna [[Special:Eval|bir arayüz]] ekler',
+	'eval_submit' => 'Değerlendir',
+	'eval_escape' => 'Çıkış çıktısı',
+	'eval_out' => 'Çıktı',
 	'eval_code' => 'Kod',
 );
 

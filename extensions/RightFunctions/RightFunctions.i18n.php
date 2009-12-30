@@ -462,6 +462,16 @@ $messages['tl'] = array(
 	'rightfunctions-ns' => '(mula sa pagsasanggalang ng espasyo ng pangalan)',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'rightfunctions-desc' => 'İzin temelli ayrıştırıcı fonksiyonlar',
+	'rightfunctions-casc' => '(kademeli kaynaklardan)',
+	'rightfunctions-local' => '(yerel sayfadan)',
+	'rightfunctions-ns' => '(isim alanı korumasından)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

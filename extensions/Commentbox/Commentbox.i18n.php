@@ -208,6 +208,8 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'commentbox-intro' => '== Aldoni komenton... ==
+Ĉu vi havas komenton por ĉi tiu paĝo? Aldonu ĝin aŭ <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} redakti la paĝon rekte]</span>',
 	'commentbox-savebutton' => 'Konservi komenton',
 	'commentbox-name' => 'Nomo:',
 	'commentbox-log' => 'Novaj komentoj',
@@ -720,6 +722,16 @@ $messages['ru'] = array(
 	'commentbox-error-empty-comment' => 'Пустые комментарии не допускаются!',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'commentbox-savebutton' => 'Быһаарыыны бигэргэтэргэ',
+	'commentbox-name' => 'Аата:',
+	'commentbox-first-comment-heading' => '== Быһаарыылар ==',
+	'commentbox-regex' => '/\\n==\\s*Быһаарыылар\\s*==\\s*\\n/i',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -781,11 +793,22 @@ $messages['tk'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'commentbox-desc' => 'Belirli sayfalara bir yorum kutusu ekler',
+	'commentbox-intro' => '== Bir yorum ekle... ==
+Bu sayfa ile ilgili bir yorumunuz mu var? Buraya ekleyin ya da <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} direkt olarak sayfayı değiştirin]</span>.',
+	'commentbox-savebutton' => 'Yorumu kaydet',
 	'commentbox-name' => 'İsim:',
+	'commentbox-name-explanation' => '<small>(İpucu: [[Special:UserLogin|Oturum açmanız]] halinde, adınızı buraya manuel olarak girmek zorunda kalmayacaksınız)</small>',
 	'commentbox-log' => 'Yeni yorumlar',
 	'commentbox-first-comment-heading' => '==Yorumlar ==',
+	'commentbox-regex' => '/\\n==\\s*Yorumlar\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Yorumu oluşturmada hata',
+	'commentbox-error-page-nonexistent' => 'Bu sayfa mevcut değil!',
+	'commentbox-error-namespace' => 'Bu isim alanında yoruma izin verilmiyor!',
+	'commentbox-error-empty-comment' => 'Boş yorumlara izin verilmiyor!',
 );
 
 /** Ukrainian (Українська)

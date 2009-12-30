@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'conditionalshowsection-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'conditionalshowsection-desc' => "Voeg die tag <code><nowiki>cshow</nowiki></code> by om kondisioneel 'n paragraaf wikiteks te wys of te versteek",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

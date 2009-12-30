@@ -90,7 +90,7 @@ $messages['bg'] = array(
 	'tooltip-pt-optin-try' => 'Изпробвайте нови възможности',
 	'optin-leave' => 'Напускане на Бета',
 	'tooltip-pt-optin-leave' => 'Изключване на новите възможности',
-	'optin-feedback' => 'Обратна връзка за Бета',
+	'optin-feedback' => 'Отзиви за Бета',
 	'tooltip-pt-optin-feedback' => 'Дайте обратна връзка за опита си с новите функционалности',
 );
 

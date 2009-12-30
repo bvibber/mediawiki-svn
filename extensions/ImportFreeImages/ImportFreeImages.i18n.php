@@ -43,7 +43,9 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'importfreeimages' => 'Importeer vrye beelde',
 	'importfreeimages_owner' => 'Outeur',
+	'importfreeimages_importthis' => 'importeer hierdie',
 	'importfreeimages_next' => 'Volgende $1',
 );
 
@@ -151,11 +153,14 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'importfreeimages' => 'Enporzhiañ skeudennoù frank a wirioù',
+	'importfreeimages_invalidurl' => 'N\'eo ket ar chomlec\'h "$1" ur skeudenn Flickr reizh.',
 	'importfreeimages_owner' => 'Aozer',
 	'importfreeimages_importthis' => 'enporzhiañ an dra-se',
 	'importfreeimages_next' => "$1 war-lerc'h",
+	'importfreeimages_filefromflickr' => '$1 gant an implijer <b>[$2]</b> eus flickr. URL orin',
 	'importfreeimages_promptuserforfilename' => 'Mar plij lakait anv ar restr tal :',
 	'importfreeimages_returntoform' => "pe, klikit <a href='$1'>amañ</a> evit distreiñ d'ho roll disoc'hoù.",
+	'importfreeimages_nophpflickr' => 'N\'ho peus ket staliet phpFlickr, keflunit $wgIFphpFlickr en ho LocalSettings.php.',
 );
 
 /** Bosnian (Bosanski)

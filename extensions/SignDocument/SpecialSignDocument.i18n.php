@@ -687,6 +687,7 @@ $messages['bs'] = array(
  * @author Solde
  */
 $messages['ca'] = array(
+	'sign-selectdoc' => 'Document:',
 	'sign-realname' => 'Nom:',
 	'sign-address' => 'Adreça:',
 	'sign-city' => 'Ciutat:',
@@ -696,15 +697,25 @@ $messages['ca'] = array(
 	'sign-phone' => 'Telèfon:',
 	'sign-bday' => 'Edat:',
 	'sign-email' => 'Correu electrònic:',
+	'sign-list-hideaddress' => "No mostris l'adreça",
+	'sign-list-hideextaddress' => "No mostris la ciutat, l'estat, el codi postal, o el país",
+	'sign-list-hidephone' => 'No mostris el telèfon',
+	'sign-list-hidebday' => "No mostris l'edat",
+	'sign-list-hideemail' => 'No mostris el correu electrònic',
 	'sign-viewfield-timestamp' => 'Fus horari',
 	'sign-viewfield-realname' => 'Nom',
 	'sign-viewfield-address' => 'Adreça',
 	'sign-viewfield-city' => 'Ciutat',
 	'sign-viewfield-state' => 'Estat',
 	'sign-viewfield-country' => 'País',
+	'sign-viewfield-zip' => 'Codi postal',
 	'sign-viewfield-ip' => 'Adreça IP',
+	'sign-viewfield-phone' => 'Telèfon',
 	'sign-viewfield-email' => 'Correu electrònic',
+	'sign-viewfield-age' => 'Edat',
 	'sign-viewfield-options' => 'Opcions',
+	'sig-anonymous' => '<i>Anònim</i>',
+	'sig-private' => '<i>Privat</i>',
 	'sign-viewfield-reviewcomment' => 'Comentari',
 	'sign-review-comment' => 'Comentari',
 );

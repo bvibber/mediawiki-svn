@@ -175,6 +175,9 @@ $messages['be-tarask'] = array(
  * @author Turin
  */
 $messages['bg'] = array(
+	'scanset-desc' => 'Преглед на сканираните страници от сбирката на Андреас Грос (Andreas Grosz) на CD/DVD',
+	'scanset_no_name' => 'Грешка: Трябва да укажете име на колекцията сканирани страници, напр. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Error: Неправилна или липсваща сбирка сканирани страници',
 	'scanset_unrecognised_index_format' => 'Грешка: непознат формат на индекса',
 	'scanset_opendir_error' => 'Error: Грешка, не може да бъде отворена директория $1',
 	'scanset_no_files' => 'Грешка: В указаната директория няма налични файлове.',
@@ -748,12 +751,15 @@ $messages['jv'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'scanset-desc' => 'სკანირებული გამოსახულებების ხილვა ანდრეას გროსის (Andreas Grosz) CD/DVD კოლექციდან',
 	'scanset_no_name' => 'შეცდომა: თქვენ უნდა წარმოადგინოთ ფოტოსურათების კოლექციის ზუსტი სახელი, მაგ. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'შეცდომა:სურათების კომპლექსში შეცდომაა, ან ამგვარი კომპლექსი არ არსებობს',
+	'scanset_next' => 'შემდეგი &gt;',
+	'scanset_prev' => '&lt; წინა',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -141,7 +141,7 @@ Vi ste pokušali: '''$1'''",
  * @author Pill
  */
 $messages['de'] = array(
-	'rt-desc' => 'Modischer Interface für RT (Request Tracker)',
+	'rt-desc' => 'Modisches Interface für RT (Request Tracker)',
 	'rt-inactive' => 'Die RT-Erweiterung ist nicht aktiv',
 	'rt-badquery' => 'Die RT-Erweiterung hat einen Fehler bei der Kommunikation mit der RT-Datenbank festgestellt',
 	'rt-badlimit' => "Parameter „LIMIT (l)“ ungültig: Muss eine Zahl sein.

@@ -255,7 +255,7 @@ $messages['de'] = array(
 	'masseditregex-hint-toappend' => 'Text an das Ende der Seite anhängen - großartig um Seiten Kategorien hinzuzufügen',
 	'masseditregex-hint-remove' => 'Text von allen Seiten in der Liste entfernen',
 	'masseditregex-hint-removecat' => 'Alle Kategorien von einer Seite entfernen (bitte beachten, dass die eckigen Klammern im Wikicode ausgelassen werden).
-Der Ersetzungswerte sollten nicht ausgelassen werden.',
+Die Ersetzungswerte sollten nicht ausgelassen werden.',
 	'masseditregex-listtype-intro' => 'Dies ist eine Liste von:',
 	'masseditregex-listtype-pagenames' => 'Seitennamen (diese Seiten bearbeiten)',
 	'masseditregex-listtype-pagename-prefixes' => 'Seitennamen-Präfixe (Seiten bearbeiten, die mit diesem Text beginnen)',
@@ -333,6 +333,15 @@ $messages['el'] = array(
 	'masseditregex-hint-headeffect' => 'Αποτέλεσμα',
 	'masseditregex-listtype-intro' => 'Αυτή είναι μια λίστα από:',
 	'masseditregex-editfailed' => 'Αποτυχία επεξεργασίας:',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'masseditregex-matchtxt' => 'Serĉi',
+	'masseditregex-replacetxt' => 'Anstataŭigi kun:',
+	'masseditregex-editfailed' => 'Redakto malsukcesis:',
 );
 
 /** Spanish (Español)

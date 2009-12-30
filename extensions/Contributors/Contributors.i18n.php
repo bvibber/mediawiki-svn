@@ -1488,6 +1488,7 @@ $messages['tl'] = array(
  * @author Karduelis
  * @author Srhat
  * @author Suelnur
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'contributors' => 'Katkıda bulunanlar',
@@ -1497,6 +1498,10 @@ $messages['tr'] = array(
 	'contributors-target' => 'Başlık:',
 	'contributors-submit' => 'Göster',
 	'contributors-subtitle' => '$1 sayfasına temel katkıda bulunanlar',
+	'contributors-others-long' => 'Bu sayfada {{PLURAL:$1|bir diğer kullanıcı|$ diğer kullanıcı}} daha var.',
+	'contributors-others' => 've {{PLURAL:$1|bir diğer|$1 diğer}}',
+	'contributors-badtitle' => 'Geçersiz başlık.',
+	'contributors-nosuchpage' => '$1 adlı sayfa mevcut değil.',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

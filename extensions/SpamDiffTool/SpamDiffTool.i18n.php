@@ -66,7 +66,16 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'spamdifftool' => 'Bestuur spam-swartlys',
+	'spamdifftool_cantedit' => 'Jammer, maar u het nie toestemming om die spam-swartlys te wysig nie.',
+	'spamdifftool_no_urls_detected' => "Geen URL's was gevind nie.
+Kliek <a href='$1'>hier</a> om terug te keer.",
+	'spamdifftool_spam_link_text' => 'voeg by spam',
+	'spamdifftool_option_domain' => 'alles van hierdie domein',
+	'spamdifftool_option_subdomain' => 'alles van die subdomein',
+	'spamdifftool_option_directory' => 'hierdie subdomein en gids',
 	'spamdifftool_option_none' => 'niks',
+	'spamdifftool_block' => 'Blokkeer:',
 	'spamdifftool_submit_buttom' => 'OK',
 );
 
@@ -198,10 +207,17 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'spamdifftool' => 'Merañ roll du ar stroboù',
 	'spamdifftool_cantedit' => "Digarezit - n'oc'h ket aotreet kemmañ marilh du ar stroboù",
+	'spamdifftool_notext' => "N'eus testenn ebet da ouzhpennañ da roll du ar stroboù.
+Klikit <a href='$1'>amañ</a> evit kenderc'hel.",
+	'spamdifftool_confirm' => "Kadarnait ho peus c'hoant da ouzhpennañ ar gasadennoù-mañ e roll du ar stroboù.
+(Klikit <a href='$1' target='new'>amañ</a> evit menegiñ neb kudenn.)",
 	'spamdifftool_summary' => 'Ouzhpennañ da roll du ar stroboù',
 	'spamdifftool_no_urls_detected' => "N'eus bet dinoet url ebet.
 Klikit <a href='$1'>amañ</a> evit distreiñ.",
 	'spamdifftool_spam_link_text' => "ouzhpennañ d'ar stroboù",
+	'spamdifftool_option_domain' => 'pep tra adalek an domani-mañ',
+	'spamdifftool_option_subdomain' => 'pep tra adalek an is-domani-mañ',
+	'spamdifftool_option_directory' => "an is-domani-mañ hag ar c'havlec'h-mañ",
 	'spamdifftool_option_none' => 'netra',
 	'spamdifftool_block' => 'Stankañ :',
 	'spamdifftool_submit_buttom' => 'Kas',

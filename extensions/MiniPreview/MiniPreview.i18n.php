@@ -821,9 +821,19 @@ Halimbawa na, hindi ipapakita ng "* PD-" ang lahat ng mga kauriang nagsisimula s
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'minipreview-desc' => 'MiniÖnİzleme, bir resmin yanında aynı kategorilerde bulunan ya da aynı sayfalarda görüntülenen diğer ortam dosyalarının küçük ön izlemelerini görüntüler',
 	'minipreview-files_in_category' => "Bu kategori, '''$1''' {{PLURAL:$1|dosya|dosya}} içermektedir.",
+	'minipreview-files_in_gallery' => "Galeri '''$1''' {{PLURAL:$1|dosya|dosya}} içeriyor.",
 	'minipreview-no_more_files_here' => 'Bu yönde başka dosya bulunmamaktadır.',
 	'minipreview-no_category_gallery' => 'Hiçbir kategori veya galeri yok !',
+	'minipreview-ignore_categories' => 'Aşağıda, kategori adlarının ve ad öneklerinin bir listesi yer almaktadır.
+Bu kategorileri MiniÖnİzleme tarafından görüntülenmeyecektir.
+Örneğin, "*KM-", "KM-eski" gibi "KM-" ile başlayan tüm kategorileri görüntülemeyecektir.
+* GÖBL-
+* GÖBL
+* CC
+* KM-
+* Kişisel',
 );
 
 /** Veps (Vepsan kel')

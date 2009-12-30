@@ -382,6 +382,13 @@ $messages['km'] = array(
 	'msfunc_div_zero' => 'ចែកនឹងសូន្យ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'msfunc_div_zero' => '0으로 나눔',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

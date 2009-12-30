@@ -586,9 +586,13 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'formatchanges-desc' => '[[Special:RecentChanges|Son değişiklikleri]] yeniden biçimlendirir',
 	'formatchanges-anonymous' => 'Anonim',
+	'formatchanges-createdby' => '$1 - $2 ($3) tarafından oluşturuldu',
+	'formatchanges-editedby' => '$1 - $2 ($3) tarafından değiştirildi',
 );
 
 /** Ukrainian (Українська)

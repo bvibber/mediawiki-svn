@@ -108,6 +108,7 @@ $messages['bg'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Изпращане...',
 	'communityvoice-ratings-scale-status-error' => 'Грешка при изпращането!',
 	'communityvoice-ratings-scale-status-thanks' => 'Благодарим за гласуването!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|глас|гласа}})',
 );
 
 /** Breton (Brezhoneg)
@@ -321,6 +322,19 @@ $messages['fr'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 vote{{PLURAL:$2||s}})',
 	'communityvoice-ratings-error-no-category' => "L'attribut de catégorie est absent dans la balise de notation.",
 	'communityvoice-ratings-error-no-title' => "L'attribut de titre est absent dans la balise de notation.",
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'communityvoice' => 'Vouèx a la comunôtât',
+	'communityvoice-desc' => 'Outils por la participacion a la comunôtât.',
+	'communityvoice-ratings' => 'Notes',
+	'communityvoice-ratings-scale-status-sending' => 'Èxpèdicion en cors...',
+	'communityvoice-ratings-scale-status-error' => 'Èrror pendent l’èxpèdicion !',
+	'communityvoice-ratings-scale-status-thanks' => 'Grant-marci por voutron voto !',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 voto{{PLURAL:$2||s}})',
 );
 
 /** Galician (Galego)

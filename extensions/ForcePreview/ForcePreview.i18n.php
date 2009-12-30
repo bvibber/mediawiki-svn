@@ -562,6 +562,15 @@ $messages['tl'] = array(
 	'right-forcepreviewexempt' => 'Maaaring sagipin na hindi ginagamit ang Ipakita ang paunang-tingin',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'forcepreview' => 'Sayfayı kaydet (ilk önce ön izlemeyi kullan)',
+	'forcepreview-desc' => 'Yetkisiz kullanıcılar için ön izlemeyi zorunlu kılar',
+	'right-forcepreviewexempt' => 'Ön izleme yapmadan sayfayı kaydedebilir',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

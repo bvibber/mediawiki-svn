@@ -659,6 +659,20 @@ $messages['tl'] = array(
 	'cspammer-log-page' => 'Talaan ng manlulusob na may dalang kumento',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'commentspammer-save-blocked' => 'IP adresinizin yorum reklamı için kullanılmasından şüphelenildiği için sayfa kaydedilmedi.
+Bunun önüne geçmek için [[Special:UserLogin|oturum açın ya da hesap oluşturun]].',
+	'commentspammer-desc' => 'DNS kara listesindeki şüphelenilen yorum reklamcılarının değişikliklerini reddeder',
+	'commentspammer-log-msg' => '[[Special:Contributions/$1|$1]] ile [[:$2]] arasındaki değişiklikler.',
+	'commentspammer-log-msg-info' => 'En son reklam $1 {{PLURAL:$1|gün|gün}} önce eklendi, tehdit seviyesi $2, saldırı kodu $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Detayları gör] veya [[Special:Blockip/$4|engelle]].',
+	'cspammerlogpagetext' => 'Kaynağın bilinen bir yorum reklamcısı olup olmamasına dayanılarak izin verilen ya da reddedilen değişikliklerin kaydı.',
+	'cspammer-log-page' => 'Yorum reklamcısı kaydı',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

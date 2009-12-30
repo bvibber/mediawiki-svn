@@ -2086,6 +2086,7 @@ $wgCustomToolbarMessages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Luckas Blade
  */
 $wgCustomToolbarMessages['pt-br'] = array(
 	'ct-desc' => 'Adiciona uma barra de ferramentas extensível',
@@ -2103,7 +2104,7 @@ $wgCustomToolbarMessages['pt-br'] = array(
 	'ct_internal_caption' => 'Link Interno',
 	'ct_external_tip_ins' => 'Incluir um link externo',
 	'ct_external_tip_wrap' => 'Transformar este texto em link externo',
-	'ct_external_caption' => 'Link Externo',
+	'ct_external_caption' => 'Ligação externa',
 	'ct_image_tip' => 'Carregar uma imagem',
 	'ct_image_caption' => 'Adicionar uma Imagem',
 	'ct_attachment_tip' => 'Incluir um anexo',
@@ -2523,6 +2524,7 @@ Wröich din Popup-Blocker.',
 
 /** Swedish (Svenska)
  * @author Najami
+ * @author Ozp
  */
 $wgCustomToolbarMessages['sv'] = array(
 	'ct-desc' => 'Lägger till en utökad verktygslåda',
@@ -2543,6 +2545,8 @@ $wgCustomToolbarMessages['sv'] = array(
 	'ct_external_caption' => 'Extern länk',
 	'ct_image_tip' => 'Sätt in en bild',
 	'ct_image_caption' => 'Lägg till bild',
+	'ct_attachment_tip' => 'Infoga en bilaga',
+	'ct_attachment_caption' => 'Lägg till en bilaga',
 	'ct_math_sample' => 'Sätt in LaTeX-formel här',
 	'ct_math_tip_ins' => 'Sätt in en matematisk formel (LaTeX)',
 	'ct_math_tip_wrap' => 'Gör den här texten till en matematisk formel (LaTeX)',
@@ -2555,9 +2559,12 @@ $wgCustomToolbarMessages['sv'] = array(
 	'ct_horizontal_caption' => 'Horisontell linje',
 	'ct_upload' => 'Ladda upp $1',
 	'ct_select' => 'Välj $1 för att ladda upp:',
+	'ct_caption' => 'Lägg till en bildtext (valfritt):',
+	'ct_link' => 'Lägg till ett länknamn (valfritt):',
 	'ct_submit' => 'Gå!',
 	'ct_close' => 'Stäng fönster',
 	'ct_success' => 'Filen har laddats upp!',
+	'ct_popupblocked' => 'Uppladdningsfönstret kunde inte öppnas. Kontrollera inställningarna för din popupblockerare.',
 	'ct_user_user' => 'Användare',
 	'ct_user_tip' => 'Sätt in en länk till en användarsida',
 	'ct_user_caption' => 'Användarlänk',
@@ -2966,6 +2973,7 @@ $wgCustomToolbarMessages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $wgCustomToolbarMessages['zh-hant'] = array(
@@ -2985,8 +2993,8 @@ $wgCustomToolbarMessages['zh-hant'] = array(
 	'ct_external_tip_ins' => '插入外部鏈接',
 	'ct_external_tip_wrap' => '將文字變為外部鏈接',
 	'ct_external_caption' => '外部連結',
-	'ct_image_tip' => '插入圖像',
-	'ct_image_caption' => '增加圖像',
+	'ct_image_tip' => '插入圖片',
+	'ct_image_caption' => '增加圖片',
 	'ct_attachment_tip' => '插入附件',
 	'ct_attachment_caption' => '增加附件',
 	'ct_math_sample' => '在此插入LaTeX公式',

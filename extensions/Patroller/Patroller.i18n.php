@@ -485,6 +485,15 @@ $messages['es'] = array(
 	'right-patroller' => 'Patrullar páginas',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'group-patroller' => 'Kontrollijad',
+	'group-patroller-member' => 'kontrollija',
+	'grouppage-patroller' => '{{ns:project}}:Kontrollijad',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

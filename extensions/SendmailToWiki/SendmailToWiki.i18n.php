@@ -106,6 +106,13 @@ $messages['bs'] = array(
 	'sendmailtowiki-err-invalidpin' => 'Nevaljan PIN. Pristup onemogućen.',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'sendmailtowiki-inpin' => 'PIN:',
+);
+
 /** German (Deutsch)
  * @author Imre
  */
@@ -153,6 +160,13 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'sendmailtowiki-inpin' => 'ΡΙΝ:',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'sendmailtowiki-inemail' => 'Dediĉita retadreso:',
 );
 
 /** Spanish (Español)

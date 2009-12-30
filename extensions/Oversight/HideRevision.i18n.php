@@ -1054,6 +1054,8 @@ $messages['et'] = array(
 	'hiderevision-error-missing' => 'Ei leidu andmebaasis.',
 	'hiderevision-error-current' => 'Lehekülje viimast muudatust ei saa kustutada.
 Kõigepealt eemalda see.',
+	'hiderevision-error-delete' => 'Ei saa arhiivida. Kas see on kustutatud olnud?',
+	'hiderevision-archive-status' => 'Kustutatud redaktsioon ajatempliga $1: $2',
 	'oversight-log-hiderev' => 'eemaldas muudatuste leheküljelt $1',
 	'oversight-view' => 'üksikasjad',
 	'oversight-hidden' => 'Peidetud redaktsioon',
@@ -1989,6 +1991,7 @@ $messages['ka'] = array(
 	'hiderevision-link' => 'მომხმარებლის დამალული წვლილი',
 	'hiderevision-success' => 'წარმატებით დაარქივდა და წაიშალა',
 	'oversight-view' => 'დეტალები',
+	'oversight-hidden' => 'დამალული ვერსია',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)

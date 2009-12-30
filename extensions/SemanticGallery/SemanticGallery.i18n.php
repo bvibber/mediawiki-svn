@@ -290,6 +290,13 @@ $messages['tl'] = array(
 	'semanticgallery-desc' => 'Nagdaragdag ng mga inilalabas ng mga produktong na nasa anyong pangtanghalan (galerya) sa mga nasa loob ng hanay na mga katanunang pang-SMW',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'semanticgallery-desc' => 'SMW satıriçi sorgularına bir galeri çıktı biçemi ekler',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

@@ -83,6 +83,10 @@ Shown in [[Special:Version]].',
  */
 $messages['af'] = array(
 	'inplace_scaler_not_enough_params' => 'Nie genoeg parameters nie.',
+	'webstore_path_invalid' => 'Die lêernaam was ongeldig.',
+	'webstore_src_open' => 'Kon nie die bronlêer "$1" oopmaak nie.',
+	'webstore_no_file' => 'Geen lêer was opgelaai nie.',
+	'webstore_invalid_zone' => 'Ongeldige sone "$1".',
 	'webstore_curl' => 'Fout vanaf Curl: $1',
 	'webstore_404' => 'Lêer nie gevind nie.',
 	'webstore_php_warning' => 'PHP-waarskuwing: $1',
@@ -888,6 +892,7 @@ $1',
 	'webstore_backend_error' => 'Virhe tallennuspalvelimelta:
 
 $1',
+	'webstore_php_error' => 'Ilmeni PHP-virheitä:',
 );
 
 /** French (Français)

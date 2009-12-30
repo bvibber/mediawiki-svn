@@ -123,11 +123,15 @@ $messages['niu'] = array(
 $messages['af'] = array(
 	'regexblock-already-blocked' => '$1 is reeds geblok.',
 	'regexblock-expire-duration' => '1 uur,2 uur,4 uur,6 uur,1 dag,3 dae,1 week,2 weke,1 maand,3 maande,6 maande,1 jaar,onbepaald',
+	'regexblock-form-username' => 'IP-adres of gebruikersnaam:',
 	'regexblock-form-reason' => 'Rede:',
 	'regexblock-form-expiry' => 'Verval:',
+	'regexblock-form-submit' => 'Blokkeer die gebruiker',
+	'regexblock-nodata-found' => 'Geen data gevind nie',
 	'regexblock-view-all' => 'Alles',
 	'regexblock-view-go' => 'Laat waai',
 	'regexblock-view-reason' => 'rede: $1',
+	'regexblock-view-stats' => 'statistieke',
 	'regexblock-view-time' => 'op $1',
 );
 
@@ -701,6 +705,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'regexblock-already-blocked' => '$1 jam estas forbarita.',
+	'regexblock-block-log' => "Salutnomo aŭ IP-adreso '''$1''' estis forbarita.",
 	'regexblock-block-success' => 'Forbaro sukcesis',
 	'regexblock-currently-blocked' => 'Nune forbaritaj adresoj:',
 	'regexblock-form-username' => 'IP Adreso aŭ salutnomo:',
@@ -708,6 +713,7 @@ $messages['eo'] = array(
 	'regexblock-form-expiry' => 'Findato:',
 	'regexblock-form-match' => 'Preciza kongruo',
 	'regexblock-form-submit' => 'Forbari ĉi tiun uzanton',
+	'regexblock-form-submit-regex' => 'Malvalida regulara esprimo.',
 	'regexblock-unblock-success' => 'Malforbaro sukcesis',
 	'regexblock-unblock-log' => "Salutnomo aŭ IP-adreso '''$1''' estis restarigita.",
 	'regexblock-unblock-error' => 'Eraro malforbarante $1.
@@ -2988,6 +2994,7 @@ $messages['ug-latn'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'regexblock-form-username' => "IP-адреса або ім'я користувача:",
 	'regexblock-form-reason' => 'Причина:',
 );
 

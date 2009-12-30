@@ -667,8 +667,12 @@ $messages['te'] = array(
  */
 $messages['tr'] = array(
 	'useroptionstats' => 'Kullanıcı seçenek istatistikleri',
+	'useroptionstats-desc' => 'MediaWiki kullanıcı seçenek kullanımında bildirim için [[Special:UserOptionStats|özel sayfa]]',
 	'uos-warn' => 'PHPlot kurulu değil!',
 	'uos-choose' => 'Aşağıdaki kullanıcı seçeneklerinden birini seçin: $1',
+	'uos-unknown' => '*Varsayılan',
+	'uos-other' => '*Diğer',
+	'uos-title' => 'Kullanıcı seçeneği $1 için değer dağılımı',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

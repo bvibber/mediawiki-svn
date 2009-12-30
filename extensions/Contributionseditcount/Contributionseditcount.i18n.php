@@ -629,6 +629,14 @@ $messages['tl'] = array(
 	'contributionseditcount-desc' => 'Nagpapakita ng bilang ng pamamatnugot sa ibabaw ng [[Special:Contributions|pahina ng mga ambag ng tagagamit]]',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'contributionseditcount' => 'Bu kullanıcı {{PLURAL:$1|bir değişiklik|$1 değişiklik}} yaptı.',
+	'contributionseditcount-desc' => '[[Special:Contributions|Kullanıcı katkıları sayfasında]] bir değişiklik sayacı görüntüler',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

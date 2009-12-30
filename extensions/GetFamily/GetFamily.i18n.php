@@ -383,6 +383,16 @@ $messages['te'] = array(
 	'getfamily' => 'పివైవికీపీడియాబాట్ కుటుంబాన్ని తీసుకురా',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'getfamily-desc' => 'Pywikipediabot için bir aile dosyası oluşturur',
+	'getfamily' => 'Pywikipediabot ailesini alır',
+	'getfamily-interwikierror' => 'Hata: yanlış interviki ayarı, yerel hizmetli ile irtibata geçin.',
+	'right-getfamily' => 'Pywikipediabot için bir aile dosyası oluşturur',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */

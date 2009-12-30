@@ -308,6 +308,15 @@ $messages['sv'] = array(
 Använd: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'stockcharts-desc' => 'İnteraktif bir mali menkul değer tablosu için <nowiki><stockchart ticker="AAPL"/></nowiki> etiketini ekler',
+	'stockcharts-missingticker' => 'Bir menkul değer tablosu yerleştirmek için en azından bir onaylayıcı seçmelisiniz.
+Şunu kullanın: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

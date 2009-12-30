@@ -1902,6 +1902,9 @@ $messages['tr'] = array(
 	'vote-current' => "Şuanki oyunuz '''$1''' için.",
 	'vote-legend' => 'Oyu yerleştir veya düzelt',
 	'vote-caption' => 'Oyunuz :',
+	'vote-choices' => 'joker|Joker
+penguin|Penguen
+riddler|Bilmececi',
 	'vote-submit' => 'Oy',
 	'vote-registered' => 'Oyunuz kaydedilmiştir.',
 	'vote-view-results' => 'Sonuçları görüntüle',

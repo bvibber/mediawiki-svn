@@ -647,9 +647,17 @@ Mapapakinabangan din ng mga pahinang ito ang tulong mo: $1.',
 
 /** Turkish (Türkçe)
  * @author Mach
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'editsimilar-desc' => 'Kullanıcıları bir sayfayı kaydettikten sonra benzer bir sayfada değişiklik yapmaya yönlendirir',
+	'editsimilar-thanks' => 'Katkınız için teşekkürler.
+{{PLURAL:$2|Bu ilgili sayfayı|Bu ilgili sayfaları}} ziyaret edin: $1.',
+	'editsimilar-thanks-notsimilar' => 'Katkınız için teşekkürler.
+{{PLURAL:$2|Bu sayfa|Bu sayfalar}} da yardımınıza ihtiyaç duyuyor: $1.',
 	'editsimilar-thankyou' => 'Katkılarınız için teşekkürler, $1!',
+	'editsimilar-link-disable' => 'tercihleri ayarla',
+	'tog-edit-similar' => 'Benzer sayfa önerilerini etkinleştir',
 );
 
 /** Vietnamese (Tiếng Việt)

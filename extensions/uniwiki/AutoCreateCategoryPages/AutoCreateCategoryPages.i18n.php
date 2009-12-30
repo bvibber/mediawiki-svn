@@ -561,8 +561,13 @@ Nagtatala ito ng lahat ng mga pahinang nasa kauriang "$1" maging ang lahat ng ka
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'autocreatecategorypages-desc' => 'Kaydedince otomatik olarak eksik kategori sayfalarını oluşturur',
+	'autocreatecategorypages-stub' => 'Bu bir kategori sayfasıdır.
+"$1" kategorisindeki sayfaların tamamının yanı sıra, varsa "$1" kategorisinin tüm alt kategorilerini de listelemektedir.',
+	'autocreatecategorypages-createdby' => 'Otomatik olarak AutoCreateCategoryPages eklentisi tarafından oluşturulmuştur.',
 	'autocreatecategorypages-editor' => 'Otomatik kategori oluşturucusu',
 );
 

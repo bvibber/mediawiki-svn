@@ -115,6 +115,8 @@ $messages['bg'] = array(
 	'contributiontracking-desc' => 'Проследяване на даренията в дарителската акция на Уикимедия',
 	'contributiontracking' => 'Проследяване на дарението',
 	'contrib-tracking-error' => 'Грешка',
+	'contrib-tracking-error-text' => 'Неправилно изпратена форма',
+	'contrib-tracking-submitting' => 'Изпращане за обработка на плащането...',
 	'contrib-tracking-continue' => 'Ако не бъдете пренасочени автоматично, натиснете бутона, за да завършите дарението през PayPal.',
 	'contrib-tracking-button' => 'Продължаване',
 );
@@ -270,6 +272,7 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
+	'contributiontracking-desc' => 'Jälgib Wikimedia korjanduse laekumisi.',
 	'contrib-tracking-error' => 'Viga',
 	'contrib-tracking-submitting' => 'Maksevahendaja juurde suunamine...',
 	'contrib-tracking-continue' => 'Kui sind ei suunata automaatselt, klõpsa nuppu, et annetus PayPalis lõpule viia.',
@@ -326,6 +329,17 @@ $messages['fr'] = array(
 	'contrib-tracking-submitting' => 'Envoi au système de traitement des paiements...',
 	'contrib-tracking-continue' => 'Si vous n’êtes pas redirigé automatiquement, cliquez ce bouton pour compléter votre don avec Paypal.',
 	'contrib-tracking-button' => 'Continuer',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'contributiontracking-desc' => 'Survelyence de les contribucions por la levâ de fonds de Wikimedia.',
+	'contributiontracking' => 'Survelyence de les contribucions',
+	'contrib-tracking-error' => 'Èrror',
+	'contrib-tracking-error-text' => 'Somission du formulèro envalida',
+	'contrib-tracking-button' => 'Continuar',
 );
 
 /** Galician (Galego)

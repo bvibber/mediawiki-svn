@@ -643,9 +643,12 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'icon-badimage' => 'Kötü resim',
+	'icon-badwidth' => 'Uygunsuz genişlik',
+	'icon-desc' => 'Resimleri simge ve simge bağlantısı olarak kullanmanızı sağlar',
 );
 
 /** Ukrainian (Українська)

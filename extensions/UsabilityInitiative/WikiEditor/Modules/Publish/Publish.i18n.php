@@ -106,6 +106,7 @@ $messages['be-tarask'] = array(
  * @author Turin
  */
 $messages['bg'] = array(
+	'wikieditor-publish-preference' => 'Включване на публикуване стъпка по стъпка',
 	'wikieditor-publish-button-publish' => 'Публикуване',
 	'wikieditor-publish-button-cancel' => 'Отказване',
 	'wikieditor-publish-dialog-title' => 'Публикуване в {{SITENAME}}',
@@ -707,10 +708,15 @@ $messages['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil)
  * @author Hamilton Abreu
  * @author Lijealso
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'wikieditor-publish-button-publish' => 'Publicar',
+	'wikieditor-publish-button-cancel' => 'Cancelar',
 	'wikieditor-publish-dialog-title' => 'Publicar em {{SITENAME}}',
+	'wikieditor-publish-dialog-minor' => 'Edição menor',
+	'wikieditor-publish-dialog-watch' => 'Vigiar esta página',
+	'wikieditor-publish-dialog-goback' => 'Voltar',
 );
 
 /** Romanian (Română)

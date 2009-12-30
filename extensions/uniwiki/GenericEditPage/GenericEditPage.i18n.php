@@ -1378,17 +1378,24 @@ Mäd do Reewen an ju Siede konnen wäkke bietouföiged wäide.',
 /** Swedish (Svenska)
  * @author Gabbe.g
  * @author Najami
+ * @author Ozp
  * @author Poxnar
  */
 $messages['sv'] = array(
+	'gep-emailfailure' => 'Tyvärr, ditt förslag kunde inte behandlas.',
+	'gep-emailsuccess' => 'Tack för att du föreslog kategorin: $1.',
 	'gep-categories' => 'Kategorier',
 	'gep-addcategory' => 'Lägg till en kategori',
 	'gep-addcategorybutton' => 'Lägg till',
 	'gep-suggestcategory' => 'Föreslå en kategori',
+	'gep-suggestcategorybutton' => 'OK',
 	'gep-sections' => 'Avsnitt',
+	'gep-sectionnotdisabled' => 'Detta avsnitt kan inte inaktiveras',
 	'gep-addsection' => 'Lägg till ett avsnitt',
 	'gep-addsectionbutton' => 'Lägg till',
 	'gep-classicmode' => 'Klassiskt läge',
+	'gep-nosectioninstructions' => 'Det finns inga avsnitt på denna sida,
+Lägg till några med verktygen i menyn.',
 	'gep-nocategories' => 'Välj minst en kategori innan du sparar.',
 );
 

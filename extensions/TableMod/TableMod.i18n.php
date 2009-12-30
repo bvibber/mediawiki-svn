@@ -133,6 +133,14 @@ $messages['el'] = array(
 	'tablemod-msg-remove' => 'Αφαίρεση',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'tablemod-msg-remove' => 'Forigi',
+	'tablemod-error-invalidaction' => 'Malvalida ago.',
+);
+
 /** Spanish (Español)
  * @author Imre
  */

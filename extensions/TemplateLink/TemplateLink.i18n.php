@@ -566,6 +566,16 @@ $messages['tl'] = array(
 	'templatelink_newtitle' => '$1 (inilipat-sama)',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'templatelink' => 'Şablon bağlantısı',
+	'templatelink_desc' => 'Eklenti, bir şablonu yeni sayfa olarak gösterebilir',
+	'templatelink_empty' => 'Bir parametre girmelisiniz.',
+	'templatelink_newtitle' => '$1 (görüntüleme)',
+);
+
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Yildiz
  * @author Рашат Якупов

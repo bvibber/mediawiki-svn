@@ -234,6 +234,7 @@ $messages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author Borislav
  * @author Spiritia
+ * @author Turin
  */
 $messages['bg'] = array(
 	'expandtemplates' => 'Разгръщане на шаблони',
@@ -243,6 +244,7 @@ $messages['bg'] = array(
 	'expand_templates_xml_output' => 'Изход на XML',
 	'expand_templates_ok' => 'ОК',
 	'expand_templates_remove_comments' => 'Премахване на коментари',
+	'expand_templates_remove_nowiki' => 'Потискане на елементите <nowiki> в резултата',
 	'expand_templates_generate_xml' => 'Показване на дървото от разбора на XML',
 	'expand_templates_preview' => 'Преглед',
 );
@@ -604,6 +606,7 @@ $messages['fi'] = array(
 	'expand_templates_xml_output' => 'XML-tuloste',
 	'expand_templates_ok' => 'Laajenna',
 	'expand_templates_remove_comments' => 'Poista kommentit',
+	'expand_templates_remove_nowiki' => 'Poista <nowiki>-tagit tulosteesta',
 	'expand_templates_generate_xml' => 'Näytä XML-jäsennyspuu',
 	'expand_templates_preview' => 'Esikatselu',
 );
@@ -661,6 +664,7 @@ Rèalise cen en apelent los étâjos succèssifs que vont avouéc du parsor de M
 	'expand_templates_xml_output' => 'Rèsultat u format XML',
 	'expand_templates_ok' => 'D’acôrd',
 	'expand_templates_remove_comments' => 'Suprimar los comentèros',
+	'expand_templates_remove_nowiki' => 'Suprime les balises <nowiki> dens lo rèsultat',
 	'expand_templates_generate_xml' => 'Fâre vêre l’âbro du parsor u format XML',
 	'expand_templates_preview' => 'Prèvisualisacion du rendu',
 );

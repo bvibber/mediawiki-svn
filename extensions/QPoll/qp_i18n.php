@@ -456,14 +456,14 @@ Stelle sicher, dass die Abstimmung festgelegt und gespeichert ist und dass # als
 	'qp_error_invalid_poll_id' => 'Ungültige Abstimmungskennung (id=$1).
 Abstimmungskennung darf nur Buchstaben, Zahlen und Leerstellen enthalten.',
 	'qp_error_already_used_poll_id' => 'Die Abstimmungskennung wurde bereits auf dieser Seite benutzt (id=$1).',
-	'qp_error_invalid_dependance_value' => 'Die Abhängigkeitskette der Abstimmung (id=$1) hat einen ungültigen Wert in der Abhängigkeits-Attribute (Abhängigkeit="$2")',
+	'qp_error_invalid_dependance_value' => 'Die Abhängigkeitskette der Abstimmung (id=$1) hat einen ungültigen Wert in dem Abhängigkeits-Attribut (Abhängigkeit=„$2“)',
 	'qp_error_missed_dependance_title' => 'Die Abstimmung (id=$1) ist abhängig von einer anderen Abstimmung (id=$3) auf der Seite [[$2]], aber der Titel [[$2]] wurde nicht gefunden.
 Entferne entweder die Abhängigkeits-Attribute, oder stelle [[$2]] wieder her',
 	'qp_error_missed_dependance_poll' => 'Die Abstimmung (id=$1) ist abhängig von einer anderen Abstimmung (id=$3) auf Seite $2, aber diese Abstimmung existiert nicht oder wurde noch nicht gespeichert.
 Entferne entweder die Abhängigkeits-Attribute oder erstelle die Abstimmung mit id=$3 auf Seite $2 und speichere sie.
 Um die Abstimmung zu speichern, übermittle sie während du nicht auf eine Antragsanfrage antwortest.',
 	'qp_error_vote_dependance_poll' => 'Bitte erst für $1 abstimmen.',
-	'qp_error_too_many_spans' => 'Zu viele Kategoriegruppen für die Gesamtzahl der Unterrubriken definiert',
+	'qp_error_too_many_spans' => 'Zu viele Kategoriegruppen für die Gesamtzahl der Unterkategorien definiert',
 	'qp_error_unanswered_span' => 'Unbeantwortete Unterrubrik',
 	'qp_error_non_unique_choice' => 'Diese Frage benötigt eindeutige Antragsbeantwortung',
 	'qp_error_category_name_empty' => 'Kategoriename ist leer',
@@ -566,6 +566,17 @@ $messages['el'] = array(
 	'qp_func_no_such_poll' => 'Καμιά τέτοια δημοσκόπηση ($1)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'qp_result_error' => 'Sintaksa eraro',
+	'qp_vote_button' => 'Voĉdoni',
+	'qp_source_link' => 'Fonto',
+	'qp_stats_link' => 'Statistikoj',
+	'qp_users_link' => 'Uzantoj',
+);
+
 /** Spanish (Español)
  * @author Imre
  * @author Translationista
@@ -576,17 +587,22 @@ $messages['es'] = array(
 	'qp_vote_button' => 'Vota',
 	'qp_vote_again_button' => 'Cambia tu voto',
 	'qp_users_list' => 'Hacer una lista de todos los usuarios',
+	'qp_browse_to_poll' => 'Navegar a $1',
+	'qp_browse_to_user' => 'Navegar a $1',
 	'qp_votes_count' => '$1 {{PLURAL:$1|voto|votos}}',
 	'qp_source_link' => 'Fuente',
 	'qp_stats_link' => 'Estadísticas',
 	'qp_users_link' => 'Usuarios',
 	'qp_voice_link' => 'Voz de usuario',
 	'qp_voice_link_inv' => '¿Voz de usuario?',
+	'qp_user_missing_polls_link' => 'No participación',
+	'qp_not_participated_link' => 'No ha participado',
 	'qp_order_by_username' => 'Organizar por nombre de usuario',
 	'qp_results_line_qupl' => 'Página "$1" Votación "$2": $3',
 	'qp_results_line_qpl' => 'Página "$1" Votación "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Página "$2" Votación "$3" ]',
 	'qp_export_to_xls' => 'Exportar estadísticas a formato XLS',
+	'qp_func_no_such_poll' => 'No hay votación ($1)',
 	'qp_error_invalid_question_type' => 'Tipo de pregunta inválido: $1',
 	'qp_error_type_in_stats_mode' => 'El tipo de pregunta no puede definirse en modo de visualización estadística: $1',
 	'qp_error_too_many_spans' => 'Muchas clases de categorías para las subcategorías definidas',
@@ -1758,24 +1774,35 @@ $messages['ru'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ozp
  * @author Per
  */
 $messages['sv'] = array(
+	'pollresults' => 'Resultat av omröstningarna på denna sida',
+	'qp_desc-sp' => '[[Special:PollResults|Specialsida]] för visning av resultat av omröstningarna',
 	'qp_result_NA' => 'Inte besvarad',
+	'qp_result_error' => 'Syntaxfel',
 	'qp_vote_button' => 'Rösta',
 	'qp_vote_again_button' => 'Ändra din röst',
 	'qp_polls_list' => 'Lista alla röstningar',
 	'qp_users_list' => 'Lista alla användare',
+	'qp_browse_to_poll' => 'Bläddra till $1',
+	'qp_browse_to_user' => 'Bläddra till $1',
 	'qp_votes_count' => '$1 {{PLURAL:$1|röst|röster}}',
 	'qp_source_link' => 'Källa',
 	'qp_stats_link' => 'Statistik',
 	'qp_users_link' => 'Användare',
+	'qp_user_polls_link' => 'Deltagit i $1 {{PLURAL:$1|omröstning|omröstningar}}',
 	'qp_user_missing_polls_link' => 'Ingen deltagelse',
 	'qp_not_participated_link' => 'Inte deltagit',
 	'qp_order_by_username' => 'Sortera efter användarnanm',
+	'qp_order_by_polls_count' => 'Sortera efter antal omröstningar',
 	'qp_export_to_xls' => 'Exportera statistik till XLS-format',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|användare|användare}} besvarade frågorna',
 	'qp_func_no_such_poll' => 'Ingen sådan undersökning ($1)',
+	'qp_error_no_such_poll' => 'Ingen sådan omröstning ($1).
+Var säker på att omröstningen deklarerades och sparades, var också med att använda adressavgränsar-tecknet #',
+	'qp_error_already_used_poll_id' => 'Detta omröstnings-id har redan använts på denna sida (id=$1).',
 	'qp_error_vote_dependance_poll' => 'Vänligen rösta i undersökningen $1 först.',
 	'qp_error_too_many_spans' => 'För många kategorigrupper för det totala antalet underkategorier definerade',
 	'qp_error_unanswered_span' => 'Obesvarad underkategori',

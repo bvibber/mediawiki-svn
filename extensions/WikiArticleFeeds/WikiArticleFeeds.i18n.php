@@ -352,6 +352,14 @@ $messages['tl'] = array(
 	'wikiarticlefeeds_combined_description' => 'Isa itong pinagsamang pasubo, naglalamang ng mga bagay mula sa ilang pinagmulang mga pasubo.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'wikiarticlefeeds-desc' => 'MediaWiki sayfaları kaynak alınarak oluşturulan beslemeler oluşturur',
+	'wikiarticlefeeds_combined_description' => 'Bu birleşik bir beslemedir ve çeşitli besleme kaynaklarının öğelerini içermektedir.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

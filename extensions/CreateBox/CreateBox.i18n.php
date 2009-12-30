@@ -655,6 +655,14 @@ $messages['ru'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'createbox-desc' => 'Сирэй айарга аналлаах формалар',
+	'createbox-create' => 'Айарга',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

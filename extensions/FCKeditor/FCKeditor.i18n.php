@@ -289,6 +289,13 @@ $messages['el'] = array(
 	'tog-riched_disable' => 'Απενεργοποίηση εμπλουτισμένου επεξεργαστή',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'textrichditor' => 'Riĉa Redaktilo',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */

@@ -277,7 +277,7 @@ $messages['bg'] = array(
 	'readerfeedback-npov' => 'Оценка за неутралност',
 	'readerfeedback-presentation' => 'Оценка за изказ и стил',
 	'readerfeedback-overall' => 'Обща оценка',
-	'readerfeedback-level-none' => '(избиране)',
+	'readerfeedback-level-none' => '(неопределено)',
 	'readerfeedback-level-0' => 'Много ниска',
 	'readerfeedback-level-1' => 'Ниска',
 	'readerfeedback-level-2' => 'Средна',
@@ -285,6 +285,8 @@ $messages['bg'] = array(
 	'readerfeedback-level-4' => 'Отлична',
 	'readerfeedback-submit' => 'Изпращане',
 	'readerfeedback-main' => 'Могат да бъдат оценямани само страници със съдържание.',
+	'readerfeedback-voted' => "'''Изглежда вече сте оценили тази страница''' ([$2 преглед на резултатите]) ([$3 коментари или въпроси?]).",
+	'readerfeedback-error' => "'''Имаше грешка при оценяването на тази страница''' ([$2 преглед на резултатите]) ([$3 коментари или въпроси?]).",
 	'readerfeedback-submitting' => 'Изпращане...',
 	'readerfeedback-finished' => 'Благодарим ви!',
 	'readerfeedback-tagfilter' => 'Етикет:',
@@ -387,6 +389,10 @@ $messages['ca'] = array(
 	'readerfeedback-level-4' => 'Exceŀlent',
 	'readerfeedback-submit' => 'Tramet',
 	'readerfeedback-finished' => 'Gràcies!',
+	'readerfeedback-tierfilter' => 'Valoració:',
+	'readerfeedback-tier-high' => 'Alta',
+	'readerfeedback-tier-medium' => 'Moderada',
+	'readerfeedback-tier-poor' => 'Pobre',
 );
 
 /** Czech (Česky)
@@ -695,6 +701,7 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
+	'readerfeedback' => 'Mida arvad sellest leheküljest?',
 	'readerfeedback-reliability' => 'Usaldusväärsus',
 	'readerfeedback-completeness' => 'Täielikkus',
 	'readerfeedback-npov' => 'Erapooletus',
@@ -704,7 +711,9 @@ $messages['et'] = array(
 	'readerfeedback-level-2' => 'Võrdne',
 	'readerfeedback-level-3' => 'Kõrge',
 	'readerfeedback-level-4' => 'Suurepärane',
+	'readerfeedback-main' => 'Hinnata saab ainult sisulehekülgi.',
 	'readerfeedback-finished' => 'Aitäh!',
+	'readerfeedback-tierfilter' => 'Hindamine:',
 	'readerfeedback-tier-high' => 'Kõrge',
 	'readerfeedback-tier-poor' => 'Nõrk',
 );

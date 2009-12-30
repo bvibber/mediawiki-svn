@@ -82,6 +82,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'ratedpages' => 'Оценени от читатели страници',
+	'ratedpages-list' => 'Следва списък със страниците, подредени по потребителската им оценка.',
 	'ratedpages-none' => 'Няма страници в този списък',
 	'ratedpages-graphs' => 'данни за оценката',
 );
@@ -201,6 +202,15 @@ $messages['es'] = array(
 	'ratedpages-none' => 'No hay páginas en esta lista',
 	'ratedpages-graphs' => 'Datos de rating',
 	'ratedpages-count' => '$1 {{PLURAL:$1|revisión|revisiones}}',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'ratedpages-none' => 'Loendis puuduvad leheküljed',
+	'ratedpages-count' => '$1 {{PLURAL:$1|arvustus|arvustust}}',
 );
 
 /** Persian (فارسی)

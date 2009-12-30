@@ -623,8 +623,12 @@ $messages['tl'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'protectsection_desc' => 'Yetkili kullanıcıların <tt>&lt;protect&gt;</tt> etiketini kullanarak bir sayfanın bölümlerini korumaya almasını sağlar',
+	'protectsection_add_remove' => 'Korumaya alınmış bir bölüm eklemeye veya kaldırmaya çalıştınız',
 	'protectsection_modify' => 'Koruma altındaki metni değiştirmeye çalıştınız',
+	'protectsection_add_above' => 'Korumaya alınmış bir bölümün önüne metin eklemeye çalıştınız',
 	'protectsection_forbidden' => 'Yasaklanmış',
+	'right-protectsection' => 'Sayfa bölümlerini korumaya alır',
 );
 
 /** Ukrainian (Українська)

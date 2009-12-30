@@ -176,13 +176,18 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Kemm diazezet war internet]] eus un niver bras a restroù Messages*.php',
 	'editmessages' => 'Aozañ kemennadennoù',
 	'editmsg-target' => "Kemenadenn a vez c'hoant tizhout :",
 	'editmsg-search' => 'Klask',
 	'editmsg-show-list' => 'Diskouez talvoudoù evit anv ar gemenadenn "$1"',
 	'editmsg-get-patch' => 'Krouiñ ur patch',
 	'editmsg-new-search' => 'Klask nevez',
+	'editmsg-warning-parse2' => '* Gortozet e vez un arouezenn arroudenn goude ar bir : $1',
 	'editmsg-warning-parse3' => '* Dibenn an arouezennoù nann-kavet : $1',
+	'editmsg-apply-patch' => 'Arloañ ar patch',
+	'editmsg-no-patch' => 'Diposupl eo seveniñ urzhiad ar "patch"',
+	'editmsg-patch-failed' => 'Arvar ar patch gant ar fazi dont er-maez $1',
 	'editmsg-patch-success' => 'Lakaet eo bet e pleustr ar patch.',
 );
 
@@ -1410,6 +1415,7 @@ $messages['tl'] = array(
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Mach
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'editmessages-desc' => 'Fazla sayıda Messages*.php dosyasının [[Special:EditMessages|Web-tabanlı düzenlenmesi]]',
@@ -1422,6 +1428,8 @@ $messages['tr'] = array(
 	'editmsg-warning-parse1' => '* Mesaj ismi düzenli ifadesi eşleşmedi: $1',
 	'editmsg-warning-parse2' => '* Oktan sonra alıntı karakteri bekleniyor: $1',
 	'editmsg-warning-parse3' => '* Değer sonu katarı bulunamadı: $1',
+	'editmsg-warning-file' => '* Aşağıdaki {{PLURAL:$2|dilde|dillerde}} dosya okuma hatalarına rastlandı: $1',
+	'editmsg-warning-mismatch' => '* Orijinal metin, aşağıdaki {{PLURAL:$2|dil|diller}} için beklenen değere sahip değildi: $1',
 	'editmsg-apply-patch' => 'Yamayı uygula',
 	'editmsg-no-patch' => '"Yama" komutu çalıştırılamıyor',
 	'editmsg-patch-failed' => 'Yama $1 çıkış durumu ile başarısız oldu',

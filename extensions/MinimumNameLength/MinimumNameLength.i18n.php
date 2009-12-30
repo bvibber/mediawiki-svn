@@ -533,6 +533,14 @@ $messages['tl'] = array(
 	'minnamelength-desc' => 'Magpairal ng isang pinakamababang haba ng pangalan ng tagagamit',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'minnamelength-error' => 'Kullanıcı adınız çok kısa. Asgari uzunluk: $1.',
+	'minnamelength-desc' => 'Kullanıcı adı asgari uzunluğu uygular',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

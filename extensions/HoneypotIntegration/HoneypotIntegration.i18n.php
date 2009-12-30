@@ -135,6 +135,7 @@ $messages['es'] = array(
  * @author ZeiP
  */
 $messages['fi'] = array(
+	'honeypot-desc' => 'Tarjoaa [http://projecthoneypot.org/ Project Honey Potin] integroinnin MediaWiki-sivustoon',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Tämän IP-osoitteen laukaisemien tuoreiden tapahtumien määrä Honey Pot -projektin mukaan',
 );
 

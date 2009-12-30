@@ -946,6 +946,8 @@ $messages['eo'] = array(
 	'whitelisttablechangedate' => 'Ŝanĝu Findaton',
 	'whitelisttableremove' => 'Forigi',
 	'whitelistnewtabledate' => 'Findato:',
+	'whitelistnewtableedit' => 'Prete redakti',
+	'whitelistnewtableview' => 'Prete vidi',
 	'whitelistnewtableprocess' => 'Procezi',
 	'whitelistnewtablereview' => 'Kontrolu',
 	'whitelistselectrestricted' => '== Selektu Limigitan Salutnomon ==',

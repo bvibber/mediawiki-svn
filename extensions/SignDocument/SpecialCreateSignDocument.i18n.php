@@ -312,12 +312,17 @@ Ne možete ga potpisati po drugi put.',
 $messages['ca'] = array(
 	'createsigndoc-pagename' => 'Pàgina:',
 	'createsigndoc-email' => 'Correu electrònic:',
+	'createsigndoc-address' => 'Adreça:',
+	'createsigndoc-extaddress' => 'Ciutat, estat, país:',
 	'createsigndoc-phone' => 'Telèfon:',
+	'createsigndoc-bday' => 'Data de naixement:',
 	'createsigndoc-minage' => 'Edat mínima:',
 	'createsigndoc-introtext' => 'Introducció:',
 	'createsigndoc-hidden' => 'Amagat',
+	'createsigndoc-optional' => 'Opcional',
 	'createsigndoc-create' => 'Crear',
 	'createsigndoc-error-generic' => 'Error: $1',
+	'createsigndoc-error-pagenoexist' => 'Error: La pàgina [[$1]] no existeix.',
 );
 
 /** Corsican (Corsu) */

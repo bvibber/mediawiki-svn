@@ -255,6 +255,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'profiling' => 'Datos de perfil',
 	'profiling-desc' => '[[Special:Profiling|Página especial]] para buscar e inspeccionar datos de perfil',
+	'profiling-process' => 'Cadena del proceso:',
 	'profiling-wildcard' => 'Utilizar Wildcard',
 	'profiling-ok' => 'Aceptar',
 	'profiling-data' => 'Datos de perfil para `$1`',

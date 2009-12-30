@@ -679,6 +679,22 @@ $messages['tl'] = array(
   #</pre><!-- leave this line alone -->',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'editsubpages-desc' => 'Hizmetlilerin [[MediaWiki:Unlockedpages]] aracılığıyla bir sayfayı ve sayfaya ait tüm altsayfaları anonim değişikliğe açmasını sağlar',
+	'unlockedpages' => '  #<!-- bu satıra dokunmayın --><pre>
+# Korumasını kaldırmak istediğiniz sayfaları aşağıdaki formatta ekleyin
+# * Sayfa adı
+# Koruması kaldırılan sayfaların sayılması için bir bullet ile başlaması gerekmektedir,
+# diğer girdiler yorum kabul edilecektir
+# Sayfa adları [[bağlantı]] olmalı ve büyük-küçük harflere dikkat edilmelidir
+# Ayrıca tartışma sayfalarının koruması da sayfa ile birlikte otomatik olarak kaldırılacaktır
+# Daha fazla bilgi için http://www.mediawiki.org/wiki/Extension:EditSubpages sayfasına bakın
+  #</pre><!-- bu satıra dokunmayın -->',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

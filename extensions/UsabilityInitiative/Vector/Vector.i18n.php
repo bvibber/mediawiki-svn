@@ -23,6 +23,14 @@ $messages['qqq'] = array(
 	'vector-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'vector' => 'Gebruikerskoppelvlak-verbeteringe vir Vektor',
+	'vector-desc' => 'Verbeter die gebruikerskoppelvlak-elemente van die Vektor omslag (skin).',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

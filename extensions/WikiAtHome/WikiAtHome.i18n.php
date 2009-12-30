@@ -471,9 +471,14 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Lucas
+ * @author Yekrats
  */
 $messages['eo'] = array(
+	'wah-loading' => 'ŝarĝante interfacon Wiki@Home ...',
+	'wah-menu-stats' => 'Statistikoj',
 	'wah-menu-pref' => 'Agordoj',
+	'wah-lookingforjob' => 'Serĉante laboron ...',
+	'wah-uploadfail' => 'Alŝutado malsukcesis',
 );
 
 /** Spanish (Español)
@@ -1295,6 +1300,7 @@ $messages['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author Heldergeovane
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'wah-desc' => 'Permite a distribuição de tarefas de transcodificação para clientes utilizando firefogg',
@@ -1312,6 +1318,7 @@ $messages['pt-br'] = array(
 	'wah-transcode-fail' => 'Falha na transcodificação do arquivo',
 	'wah-javascript-off' => 'Você precisa ter habilitado JavaScript para participar de Wiki@Home',
 	'wah-loading' => 'carregando interface Wiki@Home ...',
+	'wah-menu-pref' => 'Preferências',
 );
 
 /** Romanian (Română)
@@ -1486,9 +1493,11 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Fluff
+ * @author Ozp
  * @author Per
  */
 $messages['sv'] = array(
+	'wah-user-desc' => 'Wiki@Home möjliggör för communitymedlemmar att donera oanvänd processortid för att hjälpa till med resurskrävande uppgifter',
 	'wah-short-audio' => '$1-ljudfil, $2',
 	'wah-short-video' => '$1-videofil, $2',
 	'wah-short-general' => '$1-mediafil, $2',
@@ -1502,7 +1511,19 @@ $messages['sv'] = array(
 	'wah-transcode-fail' => 'Kunde inte konvertera den här filen.',
 	'wah-javascript-off' => 'Du måste ha JavaScript aktiverat för att delta i Wiki@Home',
 	'wah-loading' => 'laddar gränssnittet för Wiki@Home ...',
+	'wah-menu-jobs' => 'Uppgifter',
+	'wah-menu-stats' => 'Statistik',
+	'wah-menu-pref' => 'Inställningar',
+	'wah-lookingforjob' => 'Letar efter en uppgift...',
+	'wah-start-on-visit' => 'Starta Wiki@Home varje gång jag besöker denna sajt.',
+	'wah-jobs-while-away' => 'Kör bara uppgifter när jag har varit borta från min webbläsare i 20 minuter.',
+	'wah-nojobfound' => 'Inga uppgifter hittades. Provar igen om $1.',
 	'wah-notoken-login' => 'Har du loggat in? Om inte, vänligen logga in först.',
+	'wah-apioff' => 'Wiki@Home API-et ser ut att vara avstängt. Vänligen kontakta wikiadministratören.',
+	'wah-doing-job' => 'Uppgift: <i>$1</i> på: <i>$2</i>',
+	'wah-downloading' => 'Laddar ner fil <i>$1%</i> färdigt',
+	'wah-encoding' => 'Encodar fil <i>$1%</i> färdigt',
+	'wah-encoding-fail' => 'Encodingen misslyckades. Vänligen ladda om denna sida eller försök igen lite senare.',
 	'wah-uploading' => 'Uppladdning av fil <i>$1</i> är komplett',
 	'wah-uploadfail' => 'Uppladdningen falerade',
 	'wah-doneuploading' => 'Uppladdningen komplett. Tack för ditt bidrag.',

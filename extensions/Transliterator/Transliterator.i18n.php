@@ -427,6 +427,17 @@ $messages['sk'] = array(
 	'transliterator-error-rulesize' => 'Pravidlo <code>$1</code> má viac než $3 {{PLURAL:$3|znak|znaky|znakov}} naľavo v [[MediaWiki:$2]]',
 );
 
+/** Swedish (Svenska)
+ * @author Ozp
+ */
+$messages['sv'] = array(
+	'transliterator-desc' => 'Tillhandahåller en konfigurerbar parserfunktion för transkribering',
+	'transliterator-error-ambiguous' => 'Tvetydig regel <code>$1</code> i [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Ogiltig syntax <code>$1</code> i [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Mer än {{PLURAL:$1|en regel|$1 regler}} i  [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Regeln <code>$1</code> har mer än $3 tecken på vänster sida i [[MediaWiki:$2]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -1147,8 +1147,10 @@ $2',
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'userrightsnotifysubject' => '$1 üzerinde grup üyeliği değişikliği',
 	'userrightsnotifybody' => 'Hoşgeldiniz $1 
 
 This is to inform you that your group memberships on $2 were changed by $3 at $4.
@@ -1160,6 +1162,7 @@ Taşındı: $6
 With regards,
 
 $2',
+	'userrightsnotif-desc' => 'Hak değişiklikleri sonrasında kullanıcılara e-posta bildirimi gönderir',
 );
 
 /** Ukrainian (Українська)

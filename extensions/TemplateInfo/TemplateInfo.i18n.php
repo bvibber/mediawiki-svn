@@ -118,6 +118,7 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
+	'templateinfo-desc' => 'תומכת בתבניות המגדירות את מבנה הנתונים שלהן באמצעות תחביר XML',
 	'templateinfo-header' => 'הגדרת ה־XML עבור תבנית זו היא:',
 );
 
@@ -248,6 +249,14 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'templateinfo-desc' => 'Поддерживает шаблоны с определением их структуры данных постредством XML-разметки',
 	'templateinfo-header' => 'XML-определение этого шаблона:',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'templateinfo-desc' => 'XML işaretlemesi ile veri yapılarını tanımlayan şablonları destekler',
+	'templateinfo-header' => 'Bu şablon için XML tanımı şu şekilde:',
 );
 
 /** Ukrainian (Українська)

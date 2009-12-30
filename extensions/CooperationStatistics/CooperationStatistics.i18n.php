@@ -198,6 +198,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'cooperationstatistics' => 'Estadísticas de cooperación',
+	'cooperationstatistics-tablearticle' => 'Contador de páginas',
 	'cooperationstatistics-tablevalue' => 'Número de editores',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|página|páginas}}',
 	'cooperationstatistics-legendmore' => 'o más editores.',

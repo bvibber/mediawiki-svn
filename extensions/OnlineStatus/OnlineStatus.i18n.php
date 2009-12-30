@@ -1106,12 +1106,16 @@ $messages['tl'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'onlinestatus-desc' => 'Kullanıcının halihazırda vikide olup olmadığını göstermesi için bir tercih ekler',
 	'onlinestatus-js-anon' => 'Hata: bu özelliği kullanabilmeniz için oturum açmış olmanız gerekiyor',
 	'onlinestatus-js-changed' => 'Durumunuz "$1" olarak değiştirildi',
+	'onlinestatus-js-error' => 'Durumun değiştirilmesi mümkün değl, "$1" değeri geçersiz',
 	'onlinestatus-subtitle-offline' => 'Bu kullanıcı şu an çevrimdışı',
 	'onlinestatus-subtitle-online' => 'Bu kullanıcı şu an çevrimiçi',
 	'onlinestatus-tab' => 'Durum',
 	'onlinestatus-toggles-desc' => 'Durumunuz:',
+	'onlinestatus-toggles-explain' => 'Bu, diğer kullanıcıların kullanıcı sayfanızı görüntüleyerek çevrimiçi olup olmadığınızı görmesini sağlar',
+	'onlinestatus-toggles-show' => 'Çevrimiçi durumunu kullanıcı sayfamda görüntüle',
 	'onlinestatus-toggle-offline' => 'Çevrimdışı',
 	'onlinestatus-toggle-online' => 'Çevrimiçi',
 	'onlinestatus-pref-onlineonlogin' => 'Oturum açtığımda durumumu çevrimiçi olarak değiştir',

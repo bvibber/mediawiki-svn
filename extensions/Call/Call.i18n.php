@@ -1121,6 +1121,31 @@ Kung sakaling may mga suliranin, maaari mong subukan ang <b>{{#special:call}}/De
 	'call-save-failed' => 'Ang sumusunod na teksto ay HINDI nasagip sa pahinang <big>[[$1]]</big> dahil umiiral na ang pahinang iyan.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'call' => 'Çağrı',
+	'call-desc' => 'Parametre geçişi ile bir şablona (ya da normal bir viki sayfasına) giden bir bağlantı oluşturur.
+Tarayıcının komut satırında ya da viki metni dahilinde kullanılabilir',
+	'call-text' => "Çağrı eklentisi bir viki sayfası ve bir argüman olarak bu sayfa için opsiyonel parametre beklemektedir.<br /><br />
+
+Örnek 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
+Örnek 2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
+Örnek 3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Örnek 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
+
+<i>Çağrı eklentisi</i>, verilen sayfayı arayacak ve parametreleri geçirecektir.<br />
+Çağrılan sayfanın içeriğini göreceksiniz, ancak 'türü' özel bir sayfa gibi olacak, yani bu tür bir sayfada değişiklik yapılamayacak.<br />Gördüğünüz içerik, geçirdiğiniz parametre değerine bağlı olarak değişkenlik gösterebilir.<br /><br />
+
+<i>Çağrı eklentisi</i>, MediaWiki ile interaktif uygulama oluşturma açısından yararlıdır.<br />
+Örneğin <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI'ya</a> bakınız.<br />
+Problem halinde <b>{{#special:call}}/DebuG</b> seçeneğini deneyebilirsiniz",
+	'call-save' => "Bu çağrının çıktısı ''$1'' adlı bir sayfaya kaydedilecek.",
+	'call-save-success' => 'Aşağıdaki metin, <big>[[$1]]</big> sayfasına kaydedildi.',
+	'call-save-failed' => 'Aşağıdaki metin <big>[[$1]]</big> sayfasına KAYDEDİLMEDİ, zira bu sayfa mevcut değil.',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

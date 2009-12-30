@@ -762,6 +762,7 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'unicodeconverter' => 'Unicode dönüştürücüsü',
+	'unicodeconverter-desc' => 'Basit bir özel sayfa modülü örneği. [[Special:UnicodeConverter|Bir UTF-8 dizgisi verildiğinde]], bunu bir ISO 8859-1 web sayfası için uygun HTML varlığına dönüştürür',
 	'unicodeconverter-ok' => 'Tamam',
 	'unicodeconverter-oldtext' => 'Orjinal metin:',
 	'unicodeconverter-newtext' => 'Dönüştürülmüş metin:',

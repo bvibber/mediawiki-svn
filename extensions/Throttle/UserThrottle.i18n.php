@@ -484,6 +484,17 @@ Maghintay lamang po ng isang sandali at pindutin ang 'muling ikarga' na nasa pan
 	'acct_creation_global_soft_throttle_hit-desc' => 'Paglikha ng pagsiil ng tagagamit',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Olağandışı ölçüde çok sayıda yakın zamanlı oturum açma denemesi nedeniyle bir süre için hesap oluşturma otomatik olarak askıya alındı.
+Lütfen birkaç dakika bekleyin ve tekrar deneyin.',
+	'acct_creation_global_hard_throttle_hit' => "Kayıt flood saldırılarını azaltmak için hesap oluşturma bir süre için otomatik olarak askıya alındı.
+Lütfen birkaç dakika bekleyin ve yeniden göndermek için tarayıcınızdaki 'yeniden yükle' seçeneğine tıklayın.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Kullanıcı oluşturmayı önler',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -655,8 +655,12 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'pageby-desc' => 'Kullanıcıları <code><nowiki><pageby></nowiki></code> etiketini kullanarak bir viki sayfasında satıriçinde gösterir',
+	'pageby-first' => '$1 tarafından oluşturulan sayfa, $2',
+	'pageby-last' => 'En son $1 tarafından <a href="$3">değiştirildi</a>, $2',
 	'pageby-contributors' => 'Katkıda bulunanlar',
 	'pageby-anon' => '<i>anonim</i>',
 );

@@ -245,9 +245,11 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 $messages['bg'] = array(
 	'extensiondistributor' => 'Сваляне на разширения за MediaWiki',
 	'extdist-not-configured' => 'Необходимо е да се настроят $wgExtDistTarDir и $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Настроената директория на работното копие не съществува!',
 	'extdist-no-such-extension' => 'Няма такова разширение „$1“',
 	'extdist-no-such-version' => 'Разширението „$1“ не съществува във версия „$2“.',
 	'extdist-choose-extension' => 'Изберете разширение, което желаете да свалите:',
+	'extdist-wc-empty' => 'Настроената директория на работното копие не съдържа разширения за разпространение!',
 	'extdist-submit-extension' => 'Продължаване',
 	'extdist-current-version' => 'Разработвана версия (trunk)',
 	'extdist-choose-version' => '<big>На път сте да изтеглите разширението <b>$1</b>.</big>
@@ -271,11 +273,19 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'extensiondistributor' => 'Pellgargañ an astenn MediaWiki',
+	'extdist-not-configured' => 'Mar plij keflunit $wgExtDistTarDir ha $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => "N'eus ket eus kavlec'h evit an eilad labour kefluniet !",
 	'extdist-no-such-extension' => 'N\'eus ket eus an astenn "$1"',
 	'extdist-no-such-version' => 'N\'eus ket eus an astenn "$1" en doare "$2".',
+	'extdist-choose-extension' => "Dibabit peseurt astenn ho peus c'hoant pellgargañ :",
 	'extdist-submit-extension' => "Kenderc'hel",
 	'extdist-current-version' => 'Doare diorroiñ (trunk)',
+	'extdist-choose-version' => "<big>Emaoc'h o pellgargañ an astenn <b>$1</b>.</big>
+
+Dibabit ho stumm MediaWiki.
+
+Al lod vrasañ eus an astennoù a  ya en-dro war stumm disheñvel MediaWiki. Neuze ma n'emañ ket ho stumm amañ, pe m'ho peus ezhomm arc'hweladurioù ziwezhañ an astenn, klaskit implijout ar stumm a-vremañ.",
+	'extdist-no-versions' => 'Dizimplijadus eo an astenn bet dibabet ($1) e stumm ebet !',
 	'extdist-submit-version' => "Kenderc'hel",
 	'extdist-tar-error' => "Tar en deus adtroet ar c'hod dont er-maez $1 :",
 	'extdist-want-more' => 'Tapout un astenn all',
@@ -920,8 +930,25 @@ Si vous avez des questions concernant ce système de distribution des extensions
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'extensiondistributor' => 'Tèlèchargiér l’èxtension MediaWiki',
+	'extdist-desc' => 'Èxtension por la distribucion de les arch·ives fotografiques de les èxtensions.',
+	'extdist-not-configured' => 'Volyéd configurar $wgExtDistTarDir et $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Lo rèpèrtouèro por copies d’ôvra configurâ ègziste pas !',
+	'extdist-no-such-extension' => 'Gins d’èxtension « $1 »',
+	'extdist-no-such-version' => 'L’èxtension « $1 » ègziste pas dens la vèrsion « $2 ».',
+	'extdist-choose-extension' => 'Chouèsésséd l’èxtension que vos voléd tèlèchargiér :',
+	'extdist-wc-empty' => 'Lo rèpèrtouèro por copies d’ôvra configurâ at gins d’èxtension distribuâbla !',
 	'extdist-submit-extension' => 'Continuar',
+	'extdist-current-version' => 'Vèrsion de dèvelopament (trunk)',
+	'extdist-no-versions' => 'L’èxtension chouèsia ($1) est pas disponibla dens gins de vèrsion !',
 	'extdist-submit-version' => 'Continuar',
+	'extdist-no-remote' => 'Empossiblo de sè veriér vers lo cliant sot-vèrsion distant.',
+	'extdist-remote-error' => 'Èrror du cliant sot-vèrsion distant : <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Rèponsa fôssa dês lo cliant sot-vèrsion distant.',
+	'extdist-svn-error' => 'Sot-vèrsion at rencontrâ una èrror : <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Empossiblo de trètar les balyês XML retornâs per « svn info » : <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar at retornâ lo code de sortia $1 :',
+	'extdist-want-more' => 'Avêr una ôtra èxtension',
 );
 
 /** Galician (Galego)

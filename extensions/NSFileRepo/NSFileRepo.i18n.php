@@ -54,7 +54,7 @@ $messages['bs'] = array(
  * @author Imre
  */
 $messages['de'] = array(
-	'nsfilerepo-desc' => 'Namensraum-basierte Eigenschaften für den Dateiupload',
+	'nsfilerepo-desc' => 'Namensraum-basierte Eigenschaften für das Hochladen von Dateien',
 );
 
 /** Lower Sorbian (Dolnoserbski)

@@ -89,7 +89,12 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'externalpages' => 'Външни страници',
+	'externalpages-desc' => 'Изтегляне и показване на страници от отдалечени сайтове на WMF',
+	'externalpages-bad-year' => 'Зададена е неправилна година',
+	'externalpages-bad-language' => 'Зададен е неправилен език',
+	'externalpages-bad-project' => 'Зададен е неправилен проект',
 	'externalpages-no-project' => 'Не е указан проект',
+	'externalpages-bad-page' => 'Зададена е неправилна страница',
 	'externalpages-no-page' => 'Не е указана страница',
 	'externalpages-error-generic' => 'Възникна грешка',
 	'externalpages-bad-url' => 'Неуспех при получаване на URL-адреса',
@@ -252,6 +257,20 @@ $messages['es'] = array(
 	'externalpages-error-generic' => 'Se ha encontrado un error',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'externalpages' => 'Välisleheküljed',
+	'externalpages-bad-year' => 'Aasta märgitud valesti',
+	'externalpages-bad-language' => 'Keel märgitud valesti',
+	'externalpages-bad-project' => 'Projekt märgitud valesti',
+	'externalpages-no-project' => 'Projekti ei märgitud',
+	'externalpages-bad-page' => 'Lehekülg märgitud valesti',
+	'externalpages-no-page' => 'Lehte ei märgitud',
+	'externalpages-error-generic' => 'Ilmnes viga',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author ZeiP
@@ -292,6 +311,16 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'externalpages' => 'Pâges de defôr',
+	'externalpages-desc' => 'Recôvre et montre les pâges dês des setos distants de la WMF.',
+	'externalpages-bad-year' => 'An spècefiâ fôx',
+	'externalpages-bad-language' => 'Lengoua spècefiâ fôssa',
+	'externalpages-bad-project' => 'Projèt spècefiâ fôx',
+	'externalpages-no-project' => 'Gins de projèt spècefiâ',
+	'externalpages-bad-page' => 'Pâge spècefiâ fôssa',
+	'externalpages-no-page' => 'Gins de pâge spècefiâ',
+	'externalpages-error-generic' => 'Èrror rencontrâ',
+	'externalpages-bad-url' => 'Falyita por rècupèrar l’URL',
+	'externalpages-bad-url-data' => 'Falyita por rècupèrar les balyês de la pâge',
 );
 
 /** Galician (Galego)

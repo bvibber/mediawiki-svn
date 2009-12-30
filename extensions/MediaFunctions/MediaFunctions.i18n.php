@@ -543,6 +543,15 @@ $messages['tl'] = array(
 	'mediafunctions-not-exist' => 'Hindi umiiral ang "$1"',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'mediafunctions-desc' => 'Ortam dosyaları hakkında bilgi edinmek için ayrıştırıcı fonksiyonlar',
+	'mediafunctions-invalid-title' => '"$1" geçerli bir başlık değil',
+	'mediafunctions-not-exist' => '"$1" mevcut değil',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */
