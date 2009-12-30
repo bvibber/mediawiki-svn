@@ -294,14 +294,14 @@ mw.PlayList.prototype = {
 		return this.pl_duration;
 	},
 	getTimeRange:function() {
-		// playlist does not really support time request atm ( in theory in the future we could embed playlists with temporal urls)
+		// playlist does not really support time request atm 
 		return '0:0:0/' +  mw.seconds2npt( this.getDuration() );
 	},
 	getDataSource:function() {
 		mw.log( "f:getDataSource " + this.src );
 		// determine the type / first is it m3u or xml?	 
 		var pl_parent = this;
-		this.makeURLAbsolute();
+		this.src = mw.absoluteUrl( this.src );
 		if ( this.src != null ) {
 			mw.getMvJsonUrl( this.src, function( data ) {
 				pl_parent.data = data;
@@ -366,19 +366,6 @@ mw.PlayList.prototype = {
 			}
 		}
 	},
-	// simple function to make a path into an absolute url if its not already
-	makeURLAbsolute:function() {
-		if ( this.src ) {
-			if ( this.src.indexOf( '://' ) == -1 ) {
-				var purl = mw.parseUri( document.URL );
-				if ( this.src.charAt( 0 ) == '/' ) {
-					this.src = purl.protocol + '://' + purl.host + this.src;
-				} else {
-					this.src = purl.protocol + '://' + purl.host + purl.directory + this.src;
-				}
-			}
-		}
-	},
 	// set up minimal media_element emulation:	 
 	media_element: {
 		selected_source: {
@@ -419,6 +406,10 @@ mw.PlayList.prototype = {
 			}
 		}
 	},
+	
+	/**
+	* Shows the playlist player
+	*/
 	showPlayer:function() {
 		mw.log( 'pl:showPlayer:: track length: ' + this.default_track.getClipCount() );
 		var _this = this;
@@ -809,9 +800,10 @@ mw.PlayList.prototype = {
 	/*
 	 * the load function loads all the clips in order 
 	 */
-	load:function() {
+	load:function( callback ) {
 		// do nothing right now)
-		alert('load pl');		
+		//alert('load pl');
+		 callback();		
 	},
 	toggleMute:function() {
 		this.cur_clip.embed.toggleMute();

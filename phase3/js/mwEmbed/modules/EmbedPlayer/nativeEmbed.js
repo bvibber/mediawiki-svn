@@ -182,6 +182,9 @@ var nativeEmbed = {
 	
 	/**
 	* Set the current time with a callback
+	* 
+	* @param {Float} position Seconds to set the time to
+	* @param {Function} callback Function called once time has been set. 
 	*/
 	setCurrentTime: function( position , callback ) {	
 		var _this = this;
@@ -222,21 +225,8 @@ var nativeEmbed = {
 			mw.log( 'could not find video embed: ' + this.id + ' stop monitor' );
 			this.stopMonitor();
 			return false;
-		}
-		// don't update status if we are not the current clip 
-		// (playlist leakage?) .. should move to playlist overwrite of monitor? 
-		if ( this.pc ) {
-			if ( this.pc.pp.cur_clip.id != this.pc.id )
-				return true;
-		}
-		
-		// Do a seek check (on seeked does not seem fire consistently) 	
-		if ( this.prevCurrentTime != -1 && this.prevCurrentTime != 0
-			&& this.prevCurrentTime < this.currentTime && this.seeking )
-			this.seeking = false;
-								
-		this.prevCurrentTime =	this.currentTime;
-		
+		}					
+				
 		// update currentTime				
 		this.currentTime = this.playerElement.currentTime;		
 				

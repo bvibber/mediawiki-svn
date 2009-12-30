@@ -108,38 +108,32 @@ mw.FirefoggRender.prototype = {
 	// Start rendering
 	startRender: function() {
 		var _this = this;
+		
+		// Set the render time to "start_time" of the render request
 		this.render_time = this.start_time;
-		// get the interval from renderOptions framerate
+		
+		// Get the interval from renderOptions framerate
 		this.interval =  1 / this.renderOptions.framerate
+		
+		// Set the continue rendering flag to true:
+		this.continue_rendering = true;
 		
 		// Get the player:
 		this.player = $j( this.player_target ).get( 0 );
-		
-		
-		
-		// Set a target file
-		
-		// init the Render
-		mw.log( "starting render with: " + JSON.stringify( _this.renderOptions ) );
+
+		// Set a target file:
+		mw.log( "Firefogg Render Settings:" + JSON.stringify( _this.renderOptions ) );
 		this.fogg.initRender(  JSON.stringify( _this.renderOptions ), 'foggRender.ogv' );
 		
 		$j( this.target_timeStatus ).val( "loading player" );
-	
-		
-		// add audio if we had any:
-
-		// request a target (should support rendering to temp location too) 
-		//this.fogg.saveVideoAs();
-		
-		// set the continue rendering flag to true:
-		this.continue_rendering = true;
 			
-		
+		// add audio if we had any:
+							
 		// issue a load request on the player:
 		this.player.load(function(){
 			$j( this.target_timeStatus ).val( "player ready" );
 			//now issue the save video as call (to avoid running "expired" code			
-			_this.fogg.saveVideoAs();		
+			//_this.fogg.saveVideoAs();		
 			_this.doNextFrame();
 		});
 	},
@@ -151,7 +145,7 @@ mw.FirefoggRender.prototype = {
 			
 		_this.player.setCurrentTime( _this.render_time, function() {					
 			//mw.log(	'addFrame:' + $j( _this.player_target ).attr( 'id' ) );		
-			_this.fogg.addFrame( $j( _this.player_target ).attr( 'id' ) );
+			//_this.fogg.addFrame( $j( _this.player_target ).attr( 'id' ) );
 			_this.render_time += _this.interval;				
 			if ( _this.render_time >= _this.player.getDuration() ) {
 				_this.doFinalRender();
