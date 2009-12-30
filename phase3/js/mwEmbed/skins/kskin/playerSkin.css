@@ -2,7 +2,7 @@
 * K-skin player
 */ 
 .k-player {
-	color: white;
+	color: #FFF;
 }
 
 /* large play button */
@@ -95,6 +95,7 @@
 	top: 0;
 	width: 8px;
 	cursor: pointer;
+	-moz-border-radius:5px 5px 5px 5px;
 }
 
 .k-player .time-disp {

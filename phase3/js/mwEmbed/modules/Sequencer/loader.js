@@ -6,9 +6,20 @@ mw.addClassFilePaths( {
 	"mw.Sequencer"			: "modules/Sequencer/mw.Sequencer.js",
 	"mw.SeqRemoteSearchDriver" : "modules/Sequencer/mw.SeqRemoteSearchDriver.js",	
 	"mw.TimedEffectsEdit"	: "modules/Sequencer/mvTimedEffectsEdit.js",
+	"mw.FirefoggRender"		: "modules/Sequencer/mw.FirefoggRender.js",
 	
 	"RemoteMwSequencer" :	"modules/Sequencer/remotes/RemoteMwSequencer.js"
 } );
+
+mw.addModuleLoader( 'FirefoggRender', function( callback) {
+	mw.load( [
+		'mw.Firefogg', 
+		'mw.FirefoggRender',
+		'mw.BaseUploadInterface'
+	], function(){
+		callback( 'FirefoggRender' );
+	});
+});
 
 mw.addModuleLoader( 'Sequencer', function( callback ){
 	//Get sequencer style sheet	

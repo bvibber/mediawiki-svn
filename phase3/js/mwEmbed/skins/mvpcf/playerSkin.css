@@ -1,6 +1,12 @@
 /*
  * reference player skin 
  */
+
+/*Video player*/
+.mv-player {
+	color: #000;
+	background: #FFF;
+}
  
 /* large play button: */
 .mv-player .play-btn-large { 
@@ -13,11 +19,6 @@
 	z-index:1; 
 }/*.ui-state-default */
 
-
-.mv-player
-{
-	color: #474747;	
-}
 
 .mv-player a:link {color: #2060c1; text-decoration: underline;}
 .mv-player a:visited {color: #2060c1; text-decoration: underline;}
@@ -37,10 +38,7 @@
 .mv-player h6 {font-size: 13px; color: #6c6c6c; padding: 10px 20px 0px 20px; text-transform: uppercase;}
 
 
-/*Video player*/
-.mv-player {
-	color: white;
-}
+
 .mv-player .video {
 	display: block;
 	position: relative;

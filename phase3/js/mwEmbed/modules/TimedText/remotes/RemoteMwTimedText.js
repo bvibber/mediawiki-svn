@@ -14,17 +14,28 @@ mw.addMessages( {
 RemoteMwTimedText = function( options ){
 	return this.init( options );
 } 
+mw_default_remote_text_options = [
+	'action',
+	'title',
+	'target',
+	'orgBody'
+];
 RemoteMwTimedText.prototype = {
 	
 	init: function( options ) {
-		this.action = ( options.action )? options.action : this.action;
-		this.title = ( options.title )? options.title : this.title;
-		this.target = ( options.target )? options.target : this.target;
+		for(var i in mw_default_remote_text_options){
+			var opt = mw_default_remote_text_options[i]
+			if( options[ opt ] ){
+				this[ opt ] = options[ opt ];
+			}
+		}
 	},
 	updateUI: function(){
 		// Check page type 
 		if( this.action == 'view' ){	
 			this.showViewUI();
+		}else{
+			//restore 
 		}	
 	},
 	showViewUI: function(){
@@ -132,6 +143,12 @@ RemoteMwTimedText.prototype = {
 		}
 		// (only works for commons right now) 
 		mw.getJSON( request, function( data ) {
+			// Check for "page not found" 
+			if( data.query.pages['-1'] ){
+				//restore content: 
+				$j(_this.target).html( _this.orgBody );
+				return ;
+			}
 			// Check for redirect
 			for ( var i in data.query.pages ) {
 				var page = data.query.pages[i];
@@ -170,16 +187,3 @@ RemoteMwTimedText.prototype = {
 			};	
 	}
 }
-
-
-// Setup config on init: ( remotes drive page actions on init ) 
-mw.ready( function(){
-	//Setup the remote configuration
-	var myRemote = new RemoteMwTimedText( {
-		'action': wgAction,
-		'title' : wgTitle,
-		'target': '#bodyContent'
-	});	
-	// Update the UI
-	myRemote.updateUI();
-} );

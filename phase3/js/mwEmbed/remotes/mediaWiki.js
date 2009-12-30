@@ -50,13 +50,23 @@ function doPageSpecificRewrite() {
 	// Timed text display:
 	if ( wgPageName.indexOf( "TimedText" ) === 0 ) {		
 		if( wgAction == 'view' ){
-			mwSetPageToLoading();
-		}
-		//load the "player" ( includes call to  loadMwEmbed )
-		mwLoadPlayer(function(){
-			// Now load MediaWiki TimedText Remote: 			
-			mw.load( 'RemoteMwTimedText' );
-		} );			
+			var orgBody = mwSetPageToLoading();
+			//load the "player" ( includes call to  loadMwEmbed )
+			mwLoadPlayer(function(){
+				// Now load MediaWiki TimedText Remote: 			
+				mw.load( 'RemoteMwTimedText',function(){
+					//Setup the remote configuration
+					var myRemote = new RemoteMwTimedText( {
+						'action': wgAction,
+						'title' : wgTitle,
+						'target': '#bodyContent',
+						'orgBody': orgBody
+					});	
+					// Update the UI
+					myRemote.updateUI();
+				} );
+			} );		
+		}			
 	}
 	
 	// Remote Sequencer
@@ -124,8 +134,9 @@ function doPageSpecificRewrite() {
 function mwSetPageToLoading(){
 	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/styles.css?' + mwGetReqArgs() );
 	var body = document.getElementById('bodyContent');
+	var oldBodyHTML = body.innerHTML;
 	body.innerHTML = '<div class="loading_spinner"></div>';
-	return ;
+	return oldBodyHTML;
 }
 /**
 * Similar to the player loader in /modules/embedPlayer/loader.js

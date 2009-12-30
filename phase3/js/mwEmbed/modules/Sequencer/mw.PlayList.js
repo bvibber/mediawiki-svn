@@ -36,17 +36,16 @@ if ( typeof wgServer == 'undefined' ) {
 } else {
 	var defaultMetaDataProvider = wgServer + wgScript + '?title=Special:MvExportStream&feed_format=roe&stream_name=';
 }
-/*
- * The playlist Object implements ~most~ of embedPlayer but we don't inherit (other than to use the control builder)  
- * because pretty much every function has to be changed for the playlist context
- */
+
 mw.PlayList = function( element ) {
 	return this.init( element );
 };
 // set up the mvPlaylist object
 mw.PlayList.prototype = {
+	// Instance Name
 	instanceOf:'mvPlayList',
-	pl_duration:null,
+	
+	pl_duration: null,
 	update_tl_hook:null,
 	clip_ready_count:0,
 	cur_clip:null,
@@ -66,14 +65,14 @@ mw.PlayList.prototype = {
 	tracks: { },
 	default_track:null, // the default track to add clips to.
 	// the layout for the playlist object
-	pl_layout : {
+	layout : {
 		seq_title:.1,
 		clip_desc:.63, // displays the clip description
 		clip_aspect:1.33,  // 4/3 video aspect ratio
 		seq:.25,				 // display clip thumbnails 
 		seq_thumb:.25,	 // size for thumbnails (same as seq by default) 
 		seq_nav:0,	// for a nav bar at the base (currently disabled)
-		// some pl_layout info:
+		// some layout info:
 		title_bar_height:17,
 		control_height:29
 	},
@@ -88,7 +87,7 @@ mw.PlayList.prototype = {
 		'overlays':true,
 		'playlist_swap_loader':true // if the object supports playlist functions		
   	},
-	init : function( element ) {
+	init: function( element ) {
 		mw.log( 'mvPlayList:init:' );
 		this.tracks = { };
 		this.default_track = null;
@@ -119,8 +118,8 @@ mw.PlayList.prototype = {
 				
 		// if controls=false hide the title and the controls:
 		if ( this.controls === false ) {
-			this.pl_layout.control_height = 0;
-			this.pl_layout.title_bar_height = 0;
+			this.layout.control_height = 0;
+			this.layout.title_bar_height = 0;
 		} else {
 			// setup the controlBuilder object:
 			this.ctrlBuilder = new ctrlBuilder( this );
@@ -196,8 +195,7 @@ mw.PlayList.prototype = {
 		for ( var method in plObj ) {
 			// js parent preservation for local overwritten methods
 			if ( this[method] )this['parent_' + method] = this[method];
-			this[method] = plObj[method];
-			mw.log( 'inherit:' + method );
+			this[method] = plObj[method];			
 		}
 			
 		if ( typeof this.doParse != 'function' ) {
@@ -391,14 +389,19 @@ mw.PlayList.prototype = {
 	getClipCount:function() {
 		return this.default_track.clips.length;
 	},
-	// },
-	// takes in the playlist 
-	// inherits all the properties 
-	// swaps in the playlist object html/interface div	
-	showPlayer:function() {
-		mw.log( 'mvPlaylist:showPlayer:  loading:' + this.loading );
+	
+	/**	
+	* Checks the playlist player sources and calls "showPlayer" once ready
+	*/
+	checkPlayerSources: function( callback ) {
+		var _this = this;
+		mw.log( 'pl:checkPlayerSources:: loading:' + this.loading );
 		if ( this.loading ) {
-			$j( '#' + this.id ).html( 'loading playlist...' );
+			$j( '#' + this.id )
+				.html( 'loading playlist...' )
+				.css({
+					'color':'#000'
+				});				
 			if ( this.loading_external_data ) {
 				// load the data source chain of functions (to update the innerHTML)			   
 				this.getDataSource();
@@ -411,17 +414,29 @@ mw.PlayList.prototype = {
 			if ( this.default_track.getClipCount() == 0 ) {
 				$j( this ).html( 'empty playlist' );
 				return ;
-			} else {
-				this.showPlayer();
+			} else {			
+				callback();
 			}
 		}
 	},
 	showPlayer:function() {
-		mw.log( 'mvPlaylist:showPlayer:: track length: ' + this.default_track.getClipCount() );
+		mw.log( 'pl:showPlayer:: track length: ' + this.default_track.getClipCount() );
 		var _this = this;
-							
-		//make sure we have control_wrap
-		if( $j( this ).parent('.control_wrap').length == 0 ){
+		
+		//Check for playlist player sources: 
+		this.checkPlayerSources(function(){
+			_this.buildPlayerUI();
+		});		
+	},
+	
+	/**
+	* Build out the player interface ( assumes checkPlayerSources has been run )
+	*/
+	buildPlayerUI: function(){
+		var _this = this;
+		mw.log('pl:buildPlayer');
+		// Make sure we have interface_wrap
+		if( $j( this ).parent('.interface_wrap').length == 0 ){
 			// Select "player"				
 			$j( this )
 			// Add interface control class:		
@@ -430,39 +445,35 @@ mw.PlayList.prototype = {
 			})
 			.wrap( 
 				$j('<div>')
-				.addClass('control_wrap ' + this.ctrlBuilder.playerClass)
+				.addClass( 'interface_wrap ' + this.ctrlBuilder.playerClass )
 				.css({				
 					'width': parseInt( this.width ),
 					'height': parseInt( this.height )
 				})
 			)
 		}
-				
+		
 		// Update the target player:
-		this.$target = $j(this).parent('.control_wrap');
-		if ( this.controls == true ) {
-			var cpos = _this.height + _this.pl_layout.title_bar_height;
-			// give more space if not in sequence:
-			cpos += ( this.sequencer ) ? 2:5;
-			// append title:
-			$j( '#dc_' + _this.id ).append(
-				'<div style="font-size:13px;border:solid thin;width:' + this.width + 'px;" id="ptitle_' + this.id + '"></div>' +
-				'<div class="' + this.ctrlBuilder.playerClass + '" style="position:absolute;top:' + cpos + 'px">' +
-				'<div class="ui-widget-header ui-helper-clearfix control-bar" ' +
-					'style="width:' + _this.width + 'px" >' +
-						 _this.getControlsHTML() +
-					'</div>' +
-				'</div>'
+		this.$interface = $j( this ).parent( '.interface_wrap' );
+		this.ctrlBuilder.embedPlayer = this;
+		
+		if ( this.controls == true ) {					
+			// prepend the title (ontop)
+			this.$interface.prepend(
+				$j('<div>')
+				.css({
+					'font-size':'13px',
+					'border' : 'solid thin',
+					'width' : this.width,
+					'height': this.layout.title_bar_height 
+					
+				})
+				.attr('id', 'ptitle_' + this.id)
 			);
-								
-	        // once the controls are in the DOM add hooks:	        
-			this.ctrlBuilder.addControlHooks( );
-		} else {
-			// just append the video: 
-			$j( '#dc_' + _this.id ).append(
-				'<div class="' + this.ctrlBuilder.playerClass + '" style="position:absolute;top:' + ( _this.height + _this.pl_layout.title_bar_height + 4 ) + 'px"></div>'
-			);
-		}
+			// add the controls:					        
+			this.ctrlBuilder.addControls( );
+		} 
+		
 		this.setupClipDisplay();
 						
 		// update the title and status bar
@@ -472,16 +483,16 @@ mw.PlayList.prototype = {
 	setupClipDisplay:function() {
 		mw.log( 'mvPlaylist:setupClipDisplay:: clip len:' + this.default_track.clips.length );
 		var _this = this;
+		$j( _this ).html( '' );
 		$j.each( this.default_track.clips, function( i, clip ) {
-			var cout = '<div class="clip_container cc_" id="clipDesc_' + clip.id + '" ' +
+			var cout = '<div class="clip_container" id="clipDesc_' + clip.id + '" ' +
 				'style="display:none;position:absolute;text-align: center;width:' + _this.width + 'px;' +
-				'height:' + ( _this.height ) + 'px;' +
-				'top:' + this.title_bar_height + 'px;left:0px;';
+				'height:' + ( _this.height ) + 'px;';
 			if ( _this.controls ) {
 				cout += 'border:solid thin black;';
 			}
 			cout += '"></div>';
-			$j( '#dc_' + _this.id ).append( cout );
+			$j( _this ).append( cout );
 			// update the embed html:					 
 			clip.embed.height = _this.height;
 			clip.embed.width = _this.width;
@@ -565,13 +576,13 @@ mw.PlayList.prototype = {
 	},
 	/*setStatus override (could call the jquery directly) */
 	setStatus:function( value ) {
-		$j( '#' + this.id + ' .time-disp' ).text( value );
+		this.$interface.find( '.time-disp' ).text( value );
 	},
 	updatePlayHead:function( value ) {		
 		// slider is on 1000 scale: 
 		var val = parseInt( value * 1000 );
 		//mw.log( 'update slider: #' + this.id + ' .play_head to ' + val );
-		$j( '#' + this.id + ' .play_head' ).slider( 'value', val );
+		this.$interface.find( '.play_head' ).slider( 'value', val );
 	},
 	getPlayHeadPos: function( prec_done ) {
 		var	_this = this;
@@ -691,7 +702,8 @@ mw.PlayList.prototype = {
 			$j( '#clipDesc_' + this.cur_clip.id ).hide();
 		}						
 		this.activeClipList.add( new_clip );				
-		// do swap:		
+		
+		// Do swap:		
 		this.cur_clip = new_clip;
 		$j( '#clipDesc_' + this.cur_clip.id ).show();
 		
@@ -715,7 +727,7 @@ mw.PlayList.prototype = {
 			prev_clip = this.start_clip;
 		}
 		// @@todo we could do something fancy like use playlist for sets of clips where supported. 
-		// or in cases where the player nativly supports the playlist format we can just pass it in (ie m3u or xspf)
+		// or in cases where the player natively supports the playlist format we can just pass it in ( ie m3u or xspf )
 		if ( this.cur_clip.embed.supports['playlist_swap_loader'] ) {
 			// where the plugin supports pre_loading future clips and manage that in javascript
 			// pause current clip
@@ -744,7 +756,7 @@ mw.PlayList.prototype = {
 		var _this = this;
 		mw.log( 'pl play' );
 		// hide the playlist play button: 
-		$j( this.id + ' .play-btn-large' ).hide();
+		this.$interface.find('.play-btn-large' ).hide();
 		
 		// un-pause if paused:
 		if ( this.paused )
@@ -777,6 +789,20 @@ mw.PlayList.prototype = {
 			// play cur_clip			
 			this.cur_clip.embed.play();
 		}
+		
+		// Update interface: 
+		this.$interface.find('.play-btn span')
+		.removeClass( 'ui-icon-play' )
+		.addClass( 'ui-icon-pause' );
+			
+		this.$interface.find('.play-btn' )
+		.unbind()
+		.buttonHover()
+		.click( function() {
+		 	_this.pause();
+	   	 } )
+	   	 .attr( 'title', gM( 'mwe-pause_clip' ) );
+		
 		// start up the playlist monitor			
 		this.monitor();
 	},
@@ -791,6 +817,7 @@ mw.PlayList.prototype = {
 		this.cur_clip.embed.toggleMute();
 	},
 	pause:function() {
+		var _this = this;
 		// mw.log('f:pause: playlist');
 		var ct = new Date();
 		this.pauseTime = this.currentTime;
@@ -801,6 +828,20 @@ mw.PlayList.prototype = {
 		$j.each( this.activeClipList.getClipList(), function( inx, clip ) {
 			clip.embed.pause();
 		} );
+		
+		// Copied from embedPlayer.pause ( in the refactor this is not needed )
+		// update the ctrl "paused state"				
+		this.$interface.find('.play-btn span' )
+		.removeClass( 'ui-icon-pause' )
+		.addClass( 'ui-icon-play' );
+		
+		this.$interface.find('.play-btn' )
+		.unbind()
+		.buttonHover()
+		.click( function() {
+			_this.play();
+		} )
+		.attr( 'title', gM( 'mwe-play_clip' ) );
 	},
 	// @@todo mute across all child clips: 
 	toggleMute:function() {
@@ -942,15 +983,26 @@ mw.PlayList.prototype = {
 		// get controls from current clip  (add some playlist specific controls:		  			
 		return this.ctrlBuilder.getControls( this );
 	},
-	// ads colors/dividers between tracks
+	
+	/**
+	* Update the buffer status
+	*/
+	updateBufferStatus: function() {
+		// Update the buffer status for all current clip
+		/*mw.log(' update: '+ this.cur_clip.embed.id + ' to '  + (this.cur_clip.embed.bufferedPercent * 100) );		
+		if( this.cur_clip.embed && this.cur_clip.embed.bufferedPercent ){
+			$j('#cl_status_' + this.cur_clip.embed.id ).find('.mw_buffer').css({
+				'width': ( this.cur_clip.embed.bufferedPercent * 100) + '%'
+			})
+		}*/
+	},
+	// Add colors dividers between tracks
 	colorPlayHead: function() {
 		var _this = this;
 		
-		if ( !_this.mv_seeker_width )
-			_this.mv_seeker_width = $j( '#' + _this.id + ' .play_head' ).width();
 	
 		if ( !_this.track_len )
-			_this.track_len = $j( '#' + _this.id + ' .play_head' ).width();
+			_this.track_len = this.$interface.find( '.play_head' ).width();
 			
 		// total duration:		
 		var pl_duration = _this.getDuration();
@@ -964,7 +1016,6 @@ mw.PlayList.prototype = {
 			var perc = ( clip.getSoloDuration() / pl_duration );
 			var pwidth = Math.round( perc * _this.track_len );
 			// mw.log('pstatus:c:'+ clip.getDuration() + ' of '+ pl_duration+' %:' + perc + ' width: '+ pwidth + ' of total: ' + _this.track_len);
-			// var pwidth = Math.round( perc  * _this.track_len - (_this.mv_seeker_width*perc) );
 
 			// add the buffer child indicator:						 
 			var barHtml = '<div id="cl_status_' + clip.embed.id + '" class="cl_status"  style="' +
@@ -983,34 +1034,12 @@ mw.PlayList.prototype = {
 			
 			// background:#DDD +clip.getColor();
 
-			$j( '#' + _this.id + ' .play_head' ).append( barHtml );
+			_this.$interface.find( '.play_head' ).append( barHtml );
 																										
 			// mw.log('offset:' + cur_pixle +' width:'+pwidth+' add clip'+ clip.id + ' is '+clip.embed.getDuration() +' = ' + perc +' of ' + _this.track_len);
 			cur_pixle += pwidth;
 		} );
-	},
-	// @@todo currently not really in use
-	setUpHover:function() {
-		mw.log( 'Setup Hover' );
-		// set up hover for prev,next 
-		var th = 50;
-		var tw = th * this.pl_layout.clip_aspect;
-		var _this = this;
-		$j( '#mv_prev_link_' + _this.id + ',#mv_next_link_' + _this.id ).hover( function() {
-			  var clip = ( this.id == 'mv_prev_link_' + _this.id ) ? _this.getPrevClip() : _this.getNextClip();
-			  if ( !clip )
-				  return mw.log( 'missing clip for Hover' );
-			  // get the position of #mv_perv|next_link:
-			  var loc = getAbsolutePos( this.id );
-			  // mw.log('Hover: x:'+loc.x + ' y:' + loc.y + ' :'+clip.img);
-			   $j( "body" ).append( '<div id="mv_Athub" style="position:absolute;' +
-				   'top:' + loc.y + 'px;left:' + loc.x + 'px;width:' + tw + 'px;height:' + th + 'px;">' +
-				'<img style="border:solid 2px ' + clip.getColor() + ';position:absolute;top:0px;left:0px;" width="' + tw + '" height="' + th + '" src="' + clip.img + '"/>' +
-			'</div>' );
-	  }, function() {
-			  $j( '#mv_Athub' ).remove();
-	  } );
-	},
+	},	
 	// @@todo we need to move a lot of this track logic like "cur_clip" to the track Obj
 	// and have the playlist just drive the tracks. 
 	getNextClip:function( track ) {
@@ -1074,18 +1103,6 @@ mw.PlayList.prototype = {
 			} );
 		}
 	},
-	// this is pretty outdated:	 
-	getPLControls: function() {
-		mw.log( 'getPL cont' );
-		return	 '<a id="mv_prev_link_' + this.id + '" title="Previus Clip" onclick="document.getElementById(\'' + this.id + '\').playPrev();return false;" href="#">' +
-					getTransparentPng( { id:'mv_prev_btn_' + this.id, style:'float:left', width:'27', height:'27', border:"0",
-						src: mw.getConfig( 'skin_img_path' ) + 'vid_prev_sm.png' } ) +
-				'</a>' +
-				'<a id="mv_next_link_' + this.id + '"  title="Next Clip"  onclick="document.getElementById(\'' + this.id + '\').playNext();return false;" href="#">' +
-					getTransparentPng( { id:'mv_next_btn_' + this.id, style:'float:left', width:'27', height:'27', border:"0",
-						src: mw.getConfig( 'skin_img_path' ) + 'vid_next_sm.png' } ) +
-				'</a>';
-	},
 	run_transition: function( clip_inx, trans_type ) {
 		if ( typeof this.default_track.clips[ clip_inx ][ trans_type ] == 'undefined' )
 			clearInterval( this.default_track.clips[ clip_inx ].timerId );
@@ -1093,14 +1110,14 @@ mw.PlayList.prototype = {
 			this.default_track.clips[ clip_inx ][ trans_type ].run_transition();
 	},
 	getPlayerWidth : function(){
-		var player = $j( '#dc_' + this.id ).get( 0 );
+		var player = $j( this ).get( 0 );
 		if ( typeof player != 'undefined' && player['offsetWidth'] )
 			return player.offsetWidth;
 		else
 			return parseInt( this.width );
 	},
 	getPlayerHeight : function(){
-		var player = $j( '#dc_' + this.id ).get( 0 );
+		var player = $j( this ).get( 0 );
 		if ( typeof player != 'undefined' && player['offsetHeight'] )
 			return player.offsetHeight;
 		else
@@ -1147,9 +1164,11 @@ mvClip.prototype = {
 		this.embed = null;
 		// mw.log('setup embed for clip '+ this.id + ':id is a function?'); 
 		// set up the pl_mwEmbed object:
-		var init_pl_embed = { id:'e_' + this.id,
-			pc:this, // parent clip
-			src:this.src
+		var init_pl_embed = { 
+			id: 'e_' + this.id,
+			pc: this, // parent clip
+			src: this.src,
+			controls: false
 		};
 
 		this.setBaseEmbedDim( init_pl_embed );
@@ -1211,8 +1230,8 @@ mvClip.prototype = {
 	},
 	setBaseEmbedDim:function( o ) {
 		if ( !o )o = this;
-		// o.height=Math.round(pl_layout.clip_desc*this.pp.height)-2;//give it some padding:
-		// o.width=Math.round(o.height*pl_layout.clip_aspect)-2;
+		// o.height=Math.round(layout.clip_desc*this.pp.height)-2;//give it some padding:
+		// o.width=Math.round(o.height*layout.clip_aspect)-2;
 		o.height =	this.pp.height;
 		o.width =	this.pp.width;
 	},
@@ -1220,8 +1239,8 @@ mvClip.prototype = {
 	// @@todo
 	/*getDetail:function(){
 		//mw.log('get detail:' + this.pp.title);
-		var th=Math.round( this.pl_layout.clip_desc * this.pp.height );	
-		var tw=Math.round( th * this.pl_layout.clip_aspect );		
+		var th=Math.round( this.layout.clip_desc * this.pp.height );	
+		var tw=Math.round( th * this.layout.clip_aspect );		
 		
 		var twDesc = (this.pp.width-tw)-2;
 		
@@ -1340,8 +1359,8 @@ PlMvEmbed.prototype = {
 		// set up convenience pointer to parent playlist
 		var _this = this.pc.pp;
 					
-		var th = Math.round( _this.pl_layout.clip_desc * _this.height );
-		var tw = Math.round( th * _this.pl_layout.clip_aspect );
+		var th = Math.round( _this.layout.clip_desc * _this.height );
+		var tw = Math.round( th * _this.layout.clip_aspect );
 		
 		// run the parent stop:
 		this.pe_stop();
@@ -1365,9 +1384,6 @@ PlMvEmbed.prototype = {
 		// add playlist clips (if plugin supports it) 
 		if ( this.pc.pp.cur_clip.embed.playlistSupport() )
 			this.pc.pp.loadEmbedPlaylist();
-		// color playlist points (if play_head present)
-		if ( this.pc.pp.disp_play_head )
-			this.pc.pp.colorPlayHead();
 		// setup hover images (for playhead and next/prev buttons)
 		this.pc.pp.setUpHover();
 		// call the parent postEmbedJS
@@ -1380,8 +1396,7 @@ PlMvEmbed.prototype = {
 	setStatus:function( value ) {
 		// status updates handled by playlist obj
 	},
-	updatePlayHead:function( value ) {
-		//mw.log( 'PlMvEmbed:updatePlayHead:' + value );
+	updatePlayHead:function( value ) {		
 		// updatePlayHead handled by playlist obj		
 	}
 }
@@ -1526,29 +1541,32 @@ var xspfPlaylist = {
  * SMIL CODE (could be put into another js file / lazy_loaded for improved basic playlist performance / modularity)
  *****************************/
 /*playlist driver extensions to the playlist object*/
-mw.PlayList.prototype.monitor = function() {
-	// mw.log('pl:monitor');			
+mw.PlayList.prototype.monitor = function() {		
+	var _this = this;			
 	// if paused stop updates
-	if ( this.paused ) {
-		// clearInterval( this.smil_monitorTimerId );
+	if ( this.paused ) {		
 		return ;
-	}
+	}	
+	 
+	// Update the playlist current time: 
+	var clipCurrentTime = ( this.cur_clip.embed.currentTime )? this.cur_clip.embed.currentTime: 0;
+	this.currentTime = this.cur_clip.dur_offset + clipCurrentTime;	
+	
 	// mw.log("pl check: " + this.currentTime + ' > '+this.getDuration());
 	// check if we should be done:
 	if ( this.currentTime >  this.getDuration() )
 		this.stop();
+	
 		
-	var relative_time = ( this.startOffset ) ? ( this.currentTime - this.startOffset) : this.currentTime;
-	 
-	// Update the playlist current time: 
-	// Check for a trsnOut from the previus clip to subtract
-	this.currentTime = this.cur_clip.dur_offset + relative_time;
-		
-	// update slider: 
+	// Update slider: 
 	if ( !this.userSlide ) {
 		this.setStatus( mw.seconds2npt( this.currentTime ) + '/' + mw.seconds2npt( this.getDuration() ) );
 		this.updatePlayHead( this.currentTime / this.getDuration() );
 	}
+	
+	//Update buffer info
+	this.updateBufferStatus();
+	
 	// pre-load any future clips:
 	this.loadFutureClips();
 	
@@ -1556,11 +1574,9 @@ mw.PlayList.prototype.monitor = function() {
 	// status updates are handled by children clips ... playlist mostly manages smil actions
 	this.doSmilActions();
 	
-	if ( ! this.smil_monitorTimerId ) {
-		if ( document.getElementById( this.id ) ) {
-			this.smil_monitorTimerId = setInterval( '$j(\'#' + this.id + '\').get(0).monitor()', 250 );
-		}
-	}
+	setTimeout( function(){
+		_this.monitor();
+	}, 250);
 }
 
 // handles the rendering of overlays load of future clips (if necessary)
@@ -1696,7 +1712,7 @@ var mvTransLib = {
 				//issue a load request: 
 				other_pClip.embed.load(); 
 			}
-			// manualy ad the extra layer to the activeClipList
+			// Manually ad the extra layer to the activeClipList
 			tObj.pClip.pp.activeClipList.add( other_pClip );
 			tObj.overlay_selector_id = 'clipDesc_' + other_pClip.id;
 		} else {
@@ -1732,7 +1748,8 @@ var mvTransLib = {
 		}
 		return overlay_selector_id;
 	},
-	doUpdate:function( tObj, percent, callback ) {
+	
+	doUpdate: function( tObj, percent, callback ) {
 		// init the transition if necessary:
 		if ( !tObj.overlay_selector_id )
 			this.doInitTransition( tObj );
@@ -1750,10 +1767,12 @@ var mvTransLib = {
 			
 		this[ 'type' ][ tObj.type ][ tObj.subtype ].u( tObj, percent, callback);
 	},
+	
 	getTransitionIcon:function( type, subtype ) {
 		return mw.getMwEmbedPath() + '/skins/common/transition_images/' + type + '_' + subtype + '.png';
 	},
-	/*
+	
+	/**
 	 * mvTransLib: functional library mapping:
 	 */
 	type: {
@@ -1762,7 +1781,7 @@ var mvTransLib = {
 			fadeFromColor: {
 				'attr' : ['fadeColor'],
 				'init' : function( tObj ) {
-					// mw.log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
+					mw.log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
 					if ( !tObj.fadeColor )
 						mw.log( 'missing fadeColor' );
 					if ( $j( '#' + tObj.overlay_selector_id ).length == 0 ) {
@@ -1805,7 +1824,8 @@ var mvTransLib = {
 	}
 }
 
-/* object to manage embedding html with smil timings 
+/** 
+ * Object to manage embedding html with smil timings 
  *  grabs settings from parent clip 
  */
 var transitionObj = function( element ) {
@@ -1823,8 +1843,9 @@ transitionObj.prototype = {
 	overlay_selector_id:null,
 	pClip:null,
 	timerId:null,
-	animation_state:0, // can be 0=unset, 1=running, 2=done 
-	interValCount:0, // inter-intervalCount for animating between time updates
+	animation_state:0, // can be 0=unset, 1=running, 2=done
+	// inter-intervalCount for animating between time updates 
+	interValCount:0, 
 	dur:2, // default duration of 2	
 	init:function( element ) {
 		// load supported attributes:	 
@@ -1858,16 +1879,15 @@ transitionObj.prototype = {
 		}
 		return elmObj;
 	},
-	/*
-	 * the main animation loop called every MV_ANIMATION_CB_RATE or 34ms ~around 30frames per second~
+	
+	/**
+	 * Main animation loop called every MV_ANIMATION_CB_RATE or 34ms ~around 30frames per second~
 	 */
-	run_transition:function() {
-		// mw.log('f:run_transition:' + this.interValCount);
-
-		// update the time from the video if native:   
-		if ( typeof this.pClip.embed.vid != 'undefined' ) {
-			this.interValCount = 0;
-			this.pClip.embed.currentTime = this.pClip.embed.vid.currentTime;
+	run_transition: function() {		 
+		_this = this;
+		// If we have the playerElement update the time per run_transition call
+		if ( this.pClip.embed.playerElement && this.pClip.embed.playerElement.currentTime ) {
+			this.pClip.embed.currentTime = this.pClip.embed.playerElement.currentTime;
 		}
 		
 		// }else{
@@ -1885,23 +1905,11 @@ transitionObj.prototype = {
 			mvTransLib.doInitTransition( this );
 			this.animation_state = 1;
 		}
-		// set percentage include diffrence of currentTime to prev_curTime 
-		// ie updated in-between currentTime updates) 
-
-		if ( this.transAttrType == 'transIn' )
-			var percentage = ( this.pClip.embed.currentTime +
-									( ( this.interValCount * MV_ANIMATION_CB_RATE ) / 1000 )
-							) / this.dur ;
+	
+		var percentage = this.pClip.embed.currentTime / this.dur;
 				
-		if ( this.transAttrType == 'transOut' )
-			var percentage = ( this.pClip.embed.currentTime  +
-									( ( this.interValCount * MV_ANIMATION_CB_RATE ) / 1000 )
-									- ( this.pClip.dur - this.dur )
-							) / this.dur ;
+		//mw.log('percentage = ct:'+this.pClip.embed.currentTime + ' + ic:'+this.interValCount +' * cb:'+MV_ANIMATION_CB_RATE +' / ' + this.dur + ' = ' + percentage );
 		
-		/*mw.log('percentage = ct:'+this.pClip.embed.currentTime + ' + ic:'+this.interValCount +' * cb:'+MV_ANIMATION_CB_RATE +
-			  ' / ' + this.dur + ' = ' + percentage );
-		*/
 		
 		// mw.log('cur percentage of transition: '+percentage);
 		// update state based on current time + cur_time_offset (for now just use pClip.embed.currentTime)
@@ -1910,22 +1918,15 @@ transitionObj.prototype = {
 		if ( percentage >= 1 ) {
 			mw.log( "transition done update with percentage " + percentage );
 			this.animation_state = 2;
-			clearInterval( this.timerId );
 			mvTransLib.doCloseTransition( this )
 			return true;
 		}
-						
-		this.interValCount++;
-		// setInterval in we are still in running state and user is not using the playhead 
-		if ( this.animation_state == 1 ) {
-			if ( !this.timerId ) {
-				this.timerId = setInterval( 'document.getElementById(\'' + this.pClip.pp.id + '\').' +
-							'run_transition(\'' + this.pClip.pp.cur_clip.order + '\',' +
-								'\'' + this.transAttrType + '\')',
-						 MV_ANIMATION_CB_RATE );
-			}
-		} else {
-			clearInterval( this.timerId );
+								
+		// run the animation ( animation_state == 1 && not "paused")
+		if( !this.pClip.pp.paused ){		
+			setTimeout( function(){
+				_this.run_transition();
+			}, MV_ANIMATION_CB_RATE);
 		}
 		return true;
 	},
@@ -1975,7 +1976,7 @@ var smilPlaylist = {
 				mw.log( 'skipping transition: (missing id) ' + trans_elm );
 			}
 		} );
-		mw.log( 'loaded transitions:' + _this.transitions.length );
+		mw.log( 'loaded transitions:' + _this.transitions );
 		
 		// Add seq (latter we will have support more than one seq tag) / more than one "track" 
 		var seq_tags = this.data.getElementsByTagName( 'seq' );
@@ -2227,9 +2228,9 @@ activeClipList.prototype = {
 		return this.clipList;
 	}
 }
- var trackObj = function( iObj ) {
+var trackObj = function( iObj ) {
 	 return this.init( iObj );
- }
+}
  var supported_track_attr =
 trackObj.prototype = {
 	// should be something like "seq" per SMIL spec

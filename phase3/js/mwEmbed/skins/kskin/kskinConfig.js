@@ -56,19 +56,19 @@ var kskinConfig = {
 		'options_menu': {
 			'w':0,
 			'o':function( ctrlObj ) {
-				var embedObj = ctrlObj.embedObj;
+				var embedPlayer = ctrlObj.embedPlayer;
 				
 				// Setup menu offset ( if player height <  getOverlayHeight )				
-				var menuOffset = ( embedObj.getPlayerHeight() <  ctrlObj.getOverlayHeight() ) ? 
-					'top:' + ( embedObj.getPlayerHeight() + ctrlObj.getControlBarHeight() ) + 'px;'  : '';
+				var menuOffset = ( embedPlayer.getPlayerHeight() <  ctrlObj.getOverlayHeight() ) ? 
+					'top:' + ( embedPlayer.getPlayerHeight() + ctrlObj.getControlBarHeight() ) + 'px;'  : '';
 														
 				// Special common overflow hack: 
 				// NOTE: should re-factor to just append menu to top body when it does not "fit" in the player
 				if(   menuOffset != '' )
-					$j( embedObj ).parents( '.thumbinner' ).css( 'overflow', 'visible' );				
+					$j( embedPlayer ).parents( '.thumbinner' ).css( 'overflow', 'visible' );				
 														
 				var o = '' +
-				'<div id="blackbg_' + embedObj.id +'" class="k-menu ui-widget-content" ' +
+				'<div id="blackbg_' + embedPlayer.id +'" class="k-menu ui-widget-content" ' +
 					'style="width:' + ctrlObj.getOverlayWidth() + 'px; height:' +  ctrlObj.getOverlayHeight() + 'px;' + menuOffset + '">' +
 						'<ul class="k-menu-bar">';
 							// Output menu item containers: 
@@ -97,25 +97,25 @@ var kskinConfig = {
 	* Get minimal width for interface overlay
 	*/
 	getOverlayWidth: function(){
-		return ( this.embedObj.getPlayerWidth() < 200 )? 200 : this.embedObj.getPlayerWidth();
+		return ( this.embedPlayer.getPlayerWidth() < 200 )? 200 : this.embedPlayer.getPlayerWidth();
 	},	
 	
 	/**
 	* Get minimal height for interface overlay
 	*/
 	getOverlayHeight: function(){
-		return ( this.embedObj.getPlayerHeight() < 160 )? 160 : this.embedObj.getPlayerHeight();
+		return ( this.embedPlayer.getPlayerHeight() < 160 )? 160 : this.embedPlayer.getPlayerHeight();
 	},
 	
 	/**
 	* Adds the skin Control Bindings
 	*/
 	addSkinControlBindings: function() {
-		var embedObj = this.embedObj;
+		var embedPlayer = this.embedPlayer;
 		var _this = this;		
 		
 		// Set up control bar pointer
-		var $playerTarget = embedObj.$target;
+		var $playerTarget = embedPlayer.$interface;
 		 		
    		// Options menu display:			
    		$playerTarget.find( '.k-options' )
@@ -123,8 +123,8 @@ var kskinConfig = {
    		.click( function() {     					 	
 			if ( $playerTarget.find( '.k-menu' ).length == 0 ) {							
 	   			// Stop the player if it does not support overlays:
-				if ( !embedObj.supports['overlays'] ){				
-					embedObj.stop();
+				if ( !embedPlayer.supports['overlays'] ){				
+					embedPlayer.stop();
 				}
 				// Add the menu binding        				
 				_this.addMeunBinding();
@@ -154,9 +154,9 @@ var kskinConfig = {
 	*/
 	addMeunBinding: function() {
 		var _this = this;
-		var embedObj = this.embedObj;
+		var embedPlayer = this.embedPlayer;
 		// Set local player target pointer:
-		var $playerTarget = embedObj.$target;
+		var $playerTarget = embedPlayer.$interface;
 		
 		// check if k-menu already exists:
 		if ( $playerTarget.find( '.k-menu' ).length != 0 )
@@ -197,14 +197,14 @@ var kskinConfig = {
 	* @param {String} menu_itme Menu item key to display
 	*/
 	showMenuItem:function( menu_item ) {
-		var embedObj = this.embedObj;
+		var embedPlayer = this.embedPlayer;
 		//handle special k-skin specific display; 
 		if( menu_item == 'credits'){
 			this.showCredits(); 
 		}else{
-			// Call the base embedObj "show{Item}"
-			this.embedObj['show' + menu_item.charAt( 0 ).toUpperCase() + menu_item.substring( 1 )](
-				embedObj.$target.find( '.menu-' + menu_item )
+			// Call the base embedPlayer "show{Item}"
+			this.embedPlayer['show' + menu_item.charAt( 0 ).toUpperCase() + menu_item.substring( 1 )](
+				embedPlayer.$interface.find( '.menu-' + menu_item )
 			);
 		}
 	},	
@@ -221,9 +221,9 @@ var kskinConfig = {
 	*/  
 	showCredits: function() {
 		//set up the shortcuts:	
-		embedObj = this.embedObj;
+		embedPlayer = this.embedPlayer;
 		var _this = this;	
-		$target = embedObj.$target.find( '.menu-credits' );
+		$target = embedPlayer.$interface.find( '.menu-credits' );
 
 		$target.html( '<h2>' + gM( 'mwe-credits' ) + '</h2>'  +
 			'<div class="credits_box ui-corner-all">' +
@@ -243,7 +243,7 @@ var kskinConfig = {
 			);
 		}
 		
-		if( !embedObj.wikiTitleKey ){
+		if( !embedPlayer.wikiTitleKey ){
 			$target.find('.credits_box').text(
 				'Error: no title key to grab credits with' 
 			);
@@ -253,7 +253,7 @@ var kskinConfig = {
 		// Do the api request to populate the credits via the wikiTitleKey ( tied to "commons" )
 		var request = {
 			// Normalize the File NS (ie sometimes its present in wikiTitleKey other times not
-			'titles' : 'File:' + embedObj.wikiTitleKey.replace(/File:|Image:/, '' ),
+			'titles' : 'File:' + embedPlayer.wikiTitleKey.replace(/File:|Image:/, '' ),
 		    'prop' : 'revisions',
 		    'rvprop' : 'content'
 		};		
@@ -261,7 +261,7 @@ var kskinConfig = {
 	    mw.getJSON( mw.commons_api_url, request, function( data ) {
 			if( !data || !data.query || !data.query.pages ){
 				$target.find('.credits_box').text(
-					'Error: title key: ' + embedObj.wikiTitleKey + ' not found' 
+					'Error: title key: ' + embedPlayer.wikiTitleKey + ' not found' 
 				);
 				return false;
 			}
@@ -285,11 +285,11 @@ var kskinConfig = {
 	* @parm {String} wikiText Resource wiki text page contents
 	*/
 	doCreditLineFromWikiText: function ( wikiText ){
-		var embedObj = this.embedObj;
+		var embedPlayer = this.embedPlayer;
 		
 		// Get the title str 
-		var titleStr = embedObj.wikiTitleKey.replace(/_/g, ' ');
-		var titleLink = 'http://commons.wikimedia.org/wiki/File:' + embedObj.wikiTitleKey;
+		var titleStr = embedPlayer.wikiTitleKey.replace(/_/g, ' ');
+		var titleLink = 'http://commons.wikimedia.org/wiki/File:' + embedPlayer.wikiTitleKey;
 		
 		var imgWidth = ( this.getOverlayWidth() < 250 )? 45 : 90;
 		
@@ -302,10 +302,10 @@ var kskinConfig = {
 				}).html( 
 					$j('<img/>').attr( {
 						'border': 0, 
-						'src' : embedObj.thumbnail						
+						'src' : embedPlayer.thumbnail						
 					} ).css( {
 						'width' : imgWidth,
-						'height': parseInt( imgWidth * ( embedObj.height / embedObj.width ) )
+						'height': parseInt( imgWidth * ( embedPlayer.height / embedPlayer.width ) )
 					} )
 				)
 			)
