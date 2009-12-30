@@ -89,10 +89,10 @@ class ConfigurationManager extends Maintenance {
 		global $wgConf;
 		$arr = $wgConf->getOldSettings( $version );
 		if( !count( $arr ) ){
-			fwrite( STDERR, "revert: The version given ($version) is invalid\n" );
+			$this->error( "revert: The version given ($version) is invalid\n" );
 			return;
 		}
-		$wgConf->saveNewSettings( $arr, null );
+		$wgConf->saveNewSettings( $arr, null, "Reverting to verion $version" );
 	}
 }
 
