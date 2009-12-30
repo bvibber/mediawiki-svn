@@ -74,7 +74,7 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
      */
     function _decodeCommonHeader($packetType, $pageOffset)
     {
-        fseek($this->_filePointer, $this->_streamList[$pageOffset]['body_offset'], SEEK_SET);
+        fseek($this->_filePointer, $this->_streamData['pages'][$pageOffset]['body_offset'], SEEK_SET);
         if ($packetType !== false) {
             // Check if this is the correct header.
             $packet = unpack("Cdata", fread($this->_filePointer, 1));

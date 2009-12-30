@@ -77,7 +77,7 @@ class File_Ogg_Speex extends File_Ogg_Media
      */
     function _decodeHeader()
     {
-        fseek($this->_filePointer, $this->_streamList[0]['body_offset'], SEEK_SET);
+        fseek($this->_filePointer, $this->_streamData['pages'][0]['body_offset'], SEEK_SET);
         // The first 8 characters should be "Speex   ".
         if (fread($this->_filePointer, 8) != 'Speex   ')
             throw new PEAR_Exception("Stream is undecodable due to a malformed header.", OGG_ERROR_UNDECODABLE);
@@ -116,7 +116,7 @@ class File_Ogg_Speex extends File_Ogg_Media
      */
     function _decodeCommentsHeader()
     {
-        fseek($this->_filePointer, $this->_streamList[1]['body_offset'], SEEK_SET);
+        fseek($this->_filePointer, $this->_streamData['pages'][1]['body_offset'], SEEK_SET);
         $this->_decodeBareCommentsHeader();
     }
 }

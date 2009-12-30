@@ -164,7 +164,16 @@ class File_Ogg
      * Total length in seconds of the entire file
      */
     var $_totalLength;
-	var $_startOffset = false;
+    var $_startOffset = false;
+
+    /**
+     * Maximum number of pages to store detailed metadata for, per stream.
+     * We can't store every page because there could be millions, causing an OOM.
+     * This must be big enough so that all the codecs can get the metadata they
+     * need without re-reading the file.
+     */
+    var $_maxPageCacheSize = 4;
+
     /**
      * Returns an interface to an Ogg physical stream.
      *
@@ -388,7 +397,29 @@ class File_Ogg
             'data_length'           => $pageFinish - $pageOffset,
             'group'                 => $groupId,
         );
-        $this->_streamList[$stream_serial['data']]['stream_page'][ $page_sequence['data'] ] = $page;
+        if ( !isset( $this->_streamList[$stream_serial['data']] ) ) {
+            $this->_streamList[$stream_serial['data']] = array(
+                'pages' => array(),
+                'data_length' => 0,
+                'first_granule_pos' => null,
+                'last_granule_pos' => null,
+            );
+        }
+        $stream =& $this->_streamList[$stream_serial['data']];
+        if ( count( $stream['pages'] ) < $this->_maxPageCacheSize ) {
+            $stream['pages'][$page_sequence['data']] = $page;
+        }
+        $stream['last_page'] = $page;
+        $stream['data_length'] += $page['data_length'];
+
+        # Reject -1 as a granule pos, that means no segment finished in the packet
+        if ( $abs_granule_pos !== 'ffffffffffffffff' ) {
+            if ( $stream['first_granule_pos'] === null ) {
+                $stream['first_granule_pos'] = $abs_granule_pos;
+            }
+            $stream['last_granule_pos'] = $abs_granule_pos;
+        }
+
         $pageData = null;
         return $page;
     }
@@ -432,29 +463,29 @@ class File_Ogg
         }
         // Loop through the streams, and find out what type of stream is available.
         $groupLengths = array();
-        foreach ($this->_streamList as $stream_serial => $pages) {
-            fseek($this->_filePointer, $pages['stream_page'][0]['body_offset'], SEEK_SET);
+        foreach ($this->_streamList as $stream_serial => $streamData) {
+            fseek($this->_filePointer, $streamData['pages'][0]['body_offset'], SEEK_SET);
             $pattern = fread($this->_filePointer, 8);
             if (preg_match("/" . OGG_STREAM_CAPTURE_VORBIS . "/", $pattern)) {
                 $this->_streamList[$stream_serial]['stream_type'] = OGG_STREAM_VORBIS;
-                $stream = new File_Ogg_Vorbis($stream_serial, $pages['stream_page'], $this->_filePointer);
+                $stream = new File_Ogg_Vorbis($stream_serial, $streamData, $this->_filePointer);
             } elseif (preg_match("/" . OGG_STREAM_CAPTURE_SPEEX . "/", $pattern)) {
                 $this->_streamList[$stream_serial]['stream_type'] = OGG_STREAM_SPEEX;
-                $stream = new File_Ogg_Speex($stream_serial, $pages['stream_page'], $this->_filePointer);
+                $stream = new File_Ogg_Speex($stream_serial, $streamData, $this->_filePointer);
             } elseif (preg_match("/" . OGG_STREAM_CAPTURE_FLAC . "/", $pattern)) {
                 $this->_streamList[$stream_serial]['stream_type'] = OGG_STREAM_FLAC;
-                $stream = new File_Ogg_Flac($stream_serial, $pages['stream_page'], $this->_filePointer);
+                $stream = new File_Ogg_Flac($stream_serial, $streamData, $this->_filePointer);
             } elseif (preg_match("/" . OGG_STREAM_CAPTURE_THEORA . "/", $pattern)) {
                 $this->_streamList[$stream_serial]['stream_type'] = OGG_STREAM_THEORA;
-                $stream = new File_Ogg_Theora($stream_serial, $pages['stream_page'], $this->_filePointer);
+                $stream = new File_Ogg_Theora($stream_serial, $streamData, $this->_filePointer);
             } else {
-                $pages['stream_type'] = "unknown";
+                $streamData['stream_type'] = "unknown";
                 $stream = false;
             }
 
             if ($stream) {
                 $this->_streams[$stream_serial] = $stream;
-                $group = $pages['stream_page'][0]['group'];
+                $group = $streamData['pages'][0]['group'];
                 if (isset($groupLengths[$group])) {
                     $groupLengths[$group] = max($groupLengths[$group], $stream->getLength());
                 } else {
