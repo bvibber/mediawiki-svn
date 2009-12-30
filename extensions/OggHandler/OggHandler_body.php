@@ -107,17 +107,15 @@ class OggHandler extends MediaHandler {
 			$metadata = $file->getMetadata();
 		}
 		$metadata = $this->unpackMetadata( $metadata );
-		if ( isset( $metadata['error'] ) ) {
+		if ( isset( $metadata['error'] ) || !isset( $metadata['streams'] ) ) {
 			return false;
 		}
-		if( isset( $metadata['streams'] ) ){
-			foreach ( $metadata['streams'] as $stream ) {
-				if ( in_array( $stream['type'], $wgOggVideoTypes ) ) {
-					return array(
-						$stream['header']['PICW'],
-						$stream['header']['PICH']
-					);
-				}
+		foreach ( $metadata['streams'] as $stream ) {
+			if ( in_array( $stream['type'], $wgOggVideoTypes ) ) {
+				return array(
+					$stream['header']['PICW'],
+					$stream['header']['PICH']
+				);
 			}
 		}
 		return array( false, false );
@@ -125,36 +123,6 @@ class OggHandler extends MediaHandler {
 
 	function getMetadata( $image, $path ) {
 		$metadata = array( 'version' => self::OGG_METADATA_VERSION );
-
-		//first try the (fast) light-on-memory (shell) path:
-		$ffmpgMeta = wfGetMediaJsonMeta( $path );
-		if( $ffmpgMeta ){
-			//try to recreate as much of the streams array as possible:
-			//@@todo clean up the code to use a simpler metadata format (hide concept of streams where possible)
-			$streams = array();
-			foreach($ffmpgMeta->video as $stream){
-				$streams[ $stream->id ] = array(
-					'header' => array(	'PICW' => $stream->width,
-										'PICH' => $stream->height
-								),
-					'type' => ucfirst( $stream->codec ),
-					'length' => (isset( $stream->duration ) ? $stream->duration: $ffmpgMeta->duration  )
-				);
-			}
-			foreach($ffmpgMeta->audio as $stream){
-				$streams[ $stream->id ] = array(
-					'type' => ucfirst( $stream->codec ),
-					'length' => (isset( $stream->duration ) ? $stream->duration: $ffmpgMeta->duration  )
-				);
-			}
-
-			$metadata['length'] = $ffmpgMeta->duration;
-			$metadata['streams'] = $streams;
-			$metadata['bitrate'] = $ffmpgMeta->bitrate;
-
-			return serialize ( $metadata );
-		}
-
 
 		if ( !class_exists( 'File_Ogg' ) ) {
 			require( 'File/Ogg.php' );
@@ -471,11 +439,7 @@ class OggHandler extends MediaHandler {
 					$size += $stream['size'];
 			}
 		}
-		if( isset( $unpacked['bitrate'] ) ){
-			$bitrate = $unpacked['bitrate'];
-		}else{
-			$bitrate = $length == 0 ? 0 : $size / $length * 8;
-		}
+		$bitrate = $length == 0 ? 0 : $size / $length * 8;
 		return wfMsg( $msg, implode( '/', $streamTypes ),
 			$wgLang->formatTimePeriod( $length ),
 			$wgLang->formatBitrate( $bitrate ),
@@ -868,24 +832,6 @@ class OggAudioDisplay extends OggTransformOutput {
 }
 /*utility functions*/
 
-
-/*
- * gets the json metadata from a given file
- */
-function wfGetMediaJsonMeta( $path ){
-	global $wgffmpeg2theoraPath;
-	if( ! is_file( $wgffmpeg2theoraPath ) ){
-		wfDebug("error could not find: $wgffmpeg2theoraPath ");
-		return false;
-	}
-	$cmd = wfEscapeShellArg( $wgffmpeg2theoraPath ) . ' ' . wfEscapeShellArg ( $path ). ' --info';
-	wfProfileIn( __METHOD__ . '/ffmpeg2theora' );
-	$json_meta_str = wfShellExec( $cmd );
-	wfProfileOut( __METHOD__ . '/ffmpeg2theora' );
-	$objMeta = FormatJson::decode( $json_meta_str );
-
-	return $objMeta;
-}
 
 /*
  * outputs a minimal iframe for remote embedding (with mv_embed loaded via the script-loader if enabled)

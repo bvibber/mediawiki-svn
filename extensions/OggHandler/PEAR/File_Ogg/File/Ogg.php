@@ -459,7 +459,6 @@ class File_Ogg
 
             $this_page_offset = $page['body_finish'];
             fseek( $this->_filePointer, $this_page_offset, SEEK_SET );
-            unset( $pageData );
         }
         // Loop through the streams, and find out what type of stream is available.
         $groupLengths = array();
