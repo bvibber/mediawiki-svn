@@ -77,7 +77,6 @@ class GNSM extends IncludableSpecialPage {
 		global $wgContLang;
 		global $wgRequest, $wgOut;
 		global $wgSitename, $wgServer, $wgScriptPath;
-		//	global $wfTimeStamp;
 		wfLoadExtensionMessages( 'GNSM' );
 		global $wgFeedClasses, $wgLocaltimezone;
 
