@@ -285,6 +285,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'indexfunc-badtitle' => 'Malvalida titolo: "$1"',
 	'indexfunc-index-exists' => 'La paĝo "$1" jam ekzistas',
 	'index' => 'Indeksa serĉo',
 	'index-legend' => 'Serĉi la indekson',
@@ -894,6 +895,18 @@ Por favor, elimine "$1" da função <nowiki>{{#index:}}</nowiki> {{PLURAL:$1|nes
 Introduza alguns caracteres e clique o botão "Submeter" para procurar páginas e entradas do índice de títulos começadas por esses caracteres.',
 	'index-details-explain' => 'As entradas com setas pertencem ao índice de títulos.
 Clique uma seta para ver todas as páginas indexadas sob o respectivo título.',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'indexfunc-badtitle' => 'Título inválido: "$1"',
+	'indexfunc-index-exists' => 'A página "$1" já existe',
+	'index-submit' => 'Enviar',
+	'index-disambig-start' => "'''$1''' pode referir-se a várias páginas:",
+	'index-emptylist' => 'Não há páginas relacionadas com "$1"',
+	'index-hide-detail' => 'Esconder a lista de páginas',
 );
 
 /** Romanian (Română)

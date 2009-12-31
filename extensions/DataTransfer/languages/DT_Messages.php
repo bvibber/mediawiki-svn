@@ -568,6 +568,7 @@ $messages['fi'] = array(
 	'dt_import_editsummary' => '$1-tuonti',
 	'dt_import_importing' => 'Tuodaan...',
 	'importcsv' => 'CSV-tuonti',
+	'right-datatransferimport' => 'Tuoda tiedot',
 );
 
 /** French (Français)

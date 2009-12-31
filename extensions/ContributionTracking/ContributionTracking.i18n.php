@@ -339,6 +339,8 @@ $messages['frp'] = array(
 	'contributiontracking' => 'Survelyence de les contribucions',
 	'contrib-tracking-error' => 'Èrror',
 	'contrib-tracking-error-text' => 'Somission du formulèro envalida',
+	'contrib-tracking-submitting' => 'Èxpèdicion u sistèmo de trètament des payements...',
+	'contrib-tracking-continue' => 'Se vos éte pas redirigiê ôtomaticament, clicâd cél boton por complètar voutron don avouéc PayPal.',
 	'contrib-tracking-button' => 'Continuar',
 );
 
@@ -910,8 +912,12 @@ $messages['th'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'contributiontracking-desc' => 'Wikimedia fond ýygnaýjysy üçin bagyş trekingi',
 	'contributiontracking' => 'Goşant trekingi',
 	'contrib-tracking-error' => 'Säwlik',
+	'contrib-tracking-error-text' => 'Nädogry form tabşyrmasy',
+	'contrib-tracking-submitting' => 'Töleg işleýjä tabşyrylýar...',
+	'contrib-tracking-continue' => 'Eger awtomatik gönükdirilmeseňiz, PayPal-däki bagyşyňyzy tamamlamak üçin düwmäni tykladyň.',
 	'contrib-tracking-button' => 'Dowam et',
 );
 

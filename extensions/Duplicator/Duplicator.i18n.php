@@ -1609,11 +1609,33 @@ Ang kasalukuyang hangganan ay $3.',
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'duplicator' => 'Bir sayfayı kopyala',
+	'duplicator-desc' => 'Değişiklik geçmişlerinin tümü ile [[Special:Duplicate|sayfaların bağımsız kopyalarını]] oluştur',
+	'duplicator-toolbox' => 'Bu sayfayı kopyala',
+	'duplicator-header' => 'Bu sayfa, tüm geçmişlerin bağımsız kopyalarını oluşturarak bir sayfanın tam kopyalamasını mümkün kılmaktadır.
+Sayfa alımı gibi durumlarda kullanışlıdır.',
 	'duplicator-options' => 'Seçenekler',
 	'duplicator-source' => 'Kaynak:',
 	'duplicator-dest' => 'Hedef:',
+	'duplicator-dotalk' => 'Tartışma sayfasını (varsa) kopyala',
+	'duplicator-submit' => 'Kopya',
+	'duplicator-summary' => '[[$1]] kaynağından kopyalandı',
+	'duplicator-success' => "<big>'''[[$1]], [[$2]] hedefine kopyalandı.'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|sürüm|sürüm}} kopyalandı.',
+	'duplicator-success-talkcopied' => 'Tartışma sayfası da kopyalandı.',
+	'duplicator-success-talknotcopied' => 'Tartışma sayfası kopyalanamadı.',
+	'duplicator-failed' => 'Sayfa kopyalanamadı.
+Bilinmeyen bir hata oluştu.',
+	'duplicator-source-invalid' => 'Lütfen geçerli bir kaynak başlığı girin.',
+	'duplicator-source-notexist' => '[[$1]] mevcut değil. Lütfen mevcut olan bir sayfa başlığı girin.',
+	'duplicator-dest-invalid' => 'Lütfen geçerli bir hedef başlık girin.',
+	'duplicator-dest-exists' => '[[$1]] zaten mevcut. Lütfen mevcut olmayan bir hedef başlık girin.',
+	'duplicator-toomanyrevisions' => '[[$1]] çok fazla ($2) sürüme sahip ve kopyalanamaz.
+Mevcut sınır $3 olarak belirlenmiştir.',
+	'right-duplicate' => 'Sayfaları kopyalar',
 );
 
 /** Ukrainian (Українська)

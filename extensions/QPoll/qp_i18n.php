@@ -295,6 +295,73 @@ $messages['ar'] = array(
 	'qp_error_unique' => 'السؤال من نوع unique() لديه اقتراحات أكثر من الأجوبة المحتملة المعرفة: مستحيل الإكمال',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'pollresults' => 'نتائج الاستقصاءات فى هذا الموقع',
+	'qp_desc' => 'يسمح بإنشاء اقتراعات',
+	'qp_desc-sp' => '[[Special:PollResults|صفحه خاصة]] لرؤيه نتائج الاقتراعات',
+	'qp_result_NA' => 'غير مجاب عنه',
+	'qp_result_error' => 'خطأ صياغة',
+	'qp_vote_button' => 'تصويت',
+	'qp_vote_again_button' => 'غير صوتك',
+	'qp_polls_list' => 'عرض كل الاقتراعات',
+	'qp_users_list' => 'عرض كل المستخدمين',
+	'qp_browse_to_poll' => 'اذهب إلى $1',
+	'qp_browse_to_user' => 'اذهب إلى $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|صوت|أصوات}}',
+	'qp_source_link' => 'مصدر',
+	'qp_stats_link' => 'إحصاءات',
+	'qp_users_link' => 'مستخدمون',
+	'qp_voice_link' => 'صوت المستخدم',
+	'qp_voice_link_inv' => 'صوت المستخدم؟',
+	'qp_user_polls_link' => 'شارك فى $1 {{PLURAL:$1|اقتراع|اقتراعات}}',
+	'qp_user_missing_polls_link' => 'لا مشاركة',
+	'qp_not_participated_link' => 'لم يشارك',
+	'qp_order_by_username' => 'رتب حسب اسم المستخدم',
+	'qp_order_by_polls_count' => 'رتب حسب عداد الاقتراعات',
+	'qp_results_line_qupl' => 'الصفحه "$1" الاقتراع "$2": $3',
+	'qp_results_line_qpl' => 'الصفحه "$1" الاقتراع "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ الصفحه "$2" الاقتراع "$3" ]',
+	'qp_export_to_xls' => 'صدر الإحصاءات بصيغه XLS',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|مستخدم|مستخدم}} أجاب على الأسئلة',
+	'qp_func_no_such_poll' => 'لا استطلاع كهذا ($1)',
+	'qp_func_missing_question_id' => 'من فضلك حدد رقم سؤال موجود (بدءا من 1) للاقتراع $1',
+	'qp_func_invalid_question_id' => 'سؤال غير صحيح id=$2 (ليس رقما) للاقتراع $1',
+	'qp_func_missing_proposal_id' => 'من فضلك حدد رقم اقتراح موجود (بدءا من 0) للاقتراع $1, السؤال $2',
+	'qp_func_invalid_proposal_id' => 'عرض غير صحيح id=$3 (ليس رقما) للاقتراع $1, السؤال $2',
+	'qp_error_no_such_poll' => 'لا اقتراع كهذا ($1).
+تأكد من أن الاقتراع معلن عنه ومحفوظ، وتأكد أيضا من استخدام حرف فصل العنوان #',
+	'qp_error_id_in_stats_mode' => 'لا يمكن إعلان رقم للاقتراع فى نمط الإحصاءات',
+	'qp_error_dependance_in_stats_mode' => 'لا يمكن الإعلان عن سلسله اعتماد الاقتراع فى نمط الإحصاءات',
+	'qp_error_no_stats' => 'لا بيانات إحصائيه متوفره، لأنه لا أحد صوت فى هذا الاقتراع بعد (address=$1)',
+	'qp_error_address_in_decl_mode' => 'لا يمكن الحصول على عنوان فى نمط الإعلان',
+	'qp_error_question_not_implemented' => 'الأسئله من هذا النوع غير مطبقة: $1',
+	'qp_error_invalid_question_type' => 'نوع سؤال غير صالح: $1',
+	'qp_error_type_in_stats_mode' => 'نوع السؤال لا يمكن تعريفه فى نمط العرض الإحصائي: $1',
+	'qp_error_no_poll_id' => 'وسم الاقتراع ليس به معرف رقم محدد.',
+	'qp_error_invalid_poll_id' => 'رقم اقتراع غير صحيح (id=$1).
+رقم الاقتراع يمكن ان يحتوى فقط على حروف، أرقام وحرف الفراغ',
+	'qp_error_already_used_poll_id' => 'رقم الاقتراع تم استخدامه بالفعل فى هذه الصفحه (id=$1).',
+	'qp_error_invalid_dependance_value' => 'سلسه اعتماد الاقتراع (id=$1) بها قيمه غير صحيحه لمحدد الاعتماد (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'الاقتراع (id=$1) معتمد على اقتراع آخر (id=$3) من الصفحه [[$2]]، لكن العنوان [[$2]] لم يتم العثور عليه.
+إما أن تزيل محدد الاعتماد، أو تسترجع [[$2]]',
+	'qp_error_missed_dependance_poll' => 'الاقتراع (id=$1) معتمد على اقتراع آخر (id=$3) فى الصفحه $2، لكن هذا الاقتراع غير موجود أو لم يتم حفظه بعد.
+إما أن تزيل محدد الاعتماد، أو تنشئ الاقتراع بالرقم id=$3 فى الصفحه $2 وتحفظه.
+لحفظ اقتراع، نفذه مع عدم الإجابه على أى أسئله مطروحه.',
+	'qp_error_vote_dependance_poll' => 'من فضلك صوت للاقتراع $1 أولا.',
+	'qp_error_too_many_spans' => 'عدد كبير من مجموعات التصنيفات للعدد الإجمالى المعرف من التصنيفات الفرعية',
+	'qp_error_unanswered_span' => 'تصنيف فرعى غير مجاب عليه',
+	'qp_error_non_unique_choice' => 'يجب أن يتوفر للسؤال إجابه مُقترحه فريدة',
+	'qp_error_category_name_empty' => 'اسم التصنيف فارغ',
+	'qp_error_proposal_text_empty' => 'نص الاقتراح فارغ',
+	'qp_error_too_few_categories' => 'يجب أن تُعرّف تصنيفين على الأقل',
+	'qp_error_too_few_spans' => 'كل مجموعه تصنيف يجب أن تحتوى على الأقل على تصنيفين فرعيين',
+	'qp_error_no_answer' => 'اقتراح غير مجاب عليه',
+	'qp_error_unique' => 'السؤال من نوع unique() لديه اقتراحات أكثر من الأجوبه المحتمله المعرفة: مستحيل الإكمال',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -632,6 +699,7 @@ $messages['fi'] = array(
 	'qp_error_category_name_empty' => 'Luokan nimi on tyhjä',
 	'qp_error_proposal_text_empty' => 'Ehdotusteksti on tyhjä',
 	'qp_error_too_few_categories' => 'Ainakin kaksi luokkaa pitää määritellä',
+	'qp_error_no_answer' => 'Vastaamaton ehdotus',
 );
 
 /** French (Français)
@@ -1671,6 +1739,7 @@ Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Heldergeovane
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'pollresults' => "Resultados de enquetes neste ''site''",
@@ -1682,6 +1751,11 @@ $messages['pt-br'] = array(
 	'qp_vote_again_button' => 'Alterar o seu voto',
 	'qp_polls_list' => 'Listar todas as enquetes',
 	'qp_users_list' => 'Listar todos os usuários',
+	'qp_votes_count' => '$1 {{PLURAL:$1|voto|votos}}',
+	'qp_source_link' => 'Fonte',
+	'qp_stats_link' => 'Estatísticas',
+	'qp_users_link' => 'Usuários',
+	'qp_order_by_username' => 'Ordenar por nome de usuário',
 );
 
 /** Romanian (Română)
@@ -1836,11 +1910,40 @@ $messages['tk'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'pollresults' => 'Bu sitedeki anketlerin sonuçları',
+	'qp_desc' => 'Anket oluşturulmasını mümkün kılar',
+	'qp_desc-sp' => 'Anketlerin sonuçlarının görüntülenmesi amaçlı [[Special:PollResults|özel sayfa]]',
 	'qp_result_NA' => 'Cevaplanmadı',
+	'qp_result_error' => 'Sözdizimi hatası',
+	'qp_vote_button' => 'Oy ver',
+	'qp_vote_again_button' => 'Oyunu değiştir',
+	'qp_polls_list' => 'Tüm anketleri listele',
+	'qp_users_list' => 'Tüm kullanıcıları listele',
+	'qp_browse_to_poll' => '$1 adlı sayfaya gözat',
+	'qp_browse_to_user' => '$1 adlı sayfaya gözat',
+	'qp_votes_count' => '$1 {{PLURAL:$1|oy|oy}}',
 	'qp_source_link' => 'Kaynak',
 	'qp_stats_link' => 'İstatistikler',
+	'qp_users_link' => 'Kullanıcılar',
+	'qp_user_polls_link' => '$1 {{PLURAL:$1|ankete|ankete}} katılmış',
 	'qp_user_missing_polls_link' => 'Katılım yok',
 	'qp_not_participated_link' => 'Katılmadı',
+	'qp_order_by_username' => 'Kullanıcı adına göre sırala',
+	'qp_order_by_polls_count' => 'Anket sayılarına göre sırala',
+	'qp_results_line_qupl' => 'Sayfa "$1" Anket "$2": $3',
+	'qp_export_to_xls' => 'İstatistikleri XLS formatına aktar',
+	'qp_users_answered_questions' => 'Sorulara $1 {{PLURAL:$1|kullanıcı|kullanıcı}} cevap verdi',
+	'qp_func_no_such_poll' => 'Böyle bir anket yok ($1)',
+	'qp_error_dependance_in_stats_mode' => 'İstatistik modunda anketin bağımlılık zinciri bildirilemiyor',
+	'qp_error_no_stats' => 'İstatistiksel veri mevcut değil, çünkü hiç kimse bu anket için oy vermemiş (adres=$1)',
+	'qp_error_question_not_implemented' => 'Bu türdeki sorular uygulamaya koyulmamaktadır: $1',
+	'qp_error_invalid_question_type' => 'Geçersiz soru türü: $1',
+	'qp_error_no_poll_id' => 'Anket etiketinin tanımlanmış bir kimlik değeri yok.',
+	'qp_error_already_used_poll_id' => 'Anket kimliği bu sayfada önceden kullanılmış (kimlik=$1).',
+	'qp_error_vote_dependance_poll' => 'Lütfen ilk olarak $1. anket için oy verin.',
+	'qp_error_category_name_empty' => 'Kategori adı boş',
+	'qp_error_proposal_text_empty' => 'Teklif metni boş',
+	'qp_error_too_few_categories' => 'En az iki kategori tanımlanmalı',
 	'qp_error_too_few_spans' => 'Tüm kategori grupları en az iki alt kategori içermelidir',
 	'qp_error_no_answer' => 'Cevaplanmamış teklif',
 );

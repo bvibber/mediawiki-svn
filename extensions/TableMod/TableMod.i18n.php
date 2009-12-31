@@ -392,6 +392,14 @@ $messages['pt'] = array(
 	'tablemod-error-missingid' => "Falta o atributo de identificação ''ident'' num elemento.",
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'tablemod-msg-remove' => 'Remover',
+	'tablemod-error-invalidaction' => 'Operação inválida.',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  */

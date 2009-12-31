@@ -885,7 +885,15 @@ Kapag naglalagay o nagtatanggal ng mga tsek sa maramihang mga pahina, ang mataga
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'watchsubpages' => 'Altsayfaları izle',
+	'watchsubpages-addedtowatchlist' => 'Aşağıdakiler izleme listenize eklendi.',
 	'watchsubpages-addtitles' => 'Sayfa ekle',
+	'watchsubpages-addtitlestowatchlist' => 'Sayfaları izleme listesine ekle',
+	'watchsubpages-desc' => 'Bir sayfanın tüm altsayfalarını hızlı bir şekilde izleme listesine [[Special:WatchSubpages|ekler]]',
+	'watchsubpages-form' => 'Aşağıdan izleme listenize eklenecek sayfaları seçin.
+Bir sayfa eklemek için, yanında kutuyu işaretleyin ve "Sayfa ekle" seçeneğine tıklayın.
+
+Birden fazla sayfayı işaretlerken ya da işaretlerini kaldırırken, shift tuşuna basmak seçilecek aralığın iki ucuna tıklamak suretiyle size kutuları hızlıca seçme imkanı vermektedir.',
 );
 
 /** Vèneto (Vèneto)

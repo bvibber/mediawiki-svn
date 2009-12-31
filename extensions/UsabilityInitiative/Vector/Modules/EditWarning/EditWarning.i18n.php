@@ -33,6 +33,15 @@ $messages['ar'] = array(
 	'vector-editwarning-preference' => 'حذّرني عندما أغادر تحرير صفحة ذات تغييرات غير محفوظة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'vector-editwarning-warning' => 'قد تتسبب مغادره هذه الصفحه بخسارتك لأى تغييرات قمت بها.
+يمكنك تعطيل هذا التحذير إذا كنت والجلًا فى قسم "{{int:prefs-editing}}" فى تفضيلاتك.',
+	'vector-editwarning-preference' => 'حذّرنى عندما أغادر تحرير صفحه ذات تغييرات غير محفوظة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

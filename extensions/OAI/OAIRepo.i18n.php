@@ -463,6 +463,13 @@ $messages['sv'] = array(
 	'oai-desc' => 'Ger tillgång till gränssnittet till [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] ammar interfeýsini üpjün edýär',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

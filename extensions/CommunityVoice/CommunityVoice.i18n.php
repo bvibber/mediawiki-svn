@@ -335,6 +335,8 @@ $messages['frp'] = array(
 	'communityvoice-ratings-scale-status-error' => 'Èrror pendent l’èxpèdicion !',
 	'communityvoice-ratings-scale-status-thanks' => 'Grant-marci por voutron voto !',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 voto{{PLURAL:$2||s}})',
+	'communityvoice-ratings-error-no-category' => 'L’atribut de catègorie est absent dens la balisa de notacion.',
+	'communityvoice-ratings-error-no-title' => 'L’atribut de titro est absent dens la balisa de notacion.',
 );
 
 /** Galician (Galego)
@@ -823,6 +825,8 @@ $messages['te'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'communityvoice' => 'Jemgyýetçiligiň Sesi',
+	'communityvoice-desc' => 'Jemgyýetçilik işi gurallary',
 	'communityvoice-ratings' => 'Derejelendirmeler',
 	'communityvoice-ratings-scale-status-sending' => 'Iberilýär...',
 	'communityvoice-ratings-scale-status-error' => 'Iberiş säwligi!',

@@ -553,6 +553,15 @@ $messages['tg-latn'] = array(
 	'forcepreview' => 'Zaxirai sahifa (peşnamoişro avval istifoda bared)',
 );
 
+/** Thai (ไทย)
+ * @author Harley Hartwell
+ */
+$messages['th'] = array(
+	'forcepreview' => 'บันทึก (กรุณาดูตัวอย่างก่อน)',
+	'forcepreview-desc' => 'บังคับให้ต้องดูตัวอย่างก่อนทำการแก้ไข สำหรับผู้ใช้ที่ไม่มีสิทธิ์ forcepreviewexempt',
+	'right-forcepreviewexempt' => 'สามารถเซฟหน้าได้โดยไม่ต้องกดแสดงตัวอย่างก่อน',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

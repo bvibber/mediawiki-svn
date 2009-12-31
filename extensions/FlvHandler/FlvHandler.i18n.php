@@ -94,6 +94,13 @@ $messages['eu'] = array(
 	'flv-long-desc' => '(Flash bideoa, $1 × $2 pixel, fitxategiaren tamaina: $3)',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'flvhandler_desc' => 'Mahdollistaa Flash Video (.flv) -tiedostojen lisäämisen tavanomaisten tiedostojen tapaan (esim. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>).',
+);
+
 /** French (Français)
  * @author IAlex
  * @author PieRRoMaN

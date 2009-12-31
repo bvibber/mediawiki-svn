@@ -1835,11 +1835,15 @@ Huomaa, että tämä sivu voidaan poistaa nopeasti käytännön mukaisesti.",
 	'deletequeue-list-header-page' => 'Sivu',
 	'deletequeue-list-header-queue' => 'Jono',
 	'deletequeue-list-header-votes' => 'Hyväksyjät ja vastustajat',
+	'deletequeue-list-header-expiry' => 'Päättyminen',
 	'deletequeue-list-header-discusspage' => 'Keskustelusivu',
 	'deletequeue-list-header-reason' => 'Syy poistolle',
+	'deletequeue-case-votes' => 'Kannatukset/vastustukset',
+	'deletequeue-case-title' => 'Poistotapauksen tiedot',
 	'deletequeue-case-details' => 'Perustiedot',
 	'deletequeue-case-page' => 'Sivu',
 	'deletequeue-case-reason' => 'Syy',
+	'deletequeue-case-expiry' => 'Päättyminen',
 );
 
 /** French (Français)
@@ -5709,15 +5713,90 @@ Maaari mong [{{fullurl:{{FULLPAGENAME}}|action=delvote}} itala ang sarili mong p
  * @author Homonihilis
  * @author Karduelis
  * @author Mach
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'deletequeue-desc' => '[[Special:DeleteQueue|Silme yönetimi için kuyruk temelli bir sistem]] oluşturur',
+	'deletequeue-action-queued' => 'Silme',
+	'deletequeue-action' => 'Silinmesini öner',
+	'deletequeue-action-title' => '"$1" sayfasının silinmesini öner',
+	'deletequeue-action-text' => "Bu viki, sayfaların silinmesi için birkaç sürece sahiptir:
+*Bir sayfanın gerekli şartları sağladığını düşünüyorsanız, [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} ''hızlı silinmesini'' önerin].
+*Bir sayfanın hızlı silinme için uygun olduğunu, ancak ''silinmesinin tartışma yaratmamasının olası olduğunu'' düşünüyorsanız, [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} itirazsız silme önerebilirsiniz].
+*Bu sayfanın silinmesine ''itiraz edilmesi olası'' ise, [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} bir tartışma açmalısınız].",
+	'deletequeue-action-text-queued' => 'Bu silme durumu için aşağıdaki sayfaları inceleyebilirsiniz:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Mevcut destek ve itirazları görün].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Bu sayfanın silinmesini destekleyin ya da itiraz edin]',
+	'deletequeue-permissions-noedit' => 'Silinme durumunu etkileyebilmek için bir sayfada değişiklik yapabiliyor olmalısınız.',
+	'deletequeue-generic-reasons' => '* Genel nedenler
+** Vandalizm
+** Reklam
+** Bakım
+** Proje kapsamı dışında',
+	'deletequeue-nom-alreadyqueued' => 'Bu sayfa zaten bir silme kuyruğunda.',
+	'deletequeue-speedy-title' => '"$1" sayfasını hızlı silinmesi için işaretle',
+	'deletequeue-prod-title' => '"$1" adlı sayfanın silinmesini öner',
 	'deletequeue-delnom-reason' => 'Adaylık gerekçesi:',
 	'deletequeue-delnom-otherreason' => 'Diğer nedenler',
+	'deletequeue-delnom-extra' => 'Ekstra bilgiler:',
+	'deletequeue-delnom-submit' => 'Adaylığı gönder',
+	'deletequeue-log-nominate' => "[[$1]] sayfası '$2' kuyruğunda silinmesi için aday gösterildi.",
+	'deletequeue-log-rmspeedy' => '[[$1]] sayfasının hızlı silinmesi reddedildi.',
+	'right-speedy-nominate' => 'Sayfaları hızlı silinmesi için önerir',
+	'right-speedy-review' => 'Hızlı silme önerilerini inceler',
+	'right-prod-nominate' => 'Sayfanın silinmesini önerir',
+	'right-prod-review' => 'İtirazsız silinme isteklerini inceler',
+	'right-deletediscuss-review' => 'Silme tartışmalarını kapatır',
+	'right-deletequeue-vote' => 'Silinmeyi destekler ya da itiraz eder',
 	'deletequeue-queue-speedy' => 'Hızlı silme',
+	'deletequeue-queue-prod' => 'Silme önerisi',
 	'deletequeue-queue-deletediscuss' => 'Silme tartışması',
+	'deletequeue-review-action' => 'Uygulanacak işlem:',
+	'deletequeue-review-change' => 'Bu sayfayı sil, ancak farklı bir gerekçe kullan.',
+	'deletequeue-review-requeue' => 'Bu sayfayı aşağıdaki kuyruğa aktar:',
+	'deletequeue-review-dequeue' => 'İşlem yapma ve sayfayı silinme kuyruğundan çıkar.',
 	'deletequeue-review-reason' => 'Yorumlar',
 	'deletequeue-review-newreason' => 'Yeni gerekçe:',
+	'deletequeue-review-newextra' => 'Ekstra bilgiler:',
+	'deletequeue-review-submit' => 'İncelemeyi Kaydet',
+	'deletequeue-review-original' => 'Adaylık nedeni',
+	'deletequeue-actiondisabled-involved' => 'Aşağıdaki işlem devre dışı bırakıldı, zira $1 rollerinin silinme konularına katılımınız tespit edildi:',
+	'deletequeue-actiondisabled-notexpired' => 'Aşağıdaki işlem devre dışı bırakıldı, zira silme tartışmasının süresiz henüz dolmadı:',
+	'deletequeue-review-badaction' => 'Geçersiz bir işlem belirttiniz',
+	'deletequeue-reviewspeedy-tab' => 'Hızlı silmeyi incele',
+	'deletequeue-reviewspeedy-title' => '"$1" sayfasının hızlı silinme adaylığını incele',
+	'deletequeue-reviewprod-tab' => 'Silme önerisini incele',
+	'deletequeue-reviewdeletediscuss-tab' => 'Silmeyi incele',
+	'deletequeue-reviewdeletediscuss-title' => '"$1" için silme tartışmasını incele',
+	'deletequeue-review-success' => 'Bu sayfanın silinmesini başarıyla incelediniz',
+	'deletequeue-review-success-title' => 'İnceleme tamamlandı',
+	'deletequeue-role-vote-endorse' => 'silinmeyi destekleyen',
+	'deletequeue-role-vote-object' => 'silinmeye karşı çıkan',
+	'deletequeue-vote-title' => '"$1" sayfasının silinmesini destekle ya da karşı çık',
+	'deletequeue-vote-action' => 'Öneri:',
+	'deletequeue-vote-endorse' => 'Silinmeyi destekle.',
+	'deletequeue-vote-reason' => 'Yorumlar:',
+	'deletequeue-vote-submit' => 'Gönder',
+	'deletequeue-showvotes-showingonly-endorse' => 'Sadece destekler gösteriliyor',
+	'deletequeue-showvotes-showingonly-object' => 'Sadece itirazlar gösteriliyor',
+	'deletequeue-showvotes-none' => 'Bu sayfanın silinmesine destek ya da itiraz gelmemiş',
+	'deletequeue-showvotes-none-endorse' => 'Bu sayfanın silinmesine destek gelmemiş.',
+	'deletequeue-showvotes-none-object' => 'Bu sayfanın silinmesine itiraz gelmemiş.',
+	'deletequeue' => 'Silme kuyruğu',
+	'deletequeue-list-text' => 'Bu sayfa, silme sisteminde olan tüm sayfaları göstermektedir.',
+	'deletequeue-list-search-legend' => 'Sayfa ara',
+	'deletequeue-list-queue' => 'Kuyruk:',
+	'deletequeue-list-status' => 'Durum:',
+	'deletequeue-list-anyqueue' => '(herhangi)',
+	'deletequeue-list-votes' => 'Oy listesi',
 	'deletequeue-list-header-page' => 'Sayfa',
+	'deletequeue-list-header-expiry' => 'Bitiş süresi',
+	'deletequeue-list-header-discusspage' => 'Tartışma sayfası',
+	'deletequeue-case-intro' => 'Bu sayfa, spesifik bir silme durumu hakkındaki bilgileri listelemektedir.',
+	'deletequeue-case-votes' => 'Destekler/itirazlar:',
+	'deletequeue-case-details' => 'Temel detaylar',
+	'deletequeue-case-page' => 'Sayfa:',
+	'deletequeue-case-needs-review' => 'Bu durum [[$1|inceleme]] gerektirmektedir.',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

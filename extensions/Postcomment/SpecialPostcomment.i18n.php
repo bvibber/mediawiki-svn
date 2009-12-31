@@ -333,6 +333,7 @@ $messages['fi'] = array(
 	'postcomment_said' => 'sanoi',
 	'postcomment_invalidrequest' => 'Epäkelpo pyyntö.',
 	'postcomment_replyto' => 'Vastaa käyttäjälle $1',
+	'postcomment_nopostingtoadd' => 'Ei lisättäviä merkintöjä.',
 );
 
 /** French (Français)

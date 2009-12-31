@@ -84,6 +84,21 @@ $messages['ar'] = array(
 	'wikieditor-publish-dialog-goback' => 'ارجع',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'wikieditor-publish-preference' => 'فعل النشر خطوه بخطوة',
+	'wikieditor-publish-button-publish' => 'انشر',
+	'wikieditor-publish-button-cancel' => 'ألغِ',
+	'wikieditor-publish-dialog-title' => 'انشر فى {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'ملخص التعديل (اشرح باختصار التغييرات التى قمت بها):',
+	'wikieditor-publish-dialog-minor' => 'تعديل طفيف',
+	'wikieditor-publish-dialog-watch' => 'راقب هذه الصفحة',
+	'wikieditor-publish-dialog-publish' => 'انشر',
+	'wikieditor-publish-dialog-goback' => 'ارجع',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

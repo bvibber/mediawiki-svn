@@ -933,6 +933,26 @@ $messages['tl'] = array(
 	'right-emergencydesysop' => 'Nagawang tanggalin na mula sa pagiging tagapagpaandar ng sistema ang isa pang tagagamit, pareho',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'emergencydesysop' => 'Acil Durum Hizmetlilik Azli',
+	'emergencydesysop-desc' => 'Bir hizmetlinin başka bir hizmetliyi azletmek için kendi yetkilerinden feragat etmesini sağlamaktadır',
+	'emergencydesysop-title' => 'Hem mevcut kullanıcıdan hem de diğer hizmetliden hizmetlilik erişimini kaldırır',
+	'emergencydesysop-otheradmin' => 'Diğer hizmetli gruptan çıkarılacak',
+	'emergencydesysop-reason' => 'Azil gerekçesi',
+	'emergencydesysop-submit' => 'Gönder',
+	'emergencydesysop-incomplete' => 'Tüm form alanları gereklidir, lütfen tekrar deneyin.',
+	'emergencydesysop-notasysop' => 'Hedef kullanıcı hizmetli grubunda değil.',
+	'emergencydesysop-nogroups' => 'Yok',
+	'emergencydesysop-done' => 'İşlem tamamlandı, hem siz hem de [[$1]] hizmetlilikten azledildiniz.',
+	'emergencydesysop-invalidtarget' => 'Hedef kullanıcı mevcut değil.',
+	'emergencydesysop-blocked' => 'Engellenmişken bu sayfaya erişemezsiniz',
+	'emergencydesysop-noright' => 'Bu sayfaya erişmek için yeterli izniniz yok',
+	'right-emergencydesysop' => 'Diğer bir kullanıcıyı karşılıklı olarak azletme imkanı verir',
+);
+
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na

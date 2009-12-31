@@ -525,6 +525,13 @@ $messages['tg-latn'] = array(
 	'mwsearch-desc' => 'Afzunai MWSearch',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'mwsearch-desc' => 'MWSearch goşmaça moduly',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'javascript-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'javascript-desc' => 'Voeg uniwiki.js by elke bladsy wat JavaScript-kode tussen die Uniwiki-uitbreidings deel',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

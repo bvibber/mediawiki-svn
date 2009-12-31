@@ -479,16 +479,18 @@ $messages['vi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
-	'woopra-desc' => '允许[http://www.woopra.com/ Woopra 在线跟踪软件]为阁下的MediaWiki安装程序工作',
+	'woopra-desc' => '允许[http://www.woopra.com/ Woopra在线跟踪软件]为您的MediaWiki安装工作',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Liangent
  */
 $messages['zh-hant'] = array(
-	'woopra-desc' => '允許[http://www.woopra.com/ Woopra 線上追縱軟體]為您安裝MediaWiki',
+	'woopra-desc' => '允許[http://www.woopra.com/ Woopra線上追縱軟體]為您的MediaWiki安裝工作',
 );
 

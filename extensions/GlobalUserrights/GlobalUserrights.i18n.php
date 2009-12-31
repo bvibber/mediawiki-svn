@@ -576,6 +576,18 @@ $messages['tl'] = array(
 	'right-userrights-global' => 'Pamahalaan ang mga karapatan ng pandaigdigang tagagamit',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'globaluserrights' => 'Küresel Kullanıcı Hakları Yönetimi',
+	'gur-desc' => 'Kolay [[Special:GlobalUserRights|genel kullanıcı hakları]] yönetimi',
+	'gur-rightslog-name' => 'Küresel hakların kaydı',
+	'gur-rightslog-header' => 'Bu, küresel haklardaki değişikliklerin bir kaydıdır.',
+	'gur-rightslog-entry' => '$1 adlı kullanıcının küresel grup üyeliği $2 iken $3 olarak değiştirildi',
+	'right-userrights-global' => 'Küresel kullanıcı haklarını yönetir',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

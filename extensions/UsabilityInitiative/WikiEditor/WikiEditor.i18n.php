@@ -46,6 +46,15 @@ $messages['ar'] = array(
 	'wikieditor-wikitext-tab' => 'نص ويكي',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'wikieditor' => 'واجعه تعديل نص ويكى متقدمة',
+	'wikieditor-desc' => 'يوفر واجهه تعديل نص ويكى قابله للتمديد والعديد من العناصر الموفره للخصائص',
+	'wikieditor-wikitext-tab' => 'نص ويكي',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

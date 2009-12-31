@@ -67,6 +67,18 @@ $messages['arc'] = array(
 	'optin-feedback' => 'ܡܚܫܚܬ̈ܐ ܘܡܥܝܪ̈ܢܘܬܐ ܥܠ ܒܝܛܐ',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'optin-try' => 'جرّب البيتا',
+	'tooltip-pt-optin-try' => 'جرب المزايا الجديدة',
+	'optin-leave' => 'غادر البيتا',
+	'tooltip-pt-optin-leave' => 'ألغِ المزايا الجديدة',
+	'optin-feedback' => 'ملاحظات البيتا',
+	'tooltip-pt-optin-feedback' => 'يوفر ملاحظات عن تجربتك مع المزايا الجديدة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

@@ -853,8 +853,21 @@ $messages['tl'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'framedvideo_errors' => 'Birden fazla hata oluştu!',
 	'framedvideo_error' => 'Bir hata oluştu!',
+	'framedvideo_error_unknown_type' => 'Bilinmeyen video hizmet id ("$1"): "type" parametresini kontrol edin.',
+	'framedvideo_error_no_id_given' => 'Eksik "id" parametresi',
+	'framedvideo_error_height_required' => 'Video türü "$1", "height" parametresine ihtiyaç duyuyor.',
+	'framedvideo_error_height_required_not_only_width' => 'Video türü "$1", sadece "width" parametresine değil, aynı zamanda "height" parametresine de ihtiyaç duyuyor.',
+	'framedvideo_error_width_too_big' => 'Verilen "width" parametresi değeri çok büyük.',
+	'framedvideo_error_height_too_big' => 'Verilen "height" parametresi değeri çok büyük.',
+	'framedvideo_error_no_integer' => 'Verilen "$1" değeri pozitif bir sayı değil.',
+	'framedvideo_error_limit' => 'İzin verilen en yüksek değer $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Video servis id "$1" için "size" parametresinde "full" değerine izin verilmiyor.',
 	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Sözdizimi hakkında daha fazla bilgi]].',
+	'framedvideo_error_height_and_width_required' => 'Video türü "$1", "height", "width2" veya "width" parametrelerine ihtiyaç duyuyor.',
+	'framedvideo-desc' => '<tt><nowiki><video></nowiki></tt> etiketi kullanılarak çeşitli web sitelerinden alınan videoların yerleştirilmesini mümkün kılmaktadır',
 );
 
 /** Veps (Vepsan kel')

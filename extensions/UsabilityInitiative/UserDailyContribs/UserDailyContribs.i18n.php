@@ -31,6 +31,13 @@ $messages['ar'] = array(
 	'userdailycontribs-desc' => 'مساهمات المستخدمين اليويمة لامتداد تتبع الضغطات',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'userdailycontribs-desc' => 'مساهمات المستخدمين اليويمه لامتداد تتبع الضغطات',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

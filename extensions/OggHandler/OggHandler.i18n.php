@@ -3071,16 +3071,28 @@ $messages['tg-latn'] = array(
 
 /** Thai (ไทย)
  * @author Manop
+ * @author Woraponboonkerd
  */
 $messages['th'] = array(
+	'ogg-play' => 'เล่น',
+	'ogg-pause' => 'หยุดชั่วคราว',
+	'ogg-stop' => 'หยุด',
 	'ogg-play-video' => 'เล่นวิดีโอ',
 	'ogg-play-sound' => 'เล่นเสียง',
+	'ogg-no-player' => 'ขออภัย ระบบของคุณไม่มีซอฟต์แวร์ที่สนับสนุนไฟล์สื่อนี้
+กรุณา<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ดาวน์โหลดซอฟต์แวร์เล่นสื่อ</a>',
+	'ogg-no-player-js' => 'ขออภัย ระบบของคุณได้ปิด JavaScript หรือไม่มีซอฟต์แวร์ที่สนับสนุนไฟล์สื่อนี้
+คุณสามารถ<a href="$1">ดาวน์โหลดสื่อนี้</a> หรือ<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ดาน์โหลดโปรแกรมเล่นสื่อ</a>เพื่อเล่นสื่อนี้ในเบราเซอร์ของคุณ',
+	'ogg-no-xiphqt' => 'ไม่พบซอฟต์แวร์เสริม XiphQT ของโปรแกรม QuickTime บนระบบของคุณ
+โปรแกรม QuickTime ไม่สามารถเล่นไฟล์สกุล Ogg ได้ถ้าไม่มีโปรแกรมเสริมนี้
+กรุณา<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ดวาน์โหลด XiphQT</a> หรือเลือกโปรแกรมอื่น',
 );
 
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'ogg-desc' => 'Ogg Theora we Vorbis faýllary üçin işleýji, JavaScript pleýeri bilen bilelikde',
 	'ogg-short-audio' => 'Ogg $1 ses faýly, $2',
 	'ogg-short-video' => 'Ogg $1 wideo faýly, $2',
 	'ogg-short-general' => 'Ogg $1 media faýly, $2',
@@ -3089,6 +3101,21 @@ $messages['tk'] = array(
 	'ogg-long-multiplexed' => '(Ogg multipleks audio/wideo faýly, $1, uzynlyk $2, $4×$5 piksel, $3 jemi)',
 	'ogg-long-general' => '(Ogg media faýly, uzynlyk $2, $3)',
 	'ogg-long-error' => '(Nädogry ogg faýly: $1)',
+	'ogg-play' => 'Oýnat',
+	'ogg-pause' => 'Pauza',
+	'ogg-stop' => 'Duruz',
+	'ogg-play-video' => 'Wideo oýnat',
+	'ogg-play-sound' => 'Ses oýnat',
+	'ogg-no-player' => 'Gynansak-da, ulgamyňyzda goldanylýan haýsydyr bir pleýer programmaňyz ýok ýaly-la.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> Pleýer düşüriň</a>.',
+	'ogg-no-player-js' => 'Gynansak-da, ulgamyňyzda JavaScript ýapyk ýa-da goldanylýan pleýeriňiz ýok.<br />
+<a href="$1">Klibi düşürip</a> ýa-da klibi brauzeriňizde oýnatmak üçin <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> pleýer düşürip bilersiňiz</a>.',
+	'ogg-no-xiphqt' => 'QuickTime üçin XiphQT komponentiňiz ýok bolarly.
+QuickTime bu komponent bolmasa Ogg faýllaryny oýnadyp bilmeýär.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT-i düşüriň</a> ýa-da başga bir pleýer saýlaň.',
+	'ogg-player-videoElement' => 'Milli brauzer goldawy',
+	'ogg-player-oggPlugin' => 'Brauzer goşmaça moduly',
+	'ogg-player-thumbnail' => 'Diňe hereketsiz surat',
 	'ogg-player-soundthumb' => 'Pleýer ýok',
 	'ogg-player-selected' => '(saýlanylan)',
 	'ogg-use-player' => 'Pleýer ulan:',

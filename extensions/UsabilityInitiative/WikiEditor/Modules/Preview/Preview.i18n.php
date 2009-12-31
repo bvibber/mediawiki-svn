@@ -59,6 +59,16 @@ $messages['ar'] = array(
 	'wikieditor-preview-loading' => 'يحمّل...',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'wikieditor-preview-preference' => 'مكّن المعاينه جنبًا لجنب',
+	'wikieditor-preview-tab' => 'عاين',
+	'wikieditor-preview-changes-tab' => 'تغييرات',
+	'wikieditor-preview-loading' => 'يحمّل...',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

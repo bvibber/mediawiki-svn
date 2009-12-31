@@ -3549,14 +3549,29 @@ Nararapat lamang para sa pinagbabawalang mga tagagamit ang pahinang ito",
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'whitelistedit' => 'Beyaz liste erişim editörü',
+	'whitelist' => 'Beyaz liste sayfaları',
 	'mywhitelistpages' => 'Sayfalarım',
+	'whitelistfor' => '<center><b>$1</b> için mevcut bilgiler</center>',
 	'whitelisttablemodifyall' => 'Hepsi',
 	'whitelisttablemodifynone' => 'Hiçbiri',
+	'whitelisttablepage' => 'Viki sayfası',
+	'whitelisttablemodby' => 'Son değişikliği yapan:',
+	'whitelisttablemodon' => 'Son değişiklik tarihi:',
 	'whitelisttableedit' => 'Değiştir',
+	'whitelisttablenewdate' => 'Yeni tarih:',
+	'whitelisttablechangedate' => 'Bitiş tarihini değiştir',
 	'whitelisttableremove' => 'Kaldır',
+	'whitelistnewtableprocess' => 'İşlem',
+	'whitelistrequest' => 'Daha fazla sayfaya erişim isteyin',
 	'whitelistnever' => 'asla',
+	'group-restricted' => 'Kısıtlanmış kullanıcılar',
+	'group-restricted-member' => 'Kısıtlanmış kullanıcı',
+	'group-manager' => 'Yöneticiler',
+	'group-manager-member' => 'Yönetici',
 );
 
 /** Ukrainian (Українська)

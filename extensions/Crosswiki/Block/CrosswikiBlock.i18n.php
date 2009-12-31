@@ -2583,21 +2583,49 @@ Bargarded ba:
 );
 
 /** Thai (ไทย)
+ * @author Harley Hartwell
  * @author Mopza
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'crosswikiblock-desc' => 'อนุญาตให้บล็อกผู้ใช้บนวิกิอื่น ผ่านทาง[[Special:Crosswikiblock|หน้าพิเศษ]]',
 	'crosswikiblock' => 'บล็อกผู้ใช้บนวิกิอื่น',
+	'crosswikiblock-header' => 'หน้านี้อนุญาตให้คุณบล็อกผู้ใช้บนวิกิอื่นได้ กรุณาตรวจสอบให้แน่ใจว่าคุณสามารถบล็อกผู้ใช้บนวิกินี้ได้ และการบล็อกดังกล่าวเป็นไปตามนโยบายของวิกินั้น ๆ',
+	'crosswikiblock-target' => 'ไอพีแอดเดรสหรือชื่อผู้ใช้ และวิกิที่ต้องการบล็อกไอพีหรือผู้ใช้ดังกล่าว:',
 	'crosswikiblock-expiry' => 'หมดอายุ:',
 	'crosswikiblock-reason' => 'เหตุผล:',
 	'crosswikiblock-submit' => 'บล็อกผู้ใช้รายนี้',
+	'crosswikiblock-anononly' => 'บล็อกผู้ใช้นิรนามเท่านั้น',
+	'crosswikiblock-nocreate' => 'ห้ามสร้างบัญชีผู้ใช้',
+	'crosswikiblock-autoblock' => 'บล็อกไอพีล่าสุดที่ใช้โดยผู้ใช้คนนี้ และไอพีแอดเดรสอื่น ๆ ที่ผู้ใช้พยายามใช้เพื่อแก้ไข',
+	'crosswikiblock-noemail' => 'บล็อกการส่งอีเมล',
+	'crosswikiunblock' => 'เลิกบล็อกผู้ใช้บนวิกิอื่น',
+	'crosswikiunblock-header' => 'หน้านี้อนุญาตให้คุณเลิกบล็อกผู้ใช้บนวิกิอื่นได้ กรุณาตรวจสอบให้แน่ใจว่าคุณสามารถเลิกบล็อกผู้ใช้บนวิกินี้ได้ และการเลิกบล็อกดังกล่าวเป็นไปตามนโยบายของวิกินั้น ๆ',
+	'crosswikiunblock-user' => 'ชื่อผู้ใช้ ไอพีแอดเดรสหรือรหัสการบล็อก (Block ID) และวิกิที่ต้องการเลิกบล็อกไอพีหรือผู้ใช้ดังกล่าว:',
 	'crosswikiunblock-reason' => 'เหตุผล:',
 	'crosswikiunblock-submit' => 'เลิกบล็อกผู้ใช้รายนี้',
+	'crosswikiunblock-success' => "เลิกบล็อกผู้ใช้ '''$1''' แล้ว
+
+กลับไปยัง:
+* [[Special:CrosswikiBlock|ฟอร์มการบล็อก]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'ไม่ได้ใส่ชื่อผู้ใช้',
+	'crosswikiblock-local' => 'หน้านี้ไม่สามารถใช้บล็อกผู้ใช้ในวิกินี้ได้ กรุณาใช้ [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'ไม่พบฐานข้อมูล $1',
+	'crosswikiblock-noname' => '"$1" ไม่ใช่ชื่อผู้ใช้ที่ถูกต้อง',
+	'crosswikiblock-nouser' => 'ไม่พบผู้ใช้ "$3"',
+	'crosswikiblock-noexpiry' => 'เวลาหมดอายุไม่ถูกต้อง: $1',
+	'crosswikiblock-noreason' => 'ไม่ได้ระบุเหตุผล',
+	'crosswikiblock-notoken' => 'Edit Token ไม่ถูกต้อง',
+	'crosswikiblock-alreadyblocked' => 'ผู้ใช้ $3 ถูกบล็อกอยู่ก่อนแล้ว',
+	'crosswikiblock-noblock' => 'ผู้ใช้นี้ไม่ได้ถูกบล็อก',
 	'crosswikiblock-success' => "ผู้ใช้ '''$3''' ได้ถูกบล็อกแล้ว
 
 กลับไปยัง:
 * [[Special:CrosswikiBlock|ฟอร์มการบล็อก]]
 * [[$4]]",
+	'crosswikiunblock-local' => 'หน้านี้ไม่สามารถใช้เลิกบล็อกผู้ใช้ในวิกินี้ได้ กรุณาใช้ [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'บล็อกและเลิกบล็อกผู้ใช้บนวิกิอื่น',
 );
 
 /** Turkmen (Türkmençe)

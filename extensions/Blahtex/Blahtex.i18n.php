@@ -3397,6 +3397,23 @@ Subuking ilakip ang suliraning mga panitik sa loob ng "\\text{...}".',
 Subuking gamitin ang "$3{...}" na kautusan.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'math_CannotChangeDirectory' => 'Çalışma dizini değiştirilemiyor',
+	'math_CannotWriteTexFile' => 'Tex dosyasına yazılamıyor',
+	'math_IllegalCharacter' => 'Girdide uygunsuz karakter',
+	'math_IllegalCommandInTextMode' => '"$1" komutu, metin modu için uygunsuz',
+	'math_InvalidColour' => '"$1" rengi geçersiz',
+	'math_MismatchedBeginAndEnd' => '"$1" ve "$2" komutları eşleşmiyor',
+	'math_NotEnoughArguments' => '"$1" için yeterli değiştirgen girilmedi',
+	'math_ReservedCommand' => '"$1" komutu, blahtex tarafından dahili kullanım için ayrılmış durumda',
+	'math_TooManyMathmlNodes' => 'MathML hiyerarşisinde çok fazla düğüm bulunuyor',
+	'math_TooManyTokens' => 'Girdi çok uzun',
+	'math_UnrecognisedCommand' => 'Tanınmayan komut "$1"',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

@@ -3869,11 +3869,16 @@ $messages['tk'] = array(
 	'hiderevision-success' => 'Şowly arhiwlendi we öçürildi.',
 	'hiderevision-error-missing' => 'Maglumat bazasynda tapylmady',
 	'hiderevision-error-delete' => 'Arhiwläp bolmady; ozal öçürilen bolaýmasyn?',
+	'hiderevision-archive-status' => '$1 senesinden wersiýa öçürildi: $2',
+	'oversight-log-hiderev' => '$1 senesinden bir özgerdiş aýryldy',
 	'oversight' => 'Esewan',
 	'oversight-view' => 'jikme-jiklikler',
+	'oversight-difference' => '(Öňki galan wersiýadan aratapawut)',
+	'oversight-prev' => 'Iň soňky öňki wersiýa',
 	'oversight-hidden' => 'Gizlenilen wersiýa',
 	'oversight-header' => 'Aşakda ýaňy-ýakynda köpçülikden hemişelik gizlenilen wersiýalaryň sanawy görkezilýär.
 Bu maglumaty ýaýratmak Esewan hukuklaryny hemişelik ýitirmeklige getirip biler.',
+	'oversight-legend' => 'Wersiýa gizleme gündeligini gözle',
 	'oversight-oversighter' => 'Esewançy:',
 	'oversight-offender' => 'Wersiýanyň awtory:',
 );

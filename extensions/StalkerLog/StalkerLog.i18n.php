@@ -551,6 +551,17 @@ $messages['tl'] = array(
 	'stalkerlog-log-text' => 'Isa itong talaan ng mga mga paglagda at pag-alis mula sa pagkakalagda ng tagagamit.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'stalkerlog-desc' => 'Kullanıcı oturum açma ve kapama işlemleri için bir [[Special:Log/stalkerlog|kayıt]] ekler',
+	'stalkerlog-log-login' => 'oturum açıldı.',
+	'stalkerlog-log-logout' => 'oturum kapandı.',
+	'stalkerlog-log-type' => 'Kullanıcı kimlik doğrulama kaydı',
+	'stalkerlog-log-text' => 'Bu, kullanıcı oturum açma ve kapama işlemlerinin bir kaydıdır.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

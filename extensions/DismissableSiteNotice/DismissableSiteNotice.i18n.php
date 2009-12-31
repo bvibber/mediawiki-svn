@@ -856,6 +856,14 @@ $messages['th'] = array(
 	'sitenotice-desc' => 'อนุญาตให้ผู้ใช้ปิดประกาศของเว็บ',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'sitenotice_close' => 'gizle',
+	'sitenotice-desc' => 'Ulanyjylaryň saýt uwedomleniýesini ýapmagyna rugsat ber',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

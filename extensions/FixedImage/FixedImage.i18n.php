@@ -531,18 +531,20 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'fixedimage-desc' => '加入<tt><nowiki><fundraising></nowiki></tt>标签作为一幅图像',
+	'fixedimage-desc' => '作为一幅图像加入<tt><nowiki><fundraising></nowiki></tt>标签',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Liangent
  * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'fixedimage-desc' => '加入 <tt><nowiki><fundraising></nowiki></tt> 標籤作為一幅圖片',
+	'fixedimage-desc' => '作為一幅圖片加入<tt><nowiki><fundraising></nowiki></tt>標籤',
 );
 

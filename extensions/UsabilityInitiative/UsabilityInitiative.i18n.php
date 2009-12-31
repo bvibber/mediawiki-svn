@@ -44,6 +44,15 @@ $messages['ar'] = array(
 	'prefs-experimental' => 'مزايا تجريبية',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'usabilityinitiative' => 'مبادره الاستخدامية',
+	'usabilityinitiative-desc' => 'مزايا طورتها مبادره استخداميه ويكيبيديا (Wikipedia Usability Initiative) لتحسين استخداميه ميدياويكى.',
+	'prefs-experimental' => 'مزايا تجريبية',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

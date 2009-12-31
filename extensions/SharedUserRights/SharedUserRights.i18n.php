@@ -548,9 +548,15 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'shareduserrights' => 'Paylaşılan Kullanıcı Hakları Yönetimi',
+	'gblrights-desc' => 'Kolay [[Special:SharedUserRights|genel kullanıcı hakları yönetimi]]',
 	'gblrights-logpage' => 'Küresel Kullanıcı Hakları Kayıtları',
+	'gblrights-pagetext' => 'Bu, viki ailesinin genel haklar tablosunda yapılan tüm değişikliklerin kaydıdır',
+	'gblrights-rights-entry' => '$1 için genel grup üyeliği, $2 iken $3 olacak şekilde değiştirildi',
+	'right-userrights-shared' => 'Paylaşılan kullanıcı haklarını yönetir',
 );
 
 /** Ukrainian (Українська)

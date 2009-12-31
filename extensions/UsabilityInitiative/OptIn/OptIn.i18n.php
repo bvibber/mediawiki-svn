@@ -354,15 +354,86 @@ $messages['arc'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'optin-title-optedout' => 'تجريب بيتا',
-	'optin-title-optedin' => 'سيب البيتا',
+	'optin' => 'اشتراك مبادره الاستخدام',
+	'optin-desc' => 'إن السماح للمستخدمين بتجربه البيتا آخر تطورات مبادره الاستخداميه (Usability Initiative).',
+	'optin-title-optedout' => 'جرّب البيتا',
+	'optin-title-optedin' => 'غادر البيتا',
+	'optin-title-justoptedin' => 'أهلا بك فى بيتا',
+	'optin-title-justoptedout' => 'شكرًا لتجريبك البيتا.',
+	'optin-title-feedback' => 'شاركنا ملاحظاتك و اقتراحاتك',
+	'optin-needlogin' => 'يجب أن [$1 تسجل دخولك] لتجرّب البيتا.',
+	'optin-intro' => 'عملت مبادره استخداميه ويكيبيديا (Wikipedia Usability Initiative) بجد على تحسين استخداميه ويكيبيديا.
+أترغب فى تجربه نسختنا البيتا؟',
+	'optin-feedback-intro' => 'شكرًا لتجريبك البيتا.
+نود الاطلاع على رأيك فى الواجهه الجديده، ولذا فإننا سنقدر ملأك للاستطلاع الاختيارى أدناه.',
+	'optin-feedback-back' => 'إذا لم ترغب بملء الاستطلاع، يمكنك الرجوع إلى $1.',
+	'optin-success-in' => 'تقوم الآن بتجريب البيتا.
+تستطيع العوده فى أى وقت بنقر وصله "{{int:optin-leave}}" فى أعلى الشاشه.',
+	'optin-leave-cancel' => 'إن كنت تريد الاستمرار فى استخدام بيتا, فيمكنك الرجوع إلى $1.',
+	'optin-success-out' => 'لقد تركت البيتا بنجاح.
+تستطيع تجريبها مره أخرى فى أى وقت بنقر وصله "{{int:optin-try}}" فى أعلى يسار الشاشه.',
+	'optin-success-feedback' => 'شكرًا لك على ملاحظاتك!',
+	'optin-accept-short' => 'لنجربها!',
 	'optin-accept-long' => 'جرّب البيتا',
+	'optin-accept-long-anon' => 'أنشئ حسابًا وجرّب البيتا',
 	'optin-deny-short' => 'لا، شكرًا',
-	'optin-submit-out' => 'سيب البيتا',
+	'optin-deny-long' => 'ارجع إلى الصفحه السابقة',
+	'optin-submit-out' => 'غادر البيتا',
+	'optin-submit-feedback' => 'أعطِ ملاحظاتك',
+	'optin-survey-yes' => 'نعم',
 	'optin-survey-no' => 'لا',
+	'optin-survey-intro' => 'شكرًا لتجريب البيتا.
+نود أن نطلع على رأيك فى واجهتنا الجديده، لذا فإننا سنقدر ملأك الاستطلاع الاختيارى أدناه قبل أن تنقر "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => 'ما الذى أعجبك فى البيتا؟ ما الذى لم يعجبك فيها؟',
+	'optin-survey-question-whyoptout' => 'لماذا تغادر البيتا؟ (رجاءً حدّد كل ما ينطبق)',
+	'optin-survey-answer-whyoptout-hard' => 'كانت صعبه الاستخدام.',
+	'optin-survey-answer-whyoptout-didntwork' => 'لم تؤدِ الغرض بشكل ملائم.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'لم تعمل حسب ما توقعت.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'لم يعجبنى مظهرها.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'لم يعجبنى التصميم والألسنه الجديده.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'لم يعجبنى شريط الأدوات الجديد.',
+	'optin-survey-answer-whyoptout-other' => 'أسباب أخرى:',
+	'optin-survey-question-explain' => 'رجاءً وضّح وفصّل إجابتك أعلاه:',
+	'optin-survey-question-techfail' => 'هل واجهت أى فشل تقنى أثناء استخدامك البيتا؟',
+	'optin-survey-question-techfail-ifyes' => 'إذا كانت الإجابه بنعم، فمن فضلك فصّل ووضَح:',
+	'optin-survey-question-usedtoolbar' => 'هل سبق لك أن استخدمت شريط الأدوات الجديد القابل للتمديد لتحرير صفحة؟',
+	'optin-survey-question-usedtoolbar-ifyes' => 'إذا كانت الإجابه بنعم، فما الذى أعجبك فيه؟ وما الذى لم يعجبك فيه؟',
+	'optin-survey-question-usedtoolbar-ifno' => 'إذا كانت الإجابه بلا، فلم لم تستخدمه؟ أستسخدمه فى المستقبل؟ من فضلك وضّح الإجابه.',
+	'optin-survey-question-different' => 'ماذا كان بإمكاننا فعله لكى تستمر فى استخدام البيتا؟',
+	'optin-survey-question-feedback' => 'من فضلك أطلعنا على أى ملاحظات أو مخاوف أو آراء أخرى عن المشروع - كل ملاحظه مفيدة!:',
+	'optin-survey-question-browser' => 'ما المتصفح الذى تستخدمه؟',
+	'optin-survey-answer-browser-other' => 'متصفح آخر:',
+	'optin-survey-question-os' => 'ما نظام التشغيل الذى تستخدمه؟',
+	'optin-survey-answer-os-other' => 'نظام تشغيل آخر:',
+	'optin-survey-question-res' => 'ما أبعاد شاشتك؟',
+	'optin-survey-question-changes' => 'ما التغييرات التى تطمح لرؤيتها فى بيتا المستقبل؟ (من فضلك اختر كل ما ينطبق)',
+	'optin-survey-answer-changes-nav' => 'جعل تصفح الموقع بشكل عام أسهل.',
+	'optin-survey-answer-changes-edittools' => 'زياده وتحسين أدوات التحرير.',
+	'optin-survey-answer-changes-upload' => 'تحسين المحتويات والوسائط المرفوعه.',
+	'optin-survey-answer-changes-richtext' => 'تطوير أدوات تحرير شبيهه بمحررات النصوص الغنيه (rich-text).',
+	'optin-survey-answer-changes-lookfeel' => 'تحديث "منظر وإحساس" الموقع.',
+	'optin-survey-answer-changes-predictability' => 'تطوير القدره على تنبؤ الأداء.',
+	'optin-survey-answer-changes-custom' => 'السماح بتخصيص أكبر من المستخدم.',
+	'optin-survey-answer-changes-other' => 'غير ذلك:',
+	'optin-improvements' => '<div dir="rtl">
+== ما الذى تحسن؟ ==
+[[File:UsabilityNavigation.png|left|link=|لقطه لألسنه التصفح الجديدة]]
+;تصفح أفضل
+يسهل نظام التصفح الجديد معرفه المكان الذى أنت فيه والشيء الذى تقوم به، كما يريك كيفيه الوصول إلى الصفحات بوضوح. صندوق البحث وضع فى الزاويه العليا، لتصبح عمليه البحث أسرع وأسهل استخداما.
+
+[[File:UsabilityToolbar.png|left|link|=|لقطه لشريط أدوات التحرير المُحسّن]]
+;شريط أدوات التحرير قد تطور
+الأيقونات الجديده ستجعل تحرير المقالات أسهل وأكثر وضوحا، بحيث يوضح لك النظام الجديد وظيفه هذه الأيقونات. كما تجعل المقاطع القابله للتمديد عمليه البحث عن الأداه أو الأيقونه أسهل، مع جعل الأدوات التى لا تستخدم كثيراً تظهر بضغطه زر واحده. بالإضافه إلى ذلك، زود شريط الأدوات بقسم للمساعده السريعه لتوضيح وظائف الأيقونات والشروحات المبسطه لاستخدام رموز الويكى.
+
+== كيف يمكنك المشاركة؟ ==
+لمعرفه المزيد حول المشروع أو للمشاركه فيه، بإمكانك زياره صفحه [http://usability.wikimedia.org Usability Initiative]. هناك ستجد معلومات حول منحنا، وأبحاثنا، وتصاميمنا، وتطويراتنا، وإصداراتنا. لكى تطرح الأسئله أو لكى تترك انطباعك العام، بإمكانك استخدام صفحه المناقشه [http://usability.wikimedia.org/wiki/Talk:Prototype هذه]. بإمكانك طرح الموضوعات الأخرى هناك أيضا. إذا رأيت أيه مشكله فى النظام الجديد، بإمكانك ترك الملاحظات فى [http://usability.wikimedia.org/wiki/Talk:Releases/Acai صفحه نقاش مشروع Acai] أو من خلال [https://bugzilla.wikimedia.org Bugzilla].
+
+شكراً ونتمنى سماع رأيك!
+</div>',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

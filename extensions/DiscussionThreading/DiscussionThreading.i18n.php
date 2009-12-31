@@ -601,9 +601,14 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Mach
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'discussionthreading-desc' => 'Tartışma sayfalarına başlık sistemi ekle',
+	'discussionthreading-replysection' => 'cevap',
+	'discussionthreading-replysectionhint' => 'Bu gönderiye cevap ver',
 	'discussionthreading-threadnewsection' => 'yeni',
+	'discussionthreading-threadnewsectionhint' => 'Yeni bir başlık başlat',
 );
 
 /** Ukrainian (Українська)

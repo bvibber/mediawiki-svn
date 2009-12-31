@@ -1010,6 +1010,14 @@ $messages['th'] = array(
 	'crossnamespacelinks' => 'ลิงก์ข้ามกลุ่มชื่อ',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'crossnamespacelinks' => 'At giňişlikleriniň arasyndaky çykgytlar',
+	'crossnamespacelinkstext' => '$1: $3 üçin $2 {{PLURAL:$2|çykgyt|çykgyt}}',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

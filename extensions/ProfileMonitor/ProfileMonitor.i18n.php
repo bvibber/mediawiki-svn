@@ -961,8 +961,16 @@ $messages['tl'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'profiling' => 'Profil verileri',
+	'profiling-desc' => 'Profil verilerini arama ve inceleme amaçlı [[Special:Profiling|özel sayfa]]',
+	'profiling-process' => 'İşlem dizgisi:',
+	'profiling-wildcard' => 'Joker kullan',
 	'profiling-ok' => 'Tamam',
+	'profiling-data' => '`$1` için profil verileri',
+	'profiling-data-process' => 'İşlem',
 	'profiling-data-count' => 'Say',
+	'profiling-data-time' => 'Süre (tümü)',
+	'profiling-data-average' => 'Süre (ort)',
 	'profiling-no-data' => 'Eşleşen veri bulunamadı',
 );
 

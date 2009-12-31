@@ -131,6 +131,13 @@ $messages['fr'] = array(
 	'clientside-desc' => 'Fournit des fonctions pour générer du code dans des formats côté client comme HTML, CSS et JavaScript',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'clientside-desc' => 'Balye des fonccions por fâre de code dens des formats fllanc cliant coment HTML, CSS et JavaScript.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

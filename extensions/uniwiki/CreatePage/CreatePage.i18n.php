@@ -1038,8 +1038,14 @@ Nais mo bang baguhin ang umiiral na pahina?',
  */
 $messages['tr'] = array(
 	'createpage' => 'Bir sayfa oluştur',
+	'createpage-desc' => 'Yeni sayfa oluşturmak için bir [[Special:CreatePage|özel sayfa]] ekler',
+	'createpage_submitbutton' => 'Gönder',
 	'createpage_instructions' => 'Oluşturmak istediğiniz sayfanın başlığını girin:',
 	'createpage_entertitle' => 'Lütfen sayfanız için bir başlık girin.',
+	'createpage_titleexists' => 'Halihazırda [[$1]] adına sahip bir sayfa mevcut.
+Mevcut sayfada değişiklik yapmak ister misiniz?',
+	'createpage_tryagain' => 'Hayır. Farklı bir isimle yeni bir sayfa oluşturmak istiyorum.',
+	'createpage_editexisting' => 'Evet. Mevcut sayfaya katkıda bulunmak istiyorum.',
 	'createpage-badtitle' => '"$1" bir sayfa başlığı olarak kullanılamaz',
 );
 

@@ -681,6 +681,20 @@ $messages['tl'] = array(
 	'lua_overflow_time' => 'Naabot na ang pinakamataas na panahon ng pagsasakatuparan',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'lua_desc' => 'Ayrıştırıcıyı [http://www.lua.org/ Lua] kodunun yerleşik blok desteği ile genişletir',
+	'lua_error' => '$1. satırda hata',
+	'lua_extension_notfound' => 'Lua eklentisi konfigüre edildi',
+	'lua_interp_notfound' => 'Lua yorumlayıcısı bulunamadı',
+	'lua_error_internal' => 'Dahili hata',
+	'lua_overflow_recursion' => 'Özyineleme sınırına ulaşıldı',
+	'lua_overflow_loc' => 'Azami kod satırı sınırına ulaşıldı',
+	'lua_overflow_time' => 'Azami yürütme süresine ulaşıldı',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -1311,12 +1311,22 @@ Dapat na naglalaman ang ikinargang talaksan ng pangalan ng pahina at maaaring hi
 $messages['tr'] = array(
 	'deletebatch' => 'Sayfa gruplarını sil',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Bir sayfa grubunu siler]]',
+	'deletebatch-help' => 'Bir sayfa grubunu silin.
+İsterseniz tek bir silme işlemi gerçekleştirebilir ya da isterseniz bir dosyada listelenen sayfaları silebilirsiniz.
+Silme kayıtlarında gösterilecek bir kullanıcı seçin.
+Yüklenen dosyalar sayfası adını ve isteğe bağlı gerekçeyi içermeli; bu değerler her satırda "|" karakteri ile ayrılmalıdır.',
 	'deletebatch-caption' => 'Sayfa listesi:',
+	'deletebatch-title' => 'Grubu sil',
 	'deletebatch-link-back' => 'Özel sayfaya geri dön',
+	'deletebatch-as' => 'Betiği şu şekilde çalıştır:',
+	'deletebatch-both-modes' => 'Lütfen belirtilen bir sayfa veya verilen bir sayfa listesi seçin.',
 	'deletebatch-or' => '<b>veya</b>',
 	'deletebatch-delete' => 'Sil',
 	'deletebatch-page' => 'Silinecek sayfalar:',
 	'deletebatch-processing-from-file' => 'dosya listesindeki sayfalar siliniyor',
+	'deletebatch-processing-from-form' => 'formdan sayfalar siliniyor',
+	'deletebatch-omitting-nonexistant' => 'Mevcut olmayan $1 sayfası atlanıyor.',
+	'deletebatch-omitting-invalid' => 'Geçersiz olan $1 sayfası atlanıyor.',
 	'deletebatch-file-bad-format' => 'Dosya düz metin olmalı',
 	'deletebatch-file-missing' => 'Verilen dosya okunamıyor',
 	'deletebatch-select-script' => 'Sayfa betiğini sil',

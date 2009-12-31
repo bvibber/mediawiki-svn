@@ -374,6 +374,14 @@ $messages['sv'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Antal nyligen inträffade händelser som IP-adressen har utlöst, enligt Project Honey Pot',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'honeypot-desc' => 'MediaWiki saýtlary üçin [http://projecthoneypot.org/ Honey Pot Taslamasy] bilen integrasiýany üpjün edýär',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Project Honey Pot-a görä, IP adresiniň başladan soňky wakalarynyň sany',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

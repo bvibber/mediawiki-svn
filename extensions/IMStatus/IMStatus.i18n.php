@@ -1474,6 +1474,7 @@ Ang id na dapat mong ibigay ay ang mga bilang at mga titik na nasa pagitan ng "$
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'imstatus_syntax' => 'Sözdizimi',
 	'imstatus_default' => 'Varsayılan',
 	'imstatus_example' => 'Örnek',
 	'imstatus_possible_val' => 'Olası değerler',
@@ -1482,6 +1483,7 @@ $messages['tr'] = array(
 	'imstatus_or' => 'veya',
 	'imstatus_style' => 'durum göstergesi biçemi',
 	'imstatus_action' => 'düğmeye tıklandığında etkin',
+	'imstatus_details_saa' => 'Tüm biçem ve işlemler hakkında daha fazla bilgi almak için $1 sayfasını inceleyin.',
 	'imstatus_gtalk_code' => 'google talk kodunuz',
 	'imstatus_gtalk_get_code' => 'google talk kodunuz: $1 kaynağından alın.',
 	'imstatus_gtalk_height' => 'kutunun piksel cinsinden yüksekliği.',

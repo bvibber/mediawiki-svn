@@ -532,6 +532,13 @@ $messages['tg-latn'] = array(
 	'doublewiki-desc' => 'Jak sahifa va tarçumai onro az jak viki digar dar du sutun dar hamon sahifa namoiş medihad',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'doublewiki-desc' => 'Bir sahypany we başga bir wikiden terjimesini şol bir sahypanyň iki sütüninde görkezýär',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

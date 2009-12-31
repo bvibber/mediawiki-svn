@@ -476,6 +476,15 @@ $messages['pt'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Devido a potenciais erros de interpretação, só são aceites mensagens de texto.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'sendmailtowiki-inpin' => 'PIN:',
+	'sendmailtowiki-err-pinlength' => 'PIN precisa conter exatamente 5 algarismos.',
+	'sendmailtowiki-err-invalidpin' => 'PIN inválido. Acesso negado.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

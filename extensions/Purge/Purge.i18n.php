@@ -440,10 +440,12 @@ $messages['sv'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Harley Hartwell
  * @author Passawuth
  */
 $messages['th'] = array(
 	'purge' => 'ล้างแคช',
+	'purge-desc' => 'เพิ่มแถบ "ล้างแคช" ในหน้าทั่วไปทั้งหมด รวมถึงผู้ใช้นิรนามสามารถผ่านการยืนยันการล้างแคช เพื่อความรวดเร็วในการล้างแคชได้',
 );
 
 /** Tagalog (Tagalog)

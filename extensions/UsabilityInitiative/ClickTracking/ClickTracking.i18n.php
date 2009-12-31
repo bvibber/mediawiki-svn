@@ -121,6 +121,34 @@ $messages['ar'] = array(
 	'ct-update-table' => 'حدّث الجدول',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'clicktracking' => 'تتبع نقرات مبادره الاستخدامية',
+	'clicktracking-desc' => 'تتبع الضغطات لتتبع الاحداث التى لا تسبب تحديث الصفحة',
+	'ct-title' => 'ضغطات المستخدمين المجمعة',
+	'ct-event-name' => 'اسم الحدث',
+	'ct-expert-header' => 'نقرات "الخبراء"',
+	'ct-intermediate-header' => 'نقرات "المتوسطين"',
+	'ct-beginner-header' => 'نقرات "المبتدئين"',
+	'ct-total-header' => 'مجموع النقرات',
+	'ct-start-date' => 'تاريخ البدء (YYYYMMDD)',
+	'ct-end-date' => 'تاريخ النهايه (YYYYMMDD)',
+	'ct-increment-by' => 'عدد الأيام التى تمثلها كل نقطه بيانات',
+	'ct-change-graph' => 'غير الرسم البياني',
+	'ct-beginner' => 'مبتدئ',
+	'ct-intermediate' => 'متوسط',
+	'ct-expert' => 'خبير',
+	'ct-date-range' => 'نطاق التاريخ',
+	'ct-editing' => 'يحرر حاليًا:',
+	'ct-anon-users' => 'المستخدمون المجهولون',
+	'ct-user-contribs' => 'مجموع مساهمات المستخدم',
+	'ct-user-span' => 'مساهمات المستخدم فى فتره زمنية',
+	'ct-and' => 'و',
+	'ct-update-table' => 'حدّث الجدول',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

@@ -432,6 +432,13 @@ $messages['tet'] = array(
 	'editown-desc' => "Uza-na'in sira-ne'ebé la iha priviléjiu 'editall' bele filak pájina sira-ne'ebé sira kria tiha de'it",
 );
 
+/** Thai (ไทย)
+ * @author Harley Hartwell
+ */
+$messages['th'] = array(
+	'editown-desc' => 'ผู้ใช้ที่ไม่มีสถานะ editall สามารถแก้ไขได้เฉพาะหน้าที่ตนสร้างเท่านั้น',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

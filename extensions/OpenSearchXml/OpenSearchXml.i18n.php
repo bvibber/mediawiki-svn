@@ -431,6 +431,13 @@ $messages['te'] = array(
 	'opensearchxml-desc' => 'పాఠ్య సంగ్రహాలని అందించే [http://www.opensearch.org OpenSearch] XML అంతరవర్తి',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML interfeýsi tekst göçürmelerini üpjün edýär',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

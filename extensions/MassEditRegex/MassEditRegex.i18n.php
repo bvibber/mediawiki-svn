@@ -128,6 +128,47 @@ $messages['ar'] = array(
 	'masseditregex-tooltip-execute' => 'طبق هذه التغييرات على كل صفحة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'masseditregex' => 'تعديل كمى باستخدام التعبيرات المنتظمة',
+	'masseditregex-desc' => 'استخدم التعبيرات القياسيه [[Special:MassEditRegex|لتعديل صفحات كثيره فى عمليه واحدة]]',
+	'masseditregextext' => 'أدخل تعبيرا نتظما واحدا أو أكثر (واحد لكل سطر) للمطابقة, وتعبير واحد أو أكثر لاستبدال كل مطابقه به.
+أول مطابقه تعبير، لو كان ناجحا، سيتم استبداله بأول تعبير استبدال، وهكذا.
+انظر [http://php.net/manual/en/function.preg-replace.php وظيفه PHP preg_replace()] للتفاصيل.',
+	'masseditregex-pagelisttxt' => 'الصفحات للتعديل (لا تستخدم بادئه نطاق:):',
+	'masseditregex-matchtxt' => 'ابحث عن:',
+	'masseditregex-replacetxt' => 'استبدل بـ:',
+	'masseditregex-executebtn' => 'شغّل',
+	'masseditregex-err-nopages' => 'يجب أن تحدّد صفحه واحده على الأقل لتغييرها.',
+	'masseditregex-before' => 'قبل',
+	'masseditregex-after' => 'بعد',
+	'masseditregex-max-preview-diffs' => 'المعاينه تم قصرها على أول $1 {{PLURAL:$1|مطابقة|مطابقات}}.',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|تغيير|تغييرات}}',
+	'masseditregex-page-not-exists' => '$1 غير موجود',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|صفحة|صفحات}} تم تعديلها',
+	'masseditregex-view-full-summary' => 'عرض ملخص التعديل الكامل',
+	'masseditregex-hint-intro' => 'هنا بعض النصائح والأمثله لتنفيذ المهام الشائعة:',
+	'masseditregex-hint-headmatch' => 'مطابقة',
+	'masseditregex-hint-headreplace' => 'استبدل',
+	'masseditregex-hint-headeffect' => 'تأثير',
+	'masseditregex-hint-toappend' => 'أضف بعض النصوص إلى نهايه الصفحه - رائع لإضافه الصفحات إلى التصنيفات',
+	'masseditregex-hint-remove' => 'أزل بعض النصوص من كل الصفحات فى القائمة',
+	'masseditregex-hint-removecat' => 'أزل كل التصنيفات من صفحه (لاحظ هروب الأقواس المربعه فى كود الويكى.)
+قيم الاستبدال لا ينبغى تهريبها.',
+	'masseditregex-listtype-intro' => 'هذه قائمه بـ:',
+	'masseditregex-listtype-pagenames' => 'أسماء الصفحات (عدل هذه الصفحات)',
+	'masseditregex-listtype-pagename-prefixes' => 'بادئات أسماء الصفحات (عدل الصفحات بأسماء تبدأ بهذا النص)',
+	'masseditregex-listtype-categories' => 'أسماء التصنيفات (عدل كل صفحه فى هذه التصنيفات؛ اختيار النطاق يتم تجاهله)',
+	'masseditregex-listtype-backlinks' => 'الوصلات الراجعه (عدل الصفحات التى تصل إلى هذه الصفحات)',
+	'masseditregex-namespace-intro' => 'كل هذه الصفحات فى هذا النطاق:',
+	'masseditregex-exprnomatch' => 'التعبير "$1" لم يطابق أى صفحه.',
+	'masseditregex-badregex' => 'عباره منطقيه غير صالحة:',
+	'masseditregex-editfailed' => 'التعديل فشل:',
+	'masseditregex-tooltip-execute' => 'طبق هذه التغييرات على كل صفحة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -1055,6 +1096,18 @@ Os valores de troca não devem ter o ''escape''.",
 	'masseditregex-exprnomatch' => 'A expressão "$1" não ocorre em nenhuma página.',
 	'masseditregex-badregex' => 'Regex inválida:',
 	'masseditregex-editfailed' => 'Edição falhou:',
+	'masseditregex-tooltip-execute' => 'Aplicar estas alterações a cada página',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'masseditregex-executebtn' => 'Executar',
+	'masseditregex-before' => 'Antes',
+	'masseditregex-page-not-exists' => '$1 não existe',
+	'masseditregex-listtype-intro' => 'Esta é uma lista de:',
+	'masseditregex-badregex' => 'Regex inválida:',
 	'masseditregex-tooltip-execute' => 'Aplicar estas alterações a cada página',
 );
 

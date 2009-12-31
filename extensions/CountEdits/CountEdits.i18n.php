@@ -1451,8 +1451,16 @@ Huwag hadulat ang mga tagapag-ambag ayon sa bilang ng kanilang pamamatnugot.",
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'countedits' => 'Değişiklikleri say',
+	'countedits-desc' => 'Kullanıcı değişikliklerini sayan ve en fazla on değişikliğe sahip kullanıcıyı listeleyen [[Special:CountEdits|özel sayfa]]',
+	'countedits-warning' => "'''Uyarı:''' Bir kitabı kapağına göre değerlendirmeyin.
+Kullanıcıları değişiklik sayılarına göre değerlendirmeyin.",
 	'countedits-username' => 'Kullanıcı:',
 	'countedits-ok' => 'Tamam',
+	'countedits-nosuchuser' => '$1 adında bir kullanıcı yok.',
+	'countedits-resultheader' => '$1 için sonuçlar',
+	'countedits-resulttext' => '$1, $2 {{PLURAL:$2|değişiklik|değişiklik}} yaptı',
+	'countedits-mostactive' => 'En aktif kullanıcılar',
 	'countedits-nocontribs' => 'Bu vikiye herhangi bir katkıda bulunulmadı.',
 );
 

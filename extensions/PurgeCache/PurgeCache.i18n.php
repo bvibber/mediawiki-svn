@@ -659,6 +659,11 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'purgecache' => 'Önbelleği boşalt',
+	'purgecache-desc' => 'OBJECTCACHE tablosunu temizlemek için kullanılan [[Special:PurgeCache|özel sayfa]]',
+	'purgecache-warning' => 'Bu, önbellek tablolarını temizleyecek.',
+	'purgecache-purged' => 'Önbellek temizlendi.',
+	'purgecache-button' => 'Temizle',
+	'right-purgecache' => 'OBJECTCACHE tablosunu temizler',
 );
 
 /** Ukrainian (Українська)

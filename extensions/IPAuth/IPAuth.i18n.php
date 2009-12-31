@@ -79,6 +79,13 @@ $messages['el'] = array(
 	'ipauth-desc' => 'Αυτόματη σύνδεση απο σταθερές διευθύνσεις URL',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'ipauth-desc' => 'Aŭtomata ensalutado de fiksita IP-adresoj',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -223,6 +230,13 @@ $messages['pms'] = array(
  * @author Indech
  */
 $messages['pt'] = array(
+	'ipauth-desc' => 'Login automático de endereços de IP fixos',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
 	'ipauth-desc' => 'Login automático de endereços de IP fixos',
 );
 

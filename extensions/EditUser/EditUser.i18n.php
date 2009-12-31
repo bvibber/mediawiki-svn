@@ -371,9 +371,10 @@ $messages['eu'] = array(
  * @author Jack Phoenix
  * @author Mobe
  * @author Nike
+ * @author ZeiP
  */
 $messages['fi'] = array(
-	'edituser-desc' => 'Mahdollistaa oikeutettujen käyttäjien muokata toisten käyttäjien asetuksia.',
+	'edituser-desc' => 'Antaa oikeutettujen käyttäjien muokata toisten käyttäjien asetuksia.',
 	'edituser' => 'Muokkaa käyttäjää',
 	'edituser-logout' => 'Kirjaa käyttäjä ulos',
 	'edituser-username' => 'Nimi',
@@ -1282,10 +1283,18 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'edituser-desc' => 'Ayrıcalıklı kullanıcıların diğer kullanıcıların tercihlerini değiştirmesini mümkün kılar',
+	'edituser' => 'Kullanıcıyı düzenle',
+	'edituser-logout' => 'Kullanıcının oturumunu kapat',
 	'edituser-username' => 'Adı',
 	'edituser-dosearch' => 'Ara',
+	'edituser-nouser' => 'Belirtilen kullanıcı mevcut değil',
+	'edituser-exempt' => 'Belirtilen kullanıcı düzenlenemiyor',
+	'right-edituser' => 'Diğer kullanıcıların tercihlerini düzenler',
+	'right-edituser-exempt' => 'Başkaları bu kullanıcının tercihlerini düzenleyemez',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

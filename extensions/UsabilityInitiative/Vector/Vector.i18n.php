@@ -39,6 +39,14 @@ $messages['ar'] = array(
 	'vector-desc' => 'تحسينات في عناصر واجهة المستخدم لواجهة فكتور.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'vector' => 'تحسينات واجهه المستخدم لفكتور',
+	'vector-desc' => 'تحسينات فى عناصر واجهه المستخدم لواجهه فكتور.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

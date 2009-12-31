@@ -856,6 +856,7 @@ $messages['te'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Harley Hartwell
  * @author Octahedron80
  */
 $messages['th'] = array(
@@ -865,6 +866,9 @@ $messages['th'] = array(
 	'ajaxLogin2' => 'แน่ใจหรือไม่?
 คุณอาจสูญเสียการเปลี่ยนแปลงที่ทำกับหน้านี้ ถ้าคุณออกไปตอนนี้',
 	'ajaxlogin-create' => 'สร้างบัญชี',
+	'al-nosuchuser' => 'ไม่มีผู้ใช้ชื่อ "$1"
+ชื่อผู้ใช้ต้องเป็นชื่อที่ตรงกับชื่อที่ลงทะเบียนไว้ตัวต่อตัว (Case Sensitive)
+ตรวจสอบการสะกด และตัวอักษรพิมพ์เล็กใหญ่ที่คุณพิมพ์',
 );
 
 /** Tagalog (Tagalog)

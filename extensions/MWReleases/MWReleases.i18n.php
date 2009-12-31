@@ -317,6 +317,13 @@ $messages['sk'] = array(
 	'mwreleases-desc' => 'Pridáva [[Mediawiki:Mwreleases-list|zoznam]] podporovaných vydaní prístupných prostredníctvom API',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'mwreleases-desc' => 'Goldanylýan wersiýalaryň [[Mediawiki:Mwreleases-list|sanawyny]] goşýar, API bilen baryp bolýar',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

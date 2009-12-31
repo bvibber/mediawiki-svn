@@ -661,6 +661,13 @@ $messages['pt'] = array(
 	'externalpages-bad-url-data' => 'Importação do conteúdo da página falhou',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'externalpages-error-generic' => 'Erro detectado',
+);
+
 /** Romanian (Română)
  * @author Stelistcristi
  */

@@ -693,6 +693,24 @@ $messages['te'] = array(
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|పేజీ|పేజీలు}}',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'cooperationstatistics' => 'İşbirliği istatistikleri',
+	'cooperationstatistics-desc' => '[[Special:CooperationStatistics|Ana isim alanındaki işbirliği istatistiklerini]] göster',
+	'cooperationstatistics-text' => "Ana isim alanında işbirliği istatistiklerini göster.
+[[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] ile [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] arası inceleyenler.<br />
+Ayrıca [[Special:MostRevisors|'''en fazla inceleyene sahip sayfalar''']] ve [[Special:MostRevisions|en fazla sürüme sahip sayfaları]] da inceleyin.",
+	'cooperationstatistics-tablearticle' => 'Sayfa sayısı',
+	'cooperationstatistics-tablevalue' => 'Editör sayısı',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|sayfa|sayfa}}',
+	'cooperationstatistics-nbusers' => '$2, $1 {{PLURAL:$1|editöre|editöre}} sahip',
+	'cooperationstatistics-nblessusers' => '$2, $1 {{PLURAL:$1|editöre|veya daha az editöre}} sahip',
+	'cooperationstatistics-nbmoreusers' => '$2, $1 veya daha fazla editöre sahip',
+	'cooperationstatistics-legendmore' => 'veya daha fazla editör.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

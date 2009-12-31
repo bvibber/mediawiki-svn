@@ -1588,14 +1588,23 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'passwordreset' => 'Parola sıfırlama',
+	'passwordreset-desc' => "[[Special:PasswordReset|Viki kullanıcısının parolasını sıfırlar]] - 'passwordreset' yetkisini gerektirir",
 	'passwordreset-invalidusername' => 'Geçersiz kullanıcı adı',
 	'passwordreset-emptyusername' => 'Boş kullanıcı adı',
 	'passwordreset-nopassmatch' => 'Parolalar eşleşmiyor',
+	'passwordreset-badtoken' => 'Geçersiz değişiklik simgesi',
 	'passwordreset-username' => 'Kullanıcı adı:',
 	'passwordreset-newpass' => 'Yeni parola:',
 	'passwordreset-confirmpass' => 'Parolayı doğrula:',
 	'passwordreset-submit' => 'parola sıfırla',
+	'passwordreset-success' => '$1 kullanıcı kimliği için parola sıfırlandı',
+	'passwordreset-disableuser' => 'Kullanıcı hesabı devre dışı bırakılsın mı?',
+	'passwordreset-disableuserexplain' => '(geçersiz bir parola sağlama ayarları - kullanıcı oturum açamaz)',
+	'passwordreset-disablesuccess' => 'Kullanıcı hesabı, kullanıcı kimliği $1 için devre dışı bırakıldı',
 	'passwordreset-accountdisabled' => 'Hesap devre dışı bırakıldı',
+	'disabledusers' => 'Devre dışı bırakılan kullanıcılar',
+	'disabledusers-summary' => 'PasswordReset ile devre dışı bırakılan kullanıcıların bir listesidir.',
+	'right-passwordreset' => 'Bir kullanıcının parolasını sıfırlar ([[Special:PasswordReset|özel sayfa]])',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

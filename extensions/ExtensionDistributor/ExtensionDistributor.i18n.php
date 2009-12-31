@@ -772,11 +772,21 @@ Si tienes algunas preguntas acerca de éste sistema de distribución de extensio
  * @author Pikne
  */
 $messages['et'] = array(
+	'extensiondistributor' => 'MediaWiki-laienduse allalaadimine',
+	'extdist-desc' => 'Võimaldab jagada laienduste hetktõmmiste arhiivi.',
 	'extdist-no-such-extension' => 'Laiendus "$1" puudub',
 	'extdist-no-such-version' => 'Versioonis "$2" puudub laiendus "$1".',
 	'extdist-choose-extension' => 'Vali laiendus, mida soovid alla laadida:',
 	'extdist-submit-extension' => 'Jätka',
+	'extdist-current-version' => "Arendusversioon (''trunk'')",
+	'extdist-choose-version' => '<big>Laadid alla laiendust <b>$1</b>.</big>
+
+Vali oma MediaWiki versioon.
+
+Suurem osa laiendusi töötab erinevate MediaWiki versioonidega. Kui sinu MediaWiki versiooni pole siin või sa vajad laienduse uusimaid funktsioone, proovi kasutada praegust versiooni.',
+	'extdist-no-versions' => 'Valitud laiendusest $1 pole saadaval ühtegi versiooni!',
 	'extdist-submit-version' => 'Jätka',
+	'extdist-want-more' => 'Hangi teine laiendus',
 );
 
 /** Basque (Euskara)
@@ -2609,8 +2619,25 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'extensiondistributor' => 'MediaWiki giňeltmesini düşür',
+	'extdist-desc' => 'Giňeltmeleriň pursatlyk görnüş arhiwlerini paýlamak üçin giňeltme',
+	'extdist-not-configured' => 'Konfigurirläň: $wgExtDistTarDir we $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Konfigurirlenen iş nusgasy direktoriýasy ýok!',
+	'extdist-no-such-extension' => '"$1" diýip giňeltme ýok.',
+	'extdist-no-such-version' => '"$2" wersiýasynda "$1" giňeltmesi ýok.',
+	'extdist-choose-extension' => 'Düşürmek isleýän giňeltmäňizi saýlaň:',
+	'extdist-wc-empty' => 'Konfigurirlenen iş nusgasy direktoriýasynda hiç hili paýlap boljak giňeltme ýok!',
 	'extdist-submit-extension' => 'Dowam et',
+	'extdist-current-version' => 'Ösdüriş wersiýasy (trunk)',
+	'extdist-no-versions' => 'Saýlanylan giňeltme ($1) hiç bir wersiýada ýok!',
 	'extdist-submit-version' => 'Dowam et',
+	'extdist-no-remote' => 'Uzakdan Subversion müşderisi bilen aragatnaşyk gurup bolmaýar.',
+	'extdist-remote-error' => 'Uzakdan Subversion müşderisinden säwlik: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Uzakdan Subversion müşderisined nädogry jogap.',
+	'extdist-svn-error' => 'Subversion säwlige duçar boldy: <pre>$1</pre>',
+	'extdist-svn-parse-error' => '"svn info"dan XML-ni işläp bolmaýar: <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar çykyş kody $1 gaýdyp geldi:',
+	'extdist-want-more' => 'Başga giňeltme al',
 );
 
 /** Tagalog (Tagalog)

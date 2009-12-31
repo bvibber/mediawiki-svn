@@ -510,8 +510,10 @@ $messages['bg'] = array(
 	'fundraiserstatistics' => 'Статистики за набирането на средства',
 	'fundraiserstats-date' => 'Дата',
 	'fundraiserstats-day' => 'Ден $1 от $2',
+	'fundraiserstats-contributions' => 'Приноси',
 	'fundraiserstats-total' => 'Общо (USD)',
 	'fundraiserstats-max' => 'Максимум (USD)',
+	'fundraiserstats-tab-contributions' => 'Брой приноси',
 );
 
 /** Bengali (বাংলা)
@@ -1584,6 +1586,7 @@ $messages['fi'] = array(
 	'contribstats-conversion' => 'Muuntokerroin (%)',
 	'contribstats-template' => 'Malline',
 	'contribstats-nodata' => 'Ei tietoa tarjolla',
+	'contribstats-landingpage' => 'Saapumissivu',
 	'contribstats-donatepage' => 'Lahjoitussivu',
 	'contribstats-average' => 'Keskiarvo',
 	'contribstats-imperfect-data' => 'Tieto ei ole täydellistä, koska ilman istuntojen seurantaa tehtävällä lahjoittajien seurannalla on rajoituksensa.',
@@ -1672,7 +1675,7 @@ $messages['fr'] = array(
 	'contribstats-unaudited' => 'Voici des totaux non vérifiés.',
 	'fundraiserstatistics' => 'Statistiques de la levée de fonds',
 	'fundraiserstats-date' => 'Date',
-	'fundraiserstats-day' => '$1<sup>{{PLURAL:$1|er|e}}</sup> jour $1 de $2',
+	'fundraiserstats-day' => '$1<sup>{{PLURAL:$1|er|e}}</sup> jour de $2',
 	'fundraiserstats-contributions' => 'Contributions',
 	'fundraiserstats-total' => 'Total (dollars US)',
 	'fundraiserstats-avg' => 'Moyenne (dollars US)',
@@ -1690,9 +1693,10 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'contributionreporting-desc' => 'Rapôrt de survelyence en dirèct sur la levâ de fonds de Wikimedia',
 	'contributiontotal' => 'Soma de les contribucions',
 	'contributionhistory' => 'Historico de les contribucions',
-	'contrib-hist-header' => 'Comentèros en dirèct des donators a travèrs lo mondo',
+	'contrib-hist-header' => 'Comentèros en dirèct ux donators a travèrs lo mondo',
 	'contrib-hist-name' => 'Nom',
 	'contrib-hist-date' => 'Dâta et hora',
 	'contrib-hist-amount' => 'Montent',
@@ -1737,8 +1741,10 @@ $messages['frp'] = array(
 	'contribstats-landingpage' => 'Pâge d’arrevâ',
 	'contribstats-donatepage' => 'Pâge de don',
 	'contribstats-average' => 'Moyena',
+	'contribstats-imperfect-data' => 'Cela balyê est emparfèta coment la survelyence ux donators, sen l’usâjo de la survelyence de la sèance, at ses limites.',
 	'contribstats-paypal-donations' => 'Donacions per PayPal',
 	'contribstats-credit-card' => 'Cârta de crèdit',
+	'contribstats-fraud-note' => 'Doux-três donacions frôdulentes ègzistont.',
 	'contribstats-unaudited' => 'Vê-que des somes pas controlâs.',
 	'fundraiserstatistics' => 'Statistiques de la levâ de fonds',
 	'fundraiserstats-date' => 'Dâta',
@@ -2569,7 +2575,9 @@ $messages['ka'] = array(
 	'contribstats-total' => 'ტოტალური (USD)',
 	'contribstats-avg' => 'საშუალო (USD)',
 	'contribstats-max' => 'მაქსიმუმი (USD)',
+	'contribstats-banner' => 'ლოზუნგი',
 	'contribstats-donations' => 'შეწირულობები',
+	'contribstats-conversion' => 'კონვერსიის მაჩვენებელი (%)',
 	'contribstats-template' => 'თარგი',
 	'fundraiserstats-date' => 'თარიღი',
 	'fundraiserstats-contributions' => 'წვლილი',
@@ -3707,6 +3715,7 @@ $messages['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author Hamilton Abreu
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'contributionreporting-desc' => 'Relatório ao vivo da angariação de fundos da Wikimedia',
@@ -3746,11 +3755,13 @@ $messages['pt-br'] = array(
 	'contribstats-day-totals' => 'Total de hoje',
 	'contribstats-week' => 'Semana',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total para esta semana|Totais semanais para as últimas $1 semanas}}',
+	'contribstats-payment-type' => 'Tipo de pagamento',
 	'contribstats-clicks' => 'Cliques',
 	'contribstats-donations' => 'Doações',
 	'contribstats-conversion' => 'Taxa de conversão (%)',
 	'contribstats-template' => 'Predefinição',
 	'contribstats-nodata' => 'Não foram providenciados dados',
+	'contribstats-credit-card' => 'Cartão de crédito',
 	'fundraiserstatistics' => 'Estatísticas da angariação de fundos',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Dia $1 de $2',
@@ -4325,6 +4336,9 @@ $messages['th'] = array(
 	'contribstats-percentage-ytd' => 'ร้อยละ (ย้อนหลัง 1 ปี)',
 	'contribstats-total-ytd' => 'รวมยอดเงิน (ย้อนหลัง 1 ปี)',
 	'contribstats-value-under' => 'ต่ำกว่า $1',
+	'contribstats-donations' => 'การบริจาค',
+	'contribstats-conversion' => 'อัตราแลกเปลี่ยน (%)',
+	'contribstats-template' => 'แม่แบบ',
 	'contribstats-average' => 'ค่าเฉลี่ย',
 	'contribstats-paypal-donations' => 'การยริจาคผ่านทาง PayPal',
 	'contribstats-credit-card' => 'บัตรเครดิต',
@@ -4373,6 +4387,7 @@ $messages['tk'] = array(
 	'contribstats-value-under' => 'Şundan az $1',
 	'contribstats-value-from' => '$1 - $2 aralygy',
 	'contribstats-value-over' => 'Şundan köp $1',
+	'contributiontrackingstatistics' => 'Goşant trekingi statistikalary',
 	'contribstats-day-totals' => 'Gün üçin jemi',
 	'contribstats-week' => 'Hepde',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Bu hepde üçin jemi|Soňky $1 hepdäni öz içine alýan hepdelik jemler}}',
@@ -4387,18 +4402,25 @@ $messages['tk'] = array(
 	'contribstats-landingpage' => 'Gonuş sahypasy',
 	'contribstats-donatepage' => 'Bagyş sahypasy',
 	'contribstats-average' => 'Ortaça',
+	'contribstats-imperfect-data' => 'Bu maglumatlar kämil däldir, çünki sessiýa treking etmän bagyş edenleri yzarlamagyň öz çäklendirilmeleri bardyr.',
 	'contribstats-paypal-donations' => 'PayPal bagyşlary',
 	'contribstats-credit-card' => 'Kredit karty',
+	'contribstats-fraud-note' => 'Käbir galp bagyşlar bar.',
+	'contribstats-unaudited' => 'Bular barlanmadyk jemler.',
+	'fundraiserstatistics' => 'Fond ýygnaýjy statistikalry',
 	'fundraiserstats-date' => 'Sene',
+	'fundraiserstats-day' => '$2 fond ýygnaýjynyň $1 güni',
 	'fundraiserstats-contributions' => 'Goşantlar',
 	'fundraiserstats-total' => 'Jemi (USD)',
 	'fundraiserstats-avg' => 'Ortaça (USD)',
+	'fundraiserstats-ytd' => 'Kumulýatiw jem (USD)',
 	'fundraiserstats-max' => 'Maksimum (USD)',
 	'fundraiserstats-tab-totals' => 'Jemi (USD)',
 	'fundraiserstats-tab-contributions' => 'Goşantlaryň sany',
 	'fundraiserstats-tab-averages' => 'Ortaçalar (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumlar (USD)',
 	'fundraiserstats-tab-ytd' => 'Üstümizdäki ýyl (USD)',
+	'specialpages-group-contribution' => 'Goşantlar/Fond ýygnaýjy',
 );
 
 /** Tagalog (Tagalog)
