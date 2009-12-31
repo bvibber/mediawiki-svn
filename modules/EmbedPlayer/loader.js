@@ -59,17 +59,11 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 		]
 	];
 	
-	
-	//If we should include the timedText interface
-	// ( we include it here to get everything at once) 
-	var timedTextRequestSet = [
-		'$j.fn.menu',
-		'mw.TimedText' 
-	]; 
+	var addTimedTextReqFlag = false;
 	
 	// Merge in the timed text libs 
 	if( mw.getConfig( 'textInterface' ) == 'always' )		
-		$j.merge( dependencyRequest[0], timedTextRequestSet );			
+		addTimedTextReqFlag = true;	
 		
 		
 	$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function(){
@@ -82,21 +76,28 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 				dependencyRequest[0].push(  mw.valid_skins[n]  + 'Config' );
 			}
 		}
-		//Also add the text library to request set if any video elment has text sources:
-		if( $j( playerElement ).find( 'itext' ).length != 0 ){
-			$j.merge( dependencyRequest[0], timedTextRequestSet );
-		}else{			
-			$j( playerElement ).find( 'source' ).each(function(na, sourceElement){
-				if( $j( sourceElement ).attr('type') == 'text/xml' && 
-					$j( sourceElement ).attr('codec') == 'roe' 
-				){						
-					// Has a roe src
-					$j.merge( dependencyRequest[0], timedTextRequestSet );
-				}
-			});
+		//Also add the text library to request set if any video element has text sources:
+		if(!addTimedTextReqFlag){
+			if( $j( playerElement ).find( 'itext' ).length != 0 ){
+				addTimedTextReqFlag = true;
+			}else{			
+				$j( playerElement ).find( 'source' ).each(function(na, sourceElement){
+					if( $j( sourceElement ).attr('type') == 'text/xml' && 
+						$j( sourceElement ).attr('codec') == 'roe' 
+					){						
+						// Has a roe src
+						addTimedTextReqFlag = true;
+					}
+				});
+			}
 		}
 	} );	
-		
+	
+	// Add timed text items if flag set.  	
+	if( addTimedTextReqFlag ){
+		dependencyRequest[0].push( [ '$j.fn.menu', 'mw.TimedText' ] );
+	}
+	
 	// Add PNG fix if needed:
 	if ( $j.browser.msie || $j.browser.version < 7 ){
 		dependencyRequest[0].push( '$j.fn.pngFix' );
