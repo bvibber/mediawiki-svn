@@ -257,10 +257,10 @@ var htmlEmbed = {
 		 	if( this.pc.dur ){
 				this.duration = this.pc.dur;
 			}else if( pcHtmlEmbedDefaults.dur ){
-				this.duration =pcHtmlEmbedDefaults.dur ;
+				this.duration = pcHtmlEmbedDefaults.dur ;
 			} 
 		}  
-		return this.parent_getDuration(); 
+		return this.duration; 
 	},
 	
 	/**

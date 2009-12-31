@@ -1983,20 +1983,17 @@ mw.EmbedPlayer.prototype = {
 		//make sure we have interface_wrap
 		if( $j( this ).parent('.interface_wrap').length == 0 ){
 			// Select "player"				
-			$j( this )
-			// Add interface control class:		
-			.css({
-				'position': 'relative'
-			})
+			$j( this )			
 			.wrap( 
 				$j('<div>')
 				.addClass('interface_wrap ' + this.ctrlBuilder.playerClass)
 				.css({				
 					'width': parseInt( this.width ),
-					'height': parseInt( this.height )
+					'height': parseInt( this.height ),
+					'position': 'relative'
 				})
 			)
-		}
+		}		
 		//Set up local jQuery refrence to "interface_wrap" 
 		this.$interface = $j(this).parent('.interface_wrap');
 		

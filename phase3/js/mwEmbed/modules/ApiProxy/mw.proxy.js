@@ -296,7 +296,7 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 		
 		// Make sure we are logged in 
 		// (its a normal mediaWiki page so all site vars should be defined)		
-		if ( !wgUserName ) {
+		if ( typeof wgUserName != 'undefined' && !wgUserName ) {
 			mw.log( 'Error Not logged in' );
 			return false;
 		}
@@ -305,6 +305,7 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 		mw.log('Client frame: ' + clientRequest.clientFrame );
 				
 		var clientDomain =  mw.parseUri( clientRequest.clientFrame ).host ;
+		
 		/**
 		*	HERE WE CHECK IF THE DOMAIN IS ALLOWED per the proxyConfig	
 		*/ 
@@ -315,6 +316,7 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 				return doApiRequest( clientRequest );
 			}
 		}
+		
 		// Check master blacklist
 		for ( var i in proxyConfig.master_blacklist ) {
 			if ( clientDomain == proxyConfig.master_blacklist ) {

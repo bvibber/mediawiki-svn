@@ -1395,7 +1395,7 @@ var mwDefaultConf = {
 		
 		// If no title is provided get a token for the user page: 
 		if ( typeof title != 'string' ) {
-			if( wgUserName ){
+			if( typeof wgUserName != 'undefined' && wgUserName ){
 				title = 'User:' + wgUserName;
 			}else{
 				// Try maintalk page:	
