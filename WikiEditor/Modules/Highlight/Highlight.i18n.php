@@ -22,6 +22,13 @@ $messages['ar'] = array(
 	'wikieditor-highlight-preference' => 'مكّن إبراز الصياغة أثناء التعديل',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'wikieditor-highlight-preference' => 'مكّن إبراز الصياغه أثناء التعديل',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

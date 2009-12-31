@@ -117,6 +117,36 @@ $messages['ar'] = array(
 	'prefstats-legend-in' => 'مشترك',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'prefstats' => 'إحصاءات التفضيلات',
+	'prefstats-desc' => 'تتبع الإحصاءات التى تظهر عدد المستخدمين الذين فعّلوا تفضيلات معينه.',
+	'prefstats-title' => 'إحصاءات التفضيلات',
+	'prefstats-list-intro' => 'يتم حاليًا تتبع التفضيلات التاليه.
+انقر على أحد التفضيلات لتظهر إحصاءات عنه.',
+	'prefstats-noprefs' => 'لا توجد تفضيلات يتم تتبعها. اضبط $wgPrefStatsTrackPrefs لتتبع التفضيلات.',
+	'prefstats-counters' => '* فعّل {{PLURAL:$1||مستخدم واحد|مستخدمان|$1 مستخدمين|$1 مستخدمًا|$1 مستخدم}} هذه التفضيله منذ تنفعيل إحصاءات التفضيلات.
+** فعّلها {{PLURAL:$2||مستخدم واحد|مستخدمان|$2 مستخدمين|$2 مستخدمًا|$2 مستخدم}}
+** عطّلها {{PLURAL:$3||مستخدم واحد|مستخدمان|$3 مستخدمين|$3 مستخدمًا|$3 مستخدم}}',
+	'prefstats-counters-expensive' => '* فعّل {{PLURAL:$1||مستخدم واحد|مستخدمان|$1 مستخدمين|$1 مستخدمًا|$1 مستخدم}} هذه التفضيله منذ تنفعيل إحصاءات التفضيلات.
+** فعّلها {{PLURAL:$2||مستخدم واحد|مستخدمان|$2 مستخدمين|$2 مستخدمًا|$2 مستخدم}}
+** عطّلها {{PLURAL:$3||مستخدم واحد|مستخدمان|$3 مستخدمين|$3 مستخدمًا|$3 مستخدم}}
+* فى المحصله، ضبط {{PLURAL:$4||مستخدم واحد|مستخدمان|$4 مستخدمين|$4 مستخدمًا|$4 مستخدم}} هذه التفضيلة',
+	'prefstats-xaxis' => 'المده (بالساعات)',
+	'prefstats-factors' => 'عرض كل: $1',
+	'prefstats-factor-hour' => 'ساعة',
+	'prefstats-factor-sixhours' => 'ست ساعات',
+	'prefstats-factor-day' => 'يوم',
+	'prefstats-factor-week' => 'أسبوع',
+	'prefstats-factor-twoweeks' => 'أسبوعين',
+	'prefstats-factor-fourweeks' => 'أربعه أسابيع',
+	'prefstats-factor-default' => 'عد إلى الجدول الإفتراضي',
+	'prefstats-legend-out' => 'اختارت',
+	'prefstats-legend-in' => 'مشترك',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

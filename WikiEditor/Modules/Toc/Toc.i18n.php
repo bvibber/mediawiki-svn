@@ -46,6 +46,15 @@ $messages['ar'] = array(
 	'wikieditor-toc-hide' => 'أخفِ المحتويات',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'wikieditor-toc-preference' => 'مكّن جدول المحتويات القابل للتصفح',
+	'wikieditor-toc-show' => 'أظهر المحتويات',
+	'wikieditor-toc-hide' => 'أخفِ المحتويات',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -418,9 +427,12 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Hamilton Abreu
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'wikieditor-toc-preference' => 'Habilita tabela de conteúdo navegável',
+	'wikieditor-toc-show' => 'Mostrar conteúdo',
+	'wikieditor-toc-hide' => 'Esconder conteúdo',
 );
 
 /** Quechua (Runa Simi)

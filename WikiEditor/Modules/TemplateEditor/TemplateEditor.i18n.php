@@ -33,7 +33,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'wikieditor-template-editor-preference' => 'فعل تعديل قوالب الويكى عن طريق النموذج',
+	'wikieditor-template-editor-preference' => 'فعل تعديل قوالب الويكى المعتمد على النماذج',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

@@ -45,10 +45,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'vector-simplesearch-search' => 'تدوير',
+	'vector-simplesearch-search' => 'ابحث',
+	'vector-simplesearch-containing' => 'يحتوى...',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
