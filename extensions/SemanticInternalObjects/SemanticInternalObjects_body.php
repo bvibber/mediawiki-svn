@@ -40,7 +40,7 @@ class SIOInternalObject {
  * protected, and thus can't be accessed externally.
  */
 class SIOSQLStore extends SMWSQLStore2 {
-	function deletePageObjects( $page_name, $namespace ) {
+	function getIDsForDeletion( $page_name, $namespace ) {
 		$ids = array();
 
 		$iw = '';
@@ -49,14 +49,10 @@ class SIOSQLStore extends SMWSQLStore2 {
 		while ( $row = $db->fetchObject( $res ) ) {
 			$ids[] = $row->smw_id;
 		}
-		foreach ( $ids as $id ) {
-			$db->delete( 'smw_rels2', array( 's_id' => $id ), 'SIO::updateData::Rels2' );
-			$db->delete( 'smw_rels2', array( 'o_id' => $id ), 'SIO::updateData::Rels2' );
-			$db->delete( 'smw_atts2', array( 's_id' => $id ), 'SMW::deleteSubject::Atts2' );
-		}
+		return $ids;
 	}
 
-	function storeAllInfo( $main_page_name, $namespace, $internal_object ) {
+	function getStorageSQL( $main_page_name, $namespace, $internal_object ) {
 		$main_page_id = $this->makeSMWPageID( $main_page_name, $namespace, '' );
 		$io_id = $this->makeSMWPageID( $internal_object->getName(), $namespace, '' );
 		$up_rels2 = array();
@@ -85,15 +81,7 @@ class SIOSQLStore extends SMWSQLStore2 {
 				break;
 			}
 		}
-
-		// now save everything to the database
-		$db =& wfGetDB( DB_MASTER );
-		if ( count( $up_rels2 ) > 0 ) {
-			$db->insert( 'smw_rels2', $up_rels2, 'SMW::updateRel2Data' );
-		}
-		if ( count( $up_atts2 ) > 0 ) {
-			$db->insert( 'smw_atts2', $up_atts2, 'SMW::updateAtt2Data' );
-		}
+		return array( $up_rels2, $up_atts2 );
 	}
 }
 
@@ -144,10 +132,32 @@ class SIOHandler {
 		// array.
 		$page_name = $subject->getDBKey();
 		$namespace = $subject->getNamespace();
-		$sio_sql_store->deletePageObjects( $page_name, $namespace );
-		foreach ( self::$internal_objects as $internal_object ) {
-			$sio_sql_store->storeAllInfo( $page_name, $namespace, $internal_object );
+		$ids_for_deletion = $sio_sql_store->getIDsForDeletion($page_name, $namespace);
+
+		$all_rels2_inserts = array();
+		$all_atts2_inserts = array();
+		foreach (self::$internal_objects as $internal_object) {
+			list($up_rels2, $up_atts2) = $sio_sql_store->getStorageSQL($page_name, $namespace, $internal_object);
+			$all_rels2_inserts = array_merge($all_rels2_inserts, $up_rels2);
+			$all_atts2_inserts = array_merge($all_atts2_inserts, $up_atts2);
 		}
+
+		// now save everything to the database
+		$db =& wfGetDB( DB_MASTER );
+		$db->begin('SIO::updatePageData');
+		if (count($ids_for_deletion) > 0) {
+			$ids_string = '(' . implode (', ', $ids_for_deletion) . ')';
+			$db->delete('smw_rels2', array("(s_id IN $ids_string) OR (o_id IN $ids_string)"), 'SIO::deleteRels2Data');
+			$db->delete('smw_atts2', array("s_id IN $ids_string"), 'SIO::deleteAtts2Data');
+		}
+
+		if (count($all_rels2_inserts) > 0) {
+			$db->insert( 'smw_rels2', $all_rels2_inserts, 'SIO::updateRels2Data');
+		}
+		if (count($all_atts2_inserts) > 0) {
+			$db->insert( 'smw_atts2', $all_atts2_inserts, 'SIO::updateAtts2Data');
+		}
+		$db->commit('SIO::updatePageData');
 		self::$internal_objects = array();
 		return true;
 	}
