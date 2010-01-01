@@ -2168,7 +2168,7 @@ cfg: {
  * Internally used event handlers
  */
 evt: {
-	change: function( context, event ) {
+	delayedChange: function( context, event ) {
 		/*
 		 * Triggered on any of the following events, with the intent on detecting if something was added, deleted or
 		 * replaced due to user action.
@@ -2324,6 +2324,7 @@ fn: {
 		var i = 0; // index for markers[]
 		var startNode = null;
 		var depth = 0, nextDepth = 0, startDepth = null;
+		var lastTextNode = null, lastTextNodeDepth = null;
 		// Find the leftmost leaf node in the tree
 		while ( node.firstChild ) {
 			node = node.firstChild;
@@ -2358,6 +2359,10 @@ fn: {
 				continue;
 			}
 			var newPos = node.nodeName == '#text' ? pos + node.nodeValue.length : pos + 1;
+			if ( node.nodeName == '#text' ) {
+				lastTextNode = node;
+				lastTextNodeDepth = depth;
+			}
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or end halfway one.
 			if ( !startNode && markers[i].start >= pos && markers[i].start < newPos ) {
@@ -2372,6 +2377,11 @@ fn: {
 					node = node.splitText( markers[i].start - pos );
 					pos = markers[i].start;
 				}
+				startNode = node;
+				startDepth = depth;
+			}
+			// Don't wrap BRs, produces undesirable results
+			if ( startNode && startNode.nodeName == 'BR' ) {
 				startNode = node;
 				startDepth = depth;
 			}
@@ -2390,12 +2400,11 @@ fn: {
 				}
 				
 				// Don't wrap leading or trailing BRs, doing that causes weird issues
-				var endNode = node;
-				while ( startNode.nodeName == 'BR' && startNode != endNode )
-					startNode = startNode.nextSibling;
-
-				while ( endNode.nodeName == 'BR' && endNode != startNode )
-					endNode = endNode.previousSibling;
+				var endNode = node, endDepth = depth;
+				if ( endNode.nodeName == 'BR' ) {
+					endNode = lastTextNode;
+					endDepth = lastTextNodeDepth;
+				}
 				
 				// Now wrap everything between startNode and endNode (may be equal). First find the common ancestor of
 				// startNode and endNode. ca1 and ca2 will be children of this common ancestor, such that ca1 is an
@@ -2404,13 +2413,13 @@ fn: {
 				// can't cleanly wrap things without misnesting and we silently fail.
 				var ca1 = startNode, ca2 = endNode;
 				// Correct for startNode and node possibly not having the same depth
-				if ( startDepth > depth ) {
-					for ( var j = 0; j < startDepth - depth && ca1; j++ ) {
+				if ( startDepth > endDepth ) {
+					for ( var j = 0; j < startDepth - endDepth && ca1; j++ ) {
 						ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
 					}
 				}
-				else if ( startDepth < depth ) {
-					for ( var j = 0; j < depth - startDepth && ca2; j++ ) {
+				else if ( startDepth < endDepth ) {
+					for ( var j = 0; j < endDepth - startDepth && ca2; j++ ) {
 						ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
 					}
 				}
