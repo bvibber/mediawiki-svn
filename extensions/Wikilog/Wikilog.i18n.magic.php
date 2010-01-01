@@ -24,9 +24,54 @@ $magicWords['en'] = array(
 	'wlk-more'     => array( 0, 'more' ),
 );
 
+$magicWords['ar'] = array(
+	'wl-settings'    => array( '0', 'سو-إعدادات', 'wl-settings' ),
+	'wl-publish'     => array( '0', 'سو-نشر', 'wl-publish' ),
+	'wl-author'      => array( '0', 'سو-مؤلف', 'wl-author' ),
+	'wl-tags'        => array( '0', 'سو-وسوم', 'wl-tags' ),
+	'wl-info'        => array( '0', 'سو-معلومات', 'wl-info' ),
+	'wlk-icon'       => array( '0', 'صورة_صغيرة', 'icon' ),
+	'wlk-logo'       => array( '0', 'شعار', 'logo' ),
+	'wlk-subtitle'   => array( '0', 'عنوان_فرعي', 'subtitle' ),
+	'wlk-summary'    => array( '1', 'ملخص', 'summary' ),
+	'wlk-hidden'     => array( '0', 'مخفي', 'hidden' ),
+	'wlk-more'       => array( '0', 'مزيد', 'more' ),
+);
+
+$magicWords['arz'] = array(
+	'wl-settings'    => array( '0', 'سو-إعدادات', 'wl-settings' ),
+	'wl-publish'     => array( '0', 'سو-نشر', 'wl-publish' ),
+	'wl-author'      => array( '0', 'سو-مؤلف', 'wl-author' ),
+	'wl-tags'        => array( '0', 'سو-وسوم', 'wl-tags' ),
+	'wl-info'        => array( '0', 'سو-معلومات', 'wl-info' ),
+	'wlk-icon'       => array( '0', 'صورة_صغيرة', 'icon' ),
+	'wlk-logo'       => array( '0', 'شعار', 'logo' ),
+	'wlk-subtitle'   => array( '0', 'عنوان_فرعي', 'subtitle' ),
+	'wlk-summary'    => array( '1', 'ملخص', 'summary' ),
+	'wlk-hidden'     => array( '0', 'مخفى', 'hidden' ),
+	'wlk-more'       => array( '0', 'مزيد', 'more' ),
+);
+
+$magicWords['mg'] = array(
+	'wlk-hidden'     => array( '0', 'voasitrika', 'hidden' ),
+);
+
 $magicWords['ml'] = array(
 	'wlk-logo'       => array( '0', 'മുദ്ര', 'logo' ),
 	'wlk-summary'    => array( '1', 'ചുരുക്കം', 'summary' ),
+	'wlk-hidden'     => array( '0', 'മറയ്ക്കപ്പെട്ടവ', 'hidden' ),
+	'wlk-more'       => array( '0', 'കൂടുതൽ', 'more' ),
+);
+
+$magicWords['nl'] = array(
+	'wl-settings'    => array( '0', 'wl-instellingen', 'wl-settings' ),
+	'wl-publish'     => array( '0', 'wl-publiceren', 'wl-publish' ),
+	'wl-author'      => array( '0', 'wl-auteur', 'wl-author' ),
+	'wl-tags'        => array( '0', 'wl-labels', 'wl-tags' ),
+	'wlk-subtitle'   => array( '0', 'ondertitel', 'subtitle' ),
+	'wlk-summary'    => array( '1', 'samenvatting', 'summary' ),
+	'wlk-hidden'     => array( '0', 'verborgen', 'hidden' ),
+	'wlk-more'       => array( '0', 'meer', 'more' ),
 );
 
 /**

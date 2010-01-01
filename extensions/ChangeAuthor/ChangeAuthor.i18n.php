@@ -516,6 +516,7 @@ $messages['de-formal'] = array(
 	'changeauthor-explanation-multi' => 'Mit diesem Formular können Sie die Autoren der Versionen ändern. Ändern Sie einfach einen oder mehrere Autorennamen in der Liste, ergänzen Sie einen Kommentar (optional) und klicken Sie auf die „Autor ändern“-Schaltfläche.',
 	'changeauthor-explanation-single' => 'Mit diesem Formular können Sie den Autoren einer Version ändern. Ändern Sie einfach den Autorennamen in der Liste, ergänzen Sie einen Kommentar (optional) und klicken Sie auf die „Autor ändern“-Schaltfläche.',
 	'changeauthor-weirderror' => 'Ein sehr seltener Fehler ist aufgetreten. Bitte wiederholen Sie Ihre Änderung. Wenn dieser Fehler erneut auftritt, ist vermutlich die Datenbank fehlerhaft.',
+	'changeauthor-invalidform' => 'Bitte benutzen Sie das Formular auf der [[Special:ChangeAuthor|Spezialseite]].',
 	'changeauthor-success' => 'Ihre Änderung wurde erfolgreich durchgeführt.',
 );
 

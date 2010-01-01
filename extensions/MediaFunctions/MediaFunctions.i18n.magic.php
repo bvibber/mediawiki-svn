@@ -28,6 +28,16 @@ $magicWords['ar'] = array(
 	'mediaheight'       => array( '0', 'ارتفاع_الميديا', 'mediaheight' ),
 	'mediawidth'        => array( '0', 'عرض_الميديا', 'mediawidth' ),
 	'mediadimensions'   => array( '0', 'أبعاد_الميديا', 'mediadimensions' ),
+	'mediaexif'         => array( '0', 'إكسيف_الميديا', 'mediaexif' ),
+);
+
+$magicWords['arz'] = array(
+	'mediamime'         => array( '0', 'ميم_الميديا', 'mediamime' ),
+	'mediasize'         => array( '0', 'حجم_الميديا', 'mediasize' ),
+	'mediaheight'       => array( '0', 'ارتفاع_الميديا', 'mediaheight' ),
+	'mediawidth'        => array( '0', 'عرض_الميديا', 'mediawidth' ),
+	'mediadimensions'   => array( '0', 'أبعاد_الميديا', 'mediadimensions' ),
+	'mediaexif'         => array( '0', 'إكسيف_الميديا', 'mediaexif' ),
 );
 
 $magicWords['mr'] = array(

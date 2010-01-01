@@ -10,6 +10,10 @@ $magicWords['ar'] = array(
 	'sgallery'   => array( '0', 'معرض_سلس', 'sgallery' ),
 );
 
+$magicWords['arz'] = array(
+	'sgallery'   => array( '0', 'معرض_سلس', 'sgallery' ),
+);
+
 $magicWords['mr'] = array(
 	'sgallery'   => array( '0', 'मृदूदिर्घा', 'sgallery' ),
 );

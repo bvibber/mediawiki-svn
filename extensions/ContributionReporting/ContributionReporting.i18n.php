@@ -4360,8 +4360,10 @@ $messages['th'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'contributionreporting-desc' => 'Wikimedia fond ýygnaýjysynyň janly habarlary',
 	'contributiontotal' => 'Goşant jemi',
 	'contributionhistory' => 'Goşant geçmişi',
+	'contrib-hist-header' => 'Dünýäniň çar tarapyndan real-time bagyşçy teswirleri',
 	'contrib-hist-name' => 'At',
 	'contrib-hist-date' => 'Wagt we sene',
 	'contrib-hist-amount' => 'Summa',
@@ -4369,10 +4371,14 @@ $messages['tk'] = array(
 	'contrib-hist-previous' => 'Has täze bagyşlar',
 	'contrib-hist-anonymous' => 'Anonim',
 	'contributionstatistics' => 'Goşant statistikalary',
+	'contribstats-desc' => 'Wikimedia Gaznasyna edilen goşantlaryň statistikalaryny görkezýär',
 	'contribstats-daily-totals' => '{{PLURAL:$1|Şu gün üçin jemi|Geçen $1 gün üçin günlük jemler}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Şu aý üçin jemi|Geçen $1 aý üçin aýlyk jemler}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|$1 aý üçin jemi|$1 aý üçin aýlyk jemler}}',
 	'contribstats-currency-range-totals' => 'Walýuta jemleri ($1 - $2 aralygy)',
+	'contribstats-contribution-range-breakdown' => 'Bahasyna görä goşantlaryň analizi ($1 - $2)',
+	'contribstats-currency-totals' => '$1 maliýe ýyky üçin walýuta jemi',
+	'contribstats-contribution-breakdown' => '$1 maliýw ýyly üçin baha göra goşantlaryň analizi',
 	'contribstats-day' => 'Gün',
 	'contribstats-month' => 'Aý',
 	'contribstats-currency' => 'Walýuta',

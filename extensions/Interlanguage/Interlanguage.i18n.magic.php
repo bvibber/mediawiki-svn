@@ -14,6 +14,10 @@ $magicWords['ar'] = array(
 	'interlanguage'   => array( '0', 'بين_اللغات', 'interlanguage' ),
 );
 
+$magicWords['arz'] = array(
+	'interlanguage'   => array( '0', 'بين_اللغات', 'interlanguage' ),
+);
+
 $magicWords['br'] = array(
 	'interlanguage'   => array( '0', 'etreyezh', 'interlanguage' ),
 );

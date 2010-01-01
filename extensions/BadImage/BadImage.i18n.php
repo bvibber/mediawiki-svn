@@ -1297,7 +1297,7 @@ $messages['ksh'] = array(
 	'right-badimages' => 'De Leß met unjewollte Belder ändere',
 );
 
-/** Kurdish (Kurdî / كوردی)
+/** Kurdish (Kurdî)
  * @author Bangin
  */
 $messages['ku'] = array(
@@ -1307,7 +1307,7 @@ $messages['ku'] = array(
 	'badimages-remove-btn' => 'Jêbibe',
 );
 
-/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+/** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
  */
 $messages['ku-latn'] = array(

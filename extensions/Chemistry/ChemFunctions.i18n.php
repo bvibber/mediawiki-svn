@@ -670,7 +670,7 @@ $messages['ksh'] = array(
 	'chemFunctions_ChemFormInputError' => "'''Chemform:''' Fähler em enjejovve Tex!",
 );
 
-/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+/** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
  */
 $messages['ku-latn'] = array(

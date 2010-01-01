@@ -41,6 +41,13 @@ $messages['qqq'] = array(
 	'right-adminlinks' => '{{doc-right}}',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'adminlinks_users' => "K'oçepe",
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

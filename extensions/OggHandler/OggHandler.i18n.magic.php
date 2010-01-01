@@ -25,6 +25,7 @@ $magicWords['af'] = array(
 $magicWords['ar'] = array(
 	'ogg_noplayer'    => array( '0', 'لابرنامج', 'noplayer' ),
 	'ogg_noicon'      => array( '0', 'لاأيقونة', 'noicon' ),
+	'ogg_thumbtime'   => array( '0', 'وقت_التصغير=$1', 'thumbtime=$1' ),
 	'ogg_starttime'   => array( '0', 'بداية=$1', 'start=$1' ),
 	'ogg_endtime'     => array( '0', 'نهاية=$1', 'end=$1' ),
 );
@@ -32,6 +33,27 @@ $magicWords['ar'] = array(
 $magicWords['arc'] = array(
 	'ogg_starttime'   => array( '0', 'ܫܘܪܝܐ=', 'start=$1' ),
 	'ogg_endtime'     => array( '0', 'ܫܘܠܡܐ=$1', 'end=$1' ),
+);
+
+$magicWords['arz'] = array(
+	'ogg_noplayer'    => array( '0', 'لابرنامج', 'noplayer' ),
+	'ogg_noicon'      => array( '0', 'لاأيقونة', 'noicon' ),
+	'ogg_thumbtime'   => array( '0', 'وقت_التصغير=$1', 'thumbtime=$1' ),
+	'ogg_starttime'   => array( '0', 'بداية=$1', 'start=$1' ),
+	'ogg_endtime'     => array( '0', 'نهاية=$1', 'end=$1' ),
+);
+
+$magicWords['ko'] = array(
+	'ogg_starttime'   => array( '0', '시작=$1', 'start=$1' ),
+	'ogg_endtime'     => array( '0', '끝=$1', 'end=$1' ),
+);
+
+$magicWords['ml'] = array(
+	'ogg_noplayer'    => array( '0', 'പ്ലേയറില്ല', 'noplayer' ),
+	'ogg_noicon'      => array( '0', 'ഐകോണില്ല', 'noicon' ),
+	'ogg_thumbtime'   => array( '0', 'ലഘുരൂപസമയം=$1', 'thumbtime=$1' ),
+	'ogg_starttime'   => array( '0', 'തുടങ്ങുക=$1', 'start=$1' ),
+	'ogg_endtime'     => array( '0', 'നിർത്തുക=$1', 'end=$1' ),
 );
 
 $magicWords['mr'] = array(

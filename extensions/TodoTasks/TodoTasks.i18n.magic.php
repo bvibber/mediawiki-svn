@@ -10,6 +10,10 @@ $magicWords['ar'] = array(
 	'todo'   => array( '0', 'للعمل', 'todo' ),
 );
 
+$magicWords['arz'] = array(
+	'todo'   => array( '0', 'للعمل', 'todo' ),
+);
+
 $magicWords['br'] = array(
 	'todo'   => array( '0', 'daober', 'todo' ),
 );

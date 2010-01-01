@@ -34,13 +34,60 @@ $magicWords['en'] = array(
 
 $magicWords['ar'] = array(
 	'const'    => array( '0', 'ثابت', 'const' ),
+	'median'   => array( '0', 'مديان', 'median' ),
 	'mean'     => array( '0', 'متوسط', 'mean' ),
 	'exp'      => array( '0', 'أس', 'exp' ),
 	'log'      => array( '0', 'لوغاريتم', 'log' ),
 	'ln'       => array( '0', 'لوغاريتم_طبيعي', 'ln' ),
 	'tan'      => array( '0', 'ظا', 'tan' ),
+	'atan'     => array( '0', 'أتان', 'أركتان', 'atan', 'arctan' ),
+	'tanh'     => array( '0', 'تانش', 'tanh' ),
+	'atanh'    => array( '0', 'أتانش', 'أركتانش', 'atanh', 'arctanh' ),
+	'cot'      => array( '0', 'كوتان', 'cot' ),
+	'acot'     => array( '0', 'أكوتان', 'أرككوتان', 'acot', 'arccot' ),
 	'cos'      => array( '0', 'جتا', 'cos' ),
+	'acos'     => array( '0', 'أكوزين', 'أرككوزين', 'acos', 'arccos' ),
+	'cosh'     => array( '0', 'كوشين', 'cosh' ),
+	'acosh'    => array( '0', 'أكوشين', 'أرككوشين', 'acosh', 'arccosh' ),
+	'sec'      => array( '0', 'سيك', 'sec' ),
+	'asec'     => array( '0', 'أسيك', 'أركسيك', 'asec', 'arcsec' ),
 	'sin'      => array( '0', 'جا', 'sin' ),
+	'asin'     => array( '0', 'أسين', 'أركسين', 'asin', 'arcsin' ),
+	'sinh'     => array( '0', 'شين', 'sinh' ),
+	'asinh'    => array( '0', 'أشين', 'أركشين', 'asinh', 'arcsinh' ),
+	'csc'      => array( '0', 'كوسيك', 'csc' ),
+	'acsc'     => array( '0', 'أكوسيك', 'أرككوسيك', 'acsc', 'arccsc' ),
+);
+
+$magicWords['arz'] = array(
+	'const'    => array( '0', 'ثابت', 'const' ),
+	'median'   => array( '0', 'مديان', 'median' ),
+	'mean'     => array( '0', 'متوسط', 'mean' ),
+	'exp'      => array( '0', 'أس', 'exp' ),
+	'log'      => array( '0', 'لوغاريتم', 'log' ),
+	'ln'       => array( '0', 'لوغاريتم_طبيعي', 'ln' ),
+	'tan'      => array( '0', 'ظا', 'tan' ),
+	'atan'     => array( '0', 'أتان', 'أركتان', 'atan', 'arctan' ),
+	'tanh'     => array( '0', 'تانش', 'tanh' ),
+	'atanh'    => array( '0', 'أتانش', 'أركتانش', 'atanh', 'arctanh' ),
+	'cot'      => array( '0', 'كوتان', 'cot' ),
+	'acot'     => array( '0', 'أكوتان', 'أرككوتان', 'acot', 'arccot' ),
+	'cos'      => array( '0', 'جتا', 'cos' ),
+	'acos'     => array( '0', 'أكوزين', 'أرككوزين', 'acos', 'arccos' ),
+	'cosh'     => array( '0', 'كوشين', 'cosh' ),
+	'acosh'    => array( '0', 'أكوشين', 'أرككوشين', 'acosh', 'arccosh' ),
+	'sec'      => array( '0', 'سيك', 'sec' ),
+	'asec'     => array( '0', 'أسيك', 'أركسيك', 'asec', 'arcsec' ),
+	'sin'      => array( '0', 'جا', 'sin' ),
+	'asin'     => array( '0', 'أسين', 'أركسين', 'asin', 'arcsin' ),
+	'sinh'     => array( '0', 'شاين', 'sinh' ),
+	'asinh'    => array( '0', 'أشاين', 'أركشاين', 'asinh', 'arcsinh' ),
+	'csc'      => array( '0', 'كوسيك', 'csc' ),
+	'acsc'     => array( '0', 'أكوسيك', 'أرككوسيك', 'acsc', 'arccsc' ),
+);
+
+$magicWords['fr'] = array(
+	'mean'     => array( '0', 'moyenne', 'mean' ),
 );
 
 $magicWords['ko'] = array(
@@ -48,6 +95,7 @@ $magicWords['ko'] = array(
 	'median'   => array( '0', '메디안', 'median' ),
 	'mean'     => array( '0', '평균', 'mean' ),
 	'log'      => array( '0', '로그', 'log' ),
+	'ln'       => array( '0', '자연로그', 'ln' ),
 	'tan'      => array( '0', '탄젠트', 'tan' ),
 	'cot'      => array( '0', '코탄젠트', 'cot' ),
 	'cos'      => array( '0', '코사인', 'cos' ),

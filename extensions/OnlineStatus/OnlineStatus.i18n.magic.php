@@ -14,6 +14,12 @@ $magicWords['ar'] = array(
 	'anyuseronlinestatus'     => array( '0', 'حالة_الاتصال_لأي_مستخدم', 'anyuseronlinestatus' ),
 );
 
+$magicWords['arz'] = array(
+	'onlinestatus_word'       => array( '1', 'حالة_الاتصال', 'ONLINESTATUS' ),
+	'onlinestatus_word_raw'   => array( '1', 'حالة_الاتصال_الخام', 'RAWONLINESTATUS' ),
+	'anyuseronlinestatus'     => array( '0', 'حالة_الاتصال_لأى_مستخدم', 'حالة_الاتصال_لأي_مستخدم', 'anyuseronlinestatus' ),
+);
+
 $magicWords['mr'] = array(
 	'onlinestatus_word'       => array( '1', 'ऑनलाईनस्थिती', 'ONLINESTATUS' ),
 	'onlinestatus_word_raw'   => array( '1', 'कच्चीऑनलाईनस्थिती', 'RAWONLINESTATUS' ),

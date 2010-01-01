@@ -854,7 +854,7 @@ $messages['ksh'] = array(
 	'contributors-nosuchpage' => 'Di Sigg „$1“ jitt et nit.',
 );
 
-/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+/** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
  */
 $messages['ku-latn'] = array(
@@ -1465,6 +1465,13 @@ $messages['th'] = array(
 	'contributors' => 'ผู้เขียน',
 	'contributors-toolbox' => 'ผู้เขียนหลัก',
 	'contributors-submit' => 'แสดง',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'contributors-submit' => 'Görkez',
 );
 
 /** Tagalog (Tagalog)

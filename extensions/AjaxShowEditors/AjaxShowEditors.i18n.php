@@ -18,10 +18,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Lloffiwr
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'ajax-se-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'ajax-se-pending' => "If you 'click this box' it will update and show you which users are editing the same page as you. It will also update if you change the contents of the edit field.",
 );
 
 /** Afrikaans (Afrikaans)
@@ -228,6 +230,13 @@ $messages['de'] = array(
 	'ajax-se-pagedoesnotexist' => 'Seite existiert nicht',
 	'ajax-se-userinvalid' => 'Fehler: Benutzer ungültig',
 	'ajax-se-usernotfound' => 'Fehler: Benutzer wurde nicht gefunden',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'ajax-se-pending' => 'bevorstehende Aktualisierungen … (klicken Sie auf diesen Kasten oder beginnen Sie mit der Bearbeitung)',
 );
 
 /** Lower Sorbian (Dolnoserbski)

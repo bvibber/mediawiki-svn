@@ -10,6 +10,10 @@ $magicWords['ar'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', 'لا_عناوين_مرقمة', '__NONUMBEREDHEADINGS__' ),
 );
 
+$magicWords['arz'] = array(
+	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__لا_عناوين_مرقمة__', 'لا_عناوين_مرقمة', '__NONUMBEREDHEADINGS__' ),
+);
+
 $magicWords['de'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__KEINEÜERSCHRIFTENNUMMERIERUNG__', '__NONUMBEREDHEADINGS__' ),
 );
@@ -36,4 +40,8 @@ $magicWords['nl'] = array(
 
 $magicWords['ru'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__БЕЗНОМЕРОВЗАГОЛОВКОВ__', '__NONUMBEREDHEADINGS__' ),
+);
+
+$magicWords['tr'] = array(
+	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__NUMARALIBAŞLIKYOK__', '__NONUMBEREDHEADINGS__' ),
 );

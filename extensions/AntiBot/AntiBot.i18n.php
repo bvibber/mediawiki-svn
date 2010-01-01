@@ -496,6 +496,13 @@ $messages['th'] = array(
 	'antibot-desc' => 'ข่ายงานอย่างง่ายสำหรับตรวจสอบสแปมบอตและการยิงข้อมูล',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'antibot-desc' => 'Spambot barlaglary we trigger ýükleri üçin ýönekeý çarçuwa',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

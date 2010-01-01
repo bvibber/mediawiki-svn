@@ -14,6 +14,10 @@ $magicWords['ar'] = array(
 	'icon'   => array( '0', 'أيقونة', 'icon' ),
 );
 
+$magicWords['arz'] = array(
+	'icon'   => array( '0', 'أيقونة', 'icon' ),
+);
+
 $magicWords['br'] = array(
 	'icon'   => array( '0', 'arlun', 'icon' ),
 );
@@ -44,4 +48,8 @@ $magicWords['nl'] = array(
 
 $magicWords['ru'] = array(
 	'icon'   => array( '0', 'значок', 'icon' ),
+);
+
+$magicWords['tr'] = array(
+	'icon'   => array( '0', 'simge', 'ikon', 'icon' ),
 );

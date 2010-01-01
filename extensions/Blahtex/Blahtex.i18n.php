@@ -710,6 +710,12 @@ Vielleicht möchten Sie „$2“ stattdessen verwenden?',
 	'math_IllegalCommandInTextModeWithHint' => 'Im Textmodus ist die Anweisung „$1“ nicht erlaubt.
 Vielleicht möchten Sie „$2“ stattdessen verwenden?',
 	'math_IllegalRedefinition' => 'Die Anweisung „$1“ wurde bereits definiert; Sie können sie nicht überschreiben',
+	'math_MisplacedLimits' => 'Die Anweisung „$1“ kann nur hinter einem mathematischen Operator vorkommen.
+Überlegen Sie, „\\mathop“ zu verwenden.',
+	'math_NonAsciiInMathMode' => 'Sonderzeichen (Nicht-ASCII-Zeichen) dürfen nur im Textmodus verwendet werden
+Versuchen Sie die problematischen Zeichen in „\\text{…}“ einzuschließen.',
+	'math_WrongFontEncodingWithHint' => 'Das Symbol „$1“ darf in der Zeichenkodierung „$2“ nicht vorkommen
+Probieren Sie die Anweisung „$3{…}“ aus.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
