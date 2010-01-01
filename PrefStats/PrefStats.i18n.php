@@ -470,6 +470,8 @@ Klicke auf eine, um Statistiken darüber zu erhalten.',
 $messages['de-formal'] = array(
 	'prefstats-list-intro' => 'Derzeit werden die folgenden Einstellungen aufgezeichnet.
 Klicken Sie auf eine, um Statistiken darüber zu erhalten.',
+	'prefstats-noprefs' => 'Derzeit werden keine Einstellungen verfolgt. 
+Konfigurieren Sie $wgPrefStatsTrackPrefs, um Einstellungen zu verfolgen.',
 );
 
 /** Zazaki (Zazaki)
