@@ -326,6 +326,7 @@ $messages['mk'] = array(
 	'transliterator-error-syntax' => 'Грешна синтакса <code>$1</code> во [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Над $1 {{PLURAL:$1|правило|правила}} во [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Правилото <code>$1</code> содржи повеќе од $3 {{PLURAL:$3|знак|знаци}} лево од [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] мора да биде со должина од барем $1 {{PLURAL:$1|знак|знаци}}.',
 );
 
 /** Dutch (Nederlands)

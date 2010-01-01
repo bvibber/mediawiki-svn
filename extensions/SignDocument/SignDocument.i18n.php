@@ -592,6 +592,14 @@ $messages['tl'] = array(
 	'signaturelogentry' => 'nilagdaan na ang kasulatang $1',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'signaturelogpage' => 'İmza kaydı',
+	'right-createsigndocument' => 'İmzalanabilen belgeleri oluşturur',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

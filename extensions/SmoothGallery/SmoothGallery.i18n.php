@@ -909,6 +909,13 @@ Magpadala/magpasa lamang po ng isang ulat (report) ng depekto (''bug'').",
 	'smoothgallery-javascript-disabled' => 'Kinakailangan ang Javascript upang matanaw/matingnan ng tama/wasto ang galerya/tanghalang ito.',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'smoothgallery-gallery-not-found' => 'İstenen galeri mevcut değil.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

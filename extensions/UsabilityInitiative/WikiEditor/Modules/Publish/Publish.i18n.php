@@ -794,12 +794,6 @@ $messages['sah'] = array(
 	'wikieditor-publish-dialog-goback' => 'Төнүн',
 );
 
-/** Sinhala (සිංහල)
- * @author චතුනි අලහප්පෙරුම
- */
-$messages['si'] = array(
-);
-
 /** Slovak (Slovenčina)
  * @author Helix84
  */

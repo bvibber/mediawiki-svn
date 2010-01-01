@@ -456,6 +456,15 @@ $messages['tk'] = array(
 	'tablemod-msg-remove' => 'Aýyr',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'tablemod-msg-remove' => 'Kaldır',
+	'tablemod-error-invalidsort' => 'Geçersiz sıralama parametreleri.',
+	'tablemod-error-invalidaction' => 'Geçersiz işlem.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

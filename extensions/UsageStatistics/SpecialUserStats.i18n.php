@@ -2224,6 +2224,20 @@ $messages['th'] = array(
 	'right-viewsystemstats' => 'ดู [[Special:UserStats|สถิติการใช้วิกิ]]',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'usagestatisticsintervalday' => 'Gün',
+	'usagestatisticsintervalweek' => 'Hepde',
+	'usagestatisticsintervalmonth' => 'Aý',
+	'usagestatisticsincremental' => 'inkremental',
+	'usagestatisticsincremental-text' => 'inkremental',
+	'usagestatisticscumulative' => 'Kumulýatiw',
+	'usagestatisticscumulative-text' => 'kumulýatiw',
+	'usagestatisticscalselect' => 'Saýla',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -2262,6 +2276,7 @@ $messages['tr'] = array(
 	'usagestatistics' => 'Kullanım istatistikleri',
 	'usagestatisticsinterval' => 'Aralık:',
 	'usagestatisticsnamespace' => 'İsim alanı:',
+	'usagestatisticsexcluderedirects' => 'Yönlendirmeleri kapsam dışında bırak',
 	'usagestatisticstype' => 'Tür:',
 	'usagestatisticsstart' => 'Başlangıç tarihi:',
 	'usagestatisticsend' => 'Bitiş tarihi:',
@@ -2273,6 +2288,7 @@ $messages['tr'] = array(
 	'usagestatisticsintervalmonth' => 'Ay',
 	'usagestatisticsincremental' => 'Artımlı',
 	'usagestatisticscumulative' => 'Kümülatif',
+	'usagestatisticscalselect' => 'Seç',
 );
 
 /** Ukrainian (Українська)

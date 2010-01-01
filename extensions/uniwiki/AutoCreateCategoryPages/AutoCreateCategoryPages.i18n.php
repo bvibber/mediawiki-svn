@@ -548,6 +548,13 @@ $messages['te'] = array(
 "$1" వర్గంలోని అన్ని పేజీలను మరియు ఏవైనా ఉపవర్గాలని ఈ పేజీ చూపిస్తుంది.',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'autocreatecategorypages-editor' => 'Awtomatik kategoriýa dörediji',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

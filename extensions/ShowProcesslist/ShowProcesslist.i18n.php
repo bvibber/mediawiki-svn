@@ -1010,10 +1010,16 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'showprocesslist-id' => 'Kimlik',
 	'showprocesslist-user' => 'Kullanıcı',
+	'showprocesslist-host' => 'Host',
 	'showprocesslist-db' => 'Veritabanı',
+	'showprocesslist-command' => 'Komut',
+	'showprocesslist-time' => 'Zaman',
+	'showprocesslist-state' => 'Eyalet',
 	'showprocesslist-info' => 'İçerik',
 );
 

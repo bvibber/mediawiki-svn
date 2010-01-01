@@ -405,7 +405,7 @@ $messages['ksh'] = array(
 	'userimages-noimages' => 'Dä „$1“ hät kei Belder huhjelade.',
 );
 
-/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+/** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
  */
 $messages['ku-latn'] = array(

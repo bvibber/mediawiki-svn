@@ -1545,10 +1545,17 @@ Pakipunuan {{PLURAL:$2|ito|sila}} ng laman.',
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'form' => 'Form',
+	'formnoname' => 'Form adı yok',
+	'formbadnametext' => 'Bu isimde bir form yok.',
+	'formtitlepattern' => 'Yeni $1 ekle',
 	'formsave' => 'Kaydet',
+	'formarticleexists' => 'Sayfa mevcut',
 	'formbadpagename' => 'Kötü madde adı',
+	'formsaveerror' => 'Formu kaydetmede hata',
 );
 
 /** Ukrainian (Українська)

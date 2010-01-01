@@ -273,12 +273,6 @@ $messages['gl'] = array(
 	'wikieditor-preview-loading' => 'Cargando...',
 );
 
-/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
- * @author Crazymadlover
- */
-$messages['grc'] = array(
-);
-
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -549,12 +543,6 @@ $messages['sah'] = array(
 	'wikieditor-preview-tab' => 'Инники көрүү',
 	'wikieditor-preview-changes-tab' => 'Уларыйыылар',
 	'wikieditor-preview-loading' => 'Хачайдана турар...',
-);
-
-/** Sinhala (සිංහල)
- * @author චතුනි අලහප්පෙරුම
- */
-$messages['si'] = array(
 );
 
 /** Slovak (Slovenčina)

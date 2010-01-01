@@ -197,6 +197,14 @@ $messages['de'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'layouts_chooselayout' => 'Suchen Sie ein Format für $1 aus:',
+	'layouts_choosecategory' => 'Suchen Sie eine Kategorie für $1 aus:',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -823,6 +831,9 @@ $messages['te'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'layouts_title' => 'Sahypa döret',
+	'layouts_nolayout' => 'Bezeg ýok',
+	'layouts_continue' => 'Dowam et',
 	'layouts_unknown' => 'Näbelli',
 );
 

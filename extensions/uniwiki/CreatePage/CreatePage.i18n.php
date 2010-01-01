@@ -1013,6 +1013,7 @@ $messages['th'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'createpage' => 'Sahypa döret',
 	'createpage_submitbutton' => 'Tabşyr',
 );
 

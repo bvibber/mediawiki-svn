@@ -1929,12 +1929,17 @@ $4',
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'todo' => 'Yapılacaklar listesi',
 	'todo-tab' => 'yapılacaklar',
 	'todo-new-queue' => 'yeni',
+	'todo-invalid-item' => 'Eksik veya geçersiz öğe',
 	'todo-item-list' => 'Sizin öğeniz',
+	'todo-invalid-owner' => 'Bu öğede geçersiz sahip',
+	'todo-add-queue' => 'Kuyruk ekle...',
+	'todo-list-change' => 'Değiştir',
 	'todo-list-cancel' => 'İptal',
 	'todo-new-item' => 'Yeni öğe',
 	'todo-form-details' => 'Detaylar:',

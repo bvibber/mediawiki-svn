@@ -1379,9 +1379,12 @@ Mäd do Reewen an ju Siede konnen wäkke bietouföiged wäide.',
  * @author Gabbe.g
  * @author Najami
  * @author Ozp
+ * @author Per
  * @author Poxnar
  */
 $messages['sv'] = array(
+	'gep-emailsubject' => '[$1] Kategoriförslag: $2',
+	'gep-emailbody' => 'Användaren "$1" föreslog kategorin "$2" för "$3".',
 	'gep-emailfailure' => 'Tyvärr, ditt förslag kunde inte behandlas.',
 	'gep-emailsuccess' => 'Tack för att du föreslog kategorin: $1.',
 	'gep-categories' => 'Kategorier',
@@ -1439,6 +1442,23 @@ $messages['th'] = array(
 	'gep-addsectionbutton' => 'เพิ่ม',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'gep-categories' => 'Kategoriýalar',
+	'gep-addcategory' => 'Kategoriýa goş',
+	'gep-addcategorybutton' => 'Goş',
+	'gep-suggestcategory' => 'Kategoriýa teklip et',
+	'gep-suggestcategorybutton' => 'Tabşyr',
+	'gep-sections' => 'Bölümler',
+	'gep-sectionnotdisabled' => 'Bu bölümi ýapyp bolmaýar',
+	'gep-addsection' => 'Bölüm goş',
+	'gep-addsectionbutton' => 'Goş',
+	'gep-classicmode' => 'Klassyk režim',
+	'gep-genericmode' => 'Umumy režim',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -1467,11 +1487,17 @@ Magdagdag ng ilan sa pamamagitan ng mga pilian ng mga kagamitang nasa kanan.',
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'gep-categories' => 'Kategoriler',
 	'gep-addcategory' => 'kategori ekle',
 	'gep-addcategorybutton' => 'Ekle',
+	'gep-suggestcategory' => 'Bir kategori öner',
+	'gep-suggestcategorybutton' => 'Gönder',
+	'gep-sections' => 'Bölümler',
+	'gep-sectionnotdisabled' => 'Bu bölüm devre dışı bırakılamaz',
+	'gep-addsection' => 'Bir bölüm ekle',
 	'gep-addsectionbutton' => 'Ekle',
 	'gep-classicmode' => 'Klasik kip',
 	'gep-genericmode' => 'Genel kip',

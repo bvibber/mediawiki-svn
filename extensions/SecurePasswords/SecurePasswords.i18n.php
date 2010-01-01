@@ -749,6 +749,17 @@ Dapat itong:',
 	'securepasswords-word' => 'hindi isang salita',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'securepasswords-lowercase' => 'en az bir küçük harf içermektedir',
+	'securepasswords-uppercase' => 'en az 1 büyük harf içermektedir',
+	'securepasswords-digit' => 'en az 1 rakam içermektedir',
+	'securepasswords-username' => 'kullanıcı adınızan farklı olacak',
+	'securepasswords-word' => 'kelime olmayacak',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

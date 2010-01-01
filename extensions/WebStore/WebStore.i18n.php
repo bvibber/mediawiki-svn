@@ -2777,6 +2777,15 @@ $messages['th'] = array(
 	'inplace_scaler_not_enough_params' => 'พารามิเตอร์ไม่เพียงพอ',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'webstore_404' => 'Faýl tapylmady.',
+	'webstore_php_warning' => 'PHP Duýduryşy: $1',
+	'webstore_metadata_not_found' => 'Faýl tapylmady: $1',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -2835,11 +2844,19 @@ $1',
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'webstore_path_invalid' => 'Dosya adı geçersiz.',
 	'webstore_404' => 'Dosya bulunamadı.',
+	'webstore_php_warning' => 'PHP Uyarısı: $1',
 	'webstore_metadata_not_found' => '$1 dosyası bulunamadı',
+	'webstore_postfile_not_found' => 'Gönderilecek dosya bulunamadı.',
+	'webstore_invalid_response' => 'Sunucudan geçersiz cevap:
+
+$1',
+	'webstore_no_response' => 'Sunucudan cevap yok',
+	'webstore_php_error' => 'PHP hataları ile karşılaşıldı:',
 );
 
 /** Veps (Vepsan kel')

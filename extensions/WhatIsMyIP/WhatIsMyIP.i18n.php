@@ -724,6 +724,16 @@ $messages['te'] = array(
 	'whatismyip-out' => 'మీ ఐపీ చిరునామా:',
 );
 
+/** Thai (ไทย)
+ * @author Harley Hartwell
+ */
+$messages['th'] = array(
+	'whatismyip' => 'ไอพีของฉัน',
+	'whatismyip-desc' => 'แสดง[[Special:WhatIsMyIP|ไอพีแอดเดรส]] ของผู้ใช้ปัจจุบัน',
+	'whatismyip-out' => 'ไอพีของคุณ:',
+	'right-whatismyip' => 'ดู[[Special:WhatIsMyIP|ไอพีแอดเดรสของตนเอง]]',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

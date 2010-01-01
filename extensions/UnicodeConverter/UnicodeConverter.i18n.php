@@ -744,6 +744,15 @@ $messages['th'] = array(
 	'unicodeconverter-newtext' => 'ข้อความที่แปลง:',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Orginal tekst',
+	'unicodeconverter-newtext' => 'Üýtgedilen tekst',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

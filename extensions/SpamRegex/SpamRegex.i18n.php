@@ -1740,8 +1740,13 @@ Imimungkahi ang pagiingat, hindi dapat na napakaiksi o napakapangkaraniwan ang m
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'spamregex' => 'Reklam regexi',
+	'spamregex-unblock-success' => 'Engel kaldırma işlemi başarılı',
+	'spamregex-error-1' => 'Geçersiz kurallı ifade.',
+	'spamregex-text' => '(Metin)',
 	'spamregex-summary-log' => '(Özet)',
 );
 

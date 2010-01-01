@@ -430,6 +430,7 @@ $messages['de'] = array(
  * @author Imre
  */
 $messages['de-formal'] = array(
+	'wah-transcode-working' => 'Das Video wird verarbeitet, bitte versuchen Sie es später wieder',
 	'wah-transcode-helpout' => 'Sie können dabei helfen dieses Video zu verarbeiten, indem Sie [[Special:WikiAtHome|Wiki@Home]] besuchen',
 	'wah-javascript-off' => 'Sie müssen JavaScript aktiviert haben, um bei Wiki@Home teilnehmen zu können',
 	'wah-notoken-login' => 'Sind Sie bereits angemeldet? Falls nicht, holen Sie dies bitte zuerst nach.',
@@ -1527,6 +1528,7 @@ $messages['sr-el'] = array(
  * @author Per
  */
 $messages['sv'] = array(
+	'wah-desc' => 'Möjliggör distribution av videoomkodningsarbeten till klienter som använder Firefogg',
 	'wah-user-desc' => 'Wiki@Home möjliggör för communitymedlemmar att donera oanvänd processortid för att hjälpa till med resurskrävande uppgifter',
 	'wah-short-audio' => '$1-ljudfil, $2',
 	'wah-short-video' => '$1-videofil, $2',
@@ -1579,6 +1581,28 @@ $messages['te'] = array(
 	'wah-uploading' => '<i>$1</i> ఫైలు ఎక్కింపు పూర్తయ్యింది',
 	'wah-uploadfail' => 'ఎక్కింపు విఫలమైంది',
 	'wah-doneuploading' => 'ఎక్కింపు పూర్తయింది. మీ తోడ్పాటుకి ధన్యవాదాలు.',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'wah-menu-pref' => 'Ileri tutmalar',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'wah-short-audio' => '$1 ses dosyası, $2',
+	'wah-short-video' => '$1 video dosyası, $2',
+	'wah-short-general' => '$1 ortam dosyası, $2',
+	'wah-long-audio' => '($1 ses dosyası, uzunluk $2, $3)',
+	'wah-menu-jobs' => 'İşler',
+	'wah-menu-stats' => 'İstatistikler',
+	'wah-menu-pref' => 'Tercihler',
+	'wah-uploadfail' => 'Yükleme başarısız oldu',
+	'wah-doneuploading' => 'Yükleme tamamlandı. Katkınız için teşekkür ederiz.',
 );
 
 /** Yiddish (ייִדיש)

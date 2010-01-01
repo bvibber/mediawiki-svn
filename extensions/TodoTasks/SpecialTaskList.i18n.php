@@ -1532,11 +1532,15 @@ Ang iyong palakaibigang sistemang tagapagbigay ng ulat ng %s',
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'tasklist' => 'Görev listesi',
+	'tasklistbyproject' => 'Projeye göre görev listesi',
 	'tasklistunknownproject' => 'Bilinmeyen proje',
+	'tasklistunspecuser' => 'Belirtilmemiş kullanıcı',
 	'tasklistincorrectuser' => 'Yanlış kullanıcı adı',
+	'tasklistemail' => 'Sayın %s',
 	'tasklistmytasks' => 'Görevlerim',
 	'tasklistchooseproj' => 'Proje seçin:',
 	'tasklistprojdisp' => 'Gösteri',

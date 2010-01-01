@@ -3613,6 +3613,7 @@ $messages['th'] = array(
 $messages['tk'] = array(
 	'tasks_delete' => 'Öçür',
 	'tasks_table_header_page' => 'Sahypa',
+	'tasks_previous' => 'Öňki',
 );
 
 /** Tagalog (Tagalog)
@@ -3691,15 +3692,42 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'tasks' => 'Görevler',
 	'tasks_tab' => 'Görevler',
+	'tasks_form_new' => 'Yeni görev oluştur',
+	'tasks_form_comment' => 'Yorum',
+	'tasks_existing_header' => 'Mevcut görevler',
+	'tasks_noone' => 'hiç kimse',
+	'tasks_assign_me' => 'Kendimi ata',
+	'tasks_assign_to' => 'Şuna ata:',
+	'tasks_unassign_me' => 'Atamamı kaldır',
+	'tasks_close' => 'Görevi kapat',
+	'tasks_wontfix' => 'Düzeltilemiyor',
 	'tasks_delete' => 'Sil',
+	'tasks_no_task_delete_title' => 'İzin verilmiyor',
+	'tasks_no_task_delete_texe' => 'Görev silme izniniz yok. Bunu sadece hizmetliler yapabilir.',
+	'tasks_discussion_page_link' => 'Görev tartışma sayfası',
+	'tasks_sidebar_title' => 'Görevleri aç',
+	'tasks_here' => 'buraya',
+	'tasks_returnto' => 'Şimdi yönlendirileceksiniz. Birkaç saniye içinde yönlendirilmezseniz, $1 bağlantısına tıklayın.',
+	'tasks_see_page_tasks' => '(bu sayfanın görevleri)',
+	'tasks_task_is_assigned' => '(atanmış)',
 	'tasks_help_page' => 'Görevler',
+	'tasks_more_like_it' => 'daha fazla',
+	'tasks_event_on_creation' => 'kontrol et',
+	'tasks_event_on_creation_anon' => 'kontrol et',
+	'tasks_on_creation_comment' => 'Sayfa oluşturmada oluşturulan otomatik görev',
 	'tasks_search_tasks' => 'Görevler',
+	'tasks_search_results' => 'Sonuç ara',
 	'tasks_previous' => 'Önceki',
 	'tasks_next' => 'Sonraki',
+	'tasks_sort' => 'Sırala',
+	'tasks_ascending' => 'Önce en eskisi',
+	'tasks_status_open' => 'Açık',
+	'tasks_status_closed' => 'Kapatıldı',
 	'tasks_logpage' => 'Görev kayıtları',
 );
 

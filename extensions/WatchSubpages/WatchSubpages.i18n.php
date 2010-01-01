@@ -866,6 +866,14 @@ $messages['th'] = array(
 เมื่อกำลังเลือกหรือยกเลิกการเลือกหน้าหลาย ๆ หน้าติดต่อกัน กดปุ่ม shift ค้างไว้ และติ๊กเลือกหน้าบนสุดของรายการกับล่างสุดของรายการ',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'watchsubpages' => 'Kiçi sahypalara gözegçilik et',
+	'watchsubpages-addtitles' => 'Sahypa goş',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

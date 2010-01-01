@@ -1056,6 +1056,9 @@ Hindi maaaring angkinin ng mga nagpapaandar/nagpapatakbo ng sayt/sityong ito ang
 $messages['tr'] = array(
 	'talkhere-talkpage' => 'tartışma sayfası',
 	'talkhere-addcomment' => 'yorum ekle',
+	'talkhere-beforeinput' => 'Aşağıya bir yorum ekleyebilirsiniz',
+	'talkhere-loading' => 'editör yükleniyor...',
+	'talkhere-collapse' => 'editörü gizle',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

@@ -528,6 +528,13 @@ $messages['tet'] = array(
 	'catboxattop-categories' => 'Kategoria sira',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'catboxattop-categories' => 'Kategorialar',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

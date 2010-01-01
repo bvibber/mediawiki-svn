@@ -592,6 +592,14 @@ $messages['th'] = array(
 	'authors_anonymous' => 'นิรนาม',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'authors_authors' => 'Awtorlar',
+	'authors_anonymous' => 'Aniim',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

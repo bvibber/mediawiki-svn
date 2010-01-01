@@ -134,6 +134,7 @@ $messages['de'] = array(
  * @author Imre
  */
 $messages['de-formal'] = array(
+	'prefs-help-sendmailtowiki_pin' => 'Freies PIN-Eingabefeld deaktiviert Inhaltsübermittlung an Wiki von Ihrem Konto.',
 	'sendmailtowiki-err-invalidaccount' => 'Ungültiges Benutzerkonto. Überprüfen Sie die E-Mail-Adresse, an die Sie senden.',
 	'sendmailtowiki-err-invalidsender' => 'Ungültiger Sender. Überprüfen Sie die E-Mail-Adresse, von der Sie senden.',
 );
@@ -529,6 +530,18 @@ $messages['sv'] = array(
 	'sendmailtowiki-err-invalidsender' => 'Ogiltig sändare. Kontrollera e-postadressen du skickar ifrån.',
 	'sendmailtowiki-err-invalidpin' => 'Ogiltig PIN. Åtkomst nekad.',
 	'sendmailtowiki-err-onlyplain' => 'Pågrund av risken för feltolkningar så är endast rena textmeddelanden tillåtna.',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'prefs-sendmailtowiki' => 'E-posta ile içerik gönderiliyor',
+	'sendmailtowiki-inemail' => 'Atanmış e-posta adresi:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'sendmailtowiki-err-pinlength' => 'PIN, tam olarak 5 rakam içermeli.',
+	'sendmailtowiki-err-invalidsender' => 'Geçersiz gönderen. Gönderdiğiniz e-posta adresini kontrol edin.',
+	'sendmailtowiki-err-invalidpin' => 'Geçersiz PIN. Erişime izin verilmedi.',
 );
 
 /** Vietnamese (Tiếng Việt)

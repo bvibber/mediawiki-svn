@@ -620,6 +620,26 @@ $messages['te'] = array(
 	'webchat' => 'వెబ్ ఛాట్',
 );
 
+/** Thai (ไทย)
+ * @author Harley Hartwell
+ */
+$messages['th'] = array(
+	'webchat' => 'เว็บแชต',
+	'webchat-desc' => 'เพิ่ม[[Special:WebChat|หน้าพิเศษ]]สำหรับพูดคุยกันสด ๆ กับผู้ใช้วิกิคนอื่น ๆ',
+	'webchat-header' => 'หน้าพิเศษนี้อนุญาตให้คุญติดต่อแบบสด ๆ กับผู้ใช้คนอื่นในวิกินี้ได้
+กด "Connect" เพื่อเชื่อมต่อไปยังระบบแช็ต
+หากคุณล็อกอินแล้ว ชื่อผู้ใช้ของคุณจะถูกตั้งเป็นชื่อในเว็บแช็ต
+ผู้ใช้นิรนามจะได้รับชื่อที่ถูกสร้างโดยระบบ ทั้งนี้ชื่อดังกล่าวสามารถเปลี่ยนได้ภายหลัง',
+	'right-webchat' => 'สามารถใช้[[Special:WebChat|เว็บแชต]]ได้',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'webchat' => 'Web chat',
+);
+
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na

@@ -176,6 +176,14 @@ Bitte definiere über die Seite [[MediaWiki:Number_of_watching_users_pageview]] 
 	'specialwhoiswatchingaddbtn' => 'Füge Benutzer hinzu',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'specialwhoiswatchingusage' => 'Diese Spezialseite ist nicht auf sich allein gestellt einsetzbar.
+Bitte definieren Sie über die Seite [[MediaWiki:Number_of_watching_users_pageview]] eine Einstiegsseite für diese Spezialseite.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

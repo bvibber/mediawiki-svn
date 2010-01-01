@@ -460,6 +460,13 @@ $messages['te'] = array(
 	'titlekey-desc' => 'శీర్షిక ప్రీఫిక్స్  వెతుకు సలహా బ్యాక్ఎండ్',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'titlekey-desc' => 'At pristawkasy gözlegi teklip beriji işi',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

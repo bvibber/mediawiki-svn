@@ -3114,9 +3114,11 @@ $messages['th'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'youtubeauthsub_title' => 'At',
 	'youtubeauthsub_description' => 'Düşündiriş',
 	'youtubeauthsub_password' => 'YouTube paroly',
 	'youtubeauthsub_username' => 'YouTube ulanyjy ady',
+	'youtubeauthsub_keywords' => 'Açarlar',
 	'youtubeauthsub_category' => 'Kategoriýa',
 	'youtubeauthsub_submit' => 'Tabşyr',
 	'youtubeauthsub_uploadbutton' => 'Ýükle',

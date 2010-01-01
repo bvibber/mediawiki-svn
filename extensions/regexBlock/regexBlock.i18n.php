@@ -75,6 +75,7 @@ Probably there is no such user.',
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Raymond
  * @author SPQRobin
  * @author Siebrand
  */
@@ -85,6 +86,7 @@ $messages['qqq'] = array(
 	'regexblock-reason-ip' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt>Special:Contact</tt>".',
 	'regexblock-reason-name' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt>Special:Contact</tt>".',
 	'regexblock-reason-regex' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt>Special:Contact</tt>".',
+	'regexblock-form-username' => '{{Identical/IP address or username}}',
 	'regexblock-form-reason' => '{{Identical|Reason}}',
 	'regexblock-form-expiry' => '{{Identical|Expiry}}',
 	'regexblock-form-match' => '{{Identical|Exact match}}',
@@ -2968,12 +2970,30 @@ Marahal ay walang ganyang tagagamit.',
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'regexblock' => 'Regex bloğu',
+	'regexblock-block-success' => 'Engel başarılı',
+	'regexblock-currently-blocked' => 'Halihazırda engellenmiş olan adresler:',
+	'regexblock-page-title' => 'Kurallı ifade ad engeli',
+	'regexblockstats' => 'Regex blok istatistikleri',
+	'regexblock-form-username' => 'IP adresi veya kullanıcı adı:',
 	'regexblock-form-reason' => 'Neden:',
+	'regexblock-form-expiry' => 'Bitiş tarihi:',
 	'regexblock-form-match' => 'Tam eşleşme',
+	'regexblock-form-account-block' => 'Yeni hesap oluşturulmasını engelle',
 	'regexblock-form-submit' => 'Bu kullanıcıyı engelle',
+	'regexblock-form-submit-regex' => 'Geçersiz kurallı ifade',
+	'regexblock-form-submit-expiry' => 'Lütfen bir bitiş süresi belirtin.',
+	'regexblock-unblock-success' => 'Engel kaldırma başarısız oldu',
 	'regexblock-view-all' => 'Hepsi',
 	'regexblock-view-go' => 'Git',
+	'regexblock-view-match' => '(tam eşleşme)',
+	'regexblock-view-regex' => '(regex eşleşmesi)',
+	'regexblock-view-reason' => 'gerekçe: $1',
+	'regexblock-view-reason-default' => 'genel neden',
+	'regexblock-view-block-infinite' => 'süresiz engel',
 	'regexblock-view-block-by' => 'engelleyen:',
+	'regexblock-view-block-unblock' => 'engeli kaldır',
+	'regexblock-view-empty' => 'Engellenmiş ad ve adres listesi boş.',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

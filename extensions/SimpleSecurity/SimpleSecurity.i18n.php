@@ -950,9 +950,16 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'security' => 'Güvenlik günlüğü',
+	'security-logpage' => 'Güvenlik kaydı',
+	'security-info' => 'Bu sayfada $1 mevcut',
+	'security-info-toggle' => 'güvenlik kısıtlamaları',
+	'security-desc-PR' => '("koruma" sekmesinden ayarla)',
+	'security-unchain' => 'İşlemleri ayrı ayrı değiştir',
+	'security-type-namespace' => 'isim alanı',
 );
 
 /** Ukrainian (Українська)

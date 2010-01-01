@@ -1805,11 +1805,23 @@ Hindi na ito magagawa sa ikalawang pagkakataon.',
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'createsigndocument' => 'Belge imzalamayı etkinleştir',
 	'createsigndoc-pagename' => 'Sayfa:',
+	'createsigndoc-allowedgroup' => 'İzin verilen grup:',
+	'createsigndoc-email' => 'E-posta adresi:',
+	'createsigndoc-address' => 'Ev adresi:',
+	'createsigndoc-extaddress' => 'Şehir, eyalet, ülke:',
 	'createsigndoc-phone' => 'Telefon numarası:',
 	'createsigndoc-bday' => 'Doğum günü:',
+	'createsigndoc-minage' => 'Minimum yaş:',
+	'createsigndoc-introtext' => 'Giriş:',
+	'createsigndoc-hidden' => 'Gizli',
+	'createsigndoc-optional' => 'Opsiyonel',
+	'createsigndoc-create' => 'Oluştur',
+	'createsigndoc-error-generic' => 'Hata: $1',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
