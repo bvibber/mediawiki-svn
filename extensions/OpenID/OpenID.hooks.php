@@ -114,6 +114,26 @@ class OpenIDHooks {
 		return true;
 	}
 
+	private static function getInfoTable( $user ) {
+		$urls = SpecialOpenID::getUserUrl( $user );
+		$delTitle = SpecialPage::getTitleFor( 'OpenIDConvert', 'Delete' );
+		$sk = $user->getSkin();
+		$rows = '';
+		foreach( $urls as $url ) {
+			$rows .= Xml::tags( 'tr', array(),
+				Xml::tags( 'td', array(), Xml::element( 'a', array( 'href' => $url ), $url ) ) .
+				Xml::tags( 'td', array(), $sk->link( $delTitle, wfMsg( 'openid-urls-delete' ), array(), array( 'url' => $url ) ) )
+			) . "\n";
+		}
+		$info = Xml::tags( 'table', array( 'class' => 'wikitable' ),
+			Xml::tags( 'tr', array(), Xml::element( 'th', array(), wfMsg( 'openid-urls-url' ) ) . Xml::element( 'th', array(), wfMsg( 'openid-urls-action' ) ) ) . "\n" .
+			$rows
+		);
+		$info .= $user->getSkin()->link( SpecialPage::getTitleFor( 'OpenIDConvert' ), wfMsgHtml( 'openid-add-url' ) );
+		return $info;
+	}
+	
+
 	public static function onGetPreferences( $user, &$preferences ) {
 		global $wgOpenIDShowUrlOnUserPage, $wgAllowRealName;
 
@@ -145,27 +165,11 @@ class OpenIDHooks {
 				'prefix' => 'openid-update-on-login-',
 			);
 
-		$urls = SpecialOpenID::getUserUrl( $user );
-		$delTitle = SpecialPage::getTitleFor( 'OpenIDConvert', 'Delete' );
-		$sk = $user->getSkin();
-		$rows = '';
-		foreach( $urls as $url ) {
-			$rows .= Xml::tags( 'tr', array(),
-				Xml::tags( 'td', array(), Xml::element( 'a', array( 'href' => $url ), $url ) ) .
-				Xml::tags( 'td', array(), $sk->link( $delTitle, wfMsg( 'openid-urls-delete' ), array(), array( 'url' => $url ) ) )
-			) . "\n";
-		}
-		$info = Xml::tags( 'table', array( 'class' => 'wikitable' ),
-			Xml::tags( 'tr', array(), Xml::element( 'th', array(), wfMsg( 'openid-urls-url' ) ) . Xml::element( 'th', array(), wfMsg( 'openid-urls-action' ) ) ) . "\n" .
-			$rows
-		);
-		$info .= $user->getSkin()->link( SpecialPage::getTitleFor( 'OpenIDConvert' ), wfMsgHtml( 'openid-add-url' ) );
-
 		$preferences['openid-urls'] =
 				array(
 					'type' => 'info',
 					'label-message' => 'openid-urls-desc',
-					'default' => $info,
+					'default' => self::getInfoTable( $user ),
 					'raw' => true,
 					'section' => 'openid',
 				);
@@ -173,6 +177,107 @@ class OpenIDHooks {
 
 		return true;
 	}
+
+
+	# list of preferences used by extension
+	private static $oidPrefs = array( 'hide' );
+	private static $oidUpdateOnLogin = array( 'nickname', 'email', 'fullname',
+		'language', 'timezone' );
+
+	private static function getToggles() {
+		$toggles = self::$oidPrefs;
+		foreach( self::$oidUpdateOnLogin as $pref ) {
+			$toggles[] = 'update-on-login-' . $pref;
+		}
+		return $toggles;
+	}
+
+	public static function onInitPreferencesForm( $prefs, $request ) {
+		foreach ( self::getToggles() as $oidPref ) {
+			$prefs->mToggles['openid-' . $oidPref]
+				= $request->getCheck( "wpOpOpenID-" . $oidPref ) ? 1 : 0;
+		}
+
+		return true;
+	}
+
+	public static function onRenderPreferencesForm( $prefs, $out ) {
+		global $wgUser;
+
+		wfLoadExtensionMessages( 'OpenID' );
+
+		$out->addHeadItem( 'openidwikitablestyle', self::wikitableStyle() );
+
+		$out->addHTML( "\n<fieldset>\n<legend>" . wfMsgHtml( 'prefs-openid' ) . "</legend>\n<table>\n" );
+
+		#$out->addWikiText( wfMsg( 'openid-prefstext' ) );
+
+		foreach ( self::$oidPrefs as $oidPref ) {
+			$name = 'wpOpOpenID-' . $oidPref;
+			$out->addHTML(
+				Xml::tags( 'tr', array(),
+					Xml::tags( 'td', array( 'style' => 'width: 20%;' ), '' ) .
+					Xml::tags( 'td', array(),
+						Xml::tags( 'div', array( 'class' => 'toggle' ),
+							Xml::check( $name, $prefs->mToggles['openid-' . $oidPref] ) .
+							Xml::tags( 'span', array( 'class' => 'toggletext' ),
+								Xml::label( wfMsg( 'openid-pref-' . $oidPref ), $name )
+							)
+						)
+					)
+				)
+			);
+		}
+
+		$out->addHTML( Xml::openElement( 'tr' ) . Xml::element( 'td', array(),
+			wfMsg( 'openid-pref-update-userinfo-on-login' ) ) . Xml::openElement( 'td' ) );
+
+		$first = true;
+		foreach ( self::$oidUpdateOnLogin as $oidPref ) {
+			if ( $first ) {
+				$first = false;
+			} else {
+				#$out->addHTML( '<br />' );
+			}
+			$name = 'wpOpOpenID-update-on-login-' . $oidPref;
+			$out->addHTML(
+				Xml::tags( 'div', array( 'class' => 'toggle' ),
+					Xml::check( $name, $prefs->mToggles['openid-update-on-login-' . $oidPref] ) .
+					Xml::tags( 'span', array( 'class' => 'toggletext' ),
+						Xml::label( wfMsg( 'openid' . $oidPref ), $name )
+					)
+				)
+			);
+		}
+
+		$out->addHTML(
+			"</td></tr>\n<tr><td>" . wfMsgHtml( 'openid-urls-desc' ) .
+			"</td><td>" . self::getInfoTable( $wgUser ) .
+			"</td></tr></table></fieldset>\n\n"
+		);
+
+		return true;
+	}
+
+	public static function onSavePreferences( $prefs, $user, &$message, $old ) {
+		foreach ( self::getToggles() as $oidPref ) {
+			$user->setOption( 'openid-' . $oidPref, $prefs->mToggles['openid-' . $oidPref] );
+			wfDebugLog( 'OpenID', 'Setting user preferences: ' . print_r( $user, true ) );
+		}
+
+		$user->saveSettings();
+
+		return true;
+	}
+
+	public static function onResetPreferences( $prefs, $user ) {
+		foreach ( self::getToggles() as $oidPref ) {
+			$prefs->mToggles['openid-' . $oidPref] = $user->getOption( 'openid-' . $oidPref );
+		}
+
+		return true;
+	}
+
 	public static function onLoadExtensionSchemaUpdates() {
 		global $wgDBtype, $wgUpdates, $wgExtNewTables;
 
@@ -216,6 +321,31 @@ class OpenIDHooks {
 		  text-transform: none;
 		}
 		</style>
+
+EOS;
+	}
+	
+	private static function wikitableStyle() {
+		return <<<EOS
+<style type='text/css'>
+table.wikitable {
+    margin: 1em 1em 1em 0;
+    background: #f9f9f9;
+    border: 1px #aaa solid;
+    border-collapse: collapse;
+}
+.wikitable th, .wikitable td {
+    border: 1px #aaa solid;
+    padding: 0.2em;
+}
+.wikitable th {
+    background: #f2f2f2;
+    text-align: center;
+}
+.wikitable caption {
+    font-weight: bold;
+}
+</style>
 
 EOS;
 	}
