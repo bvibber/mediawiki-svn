@@ -940,7 +940,7 @@ Schlääschte Dateie wäde fottjeworfe, noh de [[{{MediaWiki:Multipleupload-page
 	'multiupload-blank' => 'Kein Dattei ußjesoht',
 );
 
-/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+/** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
  */
 $messages['ku-latn'] = array(

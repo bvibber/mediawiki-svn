@@ -806,7 +806,7 @@ $messages['ksh'] = array(
 	'editmsg-patch-success' => 'Hurra, et Ändere hät jeflupp.',
 );
 
-/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+/** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
  */
 $messages['ku-latn'] = array(

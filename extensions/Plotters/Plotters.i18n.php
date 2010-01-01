@@ -733,6 +733,7 @@ $messages['te'] = array(
  */
 $messages['tr'] = array(
 	'plotters-uses' => 'Kullanımları',
+	'plotters-no-data' => 'Veri girilmedi.',
 );
 
 /** Veps (Vepsan kel')

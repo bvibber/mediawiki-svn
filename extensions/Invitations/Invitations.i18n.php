@@ -1392,7 +1392,9 @@ Para mapamahalaan ang mga paanyaya para sa isang partikular na kasangkapang-kata
  */
 $messages['tr'] = array(
 	'invite-logpage' => 'Davet kaydı',
+	'invitations' => 'Yazılım özelliklerine daveti yönet',
 	'invitations-pagetitle' => 'Sadece davete dayanan yazılım özellikleri',
+	'invitations-feature-pagetitle' => 'Davet yönetimi - $1',
 	'invitations-inviteform-username' => 'Davet edilecek kullanıcı',
 	'invitations-inviteform-submit' => 'Davet et',
 	'invitations-error-baduser' => 'Belirttiğiniz kullanıcı görünüşe göre mevcut değil.',

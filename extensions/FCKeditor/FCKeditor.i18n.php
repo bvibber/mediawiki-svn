@@ -1142,6 +1142,8 @@ $messages['tr'] = array(
 	'tog-riched_disable_ns_main' => 'Zengin editörü ana isim alanında devre dışı bırak',
 	'tog-riched_disable_ns_talk' => 'Zengin editörü "{{ns:talk}}" isim alanında devre dışı bırak',
 	'tog-riched_disable_ns_user' => 'Zengin editörü "{{ns:user}}" isim alanında devre dışı bırak',
+	'tog-riched_start_disabled' => 'Zengin editör devre dışı bırakılmış şekilde başla',
+	'tog-riched_use_popup' => 'Zengin editörü açılır pencerede aç',
 );
 
 /** Vietnamese (Tiếng Việt)

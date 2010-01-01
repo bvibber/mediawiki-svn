@@ -1094,10 +1094,18 @@ $messages['tl'] = array(
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'inspectcache' => 'Önbelleği denetle',
 	'inspectcache-ok' => 'Tamam',
+	'inspectcache-general' => 'Genel önbellek',
+	'inspectcache-parser' => 'Ayrıştırıcı önbelleği',
+	'inspectcache-message' => 'Mesaj önbelleği',
+	'inspectcache-get' => 'Al',
 	'inspectcache-delete' => 'Sil',
+	'inspectcache-deleted' => 'Silinmiş önbellek',
+	'inspectcache-list' => 'Listele',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

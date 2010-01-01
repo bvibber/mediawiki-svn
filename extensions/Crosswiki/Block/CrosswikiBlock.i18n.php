@@ -527,6 +527,8 @@ $messages['de-formal'] = array(
 Bitte prüfen Sie, ob Sie die Befugnis haben, in diesem anderen Wiki zu sperren und ob Ihre Aktion deren Richtlinien entspricht.',
 	'crosswikiunblock-header' => 'Diese Spezialseite erlaubt die Aufhebung einer Benutzersperre in einem anderen Wiki.
 Bitte prüfen Sie, ob Sie die Befugnis haben, in diesem anderen Wiki zu sperren und ob Ihre Aktion deren Richtlinien entspricht.',
+	'crosswikiblock-local' => 'Lokale Sperren werden durch dieses Interface nicht unterstützt. Benutzen Sie [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiunblock-local' => 'Lokale Sperren werden über dieses Formular nicht unterstützt. Bitte benutzen Sie [[Special:IPBlockList|{{int:ipblocklist}}]].',
 );
 
 /** Lower Sorbian (Dolnoserbski)

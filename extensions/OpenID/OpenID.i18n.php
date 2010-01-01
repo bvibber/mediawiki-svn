@@ -3827,56 +3827,56 @@ Për piasì ch'a consulta n'[[Special:ListUsers/sysop|aministrator]].",
 	'openidlanguage' => 'Lenga',
 	'openidtimezone' => 'Fus orari',
 	'openidnotavailable' => "Tò stranòm preferì ($1) a l'é già dovrà da n'àutr utent.",
-	'openidnotprovided' => "Tò sërvent OpenID a l'ha pa dàit në stranòm (o përchè a peul pa, o përchè it l'has dit ëd pa felo).",
+	'openidnotprovided' => "Sò servent OpenID a l'ha pa dàit në stranòm (o përchè a peul pa, o përchè chiel a l'ha dit ëd felo nen).",
 	'openidchooseinstructions' => "Tùit j'utent a l'han dabzògn ëd në stranòm,
-it peue sern-ne un da le opsion sota.",
+a peul sern-ne un da j'opsion sì-sota.",
 	'openidchoosefull' => 'Tò nòm complet ($1)',
 	'openidchooseurl' => 'Un nòm sërnù da tò OpenID ($1)',
-	'openidchooseauto' => 'Un nòm aut-generà ($1)',
+	'openidchooseauto' => 'Un nòm generà da sol ($1)',
 	'openidchoosemanual' => 'Un nòm sërnù da ti:',
 	'openidchooseexisting' => 'Un cont esistent an sta wiki-sì:',
 	'openidchoosepassword' => 'ciav:',
-	'openidconvertinstructions' => "Sta forma-sì at përmëtt ëd cangé tò cont utent për dovré n'URL OpenID o për gionté URL OpenID",
-	'openidconvertoraddmoreids' => "Convert a OpenID o gionta n'àutr URL OpenID",
-	'openidconvertsuccess' => 'Convërtì da bin a OpenID',
-	'openidconvertsuccesstext' => "It l'has convërtì da bin tò OpenID a $1",
-	'openidconvertyourstext' => "Sto-sì a l'é già tò OpenID.",
-	'openidconvertothertext' => "Sto-sì a l'é l'OpenID ëd cheicun àutr.",
-	'openidalreadyloggedin' => "'''It ses già intrà, $1!'''
+	'openidconvertinstructions' => "Sta forma-sì a-j përmët ëd cangé sò cont utent për dovré n'adrëssa OpenID o për gionté d'adrësse OpenID",
+	'openidconvertoraddmoreids' => "Convertì a OpenID o gionté n'àutra adrëssa OpenID",
+	'openidconvertsuccess' => 'Convertì da bin a OpenID',
+	'openidconvertsuccesstext' => "A l'ha convertì da bin sò OpenID a $1",
+	'openidconvertyourstext' => "Cost-sì a l'é già sò OpenID.",
+	'openidconvertothertext' => "Cost-sì a l'é l'OpenID ëd cheidun d'àutri.",
+	'openidalreadyloggedin' => "'''A l'é già intrà ant ël sistema, $1!'''
 
-S'it veule dovré OpenID për intré ant l'avnì, it peule [[Special:OpenIDConvert|convërtì tò cont për dovré OpenID]].",
-	'openidnousername' => 'Pa gnun nòm utent spessifià.',
-	'openidbadusername' => 'Nòm utent spessifià pa bon.',
-	'openidautosubmit' => 'Sta pàgina-sì a conten na forma che a dovrìa esse spedìa automaticament s\'it l\'has JavaScript abilità. 
-Dasnò, preuva ël boton "Continua".',
-	'openidclientonlytext' => "It peule pa dovré cont da sta wiki-sì com OpenID an dzora a n'àutr sit.",
-	'openidloginlabel' => 'URL OpenID',
-	'openidlogininstructions' => "{{SITENAME}} a apògia lë standard [http://openid.net/ OpenID] për ''\"single signon\"'' tra sit Web. OpenID at përmëtt ëd registré vàire sit Web diferent sensa dovré na ciav diferenta për mincadun. (Varda [http://en.wikipedia.org/wiki/OpenID Artìcol OpenID ëd Wikipedia] për savèjne ëd pi).
+S'a veul dovré OpenID për intré ant l'avnì, a peul [[Special:OpenIDConvert|convertì sò cont për dovré OpenID]].",
+	'openidnousername' => 'Gnun nòm utent spessificà.',
+	'openidbadusername' => 'Nòm utent spessificà pa bon.',
+	'openidautosubmit' => 'Sta pàgina-sì a conten un formolari che a dovrìa esse spedì automaticament se chiel a l\'ha JavaScript abilità. 
+Dësnò, ch\'a preuva ël boton "Continua".',
+	'openidclientonlytext' => "A peul pa dovré dij cont da sta wiki-sì com OpenID dzora a n'àutr sit.",
+	'openidloginlabel' => 'Adrëssa OpenID',
+	'openidlogininstructions' => "{{SITENAME}} a sosten lë stàndard [http://openid.net/ OpenID] për na signadura sola antra sit ëd l'aragnà. OpenID at përmët ëd rintré an vàire sit diferent an sl'aragnà sensa dovré na ciav diferenta për mincadun. (Varda [http://en.wikipedia.org/wiki/OpenID Artìcol OpenID ëd Wikipedia] për savèjne ëd pi).
 
-S'it l'has già un cont dzora a {{SITENAME}}, it peule [[Special:UserLogin|intré]] con tò nòm utent e ciav com normal.
-Për dovré OpenID ant l'avnì, it peule [[Special:OpenIDConvert|convërtì tò cont a OpenID]] d'apress ch'it sie intrà normalment.
+S'a l'ha già un cont dzora a {{SITENAME}}, a peul [[Special:UserLogin|intré ant ël sistema]] con sò nòm utent e ciav com normal.
+Për dovré OpenID ant l'avnì, a peul [[Special:OpenIDConvert|convertì sò cont a OpenID]] apress ch'a sia intrà normalment.
 
-A-i é già motobin ëd [http://openid.net/get/ fornitor d'OpenID], e it podrìe già avèj un cont abilità a OpenID an dzora a n'àutr sërvissi.",
+A-i é già motobin ëd [http://openid.net/get/ fornitor d'OpenID], e a podrìa già avèj un cont abilità a OpenID dzora a n'àutr servissi.",
 	'openidupdateuserinfo' => 'Modìfica mie anformassion përsonaj',
-	'openiddelete' => 'Scansela OpenID',
+	'openiddelete' => 'Scancela OpenID',
 	'openiddelete-text' => 'An sgnacand ël boton "{{int:openiddelete-button}}", it gavras l\'OpenID $1 da tò cont.
 It saras pa pi bon a intré con sto OpenID-sì.',
 	'openiddelete-button' => 'Conferma',
 	'openiddelete-sucess' => "L'OpenID a l'é stàit gavà da bin da tò cont.",
 	'openiddelete-error' => "A l'é capitaje n'eror an gavand l'OpenID da tò cont.",
 	'openid-prefstext' => 'Preferense [http://openid.net/ OpenID]',
-	'openid-pref-hide' => "Stërma tò URL OpenID an dzora a toa pàgina utent, s'it intre con openID.",
-	'openid-pref-update-userinfo-on-login' => "Modìfica le anformassion sota për la figura OpenID minca vira ch'i intro:",
+	'openid-pref-hide' => "Stërmé soa adrëssa OpenID dzora a soa pàgina utent, s'a intra con openID.",
+	'openid-pref-update-userinfo-on-login' => "Modifiché j'anformassion përsonaj sì-sota OpenID minca vira ch'i intro:",
 	'openid-urls-desc' => 'OpenID associà con tò cont:',
 	'openid-urls-action' => 'Assion',
-	'openid-urls-delete' => 'Scansela',
+	'openid-urls-delete' => 'Scancela',
 	'openid-add-url' => 'Gionta un neuv OpenID',
 	'openidsigninorcreateaccount' => 'Intra o Crea un Neuv Cont',
-	'openid-provider-label-openid' => 'Ansëriss tò URL OpenID',
+	'openid-provider-label-openid' => "Ch'a anserissa soa adrëssa OpenID",
 	'openid-provider-label-google' => 'Intra an dovrand tò cont Google',
 	'openid-provider-label-yahoo' => 'Intra an dovrand tò cont Yahoo',
-	'openid-provider-label-aol' => 'Ansëriss tò screenname AOL',
-	'openid-provider-label-other-username' => 'Anëriss tò nòm utent $1',
+	'openid-provider-label-aol' => "Ch'a anserissa sò nòm AOL",
+	'openid-provider-label-other-username' => "Ch'a anserissa sò nòm utent $1",
 );
 
 /** Pashto (پښتو)

@@ -1300,10 +1300,16 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'refreshspecial' => 'Yenilen özel sayfalar',
 	'refreshspecial-title' => 'Yenilen özel sayfalar',
+	'refreshspecial-button' => 'Seçileni yenile',
+	'refreshspecial-choice' => 'özel sayfalar yenileniyor',
+	'refreshspecial-link-back' => 'Özel sayfaya geri dön',
+	'refreshspecial-reconnected' => 'Yeniden bağlanıldı.',
+	'refreshspecial-reconnecting' => 'Bağlantı başarısız, 10 saniye içinde yeniden bağlanılıyor...',
 );
 
 /** Ukrainian (Українська)

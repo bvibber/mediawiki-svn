@@ -1998,12 +1998,26 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'recordadmin-recordtype' => 'kayıt türü',
+	'recordadmin-submit' => 'Gönder',
+	'recordadmin-badtitle' => 'Uygunsuz başlık!',
 	'recordadmin-buttonsearch' => 'Ara',
 	'recordadmin-buttoncreate' => 'Oluştur',
 	'recordadmin-buttonreset' => 'Sıfırla',
+	'recordadmin-searchresult' => 'Sonuçları ara',
+	'recordadmin-nomatch' => 'Eşleşen kayıt bulunamadı!',
 	'recordadmin-buttonsave' => 'Kaydet',
+	'recordadmin-createlink' => 'bir tane oluştur',
+	'recordadmin-viewlink' => 'gör',
+	'recordadmin-editlink' => 'değiştir',
+	'recordadmin-created' => 'Oluşturuldu',
+	'recordadmin-modified' => 'Değiştirildi',
+	'recordadmin-actions' => 'İşlemler',
+	'recordadmin-needscontent' => 'İçerik ekle...',
+	'recordadmin-editwithform' => 'Formla düzenle',
 );
 
 /** Ukrainian (Українська)

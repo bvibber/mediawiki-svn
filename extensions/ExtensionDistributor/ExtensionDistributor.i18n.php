@@ -483,6 +483,7 @@ Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite 
  * @author MichaelFrey
  */
 $messages['de-formal'] = array(
+	'extdist-not-configured' => 'Bitte konfigurieren Sie $wgExtDistTarDir und $wgExtDistWorkingCopy',
 	'extdist-choose-extension' => 'Bitte wählen Sie eine Erweiterung zum Herunterladen aus:',
 	'extdist-choose-version' => '<big>Sie laden die <b>$1</b>-Erweiterung herunter.</big>
 

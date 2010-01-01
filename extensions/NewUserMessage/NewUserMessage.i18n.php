@@ -26,7 +26,7 @@ $messages['en'] = array(
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'newusermessage-desc' => '{{desc}}',
+	'newusermessage-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'newuseredit-summary' => 'The edit summary used when placing a new user message.',
 	'newusermessage-subject' => 'Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages.',
 	'newusermessage-body' => 'Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages.',

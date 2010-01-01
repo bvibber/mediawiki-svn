@@ -537,6 +537,13 @@ $messages['tl'] = array(
 	'logentry-invalidtoken' => 'Hindi tanggap na pananda',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'logentry' => 'KayıtGirdisi',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

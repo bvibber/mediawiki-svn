@@ -418,9 +418,11 @@ Bitte warte, bis die momentane Aktion abgeschlossen ist.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
+ * @author Imre
  */
 $messages['de-formal'] = array(
 	'imagetagging-canteditothermessage' => 'Sie können diese Seite nicht bearbeiten, weil Sie entweder keine Berechtigung dazu haben oder weil die Seite aus einem anderen Grund gesperrt ist.',
+	'imagetagging-tagging-instructions' => 'Klicken Sie auf Personen oder Dinge in dem Bild, um sie mit einem Tag zu versehen.',
 	'imagetagging-canteditneedloginmessage' => 'Sie können diese Seite nicht bearbeiten.
 Möglicherweise müssen Sie sich anmelden, um Bilder zu taggen.
 Möchten Sie sich jetzt anmelden?',
@@ -1976,16 +1978,24 @@ Pakihintay lamang na mabuo muna ang umiiral na kilos.',
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'taggedimages' => 'Etiketlenmiş resimler',
+	'imagetagging-addimagetag' => 'Bu resmi etiketle',
 	'imagetagging-article' => 'Sayfa:',
+	'imagetagging-articletotag' => 'Etiketlenecek sayfa',
 	'imagetagging-imghistory' => 'Geçmiş',
 	'imagetagging-images' => 'Resimler',
+	'imagetagging-removetag' => 'etiketi kaldır',
+	'imagetagging-done-button' => 'Etiketleme tamamlandı',
 	'imagetagging-tagcancel-button' => 'İptal',
 	'imagetagging-addingtag' => 'Etiket ekleniyor...',
 	'imagetagging-removingtag' => 'Etiket kaldırılıyor...',
+	'imagetagging-addtagsuccess' => 'Etiket eklendi.',
+	'imagetagging-removetagsuccess' => 'Etiket kaldırıldı.',
 	'imagetagging-taggedimages-title' => '"$1" resimleri',
+	'tag-logpagename' => 'Etiketleme kaydı',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

@@ -1296,10 +1296,21 @@ $messages['tl'] = array(
 /** Turkish (Türkçe)
  * @author Homonihilis
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'errorhandler-errors' => 'Hatalar:',
+	'errorhandler-error-fatal' => 'Önemli hata',
+	'errorhandler-error-warning' => 'Uyarı',
+	'errorhandler-error-parse' => 'Ayrıştırıcı hatası',
+	'errorhandler-error-notice' => 'Bildirim',
+	'errorhandler-error-core-error' => 'Temel hatası',
+	'errorhandler-error-core-warning' => 'Temel uyarısı',
+	'errorhandler-error-compile-error' => 'Hata derle',
+	'errorhandler-error-compile-warning' => 'Uyarı derle',
 	'errorhandler-error-user-error' => 'Kullanıcı hatası',
+	'errorhandler-error-user-warning' => 'Kullanıcı uyarısı',
+	'errorhandler-error-user-notice' => 'Kullanıcı bildirimi',
 );
 
 /** Ukrainian (Українська)

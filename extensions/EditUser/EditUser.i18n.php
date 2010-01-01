@@ -374,7 +374,7 @@ $messages['eu'] = array(
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'edituser-desc' => 'Antaa oikeutettujen käyttäjien muokata toisten käyttäjien asetuksia.',
+	'edituser-desc' => 'Mahdollistaa oikeutettujen käyttäjien muokata toisten käyttäjien asetuksia.',
 	'edituser' => 'Muokkaa käyttäjää',
 	'edituser-logout' => 'Kirjaa käyttäjä ulos',
 	'edituser-username' => 'Nimi',
@@ -713,7 +713,7 @@ $messages['ksh'] = array(
 	'right-edituser-exempt' => 'Kann de Enstellunge nit fun andere ändere lohße',
 );
 
-/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+/** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
  */
 $messages['ku-latn'] = array(

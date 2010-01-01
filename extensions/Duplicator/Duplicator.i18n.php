@@ -315,6 +315,16 @@ $messages['de'] = array(
 	'right-duplicate' => 'Seiten duplizieren',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'duplicator-source-invalid' => 'Bitte geben Sie eine gültige Quell-Seite an.',
+	'duplicator-source-notexist' => 'Die Seite [[$1]] existiert nicht. Bitte geben Sie eine existierende Seite an.',
+	'duplicator-dest-invalid' => 'Bitte geben Sie eine gültige Ziel-Seite an.',
+	'duplicator-dest-exists' => 'Die Seite [[$1]] existiert bereits. Bitte geben Sie eine nicht existierende Seite an.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

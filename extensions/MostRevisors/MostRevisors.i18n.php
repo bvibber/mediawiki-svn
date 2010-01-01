@@ -770,6 +770,7 @@ $messages['tr'] = array(
 	'mostrevisors-none' => 'Girdi bulunamadı.',
 	'mostrevisors-submit' => 'Git',
 	'mostrevisors-showredir' => 'Yönlendirme sayfalarını göster',
+	'mostrevisors-hideredir' => 'Yönlendirme sayfalarını gizle',
 	'mostrevisors-viewcontributors' => 'Ana katkı sahiplerini göster',
 );
 

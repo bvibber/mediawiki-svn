@@ -588,6 +588,17 @@ $messages['te'] = array(
 	'discussionthreading-replysection' => 'స్పందించండి',
 );
 
+/** Thai (ไทย)
+ * @author Harley Hartwell
+ */
+$messages['th'] = array(
+	'discussionthreading-desc' => 'เริ่มหัวข้อใหม่ในหน้าพูดคุย',
+	'discussionthreading-replysection' => 'ตอบ',
+	'discussionthreading-replysectionhint' => 'ตอบหัวข้อพูดคุยนี้',
+	'discussionthreading-threadnewsection' => 'ใหม่',
+	'discussionthreading-threadnewsectionhint' => 'เริ่มหัวข้อใหม่',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

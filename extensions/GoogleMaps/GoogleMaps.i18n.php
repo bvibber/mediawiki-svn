@@ -3092,7 +3092,7 @@ Uppder donn op en Shtadt, e Land, en Address, udder e Jeschäff z höppe:',
 	'gm-mars' => 'Mars',
 );
 
-/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+/** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
  */
 $wgGoogleMapsMessages['ku-latn'] = array(

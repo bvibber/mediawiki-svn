@@ -806,7 +806,7 @@ Donn ene Metmaache nit doh de Aanzahl fun singe Änderunge aam Wiki enstufe!",
 	'countedits-nocontribs' => 'En däm Wiki hee sin kein Beidrääsch vun Metmaachere.',
 );
 
-/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+/** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
  */
 $messages['ku-latn'] = array(

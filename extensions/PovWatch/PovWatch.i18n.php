@@ -650,6 +650,7 @@ $messages['fa'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'povwatch' => 'PovWatch',
@@ -661,7 +662,7 @@ $messages['fi'] = array(
 	'povwatch_not_subscribed' => 'Et ole liittynyt PovWatchiin, joten et voi peruuttaa sitä.',
 	'povwatch_unsubscribed' => 'Liittymisesi PovWatchiin on nyt peruutettu',
 	'povwatch_invalid_title' => 'Annetun sivun nimi oli virheellinen',
-	'povwatch_pushed' => '[[$1]] on onnistuneesti siirretty käyttäjän $2 {{PLURAL:$2|tarkkailulistalle|tarkkailulistoille}}',
+	'povwatch_pushed' => '[[$1]] on onnistuneesti siirretty $2 käyttäjän {{PLURAL:$2|tarkkailulistalle|tarkkailulistoille}}',
 	'povwatch_intro' => 'PovWatch on palvelu, jonka kautta on mahdollista siirtää kiistanalaisia sivuja mukaan liittyneiden ylläpitäjien tarkkailulistoille.
 
 Loki tuoreimmista tarkkailulistoille [[Special:PovWatch/log|siirroista on saatavilla]].',

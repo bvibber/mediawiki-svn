@@ -541,6 +541,20 @@ Um die Abstimmung zu speichern, übermittle sie während du nicht auf eine Antra
 	'qp_error_unique' => 'Die Frage des Typs unique() hat mehr Vorschläge, als mögliche Antworten definiert sind: Ausführung unmöglich',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'qp_func_missing_question_id' => 'Bitte legen Sie eine existierende Frage-ID (ab 1 aufwärts) für die Abstimmung $1 fest',
+	'qp_error_no_such_poll' => 'Abstimmung nicht vorhanden ($1).
+Stellen Sie sicher, dass die Abstimmung festgelegt und gespeichert ist und dass # als Trennsymbol für Adressen verwendet wird',
+	'qp_error_missed_dependance_title' => 'Die Abstimmung (id=$1) ist abhängig von einer anderen Abstimmung (id=$3) auf der Seite [[$2]], aber der Titel [[$2]] wurde nicht gefunden.
+Entfernen Sie entweder die Abhängigkeits-Attribute, oder stellen Sie [[$2]] wieder her',
+	'qp_error_missed_dependance_poll' => 'Die Abstimmung (id=$1) ist abhängig von einer anderen Abstimmung (id=$3) auf Seite $2, aber diese Abstimmung existiert nicht oder wurde noch nicht gespeichert.
+Entfernen Sie entweder die Abhängigkeits-Attribute oder erstellen Sie die Abstimmung mit id=$3 auf Seite $2 und speichern Sie sie.
+Um die Abstimmung zu speichern, übermitteln Sie sie während Sie nicht auf eine Antragsanfrage antworten.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -1941,6 +1955,7 @@ $messages['tr'] = array(
 	'qp_error_no_poll_id' => 'Anket etiketinin tanımlanmış bir kimlik değeri yok.',
 	'qp_error_already_used_poll_id' => 'Anket kimliği bu sayfada önceden kullanılmış (kimlik=$1).',
 	'qp_error_vote_dependance_poll' => 'Lütfen ilk olarak $1. anket için oy verin.',
+	'qp_error_unanswered_span' => 'Cevaplanmamış alt kategori',
 	'qp_error_category_name_empty' => 'Kategori adı boş',
 	'qp_error_proposal_text_empty' => 'Teklif metni boş',
 	'qp_error_too_few_categories' => 'En az iki kategori tanımlanmalı',

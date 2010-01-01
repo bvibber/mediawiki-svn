@@ -395,6 +395,13 @@ $messages['de'] = array(
 	'right-datatransferimport' => 'Daten importieren',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'dt_viewxml_docu' => 'Bitte wählen Sie aus, welche Kategorien und Namensräume im XML-Format angezeigt werden sollen.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

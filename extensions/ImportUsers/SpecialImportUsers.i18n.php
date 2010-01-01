@@ -43,6 +43,7 @@ $messages['qqq'] = array(
 	'importusers-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'importusers-uploadfile' => '{{Identical|Upload file}}',
 	'importusers-form-button' => '{{Identical|Import}}',
+	'importusers-log' => '',
 	'importusers-log-summary' => '{{Identical|Summary}}',
 	'importusers-log-summary-all' => '{{Identical|All}}',
 	'importusers-log-summary-added' => '{{Identical|Added}}',
@@ -1874,6 +1875,8 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'importusers' => 'Kullanıcıları içe aktar',
 	'importusers-uploadfile' => 'Dosya yükle',
+	'importusers-form-button' => 'İçe aktar',
+	'importusers-log' => 'Kullanıcı kaydını içe aktar',
 	'importusers-log-summary' => 'Özet',
 	'importusers-log-summary-all' => 'Hepsi',
 	'importusers-log-summary-added' => 'Eklendi',
@@ -1882,6 +1885,7 @@ $messages['tr'] = array(
 	'importusers-password' => 'Parola',
 	'importusers-email' => 'E-posta',
 	'importusers-realname' => 'gerçek isminiz',
+	'right-import_users' => 'Kullanıcıları küme olarak içe aktarır',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

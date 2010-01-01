@@ -286,7 +286,9 @@ $messages['de-formal'] = array(
 Wählen Sie einen Benutzer, der im Löschlogbuch angezeigt werden soll.
 Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional einen mit einem senkrechten Strich („|“) abgetrennten Löschgrund enthalten.',
 	'deletebatch-link-back' => 'Sie können zur Erweiterung zurückgehen',
+	'deletebatch-both-modes' => 'Bitte wählen Sie entweder eine spezifische Seite oder eine gegebene Liste von Seiten.',
 	'deletebatch-select-yourself' => 'Sie',
+	'deletebatch-no-page' => 'Bitte geben Sie entweder zumindest eine zu löschende Seite an oder wählen Sie eine Datei, die eine Liste von zu löschenden Seiten enthält.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

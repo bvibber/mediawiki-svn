@@ -378,6 +378,13 @@ $messages['tg-latn'] = array(
 	'randomimage-desc' => 'Bo istifodai <tt>&lt;randomimage /&gt;</tt> cinandai rasonai tasodufiro peşkaş mekunad',
 );
 
+/** Thai (ไทย)
+ * @author Harley Hartwell
+ */
+$messages['th'] = array(
+	'randomimage-desc' => 'สุ่มไฟล์เพื่อแสดงผลโดยใช้ <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

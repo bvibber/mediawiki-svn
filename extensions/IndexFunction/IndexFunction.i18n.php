@@ -53,7 +53,7 @@ $messages['qqq'] = array(
 	'index-legend' => 'Used in [[Special:Index]].',
 	'index-search' => '{{Identical|Search}}',
 	'index-submit' => '{{Identical|Submit}}',
-	'index-search-explain' => 'If your language permits, you can replace <code>submit</code> with <code>{<nowiki />{int:{{msg-mw|index-submit}}}}</code> for the button label.',
+	'index-search-explain' => 'If your language permits, you can replace <code>submit</code> with <code>{<nowiki />{int:index-submit}}</code> for the button label.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -238,6 +238,26 @@ Gib die ersten Zeichen ein und drücke die {{int:index-submit}}-Schaltfläche, u
 Klicke auf den Pfeil, um alle unter diesem Titel indizierten Seiten anzuzeigen.',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'indexfunc-editwarning' => 'Achtung:
+Dieser Titel ist ein Indextitel für die {{PLURAL:$2|folgende Seite|folgenden Seiten}}:
+$1
+Stellen Sie sicher, dass die Seite, die Sie erstellen, nicht bereits unter anderem Titel existiert.
+Wenn Sie diese Seite erstellen, entfernen Sie diesen Titel vom <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$2|der obigen Seite|den obigen Seiten}}.',
+	'indexfunc-movewarn' => 'Achtung:
+"$1" ist ein Indextitel für die {{PLURAL:$3|folgende Seite|folgenden Seiten}}:
+$2
+Bitte entfernen Sie "$1" von <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$3|obiger Seite|obigen Seiten}}.',
+	'index-search-explain' => 'Diese Seite benutzt eine Präfix-Suche.
+
+Geben Sie die ersten Zeichen ein und drücken Sie die {{int:index-submit ("Enviar")}}-Schaltfläche, um nach Seitentiteln und Indexeinträgen zu suchen, die mit dem Suchstring beginnen',
+	'index-details-explain' => 'Einträge mit Pfeilen sind Indexeinträge.
+Klicken Sie auf den Pfeil, um alle unter diesem Titel indizierten Seiten anzuzeigen.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -325,10 +345,35 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
+ * @author ZeiP
  */
 $messages['fi'] = array(
+	'indexfunc-desc' => 'Jäsenninfunktio automaattisten ohjauksien ja täsmennyssivujen luomiseen.',
+	'indexfunc-badtitle' => 'Epäkelpo otsikko: ”$1”',
+	'indexfunc-editwarning' => 'Varoitus: 
+Tämä otsikko on indeksiotsikko {{PLURAL:$2|seuraavalle sivulle|seuraaville sivuille}}:
+$1
+Tarkista ettei sivua, jota olet luomassa ole jo olemassa toisella otsikolla.
+Jos luot tämän sivun, poista otsikko <nowiki>{{#index:}}</nowiki>-tagista {{PLURAL:$2|yllä olevalla sivulla|yllä olevilla sivuilla}}.',
+	'indexfunc-index-exists' => 'Sivu ”$1” on jo olemassa',
+	'indexfunc-movewarn' => 'Virhe: 
+”$1” on indeksiotsikko {{PLURAL:$3|seuraavalle sivulle|seuraaville sivuille}}:
+$2
+Poista ”$1” <nowiki>{{#index:}}</nowiki>-tagista {{PLURAL:$3|yllä olevilla sivuilla|yllä olevalla sivulla}}.',
+	'index' => 'Indeksihaku',
+	'index-legend' => 'Hae indeksistä',
 	'index-search' => 'Etsi:',
 	'index-submit' => 'Lähetä',
+	'index-disambig-start' => "'''$1''' voi tarkoittaa useaa eri sivua:",
+	'index-emptylist' => 'Yhtään sivua ei ole liitetty sanaan ”$1”',
+	'index-expand-detail' => 'Näytä tämän otsikon alle indeksoidut sivut',
+	'index-hide-detail' => 'Piilota sivulistaus',
+	'index-no-results' => 'Haku ei palauttanut tuloksia',
+	'index-search-explain' => 'Tämä sivu käyttää etuliitehakua.
+
+Kirjoita pari ensimmäistä kirjainta ja napsauta lähetä-nappia hakeaksesi sivujen otsikoista ja indeksimerkinnöistä, jotka alkavat hakusanalla.',
+	'index-details-explain' => 'Nuolin varustetut merkinnät ovat indeksimerkintöjä. 
+Napsauta nuolta näyttääksesi kaikki sivut, jotka on indeksoitu otsikon alle.',
 );
 
 /** French (Français)
@@ -1038,6 +1083,12 @@ $messages['tk'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'indexfunc-desc' => 'Otomatik yönlendirme ve anlam ayrımı sayfalarını oluşturmak için ayrıştırıcı fonksiyon',
+	'index' => 'Dizin araması',
+	'index-legend' => 'Dizini ara',
+	'index-search' => 'Ara:',
+	'index-submit' => 'Gönder',
+	'index-hide-detail' => 'Sayfa listesini gizle',
 	'index-no-results' => 'Aramada sonuç bulunamadı',
 );
 
