@@ -73,39 +73,51 @@ fn: {
 				context.$changesTab.find( 'table.diff tbody' ).empty();
 				context.$changesTab.find( '.wikiEditor-preview-loading' ).show();
 				
+				// Call the API. First PST the input, then diff it
 				var postdata = {
-					'action': 'query',
-					'indexpageids': '',
-					'prop': 'revisions',
-					'titles': wgPageName,
-					'rvdifftotext': wikitext,
-					'rvprop': '',
+					'action': 'parse',
+					'onlypst': '',
+					'text': wikitext,
 					'format': 'json'
 				};
-				var section = $( '[name=wpSection]' ).val();
-				if ( section != '' )
-					postdata['rvsection'] = section;
 				
 				$.post( wgScriptPath + '/api.php', postdata, function( data ) {
-						// Add diff CSS
-						if ( $( 'link[href=' + stylepath + '/common/diff.css]' ).size() == 0 ) {
-							$( 'head' ).append( $( '<link />' ).attr( {
-								'rel': 'stylesheet',
-								'type': 'text/css',
-								'href': stylepath + '/common/diff.css'
-							} ) );
-						}
-						try {
-							var diff = data.query.pages[data.query.pageids[0]]
-								.revisions[0].diff['*'];
-							context.$changesTab.find( 'table.diff tbody' )
-								.html( diff );
-							context.$changesTab
-								.find( '.wikiEditor-preview-loading' ).hide();
-							context.modules.preview.changesText = wikitext;
-						} catch (e) { } // "blah is undefined" error, ignore
-					}, 'json'
-				);
+					try {
+						var postdata2 = {
+							'action': 'query',
+							'indexpageids': '',
+							'prop': 'revisions',
+							'titles': wgPageName,
+							'rvdifftotext': data.parse.text['*'],
+							'rvprop': '',
+							'format': 'json'
+						};
+						var section = $( '[name=wpSection]' ).val();
+						if ( section != '' )
+							postdata['rvsection'] = section;
+						
+						$.post( wgScriptPath + '/api.php', postdata2, function( data ) {
+								// Add diff CSS
+								if ( $( 'link[href=' + stylepath + '/common/diff.css]' ).size() == 0 ) {
+									$( 'head' ).append( $( '<link />' ).attr( {
+										'rel': 'stylesheet',
+										'type': 'text/css',
+										'href': stylepath + '/common/diff.css'
+									} ) );
+								}
+								try {
+									var diff = data.query.pages[data.query.pageids[0]]
+										.revisions[0].diff['*'];
+									context.$changesTab.find( 'table.diff tbody' )
+										.html( diff );
+									context.$changesTab
+										.find( '.wikiEditor-preview-loading' ).hide();
+									context.modules.preview.changesText = wikitext;
+								} catch ( e ) { } // "blah is undefined" error, ignore
+							}, 'json'
+						);
+					} catch( e ) { } // "blah is undefined" error, ignore
+				}, 'json' );
 			}
 		} );
 		
