@@ -1914,6 +1914,7 @@ $messages['sr-el'] = array(
  * @author Boivie
  * @author M.M.S.
  * @author Najami
+ * @author Per
  */
 $messages['sv'] = array(
 	'ratinghistory' => 'Sidans betygshistorik',
@@ -1936,12 +1937,13 @@ $messages['sv'] = array(
 	'ratinghistory-table-rating' => 'Betyg',
 	'ratinghistory-table-votes' => 'Röster',
 	'ratinghistory-none' => 'Det finns för närvarande inte tillräckligt med feedbackdata tillgängligt från läsarna för grafer.',
-	'ratinghistory-legend' => "'''Dagliga genomsnittsbetyget''' <font color=\"blue\">''(blå)''</font> och '''löpande genomsnittsbetyg''' <font color=\"green\">''(grön)''</font> visas i grafform nedan, efter datum.
+	'ratinghistory-ratings' => "'''Förklaring:''' '''(1)''' - Mycket dålig; '''(2)''' - Dålig; '''(3)''' - Okej; '''(4)''' - Bra; '''(5)''' - Mycket bra;",
+	'ratinghistory-legend' => "'''Antalet granskningar per dag''' <font color=\"red\">''(röd)''</font>, '''dagliga genomsnittsbetyget''' <font color=\"blue\">''(blå)''</font> och '''löpande genomsnittsbetyg''' <font color=\"green\">''(grön)''</font> visas i grafform nedan, efter datum.
 Det '''löpande genomsnittsbetyget''' är helt enkelt genomsnittet av alla dagliga betyg ''inom'' denna tidsperiod för varje dag.
 
-Skala: '''[1]''' - Mycket dålig; '''[2]''' - Dålig; '''[3]''' - Okej; '''[4]''' - Bra; '''[5]''' - Mycket bra;
-
-'''Antalet granskningar per dag''' <font color=\"red\">''(röd)''</font> visas på grafen nedan, med skalan ''1:\$1''.",
+Betygsskalan är enligt följande:
+'''[1]''' - Mycket dålig; '''[2]''' - Dålig; '''[3]''' - Okej; '''[4]''' - Bra; '''[5]''' - Mycket bra;",
+	'ratinghistory-graph-scale' => "'''Bedömningar per dag''' <font color=\"red\">''(röd)''</font> visas i skala ''1:\$1''.",
 	'right-feedback' => 'Använd feedback-formuläret för att betygsätta en sida',
 );
 

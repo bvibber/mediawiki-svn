@@ -174,7 +174,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'templateinfo-desc' => "Ënnerstetzt d'Schablounen déi hir Datestruktur iwwer XML-Tagen definéieren",
+	'templateinfo-desc' => "Ënnerstëtzt d'Schablounen déi hir Datestruktur iwwer XML-Tagen definéieren",
 	'templateinfo-header' => "D'XML-Definitioun fir dës Schabloun ass:",
 );
 
@@ -249,6 +249,14 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'templateinfo-desc' => 'Поддерживает шаблоны с определением их структуры данных постредством XML-разметки',
 	'templateinfo-header' => 'XML-определение этого шаблона:',
+);
+
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'templateinfo-desc' => 'Stödjer mallar som definierar datastrukturen med XML-markering',
+	'templateinfo-header' => 'XML-definitionen för denna mall är:',
 );
 
 /** Turkish (Türkçe)

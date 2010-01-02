@@ -565,12 +565,15 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Per
  */
 $messages['sv'] = array(
 	'signaturelogpage' => 'Signeringslogg',
 	'signature-desc' => 'Gör det möjligt att [[Special:SignDocument|signera]] dokument',
 	'signaturelogpagetext' => 'Detta är en logg över [[Special:SignDocument|alla signaturer som lagts till dokument]].',
 	'signaturelogentry' => 'signerade dokumentet $1',
+	'right-sigadmin' => 'Administrera dokumentsignering',
+	'right-createsigndocument' => 'Skapa dokument som kan signeras',
 );
 
 /** Telugu (తెలుగు)

@@ -588,6 +588,11 @@ It peule pa creé sta pàgina-sì, ma it peule [{{fullurl:{{FULLPAGENAME}}|actio
  */
 $messages['ps'] = array(
 	'createbox-create' => 'جوړول',
+	'createbox-exists' => "بخښنه دې وي چې د \"'''{{FULLPAGENAME}}'''\" په نوم مخ د پخوا نه شته.
+
+تاسې دا مخ نه شی جوړولای، خو تاسې کولای شی چې [{{fullurl:{{FULLPAGENAME}}|action=edit}} سم يې کړی]، [{{fullurl:{{FULLPAGENAME}}}} وې لولی]، او يا هم د لانديني چوکاټ په کارولو سره په کوم بل نوم يو مخ جوړ کړی.
+
+<createbox>break=no</createbox>",
 );
 
 /** Portuguese (Português)

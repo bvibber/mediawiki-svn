@@ -879,6 +879,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -905,6 +906,8 @@ $messages['no'] = array(
 	'rich_editor_new_window' => 'Åpne rik editor i nytt vindu',
 	'tog-riched_start_disabled' => 'Start med rik editor deaktivert',
 	'tog-riched_use_popup' => 'Åpne rik editor i et sprettoppvindu',
+	'tog-riched_use_toggle' => 'Bruk bytt for å bytte mellom wikitekst og grafisk redigering (bytter ut tekstrute med grafisk redigering)',
+	'tog-riched_toggle_remember_state' => 'Husk siste valg',
 );
 
 /** Occitan (Occitan)

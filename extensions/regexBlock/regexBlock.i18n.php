@@ -401,16 +401,23 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'regexblock-already-blocked' => '$1 zo stanket dija.',
+	'regexblock-block-log' => "Sanket eo bet an implijer pe ar chomlec'h IP '''$1'''.",
 	'regexblock-block-success' => 'Stanket eo bet an implijer',
+	'regexblock-currently-blocked' => "Chomlec'hioù stanket er mare-mañ :",
 	'regexblock-expire-duration' => '1 eurvezh,2 eurvezh,4 eurvezh,6 eurvezh,1 devez,3 devez,1 sizhunvezh,2 sizhunvezh,1 miz,3 miz,6 miz,1 vloaz, da viken',
 	'regexblock-form-username' => "Chomlec'h IP pe anv implijer :",
 	'regexblock-form-reason' => 'Abeg :',
 	'regexblock-form-expiry' => 'Termen :',
 	'regexblock-form-match' => 'Klotadur rik',
 	'regexblock-form-submit' => 'Stankañ an implijer-mañ',
+	'regexblock-form-submit-empty' => "Roit un anv implijer pe ur chomlec'h IP da stankañ.",
 	'regexblock-form-submit-expiry' => 'Diferit un termen, mar plij.',
+	'regexblock-match-stats-record' => "$1 en deus stanket « $2 » d'an « $3 » da « $4 », liammet adalek ar chomlec'h « $5 »",
 	'regexblock-nodata-found' => "N'eus ket bet kavet roadennoù",
 	'regexblock-unblock-success' => 'Distanket eo bet an implijer',
+	'regexblock-unblock-log' => "Disanket eo bet an implijer pe ar chomlec'h IP '''$1'''.",
+	'regexblock-unblock-error' => "Fazi distankañ $1.
+Sur a-walc'h n'eus ket eus an implijer-mañ.",
 	'regexblock-view-blocked' => 'Gwelet ar stankadurioù gant :',
 	'regexblock-view-all' => 'Pep tra',
 	'regexblock-view-go' => 'Mont',
@@ -421,6 +428,7 @@ $messages['br'] = array(
 	'regexblock-view-block-by' => 'stanket gant :',
 	'regexblock-view-block-unblock' => 'distankañ',
 	'regexblock-view-stats' => 'stadegoù',
+	'regexblock-view-empty' => "Goullo eo roll an implijerien pe ar chomlec'hioù IP bet stanket.",
 	'regexblock-view-time' => "d'an $1",
 );
 
@@ -2373,6 +2381,7 @@ A peul esse che a-i sia pa col utent.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'regexblock-form-username' => 'IP پته يا کارن-نوم:',
 	'regexblock-form-reason' => 'سبب:',
 	'regexblock-form-expiry' => 'د پای نېټه:',
 	'regexblock-view-all' => 'ټول',

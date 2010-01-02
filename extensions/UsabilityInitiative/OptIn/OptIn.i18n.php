@@ -1006,6 +1006,16 @@ $messages['cu'] = array(
  */
 $messages['cy'] = array(
 	'optin-title-optedout' => 'Rhowch gynnig ar Beta',
+	'optin-title-optedin' => 'Gadael Beta',
+	'optin-title-justoptedin' => 'Croeso i Beta',
+	'optin-title-justoptedout' => 'Diolch ichi am roi cynnig ar Beta',
+	'optin-title-feedback' => 'Adborth Beta',
+	'optin-needlogin' => 'Rhaid [$1 mewngofnodi] er mwyn rhoi cynnig ar Beta.',
+	'optin-intro' => "Y mae Wikipedia Usability Initiative wedi bod yn ymdrechu i wneud Wikipedia'n haws i'w ddefnyddio.
+A hoffech chi roi cynnig ar ein fersiwn Beta?",
+	'optin-feedback-intro' => "Diolch ichi am roi cynnig ar Beta.
+Fe hoffem gael eich barn ar ein rhyngwyneb newydd, a byddem yn ddiolchgar petaech yn cwblhau'r arolwg dewisol isod.",
+	'optin-feedback-back' => "Os nad ydych am gwblhau'r arolwg, gallwch ddychwelyd at $1.",
 	'optin-accept-long' => 'Rhoi cynnig ar Beta',
 	'optin-submit-out' => 'Gadael Beta',
 );

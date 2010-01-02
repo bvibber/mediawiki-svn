@@ -4261,6 +4261,38 @@ A dovrìa o fornì në stranòm si 'nsima për identifiché sò coment, opura \$
 	'wikilog-doc-import-comment' => 'Documentassion Wikilog amportà',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikilog-specialwikilog-title' => 'ويکي يادښتونه',
+	'wikilog-specialwikilog' => 'ويکي يادښت',
+	'wikilog-new-item-go' => 'جوړول',
+	'wikilog-item-name' => 'د ليکنې نوم:',
+	'wikilog-published' => 'خپاره شوي',
+	'wikilog-updated' => 'هم مهاله شوي',
+	'wikilog-draft' => 'مسوده',
+	'wikilog-authors' => 'ليکوالان',
+	'wikilog-wikilog' => 'ويکي يادښت',
+	'wikilog-title' => 'سرليک',
+	'wikilog-actions' => 'کړنې',
+	'wikilog-comments' => 'تبصرې',
+	'wikilog-replies' => 'ځوابونه',
+	'wikilog-view-archives' => 'خونديځونه',
+	'wikilog-view-summary' => 'لنډيز',
+	'wikilog-draft-title-mark' => '(مسوده)',
+	'wikilog-anonymous-mark' => '(ورکنومی)',
+	'wikilog-pager-newer-n' => '← نوي $1',
+	'wikilog-pager-older-n' => 'زاړه $1 →',
+	'wikilog-pager-first' => '←← لومړني',
+	'wikilog-pager-last' => 'وروستني →→',
+	'wikilog-has-comments' => '{{PLURAL:$1|يوه تبصره|$1 تبصرې}}',
+	'wikilog-edit-fieldset-legend' => 'د ويکي يادښت خوښنې:',
+	'wikilog-comment-edit' => 'دا تبصره سمول',
+	'wikilog-comment-delete' => 'دا تبصره ړنګول',
+	'wikilog-comment-history' => 'د تبصرې پېښليک کتل',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Juliano F. Ravasi

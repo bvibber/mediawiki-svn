@@ -613,6 +613,8 @@ $messages['br'] = array(
 	'sign-viewfield-email' => 'Postel',
 	'sign-viewfield-age' => 'Oad',
 	'sign-viewfield-options' => 'Dibarzhioù',
+	'sign-sigadmin-close' => 'Diweredekaat an dilesadur',
+	'sign-sigadmin-open' => 'Gweredekaat an dilesadur',
 	'sign-signatures' => 'Sinadurioù',
 	'sign-viewsignatures' => 'gwelet ar sinadurioù',
 	'sign-closed' => 'serr',
@@ -2529,7 +2531,7 @@ $messages['lb'] = array(
 	'sign-nodocselected' => 'Wielt w.e.g dat Dokument aus dat Dir ënenrschreiwe wëllt.',
 	'sign-selectdoc' => 'Dokument:',
 	'sign-docheader' => '<div class="noarticletext">Benotzt w.e.g. dëse Formulair, fir d\'Dokument „[[$1]]“, dat hei ënnedrënner gewisen ass, z\'ënnerschreiwen.
-Liest dat ganzt Dokument duerch a wann Dir dozou Är ënnerstetzung gi wëllt da fëllt déi néideg Felder aus fir et z\'ënnerschreiwen.</div>',
+Liest dat ganzt Dokument duerch a wann Dir dozou Är Ënnerstëtzung gi wëllt da fëllt déi néideg Felder aus fir et z\'ënnerschreiwen.</div>',
 	'sign-error-nosuchdoc' => 'Dat Dokument, dat Dir ugefrot hutt ($1), gëtt et net.',
 	'sign-realname' => 'Numm:',
 	'sign-address' => 'Adress Strooss:',

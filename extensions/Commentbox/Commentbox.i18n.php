@@ -654,6 +654,17 @@ It l\'has-to un coment an sta pàgina-sì? Giontlo sì o <span class="plainlinks
 	'commentbox-error-empty-comment' => 'Coment veuid a son pa possìbij!',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'commentbox-name' => 'نوم:',
+	'commentbox-log' => 'نوې انګېرنې',
+	'commentbox-first-comment-heading' => '== انګېرنې ==',
+	'commentbox-error-page-nonexistent' => 'پدې نوم مخ نشته!',
+	'commentbox-error-namespace' => 'په دې نوم-تشيال کې د انګېرنو اجازه نشته!',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Indech

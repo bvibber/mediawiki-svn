@@ -1618,6 +1618,18 @@ $messages['pms'] = array(
 	'right-recordadmin' => "Treuva e modifica pàgine d'anotassion",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'recordadmin-buttonsearch' => 'پلټنه',
+	'recordadmin-buttoncreate' => 'جوړول',
+	'recordadmin-buttonsave' => 'خوندي کول',
+	'recordadmin-viewlink' => 'کتل',
+	'recordadmin-editlink' => 'سمول',
+	'recordadmin-actions' => 'کړنې',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

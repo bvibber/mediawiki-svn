@@ -252,6 +252,13 @@ $messages['sk'] = array(
 	'semanticinternalobjects-desc' => 'Nastavenie vnútorných objektov v Semantic MediaWiki',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'semanticinternalobjects-desc' => 'Inställning för interna objekt i Semantic MediaWiki',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

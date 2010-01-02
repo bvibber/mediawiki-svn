@@ -1234,6 +1234,8 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
 	'deletebatch-or' => '<b>ELLER</b>',
 	'deletebatch-delete' => 'Radera',
 	'deletebatch-page' => 'Sidor som ska raderas:',
+	'deletebatch-processing-from-file' => 'raderar sidor från listan över filer',
+	'deletebatch-processing-from-form' => 'raderar sidor från formuläret',
 	'deletebatch-omitting-nonexistant' => 'Utelämna ej existerande sida $1.',
 	'deletebatch-omitting-invalid' => 'Utelämna ogiltig sida $1.',
 	'deletebatch-file-bad-format' => 'Filen ska innehålla ren text',

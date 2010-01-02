@@ -204,6 +204,13 @@ $messages['nl'] = array(
 	'autoincrement-desc' => 'Voegt een variabele <nowiki>{{AUTOINCREMENT}}</nowiki> toe die automatisch wordt opgehoogd',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'autoincrement-desc' => 'En utvidelse som automatisk øker variabelen <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

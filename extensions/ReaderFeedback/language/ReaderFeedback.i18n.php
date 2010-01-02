@@ -1727,6 +1727,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'readerfeedback-overall' => 'ټولټال',
 	'readerfeedback-finished' => 'مننه!',
 );
 

@@ -1684,6 +1684,14 @@ Për salvé un sondagi, ch'a lo spedissa sensa arsponde a gnun-e custion ëd pro
 	'qp_error_unique' => "La custion ëd sòrt ùnica() a l'ha pi propòste che arspòste possìbij definìe: impossìbil da completé",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'qp_vote_button' => 'رايه ورکول',
+	'qp_users_link' => 'کارنان',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

@@ -959,6 +959,7 @@ $messages['ps'] = array(
 	'adminlinks_editmainpagename' => 'د اصلي مخ نوم سمول',
 	'adminlinks_users' => 'کارنان',
 	'adminlinks_createuser' => 'يو کارن جوړول',
+	'adminlinks_browsesearch' => 'سپړنه او پلټنه',
 	'right-adminlinks' => 'د [[Special:AdminLinks|پازوال تړنو]] ته ورسيخه شوې تړنه کتل',
 );
 

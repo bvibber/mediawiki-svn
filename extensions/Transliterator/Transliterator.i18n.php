@@ -430,13 +430,15 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Ozp
+ * @author Per
  */
 $messages['sv'] = array(
 	'transliterator-desc' => 'Tillhandahåller en konfigurerbar parserfunktion för transkribering',
 	'transliterator-error-ambiguous' => 'Tvetydig regel <code>$1</code> i [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'Ogiltig syntax <code>$1</code> i [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Mer än {{PLURAL:$1|en regel|$1 regler}} i  [[MediaWiki:$2]]',
-	'transliterator-error-rulesize' => 'Regeln <code>$1</code> har mer än $3 tecken på vänster sida i [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Regeln <code>$1</code> har mer än {{PLURAL:$3|ett tecken|$3 tecken}} på vänster sida i [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] måste vara minst {{PLURAL:$1|ett tecken|$1 tecken}} långt.',
 );
 
 /** Vietnamese (Tiếng Việt)
