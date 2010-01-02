@@ -109,7 +109,6 @@ class OggChop {
 			@@todo build the ogg skeleton header from stream set
 			$kStart time and the requested time.
 			*/
-			*/
 			//for now just start output at the given byte range
 			//(DOES NOT WORK) can't play stream without header
 			$this->outputByteRange( $kStart[1], $kEnd[1]);
