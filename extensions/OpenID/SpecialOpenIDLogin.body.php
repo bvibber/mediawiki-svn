@@ -410,12 +410,13 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 *
 	 * @param $user User object
 	 * @param $sreg Array of options get from OpenID
+	 * @param $force forces update regardless of user preferences
 	 */
-	function updateUser( $user, $sreg ) {
+	function updateUser( $user, $sreg, $force = false ) {
 		global $wgAllowRealName, $wgEmailAuthentication;
 
 		// Back compat with old option
-		$updateAll = $user->getOption( 'openid-update-userinfo-on-login' );
+		$updateAll = $force || $user->getOption( 'openid-update-userinfo-on-login' );
 
 		// Nick name
 		if ( $updateAll || $user->getOption( 'openid-update-userinfo-on-login-nickname' ) ) {
@@ -519,7 +520,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$ssUpdate->doUpdate();
 
 			self::addUserUrl( $user, $openid );
-			$this->updateUser( $user, $sreg );
+			$this->updateUser( $user, $sreg, true );
 			$user->saveSettings();
 			return $user;
 		}
