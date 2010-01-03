@@ -885,8 +885,10 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'fundraiserportal-ruby-button' => 'Done mò',
 	'fundraiserportal-rubytext-button' => 'Done mò',
+	'fundraiserportal-rubytext-close' => 'Scunne quiste da mò',
 	'fundraiserportal-sapphire-button' => 'Done mò',
 	'fundraiserportal-tourmaline-button' => 'Done mò',
+	'fundraiserportal-tourmaline-close' => 'Scunne quiste da mò',
 );
 
 /** Russian (Русский)

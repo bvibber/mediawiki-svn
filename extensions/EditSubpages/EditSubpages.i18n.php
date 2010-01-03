@@ -384,15 +384,16 @@ Metmaacher se ze Ändere.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'editsubpages-desc' => "Erlaabt engem Adiministrateur fir d'Spär vu Säiten opzehiewen an all Ënnersäite vun däer Säit fir anonym Ännerungen via [[MediaWiki:Unlockedpages|Säiten denen hir Spär opgehuewen ass]]",
 	'unlockedpages' => " #<!-- Dës Zeil net änneren --><pre>
-# Säiten vun denen Dir ëllt datt se net gespaart sinn hei ënndrënner schreiwen mat dem
+# Säite vun deenen Dir wëllt datt se net gespaart sinn, hei ënnendrënner schreiwen mat dem
 # * Säitennumm
-# Säiten denen hir Spär opgehuewe sll gi musse mat engem * markéiert sinn.
-# Alles Anescht gëtt als Bemierkung gewert.
+# Säiten deenen hir Spär opgehuewe soll gi musse mat engem * markéiert sinn.
+# Alles Anescht gëtt als Bemierkung gewäert.
 # D'Spär vun Diskussionssäite gëtt automatesch matopgehuewen.
 # Kuckt: http://www.mediawiki.org/wiki/Extension:EditSubpages fir méi Informatiounen
   #</pre><!-- Dës Zeil net änneren -->",

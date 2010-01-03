@@ -5585,6 +5585,7 @@ $messages['kw'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -5709,7 +5710,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'extensions' => "D'Erweiderunge configuréieren",
 	'right-configure' => "D'Wiki configuréieren",
 	'right-configure-all' => 'All wiki-Astellunge configuréieren',
-	'right-configure-interwiki' => 'AStellungen a frieme Wikien änneren',
+	'right-configure-interwiki' => 'Astellungen a frieme Wikien änneren',
 	'right-extensions' => 'Erweiderunge configuréieren',
 	'right-extensions-all' => 'Erweidert Astellunge vun den Erweiderungen',
 	'right-extensions-interwiki' => 'Erweiderungen vun anere Wikien astellen',

@@ -190,10 +190,11 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'editsectionhilitelink-desc' => "Den entspriechenden Abschnitt ervierhiewen wann Dir mat der Maus iwwert den 'Änneren'-Link fuert",
+	'editsectionhilitelink-desc' => "Den entspriechenden Abschnitt ervirhiewen wann Dir mat der Maus iwwert den 'Änneren'-Link fuert",
 );
 
 /** Macedonian (Македонски)

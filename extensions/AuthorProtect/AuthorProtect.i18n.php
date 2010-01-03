@@ -874,13 +874,14 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'authorprotect' => "Ännere vun der Säit op d'Auteure limitéieren",
 	'authorprotect-desc' => "Erlaabt et dem Auteur vun enger Säit fir dës fir d'Verännerung dovun fir aner Benotzer ze spären",
 	'authorprotect-notauthor' => 'Dir sidd net den Auteur vun dëser Säit',
-	'authorprotect-confirm' => "D'Niveaue vunder Protectioun änneren",
+	'authorprotect-confirm' => "D'Niveaue vun der Protectioun änneren",
 	'authorprotect-edit' => 'Ännerungen nëmmen fir Auteure méiglech maachen',
 	'authorprotect-move' => 'Récklen nëmme fir Auteure méiglech maachen',
 	'authorprotect-expiry' => 'Dauer vun der Spär',

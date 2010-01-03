@@ -616,14 +616,27 @@ $messages['br'] = array(
 	'sign-sigadmin-close' => 'Diweredekaat an dilesadur',
 	'sign-sigadmin-open' => 'Gweredekaat an dilesadur',
 	'sign-signatures' => 'Sinadurioù',
+	'sign-sigadmin-closesuccess' => 'Diweredekaet eo bet an dilesadur.',
+	'sign-sigadmin-opensuccess' => 'Gweredekaet eo bet an dilesadur.',
 	'sign-viewsignatures' => 'gwelet ar sinadurioù',
 	'sign-closed' => 'serr',
 	'sig-anonymous' => '<i>Dizanv</i>',
 	'sig-private' => '<i>Prevez</i>',
 	'sign-sigdetails' => 'Munudoù ar sinadur',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|Kaozeadenn]] • <!--
+-->[[Special:Contributions/$1|Degasadennoù]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|Stankañ an implijer]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Marilh ar stankadennoù] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Gwiriekadur un implijer])<!--
+--></span>',
 	'sign-viewfield-stricken' => 'Barrennet',
 	'sign-viewfield-reviewedby' => 'Adweler',
 	'sign-viewfield-reviewcomment' => 'Addispleg',
+	'sign-detail-uniquequery' => 'Hennadoù damheñvel',
 	'sign-reviewsig' => 'Adwelet ar sinadur',
 	'sign-review-comment' => 'Addispleg',
 	'sign-uniquequery-similarname' => 'Anv damheñvel',

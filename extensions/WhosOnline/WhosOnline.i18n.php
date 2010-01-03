@@ -545,10 +545,12 @@ $messages['te'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Harley Hartwell
  * @author Passawuth
  */
 $messages['th'] = array(
 	'whosonline' => 'ผู้ที่กำลังออนไลน์',
+	'whosonline-desc' => 'แสดง[[Special:WhosOnline|รายชื่อ]]ของผู้ใช้ที่ล็อกอินและผู้ใช้นิรนาม ที่กำลังออนไลน์อยู่บนวิกินี้',
 );
 
 /** Tagalog (Tagalog)

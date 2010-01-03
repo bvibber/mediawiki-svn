@@ -673,6 +673,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -689,7 +690,7 @@ $messages['lb'] = array(
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
 	'onlinestatus-pref-onlineonlogin' => 'Mäi Statut op online änneren esoubal ech mech aloggen',
-	'onlinestatus-pref-offlineonlogout' => 'Mäi Statu op offline änneren esoubal ech mech ausloggen',
+	'onlinestatus-pref-offlineonlogout' => 'Mäi Statut op offline änneren esoubal ech mech ausloggen',
 );
 
 /** Lithuanian (Lietuvių)
