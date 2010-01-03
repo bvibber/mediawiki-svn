@@ -2771,7 +2771,7 @@ evt: {
 				var endIndex = -1; //no match found
 				var openTemplates = 1;
 				var templatesMatched = false;
-				while ( tokenIndex < tokenArray.length && endIndex == -1 ) {
+				while ( tokenIndex < tokenArray.length - 1 && endIndex == -1 ) {
 					tokenIndex++;
 					if ( tokenArray[tokenIndex].label == 'TEMPLATE_BEGIN' ) {
 						openTemplates++;
