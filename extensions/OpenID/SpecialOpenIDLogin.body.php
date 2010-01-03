@@ -105,8 +105,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			'href' => $oidScriptPath . ( $wgOpenIDShowProviderIcons ? '/skin/openid.css' : '/skin/openid-plain.css' )
 		) );
 
-		$wgOut->addScript( '<script type="text/javascript" src="' . $oidScriptPath . '/skin/jquery-1.3.2.min.js"></script>' . "\n" );
-		$wgOut->addScript( '<script type="text/javascript" src="' . $oidScriptPath . '/skin/openid.js"></script>' . "\n" );
+		$wgOut->addScript( '<script type="text/javascript" src="' . $oidScriptPath . '/skin/openid-combined-min.js"></script>' . "\n" );
 
 		$formsHTML = '';
 
