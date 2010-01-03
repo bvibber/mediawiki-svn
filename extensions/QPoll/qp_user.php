@@ -74,7 +74,8 @@ $wgExtensionCredits['specialpage'][] = array(
  * Add this extension to the mediawiki's extensions list.
  */
 $qp_ExtDir = str_replace( "\\", "/", dirname(__FILE__) ); // filesys path with windows path fix
-$qp_top_dir = array_pop( explode( '/', $qp_ExtDir ) );
+$dirs = explode( '/', $qp_ExtDir );
+$qp_top_dir = array_pop( $dirs );
 $qp_ScriptPath = $wgScriptPath . '/extensions' . ( ( $qp_top_dir == 'extensions' ) ? '' : '/' . $qp_top_dir ); // apache virtual path
 
 $wgExtensionMessagesFiles['QPoll'] = $qp_ExtDir . '/qp_i18n.php';
@@ -128,7 +129,7 @@ function wfQPollExtension() {
 	global $qp_ScriptPath;
 	global $wgParser;
 	global $wgExtensionCredits;
-	global $wgQPollFunctionHook;
+	global $wgQPollFunctionsHook;
 	global $wgContLang;
 	global $wgJsMimeType, $wgOut;
 	global $qp_enable_showresults;
