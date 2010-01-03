@@ -11,6 +11,26 @@ var openid = {
 		openid.current = provider;
 	},
 	update: function() {
-		$('#openid_url').val($('#openid_provider_url_' + openid.current).val().replace(/{.*}/, $('#openid_provider_param_' + openid.current).val()));
+		// root is root of all articles (e.g. empty article name)
+		var root = wgArticlePath;
+		root = root.replace('$1', '');
+
+		$.cookie('openid.provider', openid.current, { path: root, expires: 365 });
+
+		if (openid.current !== 'openid') {
+			var param = $('#openid_provider_param_' + openid.current).val();
+			$.cookie('openid.param', param, { path: root, expires: 365 });
+
+			$('#openid_url').val($('#openid_provider_url_' + openid.current).val().replace(/{.*}/, param));
+		}
+	},
+	init: function() {
+		var provider = $.cookie('openid.provider');
+		if (provider !== null) {
+			openid.show(provider);
+			$('#openid_provider_param_' + openid.current).val($.cookie('openid.param'));
+		}
 	}
 };
+
+$(document).ready(openid.init);
