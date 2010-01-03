@@ -237,6 +237,8 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 
 			self::addUserUrl( $wgUser, $openid_url );
 
+			$this->loginSetCookie( $openid_url );
+
 			$wgOut->setPageTitle( wfMsg( 'openidconvertsuccess' ) );
 			$wgOut->setRobotPolicy( 'noindex,nofollow' );
 			$wgOut->setArticleRelated( false );

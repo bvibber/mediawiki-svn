@@ -266,11 +266,6 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		);
 	}
 
-	function loginSetCookie( $openid ) {
-		global $wgRequest, $wgOpenIDCookieExpiration;
-		$wgRequest->response()->setcookie( 'OpenID', $openid, time() +  $wgOpenIDCookieExpiration );
-	}
-
 	/**
 	 * Handle "Choose name" form submission
 	 */

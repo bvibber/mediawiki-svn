@@ -281,6 +281,11 @@ class SpecialOpenID extends SpecialPage {
 		}
 	}
 
+	function loginSetCookie( $openid ) {
+		global $wgRequest, $wgOpenIDCookieExpiration;
+		$wgRequest->response()->setcookie( 'OpenID', $openid, time() +  $wgOpenIDCookieExpiration );
+	}
+
 	# Find the user with the given openid, if any
 	public static function getUserUrl( $user ) {
 		$openid_urls = array();

@@ -37,13 +37,16 @@ class OpenIDProvider {
 	function getSmallButtonHTML() { return $this->getButtonHTML( false ); }
 
 	function getLoginFormHTML() {
+		global $wgCookiePrefix;
+
 		$html = '<div id="provider_form_' . $this->id . '"' .
 			( $this->id == 'openid' ? '' : ' style="display:none"' ) . '>' .
 			'<div><label for="openid_url">' . $this->label . '</label></div>';
 
 		if ( $this->id == 'openid' ) {
-			$html .= '<input type="text" name="openid_url" id="openid_url" size="45" value="" />';
-			$html .= '<input type="submit" value="' . wfMsg( 'login' ) . '"/>';
+			$url = isset( $_COOKIE[$wgCookiePrefix.'OpenID'] ) ? htmlspecialchars( $_COOKIE[$wgCookiePrefix.'OpenID'] ) : '';
+			$html .= '<input type="text" name="openid_url" id="openid_url" size="45" value="' . $url . '" />';
+			$html .= Xml::submitButton( wfMsg( 'login' ) );
 		} else {
 			$html .= '<input type="hidden" id="openid_provider_url_' . $this->id . '" value="' . $this->url . '" />';
 			if ( strpos( $this->url, '{' ) === false ) {
@@ -51,7 +54,7 @@ class OpenIDProvider {
 			} else {
 				$html .= '<input type="text" id="openid_provider_param_' . $this->id . '" size="25" value="" />';
 			}
-			$html .= '<input type="submit" value="' . wfMsg( 'login' ) . '"/>';
+			$html .= Xml::submitButton( wfMsg( 'login' ) );
 		}
 		$html .= '</div>';
 
