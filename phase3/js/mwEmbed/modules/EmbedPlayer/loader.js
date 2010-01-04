@@ -95,7 +95,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 	
 	// Add timed text items if flag set.  	
 	if( addTimedTextReqFlag ){
-		dependencyRequest[0].push( [ '$j.fn.menu', 'mw.TimedText' ] );
+		dependencyRequest[0].push( '$j.fn.menu', 'mw.TimedText' )
 	}
 	
 	// Add PNG fix if needed:
