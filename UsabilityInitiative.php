@@ -8,9 +8,9 @@
  * This file contains the main include file for the UsabilityInitiative
  * extension of MediaWiki.
  *
- * Usage: Inlcude the modules you want to use specifically by adding a line in
+ * Usage: Include the modules you want to use specifically by adding a line in
  * LocalSettings.php for each of them like this:
- * require_once( "$IP/extensions/UsabilityInitiative/EditToolbar/EditToolbar.php" );
+ * require_once( "$IP/extensions/UsabilityInitiative/Vector/Vector.php" );
  *
  * @author Trevor Parscal <tparscal@wikimedia.org>
  * Allow "or a later version" here?

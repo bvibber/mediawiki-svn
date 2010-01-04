@@ -70,6 +70,13 @@ class VectorHooks {
 		global $wgUser, $wgJsMimeType, $wgOut;
 		global $wgVectorModules, $wgUsabilityInitiativeResourceMode;
 		
+		// Don't load Vector modules for non-Vector skins
+		// They won't work but will throw unused JS in the client's face
+		// Using instanceof to catch any skins subclassing Vector
+		if ( !$wgUser->getSkin() instanceof SkinVector ) {
+			return true;
+		}
+		
 		// Modules
 		$preferences = array();
 		$enabledModules = array();
