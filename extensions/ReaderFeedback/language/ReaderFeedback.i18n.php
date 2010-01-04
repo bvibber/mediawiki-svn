@@ -44,6 +44,8 @@ $messages['en'] = array(
 	'readerfeedback-tier-poor'     => 'Poor',
 	'tooltip-ca-ratinghist'        => 'Reader ratings of this page',
 	'specialpages-group-feedback'  => 'Viewer opinion',
+	'readerfeedback-ak-review'     => 'b', 
+	'readerfeedback-tt-review'     => 'Submit review',
 );
 
 /** Message documentation (Message documentation)
@@ -85,6 +87,8 @@ $messages['qqq'] = array(
 	'readerfeedback-submitting' => '{{flaggedrevs}}
 {{identical|submitting}}',
 	'readerfeedback-tagfilter' => '{{Identical|Tag}}',
+	'readerfeedback-ak-review' => 'Accesskey for submit button on readerfeedback form. Does not need to be translated', 
+	'readerfeedback-tt-review' => 'Title of submit button on review form',
 );
 
 /** Afrikaans (Afrikaans)
