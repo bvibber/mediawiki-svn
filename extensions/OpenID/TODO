@@ -1,5 +1,5 @@
 + Add a Storage class for $wgMemc
-+ Prevent running OpenIDLogin, OpenIDFinish when you're already logged in
++ Prevent running OpenIDLogin when you're already logged in
 + Add a server mode
 + Prevent serving OpenID accounts
 + Prevent trusting the same server
@@ -36,8 +36,8 @@
   like http://getopenid.com/evanprodromou or
   http://profile.typekey.com/EvanProdromou/
 + Allow specifying a FileStore
-- Allow specifying a MySQLStore
-- Allow specifying a memcached store
++ Allow specifying a MySQLStore
++ Allow specifying a memcached store
 + Fall back to FileStore if Memc is bogus
 + Unit test for MemcStore
 + for just-a-hostname OpenIDs, if the first element is not

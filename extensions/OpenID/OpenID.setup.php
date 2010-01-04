@@ -55,7 +55,8 @@ $wgOpenIDShowUrlOnUserPage = 'user';
 $wgOpenIDServerForceAllowTrust = array();
 
 /**
- * Where to store transitory data. Only supported type is 'file'.
+ * Where to store transitory data.
+ * Supported types are 'file', 'memcached', 'db'.
  */
 $wgOpenIDServerStoreType = 'file';
 
@@ -91,7 +92,8 @@ $wgOpenIDConsumerAllow = array();
 $wgOpenIDConsumerDeny = array();
 
 /**
- * Where to store transitory data. Only supported type is 'file'.
+ * Where to store transitory data.
+ * Supported types are 'file', 'memcached', 'db'.
  */
 $wgOpenIDConsumerStoreType = 'file';
 
@@ -176,6 +178,9 @@ $wgAutoloadClasses['OpenIDProvider'] = $dir . 'OpenIDProvider.body.php';
 
 # Gets stored in the session, needs to be reified before our setup
 $wgAutoloadClasses['Auth_OpenID_CheckIDRequest'] = OpenIDGetServerPath();
+
+$wgAutoloadClasses['MediaWikiOpenIDDatabaseConnection'] = $dir . 'DatabaseConnection.php';
+$wgAutoloadClasses['MediaWikiOpenIDMemcachedStore'] = $dir . 'MemcachedStore.php';
 
 $wgHooks['PersonalUrls'][] = 'OpenIDHooks::onPersonalUrls';
 $wgHooks['BeforePageDisplay'][] = 'OpenIDHooks::onBeforePageDisplay';

@@ -32,7 +32,7 @@ require_once( "Auth/OpenID/FileStore.php" );
 class SpecialOpenID extends SpecialPage {
 
 	function getOpenIDStore( $storeType, $prefix, $options ) {
-		global $wgOut;
+		global $wgOut, $wgMemc, $wgDBtype;
 
 		# FIXME: support other kinds of store
 		# XXX: used to support memc, now use memcached from php-openid
@@ -48,6 +48,30 @@ class SpecialOpenID extends SpecialPage {
 				}
 			}
 			return new Auth_OpenID_FileStore( $options['path'] );
+
+		case 'db':
+			if ( $wgDBtype == 'sqlite' ) {
+				$db = new MediaWikiOpenIDDatabaseConnection( wfGetDB( DB_MASTER ) );
+				require_once( 'Auth/OpenID/SQLiteStore.php' );
+				return new Auth_OpenID_SQLiteStore( $db );
+			} else {
+				$lb = wfGetLBFactory()->newMainLB();
+				$db = new MediaWikiOpenIDDatabaseConnection( $lb->getConnection( DB_MASTER ) );
+				switch( $wgDBtype ) {
+				case 'mysql':
+					require_once( 'Auth/OpenID/MySQLStore.php' );
+					return new Auth_OpenID_MySQLStore( $db );
+				case 'postgres':
+					require_once( 'Auth/OpenID/PostgreSQLStore.php' );
+					return new Auth_OpenID_PostgreSQLStore( $db );
+				default:
+					$wgOut->showErrorPage( 'openidconfigerror', 'openidconfigerrortext' );
+					return NULL;
+				}
+			}
+
+		case 'memcached':
+			return new MediaWikiOpenIDMemcachedStore( $wgMemc );
 
 		 default:
 			$wgOut->showErrorPage( 'openidconfigerror', 'openidconfigerrortext' );
