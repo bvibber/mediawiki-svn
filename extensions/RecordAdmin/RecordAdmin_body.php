@@ -350,13 +350,21 @@ class SpecialRecordAdmin extends SpecialPage {
 				$r = array( 0 => $t, 'title' => $t->getPrefixedText() );
 				foreach ( array_keys( $this->types ) as $k ) {
 					$v = isset( $posted[$k] ) ? ( $this->types[$k] == 'bool' ? 'yes' : $posted[$k] ) : '';
-					if ( !preg_match( "|\s*\|\s*$k\s*=|", $text ) ) $text .= "\n|$k=\n|"; # Treat non-existent fields as existing but empty
-					$i = preg_match( "|^\s*\|\s*$k\s*= *(.*?) *(?=^\s*[\|\}])|sm", $text, $m );
+					$ek = str_replace( '|', '\|', $k );
+					if ( !preg_match( "|\s*\|\s*$ek\s*=|", $text ) ) $text .= "\n|$k=\n|"; # Treat non-existent fields as existing but empty
+					$i = preg_match( "|^\s*\|\s*$ek\s*= *(.*?) *(?=^\s*[\|\}])|sm", $text, $m );
 					$r[$k] = isset( $m[1] ) ? $m[1] : '';
 					if ( $v && !( $i && $this->cmpCallback( $r[$k], $v, $operator[$k] ) ) ) $match = false;
 				}
 				if ( $invert ) $match = !$match;
-				if ( $match ) $records[] = $r;
+				if ( $match ) {
+					if ( $group ) {
+						$records[] = $r;
+					}
+					else {
+						$records[] = $r;
+					}
+				}
 			}
 		}
 		$dbr->freeResult( $res );
