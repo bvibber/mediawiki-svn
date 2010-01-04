@@ -415,8 +415,10 @@ if ( typeof context == 'undefined' ) {
 		'getSelection': function() {
 			var retval;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
+				// Firefox and Opera
 				retval = context.$iframe[0].contentWindow.getSelection();
 			} else if ( context.$iframe[0].contentWindow.document.selection ) { // should come last; Opera!
+				// IE
 				retval = context.$iframe[0].contentWindow.document.selection.createRange();
 			}
 			if ( retval.text ) {
@@ -432,8 +434,6 @@ if ( typeof context == 'undefined' ) {
 		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'encapsulateSelection': function( options ) {
-			// TODO: IE
-			// TODO: respect options.ownline
 			var selText = $(this).textSelection( 'getSelection' );
 			var selectAfter = false;
 			var pre = options.pre, post = options.post;
@@ -448,32 +448,38 @@ if ( typeof context == 'undefined' ) {
 				selText = selText.substring( 0, selText.length - 1 );
 				post += ' ';
 			}
-			var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
-			if ( options.ownline ) {
-				// TODO: This'll probably break with syntax highlighting
-				if ( range.startOffset != 0 ) {
-					pre  = "\n" + options.pre;
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				// Firefox and Opera
+				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
+				if ( options.ownline ) {
+					// TODO: This'll probably break with syntax highlighting
+					if ( range.startOffset != 0 ) {
+						pre  = "\n" + options.pre;
+					}
+					// TODO: Will this still work with syntax highlighting?
+					if ( range.endContainer == range.commonAncestorContainer ) {
+						post += "\n";
+					}
 				}
-				// TODO: Will this still work with syntax highlighting?
-				if ( range.endContainer == range.commonAncestorContainer ) {
-					post += "\n";
+				var insertText = pre + selText + post;
+				var insertLines = insertText.split( "\n" );
+				range.extractContents();
+				// Insert the contents one line at a time
+				// insertNode() inserts at the beginning, so this has
+				// to happen in reverse order
+				var lastNode;
+				for ( var i = insertLines.length - 1; i >= 0; i-- ) {
+					range.insertNode( document.createTextNode( insertLines[i] ) );
+					if ( i > 0 ) {
+						lastNode = range.insertNode( document.createElement( 'br' ) );
+					}
 				}
-			}
-			var insertText = pre + selText + post;
-			var insertLines = insertText.split( "\n" );
-			range.extractContents();
-			// Insert the contents one line at a time
-			// insertNode() inserts at the beginning, so this has
-			// to happen in reverse order
-			var lastNode;
-			for ( var i = insertLines.length - 1; i >= 0; i-- ) {
-				range.insertNode( document.createTextNode( insertLines[i] ) );
-				if ( i > 0 ) {
-					lastNode = range.insertNode( document.createElement( 'br' ) );
+				if ( lastNode ) {
+					context.fn.scrollToTop( lastNode );
 				}
-			}
-			if ( lastNode ) {
-				context.fn.scrollToTop( lastNode );
+			} else if ( context.$iframe[0].contentWindow.document.selection ) {
+				// IE
+				// TODO
 			}
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
 			context.$content.trigger(
@@ -500,24 +506,29 @@ if ( typeof context == 'undefined' ) {
 		 * @param endContainer Element in iframe to end selection in
 		 */
 		'setSelection': function( options ) {
-			// TODO: IE
-			var sel = context.$iframe[0].contentWindow.getSelection();
-			var sc = options.startContainer, ec = options.endContainer;
-			sc = sc.jquery ? sc[0] : sc;
-			ec = ec.jquery ? ec[0] : ec;
-			while ( sc.firstChild && sc.nodeName != '#text' ) {
-				sc = sc.firstChild;
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				// Firefox and Opera
+				var sel = context.$iframe[0].contentWindow.getSelection();
+				var sc = options.startContainer, ec = options.endContainer;
+				sc = sc.jquery ? sc[0] : sc;
+				ec = ec.jquery ? ec[0] : ec;
+				while ( sc.firstChild && sc.nodeName != '#text' ) {
+					sc = sc.firstChild;
+				}
+				while ( ec.firstChild && ec.nodeName != '#text' ) {
+					ec = ec.firstChild;
+				}
+				
+				var range = document.createRange();
+				range.setStart( sc, options.start );
+				range.setEnd( ec, options.end );
+				sel.removeAllRanges();
+				sel.addRange( range );
+				context.$iframe[0].contentWindow.focus();
+			} else if ( context.$iframe[0].contentWindow.document.selection ) {
+				// IE
+				// TODO
 			}
-			while ( ec.firstChild && ec.nodeName != '#text' ) {
-				ec = ec.firstChild;
-			}
-			
-			var range = document.createRange();
-			range.setStart( sc, options.start );
-			range.setEnd( ec, options.end );
-			sel.removeAllRanges();
-			sel.addRange( range );
-			context.$iframe[0].contentWindow.focus();
 		},
 		/**
 		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()
@@ -555,11 +566,19 @@ if ( typeof context == 'undefined' ) {
 		'beforeSelection': function( selector, strict ) {
 			if ( typeof selector == 'undefined' )
 				selector = '*';
-			var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
-			// Start at the selection's start and traverse the DOM backwards
-			// This is done by traversing an element's children first, then the
-			// element itself, then its parent
-			var e = range.startContainer;
+			var e;
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				// Firefox and Opera
+				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
+				// Start at the selection's start and traverse the DOM backwards
+				// This is done by traversing an element's children first, then the
+				// element itself, then its parent
+				e = range.startContainer;
+			} else if ( context.$iframe[0].contentWindow.document.selection ) {
+				// IE
+				// TODO
+				return $( [] );
+			}
 			if ( e.nodeName != '#text' ) {
 				// The selection is not in a textnode, but between two non-text nodes
 				// (usually inside the <body> between two <br>s). Go to the rightmost
