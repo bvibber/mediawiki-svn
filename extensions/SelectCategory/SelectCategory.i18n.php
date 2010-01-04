@@ -361,7 +361,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'selectcategory-title' => 'വിഭാഗങ്ങള്‍ തിരഞ്ഞെടുക്കുക',
+	'selectcategory-title' => 'വർഗ്ഗങ്ങള്‍ തിരഞ്ഞെടുക്കുക',
 );
 
 /** Marathi (मराठी)

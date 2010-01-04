@@ -4732,6 +4732,7 @@ $messages['ka'] = array(
 	'code-status-resolved' => 'მოგვარებულია',
 	'code-rev-submit' => 'ცვლილებების შენახვა',
 	'code-batch-status' => 'სტატუსის შეცვლა:',
+	'codereview-subtitle' => '$1-სთვის',
 	'codereview-reply-link' => 'პასუხი',
 	'repoadmin-new-button' => 'შექმნა',
 );

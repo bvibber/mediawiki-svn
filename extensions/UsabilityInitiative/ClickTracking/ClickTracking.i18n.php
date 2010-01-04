@@ -1299,6 +1299,7 @@ $messages['pt-br'] = array(
 	'clicktracking-desc' => 'Monitoramento de cliques, destinado ao monitoramento de eventos que não causem uma atualização de página',
 	'ct-total-header' => 'Cliques totais',
 	'ct-start-date' => 'Data de início (AAAAMMDD)',
+	'ct-end-date' => 'Data de término (AAAAMMDD)',
 	'ct-change-graph' => 'Mudar gráfico',
 	'ct-intermediate' => 'Intermediário',
 	'ct-expert' => 'Experiente',

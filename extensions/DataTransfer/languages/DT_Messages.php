@@ -1182,7 +1182,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'viewxml' => 'XML കാണുക',
-	'dt_viewxml_categories' => 'വിഭാഗങ്ങള്‍',
+	'dt_viewxml_categories' => 'വർഗ്ഗങ്ങള്‍',
 	'dt_viewxml_namespaces' => 'നേംസ്പേസുകള്‍',
 	'dt_viewxml_simplifiedformat' => 'ലളിതവത്ക്കരിക്കപ്പെട്ട ഫോര്‍മാറ്റ്',
 	'dt_xml_namespace' => 'നേംസ്പേസ്',

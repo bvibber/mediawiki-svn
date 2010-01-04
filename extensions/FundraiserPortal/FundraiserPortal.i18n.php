@@ -883,11 +883,16 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'fundraiserportal' => 'Portale pe cogghiere turnise',
+	'fundraiserportal-desc' => 'Aggiunge \'nu portale "done pe piacere" sus a sus a \'a barra laterale.',
+	'fundraiserportal-plain-button' => 'Sostiene Uicchipèdie!',
 	'fundraiserportal-ruby-button' => 'Done mò',
 	'fundraiserportal-rubytext-button' => 'Done mò',
+	'fundraiserportal-rubytext-message' => "Ogne dunazzione ne dè 'na mane pe mandenè Uicchipèdie libbere pe tutte.",
 	'fundraiserportal-rubytext-close' => 'Scunne quiste da mò',
 	'fundraiserportal-sapphire-button' => 'Done mò',
 	'fundraiserportal-tourmaline-button' => 'Done mò',
+	'fundraiserportal-tourmaline-message' => "Ogne dunazzione ne dè 'na mane pe mandenè Uicchipèdie libbere pe tutte.",
 	'fundraiserportal-tourmaline-close' => 'Scunne quiste da mò',
 );
 

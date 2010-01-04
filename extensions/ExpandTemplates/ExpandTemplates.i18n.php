@@ -1616,10 +1616,14 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'expandtemplates' => 'Template spannute',
 	'expand_templates_input' => 'Teste de input:',
 	'expand_templates_output' => 'Resultete',
 	'expand_templates_xml_output' => 'XML de output',
 	'expand_templates_ok' => 'OK',
+	'expand_templates_remove_comments' => 'Live le commende',
+	'expand_templates_remove_nowiki' => "No fà vede le tag <nowiki> jndr'à 'u resultate",
+	'expand_templates_generate_xml' => "Fà vedè l'arvule de l'analisi XML",
 	'expand_templates_preview' => 'Andeprime',
 );
 

@@ -393,3 +393,10 @@ $messages['vi'] = array(
 	'categorytests-desc' => 'Hàm để đo thử thể loại',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Franklsf95
+ */
+$messages['zh-hans'] = array(
+	'categorytests-desc' => '用于分类测试的功能',
+);
+

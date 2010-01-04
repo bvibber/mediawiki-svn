@@ -542,7 +542,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'minipreview-files_in_category' => "ഈ വർഗ്ഗം മൊത്തം {{PLURAL:$1|'''ഒരു''' പ്രമാണം|'''$1''' പ്രമാണങ്ങള്‍}} ഉൾക്കൊള്ളുന്നു.",
 	'minipreview-files_in_gallery' => "ഈ ചിത്രശാലയിൽ മൊത്തം {{PLURAL:$1|'''ഒരു''' പ്രമാണം|'''$1''' പ്രമാണങ്ങള്‍}} ഉൾക്കൊള്ളുന്നു.",
-	'minipreview-no_category_gallery' => 'വിഭാഗങ്ങളോ ഗാലറികളോ ഇല്ല!',
+	'minipreview-no_category_gallery' => 'വർഗ്ഗങ്ങളോ ഗാലറികളോ ഇല്ല!',
 );
 
 /** Marathi (मराठी)

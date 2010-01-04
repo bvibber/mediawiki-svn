@@ -10507,6 +10507,7 @@ Pe piacere verifiche l'indirizze web.",
 	'ow_copy_no_action_specified' => "Pe piacere specifiche 'n'azione",
 	'ow_copy_help' => "L'aiute angore non g'è presende.
 <!-- Quacche giurne, pò essere ca v'aiuteme. -->",
+	'ow_class_attr_type_link' => 'Collegamende',
 	'ow_show' => 'Fa vedè',
 	'ow_upload' => 'Careche',
 	'ow_create' => 'Ccreje',

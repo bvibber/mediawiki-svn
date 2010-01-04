@@ -1558,6 +1558,13 @@ $messages['tr'] = array(
 	'formsaveerror' => 'Formu kaydetmede hata',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Timming
+ */
+$messages['tt-cyrl'] = array(
+	'formsavesummary' => 'Яңа бит, [[Special:Form/$1|$1 формасы]] ярдәмендә',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

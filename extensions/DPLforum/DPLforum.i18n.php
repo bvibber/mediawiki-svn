@@ -498,13 +498,14 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'dplforum-edited' => '- അവസാനമായി തിരുത്തിയത്',
 	'dplforum-never' => 'ഒരിക്കലും അരുത്',
-	'dplforum-toofew' => 'DPL Forum: വളരെ കുറച്ച് വിഭാഗങ്ങള്‍',
-	'dplforum-toomany' => 'DPL Forum: വളരെയധികം വിഭാഗങ്ങള്‍ ‍!',
+	'dplforum-toofew' => 'DPL Forum: വളരെ കുറച്ച് വർഗ്ഗങ്ങള്‍',
+	'dplforum-toomany' => 'DPL Forum: വളരെയധികം വർഗ്ഗങ്ങള്‍!',
 );
 
 /** Marathi (मराठी)

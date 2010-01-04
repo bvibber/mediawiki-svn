@@ -1480,6 +1480,7 @@ riddler|Enigmático',
  * @author Eduardo.mps
  * @author GKnedo
  * @author Heldergeovane
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'vote' => 'Votar',
@@ -1499,7 +1500,7 @@ riddler|O Charada',
 	'vote-results-count' => 'Contagem',
 	'vote-results-none' => 'De momento ainda não foram submetidos votos.',
 	'vote-login' => 'Você precisa [$1 autenticar-se] para votar.',
-	'vote-invalid-choice' => 'Deverá seleccionar uma das opções disponíveis.',
+	'vote-invalid-choice' => 'Você deve selecionar uma das opções disponíveis.',
 	'right-vote' => 'Votar',
 	'right-voteadmin' => 'Ver resultados da votação',
 );

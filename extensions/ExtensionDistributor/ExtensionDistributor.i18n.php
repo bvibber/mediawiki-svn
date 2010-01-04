@@ -2357,6 +2357,7 @@ Cele mai multe extensii funcţionează în mai multe versiuni de MediaWiki, deci
  */
 $messages['roa-tara'] = array(
 	'extdist-submit-extension' => 'Condinue',
+	'extdist-want-more' => "Pigghie 'n'otra estenzione",
 );
 
 /** Russian (Русский)

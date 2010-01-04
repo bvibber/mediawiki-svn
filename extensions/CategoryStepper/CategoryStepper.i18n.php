@@ -397,8 +397,8 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'categorystepper-end' => '(വിഭാഗത്തിന്റെ അവസാനം)',
-	'categorystepper-start' => '(വിഭാഗത്തിന്റെ തുടക്കം)',
+	'categorystepper-end' => '(വർഗ്ഗത്തിന്റെ അവസാനം)',
+	'categorystepper-start' => '(വർഗ്ഗത്തിന്റെ തുടക്കം)',
 );
 
 /** Marathi (मराठी)

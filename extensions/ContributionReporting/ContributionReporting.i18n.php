@@ -2584,6 +2584,7 @@ $messages['ka'] = array(
 	'contribstats-conversion' => 'კონვერსიის მაჩვენებელი (%)',
 	'contribstats-template' => 'თარგი',
 	'contribstats-average' => 'საშუალო',
+	'contribstats-credit-card' => 'საკრედიტო ბარათი',
 	'fundraiserstats-date' => 'თარიღი',
 	'fundraiserstats-contributions' => 'წვლილი',
 	'fundraiserstats-tab-contributions' => 'წვლილის ნომერი',

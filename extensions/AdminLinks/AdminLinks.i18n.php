@@ -1245,3 +1245,21 @@ $messages['yi'] = array(
 	'adminlinks_browsesearch' => 'בלעטערן און זוכן',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Franklsf95
+ */
+$messages['zh-hans'] = array(
+	'adminlinks' => '管理员链接',
+	'adminlinks-desc' => '添加一个[[Special:AdminLinks|特殊页面]]为管理员提供有用的链接',
+	'adminlinks_documentation' => '$1 文档',
+	'adminlinks_general' => '一般',
+	'adminlinks_editsidebar' => '编辑侧边栏',
+	'adminlinks_editcss' => '编辑 CSS 文件',
+	'adminlinks_editmainpagename' => '编辑首页名称',
+	'adminlinks_users' => '用户',
+	'adminlinks_createuser' => '创建新用户',
+	'adminlinks_browsesearch' => '浏览与搜索',
+	'adminlinks_importexport' => '导入和导出',
+	'right-adminlinks' => '查看[[Special:AdminLinks|管理员链接]]',
+);
+

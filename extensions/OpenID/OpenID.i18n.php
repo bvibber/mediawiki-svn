@@ -1579,7 +1579,7 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidnotprovided' => 'Votre serveur OpenID n’a pas pu fournir un surnom (soit il ne le peut pas, soit vous lui avez demandé de ne pas le faire).',
 	'openidchooseinstructions' => 'Tous les utilisateurs ont besoin d’un surnom ; vous pouvez en choisir un à partir du choix ci-dessous.',
 	'openidchoosefull' => 'Votre nom entier ($1)',
-	'openidchooseurl' => 'Un nom a été choisi depuis votre OpenID ($1)',
+	'openidchooseurl' => 'Un nom choisi depuis votre OpenID ($1)',
 	'openidchooseauto' => 'Un nom créé automatiquement ($1)',
 	'openidchoosemanual' => 'Un nom de votre choix :',
 	'openidchooseexisting' => 'Un compte existant sur ce wiki :',

@@ -1989,7 +1989,9 @@ $messages['ka'] = array(
 	'group-oversight' => 'რევიზორები',
 	'hiderevision-continue' => 'გაგრძელება',
 	'hiderevision-link' => 'მომხმარებლის დამალული წვლილი',
+	'hiderevision-noreason' => 'თქვენ უნდა დაწეროთ წაშლის მიზეზი.',
 	'hiderevision-success' => 'წარმატებით დაარქივდა და წაიშალა',
+	'hiderevision-error-missing' => 'არ არის ნაპოვნი მონაცემთა ბაზაში.',
 	'oversight-view' => 'დეტალები',
 	'oversight-hidden' => 'დამალული ვერსია',
 );
