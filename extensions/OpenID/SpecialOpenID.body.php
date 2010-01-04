@@ -34,9 +34,6 @@ class SpecialOpenID extends SpecialPage {
 	function getOpenIDStore( $storeType, $prefix, $options ) {
 		global $wgOut, $wgMemc, $wgDBtype;
 
-		# FIXME: support other kinds of store
-		# XXX: used to support memc, now use memcached from php-openid
-
 		switch ( $storeType ) {
 
 		case 'file':
