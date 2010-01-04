@@ -1,22 +1,40 @@
 <?php
 class GlobalUsageHooks {
 	private static $gu = null;
-	
+
 	/**
 	 * Hook to LinksUpdateComplete
 	 * Deletes old links from usage table and insert new ones.
 	 */
 	public static function onLinksUpdateComplete( $linksUpdater ) {
 		$title = $linksUpdater->getTitle();
-		
+
 		// Create a list of locally existing images
 		$images = array_keys( $linksUpdater->getImages() );
 		$localFiles = array_keys( RepoGroup::singleton()->getLocalRepo()->findFiles( $images ) );
-		
+		$missingFiles = array_diff( $images, $localFiles );
+
+		global $wgUseDumbLinkUpdate;
 		$gu = self::getGlobalUsage();
-		$gu->deleteFrom( $title->getArticleId( GAID_FOR_UPDATE ) );
-		$gu->setUsage( $title, array_diff( $images, $localFiles ) );
-		
+		if ( $wgUseDumbLinkUpdate ) {
+			// Delete all entries to the page
+			$gu->deleteLinksFromPage( $title->getArticleId( GAID_FOR_UPDATE ) );
+			// Re-insert new usage for the page
+			$gu->insertLinks( $title, $missingFiles );
+		} else {
+			$articleId = $title->getArticleId( GAID_FOR_UPDATE );
+			$existing = $gu->getLinksFromPage( $articleId );
+			
+			// Calculate changes
+			$added = array_diff( $missingFiles, $existing );
+			$removed  = array_diff( $existing, $missingFiles );
+			
+			// Add new usages and delete removed
+			$gu->insertLinks( $title, $added );
+			if ( $removed )
+				$gu->deleteLinksFromPage( $articleId, $removed );
+		}
+
 		return true;
 	}
 	/**
@@ -36,9 +54,9 @@ class GlobalUsageHooks {
 	public static function onArticleDeleteComplete( $article, $user, $reason, $id ) {
 		$title = $article->getTitle();
 		$gu = self::getGlobalUsage();
-		$gu->deleteFrom( $id );
+		$gu->deleteLinksFromPage( $id );
 		if ( $title->getNamespace() == NS_FILE ) {
-			$gu->copyFromLocal( $title );
+			$gu->copyLocalImagelinks( $title );
 		}
 		return true;
 	}
@@ -47,9 +65,9 @@ class GlobalUsageHooks {
 	 * Hook to FileUndeleteComplete
 	 * Deletes the file from the global link table.
 	 */
-	public static function onFileUndeleteComplete( $title, $versions, $user, $reason ) { 
+	public static function onFileUndeleteComplete( $title, $versions, $user, $reason ) {
 		$gu = self::getGlobalUsage();
-		$gu->deleteTo( $title );
+		$gu->deleteLinksToFile( $title );
 		return true;
 	}
 	/**
@@ -58,23 +76,22 @@ class GlobalUsageHooks {
 	 */
 	public static function onUploadComplete( $upload ) {
 		$gu = self::getGlobalUsage();
-		$gu->deleteTo( $upload->getTitle() );
+		$gu->deleteLinksToFile( $upload->getTitle() );
 		return true;
 	}
-	
+
 	/**
 	 * Initializes a GlobalUsage object for the current wiki.
 	 */
 	private static function getGlobalUsage() {
 		global $wgGlobalUsageDatabase;
 		if ( is_null( self::$gu ) ) {
-			self::$gu = new GlobalUsage( wfWikiId(), 
-					wfGetDB( DB_MASTER, array(), $wgGlobalUsageDatabase ) 
+			self::$gu = new GlobalUsage( wfWikiId(),
+					wfGetDB( DB_MASTER, array(), $wgGlobalUsageDatabase )
 			);
 		}
-		
+
 		return self::$gu;
 	}
-	
 
 }

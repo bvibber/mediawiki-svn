@@ -1,5 +1,11 @@
 <?php
-require_once( '../../maintenance/Maintenance.php' );
+$path = '../..';
+
+if ( getenv('MW_INSTALL_PATH') !== false ) {
+	$path = getenv('MW_INSTALL_PATH');
+}
+
+require_once( $path.'/maintenance/Maintenance.php' );
 
 class RefreshGlobalImageLinks extends Maintenance {
 	public function __construct() {
@@ -8,23 +14,23 @@ class RefreshGlobalImageLinks extends Maintenance {
 		$this->addOption( 'start-image', 'il_to of the image to start with' );
 		$this->addOption( 'maxlag', 'Maximum replication lag', false, true );
 	}
-	
+
 	public function execute() {
 		global $wgGlobalUsageDatabase;
-		
+
 		$dbr = wfGetDB( DB_SLAVE );
-		$gu = new GlobalUsage( wfWikiId(), 
-			wfGetDB( DB_MASTER, array(), $wgGlobalUsageDatabase ) );
-		
+		$dbw = wfGetDB( DB_MASTER, array(), $wgGlobalUsageDatabase );
+		$gu = new GlobalUsage( wfWikiId(), $dbw );
+
 		$lastPageId = intval( $this->getOption( 'start-page', 0 ) );
 		$lastIlTo = $this->getOption( 'start-image' );
 		$limit = 500;
-		$maxlag = intval( $this->getOption( 'maxlag', 0 ) );
-		
+		$maxlag = intval( $this->getOption( 'maxlag', 5 ) );
+
 		do
 		{
 			$this->output( "Querying links after (page_id, il_to) = ($lastPageId, $lastIlTo)\n" );
-			
+
 			# Query all pages and any imagelinks associated with that
 			$quotedLastIlTo = $dbr->addQuotes( $lastIlTo );
 			$res = $dbr->select( 
@@ -45,45 +51,48 @@ class RefreshGlobalImageLinks extends Maintenance {
 					# from all images, even if they don't have images anymore
 					'imagelinks' => array( 'LEFT JOIN', 'page_id = il_from' ),
 					# Check to see if images exist locally
-					'image' => array( 'LEFT JOIN', 'il_to = img_name' ) 
+					'image' => array( 'LEFT JOIN', 'il_to = img_name' )
 				)
 			);
-			
+
 			# Build up a tree per pages
 			$pages = array();
 			$lastRow = null;
 			foreach ( $res as $row ) {
 				if ( !isset( $pages[$row->page_id] ) )
 					$pages[$row->page_id] = array();
-				# Add the imagelinks entry to the pages array if the image 
-				# does not exist locally				
+				# Add the imagelinks entry to the pages array if the image
+				# does not exist locally
 				if ( !is_null( $row->il_to ) && is_null( $row->img_name ) ) {
 					$pages[$row->page_id][$row->il_to] = $row;
 				}
 				$lastRow = $row;
 			}
-			
+
 			# Insert the imagelinks data to the global table
 			foreach ( $pages as $pageId => $rows ) {
 				# Delete all original links if this page is not a continuation
 				# of last iteration.
 				if ( $pageId != $lastPageId )
-					$gu->deleteFrom( $pageId );
+					$gu->deleteLinksFromPage( $pageId );
 				if ( $rows ) {
 					$title = Title::newFromRow( reset( $rows ) );
 					$images = array_keys( $rows );
-					# Since we have a pretty accurate page_id, don't specify 
+					# Since we have a pretty accurate page_id, don't specify
 					# GAID_FOR_UPDATE
-					$gu->setUsage( $title, $images, /* $flags */ 0 );
+					$gu->insertLinks( $title, $images, /* $flags */ 0 );
 				}
 			}
-			
+
 			if ( $lastRow ) {
-				# We've processed some rows in this iteration, so save 
+				# We've processed some rows in this iteration, so save
 				# continuation variables
 				$lastPageId = $lastRow->page_id;
 				$lastIlTo = $lastRow->il_to;
-				wfWaitForSlaves( $maxlag );
+
+				# Be nice to the database
+				$dbw->immediateCommit();
+				wfWaitForSlaves( $maxlag, $wgGlobalUsageDatabase );
 			}
 		} while ( !is_null( $lastRow ) );
 	}

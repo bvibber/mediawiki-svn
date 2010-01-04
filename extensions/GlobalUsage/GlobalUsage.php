@@ -50,9 +50,12 @@ $wgExtensionMessagesFiles['GlobalUsage'] = $dir . 'GlobalUsage.i18n.php';
 $wgAutoloadClasses['GlobalUsage'] = $dir . 'GlobalUsage_body.php';
 $wgAutoloadClasses['GlobalUsageHooks'] = $dir . 'GlobalUsageHooks.php';
 $wgAutoloadClasses['SpecialGlobalUsage'] = $dir . 'SpecialGlobalUsage.php';
+$wgAutoloadClasses['GlobalUsageQuery'] = $dir . 'GlobalUsageQuery.php';
+$wgAutoloadClasses['ApiQueryGlobalUsage'] = $dir . 'ApiQueryGlobalUsage.php';
 $wgExtensionMessageFiles['GlobalUsage'] = $dir . 'GlobalUsage.i18n.php';
 $wgExtensionAliasesFiles['GlobalUsage'] = $dir . 'GlobalUsage.alias.php';
 $wgSpecialPages['GlobalUsage'] = 'SpecialGlobalUsage';
+$wgAPIPropModules['globalusage'] = 'ApiQueryGlobalUsage';
 
 /* Things that can cause link updates:
  * - Local LinksUpdate
@@ -66,6 +69,7 @@ $wgHooks['FileUndeleteComplete'][] = 'GlobalUsageHooks::onFileUndeleteComplete';
 $wgHooks['UploadComplete'][] = 'GlobalUsageHooks::onUploadComplete';
 $wgHooks['TitleMoveComplete'][] = 'GlobalUsageHooks::onTitleMoveComplete';
 $wgHooks['ImagePageAfterImageLinks'][] = 'SpecialGlobalUsage::onImagePageAfterImageLinks';
+$wgHooks['ImagePageShowTOC'][] = 'SpecialGlobalUsage::onImagePageShowTOC';
 
 
 // If set to false, the local database contains the globalimagelinks table
