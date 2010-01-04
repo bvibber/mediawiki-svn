@@ -102,6 +102,10 @@ There are many [http://openid.net/get/ OpenID providers], and you may already ha
 	'openiddelete-text' => 'By clicking the "{{int:openiddelete-button}}" button, you will remove the OpenID $1 from your account.
 You will not be able anymore to login with this OpenID.',
 	'openiddelete-button' => 'Confirm',
+	'openiddeleteerrornopassword' => 'You cannot delete all your OpenIDs because your account has no password.
+You would not able to log in without an OpenID.',
+	'openiddeleteerroropenidonly' => 'You cannot delete all your OpenIDs because your are only allowed to log in with OpenID.
+You would not able to log in without an OpenID.',
 	'openiddelete-sucess' => 'The OpenID has been successfully removed from your account.',
 	'openiddelete-error' => 'An error occured while removing the OpenID from your account.',
 

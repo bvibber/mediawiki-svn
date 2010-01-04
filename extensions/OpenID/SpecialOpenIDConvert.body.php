@@ -158,7 +158,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 	}
 
 	function delete() {
-		global $wgUser, $wgOut, $wgRequest;
+		global $wgUser, $wgOut, $wgRequest, $wgOpenIDOnly;
 
 		$openid = $wgRequest->getVal( 'url' );
 		$user = self::getUser( $openid );
@@ -169,6 +169,18 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		}
 
 		$wgOut->setPageTitle( wfMsg( 'openiddelete' ) );
+
+		# Check if the user is removing it's last OpenID url
+		$urls = self::getUserUrl( $wgUser );
+		if ( count( $urls ) == 1 ) {
+			if ( $wgUser->mPassword == '' ) {
+				$wgOut->showErrorPage( 'openiderror', 'openiddeleteerrornopassword' );
+				return;
+			} elseif( $wgOpenIDOnly ) {
+				$wgOut->showErrorPage( 'openiderror', 'openiddeleteerroropenidonly' );
+				return;
+			}
+		}
 
 		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ), $openid ) ) {
 			$ret = self::removeUserUrl( $wgUser, $openid );
