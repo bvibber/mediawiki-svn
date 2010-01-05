@@ -39,7 +39,7 @@ WIKIEDITOR_MODULES := \
 	WikiEditor/Modules/TemplateEditor/TemplateEditor.js
 
 VECTOR_MODULES := \
-	Vector/Modules/CollapsibleLeftNav/CollapsibleLeftNav.js\
+	Vector/Modules/CollapsibleNav/CollapsibleNav.js\
 	Vector/Modules/CollapsibleTabs/CollapsibleTabs.js\
 	Vector/Modules/EditWarning/EditWarning.js\
 	Vector/Modules/SimpleSearch/SimpleSearch.js
