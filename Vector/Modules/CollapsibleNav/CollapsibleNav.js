@@ -2,7 +2,7 @@
 /* First draft and will be changing greatly */
 
 mw.addOnloadHook( function() {
-	if( !wgVectorEnabledModules.collapsibleleftnav ) {
+	if( !wgVectorEnabledModules.collapsiblenav ) {
 		return true;
 	}
 	$j( '#panel' ).addClass( 'collapsible-nav' );
