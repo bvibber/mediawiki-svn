@@ -1016,6 +1016,11 @@ A hoffech chi roi cynnig ar ein fersiwn Beta?",
 	'optin-feedback-intro' => "Diolch ichi am roi cynnig ar Beta.
 Fe hoffem gael eich barn ar ein rhyngwyneb newydd, a byddem yn ddiolchgar petaech yn cwblhau'r arolwg dewisol isod.",
 	'optin-feedback-back' => "Os nad ydych am gwblhau'r arolwg, gallwch ddychwelyd at $1.",
+	'optin-success-in' => 'Rydych nawr yn arbrofi gyda Beta.
+Gallwch adael y fersiwn Beta unrhyw bryd drwy wasgu\'r cyswllt "{{int:optin-leave}}" ar frig y dudalen.',
+	'optin-leave-cancel' => 'Os ydych am barhau i ddefnyddio Beta, gallwch ddychwelyd at y dudalen $1.',
+	'optin-success-feedback' => 'Diolch am eich adborth!',
+	'optin-accept-short' => 'Awn ati!',
 	'optin-accept-long' => 'Rhoi cynnig ar Beta',
 	'optin-submit-out' => 'Gadael Beta',
 );
@@ -4918,7 +4923,7 @@ $messages['ru'] = array(
 	'optin-title-feedback' => 'Отправить отзыв',
 	'optin-needlogin' => 'Вам необходимо [$1 представиться], чтобы опробовать бета-версию.',
 	'optin-intro' => 'В рамках Инициативы юзабилити была проведена работа по улучшению удобства использования Википедии.
-Вы хотите опробовать Beta?',
+Вы хотите опробовать бета-версию?',
 	'optin-feedback-intro' => 'Благодарим вас за согласие опробовать бета-версию интерфейса.
 Нам хотелось бы знать, что вы думаете о нашем новом интерфейсе, поэтому мы были бы признательны, если бы вы приняли участие в приведённом ниже опросе.',
 	'optin-feedback-back' => 'Если вы не хотите участвовать в опросе, вы можете вернуться к $1.',

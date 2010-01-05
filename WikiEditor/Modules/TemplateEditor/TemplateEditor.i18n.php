@@ -100,6 +100,13 @@ $messages['eo'] = array(
 	'wikieditor-template-editor-preference' => 'Ŝalti formularan redaktadon de vikiaj ŝablonoj',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'wikieditor-template-editor-preference' => 'Abilitar edición basada en formularios de plantillas wiki',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */

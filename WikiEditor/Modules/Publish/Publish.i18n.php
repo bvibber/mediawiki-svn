@@ -300,8 +300,10 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Translationista
  */
 $messages['es'] = array(
+	'wikieditor-publish-preference' => 'Habilitar publicación paso a paso',
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancelar',
 	'wikieditor-publish-dialog-title' => 'Publicar en {{SITENAME}}',

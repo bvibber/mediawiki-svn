@@ -204,8 +204,10 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author PerroVerd
+ * @author Translationista
  */
 $messages['es'] = array(
+	'wikieditor-preview-preference' => 'Habilitar previsualización comparativa',
 	'wikieditor-preview-tab' => 'Previsualizar',
 	'wikieditor-preview-changes-tab' => 'Cambios',
 	'wikieditor-preview-loading' => 'Cargando...',
