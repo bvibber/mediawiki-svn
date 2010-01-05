@@ -40,6 +40,7 @@ evt: {
 		}
 	},
 	ready: function( context, event ) {
+		/*
 		// Add our CSS to the iframe
 		// Style version for wikiEditor.highlight.css is here
 		// FIXME: That's not ideal
@@ -49,6 +50,7 @@ evt: {
 			'href': wgScriptPath + '/extensions/UsabilityInitiative/css/wikiEditor.highlight.css?' +
 				$.wikiEditor.modules.highlight.cfg.styleVersion,
 		} ) );
+		*/
 		// Highlight stuff for the first time
 		$.wikiEditor.modules.highlight.fn.scan( context, "" );
 		$.wikiEditor.modules.highlight.fn.mark( context, "", "" );
