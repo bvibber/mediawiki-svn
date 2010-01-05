@@ -12,7 +12,7 @@ class VectorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/CollapsibleLeftNav/CollapsibleLeftNav.js', 'version' => 3 ),
+			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 3 ),
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 6 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 4 ),
 			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 4 ),

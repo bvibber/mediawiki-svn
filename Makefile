@@ -3,8 +3,8 @@
 #
 
 CSS := \
-	css/collapsibleLeftNav.css\
 	css/suggestions.css\
+	css/vector.collapsibleNav.css\
 	css/wikiEditor.css\
 	css/wikiEditor.dialogs.css\
 	css/wikiEditor.toc.css\
