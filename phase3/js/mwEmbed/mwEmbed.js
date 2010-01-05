@@ -1271,20 +1271,21 @@ var mwDefaultConf = {
 	* API Helper functions
 	*/
 	
-	/*
-	* Get mediaWiki JSON a wrapper for jQuery getJSON:
+	/**
+	* mediaWiki JSON a wrapper for jQuery getJSON:
 	* $j.getJSON( url, [data], [callback] )
 	* 
 	* The mediaWiki version lets you skip the url part 
 	* mw.getJSON( [url], data, callback ); 
 	* 
-	* Lets you assume a few options:
+	* Lets you assume a few things:
 	* 	url is optional 
 	* 		( If the first argument is not a string we assume a local mediaWiki api request )
 	*   callback parameter is not needed we setup the callback automatically
 	* 	url param 'action'=>'query' is assumed ( if not set to something else in the "data" param
 	* 	format is set to "json" automatically
 	* 	automatically issues request over "POST" if action={postActions}
+	*	~soon~ will setup apiProxy where needed.
 	*
 	* @param {Mixed} url or data request
 	* @param {Mixed} data or callback
@@ -1327,22 +1328,25 @@ var mwDefaultConf = {
 		
 		mw.log("run getJSON: " + url + ' data: ' +  data['action'] );
 		
+		// Check if we need to setup proxy or do the request as a "post"
 		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ){
 			if( ! mw.isLocalDomain( url ) ){
-				mw.log( "Error:: should setup proxy here" );
+				mw.log( "Error:: Do setup proxy here" );
+				return ;
+			}else{
+				$j.post( url, data, callback, 'json');
+				return ;
 			}
-			$j.post( url, data, callback, 'json');
-		}else{
-			//If cross domain setup a callback: 
-			if( ! mw.isLocalDomain( url ) ){				 
-				if( url.indexOf( 'callback=' ) == -1 || data[ 'callback' ] == -1 ){
-					// jQuery specific: ( second ? is replaced with the callback ) 
-					url += ( url.indexOf('?') == -1 ) ? '?callback=?' : '&callback=?';
-				}				 
-			}
-			// Pass off the jQuery getJSON request:
-			$j.getJSON( url, data, callback );
-		}		
+		}
+		//If cross domain setup a callback: 
+		if( ! mw.isLocalDomain( url ) ){				 
+			if( url.indexOf( 'callback=' ) == -1 || data[ 'callback' ] == -1 ){
+				// jQuery specific: ( second ? is replaced with the callback ) 
+				url += ( url.indexOf('?') == -1 ) ? '?callback=?' : '&callback=?';
+			}				 
+		}
+		// Pass off the jQuery getJSON request:
+		$j.getJSON( url, data, callback );			
 	}		
 	
 	/**
@@ -1366,9 +1370,13 @@ var mwDefaultConf = {
 	}
 	
 	/**
-	* Checks if the url is a request for the local domain
+	* Check if the url is a request for the local domain
 	*  relative paths are "local" domain
 	* @param {String} url Url for local domain
+	* @return 
+	*	true if url domain is local or relative
+	* 	false if the domain is
+	* @type {Boolean} 	
 	*/
 	mw.isLocalDomain = function( url ) {
 		if( mw.parseUri( document.URL ).host == mw.parseUri( url ).host ||
@@ -2270,8 +2278,8 @@ var mwDefaultConf = {
 			else if (document.styleSheets[0].rules)
 				rules = document.styleSheets[i].rules
 			for(var j=0 ; j < rules.length ; j++ ){
-				var rule = rules[j].selectorText;												
-				if( rule.indexOf( styleRule ) != -1 ){
+				var rule = rules[j].selectorText;											
+				if( rule && rule.indexOf( styleRule ) != -1 ){
 					return true;
 				}		
 			}
@@ -2316,13 +2324,13 @@ var mwDefaultConf = {
 
 
 
-// Load in js2 stopgap into proper location: 
+// Load in js2 stopgap global msgs into proper location: 
 if ( typeof gMsg != 'undefined' ) {
 	mw.addMessages( gMsg )
 }
 
-// Set gM shortcut:
-var gM = mw.getMsg;
+// Set global gM shortcut:
+window['gM'] = mw.getMsg;
 
 // Setup legacy global shortcuts:
 var loadRS = mw.lang.loadRS;
@@ -2445,6 +2453,7 @@ function domReadyCheck() {
   }
 })(domReadyCheck);
 // As a backup check if "body" is not null ( for dynamic inserts )
+// ( mw.domReady ignores multiple ready calls )
 var mwCheckBody = function(){
 	if( document.getElementsByTagName('body')[0] ){
 		 mw.domReady();
@@ -2572,31 +2581,5 @@ function mwDojQueryBindings() {
 			} );
 		}
 	} )( jQuery );
-}
-
-/**
-* Utility functions that override globals
-* 
-* Will be depreciated once we move all XML parsing to jQuery calls
-*/
-
-if ( typeof DOMParser == "undefined" ) {
-	DOMParser = function () { }
-	DOMParser.prototype.parseFromString = function ( str, contentType ) {
-		if ( typeof ActiveXObject != "undefined" ) {
-			var d = new ActiveXObject( "MSXML.DomDocument" );
-			d.loadXML( str );
-			return d;
-		} else if ( typeof XMLHttpRequest != "undefined" ) {
-			var req = new XMLHttpRequest;
-			req.open( "GET", "data:" + ( contentType || "application/xml" ) +
-					";charset=utf-8," + encodeURIComponent( str ), false );
-			if ( req.overrideMimeType ) {
-				req.overrideMimeType( contentType );
-			}
-			req.send( null );
-			return req.responseXML;
-		}
-	}
 }
 

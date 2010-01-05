@@ -1,5 +1,5 @@
 /*
- * Kaltura agragated search:  
+ * Kaltura aggregated search:  
  */
 
 var kalturaSearch = function ( options ) {
@@ -71,6 +71,7 @@ kalturaSearch.prototype = {
 				// Update mapings: 					
 				result['poster'] = result['thumbnail'];		
 				result['pSobj'] = _this;
+				result['link'] = result[ 'item_details_page' ];
 				
 				if( !result['titleKey'] && result['src'] ){
 					result['titleKey'] = 'File:' + result['src'].split('/').pop();

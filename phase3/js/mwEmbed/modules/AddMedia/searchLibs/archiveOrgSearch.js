@@ -10,11 +10,13 @@ var archiveOrgSearch = function ( iObj ) {
 	return this.init( iObj );
 }
 archiveOrgSearch.prototype = {
+
 	// Archive.org constants: 
 	downloadUrl : 'http://www.archive.org/download/',
 	detailsUrl : 'http://www.archive.org/details/',
-	/*
-	* Inititalize the archiveOrgSearch class.
+	
+	/**
+	* Initialize the archiveOrgSearch class.
 	* archiveOrgSearch inherits the baseSearch class 
 	*/
 	init:function( options ) {		
@@ -35,26 +37,28 @@ archiveOrgSearch.prototype = {
 	*/
 	getSearchResults: function( search_query ) {
 	
-		// call parent for common initialisation:  
+		// call parent for common initialization:  
 		this.parent_getSearchResults();
 		
 		var _this = this;
-		mw.log( 'archive_org:getSearchResults for:' + search_query );
+		mw.log( 'archive_org:getSearchResults for:' + search_query + ' from: ' + this.provider.api_url );
 		
 		
 		// For now force (Ogg video) & url based license
 		search_query += ' format:(Ogg video)';
 		search_query += ' licenseurl:(http\\:\\/\\/*)';
-		
+		// Set the page number: 
+		var page_number = parseInt( this.provider.limit / this.provider.offset ) + 1;
 		// Build the request Object
 		var request = {
 			'q': search_query, // just search for video atm
-			'fl':"description,title,identifier,licenseurl,format,license,thumbnail",
-			'wt':'json',
+			'fl[]':"description,title,identifier,licenseurl,format,license,thumbnail",
+			'fmt':'json',
 			'rows' : this.provider.limit,
-			'start' : this.provider.offset
+			'page' : page_number,
+			'xmlsearch' : 'Search'
 		}
-		$j.getJSON( this.provider.api_url + '?json.wrf=?', request, function( data ) {
+		mw.getJSON( this.provider.api_url + '?json.wrf=?', request, function( data ) {
 			_this.addResults( data );
 			_this.loading = false;
 		} );
@@ -97,43 +101,63 @@ archiveOrgSearch.prototype = {
 	/**
 	* Get media metadata via a archive.org special entry point "avinfo"
 	*
-	* @param {Object} resource Resrouce to add metadata to.
+	* @param {Object} resource Resource to add metadata to.
 	* @param {Function} callbcak Function called once extra metadata is added.
 	*/ 
-	addResourceInfoCallback:function( resource, callback ) {
+	addResourceInfoCallback: function( resource, callback ) {
 		var _this = this;
-		$j.getJSON( 
-			_this.downloadUrl + resource.resourceKey + '/format=Ogg+video&callback=?',  
+		mw.log( 'addResourceInfoCallback' );
+		mw.getJSON( 
+			_this.downloadUrl + resource.resourceKey + '/format=Ogg+video?callback=?',  
 			{ 'avinfo' : 1 }, 
-			function( data ) {
+			function( data ) {				
 				if ( data['length'] )
 					resource.duration = data['length'];
 				if ( data['width'] )
 					resource.width = data['width'];
 				if ( data['height'] )
-					resource.height = data['height'];
-														   
+					resource.height = data['height'];				
 				callback();
 		} );
 	},
 	
 	/**
 	* Returns html to embed a given result Object ( resource ) 
-	* @param {Object} resrouce Resource to get embed HTML from.
-	* @parma {Object} options Options for the embeding.
+	* @param {Object} resource Resource to get embed HTML from.
+	* @parma {Object} options Options for the embedding.
 	*/	
 	getEmbedHTML: function( resource , options ) {
 		mw.log( 'getEmbedHTML:: ' + resource.poster );
 		if ( !options )
 			options = { };
-		var id_attr = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
-		if ( resource.duration ) {
-			var src = resource.src + '?t=0:0:0/' + mw.seconds2npt( resource.duration );
-		} else {
-			var src = resource.src;
+ 
+		var attributes = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
+		
+		// Add height width if we have it:
+		if( resource.width ){
+			attributes += ' width="'+ parseInt( resource.width ) + '"';
 		}
-		if ( resource.mime == 'application/ogg' || resource.mime == 'audio/ogg' || resource.mime == 'video/ogg' ) {
-			return '<video ' + id_attr + ' src="' + src + '" poster="' + resource.poster + '" type="video/ogg"></video>';
+		if( resource.height ){
+			attributes += ' height="' +  parseInt( resource.height ) + '"';
+		}
+		// Add the src
+		if( !resource.src ){
+			mw.log("Error: resource missing src"); 
+		}else{
+			attributes += ' src="' + resource.src + '"';
+		}
+		// For now no resource.duration ( oggzchop is not very stable ) 
+		//if ( resource.duration ) {
+		//	var src = resource.src + '?t=0:0:0/' + mw.seconds2npt( resource.duration );
+		//} else {
+		//var src = resource.src;
+		//}
+		var o ='';
+		if ( resource.mime == 'application/ogg' || resource.mime == 'video/ogg' ) {
+			return '<video poster="' + resource.poster + '" ' + attributes + 
+					' type="video/ogg"></video>';
+		}else if( resource.mime == 'audio/ogg' ){
+			return '<audio ' + attributes + ' type="audio/ogg" ></audio>';
 		}
 	}
 }

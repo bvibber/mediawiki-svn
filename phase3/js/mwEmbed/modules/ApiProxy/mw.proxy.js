@@ -96,7 +96,7 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 			$.proxy.client_frame_path =  wgServer + wgScriptPath + '/js/mwEmbed/libMwApi/NestedCallbackIframe.html';
 		}
 				
-		if ( mw.parseUri( $.proxy.server_frame ).host ==  mw.parseUri( document.URL ).host ) {
+		if ( mw.isLocalDomain( $.proxy.server_frame ) ) {
 			mw.log( "Error: trying to proxy local domain? " );
 			return false;
 		}

@@ -49,8 +49,8 @@ var javaEmbed = {
 		// @@todo we should have src property in our base embed object
 		var mediaSrc = this.getSrc();
 		
-		if ( mediaSrc.indexOf( '://' ) != -1 & mw.parseUri( document.URL ).host !=  mw.parseUri( mediaSrc ).host ) {
-			if ( window.cortadoDomainLocations[mw.parseUri( mediaSrc ).host] ) {
+		if ( mediaSrc.indexOf( '://' ) != -1 & !mw.isLocalDomain( mediaSrc ) ) {
+			if ( window.cortadoDomainLocations[ mw.parseUri( mediaSrc ).host ] ) {
 				applet_loc =  window.cortadoDomainLocations[mw.parseUri( mediaSrc ).host];
 			} else {
 				applet_loc  = 'http://theora.org/cortado.jar';

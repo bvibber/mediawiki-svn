@@ -15,7 +15,7 @@ var defaultAddMediaConfig = {
 		'default_query': wgTitle,
 		'target_title': wgPageName,
 		// Here we can setup the content provider overrides
-		'enabled_providers':['wiki_commons'],
+		'enabled_providers': ['wiki_commons'],
 		// The local wiki API URL:
 		'local_wiki_api_url': wgServer + wgScriptPath + '/api.php'
 };
