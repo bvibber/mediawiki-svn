@@ -334,6 +334,8 @@ $messages['bs'] = array(
 	'wah-menu-jobs' => 'Poslovi',
 	'wah-menu-stats' => 'Statistike',
 	'wah-menu-pref' => 'Postavke',
+	'wah-lookingforjob' => 'Tražim posao ...',
+	'wah-uploading' => 'Postavljanje datoteke <i>$1</i> završeno',
 );
 
 /** Catalan (Català)

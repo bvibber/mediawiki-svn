@@ -1190,7 +1190,7 @@ $messages['ml'] = array(
 	'dt_xml_field' => 'ഫീല്‍ഡ്',
 	'dt_xml_name' => 'പേര്‌',
 	'dt_xml_title' => 'ശീര്‍ഷകം',
-	'dt_xml_id' => 'ഐഡി',
+	'dt_xml_id' => 'ഐ.ഡി.',
 );
 
 /** Mongolian (Монгол)

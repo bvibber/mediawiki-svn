@@ -46,8 +46,13 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'lookupuser-nonexistent' => 'Fout: Gebruiker bestaan nie',
 	'lookupuser-id' => 'Gebruiker-ID: <tt>#$1</tt>',
+	'lookupuser-email' => 'E-posadres: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'nie verskaf nie',
+	'lookupuser-realname' => 'Regte naam: $1',
+	'lookupuser-registration' => 'Registrasiedatum: $1',
+	'lookupuser-no-registration' => 'nie aangeteken nie',
 );
 
 /** Arabic (العربية)
@@ -854,7 +859,7 @@ $messages['ml'] = array(
 	'lookupuser-nonexistent' => 'തെറ്റ്: ഉപയോക്താവ് നിലവിലില്ല',
 	'lookupuser-authenticated' => 'ഇമെയില്‍ സ്ഥിരീകരണം: $1',
 	'lookupuser-not-authenticated' => 'സ്ഥിരീകരിച്ചിട്ടില്ല',
-	'lookupuser-id' => 'ഉപയോക്തൃ ഐഡി: <tt>#$1</tt>',
+	'lookupuser-id' => 'ഉപയോക്തൃ ഐ.ഡി.: <tt>#$1</tt>',
 	'lookupuser-email' => 'ഇമെയില്‍: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'നല്‍കിയിട്ടില്ല',
 	'lookupuser-realname' => 'ശരിയായ പേര്: $1',

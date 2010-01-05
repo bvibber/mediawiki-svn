@@ -38,6 +38,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'findspam' => 'Vind spam',
 	'findspam-ip' => 'IP-adres:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Geen bydraes gevind nie',

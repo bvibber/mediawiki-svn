@@ -19,6 +19,14 @@ $messages['qqq'] = array(
 	'microid-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'microid-desc' => "Voeg 'n [http://www.microid.org/ MikroID] by gebruikersbladsye om die gebruiker met eksterne dienste te bevestig",
+	'tog-microid' => 'Publiseer \'n <a href="http://microid.org/">MikroID</a> om \'n gebruiker by eksterne dienste te bevestig',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

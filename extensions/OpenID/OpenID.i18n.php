@@ -204,6 +204,7 @@ $messages['af'] = array(
 	'openidemail' => 'E-posadres',
 	'openidlanguage' => 'Taal',
 	'openidtimezone' => 'Tydsone',
+	'openidnotavailable' => "U voorkeur-naam ($1) word reeds deur 'n ander gebruiker gebruik.",
 	'openidchooseinstructions' => "Alle gebruikers moet 'n gebruikersnaam kies. U kan een kies uit die opsies hieronder.",
 	'openidchoosefull' => 'U volledige naam ($1)',
 	'openidchooseurl' => "'n Naam vanuit u OpenID ($1)",
@@ -226,6 +227,7 @@ $messages['af'] = array(
 	'openiddelete-sucess' => 'Die OpenID is suksesvol van u gebruiker verwyder.',
 	'openiddelete-error' => "'n Fout het voorgekom tydens die verwydering van die OpenID uit u gebruiker.",
 	'openid-prefstext' => '[http://openid.net/ OpenID] voorkeure',
+	'openid-pref-hide' => 'Versteek u OpenID op u gebruikersbladsy as u met OpenID aanteken.',
 	'openid-urls-desc' => "OpenID's aan u gebruiker gekoppel:",
 	'openid-urls-action' => 'Aksie',
 	'openid-urls-delete' => 'Skrap',
@@ -1110,6 +1112,10 @@ Jo wjele [http://openid.net/get/ póbitowarjow OpenID] a snaź maš južo konto 
 	'openiddelete' => 'OpenID wulašowaś',
 	'openiddelete-text' => 'Pśez kliknjenje na tłócašk "{{int:openiddelete-button}}", wótpórajoš OpenID $1 z twójogo konta. Njamóžoš se wěcej z toś tym OpenID pśizjawiś.',
 	'openiddelete-button' => 'Wobkšuśiś',
+	'openiddeleteerrornopassword' => 'Njamóžoš wše swóje OpenID lašowaś, dokulaž twójo konto njama gronidło.
+Ty njeby mógał se bźez OpenID pśizjawiś.',
+	'openiddeleteerroropenidonly' => 'Njamóžoš wše swóje OpenID lašowaś, dokulaž njesmějoš se z OpenID pśizjawiś.
+Ty njeby se bźez OpenID pśizjawiś.',
 	'openiddelete-sucess' => 'OpenID jo se wuspěšnje z twójogo konta wótpórał.',
 	'openiddelete-error' => 'Pśi wótwónoźowanju OpenID z twójogo konta jo zmólka jo nastata.',
 	'openid-prefstext' => 'Nastajenja [http://openid.net/ OpenID]',
@@ -1309,6 +1315,7 @@ Se ne, klaku la butonon "Continue" (Daŭri).',
  * @author Imre
  * @author McDutchie
  * @author Sanbec
+ * @author Translationista
  * @author XalD
  */
 $messages['es'] = array(
@@ -1380,6 +1387,10 @@ Hay muchos [http://openid.net/get proveedores de OpenID] y quizás ya dispongas 
 	'openiddelete-text' => 'Al presionar el botón "{{int:openiddelete-button}}", eliminarás el OpenID $1 de tu cuenta.
 Ya no podrás conectarte más con este OpenID.',
 	'openiddelete-button' => 'Confirmar',
+	'openiddeleteerrornopassword' => 'No puedes borrar todos tus OpenIDs porque tu cuenta no tiene contraseña.
+No podrás acceder sin un OpenID.',
+	'openiddeleteerroropenidonly' => 'No puedes borrar todos tus OpenIDs porque sólo se te permite acceder con OpenID.
+No podrás acceder sin un OpenID.',
 	'openiddelete-sucess' => 'El OpenID fue eliminado exitosamente de tu cuenta.',
 	'openiddelete-error' => 'Ocurrió un error al eliminar el OpenID de tu cuenta.',
 	'openid-prefstext' => 'Preferencias de [http://openid.net/ OpenID]',
@@ -1581,13 +1592,13 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidtimezone' => 'Zone horaire',
 	'openidnotavailable' => 'Votre surnom préféré ($1) est déjà utilisé par un autre utilisateur.',
 	'openidnotprovided' => 'Votre serveur OpenID n’a pas pu fournir un surnom (soit il ne le peut pas, soit vous lui avez demandé de ne pas le faire).',
-	'openidchooseinstructions' => 'Tous les utilisateurs ont besoin d’un surnom ; vous pouvez en choisir un à partir du choix ci-dessous.',
+	'openidchooseinstructions' => 'Tous les utilisateurs ont besoin d’un surnom ; vous pouvez en choisir un à partir des choix ci-dessous.',
 	'openidchoosefull' => 'Votre nom entier ($1)',
 	'openidchooseurl' => 'Un nom choisi depuis votre OpenID ($1)',
 	'openidchooseauto' => 'Un nom créé automatiquement ($1)',
 	'openidchoosemanual' => 'Un nom de votre choix :',
 	'openidchooseexisting' => 'Un compte existant sur ce wiki :',
-	'openidchoosepassword' => 'Mot de passe :',
+	'openidchoosepassword' => 'mot de passe :',
 	'openidconvertinstructions' => 'Ce formulaire vous permet de changer votre compte utilisateur pour utiliser une adresse OpenID ou ajouter des adresses OpenID supplémentaires.',
 	'openidconvertoraddmoreids' => 'Convertir vers OpenID ou ajouter une autre adresse OpenID',
 	'openidconvertsuccess' => 'Converti avec succès vers OpenID',
@@ -1615,6 +1626,10 @@ Il existe plusieurs [http://openid.net/get/ fournisseur d’OpenID], et vous pou
 	'openiddelete-text' => "En cliquant sur le bouton « {{int:openiddelete-button}} », vous supprimez l'OpenID $1 de votre compte.
 Vous ne pourrez plus vous connecter avec cet OpenID.",
 	'openiddelete-button' => 'Confirmer',
+	'openiddeleteerrornopassword' => "Vous ne pouvez pas supprimer tous vos OpenID parce que votre compte n'a pas de mot de passe.
+Vous ne pourriez pas vous connecter sans un OpenID.",
+	'openiddeleteerroropenidonly' => "Vous ne pouvez pas supprimer tous vos OpenID parce que vous ne pouvez vous connecter qu'avec OpenID.
+Vous ne pourriez pas vous connecter sans un OpenID.",
 	'openiddelete-sucess' => "L'OpenID a été supprimé avec succès de votre compte.",
 	'openiddelete-error' => "Une erreur est survenue pendant la suppression de l'OpenID de votre compte.",
 	'openid-prefstext' => 'Préférences de [http://openid.net/ OpenID]',
@@ -2168,6 +2183,10 @@ Je wjele [http://openid.net/get/ poskićowarjow OpenID], snano maš hižo konto 
 	'openiddelete' => 'OpenID wušmórnyć',
 	'openiddelete-text' => 'Přez kliknjenje tłóčatka "{{int:openiddelete-button}}", wotstroniš OpenID $1 ze swojeho konta. Njemóžeš potom hižo so z tutym OpenID přizjewić.',
 	'openiddelete-button' => 'Wobkrućić',
+	'openiddeleteerrornopassword' => 'Njemóžeš wšě swoje OpenID zničić, dokelž twoje konto hesło nima.
+Ty njemóhł so bjez OpenID přizjewić.',
+	'openiddeleteerroropenidonly' => 'Njemóžeš wšě swoje OpenID zničić, dokelž njesměš so z OpenID přizjewić.
+Ty njemóhł so bjez OpenID přizjewić.',
 	'openiddelete-sucess' => 'OpenID je so wuspěšnje z twojeho konta wotstronił.',
 	'openiddelete-error' => 'Při wotstronjenju OpenID z twojeho konto je zmólk wustupił.',
 	'openid-prefstext' => 'Nastajenja [http://openid.net/ OpenID]',
@@ -3119,6 +3138,10 @@ OpenID ви овозможува да се најавувате на многу 
 	'openiddelete-text' => 'Со кликнување на копчето „{{int:openiddelete-button}}“ ќе го отстраните OpenID $1 од вашата сметка.
 Повеќе нема да можете да се најавувате со овој OpenID.',
 	'openiddelete-button' => 'Потврди',
+	'openiddeleteerrornopassword' => 'Не можете да ги избришете сите ваши OpenID-ја бидејќи вашата сметка нема лозинка.
+Ако немате OpenID нема да можете да се најавите.',
+	'openiddeleteerroropenidonly' => 'Не можете да ги избришете сите ваши OpenID-ја бидејќи дозволено ви е да се најавувате само со OpenID.
+Ако немате OpenID нема да можете да се најавите.',
 	'openiddelete-sucess' => 'Овој OpenID е успешно отстранет од вашата сметка.',
 	'openiddelete-error' => 'Настана грешка при отстранувањето на OpenID од вашата сметка.',
 	'openid-prefstext' => '[http://openid.net/ OpenID] нагодувања',
@@ -3140,12 +3163,12 @@ OpenID ви овозможува да се најавувате на многу 
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'openidlogin' => 'ഓപ്പണ്‍ ഐഡി ഉപയോഗിച്ച് ലോഗിന്‍ ചെയ്യുക',
+	'openidlogin' => 'ഓപ്പണ്‍ ഐ.ഡി. ഉപയോഗിച്ച് ലോഗിന്‍ ചെയ്യുക',
 	'openidserver' => 'OpenID സെര്‍‌വര്‍',
 	'openidcancel' => 'സ്ഥിരീകരണം റദ്ദാക്കിയിരിക്കുന്നു',
 	'openidfailure' => 'സ്ഥിരീകരണം പരാജയപ്പെട്ടു',
 	'openidsuccess' => 'സ്ഥിരീകരണം വിജയിച്ചു',
-	'openidusernameprefix' => 'ഓപ്പണ്‍ ഐഡി ഉപയോക്താവ്',
+	'openidusernameprefix' => 'ഓപ്പണ്‍ ഐ.ഡി. ഉപയോക്താവ്',
 	'openidserverlogininstructions' => '$3യിലേക്ക് $2 എന്ന ഉപയോക്താവായി (ഉപയോക്തൃതാള്‍ $1) ലോഗിന്‍ ചെയ്യുവാന്‍ താങ്കളുടെ രഹസ്യവാക്ക് താഴെ രേഖപ്പെടുത്തുക.',
 	'openidtrustinstructions' => '$1 താങ്കളുടെ ഡാറ്റ പങ്കുവെക്കണമോ എന്ന കാര്യം പരിശോധിക്കുക.',
 	'openidnopolicy' => 'സൈറ്റ് സ്വകാര്യതാ നയം കൊടുത്തിട്ടില്ല.',
@@ -3158,18 +3181,18 @@ $messages['ml'] = array(
 	'openidnotavailable' => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത വിളിപ്പേര്‌ ($1) മറ്റൊരാള്‍ ഉപയോഗിക്കുന്നതാണ്‌.',
 	'openidchooseinstructions' => 'എല്ലാ ഉപയോക്താക്കള്‍ക്കും ഒരു വിളിപ്പേരു ആവശ്യമാണ്‌. താഴെ കൊടുത്തിരിക്കുന്നവയില്‍ നിന്നു ഒരെണ്ണം താങ്കള്‍ക്ക് തിരഞ്ഞെടുക്കാവുന്നതാണ്‌.',
 	'openidchoosefull' => 'താങ്കളുടെ പൂര്‍ണ്ണനാമം ($1)',
-	'openidchooseurl' => 'താങ്കളുടെ ഓപ്പണ്‍‌ഐഡിയില്‍ നിന്നു തിരഞ്ഞെടുത്ത ഒരു പേര്‌ ($1)',
+	'openidchooseurl' => 'താങ്കളുടെ ഓപ്പണ്‍‌ഐ.ഡി.യില്‍ നിന്നു തിരഞ്ഞെടുത്ത ഒരു പേര്‌ ($1)',
 	'openidchooseauto' => 'യാന്ത്രികമായി ഉണ്ടാക്കിയ പേര്‌ ($1)',
 	'openidchoosemanual' => 'താങ്കള്‍ക്ക് ഇഷ്ടമുള്ള ഒരു പേര്‌:',
 	'openidchooseexisting' => 'ഈ വിക്കിയില്‍ നിലവിലുള്ള അക്കൗണ്ട്:',
 	'openidchoosepassword' => 'രഹസ്യവാക്ക്:',
-	'openidconvertsuccess' => 'ഓപ്പണ്‍ ഐഡിയിലേക്ക് വിജയകരമായി പരിവര്‍ത്തനം ചെയ്തിരിക്കുന്നു',
-	'openidconvertsuccesstext' => 'താങ്കളുടെ ഓപ്പണ്‍‌ഐഡി $1ലേക്കു വിജയകരമായി പരിവര്‍ത്തനം ചെയ്തിരിക്കുന്നു.',
-	'openidconvertyourstext' => 'ഇതു ഇപ്പോള്‍ തന്നെ താങ്കളുടെ ഓപ്പണ്‍‌ഐഡിയാണ്‌.',
-	'openidconvertothertext' => 'ഇതു മറ്റാരുടേയോ ഓപ്പണ്‍‌ഐഡിയാണ്‌.',
+	'openidconvertsuccess' => 'ഓപ്പണ്‍ ഐ.ഡി.യിലേക്ക് വിജയകരമായി പരിവര്‍ത്തനം ചെയ്തിരിക്കുന്നു',
+	'openidconvertsuccesstext' => 'താങ്കളുടെ ഓപ്പണ്‍‌ഐ.ഡി. $1ലേക്കു വിജയകരമായി പരിവര്‍ത്തനം ചെയ്തിരിക്കുന്നു.',
+	'openidconvertyourstext' => 'ഇതു ഇപ്പോള്‍ തന്നെ താങ്കളുടെ ഓപ്പണ്‍‌ഐ.ഡി.യാണ്‌.',
+	'openidconvertothertext' => 'ഇതു മറ്റാരുടേയോ ഓപ്പണ്‍‌ഐ.ഡി.യാണ്‌.',
 	'openidnousername' => 'ഉപയോക്തൃനാമം തിരഞ്ഞെടുത്തിട്ടില്ല.',
 	'openidbadusername' => 'അസാധുവായ ഉപയോക്തൃനാമമാണു തിരഞ്ഞെടുത്തിരിക്കുന്നത.',
-	'openidloginlabel' => 'ഓപ്പണ്‍‌ഐഡി വിലാസം',
+	'openidloginlabel' => 'ഓപ്പണ്‍‌ഐ.ഡി. വിലാസം',
 );
 
 /** Mongolian (Монгол)
@@ -3396,6 +3419,10 @@ Er zijn veel [http://wiki.openid.net/Public_OpenID_providers publieke OpenID-pro
 	'openiddelete-text' => 'Door te klikken op de knop "{{int:openiddelete-button}}", verwijdert u de OpenID $1 uit uw gebruiker.
 Het is dan niet langer mogelijk aan te melden met de OpenID "$1".',
 	'openiddelete-button' => 'Bevestigen',
+	'openiddeleteerrornopassword' => "U kunt niet al uw OpenID's verwijderen omdat uw gebruiker geen wachtwoord heeft.
+Dan zou u niet langer kunnen aanmelden zonder een OpenID.",
+	'openiddeleteerroropenidonly' => "U kunt niet al uw OpenID's verwijderen omdat u alleen mag aanmelden met een OpenID.
+Dan zou u niet langer kunnen aanmelden zonder een OpenID.",
 	'openiddelete-sucess' => 'De OpenID is verwijderd uit uw gebruiker.',
 	'openiddelete-error' => 'Er is een fout opgetreden tijdens het verwijderen van de OpenID uit uw gebruiker.',
 	'openid-prefstext' => 'Voorkeuren [http://openid.net/ OpenID]',

@@ -65,6 +65,13 @@ $messages['dsb'] = array(
 	'svgzoom-desc' => 'Pśidawa MediaWiki zawjertowańske a skalěrowańske zamóžnosći za zwobraznjowanje SVG-datajow',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'svgzoom-desc' => 'Añade capacidades de recorrido y acercamiento-alejamiento a MediaWiki al ver archivos SVG',
+);
+
 /** French (Français)
  * @author IAlex
  */

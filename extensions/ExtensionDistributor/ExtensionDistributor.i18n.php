@@ -2356,6 +2356,7 @@ Cele mai multe extensii funcţionează în mai multe versiuni de MediaWiki, deci
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'extensiondistributor' => 'Scareche le estenziune de MediaUicchi',
 	'extdist-submit-extension' => 'Condinue',
 	'extdist-want-more' => "Pigghie 'n'otra estenzione",
 );

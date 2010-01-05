@@ -131,6 +131,13 @@ $messages['el'] = array(
 	'ajax-qp-desc' => 'Προσθήκη AJAX σε σελίδες query όπως οι [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Esperanto (Esperanto)
+ * @author Castelobranco
+ */
+$messages['eo'] = array(
+	'ajax-qp-desc' => 'Aldoni AJAX al informmendaj pagxoj tiel [[Special:Shortpages|{{int:shortpages}}]].',
+);
+
 /** Spanish (Español)
  * @author Ascánder
  */

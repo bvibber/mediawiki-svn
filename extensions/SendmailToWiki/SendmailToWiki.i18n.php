@@ -173,11 +173,18 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Translationista
  */
 $messages['es'] = array(
+	'sendmailtowiki-desc' => 'Publicar contenido wiki a través de un dirección de correo electrónico dinámica dedicada',
 	'prefs-sendmailtowiki' => 'Enviando contenido con correo electrónico',
 	'sendmailtowiki-inemail' => 'Dirección de correo electrónico asignada:',
 	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'El campo de número PIN en blanco desactiva la publicación de contenido a la wiki con tu cuenta.',
+	'sendmailtowiki-err-pinlength' => 'El PIN debe contener exactamente 5 números.',
+	'sendmailtowiki-err-wrongprefix' => 'Prefijo de cuenta wiki erróneo. Porfavor, contacta con el administrador.',
+	'sendmailtowiki-err-invalidaccount' => 'Cuenta inválida. Revisa la dirección de correo electrónico a la que estás realizando el envío.',
+	'sendmailtowiki-err-invalidsender' => 'Cuenta inválida. Revisa la dirección de correo electrónico desde la que estás realizando el envío.',
 	'sendmailtowiki-err-invalidpin' => 'PIN no válido. Acceso denegado.',
 	'sendmailtowiki-err-onlyplain' => 'Debido a potenciales malentendidos solamente mensajes de puro texto son aceptados.',
 );

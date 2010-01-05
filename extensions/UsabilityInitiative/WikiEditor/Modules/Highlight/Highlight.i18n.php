@@ -99,6 +99,13 @@ $messages['eo'] = array(
 	'wikieditor-highlight-preference' => 'Ŝalti sintaksan kolorigadon dum redakto',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'wikieditor-highlight-preference' => 'Habilitar resalte de sintaxis al editar',
+);
+
 /** Finnish (Suomi)
  * @author ZeiP
  */

@@ -169,6 +169,7 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'transliterator-desc' => 'Provee una función analizadora configurable para transliteración',
@@ -176,6 +177,7 @@ $messages['es'] = array(
 	'transliterator-error-syntax' => 'Sintaxis inválido <code>$1</code> en [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Más de $1 {{PLURAL:$1|regla|reglas}} en [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Regla <code>$1</code> tiene más de $3 {{PLURAL:$3|caracter|caracteres}} en la izquierda en [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] debe tener al menos $1 {{PLURAL:$1|caracter|caracteres}} de largo.',
 );
 
 /** French (Français)

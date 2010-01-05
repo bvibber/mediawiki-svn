@@ -595,6 +595,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Castelobranco
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -637,6 +638,7 @@ Reen:
 * [[Special:CrosswikiBlock|Forbarpaĝo]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Lokaj malforbaroj ne estas subtenataj per ĉi interfaco. Uzu [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Bloki kaj malbloki uzantojn en aliaj vikioj.',
 );
 
 /** Spanish (Español)
@@ -1656,7 +1658,7 @@ $messages['ml'] = array(
 	'crosswikiblock-noemail' => 'ഇമെയില്‍ അയക്കുന്നതില്‍ നിന്നു ഉപയോക്താവിനെ തടയുക',
 	'crosswikiunblock' => 'ഉപയോക്താവിനെ മറ്റൊരു വിക്കിയില്‍ സ്വതന്ത്രമാക്കുക',
 	'crosswikiunblock-header' => 'ഈ താള്‍ മറ്റു വിക്കികളീല്‍ ഉപയോക്താക്കളെ സ്വതന്ത്രമാക്കാന്‍ സഹായിക്കുന്നു.  പ്രസ്തുത വിക്കിയില്‍ പ്രവര്‍ത്തിക്കുവാന്‍ താങ്കള്‍ക്ക് അനുമതിയുണ്ട് എന്നും,  താങ്കളുടെ പ്രവൃത്തി വിക്കിയുടെ നയങ്ങള്‍ക്ക് അനുസരിച്ചാണെന്നും ഉറപ്പാക്കുക.',
-	'crosswikiunblock-user' => 'ഉപയോക്തൃനാമം, ഐ.പി. വിലാസം അല്ലെങ്കില്‍ തടയല്‍ ഐഡി ഇവയിലൊന്നും ലക്ഷ്യ വിക്കിയും:',
+	'crosswikiunblock-user' => 'ഉപയോക്തൃനാമം, ഐ.പി. വിലാസം അല്ലെങ്കില്‍ തടയല്‍ ഐ.ഡി. ഇവയിലൊന്നും ലക്ഷ്യ വിക്കിയും:',
 	'crosswikiunblock-reason' => 'കാരണം:',
 	'crosswikiunblock-submit' => 'ഈ ഉപയോക്താവിനെ സ്വതന്ത്രമാക്കുക',
 	'crosswikiunblock-success' => "'''$1''' എന്ന ഉപയോക്താവിനെ വിജയകരമായി സ്വതന്ത്രമാക്കിയിരിക്കുന്നു.

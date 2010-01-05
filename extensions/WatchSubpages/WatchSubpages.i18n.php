@@ -247,6 +247,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Fluence
+ * @author Translationista
  */
 $messages['es'] = array(
 	'watchsubpages' => 'Vigilar subpáginas',
@@ -257,7 +258,7 @@ $messages['es'] = array(
 	'watchsubpages-form' => 'Seleccionar las páginas de abajo a agregar en su lista de vigilancia.
 Para agregar una página, marque la cuadrícula próxima a ella, y haga click en "Agregar página".
 
-Cuando marque o desmarque múltiples páginas, Mantener presionada la tecla shift le permite seleccionar cuadrículas de marcado consecutivas haciendo click al final de cada rango a ser marcado.',
+Cuando marque o desmarque múltiples páginas, Mantener presionada la tecla Mayús le permite seleccionar cuadrículas de marcado consecutivas haciendo click al final de cada rango a ser marcado.',
 );
 
 /** Estonian (Eesti)

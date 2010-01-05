@@ -323,11 +323,12 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author Fluence
  * @author Imre
+ * @author Translationista
  */
 $messages['es'] = array(
 	'watchers' => 'Vigilantes',
 	'watchers-desc' => 'Muestra [[Special:Watchers|aquellos usuarios que tienen una página en sus listas de vigilancia]]',
-	'watchers_link_title' => 'Quién vigila esta página?',
+	'watchers_link_title' => '¿Quién vigila esta página?',
 	'watchers_error_article' => "'''Error:''' La página no existe.",
 	'watchers_header' => '{{PLURAL:$2|usuario quien está|Usuarios quienes están}} vigilando "$1"',
 	'watchers_noone_watches' => 'Nadie vigila esta página.',

@@ -140,9 +140,13 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Stanqo
  */
 $messages['bg'] = array(
+	'adminlinks' => 'административни връзки',
 	'adminlinks-desc' => 'Добавя [[Special:AdminLinks|специална страница]], която съдържа полезни препратки за администраторите',
+	'adminlinks_documentation' => '$1 документация',
+	'adminlinks_general' => 'Общ',
 	'adminlinks_editsidebar' => 'Редактиране на страничната лента',
 	'adminlinks_editcss' => 'Редактиране на CSS файл',
 	'adminlinks_editmainpagename' => 'Редактиране името на началната страница',
@@ -150,6 +154,7 @@ $messages['bg'] = array(
 	'adminlinks_createuser' => 'Създаване на потребител',
 	'adminlinks_browsesearch' => 'Разглеждане и търсене',
 	'adminlinks_importexport' => 'Внасяне и изнасяне',
+	'right-adminlinks' => 'Погледни връзката към [[Special:AdminLinks|Администраторски връзки]]',
 );
 
 /** Breton (Brezhoneg)

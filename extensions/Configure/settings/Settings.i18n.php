@@ -6134,6 +6134,7 @@ $messages['gl'] = array(
 	'configure-setting-wgAutoConfirmCount' => 'Número de edicións para acadar o estado de "autoconfirmado"',
 	'configure-setting-wgAllowRealName' => 'Permitir os nomes reais',
 	'configure-setting-wgAllowUserSkin' => 'Permitir que os usuarios cambien a súa apariencia',
+	'configure-setting-wgAllowPrefChange-key' => 'Preferencia de usuario',
 	'configure-setting-wgDefaultUserOptions' => 'Preferencias de usuarios por defecto',
 	'configure-setting-wgDisableAnonTalk' => 'Desactivar as páxinas de conversa dos usuarios anónimos (os que non se rexistraron)',
 	'configure-setting-wgHiddenPrefs' => 'Preferencias de usuario desactivadas',
@@ -6278,6 +6279,7 @@ $messages['gl'] = array(
 	'configure-setting-wgMimeTypeBlacklist' => 'Tipos MIME non permitidos',
 	'configure-setting-wgCacheSharedUploads' => 'Metadatos compartidos da caché na memoria',
 	'configure-setting-wgForeignFileRepos' => 'Respositorios de ficheiros estranxeiros',
+	'configure-setting-wgUseInstantCommons' => 'Usar a Wikimedia Commons como un repositorio de ficheiros externo',
 	'configure-setting-wgFetchCommonsDescriptions' => 'Buscar nas descricións dos ficheiros compartidos',
 	'configure-setting-wgHashedSharedUploadDirectory' => 'Numerar o directorio de cargas compartidas',
 	'configure-setting-wgRepositoryBaseUrl' => 'URL base para o repositorio compartido',
@@ -14226,6 +14228,7 @@ $messages['roa-tara'] = array(
  * @author Ferrer
  * @author Grigol
  * @author Innv
+ * @author Kaganer
  * @author Kv75
  * @author Lockal
  * @author Putnik
@@ -14271,6 +14274,8 @@ $messages['ru'] = array(
 	'configure-setting-wgThumbLimits' => 'Допустимые размеры миниатюр',
 	'configure-setting-wgUseImageResize' => 'Включить динамическое изменение размера изображений на стороне сервера',
 	'configure-setting-wgTrustedMediaFormats' => 'Медиа-типы и MIME-типы, считающиеся «безопасными»',
+	'configure-setting-wgImgAuthDetails' => 'Отображать посредством img_auth.php детальные сведения о причине отказа в доступе',
+	'configure-setting-wgImgAuthPublicTest' => 'Проверять изображения на общедоступность и отображать ошибку посредством img_auth.php, если это так',
 	'configure-setting-wgTiffThumbnailType' => 'Расширения файлов и MIME-тип, используемый для преобразования изображений TIFF',
 	'configure-setting-wgMainCacheType' => 'Тип основной кеширующей системы',
 	'configure-setting-wgCacheEpoch' => 'Эпоха аннулирования кэша',

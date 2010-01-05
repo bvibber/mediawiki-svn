@@ -2462,7 +2462,7 @@ $messages['ml'] = array(
 	'grouppage-oversight' => '{{ns:project}}:മേല്‍നോട്ടം',
 	'right-oversight' => 'മുന്‍പ് മറയ്ക്കപ്പെട്ട ഒരു പതിപ്പ് കാണുക',
 	'right-hiderevision' => 'കാര്യനിർവാഹകരിൽ നിന്ന് നാൾപ്പതിപ്പുകൾ മറയ്ക്കുക',
-	'hiderevision-prompt' => 'ഒഴിവാക്കാനുള്ള പതിപ്പിന്റെ ഐഡി',
+	'hiderevision-prompt' => 'ഒഴിവാക്കാനുള്ള പതിപ്പിന്റെ ഐ.ഡി.',
 	'hiderevision-continue' => 'തുടരുക',
 	'hiderevision-text' => "താഴെ പറയുന്ന സന്ദർഭങ്ങളിൽ '''മാത്രമേ''' ഇതുപയോഗിക്കാവൂ:
 * അനുയോജ്യമല്ലാത്ത വ്യക്തി വിവരണങ്ങൾ

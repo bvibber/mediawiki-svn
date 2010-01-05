@@ -1735,16 +1735,21 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'wikilog-desc' => 'Añade características de blogueo creando así un híbrido de wiki y blog',
 	'wikilog-auto' => 'Wikilog Auto',
 	'wikilog-help' => '{{ns:Help}}:Wikilog',
+	'right-wl-postcomment' => 'Publicar comentarios en artículos del Wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Registro de acciones  de Wikilog',
+	'wikilog-log-pagetext' => 'A continuación hay un listado de acciones de Wikilog.',
 	'wikilog-log-cmt-approve' => 'comentario aprobado [[$1]]',
 	'wikilog-log-cmt-reject' => 'comentario rechazado [[$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Acciones de Wikilog',
 	'wikilog-information' => 'Información sobre Wikilog',
+	'wikilog-post-count-published' => 'Hay {{PLURAL:$1|un artículo publicado|$1 artículos publicados}} en este wikilog',
+	'wikilog-post-count-drafts' => 'Hay {{PLURAL:$1|un artículo sin publicar (borrador)|$1 artículos sin publicar (borradores)}} en este wikilog',
 	'wikilog-post-count-all' => 'En total hay {{PLURAL:$1|un artículo|$1 artículos}}.',
 	'wikilog-new-item' => 'Crear nuevo artículo de wikilog',
 	'wikilog-new-item-go' => 'Crear',
@@ -1773,6 +1778,8 @@ $messages['es'] = array(
 	'wikilog-pager-empty' => '(no puntos)',
 	'wikilog-no-comments' => 'sin comentarios',
 	'wikilog-has-comments' => '{{PLURAL:$1|un comentario|$1 comentarios}}',
+	'wikilog-summary-footer' => 'Publicado por $7 en relación con [[$1|$2]] el $8 a las $9, $10.',
+	'wikilog-summary-footer-single' => 'Publicado por $7 el $8 a las $9, S10.',
 	'wikilog-summary-uncategorized' => 'No categorizado',
 	'wikilog-summary-categories' => 'Rellenado en $2',
 	'wikilog-summary-more' => '[[$3|→ continuar leyendo...]]',
@@ -1804,12 +1811,20 @@ $messages['es'] = array(
 	'wikilog-invalid-file' => 'Archivo inválido: $1.',
 	'wikilog-file-not-found' => 'Archivo inexistente: $1.',
 	'wikilog-not-an-image' => 'El archivo no es una imagen: $1.',
+	'wikilog-out-of-context' => 'Advertencia: Las etiquetas de Wikilog están siendo usadas fuera de contexto.
+Sólo deben ser usadas en artículos en el espacio de nombre Wikilog.',
+	'wikilog-too-many-authors' => 'Advertencia: Muchos autores listados en esta publicación de wikilog.',
+	'wikilog-too-many-tags' => 'Advertencia: Muchas etiquetas utilizadas para esta publicación de wikilog.',
 	'wikilog-comment-is-empty' => 'El comentario añadido está en blanco.',
 	'wikilog-comment-too-long' => 'El comentario añadido es muy largo',
 	'wikilog-comment-invalid-name' => 'El nombre suministrado es inválido.',
+	'wikilog-no-such-article' => 'El artículo de wikilog solicitado no existe.',
+	'wikilog-reading-draft' => 'Este artículo de wikilog es un borrador. No ha sido publicado aún.',
 	'wikilog-posting-anonymously' => 'No has accedido al sistema;
 tu comentario se añadirá como anónimo y se identificará por medio de tu dirección de conexión de internet.
 Debes escribir un seudónimo abajo para identificar tu comentario o $1 para que se te atribuya.',
+	'wikilog-anonymous-moderated' => 'Tu comentario no será inmediatamente visible en esta página al enviarlo.
+Aparecerá sólo después de haber sido revisado por un moderador.',
 	'wikilog-post-comment' => 'Publicar un nuevo comentario',
 	'wikilog-post-reply' => 'Publicar una nueva respuesta',
 	'wikilog-form-wikilog' => 'Wikilog:',

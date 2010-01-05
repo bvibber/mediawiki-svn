@@ -689,7 +689,16 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'externalpages' => 'Pàggene esterne',
+	'externalpages-desc' => 'Pigghie e face vedè pàggene da le site remote WMF',
+	'externalpages-bad-year' => 'Anne sbagliate specificate',
+	'externalpages-bad-language' => 'Lengà sbagliate specificate',
+	'externalpages-bad-project' => 'Progette sbagliate specificate',
+	'externalpages-no-project' => 'Nisciune progette specificate',
+	'externalpages-bad-page' => 'Pàgena sbagliate specificate',
 	'externalpages-no-page' => 'Nisciuna pàgene specificate',
+	'externalpages-error-generic' => 'Errore acchiate',
+	'externalpages-bad-url' => "Recupere de l'URL fallite",
+	'externalpages-bad-url-data' => "Recupere de le condenute d'a pàgene fallite",
 );
 
 /** Russian (Русский)

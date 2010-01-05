@@ -105,6 +105,13 @@ $messages['el'] = array(
 	'contributorsaddon-desc' => 'Προσθέτει το popup JavaScript στους συνδέσμους «Κύριοι συνεισφέροντες»',
 );
 
+/** Esperanto (Esperanto)
+ * @author Castelobranco
+ */
+$messages['eo'] = array(
+	'contributorsaddon-desc' => 'Aldoni Ĝavaskriptojn ŝprucfenestrojn al "Ĉefaj kontribuantoj" ligiloj.',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

@@ -487,11 +487,12 @@ $messages['eo'] = array(
  * @author Fluence
  * @author Imre
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'vote' => 'Votar',
 	'vote-desc' => 'Provea capacidades de encuesta simple',
-	'vote-header' => "Usted puede votar por '''Supremo Señor Feudal del Mundo''' aquí!",
+	'vote-header' => "¡Puedes votar por '''Supremo Señor Feudal del Mundo''' aquí!",
 	'vote-current' => "Tu voto actual es para '''$1'''.",
 	'vote-legend' => 'Reemplazar o enmendar voto',
 	'vote-caption' => 'Su selección:',

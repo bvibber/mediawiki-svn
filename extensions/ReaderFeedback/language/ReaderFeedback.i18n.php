@@ -435,6 +435,7 @@ $messages['cs'] = array(
 	'readerfeedback-tier-poor' => 'Nízké',
 	'tooltip-ca-ratinghist' => 'Hodnocení této stránky čtenáři',
 	'specialpages-group-feedback' => 'Názory čtenářů',
+	'readerfeedback-tt-review' => 'Odeslat hodnocení',
 );
 
 /** Danish (Dansk)
@@ -508,6 +509,7 @@ $messages['de'] = array(
 	'readerfeedback-tier-poor' => 'Schlecht',
 	'tooltip-ca-ratinghist' => 'Leserbewertungen dieser Seite',
 	'specialpages-group-feedback' => 'Meinung der Betrachter',
+	'readerfeedback-tt-review' => 'Bewertung abschicken',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -588,6 +590,7 @@ $messages['dsb'] = array(
 	'readerfeedback-tier-poor' => 'Špatny',
 	'tooltip-ca-ratinghist' => 'Pógódnośenja cytarjow za toś ten bok',
 	'specialpages-group-feedback' => 'Měnjenje wobglědowarja',
+	'readerfeedback-tt-review' => 'Pśeglědanje wótpósłaś',
 );
 
 /** Greek (Ελληνικά)
@@ -626,6 +629,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author ArnoLagrange
+ * @author Castelobranco
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -657,6 +661,7 @@ $messages['eo'] = array(
 	'readerfeedback-tier-poor' => 'Malbonkvalita',
 	'tooltip-ca-ratinghist' => 'Taksoj de legintoj de ĉi tiu paĝo',
 	'specialpages-group-feedback' => 'Opinio de vidantaro',
+	'readerfeedback-tt-review' => 'Konservi',
 );
 
 /** Spanish (Español)
@@ -822,6 +827,7 @@ $messages['fi'] = array(
  * @author McDutchie
  * @author Mihai
  * @author Omnipaedista
+ * @author Peter17
  * @author PieRRoMaN
  * @author Sherbrooke
  * @author The RedBurn
@@ -858,6 +864,7 @@ $messages['fr'] = array(
 	'readerfeedback-tier-poor' => 'Mauvaise',
 	'tooltip-ca-ratinghist' => 'Évaluations de cette page par les lecteurs',
 	'specialpages-group-feedback' => 'Opinion du lecteur',
+	'readerfeedback-tt-review' => 'Soumettre la révision',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -928,6 +935,7 @@ $messages['gl'] = array(
 	'readerfeedback-tier-poor' => 'Baixa',
 	'tooltip-ca-ratinghist' => 'Valoracións dos lectores desta páxina',
 	'specialpages-group-feedback' => 'Opinión do lector',
+	'readerfeedback-tt-review' => 'Enviar a revisión',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1059,6 +1067,7 @@ $messages['hsb'] = array(
 	'readerfeedback-tier-poor' => 'Špatny',
 	'tooltip-ca-ratinghist' => 'Pohódnoćenja čitarjow tuteje strony',
 	'specialpages-group-feedback' => 'Měnjenje wobhladowarja',
+	'readerfeedback-tt-review' => 'Přepruwowanje wotpósłać',
 );
 
 /** Hungarian (Magyar)
@@ -1424,6 +1433,7 @@ $messages['mk'] = array(
 	'readerfeedback-tier-poor' => 'Слабо',
 	'tooltip-ca-ratinghist' => 'Оценки на читателите за оваа страница',
 	'specialpages-group-feedback' => 'Мислења од гледачите',
+	'readerfeedback-tt-review' => 'Испрати оценка',
 );
 
 /** Malayalam (മലയാളം)
@@ -1458,6 +1468,7 @@ $messages['ml'] = array(
 	'readerfeedback-tier-poor' => 'മോശം',
 	'tooltip-ca-ratinghist' => 'വായനക്കാർ ഈ താളിനു നൽകിയ നിലവാരം',
 	'specialpages-group-feedback' => 'വായനക്കാരുടെ അഭിപ്രായം',
+	'readerfeedback-tt-review' => 'സംശോധനം സമർപ്പിക്കുക',
 );
 
 /** Malay (Bahasa Melayu)
@@ -1541,6 +1552,7 @@ Uw terugkoppeling is waardevol en helpt ons deze website te verbeteren.''",
 	'readerfeedback-tier-poor' => 'Laag',
 	'tooltip-ca-ratinghist' => 'Waardering van deze pagina door lezers',
 	'specialpages-group-feedback' => 'Mening van de lezer',
+	'readerfeedback-tt-review' => 'Beoordeling opslaan',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1854,6 +1866,7 @@ $messages['roa-tara'] = array(
 	'readerfeedback-tier-poor' => 'Povere',
 	'tooltip-ca-ratinghist' => 'Pundegge de le letture de sta pàgene',
 	'specialpages-group-feedback' => "Visitatore de l'opiniune",
+	'readerfeedback-tt-review' => 'Conferme reviste',
 );
 
 /** Russian (Русский)

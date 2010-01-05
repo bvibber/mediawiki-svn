@@ -926,9 +926,12 @@ $messages['vo'] = array(
 	'sitenotice-desc' => 'Dälon gebanes ad nemogükön jonami topädanunama',
 );
 
-/** Võro (Võro) */
+/** Võro (Võro)
+ * @author Võrok
+ */
 $messages['vro'] = array(
 	'sitenotice_close' => 'Käkiq ärq',
+	'sitenotice-desc' => 'Lupa pruukjal leheteedüse kinniq pandaq',
 );
 
 /** Walloon (Walon) */
