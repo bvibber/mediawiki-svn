@@ -122,7 +122,7 @@ class CodeRepository {
 		while ( $row = $dbr->fetchObject( $res ) ) {
 			$authors[] = $row->cr_author;
 		}
-		$wgMemc->set( $key, $authors, 3600 * 24 * 3 );
+		$wgMemc->set( $key, $authors, 3600 * 24 );
 		return $authors;
 	}
 
