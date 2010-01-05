@@ -319,8 +319,10 @@ fn: {
 		var sanatizedStr = wikitext.replace( /{{/, "  " );
 		// Replace end
 		endBraces = sanatizedStr.match( /}}\s*$/ );
-		sanatizedStr = sanatizedStr.substring( 0, endBraces.index ) + "  " +
-			sanatizedStr.substring( endBraces.index + 2 );
+		if ( endBraces ) {
+			sanatizedStr = sanatizedStr.substring( 0, endBraces.index ) + "  " +
+				sanatizedStr.substring( endBraces.index + 2 );
+		}
 		// Match the open braces we just found with equivalent closing braces note, works for any level of braces
 		while ( sanatizedStr.indexOf( '{{' ) != -1 ) {
 			startIndex = sanatizedStr.indexOf( '{{' ) + 1;
