@@ -357,7 +357,7 @@ class CodeRevisionView extends CodeView {
 	}
 
 	protected function formatDiff() {
-		global $wgEnableAPI;
+		global $wgEnableAPI, $wgCodeReviewMaxDiffSize;
 
 		// Asynchronous diff loads will require the API
 		// And JS in the client, but tough shit eh? ;)
@@ -380,6 +380,8 @@ class CodeRevisionView extends CodeView {
 		if ( !$diff && $deferDiffs ) {
 			// We'll try loading it by AJAX...
 			return $this->stubDiffLoader();
+		} elseif ( strlen( $diff ) > $wgCodeReviewMaxDiffSize ) {
+			return htmlspecialchars( wfMsg( 'code-rev-diff-too-large' ) );
 		} else {
 			$hilite = new CodeDiffHighlighter();
 			return $hilite->render( $diff );
