@@ -2,7 +2,7 @@
 if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 /**
  * Extension:RecordAdmin - MediaWiki extension
- * {{Category:Extensions|RecordAdmin}}{{php}}{{Category:Extensions created with Template:SpecialPage}}
+ *
  * @package MediaWiki
  * @subpackage Extensions
  * @author Aran Dunkley [http://www.organicdesign.co.nz/nad User:Nad]
