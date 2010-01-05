@@ -155,7 +155,7 @@ HEADER;
 	protected function writeSettings( $version ){
 		global $wgConf, $IP;
 		if( $this->hasOption( 'wiki' ) )
-			$wiki = $this->getOption('wiki' );
+			$wiki = $this->getOption( 'wiki' );
 		else
 			$wiki = $wgConf->getWiki();
 		if( $version ){
@@ -239,8 +239,8 @@ HEADER;
 			3 => 'NS_USER_TALK',
 			4 => 'NS_PROJECT',
 			5 => 'NS_PROJECT_TALK',
-			6 => 'NS_IMAGE',
-			7 => 'NS_IMAGE_TALK',
+			6 => 'NS_FILE',
+			7 => 'NS_FILE_TALK',
 			8 => 'NS_MEDIAWIKI',
 			9 => 'NS_MEDIAWIKI_TALK',
 			10 => 'NS_TEMPLATE',
