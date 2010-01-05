@@ -73,6 +73,7 @@ $messages['en'] = array(
 	'code-rev-comment-preview' => 'Preview',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-diff-too-large' => 'The diff is too large to display.',
 	'code-rev-purge-link' => 'purge',
 	'code-status-new' => 'new',
 	'code-status-fixme' => 'fixme',

@@ -140,6 +140,11 @@ $wgCodeReviewImgRegex = '/\.(png|jpg|jpeg|gif)$/i';
 // Should match test runner's $wgParserTestRemote['secret'].
 $wgCodeReviewSharedSecret = false;
 
+/**
+ * Maximum size of diff text before it is omitted from the revision view
+ */
+$wgCodeReviewMaxDiffSize = 500000;
+
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';
 
