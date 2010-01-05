@@ -25,7 +25,7 @@ class VectorHooks {
 		),
 	);
 	static $modules = array(
-		'collapsibleleftnav' => array(
+		'collapsiblenav' => array(
 		),
 		'collapsibletabs' => array(
 		),
