@@ -38,6 +38,7 @@
 require (dirname(__FILE__) . '/includes/WebStart.php');
 
 wfProfileIn('api.php');
+$starttime = microtime( true );
 
 // URL safety checks
 //
@@ -49,16 +50,10 @@ wfProfileIn('api.php');
 // which will end up triggering HTML detection and execution, hence
 // XSS injection and all that entails.
 //
-// Ensure that all access is through the canonical entry point...
-//
-if( isset( $_SERVER['SCRIPT_NAME'] ) ) {
-	$url = $_SERVER['SCRIPT_NAME'];
-} else {
-	$url = $_SERVER['URL'];
-}
-if( strcmp( "$wgScriptPath/api$wgScriptExtension", $url ) ) {
+if( $wgRequest->isPathInfoBad() ) {
 	wfHttpError( 403, 'Forbidden',
-		'API must be accessed through the primary script entry point.' );
+		'Invalid file extension found in PATH_INFO. ' . 
+		'The API must be accessed through the primary script entry point.' );
 	return;
 }
 
@@ -67,6 +62,41 @@ if (!$wgEnableAPI) {
 	echo 'MediaWiki API is not enabled for this site. Add the following line to your LocalSettings.php';
 	echo '<pre><b>$wgEnableAPI=true;</b></pre>';
 	die(1);
+}
+
+// Selectively allow cross-site AJAX
+
+/*
+ * Helper function to convert wildcard string into a regex
+ * '*' => '.*?'
+ * '?' => '.'
+ * @ return string
+ */
+function convertWildcard( $search ) {
+	$search = preg_quote( $search, '/' );
+	$search = str_replace(
+		array( '\*', '\?' ),
+		array( '.*?', '.' ),
+		$search
+	);
+	return "/$search/";
+}
+
+if ( $wgCrossSiteAJAXdomains && isset($_SERVER['HTTP_ORIGIN']) ) {	
+	$exceptions = array_map( 'convertWildcard', $wgCrossSiteAJAXdomainExceptions );
+	$regexes = array_map( 'convertWildcard', $wgCrossSiteAJAXdomains );
+	foreach ( $regexes as $regex ) {
+		if ( preg_match( $regex, $_SERVER['HTTP_ORIGIN'] ) ) {
+			foreach ( $exceptions as $exc ) { // Check against exceptions
+				if ( preg_match( $exc, $_SERVER['HTTP_ORIGIN'] ) ) {
+					break 2;
+				}
+			}
+			header( "Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}" );
+			header( 'Access-Control-Allow-Credentials: true' );
+			break;
+		}
+	}
 }
 
 // So extensions can check whether they're running in API mode
@@ -89,8 +119,27 @@ $processor->execute();
 wfDoUpdates();
 
 // Log what the user did, for book-keeping purposes.
+$endtime = microtime( true );
 wfProfileOut('api.php');
 wfLogProfilingData();
+
+// Log the request
+if ( $wgAPIRequestLog ) {
+	$items = array(
+			wfTimestamp( TS_MW ),
+			$endtime - $starttime,
+			wfGetIP(),
+			$_SERVER['HTTP_USER_AGENT']
+	);
+	$items[] = $wgRequest->wasPosted() ? 'POST' : 'GET';
+	if ( $processor->getModule()->mustBePosted() ) {
+		$items[] = "action=" . $wgRequest->getVal( 'action' );
+	} else {
+		$items[] = wfArrayToCGI( $wgRequest->getValues() );
+	}
+	wfErrorLog( implode( ',', $items ) . "\n", $wgAPIRequestLog );
+	wfDebug( "Logged API request to $wgAPIRequestLog\n" );
+}
 
 // Shut down the database
 wfGetLBFactory()->shutdown();

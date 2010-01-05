@@ -33,7 +33,10 @@ class LogPage {
 	const DELETED_ACTION = 1;
 	const DELETED_COMMENT = 2;
 	const DELETED_USER = 4;
-    const DELETED_RESTRICTED = 8;
+	const DELETED_RESTRICTED = 8;
+	// Convenience fields
+	const SUPPRESSED_USER = 12;
+	const SUPPRESSED_ACTION = 9;
 	/* @access private */
 	var $type, $action, $comment, $params, $target, $doer;
 	/* @acess public */
@@ -57,7 +60,7 @@ class LogPage {
 		global $wgLogRestrictions;
 
 		$dbw = wfGetDB( DB_MASTER );
-		$log_id = $dbw->nextSequenceValue( 'log_log_id_seq' );
+		$log_id = $dbw->nextSequenceValue( 'logging_log_id_seq' );
 
 		$this->timestamp = $now = wfTimestampNow();
 		$data = array(
@@ -69,6 +72,7 @@ class LogPage {
 			'log_user_text' => $this->doer->getName(),
 			'log_namespace' => $this->target->getNamespace(),
 			'log_title' => $this->target->getDBkey(),
+			'log_page' => $this->target->getArticleId(),
 			'log_comment' => $this->comment,
 			'log_params' => $this->params
 		);
@@ -162,7 +166,7 @@ class LogPage {
 	 * @static
 	 * @return HTML string
 	 */
-	public static function actionText( $type, $action, $title = NULL, $skin = NULL, 
+	public static function actionText( $type, $action, $title = null, $skin = null, 
 		$params = array(), $filterWikilinks = false ) 
 	{
 		global $wgLang, $wgContLang, $wgLogActions, $wgMessageCache;
@@ -215,12 +219,17 @@ class LogPage {
 							self::formatBlockFlags( $params[2], is_null( $skin ) ) : '';
 					// Page protections
 					} else if ( $type == 'protect' && count($params) == 3 ) {
+						// Restrictions and expiries
+						if( $skin ) {
+							$details .= htmlspecialchars( " {$params[1]}" );
+						} else {
+							$details .= " {$params[1]}";
+						}
+						// Cascading flag...
 						if( $params[2] ) {
 							if ( $skin ) {
-								$details .= htmlspecialchars( " {$params[1]}" ); // restrictions and expiries
 								$details .= ' ['.wfMsg('protect-summary-cascade').']';
 							} else {
-								$details .= " {$params[1]}";
 								$details .= ' ['.wfMsgForContent('protect-summary-cascade').']';
 							}
 						}
@@ -376,7 +385,7 @@ class LogPage {
 		
 		$this->doer = $doer;
 
-		$this->actionText = LogPage::actionText( $this->type, $action, $target, NULL, $params );
+		$this->actionText = LogPage::actionText( $this->type, $action, $target, null, $params );
 
 		return $this->saveContent();
 	}

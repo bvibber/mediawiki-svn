@@ -38,6 +38,17 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 
 	public function __construct($query, $moduleName) {
 		parent :: __construct($query, $moduleName, 'ai');
+		$this->mRepo = RepoGroup::singleton()->getLocalRepo();
+	}
+	
+	/**
+	 * Overide parent method to make sure to make sure the repo's DB is used
+	 * which may not necesarilly be the same as the local DB.
+	 * 
+	 * TODO: allow querying non-local repos.
+	 */
+	protected function getDB() {
+		return $this->mRepo->getSlaveDB();
 	}
 
 	public function execute() {
@@ -52,7 +63,7 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 	}
 
 	private function run($resultPageSet = null) {
-		$repo = RepoGroup::singleton()->getLocalRepo();
+		$repo = $this->mRepo;
 		if ( !$repo instanceof LocalRepo )
 			$this->dieUsage('Local file repository does not support querying all images', 'unsupportedrepo');
 
@@ -65,7 +76,7 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 		$from = (is_null($params['from']) ? null : $this->titlePartToKey($params['from']));
 		$this->addWhereRange('img_name', $dir, $from, null);
 		if (isset ($params['prefix']))
-			$this->addWhere("img_name LIKE '" . $db->escapeLike($this->titlePartToKey($params['prefix'])) . "%'");
+			$this->addWhere('img_name' . $db->buildLike( $this->titlePartToKey($params['prefix']), $db->anyString() ) );
 
 		if (isset ($params['minsize'])) {
 			$this->addWhere('img_size>=' . intval($params['minsize']));
@@ -157,18 +168,7 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 			'sha1' => null,
 			'sha1base36' => null,
 			'prop' => array (
-				ApiBase :: PARAM_TYPE => array(
-					'timestamp',
-					'user',
-					'comment',
-					'url',
-					'size',
-					'dimensions', // Obsolete
-					'mime',
-					'sha1',
-					'metadata',
-					'bitdepth',
-				),
+				ApiBase :: PARAM_TYPE => ApiQueryImageInfo::getPropertyNames(),
 				ApiBase :: PARAM_DFLT => 'timestamp|url',
 				ApiBase :: PARAM_ISMULTI => true
 			)

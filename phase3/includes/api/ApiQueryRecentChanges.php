@@ -82,6 +82,24 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	}
 
 	/**
+	 * Sets internal state to include the desired properties in the output.
+	 * @param $prop associative array of properties, only keys are used here
+	 */
+	public function initProperties( $prop ) {
+		$this->fld_comment = isset ($prop['comment']);
+		$this->fld_user = isset ($prop['user']);
+		$this->fld_flags = isset ($prop['flags']);
+		$this->fld_timestamp = isset ($prop['timestamp']);
+		$this->fld_title = isset ($prop['title']);
+		$this->fld_ids = isset ($prop['ids']);
+		$this->fld_sizes = isset ($prop['sizes']);
+		$this->fld_redirect = isset($prop['redirect']);
+		$this->fld_patrolled = isset($prop['patrolled']);
+		$this->fld_loginfo = isset($prop['loginfo']);
+		$this->fld_tags = isset($prop['tags']);
+	}
+
+	/**
 	 * Generates and outputs the result of this query based upon the provided parameters.
 	 */
 	public function execute() {
@@ -164,16 +182,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$prop = array_flip($params['prop']);
 
 			/* Set up internal members based upon params. */
-			$this->fld_comment = isset ($prop['comment']);
-			$this->fld_user = isset ($prop['user']);
-			$this->fld_flags = isset ($prop['flags']);
-			$this->fld_timestamp = isset ($prop['timestamp']);
-			$this->fld_title = isset ($prop['title']);
-			$this->fld_ids = isset ($prop['ids']);
-			$this->fld_sizes = isset ($prop['sizes']);
-			$this->fld_redirect = isset($prop['redirect']);
-			$this->fld_patrolled = isset($prop['patrolled']);
-			$this->fld_loginfo = isset($prop['loginfo']);
+			$this->initProperties( $prop );
 
 			global $wgUser;
 			if($this->fld_patrolled && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol())
@@ -202,6 +211,18 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 				$this->addJoinConds(array('page' => array('LEFT JOIN', array('rc_namespace=page_namespace', 'rc_title=page_title'))));
 				$this->addFields('page_is_redirect');
 			}
+		}
+		
+		if($this->fld_tags) {
+			$this->addTables('tag_summary');
+			$this->addJoinConds(array('tag_summary' => array('LEFT JOIN', array('rc_id=ts_rc_id'))));
+			$this->addFields('ts_tags');
+		}
+			
+		if(!is_null($params['tag'])) {
+			$this->addTables('change_tag');
+			$this->addJoinConds(array('change_tag' => array('INNER JOIN', array('rc_id=ct_rc_id'))));
+			$this->addWhereFld('ct_tag' , $params['tag']);
 		}
 		$this->token = $params['token'];
 		$this->addOption('LIMIT', $params['limit'] +1);
@@ -245,9 +266,9 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	 *
 	 * @param $row The row from which to extract the data.
 	 * @return An array mapping strings (descriptors) to their respective string values.
-	 * @access private
+	 * @access public
 	 */
-	private function extractRowInfo($row) {
+	public function extractRowInfo($row) {
 		/* If page was moved somewhere, get the title of the move target. */
 		$movedToTitle = false;
 		if (isset($row->rc_moved_to_title) && $row->rc_moved_to_title !== '')
@@ -335,6 +356,16 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 				$row->rc_log_type, $row->rc_timestamp);
 		}
 		
+		if ($this->fld_tags) {
+			if ($row->ts_tags) {
+				$tags = explode(',', $row->ts_tags);
+				$this->getResult()->setIndexedTagName($tags, 'tag');
+				$vals['tags'] = $tags;
+			} else {
+				$vals['tags'] = array();
+			}
+		}
+			
 		if(!is_null($this->token))
 		{
 			$tokenFunctions = $this->getTokenFunctions();
@@ -394,6 +425,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			'excludeuser' => array(
 				ApiBase :: PARAM_TYPE => 'user'
 			),
+			'tag' => null,
 			'prop' => array (
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_DFLT => 'title|timestamp|ids',
@@ -408,6 +440,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 					'redirect',
 					'patrolled',
 					'loginfo',
+					'tags'
 				)
 			),
 			'token' => array(
@@ -462,7 +495,8 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 				'For example, to see only minor edits done by logged-in users, set show=minor|!anon'
 			),
 			'type' => 'Which types of changes to show.',
-			'limit' => 'How many total changes to return.'
+			'limit' => 'How many total changes to return.',
+			'tag' => 'Only list changes tagged with this tag.',
 		);
 	}
 

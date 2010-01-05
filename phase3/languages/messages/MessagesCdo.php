@@ -150,7 +150,6 @@ $messages = array(
 'aboutsite'            => 'Guăng-ṳ̀ {{SITENAME}}',
 'aboutpage'            => 'Project:Guăng-ṳ̀',
 'copyright'            => 'Buōng câng gì cṳ̆-lâiu dŭ sê gŏng-gé̤ṳ $1 huák-buó gì.',
-'copyrightpagename'    => '{{SITENAME}} bēng-guòng',
 'copyrightpage'        => '{{ns:project}}:Bēng-guòng',
 'currentevents'        => 'Duâi chéu â',
 'currentevents-url'    => 'Project:Duâi chéu â',
@@ -213,7 +212,7 @@ Sō̤ kī só-gé̤ṳ-kó gì guāng-lī-uòng cūng-kuāng gāi-sék: $1',
 'editinginterface'     => "'''Gīng-gó̤:''' Nṳ̄ hiêng-câi lā̤ siŭ-gāi hiê-tūng gái-miêng gì hiĕk. Dó̤i ciā hiĕk gì gāi-biéng â̤ īng-hiōng gì-tă ê̤ṳng-hô gì gái-miêng.",
 
 # Login and logout pages
-'logouttext'                 => "'''Nṳ̄ hiêng-câi láuk-chók lāu.'''<br />
+'logouttext'                 => "'''Nṳ̄ hiêng-câi láuk-chók lāu.'''
 Nṳ̄ â̤-sāi sāi mò̤-miàng huŏng-sék gié-sṳ̆k găk {{SITENAME}} gè̤-dēng láuk, nṳ̄ iâ â̤-sāi sāi dè̤ng-iông gì dióng-hô̤ hĕ̤k-ciā bĕk-nó̤h bĭk dióng-hô̤ gái láuk-diē. Diŏh gé lā̤, nṳ̄ báuk-lāng-ké ká̤-chṳ̄ (''browser cache'') nâ mò̤ tĕ̤ng táh gó̤ uâ, ô gì hiĕk giăng â̤ hiēng-sê nṳ̄ gó muôi láuk-chók.",
 'welcomecreation'            => '== Huăng-ngìng guŏng-lìng, $1! ==
 
@@ -228,10 +227,10 @@ Nṳ̄ gì dióng-hô̤ ī-gĭng kŭi hō̤ lāu. Dāng nṳ̄ â̤-sāi siŭ-g�
 'logout'                     => 'Láuk-chók',
 'userlogout'                 => 'Láuk-chók',
 'notloggedin'                => 'Mò̤ [[Special:UserLogin|láuk-diē]]',
-'nologin'                    => 'Gó muôi kŭi dióng-hô̤? $1.',
+'nologin'                    => "Gó muôi kŭi dióng-hô̤? '''$1'''.",
 'nologinlink'                => 'Kŭi 1 ciáh sĭng dióng-hô̤',
 'createaccount'              => 'Kŭi dióng-hô̤',
-'gotaccount'                 => 'Ī-gĭng ô dióng-hô lāu? $1.',
+'gotaccount'                 => "Ī-gĭng ô dióng-hô lāu? '''$1'''.",
 'gotaccountlink'             => 'Láuk-diē',
 'loginerror'                 => 'Láuk-diē ô dâng',
 'loginsuccesstitle'          => 'Láuk-diē sìng-gŭng',
@@ -357,10 +356,9 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 'searchresulttext'      => 'Buóh liēu-gāi diŏh {{SITENAME}} sìng-tō̤ ùng-ciŏng gì gáing sâ̤ séng-sék, chiāng chăng-kō̤ [[{{ns:project}}:Sìng-tō̤]].',
 'searchsubtitle'        => "Nṳ̄ sìng-tō̤ '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Nṳ̄ sìng-tō̤ '''$1'''",
-'noexactmatch'          => "'''Tō̤ mâ̤ diŏh dū-dū siŏh-iông gì miàng \"\$1\".''' Nṳ̄ â̤-sāi [[:\$1|cê-gă siā]].",
 'prevn'                 => 'sèng {{PLURAL:$1|$1}} hâung',
 'nextn'                 => 'â {{PLURAL:$1|$1}} hâung',
-'viewprevnext'          => 'Káng ($1) ($2) ($3).',
+'viewprevnext'          => 'Káng ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'        => 'Help:Mŭk-liŏh',
 'showingresults'        => "Hiēng-sê téng #<b>$2</b> kăi-sṳ̄ gì {{PLURAL:$1|'''1'''|'''$1'''}} bĭk giék-guō.",
 'showingresultsnum'     => "Hiēng-sê téng #<b>$2</b> kăi-sṳ̄ gì {{PLURAL:$3|'''1'''|'''$3'''}} bĭk giék-guō.",
@@ -439,7 +437,6 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 # Upload
 'upload'            => 'Siông-duòng ùng-giông',
 'uploadbtn'         => 'Siông-duòng ùng-giông',
-'reupload'          => 'Dṳ̀ng-sĭng siông-diòng',
 'reuploaddesc'      => 'Duōng kó̤ siông-duòng dăng-dăng.',
 'uploadnologin'     => 'Mò̤ láuk-diē',
 'uploadnologintext' => 'Sĕng [[Special:UserLogin|láuk-diē]] ciáh â̤-sāi siông-duòng ùng-giông.',
@@ -454,7 +451,8 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 'uploadedfiles'     => 'Siông-duòng ùng-giông',
 'ignorewarning'     => 'Mò̤ sê̤ṳ gīng-gó̤ bō̤-còng ùng-giông.',
 'ignorewarnings'    => 'Mò̤ sê̤ṳ gīng-gó̤',
-'fileexists'        => "Ī-gĭng ô siŏh bĭk dè̤ng miàng ùng-giông, nṳ̄ nâ mâ̤ káuk-dêng nṳ̄ sê-ng-sê dŏng-cĭng páh-sáung gāi-biéng ĭ, chiāng giēng-chă '''<tt>$1</tt>'''.",
+'fileexists'        => "Ī-gĭng ô siŏh bĭk dè̤ng miàng ùng-giông, nṳ̄ nâ mâ̤ káuk-dêng nṳ̄ sê-ng-sê dŏng-cĭng páh-sáung gāi-biéng ĭ, chiāng giēng-chă '''<tt>[[:$1]]</tt>'''.
+[[$1|thumb]]",
 'successfulupload'  => 'Siông-diòng sìng-gŭng',
 'uploadwarning'     => 'Siông-duòng gīng-gó̤',
 'savefile'          => 'Bō̤-còng ùng-giông',

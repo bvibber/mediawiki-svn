@@ -282,7 +282,7 @@ fail, returning an error message or an <edit result="Failure"> tag
 if $resultArr was filled.
 $EditPage : the EditPage object
 $text : the new text of the article (has yet to be saved)
-$resultArr : data in this array will be added to the API result
+&$resultArr : data in this array will be added to the API result
 
 'APIGetAllowedParams': use this hook to modify a module's parameters.
 &$module: Module object
@@ -349,6 +349,12 @@ $tokenFunctions: array(action => callback)
 the database
 $article: the article (object) being loaded from the database
 $content: the content (string) of the article
+
+'ArticleConfirmDelete': before writing the confirmation form for article
+	deletion
+$article: the article (object) being deleted
+$output: the OutputPage object ($wgOut)
+&$reason: the reason (string) the article is being deleted
 
 'ArticleDelete': before an article is deleted
 $article: the article (object) being deleted
@@ -507,6 +513,14 @@ rendered inline in wiki pages or galleries in category pages.
 &$nt: the image title
 &$time: image timestamp
 
+'BeforeInitialize': before anything is initialized in performRequestForTitle()
+&$title: Title being used for request
+&$article: The associated Article object
+&$output: OutputPage object
+&$user: User
+$request: WebRequest object
+$mediaWiki: Mediawiki object
+
 'BeforePageDisplay': Prior to outputting a page
 &$out: OutputPage object
 &$skin: Skin object
@@ -539,16 +553,24 @@ $user: the user who did the block (not the one being blocked)
 $isbn: ISBN to show information for
 $output: OutputPage object in use
 
+'CacheHeadersAfterSet': after cache headers have been set in 
+OutputPage::sendCacheControl, so they can be overridden without 
+disabling output method
+$out: OutputPage instance
+ 
 'CategoryPageView': before viewing a categorypage in CategoryPage::view
 $catpage: CategoryPage instance
 
 'ChangesListInsertArticleLink': Override or augment link to article in RC list.
-&$this:        ChangesList instance.
+&$changesList: ChangesList instance.
 &$articlelink: HTML of link to article (already filled-in).
 &$s:           HTML of row that is being constructed.
 &$rc:          RecentChange instance.
 $unpatrolled:  Whether or not we are showing unpatrolled changes.
 $watched:      Whether or not the change is watched by the user.
+
+'ConfirmEmailComplete': Called after a user's email has been confirmed successfully
+$user: user (object) whose email is being confirmed
 
 'ContribsPager::getQueryInfo': Before the contributions query is about to run
 &$pager: Pager object for contributions
@@ -613,7 +635,7 @@ $summary: Edit summary for page
 'EditFilterMerged': Post-section-merge edit filter
 $editor: EditPage instance (object)
 $text: content of the edit box
-$error: error message to return
+&$error: error message to return
 $summary: Edit summary for page
 
 'EditFormPreloadText': Allows population of the edit form when creating
@@ -623,7 +645,7 @@ new pages
 
 'EditPage::attemptSave': called before an article is
 saved, that is before insertNewArticle() is called
-&$editpage_Obj: the current EditPage object
+$editpage_Obj: the current EditPage object
 
 'EditPage::importFormData': allow extensions to read additional data
 posted in the form
@@ -791,7 +813,7 @@ $title: Title object, pages linked to this title are purged.
 'ImageBeforeProduceHTML': Called before producing the HTML created by a wiki
 	image insertion.  You can skip the default logic entirely by returning
 	false, or just modify a	few things using call-by-reference.
-&$this: Skin object
+&$skin: Skin object
 &$title: Title object of the image
 &$file: File object, or false if it doesn't exist
 &$frameParams: Various parameters with special meanings; see documentation in
@@ -807,6 +829,11 @@ $title: Title object, pages linked to this title are purged.
 $imagePage: ImagePage object ($this)
 $output: $wgOut
 
+'ImagePageAfterImageLinks': called after the image links section on an image 
+	page is built
+$imagePage: ImagePage object ($this)
+&$html: HTML for the hook to add
+
 'ImagePageFileHistoryLine': called when a file history line is contructed
 $file: the file
 $line: the HTML of the history line
@@ -817,6 +844,24 @@ $page: ImagePage object
 &$file: File object
 &$displayFile: displayed File object
 
+'ImagePageShowTOC': called when the file toc on an image page is generated
+$page: ImagePage object
+&$toc: Array of <li> strings
+
+'ImgAuthBeforeStream': executed before file is streamed to user, but only when
+	using img_auth.php
+&$title: the Title object of the file as it would appear for the upload page
+&$path: the original file and path name when img_auth was invoked by the the web
+	server
+&$name: the name only component of the file
+&$result: The location to pass back results of the hook routine (only used if
+	failed)
+	$result[0]=The index of the header message
+	$result[1]=The index of the body text message
+	$result[2 through n]=Parameters passed to body text message. Please note the
+	header message cannot receive/use parameters.
+
+
 'InitializeArticleMaybeRedirect': MediaWiki check to see if title is a redirect
 $title: Title object ($wgTitle)
 $request: WebRequest
@@ -826,9 +871,12 @@ $article: Article object
 
 'InternalParseBeforeLinks': during Parser's internalParse method before links
 but after noinclude/includeonly/onlyinclude and other processing.
-&$this: Parser object
+&$parser: Parser object
 &$text: string containing partially parsed text
-&$this->mStripState: Parser's internal StripState object
+&$stripState: Parser's internal StripState object
+
+'InvalidateEmailComplete': Called after a user's email has been invalidated successfully
+$user: user (object) whose email is being invalidated
 
 'IsFileCacheable': Override the result of Article::isFileCacheable() (if true)
 $article: article (object) being checked
@@ -844,7 +892,7 @@ $addr: The e-mail address entered by the user
 
 'isValidPassword': Override the result of User::isValidPassword()
 $password: The password entered by the user
-&$result: Set this to either true (passes) or the key for a message error
+&$result: Set this and return false to override the internal checks
 $user: User the password is being validated for
 
 'LanguageGetMagic': DEPRECATED, use $magicWords in a file listed in 
@@ -970,7 +1018,8 @@ DEPRECATED: Use $wgLogActions
 &$actionText: array of strings
 
 'MagicWordMagicWords': When defining new magic word.
-DEPRECATED: Use LanguageGetMagic hook instead
+DEPRECATED: use $magicWords in a file listed in 
+$wgExtensionMessagesFiles instead.
 $magicWords: array of strings
 
 'MagicWordwgVariableIDs': When definig new magic words IDs.
@@ -1001,12 +1050,12 @@ $errmsg: error message, in HTML (string). Nonempty indicates failure
 'MediaWikiPerformAction': Override MediaWiki::performAction().
 Use this to do something completely different, after the basic
 globals have been set up, but before ordinary actions take place.
-$output:  $wgOut
+$output: $wgOut
 $article: $wgArticle
-$title:   $wgTitle
-$user:    $wgUser
+$title: $wgTitle
+$user: $wgUser
 $request: $wgRequest
-$this:    The $mediawiki object
+$mediaWiki: The $mediawiki object
 
 'MessagesPreLoad': When loading a message from the database
 $title: title of the message (string)
@@ -1016,6 +1065,13 @@ $message: value (string), change it to the message you want to define
 Useful for updating caches.
 $title: name of the page changed.
 $text: new contents of the page.
+
+'ModifyExportQuery': Modify the query used by the exporter.
+$db: The database object to be queried.
+&$tables: Tables in the query.
+&$conds: Conditions in the query.
+&$opts: Options for the query.
+&$join_conds: Join conditions for the query.
 
 'MonoBookTemplateToolboxEnd': Called by Monobook skin after toolbox links have
 been rendered (useful for adding more)
@@ -1050,6 +1106,11 @@ displayed
 'OpenSearchUrls': Called when constructing the OpenSearch description XML.
 Hooks can alter or append to the array of URLs for search & suggestion formats.
 &$urls: array of associative arrays with Url element attributes
+
+'OtherBlockLogLink': Get links to the block log from extensions which blocks
+	users and/or IP addresses too
+$otherBlockLink: An array with links to other block logs
+$ip: The requested IP address or username
 
 'OutputPageBeforeHTML': a page has been processed by the parser and
 the resulting HTML is about to be displayed.
@@ -1125,6 +1186,7 @@ $varCache: array to store the value in case of multiples calls of the
 	same magic word
 $index: index (string) of the magic
 $ret: value of the magic word (the hook should set it)
+$frame: PPFrame object to use for expanding any template variables
 
 'ParserGetVariableValueTs': use this to change the value of the time for the
 {{LOCAL...}} magic word
@@ -1186,6 +1248,18 @@ $user: User (object) changing his passoword
 $newPass: new password
 $error: error (string) 'badretype', 'wrongpassword', 'error' or 'success'
 
+'ProtectionForm::buildForm': called after all protection type fieldsets are made in the form
+$article: the title being (un)protected
+$output: a string of the form HTML so far
+
+'ProtectionForm::save': called when a protection form is submitted
+$article: the title being (un)protected
+$errorMsg: an html message string of an error
+
+'ProtectionForm::showLogExtract': called after the protection log extract is shown
+$article: the page the form is shown for
+$out: OutputPage object
+
 'RawPageViewBeforeOutput': Right before the text is blown out in action=raw
 &$obj: RawPage object
 &$text: The text that's going to be the output
@@ -1214,10 +1288,20 @@ $term : Search term string
 
 'SetupAfterCache': Called in Setup.php, after cache objects are set
 
+'ShowMissingArticle': Called when generating the output for a non-existent page
+$article: The article object corresponding to the page
+
 'ShowRawCssJs': Customise the output of raw CSS and JavaScript in page views
 $text: Text being shown
 $title: Title of the custom script/stylesheet page
 $output: Current OutputPage object
+
+'ShowSearchHitTitle': Customise display of search hit title/link.
+&$title: Title to link to
+&$text: Text to use for the link
+$result: The search result
+$terms: The search terms entered
+$page: The SpecialSearch object.
 
 'SiteNoticeBefore': Before the sitenotice/anonnotice is composed
 &$siteNotice: HTML returned as the sitenotice
@@ -1293,15 +1377,15 @@ $out: Css to return
 'SkinTemplateTabAction': Override SkinTemplate::tabAction().
 You can either create your own array, or alter the parameters for
 the normal one.
-&$this:     The SkinTemplate instance.
-$title:     Title instance for the page.
-$message:   Visible label of tab.
-$selected:  Whether this is a selected tab.
+&$sktemplate: The SkinTemplate instance.
+$title: Title instance for the page.
+$message: Visible label of tab.
+$selected: Whether this is a selected tab.
 $checkEdit: Whether or not the action=edit query should be added if appropriate.
-&$classes:  Array of CSS classes to apply.
-&$query:    Query string to add to link.
-&$text:     Link text.
-&$result:   Complete assoc. array if you want to return true.
+&$classes: Array of CSS classes to apply.
+&$query: Query string to add to link.
+&$text: Link text.
+&$result: Complete assoc. array if you want to return true.
 
 'SkinTemplateTabs': called when finished to build the actions tabs
 $sktemplate: SkinTemplate object
@@ -1353,6 +1437,15 @@ $newTitle: new title (object)
 hook to remove a core special page
 $list: list (array) of core special pages
 
+'SpecialRandomGetRandomTitle': called during the execution of Special:Random,
+use this to change some selection criteria or substitute a different title
+&$randstr: The random number from wfRandom()
+&$isRedir: Boolean, whether to select a redirect or non-redirect 
+&$namespaces: An array of namespace indexes to get the title from
+&$extra: An array of extra SQL statements 
+&$title: If the hook returns false, a Title object to use instead of the
+result from the normal query
+
 'SpecialRecentChangesPanel': called when building form options in
 SpecialRecentChanges
 &$extraOpts: array of added items, to which can be added
@@ -1369,6 +1462,9 @@ $opts: FormOptions for this request
 target doesn't exist
 $title: title object generated from the text entred by the user
 
+'SpecialSearchProfiles': allows modification of search profiles
+&$profiles: profiles, which can be modified.
+
 'SpecialSearchResults': called before search result display when there
 are matches
 $term: string of search term
@@ -1379,9 +1475,13 @@ $term: string of search term
 no matches
 $term: string of search term
 
+'SpecialStatsAddExtra': add extra statistic at the end of Special:Statistics
+&$extraStats: Array to save the new stats 
+              ( $extraStats['<name of statistic>'] => <value>; )
+
 'SpecialUploadComplete': Called after successfully uploading a file from 
 Special:Upload
-$form: The UploadForm object
+$form: The SpecialUpload object
 
 'SpecialVersionExtensionTypes': called when generating the extensions credits,
 use this to change the tables headers
@@ -1397,6 +1497,11 @@ $extTypes: associative array of extensions types
 database result
 &$titleArray: set this to an object to override the default object returned
 $res: database result used to create the object
+
+'TitleGetRestrictionTypes': Allows extensions to modify the types of protection
+  that can be applied.
+$title: The title in question.
+&$types: The types of protection available.
 
 'TitleMoveComplete': after moving an article (title)
 $old: old title
@@ -1432,15 +1537,33 @@ You might set the member-variables $uploadFormTextTop and
 $uploadFormTextAfterSummary to inject text (HTML) either before
 or after the editform.
 
-'UploadForm:BeforeProcessing': at the beginning of processUpload()
+'UploadForm:BeforeProcessing': DEPRECATED! at the beginning of processUpload()
 $form: UploadForm object
 Lets you poke at member variables like $mUploadDescription before the
 file is saved.
 
+'UploadCreateFromRequest': when UploadBase::createFromRequest has been called
+$type: (string) the requested upload type
+&$className: the class name of the Upload instance to be created
+
+'UploadComplete': when Upload completes an upload
+&$upload: an UploadBase child instance
+
+'UploadFormInitDescriptor': after the descriptor for the upload form as been 
+	assembled
+$descriptor: (array) the HTMLForm descriptor
+
+'UploadFormSourceDescriptors': after the standard source inputs have been 
+added to the descriptor
+$descriptor: (array) the HTMLForm descriptor
+
 'UploadVerification': additional chances to reject an uploaded file
 string $saveName: destination file name
 string $tempName: filesystem path to the temporary file for checks
-string &$error: output: HTML error to show if upload canceled by returning false
+string &$error: output: message key for message to show if upload canceled 
+	by returning false. May also be an array, where the first element
+	is the message key and the remaining elements are used as parameters to
+	the message.
 
 'UploadComplete': Upon completion of a file upload
 $uploadBase: UploadBase (or subclass) object. File can be accessed by
@@ -1519,6 +1642,14 @@ $user: User object
 'UserGetRights': Called in User::getRights()
 $user: User to get rights for
 &$rights: Current rights
+
+'UserIsBlockedFrom': Check if a user is blocked from a specific page (for specific block
+	exemptions).
+$user: User in question
+$title: Title of the page in question
+&$blocked: Out-param, whether or not the user is blocked from that page.
+&$allowUsertalk: If the user is blocked, whether or not the block allows users to edit their
+                  own user talk pages.
 
 'UserIsBlockedGlobally': Check if user is blocked on all wikis.
 &$user: User object
@@ -1633,6 +1764,20 @@ One, and only one hook should set this, and return false.
 'wgQueryPages': called when initialising $wgQueryPages, use this to add new
 query pages to be updated with maintenance/updateSpecialPages.php
 $query: $wgQueryPages itself
+
+'XmlDumpWriterOpenPage': Called at the end of XmlDumpWriter::openPage, to allow extra
+ metadata to be added.
+$obj: The XmlDumpWriter object.
+&$out: The output string.
+$row: The database row for the page.
+$title: The title of the page.
+
+'XmlDumpWriterWriteRevision': Called at the end of a revision in an XML dump, to add extra
+ metadata.
+$obj: The XmlDumpWriter object.
+&$out: The text being output.
+$row: The database row for the revision.
+$text: The revision text.
 
 More hooks might be available but undocumented, you can execute
 ./maintenance/findhooks.php to find hidden one.

@@ -84,6 +84,8 @@ class ImagePage extends Article {
 
 		if( $this->mTitle->getNamespace() != NS_FILE || ( isset( $diff ) && $diffOnly ) )
 			return Article::view();
+			
+		$this->showRedirectedFromHeader();
 
 		if( $wgShowEXIF && $this->displayImg->exists() ) {
 			// FIXME: bad interface, see note on MediaHandler::formatMetadata().
@@ -130,6 +132,12 @@ class ImagePage extends Article {
 		# Yet we return metadata about the target. Definitely an issue in the FileRepo
 		$this->imageRedirects();
 		$this->imageLinks();
+		
+		# Allow extensions to add something after the image links
+		$html = '';
+		wfRunHooks( 'ImagePageAfterImageLinks', array( $this, &$html ) );
+		if ( $html)
+			$wgOut->addHTML( $html );
 
 		if( $showmeta ) {
 			global $wgStylePath, $wgStyleVersion;
@@ -222,14 +230,18 @@ class ImagePage extends Article {
 	 * @return string
 	 */
 	protected function showTOC( $metadata ) {
-		global $wgLang;
-		$r = '<ul id="filetoc">
-			<li><a href="#file">' . wfMsgHtml( 'file-anchor-link' ) . '</a></li>
-			<li><a href="#filehistory">' . wfMsgHtml( 'filehist' ) . '</a></li>
-			<li><a href="#filelinks">' . wfMsgHtml( 'imagelinks' ) . "</a></li>\n" .
-			($metadata ? '			<li><a href="#metadata">' . wfMsgHtml( 'metadata' ) . '</a></li>' : '') . "
-			</ul>\n";
-		return $r;
+		$r = array(
+				'<li><a href="#file">' . wfMsgHtml( 'file-anchor-link' ) . '</a></li>',
+				'<li><a href="#filehistory">' . wfMsgHtml( 'filehist' ) . '</a></li>',
+				'<li><a href="#filelinks">' . wfMsgHtml( 'imagelinks' ) . '</a></li>', 
+		);
+		if ( $metadata ) {
+			$r[] = '<li><a href="#metadata">' . wfMsgHtml( 'metadata' ) . '</a></li>';
+		}
+	
+		wfRunHooks( 'ImagePageShowTOC', array( $this, &$r ) );
+		
+		return '<ul id="filetoc">' . implode( "\n", $r ) . '</ul>';
 	}
 
 	/**
@@ -317,7 +329,7 @@ class ImagePage extends Article {
 			$linkAttribs = array( 'href' => $full_url );
 			$longDesc = $this->displayImg->getLongDesc();
 
-			wfRunHooks( 'ImageOpenShowImageInlineBefore', array( &$this , &$wgOut ) )	;
+			wfRunHooks( 'ImageOpenShowImageInlineBefore', array( &$this, &$wgOut ) );
 
 			if( $this->displayImg->allowInlineDisplay() ) {
 				# image
@@ -362,7 +374,8 @@ class ImagePage extends Article {
 						'<br />' . Xml::tags( 'a', $linkAttribs,  $msgbig ) . "$dirmark " . $longDesc;
 				}
 
-				if( $this->displayImg->isMultipage() ) {
+				$isMulti = $this->displayImg->isMultipage() && $this->displayImg->pageCount() > 1;
+				if( $isMulti ) {
 					$wgOut->addHTML( '<table class="multipageimage"><tr><td>' );
 				}
 
@@ -376,7 +389,7 @@ class ImagePage extends Article {
 						$anchorclose . "</div>\n" );
 				}
 
-				if( $this->displayImg->isMultipage() ) {
+				if( $isMulti ) {
 					$count = $this->displayImg->pageCount();
 
 					if( $page > 1 ) {
@@ -441,7 +454,7 @@ class ImagePage extends Article {
 					$icon= $this->displayImg->iconThumb();
 
 					$wgOut->addHTML( '<div class="fullImageLink" id="file">' .
-					$icon->toHtml( array( 'desc-link' => true ) ) .
+					$icon->toHtml( array( 'file-link' => true ) ) .
 					"</div>\n" );
 				}
 
@@ -720,6 +733,13 @@ EOT
 	 * Delete the file, or an earlier version of it
 	 */
 	public function delete() {
+		global $wgUploadMaintenance;
+		if( $wgUploadMaintenance && $this->mTitle && $this->mTitle->getNamespace() == NS_FILE ) {
+			global $wgOut;
+			$wgOut->wrapWikiMsg( "<div class='error'>\n$1</div>\n", array( 'filedelete-maintenance' ) );
+			return;
+		}
+
 		$this->loadFile();
 		if( !$this->img->exists() || !$this->img->isLocal() || $this->img->getRedirected() ) {
 			// Standard article deletion
@@ -789,7 +809,7 @@ class ImageHistoryList {
 		$this->img = $imagePage->getDisplayedFile();
 		$this->title = $imagePage->getTitle();
 		$this->imagePage = $imagePage;
-		$this->showThumb = $wgShowArchiveThumbnails;
+		$this->showThumb = $wgShowArchiveThumbnails && $this->img->canRender();
 	}
 
 	public function getImagePage() {
@@ -812,7 +832,7 @@ class ImageHistoryList {
 			. $navLinks . "\n"
 			. Xml::openElement( 'table', array( 'class' => 'wikitable filehistory' ) ) . "\n"
 			. '<tr><td></td>'
-			. ( $this->current->isLocal() && ($wgUser->isAllowed('delete') || $wgUser->isAllowed('deleterevision') ) ? '<td></td>' : '' )
+			. ( $this->current->isLocal() && ($wgUser->isAllowed('delete') || $wgUser->isAllowed('deletedhistory') ) ? '<td></td>' : '' )
 			. '<th>' . wfMsgHtml( 'filehist-datetime' ) . '</th>'
 			. ( $this->showThumb ? '<th>' . wfMsgHtml( 'filehist-thumb' ) . '</th>' : '' )
 			. '<th>' . wfMsgHtml( 'filehist-dimensions' ) . '</th>'
@@ -838,7 +858,7 @@ class ImageHistoryList {
 		$row = $css = $selected = '';
 
 		// Deletion link
-		if( $local && ($wgUser->isAllowed('delete') || $wgUser->isAllowed('deleterevision') ) ) {
+		if( $local && ($wgUser->isAllowed('delete') || $wgUser->isAllowed('deletedhistory') ) ) {
 			$row .= '<td>';
 			# Link to remove from history
 			if( $wgUser->isAllowed( 'delete' ) ) {
@@ -851,32 +871,26 @@ class ImageHistoryList {
 					array(), $q, array( 'known' )
 				);
 			}
-			# Link to hide content
-			if( $wgUser->isAllowed( 'deleterevision' ) ) {
+			# Link to hide content. Don't show useless link to people who cannot hide revisions.
+			$canHide = $wgUser->isAllowed( 'deleterevision' );
+			if( $canHide || ($wgUser->isAllowed('deletedhistory') && $file->getVisibility()) ) {
 				if( $wgUser->isAllowed('delete') ) {
-					$row .= '<br/>';
+					$row .= '<br />';
 				}
-				$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 				// If file is top revision or locked from this user, don't link
 				if( $iscur || !$file->userCan(File::DELETED_RESTRICTED) ) {
-					$del = wfMsgHtml( 'rev-delundel' );
+					$del = $this->skin->revDeleteLinkDisabled( $canHide );
 				} else {
-					// If the file was hidden, link to sha-1
 					list( $ts, $name ) = explode( '!', $img, 2 );
-					$del = $this->skin->link( $revdel, wfMsgHtml( 'rev-delundel' ),
-						array(),
-						array( 
-							'type' => 'oldimage',
-							'target' => $wgTitle->getPrefixedText(), 
-							'ids' => $ts,
-						),
-						array( 'known' )
+					$query = array(
+						'type'   => 'oldimage',
+						'target' => $wgTitle->getPrefixedText(), 
+						'ids'    => $ts,
 					);
-					// Bolden oversighted content
-					if( $file->isDeleted(File::DELETED_RESTRICTED) )
-						$del = "<strong>$del</strong>";
+					$del = $this->skin->revDeleteLink( $query,
+						$file->isDeleted(File::DELETED_RESTRICTED), $canHide );
 				}
-				$row .= "<tt style='white-space: nowrap;'><small>$del</small></tt>";
+				$row .= $del;
 			}
 			$row .= '</td>';
 		}
@@ -1007,7 +1021,7 @@ class ImageHistoryPseudoPager extends ReverseChronologicalPager {
 		$this->mImagePage = $imagePage;
 		$this->mTitle = clone( $imagePage->getTitle() );
 		$this->mTitle->setFragment( '#filehistory' );
-		$this->mImg = NULL;
+		$this->mImg = null;
 		$this->mHist = array();
 		$this->mRange = array( 0, 0 ); // display range
 	}

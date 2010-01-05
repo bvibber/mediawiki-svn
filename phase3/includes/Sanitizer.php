@@ -43,7 +43,7 @@ define( 'MW_CHAR_REFS_REGEX',
 $attrib = '[A-Za-z0-9]';
 $space = '[\x09\x0a\x0d\x20]';
 define( 'MW_ATTRIBS_REGEX',
-	"/(?:^|$space)($attrib+)
+	"/(?:^|$space)((?:xml:|xmlns:)?$attrib+)
 	  ($space*=$space*
 		(?:
 		 # The attribute value: quoted or alone
@@ -55,6 +55,16 @@ define( 'MW_ATTRIBS_REGEX',
 							 # We'll be normalizing it.
 		)
 	   )?(?=$space|\$)/sx" );
+
+/**
+ * Regular expression to match URIs that could trigger script execution
+ */
+define( 'MW_EVIL_URI_PATTERN', '!(^|\s|\*/\s*)(javascript|vbscript)([^\w]|$)!i' );
+
+/**
+ * Regular expression to match namespace attributes
+ */
+define( 'MW_XMLNS_ATTRIBUTE_PATTRN', "/^xmlns:$attrib+$/" );
 
 /**
  * List of all named character entities defined in HTML 4.01
@@ -357,7 +367,7 @@ class Sanitizer {
 				'h2', 'h3', 'h4', 'h5', 'h6', 'cite', 'code', 'em', 's',
 				'strike', 'strong', 'tt', 'var', 'div', 'center',
 				'blockquote', 'ol', 'ul', 'dl', 'table', 'caption', 'pre',
-				'ruby', 'rt' , 'rb' , 'rp', 'p', 'span', 'u'
+				'ruby', 'rt' , 'rb' , 'rp', 'p', 'span', 'u', 'abbr'
 			);
 			$htmlsingle = array(
 				'br', 'hr', 'li', 'dt', 'dd'
@@ -465,7 +475,7 @@ class Sanitizer {
 							$brace = '/>';
 						} else if( isset( $htmlsingle[$t] ) ) {
 							# Hack to not close $htmlsingle tags
-							$brace = NULL;
+							$brace = null;
 						} else if( isset( $tabletags[$t] )
 						&&  in_array($t ,$tagstack) ) {
 							// New table tag but forgot to close the previous one
@@ -604,12 +614,26 @@ class Sanitizer {
 	 * @todo Check for unique id attribute :P
 	 */
 	static function validateAttributes( $attribs, $whitelist ) {
+		global $wgAllowRdfaAttributes;
+
 		$whitelist = array_flip( $whitelist );
+		$hrefExp = '/^(' . wfUrlProtocols() . ')[^\s]+$/';
+
 		$out = array();
 		foreach( $attribs as $attribute => $value ) {
+			#allow XML namespace declaration if RDFa is enabled
+			if ( $wgAllowRdfaAttributes && preg_match( MW_XMLNS_ATTRIBUTE_PATTRN, $attribute ) ) {
+				if ( !preg_match( MW_EVIL_URI_PATTERN, $value ) ) {
+					$out[$attribute] = $value;
+				}
+
+				continue;
+			}
+
 			if( !isset( $whitelist[$attribute] ) ) {
 				continue;
 			}
+
 			# Strip javascript "expression" from stylesheets.
 			# http://msdn.microsoft.com/workshop/author/dhtml/overview/recalc.asp
 			if( $attribute == 'style' ) {
@@ -624,6 +648,28 @@ class Sanitizer {
 				global $wgEnforceHtmlIds;
 				$value = Sanitizer::escapeId( $value,
 					$wgEnforceHtmlIds ? 'noninitial' : 'xml' );
+			}
+
+			//RDFa and microdata properties allow URLs, URIs and/or CURIs. check them for sanity
+			if ( $attribute === 'rel' || $attribute === 'rev' || 
+				$attribute === 'about' || $attribute === 'property' || $attribute === 'resource' || #RDFa
+				$attribute === 'datatype' || $attribute === 'typeof' ||                             #RDFa
+				$attribute === 'itemid' || $attribute === 'itemprop' || $attribute === 'itemref' || #HTML5 microdata
+				$attribute === 'itemscope' || $attribute === 'itemtype' ) {                         #HTML5 microdata
+
+				//Paranoia. Allow "simple" values but suppress javascript
+				if ( preg_match( MW_EVIL_URI_PATTERN, $value ) ) {
+					continue; 
+				}
+			}
+
+			# NOTE: even though elements using href/src are not allowed directly, supply
+			#       validation code that can be used by tag hook handlers, etc
+			if ( $attribute === 'href' || $attribute === 'src' ) {
+				if ( !preg_match( $hrefExp, $value ) ) {
+					continue; //drop any href or src attributes not using an allowed protocol.
+						  //NOTE: this also drops all relative URLs
+				}
 			}
 
 			// If this attribute was previously set, override it.
@@ -1154,7 +1200,24 @@ class Sanitizer {
 	 * @return Array
 	 */
 	static function setupAttributeWhitelist() {
-		$common = array( 'id', 'class', 'lang', 'dir', 'title', 'style' );
+		global $wgAllowRdfaAttributes, $wgHtml5, $wgAllowMicrodataAttributes;
+
+		$common = array( 'id', 'class', 'lang', 'dir', 'title', 'style', 'xml:lang' );
+
+		if ( $wgAllowRdfaAttributes ) {
+			#RDFa attributes as specified in section 9 of http://www.w3.org/TR/2008/REC-rdfa-syntax-20081014
+			$common = array_merge( $common, array(
+			    'about', 'property', 'resource', 'datatype', 'typeof', 
+			) );
+		}
+
+		if ( $wgHtml5 && $wgAllowMicrodataAttributes ) {
+			# add HTML5 microdata tages as pecified by http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#the-microdata-model
+			$common = array_merge( $common, array(
+			    'itemid', 'itemprop', 'itemref', 'itemscope', 'itemtype'
+			) );
+		}
+
 		$block = array_merge( $common, array( 'align' ) );
 		$tablealign = array( 'align', 'char', 'charoff', 'valign' );
 		$tablecell = array( 'abbr',
@@ -1200,7 +1263,7 @@ class Sanitizer {
 			# samp
 			# kbd
 			'var'        => $common,
-			# abbr
+			'abbr'       => $common,
 			# acronym
 
 			# 9.2.2
@@ -1259,6 +1322,9 @@ class Sanitizer {
 			# 11.2.6
 			'td'         => array_merge( $common, $tablecell, $tablealign ),
 			'th'         => array_merge( $common, $tablecell, $tablealign ),
+
+			# 12.2 # NOTE: <a> is not allowed directly, but the attrib whitelist is used from the Parser object
+			'a'          => array_merge( $common, array( 'href', 'rel', 'rev' ) ), # rel/rev esp. for RDFa 
 
 			# 13.2
 			# Not usually allowed, but may be used for extension-style hooks
@@ -1373,7 +1439,7 @@ class Sanitizer {
 
 			$host = preg_replace( $strip, '', $host );
 
-			// @fixme: validate hostnames here
+			// @todo Fixme: validate hostnames here
 
 			return $protocol . $host . $rest;
 		} else {

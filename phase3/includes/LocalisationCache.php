@@ -160,7 +160,7 @@ class LocalisationCache {
 					break;
 				default:
 					throw new MWException( 
-						'Please set $wgLocalisationConf[\'store\'] to something sensible.' );
+						'Please set $wgLocalisationCacheConf[\'store\'] to something sensible.' );
 			}
 		}
 
@@ -275,7 +275,9 @@ class LocalisationCache {
 			$this->initLanguage( $code );
 		}
 		// Check to see if initLanguage() loaded it for us
-		if ( isset( $this->loadedSubitems[$code][$key][$subkey] ) ) {
+		if ( isset( $this->loadedItems[$code][$key] )
+			|| isset( $this->loadedSubitems[$code][$key][$subkey] ) )
+		{
 			return;
 		}
 		if ( isset( $this->shallowFallbacks[$code] ) ) {
@@ -302,7 +304,11 @@ class LocalisationCache {
 			return true;
 		}
 		foreach ( $deps as $dep ) {
-			if ( $dep->isExpired() ) {
+			// Because we're unserializing stuff from cache, we
+			// could receive objects of classes that don't exist
+			// anymore (e.g. uninstalled extensions)
+			// When this happens, always expire the cache
+			if ( !$dep instanceof CacheDependency || $dep->isExpired() ) {
 				wfDebug( __METHOD__."($code): cache for $code expired due to " . 
 					get_class( $dep ) . "\n" );
 				return true;
@@ -375,9 +381,9 @@ class LocalisationCache {
 	 */
 	protected function readPHPFile( $_fileName, $_fileType ) {
 		// Disable APC caching
-		$_apcEnabled = ini_set( 'apc.enabled', '0' );
+		$_apcEnabled = ini_set( 'apc.cache_by_default', '0' );
 		include( $_fileName );
-		ini_set( 'apc.enabled', $_apcEnabled );
+		ini_set( 'apc.cache_by_default', $_apcEnabled );
 
 		if ( $_fileType == 'core' || $_fileType == 'extension' ) {
 			$data = compact( self::$allKeys );
@@ -510,8 +516,9 @@ class LocalisationCache {
 			$data = $this->readPHPFile( $fileName, 'extension' );
 			$used = false;
 			foreach ( $data as $key => $item ) {
-				$used = $used |
-					$this->mergeExtensionItem( $codeSequence, $key, $allData[$key], $item );
+				if( $this->mergeExtensionItem( $codeSequence, $key, $allData[$key], $item ) ) {
+					$used = true;
+				}
 			}
 			if ( $used ) {
 				$deps[] = new FileDependency( $fileName );
@@ -668,6 +675,7 @@ class LocalisationCache {
 	 */
 	public function disableBackend() {
 		$this->store = new LCStore_Null;
+		$this->manualRecache = false;
 	}
 }
 
@@ -723,6 +731,7 @@ class LCStore_DB implements LCStore {
 	var $currentLang;
 	var $writesDone = false;
 	var $dbw, $batch;
+	var $readOnly = false;
 
 	public function get( $code, $key ) {
 		if ( $this->writesDone ) {
@@ -740,17 +749,34 @@ class LCStore_DB implements LCStore {
 	}
 
 	public function startWrite( $code ) {
+		if ( $this->readOnly ) {
+			return;
+		}
 		if ( !$code ) {
 			throw new MWException( __METHOD__.": Invalid language \"$code\"" );
 		}
 		$this->dbw = wfGetDB( DB_MASTER );
-		$this->dbw->begin();
-		$this->dbw->delete( 'l10n_cache', array( 'lc_lang' => $code ), __METHOD__ );
+		try {
+			$this->dbw->begin();
+			$this->dbw->delete( 'l10n_cache', array( 'lc_lang' => $code ), __METHOD__ );
+		} catch ( DBQueryError $e ) {
+			if ( $this->dbw->wasReadOnlyError() ) {
+				$this->readOnly = true;
+				$this->dbw->rollback();
+				$this->dbw->ignoreErrors( false );
+				return;
+			} else {
+				throw $e;
+			}
+		}
 		$this->currentLang = $code;
 		$this->batch = array();
 	}
 
 	public function finishWrite() {
+		if ( $this->readOnly ) {
+			return;
+		}
 		if ( $this->batch ) {
 			$this->dbw->insert( 'l10n_cache', $this->batch, __METHOD__ );
 		}
@@ -762,6 +788,9 @@ class LCStore_DB implements LCStore {
 	}
 
 	public function set( $key, $value ) {
+		if ( $this->readOnly ) {
+			return;
+		}
 		if ( is_null( $this->currentLang ) ) {
 			throw new MWException( __CLASS__.': must call startWrite() before calling set()' );
 		}
@@ -827,6 +856,10 @@ class LCStore_CDB implements LCStore {
 					"directory \"{$this->directory}\"" );
 			}
 		}
+		// Close reader to stop permission errors on write
+		if( !empty($this->readers[$code]) ) {
+			$this->readers[$code]->close();
+		}
 		$this->writer = CdbWriter::open( $this->getFileName( $code ) );
 		$this->currentLang = $code;
 	}
@@ -835,11 +868,6 @@ class LCStore_CDB implements LCStore {
 		// Close the writer
 		$this->writer->close();
 		$this->writer = null;
-
-		// Reopen the reader
-		if ( !empty( $this->readers[$this->currentLang] ) ) {
-			$this->readers[$this->currentLang]->close();
-		}
 		unset( $this->readers[$this->currentLang] );
 		$this->currentLang = null;
 	}

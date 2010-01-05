@@ -5,12 +5,13 @@
  */
 
 /**
+ * @param $ip part of title: Special:Ipblocklist/<ip>.
  * @todo document
  */
-function wfSpecialIpblocklist() {
+function wfSpecialIpblocklist( $ip = '' ) {
 	global $wgUser, $wgOut, $wgRequest;
-
-	$ip = trim( $wgRequest->getVal( 'wpUnblockAddress', $wgRequest->getVal( 'ip' ) ) );
+	$ip = $wgRequest->getVal( 'ip', $ip );
+	$ip = trim( $wgRequest->getVal( 'wpUnblockAddress', $ip ) );
 	$id = $wgRequest->getVal( 'id' );
 	$reason = $wgRequest->getText( 'wpUnblockReason' );
 	$action = $wgRequest->getText( 'action' );
@@ -262,10 +263,9 @@ class IPUnblockForm {
 				// Fixme -- encapsulate this sort of query-building.
 				$dbr = wfGetDB( DB_SLAVE );
 				$encIp = $dbr->addQuotes( IP::sanitizeIP($this->ip) );
-				$encRange = $dbr->addQuotes( "$range%" );
 				$encAddr = $dbr->addQuotes( $iaddr );
 				$conds[] = "(ipb_address = $encIp) OR 
-					(ipb_range_start LIKE $encRange AND
+					(ipb_range_start" . $dbr->buildLike( $range, $dbr->anyString() ) . " AND
 					ipb_range_start <= $encAddr
 					AND ipb_range_end >= $encAddr)";
 			} else {
@@ -297,21 +297,44 @@ class IPUnblockForm {
 			$conds[] = "ipb_user != 0 OR ipb_range_end > ipb_range_start";
 		}
 
+		// Search form
+		$wgOut->addHTML( $this->searchForm() );
+
+		// Check for other blocks, i.e. global/tor blocks
+		$otherBlockLink = array();
+		wfRunHooks( 'OtherBlockLogLink', array( &$otherBlockLink, $this->ip ) );
+
+		// Show additional header for the local block only when other blocks exists.
+		// Not necessary in a standard installation without such extensions enabled
+		if( count( $otherBlockLink ) ) {
+			$wgOut->addHTML(
+				Html::rawElement( 'h2', array(), wfMsg( 'ipblocklist-localblock' ) ) . "\n"
+			);
+		}
 		$pager = new IPBlocklistPager( $this, $conds );
 		if ( $pager->getNumRows() ) {
 			$wgOut->addHTML(
-				$this->searchForm() .
 				$pager->getNavigationBar() .
 				Xml::tags( 'ul', null, $pager->getBody() ) .
 				$pager->getNavigationBar()
 			);
 		} elseif ( $this->ip != '') {
-			$wgOut->addHTML( $this->searchForm() );
 			$wgOut->addWikiMsg( 'ipblocklist-no-results' );
 		} else {
-			$wgOut->addHTML( $this->searchForm() );
 			$wgOut->addWikiMsg( 'ipblocklist-empty' );
 		}
+
+		if( count( $otherBlockLink ) ) {
+			$wgOut->addHTML(
+				Html::rawElement( 'h2', array(), wfMsgExt( 'ipblocklist-otherblocks', 'parseinline', count( $otherBlockLink ) ) ) . "\n"
+			);
+			$list = '';
+			foreach( $otherBlockLink as $link ) {
+				$list .= Html::rawElement( 'li', array(), $link ) . "\n";
+			}
+			$wgOut->addHTML( Html::rawElement( 'ul', array( 'class' => 'mw-ipblocklist-otherblocks' ), $list ) . "\n" );
+		}
+
 	}
 
 	function searchForm() {
@@ -364,7 +387,7 @@ class IPUnblockForm {
 		global $wgUser;
 		$sk = $wgUser->getSkin();
 		$params = $override + $options;
-		$ipblocklist = SpecialPage::getTitleFor( 'IPBlockList' );
+		$ipblocklist = SpecialPage::getTitleFor( 'Ipblocklist' );
 		return $sk->link( $ipblocklist, htmlspecialchars( $title ),
 			( $active ? array( 'style'=>'font-weight: bold;' ) : array() ), $params, array( 'known' ) );
 	}

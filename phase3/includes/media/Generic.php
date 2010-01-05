@@ -180,6 +180,14 @@ abstract class MediaHandler {
 	}
 
 	/**
+	 * Generic getter for text layer.
+	 * Currently overloaded by PDF and DjVu handlers
+	 */
+	function getPageText( $image, $page ) {
+		return false;
+	}
+
+	/**
 	 * Get an array structure that looks like this:
 	 *
 	 * array(
@@ -210,7 +218,7 @@ abstract class MediaHandler {
 	}
 
 	/**
-	 * @fixme document this!
+	 * @todo Fixme: document this!
 	 * 'value' thingy goes into a wikitext table; it used to be escaped but
 	 * that was incompatible with previous practice of customized display
 	 * with wikitext formatting via messages such as 'exif-model-value'.

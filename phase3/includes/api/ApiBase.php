@@ -49,6 +49,7 @@ abstract class ApiBase {
 	const PARAM_MAX2 = 4; // Max value allowed for a parameter for bots and sysops. Only applies if TYPE='integer'
 	const PARAM_MIN = 5; // Lowest value allowed for a parameter. Only applies if TYPE='integer'
 	const PARAM_ALLOW_DUPLICATES = 6; // Boolean, do we allow the same value to be set more than once when ISMULTI=true
+	const PARAM_DEPRECATED = 7; // Boolean, is the parameter deprecated (will show a warning)
 
 	const LIMIT_BIG1 = 500; // Fast query, std user limit
 	const LIMIT_BIG2 = 5000; // Fast query, bot/sysop limit
@@ -282,6 +283,11 @@ abstract class ApiBase {
 				if (is_array($desc))
 					$desc = implode($paramPrefix, $desc);
 
+				$deprecated = isset( $paramSettings[self :: PARAM_DEPRECATED] ) ? 
+					$paramSettings[self :: PARAM_DEPRECATED] : false;
+				if( $deprecated )
+					$desc = "DEPRECATED! $desc";	
+
 				$type = isset($paramSettings[self :: PARAM_TYPE])? $paramSettings[self :: PARAM_TYPE] : null;
 				if (isset ($type)) {
 					if (isset ($paramSettings[self :: PARAM_ISMULTI]))
@@ -439,18 +445,18 @@ abstract class ApiBase {
 	/**
 	* Using getAllowedParams(), this function makes an array of the values
 	* provided by the user, with key being the name of the variable, and
-	* value - validated value from user or default. limit=max will not be
-	* parsed if $parseMaxLimit is set to false; use this when the max
+	* value - validated value from user or default. limits will not be
+	* parsed if $parseLimit is set to false; use this when the max
 	* limit is not definitive yet, e.g. when getting revisions.
-	* @param $parseMaxLimit bool
+	* @param $parseLimit bool
 	* @return array
 	*/
-	public function extractRequestParams($parseMaxLimit = true) {
+	public function extractRequestParams($parseLimit = true) {
 		$params = $this->getFinalParams();
 		$results = array ();
 
 		foreach ($params as $paramName => $paramSettings)
-			$results[$paramName] = $this->getParameterFromSettings($paramName, $paramSettings, $parseMaxLimit);
+			$results[$paramName] = $this->getParameterFromSettings($paramName, $paramSettings, $parseLimit);
 
 		return $results;
 	}
@@ -458,13 +464,13 @@ abstract class ApiBase {
 	/**
 	 * Get a value for the given parameter
 	 * @param $paramName string Parameter name
-	 * @param $parseMaxLimit bool see extractRequestParams()
+	 * @param $parseLimit bool see extractRequestParams()
 	 * @return mixed Parameter value
 	 */
-	protected function getParameter($paramName, $parseMaxLimit = true) {
+	protected function getParameter($paramName, $parseLimit = true) {
 		$params = $this->getFinalParams();
 		$paramSettings = $params[$paramName];
-		return $this->getParameterFromSettings($paramName, $paramSettings, $parseMaxLimit);
+		return $this->getParameterFromSettings($paramName, $paramSettings, $parseLimit);
 	}
 	
 	/**
@@ -510,10 +516,10 @@ abstract class ApiBase {
 	 * @param $paramName String: parameter name
 	 * @param $paramSettings Mixed: default value or an array of settings
 	 *  using PARAM_* constants.
-	 * @param $parseMaxLimit Boolean: parse limit when max is given?
+	 * @param $parseLimit Boolean: parse limit?
 	 * @return mixed Parameter value
 	 */
-	protected function getParameterFromSettings($paramName, $paramSettings, $parseMaxLimit) {
+	protected function getParameterFromSettings($paramName, $paramSettings, $parseLimit) {
 
 		// Some classes may decide to change parameter names
 		$encParamName = $this->encodeParamName($paramName);
@@ -523,11 +529,13 @@ abstract class ApiBase {
 			$multi = false;
 			$type = gettype($paramSettings);
 			$dupes = false;
+			$deprecated = false;
 		} else {
 			$default = isset ($paramSettings[self :: PARAM_DFLT]) ? $paramSettings[self :: PARAM_DFLT] : null;
 			$multi = isset ($paramSettings[self :: PARAM_ISMULTI]) ? $paramSettings[self :: PARAM_ISMULTI] : false;
 			$type = isset ($paramSettings[self :: PARAM_TYPE]) ? $paramSettings[self :: PARAM_TYPE] : null;
 			$dupes = isset ($paramSettings[self:: PARAM_ALLOW_DUPLICATES]) ? $paramSettings[self :: PARAM_ALLOW_DUPLICATES] : false;
+			$deprecated = isset ($paramSettings[self:: PARAM_DEPRECATED]) ? $paramSettings[self :: PARAM_DEPRECATED] : false;
 
 			// When type is not given, and no choices, the type is the same as $default
 			if (!isset ($type)) {
@@ -572,23 +580,23 @@ abstract class ApiBase {
 
 						if (!is_null($min) || !is_null($max)) {
 							$values = is_array($value) ? $value : array($value);
-							foreach ($values as $v) {
+							foreach ($values as &$v) {
 								$this->validateLimit($paramName, $v, $min, $max);
 							}
 						}
 						break;
 					case 'limit' :
+						if ( !$parseLimit )
+							// Don't do any validation whatsoever
+							break;
 						if (!isset ($paramSettings[self :: PARAM_MAX]) || !isset ($paramSettings[self :: PARAM_MAX2]))
 							ApiBase :: dieDebug(__METHOD__, "MAX1 or MAX2 are not defined for the limit $encParamName");
 						if ($multi)
 							ApiBase :: dieDebug(__METHOD__, "Multi-values not supported for $encParamName");
 						$min = isset ($paramSettings[self :: PARAM_MIN]) ? $paramSettings[self :: PARAM_MIN] : 0;
 						if( $value == 'max' ) {
-							if( $parseMaxLimit ) {
 								$value = $this->getMain()->canApiHighLimits() ? $paramSettings[self :: PARAM_MAX2] : $paramSettings[self :: PARAM_MAX];
 								$this->getResult()->addValue( 'limits', $this->getModuleName(), $value );
-								$this->validateLimit($paramName, $value, $min, $paramSettings[self :: PARAM_MAX], $paramSettings[self :: PARAM_MAX2]);
-							}
 						}
 						else {
 							$value = intval($value);
@@ -621,6 +629,11 @@ abstract class ApiBase {
 			// Throw out duplicates if requested
 			if (is_array($value) && !$dupes)
 				$value = array_unique($value);
+				
+			// Set a warning if a deprecated parameter has been passed
+			if( $deprecated ) {
+				$this->setWarning( "The $encParamName parameter has been deprecated." );
+			}
 		}
 
 		return $value;
@@ -681,9 +694,10 @@ abstract class ApiBase {
 	 * @param $max int Maximum value for users
 	 * @param $botMax int Maximum value for sysops/bots
 	 */
-	function validateLimit($paramName, $value, $min, $max, $botMax = null) {
+	function validateLimit($paramName, &$value, $min, $max, $botMax = null) {
 		if (!is_null($min) && $value < $min) {
-			$this->dieUsage($this->encodeParamName($paramName) . " may not be less than $min (set to $value)", $paramName);
+			$this->setWarning($this->encodeParamName($paramName) . " may not be less than $min (set to $value)");
+			$value = $min;
 		}
 
 		// Minimum is always validated, whereas maximum is checked only if not running in internal call mode
@@ -695,10 +709,12 @@ abstract class ApiBase {
 		if (!is_null($max) && $value > $max) {
 			if (!is_null($botMax) && $this->getMain()->canApiHighLimits()) {
 				if ($value > $botMax) {
-					$this->dieUsage($this->encodeParamName($paramName) . " may not be over $botMax (set to $value) for bots or sysops", $paramName);
+					$this->setWarning($this->encodeParamName($paramName) . " may not be over $botMax (set to $value) for bots or sysops");
+					$value = $botMax;
 				}
 			} else {
-				$this->dieUsage($this->encodeParamName($paramName) . " may not be over $max (set to $value) for users", $paramName);
+				$this->setWarning($this->encodeParamName($paramName) . " may not be over $max (set to $value) for users");
+				$value = $max;
 			}
 		}
 	}
@@ -729,7 +745,7 @@ abstract class ApiBase {
 	 * @param $errorCode string Brief, arbitrary, stable string to allow easy
 	 *   automated identification of the error, e.g., 'unknown_action'
 	 * @param $httpRespCode int HTTP response code
-	 * @param $extradata array Data to add to the query result
+	 * @param $extradata array Data to add to the <error> element; array in ApiResult format
 	 */
 	public function dieUsage($description, $errorCode, $httpRespCode = 0, $extradata = null) {
 		wfProfileClose();
@@ -789,7 +805,7 @@ abstract class ApiBase {
 		'ipb_already_blocked' => array('code' => 'alreadyblocked', 'info' => "The user you tried to block was already blocked"),
 		'ipb_blocked_as_range' => array('code' => 'blockedasrange', 'info' => "IP address ``\$1'' was blocked as part of range ``\$2''. You can't unblock the IP invidually, but you can unblock the range as a whole."),
 		'ipb_cant_unblock' => array('code' => 'cantunblock', 'info' => "The block you specified was not found. It may have been unblocked already"),
-		'mailnologin' => array('code' => 'cantsend', 'info' => "You're not logged in or you don't have a confirmed e-mail address, so you can't send e-mail"),
+		'mailnologin' => array('code' => 'cantsend', 'info' => "You are not logged in, you do not have a confirmed e-mail address, or you are not allowed to send e-mail to other users, so you cannot send e-mail"),
 		'usermaildisabled' => array('code' => 'usermaildisabled', 'info' => "User email has been disabled"),
 		'blockedemailuser' => array('code' => 'blockedfrommail', 'info' => "You have been blocked from sending e-mail"),
 		'notarget' => array('code' => 'notarget', 'info' => "You have not specified a valid target for this action"),
@@ -843,6 +859,8 @@ abstract class ApiBase {
 		'import-noarticle' => array('code' => 'badinterwiki', 'info' => 'Invalid interwiki title specified'),
 		'importbadinterwiki' => array('code' => 'badinterwiki', 'info' => 'Invalid interwiki title specified'),
 		'import-unknownerror' => array('code' => 'import-unknownerror', 'info' => "Unknown error on import: ``\$1''"),
+		'cantoverwrite-sharedfile' => array('code' => 'cantoverwrite-sharedfile', 'info' => 'The target file exists on a shared repository and you do not have permission to override it'),
+		'sharedfile-exists' => array('code' => 'fileexists-sharedrepo-perm', 'info' => 'The target file exists on a shared repository. Use the ignorewarnings parameter to override it.'),
 
 		// ApiEditPage messages
 		'noimageredirect-anon' => array('code' => 'noimageredirect-anon', 'info' => "Anonymous users can't create image redirects"),
@@ -862,7 +880,8 @@ abstract class ApiBase {
 		'undo-failure' => array('code' => 'undofailure', 'info' => 'Undo failed due to conflicting intermediate edits'),
 
 		//uploadMsgs
-		'invalid-session-key' => array( 'code' => 'invalid-session-key', 'info'=>'Not a valid session key' ),
+		'invalid-session-key' => array( 'code' => 'invalid-session-key', 'info' => 'Not a valid session key' ),
+		'nouploadmodule' => array( 'code' => 'nouploadmodule', 'info' => 'No upload module set' ),
 	);
 
 	/**

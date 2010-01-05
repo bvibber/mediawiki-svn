@@ -170,9 +170,27 @@ if (!defined('MEDIAWIKI')) {
 		}
 		// Second pass: add result data to $retval
 		foreach($goodNames as $u) {
-			if(!isset($data[$u]))
-				$data[$u] = array('name' => $u, 'missing' => '');
-			else {
+			if(!isset($data[$u])) {
+				$data[$u] = array('name' => $u);
+				$urPage = new UserrightsPage;
+				$iwUser = $urPage->fetchUser($u);
+				if($iwUser instanceof UserRightsProxy) {
+					$data[$u]['interwiki'] = '';
+					if(!is_null($params['token']))
+					{
+						$tokenFunctions = $this->getTokenFunctions();
+						foreach($params['token'] as $t)
+						{
+							$val = call_user_func($tokenFunctions[$t], $iwUser);
+							if($val === false)
+								$this->setWarning("Action '$t' is not allowed for the current user");
+							else
+								$data[$u][$t . 'token'] = $val;
+						}
+					}
+				} else 
+					$data[$u]['missing'] = '';
+			} else {
 				if(isset($this->prop['groups']) && isset($data[$u]['groups']))
 					$this->getResult()->setIndexedTagName($data[$u]['groups'], 'g');
 			}
@@ -192,7 +210,7 @@ if (!defined('MEDIAWIKI')) {
 	public function getAllowedParams() {
 		return array (
 			'prop' => array (
-				ApiBase :: PARAM_DFLT => NULL,
+				ApiBase :: PARAM_DFLT => null,
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_TYPE => array (
 					'blockinfo',

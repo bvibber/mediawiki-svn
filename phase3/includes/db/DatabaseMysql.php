@@ -129,7 +129,7 @@ class DatabaseMysql extends DatabaseBase {
 		$this->mOpened = false;
 		if ( $this->mConn ) {
 			if ( $this->trxLevel() ) {
-				$this->immediateCommit();
+				$this->commit();
 			}
 			return mysql_close( $this->mConn );
 		} else {
@@ -229,6 +229,30 @@ class DatabaseMysql extends DatabaseBase {
 	}
 
 	function affectedRows() { return mysql_affected_rows( $this->mConn ); }
+	
+	/**
+	 * Estimate rows in dataset
+	 * Returns estimated count, based on EXPLAIN output
+	 * Takes same arguments as Database::select()
+	 */
+	public function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
+		$options['EXPLAIN'] = true;
+		$res = $this->select( $table, $vars, $conds, $fname, $options );
+		if ( $res === false )
+			return false;
+		if ( !$this->numRows( $res ) ) {
+			$this->freeResult($res);
+			return 0;
+		}
+
+		$rows = 1;
+		while( $plan = $this->fetchObject( $res ) ) {
+			$rows *= $plan->rows > 0 ? $plan->rows : 1; // avoid resetting to zero
+		}
+
+		$this->freeResult($res);
+		return $rows;		
+	}
 
 	function fieldInfo( $table, $field ) {
 		$table = $this->tableName( $table );
@@ -293,13 +317,6 @@ class DatabaseMysql extends DatabaseBase {
 		return false;
 	}
 
-	/**
-	 * @return String: Database type for use in messages
-	*/
-	function getDBtypeForMsg() {
-		return 'MySQL';
-	}
-
 	public function setTimeout( $timeout ) {
 		$this->query( "SET net_read_timeout=$timeout" );
 		$this->query( "SET net_write_timeout=$timeout" );
@@ -326,17 +343,20 @@ class DatabaseMysql extends DatabaseBase {
 		return $row->lockstatus;
 	}
 
-	public function lockTables( $read, $write, $method ) {
+	public function lockTables( $read, $write, $method, $lowPriority = true ) {
 		$items = array();
 
 		foreach( $write as $table ) {
-			$items[] = $this->tableName( $table ) . ' LOW_PRIORITY WRITE';
+			$tbl = $this->tableName( $table ) . 
+					( $lowPriority ? ' LOW_PRIORITY' : '' ) . 
+					' WRITE';
+			$items[] = $tbl;
 		}
 		foreach( $read as $table ) {
 			$items[] = $this->tableName( $table ) . ' READ';
 		}
 		$sql = "LOCK TABLES " . implode( ',', $items );
-		$db->query( $sql, $method );
+		$this->query( $sql, $method );
 	}
 
 	public function unlockTables( $method ) {
@@ -357,6 +377,57 @@ class DatabaseMysql extends DatabaseBase {
 		$encValue = $value ? '1' : '0';
 		$this->query( "SET sql_big_selects=$encValue", __METHOD__ );
 	}
+
+	
+	/**
+	 * Determines if the last failure was due to a deadlock
+	 */
+	function wasDeadlock() {
+		return $this->lastErrno() == 1213;
+	}
+
+	/**
+	 * Determines if the last query error was something that should be dealt 
+	 * with by pinging the connection and reissuing the query
+	 */
+	function wasErrorReissuable() {
+		return $this->lastErrno() == 2013 || $this->lastErrno() == 2006;
+	}
+
+	/**
+	 * Determines if the last failure was due to the database being read-only.
+	 */
+	function wasReadOnlyError() {
+		return $this->lastErrno() == 1223 || 
+			( $this->lastErrno() == 1290 && strpos( $this->lastError(), '--read-only' ) !== false );
+	}
+
+	function duplicateTableStructure( $oldName, $newName, $temporary = false, $fname = 'DatabaseMysql::duplicateTableStructure' ) {
+		$tmp = $temporary ? 'TEMPORARY ' : '';
+		if ( strcmp( $this->getServerVersion(), '4.1' ) < 0 ) {
+			# Hack for MySQL versions < 4.1, which don't support
+			# "CREATE TABLE ... LIKE". Note that
+			# "CREATE TEMPORARY TABLE ... SELECT * FROM ... LIMIT 0"
+			# would not create the indexes we need....
+			#
+			# Note that we don't bother changing around the prefixes here be-
+			# cause we know we're using MySQL anyway.
+
+			$res = $this->query( "SHOW CREATE TABLE $oldName" );
+			$row = $this->fetchRow( $res );
+			$oldQuery = $row[1];
+			$query = preg_replace( '/CREATE TABLE `(.*?)`/', 
+				"CREATE $tmp TABLE `$newName`", $oldQuery );
+			if ($oldQuery === $query) {
+				# Couldn't do replacement
+				throw new MWException( "could not create temporary table $newName" );
+			}
+		} else {
+			$query = "CREATE $tmp TABLE $newName (LIKE $oldName)";
+		}
+		$this->query( $query, $fname );
+	}
+
 }
 
 /**

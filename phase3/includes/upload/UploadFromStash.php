@@ -1,18 +1,25 @@
 <?php
+/**
+ * @file
+ * @ingroup upload
+ *
+ * Implements uploading from previously stored file.
+ *
+ * @author Bryan Tong Minh
+ */
 
 class UploadFromStash extends UploadBase {
-
-	static function isValidSessionKey( $key, $sessionData ) {
-		return !empty( $key ) && 
-			is_array( $sessionData ) && 
-			isset( $sessionData[$key] ) && 
-			isset( $sessionData[$key]['version'] ) && 
+	public static function isValidSessionKey( $key, $sessionData ) {
+		return !empty( $key ) &&
+			is_array( $sessionData ) &&
+			isset( $sessionData[$key] ) &&
+			isset( $sessionData[$key]['version'] ) &&
 			$sessionData[$key]['version'] == self::SESSION_VERSION;
 	}
 
-	static function isValidRequest( $request ) {
+	public static function isValidRequest( $request ) {
 		$sessionData = $request->getSessionData( 'wsUploadData' );
-		return self::isValidSessionKey( 
+		return self::isValidSessionKey(
 			$request->getInt( 'wpSessionKey' ),
 			$sessionData
 		);
@@ -20,44 +27,59 @@ class UploadFromStash extends UploadBase {
 	/*
 	 * some $na vars for uploadBase method compatibility.
 	 */
-	function initialize( $name, $sessionData, $na, $na2=false ) {
+	public function initialize( $name, $sessionData, $na=false, $na2=false ) {
 			/**
 			 * Confirming a temporarily stashed upload.
 			 * We don't want path names to be forged, so we keep
 			 * them in the session on the server and just give
 			 * an opaque key to the user agent.
 			 */
+
 			parent::initialize( $name,
-				$sessionData['mTempPath'],
+				$this->getRealPath ( $sessionData['mTempPath'] ),
 				$sessionData['mFileSize'],
 				false
 			);
 
+			$this->mVirtualTempPath = $sessionData['mTempPath'];
 			$this->mFileProps = $sessionData['mFileProps'];
 	}
 
-	function initializeFromRequest( &$request ) {
-		$sessionKey = $request->getInt( 'wpSessionKey' );
+	public function initializeFromRequest( &$request ) {
+		$this->mSessionKey = $request->getInt( 'wpSessionKey' );
 		$sessionData = $request->getSessionData('wsUploadData');
 
 		$desiredDestName = $request->getText( 'wpDestFile' );
 		if( !$desiredDestName )
 			$desiredDestName = $request->getText( 'wpUploadFile' );
-		return $this->initialize( $desiredDestName, $sessionData[$sessionKey], false );
+		return $this->initialize( $desiredDestName, $sessionData[$this->mSessionKey], false );
 	}
 
 	/**
 	 * File has been previously verified so no need to do so again.
 	 */
-	protected function verifyFile( $tmpfile ) {
+	protected function verifyFile() {
 		return true;
 	}
 
+	
 	/**
-	 * We're here from "ignore warnings anyway" so return just OK
+	 * There is no need to stash the image twice
 	 */
-	function checkWarnings() {
-		return array();
+	public function stashSession() {
+		if ( !empty( $this->mSessionKey ) )
+			return $this->mSessionKey;
+		return parent::stashSession();
+	}
+
+	/**
+	 * Remove a temporarily kept file stashed by saveTempUploadedFile().
+	 * @return success
+	 */
+	public function unsaveUploadedFile() {
+		$repo = RepoGroup::singleton()->getLocalRepo();
+		$success = $repo->freeTemp( $this->mVirtualTempPath );
+		return $success;
 	}
 
 }

@@ -529,7 +529,7 @@ abstract class File {
 	 * @return MediaTransformOutput
 	 */
 	function transform( $params, $flags = 0 ) {
-		global $wgUseSquid, $wgIgnoreImageErrors;
+		global $wgUseSquid, $wgIgnoreImageErrors, $wgThumbnailEpoch, $wgServer;
 
 		wfProfileIn( __METHOD__ );
 		do {
@@ -537,6 +537,12 @@ abstract class File {
 				// not a bitmap or renderable image, don't try.
 				$thumb = $this->iconThumb();
 				break;
+			}
+
+			// Get the descriptionUrl to embed it as comment into the thumbnail. Bug 19791.
+			$descriptionUrl =  $this->getDescriptionUrl();
+			if ( $descriptionUrl ) {
+				$params['descriptionUrl'] = $wgServer . $descriptionUrl;
 			}
 
 			$script = $this->getTransformScript();
@@ -561,9 +567,14 @@ abstract class File {
 
 			wfDebug( __METHOD__.": Doing stat for $thumbPath\n" );
 			$this->migrateThumbFile( $thumbName );
-			if ( file_exists( $thumbPath ) ) {
-				$thumb = $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
-				break;
+			if ( file_exists( $thumbPath )) {
+				$thumbTime = filemtime( $thumbPath );
+				if ( $thumbTime !== FALSE &&
+				     gmdate( 'YmdHis', $thumbTime ) >= $wgThumbnailEpoch ) { 
+	
+					$thumb = $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
+					break;
+				}
 			}
 			$thumb = $this->handler->doTransform( $this, $thumbPath, $thumbUrl, $params );
 
@@ -938,6 +949,14 @@ abstract class File {
 	function isDeleted( $field ) {
 		return false;
 	}
+	
+	/**
+	 * Return the deletion bitfield
+	 * STUB
+	 */	
+	function getVisibility() {
+		return 0;
+	}
 
 	/**
 	 * Was this file ever deleted from the wiki?
@@ -1002,8 +1021,9 @@ abstract class File {
 	}
 
 	/**
-	 * Returns 'true' if this image is a multipage document, e.g. a DJVU
-	 * document.
+	 * Returns 'true' if this file is a type which supports multiple pages, 
+	 * e.g. DJVU or PDF. Note that this may be true even if the file in 
+	 * question only has a single page.
 	 *
 	 * @return Bool
 	 */
@@ -1064,15 +1084,15 @@ abstract class File {
 	 * Get the HTML text of the description page, if available
 	 */
 	function getDescriptionText() {
-		global $wgMemc, $wgContLang;
+		global $wgMemc, $wgLang;
 		if ( !$this->repo->fetchDescription ) {
 			return false;
 		}
-		$renderUrl = $this->repo->getDescriptionRenderUrl( $this->getName(), $wgContLang->getCode() );
+		$renderUrl = $this->repo->getDescriptionRenderUrl( $this->getName(), $wgLang->getCode() );
 		if ( $renderUrl ) {
 			if ( $this->repo->descriptionCacheExpiry > 0 ) {
 				wfDebug("Attempting to get the description from cache...");
-				$key = $this->repo->getLocalCacheKey( 'RemoteFileDescription', 'url', $wgContLang->getCode(), 
+				$key = $this->repo->getLocalCacheKey( 'RemoteFileDescription', 'url', $wgLang->getCode(), 
 									$this->getName() );
 				$obj = $wgMemc->get($key);
 				if ($obj) {
@@ -1181,7 +1201,7 @@ abstract class File {
 
 			wfDebug(__METHOD__.": $path loaded, {$info['size']} bytes, {$info['mime']}.\n");
 		} else {
-			$info['mime'] = NULL;
+			$info['mime'] = null;
 			$info['media_type'] = MEDIATYPE_UNKNOWN;
 			$info['metadata'] = '';
 			$info['sha1'] = '';

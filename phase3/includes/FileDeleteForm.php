@@ -91,6 +91,7 @@ class FileDeleteForm {
 	}
 
 	public static function doDelete( &$title, &$file, &$oldimage, $reason, $suppress ) {
+		global $wgUser;
 		$article = null;
 		if( $oldimage ) {
 			$status = $file->deleteOld( $oldimage, $reason, $suppress );
@@ -99,7 +100,7 @@ class FileDeleteForm {
 				$log = new LogPage( 'delete' );
 				$logComment = wfMsgForContent( 'deletedrevision', $oldimage );
 				if( trim( $reason ) != '' )
-					$logComment .= ": {$reason}";
+					$logComment .= wfMsgForContent( 'colon-separator' ) . $reason;
 					$log->addEntry( 'delete', $title, $logComment );
 			}
 		} else {
@@ -112,7 +113,7 @@ class FileDeleteForm {
 				if( wfRunHooks('ArticleDelete', array(&$article, &$wgUser, &$reason, &$error)) ) {
 					if( $article->doDeleteArticle( $reason, $suppress, $id ) ) {
 						global $wgRequest;
-						if( $wgRequest->getCheck( 'wpWatch' ) ) {
+						if( $wgRequest->getCheck( 'wpWatch' ) && $wgUser->isLoggedIn() ) {
 							$article->doWatch();
 						} elseif( $title->userIsWatching() ) {
 							$article->doUnwatch();
@@ -137,10 +138,10 @@ class FileDeleteForm {
 		if( $wgUser->isAllowed( 'suppressrevision' ) ) {
 			$suppress = "<tr id=\"wpDeleteSuppressRow\">
 					<td></td>
-					<td class='mw-input'>" .
+					<td class='mw-input'><strong>" .
 						Xml::checkLabel( wfMsg( 'revdelete-suppress' ),
 							'wpSuppress', 'wpSuppress', false, array( 'tabindex' => '3' ) ) .
-					"</td>
+					"</strong></td>
 				</tr>";
 		} else {
 			$suppress = '';
@@ -173,14 +174,18 @@ class FileDeleteForm {
 						array( 'type' => 'text', 'maxlength' => '255', 'tabindex' => '2', 'id' => 'wpReason' ) ) .
 				"</td>
 			</tr>
-			{$suppress}
+			{$suppress}";
+		if( $wgUser->isLoggedIn() ) {	
+			$form .= "
 			<tr>
 				<td></td>
 				<td class='mw-input'>" .
 					Xml::checkLabel( wfMsg( 'watchthis' ),
 						'wpWatch', 'wpWatch', $checkWatch, array( 'tabindex' => '3' ) ) .
 				"</td>
-			</tr>
+			</tr>";
+		}
+		$form .= "
 			<tr>
 				<td></td>
 				<td class='mw-submit'>" .

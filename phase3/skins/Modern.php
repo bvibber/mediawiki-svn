@@ -17,7 +17,7 @@ if( !defined( 'MEDIAWIKI' ) )
  */
 class SkinModern extends SkinTemplate {
 	var $skinname = 'modern', $stylename = 'modern',
-		$template = 'ModernTemplate';
+		$template = 'ModernTemplate', $useHeadElement = true;
 
 	/*
 	 * We don't like the default getPoweredBy, the icon clashes with the 
@@ -29,11 +29,20 @@ class SkinModern extends SkinTemplate {
 	}
 
 	function setupSkinUserCss( OutputPage $out ){
+		global $wgStyleVersion, $wgJsMimeType, $wgStylePath;
+
 		// Do not call parent::setupSkinUserCss(), we have our own print style
 		$out->addStyle( 'common/shared.css', 'screen' );
 		$out->addStyle( 'modern/main.css', 'screen' );
 		$out->addStyle( 'modern/print.css', 'print' );
 		$out->addStyle( 'modern/rtl.css', 'screen', '', 'rtl' );
+
+		$path = htmlspecialchars( $wgStylePath );
+		$out->addScript( <<<HTML
+<!--[if lt IE 7]><script type="$wgJsMimeType" src="$path/common/IEFixes.js?$wgStyleVersion"></script>
+	<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+HTML
+		);
 	}
 }
 
@@ -59,13 +68,7 @@ class ModernTemplate extends QuickTemplate {
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
 
-		$wgOut->addScript( <<<HTML
-<!--[if lt IE 7]><script type="$wgJsMimeType" src="$path/common/IEFixes.js?$wgStyleVersion"></script>
-	<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
-HTML
-		);
-
-		echo $wgOut->headElement( $this->skin );
+		$this->html( 'headelement' );
 ?><body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
 <?php if($this->data['body_onload'    ]) { ?> onload="<?php     $this->text('body_onload')     ?>"<?php } ?>
  class="mediawiki <?php $this->text('dir') ?> <?php $this->text('pageclass') ?> <?php $this->text('skinnameclass') ?>">
@@ -220,7 +223,7 @@ HTML
 	<div id="p-search" class="portlet">
 		<h5><label for="searchInput"><?php $this->msg('search') ?></label></h5>
 		<div id="searchBody" class="pBody">
-			<form action="<?php $this->text('wgScript') ?>" id="searchform"><div>
+			<form action="<?php $this->text('wgScript') ?>" id="searchform">
 				<input type='hidden' name="title" value="<?php $this->text('searchtitle') ?>"/>
 				<input id="searchInput" name="search" type="text"<?php echo $this->skin->tooltipAndAccesskey('search');
 					if( isset( $this->data['search'] ) ) {
@@ -230,9 +233,9 @@ HTML
 
 				<div><a href="<?php $this->text('searchaction') ?>" rel="search"><?php $this->msg('powersearch-legend') ?></a></div><?php } ?>
 
-			</div></form>
-		</div><!-- pBody -->
-	</div><!-- portlet -->
+			</form>
+		</div>
+	</div>
 <?php
 	}
 
@@ -289,18 +292,17 @@ HTML
 		}
 
 		wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );
-?>			</ul>
-		</div><!-- pBody -->
-	</div><!-- portlet -->
+?>
+			</ul>
+		</div>
+	</div>
 <?php
 	}
 
 	/*************************************************************************************************/
 	function languageBox() {
+		if( $this->data['language_urls'] ) {
 ?>
-	<!-- languages -->
-<?php
-		if( $this->data['language_urls'] ) { ?>
 	<div id="p-lang" class="portlet">
 		<h5><?php $this->msg('otherlanguages') ?></h5>
 		<div class="pBody">
@@ -310,8 +312,8 @@ HTML
 				?><a href="<?php echo htmlspecialchars($langlink['href']) ?>"><?php echo $langlink['text'] ?></a></li>
 <?php		} ?>
 			</ul>
-		</div><!-- pBody -->
-	</div><!-- portlet -->
+		</div>
+	</div>
 <?php
 		}
 	}
@@ -335,10 +337,11 @@ HTML
 			print $cont;
 		} 
 ?>
-		</div><!-- pBody -->
-	</div><!-- portlet -->
+		</div>
+	</div>
 <?php
 	}
 
 } // end of class
-?>
+
+

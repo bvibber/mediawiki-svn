@@ -283,7 +283,6 @@ $messages = array(
 'aboutsite'            => 'Um {{SITENAME}}',
 'aboutpage'            => 'Project:Um',
 'copyright'            => 'Innihald er tøkt undir $1.',
-'copyrightpagename'    => '{{SITENAME}} útgávurættur',
 'copyrightpage'        => '{{ns:project}}:Útgávurættur',
 'currentevents'        => 'Núverandi hendingar',
 'currentevents-url'    => 'Project:Núverandi hendingar',
@@ -340,9 +339,9 @@ $messages = array(
 'nosuchactiontext'  => 'Gerðin, ið tilskilað er í url, er ikki
 afturkend av wiki',
 'nosuchspecialpage' => 'Ongin slík serlig síða',
-'nospecialpagetext' => "<big>'''Tú hevur biðið um eina serliga síðu, sum wiki ikki kennir aftur.'''</big>
+'nospecialpagetext' => '<strong>Tú hevur biðið um eina serliga síðu, sum wiki ikki kennir aftur.</strong>
 
-<!-- A list of valid special pages can be found at [[Special:SpecialPages]]. -->",
+<!-- A list of valid special pages can be found at [[Special:SpecialPages]]. -->',
 
 # General errors
 'error'             => 'Villa',
@@ -363,7 +362,8 @@ afturkend av wiki',
 'viewsourcetext'    => 'Tú kanst síggja og avrita kelduna til hesa grein:',
 
 # Login and logout pages
-'logouttext'                 => "'''Tú hevur nú ritað út.'''<br />
+'logouttext'                 => "'''Tú hevur nú ritað út.'''
+
 Tú kanst halda áfram at nýta {{SITENAME}} dulnevnt.
 Ella kanst tú rita inn aftur sum sami ella annar brúkari.
 Legg til merkis at summar síður kunnu framhaldandi síggja út
@@ -382,10 +382,10 @@ Tín konto er nú stovnað. Gloym ikki at broyta tínar {{SITENAME}} innstilling
 'logout'                     => 'Útrita',
 'userlogout'                 => 'Rita út',
 'notloggedin'                => 'Ikki ritað inn',
-'nologin'                    => 'Hevur tú ikki eina kontu? $1.',
+'nologin'                    => "Hevur tú ikki eina kontu? '''$1'''.",
 'nologinlink'                => 'Stovna eina kontu',
 'createaccount'              => 'Stovna nýggja kontu',
-'gotaccount'                 => 'Hevur tú longu eina kontu? $1.',
+'gotaccount'                 => "Hevur tú longu eina kontu? '''$1'''.",
 'gotaccountlink'             => 'Rita inn',
 'createaccountmail'          => 'eftur t-posti',
 'badretype'                  => 'Loyniorðið tú hevur skriva er ikki rætt.',
@@ -521,12 +521,11 @@ Vinarliga umhugsa at býta síðuna sundur í styttri pettir.'''",
 'searchresulttext'      => 'Ynskir tú fleiri upplýsingar um leiting á {{SITENAME}}, kanst tú skoða [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Tú leitaði eftur '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Tú leitaði eftur '''$1'''",
-'noexactmatch'          => "'''Eingin síða við heitinum \"\$1\" er til.''' Tú kanst [[:\$1|byrja at skriva eina grein við hesum heitinum]].",
 'notitlematches'        => 'Onki síðuheiti samsvarar',
 'notextmatches'         => 'Ongin síðutekstur samsvarar',
 'prevn'                 => 'undanfarnu {{PLURAL:$1|$1}}',
 'nextn'                 => 'næstu {{PLURAL:$1|$1}}',
-'viewprevnext'          => 'Vís ($1) ($2) ($3).',
+'viewprevnext'          => 'Vís ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'        => 'Help:Innihald',
 'search-result-size'    => '$1 ({{PLURAL:$2|1 orð|$2 orð}})',
 'showingresults'        => "Niðanfyri standa upp til {{PLURAL:$1|'''$1''' úrslit, sum byrjar|'''$1''' úrslit, sum byrja}} við #<b>$2</b>.",
@@ -652,8 +651,9 @@ fyri at leggja fílur upp.',
 
 'upload-file-error' => 'Innvortis brek',
 
-'license'   => 'Loyvi:',
-'nolicense' => 'Onki valt',
+'license'        => 'Loyvi:',
+'license-header' => 'Loyvi:',
+'nolicense'      => 'Onki valt',
 
 # Special:ListFiles
 'listfiles'      => 'Myndalisti',

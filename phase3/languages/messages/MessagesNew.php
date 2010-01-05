@@ -8,6 +8,7 @@
  * @file
  *
  * @author Eukesh
+ * @author आलोक
  */
 
 $namespaceNames = array(
@@ -204,7 +205,6 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}}या बारेय्',
 'aboutpage'            => 'Project:बारेय्',
 'copyright'            => 'कण्टेण्ट $1 कथं उपलब्ध दु।',
-'copyrightpagename'    => '{{SITENAME}} लेखाधिकार',
 'copyrightpage'        => '{{ns:project}}:लेखाधिकार',
 'currentevents'        => 'जुयाच्वँगु घटना',
 'currentevents-url'    => 'Project:जुयाच्वँगु घटना',
@@ -254,9 +254,9 @@ $messages = array(
 'nosuchaction'      => 'थन्यागु ज्या मदु',
 'nosuchactiontext'  => 'URLनं या धाःगु ज्या विकिं मस्यु',
 'nosuchspecialpage' => 'थन्यागु विशेष पौ मदु',
-'nospecialpagetext' => "<big>'''छिं मदुगु विशेष पौया माग तयादिल।'''</big>
+'nospecialpagetext' => '<strong>छिं मदुगु विशेष पौया माग तयादिल।</strong>
 
-अस्थित्वय् दुगु विशेष पौया धलः [[विशेष:विशेषपौ|{{int:specialpages}}]]य् दु।",
+अस्थित्वय् दुगु विशेष पौया धलः [[विशेष:विशेषपौ|{{int:specialpages}}]]य् दु।',
 
 # General errors
 'databaseerror'   => 'डेटाबेस इरर',
@@ -311,11 +311,6 @@ MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
 'revisionasof'     => '$1 तक्कया संस्करण',
 'previousrevision' => '←पुलांगु संस्करण',
 
-# Diffs
-'diff-i'      => "'''ब्यक्वःगु'''",
-'diff-b'      => "'''गाढा'''",
-'diff-strong' => "'''कडा'''",
-
 # Search results
 'searchhelp-url' => 'Help:धलःपौ',
 'searchrelated'  => 'स्वापू दुःगु',
@@ -348,7 +343,7 @@ MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
 'show'          => 'क्यनादिसँ',
 
 # Upload
-'upload' => 'फाइल अपलोड',
+'upload' => 'संचिका चढ़ाएँ',
 
 # File description page
 'file-anchor-link' => 'फाइल',
@@ -408,7 +403,7 @@ MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
 'tooltip-feed-atom'               => 'थ्व पौया Atom फीड',
 'tooltip-t-contributions'         => 'थ्व छ्य्‌लामिया योगदानया धलः क्यनादिसँ',
 'tooltip-t-emailuser'             => 'थ्व छ्य्‌लामियात इ-मेल छ्वयादिसँ',
-'tooltip-t-upload'                => 'फाइल अपलोड',
+'tooltip-t-upload'                => 'संचिकाएँ चढ़ाएँ',
 'tooltip-t-specialpages'          => 'सकल विशेष पौस धलः',
 'tooltip-t-print'                 => 'थ्व पौस ध्वायेज्युगु संस्करण',
 'tooltip-t-permalink'             => 'थ्व पौस थ्व संस्करणया पर्मानेन्ट लिङ्क',

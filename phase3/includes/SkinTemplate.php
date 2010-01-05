@@ -87,6 +87,12 @@ class SkinTemplate extends Skin {
 	 */
 	var $template = 'QuickTemplate';
 
+	/**
+	 * Whether this skin use OutputPage::headElement() to generate the <head>
+	 * tag
+	 */
+	var $useHeadElement = false;
+
 	/**#@-*/
 
 	/**
@@ -97,18 +103,6 @@ class SkinTemplate extends Skin {
 	function setupSkinUserCss( OutputPage $out ){
 		$out->addStyle( 'common/shared.css', 'screen' );
 		$out->addStyle( 'common/commonPrint.css', 'print' );
-	}
-	/* add specific javascript the base Skin class */
-	function setupSkinUserJs( OutputPage $out ){
-		global $wgUseSiteJs;
-		//use site js:
-		if( $wgUseSiteJs ) {
-			$jsCache = $this->loggedin ? '&smaxage=0' : '';
-			$siteGenScriptFile =  self::makeUrl( '-',
-					"action=raw$jsCache&gen=js&useskin=" .
-						urlencode( $this->getSkinName() ) ) ;
-			$this->jsvarurl = $siteGenScriptFile;
-		}
 	}
 
 	/**
@@ -135,12 +129,12 @@ class SkinTemplate extends Skin {
 		global $wgArticle, $wgUser, $wgLang, $wgContLang;
 		global $wgScript, $wgStylePath, $wgContLanguageCode;
 		global $wgMimeType, $wgJsMimeType, $wgOutputEncoding, $wgRequest;
-		global $wgXhtmlDefaultNamespace, $wgXhtmlNamespaces;
+		global $wgXhtmlDefaultNamespace, $wgXhtmlNamespaces, $wgHtml5Version;
 		global $wgDisableCounters, $wgLogo, $wgHideInterlanguageLinks;
 		global $wgMaxCredits, $wgShowCreditsIfMax;
 		global $wgPageShowWatchingUsers;
-		global $wgUseTrackbacks, $wgUseSiteJs;
-		global $wgArticlePath, $wgScriptPath, $wgServer, $wgCanonicalNamespaceNames;
+		global $wgUseTrackbacks, $wgUseSiteJs, $wgDebugComments;
+		global $wgArticlePath, $wgScriptPath, $wgServer;
 
 		wfProfileIn( __METHOD__ );
 
@@ -162,8 +156,13 @@ class SkinTemplate extends Skin {
 		wfProfileIn( __METHOD__ . '-stuff' );
 		$this->thispage = $this->mTitle->getPrefixedDBkey();
 		$this->thisurl = $this->mTitle->getPrefixedURL();
-		$query = $wgRequest->getValues();
-		unset( $query['title'] );
+		$query = array();
+		if ( !$wgRequest->wasPosted() ) {
+			$query = $wgRequest->getValues();
+			unset( $query['title'] );
+			unset( $query['returnto'] );
+			unset( $query['returntoquery'] );
+		}
 		$this->thisquery = wfUrlencode( wfArrayToCGI( $query ) );
 		$this->loggedin = $wgUser->isLoggedIn();
 		$this->iscontent = ( $this->mTitle->getNamespace() != NS_SPECIAL );
@@ -178,11 +177,48 @@ class SkinTemplate extends Skin {
 			$this->userpageUrlDetails = self::makeKnownUrlDetails( $this->userpage );
 		}
 
-		$this->userjs = $this->userjsprev = false;
-		$this->setupUserCss( $out );
-		$this->setupUserJs( $out->isUserJsAllowed() );
 		$this->titletxt = $this->mTitle->getPrefixedText();
 		wfProfileOut( __METHOD__ . '-stuff' );
+
+		wfProfileIn( __METHOD__ . '-stuff-head' );
+		if ( $this->useHeadElement ) {
+			$pagecss = $this->setupPageCss();
+			if( $pagecss )
+				$out->addInlineStyle( $pagecss );
+		} else {
+			$this->setupUserCss( $out );
+
+			$tpl->set( 'pagecss', $this->setupPageCss() );
+			$tpl->setRef( 'usercss', $this->usercss );
+
+			$this->userjs = $this->userjsprev = false;
+			$this->setupUserJs( $out->isUserJsAllowed() );
+			$tpl->setRef( 'userjs', $this->userjs );
+			$tpl->setRef( 'userjsprev', $this->userjsprev );
+
+			if( $wgUseSiteJs ) {
+				$jsCache = $this->loggedin ? '&smaxage=0' : '';
+				$tpl->set( 'jsvarurl',
+						  self::makeUrl( '-',
+										"action=raw$jsCache&gen=js&useskin=" .
+										urlencode( $this->getSkinName() ) ) );
+			} else {
+				$tpl->set( 'jsvarurl', false );
+			}
+
+			$tpl->setRef( 'xhtmldefaultnamespace', $wgXhtmlDefaultNamespace );
+			$tpl->set( 'xhtmlnamespaces', $wgXhtmlNamespaces );
+			$tpl->set( 'html5version', $wgHtml5Version );
+			$tpl->set( 'headlinks', $out->getHeadLinks() );
+			$tpl->set( 'csslinks', $out->buildCssLinks() );
+
+			if( $wgUseTrackbacks && $out->isArticleRelated() ) {
+				$tpl->set( 'trackbackhtml', $out->getTitle()->trackbackRDF() );
+			} else {
+				$tpl->set( 'trackbackhtml', null );
+			}
+		}
+		wfProfileOut( __METHOD__ . '-stuff-head' );
 
 		wfProfileIn( __METHOD__ . '-stuff2' );
 		$tpl->set( 'title', $out->getPageTitle() );
@@ -191,8 +227,8 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'pageclass', $this->getPageClasses( $this->mTitle ) );
 		$tpl->set( 'skinnameclass', ( 'skin-' . Sanitizer::escapeClass( $this->getSkinName() ) ) );
 
-		$nsname = isset( $wgCanonicalNamespaceNames[ $this->mTitle->getNamespace() ] ) ?
-					$wgCanonicalNamespaceNames[ $this->mTitle->getNamespace() ] :
+		$nsname = MWNamespace::exists( $this->mTitle->getNamespace() ) ?
+					MWNamespace::getCanonicalName( $this->mTitle->getNamespace() ) :
 					$this->mTitle->getNsText();
 
 		$tpl->set( 'nscanonical', $nsname );
@@ -231,27 +267,15 @@ class SkinTemplate extends Skin {
 		} else {
 			$tpl->set( 'feeds', false );
 		}
-		if( $wgUseTrackbacks && $out->isArticleRelated() ) {
-			$tpl->set( 'trackbackhtml', $out->getTitle()->trackbackRDF() );
-		} else {
-			$tpl->set( 'trackbackhtml', null );
-		}
 
-		$tpl->setRef( 'xhtmldefaultnamespace', $wgXhtmlDefaultNamespace );
-		$tpl->set( 'xhtmlnamespaces', $wgXhtmlNamespaces );
 		$tpl->setRef( 'mimetype', $wgMimeType );
 		$tpl->setRef( 'jsmimetype', $wgJsMimeType );
 		$tpl->setRef( 'charset', $wgOutputEncoding );
-		$tpl->set( 'headlinks', $out->getHeadLinks() );
-
-		//moved headscripts to near end of template header output
-
-		$tpl->set( 'csslinks', $out->buildCssLinks() );
 		$tpl->setRef( 'wgScript', $wgScript );
 		$tpl->setRef( 'skinname', $this->skinname );
 		$tpl->set( 'skinclass', get_class( $this ) );
 		$tpl->setRef( 'stylename', $this->stylename );
-		$tpl->set( 'printable', $wgRequest->getBool( 'printable' ) );
+		$tpl->set( 'printable', $out->isPrintable() );
 		$tpl->set( 'handheld', $wgRequest->getBool( 'handheld' ) );
 		$tpl->setRef( 'loggedin', $this->loggedin );
 		$tpl->set( 'notspecialpage', $this->mTitle->getNamespace() != NS_SPECIAL );
@@ -271,29 +295,16 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'serverurl', $wgServer );
 		$tpl->setRef( 'logopath', $wgLogo );
 		$tpl->setRef( 'lang', $wgContLanguageCode );
-		$tpl->set( 'dir', $wgContLang->isRTL() ? 'rtl' : 'ltr' );
+		$tpl->set( 'dir', $wgContLang->getDir() );
 		$tpl->set( 'rtl', $wgContLang->isRTL() );
 		$tpl->set( 'capitalizeallnouns', $wgLang->capitalizeAllNouns() ? ' capitalize-all-nouns' : '' );
 		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLanguageCode ) );
 		$tpl->set( 'showjumplinks', $wgUser->getOption( 'showjumplinks' ) );
-		$tpl->set( 'username', $wgUser->isAnon() ? NULL : $this->username );
+		$tpl->set( 'username', $wgUser->isAnon() ? null : $this->username );
 		$tpl->setRef( 'userpage', $this->userpage );
 		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href'] );
 		$tpl->set( 'userlang', $wgLang->getCode() );
 		$tpl->set( 'userlangattributes', 'lang="' . $wgLang->getCode() . '" xml:lang="' . $wgLang->getCode() . '"' );
-		$tpl->set( 'pagecss', $this->setupPageCss() );
-		$tpl->setRef( 'usercss', $this->usercss );
-		$tpl->setRef( 'userjs', $this->userjs );
-		$tpl->setRef( 'userjsprev', $this->userjsprev );
-		if( $wgUseSiteJs ) {
-			$jsCache = $this->loggedin ? '&smaxage=0' : '';
-			$tpl->set( 'jsvarurl',
-				self::makeUrl( '-',
-					"action=raw$jsCache&gen=js&useskin=" .
-						urlencode( $this->getSkinName() ) ) );
-		} else {
-			$tpl->set( 'jsvarurl', false );
-		}
 
 		$newtalks = $wgUser->getNewMessageLinks();
 
@@ -415,7 +426,12 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'privacy', $this->privacyLink() );
 		$tpl->set( 'about', $this->aboutLink() );
 
-		$tpl->setRef( 'debug', $out->mDebugtext );
+		if ( $wgDebugComments ) {
+			$tpl->setRef( 'debug', $out->mDebugtext );
+		} else {
+			$tpl->set( 'debug', '' );
+		}
+
 		$tpl->set( 'reporttime', wfReportTime() );
 		$tpl->set( 'sitenotice', wfGetSiteNotice() );
 		$tpl->set( 'bottomscripts', $this->bottomScripts() );
@@ -467,8 +483,12 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'sidebar', $this->buildSidebar() );
 		$tpl->set( 'nav_urls', $this->buildNavUrls() );
 
-		//set the head script near the end (in case above actions result in adding scripts)
-		$tpl->set( 'headscripts', $out->getScript() );
+		// Set the head scripts near the end, in case the above actions resulted in added scripts
+		if ( $this->useHeadElement ) {
+			$tpl->set( 'headelement', $out->headElement( $this ) );
+		} else {
+			$tpl->set( 'headscripts', $out->getScript() );
+		}
 
 		// original version by hansm
 		if( !wfRunHooks( 'SkinTemplateOutputPageBeforeExec', array( &$this, &$tpl ) ) ) {
@@ -516,6 +536,11 @@ class SkinTemplate extends Skin {
 
 		/* set up the default links for the personal toolbar */
 		$personal_urls = array();
+		$page = $wgRequest->getVal( 'returnto', $this->thisurl );
+		$query = $wgRequest->getVal( 'returntoquery', $this->thisquery );
+		$returnto = "returnto=$page";
+		if( $this->thisquery != '' )
+			$returnto .= "&returntoquery=$query";
 		if( $this->loggedin ) {
 			$personal_urls['userpage'] = array(
 				'text' => $this->username,
@@ -568,7 +593,7 @@ class SkinTemplate extends Skin {
 			$personal_urls['logout'] = array(
 				'text' => wfMsg( 'userlogout' ),
 				'href' => self::makeSpecialUrl( 'Userlogout',
-					$title->isSpecial( 'Preferences' ) ? '' : "returnto={$this->thisurl}&returntoquery={$this->thisquery}"
+					$title->isSpecial( 'Preferences' ) ? '' : $returnto
 				),
 				'active' => false
 			);
@@ -595,13 +620,13 @@ class SkinTemplate extends Skin {
 				);
 				$personal_urls['anonlogin'] = array(
 					'text' => wfMsg( $loginlink ),
-					'href' => self::makeSpecialUrl( 'Userlogin', "returnto={$this->thisurl}&returntoquery={$this->thisquery}" ),
+					'href' => self::makeSpecialUrl( 'Userlogin', $returnto ),
 					'active' => $title->isSpecial( 'Userlogin' )
 				);
 			} else {
 				$personal_urls['login'] = array(
 					'text' => wfMsg( $loginlink ),
-					'href' => self::makeSpecialUrl( 'Userlogin', "returnto={$this->thisurl}&returntoquery={$this->thisquery}" ),
+					'href' => self::makeSpecialUrl( 'Userlogin', $returnto ),
 					'active' => $title->isSpecial( 'Userlogin' )
 				);
 			}
@@ -716,10 +741,19 @@ class SkinTemplate extends Skin {
 				// adds new section link if page is a current revision of a talk page or
 				if ( ( $wgArticle && $wgArticle->isCurrent() && $istalk ) || $wgOut->showNewSectionLink() ) {
 					if ( !$wgOut->forceHideNewSectionLink() ) {
+						$urlArgs = 'action=edit&section=new';
+						$preloadMsg = wfMsgForContent( 'talk-addsection-preload' );
+						$editintroMsg = wfMsgForContent( 'talk-addsection-editintro' );
+						if( '' != $preloadMsg  ) {
+							$urlArgs .= '&preload=' . urlencode( $preloadMsg );
+						}
+						if( '' != $editintroMsg ) {
+							$urlArgs .= '&editintro=' . urlencode( $editintroMsg );
+						}
 						$content_actions['addsection'] = array(
 							'class' => $section == 'new' ? 'selected' : false,
 							'text' => wfMsg( 'addsection' ),
-							'href' => $this->mTitle->getLocalUrl( 'action=edit&section=new' )
+							'href' => $this->mTitle->getLocalUrl( $urlArgs )
 						);
 					}
 				}
@@ -776,7 +810,7 @@ class SkinTemplate extends Skin {
 				}
 			} else {
 				//article doesn't exist or is deleted
-				if( $wgUser->isAllowed( 'deletedhistory' ) && $wgUser->isAllowed( 'undelete' ) ) {
+				if( $wgUser->isAllowed( 'deletedhistory' ) && $wgUser->isAllowed( 'deletedtext' ) ) {
 					if( $n = $this->mTitle->isDeleted() ) {
 						$undelTitle = SpecialPage::getTitleFor( 'Undelete' );
 						$content_actions['undelete'] = array(
@@ -825,7 +859,7 @@ class SkinTemplate extends Skin {
 			}
 
 
-			wfRunHooks( 'SkinTemplateTabs', array( &$this, &$content_actions ) );
+			wfRunHooks( 'SkinTemplateTabs', array( $this, &$content_actions ) );
 		} else {
 			/* show special page tab */
 
@@ -894,7 +928,7 @@ class SkinTemplate extends Skin {
 		// A print stylesheet is attached to all pages, but nobody ever
 		// figures that out. :)  Add a link...
 		if( $this->iscontent && ( $action == 'view' || $action == 'purge' ) ) {
-			if ( !$wgRequest->getBool( 'printable' ) ) {
+			if ( !$wgOut->isPrintable() ) {
 				$nav_urls['print'] = array(
 					'text' => wfMsg( 'printableversion' ),
 					'href' => $wgRequest->appendQuery( 'printable=yes' )
@@ -1034,7 +1068,7 @@ class SkinTemplate extends Skin {
  * compatible with what we use of PHPTAL 0.7.
  * @ingroup Skins
  */
-class QuickTemplate {
+abstract class QuickTemplate {
 	/**
 	 * Constructor
 	 */
@@ -1071,9 +1105,7 @@ class QuickTemplate {
 	 * Main function, used by classes that subclass QuickTemplate
 	 * to show the actual HTML output
 	 */
-	public function execute() {
-		echo 'Override this function.';
-	}
+	abstract public function execute();
 
 	/**
 	 * @private

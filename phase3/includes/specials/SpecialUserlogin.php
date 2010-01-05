@@ -129,7 +129,7 @@ class LoginForm {
 
 		$u = $this->addNewaccountInternal();
 
-		if ($u == NULL) {
+		if ($u == null) {
 			return;
 		}
 
@@ -163,7 +163,7 @@ class LoginForm {
 
 		# Create the account and abort if there's a problem doing so
 		$u = $this->addNewAccountInternal();
-		if( $u == NULL )
+		if( $u == null )
 			return;
 
 		# If we showed up language selection links, and one was in use, be
@@ -192,7 +192,7 @@ class LoginForm {
 		if( $wgUser->isAnon() ) {
 			$wgUser = $u;
 			$wgUser->setCookies();
-			wfRunHooks( 'AddNewAccount', array( $wgUser ) );
+			wfRunHooks( 'AddNewAccount', array( $wgUser, false ) );
 			$wgUser->addNewUserLogEntry();
 			if( $this->hasSessionCookie() ) {
 				return $this->successfulCreation();
@@ -208,7 +208,7 @@ class LoginForm {
 			$wgOut->setRobotPolicy( 'noindex,nofollow' );
 			$wgOut->addHTML( wfMsgWikiHtml( 'accountcreatedtext', $u->getName() ) );
 			$wgOut->returnToMain( false, $self );
-			wfRunHooks( 'AddNewAccount', array( $u ) );
+			wfRunHooks( 'AddNewAccount', array( $u, false ) );
 			$u->addNewUserLogEntry();
 			return true;
 		}
@@ -219,7 +219,6 @@ class LoginForm {
 	 */
 	function addNewAccountInternal() {
 		global $wgUser, $wgOut;
-		global $wgEnableSorbs, $wgProxyWhitelist;
 		global $wgMemc, $wgAccountCreationThrottle;
 		global $wgAuth, $wgMinimalPasswordLength;
 		global $wgEmailConfirmToEdit;
@@ -257,9 +256,7 @@ class LoginForm {
 		}
 
 		$ip = wfGetIP();
-		if ( $wgEnableSorbs && !in_array( $ip, $wgProxyWhitelist ) &&
-		  $wgUser->inSorbsBlacklist( $ip ) )
-		{
+		if ( $wgUser->isDnsBlacklisted( $ip, true /* check $wgProxyWhitelist */ ) ) {
 			$this->mainLoginForm( wfMsg( 'sorbs_create_account_reason' ) . ' (' . htmlspecialchars( $ip ) . ')' );
 			return;
 		}
@@ -267,7 +264,12 @@ class LoginForm {
 		# Now create a dummy user ($u) and check if it is valid
 		$name = trim( $this->mName );
 		$u = User::newFromName( $name, 'creatable' );
-		if ( is_null( $u ) ) {
+		if ( WikiError::isError( $u ) ) {
+			$this->mainLoginForm( wfMsg( $u->getMessage() ) );
+			return false;
+		}
+
+		if ( !is_object( $u ) ) {
 			$this->mainLoginForm( wfMsg( 'noname' ) );
 			return false;
 		}
@@ -283,7 +285,7 @@ class LoginForm {
 		}
 
 		# check for minimal password length
-		$valid = $u->isValidPassword( $this->mPassword );
+		$valid = $u->getPasswordValidity( $this->mPassword );
 		if ( $valid !== true ) {
 			if ( !$this->mCreateaccountMail ) {
 				$this->mainLoginForm( wfMsgExt( $valid, array( 'parsemag' ), $wgMinimalPasswordLength ) );
@@ -366,7 +368,7 @@ class LoginForm {
 		$wgAuth->initUser( $u, $autocreate );
 
 		if ( $this->mExtUser ) {
-			$this->mExtUser->link( $u->getId() );
+			$this->mExtUser->linkToLocal( $u->getId() );
 			$email = $this->mExtUser->getPref( 'emailaddress' );
 			if ( $email && !$this->mEmail ) {
 				$u->setEmail( $email );
@@ -389,10 +391,8 @@ class LoginForm {
 	 * This may create a local account as a side effect if the
 	 * authentication plugin allows transparent local account
 	 * creation.
-	 *
-	 * @public
 	 */
-	function authenticateUserData() {
+	public function authenticateUserData() {
 		global $wgUser, $wgAuth;
 		if ( '' == $this->mName ) {
 			return self::NO_NAME;
@@ -446,6 +446,15 @@ class LoginForm {
 				$isAutoCreated = true;
 			}
 		} else {
+			global $wgExternalAuthType, $wgAutocreatePolicy;
+			if ( $wgExternalAuthType && $wgAutocreatePolicy != 'never'
+			&& is_object( $this->mExtUser )
+			&& $this->mExtUser->authenticate( $this->mPassword ) ) {
+				# The external user and local user have the same name and
+				# password, so we assume they're the same.
+				$this->mExtUser->linkToLocal( $u->getID() );
+			}
+
 			$u->load();
 		}
 
@@ -931,14 +940,20 @@ class LoginForm {
 		}
 
 		// Give authentication and captcha plugins a chance to modify the form
-		$wgAuth->modifyUITemplate( $template );
+		$wgAuth->modifyUITemplate( $template, $this->mType );
 		if ( $this->mType == 'signup' ) {
 			wfRunHooks( 'UserCreateForm', array( &$template ) );
 		} else {
 			wfRunHooks( 'UserLoginForm', array( &$template ) );
 		}
 
-		$wgOut->setPageTitle( wfMsg( 'userlogin' ) );
+		//Changes the title depending on permissions for creating account
+		if ( $wgUser->isAllowed( 'createaccount' ) ) {
+			$wgOut->setPageTitle( wfMsg( 'userlogin' ) );
+		} else {
+			$wgOut->setPageTitle( wfMsg( 'userloginnocreate' ) );
+		}
+
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->disallowUserJs();  // just in case...

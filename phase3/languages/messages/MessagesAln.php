@@ -14,9 +14,50 @@
 
 $fallback = 'sq';
 
+$namespaceNames = array(
+	NS_SPECIAL          => 'Speciale',
+	NS_TALK             => 'Diskutim',
+	NS_USER             => 'Përdorues',
+	NS_USER_TALK        => 'Përdoruesi_diskutim',
+	NS_PROJECT_TALK     => '$1_diskutim',
+	NS_FILE             => 'Skeda',
+	NS_FILE_TALK        => 'Skeda_diskutim',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_diskutim',
+	NS_TEMPLATE         => 'Stampa',
+	NS_TEMPLATE_TALK    => 'Stampa_diskutim',
+	NS_HELP             => 'Ndihmë',
+	NS_HELP_TALK        => 'Ndihmë_diskutim',
+	NS_CATEGORY         => 'Kategoria',
+	NS_CATEGORY_TALK    => 'Kategoria_diskutim',
+);
+
+$namespaceAliases = array(
+	'Perdoruesi' => NS_USER,
+	'Perdoruesi_diskutim' => NS_USER_TALK,
+	'Përdoruesi' => NS_USER,
+	'Përdoruesi_diskutim' => NS_USER_TALK,
+	'Figura' => NS_FILE,
+	'Figura_diskutim' => NS_FILE_TALK,
+	'Kategori' => NS_CATEGORY,
+	'Kategori_Diskutim' => NS_CATEGORY_TALK
+);
+
 $specialPageAliases = array(
 	'Popularpages'              => array( 'Faqe të famshme' ),
 	'Search'                    => array( 'Kërko' ),
+);
+
+$magicWords = array(
+	'currentmonth'          => array( '1', 'MUEJIAKTUAL', 'MUEJIAKTUAL2', 'MUAJIMOMENTAL', 'CURRENTMONTH', 'CURRENTMONTH2' ),
+	'currentmonth1'         => array( '1', 'MUEJIAKTUAL1', 'CURRENTMONTH1' ),
+	'currentmonthname'      => array( '1', 'EMNIMUEJITAKTUAL', 'EMRIIMUAJITMOMENTAL', 'CURRENTMONTHNAME' ),
+	'currenttime'           => array( '1', 'KOHATASH', 'KOHATANI', 'CURRENTTIME' ),
+	'currenthour'           => array( '1', 'ORATASH', 'ORATANI', 'CURRENTHOUR' ),
+	'localmonth'            => array( '1', 'MUEJILOKAL', 'MUAJILOKAL', 'LOCALMONTH', 'LOCALMONTH2' ),
+	'img_center'            => array( '1', 'qendër', 'qendrore', 'qëndër', 'qëndrore', 'center', 'centre' ),
+	'img_baseline'          => array( '1', 'vijabazë', 'linjabazë', 'baseline' ),
+	'servername'            => array( '0', 'EMNISERVERIT', 'EMRIISERVERIT', 'SERVERNAME' ),
+	'currentweek'           => array( '1', 'JAVAAKTUALE', 'JAVAMOMENTALE', 'CURRENTWEEK' ),
 );
 
 $messages = array(
@@ -267,7 +308,6 @@ $1',
 'aboutsite'            => 'Rreth {{SITENAME}}',
 'aboutpage'            => 'Project:Rreth',
 'copyright'            => 'Përmbajtja âsht lëshue nën $1.',
-'copyrightpagename'    => '{{SITENAME}} e drejta autoriale',
 'copyrightpage'        => '{{ns:project}}:Të drejtat autoriale',
 'currentevents'        => 'Ndodhitë aktuale',
 'currentevents-url'    => 'Project:Ndodhitë aktuale',
@@ -339,9 +379,9 @@ Shih [[Special:Version|faqen e verzionit]].',
 Ndoshta keni shkrue gabim URL'ën, ose keni përcjellë vegëz të gabueme.
 Kjo gjithashtu mundet me tregue gabim në softwarein e {{SITENAME}}.",
 'nosuchspecialpage' => 'Nuk ekziston kjo faqe speciale',
-'nospecialpagetext' => "<big>'''Keni kërkue nji faqe speciale jovalide.'''</big>
+'nospecialpagetext' => '<strong>Keni kërkue nji faqe speciale jovalide.</strong>
 
-Lista e faqeve speciale valide gjindet te [[Special:SpecialPages|{{int:specialpages}}]].",
+Lista e faqeve speciale valide gjindet te [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Gabim',
@@ -351,12 +391,12 @@ Kjo mundet me tregue gabim në software.
 Kërkesa e fundit në databazë ishte:
 <blockquote><tt>$1</tt></blockquote>
 mbrenda funksionit "<tt>$2</tt>".
-$5 ktheu gabimin "<tt>$3: $4</tt>".',
+Databaza ktheu gabimin "<tt>$3: $4</tt>".',
 'dberrortextcl'        => 'Ka ndodh nji gabim sintaksor në kërkesën në databazë. 
 Kërkesa e fundit në databazë ishte:
 "$1"
 mbrenda funksionit "$2".
-$5 ktheu gabimin "$3: $4".',
+Databaza ktheu gabimin "$3: $4".',
 'laggedslavemode'      => "'''Kujdes:''' Kjo faqe mundet mos me përmbajtë ndryshime të reja.",
 'readonly'             => 'Databaza âsht e bllokueme',
 'enterlockreason'      => 'Futni një arsye për bllokimin, gjithashtu futni edhe kohën se kur pritet të çbllokohet',
@@ -441,10 +481,10 @@ Mos harroni me i ndryshue [[Special:Preferences|parapëlqimet për {{SITENAME}}]
 'logout'                     => 'Çkyçu',
 'userlogout'                 => 'Çkyçu',
 'notloggedin'                => 'Nuk je i kyçun',
-'nologin'                    => 'Nuk ke llogari? $1.',
+'nologin'                    => "Nuk ke llogari? '''$1'''.",
 'nologinlink'                => 'Krijo llogari',
 'createaccount'              => 'Krijo llogari',
-'gotaccount'                 => 'Ke llogari? $1.',
+'gotaccount'                 => "Ke llogari? '''$1'''.",
 'gotaccountlink'             => 'Kyçu',
 'createaccountmail'          => 'me email',
 'badretype'                  => 'Fjalëkalimet nuk janë të njêjta.',
@@ -471,8 +511,7 @@ Kontrollo drejtshkrimin.',
 Provo prap.',
 'wrongpasswordempty'         => 'Fjalëkalimi ishte i shprazët.
 Provo prap.',
-'passwordtooshort'           => 'Fjalëkalimi juej âsht shumë i shkurtë.
-Duhet me i pasë së paku {{PLURAL:$1|1 shêjë|$1 shêja}}.',
+'passwordtooshort'           => 'Fjalëkalimi juej duhet me i pasë së paku {{PLURAL:$1|1 shêjë|$1 shêja}}.',
 'password-name-match'        => 'Fjalëkalimi duhet me qenë i ndryshëm prej nofkës.',
 'mailmypassword'             => 'Dërgo fjalëkalimin me email',
 'passwordremindertitle'      => 'Fjalëkalim i ri i përkohshëm për {{SITENAME}}',
@@ -629,7 +668,7 @@ Adresa IP mundet me u shfrytëzue prej disa përdoruesve.
 Nëse jeni përdorues anonim dhe keni përshtypjen se po ju drejtohen komente jorelevante, ju lutemi [[Special:UserLogin/signup|krijoni nji llogari]] apo [[Special:UserLogin|kyçuni]] për me iu shmângë ngatërrimit me përdorues tjerë anonim.''",
 'noarticletext'                    => 'Momentalisht nuk ka tekst në këtë faqe.
 Ju mundeni [[Special:Search/{{PAGENAME}}|me kërkue këtë titull]] në faqe tjera,
-<span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} me kërkue në regjistrat tematikisht të afërm],
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} me kërkue në regjistrat tematikisht të afërm],
 apo [{{fullurl:{{FULLPAGENAME}}|action=edit}} me redaktue këtë faqe]</span>.',
 'userpage-userdoesnotexist'        => 'Llogaria e përdoruesit "$1" nuk âsht regjistrue.
 Ju lutemi kontrolloni nëse doni me krijue/redaktue këtë faqe.',
@@ -638,7 +677,8 @@ Ju lutemi kontrolloni nëse doni me krijue/redaktue këtë faqe.',
 '''Konqueror: '''klikoni ''Reload'' ose trusni ''F5'';
 '''Opera:''' fshini cachein në ''Tools → Preferences'';
 '''Internet Explorer:''' mbani ''Ctrl'' tue klikue në ''Refresh,'' ose trusni ''Ctrl-F5''.",
-'usercssjsyoucanpreview'           => "'''Këshillë:''' Përdorni butonin 'Trego parapâmjen' për me testue CSS/JS para se me i regjistrue ndryshimet.",
+'usercssyoucanpreview'             => "'''Këshillë:''' Përdorni butonin 'Trego parapâmjen' për me testue CSS para se me i regjistrue ndryshimet.",
+'userjsyoucanpreview'              => "'''Këshillë:''' Përdorni butonin 'Trego parapâmjen' për me testue JS para se me i regjistrue ndryshimet.",
 'usercsspreview'                   => "'''Vini re, jeni tue pâ veç parapâmjen e CSSit tuej.'''
 '''Ende nuk e keni ruejtë!'''",
 'userjspreview'                    => "'''Vini re, jeni tue testue/pâ veç parapâmjen e JavaScriptit tuej.'''
@@ -755,9 +795,6 @@ Legjenda: '''({{int:cur}})''' = dallimi me verzionin aktual,
 'searchresulttext'                 => 'Për mâ shumë informata rreth kërkimit në {{SITENAME}} shih [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'                   => 'Keni kërkue \'\'\'[[:$1]]\'\'\' ([[Special:Prefixindex/$1|tâna faqet që nisin me "$1"]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|tâna faqet që lidhen me "$1"]])',
 'searchsubtitleinvalid'            => "Keni kërkue '''$1'''",
-'noexactmatch'                     => "'''Nuk ka faqe me titull \"\$1\".'''
-Mundeni [[:\$1|me krijue këtë faqe]].",
-'noexactmatch-nocreate'            => "'''Nuk ka faqe me titull \"\$1\".'''",
 'toomanymatches'                   => 'Ka tepër shumë përputhje, provoni nji kërkesë mâ të ngushtë',
 'titlematches'                     => 'Tituj që përputhen',
 'notitlematches'                   => 'Nuk ka përputhje në tituj',
@@ -768,7 +805,7 @@ Mundeni [[:\$1|me krijue këtë faqe]].",
 'prevn-title'                      => '$1 {{PLURAL:$1|rezultat|rezultate}} të mâhershme',
 'nextn-title'                      => '$1 {{PLURAL:$1|rezultat|rezultate}} të ardhshme',
 'shown-title'                      => 'Trego $1 {{PLURAL:$1|rezultat|rezultate}} për faqe',
-'viewprevnext'                     => 'Shih ($1) ($2) ($3).',
+'viewprevnext'                     => 'Shih ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Opcionet e kërkimit',
 'searchmenu-exists'                => "'''Në këtë wiki âsht nji faqe me titullin \"[[:\$1]]\"'''",
 'searchmenu-new'                   => "'''Krijo faqen \"[[:\$1]]\" në këtë wiki!'''",
@@ -801,7 +838,6 @@ Mundeni [[:\$1|me krijue këtë faqe]].",
 'searchall'                        => 'tâna',
 'showingresults'                   => "Mâ poshtë {{PLURAL:$1|tregohet '''1''' rezultat|tregohen '''$1''' rezultate}} që nisin me #'''$2'''.",
 'showingresultsnum'                => "Mâ poshtë {{PLURAL:$3|tregohet '''1''' rezultat|tregohen '''$3''' rezultate}} që nisin me #'''$2'''.",
-'showingresultstotal'              => "Mâ poshtë {{PLURAL:$4|tregohet rezultati '''$1''' prej '''$3'''|tregohen rezultatet '''$1 - $2''' prej '''$3'''}}",
 'showingresultsheader'             => "{{PLURAL:$5|Rezultati '''$1''' prej '''$3'''|Rezultatet '''$1 - $2''' prej '''$3'''}} për '''$4'''",
 'nonefound'                        => "'''Shenim''': Vetëm disa hapësina kërkohen me t'lême.
 Provoni me ia parashtue kërkesës tuej ''tâna:'' që me lypë tânë përmbajtjen (përfshî edhe diskutimet, shabllonat, etj.), ose përdorni hapësinën e dëshirueme si parashtesë.",
@@ -1088,7 +1124,6 @@ Shih $2 për regjistrin e fshimjeve të fundit.',
 'protectexpiry'               => 'Afáti',
 'protect_expiry_invalid'      => 'Data e skadimit asht e pasaktë.',
 'protect_expiry_old'          => 'Data e skadimit asht në kohën kalueme.',
-'protect-unchain'             => 'Ndryshoje lejen e zhvendosjeve',
 'protect-text'                => "Këtu muneni me shiku dhe me ndryshu nivelin e mbrojtjes për faqen '''<nowiki>$1</nowiki>'''.",
 'protect-locked-access'       => "Llogaria juej nuk ka privilegjet e nevojitme për me ndryshu nivelin e mbrojtjes. Kufizimet e kësaj faqe janë '''$1''':",
 'protect-cascadeon'           => 'Kjo faqe aktualisht âsht e mbrojtun sepse përfshihet në {{PLURAL:$1|faqen që ka|faqet, të cilat kanë}} mbrojtje të përfshimjes.

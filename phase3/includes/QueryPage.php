@@ -304,10 +304,12 @@ class QueryPage {
 				$tRow = $dbr->fetchObject( $tRes );
 
 				if( $tRow ) {
-					$updated = $wgLang->timeAndDate( $tRow->qci_timestamp, true, true );
+					$updated = $wgLang->timeanddate( $tRow->qci_timestamp, true, true );
+					$updateddate = $wgLang->date( $tRow->qci_timestamp, true, true );
+					$updatedtime = $wgLang->time( $tRow->qci_timestamp, true, true );
 					$wgOut->addMeta( 'Data-Cache-Time', $tRow->qci_timestamp );
 					$wgOut->addInlineScript( "var dataCacheTime = '{$tRow->qci_timestamp}';" );
-					$wgOut->addWikiMsg( 'perfcachedts', $updated );
+					$wgOut->addWikiMsg( 'perfcachedts', $updated, $updateddate, $updatedtime );
 				} else {
 					$wgOut->addWikiMsg( 'perfcached' );
 				}
@@ -488,7 +490,7 @@ class QueryPage {
 	 */
 	function feedResult( $row ) {
 		if( !isset( $row->title ) ) {
-			return NULL;
+			return null;
 		}
 		$title = Title::MakeTitle( intval( $row->namespace ), $row->title );
 		if( $title ) {
@@ -507,7 +509,7 @@ class QueryPage {
 				$this->feedItemAuthor( $row ),
 				$comments);
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 
@@ -604,9 +606,9 @@ abstract class WantedQueryPage extends QueryPage {
 	/**
 	 * Make a "what links here" link for a given title
 	 *
-	 * @param Title $title Title to make the link for
-	 * @param Skin $skin Skin to use
-	 * @param object $result Result row
+	 * @param $title Title to make the link for
+	 * @param $skin Skin object to use
+	 * @param $result Object: result row
 	 * @return string
 	 */
 	private function makeWlhLink( $title, $skin, $result ) {

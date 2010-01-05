@@ -25,7 +25,7 @@ class DatabaseMssql extends DatabaseBase {
 			$failFunction = false, $flags = 0, $tablePrefix = 'get from global') {
 
 		global $wgOut, $wgDBprefix, $wgCommandLineMode;
-		if (!isset($wgOut)) $wgOut = NULL; # Can't get a reference if it hasn't been set yet
+		if (!isset($wgOut)) $wgOut = null; # Can't get a reference if it hasn't been set yet
 		$this->mOut =& $wgOut;
 		$this->mFailFunction = $failFunction;
 		$this->mFlags = $flags;
@@ -131,7 +131,7 @@ class DatabaseMssql extends DatabaseBase {
 	function close() {
 		$this->mOpened = false;
 		if ($this->mConn) {
-			if ($this->trxLevel()) $this->immediateCommit();
+			if ($this->trxLevel()) $this->commit();
 			return mssql_close($this->mConn);
 		} else return true;
 	}
@@ -446,22 +446,6 @@ class DatabaseMssql extends DatabaseBase {
 	}
 
 	/**
-	 * Estimate rows in dataset
-	 * Returns estimated count, based on EXPLAIN output
-	 * Takes same arguments as Database::select()
-	 */
-	function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
-		$rows = 0;
-		$res = $this->select ($table, 'COUNT(*)', $conds, $fname, $options );
-		if ($res) {
-			$row = $this->fetchObject($res);
-			$rows = $row[0];
-		}
-		$this->freeResult($res);
-		return $rows;
-	}
-	
-	/**
 	 * Determines whether a field exists in a table
 	 * Usually aborts on failure
 	 * If errors are explicitly ignored, returns NULL on failure
@@ -490,13 +474,13 @@ class DatabaseMssql extends DatabaseBase {
 	function indexInfo( $table, $index, $fname = 'Database::indexInfo' ) {
 
 		throw new DBUnexpectedError( $this, 'Database::indexInfo called which is not supported yet' );
-		return NULL;
+		return null;
 
 		$table = $this->tableName( $table );
 		$sql = 'SHOW INDEX FROM '.$table;
 		$res = $this->query( $sql, $fname );
 		if ( !$res ) {
-			return NULL;
+			return null;
 		}
 
 		$result = array();
@@ -859,22 +843,6 @@ class DatabaseMssql extends DatabaseBase {
 	}
 
 	/**
-	 * Begin a transaction, committing any previously open transaction
-	 * @deprecated use begin()
-	 */
-	function immediateBegin( $fname = 'Database::immediateBegin' ) {
-		$this->begin();
-	}
-
-	/**
-	 * Commit transaction, if one is open
-	 * @deprecated use commit()
-	 */
-	function immediateCommit( $fname = 'Database::immediateCommit' ) {
-		$this->commit();
-	}
-
-	/**
 	 * Return MW-style timestamp used for MySQL schema
 	 */
 	function timestamp( $ts=0 ) {
@@ -897,13 +865,6 @@ class DatabaseMssql extends DatabaseBase {
 	 */
 	function getSoftwareLink() {
 		return "[http://www.microsoft.com/sql/default.mspx Microsoft SQL Server 2005 Home]";
-	}
-
-	/**
-	 * @return String: Database type for use in messages
-	*/
-	function getDBtypeForMsg() {
-		return 'Microsoft SQL Server';
 	}
 
 	/**
@@ -977,16 +938,6 @@ class DatabaseMssql extends DatabaseBase {
 			if (!preg_match('/^\s*(\(.+?),(\d)\)/', $line, $matches)) continue;
 			$this->query("$sql $matches[1],$matches[2])");
 		}
-	}
-	
-	/** 
-	 * No-op lock functions
-	 */
-	public function lock( $lockName, $method ) {
-		return true;
-	}
-	public function unlock( $lockName, $method ) {
-		return true;
 	}
 	
 	public function getSearchEngine() {

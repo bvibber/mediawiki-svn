@@ -203,7 +203,6 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}} mii',
 'aboutpage'            => 'Project:Miilà',
 'copyright'            => 'Contentua coitáamb $1 tan.',
-'copyrightpagename'    => 'Copyright {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Copyrightám',
 'currentevents'        => 'Hualtezxes',
 'currentevents-url'    => 'Project:Hualtezxes',
@@ -265,9 +264,9 @@ $messages = array(
 'nosuchaction'      => "Ne'dáár accion",
 'nosuchactiontext'  => 'Accion apualte URLsan z coccebj nepualat wiki zo san',
 'nosuchspecialpage' => "Ne'dáár páhina extrava",
-'nospecialpagetext' => "<big>'''Meccan páhina extrava invalida.'''</big>
+'nospecialpagetext' => '<strong>Meccan páhina extrava invalida.</strong>
 
-Meccan páhina extrava valide pac [[Special:SpecialPages]] iti.",
+Meccan páhina extrava valide pac [[Special:SpecialPages]] iti.',
 
 # General errors
 'error'                => 'Römj',
@@ -325,8 +324,10 @@ $2',
 'ns-specialprotected'  => 'Páhinámde {{ns:special}} zo iti neticpatlöx.',
 
 # Login and logout pages
-'logouttext'                 => "'''Me cuípo.'''<br />
-Mecontinudad usadad {{SITENAME}} anon jïx me caápo dajcaitom ö jömcaitom. Páhinám pac continudad displayom dajme caápo, jánclearom mecachede browser.",
+'logouttext'                 => "'''Me cuípo.'''
+
+Mecontinudad usadad {{SITENAME}} anon jïx me caápo dajcaitom ö jömcaitom.
+Páhinám pac continudad displayom dajme caápo, jánclearom mecachede browser.",
 'welcomecreation'            => "== Q'$1! ==
 
 Mecaitom coccebj creatöx. Quiix hequáatlaácde {{SITENAME}} pos-poop.",
@@ -343,10 +344,10 @@ Mecaitom coccebj creatöx. Quiix hequáatlaácde {{SITENAME}} pos-poop.",
 'logout'                     => 'Cuípo',
 'userlogout'                 => 'Cuípo',
 'notloggedin'                => 'Necaápo',
-'nologin'                    => 'Menecaápo? $1.',
+'nologin'                    => "Menecaápo? '''$1'''.",
 'nologinlink'                => 'Xuatl ö',
 'createaccount'              => 'Xuatl',
-'gotaccount'                 => 'Mecaápo? $1.',
+'gotaccount'                 => "Mecaápo? '''$1'''.",
 'gotaccountlink'             => 'Caápo',
 'createaccountmail'          => 'caxuatl e-iitom',
 'badretype'                  => 'Quimx cánj zo misoj nematchöx.',
@@ -483,7 +484,8 @@ Me coccebj römjasi poop, clickom meback-buttonde browser coccebj perfectua.',
 'anontalkpagetext'          => "----''Jan coccebj czaxö zode caitomde IDde adressade IP. Isój necoccebj caápo. Jan coccebj rae'de usadadde adressade IP numerical identificacion 'prenisój. Plusöxde caitom pos-coccebj jan adressade IP. Me pos-coccebj anonimo ö commentua irrevelantua coccebj directomde me poop, [[Special:UserLogin|caápo-jande]] exitom confucion diijömde IP-caitóm mii.''",
 'noarticletext'             => 'Jan páhina necoccebj textua zo, me pos-coccebj [[Special:Search/{{PAGENAME}}|yahöx jan páhina]] diijömde páhinám iti jöx [{{fullurl:{{FULLPAGENAME}}|action=edit}} ticpatlöx jan páhina].',
 'clearyourcache'            => "'''Notificacion:''' Xuniim 'depre, me pos-coccebj bypassöx mecachede browser caitomi quiíx. '''Mozilla / Firefox / Safari:''' quan ti caitomde ''Shift'' zoxepe clickom ''Reload'', jöx cuápook zo ti ''Ctrl-Shift-R'' (''Cmd-Shift-R'' Apple Mac iti); '''IE:''' quan ti ''Ctrl'' zoxepe clickom ''Refresh'', jöx cuápook zo ti ''Ctrl-F5''; '''Konqueror:''': clickom buttonde ''Reload'' zo, jöx cuápook zo iti ''F5''; '''Opera''' caitóm pos-coccebj clairomde cache completementua ''Tools→Preferences'' iti.",
-'usercssjsyoucanpreview'    => "'''Tip:''' Usadad 'Cohuatlöx cuáxiit' testom me hun CSS/JS xuniim 'depre.",
+'usercssyoucanpreview'      => "'''Tip:''' Usadad 'Cohuatlöx cuáxiit' testom me hun CSS xuniim 'depre.",
+'userjsyoucanpreview'       => "'''Tip:''' Usadad 'Cohuatlöx cuáxiit' testom me hun JS xuniim 'depre.",
 'usercsspreview'            => "'''He cuáxiit he CSSde caitom, zo necoccebj xuniim!'''",
 'userjspreview'             => "'''He cuáxiit/testom he JavaScriptde caitom, zo necoccebj xuniim!'''",
 'userinvalidcssjstitle'     => "'''Attencion:''' Skin \"\$1\" coccebj ne'dáár. Regardom .css ö .js páhinám usadad titlenam lowercase zo, yanuiíxzo mii yahöxde ti {{ns:user}}:Foo/monobook.css opposadadde {{ns:user}}:Foo/Monobook.css.",
@@ -576,10 +578,10 @@ Informacion: (curt) = quiíxde vercion currentua,
 'revdelete-selected'      => "'''{{PLURAL:$2|Revicion selectonde|Revición selectónde}} $1:'''",
 'revdelete-legend'        => 'Xuniim restricción',
 'revdelete-hide-text'     => 'Camaát textuade revicion',
+'revdelete-hide-image'    => 'Cohuatlöx contentua ciúchan',
 'revdelete-hide-name'     => 'Camaát accion öjaim',
 'revdelete-hide-comment'  => 'Camaát commentuade ticpatlöx',
 'revdelete-hide-user'     => 'Camaát IDde caitom/IDde IP',
-'revdelete-hide-image'    => 'Cohuatlöx contentua ciúchan',
 'revdelete-log'           => 'Commentuade log:',
 'revdelete-logentry'      => 'quiixöx revicion visibilitiitde [[$1]]',
 'logdelete-logentry'      => 'quiixöx eventua visibilitiitde [[$1]]',
@@ -596,10 +598,9 @@ Informacion: (curt) = quiíxde vercion currentua,
 'searchresulttext'      => 'Plusöxde informaciónde yahöx {{SITENAME}} iti, jumpöx [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Me yahöx '''[[:$1]]''' iti",
 'searchsubtitleinvalid' => "Me yahöx '''$1''' iti",
-'noexactmatch'          => "'''Páhina zo \"\$1\" coccebj ne'dáár.''' Mecoccebj [[:\$1|hunpáhinámom]].",
 'prevn'                 => 'jan {{PLURAL:$1|$1}}',
 'nextn'                 => 'hun {{PLURAL:$1|$1}}',
-'viewprevnext'          => 'Cohuatlöx ($1) ($2) ($3)',
+'viewprevnext'          => 'Cohuatlöx ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'        => 'Help:Caálixötöj',
 'powersearch'           => 'Yahöx',
 
@@ -719,7 +720,6 @@ Informacion: (curt) = quiíxde vercion currentua,
 # Upload
 'upload'            => 'Ciúchan uploadan',
 'uploadbtn'         => 'Ciúchan uploadan',
-'reupload'          => 'Re-uploadan',
 'uploadnologin'     => 'Necaápo',
 'uploadnologintext' => 'Zo coccebj Neces [[Special:UserLogin|caápo]] (re-)uploadande ciúchán.',
 'uploaderror'       => 'Römjde uploadan',
@@ -748,6 +748,7 @@ Informacion: (curt) = quiíxde vercion currentua,
 'upload-curl-error28' => 'Time-outde uploadan',
 
 'license'           => 'Licenciónom:',
+'license-header'    => 'Licenciónom:',
 'nolicense'         => 'Seleccion coccebj hun',
 'license-nopreview' => '(Necuáxiit)',
 

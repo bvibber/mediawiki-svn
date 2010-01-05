@@ -54,20 +54,29 @@ class ProtectionForm {
 	var $mExistingExpiry = array();
 
 	function __construct( Article $article ) {
-		global $wgRequest, $wgUser;
-		global $wgRestrictionTypes, $wgRestrictionLevels;
+		global $wgUser;
+		// Set instance variables.
 		$this->mArticle = $article;
 		$this->mTitle = $article->mTitle;
-		$this->mApplicableTypes = $this->mTitle->exists() ? $wgRestrictionTypes : array('create');
-
-		$this->mCascade = $this->mTitle->areRestrictionsCascading();
-
-		// The form will be available in read-only to show levels.
+		$this->mApplicableTypes = $this->mTitle->getRestrictionTypes();
+		
+		// Check if the form should be disabled.
+		// If it is, the form will be available in read-only to show levels.
 		$this->mPermErrors = $this->mTitle->getUserPermissionsErrors('protect',$wgUser);
 		$this->disabled = wfReadOnly() || $this->mPermErrors != array();
 		$this->disabledAttrib = $this->disabled
 			? array( 'disabled' => 'disabled' )
 			: array();
+		
+		$this->loadData();
+	}
+	
+	// Loads the current state of protection into the object.
+	function loadData() {
+		global $wgRequest, $wgUser;
+		global $wgRestrictionLevels;
+		
+		$this->mCascade = $this->mTitle->areRestrictionsCascading();
 
 		$this->mReason = $wgRequest->getText( 'mwProtect-reason' );
 		$this->mReasonSelection = $wgRequest->getText( 'wpProtectReasonSelection' );
@@ -76,6 +85,8 @@ class ProtectionForm {
 		foreach( $this->mApplicableTypes as $action ) {
 			// Fixme: this form currently requires individual selections,
 			// but the db allows multiples separated by commas.
+			
+			// Pull the actual restriction from the DB
 			$this->mRestrictions[$action] = implode( '', $this->mTitle->getRestrictions( $action ) );
 
 			if ( !$this->mRestrictions[$action] ) {
@@ -274,7 +285,17 @@ class ProtectionForm {
 			throw new FatalError( "Unknown error at restriction save time." );
 		}
 
-		if( $wgRequest->getCheck( 'mwProtectWatch' ) ) {
+		$errorMsg = '';
+		# Give extensions a change to handle added form items
+		if( !wfRunHooks( 'ProtectionForm::save', array($this->mArticle,&$errorMsg) ) ) {
+			throw new FatalError( "Unknown hook error at restriction save time." );
+		}
+		if( $errorMsg != '' ) {
+			$this->show( $errorMsg );
+			return false;
+		}
+
+		if( $wgRequest->getCheck( 'mwProtectWatch' ) && $wgUser->isLoggedIn() ) {
 			$this->mArticle->doWatch();
 		} elseif( $this->mTitle->userIsWatching() ) {
 			$this->mArticle->doUnwatch();
@@ -375,7 +396,8 @@ class ProtectionForm {
 			}
 			# Add custom expiry field
 			$attribs = array( 'id' => "mwProtect-$action-expires",
-				'onkeyup' => 'ProtectionForm.updateExpiry(this)' ) + $this->disabledAttrib;
+				'onkeyup' => 'ProtectionForm.updateExpiry(this)',
+				'onchange' => 'ProtectionForm.updateExpiry(this)' ) + $this->disabledAttrib;
 			$out .= "<table><tr>
 					<td class='mw-label'>" .
 						$mProtectother .
@@ -389,6 +411,8 @@ class ProtectionForm {
 			Xml::closeElement( 'fieldset' ) .
 			"</td></tr>";
 		}
+		# Give extensions a chance to add items to the form
+		wfRunHooks( 'ProtectionForm::buildForm', array($this->mArticle,&$out) );
 
 		$out .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
 
@@ -427,7 +451,10 @@ class ProtectionForm {
 						Xml::input( 'mwProtect-reason', 60, $this->mReason, array( 'type' => 'text',
 							'id' => 'mwProtect-reason', 'maxlength' => 255 ) ) .
 					"</td>
-				</tr>
+				</tr>";
+			# Disallow watching is user is not logged in
+			if( $wgUser->isLoggedIn() ) {
+				$out .= "
 				<tr>
 					<td></td>
 					<td class='mw-input'>" .
@@ -435,7 +462,9 @@ class ProtectionForm {
 							'mwProtectWatch', 'mwProtectWatch',
 							$this->mTitle->userIsWatching() || $wgUser->getOption( 'watchdefault' ) ) .
 					"</td>
-				</tr>
+				</tr>";
+			}
+			$out .= "
 				<tr>
 					<td></td>
 					<td class='mw-submit'>" .
@@ -534,8 +563,8 @@ class ProtectionForm {
 		}
 		$script .= "[" . implode(',',$CascadeableLevels) . "];\n";
 		$options = (object)array(
-			'tableId' => 'mw-protect-table-move',
-			'labelText' => wfMsg( 'protect-unchain' ),
+			'tableId' => 'mwProtectSet',
+			'labelText' => wfMsg( 'protect-unchain-permissions' ),
 			'numTypes' => count($this->mApplicableTypes),
 			'existingMatch' => 1 == count( array_unique( $this->mExistingExpiry ) ),
 		);
@@ -553,5 +582,7 @@ class ProtectionForm {
 		# Show relevant lines from the protection log:
 		$out->addHTML( Xml::element( 'h2', null, LogPage::logName( 'protect' ) ) );
 		LogEventsList::showLogExtract( $out, 'protect', $this->mTitle->getPrefixedText() );
+		# Let extensions add other relevant log extracts
+		wfRunHooks( 'ProtectionForm::showLogExtract', array($this->mArticle,$out) );
 	}
 }

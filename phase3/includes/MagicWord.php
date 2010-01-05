@@ -64,6 +64,7 @@ class MagicWord {
 		'server',
 		'servername',
 		'scriptpath',
+		'stylepath',
 		'pagename',
 		'pagenamee',
 		'fullpagename',
@@ -230,6 +231,14 @@ class MagicWord {
 		return self::$mDoubleUnderscoreArray;
 	}
 
+	/**
+	 * Clear the self::$mObjects variable
+	 * For use in parser tests
+	 */
+	public static function clearCache() {
+		self::$mObjects = array();
+	}
+
 	# Initialises this object with an ID
 	function load( $id ) {
 		global $wgContLang;
@@ -309,16 +318,16 @@ class MagicWord {
 	}
 
 	/**
-	 * Returns true if the text contains the word
-	 * @return bool
+	 * Returns the number of times the text contains the word
+	 * @return int
 	 */
 	function match( $text ) {
 		return preg_match( $this->getRegex(), $text );
 	}
 
 	/**
-	 * Returns true if the text starts with the word
-	 * @return bool
+	 * Returns if the text starts with the word
+	 * @return int
 	 */
 	function matchStart( $text ) {
 		return preg_match( $this->getRegexStart(), $text );
@@ -334,7 +343,7 @@ class MagicWord {
 		$matches = array();
 		$matchcount = preg_match( $this->getVariableStartToEndRegex(), $text, $matches );
 		if ( $matchcount == 0 ) {
-			return NULL;
+			return null;
 		} else {
 			# multiple matched parts (variable match); some will be empty because of
 			# synonyms. The variable will be the second non-empty one so remove any

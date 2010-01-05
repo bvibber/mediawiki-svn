@@ -13,6 +13,25 @@ function wfSpecialWatchlist( $par ) {
 	global $wgUser, $wgOut, $wgLang, $wgRequest;
 	global $wgRCShowWatchingUsers, $wgEnotifWatchlist, $wgShowUpdatedMarker;
 	global $wgEnotifWatchlist;
+	
+	// Add feed links
+	$wlToken = $wgUser->getOption( 'watchlisttoken' );
+	if (!$wlToken) {
+		$wlToken = sha1( mt_rand() . microtime( true ) );
+		$wgUser->setOption( 'watchlisttoken', $wlToken );
+		$wgUser->saveSettings();
+	}
+	
+	global $wgServer, $wgScriptPath, $wgFeedClasses;
+	$apiParams = array( 'action' => 'feedwatchlist', 'allrev' => 'allrev',
+						'wlowner' => $wgUser->getName(), 'wltoken' => $wlToken );
+	$feedTemplate = wfScript('api').'?';
+	
+	foreach( $wgFeedClasses as $format => $class ) {
+		$theseParams = $apiParams + array( 'feedformat' => $format );
+		$url = $feedTemplate . wfArrayToCGI( $theseParams );
+		$wgOut->addFeedLink( $format, $url );
+	}
 
 	$skin = $wgUser->getSkin();
 	$specialTitle = SpecialPage::getTitleFor( 'Watchlist' );
@@ -289,6 +308,8 @@ function wfSpecialWatchlist( $par ) {
 	$form .= Xml::closeElement( 'form' );
 	$form .= Xml::closeElement( 'fieldset' );
 	$wgOut->addHTML( $form );
+
+	$wgOut->addHTML( ChangesList::flagLegend() );
 
 	# If there's nothing to show, stop here
 	if( $numRows == 0 ) {

@@ -269,7 +269,6 @@ $messages = array(
 'aboutsite'            => 'Informaçioin in scia {{SITENAME}}',
 'aboutpage'            => 'Project:Informassioîn',
 'copyright'            => 'O contegnûo o se peu trovâ a $1.',
-'copyrightpagename'    => "Diritti d'autô de {{SITENAME}}",
 'copyrightpage'        => "{{ns:project}}:Diritti d'autô",
 'currentevents'        => 'Attualitæ',
 'currentevents-url'    => 'Project:Attualitæ',
@@ -352,10 +351,10 @@ O to account o l'è stæto creoö. Non te ascordà de cangiâ e toe preferençe 
 'userlogin'                  => 'Intra / Registrate',
 'logout'                     => 'Sciorti',
 'userlogout'                 => 'Sciorti',
-'nologin'                    => "No ti g'hæ ancon accesso? $1.",
+'nologin'                    => "No ti g'hæ ancon accesso? '''$1'''.",
 'nologinlink'                => "Creâ 'n conto",
 'createaccount'              => "Creâ 'n nêuvo conto",
-'gotaccount'                 => "Ti g'hæ zà 'n conto d'accesso? $1.",
+'gotaccount'                 => "Ti g'hæ zà 'n conto d'accesso? '''$1'''.",
 'gotaccountlink'             => 'Intra',
 'badretype'                  => "E paròlle d'ordine che t'hæ scrîo son despægie.",
 'userexists'                 => "O nomme d'ûtente inserîo o l'è zà in ûso.<br />
@@ -535,10 +534,9 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 'searchresults'         => 'Resultati da reçerca',
 'searchsubtitle'        => "Ti t'è çercoö '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Ti t'è çercoö '''$1'''",
-'noexactmatch'          => "'''No gh'è nisciûnn-a paggina c'a se ciamme \"\$1\".''' O se pêu [[:\$1|creâla òua]].",
 'prevn'                 => 'Preçedenti {{PLURAL:$1|$1}}',
 'nextn'                 => 'Proscima {{PLURAL:$1|$1}}',
-'viewprevnext'          => 'Veddi ($1) ($2) ($3).',
+'viewprevnext'          => 'Veddi ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'        => 'Help:Contegnûi',
 'powersearch'           => 'Çerca',
 
@@ -614,7 +612,8 @@ E paggine in osservassion son dipinte in '''grascietto'''.",
 'filesource'           => 'Reixe:',
 'uploadedfiles'        => 'Papê caregæ',
 'badfilename'          => 'O nomme do papê o l\'è stæto cangioö in "$1".',
-'fileexists'           => "Un papê co sto nomme o existe de zà, pe piaxei da unn'euggiâ a '''<tt>$1</tt>''' se non ti tei seguo de voleilo cangiâ.",
+'fileexists'           => "Un papê co sto nomme o existe de zà, pe piaxei da unn'euggiâ a '''<tt>[[:$1]]</tt>''' se non ti tei seguo de voleilo cangiâ.
+[[$1|thumb]]",
 'fileexists-forbidden' => 'Un papê co sto nomme o existe de zà, pe piaxei vanni in derrê e carega sto papê co un ätro nomme. [[File:$1|thumb|center|$1]]',
 'savefile'             => 'Sarva o papê',
 'uploadedimage'        => 'O s\'ha caregòu "[[$1]]"',
@@ -626,8 +625,9 @@ E paggine in osservassion son dipinte in '''grascietto'''.",
 
 'upload-file-error' => 'Errô interno',
 
-'license'   => 'Permisso:',
-'nolicense' => 'Nisciûnn-a liçensa indicâa',
+'license'        => 'Permisso:',
+'license-header' => 'Permisso:',
+'nolicense'      => 'Nisciûnn-a liçensa indicâa',
 
 # Special:ListFiles
 'listfiles_search_for' => "Çerca pe nomme de l'imàgine:",
@@ -828,7 +828,6 @@ L'ûrtimo cangiamento o ghe l'à fæto [[User:$3|$3]] ([[User talk:$3|Ciæti]]).
 'protectexpiry'               => 'Scadensa:',
 'protect_expiry_invalid'      => 'Scadensa invalida.',
 'protect_expiry_old'          => 'Data de scadensa into passòu.',
-'protect-unchain'             => 'Scollegâ i permissi de stramûo',
 'protect-text'                => "Chì o l'è poscibbile vedde e modificâ o livello de protession pe-a paggina '''<nowiki>$1</nowiki>'''.",
 'protect-locked-access'       => "No ti g'hæ permisso pe modificâ i livelli de protession da paggina.
 Queste son e impostassioîn correnti pe 'sta paggina ('''$1'''):",

@@ -22,7 +22,7 @@ class BitmapHandler extends ImageHandler {
 		# JPEG has the handy property of allowing thumbnailing without full decompression, so we make
 		# an exception for it.
 		if ( $mimeType !== 'image/jpeg' &&
-			$srcWidth * $srcHeight > $wgMaxImageArea )
+			$this->getImageArea( $image, $srcWidth, $srcHeight ) > $wgMaxImageArea )
 		{
 			return false;
 		}
@@ -39,6 +39,13 @@ class BitmapHandler extends ImageHandler {
 
 		return true;
 	}
+	
+	
+	// Function that returns the number of pixels to be thumbnailed.
+	// Intended for animated GIFs to multiply by the number of frames.
+	function getImageArea( $image, $width, $height ) {
+		return $width * $height;
+	}
 
 	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		global $wgUseImageMagick, $wgImageMagickConvertCommand, $wgImageMagickTempDir;
@@ -53,6 +60,7 @@ class BitmapHandler extends ImageHandler {
 		$physicalHeight = $params['physicalHeight'];
 		$clientWidth = $params['width'];
 		$clientHeight = $params['height'];
+		$descriptionUrl = isset( $params['descriptionUrl'] ) ? "File source: ". $params['descriptionUrl'] : '';
 		$srcWidth = $image->getWidth();
 		$srcHeight = $image->getHeight();
 		$mimeType = $image->getMimeType();
@@ -147,6 +155,7 @@ class BitmapHandler extends ImageHandler {
 				// or ImageMagick may decide your ratio is wrong and slice off
 				// a pixel.
 				" -thumbnail " . wfEscapeShellArg( "{$physicalWidth}x{$physicalHeight}!" ) .
+				" -set comment " . wfEscapeShellArg( "{$descriptionUrl}" ) .
 				" -depth 8 $sharpen " .
 				wfEscapeShellArg($dstPath) . " 2>&1";
 			wfDebug( __METHOD__.": running ImageMagick: $cmd\n");

@@ -111,7 +111,6 @@ $messages = array(
 'aboutsite'            => 'Tokante {{SITENAME}}',
 'aboutpage'            => 'Project:Info',
 'copyright'            => 'E kontenido ta disponibel bou di $1.',
-'copyrightpagename'    => '{{SITENAME}} derecho di outor',
 'copyrightpage'        => '{{ns:project}}:Derechinan di outor',
 'currentevents'        => 'Eventonan aktual',
 'currentevents-url'    => 'Project:Eventonan aktual',
@@ -152,9 +151,9 @@ $messages = array(
 
 # Main script and global functions
 'nosuchspecialpage' => 'E página spesial no ta eksistí',
-'nospecialpagetext' => "<big>'''Bo a pidi un página spesial inválido.'''</big>
+'nospecialpagetext' => '<strong>Bo a pidi un página spesial inválido.</strong>
 
-Bo por haña un lista di tur [[Special:SpecialPages|{{int:specialpages}}]].",
+Bo por haña un lista di tur [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'         => 'Eror',

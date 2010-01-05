@@ -21,10 +21,10 @@ if( !defined( 'MEDIAWIKI' ) )
 class SkinMonoBook extends SkinTemplate {
 	/** Using monobook. */
 	var $skinname = 'monobook', $stylename = 'monobook',
-		$template = 'MonoBookTemplate';
+		$template = 'MonoBookTemplate', $useHeadElement = true;
 
 	function setupSkinUserCss( OutputPage $out ) {
-		global $wgHandheldStyle;
+		global $wgHandheldStyle, $wgStyleVersion, $wgJsMimeType, $wgStylePath;
 
 		parent::setupSkinUserCss( $out );
 
@@ -42,28 +42,13 @@ class SkinMonoBook extends SkinTemplate {
 
 		$out->addStyle( 'monobook/rtl.css', 'screen', '', 'rtl' );
 
-
-		//@@todo we can move this to the parent once we update all skins
-		if( isset( $this->pagecss ) &&  $this->pagecss)
-			$out->addInlineStyle( $this->pagecss );
-
-		if( isset( $this->usercss ) &&  $this->usercss)
-			$out->addInlineStyle( $this->usercss );
-
-	}
-	function setupSkinUserJs( OutputPage $out ) {
-		parent::setupSkinUserJs( $out );
-		$out->addScriptFile( 'wikibits.js' );
-
-		//@@todo can move to parent once we update all skins (to not include things twice
-		if( isset( $this->jsvarurl ) && $this->jsvarurl)
-			$out->addScriptFile( $this->jsvarurl );
-
-		if( isset( $this->userjs ) && $this->userjs)
-			$out->addScriptFile( $this->userjs );
-
-		if( isset( $this->userjsprev ) && $this->userjsprev)
-			$out->addInlineScript( $this->userjsprev );
+		# FIXME: What is this?  Should it apply to all skins?
+		$path = htmlspecialchars( $wgStylePath );
+		$out->addScript( <<<HTML
+<!--[if lt IE 7]><script type="$wgJsMimeType" src="$path/common/IEFixes.js?$wgStyleVersion"></script>
+	<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+HTML
+		);
 	}
 }
 
@@ -82,22 +67,15 @@ class MonoBookTemplate extends QuickTemplate {
 	 * @access private
 	 */
 	function execute() {
-		global $wgRequest, $wgOut, $wgStyleVersion, $wgJsMimeType, $wgStylePath;
+		global $wgRequest;
+
 		$this->skin = $skin = $this->data['skin'];
 		$action = $wgRequest->getText( 'action' );
 
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
-		# FIXME: What is this?  Should it apply to all skins?
-		$path = htmlspecialchars( $wgStylePath );
-		$wgOut->addScript( <<<HTML
-<!--[if lt IE 7]><script type="$wgJsMimeType" src="$path/common/IEFixes.js?$wgStyleVersion"></script>
-	<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
-HTML
-		);
 
-		echo $wgOut->headElement( $this->skin );
-
+		$this->html( 'headelement' );
 ?><body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
 <?php if($this->data['body_onload']) { ?> onload="<?php $this->text('body_onload') ?>"<?php } ?>
  class="mediawiki <?php $this->text('dir'); $this->text('capitalizeallnouns') ?> <?php $this->text('pageclass') ?> <?php $this->text('skinnameclass') ?>">
@@ -245,17 +223,23 @@ HTML
 	<div id="p-search" class="portlet">
 		<h5 <?php $this->html('userlangattributes') ?>><label for="searchInput"><?php $this->msg('search') ?></label></h5>
 		<div id="searchBody" class="pBody">
-			<form action="<?php $this->text('wgScript') ?>" id="searchform"><div>
+			<form action="<?php $this->text('wgScript') ?>" id="searchform">
 				<input type='hidden' name="title" value="<?php $this->text('searchtitle') ?>"/>
-				<input id="searchInput" name="search" type="text"<?php echo $this->skin->tooltipAndAccesskey('search');
-					if( isset( $this->data['search'] ) &&  $this->data['search'] ) {
-						?> value="<?php $this->text('search') ?>"<?php } ?> />
+				<?php
+		echo Html::input( 'search',
+			isset( $this->data['search'] ) ? $this->data['search'] : '', 'search',
+			array(
+				'id' => 'searchInput',
+				'title' => $this->skin->titleAttrib( 'search' ),
+				'accesskey' => $this->skin->accesskey( 'search' )
+			) ); ?>
+
 				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="<?php $this->msg('searcharticle') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-go' ); ?> /><?php if ($wgUseTwoButtonsSearchForm) { ?>&nbsp;
 				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="<?php $this->msg('searchbutton') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?> /><?php } else { ?>
 
 				<div><a href="<?php $this->text('searchaction') ?>" rel="search"><?php $this->msg('powersearch-legend') ?></a></div><?php } ?>
 
-			</div></form>
+			</form>
 		</div>
 	</div>
 <?php

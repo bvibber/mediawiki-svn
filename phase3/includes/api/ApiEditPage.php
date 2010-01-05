@@ -56,8 +56,9 @@ class ApiEditPage extends ApiBase {
 			$this->dieUsageMsg(array('sessionfailure'));
 
 		$titleObj = Title::newFromText($params['title']);
-		if(!$titleObj)
+		if(!$titleObj || $titleObj->isExternal())
 			$this->dieUsageMsg(array('invalidtitle', $params['title']));
+			
 		// Some functions depend on $wgTitle == $ep->mTitle
 		global $wgTitle;
 		$wgTitle = $titleObj;
@@ -180,7 +181,7 @@ class ApiEditPage extends ApiBase {
 				break;
 			case 'preferences':
 				if ($titleObj->exists())
-					$watch = $wgUser->getOption('watchdefault');
+					$watch = $wgUser->getOption('watchdefault') || $titleObj->userIsWatching();
 				else
 					$watch = $wgUser->getOption('watchcreations');
 				break;
@@ -190,15 +191,9 @@ class ApiEditPage extends ApiBase {
 		}
 		// Deprecated parameters
 		if ($params['watch']) 
-		{
 			$watch = true;
-			$this->setWarning('The watch parameter has been deprecated.');
-		}
 		elseif ($params['unwatch']) 
-		{
 			$watch = false;
-			$this->setWarning('The unwatch parameter has been deprecated.');
-		}
 		
 		if($watch)
 			$reqArr['wpWatchthis'] = '';
@@ -214,7 +209,7 @@ class ApiEditPage extends ApiBase {
 		if(!is_null($params['captchaword']))
 			$wgRequest->setVal( 'wpCaptchaWord', $params['captchaword'] );
 		$r = array();
-		if(!wfRunHooks('APIEditBeforeSave', array(&$ep, $ep->textbox1, &$r)))
+		if(!wfRunHooks('APIEditBeforeSave', array($ep, $ep->textbox1, &$r)))
 		{
 			if(count($r))
 			{
@@ -274,10 +269,6 @@ class ApiEditPage extends ApiBase {
 			#case EditPage::AS_SUMMARY_NEEDED: Can't happen since we set wpIgnoreBlankSummary
 			case EditPage::AS_TEXTBOX_EMPTY:
 				$this->dieUsageMsg(array('emptynewsection'));
-			case EditPage::AS_END:
-				# This usually means some kind of race condition
-				# or DB weirdness occurred. Throw an unknown error here.
-				$this->dieUsageMsg(array('unknownerror'));
 			case EditPage::AS_SUCCESS_NEW_ARTICLE:
 				$r['new'] = '';
 			case EditPage::AS_SUCCESS_UPDATE:
@@ -300,6 +291,14 @@ class ApiEditPage extends ApiBase {
 						$newArticle->getTimestamp());
 				}
 				break;
+			case EditPage::AS_END:
+				# This usually means some kind of race condition
+				# or DB weirdness occurred. Fall through to throw an unknown 
+				# error.
+				
+				# This needs fixing higher up, as Article::doEdit should be 
+				# used rather than Article::updateArticle, so that specific
+				# error conditions can be returned
 			default:
 				$this->dieUsageMsg(array('unknownerror', $retval));
 		}
@@ -335,8 +334,14 @@ class ApiEditPage extends ApiBase {
 			'nocreate' => false,
 			'captchaword' => null,
 			'captchaid' => null,
-			'watch' => false,
-			'unwatch' => false,
+			'watch' => array(
+				ApiBase :: PARAM_DFLT => false,
+				ApiBase :: PARAM_DEPRECATED => true,
+			),
+			'unwatch' => array(
+				ApiBase :: PARAM_DFLT => false,
+				ApiBase :: PARAM_DEPRECATED => true,
+			),
 			'watchlist' => array(
 				ApiBase :: PARAM_DFLT => 'preferences',
 				ApiBase :: PARAM_TYPE => array(
@@ -377,8 +382,8 @@ class ApiEditPage extends ApiBase {
 			'recreate' => 'Override any errors about the article having been deleted in the meantime',
 			'createonly' => 'Don\'t edit the page if it exists already',
 			'nocreate' => 'Throw an error if the page doesn\'t exist',
-			'watch' => 'DEPRECATED! Add the page to your watchlist',
-			'unwatch' => 'DEPRECATED! Remove the page from your watchlist',
+			'watch' => 'Add the page to your watchlist',
+			'unwatch' => 'Remove the page from your watchlist',
 			'watchlist' => 'Unconditionally add or remove the page from your watchlist, use preferences or do not change watch',
 			'captchaid' => 'CAPTCHA ID from previous request',
 			'captchaword' => 'Answer to the CAPTCHA',

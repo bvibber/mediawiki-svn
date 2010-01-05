@@ -43,7 +43,7 @@ class Xml {
 	 */
 	public static function expandAttributes( $attribs ) {
 		$out = '';
-		if( is_null( $attribs ) ) {
+		if( empty( $attribs ) ) {
 			return null;
 		} elseif( is_array( $attribs ) ) {
 			foreach( $attribs as $name => $val )
@@ -56,7 +56,7 @@ class Xml {
 
 	/**
 	 * Format an XML element as with self::element(), but run text through the
-	 * UtfNormal::cleanUp() validator first to ensure that no invalid UTF-8
+	 * $wgContLang->normalize() validator first to ensure that no invalid UTF-8
 	 * is passed.
 	 *
 	 * @param $element String:
@@ -65,12 +65,13 @@ class Xml {
 	 * @return string
 	 */
 	public static function elementClean( $element, $attribs = array(), $contents = '') {
+		global $wgContLang;
 		if( $attribs ) {
 			$attribs = array_map( array( 'UtfNormal', 'cleanUp' ), $attribs );
 		}
 		if( $contents ) {
 			wfProfileIn( __METHOD__ . '-norm' );
-			$contents = UtfNormal::cleanUp( $contents );
+			$contents = $wgContLang->normalize( $contents );
 			wfProfileOut( __METHOD__ . '-norm' );
 		}
 		return self::element( $element, $attribs, $contents );
@@ -162,12 +163,12 @@ class Xml {
 	public static function monthSelector( $selected = '', $allmonths = null, $id = 'month' ) {
 		global $wgLang;
 		$options = array();
-	    if( is_null( $selected ) )
+		if( is_null( $selected ) )
 			$selected = '';
-	    if( !is_null( $allmonths ) )
+		if( !is_null( $allmonths ) )
 			$options[] = self::option( wfMsg( 'monthsall' ), $allmonths, $selected === $allmonths );
 		for( $i = 1; $i < 13; $i++ )
-				$options[] = self::option( $wgLang->getMonthName( $i ), $i, $selected === $i );
+			$options[] = self::option( $wgLang->getMonthName( $i ), $i, $selected === $i );
 		return self::openElement( 'select', array( 'id' => $id, 'name' => 'month', 'class' => 'mw-month-selector' ) )
 			. implode( "\n", $options )
 			. self::closeElement( 'select' );
@@ -398,17 +399,10 @@ class Xml {
 	}
 
 	/**
-	 * Convenience function to build an HTML hidden form field.
-	 * @param $name String: name attribute for the field
-	 * @param $value String: value for the hidden field
-	 * @param $attribs Array: optional custom attributes
-	 * @return string HTML
+	 * @deprecated Synonymous to Html::hidden()
 	 */
-	public static function hidden( $name, $value, $attribs=array() ) {
-		return self::element( 'input', array(
-			'name' => $name,
-			'type' => 'hidden',
-			'value' => $value ) + $attribs );
+	public static function hidden( $name, $value, $attribs = array() ) {
+		return Html::hidden( $name, $value, $attribs );
 	}
 
 	/**
@@ -574,7 +568,10 @@ class Xml {
 			$s = 'null';
 		} elseif ( is_int( $value ) ) {
 			$s = $value;
-		} elseif ( is_array( $value ) ) {
+		} elseif ( is_array( $value ) && // Make sure it's not associative.
+					array_keys($value) === range( 0, count($value) - 1 ) ||
+					count($value) == 0
+				) {
 			$s = '[';
 			foreach ( $value as $elt ) {
 				if ( $s != '[' ) {
@@ -583,7 +580,8 @@ class Xml {
 				$s .= self::encodeJsVar( $elt );
 			}
 			$s .= ']';
-		} elseif ( is_object( $value ) ) {
+		} elseif ( is_object( $value ) || is_array( $value ) ) {
+			// Objects and associative arrays
 			$s = '{';
 			foreach ( (array)$value as $name => $elt ) {
 				if ( $s != '{' ) {
@@ -717,6 +715,7 @@ class Xml {
 	
 	/**
 	 * Build a row for a table
+	 * @param $attribs An array of attributes to apply to the tr tag
 	 * @param $cells An array of strings to put in <td>
 	 * @return string
 	 */

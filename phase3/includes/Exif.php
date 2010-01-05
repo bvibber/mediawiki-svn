@@ -558,7 +558,7 @@ class Exif {
 	 * @param $fname String:
 	 * @param $action Mixed: , default NULL.
 	 */
-	function debug( $in, $fname, $action = NULL ) {
+	function debug( $in, $fname, $action = null ) {
 		if ( !$this->log ) {
 			return;
 		}
@@ -1043,6 +1043,14 @@ class FormatExif {
 					$this->formatNum( $val ) );
 				break;
 
+			// Do not transform fields with pure text.
+			// For some languages the formatNum() conversion results to wrong output like
+			// foo,bar@example,com or foo٫bar@example٫com
+			case 'ImageDescription':
+			case 'Artist':
+			case 'Copyright':
+				$tags[$tag] = htmlspecialchars( $val );
+				break;
 			default:
 				$tags[$tag] = $this->formatNum( $val );
 				break;

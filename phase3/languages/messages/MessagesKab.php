@@ -222,7 +222,6 @@ $messages = array(
 'aboutsite'            => 'Awal ɣef {{SITENAME}}',
 'aboutpage'            => 'Project:Awal ɣef...',
 'copyright'            => 'Tzemreḍ ad twaliḍ ayen yella deg $1.',
-'copyrightpagename'    => 'Copyright n {{SITENAME}}',
 'currentevents'        => 'Isallen',
 'currentevents-url'    => 'Project:Isallen',
 'disclaimers'          => 'Iɣtalen',
@@ -327,8 +326,10 @@ Query: $2',
 'cascadeprotected'     => 'Asebter-agi yettwaḥrez seg ubeddil, axaṭer yettusekcem deg isebtar i ttwaḥerzen ula d nutni (acercur), ahaten:',
 
 # Login and logout pages
-'logouttext'                 => "'''Tura teffɣeḍ.'''<br />
-Tzemreḍ ad tesseqdceḍ {{SITENAME}} d udrig, neɣ tzemreḍ ad tkecmeḍ daɣen s yisem n wemseqdac inek (neɣ nniḍen). Kra n isebtar zemren ad sskanen belli mazal-ik s yisem n wemseqdac inek armi temḥuḍ lkac.",
+'logouttext'                 => "'''Tura teffɣeḍ.'''
+
+Tzemreḍ ad tesseqdceḍ {{SITENAME}} d udrig, neɣ tzemreḍ ad tkecmeḍ daɣen s yisem n wemseqdac inek (neɣ nniḍen).
+Kra n isebtar zemren ad sskanen belli mazal-ik s yisem n wemseqdac inek armi temḥuḍ lkac.",
 'welcomecreation'            => '== Anṣuf yis-k, $1! ==
 
 Isem n wemseqdac inek yettwaxleq. Ur tettuḍ ara ad tbeddleḍ Isemyifiyen n {{SITENAME}} inek.',
@@ -345,10 +346,10 @@ Isem n wemseqdac inek yettwaxleq. Ur tettuḍ ara ad tbeddleḍ Isemyifiyen n {{
 'logout'                     => 'Ffeɣ',
 'userlogout'                 => 'Ffeɣ',
 'notloggedin'                => 'Ur tekcimeḍ ara',
-'nologin'                    => 'Ur tesɛiḍ ara isem n wemseqdac? $1.',
+'nologin'                    => "Ur tesɛiḍ ara isem n wemseqdac? '''$1'''.",
 'nologinlink'                => 'Xleq isem n wemseqdac',
 'createaccount'              => 'Xleq isem n wemseqdac',
-'gotaccount'                 => 'Tesɛiḍ yagi isem n wemseqdac? $1.',
+'gotaccount'                 => "Tesɛiḍ yagi isem n wemseqdac? '''$1'''.",
 'gotaccountlink'             => 'Kcem',
 'createaccountmail'          => 's e-mail',
 'badretype'                  => 'Awal n tbaḍnit amezwaru d wis sin mačči d kif-kif.',
@@ -470,7 +471,8 @@ Ma tɣelṭeḍ, wekki kan ɣef tqeffalt "Back/Précédent" n browser/explorateu
 'anontalkpagetext'          => "----''Wagi d asebter n umyennan n wemseqdac adrig. Ihi, yessef ad as nefk ID, nesseqdac tansa IP ines akken a t-neɛqel. Tansa IP nni ahat tettuseqdac sɣur aṭṭas n yimdanen. Lukan ula d kečč aqla-k amseqdac adrig u ur tebɣiḍ ara ad tettwabcreḍ izen am wigini, ihi [[Special:UserLogin|xleq isem n wemseqdac neɣ kcem]].''",
 'noarticletext'             => 'Ulac aḍris deg usebter-agi, tzemreḍ ad [[Special:Search/{{PAGENAME}}|tnadiḍ ɣef wezwel n usebter-agi]] deg isebtar wiyaḍ neɣ [{{fullurl:{{FULLPAGENAME}}|action=edit}} tettbeddileḍ asebter-agi].',
 'clearyourcache'            => "'''Tamawt:''' Beɛd asmekti, ahat yessefk ad temḥuḍ lkac n browser/explorateur inek akken teẓriḍ ibeddlen. '''Mozilla / Firefox / Safari:''' qqim twekkiḍ ''Shift'' u wekki ɣef ''Reload/Recharger'', neɣ wekki ɣef ''Ctrl-Shift-R'' (''Cmd-Shift-R'' deg Apple Mac); '''IE:''' qqim twekkiḍ ɣef ''Ctrl'' u wekki ɣef ''Refresh/Actualiser'', neɣ wekki ɣef ''Ctrl-F5''; '''Konqueror:''': wekki kan ɣef taqeffalt ''Reload'', neɣ wekki ɣef ''F5''; '''Opera''' yessefk ad tesseqdceḍ ''Tools→Preferences/Outils→Préférences'' akken ad temḥud akk lkac.",
-'usercssjsyoucanpreview'    => "'''Tixidest:''' Sseqdec taqeffalt 'Ssken pre-timeẓriwt' iwakken ad tɛerḍeḍ CSS/JS amynut inek uqbel ad tesmektiḍ.",
+'usercssyoucanpreview'      => "'''Tixidest:''' Sseqdec taqeffalt 'Ssken pre-timeẓriwt' iwakken ad tɛerḍeḍ CSS amynut inek uqbel ad tesmektiḍ.",
+'userjsyoucanpreview'       => "'''Tixidest:''' Sseqdec taqeffalt 'Ssken pre-timeẓriwt' iwakken ad tɛerḍeḍ JS amynut inek uqbel ad tesmektiḍ.",
 'usercsspreview'            => "'''Smekti belli aql-ak twaliḍ CSS inek kan, mazal ur yettusmekti ara!'''",
 'userjspreview'             => "'''Smekti belli aql-ak tɛerḍeḍ JavaScript inek kan, mazal ur yettusmekti ara!'''",
 'userinvalidcssjstitle'     => '\'\'\'Aɣtal:\'\'\' Aglim "$1" ulac-it. Ur tettuḍ ara belli isebtar ".css" d ".js" i txedmeḍ sseqdacen azwel i yesɛan isekkilen imecṭuḥen, s umedya: {{ns:user}}:Foo/monobook.css akk d {{ns:user}}:Foo/Monobook.css.',
@@ -584,12 +586,12 @@ meɛna imuren seg-sen zemren imdanen a ten-ẓren.'''
 Inedbalen wiyaḍ deg wiki-yagi zemren ad ẓren imuren i yettwafren u zemren a ten-mḥan, ḥaca ma llan icekkilen.",
 'revdelete-legend'            => 'Eg icekkilen',
 'revdelete-hide-text'         => 'Ffer aḍris n tsiwelt',
+'revdelete-hide-image'        => 'Ffer ayen yellan deg ufaylu',
 'revdelete-hide-name'         => 'Ffer tigawt d nnican',
 'revdelete-hide-comment'      => 'Ffer abeddel n uwennit',
 'revdelete-hide-user'         => 'Ffer Isem n wemseqdac/IP n umeskar',
 'revdelete-hide-restricted'   => 'Eg icekkilen i inedbalen d yimdanen wiyaḍ',
 'revdelete-suppress'          => 'Kkes talɣut seg inedbalen d yimdanen wiyaḍ',
-'revdelete-hide-image'        => 'Ffer ayen yellan deg ufaylu',
 'revdelete-unsuppress'        => 'Kkes icekkilen ɣef tisiwal i yuɣalen-d',
 'revdelete-log'               => 'Awennit n uɣmis:',
 'revdelete-submit'            => 'Eg-it i tasiwelt tettwafren',
@@ -610,14 +612,13 @@ Inedbalen wiyaḍ deg wiki-yagi zemren ad ẓren imuren i yettwafren u zemren a 
 'searchresulttext'      => 'Akken ad tessneḍ amek ara tnadiḍ deg {{SITENAME}}, ẓer [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Tnadiḍ ɣef '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Tnadiḍ ɣef '''$1'''",
-'noexactmatch'          => "'''Asebter s yisem \"\$1\" ulac-it.''' Tzemreḍ ad [[:\$1|txelqeḍ asebter-agi]].",
 'titlematches'          => 'Ayen yecban azwel n umegrad',
 'notitlematches'        => 'Ulac ayen yecban azwel n umegrad',
 'textmatches'           => 'Ayen yecban azwel n usebter',
 'notextmatches'         => 'ulac ayen yecban azwel n usebter',
 'prevn'                 => '{{PLURAL:$1|$1}} ssabeq',
 'nextn'                 => '{{PLURAL:$1|$1}} ameḍfir',
-'viewprevnext'          => 'Ẓer ($1) ($2) ($3).',
+'viewprevnext'          => 'Ẓer ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'        => 'Help:Agbur',
 'showingresults'        => "Tamuli n {{PLURAL:$1|'''Yiwen''' wegmud|'''$1''' n yigmad}} seg  #'''$2'''.",
 'showingresultsnum'     => "Tamuli n {{PLURAL:$3|'''Yiwen''' wegmud|'''$3''' n yigmad}} seg  #'''$2'''.",
@@ -741,7 +742,6 @@ i yesɛan akk awalen i banen-d).",
 # Upload
 'upload'                      => 'Azen afaylu',
 'uploadbtn'                   => 'Azen afaylu',
-'reupload'                    => 'Ɛiwed azen',
 'reuploaddesc'                => 'Uɣal-d ar talɣa n tuznin.',
 'uploadnologin'               => 'Ur tekcimeḍ ara',
 'uploadnologintext'           => 'Yessefk [[Special:UserLogin|ad tkecmeḍ]]
@@ -772,13 +772,14 @@ Akken ad tessekcmeḍ tugna deg usebter, seqdec azay am wagi
 'large-file'                  => 'Ilaq tiddi n ufayluwen ur tettili kter n $1; tiddi n ufaylu-agi $2.',
 'largefileserver'             => 'Afaylu meqqer aṭṭas, server ur t-yeqbil ara.',
 'emptyfile'                   => 'Afaylu i tazneḍ d ilem. Waqila tɣelṭeḍ deg isem-is. G leɛnayek ssenqed-it.',
-'fileexists'                  => "Afaylu s yisem-agi yewǧed yagi, ssenqed '''<tt>$1</tt>''' ma telliḍ mačči meḍmun akken a t-tbeddleḍ.",
-'fileexists-extension'        => "Afaylu s yisem-agi yewǧed:<br />
-Isem n ufaylu i tazneḍ: '''<tt>\$1</tt>'''<br />
-Isem n ufaylu i yewǧed: '''<tt>\$2</tt>'''<br />
+'fileexists'                  => "Afaylu s yisem-agi yewǧed yagi, ssenqed '''<tt>[[:$1]]</tt>''' ma telliḍ mačči meḍmun akken a t-tbeddleḍ.
+[[$1|thumb]]",
+'fileexists-extension'        => "Afaylu s yisem-agi yewǧed: [[\$2|thumb]]
+* Isem n ufaylu i tazneḍ: '''<tt>[[:\$1]]</tt>'''
+* Isem n ufaylu i yewǧed: '''<tt>[[:\$2]]</tt>'''
 Amgirred i yella kan deg isekkilen imecṭuḥen/imeqqranen deg taseggiwit (am \".jpg\"/\".jPg\"). G leɛnayek ssenqed-it.",
-'fileexists-thumb'            => "<center>'''Tugna i tewǧed'''</center>",
-'fileexists-thumbnail-yes'    => "Iban-d belli tugna-nni d tugna tamecṭuht n tugna nniḍen ''(thumbnail)''. G leɛnayek ssenqed tugna-agi '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Iban-d belli tugna-nni d tugna tamecṭuht n tugna nniḍen ''(thumbnail)''. [[$1|thumb]]
+G leɛnayek ssenqed tugna-agi '''<tt>[[:$1]]</tt>'''.
 Ma llant kif-kif ur tt-taznepd ara.",
 'file-thumbnail-no'           => "Isem n tugna yebda s '''<tt>$1</tt>'''. Waqila tugna-nni d tugna tamecṭuht n tugna nniḍen ''(thumbnail)''.
 Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.",
@@ -812,6 +813,7 @@ Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.
 'upload-curl-error28-text' => 'Adeg n internet-agi iɛetṭel aṭas. G leɛnayek ssenqed adeg-nni, ggun cwiṭ umbeɛd ɛreḍ tikelt nniḍen.',
 
 'license'            => 'Turagt',
+'license-header'     => 'Turagt',
 'nolicense'          => 'Ur textareḍ acemma',
 'upload_source_url'  => ' (URL saḥiḥ)',
 'upload_source_file' => ' (afaylu deg uselkim inek)',
@@ -1051,7 +1053,7 @@ Ur yelli ara email n talɣut asmi llan ibeddlen deg usebter ala lukan teẓreḍ
 
 --
 Akken ad tbeddleḍ n wumuɣ n uɛessi inek settings, ruḥ ɣer
-{{fullurl:{{ns:special}}:Watchlist/edit}}
+{{fullurl:{{#special:Watchlist}}/edit}}
 
 Tadhelt:
 {{fullurl:{{MediaWiki:Helppage}}}}',

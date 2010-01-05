@@ -52,13 +52,6 @@ function &wfGetCache( $inputType ) {
 
 	if ( $type == CACHE_MEMCACHED ) {
 		if ( !array_key_exists( CACHE_MEMCACHED, $wgCaches ) ) {
-			if ( !class_exists( 'MemcachedClientforWiki' ) ) {
-				class MemCachedClientforWiki extends memcached {
-					function _debugprint( $text ) {
-						wfDebug( "memcached: $text" );
-					}
-				}
-			}
 			$wgCaches[CACHE_MEMCACHED] = new MemCachedClientforWiki(
 				array('persistant' => $wgMemCachedPersistent, 'compress_threshold' => 1500 ) );
 			$wgCaches[CACHE_MEMCACHED]->set_servers( $wgMemCachedServers );
@@ -91,7 +84,7 @@ function &wfGetCache( $inputType ) {
 
 	if ( $type == CACHE_DB || ( $inputType == CACHE_ANYTHING && $cache === false ) ) {
 		if ( !array_key_exists( CACHE_DB, $wgCaches ) ) {
-			$wgCaches[CACHE_DB] = new MediaWikiBagOStuff('objectcache');
+			$wgCaches[CACHE_DB] = new SqlBagOStuff('objectcache');
 		}
 		$cache =& $wgCaches[CACHE_DB];
 	}

@@ -5,8 +5,8 @@
  */
 function wfOutputHandler( $s ) {
 	global $wgDisableOutputCompression, $wgValidateAllHtml;
-    $s = wfMangleFlashPolicy( $s );
-    if ( $wgValidateAllHtml ) {
+	$s = wfMangleFlashPolicy( $s );
+	if ( $wgValidateAllHtml ) {
 		$headers = apache_response_headers();
 		$isHTML = true;
 		foreach ( $headers as $name => $value ) {
@@ -37,7 +37,7 @@ function wfOutputHandler( $s ) {
  * @private
  */
 function wfRequestExtension() {
-	/// @fixme -- this sort of dupes some code in WebRequest::getRequestUrl()
+	/// @todo Fixme: this sort of dupes some code in WebRequest::getRequestUrl()
 	if( isset( $_SERVER['REQUEST_URI'] ) ) {
 		// Strip the query string...
 		list( $path ) = explode( '?', $_SERVER['REQUEST_URI'], 2 );
@@ -78,7 +78,7 @@ function wfGzipHandler( $s ) {
 		$tokens = preg_split( '/[,; ]/', $_SERVER['HTTP_ACCEPT_ENCODING'] );
 		if ( in_array( 'gzip', $tokens ) ) {
 			header( 'Content-Encoding: gzip' );
-			$s = gzencode( $s, 3 );
+			$s = gzencode( $s, 6 );
 		}
 	}
 

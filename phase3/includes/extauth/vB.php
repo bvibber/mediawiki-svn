@@ -23,13 +23,14 @@
  * code, only reads from the database.  Example lines to put in
  * LocalSettings.php:
  *
- *   $wgExternalAuthType = 'vB';
+ *   $wgExternalAuthType = 'ExternalUser_vB';
  *   $wgExternalAuthConf = array(
  *       'server' => 'localhost',
  *       'username' => 'forum',
  *       'password' => 'udE,jSqDJ<""p=fI.K9',
  *       'dbname' => 'forum',
- *       'tableprefix' => ''
+ *       'tableprefix' => '',
+ *       'cookieprefix' => 'bb'
  *   );
  */
 class ExternalUser_vB extends ExternalUser {
@@ -43,24 +44,45 @@ class ExternalUser_vB extends ExternalUser {
 		return $this->initFromCond( array( 'userid' => $id ) );
 	}
 
-	# initFromCookie() not yet implemented
+	protected function initFromCookie() {
+		# Try using the session table.  It will only have a row if the user has
+		# an active session, so it might not always work, but it's a lot easier
+		# than trying to convince PHP to give us vB's $_SESSION.
+		global $wgExternalAuthConf;
+		if ( !isset( $wgExternalAuthConf['cookieprefix'] ) ) {
+			$prefix = 'bb';
+		} else {
+			$prefix = $wgExternalAuthConf['cookieprefix'];
+		}
+		if ( !isset( $_COOKIE["{$prefix}sessionhash"] ) ) {
+			return false;
+		}
+
+		$db = $this->getDb();
+
+		$row = $db->selectRow(
+			array( 'session', 'user' ),
+			$this->getFields(),
+			array(
+				'session.userid = user.userid',
+				'sessionhash' => $_COOKIE["{$prefix}sessionhash"]
+			),
+			__METHOD__
+		);
+		if ( !$row ) {
+			return false;
+		}
+		$this->mRow = $row;
+
+		return true;
+	}
 
 	private function initFromCond( $cond ) {
-		global $wgExternalAuthConf;
+		$db = $this->getDb();
 
-		$this->mDb = new Database(
-			$wgExternalAuthConf['server'],
-			$wgExternalAuthConf['username'],
-			$wgExternalAuthConf['password'],
-			$wgExternalAuthConf['dbname'],
-			false, 0,
-			$wgExternalAuthConf['tableprefix']
-		);
-
-		$row = $this->mDb->selectRow(
+		$row = $db->selectRow(
 			'user',
-			array( 'userid', 'username', 'password', 'salt', 'email', 'usergroupid',
-			'membergroupids' ),
+			$this->getFields(),
 			$cond,
 			__METHOD__
 		);
@@ -72,10 +94,29 @@ class ExternalUser_vB extends ExternalUser {
 		return true;
 	}
 
+	private function getDb() {
+		global $wgExternalAuthConf;
+		return new Database(
+			$wgExternalAuthConf['server'],
+			$wgExternalAuthConf['username'],
+			$wgExternalAuthConf['password'],
+			$wgExternalAuthConf['dbname'],
+			false, 0,
+			$wgExternalAuthConf['tableprefix']
+		);
+	}
+
+	private function getFields() {
+		return array( 'user.userid', 'username', 'password', 'salt', 'email',
+			'usergroupid', 'membergroupids' );
+	}
+
 	public function getId() { return $this->mRow->userid; }
 	public function getName() { return $this->mRow->username; }
 
 	public function authenticate( $password ) {
+		# vBulletin seemingly strips whitespace from passwords
+		$password = trim( $password );
 		return $this->mRow->password == md5( md5( $password )
 			. $this->mRow->salt );
 	}

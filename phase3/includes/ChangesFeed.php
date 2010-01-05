@@ -18,16 +18,16 @@ class ChangesFeed {
 			$feedTitle, htmlspecialchars( $description ), $wgTitle->getFullUrl() );
 	}
 
-	public function execute( $feed, $rows, $limit=0, $hideminor=false, $lastmod=false, $target='' ) {
+	public function execute( $feed, $rows, $limit=0, $hideminor=false, $lastmod=false, $target='', $namespace='' ) {
 		global $messageMemc, $wgFeedCacheTimeout;
-		global $wgSitename, $wgContLanguageCode;
+		global $wgSitename, $wgLang;
 
 		if ( !FeedUtils::checkFeedOutput( $this->format ) ) {
 			return;
 		}
 
 		$timekey = wfMemcKey( $this->type, $this->format, 'timestamp' );
-		$key = wfMemcKey( $this->type, $this->format, $limit, $hideminor, $target );
+		$key = wfMemcKey( $this->type, $this->format, $limit, $hideminor, $target, $wgLang->getCode(), $namespace );
 
 		FeedUtils::checkPurge($timekey, $key);
 
@@ -55,7 +55,7 @@ class ChangesFeed {
 	public function saveToCache( $feed, $timekey, $key ) {
 		global $messageMemc;
 		$expire = 3600 * 24; # One day
-		$messageMemc->set( $key, $feed );
+		$messageMemc->set( $key, $feed, $expire );
 		$messageMemc->set( $timekey, wfTimestamp( TS_MW ), $expire );
 	}
 
@@ -113,14 +113,16 @@ class ChangesFeed {
 		foreach( $sorted as $obj ) {
 			$title = Title::makeTitle( $obj->rc_namespace, $obj->rc_title );
 			$talkpage = $title->getTalkPage();
+			// Skip items with deleted content (avoids partially complete/inconsistent output)
+			if( $obj->rc_deleted ) continue;
 			$item = new FeedItem(
 				$title->getPrefixedText(),
 				FeedUtils::formatDiff( $obj ),
-				$title->getFullURL( 'diff=' . $obj->rc_this_oldid . '&oldid=prev' ),
+				$obj->rc_this_oldid ? $title->getFullURL( 'diff=' . $obj->rc_this_oldid . '&oldid=prev' ) : $title->getFullURL(),
 				$obj->rc_timestamp,
 				($obj->rc_deleted & Revision::DELETED_USER) ? wfMsgHtml('rev-deleted-user') : $obj->rc_user_text,
 				$talkpage->getFullURL()
-				);
+			);
 			$feed->outItem( $item );
 		}
 		$feed->outFooter();

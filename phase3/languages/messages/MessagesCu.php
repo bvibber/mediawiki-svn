@@ -142,6 +142,7 @@ $messages = array(
 # Categories related messages
 'pagecategories'  => '{{PLURAL:$1|Катигорі́ꙗ|Катигорі́и|Катигорі́ѩ|Катигорі́ѩ}}',
 'category_header' => 'катигорі́ѩ ⁖ $1 ⁖ страни́цѧ',
+'subcategories'   => 'соубкатигорі́ѩ',
 
 'linkprefix' => '/^(.*?)(„|«)$/sD',
 
@@ -229,7 +230,7 @@ $messages = array(
 
 # General errors
 'viewsource'    => 'страни́цѧ исто́чьнъ о́браꙁъ',
-'viewsourcefor' => 'бо $1',
+'viewsourcefor' => '$1 дѣлꙗ',
 
 # Login and logout pages
 'yourname'                => 'твоѥ́ и́мѧ',
@@ -241,7 +242,7 @@ $messages = array(
 'logout'                  => 'ис̾хо́дъ',
 'userlogout'              => 'ис̾хо́дъ',
 'createaccount'           => 'Cъзижди си мѣсто',
-'gotaccount'              => 'Мѣсто ти ѥстъ ли? $1.',
+'gotaccount'              => "Мѣсто ти ѥстъ ли? '''$1'''.",
 'gotaccountlink'          => 'Въниди',
 'userexists'              => 'сѫщє по́льꙃєватєлꙗ и́мѧ пьса ⁙ ино иꙁобрѧщи',
 'loginerror'              => 'Въхода блазна',
@@ -263,7 +264,7 @@ $messages = array(
 'note'               => "'''НАРОЧИ́ТО:'''",
 'editing'            => 'исправлѥ́ниѥ: $1',
 'editingsection'     => 'исправлѥ́ниѥ ⁖ $1 ⁖ (чѧ́сть)',
-'templatesused'      => 'сѥѩ страни́цѧ с҄и обраꙁьци́ по́льꙃоуѭтъ сѧ сѫ́тъ :',
+'templatesused'      => 'сѥѩ страни́цѧ {{PLURAL:$1|сь обраꙁь́ць по́льꙃоуѥтъ сѧ ѥ́стъ|с҄и обраꙁьца́ по́льꙃоуѭтъ сѧ ѥстє́|с҄и обраꙁьци́ по́льꙃоуѭтъ сѧ сѫ́тъ}} :',
 'template-protected' => '(ꙁабранєно ѥ́стъ)',
 
 # History pages
@@ -281,10 +282,6 @@ $messages = array(
 
 # Revision deletion
 'revdelete-uname' => 'по́льꙃєватєлꙗ и́мѧ',
-
-# Diffs
-'diff-with'       => '&#32;съ $1 $2',
-'diff-with-final' => '&#32;и $1 $2',
 
 # Search results
 'searchresults'            => 'иска́ниꙗ ито́гъ',
@@ -308,12 +305,14 @@ $messages = array(
 'yourrealname'        => 'и́стиньно и́мѧ :',
 'yourlanguage'        => 'ѩꙁꙑ́къ :',
 'yournick'            => 'аѵто́графъ :',
+'gender-male'         => 'мѫжъ',
+'gender-female'       => 'жєна',
 
 # Groups
 'group-user'       => 'по́льꙃєватєлє',
 'group-bot'        => 'аѵтома́ти',
 'group-sysop'      => 'съмотри́тєлє',
-'group-bureaucrat' => 'Чинода́тєлє',
+'group-bureaucrat' => 'чинода́тєлє',
 
 'group-user-member'       => 'по́льꙃєватєл҄ь',
 'group-bot-member'        => 'аѵтома́тъ',
@@ -393,6 +392,8 @@ $messages = array(
 
 # Statistics
 'statistics'              => 'Статїстїка',
+'statistics-header-pages' => 'страни́цѧ статїстїка',
+'statistics-header-edits' => 'мѣ́нъ статїстїка',
 'statistics-header-users' => 'по́льꙃєватєлъ статїстїка',
 'statistics-articles'     => 'истиньнꙑ члѣ́ни',
 'statistics-pages'        => 'страни́цѧ',
@@ -531,6 +532,7 @@ $messages = array(
 'movepagebtn'      => 'прѣимєнова́ниѥ',
 'pagemovedsub'     => 'прѣимєнова́ниѥ сътворѥно́ ѥ́стъ',
 'movepage-moved'   => "<big>'''⁖ $1 ⁖ нарєчє́нъ ⁖ $2⁖ ѥ́стъ'''</big>",
+'movedto'          => 'прѣимєновано въ',
 'movetalk'         => 'си страни́цѧ бєсѣ́дꙑ прѣимєнова́ниѥ',
 '1movedto2'        => '⁖ [[$1]] ⁖ нарєчє́нъ ⁖ [[$2]] ⁖ ѥ́стъ',
 '1movedto2_redir'  => '[[$1]] нарєчє́нъ [[$2]] врьхоу́ прѣнаправлѥ́ниꙗ ѥ́стъ.',
@@ -543,6 +545,7 @@ $messages = array(
 # Tooltip help for the actions
 'tooltip-pt-userpage'     => 'твоꙗ́ по́льꙃєватєл҄ьска страни́ца',
 'tooltip-pt-mytalk'       => 'твоꙗ́ бєсѣ́дꙑ страни́ца',
+'tooltip-pt-preferences'  => 'твоꙗ́ строи',
 'tooltip-pt-logout'       => 'ис̾хо́дъ',
 'tooltip-ca-viewsource'   => 'си страни́ца ꙁабранєна́ ѥ́стъ ⁙
 ѥѩ исто́чьнъ о́браꙁъ ви́дєти мо́жєщи',
@@ -553,6 +556,7 @@ $messages = array(
 'tooltip-p-logo'          => 'гла́вьна страни́ца',
 'tooltip-n-recentchanges' => 'послѣ́дьнъ мѣ́нъ ката́логъ',
 'tooltip-t-upload'        => 'положє́ниѥ дѣ́лъ',
+'tooltip-t-specialpages'  => 'вьсѣѩ наро́чьнъ страни́цѧ ката́логъ',
 'tooltip-watch'           => 'си страни́цѧ блюдє́ниѥ',
 
 # Media information

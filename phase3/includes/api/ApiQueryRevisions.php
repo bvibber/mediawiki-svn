@@ -42,7 +42,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 	}
 
 	private $fld_ids = false, $fld_flags = false, $fld_timestamp = false, $fld_size = false,
-			$fld_comment = false, $fld_user = false, $fld_content = false;
+			$fld_comment = false, $fld_user = false, $fld_content = false, $fld_tags = false;
 
 	protected function getTokenFunctions() {
 		// tokenname => function
@@ -100,10 +100,13 @@ class ApiQueryRevisions extends ApiQueryBase {
 		if ($pageCount > 1 && $enumRevMode)
 			$this->dieUsage('titles, pageids or a generator was used to supply multiple pages, but the limit, startid, endid, dirNewer, user, excludeuser, start and end parameters may only be used on a single page.', 'multpages');
 
-		if (!is_null($params['diffto'])) {
+		$this->diffto = $this->difftotext = null;
+		if (!is_null($params['difftotext'])) {
+			$this->difftotext = $params['difftotext'];
+		} else if (!is_null($params['diffto'])) {
 			if ($params['diffto'] == 'cur')
 				$params['diffto'] = 0;
-			if ((!ctype_digit($params['diffto']) || $params['diffto'] < 0) 
+			if ((!ctype_digit($params['diffto']) || $params['diffto'] < 0)
 					&& $params['diffto'] != 'prev' && $params['diffto'] != 'next')
 				$this->dieUsage('rvdiffto must be set to a non-negative number, "prev", "next" or "cur"', 'diffto');
 			// Check whether the revision exists and is readable,
@@ -118,12 +121,12 @@ class ApiQueryRevisions extends ApiQueryBase {
 					$params['diffto'] = null;
 				}
 			}
+			$this->diffto = $params['diffto'];
 		}
 
 		$db = $this->getDB();
-		$this->addTables('revision');
+		$this->addTables(array('page', 'revision'));
 		$this->addFields(Revision::selectFields());
-		$this->addTables('page');
 		$this->addWhere('page_id = rev_page');
 
 		$prop = array_flip($params['prop']);
@@ -137,13 +140,25 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$this->fld_size = isset ($prop['size']);
 		$this->fld_user = isset ($prop['user']);
 		$this->token = $params['token'];
-		$this->diffto = $params['diffto'];
 
 		if ( !is_null($this->token) || $pageCount > 0) {
 			$this->addFields( Revision::selectPageFields() );
 		}
 
-		if (isset ($prop['content'])) {
+		if (isset ($prop['tags'])) {
+			$this->fld_tags = true;
+			$this->addTables('tag_summary');
+			$this->addJoinConds(array('tag_summary' => array('LEFT JOIN', array('rev_id=ts_rev_id'))));
+			$this->addFields('ts_tags');
+		}
+		
+		if( !is_null($params['tag']) ) {
+			$this->addTables('change_tag');
+			$this->addJoinConds(array('change_tag' => array('INNER JOIN', array('rev_id=ct_rev_id'))));
+			$this->addWhereFld('ct_tag' , $params['tag']);
+		}
+		
+		if (isset($prop['content']) || !is_null($this->difftotext)) {
 
 			// For each page we will request, the user must have read rights for that page
 			foreach ($pageSet->getGoodTitles() as $title) {
@@ -158,7 +173,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$this->addFields('old_id');
 			$this->addFields(Revision::selectTextFields());
 
-			$this->fld_content = true;
+			$this->fld_content = isset($prop['content']);
 
 			$this->expandTemplates = $params['expandtemplates'];
 			$this->generateXML = $params['generatexml'];
@@ -293,9 +308,9 @@ class ApiQueryRevisions extends ApiQueryBase {
 				$this->setContinueEnumParameter('startid', intval($row->rev_id));
 				break;
 			}
-			$revision = new Revision( $row );
+			
 			//
-			$fit = $this->addPageSubItem($revision->getPage(), $this->extractRowInfo($revision), 'rev');
+			$fit = $this->addPageSubItem($row->rev_page, $this->extractRowInfo($row), 'rev');
 			if(!$fit)
 			{
 				if($enumRevMode)
@@ -311,7 +326,8 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$db->freeResult($res);
 	}
 
-	private function extractRowInfo( $revision ) {
+	private function extractRowInfo( $row ) {
+		$revision = new Revision( $row );
 		$title = $revision->getTitle();
 		$vals = array ();
 
@@ -353,6 +369,16 @@ class ApiQueryRevisions extends ApiQueryBase {
 			}
 		}	
 
+		if ($this->fld_tags) {
+			if ($row->ts_tags) {
+				$tags = explode(',', $row->ts_tags);
+				$this->getResult()->setIndexedTagName($tags, 'tag');
+				$vals['tags'] = $tags;
+			} else {
+				$vals['tags'] = array();
+			}
+		}
+		
 		if(!is_null($this->token))
 		{
 			$tokenFunctions = $this->getTokenFunctions();
@@ -366,7 +392,8 @@ class ApiQueryRevisions extends ApiQueryBase {
 			}
 		}
 		
-		if ($this->fld_content && !$revision->isDeleted(Revision::DELETED_TEXT)) {
+		$text = null;
+		if ($this->fld_content || !is_null($this->difftotext)) {
 			global $wgParser;
 			$text = $revision->getText();
 			# Expand templates after getting section content because
@@ -377,6 +404,8 @@ class ApiQueryRevisions extends ApiQueryBase {
 				if($text === false)
 					$this->dieUsage("There is no section {$this->section} in r".$revision->getId(), 'nosuchsection');
 			}
+		}
+		if ($this->fld_content && !$revision->isDeleted(Revision::DELETED_TEXT)) {
 			if ($this->generateXML) {
 				$wgParser->startExternalParse( $title, new ParserOptions(), OT_PREPROCESS );
 				$dom = $wgParser->preprocessToDom( $text );
@@ -396,14 +425,20 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$vals['texthidden'] = '';
 		}
 
-		if (!is_null($this->diffto)) {
+		if (!is_null($this->diffto) || !is_null($this->difftotext)) {
 			global $wgAPIMaxUncachedDiffs;
-			static $n = 0; // Numer of uncached diffs we've had
-			if($n< $wgAPIMaxUncachedDiffs) {
-				$engine = new DifferenceEngine($title, $revision->getID(), $this->diffto);
+			static $n = 0; // Number of uncached diffs we've had
+			if($n < $wgAPIMaxUncachedDiffs) {
+				$vals['diff'] = array();
+				if(!is_null($this->difftotext)) {
+					$engine = new DifferenceEngine($title);
+					$engine->setText($text, $this->difftotext);
+				} else {
+					$engine = new DifferenceEngine($title, $revision->getID(), $this->diffto);
+					$vals['diff']['from'] = $engine->getOldid();
+					$vals['diff']['to'] = $engine->getNewid();
+				}
 				$difftext = $engine->getDiffBody();
-				$vals['diff']['from'] = $engine->getOldid();
-				$vals['diff']['to'] = $engine->getNewid();
 				ApiResult::setContent($vals['diff'], $difftext);
 				if(!$engine->wasCacheHit())
 					$n++;
@@ -427,6 +462,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 					'size',
 					'comment',
 					'content',
+					'tags'
 				)
 			),
 			'limit' => array (
@@ -460,6 +496,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'excludeuser' => array(
 				ApiBase :: PARAM_TYPE => 'user'
 			),
+			'tag' => null,
 			'expandtemplates' => false,
 			'generatexml' => false,
 			'section' => null,
@@ -469,6 +506,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			),
 			'continue' => null,
 			'diffto' => null,
+			'difftotext' => null,
 		);
 	}
 
@@ -490,6 +528,9 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'continue' => 'When more results are available, use this to continue',
 			'diffto' => array('Revision ID to diff each revision to.',
 				'Use "prev", "next" and "cur" for the previous, next and current revision respectively.'),
+			'difftotext' => array('Text to diff each revision to. Only diffs a limited number of revisions.',
+				'Overrides diffto. If rvsection is set, only that section will be diffed against this text.'),
+			'tag' => 'Only list revisions tagged with this tag',
 		);
 	}
 

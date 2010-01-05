@@ -1,5 +1,30 @@
 <?php
 
+/**
+ * We're now using the HTMLForm object with some customisation to generate the
+ * Preferences form. This object handles generic submission, CSRF protection,
+ * layout and other logic in a reusable manner. We subclass it as a PreferencesForm
+ * to make some minor customisations.
+ *
+ * In order to generate the form, the HTMLForm object needs an array structure
+ * detailing the form fields available, and that's what this class is for. Each
+ * element of the array is a basic property-list, including the type of field,
+ * the label it is to be given in the form, callbacks for validation and
+ * 'filtering', and other pertinent information. Note that the 'default' field
+ * is named for generic forms, and does not represent the preference's default
+ * (which is stored in $wgDefaultUserOptions), but the default for the form
+ * field, which should be whatever the user has set for that preference. There
+ * is no need to override it unless you have some special storage logic (for
+ * instance, those not presently stored as options, but which are best set from
+ * the user preferences view).
+ *
+ * Field types are implemented as subclasses of the generic HTMLFormField
+ * object, and typically implement at least getInputHTML, which generates the
+ * HTML for the input field to be placed in the table.
+ *
+ * Once fields have been retrieved and validated, submission logic is handed
+ * over to the tryUISubmit static method of this class.
+ */
 class Preferences {
 	static $defaultPreferences = null;
 	static $saveFilters =
@@ -110,22 +135,30 @@ class Preferences {
 
 		# Get groups to which the user belongs
 		$userEffectiveGroups = $user->getEffectiveGroups();
-		$userEffectiveGroupsArray = array();
+		$userGroups = $userMembers = array();
 		foreach( $userEffectiveGroups as $ueg ) {
 			if( $ueg == '*' ) {
 				// Skip the default * group, seems useless here
 				continue;
 			}
-			$userEffectiveGroupsArray[] = User::makeGroupLinkHTML( $ueg );
+			$groupName  = User::getGroupName( $ueg );
+			$userGroups[] = User::makeGroupLinkHTML( $ueg, $groupName );
+
+			$memberName = User::getGroupMember( $ueg );
+			$userMembers[] = User::makeGroupLinkHTML( $ueg, $memberName );
 		}
-		asort( $userEffectiveGroupsArray );
+		asort( $userGroups );
+		asort( $userMembers );
 
 		$defaultPreferences['usergroups'] =
 				array(
 					'type' => 'info',
 					'label' => wfMsgExt( 'prefs-memberingroups', 'parseinline',
-								count( $userEffectiveGroupsArray ) ),
-					'default' => $wgLang->commaList( $userEffectiveGroupsArray ),
+						$wgLang->formatNum( count($userGroups) ) ),
+					'default' => wfMsgExt( 'prefs-memberingroups-type', array(),
+						$wgLang->commaList( $userGroups ),
+						$wgLang->commaList( $userMembers )
+					),
 					'raw' => true,
 					'section' => 'personal/info',
 				);
@@ -261,7 +294,19 @@ class Preferences {
 					);
 		}
 
-		global $wgMaxSigChars;
+		global $wgMaxSigChars, $wgOut, $wgParser;
+
+		// show a preview of the old signature first
+		$oldsigWikiText = $wgParser->preSaveTransform( "~~~", new Title , $user, new ParserOptions );
+		$oldsigHTML = $wgOut->parseInline( $oldsigWikiText );
+		$defaultPreferences['oldsig'] =
+			array(
+					'type' => 'info',
+					'raw' => true,
+					'label-message' => 'tog-oldsig',
+					'default' => $oldsigHTML,
+					'section' => 'personal/signature',
+			);
 		$defaultPreferences['nickname'] =
 				array(
 					'type' => $wgAuth->allowPropChange( 'nickname' ) ? 'text' : 'info',
@@ -276,9 +321,10 @@ class Preferences {
 				array(
 					'type' => 'toggle',
 					'label-message' => 'tog-fancysig',
+					'help-message' => 'prefs-help-signature', // show general help about signature at the bottom of the section
 					'section' => 'personal/signature'
 				);
-
+				
 		## Email stuff
 		
 		global $wgEnableEmail;
@@ -288,7 +334,7 @@ class Preferences {
 	
 			$defaultPreferences['emailaddress'] =
 					array(
-						'type' => $wgAuth->allowPropChange( 'emailaddress' ) ? 'text' : 'info',
+						'type' => $wgAuth->allowPropChange( 'emailaddress' ) ? 'email' : 'info',
 						'default' => $user->getEmail(),
 						'section' => 'personal/email',
 						'label-message' => 'youremail',
@@ -311,13 +357,14 @@ class Preferences {
 						$time = $wgLang->timeAndDate( $user->getEmailAuthenticationTimestamp(), true );
 						$d = $wgLang->date( $user->getEmailAuthenticationTimestamp(), true );
 						$t = $wgLang->time( $user->getEmailAuthenticationTimestamp(), true );
-						$emailauthenticated = htmlspecialchars( wfMsg( 'emailauthenticated', $time, $d, $t ) ) . '<br />';
+						$emailauthenticated = wfMsgExt( 'emailauthenticated', 'parseinline',
+												array($time, $d, $t ) ) . '<br />';
 						$disableEmailPrefs = false;
 					} else {
 						$disableEmailPrefs = true;
 						global $wgUser; // wgUser is okay here, it's for display
 						$skin = $wgUser->getSkin();
-						$emailauthenticated = wfMsgHtml( 'emailnotauthenticated' ) . '<br />' .
+						$emailauthenticated = wfMsgExt( 'emailnotauthenticated', 'parseinline' ) . '<br />' .
 							$skin->link(
 								SpecialPage::getTitleFor( 'Confirmemail' ),
 								wfMsg( 'emailconfirmlink' ),
@@ -342,7 +389,7 @@ class Preferences {
 	
 			}
 	
-			if( $wgEnableUserEmail ) {
+			if( $wgEnableUserEmail && $user->isAllowed( 'sendemail' ) ) {
 				$defaultPreferences['disablemail'] =
 						array(
 							'type' => 'toggle',
@@ -512,6 +559,7 @@ class Preferences {
 					'label-message' => 'timezonelegend',
 					'options' => self::getTimezoneOptions(),
 					'default' => $tzSetting,
+					'size' => 20,
 					'section' => 'datetime/timeoffset',
 				);
 	}
@@ -541,6 +589,7 @@ class Preferences {
 					'type' => 'selectorother',
 					'section' => 'rendering/advancedrendering',
 					'options' => $stubThresholdOptions,
+					'size' => 20,
 					'label' => wfMsg( 'stub-threshold' ), // Raw HTML message. Yay?
 				);
 		$defaultPreferences['highlightbroken'] =
@@ -588,7 +637,7 @@ class Preferences {
 	}
 
 	static function editingPreferences( $user, &$defaultPreferences ) {
-		global $wgUseExternalEditor, $wgLivePreview;
+		global $wgUseExternalEditor;
 
 		## Editing #####################################
 		$defaultPreferences['cols'] =
@@ -606,6 +655,19 @@ class Preferences {
 					'section' => 'editing/textboxsize',
 					'min' => 4,
 					'max' => 1000,
+				);
+
+		$defaultPreferences['editfont'] =
+				array(
+					'type' => 'select',
+					'section' => 'editing/advancedediting',
+					'label-message' => 'editfont-style',
+					'options' => array(
+						wfMsg( 'editfont-default' ) => 'default',
+						wfMsg( 'editfont-monospace' ) => 'monospace',
+						wfMsg( 'editfont-sansserif' ) => 'sans-serif',
+						wfMsg( 'editfont-serif' ) => 'serif',
+					)
 				);
 		$defaultPreferences['previewontop'] =
 				array(
@@ -677,14 +739,6 @@ class Preferences {
 					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-forceeditsummary',
 				);
-		if ( $wgLivePreview ) {
-			$defaultPreferences['uselivepreview'] =
-					array(
-						'type' => 'toggle',
-						'section' => 'editing/advancedediting',
-						'label-message' => 'tog-uselivepreview',
-					);
-		}
 	}
 
 	static function rcPreferences( $user, &$defaultPreferences ) {
@@ -942,8 +996,12 @@ class Preferences {
 		}
 	}
 
+	/**
+	 * @param object $user The user object
+	 * @return array Text/links to display as key; $skinkey as value
+	 */
 	static function generateSkinOptions( $user ) {
-		global $wgDefaultSkin;
+		global $wgDefaultSkin, $wgLang, $wgAllowUserCss, $wgAllowUserJs;
 		$ret = array();
 
 		$mptitle = Title::newMainPage();
@@ -964,23 +1022,28 @@ class Preferences {
 		$sk = $user->getSkin();
 
 		foreach( $validSkinNames as $skinkey => $sn ) {
+			$linkTools = array();
+
+			# Mark the default skin
+			if( $skinkey == $wgDefaultSkin ) {
+				$linkTools[] = wfMsgHtml( 'default' );
+			}
+
+			# Create preview link
 			$mplink = htmlspecialchars( $mptitle->getLocalURL( "useskin=$skinkey" ) );
-			$previewlink = "(<a target='_blank' href=\"$mplink\">$previewtext</a>)";
-			$extraLinks = '';
-			global $wgAllowUserCss, $wgAllowUserJs;
+			$linkTools[] = "<a target='_blank' href=\"$mplink\">$previewtext</a>";
+
+			# Create links to user CSS/JS pages
 			if( $wgAllowUserCss ) {
 				$cssPage = Title::makeTitleSafe( NS_USER, $user->getName() . '/' . $skinkey . '.css' );
-				$customCSS = $sk->link( $cssPage, wfMsgHtml( 'prefs-custom-css' ) );
-				$extraLinks .= " ($customCSS)";
+				$linkTools[] = $sk->link( $cssPage, wfMsgHtml( 'prefs-custom-css' ) );
 			}
 			if( $wgAllowUserJs ) {
 				$jsPage = Title::makeTitleSafe( NS_USER, $user->getName() . '/' . $skinkey . '.js' );
-				$customJS = $sk->link( $jsPage, wfMsgHtml( 'prefs-custom-js' ) );
-				$extraLinks .= " ($customJS)";
+				$linkTools[] = $sk->link( $jsPage, wfMsgHtml( 'prefs-custom-js' ) );
 			}
-			if( $skinkey == $wgDefaultSkin )
-				$sn .= ' (' . wfMsgHtml( 'default' ) . ')';
-			$display = "$sn $previewlink{$extraLinks}";
+
+			$display = $sn . ' ' . wfMsg( 'parentheses', $wgLang->pipeList( $linkTools ) );
 			$ret[$display] = $skinkey;
 		}
 

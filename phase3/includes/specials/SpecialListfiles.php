@@ -37,10 +37,8 @@ class ImageListPager extends TablePager {
 			$nt = Title::newFromUrl( $search );
 			if( $nt ) {
 				$dbr = wfGetDB( DB_SLAVE );
-				$m = $dbr->strencode( strtolower( $nt->getDBkey() ) );
-				$m = str_replace( "%", "\\%", $m );
-				$m = str_replace( "_", "\\_", $m );
-				$this->mQueryConds = array( "LOWER(img_name) LIKE '%{$m}%'" );
+				$this->mQueryConds = array( 'LOWER(img_name)' . $dbr->buildLike( $dbr->anyString(), 
+					strtolower( $nt->getDBkey() ), $dbr->anyString() ) );
 			}
 		}
 
@@ -158,10 +156,10 @@ class ImageListPager extends TablePager {
 	}
 
 	function getForm() {
-		global $wgRequest, $wgMiserMode;
+		global $wgRequest, $wgScript, $wgMiserMode;
 		$search = $wgRequest->getText( 'ilsearch' );
 
-		$s = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $this->getTitle()->getLocalURL(), 'id' => 'mw-listfiles-form' ) ) .
+		$s = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'mw-listfiles-form' ) ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', null, wfMsg( 'listfiles' ) ) .
 			Xml::tags( 'label', null, wfMsgHtml( 'table_pager_limit', $this->getLimitSelect() ) );

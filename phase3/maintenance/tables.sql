@@ -580,7 +580,7 @@ CREATE INDEX /*i*/el_index ON /*_*/externallinks (el_index(60));
 --
 CREATE TABLE /*_*/external_user (
   -- Foreign key to user_id
-  eu_wiki_id int unsigned NOT NULL PRIMARY KEY,
+  eu_local_id int unsigned NOT NULL PRIMARY KEY,
 
   -- Some opaque identifier provided by the external database
   eu_external_id varchar(255) binary NOT NULL
@@ -1095,7 +1095,7 @@ CREATE INDEX /*i*/exptime ON /*_*/objectcache (exptime);
 CREATE TABLE /*_*/transcache (
   tc_url varbinary(255) NOT NULL,
   tc_contents text,
-  tc_time int NOT NULL
+  tc_time binary(14) NOT NULL
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/tc_url_idx ON /*_*/transcache (tc_url);
@@ -1185,7 +1185,7 @@ CREATE TABLE /*_*/job (
   job_params blob NOT NULL
 ) /*$wgDBTableOptions*/;
 
-CREATE INDEX /*i*/job_cmd ON /*_*/job (job_cmd, job_namespace, job_title);
+CREATE INDEX /*i*/job_cmd ON /*_*/job (job_cmd, job_namespace, job_title, job_params(128));
 
 
 -- Details of updates to cached special pages
@@ -1298,11 +1298,16 @@ CREATE TABLE /*_*/updatelog (
 
 -- A table to track tags for revisions, logs and recent changes.
 CREATE TABLE /*_*/change_tag (
-  ct_rc_id int NULL, -- RCID for the change
-  ct_log_id int NULL, -- LOGID for the change
-  ct_rev_id int NULL, -- REVID for the change
-  ct_tag varchar(255) NOT NULL, -- Tag applied
-  ct_params blob NULL -- Parameters for the tag, presently unused.
+  -- RCID for the change
+  ct_rc_id int NULL,
+  -- LOGID for the change
+  ct_log_id int NULL,
+  -- REVID for the change
+  ct_rev_id int NULL,
+  -- Tag applied
+  ct_tag varchar(255) NOT NULL,
+  -- Parameters for the tag, presently unused
+  ct_params blob NULL
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/change_tag_rc_tag ON /*_*/change_tag (ct_rc_id,ct_tag);
@@ -1315,10 +1320,14 @@ CREATE INDEX /*i*/change_tag_tag_id ON /*_*/change_tag (ct_tag,ct_rc_id,ct_rev_i
 -- Rollup table to pull a LIST of tags simply without ugly GROUP_CONCAT
 -- that only works on MySQL 4.1+
 CREATE TABLE /*_*/tag_summary (
-  ts_rc_id int NULL, -- RCID for the change
-  ts_log_id int NULL, -- LOGID for the change
-  ts_rev_id int NULL, -- REVID for the change
-  ts_tags blob NOT NULL -- Comma-separated list of tags.
+  -- RCID for the change  
+  ts_rc_id int NULL,
+  -- LOGID for the change
+  ts_log_id int NULL,
+  -- REVID for the change
+  ts_rev_id int NULL,
+  -- Comma-separated list of tags
+  ts_tags blob NOT NULL
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/tag_summary_rc_id ON /*_*/tag_summary (ts_rc_id);

@@ -114,7 +114,7 @@ class Spyc {
 		if (is_array($value)) {
 			// It has children.  What to do?
 			// Make it the right kind of item
-			$string = $this->_dumpNode($key,NULL,$indent);
+			$string = $this->_dumpNode($key,null,$indent);
 			// Add the indent
 			$indent += $this->_dumpIndent;
 			// Yamlize the array
@@ -203,7 +203,7 @@ class Spyc {
 	 */
 	private function _doLiteralBlock($value,$indent) {
 		$exploded = explode("\n",$value);
-		$newValue = '|';
+		$newValue = '|-';
 		$indent  += $this->_dumpIndent;
 		$spaces   = str_repeat(' ',$indent);
 		foreach ($exploded as $line) {
@@ -227,7 +227,7 @@ class Spyc {
 			$indent += $this->_dumpIndent;
 			$indent = str_repeat(' ',$indent);
 			$wrapped = wordwrap($value,$this->_dumpWordWrap,"\n$indent");
-			$value   = ">\n".$indent.$wrapped;
+			$value   = ">-\n".$indent.$wrapped;
 		}
 		return $value;
 	}

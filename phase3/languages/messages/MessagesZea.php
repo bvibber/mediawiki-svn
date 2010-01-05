@@ -248,7 +248,6 @@ $messages = array(
 'aboutsite'            => 'Over {{SITENAME}}',
 'aboutpage'            => 'Project:Info',
 'copyright'            => 'Den inoud is beschikbaer onder de $1.',
-'copyrightpagename'    => '{{SITENAME}} auteursrechen',
 'copyrightpage'        => '{{ns:project}}:Auteursrechen',
 'currentevents'        => "In 't nieuws",
 'currentevents-url'    => "Project:In 't nieuws",
@@ -313,9 +312,9 @@ $messages = array(
 'nosuchaction'      => 'Opeheven handelieng besti nie',
 'nosuchactiontext'  => 'Den opdracht in de URL wier nie herkend deur de wiki',
 'nosuchspecialpage' => 'Deêze speciaole pagina besti nie',
-'nospecialpagetext' => "<big>'''Je ei een onbestaende speciaole pagina opevrogen.'''</big>
+'nospecialpagetext' => '<strong>Je ei een onbestaende speciaole pagina opevrogen.</strong>
 
-Een lieste mie speciaole pagina’s sti op [[Special:SpecialPages|speciaole pagina’s]].",
+Een lieste mie speciaole pagina’s sti op [[Special:SpecialPages|speciaole pagina’s]].',
 
 # General errors
 'error'                => 'Fout',
@@ -325,7 +324,7 @@ Meuhlijk zit der een fout in de software.
 't Lèste verzoek an de database was:
 <blockquote><tt>$1</tt></blockquote>
 vanuut de functie “<tt>$2</tt>”.
-$5 haf de foutmeldieng “<tt>$3: $4</tt>”.",
+MySQL haf de foutmeldieng “<tt>$3: $4</tt>”.",
 'dberrortextcl'        => "Der is een syntaxisfout in 't databaseverzoek opetreeën.
 't Lèste verzoek an de database was:
 “$1”
@@ -378,7 +377,8 @@ $2",
 De heheven reeën is ''$2''.",
 
 # Login and logout pages
-'logouttext'                 => "'''Je bin noe ofemeld.'''<br />
+'logouttext'                 => "'''Je bin noe ofemeld.'''
+
 Je kan {{SITENAME}} noe anoniem gebruken of wee anmelden as dezelven of een aore gebruker.
 Meuhlijk worn nog een antal pagina's weereheven asof a je anemeld bin totda je de cache van je browser leeg.",
 'welcomecreation'            => '== Welkom, $1! ==
@@ -397,10 +397,10 @@ Vergeet nie je [[Special:Preferences|vòkeuren voe {{SITENAME}}]] an te passen.'
 'logout'                     => 'Ofmelden',
 'userlogout'                 => 'Ofmelden',
 'notloggedin'                => 'Nie anemeld',
-'nologin'                    => 'Nog hin gebrukersnaem? $1.',
+'nologin'                    => "Nog hin gebrukersnaem? '''$1'''.",
 'nologinlink'                => 'Mik een gebruker an',
 'createaccount'              => 'Gebruker anmaeken',
-'gotaccount'                 => 'È je a een gebrukersnaem? $1.',
+'gotaccount'                 => "È je a een gebrukersnaem? '''$1'''.",
 'gotaccountlink'             => 'Anmelden',
 'createaccountmail'          => 'per e-mail',
 'badretype'                  => 'De wachtwoôrden die-a je ingegeven typ bin nie eênder.',
@@ -561,7 +561,8 @@ Je kan [[Special:Search/{{PAGENAME}}|ni deêze term zoeken]] in aore pagina\'s o
 |-
 | Konqueror || F5
 |}',
-'usercssjsyoucanpreview'     => "'''Tip:''' Gebruuk de knoppe 'Naekieken' om je nieuwe CSS/JS te tessen voe da je opsli.",
+'usercssyoucanpreview'       => "'''Tip:''' Gebruuk de knoppe 'Naekieken' om je nieuwe CSS te tessen voe da je opsli.",
+'userjsyoucanpreview'        => "'''Tip:''' Gebruuk de knoppe 'Naekieken' om je nieuwe JS te tessen voe da je opsli.",
 'usercsspreview'             => "'''Dit is alleên een voeôvertonieng van je persoônlijke CSS, dezen is nog nie opeslogen!'''",
 'userjspreview'              => "'''Let op: je test noe je persoônlijke JavaScript. De pagina is nie opeslogen!'''",
 'userinvalidcssjstitle'      => "'''Waerschuwieng:''' der is hin skin \"\$1\". Let op: jen eihen .css- en .js-pagina's behunnen mie een kleine letter, buvobbeld {{ns:user}}:Naem/monobook.css in plekke van {{ns:user}}:Naem/Monobook.css.",
@@ -695,12 +696,12 @@ der kunn'n details anwezig zien in 't [{{fullurl:{{#Special:Log}}/suppress|page=
 Aore opzichters van {{SITENAME}} kunn'n de verborhen inoud benadern en de verwiederieng onedaene maeken mie de ulpe van dit scherm, tenzie an der anvull'nde beperkiengen heln die an zien inesteld deur de systeembeheêrder.",
 'revdelete-legend'            => "Zichbaereidsbeperkiengen instell'n",
 'revdelete-hide-text'         => 'De bewerkte tekst verberhen',
+'revdelete-hide-image'        => 'Bestandsinoud verberhen',
 'revdelete-hide-name'         => 'Actie en doel verberhen',
 'revdelete-hide-comment'      => 'De bewerkiengssaemenvattieng verberhen',
 'revdelete-hide-user'         => 'Gebrukersnaem/IP van de gebruker verberhen',
 'revdelete-hide-restricted'   => 'Deêze beperkiengen toepassen op opzichters en dezen interface ofsluten',
 'revdelete-suppress'          => "Hehevens voe zòwè opzichters as aore onderdrukk'n",
-'revdelete-hide-image'        => 'Bestandsinoud verberhen',
 'revdelete-unsuppress'        => 'Beperkiengen op terugezette wiezigiengen verwiederen',
 'revdelete-log'               => 'Opmerkieng in logboek:',
 'revdelete-submit'            => 'Toepassen op de hesillecteerde bewerkieng',
@@ -765,8 +766,6 @@ Zurg da je bie deêze wiezigieng de heschiedenisdeurloôpendeid van de pagina be
 'searchresulttext'      => 'Voe meêr informaotie over zoeken op {{SITENAME}}, zie [[{{MediaWiki:Helppage}}|{{int:ulpe}}]].',
 'searchsubtitle'        => "Je zoch ni '''[[:$1]]'''",
 'searchsubtitleinvalid' => 'Voe zoekopdracht "$1"',
-'noexactmatch'          => "'''Der besti hin pagina henaemd \"\$1\".''' Je kan dezen [[:\$1|anmaeken]].",
-'noexactmatch-nocreate' => "'''Der besti hin pagina genaemd \"\$1\".'''",
 'toomanymatches'        => 'Der waeren te vee resultaoten. Probeer asjeblieft een aore zoekopdracht.',
 'titlematches'          => 'Overeênkomst mie onderwerp',
 'notitlematches'        => "Hin resultaoten evon'n",
@@ -774,7 +773,7 @@ Zurg da je bie deêze wiezigieng de heschiedenisdeurloôpendeid van de pagina be
 'notextmatches'         => "Hin pagina's evon'n",
 'prevn'                 => 'vorrege $1',
 'nextn'                 => 'volhende {{PLURAL:$1|$1}}',
-'viewprevnext'          => 'Bekiek ($1) ($2) ($3).',
+'viewprevnext'          => 'Bekiek ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'        => 'Help:Inoud',
 'search-result-size'    => '$1 ({{PLURAL:$2|1 woôrd|$2 woôrn}})',
 'search-result-score'   => 'Rillevantie: $1%',
@@ -784,7 +783,6 @@ Zurg da je bie deêze wiezigieng de heschiedenisdeurloôpendeid van de pagina be
 'searchall'             => 'aolle',
 'showingresults'        => "Ieronder {{PLURAL:$1|sti '''1''' resultaot|staen '''$1''' resultaoten}} vanof #'''$2'''.",
 'showingresultsnum'     => "Ieronder {{PLURAL:$3|sti '''1''' resultaot|staen '''$3''' resultaoten}} vanof #'''$2'''.",
-'showingresultstotal'   => "Ieronder worn de resultaoten '''$1 tot $2''' van '''$3''' weereheven",
 'nonefound'             => "'''Opmerkieng''': mislukte zoekopdrachten worn vaok veroôrzaekt deur zoekn ni vee voekomm'nde woôrn as \"van\" en \"de\", die an nie in de indexen worn openoom'n, of deur meêr dan eên zoekterm op te heven. Allin pagina's die an aolle zoektermen bevatt'n worn openoom'n in de resultaoten.",
 'powersearch'           => 'Uutebreid zoeken',
 'powersearch-legend'    => 'Uutebreid zoeken',
@@ -940,7 +938,6 @@ Een nie anekruusd vienkvakje beteêken da de gebruker hin lid is van de hroep.",
 # Upload
 'upload'                     => 'Upload bestand',
 'uploadbtn'                  => "Bestand upload'n",
-'reupload'                   => "Opnieuw upload'n",
 'reuploaddesc'               => "Upload annuleern en teruggaene ni 't uploadformelier",
 'uploadnologin'              => 'Nie anemeld',
 'uploadnologintext'          => "Je mò [[Special:UserLogin|anemeld]] zien

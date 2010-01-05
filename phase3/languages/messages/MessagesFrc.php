@@ -44,7 +44,7 @@ $messages = array(
 'tog-enotifrevealaddr'        => "Montrer mon adresse e-mail dans les e-mails d'avertissement",
 'tog-shownumberswatching'     => 'Montrer le montant de guetteurs',
 'tog-fancysig'                => 'Signature brute (sans liens préparés)',
-'tog-externaleditor'          => 'User un autre éditeur comme réglage ordinaire',
+'tog-externaleditor'          => 'Utiliser par défaut un éditeur de texte externe (pour les utilisateurs avancés, nécessite des réglages spécifiques sur votre ordinateur)',
 'tog-externaldiff'            => 'User un autre comparateur comme réglage ordinaire',
 'tog-showjumplinks'           => 'Mettre les "liens vites" en haut de la page',
 'tog-uselivepreview'          => "User la vue d'avance vite (JavaScript) (En assai)",
@@ -205,7 +205,6 @@ $messages = array(
 'aboutsite'            => "Qui c'est {{SITENAME}}?",
 'aboutpage'            => 'Project:Info',
 'copyright'            => 'Les matières sont avalable en accord avec $1',
-'copyrightpagename'    => '{{SITENAME}} Protection de Droits',
 'copyrightpage'        => '{{ns:project}}:Protection de Droits',
 'currentevents'        => 'Événements',
 'currentevents-url'    => 'Project:Événements',
@@ -249,7 +248,7 @@ $messages = array(
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-user'     => 'Useur',
 'nstab-media'    => 'Média',
-'nstab-special'  => 'Espécial',
+'nstab-special'  => 'Page espécial',
 'nstab-project'  => 'Info',
 'nstab-image'    => 'Dossier',
 'nstab-template' => 'Patron',
@@ -319,7 +318,10 @@ Demande: $2',
 'ns-specialprotected'  => "Vous pouvez pas changer les pages dans l'espace de noms {{ns:special}}.",
 
 # Login and logout pages
-'logouttext'                 => "'''Vous êtes déconnecté asteur.'''<br /> Vous pouvez continuer à user {{SITENAME}} sans nom ou vous pouvez connecter encore une fois avec le même nom ou un autre nom.<br />Notez: certaines pages pourriont être vues comme si vous êtes connecté, jusqu'à vous videz l'information de votre navigateur.",
+'logouttext'                 => "'''Vous êtes déconnecté asteur.'''
+
+Vous pouvez continuer à user {{SITENAME}} sans nom ou vous pouvez connecter encore une fois avec le même nom ou un autre nom.
+Notez: certaines pages pourriont être vues comme si vous êtes connecté, jusqu'à vous videz l'information de votre navigateur.",
 'welcomecreation'            => '== Bonjour, $1! ==
 
 Votre compte a été créé.  Oubliez pas de changer votre réglage sus {{SITENAME}}.',
@@ -336,10 +338,10 @@ Votre compte a été créé.  Oubliez pas de changer votre réglage sus {{SITENA
 'logout'                     => 'Déconnecter',
 'userlogout'                 => 'Déconnecter',
 'notloggedin'                => 'Pas connecté',
-'nologin'                    => 'Vous avez pas de compte? $1.',
+'nologin'                    => "Vous avez pas de compte? '''$1'''.",
 'nologinlink'                => 'Créez un compte',
 'createaccount'              => 'Créer un compte',
-'gotaccount'                 => 'Vous avez un compte déjà? $1.',
+'gotaccount'                 => "Vous avez un compte déjà? '''$1'''.",
 'gotaccountlink'             => 'Connectez',
 'createaccountmail'          => 'par e-mail',
 'badretype'                  => 'Les mots de passe que vous avez mis sont pas pareils.',
@@ -463,9 +465,11 @@ Votre numéro de blocage est #$5.  Mettez donc cette information dans toutes vos
 Pour créer la page, mettez des mots dans la boëte en bas (voyez la [[{{MediaWiki:Helppage}}|page d'aide]] pour plus d'information). 
 Si vous êtes ici par erreur, cliquez le bouton \"back\" sus votre navigateur.",
 'anontalkpagetext'           => "----''Ça ici, c'est la page de discussion pour un useur sans nom qu'a pas encore créé un compte ou qui l'use pas.  Ça fait, il faut user l'adresse IP numérique pour l'identifier.  Une adresse comme ça pourrait être usée par plusieurs useurs.  Si vous êtes un useur sans nom et vous croyez que des messages sans rapport ont été envoyés à vous, [[Special:UserLogin|créer un compte ou connecter]] pour empêcher la confusion avec des autres useurs sans nom dans l'avenir.''",
-'noarticletext'              => 'À présent, y a pas de texte sus cette page. Vous pouvez [[Special:Search/{{PAGENAME}}|charcher pour le titre de cette page]] dans des autres pages ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} changer cette page].',
+'noarticletext'              => 'À présent, y a pas de texte sus cette page.
+Vous pouvez [[Special:Search/{{PAGENAME}}|charcher pour le titre de cette page]] dans des autres pages, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} charcher dans les notes parents], ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} changer cette page]</span>.',
 'clearyourcache'             => "'''Notez:''' Après que vous avez sauvé votres changements, il foudra peut-être dépasser le cache de votre navigateur pour voir les changements.  '''Mozilla / Firefox / Safari:''' Tenez le bouton ''Shift'' en pèsant ''Reload'', ou pèsez ''Ctrl-Shift-R'' (''Cmd-Shift-R'' sus Apple Mac); '''IE:''' Tenez ''Ctrl'' en pèsant ''Refresh'', ou pèsez ''Ctrl-F5''; '''Konqueror:''' Simplement pèsez le bouton ''Reload'', ou pèsez ''F5''; Pour les useurs de '''Opera''', il foudra peut-être vider complètement le cache dans ''Tools→Preferences''.",
-'usercssjsyoucanpreview'     => "'''Conseil:''' Usez le bouton \"Vue d'avance\" pour tester votre nouvelle feuille CSS/JS avant de la sauver.",
+'usercssyoucanpreview'       => "'''Conseil:''' Usez le bouton \"Vue d'avance\" pour tester votre nouvelle feuille CSS avant de la sauver.",
+'userjsyoucanpreview'        => "'''Conseil:''' Usez le bouton \"Vue d'avance\" pour tester votre nouvelle feuille JS avant de la sauver.",
 'usercsspreview'             => "'''Rappelez-vous que vous êtes après regarder votre feuille CSS qu'a pas encore été sauvée!'''",
 'userjspreview'              => "'''Rappelez-vous que vous êtes juste après regarder ou tester votre code JavaScript qu'a pas encore été sauvé!'''",
 'userinvalidcssjstitle'      => "'''Attention:''' Y a pas de style \"\$1\".  Rappelez-vous qu'il faut user les petites lettres dans le sujet des pages personnelles avec les extensions .css et .js.
@@ -572,12 +576,12 @@ Assayez de [[Special:Search|charcher dans le wiki]] pour des nouvelles pages.',
 Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir les morceaux cachés hormis qu'y aye des restrictions.",
 'revdelete-legend'            => 'Mettre des restrictions',
 'revdelete-hide-text'         => 'Cacher le texte de la version',
+'revdelete-hide-image'        => "Cacher l'information du dossier",
 'revdelete-hide-name'         => "Cacher l'action et l'objet",
 'revdelete-hide-comment'      => 'Cacher la remarque du changement',
 'revdelete-hide-user'         => "Cacher le nom ou l'adresse IP de l'useur",
 'revdelete-hide-restricted'   => 'Appliquer ces restrictions aux administrateurs et les autres useurs',
 'revdelete-suppress'          => "Ôter de l'information des administrateurs et les autres useurs",
-'revdelete-hide-image'        => "Cacher l'information du dossier",
 'revdelete-unsuppress'        => 'Ôter les restrictions des versions rétablies',
 'revdelete-log'               => 'Remarque de notes:',
 'revdelete-submit'            => 'Appliquer à la version choisie',

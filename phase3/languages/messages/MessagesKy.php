@@ -87,7 +87,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} тууралуу',
 'aboutpage'            => 'Project:тууралуу',
-'copyrightpagename'    => '{{SITENAME}} автордук укугу',
 'copyrightpage'        => '{{ns:project}}:Автордук укуктар',
 'currentevents'        => 'Учурдагы окуялар',
 'currentevents-url'    => 'Project:Учурдагы окуялар',
@@ -207,7 +206,8 @@ $messages = array(
 'uploadedfiles'     => 'Жүктөлгөн файлдар',
 'savefile'          => 'Файлды сактап кой',
 
-'license' => 'Лицензиялоо:',
+'license'        => 'Лицензиялоо:',
+'license-header' => 'Лицензиялоо:',
 
 # Special:ListFiles
 'listfiles' => 'Файлдар тизмеси',

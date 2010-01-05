@@ -396,6 +396,10 @@ h1, h2 {
 	color: white;
 }
 
+#mw-pref-clear {
+	clear: both;
+}
+
 #mw_content a.external,
 #mw_content a[href ^="gopher://"] {
         background: url(external.png) center right no-repeat;
@@ -633,11 +637,6 @@ img.thumbborder {
 	display: none;
 }
 
-
-span.newpage, span.minor, span.bot {
-	font-weight: bold;
-}
-
 .sharedUploadNotice {
 	font-style: italic;
 }
@@ -645,55 +644,6 @@ span.newpage, span.minor, span.bot {
 span.updatedmarker {
 	color: black;
 	background-color: #0f0;
-}
-
-table.gallery {
-	border: 1px solid #ccc;
-	margin: 2px;
-	padding: 2px;
-	background-color: white;
-}
-
-table.gallery tr {
-	vertical-align: top;
-}
-
-table.gallery td {
-	vertical-align: top;
-	background-color: #f9f9f9;
-	border: solid 2px white;
-}
-/* Keep this temporarily so that cached pages will display right */
-table.gallery td.galleryheader {
-    text-align: center;
-	font-weight: bold;
-}
-table.gallery caption {
-	font-weight: bold;
-}
-
-div.gallerybox {
-	margin: 2px;
-}
-
-div.gallerybox div.thumb {
-	text-align: center;
-	border: 1px solid #ccc;
-	margin: 2px;
-}
-
-div.gallerytext {
-	overflow: hidden;
-	font-size: 94%;
-	padding: 2px 4px;
-}
-
-span.comment {
-	font-style: italic;
-}
-
-span.changedby {
-	font-size: 95%;
 }
 
 .previewnote {

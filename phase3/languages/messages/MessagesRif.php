@@ -8,6 +8,7 @@
  * @file
  *
  * @author Agzennay
+ * @author Dalinanir
  * @author Jose77
  * @author Urhixidur
  */
@@ -162,10 +163,10 @@ teqqad ad yilli days ca n usekkil war itwagg deg isem .',
 'userlogin'               => 'Adeff / egg amiḍan',
 'logout'                  => 'Ffeɣ',
 'userlogout'              => 'Ffeɣ',
-'nologin'                 => 'war ɣark login? $1.',
+'nologin'                 => "war ɣark login? '''$1'''.",
 'nologinlink'             => 'Egg amiḍan',
 'createaccount'           => 'Egg amiḍan',
-'gotaccount'              => 'ɣark  amiḍan? $1.',
+'gotaccount'              => "ɣark  amiḍan? '''$1'''.",
 'gotaccountlink'          => 'Adeff',
 'loginsuccesstitle'       => 'Adaf icna',
 'loginsuccess'            => "'''Qac tudeffed di {{SITENAME}} s \"\$1\".'''",
@@ -298,11 +299,9 @@ Tasarut: (cur) = imṣebḍiyen ag tunɣilt n ruxa,
 'diff-multi'              => '({{PLURAL:$1|ijj n ufegged|$1 ifeggiden}} war ad twamlen ca.)',
 
 # Search results
-'noexactmatch' => "'''war telli ca n Tasna qarn-as \"\$1\".'''
-tzemred ad [[:\$1|tarnid cek]].",
 'prevn'        => 'zzat {{PLURAL:$1|$1}}',
 'nextn'        => 'deffar {{PLURAL:$1|$1}}',
-'viewprevnext' => 'Ẓar ($1) ($2) ($3)',
+'viewprevnext' => 'Ẓar ($1 {{int:pipe-separator}} $2) ($3)',
 'searchall'    => 'maṛṛa',
 'powersearch'  => 'Tarezzut cwa-cway',
 
@@ -523,7 +522,6 @@ Xemm $2 i tikkas timaynutin.',
 'protectexpiry'               => 'itsala:',
 'protect_expiry_invalid'      => 'Akud n usali war icni ca.',
 'protect_expiry_old'          => 'Akud usali yeεda.',
-'protect-unchain'             => 'Arzem turagin n usnaqel',
 'protect-text'                => "tzemred ad teẓṛed u atbedeld aswir n uḥeṭṭu n Tasna ya da '''<nowiki>$1</nowiki>'''.",
 'protect-locked-access'       => "Amiḍan inecc war ɣars turagt bac ad ibeddel aswir n uḥeṭṭu n Tasna .
 Aqa (settings) n Tasna '''$1''':",

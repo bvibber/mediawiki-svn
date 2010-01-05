@@ -17,7 +17,9 @@ function wfSpecialMovepage( $par = null ) {
 	}
 
 	$target = isset( $par ) ? $par : $wgRequest->getVal( 'target' );
-	$oldTitleText = $wgRequest->getText( 'wpOldTitle', $target );
+
+	// Yes, the use of getVal() and getText() is wanted, see bug 20365
+	$oldTitleText = $wgRequest->getVal( 'wpOldTitle', $target );
 	$newTitleText = $wgRequest->getText( 'wpNewTitle' );
 
 	$oldTitle = Title::newFromText( $oldTitleText );
@@ -56,12 +58,12 @@ function wfSpecialMovepage( $par = null ) {
 class MovePageForm {
 	var $oldTitle, $newTitle; # Objects
 	var $reason; # Text input
-	var $moveTalk, $deleteAndMove, $moveSubpages, $fixRedirects, $leaveRedirect; # Checks
+	var $moveTalk, $deleteAndMove, $moveSubpages, $fixRedirects, $leaveRedirect, $moveOverShared; # Checks
 
 	private $watch = false;
 
 	function __construct( $oldTitle, $newTitle ) {
-		global $wgRequest;
+		global $wgRequest, $wgUser;
 		$target = isset($par) ? $par : $wgRequest->getVal( 'target' );
 		$this->oldTitle = $oldTitle;
 		$this->newTitle = $newTitle;
@@ -77,7 +79,8 @@ class MovePageForm {
 		}
 		$this->moveSubpages = $wgRequest->getBool( 'wpMovesubpages', false );
 		$this->deleteAndMove = $wgRequest->getBool( 'wpDeleteAndMove' ) && $wgRequest->getBool( 'wpConfirm' );
-		$this->watch = $wgRequest->getCheck( 'wpWatch' );
+		$this->moveOverShared = $wgRequest->getBool( 'wpMoveOverSharedFile', false );
+		$this->watch = $wgRequest->getCheck( 'wpWatch' ) && $wgUser->isLoggedIn();
 	}
 
 	/**
@@ -87,7 +90,7 @@ class MovePageForm {
 	 *    OutputPage::wrapWikiMsg(). 
 	 */
 	function showForm( $err ) {
-		global $wgOut, $wgUser, $wgFixDoubleRedirects;
+		global $wgOut, $wgUser, $wgContLang, $wgFixDoubleRedirects;
 
 		$skin = $wgUser->getSkin();
 
@@ -134,6 +137,12 @@ class MovePageForm {
 			$confirm = false;
 		}
 
+		if ( !empty($err) && $err[0] == 'file-exists-sharedrepo' && $wgUser->isAllowed( 'reupload-shared' ) ) {
+			$wgOut->addWikiMsg( 'move-over-sharedrepo', $newTitle->getPrefixedText() );
+			$submitVar = 'wpMoveOverSharedFile';
+			$err = '';
+		}
+		
 		$oldTalk = $this->oldTitle->getTalkPage();
 		$considerTalk = ( !$this->oldTitle->isTalkPage() && $oldTalk->exists() );
 
@@ -178,7 +187,7 @@ class MovePageForm {
 			}
 			$wgOut->addHTML( "<div class='mw-warning-with-logexcerpt'>\n" );
 			$wgOut->addWikiMsg( $noticeMsg );
-			LogEventsList::showLogExtract( $wgOut, 'protect', $this->oldTitle->getPrefixedText(), '', 1 );
+			LogEventsList::showLogExtract( $wgOut, 'protect', $this->oldTitle->getPrefixedText(), '', array( 'lim' => 1 ) );
 			$wgOut->addHTML( "</div>\n" );
 		}
 
@@ -200,7 +209,7 @@ class MovePageForm {
 					Xml::label( wfMsg( 'newtitle' ), 'wpNewTitle' ) .
 				"</td>
 				<td class='mw-input'>" .
-					Xml::input( 'wpNewTitle', 40, $newTitle->getPrefixedText(), array( 'type' => 'text', 'id' => 'wpNewTitle' ) ) .
+					Xml::input( 'wpNewTitle', 40, $wgContLang->recodeForEdit( $newTitle->getPrefixedText() ), array( 'type' => 'text', 'id' => 'wpNewTitle' ) ) .
 					Xml::hidden( 'wpOldTitle', $this->oldTitle->getPrefixedText() ) .
 				"</td>
 			</tr>
@@ -209,7 +218,8 @@ class MovePageForm {
 					Xml::label( wfMsg( 'movereason' ), 'wpReason' ) .
 				"</td>
 				<td class='mw-input'>" .
-					Xml::tags( 'textarea', array( 'name' => 'wpReason', 'id' => 'wpReason', 'cols' => 60, 'rows' => 2 ), htmlspecialchars( $this->reason ) ) .
+					Html::element( 'textarea', array( 'name' => 'wpReason', 'id' => 'wpReason', 'cols' => 60, 'rows' => 2,
+					'maxlength' => 200 ), $this->reason ) .
 				"</td>
 			</tr>"
 		);
@@ -258,34 +268,43 @@ class MovePageForm {
 				<tr>
 					<td></td>
 					<td class=\"mw-input\">" .
-				Xml::checkLabel( wfMsgExt(
+				Xml::check(
+					'wpMovesubpages',
+					# Don't check the box if we only have talk subpages to
+					# move and we aren't moving the talk page.
+					$this->moveSubpages && ($this->oldTitle->hasSubpages() || $this->moveTalk),
+					array( 'id' => 'wpMovesubpages' )
+				) . '&nbsp;' .
+				Xml::tags( 'label', array( 'for' => 'wpMovesubpages' ),
+					wfMsgExt(
 						( $this->oldTitle->hasSubpages()
 							? 'move-subpages'
 							: 'move-talk-subpages' ),
-						array( 'parsemag' ),
+						array( 'parseinline' ),
 						$wgLang->formatNum( $wgMaximumMovedPages ),
 						# $2 to allow use of PLURAL in message.
 						$wgMaximumMovedPages
-					),
-					'wpMovesubpages', 'wpMovesubpages',
-					# Don't check the box if we only have talk subpages to
-					# move and we aren't moving the talk page.
-					$this->moveSubpages && ($this->oldTitle->hasSubpages() || $this->moveTalk)
+					)
 				) .
 					"</td>
 				</tr>"
 			);
 		}
 
-		$watchChecked = $this->watch || $wgUser->getBoolOption( 'watchmoves' ) 
-			|| $this->oldTitle->userIsWatching();
-		$wgOut->addHTML( "
+		$watchChecked = $wgUser->isLoggedIn() && ($this->watch || $wgUser->getBoolOption( 'watchmoves' ) 
+			|| $this->oldTitle->userIsWatching());
+		# Don't allow watching if user is not logged in
+		if( $wgUser->isLoggedIn() ) {
+			$wgOut->addHTML( "
 			<tr>
 				<td></td>
 				<td class='mw-input'>" .
 					Xml::checkLabel( wfMsg( 'move-watch' ), 'wpWatch', 'watch', $watchChecked ) .
 				"</td>
-			</tr>
+			</tr>");
+		}
+
+		$wgOut->addHTML( "	
 				{$confirm}
 			<tr>
 				<td>&nbsp;</td>
@@ -345,12 +364,24 @@ class MovePageForm {
 			return;
 		}
 
+		# Show a warning if the target file exists on a shared repo
+		if ( $nt->getNamespace() == NS_FILE 
+			&& !( $this->moveOverShared && $wgUser->isAllowed( 'reupload-shared' ) )
+			&& !RepoGroup::singleton()->getLocalRepo()->findFile( $nt ) 
+			&& wfFindFile( $nt ) )
+		{
+			$this->showForm( array('file-exists-sharedrepo') );
+			return;
+			
+		}
+		
 		if ( $wgUser->isAllowed( 'suppressredirect' ) ) {
 			$createRedirect = $this->leaveRedirect;
 		} else {
 			$createRedirect = true;
 		}
 
+		# Do the actual move.
 		$error = $ot->moveTo( $nt, true, $this->reason, $createRedirect );
 		if ( $error !== true ) {
 			# FIXME: show all the errors in a list, not just the first one
@@ -409,7 +440,7 @@ class MovePageForm {
 			)
 		) ) {
 			$conds = array(
-				'page_title LIKE '.$dbr->addQuotes( $dbr->escapeLike( $ot->getDBkey() ) . '/%' )
+				'page_title' . $dbr->buildLike( $ot->getDBkey() . '/', $dbr->anyString() )
 					.' OR page_title = ' . $dbr->addQuotes( $ot->getDBkey() )
 			);
 			$conds['page_namespace'] = array();
@@ -444,14 +475,14 @@ class MovePageForm {
 		$skin = $wgUser->getSkin();
 		$count = 1;
 		foreach( $extraPages as $oldSubpage ) {
-			if( $oldSubpage->getArticleId() == $ot->getArticleId() ) {
+			if( $ot->equals( $oldSubpage ) ) {
 				# Already did this one.
 				continue;
 			}
 
 			$newPageName = preg_replace(
 				'#^'.preg_quote( $ot->getDBkey(), '#' ).'#',
-				$nt->getDBkey(),
+				StringUtils::escapeRegexReplacement( $nt->getDBkey() ), # bug 21234
 				$oldSubpage->getDBkey()
 			);
 			if( $oldSubpage->isTalkPage() ) {
@@ -487,6 +518,11 @@ class MovePageForm {
 					);
 					$newLink = $skin->linkKnown( $newSubpage );
 					$extraOutput []= wfMsgHtml( 'movepage-page-moved', $oldLink, $newLink );
+					++$count;
+					if( $count >= $wgMaximumMovedPages ) {
+						$extraOutput []= wfMsgExt( 'movepage-max-pages', array( 'parsemag', 'escape' ), $wgLang->formatNum( $wgMaximumMovedPages ) );
+						break;
+					}
 				} else {
 					$oldLink = $skin->linkKnown( $oldSubpage );
 					$newLink = $skin->link( $newSubpage );
@@ -494,11 +530,6 @@ class MovePageForm {
 				}
 			}
 
-			++$count;
-			if( $count >= $wgMaximumMovedPages ) {
-				$extraOutput []= wfMsgExt( 'movepage-max-pages', array( 'parsemag', 'escape' ), $wgLang->formatNum( $wgMaximumMovedPages ) );
-				break;
-			}
 		}
 
 		if( $extraOutput !== array() ) {
@@ -506,17 +537,24 @@ class MovePageForm {
 		}
 
 		# Deal with watches (we don't watch subpages)
-		if( $this->watch ) {
+		if( $this->watch && $wgUser->isLoggedIn() ) {
 			$wgUser->addWatch( $ot );
 			$wgUser->addWatch( $nt );
 		} else {
 			$wgUser->removeWatch( $ot );
 			$wgUser->removeWatch( $nt );
 		}
+		
+		# Re-clear the file redirect cache, which may have been polluted by 
+		# parsing in messages above. See CR r56745.
+		# FIXME: needs a more robust solution inside FileRepo.
+		if( $ot->getNamespace() == NS_FILE ) {
+			RepoGroup::singleton()->getLocalRepo()->invalidateImageRedirect( $ot );
+		}
 	}
 
 	function showLogFragment( $title, &$out ) {
-		$out->addHTML( Xml::element( 'h2', NULL, LogPage::logName( 'move' ) ) );
+		$out->addHTML( Xml::element( 'h2', null, LogPage::logName( 'move' ) ) );
 		LogEventsList::showLogExtract( $out, 'move', $title->getPrefixedText() );
 	}
 

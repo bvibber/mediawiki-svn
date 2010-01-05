@@ -42,20 +42,24 @@ class ApiOpenSearch extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgEnableMWSuggest;
+		global $wgEnableOpenSearchSuggest;
 		$params = $this->extractRequestParams();
 		$search = $params['search'];
 		$limit = $params['limit'];
 		$namespaces = $params['namespace'];
 		$suggest = $params['suggest'];
-		# $wgEnableMWSuggest hit incoming when $wgEnableMWSuggest is disabled
-		if( $suggest && !$wgEnableMWSuggest ) return;
-		
-		// Open search results may be stored for a very long time
-		$this->getMain()->setCacheMaxAge(1200);
 
-		$srchres = PrefixSearch::titleSearch( $search, $limit, $namespaces );
+		// MWSuggest or similar hit
+		if( $suggest && !$wgEnableOpenSearchSuggest )
+			$srchres = array();
+		else {
+			// Open search results may be stored for a very long
+			// time
+			$this->getMain()->setCacheMaxAge(1200);
 
+			$srchres = PrefixSearch::titleSearch( $search, $limit,
+				$namespaces );
+		}
 		// Set top level elements
 		$result = $this->getResult();
 		$result->addValue(null, 0, $search);
@@ -86,7 +90,7 @@ class ApiOpenSearch extends ApiBase {
 			'search' => 'Search string',
 			'limit' => 'Maximum amount of results to return',
 			'namespace' => 'Namespaces to search',
-			'suggest' => 'Do nothing if $wgEnableMWSuggest is false',
+			'suggest' => 'Do nothing if $wgEnableOpenSearchSuggest is false',
 		);
 	}
 

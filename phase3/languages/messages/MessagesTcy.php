@@ -221,7 +221,6 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}} ದ ಬಗ್ಗೆ',
 'aboutpage'            => 'Project:ನಮ್ಮ ಬಗ್ಗೆ',
 'copyright'            => 'ಉಂದು ಈ ಕಾಪಿರೈಟ್‌ಡ್ ಲಭ್ಯವುಂಡು $1.',
-'copyrightpagename'    => '{{SITENAME}} ಕಾಪಿರೈಟ್',
 'copyrightpage'        => '{{ns:project}}:ಕೃತಿಸ್ವಾಮ್ಯತೆಲು',
 'currentevents'        => 'ಇತ್ತೆದ ಸಂಗತಿಲು',
 'currentevents-url'    => 'Project:ಇತ್ತೆದ ಸಂಗತಿಲು',
@@ -292,9 +291,9 @@ $messages = array(
 'nosuchaction'      => 'ಈ ರೀತಿದ ಓವು ಕ್ರಿಯೆಲಾ(ಆಕ್ಶನ್) ಇಜ್ಜಿ',
 'nosuchactiontext'  => 'ಈ URLದ ಒಟ್ಟಿಗೆ ಉಪ್ಪುನ ಕ್ರಿಯೆನ್ ವಿಕಿ ಗುರ್ತ ಪತ್ತುಜಿ',
 'nosuchspecialpage' => 'ಈ ಪುದರ್’ದ ಒವುಲಾ ವಿಷೇಶ ಪುಟ ಇಜ್ಜಿ',
-'nospecialpagetext' => "<big>'''ಈರ್ ಅಸ್ಥಿತ್ವಡ್ ಇಜ್ಜಂದಿನ ವಿಷೇಶ ಪುಟೊನು ಕೇನ್ದರ್.'''</big>
+'nospecialpagetext' => '<strong>ಈರ್ ಅಸ್ಥಿತ್ವಡ್ ಇಜ್ಜಂದಿನ ವಿಷೇಶ ಪುಟೊನು ಕೇನ್ದರ್.</strong>
 
-ಅಸ್ಥಿತ್ವಡ್ ಉಪ್ಪುನಂಚಿನ ವಿಷೇಶ ಪುಟೊಲ್ದ ಪಟ್ಟಿ [[Special:SpecialPages|{{int:specialpages}}]] ಡ್ ಉಂಡು.",
+ಅಸ್ಥಿತ್ವಡ್ ಉಪ್ಪುನಂಚಿನ ವಿಷೇಶ ಪುಟೊಲ್ದ ಪಟ್ಟಿ [[Special:SpecialPages|{{int:specialpages}}]] ಡ್ ಉಂಡು.',
 
 # General errors
 'error'                => 'ದೋಷ',
@@ -424,14 +423,11 @@ $messages = array(
 'searchresulttext'          => '{{SITENAME}} ಡ್ ನಾಡಟ ಮಲ್ಪುನ ಬಗ್ಗೆ ಜಾಸ್ತಿ ಮಾಹಿತಿಗ್ [[{{MediaWiki:Helppage}}|{{int:help}}]] ನ್ ತೂಲೆ.',
 'searchsubtitle'            => 'ಈರ್ \'\'\'[[:$1]]\'\'\' ನ್ ನಾಡಿಯರ್ ([[Special:Prefixindex/$1|"$1" ರ್ದ್ ಶುರುವಾಪುನ ಪೂರ ಪುಟೊಲು]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|"$1" ಗ್ ಲಿಂಕ್ ಕೊರ್ಪುನ ಪೂರ ಪುಟೊಲು]])',
 'searchsubtitleinvalid'     => "'''$1''' ನ್ ಈರ್ ನಾಡಿಯರ್.",
-'noexactmatch'              => "'''\"\$1\". ಅ೦ಚಿನ ವಾ ಪುಟಲಾ ಇಜ್ಜಿ. '''
-ಈರ್ [[:\$1| ಐನ್ ಸುರು ಮಲ್ಪೊಲಿ]].",
-'noexactmatch-nocreate'     => "'''\"\$1\" ಪುದರ್ದ ವಾ ಪುಟೊಲಾ ಇಜ್ಜಿ.'''",
 'notitlematches'            => 'ವಾ ಪುಟೊತ ಶಿರ್ಷಿಕೆಲಾ ಹೊಂದಿಕೆ ಆವೊಂದಿಜ್ಜಿ',
 'notextmatches'             => 'ವಾ ಪುಟೊತ ಪಠ್ಯೊಡುಲಾ ಹೋಲಿಕೆ ಇಜ್ಜಿ',
 'prevn'                     => 'ದುಂಬುದ {{PLURAL:$1|$1}}',
 'nextn'                     => 'ಬೊಕ್ಕದ {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'ತೂಲೆ ($1) ($2) ($3)',
+'viewprevnext'              => 'ತೂಲೆ ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'            => 'Help:ಪರಿವಿಡಿ',
 'search-result-size'        => '$1 ({{PLURAL:$2|೧ ಪದ|$2 ಪದೊಲು}})',
 'search-redirect'           => '(ಪುನರ್ನಿರ್ದೇಶನ $1)',
@@ -442,7 +438,6 @@ $messages = array(
 'search-interwiki-more'     => '(ಮಸ್ತ್)',
 'search-mwsuggest-enabled'  => 'ಸಲಹೆದೊಟ್ಟಿಗೆ',
 'search-mwsuggest-disabled' => 'ಓವು ಸಲಹೆಲಾ ಇಜ್ಜಿ',
-'showingresultstotal'       => "ಒಟ್ಟು '''$3''' ನಾಡಟದ ಫಲಿತಾಂಶೊಲೆಡ್ '''$1 - $2''' ತಿರ್ತ್ ತೋಜಾದ್’ನ್ಡ್",
 'powersearch'               => 'ನಾಡ್’ಲೆ',
 'powersearch-legend'        => 'ಅಡ್ವಾನ್ಸ್’ಡ್ ಸರ್ಚ್',
 'powersearch-ns'            => 'ನೇಮ್-ಸ್ಪೇಸ್’ಲೆಡ್ ನಾಡ್ಲೆ',

@@ -13,7 +13,6 @@ var os_map = {};
 var os_cache = {};
 // global variables for suggest_keypress
 var os_cur_keypressed = 0;
-var os_last_keypress = 0;
 var os_keypressed_count = 0;
 // type: Timer
 var os_timer = null;
@@ -592,14 +591,6 @@ function os_eventKeypress(e){
 		return; // not our event
 
 	var keypressed = os_cur_keypressed;
-	if(keypressed == 38 || keypressed == 40){
-		var d = new Date()
-		var now = d.getTime();
-		if(now - os_last_keypress < 120){
-			os_last_keypress = now;
-			return;
-		}
-	}
 
 	os_keypressed_count++;
 	os_processKey(r,keypressed,targ);
@@ -616,7 +607,6 @@ function os_eventKeydown(e){
 	os_mouse_moved = false;
 
 	os_cur_keypressed = (e.keyCode == undefined) ? e.which : e.keyCode;
-	os_last_keypress = 0;
 	os_keypressed_count = 0;
 }
 
@@ -850,6 +840,11 @@ function os_disableSuggestionsOn(inputId){
 		// remove descriptor
 		os_map[inputId] = null;
 	}
+	
+	// Remove the element from the os_autoload_* arrays
+	var index = os_autoload_inputs.indexOf(inputId);
+	if ( index >= 0 )
+		os_autoload_inputs[index] = os_autoload_forms[index] = '';
 }
 
 /** Initialization, call upon page onload */

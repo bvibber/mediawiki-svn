@@ -177,6 +177,7 @@ $messages = array(
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
+'vector-action-move'        => 'Movi',
 'vector-action-protect'     => 'Ampara',
 'vector-namespace-category' => 'Categoria',
 'vector-namespace-help'     => 'Pàgina de agiudu',
@@ -251,7 +252,6 @@ $messages = array(
 'aboutsite'            => 'A propòsitu de {{SITENAME}}',
 'aboutpage'            => 'Project:Informatziones',
 'copyright'            => 'Cuntènnidu a suta lissèntzia $1.',
-'copyrightpagename'    => 'Copyright de {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Copyrights',
 'currentevents'        => 'Noas',
 'currentevents-url'    => 'Project:Noas',
@@ -314,7 +314,7 @@ $messages = array(
 Est possibile chi sa URL siat istada cracada male, o si siat sighidu unu cullegamentu non vàlidu. 
 Custu iat a poder esser unu bug de {{SITENAME}}.",
 'nosuchspecialpage' => 'Custa pàgina ispetziale no esistit',
-'nospecialpagetext' => "<big>'''As pediu una pàgina ispetziale non balida.'''</big>
+'nospecialpagetext' => "<strong>As pediu una pàgina ispetziale non balida.</strong>
 
 Una lista de pàginas ispetziales bàlidas d'agatas in [[Special:SpecialPages|{{int:specialpages}}]].",
 
@@ -356,8 +356,9 @@ Pro praxeri signala s\'acuntèssidu a unu [[Special:ListUsers/sysop|aministrador
 'ns-specialprotected' => 'Is pàginas ispetziales non podent èssere acontzadas.',
 
 # Login and logout pages
-'logouttext'              => 'Logout effettuato.
-Ora puoi continuare ad usare {{SITENAME}} come utente anonimo (ma il tuo indirizzo IP resterà riconoscibile), oppure puoi nuovamente richiedere il login con il precedente username, oppure come uno diverso.',
+'logouttext'              => "'''Logout effettuato.'''
+
+Ora puoi continuare ad usare {{SITENAME}} come utente anonimo (ma il tuo indirizzo IP resterà riconoscibile), oppure puoi nuovamente richiedere il login con il precedente username, oppure come uno diverso.",
 'welcomecreation'         => '<h2>Benvenuto, $1!</h2><p>Il tuo account è stato creato con successo.<br />Grazie per aver scelto di far crescere {{SITENAME}} con il tuo aiuto.<br />Per rendere {{SITENAME}} più tua, e per usarla più scorrevolmente, non dimenticare di personalizzare le tue preferenze.',
 'yourname'                => 'Nòmene usuàriu',
 'yourpassword'            => 'Password:',
@@ -368,7 +369,7 @@ Ora puoi continuare ad usare {{SITENAME}} come utente anonimo (ma il tuo indiriz
 'userlogin'               => 'Intra / crea account',
 'logout'                  => 'Serra sessione',
 'userlogout'              => 'Essida',
-'nologin'                 => 'Non tenes unu account? $1.',
+'nologin'                 => "Non tenes unu account? '''$1'''.",
 'nologinlink'             => 'Crea unu account',
 'createaccount'           => 'Crea account',
 'gotaccountlink'          => 'Intra',
@@ -465,7 +466,7 @@ Pro pregheri ispetzìfica totu is particolares in antis in carchi siat pregunta 
 Pro creare sa pagina, iscrie in su box inoghe in basciu (abàida sa [[{{MediaWiki:Helppage}}|pàgina de agiudu]] pro àteras informatziones).
 Chi ses intrau inoghe pro isballiu, clicca in su browser tuo su butoni '''back/indietro'''.",
 'noarticletext'                    => 'In custu momentu sa pàgina est bùida.
-Podes [[Special:Search/{{PAGENAME}}|chircare custu tìtulu]] in àteras pàginas, <span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} chircare in is registros ligados] oppuru [{{fullurl:{{FULLPAGENAME}}|action=edit}} acontzare sa pàgina]</span>.',
+Podes [[Special:Search/{{PAGENAME}}|chircare custu tìtulu]] in àteras pàginas, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} chircare in is registros ligados] oppuru [{{fullurl:{{FULLPAGENAME}}|action=edit}} acontzare sa pàgina]</span>.',
 'updated'                          => '(Agiornau)',
 'note'                             => "'''Nota:'''",
 'previewnote'                      => "'''Arregodadia  ca custa est isceti una ANTIPRIMA. Sa versione tua no est istada ancora allogada!'''",
@@ -544,11 +545,6 @@ Legenda: '''({{int:cur}})''' = diferèntzias cun sa versione currente,
 'lineno'                  => 'Lìnia $1:',
 'compareselectedversions' => 'Cumpara versiones scioberadas',
 'editundo'                => 'annudda',
-'diff-movedto'            => 'mòvidu a $1',
-'diff-src'                => 'mitza',
-'diff-with'               => '&#32;cun $1 $2',
-'diff-with-additional'    => '$1 $2',
-'diff-with-final'         => '&#32;e $1 $2',
 
 # Search results
 'searchresults'                  => 'Resurtados de sa chirca',
@@ -556,16 +552,13 @@ Legenda: '''({{int:cur}})''' = diferèntzias cun sa versione currente,
 'searchresulttext'               => 'Pro àteras informatziones a subra sa chirca intre de {{SITENAME}}, càstia [[{{MediaWiki:Helppage}}|Chirca in {{SITENAME}}]].',
 'searchsubtitle'                 => 'Chirca de \'\'\'[[:$1]]\'\'\' ([[Special:Prefixindex/$1|totu is pàginas ca incumentzant pro "$1"]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|totu is pàginas chi ligant a "$1"]])',
 'searchsubtitleinvalid'          => 'As chircadu "$1"',
-'noexactmatch'                   => "'''Sa pàgina \"\$1\" no esistit.''' 
-Podes [[:\$1|creare custa pàgina]].",
-'noexactmatch-nocreate'          => "'''Sa pàgina tìtolada \"\$1\" no esistit.'''",
 'titlematches'                   => 'Nei titoli degli articoli',
 'notitlematches'                 => 'Peruna currispondentzia de is tìtulos de pàgina',
 'textmatches'                    => 'Nel testo degli articoli',
 'notextmatches'                  => "Peruna currispondèntzia in su testu de s'artìculu",
 'prevn'                          => '{{PLURAL:$1|cabudianu|cabudianos $1}}',
 'nextn'                          => '{{PLURAL:$1|imbeniente|imbenientes $1}}',
-'viewprevnext'                   => 'Càstia ($1) ($2) ($3).',
+'viewprevnext'                   => 'Càstia ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'                 => 'Help:Agiudu',
 'searchprofile-articles-tooltip' => 'Chirca in $1',
 'searchprofile-project-tooltip'  => 'Chirca in $1',
@@ -581,7 +574,6 @@ Podes [[:\$1|creare custa pàgina]].",
 'search-mwsuggest-disabled'      => 'chentza impostos',
 'searchall'                      => 'totu',
 'showingresults'                 => "Innoe sighende {{PLURAL:$1|benit amostau '''1''' resurtadu|benint amostaos '''$1''' resurtados}} incumentzende dae su nùmeru '''$2'''.",
-'showingresultstotal'            => "De sighidu {{PLURAL:$4|benit amostadu su resurtadu '''$1''' de '''$3'''|benint amostados is resurtados '''$1 - $2''' de '''$3'''}}",
 'showingresultsheader'           => "{{PLURAL:$5|Resultadu '''$1''' de '''$3'''|Resultadus '''$1 - $2''' de '''$3'''}} pro '''$4'''",
 'nonefound'                      => "'''Annota''': sa chirca est fata pro difetu isceti in unos Nòmene-logos. 
 Prova a scioberai ''totu:'' pro chircare in totu su cuntènnidu (includius pàginas de cuntierra, template, etc), oppuru sciobera comente prefissu su pretzisu Nòmene-logu chi boles.",
@@ -736,7 +728,6 @@ Is pàginas de sa [[Special:Watchlist|watchlist tua]] sunt in '''grassetu'''.",
 # Upload
 'upload'            => 'Càrriga file',
 'uploadbtn'         => 'Càrriga file',
-'reupload'          => 'Torra a carrigare',
 'reuploaddesc'      => 'Torra a su mòdulu pro su carrigamentu.',
 'uploadnologin'     => 'Non ses intrau',
 'uploadnologintext' => 'Su carrigamentu de files est permìtiu isceti a pustis de àere fatu su [[Special:UserLogin|log in]].',
@@ -755,7 +746,6 @@ Càstia sa [[Special:NewFiles|galleria de files nous]] pro una presentada prus b
 'filedesc'          => 'Ogetu',
 'uploadedfiles'     => 'Files carrigadus',
 'badfilename'       => 'Il nome del file immagine è stato convertito in "$1".',
-'fileexists-thumb'  => "<center>'''File pre-esistente'''</center>",
 'successfulupload'  => 'Carrigamentu acabau',
 'uploadwarning'     => 'Avvisu de carrigamentu',
 'savefile'          => 'Sarva file',
@@ -982,7 +972,6 @@ s'ùrtimu contribudori est s'ùnicu autori de custa pàgina.",
 'protectexpiry'               => 'Iscadèntzia:',
 'protect_expiry_invalid'      => "S'iscadèntzia est imbàlida.",
 'protect_expiry_old'          => 'Iscadentzia giai passada.',
-'protect-unchain'             => 'Sblocca is permissos de mòvere',
 'protect-text'                => "Custu modulu serbit pro castiari e cambiari su livellu de amparadura de sa pàgina '''<nowiki>$1</nowiki>'''.",
 'protect-locked-access'       => "Non tenes su permissu pro cambiare is livellus de amparadura de sa pàgina. 
 Is impostatziones atuales pro sa pàgina '''$1''':",

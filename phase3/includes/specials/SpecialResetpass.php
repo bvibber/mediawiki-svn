@@ -102,52 +102,59 @@ class SpecialResetpass extends SpecialPage {
 				array(
 					'method' => 'post',
 					'action' => $self->getLocalUrl(),
-					'id' => 'mw-resetpass-form' ) ) .	
-			Xml::hidden( 'token', $wgUser->editToken() ) .
-			Xml::hidden( 'wpName', $this->mUserName ) .
-			Xml::hidden( 'returnto', $wgRequest->getVal( 'returnto' ) ) .
-			wfMsgExt( 'resetpass_text', array( 'parse' ) ) .
-			Xml::openElement( 'table', array( 'id' => 'mw-resetpass-table' ) ) .
+					'id' => 'mw-resetpass-form' ) ) . "\n" .
+			Xml::hidden( 'token', $wgUser->editToken() ) . "\n" .
+			Xml::hidden( 'wpName', $this->mUserName ) . "\n" .
+			Xml::hidden( 'returnto', $wgRequest->getVal( 'returnto' ) ) . "\n" .
+			wfMsgExt( 'resetpass_text', array( 'parse' ) ) . "\n" .
+			Xml::openElement( 'table', array( 'id' => 'mw-resetpass-table' ) ) . "\n" .
 			$this->pretty( array(
 				array( 'wpName', 'username', 'text', $this->mUserName ),
 				array( 'wpPassword', $oldpassMsg, 'password', $this->mOldpass ),
-				array( 'wpNewPassword', 'newpassword', 'password', '' ),
-				array( 'wpRetype', 'retypenew', 'password', '' ),
-			) ) .
+				array( 'wpNewPassword', 'newpassword', 'password', null ),
+				array( 'wpRetype', 'retypenew', 'password', null ),
+			) ) . "\n" .
 			$rememberMe .
-			'<tr>' .
-				'<td></td>' .
+			"<tr>\n" .
+				"<td></td>\n" .
 				'<td class="mw-input">' .
 					Xml::submitButton( wfMsg( $submitMsg ) ) .
-				'</td>' .
-			'</tr>' .
+				"</td>\n" .
+			"</tr>\n" .
 			Xml::closeElement( 'table' ) .
 			Xml::closeElement( 'form' ) .
-			Xml::closeElement( 'fieldset' )
+			Xml::closeElement( 'fieldset' ) . "\n"
 		);
 	}
 
 	function pretty( $fields ) {
 		$out = '';
-		foreach( $fields as $list ) {
+		foreach ( $fields as $list ) {
 			list( $name, $label, $type, $value ) = $list;
 			if( $type == 'text' ) {
 				$field = htmlspecialchars( $value );
 			} else {
-				$field = Xml::input( $name, 20, $value,
-					array( 'id' => $name, 'type' => $type ) );
+				$attribs = array( 'id' => $name );
+				if ( $name == 'wpNewPassword' || $name == 'wpRetype' ) {
+					$attribs = array_merge( $attribs,
+						User::passwordChangeInputAttribs() );
+				}
+				if ( $name == 'wpPassword' ) {
+					$attribs[] = 'autofocus';
+				}
+				$field = Html::input( $name, $value, $type, $attribs );
 			}
-			$out .= '<tr>';
-			$out .= "<td class='mw-label'>";
+			$out .= "<tr>\n";
+			$out .= "\t<td class='mw-label'>";
 			if ( $type != 'text' )
 				$out .= Xml::label( wfMsg( $label ), $name );
 			else 
 				$out .=  wfMsgHtml( $label );
-			$out .= '</td>';
-			$out .= "<td class='mw-input'>";
+			$out .= "</td>\n";
+			$out .= "\t<td class='mw-input'>";
 			$out .= $field;
-			$out .= '</td>';
-			$out .= '</tr>';
+			$out .= "</td>\n";
+			$out .= "</tr>";
 		}
 		return $out;
 	}

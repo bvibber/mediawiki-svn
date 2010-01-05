@@ -9,10 +9,10 @@
  * @author Rob Church <robchur@gmail.com>
  */
 
-$optionsWithArgs = array( 'extensions', 'comment', 'comment-file', 'comment-ext', 'user', 'license' );
-require_once( 'commandLine.inc' );
+$optionsWithArgs = array( 'extensions', 'comment', 'comment-file', 'comment-ext', 'user', 'license', 'sleep', 'limit', 'from' );
+require_once( dirname(__FILE__) . '/commandLine.inc' );
 require_once( 'importImages.inc' );
-$added = $skipped = $overwritten = 0;
+$processed = $added = $ignored = $skipped = $overwritten = $failed = 0;
 
 echo( "Import Images\n\n" );
 
@@ -25,7 +25,7 @@ if( count( $args ) > 0 ) {
 	if (isset($options['protect']) && isset($options['unprotect']))
 			die("Cannot specify both protect and unprotect.  Only 1 is allowed.\n");
 
-	if ($options['protect'] == 1)
+if (isset($options['protect']) && $options['protect'] == 1)
 			die("You must specify a protection option.\n");
 
 	# Prepare the list of allowed extensions
@@ -45,8 +45,27 @@ if( count( $args ) > 0 ) {
 		$user = User::newFromName( 'Maintenance script' );
 	$wgUser = $user;
 
+	# Get block check. If a value is given, this specified how often the check is performed
+	if ( isset( $options['check-userblock'] ) ) {
+		if ( !$options['check-userblock'] ) $checkUserBlock = 1;
+		else $checkUserBlock = (int)$options['check-userblock']; 
+	} else {
+		$checkUserBlock = false;
+	}
+
+	# Get --from 
+	$from = @$options['from'];
+
+	# Get sleep time. 
+	$sleep = @$options['sleep'];
+	if ( $sleep ) $sleep = (int)$sleep; 
+
+	# Get limit number
+	$limit = @$options['limit'];
+	if ( $limit ) $limit = (int)$limit; 
+
 	# Get the upload comment
-	$comment = 'Importing image file';
+	$comment = NULL;
 
 	if ( isset( $options['comment-file'] ) ) {
 		$comment =  file_get_contents( $options['comment-file'] );
@@ -76,6 +95,23 @@ if( count( $args ) > 0 ) {
 				continue;
 			}
 	
+			if ( $from ) {
+				if ( $from == $title->getDBkey() ) {
+					$from = NULL;
+				} else {
+					$ignored++;
+					continue;
+				}
+			}
+
+			if ( $checkUserBlock && ( ( $processed % $checkUserBlock ) == 0 ) ) {
+				$user->clearInstanceCache( 'name' ); //reload from DB!
+				if ( $user->isBlocked() ) {
+					echo( $user->getName() . " was blocked! Aborting.\n" );
+					break;
+				}
+			}
+
 			# Check existence
 			$image = wfLocalFile( $title );
 			if( $image->exists() ) {
@@ -88,6 +124,19 @@ if( count( $args ) > 0 ) {
 					continue;
 				}
 			} else {
+				if ( isset( $options['skip-dupes'] ) ) {
+					$repo = $image->getRepo();
+					$sha1 = File::sha1Base36( $file ); #XXX: we end up calculating this again when actually uploading. that sucks.
+
+					$dupes = $repo->findBySha1( $sha1 );
+
+					if ( $dupes ) {
+						echo( "{$base} already exists as " . $dupes[0]->getName() . ", skipping\n" );
+						$skipped++;
+						continue;
+					}
+				}
+
 				echo( "Importing {$base}..." );
 				$svar = 'added';
 			}
@@ -98,17 +147,25 @@ if( count( $args ) > 0 ) {
 			if ( $commentExt ) {
 				$f = findAuxFile( $file, $commentExt );
 				if ( !$f ) {
-					echo( " No comment file with extension {$commentExt} found for {$file}, using default comment. " );
+					echo( " No comment file with extension {$commentExt} found for {$file}. " );
+					$commentText = $comment;
 				} else {
 					$commentText = file_get_contents( $f );
 					if ( !$f ) {
-						echo( " Failed to load comment file {$f}, using default comment. " );
+						echo( " Failed to load comment file {$f}. " );
+						$commentText = $comment;
+					} else if ( $comment ) {
+						$commentText = trim( $commentText ) . "\n\n" . trim( $comment );
 					}
 				}
 			}
 
 			if ( !$commentText ) {
 				$commentText = $comment;
+			}
+
+			if ( !$commentText ) {
+				$commentText = 'Importing image file';
 			}
 
 			# Import the file	
@@ -118,6 +175,7 @@ if( count( $args ) > 0 ) {
 				$archive = $image->publish( $file );
 				if( WikiError::isError( $archive ) || !$archive->isGood() ) {
 					echo( "failed.\n" );
+					$failed++;
 					continue;
 				}
 			}
@@ -141,7 +199,6 @@ if( count( $args ) > 0 ) {
 			}
 
 
-			$$svar++;
 			if ( isset( $options['dry'] ) ) {
 				echo( "done.\n" );
 			} else if ( $image->recordUpload( $archive->value, $commentText, $license ) ) {
@@ -164,14 +221,24 @@ if( count( $args ) > 0 ) {
 
 			} else {
 				echo( "failed.\n" );
+				$svar = 'failed';
 			}
 			
+			$$svar++;
+			$processed++;
+
+			if ( $limit && $processed >= $limit )
+				break;
+
+			if ( $sleep )
+				sleep( $sleep );
 		}
 		
 		# Print out some statistics
 		echo( "\n" );
-		foreach( array( 'count' => 'Found', 'added' => 'Added',
-			'skipped' => 'Skipped', 'overwritten' => 'Overwritten' ) as $var => $desc ) {
+		foreach( array( 'count' => 'Found', 'limit' => 'Limit', 'ignored' => 'Ignored', 
+			'added' => 'Added', 'skipped' => 'Skipped', 'overwritten' => 'Overwritten', 
+			'failed' => 'Failed' ) as $var => $desc ) {
 			if( $$var > 0 )
 				echo( "{$desc}: {$$var}\n" );
 		}
@@ -191,7 +258,7 @@ function showUsage( $reason = false ) {
 		echo( $reason . "\n" );
 	}
 
-	echo <<<END
+	echo <<<TEXT
 Imports images and other media files into the wiki
 USAGE: php importImages.php [options] <dir>
 
@@ -199,17 +266,23 @@ USAGE: php importImages.php [options] <dir>
 
 Options:
 --extensions=<exts>	Comma-separated list of allowable extensions, defaults to \$wgFileExtensions
---overwrite		Overwrite existing images if a conflicting-named image is found
+--overwrite		Overwrite existing images with the same name (default is to skip them)
+--limit=<num>		Limit the number of images to process. Ignored or skipped images are not counted.
+--from=<name>		Ignore all files until the one with the given name. Useful for resuming
+                        aborted imports. <name> should be the file's canonical database form.
+--skip-dupes		Skip images that were already uploaded under a different name (check SHA1)
+--sleep=<sec> 		Sleep between files. Useful mostly for debugging.
 --user=<username> 	Set username of uploader, default 'Maintenance script'
---comment=<text>  	Set upload summary comment, default 'Importing image file'
+--check-userblock 	Check if the user got blocked during import.
+--comment=<text>  	Set upload summary comment, default 'Importing image file'.
 --comment-file=<file>  	Set upload summary comment the the content of <file>.
 --comment-ext=<ext>  	Causes the comment for each file to be loaded from a file with the same name
-			but the extension <ext>.
+			but the extension <ext>. If a global comment is also given, it is appended.
 --license=<code>  	Use an optional license template
 --dry			Dry run, don't import anything
 --protect=<protect>     Specify the protect value (autoconfirmed,sysop)
 --unprotect             Unprotects all uploaded images
 
-END;
+TEXT;
 	exit(1);
 }

@@ -56,18 +56,21 @@ class ApiQueryAllUsers extends ApiQueryBase {
 
 		$limit = $params['limit'];
 		$this->addTables('user', 'u1');
+		$useIndex = true;
 
 		if (!is_null($params['from']))
 			$this->addWhere('u1.user_name >= ' . $db->addQuotes($this->keyToTitle($params['from'])));
 
 		if (!is_null($params['prefix']))
-			$this->addWhere('u1.user_name LIKE "' . $db->escapeLike($this->keyToTitle( $params['prefix'])) . '%"');
+			$this->addWhere('u1.user_name' . $db->buildLike($this->keyToTitle($params['prefix']), $db->anyString()));
 
 		if (!is_null($params['group'])) {
+			$useIndex = false;
 			// Filter only users that belong to a given group
 			$this->addTables('user_groups', 'ug1');
-			$this->addWhere('ug1.ug_user=u1.user_id');
-			$this->addWhereFld('ug1.ug_group', $params['group']);
+			$ug1 = $this->getAliasedName('user_groups', 'ug1');
+			$this->addJoinConds(array($ug1 => array('INNER JOIN', array('ug1.ug_user=u1.user_id',
+					'ug1.ug_group' => $params['group']))));
 		}
 
 		if ($params['witheditsonly'])
@@ -103,6 +106,10 @@ class ApiQueryAllUsers extends ApiQueryBase {
 		$this->addFieldsIf('u1.user_registration', $fld_registration);
 
 		$this->addOption('ORDER BY', 'u1.user_name');
+		if ($useIndex) {
+			$u1 = $this->getAliasedName('user', 'u1');
+			$this->addOption('USE INDEX', array($u1 => 'user_name'));
+		}
 
 		$res = $this->select(__METHOD__);
 
@@ -158,7 +165,8 @@ class ApiQueryAllUsers extends ApiQueryBase {
 				if ($fld_editcount)
 					$lastUserData['editcount'] = intval($row->user_editcount);
 				if ($fld_registration)
-					$lastUserData['registration'] = wfTimestamp(TS_ISO_8601, $row->user_registration);
+					$lastUserData['registration'] = $row->user_registration ?
+						wfTimestamp(TS_ISO_8601, $row->user_registration) : '';
 
 			}
 

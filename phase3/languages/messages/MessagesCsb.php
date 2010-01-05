@@ -10,7 +10,6 @@
  * @author Kaszeba
  * @author Leinad
  * @author MinuteElectron
- * @author RobertL
  * @author Warszk
  * @author לערי ריינהארט
  */
@@ -305,7 +304,8 @@ Mòże to zgłoszëc [[Special:ListUsers/sysop|sprôwnikòwi]], pòdając adres�
 Przemëszlë dolmaczënié na [http://translatewiki.net/wiki/Main_Page?setlang=csb translatewiki.net], ekstra ùdbie lokalizacëji softwôrë MediaWiki.",
 
 # Login and logout pages
-'logouttext'                 => 'Të jes ju wëlogòwóny. Mòżesz prôcowac z {{SITENAME}} jakno anonimòwi brëkòwnik abò wlogòwac sã jakno zaregistrowóny brëkòwnik.',
+'logouttext'                 => 'Të jes ju wëlogòwóny.
+Mòżesz prôcowac z {{SITENAME}} jakno anonimòwi brëkòwnik abò wlogòwac sã jakno zaregistrowóny brëkòwnik.',
 'yourname'                   => 'Miono brëkòwnika',
 'yourpassword'               => 'Twòja parola',
 'yourpasswordagain'          => 'Pòwtórzë parolã',
@@ -317,10 +317,10 @@ Przemëszlë dolmaczënié na [http://translatewiki.net/wiki/Main_Page?setlang=c
 'logout'                     => 'Wëlogùjë mie',
 'userlogout'                 => 'Wëlogòwanié',
 'notloggedin'                => 'Felëje logòwóniô',
-'nologin'                    => 'Ni môsz kònta? $1.',
+'nologin'                    => "Ni môsz kònta? '''$1'''.",
 'nologinlink'                => 'Ùsôdzë kònto',
 'createaccount'              => 'Założë nowé kònto',
-'gotaccount'                 => 'Masz ju kònto? $1.',
+'gotaccount'                 => "Masz ju kònto? '''$1'''.",
 'gotaccountlink'             => 'Wlogùjë',
 'createaccountmail'          => 'òb e-mail',
 'badretype'                  => 'Wprowadzone parole jinaczą sã midze sobą.',
@@ -485,11 +485,10 @@ Administrator, chtëren jã zablokòwôł, pòdôł przëczënã: $1",
 'searchresults-title'       => 'Skùtczi szëkbë za "$1"',
 'searchresulttext'          => 'Dlô dobëcô wicy wëdowiédzë ò szëkbie na {{GRAMMAR:D.lp|{{SITENAME}}}}, zdrzë na [[{{MediaWiki:Helppage}}|starnë pòmòcë]].',
 'searchsubtitle'            => 'Skùtczi szëkbë za \'\'\'[[:$1]]\'\'\' ([[Special:Prefixindex/$1|starnë naczënającé sã òd "$1"]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|starnë, chtërné lënkùją do "$1"]])',
-'noexactmatch'              => "'''Nie dô starnë z dokładno taczim titlã \"\$1\"'''. Mòżesz [[:\$1|zrobic ną starnã]].",
 'notitlematches'            => 'Ni nalazłé w titlach',
 'prevn'                     => 'wczasniészé {{PLURAL:$1|$1}}',
 'nextn'                     => 'nôslédné {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'Òbaczë ($1) ($2) ($3).',
+'viewprevnext'              => 'Òbaczë ($1 {{int:pipe-separator}} $2) ($3).',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 słowò|$2 słowa|$2 słów}})',
 'search-section'            => '(dzél $1)',
 'search-interwiki-caption'  => 'Sosterné ùdbë',
@@ -609,7 +608,6 @@ Starnë z [[Special:Watchlist|lëstë ùzérónëch artiklów]] są '''pògrëbi
 # Upload
 'upload'            => 'Wladënk lopka',
 'uploadbtn'         => 'Wladëjë lopk',
-'reupload'          => 'Wëslë jesz rôz',
 'uploadnologin'     => 'Felënk logòwaniô',
 'uploadtext'        => "Brëkùjë negò fòrmùlara do wladënkù lopków.
 Jeżlë chcesz przezdrzec abò szëkac w dotenczas wladowónëch lopkach, biéj do [[Special:FileList|lësta lopków]]. Kòżdi wladënk je registrowóny w [[Special:Log/upload|registrze wladënkù]], a rëmniãcé w [[Special:Log/delete|registrze rëmaniô]].

@@ -21,8 +21,8 @@ if (clientPC.indexOf('opera') != -1) {
 	var is_opera_preseven = window.opera && !document.childNodes;
 	var is_opera_seven = window.opera && document.childNodes;
 	var is_opera_95 = /opera\/(9\.[5-9]|[1-9][0-9])/.test( clientPC );
-	var opera6_bugs = is_opera_preseven; 	
-	var opera7_bugs = is_opera_seven && !is_opera_95; 	
+	var opera6_bugs = is_opera_preseven;
+	var opera7_bugs = is_opera_seven && !is_opera_95;
 	var opera95_bugs = /opera\/(9\.5)/.test( clientPC );
 }
 
@@ -36,7 +36,6 @@ if (!window.onloadFuncts) {
 	var onloadFuncts = [];
 }
 
-// code that is dependent on js2 functions should use js2AddOnloadHook
 function addOnloadHook(hookFunct) {
 	// Allows add-on scripts to add onload functions
 	if(!doneOnloadHook) {
@@ -163,6 +162,7 @@ function changeText(el, newText) {
 }
 
 function toggleToc() {
+	var tocmain = document.getElementById('toc');
 	var toc = document.getElementById('toc').getElementsByTagName('ul')[0];
 	var toggleLink = document.getElementById('togglelink');
 
@@ -170,10 +170,12 @@ function toggleToc() {
 		changeText(toggleLink, tocHideText);
 		toc.style.display = 'block';
 		document.cookie = "hidetoc=0";
+		tocmain.className = 'toc';
 	} else {
 		changeText(toggleLink, tocShowText);
 		toc.style.display = 'none';
 		document.cookie = "hidetoc=1";
+		tocmain.className = 'toc tochidden';
 	}
 }
 
@@ -287,13 +289,19 @@ function updateTooltipAccessKeys( nodeList ) {
  * @return Node -- the DOM node of the new item (an LI element) or null
  */
 function addPortletLink(portlet, href, text, id, tooltip, accesskey, nextnode) {
-	var node = document.getElementById(portlet);
-	if ( !node ) return null;
-	node = node.getElementsByTagName( "ul" )[0];
+	var root = document.getElementById(portlet);
+	if ( !root ) return null;
+	var node = root.getElementsByTagName( "ul" )[0];
 	if ( !node ) return null;
 
+	// unhide portlet if it was hidden before
+	root.className = root.className.replace( /(^| )emptyPortlet( |$)/, "$2" );
+
+	var span = document.createElement( "span" );
+	span.appendChild( document.createTextNode( text ) );
+
 	var link = document.createElement( "a" );
-	link.appendChild( document.createTextNode( text ) );
+	link.appendChild( span );
 	link.href = href;
 
 	var item = document.createElement( "li" );
@@ -341,63 +349,8 @@ function getInnerText(el) {
 	return str;
 }
 
-
-/**
- * Set up accesskeys/tooltips from the deprecated ta array.  If doId
- * is specified, only set up for that id.  Note that this function is
- * deprecated and will not be supported indefinitely -- use
- * updateTooltipAccessKey() instead.
- *
- * @param mixed doId string or null
- */
+/* Dummy for deprecated function */
 function akeytt( doId ) {
-	// A lot of user scripts (and some of the code below) break if
-	// ta isn't defined, so we make sure it is.  Explictly using
-	// window.ta avoids a "ta is not defined" error.
-	if (!window.ta) window.ta = new Array;
-
-	// Make a local, possibly restricted, copy to avoid clobbering
-	// the original.
-	var ta;
-	if ( doId ) {
-		ta = [doId];
-	} else {
-		ta = window.ta;
-	}
-
-	// Now deal with evil deprecated ta
-	var watchCheckboxExists = document.getElementById( 'wpWatchthis' ) ? true : false;
-	for (var id in ta) {
-		var n = document.getElementById(id);
-		if (n) {
-			var a = null;
-			var ak = '';
-			// Are we putting accesskey in it
-			if (ta[id][0].length > 0) {
-				// Is this object a object? If not assume it's the next child.
-
-				if (n.nodeName.toLowerCase() == "a") {
-					a = n;
-				} else {
-					a = n.childNodes[0];
-				}
-			 	// Don't add an accesskey for the watch tab if the watch
-			 	// checkbox is also available.
-				if (a && ((id != 'ca-watch' && id != 'ca-unwatch') || !watchCheckboxExists)) {
-					a.accessKey = ta[id][0];
-					ak = ' ['+tooltipAccessKeyPrefix+ta[id][0]+']';
-				}
-			} else {
-				// We don't care what type the object is when assigning tooltip
-				a = n;
-				ak = '';
-			}
-
-			if (a) {
-				a.title = ta[id][1]+ak;
-			}
-		}
-	}
 }
 
 var checkboxes;
@@ -460,36 +413,6 @@ function checkboxClickHandler(e) {
 	return true;
 }
 
-function toggle_element_activation(ida,idb) {
-	if (!document.getElementById) {
-		return;
-	}
-	//hide and show appropriate upload sizes
-	if(idb == 'wpUploadFileURL'){
-		var e = document.getElementById('mw-upload-maxfilesize');
-		if(e) e.style.display = "none";		
-		
-		var e = document.getElementById('mw-upload-maxfilesize-url');
-		if(e) e.style.display = "block";		
-	}
-	if(idb == 'wpUploadFile'){
-		var e = document.getElementById('mw-upload-maxfilesize-url');
-		if(e) e.style.display =  "none";
-					
-		var e = document.getElementById('mw-upload-maxfilesize');
-		if(e) e.style.display =  "block";
-	}
-	document.getElementById(ida).disabled = true;
-	document.getElementById(idb).disabled = false;
-}
-
-function toggle_element_check(ida,idb) {
-	if (!document.getElementById) {
-		return;
-	}
-	document.getElementById(ida).checked=true;
-	document.getElementById(idb).checked=false;
-}
 
 /*
 	Written by Jonathan Snook, http://www.snook.ca/jonathan
@@ -610,8 +533,7 @@ function ts_makeSortable(table) {
 	for (var i = 0; i < firstRow.cells.length; i++) {
 		var cell = firstRow.cells[i];
 		if ((" "+cell.className+" ").indexOf(" unsortable ") == -1) {
-			cell.innerHTML += '&nbsp;&nbsp;'
-				+ '<a href="#" class="sortheader" '
+			cell.innerHTML += '<a href="#" class="sortheader" '
 				+ 'onclick="ts_resortTable(this);return false;">'
 				+ '<span class="sortarrow">'
 				+ '<img src="'
@@ -671,8 +593,8 @@ function ts_resortTable(lnk) {
 		preprocessor = ts_dateToSortKey;
 	} else if (/^\d\d[\/.-]\d\d[\/.-]\d\d$/.test(itm)) {
 		preprocessor = ts_dateToSortKey;
-	// pound dollar euro yen currency cents
-	} else if (/(^[\u00a3$\u20ac\u00a4\u00a5]|\u00a2$)/.test(itm)) {
+		// (minus sign)([pound dollar euro yen currency]|cents)
+	} else if (/(^([-\u2212] *)?[\u00a3$\u20ac\u00a4\u00a5]|\u00a2$)/.test(itm)) {
 		preprocessor = ts_currencyToSortKey;
 	} else if (ts_number_regex.test(itm)) {
 		preprocessor = ts_parseFloat;
@@ -686,6 +608,9 @@ function ts_resortTable(lnk) {
 		var row = table.rows[j];
 		if((" "+row.className+" ").indexOf(" unsortable ") < 0) {
 			var keyText = ts_getInnerText(row.cells[column]);
+			if(keyText == undefined) {
+				keyText = ""; 
+			}
 			var oldIndex = (reverse ? -j : j);
 			var preprocessed = preprocessor( keyText.replace(/^[\s\xa0]+/, "").replace(/[\s\xa0]+$/, "") );
 
@@ -780,9 +705,9 @@ function ts_initTransformTable() {
 	// if percents and regular numbers aren't being mixed.
 	ts_number_regex = new RegExp(
 		"^(" +
-			"[+-]?[0-9][0-9,]*(\\.[0-9,]*)?(E[+-]?[0-9][0-9,]*)?" + // Fortran-style scientific
+			"[-+\u2212]?[0-9][0-9,]*(\\.[0-9,]*)?(E[-+\u2212]?[0-9][0-9,]*)?" + // Fortran-style scientific
 			"|" +
-			"[+-]?" + digitClass + "+%?" + // Generic localised
+			"[-+\u2212]?" + digitClass + "+%?" + // Generic localised
 		")$", "i"
 	);
 }
@@ -791,7 +716,7 @@ function ts_toLowerCase( s ) {
 	return s.toLowerCase();
 }
 
-function ts_dateToSortKey(date) {	
+function ts_dateToSortKey(date) {
 	// y2k notes: two digit years less than 50 are treated as 20XX, greater than 50 are treated as 19XX
 	if (date.length == 11) {
 		switch (date.substr(3,3).toLowerCase()) {
@@ -838,7 +763,7 @@ function ts_parseFloat( s ) {
 	}
 	if (ts_number_transform_table != false) {
 		var newNum = '', c;
-		
+
 		for ( var p = 0; p < s.length; p++ ) {
 			c = s.charAt( p );
 			if (c in ts_number_transform_table) {
@@ -849,13 +774,12 @@ function ts_parseFloat( s ) {
 		}
 		s = newNum;
 	}
-
-	num = parseFloat(s.replace(/,/g, ""));
-	return (isNaN(num) ? 0 : num);
+	num = parseFloat(s.replace(/[, ]/g, "").replace("\u2212", "-"));
+	return (isNaN(num) ? -Infinity : num);
 }
 
 function ts_currencyToSortKey( s ) {
-	return ts_parseFloat(s.replace(/[^0-9.,]/g,''));
+	return ts_parseFloat(s.replace(/[^-\u22120-9.,]/g,''));
 }
 
 function ts_sort_generic(a, b) {
@@ -932,7 +856,7 @@ function jsMsg( message, className ) {
 	if( className ) {
 		messageDiv.setAttribute( 'class', 'mw-js-message-'+className );
 	}
-	
+
 	if (typeof message === 'object') {
 		while (messageDiv.hasChildNodes()) // Remove old content
 			messageDiv.removeChild(messageDiv.firstChild);
@@ -985,7 +909,6 @@ function runOnloadHook() {
 	doneOnloadHook = true;
 
 	updateTooltipAccessKeys( null );
-	akeytt( null );
 	setupCheckboxShiftClick();
 	sortables_init();
 

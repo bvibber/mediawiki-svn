@@ -1,12 +1,12 @@
 <?php
 require_once( 'SearchEngineTest.php' );
 
+/**
+ * @group Broken
+ */
+
 class SearchMySQL4Test extends SearchEngineTest {
 	var $db;
-
-	function __construct( $name ) {
-		parent::__construct( $name );
-	}
 
 	function setUp() {
 		$GLOBALS['wgContLang'] = new Language;

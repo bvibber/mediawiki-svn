@@ -778,7 +778,7 @@ class LocalFile extends File
 	function recordUpload( $oldver, $desc, $license = '', $copyStatus = '', $source = '',
 		$watch = false, $timestamp = false )
 	{
-		$pageText = UploadForm::getInitialPageText( $desc, $license, $copyStatus, $source );
+		$pageText = SpecialUpload::getInitialPageText( $desc, $license, $copyStatus, $source );
 		if ( !$this->recordUpload2( $oldver, $desc, $pageText ) ) {
 			return false;
 		}
@@ -937,7 +937,7 @@ class LocalFile extends File
 
 		# Commit the transaction now, in case something goes wrong later
 		# The most important thing is that files don't get lost, especially archives
-		$dbw->immediateCommit();
+		$dbw->commit();
 
 		# Invalidate cache for all pages using this file
 		$update = new HTMLCacheUpdate( $this->getTitle(), 'imagelinks' );

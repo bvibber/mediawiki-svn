@@ -123,7 +123,8 @@ class ApiMain extends ApiBase {
 
 
 	private $mPrinter, $mModules, $mModuleNames, $mFormats, $mFormatNames;
-	private $mResult, $mAction, $mShowVersions, $mEnableWrite, $mRequest, $mInternalMode, $mSquidMaxage;
+	private $mResult, $mAction, $mShowVersions, $mEnableWrite, $mRequest;
+	private $mInternalMode, $mSquidMaxage, $mModule;
 
 	/**
 	* Constructs an instance of ApiMain that utilizes the module and format specified by $request.
@@ -190,12 +191,24 @@ class ApiMain extends ApiBase {
 	public function getResult() {
 		return $this->mResult;
 	}
+	
+	/**
+	 * Get the API module object. Only works after executeAction()
+	 */
+	public function getModule() {
+		return $this->mModule;
+	}
 
 	/**
 	 * Only kept for backwards compatibility
 	 * @deprecated Use isWriteMode() instead
 	 */
-	public function requestWriteMode() {}
+	public function requestWriteMode() {
+		if (!$this->mEnableWrite)
+			$this->dieUsageMsg(array('writedisabled'));
+		if (wfReadOnly())
+			$this->dieUsageMsg(array('readonlytext'));		
+	}
 
 	/**
 	 * Set how long the response should be cached.
@@ -368,6 +381,7 @@ class ApiMain extends ApiBase {
 
 		// Instantiate the module requested by the user
 		$module = new $this->mModules[$this->mAction] ($this, $this->mAction);
+		$this->mModule = $module;
 
 		if( $module->shouldCheckMaxlag() && isset( $params['maxlag'] ) ) {
 			// Check for maxlag
@@ -546,6 +560,24 @@ class ApiMain extends ApiBase {
 	 * Override the parent to generate help messages for all available modules.
 	 */
 	public function makeHelpMsg() {
+		global $wgMemc, $wgAPICacheHelp, $wgAPICacheHelpTimeout;
+		$this->mPrinter->setHelp();
+		// Get help text from cache if present
+		$key = wfMemcKey( 'apihelp', $this->getModuleName(),
+			SpecialVersion::getVersion( 'nodb' ).
+			$this->getMain()->getShowVersions() );
+		if ( $wgAPICacheHelp ) {
+			$cached = $wgMemc->get( $key );
+			if ( $cached )
+				return $cached;
+		}
+		$retval = $this->reallyMakeHelpMsg();
+		if ( $wgAPICacheHelp )
+			$wgMemc->set( $key, $retval, $wgAPICacheHelpTimeout );
+		return $retval;
+	}
+	
+	public function reallyMakeHelpMsg() {
 
 		$this->mPrinter->setHelp();
 

@@ -46,6 +46,13 @@ if( is_array( $wgExtraNamespaces ) ) {
 class MWNamespace {
 
 	/**
+	 * These namespaces should always be first-letter capitalized, now and 
+	 * forevermore. Historically, they could've probably been lowercased too, 
+	 * but some things are just too ingrained now. :)
+	 */
+	private static $alwaysCapitalizedNamespaces = array( NS_SPECIAL, NS_USER, NS_MEDIAWIKI );
+
+	/**
 	 * Can pages in the given namespace be moved?
 	 *
 	 * @param $index Int: namespace index
@@ -100,6 +107,15 @@ class MWNamespace {
 			? $index - 1
 			: $index;
 	}
+	
+	/**
+	 * Returns whether the specified namespace exists
+	 */
+	public static function exists( $index ) {
+		global $wgCanonicalNamespaceNames;
+		return isset( $wgCanonicalNamespaceNames[$index] );
+	}
+
 
 	/**
 	 * Returns the canonical (English Wikipedia) name for a given index
@@ -135,7 +151,7 @@ class MWNamespace {
 		if ( array_key_exists( $name, $xNamespaces ) ) {
 			return $xNamespaces[$name];
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 
@@ -181,5 +197,30 @@ class MWNamespace {
 		global $wgNamespacesWithSubpages;
 		return !empty( $wgNamespacesWithSubpages[$index] );
 	}
-
+	
+	/**
+	 * Is the namespace first-letter capitalized?
+	 * 
+	 * @param $index int Index to check
+	 * @return bool
+	 */
+	public static function isCapitalized( $index ) {
+		global $wgCapitalLinks, $wgCapitalLinkOverrides;
+		// Turn NS_MEDIA into NS_FILE
+		$index = $index === NS_MEDIA ? NS_FILE : $index;
+		
+		// Make sure to get the subject of our namespace
+		$index = self::getSubject( $index );
+		
+		// Some namespaces are special and should always be upper case
+		if ( in_array( $index, self::$alwaysCapitalizedNamespaces ) ) {
+			return true;
+		}
+		if ( isset( $wgCapitalLinkOverrides[ $index ] ) ) {
+			// $wgCapitalLinkOverrides is explicitly set
+			return $wgCapitalLinkOverrides[ $index ];
+		}
+		// Default to the global setting
+		return $wgCapitalLinks;
+	}
 }

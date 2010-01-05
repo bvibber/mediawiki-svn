@@ -209,7 +209,6 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}} ਬਾਰੇ',
 'aboutpage'            => 'Project:ਬਾਰੇ',
 'copyright'            => 'ਸਮੱਗਰੀ $1 ਹੇਠ ਉਪਲੱਬਧ ਹੈ।',
-'copyrightpagename'    => '{{SITENAME}} ਕਾਪੀਰਾਈਟ',
 'copyrightpage'        => '{{ns:project}}:ਕਾਪੀਰਾਈਟ',
 'currentevents'        => 'ਮੌਜੂਦਾ ਇਵੈਂਟ',
 'currentevents-url'    => 'Project:ਮੌਜੂਦਾ ਈਵੈਂਟ',
@@ -262,9 +261,9 @@ $messages = array(
 # Main script and global functions
 'nosuchaction'      => 'ਕੋਈ ਇੰਝ ਦਾ ਐਕਸ਼ਨ ਨਹੀਂ',
 'nosuchspecialpage' => 'ਕੋਈ ਇੰਝ ਦਾ ਖਾਸ ਪੇਜ ਨਹੀਂ',
-'nospecialpagetext' => "<big>'''ਤੁਸੀਂ ਇੱਕ ਅਵੈਧ ਖਾਸ ਪੇਜ ਦੀ ਮੰਗ ਕੀਤੀ ਹੈ।'''</big>
+'nospecialpagetext' => '<strong>ਤੁਸੀਂ ਇੱਕ ਅਵੈਧ ਖਾਸ ਪੇਜ ਦੀ ਮੰਗ ਕੀਤੀ ਹੈ।</strong>
 
-A list of valid special pages can be found at [[Special:SpecialPages]].",
+A list of valid special pages can be found at [[Special:SpecialPages]].',
 
 # General errors
 'error'              => 'ਗਲਤੀ',
@@ -277,11 +276,10 @@ A list of valid special pages can be found at [[Special:SpecialPages]].",
 'viewsourcefor'      => '$1 ਲਈ',
 
 # Login and logout pages
-'logouttext'                 => "'''ਹੁਣ ਤੁਸੀਂ ਲਾਗਆਉਟ ਹੋ ਗਏ ਹੋ।'''<br />
-You can continue to use {{SITENAME}} anonymously, or you can log in
-again as the same or as a different user. Note that some pages may
-continue to be displayed as if you were still logged in, until you clear
-your browser cache.",
+'logouttext'                 => "'''ਹੁਣ ਤੁਸੀਂ ਲਾਗਆਉਟ ਹੋ ਗਏ ਹੋ।'''
+
+You can continue to use {{SITENAME}} anonymously, or you can log in again as the same or as a different user.
+Note that some pages may continue to be displayed as if you were still logged in, until you clear your browser cache.",
 'welcomecreation'            => "== ਜੀ ਆਇਆਂ ਨੂੰ, $1! ==
 
 Your account has been created. Don't forget to change your {{SITENAME}} preferences.",
@@ -297,10 +295,10 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'logout'                     => 'ਲਾਗ ਆਉਟ',
 'userlogout'                 => 'ਲਾਗ ਆਉਟ',
 'notloggedin'                => 'ਲਾਗਇਨ ਨਹੀਂ',
-'nologin'                    => 'ਲਾਗਇਨ ਨਹੀਂ ਹੈ? $1.',
+'nologin'                    => "ਲਾਗਇਨ ਨਹੀਂ ਹੈ? '''$1'''.",
 'nologinlink'                => 'ਇੱਕ ਅਕਾਊਂਟ ਬਣਾਓ',
 'createaccount'              => 'ਅਕਾਊਂਟ ਬਣਾਓ',
-'gotaccount'                 => 'ਪਹਿਲਾਂ ਹੀ ਇੱਕ ਅਕਾਊਂਟ ਹੈ? $1.',
+'gotaccount'                 => "ਪਹਿਲਾਂ ਹੀ ਇੱਕ ਅਕਾਊਂਟ ਹੈ? '''$1'''.",
 'gotaccountlink'             => 'ਲਾਗਇਨ',
 'createaccountmail'          => 'ਈਮੇਲ ਨਾਲ',
 'badretype'                  => 'ਤੁਹਾਡੇ ਵਲੋਂ ਦਿੱਤੇ ਪਾਸਵਰਡ ਮਿਲਦੇ ਨਹੀਂ ਹਨ।',
@@ -441,8 +439,8 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'revdelete-nooldid-title' => 'ਕੋਈ ਟਾਰਗੇਟ ਰੀਵਿਜ਼ਨ ਨਹੀਂ',
 'revdelete-legend'        => 'ਪਾਬੰਦੀਆਂ ਸੈੱਟ ਕਰੋ:',
 'revdelete-hide-text'     => 'ਰੀਵਿਜ਼ਨ ਟੈਕਸਟ ਓਹਲੇ',
-'revdelete-hide-name'     => 'ਐਕਸ਼ਨ ਅਤੇ ਟਾਰਗੇਟ ਓਹਲੇ',
 'revdelete-hide-image'    => 'ਫਾਇਲ ਸਮੱਗਰੀ ਓਹਲੇ',
+'revdelete-hide-name'     => 'ਐਕਸ਼ਨ ਅਤੇ ਟਾਰਗੇਟ ਓਹਲੇ',
 'revdelete-log'           => 'ਲਾਗ ਟਿੱਪਣੀ:',
 'revdelete-submit'        => 'ਚੁਣੇ ਰੀਵਿਜ਼ਨ ਉੱਤੇ ਲਾਗੂ ਕਰੋ',
 'pagehist'                => 'ਪੇਜ ਦਾ ਅਤੀਤ',
@@ -453,22 +451,19 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'lineno'                  => 'ਲਾਈਨ $1:',
 'compareselectedversions' => 'ਚੁਣੇ ਵਰਜਨਾਂ ਦੀ ਤੁਲਨਾ',
 'editundo'                => 'ਵਾਪਸ(undo)',
-'diff-width'              => 'ਚੌੜਾਈ',
-'diff-height'             => 'ਉਚਾਈ',
 
 # Search results
 'searchresults'         => 'ਖੋਜ ਨਤੀਜੇ',
 'searchresulttext'      => '{{SITENAME}} ਖੋਜ ਬਾਰੇ ਹੋਰ ਜਾਣਕਾਰੀ ਲਵੋ, ਵੇਖੋ [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "ਤੁਸੀਂ '''[[:$1]]''' ਲਈ ਖੋਜ ਕੀਤੀ।",
 'searchsubtitleinvalid' => "ਤੁਸੀਂ'''$1''' ਲਈ ਖੋਜ ਕੀਤੀ।",
-'noexactmatch'          => "'''\"\$1\"''' ਟਾਇਟਲ ਨਾਲ ਦਾ ਕੋਈ ਪੇਜ ਨਹੀਂ ਹੈ। ਤੁਸੀਂ [[:\$1|ਇਹ ਪੇਜ]] ਬਣਾ ਸਕਦੇ ਹੋ।",
 'titlematches'          => 'ਆਰਟੀਕਲ ਟੈਕਸਟ ਮਿਲਦਾ',
 'notitlematches'        => 'ਕੋਈ ਪੇਜ ਟਾਇਟਲ ਨਹੀਂ ਮਿਲਦਾ',
 'textmatches'           => 'ਪੇਜ ਟੈਕਸਟ ਮਿਲਦਾ',
 'notextmatches'         => 'ਕੋਈ ਪੇਜ ਟੈਕਸਟ ਨਹੀਂ ਮਿਲਦਾ',
 'prevn'                 => 'ਪਿੱਛੇ {{PLURAL:$1|$1}}',
 'nextn'                 => 'ਅੱਗੇ {{PLURAL:$1|$1}}',
-'viewprevnext'          => 'ਵੇਖੋ ($1) ($2) ($3)',
+'viewprevnext'          => 'ਵੇਖੋ ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'        => 'Help:ਸਮੱਗਰੀ',
 'searchall'             => 'ਸਭ',
 'powersearch'           => 'ਖੋਜ',
@@ -557,7 +552,6 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 # Upload
 'upload'               => 'ਫਾਇਲ ਅੱਪਲੋਡ ਕਰੋ',
 'uploadbtn'            => 'ਫਾਇਲ ਅੱਪਲੋਡ ਕਰੋ',
-'reupload'             => 'ਰੀ-ਅੱਪਲੋਡ',
 'reuploaddesc'         => 'ਅੱਪਲੋਡ ਫਾਰਮ ਉੱਤੇ ਜਾਓ।',
 'uploadnologin'        => 'ਲਾਗਇਨ ਨਹੀਂ ਹੋ',
 'uploadnologintext'    => 'ਤੁਹਾਨੂੰ[[Special:UserLogin|logged in] ਕਰਨਾ ਪਵੇਗਾ]
@@ -575,12 +569,11 @@ to upload files.',
 'minlength1'           => 'ਫਾਇਲ ਨਾਂ ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਇੱਕ ਅੱਖਰ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।',
 'badfilename'          => 'ਫਾਇਲ ਨਾਂ "$1" ਬਦਲਿਆ ਗਿਆ ਹੈ।',
 'filetype-missing'     => 'ਫਾਇਲ ਦੀ ਕੋਈ ਐਕਸ਼ਟੇਸ਼ਨ ਨਹੀਂ ਹੈ (ਜਿਵੇਂ ".jpg").',
-'fileexists'           => "ਇਹ ਫਾਇਲ ਨਾਂ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ। ਜੇ ਤੁਸੀਂ ਇਹ ਬਦਲਣ ਬਾਰੇ ਜਾਣਦੇ ਨਹੀਂ ਹੋ ਤਾਂ  '''<tt>$1</tt>''' ਵੇਖੋ ਜੀ।",
-'fileexists-extension' => "ਇਸ ਨਾਂ ਨਾਲ ਰਲਦੀ ਫਾਇਲ ਮੌਜੂਦ ਹੈ:<br />
-ਅੱਪਲੋਡ ਕੀਤੀ ਫਾਇਲ ਦਾ ਨਾਂ: '''<tt>$1</tt>'''<br />
-ਮੌਜੂਦ ਫਾਇਲ ਦਾ ਨਾਂ: '''<tt>$2</tt>'''<br />
+'fileexists'           => "ਇਹ ਫਾਇਲ ਨਾਂ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ। ਜੇ ਤੁਸੀਂ ਇਹ ਬਦਲਣ ਬਾਰੇ ਜਾਣਦੇ ਨਹੀਂ ਹੋ ਤਾਂ  '''<tt>[[:$1]]</tt>''' ਵੇਖੋ ਜੀ। [[$1|thumb]]",
+'fileexists-extension' => "ਇਸ ਨਾਂ ਨਾਲ ਰਲਦੀ ਫਾਇਲ ਮੌਜੂਦ ਹੈ: [[$2|thumb]]
+* ਅੱਪਲੋਡ ਕੀਤੀ ਫਾਇਲ ਦਾ ਨਾਂ: '''<tt>[[:$1]]</tt>'''
+* ਮੌਜੂਦ ਫਾਇਲ ਦਾ ਨਾਂ: '''<tt>[[:$2]]</tt>'''
 ਇੱਕ ਵੱਖਰਾ ਨਾਂ ਚੁਣੋ ਜੀ",
-'fileexists-thumb'     => "<center>'''ਮੌਜੂਦ ਚਿੱਤਰ'''</center>",
 'successfulupload'     => 'ਠੀਕ ਤਰ੍ਹਾਂ ਅੱਪਲੋਡ',
 'uploadwarning'        => 'ਅੱਪਲੋਡ ਚੇਤਾਵਨੀ',
 'savefile'             => 'ਫਾਇਲ ਸੰਭਾਲੋ',
@@ -597,6 +590,7 @@ to upload files.',
 'upload-curl-error28' => 'ਅੱਪਲੋਡ ਟਾਈਮ-ਆਉਟ',
 
 'license'            => 'ਲਾਈਸੈਂਸਿੰਗ:',
+'license-header'     => 'ਲਾਈਸੈਂਸਿੰਗ:',
 'nolicense'          => 'ਕੁਝ ਵੀ ਚੁਣਿਆ',
 'license-nopreview'  => '(ਝਲਕ ਉਪਲੱਬਧ ਨਹੀਂ)',
 'upload_source_file' => ' (ਤੁਹਾਡੇ ਕੰਪਿਊਟਰ ਉੱਤੇ ਇੱਕ ਫਾਇਲ)',

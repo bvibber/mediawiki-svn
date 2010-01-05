@@ -50,7 +50,7 @@ abstract class DatabaseBase {
 	 * Fail function, takes a Database as a parameter
 	 * Set to false for default, 1 for ignore errors
 	 */
-	function failFunction( $function = NULL ) {
+	function failFunction( $function = null ) {
 		return wfSetVar( $this->mFailFunction, $function );
 	}
 
@@ -65,7 +65,7 @@ abstract class DatabaseBase {
 	/**
 	 * Boolean, controls output of large amounts of debug information
 	 */
-	function debug( $debug = NULL ) {
+	function debug( $debug = null ) {
 		return wfSetBit( $this->mFlags, DBO_DEBUG, $debug );
 	}
 
@@ -73,7 +73,7 @@ abstract class DatabaseBase {
 	 * Turns buffering of SQL result sets on (true) or off (false).
 	 * Default is "on" and it should not be changed without good reasons.
 	 */
-	function bufferResults( $buffer = NULL ) {
+	function bufferResults( $buffer = null ) {
 		if ( is_null( $buffer ) ) {
 			return !(bool)( $this->mFlags & DBO_NOBUFFER );
 		} else {
@@ -88,7 +88,7 @@ abstract class DatabaseBase {
 	 * code should use lastErrno() and lastError() to handle the
 	 * situation as appropriate.
 	 */
-	function ignoreErrors( $ignoreErrors = NULL ) {
+	function ignoreErrors( $ignoreErrors = null ) {
 		return wfSetBit( $this->mFlags, DBO_IGNORE, $ignoreErrors );
 	}
 
@@ -96,14 +96,14 @@ abstract class DatabaseBase {
 	 * The current depth of nested transactions
 	 * @param $level Integer: , default NULL.
 	 */
-	function trxLevel( $level = NULL ) {
+	function trxLevel( $level = null ) {
 		return wfSetVar( $this->mTrxLevel, $level );
 	}
 
 	/**
 	 * Number of errors logged, only useful when errors are ignored
 	 */
-	function errorCount( $count = NULL ) {
+	function errorCount( $count = null ) {
 		return wfSetVar( $this->mErrorCount, $count );
 	}
 
@@ -114,19 +114,19 @@ abstract class DatabaseBase {
 	/**
 	 * Properties passed down from the server info array of the load balancer
 	 */
-	function getLBInfo( $name = NULL ) {
+	function getLBInfo( $name = null ) {
 		if ( is_null( $name ) ) {
 			return $this->mLBInfo;
 		} else {
 			if ( array_key_exists( $name, $this->mLBInfo ) ) {
 				return $this->mLBInfo[$name];
 			} else {
-				return NULL;
+				return null;
 			}
 		}
 	}
 
-	function setLBInfo( $name, $value = NULL ) {
+	function setLBInfo( $name, $value = null ) {
 		if ( is_null( $value ) ) {
 			$this->mLBInfo = $name;
 		} else {
@@ -234,14 +234,37 @@ abstract class DatabaseBase {
 	 */
 	function isOpen() { return $this->mOpened; }
 
+	/**
+	 * Set a flag for this connection
+	 *
+	 * @param $flag Integer: DBO_* constants from Defines.php:
+	 *   - DBO_DEBUG: output some debug info (same as debug())
+	 *   - DBO_NOBUFFER: don't buffer results (inverse of bufferResults())
+	 *   - DBO_IGNORE: ignore errors (same as ignoreErrors())
+	 *   - DBO_TRX: automatically start transactions
+	 *   - DBO_DEFAULT: automatically sets DBO_TRX if not in command line mode
+	 *       and removes it in command line mode
+	 *   - DBO_PERSISTENT: use persistant database connection 
+	 */
 	function setFlag( $flag ) {
 		$this->mFlags |= $flag;
 	}
 
+	/**
+	 * Clear a flag for this connection
+	 *
+	 * @param $flag: same as setFlag()'s $flag param
+	 */
 	function clearFlag( $flag ) {
 		$this->mFlags &= ~$flag;
 	}
 
+	/**
+	 * Returns a boolean whether the flag $flag is set for this connection
+	 *
+	 * @param $flag: same as setFlag()'s $flag param
+	 * @return Boolean
+	 */
 	function getFlag( $flag ) {
 		return !!($this->mFlags & $flag);
 	}
@@ -281,7 +304,7 @@ abstract class DatabaseBase {
 		global $wgOut, $wgDBprefix, $wgCommandLineMode;
 		# Can't get a reference if it hasn't been set yet
 		if ( !isset( $wgOut ) ) {
-			$wgOut = NULL;
+			$wgOut = null;
 		}
 
 		$this->mFailFunction = $failFunction;
@@ -938,30 +961,27 @@ abstract class DatabaseBase {
 	
 	/**
 	 * Estimate rows in dataset
-	 * Returns estimated count, based on EXPLAIN output
+	 * Returns estimated count - not necessarily an accurate estimate across different databases,
+	 * so use sparingly
 	 * Takes same arguments as Database::select()
+	 *
+	 * @param string $table table name
+	 * @param array $vars unused
+	 * @param array $conds filters on the table
+	 * @param string $fname function name for profiling
+	 * @param array $options options for select
+	 * @return int row count
 	 */
-	
-	function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
-		$options['EXPLAIN']=true;
-		$res = $this->select ($table, $vars, $conds, $fname, $options );
-		if ( $res === false )
-			return false;
-		if (!$this->numRows($res)) {
-			$this->freeResult($res);
-			return 0;
+	public function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
+		$rows = 0;
+		$res = $this->select ( $table, 'COUNT(*) AS rowcount', $conds, $fname, $options );
+		if ( $res ) {
+			$row = $this->fetchRow( $res );
+			$rows = ( isset( $row['rowcount'] ) ) ? $row['rowcount'] : 0;
 		}
-		
-		$rows=1;
-	
-		while( $plan = $this->fetchObject( $res ) ) {
-			$rows *= ($plan->rows > 0)?$plan->rows:1; // avoid resetting to zero
-		}
-		
-		$this->freeResult($res);
-		return $rows;		
+		$this->freeResult( $res );
+		return $rows;
 	}
-	
 
 	/**
 	 * Removes most variables from an SQL query and replaces them with X or N for numbers.
@@ -998,7 +1018,7 @@ abstract class DatabaseBase {
 		$table = $this->tableName( $table );
 		$res = $this->query( 'DESCRIBE '.$table, $fname );
 		if ( !$res ) {
-			return NULL;
+			return null;
 		}
 
 		$found = false;
@@ -1020,7 +1040,7 @@ abstract class DatabaseBase {
 	function indexExists( $table, $index, $fname = 'Database::indexExists' ) {
 		$info = $this->indexInfo( $table, $index, $fname );
 		if ( is_null( $info ) ) {
-			return NULL;
+			return null;
 		} else {
 			return $info !== false;
 		}
@@ -1040,7 +1060,7 @@ abstract class DatabaseBase {
 		$sql = 'SHOW INDEX FROM '.$table;
 		$res = $this->query( $sql, $fname );
 		if ( !$res ) {
-			return NULL;
+			return null;
 		}
 
 		$result = array();
@@ -1095,7 +1115,7 @@ abstract class DatabaseBase {
 	function indexUnique( $table, $index ) {
 		$indexInfo = $this->indexInfo( $table, $index );
 		if ( !$indexInfo ) {
-			return NULL;
+			return null;
 		}
 		return !$indexInfo[0]->Non_unique;
 	}
@@ -1470,26 +1490,57 @@ abstract class DatabaseBase {
 	}
 
 	/**
-	 * Escape string for safe LIKE usage
+	 * Escape string for safe LIKE usage.
+	 * WARNING: you should almost never use this function directly,
+	 * instead use buildLike() that escapes everything automatically
 	 */
 	function escapeLike( $s ) {
-		$s=str_replace('\\','\\\\',$s);
-		$s=$this->strencode( $s );
-		$s=str_replace(array('%','_'),array('\%','\_'),$s);
+		$s = str_replace( '\\', '\\\\', $s );
+		$s = $this->strencode( $s );
+		$s = str_replace( array( '%', '_' ), array( '\%', '\_' ), $s );
 		return $s;
 	}
 
 	/**
-	 * Convert a wildcard (as used in LIKE) to a regex
-	 * Slashes are escaped, slash terminators included
+	 * LIKE statement wrapper, receives a variable-length argument list with parts of pattern to match
+	 * containing either string literals that will be escaped or tokens returned by anyChar() or anyString().
+	 * Alternatively, the function could be provided with an array of aforementioned parameters.
+	 * 
+	 * Example: $dbr->buildLike( 'My_page_title/', $dbr->anyString() ) returns a LIKE clause that searches
+	 * for subpages of 'My page title'.
+	 * Alternatively: $pattern = array( 'My_page_title/', $dbr->anyString() ); $query .= $dbr->buildLike( $pattern );
+	 *
+	 * @ return String: fully built LIKE statement
 	 */
-	function likeToRegex( $wildcard ) {
-		$r = preg_quote( $wildcard, '/' );
-		$r = strtr( $r, array(
-			'%' => '.*',
-			'_' => '.'
-		) );
-		return "/$r/s";
+	function buildLike() {
+		$params = func_get_args();
+		if (count($params) > 0 && is_array($params[0])) {
+			$params = $params[0];
+		}
+
+		$s = '';
+		foreach( $params as $value) {
+			if( $value instanceof LikeMatch ) {
+				$s .= $value->toString();
+			} else {
+				$s .= $this->escapeLike( $value );
+			}
+		}
+		return " LIKE '" . $s . "' ";
+	}
+
+	/**
+	 * Returns a token for buildLike() that denotes a '_' to be used in a LIKE query
+	 */
+	function anyChar() {
+		return new LikeMatch( '_' );
+	}
+
+	/**
+	 * Returns a token for buildLike() that denotes a '%' to be used in a LIKE query
+	 */
+	function anyString() {
+		return new LikeMatch( '%' );
 	}
 
 	/**
@@ -1498,7 +1549,7 @@ abstract class DatabaseBase {
 	 * subclass will return an integer, and save the value for insertId()
 	 */
 	function nextSequenceValue( $seqName ) {
-		return NULL;
+		return null;
 	}
 
 	/**
@@ -1689,6 +1740,15 @@ abstract class DatabaseBase {
 	}
 
 	/**
+	 * Returns true if current database backend supports ORDER BY or LIMIT for separate subqueries 
+	 * within the UNION construct.
+	 * @return Boolean
+	 */
+	function unionSupportsOrderAndLimit() {
+		return true; // True for almost every DB supported
+	}
+
+	/**
 	 * Construct a UNION query
 	 * This is used for providing overload point for other DB abstractions
 	 * not compatible with the MySQL syntax.
@@ -1728,17 +1788,27 @@ abstract class DatabaseBase {
 
 	/**
 	 * Determines if the last failure was due to a deadlock
+	 * STUB
 	 */
 	function wasDeadlock() {
-		return $this->lastErrno() == 1213;
+		return false;
 	}
 
 	/**
 	 * Determines if the last query error was something that should be dealt 
-	 * with by pinging the connection and reissuing the query
+	 * with by pinging the connection and reissuing the query.
+	 * STUB
 	 */
 	function wasErrorReissuable() {
-		return $this->lastErrno() == 2013 || $this->lastErrno() == 2006;
+		return false;
+	}
+
+	/**
+	 * Determines if the last failure was due to the database being read-only.
+	 * STUB
+	 */
+	function wasReadOnlyError() {
+		return false;
 	}
 
 	/**
@@ -1808,7 +1878,7 @@ abstract class DatabaseBase {
 
 		# Commit any open transactions
 		if ( $this->mTrxLevel ) {
-			$this->immediateCommit();
+			$this->commit();
 		}
 
 		if ( !is_null( $this->mFakeSlaveLag ) ) {
@@ -1921,6 +1991,21 @@ abstract class DatabaseBase {
 	}
 
 	/**
+	 * Creates a new table with structure copied from existing table
+	 * Note that unlike most database abstraction functions, this function does not
+	 * automatically append database prefix, because it works at a lower
+	 * abstraction level.
+	 *
+	 * @param $oldName String: name of table whose structure should be copied
+	 * @param $newName String: name of table to be created
+	 * @param $temporary Boolean: whether the new table should be temporary
+	 * @return Boolean: true if operation was successful
+	 */
+	function duplicateTableStructure( $oldName, $newName, $temporary = false, $fname = 'Database::duplicateTableStructure' ) {
+		throw new MWException( 'DatabaseBase::duplicateTableStructure is not implemented in descendant class' );
+	}
+
+	/**
 	 * Return MW-style timestamp used for MySQL schema
 	 */
 	function timestamp( $ts=0 ) {
@@ -1972,15 +2057,6 @@ abstract class DatabaseBase {
 	abstract function getSoftwareLink();
 
 	/**
-	 * Returns the database type for user-visible purposes
-	 * e.g. DB error messages
-	 * Other uses should just use $wgDBtype
-	 *
-	 * @return String: Database type for use in messages
-	*/
-	abstract function getDBtypeForMsg();
-
-	/**
 	 * A string describing the current software version, like from
 	 * mysql_get_server_info().  Will be listed on Special:Version, etc.
 	 * 
@@ -2021,7 +2097,10 @@ abstract class DatabaseBase {
 				$row->State != 'Connecting to master' && 
 				$row->State != 'Queueing master event to the relay log' &&
 				$row->State != 'Waiting for master update' &&
-				$row->State != 'Requesting binlog dump'
+				$row->State != 'Requesting binlog dump' && 
+				$row->State != 'Waiting to reconnect after a failed master event read' &&
+				$row->State != 'Reconnecting after a failed master event read' &&
+				$row->State != 'Registering slave on master'
 				) {
 				# This is it, return the time (except -ve)
 				if ( $row->Time > 0x7fffffff ) {
@@ -2086,6 +2165,23 @@ abstract class DatabaseBase {
 		$error = $this->sourceStream( $fp, $lineCallback, $resultCallback );
 		fclose( $fp );
 		return $error;
+	}
+
+	/**
+	 * Get the full path of a patch file. Originally based on archive()
+	 * from updaters.inc. Keep in mind this always returns a patch, as 
+	 * it fails back to MySQL if no DB-specific patch can be found
+	 *
+	 * @param $patch String The name of the patch, like patch-something.sql
+	 * @return String Full path to patch file
+	 */
+	public static function patchPath( $patch ) {
+		global $wgDBtype, $IP;
+		if ( file_exists( "$IP/maintenance/$wgDBtype/archives/$name" ) ) {
+			return "$IP/maintenance/$wgDBtype/archives/$name";
+		} else {
+			return "$IP/maintenance/archives/$name";
+		}
 	}
 
 	/**
@@ -2196,9 +2292,11 @@ abstract class DatabaseBase {
 		return $this->indexName( $matches[1] );
 	}
 
-	/*
+	/**
 	 * Build a concatenation list to feed into a SQL query
-	*/
+	 * @param $stringList Array: list of raw SQL expressions; caller is responsible for any quoting
+	 * @return String
+	 */
 	function buildConcat( $stringList ) {
 		return 'CONCAT(' . implode( ',', $stringList ) . ')';
 	}
@@ -2213,7 +2311,9 @@ abstract class DatabaseBase {
 	 * @param $method String: Name of method calling us
 	 * @return bool
 	 */
-	abstract public function lock( $lockName, $method, $timeout = 5 );
+	public function lock( $lockName, $method, $timeout = 5 ) {
+		return true;
+	}
 
 	/**
 	 * Release a lock.
@@ -2226,7 +2326,9 @@ abstract class DatabaseBase {
 	 * by this thread (in which case the lock is not released), and NULL if the named 
 	 * lock did not exist
 	 */
-	abstract public function unlock( $lockName, $method );
+	public function unlock( $lockName, $method ) {
+		return true;
+	}
 
 	/**
 	 * Lock specific tables
@@ -2234,15 +2336,20 @@ abstract class DatabaseBase {
 	 * @param $read Array of tables to lock for read access
 	 * @param $write Array of tables to lock for write access
 	 * @param $method String name of caller
+	 * @param $lowPriority bool Whether to indicate writes to be LOW PRIORITY
 	 */
-	abstract public function lockTables( $read, $write, $method );
+	public function lockTables( $read, $write, $method, $lowPriority = true ) {
+		return true;
+	}
 	
 	/**
 	 * Unlock specific tables
 	 *
 	 * @param $method String the caller
 	 */
-	abstract public function unlockTables( $method );
+	public function unlockTables( $method ) {
+		return true;
+	}
 	
 	/**
 	 * Get search engine class. All subclasses of this
@@ -2381,6 +2488,15 @@ class DBError extends MWException {
 		$this->db =& $db;
 		parent::__construct( $error );
 	}
+
+	function getText() {
+		global $wgShowDBErrorBacktrace;
+		$s = $this->getMessage() . "\n";
+		if ( $wgShowDBErrorBacktrace ) {
+			$s .= "Backtrace:\n" . $this->getTraceAsString() . "\n";
+		}
+		return $s;
+	}
 }
 
 /**
@@ -2408,10 +2524,6 @@ class DBConnectionError extends DBError {
 		return false;
 	}
 	
-	function getText() {
-		return $this->getMessage() . "\n";
-	}
-
 	function getLogMessage() {
 		# Don't send to the exception log
 		return false;
@@ -2428,7 +2540,7 @@ class DBConnectionError extends DBError {
 	}
 
 	function getHTML() {
-		global $wgLang, $wgMessageCache, $wgUseFileCache;
+		global $wgLang, $wgMessageCache, $wgUseFileCache, $wgShowDBErrorBacktrace;
 
 		$sorry = 'Sorry! This site is experiencing technical difficulties.';
 		$again = 'Try waiting a few minutes and reloading.';
@@ -2452,12 +2564,9 @@ class DBConnectionError extends DBError {
 		$noconnect = "<p><strong>$sorry</strong><br />$again</p><p><small>$info</small></p>";
 		$text = str_replace( '$1', $this->error, $noconnect );
 
-		/*
-		if ( $GLOBALS['wgShowExceptionDetails'] ) {
-			$text .= '</p><p>Backtrace:</p><p>' . 
-				nl2br( htmlspecialchars( $this->getTraceAsString() ) ) . 
-				"</p>\n";
-		}*/
+		if ( $wgShowDBErrorBacktrace ) {
+			$text .= '<p>Backtrace:</p><p>' . nl2br( htmlspecialchars( $this->getTraceAsString() ) );
+		}
 
 		$extra = $this->searchForm();
 
@@ -2574,12 +2683,16 @@ class DBQueryError extends DBError {
 	}
 
 	function getText() {
+		global $wgShowDBErrorBacktrace;
 		if ( $this->useMessageCache() ) {
-			return wfMsg( 'dberrortextcl', htmlspecialchars( $this->getSQL() ),
-			  htmlspecialchars( $this->fname ), $this->errno, htmlspecialchars( $this->error ),
-			  htmlspecialchars( $this->db->getDBtypeForMsg() ) ) . "\n";
+			$s = wfMsg( 'dberrortextcl', htmlspecialchars( $this->getSQL() ),
+				htmlspecialchars( $this->fname ), $this->errno, htmlspecialchars( $this->error ) ) . "\n";
+			if ( $wgShowDBErrorBacktrace ) {
+				$s .= "Backtrace:\n" . $this->getTraceAsString() . "\n";
+			}
+			return $s;
 		} else {
-			return $this->getMessage();
+			return parent::getText();
 		}
 	}
 	
@@ -2602,13 +2715,17 @@ class DBQueryError extends DBError {
 	}
 
 	function getHTML() {
+		global $wgShowDBErrorBacktrace;
 		if ( $this->useMessageCache() ) {
-			return wfMsgNoDB( 'dberrortext', htmlspecialchars( $this->getSQL() ),
-			  htmlspecialchars( $this->fname ), $this->errno, htmlspecialchars( $this->error ),
-			  htmlspecialchars( $this->db->getDBtypeForMsg() ) );
+			$s = wfMsgNoDB( 'dberrortext', htmlspecialchars( $this->getSQL() ),
+			  htmlspecialchars( $this->fname ), $this->errno, htmlspecialchars( $this->error ) );
 		} else {
-			return nl2br( htmlspecialchars( $this->getMessage() ) );
+			$s = nl2br( htmlspecialchars( $this->getMessage() ) );
 		}
+		if ( $wgShowDBErrorBacktrace ) {
+			$s .= '<p>Backtrace:</p><p>' . nl2br( htmlspecialchars( $this->getTraceAsString() ) );
+		}
+		return $s;
 	}
 }
 
@@ -2719,5 +2836,21 @@ class ResultWrapper implements Iterator {
 
 	function valid() {
 		return $this->current() !== false;
+	}
+}
+
+/**
+ * Used by DatabaseBase::buildLike() to represent characters that have special meaning in SQL LIKE clauses
+ * and thus need no escaping. Don't instantiate it manually, use Database::anyChar() and anyString() instead.
+ */
+class LikeMatch {
+	private $str;
+
+	public function __construct( $s ) {
+		$this->str = $s;
+	}
+
+	public function toString() {
+		return $this->str;
 	}
 }

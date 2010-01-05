@@ -8,6 +8,7 @@
  * @file
  *
  * @author Chechenka
+ * @author Comp1089
  * @author Girdi
  * @author Mega programmer
  */
@@ -34,7 +35,7 @@ $namespaceNames = array(
 );
 
 $magicWords = array(
-	'notoc'                 => array( '0', '__СДЖдац__', '__БЕЗ_ОГЛ__', '__NOTOC__' ),
+	'notoc'                 => array( '0', '__СДЖдац__', '__БЕЗ_ОГЛ__', '__БЕЗ_ОГЛАВЛЕНИЯ__', '__NOTOC__' ),
 	'nogallery'             => array( '0', '__ГалерйЯц__', '__БЕЗ_ГАЛЕРЕИ__', '__NOGALLERY__' ),
 	'language'              => array( '0', '#МОТТ', '#ЯЗЫК:', '#LANGUAGE:' ),
 	'special'               => array( '0', 'башхо', 'служебная', 'special' ),
@@ -93,7 +94,7 @@ $messages = array(
 'protectthispage'   => 'лар е',
 'unprotect'         => 'Лар ма е',
 'unprotectthispage' => 'Лар ма е',
-'newpage'           => 'Керла таптар',
+'newpage'           => 'Керла тептар',
 'talkpage'          => 'Дийца',
 'talkpagelinktext'  => 'Дийца',
 'talk'              => 'Дийца',
@@ -129,7 +130,7 @@ $messages = array(
 'hidetoc'                 => 'цІанъян',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'      => 'таптар',
+'nstab-main'      => 'тептар',
 'nstab-user'      => 'юзер',
 'nstab-image'     => 'Сурт',
 'nstab-mediawiki' => 'хаам',
@@ -149,10 +150,10 @@ $messages = array(
 'userlogin'          => 'Чу валар',
 'logout'             => 'Ар валар',
 'userlogout'         => 'Ар валар',
-'nologin'            => 'Хьа хинца регистраций яц? $1.',
+'nologin'            => "Хьа хинца регистраций яц? '''$1'''.",
 'nologinlink'        => 'Керл аккаунт кхолла',
 'createaccount'      => 'Керл юзеран регистраци е',
-'gotaccount'         => 'Регистрации йолш вуй хьо? $1.',
+'gotaccount'         => "Регистрации йолш вуй хьо? '''$1'''.",
 'mailmypassword'     => 'Тешам дош хийца',
 'accountcreated'     => 'Аккаунт кхоллна',
 'accountcreatedtext' => '$1 юзер аккаунт кхоллна.',
@@ -231,7 +232,7 @@ $messages = array(
 # Miscellaneous special pages
 'nbytes'            => '$1 {{PLURAL:$1|байт|байтош|байтош}}',
 'ncategories'       => '$1 {{PLURAL:$1|тоба|тобаш|тоба}}',
-'newpages'          => 'Керла таптараш',
+'newpages'          => 'Керла тептараш',
 'newpages-username' => 'Юзер:',
 'move'              => 'цIe хийца',
 
@@ -240,7 +241,7 @@ $messages = array(
 
 # Special:AllPages
 'allpages'       => 'Массо таптараш',
-'allarticles'    => 'Массо таптараш',
+'allarticles'    => 'Массо тептараш',
 'allpagessubmit' => 'кхочушде',
 
 # Special:Categories
@@ -255,10 +256,10 @@ $messages = array(
 'defemailsubject' => '{{SITENAME}} и-пошта',
 
 # Watchlist
-'watchlist'    => 'тергалдеш таптарш',
+'watchlist'    => 'тергалдеш тептараш',
 'mywatchlist'  => 'Сан тергалдо список',
 'watchnologin' => 'Деза чу валар',
-'addedwatch'   => 'Т1етохха хьан тергалдо список чу',
+'addedwatch'   => 'Тlетохха хьан тергалдо список чу',
 'watch'        => 'зен',
 'wlshowlast'   => 'Гайт тІаьххара $1 сахьташ $2 денош $3',
 

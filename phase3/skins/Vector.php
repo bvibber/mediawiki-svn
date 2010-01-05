@@ -2,7 +2,7 @@
 /**
  * Vector - Branch of MonoBook which has many usability improvements and
  * somewhat cleaner code.
- * 
+ *
  * @todo document
  * @file
  * @ingroup Skins
@@ -19,17 +19,17 @@ class SkinVector extends SkinTemplate {
 
 	/* Functions */
 	var $skinname = 'vector', $stylename = 'vector',
-		$template = 'VectorTemplate';
+		$template = 'VectorTemplate', $useHeadElement = true;
 
 	/**
 	 * Initializes output page and sets up skin-specific parameters
 	 * @param object $out Output page object to initialize
 	 */
 	public function initPage( OutputPage $out ) {
-		global $wgStylePath, $wgJsMimeType, $wgStyleVersion;
+		global $wgStylePath, $wgJsMimeType, $wgStyleVersion, $wgScriptPath, $wgVectorExtraStyles;
 		
 		parent::initPage( $out );
-		
+
 		// Append skin-specific styles
 		$out->addStyle( 'vector/main-rtl.css', 'screen', '', 'rtl' );
 		$out->addStyle( 'vector/main-ltr.css', 'screen', '', 'ltr' );
@@ -41,6 +41,13 @@ class SkinVector extends SkinTemplate {
 				$wgStylePath .
 				'/vector/csshover.htc")}</style><![endif]-->'
 		);
+		// Add extra stylesheets
+		// THIS IS ONLY USEFUL FOR EXPERIMENTING WITH DIFFERNT STYLE OPTIONS! THIS WILL BE REMOVED IN THE NEAR FUTURE.
+		if ( is_array( $wgVectorExtraStyles ) ) {
+			foreach ( $wgVectorExtraStyles as $style ) {
+				$out->addStyle( 'vector/' . $style, 'screen' );
+			}
+		}
 		// Append common IE fixes, which perhaps should be included in all
 		// skins, but for now it seems each skin needs to include them
 		// explicitly
@@ -59,8 +66,8 @@ class SkinVector extends SkinTemplate {
 	 * @private
 	 */
 	function buildNavigationUrls() {
-		global $wgContLang, $wgLang, $wgOut, $wgUser, $wgRequest, $wgArticle;
-		global $wgDisableLangConversion;
+		global $wgContLang, $wgLang, $wgOut, $wgUser, $wgRequest, $wgArticle, $wgStylePath;
+		global $wgDisableLangConversion, $wgVectorUseIconWatch;
 
 		wfProfileIn( __METHOD__ );
 
@@ -70,7 +77,7 @@ class SkinVector extends SkinTemplate {
 			'actions' => array(),
 			'variants' => array()
 		);
-		
+
 		// Detects parameters
 		$action = $wgRequest->getVal( 'action', 'view' );
 		$section = $wgRequest->getVal( 'section' );
@@ -87,14 +94,14 @@ class SkinVector extends SkinTemplate {
 
 			// Generates XML IDs from namespace names
 			$subjectId = $this->mTitle->getNamespaceKey( '' );
-			
+
 			if ( $subjectId == 'main' ) {
 				$talkId = 'talk';
 			} else {
 				$talkId = "{$subjectId}_talk";
 			}
 			$currentId = $isTalk ? $talkId : $subjectId;
-			
+
 			// Adds namespace links
 			$links['namespaces'][$subjectId] = $this->tabAction(
 				$subjectPage, 'vector-namespace-' . $subjectId, !$isTalk, '', true
@@ -104,7 +111,7 @@ class SkinVector extends SkinTemplate {
 				$talkPage, 'vector-namespace-talk', $isTalk, '', true
 			);
 			$links['namespaces'][$talkId]['context'] = 'talk';
-			
+
 			// Adds view view link
 			if ( $this->mTitle->exists() ) {
 				$links['views']['view'] = $this->tabAction(
@@ -112,9 +119,9 @@ class SkinVector extends SkinTemplate {
 						'vector-view-view', ( $action == 'view' ), '', true
 				);
 			}
-			
+
 			wfProfileIn( __METHOD__ . '-edit' );
-			
+
 			// Checks if user can...
 			if (
 				// edit the current page
@@ -148,8 +155,9 @@ class SkinVector extends SkinTemplate {
 					// Checks if we should ever show a new section link
 					if ( !$wgOut->forceHideNewSectionLink() ) {
 						// Adds new section link
-						$links['actions']['addsection'] = array(
-							'class' => $section == 'new' ? 'selected' : false,
+						//$links['actions']['addsection']
+						$links['views']['addsection'] = array(
+							'class' => 'collapsible ' . ( $section == 'new' ? 'selected' : false ),
 							'text' => wfMsg( 'vector-action-addsection' ),
 							'href' => $this->mTitle->getLocalUrl(
 								'action=edit&section=new'
@@ -175,7 +183,7 @@ class SkinVector extends SkinTemplate {
 			if ( $this->mTitle->exists() ) {
 				// Adds history view link
 				$links['views']['history'] = array(
-					'class' => ($action == 'history') ? 'selected' : false,
+					'class' => 'collapsible ' . ( ($action == 'history') ? 'selected' : false ),
 					'text' => wfMsg( 'vector-view-history' ),
 					'href' => $this->mTitle->getLocalUrl( 'action=history' ),
 					'rel' => 'archives',
@@ -270,7 +278,6 @@ class SkinVector extends SkinTemplate {
 				}
 			}
 			wfProfileOut( __METHOD__ . '-live' );
-			
 			/**
 			 * The following actions use messages which, if made particular to
 			 * the Vector skin, would break the Ajax code which makes this
@@ -281,32 +288,24 @@ class SkinVector extends SkinTemplate {
 			 * the global versions.
 			 */
 			// Checks if the user is logged in
-			if( $this->loggedin ) {
-				// Checks if the user is watching this page
-				if( !$this->mTitle->userIsWatching() ) {
-					// Adds watch action link
-					$links['actions']['watch'] = array(
-						'class' =>
-							( $action == 'watch' or $action == 'unwatch' ) ?
-								'selected' : false,
-						'text' => wfMsg( 'watch' ),
-						'href' => $this->mTitle->getLocalUrl( 'action=watch' )
-					);
+			if ( $this->loggedin ) {
+				if ( $wgVectorUseIconWatch ) {
+					$class = 'icon ';
+					$place = 'views';
 				} else {
-					// Adds unwatch action link
-					$links['actions']['unwatch'] = array(
-						'class' =>
-							($action == 'unwatch' or $action == 'watch') ?
-								'selected' : false,
-						'text' => wfMsg( 'unwatch' ),
-						'href' => $this->mTitle->getLocalUrl( 'action=unwatch' )
-					);
+					$class = '';
+					$place = 'actions';
 				}
+				$mode = $this->mTitle->userIsWatching() ? 'unwatch' : 'watch';
+				$links[$place][$mode] = array(
+					'class' => $class . ( ( $action == 'watch' || $action == 'unwatch' ) ? ' selected' : false ),
+					'text' => wfMsg( $mode ), // uses 'watch' or 'unwatch' message
+					'href' => $this->mTitle->getLocalUrl( 'action=' . $mode )
+				);
 			}
-			
 			// This is instead of SkinTemplateTabs - which uses a flat array
 			wfRunHooks( 'SkinTemplateNavigation', array( &$this, &$links ) );
-		
+
 		// If it's not content, it's got to be a special page
 		} else {
 			$links['namespaces']['special'] = array(
@@ -351,29 +350,25 @@ class SkinVector extends SkinTemplate {
  * @ingroup Skins
  */
 class VectorTemplate extends QuickTemplate {
-	
+
 	/* Members */
-	
+
 	/**
 	 * @var Cached skin object
 	 */
 	var $skin;
-	
+
 	/* Functions */
-	
+
 	/**
 	 * Outputs the entire contents of the XHTML page
 	 */
 	public function execute() {
 		global $wgRequest, $wgOut, $wgContLang;
-		
+
 		$this->skin = $this->data['skin'];
 		$action = $wgRequest->getText( 'action' );
-		
-		// Suppress warnings to prevent notices about missing indexes in
-		// $this->data (is this really the best way to handle this?)
-		wfSuppressWarnings();
-		
+
 		// Build additional attributes for navigation urls
 		$nav = $this->skin->buildNavigationUrls();
 		foreach ( $nav as $section => $links ) {
@@ -416,16 +411,16 @@ class VectorTemplate extends QuickTemplate {
 		$this->data['variant_urls'] = $nav['variants'];
 		// Build additional attributes for personal_urls
 		foreach ( $this->data['personal_urls'] as $key => $item) {
-			$this->data['personal_urls'][$key]['attributes'] = 
+			$this->data['personal_urls'][$key]['attributes'] =
 				' id="' . Sanitizer::escapeId( "pt-$key" ) . '"';
-			if ( $item['active'] ) {
+			if ( isset( $item['active'] ) && $item['active'] ) {
 				$this->data['personal_urls'][$key]['attributes'] .=
 					' class="active"';
 			}
 			$this->data['personal_urls'][$key]['key'] =
 				$this->skin->tooltipAndAccesskey('pt-'.$key);
 		}
-		
+
 		// Generate additional footer links
 		$footerlinks = array(
 			'info' => array(
@@ -462,7 +457,7 @@ class VectorTemplate extends QuickTemplate {
 				array_reverse( $this->data['personal_urls'] );
 		}
 		// Output HTML Page
-		echo $wgOut->headElement( $this->skin );
+		$this->html( 'headelement' );
 ?>
 	<body<?php if ( $this->data['body_ondblclick'] ): ?> ondblclick="<?php $this->text( 'body_ondblclick' ) ?>"<?php endif; ?> <?php if ( $this->data['body_onload'] ): ?> onload="<?php $this->text( 'body_onload' ) ?>"<?php endif; ?> class="mediawiki <?php $this->text( 'dir' ) ?> <?php $this->text( 'pageclass' ) ?> <?php $this->text( 'skinnameclass' ) ?>" dir="<?php $this->text( 'dir' ) ?>">
 		<div id="page-base" class="noprint"></div>
@@ -536,36 +531,36 @@ class VectorTemplate extends QuickTemplate {
 		<!-- /header -->
 		<!-- panel -->
 			<div id="panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(<?php $this->text( 'logopath' ) ?>);" href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" <?php echo $this->skin->tooltipAndAccesskey( 'p-logo' ) ?>></a></div>
+				<!-- /logo -->
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
 			</div>
 		<!-- /panel -->
-		<!-- foot -->
-		<div id="foot">
+		<!-- footer -->
+		<div id="footer">
 			<?php foreach( $validFooterLinks as $category => $links ): ?>
 				<?php if ( count( $links ) > 0 ): ?>
-				<ul id="foot-<?php echo $category ?>">
+				<ul id="footer-<?php echo $category ?>">
 					<?php foreach( $links as $link ): ?>
 						<?php if( isset( $this->data[$link] ) && $this->data[$link] ): ?>
-						<li id="foot-<?php echo $category ?>-<?php echo $link ?>"><?php $this->html( $link ) ?></li>
+						<li id="footer-<?php echo $category ?>-<?php echo $link ?>"><?php $this->html( $link ) ?></li>
 						<?php endif; ?>
 					<?php endforeach; ?>
 				</ul>
 				<?php endif; ?>
 			<?php endforeach; ?>
-			<ul id="foot-icons" class="noprint">
+			<ul id="footer-icons" class="noprint">
 				<?php if ( $this->data['poweredbyico'] ): ?>
-				<li id="foot-icon-poweredby"><?php $this->html( 'poweredbyico' ) ?></li>
+				<li id="footer-icon-poweredby"><?php $this->html( 'poweredbyico' ) ?></li>
 				<?php endif; ?>
 				<?php if ( $this->data['copyrightico'] ): ?>
-				<li id="foot-icon-copyright"><?php $this->html( 'copyrightico' ) ?></li>
+				<li id="footer-icon-copyright"><?php $this->html( 'copyrightico' ) ?></li>
 				<?php endif; ?>
 			</ul>
 			<div style="clear:both"></div>
 		</div>
-		<!-- /foot -->
-		<!-- logo -->
-			<div id="p-logo"><a style="background-image: url(<?php $this->text( 'logopath' ) ?>);" href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" <?php echo $this->skin->tooltipAndAccesskey( 'p-logo' ) ?>></a></div>
-		<!-- /logo -->
+		<!-- /footer -->
 		<!-- fixalpha -->
 		<script type="<?php $this->text('jsmimetype') ?>"> if ( window.isMSIE55 ) fixalpha(); </script>
 		<!-- /fixalpha -->
@@ -577,10 +572,8 @@ class VectorTemplate extends QuickTemplate {
 	</body>
 </html>
 <?php
-		// We're done with abusing arrays now...
-		wfRestoreWarnings();
 	}
-	
+
 	/**
 	 * Render a series of portals
 	 */
@@ -675,14 +668,14 @@ class VectorTemplate extends QuickTemplate {
 			echo "\n<!-- /{$name} -->\n";
 		}
 	}
-	
+
 	/**
 	 * Render one or more navigations elements by name, automatically reveresed
 	 * when UI is in RTL mode
 	 */
 	private function renderNavigation( $elements ) {
 		global $wgContLang, $wgVectorUseSimpleSearch, $wgStylePath;
-		
+
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
 		if ( !is_array( $elements ) ) {
@@ -696,9 +689,8 @@ class VectorTemplate extends QuickTemplate {
 			echo "\n<!-- {$name} -->\n";
 			switch ( $element ) {
 				case 'NAMESPACES':
-					if ( count( $this->data[ 'namespace_urls' ] ) > 0 ) {
 ?>
-<div id="namespaces" class="vectorTabs">
+<div id="p-namespaces" class="vectorTabs<?php if ( count( $this->data['namespace_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><?php $this->msg('namespaces') ?></h5>
 	<ul <?php $this->html('userlangattributes') ?>>
 		<?php foreach ($this->data['namespace_urls'] as $key => $link ): ?>
@@ -707,12 +699,10 @@ class VectorTemplate extends QuickTemplate {
 	</ul>
 </div>
 <?php
-					}
 				break;
 				case 'VARIANTS':
-					if ( count( $this->data[ 'variant_urls' ] ) > 0 ) {
 ?>
-<div id="variants" class="vectorMenu">
+<div id="p-variants" class="vectorMenu<?php if ( count( $this->data['variant_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><span><?php $this->msg('variants') ?></span><a href="#"></a></h5>
 	<div class="menu">
 		<ul <?php $this->html('userlangattributes') ?>>
@@ -723,26 +713,22 @@ class VectorTemplate extends QuickTemplate {
 	</div>
 </div>
 <?php
-					}
 				break;
 				case 'VIEWS':
-					if ( count( $this->data[ 'view_urls' ] ) > 0 ) {
 ?>
-<div id="views" class="vectorTabs">
+<div id="p-views" class="vectorTabs<?php if ( count( $this->data['view_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><?php $this->msg('views') ?></h5>
 	<ul <?php $this->html('userlangattributes') ?>>
 		<?php foreach ($this->data['view_urls'] as $key => $link ): ?>
-			<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><span><?php echo htmlspecialchars( $link['text'] ) ?></span></a></li>
+			<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo (array_key_exists('img',$link) ?  '<img src="'.$link['img'].'" alt="'.$link['text'].'" />' : '<span>'.htmlspecialchars( $link['text'] ).'</span>') ?></a></li>
 		<?php endforeach; ?>
 	</ul>
 </div>
 <?php
-					}
 				break;
 				case 'ACTIONS':
-					if ( count( $this->data[ 'action_urls' ] ) > 0 ) {
 ?>
-<div id="p-cactions" class="vectorMenu">
+<div id="p-cactions" class="vectorMenu<?php if ( count( $this->data['action_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><span><?php $this->msg('actions') ?></span><a href="#"></a></h5>
 	<div class="menu">
 		<ul <?php $this->html('userlangattributes') ?>>
@@ -753,12 +739,10 @@ class VectorTemplate extends QuickTemplate {
 	</div>
 </div>
 <?php
-					}
 				break;
 				case 'PERSONAL':
-					if ( count( $this->data['personal_urls'] ) > 0 ) {
 ?>
-<div id="p-personal">
+<div id="p-personal" class="<?php if ( count( $this->data['personal_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><?php $this->msg('personaltools') ?></h5>
 	<ul <?php $this->html('userlangattributes') ?>>
 		<?php foreach($this->data['personal_urls'] as $key => $item): ?>
@@ -767,7 +751,6 @@ class VectorTemplate extends QuickTemplate {
 	</ul>
 </div>
 <?php
-					}
 				break;
 				case 'SEARCH':
 ?>
@@ -778,7 +761,7 @@ class VectorTemplate extends QuickTemplate {
 		<?php if ( $wgVectorUseSimpleSearch ): ?>
 		<div id="simpleSearch">
 			<input id="searchInput" name="search" type="text" <?php echo $this->skin->tooltipAndAccesskey( 'search' ); ?> <?php if( isset( $this->data['search'] ) ): ?> value="<?php $this->text( 'search' ) ?>"<?php endif; ?> />
-			<button id="searchButton" type='submit' name='fulltext' <?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?>>&nbsp;</button>
+			<button id="searchButton" type='submit' name='button' <?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?>>&nbsp;</button>
 		</div>
 		<?php else: ?>
 		<input id="searchInput" name="search" type="text" <?php echo $this->skin->tooltipAndAccesskey( 'search' ); ?> <?php if( isset( $this->data['search'] ) ): ?> value="<?php $this->text( 'search' ) ?>"<?php endif; ?> />
@@ -792,6 +775,6 @@ class VectorTemplate extends QuickTemplate {
 				break;
 			}
 			echo "\n<!-- /{$name} -->\n";
-		}	
+		}
 	}
 }

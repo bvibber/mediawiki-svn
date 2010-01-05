@@ -49,7 +49,7 @@ class LocalRepo extends FSRepo {
 				$ext = File::normalizeExtension($ext);
 				$inuse = $dbw->selectField( 'oldimage', '1',
 					array( 'oi_sha1' => $sha1,
-						"oi_archive_name LIKE '%.{$ext}'",
+						'oi_archive_name ' . $dbw->buildLike( $dbw->anyString(), ".$ext" ),
 						$dbw->bitAnd('oi_deleted', File::DELETED_FILE) => File::DELETED_FILE ),
 					__METHOD__, array( 'FOR UPDATE' ) );
 			}
@@ -83,9 +83,9 @@ class LocalRepo extends FSRepo {
 			$title = Title::makeTitle( NS_FILE, $title->getText() );
 		}
 
-		$memcKey = $this->getSharedCacheKey( 'image_redirect', md5( $title->getPrefixedDBkey() ) );
+		$memcKey = $this->getSharedCacheKey( 'image_redirect', md5( $title->getDBkey() ) );
 		if ( $memcKey === false ) {
-			$memcKey = $this->getLocalCacheKey( 'image_redirect', md5( $title->getPrefixedDBkey() ) );
+			$memcKey = $this->getLocalCacheKey( 'image_redirect', md5( $title->getDBkey() ) );
 			$expiry = 300; // no invalidation, 5 minutes
 		} else {
 			$expiry = 86400; // has invalidation, 1 day
@@ -95,7 +95,7 @@ class LocalRepo extends FSRepo {
 			// Does not exist
 			return false;
 		} elseif ( strval( $cachedValue ) !== '' ) {
-			return Title::newFromText( $cachedValue );
+			return Title::newFromText( $cachedValue, NS_FILE );
 		} // else $cachedValue is false or null: cache miss
 
 		$id = $this->getArticleID( $title );
@@ -111,9 +111,9 @@ class LocalRepo extends FSRepo {
 			__METHOD__
 		);
 
-		if( $row ) {
+		if( $row && $row->rd_namespace == NS_FILE ) {
 			$targetTitle = Title::makeTitle( $row->rd_namespace, $row->rd_title );
-			$wgMemc->set( $memcKey, $targetTitle->getPrefixedDBkey(), $expiry );
+			$wgMemc->set( $memcKey, $targetTitle->getDBkey(), $expiry );
 			return $targetTitle;
 		} else {
 			$wgMemc->set( $memcKey, '', $expiry );
@@ -161,30 +161,6 @@ class LocalRepo extends FSRepo {
 		$res->free();
 		return $result;
 	}
-	
-	/*
-	 * Find many files using one query
-	 */
-	function findFiles( $titles ) {
-	 	// FIXME: Only accepts a $titles array where the keys are the sanitized
-	 	// file names.
-	 	 
-		if ( count( $titles ) == 0 ) return array();		
-	
-		$dbr = $this->getSlaveDB();
-		$res = $dbr->select(
-			'image',
-			LocalFile::selectFields(),
-			array( 'img_name' => array_keys( $titles ) )		
-		);
-		
-		$result = array();
-		while ( $row = $res->fetchObject() ) {
-			$result[$row->img_name] = $this->newFileFromRow( $row );
-		}
-		$res->free();
-		return $result;
-	}
 
 	/**
 	 * Get a connection to the slave DB
@@ -217,7 +193,7 @@ class LocalRepo extends FSRepo {
 	 */	
 	function invalidateImageRedirect( $title ) {
 		global $wgMemc;
-		$memcKey = $this->getSharedCacheKey( 'image_redirect', md5( $title->getPrefixedDBkey() ) );
+		$memcKey = $this->getSharedCacheKey( 'image_redirect', md5( $title->getDBkey() ) );
 		if ( $memcKey ) {
 			$wgMemc->delete( $memcKey );
 		}

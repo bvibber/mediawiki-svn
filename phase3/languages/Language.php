@@ -62,6 +62,11 @@ class Language {
 	var $minSearchLength;
 	var $mExtendedSpecialPageAliases;
 
+	/**
+	 * ReplacementArray object caches
+	 */
+	var $transformData = array();
+
 	static public $dataCache;
 	static public $mLangObjCache = array();
 
@@ -1509,9 +1514,15 @@ class Language {
 	}
 
 	function ucfirst( $str ) {
-		if ( empty($str) ) return $str;
-		if ( ord($str[0]) < 128 ) return ucfirst($str);
-		else return self::uc($str,true); // fall back to more complex logic in case of multibyte strings
+		$o = ord( $str );
+		if ( $o < 96 ) {
+			return $str;
+		} elseif ( $o < 128 ) {
+			return ucfirst($str);
+		} else {
+			// fall back to more complex logic in case of multibyte strings
+			return self::uc($str,true); 
+		}
 	}
 
 	function uc( $str, $first = false ) {
@@ -1541,13 +1552,17 @@ class Language {
 	}
 	
 	function lcfirst( $str ) {
-		if ( empty($str) ) return $str;
-		if ( is_string( $str ) && ord($str[0]) < 128 ) {
-			// editing string in place = cool
-			$str[0]=strtolower($str[0]);
+		$o = ord( $str );
+		if ( !$o ) {
+			return strval( $str );
+		} elseif ( $o >= 128 ) {
+			return self::lc( $str, true );
+		} elseif ( $o > 96 ) {
+			return $str;
+		} else {
+			$str[0] = strtolower( $str[0] );
 			return $str;
 		}
-		else return self::lc( $str, true );
 	}
 
 	function lc( $str, $first = false ) {
@@ -1856,12 +1871,74 @@ class Language {
 	}
 
 	/**
+	 * Convert a UTF-8 string to normal form C. In Malayalam and Arabic, this
+	 * also cleans up certain backwards-compatible sequences, converting them 
+	 * to the modern Unicode equivalent.
+	 *
+	 * This is language-specific for performance reasons only.
+	 */
+	function normalize( $s ) {
+		return UtfNormal::cleanUp( $s );
+	}
+
+	/**
+	 * Transform a string using serialized data stored in the given file (which
+	 * must be in the serialized subdirectory of $IP). The file contains pairs
+	 * mapping source characters to destination characters. 
+	 *
+	 * The data is cached in process memory. This will go faster if you have the 
+	 * FastStringSearch extension.
+	 */
+	function transformUsingPairFile( $file, $string ) {
+		if ( !isset( $this->transformData[$file] ) ) {
+			$data = wfGetPrecompiledData( $file );
+			if ( $data === false ) {
+				throw new MWException( __METHOD__.": The transformation file $file is missing" );
+			}
+			$this->transformData[$file] = new ReplacementArray( $data );
+		}
+		return $this->transformData[$file]->replace( $string );
+	}
+
+	/**
 	 * For right-to-left language support
 	 *
 	 * @return bool
 	 */
 	function isRTL() { 
 		return self::$dataCache->getItem( $this->mCode, 'rtl' );
+	}
+	
+	/**
+	 * Return the correct HTML 'dir' attribute value for this language.
+	 * @return String
+	 */
+	function getDir() {
+		return $this->isRTL() ? 'rtl' : 'ltr';
+	}
+	
+	/**
+	 * Return 'left' or 'right' as appropriate alignment for line-start
+	 * for this language's text direction.
+	 *
+	 * Should be equivalent to CSS3 'start' text-align value....
+	 *
+	 * @return String
+	 */
+	function alignStart() {
+		return $this->isRTL() ? 'right' : 'left';
+	}
+	
+	/**
+	 * Return 'right' or 'left' as appropriate alignment for line-end
+	 * for this language's text direction.
+	 *
+	 * Should be equivalent to CSS3 'end' text-align value....
+	 *
+	 * @return String
+	 */
+	function alignEnd() {
+		return $this->isRTL() ? 'left' : 'right';
 	}
 
 	/**
@@ -1900,10 +1977,12 @@ class Language {
 	}
 
 	# Fill a MagicWord object with data from here
-	function getMagic( &$mw ) {
+	function getMagic( $mw ) {
 		if ( !$this->mMagicHookDone ) {
 			$this->mMagicHookDone = true;
+			wfProfileIn( 'LanguageGetMagic' );
 			wfRunHooks( 'LanguageGetMagic', array( &$this->mMagicExtensions, $this->getCode() ) );
+			wfProfileOut( 'LanguageGetMagic' );
 		}
 		if ( isset( $this->mMagicExtensions[$mw->mId] ) ) {
 			$rawEntry = $this->mMagicExtensions[$mw->mId];
@@ -2301,8 +2380,8 @@ class Language {
 
 	/**
 	 * Perform output conversion on a string, and encode for safe HTML output.
-	 * @param $text String
-	 * @param $isTitle Bool -- wtf?
+	 * @param $text String text to be converted
+	 * @param $isTitle Bool whether this conversion is for the article title
 	 * @return string
 	 * @todo this should get integrated somewhere sane
 	 */
@@ -2325,8 +2404,8 @@ class Language {
 	}
 
 
-	function getPreferredVariant( $fromUser = true ) {
-		return $this->mConverter->getPreferredVariant( $fromUser );
+	function getPreferredVariant( $fromUser = true, $fromHeader = false ) {
+		return $this->mConverter->getPreferredVariant( $fromUser, $fromHeader );
 	}
 
 	/**

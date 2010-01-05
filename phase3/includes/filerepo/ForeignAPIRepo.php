@@ -19,16 +19,27 @@
  */
 class ForeignAPIRepo extends FileRepo {
 	var $fileFactory = array( 'ForeignAPIFile', 'newFromTitle' );
-	var $apiThumbCacheExpiry = 0;
+	var $apiThumbCacheExpiry = 86400;
 	protected $mQueryCache = array();
 	protected $mFileExists = array();
 	
 	function __construct( $info ) {
 		parent::__construct( $info );
 		$this->mApiBase = $info['apibase']; // http://commons.wikimedia.org/w/api.php
+		if( isset( $info['apiThumbCacheExpiry'] ) ) {
+			$this->apiThumbCacheExpiry = $info['apiThumbCacheExpiry'];
+		}
 		if( !$this->scriptDirUrl ) {
 			// hack for description fetches
 			$this->scriptDirUrl = dirname( $this->mApiBase );
+		}
+		// If we can cache thumbs we can guess sane defaults for these
+		if( $this->canCacheThumbs() && !$this->url ) {
+			global $wgLocalFileRepo;
+			$this->url = $wgLocalFileRepo['url'];
+		}
+		if( $this->canCacheThumbs() && !$this->thumbUrl ) {
+			$this->thumbUrl = $this->url . '/thumb';
 		}
 	}
 	
@@ -130,7 +141,7 @@ class ForeignAPIRepo extends FileRepo {
 			}
 			$this->mQueryCache[$url] = $data;
 		}
-		return json_decode( $this->mQueryCache[$url], true );
+		return FormatJson::decode( $this->mQueryCache[$url], true );
 	}
 	
 	function getImageInfo( $title, $time = false ) {
@@ -185,7 +196,7 @@ class ForeignAPIRepo extends FileRepo {
 			$foreignUrl = $this->getThumbUrl( $name, $width, $height );
 			
 			// We need the same filename as the remote one :)
-			$fileName = ltrim( substr( $foreignUrl, strrpos( $foreignUrl, '/' ) ), '/' );
+			$fileName = rawurldecode( pathinfo( $foreignUrl, PATHINFO_BASENAME ) );
 			$path = 'thumb/' . $this->getHashPath( $name ) . $name . "/";
 			if ( !is_dir($wgUploadDirectory . '/' . $path) ) {
 				wfMkdirParents($wgUploadDirectory . '/' . $path);
@@ -203,6 +214,20 @@ class ForeignAPIRepo extends FileRepo {
 		}
 	}
 	
+	/**
+	 * @see FileRepo::getZoneUrl()
+	 */
+	function getZoneUrl( $zone ) {
+		switch ( $zone ) {
+			case 'public':
+				return $this->url;
+			case 'thumb':
+				return $this->thumbUrl;
+			default:
+				return parent::getZoneUrl( $zone );
+		}
+	}
+
 	/**
 	 * Are we locally caching the thumbnails?
 	 * @return bool

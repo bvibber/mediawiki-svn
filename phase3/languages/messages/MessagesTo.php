@@ -174,7 +174,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Kau ki: {{SITENAME}}',
 'aboutpage'            => 'Project:ʻo kau ki',
-'copyrightpagename'    => 'Foʻi mafai ke pulusi maʻa e {{SITENAME}}',
 'currentevents'        => 'Ngaahi ongoongo',
 'currentevents-url'    => 'Project:Ongoongo taka',
 'disclaimers'          => 'Ngaahi fakaʻataʻatā',
@@ -260,8 +259,10 @@ Eke: $2",
 'namespaceprotected'   => "ʻOku ʻikai ngofua ke ke fatu ʻa e ngaahi kupu ʻi he vā hingoa '''$1'''.",
 
 # Login and logout pages
-'logouttext'                 => "'''Kuo ʻalu mamaʻo koe he taimí ni.'''<br />
-E lava te ke hoko atu ʻo ngāueʻaki he {{SITENAME}} tatau mo e ʻetita taʻehingoa, pe te ke kau-ki-ai mo e hingoa tatau pe hingoa kehe. Tokanga, mahalo pē ʻe ʻi ai ha ngaahi peesi ʻoku ʻasi ko koe kei kau-ki-ai aʻu ki he taimi te ke fakaʻatā ʻa e fafaʻo fakapalausa.",
+'logouttext'                 => "'''Kuo ʻalu mamaʻo koe he taimí ni.'''
+
+E lava te ke hoko atu ʻo ngāueʻaki he {{SITENAME}} tatau mo e ʻetita taʻehingoa, pe te ke kau-ki-ai mo e hingoa tatau pe hingoa kehe.
+Tokanga, mahalo pē ʻe ʻi ai ha ngaahi peesi ʻoku ʻasi ko koe kei kau-ki-ai aʻu ki he taimi te ke fakaʻatā ʻa e fafaʻo fakapalausa.",
 'welcomecreation'            => '== Tali fiefia, $1! ==
 
 Kuo fakatupu hoʻo tohi kau-ki-ai. ʻOua ʻe ngalo ke liliu hoʻo faʻiteliha {{SITENAME}}.',
@@ -277,10 +278,10 @@ Kuo fakatupu hoʻo tohi kau-ki-ai. ʻOua ʻe ngalo ke liliu hoʻo faʻiteliha {{
 'logout'                     => 'ʻAlu mamaʻo',
 'userlogout'                 => 'ʻAlu mamaʻo',
 'notloggedin'                => 'ʻIkai kau-ki-ai',
-'nologin'                    => 'Teʻeki maʻu haʻo tohi-kau-ki-ai? $1.',
+'nologin'                    => "Teʻeki maʻu haʻo tohi-kau-ki-ai? '''$1'''.",
 'nologinlink'                => 'Fakatupu hoʻo tohi-kau-ki-ai',
 'createaccount'              => 'Fakatupu ʻa e tohi-kau-ki-ai',
-'gotaccount'                 => 'ʻOsi maʻu ʻa e tohi-kau-ki-ai? $1.',
+'gotaccount'                 => "ʻOsi maʻu ʻa e tohi-kau-ki-ai? '''$1'''.",
 'gotaccountlink'             => 'Kau ki ai',
 'createaccountmail'          => 'ʻi he tohila',
 'badretype'                  => 'ʻOku kehe hoʻo ongo leatapu.',
@@ -438,10 +439,9 @@ Ko e ʻuhinga loka ko e $1 ia.",
 # Search results
 'searchresults'             => 'kumi hono ʻātunga',
 'searchresults-title'       => 'kumi "$1" hono ʻātunga',
-'noexactmatch'              => "'''ʻOku ʻikai ʻi ai ha kupu mo hono ʻuluʻitohi \"\$1\".''' ʻOku lava ke ke [[:\$1|fakatupu he kupú ni]].",
 'prevn'                     => '{{PLURAL:$1|$1}} ki muʻa',
 'nextn'                     => '{{PLURAL:$1|$1}} hoko',
-'viewprevnext'              => 'Vakai ki he ($1) ($2) ($3).',
+'viewprevnext'              => 'Vakai ki he ($1 {{int:pipe-separator}} $2) ($3).',
 'search-suggest'            => 'Mahalo pē naʻa ke fiemaʻu: $1',
 'search-interwiki-more'     => '(lahi ange)',
 'search-mwsuggest-enabled'  => 'mo e fokotuʻu atu',
@@ -545,7 +545,6 @@ Ko e ʻuhinga loka ko e $1 ia.",
 # Upload
 'upload'                      => 'Hiki hake ʻa e faile',
 'uploadbtn'                   => 'Hiki hake',
-'reupload'                    => 'Toe hiki hake',
 'reuploaddesc'                => 'Foki ki he foomu hiki',
 'uploadnologin'               => 'Teʻeki kau ki ai',
 'uploadnologintext'           => 'ʻOku pau ke [[Special:UserLogin|kau-ki-ai]] kapau te ke fiehiki hake ha faile.',
@@ -564,7 +563,8 @@ Ko e ʻuhinga loka ko e $1 ia.",
 'badfilename'                 => 'Naʻe liliu ko e hingoa ʻo e faile ki he "$1".',
 'largefileserver'             => 'ʻOku fuʻu lahi ange ʻa e failé ni ʻi he tauhia hono ʻinasi.',
 'emptyfile'                   => 'ʻOku ngalingali maha ʻa e faile naʻa ke hiki hake ai. Mahalo pē naʻa ke fakasipelahalaʻi ki he hingoa. Kātaki vakai ke ke pau te ke fiehiki ʻa e failé ni.',
-'fileexists'                  => "ʻOku toka ʻi ai ha peesi mo e hingoa ē; fakamolemole fakamoʻoniʻi ki he '''<tt>$1</tt>''' kapau ʻoku ʻikai te ke pau ʻo te ke fieliliu ia.",
+'fileexists'                  => "ʻOku toka ʻi ai ha peesi mo e hingoa ē; fakamolemole fakamoʻoniʻi ki he '''<tt>[[:$1]]</tt>''' kapau ʻoku ʻikai te ke pau ʻo te ke fieliliu ia.
+[[$1|thumb]]",
 'fileexists-forbidden'        => 'ʻOku toka ʻi ai ha peesi mo e hingoa ē, pea ʻe ʻikai lava liliu; fakamolemole ʻe foki pea hiki hake ʻa e failé ni mo e ha hingoa foʻou. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'ʻOku toka ʻi ai ha peesi mo e hingoa ē ʻi he kalasi vahevahe; fakamolemole ʻe foki pea hiki hake ʻa e failé ni mo e ha hingoa foʻou. [[File:$1|thumb|center|$1]]',
 'successfulupload'            => 'Kuo ola ʻa e hiki hake',
@@ -580,8 +580,9 @@ Ko e ʻuhinga loka ko e $1 ia.",
 'watchthisupload'             => 'Leʻo he pēsí ni',
 'filewasdeleted'              => 'Kuo hiki hake ʻa e faile mo e hingoa ʻeni pea naʻe tāmateʻi ia. Kuo pau te ke vakai ki he $1 ʻi muʻa haʻo feinga ʻo toe hiki hake ia.',
 
-'license'   => 'Laiseni:',
-'nolicense' => 'ʻIkai fili ha taha',
+'license'        => 'Laiseni:',
+'license-header' => 'Laiseni:',
+'nolicense'      => 'ʻIkai fili ha taha',
 
 # Special:ListFiles
 'listfiles_search_for'  => 'Kumi ki he hingoa ʻo e faitā:',

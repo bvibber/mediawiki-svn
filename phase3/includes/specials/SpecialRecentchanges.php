@@ -55,7 +55,7 @@ class SpecialRecentChanges extends SpecialPage {
 			$this->parseParameters( $parameters, $opts );
 		}
 
-		$opts->validateIntBounds( 'limit', 0, 500 );
+		$opts->validateIntBounds( 'limit', 0, 5000 );
 		return $opts;
 	}
 
@@ -67,8 +67,8 @@ class SpecialRecentChanges extends SpecialPage {
 	public function feedSetup() {
 		global $wgFeedLimit, $wgRequest;
 		$opts = $this->getDefaultOptions();
-		# Feed is cached on limit,hideminor; other params would randomly not work
-		$opts->fetchValuesFromRequest( $wgRequest, array( 'limit', 'hideminor' ) );
+		# Feed is cached on limit,hideminor,namespace; other params would randomly not work
+		$opts->fetchValuesFromRequest( $wgRequest, array( 'limit', 'hideminor', 'namespace' ) );
 		$opts->validateIntBounds( 'limit', 0, $wgFeedLimit );
 		return $opts;
 	}
@@ -117,7 +117,7 @@ class SpecialRecentChanges extends SpecialPage {
 		$target = isset($opts['target']) ? $opts['target'] : ''; // RCL has targets
 		if( $feedFormat ) {
 			list( $feed, $feedObj ) = $this->getFeedObject( $feedFormat );
-			$feed->execute( $feedObj, $rows, $opts['limit'], $opts['hideminor'], $lastmod, $target );
+			$feed->execute( $feedObj, $rows, $opts['limit'], $opts['hideminor'], $lastmod, $target, $opts['namespace'] );
 		} else {
 			$this->webOutput( $rows, $opts );
 		}
@@ -306,7 +306,11 @@ class SpecialRecentChanges extends SpecialPage {
 		// Is there either one namespace selected or excluded?
 		// Tag filtering also has a better index.
 		// Also, if this is "all" or main namespace, just use timestamp index.
-		if( is_null($namespace) || $invert || $opts['tagfilter'] ) {
+		if( is_null($namespace)
+			|| $invert
+			|| $opts['tagfilter'] 
+			|| !$dbr->unionSupportsOrderAndLimit() )
+		{
 			$res = $dbr->select( $tables, '*', $conds, __METHOD__,
 				array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => $limit ) +
 				$query_options,
@@ -414,7 +418,7 @@ class SpecialRecentChanges extends SpecialPage {
 
 		$defaults = $opts->getAllValues();
 		$nondefaults = $opts->getChangedValues();
-		$opts->consumeValues( array( 'namespace', 'invert' ) );
+		$opts->consumeValues( array( 'namespace', 'invert', 'tagfilter' ) );
 
 		$panel = array();
 		$panel[] = $this->optionsPanel( $defaults, $nondefaults );
@@ -456,6 +460,8 @@ class SpecialRecentChanges extends SpecialPage {
 		$wgOut->addHTML(
 			Xml::fieldset( wfMsg( 'recentchanges-legend' ), $panelString, array( 'class' => 'rcoptions' ) )
 		);
+
+		$wgOut->addHTML( ChangesList::flagLegend() );
 
 		$this->setBottomText( $wgOut, $opts );
 	}

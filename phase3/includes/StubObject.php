@@ -88,6 +88,10 @@ class StubObject {
 	 */
 	function _unstub( $name = '_unstub', $level = 2 ) {
 		static $recursionLevel = 0;
+
+		if ( !($GLOBALS[$this->mGlobal] instanceof StubObject) )
+			return $GLOBALS[$this->mGlobal]; // already unstubbed.
+		
 		if ( get_class( $GLOBALS[$this->mGlobal] ) != $this->mClass ) {
 			$fname = __METHOD__.'-'.$this->mGlobal;
 			wfProfileIn( $fname );
@@ -96,7 +100,7 @@ class StubObject {
 				throw new MWException( "Unstub loop detected on call of \${$this->mGlobal}->$name from $caller\n" );
 			}
 			wfDebug( "Unstubbing \${$this->mGlobal} on call of \${$this->mGlobal}::$name from $caller\n" );
-			$GLOBALS[$this->mGlobal] = $this->_newObject();
+			$obj = $GLOBALS[$this->mGlobal] = $this->_newObject();
 			--$recursionLevel;
 			wfProfileOut( $fname );
 		}
@@ -144,57 +148,12 @@ class StubUserLang extends StubObject {
 	function _newObject() {
 		global $wgContLanguageCode, $wgRequest, $wgUser, $wgContLang;
 		$code = $wgRequest->getVal( 'uselang', $wgUser->getOption( 'language' ) );
+		// BCP 47 - letter case MUST NOT carry meaning
+		$code = strtolower( $code );
 
 		# Validate $code
 		if( empty( $code ) || !preg_match( '/^[a-z-]+$/', $code ) || ( $code === 'qqq' ) ) {
 			wfDebug( "Invalid user language code\n" );
-			$code = $wgContLanguageCode;
-		}
-
-		if( $code === $wgContLanguageCode ) {
-			return $wgContLang;
-		} else {
-			$obj = Language::factory( $code );
-			return $obj;
-		}
-	}
-}
-
-/**
- * Stub object for the user variant. It depends of the user preferences and
- * "variant" parameter that can be passed to index.php. This object have to be
- * in $wgVariant global.
- */
-class StubUserVariant extends StubObject {
-
-	function __construct() {
-		parent::__construct( 'wgVariant' );
-	}
-
-	function __call( $name, $args ) {
-		return $this->_call( $name, $args );
-	}
-
-	function _newObject() {
-		global $wgContLanguageCode, $wgRequest, $wgUser, $wgContLang;
-
-		if( $wgContLang->hasVariants() ) {
-			$code = $wgRequest->getVal( 'variant', $wgUser->getOption( 'variant' ) );
-		} else {
-			$code = $wgRequest->getVal( 'variant', $wgUser->getOption( 'language' ) );
-		}
-
-		// if variant is explicitely selected, use it instead the one from wgUser
-		// see bug #7605
-		if( $wgContLang->hasVariants() && in_array($code, $wgContLang->getVariants()) ){
-			$variant = $wgContLang->getPreferredVariant();
-			if( $variant != $wgContLanguageCode )
-				$code = $variant;
-		}
-
-		# Validate $code
-		if( empty( $code ) || !preg_match( '/^[a-z-]+$/', $code ) || ( $code === 'qqq' ) ) {
-			wfDebug( "Invalid user variant code\n" );
 			$code = $wgContLanguageCode;
 		}
 

@@ -24,9 +24,6 @@ $messages = array(
 'post-expand-template-inclusion-category' => 'Seiten, in denen die maximale Grösse eingebundener Vorlagen überschritten ist',
 'post-expand-template-argument-warning'   => 'Warnung: Diese Seite enthält mindestens ein Argument in einer Vorlage, das expandiert zu gross ist. Diese Argumente werden ignoriert.',
 
-# Diffs
-'diff-big' => "'''gross'''",
-
 # Search results
 'nonefound' => "'''Hinweis:''' Es werden standardmässig nur einige Namensräume durchsucht. Setze ''all:'' vor deinen Suchbegriff, um alle Seiten (inkl. Diskussionsseiten, Vorlagen usw.) zu durchsuchen oder gezielt den Namen des zu durchsuchenden Namensraumes.",
 
@@ -37,9 +34,9 @@ $messages = array(
 
 # Upload
 'largefileserver'      => 'Die Datei ist grösser als die vom Server eingestellte Maximalgrösse.',
-'fileexists-extension' => "Eine Datei mit ähnlichem Namen existiert bereits:<br />
-Name der hochzuladenden Datei: '''<tt>$1</tt>'''<br />
-Name der vorhandenen Datei: '''<tt>$2</tt>'''<br />
+'fileexists-extension' => "Eine Datei mit ähnlichem Namen existiert bereits: [[$2|thumb]]
+* Name der hochzuladenden Datei: '''<tt>[[:$1]]</tt>'''
+* Name der vorhandenen Datei: '''<tt>[[:$2]]</tt>'''
 Nur die Dateiendung unterscheidet sich in Gross-/Kleinschreibung. Bitte prüfe, ob die Dateien inhaltlich identisch sind.",
 'file-thumbnail-no'    => "Der Dateiname beginnt mit '''<tt>$1</tt>'''. Dies deutet auf ein Bild verringerter Grösse ''(thumbnail)'' hin.
 Bitte prüfe, ob du das Bild in voller Auflösung vorliegen hast und lade dieses unter dem Originalnamen hoch.",

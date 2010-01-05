@@ -21,7 +21,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	font-size: 9.75pt;
+	font-size: 1em;
 }
 body {
 	background-color: #f3f3f3;
@@ -29,7 +29,7 @@ body {
 }
 /* Content */
 #content {
-	margin-right: 12em;
+	margin-right: 10em;
 	padding: 1em;
 	background-image: url(images/border.png);
 	background-position: top right;
@@ -38,16 +38,16 @@ body {
 }
 /* Head */
 #page-base {
-	height: 6em;
+	height: 5em;
 	background-color: white;
 	background-image: url(images/page-fade.png);
 	background-position: bottom right;
 	background-repeat: repeat-x;
 }
 #head-base {
-	margin-top: -6em;
-	margin-right: 12em;
-	height: 6em;
+	margin-top: -5em;
+	margin-right: 10em;
+	height: 5em;
 	background-image: url(images/border.png);
 	background-position: bottom right;
 	background-repeat: repeat-x;
@@ -62,6 +62,10 @@ body {
 	margin: 0;
 	padding: 0;
 }
+	/* Hide empty portlets */
+	div.emptyPortlet {
+		display: none;
+	}
 	/* Personal */
 	#p-personal {
 		position: absolute;
@@ -78,22 +82,23 @@ body {
 	}
 	/* @noflip */
 	#p-personal li {
+		line-height: 1.125em;
 		float: left;
 	}
 	#p-personal li {
 		margin-right: 0.75em;
 		margin-top: 0.5em;
-		font-size: 0.9em;
+		font-size: 0.75em;
 	}
 	/* Navigation Containers */
 	#left-navigation {
 		position: absolute;
-		right: 12em;
-		top: 3em;
+		right: 10em;
+		top: 2.5em;
 	}
 	#right-navigation {
 		float: left;
-		margin-top: 3em;
+		margin-top: 2.5em;
 	}
 	/* Navigation Labels */
 	div.vectorTabs h5,
@@ -127,6 +132,7 @@ body {
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	div.vectorTabs ul li {
+		line-height: 1.125em;
 		display: inline-block;
 		height: 100%;
 		margin: 0;
@@ -135,6 +141,7 @@ body {
 		background-image: url(images/tab-normal-fade.png);
 		background-position: bottom right;
 		background-repeat: repeat-x;
+		white-space:nowrap;
 	}
 	/* IGNORED BY IE6 */
 	div.vectorTabs ul > li {
@@ -146,9 +153,9 @@ body {
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	div.vectorTabs li a {
 		display: inline-block;
-		height: 3em;
-		padding-right: 0.5em;
-		padding-left: 0.5em;
+		height: 2.5em;
+		padding-right: 0.4em;
+		padding-left: 0.4em;
 		background-image: url(images/tab-break.png);
 		background-position: bottom left;
 		background-repeat: no-repeat;
@@ -157,6 +164,9 @@ body {
 	div.vectorTabs li a span {
 		color: #0645ad;
 		cursor: pointer;
+	}
+	div.vectorTabs li a span {
+		font-size: 0.8em;
 	}
 	/* IGNORED BY IE6 */
 	div.vectorTabs li > a {
@@ -195,22 +205,37 @@ body {
 		background-position: center center;
 		background-repeat: no-repeat;
 	}
+	/* @noflip */
 	body.rtl div.vectorMenu {
 		direction: rtl;
 	}
+	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	/* @noflip */
-	div.vectorMenu h5 {
+	#head div.vectorMenu h5 {
 		float: left;
+		background-image: url(images/tab-break.png);
+		background-repeat: no-repeat;
+	}
+	/* IGNORED BY IE6 */
+	#head div.vectorMenu > h5 {
+		background-image: none;
+	}
+	#head div.vectorMenu h5 {
+		background-position: bottom right;
+		margin-right: -1px;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
+	/* @noflip */
 	div.vectorMenu h5 a {
 		display: inline-block;
 		width: 24px;
-		height: 3em;
+		height: 2.5em;
 		text-decoration: none;
 		background-image: url(images/tab-break.png);
-		background-position: bottom left;
 		background-repeat: no-repeat;
+	}
+	div.vectorMenu h5 a{
+		background-position: bottom left;
 	}
 	/* IGNORED BY IE6 */
 	div.vectorMenu h5 > a {
@@ -223,17 +248,20 @@ body {
 		text-align: right;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
+	/* @noflip */
 	body.rtl div.vectorMenu div.menu {
 		margin-left: 24px;
 	}
 	/* IGNORED BY IE6 */
+	/* @noflip */
 	body.rtl div.vectorMenu > div.menu {
 		margin-left: auto;
 	}
 	/* Fixes old versions of FireFox */
+	/* @noflip */
 	body.rtl div.vectorMenu > div.menu,
 	x:-moz-any-link {
-		margin-left: 24px;
+		margin-left: 23px;
 	}
 	div.vectorMenu:hover div.menu {
 		display: block;
@@ -244,6 +272,8 @@ body {
 		border: solid 1px silver;
 		border-top-width: 0;
 		list-style: none;
+		list-style-image: none;
+		list-style-type: none;
 		padding: 0;
 		margin: 0;
 		margin-right: -1px;
@@ -252,7 +282,7 @@ body {
 	/* Fixes old versions of FireFox */
 	div.vectorMenu ul,
 	x:-moz-any-link {
-		min-width: 6em;
+		min-width: 5em;
 	}
 	/* Returns things back to normal in modern versions of FireFox */
 	div.vectorMenu ul,
@@ -264,6 +294,7 @@ body {
 		padding: 0;
 		margin: 0;
 		text-align: right;
+		line-height: 1em;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	div.vectorMenu li a {
@@ -274,6 +305,16 @@ body {
 	/* IGNORED BY IE6 */
 	div.vectorMenu li > a {
 		display: block;
+	}
+	div.vectorMenu li a {
+		color: #0645ad;
+		cursor: pointer;
+		font-size: 0.8em;
+	}
+	div.vectorMenu li.selected a,
+	div.vectorMenu li.selected a:visited {
+		color: #333333;
+		text-decoration: none;
 	}
 	/* Search */
 	#p-search h5 {
@@ -293,7 +334,7 @@ body {
 		margin-top: 0.4em;
 	}
 	#simpleSearch {
-		margin-top: 0.75em;
+		margin-top: 0.5em;
 		position: relative;
 		border: solid 1px #AAAAAA;
 		background-color: white;
@@ -301,28 +342,29 @@ body {
 		background-position: top right;
 		background-repeat: repeat-x;
 	}
+	#simpleSearch label {
+		font-size: 0.8em;
+		top: 0.25em;
+	}
 	#simpleSearch input#searchInput {
 		margin: 0;
 		border-width: 0;
 		padding: 0.25em;
 		line-height: 1em;
-		font-size: 9.75pt;
-		width: 10em;
+		font-size: 0.8em;
+		width: 9em;
 		background-color: transparent;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	#simpleSearch button#searchButton {
-		position: absolute;
-		top: 0;
-		left: 0;
 		margin: 0;
 		padding: 0;
 		width: 1.75em;
-		height: 2em;
+		height: 1.5em;
 		border: none;
 		cursor: pointer;
 		background-color: transparent;
-		background-image: url(images/search.png);
+		background-image: url(images/search-rtl.png);
 		background-position: center center;
 		background-repeat: no-repeat;
 	}
@@ -330,25 +372,37 @@ body {
 	#simpleSearch > button#searchButton {
 		height: 100%;
 	}
+	.suggestions-special .special-label {
+		font-size: 0.8em;
+		color: gray;
+	}
+	.suggestions-special .special-query {
+		color: black;
+		font-style: italic;
+	}
+	.suggestions-special .special-hover {
+		background-color: silver;
+	}
 /* Panel */
 #panel {
 	position: absolute;
-	top: 12em;
-	width: 12em;
+	top: 160px;
+	padding-top: 1em;
+	width: 10em;
 	right: 0;
 }
 	#panel div.portal {
-		padding-top: 1.5em;
+		padding-bottom: 1.5em;
 	}
 	#panel div.portal h5 {
 		font-weight: normal;
 		color: #444444;
-		padding: 0.5em;
+		padding: 0.25em;
 		padding-top: 0;
-		padding-right: 1.25em;
+		padding-right: 1.75em;
 		cursor: default;
 		border: none;
-		font-size: 0.9em;
+		font-size: 0.75em;
 	}
 	#panel div.portal div.body {
 		margin: 0;
@@ -360,15 +414,18 @@ body {
 	}
 	#panel div.portal div.body ul {
 		list-style: none;
+		list-style-image: none;
+		list-style-type: none;
 		padding: 0;
 		margin: 0;
 	}
 	#panel div.portal div.body ul li {
+		line-height: 1.125em;
 		padding: 0;
 		padding-bottom: 0.5em;
 		margin: 0;
 		overflow: hidden;
-		font-size: 0.9em;
+		font-size: 0.75em;
 	}
 	#panel div.portal div.body ul li a {
 		color: #0645ad;
@@ -376,43 +433,45 @@ body {
 	#panel div.portal div.body ul li a:visited {
 		color: #0b0080;
 	}
-/* Foot */
-#foot {
-	margin-right: 12em;
+/* Footer */
+#footer {
+	margin-right: 10em;
 	margin-top: 0;
 	padding: 0.75em;
 	background-image: url(images/border.png);
 	background-position: top right;
 	background-repeat: repeat-x;
 }
-#foot ul {
+#footer ul {
 	list-style: none;
+	list-style-image: none;
+	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
-#foot ul li {
+#footer ul li {
 	margin: 0;
 	padding: 0;
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 	color: #333333;
-	font-size: 0.9em;
+	font-size: 0.7em;
 }
-#foot #foot-icons {
+#footer #footer-icons {
 	float: left;
 }
-#foot #foot-places {
+#footer #footer-places {
 	float: right;
 }
-#foot #foot-info li {
+#footer #footer-info li {
 	line-height: 1.4em;
 }
-#foot #foot-icons li {
+#footer #footer-icons li {
 	float: right;
 	margin-right: 0.5em;
 	line-height: 2em;
 }
-#foot #foot-places li {
+#footer #footer-places li {
 	float: right;
 	margin-left: 1em;
 	line-height: 2em;
@@ -420,17 +479,17 @@ body {
 /* Logo */
 #p-logo {
 	position: absolute;
-	top: 0;
+	top: -160px;
 	right: 0;
-	height: 12em;
-	width: 12em;
+	width: 10em;
+	height: 160px;
 }
 #p-logo a {
 	display: block;
-	width: 12em;
-	height: 12em;
+	width: 10em;
+	height: 160px;
 	background-repeat: no-repeat;
-	background-position: 50% 50%;
+	background-position: center center;
 	text-decoration: none;
 }
 
@@ -532,6 +591,22 @@ body {
 	margin-left: 0.25em;
 }
 
+/* 
+ * Styles for the user login and create account forms
+ */
+#userlogin, #userloginForm {
+	border: solid 1px #cccccc;
+	padding: 1.2em;
+	margin: .5em;
+	float: right;
+}
+
+#userlogin {
+	min-width: 20em;
+	max-width: 90%;
+	width: 40em;
+}
+
 /*
  * 
  * The following code is slightly modified from monobook
@@ -539,6 +614,9 @@ body {
  */
 #content {
 	line-height: 1.5em;
+}
+#bodyContent {
+	font-size: 0.8em;
 }
 /* Links */
 a {
@@ -647,31 +725,31 @@ pre {
 	background-color: #f9f9f9;
 	line-height: 1.1em;
 }
-#content ul {
+ul {
 	line-height: 1.5em;
 	list-style-type: square;
 	margin: .3em 1.5em 0 0;
 	padding: 0;
 	list-style-image: url(images/bullet-icon.png);
 }
-#content ol {
+ol {
 	line-height: 1.5em;
 	margin: .3em 3.2em 0 0;
 	padding: 0;
 	list-style-image: none;
 }
-#content li {
+li {
 	margin-bottom: .1em;
 }
-#content dt {
+dt {
 	font-weight: bold;
 	margin-bottom: .1em;
 }
-#content dl {
+dl {
 	margin-top: .2em;
 	margin-bottom: .5em;
 }
-#content dd {
+dd {
 	line-height: 1.5em;
 	margin-right: 2em;
 	margin-bottom: .1em;
@@ -684,12 +762,12 @@ table {
 	 * floated tables */
 	background-color: white;
 }
-#content fieldset table {
+fieldset table {
 	/* but keep table layouts in forms clean... */
 	background: none;
 }
 /* Forms */
-#content fieldset {
+fieldset {
 	border: 1px solid #2f6fab;
 	margin: 1em 0 1em 0;
 	padding: 0 1em 1em;
@@ -699,19 +777,19 @@ table {
 		margin: 0 0 0.5em 0;
 		padding: 0 0.5em 0.5em;
 	}
-#content legend {
+legend {
 	padding: .5em;
 	font-size: 95%;
 }
-#content form {
+form {
 	border: none;
 	margin: 0;
 }
-#content textarea {
+textarea {
 	width: 100%;
 	padding: .1em;
 }
-#content select {
+select {
 	vertical-align: top;
 }
 /* Table of Contents */
@@ -842,7 +920,7 @@ img.thumbborder {
 /* Site Notice */
 #siteNotice {
 	text-align: center;
-	font-size: 95%;
+	font-size: 0.8em;
 	margin: 0;
 }
 	#siteNotice div,
@@ -893,10 +971,10 @@ table.small {
 	font-size: 100%;
 }
 /* Edge Cases for Content */
-#content h1, #content h2 {
+h1, h2 {
 	margin-bottom: .6em;
 }
-#content h3, #content h4, #content h5 {
+h3, h4, h5 {
 	margin-bottom: .3em;
 }
 #firstHeading {
@@ -905,6 +983,7 @@ table.small {
 	padding-top: 0;
 	margin-bottom: 0.1em;
 	line-height: 1.2em;
+	font-size: 1.6em;
 	padding-bottom: 0;
 }
 #content a.external,
@@ -983,10 +1062,7 @@ table.small {
 	padding-right: 15px !important;
 	text-transform: none;
 }
-/* To be sorted */
-span.newpage, span.minor, span.bot {
-	font-weight: bold;
-}
+
 .toccolours {
 	border: 1px solid #aaa;
 	background-color: #f9f9f9;
@@ -996,4 +1072,55 @@ span.newpage, span.minor, span.bot {
 #bodyContent {
 	position: relative;
 	width: 100%;
+}
+#mw-js-message {
+	font-size: 0.8em;
+}
+div#bodyContent {
+	line-height: 1.5em;
+}
+
+/* Watch/Unwatch Icon Styling */
+#ca-unwatch.icon,
+#ca-watch.icon {
+	margin-left:1px;
+}
+#ca-unwatch.icon a,
+#ca-watch.icon a {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	display: block;
+	width: 26px;
+	height: 2.5em;
+}
+#ca-unwatch.icon a {
+	background-image: url(images/watch-icons.png);
+	background-position: -43px 60%;
+}
+#ca-watch.icon a {
+	background-image: url(images/watch-icons.png);
+	background-position: 5px 60%;
+}
+#ca-unwatch.icon a:hover {
+	background-image: url(images/watch-icons.png);
+	background-position: -67px 60%;
+}
+#ca-watch.icon a:hover {
+	background-image: url(images/watch-icons.png);
+	background-position: -19px 60%;
+}
+#ca-unwatch.icon a.loading,
+#ca-watch.icon a.loading {
+	background-image: url(images/watch-icon-loading.gif);
+	background-position: center 60%;
+}
+#ca-unwatch.icon a span,
+#ca-watch.icon a span {
+	display: none;
+}
+div.vectorTabs ul {
+	background-image:url(images/tab-break.png);
+	background-position:left bottom;
+	background-repeat:no-repeat;
 }

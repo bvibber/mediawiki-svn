@@ -8,7 +8,6 @@
  * MEDIAWIKI is defined
  */
 if( !defined( 'MEDIAWIKI' ) ) {
-	echo "This file is part of MediaWiki, it is not a valid entry point.\n";
 	exit( 1 );
 }
 
@@ -87,7 +86,6 @@ if ( !$wgLocalFileRepo ) {
 		'hashLevels' => $wgHashedUploadDirectory ? 2 : 0,
 		'thumbScriptUrl' => $wgThumbnailScriptPath,
 		'transformVia404' => !$wgGenerateThumbnailOnParse,
-		'initialCapital' => $wgCapitalLinks,
 		'deletedDir' => $wgFileStore['deleted']['directory'],
 		'deletedHashLevels' => $wgFileStore['deleted']['hash']
 	);
@@ -130,6 +128,19 @@ if ( $wgUseSharedUploads ) {
 		);
 	}
 }
+if( $wgUseInstantCommons ) {
+	$wgForeignFileRepos[] = array(
+		'class'                   => 'ForeignAPIRepo',
+		'name'                    => 'wikimediacommons',
+		'apibase'                 => 'http://commons.wikimedia.org/w/api.php',
+		'hashLevels'              => 2,
+		'fetchDescription'        => true,
+		'descriptionCacheExpiry'  => 43200,
+		'apiThumbCacheExpiry'     => 86400,
+	);
+}
+
+
 if ( !class_exists( 'AutoLoader' ) ) {
 	require_once( "$IP/includes/AutoLoader.php" );
 }
@@ -149,7 +160,8 @@ require_once( "$IP/includes/ImageFunctions.php" );
 require_once( "$IP/includes/StubObject.php" );
 wfProfileOut( $fname.'-includes' );
 wfProfileIn( $fname.'-misc1' );
-
+# Raise the memory limit if it's too low
+wfMemoryLimit();
 
 $wgIP = false; # Load on demand
 # Can't stub this one, it sets up $_GET and $_REQUEST in its constructor
@@ -167,7 +179,15 @@ if ( $wgCommandLineMode ) {
 	}
 	wfDebug( "\n" );
 } elseif( isset( $_SERVER['REQUEST_URI'] ) ) {
+	wfDebug( "\n\nStart request\n" );
 	wfDebug( $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n" );
+	foreach ( $_SERVER as $name => $value ) {
+		if ( substr( $name, 0, 5 ) == 'HTTP_' ) {
+			$name = substr( $name, 5 );
+			wfDebug( "$name: $value\n" );
+		}
+	}
+	wfDebug( "\n" );
 }
 
 if( $wgRCFilterByAge ) {
@@ -210,6 +230,13 @@ if( !$wgAllowRealName ) {
 if( !$wgAllowUserSkin ) {
 	$wgHiddenPrefs[] = 'skin';
 }
+
+if ( !$wgHtml5Version && $wgHtml5 && $wgAllowRdfaAttributes ) {
+	# see http://www.w3.org/TR/rdfa-in-html/#document-conformance
+	if ( $wgMimeType == 'application/xhtml+xml' ) $wgHtml5Version = 'XHTML+RDFa 1.0';
+	else $wgHtml5Version = 'HTML+RDFa 1.0';
+}
+
 
 wfProfileOut( $fname.'-misc1' );
 wfProfileIn( $fname.'-memcached' );
@@ -269,7 +296,6 @@ $wgRequest->interpolateTitle();
 
 $wgUser = new StubUser;
 $wgLang = new StubUserLang;
-$wgVariant = new StubUserVariant;
 $wgOut = new StubObject( 'wgOut', 'OutputPage' );
 $wgParser = new StubObject( 'wgParser', $wgParserConf['class'], array( $wgParserConf ) );
 
@@ -300,9 +326,9 @@ $wgDeferredUpdateList = array();
 $wgPostCommitUpdateList = array();
 
 if ( $wgAjaxWatch ) $wgAjaxExportList[] = 'wfAjaxWatch';
-if ( $wgAjaxUploadDestCheck ) $wgAjaxExportList[] = 'UploadForm::ajaxGetExistsWarning';
+if ( $wgAjaxUploadDestCheck ) $wgAjaxExportList[] = 'SpecialUpload::ajaxGetExistsWarning';
 if( $wgAjaxLicensePreview )
-	$wgAjaxExportList[] = 'UploadForm::ajaxGetLicensePreview';
+	$wgAjaxExportList[] = 'SpecialUpload::ajaxGetLicensePreview';
 
 # Placeholders in case of DB error
 $wgTitle = null;
@@ -310,16 +336,6 @@ $wgArticle = null;
 
 wfProfileOut( $fname.'-misc2' );
 wfProfileIn( $fname.'-extensions' );
-
-/*
- * load the $wgExtensionMessagesFiles for the script loader
- * this can't be done in a normal extension type way
- * since the script-loader is an entry point
- */
-if( $wgEnableScriptLoader && strpos( wfGetScriptUrl(), "mwScriptLoader.php" ) !== false ){
-	$wgExtensionMessagesFiles['mwEmbed'] = "{$IP}/js2/mwEmbed/php/languages/mwEmbed.i18n.php";
-}
-
 
 # Extension setup functions for extensions other than skins
 # Entries should be added to this variable during the inclusion

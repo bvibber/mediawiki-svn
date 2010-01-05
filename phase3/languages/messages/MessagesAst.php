@@ -56,8 +56,8 @@ $messages = array(
 'tog-hideminor'               => 'Esconder ediciones menores nos cambeos recientes',
 'tog-hidepatrolled'           => 'Atapecer les ediciones vixilaes nos cambeos recientes',
 'tog-newpageshidepatrolled'   => 'Atapecer les páxines vixilaes na llista de páxines nueves',
-'tog-extendwatchlist'         => "Espander la llista de vixilancia p'amosar tolos cambeos aplicables",
-'tog-usenewrc'                => 'Cambeos recientes ameyoraos (JavaScript)',
+'tog-extendwatchlist'         => "Espander la llista de vixilancia p'amosar tolos cambeos aplicables, nun sólo los recientes.",
+'tog-usenewrc'                => 'Cambeos recientes ameyoraos (necesita JavaScript)',
 'tog-numberheadings'          => 'Autonumberar los encabezaos',
 'tog-showtoolbar'             => "Amosar la barra de ferramientes d'edición (JavaScript)",
 'tog-editondblclick'          => 'Editar páxines con doble clic (JavaScript)',
@@ -65,7 +65,7 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Activar la edición de seiciones calcando col botón<br /> drechu enriba los títulos de seición (JavaScript)',
 'tog-showtoc'                 => 'Amosar índiz (pa páxines con más de 3 encabezaos)',
 'tog-rememberpassword'        => 'Recordar la clave ente sesiones',
-'tog-editwidth'               => "La caxa d'edición tien el tamañu máximu",
+'tog-editwidth'               => "Estenderexar la caxa d'edición pa que ocupe tola pantalla.",
 'tog-watchcreations'          => 'Añader les páxines que creo a la mio llista de vixilancia',
 'tog-watchdefault'            => "Añader les páxines qu'edito a la mio llista de vixilancia",
 'tog-watchmoves'              => 'Añader les páxines que muevo a la mio llista de vixilancia',
@@ -79,7 +79,7 @@ $messages = array(
 'tog-enotifminoredits'        => 'Mandame tamién un corréu pa les ediciones menores',
 'tog-enotifrevealaddr'        => 'Amosar el mio corréu electrónicu nos correos de notificación',
 'tog-shownumberswatching'     => "Amosar el númberu d'usuarios que la tán vixilando",
-'tog-fancysig'                => 'Firma ensin enllaz automáticu',
+'tog-fancysig'                => 'Usar la firma como "testu wiki" (ensin enllaz automáticu)',
 'tog-externaleditor'          => 'Usar un editor esternu por defeutu (namái pa espertos, necesita configuraciones especiales nel to ordenador)',
 'tog-externaldiff'            => "Usar ''diff'' esternu por defeutu (namái pa espertos, necesita configuraciones especiales nel to ordenador)",
 'tog-showjumplinks'           => 'Activar los enllaces d\'accesibilidá "saltar a"',
@@ -90,6 +90,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Esconder les ediciones menores na llista de vixilancia',
 'tog-watchlisthideliu'        => "Ocultar ediciones d'usuarios rexistraos na llista de vixilancia",
 'tog-watchlisthideanons'      => "Ocultar ediciones d'usuarios anónimos na llista de vixilancia",
+'tog-watchlisthidepatrolled'  => 'Anubrir les ediciones patrullaes de la llista de vixilancia',
 'tog-nolangconversion'        => 'Deshabilitar la conversión de variantes de llingua',
 'tog-ccmeonemails'            => 'Mandame copies de los correos que mando a otros usuarios',
 'tog-diffonly'                => 'Nun amosar el conteníu de la páxina embaxo de les diferencies',
@@ -261,7 +262,6 @@ $messages = array(
 'aboutsite'            => 'Tocante a {{SITENAME}}',
 'aboutpage'            => 'Project:Tocante a',
 'copyright'            => 'Esti conteníu ta disponible baxo los términos de la  $1.',
-'copyrightpagename'    => "Drechos d'autor de {{SITENAME}}",
 'copyrightpage'        => "{{ns:project}}:Derechos d'autor",
 'currentevents'        => 'Fechos actuales',
 'currentevents-url'    => 'Project:Fechos actuales',
@@ -330,24 +330,24 @@ $messages = array(
 Seique escribieras mal la URL o siguieras un enllaz incorreutu.
 Tamién podría ser un bug nel software usáu por {{SITENAME}}.",
 'nosuchspecialpage' => 'Nun esiste esa páxina especial',
-'nospecialpagetext' => "<big>'''Pidisti una páxina especial non válida.'''</big>
+'nospecialpagetext' => '<strong>Pidisti una páxina especial non válida.</strong>
 
-Pues consultar la llista de les páxines especiales válides en [[Special:SpecialPages|{{int:specialpages}}]].",
+Pues consultar la llista de les páxines especiales válides en [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Error',
 'databaseerror'        => 'Error na base de datos',
-'dberrortext'          => 'Hebo un error de sintaxis nuna consulta de la base de datos.
-Esti error pue debese a un fallu del software.
+'dberrortext'          => 'Hebo un fallu de sintaxis nuna consulta de la base de datos.
+Esti fallu puede ser por un problema del software.
 La postrer consulta que s\'intentó foi:
 <blockquote><tt>$1</tt></blockquote>
 dende la función "<tt>$2</tt>".
-MySQL retornó l\'error "<tt>$3: $4</tt>".',
-'dberrortextcl'        => 'Hebo un error de sintaxis nuna consulta a la base de datos.
+La base datos dió el fallu "<tt>$3: $4</tt>".',
+'dberrortextcl'        => 'Hebo un fallu de sintaxis nuna consulta a la base de datos.
 La postrer consulta que s\'intentó foi:
 "$1"
 dende la función "$2".
-MySQL retornó l\'error "$3: $4"',
+La base de datos dió\'l fallu "$3: $4"',
 'laggedslavemode'      => 'Avisu: Esta páxina pue que nun tenga actualizaciones recientes.',
 'readonly'             => 'Base de datos candada',
 'enterlockreason'      => 'Introduz un motivu pal candáu, amiestando una estimación de cuándo va ser llevantáu esti',
@@ -374,7 +374,8 @@ Por favor informa d'esto a un [[Special:ListUsers/sysop|alministrador]], anotand
 'unexpected'           => 'Valor inesperáu: "$1"="$2".',
 'formerror'            => 'Error: nun se pudo unviar el formulariu',
 'badarticleerror'      => 'Esta aición nun pue facese nesta páxina',
-'cannotdelete'         => 'Nun se pudo esborrar la páxina o imaxe seleicionada (seique daquién yá la esborrara).',
+'cannotdelete'         => 'Nun pudo desaniciase la páxina o el ficheru "$1".
+Seique daquién yá la desaniciara.',
 'badtitle'             => 'Títulu incorreutu',
 'badtitletext'         => 'El títulu de páxina solicitáu nun ye válidu, ta vaciu o tien enllaces inter-llingua o inter-wiki incorreutos. Pue que contenga ún o más carauteres que nun puen ser usaos nos títulos.',
 'perfcached'           => 'Los siguientes datos tán na caché y pue que nun tean completamente actualizaos.',
@@ -405,7 +406,7 @@ $2',
 'virus-unknownscanner' => 'antivirus desconocíu:',
 
 # Login and logout pages
-'logouttext'                 => "'''Yá tas desconectáu.'''<br />
+'logouttext'                 => "'''Yá tas desconectáu.'''
 
 Pues siguir usando {{SITENAME}} de forma anónima, o pues [[Special:UserLogin|volver a entrar]] como'l mesmu o como otru usuariu.
 Ten en cuenta que dalgunes páxines van continuar saliendo como si tovía tuvieres coneutáu, hasta que llimpies la caché del navegador.",
@@ -422,13 +423,14 @@ Nun t'escaezas d'escoyer les tos [[Special:Preferences|preferencies de {{SITENAM
 'nav-login-createaccount'    => 'Entrar / Crear cuenta',
 'loginprompt'                => "Has tener les ''cookies'' activaes pa entrar en {{SITENAME}}.",
 'userlogin'                  => 'Entrar / Crear cuenta',
+'userloginnocreate'          => 'Entrar',
 'logout'                     => 'Salir',
 'userlogout'                 => 'Salir',
 'notloggedin'                => 'Non identificáu',
-'nologin'                    => '¿Nun tienes una cuenta? $1.',
+'nologin'                    => "¿Nun tienes una cuenta? '''$1'''.",
 'nologinlink'                => '¡Fai una!',
 'createaccount'              => 'Crear una nueva cuenta',
-'gotaccount'                 => '¿Ya tienes una cuenta? $1.',
+'gotaccount'                 => "¿Ya tienes una cuenta? '''$1'''.",
 'gotaccountlink'             => '¡Identifícate!',
 'createaccountmail'          => 'per e-mail',
 'badretype'                  => "Les claves qu'escribisti nun concuayen.",
@@ -586,11 +588,11 @@ Por favor, amiesta toos estos detalles nes consultes que faigas.',
 
 La clave pa esta cuenta nueva pue camudase na páxina ''[[Special:ChangePassword|camudar clave]]'' depués d'identificate.",
 'newarticle'                       => '(Nuevu)',
-'newarticletext'                   => 'Siguisti un enllaz a un artículu qu\'inda nun esiste. Pa crealu, empecipia a escribir na caxa d\'equí embaxo. Si llegasti equí por enquivocu, namás tienes que calcar nel botón "atrás" del to navegador.',
+'newarticletext'                   => 'Siguisti un enllaz a un artículu qu\'inda nun esiste. Pa crealu, empecipia a escribir na caxa que vien darréu (mira la [[{{MediaWiki:Helppage}}|páxina d\'aida]] pa más información). Si llegasti equí por enquivocu, namás tienes que calcar nel botón "Dir atrás" del to navegador.',
 'anontalkpagetext'                 => "----''Esta ye la páxina de'alderique pa un usuariu anónimu qu'inda nun creó una cuenta o que nun la usa. Pola mor d'ello ha usase la direición numérica IP pa identificalu/la. Tala IP pue ser compartida por varios usuarios. Si yes un usuariu anónimu y notes qu'hai comentarios irrelevantes empobinaos pa ti, por favor [[Special:UserLogin/signup|crea una cuenta]] o [[Special:UserLogin/signup|rexístrate]] pa evitar futures confusiones con otros usuarios anónimos.''",
 'noarticletext'                    => 'Anguaño nun hai testu nesta páxina.
 Pues [[Special:Search/{{PAGENAME}}|buscar esti títulu de páxina]] n\'otres páxines,
-<span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} buscar los rexistros rellacionaos],
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} buscar los rexistros rellacionaos],
 o [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar ésta equí]</span>.',
 'userpage-userdoesnotexist'        => 'La cuenta d\'usuariu "$1" nun ta rexistrada. Por favor asegúrate de que quies crear/editar esta páxina.',
 'clearyourcache'                   => "'''Nota:''' Llueu de salvar, seique tengas que llimpiar la caché del navegador pa ver los cambeos.
@@ -598,7 +600,8 @@ o [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar ésta equí]</span>.',
 *'''IE:''' caltién ''Ctrl'' mentes calques ''Refresh'', o calca ''Ctrl-F5''
 *'''Konqueror:''' calca nel botón ''Reload'', o calca ''F5''
 *'''Opera:''' los usuarios d'Opera seique necesiten esborrar dafechu'l caché en ''Tools→Preferences''",
-'usercssjsyoucanpreview'           => "'''Conseyu:''' Usa'l bottón 'Amosar previsualización' pa probar el to nuevu CSS/JS enantes de guardalu.",
+'usercssyoucanpreview'             => "'''Conseyu:''' Usa'l bottón 'Amosar previsualización' pa probar el to nuevu CSS enantes de guardalu.",
+'userjsyoucanpreview'              => "'''Conseyu:''' Usa'l bottón 'Amosar previsualización' pa probar el to nuevu JS enantes de guardalu.",
 'usercsspreview'                   => "'''Recuerda que namái tas previsualizando'l to CSS d'usuariu.'''
 '''¡Tovía nun ta guardáu!'''",
 'userjspreview'                    => "'''¡Recuerda que namái tas probando/previsualizando'l to JavaScript d'usuariu, entá nun se grabó!'''",
@@ -649,8 +652,8 @@ L'alministrador que la candó ufrió una esplicación: $1",
 'semiprotectedpagewarning'         => "'''Nota:''' Esta páxina foi candada pa que nun puean editala namái que los usuarios rexistraos.",
 'cascadeprotectedwarning'          => "'''Avisu:''' Esta páxina ta candada pa que namái los alministradores la puean editar porque ta enxerta {{PLURAL:$1|na siguiente páxina protexida|nes siguientes páxines protexíes}} en cascada:",
 'titleprotectedwarning'            => "'''AVISU: Esta páxina torgose pa que namái [[Special:ListGroupRights|dalgunos usuarios especiales]] puean creala.'''",
-'templatesused'                    => 'Plantíes usaes nesta páxina:',
-'templatesusedpreview'             => 'Plantíes usaes nesta previsualización:',
+'templatesused'                    => '{{PLURAL:$1|plantía usada|plantíes usaes}} nesta páxina:',
+'templatesusedpreview'             => '{{PLURAL:$1|plantía usada|plantíes usaes}} nesta previsualización:',
 'templatesusedsection'             => 'Plantíes usaes nesta seición:',
 'template-protected'               => '(protexida)',
 'template-semiprotected'           => '(semi-protexida)',
@@ -757,12 +760,12 @@ y puen restauralu de nuevo al traviés d'esta mesma interfaz, a nun ser que s'es
 restricciones adicionales.",
 'revdelete-legend'            => 'Establecer restricciones de visibilidá',
 'revdelete-hide-text'         => 'Esconder testu de revisión',
+'revdelete-hide-image'        => 'Esconder el conteníu del archivu',
 'revdelete-hide-name'         => 'Esconder aición y oxetivu',
 'revdelete-hide-comment'      => "Esconder comentariu d'edición",
 'revdelete-hide-user'         => "Esconder el nome d'usuariu/IP del editor",
 'revdelete-hide-restricted'   => 'Aplicar estes restricciones a los alministradores y candar la so interfaz',
 'revdelete-suppress'          => 'Eliminar datos de los alministradores lo mesmo que los de los demás',
-'revdelete-hide-image'        => 'Esconder el conteníu del archivu',
 'revdelete-unsuppress'        => 'Eliminar restricciones de revisiones restauraes',
 'revdelete-log'               => 'Comentariu de rexistru:',
 'revdelete-submit'            => 'Aplicar a la revisión seleicionada',
@@ -821,63 +824,8 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'difference'              => '(Diferencia ente revisiones)',
 'lineno'                  => 'Llinia $1:',
 'compareselectedversions' => 'Comparar les versiones seleicionaes',
-'visualcomparison'        => 'Comparación visual',
-'wikicodecomparison'      => 'Comparación wikitestu',
 'editundo'                => 'esfacer',
 'diff-multi'              => '({{PLURAL:$1|1 revisión intermedia non amosada|$1 revisiones intermedies non amosaes}})',
-'diff-movedto'            => 'treslladóse a $1',
-'diff-styleadded'         => 'estilu $1 añadíu',
-'diff-added'              => 'añadíu $1',
-'diff-changedto'          => 'camudáu a $1',
-'diff-movedoutof'         => 'quitó de $1',
-'diff-styleremoved'       => 'estilu $1 elimináu',
-'diff-removed'            => 'elimináu $1',
-'diff-changedfrom'        => 'camudáu dende $1',
-'diff-src'                => 'fonte',
-'diff-withdestination'    => 'con destín $1',
-'diff-with'               => '&#32;con $1 $2',
-'diff-with-final'         => '&#32;y $1 $2',
-'diff-width'              => 'anchor',
-'diff-height'             => 'altor',
-'diff-p'                  => "un '''parágrafu'''",
-'diff-blockquote'         => "una '''cita'''",
-'diff-h1'                 => "un '''encabezáu (nivel 1)'''",
-'diff-h2'                 => "un '''encabezáu (nivel 2)'''",
-'diff-h3'                 => "un '''encabezáu (nivel 3)'''",
-'diff-h4'                 => "un '''encabezáu (nivel 4)'''",
-'diff-h5'                 => "un '''encabezáu (nivel 5)'''",
-'diff-pre'                => "un '''bloque preformatiáu'''",
-'diff-div'                => "una '''división'''",
-'diff-ul'                 => "una '''llista non ordenada'''",
-'diff-ol'                 => "una '''llista ordenada'''",
-'diff-li'                 => "un '''elementu de llista'''",
-'diff-table'              => "una '''tabla'''",
-'diff-tbody'              => "un '''conteníu de tabla'''",
-'diff-tr'                 => "una '''filera'''",
-'diff-td'                 => "una '''celda'''",
-'diff-th'                 => "un '''encabezáu'''",
-'diff-br'                 => "un '''saltu de llinia'''",
-'diff-hr'                 => "una '''llinia horizontal'''",
-'diff-code'               => "un '''bloque de códigu d'ordenador'''",
-'diff-dl'                 => "una '''llista de definición'''",
-'diff-dt'                 => "un '''términu de definición'''",
-'diff-dd'                 => "una '''definición'''",
-'diff-input'              => "una '''entrada'''",
-'diff-form'               => "un '''formulariu'''",
-'diff-img'                => "una '''imaxe'''",
-'diff-span'               => "una '''portada'''",
-'diff-a'                  => "un '''enllaz'''",
-'diff-i'                  => "'''cursiva'''",
-'diff-b'                  => "'''negrina'''",
-'diff-strong'             => "'''fuerte'''",
-'diff-em'                 => "'''énfasis'''",
-'diff-font'               => "'''fonte'''",
-'diff-big'                => "'''grande'''",
-'diff-del'                => "'''elimináu'''",
-'diff-tt'                 => "'''anchor fixáu'''",
-'diff-sub'                => "'''subíndiz'''",
-'diff-sup'                => "'''superíndiz'''",
-'diff-strike'             => "'''tacháu'''",
 
 # Search results
 'searchresults'                    => 'Resultaos de la busca',
@@ -885,8 +833,6 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'searchresulttext'                 => 'Pa más información tocante a busques en {{SITENAME}}, vete a [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'                   => 'Buscasti \'\'\'[[:$1]]\'\'\' ([[Special:Prefixindex/$1|toles páxines qu\'emprimen con "$1"]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|toles páxines qu\'enllacien a "$1"]])',
 'searchsubtitleinvalid'            => "Buscasti '''$1'''",
-'noexactmatch'                     => "'''Nun esiste la páxina \"\$1\".''' Pues [[:\$1|crear esta páxina]].",
-'noexactmatch-nocreate'            => "'''Nun hai nenguna páxina col títulu \"\$1\".'''",
 'toomanymatches'                   => 'Atopáronse demasiaes coincidencies, por favor fai una consulta diferente',
 'titlematches'                     => 'Coincidencies de los títulos de la páxina',
 'notitlematches'                   => 'Nun hai coincidencies nel títulu de la páxina',
@@ -894,7 +840,7 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'notextmatches'                    => 'Nun hai coincidencies nel testu de la páxina',
 'prevn'                            => 'previos {{PLURAL:$1|$1}}',
 'nextn'                            => 'siguientes {{PLURAL:$1|$1}}',
-'viewprevnext'                     => 'Ver ($1) ($2) ($3)',
+'viewprevnext'                     => 'Ver ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Opciones de busca',
 'searchmenu-exists'                => "'''Hai una páxina nomada \"[[\$1]]\" nesta wiki'''",
 'searchmenu-new'                   => "'''¡Crear la páxina \"[[:\$1]]\" nesta wiki!'''",
@@ -926,7 +872,6 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'searchall'                        => 'toos',
 'showingresults'                   => "Abaxo {{PLURAL:$1|amuésase '''un''' resultáu|amuésense '''$1''' resultaos}}, entamando col #'''$2'''.",
 'showingresultsnum'                => "Abaxo {{PLURAL:$3|amuésase '''un''' resultáu|amuésense '''$3''' resultaos}}, entamando col #'''$2'''.",
-'showingresultstotal'              => "Amosando {{PLURAL:$4|embaxo'l resultáu '''$1''' de '''$3'''|embaxo los resultaos '''$1 - $2''' de '''$3'''}}",
 'nonefound'                        => "'''Nota''': Por defeutu namái se busca en dalgunos de los espacios de nome. Prueba a poner delantre de la to consulta ''all:'' pa buscar en tol conteníu (inxiriendo páxines d'alderique, plantíes, etc.), o usa como prefixu l'espaciu de nome deseáu.",
 'search-nonefound'                 => 'Nun hebo resultaos que concueyen cola consulta.',
 'powersearch'                      => 'Buscar',
@@ -981,7 +926,7 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'recentchangesdays-max'     => '(máximo $1 {{PLURAL:$1|día|díes}})',
 'recentchangescount'        => "Númberu d'ediciones amosaes nes páxines de cambeos recientes, historiales de páxines y rexistros, por defeutu:",
 'savedprefs'                => 'Les tos preferencies quedaron grabaes.',
-'timezonelegend'            => 'Zona horaria',
+'timezonelegend'            => 'Zona horaria:',
 'localtime'                 => 'Hora llocal:',
 'timezoneuseserverdefault'  => 'Usar el sirvidor preferíu',
 'timezoneuseoffset'         => 'Otru (especificar diferencia)',
@@ -1112,6 +1057,8 @@ Tamién pues escoyer permitir a los demás contautar contigo al traviés de la t
 'right-editprotected'        => 'Editar les páxines protexíes (ensin proteición en cascada)',
 'right-editinterface'        => "Editar la interfaz d'usuariu",
 'right-editusercssjs'        => "Editar los archivos CSS y JS d'otros usuarios",
+'right-editusercss'          => "Editar los archivos CSS d'otros usuarios",
+'right-edituserjs'           => "Editar los archivos JS d'otros usuarios",
 'right-rollback'             => "Revertir rápido a un usuariu qu'editó una páxina determinada",
 'right-markbotedits'         => 'Marcar les ediciones revertíes como ediciones de bot',
 'right-noratelimit'          => 'Nun tar afeutáu polos llímites de tasa',
@@ -1212,7 +1159,6 @@ Tamién pues escoyer permitir a los demás contautar contigo al traviés de la t
 # Upload
 'upload'                      => 'Xubir imaxe',
 'uploadbtn'                   => 'Xubir',
-'reupload'                    => 'Volver a xubir',
 'reuploaddesc'                => 'Cancelar la xubida y tornar al formulariu de xubíes',
 'uploadnologin'               => 'Nun tas identificáu',
 'uploadnologintext'           => 'Tienes que tar [[Special:UserLogin|identificáu]] pa poder xubir archivos.',
@@ -1254,14 +1200,15 @@ Mira la [[Special:NewFiles|galería d'archivos nuevos]] pa una güeyada más vis
 'large-file'                  => 'Encamiéntase a que los archivos nun pasen de $1; esti archivu tien $2.',
 'largefileserver'             => 'Esti archivu ye mayor de lo que permite la configuración del sirvidor.',
 'emptyfile'                   => "L'archivu que xubisti paez tar vaciu. Esto podría ser pola mor d'un enquivocu nel nome l'archivu. Por favor, camienta si daveres quies xubir esti archivu.",
-'fileexists'                  => "Yá esiste un archivu con esti nome, por favor comprueba '''<tt>$1</tt>''' si nun tas seguru de quere camudalu.",
-'filepageexists'              => "La páxina de descripción d'esti archivu yá foi creada en '''<tt>$1</tt>''', pero nestos momentos nun esiste nengún archivu con esti nome. El resume que pongas nun va apaecer na páxina de descripción. Pa facer que'l to resume apaeza vas tener que lu editar manualmente.",
-'fileexists-extension'        => "Yá esiste un archivu con un nome asemeyáu:<br />
-Nome del archivu que se quier xubir: '''<tt>$1</tt>'''<br />
-Nome del archivu esistente: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Yá esiste un archivu con esti nome, por favor comprueba '''<tt>[[:$1]]</tt>''' si nun tas seguru de quere camudalu.
+[[$1|thumb]]",
+'filepageexists'              => "La páxina de descripción d'esti archivu yá foi creada en '''<tt>[[:$1]]</tt>''', pero nestos momentos nun esiste nengún archivu con esti nome. El resume que pongas nun va apaecer na páxina de descripción. Pa facer que'l to resume apaeza vas tener que lu editar manualmente.",
+'fileexists-extension'        => "Yá esiste un archivu con un nome asemeyáu: [[$2|thumb]]
+* Nome del archivu que se quier xubir: '''<tt>[[:$1]]</tt>'''
+* Nome del archivu esistente: '''<tt>[[:$2]]</tt>'''
 Por favor escueyi un nome diferente.",
-'fileexists-thumb'            => "<center>'''Archivu esistente'''</center>",
-'fileexists-thumbnail-yes'    => "L'archivu paez ser una imaxe de tamañu menguáu ''(miniatura)''. Por favor comprueba l'archivu '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "L'archivu paez ser una imaxe de tamañu menguáu ''(miniatura)''. [[$1|thumb]]
+Por favor comprueba l'archivu '''<tt>[[:$1]]</tt>'''.
 Si l'archivu comprobáu tien el mesmu tamañu que la imaxe orixinal, nun ye necesario xubir una miniatura extra.",
 'file-thumbnail-no'           => "L'archivu entama con '''<tt>$1</tt>'''.
 Paez ser una imaxe de tamañu menguáu ''(miniatura)''.
@@ -1285,7 +1232,7 @@ Si tovía asina quies xubir l'archivu, por favor vuelvi atrás y usa otru nome. 
 'sourcefilename'              => "Nome d'orixe:",
 'destfilename'                => 'Nome de destín:',
 'upload-maxfilesize'          => "Máximu tamañu d'archivu: $1",
-'watchthisupload'             => 'Vixilar esta páxina',
+'watchthisupload'             => 'Vixilar esti ficheru',
 'filewasdeleted'              => 'Yá foi xubíu y depués esborráu un archivu con esti nome. Habríes comprobar el $1 enantes de volver a xubilu.',
 'upload-wasdeleted'           => "'''Avisu: Tas xubiendo un archivu que yá foi esborráu anteriormente.'''
 
@@ -1310,6 +1257,7 @@ Si'l problema persiste, contauta con un [[Special:ListUsers/sysop|alministrador]
 'upload-curl-error28-text' => "El sitiu tardó demasiáu tiempu en responder. Por favor comprueba que'l sitiu ta activu, espera unos momentos y vuelve a intentalo. Igual ye meyor que lo intentes nun momentu en que tea menos sobrecargáu.",
 
 'license'            => 'Llicencia:',
+'license-header'     => 'Llicencia:',
 'nolicense'          => 'Nenguna seleicionada',
 'license-nopreview'  => '(Previsualización non disponible)',
 'upload_source_url'  => ' (una URL válida y accesible públicamente)',
@@ -1354,7 +1302,7 @@ Hai disponible una [[Special:WhatLinksHere/$2|llista completa]].",
 'morelinkstoimage'          => 'Ver [[Special:WhatLinksHere/$1|más enllaces]] a esti archivu.',
 'redirectstofile'           => '{{PLURAL:$1|El siguiente archivu redirixe|Los siguientes $1 archivos redirixen}} a esti archivu:',
 'duplicatesoffile'          => "{{PLURAL:$1|El siguiente archivu ye un duplicáu|Los siguientes $1 archivos son duplicaos}} d'esti archivu ([[Special:FileDuplicateSearch/$2|más detalles]]):",
-'sharedupload'              => "L'archivu ye una xubida compartida y pue tar siendo usáu por otros proyeutos.",
+'sharedupload'              => 'El ficheru ye de $1 y pueden que tean usandolu otros proyeutos.',
 'uploadnewversion-linktext' => "Xubir una nueva versión d'esta imaxe",
 
 # File reversion
@@ -1632,7 +1580,7 @@ La direición de corréu electrónicu qu'especificasti nes [[Special:Preferences
 
 Si más tarde quies quitala de la llista de vixilancia calca en "Dexar de vixilar" nel menú llateral.',
 'removedwatch'         => 'Eliminada de la llista de vixilancia',
-'removedwatchtext'     => 'Quitóse la páxina "[[:$1]]" de la to llista de vixilancia.',
+'removedwatchtext'     => 'Desapuntóse la páxina "[[:$1]]" de la [[Special:Watchlist|to llista de vixilancia]].',
 'watch'                => 'Vixilar',
 'watchthispage'        => 'Vixilar esta páxina',
 'unwatch'              => 'Dexar de vixilar',
@@ -1684,7 +1632,7 @@ En casu de producise más cambeos, nun habrá más notificaciones a nun ser que 
 
 --
 Pa camudar la configuración de la to llista de vixilancia, visita
-{{fullurl:{{ns:special}}:Watchlist/edit}}
+{{fullurl:{{#special:Watchlist}}/edit}}
 
 Más aida y sofitu:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1751,11 +1699,10 @@ navegador pa cargar otra vuelta la páxina y vuelve a intentalo.',
 'protect-title'               => 'Protexendo "$1"',
 'prot_1movedto2'              => '[[$1]] treslladáu a [[$2]]',
 'protect-legend'              => 'Confirmar proteición',
-'protectcomment'              => 'Comentariu:',
+'protectcomment'              => 'Motivu:',
 'protectexpiry'               => 'Caduca:',
 'protect_expiry_invalid'      => 'Caducidá non válida.',
 'protect_expiry_old'          => 'La fecha de caducidá ta pasada.',
-'protect-unchain'             => 'Camudar los permisos pa tresllaos',
 'protect-text'                => "Equí pues ver y camudar el nivel de proteición de la páxina '''<nowiki>$1</nowiki>'''.",
 'protect-locked-blocked'      => "Nun pues camudar los niveles de proteición mentes teas bloquiáu. Esta
 ye la configuración actual de la páxina '''$1''':",
@@ -1825,7 +1772,7 @@ de ser esborrada. El testu actual d'estes revisiones esborraes ta disponible nam
 revisión fuera restaurada o eliminada del archivu.",
 'undelete-nodiff'              => "Nun s'atopó revisión previa.",
 'undeletebtn'                  => 'Restaurar',
-'undeletelink'                 => 'restaurar',
+'undeletelink'                 => 'amosar/restaurar',
 'undeletereset'                => 'Llimpiar',
 'undeleteinvert'               => 'Invertir seleición',
 'undeletecomment'              => 'Comentariu:',
@@ -1965,7 +1912,6 @@ Esto debería facese sólo pa prevenir vandalismu como indiquen les [[{{MediaWik
 'contribslink'                    => 'contribuciones',
 'autoblocker'                     => 'Bloquiáu automáticamente porque la to direición IP foi usada recién por "[[User:$1|$1]]". El motivu del bloquéu de $1 ye: "$2"',
 'blocklogpage'                    => 'Rexistru de bloqueos',
-'blocklog-fulllog'                => 'Rexistru de bloqueos completu',
 'blocklogentry'                   => 'bloquió [[$1]] con una caducidá de $2 $3',
 'reblock-logentry'                => 'camudó los parámetros de bloquéu de [[$1]] con una caducidá de $2 $3',
 'blocklogtext'                    => "Esti ye un rexistru de los bloqueos y desbloqueos d'usuarios.
@@ -2202,6 +2148,7 @@ Guárdalu nel to ordenador y xúbilu equí.",
 'tooltip-search-fulltext'         => 'Busca páxines con esti testu',
 'tooltip-p-logo'                  => 'Portada',
 'tooltip-n-mainpage'              => 'Visita a la Portada',
+'tooltip-n-mainpage-description'  => "Dir a la páxina d'aniciu",
 'tooltip-n-portal'                => 'Tocante al proyeutu, qué facer, ú atopar coses',
 'tooltip-n-currentevents'         => 'Información sobre los asocedíos actuales',
 'tooltip-n-recentchanges'         => 'Llista de los cambeos recientes de la wiki.',
@@ -2322,9 +2269,6 @@ $1",
 # Browsing diffs
 'previousdiff' => '← Edición más antigua',
 'nextdiff'     => 'Diferencia más recién →',
-
-# Visual comparison
-'visual-comparison' => 'Comparación visual',
 
 # Media information
 'mediawarning'         => "'''Avisu''': Esti archivu pue contener códigu maliciosu, pue ser comprometío executalu nel to sistema.<hr />",

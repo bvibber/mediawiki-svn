@@ -75,10 +75,14 @@ $messages = array(
 'tog-enotifminoredits'        => 'صفحات میں معمولی ترمیمات کے بارے میں بھی مجھے برقی ڈاک بھیجو',
 'tog-enotifrevealaddr'        => 'خبرداری برقی خطوط میں میرا برقی ڈاک پتہ ظاہر کرو',
 'tog-shownumberswatching'     => 'دیکھنے والے صارفین کی تعداد دکھاؤ',
+'tog-oldsig'                  => 'موجودہ دستخط کی نمائش:',
 'tog-fancysig'                => '(سادہ دستخط بلا خودکار ربط)',
 'tog-externaleditor'          => 'ہمیشہ بیرونی تدوین کار استعمال کرو (صرف ماہرین کیلئے، اِس کیلئے شمارندہ پر خاص ترتیبات درکار ہوتی ہیں)',
 'tog-externaldiff'            => 'Use external diff by default (for experts only, needs special settings on your computer)',
 'tog-showjumplinks'           => 'Enable "jump to" accessibility links',
+'tog-uselivepreview'          => 'براہِ راست نمائش استعمال کرو (JavaScript چاہئے) (تجرباتی(',
+'tog-forceeditsummary'        => 'جب میں ترمیمی خلاصہ خالی چھوڑوں تو مجھے آگاہ کرو',
+'tog-watchlisthideown'        => 'زیرِنظرفہرست سے میری ترمیمات چھپاؤ',
 'tog-ccmeonemails'            => 'دیگر صارفین کو ارسال کردہ برقی خطوط کی نقول مجھے ارسال کریں۔',
 
 'underline-always' => 'ہمیشہ',
@@ -116,6 +120,10 @@ $messages = array(
 'october-gen'   => 'اکتوبر',
 'november-gen'  => 'نومبر',
 'december-gen'  => 'دسمبر',
+'jan'           => 'جنوری',
+'feb'           => 'فروری',
+'mar'           => 'مارچ',
+'apr'           => 'اپریل',
 'may'           => 'مئی',
 
 # Categories related messages
@@ -153,11 +161,13 @@ $messages = array(
 'permalink'         => 'مستقل کڑی',
 'print'             => 'طباعت',
 'edit'              => 'ترمیم',
+'create'            => 'تخلیق',
 'editthispage'      => 'اس صفحہ میں ترمیم کریں',
 'delete'            => 'حذف',
 'deletethispage'    => 'یہ صفحہ حذف کریں',
 'undelete_short'    => 'بحال {{PLURAL:$1|ایک ترمیم|$1 ترامیم}}',
 'protect'           => 'محفوظ',
+'protect_change'    => 'تبدیل کرو',
 'protectthispage'   => 'اس صفحےکومحفوظ کریں',
 'unprotect'         => 'غیر محفوظ',
 'unprotectthispage' => 'اس صفحےکو غیر محفوظ کریں',
@@ -193,7 +203,6 @@ $messages = array(
 'aboutsite'            => 'کا تعارف {{SITENAME}}',
 'aboutpage'            => 'Project:تعارف',
 'copyright'            => 'تمام مواد $1 کے تحت میسر ہے۔',
-'copyrightpagename'    => '{{SITENAME}} حق تصنیف',
 'copyrightpage'        => '{{ns:project}}:حقوق تصانیف',
 'currentevents'        => 'حالیہ واقعات',
 'currentevents-url'    => 'Project:حالیہ واقعات',
@@ -266,9 +275,9 @@ $messages = array(
 آپ نے شاید URL غلط لکھا، یا کسی غیر صحیح ربط کی پیروی کی ہے.
 {{اِس سے SITENAME کے زیرِ استعمال مصنع لطیف میں کھٹمل کی نشاندہی کا بھی اندیشہ ہے}}.',
 'nosuchspecialpage' => 'کوئی ایسا خاص صفحہ نہیں',
-'nospecialpagetext' => "<big>'''آپ نے ایک ناقص خاص صفحہ کی درخواست کی ہے.'''</big>
+'nospecialpagetext' => '<strong>آپ نے ایک ناقص خاص صفحہ کی درخواست کی ہے.</strong>
 
-{{درست خاص صفحات کی ایک فہرست [[خاص:خاص‌صفحات|خاص صفحات]] پر دیکھی جاسکتی ہے}}.",
+{{درست خاص صفحات کی ایک فہرست [[خاص:خاص‌صفحات|خاص صفحات]] پر دیکھی جاسکتی ہے}}.',
 
 # General errors
 'error'                => 'خطاء',
@@ -338,7 +347,8 @@ Warning: Page may not contain recent updates.',
 'virus-unknownscanner' => 'انجان ضدوائرس:',
 
 # Login and logout pages
-'logouttext'                 => "'''اب آپ خارج ہوچکے ہیں'''<br />
+'logouttext'                 => "'''اب آپ خارج ہوچکے ہیں'''
+
 آپ خفی الاسم {{SITENAME}}  کا استعمال جاری رکھ سکتے ہیں، یا دوبارہ اسی نام یا مختلف نام سے داخل بھی ہو سکتے ہیں۔  یہ یاد آوری کرلیجیۓ کہ کچھ صفحات ایسے نظر آتے رہیں گے کہ جیسے ابھی آپ خارج نہیں ہوۓ ، جب تک آپ اپنے تفصحہ (براؤزر) کا ابطن (cache) صاف نہ کردیں۔",
 'welcomecreation'            => '== خوش آمدید، $1 ! ==
 آپ کا کھاتہ بنا دیا گیا ہے۔ اپنی ویـکـیـپـیـڈ یـا کی ترجیحات تبدیل کرنا مت بھولیں۔',
@@ -355,10 +365,10 @@ Warning: Page may not contain recent updates.',
 'logout'                     => 'اخراج',
 'userlogout'                 => 'خارج ہوجائیں',
 'notloggedin'                => 'داخلہ نہیں ہوا',
-'nologin'                    => 'کیا آپ نے کھاتہ نہیں بنایا ہوا؟ $1۔',
+'nologin'                    => "کیا آپ نے کھاتہ نہیں بنایا ہوا؟ '''$1'''۔",
 'nologinlink'                => 'کھاتا بنائیں',
 'createaccount'              => 'کھاتہ کھولیں',
-'gotaccount'                 => 'پہلے سے کھاتہ بنا ہوا ہے? $1.',
+'gotaccount'                 => "پہلے سے کھاتہ بنا ہوا ہے? '''$1'''.",
 'gotaccountlink'             => 'داخل ہوجائیے',
 'createaccountmail'          => 'بذریعۂ برقی ڈاک',
 'badretype'                  => 'درج شدہ کلمۂ شناخت اصل سے مطابقت نہیں رکھتا۔',
@@ -459,19 +469,25 @@ Warning: Page may not contain recent updates.',
 'histfirst'        => 'قدیم ترین',
 'histlast'         => 'تازہ ترین',
 
+# Revision deletion
+'rev-delundel'   => 'دکھاؤ/چھپاؤ',
+'revdel-restore' => 'ظاہریت تبدیل کرو',
+
 # Diffs
 'difference'              => '(اصلاحات میں فرق)',
+'lineno'                  => 'لکیر $1:',
 'compareselectedversions' => 'منتخب متـن کا موازنہ',
+'editundo'                => 'استرجع',
 
 # Search results
 'searchresults'             => 'تلاش کا نتیجہ',
+'searchresults-title'       => 'نتائجِ تلاش برائے "$1"',
 'searchresulttext'          => 'ویکیپیڈیا میں تلاش کے بارے میں مزید معلومات کے لیۓ، ویکیپیڈیا میں تلاش کا صفحہ دیکھیۓ۔',
 'searchsubtitle'            => "آپ کی تلاش براۓ '''[[:$1]]'''",
 'searchsubtitleinvalid'     => "آپ کی تلاش براۓ '''$1'''",
-'noexactmatch'              => '"$1" کے عنوان سے کوئی صفحہ موجود نہیں۔ آپ اگر چاہیں تو اس نام سے  [[:$1|صفحہ بنا سکتے ہیں]]',
 'prevn'                     => 'پچھلے $1',
 'nextn'                     => 'اگلے {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'دیکھیں($1) ($2) ($3)۔',
+'viewprevnext'              => 'دیکھیں($1 {{int:pipe-separator}} $2) ($3)۔',
 'searchhelp-url'            => 'Help:فہرست',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 لفظ|$2 الفاظ}})',
 'search-result-score'       => 'توافق: $1%',
@@ -487,7 +503,6 @@ Warning: Page may not contain recent updates.',
 'mwsuggest-disable'         => 'AJAX تجاویز غیرفعال',
 'searchrelated'             => 'متعلقہ',
 'searchall'                 => 'تمام',
-'showingresultstotal'       => "نیچے دکھارہا ہے {{PLURAL:$4|'''$3''' میں سے '''$3''' نتیجہ|'''$3''' میں سے '''$1 - $2''' نتائج}}",
 'search-nonefound'          => 'استفسار کے مطابق نتائج نہیں ملے.',
 'powersearch'               => 'پیشرفتہ تلاش',
 'powersearch-legend'        => 'پیشرفتہ تلاش',
@@ -618,7 +633,6 @@ HTML tags جانچئے.',
 # Upload
 'upload'            => 'فائل بھیجیں',
 'uploadbtn'         => 'زبراثقال ملف (اپ لوڈ فائل)',
-'reupload'          => 'زبراثقال مکرر',
 'reuploaddesc'      => 'زبراثقال ورقہ (فارم) کیجانب واپس۔',
 'uploadnologin'     => 'آپ داخل شدہ حالت میں نہیں',
 'uploadnologintext' => 'زبراثقال ملف (فائل اپ لوڈ) کے لیۓ آپکو  [[Special:UserLogin|داخل شدہ]] حالت میں ہونا لازم ہے۔',
@@ -654,7 +668,7 @@ HTML tags جانچئے.',
 'ignorewarning'     => 'انتباہ نظرانداز کرتے ہوۓ بہرصورت ملف (فائل) کو محفوظ کرلیا جاۓ۔',
 'ignorewarnings'    => 'ہر انتباہ نظرانداز کردیا جاۓ۔',
 'badfilename'       => 'ملف (فائل) کا نام "$1" ، تبدیل کردیا گیا۔',
-'fileexists'        => "اس نام سے ایک ملف (فائل) پہلے ہی موجود ہے، اگر آپ کو یقین نہ ہو کہ اسے حذف کردیا جانا چاہیۓ تو براہ کرم  '''<tt>$1</tt>''' کو ایک نظر دیکھ لیجیۓ۔",
+'fileexists'        => "اس نام سے ایک ملف (فائل) پہلے ہی موجود ہے، اگر آپ کو یقین نہ ہو کہ اسے حذف کردیا جانا چاہیۓ تو براہ کرم  '''<tt>[[:$1]]</tt>''' کو ایک نظر دیکھ لیجیۓ۔ [[$1|thumb]]",
 'uploadwarning'     => 'انتباہ بہ سلسلۂ زبراثقال',
 'savefile'          => 'فائل محفوظ کریں',
 'uploadedimage'     => 'زبراثقال (اپ لوڈ) براۓ "[[$1]]"',
@@ -667,6 +681,7 @@ HTML tags جانچئے.',
 
 # File description page
 'file-anchor-link' => 'مسل',
+'filehist'         => 'ملف کی تاریخ',
 'imagelinks'       => 'روابط',
 'linkstoimage'     => 'اس ملف (فائل) سے درج ذیل صفحات رابطہ رکھتے ہیں:',
 'nolinkstoimage'   => 'ایسے کوئی صفحات نہیں جو اس ملف (فائل) سے رابطہ رکھتے ہوں۔',
@@ -734,6 +749,7 @@ HTML tags جانچئے.',
 'allarticles'    => 'تمام مقالات',
 'allpagesprev'   => 'پچھلا',
 'allpagesnext'   => 'اگلا',
+'allpagessubmit' => 'چلو',
 'allpagesprefix' => 'مطلوبہ سابقہ سے شروع ہونے والے صفحات کی نمائش:',
 
 # Special:Categories
@@ -811,6 +827,7 @@ HTML tags جانچئے.',
 'undeletepage'     => 'معائنہ خذف شدہ صفحات',
 'viewdeletedpage'  => 'حذف شدہ صفحات دیکھیے',
 'undeletebtn'      => 'بحال',
+'undeletelink'     => 'دیکھو/بحال کرو',
 'undeletecomment'  => 'تبصرہ:',
 'undeletedarticle' => 'بحال "[[$1]]"',
 
@@ -881,6 +898,33 @@ HTML tags جانچئے.',
 
 # Special:Import
 'import' => 'درآمد صفحات',
+
+# Tooltip help for the actions
+'tooltip-pt-mytalk'              => 'آپ کا صفحۂ گفتگو',
+'tooltip-pt-login'               => 'آپ کیلئے داخلِ نوشتہ ہونا اچھا ہے؛ تاہم، یہ ضروری نہیں',
+'tooltip-ca-talk'                => 'مضمون بارے تبادلۂ خیال',
+'tooltip-ca-edit'                => 'آپ اس صفحہ میں ترمیم کرسکتے ہیں.
+برائے مہربانی! اپنی ترمیمات محفوظ کرنے سے پہلے نمائش کا بٹن استعمال کیجئے',
+'tooltip-ca-history'             => 'صفحۂ ہٰذا کی سابقہ نظرثانی',
+'tooltip-search'                 => 'تلاش {{SITENAME}}',
+'tooltip-search-go'              => 'اگر بالکل اِسی نام کا صفحہ موجود ہو تو اُس صفحہ پر جاؤ',
+'tooltip-search-fulltext'        => 'اس متن کیلئے صفحات تلاش کریں',
+'tooltip-p-logo'                 => 'سرورق پر جائیے',
+'tooltip-n-mainpage'             => 'اصل صفحہ پر جائیے',
+'tooltip-n-mainpage-description' => 'اصل صفحہ پر جائیے',
+'tooltip-n-portal'               => 'منصوبہ کے متعلق، آپ کیا کرسکتے ہیں، چیزیں کہاں ڈھونڈنی ہیں',
+'tooltip-n-currentevents'        => 'حالیہ واقعات پر پس منظری معلومات دیکھیئے',
+'tooltip-n-recentchanges'        => 'ویکی میں حالیہ تبدیلیوں کی فہرست',
+'tooltip-n-randompage'           => 'ایک تصادفی صفحہ لائیے',
+'tooltip-n-help'                 => 'ڈھونڈ نکالنے کی جگہ',
+'tooltip-t-whatlinkshere'        => 'اُن تمام ویکی صفحات کی فہرست جن کا یہاں ربط ہے',
+'tooltip-t-recentchangeslinked'  => 'اِس صفحہ سے مربوط صفحات میں حالیہ تبدیلیاں',
+'tooltip-t-upload'               => 'زبراثقالِ ملفات',
+'tooltip-t-specialpages'         => 'تمام خاص صفحات کی فہرست',
+'tooltip-t-print'                => 'اِس صفحہ کا قابلِ طبعہ نسخہ',
+'tooltip-t-permalink'            => 'صفحہ کے موجودہ نظرثانی کا مستقل ربط',
+'tooltip-ca-nstab-main'          => 'صفحۂ مضمون دیکھئے',
+'tooltip-ca-nstab-special'       => 'یہ ایک خاص صفحہ ہے، آپ اِس میں ترمیم نہیں کرسکتے',
 
 # Attribution
 'anonymous' => '{{SITENAME}} گمنام صارف',

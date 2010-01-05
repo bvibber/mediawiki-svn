@@ -180,7 +180,7 @@ $messages = array(
 'userlogout'              => '𐌻𐌴𐌹𐌸𐌰𐌽',
 'nologinlink'             => 'Gaskapjan þein niutandis',
 'createaccount'           => 'Galagjan niutandis',
-'gotaccount'              => 'Habiþ þu niutandis? $1',
+'gotaccount'              => "Habiþ þu niutandis? '''$1'''",
 'gotaccountlink'          => 'Atgaggan',
 'loginlanguagelabel'      => 'Razda: $1',
 
@@ -243,9 +243,9 @@ $messages = array(
 'editundo'      => 'niuskapjan',
 
 # Search results
-'prevn'          => 'aftuma $1',
-'nextn'          => 'iftuma $1',
-'viewprevnext'   => 'Siuneis ($1) ($2) ($3)',
+'prevn'          => 'aftuma {{PLURAL:$1|$1}}',
+'nextn'          => 'iftuma {{PLURAL:$1|$1}}',
+'viewprevnext'   => 'Siuneis ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url' => 'Hilpa:Háubidaseido',
 'powersearch'    => 'Sokeiþ',
 
@@ -321,8 +321,8 @@ $messages = array(
 # Statistics
 'statistics' => 'Seidostatistik',
 
-'brokenredirects-edit'   => '(máidjan)',
-'brokenredirects-delete' => '(taíran)',
+'brokenredirects-edit'   => 'máidjan',
+'brokenredirects-delete' => 'taíran',
 
 # Miscellaneous special pages
 'nbytes'       => '$1 {{PLURAL:$1|báit|báita}}',
@@ -390,7 +390,6 @@ $messages = array(
 # Protect
 'protectlogpage'      => 'Log af Baírgjan',
 'prot_1movedto2'      => '[[$1]] skiubiþ du [[$2]]',
-'protect-unchain'     => 'Ungalukan sa skiubanfreihals',
 'protect-level-sysop' => 'Seidofaþs áinaha',
 'protect-expiring'    => 'bláuþiþ $1 (UTC)',
 'restriction-type'    => 'Freihals:',

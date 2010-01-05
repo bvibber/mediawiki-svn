@@ -116,7 +116,10 @@ class ProtectedPagesForm {
 
 		wfProfileOut( __METHOD__ );
 
-		return '<li>' . wfSpecialList( $link . $stxt, implode( $description_items, ', ' ) ) . $changeProtection . "</li>\n";
+		return Html::rawElement(
+			'li',
+			array(),
+			wfSpecialList( $link . $stxt, $wgLang->commaList( $description_items ) ) . $changeProtection ) . "\n";
 	}
 
 	/**
@@ -131,7 +134,7 @@ class ProtectedPagesForm {
 	 */
 	protected function showOptions( $namespace, $type='edit', $level, $sizetype, $size, $indefOnly, $cascadeOnly ) {
 		global $wgScript;
-		$title = SpecialPage::getTitleFor( 'ProtectedPages' );
+		$title = SpecialPage::getTitleFor( 'Protectedpages' );
 		return Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'protectedpages' ) ) .
@@ -139,10 +142,10 @@ class ProtectedPagesForm {
 			$this->getNamespaceMenu( $namespace ) . "&nbsp;\n" .
 			$this->getTypeMenu( $type ) . "&nbsp;\n" .
 			$this->getLevelMenu( $level ) . "&nbsp;\n" .
-			"<br/><span style='white-space: nowrap'>" .
+			"<br /><span style='white-space: nowrap'>" .
 			$this->getExpiryCheck( $indefOnly ) . "&nbsp;\n" .
 			$this->getCascadeCheck( $cascadeOnly ) . "&nbsp;\n" .
-			"</span><br/><span style='white-space: nowrap'>" .
+			"</span><br /><span style='white-space: nowrap'>" .
 			$this->getSizeLimit( $sizetype, $size ) . "&nbsp;\n" .
 			"</span>" .
 			"&nbsp;" . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
@@ -196,6 +199,8 @@ class ProtectedPagesForm {
 	}
 
 	/**
+	 * Creates the input label of the restriction type
+	 * @param $pr_type string Protection type
 	 * @return string Formatted HTML
 	 */
 	protected function getTypeMenu( $pr_type ) {
@@ -224,6 +229,8 @@ class ProtectedPagesForm {
 	}
 
 	/**
+	 * Creates the input label of the restriction level
+	 * @param $pr_level string Protection level
 	 * @return string Formatted HTML
 	 */
 	protected function getLevelMenu( $pr_level ) {
@@ -247,11 +254,11 @@ class ProtectedPagesForm {
 			$options[] = Xml::option( $text, $type, $selected );
 		}
 
-		return
-			Xml::label( wfMsg('restriction-level') , $this->IdLevel ) . '&nbsp;' .
+		return "<span style='white-space: nowrap'>" .
+			Xml::label( wfMsg( 'restriction-level' ) , $this->IdLevel ) . ' ' .
 			Xml::tags( 'select',
 				array( 'id' => $this->IdLevel, 'name' => $this->IdLevel ),
-				implode( "\n", $options ) );
+				implode( "\n", $options ) ) . "</span>";
 	}
 }
 

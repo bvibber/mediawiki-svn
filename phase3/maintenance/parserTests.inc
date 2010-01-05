@@ -25,10 +25,10 @@
  */
 
 /** */
-$options = array( 'quick', 'color', 'quiet', 'help', 'show-output', 'record' );
+$options = array( 'quick', 'color', 'quiet', 'help', 'show-output', 'record'. 'run-disabled' );
 $optionsWithArgs = array( 'regex', 'seed', 'setversion' );
 
-require_once( 'commandLine.inc' );
+require_once( dirname(__FILE__) . '/commandLine.inc' );
 require_once( "$IP/maintenance/parserTestsParserHook.php" );
 require_once( "$IP/maintenance/parserTestsStaticParserHook.php" );
 require_once( "$IP/maintenance/parserTestsParserTime.php" );
@@ -116,6 +116,8 @@ class ParserTest {
 			$this->recorder = new DbTestRecorder( $this );
 		} elseif( isset( $options['compare'] ) ) {
 			$this->recorder = new DbTestPreviewer( $this );
+		} elseif( isset( $options['upload'] ) ) {
+			$this->recorder = new RemoteTestRecorder( $this );
 		} else {
 			$this->recorder = new TestRecorder( $this );
 		}
@@ -124,6 +126,8 @@ class ParserTest {
 		if ( isset( $options['seed'] ) ) {
 			$this->fuzzSeed = intval( $options['seed'] ) - 1;
 		}
+
+		$this->runDisabled = isset( $options['run-disabled'] );
 
 		$this->hooks = array();
 		$this->functionHooks = array();
@@ -356,9 +360,15 @@ class ParserTest {
 					if (!isset( $data['config'] ) )
 						$data['config'] = '';
 					
-					if (preg_match('/\\bdisabled\\b/i', $data['options'])
-						|| !preg_match("/{$this->regex}/i", $data['test'])) {
+					if ( (preg_match('/\\bdisabled\\b/i', $data['options'])
+						|| !preg_match("/{$this->regex}/i", $data['test'])) && !$this->runDisabled ) {
 						# disabled test
+						$data = array();
+						$section = null;
+						continue;
+					}
+					if ( preg_match('/\\bmath\\b/i', $data['options']) && !$this->savedGlobals['wgUseTeX'] ) {
+						# don't run math tests if $wgUseTeX is set to false in LocalSettings
 						$data = array();
 						$section = null;
 						continue;
@@ -446,7 +456,7 @@ class ParserTest {
 		$noxml = isset( $opts['noxml'] );
 		$local = isset( $opts['local'] );
 		$parser = $this->getParser();
-		$title =& Title::makeTitle( NS_MAIN, $titleText );
+		$title = Title::newFromText( $titleText );
 
 		$matches = array();
 		if( isset( $opts['pst'] ) ) {
@@ -500,6 +510,7 @@ class ParserTest {
 	 * @param $defaults Default value returned if not found
 	 */
 	private static function getOptionValue( $key, $opts, $default ) {
+		$key = strtolower( $key );
 		if( isset( $opts[$key] ) ) {
 			return $opts[$key];
 		} else {
@@ -578,6 +589,7 @@ class ParserTest {
 	 * Ideally this should replace the global configuration entirely.
 	 */
 	private function setupGlobals($opts = '', $config = '') {
+		global $wgDBtype;
 		if( !isset( $this->uploadDir ) ) {
 			$this->uploadDir = $this->setupUploadDir();
 		}
@@ -609,10 +621,10 @@ class ParserTest {
 			'wgEnableUploads' => true,
 			'wgStyleSheetPath' => '/skins',
 			'wgSitename' => 'MediaWiki',
-			'wgServerName' => 'Britney Spears',
+			'wgServerName' => 'Britney-Spears',
 			'wgLanguageCode' => $lang,
 			'wgContLanguageCode' => $lang,
-			'wgDBprefix' => 'parsertest_',
+			'wgDBprefix' => $wgDBtype != 'oracle' ? 'parsertest_' : 'pt_',
 			'wgRawHtml' => isset( $opts['rawhtml'] ),
 			'wgLang' => null,
 			'wgContLang' => null,
@@ -642,6 +654,8 @@ class ParserTest {
 			'wgEnforceHtmlIds' => true,
 			'wgExternalLinkTarget' => false,
 			'wgAlwaysUseTidy' => false,
+			'wgHtml5' => true,
+			'wgWellFormedXml' => true,
 			);
 
 		if ($config) {
@@ -663,8 +677,11 @@ class ParserTest {
 		$GLOBALS['wgLang'] = $langObj;
 		$GLOBALS['wgContLang'] = $langObj;
 		$GLOBALS['wgMemc'] = new FakeMemCachedClient;
+		$GLOBALS['wgOut'] = new OutputPage;
 
 		//$GLOBALS['wgMessageCache'] = new MessageCache( new BagOStuff(), false, 0, $GLOBALS['wgDBname'] );
+
+		MagicWord::clearCache();
 
 		global $wgUser;
 		$wgUser = new User();
@@ -706,7 +723,7 @@ class ParserTest {
 		if ( $this->databaseSetupDone ) {
 			return;
 		}
-		if ( $wgDBprefix === 'parsertest_' ) {
+		if ( $wgDBprefix === 'parsertest_' || ($wgDBtype == 'oracle' && $wgDBprefix === 'pt_')) {
 			throw new MWException( 'setupDatabase should be called before setupGlobals' );
 		}
 		$this->databaseSetupDone = true;
@@ -719,59 +736,30 @@ class ParserTest {
 			$this->useTemporaryTables = false;
 		}
 
-		$temporary = $this->useTemporaryTables ? 'TEMPORARY' : '';
+		$temporary = $this->useTemporaryTables || $wgDBtype == 'postgres';
 
 		$db = wfGetDB( DB_MASTER );
 		$tables = $this->listTables();
 
-		if ( !( $wgDBtype == 'mysql' && strcmp( $db->getServerVersion(), '4.1' ) < 0 ) ) {
-			# Database that supports CREATE TABLE ... LIKE
-			
-			if( $wgDBtype == 'postgres' ) {
-				$def = 'INCLUDING DEFAULTS';
-				$temporary = 'TEMPORARY';
-			} else {
-				$def = '';
-			}
-			foreach ( $tables as $tbl ) {
-				# Clean up from previous aborted run.  So that table escaping
-				# works correctly across DB engines, we need to change the pre-
-				# fix back and forth so tableName() works right.
-				$this->changePrefix( $this->oldTablePrefix );
-				$oldTableName = $db->tableName( $tbl );
-				$this->changePrefix( 'parsertest_' );
-				$newTableName = $db->tableName( $tbl );
+		foreach ( $tables as $tbl ) {
+			# Clean up from previous aborted run.  So that table escaping
+			# works correctly across DB engines, we need to change the pre-
+			# fix back and forth so tableName() works right.
+			$this->changePrefix( $this->oldTablePrefix );
+			$oldTableName = $db->tableName( $tbl );
+			$this->changePrefix( $wgDBtype != 'oracle' ? 'parsertest_' : 'pt_' );
+			$newTableName = $db->tableName( $tbl );
 
-				if ( $db->tableExists( $tbl ) && $wgDBtype != 'postgres' ) {
-					$db->query( "DROP TABLE $newTableName" );
-				}
-				# Create new table
-				$db->query( "CREATE $temporary TABLE $newTableName (LIKE $oldTableName $def)" );
+			if ( $db->tableExists( $tbl ) && $wgDBtype != 'postgres' && $wgDBtype != 'oracle' ) {
+				$db->query( "DROP TABLE $newTableName" );
 			}
-		} else {
-			# Hack for MySQL versions < 4.1, which don't support
-			# "CREATE TABLE ... LIKE". Note that
-			# "CREATE TEMPORARY TABLE ... SELECT * FROM ... LIMIT 0"
-			# would not create the indexes we need....
-			#
-			# Note that we don't bother changing around the prefixes here be-
-			# cause we know we're using MySQL anyway.
-			foreach ($tables as $tbl) {
-				$oldTableName = $db->tableName( $tbl );
-				$res = $db->query("SHOW CREATE TABLE $oldTableName");
-				$row = $db->fetchRow($res);
-				$create = $row[1];
-				$create_tmp = preg_replace('/CREATE TABLE `(.*?)`/', 
-					"CREATE $temporary TABLE `parsertest_$tbl`", $create);
-				if ($create === $create_tmp) {
-					# Couldn't do replacement
-					wfDie("could not create temporary table $tbl");
-				}
-				$db->query($create_tmp);
-			}
+			# Create new table
+			$db->duplicateTableStructure( $oldTableName, $newTableName, $temporary );
 		}
+		if ($wgDBtype == 'oracle')
+			$db->query('BEGIN FILL_WIKI_INFO; END;');
 
-		$this->changePrefix( 'parsertest_' );
+		$this->changePrefix( $wgDBtype != 'oracle' ? 'parsertest_' : 'pt_' );
 
 		# Hack: insert a few Wikipedia in-project interwiki prefixes,
 		# for testing inter-language links
@@ -795,6 +783,21 @@ class ParserTest {
 				   'iw_url'    => 'http://ru.wikipedia.org/wiki/$1',
 				   'iw_local'  => 1 ),
 			) );
+
+
+		if ($wgDBtype == 'oracle') {
+			# Insert 0 and 1 user_ids to prevent FK violations
+			
+			#Anonymous user
+			$db->insert( 'user', array(
+				'user_id'         => 0,
+				'user_name'       => 'Anonymous') );
+
+			# Hack-on-Hack: Insert a test user to be able to insert an image
+			$db->insert( 'user', array(
+				'user_id'         => 1,
+				'user_name'       => 'Tester') );
+		}
 
 		# Hack: Insert an image to work with
 		$db->insert( 'image', array(
@@ -838,7 +841,7 @@ class ParserTest {
 	}
 
 	private function teardownDatabase() {
-		global $wgDBprefix;
+		global $wgDBprefix, $wgDBtype;
 		if ( !$this->databaseSetupDone ) {
 			return;
 		}
@@ -853,8 +856,12 @@ class ParserTest {
 		$tables = $this->listTables();
 		$db = wfGetDB( DB_MASTER );
 		foreach ( $tables as $table ) {
-			$db->query( "DROP TABLE `parsertest_$table`" );
-		}*/
+			$sql = $wgDBtype == 'oracle' ? "DROP TABLE pt_$table DROP CONSTRAINTS" : "DROP TABLE `parsertest_$table`";
+			$db->query( $sql );
+		}
+		if ($wgDBtype == 'oracle')
+			$db->query('BEGIN FILL_WIKI_INFO; END;');
+		*/
 	}
 	
 	/**
@@ -889,7 +896,6 @@ class ParserTest {
 	 */
 	private function teardownGlobals() {
 		RepoGroup::destroySingleton();
-		FileCache::destroySingleton();
 		LinkCache::singleton()->clear();
 		foreach( $this->savedGlobals as $var => $val ) {
 			$GLOBALS[$var] = $val;
@@ -1479,6 +1485,8 @@ class DbTestRecorder extends DbTestPreviewer  {
 			print "WARNING> `testrun` table not found in database. Trying to create table.\n";
 			if ($wgDBtype === 'postgres')
 				$this->db->sourceFile( dirname(__FILE__) . '/testRunner.postgres.sql' );
+			elseif ($wgDBtype === 'oracle')
+				$this->db->sourceFile( dirname(__FILE__) . '/testRunner.ora.sql' );
 			else
 				$this->db->sourceFile( dirname(__FILE__) . '/testRunner.sql' );
 			echo "OK, resuming.\n";
@@ -1516,5 +1524,93 @@ class DbTestRecorder extends DbTestPreviewer  {
 				'ti_success' => $result ? 1 : 0,
 			),
 			__METHOD__ );
+	}
+}
+
+class RemoteTestRecorder extends TestRecorder {
+	function start() {
+		parent::start();
+		$this->results = array();
+		$this->ping( 'running' );
+	}
+	
+	function record( $test, $result ) {
+		parent::record( $test, $result );
+		$this->results[$test] = (bool)$result;
+	}
+	
+	function end() {
+		$this->ping( 'complete', $this->results );
+		parent::end();
+	}
+	
+	/**
+	 * Inform a CodeReview instance that we've started or completed a test run...
+	 * @param $remote array: info on remote target
+	 * @param $status string: "running" - tell it we've started
+	 *                        "complete" - provide test results array
+	 *                        "abort" - something went horribly awry
+	 * @param $data array of test name => true/false
+	 */
+	function ping( $status, $results=false ) {
+		global $wgParserTestRemote, $IP;
+		
+		$remote = $wgParserTestRemote;
+		$revId = SpecialVersion::getSvnRevision( $IP );
+		$jsonResults = json_encode( $results );
+		
+		if( !$remote ) {
+			print "Can't do remote upload without configuring \$wgParserTestRemote!\n";
+			exit( 1 );
+		}
+		
+		// Generate a hash MAC to validate our credentials
+		$message = array(
+			$remote['repo'],
+			$remote['suite'],
+			$revId,
+			$status,
+		);
+		if( $status == "complete" ) {
+			$message[] = $jsonResults;
+		}
+		$hmac = hash_hmac( "sha1", implode( "|", $message ), $remote['secret'] );
+		
+		$postData = array(
+			'action' => 'codetestupload',
+			'format' => 'json',
+			'repo'   => $remote['repo'],
+			'suite'  => $remote['suite'],
+			'rev'    => $revId,
+			'status' => $status,
+			'hmac'   => $hmac,
+		);
+		if( $status == "complete" ) {
+			$postData['results'] = $jsonResults;
+		}
+		$response = $this->post( $remote['api-url'], $postData );
+		
+		if( $response === false ) {
+			print "CodeReview info upload failed to reach server.\n";
+			exit( 1 );
+		}
+		$responseData = json_decode( $response, true );
+		if( !is_array( $responseData ) ) {
+			print "CodeReview API response not recognized...\n";
+			wfDebug( "Unrecognized CodeReview API response: $response\n" );
+			exit( 1 );
+		}
+		if( isset( $responseData['error'] ) ) {
+			$code = $responseData['error']['code'];
+			$info = $responseData['error']['info'];
+			print "CodeReview info upload failed: $code $info\n";
+			exit( 1 );
+		}
+	}
+	
+	function post( $url, $data ) {
+		// @fixme: for whatever reason, I get a 417 fail when using CURL's multipart form submit.
+		// If we do form URL encoding ourselves, though, it should work.
+		return Http::post( $url, array( 'postdata' => wfArrayToCGI( $data ) ) );
 	}
 }

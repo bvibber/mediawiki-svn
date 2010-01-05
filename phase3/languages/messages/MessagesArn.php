@@ -8,6 +8,7 @@
  * @file
  *
  * @author Clerc
+ * @author Kaniw
  * @author Lin linao
  * @author Poquil
  * @author Remember the dot
@@ -91,6 +92,16 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-delete'       => 'Ñamümün',
+'vector-namespace-main'      => 'Pakina',
+'vector-namespace-mediawiki' => 'Dungu',
+'vector-namespace-talk'      => 'Nütramkawe',
+'vector-namespace-user'      => 'Kellufe',
+'vector-view-create'         => 'Llitun',
+'vector-view-edit'           => 'Wirin',
+'vector-view-view'           => 'Chillkatun',
+
 'returnto'         => 'Amutun $1 püle.',
 'tagline'          => '{{SITENAME}} mew',
 'help'             => 'Kellu',
@@ -169,7 +180,7 @@ $messages = array(
 'logout'                  => 'Tripan',
 'userlogout'              => 'Tripan',
 'notloggedin'             => 'Petu konlaymi.',
-'nologin'                 => 'Nielaymi kiñe lludüwe? $1.',
+'nologin'                 => "Nielaymi kiñe lludüwe? '''$1'''.",
 'nologinlink'             => 'Dewmafinge',
 'gotaccountlink'          => 'Konün',
 'loginlanguagelabel'      => 'Dungun: $1',
@@ -196,26 +207,24 @@ $messages = array(
 'history-feed-item-nocomment' => '$1 $2 mew',
 
 # Revision deletion
-'rev-delundel'    => 'pengelün/ellkan',
-'pagehist'        => 'pünon pakina',
-'deletedhist'     => 'Ñamümüngelu pünon',
-'revdelete-uname' => 'Üy kellufe',
-'revdelete-hid'   => 'Ellkan $1',
+'rev-delundel'               => 'pengelün/ellkan',
+'revdelete-show-file-submit' => 'May',
+'pagehist'                   => 'pünon pakina',
+'deletedhist'                => 'Ñamümüngelu pünon',
+'revdelete-uname'            => 'Üy kellufe',
+'revdelete-hid'              => 'Ellkan $1',
+'revdelete-edit-reasonlist'  => 'Wirin dungu ñamümgün mew',
 
 # History merging
 'mergehistory-reason' => 'Dungu:',
 
 # Diffs
-'lineno'       => 'Wirin $1:',
-'editundo'     => 'wüñoeltun',
-'diff-movedto' => 'Nengümülu $1 püle',
-'diff-img'     => "kiñe '''ad'''",
-'diff-big'     => "'''füta'''",
-'diff-del'     => "'''Ñamümün'''",
+'lineno'   => 'Wirin $1:',
+'editundo' => 'wüñoeltun',
 
 # Search results
-'viewprevnext'                   => 'Pen ($1) ($2) ($3).',
-'searchmenu-exists'              => "'''Ngey kiñe pakina pingey «[[$1]]» tüfachi wiki mew'''",
+'viewprevnext'                   => 'Pen ($1 {{int:pipe-separator}} $2) ($3).',
+'searchmenu-exists'              => "'''Mvley kiñe cijka «[[:$1]]» pigelu faci wiki mew'''",
 'searchmenu-new'                 => "'''¡Llitun pakina «[[:$1]]» tüfachi wiki mew!'''",
 'searchhelp-url'                 => 'Help:Kellu',
 'searchprofile-articles-tooltip' => 'kintu $1 mew',
@@ -278,6 +287,8 @@ $messages = array(
 'action-undelete'      => 'Namümlay tüfachi pakina',
 
 # Recent changes
+'recentchanges-legend-newpage'      => '$1 - We Pakina',
+'recentchanges-legend-minor'        => '$1 pichi wirin',
 'rcshowhideminor'                   => '$1 pichi wirin',
 'rcshowhidemine'                    => '$1 tañi wirin',
 'hist'                              => 'Püno',
@@ -397,6 +408,7 @@ $messages = array(
 
 # Undelete
 'viewdeletedpage'           => 'Pen pakina ñamümüngelu',
+'undeleteviewlink'          => 'Pen',
 'undelete-search-box'       => 'Kintun ñamümüngelu pakina',
 'undelete-search-submit'    => 'Kintun',
 'undelete-show-file-submit' => 'May',
@@ -503,9 +515,10 @@ $messages = array(
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'kom',
 'imagelistall'     => 'kom',
-'watchlistall2'    => 'Fill',
+'watchlistall2'    => 'kom',
 'namespacesall'    => 'kom',
 'monthsall'        => '(kom)',
+'limitall'         => 'Kom',
 
 # Trackbacks
 'trackbackremove' => '([$1 Ñamümün])',
@@ -515,7 +528,7 @@ $messages = array(
 
 # Multipage image navigation
 'imgmultigo'   => 'Amun!',
-'imgmultigoto' => 'Amun pakina 1$ mew',
+'imgmultigoto' => 'Amun pakina $1 mew',
 
 # Table pager
 'table_pager_limit_submit' => 'Amun',
@@ -541,5 +554,8 @@ $messages = array(
 
 # Special:Tags
 'tags-edit' => 'Wirin',
+
+# HTML forms
+'htmlform-selectorother-other' => 'Kakelu',
 
 );

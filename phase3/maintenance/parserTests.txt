@@ -1271,6 +1271,8 @@ Invalid attributes in table cell (bug 1830)
 # specified here is now valid XML, which is an improvement . . .
 !! test
 Table security: embedded pipes (http://lists.wikimedia.org/mailman/htdig/wikitech-l/2006-April/022293.html)
+!! options
+disabled
 !! input
 {|
 | |[ftp://|x||]" onmouseover="alert(document.cookie)">test
@@ -1451,7 +1453,7 @@ Link containing % as a double hex sequence interpreted to hex sequence
 !!end
 
 !! test
-Link containing "#<" and "#>" % as hex sequences- these are valid section anchors
+Link containing "#<" and "#>" % as a hex sequences- these are valid section anchors
 Example for such a section: == < ==
 !! input
 [[%23%3c]][[%23%3e]]
@@ -1461,16 +1463,18 @@ Example for such a section: == < ==
 !! end
 
 !! test
-Link containing "<#" and ">#" as hex sequences
+Link containing "<#" and ">#" as a hex sequences
 !! input
 [[%3c%23]][[%3e%23]]
 !! result
-<p>[[%3c%23]]<a href="/index.php?title=%3E&amp;action=edit&amp;redlink=1" class="new" title="&gt; (page does not exist)">&gt;#</a>
+<p>[[%3c%23]][[%3e%23]]
 </p>
 !! end
 
 !! test
 Link containing double-single-quotes '' (bug 4598)
+!! options
+disabled
 !! input
 [[Lista d''e paise d''o munno]]
 !! result
@@ -1592,6 +1596,16 @@ title=[[0]]
 <p>[[Main Page]] <a href="/wiki/Main_Page" title="Main Page">the main page [it's not very good]</a>
 </p>
 !! end
+
+!! test
+Non-breaking spaces in title
+!! input
+[[&nbsp; Main &nbsp; Page &nbsp;]]
+!! result
+<p><a href="/wiki/Main_Page" title="Main Page">&nbsp; Main &nbsp; Page &nbsp;</a>
+</p>
+!!end
+
 
 ###
 ### Interwiki links (see maintenance/interwiki.sql)
@@ -1948,7 +1962,6 @@ title=[[User:Ævar Arnfjörð Bjarmason]]
 Magic Word: {{NAMESPACE}}
 !! options
 title=[[User:Ævar Arnfjörð Bjarmason]]
-disabled # FIXME
 !! input
 {{NAMESPACE}}
 !! result
@@ -1960,7 +1973,6 @@ disabled # FIXME
 Magic Word: {{NAMESPACEE}}
 !! options
 title=[[User:Ævar Arnfjörð Bjarmason]]
-disabled # FIXME
 !! input
 {{NAMESPACEE}}
 !! result
@@ -1990,7 +2002,6 @@ Magic Word: {{NUMBEROFFILES}}
 Magic Word: {{PAGENAME}}
 !! options
 title=[[User:Ævar Arnfjörð Bjarmason]]
-disabled # FIXME
 !! input
 {{PAGENAME}}
 !! result
@@ -2005,7 +2016,7 @@ title=[[User:Ævar Arnfjörð Bjarmason]]
 !! input
 {{PAGENAMEE}}
 !! result
-<p>User:%C3%86var_Arnfj%C3%B6r%C3%B0_Bjarmason
+<p>%C3%86var_Arnfj%C3%B6r%C3%B0_Bjarmason
 </p>
 !! end
 
@@ -2041,7 +2052,7 @@ Magic Word: {{SERVERNAME}}
 !! input
 {{SERVERNAME}}
 !! result
-<p>Britney Spears
+<p>Britney-Spears
 </p>
 !! end
 
@@ -2182,7 +2193,7 @@ Magic links: RFC (bug 479)
 !! input
 RFC 822
 !! result
-<p><a href="http://tools.ietf.org/html/rfc822" class="external">RFC 822</a>
+<p><a href="http://tools.ietf.org/html/rfc822" class="external mw-magiclink-rfc">RFC 822</a>
 </p>
 !! end
 
@@ -2191,7 +2202,7 @@ Magic links: ISBN (bug 1937)
 !! input
 ISBN 0-306-40615-2
 !! result
-<p><a href="/wiki/Special:BookSources/0306406152" class="internal">ISBN 0-306-40615-2</a>
+<p><a href="/wiki/Special:BookSources/0306406152" class="internal mw-magiclink-isbn">ISBN 0-306-40615-2</a>
 </p>
 !! end
 
@@ -2200,7 +2211,7 @@ Magic links: PMID incorrectly converts space to underscore
 !! input
 PMID 1234
 !! result
-<p><a href="http://www.ncbi.nlm.nih.gov/pubmed/1234?dopt=Abstract" class="external">PMID 1234</a>
+<p><a href="http://www.ncbi.nlm.nih.gov/pubmed/1234?dopt=Abstract" class="external mw-magiclink-pmid">PMID 1234</a>
 </p>
 !! end
 
@@ -3289,7 +3300,7 @@ BUG 1887: A ISBN with a thumbnail
 !! input
 [[Image:foobar.jpg|thumb|ISBN 1235467890]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div><a href="/wiki/Special:BookSources/1235467890" class="internal">ISBN 1235467890</a></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div><a href="/wiki/Special:BookSources/1235467890" class="internal mw-magiclink-isbn">ISBN 1235467890</a></div></div></div>
 
 !! end
 
@@ -3298,7 +3309,7 @@ BUG 1887: A RFC with a thumbnail
 !! input
 [[Image:foobar.jpg|thumb|This is RFC 12354]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>This is <a href="http://tools.ietf.org/html/rfc12354" class="external">RFC 12354</a></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>This is <a href="http://tools.ietf.org/html/rfc12354" class="external mw-magiclink-rfc">RFC 12354</a></div></div></div>
 
 !! end
 
@@ -3491,7 +3502,7 @@ Link to category
 !! input
 [[:Category:MediaWiki User's Guide]]
 !! result
-<p><a href="/wiki/Category:MediaWiki_User%27s_Guide" title="Category:MediaWiki User&#39;s Guide">Category:MediaWiki User's Guide</a>
+<p><a href="/wiki/Category:MediaWiki_User%27s_Guide" title="Category:MediaWiki User's Guide">Category:MediaWiki User's Guide</a>
 </p>
 !! end
 
@@ -3502,7 +3513,7 @@ cat
 !! input
 [[Category:MediaWiki User's Guide]]
 !! result
-<a href="/wiki/Category:MediaWiki_User%27s_Guide" title="Category:MediaWiki User&#039;s Guide">MediaWiki User's Guide</a>
+<a href="/wiki/Category:MediaWiki_User%27s_Guide" title="Category:MediaWiki User's Guide">MediaWiki User's Guide</a>
 !! end
 
 !! test
@@ -3566,7 +3577,7 @@ Section headings with TOC
 Some text
 ===Another headline===
 !! result
-<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
 <ul>
 <li class="toclevel-1 tocsection-1"><a href="#Headline_1"><span class="tocnumber">1</span> <span class="toctext">Headline 1</span></a>
 <ul>
@@ -3587,7 +3598,7 @@ Some text
 </ul>
 </li>
 </ul>
-</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
 <h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Headline 1">edit</a>]</span> <span class="mw-headline" id="Headline_1"> Headline 1 </span></h2>
 <h3><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Subheadline 1">edit</a>]</span> <span class="mw-headline" id="Subheadline_1"> Subheadline 1 </span></h3>
 <h5><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=3" title="Edit section: Skipping a level">edit</a>]</span> <span class="mw-headline" id="Skipping_a_level"> Skipping a level </span></h5>
@@ -3614,7 +3625,7 @@ Handling of sections up to level 6 and beyond
 ========= Level 9 Heading=========
 ========== Level 10 Heading==========
 !! result
-<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
 <ul>
 <li class="toclevel-1 tocsection-1"><a href="#Level_1_Heading"><span class="tocnumber">1</span> <span class="toctext">Level 1 Heading</span></a>
 <ul>
@@ -3642,7 +3653,7 @@ Handling of sections up to level 6 and beyond
 </ul>
 </li>
 </ul>
-</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
 <h1><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Level 1 Heading">edit</a>]</span> <span class="mw-headline" id="Level_1_Heading"> Level 1 Heading</span></h1>
 <h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Level 2 Heading">edit</a>]</span> <span class="mw-headline" id="Level_2_Heading"> Level 2 Heading</span></h2>
 <h3><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=3" title="Edit section: Level 3 Heading">edit</a>]</span> <span class="mw-headline" id="Level_3_Heading"> Level 3 Heading</span></h3>
@@ -3666,7 +3677,7 @@ TOC regression (bug 9764)
 == title 2 ==
 === title 2.1 ===
 !! result
-<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
 <ul>
 <li class="toclevel-1 tocsection-1"><a href="#title_1"><span class="tocnumber">1</span> <span class="toctext">title 1</span></a>
 <ul>
@@ -3684,7 +3695,7 @@ TOC regression (bug 9764)
 </ul>
 </li>
 </ul>
-</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
 <h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: title 1">edit</a>]</span> <span class="mw-headline" id="title_1"> title 1 </span></h2>
 <h3><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: title 1.1">edit</a>]</span> <span class="mw-headline" id="title_1.1"> title 1.1 </span></h3>
 <h4><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=3" title="Edit section: title 1.1.1">edit</a>]</span> <span class="mw-headline" id="title_1.1.1"> title 1.1.1 </span></h4>
@@ -3706,7 +3717,7 @@ wgMaxTocLevel=3
 == title 2 ==
 === title 2.1 ===
 !! result
-<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
 <ul>
 <li class="toclevel-1 tocsection-1"><a href="#title_1"><span class="tocnumber">1</span> <span class="toctext">title 1</span></a>
 <ul>
@@ -3720,7 +3731,7 @@ wgMaxTocLevel=3
 </ul>
 </li>
 </ul>
-</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
 <h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: title 1">edit</a>]</span> <span class="mw-headline" id="title_1"> title 1 </span></h2>
 <h3><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: title 1.1">edit</a>]</span> <span class="mw-headline" id="title_1.1"> title 1.1 </span></h3>
 <h4><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=3" title="Edit section: title 1.1.1">edit</a>]</span> <span class="mw-headline" id="title_1.1.1"> title 1.1.1 </span></h4>
@@ -3803,7 +3814,7 @@ __TOC__
 === title 1.1 ===
 == title 2 ==
 !! result
-<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
 <ul>
 <li class="toclevel-1 tocsection-1"><a href="#title_1"><span class="tocnumber">1</span> <span class="toctext">title 1</span></a>
 <ul>
@@ -3812,7 +3823,7 @@ __TOC__
 </li>
 <li class="toclevel-1 tocsection-3"><a href="#title_2"><span class="tocnumber">2</span> <span class="toctext">title 2</span></a></li>
 </ul>
-</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
 <h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: title 1">edit</a>]</span> <span class="mw-headline" id="title_1"> title 1 </span></h2>
 <h3><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: title 1.1">edit</a>]</span> <span class="mw-headline" id="title_1.1"> title 1.1 </span></h3>
 <h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=3" title="Edit section: title 2">edit</a>]</span> <span class="mw-headline" id="title_2"> title 2 </span></h2>
@@ -4787,6 +4798,8 @@ HTML bullet list, closed tags (bug 5497)
 
 !! test
 HTML bullet list, unclosed tags (bug 5497)
+!! options
+disabled
 !! input
 <ul>
 <li>One
@@ -4817,6 +4830,8 @@ HTML ordered list, closed tags (bug 5497)
 
 !! test
 HTML ordered list, unclosed tags (bug 5497)
+!! options
+disabled
 !! input
 <ol>
 <li>One
@@ -4857,6 +4872,8 @@ HTML nested bullet list, closed tags (bug 5497)
 
 !! test
 HTML nested bullet list, open tags (bug 5497)
+!! options
+disabled
 !! input
 <ul>
 <li>One
@@ -4905,6 +4922,8 @@ HTML nested ordered list, closed tags (bug 5497)
 
 !! test
 HTML nested ordered list, open tags (bug 5497)
+!! options
+disabled
 !! input
 <ol>
 <li>One
@@ -4984,11 +5003,11 @@ Fuzz testing: Parser14
 http://__TOC__
 !! result
 <h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: onmouseover=">edit</a>]</span> <span class="mw-headline" id="onmouseover.3D"> onmouseover= </span></h2>
-http://<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+http://<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
 <ul>
 <li class="toclevel-1 tocsection-1"><a href="#onmouseover.3D"><span class="tocnumber">1</span> <span class="toctext">onmouseover=</span></a></li>
 </ul>
-</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
 
 !! end
 
@@ -5221,6 +5240,8 @@ New wiki paragraph
 
 !! test
 Inline HTML vs wiki block nesting
+!! options
+disabled
 !! input
 <b>Bold paragraph
 
@@ -6287,7 +6308,7 @@ ISBN code coverage
 !! input
 ISBN  978-0-1234-56&#x20;789
 !! result
-<p><a href="/wiki/Special:BookSources/9780123456" class="internal">ISBN 978-0-1234-56</a>&#x20;789
+<p><a href="/wiki/Special:BookSources/9780123456" class="internal mw-magiclink-isbn">ISBN 978-0-1234-56</a>&#x20;789
 </p>
 !! end
 
@@ -6305,7 +6326,7 @@ Double ISBN
 !! input
 ISBN ISBN 1234567890
 !! result
-<p>ISBN <a href="/wiki/Special:BookSources/1234567890" class="internal">ISBN 1234567890</a>
+<p>ISBN <a href="/wiki/Special:BookSources/1234567890" class="internal mw-magiclink-isbn">ISBN 1234567890</a>
 </p>
 !! end
 
@@ -6314,7 +6335,7 @@ Double RFC
 !! input
 RFC RFC 1234
 !! result
-<p>RFC <a href="http://tools.ietf.org/html/rfc1234" class="external">RFC 1234</a>
+<p>RFC <a href="http://tools.ietf.org/html/rfc1234" class="external mw-magiclink-rfc">RFC 1234</a>
 </p>
 !! end
 
@@ -6332,7 +6353,7 @@ RFC code coverage
 !! input
 RFC   983&#x20;987
 !! result
-<p><a href="http://tools.ietf.org/html/rfc983" class="external">RFC 983</a>&#x20;987
+<p><a href="http://tools.ietf.org/html/rfc983" class="external mw-magiclink-rfc">RFC 983</a>&#x20;987
 </p>
 !! end
 
@@ -6404,6 +6425,8 @@ Another italics / bold test
 # ...<dd> </dt></dl> </dd...
 !! test
 dt/dd/dl test
+!! options
+disabled
 !! input
 :;;;::
 !! result
@@ -6421,6 +6444,8 @@ dt/dd/dl test
 # Images with the "|" character in external URLs in comment tags; Eats half the comment, leaves unmatched "</a>" tag.
 !! test
 Images with the "|" character in the comment
+!! options
+disabled
 !! input
 [[image:Foobar.jpg|thumb|An [http://test/?param1=|left|&param2=|x external] URL]]
 !! result
@@ -6552,9 +6577,9 @@ RAW magic word
 !! test
 Always escape literal '>' in output, not just after '<'
 !! input
-test ><>
+><>
 !! result
-<p>test &gt;&lt;&gt;
+<p>&gt;&lt;&gt;
 </p>
 !! end
 
@@ -6596,7 +6621,7 @@ Out-of-order TOC heading levels
 =====5=====
 ==2==
 !! result
-<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
 <ul>
 <li class="toclevel-1 tocsection-1"><a href="#2"><span class="tocnumber">1</span> <span class="toctext">2</span></a>
 <ul>
@@ -6611,7 +6636,7 @@ Out-of-order TOC heading levels
 </ul>
 </li>
 </ul>
-</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
 <h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: 2">edit</a>]</span> <span class="mw-headline" id="2">2</span></h2>
 <h6><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: 6">edit</a>]</span> <span class="mw-headline" id="6">6</span></h6>
 <h3><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=3" title="Edit section: 3">edit</a>]</span> <span class="mw-headline" id="3">3</span></h3>
@@ -6637,7 +6662,7 @@ ISBN with space-delimited number
 !! input
 ISBN 92 9017 032 8
 !! result
-<p><a href="/wiki/Special:BookSources/9290170328" class="internal">ISBN 92 9017 032 8</a>
+<p><a href="/wiki/Special:BookSources/9290170328" class="internal mw-magiclink-isbn">ISBN 92 9017 032 8</a>
 </p>
 !! end
 
@@ -6662,7 +6687,7 @@ ISBN 1234567890
 ISBN 12345678901
 !! result
 <p>ISBN 123456789
-</p><p><a href="/wiki/Special:BookSources/1234567890" class="internal">ISBN 1234567890</a>
+</p><p><a href="/wiki/Special:BookSources/1234567890" class="internal mw-magiclink-isbn">ISBN 1234567890</a>
 </p><p>ISBN 12345678901
 </p>
 !! end
@@ -6675,8 +6700,8 @@ ISBN 1-234-56789-0 - 2006
 
 ISBN 1 234 56789 0 - 2006
 !! result
-<p><a href="/wiki/Special:BookSources/1234567890" class="internal">ISBN 1-234-56789-0</a> - 2006
-</p><p><a href="/wiki/Special:BookSources/1234567890" class="internal">ISBN 1 234 56789 0</a> - 2006
+<p><a href="/wiki/Special:BookSources/1234567890" class="internal mw-magiclink-isbn">ISBN 1-234-56789-0</a> - 2006
+</p><p><a href="/wiki/Special:BookSources/1234567890" class="internal mw-magiclink-isbn">ISBN 1 234 56789 0</a> - 2006
 </p>
 !! end
 
@@ -6793,9 +6818,9 @@ Simple category in language variants
 !! options
 language=sr cat
 !! input
-[[:Category:МедиаWики Усер'с Гуиде]]
+[[Category:МедиаWики Усер'с Гуиде]]
 !! result
-<a href="/wiki/Category:MediaWiki_User%27s_Guide" title="Category:MediaWiki User&#039;s Guide">MediaWiki User's Guide</a>
+<a href="/wiki/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%98%D0%B0:MediaWiki_User%27s_Guide" title="Категорија:MediaWiki User's Guide">MediaWiki User's Guide</a>
 !! end
 
 
@@ -6872,16 +6897,34 @@ language=zh variant=zh-tw
 
 
 !! test
-Adding explicit session-wise language variant mapping (A flag)
+Explicit session-wise language variant mapping (A flag and - flag)
 !! options
 language=zh variant=zh-tw
 !! input
--{A|zh:China;zh-tw:Taiwan}- is China
+Taiwan is not China.
+But -{A|zh:China;zh-tw:Taiwan}- is China,
+(This-{-|zh:China;zh-tw:Taiwan}- should be stripped!)
+and -{China}- is China.
 !! result
-<p>Taiwan is Taiwan
+<p>Taiwan is not China.
+But Taiwan is Taiwan,
+(This should be stripped!)
+and China is China.
 </p>
 !! end
 
+!! test
+Explicit session-wise language variant mapping (H flag for hide)
+!! options
+language=zh variant=zh-tw
+!! input
+(This-{H|zh:China;zh-tw:Taiwan}- should be stripped!)
+Taiwan is China.
+!! result
+<p>(This should be stripped!)
+Taiwan is Taiwan.
+</p>
+!! end
 
 !! test
 Adding explicit conversion rule for title (T flag)
@@ -6982,6 +7025,32 @@ Bug 5678: Double-parsed template invocation
 {{lc:{{paramtest {{!}} param = hello }} }}
 !! result
 <p>{{paramtest | param = hello }}
+</p>
+!! end
+
+!! test
+Case insensitivity of parser functions for non-ASCII characters (bug 8143)
+!! options
+language=cs
+title=[[Main Page]]
+!! input
+{{PRVNÍVELKÉ:ěščř}}
+{{prvnívelké:ěščř}}
+{{PRVNÍMALÉ:ěščř}}
+{{prvnímalé:ěščř}}
+{{MALÁ:ěščř}}
+{{malá:ěščř}}
+{{VELKÁ:ěščř}}
+{{velká:ěščř}}
+!! result
+<p>Ěščř
+Ěščř
+ěščř
+ěščř
+ěščř
+ěščř
+ĚŠČŘ
+ĚŠČŘ
 </p>
 !! end
 
@@ -7093,6 +7162,8 @@ Line two
 # Bug 6200: <blockquote> should behave like <div> with respect to line breaks
 !! test
 Bug 6200: paragraphs inside blockquotes (no extra line breaks)
+!! options
+disabled
 !! input
 <blockquote>Line one
 
@@ -7105,6 +7176,8 @@ Line two</blockquote>
 
 !! test
 Bug 6200: paragraphs inside blockquotes (extra line break on open)
+!! options
+disabled
 !! input
 <blockquote>
 Line one
@@ -7120,6 +7193,8 @@ Line two</blockquote>
 
 !! test
 Bug 6200: paragraphs inside blockquotes (extra line break on close)
+!! options
+disabled
 !! input
 <blockquote>Line one
 
@@ -7135,6 +7210,8 @@ Line two
 
 !! test
 Bug 6200: paragraphs inside blockquotes (extra line break on open and close)
+!! options
+disabled
 !! input
 <blockquote>
 Line one
@@ -7322,24 +7399,6 @@ wgUseDynamicDates=true
 </p>
 !! end
 
-!! test
-Leading > blockquote syntax
-!! input
-> Hi
-> This
-> Is
-> A
-> Quote
-!! result
-<blockquote><p> Hi
-</p><p> This
-</p><p> Is
-</p><p> A
-</p><p> Quote
-</p></blockquote>
-
-!! end
-
 #
 #
 #
@@ -7454,17 +7513,6 @@ title=[[Main Page]]
 [[#section]]
 !! result
 <a href="/wiki/Main_Page#section" title="Main Page">#section</a>
-!! end
-
-!! test
-Edit comment with mismatched brackets (bug 15745)
-!! options
-comment
-title=[[Main Page]]
-!!input
-Some text, a [[broken link|bad and a [[good link|good]]
-!! result
-Some text, a [[broken link|bad and a <a href="/index.php?title=Good_link&amp;action=edit&amp;redlink=1" class="new" title="Good link (page does not exist)">good</a>
 !! end
 
 TODO:

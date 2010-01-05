@@ -42,10 +42,9 @@ class ApiQueryContributions extends ApiQueryBase {
 	private $params, $username;
 	private $fld_ids = false, $fld_title = false, $fld_timestamp = false,
 			$fld_comment = false, $fld_flags = false,
-			$fld_patrolled = false;
+			$fld_patrolled = false, $fld_tags = false;
 
 	public function execute() {
-
 		// Parse some parameters
 		$this->params = $this->extractRequestParams();
 
@@ -57,6 +56,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		$this->fld_flags = isset($prop['flags']);
 		$this->fld_timestamp = isset($prop['timestamp']);
 		$this->fld_patrolled = isset($prop['patrolled']);
+		$this->fld_tags = isset($prop['tags']);
 
 		// TODO: if the query is going only against the revision table, should this be done?
 		$this->selectNamedDB('contributions', DB_SLAVE, 'contributions');
@@ -73,6 +73,8 @@ class ApiQueryContributions extends ApiQueryBase {
 			$this->usernames = array();
 			if(!is_array($this->params['user']))
 				$this->params['user'] = array($this->params['user']);
+			if(!count($this->params['user']))
+				$this->dieUsage('User parameter may not be empty.', 'param_user');
 			foreach($this->params['user'] as $u)
 				$this->prepareUsername($u);
 			$this->prefixMode = false;
@@ -121,7 +123,7 @@ class ApiQueryContributions extends ApiQueryBase {
 	 * against `revision`.`rev_user_text`
 	 */
 	private function prepareUsername($user) {
-		if( $user ) {
+		if( !is_null( $user ) && $user !== '' ) {
 			$name = User::isIP( $user )
 				? $user
 				: User::getCanonicalName( $user, 'valid' );
@@ -141,7 +143,7 @@ class ApiQueryContributions extends ApiQueryBase {
 	private function prepareQuery() {
 		// We're after the revision table, and the corresponding page
 		// row for anything we retrieve. We may also need the
-		// recentchanges row.
+		// recentchanges row and/or tag summary row.
 		global $wgUser;
 		$tables = array('page', 'revision'); // Order may change
 		$this->addWhere('page_id=rev_page');
@@ -165,7 +167,7 @@ class ApiQueryContributions extends ApiQueryBase {
 			$this->addWhere($this->getDB()->bitAnd('rev_deleted',Revision::DELETED_USER) . ' = 0');
 		// We only want pages by the specified users.
 		if($this->prefixMode)
-			$this->addWhere("rev_user_text LIKE '" . $this->getDB()->escapeLike($this->userprefix) . "%'");
+			$this->addWhere('rev_user_text' . $this->getDB()->buildLike($this->userprefix, $this->getDB()->anyString()));
 		else
 			$this->addWhereFld('rev_user_text', $this->usernames);
 		// ... and in the specified timeframe.
@@ -245,6 +247,19 @@ class ApiQueryContributions extends ApiQueryBase {
 		$this->addFieldsIf('rev_minor_edit', $this->fld_flags);
 		$this->addFieldsIf('rev_parent_id', $this->fld_flags);
 		$this->addFieldsIf('rc_patrolled', $this->fld_patrolled);
+		
+		if($this->fld_tags)
+		{
+			$this->addTables('tag_summary');
+			$this->addJoinConds(array('tag_summary' => array('LEFT JOIN', array('rev_id=ts_rev_id'))));
+			$this->addFields('ts_tags');
+		}
+		
+		if( !is_null($this->params['tag']) ) {
+			$this->addTables('change_tag');
+			$this->addJoinConds(array('change_tag' => array('INNER JOIN', array('rev_id=ct_rev_id'))));
+			$this->addWhereFld('ct_tag', $this->params['tag']);
+		}
 	}
 
 	/**
@@ -292,6 +307,16 @@ class ApiQueryContributions extends ApiQueryBase {
 		if ($this->fld_size && !is_null($row->rev_len))
 			$vals['size'] = intval($row->rev_len);
 
+		if ($this->fld_tags) {
+			if ($row->ts_tags) {
+				$tags = explode(',', $row->ts_tags);
+				$this->getResult()->setIndexedTagName($tags, 'tag');
+				$vals['tags'] = $tags;
+			} else {
+				$vals['tags'] = array();
+			}
+		}
+		
 		return $vals;
 	}
 	
@@ -343,6 +368,7 @@ class ApiQueryContributions extends ApiQueryBase {
 					'size',
 					'flags',
 					'patrolled',
+					'tags'
 				)
 			),
 			'show' => array (

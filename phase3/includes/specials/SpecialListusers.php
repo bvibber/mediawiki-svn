@@ -71,10 +71,12 @@ class UsersPager extends AlphabeticPager {
 	}
 
 	function getQueryInfo() {
+		global $wgUser;
 		$dbr = wfGetDB( DB_SLAVE );
 		$conds = array();
 		// Don't show hidden names
-		$conds[] = 'ipb_deleted IS NULL';
+		if( !$wgUser->isAllowed('hideuser') )
+			$conds[] = 'ipb_deleted IS NULL';
 		if( $this->requestedGroup != '' ) {
 			$conds['ug_group'] = $this->requestedGroup;
 			$useIndex = '';
@@ -84,7 +86,7 @@ class UsersPager extends AlphabeticPager {
 		if( $this->requestedUser != '' ) {
 			# Sorted either by account creation or name
 			if( $this->creationSort ) {
-				$conds[] = 'user_id >= ' . User::idFromName( $this->requestedUser );
+				$conds[] = 'user_id >= ' . intval( User::idFromName( $this->requestedUser ) );
 			} else {
 				$conds[] = 'user_name >= ' . $dbr->addQuotes( $this->requestedUser );
 			}
@@ -103,8 +105,10 @@ class UsersPager extends AlphabeticPager {
 				$this->creationSort ? 'user_id' : 'MAX(user_id) AS user_id',
 				'MAX(user_editcount) AS edits',
 				'COUNT(ug_group) AS numgroups',
-				'MAX(ug_group) AS singlegroup',
-				'MIN(user_registration) AS creation'),
+				'MAX(ug_group) AS singlegroup', // the usergroup if there is only one
+				'MIN(user_registration) AS creation',
+				'MAX(ipb_deleted) AS ipb_deleted' // block/hide status
+			),
 			'options' => array('GROUP BY' => $this->creationSort ? 'user_id' : 'user_name'),
 			'conds' => $conds
 		);
@@ -131,6 +135,9 @@ class UsersPager extends AlphabeticPager {
 		}
 
 		$item = wfSpecialList( $name, $groups );
+		if( $row->ipb_deleted ) {
+			$item = "<span class=\"deleted\">$item</span>";
+		}
 
 		global $wgEdititis;
 		if ( $wgEdititis ) {
@@ -186,11 +193,11 @@ class UsersPager extends AlphabeticPager {
 			Xml::option( wfMsg( 'group-all' ), '' );
 		foreach( $this->getAllGroups() as $group => $groupText )
 			$out .= Xml::option( $groupText, $group, $group == $this->requestedGroup );
-		$out .= Xml::closeElement( 'select' ) . '<br/>';
+		$out .= Xml::closeElement( 'select' ) . '<br />';
 		$out .= Xml::checkLabel( wfMsg('listusers-editsonly'), 'editsOnly', 'editsOnly', $this->editsOnly );
 		$out .= '&nbsp;';
 		$out .= Xml::checkLabel( wfMsg('listusers-creationsort'), 'creationSort', 'creationSort', $this->creationSort );
-		$out .= '<br/>';
+		$out .= '<br />';
 
 		wfRunHooks( 'SpecialListusersHeaderForm', array( $this, &$out ) );
 
@@ -234,7 +241,7 @@ class UsersPager extends AlphabeticPager {
 	/**
 	 * Get a list of groups the specified user belongs to
 	 *
-	 * @param int $uid
+	 * @param $uid Integer: user id
 	 * @return array
 	 */
 	protected static function getGroups( $uid ) {
@@ -246,7 +253,7 @@ class UsersPager extends AlphabeticPager {
 	/**
 	 * Format a link to a group description page
 	 *
-	 * @param string $group
+	 * @param $group String: group name
 	 * @return string
 	 */
 	protected static function buildGroupLink( $group ) {

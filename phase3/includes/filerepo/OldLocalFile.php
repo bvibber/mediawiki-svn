@@ -177,7 +177,17 @@ class OldLocalFile extends LocalFile {
 	 * @return bool
 	 */
 	function isDeleted( $field ) {
+		$this->load();
 		return ($this->deleted & $field) == $field;
+	}
+
+	/**
+	 * Returns bitfield value
+	 * @return int
+	 */
+	function getVisibility() {
+		$this->load();
+		return (int)$this->deleted;
 	}
 
 	/**
@@ -187,15 +197,7 @@ class OldLocalFile extends LocalFile {
 	 * @return bool
 	 */
 	function userCan( $field ) {
-		if( isset($this->deleted) && ($this->deleted & $field) == $field ) {
-			global $wgUser;
-			$permission = ( $this->deleted & File::DELETED_RESTRICTED ) == File::DELETED_RESTRICTED
-				? 'suppressrevision'
-				: 'deleterevision';
-			wfDebug( "Checking for $permission due to $field match on $this->mDeleted\n" );
-			return $wgUser->isAllowed( $permission );
-		} else {
-			return true;
-		}
+		$this->load();
+		return Revision::userCanBitfield( $this->deleted, $field );
 	}
 }

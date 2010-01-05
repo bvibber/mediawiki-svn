@@ -216,8 +216,10 @@ $messages = array(
 'viewsourcetext'    => "Siz bu sahifaning manbasini ko'rishingiz va uni nusxasini olishingiz mumkin:",
 
 # Login and logout pages
-'logouttext'              => "'''Siz saytdan muvaffaqiyatli chiqdingiz.'''<br />
-{{SITENAME}} saytidan anonim holda foydalanishda davom etishindiz mumkin. Yoki siz yana hozirgi yoki boshqa foydalanuvchi nomi bilan qaytadan tizimga kirishingiz mumkin. Shuni e'tiborga olingki, ayrim sahifalar siz brauzeringiz keshini tozalamaguningizga qadar xuddi tizimga kirganingizdagidek ko'rinishda davom etaverishi mumkin.",
+'logouttext'              => "'''Siz saytdan muvaffaqiyatli chiqdingiz.'''
+
+{{SITENAME}} saytidan anonim holda foydalanishda davom etishindiz mumkin. Yoki siz yana hozirgi yoki boshqa foydalanuvchi nomi bilan qaytadan tizimga kirishingiz mumkin.
+Shuni e'tiborga olingki, ayrim sahifalar siz brauzeringiz keshini tozalamaguningizga qadar xuddi tizimga kirganingizdagidek ko'rinishda davom etaverishi mumkin.",
 'yourname'                => 'Foydalanuvchi nomi',
 'yourpassword'            => "Maxfiy so'z",
 'yourpasswordagain'       => "Maxfiy so'zni qayta kiriting",
@@ -228,10 +230,10 @@ $messages = array(
 'userlogin'               => 'Kirish / Hisob yaratish',
 'logout'                  => 'Chiqish',
 'userlogout'              => 'Chiqish',
-'nologin'                 => 'Hisobingiz yoʻqmi? $1.',
+'nologin'                 => "Hisobingiz yoʻqmi? '''$1'''.",
 'nologinlink'             => 'Hisob yaratish',
 'createaccount'           => 'Hisob yaratish',
-'gotaccount'              => 'Hisobingiz bormi? $1.',
+'gotaccount'              => "Hisobingiz bormi? '''$1'''.",
 'gotaccountlink'          => 'Kirish',
 'loginsuccesstitle'       => 'Kirish muvaffaqiyatli amalga oshdi',
 'loginsuccess'            => "'''{{SITENAME}}ga \"\$1\" foydalanuvchi nomi bilan kirdingiz.'''",
@@ -278,7 +280,7 @@ Sizning hozirgi IP manzilingiz - $3, chetlashtirish raqamingiz - #$5. Arizaga bu
 'newarticletext'             => "Bu sahifa hali mavjud emas.
 Sahifani yaratish uchun quyida matn kiritishingiz mumkin (qo'shimcha axborot uchun [[{{MediaWiki:Helppage}}|yordam sahifasini]] ko'ring).
 Agar bu sahifaga xatolik sabab kelgan bo'lsangiz brauzeringizning '''orqaga''' tugmasini bosing.",
-'noarticletext'              => 'Bu sahifada hozircha hech qanday matn yoʻq. Siz bu sarlavhani boshqa sahifalardan [[Special:Search/{{PAGENAME}}|qidirishingiz]], <span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} tegishli loglarga qarashingiz] yoki bu sahifani [{{fullurl:{{FULLPAGENAME}}|action=edit}} tahrirlashingiz]</span> mumkin.',
+'noarticletext'              => 'Bu sahifada hozircha hech qanday matn yoʻq. Siz bu sarlavhani boshqa sahifalardan [[Special:Search/{{PAGENAME}}|qidirishingiz]], <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} tegishli loglarga qarashingiz] yoki bu sahifani [{{fullurl:{{FULLPAGENAME}}|action=edit}} tahrirlashingiz]</span> mumkin.',
 'clearyourcache'             => "'''Etibor bering:''' O'zgartirishlaringiz ko'rish uchun, yangi moslamalaringizning saqlashdan keyin, brauser keshini tozalash kerak:<br />
 '''Mozilla / Firefox:''' ''Ctrl+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Safari:''' ''Cmd+Shift+R'', '''Konqueror:''' ''F5'', '''Opera:''' ''Tools → Preferences'' orqali keshni tozalang.",
 'previewnote'                => "'''Bu shunchaki ko'rib chiqish. O'zgarishlar hali saqlangani yo'q!'''",
@@ -336,13 +338,11 @@ Bu yerda: (joriy) = hozirgi koʻrinish bilan farq,
 'searchresulttext'         => "{{SITENAME}}da qidirish haqida qo'shimcha ma'lumotga ega bo'lishini xoxlasangiz, [[{{MediaWiki:Helppage}}|{{SITENAME}}da qidiruv]] sahifasini o'qing.",
 'searchsubtitle'           => '\'\'\'[[:$1]]\'\'\'ni qidirdingiz ([[Special:Prefixindex/$1|"$1" bilan boshlanadigan sahifalar]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|"$1"ga bogʻlangan sahifalar]])',
 'searchsubtitleinvalid'    => "'''$1'''ni qidirdingiz",
-'noexactmatch'             => "'''\"\$1\" nomli birorta ham sahifa yo'q.''' Bu sahifani [[:\$1|yaratishingiz]] mumkin.",
-'noexactmatch-nocreate'    => "'''\"\$1\" sarlavhali sahifa yoʻq.'''",
 'notitlematches'           => 'Bunday sarlavha topilmadi',
 'notextmatches'            => 'Bunday matn topilmadi',
 'prevn'                    => 'oldingi $1',
 'nextn'                    => 'keyingi {{PLURAL:$1|$1}}',
-'viewprevnext'             => "Ko'rish ($1) ($2) ($3).",
+'viewprevnext'             => "Ko'rish ($1 {{int:pipe-separator}} $2) ($3).",
 'searchhelp-url'           => 'Help:Mundarija',
 'search-result-size'       => '$1 ({{PLURAL:$2|1 soʻz|$2 soʻz}})',
 'search-redirect'          => '(yoʻnaltirish $1)',
@@ -350,7 +350,6 @@ Bu yerda: (joriy) = hozirgi koʻrinish bilan farq,
 'search-suggest'           => 'Balki buni nazarda tutgandirsiz: $1',
 'search-interwiki-default' => '$1 natijalar:',
 'showingresults'           => "#<b>$2</b> boshlanayotgan <b>$1</b> natijalar ko'rsatilyapti.",
-'showingresultstotal'      => "Quyida {{PLURAL:$4|'''$3'''dan '''$1''' natija|'''$3'''dan '''$1 - $2''' natijalar}} koʻrsatilgan",
 'powersearch'              => 'Qidiruv',
 'powersearch-ns'           => 'Bu nom-fazolarda izla:',
 'powersearch-redir'        => 'Yoʻnaltirishlarni koʻrsat',

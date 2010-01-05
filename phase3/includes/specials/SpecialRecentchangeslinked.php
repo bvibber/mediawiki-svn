@@ -84,6 +84,11 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			$select[] = 'wl_user';
 			$join_conds['watchlist'] = array( 'LEFT JOIN', "wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace" );
 		}
+		if ( $wgUser->isAllowed( 'rollback' ) ) {
+			$tables[] = 'page';
+			$join_conds['page'] = array('LEFT JOIN', 'rc_cur_id=page_id');
+			$select[] = 'page_latest';
+		}
 
 		ChangeTags::modifyDisplayQuery( $tables, $select, $conds, $join_conds,
 			$query_options, $opts['tagfilter'] );
@@ -139,19 +144,30 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 				}
 			}
 
-			$subsql[] = $dbr->selectSQLText( 
+			if( $dbr->unionSupportsOrderAndLimit())
+				$order = array( 'ORDER BY' => 'rc_timestamp DESC' );
+			else
+				$order = array();
+
+			
+			$query = $dbr->selectSQLText( 
 				array_merge( $tables, array( $link_table ) ), 
 				$select, 
 				$conds + $subconds,
 				__METHOD__, 
-				array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => $limit ) + $query_options,
+				$order + $query_options,
 				$join_conds + array( $link_table => array( 'INNER JOIN', $subjoin ) )
 			);
+			
+			if( $dbr->unionSupportsOrderAndLimit())
+				$query = $dbr->limitResult( $query, $limit );
+
+			$subsql[] = $query;
 		}
 
 		if( count($subsql) == 0 )
 			return false; // should never happen
-		if( count($subsql) == 1 )
+		if( count($subsql) == 1 && $dbr->unionSupportsOrderAndLimit() )
 			$sql = $subsql[0];
 		else {
 			// need to resort and relimit after union
@@ -168,7 +184,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 	}
 	
 	function getExtraOptions( $opts ){
-		$opts->consumeValues( array( 'showlinkedto', 'target' ) );
+		$opts->consumeValues( array( 'showlinkedto', 'target', 'tagfilter' ) );
 		$extraOpts = array();
 		$extraOpts['namespace'] = $this->namespaceFilterForm( $opts );
 		$extraOpts['target'] = array( wfMsgHtml( 'recentchangeslinked-page' ),

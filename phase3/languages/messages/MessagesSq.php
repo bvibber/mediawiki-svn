@@ -384,7 +384,6 @@ $messages = array(
 'aboutsite'            => 'Rreth {{SITENAME}}',
 'aboutpage'            => 'Project:Rreth',
 'copyright'            => 'Përmbajtja është në disponim nëpërmjet licencës $1.',
-'copyrightpagename'    => '{{SITENAME}} Të drejta autori',
 'copyrightpage'        => '{{ns:project}}:Të drejta autori',
 'currentevents'        => 'Ngjarjet e tanishme',
 'currentevents-url'    => 'Project:Ngjarjet e tanishme',
@@ -529,7 +528,9 @@ Arsyeja e dhënë është ''$2''.",
 'virus-unknownscanner' => 'antivirus i pa njohur:',
 
 # Login and logout pages
-'logouttext'                 => 'Keni dalë jashtë {{SITENAME}}-s. Mund të vazhdoni të përdorni {{SITENAME}}-n anonimisht, ose mund të hyni brënda përsëri.',
+'logouttext'                 => "'''Keni dalë jashtë {{SITENAME}}-s.'''
+
+Mund të vazhdoni të përdorni {{SITENAME}}-n anonimisht, ose mund të hyni brënda përsëri.",
 'welcomecreation'            => '== Mirëserdhët, $1! ==
 Llogaria juaj është hapur. Mos harroni të ndryshoni parapëlqimet e {{SITENAME}}-s suaj.',
 'yourname'                   => 'Fusni nofkën tuaj',
@@ -545,10 +546,10 @@ Llogaria juaj është hapur. Mos harroni të ndryshoni parapëlqimet e {{SITENAM
 'logout'                     => 'Dalje',
 'userlogout'                 => 'Dalje',
 'notloggedin'                => 'Nuk keni hyrë brenda',
-'nologin'                    => 'Nuk keni një llogari? $1.',
+'nologin'                    => "Nuk keni një llogari? '''$1'''.",
 'nologinlink'                => 'Hapeni',
 'createaccount'              => 'Hap një llogari',
-'gotaccount'                 => 'Keni një llogari? $1.',
+'gotaccount'                 => "Keni një llogari? '''$1'''.",
 'gotaccountlink'             => 'Hyni',
 'createaccountmail'          => 'me email',
 'badretype'                  => 'Fjalëkalimet nuk janë njësoj.',
@@ -702,7 +703,8 @@ Në qoftë se jeni përdorues anonim dhe mendoni se komente kot janë drejtuar n
 'noarticletext'                    => 'Tani për tani nuk ka tekst në këtë faqe, mund ta [[Special:Search/{{PAGENAME}}|kërkoni]] këtë titull në faqe të tjera ose mund ta [{{fullurl:{{FULLPAGENAME}}|action=edit}} filloni] atë.',
 'userpage-userdoesnotexist'        => 'Llogaria e përdoruesit "$1" nuk është hapur. Ju lutem mendohuni mirë nëse dëshironi të krijoni/redaktoni këtë faqe.',
 'clearyourcache'                   => "'''Shënim:''' Pasi të ruani parapëlqimet ose pasi të kryeni ndryshimet, duhet të pastroni ''cache''-në e shfletuesit tuaj për të parë ndryshimet: për '''Mozilla/Safari/Konqueror''' shtypni ''Ctrl+Shift+Reload'' (ose ''ctrl+shift+r''), për '''IE''' ''Ctrl+f5'', '''Opera''': ''F5''.",
-'usercssjsyoucanpreview'           => "'''Këshillë:''' Përdorni butonin 'Trego parapamjen' për të provuar ndryshimet tuaja të faqeve css/js përpara se të kryeni ndryshimet.",
+'usercssyoucanpreview'             => "'''Këshillë:''' Përdorni butonin 'Trego parapamjen' për të provuar ndryshimet tuaja të faqeve css/js përpara se të kryeni ndryshimet.",
+'userjsyoucanpreview'              => "'''Këshillë:''' Përdorni butonin 'Trego parapamjen' për të provuar ndryshimet tuaja të faqeve css/js përpara se të kryeni ndryshimet.",
 'usercsspreview'                   => "'''Vini re! Kjo është vetëm një parapamje e faqes suaj CSS. Akoma nuk është ruajtur!'''",
 'userjspreview'                    => "'''Vini re se kjo është vetëm një provë ose parapamje e faqes tuaj JavaScript, ajo nuk është ruajtur akoma!'''",
 'userinvalidcssjstitle'            => "'''Kujdes:''' Nuk ka pamje të quajtur \"\$1\". Vini re se faqet .css dhe .js përdorin titull me gërma të vogla, p.sh. {{ns:user}}:Foo/monobook.css, jo {{ns:user}}:Foo/Monobook.css.",
@@ -846,12 +848,12 @@ Shiko tek [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} regjistr
 'revdelete-text'              => "'''Përmbajtja dhe pjesët e tjera nuk janë të dukshme për të gjithë, por figurojnë në historikun e versioneve.''' Administratorët munden përmbajtjen e larguar ta shikojnë dhe restaurojnë, përveç në rastet kur një gjë e tillë është ndaluar ekstra.",
 'revdelete-legend'            => 'Vendosni kufizimet për versionin:',
 'revdelete-hide-text'         => 'Fshihe tekstin e versionit',
+'revdelete-hide-image'        => 'Fshih përmbajtjen skedare',
 'revdelete-hide-name'         => 'Fshihe veprimin dhe shënjestrën',
 'revdelete-hide-comment'      => 'fshih komentin e redaktimit',
 'revdelete-hide-user'         => 'Fshihe emrin/IP-në të redaktuesit',
 'revdelete-hide-restricted'   => 'Këto përkufizme vlejnë edhe për Admintratorët (jo vetëm për përdoruesit "normal")',
 'revdelete-suppress'          => 'Ndalo të dhëna nga administrues si dhe të tjerë',
-'revdelete-hide-image'        => 'Fshih përmbajtjen skedare',
 'revdelete-unsuppress'        => 'Hiq kufizimet nga versionet e restauruara',
 'revdelete-log'               => 'Arsyeja:',
 'revdelete-submit'            => 'Apliko te versionet e zgjedhura',
@@ -871,6 +873,7 @@ Shiko tek [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} regjistr
 'revdelete-unhid'             => 'u tregua $1',
 'revdelete-log-message'       => '$1 për $2 {{PLURAL:$2|version|versione}}',
 'logdelete-log-message'       => '$1 për $2 {{PLURAL:$2|ngjarje|ngjarje}}',
+'revdelete-edit-reasonlist'   => 'Arsye grisjeje për redaktimet',
 
 # Suppression log
 'suppressionlog'     => 'Regjistri i ndalimeve',
@@ -911,36 +914,8 @@ Kini kujdes se përdorimi i lidhjeve të shfletimit do të ndryshojë përzgjedh
 'difference'              => '(Ndryshime midis versioneve)',
 'lineno'                  => 'Rreshti $1:',
 'compareselectedversions' => 'Krahasoni versionet e zgjedhura',
-'visualcomparison'        => 'Krahasim vizual',
-'wikicodecomparison'      => 'Krahasim i wiki tekstit',
 'editundo'                => 'ktheje',
 'diff-multi'              => '({{PLURAL:$1|Një redaktim ndërmjet nuk është|$1 redaktime ndërmjet nuk janë}} treguar.)',
-'diff-movedto'            => 'bartur tek $1',
-'diff-styleadded'         => 'stili $1 u vendos',
-'diff-added'              => '$1 u vendos',
-'diff-changedto'          => 'u ndryshua në $1',
-'diff-movedoutof'         => 'u largua nga $1',
-'diff-styleremoved'       => 'stili $1 u largua',
-'diff-removed'            => '$1 u largua',
-'diff-changedfrom'        => 'ndryshuar nga $1',
-'diff-src'                => 'burimi',
-'diff-withdestination'    => 'me përcaktim $1',
-'diff-width'              => 'gjerësia',
-'diff-height'             => 'lartësia',
-'diff-p'                  => "'''paragraf'''",
-'diff-blockquote'         => "'''citat'''",
-'diff-div'                => "'''ndarje'''",
-'diff-table'              => "'''tabelë'''",
-'diff-tbody'              => "'''përmbajtje tabele'''",
-'diff-tr'                 => "'''rresht'''",
-'diff-th'                 => "'''kokë'''",
-'diff-dl'                 => "'''listë përcaktimi'''",
-'diff-dt'                 => "'''term përcaktimi'''",
-'diff-form'               => "'''formë'''",
-'diff-img'                => "'''figurë'''",
-'diff-a'                  => "'''nyje'''",
-'diff-font'               => "'''font'''",
-'diff-del'                => "'''grisur'''",
 
 # Search results
 'searchresults'                    => 'Rezultatet e kërkimit',
@@ -948,9 +923,6 @@ Kini kujdes se përdorimi i lidhjeve të shfletimit do të ndryshojë përzgjedh
 'searchresulttext'                 => 'Për më shumë informacion rreth kërkimit në {{SITENAME}} shikoni [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'                   => 'Kërkuat për "[[$1]]" ([[Special:Prefixindex/$1|të gjitha faqet që fillojnë me "$1"]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|të gjitha faqet që lidhen me"$1"]])',
 'searchsubtitleinvalid'            => 'Kërkim për "$1"',
-'noexactmatch'                     => "'''Nuk ka faqe të emëruar \"\$1\".'''
-Ju mund [[:\$1|të e krijoni këtë faqe]].",
-'noexactmatch-nocreate'            => "'''Faqja e titulluar \"\$1\" nuk ekziston'''",
 'toomanymatches'                   => 'Ky kërkim ka shumë përfundime, provoni një pyetje tjetër më përcaktuese',
 'titlematches'                     => 'Tituj faqesh që përputhen',
 'notitlematches'                   => 'Nuk ka asnjë titull faqeje që përputhet',
@@ -958,7 +930,7 @@ Ju mund [[:\$1|të e krijoni këtë faqe]].",
 'notextmatches'                    => 'Nuk ka asnjë tekst faqeje që përputhet',
 'prevn'                            => '{{PLURAL:$1|$1}} më para',
 'nextn'                            => '{{PLURAL:$1|$1}} më pas',
-'viewprevnext'                     => 'Shikoni ($1) ($2) ($3).',
+'viewprevnext'                     => 'Shikoni ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Parazgjedhjet e kërkimit',
 'searchmenu-exists'                => "'''Në këtë wiki kjo faqe është emëruar \"[[:\$1]]\"'''",
 'searchmenu-new'                   => "'''Hapë faqen \"[[:\$1]]\" në këtë wiki!'''",
@@ -989,7 +961,6 @@ Ju mund [[:\$1|të e krijoni këtë faqe]].",
 'searchall'                        => 'të gjitha',
 'showingresults'                   => "Më poshtë tregohen {{PLURAL:$1|'''1''' përfundim|'''$1''' përfundime}} duke filluar nga #'''$2'''.",
 'showingresultsnum'                => "Më poshtë tregohen {{PLURAL:$3|'''1''' përfundim|'''$3''' përfundime}} duke filluar nga #'''$2'''.",
-'showingresultstotal'              => "Duke treguar më poshtë {{PLURAL:$4|rezultatin '''$1''' nga '''$3'''|rezultatet '''$1 - $2''' nga '''$3'''}}",
 'nonefound'                        => '<strong>Shënim</strong>: Kërkimet pa rezultate ndodhin kur kërkoni për fjalë që rastisen shpesh si "ke" dhe "nga", të cilat nuk janë të futura në regjistër, ose duke dhënë më shumë se një fjalë (vetëm faqet që i kanë të gjitha ato fjalë do të tregohen si rezultate).',
 'powersearch'                      => 'Kërko',
 'powersearch-legend'               => 'Kërkim i përparuar',
@@ -1150,6 +1121,8 @@ Ju mund [[:\$1|të e krijoni këtë faqe]].",
 'right-editprotected'    => 'Redakto faqet e mbrojtura (pa ndryshuar mbrojtjen)',
 'right-editinterface'    => 'Ndrysho parapamjen e përdoruesit',
 'right-editusercssjs'    => 'Redakto skedat CSS dhe JS të përdoruesve tjerë',
+'right-editusercss'      => 'Redakto skedat CSS të përdoruesve tjerë',
+'right-edituserjs'       => 'Redakto skedat JS të përdoruesve tjerë',
 'right-noratelimit'      => 'Mos u prek nga kufizimet e vlerësimit',
 'right-import'           => 'Importo faqe nga wiki tjera',
 'right-unwatchedpages'   => 'Shiko listën e faqeve të pa vëzhguara',
@@ -1236,7 +1209,6 @@ Faqet [[Special:Watchlist|nën mbikqyrjen tuaj]] duken të '''theksuara'''.",
 # Upload
 'upload'                      => 'Ngarkoni skeda',
 'uploadbtn'                   => 'Ngarkoje',
-'reupload'                    => 'Ngarkojeni përsëri',
 'reuploaddesc'                => 'Kthehu tek formulari i dhënies.',
 'uploadnologin'               => 'Nuk keni hyrë brënda',
 'uploadnologintext'           => 'Duhet të keni [[Special:UserLogin|hyrë brenda]] për të dhënë skeda.',
@@ -1278,17 +1250,17 @@ Si {{PLURAL:\$3|i lejuar është lloji i skedës|të lejuara janë llojet e sked
 kjo skedë është $2.',
 'largefileserver'             => 'Skeda është më e madhe se sa serveri e lejon këtë.',
 'emptyfile'                   => 'Skeda që keni dhënë është bosh ose mbi madhësinë e lejushme. Kjo gjë mund të ndodhi nëse shtypni emrin gabim, prandaj kontrolloni nëse dëshironi të jepni skedën me këtë emër.',
-'fileexists'                  => "Ekziston një skedë me atë emër, ju lutem kontrolloni '''<tt>$1</tt>''' në qoftë se nuk jeni të sigurt nëse dëshironi ta zëvendësoni.",
-'filepageexists'              => "Faqja përshkruese për këtë skedë është krijuar që më parë tek '''<tt>$1</tt>''', por nuk ekziston një skedë me atë emër.
+'fileexists'                  => "Ekziston një skedë me atë emër, ju lutem kontrolloni '''<tt>[[:$1]]</tt>''' në qoftë se nuk jeni të sigurt nëse dëshironi ta zëvendësoni.
+[[$1|thumb]]",
+'filepageexists'              => "Faqja përshkruese për këtë skedë është krijuar që më parë tek '''<tt>[[:$1]]</tt>''', por nuk ekziston një skedë me atë emër.
 Përmbledhja që vendosët nuk do të shfaqet tek faqja përshkruese.
 Për ta treguar atje duhet ta redaktoni vetë.",
-'fileexists-extension'        => "Ekziston një skedë me emër të ngjashëm:<br />
-Emri i skedës në ngarkim: '''<tt>$1</tt>'''<br />
-Emri i skedës ekzistuese: '''<tt>$2</tt>'''<br />
+'fileexists-extension'        => "Ekziston një skedë me emër të ngjashëm: [[$2|thumb]]
+* Emri i skedës në ngarkim: '''<tt>[[:$1]]</tt>'''
+* Emri i skedës ekzistuese: '''<tt>[[:$2]]</tt>'''
 Ju lutem zgjidhni një emër tjetër.",
-'fileexists-thumb'            => "<center>'''Skedë ekzistuese'''</center>",
-'fileexists-thumbnail-yes'    => "Kjo skedë duket se është një figurë me madhësi të zvogëluar ''(figurë përmbledhëse)''.
-Ju lutem kontrolloni skedën '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Kjo skedë duket se është një figurë me madhësi të zvogëluar ''(figurë përmbledhëse)''. [[$1|thumb]]
+Ju lutem kontrolloni skedën '''<tt>[[:$1]]</tt>'''.
 Nëse skeda e kontrolluar është e së njëjtës madhësi me origjinalen atëherë nuk ka nevojë të ngarkoni një figurë përmbledhëse.",
 'file-thumbnail-no'           => "Emri i skedës fillon me '''<tt>$1</tt>'''.
 Duket se është një figurë me madhësi të zvogëluar ''(figurë përmbledhëse)''.
@@ -1338,6 +1310,7 @@ Ju lutem kontrolloni nëse faqja është në rrjet, prisni pak dhe provojeni pë
 Këshillohet që ta provoni kur të jetë më pak e zënë.',
 
 'license'            => 'Licencimi:',
+'license-header'     => 'Licencimi:',
 'nolicense'          => 'Asnjë nuk është zgjedhur',
 'license-nopreview'  => '(Nuk ka parapamje)',
 'upload_source_url'  => ' (URL e vlefshme, publikisht e përdorshme)',
@@ -1769,7 +1742,6 @@ Shih listën e [[Special:ProtectedPages|faqeve të mbrojtura]] nga lista e mbroj
 'protectexpiry'               => 'Afati',
 'protect_expiry_invalid'      => 'Data e skadimit është e gabuar.',
 'protect_expiry_old'          => 'Data e skadencës është në të shkuarën.',
-'protect-unchain'             => 'Ndrysho lejen e zhvendosjeve',
 'protect-text'                => "Këtu mund të shikoni dhe ndryshoni nivelin e mbrojtjes për faqen '''<nowiki>$1</nowiki>'''.",
 'protect-locked-blocked'      => "Nuk mund të ndryshoni nivelet e mbrojtjes duke qenë i bllokuar. Kufizimet e kësaj faqeje janë '''$1''':",
 'protect-locked-dblock'       => "Nivelet e mbrojtjes nuk mund të ndryshohen pasi regjistri është i bllokuar. Kufizimet e kësaj faqeje janë '''$1''':",
@@ -2247,9 +2219,6 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 # Browsing diffs
 'previousdiff' => '← Ndryshimi më para',
 'nextdiff'     => 'Ndryshimi më pas →',
-
-# Visual comparison
-'visual-comparison' => 'Krahasim vizual',
 
 # Media information
 'mediawarning'         => "'''Kujdes''': Kjo skedë mund të ketë përmbajtje të dëmshme, duke e përdorur sistemi juaj mund të rrezikohet.<hr />",

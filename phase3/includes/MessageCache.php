@@ -318,12 +318,11 @@ class MessageCache {
 			# database or in code.
 			if ( $code !== $wgContLanguageCode ) {
 				# Messages for particular language
-				$escapedCode = $dbr->escapeLike( $code );
-				$conds[] = "page_title like '%%/$escapedCode'";
+				$conds[] = 'page_title' . $dbr->buildLike( $dbr->anyString(), "/$code" );
 			} else {
 				# Effectively disallows use of '/' character in NS_MEDIAWIKI for uses
 				# other than language code.
-				$conds[] = "page_title not like '%%/%%'";
+				$conds[] = 'page_title NOT' . $dbr->buildLike( $dbr->anyString(), '/', $dbr->anyString() );
 			}
 		}
 
@@ -346,7 +345,7 @@ class MessageCache {
 
 		$res = $dbr->select( array( 'page', 'revision', 'text' ),
 			array( 'page_title', 'old_text', 'old_flags' ),
-			$smallConds, __METHOD__ );
+			$smallConds, __METHOD__. "($code)" );
 
 		for ( $row = $dbr->fetchObject( $res ); $row; $row = $dbr->fetchObject( $res ) ) {
 			$cache[$row->page_title] = ' ' . Revision::getRevisionText( $row );
@@ -400,8 +399,17 @@ class MessageCache {
 
 		// Also delete cached sidebar... just in case it is affected
 		global $parserMemc;
-		$sidebarKey = wfMemcKey( 'sidebar', $code );
-		$parserMemc->delete( $sidebarKey );
+		$codes = array( $code );
+		if ( $code === 'en'  ) {
+			// Delete all sidebars, like for example on action=purge on the
+			// sidebar messages
+			$codes = array_keys( Language::getLanguageNames() );
+		}
+
+		foreach ( $codes as $code ) {
+			$sidebarKey = wfMemcKey( 'sidebar', $code );
+			$parserMemc->delete( $sidebarKey );
+		}
 
 		wfRunHooks( "MessageCacheReplace", array( $title, $text ) );
 
@@ -423,16 +431,10 @@ class MessageCache {
 
 		$cacheKey = wfMemcKey( 'messages', $code );
 
-		$i = 0;
 		if ( $memc ) {
-			# Save in memcached
-			# Keep trying if it fails, this is kind of important
-
-			for ($i=0; $i<20 &&
-				!$this->mMemc->set( $cacheKey, $cache, $this->mExpiry );
-				$i++ ) {
-				usleep(mt_rand(500000,1500000));
-			}
+			$success = $this->mMemc->set( $cacheKey, $cache, $this->mExpiry );
+		} else {
+			$success = true;
 		}
 
 		# Save to local cache
@@ -447,11 +449,6 @@ class MessageCache {
 			}
 		}
 
-		if ( $i == 20 ) {
-			$success = false;
-		} else {
-			$success = true;
-		}
 		wfProfileOut( __METHOD__ );
 		return $success;
 	}
@@ -511,10 +508,15 @@ class MessageCache {
 
 		$message = false;
 
-		# Normalise title-case input
+		# Normalise title-case input (with some inlining)
 		$lckey = str_replace( ' ', '_', $key );
-		$lckey[0] = strtolower( $lckey[0] );
-		$uckey = ucfirst( $lckey );
+		if ( ord( $key ) < 128 ) {
+			$lckey[0] = strtolower( $lckey[0] );
+			$uckey = ucfirst( $lckey );
+		} else {
+			$lckey = $wgContLang->lcfirst( $lckey );
+			$uckey = $wgContLang->ucfirst( $lckey );
+		}
 
 		# Try the MediaWiki namespace
 		if( !$this->mDisable && $useDB ) {

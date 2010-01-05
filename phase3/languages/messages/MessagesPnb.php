@@ -11,7 +11,16 @@
  * @author ZaDiak
  */
 
+$linkPrefixExtension = true;
 $fallback8bitEncoding = 'windows-1256';
+
+$rtl = true;
+$defaultUserOptionOverrides = array(
+	# Swap sidebar to right side by default
+	'quickbar' => 2,
+	# Underlines seriously harm legibility. Force off:
+	'underline' => 0,
+);
 
 $messages = array(
 # User preference toggles
@@ -184,11 +193,11 @@ $messages = array(
 'edithelp'             => 'لکھن وچ مدد',
 'edithelppage'         => 'Help:لکھنا',
 'helppage'             => 'Help:فہرست',
-'mainpage'             => 'پہلا صفحہ',
-'mainpage-description' => 'پہلا صفحہ',
+'mainpage'             => 'پہلا صفہ',
+'mainpage-description' => 'پہلا صفہ',
 'policy-url'           => 'Project:پالیسی',
-'portal'               => 'بوآ',
-'portal-url'           => 'Project:بوآ',
+'portal'               => 'بیٹھک',
+'portal-url'           => 'Project:بیٹھک',
 'privacy'              => 'حفاظتی پالیسی',
 'privacypage'          => 'Project:حفاظتی پالیسی',
 
@@ -263,10 +272,10 @@ $messages = array(
 'logout'                  => 'لاگ توں باہر',
 'userlogout'              => 'باہر آؤ',
 'notloggedin'             => 'لاگ ان نئیں ہوۓ او',
-'nologin'                 => 'تواڈا کھاتہ نہیں اے؟ $1۔',
+'nologin'                 => "تواڈا کھاتہ نہیں اے؟ '''$1'''۔",
 'nologinlink'             => 'کھاتہ بناؤ',
 'createaccount'           => 'کھاتہ بناؤ',
-'gotaccount'              => 'تواڈا پہلے توں کھاتہ ہے؟ $1',
+'gotaccount'              => "تواڈا پہلے توں کھاتہ ہے؟ '''$1'''",
 'gotaccountlink'          => 'اندر آؤ',
 'createaccountmail'       => 'ای میل دے نال',
 'badretype'               => 'تواڈی کنجی صحیح نئیں۔',
@@ -426,21 +435,22 @@ $messages = array(
 'history-feed-item-nocomment' => '$2 نوں $1',
 
 # Revision deletion
-'rev-deleted-comment'    => '(صلاع مٹ گئی)',
-'rev-deleted-user'       => '(ورتن آلا ناں مٹ گیا)',
-'rev-delundel'           => 'وکھاؤ/لکاؤ',
-'revisiondelete'         => 'ریوژن مٹاؤ یا واپس کرو',
-'revdelete-hide-text'    => 'ریوژن ٹیکسٹ لکاؤ',
-'revdelete-hide-name'    => 'کم تے نشانہ چھپاؤ',
-'revdelete-hide-comment' => 'لکھن دے بارے چ صلاع لکاؤ',
-'revdelete-hide-user'    => 'لکھن آلے دا ناں/آئی پی پتہ لکاؤ',
-'revdelete-hide-image'   => 'فائل دا مواد لکاؤ',
-'revdel-restore'         => 'وکھالا بدلو',
-'pagehist'               => 'صفحے دی تاریخ',
-'deletedhist'            => 'مٹائی گئی تاریخ',
-'revdelete-content'      => 'مواد',
-'revdelete-summary'      => 'لکھائی دا خلاصہ',
-'revdelete-uname'        => 'ورتن آلے دا ناں',
+'rev-deleted-comment'       => '(صلاع مٹ گئی)',
+'rev-deleted-user'          => '(ورتن آلا ناں مٹ گیا)',
+'rev-delundel'              => 'وکھاؤ/لکاؤ',
+'revisiondelete'            => 'ریوژن مٹاؤ یا واپس کرو',
+'revdelete-hide-text'       => 'ریوژن ٹیکسٹ لکاؤ',
+'revdelete-hide-image'      => 'فائل دا مواد لکاؤ',
+'revdelete-hide-name'       => 'کم تے نشانہ چھپاؤ',
+'revdelete-hide-comment'    => 'لکھن دے بارے چ صلاع لکاؤ',
+'revdelete-hide-user'       => 'لکھن آلے دا ناں/آئی پی پتہ لکاؤ',
+'revdel-restore'            => 'وکھالا بدلو',
+'pagehist'                  => 'صفحے دی تاریخ',
+'deletedhist'               => 'مٹائی گئی تاریخ',
+'revdelete-content'         => 'مواد',
+'revdelete-summary'         => 'لکھائی دا خلاصہ',
+'revdelete-uname'           => 'ورتن آلے دا ناں',
+'revdelete-edit-reasonlist' => 'مٹانے دی وجہ لکھو',
 
 # History merging
 'mergehistory-from' => 'ذریعے آلا صفحہ:',
@@ -463,14 +473,11 @@ $messages = array(
 'searchresulttext'          => 'وکیپیڈیا چ کھوجن دے بارے چ ہور معلومات آستے کھوجن دا صفحہ ویکھو',
 'searchsubtitle'            => "تواڈی لفظ '''[[:$1]] آستے کھوج",
 'searchsubtitleinvalid'     => "'''$1''' آستے کھوج کیتی",
-'noexactmatch'              => "'''اس \"\$1\" ناں دا کوئی صفحہ نہیں۔'''
-تسی اے [[:\$1|صفحہ لکھ سکدے او]]۔",
-'noexactmatch-nocreate'     => "'''\"\$1\" ناں دا کوئی صفحہ نئیں اے۔'''",
 'notitlematches'            => 'اے لفظ کسی صفحے دے ناں چ نئیں اے۔',
 'notextmatches'             => 'کوئی صفح نئیں لبیا',
 'prevn'                     => 'پہلا {{PLURAL:$1|$1}}',
 'nextn'                     => 'اگلا {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'ویکھو ($1) ($2) ($3)',
+'viewprevnext'              => 'ویکھو ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'            => 'Help:فہرست',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 لفظ|$2 الفاظ}})',
 'search-redirect'           => '($1 ریڈائریکٹ)',
@@ -484,7 +491,6 @@ $messages = array(
 'search-relatedarticle'     => 'جڑیاں',
 'searchrelated'             => 'جڑیا',
 'searchall'                 => 'سارے',
-'showingresultstotal'       => 'اس صفحے تے $1 توں $2 تک نتارے وکھاۓ جارۓ نیں۔ جدوں کہ $4 وچوں $3 نتارے تھلے نیں۔',
 'nonefound'                 => "'''صفحیاں دے ناں ڈیفالٹ تے کھوجے جاندے نیں'''
 اپنے لفظ توں پہلاں ''all:'' لا کے کھوجو۔ اس نال گلاں باتاں آلے صفحے، سچے وغیرہ سب چ تواڈا لفظ کھوجیا جاۓ گل۔",
 'powersearch'               => 'ودیا کھوج',
@@ -621,7 +627,6 @@ $messages = array(
 # Upload
 'upload'             => 'فائل چڑھاؤ',
 'uploadbtn'          => 'فائل چڑھاؤ',
-'reupload'           => 'دوبارہ چڑھاؤ',
 'reuploaddesc'       => 'فائل چڑانا چھڑو تے فائل چڑانے آلے فارم تے واپس ٹرو',
 'uploadnologin'      => 'لاگ ان نئیں ہوۓ',
 'uploaderror'        => 'فائل چڑاندیاں مسئلا ہویا اے',
@@ -887,7 +892,6 @@ $messages = array(
 'protectexpiry'               => 'انت ہوندا اے:',
 'protect_expiry_invalid'      => 'اکسپائری ٹیم غلط اے۔',
 'protect_expiry_old'          => 'ایدا اکسپائری ٹائم گزر چکیا اے۔',
-'protect-unchain'             => 'لے جانے دی اجازتاں دیو',
 'protect-text'                => "تسی اس صفحے دے حفاظتی درجے نوں تک تے تبدیل کر سکدے او'''<nowiki>$1</nowiki>'''.",
 'protect-locked-access'       => "تواڈا کھاتہ اجازت نہیں دیندا کہ تسی صفحے دے حفاظتی درجے نوں تبدیل کرو۔<br />
 ایتھے صفحے آسطے موجودہ ترتیب نے '''$1''':",
@@ -1116,7 +1120,7 @@ $messages = array(
 'tooltip-search'                  => 'کھوج {{SITENAME}}',
 'tooltip-search-go'               => 'اس ناں دے صفحے تے چلو، اگر اے ہے گا اے',
 'tooltip-search-fulltext'         => 'اس لفظ نوں صفحیاں چ لبو',
-'tooltip-p-logo'                  => 'پہلا صفحہ',
+'tooltip-p-logo'                  => 'پہلا صفہ',
 'tooltip-n-mainpage'              => 'پہلے صفحے دی سیر',
 'tooltip-n-portal'                => 'منصوبے دے بارے وچ، توسی کی کر سکدے او تے کنج کھوج سکدے او',
 'tooltip-n-currentevents'         => 'موجودہ حالات تے پچھلیاں معلومات دیکھو',
@@ -1315,7 +1319,7 @@ $messages = array(
 # Table pager
 'table_pager_next'  => 'اگلا صفحہ',
 'table_pager_prev'  => 'پچھلا صفحہ',
-'table_pager_first' => 'پہلا صفحہ',
+'table_pager_first' => 'پہلا صفہ',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'ملدیاں ہوئیاں تبدیلیاں ویکھو',

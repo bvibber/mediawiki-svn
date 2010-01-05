@@ -5,13 +5,13 @@ var currentFocused;
 function addButton(imageFile, speedTip, tagOpen, tagClose, sampleText, imageId) {
 	// Don't generate buttons for browsers which don't fully
 	// support it.
-	mwEditButtons[mwEditButtons.length] =
+	mwEditButtons.push(
 		{"imageId": imageId,
 		 "imageFile": imageFile,
 		 "speedTip": speedTip,
 		 "tagOpen": tagOpen,
 		 "tagClose": tagClose,
-		 "sampleText": sampleText};
+		 "sampleText": sampleText});
 }
 
 // this function generates the actual toolbar buttons with localized text
@@ -29,6 +29,10 @@ function mwInsertEditButton(parent, item) {
 	image.style.cursor = "pointer";
 	image.onclick = function() {
 		insertTags(item.tagOpen, item.tagClose, item.sampleText);
+		//click tracking
+		if ( ( typeof $j != 'undefined' )  &&  ( typeof $j.trackAction != 'undefined' ) ) {
+			$j.trackAction("oldedit." + item.speedTip.replace(/ /g, "-"));
+		}
 		return false;
 	};
 
@@ -40,13 +44,16 @@ function mwSetupToolbar() {
 	var toolbar = document.getElementById('toolbar');
 	if (!toolbar) { return false; }
 
-	var textbox = document.getElementById('wpTextbox1');
-	if (!textbox) { return false; }
-
 	// Don't generate buttons for browsers which don't fully
 	// support it.
+	// but don't assume wpTextbox1 is always here
+	var textboxes = document.getElementsByTagName('textarea');
+	if ( !textboxes.length ) {
+		// No toolbar if we can't find any textarea
+		return false;
+	}
 	if (!(document.selection && document.selection.createRange)
-		&& textbox.selectionStart === null) {
+		&& textboxes[0].selectionStart === null) {
 		return false;
 	}
 
@@ -146,21 +153,47 @@ function scrollEditBox() {
 	var editBox = document.getElementById( 'wpTextbox1' );
 	var scrollTop = document.getElementById( 'wpScrolltop' );
 	var editForm = document.getElementById( 'editform' );
-	if( editBox && scrollTop ) {
+	if( editForm && editBox && scrollTop ) {
 		if( scrollTop.value )
 			editBox.scrollTop = scrollTop.value;
 		addHandler( editForm, 'submit', function() {
-			document.getElementById( 'wpScrolltop' ).value = document.getElementById( 'wpTextbox1' ).scrollTop;
+			scrollTop.value = editBox.scrollTop;
 		} );
 	}
 }
 hookEvent( 'load', scrollEditBox );
 hookEvent( 'load', mwSetupToolbar );
 hookEvent( 'load', function() {
-	if ( document.editform ) {
-		currentFocused = document.editform.wpTextbox1;
-		document.editform.wpTextbox1.onfocus = function() { currentFocused = document.editform.wpTextbox1; };
-		document.editform.wpSummary.onfocus = function() { currentFocused = document.editform.wpSummary; };
+	currentFocused = document.getElementById( 'wpTextbox1' );
+	// http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
+	// focus does not bubble normally, but using a trick we can do event delegation
+	// on the focus event on all text inputs to make the toolbox usable on all of them
+	var editForm = document.getElementById( 'editform' );
+	if ( !editForm )
+		return;
+	
+	function onfocus(e) {
+		var elm = e.target;
+		if ( !elm )
+			return;
+		var tagName = elm.tagName.toLowerCase();
+		var type = elm.type.toLowerCase();
+		if ( tagName !== "textarea" && tagName !== "input" )
+			return;
+		if ( tagName === "input" && type && type !== "text" )
+			return;
+		
+		currentFocused = elm;
 	}
+	
+	if ( editForm.addEventListener ) {
+		// Gecko, WebKit, Opera, etc... (all standards compliant browsers)
+		editForm.addEventListener('focus', onfocus, true); // This MUST be true to work
+	} else if ( editForm.attachEvent ) {
+		// IE needs a specific trick here since it doesn't support the standard
+		editForm.attachEvent( 'onfocusin', function() { onfocus(event); } );
+	}
+	
+	editForm
 } );
 
