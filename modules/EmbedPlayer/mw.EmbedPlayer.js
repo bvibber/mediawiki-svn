@@ -1786,7 +1786,7 @@ mw.EmbedPlayer.prototype = {
 		mw.log( 'f:getNextPrevLinks' );
 		var anno_track_url = null;
 		var _this = this;
-		// check for annoative track
+		// Check for annotative track
 		$j.each( this.mediaElement.sources, function( inx, n ) {
 			if ( n.mime_type == 'text/cmml' ) {
 				if ( n.id == 'Anno_en' ) {
@@ -1830,16 +1830,11 @@ mw.EmbedPlayer.prototype = {
 		} else {
 			mw.getMvJsonUrl( new_anno_track_url, function( cmml_data ) {
 				mw.log( 'raw response: ' + cmml_data );
-				if ( typeof cmml_data == 'string' ) {
-					var parser = new DOMParser();
-					mw.log( 'Parse CMML data:' + cmml_data );
-					cmml_data = parser.parseFromString( cmml_data, "text/xml" );
-				}
 				// init cmmlData
 				if ( !_this.cmmlData )
 					_this.cmmlData = { };
-				// grab all metadata and put it into the cmmlData:					 
-				$j.each( cmml_data.getElementsByTagName( 'clip' ), function( inx, clip ) {
+				// Grab all metadata and put it into the cmmlData:					 
+				$j(cmml_data).find( 'clip' ).each( function( inx, clip ) {
 					_this.cmmlData[ $j( clip ).attr( "id" ) ] = {
 							'start_time_sec':mw.npt2seconds( $j( clip ).attr( "start" ).replace( 'npt:', '' ) ),
 							'end_time_sec':mw.npt2seconds( $j( clip ).attr( "end" ).replace( 'npt:', '' ) ),

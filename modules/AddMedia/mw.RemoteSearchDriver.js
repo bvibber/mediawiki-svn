@@ -186,10 +186,10 @@ mw.RemoteSearchDriver.prototype = {
 	// Result cleared flag
 	results_cleared: false,
 	
-	// Caret position of target text area ( lazy initialised )
+	// Caret position of target text area ( lazy initialized )
 	caretPos: null, 
 	
-	// Text area value ( lazy initialised )
+	// Text area value ( lazy initialized )
 	textboxValue: null, 
 
 	/** the default content providers list.
@@ -274,7 +274,7 @@ mw.RemoteSearchDriver.prototype = {
 		
 		},
 		
-		/*
+		/**
 		* Kaltura aggregated search
 		*/ 
 		'kaltura': {
@@ -294,7 +294,7 @@ mw.RemoteSearchDriver.prototype = {
 			'checked': 1,
 			'homepage': 'http://www.archive.org/about/about.php',
 
-			'api_url': 'http://homeserver7.us.archive.org:8983/solr/select',
+			'api_url': 'http://www.archive.org/advancedsearch.php',
 			'lib': 'archiveOrg',
 			'local': false,
 			'resource_prefix': 'AO_',
@@ -471,9 +471,9 @@ mw.RemoteSearchDriver.prototype = {
 		// Set the upload target name if unset
 		if ( _this.upload_api_target == 'local' 
 			&& ! _this.upload_api_name 
-			&& typeof wgSiteName != 'undefined' )
+			&& typeof wgServer != 'undefined' )
 		{
-			_this.upload_api_name =  wgSiteName;
+			_this.upload_api_name =  mw.parseUri( wgServer ).host;
 		} else {
 			// Disable upload tab if no target is avaliable 
 			this.content_providers[ 'upload' ].enabled = false;
@@ -2036,7 +2036,7 @@ mw.RemoteSearchDriver.prototype = {
 			gM( 'mwe-resource-needs-import', [resource.title, _this.upload_api_name] ) + 
 			'</h3>' +
 			'<div id="rsd_preview_import_container" ' + 
-				'style="position:absolute;width:50%;bottom:0px;left:5px;' + 
+				'style="position:absolute;width:49%;bottom:0px;left:5px;' + 
 					'overflow:auto;top:30px;">' +
 			
 			// Get embedHTML with small thumb:

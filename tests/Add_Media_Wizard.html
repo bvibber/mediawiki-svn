@@ -23,26 +23,24 @@
 				'import_url_mode' : 'remote_link',	
 				'remote_insert_description' : true,
 				//note selections in the textbox will take over the default query
-				'default_query': 'fish',	
+				'default_query' : 'fish',	
 				
 				//we only enabled commons
 	        	//(since javascript includes from other servers would be problamatic ) in a default install
 	            //** but you can set this to 'all' to pull from multiple repositories  
-	            'enabled_providers' : 'all',        	
+	            'enabled_providers' : [ 'wiki_commons', 'kaltura', 'archive_org', 'flickr', 'metavid' ],        	
 				
 				//the local wiki api url: 
 				'local_wiki_api_url': 'none'
 			} );			
  		} ); 			
 	});	
-	
  	</script> 
 </head>
 <body>
 <h3> Sample Add Media Wizard </h3>
 
-<a id="add_media_link" href="#">Add Media</a><br>
-<b>note</b> only commons is enabled by default. For more options see source code.<br><br> 
+<a id="add_media_link" href="#">Add Media</a><br><br>
 <table border="1" width="800">
 <tr>
 <td valign="top" width="50%" id="inline_append">Asset Output</td>

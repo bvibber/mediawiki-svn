@@ -930,8 +930,8 @@ mw.addMessages( {
 			// Try to load src via src attr:			
 			if( this.getSrc() ){
 				// Issue the direct load request ( if we can ) 
-				if ( mw.parseUri( document.URL ).host != mw.parseUri( this.getSrc() ).host ){
-					mw.log("Error: host mis-match: " + mw.parseUri( document.URL ).host != mw.parseUri( this.getSrc() ).host )
+				if ( !mw.isLocalDomain( this.getSrc() ) ){
+					mw.log("Error: cant load crossDomain src:" + this.getSrc()   )
 					return ;
 				}
 				$j.get( this.getSrc(), function( data ){		

@@ -885,7 +885,7 @@ mw.Sequencer.prototype = {
 		} );
 		
 		// Upload clipboard to the server (if possible)
-		if ( mw.parseUri(  document.URL ).host != mw.parseUri( _this.plObj.interface_url ).host ) {
+		if ( ! mw.isLocalDomain( _this.plObj.interface_url )) {
 			mw.log( 'error: presently we can\'t copy clips across domains' );
 		} else {
 			// FIXME we need to add an api entry point to store a "clipboard"
