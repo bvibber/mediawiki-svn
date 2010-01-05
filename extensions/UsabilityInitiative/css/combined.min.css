@@ -18,6 +18,8 @@ margin-bottom:0px;
 }
 #panel.collapsible-nav div h5:hover{
 cursor:pointer;
+color:#0066cc;
+background:url(../images/vector/arrow-down-over.png) 0 50% no-repeat #E8E8E8;
 }
 #panel.collapsible-nav div.collapsed h5:hover{
 background:url(../images/vector/arrow-right-over.png) 0 50% no-repeat #E8E8E8;
