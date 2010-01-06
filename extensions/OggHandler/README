@@ -85,6 +85,9 @@ version 0.3.0 or greater. It is licensed under the LGPL.
 
 http://pear.php.net/package/File_Ogg
 
+As per the usual convention, the PEAR base directory (the one with PEAR.php in 
+it) must be in your include_path.
+
 Graphics
 --------
 
