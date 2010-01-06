@@ -90,7 +90,7 @@ mw.BaseUploadInterface.prototype = {
 		if ( typeof( this.orig_onsubmit ) == 'undefined' && this.form.onsubmit ) {
 			this.orig_onsubmit = this.form.onsubmit;
 		}
-
+	
 		// Set up the submit action:
 		$j( this.form ).submit( function() {
 			return _this.onSubmit();
@@ -121,9 +121,16 @@ mw.BaseUploadInterface.prototype = {
 		var data = $j( this.form ).serializeArray();
 		this.formData = {};
 		for ( var i = 0; i < data.length; i++ ) {
-			if ( data[i]['name'] )
-				this.formData[ data[i]['name'] ] = data[i]['value'];
-		}		
+			if ( data[i]['name'] ){
+				// Special case of upload.js commons hack:  
+				if( data[i]['name'] == 'wpUploadDescription' ){
+					this.formData[ 'comment' ] =  data[i]['value'];
+				}else{
+					this.formData[ data[i]['name'] ] = data[i]['value'];
+				}
+			}
+		}				
+		
 		// Put into a try catch so we are sure to return false:
 		try {
 			
@@ -319,10 +326,17 @@ mw.BaseUploadInterface.prototype = {
 	doApiCopyUpload: function() {
 		mw.log( 'mvBaseUploadInterface.doApiCopyUpload' );
 		mw.log( 'doHttpUpload (no form submit) ' );
+		
+		//Special case of upload.js commons hack: 
+		var comment_value = $j( '#wpUploadDescription' ).val();
+		if(  comment_value == '' ){
+			comment_value = $j( "[name='wpUploadDescription']").val();
+		}
+		
 		var httpUpConf = {
 			'url'       : $j( '#wpUploadFileURL' ).val(),
 			'filename'  : $j( '#wpDestFile' ).val(),
-			'comment'   : $j( '#wpUploadDescription' ).val(),
+			'comment'   : comment_value,
 			'watch'     : ( $j( '#wpWatchthis' ).is( ':checked' ) ) ? 'true' : 'false',
 			'ignorewarnings': ($j('#wpIgnoreWarning' ).is( ':checked' ) ) ? 'true' : 'false'
 		}
