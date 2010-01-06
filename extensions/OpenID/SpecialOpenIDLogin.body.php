@@ -172,16 +172,14 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 		if ( $messagekey ) {
 			$wgOut->addWikiMsg( $messagekey );
-		} else if ( array_key_exists( 'nickname', $sreg ) ) {
-			$wgOut->addWikiMsg( 'openidnotavailable', $sreg['nickname'] );
-		} else {
-			$wgOut->addWikiMsg( 'openidnotprovided' );
 		}
 		$wgOut->addWikiMsg( 'openidchooseinstructions' );
 
 		$wgOut->addHTML(
 			Xml::openElement( 'form',
-				array( 'action' => $this->getTitle( 'ChooseName' )->getLocalUrl(), 'method' => 'POST' ) ) . "\n"
+				array( 'action' => $this->getTitle( 'ChooseName' )->getLocalUrl(), 'method' => 'POST' ) ) . "\n" .
+			Xml::fieldset( wfMsg( 'openidchooselegend' ), false, array( 'id' => 'mw-openid-choosename' ) ) . "\n" .
+			Xml::openElement( 'table' )
 		);
 		$def = false;
 
@@ -206,37 +204,67 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				}
 
 				if ( array_key_exists( $oidAttr, $sreg ) ) {
-					$oidAttributes[] = Xml::tags( 'div', array(), wfMsgHtml( "openid$oidAttr" ) . ': ' . Xml::tags( 'i', array(), $sreg[$oidAttr] ) );
+					$checkName = 'wpUpdateUserInfo' . $oidAttr;
+					$oidAttributes[] = Xml::tags( 'li', array(),
+						Xml::check( $checkName, false, array( 'id' => $checkName ) ) .
+						Xml::tags( 'label', array( 'for' => $checkName ),
+							wfMsgHtml( "openid$oidAttr" ) . wfMsgExt( 'colon-separator', array( 'escapenoentities' ) ) .
+								Xml::tags( 'i', array(), $sreg[$oidAttr] )
+						)
+					);
 				}
 			}
 
 			$oidAttributesUpdate = '';
 			if ( count( $oidAttributes ) > 0 ) {
-				$oidAttributesUpdate = Xml::openElement( 'div', array( 'style' => 'margin-left: 25px' ) ) . "\n" .
-					Xml::check( 'wpUpdateUserInfo', false, array( 'id' => 'wpUpdateUserInfo' ) ) . "\n" .
-					Xml::openElement( 'label', array( 'for' => 'wpUpdateUserInfo' ) ) .
-					wfMsgHtml( 'openidupdateuserinfo' ) .
-					Xml::tags( 'div', array( 'style' => 'margin-left: 25px' ), implode( "\n", $oidAttributes ) ) .
-					Xml::closeElement( 'label' ) . Xml::closeElement( 'div' );
+				$oidAttributesUpdate = "<br />\n" .
+					wfMsgHtml( 'openidupdateuserinfo' ) . "\n" .
+					Xml::tags( 'ul', array(), implode( "\n", $oidAttributes ) );
 			}
 
 			$wgOut->addHTML(
-				Xml::openElement( 'div' ) .
-				Xml::radioLabel( wfMsg( 'openidchooseexisting' ), 'wpNameChoice', 'existing', 'wpNameChoiceExisting' ) . "\n" .
-				Xml::input( 'wpExistingName', 16, $name, array( 'id' => 'wpExistingName' ) ) . "\n" .
-				wfMsgHtml( 'openidchoosepassword' ) . "\n" .
-				Xml::password( 'wpExistingPassword' ) . "\n" .
-				$oidAttributesUpdate . "\n" .
-				Xml::closeElement( 'div' )
+				Xml::openElement( 'tr' ) .
+				Xml::tags( 'td', array( 'class' => 'mw-label' ),
+					Xml::radio( 'wpNameChoice', 'existing', false, array( 'id' => 'wpNameChoiceExisting' ) )
+				) . "\n" .
+				Xml::tags( 'td', array( 'class' => 'mw-input' ),
+					Xml::label( wfMsg( 'openidchooseexisting' ), 'wpNameChoiceExisting' ) . "<br />\n" .
+					wfMsgHtml( 'openidchooseusername' ) . "\n" .
+					Xml::input( 'wpExistingName', 16, $name, array( 'id' => 'wpExistingName' ) ) . "\n" .
+					wfMsgHtml( 'openidchoosepassword' ) . "\n" .
+					Xml::password( 'wpExistingPassword' ) . "\n" .
+					$oidAttributesUpdate . "\n"
+				) . "\n" .
+				Xml::closeElement( 'tr' ) . "\n"
 			);
+		}
+
+		# These options won't exist if we can't get them.
+		if ( array_key_exists( 'nickname', $sreg ) && $this->userNameOK( $sreg['nickname'] ) ) {
+			$wgOut->addHTML(
+				Xml::openElement( 'tr' ) .
+				Xml::tags( 'td', array( 'class' => 'mw-label' ),
+					Xml::radio( 'wpNameChoice', 'nick', !$def, array( 'id' => 'wpNameChoiceNick' ) )
+				) .
+				Xml::tags( 'td', array( 'class' => 'mw-input' ),
+					Xml::label( wfMsg( 'openidchoosenick', $sreg['nickname'] ), 'wpNameChoiceNick' )
+				) .
+				Xml::closeElement( 'tr' ) . "\n"
+			);
+			$def = true;
 		}
 
 		# These options won't exist if we can't get them.
 		if ( array_key_exists( 'fullname', $sreg ) && $this->userNameOK( $sreg['fullname'] ) ) {
 			$wgOut->addHTML(
-				Xml::openElement( 'div' ) .
-				Xml::radioLabel( wfMsg( 'openidchoosefull', $sreg['fullname'] ), 'wpNameChoice', 'full', 'wpNameChoiceFull', !$def ) .
-				Xml::closeElement( 'div' )
+				Xml::openElement( 'tr' ) .
+				Xml::tags( 'td', array( 'class' => 'mw-label' ),
+					Xml::radio( 'wpNameChoice', 'full', !$def, array( 'id' => 'wpNameChoiceFull' ) )
+				) .
+				Xml::tags( 'td', array( 'class' => 'mw-input' ),
+					Xml::label( wfMsg( 'openidchoosefull', $sreg['fullname'] ), 'wpNameChoiceFull' )
+				) .
+				Xml::closeElement( 'tr' ) . "\n"
 			);
 			$def = true;
 		}
@@ -244,23 +272,49 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		$idname = $this->toUserName( $openid );
 		if ( $idname && $this->userNameOK( $idname ) ) {
 			$wgOut->addHTML(
-				Xml::openElement( 'div' ) .
-				Xml::radioLabel( wfMsg( 'openidchooseurl', $idname ), 'wpNameChoice', 'url', 'wpNameChoiceUrl', !$def ) .
-				Xml::closeElement( 'div' )
+				Xml::openElement( 'tr' ) .
+				Xml::tags( 'td', array( 'class' => 'mw-label' ),
+					Xml::radio( 'wpNameChoice', 'url', !$def, array( 'id' => 'wpNameChoiceUrl' ) )
+				) .
+				Xml::tags( 'td', array( 'class' => 'mw-input' ),
+					Xml::label( wfMsg( 'openidchooseurl', $idname ), 'wpNameChoiceUrl' )
+				) .
+				Xml::closeElement( 'tr' ) . "\n"
 			);
 			$def = true;
 		}
 
 		# These are always available
 		$wgOut->addHTML(
-			Xml::openElement( 'div' ) . "\n" .
-			Xml::radioLabel( wfMsg( 'openidchooseauto', $this->automaticName( $sreg ) ), 'wpNameChoice', 'auto', 'wpNameChoiceAuto', !$def ) . "\n" .
-			Xml::closeElement( 'div' ) . "\n" .
-			Xml::openElement( 'div' ) . "\n" .
-			Xml::radioLabel( wfMsg( 'openidchoosemanual' ), 'wpNameChoice', 'manual', 'wpNameChoiceManual' ) . "\n" .
-			Xml::input( 'wpNameValue', 16, false, array( 'id' => 'wpNameValue' ) ) . "\n" .
-			Xml::closeElement( 'div' ) . "\n" .
-			Xml::submitButton( wfMsg( 'login' ), array( 'name' => 'wpOK' ) ) . Xml::submitButton( wfMsg( 'cancel' ), array( 'name' => 'wpCancel' ) ) . "\n" .
+			Xml::openElement( 'tr' ) .
+			Xml::tags( 'td', array( 'class' => 'mw-label' ),
+				Xml::radio( 'wpNameChoice', 'auto', !$def, array( 'id' => 'wpNameChoiceAuto' ) )
+			) .
+			Xml::tags( 'td', array( 'class' => 'mw-input' ),
+				Xml::label( wfMsg( 'openidchooseauto', $this->automaticName( $sreg ) ), 'wpNameChoiceAuto' )
+			) .
+			Xml::closeElement( 'tr' ) . "\n" .
+
+			Xml::openElement( 'tr' ) .
+			Xml::tags( 'td', array( 'class' => 'mw-label' ),
+				Xml::radio( 'wpNameChoice', 'manual', !$def, array( 'id' => 'wpNameChoiceManual' ) )
+			) .
+			Xml::tags( 'td', array( 'class' => 'mw-input' ),
+				Xml::label( wfMsg( 'openidchoosemanual' ), 'wpNameChoiceManual' ) . '&nbsp;' .
+				Xml::input( 'wpNameValue', 16, false, array( 'id' => 'wpNameValue' ) )
+			) .
+			Xml::closeElement( 'tr' ) . "\n" .
+
+			Xml::openElement( 'tr' ) . "\n" .
+			Xml::element( 'td', array(), '' ) . "\n" .
+			Xml::tags( 'td', array( 'class' => 'mw-submit' ),
+				Xml::submitButton( wfMsg( 'login' ), array( 'name' => 'wpOK' ) ) .
+				Xml::submitButton( wfMsg( 'cancel' ), array( 'name' => 'wpCancel' ) )
+			) . "\n" .
+			Xml::closeElement( 'tr' ) . "\n" .
+
+			Xml::closeElement( 'table' ) .
+			Xml::closeElement( 'fieldset' ) .
 			Xml::closeElement( 'form' )
 		);
 	}
@@ -300,9 +354,12 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				return;
 			}
 
-			if ( $wgRequest->getText( 'wpUpdateUserInfo' ) ) {
-				$this->updateUser( $user, $sreg );
+			$force = array();
+			foreach( array( 'fullname', 'nickname', 'email', 'language' ) as $option ) {
+				if ( $wgRequest->getCheck( 'wpUpdateUserInfo' . $option ) )
+					$force[] = $option;
 			}
+			$this->updateUser( $user, $sreg );
 		} else {
 			$name = $this->getUserName( $openid, $sreg, $choice, $nameValue );
 
@@ -376,25 +433,12 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 			if ( $user instanceof User ) {
 				$this->updateUser( $user, $sreg ); # update from server
-			} else {
-				# For easy names
-				$name = $this->createName( $openid, $sreg );
-				if ( $name ) {
-					$user = $this->createUser( $openid, $sreg, $name );
-				} else {
-					# For hard names
-					$this->saveValues( $openid, $sreg );
-					$this->chooseNameForm( $openid, $sreg );
-					return;
-				}
-			}
-
-			if ( !$user instanceof User ) {
-				wfDebug( "OpenID: aborting in auth success because we could not create user object\n" );
-				$wgOut->showErrorPage( 'openiderror', 'openiderrortext' );
-			} else {
 				$wgUser = $user;
 				$this->displaySuccessLogin( $openid );
+			} else {
+				$this->saveValues( $openid, $sreg );
+				$this->chooseNameForm( $openid, $sreg );
+				return;
 			}
 		}
 	}
@@ -409,18 +453,15 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	function updateUser( $user, $sreg, $force = false ) {
 		global $wgAllowRealName, $wgEmailAuthentication;
 
-		// Back compat with old option
-		$updateAll = $force || $user->getOption( 'openid-update-userinfo-on-login' );
-
 		// Nick name
-		if ( $updateAll || $user->getOption( 'openid-update-userinfo-on-login-nickname' ) ) {
+		if ( $this->updateOption( 'nickname', $user, $force ) ) {
 			// FIXME: only update if there's been a change
 			if ( array_key_exists( 'nickname', $sreg ) )
 				$user->setOption( 'nickname', $sreg['nickname'] );
 		}
 
 		// E-mail
-		if ( $updateAll || $user->getOption( 'openid-update-userinfo-on-login-email' ) ) {
+		if ( $this->updateOption( 'email', $user, $force ) ) {
 			if ( array_key_exists( 'email', $sreg ) ) {
 				$email = $sreg['email'];
 				// If email changed, then email a confirmation mail
@@ -438,20 +479,20 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		}
 
 		// Full name
-		if ( $wgAllowRealName && ( $updateAll || $user->getOption( 'openid-update-userinfo-on-login-fullname' ) ) ) {
+		if ( $wgAllowRealName && ( $this->updateOption( 'fullname', $user, $force ) ) ) {
 			if ( array_key_exists( 'fullname', $sreg ) )
 				$user->setRealName( $sreg['fullname'] );
 		}
 
 		// Language
-		if ( $updateAll || $user->getOption( 'openid-update-userinfo-on-login-language' ) ) {
+		if ( $this->updateOption( 'language', $user, $force ) ) {
 			if ( array_key_exists( 'language', $sreg ) ) {
 				# FIXME: check and make sure the language exists
 				$user->setOption( 'language', $sreg['language'] );
 			}
 		}
 
-		if ( $updateAll || $user->getOption( 'openid-update-userinfo-on-login-timezone' ) ) {
+		if ( $this->updateOption( 'timezone', $user, $force ) ) {
 			if ( array_key_exists( 'timezone', $sreg ) ) {
 				# FIXME: do something with it.
 				# $offset = OpenIDTimezoneToTzoffset($sreg['timezone']);
@@ -460,6 +501,15 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		}
 
 		$user->saveSettings();
+	}
+
+	/**
+	 * Helper function for updateUser()
+	 */
+	private function updateOption( $option, User $user, $force ) {
+		return $force === true || ( is_array( $force ) && in_array( $option, $force ) ) ||
+			$user->getOption( 'openid-update-userinfo-on-login-' . $option ) ||
+			$user->getOption( 'openid-update-userinfo-on-login' ); // Back compat with old option
 	}
 
 	/**
@@ -539,19 +589,11 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	# Methods to get the user name
 	# ----------------------------
 
-	function createName( $openid, $sreg ) {
-		# try nickname
-		if ( array_key_exists( 'nickname', $sreg ) &&
-			$this->userNameOK( $sreg['nickname'] ) ) {
-			return $sreg['nickname'];
-		} else {
-			return null;
-		}
-	}
-
-
 	function getUserName( $openid, $sreg, $choice, $nameValue ) {
 		switch ( $choice ) {
+		 case 'nick':
+		 	return ( ( array_key_exists( 'nickname', $sreg ) ) ? $sreg['nickname'] : null );
+		 	break;
 		 case 'full':
 			return ( ( array_key_exists( 'fullname', $sreg ) ) ? $sreg['fullname'] : null );
 			break;
@@ -690,7 +732,9 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	}
 
 	function fetchValues() {
-		return array( $_SESSION['openid_consumer_response'], $_SESSION['openid_consumer_sreg'] );
+		$response = isset( $_SESSION['openid_consumer_response'] ) ? $_SESSION['openid_consumer_response'] : null;
+		$sreg = isset( $_SESSION['openid_consumer_sreg'] ) ? $_SESSION['openid_consumer_sreg'] : null;
+		return array( $response, $sreg );
 	}
 
 	function returnTo() {

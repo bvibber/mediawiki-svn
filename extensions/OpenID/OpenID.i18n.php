@@ -63,15 +63,16 @@ Please consult an [[Special:ListUsers/sysop|administrator]].',
 	'openidemail' => 'E-mail address',
 	'openidlanguage' => 'Language',
 	'openidtimezone' => 'Time zone',
-	'openidnotavailable' => 'Your preferred nickname ($1) is already in use by another user.',
-	'openidnotprovided' => 'Your OpenID server did not provide a nickname (either because it cannot, or because you told it not to).',
+	'openidchooselegend' => 'Username choice',
 	'openidchooseinstructions' => 'All users need a nickname;
 you can choose one from the options below.',
+	'openidchoosenick' => 'Your nickname ($1)',
 	'openidchoosefull' => 'Your full name ($1)',
 	'openidchooseurl' => 'A name picked from your OpenID ($1)',
 	'openidchooseauto' => 'An auto-generated name ($1)',
 	'openidchoosemanual' => 'A name of your choice:',
-	'openidchooseexisting' => 'An existing account on this wiki:',
+	'openidchooseexisting' => 'An existing account on this wiki',
+	'openidchooseusername' => 'username:',
 	'openidchoosepassword' => 'password:',
 	'openidconvertinstructions' => 'This form lets you change your user account to use an OpenID URL or add more OpenID URLs',
 	'openidconvertoraddmoreids' => 'Convert to OpenID or add another OpenID URL',
@@ -96,7 +97,7 @@ If you already have an account on {{SITENAME}}, you can [[Special:UserLogin|log 
 To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you have logged in normally.
 
 There are many [http://openid.net/get/ OpenID providers], and you may already have an OpenID-enabled account on another service.',
-	'openidupdateuserinfo' => 'Update my personal information',
+	'openidupdateuserinfo' => 'Update my personal information:',
 
 	'openiddelete' => 'Delete OpenID',
 	'openiddelete-text' => 'By clicking the "{{int:openiddelete-button}}" button, you will remove the OpenID $1 from your account.
