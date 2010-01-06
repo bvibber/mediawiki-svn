@@ -13121,6 +13121,7 @@ $messages['tg-latn'] = array(
 
 /** Thai (ไทย)
  * @author Ans
+ * @author Horus
  * @author Woraponboonkerd
  */
 $messages['th'] = array(
@@ -13154,6 +13155,7 @@ $messages['th'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'ลิงก์ภายนอก',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'กำลังตรวจสอบการมีอยู่เดิมของหน้าดังกล่าว...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'ชื่อเรื่องที่คุณกำหนดไม่ถูกต้อง',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'URL ที่คุณระบุ ดูเหมือนว่ามีเจตนาเพื่อเป็นลิงก์ไปยังหน้าวิกิอื่น คุณต้องการทำให้มันเป็นลิงก์ภายในหรือไม่',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'ลิงก์ภายใน',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'ลิงก์ภายนอก',
 	'wikieditor-toolbar-tool-link-empty' => 'คุณไม่ได้ใส่ใดๆ เลยที่จะเชื่อมโยงไป',
@@ -13283,6 +13285,7 @@ $messages['th'] = array(
 	'wikieditor-toolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='คำอธิบาย' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='ขยายใหญ่' class='internal' href='#'><img height='11' width='15' alt='' src='$1/common/images/magnify-clip.png'/></a></div>คำอธิบาย</div></div>",
 	'wikieditor-toolbar-help-content-reference-description' => 'อ้างอิง',
 	'wikieditor-toolbar-help-content-reference-syntax' => 'ชื่อหน้า.&lt;ref name="test"&gt;[http://www.example.org ชื่อลิงก์], คำอธิบายเพิ่มเติม.&lt;/ref&gt;',
+	'wikieditor-toolbar-help-content-showreferences-description' => 'แสดงแหล่งอ้างอิง',
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'ลายเซ็นต์พร้องลงเวลา',
 	'wikieditor-toolbar-help-content-signature-description' => 'ลายเซ้นต์',
 	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>ชื่อผู้ใช้</a> (<a href='#' title='{{#special:mytalk}}'>พูดคุย</a>)",
