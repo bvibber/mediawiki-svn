@@ -906,7 +906,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 	 */
 	doChunkUploadWithFormData: function() {
 		var _this = this;
-		mw.log( "firefogg::doChunkUploadWithFormData"  + _this.editToken );
+		mw.log( "firefogg::doChunkUploadWithFormData: "  + _this.editToken );
 		// Build the API URL
 		var aReq = {
 			'action': 'upload',

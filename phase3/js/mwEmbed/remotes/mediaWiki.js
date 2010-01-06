@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r73';
+var mwRemoteVersion = 'r74';
 var mwUseScriptLoader = true;
 
 // Setup up request Params: 
@@ -115,7 +115,7 @@ function doPageSpecificRewrite() {
 		}
 	}	
 	if ( vidIdList.length > 0 ) {
-		// Reverse order the array so videos at the "top" get swaped first:
+		// Reverse order the array so videos at the "top" get swapped first:
 		vidIdList = vidIdList.reverse();
 		mwLoadPlayer(function(){
 			//Load the "EmbedPlayer" module: 
