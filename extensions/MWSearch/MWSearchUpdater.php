@@ -20,6 +20,8 @@ class MWSearchUpdater {
 	 * @static
 	 */
 	function updatePage( $dbname, $title, $text ) {
+		global $wgContLang;
+		$text = $wgContLang->stripForSearch( $text );
 		return MWSearchUpdater::sendRPC( 'searchupdater.updatePage',
 			array( $dbname, $title, $text ) );
 	}
@@ -191,6 +193,5 @@ class MWSearchUpdater {
 		}
 	}
 }
-
 
 

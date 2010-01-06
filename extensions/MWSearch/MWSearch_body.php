@@ -9,6 +9,8 @@ class LuceneSearch extends SearchEngine {
 	 * @access public
 	 */
 	function searchText( $term ) {
+		global $wgContLang;
+		$term = $wgContLang->stripForSearch( $term );
 		return LuceneSearchSet::newFromQuery( isset($this->related)? 'related' : 'search',
 				$term, $this->namespaces, $this->limit, $this->offset, $this->searchingEverything() );
 	}
