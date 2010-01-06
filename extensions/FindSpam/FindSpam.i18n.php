@@ -299,18 +299,19 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jack Phoenix
  * @author Jack Phoenix <jack@countervandalism.net>
  * @author Nike
  * @author Tarmo
  */
 $messages['fi'] = array(
-	'findspam' => 'Etsi spämmiä',
-	'findspam-desc' => 'Lisää [[Special:FindSpam|toimintosivun]] tuoreen spämmin löytämiseksi',
+	'findspam' => 'Etsi mainoslinkkejä',
+	'findspam-desc' => 'Lisää [[Special:FindSpam|toimintosivun]], joka mahdollistaa äskettäin lisättyjen mainoslinkkien löytämisen.',
 	'findspam-ip' => 'IP-osoite',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Muokkauksia ei löytynyt',
-	'right-findspam' => 'Etsiä äskettäin lisättyä spämmiä',
+	'right-findspam' => 'Etsiä äskettäin lisättyjä mainoslinkkejä',
 );
 
 /** French (Français)

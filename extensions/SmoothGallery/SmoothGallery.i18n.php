@@ -145,6 +145,8 @@ $messages['br'] = array(
 	'smoothgallery-gallery-not-found' => "N'eus ket eus ar palier goulennet.",
 	'smoothgallery-not-found' => "N'eus bet ouzhpennet skeudenn ebet d'ar palier.
 Ouzhpennit ur skeudenn da nebeutañ, mar plij.",
+	'smoothgallery-unexpected-error' => "Ur fazi dic'hortoz zo bet.
+Leugnit un danevell draen, mar plij.",
 	'smoothgallery-javascript-disabled' => 'Rekis eo JavaScript evit gwelet ervat ar skeudennaoueg.',
 );
 

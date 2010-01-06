@@ -637,6 +637,7 @@ $messages['br'] = array(
 	'sign-viewfield-reviewedby' => 'Adweler',
 	'sign-viewfield-reviewcomment' => 'Addispleg',
 	'sign-detail-uniquequery' => 'Hennadoù damheñvel',
+	'sign-detail-uniquequery-run' => 'Lañsañ ar reked',
 	'sign-reviewsig' => 'Adwelet ar sinadur',
 	'sign-review-comment' => 'Addispleg',
 	'sign-uniquequery-similarname' => 'Anv damheñvel',

@@ -262,6 +262,7 @@ $messages['bs'] = array(
 	'masseditregex-page-not-exists' => '$1 ne postoji',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|stranica|stranice|stranica}} uređeno',
 	'masseditregex-view-full-summary' => 'Pogledaj puni sažetak izmjene',
+	'masseditregex-hint-headmatch' => 'Slaganja',
 	'masseditregex-hint-headreplace' => 'Zamjena',
 	'masseditregex-hint-headeffect' => 'Efekat',
 	'masseditregex-listtype-intro' => 'Ovo je spisak:',

@@ -957,15 +957,16 @@ $messages['zh-cn'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author PhiLiP
  * @author Wmr89502270
  * @author 許瑜真 (Yuchen Hsu/KaurJmeb)
  */
 $messages['zh-hans'] = array(
-	'ajaxlogin-desc' => '使用动态视窗登入及记忆密码',
-	'ajaxLogin1' => '为完成登入，您必需输入一组新密码。
-这将可以让您不损失任何编辑资料直接登入。',
-	'ajaxLogin2' => '这动作可能会使你跳离编辑页面，可能会损失编辑结果。确定要离开吗？',
-	'ajaxlogin-create' => '创建一个账户',
+	'ajaxlogin-desc' => '使用动态视窗登录并记忆密码',
+	'ajaxLogin1' => '为完成登录，您必须输入一组新密码。
+这会把您带离本编辑页面，您有可能会丢失现有的编辑。',
+	'ajaxLogin2' => '确定这样做吗？如果您现在离开本页面，您可能会丢失您对本页面作出的修改。',
+	'ajaxlogin-create' => '创建账户',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

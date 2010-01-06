@@ -396,15 +396,15 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'importfreeimages' => 'Tuo vapaita kuvia',
 	'importfreeimages-desc' => 'Mahdollistaa [[Special:ImportFreeImages|sopivasti lisensoitujen valokuvien tuonnin]] [http://www.flickr.com Flickristä].',
-	'importfreeimages_description' => 'Tämän sivun kautta pystyt etsimään asianomaisesti lisensoituja kuvia flickr:sta ja tuomaan niitä wikiisi.',
+	'importfreeimages_description' => 'Tämän sivun kautta pystyt etsimään asianomaisesti lisensoituja kuvia Flickrista ja tuomaan niitä wikiisi.',
 	'importfreeimages_noapikey' => 'Et ole asettanut Flickr API -avaintasi.
 Tehdäksesi niin, hanki API-avain [http://www.flickr.com/services/api/misc.api_keys.html täältä] ja aseta $wgFlickrAPIKey  ImportFreeImages.php-tiedostossa.',
-	'importfreeimages_nophotosfound' => "Mitkään valokuvat eivät täsmänneet hakukriteeriisi '$1', ole hyvä ja koita uudestaan.",
+	'importfreeimages_nophotosfound' => "Mikään kuva ei täsmää hakukriteeriisi '$1'. Yritä uudelleen.",
 	'importfreeimages_invalidurl' => 'URL "$1" ei ole kelvollinen Flickr-kuva.',
 	'importfreeimages_owner' => 'Tekijä',
 	'importfreeimages_importthis' => 'tuo tämä',
 	'importfreeimages_next' => 'Seuraavat $1',
-	'importfreeimages_filefromflickr' => '$1 käyttäjän <b>[$2]</b> toimesta flickr:sta. Alkuperäinen URL',
+	'importfreeimages_filefromflickr' => '$1 käyttäjän <b>[$2]</b> toimesta Flickristä. Alkuperäinen URL',
 	'importfreeimages_promptuserforfilename' => 'Ole hyvä ja anna kohdenimi:',
 	'importfreeimages_returntoform' => "Tai napsauta <a href='$1'>tästä</a> palataksesi hakusi tuloksiin",
 	'importfreeimages_nophpflickr' => 'Et ole asentanut phpFlickriä. Aseta muuttujalle $wgIFphpFlickr arvo tiedostossa LocalSettings.php.',

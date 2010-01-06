@@ -1739,14 +1739,22 @@ $messages['es'] = array(
 	'wikilog-auto' => 'Wikilog Auto',
 	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Publicar comentarios en artículos del Wikilog',
+	'right-wl-moderation' => 'Moderación de comentarios de artículos de wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Registro de acciones  de Wikilog',
 	'wikilog-log-pagetext' => 'A continuación hay un listado de acciones de Wikilog.',
 	'wikilog-log-cmt-approve' => 'comentario aprobado [[$1]]',
 	'wikilog-log-cmt-reject' => 'comentario rechazado [[$1]]',
+	'wikilog-log-cmt-rejdel' => 'Comentario de wikilog rechazado de [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Acciones de Wikilog',
+	'wikilog-missing-wikilog' => 'Esta es la página de  [[{{int:wikilog-help}}|wikilog]] para  [[{{FULLPAGENAME}}]].
+
+Este wikilog todavía no existe.
+Para poder publicar artículos y habilitar otras características de wikilog, este debe crearse primero.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Crear este wikilog].</span>',
 	'wikilog-information' => 'Información sobre Wikilog',
 	'wikilog-post-count-published' => 'Hay {{PLURAL:$1|un artículo publicado|$1 artículos publicados}} en este wikilog',
 	'wikilog-post-count-drafts' => 'Hay {{PLURAL:$1|un artículo sin publicar (borrador)|$1 artículos sin publicar (borradores)}} en este wikilog',
@@ -1786,6 +1794,8 @@ $messages['es'] = array(
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discusión]])',
 	'wikilog-edit-fieldset-legend' => 'Ajustes de Wikilog:',
 	'wikilog-edit-signpub' => 'Firma y publica este artículo',
+	'wikilog-edit-signpub-tooltip' => 'Hace que el artículo se firme y publique en este wikilog una vez salvado.
+Desmarcar esta casilla para mantener este artículo como borrador.',
 	'wikilog-comment-by-user' => 'Comentario de $1 ($2)',
 	'wikilog-comment-by-anon' => 'Comentario de $3 (anónimo)',
 	'wikilog-comment-pending' => 'Este comentario está en espera por ser aprobado',
@@ -1827,6 +1837,7 @@ Debes escribir un seudónimo abajo para identificar tu comentario o $1 para que 
 Aparecerá sólo después de haber sido revisado por un moderador.',
 	'wikilog-post-comment' => 'Publicar un nuevo comentario',
 	'wikilog-post-reply' => 'Publicar una nueva respuesta',
+	'wikilog-form-legend' => 'Buscar publicaciones del wikilog',
 	'wikilog-form-wikilog' => 'Wikilog:',
 	'wikilog-form-category' => 'Categoría:',
 	'wikilog-form-name' => 'Nombre:',

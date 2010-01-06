@@ -924,6 +924,13 @@ $messages['kk-latn'] = array(
 	'bookinfo-provider' => 'Derek jetistirwşisi: $1',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Piivaat
+ */
+$messages['kl'] = array(
+	'bookinfo-result-year' => 'Ukioq:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

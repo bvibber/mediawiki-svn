@@ -149,6 +149,7 @@ $messages['es'] = array(
 	'tablemod' => 'TableMod',
 	'tablemod-msg-remove' => 'Quitar',
 	'tablemod-error-format' => 'Esta etiqueta admite sólo una tabla simple por etiqueta, sin texto antes o después.',
+	'tablemod-error-colcount' => 'Esta etiqueta sólo admite tablas con igual número de columnas por fila al borrar.',
 	'tablemod-error-invalidsort' => 'Parámetros de organización inválidos.',
 	'tablemod-error-invalidaction' => 'Acción no válida.',
 );
