@@ -30,7 +30,7 @@ $wgAutoloadClasses['SpecialWatchers'] = $dir . 'Watchers_body.php';
 $wgSpecialPages['Watchers'] = 'SpecialWatchers';
 $wgHooks['SkinTemplateToolboxEnd'][] = 'wfWatchersExtensionAfterToolbox';
 
-$wgWatchersLimit = NULL; # Set this to a number to anonymize results ("X or more" / "Less that X" people watching this page)
+$wgWatchersLimit = null; # Set this to a number to anonymize results ("X or more" / "Less that X" people watching this page)
 $wgWatchersAddCache = false ; # Internal use
 
 /**

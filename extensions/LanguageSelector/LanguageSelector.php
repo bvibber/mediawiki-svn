@@ -48,7 +48,7 @@ $wgLanguageSelectorDetectLanguage = LANGUAGE_SELECTOR_PREFER_CLIENT_LANG;
 * about by virtue of $wgLanguageNames. A shorter list may be more usable, though.
 * If the Polyglot extension is installed, $wgPolyglotLanguages is used as fallback.
 */
-$wgLanguageSelectorLanguages = NULL;
+$wgLanguageSelectorLanguages = null;
 
 /**
 * Determine if language codes are shown in the selector, in addition to names;
@@ -78,7 +78,7 @@ $wgHooks['GetCacheVaryCookies'][] = 'wfLanguageSelectorGetCacheVaryCookies';
 
 $wgExtensionFunctions[] = 'wfLanguageSelectorExtension';
 
-$wgLanguageSelectorRequestedLanguage = NULL;
+$wgLanguageSelectorRequestedLanguage = null;
 
 
 $dir = dirname(__FILE__) . '/';
@@ -98,18 +98,18 @@ function wfLanguageSelectorExtension() {
 
 	$wgHooks['ParserFirstCallInit'][] = 'wfLanguageSelectorSetHook';
 
-	if ( $wgLanguageSelectorLanguages === NULL ) {
+	if ( $wgLanguageSelectorLanguages === null ) {
 		$wgLanguageSelectorLanguages = @$GLOBALS['wgPolyglotLanguages'];
 	}
 
-	if ( $wgLanguageSelectorLanguages === NULL ) {
+	if ( $wgLanguageSelectorLanguages === null ) {
 		$wgLanguageSelectorLanguages = array_keys( Language::getLanguageNames( !$wgLanguageSelectorShowAll ) );
 		sort( $wgLanguageSelectorLanguages );
 	}
 
 	$setlang = $wgRequest->getVal( 'setlang' );
 	if ( $setlang && !in_array( $setlang, $wgLanguageSelectorLanguages ) )
-		$setlang = NULL; //ignore invalid
+		$setlang = null; //ignore invalid
 
 	if ( $setlang ) {
 		setcookie( $wgCookiePrefix . 'LanguageSelectorLanguage', $setlang, 0, $wgCookiePath );
@@ -229,8 +229,8 @@ function wfLanguageSelectorTag($input, $args) {
 	    $showcode = strtolower($showcode);
 	    if ($showcode == "true" || $showcode == "yes" || $showcode == "on") $showcode = true;
 	    else if ($showcode == "false" || $showcode == "no" || $showcode == "off") $showcode = false;
-	    else $showcode = NULL;
-	} else $showcode = NULL;
+	    else $showcode = null;
+	} else $showcode = null;
 
 	return wfLanguageSelectorHTML( $style, $class, $selectorstyle, $buttonstyle, $showcode );
 }
@@ -256,7 +256,7 @@ function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
 		return true;
 	}
 
-	$key = NULL;
+	$key = null;
 
 	switch($wgLanguageSelectorLocation) {
 		case LANGUAGE_SELECTOR_INTO_SITENOTICE: $key = 'sitenotice'; break;
@@ -357,10 +357,10 @@ function wfLanguageSelectorAddNewAccount( $u ) {
 	return true;
 }
 
-function wfLanguageSelectorHTML( $style = NULL, $class = NULL, $selectorstyle = NULL, $buttonstyle = NULL, $showCode = NULL ) {
+function wfLanguageSelectorHTML( $style = null, $class = null, $selectorstyle = null, $buttonstyle = null, $showCode = null ) {
 	global $wgLanguageSelectorLanguages, $wgTitle, $wgLang, $wgContLang, $wgScript, $wgLanguageSelectorShowCode;
 
-	if ($showCode === NULL) $showCode = $wgLanguageSelectorShowCode;
+	if ($showCode === null) $showCode = $wgLanguageSelectorShowCode;
 
 	static $id = 0;
 	$id += 1;

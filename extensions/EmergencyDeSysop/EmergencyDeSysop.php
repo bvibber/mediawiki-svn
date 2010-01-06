@@ -32,7 +32,7 @@ $wgAvailableRights[] = 'emergencydesysop';
 $wgGroupPermissions['sysop']['emergencydesysop'    ] = true;
 
 //Load Defaults
-$wgEmDesysop = array('Requestor' => NULL, 'Target' => NULL);
+$wgEmDesysop = array('Requestor' => null, 'Target' => null);
 
 function EmergencyDeSysopLocalizedPageName(&$specialPageArray, $code) {
 	wfLoadExtensionMessages('EmergencyDeSysop');

@@ -82,7 +82,7 @@ class WikilogDocImport
 	/**
 	 * Acessor for the mOverwriteFiles property.
 	 */
-	public function OverwriteFiles( $x = NULL ) {
+	public function OverwriteFiles( $x = null ) {
 		wfSetVar( $this->mOverwriteFiles, $x );
 	}
 

@@ -117,7 +117,7 @@ function efMultiBoilerplate( $form ) {
 	$form->editFormPageTop .=
 		Xml::openElement( 'form', array( 'id' => 'multiboilerplateform', 'name' => 'multiboilerplateform', 'method' => 'get', 'action' => $wgTitle->getEditURL() ) ) .
 			Xml::openElement( 'fieldset' ) .
-				Xml::element( 'legend', NULL, wfMsg( 'multiboilerplate-legend' ) ) .
+				Xml::element( 'legend', null, wfMsg( 'multiboilerplate-legend' ) ) .
 				Xml::openElement( 'label' ) .
 					wfMsg( 'multiboilerplate-label' ) .
 					Xml::openElement( 'select', array( 'name' => 'boilerplate' ) ) .

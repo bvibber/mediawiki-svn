@@ -70,9 +70,9 @@ function wfPlottersArticleSaveComplete( &$article, &$wgUser, &$text ) {
 }
 
 function wfLoadPlotters() {
-	static $plotters = NULL;
+	static $plotters = null;
 
-	if ( $plotters !== NULL ) return $plotters;
+	if ( $plotters !== null ) return $plotters;
 
 	$struct = wfLoadPlottersStructured();
 	if ( !$struct ) {
@@ -88,15 +88,15 @@ function wfLoadPlotters() {
 	return $plotters;
 }
 
-function wfLoadPlottersStructured( $forceNewText = NULL ) {
+function wfLoadPlottersStructured( $forceNewText = null ) {
 	global $wgMemc;
 
-	static $plotters = NULL;
-	if ( $plotters !== NULL && $forceNewText !== NULL ) return $plotters;
+	static $plotters = null;
+	if ( $plotters !== null && $forceNewText !== null ) return $plotters;
 
 	$key = wfMemcKey( 'plotters-definition' );
 
-	if ( $forceNewText === NULL ) {
+	if ( $forceNewText === null ) {
 		// cached?
 		$plotters = $wgMemc->get( $key );
 		if ( is_array( $plotters ) ) return $plotters;
@@ -136,7 +136,7 @@ function wfLoadPlottersStructured( $forceNewText = NULL ) {
 
 	// cache for a while. gets purged automatically when MediaWiki:Plotters-definition is edited
 	$wgMemc->set( $key, $plotters, 60 * 60 * 24 );
-	$source = $forceNewText !== NULL ? 'input text' : 'MediaWiki:Plotters-definition';
+	$source = $forceNewText !== null ? 'input text' : 'MediaWiki:Plotters-definition';
 	wfDebug( __METHOD__ . ": $source parsed, cache entry $key updated\n" );
 
 	return $plotters;

@@ -371,13 +371,13 @@ class Wikilog
 		global $wgWikilogNamespaces;
 
 		if ( !$title )
-			return NULL;
+			return null;
 
 		$ns = MWNamespace::getSubject( $title->getNamespace() );
 		if ( in_array( $ns, $wgWikilogNamespaces ) ) {
 			return new WikilogInfo( $title );
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 }
@@ -397,7 +397,7 @@ class WikilogInfo
 	public $mItemTalkTitle;		///< Wikilog post talk title object.
 
 	public $mIsTalk;			///< Constructed using a talk page title.
-	public $mTrailing = NULL;	///< Trailing subpage title.
+	public $mTrailing = null;	///< Trailing subpage title.
 
 	/**
 	 * Constructor.
@@ -427,16 +427,16 @@ class WikilogInfo
 			# Title doesn't contain a '/', treat as a wikilog name.
 			$this->mWikilogName = $title->getText();
 			$this->mWikilogTitle = Title::makeTitle( $ns, $this->mWikilogName );
-			$this->mItemName = NULL;
-			$this->mItemTitle = NULL;
-			$this->mItemTalkTitle = NULL;
+			$this->mItemName = null;
+			$this->mItemTitle = null;
+			$this->mItemTalkTitle = null;
 		}
 	}
 
-	function isMain() { return $this->mItemTitle === NULL; }
-	function isItem() { return $this->mItemTitle !== NULL; }
+	function isMain() { return $this->mItemTitle === null; }
+	function isItem() { return $this->mItemTitle !== null; }
 	function isTalk() { return $this->mIsTalk; }
-	function isSubpage() { return $this->mTrailing !== NULL; }
+	function isSubpage() { return $this->mTrailing !== null; }
 
 	function getName() { return $this->mWikilogName; }
 	function getTitle() { return $this->mWikilogTitle; }

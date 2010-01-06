@@ -17,8 +17,8 @@ class Linker {
 	/**
 	 * @deprecated
 	 */
-	function postParseLinkColour( $s = NULL ) {
-		return NULL;
+	function postParseLinkColour( $s = null ) {
+		return null;
 	}
 
 	/** @todo document */
@@ -815,7 +815,7 @@ class Linker {
 	 * @param mixed $title Title object (to generate link to the section in autocomment) or null
 	 * @param bool $local Whether section links should refer to local page
 	 */
-	function formatComment($comment, $title = NULL, $local = false) {
+	function formatComment($comment, $title = null, $local = false) {
 		wfProfileIn( __METHOD__ );
 
 		global $wgContLang;
@@ -903,7 +903,7 @@ class Linker {
 	 *
 	 * @return string
 	 */
-	function commentBlock( $comment, $title = NULL, $local = false ) {
+	function commentBlock( $comment, $title = null, $local = false ) {
 		// '*' used to be the comment inserted by the software way back
 		// in antiquity in case none was provided, here for backwards
 		// compatability, acc. to brion -ævar

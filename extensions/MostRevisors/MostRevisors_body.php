@@ -1,8 +1,8 @@
 <?php
 class MostRevisors extends IncludableSpecialPage {
-	private $limit = NULL;
-	private $namespace = NULL;
-	private $redirects = NULL;
+	private $limit = null;
+	private $namespace = null;
+	private $redirects = null;
 
 	public function __construct() {
 		parent::__construct( 'MostRevisors' );
@@ -24,7 +24,7 @@ class MostRevisors extends IncludableSpecialPage {
 
 		$conds = array();
 		if ( $this->namespace == 'all' ) {
-			$qns = NULL;
+			$qns = null;
 			if ( !$this->redirects ) $qns = "WHERE page_is_redirect=0";
 		} else {
 			$qns = "WHERE page_namespace=" . $this->namespace;

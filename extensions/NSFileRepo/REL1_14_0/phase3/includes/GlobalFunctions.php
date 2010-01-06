@@ -1113,7 +1113,7 @@ function wfSetBit( &$dest, $bit, $state = true ) {
  * "days=7&limit=100". Options in the first array override options in the second.
  * Options set to "" will not be output.
  */
-function wfArrayToCGI( $array1, $array2 = NULL )
+function wfArrayToCGI( $array1, $array2 = null )
 {
 	if ( !is_null( $array2 ) ) {
 		$array1 = $array1 + $array2;

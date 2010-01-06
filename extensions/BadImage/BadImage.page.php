@@ -119,7 +119,7 @@ class BadImageManipulator extends SpecialPage {
 					? $title
 					: Title::makeTitle( NS_IMAGE, $title->getText() );
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 

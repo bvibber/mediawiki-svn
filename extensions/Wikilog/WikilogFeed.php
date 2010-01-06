@@ -96,7 +96,7 @@ class WikilogFeed
 		$this->mFormat = $format;
 		$this->mQuery = $query;
 		$this->mLimit = $limit ? $limit : $wgWikilogNumArticles;
-		$this->mSiteFeed = $this->mQuery->getWikilogTitle() === NULL;
+		$this->mSiteFeed = $this->mQuery->getWikilogTitle() === null;
 
 		$this->mDb = wfGetDB( DB_SLAVE );
 
@@ -365,7 +365,7 @@ class WikilogFeed
 			if ( $row !== false ) {
 				$self = $forsource
 					 ? $wikilogTitle->getFullUrl( "feed={$this->mFormat}" )
-					 : NULL;
+					 : null;
 				$feed = new $wgWikilogFeedClasses[$this->mFormat](
 					$wikilogTitle->getFullUrl(),
 					wfMsgForContent( 'wikilog-feed-title', $title, $wgContLanguageCode ),

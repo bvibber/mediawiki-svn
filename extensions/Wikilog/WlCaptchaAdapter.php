@@ -35,7 +35,7 @@ if ( !defined( 'MEDIAWIKI' ) )
  */
 class WlCaptcha
 {
-	public static $instance = NULL;
+	public static $instance = null;
 	public static $initialized = false;
 
 	public static function getInstance() {
@@ -56,7 +56,7 @@ class WlCaptcha
 		return self::$instance;
 	}
 
-	public static function confirmEdit( $title, $newText, $oldText = NULL ) {
+	public static function confirmEdit( $title, $newText, $oldText = null ) {
 		$captcha = self::getInstance();
 		if ( $captcha ) {
 			return $captcha->confirmEdit( $title, $newText, $oldText );
@@ -94,11 +94,11 @@ class WlCaptchaAdapter
 		$this->mCaptcha = $captcha;
 	}
 
-	public function confirmEdit( $title, $newText, $oldText = NULL ) {
+	public function confirmEdit( $title, $newText, $oldText = null ) {
 		return $this->doConfirmEdit( $title, $newText, $oldText );
 	}
 
-	private function doConfirmEdit( $title, $newText, $oldText = NULL ) {
+	private function doConfirmEdit( $title, $newText, $oldText = null ) {
 		if ( $this->shouldCheck( $title, $newText, $oldText ) ) {
 			return $this->mCaptcha->passCaptcha();
 		} else {
@@ -107,7 +107,7 @@ class WlCaptchaAdapter
 		}
 	}
 
-	private function shouldCheck( $title, $newText, $oldText = NULL ) {
+	private function shouldCheck( $title, $newText, $oldText = null ) {
 		global $wgUser, $wgCaptchaWhitelistIP, $wgCaptchaRegexes;
 		global $wgEmailAuthentication, $ceAllowConfirmedEmail;
 

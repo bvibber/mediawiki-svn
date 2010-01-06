@@ -194,7 +194,7 @@ class WikilogCommentsPage
 
 			# Display article comments.
 			$replyTo = $wgRequest->getInt( 'wlParent' );
-			$comments = $this->formatComments( NULL, $replyTo );
+			$comments = $this->formatComments( null, $replyTo );
 			$wgOut->addHtml( $comments );
 
 			# Display "post new comment" form, if appropriate.
@@ -271,7 +271,7 @@ class WikilogCommentsPage
 	 */
 	public function hasViewableContent() {
 		return parent::hasViewableContent() ||
-			( $this->mItem !== NULL && $this->mItem->exists() );
+			( $this->mItem !== null && $this->mItem->exists() );
 	}
 
 	/**
@@ -282,10 +282,10 @@ class WikilogCommentsPage
 	 * @param $replyTo Comment ID to attach a reply form to.
 	 * @return Generated HTML.
 	 */
-	public function formatComments( $parent = NULL, $replyTo = false ) {
+	public function formatComments( $parent = null, $replyTo = false ) {
 		global $wgOut;
 
-		$comments = $this->mItem->getComments( $parent ? $parent->mThread : NULL );
+		$comments = $this->mItem->getComments( $parent ? $parent->mThread : null );
 		$top = count( $stack = array() );
 
 		$html = Xml::openElement( 'div', array( 'class' => 'wl-threads' ) );
@@ -496,7 +496,7 @@ class WikilogCommentsPage
 	 * @param $parent If provided, generates a "post reply" form to reply to
 	 *   the given comment.
 	 */
-	public function getPostCommentForm( $parent = NULL ) {
+	public function getPostCommentForm( $parent = null ) {
 		global $wgUser, $wgTitle, $wgScript, $wgRequest;
 		global $wgWikilogModerateAnonymous;
 

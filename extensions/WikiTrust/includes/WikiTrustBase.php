@@ -140,7 +140,7 @@ class WikiTrustBase {
     $rev_id = self::util_getRevFOut($out);
     $colored_text = self::$colored_text;
     if (!self::$colored_text_loaded){
-      list($page_title, $page_id, $rev_id) = self::util_ResolveRevSpec(NULL, 0, $rev_id);
+      list($page_title, $page_id, $rev_id) = self::util_ResolveRevSpec(null, 0, $rev_id);
       $colored_text = WikiTrust::color_getColorData($page_title, $page_id, $rev_id);
 
       self::color_fixup($colored_text);
@@ -273,7 +273,7 @@ class WikiTrustBase {
       // TODO: file_get_contents() didn't used to support BINARY
 	// what version of PHP are we requiring?  -Bo
 if (1) {
-      $gzdata = @file_get_contents($file, FILE_BINARY, NULL);
+      $gzdata = @file_get_contents($file, FILE_BINARY, null);
 } else {
       $gzdata = '';
       $fh = @fopen($file, "r");
@@ -514,7 +514,7 @@ if (0) {
     // We need to know if the colored text is missing or not, and just getting
     // it seems like the easiest way to figure this out.
     $rev_id = self::util_getRev();
-    list($page_title, $page_id, $rev_id) = self::util_ResolveRevSpec(NULL, 0, $rev_id);
+    list($page_title, $page_id, $rev_id) = self::util_ResolveRevSpec(null, 0, $rev_id);
     $colored_text = WikiTrust::color_getColorData($page_title, $page_id, $rev_id);
     self::color_fixup($colored_text);
     self::$colored_text = $colored_text;

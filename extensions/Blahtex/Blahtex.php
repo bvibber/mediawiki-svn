@@ -142,7 +142,7 @@ class BlahtexRenderer {
 	}
 
 	function render() {
-		 list( $success, $res ) = $this->invokeBlahtex( $this->mr->tex, $this->mr->hash == NULL );
+		 list( $success, $res ) = $this->invokeBlahtex( $this->mr->tex, $this->mr->hash == null );
 		 if ( !$success )
 			  $this->errmsg = $res;
 		 else {
@@ -296,7 +296,7 @@ class BlahtexRenderer {
 	 *    $msg is not found (string)
 	 * @return HTML fragment with the error message (string)
 	 */
-	function error( $msg, $arg1 = '', $arg2 = '', $arg3 = '', $fallback = NULL ) {
+	function error( $msg, $arg1 = '', $arg2 = '', $arg3 = '', $fallback = null ) {
 		wfDebug("Blahtex _error(): msg = $msg, arg1 = $arg1\n");
 		$mf = htmlspecialchars( wfMsg( 'math_failure' ) );
 		if ( $msg ) {

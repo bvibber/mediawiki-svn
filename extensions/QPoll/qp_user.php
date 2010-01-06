@@ -239,7 +239,7 @@ class qp_AbstractPoll {
 		# Determine which messages will be used, according to the language.
 		self::loadMessages();
 		# load current skin
-		if ( self::$skin === NULL ) {
+		if ( self::$skin === null ) {
 			self::$skin = $wgUser->getSkin();
 		}
 		# reset the unique index number of the question in the current poll (used to instantiate the questions)
@@ -261,7 +261,7 @@ class qp_AbstractPoll {
 		# every poll on the page should have unique poll id, to minimize the risk of collisions
 		# it is required to be set manually via id="value" parameter
 		# ( used only in "declaration" mode )
-		$this->mPollId = array_key_exists('id', $argv) ? trim( $argv['id'] ) : NULL;
+		$this->mPollId = array_key_exists('id', $argv) ? trim( $argv['id'] ) : null;
 		if ( array_key_exists('dependance', $argv) ) {
 			$this->dependsOn = trim( $argv['dependance'] );
 		}
@@ -450,7 +450,7 @@ class qp_PollStats extends qp_AbstractPoll {
 			return self::fatalError( 'qp_error_dependance_in_stats_mode' );
 		}
 		$this->pollStore = qp_PollStore::newFromAddr( $this->pollAddr );
-		if ( !($this->pollStore instanceof qp_PollStore) || $this->pollStore->pid === NULL ) {
+		if ( !($this->pollStore instanceof qp_PollStore) || $this->pollStore->pid === null ) {
 			return self::fatalError( 'qp_error_no_such_poll', $this->pollAddr );
 		}
 		if ( !$this->pollStore->loadQuestions() ) {
@@ -598,7 +598,7 @@ class qp_Poll extends qp_AbstractPoll {
 	# @return    true on success ($this->pollStore has been created successfully), error string on failure
 	function getPollStore() {
 		# check the headers for errors
-		if ( $this->mPollId == NULL ) {
+		if ( $this->mPollId == null ) {
 			$this->mState = "error";
 			return self::fatalError( 'qp_error_no_poll_id' );
 		}
@@ -611,7 +611,7 @@ class qp_Poll extends qp_AbstractPoll {
 			return self::fatalError( 'qp_error_already_used_poll_id', $this->mPollId );
 		}
 		self::addPollId( $this->mPollId ); // add current poll id to the static list of poll ids on this page
-		if ( $this->pollAddr !== NULL ) {
+		if ( $this->pollAddr !== null ) {
 			$this->mState = "error";
 			return self::fatalError( 'qp_error_address_in_decl_mode' );
 		}
@@ -751,7 +751,7 @@ class qp_Poll extends qp_AbstractPoll {
 				$depTitle = $depPollStore->getTitle();
 				$depPollId = $depPollStore->mPollId;
 				$depLink = self::$skin->link( $depTitle, $depTitle->getPrefixedText() . ' (' . $depPollStore->mPollId . ')' );
-				if ( $depPollStore->pid === NULL ) {
+				if ( $depPollStore->pid === null ) {
 					return self::fatalError( 'qp_error_missed_dependance_poll', $this->mPollId, $depLink, $depPollId );
 				}
 				if ( !$depPollStore->loadQuestions() ) {
@@ -970,7 +970,7 @@ class qp_Renderer {
 	static function renderHTMLobject( &$tag ) {
 		$tag_open = "";
 		$tag_close = "";
-		$tag_val = NULL;
+		$tag_val = null;
 		if ( is_array( $tag ) ) {
 			ksort( $tag );
 			if ( array_key_exists( '__tag', $tag ) ) {
@@ -978,7 +978,7 @@ class qp_Renderer {
 				$tag_open .= "<" . $tag[ '__tag' ];
 				foreach( $tag as $attr_key=>&$attr_val ) {
 					if ( is_int( $attr_key ) ) {
-						if ( $tag_val === NULL )
+						if ( $tag_val === null )
 							$tag_val = "";
 						if ( is_array( $attr_val ) ) {
 							# recursive tags
@@ -995,7 +995,7 @@ class qp_Renderer {
 						}
 					}
 				}
-				if ( $tag_val !== NULL ) {
+				if ( $tag_val !== null ) {
 					$tag_open .= ">";
 					$tag_close .= "</" . $tag[ '__tag' ] . ">";
 				} else {
@@ -1035,7 +1035,7 @@ class qp_Renderer {
 	# creates one "htmlobject" row of the table
 	# elements of $row can be either a string/number value of cell or an array( "count"=>colspannum, "attribute"=>value, 0=>html_inside_tag )
 	# attribute maps can be like this: ("name"=>0, "count"=>colspan" )
-	static function newRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = NULL ) {
+	static function newRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
 		$result = "";
 		if ( count( $row ) > 0 ) {
 			foreach ( $row as &$cell ) {
@@ -1065,12 +1065,12 @@ class qp_Renderer {
 	}
 
 	# add row to the table
-	static function addRow( &$table, $row, $rowattrs = "", $celltag = "td", $attribute_maps = NULL ) {
+	static function addRow( &$table, $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
 		$table[] = self::newRow( $row, $rowattrs, $celltag, $attribute_maps );
 	}
 
 	# add column to the table
-	static function addColumn( &$table, $column, $rowattrs = "", $celltag = "td", $attribute_maps = NULL ) {
+	static function addColumn( &$table, $column, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
 		if ( count( $column ) > 0 ) {
 			$row = 0;
 			foreach ( $column as &$cell ) {
@@ -1107,7 +1107,7 @@ class qp_Renderer {
 		}
 	}
 
-	static function displayRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = NULL ) {
+	static function displayRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
 		return self::renderHTMLobject( self::newRow( $row, $rowattrs, $celltag, $attribute_maps ) );
 	}
 
@@ -1151,7 +1151,7 @@ class qp_FunctionsHook {
 			# args[0] is a poll address
 			$this->pollAddr = trim( $this->frame->expand( $this->args[ 0 ] ) );
 			$this->pollStore = qp_PollStore::newFromAddr( $this->pollAddr );
-			if ( $this->pollStore instanceof qp_PollStore && $this->pollStore->pid !== NULL ) {
+			if ( $this->pollStore instanceof qp_PollStore && $this->pollStore->pid !== null ) {
 				$this->error_message = 'missing_question_id';
 				if ( isset( $args[ 1 ] ) ) {
 					# args[1] is question_id

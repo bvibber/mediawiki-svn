@@ -33,7 +33,7 @@ abstract class qp_AbstractQuestion {
 	var $proposalTextStyle = 'padding-left: 10px;';
 	var $textInputStyle = '';
 	// statistics
-	var $Percents = NULL;
+	var $Percents = null;
 	var $mRenderTable = Array();
 
 	# Constructor
@@ -99,7 +99,7 @@ abstract class qp_AbstractQuestion {
 	# @return  string : type of the question, empty when not defined
 	function parseAttributes( $attr_str ) {
 		global $qp_enable_showresults;
-		$paramkeys = array( 't[yi]p[eo]'=>NULL, 'layout'=>NULL, 'textwidth'=>NULL, 'showresults'=>NULL );
+		$paramkeys = array( 't[yi]p[eo]'=>null, 'layout'=>null, 'textwidth'=>null, 'showresults'=>null );
 		foreach( $paramkeys as $key=>&$val ) {
 			preg_match( '`' . $key . '?="(.*?)"`u', $attr_str, $val );
 		}
@@ -156,7 +156,7 @@ abstract class qp_AbstractQuestion {
 		return $type;
 	}
 
-	function addRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = NULL ) {
+	function addRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
 		if ( $this->transposed ) {
 			qp_Renderer::addColumn( $this->mRenderTable, $row, $rowattrs, $celltag, $attribute_maps );
 		} else {
@@ -243,7 +243,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 	# populates an instance of qp_Question with data from qp_QuestionData
 	# input: the object of type qp_Question
 	function getQuestionAnswer( qp_PollStore &$pollStore ) {
-		if ( $pollStore->pid !== NULL ) {
+		if ( $pollStore->pid !== null ) {
 			if ( $pollStore->questionExists( $this->mQuestionId ) ) {
 				$qdata = $pollStore->Questions[ $this->mQuestionId ];
 				$this->loadAnswer( $qdata );
@@ -456,7 +456,7 @@ class qp_Question extends qp_AbstractQuestion {
 	# populates an instance of qp_Question with data from qp_QuestionData
 	# @param   the object of type qp_Question
 	function getQuestionAnswer( qp_PollStore &$pollStore ) {
-		if ( $pollStore->pid !== NULL ) {
+		if ( $pollStore->pid !== null ) {
 			if ( $pollStore->questionExists( $this->mQuestionId ) ) {
 				$qdata = $pollStore->Questions[ $this->mQuestionId ];
 				if ( $qdata->IsCompatible( $this ) ) {
@@ -498,7 +498,7 @@ class qp_Question extends qp_AbstractQuestion {
 	# and places it into the poll store Questions[] collection
 	# @param   the object of type qp_PollStore
 	function store( qp_PollStore &$pollStore ) {
-		if ( $pollStore->pid !== NULL ) {
+		if ( $pollStore->pid !== null ) {
 			$pollStore->Questions[ $this->mQuestionId ] = new qp_QuestionData( array(
 				'from'=>'postdata',
 				'type'=>$this->mType,
@@ -599,7 +599,7 @@ class qp_Question extends qp_AbstractQuestion {
 				continue;
 			}
 			# empty proposal text and row
-			$text = NULL;
+			$text = null;
 			$row = Array();
 			$proposalId++;
 			$rawClass = 'proposal';
@@ -731,7 +731,7 @@ class qp_Question extends qp_AbstractQuestion {
 		$proposalId = -1;
 		foreach( $this->raws as $raw ) {
 			# empty proposal text and row
-			$text = NULL;
+			$text = null;
 			$row = Array();
 			if ( preg_match( $this->mProposalPattern, $raw, $matches ) ) {
 				$text = array_pop( $matches ); // current proposal text
@@ -744,7 +744,7 @@ class qp_Question extends qp_AbstractQuestion {
 					$matches = $last_matches;
 				}
 			}
-			if ( $text === NULL ) {
+			if ( $text === null ) {
 				continue;
 			}
 			$proposalId++;
@@ -946,7 +946,7 @@ class qp_Question extends qp_AbstractQuestion {
 			# split tokens
 			$span_split = preg_split( '`({{|}}|\[\[|\]\]|\||\!)`u', $input, -1, PREG_SPLIT_DELIM_CAPTURE );
 			$matching_braces = Array();
-			$curr_elem = NULL;
+			$curr_elem = null;
 			$spans = Array();
 			if ( isset( $span_split[0] ) && $span_split[0] == '' ) {
 				array_shift( $span_split );
@@ -957,7 +957,7 @@ class qp_Question extends qp_AbstractQuestion {
 							if ( count( $matching_braces ) == 0 ) {
 								# delimeters are working only when braces are completely closed
 								$spans[0][] = $part;
-								if ( $curr_elem !== NULL ) {
+								if ( $curr_elem !== null ) {
 									$spans[1][] = $curr_elem;
 								}
 								$curr_elem = '';
@@ -987,7 +987,7 @@ class qp_Question extends qp_AbstractQuestion {
 						}
 						$curr_elem .= $part;
 					}
-					if ( $curr_elem !== NULL ) {
+					if ( $curr_elem !== null ) {
 						$spans[1][] = $curr_elem;
 					} else {
 						$curr_elem = '';
@@ -1002,7 +1002,7 @@ class qp_Question extends qp_AbstractQuestion {
 			# fill undefined spans with the last span value
 			$SpanCategDelta = count( $this->mCategories ) - count( $spans[0] );
 			$lastDefinedSpanKey = array_pop( array_diff( array_keys( $spans[1] ), array_keys( $spans[1], "", true ) ) );
-			if ($lastDefinedSpanKey !== NULL) {
+			if ($lastDefinedSpanKey !== null) {
 				if ( $SpanCategDelta > 0 ) {
 					# increase the length of last defined span value to match total lenth of categories
 					$lastSpanType = $spans[0][$lastDefinedSpanKey];

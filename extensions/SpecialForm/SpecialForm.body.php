@@ -77,7 +77,7 @@ class SpecialForm extends SpecialPage {
 
 		# article exists?
 		if( !$nt || $nt->getArticleID() == 0 ) {
-			return NULL;
+			return null;
 		}
 
 		$article = new Article( $nt );
@@ -90,7 +90,7 @@ class SpecialForm extends SpecialPage {
 		return new Form( $name, $text );
 	}
 
-	function showForm( $form, $errmsg = NULL ) {
+	function showForm( $form, $errmsg = null ) {
 		global $wgOut, $wgRequest, $wgParser, $wgUser, $wgSpecialFormRecaptcha;
 
 		$self = SpecialPage::getTitleFor( wfMsgForContent( 'form' ) . '/' . $form->name );
@@ -323,7 +323,7 @@ class Form {
 
 		$this->fields = array();
 		$this->namePattern = array();
-		$this->instructions = NULL;
+		$this->instructions = null;
 
 		# XXX: may be some faster ways to do this
 		$lines = explode( "\n", $text );
@@ -382,10 +382,10 @@ class FormField {
 	var $options;
 
 	function FormField() {
-		$this->name = NULL;
-		$this->type = NULL;
-		$this->label = NULL;
-		$this->description = NULL;
+		$this->name = null;
+		$this->type = null;
+		$this->label = null;
+		$this->description = null;
 		$this->options = array();
 	}
 
@@ -409,7 +409,7 @@ class FormField {
 		$this->options[$key] = $value;
 	}
 
-	function getOption( $key, $default = NULL ) {
+	function getOption( $key, $default = null ) {
 		if( array_key_exists( $key, $this->options ) ) {
 			return $this->options[$key];
 		} else {
@@ -425,7 +425,7 @@ class FormField {
 				( strcasecmp( $value, '1' ) == 0 ) );
 	}
 
-	function render( $def = NULL ) {
+	function render( $def = null ) {
 		global $wgOut;
 
 		switch( $this->type ) {

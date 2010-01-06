@@ -38,7 +38,7 @@ abstract class WlSyndicationBase
 	 * A permanent, universally unique identifier for an entry or feed.
 	 * Required. Corresponds to atom:id and rss:guid (entries only).
 	 */
-	protected $mId = NULL;
+	protected $mId = null;
 
 	/**
 	 * A text construct that conveys a human-readable title for the entry
@@ -46,7 +46,7 @@ abstract class WlSyndicationBase
 	 * Assumed to be plain text unless it is an instance of WlTextConstruct.
 	 * @note RSS doesn't support HTML in this field.
 	 */
-	protected $mTitle = NULL;
+	protected $mTitle = null;
 
 	/**
 	 * References from an entry or feed to web resources. This array is
@@ -93,7 +93,7 @@ abstract class WlSyndicationBase
 	 * @note RSS doesn't support HTML in this field.
 	 * @note RSS only supports rights for feeds, not entries.
 	 */
-	protected $mRights = NULL;
+	protected $mRights = null;
 
 	/**
 	 * A date value indicating the most recent instant in time when an entry
@@ -102,14 +102,14 @@ abstract class WlSyndicationBase
 	 * element of RSS if no published date is provided
 	 * (see WlSyndicationEntry::$mPublished).
 	 */
-	protected $mUpdated = NULL;
+	protected $mUpdated = null;
 
 	/**
 	 * Language of the entry or feed. Corresponds to xml:lang attribute of
 	 * the atom:feed and atom:entry elements of Atom, and rss:language (feed)
 	 * element of RSS.
 	 */
-	protected $mLanguage = NULL;
+	protected $mLanguage = null;
 
 	/**
 	 * Constructor.
@@ -119,7 +119,7 @@ abstract class WlSyndicationBase
 	 * @param $updated Last updated date/time. If omitted, the current
 	 *   date/time is assumed.
 	 */
-	function __construct( $id, $title, $updated = NULL ) {
+	function __construct( $id, $title, $updated = null ) {
 		global $wgContLanguageCode;
 		$this->mId = $id;
 		$this->mTitle = $title;
@@ -177,8 +177,8 @@ abstract class WlSyndicationBase
 	 * @param $length Advisory length in bytes of the content, if available.
 	 * @see WlSyndicationBase::addLinkRel().
 	 */
-	function addLink( $href, $type = NULL, $hreflang = NULL, $title = NULL,
-			$length = NULL ) {
+	function addLink( $href, $type = null, $hreflang = null, $title = null,
+			$length = null ) {
 		$link = array( 'href' => $href );
 		if ( $type ) {
 			$link['type'] = $type;
@@ -217,7 +217,7 @@ abstract class WlSyndicationBase
 	 * @param $uri IRI associated with the person, optional.
 	 * @param $email E-mail address associated with the person, optional.
 	 */
-	function addAuthor( $name, $uri = NULL, $email = NULL ) {
+	function addAuthor( $name, $uri = null, $email = null ) {
 		$this->mAuthors[] = array(
 			'name'   => $name,
 			'uri'    => $uri,
@@ -232,7 +232,7 @@ abstract class WlSyndicationBase
 	 * @param $uri IRI associated with the person, optional.
 	 * @param $email E-mail address associated with the person, optional.
 	 */
-	function addContributor( $name, $uri = NULL, $email = NULL ) {
+	function addContributor( $name, $uri = null, $email = null ) {
 		$this->mContributors[] = array(
 			'name'   => $name,
 			'uri'    => $uri,
@@ -249,7 +249,7 @@ abstract class WlSyndicationBase
 	 * @param $label Human-readable label for display in end-user applications,
 	 *   optional.
 	 */
-	function addCategory( $term, $scheme = NULL, $label = NULL ) {
+	function addCategory( $term, $scheme = null, $label = null ) {
 		$cat = array( 'term' => $term );
 		if ( $scheme ) {
 			$cat['scheme'] = $scheme;
@@ -276,7 +276,7 @@ abstract class WlSyndicationFeed
 	 * WlTextConstruct.
 	 * @note RSS doesn't support HTML in this field.
 	 */
-	protected $mSubtitle = NULL;
+	protected $mSubtitle = null;
 
 	/**
 	 * IRI reference that identifies an image that provides iconic visual
@@ -284,7 +284,7 @@ abstract class WlSyndicationFeed
 	 * Atom.
 	 * @note RSS doesn't support icons directly.
 	 */
-	protected $mIcon = NULL;
+	protected $mIcon = null;
 
 	/**
 	 * IRI reference that identifies an image that provides visual
@@ -292,7 +292,7 @@ abstract class WlSyndicationFeed
 	 * rss:image elements.
 	 * @todo Fix discrepancies between atom:logo and rss:image.
 	 */
-	protected $mLogo = NULL;
+	protected $mLogo = null;
 
 	/**
 	 * Quirks to workaround browser "misbehaviors". Mostly used for debugging.
@@ -317,7 +317,7 @@ abstract class WlSyndicationFeed
 	 * @param $self Feed URL, pointing to itself. Optional. If omitted,
 	 *   the URL is inferred from the request URL.
 	 */
-	function __construct( $id, $title, $updated = NULL, $url = NULL, $self = NULL ) {
+	function __construct( $id, $title, $updated = null, $url = null, $self = null ) {
 		global $wgRequest;
 
 		parent::__construct( $id, $title, $updated );
@@ -479,7 +479,7 @@ abstract class WlSyndicationFeed
 		} else if ( is_string( $file ) ) {
 			return $file;
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 }
@@ -494,23 +494,23 @@ class WlSyndicationEntry
 	/**
 	 * A date value indicating an instant in time when the entry was published.
 	 */
-	protected $mPublished = NULL;
+	protected $mPublished = null;
 
 	/**
 	 * Source feed.
 	 */
-	protected $mSource = NULL;
+	protected $mSource = null;
 
 	/**
 	 * A text construct that conveys a short summary, abstract, or excerpt of
 	 * an entry.
 	 */
-	protected $mSummary = NULL;
+	protected $mSummary = null;
 
 	/**
 	 * A text construct that conveys the content of the entry.
 	 */
-	protected $mContent = NULL;
+	protected $mContent = null;
 
 	/**
 	 * Constructor.
@@ -524,8 +524,8 @@ class WlSyndicationEntry
 	 * @param $author Entry author. Optional.
 	 * @param $content Entry content. Optional.
 	 */
-	function __construct( $id, $title, $updated = NULL, $url = NULL,
-			$author = NULL, $content = NULL ) {
+	function __construct( $id, $title, $updated = null, $url = null,
+			$author = null, $content = null ) {
 		parent::__construct( $id, $title, $updated );
 
 		if ( $url ) {
@@ -575,17 +575,17 @@ class WlTextConstruct
 	/**
 	 * Content language tag.
 	 */
-	protected $mLang = NULL;
+	protected $mLang = null;
 
 	/**
 	 * Type of contents, one of T_TEXT, T_HTML or T_XHTML.
 	 */
-	protected $mType = NULL;
+	protected $mType = null;
 
 	/**
 	 * Contents.
 	 */
-	protected $mText = NULL;
+	protected $mText = null;
 
 	/**
 	 * Constructor.
@@ -596,7 +596,7 @@ class WlTextConstruct
 	 *   @a $type.
 	 * @param $lang Content language tag, optional.
 	 */
-	function __construct( $type, $text, $lang = NULL ) {
+	function __construct( $type, $text, $lang = null ) {
 		$this->mType = $type;
 		$this->mText = $text;
 		$this->mLang = $lang;
@@ -651,7 +651,7 @@ class WlTextConstruct
 	 * @param $element Feed (XML) element name, optional.
 	 * @param $attribs Element attributes, optional.
 	 */
-	function getXML( $element = NULL, $attribs = array() ) {
+	function getXML( $element = null, $attribs = array() ) {
 		if ( $this->mType == self::T_XHTML ) {
 			$content = Xml::tags( 'div', array( 'xmlns' => "http://www.w3.org/1999/xhtml" ), $this->mText );
 		} else {
@@ -697,11 +697,11 @@ class WlAtomFeed
 	 */
 	static function formatTextData( $element, $contents ) {
 		if ( is_null( $contents ) || empty( $contents ) ) {
-			return NULL;
+			return null;
 		} else if ( $contents instanceof WlTextConstruct ) {
 			return $contents->getXML( $element ) . "\n";
 		} else {
-			return Xml::element( $element, NULL, $contents ) . "\n";
+			return Xml::element( $element, null, $contents ) . "\n";
 		}
 	}
 
@@ -713,21 +713,21 @@ class WlAtomFeed
 	 * @return An XML fragment.
 	 */
 	static function formatPersonData( $element, $person ) {
-		$content = Xml::element( 'name', NULL, $person['name'] );
+		$content = Xml::element( 'name', null, $person['name'] );
 		if ( isset( $person['uri'] ) && !empty( $person['uri'] ) ) {
-			$content .= Xml::element( 'uri', NULL, $person['uri'] );
+			$content .= Xml::element( 'uri', null, $person['uri'] );
 		}
 		if ( isset( $person['email'] ) && !empty( $person['email'] ) ) {
-			$content .= Xml::element( 'email', NULL, $person['email'] );
+			$content .= Xml::element( 'email', null, $person['email'] );
 		}
-		return Xml::tags( $element, NULL, $content );
+		return Xml::tags( $element, null, $content );
 	}
 
 	/**
 	 * Formats feed metadata.
 	 */
 	function formatFeedMetadata() {
-		$content = Xml::element( 'id', NULL, $this->getId() ) . "\n";
+		$content = Xml::element( 'id', null, $this->getId() ) . "\n";
 		$content .= self::formatTextData( 'title', $this->getTitle() );
 		$content .= self::formatTextData( 'subtitle', $this->getSubtitle() );
 		foreach ( $this->getLinks() as $rel => $links ) {
@@ -745,12 +745,12 @@ class WlAtomFeed
 			$content .= Xml::element( 'category', $category ) . "\n";
 		}
 		if ( $this->getIcon() ) {
-			$content .= Xml::element( 'icon', NULL, $this->getIconUrl() ) . "\n";
+			$content .= Xml::element( 'icon', null, $this->getIconUrl() ) . "\n";
 		}
 		if ( $this->getLogo() ) {
-			$content .= Xml::element( 'logo', NULL, $this->getLogoUrl() ) . "\n";
+			$content .= Xml::element( 'logo', null, $this->getLogoUrl() ) . "\n";
 		}
-		$content .= Xml::element( 'updated', NULL,
+		$content .= Xml::element( 'updated', null,
 					$this->formatTime( $this->getUpdated() ) ) . "\n";
 		$content .= self::formatTextData( 'rights', $this->getRights() );
 		return $content;
@@ -782,7 +782,7 @@ class WlAtomFeed
 	function outEntry( WlSyndicationEntry $entry ) {
 		echo Xml::openElement( 'entry' ) . "\n";
 
-		echo Xml::element( 'id', NULL, $entry->getId() ) . "\n";
+		echo Xml::element( 'id', null, $entry->getId() ) . "\n";
 		echo self::formatTextData( 'title', $entry->getTitle() );
 
 		foreach ( $entry->getLinks() as $rel => $links ) {
@@ -803,10 +803,10 @@ class WlAtomFeed
 			echo Xml::element( 'category', $category ) . "\n";
 		}
 
-		echo Xml::element( 'published', NULL,
+		echo Xml::element( 'published', null,
 			$this->formatTime( $entry->getPublished() ) ) . "\n";
 
-		echo Xml::element( 'updated', NULL,
+		echo Xml::element( 'updated', null,
 			$this->formatTime( $entry->getUpdated() ) ) . "\n";
 
 		echo self::formatTextData( 'rights', $entry->getRights() );
@@ -861,11 +861,11 @@ class WlRSSFeed
 	 */
 	static function formatTextData( $element, $contents ) {
 		if ( is_null( $contents ) ) {
-			return NULL;
+			return null;
 		} else if ( $contents instanceof WlTextConstruct ) {
-			return Xml::element( $element, NULL, $contents->getText() ) . "\n";
+			return Xml::element( $element, null, $contents->getText() ) . "\n";
 		} else {
-			return Xml::element( $element, NULL, $contents ) . "\n";
+			return Xml::element( $element, null, $contents ) . "\n";
 		}
 	}
 
@@ -894,7 +894,7 @@ class WlRSSFeed
 			if ( $rel == 'alternate' ) {
 				# RSS only supports (and requires) a single link element.
 				$mlink = array_shift( $links );
-				echo Xml::element( 'link', NULL, $mlink['href'] ) . "\n";
+				echo Xml::element( 'link', null, $mlink['href'] ) . "\n";
 			} else {
 				# For other links, we use the atom namespace.
 				foreach ( $links as $link ) {
@@ -904,25 +904,25 @@ class WlRSSFeed
 		}
 
 		foreach ( $this->getAuthors() as $author ) {
-			echo Xml::element( 'dc:creator', NULL, $author['name'] ) . "\n";
+			echo Xml::element( 'dc:creator', null, $author['name'] ) . "\n";
 		}
 
 		if ( $this->getLogo() && $mlink ) {
 			$title = $this->getTitle();
 			if ( $title instanceof WlTextConstruct ) $title = $title->getText();
 			echo Xml::openElement( 'image' ) .
-				 Xml::element( 'url', NULL, $this->getLogoUrl() ) .
-				 Xml::element( 'title', NULL, $title ) .
-				 Xml::element( 'link', NULL, $mlink['href'] ) .
+				 Xml::element( 'url', null, $this->getLogoUrl() ) .
+				 Xml::element( 'title', null, $title ) .
+				 Xml::element( 'link', null, $mlink['href'] ) .
 				 Xml::closeElement( 'image' ) . "\n";
 		}
 
-		echo Xml::element( 'language', NULL, $this->getLanguage() ) . "\n";
-		echo Xml::element( 'lastBuildDate', NULL, $this->formatTime( $this->getUpdated() ) ) . "\n";
+		echo Xml::element( 'language', null, $this->getLanguage() ) . "\n";
+		echo Xml::element( 'lastBuildDate', null, $this->formatTime( $this->getUpdated() ) ) . "\n";
 		echo $this->formatTextData( 'copyright', $this->getRights() );
 
 		$gtor = $this->getGenerator();
-		echo Xml::element( 'generator', NULL, "{$gtor['content']} {$gtor['attribs']['version']}" ) . "\n";
+		echo Xml::element( 'generator', null, "{$gtor['content']} {$gtor['attribs']['version']}" ) . "\n";
 	}
 
 	/**
@@ -938,7 +938,7 @@ class WlRSSFeed
 				if ( !empty( $links ) ) {
 					# RSS only supports a single link element.
 					$link = array_shift( $links );
-					echo Xml::element( 'link', NULL, $link['href'] ) . "\n";
+					echo Xml::element( 'link', null, $link['href'] ) . "\n";
 				}
 			} else if ( $rel == 'enclosure' ) {
 				if ( !empty( $links ) ) {
@@ -955,7 +955,7 @@ class WlRSSFeed
 				if ( !empty( $links ) ) {
 					# RSS only supports a single comments element.
 					$link = array_shift( $links );
-					echo Xml::element( 'comments', NULL, $link['href'] ) . "\n";
+					echo Xml::element( 'comments', null, $link['href'] ) . "\n";
 				}
 			} else {
 				# For other links, we use the atom namespace.
@@ -966,7 +966,7 @@ class WlRSSFeed
 		}
 
 		foreach ( $entry->getAuthors() as $author ) {
-			echo Xml::element( 'dc:creator', NULL, $author['name'] ) . "\n";
+			echo Xml::element( 'dc:creator', null, $author['name'] ) . "\n";
 		}
 
 		foreach ( $entry->getCategories() as $category ) {
@@ -980,7 +980,7 @@ class WlRSSFeed
 
 		# Use either published or updated dates for the pubDate element.
 		$date = $entry->getPublished() ? $entry->getPublished() : $entry->getUpdated();
-		echo Xml::element( 'pubDate', NULL, $this->formatTime( $date ) ) . "\n";
+		echo Xml::element( 'pubDate', null, $this->formatTime( $date ) ) . "\n";
 
 		# RSS source feed.
 		$source = $entry->getSource();
@@ -998,7 +998,7 @@ class WlRSSFeed
 		# description element for either. If both are provided, put the
 		# summary in the description element and the content in the extension
 		# content:encoded element.
-		$content = $description = NULL;
+		$content = $description = null;
 		if ( $entry->getSummary() && $entry->getContent() ) {
 			$description = $entry->getSummary();
 			$content = $entry->getContent();
@@ -1010,17 +1010,17 @@ class WlRSSFeed
 
 		if ( $description ) {
 			if ( $description instanceof WlTextConstruct ) {
-				echo Xml::element( 'description', NULL, $description->getHTML() );
+				echo Xml::element( 'description', null, $description->getHTML() );
 			} else {
-				echo Xml::element( 'description', NULL, htmlspecialchars( $description ) );
+				echo Xml::element( 'description', null, htmlspecialchars( $description ) );
 			}
 		}
 
 		if ( $content ) {
 			if ( $content instanceof WlTextConstruct ) {
-				echo Xml::element( 'content:encoded', NULL, $content->getHTML() );
+				echo Xml::element( 'content:encoded', null, $content->getHTML() );
 			} else {
-				echo Xml::element( 'content:encoded', NULL, htmlspecialchars( $content ) );
+				echo Xml::element( 'content:encoded', null, htmlspecialchars( $content ) );
 			}
 		}
 
@@ -1046,9 +1046,9 @@ class WlFeedItemCompat
 		parent::__construct(
 			$item->Url,
 			$item->Title,
-			( !empty( $item->Date ) ? $item->Date : NULL ),
+			( !empty( $item->Date ) ? $item->Date : null ),
 			$item->Url,
-			( !empty( $item->Author ) ? $item->Author : NULL ),
+			( !empty( $item->Author ) ? $item->Author : null ),
 			new WlTextConstruct( 'html', $item->Description )
 		);
 		if ( !empty( $item->Comments ) ) {
@@ -1060,7 +1060,7 @@ class WlFeedItemCompat
 class WlRSSFeedCompat
 	extends WlRSSFeed
 {
-	function __construct( $title, $descr, $url, $date = NULL ) {
+	function __construct( $title, $descr, $url, $date = null ) {
 		parent::__construct( $url, $title, $date, $url );
 		$this->setSubtitle( $descr );
 	}
@@ -1072,7 +1072,7 @@ class WlRSSFeedCompat
 class WlAtomFeedCompat
 	extends WlAtomFeed
 {
-	function __construct( $title, $descr, $url, $date = NULL ) {
+	function __construct( $title, $descr, $url, $date = null ) {
 		parent::__construct( $url, $title, $date, $url );
 		$this->setSubtitle( $descr );
 	}

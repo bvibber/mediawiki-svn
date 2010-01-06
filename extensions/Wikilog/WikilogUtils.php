@@ -47,7 +47,7 @@ class WikilogUtils
 		global $wgUser, $wgEnableParserCache;
 		global $wgParser, $wgParserConf;
 
-		static $parser = NULL;
+		static $parser = null;
 
 		$article = new Article( $title );
 
@@ -270,7 +270,7 @@ class WikilogUtils
 			} else {
 				# Short article with a single section, use no summary and
 				# leave to the caller to decide what to do.
-				$summary = NULL;
+				$summary = null;
 			}
 		}
 
@@ -318,7 +318,7 @@ class WikilogUtils
 			if ( array_key_exists( $key, $array ) )
 				return $array[$key];
 		}
-		return NULL;
+		return null;
 	}
 
 	/**

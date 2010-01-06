@@ -212,7 +212,7 @@ class CodeRepository {
 		# Try memcached...
 		$key = wfMemcKey( 'svn', md5( $this->mPath ), 'diff', $rev1, $rev2 );
 		if ( $useCache === 'skipcache' ) {
-			$data = NULL;
+			$data = null;
 		} else {
 			$data = $wgMemc->get( $key );
 		}

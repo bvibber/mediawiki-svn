@@ -15,7 +15,7 @@ class ExtDelayedDefinition {
 		$this->mMarkerHead = "\x7fDELAY-DEF-" . $salt . "-";
 		$this->mMarkerTail = "-DEF-DELAY\x7f";
 
-		$this->mParser = NULL;
+		$this->mParser = null;
 
 		return true;
 	}
@@ -98,7 +98,7 @@ class ExtDelayedDefinition {
 		if ( !array_key_exists( 'name', $argv ) ) {
 			// name argument is missing
 			return '<strong class="error">' . wfMsgForContent( "delaydef-error-no-name" ) . '</strong>';
-		} elseif ( $input !== NULL ) {
+		} elseif ( $input !== null ) {
 			/* if <display name="foo"> BAR </display> is used
 			 * then treat this as both the definition of "foo"
 			 * and as a display request.

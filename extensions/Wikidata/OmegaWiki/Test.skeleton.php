@@ -51,7 +51,7 @@ class RecordHelperTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	function tearDown() {
-		$testRecord = NULL;
+		$testRecord = null;
 	}
 
 }

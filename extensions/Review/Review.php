@@ -244,7 +244,7 @@ function wfReviewExtensionReadLastForm ( &$ratings , $title , $merge_others = tr
 	$fname = 'wfReviewExtensionReadLastForm' ;
 	$dbw =& wfGetDB( DB_MASTER );
 	# Avoid user/ip tuplet unique index collisions
-	$user_ip = $wgUser->getID() == 0 ? $wgUser->getName() : NULL ;
+	$user_ip = $wgUser->getID() == 0 ? $wgUser->getName() : null ;
 
 	# Read form values
 	$oldrev = $wgRequest->getInt ( 'review_oldid' ) ;
@@ -781,7 +781,7 @@ function wfReviewExtensionFunction () {
 					$page_id = $title->getArticleID();
 				}
 				else{
-					$title = NULL ;
+					$title = null ;
 				}
 			} else {
 				$title = Title::newFromID ( $page_id ) ;

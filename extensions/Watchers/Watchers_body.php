@@ -59,7 +59,7 @@ class SpecialWatchers extends UnlistedSpecialPage {
 		$link1 = $sk->makeLinkObj( $title );
 		$out .= "<h2>" . wfMsgExt( 'watchers_header' , array( 'parsemag' ), $link1, $watcherscount ) . "</h2>";
 
-		if ( $wgWatchersLimit != NULL ) {
+		if ( $wgWatchersLimit != null ) {
 
 			if ( $watcherscount >= $wgWatchersLimit ) {
 				$out .= "<p>" . wfMsgExt( 'watchers_x_or_more', array( 'parsemag' ), $wgWatchersLimit ) . "</p>\n";

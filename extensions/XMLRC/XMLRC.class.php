@@ -28,7 +28,7 @@ class XMLRC {
   }
 
   private function getTransport() {
-	if ( $this->transport != NULL ) return $this->transport;
+	if ( $this->transport != null ) return $this->transport;
 
 	$class = $this->transportConfig['class'];
 	$this->transport = new $class( $this->transportConfig );
@@ -37,7 +37,7 @@ class XMLRC {
   }
 
   private function getMainModule() {
-	if ( $this->main != NULL ) return $this->main;
+	if ( $this->main != null ) return $this->main;
 
 	$req = new FauxRequest( array() );
 	$this->main = new ApiMain( $req );
@@ -46,7 +46,7 @@ class XMLRC {
   }
 
   private function getFormatModule() {
-	if ( $this->format != NULL ) return $this->format;
+	if ( $this->format != null ) return $this->format;
 
 	$main = $this->getMainModule();
 	$this->format = new ApiFormatXml( $main, "xml" );
@@ -55,7 +55,7 @@ class XMLRC {
   }
 
   private function getQueryModule() {
-	if ( $this->query != NULL ) return $this->query;
+	if ( $this->query != null ) return $this->query;
 
 	$main = $this->getMainModule();
 	$this->query = new ApiQueryRecentChanges( $main, "recentchanges" );

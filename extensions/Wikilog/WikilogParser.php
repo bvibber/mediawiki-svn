@@ -81,7 +81,7 @@ class WikilogParser
 		# These two parser attributes contain our private information.
 		# They take a piggyback ride on the parser object.
 		$parser->mExtWikilog = new WikilogParserOutput;
-		$parser->mExtWikilogInfo = NULL;
+		$parser->mExtWikilogInfo = null;
 
 		# Disable TOC in feeds.
 		if ( self::$feedParsing ) {
@@ -401,7 +401,7 @@ class WikilogParser
 	 */
 	public static function expandLocalUrls( $enable = true ) {
 		global $wgScriptPath, $wgUploadPath, $wgStylePath, $wgMathPath, $wgLocalFileRepo;
-		static $originalPaths = NULL;
+		static $originalPaths = null;
 
 		$prev = self::$expandingUrls;
 
@@ -542,21 +542,21 @@ class WikilogParser
 		if ( !$obj ) {
 			$warning = wfMsg( 'wikilog-error-msg', wfMsg( 'wikilog-invalid-file', htmlspecialchars( $text ) ) );
 			$parser->mOutput->addWarning( $warning );
-			return NULL;
+			return null;
 		}
 
 		list( $t1, $t2, $file ) = $obj;
 		if ( !$file ) {
 			$warning = wfMsg( 'wikilog-error-msg', wfMsg( 'wikilog-file-not-found', htmlspecialchars( $t1 ) ) );
 			$parser->mOutput->addWarning( $warning );
-			return NULL;
+			return null;
 		}
 
 		$type = $file->getMediaType();
 		if ( $type != MEDIATYPE_BITMAP && $type != MEDIATYPE_DRAWING ) {
 			$warning = wfMsg( 'wikilog-error-msg', wfMsg( 'wikilog-not-an-image', $file->getName() ) );
 			$parser->mOutput->addWarning( $warning );
-			return NULL;
+			return null;
 		}
 
 		return $file;
@@ -574,18 +574,18 @@ class WikilogParser
 	private static function parseMediaLink( &$parser, $text ) {
 		$tc = Title::legalChars();
 		if ( !preg_match( "/\\[\\[([{$tc}]+)(?:\\|(.+?))?]]/", $text, $m ) )
-			return NULL;
+			return null;
 
 		$nt = Title::newFromText( $m[1] );
 		if ( !$nt )
-			return NULL;
+			return null;
 
 		$ns = $nt->getNamespace();
 		if ( $ns == NS_IMAGE || $ns == NS_MEDIA ) {
 			$parser->mOutput->addLink( $nt );
 			return @ array( $m[1], $m[2], wfFindFile( $nt ) );
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 }
@@ -604,11 +604,11 @@ class WikilogParserOutput
 
 	/* Item metadata */
 	public $mPublish = false;
-	public $mPubDate = NULL;
+	public $mPubDate = null;
 
 	/* Wikilog settings */
-	public $mIcon = NULL;
-	public $mLogo = NULL;
+	public $mIcon = null;
+	public $mLogo = null;
 
 	/* Acessor functions, lacking... */
 	public function getAuthors() { return $this->mAuthors; }

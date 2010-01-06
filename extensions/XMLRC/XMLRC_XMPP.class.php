@@ -22,7 +22,7 @@ class XMLRC_XMPP extends XMLRC_Transport {
       $config['nickname'] = $config['user'];
     }
 
-    $this->conn = NULL;
+    $this->conn = null;
 
     $this->channel = $config['channel'];
     $this->nickname = $config['nickname'];
@@ -47,16 +47,16 @@ class XMLRC_XMPP extends XMLRC_Transport {
     $this->conn->connect();
     $this->conn->processUntil( 'session_start' );
 
-    $conn->presence(NULL, "available", $this->channel . '/' . $this->nickname, "available" );
+    $conn->presence(null, "available", $this->channel . '/' . $this->nickname, "available" );
   }
 
   public function disconnect() {
     if ( !$this->conn ) return;
 
-    $conn->presence(NULL, "unavailable", $this->channel . '/' . $this->nickname, "unavailable" );
+    $conn->presence(null, "unavailable", $this->channel . '/' . $this->nickname, "unavailable" );
 
     $this->conn->disconnect();
-    $this->conn = NULL;
+    $this->conn = null;
   }
 
   public function send( $xml ) {

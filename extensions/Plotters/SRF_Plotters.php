@@ -44,9 +44,9 @@ class SRFPlotters extends SMWResultPrinter {
 					if ($object->getTypeID() == '_dat') {
 						$values[] = SRFCalendar::formatDateStr($object);
 					} elseif ($object->getTypeID() == '_wpg') { // use shorter "LongText" for wikipage
-						$values[] = $object->getLongText($outputmode, NULL);
+						$values[] = $object->getLongText($outputmode, null);
 					} else {
-						$values[] = $object->getShortText($outputmode, NULL);
+						$values[] = $object->getShortText($outputmode, null);
 					}
 				}
 			}

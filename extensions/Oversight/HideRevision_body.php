@@ -600,7 +600,7 @@ class SpecialOversight extends SpecialPage {
 class HiddenRevisionsPager extends ReverseChronologicalPager {
 	public $mForm, $mConds, $namespace, $dbKey, $uid;
 
-	function __construct( $form, $conds = array(), $title = NULL, $user = NULL, $offender = '' ) {
+	function __construct( $form, $conds = array(), $title = null, $user = null, $offender = '' ) {
 		$this->mForm = $form;
 		$this->mConds = $conds;
 		$this->namespace = $title ? $title->getNamespace() : -1;

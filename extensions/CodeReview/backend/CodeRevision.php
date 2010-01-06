@@ -500,7 +500,7 @@ class CodeRevision {
 		return $tags;
 	}
 
-	public function changeTags( $addTags, $removeTags, $user = NULL ) {
+	public function changeTags( $addTags, $removeTags, $user = null ) {
 		// Get the current tags and see what changes
 		$tagsNow = $this->getTags( DB_MASTER );
 		// Normalize our input tags

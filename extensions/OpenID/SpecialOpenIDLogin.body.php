@@ -167,7 +167,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 * @param $sreg Array: options get from OpenID
 	 * @param $messagekey String or null: message name to display at the top
 	 */
-	function chooseNameForm( $openid, $sreg, $messagekey = NULL ) {
+	function chooseNameForm( $openid, $sreg, $messagekey = null ) {
 		global $wgOut, $wgOpenIDOnly, $wgAllowRealName;
 
 		if ( $messagekey ) {
@@ -547,7 +547,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 		if ( !$user ) {
 			wfDebug( "OpenID: Error adding new user.\n" );
-			return NULL;
+			return null;
 		}
 
 		$user->addToDatabase();
@@ -633,7 +633,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 		foreach ( $bad as $badpart ) {
 			if ( array_key_exists( $badpart, $parts ) ) {
-				return NULL;
+				return null;
 			}
 		}
 

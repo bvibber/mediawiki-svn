@@ -13,13 +13,13 @@ class SpecialDuplicator extends SpecialPage {
 	 * Title of the page we are duplicating
 	 */
 	private $source = '';
-	private $sourceTitle = NULL;
+	private $sourceTitle = null;
 
 	/**
 	 * Title of the page we are saving to
 	 */
 	private $dest = '';
-	private $destTitle = NULL;
+	private $destTitle = null;
 
 	/**
 	 * Whether or not we're duplicating the talk page

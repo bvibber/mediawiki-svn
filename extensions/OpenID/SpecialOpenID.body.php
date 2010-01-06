@@ -41,7 +41,7 @@ class SpecialOpenID extends SpecialPage {
 			if ( !is_dir( $options['path'] ) ) {
 				if ( !mkdir( $options['path'], 0770, true ) ) {
 					$wgOut->showErrorPage( 'openidconfigerror', 'openidconfigerrortext' );
-					return NULL;
+					return null;
 				}
 			}
 			return new Auth_OpenID_FileStore( $options['path'] );
@@ -63,7 +63,7 @@ class SpecialOpenID extends SpecialPage {
 					return new Auth_OpenID_PostgreSQLStore( $db );
 				default:
 					$wgOut->showErrorPage( 'openidconfigerror', 'openidconfigerrortext' );
-					return NULL;
+					return null;
 				}
 			}
 

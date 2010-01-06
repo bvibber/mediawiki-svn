@@ -392,7 +392,7 @@ function wfSpecialFilelist () {
 			$params['until'] = $wgRequest->getVal ( 'until' , "" ) ;
 			$params['match'] = $wgRequest->getVal ( 'match' , "" ) ;
 			$params['limit'] = $wgRequest->getInt ( 'limit' , ($params['gallery']?48:50) ) ;
-			$params['user'] = urldecode ( $wgRequest->getVal ( 'user' , ($par==NULL?"":$par) ) ) ;
+			$params['user'] = urldecode ( $wgRequest->getVal ( 'user' , ($par==null?"":$par) ) ) ;
 			$params['botsql'] = $this->getHideBotSQL ( $params['hidebots'] ) ;
 			$params['imagetable'] = $this->dbr->tableName('image');
 

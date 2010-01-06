@@ -267,7 +267,7 @@ class SpecialWikilog
 					list( $opts['year'], $opts['month'], $opts['day'] ) = $date;
 				}
 			} else {
-				if ( ( $t = Title::newFromText( $par ) ) !== NULL ) {
+				if ( ( $t = Title::newFromText( $par ) ) !== null ) {
 					$ns = $t->getNamespace();
 					if ( in_array( $ns, $wgWikilogNamespaces ) ) {
 						$opts['wikilog'] = $t->getPrefixedDBkey();
@@ -330,7 +330,7 @@ class SpecialWikilog
 				$out .= Xml::openElement( 'tr' );
 				if ( is_array( $row ) ) {
 					$out .= Xml::tags( 'td', array( 'align' => $align ), $row[0] );
-					$out .= Xml::tags( 'td', NULL, $row[1] );
+					$out .= Xml::tags( 'td', null, $row[1] );
 				} else {
 					$out .= Xml::tags( 'td', array( 'colspan' => 2 ), $row );
 				}
@@ -433,8 +433,8 @@ class SpecialWikilog
 		if ( preg_match( '|^(\d+)(?:[/-](\d+)(?:[/-](\d+))?)?$|', $date, $m ) ) {
 			return array(
 				intval( $m[1] ),
-				( isset( $m[2] ) ? intval( $m[2] ) : NULL ),
-				( isset( $m[3] ) ? intval( $m[3] ) : NULL )
+				( isset( $m[2] ) ? intval( $m[2] ) : null ),
+				( isset( $m[3] ) ? intval( $m[3] ) : null )
 			);
 		} else {
 			return false;

@@ -6,7 +6,7 @@ if (!defined('MEDIAWIKI')) {
 
 class XMLRC_File extends XMLRC_Transport {
   function __construct( $config ) {
-    $this->handle = NULL;
+    $this->handle = null;
 
     $this->file = $config['file'];
   }
@@ -23,7 +23,7 @@ class XMLRC_File extends XMLRC_Transport {
     if ( !$this->handle ) return;
 
     fclose( $this->handle );
-    $this->handle = NULL;
+    $this->handle = null;
 
     wfDebug("XMLRC_File: closed {$this->file}\n");
   }

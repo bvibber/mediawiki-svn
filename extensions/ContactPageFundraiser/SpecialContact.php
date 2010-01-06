@@ -164,16 +164,16 @@ class EmailContactForm {
 	function hasAllInfo() {
 		global $wgContactRequireAll;
 
-		if ( $this->text === NULL ) return false;
+		if ( $this->text === null ) return false;
 		else $this->text = trim( $this->text );
 		if ( $this->text === '' ) return false;
 
 		if ( $wgContactRequireAll ) {
-			if ( $this->fromname === NULL ) return false;
+			if ( $this->fromname === null ) return false;
 			else $this->fromname = trim( $this->fromname );
 			if ( $this->fromname === '' ) return false;
 
-			if ( $this->fromaddress === NULL ) return false;
+			if ( $this->fromaddress === null ) return false;
 			else $this->fromaddress = trim( $this->fromaddress );
 			if ( $this->fromaddress === '' ) return false;
 		}
@@ -294,7 +294,7 @@ class EmailContactForm {
 		wfDebug( "$fname: start\n" );
 
 		$to = new MailAddress( $this->target );
-		$replyto = NULL;
+		$replyto = null;
 
 		if ( !$this->fromaddress ) {
 			$from = new MailAddress( $csender, $cname );
@@ -327,7 +327,7 @@ class EmailContactForm {
 			#HACK: in MW 1.9, replyto must be a string, in MW 1.10 it must be an object!
 			$ver = preg_replace( '![^\d._+]!', '', $GLOBALS['wgVersion'] );
 			$replyaddr = $replyto == null
-					? NULL : version_compare( $ver, '1.10', '<' )
+					? null : version_compare( $ver, '1.10', '<' )
 						? $replyto->toString() : $replyto;
 
 			$mailResult = userMailer( $to, $from, $subject, $this->text, $replyaddr );

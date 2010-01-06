@@ -30,7 +30,7 @@ global $wgWikiTrustCmd, $wgWikiTrustCmdExtraArgs, $wgWikiTrustShowMouseOrigin,
 if (!$wgWikiTrustVersion)
   $wgWikiTrustVersion = "local"; ## This needs to be one of local, remote, wmf.
 if (!$wgWikiTrustGadget)
-  $wgWikiTrustGadget = NULL;
+  $wgWikiTrustGadget = null;
 if (!$wgWikiTrustShowVoteButton)
   $wgWikiTrustShowVoteButton = true; // If true, the vote button is shown.
 if (!$wgWikiTrustContentServerURL)
@@ -61,13 +61,13 @@ if (!$wgWikiTrustCmd)
 if (!$wgWikiTrustCmdExtraArgs)
   $wgWikiTrustCmdExtraArgs = "";
 if (!$wgWikiTrustBlobPath)
-  $wgWikiTrustBlobPath = NULL;
+  $wgWikiTrustBlobPath = null;
 if (!$wgWikiTrustRepSpeed)
   $wgWikiTrustRepSpeed = 1.0;
 if (!$wgWikiTrustApiURL)
   $wgWikiTrustApiURL = "http://en.wikipedia.org/w/api.php";
 if (!$wgWikiTrustRobots)
-  $wgWikiTrustRobots = NULL;
+  $wgWikiTrustRobots = null;
 
 global $wgExtensionFunctions, $wgExtensionCredits;
 $wgExtensionCredits['other'][] = array(

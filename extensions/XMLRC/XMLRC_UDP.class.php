@@ -6,7 +6,7 @@ if (!defined('MEDIAWIKI')) {
 
 class XMLRC_UDP extends XMLRC_Transport {
   function __construct( $config ) {
-    $this->conn = NULL;
+    $this->conn = null;
 
     $this->address = $config['address'];
     $this->port = $config['port'];
@@ -24,7 +24,7 @@ class XMLRC_UDP extends XMLRC_Transport {
     if ( !$this->conn ) return;
 
     socket_close( $this->conn );
-    $this->conn = NULL;
+    $this->conn = null;
     wfDebug("XMLRC_UDP: closed UDP socket\n");
   }
 

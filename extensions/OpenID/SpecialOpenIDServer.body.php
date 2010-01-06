@@ -116,7 +116,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 				wfRestoreWarnings();
 
 				$sreg = $this->SregFromQuery( $query );
-				$response = NULL;
+				$response = null;
 				break;
 			}
 		}
@@ -161,7 +161,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		if ( isset( $nt ) ) {
 			return $nt->getFullURL();
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 
@@ -220,7 +220,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 				# Bank these for later
 				$this->SaveValues( $request, $sreg );
 				$this->LoginForm( $request );
-				return NULL;
+				return null;
 			}
 		}
 
@@ -281,7 +281,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 				# Bank these for later
 				$this->SaveValues( $request, $sreg );
 				$this->TrustForm( $request, $sreg );
-				return NULL;
+				return null;
 			}
 		}
 
@@ -430,7 +430,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 	function SregFromQuery( $query ) {
 		$sreg = array( 'required' => array(), 'optional' => array(),
-					  'policy_url' => NULL );
+					  'policy_url' => null );
 		if ( array_key_exists( 'openid.sreg.required', $query ) ) {
 			$sreg['required'] = explode( ',', $query['openid.sreg.required'] );
 		}
@@ -478,7 +478,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 			return $user->getOption( 'language' );
 			break;
 		 default:
-			return NULL;
+			return null;
 		}
 	}
 
@@ -605,7 +605,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		}
 	}
 
-	function TrustForm( $request, $sreg, $msg = NULL ) {
+	function TrustForm( $request, $sreg, $msg = null ) {
 
 		global $wgOut, $wgUser;
 
@@ -661,7 +661,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 			$wgOut->addHTML( '</table>' );
 		}
 		$wgOut->addHTML( "<input type='submit' name='wpOK' value='{$ok}' /> <input type='submit' name='wpCancel' value='{$cancel}' /></form>" );
-		return NULL;
+		return null;
 	}
 
 	function Trust( $request, $sreg ) {

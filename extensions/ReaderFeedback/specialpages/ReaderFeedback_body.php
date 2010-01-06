@@ -56,7 +56,7 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		$unsureCount = 0;
 		foreach( ReaderFeedback::getFeedbackTags() as $tag => $weight ) {
 			$this->dims[$tag] = $wgRequest->getIntOrNull( "wp$tag" );
-			if( $this->dims[$tag] === NULL ) { // nothing sent at all :(
+			if( $this->dims[$tag] === null ) { // nothing sent at all :(
 				$wgOut->redirect( $this->page->getLocalUrl() );
 				return;
 			} elseif( $this->dims[$tags] === -1 ) {
@@ -148,7 +148,7 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 					$p = preg_replace( '/^wp/', '', $par ); // kill any "wp" prefix
 					if( array_key_exists( $p, $tags ) ) {
 						$form->dims[$p] = intval($val);
-						if( $form->dims[$p] === NULL ) { // nothing sent at all :(
+						if( $form->dims[$p] === null ) { // nothing sent at all :(
 							return '<err#>' . wfMsg('formerror'); // bad range
 						} elseif( $form->dims[$p] === -1 ) {
 							$unsureCount++;

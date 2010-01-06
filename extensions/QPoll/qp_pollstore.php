@@ -10,7 +10,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class qp_QuestionData {
 
 	// DB index (with current scheme is non-unique)
-	var $question_id = NULL;
+	var $question_id = null;
 	// common properties
 	var $type;
 	var $CommonQuestion;
@@ -21,8 +21,8 @@ class qp_QuestionData {
 	var $ProposalCategoryText;
 	var $alreadyVoted = false; // whether the selected user already voted this question ?
 	// statistics storage
-	var $Votes = NULL;
-	var $Percents = NULL;
+	var $Votes = null;
+	var $Percents = null;
 
 	function __construct( $argv ) {
 		if ( array_key_exists( 'from', $argv ) ) {
@@ -113,30 +113,30 @@ class qp_QuestionData {
  */
 class qp_PollStore {
 
-	static $db = NULL;
+	static $db = null;
 	// DB keys
-	var $pid = NULL;
-	var $last_uid = NULL;
+	var $pid = null;
+	var $last_uid = null;
 	// common properties
-	var $mArticleId = NULL;
-	var $mPollId = NULL; // unique id of poll, used for addressing, also with 'qp_' prefix as the fragment part of the link
-	var $mOrderId = NULL; // order of poll on the page
-	var $dependsOn = NULL; // dependance from other poll address in the following format: "page#otherpollid"
-	var $Questions = NULL; // array of QuestionData instances (data from/to DB)
+	var $mArticleId = null;
+	var $mPollId = null; // unique id of poll, used for addressing, also with 'qp_' prefix as the fragment part of the link
+	var $mOrderId = null; // order of poll on the page
+	var $dependsOn = null; // dependance from other poll address in the following format: "page#otherpollid"
+	var $Questions = null; // array of QuestionData instances (data from/to DB)
 	var $mCompletedPostData;
 	var $voteDone = false;
 
  /* $argv[ 'from' ] indicates type of construction, other elements of $argv vary according to 'from'
   */
-	function __construct( $argv = NULL ) {
+	function __construct( $argv = null ) {
 		global $wgParser;
-		if ( self::$db == NULL ) {
+		if ( self::$db == null ) {
 			self::$db = & wfGetDB( DB_SLAVE );
 		}
 		if ( is_array($argv) && array_key_exists( "from", $argv ) ) {
 			$this->Questions = Array();
 			$this->mCompletedPostData = 'NA';
-			$this->pid = NULL;
+			$this->pid = null;
 			$is_post = false;
 			switch ( $argv[ 'from' ] ) {
 				case 'poll_post' :
@@ -191,7 +191,7 @@ class qp_PollStore {
 		if ( is_array( $pollAddr ) ) {
 			list( $pollTitleStr, $pollId ) = $pollAddr;
 			$pollTitle = Title::newFromURL( $pollTitleStr );
-			if ( $pollTitle !== NULL ) {
+			if ( $pollTitle !== null ) {
 				$pollArticleId = intval( $pollTitle->getArticleID() );
 				if ( $pollArticleId > 0 ) {
 					return new qp_PollStore( array(
@@ -215,8 +215,8 @@ class qp_PollStore {
 
 	# returns Title object, to get a URI path, use Title::getFullText()/getPrefixedText() on it
 	function getTitle() {
-		$res = NULL;
-		if ( $this->mArticleId !==NULL && $this->mPollId !== NULL ) {
+		$res = null;
+		if ( $this->mArticleId !==null && $this->mPollId !== null ) {
 			$res = Title::newFromID( $this->mArticleId );
 			$res->setFragment( qp_AbstractPoll::getPollTitleFragment( $this->mPollId ) );
 		}
@@ -249,7 +249,7 @@ class qp_PollStore {
 			"multipleChoicePoll"=>"multipleChoice",
 			"mixedChoicePoll"=>"mixedChoice"
 		);
-		if ( $this->pid !== NULL ) {
+		if ( $this->pid !== null ) {
 			$res = self::$db->select( 'qp_question_desc',
 				array( 'question_id', 'type', 'common_question' ),
 				array( 'pid'=>$this->pid ),
@@ -335,7 +335,7 @@ class qp_PollStore {
 	// input: $questions_set is optional array of integer question_id values of the current poll
 	// output: $this->Questions[]Votes[] is set on success
 	function loadTotals( $questions_set = false ) {
-		if ( $this->pid !== NULL &&
+		if ( $this->pid !== null &&
 				is_array( $this->Questions ) && count( $this->Questions > 0 ) ) {
 			$where = 'pid=' . self::$db->addQuotes( $this->pid );
 			if ( is_array( $questions_set ) ) {
@@ -376,7 +376,7 @@ class qp_PollStore {
 
 	function totalUsersAnsweredQuestion( &$qdata ) {
 		$result = 0;
-		if ( $this->pid !== NULL ) {
+		if ( $this->pid !== null ) {
 			$res = self::$db->select( 'qp_question_answers',
 				array( 'count(distinct uid)' ),
 				array( 'pid'=>$this->pid, 'question_id'=>$qdata->question_id ),
@@ -498,7 +498,7 @@ class qp_PollStore {
 	}
 
 	function setLastUser( $username, $store_new_user_to_db = true ) {
-		if ( $this->pid !== NULL ) {
+		if ( $this->pid !== null ) {
 			$res = self::$db->select( 'qp_users','uid','name=' . self::$db->addQuotes( $username ), __METHOD__ );
 			$row = self::$db->fetchObject( $res );
 			if ( $row==false ) {
@@ -506,7 +506,7 @@ class qp_PollStore {
 					self::$db->insert( 'qp_users', array( 'name'=>$username ), __METHOD__ . ':UpdateUser' );
 					$this->last_uid = self::$db->insertId();
 				} else {
-					$this->last_uid = NULL;
+					$this->last_uid = null;
 				}
 			} else {
 				$this->last_uid = $row->uid;
@@ -516,7 +516,7 @@ class qp_PollStore {
 	}
 
 	function getUserName( $uid ) {
-		if ( $uid !== NULL) {
+		if ( $uid !== null) {
 			$res = self::$db->select( 'qp_users','name','uid=' . self::$db->addQuotes( intval( $uid ) ), __METHOD__ );
 			$row = self::$db->fetchObject( $res );
 			if ( $row != false ) {
@@ -536,10 +536,10 @@ class qp_PollStore {
 		if ( $row != false ) {
 			$this->pid = $row->pid;
 			# some constructors don't supply the poll attributes, get the values from DB in such case
-			if ( $this->mOrderId === NULL ) {
+			if ( $this->mOrderId === null ) {
 				$this->mOrderId = $row->order_id;
 			}
-			if ( $this->dependsOn === NULL ) {
+			if ( $this->dependsOn === null ) {
 				$this->dependsOn = $row->dependance;
 			}
 			$this->updatePollAttributes( $row );
@@ -653,8 +653,8 @@ class qp_PollStore {
 
 	# when the user votes and poll wasn't previousely voted yet, it also creates the poll in DB
 	function setUserVote() {
-		if ( $this->pid !==NULL &&
-				$this->last_uid !== NULL &&
+		if ( $this->pid !==null &&
+				$this->last_uid !== null &&
 				$this->mCompletedPostData == "complete" &&
 				is_array( $this->Questions ) && count( $this->Questions ) > 0 ) {
 			$old_user_abort = ignore_user_abort( true );

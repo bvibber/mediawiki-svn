@@ -125,7 +125,7 @@ function DynamicPageList( $input ) {
 		else if ('namespace' == $sType)
 		{
 			$ns = $wgContLang->getNsIndex($sArg);
-			if (NULL != $ns)
+			if (null != $ns)
 			{
 				$iNamespace = $ns;
 				$bNamespace = true;

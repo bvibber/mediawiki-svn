@@ -4,7 +4,7 @@ class ContributionHistory extends SpecialPage {
 		SpecialPage::SpecialPage( 'ContributionHistory' );
 	}
 
-	function execute( $language = NULL ) {
+	function execute( $language = null ) {
 		global $wgRequest, $wgOut, $wgTitle, $wgLang;
 
 		if ( !preg_match( '/^[a-z-]+$/', $language ) ) {

@@ -98,7 +98,7 @@ class SpecialAddComment extends UnlistedSpecialPage {
 			global $wgOut;
 			$wgOut->setPageTitle( wfMsg( 'commentbox-errorpage-title' ) );
 			$wgOut->addHTML( "<div class='errorbox'>" . htmlspecialchars( $e->getMessage() ) . "</div><br clear='both' />" );
-			if ( $title != NULL )
+			if ( $title != null )
 				$wgOut->returnToMain( false, $title );
 			return;
 		}
@@ -107,11 +107,11 @@ class SpecialAddComment extends UnlistedSpecialPage {
 		return;
 	}
 
-	function fail( $str, $title = NULL ) {
+	function fail( $str, $title = null ) {
 		global $wgOut;
 		$wgOut->setPageTitle( wfMsg( 'commentbox-errorpage-title' ) );
 		$wgOut->addWikiText( "<div class='errorbox'>" . wfMsg( $str ) . "</div><br clear='both' />" );
-		if ( $title != NULL )
+		if ( $title != null )
 			$wgOut->returnToMain( false, $title );
 		return;
 	}

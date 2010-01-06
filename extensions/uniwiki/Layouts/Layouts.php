@@ -87,7 +87,7 @@ function UW_Layouts_maybeRedirectToLayout( $article, $user ) {
 	 * and we're NOT editing an old revision */
 	if ( $article->getID() === 0 
 	&& ( $wgRequest->getVal('oldid') || $article->fetchContent( $wgRequest->getVal('oldid') ) === false )
-	&& ( $wgRequest->getVal ( "layout" ) === NULL )
+	&& ( $wgRequest->getVal ( "layout" ) === null )
 	&& in_array ( $article->mTitle->getNamespace(), $wgLayoutWhiteList )
 	&& ( $wgRequest->getVal( "action" ) != "submit" ) )
 
@@ -245,7 +245,7 @@ function UW_Layouts_preFillTextBox ( &$text, $title ) {
 	/* fetch the layout from the query string,
 	 * or abort this hook if it is missing */
 	$layout_slug = $wgRequest->getVal ( "layout" );
-	if ( $layout_slug === NULL )
+	if ( $layout_slug === null )
 		return true;
 
 	// fetch the layout object

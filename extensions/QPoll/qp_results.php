@@ -43,7 +43,7 @@ class PollResults extends SpecialPage {
 		wfLoadExtensionMessages('QPoll');
 	}
 
-	static $skin = NULL;
+	static $skin = null;
 	static $UsersLink = "";
 	static $PollsLink = "";
 
@@ -59,7 +59,7 @@ class PollResults extends SpecialPage {
 			return;
 		}
 		$wgOut->addExtensionStyle( $qp_ScriptPath . '/qp_results.css' );
-		if ( self::$skin == NULL ) {
+		if ( self::$skin == null ) {
 			self::$skin = $wgUser->getSkin();
 		}
 		if ( self::$UsersLink == "" ) {
@@ -79,7 +79,7 @@ class PollResults extends SpecialPage {
 		}
 		# normal processing
 		$cmd = $wgRequest->getVal( 'action' );
-		if ( $cmd === NULL ) {
+		if ( $cmd === null ) {
 			list( $limit, $offset ) = wfCheckLimits();
 			$qpl = new qp_PollsList();
 			$qpl->doQuery( $offset, $limit );
@@ -91,7 +91,7 @@ class PollResults extends SpecialPage {
 			$cid = $wgRequest->getVal( 'cid' );
 			switch ($cmd) {
 				case 'stats':
-					if ( $pid !==NULL ) {
+					if ( $pid !==null ) {
 						$pid = intval( $pid );
 						$output = self::getPollsLink();
 						$output .= self::getUsersLink();
@@ -99,13 +99,13 @@ class PollResults extends SpecialPage {
 					}
 					break;
 				case 'stats_xls':
-						if ( $pid !==NULL ) {
+						if ( $pid !==null ) {
 							$pid = intval( $pid );
 							$this->votesToXLS( $pid );
 						}
 					break;
 				case 'uvote':
-					if ( $pid !== NULL && $uid !==NULL ) {
+					if ( $pid !== null && $uid !==null ) {
 						$pid = intval( $pid );
 						$uid = intval( $uid );
 						$output = self::getPollsLink();
@@ -114,7 +114,7 @@ class PollResults extends SpecialPage {
 					}
 					break;
 				case 'qpcusers':
-					if ( $pid !==NULL && $question_id !==NULL && $proposal_id !== NULL && $cid !== NULL ) {
+					if ( $pid !==null && $question_id !==null && $proposal_id !== null && $cid !== null ) {
 						$pid = intval( $pid );
 						$question_id = intval( $question_id );
 						$proposal_id = intval( $proposal_id );
@@ -132,7 +132,7 @@ class PollResults extends SpecialPage {
 					break;
 				case 'upolls':
 				case 'nupolls':
-					if ( $uid !== NULL ) {
+					if ( $uid !== null ) {
 						$uid = intval( $uid );
 						list( $limit, $offset ) = wfCheckLimits();
 						$qupl = new qp_UserPollsList( $cmd, $uid );
@@ -141,7 +141,7 @@ class PollResults extends SpecialPage {
 					break;
 				case 'pulist':
 				case 'npulist':
-					if ( $pid !== NULL ) {
+					if ( $pid !== null ) {
 						$pid = intval( $pid );
 						list( $limit, $offset ) = wfCheckLimits();
 						$qpul = new qp_PollUsersList( $cmd, $pid );
@@ -195,9 +195,9 @@ class PollResults extends SpecialPage {
 
 	private function showUserVote( $pid, $uid ) {
 		$output = "";
-		if ( $pid !== NULL && $uid !== NULL ) {
+		if ( $pid !== null && $uid !== null ) {
 			$pollStore = new qp_PollStore( array( 'from'=>'pid', 'pid'=> $pid ) );
-			if ( $pollStore->pid !== NULL ) {
+			if ( $pollStore->pid !== null ) {
 				$pollStore->loadQuestions();
 				$userName = $pollStore->getUserName( $uid );
 				if ( $userName !== false ) {
@@ -269,9 +269,9 @@ class PollResults extends SpecialPage {
 
 	private function showVotes( $pid ) {
 		$output = "";
-		if ( $pid !== NULL ) {
+		if ( $pid !== null ) {
 			$pollStore = new qp_PollStore( array( 'from'=>'pid', 'pid'=> $pid ) );
-			if ( $pollStore->pid !== NULL ) {
+			if ( $pollStore->pid !== null ) {
 				$pollStore->loadQuestions();
 				$pollStore->loadTotals();
 				$pollStore->calculateStatistics();
@@ -292,9 +292,9 @@ class PollResults extends SpecialPage {
 	private function votesToXLS( $pid ) {
 		global $qp_ExtDir;
 		$output = "";
-		if ( $pid !== NULL ) {
+		if ( $pid !== null ) {
 			$pollStore = new qp_PollStore( array( 'from'=>'pid', 'pid'=> $pid ) );
-			if ( $pollStore->pid !== NULL ) {
+			if ( $pollStore->pid !== null ) {
 				$poll_id = $pollStore->getPollId();
 				$pollStore->loadQuestions();
 				$pollStore->loadTotals();
@@ -401,14 +401,14 @@ class PollResults extends SpecialPage {
 		$spansUsed = count( $qdata->CategorySpans ) > 0 || $qdata->type == "multipleChoice";
 		foreach( $qdata->ProposalText as $propkey => &$proposal_text ) {
 			if ( isset( $qdata->Votes[ $propkey ] ) ) {
-				if ( $qdata->Percents === NULL ) {
+				if ( $qdata->Percents === null ) {
 					$row = $qdata->Votes[ $propkey ];
 				} else {
 					$row = $qdata->Percents[ $propkey ];
 					foreach ( $row as $catkey => &$cell ) {
 						$formatted_cell = str_replace( " ", "&ensp;", sprintf( '%3d%%', intval( round( 100 * $cell ) ) ) );
 						# only percents !=0 are displayed as link
-						if ( $cell == 0.0 && $qdata->question_id !==NULL ) {
+						if ( $cell == 0.0 && $qdata->question_id !==null ) {
 							$cell = array( 0=> $formatted_cell, "style"=>"color:gray" );
 						} else {
 							$cell = array( 0=>self::$skin->link( $current_title, $formatted_cell,
@@ -453,7 +453,7 @@ abstract class qp_QueryPage extends QueryPage {
 
 	public function __construct() {
 		global $wgUser;
-		if ( self::$skin == NULL ) {
+		if ( self::$skin == null ) {
 			self::$skin = $wgUser->getSkin();
 		}
 	}
@@ -564,7 +564,7 @@ class qp_UsersList extends qp_QueryPage {
 	function formatResult( $skin, $result ) {
 		global $wgLang, $wgContLang;
 		$link = "";
-		if ( $result !== NULL ) {
+		if ( $result !== null ) {
 			$uid = intval( $result->uid );
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
@@ -657,7 +657,7 @@ class qp_UserPollsList extends qp_QueryPage {
 
 	function linkParameters() {
 		$params[ "action" ] = $this->cmd;
-		if ( $this->uid !== NULL ) {
+		if ( $this->uid !== null ) {
 			$params[ "uid" ] = $this->uid;
 		}
 		return $params;
@@ -763,7 +763,7 @@ class qp_PollUsersList extends qp_QueryPage {
 	function formatResult( $skin, $result ) {
 		global $wgLang, $wgContLang;
 		$link = "";
-		if ( $result !== NULL ) {
+		if ( $result !== null ) {
 			$uid = intval( $result->uid );
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
@@ -776,7 +776,7 @@ class qp_PollUsersList extends qp_QueryPage {
 
 	function linkParameters() {
 		$params[ "action" ] = $this->cmd;
-		if ( $this->pid !== NULL ) {
+		if ( $this->pid !== null ) {
 			$params[ "id" ] = $this->pid;
 		}
 		return $params;
@@ -787,7 +787,7 @@ class qp_PollUsersList extends qp_QueryPage {
 /* list of users who voted for particular choice of particular proposal of particular question */
 class qp_UserCellList extends qp_QueryPage {
 	var $cmd;
-	var $pid = NULL;
+	var $pid = null;
 	var $ns, $title, $poll_id;
 	var $question_id, $proposal_id, $cat_id;
 	var $inverse = false;
@@ -817,9 +817,9 @@ class qp_UserCellList extends qp_QueryPage {
 		global $wgLang, $wgContLang;
 		$link = "";
 		$db = & wfGetDB( DB_SLAVE );
-		if ( $this->pid !== NULL ) {
+		if ( $this->pid !== null ) {
 			$pollStore = new qp_PollStore( array( 'from'=>'pid', 'pid'=> $this->pid ) );
-			if ( $pollStore->pid !== NULL ) {
+			if ( $pollStore->pid !== null ) {
 				$pollStore->loadQuestions();
 				$poll_title = Title::makeTitle( intval( $this->ns ), $this->title, qp_AbstractPoll::getPollTitleFragment( $this->poll_id, '' ) );
 				$pagename = htmlspecialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
@@ -877,7 +877,7 @@ class qp_UserCellList extends qp_QueryPage {
 	function formatResult( $skin, $result ) {
 		global $wgLang, $wgContLang;
 		$link = "";
-		if ( $result !== NULL ) {
+		if ( $result !== null ) {
 			$uid = intval( $result->uid );
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
@@ -891,7 +891,7 @@ class qp_UserCellList extends qp_QueryPage {
 
 	function linkParameters() {
 		$params[ "action" ] = $this->cmd;
-		if ( $this->pid !== NULL ) {
+		if ( $this->pid !== null ) {
 			$params[ "id" ] = $this->pid;
 			$params[ "qid" ] = $this->question_id;
 			$params[ "pid" ] = $this->proposal_id;

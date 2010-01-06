@@ -49,7 +49,7 @@ class SpecialOAIRepository extends UnlistedSpecialPage {
  * @param bool $contents NULL to make an open tag only
  * @return string
  */
-function oaiTag( $element, $attribs, $contents = NULL) {
+function oaiTag( $element, $attribs, $contents = null) {
 	$out = '<' . $element;
 	foreach( $attribs as $name => $val ) {
 		$out .= ' ' . $name . '="' . xmlsafe( $val ) . '"';

@@ -39,7 +39,7 @@ $wgExtensionCredits['other'][] = array(
 * If the LanguageSelector extension is installed, $wgLanguageSelectorLanguages is used
 * as a fallback.
 */
-$wgPolyglotLanguages = NULL;
+$wgPolyglotLanguages = null;
 
 /**
 * Namespaces to excempt from polyglot support, with respect to automatic redirects.
@@ -72,11 +72,11 @@ $wgExtensionFunctions[] = "wfPolyglotExtension";
 function wfPolyglotExtension() {
 	global $wgPolyglotLanguages;
 
-	if ( $wgPolyglotLanguages === NULL ) {
+	if ( $wgPolyglotLanguages === null ) {
 		$wgPolyglotLanguages = @$GLOBALS['wgLanguageSelectorLanguages'];
 	}
 	
-	if ( $wgPolyglotLanguages === NULL ) {
+	if ( $wgPolyglotLanguages === null ) {
 		$wgPolyglotLanguages = array_keys( $GLOBALS['wgLanguageNames'] );
 	}
 }
@@ -207,7 +207,7 @@ function wfPolyglotLinkBegin( $linker, $target, &$text, &$customAttribs, &$query
 
 function wfPolyglotGetLanguages( $title ) {
 	global $wgPolyglotLanguages;
-	if (!$wgPolyglotLanguages) return NULL;
+	if (!$wgPolyglotLanguages) return null;
 
 	$n = $title->getDBkey();
 	$ns = $title->getNamespace();
@@ -236,7 +236,7 @@ function wfPolyglotParserAfterTidy( &$parser, &$text ) {
 	$userlinks = $parser->mOutput->getLanguageLinks();
 
 	$links = array();
-	$pagelang = NULL;
+	$pagelang = null;
 
 	//TODO: if we followed a redirect, analyze the redirect's title too.
 	//      at least if wgPolyglotFollowRedirects is true

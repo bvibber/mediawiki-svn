@@ -33,7 +33,7 @@ if ( !defined( 'MEDIAWIKI' ) )
  */
 interface WikilogPager
 {
-	function including( $x = NULL );
+	function including( $x = null );
 	function getNavigationBar( $class = 'wl-navbar-any' );
 }
 
@@ -57,7 +57,7 @@ class WikilogSummaryPager
 	public $mLimitsShown = array( 5, 10, 20, 50 );
 
 	# Local variables.
-	protected $mQuery = NULL;			///< Wikilog item query data
+	protected $mQuery = null;			///< Wikilog item query data
 	protected $mIncluding = false;		///< If pager is being included
 
 	/**
@@ -100,7 +100,7 @@ class WikilogSummaryPager
 	/**
 	 * Property accessor/mutators.
 	 */
-	function including( $x = NULL ) { return wfSetVar( $this->mIncluding, $x ); }
+	function including( $x = null ) { return wfSetVar( $this->mIncluding, $x ); }
 
 	function getQueryInfo() {
 		return $this->mQuery->getQueryInfo( $this->mDb );
@@ -388,7 +388,7 @@ class WikilogArchivesPager
 	implements WikilogPager
 {
 	# Local variables.
-	protected $mQuery = NULL;			///< Wikilog item query data
+	protected $mQuery = null;			///< Wikilog item query data
 	protected $mIncluding = false;		///< If pager is being included
 
 	/**
@@ -406,7 +406,7 @@ class WikilogArchivesPager
 	/**
 	 * Property accessor/mutators.
 	 */
-	function including( $x = NULL ) { return wfSetVar( $this->mIncluding, $x ); }
+	function including( $x = null ) { return wfSetVar( $this->mIncluding, $x ); }
 
 	function getQueryInfo() {
 		return $this->mQuery->getQueryInfo( $this->mDb );

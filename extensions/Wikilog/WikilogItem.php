@@ -36,18 +36,18 @@ class WikilogItem
 	/**
 	 * General data about the article.
 	 */
-	public    $mID          = NULL;		///< Article ID.
-	public    $mName        = NULL;		///< Article title text (as in DB).
-	public    $mTitle       = NULL;		///< Article Title object.
-	public    $mParent      = NULL;		///< Parent wikilog article ID.
-	public    $mParentName  = NULL;		///< Parent wikilog title text.
-	public    $mParentTitle = NULL;		///< Parent wikilog Title object.
-	public    $mPublish     = NULL;		///< Article is published.
-	public    $mPubDate     = NULL;		///< Date the article was published.
-	public    $mUpdated     = NULL;		///< Date the article was last updated.
+	public    $mID          = null;		///< Article ID.
+	public    $mName        = null;		///< Article title text (as in DB).
+	public    $mTitle       = null;		///< Article Title object.
+	public    $mParent      = null;		///< Parent wikilog article ID.
+	public    $mParentName  = null;		///< Parent wikilog title text.
+	public    $mParentTitle = null;		///< Parent wikilog Title object.
+	public    $mPublish     = null;		///< Article is published.
+	public    $mPubDate     = null;		///< Date the article was published.
+	public    $mUpdated     = null;		///< Date the article was last updated.
 	public    $mAuthors     = array();	///< Array of authors.
 	public    $mTags        = array();	///< Array of tags.
-	public    $mNumComments = NULL;		///< Cached number of comments.
+	public    $mNumComments = null;		///< Cached number of comments.
 
 	/**
 	 * Constructor.
@@ -221,7 +221,7 @@ class WikilogItem
 	/**
 	 * Returns an array with all published comments.
 	 */
-	public function getComments( $thread = NULL ) {
+	public function getComments( $thread = null ) {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		if ( $thread ) {
@@ -257,8 +257,8 @@ class WikilogItem
 		$item->mParentName  = str_replace( '_', ' ', $row->wlw_title );
 		$item->mParentTitle = Title::makeTitle( $row->wlw_namespace, $row->wlw_title );
 		$item->mPublish     = intval( $row->wlp_publish );
-		$item->mPubDate     = $row->wlp_pubdate ? wfTimestamp( TS_MW, $row->wlp_pubdate ) : NULL;
-		$item->mUpdated     = $row->wlp_updated ? wfTimestamp( TS_MW, $row->wlp_updated ) : NULL;
+		$item->mPubDate     = $row->wlp_pubdate ? wfTimestamp( TS_MW, $row->wlp_pubdate ) : null;
+		$item->mUpdated     = $row->wlp_updated ? wfTimestamp( TS_MW, $row->wlp_updated ) : null;
 		$item->mNumComments = $row->wlp_num_comments;
 		$item->mAuthors     = unserialize( $row->wlp_authors );
 		$item->mTags        = unserialize( $row->wlp_tags );
@@ -283,7 +283,7 @@ class WikilogItem
 		if ( $row ) {
 			return self::newFromRow( $row );
 		}
-		return NULL;
+		return null;
 	}
 
 	/**
@@ -297,7 +297,7 @@ class WikilogItem
 		if ( $itemTitle ) {
 			return self::newFromID( $itemTitle->getArticleID() );
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 

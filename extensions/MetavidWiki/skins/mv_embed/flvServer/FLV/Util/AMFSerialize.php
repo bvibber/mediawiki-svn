@@ -135,7 +135,7 @@ class FLV_Util_AMFSerialize {
         } else {
 
             // if the datatype is not supported use a null value
-            return $this->serialize( NULL );
+            return $this->serialize( null );
 
         }
     }

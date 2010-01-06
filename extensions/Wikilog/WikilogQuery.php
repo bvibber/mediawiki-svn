@@ -40,7 +40,7 @@ class WikilogItemQuery
 	const PS_DRAFTS    = 2;		///< Return only drafts
 
 	# Local variables.
-	private $mWikilogTitle = NULL;			///< Filter by wikilog.
+	private $mWikilogTitle = null;			///< Filter by wikilog.
 	private $mPubStatus = self::PS_ALL;		///< Filter by published status.
 	private $mCategory = false;				///< Filter by category.
 	private $mAuthor = false;				///< Filter by author.
@@ -59,12 +59,12 @@ class WikilogItemQuery
 	 * title to query.
 	 * @param $wikilogTitle Wikilog title object to query for.
 	 */
-	public function __construct( $wikilogTitle = NULL ) {
+	public function __construct( $wikilogTitle = null ) {
 		$this->setWikilogTitle( $wikilogTitle );
 
 		# If constructed without a title (from Special:Wikilog), it means that
 		# the listing is global, and needs wikilog parameter to filter.
-		$this->mNeedWikilogParam = ( $wikilogTitle == NULL );
+		$this->mNeedWikilogParam = ( $wikilogTitle == null );
 	}
 
 	/**
@@ -107,7 +107,7 @@ class WikilogItemQuery
 			$this->mCategory = $category;
 		} else if ( is_string( $category ) ) {
 			$t = Title::makeTitleSafe( NS_CATEGORY, $category );
-			if ( $t !== NULL ) {
+			if ( $t !== null ) {
 				$this->mCategory = $t;
 			}
 		}
@@ -122,7 +122,7 @@ class WikilogItemQuery
 			$this->mAuthor = $author;
 		} else if ( is_string( $author ) ) {
 			$t = Title::makeTitleSafe( NS_USER, $author );
-			if ( $t !== NULL ) {
+			if ( $t !== null ) {
 				$this->mAuthor = $t;
 			}
 		}
@@ -246,7 +246,7 @@ class WikilogItemQuery
 		# Customizations.
 
 		# # Filter by wikilog name.
-		if ( $this->mWikilogTitle !== NULL ) {
+		if ( $this->mWikilogTitle !== null ) {
 			$q_conds['wlp_parent'] = $this->mWikilogTitle->getArticleId();
 		}
 
@@ -345,7 +345,7 @@ class WikilogItemQuery
 	 * wikilog.
 	 */
 	public function isSingleWikilog() {
-		return $this->mWikilogTitle !== NULL;
+		return $this->mWikilogTitle !== null;
 	}
 
 	/**

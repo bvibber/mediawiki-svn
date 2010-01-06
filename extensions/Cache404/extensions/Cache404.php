@@ -147,7 +147,7 @@ if (defined('MEDIAWIKI')) {
 
 	function clearCookie($name) {
 		global $wgCookieDomain, $wgCookiePath;
-		setcookie($name, "", NULL, $wgCookiePath, $wgCookieDomain);
+		setcookie($name, "", null, $wgCookiePath, $wgCookieDomain);
 	}
 	
 	function wfSpecialUserlogout2( $par ) {
@@ -429,7 +429,7 @@ if (defined('MEDIAWIKI')) {
 			$this->mTitle = $title;
 		}
 
-		function getVal($name, $default = NULL) {
+		function getVal($name, $default = null) {
 			if ($name == 'title') {
 				return $this->mTitle;
 			} else {
@@ -683,7 +683,7 @@ else if (typeof window.attachEvent != \"undefined\") {
 				return $s[$f];
 			}
 		}
-		return NULL;
+		return null;
 	}
 
 	function setupCache404() {

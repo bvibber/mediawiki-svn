@@ -219,7 +219,7 @@ class WhiteListExec
 //wfDebug($sql);
 
                 // We should also check that $title is not a redirect to a whitelisted page
-                $redirecttitle = NULL;
+                $redirecttitle = null;
                 $article = new Article($title);
                 if (is_object($article))
                 {

@@ -53,24 +53,24 @@ class WikilogComment
 	/**
 	 * Wikilog article item this comment is associated to.
 	 */
-	public  $mItem			= NULL;
+	public  $mItem			= null;
 
 	/**
 	 * General data about the comment.
 	 */
-	public  $mID			= NULL;		///< Comment ID.
-	public  $mParent		= NULL;		///< Parent comment ID.
-	public  $mThread		= NULL;		///< Comment thread.
-	public  $mUserID		= NULL;		///< Comment author user id.
-	public  $mUserText		= NULL;		///< Comment author user name.
-	public  $mAnonName		= NULL;		///< Comment anonymous author name.
-	public  $mStatus		= NULL;		///< Comment status.
-	public  $mTimestamp		= NULL;		///< Date the comment was published.
-	public  $mUpdated		= NULL;		///< Date the comment was last updated.
-	public  $mCommentPage	= NULL;		///< Comment page id.
-	public  $mCommentTitle  = NULL;		///< Comment page title.
-	public  $mCommentRev	= NULL;		///< Comment revision id.
-	public  $mText			= NULL;		///< Comment text.
+	public  $mID			= null;		///< Comment ID.
+	public  $mParent		= null;		///< Parent comment ID.
+	public  $mThread		= null;		///< Comment thread.
+	public  $mUserID		= null;		///< Comment author user id.
+	public  $mUserText		= null;		///< Comment author user name.
+	public  $mAnonName		= null;		///< Comment anonymous author name.
+	public  $mStatus		= null;		///< Comment status.
+	public  $mTimestamp		= null;		///< Date the comment was published.
+	public  $mUpdated		= null;		///< Date the comment was last updated.
+	public  $mCommentPage	= null;		///< Comment page id.
+	public  $mCommentTitle  = null;		///< Comment page title.
+	public  $mCommentRev	= null;		///< Comment revision id.
+	public  $mText			= null;		///< Comment text.
 
 	/**
 	 * Whether the text was changed, and thus a database update is required.
@@ -101,7 +101,7 @@ class WikilogComment
 	public function setUser( $user ) {
 		$this->mUserID = $user->getId();
 		$this->mUserText = $user->getName();
-		$this->mAnonName = NULL;
+		$this->mAnonName = null;
 	}
 
 	/**
@@ -230,7 +230,7 @@ class WikilogComment
 		$this->mItem->mTitle->invalidateCache();
 		$this->mItem->mTitle->getTalkPage()->invalidateCache();
 		$this->mItem->mParentTitle->invalidateCache();
-		$this->mID = NULL;
+		$this->mID = null;
 	}
 
 	/**
@@ -336,7 +336,7 @@ class WikilogComment
 	 * @param $parent Parent comment id.
 	 * @return New WikilogComment object.
 	 */
-	public static function newFromText( &$item, $text, $parent = NULL ) {
+	public static function newFromText( &$item, $text, $parent = null ) {
 		$ts = wfTimestamp( TS_MW );
 		$comment = new WikilogComment( $item );
 		$comment->mParent    = $parent;
@@ -360,7 +360,7 @@ class WikilogComment
 		if ( $row ) {
 			return self::newFromRow( $item, $row );
 		}
-		return NULL;
+		return null;
 	}
 
 	/**
@@ -376,7 +376,7 @@ class WikilogComment
 		if ( $row && $row->wlc_post == $item->getID() ) {
 			return self::newFromRow( $item, $row );
 		}
-		return NULL;
+		return null;
 	}
 
 	/**

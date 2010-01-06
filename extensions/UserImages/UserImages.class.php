@@ -12,12 +12,12 @@ class UserImagesGallery {
 	/**
 	 * Parent parser
 	 */
-	private $parser = NULL;
+	private $parser = null;
 
 	/**
 	 * User object representing the queried user
 	 */
-	private $user = NULL;
+	private $user = null;
 
 	/**
 	 * Custom caption for output
