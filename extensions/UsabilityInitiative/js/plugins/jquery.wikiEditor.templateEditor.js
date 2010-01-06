@@ -378,8 +378,14 @@ fn: {
 			if ( currentField.indexOf( '=' ) == -1 ) {
 				// anonymous field, gets a number
 				valueBegin = currentField.match( /\S+/ ); //first nonwhitespace character
+				if( valueBegin == null ){ //ie
+					continue;
+				}
 				valueBeginIndex = valueBegin.index + oldDivider+1;
 				valueEnd = currentField.match( /[^\s]\s*$/ ); //last nonwhitespace character
+				if( valueEnd == null ){ //ie
+					continue;
+				}
 				valueEndIndex = valueEnd.index + oldDivider + 2;
 				ranges.push( new Range( ranges[ranges.length-1].end,
 					valueBeginIndex ) ); //all the chars upto now
@@ -408,6 +414,9 @@ fn: {
 				nameBeginIndex = nameBegin.index + oldDivider + 1;
 				// Last nonwhitespace and non } character
 				nameEnd = currentName.match( /[^\s]\s*$/ );
+				if( nameEnd == null ){ //ie
+					continue;
+				}
 				nameEndIndex = nameEnd.index + oldDivider + 2;
 				// All the chars upto now 
 				ranges.push( new Range( ranges[ranges.length-1].end, nameBeginIndex ) );
@@ -416,9 +425,15 @@ fn: {
 				oldDivider += currentField.indexOf( '=' ) + 1;
 				// First nonwhitespace character
 				valueBegin = currentValue.match( /\S+/ );
+				if( valueBegin == null ){ //ie
+					continue;
+				}
 				valueBeginIndex = valueBegin.index + oldDivider + 1;
 				// Last nonwhitespace and non } character
 				valueEnd = currentValue.match( /[^\s]\s*$/ );
+				if( valueEnd == null ){ //ie
+					continue;
+				}
 				valueEndIndex = valueEnd.index + oldDivider + 2;
 				// All the chars upto now
 				equalsIndex = ranges.push( new Range( ranges[ranges.length-1].end, valueBeginIndex) ) - 1;
