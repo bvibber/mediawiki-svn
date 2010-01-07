@@ -1019,10 +1019,16 @@ Fe hoffem gael eich barn ar ein rhyngwyneb newydd, a byddem yn ddiolchgar petaec
 	'optin-success-in' => 'Rydych nawr yn arbrofi gyda Beta.
 Gallwch adael y fersiwn Beta unrhyw bryd drwy wasgu\'r cyswllt "{{int:optin-leave}}" ar frig y dudalen.',
 	'optin-leave-cancel' => 'Os ydych am barhau i ddefnyddio Beta, gallwch ddychwelyd at y dudalen $1.',
+	'optin-success-out' => 'Rydych wedi gadael y fersiwn Beta.
+Gallwch arbrofi eto gyda Beta trwy wasgu\'r cyswllt "{{int:optin-try}}" ar frig y dudalen.',
 	'optin-success-feedback' => 'Diolch am eich adborth!',
 	'optin-accept-short' => 'Awn ati!',
 	'optin-accept-long' => 'Rhoi cynnig ar Beta',
+	'optin-accept-long-anon' => 'Mewngofnodi ac arbrofi gyda Beta',
+	'optin-deny-short' => 'Dim diolch',
+	'optin-deny-long' => 'Dychweler at y dudalen gynt',
 	'optin-submit-out' => 'Gadael Beta',
+	'optin-submit-feedback' => 'Anfoner yr adborth',
 	'optin-survey-yes' => 'Ydw',
 	'optin-survey-no' => 'Nacydw',
 	'optin-survey-question-whyoptout' => "Pam ydych chi'n gadael Beta? (Dewiswch pob rheswm perthnasol.)",
@@ -1041,6 +1047,7 @@ Gallwch adael y fersiwn Beta unrhyw bryd drwy wasgu\'r cyswllt "{{int:optin-leav
 	'optin-survey-question-res' => "Pa gydraniad sydd i'ch sgrin?",
 	'optin-survey-question-changes' => "Pa newidiadau hoffech chi weld yn fersiwn Beta'r dyfodol (dewiswch y cwbl yr hoffech eu gweld)?",
 	'optin-survey-answer-changes-nav' => "Gwneud yr offer llywio ar y wefan yn haws i'w defnyddio.",
+	'optin-survey-answer-changes-edittools' => "Cynyddu a gwella'r offer golygu.",
 );
 
 /** Danish (Dansk)

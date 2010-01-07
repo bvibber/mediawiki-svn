@@ -2033,6 +2033,13 @@ Klicka på en inställning för att visa statistik om den.',
 	'prefstats-legend-in' => 'Deltar',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'prefstats-title' => 'Takwimu za mapendekezo',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Ravichandra

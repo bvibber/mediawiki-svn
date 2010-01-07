@@ -455,6 +455,13 @@ $messages['sv'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitext',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'wikieditor-wikitext-tab' => 'Kodi ya wiki',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

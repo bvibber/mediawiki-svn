@@ -176,7 +176,10 @@ $messages['cu'] = array(
  */
 $messages['cy'] = array(
 	'optin-try' => 'Rhowch gynnig ar Beta',
+	'tooltip-pt-optin-try' => 'Rhoi cynnig ar y nodweddion newydd',
 	'optin-leave' => 'Gadael Beta',
+	'tooltip-pt-optin-leave' => "Gadael llonydd i'r nodweddion newydd",
+	'tooltip-pt-optin-feedback' => "Cynnig adborth ynghylch eich profiad o ddefnyddio'r nodweddion newydd",
 );
 
 /** Danish (Dansk)
