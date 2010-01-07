@@ -271,12 +271,35 @@ abstract class FileRepo {
 
 	/**
 	 * Get the file name of an image from its title object, possibly with a 
-	 * generated extension.
-	 * Stub function pending full implementation of bug 4421.
+	 * generated extension
 	 */
 	function getFilenameFromTitle( $title , $mime = NULL ) {
-		return $this->getNameFromTitle( $title );
+		$name = $this->getNameFromTitle( $title );
+		$ext = $this->getAddedExtensionFromTitle ( $title, $mime );
+		return $name.$ext;
 	}
+	
+	/**
+	 * Get an added extension to a filename to make the media type line up with
+	 * the file name, returning a blank string if no additional extension is 
+	 * needed.  Includes the leading dot.
+	 */
+	function getAddedExtensionFromTitle( $title, $mime = NULL ) {
+		$name = $this->getNameFromTitle( $title );
+
+		// tack on an extension corresponding to the MIME type if the MIME type
+		// is passed in and we figure out we need it.
+		$mimeMagic = MimeMagic::singleton();
+		$ext = File::getNormalizedExtensionFromName( $name );
+		if ( isset($mime) && !$mimeMagic->isMatchingExtension( $ext, $mime ) ) {
+			$addext = ".".$mimeMagic->getPreferredExtensionForType( $mime );
+		}
+		else {
+			$addext = '';
+		}
+
+		return $addext;
+	}		
 
 	static function getHashPathForLevel( $name, $levels ) {
 		if ( $levels == 0 ) {
@@ -426,13 +449,19 @@ abstract class FileRepo {
 	 *
 	 * @param string $srcPath The source path or URL
 	 * @param string $dstRel The destination relative path
+	 * @param string $currentRel The current relative path to existing file.
+	 *        Usually the same as dstRel, but may be different if the MIME type
+	 *        (and thus file extension) changes.
 	 * @param string $archiveRel The relative path where the existing file is to
 	 *        be archived, if there is one. Relative to the public zone root.
 	 * @param integer $flags Bitfield, may be FileRepo::DELETE_SOURCE to indicate
 	 *        that the source file should be deleted if possible
 	 */
-	function publish( $srcPath, $dstRel, $archiveRel, $flags = 0 ) {
-		$status = $this->publishBatch( array( array( $srcPath, $dstRel, $archiveRel ) ), $flags );
+	function publish( $srcPath, $dstRel, $currentRel, $archiveRel, $flags = 0 ) {
+		$status = $this->publishBatch( array( array( $srcPath, 
+													 $dstRel, 
+													 $currentRel, 
+													 $archiveRel ) ), $flags );
 		if ( $status->successCount == 0 ) {
 			$status->ok = false;
 		}

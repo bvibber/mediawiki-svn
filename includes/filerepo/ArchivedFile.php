@@ -108,7 +108,8 @@ class ArchivedFile
 					'fa_user',
 					'fa_user_text',
 					'fa_timestamp',
-					'fa_deleted' ),
+					'fa_deleted',
+					'fa_file_ext' ),
 				$conds,
 				__METHOD__,
 				array( 'ORDER BY' => 'fa_timestamp DESC' ) );
@@ -138,6 +139,7 @@ class ArchivedFile
 			$this->user_text = $row->fa_user_text;
 			$this->timestamp = $row->fa_timestamp;
 			$this->deleted = $row->fa_deleted;
+			$this->file_ext = $row->fa_file_ext;
 		} else {
 			throw new MWException( 'This title does not correspond to an image page.' );
 			return;
@@ -172,6 +174,7 @@ class ArchivedFile
 		$file->user_text = $row->fa_user_text;
 		$file->timestamp = $row->fa_timestamp;
 		$file->deleted = $row->fa_deleted;
+		$file->file_ext = $row->fa_file_ext;
 
 		return $file;
 	}

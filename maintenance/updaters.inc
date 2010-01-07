@@ -169,6 +169,7 @@ $wgUpdates = array(
 		// A field changed name mid-release cycle, so fix it for anyone using
 		// trunk
 		array( 'rename_eu_wiki_id' ),
+		array( 'add_field', 'image',         'img_file_ext',     'patch-img_file_ext.sql'),	
 	),
 
 	'sqlite' => array(
@@ -194,6 +195,7 @@ $wgUpdates = array(
 		array( 'add_index', 'change_tag',    'change_tag_rc_tag', 'patch-change_tag-indexes.sql' ),
 		array( 'add_field', 'redirect',      'rd_interwiki',     'patch-rd_interwiki.sql' ),
 		array( 'do_update_transcache_field' ),
+		array( 'add_field', 'image',         'img_file_ext',     'patch-img_file_ext.sql'),	
 
 		// version-independent searchindex setup, added in 1.16
 		array( 'sqlite_setup_searchindex' ),

@@ -153,10 +153,13 @@ abstract class File {
 
 	/**
 	 * Return the file name of this file
-	 * Stub function pending full implementation of bug 4421.
 	 */
 	public function getFilename() {
-		return $this->getName();
+		if ( !isset( $this->filename ) ) {
+			$this->filename = $this->getName()
+					  . $this->getAddedFileExt();
+		}
+		return $this->filename;
 	}
 
 	/**
@@ -164,11 +167,35 @@ abstract class File {
 	 */
 	function getExtension() {
 		if ( !isset( $this->extension ) ) {
-			$n = strrpos( $this->getName(), '.' );
-			$this->extension = self::normalizeExtension(
-				$n ? substr( $this->getName(), $n + 1 ) : '' );
+			$name = $this->getName();
+			$mime = $this->getMimeType();
+			$mimeMagic = MimeMagic::singleton();
+			$this->extension = self::getNormalizedExtensionFromName( $name );
+			if ( !$mimeMagic->isMatchingExtension( $this->extension, $mime ) ) {
+				$this->extension = $mimeMagic->getPreferredExtensionForType( $mime );
+			}
 		}
 		return $this->extension;
+	}
+
+	/**
+	 * Return the additional file extension as needed to make the mime type
+	 * and filename match.  Includes the leading dot.
+	 */
+	function getAddedFileExt() {
+		if ( !isset($this->file_ext) ) {
+			$name = $this->getName();
+			$mime = $this->getMimeType();
+			$mimeMagic = MimeMagic::singleton();
+			$ext = self::getNormalizedExtensionFromName( $name );
+			if ( !$mimeMagic->isMatchingExtension( $ext, $mime ) ) {
+				$this->file_ext = "." . $this->getExtension();
+			}
+			else {
+				$this->file_ext = "";
+			}
+		}
+		return $this->file_ext;
 	}
 
 	/**

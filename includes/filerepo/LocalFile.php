@@ -50,7 +50,8 @@ class LocalFile extends File
 		$upgraded,         # Whether the row was upgraded on load
 		$locked,           # True if the image row is locked
 		$missing,          # True if file is not present in file system. Not to be cached in memcached
-		$deleted;       # Bitfield akin to rev_deleted
+		$deleted,          # Bitfield akin to rev_deleted
+		$file_ext;         # File extension
 
 	/**#@-*/
 
@@ -114,6 +115,7 @@ class LocalFile extends File
 			'img_user_text',
 			'img_timestamp',
 			'img_sha1',
+			'img_file_ext',
 		);
 	}
 
@@ -205,7 +207,8 @@ class LocalFile extends File
 
 	function getCacheFields( $prefix = 'img_' ) {
 		static $fields = array( 'size', 'width', 'height', 'bits', 'media_type',
-			'major_mime', 'minor_mime', 'metadata', 'timestamp', 'sha1', 'user', 'user_text', 'description' );
+			'major_mime', 'minor_mime', 'metadata', 'timestamp', 'sha1', 
+			'user', 'user_text', 'description', 'file_ext' );
 		static $results = array();
 		if ( $prefix == '' ) {
 			return $fields;
@@ -497,6 +500,21 @@ class LocalFile extends File
 		return $this->media_type;
 	}
 
+	/**
+	 * Return the additional file extension as needed to make the mime type
+	 * and filename match.  Pull from DB if it's loaded from there; otherwise
+	 * generate it.  Includes the leading dot.
+	 */
+	function getAddedFileExt() {
+		$this->load();
+		if( isset($this->file_ext) ) {
+			return $this->file_ext;
+		}
+		else {
+			return parent::getAddedFileExt();
+		}
+	}
+
 	/** canRender inherited */
 	/** mustRender inherited */
 	/** allowInlineDisplay inherited */
@@ -761,6 +779,7 @@ class LocalFile extends File
 	 */
 	function upload( $srcPath, $comment, $pageText, $flags = 0, $props = false, $timestamp = false, $user = null ) {
 		$this->lock();
+		
 		$status = $this->publish( $srcPath, $flags );
 		if ( $status->ok ) {
 			if ( !$this->recordUpload2( $status->value, $comment, $pageText, $props, $timestamp, $user ) ) {
@@ -846,7 +865,8 @@ class LocalFile extends File
 				'img_user' => $user->getId(),
 				'img_user_text' => $user->getName(),
 				'img_metadata' => $this->metadata,
-				'img_sha1' => $this->sha1
+				'img_sha1' => $this->sha1,
+				'img_file_ext' => $this->getAddedFileExt()
 			),
 			__METHOD__,
 			'IGNORE'
@@ -873,7 +893,8 @@ class LocalFile extends File
 					'oi_media_type' => 'img_media_type',
 					'oi_major_mime' => 'img_major_mime',
 					'oi_minor_mime' => 'img_minor_mime',
-					'oi_sha1' => 'img_sha1'
+					'oi_sha1' => 'img_sha1',
+					'oi_file_ext' => 'img_file_ext'
 				), array( 'img_name' => $this->getName() ), __METHOD__
 			);
 
@@ -892,7 +913,8 @@ class LocalFile extends File
 					'img_user' => $user->getId(),
 					'img_user_text' => $user->getName(),
 					'img_metadata' => $this->metadata,
-					'img_sha1' => $this->sha1
+					'img_sha1' => $this->sha1,
+					'img_file_ext' => $this->getAddedFileExt()
 				), array( /* WHERE */
 					'img_name' => $this->getName()
 				), __METHOD__
@@ -970,11 +992,43 @@ class LocalFile extends File
 	 */
 	function publish( $srcPath, $flags = 0 ) {
 		$this->lock();
+
+		if( $this->fileExists ) {
+			// First construct name for $archiveRel, using the cached filename
+			$this->setProps( $this->repo->getFileProps( $this->getVirtualUrl() ) );
+	
+			$archiveDate = gmdate( 'YmdHis' );
+			$archiveName = $archiveDate . '!'. $this->getName();
+			$archiveFilename = $archiveDate . '!'. $this->getFilename();
+			$archiveRel = 'archive/' . $this->getHashPath() . $archiveFilename;
+
+			$currentRel = $this->getRel();
+		}
+		else {
+			$archiveRel = null;
+			$currentRel = null;
+		}
+
+		// Now regenerate the filename with the new MIME type.
+		// First, clear cached file_ext, filename, and extension
+		unset($this->file_ext);
+		unset($this->filename);
+		unset($this->extension);
+
+		// Set the props (MIME type) for this object to match srcPath
+		if ( $this->repo->isVirtualUrl ( $srcPath ) ) {
+			$props = $this->repo->getFileProps ( $srcPath );
+		}
+		else {
+			$props = File::getPropsFromPath( $srcPath );
+		}
+		$this->setProps( $props );
+		// generate new dstRel with extension to match new MIME type
 		$dstRel = $this->getRel();
-		$archiveName = gmdate( 'YmdHis' ) . '!'. $this->getName();
-		$archiveRel = 'archive/' . $this->getHashPath() . $archiveName;
+
 		$flags = $flags & File::DELETE_SOURCE ? LocalRepo::DELETE_SOURCE : 0;
-		$status = $this->repo->publish( $srcPath, $dstRel, $archiveRel, $flags );
+		wfDebugLog("upload", __METHOD__.": srcPath: {$srcPath} dstRel: {$dstRel} currentRel: {$currentRel} archiveRel: {$archiveRel} flags: {$flags}");
+		$status = $this->repo->publish( $srcPath, $dstRel, $currentRel, $archiveRel, $flags );
 		if ( $status->value == 'new' ) {
 			$status->value = '';
 		} else {
@@ -1235,7 +1289,10 @@ class LocalFileDeleteBatch {
 	}
 
 	function addOld( $oldName ) {
-		$this->srcRels[$oldName] = $this->file->getArchiveRel( $oldName );
+		$oldFile = OldLocalFile::newFromArchiveName( $this->file->title, 
+			$this->file->repo, 
+			$oldName );
+		$this->srcRels[$oldName] = $this->file->getArchiveRel( $oldFile->getArchiveFilename() );
 		$this->archiveUrls[] = $this->file->getArchiveUrl( $oldName );
 	}
 
@@ -1345,7 +1402,8 @@ class LocalFileDeleteBatch {
 					'fa_description'  => 'img_description',
 					'fa_user'         => 'img_user',
 					'fa_user_text'    => 'img_user_text',
-					'fa_timestamp'    => 'img_timestamp'
+					'fa_timestamp'    => 'img_timestamp',
+					'fa_file_ext'     => 'img_file_ext'
 				), $where, __METHOD__ );
 		}
 
@@ -1377,7 +1435,8 @@ class LocalFileDeleteBatch {
 					'fa_user'         => 'oi_user',
 					'fa_user_text'    => 'oi_user_text',
 					'fa_timestamp'    => 'oi_timestamp',
-					'fa_deleted'      => $bitfield
+					'fa_deleted'      => $bitfield,
+					'fa_file_ext'     => 'oi_file_ext'
 				), $where, __METHOD__ );
 		}
 	}
@@ -1494,6 +1553,9 @@ class LocalFileDeleteBatch {
 		foreach( $batch as $batchItem )
 			if( $result[$batchItem[0]] )
 				$newBatch[] = $batchItem;
+			else
+				wfDebugLog( 'filedelete',__METHOD__.": Skipping ".$batchItem[0] );
+
 		return $newBatch;
 	}
 }
@@ -1609,12 +1671,14 @@ class LocalFileRestoreBatch {
 					'minor_mime' => $row->fa_minor_mime,
 					'major_mime' => $row->fa_major_mime,
 					'media_type' => $row->fa_media_type,
-					'metadata'   => $row->fa_metadata
+					'metadata'   => $row->fa_metadata,
+					'file_ext'   => $row->fa_file_ext
 				);
 			}
 
 			if ( $first && !$exists ) {
 				// This revision will be published as the new current version
+				$this->file->setProps( $props );
 				$destRel = $this->file->getRel();
 				$insertCurrent = array(
 					'img_name'        => $row->fa_name,
@@ -1630,7 +1694,8 @@ class LocalFileRestoreBatch {
 					'img_user'        => $row->fa_user,
 					'img_user_text'   => $row->fa_user_text,
 					'img_timestamp'   => $row->fa_timestamp,
-					'img_sha1'        => $sha1
+					'img_sha1'        => $sha1,
+					'img_file_ext'    => $props['file_ext']
 				);
 				// The live (current) version cannot be hidden!
 				if( !$this->unsuppress && $row->fa_deleted ) {
@@ -1650,7 +1715,8 @@ class LocalFileRestoreBatch {
 					} while ( isset( $archiveNames[$archiveName] ) );
 				}
 				$archiveNames[$archiveName] = true;
-				$destRel = $this->file->getArchiveRel( $archiveName );
+				$destRel = $this->file->getArchiveRel( $archiveName.$props['file_ext'] );
+				wfDebugLog( 'fileundelete', __METHOD__.": Restoring archive destRel: {$destRel}" );
 				$insertBatch[] = array(
 					'oi_name'         => $row->fa_name,
 					'oi_archive_name' => $archiveName,
@@ -1667,7 +1733,8 @@ class LocalFileRestoreBatch {
 					'oi_major_mime'   => $props['major_mime'],
 					'oi_minor_mime'   => $props['minor_mime'],
 					'oi_deleted'      => $this->unsuppress ? 0 : $row->fa_deleted,
-					'oi_sha1'         => $sha1 );
+					'oi_sha1'         => $sha1,
+					'oi_file_ext'     => $props['file_ext'] );
 			}
 
 			$deleteIds[] = $row->fa_id;
@@ -1793,7 +1860,7 @@ class LocalFileRestoreBatch {
  * @ingroup FileRepo
  */
 class LocalFileMoveBatch {
-	var $file, $cur, $olds, $oldCount, $archive, $target, $db;
+	var $file, $cur, $olds, $oldCount, $archive, $target, $db, $mime;
 
 	function __construct( File $file, Title $target ) {
 		$this->file = $file;
@@ -1801,9 +1868,16 @@ class LocalFileMoveBatch {
 		$this->oldHash = $this->file->repo->getHashPath( $this->file->getName() );
 		$this->newHash = $this->file->repo->getHashPath( $this->target->getDBkey() );
 		$this->oldName = $this->file->getName();
+		$this->oldFilename = $this->file->getFilename();
 		$this->newName = $this->file->repo->getNameFromTitle( $this->target );
-		$this->oldRel = $this->oldHash . $this->oldName;
-		$this->newRel = $this->newHash . $this->newName;
+		$this->oldRel = $this->oldHash . $this->file->getFilename();
+		$this->mime = $this->file->getMimeType();
+		$this->newRel = $this->newHash . $this->file->repo->getFilenameFromTitle( $this->target, 
+																				  $this->mime );
+		$this->oldExt = $this->file->getAddedFileExt();
+		$this->newExt = $this->file->repo->getAddedExtensionFromTitle( $this->target,
+																	   $this->mime );
+
 		$this->db = $file->repo->getMasterDb();
 	}
 
@@ -1823,20 +1897,30 @@ class LocalFileMoveBatch {
 		$this->oldCount = 0;
 
 		$result = $this->db->select( 'oldimage',
-			array( 'oi_archive_name', 'oi_deleted' ),
+			array( 'oi_archive_name', 'oi_deleted', 
+				   'oi_major_mime', 'oi_minor_mime' ),
 			array( 'oi_name' => $this->oldName ),
 			__METHOD__
 		);
+		$mimeMagic = MimeMagic::singleton();
 		while( $row = $this->db->fetchObject( $result ) ) {
+			$mime = $row->oi_major_mime . "/" . $row->oi_minor_mime;
+
 			$oldName = $row->oi_archive_name;
+			$extension = File::getNormalizedExtensionFromName( $oldName );
+			if ( !$mimeMagic->isMatchingExtension( $extension, $mime ) ) {
+				$oldName .= "." . 
+					$mimeMagic->getPreferredExtensionForType( $mime );
+			}
+
 			$bits = explode( '!', $oldName, 2 );
 			if( count( $bits ) != 2 ) {
 				wfDebug( "Invalid old file name: $oldName \n" );
 				continue;
 			}
 			list( $timestamp, $filename ) = $bits;
-			if( $this->oldName != $filename ) {
-				wfDebug( "Invalid old file name: $oldName \n" );
+			if( $this->oldFilename != $filename ) {
+				wfDebug( "Mismatched file name: $oldName (vs. {$this->oldFilename})\n" );
 				continue;
 			}
 			$this->oldCount++;
@@ -1844,9 +1928,16 @@ class LocalFileMoveBatch {
 			if( $row->oi_deleted & File::DELETED_FILE ) {
 				continue;
 			}
+
+			$newNameFixed = $this->newName;
+			$extension = File::getNormalizedExtensionFromName( $newNameFixed );
+			if ( !$mimeMagic->isMatchingExtension( $extension, $mime ) ) {
+				$newNameFixed .= "." . 
+					$mimeMagic->getPreferredExtensionForType( $mime );
+			}
 			$this->olds[] = array(
 				"{$archiveBase}/{$this->oldHash}{$oldName}",
-				"{$archiveBase}/{$this->newHash}{$timestamp}!{$this->newName}"
+				"{$archiveBase}/{$this->newHash}{$timestamp}!{$newNameFixed}"
 			);
 		}
 		$this->db->freeResult( $result );
@@ -1887,7 +1978,7 @@ class LocalFileMoveBatch {
 		// Update current image
 		$dbw->update( 
 			'image',
-			array( 'img_name' => $this->newName ),
+			array( 'img_name' => $this->newName, 'img_file_ext' => $this->newExt ),
 			array( 'img_name' => $this->oldName ),
 			__METHOD__
 		);
@@ -1912,7 +2003,60 @@ class LocalFileMoveBatch {
 		$status->successCount += $affected;
 		$status->failCount += $total - $affected;
 
+		$this->fixAddedOldFileExtensionsInDB();
+
 		return $status;
+	}
+
+	/**
+	 * Iterate through each old file in oldimage and reevaluate whether 
+	 * oi_file_ext should be empty or should get a new value based on mime type
+	 */
+	function fixAddedOldFileExtensionsInDB() {
+		$dbw = $this->db;
+
+		// grab a list of the distinct MIME types for all old files
+		$result = $dbw->select( 'oldimage',
+			array( 'oi_major_mime', 'oi_minor_mime' ),
+			array( 'oi_name' => $this->newName ),
+			__METHOD__,
+			'DISTINCT'
+		);
+		$mimetypes=array();
+
+		// build a $mimetypes array
+		while( $row = $dbw->fetchObject( $result ) ) {
+			$mimetypes[]=array($row->oi_major_mime, $row->oi_minor_mime);
+		}
+		
+		// for each of the $mimetypes, check the type against the page title
+		// extension.  If there's a mismatch, populate oi_file_ext with a
+		// matching file extension.  If not, leave it blank.
+		$mimeMagic = MimeMagic::singleton();
+		foreach ($mimetypes as $mimepart) {
+			$mime = $mimepart[0]."/".$mimepart[1];
+			$extension = File::getNormalizedExtensionFromName( $this->newName );
+			wfDebugLog( 'imagemove', "newName: {$this->newName} Mime type: {$mime}  Extension: {$extension}" );
+
+			if ( $mimeMagic->isMatchingExtension( $extension, $mime ) ) {
+				$addedExt = '';
+			}
+			else {
+				$addedExt = "." . 
+					$mimeMagic->getPreferredExtensionForType( $mime );
+			}
+
+			$dbw->update(
+				'oldimage',
+				array(
+					'oi_file_ext' => $addedExt,
+				),
+				array( 'oi_major_mime' => $mimepart[0],
+					   'oi_minor_mime' => $mimepart[1],
+					   'oi_name' => $this->newName ),
+				__METHOD__
+			);
+		}
 	}
 
 	/*

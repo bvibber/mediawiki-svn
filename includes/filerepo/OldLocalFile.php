@@ -97,10 +97,18 @@ class OldLocalFile extends LocalFile {
 
 	/**
 	 * This function tacks on file extension to archive_name, if needed.
-	 * Stub function pending full implementation of bug 4421.
 	 */
 	public function getArchiveFilename() {
-		return $this->getArchiveName();
+		if ( !isset( $this->archive_filename ) ) {
+			$archiveName = $this->getArchiveName();
+			if ( $archiveName == '') {
+				throw new MWException( "Blank return value from getArchiveName in ".__METHOD__ );
+			}
+			$this->archive_filename = $this->getArchiveName()
+					  . $this->getAddedFileExt();
+			wfDebug(__METHOD__.": archive_name: {$this->archive_name} archive_filename: {$this->archive_filename}\n");
+		}
+		return $this->archive_filename;
 	}
 
 	function isOld() {

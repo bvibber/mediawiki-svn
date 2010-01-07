@@ -305,12 +305,56 @@ class FSRepo extends FileRepo {
 	}
 
 	/**
+	 * Validate and stage a given relative path (e.g. create parent directories)
+	 * @param string $targetRel Relative path to check/stage
+	 * @return FileRepoStatus
+	 */
+	function prepTarget( $targetRel ) {
+		global $wgCheckFileExtensions;
+			global $wgCheckFileExtensions, $wgStrictFileExtensions;
+			global $wgFileExtensions, $wgFileBlacklist;
+		$status = $this->newGood();
+		if ( !$this->validateFilename( $targetRel ) ) {
+			throw new MWException( 'Validation error in $targetRel' );
+		}
+		$mimeMagic = MimeMagic::singleton();
+		$ext = File::getNormalizedExtensionFromName( $targetRel );
+		$mime = $mimeMagic->guessTypesForExtension( $ext );
+
+		if ( $ext == '' ) {
+			throw new MWException( 'MIME type detection error for $targetRel' );
+		}
+
+		/* Don't allow users to override the blacklist (check file extension) */
+		if ( in_array( $ext, $wgFileBlacklist ) ) {
+			// Since the file extension uploaded by the user may be 
+			// different than the extension generated from the mime type,
+			// display the mime type instead.
+			$status->fatal( 'filetype-badmime', $mime );
+			return $status;
+		}
+		if ( $wgCheckFileExtensions
+			&& $wgStrictFileExtensions
+			&& !in_array( $ext, $wgFileExtensions ) ) 
+		{
+			$status->fatal( 'filetype-badmime', $mime );
+			return $status;
+		}
+		$targetPath = "{$this->directory}/$targetRel";
+		$targetDir = dirname( $targetPath );
+		if ( !is_dir( $targetDir ) && !wfMkdirParents( $targetDir ) ) {
+			$status->fatal( 'directorycreateerror', $targetDir );
+		}
+		return $status;
+	}
+
+	/**
 	 * Publish a batch of files
-	 * @param array $triplets (source,dest,archive) triplets as per publish()
+	 * @param array $tuples (source,dest,current,archive) tuples as per publish()
 	 * @param integer $flags Bitfield, may be FileRepo::DELETE_SOURCE to indicate
 	 *        that the source files should be deleted if possible
 	 */
-	function publishBatch( $triplets, $flags = 0 ) {
+	function publishBatch( $tuples, $flags = 0 ) {
 		// Perform initial checks
 		if ( !wfMkdirParents( $this->directory ) ) {
 			return $this->newFatal( 'upload_directory_missing', $this->directory );
@@ -319,29 +363,33 @@ class FSRepo extends FileRepo {
 			return $this->newFatal( 'upload_directory_read_only', $this->directory );
 		}
 		$status = $this->newGood( array() );
-		foreach ( $triplets as $i => $triplet ) {
-			list( $srcPath, $dstRel, $archiveRel ) = $triplet;
+		foreach ( $tuples as $i => $tuple ) {
+			list( $srcPath, $dstRel, $currentRel, $archiveRel ) = $tuple;
 
-			if ( substr( $srcPath, 0, 9 ) == 'mwrepo://' ) {
-				$triplets[$i][0] = $srcPath = $this->resolveVirtualUrl( $srcPath );
+			if ( self::isVirtualUrl( $srcPath ) ) {
+				$tuples[$i][0] = $srcPath = $this->resolveVirtualUrl( $srcPath );
 			}
-			if ( !$this->validateFilename( $dstRel ) ) {
-				throw new MWException( 'Validation error in $dstRel' );
+			wfDebug("upload", __METHOD__.": preparing target dstRel: $dstRel");
+			$prepstatus = $this->prepTarget( $dstRel );
+			// prepTarget is mainly about directory creation.  Abort immediately
+			// on directory creation errors since they're likely to be repetitive
+			if( !$prepstatus->isOK() ) {
+				return $prepstatus;
 			}
-			if ( !$this->validateFilename( $archiveRel ) ) {
-				throw new MWException( 'Validation error in $archiveRel' );
-			}
-			$dstPath = "{$this->directory}/$dstRel";
-			$archivePath = "{$this->directory}/$archiveRel";
 
-			$dstDir = dirname( $dstPath );
-			$archiveDir = dirname( $archivePath );
-			// Abort immediately on directory creation errors since they're likely to be repetitive
-			if ( !is_dir( $dstDir ) && !wfMkdirParents( $dstDir ) ) {
-				return $this->newFatal( 'directorycreateerror', $dstDir );
-			}
-			if ( !is_dir( $archiveDir ) && !wfMkdirParents( $archiveDir ) ) {
-				return $this->newFatal( 'directorycreateerror', $archiveDir );
+			$currentPath = "{$this->directory}/$currentRel";
+			// only validate archiveRel if we plan to use it, which depends on 
+			// whether or not currentPath exists
+			if ( is_file ( $currentPath ) ) {
+				wfDebug("upload", __METHOD__.": preparing target archiveRel: $archiveRel");
+				$prepstatus = $this->prepTarget( $archiveRel );
+				if( $prepstatus->hasMessage( 'filetype-badmime' ) ) {
+					$ext = File::getNormalizedExtensionFromName( $archiveRel );
+					$prepstatus=$this->newFatal( 'archivetype-badmime', $currentPath, $ext );
+				}
+				if( !$prepstatus->isOK() ) {
+					return $prepstatus;
+				}
 			}
 			if ( !is_file( $srcPath ) ) {
 				// Make a list of files that don't exist for return to the caller
@@ -353,13 +401,13 @@ class FSRepo extends FileRepo {
 			return $status;
 		}
 
-		foreach ( $triplets as $i => $triplet ) {
-			list( $srcPath, $dstRel, $archiveRel ) = $triplet;
+		foreach ( $tuples as $i => $tuple ) {
+			list( $srcPath, $dstRel, $currentRel, $archiveRel ) = $tuple;
 			$dstPath = "{$this->directory}/$dstRel";
-			$archivePath = "{$this->directory}/$archiveRel";
 
-			// Archive destination file if it exists
-			if( is_file( $dstPath ) ) {
+			// Archive current file if it exists
+			if( is_file( $currentPath ) ) {
+				$archivePath = "{$this->directory}/$archiveRel";
 				// Check if the archive file exists
 				// This is a sanity check to avoid data loss. In UNIX, the rename primitive
 				// unlinks the destination file if it exists. DB-based synchronisation in
@@ -369,16 +417,16 @@ class FSRepo extends FileRepo {
 					$success = false;
 				} else {
 					wfSuppressWarnings();
-					$success = rename( $dstPath, $archivePath );
+					$success = rename( $currentPath, $archivePath );
 					wfRestoreWarnings();
 				}
 
 				if( !$success ) {
-					$status->error( 'filerenameerror',$dstPath, $archivePath );
+					$status->error( 'filerenameerror',$currentPath, $archivePath );
 					$status->failCount++;
 					continue;
 				} else {
-					wfDebug(__METHOD__.": moved file $dstPath to $archivePath\n");
+					wfDebugLog("upload", __METHOD__.": moved file $currentPath to $archivePath");
 				}
 				$status->value[$i] = 'archived';
 			} else {
@@ -402,7 +450,7 @@ class FSRepo extends FileRepo {
 
 			if ( $good ) {
 				$status->successCount++;
-				wfDebug(__METHOD__.": wrote tempfile $srcPath to $dstPath\n");
+				wfDebugLog("upload", __METHOD__.": wrote tempfile $srcPath to $dstPath");
 				// Thread-safe override for umask
 				$this->chmod( $dstPath );
 			} else {

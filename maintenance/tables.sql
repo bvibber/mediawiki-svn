@@ -778,7 +778,12 @@ CREATE TABLE /*_*/image (
   img_timestamp varbinary(14) NOT NULL default '',
   
   -- SHA-1 content hash in base-36
-  img_sha1 varbinary(32) NOT NULL default ''
+  img_sha1 varbinary(32) NOT NULL default '',
+
+  -- File extension, appended to the on-disk file in cases where the 
+  -- extension derived from img_name doesn't match the media type of 
+  -- the file. See bug #4421.
+  img_file_ext varchar(32) binary NOT NULL default ''
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/img_usertext_timestamp ON /*_*/image (img_user_text,img_timestamp);
@@ -819,6 +824,7 @@ CREATE TABLE /*_*/oldimage (
   oi_minor_mime varbinary(32) NOT NULL default "unknown",
   oi_deleted tinyint unsigned NOT NULL default 0,
   oi_sha1 varbinary(32) NOT NULL default ''
+  oi_file_ext varchar(32) binary NOT NULL default ''
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/oi_usertext_timestamp ON /*_*/oldimage (oi_user_text,oi_timestamp);
@@ -871,6 +877,7 @@ CREATE TABLE /*_*/filearchive (
   fa_user int unsigned default 0,
   fa_user_text varchar(255) binary,
   fa_timestamp binary(14) default '',
+  fa_file_ext varchar(32) binary NOT NULL default ''
 
   -- Visibility of deleted revisions, bitfield
   fa_deleted tinyint unsigned NOT NULL default 0
