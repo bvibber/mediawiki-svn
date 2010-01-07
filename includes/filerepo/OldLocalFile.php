@@ -148,6 +148,11 @@ class OldLocalFile extends LocalFile {
 			wfProfileOut( __METHOD__ );
 			return;
 		}
+		if ( empty( $this->archive_name ) ) {
+			wfDebug( __METHOD__.": archive name missing, aborting\n" );
+			wfProfileOut( __METHOD__ );
+			return;
+		}
 
 		$dbw = $this->repo->getMasterDB();
 		list( $major, $minor ) = self::splitMime( $this->mime );
