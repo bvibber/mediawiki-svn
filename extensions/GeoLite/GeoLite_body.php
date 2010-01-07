@@ -51,16 +51,7 @@ class SpecialGeoLite extends UnlistedSpecialPage {
 	public function getDestination( $utm_source ) {
 		global $wgChaptersPageBase, $wgAppealPageBase;
 
-		$utm_source = substr( $utm_source, 5, 12 );
-
-		switch( $utm_source ) {
-			case 'Jimmy_Appeal':
-				$dest = $wgAppealPageBase;
-				break;
-			default:
-				$dest = $wgChaptersPageBase;
-				break;
-		}
+		$dest = ( preg_match( '/Jimmy_Appeal/', $utm_source ) ) ? $wgAppealPageBase : $wgChaptersPageBase;
 
 		return $dest;
 	}
