@@ -849,8 +849,11 @@ class UploadForm extends HTMLForm {
 					"</div>\n";
 			}
 		} else {
-			# Everything is permitted.
-			$extensionsList = '';
+			# We still block the blacklisted stuff, because it's just nasty
+			$extensionsList =
+				'<div id="mw-upload-prohibited">' .
+				wfMsgWikiHtml( 'upload-prohibited', $wgLang->commaList( $wgFileBlacklist ) ) .
+				"</div>\n";
 		}
 		return $extensionsList;
 	}
