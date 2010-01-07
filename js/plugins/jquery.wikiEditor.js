@@ -669,6 +669,9 @@ if ( typeof context == 'undefined' ) {
 		} )
 		.insertAfter( context.$textarea )
 		.load( function() {
+			if(!$( context.$iframe[0].contentWindow.document.body )){
+				return;
+			}
 			// Turn the document's design mode on
 			context.$iframe[0].contentWindow.document.designMode = 'on';
 			// Get a reference to the content area of the iframe
