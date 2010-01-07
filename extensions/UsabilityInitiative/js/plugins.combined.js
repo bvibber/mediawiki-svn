@@ -81,7 +81,7 @@ $.fn.eachAsync = function(opts)
  */
 ( function( $ ) {
 
-$.fn.autoEllipse = function( options ) {
+$.fn.autoEllipsis = function( options ) {
 	$(this).each( function() {
 		options = $.extend( {
 			'position': 'center',
@@ -651,7 +651,7 @@ $.suggestions = {
 							if ( typeof context.config.result.render == 'function' ) {
 								context.config.result.render.call( $result, context.config.suggestions[i] );
 							} else {
-								$result.text( context.config.suggestions[i] ).autoEllipse();
+								$result.text( context.config.suggestions[i] ).autoEllipsis();
 							}
 						}
 					}
@@ -3627,7 +3627,7 @@ fn: {
 			buildResizeControls();
 			buildCollapseControls();
 		}
-		context.modules.toc.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
+		context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true } );
 	}
 }
 

@@ -409,7 +409,7 @@ fn: {
 			buildResizeControls();
 			buildCollapseControls();
 		}
-		context.modules.toc.$toc.find( 'div' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
+		context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true } );
 	}
 }
 

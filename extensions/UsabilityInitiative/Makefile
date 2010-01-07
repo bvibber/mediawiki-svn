@@ -13,7 +13,7 @@ CSS := \
 
 PLUGINS := \
 	js/plugins/jquery.async.js\
-	js/plugins/jquery.autoEllipse.js\
+	js/plugins/jquery.autoEllipsis.js\
 	js/plugins/jquery.browser.js\
 	js/plugins/jquery.collapsibleTabs.js\
 	js/plugins/jquery.cookie.js\

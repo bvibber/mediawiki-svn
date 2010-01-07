@@ -141,7 +141,7 @@ $.suggestions = {
 							if ( typeof context.config.result.render == 'function' ) {
 								context.config.result.render.call( $result, context.config.suggestions[i] );
 							} else {
-								$result.text( context.config.suggestions[i] ).autoEllipse();
+								$result.text( context.config.suggestions[i] ).autoEllipsis();
 							}
 						}
 					}
