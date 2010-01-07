@@ -313,6 +313,19 @@ class MimeMagic {
 		return $r;
 	}
 
+
+	/** 
+	 * returns the preferred file extension for a given mime type
+	 */
+	function getPreferredExtensionForType( $mime ) {
+		$ext = explode( ' ', $this->getExtensionsForType( $mime ) );
+		// assume the first one listed is preferred, unless normalizeExtension
+		// decides otherwise
+		$ext = File::normalizeExtension( $ext[0] );
+
+		return $ext;
+	}
+
 	/** returns a list of mime types for a given file extension
 	* as a space separated string.
 	*/

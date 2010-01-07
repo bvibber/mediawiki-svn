@@ -91,6 +91,19 @@ abstract class File {
 	}
 
 	/**
+	 * Given a file name, normalize its extension extension to the common form, 
+	 * and ensure it's clean.
+	 *
+	 * @param $ext string (without the .)
+	 * @return string
+	 */
+	function getNormalizedExtensionFromName( $name ) {
+		$n = strrpos( $name, '.' );
+		return File::normalizeExtension( $n ? substr( $name, $n + 1 ) 
+										     : '' );
+	}
+
+	/**
 	 * Checks if file extensions are compatible
 	 *
 	 * @param $old File Old file
@@ -98,9 +111,8 @@ abstract class File {
 	 */
 	static function checkExtensionCompatibility( File $old, $new ) {
 		$oldMime = $old->getMimeType();
-		$n = strrpos( $new, '.' );
-		$newExt = self::normalizeExtension(
-			$n ? substr( $new, $n + 1 ) : '' );
+		$newExt = self::getNormalizedExtensionFromName( $new );
+
 		$mimeMagic = MimeMagic::singleton();
 		return $mimeMagic->isMatchingExtension( $newExt, $oldMime );
 	}
