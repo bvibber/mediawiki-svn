@@ -983,7 +983,7 @@ class LocalFile extends File
 	 * The archive name should be passed through to recordUpload for database
 	 * registration.
 	 *
-	 * @param string $sourcePath Local filesystem path to the source image
+	 * @param string $srcPath Local filesystem path to the source image
 	 * @param integer $flags A bitwise combination of:
 	 *     File::DELETE_SOURCE    Delete the source file, i.e. move
 	 *         rather than copy
