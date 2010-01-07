@@ -91,11 +91,11 @@ abstract class File {
 	}
 
 	/**
-	 * Given a file name, normalize its extension extension to the common form, 
-	 * and ensure it's clean.
+	 * Given a file name, return the normalized extension.  (e.g. for
+	 * "foo.JPeG", return "jpg")
 	 *
-	 * @param $ext string (without the .)
-	 * @return string
+	 * @param $name string File name to pull extension from 
+	 * @return string The extension from the file name
 	 */
 	function getNormalizedExtensionFromName( $name ) {
 		$n = strrpos( $name, '.' );
