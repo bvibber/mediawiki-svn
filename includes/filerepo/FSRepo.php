@@ -518,17 +518,21 @@ class FSRepo extends FileRepo {
 			$srcPath = "{$this->directory}/$srcRel";
 			$archivePath = "{$this->deletedDir}/$archiveRel";
 			$good = true;
+			wfDebugLog( 'filedelete',__METHOD__.": moving {$srcPath} to {$archiveRel}");
 			if ( file_exists( $archivePath ) ) {
 				# A file with this content hash is already archived
 				if ( !@unlink( $srcPath ) ) {
+					wfDebugLog( 'filedelete',__METHOD__.": filedeleteerror {$srcPath}");
 					$status->error( 'filedeleteerror', $srcPath );
 					$good = false;
 				}
 			} else{
 				if ( !@rename( $srcPath, $archivePath ) ) {
+					wfDebugLog( 'filedelete',__METHOD__.": filerenameerror srcPath: {$srcPath} archivePath: {$archivePath}");
 					$status->error( 'filerenameerror', $srcPath, $archivePath );
 					$good = false;
 				} else {
+					wfDebugLog( 'filedelete',__METHOD__.": success creating {$archivePath}");
 					$this->chmod( $archivePath );
 				}
 			}
