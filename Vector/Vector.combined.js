@@ -263,12 +263,12 @@ mw.addOnloadHook( function() {
 							.addClass( 'special-query' )
 							.text( query )
 							.appendTo( $j(this) );
-						$query.autoEllipse();
+						$query.autoEllipsis();
 					} else {
 						$j(this).find( '.special-query' )
 							.empty()
 							.text( query )
-							.autoEllipse();
+							.autoEllipsis();
 					}
 				} else {
 					$j(this).hide();

@@ -3,7 +3,7 @@
  */
 ( function( $ ) {
 
-$.fn.autoEllipse = function( options ) {
+$.fn.autoEllipsis = function( options ) {
 	$(this).each( function() {
 		options = $.extend( {
 			'position': 'center',
