@@ -484,12 +484,12 @@ class LuceneSearchSet extends SearchResultSet {
 
 		// Search server will be in local network but may not trigger checks on
 		// Http::isLocal(), so suppress usage of $wgHTTPProxy if enabled.
-		$curlOpts = array( CURLOPT_PROXY => '' );
+		$httpOpts = array( 'proxy' => false );
 		
 		wfDebug( "Fetching search data from $searchUrl\n" ); 
 		wfSuppressWarnings();
 		wfProfileIn( $fname.'-contact-'.$host );
-		$data = Http::get( $searchUrl, $wgLuceneSearchTimeout, $curlOpts );
+		$data = Http::get( $searchUrl, $wgLuceneSearchTimeout, $httpOpts); 
 		wfProfileOut( $fname.'-contact-'.$host );
 		wfRestoreWarnings();
 		if( $data === false ) {
