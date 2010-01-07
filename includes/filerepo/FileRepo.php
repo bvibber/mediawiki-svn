@@ -252,7 +252,8 @@ abstract class FileRepo {
 	}
 
 	/**
-	 * Get the name of an image from its title object
+	 * Get the name of an image from its title object.  Only use this for 
+	 * generating hash keys.
 	 */
 	function getNameFromTitle( $title ) {
 		global $wgCapitalLinks;
@@ -266,6 +267,15 @@ abstract class FileRepo {
 			$name = $title->getDBkey();
 		}
 		return $name;
+	}
+
+	/**
+	 * Get the file name of an image from its title object, possibly with a 
+	 * generated extension.
+	 * Stub function pending full implementation of bug 4421.
+	 */
+	function getFilenameFromTitle( $title , $mime = NULL ) {
+		return $this->getNameFromTitle( $title );
 	}
 
 	static function getHashPathForLevel( $name, $levels ) {

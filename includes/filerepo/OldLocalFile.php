@@ -95,6 +95,14 @@ class OldLocalFile extends LocalFile {
 		return $this->archive_name;
 	}
 
+	/**
+	 * This function tacks on file extension to archive_name, if needed.
+	 * Stub function pending full implementation of bug 4421.
+	 */
+	public function getArchiveFilename() {
+		return $this->getArchiveName();
+	}
+
 	function isOld() {
 		return true;
 	}
@@ -131,11 +139,11 @@ class OldLocalFile extends LocalFile {
 	}
 
 	function getRel() {
-		return 'archive/' . $this->getHashPath() . $this->getArchiveName();
+		return 'archive/' . $this->getHashPath() . $this->getArchiveFilename();
 	}
 
 	function getUrlRel() {
-		return 'archive/' . $this->getHashPath() . urlencode( $this->getArchiveName() );
+		return 'archive/' . $this->getHashPath() . urlencode( $this->getArchiveFilename() );
 	}
 
 	function upgradeRow() {

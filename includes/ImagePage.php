@@ -942,7 +942,7 @@ class ImageHistoryList {
 			);
 			$row .= '<span class="history-deleted">'.$url.'</span>';
 		} else {
-			$url = $iscur ? $this->current->getUrl() : $this->current->getArchiveUrl( $img );
+			$url = $iscur ? $this->current->getUrl() : $this->current->getArchiveUrl( $file->getArchiveFilename() );
 			$row .= Xml::element( 'a', array( 'href' => $url ), $wgLang->timeAndDate( $timestamp, true ) );
 		}
 		$row .= "</td>";

@@ -140,13 +140,23 @@ abstract class File {
 	}
 
 	/**
-	 * Return the name of this file
+	 * Return the name of this file for purposes of reading from the database
+	 * and generating hash keys.  Use getFilename if you're interested in what
+	 * is actually on the disk
 	 */
 	public function getName() {
 		if ( !isset( $this->name ) ) {
 			$this->name = $this->repo->getNameFromTitle( $this->title );
 		}
 		return $this->name;
+	}
+
+	/**
+	 * Return the file name of this file
+	 * Stub function pending full implementation of bug 4421.
+	 */
+	public function getFilename() {
+		return $this->getName();
 	}
 
 	/**
@@ -477,7 +487,7 @@ abstract class File {
 		}
 		$extension = $this->getExtension();
 		list( $thumbExt, $thumbMime ) = $this->handler->getThumbType( $extension, $this->getMimeType() );
-		$thumbName = $this->handler->makeParamString( $params ) . '-' . $this->getName();
+		$thumbName = $this->handler->makeParamString( $params ) . '-' . $this->getFilename();
 		if ( $thumbExt != $extension ) {
 			$thumbName .= ".$thumbExt";
 		}
@@ -748,6 +758,13 @@ abstract class File {
 	 * Get the path of the file relative to the public zone root
 	 */
 	function getRel() {
+		return $this->getHashPath() . $this->getFilename();
+	}
+
+	/**
+	 * Get the path of the thumb directory relative to the public zone root
+	 */
+	function getThumbRel() {
 		return $this->getHashPath() . $this->getName();
 	}
 
@@ -755,6 +772,13 @@ abstract class File {
 	 * Get urlencoded relative path of the file
 	 */
 	function getUrlRel() {
+		return $this->getHashPath() . rawurlencode( $this->getFilename() );
+	}
+
+	/**
+	 * Get urlencoded relative path of the thumb directory
+	 */
+	function getThumbUrlRel() {
 		return $this->getHashPath() . rawurlencode( $this->getName() );
 	}
 
@@ -776,10 +800,11 @@ abstract class File {
 
 	/** Get the path of the thumbnail directory, or a particular file if $suffix is specified */
 	function getThumbPath( $suffix = false ) {
-		$path = $this->repo->getZonePath('thumb') . '/' . $this->getRel();
+		$path = $this->repo->getZonePath('thumb') . '/' . $this->getThumbRel();
 		if ( $suffix !== false ) {
 			$path .= '/' . $suffix;
 		}
+		wfDebugLog( 'thumb', __METHOD__." path: {$path}\n" );
 		return $path;
 	}
 
@@ -796,7 +821,7 @@ abstract class File {
 
 	/** Get the URL of the thumbnail directory, or a particular file if $suffix is specified */
 	function getThumbUrl( $suffix = false ) {
-		$path = $this->repo->getZoneUrl('thumb') . '/' . $this->getUrlRel();
+		$path = $this->repo->getZoneUrl('thumb') . '/' . $this->getThumbUrlRel();
 		if ( $suffix !== false ) {
 			$path .= '/' . rawurlencode( $suffix );
 		}
@@ -816,7 +841,7 @@ abstract class File {
 
 	/** Get the virtual URL for a thumbnail file or directory */
 	function getThumbVirtualUrl( $suffix = false ) {
-		$path = $this->repo->getVirtualUrl() . '/thumb/' . $this->getUrlRel();
+		$path = $this->repo->getVirtualUrl() . '/thumb/' . $this->getThumbUrlRel();
 		if ( $suffix !== false ) {
 			$path .= '/' . rawurlencode( $suffix );
 		}

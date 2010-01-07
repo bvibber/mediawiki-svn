@@ -64,7 +64,7 @@ class FileRevertForm {
 
 		// Perform the reversion if appropriate
 		if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $token, $this->archiveName ) ) {
-			$source = $this->file->getArchiveVirtualUrl( $this->archiveName );
+			$source = $this->file->getArchiveVirtualUrl( $this->getOldFile()->getArchiveFilename() );
 			$comment = $wgRequest->getText( 'wpComment' );
 			// TODO: Preserve file properties from database instead of reloading from file
 			$status = $this->file->upload( $source, $comment, $comment );
@@ -72,9 +72,10 @@ class FileRevertForm {
 				$wgOut->addHTML( wfMsgExt( 'filerevert-success', 'parse', $this->title->getText(),
 					$wgLang->date( $this->getTimestamp(), true ),
 					$wgLang->time( $this->getTimestamp(), true ),
-					wfExpandUrl( $this->file->getArchiveUrl( $this->archiveName ) ) ) );
+					wfExpandUrl( $this->file->getArchiveUrl( $this->getOldFile()->getArchiveFilename() ) ) ) );
 				$wgOut->returnToMain( false, $this->title );
 			} else {
+				wfDebugLog('filerevert', __METHOD__.": revert failed during upload. source: $source\n");
 				$wgOut->addWikiText( $status->getWikiText() );
 			}
 			return;
@@ -96,7 +97,7 @@ class FileRevertForm {
 		$form .= '<fieldset><legend>' . wfMsgHtml( 'filerevert-legend' ) . '</legend>';
 		$form .= wfMsgExt( 'filerevert-intro', 'parse', $this->title->getText(),
 			$wgLang->date( $timestamp, true ), $wgLang->time( $timestamp, true ),
-			wfExpandUrl( $this->file->getArchiveUrl( $this->archiveName ) ) );
+			wfExpandUrl( $this->file->getArchiveUrl( $this->getOldFile()->getArchiveFilename() ) ) );
 		$form .= '<p>' . Xml::inputLabel( wfMsg( 'filerevert-comment' ), 'wpComment', 'wpComment',
 			60, wfMsgForContent( 'filerevert-defaultcomment',
 			$wgContLang->date( $timestamp, false, false ), $wgContLang->time( $timestamp, false, false ) ) ) . '</p>';
