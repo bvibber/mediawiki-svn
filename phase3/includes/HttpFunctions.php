@@ -1,17 +1,27 @@
 <?php
 /**
- * HTTP handling class
  * @defgroup HTTP HTTP
- * @file
- * @ingroup HTTP
  */
 
+/**
+ * Various HTTP related functions
+ * @ingroup HTTP
+ */
 class Http {
-	const SYNC_DOWNLOAD = 1;  // syncronous upload (in a single request)
-	const ASYNC_DOWNLOAD = 2; // asynchronous upload
+	// Syncronous download (in a single request)
+	const SYNC_DOWNLOAD = 1;
 
-	var $body = '';
+	// Asynchronous download ( background process with multiple requests )
+	const ASYNC_DOWNLOAD = 2;
 
+	/**
+	 * Get the contents of a file by HTTP
+	 * @param $method string HTTP method. Usually GET/POST
+	 * @param $url string Full URL to act on
+	 * @param $timeout int Seconds to timeout. 'default' falls to $wgHTTPTimeout
+	 * @param $curlOptions array Optional array of extra params to pass
+	 * to curl_setopt()
+	 */
 	public static function request( $method, $url, $opts = array() ) {
 		$opts['method'] = ( strtoupper( $method ) == 'GET' || strtoupper( $method ) == 'POST' )
 			? strtoupper( $method ) : null;
@@ -27,6 +37,7 @@ class Http {
 
 	/**
 	 * Simple wrapper for Http::request( 'GET' )
+	 * @see Http::request()
 	 */
 	public static function get( $url, $timeout = false, $opts = array() ) {
 		global $wgSyncHTTPTimeout;
@@ -37,6 +48,7 @@ class Http {
 
 	/**
 	 * Simple wrapper for Http::request( 'POST' )
+	 * @see Http::request()
 	 */
 	public static function post( $url, $opts = array() ) {
 		return Http::request( 'POST', $url, $opts );
@@ -322,6 +334,8 @@ class HttpRequest {
 		$this->do_close_session_update = isset( $opt['do_close_session_update'] );
 		$this->postData = isset( $opt['postdata'] ) ? $opt['postdata'] : '';
 
+		$this->proxy = isset( $opt['proxy'] )? $opt['proxy'] : '';
+
 		$this->ssl_verifyhost = (isset( $opt['ssl_verifyhost'] ))? $opt['ssl_verifyhost']: false;
 
 		$this->cainfo = (isset( $opt['cainfo'] ))? $op['cainfo']: false;
@@ -360,20 +374,24 @@ class curlHttpRequest extends HttpRequest {
 		$status = Status::newGood();
 		$c = curl_init( $this->url );
 
-		// proxy setup:
-		if ( Http::isLocalURL( $this->url ) ) {
-			curl_setopt( $c, CURLOPT_PROXY, 'localhost:80' );
-		} elseif ( $wgHTTPProxy ) {
-			curl_setopt( $c, CURLOPT_PROXY, $wgHTTPProxy );
+		// only do proxy setup if ( not suppressed $this->proxy === false )
+		if( $this->proxy !== false ){
+			if( $this->proxy ){
+				curl_setopt( $c, CURLOPT_PROXY, $this->proxy );
+			} else if ( Http::isLocalURL( $this->url ) ) {
+				curl_setopt( $c, CURLOPT_PROXY, 'localhost:80' );
+			} else if ( $wgHTTPProxy ) {
+				curl_setopt( $c, CURLOPT_PROXY, $wgHTTPProxy );
+			}
 		}
 
 		curl_setopt( $c, CURLOPT_TIMEOUT, $this->timeout );
 		curl_setopt( $c, CURLOPT_USERAGENT, Http::userAgent() );
 
-		if($this->ssl_verifyhost)
+		if( $this->ssl_verifyhost )
 			curl_setopt( $c, CURLOPT_SSL_VERIFYHOST, $this->ssl_verifyhost);
 
-		if($this->cainfo)
+		if( $this->cainfo )
 			curl_setopt( $c, CURLOPT_CAINFO, $this->cainfo);
 
 		if ( $this->headers_only ) {
@@ -502,13 +520,28 @@ class phpHttpRequest extends HttpRequest {
 			// Required for HTTP 1.0 POSTs
 			$headers[] = "Content-Length: 0";
 		}
-		$fcontext = stream_context_create ( array(
-			'http' => array(
-				'method' => $this->method,
-				'header' => implode( "\r\n", $headers ),
-				'timeout' => $this->timeout )
+
+		$httpContextOptions = array(
+			'method' => $this->method,
+			'header' => implode( "\r\n", $headers ),
+			'timeout' => $this->timeout
+		);
+
+		// Proxy setup:
+		if( $this->proxy ){
+			$httpContextOptions['proxy'] = 'tcp://' . $this->proxy;
+		}else if ( Http::isLocalURL( $this->url ) ) {
+			$httpContextOptions['proxy'] = 'tcp://localhost:80';
+		} elseif ( $wgHTTPProxy ) {
+			$httpContextOptions['proxy'] = 'tcp://' . $wgHTTPProxy ;
+		}
+
+		$fcontext = stream_context_create (
+			array(
+				'http' => $httpContextOptions
 			)
 		);
+
 		$fh = fopen( $this->url, "r", false, $fcontext);
 
 		// set the write back function (if we are writing to a file)
@@ -521,7 +554,7 @@ class phpHttpRequest extends HttpRequest {
 				return $status;
 			}
 
-			// read $fh into the simpleFileWriter (grab in 64K chunks since
+			// Read $fh into the simpleFileWriter (grab in 64K chunks since
 			// it's likely a ~large~ media file)
 			while ( !feof( $fh ) ) {
 				$contents = fread( $fh, 65536 );
@@ -549,7 +582,7 @@ class phpHttpRequest extends HttpRequest {
 }
 
 /**
- * a simpleFileWriter with session id updates
+ * SimpleFileWriter with session id updates
  */
 class simpleFileWriter {
 	var $target_file_path;
