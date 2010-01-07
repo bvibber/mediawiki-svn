@@ -66,6 +66,14 @@ $messages['lzz'] = array(
 	'youtubeauthsub_category' => "K'at'egori",
 );
 
+/** Capiceño (Capiceño)
+ * @author Oxyzen
+ */
+$messages['cps'] = array(
+	'youtubeauthsub_title' => 'Titulo',
+	'youtubeauthsub_description' => 'Deskripsyon',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Arnobarnard
@@ -263,6 +271,7 @@ YouTube можа патрабавацца пэўны час, каб апраца
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Stanqo
  */
 $messages['bg'] = array(
 	'youtubeauthsub' => 'Качване на видео в YouTube',
@@ -276,6 +285,7 @@ $messages['bg'] = array(
 	'youtubeauthsub_category' => 'Категория',
 	'youtubeauthsub_submit' => 'Изпращане',
 	'youtubeauthsub_clickhere' => 'Щракнете тук за влизане в YouTube',
+	'youtubeauthsub_tokenerror' => 'Грешка при генериране на разрешен символ, опитайте да обновите.',
 	'youtubeauthsub_success' => "Поздравления!
 Видеото беше качено.
 Можете да прегледате видеото <a href='http://www.youtube.com/watch?v=$1'>тук</a>.

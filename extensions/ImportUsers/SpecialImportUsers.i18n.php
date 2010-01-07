@@ -472,6 +472,7 @@ $messages['es'] = array(
 	'importusers' => 'Importar usuarios',
 	'importusers-uploadfile' => 'Subir archivo',
 	'importusers-form-caption' => 'Introducir archivo CSV (UTF-8)',
+	'importusers-form-file' => 'Formato de archivo de usuario (CSV):',
 	'importusers-form-replace-present' => 'Reemplazar usuarios existentes',
 	'importusers-form-button' => 'Importar',
 	'importusers-user-added' => "Usuario '''$1''' ha sido agregado.",

@@ -1068,6 +1068,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Jesielt
  */
 $messages['pt-br'] = array(
 	'importfreeimages' => 'Importar imagens livres',
@@ -1079,7 +1080,7 @@ $messages['pt-br'] = array(
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importar isto',
 	'importfreeimages_next' => 'Próximas $1',
-	'importfreeimages_filefromflickr' => '$1 pelo utilizador <b>[$2]</b> do flickr. URL original',
+	'importfreeimages_filefromflickr' => '$1 pelo usuário <b>[$2]</b> do flickr. URL original',
 	'importfreeimages_promptuserforfilename' => 'Por favor, introduza um nome de arquivo destino:',
 	'importfreeimages_returntoform' => "Ou clique <a href='$1'>aqui</a> para voltar aos resultados da sua pesquisa",
 	'importfreeimages_nophpflickr' => 'Você não tem o phpFlickr instalado, por favor defina $wgIFphpFlickr em seu LocalSettings.php.',

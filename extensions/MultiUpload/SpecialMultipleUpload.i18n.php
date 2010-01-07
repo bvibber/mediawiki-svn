@@ -1295,10 +1295,11 @@ Ficheiros impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Mult
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Jesielt
  */
 $messages['pt-br'] = array(
 	'multipleupload' => 'Carregar múltiplos arquivos',
-	'multipleupload-desc' => 'Permite aos utilizadores [[Special:MultipleUpload|carregar vários arquivos de uma vez]]',
+	'multipleupload-desc' => 'Permite aos usuários [[Special:MultipleUpload|carregar vários arquivos de uma vez]]',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''todos os avisos''' e gravar os arquivos.",
 	'multipleupload-saveallfiles' => 'Gravar todos os arquivos',
 	'multipleupload-addresswarnings' => 'Por favor, trate quaisquer avisos antes de carregar novamente os arquivos.',

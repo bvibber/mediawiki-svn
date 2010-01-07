@@ -1101,24 +1101,25 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Jesielt
  */
 $messages['pt-br'] = array(
-	'lookupuser' => 'Procurar informação de utilizador',
-	'lookupuser-desc' => '[[Special:LookupUser|Retorna informação]] sobre um utilizador tal como o endereço de email e o ID',
-	'lookupuser-intro' => 'Introduza um nome de utilizador para visualizar as preferências desse utilizador.',
-	'lookupuser-nonexistent' => 'Erro: Utilizador não existe',
+	'lookupuser' => 'Procurar informação de usuário',
+	'lookupuser-desc' => '[[Special:LookupUser|Retorna informação]] sobre um usuário tal como o endereço de email e o ID',
+	'lookupuser-intro' => 'Introduza um nome de usuário para visualizar as preferências desse usuário.',
+	'lookupuser-nonexistent' => 'Erro: Esse usuário não existe',
 	'lookupuser-authenticated' => 'Autenticação por email: $1',
 	'lookupuser-not-authenticated' => 'não autenticado',
-	'lookupuser-id' => 'ID de utilizador: <tt>#$1</tt>',
+	'lookupuser-id' => 'ID de usuário: <tt>#$1</tt>',
 	'lookupuser-email' => 'Email: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'não fornecido',
 	'lookupuser-realname' => 'Nome real: $1',
 	'lookupuser-registration' => 'Data de registro: $1',
 	'lookupuser-no-registration' => 'não registrado',
-	'lookupuser-touched' => 'Registro de utilizador alterado pela última vez: $1',
+	'lookupuser-touched' => 'Registro de usuário alterado pela última vez: $1',
 	'lookupuser-info-authenticated' => 'Autenticação de e-mail: $1',
-	'lookupuser-useroptions' => 'Opções de utilizador:',
-	'right-lookupuser' => 'Consultar preferências de utilizador',
+	'lookupuser-useroptions' => 'Opções de usuário:',
+	'right-lookupuser' => 'Consultar preferências de usuário',
 );
 
 /** Romanian (Română)

@@ -78,6 +78,13 @@ $messages['dsb'] = array(
 	'wlfeed-desc' => 'Pólěpšone klase kanaloweje generacije',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'wlfeed-desc' => 'Clases de generación de canales mejoradas',
+);
+
 /** Finnish (Suomi)
  * @author ZeiP
  */

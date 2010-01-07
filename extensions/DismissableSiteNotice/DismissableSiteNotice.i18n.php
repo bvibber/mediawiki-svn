@@ -692,10 +692,11 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Jesielt
  */
 $messages['pt-br'] = array(
 	'sitenotice_close' => 'ignorar',
-	'sitenotice-desc' => 'Permite aos utilizadores fecharem a notificação do sítio',
+	'sitenotice-desc' => 'Permite aos usuários fecharem a notificação do site',
 );
 
 /** Quechua (Runa Simi)

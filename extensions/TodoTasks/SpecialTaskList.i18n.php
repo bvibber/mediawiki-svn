@@ -411,6 +411,7 @@ Por listo de validaj projektoj, vidu [[MediaWiki:TodoTasksValidProjects]].",
  * @author Crazymadlover
  * @author Imre
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'tasklist' => 'Lista de tareas',
@@ -429,6 +430,7 @@ Para una lista de proyectos válido, vea [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistchooseproj' => 'Seleccionar proyecto:',
 	'tasklistprojdisp' => 'Exhibir',
 	'tasklistbyname' => '== Lista de quehaceres para %s ==',
+	'tasklistnowguseprojects' => 'Has seleccionado el valor "falso" para $wgUseProjects y por lo tanto, no puedes usar esta página.',
 	'tasklistnoprojects' => "Error: Parece que tu habilitaste '''\$wgUseProjects''', pero no creaste [[MediaWiki:TodoTasksValidProjects]]. Mira 
 [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instrucciones de instalación] para más detalles.",
 	'tasklistemailbody' => ',

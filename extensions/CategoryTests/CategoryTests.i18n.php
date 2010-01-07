@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'categorytests-desc' => '{{desc}}',
 );
 
+/** Capiceño (Capiceño)
+ * @author Oxyzen
+ */
+$messages['cps'] = array(
+	'categorytests-desc' => 'Gamit para sa pagtesting sang kategorya',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

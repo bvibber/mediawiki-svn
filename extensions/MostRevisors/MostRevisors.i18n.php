@@ -221,6 +221,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'mostrevisors' => 'Páginas con más revisores',
+	'mostrevisors-desc' => 'Lista [[Special:MostRevisors|páginas con la mayor cantidad de revisores]]',
+	'mostrevisors-header' => "'''Esta página lista {{PLURAL:$1|la página|las $1 páginas}} con más revisores en el wiki.'''",
 	'mostrevisors-limitlinks' => 'Mostrar hasta $1 páginas',
 	'mostrevisors-namespace' => 'Espacio de nombres:',
 	'mostrevisors-showing' => 'Listando {{PLURAL:$1|página|$1 páginas}}:',
@@ -563,12 +565,18 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'mostrevisors' => 'Sider med flest bidragsytere',
+	'mostrevisors-desc' => 'List opp [[Special:MostRevisors|sider med flest bidragsytere]]',
+	'mostrevisors-header' => "'''Denne siden lister opp {{PLURAL:$1|den siden|de $1 sidene}} med flest bidragsytere på denne wikien.'''",
 	'mostrevisors-limitlinks' => 'Vis inntil $1 sider',
 	'mostrevisors-namespace' => 'Navnerom:',
 	'mostrevisors-none' => 'Ingen oppføringer ble funnet.',
+	'mostrevisors-ns-header' => "'''Denne siden lister opp {{PLURAL:$1|den siden|de $1 sidene}} med flest bidragsytere i navnerommet $2.'''",
 	'mostrevisors-showing' => 'Lister opp {{PLURAL:$1|én side|$1 sider}}:',
+	'mostrevisors-submit' => 'Gå',
 	'mostrevisors-showredir' => 'Vis omdirigeringssider',
 	'mostrevisors-hideredir' => 'Gjem omdirigeringssider',
+	'mostrevisors-users' => '- {{PLURAL:$1|én bidragsyter|$1 bidragsytere}}',
 	'mostrevisors-viewcontributors' => 'Vis hovedbidragsytere',
 );
 

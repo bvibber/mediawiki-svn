@@ -87,6 +87,7 @@ $messages['dsb'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'templateinfo-desc' => 'Admite plantillas que definen su estructura de datos a través de XML',
 	'templateinfo-header' => 'La definición XML para esta plantilla es:',
 );
 

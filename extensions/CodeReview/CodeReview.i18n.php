@@ -1111,6 +1111,7 @@ $messages['bs'] = array(
 	'code-rev-inline-preview' => 'Pregled:',
 	'code-rev-diff' => 'Razl',
 	'code-rev-diff-link' => 'razl',
+	'code-rev-diff-too-large' => 'Razlika je prevelika za prikaz.',
 	'code-rev-purge-link' => 'obnoviti',
 	'code-status-new' => 'novi',
 	'code-status-fixme' => 'popravi me',
@@ -3423,6 +3424,7 @@ $messages['gsw'] = array(
 	'code-rev-inline-preview' => 'Vorschau:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'Diff',
+	'code-rev-diff-too-large' => 'Dr Unterschid isch z groß zum aazeigt wäre.',
 	'code-rev-purge-link' => 'Cache lesche',
 	'code-status-new' => 'nej',
 	'code-status-fixme' => 'fixme',
@@ -4474,6 +4476,7 @@ $4',
  * @author Fryed-peach
  * @author Hosiryuhosi
  * @author Whym
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'code' => 'コードレビュー',
@@ -4542,6 +4545,7 @@ $messages['ja'] = array(
 	'code-rev-inline-preview' => 'プレビュー:',
 	'code-rev-diff' => '差分',
 	'code-rev-diff-link' => '差分',
+	'code-rev-diff-too-large' => '差分が大きすぎて表示出来ません。',
 	'code-rev-purge-link' => 'パージ',
 	'code-status-new' => '新規',
 	'code-status-fixme' => '要修正',
@@ -5446,6 +5450,7 @@ $messages['mk'] = array(
 	'code-rev-inline-preview' => 'Преглед:',
 	'code-rev-diff' => 'Разлика',
 	'code-rev-diff-link' => 'разлика',
+	'code-rev-diff-too-large' => 'Разликата е преголема за да се прикаже.',
 	'code-rev-purge-link' => 'исчисти',
 	'code-status-new' => 'нов',
 	'code-status-fixme' => 'корегирај ме',
@@ -7174,6 +7179,7 @@ $messages['ru'] = array(
 	'code-rev-inline-preview' => 'Предпросмотр:',
 	'code-rev-diff' => 'Изменение',
 	'code-rev-diff-link' => 'изм.',
+	'code-rev-diff-too-large' => 'Разница версий слишком велика для отображения.',
 	'code-rev-purge-link' => 'очистить кеш',
 	'code-status-new' => 'новое',
 	'code-status-fixme' => 'проверить',

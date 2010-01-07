@@ -819,6 +819,7 @@ en dä Zick fun $3, wobei dä janze Vörjang $4 jedooht hät.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -827,7 +828,7 @@ $messages['lb'] = array(
 	'refreshspecial-title' => 'Spezialsäiten aktualiséieren',
 	'refreshspecial-help' => "Dës Spezialsäit erlaabt et fir Spezialsäite manuell z'aktualiséieren. 
 Wann Dir all Säiten ugewielt hutt déi dir wëllt aktualiséiert kréien, da klickt op den ''Aktulisatiouns-Knäppchen'' hei ënnendrënner fir déi gewielte Spezialsäiten z'aktualiséieren. 
-Opgepasst: op méi grousse Wikien kann d'Aktualisatioun eng Zäit daueren.",
+Opgepasst: op méi grousse Wikie kann d'Aktualisatioun eng Zäit daueren.",
 	'refreshspecial-button' => 'Déi gewielten aktualiséieren',
 	'refreshspecial-fail' => "Wielt mindestens eng Spezialsäit aus fir z'aktualiséieren.",
 	'refreshspecial-refreshing' => 'Spezialsäiten aktualiséieren',

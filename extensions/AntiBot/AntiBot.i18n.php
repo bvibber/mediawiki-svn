@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'antibot-desc' => 'Description of the [[mw:Extension:AntiBot|AntiBot]] MediaWiki extension (to be displayed at [[Special:Version]])',
 );
 
+/** Capiceño (Capiceño)
+ * @author Oxyzen
+ */
+$messages['cps'] = array(
+	'antibot-desc' => 'Simple nga framework para sa pag-usisa sang spambots kag kag naga-trigger payloads',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -407,9 +414,10 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Brunoy Anastasiya Seryozhenko
+ * @author Jesielt
  */
 $messages['pt-br'] = array(
-	'antibot-desc' => 'Simples painel de controle para checagem de spambots e trigger payloads',
+	'antibot-desc' => 'Painel de controle simples para checagem de spambots e trigger payloads',
 );
 
 /** Romanian (Română)

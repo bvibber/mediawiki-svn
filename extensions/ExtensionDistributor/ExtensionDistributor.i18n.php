@@ -1611,6 +1611,7 @@ Wann De Frore övver dat Süßteem zom Zosätz erunger Lade haß, da jangk noh [
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -1625,9 +1626,9 @@ $messages['lb'] = array(
 	'extdist-current-version' => "Entwécklungs'versioun (trunk)",
 	'extdist-choose-version' => "<big>Dir sidd amgaang d'<b>$1</b> Erweiderung erofzelueden.</big>
 
-Wielt är MediaWiki Versioun.
+Wielt Är MediaWiki Versioun.
 
-Déi meescht Erweiderungen fonctionnéieren mat verschiddene Versioune vu MediaWiki, wann är Versioun vu MediaWiki net hei steet, oder wann dor déi neiste Fonctiounen vun den Erweidrunge braucht, da versicht déi neiste Versioun ze benotzen.",
+Déi meescht Erweiderunge fonctionnéiere mat verschiddene Versioune vu MediaWiki, wann Är Versioun vu MediaWiki net hei steet, oder wann der déi neiste Fonctioune vun den Erweiderunge braucht, da versicht déi neiste Versioun ze benotzen.",
 	'extdist-no-versions' => 'Déi gewielten Erweiderung ($1) ass a kenger Versioun disponibel!',
 	'extdist-submit-version' => 'Viru fueren',
 	'extdist-svn-parse-error' => 'XML\'en vun "svn info" kënnen net verschafft ginn: <pre>$1</pre>',

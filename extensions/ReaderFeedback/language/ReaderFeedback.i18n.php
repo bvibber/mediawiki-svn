@@ -367,6 +367,7 @@ $messages['bs'] = array(
 	'readerfeedback-tier-poor' => 'Slab',
 	'tooltip-ca-ratinghist' => 'Ocjene čitaoca ove stranice',
 	'specialpages-group-feedback' => 'Mišljenje čitaoca',
+	'readerfeedback-tt-review' => 'Pošalji pregled',
 );
 
 /** Catalan (Català)
@@ -673,6 +674,7 @@ $messages['eo'] = array(
  * @author Locos epraix
  * @author McDutchie
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'readerfeedback-desc' => 'La validación de páginas permite a los lectores a dar respuesta en forma de valoraciones categóricas',
@@ -703,6 +705,7 @@ $messages['es'] = array(
 	'readerfeedback-tier-poor' => 'Pobre',
 	'tooltip-ca-ratinghist' => 'Valoraciones de los lectores de esta página',
 	'specialpages-group-feedback' => 'Opinión del espectador',
+	'readerfeedback-tt-review' => 'Enviar revisión',
 );
 
 /** Estonian (Eesti)
@@ -992,6 +995,7 @@ $messages['gsw'] = array(
 	'readerfeedback-tier-poor' => 'Nider',
 	'tooltip-ca-ratinghist' => 'Läserwärtige vu däre Syte',
 	'specialpages-group-feedback' => 'Meinig vum Läser',
+	'readerfeedback-tt-review' => 'Bewärtig abschicke',
 );
 
 /** Hebrew (עברית)
@@ -1032,6 +1036,18 @@ $messages['he'] = array(
 	'readerfeedback-tier-poor' => 'גרוע',
 	'tooltip-ca-ratinghist' => 'דירוג קוראים לדף זה',
 	'specialpages-group-feedback' => 'דעת הצופה',
+);
+
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'readerfeedback-finished' => 'Hvala!',
+	'readerfeedback-tagfilter' => 'Oznaka:',
+	'readerfeedback-tierfilter' => 'Rejting:',
+	'readerfeedback-tier-high' => 'Visok',
+	'readerfeedback-tier-medium' => 'Umjeren',
+	'readerfeedback-tier-poor' => 'Slab',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1911,6 +1927,7 @@ $messages['ru'] = array(
 	'readerfeedback-tier-poor' => 'Низкая',
 	'tooltip-ca-ratinghist' => 'Читательская оценка этой страницы',
 	'specialpages-group-feedback' => 'Мнение читателей',
+	'readerfeedback-tt-review' => 'Отправить проверку',
 );
 
 /** Yakut (Саха тыла)

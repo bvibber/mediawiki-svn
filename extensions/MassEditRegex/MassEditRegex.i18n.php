@@ -404,6 +404,7 @@ $messages['es'] = array(
 	'masseditregex-page-not-exists' => '$1 no existe',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|página|páginas}} editadas',
 	'masseditregex-view-full-summary' => 'Ver resumen de edición completo',
+	'masseditregex-hint-intro' => 'Aquí encontrarás algunas pistas y ejemplos de cómo lograr tareas comunes:',
 	'masseditregex-hint-headmatch' => 'Coincidencia',
 	'masseditregex-hint-headreplace' => 'Reemplazar',
 	'masseditregex-hint-headeffect' => 'Efecto',
