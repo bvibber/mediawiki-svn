@@ -348,7 +348,7 @@ scrollToCaretPosition: function( options ) {
 			break;
 		case 'getCaretPosition':
 			options = $.extend( {
-				'startAndEnd': false, // Return [start, end] instead of just start
+				'startAndEnd': false // Return [start, end] instead of just start
 			}, options );
 			// FIXME: We may not need character position-based functions if we insert markers in the right places
 			break;
@@ -357,7 +357,7 @@ scrollToCaretPosition: function( options ) {
 				'start': undefined, // Position to start selection at
 				'end': undefined, // Position to end selection at. Defaults to start
 				'startContainer': undefined, // Element to start selection in (iframe only)
-				'endContainer': undefined, // Element to end selection in (iframe only). Defaults to startContainer
+				'endContainer': undefined // Element to end selection in (iframe only). Defaults to startContainer
 			}, options );
 			if ( options.end === undefined )
 				options.end = options.start;

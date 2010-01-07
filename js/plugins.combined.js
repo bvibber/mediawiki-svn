@@ -1278,7 +1278,7 @@ scrollToCaretPosition: function( options ) {
 			break;
 		case 'getCaretPosition':
 			options = $.extend( {
-				'startAndEnd': false, // Return [start, end] instead of just start
+				'startAndEnd': false // Return [start, end] instead of just start
 			}, options );
 			// FIXME: We may not need character position-based functions if we insert markers in the right places
 			break;
@@ -1287,7 +1287,7 @@ scrollToCaretPosition: function( options ) {
 				'start': undefined, // Position to start selection at
 				'end': undefined, // Position to end selection at. Defaults to start
 				'startContainer': undefined, // Element to start selection in (iframe only)
-				'endContainer': undefined, // Element to end selection in (iframe only). Defaults to startContainer
+				'endContainer': undefined // Element to end selection in (iframe only). Defaults to startContainer
 			}, options );
 			if ( options.end === undefined )
 				options.end = options.start;
@@ -1816,12 +1816,12 @@ if ( typeof context == 'undefined' ) {
 		 * @param endContainer Element in iframe to end selection in
 		 */
 		'setSelection': function( options ) {
+			var sc = options.startContainer, ec = options.endContainer;
+			sc = sc.jquery ? sc[0] : sc;
+			ec = ec.jquery ? ec[0] : ec;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var sel = context.$iframe[0].contentWindow.getSelection();
-				var sc = options.startContainer, ec = options.endContainer;
-				sc = sc.jquery ? sc[0] : sc;
-				ec = ec.jquery ? ec[0] : ec;
 				while ( sc.firstChild && sc.nodeName != '#text' ) {
 					sc = sc.firstChild;
 				}
@@ -1837,7 +1837,15 @@ if ( typeof context == 'undefined' ) {
 				context.$iframe[0].contentWindow.focus();
 			} else if ( context.$iframe[0].contentWindow.document.selection ) {
 				// IE
-				// TODO
+				// FIXME still broken for when sc or ec is the <body>, needs more tweaking
+				var range = document.selection.createRange();
+				range.moveToElementText( sc );
+				range.moveStart( 'character', options.start );
+				var range2 = document.selection.createRange();
+				range2.moveToElementText( ec );
+				range2.moveEnd( 'character', options.end );
+				range.setEndPoint( EndToEnd, range2 );
+				range.select();
 			}
 		},
 		/**
@@ -1979,6 +1987,9 @@ if ( typeof context == 'undefined' ) {
 		} )
 		.insertAfter( context.$textarea )
 		.load( function() {
+			if ( !context.$iframe[0].contentWindow.document.body ) {
+				return;
+			}
 			// Turn the document's design mode on
 			context.$iframe[0].contentWindow.document.designMode = 'on';
 			// Get a reference to the content area of the iframe
@@ -3147,8 +3158,14 @@ fn: {
 			if ( currentField.indexOf( '=' ) == -1 ) {
 				// anonymous field, gets a number
 				valueBegin = currentField.match( /\S+/ ); //first nonwhitespace character
+				if( valueBegin == null ){ //ie
+					continue;
+				}
 				valueBeginIndex = valueBegin.index + oldDivider+1;
 				valueEnd = currentField.match( /[^\s]\s*$/ ); //last nonwhitespace character
+				if( valueEnd == null ){ //ie
+					continue;
+				}
 				valueEndIndex = valueEnd.index + oldDivider + 2;
 				ranges.push( new Range( ranges[ranges.length-1].end,
 					valueBeginIndex ) ); //all the chars upto now
@@ -3177,6 +3194,9 @@ fn: {
 				nameBeginIndex = nameBegin.index + oldDivider + 1;
 				// Last nonwhitespace and non } character
 				nameEnd = currentName.match( /[^\s]\s*$/ );
+				if( nameEnd == null ){ //ie
+					continue;
+				}
 				nameEndIndex = nameEnd.index + oldDivider + 2;
 				// All the chars upto now 
 				ranges.push( new Range( ranges[ranges.length-1].end, nameBeginIndex ) );
@@ -3185,9 +3205,15 @@ fn: {
 				oldDivider += currentField.indexOf( '=' ) + 1;
 				// First nonwhitespace character
 				valueBegin = currentValue.match( /\S+/ );
+				if( valueBegin == null ){ //ie
+					continue;
+				}
 				valueBeginIndex = valueBegin.index + oldDivider + 1;
 				// Last nonwhitespace and non } character
 				valueEnd = currentValue.match( /[^\s]\s*$/ );
+				if( valueEnd == null ){ //ie
+					continue;
+				}
 				valueEndIndex = valueEnd.index + oldDivider + 2;
 				// All the chars upto now
 				equalsIndex = ranges.push( new Range( ranges[ranges.length-1].end, valueBeginIndex) ) - 1;
@@ -3228,7 +3254,7 @@ cfg: {
 	// Minimum width to allow resizing to before collapsing the table of contents - used when resizing and collapsing
 	minimumWidth: '70px',
 	// Boolean var indicating text direction
-	rtl: false, 
+	rtl: false
 },
 /**
  * API accessible functions

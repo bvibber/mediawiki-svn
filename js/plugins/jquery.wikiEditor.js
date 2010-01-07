@@ -506,12 +506,12 @@ if ( typeof context == 'undefined' ) {
 		 * @param endContainer Element in iframe to end selection in
 		 */
 		'setSelection': function( options ) {
+			var sc = options.startContainer, ec = options.endContainer;
+			sc = sc.jquery ? sc[0] : sc;
+			ec = ec.jquery ? ec[0] : ec;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var sel = context.$iframe[0].contentWindow.getSelection();
-				var sc = options.startContainer, ec = options.endContainer;
-				sc = sc.jquery ? sc[0] : sc;
-				ec = ec.jquery ? ec[0] : ec;
 				while ( sc.firstChild && sc.nodeName != '#text' ) {
 					sc = sc.firstChild;
 				}
@@ -527,7 +527,15 @@ if ( typeof context == 'undefined' ) {
 				context.$iframe[0].contentWindow.focus();
 			} else if ( context.$iframe[0].contentWindow.document.selection ) {
 				// IE
-				// TODO
+				// FIXME still broken for when sc or ec is the <body>, needs more tweaking
+				var range = document.selection.createRange();
+				range.moveToElementText( sc );
+				range.moveStart( 'character', options.start );
+				var range2 = document.selection.createRange();
+				range2.moveToElementText( ec );
+				range2.moveEnd( 'character', options.end );
+				range.setEndPoint( EndToEnd, range2 );
+				range.select();
 			}
 		},
 		/**
@@ -669,7 +677,7 @@ if ( typeof context == 'undefined' ) {
 		} )
 		.insertAfter( context.$textarea )
 		.load( function() {
-			if(!$( context.$iframe[0].contentWindow.document.body )){
+			if ( !context.$iframe[0].contentWindow.document.body ) {
 				return;
 			}
 			// Turn the document's design mode on

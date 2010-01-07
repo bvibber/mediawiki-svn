@@ -105,7 +105,8 @@ this.inherit = function( child ) {
 		// Test and see if we're handling a shortcut bind for the document.ready function. This occurs when the selector
 		// is a function. Because firefox throws xpconnect objects around in iFrames, the standard
 		// jQuery.isFunction test returns false negatives.
-		if ( selector.constructor.toString().match( /Function/ ) != null ) {
+		// PATCHED: Disable this check because it breaks subtly on IE7 and we don't use $j( function() { ... } ) anyway
+		if ( false && selector.constructor.toString().match( /Function/ ) != null ) {
 			return child.jQueryInherit.fn.ready( selector );
 		}
 		// Otherwise, just let the jQuery init function handle the rest. Be sure we pass in proper context of the
