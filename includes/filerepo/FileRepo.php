@@ -256,7 +256,6 @@ abstract class FileRepo {
 	 * generating hash keys.
 	 */
 	function getNameFromTitle( $title ) {
-		global $wgCapitalLinks;
 		if ( $this->initialCapital != MWNamespace::isCapitalized( NS_FILE ) ) {
 			global $wgContLang;
 			$name = $title->getUserCaseDBKey();
