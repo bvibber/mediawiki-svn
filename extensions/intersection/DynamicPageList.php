@@ -82,7 +82,7 @@ function DynamicPageList( $input ) {
 	$iGalleryImageWidth = 0;
 	$iGalleryNumbRows = 0;
 	$sGalleryCaption = '';
-	$gallery = NULL;
+	$gallery = null;
 
 	$sOrderMethod = 'categoryadd';
 	$sOrder = 'descending';
@@ -133,7 +133,7 @@ function DynamicPageList( $input ) {
 				break;
 			case 'namespace':
 			$ns = $wgContLang->getNsIndex($sArg);
-				if ( NULL != $ns ) {
+				if ( null != $ns ) {
 				$iNamespace = $ns;
 				$bNamespace = true;
 				} else {
