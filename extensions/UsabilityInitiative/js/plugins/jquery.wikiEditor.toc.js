@@ -10,7 +10,7 @@ cfg: {
 	// Minimum width to allow resizing to before collapsing the table of contents - used when resizing and collapsing
 	minimumWidth: '70px',
 	// Boolean var indicating text direction
-	rtl: false, 
+	rtl: false
 },
 /**
  * API accessible functions
