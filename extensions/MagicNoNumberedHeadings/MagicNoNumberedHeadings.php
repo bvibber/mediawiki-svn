@@ -48,15 +48,14 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['RegexFunctions'] = $dir . 'RegexFunctions.i18n.php';
-$wgExtensionMessagesFiles['RegexFunctionsMagic'] = $dir . 'RegexFunctions.i18n.magic.php';
+$wgExtensionMessagesFiles['MagicNoNumberedHeadings'] = $dir . 'MagicNoNumberedHeadings.i18n.php';
+$wgExtensionMessagesFiles['MagicNoNumberedHeadingsMagic'] = $dir . 'MagicNoNumberedHeadings.i18n.magic.php';
 
 $wgHooks['ParserBeforeInternalParse'][] = 'MagicNoNumberedHeadingsParserBeforeInternalParse';
 
 function MagicNoNumberedHeadingsParserBeforeInternalParse($parser, $text, $stripState)
 {
-	if (MagicWord::get( 'MAG_NONUMBEREDHEADINGS' )->matchAndRemove( $text ) )
-	{
+	if (MagicWord::get( 'MAG_NONUMBEREDHEADINGS' )->matchAndRemove( $text ) ) {
 		$parser->mOptions->mNumberHeadings = (FALSE);
 	}
 	return true;
