@@ -20,6 +20,7 @@ $magicWords['en'] = array(
 	'mediawidth'      => array( 0, 'mediawidth' ),
 	'mediadimensions' => array( 0, 'mediadimensions' ),
 	'mediaexif'       => array( 0, 'mediaexif' ),
+	'mediapages'      => array( 0, 'mediapages' ),
 );
 
 $magicWords['ar'] = array(

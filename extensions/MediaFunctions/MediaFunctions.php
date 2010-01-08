@@ -22,18 +22,18 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['MediaFunctions'] = $dir . 'MediaFunctions.i18n.php';
 $wgAutoloadClasses['MediaFunctions'] = $dir . 'MediaFunctions.class.php';
-$wgExtensionFunctions[] = 'efMediaFunctionsSetup';
+$wgHooks['ParserFirstCallInit'][] = 'efMediaFunctionsSetup';
 
 /**
  * Register function callbacks and add error messages to
  * the message cache
  */
-function efMediaFunctionsSetup() {
-	global $wgParser;
-	$wgParser->setFunctionHook( 'mediamime', array( 'MediaFunctions', 'mediamime' ) );
-	$wgParser->setFunctionHook( 'mediasize', array( 'MediaFunctions', 'mediasize' ) );
-	$wgParser->setFunctionHook( 'mediaheight', array( 'MediaFunctions', 'mediaheight' ) );
-	$wgParser->setFunctionHook( 'mediawidth', array( 'MediaFunctions', 'mediawidth' ) );
-	$wgParser->setFunctionHook( 'mediadimensions', array( 'MediaFunctions', 'mediadimensions' ) );
-	$wgParser->setFunctionHook( 'mediaexif', array( 'MediaFunctions', 'mediaexif' ) );
+function efMediaFunctionsSetup( &$parser ) {
+	$parser->setFunctionHook( 'mediamime', array( 'MediaFunctions', 'mediamime' ) );
+	$parser->setFunctionHook( 'mediasize', array( 'MediaFunctions', 'mediasize' ) );
+	$parser->setFunctionHook( 'mediaheight', array( 'MediaFunctions', 'mediaheight' ) );
+	$parser->setFunctionHook( 'mediawidth', array( 'MediaFunctions', 'mediawidth' ) );
+	$parser->setFunctionHook( 'mediadimensions', array( 'MediaFunctions', 'mediadimensions' ) );
+	$parser->setFunctionHook( 'mediaexif', array( 'MediaFunctions', 'mediaexif' ) );
+	$parser->setFunctionHook( 'mediapages', array( 'MediaFunctions', 'mediapages' ) );
 }
