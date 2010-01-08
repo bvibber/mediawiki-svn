@@ -476,7 +476,7 @@ mw.addMessages( {
 		/**
 		 * Shows the timed text edit ui
 		 * 
-		 * @param {String} mode Mode or page to display ( to diffrenciate between edit vs new transcript) 
+		 * @param {String} mode Mode or page to display ( to differentiate between edit vs new transcript) 
 		 */		
 		showTimedTextEditUI: function( mode ){
 			var _this = this;

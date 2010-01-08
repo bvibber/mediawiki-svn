@@ -290,14 +290,14 @@ mw.TimedTextEdit.prototype = {
 		
 	},
 	/**
-	 * Uploads the text conntent
+	 * Uploads the text content
 	 */
 	uploadTextFile: function(){
 		//put a dialog ontop
 		mw.addLoaderDialog( gM( 'mwe-uploading-text') );
 		
-		//Get timed text target title
-		// NOTE: this should be cleanned up with accessors
+		// Get timed text target title
+		// NOTE: this should be cleaned up with accessors
 		var targetTitleKey = this.parentTimedText.embedPlayer.wikiTitleKey;
 		
 		// Add TimedText NS and language key and ".srt"
@@ -376,7 +376,7 @@ mw.TimedTextEdit.prototype = {
 	},
 	getLangMenuItem: function( langKey , source_icon){ 
 		return this.parentTimedText.getLi(
-			unescape( mw.languages[ langKey ] ),
+			langKey + ' - ' + unescape( mw.languages[ langKey ] ),
 			source_icon,
 			function(){
 				mw.log( "Selected: " + langKey );
