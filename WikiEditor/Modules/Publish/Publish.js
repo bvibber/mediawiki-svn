@@ -1,6 +1,6 @@
 /* JavaScript for WikiEditor Publish module */
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check preferences for publish
 	if ( !wgWikiEditorEnabledModules.preview ) {
 		return true;

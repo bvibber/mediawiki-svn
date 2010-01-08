@@ -1,6 +1,6 @@
 /* JavaScript for EditWarning extension */
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check if EditWarning is enabled
 	if ( !wgVectorEnabledModules.editwarning ) {
 		return true;

@@ -1,6 +1,6 @@
 /* JavaScript for WikiEditor Highlight module */
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check preferences for highlight
 	if ( !wgWikiEditorEnabledModules.highlight ) {
 		return true;
