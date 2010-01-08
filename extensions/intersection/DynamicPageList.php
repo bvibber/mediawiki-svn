@@ -114,41 +114,42 @@ function DynamicPageList( $input ) {
 
 	foreach ( $aParams as $sParam )	{
 		$aParam = explode( "=", $sParam, 2 );
-		if( count( $aParam ) < 2 )
+		if( count( $aParam ) < 2 ) {
 			continue;
+		}
 		$sType = trim($aParam[0]);
 		$sArg = trim($aParam[1]);
 		switch ( $sType ) {
 			case 'category':
-			$title = Title::newFromText( $parser->transformMsg($sArg, $poptions) );
-			if( is_null( $title ) )
-				continue;
-			$aCategories[] = $title;
+				$title = Title::newFromText( $parser->transformMsg($sArg, $poptions) );
+				if( is_null( $title ) )
+					continue;
+				$aCategories[] = $title;
 				break;
 			case 'notcategory':
-			$title = Title::newFromText( $parser->transformMsg($sArg, $poptions) );
-			if( is_null( $title ) )
-				continue;
-			$aExcludeCategories[] = $title;
+				$title = Title::newFromText( $parser->transformMsg($sArg, $poptions) );
+				if( is_null( $title ) )
+					continue;
+				$aExcludeCategories[] = $title;
 				break;
 			case 'namespace':
-			$ns = $wgContLang->getNsIndex($sArg);
+				$ns = $wgContLang->getNsIndex($sArg);
 				if ( null != $ns ) {
-				$iNamespace = $ns;
-				$bNamespace = true;
-				} else {
-				$iNamespace = intval($sArg);
-					if ( $iNamespace >= 0 )	{
+					$iNamespace = $ns;
 					$bNamespace = true;
+				} else {
+					$iNamespace = intval($sArg);
+					if ( $iNamespace >= 0 )	{
+						$bNamespace = true;
 					} else {
-					$bNamespace = false;
+						$bNamespace = false;
+					}
 				}
-			}
 				break;
 			case 'count':
-			//ensure that $iCount is a number;
-			$iCount = IntVal( $sArg );
-			$bCountSet = true;
+				//ensure that $iCount is a number;
+				$iCount = IntVal( $sArg );
+				$bCountSet = true;
 				break;
 			case 'offset':
 				$iOffset = IntVal( $sArg );
@@ -158,7 +159,7 @@ function DynamicPageList( $input ) {
 				break;
 			case 'imageheight':
 				$iGalleryImageHeight = IntVal( $sArg );
-			break;
+				break;
 			case 'imagesperrow':
 				$iGalleryNumbRows = IntVal( $sArg );
 				break;
@@ -168,30 +169,30 @@ function DynamicPageList( $input ) {
 						$bUseGallery = true;
 						$gallery = new ImageGallery;
 						$sStartList = '';
-                        	        	$sEndList = '';
+						$sEndList = '';
 						$sStartItem = '';
 						$sEndItem = '';
 						break;
-			case 'none':
-				$sStartList = '';
-				$sEndList = '';
-				$sStartItem = '';
-				$sEndItem = '<br />';
-				break;
-			case 'ordered':
-				$sStartList = '<ol>';
-				$sEndList = '</ol>';
-				$sStartItem = '<li>';
-				$sEndItem = '</li>';
-				break;
-			case 'unordered':
-			default:
-				$sStartList = '<ul>';
-				$sEndList = '</ul>';
-				$sStartItem = '<li>';
-				$sEndItem = '</li>';
-				break;
-			}
+					case 'none':
+						$sStartList = '';
+						$sEndList = '';
+						$sStartItem = '';
+						$sEndItem = '<br />';
+						break;
+					case 'ordered':
+						$sStartList = '<ol>';
+						$sEndList = '</ol>';
+						$sStartItem = '<li>';
+						$sEndItem = '</li>';
+						break;
+					case 'unordered':
+					default:
+						$sStartList = '<ul>';
+						$sEndList = '</ul>';
+						$sStartItem = '<li>';
+						$sEndItem = '</li>';
+						break;
+				}
 				break;
 			case 'gallerycaption':
 				// Should perhaps actually parse caption instead
@@ -207,7 +208,7 @@ function DynamicPageList( $input ) {
 					case 'true':
 					default:
 						$bGalleryFileSize = true;
-		}
+				}
 				break;
 			case 'galleryshowfilename':
 				switch ( $sArg ) {
@@ -223,20 +224,20 @@ function DynamicPageList( $input ) {
 				break;
 			case 'order':
 				switch ( $sArg ) {
-			case 'ascending':
-				$sOrder = 'ascending';
-				break;
-			case 'descending':
-			default:
-				$sOrder = 'descending';
-				break;
-			}
+					case 'ascending':
+						$sOrder = 'ascending';
+						break;
+					case 'descending':
+					default:
+						$sOrder = 'descending';
+						break;
+				}
 				break;
 			case 'ordermethod':
 				switch ( $sArg ) {
-			case 'lastedit':
-				$sOrderMethod = 'lastedit';
-				break;
+					case 'lastedit':
+						$sOrderMethod = 'lastedit';
+						break;
 					case 'length':
 						$sOrderMethod = 'length';
 						break;
@@ -254,68 +255,68 @@ function DynamicPageList( $input ) {
 							$sOrderMethod = 'categoyadd'; // default if hitcounter disabled.
 						}
 						break;
-			case 'categoryadd':
-			default:
-				$sOrderMethod = 'categoryadd';
-				break;
-			}
+					case 'categoryadd':
+					default:
+						$sOrderMethod = 'categoryadd';
+						break;
+				}
 				break;
 			case 'redirects':
 				switch ( $sArg ) {
-			case 'include':
-				$sRedirects = 'include';
-				break;
-			case 'only':
-				$sRedirects = 'only';
-				break;
-			case 'exclude':
-			default:
-				$sRedirects = 'exclude';
-				break;
-			}
+					case 'include':
+						$sRedirects = 'include';
+						break;
+					case 'only':
+						$sRedirects = 'only';
+						break;
+					case 'exclude':
+					default:
+						$sRedirects = 'exclude';
+						break;
+				}
 				break;
 			case 'stablepages':
 				switch ( $sArg ) {
-			case 'include':
-				$sStable = 'include';
-				break;
-			case 'only':
+					case 'include':
+						$sStable = 'include';
+						break;
+					case 'only':
 						$bFlaggedRevs = true;
-				$sStable = 'only';
-				break;
-			case 'exclude':
-			default:
+						$sStable = 'only';
+						break;
+					case 'exclude':
+					default:
 						$bFlaggedRevs = true;
-				$sStable = 'exclude';
-				break;
-			}
+						$sStable = 'exclude';
+						break;
+				}
 				break;
 			case 'qualitypages':
 				switch ( $sArg ) {
-			case 'include':
-				$sQuality = 'include';
-				break;
-			case 'only':
-					$bFlaggedRevs = true;
-				$sQuality = 'only';
-				break;
-			case 'exclude':
-			default:
-					$bFlaggedRevs = true;
-				$sQuality = 'exclude';
-				break;
-			}
+					case 'include':
+						$sQuality = 'include';
+						break;
+					case 'only':
+						$bFlaggedRevs = true;
+						$sQuality = 'only';
+						break;
+					case 'exclude':
+					default:
+						$bFlaggedRevs = true;
+						$sQuality = 'exclude';
+						break;
+				}
 				break;
 			case 'suppresserrors':
 				if ( 'true' == $sArg ) {
-				$bSuppressErrors = true;
+					$bSuppressErrors = true;
 				} else {
-				$bSuppressErrors = false;
-		}
+					$bSuppressErrors = false;
+				}
 				break;
 			case 'addfirstcategorydate':
 				if ( 'true' == $sArg ) {
-				$bAddFirstCategoryDate = true;
+					$bAddFirstCategoryDate = true;
 				} elseif ( preg_match( '/^(?:[ymd]{2,3}|ISO 8601)$/', $sArg ) )  {
 					// if it more or less is valid dateformat.
 					$bAddFirstCategoryDate = true;
@@ -325,30 +326,30 @@ function DynamicPageList( $input ) {
 						$bStripYear = true;
 					}
 				} else {
-				$bAddFirstCategoryDate = false;
-		}
+					$bAddFirstCategoryDate = false;
+				}
 				break;
 			case 'shownamespace':
 				if ( 'false' == $sArg ) {
-				$bShowNamespace = false;
+					$bShowNamespace = false;
 				} else {
-				$bShowNamespace = true;
-		}
+					$bShowNamespace = true;
+				}
 				break;
 			case 'googlehack':
 				if ( 'false' == $sArg ) {
-				$bGoogleHack = false;
+					$bGoogleHack = false;
 				} else {
-				$bGoogleHack = true;
-		}
+					$bGoogleHack = true;
+				}
 				break;
 			case 'nofollow': # bug 6658
 				if ( 'false' != $sArg ) {
 					$aLinkOptions['rel'] = 'nofollow';
-	}
+				}
 				break;
-		}
-	}
+		} // end main switch()
+	} // end foreach()
 
 	$iCatCount = count($aCategories);
 	$iExcludeCatCount = count($aExcludeCategories);
@@ -356,18 +357,18 @@ function DynamicPageList( $input ) {
 
 	if ( $iCatCount < 1 && false == $bNamespace ) {
 		if ( false == $bSuppressErrors ) {
-	return htmlspecialchars( wfMsg( 'intersection_noincludecats' ) ); // "!!no included categories!!";
+			return htmlspecialchars( wfMsg( 'intersection_noincludecats' ) ); // "!!no included categories!!";
 		} else {
-	return '';
-	}
+			return '';
+		}
 	}
 
 	if ( $iTotalCatCount > $wgDLPmaxCategories && !$wgDLPAllowUnlimitedCategories ) {
 		if ( false == $bSuppressErrors ) {
-	return htmlspecialchars( wfMsg( 'intersection_toomanycats' ) ); // "!!too many categories!!";
+			return htmlspecialchars( wfMsg( 'intersection_toomanycats' ) ); // "!!too many categories!!";
 		} else {
-	return '';
-	}
+			return '';
+		}
 	}
 
 	if ( $bCountSet ) {
@@ -376,11 +377,11 @@ function DynamicPageList( $input ) {
 		}
 		if ( $iCount > $wgDLPMaxResultCount ) {
 			$iCount = $wgDLPMaxResultCount;
-	}
-	} elseif ( !$wgDLPAllowUnlimitedResults ) {
-			$iCount = $wgDLPMaxResultCount;
-			$bCountSet = true;
 		}
+	} elseif ( !$wgDLPAllowUnlimitedResults ) {
+		$iCount = $wgDLPMaxResultCount;
+		$bCountSet = true;
+	}
 
 	//disallow showing date if the query doesn't have an inclusion category parameter
 	if ( $iCatCount < 1 ) {
@@ -393,7 +394,7 @@ function DynamicPageList( $input ) {
 
 
 	//build the SQL query
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$aTables = Array( 'page' );
 	$aFields = Array( 'page_namespace', 'page_title' );
 	$aWhere = Array();
@@ -403,15 +404,15 @@ function DynamicPageList( $input ) {
 	if ( $bGoogleHack ) {
 		$aFields[] = 'page_id';
 	}
-		
+
 	if ( $bAddFirstCategoryDate ) {
 		$aFields[] = 'c1.cl_timestamp';
 	}
-	
+
 	if ( true == $bNamespace ) {
 		$aWhere['page_namespace'] = $iNamespace;
 	}
-		
+
 	// Bug 14943 - Allow filtering based on FlaggedRevs stability.
 	// Check if the extension actually exists before changing the query...
 	if ( function_exists( 'efLoadFlaggedRevs' ) && $bFlaggedRevs ) {
@@ -510,7 +511,7 @@ function DynamicPageList( $input ) {
 
 	// process the query
 	$res = $dbr->select( $aTables, $aFields, $aWhere, __METHOD__, $aOptions, $aJoin );
-	$sk =& $wgUser->getSkin();
+	$sk = $wgUser->getSkin();
 
 	if ( $dbr->numRows( $res ) == 0 ) {
 		if ( false == $bSuppressErrors ) {
@@ -576,8 +577,8 @@ function DynamicPageList( $input ) {
 		} else {
 			$output .= $categoryDate;
 			$output .= $sk->link( $title, htmlspecialchars( $titleText ), $aLinkOptions, $query, array( 'forcearticlepath', 'known' ) );
-		$output .= $sEndItem . "\n";
-	}
+			$output .= $sEndItem . "\n";
+		}
 	}
 
 	//end unordered list
@@ -594,10 +595,8 @@ function DynamicPageList( $input ) {
 		if ( $sGalleryCaption != '' )
 			$gallery->setCaption( $sGalleryCaption ); # gallery class escapes string
 		$output = $gallery->toHtml();
-
 	} else {
-	$output .= $sEndList . "\n";
+		$output .= $sEndList . "\n";
 	}
-
 	return $output;
 }
