@@ -2180,8 +2180,8 @@ $wgMimeTypeBlacklist= array(
 $wgCheckFileExtensions = true;
 
 /**
- * If this is turned off, users may override the warning for files not covered
- * by $wgFileExtensions.
+ * If this is true, only allow uploads with MIME types matching the set listed
+ * in $wgFileExtensions
  */
 $wgStrictFileExtensions = true;
 
