@@ -2671,14 +2671,14 @@ class Title {
 		if( $this->getNamespace() == NS_FILE ) {
 			$file = wfLocalFile( $this );
 			if( $file->exists() ) {
-				global $wgCheckTitleFileExtensions;
+				global $wgCheckFileExtensions;
 				if( $nt->getNamespace() != NS_FILE ) {
 					$errors[] = array('imagenocrossnamespace');
 				}
 				if( $nt->getText() != wfStripIllegalFilenameChars( $nt->getText() ) ) {
 					$errors[] = array('imageinvalidfilename');
 				}
-				if( $wgCheckTitleFileExtensions && 
+				if( $wgCheckFileExtensions && 
 					!File::checkExtensionCompatibility( $file, $nt->getDBkey() ) ) {
 					$errors[] = array('imagetypemismatch');
 				}

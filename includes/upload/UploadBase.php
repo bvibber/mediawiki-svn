@@ -311,8 +311,8 @@ abstract class UploadBase {
 			$warnings['badfilename'] = $filename;
 
 		// Check whether the file extension is on the unwanted list
-		global $wgCheckTitleFileExtensions, $wgFileExtensions;
-		if ( $wgCheckTitleFileExtensions ) {
+		global $wgCheckFileExtensions, $wgFileExtensions;
+		if ( $wgCheckFileExtensions ) {
 			if ( !$this->checkFileExtension( $this->mFinalExtension, $wgFileExtensions ) )
 				$warnings['filetype-unwanted-type'] = array($this->mFinalExtension, 
 															implode(", ", $wgFileExtensions));
@@ -409,9 +409,9 @@ abstract class UploadBase {
 		}
 
 		/* Don't allow users to override the blacklist (check file extension) */
-		global $wgCheckTitleFileExtensions, $wgStrictFileExtensions;
+		global $wgCheckFileExtensions, $wgStrictFileExtensions;
 		global $wgFileExtensions, $wgFileBlacklist;
-		if ( $wgCheckTitleFileExtensions ) {
+		if ( $wgCheckFileExtensions ) {
 			if ( $this->mFinalExtension == '' ) {
 				$this->mTitleError = self::FILETYPE_MISSING;
 				return $this->mTitle = null;

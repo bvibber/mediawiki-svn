@@ -2177,7 +2177,7 @@ $wgMimeTypeBlacklist= array(
  * with file extensions of uploaded files (e.g if true, disallow a JPEG called
  * "File:Foo", but allow "File:Foo.jpg").
  */
-$wgCheckTitleFileExtensions = true;
+$wgCheckFileExtensions = true;
 
 /**
  * If this is turned off, users may override the warning for files not covered
