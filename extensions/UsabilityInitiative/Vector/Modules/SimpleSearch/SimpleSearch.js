@@ -6,7 +6,7 @@ if ( typeof os_autoload_inputs !== 'undefined' && os_autoload_forms !== 'undefin
 	os_autoload_forms = [];
 }
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Only use this function in conjuction with the Vector skin
 	if( !wgVectorEnabledModules.simplesearch || skin != 'vector' ) {
 		return true;

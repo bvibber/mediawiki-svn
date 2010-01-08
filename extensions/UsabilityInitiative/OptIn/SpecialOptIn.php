@@ -121,7 +121,7 @@ class SpecialOptIn extends SpecialPage {
 					$url = $this->getTitle()->getLinkUrl();
 					$wgOut->addHTML( Xml::tags( 'script',
 						array( 'type' => $wgJsMimeType ),
-						'mw.addOnloadHook( function() { $j.post( "' . $url . '", optInGetPOSTData() ); } );'
+						'mw.ready( function() { $j.post( "' . $url . '", optInGetPOSTData() ); } );'
 					) );
 				} else if ( self::isOptedIn( $wgUser ) ) {
 					// User is already opted in but

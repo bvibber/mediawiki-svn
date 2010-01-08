@@ -1,6 +1,6 @@
 /* JavaScript for WikiEditor Highlight module */
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check preferences for highlight
 	if ( !wgWikiEditorEnabledModules.highlight ) {
 		return true;
@@ -12,7 +12,7 @@ mw.addOnloadHook( function() {
 });
 /* JavaScript for WikiEditor Preview module */
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check preferences for preview
 	if ( !wgWikiEditorEnabledModules.preview ) {
 		return true;
@@ -24,7 +24,7 @@ mw.addOnloadHook( function() {
 });
 /* JavaScript for WikiEditor Publish module */
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check preferences for publish
 	if ( !wgWikiEditorEnabledModules.preview ) {
 		return true;
@@ -36,7 +36,7 @@ mw.addOnloadHook( function() {
 });
 /* JavaScript for WikiEditor Toc module */
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check preferences for toolbar
 	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.toc && wgWikiEditorPreferences.toc.enable ) ) {
 		return true;
@@ -49,7 +49,7 @@ mw.addOnloadHook( function() {
 });
 /* JavaScript for WikiEditor Toolbar module */
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check preferences for toolbar
 	if ( !wgWikiEditorEnabledModules.toolbar ) {
 		return true;
@@ -1700,7 +1700,7 @@ mw.addOnloadHook( function() {
 
 /* JavaScript for WikiEditor Template Editor module */
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check preferences for templateEditor
 	if ( !wgWikiEditorEnabledModules.templateEditor ) {
 		return true;

@@ -40,8 +40,8 @@ wahConfig = {
 	'jobsearch_delay'	: ( wgClientSearchInterval ) ? wgClientSearchInterval: 60
 };
 
-//mw.addOnloadHook ensures that the dom and core libraries are ready:
-mw.addOnloadHook(function(){
+//mw.ready ensures that the dom and core libraries are ready:
+mw.ready(function(){
 	//set up the dependency load request:
 	var depReq = [
 		[

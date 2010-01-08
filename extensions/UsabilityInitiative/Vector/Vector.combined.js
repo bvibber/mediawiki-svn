@@ -1,7 +1,7 @@
 /* Prototype code to show collapsing left nav options */
 /* First draft and will be changing greatly */
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	if( !wgVectorEnabledModules.collapsiblenav ) {
 		return true;
 	}
@@ -35,7 +35,7 @@ mw.addOnloadHook( function() {
 		return false;
 	} );
 } );
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check if CollapsibleTabs is enabled
 	if ( !wgVectorEnabledModules.collapsibletabs ) {
 		return true;
@@ -119,7 +119,7 @@ mw.addOnloadHook( function() {
 } );
 /* JavaScript for EditWarning extension */
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check if EditWarning is enabled
 	if ( !wgVectorEnabledModules.editwarning ) {
 		return true;
@@ -169,7 +169,7 @@ if ( typeof os_autoload_inputs !== 'undefined' && os_autoload_forms !== 'undefin
 	os_autoload_forms = [];
 }
 
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Only use this function in conjuction with the Vector skin
 	if( !wgVectorEnabledModules.simplesearch || skin != 'vector' ) {
 		return true;

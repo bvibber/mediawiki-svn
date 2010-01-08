@@ -1,4 +1,4 @@
-mw.addOnloadHook( function() {
+mw.ready( function() {
 	// Check if CollapsibleTabs is enabled
 	if ( !wgVectorEnabledModules.collapsibletabs ) {
 		return true;
