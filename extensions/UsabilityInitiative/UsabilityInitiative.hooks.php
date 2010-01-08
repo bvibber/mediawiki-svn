@@ -9,7 +9,7 @@
 class UsabilityInitiativeHooks {
 
 	/* Static Members */
-	
+
 	private static $doOutput = false;
 	private static $messages = array();
 	private static $variables = array();
@@ -62,6 +62,16 @@ class UsabilityInitiativeHooks {
 		// Core functionality of extension
 		'base_sets' => array(
 			'raw' => array(
+
+				// These scripts can be pulled from core once the js2 is merged
+				array( 'src' => 'js/js2stopgap/ui.core.js', 'version' => 1 ),
+				array( 'src' => 'js/js2stopgap/ui.datepicker.js', 'version' => 1 ),
+				array( 'src' => 'js/js2stopgap/ui.dialog.js', 'version' => 1 ),
+				array( 'src' => 'js/js2stopgap/ui.draggable.js', 'version' => 1 ),
+				array( 'src' => 'js/js2stopgap/ui.resizable.js', 'version' => 1 ),
+				array( 'src' => 'js/js2stopgap/ui.tabs.js', 'version' => 1 ),
+
+				// Core functionality of extension scripts
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 5 ),
 				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 3 ),
@@ -82,20 +92,20 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 1 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 135 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 136 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 135 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 136 ),
 			),
 		),
 	);
-	
+
 	/* Static Functions */
-	
+
 	public static function initialize() {
 		self::$doOutput = true;
 	}
-	
+
 	/**
 	 * AjaxAddScript hook
 	 * Adds scripts
@@ -105,12 +115,12 @@ class UsabilityInitiativeHooks {
 		global $wgUsabilityInitiativeResourceMode;
 		global $wgEnableJS2system, $wgEditToolbarRunTests;
 		global $wgStyleVersion;
-		
+
 		wfRunHooks( 'UsabilityInitiativeLoadModules' );
-		
+
 		if ( !self::$doOutput )
 			return true;
-		
+
 		// Default to raw
 		$mode = $wgUsabilityInitiativeResourceMode; // Just an alias
 		if ( !isset( self::$scriptFiles['base_sets'][$mode] ) ) {
@@ -188,7 +198,7 @@ class UsabilityInitiativeHooks {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * MakeGlobalVariablesScript hook
 	 */
@@ -223,7 +233,7 @@ class UsabilityInitiativeHooks {
 	public static function addMessages( $messages ) {
 		self::$messages = array_merge( self::$messages, $messages );
 	}
-	
+
 	/**
 	 * Adds variables that will be turned into global variables in JS
 	 * @param $variables array of "name" => "value"
@@ -231,7 +241,7 @@ class UsabilityInitiativeHooks {
 	public static function addVariables( $variables ) {
 		self::$variables = array_merge( self::$variables, $variables );
 	}
-	
+
 	/**
 	 * Adds scripts for modules
 	 * @param $scripts array with 'raw', 'combined' and 'minified' keys

@@ -12,6 +12,12 @@ CSS := \
 	css/wikiEditor.preview.css
 
 PLUGINS := \
+	js/js2stopgap/ui.core.js\
+	js/js2stopgap/ui.datepicker.js\
+	js/js2stopgap/ui.dialog.js\
+	js/js2stopgap/ui.draggable.js\
+	js/js2stopgap/ui.resizable.js\
+	js/js2stopgap/ui.tabs.js\
 	js/plugins/jquery.async.js\
 	js/plugins/jquery.autoEllipsis.js\
 	js/plugins/jquery.browser.js\
