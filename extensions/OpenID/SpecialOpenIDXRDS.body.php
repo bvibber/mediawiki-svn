@@ -62,21 +62,23 @@ class SpecialOpenIDXRDS extends SpecialOpenID {
 
 		if ( !$par ) {
 			wfHttpError( 404, "Not Found", wfMsg( 'openidnousername' ) );
+			return;
 		}
 
 		$user = User::newFromName( $par );
 
 		if ( !$user || $user->getID() == 0 ) {
 			wfHttpError( 404, "Not Found", wfMsg( 'openidbadusername' ) );
+			return;
 		}
 
 		// Generate the user page URL.
 
-		$user_title = Title::makeTitle( NS_USER, $user->getName() );
+		$user_title = $user->getUserPage();
 		$user_url = $user_title->getFullURL();
 
 		// Generate the OpenID server endpoint URL.
-		$server_title = Title::makeTitle( NS_SPECIAL, 'OpenIDServer' );
+		$server_title = SpecialPage::getTitleFor( 'OpenIDServer' );
 		$server_url = $server_title->getFullURL();
 
 		// Define array of Yadis services to be included in
