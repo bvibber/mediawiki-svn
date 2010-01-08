@@ -1,4 +1,4 @@
-/*
+/**
  * simple form output jquery binding
  * enables dynamic form output to a given target
  *

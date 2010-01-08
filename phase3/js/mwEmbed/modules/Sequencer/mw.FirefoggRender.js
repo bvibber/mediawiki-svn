@@ -52,18 +52,19 @@ mw.FirefoggRender.prototype = {
 			'only_fogg':true
 		});
 		
-		// check for firefogg:
+		// Check for firefogg:
 		if ( this.myFogg.getFirefogg() ) {
 			this.enabled = true;
 		} else {
 			this.enabled = false;
+			mw.log('Error firefogg not installed');
 			return this;
 		}
 		
-		// set up local fogg pointer: 
+		// Setup local fogg pointer: 
 		this.fogg = this.myFogg.fogg;
 		
-		// setup player instance		
+		// Setup player instance		
 		this.player_target = options.player_target;		
 		
 		// Extend the render options with any provided details
@@ -93,6 +94,7 @@ mw.FirefoggRender.prototype = {
 			} )
 			this.target_startRender = options.target_startRender;
 		}
+		// Bind stopRender target button
 		if ( options.target_stopRender ) {
 			$j( options.target_stopRender ).click( function() {
 				_this.stopRender();
@@ -136,6 +138,7 @@ mw.FirefoggRender.prototype = {
 			_this.doNextFrame();
 		});
 	},
+	// Do the next frame in the render target
 	doNextFrame: function(){
 		var _this = this;
 		// internal function to handle updates:						
@@ -146,22 +149,24 @@ mw.FirefoggRender.prototype = {
 			//mw.log(	'addFrame:' + $j( _this.player_target ).attr( 'id' ) );		
 			_this.fogg.addFrame( $j( _this.player_target ).attr( 'id' ) );
 			_this.render_time += _this.interval;				
-			if ( _this.render_time >= _this.player.getDuration() ) {
+			if ( _this.render_time >= _this.player.getDuration() && _this.continue_rendering) {
 				_this.doFinalRender();
-			} else {
-				if ( _this.continue_rendering ) {
-					_this.doNextFrame();
-				} else {
-					mw.log('render stoped');
-					// else quit:
-					_this.doFinalRender();
-				}
+			} else {			
+				_this.doNextFrame();			
 			}
 		} );
 	},
+	
+	/**	
+	* Stop the current render proccess on the next frame
+	*/
 	stopRender:function() {
 		this.continue_rendering = false;
 	},
+	
+	/**
+	* Issue the call to firefogg to render out the ogg video
+	*/ 
 	doFinalRender: function() {
 		var _this = this;
 		mw.log( " do final render: " );
@@ -169,19 +174,20 @@ mw.FirefoggRender.prototype = {
 		this.fogg.render();
 		this.updateStatus();
 	},
-	updateStatus:function() {
-		var _this = this;
-		var doUpdateStatus = function() {
-			var rstatus = _this.fogg.renderstatus()
-		    $j( _this.target_timeStatus ).val( rstatus );
-		    if ( rstatus != 'done' && rstatus != 'rendering failed' ) {
-		        setTimeout( doUpdateStatus, 100 );
-		    } else {
-		        $j( _this.target_startRender ).attr( "disabled", false );
-		    }
-		}
-		doUpdateStatus();
-	}
-
 	
+	/**
+	* Update the render status
+	*/
+	updateStatus: function() {
+		var _this = this;
+		var rstatus = _this.fogg.renderstatus()
+	    $j( _this.target_timeStatus ).val( rstatus );
+	    if ( rstatus != 'done' && rstatus != 'rendering failed' ) {
+	        setTimeout( function(){
+	        	_this.updateStatus();
+	        }, 100 );
+	    } else {
+	        $j( _this.target_startRender ).attr( "disabled", false );
+	    }
+	}
 }
