@@ -4516,6 +4516,7 @@ $wgGoogleMapsMessages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Aleksandrit
  * @author EugeneZelenko
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $wgGoogleMapsMessages['ru'] = array(
@@ -4541,7 +4542,7 @@ $wgGoogleMapsMessages['ru'] = array(
 	'gm-no-results' => 'Извините, ничего не найдено',
 	'gm-searching' => 'Ищем…',
 	'gm-map' => 'Карта',
-	'gm-note' => 'Внимание: Сохраните полученный код в статье (см. ниже) перед тем, как \\"Загрузить карту\\", \\"Сохранить\\" или \\"Предварительный просмотр\\"!',
+	'gm-note' => 'Внимание: не забудьте скопировать полученный код на страницу (ниже) перед нажатием «Загрузить карту», «Сохранить» или «Предварительный просмотр»!',
 	'gm-instructions' => 'Вики-разметка для создания карты.',
 	'gm-are-you-sure' => 'Вы уверены?',
 	'gm-clear-all-points' => 'Удалить все точки',

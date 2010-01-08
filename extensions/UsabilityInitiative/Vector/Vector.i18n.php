@@ -155,8 +155,8 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'vector' => 'Melloras na interface de usuario para a apariencia Vector',
-	'vector-desc' => 'Mellora os elementos da interface de usuario da apariencia Vector.',
+	'vector' => 'Melloras na interface de usuario para a aparencia Vector',
+	'vector-desc' => 'Mellora os elementos da interface de usuario da aparencia Vector.',
 );
 
 /** Swiss German (Alemannisch)

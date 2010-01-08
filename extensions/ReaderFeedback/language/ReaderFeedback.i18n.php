@@ -1273,6 +1273,7 @@ $messages['ja'] = array(
 	'readerfeedback-tier-poor' => 'ひどい',
 	'tooltip-ca-ratinghist' => 'このページの読者による評価',
 	'specialpages-group-feedback' => '読者の意見',
+	'readerfeedback-tt-review' => 'レビューを送信',
 );
 
 /** Georgian (ქართული)

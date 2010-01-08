@@ -268,7 +268,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'wikiarticlefeeds-desc' => 'Generís de flusses dempuèi de paginas MediaWiki',
+	'wikiarticlefeeds-desc' => 'Genèra de fluxes dempuèi de paginas MediaWiki',
 	'wikiarticlefeeds_combined_description' => "Aquò es un flus combinat que conten d'elements eissits de mantuna font.",
 );
 

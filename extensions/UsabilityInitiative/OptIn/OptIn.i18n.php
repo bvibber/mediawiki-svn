@@ -2174,7 +2174,7 @@ Queremos saber que pensa da nosa nova interface, polo que lle agradeceriamos que
 	'optin-survey-answer-changes-edittools' => 'Aumentar e mellorar as ferramentas de edición.',
 	'optin-survey-answer-changes-upload' => 'Mellorar o contido e as cargas multimedia.',
 	'optin-survey-answer-changes-richtext' => 'Desenvolver ferramentas de edición similares aos editores de texto.',
-	'optin-survey-answer-changes-lookfeel' => 'Actualizar o aspecto e apariencia do sitio.',
+	'optin-survey-answer-changes-lookfeel' => 'Actualizar o aspecto e aparencia do sitio.',
 	'optin-survey-answer-changes-predictability' => 'Mellorar a previsibilidade dos resultados.',
 	'optin-survey-answer-changes-custom' => 'Permitir unha maior personalización por parte dos usuarios.',
 	'optin-survey-answer-changes-other' => 'Outros:',

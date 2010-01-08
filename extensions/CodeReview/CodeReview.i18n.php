@@ -6457,7 +6457,7 @@ URL completa : $2
 Resumit al moment de la somission :
 
 $3',
-	'repoadmin' => 'Administracion dels depausses',
+	'repoadmin' => 'Administracion dels depauses',
 	'repoadmin-new-legend' => 'Crear un depaus novèl',
 	'repoadmin-new-label' => 'Nom del depaus :',
 	'repoadmin-new-button' => 'Crear',
@@ -6467,7 +6467,7 @@ $3',
 	'repoadmin-edit-view' => 'Camin de ViewVC :',
 	'repoadmin-edit-button' => "D'acòrdi",
 	'repoadmin-edit-sucess' => 'Lo depaux "[[Special:Code/$1|$1]]" es estat modificat amb succès.',
-	'right-repoadmin' => 'Administrar los depausses de còde',
+	'right-repoadmin' => 'Administrar los depauses de còde',
 	'right-codereview-use' => 'Utilizar Special:Code',
 	'right-codereview-add-tag' => "Apondre d'atributs novèls a las revisions",
 	'right-codereview-remove-tag' => "Levar d'atributs a las revisions",
@@ -7892,6 +7892,7 @@ $4',
  * @author Gabbe.g
  * @author GameOn
  * @author Najami
+ * @author Per
  * @author Rotsee
  */
 $messages['sv'] = array(
@@ -7926,6 +7927,7 @@ $messages['sv'] = array(
 	'code-author-link' => 'länk?',
 	'code-author-unlink' => 'avlänka?',
 	'code-author-unlinksuccess' => 'Författaren $1 har avlänkats',
+	'code-browsing-path' => "Bläddrar igenom revisioner i '''$1'''",
 	'code-field-id' => 'Version',
 	'code-field-author' => 'Författare',
 	'code-field-user' => 'Kommenerare',
@@ -7960,6 +7962,7 @@ $messages['sv'] = array(
 	'code-rev-inline-preview' => 'Förhandsgranska:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-diff-too-large' => 'Diffen är för stor för att visas.',
 	'code-rev-purge-link' => 'rensa',
 	'code-status-new' => 'ny',
 	'code-status-fixme' => 'fixa-mig',
@@ -7980,8 +7983,12 @@ $messages['sv'] = array(
 	'code-release-legend' => 'Generera versionsnoter',
 	'code-release-startrev' => 'Första revision:',
 	'code-release-endrev' => 'Senaste revision:',
+	'code-release-badrange' => 'Intervallet är för stort!',
 	'codereview-subtitle' => 'För $1',
 	'codereview-reply-link' => 'svara',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|lyckat test|lyckade tester}}',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|lyckat test|lyckade tester}}, $3 {{PLURAL:$4|test|tester}} med fel:',
+	'codereview-tests-running' => 'Testfall körs...',
 	'codereview-tests-aborted' => 'Testkörning avbruten',
 	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar tillagd',
 	'codereview-email-body' => 'Användaren "$1" postade en kommenter på r$3

@@ -187,7 +187,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'wlfeed-desc' => 'Classas de generacion de fluses melhorats',
+	'wlfeed-desc' => 'Classas de generacion de fluxes melhorats',
 );
 
 /** Polish (Polski)

@@ -184,6 +184,8 @@ $messages['af'] = array(
 	'openiderror' => 'Verifikasiefout',
 	'openiderrortext' => "'n Fout het voorgekom tydens die verifikasie van die OpenID-URL.",
 	'openidconfigerror' => 'Fout met OpenID se konfigurasie',
+	'openidconfigerrortext' => "OpenID se stoor-instellings vir hierdie wiki is ongeldig.
+Raadpleeg asseblief 'n [[Special:ListUsers/sysop|administrateur]].",
 	'openidpermission' => 'Fout in die regte vir OpenID',
 	'openidpermissiontext' => 'Die OpenID wat u verskaf het word nie toegelaat om na hierdie bediener aan te teken nie.',
 	'openidcancel' => 'Verifikasie is gekanselleer',
@@ -205,29 +207,43 @@ $messages['af'] = array(
 	'openidemail' => 'E-posadres',
 	'openidlanguage' => 'Taal',
 	'openidtimezone' => 'Tydsone',
+	'openidchooselegend' => 'Gebruikersnaamkeuse',
 	'openidchooseinstructions' => "Alle gebruikers moet 'n gebruikersnaam kies. U kan een kies uit die opsies hieronder.",
+	'openidchoosenick' => 'U bynaam ($1)',
 	'openidchoosefull' => 'U volledige naam ($1)',
 	'openidchooseurl' => "'n Naam vanuit u OpenID ($1)",
 	'openidchooseauto' => "'n Outomaties gegenereerde naam ($1)",
 	'openidchoosemanual' => "'n Naam van u keuse:",
 	'openidchooseexisting' => "'n Bestaande gebruiker op hierdie wiki:",
+	'openidchooseusername' => 'Gebruikersnaam:',
 	'openidchoosepassword' => 'wagwoord:',
+	'openidconvertinstructions' => "Hierdie vorm laat u toe om u gebruiker te verander om 'n OpenID-URL te gebruik of om meer OpenID-URL's by te voeg.",
 	'openidconvertoraddmoreids' => "Skakel om na OpenID of voeg 'n ander OpenID-URL by",
 	'openidconvertsuccess' => 'Suksesvol omgeskakel na OpenID',
 	'openidconvertsuccesstext' => 'U OpenID is omgeskakel na $1.',
 	'openidconvertyourstext' => 'Dit is al reeds u OpenID.',
 	'openidconvertothertext' => 'Dit is iemand anders se OpenID.',
+	'openidalreadyloggedin' => "'''U is reeds aangeteken as $1!'''
+
+As u in die toekoms OpenID wil gebruik om mee aan te teken, [[Special:OpenIDConvert|skakel u gebruiker om na OpenID]].",
 	'openidnousername' => 'Geen gebruikersnaam is verskaf nie.',
 	'openidbadusername' => 'Slegte gebruikersnaam verskaf.',
 	'openidclientonlytext' => "U kan nie gebruikers van die wiki as OpenID op 'n ander webwerf gebruik nie.",
 	'openidloginlabel' => 'OpenID URL',
 	'openidupdateuserinfo' => 'Opdateer my persoonlike inligting:',
 	'openiddelete' => 'Skrap OpenID',
+	'openiddelete-text' => 'Deur op die "{{int:openiddelete-button}}"-knoppie te kliek, verwyder u die OpenID $1 vanuit u gebruiker.
+Dit sal dan nie langer moontlik wees om met hierdie OpenID aan te teken nie.',
 	'openiddelete-button' => 'Bevestig',
+	'openiddeleteerrornopassword' => "U kan nie al u OpenID's verwyder nie omdat u rekening nie 'n wagwoord het nie.
+Sonder 'n OpenID sou u glad nie meer kon aanteken nie.",
+	'openiddeleteerroropenidonly' => "U kan nie al u OpenID's verwyder nie omdat u slegs toegelaat word om met OpenID aan te teken.
+Sonder 'n OpenID sou u glad nie meer kon aanteken nie.",
 	'openiddelete-sucess' => 'Die OpenID is suksesvol van u gebruiker verwyder.',
 	'openiddelete-error' => "'n Fout het voorgekom tydens die verwydering van die OpenID uit u gebruiker.",
 	'openid-prefstext' => '[http://openid.net/ OpenID] voorkeure',
 	'openid-pref-hide' => 'Versteek u OpenID op u gebruikersbladsy as u met OpenID aanteken.',
+	'openid-pref-update-userinfo-on-login' => 'Opdateer die volgende inligting vanuit die OpenID-gebruiker elke keer as ek inteken:',
 	'openid-urls-desc' => "OpenID's aan u gebruiker gekoppel:",
 	'openid-urls-action' => 'Aksie',
 	'openid-urls-delete' => 'Skrap',
@@ -521,6 +537,7 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Stanqo
  */
 $messages['bg'] = array(
 	'openidlogin' => 'Влизане с OpenID',
@@ -545,12 +562,15 @@ $messages['bg'] = array(
 	'openidfullname' => 'Име',
 	'openidemail' => 'Електронна поща',
 	'openidlanguage' => 'Език',
+	'openidtimezone' => 'Часова зона',
+	'openidchooselegend' => 'Избор на потребителско име',
 	'openidchooseinstructions' => 'Всички потребители трябва да имат потребителско име;
 можете да изберете своето от предложенията по-долу.',
 	'openidchoosefull' => 'Вашето пълно име ($1)',
 	'openidchooseauto' => 'Автоматично генерирано име ($1)',
 	'openidchoosemanual' => 'Име по избор:',
-	'openidchooseexisting' => 'Съществуваща сметка в това уики:',
+	'openidchooseexisting' => 'Съществуващ профил в това уики',
+	'openidchooseusername' => 'Потребителско име:',
 	'openidchoosepassword' => 'парола:',
 	'openidconvertinstructions' => 'Този формуляр позволява да се промени потребителската сметка да използва OpenID URL.',
 	'openidconvertsuccess' => 'Преобразуването в OpenID беше успешно',
@@ -579,11 +599,17 @@ OpenID позволява влизането в много различни са
 ; [http://openid.yahoo.com/ Yahoo!]: Ако имате сметка в Yahoo!, можете да влезете в този сайт като в кутията по-горе въведете вашето Yahoo! OpenID. Yahoo! OpenID адресите са от вида ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
 ; [http://dev.aol.com/aol-and-63-million-openids AOL]: Ако притежавате сметка в [http://www.aol.com/ AOL], напр. в [http://www.aim.com/ AIM], можете да влезете в {{SITENAME}} като въведете в кутията по-горе вашето AOL OpenID. AOL OpenID адресите са от вида ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Потребителското име се изписва само с малки букви и без интервали.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Ако имате блог в някоя от тези услуги, въведете адреса на блога си в кутията по-горе, напр. ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'' или ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+	'openidupdateuserinfo' => 'Актуализация на моята лична информация',
 	'openiddelete' => 'Изтриване на OpenID',
 	'openiddelete-button' => 'Потвърждаване',
 	'openid-pref-hide' => 'Скриване на OpenID от потребителската страница ако влезете чрез OpenID.',
 	'openid-urls-action' => 'Действие',
 	'openid-urls-delete' => 'Изтриване',
+	'openid-add-url' => 'Добавете нов OpenID',
+	'openidsigninorcreateaccount' => 'Влезте, или създайте нов профил',
+	'openid-provider-label-openid' => 'Вашето OpenID URL',
+	'openid-provider-label-google' => 'Вход с профила в Google',
+	'openid-provider-label-other-username' => 'Въведете вашето потребителско име $1',
 );
 
 /** Breton (Brezhoneg)
@@ -3877,10 +3903,10 @@ A-i é già motobin ëd [http://openid.net/get/ fornitor d'OpenID], e a podrìa 
 	'openiddelete-text' => 'An sgnacand ël boton "{{int:openiddelete-button}}", it gavras l\'OpenID $1 da tò cont.
 It saras pa pi bon a intré con sto OpenID-sì.',
 	'openiddelete-button' => 'Conferma',
-	'openiddeleteerrornopassword' => "It peule pa scanselé tùit ij tò OpenID përchè tò cont a l'ha pa gnun-e ciav.
-It saras pa bon a intré sensa n'OpenID.",
-	'openiddeleteerroropenidonly' => "It peule pa scanselé tùit ij tò OpenID përchè it peule mach intré con OpenID.
-It saras pa bon a intré sensa n'OpenID.",
+	'openiddeleteerrornopassword' => "A peul pa scancelé tùit ij sò OpenID përchè tò sont a l'ha pa 'd ciav.
+A podrà pa intré ant ël sistema sensa n'OpenID.",
+	'openiddeleteerroropenidonly' => "A peul pa scancelé tùit ij sò OpenID përchè a peule intré intré ant ël sistema mach con OpenID.
+A podrà pa intré sensa n'OpenID.",
 	'openiddelete-sucess' => "L'OpenID a l'é stàit gavà da bin da tò cont.",
 	'openiddelete-error' => "A l'é capitaje n'eror an gavand l'OpenID da tò cont.",
 	'openid-prefstext' => 'Preferense [http://openid.net/ OpenID]',

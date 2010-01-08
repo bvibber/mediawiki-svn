@@ -694,12 +694,13 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Aleksandrit
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'dplforum-desc' => 'Форумное расширение, основанное на DPL',
 	'dplforum-by' => 'от $1',
-	'dplforum-edited' => '- последняя правка',
+	'dplforum-edited' => '— последняя правка',
 	'dplforum-never' => 'Никогда',
 	'dplforum-toofew' => 'Форум DPL: Слишком мало категорий!',
 	'dplforum-toomany' => 'Форум DPL: Слишком много категорий!',
