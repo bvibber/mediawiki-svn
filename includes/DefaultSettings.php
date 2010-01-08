@@ -2173,14 +2173,6 @@ $wgMimeTypeBlacklist= array(
 );
 
 /** 
- * This is a flag to determine whether or not to check file extensions of 
- * resulting uploaded files from uploading or moving a file.  This acts as a 
- * proxy for checking MIME types, and ensures files placed in $wgUploadDirectory
- * have approved file extensions.
- */
-$wgCheckFileExtensions = true;
-
-/** 
  * This is a flag to determine whether or not to enforce matching of page title
  * with file extensions of uploaded files (e.g if true, disallow a JPEG called
  * "File:Foo", but allow "File:Foo.jpg").

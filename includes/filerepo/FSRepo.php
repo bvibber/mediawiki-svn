@@ -310,9 +310,9 @@ class FSRepo extends FileRepo {
 	 * @return FileRepoStatus
 	 */
 	function prepTarget( $targetRel ) {
-		global $wgCheckFileExtensions;
-			global $wgCheckFileExtensions, $wgStrictFileExtensions;
-			global $wgFileExtensions, $wgFileBlacklist;
+		global $wgStrictFileExtensions;
+		global $wgFileExtensions, $wgFileBlacklist;
+
 		$status = $this->newGood();
 		if ( !$this->validateFilename( $targetRel ) ) {
 			throw new MWException( 'Validation error in $targetRel' );
@@ -333,8 +333,7 @@ class FSRepo extends FileRepo {
 			$status->fatal( 'filetype-badmime', $mime );
 			return $status;
 		}
-		if ( $wgCheckFileExtensions
-			&& $wgStrictFileExtensions
+		if ( $wgStrictFileExtensions
 			&& !in_array( $ext, $wgFileExtensions ) ) 
 		{
 			$status->fatal( 'filetype-badmime', $mime );

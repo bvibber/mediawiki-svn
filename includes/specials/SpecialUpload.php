@@ -827,27 +827,25 @@ class UploadForm extends HTMLForm {
 	protected function getExtensionsMessage() {
 		# Print a list of allowed file extensions, if so configured.  We ignore
 		# MIME type here, it's incomprehensible to most people and too long.
-		global $wgLang, $wgCheckFileExtensions, $wgStrictFileExtensions,
+		global $wgLang, $wgStrictFileExtensions,
 		$wgFileExtensions, $wgFileBlacklist;
 
 		$allowedExtensions = '';
-		if( $wgCheckFileExtensions ) {
-			if( $wgStrictFileExtensions ) {
-				# Everything not permitted is banned
-				$extensionsList =
-					'<div id="mw-upload-permitted">' .
-					wfMsgWikiHtml( 'upload-permitted', $wgLang->commaList( $wgFileExtensions ) ) .
-					"</div>\n";
-			} else {
-				# We have to list both preferred and prohibited
-				$extensionsList =
-					'<div id="mw-upload-preferred">' .
-					wfMsgWikiHtml( 'upload-preferred', $wgLang->commaList( $wgFileExtensions ) ) .
-					"</div>\n" .
-					'<div id="mw-upload-prohibited">' .
-					wfMsgWikiHtml( 'upload-prohibited', $wgLang->commaList( $wgFileBlacklist ) ) .
-					"</div>\n";
-			}
+		if( $wgStrictFileExtensions ) {
+			# Everything not permitted is banned
+			$extensionsList =
+				'<div id="mw-upload-permitted">' .
+				wfMsgWikiHtml( 'upload-permitted', $wgLang->commaList( $wgFileExtensions ) ) .
+				"</div>\n";
+		} elseif( !empty( $wgFileExtensions ) ) {
+			# We have to list both preferred and prohibited
+			$extensionsList =
+				'<div id="mw-upload-preferred">' .
+				wfMsgWikiHtml( 'upload-preferred', $wgLang->commaList( $wgFileExtensions ) ) .
+				"</div>\n" .
+				'<div id="mw-upload-prohibited">' .
+				wfMsgWikiHtml( 'upload-prohibited', $wgLang->commaList( $wgFileBlacklist ) ) .
+				"</div>\n";
 		} else {
 			# We still block the blacklisted stuff, because it's just nasty
 			$extensionsList =

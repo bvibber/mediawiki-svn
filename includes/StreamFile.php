@@ -90,13 +90,13 @@ function wfGetType( $filename, $safe = true ) {
 	 * have changed since.
 	 */
 	if ( $safe ) {
-		global $wgFileBlacklist, $wgCheckFileExtensions, $wgStrictFileExtensions, 
+		global $wgFileBlacklist, $wgStrictFileExtensions, 
 			$wgFileExtensions, $wgVerifyMimeType, $wgMimeTypeBlacklist, $wgRequest;
 		list( $partName, $extList ) = UploadBase::splitExtensions( $filename );
 		if ( UploadBase::checkFileExtensionList( $extList, $wgFileBlacklist ) ) {
 			return 'unknown/unknown';
 		}
-		if ( $wgCheckFileExtensions && $wgStrictFileExtensions 
+		if ( $wgStrictFileExtensions 
 			&& !UploadBase::checkFileExtensionList( $extList, $wgFileExtensions ) )
 		{
 			return 'unknown/unknown';
