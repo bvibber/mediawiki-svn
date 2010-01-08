@@ -1093,6 +1093,8 @@ $messages['ml'] = array(
 $messages['ms'] = array(
 	'clicktracking' => 'Pengesanan klik Inisiatif Kebolehgunaan',
 	'clicktracking-desc' => 'Pengesanan klik, bertujuan untuk mengesan peristiwa-peristiwa yang tidak menyebabkan penyegaran semula sebuah laman.',
+	'ct-title' => 'Klik pengguna teragregat',
+	'ct-event-name' => 'Nama peristiwa',
 	'ct-total-header' => 'Jumlah klik',
 	'ct-anon-users' => 'Pengguna tanpa nama',
 );
