@@ -1181,6 +1181,7 @@ Sgaca <a href='$1'>sì</a>  për artorné.",
  */
 $messages['ps'] = array(
 	'spamdifftool_option_none' => 'هېڅ نه',
+	'spamdifftool_block' => 'بنديز:',
 );
 
 /** Portuguese (Português)

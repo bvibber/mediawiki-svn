@@ -588,6 +588,17 @@ $messages['tr'] = array(
 	'right-userrights-global' => 'Küresel kullanıcı haklarını yönetir',
 );
 
+/** Vèneto (Vèneto)
+ * @author Vajotwo
+ */
+$messages['vec'] = array(
+	'globaluserrights' => 'Gestion dei Diriti Utente Globai',
+	'gur-rightslog-name' => 'Registro dei diriti globai',
+	'gur-rightslog-header' => 'Sto quà el xé un registro dei canbiamenti ai diriti globai.',
+	'gur-rightslog-entry' => "gà canbià l'apartenensa ai grupi globai par $1 da $2 a $3",
+	'right-userrights-global' => 'Gestisse i diriti utente globai',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

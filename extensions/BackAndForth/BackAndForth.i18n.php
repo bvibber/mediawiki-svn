@@ -466,6 +466,13 @@ $messages['kaa'] = array(
 	'backforth-prev' => "Aldın'g'ı ($1)",
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Piivaat
+ */
+$messages['kl'] = array(
+	'backforth-next' => 'Tullii ($1)',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន

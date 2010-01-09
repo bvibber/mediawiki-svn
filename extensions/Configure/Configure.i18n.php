@@ -2678,9 +2678,9 @@ $messages['et'] = array(
 	'configure-condition-operator-or' => 'Või',
 	'configure-condition-operator-and' => 'Ja',
 	'configure-condition-operator-not' => 'Mitte',
-	'configure-condition-name-3' => 'E-postiaadress kinnitatud',
+	'configure-condition-name-3' => 'E-posti aadress kinnitatud',
 	'configure-condition-name-5' => 'Kasutaja IP-aadress',
-	'configure-condition-description-3' => 'E-postiaadress kinnitatud',
+	'configure-condition-description-3' => 'E-posti aadress kinnitatud',
 );
 
 /** Basque (Euskara)
@@ -6225,8 +6225,8 @@ $messages['ml'] = array(
 	'configure-edit-old' => 'മുന്നറിയിപ്പ്: താങ്കള്‍ ക്രമീകരണത്തിന്റെ <strong>പഴയൊരു</strong> പതിപ്പാണ്‌ തിരുത്തുന്നത്.',
 	'configure-error' => 'ക്രമീകരണം സേവ് ചെയ്യുന്നതിനു കഴിഞ്ഞില്ല',
 	'configure-js-add' => 'പുതിയൊരു ഇനം ചേര്‍ക്കുക',
-	'configure-js-group-exists' => 'പിഴവ്: ഗ്രൂപ്പ് നിലവിലുണ്ട്.',
-	'configure-js-prompt-group' => 'പുതിയ ഗ്രൂപ്പിനു ഒരു പേരു ചേര്‍ക്കുക:',
+	'configure-js-group-exists' => 'പിഴവ്: സംഘം നിലവിലുണ്ട്.',
+	'configure-js-prompt-group' => 'പുതിയ സംഘത്തിനു ഒരു പേരു ചേര്‍ക്കുക:',
 	'configure-js-remove' => 'മായ്ക്കുക',
 	'configure-js-remove-row' => 'ഈ ഇനം ഒഴിവാക്കുക',
 	'configure-no-old' => 'ക്രമീകരണത്തിന്റെ പഴയ പതിപ്പ് ലഭ്യമല്ല',

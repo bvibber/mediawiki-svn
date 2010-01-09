@@ -56,6 +56,13 @@ $messages['be-tarask'] = array(
 	'categorytests-desc' => 'Функцыі для праверкі катэгорыяў',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'categorytests-desc' => 'Функции за тестване на категории',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

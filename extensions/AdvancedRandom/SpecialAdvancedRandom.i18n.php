@@ -76,6 +76,15 @@ $messages['be-tarask'] = array(
 	'advancedrandom-desc' => 'Вяртае выпадковую старонку з любой прасторы назваў, на старонцы ці падстаронцы абмеркаваньня якой існуе спасылка на пададзеную старонку. Можа выкарыстоўвацца па прыкладу [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]], каб атрымаць старонку абмеркаваньня выпадковага выбранага артыкула альбо [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], каб атрымаць выпадковы файл з ліцэнзіяй GFDL',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'advancedrandom' => 'Случайна страница плюс',
+	'advancedrandom-desc' => 'Извлича случайна страница от произволно именно пространство или прилежащото му дискусионно пространство, което съдържа препратка към дадена страница.
+Инструментът може да се използва като [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] за извличаве на беседа към случайна избрана статия featured article или като [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] за извличане на случаен файл, лицензиран под условията на GFDL.',
+);
+
 /** Bengali (বাংলা)
  * @author Zaheen
  */

@@ -78,6 +78,7 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author Spiritia
  * @author Turin
  */
 $messages['bg'] = array(
@@ -85,6 +86,7 @@ $messages['bg'] = array(
 	'ratedpages-list' => 'Следва списък със страниците, подредени по потребителската им оценка.',
 	'ratedpages-none' => 'Няма страници в този списък',
 	'ratedpages-graphs' => 'данни за оценката',
+	'ratedpages-count' => '$1 {{PLURAL:$1|рецензия|рецензии}}',
 );
 
 /** Breton (Brezhoneg)
@@ -209,6 +211,8 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
+	'ratedpages' => 'Lugejahinnanguga leheküljed',
+	'ratedpages-list' => 'Allpool on lugejate tagasisidehinnangu alusel järjestatud lehekülgede loend.',
 	'ratedpages-none' => 'Loendis puuduvad leheküljed',
 	'ratedpages-count' => '$1 {{PLURAL:$1|arvustus|arvustust}}',
 );

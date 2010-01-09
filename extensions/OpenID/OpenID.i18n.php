@@ -3937,10 +3937,12 @@ $messages['ps'] = array(
 تاسو يو نوم د لاندينيو خوښو نه ځانته ټاکلی شی.',
 	'openidchoosefull' => 'ستاسو بشپړ نوم ($1)',
 	'openidchoosemanual' => 'ستاسو د خوښې يو نوم:',
+	'openidchooseusername' => 'کارن-نوم:',
 	'openidchoosepassword' => 'پټنوم:',
 	'openidnousername' => 'هېڅ يو کارن-نوم نه دی ځانګړی شوی.',
 	'openidbadusername' => 'يو ناسم کارن-نوم مو ځانګړی کړی.',
 	'openid-urls-delete' => 'ړنګول',
+	'openid-provider-label-other-username' => 'تاسې خپل $1 کارن-نوم وليکۍ',
 );
 
 /** Portuguese (Português)
@@ -4239,8 +4241,10 @@ $messages['ru'] = array(
 	'openidemail' => 'Адрес эл. почты',
 	'openidlanguage' => 'Язык',
 	'openidtimezone' => 'Часовой пояс',
+	'openidchooselegend' => 'Выбор имени пользователя',
 	'openidchooseinstructions' => 'Каждый участник должен иметь псевдоним;
 вы можете выбрать один из представленных ниже.',
+	'openidchoosenick' => 'Ваш ник ($1)',
 	'openidchoosefull' => 'Ваше полное имя ($1)',
 	'openidchooseurl' => 'Имя, полученное из вашего OpenID ($1)',
 	'openidchooseauto' => 'Автоматически созданное имя ($1)',
@@ -4276,6 +4280,10 @@ OpenID позволяет вам заходить на различные веб
 	'openiddelete-text' => 'Нажав на кнопку «{{int:openiddelete-button}}», Вы удалите OpenID $1 из своей учётной записи.
 Вы больше не сможете входить с этим OpenID.',
 	'openiddelete-button' => 'Подтвердить',
+	'openiddeleteerrornopassword' => 'Вы не можете удалить все ваши OpenID, так как у вашей учётной записи нет пароля.
+У вас не будет возможности войти в систему без OpenID.',
+	'openiddeleteerroropenidonly' => 'Вы не можете удалить все ваши OpenID, так как вам разрешено входить в систему только с использованием OpenID.
+У вас не будет возможности войти в систему без OpenID.',
 	'openiddelete-sucess' => 'OpenID успешно удалён из Вашей учётной записи.',
 	'openiddelete-error' => 'Произошла ошибка при удалении OpenID из Вашей учётной записи.',
 	'openid-prefstext' => 'Параметры [http://openid.net/ OpenID]',

@@ -644,6 +644,13 @@ $messages['pms'] = array(
 	'externalpages-bad-url-data' => 'Pa podù trové ij contnù dla pàgina',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'externalpages' => 'باندني مخونه',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

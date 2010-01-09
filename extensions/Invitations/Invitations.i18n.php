@@ -149,6 +149,7 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
 	'invite-logpage' => 'Дневник на поканите',
@@ -161,11 +162,13 @@ $messages['bg'] = array(
 	'invitations-invitedlist-none' => 'Нямате покана да използвате нито една от софтуерните възможности, достъпни с покана.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Налична е една покана|Налични са $1 покани}})',
 	'invitations-pagetitle' => 'Възможности на софтуера, достъпни с покана',
+	'invitations-uninvitedlist-description' => 'Можете да получите достъп до тези софтуерни възможности само след покана.',
 	'invitations-uninvitedlist-none' => 'На този етап няма други софтуерни възможности, които да са отбелязани, че са достъпни с покана.',
 	'invitations-feature-pagetitle' => 'Управление на поканите - $1',
 	'invitations-feature-access' => 'В момента имате достъп да използвате <i>$1</i>.',
 	'invitations-feature-numleft' => 'Имате {{PLURAL:$2|една оставаща покана|оставащи <b>$1</b> от $2 покани}}.',
 	'invitations-feature-noneleft' => 'Вече сте използвали всички отпуснати покани за тази услуга',
+	'invitations-feature-noneyet' => 'Все още не сте получили своя дял от покани за тази софтуерна възможност.',
 	'invitations-feature-notallowed' => 'Нямате достъп да използвате <i>$1</i>.',
 	'invitations-inviteform-title' => 'Изпращане на покана на потребител да използва $1',
 	'invitations-inviteform-username' => 'Потребител',

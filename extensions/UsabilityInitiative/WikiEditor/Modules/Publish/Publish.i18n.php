@@ -706,6 +706,14 @@ $messages['pms'] = array(
 	'wikieditor-publish-dialog-goback' => 'Torna andré',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikieditor-publish-button-publish' => 'خپرول',
+	'wikieditor-publish-dialog-publish' => 'خپرول',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

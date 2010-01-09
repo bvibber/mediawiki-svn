@@ -484,6 +484,14 @@ $messages['pms'] = array(
 	'wikieditor-preview-loading' => 'A caria ...',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikieditor-preview-tab' => 'مخليدنه',
+	'wikieditor-preview-changes-tab' => 'بدلونونه',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

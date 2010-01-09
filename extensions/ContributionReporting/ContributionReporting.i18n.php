@@ -3535,6 +3535,8 @@ $messages['pl'] = array(
 	'contribstats-average' => 'Średnio',
 	'contribstats-paypal-donations' => 'Wpłaty PayPal',
 	'contribstats-credit-card' => 'Karta kredytowa',
+	'contribstats-fraud-note' => 'Niektóre darowizny są nieuczciwe.',
+	'contribstats-unaudited' => 'Suma nie została poddana audytowi.',
 	'fundraiserstatistics' => 'Statystyka zebranych funduszy',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Dzień $1 z $2',
@@ -3547,6 +3549,7 @@ $messages['pl'] = array(
 	'fundraiserstats-tab-contributions' => 'Liczba darowizn',
 	'fundraiserstats-tab-averages' => 'Średnie (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksima (USD)',
+	'fundraiserstats-tab-ytd' => 'Rok do danej chwili (USD)',
 	'specialpages-group-contribution' => 'Darowizny/Zbieranie funduszy',
 );
 
@@ -3634,12 +3637,18 @@ $messages['ps'] = array(
 	'contrib-hist-anonymous' => 'ورکنومی',
 	'contribstats-day' => 'ورځ',
 	'contribstats-month' => 'مياشت',
+	'contribstats-currency' => 'د پيسو يوون',
+	'contribstats-total' => 'ټولټال (امريکايي ډالر)',
 	'contribstats-week' => 'اونۍ',
 	'contribstats-donations' => 'بسپنې',
 	'contribstats-template' => 'کينډۍ',
+	'contribstats-donatepage' => 'د بسپنې مخ',
+	'contribstats-credit-card' => 'کرېډټ کارډ',
 	'fundraiserstats-date' => 'نېټه',
 	'fundraiserstats-day' => 'د $2 ورځو نه $1 ورځ',
 	'fundraiserstats-contributions' => 'ونډې',
+	'fundraiserstats-total' => 'ټولټال (امريکايي ډالر)',
+	'fundraiserstats-tab-totals' => 'غونډ ټولټال (امريکايي ډالر)',
 );
 
 /** Portuguese (Português)

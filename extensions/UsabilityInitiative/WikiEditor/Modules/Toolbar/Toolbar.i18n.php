@@ -4040,7 +4040,7 @@ $messages['et'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Lisa päiserida',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stiliseeritud äärised',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tee tabel sorditavaks',
-	'wikieditor-toolbar-tool-table-example' => 'Lahtri tekst',
+	'wikieditor-toolbar-tool-table-example' => 'Näide',
 	'wikieditor-toolbar-tool-table-preview' => 'Eelvaade',
 	'wikieditor-toolbar-tool-table-insert' => 'Lisa',
 	'wikieditor-toolbar-tool-table-cancel' => 'Loobu',
@@ -10631,6 +10631,9 @@ $messages['pnt'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'wikieditor-toolbar-tool-link-cancel' => 'ناګارل',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'باندنۍ تړنه',
+	'wikieditor-toolbar-group-list' => 'لړليک',
 	'wikieditor-toolbar-tool-newline' => 'نوې کرښه',
 	'wikieditor-toolbar-tool-replace-close' => 'تړل',
 	'wikieditor-toolbar-section-characters' => 'ځانګړي توري',

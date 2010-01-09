@@ -1131,7 +1131,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'createsigndoc-pagename' => 'താള്‍:',
-	'createsigndoc-allowedgroup' => 'അനുവദനീയമായ ഗ്രൂപ്പ്:',
+	'createsigndoc-allowedgroup' => 'അനുവദനീയമായ സംഘം:',
 	'createsigndoc-email' => 'ഇമെയില്‍ വിലാസം:',
 	'createsigndoc-address' => 'വീടിന്റെ വിലാസം:',
 	'createsigndoc-extaddress' => 'നഗരം. സംസ്ഥാനം, രാജ്യം:',

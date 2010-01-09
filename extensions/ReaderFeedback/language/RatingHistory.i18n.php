@@ -628,16 +628,29 @@ Las valoraciones son como siguen:
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  * @author Silvar
  */
 $messages['et'] = array(
+	'ratinghistory' => 'Lehekülje hindamise ajalugu',
+	'ratinghistory-leg' => 'Lehekülje [[:$1|$1]] hindamisajalugu',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Aitäh, et leidsid aega selle lehekülje hindamiseks!</font>''",
 	'ratinghistory-period' => 'Ajavahemik:',
-	'ratinghistory-month' => 'viimasel kuul',
+	'ratinghistory-month' => 'viimane kuu',
 	'ratinghistory-3months' => 'viimased 3 kuud',
 	'ratinghistory-year' => 'viimane aasta',
 	'ratinghistory-3years' => 'viimased 3 aastat',
-	'ratinghistory-table-rating' => 'Hindamine',
-	'ratinghistory-table-votes' => 'Hääled',
+	'ratinghistory-ave' => 'Keskmine: $1',
+	'ratinghistory-purge' => 'tühjenda vahemälu',
+	'ratinghistory-table' => 'Lugejahinnangute ülevaade',
+	'ratinghistory-users' => 'Hinnanud kasutajad',
+	'ratinghistory-graph' => 'Lehekülje "$3" {{lcfirst:$2}} ($1 {{PLURAL:$1|arvustus|arvustust}})',
+	'ratinghistory-svg' => 'Näita SVG-vormingus',
+	'ratinghistory-table-rating' => 'Hinnang',
+	'ratinghistory-table-votes' => 'Hääli',
+	'ratinghistory-none' => 'Hetkel pole arvjoonise jaoks piisavalt lugejate tagasisidet.',
+	'ratinghistory-ratings' => "'''Legend:''' '''(1)''' – {{int:readerfeedback-level-0}}; '''(2)''' – {{int:readerfeedback-level-1}}; '''(3)''' – {{int:readerfeedback-level-2}}; '''(4)''' – {{int:readerfeedback-level-3}}; '''(5)''' – {{int:readerfeedback-level-4}}",
+	'right-feedback' => 'Kasutada lehekülje hindamiseks tagasisidevormi',
 );
 
 /** Basque (Euskara)

@@ -836,9 +836,12 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Stanqo
  */
 $messages['bg'] = array(
 	'wikilog-new-item-go' => 'Създаване',
+	'wikilog-published' => 'Публикувано',
+	'wikilog-updated' => 'Обновено',
 	'wikilog-draft' => 'Чернова',
 	'wikilog-authors' => 'Автори',
 	'wikilog-title' => 'Заглавие',

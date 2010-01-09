@@ -1048,6 +1048,21 @@ Gallwch arbrofi eto gyda Beta trwy wasgu\'r cyswllt "{{int:optin-try}}" ar frig 
 	'optin-survey-question-changes' => "Pa newidiadau hoffech chi weld yn fersiwn Beta'r dyfodol (dewiswch y cwbl yr hoffech eu gweld)?",
 	'optin-survey-answer-changes-nav' => "Gwneud yr offer llywio ar y wefan yn haws i'w defnyddio.",
 	'optin-survey-answer-changes-edittools' => "Cynyddu a gwella'r offer golygu.",
+	'optin-improvements' => "== Beth sydd wedi ei wella? ==
+[[File:UsabilityNavigation.png|left|link=|Llun o'r tabiau llywio newydd]]
+;Gwella'r llywio
+Mae'r system llywio newydd yn ei gwneud yn haws deall lle ydych chi a'r hyn ydych yn gwneud, a'r mannau y gallech fynd iddynt a sut i gyrraedd yno. With the search box located in the top right corner, the search feature is easier to find and quicker to use.
+<div style=\"clear:both;\"></div>
+
+[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
+;Edit toolbar improvements
+New-and-improved icons make it clearer what action each tool performs. Expandable sections reduce clutter while keeping infrequently used tools just a click away.
+The help section provides quick access to a reference for common uses of wiki-markup.
+<div style=\"clear:both;\"></div>
+== How to get involved ==
+To learn more about the project or to get involved, please visit the [http://usability.wikimedia.org Usability Initiative's wiki].  There you will find information about our grant, research, design + development, and releases.  To ask questions or leave general feedback, please use our [http://usability.wikimedia.org/wiki/Talk:Prototype prototype discussion page].  To address particular subjects, please use the associated discussion pages.  If you find bugs, please leave your comments on the [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai release discussion page] or by using [https://bugzilla.wikimedia.org Bugzilla].
+
+Thanks and we look forward to hearing from you!",
 );
 
 /** Danish (Dansk)
