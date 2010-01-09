@@ -89,11 +89,10 @@ if ($from =~ /^bugzilla-daemon/)
 			my $product = $mail->header( 'X-Bugzilla-Product' );
 			my $component = $mail->header( 'X-Bugzilla-Component' );
 			my $severity = $mail->header( 'X-Bugzilla-Severity' );
-			my $priority = $mail->header( 'X-Bugzilla-Priority' );
 			## Doesn't seem to be sent as a header.
 			my $reporter = $1 if $body =~ /ReportedBy: (.*)\@.*$/m;
 
-			$output .= "$severity; $priority; \002$product\002\: $component; (\002$reporter\002)\n";
+			$output .= "$severity; \002$product\002\: $component; (\002$reporter\002)\n";
 		}
 		else
 		{
