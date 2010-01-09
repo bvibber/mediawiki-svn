@@ -11,7 +11,7 @@
  * https://wikia-code.com/wikia/trunk/extensions/wikia/HardRedirectsWithJSText/
  */
 
-$wgHooks['SkinTemplateOutputPageBeforeExec'][] = "canonicalHref";
+$wgHooks['BeforePageDisplay'][] = "canonicalHref";
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
@@ -21,13 +21,13 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 
-function canonicalHref(&$skin, &$template){
-        $link = Xml::element("link", array(
-                        'rel' => 'canonical',
-                        'href' => $skin->mTitle->getFullURL()
+function canonicalHref(&$out, &$skin){
+        $out->addLink(
+            array(
+                'rel' => 'canonical',
+                'href' => $skin->mTitle->getFullURL()
                 )
         );
-        $template->set('headlinks', $template->data['headlinks'] . "\n" . $link . "\n");
         return true;
 }
 
