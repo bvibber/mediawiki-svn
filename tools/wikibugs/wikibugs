@@ -24,14 +24,6 @@ my $shash = {
 	'blocker' => "\00304\002BLOCKER\002\003"
 };
 
-my $phash = { 
-	'Highest' => "highest",
-	'High' => "high",
-	'Normal' => "normal", 
-	'Low' => "low",
-	'Lowest' => "lowest"
-};
-
 my $rhash = {
 	'WORKSFORME' => "\00314(WFM)\003", 
 	'INVALID' => "\00314(INVALID)\003",
@@ -125,9 +117,6 @@ if ($from =~ /^bugzilla-daemon/)
 				}
 				if ($body =~ /Severity\|(\w+)\s+\|(\w+)/m) {
 					push @outputs, "$shash->{$1}\->$shash->{$2}";
-				}
-				if ($body =~ /Priority\|(\w+)\s+\|(\w+)/m) {
-					push @outputs, "$phash->{$1}\->$phash->{$2}";
 				}
 				if ($body =~ /Keywords\|.*$/s) {
 					my @lines = split (/\n/, $&);
