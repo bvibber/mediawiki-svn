@@ -2,7 +2,7 @@
 /*
  * WikiArticleFeeds.php - A MediaWiki extension for converting regular pages into feeds.
  * @author Jim R. Wilson
- * @version 0.6.3
+ * @version 0.6.5
  * @copyright Copyright (C) 2007 Jim R. Wilson
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php 
  * -----------------------------------------------------------------------
@@ -35,6 +35,8 @@
  *         {{#itemTags:dogs, cats}}
  *         {{#itemTags:dogs|cats}}
  * Version Notes:
+ *     version 0.6.5:
+ *         Simplified many regular expression to get it working on MW 1.16
  *     version 0.6.4:
  *         Small fix for MW 1.14 in which section header anchors changed format.
  *         First version to be checked into wikimedia SVN.
@@ -454,17 +456,19 @@ function wfGenerateWikiFeed( $article, $feedFormat = 'atom', $filterTags = null 
 			if ( $match < $lvl ) $lvl = $match;
 		}
 
+		$sectionRegExp = '#<h' . $lvl . '>\s*<span.+?id="(.*?)">\s*(.*?)\s*</span>\s*</h' . $lvl . '>#m';
+
 		# Determine the item titles and default item links
 		preg_match_all(
-					   '/<a[^>]*\\s+name=([\'"])(.*?)\\1[^>]*><\\/a><h' . $lvl . '>\\s*(.*?)\\s*<\\/h' . $lvl . '>/m',
-					   $feedContent,
+					   $sectionRegExp,
+					   $feedContent, 
 					   $matches
 					   );
-		$itemLinks = $matches[2];
-		$itemTitles = $matches[3];
+		$itemLinks = $matches[1];
+		$itemTitles = $matches[2];
 
 		# Split content into segments
-		$segments = preg_split( '/<a name=([\'"]).*?\\1\\s*><\\/a><h' . $lvl . '>.*?<\\/h' . $lvl . '>/m', $feedContent );
+		$segments = preg_split( $sectionRegExp, $feedContent );
 		$segDesc = trim( strip_tags( array_shift( $segments ) ) );
 		if ( $segDesc ) {
 			if ( !$feedDescription ) {
@@ -505,26 +509,13 @@ function wfGenerateWikiFeed( $article, $feedFormat = 'atom', $filterTags = null 
 			# Determine the item author and date
 			$author = null;
 			$date = null;
-
+			$signatureRegExp = '#<a href=".+?User:.+?" title="User:.+?">(.*?)</a> (\d\d):(\d\d), (\d+) ([a-z]+) (\d{4}) \([A-Z]+\)#im';
 			# Look for a regular ~~~~ sig
-			$isAttributable = preg_match(
-										 '%<a [^>]*href=([\'"])' . preg_quote( $wgScript ) . '(/|\\?title=)User:.*?\\1[^>]*>(.*?)</a> (\\d\\d):(\\d\\d), (\\d+) ([A-z][a-z]+) (\\d{4}) \\([A-Z]+\\)%m',
-										 $seg,
-										 $matches
-										 );
-
-			# As a fallback - look for a --~~~~ like sig with a user page outside the User NS
-			if ( !$isAttributable ) {
-				$isAttributable = preg_match(
-											 '%--<a [^>]*href=([\'"])' . preg_quote( $wgScript ) . '(/|\\?title=).*?\\1[^>]*>(.*?)</a> (\\d\\d):(\\d\\d), (\\d+) ([A-z][a-z]+) (\\d{4}) \\([A-Z]+\\)%m',
-											 $seg,
-											 $matches
-											 );
-			}
+			$isAttributable = preg_match($signatureRegExp, $seg, $matches );
 
 			# Parse it out - if we can
 			if ( $isAttributable ) {
-				list( $author, $hour, $min, $day, $monthName, $year ) = array_slice( $matches, 3 );
+				list( $author, $hour, $min, $day, $monthName, $year ) = array_slice( $matches, 1 );
 				$months = array(
 								'January' => '01', 'February' => '02', 'March' => '03', 'April' => '04',
 								'May' => '05', 'June' => '06', 'July' => '07', 'August' => '08',
@@ -541,22 +532,15 @@ function wfGenerateWikiFeed( $article, $feedFormat = 'atom', $filterTags = null 
 			# Look for an alternative to the default link (unless default 'section linking' has been forced)
 			global $wgForceArticleFeedSectionLinks;
 			if ( !$wgForceArticleFeedSectionLinks ) {
-				$strippedSeg = preg_replace(
-											array(
-												  '%<a [^>]*href=([\'"])' . preg_quote( $wgScript ) . '(/|\\?title=)User:.*?\\1[^>]*>(.*?)</a> (\\d\\d:\\d\\d, \\d+ [A-z][a-z]+ \\d{4} \\([A-Z]+\\))%m',
-												  '%--<a [^>]*href=([\'"])' . preg_quote( $wgScript ) . '(/|\\?title=).*?\\1[^>]*>(.*?)</a> (\\d\\d:\\d\\d, \\d+ [A-z][a-z]+ \\d{4} \\([A-Z]+\\))%m'
-												  ),
-											'',
-											$seg
-											);
+				$strippedSeg = preg_replace($signatureRegExp, '', $seg );
 				preg_match(
-						   '%<a [^>]*href=([\'"])(.*?)\\1[^>]*>(.*?)</a>%m',
-						   $strippedSeg,
-						   $matches
-						   );
+					'#<a [^>]*href=([\'"])(.*?)\\1[^>]*>(.*?)</a>#m',
+					$strippedSeg,
+					$matches
+					);
 				if ( $matches[2] ) {
 					$url = $matches[2];
-					if ( preg_match( '%^/%', $url ) ) {
+					if ( preg_match( '#^/#', $url ) ) {
 						$url = $wgServer . $url;
 					}
 				}
