@@ -891,12 +891,16 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Fluff
+ * @author Per
  * @author Rotsee
  */
 $messages['sv'] = array(
 	'security' => 'Säkerhetslogg',
 	'security-desc' => 'Utökar MediaWikis sidskydd genom att tillåta begränsning av att sidinnehållet visas.',
 	'security-logpage' => 'Säkerhetslogg',
+	'security-info' => 'Det finns $1 på denna sida',
+	'security-info-toggle' => 'säkerhetsbegränsningar',
+	'security-inforestrict' => '$1 är begränsad till $2',
 	'security-infosysops' => 'Inga restriktioner är aktiva eftersom du tillhör gruppen "Administratörer"',
 	'security-manygroups' => 'grupperna $1 och $2',
 	'security-unchain' => 'Ändra åtgärderna individuellt',

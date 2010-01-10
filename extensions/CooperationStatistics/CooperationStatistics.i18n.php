@@ -684,6 +684,14 @@ Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov
 	'cooperationstatistics-legendmore' => 'alebo viac redaktorov.',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|sida|sidor}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|har|har}} $1 {{PLURAL:$1|skribent|skribenter}}',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

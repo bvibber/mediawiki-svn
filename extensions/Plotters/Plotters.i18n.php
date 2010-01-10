@@ -718,6 +718,7 @@ Tento prehľad poskytuje jednoduchý prístup k stránkam systémových správ, 
  */
 $messages['sv'] = array(
 	'plotters-uses' => 'Använder',
+	'plotters-missing-script' => 'Inget skript blev definierat',
 	'plotters-no-data' => 'Ingen data var tillgänglig.',
 );
 

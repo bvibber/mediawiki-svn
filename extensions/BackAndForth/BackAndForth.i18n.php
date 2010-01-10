@@ -73,12 +73,13 @@ $messages['arz'] = array(
 );
 
 /** Assamese (অসমীয়া)
+ * @author Chaipau
  * @author Rajuonline
  */
 $messages['as'] = array(
-	'backforth-next' => 'পৰবর্তী',
+	'backforth-next' => 'পৰবর্তী ($1)',
 	'backforth-desc' => 'পৃষ্ঠাৰ ওপৰত "পৰবর্তী" আৰু "পুর্ববর্তি" সংযোগ দেখুৱাই',
-	'backforth-prev' => 'পুর্ববর্তি',
+	'backforth-prev' => 'পুর্ববর্তি ($1)',
 );
 
 /** Asturian (Asturianu)

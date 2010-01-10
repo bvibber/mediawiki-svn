@@ -537,6 +537,7 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  * @author Stanqo
  */
 $messages['bg'] = array(
@@ -569,7 +570,7 @@ $messages['bg'] = array(
 	'openidchoosefull' => 'Вашето пълно име ($1)',
 	'openidchooseauto' => 'Автоматично генерирано име ($1)',
 	'openidchoosemanual' => 'Име по избор:',
-	'openidchooseexisting' => 'Съществуващ профил в това уики',
+	'openidchooseexisting' => 'Съществуваща сметка в това уики',
 	'openidchooseusername' => 'Потребителско име:',
 	'openidchoosepassword' => 'парола:',
 	'openidconvertinstructions' => 'Този формуляр позволява да се промени потребителската сметка да използва OpenID URL.',
@@ -605,11 +606,11 @@ OpenID позволява влизането в много различни са
 	'openid-pref-hide' => 'Скриване на OpenID от потребителската страница ако влезете чрез OpenID.',
 	'openid-urls-action' => 'Действие',
 	'openid-urls-delete' => 'Изтриване',
-	'openid-add-url' => 'Добавете нов OpenID',
-	'openidsigninorcreateaccount' => 'Влезте, или създайте нов профил',
-	'openid-provider-label-openid' => 'Вашето OpenID URL',
-	'openid-provider-label-google' => 'Вход с профила в Google',
-	'openid-provider-label-other-username' => 'Въведете вашето потребителско име $1',
+	'openid-add-url' => 'Добавяне на нов OpenID',
+	'openidsigninorcreateaccount' => 'Влизане или създаване на нова сметка',
+	'openid-provider-label-openid' => 'Въведете своя OpenID интернет адрес',
+	'openid-provider-label-google' => 'Влизане в системата през профила в Google',
+	'openid-provider-label-other-username' => 'Въведете вашето $1 потребителско име',
 );
 
 /** Breton (Brezhoneg)
@@ -3031,6 +3032,10 @@ Et gëtt vill [http://openid.net/get/ OpenID-Provider] a méiglecherweis hutt Di
 	'openiddelete-text' => 'Wann dir op de Knäppchen "{{int:openiddelete-button}}" klickt, dann huelt Dir d\'OpenID $1 vun Ärem Benotzerkont ewech.
 Da kënnt Dir Iech net méi mat dëser OpenID aloggen.',
 	'openiddelete-button' => 'Confirméieren',
+	'openiddeleteerrornopassword' => 'Dir kënnt net all Är OpenIDe läschen well Äre Benotzerkont kee Paswuert huet.
+Dir kéint Iech net ouni eng OpenID aloggen.',
+	'openiddeleteerroropenidonly' => 'Dir kënnt net all Är OpenIDe läsche well Dir Iech nëmme mat OpenID aloggen däerft.
+Dir kéint Iech ouni OpenID net aloggen.',
 	'openiddelete-sucess' => "D'OpenID gouf vun Ärem Benotzerkont ewechgeholl",
 	'openiddelete-error' => 'Beim Ewehhuele vun der OpenID vun Ärem Benotzerkont ass e Feeler geschitt.',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-Astellungen',
@@ -3983,13 +3988,16 @@ Por favor, consulte um [[Special:ListUsers/sysop|administrador]].',
 	'openidemail' => 'Correio electrónico',
 	'openidlanguage' => 'Língua',
 	'openidtimezone' => 'Fuso horário',
+	'openidchooselegend' => 'Escolha do nome de utilizador',
 	'openidchooseinstructions' => 'Todos os utilizadores precisam de uma alcunha;
 pode escolher uma das opções abaixo.',
+	'openidchoosenick' => 'A sua alcunha ($1)',
 	'openidchoosefull' => 'O seu nome completo ($1)',
 	'openidchooseurl' => 'Um nome escolhido a partir do seu OpenID ($1)',
 	'openidchooseauto' => 'Um nome gerado automaticamente ($1)',
 	'openidchoosemanual' => 'Um nome à sua escolha:',
-	'openidchooseexisting' => 'Uma conta existente nesta wiki:',
+	'openidchooseexisting' => 'Uma conta existente nesta wiki',
+	'openidchooseusername' => 'Nome de utilizador:',
 	'openidchoosepassword' => 'palavra-chave:',
 	'openidconvertinstructions' => 'Este formulário permite-lhe alterar a sua conta de utilizador para usar uma URL OpenID ou adicionar mais URLs OpenID.',
 	'openidconvertoraddmoreids' => 'Converter para OpenID ou adicionar outra URL OpenID',
@@ -4014,11 +4022,15 @@ Se já possui uma conta na {{SITENAME}}, pode [[Special:UserLogin|autenticar-se]
 Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua conta para OpenID]] depois de se ter autenticado normalmente.
 
 Existem vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de OpenID] e poderá já ter uma conta activada para OpenID noutro serviço.',
-	'openidupdateuserinfo' => 'Atualizar a minha informação pessoal',
+	'openidupdateuserinfo' => 'Atualizar a minha informação pessoal:',
 	'openiddelete' => 'Eliminar OpenID',
 	'openiddelete-text' => 'Ao clicar o botão "{{int:openiddelete-button}}", irá eliminar o OpenID $1 da sua conta.
 Não poderá voltar a autenticar-se com este OpenID.',
 	'openiddelete-button' => 'Confirmar',
+	'openiddeleteerrornopassword' => 'Não pode apagar todos os seus OpenID porque a sua conta não tem palavra-chave.
+Sem um OpenID não se poderia autenticar.',
+	'openiddeleteerroropenidonly' => 'Não pode apagar todos os seus OpenID, porque só se pode autenticar usando um OpenID.
+Sem um OpenID não se poderia autenticar.',
 	'openiddelete-sucess' => 'O OpenID foi removido da sua conta com sucesso.',
 	'openiddelete-error' => 'Ocorreu um erro ao remover o OpenID da sua conta.',
 	'openid-prefstext' => 'Preferências do [http://openid.net/ OpenID]',
@@ -4038,6 +4050,7 @@ Não poderá voltar a autenticar-se com este OpenID.',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Hamilton Abreu
  * @author ZehRique
  */
 $messages['pt-br'] = array(
@@ -4108,6 +4121,10 @@ Existem vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de 
 	'openiddelete-text' => 'Ao clicar no botão "{{int:openiddelete-button}}", você removerá o OpenID $1 de sua conta.
 Você não poderá mais efetuar autenticação com este OpenID.',
 	'openiddelete-button' => 'Confirmar',
+	'openiddeleteerrornopassword' => 'Você não pode apagar todos os seus OpenID porque a sua conta não tem uma palavra-chave.
+Você ficaria impossibilitado de entrar na sua conta sem um OpenID.',
+	'openiddeleteerroropenidonly' => 'Você não pode apagar todos os seus OpenID porque só pode entrar com OpenID.
+Você não poderia entrar sem um OpenID.',
 	'openiddelete-sucess' => 'O OpenID foi removido de sua conta com sucesso.',
 	'openiddelete-error' => 'Ocorreu um erro enquanto removia o OpenID de sua conta.',
 	'openid-prefstext' => 'Preferências do [http://openid.net/ OpenID]',

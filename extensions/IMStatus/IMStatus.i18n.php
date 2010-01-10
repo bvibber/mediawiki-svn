@@ -1410,20 +1410,29 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Najami
+ * @author Per
  */
 $messages['sv'] = array(
+	'imstatus-desc' => 'Lägg till tag för att visa olika status i direktmeddelandeprogram (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Syntax',
 	'imstatus_default' => 'Standard',
 	'imstatus_example' => 'Exempel',
+	'imstatus_possible_val' => 'Möjliga värden',
 	'imstatus_max' => 'högst',
 	'imstatus_min' => 'minst',
 	'imstatus_or' => 'eller',
+	'imstatus_style' => 'stil på statusindikatorn',
+	'imstatus_action' => 'handling när du klickar på knappen',
+	'imstatus_details_saa' => 'För mer detaljer om all stilar och handlingar, se $1.',
 	'imstatus_your_name' => 'ditt $1 namn',
 	'imstatus_gtalk_code' => 'din google talk-kod',
 	'imstatus_gtalk_get_code' => 'din google talk-kod: få den på $1.',
 	'imstatus_gtalk_height' => 'boxens höjd, i pixlar.',
 	'imstatus_gtalk_width' => 'boxens bredd, i pixlar.',
 	'imstatus_icq_id' => 'ditt ICQ-ID',
+	'imstatus_icq_style' => 'ett tal mellan 0 och 26 (ja det finns 27 möjliga stilar).',
+	'imstatus_live_code' => 'ditt ID till Live Messenger sajten',
+	'imstatus_skype_nbstyle' => 'Notera: Om du väljer en stil som också är en handling så kommer ditt handlingsval att bli ändrat till att matcha din valda stil.',
 	'imstatus_xfire_size' => 'knappens storlek, från $1 (störst) till $2 (minst).',
 );
 

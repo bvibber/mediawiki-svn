@@ -155,8 +155,13 @@ Zkontrolujte zda jste jméno napsali správně!',
 
 /** Danish (Dansk)
  * @author Lhademmor
+ * @author MGA73
  */
 $messages['da'] = array(
+	'ajaxLogin1' => 'For at fuldføre din indlogning, skal du indtaste et nyt password.
+Dette vil føre dig væk fra denne redigeringsside og du risikerer at miste din nuværende redigering.',
+	'ajaxLogin2' => 'Er du sikker?
+Du risikerer at miste dine redigeringer, hvis du forlader denne side nu.',
 	'ajaxlogin-create' => 'Opret ny brugerkonto',
 );
 

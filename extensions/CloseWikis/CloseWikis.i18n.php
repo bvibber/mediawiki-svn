@@ -181,27 +181,36 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author Borislav
  * @author DCLXVI
  */
 $messages['bg'] = array(
 	'closewikis-desc' => 'Позволява да се затварят уикита в уики ферми',
-	'closewikis-page' => 'Затваряне на уикито',
-	'closewikis-page-close' => 'Затваряне на уикито',
+	'closewikis-page' => 'Затваряне на уики',
+	'closewikis-page-close' => 'Затваряне на уики',
 	'closewikis-page-close-wiki' => 'Уики:',
 	'closewikis-page-close-dreason' => 'Причина (публична):',
+	'closewikis-page-close-reason' => 'Причина (за дневници)',
 	'closewikis-page-close-submit' => 'Затваряне',
-	'closewikis-page-close-success' => 'Уикито беше затворено успешно',
+	'closewikis-page-close-success' => 'Уикито беше затворено.',
+	'closewikis-page-reopen' => 'Отваряне на уики',
 	'closewikis-page-reopen-wiki' => 'Уики:',
 	'closewikis-page-reopen-reason' => 'Причина:',
-	'closewikis-page-err-nowiki' => 'Посоченото уики е невалидно',
-	'closewikis-page-err-closed' => 'Уикито вече беше затворено',
-	'closewikis-page-err-opened' => 'Уикито не беше затворено',
+	'closewikis-page-reopen-submit' => 'Отваряне наново',
+	'closewikis-page-reopen-success' => 'Уикито беше наново отворено.',
+	'closewikis-page-err-nowiki' => 'Посоченото уики е невалидно.',
+	'closewikis-page-err-closed' => 'Уикито вече беше затворено.',
+	'closewikis-page-err-opened' => 'Уикито не беше затворено.',
 	'closewikis-list' => 'Списък на затворените уикита',
 	'closewikis-list-intro' => 'Този списък съдържа уикита, които са били затворени от стюардите.',
 	'closewikis-list-header-wiki' => 'Уики',
 	'closewikis-list-header-by' => 'Затворено от',
 	'closewikis-list-header-timestamp' => 'Затворено на',
+	'closewikis-list-header-dispreason' => 'Причина',
 	'closewikis-log' => 'Дневник на затварянията на уикита',
+	'closewikis-log-header' => 'Това е дневник на всички затваряния и отваряния на уикита, направени от стюардите.',
+	'closewikis-log-close' => 'затвори $2',
+	'closewikis-log-reopen' => 'отвори $2',
 	'right-editclosedwikis' => 'Редактиране на затворени уикита',
 	'right-closewikis' => 'Затваряне на уикита',
 );

@@ -446,6 +446,8 @@ $messages['sl'] = array(
  */
 $messages['sv'] = array(
 	'tablemod-msg-remove' => 'Ta bort',
+	'tablemod-error-invalidsort' => 'Ogiltig sorteringsparameter.',
+	'tablemod-error-invalidaction' => 'Ogiltig handling.',
 );
 
 /** Telugu (తెలుగు)

@@ -674,9 +674,9 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'crossnamespacelinks' => 'അന്തര്‍ വിക്കി നേംസ്പേസ് കണ്ണികള്‍',
-	'crossnamespacelinks-desc' => '{{SITENAME}} സം‌രംഭത്തില്‍ നിലവിലില്ലാത്ത [[Special:CrossNamespaceLinks|നേംസ്പേസ് കണ്ണികളുടെ പട്ടിക പ്രദര്‍ശിപ്പിക്കുക]]',
-	'crossnamespacelinks-summary' => 'മുഖ്യ നേംസ്പേസില്‍ നിന്നു മറ്റു നേംസ്പേസുകളിലുള്ള താളുകളിലേക്ക് ({{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} എന്നീ നേംസ്പേസുകള്‍ ഒഴിച്ച്) കണ്ണി ചേര്‍ക്കപ്പെട്ടിരിക്കുന്ന താളുകളിലെ കണ്ണികളുടെ പട്ടിക ഈ താള്‍ പ്രദര്‍ശിപ്പിക്കുന്നു. (ഇങ്ങനെ കണ്ണി കൊടുക്കുന്നത് ആശാസ്യകരമല്ല)',
+	'crossnamespacelinks' => 'അന്തര്‍-നാമമേഖല കണ്ണികള്‍',
+	'crossnamespacelinks-desc' => '{{SITENAME}} സം‌രംഭത്തില്‍ നിലവിലില്ലാത്ത [[Special:CrossNamespaceLinks|നാമമേഖലകളിലെ കണ്ണികളുടെ പട്ടിക പ്രദര്‍ശിപ്പിക്കുക]]',
+	'crossnamespacelinks-summary' => 'മുഖ്യ നാമമേഖലയില്‍ നിന്നു മറ്റു നാമമേഖലകളിലുള്ള താളുകളിലേക്ക് ({{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} എന്നീ നാമമേഖലകള്‍ ഒഴിച്ച്) കണ്ണി ചേര്‍ക്കപ്പെട്ടിരിക്കുന്ന താളുകളിലെ കണ്ണികളുടെ പട്ടിക ഈ താള്‍ പ്രദര്‍ശിപ്പിക്കുന്നു. (ഇങ്ങനെ കണ്ണി കൊടുക്കുന്നത് ആശാസ്യകരമല്ല)',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|lകണ്ണി|കണ്ണികള്‍}} $3-ലേക്ക്',
 );
 

@@ -271,6 +271,7 @@ YouTube можа патрабавацца пэўны час, каб апраца
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  * @author Stanqo
  */
 $messages['bg'] = array(
@@ -285,7 +286,7 @@ $messages['bg'] = array(
 	'youtubeauthsub_category' => 'Категория',
 	'youtubeauthsub_submit' => 'Изпращане',
 	'youtubeauthsub_clickhere' => 'Щракнете тук за влизане в YouTube',
-	'youtubeauthsub_tokenerror' => 'Грешка при генериране на разрешен символ, опитайте да обновите.',
+	'youtubeauthsub_tokenerror' => 'Грешка в генерирането на оторизиращата информация. Моля опреснете страницата в браузъра си.',
 	'youtubeauthsub_success' => "Поздравления!
 Видеото беше качено.
 Можете да прегледате видеото <a href='http://www.youtube.com/watch?v=$1'>тук</a>.

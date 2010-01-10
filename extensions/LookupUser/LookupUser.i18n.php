@@ -53,6 +53,7 @@ $messages['af'] = array(
 	'lookupuser-realname' => 'Regte naam: $1',
 	'lookupuser-registration' => 'Registrasiedatum: $1',
 	'lookupuser-no-registration' => 'nie aangeteken nie',
+	'lookupuser-useroptions' => 'Gebruikersopsies:',
 );
 
 /** Arabic (العربية)

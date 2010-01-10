@@ -1812,6 +1812,7 @@ $messages['pt'] = array(
 	'readerfeedback-tier-poor' => 'Pobre',
 	'tooltip-ca-ratinghist' => 'Opinião dos leitores sobre esta página',
 	'specialpages-group-feedback' => 'Opinião de leitores',
+	'readerfeedback-tt-review' => 'Submeter revisão',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

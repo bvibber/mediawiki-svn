@@ -6213,12 +6213,13 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'configure' => 'വിക്കി ക്രമീകരിക്കുക',
 	'configure-desc-group' => 'ഗ്രൂപ്പുകള്‍',
-	'configure-desc-ns' => 'നേംസ്പേസുകള്‍',
+	'configure-desc-ns' => 'നാമമേഖല',
 	'configure-desc-val' => 'മൂല്യം',
 	'configure-summary' => 'ഈ പ്രത്യേക താള്‍ വിക്കി ക്രമീകരിക്കുവാന്‍ താങ്കളെ സഹായിക്കുന്നു. ദയവായി കൂടുതല്‍ വിവരത്തിനു [http://www.mediawiki.org/wiki/Manual:Configuration_settings വിക്കി ക്രമീകരണങ്ങള്‍] കാണുക.',
 	'configure-btn-save' => 'സജ്ജീകരണങ്ങള്‍ സേവ് ചെയ്യുക',
@@ -6241,7 +6242,7 @@ $messages['ml'] = array(
 	'configure-section-localization' => 'പ്രാദേശികവത്ക്കരണം',
 	'configure-section-timezone' => 'സമയ മേഖല',
 	'configure-section-css-js' => 'CSSഉം ജാവാസ്ക്രിപ്റ്റും',
-	'configure-section-namespaces' => 'നേംസ്പേസുകള്‍',
+	'configure-section-namespaces' => 'നാമമേഖലകള്‍',
 	'configure-section-stats' => 'സൈറ്റിന്റെ സ്ഥിതിവിവരക്കണക്ക്',
 	'configure-section-category' => 'വർഗ്ഗങ്ങള്‍',
 	'configure-section-groups' => 'ഗ്രൂപ്പുകള്‍',
@@ -8766,7 +8767,7 @@ $messages['sv'] = array(
 	'configure-ext-settings-dep-error' => '$1: begärt värde: $2, nuvarande värde: $3',
 	'configure-ext-use-extension' => 'Använd det här programtillägget',
 	'configure-ext-use' => 'Använd',
-	'configure-form-reason' => 'Anledning för ändring:',
+	'configure-form-reason' => 'Orsak:',
 	'configure-customised' => "''Den här inställningen har definierats om från standardinställningen''",
 	'configure-arrayinput-oneperline' => "''(en per rad)''",
 	'configure-summary' => 'Den här specialsidan låter dig konfigurera wikin. Se [http://www.mediawiki.org/wiki/Manual:Configuration_settings manualsidan om konfigurationsinställningar] för mer information.',

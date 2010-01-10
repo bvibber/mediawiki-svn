@@ -16005,6 +16005,7 @@ $messages['sr-el'] = array(
  * @author Boivie
  * @author Fluff
  * @author Najami
+ * @author Per
  */
 $messages['sv'] = array(
 	'configure-setting-wgSitename' => 'Webbplatsens namn',
@@ -16030,6 +16031,7 @@ $messages['sv'] = array(
 	'configure-setting-wgCustomConvertCommand' => 'Alternativ bildskalare',
 	'configure-setting-wgGenerateThumbnailOnParse' => 'Skapa miniatyrbilder när sidor som innehåller dem blir parsade',
 	'configure-setting-wgIgnoreImageErrors' => 'Visa inte felmeddelanden för bilder',
+	'configure-setting-wgIllegalFileChars' => 'Ogiltiga tecken i filnamn',
 	'configure-setting-wgImageLimits' => 'Bildstorleksbegränsningar för beskrivningssidor',
 	'configure-setting-wgMaxAnimatedGifArea' => 'Max area i pixlar för animerade GIF-filer',
 	'configure-setting-wgMaxImageArea' => 'Maxarea i pixlar för bilder',
@@ -16277,7 +16279,7 @@ $messages['sv'] = array(
 	'configure-setting-wgFeedLimit' => 'Max antal feed-resultat',
 	'configure-setting-wgOverrideSiteFeed' => 'Anpassade feed-inställningar',
 	'configure-setting-wgAdvancedSearchHighlighting' => 'Aktivera markering av sökresultat',
-	'configure-setting-wgEnableMWSuggest' => 'Aktivera förslag vid sökning',
+	'configure-setting-wgEnableMWSuggest' => 'Aktivera sökförslag under tiden som du skriver i sökfältet',
 	'configure-setting-wgGoToEdit' => 'Gå-till-knappen leder rakt till redigeringsläge om sidan inte existerar',
 	'configure-setting-wgMWSuggestTemplate' => 'Mall för intern förslags-motor från MediaWiki',
 	'configure-setting-wgOpenSearchTemplate' => 'Mall för OpenSearch-förslag',
@@ -16487,10 +16489,15 @@ $messages['sv'] = array(
 	'configure-setting-wgLogo' => 'URL till webbplatsens logotyp',
 	'configure-setting-wgProto' => 'Prefix för säker server',
 	'configure-setting-wgScript' => 'Adress till index.php',
+	'configure-setting-wgRCLinkLimits' => 'Ändra gräns i senaste ändringar',
+	'configure-setting-wgRCLinkDays' => 'Gräns för antal dagar i senaste ändringar',
+	'configure-setting-wgRCShowChangedSize' => 'Visa antal ändrade tecken i senaste ändringar',
 	'configure-setting-wgBlockAllowsUTEdit' => 'Tillåt en blockerad användare att redigera sin egna diskussionssida',
 	'configure-setting-wgSysopEmailBans' => 'Tillåt administratörer att blockera användare från att komma åt [[Special:EmailUser]]',
 	'configure-setting-wgSysopRangeBans' => 'Tillåt administratörer att blockera intervall av IP-adresser',
 	'configure-setting-wgSysopUserBans' => 'Tillåt administratörer att blockera inloggade användare',
+	'configure-setting-wgUDPProfilerHost' => 'Värd för UDP-profiler',
+	'configure-setting-wgUDPProfilerPort' => 'Port för UDP-profiler',
 );
 
 /** Swahili (Kiswahili)

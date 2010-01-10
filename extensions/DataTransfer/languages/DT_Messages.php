@@ -1183,9 +1183,9 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'viewxml' => 'XML കാണുക',
 	'dt_viewxml_categories' => 'വർഗ്ഗങ്ങള്‍',
-	'dt_viewxml_namespaces' => 'നേംസ്പേസുകള്‍',
+	'dt_viewxml_namespaces' => 'നാമമേഖലകള്‍',
 	'dt_viewxml_simplifiedformat' => 'ലളിതവത്ക്കരിക്കപ്പെട്ട ഫോര്‍മാറ്റ്',
-	'dt_xml_namespace' => 'നേംസ്പേസ്',
+	'dt_xml_namespace' => 'നാമമേഖല',
 	'dt_xml_page' => 'താള്‍',
 	'dt_xml_field' => 'ഫീല്‍ഡ്',
 	'dt_xml_name' => 'പേര്‌',
@@ -1697,9 +1697,10 @@ $messages['su'] = array(
  * @author Gabbe.g
  * @author Lejonel
  * @author M.M.S.
+ * @author Per
  */
 $messages['sv'] = array(
-	'dt-desc' => 'Tillåter import och export av strukturerad data som finns i mallanrop',
+	'dt-desc' => 'Tillåter import och export av data som finns i mallanrop',
 	'viewxml' => 'Visa XML',
 	'dt_viewxml_docu' => 'Välj vilka av följande kategorier och namnrymder som ska visas i XML-format.',
 	'dt_viewxml_categories' => 'Kategorier',
@@ -1714,7 +1715,15 @@ $messages['sv'] = array(
 	'dt_xml_title' => 'Titel',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Fritext',
+	'importxml' => 'Importera XML',
+	'dt_import_selectfile' => 'Vänligen välj $1-filen som skall importeras:',
+	'dt_import_encodingtype' => 'Teckenkodningstyp',
+	'dt_import_editsummary' => '$1-importering',
+	'dt_import_importing' => 'Importerar...',
+	'dt_import_success' => '$1 {{PLURAL:$1|sida|sidor}} kommer skapas från $2-filen.',
 	'importcsv' => 'Importera CSV',
+	'dt_importcsv_badheader' => "Fel: Titeln $2 för kolumnen $1 måste vara antingen $3, $4 eller på formen 'mallnamn[fältnamn]'",
+	'right-datatransferimport' => 'Importera data',
 );
 
 /** Silesian (Ślůnski)

@@ -496,9 +496,14 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author Kobazulo
+ * @author Unai Fdz. de Betoño
  */
 $messages['eu'] = array(
 	'patrol-revert-reason' => 'Arrazoia:',
+	'group-patroller' => 'Patruilariak',
+	'group-patroller-member' => 'patruilaria',
+	'grouppage-patroller' => '{{ns:project}}:Patruilaria',
+	'right-patroller' => 'Orriak patruilatu',
 );
 
 /** Finnish (Suomi)
