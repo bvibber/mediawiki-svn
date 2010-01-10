@@ -89,6 +89,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   maintenance
 * New hook AbortNewAccountAuto, called before account creation from AuthPlugin-
   or ExtUser-driven requests.
+* Added $wgExtensionAssetsPath, to decouple assets serving from $wgScriptPath.
+  If not specified it will default to $wgScriptPath/extensions
 
 === New features in 1.16 ===
 
