@@ -123,7 +123,7 @@ class UsabilityInitiativeHooks {
 	 * Adds scripts
 	 */
 	public static function addResources( $out ) {
-		global $wgScriptPath, $wgJsMimeType;
+		global $wgExtensionAssetsPath, $wgJsMimeType;
 		
 		if ( !self::$doOutput )
 			return true;
@@ -131,14 +131,14 @@ class UsabilityInitiativeHooks {
 		// Loops over each script
 		foreach ( self::$scripts as $script ) {
 			// Add javascript to document
+			$src = "$wgExtensionAssetsPath/UsabilityInitiative/{$script['src']}";
+			$version = isset( $script['version'] ) ? $script['version'] : $wgStyleVersion;
 			$out->addScript(
 				Xml::element(
 					'script',
 					array(
 						'type' => $wgJsMimeType,
-						'src' => $wgScriptPath .
-							"/extensions/UsabilityInitiative/" .
-								"{$script['src']}?{$script['version']}",
+						'src' => "$src?$version"
 					),
 					'',
 					false
@@ -169,8 +169,8 @@ class UsabilityInitiativeHooks {
 				array(
 					'rel' => 'stylesheet',
 					'type' => 'text/css',
-					'href' => $wgScriptPath .
-							"/extensions/UsabilityInitiative/" .
+					'href' => $wgExtensionAssetsPath .
+							"/UsabilityInitiative/" .
 								"{$style['src']}?{$style['version']}",
 				)
 			);
