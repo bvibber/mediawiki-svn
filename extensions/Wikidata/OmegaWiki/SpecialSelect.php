@@ -45,6 +45,8 @@ function getSelectOptions() {
 			' AND ' . getLatestTransactionRestriction( "{$dc}_expression" );
 	$lang_res = $dbr->query( $sql );
 	$objectLanguage = $dbr->fetchObject( $lang_res )->language_id;
+	// language is not always defined, for example for a DM Option Attribute
+	if ( ! $objectLanguage ) $objectLanguage = 0 ;
 
 	$sql = "SELECT {$dc}_option_attribute_options.option_id,{$dc}_option_attribute_options.option_mid" .
 			" FROM {$dc}_option_attribute_options" .

@@ -36,6 +36,10 @@ function leftTrim(sString) {
 	return sString;
 }
 
+/*
+* suggests a list (of languages, classes...) according to the letters typed in the query field
+* or to the arrows "next" "previous"
+*/
 function updateSuggestions(suggestPrefix) {
 	var http = getHTTPObject();
 	var table = document.getElementById(suggestPrefix + "table");
@@ -53,8 +57,7 @@ function updateSuggestions(suggestPrefix) {
 	var URL = 'index.php';
 	var location = "" + document.location;
 	
-	if (location.indexOf('index.php/') > 0)
-		URL = '../' + URL;
+	if (location.indexOf('index.php/') > 0)	URL = '../' + URL;
 
 	URL = 
 		wgScript +
@@ -145,8 +148,7 @@ function updateSelectOptions(id, objectId, value) {
 	var URL = 'index.php';
 	var location = "" + document.location;
 
-	if (location.indexOf('index.php/') > 0)
-		URL = '../' + URL;
+	if (location.indexOf('index.php/') > 0) URL = '../' + URL;
 	http.open('GET', URL + '/Special:Select?option-attribute=' + encodeURI(value) + '&attribute-object=' + encodeURI(objectId), true);
 	http.send(null);
 

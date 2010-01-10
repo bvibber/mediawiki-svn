@@ -1415,7 +1415,8 @@ class OptionAttributeEditor extends AttributeEditor {
 	public function add( IdStack $idPath ) {
 		if ( $this->isAddField ) {
 			$syntransId = $idPath->getKeyStack()->peek( 0 )->syntransId;
-			
+			if ( ! $syntransId ) $syntransId = 0 ; // in the case of a DM option attribute, there is no syntrans in the PathId
+
 			$parameters = array(
 				"level" => $this->attributesLevelName,
 				"definedMeaningId" => $idPath->getDefinedMeaningId(),

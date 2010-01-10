@@ -226,7 +226,8 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 		
 		return count( $classAttributes );
 	}
-	
+
+	// displays the field only if there is at least one attribute of that type
 	public function showEditField( IdStack $idPath ) {
 		return $this->getAttributeOptionCount( $idPath ) > 0;
 	}
