@@ -366,7 +366,7 @@ public class UpdateThread extends Thread {
 								}
 							}
 						}
-						if(fail == 0 && succ >= 1){
+						if(succ >= 1){
 							wait = false; // proceed to deployment
 							reroute = true;
 						} else if(succ == 0){

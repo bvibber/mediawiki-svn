@@ -176,6 +176,14 @@ public class Configuration {
 		return s != null && s.equals("true");		
 	}
 	
+	public boolean getBoolean(String section, String name, boolean defaultValue) {
+		String s = getString(section, name);
+		if( s != null)
+			return s.equals("true");
+		else
+			return defaultValue;
+	}
+	
 	public int getInt(String section, String name, int defaultValue) {
 		String s = getString(section, name);
 		if (s == null)

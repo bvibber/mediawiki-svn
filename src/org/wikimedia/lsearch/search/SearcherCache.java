@@ -231,6 +231,9 @@ public class SearcherCache {
 	/** Number of threads to use for initial deployment */
 	protected int initialDeploymentThreads = 1;
 	
+	/** If there is local searcher always use that */
+	protected boolean forceLocal = true;
+	
 	/**
 	 * If there is a cached local searcher of iid
 	 * 
@@ -326,7 +329,7 @@ public class SearcherCache {
 	 * @return
 	 */
 	public String getRandomHost(IndexId iid){
-		if(iid.isMySearch() && hasLocalSearcher(iid) 
+		if(iid.isMySearch() && hasLocalSearcher(iid) && forceLocal
 				&& !hostsDeploying.containsKey("localhost") && !isOutOfRotation("localhost",iid))
 			return "localhost";
 		if(!initialized.contains(iid.toString()))
@@ -338,6 +341,8 @@ public class SearcherCache {
 			// generate all suitable remote hosts
 			HashSet<String> hosts = new HashSet<String>();
 			hosts.addAll(pools.keySet());
+			if(!forceLocal && iid.isMySearch())
+				hosts.add("localhost");
 			hosts.removeAll(hostsDeploying.keySet());
 			// remove the hosts excluded by configuration
 			if(!hosts.equals(excludedHosts))
@@ -637,6 +642,9 @@ public class SearcherCache {
 			log.info("Excluding hosts: "+excludedHosts);
 		}
 		initialDeploymentThreads = config.getInt("SearcherPool", "initThreads",1);
+		
+		forceLocal = config.getBoolean("SearcherPool", "forceLocal", true);
+		
 		if(initialize){
 			initialDeploymentRunning = true;
 			new InitialDeploymentThread().start();
