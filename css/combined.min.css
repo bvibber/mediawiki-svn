@@ -216,6 +216,12 @@ text-decoration:none;
 border:2px solid red;
 padding:2px 1px;
 }
+.ui-dialog .ui-dialog-titlebar{
+padding:0.75em 20px !important;
+}
+.ui-widget table td{
+padding:0 !important;
+}
 .ui-dialog .ui-dialog-buttonpane button.disabled{
 color:#7f7f7f;
 background:#f2f2f2;
