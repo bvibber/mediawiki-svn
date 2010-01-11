@@ -1,7 +1,7 @@
 <?php
 /**
  * MessageCommons
- * @package MessageCommons
+ * @ingroup Extensions
  * @author Daniel Friesen (http://mediawiki.org/wiki/User:Dantman) <mediawiki@danielfriesen.name>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  * @note Some techniques borrowed from Wikia's SharedMessages system
