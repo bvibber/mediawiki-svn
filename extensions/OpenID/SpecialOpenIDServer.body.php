@@ -1,6 +1,6 @@
 <?php
 /**
- * Server.php -- Server side of OpenID site
+ * SpecialOpenIDServer.body.php -- Server side of OpenID site
  * Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
  * Copyright 2007,2008 Evan Prodromou <evan@prodromou.name>
  *
@@ -67,7 +67,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		}
 
 		wfSuppressWarnings();
-		$server =& $this->getServer();
+		$server = $this->getServer();
 		wfRestoreWarnings();
 
 		switch ( $par ) {
