@@ -15,6 +15,7 @@ class VectorHooks {
 			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 6 ),
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 6 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 4 ),
+			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 1 ),
 			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 5 ),
 		),
 		'combined' => array(
@@ -45,6 +46,8 @@ class VectorHooks {
 			'messages' => array(
 				'vector-editwarning-warning',
 			),
+		),
+		'footercleanup' => array(
 		),
 		'simplesearch' => array(
 			'i18n' => 'WikiEditorToc',

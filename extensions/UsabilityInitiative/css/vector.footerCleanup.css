@@ -1,0 +1,39 @@
+/* Prototype code to show collapsing left nav options */
+#editpage-bottom {
+	background-color: #F3F3F3;
+	border: 1px solid silver;
+	border-top: none;
+	padding: 20px;
+	margin-right: -2px;
+}
+
+input.inline-hint {
+	color: #999999;
+	font-style: italic;
+}
+.collapsible-list {
+	border-top: 1px solid silver;
+	border-bottom: 1px solid silver;
+}
+
+/* Prototype code to show collapsing left nav options */
+.collapsible-list {
+	border-top: 1px solid silver;
+	border-bottom: 1px solid silver;
+	padding: 3px 2px;
+}
+.collapsible-list ul {
+	display: block;
+	padding: 0 0 0 14px;
+}
+.collapsible-list.collapsed label {
+	background: url(../images/vector/collapsibleNav/arrow-down.png) 0 50% no-repeat;
+	padding: 4px  0 3px 1.5em;
+	margin-bottom: 0px;
+}
+.collapsible-list.expanded label {
+	background: url(../images/vector/collapsibleNav/arrow-right.png) 0 50% no-repeat;
+	padding: 4px  0 3px 1.5em;
+	margin-bottom: 0px;
+}
+
