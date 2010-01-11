@@ -65,6 +65,11 @@ exp: [
 	{ 'regex': /}}/, 'label': "TEMPLATE_END", 'markAfter': true }
 ],
 /**
+ * Configuration 
+ */
+cfg: {
+},
+/**
  * Internally used functions
  */
 fn: {
@@ -83,17 +88,40 @@ fn: {
 				// We have a model, so all this init stuff has already happened
 				return;
 			}
-			// Hide this
-			$(this).addClass( 'wikiEditor-nodisplay wikiEditor-template' );
 			// Build a model for this
-			$(this).data( 'model' , new $.wikiEditor.modules.templateEditor.fn.model( $(this).text() ) );
-			var model = $(this).data( 'model' );
+			var model = new $.wikiEditor.modules.templateEditor.fn.model( $( this ).text() );
+			var $template = $( this )
+				.wrap( '<div class="wikiEditor-template"></div>' )
+				.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
+				.html( 
+					// Wrap the start and end of the wikitext in spans so we can bind events to them
+					$( this ).html()
+						.replace( /\{\{/, '<span class="wikiEditor-template-start">{{</span>' )
+						.replace( /\}\}/, '<span class="wikiEditor-template-end">}}</span>' ) )
+				.parent()
+				.addClass( 'wikiEditor-template-collapsed' )
+				.data( 'model', model );
+			$( '<span />' )
+				.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
+				.text( model.getName() )
+				.mousedown( noEdit )
+				.prependTo( $template );
+			$template.find( '.wikiEditor-template-end, .wikiEditor-template-start' ).mousedown( toggleWikiText );
+			$( '<ul />' )
+				.addClass( 'wikiEditor-template-modes wikiEditor-noinclude' )
+				.append( $( '<li />' )
+					.addClass( 'wikiEditor-template-action-wikiText' )
+					.append( $( '<img />' ).attr( 'src',
+						$.wikiEditor.imgPath + 'templateEditor/' + 'wiki-text.png' ) )
+					.mousedown( toggleWikiText ) )
+				.insertAfter( $template.find( '.wikiEditor-template-name' ) );
 			// Expand
 			function expandTemplate( $displayDiv ) {
 				// Housekeeping
 				$displayDiv.removeClass( 'wikiEditor-template-collapsed' );
 				$displayDiv.addClass( 'wikiEditor-template-expanded' );
-				
+				// remove mousedown hander from the entire thing
+				$displayDiv.unbind( 'mousedown' );
 				//$displayDiv.text( model.getText() );
 				$keyValueTable = $( '<table />' )
 					.appendTo( $displayDiv );
@@ -122,23 +150,23 @@ fn: {
 				$displayDiv.removeClass( 'wikiEditor-template-expanded' );
 				$displayDiv.text( model.getName() );
 			};
-			// Build the collapsed version of this template
-			var $visibleDiv = $( "<div />" ).addClass( 'wikiEditor-noinclude' );
-			// Let these two know about each other
-			$(this).data( 'display', $visibleDiv );
-			$visibleDiv.data( 'wikitext', $(this) );
-			$(this).after( $visibleDiv );
-			// Add click handler
-			$visibleDiv.mousedown( function() {
-				// Is collapsed, switch to expand
-				if ( $(this).hasClass( 'wikiEditor-template-collapsed' ) ) {
-					expandTemplate( $(this) );
-				} else {
-					collapseTemplate( $(this) );
-				}
-			});
-			collapseTemplate( $visibleDiv );
+			function toggleWikiText( ) {
+				var $template = $( this ).closest( '.wikiEditor-template' );
+				$template
+					.toggleClass( 'wikiEditor-template-collapsed' )
+					.toggleClass( 'wikiEditor-template-expanded' )
+					.children( '.wikiEditor-template-text, .wikiEditor-template-name, .wikiEditor-template-modes' )
+					.toggleClass( 'wikiEditor-nodisplay' );
+				return false;
+			}
+			function noEdit() {
+				return false;
+			}
 		});
+		
+		function toggleWikiText ( context, template ) {
+			
+		}
 	},
 	
 	

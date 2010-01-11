@@ -5,7 +5,7 @@
  * Configuration
  */
 cfg: {
-	'styleVersion': 2
+	'styleVersion': 3
 },
 /**
  * Internally used event handlers

@@ -13,7 +13,7 @@
 		
 		/* Wikitext that's folded away and shouldn't be displayed */
 		.wikiEditor-nodisplay {
-			display: none;
+			display: none !important;
 		}
 		
 		/* A collapsed template */
@@ -21,19 +21,36 @@
 			background-color:#DDEEFF;
 			border:1px outset #DDEEFF;
 			color:#333333;
-			cursor:pointer;
-			display:inline;
-			padding:0 0.25em;
+			padding:0 0 0 0.25em;
+			display: inline;
+			margin:0 0.25em;
 			text-decoration:none;
 		}
-		
+		ul.wikiEditor-template-modes,
+		ul.wikiEditor-template-modes li {
+			display: inline;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		ul.wikiEditor-template-modes {
+			padding: 0 0 0 0.15em;
+		}
+		ul.wikiEditor-template-modes li {
+			border-left: 1px solid #79848e;
+			margin: 0 1px;
+			cursor: pointer;
+		}
+		ul.wikiEditor-template-modes li img {
+			vertical-align: middle;
+			cursor: pointer !important;
+		}
 		/* An expanded template */
 		.wikiEditor-template-expanded {
 			background:#DDEEFF none repeat scroll 0 0;
 			border:1px inset #DDEEFF;
 			color:black;
-			cursor:pointer;
-			display:inline;
+			margin:3px;
 			padding:0 0.25em;
 		}
 		
