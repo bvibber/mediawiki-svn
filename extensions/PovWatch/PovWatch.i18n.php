@@ -258,16 +258,20 @@ $messages['br'] = array(
 	'povwatch_subscribed' => "Koumanantet oc'h da PovWatch bremañ",
 	'povwatch_unsubscribed' => 'Tennet eo bet ho enskrivadur da PovWatch.',
 	'povwatch_invalid_title' => 'Direizh eo an titl diferet',
+	'povwatch_subscriber_list' => 'Ur [[Special:PovWatch/subscribers|roll koumananterien]] zo da gaout.',
 	'povwatch_unknown_subpage' => 'Ispajenn dianav.',
 	'povwatch_push' => 'Bountañ',
 	'povwatch_title' => 'Titl :',
 	'povwatch_comment' => 'Addispleg evit an deizlevr :',
 	'povwatch_no_subscribers' => "N'eus ket koumananterien.",
+	'povwatch_unsubscribe_intro' => "Koumanantet oc'h da bPovWatch.
+Klikit war ar bouton a-is evit digoumanantiñ.",
 	'povwatch_unsubscribe' => 'Digoumanantiñ',
 	'povwatch_subscribe_intro' => "N'oc'h ket enskrivet da PovWatch.
 Evit en em enskrivañ klikit war ar bouton da-heul.",
 	'povwatch_subscribe' => 'Koumanantiñ',
 	'povwatch_added' => 'ouzhpennet',
+	'action-povwatch_user' => 'ouzhpennañ ar bajenn-mañ da roll evezhiañ un implijer all',
 );
 
 /** Bosnian (Bosanski)

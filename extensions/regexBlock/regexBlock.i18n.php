@@ -409,6 +409,7 @@ $messages['br'] = array(
 	'regexblock-form-reason' => 'Abeg :',
 	'regexblock-form-expiry' => 'Termen :',
 	'regexblock-form-match' => 'Klotadur rik',
+	'regexblock-form-account-block' => 'Berzañ krouidigezh kontoù nevez',
 	'regexblock-form-submit' => 'Stankañ an implijer-mañ',
 	'regexblock-form-submit-empty' => "Roit un anv implijer pe ur chomlec'h IP da stankañ.",
 	'regexblock-form-submit-expiry' => 'Diferit un termen, mar plij.',

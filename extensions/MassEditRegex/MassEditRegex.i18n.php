@@ -941,6 +941,7 @@ Voor de te vervangen tekst is escapen niet nodig.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -973,6 +974,7 @@ Erstatningsverdiene bør ikke unnslippes.',
 	'masseditregex-listtype-pagenames' => 'Sidenavn (endre disse sidene)',
 	'masseditregex-listtype-pagename-prefixes' => 'Sidenavnprefiks (endre sider som har navn som begynner med denne teksten)',
 	'masseditregex-listtype-categories' => 'Kategorinavn (endre hver side innen disse kategoriene; navneromvalg ignoreres)',
+	'masseditregex-listtype-backlinks' => 'Lenker hit (rediger sider som lenker til disse)',
 	'masseditregex-namespace-intro' => 'Alle disse sidene er i dette navnerommet:',
 	'masseditregex-exprnomatch' => 'Uttrykket «$1» traff ingen sider.',
 	'masseditregex-badregex' => 'Ugyldig regulært uttrykk:',

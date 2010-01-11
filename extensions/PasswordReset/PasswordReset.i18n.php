@@ -207,6 +207,7 @@ $messages['br'] = array(
 	'passwordreset-invalidusername' => 'Anv implijer direizh',
 	'passwordreset-emptyusername' => 'Anv implijer goullo',
 	'passwordreset-nopassmatch' => 'Ne glot ket an anv implijer',
+	'passwordreset-badtoken' => 'Jedouer aozañ direizh',
 	'passwordreset-username' => 'Anv implijer :',
 	'passwordreset-newpass' => 'Ger-tremen nevez :',
 	'passwordreset-confirmpass' => 'Kadarnaat ar ger-tremen :',

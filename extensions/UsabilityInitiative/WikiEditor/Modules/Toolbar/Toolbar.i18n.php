@@ -959,6 +959,13 @@ $messages['arz'] = array(
 	'wikieditor-toolbar-help-content-indent-result' => 'نص عادي<dl><dd>نص ببادئة<dl><dd>نص ببادئة</dd></dl></dd></dl>',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Chaipau
+ */
+$messages['as'] = array(
+	'wikieditor-toolbar-tool-file-example' => 'Example.jpg',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

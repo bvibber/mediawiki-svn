@@ -67,10 +67,12 @@ $messages['arz'] = array(
 );
 
 /** Assamese (অসমীয়া)
+ * @author Chaipau
  * @author Rajuonline
  */
 $messages['as'] = array(
 	'sitenotice_close' => 'বাতিল',
+	'sitenotice-desc' => 'সহস্যসকলক চাইট নোটিচ বন্ধ কৰিবলৈ অনুমতি দিয়ক',
 );
 
 /** Asturian (Asturianu)

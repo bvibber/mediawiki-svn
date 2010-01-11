@@ -1342,6 +1342,7 @@ $messages['no'] = array(
 	'dt_xml_freetext' => 'Fritekst',
 	'importxml' => 'Importer XML',
 	'dt_import_selectfile' => 'Vennligst velg $1-filen som skal importeres:',
+	'dt_import_encodingtype' => 'Tegnkodingstype',
 	'dt_import_editsummary' => '$1-importering',
 	'dt_import_importing' => 'Importerer...',
 	'dt_import_success' => '{{PLURAL:$1|Én side|$1 sider}} vil bli importert fra $2-filen.',

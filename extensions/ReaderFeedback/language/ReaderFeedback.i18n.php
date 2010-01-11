@@ -1415,6 +1415,7 @@ $messages['lb'] = array(
 	'readerfeedback-tier-poor' => 'Aarmséileg',
 	'tooltip-ca-ratinghist' => 'Lieserbewertunge vun dëser Säit',
 	'specialpages-group-feedback' => 'Meenung vun deem dee kuckt',
+	'readerfeedback-tt-review' => 'Bewäertung fortschécken',
 );
 
 /** Lumbaart (Lumbaart)

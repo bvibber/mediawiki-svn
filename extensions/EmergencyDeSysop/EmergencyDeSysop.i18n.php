@@ -124,6 +124,7 @@ $messages['br'] = array(
 	'emergencydesysop-otheradmin' => 'Merourien all da zistrollañ',
 	'emergencydesysop-reason' => 'Abeg evit lemel',
 	'emergencydesysop-submit' => 'Kas',
+	'emergencydesysop-incomplete' => 'Rekis eo holl vaeziennoù ar furmskrid, esaeit en-dro mar plij.',
 	'emergencydesysop-notasysop' => "An implijer buket n'emañ ket er strollad merourien.",
 	'emergencydesysop-nogroups' => 'Hini ebet',
 	'emergencydesysop-invalidtarget' => "N' ez eus ket eus an implijer buket.",

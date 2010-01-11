@@ -643,6 +643,13 @@ $messages['ja'] = array(
 	'right-adminlinks' => '[[Special:AdminLinks|管理者用リンク集]]へのリンクが表示される',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'adminlinks_users' => 'მომხმარებლები',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author វ័ណថារិទ្ធ
  */

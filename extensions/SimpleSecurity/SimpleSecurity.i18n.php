@@ -124,6 +124,7 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'security' => 'Marilh surentez',
@@ -134,6 +135,7 @@ $messages['br'] = array(
 	'security-manygroups' => 'strolladoù $1 ha $2',
 	'security-unchain' => 'Kemmañ an oberoù unan-hag-unan',
 	'security-type-category' => 'rummad',
+	'security-type-namespace' => 'esaouenn anv',
 	'security-restricttogroup' => 'Mont d\'an endalc\'had evit izili "$1" hepken',
 );
 

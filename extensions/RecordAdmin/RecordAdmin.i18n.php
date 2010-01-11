@@ -291,6 +291,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'recordadmin-select' => 'Diuzañ',
+	'recordadmin-createtype' => 'Ebarzhiñ anv ur seurt enrolladennoù nevez evit e grouiñ',
 	'recordadmin-newsearch' => 'Enklask nevez $1',
 	'recordadmin-newrecord' => 'Diuzañ ur seurt enrolladennoù all',
 	'recordadmin-submit' => 'Kas',
@@ -307,6 +308,7 @@ $messages['br'] = array(
 	'recordadmin-typeupdated' => 'hizivaet eo perzhioù $1',
 	'recordadmin-updatesuccess' => 'Hizivaet eo $1',
 	'recordadmin-buttonsave' => 'Enrollañ',
+	'recordadmin-noform' => 'N\'eus furmskrid ebet stag ouzh an enrolladennoù "$1" !',
 	'recordadmin-createlink' => 'krouiñ unan',
 	'recordadmin-newcreated' => '$1 nevez, krouet adalek ur furmskrid publik',
 	'recordadmin-summary-typecreated' => 'Krouet ez eus bet un $1 nevez',

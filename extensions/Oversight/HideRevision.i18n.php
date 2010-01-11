@@ -3858,6 +3858,7 @@ Ehtimolan:
  */
 $messages['tk'] = array(
 	'hiderevision' => 'Wersiýalary hemişelik gizle',
+	'hiderevision-desc' => 'Kanuny sebäpler we ş.m. sebäpli ähli ulanyjylardan indiwidual wersiýalary gizle',
 	'group-oversight' => 'Esewançylar',
 	'group-oversight-member' => 'esewan',
 	'grouppage-oversight' => '{{ns:project}}:Esewan',
@@ -3865,6 +3866,13 @@ $messages['tk'] = array(
 	'right-hiderevision' => 'Wersiýalary administratorlardan gizle',
 	'hiderevision-prompt' => 'Aýyrylmaly wersiýa sany:',
 	'hiderevision-continue' => 'Dowam et',
+	'hiderevision-text' => "Bu '''diňe''' aşakdaky ýagdaýlar üçin ulanylmalydyr:
+* Gelşiksiz şahsy maglumat
+*: '' eý salgylary we telefon belgileri, durmuş ätiýaçlandyryş belgileri we ş.m.''
+
+'''Bu ulgamyň betniýetli ulanylmagy artykmaç hukuklaryň ýitirilmegine getirýändir.'''
+
+Öçürilen elementler web saýty boýumça hiç kime görünjek däldir, ýöne öçürmeler gündelige geçirilýär we eger ýalňyşsaňyz bir maglumat bazasy administratory tarapyndan el bilen yzyna dikelilip bolýandyr.",
 	'hiderevision-reason' => 'Sebäp (gizlin gündelige ýazylmaly):',
 	'hiderevision-submit' => 'Bu maglumaty möhletsiz gizle',
 	'hiderevision-tab' => 'Wersiýany gizle',
@@ -3878,6 +3886,9 @@ $messages['tk'] = array(
 Ilki bu üýtgeşmäni yzyna getiriň.',
 	'hiderevision-error-delete' => 'Arhiwläp bolmady; ozal öçürilen bolaýmasyn?',
 	'hiderevision-archive-status' => '$1 senesinden wersiýa öçürildi: $2',
+	'oversight-nodiff' => 'Sahypa üçin hiç hili öňki wersiýa ýokdugy sebäpli üýtgeşmeleri yzarlap bolmaýar. Ýa-da:
+*Sahypa öçürilipdir
+*Bu gizlenilen wersiýa ilkinji wersiýa',
 	'oversight-log-hiderev' => '$1 senesinden bir özgerdiş aýryldy',
 	'oversight' => 'Esewan',
 	'oversight-view' => 'jikme-jiklikler',

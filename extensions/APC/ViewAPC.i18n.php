@@ -724,6 +724,7 @@ $messages['br'] = array(
 	'viewapc-info-general' => 'Titouroù hollek',
 	'viewapc-apc-version' => 'Stumm APC',
 	'viewapc-php-version' => 'Stumm PHP',
+	'viewapc-shared-memory' => 'Memor rannet',
 	'viewapc-start-time' => "Eur loc'hañ",
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|restr|restr}} ($2)',
 	'viewapc-misses' => 'Mankoù',
@@ -763,6 +764,7 @@ $messages['br'] = array(
 	'viewapc-ls-limit-none' => 'An holl',
 	'viewapc-ls-more' => "''$1 {{PLURAL:$1|moned|moned}}'' all zo",
 	'viewapc-ls-nodata' => "''Roadenn ebet ne glot''",
+	'viewapc-version-info' => 'Titouroù ar stumm',
 	'viewapc-version-changelog' => "Marilh ar c'hemmoù",
 );
 

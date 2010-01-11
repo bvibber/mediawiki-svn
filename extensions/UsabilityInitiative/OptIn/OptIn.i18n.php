@@ -1005,6 +1005,7 @@ $messages['cu'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'optin-desc' => "Yn gadael i ddefnyddwyr arbrofi gyda'r fersiwn Beta, sy'n cynnwys gwelliannau diweddaraf y Cynllun Defnyddioldeb.",
 	'optin-title-optedout' => 'Rhowch gynnig ar Beta',
 	'optin-title-optedin' => 'Gadael Beta',
 	'optin-title-justoptedin' => 'Croeso i Beta',
@@ -1048,6 +1049,7 @@ Gallwch arbrofi eto gyda Beta trwy wasgu\'r cyswllt "{{int:optin-try}}" ar frig 
 	'optin-survey-question-changes' => "Pa newidiadau hoffech chi weld yn fersiwn Beta'r dyfodol (dewiswch y cwbl yr hoffech eu gweld)?",
 	'optin-survey-answer-changes-nav' => "Gwneud yr offer llywio ar y wefan yn haws i'w defnyddio.",
 	'optin-survey-answer-changes-edittools' => "Cynyddu a gwella'r offer golygu.",
+	'optin-survey-answer-changes-upload' => 'Gwella uwchlwytho ffeiliau lluniau ag ati.',
 	'optin-improvements' => "== Beth sydd wedi ei wella? ==
 [[File:UsabilityNavigation.png|left|link=|Llun o'r tabiau llywio newydd]]
 ;Gwella'r llywio

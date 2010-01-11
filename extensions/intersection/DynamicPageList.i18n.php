@@ -233,7 +233,7 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'intersection_toomanycats' => 'Tõrge: Liiga palju kategooriaid!',
-	'intersection_noresults' => 'Viga: Tulemusi ei ole!',
+	'intersection_noresults' => 'Tõrge: Tulemusi pole!',
 	'intersection_noincludecats' => 'Tõrge: Lisa vähemalt üks kategooria või täpsusta nimeruum!',
 );
 

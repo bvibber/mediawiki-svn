@@ -3847,6 +3847,8 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'contributiontotal' => 'Condrebbute totele',
 	'contributionhistory' => 'Storie de le condrebbute',
+	'contrib-hist-date' => 'Orarie e date',
+	'contrib-hist-amount' => 'Imborte',
 );
 
 /** Russian (Русский)

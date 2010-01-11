@@ -344,9 +344,12 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'transliterator-desc' => 'Gir en konfigurerbar parserfunksjon for transliterasjon',
+	'transliterator-error-ambiguous' => 'Tvetydig regel <code>$1</code> i [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'Ugyldig syntaks <code>$1</code> i [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Mer enn {{PLURAL:$1|én regel|$1 regler}} i [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Regelen <code>$1</code> har mer enn {{PLURAL:$3|ett tegn|$3 tegn}} til venstre i [[MediaWiki:$2]]',

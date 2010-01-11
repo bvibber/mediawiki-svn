@@ -286,6 +286,7 @@ $messages['br'] = array(
 	'ratinghistory-table-rating' => 'Priziañ',
 	'ratinghistory-table-votes' => 'Mouezhioù',
 	'ratinghistory-ratings' => "'''Alc'hwez :''' '''(1)''' - Fall ; '''(2)''' - Dister ; '''(3)''' - Etre ; '''(4)''' - Mat ; '''(5)''' - Dreist.",
+	'right-feedback' => 'Implijout ar furmskrid da reiñ keloù evit priziañ ur bajenn',
 );
 
 /** Bosnian (Bosanski)
@@ -1173,7 +1174,15 @@ $messages['jv'] = array(
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'ratinghistory-thanks' => "''<font color=\"darkred\">გმადლობთ, რომ გამონახეთ დრო ამ გვერდის შესაფასებლად!</font>''",
+	'ratinghistory-period' => 'დროის მონაკვეთი:',
+	'ratinghistory-month' => 'ბოლო თვე',
+	'ratinghistory-3months' => 'ბოლო 3 თვე',
 	'ratinghistory-year' => 'ბოლო წელი',
+	'ratinghistory-3years' => 'ბოლო 3 წელი',
+	'ratinghistory-ave' => 'საშ: $1',
+	'ratinghistory-chart' => 'ყველა დროის მკითხველთა შეფასებები',
+	'ratinghistory-purge' => 'ქეშის გაწმენდა',
 );
 
 /** Khmer (ភាសាខ្មែរ)

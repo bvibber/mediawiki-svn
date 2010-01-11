@@ -428,6 +428,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'grouppermissions' => 'Merañ aotreoù ar strolladoù',
 	'sortpermissions' => 'Urzhiañ an aotreoù',
 	'removeunusedgroups' => 'Lemel ar strolladoù dizimplij',
 	'grouppermissions-search' => 'Strollad :',
@@ -435,6 +436,7 @@ $messages['br'] = array(
 	'grouppermissions-dosearch' => 'Mont',
 	'grouppermissions-searchlabel' => "Klask war-lec'h ur strollad",
 	'grouppermissions-deletelabel' => 'Dilemel ar strollad',
+	'grouppermissions-change' => 'Cheñch aotreoù ar strollad',
 	'grouppermissions-add' => 'Ouzhpennañ ur strollad',
 	'grouppermissions-delete' => 'Dilemel ar strollad',
 	'grouppermissions-comment' => 'Evezhiadenn :',
@@ -449,13 +451,18 @@ $messages['br'] = array(
 	'grouppermissions-sort-admin' => 'Meradur',
 	'grouppermissions-sort-tech' => 'Teknik',
 	'grouppermissions-sort-misc' => 'A bep seurt',
+	'grouppermissions-log-add' => 'en deus ouzhpennet ar strollad « $2 »',
+	'grouppermissions-log-delete' => 'en deus dilamet ar strollad « $2 »',
 	'grouppermissions-sp-sort' => 'Urzhiañ an aotreoù',
 	'grouppermissions-sp-save' => 'Enrollañ',
 	'grouppermissions-sp-success' => 'Urzhiet eo bet an aotreoù',
 	'grouppermissions-sp-addperm' => 'Ouzhpennañ an aotre',
 	'grouppermissions-sp-remove' => 'lemel',
+	'right-raw' => 'Gwelet ar pajennoù diaoz',
 	'right-info' => 'GWelet titouroù ar bajenn',
 	'right-search' => 'Klask ar wiki',
+	'right-recentchanges' => "Gwelet ar c'hemmoù graet nevez zo",
+	'right-edittalk' => 'Aozañ ar pajennoù divizout',
 );
 
 /** Bosnian (Bosanski)

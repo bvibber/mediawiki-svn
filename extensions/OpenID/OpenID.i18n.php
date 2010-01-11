@@ -490,6 +490,7 @@ $messages['be-tarask'] = array(
 	'openidchooseauto' => 'Аўтаматычна створанае імя ($1)',
 	'openidchoosemanual' => 'Імя на Ваш выбар:',
 	'openidchooseexisting' => 'Існуючы рахунак у {{GRAMMAR:месны|{{SITENAME}}}}:',
+	'openidchooseusername' => 'Імя карыстальніка:',
 	'openidchoosepassword' => 'пароль:',
 	'openidconvertinstructions' => 'Гэта форма дазваляе выкарыстоўваць для Вашага рахунку адрас OpenID альбо дадаць іншыя адрасы OpenID.',
 	'openidconvertoraddmoreids' => 'Канвэртаваць у OpenID альбо дадаць іншы адрас OpenID',
@@ -647,13 +648,15 @@ $messages['br'] = array(
 	'openidemail' => "Chomlec'h postel",
 	'openidlanguage' => 'Yezh',
 	'openidtimezone' => 'Takad eur :',
+	'openidchooselegend' => 'Dibab an anv implijer',
 	'openidchooseinstructions' => "An holl implijerien o deus ezhomm ul lesanv ;
 tu 'zo deoc'h dibab unan eus ar c'hinnigoù a-is.",
+	'openidchoosenick' => 'Ho lesanv ($1)',
 	'openidchoosefull' => "Hoc'h anv klok ($1)",
 	'openidchooseurl' => 'Un anv a zo bet dibabet adalek ho OpenID ($1)',
 	'openidchooseauto' => 'Un anv krouet emgefre ($1)',
 	'openidchoosemanual' => "Un anv dibabet ganeoc'h :",
-	'openidchooseexisting' => 'Ur gont zo anezhi dija war ar wiki-mañ :',
+	'openidchooseexisting' => 'Ur gont zo anezhi war ar wiki-mañ',
 	'openidchoosepassword' => 'ger-tremen :',
 	'openidconvertoraddmoreids' => "Amdreiñ da OpenID pe ouzhpennañ ur chomlec'h OpenID all",
 	'openidconvertsuccess' => 'Amdroet eo bet davet OpenID',
@@ -663,7 +666,7 @@ tu 'zo deoc'h dibab unan eus ar c'hinnigoù a-is.",
 	'openidnousername' => "N'eus bet diferet anv implijer ebet.",
 	'openidbadusername' => 'Un anv implijer fall a zo bet lakaet.',
 	'openidloginlabel' => 'URL OpenID',
-	'openidupdateuserinfo' => 'Hizivaat ma zitouroù personel',
+	'openidupdateuserinfo' => 'Hizivaat ma zitouroù personel :',
 	'openiddelete' => 'Dilemel an OpenID',
 	'openiddelete-button' => 'Kadarnaat',
 	'openiddelete-sucess' => 'Tennet eo bet an OpenID eus ho kont.',
@@ -5074,6 +5077,7 @@ $messages['ug-latn'] = array(
  * @author A1
  * @author AS
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'openid-desc' => 'Вхід у вікі за допомогою [http://openid.net/ OpenID], а також вхід на інші сайти, що підтримують OpenID за допомогою акаунта в вікі',
@@ -5113,7 +5117,8 @@ $messages['uk'] = array(
 	'openidchooseurl' => 'Ім`я, отримане з вашого OpenID ($1)',
 	'openidchooseauto' => "Автоматично створене ім'я ($1)",
 	'openidchoosemanual' => "Ім'я на ваш вибір:",
-	'openidchooseexisting' => 'Існуючий акаунт на цій вікі:',
+	'openidchooseexisting' => 'Існуючий обліковий запис цього вікі-сайту',
+	'openidchooseusername' => "Ім'я користувача:",
 	'openidchoosepassword' => 'пароль:',
 	'openidconvertinstructions' => 'Ця форма дозволяє вам змінити використання Вашого облікового запису на використання адреси OpenID або додати кілька адрес OpenID.',
 	'openidconvertoraddmoreids' => 'Перетворити на OpenID або додати іншу адресу OpenID',
@@ -5138,7 +5143,7 @@ OpenID дозволяє вам заходити на різні веб-сайт�
 Щоб використовувати надалі OpenID, Ви можете [[Special:OpenIDConvert|перетворити Ваш обліковий запис на OpenID]], після того, як ви ввійшли звичайним образом.
 
 Існує безліч [http://wiki.openid.net/Public_OpenID_providers загальнодоступних провайдерів OpenID], можливо, Ви вже маєте обліковий запис OpenID на іншому сайті.",
-	'openidupdateuserinfo' => 'Оновити мою особисту інформацію',
+	'openidupdateuserinfo' => 'Оновити мою особисту інформацію:',
 	'openiddelete' => 'Видалити OpenID',
 	'openiddelete-text' => 'Натиснувши на кнопку «{{int:openiddelete-button}}», Ви видалите OpenID $1 зі свого облікового запису. Ви більше не зможете входити із цим OpenID.',
 	'openiddelete-button' => 'Підтвердити',

@@ -216,6 +216,13 @@ $messages['nl'] = array(
 	'magicnonumberedheadings-desc' => 'Voegt het magische woord "<nowiki>__NONUMBEREDHEADINGS__</nowiki>" toe',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'magicnonumberedheadings-desc' => 'Legger til det magiske ordet «<nowiki>__NONUMBEREDHEADINGS__</nowiki>»',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

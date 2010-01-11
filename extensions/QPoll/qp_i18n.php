@@ -450,9 +450,11 @@ $messages['br'] = array(
 	'qp_users_link' => 'Implijerien',
 	'qp_voice_link' => 'Mouezh an implijer',
 	'qp_voice_link_inv' => 'Mouezh an implijer ?',
+	'qp_user_polls_link' => 'En deus kemeret perzh e $1 sontadeg{{PLURAL:$1||}}',
 	'qp_user_missing_polls_link' => 'Ne gemer ket perzh',
 	'qp_not_participated_link' => "N'en deus ket kemeret perzh",
 	'qp_order_by_username' => 'Urzhiañ dre anv implijer',
+	'qp_order_by_polls_count' => 'Urzhiañ dre an niver a sontadegoù',
 	'qp_results_line_qupl' => 'Pajenn "$1" Sontadeg "$2" : $3',
 	'qp_results_line_qpl' => 'Pajenn "$1" Sontadeg "$2" : $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Pajenn "$2" Sontadeg "$3" ]',
@@ -461,8 +463,10 @@ $messages['br'] = array(
 	'qp_func_no_such_poll' => "N'eus ket eus ar sontadeg-mañ ($1)",
 	'qp_error_invalid_question_type' => 'Seurt goulenn direizh : $1',
 	'qp_error_vote_dependance_poll' => 'Mar plij, votit evit ar sontadeg $1 da gentañ.',
+	'qp_error_unanswered_span' => 'Is-rummad hep respont',
 	'qp_error_category_name_empty' => 'Goullo eo anv ar rummad',
 	'qp_error_proposal_text_empty' => "Goullo eo testenn ar c'hinnig",
+	'qp_error_too_few_categories' => 'Daou rummad da nebeutañ a rank bezañ termenet',
 	'qp_error_no_answer' => 'Kinnig direspont',
 );
 
