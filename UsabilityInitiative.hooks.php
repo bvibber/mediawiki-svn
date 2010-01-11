@@ -20,6 +20,7 @@ class UsabilityInitiativeHooks {
 			'raw' => array(
 				array( 'src' => 'css/suggestions.css', 'version' => 6 ),
 				array( 'src' => 'css/vector.collapsibleNav.css', 'version' => 6 ),
+				array( 'src' => 'css/vector.footerCleanup.css', 'version' => 1 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 7 ),
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 10 ),
 				array( 'src' => 'css/wikiEditor.preview.css', 'version' => 1 ),
