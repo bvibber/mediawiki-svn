@@ -3,6 +3,7 @@
 }
 
 body.rtl .templateInfo td {
+	padding-right: auto;
 	padding-left: 5px;
 }
 
@@ -12,6 +13,7 @@ body.rtl .templateInfo td {
 }
 
 body.rtl .templateInfo .paramGroup {
+	padding-left: auto;
 	padding-right: 5px;
 }
 
@@ -25,6 +27,7 @@ body.rtl .templateInfo .paramGroup {
 }
 
 body.rtl .templateInfo .param {
+	padding-left: auto;
 	padding-right: 20px;
 }
 
@@ -38,6 +41,7 @@ body.rtl .templateInfo .param {
 }
 
 body.rtl .templateInfo .paramAttr {
+	padding-left: auto;
 	padding-right: 35px;
 }
 
@@ -47,6 +51,7 @@ body.rtl .templateInfo .paramAttr {
 }
 
 body.rtl .templateInfo .paramAttrMsg {
+	padding-left: auto;
 	padding-right: 50px;
 }
 
@@ -56,6 +61,7 @@ body.rtl .templateInfo .paramAttrMsg {
 }
 
 body.rtl .templateInfo .paramOptions {
+	padding-left: auto;
 	padding-right: 20px;
 }
 
@@ -65,6 +71,7 @@ body.rtl .templateInfo .paramOptions {
 }
 
 body.rtl .templateInfo .paramOption {
+	padding-left: auto;
 	padding-right: 35px;
 }
 
@@ -78,6 +85,7 @@ body.rtl .templateInfo .paramOption {
 }
 
 body.rtl .templateInfo .paramOptionMsg {
+	padding-left: auto;
 	padding-right: 50px;
 }
 
@@ -87,6 +95,7 @@ body.rtl .templateInfo .paramOptionMsg {
 }
 
 body.rtl .templateInfo .paramData {
+	padding-left: auto;
 	padding-right: 20px;
 }
 
@@ -100,6 +109,7 @@ body.rtl .templateInfo .paramData {
 }
 
 body.rtl .templateInfo .paramDataField {
+	padding-left: auto;
 	padding-right: 35px;
 }
 
@@ -109,5 +119,6 @@ body.rtl .templateInfo .paramDataField {
 }
 
 body.rtl .templateInfo .msg {
+	padding-left: auto;
 	padding-right: 5px;
 }
