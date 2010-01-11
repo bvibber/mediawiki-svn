@@ -1,7 +1,3 @@
-This extension is obsolete and may be removed after MediaWiki 1.16 has been
-branched.
+This extension is obsolete; it has been replaced by the Semantic Maps extension:
 
-Use the Maps[1] or Semantic Maps[2] extension as a replacement.
-
-[1] http://www.mediawiki.org/wiki/Extension:Maps
-[2] http://www.mediawiki.org/wiki/Extension:Semantic_Maps
+http://www.mediawiki.org/wiki/Extension:Semantic_Maps
