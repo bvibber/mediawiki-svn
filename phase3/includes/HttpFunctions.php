@@ -11,7 +11,7 @@ class Http {
 	// Syncronous download (in a single request)
 	const SYNC_DOWNLOAD = 1;
 
-	// Asynchronous download ( background process with multiple requests )
+	// Asynchronous download ( background process with multiple status requests )
 	const ASYNC_DOWNLOAD = 2;
 
 	/**
@@ -66,7 +66,7 @@ class Http {
 		}
 		$head = $headResponse->value;
 
-		// check for redirects:
+		// Check for redirects:
 		if( isset( $head['Location'] ) && strrpos( $head[0], '302' ) !== false ) {
 			if( $redirectCount < $wgMaxRedirects ) {
 				if( self::isValidURI( $head['Location'] ) ) {
@@ -92,7 +92,7 @@ class Http {
 			}
 		}
 
-		// check if we can find phpCliPath (for doing a background shell request to
+		// Check if we can find $wgPhpCli (for doing a background shell request to
 		// php to do the download:
 		if( $wgPhpCli && wfShellExecEnabled() && $dl_mode == self::ASYNC_DOWNLOAD ) {
 			wfDebug( __METHOD__ . "\nASYNC_DOWNLOAD\n" );
@@ -528,12 +528,15 @@ class phpHttpRequest extends HttpRequest {
 		);
 
 		// Proxy setup:
-		if( $this->proxy ){
-			$httpContextOptions['proxy'] = 'tcp://' . $this->proxy;
-		}else if ( Http::isLocalURL( $this->url ) ) {
-			$httpContextOptions['proxy'] = 'tcp://localhost:80';
-		} elseif ( $wgHTTPProxy ) {
-			$httpContextOptions['proxy'] = 'tcp://' . $wgHTTPProxy ;
+		// only do proxy setup if ( not suppressed $this->proxy === false )
+		if( $this->proxy !== false ){
+			if( $this->proxy ){
+				$httpContextOptions['proxy'] = 'tcp://' . $this->proxy;
+			}else if ( Http::isLocalURL( $this->url ) ) {
+				$httpContextOptions['proxy'] = 'tcp://localhost:80';
+			} elseif ( $wgHTTPProxy ) {
+				$httpContextOptions['proxy'] = 'tcp://' . $wgHTTPProxy ;
+			}
 		}
 
 		$fcontext = stream_context_create (
