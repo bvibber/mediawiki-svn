@@ -3,7 +3,7 @@
 	background-color: #F3F3F3;
 	border: 1px solid silver;
 	border-top: none;
-	padding: 20px;
+	padding: 20px 170px 20px 170px;
 	margin-right: -2px;
 }
 
@@ -37,3 +37,51 @@ input.inline-hint {
 	margin-bottom: 0px;
 }
 
+.editOptions {
+	width: 100%;
+}
+#wpSummaryLabel,
+#editpage-summary-fields,
+.editButtons {
+	float: left;
+}
+#wpSummaryLabel{
+	width: 150px;
+	margin-left: -150px;
+	position: relative;
+}
+#editpage-summary-fields {
+	width: 100%;
+	margin-right: -100%;
+}
+#editpage-summary-fields input.mw-summary {
+	width: 95%;
+}
+.editButtons {
+	width: 150px;
+	margin-right: -150px;
+	float: right;
+	position: relative;
+}
+#editpage-copywarn {
+	margin-left: -150px;
+	margin-right: 10px;
+}
+/* Why don't we use self clearing floats anywhere? */
+
+.editOptions:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.editOptions {
+	display: inline-block;
+}
+* html .editOptions { 
+	height: 1%;
+}
+.editOptions { 
+	display:block;
+}

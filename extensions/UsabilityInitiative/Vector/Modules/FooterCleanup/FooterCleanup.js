@@ -17,14 +17,24 @@ mw.ready( function() {
 		.change( function() {
 			if( $j( this ).val().length == 0 ){
 				$j( this )
-					.val( $j( this ).data( 'hint' ) )
-					.addClass( 'inline-hint' );
+					.addClass( 'inline-hint' )
+					.val( $j( this ).data( 'hint' ) );
+					
 			} else {
 				$j( this ).removeClass( 'inline-hint' );
 			} } )
+		.focus( function() {
+				if( $j( this ).val() == $j( this ).data( 'hint' ) ) {
+					$j( this )
+						.removeClass( 'inline-hint' )
+						.val( "" );
+				}
+			})
+		.blur( function() { $j( this ).trigger( 'change' ); } )
 		.trigger( 'change' );
-		$j( '#wpSummary, .editCheckboxes' )
-			.wrap( '<div id="editpage-summary-fields"></div>');
+		$j( '#wpSummary' )
+			.add( '.editCheckboxes' )
+			.wrapAll( '<div id="editpage-summary-fields"></div>');
 			
 		$j( '#editpage-specialchars' ).remove();
 		
@@ -47,5 +57,15 @@ mw.ready( function() {
 				.find( 'ul' )
 				.slideToggle( 'fast' );
 			return false;
-		})
+			})
+			.trigger( 'click' );
+		$j( '#wpPreview' )
+			.remove();
+		$j( '#wpDiff' )
+			.remove();
+		$j( '#mw-editform-cancel' )
+			.remove()
+			.appendTo('.editButtons');
+		$j( '.editHelp' )
+			.remove();
 } );
