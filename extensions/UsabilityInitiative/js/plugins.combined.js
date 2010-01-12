@@ -7753,7 +7753,7 @@ fn: {
 					html: '\
 						<div class="wikiEditor-dialog-copywarn"></div>\
 						<div class="wikiEditor-dialog-editoptions">\
-							<form>\
+							<form id="wikieditor-' + context.instance + '-publish-dialog-form">\
 								<label for="wikiEditor-' + context.instance + '-dialog-summary"\
 									rel="wikieditor-publish-dialog-summary"></label>\
 								<br />\
@@ -8711,35 +8711,37 @@ fn: {
 		// This is based on Linker::generateTOC(), so it should behave like the
 		// TOC on rendered articles does - which is considdered to be correct
 		// at this point in time.
-		var outline = context.data.outline;
-		var lastLevel = 0;
-		var nLevel = 0;
-		for ( var i = 0; i < outline.length; i++ ) {
-			if ( outline[i].level > lastLevel ) {
-				nLevel++;
+		if ( context.data.outline ) {
+			var outline = context.data.outline;
+			var lastLevel = 0;
+			var nLevel = 0;
+			for ( var i = 0; i < outline.length; i++ ) {
+				if ( outline[i].level > lastLevel ) {
+					nLevel++;
+				}
+				else if ( outline[i].level < lastLevel ) {
+					nLevel -= Math.max( 1, lastLevel - outline[i].level );
+				}
+				if ( nLevel <= 0 ) {
+					nLevel = 1;
+				}
+				outline[i].nLevel = nLevel;
+				lastLevel = outline[i].level;
 			}
-			else if ( outline[i].level < lastLevel ) {
-				nLevel -= Math.max( 1, lastLevel - outline[i].level );
+			// Recursively build the structure and add special item for
+			// section 0, if needed
+			var structure = buildStructure( outline );
+			if ( $( 'input[name=wpSection]' ).val() == '' ) {
+				structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0 } );
 			}
-			if ( nLevel <= 0 ) {
-				nLevel = 1;
+			context.modules.toc.$toc.html( buildList( structure ) );
+			
+			if ( wgNavigableTOCResizable && !context.$ui.data( 'resizableDone' ) ) {
+				buildResizeControls();
+				buildCollapseControls();
 			}
-			outline[i].nLevel = nLevel;
-			lastLevel = outline[i].level;
+			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true } );
 		}
-		// Recursively build the structure and add special item for
-		// section 0, if needed
-		var structure = buildStructure( outline );
-		if ( $( 'input[name=wpSection]' ).val() == '' ) {
-			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0 } );
-		}
-		context.modules.toc.$toc.html( buildList( structure ) );
-		
-		if ( wgNavigableTOCResizable && !context.$ui.data( 'resizableDone' ) ) {
-			buildResizeControls();
-			buildCollapseControls();
-		}
-		context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true } );
 	}
 }
 

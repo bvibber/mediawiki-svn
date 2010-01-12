@@ -80,7 +80,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.collapsibleTabs.js', 'version' => 5 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
-				array( 'src' => 'js/plugins/jquery.inherit.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.inherit.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 7 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 22 ),
@@ -88,16 +88,16 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 12 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 40 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 10 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 57 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 58 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 9 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.templateEditor.js', 'version' => 14 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 1 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 136 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 137 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 136 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 137 ),
 			),
 		),
 	);
