@@ -22,7 +22,7 @@ fn: {
 					html: '\
 						<div class="wikiEditor-dialog-copywarn"></div>\
 						<div class="wikiEditor-dialog-editoptions">\
-							<form>\
+							<form id="wikieditor-' + context.instance + '-publish-dialog-form">\
 								<label for="wikiEditor-' + context.instance + '-dialog-summary"\
 									rel="wikieditor-publish-dialog-summary"></label>\
 								<br />\
