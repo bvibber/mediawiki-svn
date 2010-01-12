@@ -22,6 +22,9 @@ api: {
  * Event handlers
  */
 evt: {
+	change: function( context, event ) {
+		$.wikiEditor.modules.toc.fn.update( context );
+	},
 	ready: function( context, event ) {
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
@@ -145,7 +148,8 @@ fn: {
 	 * @param {Object} event Event object with context as data
 	 */
 	collapse: function( event ) {
-		var $this = $( this ), context = $this.data( 'context' ),
+		var $this = $( this ), 
+			context = $this.data( 'context' ),
 			pT = $this.parent().position().top - 1;
 		$this.parent()
 			.css( { 
@@ -247,7 +251,7 @@ fn: {
 					.addClass( 'section-' + structure[i].index )
 					.data( 'wrapper', wrapper )
 					.click( function( event ) {
-						context.fn.scrollToTop( $(this).data( 'wrapper' ) );
+						context.fn.scrollToTop( $( this ).data( 'wrapper' ) );
 						context.$textarea.textSelection( 'setSelection', {
 							'start': 0,
 							'startContainer': $(this).data( 'wrapper' )
@@ -255,7 +259,7 @@ fn: {
 						
 						// Highlight the clicked link
 						$.wikiEditor.modules.toc.fn.unhighlight( context );
-						$(this).addClass( 'current' );
+						$( this ).addClass( 'current' );
 						
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
