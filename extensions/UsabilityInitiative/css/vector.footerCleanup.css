@@ -7,7 +7,7 @@
 	margin-right: -2px;
 }
 
-input.inline-hint {
+#editpage-bottom input.inline-hint {
 	color: #999999;
 	font-style: italic;
 }
@@ -15,8 +15,6 @@ input.inline-hint {
 	border-top: 1px solid silver;
 	border-bottom: 1px solid silver;
 }
-
-/* Prototype code to show collapsing left nav options */
 .collapsible-list {
 	border-top: 1px solid silver;
 	border-bottom: 1px solid silver;
@@ -37,51 +35,51 @@ input.inline-hint {
 	margin-bottom: 0px;
 }
 
-.editOptions {
+#editpage-bottom .editOptions {
 	width: 100%;
 }
-#wpSummaryLabel,
-#editpage-summary-fields,
-.editButtons {
+#editpage-bottom #wpSummaryLabel,
+#editpage-bottom #editpage-summary-fields,
+#editpage-bottom .editButtons {
 	float: left;
 }
-#wpSummaryLabel{
+#editpage-bottom #wpSummaryLabel{
 	width: 150px;
 	margin-left: -150px;
 	position: relative;
 }
-#editpage-summary-fields {
+#editpage-bottom #editpage-summary-fields {
 	width: 100%;
 	margin-right: -100%;
 }
-#editpage-summary-fields input.mw-summary {
+#editpage-bottom #editpage-summary-fields input.mw-summary {
 	width: 95%;
 }
-.editButtons {
+#editpage-bottom .editButtons {
 	width: 150px;
 	margin-right: -150px;
 	float: right;
 	position: relative;
 }
-#editpage-copywarn {
+#editpage-bottom #editpage-copywarn {
 	margin-left: -150px;
 	margin-right: 10px;
 }
 /* Why don't we use self clearing floats anywhere? */
 
-.editOptions:after {
+#editpage-bottom .editOptions:after {
 	content: ".";
 	display: block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
 }
-.editOptions {
+#editpage-bottom .editOptions {
 	display: inline-block;
 }
-* html .editOptions { 
+* html #editpage-bottom  .editOptions { 
 	height: 1%;
 }
-.editOptions { 
+#editpage-bottom .editOptions { 
 	display:block;
 }
