@@ -1695,7 +1695,7 @@ class User {
 			$dbw->update( 'user',
 				array( 'user_touched' => $dbw->timestamp( $this->mTouched ) ),
 				array( 'user_id' => $this->mId ),
-				__METHOD__ );
+				wfGetAllCallers() );
 
 			$this->clearSharedCache();
 		}
