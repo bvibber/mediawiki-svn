@@ -30,23 +30,24 @@ this.inherit = function( child ) {
 		return this;
 	};
 	// Create a namespace for hooking some functionality to the iFrame, like document.ready detection and handling
-	child.jQueryInherit.hooks = {
+	console.log( 'adding hooks' );
+	var hooks = child.jQueryInherit.hooks = {
 		isReady: false,
 		readyBound: false,
 		readyList: [],
 		// Mimic the readyBind() function in the child, so it can set up the listeners for document.ready
 		bindReady: function() {
-			if ( child.jQueryInherit.hooks.readyBound ) {
+			if ( hooks.readyBound ) {
 				return;
 			}
-			child.jQueryInherit.hooks.readyBound = true;
+			hooks.readyBound = true;
 			// Mozilla, Opera, and webkit nightlies support
 			if ( child.document.addEventListener ) {
 				child.document.addEventListener(
 					"DOMContentLoaded",
 					function() {
 						child.document.removeEventListener( "DOMContentLoaded", arguments.callee, false );
-						child.jQueryInherit.hooks.ready();
+						hooks.ready();
 					},
 					false
 				);
@@ -59,13 +60,13 @@ this.inherit = function( child ) {
 					function(){
 						if ( child.document.readyState === "complete" ) {
 							child.document.detachEvent( "onreadystatechange", arguments.callee );
-							child.jQueryInherit.hooks.ready();
+							hooks.ready();
 						}
 					}
 				);
 				// If IE and not an iframe continually check to see if the document is ready
 				if ( child.document.documentElement.doScroll && child == child.top ) {
-					if ( !child.jQueryInherit.hooks.isReady ) {
+					if ( !hooks.isReady ) {
 						try {
 							// If IE is used, use the trick by Diego Perini http://javascript.nwbox.com/IEContentLoaded/
 							child.document.documentElement.doScroll( "left" );
@@ -74,27 +75,27 @@ this.inherit = function( child ) {
 							return;
 						}
 						// And execute any waiting functions
-						child.jQueryInherit.hooks.ready();
+						hooks.ready();
 					}
 				}
 			}
 			// A fallback to window.onload, that will always work
-			jQuery.event.add( child, "load", child.jQueryInherit.hooks.ready );
+			jQuery.event.add( child, "load", hooks.ready );
 		},
 		// Hook the ready trigger to fire off the hook bindings
 		ready: function() {
 			// Make sure the DOM is not already loaded
-			if ( !child.jQueryInherit.hooks.isReady ) {
+			if ( !hooks.isReady ) {
 				// Remember that the DOM is ready
-				child.jQueryInherit.hooks.isReady = true;
+				hooks.isReady = true;
 				// If there are functions bound...
-				if ( child.jQueryInherit.hooks.readyList ) {
+				if ( hooks.readyList ) {
 					// Execute them all
-					jQuery.each( child.jQueryInherit.hooks.readyList, function() {
+					jQuery.each( hooks.readyList, function() {
 						this.call( child.document, child.jQueryInherit );
 					} );
 					// Reset the list of functions
-					child.jQueryInherit.hooks.readyList = null;
+					hooks.readyList = null;
 				}
 				// Trigger any bound ready events
 				jQuery( child.document ).triggerHandler( 'ready' );
