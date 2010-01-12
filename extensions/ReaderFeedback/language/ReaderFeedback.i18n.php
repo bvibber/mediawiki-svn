@@ -265,6 +265,7 @@ $messages['be-tarask'] = array(
 	'readerfeedback-tier-poor' => 'Нізкая',
 	'tooltip-ca-ratinghist' => 'Адзнакі гэтай старонкі чытачамі',
 	'specialpages-group-feedback' => 'Меркаваньні чытачоў',
+	'readerfeedback-tt-review' => 'Даслаць водгук',
 );
 
 /** Bulgarian (Български)

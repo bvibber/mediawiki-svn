@@ -91,6 +91,7 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
@@ -99,6 +100,7 @@ $messages['br'] = array(
 	'transliterator-error-syntax' => 'Ereadur faziek <code>$1</code> e [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Ouzhpenn $1 {{PLURAL:$1|reolenn|reolenn}} e [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Ouzhpenn $3 {{PLURAL:$3|arouezenn|arouezenn}} zo gant ar reolenn <code>$1</code> war an tu kleiz e [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] a rank bezañ ennañ $1 {{PLURAL:$1|arouezenn|arouezenn}} da nebeutañ.',
 );
 
 /** Bosnian (Bosanski)

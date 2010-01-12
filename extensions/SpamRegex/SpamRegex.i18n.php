@@ -252,7 +252,9 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'spamregex' => 'Strob regex (Spam regex)',
 	'spamregex-error-unblocking' => 'Fazi distankañ "$1". Sur a-walc\'h n\'eus ket a batrom.',
+	'spamregex-summary' => 'Kavet eo bet an destenn e diverradur ar bajenn.',
 	'spamregex-currently-blocked' => "'''Frazennoù stanket evit bremañ :'''",
+	'spamregex-move' => "An abeg hoc'h eus ebarzhet a oa ennañ ur frazenn stanket.",
 	'spamregex-no-currently-blocked' => "'''N'eus frazenn stanket ebet.'''",
 	'spamregex-log' => "* '''$1''' $2  ([{{SERVER}}$3&text=$4 dilemel]) ouzhpennet gant $5 d'ar $6 da $7",
 	'spamregex-unblock-success' => 'Distanket eo bet an implijer.',

@@ -1037,6 +1037,8 @@ $messages['br'] = array(
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|kaozeal]])',
 	'wikilog-edit-fieldset-legend' => 'Dibarzhioù wikilog :',
 	'wikilog-edit-signpub' => 'Sinañ hag embann ar pennad-mañ',
+	'wikilog-edit-signpub-tooltip' => "Ober a ra d'ar pennad bezañ sinet hag embannet en e wikilog pa vez enrollet.
+Diaskit ar voest-mañ evit ma chomo ar pennad ur brouilhed.",
 	'wikilog-comment-by-user' => 'Addispleg gant $1 ($2)',
 	'wikilog-comment-by-anon' => 'Addispleg gant $3 (dizanv)',
 	'wikilog-comment-pending' => "Emañ an addispleg-mañ o c'hortoz bezañ aprouet.",

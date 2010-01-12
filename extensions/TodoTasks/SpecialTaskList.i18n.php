@@ -664,6 +664,7 @@ Az érvényes projektek listáját a [[MediaWiki:TodoTasksValidProjects]] lapon 
 	'tasklistchooseproj' => 'Projekt kiválasztása:',
 	'tasklistprojdisp' => 'Megjelenítés',
 	'tasklistbyname' => '== %s feladatlistája ==',
+	'tasklistnowguseprojects' => 'A $wgUseProjects változót „false”-ra állítottad, és nem használhatod ezt a lapot.',
 	'tasklistnoprojects' => "Hiba: úgy tűnik, hogy bekapcsoltad a '''\$wgUseProjects'''-et, de nem hoztad létre a [[MediaWiki:TodoTasksValidProjects]] lapot. Lásd a [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 telepítési utasításokat] további részletekért.",
 	'tasklistemailbody' => '!
 
@@ -1418,6 +1419,7 @@ Dien früntelk %s-Bescheed-täl-System',
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Per
  */
 $messages['sv'] = array(
 	'tasklist' => 'Uppgiftslista',
@@ -1436,6 +1438,7 @@ För en lista över giltiga projekt, se [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistchooseproj' => 'Välj projekt:',
 	'tasklistprojdisp' => 'Visa',
 	'tasklistbyname' => '== Uppgiftslista för %s ==',
+	'tasklistnowguseprojects' => 'Du har satt $wgUseProjects till «false» och kan inte använda denna sidan.',
 	'tasklistnoprojects' => "FEL: Det ser ut som om du har satt på '''\$wgUseProjects''' utan att skapa [[MediaWiki:TodoTasksValidProjects]]. Se [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installationsinstruktionerna] för mer detaljer.",
 	'tasklistemailbody' => ',
 

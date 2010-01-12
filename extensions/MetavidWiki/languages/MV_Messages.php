@@ -8697,6 +8697,7 @@ $messages['su'] = array(
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
+ * @author Per
  * @author Purodha
  * @author Rotsee
  */
@@ -8708,14 +8709,15 @@ $messages['sv'] = array(
 	'mv_ogg_high_quality' => 'Hög kvalitet - Ogg Theora 900 kbit/s',
 	'mv_archive_org_link' => 'Länkar till mpeg2-orginal hos Archive.org',
 	'mv_error_stream_missing' => '<span class="error">Fel: Det är ingen videofil associerad med detta dataflöde.</span><br />Var god rapportera detta till sidoperatören.',
+	'mv_stream_added' => 'Du har lagt till flödet $1',
 	'mv_stream_meta' => 'Dataflödessida',
 	'mv_add_stream' => 'Metavid lägg till dataflöde',
 	'mv_edit_stream' => 'Metavid redigera dataflöde',
 	'mvexportsearch' => 'Metavid exportera',
 	'mvexportsequence' => 'Metavid exportera sekvens',
 	'mvexportstream' => 'Metavid exportera dataflöde',
-	'mv_move_delete_msg' => 'mvd flyttad till $1',
-	'mv_add_stream_page' => 'Mv lägg till dataflöde',
+	'mv_move_delete_msg' => 'flyttad till $1',
+	'mv_add_stream_page' => 'MetaVid lägg till dataflöde',
 	'mv_edit_strea_docu' => '<p>Redigera dataflöde <b>admin</b><br />för vanlig användarvisning/-redigering, se sidan $1',
 	'mv_add_stream_docu' => '<p>Lägg till ett nytt dataflöde med fältet nedan.</p><p>Mer information ges på <a href="$1">hjälpsidan för tilläggning av dataflöde</a>.</p>',
 	'mv_add_stream_submit' => 'Lägg till dataflöde',

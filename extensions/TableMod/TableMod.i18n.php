@@ -92,7 +92,12 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'tablemod-desc' => 'Upravljanje wiki tabelama',
 	'tablemod-msg-remove' => 'Ukloni',
+	'tablemod-error-format' => 'Ova oznaka podržava samo jednu jednostavnu tabelu za svaku oznaku, bez bilo kakvog teksta prije ili poslije nje.',
+	'tablemod-error-colcount' => 'Ova oznaka podržava brisanje samo kod tabela sa jednakim brojem kolona u svakom redu.',
+	'tablemod-error-headcount' => 'Ova oznaka podržava sortiranje samo kod tabela koje imaju zaglavlja u svakoj koloni.',
+	'tablemod-error-invalidsort' => 'Nevaljani parametri sortiranja.',
 	'tablemod-error-invalidaction' => 'Nevaljana akcija.',
 );
 

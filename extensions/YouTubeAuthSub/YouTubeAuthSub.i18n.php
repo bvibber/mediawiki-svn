@@ -66,14 +66,6 @@ $messages['lzz'] = array(
 	'youtubeauthsub_category' => "K'at'egori",
 );
 
-/** Capiceño (Capiceño)
- * @author Oxyzen
- */
-$messages['cps'] = array(
-	'youtubeauthsub_title' => 'Titulo',
-	'youtubeauthsub_description' => 'Deskripsyon',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Arnobarnard
@@ -214,6 +206,13 @@ $messages['arz'] = array(
 	'youtubeauthsub_jserror_nokeywords' => 'رجاءً أدخل كلمة مفتاحية أو أكثر.',
 	'youtubeauthsub_jserror_notitle' => 'رجاءً أدخل عنوانا للفيديو.',
 	'youtubeauthsub_jserror_nodesc' => 'رجاءً أدخل وصفا للفيديو.',
+);
+
+/** Assamese (অসমীয়া)
+ * @author Chaipau
+ */
+$messages['as'] = array(
+	'youtubeauthsub_category' => 'শ্ৰেণী',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -479,6 +478,14 @@ $messages['ckb-arab'] = array(
 	'youtubeauthsub_jserror_nokeywords' => 'تکایە یەک یا زیاتر گرنگ‌وشە بنووسە.',
 	'youtubeauthsub_jserror_notitle' => 'تکایە سەردێڕێک بۆ ڤیدیۆکە بنووسە.',
 	'youtubeauthsub_jserror_nodesc' => 'تکایە پێناسەیەک بۆ بۆ ڤیدیۆکە بنووسە.',
+);
+
+/** Capiceño (Capiceño)
+ * @author Oxyzen
+ */
+$messages['cps'] = array(
+	'youtubeauthsub_title' => 'Titulo',
+	'youtubeauthsub_description' => 'Deskripsyon',
 );
 
 /** Czech (Česky)

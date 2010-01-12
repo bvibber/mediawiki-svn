@@ -1182,6 +1182,10 @@ $messages['sv'] = array(
 	'masseditregex-err-nopages' => 'Du måste specificera minst en sida att ändra.',
 	'masseditregex-before' => 'Före',
 	'masseditregex-after' => 'Efter',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|ändring|ändringar}}',
+	'masseditregex-page-not-exists' => '$1 finns inte',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|sida|sidor}} redigerade',
+	'masseditregex-view-full-summary' => 'Visa fullständingt redigeringssammandrag',
 	'masseditregex-hint-headreplace' => 'Ersätt',
 	'masseditregex-listtype-intro' => 'Detta är en lista över:',
 );

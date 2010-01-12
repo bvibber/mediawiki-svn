@@ -1203,6 +1203,7 @@ $messages['fo'] = array(
  * @author Crochet.david
  * @author Elfix
  * @author Grondin
+ * @author Hercule
  * @author IAlex
  * @author Meithal
  * @author PieRRoMaN
@@ -1213,8 +1214,8 @@ $messages['fo'] = array(
 $messages['fr'] = array(
 	'hiderevision' => 'Cacher définitivement les révisions',
 	'hiderevision-desc' => 'Masque les modifications individuelles de tous les utilisateurs pour des motifs légaux, etc.',
-	'group-oversight' => 'Masqueurs',
-	'group-oversight-member' => 'Masqueur',
+	'group-oversight' => 'Masqueurs de modifications',
+	'group-oversight-member' => 'Masqueur de modifications',
 	'grouppage-oversight' => '{{ns:project}}:Masqueur de modifications',
 	'right-oversight' => 'Voir les versions cachées par oversight',
 	'right-hiderevision' => 'Masquer des révisions aux administrateurs',

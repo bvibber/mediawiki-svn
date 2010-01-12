@@ -968,6 +968,7 @@ $messages['sv'] = array(
 	'am-email' => 'e-post',
 	'am-active' => 'aktiv',
 	'am-updated' => 'Dina ändringar har sparats',
+	'nss-rights' => 'rättigheter',
 	'nss-save-changes' => 'Spara ändringar',
 	'nss-create-account-header' => 'Skapa nytt konto',
 	'nss-create-account' => 'Skapa konto',
