@@ -30,7 +30,6 @@ this.inherit = function( child ) {
 		return this;
 	};
 	// Create a namespace for hooking some functionality to the iFrame, like document.ready detection and handling
-	console.log( 'adding hooks' );
 	var hooks = child.jQueryInherit.hooks = {
 		isReady: false,
 		readyBound: false,
