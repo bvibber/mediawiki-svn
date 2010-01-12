@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.15.3 - 12 January 2010
+  Now using $wgExtensionAssetsPath for the path to Configure.js/.css.
+
 0.15.2 - 5 January 2010
   scripts/writePHP.php now uses NS_FILE and NS_FILE_TALK rather than NS_IMAGE
   and NS_IMAGE_TALK

@@ -896,12 +896,12 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Inject JavaScripts and Stylesheets in page output
 	 */
 	protected function injectScriptsAndStyles() {
-		global $wgOut, $wgScriptPath, $wgConfigureStyleVersion, $wgConfigureAddJsVariables;
+		global $wgOut, $wgExtensionAssetsPath, $wgConfigureStyleVersion, $wgConfigureAddJsVariables;
 
 		$wgConfigureAddJsVariables = true; // tell efConfigureMakeGlobalVariablesScript() to add JS variables
 
-		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/Configure/Configure.css?{$wgConfigureStyleVersion}" );
-		$wgOut->addScriptFile( "{$wgScriptPath}/extensions/Configure/Configure.js?{$wgConfigureStyleVersion}" );
+		$wgOut->addExtensionStyle( "{$wgExtensionAssetsPath}/Configure/Configure.css?{$wgConfigureStyleVersion}" );
+		$wgOut->addScriptFile( "{$wgExtensionAssetsPath}/Configure/Configure.js?{$wgConfigureStyleVersion}" );
 	}
 
 	/**
