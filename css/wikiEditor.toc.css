@@ -61,41 +61,41 @@ body.rtl .tab-toc {
 	cursor: pointer;
 	color: #0645ad;
 }
-.wikiEditor-ui-toc ul li div span {
+.wikiEditor-ui-toc ul li div {
 	padding: 0.125em;
 	padding-left: 1em;
 }
-body.rtl .wikiEditor-ui-toc ul li div span {
+body.rtl .wikiEditor-ui-toc ul li div {
 	padding-right: 1em;
 }
-.wikiEditor-ui-toc ul ul li div span {
+.wikiEditor-ui-toc ul ul li div {
 	padding-left: 2em;
 }
-body.rtl .wikiEditor-ui-toc ul ul li div span {
+body.rtl .wikiEditor-ui-toc ul ul li div {
 	padding-right: 2em;
 }
-.wikiEditor-ui-toc ul ul ul li div span {
+.wikiEditor-ui-toc ul ul ul li div {
 	padding-left: 3em;
 }
-body.rtl .wikiEditor-ui-toc ul ul ul li div span {
+body.rtl .wikiEditor-ui-toc ul ul ul li div {
 	padding-right: 3em;
 }
-.wikiEditor-ui-toc ul ul ul ul li div span {
+.wikiEditor-ui-toc ul ul ul ul li div {
 	padding-left: 4em;
 }
-body.rtl .wikiEditor-ui-toc ul ul ul ul li div span {
+body.rtl .wikiEditor-ui-toc ul ul ul ul li div {
 	padding-right: 4em;
 }
-.wikiEditor-ui-toc ul ul ul ul ul li div span {
+.wikiEditor-ui-toc ul ul ul ul ul li div {
 	padding-left: 5em;
 }
-body.rtl .wikiEditor-ui-toc ul ul ul ul ul li div span {
+body.rtl .wikiEditor-ui-toc ul ul ul ul ul li div {
 	padding-right: 5em;
 }
-.wikiEditor-ui-toc ul ul ul ul ul ul li div span {
+.wikiEditor-ui-toc ul ul ul ul ul ul li div {
 	padding-left: 6em;
 }
-body.rtl wikiEditor-ui-toc ul ul ul ul ul ul li div span {
+body.rtl wikiEditor-ui-toc ul ul ul ul ul ul li div {
 	padding-right: 6em;
 }
 .wikiEditor-ui-toc ul li div.current {

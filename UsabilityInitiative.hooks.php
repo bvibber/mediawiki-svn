@@ -25,16 +25,16 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 10 ),
 				array( 'src' => 'css/wikiEditor.preview.css', 'version' => 1 ),
 				array( 'src' => 'css/wikiEditor.templateEditor.css', 'version' => 1 ),
-				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 25 ),
+				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 26 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 8 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 47 ),
+				array( 'src' => 'css/combined.css', 'version' => 48 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 47 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 48 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)
@@ -75,7 +75,7 @@ class UsabilityInitiativeHooks {
 
 				// Core functionality of extension scripts
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 5 ),
+				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.collapsibleTabs.js', 'version' => 5 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
@@ -88,16 +88,16 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 12 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 40 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 10 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 59 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 60 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 9 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.templateEditor.js', 'version' => 14 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 1 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 138 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 139 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 138 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 139 ),
 			),
 		),
 	);

@@ -346,6 +346,7 @@ fn: {
 						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) ) {
 							context.modules.toc.$toc.trigger( 'collapse' );
 						} else {
+							context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
 							context.modules.toc.$toc.data( 'openWidth', ui.size.width );
 							$.cookie( 'wikiEditor-' + context.instance + '-toc-width', ui.size.width );
 						}
@@ -414,7 +415,7 @@ fn: {
 				buildResizeControls();
 				buildCollapseControls();
 			}
-			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true } );
+			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
 		}
 	}
 }
