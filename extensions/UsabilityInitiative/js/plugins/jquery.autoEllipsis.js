@@ -7,8 +7,16 @@ $.fn.autoEllipsis = function( options ) {
 	$(this).each( function() {
 		options = $.extend( {
 			'position': 'center',
-			'tooltip': false
+			'tooltip': false,
+			'restoreText': false
 		}, options );
+		if ( options.restoreText ) {
+			if ( ! $( this ).data( 'autoEllipsis.originalText' ) ) {
+				$( this ).data( 'autoEllipsis.originalText', $( this ).text() );
+			} else {
+				$( this ).text( $( this ).data( 'autoEllipsis.originalText' ) );
+			}
+		}
 		var text = $(this).text();
 		var $text = $( '<span />' ).text( text ).css( 'whiteSpace', 'nowrap' );
 		$(this).empty().append( $text );

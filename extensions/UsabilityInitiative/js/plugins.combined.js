@@ -5134,8 +5134,16 @@ $.fn.autoEllipsis = function( options ) {
 	$(this).each( function() {
 		options = $.extend( {
 			'position': 'center',
-			'tooltip': false
+			'tooltip': false,
+			'restoreText': false
 		}, options );
+		if ( options.restoreText ) {
+			if ( ! $( this ).data( 'autoEllipsis.originalText' ) ) {
+				$( this ).data( 'autoEllipsis.originalText', $( this ).text() );
+			} else {
+				$( this ).text( $( this ).data( 'autoEllipsis.originalText' ) );
+			}
+		}
 		var text = $(this).text();
 		var $text = $( '<span />' ).text( text ).css( 'whiteSpace', 'nowrap' );
 		$(this).empty().append( $text );
@@ -8676,6 +8684,7 @@ fn: {
 						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) ) {
 							context.modules.toc.$toc.trigger( 'collapse' );
 						} else {
+							context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
 							context.modules.toc.$toc.data( 'openWidth', ui.size.width );
 							$.cookie( 'wikiEditor-' + context.instance + '-toc-width', ui.size.width );
 						}
@@ -8744,7 +8753,7 @@ fn: {
 				buildResizeControls();
 				buildCollapseControls();
 			}
-			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true } );
+			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
 		}
 	}
 }
