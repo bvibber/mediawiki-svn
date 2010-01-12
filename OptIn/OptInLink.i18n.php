@@ -79,6 +79,13 @@ $messages['arz'] = array(
 	'tooltip-pt-optin-feedback' => 'يوفر ملاحظات عن تجربتك مع المزايا الجديدة',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Chaipau
+ */
+$messages['as'] = array(
+	'optin-try' => 'বেটা চেষ্টা কৰক',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -999,6 +1006,13 @@ $messages['tr'] = array(
 	'tooltip-pt-optin-leave' => 'Yeni özellikleri kapat',
 	'optin-feedback' => 'Geribildirim verin',
 	'tooltip-pt-optin-feedback' => 'Yeni özelliklerle tecrübeleriniz hakkında geri bildirim sağlayın',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Timming
+ */
+$messages['tt-cyrl'] = array(
+	'optin-try' => 'Бета-версияне эшләтеп карау',
 );
 
 /** Ukrainian (Українська)
