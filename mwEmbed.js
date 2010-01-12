@@ -1643,8 +1643,7 @@ var mwDefaultConf = {
 	*
 	* @param {Function} callback Function to run once DOM and jQuery are ready
 	*/
-	mw.ready = function( callback ){		
-		mw.log('addOnloadHook:: ' );			
+	mw.ready = function( callback ){						
 		if( mwReadyFlag === false ){
 		
 			// Add the callbcak to the onLoad function stack
@@ -1653,7 +1652,7 @@ var mwDefaultConf = {
 			// Set the mwSetup flag. So that onLoad functions can 
 			// be called once mwEmbed interfaces are setup.
 			if( !mwDomReadyFlag ){ 
-				mw.log( 'set config flag' );
+				//mw.log( 'set config flag' );
 				mw.setConfig( 'runSetupMwEmbed', true );
 			}else{
 				mw.log( 'run setup directly' );
@@ -2262,6 +2261,8 @@ var mwDefaultConf = {
 	* On a page with lots of rules it can take some time 
 	* so avoid calling this function where possible and 
 	* cache its result
+	*
+	* Note this only works when mwEmbed is on the same domain as the style sheets
 	* 
 	* @param {String} styleRule Style rule name to check
 	* @return 
@@ -2270,18 +2271,22 @@ var mwDefaultConf = {
 	* @type {Boolean}
 	*/
 	mw.styleRuleExists = function ( styleRule ){
-		// Set up the skin paths configuration
+		// Set up the skin paths configuration		
 		for( var i=0 ; i < document.styleSheets.length ; i++ ){
 			var rules = null;			
-			if (document.styleSheets[i].cssRules)
-				rules = document.styleSheets[i].cssRules
-			else if (document.styleSheets[0].rules)
-				rules = document.styleSheets[i].rules
-			for(var j=0 ; j < rules.length ; j++ ){
-				var rule = rules[j].selectorText;											
-				if( rule && rule.indexOf( styleRule ) != -1 ){
-					return true;
-				}		
+			try {
+				if ( document.styleSheets[i].cssRules )
+					rules = document.styleSheets[i].cssRules
+				else if (document.styleSheets[0].rules)
+					rules = document.styleSheets[i].rules
+				for(var j=0 ; j < rules.length ; j++ ){
+					var rule = rules[j].selectorText;											
+					if( rule && rule.indexOf( styleRule ) != -1 ){
+						return true;
+					}		
+				}
+			} catch ( e ){
+				mw.log( 'Error: cross domain style sheet:' + document.styleSheets[i].href);
 			}
 		}
 		return false;	
