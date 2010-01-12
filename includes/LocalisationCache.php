@@ -293,14 +293,17 @@ class LocalisationCache {
 	 * Returns true if the cache identified by $code is missing or expired.
 	 */
 	public function isExpired( $code ) {
+		wfProfileIn( __METHOD__ );
 		if ( $this->forceRecache && !isset( $this->recachedLangs[$code] ) ) {
 			wfDebug( __METHOD__."($code): forced reload\n" );
+			wfProfileOut( __METHOD__ );
 			return true;
 		}
 
 		$deps = $this->store->get( $code, 'deps' );
 		if ( $deps === null ) {
 			wfDebug( __METHOD__."($code): cache missing, need to make one\n" );
+			wfProfileOut( __METHOD__ );
 			return true;
 		}
 		foreach ( $deps as $dep ) {
@@ -311,9 +314,11 @@ class LocalisationCache {
 			if ( !$dep instanceof CacheDependency || $dep->isExpired() ) {
 				wfDebug( __METHOD__."($code): cache for $code expired due to " . 
 					get_class( $dep ) . "\n" );
+				wfProfileOut( __METHOD__ );
 				return true;
 			}
 		}
+		wfProfileOut( __METHOD__ );
 		return false;
 	}
 
@@ -324,6 +329,7 @@ class LocalisationCache {
 		if ( isset( $this->initialisedLangs[$code] ) ) {
 			return;
 		}
+		wfProfileIn( __METHOD__ );
 		$this->initialisedLangs[$code] = true;
 
 		# Recache the data if necessary
@@ -335,6 +341,7 @@ class LocalisationCache {
 			} else {
 				$this->initShallowFallback( $code, 'en' );
 			}
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -348,6 +355,7 @@ class LocalisationCache {
 						'Please run maintenance/rebuildLocalisationCache.php.' );
 				}
 				$this->initShallowFallback( $code, 'en' );
+				wfProfileOut( __METHOD__ );
 				return;
 			} else {
 				throw new MWException( 'Invalid or missing localisation cache.' );
@@ -363,6 +371,7 @@ class LocalisationCache {
 				$this->loadedItems[$code][$key] = true;
 			}
 		}
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -449,6 +458,7 @@ class LocalisationCache {
 		static $recursionGuard = array();
 		global $wgExtensionMessagesFiles, $wgExtensionAliasesFiles;
 		wfProfileIn( __METHOD__ );
+		wfProfileIn( "recache:".wfGetAllCallers());
 
 		if ( !$code ) {
 			throw new MWException( "Invalid language code requested" );
@@ -602,6 +612,7 @@ class LocalisationCache {
 		}
 		$this->store->finishWrite();
 
+		wfProfileOut( "recache:".wfGetAllCallers());
 		wfProfileOut( __METHOD__ );
 	}
 
