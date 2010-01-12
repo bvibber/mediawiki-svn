@@ -663,7 +663,8 @@ class LanguageConverter {
 		$this->mTables = false;
 		if($fromcache) {
 			wfProfileIn( __METHOD__.'-cache' );
-			$this->mTables = $wgMemc->get( $this->mCacheKey );
+			//$this->mTables = $wgMemc->get( $this->mCacheKey );
+			$this->mTables = apc_fetch( $this->mCacheKey );
 			wfProfileOut( __METHOD__.'-cache' );
 		}
 		if ( !$this->mTables || !isset( $this->mTables[self::CACHE_VERSION_KEY] ) ) {
@@ -680,7 +681,8 @@ class LanguageConverter {
 			$this->postLoadTables();
 			$this->mTables[self::CACHE_VERSION_KEY] = true;
 			
-			$wgMemc->set($this->mCacheKey, $this->mTables, 43200);
+			// $wgMemc->set($this->mCacheKey, $this->mTables, 43200);
+			apc_store($this->mCacheKey, $this->mTables, 43200);
 			wfProfileOut( __METHOD__.'-recache' );
 		}
 		wfProfileOut( __METHOD__ );
