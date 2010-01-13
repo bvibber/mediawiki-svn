@@ -81,7 +81,8 @@ public class AnalyzerUtils {
 		if (sensors==null) return defValue;
 		
 		for (Sensor<V> sensor : sensors) {
-			if (sensor.sense(page)) return sensor.getValue();
+			if (sensor.sense(page)) 
+				return sensor.getValue();
 		}
 		
 		return defValue;

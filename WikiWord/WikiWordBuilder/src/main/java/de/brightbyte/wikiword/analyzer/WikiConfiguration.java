@@ -422,12 +422,12 @@ public class WikiConfiguration {
 		List<String> disambig = AuxilliaryWikiProperties.loadList("DisambiguationTemplates", wikiName);
 		
 		String disambiguationTemplates = pyBotFamily.getProperty("disambiguationTemplates");
-		if (disambiguationTemplates!=null) resourceTypeSensors.add( new HasTemplateLikeSensor<ResourceType>(ResourceType.DISAMBIG, "^"+disambiguationTemplates.replace(' ', '_')+"$", 0) );
+		if (disambiguationTemplates!=null) resourceTypeSensors.add( new HasTemplateLikeSensor<ResourceType>(ResourceType.DISAMBIG, "^("+disambiguationTemplates.replace(' ', '_')+")$", 0) );
 		
 		if (disambig!=null && disambig.size()>0) {
 			String d = StringUtils.join("|", disambig);
 			d = d.replace(' ', '_');
-			resourceTypeSensors.add( new HasTemplateLikeSensor<ResourceType>(ResourceType.DISAMBIG, "^"+d+"$", 0) );
+			resourceTypeSensors.add( new HasTemplateLikeSensor<ResourceType>(ResourceType.DISAMBIG, "^("+d+")$", 0) );
 		}
 		
 		String disambcatname = pyBotFamily.getProperty("disambcatname");
