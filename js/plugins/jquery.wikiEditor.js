@@ -555,13 +555,12 @@ if ( typeof context == 'undefined' ) {
 		 */
 		'scrollToTop': function( $element, force ) {
 			var html = context.$content.closest( 'html' ),
-				body = context.$content.closest( 'body' );
+				body = context.$content.closest( 'body' ),
+				parent = $( 'html' );
 			var y = $element.offset().top - context.$content.offset().top;
-			if ( force || y < html.scrollTop() || y < body.scrollTop() 
-				|| y > html.scrollTop() + context.$iframe.height() 
-				|| y > body.scrollTop() + context.$iframe.height() ) {
+			y = parent.scrollTop() > 0 ? y + html.scrollTop() - parent.scrollTop() : y;
+			if ( force || y < html.scrollTop() || y > html.scrollTop() + context.$iframe.height() ) {
 					html.scrollTop( y );
-					body.scrollTop( y );
 				}
 			$element.trigger( 'scrollToTop' );
 		},
