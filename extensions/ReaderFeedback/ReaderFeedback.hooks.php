@@ -20,28 +20,25 @@ class ReaderFeedbackHooks {
 		wfLoadExtensionMessages( 'ReaderFeedback' );
 		
 		$stylePath = str_replace( '$wgScriptPath', $wgScriptPath, $wgFeedbackStylePath );
-		$fTags = ReaderFeedback::getJSFeedbackParams();
 
 		$encCssFile = htmlspecialchars( "$stylePath/readerfeedback.css?$wgFeedbackStyleVersion" );
 		$encJsFile = htmlspecialchars( "$stylePath/readerfeedback.js?$wgFeedbackStyleVersion" );
-
+		// Add CSS
 		$wgOut->addExtensionStyle( $encCssFile );
+		// Add JS
+		$head = "<script type=\"$wgJsMimeType\" src=\"$encJsFile\"></script>\n";
+		$wgOut->addHeadItem( 'ReaderFeedback', $head );
 
-		$ajaxFeedback = Xml::encodeJsVar( (object) array( 
+		return true;
+	}
+	
+	public static function injectJSVars( &$globalVars ) {
+		global $wgUser;
+		$globalVars['wgFeedbackParams'] = ReaderFeedback::getJSFeedbackParams();
+		$globalVars['wgAjaxFeedback'] = (object) array( 
 			'sendingMsg' => wfMsgHtml('readerfeedback-submitting'), 
 			'sentMsg' => wfMsgHtml('readerfeedback-finished') 
-			)
 		);
-
-		$head = <<<EOT
-<script type="$wgJsMimeType">
-var wgFeedbackParams = $fTags;
-var wgAjaxFeedback = $ajaxFeedback
-</script>
-<script type="$wgJsMimeType" src="$encJsFile"></script>
-
-EOT;
-		$wgOut->addHeadItem( 'ReaderFeedback', $head );
 		return true;
 	}
 	

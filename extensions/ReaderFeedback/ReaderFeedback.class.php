@@ -265,7 +265,7 @@ class ReaderFeedback {
 		# Param to pass to JS function to know if tags are at quality level
 		global $wgFeedbackTags;
 		$params = array( 'tags' => (object)$wgFeedbackTags );
-		return Xml::encodeJsVar( (object)$params );
+		return (object)$params;
 	}
 
 }

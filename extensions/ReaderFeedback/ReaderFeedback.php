@@ -110,6 +110,7 @@ $wgHooks['SkinTemplateToolboxEnd'][] = 'ReaderFeedbackHooks::ratingToolboxLink';
 
 # Add CSS/JS as needed
 $wgHooks['BeforePageDisplay'][] = 'ReaderFeedbackHooks::injectStyleAndJS';
+$wgHooks['MakeGlobalVariablesScript'][] = 'ReaderFeedbackHooks::injectJSVars';
 
 # Duplicate flagged* tables in parserTests.php
 $wgHooks['ParserTestTables'][] = 'ReaderFeedbackHooks::onParserTestTables';
