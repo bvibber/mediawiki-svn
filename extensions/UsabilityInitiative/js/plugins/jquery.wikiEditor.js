@@ -675,10 +675,15 @@ if ( typeof context == 'undefined' ) {
 			'overflow-x': 'hidden'
 		} )
 		.insertAfter( context.$textarea )
-		.load( function() {
-			if ( !context.$iframe[0].contentWindow.document.body ) {
-				return;
+		.load( function() {	
+			//IE8 runs this twice, the second time is valid
+			if( $.browser.msie && $.browser.version >= 8 ) {
+				if(!this.isSecondRun){
+					this.isSecondRun = true;
+					return;
+				}
 			}
+		
 			// Turn the document's design mode on
 			context.$iframe[0].contentWindow.document.designMode = 'on';
 			// Get a reference to the content area of the iframe
