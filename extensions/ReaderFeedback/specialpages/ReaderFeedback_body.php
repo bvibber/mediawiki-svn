@@ -24,7 +24,8 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 
     public function execute( $par ) {
         global $wgRequest, $wgUser, $wgOut;
-		$confirm = $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) );
+		$confirm = $wgRequest->wasPosted()
+			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) );
 		if( $wgUser->isAllowed( 'feedback' ) ) {
 			if( $wgUser->isBlocked( !$confirm ) ) {
 				$wgOut->blockedPage();
@@ -96,7 +97,8 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		// Basic permission check
 		if( $wgUser->isAllowed( 'feedback' ) ) {
 			if( $wgUser->isBlocked() ) {
-				return '<err#><h2>' . wfMsgHtml('blockedtitle') . '</h2>' . wfMsg('badaccess-group0');
+				return '<err#><h2>' . wfMsgHtml('blockedtitle') . '</h2>' .
+					wfMsg('badaccess-group0');
 			}
 		} else {
 			return '<err#><strong>' . wfMsg('badaccess-group0') . '</<strong>';
@@ -165,7 +167,8 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		if( $form->validatedParams != self::validationKey( $form->oldid, $wgUser->getId() ) ) {
 			return '<err#>' . wfMsg('formerror');
 		}
-		$graphLink = SpecialPage::getTitleFor( 'RatingHistory' )->getFullUrl( 'target='.$form->page->getPrefixedUrl() );
+		$rhist = SpecialPage::getTitleFor( 'RatingHistory' );
+		$graphLink = $rhist->getFullUrl( 'target='.$form->page->getPrefixedUrl() );
 		$talk = $form->page->getTalkPage();
 		
 		wfLoadExtensionMessages( 'RatingHistory' );
@@ -181,15 +184,27 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		$dbw->commit();
 		switch( $ok ) {
 			case self::REVIEW_OK:
-				return '<suc#>'.wfMsgExt( 'readerfeedback-success', array('parseinline'), 
-					$form->page->getPrefixedText(), $graphLink, $talk->getFullUrl( 'action=edit&section=new' ) ) .
-					'<h4>'.wfMsgHtml('ratinghistory-table')."</h4>\n$tallyTable";
+				return '<suc#>' .
+					"<div class='plainlinks'>" .
+						wfMsgExt( 'readerfeedback-success', array('parseinline'), 
+							$form->page->getPrefixedText(), $graphLink,
+							$talk->getFullUrl( 'action=edit&section=new' ) ) .
+						'<h4>'.wfMsgHtml('ratinghistory-table')."</h4>\n$tallyTable" .
+					"</div>";
 			case self::REVIEW_DUP:
-				return '<err#>'.wfMsgExt( 'readerfeedback-voted', array('parseinline'), 
-					$form->page->getPrefixedText(), $graphLink, $talk->getFullUrl( 'action=edit&section=new' ) );
+				return '<err#>' .
+					"<div class='plainlinks'>" .
+						wfMsgExt( 'readerfeedback-voted', array('parseinline'), 
+							$form->page->getPrefixedText(), $graphLink,
+							$talk->getFullUrl( 'action=edit&section=new' ) ) .
+					"</div>";
 			default:
-				return '<err#>'.wfMsgExt( 'readerfeedback-error', array('parseinline'), 
-					$form->page->getPrefixedText(), $graphLink, $talk->getFullUrl( 'action=edit&section=new' ) );
+				return '<err#>' .
+					"<div class='plainlinks'>" .
+						wfMsgExt( 'readerfeedback-error', array('parseinline'), 
+							$form->page->getPrefixedText(), $graphLink,
+							$talk->getFullUrl( 'action=edit&section=new' ) ) .
+					"</div>";
 		}
 	}
 	
