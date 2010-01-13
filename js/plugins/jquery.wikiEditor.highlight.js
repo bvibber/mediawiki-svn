@@ -52,14 +52,7 @@ evt: {
 		} ) );
 		*/
 		// Highlight stuff for the first time
-		
-		//IE8 runs this twice, the second time is valid
-		if( $.browser.msie && $.browser.version >= 8 ) {
-			if(!this.isSecondRun){
-				this.isSecondRun = true;
-				return;
-			}
-		}
+
 		
 		$.wikiEditor.modules.highlight.fn.scan( context, "" );
 		$.wikiEditor.modules.highlight.fn.mark( context, "", "" );
