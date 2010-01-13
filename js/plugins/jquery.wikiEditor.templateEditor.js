@@ -97,7 +97,7 @@ fn: {
 					// Wrap the start and end of the wikitext in spans so we can bind events to them
 					$( this ).html()
 						.replace( /\{\{/, '<span class="wikiEditor-template-start">{{</span>' )
-						.replace( /\}\}/, '<span class="wikiEditor-template-end">}}</span>' ) )
+						.replace( /\}\}$/, '<span class="wikiEditor-template-end">}}</span>' ) ) //grab the *last* {{
 				.parent()
 				.addClass( 'wikiEditor-template-collapsed' )
 				.data( 'model', model );
@@ -157,6 +157,13 @@ fn: {
 					.toggleClass( 'wikiEditor-template-expanded' )
 					.children( '.wikiEditor-template-text, .wikiEditor-template-name, .wikiEditor-template-modes' )
 					.toggleClass( 'wikiEditor-nodisplay' );
+				
+				//if we just collapsed this
+				if( $template.hasClass('wikiEditor-template-collapsed') ){
+					var model = new $.wikiEditor.modules.templateEditor.fn.model( $template.children( '.wikiEditor-template-text' ).text() );
+					$template.data( 'model' , model );
+					$template.children( '.wikiEditor-template-name' ).text( model.getName() );
+				}
 				return false;
 			}
 			function noEdit() {
@@ -164,9 +171,6 @@ fn: {
 			}
 		});
 		
-		function toggleWikiText ( context, template ) {
-			
-		}
 	},
 	
 	
@@ -334,6 +338,23 @@ fn: {
 			}
 			return newText;
 		};
+		
+		/**
+		 *  Update ranges if there's been a change
+		 */
+		this.updateRanges = function() {
+			var adjustment = 0;
+			for ( i = 0 ; i < ranges.length; i++ ) {
+				ranges[i].begin += adjustment;
+				if( typeof ranges[i].adjust != 'undefined' ) {
+					adjustment += ranges[i].adjust();
+					//note, adjust should be a function that has the information necessary to calculate the length of this 'segment'
+					delete ranges[i].adjust;
+				}
+				ranges[i].end += adjustment;
+			}
+		};
+		
 		
 		// Whitespace* {{ whitespace* nonwhitespace:
 		if ( wikitext.match( /\s*{{\s*\S*:/ ) ) {
