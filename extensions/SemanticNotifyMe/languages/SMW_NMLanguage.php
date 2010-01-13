@@ -17,9 +17,9 @@ abstract class SMW_NMLanguage {
 	protected $smwNMDatatypes;
 	protected $smwNMNamespaces;
 	protected $smwNMNamespaceAliases;
-	
+
 	/**
-	 * Function that returns an array of namespace identifiers. This function 
+	 * Function that returns an array of namespace identifiers. This function
 	 * is obsolete
 	 */
 	abstract function getNamespaceArray();
@@ -27,39 +27,39 @@ abstract class SMW_NMLanguage {
 
 	/**
 	 * Find the internal message id of some localised message string
-	 * for a datatype. If no type of the given name exists (maybe a 
+	 * for a datatype. If no type of the given name exists (maybe a
 	 * custom of compound type) then FALSE is returned.
 	 */
-	function findDatatypeMsgID($label) {
-		return array_search($label, $this->smwDatatypeLabels);
+	function findDatatypeMsgID( $label ) {
+		return array_search( $label, $this->smwDatatypeLabels );
 	}
-	
+
 	/**
 	 * Registers all special properties of this extension in Semantic Media Wiki.
-	 * 
-	 * The language files of the NM extension contain a mapping from special 
+	 *
+	 * The language files of the NM extension contain a mapping from special
 	 * property constants to their string representation. These mappings are
 	 * added to the mapping defined by Semantic Media Wiki.
 	 */
 	function registerSpecialProperties() {
 		global $smwgContLang;
-		foreach ($this->smwSpecialProperties as $key => $prop) {
-			list($typeid, $label) = $prop;
-			SMWPropertyValue::registerProperty($key, $typeid, $label, true);
-		
+		foreach ( $this->smwSpecialProperties as $key => $prop ) {
+			list( $typeid, $label ) = $prop;
+			SMWPropertyValue::registerProperty( $key, $typeid, $label, true );
+
 		}
 	}
-	
+
 	/**
 	 * Returns the label of the special property with the ID $propID.
 	 * @param int propID
 	 * 			ID of the special property
 	 * @return String Label of the special property
 	 */
-	function getSpecialPropertyLabel($propID) {
+	function getSpecialPropertyLabel( $propID ) {
 		return $this->smwSpecialProperties[$propID];
 	}
-	
+
 	/**
 	 * Returns all labels of the special properties.
 	 * @return array<String> Labels of the special properties
@@ -67,7 +67,7 @@ abstract class SMW_NMLanguage {
 	function getSpecialPropertyLabels() {
 		return $this->smwSpecialProperties;
 	}
-	
+
 	function getSpecialSchemaPropertyArray() {
 		return $this->smwSpecialSchemaProperties;
 	}
@@ -75,8 +75,8 @@ abstract class SMW_NMLanguage {
 	function getSpecialCategoryArray() {
 		return $this->smwSpecialCategories;
 	}
-	
-	function getNMDatatype($datatypeID) {
+
+	function getNMDatatype( $datatypeID ) {
 		return $this->smwNMDatatypes[$datatypeID];
 	}
 
@@ -95,7 +95,7 @@ abstract class SMW_NMLanguage {
 	function getUserMsgArray() {
 		return $this->smwUserMessages;
 	}
-	
+
 	/**
 	 * Returns the name of the namespace with the ID <$namespaceID>.
 	 *
@@ -103,36 +103,31 @@ abstract class SMW_NMLanguage {
 	 * 		ID of the namespace whose name is requested
 	 * @return string
 	 * 		Name of the namespace or <null>.
-	 * 
+	 *
 	 */
-	public function getNamespace($namespaceID) {
+	public function getNamespace( $namespaceID ) {
 		return $this->smwNMNamespaces[$namespaceID];
 	}
-	
+
 	/**
 	 * Returns the array with all namespaces of the NM extension.
 	 *
 	 * @return string
 	 * 		Array of additional namespaces.
-	 * 
+	 *
 	 */
 	public function getNamespaces() {
 		return $this->smwNMNamespaces;
 	}
-	
+
 	/**
-	 * Returns the array with all namespace aliases of the NM extension. 
+	 * Returns the array with all namespace aliases of the NM extension.
 	 *
 	 * @return string
 	 * 		Array of additional namespace aliases.
-	 * 
+	 *
 	 */
 	public function getNamespaceAliases() {
 		return $this->smwNMNamespaceAliases;
 	}
-	
-	
-	
 }
-
-

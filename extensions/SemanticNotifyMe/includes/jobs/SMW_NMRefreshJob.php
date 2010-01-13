@@ -11,8 +11,8 @@ require_once( "$IP/includes/JobQueue.php" );
 
 class SMWNMRefreshJob extends Job {
 
-	function __construct(Title $title) {
-		parent::__construct( 'SMWNMRefreshJob', $title);
+	function __construct( Title $title ) {
+		parent::__construct( 'SMWNMRefreshJob', $title );
 	}
 
 	/**
@@ -20,9 +20,9 @@ class SMWNMRefreshJob extends Job {
 	 * @return boolean success
 	 */
 	function run() {
-		wfProfileIn('SMWNMRefreshJob::run (SMW)');
+		wfProfileIn( 'SMWNMRefreshJob::run (SMW)' );
 		SMWNotifyProcessor::refreshNotifyMe();
-		wfProfileOut('SMWNMRefreshJob::run (SMW)');
+		wfProfileOut( 'SMWNMRefreshJob::run (SMW)' );
 		return true;
 	}
 
@@ -34,7 +34,7 @@ class SMWNMRefreshJob extends Job {
 	 */
 	function insert() {
 		global $smwgEnableUpdateJobs;
-		if ($smwgEnableUpdateJobs) {
+		if ( $smwgEnableUpdateJobs ) {
 			parent::insert();
 		}
 	}

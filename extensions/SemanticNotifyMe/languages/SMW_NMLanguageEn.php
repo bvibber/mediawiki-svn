@@ -4,20 +4,18 @@
  */
 
 global $smwgNMIP;
-include_once($smwgNMIP . '/languages/SMW_NMLanguage.php');
+include_once( $smwgNMIP . '/languages/SMW_NMLanguage.php' );
 
 class SMW_NMLanguageEn extends SMW_NMLanguage {
-
 	protected $smwContentMessages = array(
-    
-	);
 
+	);
 
 	protected $smwUserMessages = array(
 	/*Messages for Notify Me*/
 	'notifyme' => 'Notify Me',
 	'smw_notifyme' => 'Notify Me',
-	
+
 	'smw_qi_addNotify' => 'Notify me',
 	'smw_qi_tt_addNotify' => 'Notify me when article-updates meet query condition',
 	'smw_nm_tt_query' => 'Add #ask query to Notify Me',
@@ -52,8 +50,4 @@ class SMW_NMLanguageEn extends SMW_NMLanguage {
 	public function getNamespaceArray() {
 		return array();
 	}
-
-
 }
-
-
