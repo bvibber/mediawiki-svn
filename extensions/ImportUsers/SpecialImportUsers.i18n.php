@@ -1113,7 +1113,7 @@ $messages['lb'] = array(
 	'importusers-login-name' => 'Benotzernumm',
 	'importusers-password' => 'Passwuert',
 	'importusers-email' => 'E-Mailadress',
-	'importusers-realname' => 'richtege Numm',
+	'importusers-realname' => 'richtegen Numm',
 	'right-import_users' => 'Benotzer a grousser Zuel importéieren',
 );
 

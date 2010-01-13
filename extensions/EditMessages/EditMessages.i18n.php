@@ -823,6 +823,7 @@ $messages['kw'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -833,7 +834,7 @@ $messages['lb'] = array(
 	'editmsg-show-list' => 'Inhalt vum Systemmessage "$1"',
 	'editmsg-get-patch' => 'Patch maachen',
 	'editmsg-new-search' => 'Nei Sich',
-	'editmsg-warning-parse1' => '* Geleefege Numm vum Systemmessage gouf net fonnt: $1',
+	'editmsg-warning-parse1' => '* Geleefegen Numm vum Systemmessage gouf net fonnt: $1',
 	'editmsg-warning-parse2' => '* Ziatiouns-Buchstaw no dem Feil erwaart: $1',
 	'editmsg-warning-parse3' => '* Ënn vun der Zeechekette gouf net fonnt: $1',
 	'editmsg-warning-file' => '* Et si Feeler beim Liese vun {{PLURAL:$2|dëser Sprooch|dëse Sprooche}} begéint ginn: $1',

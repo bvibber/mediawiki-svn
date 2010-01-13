@@ -1721,6 +1721,7 @@ $messages['diq'] = array(
 	'code-rev-inline-preview' => 'Ver qeyd:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-diff-too-large' => 'Ena diff zaf girda.',
 	'code-rev-purge-link' => 'purge bike',
 	'code-status-new' => 'newe',
 	'code-status-fixme' => 'fixme',

@@ -435,6 +435,7 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'pollresults' => "Disoc'hoù ar sontadegoù el lec'hienn-mañ",
 	'qp_desc' => 'Aotren krouiñ sontadegoù',
 	'qp_result_NA' => 'Direspont',
 	'qp_result_error' => 'Fazi ereadur',
@@ -467,6 +468,7 @@ $messages['br'] = array(
 	'qp_error_category_name_empty' => 'Goullo eo anv ar rummad',
 	'qp_error_proposal_text_empty' => "Goullo eo testenn ar c'hinnig",
 	'qp_error_too_few_categories' => 'Daou rummad da nebeutañ a rank bezañ termenet',
+	'qp_error_too_few_spans' => 'Pep strollad rummad a rank bezañ ennañ daou isrummad da nebeutañ',
 	'qp_error_no_answer' => 'Kinnig direspont',
 );
 

@@ -2540,6 +2540,7 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -2602,7 +2603,7 @@ Liest dat ganzt Dokument duerch a wann Dir dozou Är Ënnerstëtzung gi wëllt d
 	'sign-detail-strike' => 'Ënnerschreft duerchsträichen',
 	'sign-reviewsig' => 'Ënnerschrëft nokucken',
 	'sign-review-comment' => 'Bemierkung',
-	'sign-uniquequery-similarname' => 'Ähnleche Numm',
+	'sign-uniquequery-similarname' => 'Ähnlechen Numm',
 	'sign-uniquequery-similaraddress' => 'Ähnlech Adress',
 	'sign-uniquequery-similarphone' => 'Ähnlech Telefonsnummer',
 	'sign-uniquequery-similaremail' => 'Ähnlech E-Mailadress',

@@ -557,6 +557,7 @@ $messages['diq'] = array(
 	'readerfeedback-tier-poor' => 'zeyif',
 	'tooltip-ca-ratinghist' => 'derecekerdışê peli yo ziyaretkerdoxi',
 	'specialpages-group-feedback' => 'fikrê temaşawanî',
+	'readerfeedback-tt-review' => 'qontrol teslim bike',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -2093,7 +2094,9 @@ $messages['sv'] = array(
 	'readerfeedback-voted' => "'''Det verkar som att du redan har betygsatt den här sidan.''' ([$2 visa resultat]) ([$3 kommentarer eller frågor?])",
 	'readerfeedback-submitting' => 'Skickar...',
 	'readerfeedback-finished' => 'Tack!',
+	'readerfeedback-tagfilter' => 'Tag:',
 	'readerfeedback-tierfilter' => 'Klassning:',
+	'readerfeedback-tier-high' => 'Hög',
 	'readerfeedback-tier-medium' => 'Medel',
 	'readerfeedback-tier-poor' => 'Dålig',
 	'tooltip-ca-ratinghist' => 'Användarbetyg för den här sidan',

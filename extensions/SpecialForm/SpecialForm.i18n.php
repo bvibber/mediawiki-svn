@@ -889,6 +889,7 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -896,8 +897,8 @@ $messages['lb'] = array(
 	'form' => 'Formulaire',
 	'formnoname' => 'Keen Numm vum Formulaire',
 	'formnonametext' => 'Dir musst en Numm vum Formulaire uginn, zum Beispill "Special:Form/NummvumFormulaire".',
-	'formbadname' => 'Falsche Numm vum Formulaire',
-	'formbadnametext' => 'Et gëtt kee Formaulaire mat dem Numm.',
+	'formbadname' => 'Falschen Numm vum Formulaire',
+	'formbadnametext' => 'Et gëtt kee Formulaire mat dem Numm.',
 	'formpattern' => '$1-Formulaire',
 	'formtitlepattern' => 'Nei $1 derbäisetzen',
 	'formsave' => 'Späicheren',

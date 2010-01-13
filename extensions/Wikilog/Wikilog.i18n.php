@@ -5563,6 +5563,7 @@ $messages['uk'] = array(
 	'wikilog-error-msg' => 'Вікілоґ: $1',
 	'wikilog-invalid-param' => 'Неправильний параметр: $1.',
 	'wikilog-invalid-author' => 'Неправильне ім’я автора: $1.',
+	'wikilog-form-category' => 'Категорія:',
 	'wikilog-form-author' => 'Автор:',
 	'wikilog-form-tag' => 'Мітка:',
 	'wikilog-edit-lc' => 'редагувати',

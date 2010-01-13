@@ -742,6 +742,20 @@ $messages['sk'] = array(
 	'externalpages-bad-url-data' => 'Nepodarilo sa získať obsah stránky',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'externalpages' => 'Externa sidor',
+	'externalpages-bad-year' => 'Ogiltigt år angivet',
+	'externalpages-bad-language' => 'Ogiltigt språk angivet',
+	'externalpages-bad-project' => 'Ogiltigt projekt angivet',
+	'externalpages-no-project' => 'Inget projekt angivet',
+	'externalpages-bad-page' => 'Ogiltig sida angiven',
+	'externalpages-no-page' => 'Ingen sida angiven',
+	'externalpages-error-generic' => 'Stött på fel',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

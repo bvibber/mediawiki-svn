@@ -309,8 +309,11 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'optin-try' => 'Proovi beetat',
+	'tooltip-pt-optin-try' => 'Katseta uusi funktsioone',
 	'optin-leave' => 'Lahku beetast',
+	'tooltip-pt-optin-leave' => 'Lülita uued funktsioonid välja',
 	'optin-feedback' => 'Beeta tagasiside',
+	'tooltip-pt-optin-feedback' => 'Anna kasutatud uute funktsioonide kohta tagasisidet',
 );
 
 /** Basque (Euskara)
@@ -1088,6 +1091,11 @@ $messages['xal'] = array(
  */
 $messages['yi'] = array(
 	'optin-try' => 'פרובירן בעטא',
+	'tooltip-pt-optin-try' => 'פרובירן נײַע אייגנקייטן',
+	'optin-leave' => 'פֿאַרלאזן בעטא',
+	'tooltip-pt-optin-leave' => 'פֿאַרלעשן נײַע אייגנקייטן',
+	'optin-feedback' => 'בעטאַ פֿידבעק',
+	'tooltip-pt-optin-feedback' => 'געבן פֿידבעק וועגן אײַער דערפֿאַרונג מיט די נײַע אייגנקייטן',
 );
 
 /** Yue (粵語)

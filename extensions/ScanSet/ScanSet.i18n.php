@@ -829,7 +829,7 @@ $messages['lb'] = array(
 	'scanset_opendir_error' => 'Feeler: De Repertoire $1 kann net opgemaach ginn',
 	'scanset_no_files' => 'Feeler: Et gëtt keng Fichieren an dem Repertoire den Dir uginn hutt.',
 	'scanset_missing_index_file' => 'Feeler: Den Index Fichier $1 gouf net fonnt',
-	'scanset_index_file_error' => 'Feeler: Feeler am Index-Ficher an der Linn $1',
+	'scanset_index_file_error' => 'Feeler: Feeler am Index-Fichier an der Linn $1',
 	'scanset_next' => 'Nächst &gt;',
 	'scanset_prev' => '&lt; Vireg',
 );

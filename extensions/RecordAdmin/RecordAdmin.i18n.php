@@ -1922,6 +1922,7 @@ $messages['sv'] = array(
 	'recordadmin-select' => 'Välj',
 	'recordadmin-newsearch' => 'Ny $1 säkning',
 	'recordadmin-createsuccess' => '$1 skapad',
+	'recordadmin-badtitle' => 'Ogiltig titel!',
 	'recordadmin-buttonsearch' => 'Sök',
 	'recordadmin-buttoncreate' => 'Skapa',
 	'recordadmin-buttonreset' => 'Återställ',

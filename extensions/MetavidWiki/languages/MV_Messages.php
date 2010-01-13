@@ -1415,6 +1415,7 @@ $messages['br'] = array(
 	'mv_remove_filter' => 'lemel ar sil',
 	'mv_view_wiki_page' => 'Gwelet ar bajenn wiki',
 	'mv_editor_options' => 'Dibarzhioù an aozer',
+	'mv_save_sequence' => 'Enrollañ ar sekañs',
 	'mv_sequence_add' => 'Ouzhpennañ klipoù',
 	'mv_sequence_add_manual' => 'Ouzhpennañ dre anv',
 	'mv_other_options' => 'Dibarzhioù all',
@@ -5952,8 +5953,8 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 	'mv_list_streams_page' => 'MetaVid листа на емитувања',
 	'mv_list_streams_docu' => 'Постојат следниве потоци:',
 	'mv_list_streams_none' => 'Не постојат потоци',
-	'mvvideofeed' => 'MetaVid извоз на видео-напојувања',
-	'mvexportask' => 'Семантички извоз на видео-напојувања',
+	'mvvideofeed' => 'MetaVid извоз на видео-канал',
+	'mvexportask' => 'Семантички извоз на видео-канал',
 	'video_feed_cat' => 'Видео-емитување за категоријата:',
 	'mv_cat_search_note' => 'Напомена: Категориите наведуваат само категории од најгорно ниво.
 За сите метаподатоци во опсегот на категории, пребарајте $1',
@@ -8707,8 +8708,10 @@ $messages['sv'] = array(
 	'specialpages-group-mv_group' => 'Specialsidor för MetaVidWiki',
 	'mv_ogg_low_quality' => 'Direktöverfört över nätet - Ogg Theora 300 kbit/s',
 	'mv_ogg_high_quality' => 'Hög kvalitet - Ogg Theora 900 kbit/s',
+	'mv_flash_low_quality' => 'Webbström - Flash video',
+	'mv_archive_org_mp4' => 'Archive.org MP4 inkapslad H.264-ström',
 	'mv_archive_org_link' => 'Länkar till mpeg2-orginal hos Archive.org',
-	'mv_error_stream_missing' => '<span class="error">Fel: Det är ingen videofil associerad med detta dataflöde.</span><br />Var god rapportera detta till sidoperatören.',
+	'mv_error_stream_missing' => '<span class="error">Fel: Det är ingen videofil associerad med detta dataflöde.</span><br />Var god rapportera detta till  [[{{MediaWiki:Grouppage-sysop}}| sidadministratören]].',
 	'mv_stream_added' => 'Du har lagt till flödet $1',
 	'mv_stream_meta' => 'Dataflödessida',
 	'mv_add_stream' => 'Metavid lägg till dataflöde',
@@ -9587,6 +9590,7 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'mv_remove' => 'вилучити',
 	'mv_existing_categories' => '{{PLURAL:$1|категорія|категорії|категорій}}:',
+	'mv_search_categories' => 'Категорії',
 );
 
 /** Veps (Vepsan kel')

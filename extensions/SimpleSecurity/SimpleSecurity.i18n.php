@@ -976,6 +976,7 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'security-desc' => 'Розширює захист сторінок MediaWiki, дозволяючи обмежувати перегляд вмісту сторінки',
 	'security-inforestrict' => '$1 обмежений для $2',
+	'security-type-category' => 'категорія',
 );
 
 /** Veps (Vepsan kel')

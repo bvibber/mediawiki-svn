@@ -1887,6 +1887,7 @@ $messages['ug-latn'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'dt_viewxml_categories' => 'Категорії',
 	'dt_xml_field' => 'Поле',
 	'dt_xml_title' => 'Заголовок',
 );

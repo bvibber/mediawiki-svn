@@ -688,8 +688,14 @@ Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov
  * @author Per
  */
 $messages['sv'] = array(
+	'cooperationstatistics' => 'Samarbetsstatistik',
+	'cooperationstatistics-tablearticle' => 'Sidantal',
+	'cooperationstatistics-tablevalue' => 'Antal bidragsgivare',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|sida|sidor}}',
 	'cooperationstatistics-nbusers' => '{{PLURAL:$2|har|har}} $1 {{PLURAL:$1|skribent|skribenter}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|har|har}} $1 {{PLURAL:$1|bidragsgivare|eller färre bidragsgivare}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|har|har}} $1 eller fler bidragsgivare',
+	'cooperationstatistics-legendmore' => 'eller fler bidragsgivare.',
 );
 
 /** Telugu (తెలుగు)

@@ -662,6 +662,10 @@ Eelistuse jälgimiseks redigeeri muutujat $wgPrefStatsTrackPrefs.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|kasutaja|kasutajat}} on alates eelistuse jälgimahakust selle eelistuse kasutusele võtnud
 ** $2 {{PLURAL:$2|kasutaja kasutab|kasutajat kasutavad}} seda endiselt
 ** $3 {{PLURAL:$3|kasutaja|kasutajat}} on sellest loobunud',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|kasutaja|kasutajat}} on alates eelistuse jälgimahakust selle eelistuse kasutusele võtnud
+** $2 {{PLURAL:$2|kasutaja kasutab|kasutajat kasutavad}} seda endiselt
+** $3 {{PLURAL:$3|kasutaja|kasutajat}} on sellest loobunud
+* Kokku kasutab seda eelistust $4 {{PLURAL:$4|kasutaja|kasutajat}}.',
 	'prefstats-xaxis' => 'Kestus (tundides)',
 	'prefstats-factors' => 'Astmiku jaotis: $1',
 	'prefstats-factor-hour' => 'tund',

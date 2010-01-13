@@ -317,6 +317,13 @@ $messages['sk'] = array(
 	'mwreleases-desc' => 'Pridáva [[Mediawiki:Mwreleases-list|zoznam]] podporovaných vydaní prístupných prostredníctvom API',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'mwreleases-desc' => 'Lägger till en [[Mediawiki:Mwreleases-list|lista]] över verisioner, tilgängliga via APIet, som stöds',
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */

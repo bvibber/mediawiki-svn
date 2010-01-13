@@ -999,6 +999,13 @@ $messages['ug-latn'] = array(
 	'randomincategory-submit' => 'Köchüsh',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'randomincategory-label' => 'Категорія:',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

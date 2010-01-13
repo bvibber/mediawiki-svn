@@ -2395,7 +2395,7 @@ Si tu possede ja un conto in {{SITENAME}}, tu pote [[Special:UserLogin|aperir un
 Pro usar OpenID in le futuro, tu pote [[Special:OpenIDConvert|converter tu conto a OpenID]] post que tu ha aperite un session normal.
 
 Il ha multe [http://openid.net/get/ providitores de OpenID], e tu pote ja disponer de un conto con capacitate OpenID in un altere servicio.',
-	'openidupdateuserinfo' => 'Actualisar mi informationes personal',
+	'openidupdateuserinfo' => 'Actualisar mi informationes personal:',
 	'openiddelete' => 'Deler OpenID',
 	'openiddelete-text' => 'Per cliccar le button "{{int:openiddelete-button}}", tu removera le OpenID $1 de tu conto.
 Tu non potera plus aperir un session con iste OpenID.',
@@ -2418,6 +2418,7 @@ Tu non potera plus aperir un session con iste OpenID.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author -iNu-
  * @author Bennylin
  * @author IvanLanin
  * @author Rex
@@ -2461,7 +2462,7 @@ Anda dapat memilih dari salah satu opsi berikut.',
 	'openidchooseurl' => 'Sebuah nama diambil dari OpenID Anda ($1)',
 	'openidchooseauto' => 'Nama yang dibuat secara otomatis ($1)',
 	'openidchoosemanual' => 'Nama pilihan Anda:',
-	'openidchooseexisting' => 'Akun telah ada di wiki ini:',
+	'openidchooseexisting' => 'Akun yang telah ada di wiki ini',
 	'openidchoosepassword' => 'kata sandi:',
 	'openidconvertinstructions' => 'Formulir ini mengijinkan Anda untuk mengganti akun pengguna Anda menjadi OpenID atau menambahkan pranala OpenID',
 	'openidconvertoraddmoreids' => 'Konversi ke OpenID atau tambahkan URL OpenID yang lain',
@@ -2486,7 +2487,7 @@ Jika Anda telah memiliki akun di {{SITENAME}}, Anda dapat [[Special:UserLogin|ma
 Untuk menggunakan OpenID di masa yang akan datang, Anda dapat [[Special:OpenIDConvert|mengkonversi akun Anda menjadi OpenID]] setelah Anda masuk log seperti biasa.
 
 Ada banyak [http://openid.net/get penyedia OpenID], dan Anda mungkin telah memiliki akun OpenID di salah satu layanan situs lain.',
-	'openidupdateuserinfo' => 'Mutakhirkan informasi pribadi saya',
+	'openidupdateuserinfo' => 'Mutakhirkan informasi pribadi saya:',
 	'openiddelete' => 'Hapus OpenID',
 	'openiddelete-text' => 'Dengan menekan tombol "{{int:openiddelete-button}}", Anda akan menghapuskan OpenID $1 dari akun Anda.
 Anda tidak akan dapat masuk log lagi dengan OpenID ini.',
@@ -3006,17 +3007,17 @@ Kontaktéiert w.e.g. een [[Special:ListUsers/sysop|Administrateur]].",
 	'openidoptional' => 'Facultatif',
 	'openidrequired' => 'Obligatoresch',
 	'openidnickname' => 'Spëtznumm',
-	'openidfullname' => 'Ganze Numm',
+	'openidfullname' => 'Ganzen Numm',
 	'openidemail' => 'E-Mailadress',
 	'openidlanguage' => 'Sprooch',
 	'openidtimezone' => 'Zäitzone',
 	'openidchooselegend' => 'Eraussiche vum Benotzernumm',
 	'openidchooseinstructions' => 'All Benotzer brauchen e Spëtznumm; Dir kënnt iech ee vun de Méiglechkeeten ënnendrënner auswielen.',
 	'openidchoosenick' => 'Äre Spëtznumm ($1)',
-	'openidchoosefull' => 'Äre ganze Numm ($1)',
+	'openidchoosefull' => 'Äre ganzen Numm ($1)',
 	'openidchooseurl' => 'En Numm gouf vun ärer OpenID ($1) geholl',
-	'openidchooseauto' => 'Een Numm deen automatesch generéiert gouf ($1)',
-	'openidchoosemanual' => 'E Numm vun ärer Wiel:',
+	'openidchooseauto' => 'En Numm deen automatesch generéiert gouf ($1)',
+	'openidchoosemanual' => 'En Numm vun Ärer Wiel:',
 	'openidchooseexisting' => 'E Benotzerkont deen et op dëser Wiki gëtt',
 	'openidchooseusername' => 'Benotzernumm:',
 	'openidchoosepassword' => 'Passwuert:',

@@ -774,6 +774,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -786,7 +787,7 @@ $messages['lb'] = array(
 	'lookupuser-id' => 'Benotzer-Nummer: <tt>#$1</tt>',
 	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'net uginn',
-	'lookupuser-realname' => 'Richtege Numm: $1',
+	'lookupuser-realname' => 'Richtegen Numm: $1',
 	'lookupuser-registration' => 'Datum vun der Umeldung: $1',
 	'lookupuser-no-registration' => 'net enregistréiert',
 	'lookupuser-touched' => "Benotzerkont de fir d'lescht beréiert gouf: $1",

@@ -193,3 +193,10 @@ $messages['tr'] = array(
 	'groupssidebar-desc' => 'Bu eklenti, site hizmetlilerinin spesifik kullanıcı grupları için kenar çubuğu bileşenlerini etkinleştirmesini sağlar',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'groupssidebar-desc' => 'Це розширення дозволяє адміністраторам сайту включати елементи бічної панелі для конкретних груп користувачів',
+);
+
