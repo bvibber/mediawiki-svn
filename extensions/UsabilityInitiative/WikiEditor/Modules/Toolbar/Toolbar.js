@@ -1118,6 +1118,7 @@ mw.ready( function() {
 			});
 		},
 		dialog: {
+			resizable: false,
 			width: 500,
 			buttons: {
 				'wikieditor-toolbar-tool-link-insert': function() {
@@ -1291,7 +1292,6 @@ mw.ready( function() {
 				<span rel="wikieditor-toolbar-tool-table-example"></span>\
 				<div class="wikieditor-toolbar-table-preview-frame">\
 				<div class="wikieditor-toolbar-table-preview-content">\
-					<span rel="wikieditor-toolbar-tool-table-example-text"></span>\
 					<table id="wikieditor-toolbar-table-preview" class="wikieditor-toolbar-table-preview wikitable">\
 						<tr class="wikieditor-toolbar-table-preview-header">\
 							<th rel="wikieditor-toolbar-tool-table-example-header"></th>\
@@ -1384,6 +1384,7 @@ mw.ready( function() {
 
 		},
 		dialog: {
+			resizable: false,
 			buttons: {
 				'wikieditor-toolbar-tool-table-insert': function() {
 					var rowsVal = $j( '#wikieditor-toolbar-table-dimensions-rows' ).val();
@@ -1590,6 +1591,8 @@ mw.ready( function() {
 			});
 		},
 		dialog: {
+			resizable: false,
+			width: 500,
 			buttons: {
 				'wikieditor-toolbar-tool-replace-button-findnext': function( e ) {
 					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
