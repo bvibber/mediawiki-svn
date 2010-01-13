@@ -8366,7 +8366,7 @@ evt: {
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
 		context.$content.parent()
-			.blur( function( event ) {
+			.blur( function() {
 				var context = event.data.context;
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
