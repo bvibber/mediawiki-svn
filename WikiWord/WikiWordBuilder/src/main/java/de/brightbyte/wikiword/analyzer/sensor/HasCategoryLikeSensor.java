@@ -31,4 +31,8 @@ public class HasCategoryLikeSensor<V> extends AbstractSensor<V> {
 		String categories = page.getCategoriesString();
 		return matcher.matchesLine(categories);
 	}
+	
+	public String toString() {
+		return getClass().getName() + "(" + matcher.toString() + ")";
+	}
 }

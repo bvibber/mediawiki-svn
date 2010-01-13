@@ -58,5 +58,10 @@ public class TemplateParameterMatcher extends AbstractAttributeMatcher<TemplateD
 	public boolean lineMatchPassed(CharSequence lines) {
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return getClass().getName() + "(" + params.toString() + ")";
+	}
 
 }

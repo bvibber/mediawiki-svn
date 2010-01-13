@@ -40,4 +40,9 @@ public class AnyNameMatcher implements NameMatcher {
 	public <V extends CharSequence> Iterable<V> matches(Set<V> values) {
 		return values;
 	}
+	
+	@Override
+	public String toString() {
+		return getClass().getName() + "(*)";
+	}
 }

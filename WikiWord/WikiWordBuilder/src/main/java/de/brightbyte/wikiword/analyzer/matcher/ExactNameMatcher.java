@@ -58,4 +58,8 @@ public class ExactNameMatcher implements NameMatcher {
 		if (values.contains(name)) return Collections.singleton((V)name);
 		else return Collections.emptySet();
 	}
+	
+	public String toString() {
+		return getClass().getName() + "(" + name + ")";
+	}
 }

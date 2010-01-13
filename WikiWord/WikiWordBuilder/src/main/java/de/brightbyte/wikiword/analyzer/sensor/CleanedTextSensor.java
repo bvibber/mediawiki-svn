@@ -23,4 +23,8 @@ public class CleanedTextSensor<V> extends AbstractSensor<V> {
 	public boolean sense(WikiPage page) {
 		return matcher.matches( page.getCleanedText(true) );
 	}
+	
+	public String toString() {
+		return getClass().getName() + "(" + matcher.toString() + ")";
+	}
 }

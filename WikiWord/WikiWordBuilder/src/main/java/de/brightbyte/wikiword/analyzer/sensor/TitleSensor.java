@@ -35,4 +35,9 @@ public class TitleSensor<V> extends AbstractSensor<V> {
 		if (namespace!=Namespace.NONE && namespace!=page.getNamespace()) return false;
 		return matcher.matches(page.getName());
 	}
+	
+	@Override
+	public String toString() {
+		return getClass().getName() + "(" + matcher.toString() + ")";
+	}
 }

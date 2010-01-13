@@ -50,4 +50,9 @@ public class TemplateMultiMatcher extends AbstractAttributeMatcher<TemplateData>
 		
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return getClass().getName() + "(" + matchers + ")";
+	}
 }

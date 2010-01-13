@@ -51,4 +51,9 @@ public class PatternNameMatcher extends AbstractAttributeMatcher<CharSequence> i
 		if (anchored) return matcher.matches();
 		else return matcher.find();
 	}
+
+	@Override
+	public String toString() {
+		return getClass().getName() + "(" + matcher.pattern().pattern() + ")";
+	}
 }

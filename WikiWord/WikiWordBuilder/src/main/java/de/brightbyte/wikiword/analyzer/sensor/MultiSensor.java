@@ -21,4 +21,8 @@ public class MultiSensor<V> extends AbstractSensor<V> {
 		
 		return true;
 	}
+	
+	public String toString() {
+		return getClass().getName() + "(" + sensors.toString() + ")";
+	}
 }

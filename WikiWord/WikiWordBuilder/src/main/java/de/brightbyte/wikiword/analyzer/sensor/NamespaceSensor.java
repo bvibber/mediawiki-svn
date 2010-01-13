@@ -18,4 +18,9 @@ public class NamespaceSensor<V> extends AbstractSensor<V> {
 	public boolean sense(WikiPage page) {
 		return page.getNamespace() == namespace;
 	}
+	
+	@Override
+	public String toString() {
+		return getClass().getName() + "(" + namespace + ")";
+	}
 }

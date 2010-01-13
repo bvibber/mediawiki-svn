@@ -39,4 +39,8 @@ public class HasPropertySensor<V> extends AbstractSensor<V> {
 			return matcher.matches(vv).iterator().hasNext();
 		}
 	}
+	
+	public String toString() {
+		return getClass().getName() + "(" + name + " ~ " + matcher.toString() + ")";
+	}
 }

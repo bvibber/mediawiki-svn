@@ -44,5 +44,10 @@ public class TemplateNameMatcher extends AbstractAttributeMatcher<TemplateData> 
 			return true;
 		}
 	}
+		
+	@Override
+	public String toString() {
+		return getClass().getName() + "(" + matcher.toString() + ")";
+	}
 	
 }

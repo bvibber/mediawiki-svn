@@ -26,4 +26,8 @@ public class HasSectionLikeSensor<V> extends AbstractSensor<V> {
 		String sections = page.getSectionsString();
 		return matcher.matchesLine(sections);
 	}
+	
+	public String toString() {
+		return getClass().getName() + "(" + matcher.toString() + ")";
+	}
 }

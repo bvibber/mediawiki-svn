@@ -68,5 +68,7 @@ public class HasTemplateLikeSensor<V> extends AbstractSensor<V> implements Templ
 		return matcher.getTemplateNamePattern();
 	}
 	
-	
+	public String toString() {
+		return getClass().getName() + "(" + matcher.toString() + ")";
+	}
 }
