@@ -345,9 +345,12 @@ body.rtl .wikiEditor-ui-toolbar .page-characters > div > a,
 	text-decoration: none;
 	border-color: #a8d7f9;
 }
+.ui-widget table td.wikieditor-toolbar-table-preview-wrapper span {
+	padding: 4px 6px 0px;
+	display: block;
+}
 .ui-widget table .wikieditor-toolbar-table-preview-frame {
 	width: 340px;
-	height: 250px;
 	background: #fff;
 	padding: 10px;
 	border: 1px solid #cdcdcd;
@@ -358,8 +361,6 @@ body.rtl .wikiEditor-ui-toolbar .page-characters > div > a,
 .ui-widget table .wikieditor-toolbar-table-preview-content {
 	width: 375px;
 	display: block;
-	position: absolute;
-	top: -29px;
 }
 .ui-widget table .wikieditor-toolbar-table-preview {
 	width: 340px;
