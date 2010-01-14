@@ -34,20 +34,20 @@ class NMStorage {
 	 *
 	 */
 	private function __construct() {
-        if ( self::$mDatabase == NULL ) {
-            global $smwgBaseStore;
-            switch ( $smwgBaseStore ) {
-                case ( SMW_STORE_TESTING ):
-                    trigger_error( 'Testing store not implemented for NotifyMe extension.' );
-                	break;
-                case ( SMW_STORE_MWDB ):
-                default:
-                    global $smwgNMIP;
-                	require_once( $smwgNMIP . '/includes/storage/SMW_NMStorageSQL.php' );
-                    self::$mDatabase = new NMStorageSQL();
-                break;
-            }
-        }
+		if ( self::$mDatabase == NULL ) {
+			global $smwgBaseStore;
+			switch ( $smwgBaseStore ) {
+				case ( SMW_STORE_TESTING ):
+					trigger_error( 'Testing store not implemented for NotifyMe extension.' );
+					break;
+				case ( SMW_STORE_MWDB ):
+				default:
+					global $smwgNMIP;
+					require_once( $smwgNMIP . '/includes/storage/SMW_NMStorageSQL.php' );
+					self::$mDatabase = new NMStorageSQL();
+				break;
+			}
+		}
 
 	}
 
@@ -57,26 +57,26 @@ class NMStorage {
 	 * Returns the single instance of this class.
 	 *
 	 * @return NMStorage
-	 * 		The single instance of this class.
+	 *		 The single instance of this class.
 	 */
 	public static function getInstance() {
-        if ( !isset( self::$mInstance ) ) {
-            $c = __CLASS__;
-            self::$mInstance = new $c;
-        }
+		if ( !isset( self::$mInstance ) ) {
+			$c = __CLASS__;
+			self::$mInstance = new $c;
+		}
 
-        return self::$mInstance;
+		return self::$mInstance;
 	}
 
 	/**
 	 * Returns the actual database.
 	 *
 	 * @return object
-	 * 		The object to access the database.
+	 *		 The object to access the database.
 	 */
 	public static function getDatabase() {
-        self::getInstance(); // Make sure, singleton is initialized
-        return self::$mDatabase;
+		self::getInstance(); // Make sure, singleton is initialized
+		return self::$mDatabase;
 	}
 
 }

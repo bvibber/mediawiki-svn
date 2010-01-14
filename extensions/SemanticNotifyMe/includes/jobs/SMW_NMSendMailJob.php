@@ -20,23 +20,23 @@ class SMW_NMSendMailJob extends Job {
 	 *
 	 * @param Title $title
 	 */
-    function __construct( $title, $params ) {
-        wfDebug( __METHOD__ . " " . get_class( $this ) . " \r\n" );
-        wfProfileIn( __METHOD__ );
-        parent::__construct( get_class( $this ), Title::newMainPage(), $params );
+	function __construct( $title, $params ) {
+		wfDebug( __METHOD__ . " " . get_class( $this ) . " \r\n" );
+		wfProfileIn( __METHOD__ );
+		parent::__construct( get_class( $this ), Title::newMainPage(), $params );
 
-        wfProfileOut( __METHOD__ );
-    }
+		wfProfileOut( __METHOD__ );
+	}
 
-    /**
-     * Run a SMW_NMSendMailJob job
-     * @return boolean success
-     */
-    function run() {
-        wfDebug( __METHOD__ );
-        wfProfileIn( __METHOD__ );
+	/**
+	 * Run a SMW_NMSendMailJob job
+	 * @return boolean success
+	 */
+	function run() {
+		wfDebug( __METHOD__ );
+		wfProfileIn( __METHOD__ );
 
-        UserMailer::send( // userMailer(
+		UserMailer::send( // userMailer(
 			$this->params['to'],
 			$this->params['from'],
 			$this->params['subj'],
@@ -45,6 +45,6 @@ class SMW_NMSendMailJob extends Job {
 		);
 
 		wfProfileOut( __METHOD__ );
-        return true;
-    }
+		return true;
+	}
 }

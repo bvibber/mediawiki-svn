@@ -56,7 +56,7 @@ switchquery:function(){
 doSaveToNotify:function(){
 	/*STARTLOG*/
 	if(window.smwhgLogger){
-	    smwhgLogger.log("Save Notify","NM","save_notify");
+		smwhgLogger.log("Save Notify","NM","save_notify");
 	}
 	/*ENDLOG*/
 
@@ -70,7 +70,7 @@ doSaveToNotify:function(){
 		var request = Array();
 		request.responseText = nmLanguage.getMessage('NM_EMPTY_NOTIFYNAME');
 		this.saveNotify(request);
-	} 
+	}
 	else if ($('nmquery').value){ //only do this if the query is not empty
 		var params = $('nmquery').value.replace(/&/gm, "&amp;").replace(/,/gm, "&comma;") + ",";
 		params += ($('nmqrall').checked ? 1 : 0) + ",";
@@ -112,7 +112,7 @@ addNotifyToTable:function(nid, enabled){
 	item.type = "checkbox";
 	item.value = nid;
 	item.name = "nmdel";
-	
+
 	td = document.createElement("td");
 	ntr.appendChild(td);
 	item = document.createElement("a");
@@ -169,14 +169,14 @@ addNotifyToTable:function(nid, enabled){
 		item.id = "nmdiv_" + nid;
 	}
 
-	$('nmtoolbar').parentNode.insertBefore(ntr, $('nmtoolbar')); 
+	$('nmtoolbar').parentNode.insertBefore(ntr, $('nmtoolbar'));
 	attachAutocompleteToField("nmd_" + nid);
 },
 
 doUpdateMail:function() {
 	/*STARTLOG*/
 	if(window.smwhgLogger){
-	    smwhgLogger.log("update Notify Me mail setting ","NM","update_mail");
+		smwhgLogger.log("update Notify Me mail setting ","NM","update_mail");
 	}
 	/*ENDLOG*/
 
@@ -211,7 +211,7 @@ previewQuery:function(){
 
 	/*STARTLOG*/
 	if(window.smwhgLogger){
-	    smwhgLogger.log("Preview Query","NM","query_preview");
+		smwhgLogger.log("Preview Query","NM","query_preview");
 	}
 	/*ENDLOG*/
 	$('shade').toggle();
@@ -242,7 +242,7 @@ openPreview:function(request){
 updateStates:function(){
 	/*STARTLOG*/
 	if(window.smwhgLogger){
-	    smwhgLogger.log("Update States","NM","update_states");
+		smwhgLogger.log("Update States","NM","update_states");
 	}
 	/*ENDLOG*/
 
@@ -283,7 +283,7 @@ updateStatesDone:function(request){
 updateReportAll:function(){
 	/*STARTLOG*/
 	if(window.smwhgLogger){
-	    smwhgLogger.log("Update Notifications report all","NM","update_reportall");
+		smwhgLogger.log("Update Notifications report all","NM","update_reportall");
 	}
 	/*ENDLOG*/
 
@@ -307,7 +307,7 @@ updateReportAll:function(){
 updateShowAll:function(){
 	/*STARTLOG*/
 	if(window.smwhgLogger){
-	    smwhgLogger.log("Update Notifications show all","NM","update_showall");
+		smwhgLogger.log("Update Notifications show all","NM","update_showall");
 	}
 	/*ENDLOG*/
 
@@ -339,7 +339,7 @@ updateDone:function(request){
 deleteNotify:function(){
 	/*STARTLOG*/
 	if(window.smwhgLogger){
-	    smwhgLogger.log("Delete Notifications","NM","delete_notify");
+		smwhgLogger.log("Delete Notifications","NM","delete_notify");
 	}
 	/*ENDLOG*/
 
@@ -411,7 +411,7 @@ resetNotify:function(){
 updateDelegate:function(){
 	/*STARTLOG*/
 	if(window.smwhgLogger){
-	    smwhgLogger.log("Update delegates","NM","update_delegates");
+		smwhgLogger.log("Update delegates","NM","update_delegates");
 	}
 	/*ENDLOG*/
 
@@ -434,17 +434,17 @@ updateDelegate:function(){
 copyToClipboard:function(id){
 	/*STARTLOG*/
 	if(window.smwhgLogger){
-	    smwhgLogger.log("Copy nm rss to clipboard","NM","rss_copied");
+		smwhgLogger.log("Copy nm rss to clipboard","NM","rss_copied");
 	}
 	/*ENDLOG*/
 	var text = $(id).value;
 	var succ = 'The RSS feed url was successfully copied to your clipboard';
 	var fail = 'Your browser does not allow clipboard access.\nThe RSS feed url could not be copied to your clipboard.\nPlease copy the RSS feed url manually.';
- 	if (window.clipboardData){ //IE
+	 if (window.clipboardData){ //IE
 		window.clipboardData.setData("Text", text);
 		alert(succ);
 	}
-  	else if (window.netscape) {
+	  else if (window.netscape) {
 		try {
 			netscape.security.PrivilegeManager.enablePrivilege('UniversalXPConnect');
 			var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
@@ -485,7 +485,7 @@ saveQueryToNotify:function() {
 	if(!$('addnotifydialogue')) {
 		var askdlg = $('showAsk');
 		var nmdlg = document.createElement("div");
-		askdlg.parentNode.insertBefore(nmdlg, askdlg); 
+		askdlg.parentNode.insertBefore(nmdlg, askdlg);
 		nmdlg.id = "addnotifydialogue";
 		nmdlg.className = "topDialogue";
 		nmdlg.style.display = "none";
@@ -501,7 +501,7 @@ saveQueryToNotify:function() {
 },
 doSaveToNotifyQI:function(){
 	if(window.smwhgLogger){
-	    smwhgLogger.log("Save Notify","QI","save_notify");
+		smwhgLogger.log("Save Notify","QI","save_notify");
 	}
 	if(this.pendingElement)
 		this.pendingElement.hide();
@@ -510,7 +510,7 @@ doSaveToNotifyQI:function(){
 
 	if($('nmqname').value=="") {
 		alert(nmLanguage.getMessage('NM_EMPTY_NOTIFYNAME'));
-	} 
+	}
 	else if (!qihelper.queries[0].isEmpty()){ //only do this if the query is not empty
 		var ask = qihelper.recurseQuery(0, "parser"); // Get full ask syntax
 		qihelper.queries[0].getDisplayStatements().each(function(s) { ask += "\n| ?" + s});
@@ -557,8 +557,8 @@ Event.observe(window,'load',initialize_notify);
 
 function initialize_notify(){
 	notifyhelper = new NotifyHelper();
-	
-	// SMW / Halo extension contains wibbit which hooks all checkboxes, 
+
+	// SMW / Halo extension contains wibbit which hooks all checkboxes,
 	// have to load the event handler afterwards
-	if($('nmemail')) $('nmemail').onclick = function() {notifyhelper.doUpdateMail();}; 
+	if($('nmemail')) $('nmemail').onclick = function() {notifyhelper.doUpdateMail();};
 }

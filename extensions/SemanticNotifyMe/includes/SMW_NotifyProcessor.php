@@ -38,18 +38,18 @@ class SMWNotifyProcessor {
 		global $smwgQDefaultNamespaces;
 
 		SMWQueryProcessor::processFunctionParams( SMWNotifyProcessor::getQueryRawParams( $querystring ), $querystring, $params, $printouts );
-        $relatedArticles = array();
-        foreach ( $printouts as $po ) {
-        	if ( $po == $params['sort'] ) $sorted = true;
+		$relatedArticles = array();
+		foreach ( $printouts as $po ) {
+			if ( $po == $params['sort'] ) $sorted = true;
 			$printoutArticles[] = array(
 				'namespace' => SMW_NS_PROPERTY,
 				'title' => Title::makeTitle( SMW_NS_PROPERTY, $po->getText() )->getDBkey() );
-        }
-        if ( !$sorted && isset( $params['sort'] ) ) {
+		}
+		if ( !$sorted && isset( $params['sort'] ) ) {
 			$printoutArticles[] = array(
 				'namespace' => SMW_NS_PROPERTY,
 				'title' => Title::makeTitle( SMW_NS_PROPERTY, $params['sort'] )->getDBkey() );
-        }
+		}
 
 		$qp = new SMWNotifyParser( $notify_id, $printoutArticles );
 		$qp->setDefaultNamespaces( $smwgQDefaultNamespaces );
@@ -482,11 +482,11 @@ class SMWNotifyParser {
 	protected function getSubqueryDescription( &$setNS, &$label ) {
 		global $smwgQPrintoutLimit;
 		wfLoadExtensionMessages( 'SemanticMediaWiki' );
-		$conjunction = NULL;      // used for the current inner conjunction
-		$disjuncts = array();     // (disjunctive) array of subquery conjunctions
+		$conjunction = NULL;	  // used for the current inner conjunction
+		$disjuncts = array();	 // (disjunctive) array of subquery conjunctions
 		$printrequests = array(); // the printrequests found for this query level
 		$hasNamespaces = false;   // does the current $conjnuction have its own namespace restrictions?
-		$mustSetNS = $setNS;      // must ns restrictions be set? (may become true even if $setNS is false)
+		$mustSetNS = $setNS;	  // must ns restrictions be set? (may become true even if $setNS is false)
 
 		// added by dch
 		$subquery = $this->m_subquery;
@@ -1021,7 +1021,7 @@ class SMWNotifyParser {
 	protected function readChunk( $stoppattern = '', $consume = true, $trim = true ) {
 		if ( $stoppattern == '' ) {
 			$stoppattern = '\[\[|\]\]|::|:=|<q>|<\/q>|^' . $this->m_categoryprefix .
-			               '|^' . $this->m_conceptprefix . '|\|\||\|';
+						   '|^' . $this->m_conceptprefix . '|\|\||\|';
 		}
 		$chunks = preg_split( '/[\s]*(' . $stoppattern . ')/u', $this->m_curstring, 2, PREG_SPLIT_DELIM_CAPTURE );
 		if ( count( $chunks ) == 1 ) { // no matches anymore, strip spaces and finish
@@ -1608,36 +1608,36 @@ class SMWNotifyUpdate {
 		} else {
 			global $phpInterpreter;
 			if ( !isset( $phpInterpreter ) ) {
-	 			// if $phpInterpreter is not set, assume it is in search path
-	 			// if not, starting of bot will FAIL!
-	 			$phpInterpreter = "php";
-	 		}
-	 		// copy from SMW_GardeningBot.php
-	 		ob_start();
-	        phpinfo();
-	        $info = ob_get_contents();
-	        ob_end_clean();
+				 // if $phpInterpreter is not set, assume it is in search path
+				 // if not, starting of bot will FAIL!
+				 $phpInterpreter = "php";
+			 }
+			 // copy from SMW_GardeningBot.php
+			 ob_start();
+			phpinfo();
+			$info = ob_get_contents();
+			ob_end_clean();
 			// Get Systemstring
-	        preg_match( '!\nSystem(.*?)\n!is', strip_tags( $info ), $ma );
+			preg_match( '!\nSystem(.*?)\n!is', strip_tags( $info ), $ma );
 			// Check if it consists 'windows' as string
-	        preg_match( '/[Ww]indows/', $ma[1], $os );
-	        global $smwgNMIP ;
-	        if ( $os[0] == '' && $os[0] == null ) {
+			preg_match( '/[Ww]indows/', $ma[1], $os );
+			global $smwgNMIP ;
+			if ( $os[0] == '' && $os[0] == null ) {
 
-	 			// FIXME: $runCommand must allow whitespaces in paths too
-	 			$runCommand = "$phpInterpreter -q $smwgNMIP/specials/SMWNotifyMe/SMW_NMSendMailAsync.php";
- 				// TODO: test async code for linux.
- 				// low prio
-  	 			$nullResult = `$runCommand > /dev/null &`;
-	  		}
-	  		else // windowze
-	  		{
-	  			$runCommand = "\"\"$phpInterpreter\" -q \"$smwgNMIP/specials/SMWNotifyMe/SMW_NMSendMailAsync.php\"\"";
-	  	 		$wshShell = new COM( "WScript.Shell" );
+				 // FIXME: $runCommand must allow whitespaces in paths too
+				 $runCommand = "$phpInterpreter -q $smwgNMIP/specials/SMWNotifyMe/SMW_NMSendMailAsync.php";
+				 // TODO: test async code for linux.
+				 // low prio
+				   $nullResult = `$runCommand > /dev/null &`;
+			  }
+			  else // windowze
+			  {
+				  $runCommand = "\"\"$phpInterpreter\" -q \"$smwgNMIP/specials/SMWNotifyMe/SMW_NMSendMailAsync.php\"\"";
+				   $wshShell = new COM( "WScript.Shell" );
 				$runCommand = "cmd /C " . $runCommand;
 
- 				$oExec = $wshShell->Run( $runCommand, 7, false );
-	  		}
+				 $oExec = $wshShell->Run( $runCommand, 7, false );
+			  }
 		}
 	}
 	// copy from user class

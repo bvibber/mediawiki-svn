@@ -27,38 +27,38 @@ class NMStorageSQL {
 
 		// page_id, monitored page id
 		SNMDBHelper::setupTable( $smw_nm_monitor,
-		array( 'notify_id'    => 'INT(8) UNSIGNED NOT NULL',
-		                    'page_id'      => 'INT(8) UNSIGNED NOT NULL' ), $db, $verbose );
+		array( 'notify_id'	=> 'INT(8) UNSIGNED NOT NULL',
+							'page_id'	  => 'INT(8) UNSIGNED NOT NULL' ), $db, $verbose );
 		SNMDBHelper::setupIndex( $smw_nm_monitor, array( 'page_id' ), $db );
 		SNMDBHelper::setupTable( $smw_nm_query,
 		array( 'notify_id' => 'INT(8) UNSIGNED NOT NULL KEY AUTO_INCREMENT',
-		                    'user_id'   => 'INT(8) UNSIGNED NOT NULL',
+							'user_id'   => 'INT(8) UNSIGNED NOT NULL',
 							'delegate'  => 'BLOB',
-							'name'      => 'VARCHAR(255) binary NOT NULL',
-		              		'rep_all'   => 'TINYINT(1) NOT NULL default \'1\'',
-		              		'show_all'  => 'TINYINT(1) NOT NULL default \'0\'',
-		              		'query'     => 'BLOB NOT NULL',
-		              		'nm_sql'    => 'BLOB',
+							'name'	  => 'VARCHAR(255) binary NOT NULL',
+							  'rep_all'   => 'TINYINT(1) NOT NULL default \'1\'',
+							  'show_all'  => 'TINYINT(1) NOT NULL default \'0\'',
+							  'query'	 => 'BLOB NOT NULL',
+							  'nm_sql'	=> 'BLOB',
 							'nm_hierarchy' => 'BLOB',
-							'enable'    => 'TINYINT(1) NOT NULL default \'0\'' ), $db, $verbose );
+							'enable'	=> 'TINYINT(1) NOT NULL default \'0\'' ), $db, $verbose );
 		SNMDBHelper::setupIndex( $smw_nm_query, array( 'user_id' ), $db );
 		// page_id, related page / property id in notify query
 		SNMDBHelper::setupTable( $smw_nm_relations,
-		array( 'notify_id'    => 'INT(8) UNSIGNED NOT NULL',
-		                    'smw_id'       => 'INT(8) UNSIGNED NOT NULL',
+		array( 'notify_id'	=> 'INT(8) UNSIGNED NOT NULL',
+							'smw_id'	   => 'INT(8) UNSIGNED NOT NULL',
 		// 0 category, 1 instance, 2 property
-		                    'type'         => 'INT(8) UNSIGNED NOT NULL',
-		              		'subquery'     => 'INT(8) UNSIGNED NOT NULL default \'0\'' ), $db, $verbose );
+							'type'		 => 'INT(8) UNSIGNED NOT NULL',
+							  'subquery'	 => 'INT(8) UNSIGNED NOT NULL default \'0\'' ), $db, $verbose );
 		SNMDBHelper::setupIndex( $smw_nm_relations, array( 'smw_id', 'notify_id' ), $db );
 		SNMDBHelper::setupTable( $smw_nm_rss,
-		array( 'msg_id'        => 'INT(8) UNSIGNED NOT NULL KEY AUTO_INCREMENT',
-		              		'mailed'     => 'TINYINT(1) NOT NULL default \'0\'',
-		              		'user_id'    => 'INT(8) UNSIGNED',
-		              		'notify_id'  => 'INT(8) UNSIGNED',
-		              		'title'      => 'VARCHAR(255) binary NOT NULL',
-		              		'link'       => 'BLOB',
-		              		'notify'     => 'BLOB NOT NULL',
-		              		'timestamp'  => 'VARCHAR(14) binary NOT NULL' ), $db, $verbose );
+		array( 'msg_id'		=> 'INT(8) UNSIGNED NOT NULL KEY AUTO_INCREMENT',
+							  'mailed'	 => 'TINYINT(1) NOT NULL default \'0\'',
+							  'user_id'	=> 'INT(8) UNSIGNED',
+							  'notify_id'  => 'INT(8) UNSIGNED',
+							  'title'	  => 'VARCHAR(255) binary NOT NULL',
+							  'link'	   => 'BLOB',
+							  'notify'	 => 'BLOB NOT NULL',
+							  'timestamp'  => 'VARCHAR(14) binary NOT NULL' ), $db, $verbose );
 		SNMDBHelper::setupIndex( $smw_nm_rss, array( 'user_id' ), $db );
 
 		SNMDBHelper::reportProgress( "... done!\n", $verbose );
@@ -152,9 +152,9 @@ class NMStorageSQL {
 				$new_rel = true;
 				$relations[] = array(
 					'notify_id' => $notify_id,
-					'smw_id'    => $rel_smw_id,
+					'smw_id'	=> $rel_smw_id,
 				// $type: 0 category, 1 instance, 2 property
-					'type'      => ( ( $smw['namespace'] == NS_CATEGORY ) ? 0:( ( $smw['namespace'] == SMW_NS_PROPERTY ) ? 2:1 ) ),
+					'type'	  => ( ( $smw['namespace'] == NS_CATEGORY ) ? 0:( ( $smw['namespace'] == SMW_NS_PROPERTY ) ? 2:1 ) ),
 					'subquery'  => $subquery );
 			}
 		}

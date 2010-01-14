@@ -32,31 +32,31 @@ function smwf_nm_NotifyAccess( $method, $params ) {
 | format=table
 | link=all';
 
-            // parse params and answer query
-            SMWQueryProcessor::processFunctionParams( SMWNotifyProcessor::getQueryRawParams( $params ), $querystring, $params, $printouts );
+			// parse params and answer query
+			SMWQueryProcessor::processFunctionParams( SMWNotifyProcessor::getQueryRawParams( $params ), $querystring, $params, $printouts );
 
-            $result = SMWQueryProcessor::getResultFromQueryString( $querystring, $params, $printouts, SMW_OUTPUT_WIKI );
+			$result = SMWQueryProcessor::getResultFromQueryString( $querystring, $params, $printouts, SMW_OUTPUT_WIKI );
 			switch ( $params->format ) {
-            	case 'timeline':
-            		return $result;
-            		break;
-            	case 'eventline':
-            		return $result;
-            		break;
-            	case 'googlepie':
-            		return $result[0];
-            		break;
-            	case 'googlebar':
-            		return $result[0];
-            		break;
-            	case 'exhibit':
-            		return $result;
-            		break;
-            	default:
-            }
+				case 'timeline':
+					return $result;
+					break;
+				case 'eventline':
+					return $result;
+					break;
+				case 'googlepie':
+					return $result[0];
+					break;
+				case 'googlebar':
+					return $result[0];
+					break;
+				case 'exhibit':
+					return $result;
+					break;
+				default:
+			}
 			global $wgParser;
 
-		   	if ( ( $wgParser->getTitle() instanceof Title ) && ( $wgParser->getOptions() instanceof ParserOptions ) ) {
+			   if ( ( $wgParser->getTitle() instanceof Title ) && ( $wgParser->getOptions() instanceof ParserOptions ) ) {
 				$result = $wgParser->recursiveTagParse( $result );
 			} else {
 				global $wgTitle;

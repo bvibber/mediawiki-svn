@@ -221,22 +221,22 @@ function smwNMAddHTMLHeader( &$out ) {
 		$jsm->addCSSIf( $smwgNMScriptPath . '/skins/nm.css', "all", - 1, NS_SPECIAL . ":NotifyMe" );
 	} else {
 		global $wgRequest;
- 		$scripts = array();
- 		$$css = array();
+		 $scripts = array();
+		 $$css = array();
 
- 		// read state
- 		if ( $wgRequest != NULL && $wgTitle != NULL ) {
- 			$action = $wgRequest->getVal( "action" );
- 			// $action of NULL or '' means view mode
- 			$action = $action == NULL || $action == '' ? "view" : $action;
- 			$namespace = $wgTitle->getNamespace();
- 			$page = $wgTitle->getNamespace() . ":" . $wgTitle->getText();
+		 // read state
+		 if ( $wgRequest != NULL && $wgTitle != NULL ) {
+			 $action = $wgRequest->getVal( "action" );
+			 // $action of NULL or '' means view mode
+			 $action = $action == NULL || $action == '' ? "view" : $action;
+			 $namespace = $wgTitle->getNamespace();
+			 $page = $wgTitle->getNamespace() . ":" . $wgTitle->getText();
 
- 		} else { // if no state could be read, set default -> load all!
- 			$action = "all";
- 			$namespace = - 1;
- 			$page = array();
- 		}
+		 } else { // if no state could be read, set default -> load all!
+			 $action = "all";
+			 $namespace = - 1;
+			 $page = array();
+		 }
 		if ( ( $namespace == NS_SPECIAL || $namespace == - 1 ) && ( $page == NS_SPECIAL . ":NotifyMe" ) ) {
 			$out->addScript( '<script type="text/javascript" src="' . $smwgNMScriptPath . '/scripts/prototype.js"></script>' );
 			$out->addScript( '<script type="text/javascript" src="' . $smwgScriptPath . '/skins/SMW_tooltip.js"></script>' );

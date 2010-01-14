@@ -78,10 +78,10 @@ class SMWSQLStore2QueryEngineNM {
 			// Update database:
 			$this->m_dbs->delete( 'smw_conccache', array( 'o_id' => $cid ), 'SMW::refreshConceptCache' );
 			$this->m_dbs->query( "INSERT IGNORE INTO " . $this->m_dbs->tableName( 'smw_conccache' ) .
-			                    " SELECT DISTINCT $qobj->joinfield AS s_id, $cid AS o_id FROM " .
-			                    $this->m_dbs->tableName( $qobj->jointable ) . " AS $qobj->alias" . $qobj->from .
-			                    ( $qobj->where ? " WHERE ":'' ) . $qobj->where . " LIMIT $smwgQMaxLimit",
-			                    'SMW::refreshConceptCache' );
+								" SELECT DISTINCT $qobj->joinfield AS s_id, $cid AS o_id FROM " .
+								$this->m_dbs->tableName( $qobj->jointable ) . " AS $qobj->alias" . $qobj->from .
+								( $qobj->where ? " WHERE ":'' ) . $qobj->where . " LIMIT $smwgQMaxLimit",
+								'SMW::refreshConceptCache' );
 			$this->m_dbs->update( 'smw_conc2', array( 'cache_date' => strtotime( "now" ), 'cache_count' => $this->m_dbs->affectedRows() ), array( 's_id' => $cid ), 'SMW::refreshConceptCache' );
 		} else { // just delete old data if there is any
 			$this->m_dbs->delete( 'smw_conccache', array( 'o_id' => $cid ), 'SMW::refreshConceptCache' );
@@ -157,8 +157,8 @@ class SMWSQLStore2QueryEngineNM {
 		$qobj = $this->m_queries[$rootid];
 		if ( $qobj->joinfield !== '' ) {
 			$sql = "SELECT DISTINCT $qobj->alias.smw_title AS t,$qobj->alias.smw_namespace AS ns FROM " .
-			           $this->m_dbs->tableName( $qobj->jointable ) . " AS $qobj->alias" . $qobj->from .
-			           ( ( $qobj->where == '' ) ? '':' WHERE ' ) . $qobj->where;
+					   $this->m_dbs->tableName( $qobj->jointable ) . " AS $qobj->alias" . $qobj->from .
+					   ( ( $qobj->where == '' ) ? '':' WHERE ' ) . $qobj->where;
 		} else { // empty result, no query needed
 			wfProfileOut( 'SMWSQLStore2Queries::getNMQueryResult (SMW)' );
 			return false;
@@ -254,8 +254,8 @@ class SMWSQLStore2QueryEngineNM {
 		} elseif ( $description instanceof SMWConceptDescription ) { // fetch concept definition and insert it here
 			$cid = $this->m_store->getSMWPageID( $description->getConcept()->getDBKey(), SMW_NS_CONCEPT, '' );
 			$row = $this->m_dbs->selectRow( 'smw_conc2',
-			         array( 'concept_txt', 'concept_features', 'concept_size', 'concept_depth', 'cache_date' ),
-			         array( 's_id' => $cid ), 'SMWSQLStore2Queries::compileQueries' );
+					 array( 'concept_txt', 'concept_features', 'concept_size', 'concept_depth', 'cache_date' ),
+					 array( 's_id' => $cid ), 'SMWSQLStore2Queries::compileQueries' );
 			if ( $row === false ) { // no description found, concept does not exist
 				// keep the above query object, it yields an empty result
 				// /TODO: announce an error here? (maybe not, since the query processor can check for
@@ -263,11 +263,11 @@ class SMWSQLStore2QueryEngineNM {
 			} else {
 				global $smwgQConceptCaching, $smwgQMaxSize, $smwgQMaxDepth, $smwgQFeatures, $smwgQConceptCacheLifetime;
 				$may_be_computed = ( $smwgQConceptCaching == CONCEPT_CACHE_NONE ) ||
-				    ( ( $smwgQConceptCaching == CONCEPT_CACHE_HARD ) && ( ( ~( ~( $row->concept_features + 0 ) | $smwgQFeatures ) ) == 0 ) &&
-				      ( $smwgQMaxSize >= $row->concept_size ) && ( $smwgQMaxDepth >= $row->concept_depth ) );
+					( ( $smwgQConceptCaching == CONCEPT_CACHE_HARD ) && ( ( ~( ~( $row->concept_features + 0 ) | $smwgQFeatures ) ) == 0 ) &&
+					  ( $smwgQMaxSize >= $row->concept_size ) && ( $smwgQMaxDepth >= $row->concept_depth ) );
 				if ( $row->cache_date &&
-				    ( $row->cache_date > ( strtotime( "now" ) - $smwgQConceptCacheLifetime * 60 ) ||
-				     !$may_be_computed ) ) { // cached concept, use cache unless it is dead and can be revived
+					( $row->cache_date > ( strtotime( "now" ) - $smwgQConceptCacheLifetime * 60 ) ||
+					 !$may_be_computed ) ) { // cached concept, use cache unless it is dead and can be revived
 					$query->jointable = 'smw_conccache';
 					$query->joinfield = "$query->alias.s_id";
 					$query->where = "$query->alias.o_id=" . $this->m_dbs->addQuotes( $cid );
@@ -511,7 +511,7 @@ class SMWSQLStore2QueryEngineNM {
 				// modified by dch, disable TEMPORARY tables
 //				if ($this->m_qmode !== SMWQuery::MODE_DEBUG) {
 //					$this->m_dbs->query( "CREATE TEMPORARY TABLE " . $this->m_dbs->tableName($query->alias) .
-//					                     ' ( id INT UNSIGNED KEY ) TYPE=MEMORY', 'SMW::executeQueries' );
+//										 ' ( id INT UNSIGNED KEY ) TYPE=MEMORY', 'SMW::executeQueries' );
 //				}
 //				$this->m_querylog[$query->alias] = array();
 				foreach ( $query->components as $qid => $joinfield ) {
@@ -698,11 +698,11 @@ class SMWSQLStore2QueryEngineNM {
 					} else {
 						$result['ORDER BY'] .= ', ';
 					}
-                    if ( 'RAND()' == $order ) {
-					    $result['ORDER BY'] .= " $order ";
-                    } else {
-                    	$result['ORDER BY'] .= $qobj->sortfields[$propkey] . " $order ";
-                    }
+					if ( 'RAND()' == $order ) {
+						$result['ORDER BY'] .= " $order ";
+					} else {
+						$result['ORDER BY'] .= $qobj->sortfields[$propkey] . " $order ";
+					}
 
 				}
 			}
