@@ -61,7 +61,7 @@ RemoteMwTimedText.prototype = {
 				 'class="kskin" ' +  //We need to centrally store this config somewhere
 				 'poster="' + resource.poster + '" ' +
 				 'src="' + resource.src + '" ' + 
-				 'wikiTitleKey="' + resource.wikiTitleKey + '" >' +					 
+				 'apiTitleKey="' + resource.apiTitleKey + '" >' +					 
 				 '</video><br><br><br><br>'					
 				)
 			);				
@@ -178,7 +178,7 @@ RemoteMwTimedText.prototype = {
 	*/
 	getResource: function( page ){
 		return {					
-				'wikiTitleKey' : page.title.replace(/File:/ig, '' ),
+				'apiTitleKey' : page.title.replace(/File:/ig, '' ),
 				'link'		 : page.imageinfo[0].descriptionurl,					
 				'poster'	 : page.imageinfo[0].thumburl,
 				'src'		 : page.imageinfo[0].url,					

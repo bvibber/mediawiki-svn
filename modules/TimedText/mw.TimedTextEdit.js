@@ -298,7 +298,7 @@ mw.TimedTextEdit.prototype = {
 		
 		// Get timed text target title
 		// NOTE: this should be cleaned up with accessors
-		var targetTitleKey = this.parentTimedText.embedPlayer.wikiTitleKey;
+		var targetTitleKey = this.parentTimedText.embedPlayer.apiTitleKey;
 		
 		// Add TimedText NS and language key and ".srt"
 		targetTitleKey = 'TimedText:' + targetTitleKey + '.' + $j('#timed-text-langKey-input').val() + '.srt';				

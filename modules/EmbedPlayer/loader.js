@@ -9,7 +9,7 @@
 	
 //If the Timed Text interface should be displayed: 
 // 'always' Displays link and call to contribute always
-// 'auto' Looks for child timed text elements or "wikiTitleKey" & load interface
+// 'auto' Looks for child timed text elements or "apiTitleKey" & load interface
 // 'off' Does not display the timed text interface
 mw.setConfig( 'textInterface', 'auto' ); 
 	
