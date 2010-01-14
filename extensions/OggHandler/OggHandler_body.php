@@ -199,7 +199,7 @@ class OggHandler extends MediaHandler {
 		//add temporal request parameter if $wgEnableTemporalOggUrls is on:
 		if($wgEnableTemporalOggUrls && isset( $params['start'] ) ){
 			$targetFileUrl .= '?t=' . seconds2npt( $this->parseTimeString( $params['start'], $length ) );
-			if(isset( $params['end'] ) && $params['end'] )
+			if(isset( $params[ 'end' ] ) && $params['end'] )
 				$targetFileUrl.='/'. seconds2npt( $this->parseTimeString( $params['end'], $length) );
 		}
 
@@ -596,7 +596,7 @@ class OggTransformOutput extends MediaTransformOutput {
 
 	function toHtml( $options = array() ) {
 		global $wgEnableTemporalOggUrls, $wgVideoTagOut,
-			$wgScriptPath, $wgEnableTimedText, $wgVideoPlayerSkin;
+			$wgScriptPath, $wgEnableTimedText;
 
 		wfLoadExtensionMessages( 'OggHandler' );
 		if ( count( func_get_args() ) == 2 ) {
@@ -611,10 +611,12 @@ class OggTransformOutput extends MediaTransformOutput {
 		} else {
 			$url = $this->videoUrl;
 		}
-		$length = intval( $this->length );
-		$offset = intval( $this->offset );
+		// Normalize values
+		$length = floatval( $this->length );
+		$offset = floatval( $this->offset );
 		$width = intval( $this->width );
 		$height = intval( $this->height );
+
 		$alt = empty( $options['alt'] ) ? $this->file->getTitle()->getText() : $options['alt'];
 		$scriptPath = OggHandler::getMyScriptPath();
 		$thumbDivAttribs = array();
@@ -622,101 +624,7 @@ class OggTransformOutput extends MediaTransformOutput {
 
 		// Check if outputting to video tag or oggHandler
 		if( $wgVideoTagOut ){
-			//video tag output:
-			if ( $this->isVideo ) {
-				$playerHeight = $height;
-				$thumb_url = $this->url;
-			}else{
-				// Sound file
-				global $wgStylePath;
-				$thumb_url = "$wgStylePath/common/images/icons/fileicon-ogg.png";
-				if ( $height < 35 )
-					$playerHeight = 35;
-				else
-					$playerHeight = $height;
-			}
-			$id = "ogg_player_" . OggTransformOutput::$serial;
-			$linkAttribs = $this->getDescLinkAttribs( $alt );
-			$videoAttr = array(
-					'id' => $id,
-					'src' => $url,
-					'wikiTitleKey' => $this->file->getTitle()->getDBKey(),
-					'style' => "width:{$width}px;height:{$playerHeight}px",
-					'poster'=>$thumb_url,
-					'controls'=> 'true',
-					'durationHint' => $length,
-					'startOffset' => $offset,
-					'linkback' => $linkAttribs['href']
-		    );
-			// Init $timedTextSources string
-			$timedTextSources = '';
-
-		    if( $this->file->getRepoName() == 'shared' ){
-				$videoAttr['sharedWiki'] = true;
-		    }else if( $wgEnableTimedText ){
-		   		// Get the list of subtitles available
-				$params = new FauxRequest( array (
-					'action' => 'query',
-					'list' => 'allpages',
-					'apnamespace' => NS_TIMEDTEXT,
-					'aplimit' => 200,
-					'apprefix' => $this->file->getTitle()->getDBKey()
-				));
-				$api = new ApiMain( $params );
-				$api->execute();
-				$data = & $api->getResultData();
-
-				// Get the list of language Names
-				$langNames = Language::getLanguageNames();
-
-
-				if($data['query'] && $data['query']['allpages'] ){
-					foreach( $data['query']['allpages'] as $na => $page ){
-						$pageTitle = $page['title'];
-						$tileParts = explode( '.', $pageTitle );
-						if( count( $tileParts) >= 3 ){
-							$subtitle_extension = array_pop( $tileParts );
-							$languageKey = array_pop( $tileParts );
-						}
-						//If there is no valid language continue:
-						if( !isset( $langNames[ $languageKey ] ) ){
-							continue;
-						}
-						$textAttr = array(
-							'src' => "{$wgServer}{$wgScriptPath}/api.php?" .
-								'action=parse&format=json&page=' . $pageTitle,
-							'lang' =>  $languageKey,
-							'type' => 'text/mw-srt'
-						);
-						$timedTextSources.= Xml::tags( 'itext', $textAttr, '' );
-					}
-				}
-		    }
-
-		    if( $wgEnableTemporalOggUrls ){
-		        $videoAttr['URLTimeEncoding'] = 'true';
-		    }
-
-		    // Set player skin:
-		    if( $wgVideoPlayerSkin ){
-		    	$videoAttr['class'] = htmlspecialchars ( $wgVideoPlayerSkin );
-		    }
-
-			$s = Xml::tags( 'video', $videoAttr,
-					Xml::tags('div', array(
-							'class'=>'videonojs',
-							'style'=>"overflow:hidden;".
-								"width:{$width}px;height:{$playerHeight}px;".
-								"border:solid thin black;padding:5px;"
-						),
-						wfMsg('ogg-no-player-js', $url)
-					) .
-					$timedTextSources
-				);
-
-			return $s;
-
-
+			return $this->outputVideoTag($url, $width, $height, $length, $offset, $alt);
 		}else{
 			//oggHandler output:
 			if ( $this->isVideo ) {
@@ -820,6 +728,117 @@ class OggTransformOutput extends MediaTransformOutput {
 			);
 			return $s;
 		}
+	}
+	/*
+	 * Output the inline video tag output
+	 */
+	function outputVideoTag($url, $width, $height, $length, $offset, $alt){
+		global $wgVideoPlayerSkin, $wgEnableTemporalOggUrls, $wgEnableTimedText;
+		// Video tag output:
+		if ( $this->isVideo ) {
+			$playerHeight = $this->height;
+			$thumb_url = $this->url;
+		}else{
+			// Sound file
+			global $wgStylePath;
+			$thumb_url = "$wgStylePath/common/images/icons/fileicon-ogg.png";
+			if ( $height < 35 )
+				$playerHeight = 35;
+			else
+				$playerHeight = $height;
+		}
+		$id = "ogg_player_" . OggTransformOutput::$serial;
+		$linkAttribs = $this->getDescLinkAttribs( $alt );
+		$videoAttr = array(
+			'id' => $id,
+			'src' => $url,
+			'style' => "width:{$width}px;height:{$playerHeight}px",
+			'poster' => $thumb_url,
+			'controls'=> 'true',
+			'durationHint' => $length,
+			'startOffset' => $offset,
+			'linkback' => $linkAttribs['href'],
+			'apiTitleKey' => $this->file->getTitle()->getDBKey()
+	    );
+
+	    /*
+	     * Output inline metadata for video tag
+	     * this will eventually be phased out in favor of "ROE" type xml
+	     * representation of all media asset info.
+	     */
+
+		// Init $timedTextSources string
+		$timedTextSources = '';
+	    if( $this->file->getRepoName() != 'local' ){
+
+	    	//Set the api provider name to "commons" for shared
+	    	// ( provider names should have identified the provider
+	    	// instead of the provider type "shared" )
+	    	$apiProviderName = ( $this->file->getRepoName() == 'shared' ) ? 'commons':  $this->file->getRepoName();
+
+			$videoAttr[ 'apiProvider' ] = 'commons';
+	    } else if( $wgEnableTimedText ){
+	   		// Get the list of subtitles available
+			$params = new FauxRequest( array (
+				'action' => 'query',
+				'list' => 'allpages',
+				'apnamespace' => NS_TIMEDTEXT,
+				'aplimit' => 200,
+				'apprefix' => $this->file->getTitle()->getDBKey()
+			));
+			$api = new ApiMain( $params );
+			$api->execute();
+			$data = & $api->getResultData();
+
+			// Get the list of language Names
+			$langNames = Language::getLanguageNames();
+
+
+			if($data['query'] && $data['query']['allpages'] ){
+				foreach( $data['query']['allpages'] as $na => $page ){
+					$pageTitle = $page['title'];
+					$tileParts = explode( '.', $pageTitle );
+					if( count( $tileParts) >= 3 ){
+						$subtitle_extension = array_pop( $tileParts );
+						$languageKey = array_pop( $tileParts );
+					}
+					//If there is no valid language continue:
+					if( !isset( $langNames[ $languageKey ] ) ){
+						continue;
+					}
+					$textAttr = array(
+						'src' => "{$wgServer}{$wgScriptPath}/api.php?" .
+							'action=parse&format=json&page=' . $pageTitle,
+						'lang' =>  $languageKey,
+						'type' => 'text/mw-srt'
+					);
+					$timedTextSources.= Xml::tags( 'itext', $textAttr, '' );
+				}
+			}
+	    }
+
+	    if( $wgEnableTemporalOggUrls ){
+	        $videoAttr['URLTimeEncoding'] = 'true';
+	    }
+
+	    // Set player skin:
+	    if( $wgVideoPlayerSkin ){
+	    	$videoAttr['class'] = htmlspecialchars ( $wgVideoPlayerSkin );
+	    }
+
+		$s = Xml::tags( 'video', $videoAttr,
+				Xml::tags('div', array(
+						'class'=>'videonojs',
+						'style'=>"overflow:hidden;".
+							"width:{$width}px;height:{$playerHeight}px;".
+							"border:solid thin black;padding:5px;"
+					),
+					wfMsg('ogg-no-player-js', $url)
+				) .
+				$timedTextSources
+			);
+
+		return $s;
 	}
 }
 
