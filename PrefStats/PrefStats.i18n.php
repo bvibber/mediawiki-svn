@@ -2301,12 +2301,18 @@ $messages['xmf'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'prefstats' => 'פרעפֿערענץ סטאַטיסטיק',
+	'prefstats-title' => 'פרעפֿערענץ סטאַטיסטיק',
+	'prefstats-xaxis' => "געדויער (שעה'ן)",
 	'prefstats-factor-hour' => 'שעה',
 	'prefstats-factor-sixhours' => 'זעקס שעה',
 	'prefstats-factor-day' => 'טאָג',
 	'prefstats-factor-week' => 'וואך',
 	'prefstats-factor-twoweeks' => 'צוויי וואכן',
 	'prefstats-factor-fourweeks' => 'פֿיר וואכן',
+	'prefstats-factor-default' => 'צוריק צום גרונטמאָס',
+	'prefstats-legend-out' => 'פרעפֿערענץ אַנולירט',
+	'prefstats-legend-in' => 'פרעפֿערענץ אקטיוויזירט',
 );
 
 /** Yue (粵語)

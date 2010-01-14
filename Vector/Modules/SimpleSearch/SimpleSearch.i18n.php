@@ -723,6 +723,7 @@ $messages['xmf'] = array(
  */
 $messages['yi'] = array(
 	'vector-simplesearch-search' => 'זוכן',
+	'vector-simplesearch-containing' => 'כולל…',
 );
 
 /** Yue (粵語)

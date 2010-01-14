@@ -1663,6 +1663,14 @@ $messages['vo'] = array(
 	'ct-and' => 'e',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'ct-anon-users' => 'אַנאנימע באַניצער',
+	'ct-and' => 'און',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */
