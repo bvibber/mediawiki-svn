@@ -959,10 +959,9 @@ mw.RemoteSearchDriver.prototype = {
 				//Add the uploaded result
 				provider.sObj.addByTitle( wTitle, function( resource ) {
 					// Redraw ( with added result if new )
-					_this.showResults();					
+					_this.showResults();										
 					// Pull up resource editor:
-					debugger;
-					_this.showResourceEditor( resource, $j( '#res_this_wiki_' + resource.id ).get( 0 ) );
+					_this.showResourceEditor( resource, $j( '#res_this_wiki__' + resource.id ).get( 0 ) );
 				} );
 				// Return false to close progress window:
 				return false;
