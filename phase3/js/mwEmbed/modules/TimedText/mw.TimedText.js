@@ -136,7 +136,7 @@ mw.addMessages( {
 		*/
 		timedTextProviders:{
 			'commons':{
-				'api_url': mw.commons_api_url,
+				'api_url': mw.getApiProviderURL( 'commons' ),
 				'lib' :	'mediaWiki'				
 			}				
 		},		
@@ -272,8 +272,8 @@ mw.addMessages( {
 				this.textSources.push( source );
 			}			
 			
-			//If there are no inline sources check timedTextProviders & wikiTitleKey
-			if( !this.embedPlayer.wikiTitleKey || !this.timedTextProviders){
+			//If there are no inline sources check timedTextProviders & apiTitleKey
+			if( !this.embedPlayer.apiTitleKey || !this.timedTextProviders){
 				//no other sources just issue the callback: 						
 				callback();
 				return ;
@@ -281,7 +281,7 @@ mw.addMessages( {
 			
 			// Try to get sources from text provider: 
 			var provider = this.timedTextProviders[ this.textProviderId ];
-			var assetKey = 	this.embedPlayer.wikiTitleKey;		
+			var assetKey = 	this.embedPlayer.apiTitleKey;		
 			switch(  provider.lib ){
 				case 'mediaWiki':
 					this.textProvider = new mw.MediaWikiTextProvider( {
@@ -1249,7 +1249,7 @@ mw.addMessages( {
 				if (	sourcePages.error && sourcePages.error.code == 'apunknown_apnamespace' ) {
 					var request = { 
 						'list' : 'allpages', 
-						'apprefix' : _this.getCanonicalTimedTextNS() + ':' + _this.pe.wikiTitleKey 
+						'apprefix' : _this.getCanonicalTimedTextNS() + ':' + _this.pe.apiTitleKey 
 					};
 					mw.getJSON( apiUrl, request, function( sourcePages ) {
 						callback( sourcePages )

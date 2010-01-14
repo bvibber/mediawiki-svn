@@ -101,7 +101,10 @@ var mwDefaultConf = {
 		'import', 'userrights' ],
 	
 	//If we are in debug mode ( results in fresh debugg javascript includes )
-	'debug' : false
+	'debug' : false,
+	
+	// Set the default providers ( you can add more provider via {provider_id}_apiurl = $api_url	  
+	'commons_apiurl' : 'http://commons.wikimedia.org/w/api.php'
 };
 
 /**
@@ -117,11 +120,6 @@ var mwDefaultConf = {
 	
 	// The version of mwEmbed
 	mw.version = '1.1';
-	
-	// Special case of commons api url 
-	// ( used for default subtitles and related video server for "wikiTitleKey" where no api is provided)
-	// NOTE: we need to fix that with a standard "roe" jsonp url source ( instead of a non-standard custom attribute )  
-	mw.commons_api_url = 'http://commons.wikimedia.org/w/api.php';
 	
 	/**
 	* Some global containers flags 
@@ -1794,6 +1792,20 @@ var mwDefaultConf = {
 			} )
 		);			
 	}
+	
+	/**
+	* Get the api url for a given content provider key
+	* @return {Mixed}
+	*	url for the provider
+	* 	local wiki api if no apiProvider is set
+	* 	false if no local wiki api found
+	*/ 
+	mw.getApiProviderURL = function( provider_id ){		
+		if( mw.getConfig( provider_id + '_apiurl') ){
+			return mw.getConfig( provider_id + '_apiurl');
+		}
+		return mw.getLocalApiUrl(); 
+	},
 	
 	/** 
 	* Get Api URL from mediaWiki page defined variables

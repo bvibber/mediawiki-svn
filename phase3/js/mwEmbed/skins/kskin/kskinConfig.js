@@ -158,7 +158,7 @@ var kskinConfig = {
 		// Set local player target pointer:
 		var $playerTarget = embedPlayer.$interface;
 		
-		// check if k-menu already exists:
+		// Check if k-menu already exists:
 		if ( $playerTarget.find( '.k-menu' ).length != 0 )
 			return false;
 		
@@ -243,25 +243,30 @@ var kskinConfig = {
 			);
 		}
 		
-		if( !embedPlayer.wikiTitleKey ){
+		if( !embedPlayer.apiTitleKey ){
 			$target.find('.credits_box').text(
 				'Error: no title key to grab credits with' 
 			);
 			return ;
 		}
 				
-		// Do the api request to populate the credits via the wikiTitleKey ( tied to "commons" )
+		// Do the api request to populate the credits via the apiTitleKey 
 		var request = {
-			// Normalize the File NS (ie sometimes its present in wikiTitleKey other times not
-			'titles' : 'File:' + embedPlayer.wikiTitleKey.replace(/File:|Image:/, '' ),
+			// Normalize the File NS (ie sometimes its present in apiTitleKey other times not
+			'titles' : 'File:' + embedPlayer.apiTitleKey.replace(/File:|Image:/, '' ),
 		    'prop' : 'revisions',
 		    'rvprop' : 'content'
 		};		
 		var req_categories = new Array();
-	    mw.getJSON( mw.commons_api_url, request, function( data ) {
+		var api_url = mw.getApiProviderURL( embedPlayer.apiProvider );
+		if( ! api_url ){
+			mw.log("Error: can't get credit screen without title key");
+			return ;
+		}
+	    mw.getJSON( api_url , request, function( data ) {
 			if( !data || !data.query || !data.query.pages ){
 				$target.find('.credits_box').text(
-					'Error: title key: ' + embedPlayer.wikiTitleKey + ' not found' 
+					'Error: title key: ' + embedPlayer.apiTitleKey + ' not found' 
 				);
 				return false;
 			}
@@ -288,8 +293,8 @@ var kskinConfig = {
 		var embedPlayer = this.embedPlayer;
 		
 		// Get the title str 
-		var titleStr = embedPlayer.wikiTitleKey.replace(/_/g, ' ');
-		var titleLink = 'http://commons.wikimedia.org/wiki/File:' + embedPlayer.wikiTitleKey;
+		var titleStr = embedPlayer.apiTitleKey.replace(/_/g, ' ');
+		var titleLink = 'http://commons.wikimedia.org/wiki/File:' + embedPlayer.apiTitleKey;
 		
 		var imgWidth = ( this.getOverlayWidth() < 250 )? 45 : 90;
 		

@@ -716,7 +716,7 @@ mw.BaseUploadInterface.prototype = {
 				if ( _this.warnings_sessionkey ) {
 					//set to "loading"
 					$j( '#upProgressDialog' ).html( mw.loading_spinner() );
-					//setup loading:
+					//setup request:
 					var request = {
 						'action': 'upload',
 						'sessionkey': _this.warnings_sessionkey,

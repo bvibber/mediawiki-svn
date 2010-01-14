@@ -142,8 +142,11 @@ var default_video_attributes = {
 	// End time of the clip
 	"end" : null,
 	
-	// A wikiTitleKey for looking up subtitles, credits and related videos
-	"wikiTitleKey" : null,
+	// A apiTitleKey for looking up subtitles, credits and related videos
+	"apiTitleKey" : null,
+	
+	// The apiProvider where to lookup the title key
+	"apiProvider" : null,
 	
 	// ROE url ( for xml based metadata )
 	// also see: http://wiki.xiph.org/ROE
@@ -831,20 +834,23 @@ mediaElement.prototype = {
 			this.thumbnail = $j( video_element ).attr( 'thumbnail' );
 			
 		if ( $j( video_element ).attr( 'poster' ) )
-			this.thumbnail = $j( video_element ).attr( 'poster' );
+			this.thumbnail = $j( video_element ).attr( 'poster' );	
 		
-		// Set by default thumb value if not found
-		if( ! this.thumbnail  )
-			this.thumbnail = mw.getConfig( 'default_video_thumb' );
+		if ( $j( video_element ).attr( 'apiTitleKey' ) )
+			this.apiTitleKey = $j( video_element ).attr( 'apiTitleKey' );
 		
-		if ( $j( video_element ).attr( 'wikiTitleKey' ) )
-			this.wikiTitleKey = $j( video_element ).attr( 'wikiTitleKey' );
+		if ( $j( video_element ).attr( 'apiProvider' ) )
+			this.apiProvider = $j( video_element ).attr( 'apiTitleKey' );
 		
 		if ( $j( video_element ).attr( 'durationHint' ) ) {
 			this.durationHint = $j( video_element ).attr( 'durationHint' );
 			// Convert duration hint if needed:
 			this.duration = mw.npt2seconds(  this.durationHint );
 		}							
+		
+		// Set by default thumb value if not found
+		if( ! this.thumbnail  )
+			this.thumbnail = mw.getConfig( 'default_video_thumb' );
 		
 		// Process the video_element as a source element:
 		if ( $j( video_element ).attr( "src" ) ){
@@ -1378,7 +1384,7 @@ mw.EmbedPlayer.prototype = {
 	*/
 	isTimedTextSupported: function(){
 		// Check for timed text sources or api/ roe url		
-		if ( ( this.roe || this.wikiTitleKey ||				
+		if ( ( this.roe || this.apiTitleKey ||				
 			this.mediaElement.textSourceExists() ) ){			
 			return true;
 		} else {
@@ -1608,18 +1614,17 @@ mw.EmbedPlayer.prototype = {
 		// mw.log('shopuld embed:' + embed_code);
 		$j( '#' + _this.id ).html( _this.getEmbedHTML() );
 	},
-	
 	/**
 	* Searches for related clips from titleKey
 	*/
 	getRelatedFromTitleKey: function() {
 		var _this = this;
 		var request = {			
-			//normalize the File NS (ie sometimes its present in wikiTitleKey other times not
-			'titles' : 'File:' + this.wikiTitleKey.replace(/File:|Image:/,''),
+			//normalize the File NS (ie sometimes its present in apiTitleKey other times not
+			'titles' : 'File:' + this.apiTitleKey.replace(/File:|Image:/,''),
 		    'generator' : 'categories'
 		};		
-	    mw.getJSON( mw.commons_api_url, request,  function( data ) {
+	    mw.getJSON( mw.getApiProviderURL( 'commons' ), request,  function( data ) {
 			var req_categories = [];
 			if ( data.query && data.query.pages ) {
 				for ( var pageid in  data.query.pages ) {
@@ -1722,7 +1727,7 @@ mw.EmbedPlayer.prototype = {
 					'height:' + parseInt( this.height ) + 'px;">' +
 				'</div>' );
 
-		if ( this.wikiTitleKey ) {
+		if ( this.apiTitleKey ) {
 			$j( '#dc_' + this.id ).append(
 			'<div class="related_vids" >' +
 			   '<h1>' + gM( 'mwe-related_videos' ) + '</h1>' +
@@ -2119,7 +2124,7 @@ mw.EmbedPlayer.prototype = {
 	
 	/** 
 	* Updates the displayed thumbnail via percent of the stream
-	* @param {Float} percet Percent of duration to update thumb
+	* @param {Float} percent Percent of duration to update thumb
 	*/
 	updateThumbPerc:function( percent ) {
 		return this.updateThumbTime( ( this.getDuration() * percent ) );
@@ -2231,8 +2236,11 @@ mw.EmbedPlayer.prototype = {
 		// Add in the wikiTitle key if provided 
 		// (in the future we should just include the titleKey on remote embeds 
 		// and query a roe like xml/json representaiton thing from mediawiki)
-		if ( this.wikiTitleKey ) {
-			embed_code_html += 'wikiTitleKey=&quot;' + escape( this.wikiTitleKey ) + '&quot;';
+		if ( this.apiTitleKey ) {
+			embed_code_html += 'apiTitleKey=&quot;' + escape( this.apiTitleKey ) + '&quot;';
+		}
+		if ( this.apiProvider ) {
+			embed_code_html += 'apiProvider=&quot;' + escape( this.apiProvider ) + '&quot;';
 		}
 		
 		// close the video tag
@@ -2243,6 +2251,7 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Display the options div
+	* @@TODO should move to skins "showShare" , "showTextInterface" etc.
 	*/
 	doOptionsHTML:function() {
 		var pos = this.$interface.find( '.options-btn' ).offset();
@@ -2288,8 +2297,9 @@ mw.EmbedPlayer.prototype = {
 		o += '<h2>' + gM( 'mwe-share_this_video' ) + '</h2>' +
 			'<ul>' +
 				'<li><a href="#" class="active">' + gM( 'mwe-embed_site_or_blog' ) + '</a></li>';
-				if ( this.linkback )
+				if ( this.linkback ){
 					o += '<li><a href="#" id="k-share-link">' + this.linkback + '</a></li>';
+				}
 		o +='</ul>' +
 			'<div class="source_wrap">'+
 				'<textarea>' + embed_code + '</textarea>'+

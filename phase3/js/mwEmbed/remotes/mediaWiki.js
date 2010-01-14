@@ -210,8 +210,8 @@ function rewrite_for_OggHandler( vidIdList ) {
 		var re = new RegExp( /videoUrl(&quot;:?\s*)*([^&]*)/ );
 		src = re.exec( rewriteHTML )[2];
 
-		var wikiTitleKey = src.split( '/' );
-		wikiTitleKey = unescape( wikiTitleKey[ wikiTitleKey.length - 1 ] );			
+		var apiTitleKey = src.split( '/' );
+		apiTitleKey = unescape( apiTitleKey[ apiTitleKey.length - 1 ] );			
 
 		var re = new RegExp( /length(&quot;:?\s*)*([^,]*)/ );
 		var dv = re.exec( rewriteHTML )[2];
@@ -227,7 +227,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 			var html_out = '';
 			
 			var common_attr = ' id="mwe_' + vidId + '" ' +
-					'wikiTitleKey="' + wikiTitleKey + '" ' +
+					'apiTitleKey="' + apiTitleKey + '" ' +
 					'src="' + src + '" ' +
 					duration_attr +
 					offset_attr + ' ' +
