@@ -362,7 +362,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 	 */
 	setupForm: function() {
 		mw.log( 'firefogg::setupForm::' );
-		var _this = this;
+		var _this = this;		
 		// Set up the parent if we are in upload mode
 		if ( this.form_type == 'upload' ) {
 			this.pe_setupForm();
@@ -547,7 +547,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 	 * Returns false if it can't be found.
 	 * Overrides mw.BaseUploadInterface.getForm().
 	 */
-	getForm: function() {
+	getForm: function() {	
 		if ( this.form_selector ) {
 			return this.pe_getForm();
 		} else {
@@ -826,6 +826,22 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 			_this.pe_doUpload();
 			return;
 		}
+		// Get the input form data into an array
+		mw.log( 'get this.formData ::' );
+		var data = $j( this.form ).serializeArray();
+		this.formData = {};
+		for ( var i = 0; i < data.length; i++ ) {
+			if ( data[i]['name'] ){
+				// Special case of upload.js commons hack:  
+				if( data[i]['name'] == 'wpUploadDescription' ){
+					this.formData[ 'comment' ] =  data[i]['value'];
+				}else{
+					this.formData[ data[i]['name'] ] = data[i]['value'];
+				}
+			}
+		}	
+		
+		
 		// We can do a chunk upload
 		if(  _this.upload_mode == 'post'  && _this.enable_chunks ){
 			_this.doChunkUpload();

@@ -138,7 +138,10 @@ mw.FirefoggRender.prototype = {
 			_this.doNextFrame();
 		});
 	},
-	// Do the next frame in the render target
+	
+	/**
+	* Do the next frame in the render target
+	*/
 	doNextFrame: function(){
 		var _this = this;
 		// internal function to handle updates:						
@@ -149,7 +152,7 @@ mw.FirefoggRender.prototype = {
 			//mw.log(	'addFrame:' + $j( _this.player_target ).attr( 'id' ) );		
 			_this.fogg.addFrame( $j( _this.player_target ).attr( 'id' ) );
 			_this.render_time += _this.interval;				
-			if ( _this.render_time >= _this.player.getDuration() && _this.continue_rendering) {
+			if ( _this.render_time >= _this.player.getDuration() || ! _this.continue_rendering ) {
 				_this.doFinalRender();
 			} else {			
 				_this.doNextFrame();			
@@ -160,7 +163,7 @@ mw.FirefoggRender.prototype = {
 	/**	
 	* Stop the current render proccess on the next frame
 	*/
-	stopRender:function() {
+	stopRender: function() {
 		this.continue_rendering = false;
 	},
 	

@@ -74,17 +74,14 @@ mw.BaseUploadInterface.prototype = {
 	setupForm: function() {
 		mw.log( "Base::setupForm::" );
 		var _this = this;
+		
 		// Set up the local pointer to the edit form:
-		this.form = this.getForm();
+		this.form = this.getForm();		
+		
 		if ( !this.form ) {
 			mw.log( "Upload form not found!" );
 			return;
-		}
-
-		// If we're in API mode, re-map the upload form to API.
-		if ( this.upload_mode == 'api' ) {
-			this.remapFormToApi();
-		}
+		}		
 
 		// Set up the orig_onsubmit if not set:
 		if ( typeof( this.orig_onsubmit ) == 'undefined' && this.form.onsubmit ) {
@@ -92,7 +89,13 @@ mw.BaseUploadInterface.prototype = {
 		}
 	
 		// Set up the submit action:
-		$j( this.form ).submit( function() {
+		$j( this.form ).submit( function() {	
+			mw.log( "FORM SUBMIT::" );
+			var data = $j( this ).serializeArray();
+			for ( var i = 0; i < data.length; i++ ) {
+				mw.log( $j( data[i] ).attr('name') + ' : ' + $j(data[i]).val() );
+			}		
+		
 			return _this.onSubmit();
 		} );
 	},
@@ -110,30 +113,18 @@ mw.BaseUploadInterface.prototype = {
 				return false;
 			}
 		}
+		// Remap the upload form to the "api" form:
+		this.remapFormToApi();
+		
 		// Check for post action override
 		if ( this.form_post_override ) {
 			mw.log( 'form_post_override is true, do ordinary form submit' );
 			return true;
-		}
-
-		// Get the input form data into an array
-		mw.log( 'update formData::' );
-		var data = $j( this.form ).serializeArray();
-		this.formData = {};
-		for ( var i = 0; i < data.length; i++ ) {
-			if ( data[i]['name'] ){
-				// Special case of upload.js commons hack:  
-				if( data[i]['name'] == 'wpUploadDescription' ){
-					this.formData[ 'comment' ] =  data[i]['value'];
-				}else{
-					this.formData[ data[i]['name'] ] = data[i]['value'];
-				}
-			}
-		}				
-		
+		}		 
+	
+				
 		// Put into a try catch so we are sure to return false:
-		try {
-			
+		try {						
 			// Display a progress dialog
 			_this.displayProgressOverlay();
 
@@ -165,6 +156,7 @@ mw.BaseUploadInterface.prototype = {
 	detectUploadMode: function( callback ) {
 		var _this = this;
 		mw.log( 'detectUploadMode::' +  _this.upload_mode );
+		//debugger;
 		// Check the upload mode
 		if ( _this.upload_mode == 'detect_in_progress' ) {
 			// Don't send another request, wait for the pending one.
@@ -182,6 +174,7 @@ mw.BaseUploadInterface.prototype = {
 
 			// FIXME: move this to configuration and avoid this API request
 			mw.getJSON( _this.api_url, { 'action' : 'paraminfo', 'modules' : 'upload' }, function( data ) {
+					debugger; 
 					if ( typeof data.paraminfo == 'undefined'
 						|| typeof data.paraminfo.modules == 'undefined' )
 					{
@@ -219,7 +212,8 @@ mw.BaseUploadInterface.prototype = {
 	/**
 	 * Do an upload, with the mode given by this.upload_mode
 	 */
-	doUpload: function() {
+	doUpload: function() {		
+		// Note "api" should be called "http_copy_upload" and /post/ should be "form_upload"
 		if ( this.upload_mode == 'api' ) {
 			this.doApiCopyUpload();
 		} else if ( this.upload_mode == 'post' ) {
@@ -236,32 +230,42 @@ mw.BaseUploadInterface.prototype = {
 	 * This is rather ugly, but solutions are constrained by the fact that 
 	 * file inputs can't be moved around or recreated after the user has 
 	 * selected a file in them, which they may well do before DOM ready.
+	 *
+	 * It is also constrained by upload form hacks on commons.
 	 */
 	remapFormToApi: function() {
 		var _this = this;
-		if ( !this.api_url )
+		//
+		mw.log("remapFormToApi:: " + this.api_url + ' form: ' + this.form);
+		
+		if ( !this.api_url ){
+			mw.log( 'Error: no api url target' ); 
 			return false;
-
-		var form = $j( this.form );
+		}
+		var $form = $j( this.form_selector );		
 
 		// Set the form action
-		form.attr('action', _this.api_url);
+		$form.attr('action', _this.api_url);
 
 		// Add API action
-		if ( form.find( "[name='action']" ).length == 0 )
-			form.append( '<input type="hidden" name="action" value="upload">' );
+		if ( $form.find( "[name='action']" ).length == 0 ){
+			$form.append( '<input type="hidden" name="action" value="upload">' );
+		}
 
-		// Add JSON format
-		if ( form.find( "[name='format']" ).length == 0 )
-			form.append( '<input type="hidden" name="format" value="jsonfm">' );
+		// Add JSON response format
+		if ( $form.find( "[name='format']" ).length == 0 ){
+			$form.append( '<input type="hidden" name="format" value="jsonfm">' );
+		}
 
 		// Map a new hidden form
-		form.find( "[name='wpUploadFile']" ).attr( 'name', 'file' );
-		form.find( "[name='wpDestFile']" ).attr( 'name', 'filename' );
-		form.find( "[name='wpUploadDescription']" ).attr( 'name', 'comment' );
-		form.find( "[name='wpEditToken']" ).attr( 'name', 'token' );
-		form.find( "[name='wpIgnoreWarning']" ).attr( 'name', 'ignorewarnings' );
-		form.find( "[name='wpWatchthis']" ).attr( 'name', 'watch' );
+		$form.find( "[name='wpUploadFile']" ).attr( 'name', 'file' );
+		$form.find( "[name='wpDestFile']" ).attr( 'name', 'filename' );
+		$form.find( "[name='wpUploadDescription']" ).attr( 'name', 'comment' );
+		$form.find( "[name='wpEditToken']" ).attr( 'name', 'token' );
+		$form.find( "[name='wpIgnoreWarning']" ).attr( 'name', 'ignorewarnings' );
+		$form.find( "[name='wpWatchthis']" ).attr( 'name', 'watch' );
+		
+		//mw.log( 'comment: ' + $form.find( "[name='comment']" ).val() );
 	},
 
 	/**
@@ -283,23 +287,26 @@ mw.BaseUploadInterface.prototype = {
 	 */
 	doPostUpload: function() {
 		var _this = this;
-		var form = $j( _this.form );
+		var $form = $j( _this.form );
 		mw.log( 'mvBaseUploadInterface.doPostUpload' );
-
 		// Issue a normal post request
 		// Get the token from the page
 		_this.editToken = $j( "#wpEditToken" ).val();
 
 		//@@TODO check for sendAsBinary to support Firefox/HTML5 progress on upload
-
-
+		
+		//Update the progress dialog (no bar without XHR request)
+		$j( '#upProgressDialog' ).html(		
+			mw.loading_spinner()
+		);		
+		
 		// Add the iframe
 		_this.iframeId = 'f_' + ( $j( 'iframe' ).length + 1 );
 		$j( "body" ).append( '<iframe src="javascript:false;" id="' + _this.iframeId + '" ' +
 			'name="' + _this.iframeId + '" style="display:none;" ></iframe>' );
 
 		// Set the form target to the iframe
-		form.attr( 'target', _this.iframeId );
+		$form.attr( 'target', _this.iframeId );
 
 		// Set up the completion callback
 		$j( '#' + _this.iframeId ).load( function() {
@@ -307,17 +314,18 @@ mw.BaseUploadInterface.prototype = {
 		});
 
 		// Set the action to the API URL:
-		form.attr( 'action', _this.api_url );
+		$form.attr( 'action', _this.api_url );
 
-		mw.log( 'Do iframe form submit to: ' +  form.attr( 'target' ) );
-		mw.log( ' destName:' + form.find( "[name='filename']" ).val() );
+		mw.log( 'Do iframe form submit of: ' +  $form.attr( 'target' )  + ' to: ' + $form.attr('action') );
+		mw.log( ' destName:' + $form.find( "[name='filename']" ).val() );
+		mw.log( ' content:' + $form.find( "[name='comment']" ).val() );
 
 		// Do post override
 		_this.form_post_override = true;
+				
 		// Reset the done with action flag
-		_this.action_done = false;
-
-		form.submit();
+		_this.action_done = false;	
+		$form.submit();
 	},
 
 	/**
@@ -749,7 +757,7 @@ mw.BaseUploadInterface.prototype = {
 	 */
 	processApiResult: function( apiRes ) {
 		var _this = this;
-		mw.log( 'processApiResult::' );
+		mw.log( 'processApiResult::' );		
 		if ( !_this.isApiSuccess( apiRes ) ) {
 			// Error detected, show it to the user
 			_this.showApiError( apiRes );
@@ -838,6 +846,18 @@ mw.BaseUploadInterface.prototype = {
 	 * Returns false if it can't be found.
 	 */
 	getForm: function() {
+		
+		/*debugger;
+		var cat = this.form_selector;
+		var forms = document.getElementsByTagName('form');
+		mw.log('got ' + forms.length + ' foms ');
+		for( var i in forms ){
+			var fish = forms[ i ];
+			mw.log( 'fish: ' + fish.id );
+		}
+		var cat = $j( this.form_selector ).get(0);
+		mw.log( 'getForm::' + cat.id );
+		*/
 		if ( this.form_selector && $j( this.form_selector ).length != 0 ) {
 			return $j( this.form_selector ).get( 0 );
 		} else {
@@ -886,6 +906,8 @@ mw.BaseUploadInterface.prototype = {
 			},
 			buttons: _this.getCancelButton()
 		} );
+		mw.log( 'upProgressDialog::dialog done' );
+		
 		$j( '#upProgressDialog' ).html(
 			'<div id="up-pbar-container" style="width:90%;height:15px;" >' +
 			'<div id="up-progressbar" style="height:15px;"></div>' +
@@ -905,13 +927,14 @@ mw.BaseUploadInterface.prototype = {
 	},
 
 	/**
-	 * Get a standard cancel button in the jQuery.ui dialog format
-	 */
+	* Get a standard cancel button in the jQuery.ui dialog format
+	*/
 	getCancelButton: function() {
 		var _this = this;
-		var cancelBtn = new Array();
+		mw.log( 'f: getCancelButton()' );
+		var cancelBtn = [];
 		cancelBtn[ gM( 'mwe-cancel' ) ] = function() {
-			return _this.onCancel( this )
+			$j( dlElm ).dialog( 'close' );
 		};
 		return cancelBtn;
 	},
@@ -925,7 +948,7 @@ mw.BaseUploadInterface.prototype = {
 		//confirm:
 		if ( confirm( gM( 'mwe-cancel-confim' ) ) ) {
 			//@@todo (cancel the encode / upload)
-			$j( this ).dialog( 'close' );
+			$j( dlElm ).dialog( 'close' );
 		}
 	}
 };
