@@ -93,7 +93,7 @@ define('SPREADSHEET_EXCEL_WRITER_EQ', "=");
 define('SPREADSHEET_EXCEL_WRITER_NE', "<>");
 
 
-require_once( $qp_ExtDir . '/Excel/PEAR.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/PEAR.php' );
 
 /**
 * Class for parsing Excel formulas

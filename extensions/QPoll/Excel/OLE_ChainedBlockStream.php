@@ -22,8 +22,8 @@
  * @since      File available since Release 0.6.0
  */
 
-require_once( $qp_ExtDir . '/Excel/PEAR.php' );
-require_once( $qp_ExtDir . '/Excel/OLE.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/PEAR.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/OLE.php' );
 
 /**
  * Stream wrapper for reading data stored in an OLE file. Implements methods

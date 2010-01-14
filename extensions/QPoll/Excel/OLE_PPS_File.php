@@ -20,8 +20,8 @@
 // $Id: File.php,v 1.12 2008/02/02 21:00:37 schmidt Exp $
 
 
-require_once( $qp_ExtDir . '/Excel/OLE_PPS.php' );
-require_once( $qp_ExtDir . '/Excel/System.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/OLE_PPS.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/System.php' );
 
 /**
 * Class for creating File PPS's for OLE containers

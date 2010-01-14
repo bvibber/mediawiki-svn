@@ -30,7 +30,7 @@ define('OLE_DATA_SIZE_SMALL', 0x1000);
 define('OLE_LONG_INT_SIZE',        4);
 define('OLE_PPS_SIZE',          0x80);
 
-require_once( $qp_ExtDir . '/Excel/PEAR.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/PEAR.php' );
 
 /**
 * Array for storing OLE instances that are accessed from
@@ -222,7 +222,7 @@ class OLE extends PEAR
      */
     function getStream($blockIdOrPps)
     {
-        require_once( $qp_ExtDir . '/Excel/OLE_ChainedBlockStream.php' );
+        require_once( qp_Setup::$ExtDir . '/Excel/OLE_ChainedBlockStream.php' );
         static $isRegistered = false;
         if (!$isRegistered) {
             stream_wrapper_register('ole-chainedblockstream',

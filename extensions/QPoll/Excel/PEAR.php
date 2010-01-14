@@ -763,7 +763,7 @@ class PEAR
 }
 
 if (PEAR_ZE2) {
-    include_once( $qp_ExtDir . '/Excel/PEAR5.php' );
+    include_once( qp_Setup::$ExtDir . '/Excel/PEAR5.php' );
 }
 
 // {{{ _PEAR_call_destructors()

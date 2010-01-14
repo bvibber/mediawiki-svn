@@ -32,7 +32,7 @@
 *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-require_once( $qp_ExtDir . '/Excel/PEAR.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/PEAR.php' );
 
 /**
 * Class for writing Excel BIFF records.

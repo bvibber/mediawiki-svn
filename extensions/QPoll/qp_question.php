@@ -541,7 +541,7 @@ class qp_Question extends qp_AbstractQuestion {
 			$this->mType = 'mixedChoice';
 			break;
 		default :
-			$this->setState( 'error', wfMsg( 'qp_error_invalid_question_type', htmlentities( $type ) ) );
+			$this->setState( 'error', wfMsg( 'qp_error_invalid_question_type', qp_Setup::entities( $type ) ) );
 		}
 	}
 
@@ -810,7 +810,7 @@ class qp_Question extends qp_AbstractQuestion {
 				$inp[ 'type' ] = $inputType;
 				$inp[ 'name' ] = $name;
 				if ( $inputType == 'text' ) {
-					$inp[ 'value' ] = htmlspecialchars( $text_answer );
+					$inp[ 'value' ] = qp_Setup::specialchars( $text_answer );
 					if ( $this->textInputStyle != '' ) {
 						$inp[ 'style' ] = $this->textInputStyle;
 					}

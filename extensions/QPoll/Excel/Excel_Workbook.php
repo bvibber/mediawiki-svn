@@ -32,12 +32,12 @@
 *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-require_once( $qp_ExtDir . '/Excel/Excel_Format.php' );
-require_once( $qp_ExtDir . '/Excel/Excel_BIFFwriter.php' );
-require_once( $qp_ExtDir . '/Excel/Excel_Worksheet.php' );
-require_once( $qp_ExtDir . '/Excel/Excel_Parser.php' );
-require_once( $qp_ExtDir . '/Excel/OLE_PPS_Root.php' );
-require_once( $qp_ExtDir . '/Excel/OLE_PPS_File.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/Excel_Format.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/Excel_BIFFwriter.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/Excel_Worksheet.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/Excel_Parser.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/OLE_PPS_Root.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/OLE_PPS_File.php' );
 
 /**
 * Class for generating Excel Spreadsheets
@@ -375,7 +375,7 @@ class Spreadsheet_Excel_Writer_Workbook extends Spreadsheet_Excel_Writer_BIFFwri
      */
     function &addValidator()
     {
-        include_once( $qp_ExtDir . '/Excel/Excel_Validator.php' );
+        include_once( qp_Setup::$ExtDir . '/Excel/Excel_Validator.php' );
         /* FIXME: check for successful inclusion*/
         $valid = new Spreadsheet_Excel_Writer_Validator($this->_parser);
         return $valid;

@@ -18,7 +18,7 @@
 //
 // $Id: Getopt.php,v 1.4 2007/06/12 14:58:56 cellog Exp $
 
-require_once( $qp_ExtDir . '/Excel/PEAR.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/PEAR.php' );
 
 /**
  * Command-line options parsing class.

@@ -17,8 +17,8 @@
 /**
  * base class
  */
-require_once( $qp_ExtDir . '/Excel/PEAR.php' );
-require_once( $qp_ExtDir . '/Excel/Console_Getopt.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/PEAR.php' );
+require_once( qp_Setup::$ExtDir . '/Excel/Console_Getopt.php' );
 
 $GLOBALS['_System_temp_files'] = array();
 

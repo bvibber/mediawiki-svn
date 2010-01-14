@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
  * 
- * @version 0.6.3
+ * @version 0.6.4
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
  */
@@ -36,8 +36,6 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is part of the QPoll extension. It is not a valid entry point.\n" );
 }
-
-qp_CheckRequiredClassesAndMethods();
 
 define( 'QP_CSS_ERROR_COLOR1' , "LightYellow" );
 define( 'QP_CSS_ERROR_COLOR2', "#D700D7" );
@@ -48,13 +46,15 @@ define( 'QP_ERROR_INVALID_ADDRESS', 2 );
 
 define( 'QP_MAX_TEXT_ANSWER_LENGTH', 1024 );
 
+qp_Setup::init();
+
 /**
  * Extension's parameters.
  */
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QPoll',
-	'version' => '0.6.3',
+	'version' => '0.6.4',
 	'author' => 'QuestPC',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
 	'description' => 'Allows creation of polls',
@@ -63,130 +63,195 @@ $wgExtensionCredits['parserhook'][] = array(
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'QPoll results page',
-	'version' => '0.6.3',
+	'version' => '0.6.4',
 	'author' => 'QuestPC',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
 	'description' => 'QPoll extension [[Special:PollResults]] page for viewing results of the polls',
 	'descriptionmsg' => 'qp_desc-sp',
 );
 
-/**
- * Add this extension to the mediawiki's extensions list.
- */
-$qp_ExtDir = str_replace( "\\", "/", dirname(__FILE__) ); // filesys path with windows path fix
-$dirs = explode( '/', $qp_ExtDir );
-$qp_top_dir = array_pop( $dirs );
-$qp_ScriptPath = $wgScriptPath . '/extensions' . ( ( $qp_top_dir == 'extensions' ) ? '' : '/' . $qp_top_dir ); // apache virtual path
+class qp_Setup {
 
-$wgExtensionMessagesFiles['QPoll'] = $qp_ExtDir . '/qp_i18n.php';
-$wgAutoloadClasses['PollResults'] = $qp_ExtDir . '/qp_results.php';
-$wgAutoloadClasses['qp_Question'] = $qp_ExtDir . '/qp_question.php';
-$wgAutoloadClasses['qp_QuestionStats'] = $qp_ExtDir . '/qp_question.php';
-$wgAutoloadClasses['qp_PollStore'] = $qp_ExtDir . '/qp_pollstore.php';
-$wgAutoloadClasses['qp_QuestionData'] = $qp_ExtDir . '/qp_pollstore.php';
-$wgAutoloadClasses['qp_QueryPage'] = $qp_ExtDir . '/qp_results.php';
-// TODO: Use the new technique for i18n of special page aliases
-$wgSpecialPages['PollResults'] = array('PollResults');
+	static $ExtDir; // filesys path with windows path fix
+	static $ScriptPath; // apache virtual path
+	static $messagesLoaded = false; // check whether the extension's localized messages are loaded
+	static $article; // Article instance we got from hook parameter
+	static $user; // User instance we got from hook parameter
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'wfQPollExtension';
-} else {
-	die( "QPoll extension requires ParserFirstCallInit hook.\nPlease upgrade your MediaWiki installation first.\n" );
-	$wgExtensionFunctions[] = 'wfQPollExtension';
-}
+	static function entities( &$s ) {
+		return htmlentities( $s, ENT_COMPAT, 'UTF-8' );
+	}
 
-// TODO: Use the new technique for i18n of magic words
-$wgHooks['LanguageGetMagic'][]       = 'qp_FunctionsHook::languageGetMagic';
-$wgHooks['LoadAllMessages'][] = 'qp_AbstractPoll::loadMessages';
+	static function specialchars( &$s ) {
+		return htmlspecialchars( $s, ENT_COMPAT, 'UTF-8' );
+	}
 
-function qp_CheckRequiredClassesAndMethods() {
-	$required_classes_and_methods = array(
-		array( "Linker"=>"link" ),
-		array( "OutputPage"=>"isPrintable" ),
-		array( "Parser"=>"fetchTemplate" ),
-		array( "Parser"=>"getTitle" ),
-		array( "Parser"=>"setHook" ),
-		array( "Parser"=>"recursiveTagParse" ),
-		array( "Title"=>"getArticleID" ),
-		array( "Title"=>"getPrefixedText" ),
-		array( "Title"=>"makeTitle" ),
-		array( "Title"=>"makeTitleSafe" ),
-		array( "Title"=>"newFromID" )
-	);
-	foreach ( $required_classes_and_methods as &$check ) {
-		list( $object, $method ) = each( $check );
-		if ( !method_exists( $object, $method ) ) {
-			die( "QPoll extension requires " . $object . "::" . $method . " to be available.<br />\n" .
-				"Your version of MediaWiki is incompatible with this extension.\n" );
+	static function coreRequirements() {
+		$required_classes_and_methods = array(
+			array( 'Article'=>'doPurge' ),
+			array( 'Linker'=>'link' ),
+			array( 'OutputPage'=>'isPrintable' ),
+			array( 'Parser'=>'getTitle' ),
+			array( 'Parser'=>'setHook' ),
+			array( 'Parser'=>'recursiveTagParse' ),
+			array( 'ParserCache'=>'getKey' ),
+			array( 'ParserCache'=>'singleton' ),
+			array( 'Title'=>'getArticleID' ),
+			array( 'Title'=>'getPrefixedText' ),
+			array( 'Title'=>'makeTitle' ),
+			array( 'Title'=>'makeTitleSafe' ),
+			array( 'Title'=>'newFromID' )
+		);
+		foreach ( $required_classes_and_methods as &$check ) {
+			list( $object, $method ) = each( $check );
+			if ( !method_exists( $object, $method ) ) {
+				die( "QPoll extension requires " . $object . "::" . $method . " method to be available.<br />\n" .
+					"Your version of MediaWiki is incompatible with this extension.\n" );
+			}
+		}
+		if ( !defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+			die( "QPoll extension requires ParserFirstCallInit hook.\nPlease upgrade your MediaWiki installation first.\n" );
 		}
 	}
-}
 
-/**
- * Register the extension with the WikiText parser.
- */
-function wfQPollExtension() {
-	global $qp_ScriptPath;
-	global $wgParser;
-	global $wgExtensionCredits;
-	global $wgQPollFunctionsHook;
-	global $wgContLang;
-	global $wgJsMimeType, $wgOut;
-	global $qp_enable_showresults;
-	# setup proper integer global showresults level
-	if ( isset( $qp_enable_showresults ) ) {
-		if ( !is_int( $qp_enable_showresults ) ) {
-			# convert from older v0.5 boolean value
-			$qp_enable_showresults = (int) (boolean) $qp_enable_showresults;
+	/**
+	 * Add this extension to the mediawiki's extensions list.
+	 */
+	static function init() {
+		global $wgScriptPath;
+		global $wgAutoloadClasses;
+		global $wgExtensionMessagesFiles;
+		global $wgSpecialPages;
+		global $wgHooks;
+		self::coreRequirements();
+		self::$ExtDir = str_replace( "\\", "/", dirname(__FILE__) );
+		$dirs = explode( '/', self::$ExtDir );
+		$top_dir = array_pop( $dirs );
+		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir ); 
+		$wgExtensionMessagesFiles['QPoll'] = self::$ExtDir . '/qp_i18n.php';
+		$wgAutoloadClasses['PollResults'] = self::$ExtDir . '/qp_results.php';
+		$wgAutoloadClasses['qp_Question'] = self::$ExtDir . '/qp_question.php';
+		$wgAutoloadClasses['qp_QuestionStats'] = self::$ExtDir . '/qp_question.php';
+		$wgAutoloadClasses['qp_PollStore'] = self::$ExtDir . '/qp_pollstore.php';
+		$wgAutoloadClasses['qp_QuestionData'] = self::$ExtDir . '/qp_pollstore.php';
+		$wgAutoloadClasses['qp_QueryPage'] = self::$ExtDir . '/qp_results.php';
+		// TODO: Use the new technique for i18n of special page aliases
+		$wgSpecialPages['PollResults'] = array('PollResults');
+		// TODO: Use the new technique for i18n of magic words
+		$wgHooks['LanguageGetMagic'][]       = 'qp_Setup::languageGetMagic';
+		$wgHooks['MediaWikiPerformAction'][] = 'qp_Setup::mediaWikiPerformAction';
+		$wgHooks['ParserFirstCallInit'][] = 'qp_Setup::parserFirstCallInit';
+		$wgHooks['LoadAllMessages'][] = 'qp_Setup::loadMessages';
+	}
+
+	static function loadMessages() {
+		if ( !self::$messagesLoaded ) {
+			self::$messagesLoaded = true;
+			wfLoadExtensionMessages('QPoll');
 		}
-		if ( $qp_enable_showresults < 0 ) {
+		return true;
+	}
+
+	static function ParserFunctionsWords( $lang ) {
+		$words = array();
+		$words[ 'en' ] = array( 'qpuserchoice'=>array( 0, 'qpuserchoice' ) );
+		# English is used as a fallback, and the English synonyms are
+		# used if a translation has not been provided for a given word
+		return ( $lang == 'en' || !array_key_exists( $lang, $words ) )
+			? $words[ 'en' ]
+			: array_merge( $words[ 'en' ], $words[ $lang ] );
+	}
+
+	static function languageGetMagic( &$magicWords, $langCode ) {
+		foreach( self::ParserFunctionsWords( $langCode ) as $word => $trans )
+			$magicWords [$word ] = $trans;
+		return true;
+	}
+
+	static function clearCache() {
+		$parserCache = ParserCache::singleton();
+		$key = $parserCache->getKey( self::$article, self::$user );
+		$parserCache->mMemc->delete( $key );
+		self::$article->doPurge();
+	}
+	
+	static function mediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
+		global $wgCookiePrefix;
+		global $qp_enable_showresults;
+		self::$article = $article;
+		self::$user = $user;
+		# setup proper integer global showresults level
+		if ( isset( $qp_enable_showresults ) ) {
+			if ( !is_int( $qp_enable_showresults ) ) {
+				# convert from older v0.5 boolean value
+				$qp_enable_showresults = (int) (boolean) $qp_enable_showresults;
+			}
+			if ( $qp_enable_showresults < 0 ) {
+				$qp_enable_showresults = 0;
+			}
+			if ( $qp_enable_showresults > 2 ) {
+				$qp_enable_showresults = 2;
+			}
+		} else {
 			$qp_enable_showresults = 0;
 		}
-		if ( $qp_enable_showresults > 2 ) {
-			$qp_enable_showresults = 2;
+		if ( isset( $_COOKIE[$wgCookiePrefix.'QPoll'] ) ) {
+			$request->response()->setCookie( 'QPoll', '', time() - 86400 ); // clear cookie
+			self::clearCache();
+		} elseif ( $request->getVal('pollId') !== null ) {
+			self::clearCache();
 		}
-	} else {
-		$qp_enable_showresults = 0;
+		return true;
 	}
-	# Ouput the style and the script to the header once for all.
-	$head  = '<style type="text/css">' . "\n";
-	$head .= '.qpoll .fatalerror { border: 1px solid gray; padding: 4px; ' . QP_CSS_ERROR_STYLE . ' }' . "\n";
-	$head .= '</style>' . "\n";
-	$head .= '<script type="' . $wgJsMimeType . '" src="' . $qp_ScriptPath . '/qp_user.js"></script>' . "\n";
-	$wgOut->addScript( $head );
-	$wgOut->addExtensionStyle( $qp_ScriptPath . '/qp_user.css' );
-	if ( $wgContLang->isRTL() ) {
-		$wgOut->addExtensionStyle( $qp_ScriptPath . '/qp_user_rtl.css' );
+
+	/**
+	 * Register the extension with the WikiText parser.
+	 */
+	static function parserFirstCallInit() {
+		global $wgParser;
+		global $wgExtensionCredits;
+		global $wgQPollFunctionsHook;
+		global $wgContLang;
+		global $wgJsMimeType, $wgOut;
+		# Ouput the style and the script to the header once for all.
+		$head  = '<style type="text/css">' . "\n";
+		$head .= '.qpoll .fatalerror { border: 1px solid gray; padding: 4px; ' . QP_CSS_ERROR_STYLE . ' }' . "\n";
+		$head .= '</style>' . "\n";
+		$head .= '<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/qp_user.js"></script>' . "\n";
+		$wgOut->addScript( $head );
+		$wgOut->addExtensionStyle( self::$ScriptPath . '/qp_user.css' );
+		if ( $wgContLang->isRTL() ) {
+			$wgOut->addExtensionStyle( self::$ScriptPath . '/qp_user_rtl.css' );
+		}
+		# setup tag hook
+		$wgParser->setHook("qpoll", "qp_Setup::renderPoll");
+		$wgQPollFunctionsHook = new qp_FunctionsHook();
+		# setup function hook
+		$wgParser->setFunctionHook( 'qpuserchoice', array( &$wgQPollFunctionsHook, 'qpuserchoice' ), SFH_OBJECT_ARGS );
+		return true;
 	}
-	# setup tag hook
-	$wgParser->setHook("qpoll", "qp_RenderPoll");
-	$wgQPollFunctionsHook = new qp_FunctionsHook();
-	# setup function hook
-	$wgParser->setFunctionHook( 'qpuserchoice', array( &$wgQPollFunctionsHook, 'qpuserchoice' ), SFH_OBJECT_ARGS );
-	return true;
+
+	/**
+	 * Call the poll parser on an input text.
+	 * 
+	 * @param  $input				Text between <qpoll> and </qpoll> tags, in QPoll syntax.
+	 * @param  $argv				An array containing any arguments passed to the extension
+	 * @param  &$parser				The wikitext parser.
+	 * 
+	 * @return 						An HTML poll.
+	 */
+
+	/* @param  $input				Text between <qpoll> and </qpoll> tags, in QPoll syntax. */
+	static function renderPoll( $input, $argv, $parser ) {
+		if ( array_key_exists( 'address', $argv ) ) {
+			$qpoll = new qp_PollStats( $argv, $parser );
+		} else {
+			$qpoll = new qp_Poll( $argv, $parser );
+		}
+		return $qpoll->parsePoll( $input );
+	}
+
 }
-
-/**
- * Call the poll parser on an input text.
- * 
- * @param  $input				Text between <qpoll> and </qpoll> tags, in QPoll syntax.
- * @param  $argv				An array containing any arguments passed to the extension
- * @param  &$parser				The wikitext parser.
- * 
- * @return 						An HTML poll.
- */
-
-/* @param  $input				Text between <qpoll> and </qpoll> tags, in QPoll syntax. */
-function qp_RenderPoll( $input, $argv, $parser ) {
-	$parser->disableCache();
-	if ( array_key_exists( 'address', $argv ) ) {
-		$qpoll = new qp_PollStats( $argv, $parser );
-	} else {
-		$qpoll = new qp_Poll( $argv, $parser );
-	}
-	return $qpoll->parsePoll( $input );
-}
-
 
 /***
 	* a poll stub which cannot process and render itself
@@ -204,8 +269,6 @@ class qp_AbstractPoll {
 
 	var $parser; // parser for parsing tags content
 	var $username;
-	// params of tag
-	var $wikiTag = 'qpoll';
 
 	# an ID of the poll on current page (used in declaration/voting mode)
 	var $mPollId = null;
@@ -236,6 +299,7 @@ class qp_AbstractPoll {
 		global $qp_enable_showresults;
 		$this->parser = &$parser;
 		$this->mRequest = &$wgRequest;
+		$this->mResponse = $wgRequest->response();
 		# Determine which messages will be used, according to the language.
 		self::loadMessages();
 		# load current skin
@@ -671,11 +735,9 @@ class qp_Poll extends qp_AbstractPoll {
 			$this->pollStore->setUserVote();
 		}
 		if ( $this->pollStore->voteDone ) {
-			# purge itself on successful vote to update the statistics
-//			$wgArticle->doPurge(); // TODO: does not work. why ?
-			# redirect to itself, otherwise stats display will not be updated (showresults parameter)
-			$this->mRequest->response()->header( 'HTTP/1.0 302 Moved Temporarily' );
-			$this->mRequest->response()->header( 'Location: ' . $wgTitle->getFullURL() . self::getPollTitleFragment( $this->mPollId ) );
+			$this->mResponse->setcookie( 'QPoll', 'clearCache', time()+20 ); 
+			$this->mResponse->header( 'HTTP/1.0 302 Found' );
+			$this->mResponse->header( 'Location: ' . $wgTitle->getFullURL() . self::getPollTitleFragment( $this->mPollId ) );
 			return true;
 		}
 		return $output;
@@ -891,7 +953,7 @@ class qp_Poll extends qp_AbstractPoll {
 		if ( $question->getState() != 'error' ) {
 			# load previous user choice, when it's available and DB header is compatible with parsed header
 			if ( $body === null || !method_exists( $question, $question->mType . 'ParseBody' ) ) {
-				$question->setState( 'error', wfMsgHtml( 'qp_error_question_not_implemented', htmlentities( $question->mType ) ) );
+				$question->setState( 'error', wfMsgHtml( 'qp_error_question_not_implemented', qp_Setup::entities( $question->mType ) ) );
 			} else {
 				# parse the categories and spans (metacategories)
 				$question->parseBodyHeader( $body );
@@ -1144,7 +1206,7 @@ class qp_FunctionsHook {
 	var $error_message = 'no_such_poll';
 
 	function qpuserchoice( &$parser, $frame, $args ) {
-		qp_AbstractPoll::loadMessages();
+		qp_Setup::loadMessages();
 		$this->frame = &$frame;
 		$this->args = &$args;
 		if ( isset( $args[ 0 ] ) ) {
@@ -1175,7 +1237,7 @@ class qp_FunctionsHook {
 				}
 			}
 		}
-		return '<strong class="error">qpuserchoice: ' . wfMsgHTML( 'qp_func_' . $this->error_message, htmlspecialchars( $this->pollAddr ), htmlspecialchars( $this->question_id ), htmlspecialchars( $this->proposal_id ) ) . '</strong>';
+		return '<strong class="error">qpuserchoice: ' . wfMsgHTML( 'qp_func_' . $this->error_message, qp_Setup::specialchars( $this->pollAddr ), qp_Setup::specialchars( $this->question_id ), qp_Setup::specialchars( $this->proposal_id ) ) . '</strong>';
 	}
 
 	function getQuestionData( $qid ) {
@@ -1226,24 +1288,8 @@ class qp_FunctionsHook {
 				}
 			}
 		}
-		# do not need to use htmlentities because the result is a wikitext (will be escaped by parser)
+		# do not need to use qp_Setup::entities because the result is a wikitext (will be escaped by parser)
 		return $result;
-	}
-
-	static function ParserFunctionsWords( $lang ) {
-		$words = array();
-		$words[ 'en' ] = array( 'qpuserchoice'=>array( 0, 'qpuserchoice' ) );
-		# English is used as a fallback, and the English synonyms are
-		# used if a translation has not been provided for a given word
-		return ( $lang == 'en' || !array_key_exists( $lang, $words ) )
-			? $words[ 'en' ]
-			: array_merge( $words[ 'en' ], $words[ $lang ] );
-	}
-
-	static function languageGetMagic( &$magicWords, $langCode ) {
-		foreach( qp_FunctionsHook::ParserFunctionsWords( $langCode ) as $word => $trans )
-			$magicWords [$word ] = $trans;
-		return true;
 	}
 
 }

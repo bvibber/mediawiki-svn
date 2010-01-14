@@ -7,7 +7,7 @@ OLE-1.0.0RC1.tgz
 Spreadsheet_Excel_Writer-0.9.1.tgz
 
 Nested filename paths are replaced to longer filenames with underscores, because I find deep nesting unhandy.
-require_once() and include_once() calls are also corrected relative from $qp_ExtDir extension global variable.
+require_once() and include_once() calls are made relative from qp_Setup::$ExtDir extension's property.
 
 Spreadsheet_Excel_Writer-0.9.1 has a bug related to UTF16-LE string cell data encoding.
 This bug can cause corruption of exported XLS files when non-ASCII set of codes
