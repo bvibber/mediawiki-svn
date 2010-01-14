@@ -836,10 +836,10 @@ mw.Sequencer.prototype = {
 		mw.load( [
 			'mw.ClipEdit'
 		], function() {
-			// Zero out the current editor: 			
+			// Zero out the current editor:		
 			_this.myClipEditor = { };
 			// Setup the cliploader options
-			_this.myClipEditor = new mvClipEdit( {
+			_this.myClipEditor = new mw.ClipEdit( {
 				'resource'					: resource,
 				'target_control_display'	: 'clipedit_ic',
 				'target_clip_display'		: resource.id,				

@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r74';
+var mwRemoteVersion = 'r75';
 var mwUseScriptLoader = true;
 
 // Setup up request Params: 
@@ -36,7 +36,7 @@ function doPageSpecificRewrite() {
 		return ;	
 	ranRewrites = 'done';
 	// Add media wizard
-	if ( wgAction == 'edit' || wgAction == 'submit' ) {			
+	if ( wgAction == 'edit' || wgAction == 'submit' ) {				
 		loadMwEmbed( [ 
 			'mw.RemoteSearchDriver', 
 			'$j.fn.textSelection', 
@@ -319,7 +319,7 @@ function loadMwEmbed( classSet, callback ) {
 		callback = classSet;
 		
 	// Inject mwEmbed if needed
-	if ( typeof mw == 'undefined' ) {
+	if ( typeof MW_EMBED_VERSION == 'undefined' ) {
 		if ( ( mwReqParam['uselang'] || mwReqParam[ 'useloader' ] ) && mwUseScriptLoader ) {
 			var rurl = mwEmbedHostPath + '/mwEmbed/jsScriptLoader.php?class=mwEmbed';
 			

@@ -46,15 +46,15 @@ var default_form_options = {
 		}
 		
 		// Get an edit Token for "uploading"
-		mw.getToken( 'File:MyRandomFileTokenCheck', options.api_target, function( eToken ) {
+		mw.getToken( 'File:MyRandomFileTokenCheck.jpg', options.api_target, function( eToken ) {
 			if ( !eToken || eToken == '+\\' ) {
-				$( this.selector ).html( gM( 'mwe-error_not_loggedin' ) );
+				$( _this.selector ).html( gM( 'mwe-error_not_loggedin' ) );
 				return false;
 			}
 
 			// Build an upload form:
 			var o = '<div>' +
-						'<form id="suf-upload" enctype="multipart/form-data" action="' + options.api_target + '" method="post">'  +
+						'<form id="suf_upload" name="suf_upload" enctype="multipart/form-data" action="' + options.api_target + '" method="post">'  +
 						// hidden input:
 						'<input type="hidden" name="action" value="upload">' +
 						'<input type="hidden" name="format" value="jsonfm">' +
@@ -149,7 +149,7 @@ var default_form_options = {
 						// MediaWiki API supports chunk uploads: 
 						'enable_chunks' : true,
 											
-						'edit_form_selector' : '#suf-upload',
+						'form_selector' : '#suf_upload',
 						'new_source_cb' : function( orgFilename, oggName ) {
 							$j( "#wpDestFile" ).val( oggName ).doDestCheck( {
 								warn_target: "#wpDestFile-warning"

@@ -448,10 +448,12 @@ mw.PlayList.prototype = {
 		
 		// Update the target player:
 		this.$interface = $j( this ).parent( '.interface_wrap' );
+		
+		// Empty out the old interface: 
 		this.ctrlBuilder.embedPlayer = this;
 		
-		if ( this.controls == true ) {					
-			// prepend the title (ontop)
+		if ( this.controls == true && $j('#ptitle_' + this.id).length == 0 ) {					
+			// prepend the title (ontop) if not there
 			this.$interface.prepend(
 				$j('<div>')
 				.css({

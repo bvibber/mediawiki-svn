@@ -25,6 +25,11 @@ if ( !window['mw'] ) {
 	window['mw'] = { }
 }
 
+/*
+* Set the mwEmbedVersion ( not set by stopgap )
+*/
+var MW_EMBED_VERSION = '1.0';
+
 /**
 * The set of modules that you want enable. 
 * 
@@ -57,9 +62,7 @@ var mwEnabledModuleList =  [
 */  
 var mwDefaultConf = {
 
-
 	'enabledModules' : mwEnabledModuleList,
-
 
 	// Default skin name
 	'skinName' : 'mvpcf',
@@ -92,7 +95,7 @@ var mwDefaultConf = {
 	// The mediaWiki path of mvEmbed  
 	'mediaWiki_mwEmbedPath' : 'js/mwEmbed/',
 	
-	// Api actions that must be submited in a POST, and need an api proxy for cross domain calls
+	// Api actions that must be submitted in a POST, and need an api proxy for cross domain calls
 	'apiPostActions': [ 'login', 'purge', 'rollback', 'delete', 'undelete',
 		'protect', 'block', 'unblock', 'move', 'edit', 'upload', 'emailuser',
 		'import', 'userrights' ],
@@ -2262,7 +2265,7 @@ var mwDefaultConf = {
 	* so avoid calling this function where possible and 
 	* cache its result
 	*
-	* Note this only works when mwEmbed is on the same domain as the style sheets
+	* Note this only works for style sheets on the same domain :(
 	* 
 	* @param {String} styleRule Style rule name to check
 	* @return 
@@ -2274,7 +2277,7 @@ var mwDefaultConf = {
 		// Set up the skin paths configuration		
 		for( var i=0 ; i < document.styleSheets.length ; i++ ){
 			var rules = null;			
-			try {
+			try{
 				if ( document.styleSheets[i].cssRules )
 					rules = document.styleSheets[i].cssRules
 				else if (document.styleSheets[0].rules)
@@ -2285,8 +2288,8 @@ var mwDefaultConf = {
 						return true;
 					}		
 				}
-			} catch ( e ){
-				mw.log( 'Error: cross domain style sheet:' + document.styleSheets[i].href);
+			}catch ( e ){
+				mw.log( 'Error: cant check rule on cross domain style sheet:' + document.styleSheets[i].href );
 			}
 		}
 		return false;	

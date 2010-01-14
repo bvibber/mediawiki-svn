@@ -956,13 +956,13 @@ mw.RemoteSearchDriver.prototype = {
 				var wTitle = resultData['filename'];
 				// Add a loading div
 				_this.addResourceEditLoader();
-
 				//Add the uploaded result
 				provider.sObj.addByTitle( wTitle, function( resource ) {
 					// Redraw ( with added result if new )
 					_this.showResults();					
 					// Pull up resource editor:
-					_this.showResourceEditor( resource, $j( '#res_upload__' + resource.id ).get( 0 ) );
+					debugger;
+					_this.showResourceEditor( resource, $j( '#res_this_wiki_' + resource.id ).get( 0 ) );
 				} );
 				// Return false to close progress window:
 				return false;
@@ -1607,7 +1607,7 @@ mw.RemoteSearchDriver.prototype = {
 		$j( _this.target_container ).dialog( 'option', 'title', dialogTitle );
 		mw.log( 'did append to: ' + _this.target_container );
 
-		// Left side holds the image right size the controls /
+		// Left side holds the image right size the controls
 		$j( rsdElement )
 			.clone()
 			.attr( 'id', 'rsd_edit_img' )
@@ -2504,7 +2504,7 @@ mw.RemoteSearchDriver.prototype = {
 		setTimeout( 
 			function() {
 				$j( _this.target_container ).dialog( 'close' );
-				$j( '#rsd_modal_target').remove();
+				$j( _this.target_container ).remove();
 			}, 25 
 		);
 	},
