@@ -596,7 +596,7 @@ class OggTransformOutput extends MediaTransformOutput {
 
 	function toHtml( $options = array() ) {
 		global $wgEnableTemporalOggUrls, $wgVideoTagOut,
-			$wgScriptPath, $wgEnableTimedText;
+			$wgScriptPath, $wgEnableTimedText, $wgVideoPlayerSkin;
 
 		wfLoadExtensionMessages( 'OggHandler' );
 		if ( count( func_get_args() ) == 2 ) {
@@ -642,7 +642,7 @@ class OggTransformOutput extends MediaTransformOutput {
 					'src' => $url,
 					'wikiTitleKey' => $this->file->getTitle()->getDBKey(),
 					'style' => "width:{$width}px;height:{$playerHeight}px",
-					'thumbnail'=>$thumb_url,
+					'poster'=>$thumb_url,
 					'controls'=> 'true',
 					'durationHint' => $length,
 					'startOffset' => $offset,
@@ -695,6 +695,11 @@ class OggTransformOutput extends MediaTransformOutput {
 
 		    if( $wgEnableTemporalOggUrls ){
 		        $videoAttr['URLTimeEncoding'] = 'true';
+		    }
+
+		    // Set player skin:
+		    if( $wgVideoPlayerSkin ){
+		    	$videoAttr['class'] = htmlspecialchars ( $wgVideoPlayerSkin );
 		    }
 
 			$s = Xml::tags( 'video', $videoAttr,

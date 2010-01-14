@@ -57,6 +57,8 @@ $wgPlayerStatsCollection=false;
 // then we can output the <video> tag and its re-written by mv_embed
 $wgVideoTagOut = false;
 
+$wgVideoPlayerSkin = 'kskin';
+
 // Support striped player iframe output for remote embedding
 $wgEnableIframeEmbed = false;
 
