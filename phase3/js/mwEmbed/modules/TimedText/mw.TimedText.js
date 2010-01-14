@@ -130,16 +130,6 @@ mw.addMessages( {
 		    'mw-srt': 'text/mw-srt',
 		    'cmml': 'text/cmml'
 		},
-		
-		/**
-		* Set of timedText providers
-		*/
-		timedTextProviders:{
-			'commons':{
-				'api_url': mw.getApiProviderURL( 'commons' ),
-				'lib' :	'mediaWiki'				
-			}				
-		},		
 			
 		/**
 		 * @constructor
@@ -273,24 +263,26 @@ mw.addMessages( {
 			}			
 			
 			//If there are no inline sources check timedTextProviders & apiTitleKey
-			if( !this.embedPlayer.apiTitleKey || !this.timedTextProviders){
+			if( !this.embedPlayer.apiTitleKey ){
 				//no other sources just issue the callback: 						
 				callback();
 				return ;
 			}
 			
-			// Try to get sources from text provider: 
-			var provider = this.timedTextProviders[ this.textProviderId ];
-			var assetKey = 	this.embedPlayer.apiTitleKey;		
-			switch(  provider.lib ){
-				case 'mediaWiki':
-					this.textProvider = new mw.MediaWikiTextProvider( {
-						'provider_id' : this.textProviderId,						
-						'api_url': provider.api_url,
-						'embedPlayer': this.embedPlayer
-					} );
-				break;
-			}
+			// Try to get sources from text provider:
+			var provider_id = ( this.embedPlayer.apiProvider ) ?  this.embedPlayer.apiProvider : 'local'; 
+			var api_url = mw.getApiProviderURL( provider_id );		
+			var assetKey = 	this.embedPlayer.apiTitleKey;			
+			if( !api_url || !assetKey ){
+				mw.log("Error: loading source without apiProvider or apiTitleKey");
+				return ;
+			}			
+			//For now only support mediaWikiText provider library
+			this.textProvider = new mw.MediaWikiTextProvider( {
+				'provider_id' : provider_id,						
+				'api_url': api_url,
+				'embedPlayer': this.embedPlayer
+			} );
 					
 			// Load the textProvider sources
 			this.textProvider.loadSources( assetKey,  function( textSources ){
@@ -999,10 +991,10 @@ mw.addMessages( {
 		// Optimize: we could use javascript strings functions instead of jQuery XML parsing:  		
 		$j( '<div>' + data + '</div>' ).find('p').each( function(){					
 			currentPtext = $j(this).html();
-			//mw.log( currentPtext );
+			//mw.log( 'pText: ' + currentPtext );
 			
 			//Check if the p matches the "all in one line" match: 
-			var m = currentPtext.replace('--&gt;', '-->').match(/\d+\s(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?(.*)/);
+			var m = currentPtext.replace('--&gt;', '-->').match(/\d+\s(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?\n?(.*)/);
             if (m) {               
                captions.push({
 				'start': 
@@ -1052,7 +1044,7 @@ mw.addMessages( {
 		//Push last subtitle: 
 		if( curentCap.length != 0){
     		captions.push( curentCap );
-    	}		
+    	}		    	
 		return captions;
 	}
 	/**
