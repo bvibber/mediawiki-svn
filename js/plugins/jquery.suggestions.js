@@ -283,7 +283,7 @@ $.fn.suggestions = function() {
 		if ( args.length > 0 ) {
 			if ( typeof args[0] == 'object' ) {
 				// Apply set of properties
-				for ( key in args[0] ) {
+				for ( var key in args[0] ) {
 					$.suggestions.configure( context, key, args[0][key] );
 				}
 			} else if ( typeof args[0] == 'string' ) {
