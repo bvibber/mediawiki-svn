@@ -129,6 +129,7 @@ $messages['br'] = array(
 	'emergencydesysop-nogroups' => 'Hini ebet',
 	'emergencydesysop-invalidtarget' => "N' ez eus ket eus an implijer buket.",
 	'emergencydesysop-blocked' => "Ne c'helloc'h ket mont d'ar bajenn-se keit ma 'moc'h stanket",
+	'emergencydesysop-noright' => "N'hoc'h eus ket aotreoù a-walc'h evit mont d'ar bajenn-mañ",
 );
 
 /** Bosnian (Bosanski)

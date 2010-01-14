@@ -655,6 +655,14 @@ $messages['vi'] = array(
 	'wikieditor-preview-loading' => 'Đang tải…',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'wikieditor-preview-changes-tab' => 'ענדערונגען',
+	'wikieditor-preview-loading' => 'לאָדט…',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  * @author PhiLiP

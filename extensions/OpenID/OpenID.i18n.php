@@ -669,6 +669,9 @@ tu 'zo deoc'h dibab unan eus ar c'hinnigoù a-is.",
 	'openidconvertsuccesstext' => 'Amdroet ho peus ho OpenID davet $1.',
 	'openidconvertyourstext' => 'Ho OpenID eo dija.',
 	'openidconvertothertext' => 'OpenID un implijer all eo dija.',
+	'openidalreadyloggedin' => "'''Kevreet oc'h dija, $1!'''
+
+Ma fell deoc'h implijout OpenID da gevreañ diwezhatoc'h, e c'hallit [[Special:OpenIDConvert|amdreiñ ho kont evit implijout OpenID]].",
 	'openidnousername' => "N'eus bet diferet anv implijer ebet.",
 	'openidbadusername' => 'Un anv implijer fall a zo bet lakaet.',
 	'openidloginlabel' => 'URL OpenID',
@@ -4782,6 +4785,8 @@ Det finns många [http://openid.net/get/ leverantörer av OpenID], och du kan re
 	'openiddelete' => 'Ta bort OpenID',
 	'openiddelete-text' => 'Genom att klicka på knappen "{{int:openiddelete-button}}" kommer du att ta bort OpenID $1 från ditt konto. Du kommer inte att kunna använda detta OpenID för att logga in.',
 	'openiddelete-button' => 'Bekräfta',
+	'openiddeleteerroropenidonly' => 'Du kan inte radera alla dina OpenID eftersom du endast får logga in med OpenID.
+Du skulle inte kunna logga in utan ett OpenID.',
 	'openiddelete-sucess' => 'OpenID-kopplingen har tagits bort från ditt konto.',
 	'openiddelete-error' => 'Ett fel uppstod när OpenID-kopplingen skulle tas bort från ditt konto.',
 	'openid-prefstext' => '[http://openid.net/ OpenID] inställningar',
@@ -5102,6 +5107,7 @@ $messages['ug-latn'] = array(
  * @author A1
  * @author AS
  * @author Aleksandrit
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
@@ -5142,7 +5148,7 @@ $messages['uk'] = array(
 	'openidchooseurl' => 'Ім`я, отримане з вашого OpenID ($1)',
 	'openidchooseauto' => "Автоматично створене ім'я ($1)",
 	'openidchoosemanual' => "Ім'я на ваш вибір:",
-	'openidchooseexisting' => 'Існуючий обліковий запис цього вікі-сайту',
+	'openidchooseexisting' => 'Існуючий обліковий запис на цій вікі',
 	'openidchooseusername' => "Ім'я користувача:",
 	'openidchoosepassword' => 'пароль:',
 	'openidconvertinstructions' => 'Ця форма дозволяє вам змінити використання Вашого облікового запису на використання адреси OpenID або додати кілька адрес OpenID.',

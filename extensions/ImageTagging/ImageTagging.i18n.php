@@ -276,6 +276,9 @@ $messages['br'] = array(
 	'imagetagging-removingtag' => 'O tennañ ur balizenn...',
 	'imagetagging-addtagsuccess' => 'Ouzhpennet eo ar valizenn',
 	'imagetagging-removetagsuccess' => 'Tennet eo bet ar balizenn.',
+	'imagetagging-canteditneedloginmessage' => "Ne c'hallit ket aozañ ar bajenn-mañ.
+Marteze e rankit kevreañ evit balizennañ ar skeudennoù.
+Ha c'hoant hoc'h eus da gevreañ bremañ ?",
 	'imagetagging-oneuniquetagmessage' => 'Ar skeudenn-mañ he deus dija ur balizenn gant an anv-se.',
 	'imagetagging-imagetag-seemoreimages' => 'Gwelet muioc\'h a skeudennoù eus "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Skeudennoù eus « $1 »',

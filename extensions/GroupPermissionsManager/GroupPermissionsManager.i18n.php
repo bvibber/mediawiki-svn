@@ -431,6 +431,7 @@ $messages['br'] = array(
 	'grouppermissions' => 'Merañ aotreoù ar strolladoù',
 	'sortpermissions' => 'Urzhiañ an aotreoù',
 	'removeunusedgroups' => 'Lemel ar strolladoù dizimplij',
+	'grouppermissions-desc2' => 'Reizhiad an aotreoù astennet',
 	'grouppermissions-search' => 'Strollad :',
 	'grouppermissions-dologin' => 'Lugañ',
 	'grouppermissions-dosearch' => 'Mont',
@@ -452,6 +453,7 @@ $messages['br'] = array(
 	'grouppermissions-sort-tech' => 'Teknik',
 	'grouppermissions-sort-misc' => 'A bep seurt',
 	'grouppermissions-log-add' => 'en deus ouzhpennet ar strollad « $2 »',
+	'grouppermissions-log-change' => 'en deus cheñchet an aotreoù evit ar strollad « $2 »',
 	'grouppermissions-log-delete' => 'en deus dilamet ar strollad « $2 »',
 	'grouppermissions-sp-sort' => 'Urzhiañ an aotreoù',
 	'grouppermissions-sp-save' => 'Enrollañ',
@@ -460,9 +462,11 @@ $messages['br'] = array(
 	'grouppermissions-sp-remove' => 'lemel',
 	'right-raw' => 'Gwelet ar pajennoù diaoz',
 	'right-info' => 'GWelet titouroù ar bajenn',
+	'right-history' => 'Gwelet istor ar bajenn',
 	'right-search' => 'Klask ar wiki',
 	'right-recentchanges' => "Gwelet ar c'hemmoù graet nevez zo",
 	'right-edittalk' => 'Aozañ ar pajennoù divizout',
+	'right-edit-new' => "Aozañ pajennoù (ha n'int ket pajennoù divizout)",
 );
 
 /** Bosnian (Bosanski)

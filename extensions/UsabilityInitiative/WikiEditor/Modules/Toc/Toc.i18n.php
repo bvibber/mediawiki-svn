@@ -580,6 +580,14 @@ $messages['vi'] = array(
 	'wikieditor-toc-hide' => 'Ẩn mục lục',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'wikieditor-toc-show' => 'ווײַזן אינהאַלט',
+	'wikieditor-toc-hide' => 'באַהאַלטן אינהאַלט',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  * @author PhiLiP

@@ -642,6 +642,7 @@ $messages['br'] = array(
 	'sign-detail-strike' => 'Barrennañ ar sinadur',
 	'sign-reviewsig' => 'Adwelet ar sinadur',
 	'sign-review-comment' => 'Addispleg',
+	'sign-submitreview' => 'Kas an adweladenn',
 	'sign-uniquequery-similarname' => 'Anv damheñvel',
 	'sign-uniquequery-similaraddress' => "Chomlec'h damheñvel",
 	'sign-uniquequery-similarphone' => 'Niverenn bellgomz damheñvel',

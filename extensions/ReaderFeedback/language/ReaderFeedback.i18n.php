@@ -303,6 +303,7 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
@@ -334,6 +335,7 @@ $messages['br'] = array(
 	'readerfeedback-tier-poor' => 'Dister',
 	'tooltip-ca-ratinghist' => 'Priziadenn ar bajenn-mañ gant al lennerien',
 	'specialpages-group-feedback' => 'Soñj al lenner',
+	'readerfeedback-tt-review' => 'Kas an adweladenn',
 );
 
 /** Bosnian (Bosanski)
@@ -1389,7 +1391,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'readerfeedback-desc' => 'Page validation erlaabt de Liser e Feedback a Form vun enger Bewertung mat kategorien ze ginn',
+	'readerfeedback-desc' => 'Page validation erlaabt dem Lieser e Feedback a Form vun enger Bewäertung mat Kategorien ze ginn',
 	'readerfeedback' => 'Wat haalt Dir vun dëser Säit?',
 	'readerfeedback-text' => "''Huelt Iech w.e.g. e Moment fir dës Säit ze bewerten. Äre Feedback ass wertvoll an hëlleft eis eisen Internet-Site ze verbesseren.''",
 	'readerfeedback-reliability' => 'Zouverlässigkeet',
@@ -2075,6 +2077,7 @@ $messages['sr-el'] = array(
  * @author Skalman
  */
 $messages['sv'] = array(
+	'readerfeedback-desc' => 'Sidvalidering tillåter läsare att ge feedback i form av kategori-betyg',
 	'readerfeedback' => 'Vad tycker du om den här sidan?',
 	'readerfeedback-text' => "''Var snäll och lägg ett par minuter på att bedöma denna sida här nedan. Din feedback är värdefull och hjälper oss att förbättra vår webbplats.''",
 	'readerfeedback-reliability' => 'Trovärdighet',
@@ -2092,6 +2095,7 @@ $messages['sv'] = array(
 	'readerfeedback-main' => 'Endast innehållssidor kan granskas.',
 	'readerfeedback-success' => "'''Tack för att du granskade den här sidan!''' ([$2 visa resultat]) ([$3 kommentarer eller frågor?])",
 	'readerfeedback-voted' => "'''Det verkar som att du redan har betygsatt den här sidan.''' ([$2 visa resultat]) ([$3 kommentarer eller frågor?])",
+	'readerfeedback-error' => "'''Ett fel har uppstått vid betygsättandet av denna sida''' ([$2 se resultat]) ([$3 kommentarer eller frågor?])",
 	'readerfeedback-submitting' => 'Skickar...',
 	'readerfeedback-finished' => 'Tack!',
 	'readerfeedback-tagfilter' => 'Tag:',
@@ -2101,6 +2105,7 @@ $messages['sv'] = array(
 	'readerfeedback-tier-poor' => 'Dålig',
 	'tooltip-ca-ratinghist' => 'Användarbetyg för den här sidan',
 	'specialpages-group-feedback' => 'Läsaråsikt',
+	'readerfeedback-tt-review' => 'Skicka recension',
 );
 
 /** Telugu (తెలుగు)

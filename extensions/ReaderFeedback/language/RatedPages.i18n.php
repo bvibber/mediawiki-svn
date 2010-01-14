@@ -432,7 +432,7 @@ $messages['lb'] = array(
 	'ratedpages-list' => 'Hei ass eng Lëscht vu Säiten déi no der Bewäertung vun de Lieser zortéiert sinn.',
 	'ratedpages-none' => 'Et gëtt keng Säiten op dëser Lëscht',
 	'ratedpages-graphs' => 'Bewertungsdaten',
-	'ratedpages-count' => '$1 {{PLURAL:$1|Bewertung|Bewertungen}}',
+	'ratedpages-count' => '$1 {{PLURAL:$1|Bewäertung|Bewäertungen}}',
 );
 
 /** Macedonian (Македонски)

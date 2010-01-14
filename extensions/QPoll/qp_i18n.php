@@ -464,6 +464,7 @@ $messages['br'] = array(
 	'qp_func_no_such_poll' => "N'eus ket eus ar sontadeg-mañ ($1)",
 	'qp_error_invalid_question_type' => 'Seurt goulenn direizh : $1',
 	'qp_error_vote_dependance_poll' => 'Mar plij, votit evit ar sontadeg $1 da gentañ.',
+	'qp_error_too_many_spans' => 'Re a strolladoù rummadoù evit an niver hollek a isrummadoù termenet',
 	'qp_error_unanswered_span' => 'Is-rummad hep respont',
 	'qp_error_category_name_empty' => 'Goullo eo anv ar rummad',
 	'qp_error_proposal_text_empty' => "Goullo eo testenn ar c'hinnig",

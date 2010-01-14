@@ -952,6 +952,17 @@ $messages['vi'] = array(
 	'wikieditor-publish-dialog-goback' => 'Trở lại',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'wikieditor-publish-button-publish' => 'פֿאַרעפֿנטלעכן',
+	'wikieditor-publish-button-cancel' => 'אַנולירן',
+	'wikieditor-publish-dialog-minor' => 'מינערדיקער רעדאַקטירונג',
+	'wikieditor-publish-dialog-publish' => 'פֿאַרעפֿנטלעכן',
+	'wikieditor-publish-dialog-goback' => 'צוריקגיין',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  * @author Gaoxuewei

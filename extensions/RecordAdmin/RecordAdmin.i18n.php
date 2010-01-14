@@ -292,6 +292,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'recordadmin-select' => 'Diuzañ',
 	'recordadmin-createtype' => 'Ebarzhiñ anv ur seurt enrolladennoù nevez evit e grouiñ',
+	'recordadmin-recordtype' => 'seurt enrolladenn',
 	'recordadmin-newsearch' => 'Enklask nevez $1',
 	'recordadmin-newrecord' => 'Diuzañ ur seurt enrolladennoù all',
 	'recordadmin-submit' => 'Kas',

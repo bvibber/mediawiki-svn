@@ -1509,14 +1509,15 @@ Doför jangk noh [[Special:IPBlockList|{{int:ipblocklist}}]].',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'crosswikiblock-desc' => "Erlaabt d'Späre vu Benotzer op anere Wikien iwwer eng [[Special:Crosswikiblock|Spezialsäit]]",
 	'crosswikiblock' => 'E Benotzer op enger anerer Wiki spären',
-	'crosswikiblock-header' => 'Dës Spezialsäit erlaabt et e Benotzer op enger anere Wiki ze spären.
+	'crosswikiblock-header' => 'Dës Spezialsäit erlaabt et e Benotzer op enger anerer Wiki ze spären.
 
-Vergewëssert iech w.e.g. ob dir déi néideg Rechter op däer anerer Wiki dofir hutt an ob är Aktioun de Regegelen vun däer wiki entsprecht.',
+Vergewëssert Iech w.e.g. ob dir déi néideg Rechter op däer anerer Wiki dofir hutt an ob Är Aktioun de Regelen vun däer wiki entsprécht.',
 	'crosswikiblock-target' => 'IP-Adress oder Benotzernumm an Zil-Wiki:',
 	'crosswikiblock-expiry' => 'Dauer vun der Spär:',
 	'crosswikiblock-reason' => 'Grond:',

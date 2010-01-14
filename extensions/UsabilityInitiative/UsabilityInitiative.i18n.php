@@ -638,6 +638,13 @@ $messages['vi'] = array(
 	'prefs-experimental' => 'Tính năng thử nghiệm',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'usabilityinitiative' => 'ניצלעכקייט איניציאַטיוו',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */
