@@ -84,7 +84,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 7 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 22 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 44 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 45 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 12 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 41 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 10 ),
@@ -94,10 +94,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 1 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 142 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 143 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 142 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 143 ),
 			),
 		),
 	);
