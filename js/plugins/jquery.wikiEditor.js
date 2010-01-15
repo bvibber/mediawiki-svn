@@ -517,15 +517,16 @@ if ( typeof context == 'undefined' ) {
 				sel.removeAllRanges();
 				sel.addRange( range );
 				context.$iframe[0].contentWindow.focus();
-			} else if ( context.$iframe[0].contentWindow.document.selection ) {
-				// FIXME: IE is still broken for when sc or ec is the <body>, needs more tweaking
-				var range = document.selection.createRange();
+			} else if ( context.$iframe[0].contentWindow.document.body.createTextRange ) {
+				// IE
+				var range = context.$iframe[0].contentWindow.document.body.createTextRange();
 				range.moveToElementText( sc );
 				range.moveStart( 'character', options.start );
-				var range2 = document.selection.createRange();
+				var range2 = context.$iframe[0].contentWindow.document.body.createTextRange();
 				range2.moveToElementText( ec );
+				range2.collapse();
 				range2.moveEnd( 'character', options.end );
-				range.setEndPoint( EndToEnd, range2 );
+				range.setEndPoint( 'EndToEnd', range2 );
 				range.select();
 			}
 		},
