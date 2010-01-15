@@ -4066,6 +4066,7 @@ $messages['et'] = array(
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Ühtegi otsitavat ei leitud.',
 	'wikieditor-toolbar-tool-replace-success' => '$1 asendus(t) tehtud.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Otsitav on sisestamata.',
+	'wikieditor-toolbar-tool-replace-invalidregex' => 'Sisestatud regulaaravaldis on vigane: $1',
 	'wikieditor-toolbar-section-characters' => 'Erimärgid',
 	'wikieditor-toolbar-characters-page-latin' => 'Ladina',
 	'wikieditor-toolbar-characters-page-latinextended' => 'Ladina (laiendatud)',

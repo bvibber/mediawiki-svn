@@ -516,7 +516,8 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
-	'clicktracking' => 'Kasutushõlpsuse algatuse klõpsujälitus',
+	'clicktracking' => 'Kasutushõlpsuse algatuse klõpsujälgimine',
+	'clicktracking-desc' => 'Klõpsujälgimine sündmustele, mis ei põhjusta lehekülje taaslaadimist',
 	'ct-event-name' => 'Sündmuse nimi',
 	'ct-expert-header' => 'Asjatundjaklõpsud',
 	'ct-intermediate-header' => 'Edasijõudnuklõpsud',
