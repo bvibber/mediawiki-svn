@@ -89,6 +89,7 @@ fn: {
 				return;
 			}
 			// Build a model for this
+			
 			var model = new $.wikiEditor.modules.templateEditor.fn.model( $( this ).text() );
 			var $template = $( this )
 				.wrap( '<div class="wikiEditor-template"></div>' )
@@ -96,8 +97,8 @@ fn: {
 				.html( 
 					// Wrap the start and end of the wikitext in spans so we can bind events to them
 					$( this ).html()
-						.replace( /\{\{/, '<span class="wikiEditor-template-start">{{</span>' )
-						.replace( /\}\}$/, '<span class="wikiEditor-template-end">}}</span>' ) ) //grab the *last* {{
+						.replace( /\{\{/, '<span class="wikiEditor-template-start">{{</span><span class="wikiEditor-template-inner-text">' )
+						.replace( /\}\}$/, '</span><span class="wikiEditor-template-end">}}</span>' ) ) //grab the *last* {{
 				.parent()
 				.addClass( 'wikiEditor-template-collapsed' )
 				.data( 'model', model );
@@ -107,7 +108,7 @@ fn: {
 				.mousedown( noEdit )
 				.prependTo( $template );
 			$template.find( '.wikiEditor-template-end, .wikiEditor-template-start' ).mousedown( toggleWikiText );
-			$( '<ul />' )
+			var $options = $( '<ul />' )
 				.addClass( 'wikiEditor-template-modes wikiEditor-noinclude' )
 				.append( $( '<li />' )
 					.addClass( 'wikiEditor-template-action-wikiText' )
@@ -115,6 +116,14 @@ fn: {
 						$.wikiEditor.imgPath + 'templateEditor/' + 'wiki-text.png' ) )
 					.mousedown( toggleWikiText ) )
 				.insertAfter( $template.find( '.wikiEditor-template-name' ) );
+			$options.append( 
+					$( '<li />' )
+					.addClass( 'wikiEditor-template-action-form' )
+					.append( $( '<span>F</span>' ) )
+					.mousedown( function(){createDialog($template); return false;}   ));
+			
+			
+			
 			// Expand
 			function expandTemplate( $displayDiv ) {
 				// Housekeeping
@@ -150,6 +159,45 @@ fn: {
 				$displayDiv.removeClass( 'wikiEditor-template-expanded' );
 				$displayDiv.text( model.getName() );
 			};
+			
+			
+			function createDialog( $templateDiv ){
+				var templateModel = $templateDiv.data('model');
+				var $dialog = $("<div></div>");
+				var $title = $("<div>" + templateModel.getName() + "</div>").addClass('wikiEditor-template-dialog-title');
+				var $table = $("<table></table>")
+						  .addClass('wikiEditor-template-dialog-table')
+						  .appendTo($dialog);
+				var allInitialParams = templateModel.getAllInitialParams();
+				for( var paramIndex in allInitialParams ){
+					var param = allInitialParams[paramIndex];
+					if(typeof param.name == 'undefined'){continue;} //param 0 is the name
+					var $paramRow = $("<tr></tr>")
+							.addClass('wikiEditor-template-dialog-row');
+					var $paramName = $("<td></td>")
+										.addClass('wikiEditor-template-dialog-name')
+										.text( param.name );
+					var $paramVal = $("<td></td>")
+										.addClass('wikiEditor-template-dialog-value');
+					var $paramInput =$("<input></input>")
+										.data('name', param.name)
+										.val( templateModel.getValue(param.name) );
+					$paramVal.append($paramInput);
+					$paramRow.append($paramName).append($paramVal);
+					$table.append($paramRow);
+				}
+				//click handler for values
+				$("<button></button>").click(function(){
+					$('.wikiEditor-template-dialog-value input').each( function(){
+						templateModel.setValue( $(this).data('name'), $(this).val() );
+					});
+					$dialog.dialog('close');
+					
+				}).text("OK").appendTo($dialog);
+				$dialog.dialog(); //opens dialog
+			};
+			
+			
 			function toggleWikiText( ) {
 				var $template = $( this ).closest( '.wikiEditor-template' );
 				$template
@@ -159,10 +207,19 @@ fn: {
 					.toggleClass( 'wikiEditor-nodisplay' );
 				
 				//if we just collapsed this
-				if( $template.hasClass('wikiEditor-template-collapsed') ){
+				if( $template.hasClass('wikiEditor-template-collapsed') ) {
 					var model = new $.wikiEditor.modules.templateEditor.fn.model( $template.children( '.wikiEditor-template-text' ).text() );
 					$template.data( 'model' , model );
 					$template.children( '.wikiEditor-template-name' ).text( model.getName() );
+				}
+				else{ //else we just expanded this
+					$template.children( '.wikiEditor-template-text' ).children('.wikiEditor-template-inner-text').text( 
+							$template.data('model')
+							.getText()
+							.replace(/\{\{/, '')
+							.replace(/\}\}$/, '')
+					);
+					
 				}
 				return false;
 			}
@@ -377,7 +434,7 @@ fn: {
 			startIndex = sanatizedStr.indexOf( '{{' ) + 1;
 			openBraces = 2;
 			endIndex = startIndex;
-			while ( openBraces > 0 ) {
+			while ( (openBraces > 0)  && (endIndex < sanatizedStr.length) ) {
 				var brace = sanatizedStr[++endIndex];
 				openBraces += brace == '}' ? -1 : brace == '{' ? 1 : 0;
 			}
