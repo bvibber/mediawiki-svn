@@ -637,11 +637,6 @@
 			$subjectpreview = '';
 		}
 
-		# Set focus to the edit box on load, except on preview or diff, where it would interfere with the display
-		/*if( !$this->preview && !$this->diff ) {
-			$wgOut->setOnloadHandler( 'document.editform.wpTextbox1.focus()' );
-		}*/
-
 		$templates = ( $this->preview || $this->section != '' ) ? $this->mPreviewTemplates : $this->mArticle->getUsedTemplates();
 		$formattedtemplates = $sk->formatTemplates( $templates, $this->preview, $this->section != '' );
 
