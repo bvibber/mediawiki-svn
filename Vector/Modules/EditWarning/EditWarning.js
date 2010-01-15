@@ -1,8 +1,8 @@
 /* JavaScript for EditWarning extension */
 
 mw.ready( function() {
-	// Check if EditWarning is enabled
-	if ( !wgVectorEnabledModules.editwarning ) {
+	// Check if EditWarning is enabled and if we need it
+	if ( !wgVectorEnabledModules.editwarning || $j( '#wpTextbox1' ).size() == 0 ) {
 		return true;
 	}
 	// Get the original values of some form elements
