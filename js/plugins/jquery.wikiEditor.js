@@ -388,9 +388,10 @@ if ( typeof context == 'undefined' ) {
 			if ( $.browser.name == 'msie' ) {
 				return context.$content.text();
 			}
-			// Get rid of the noincludes when getting text - we use .html() instead of .text() so HTML entities are
-			// handled right - setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
-			var $dummyDiv = $( '<div />' ).html( context.$content.html().replace( /\<br\>/g, "\n" ) );
+			// We use .html() instead of .text() so HTML entities are handled right - setting the HTML of the textarea
+			// doesn't work on all browsers, use a dummy <div> instead
+			var $dummyDiv = $( '<div />' ).html( context.$content.html().replace( /\<br[^\>]*\>/g, "\n" ) );
+			// Get rid of the noincludes when getting text
 			$dummyDiv.find( ".wikiEditor-noinclude" ).each( function() { $( this ).remove(); } );
 			return $dummyDiv.text();
 			
@@ -684,6 +685,8 @@ if ( typeof context == 'undefined' ) {
 			context.$content.append(
 				context.$textarea.val().replace( /\</g, '&lt;' ).replace( /\>/g, '&gt;' ).replace( /\n/g, '<br />' )
 			);
+			//context.$content[0].innerText = context.$textarea.val().replace( /\n/g, '\n\n' );
+			//context.$content.text( context.$textarea.val() );
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
