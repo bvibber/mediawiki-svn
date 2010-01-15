@@ -667,7 +667,7 @@ if ( typeof context == 'undefined' ) {
 		.insertAfter( context.$textarea )
 		.load( function() {
 			// Internet Explorer will reload the iframe once we turn on design mode, so we need to only turn it on
-			// durring the first run, and then bail
+			// during the first run, and then bail
 			if ( !this.isSecondRun ) {
 				// Turn the document's design mode on
 				context.$iframe[0].contentWindow.document.designMode = 'on';
