@@ -1366,8 +1366,7 @@ mw.RemoteSearchDriver.prototype = {
 		}
 
 		mw.log( 'did numResults :: ' + numResults + 
-			' append: ' + $j( '#rsd_q' ).val() );
-
+			' append: ' + $j( '#rsd_q' ).val() );		
 		// Remove any old search res
 		$j( '#rsd_no_search_res' ).remove();
 		if ( numResults == 0 ) {
@@ -1907,7 +1906,7 @@ mw.RemoteSearchDriver.prototype = {
 		var _this = this;
 
 		// Clone the resource. Not sure why this not-working clone was put here... 
-		// using the actual resource does not really affect things
+		// using the actual resource should be fine
 		/*
 		var proto = {};
 		proto.prototype = resource;
@@ -1927,7 +1926,8 @@ mw.RemoteSearchDriver.prototype = {
 			// Check if the file is local ( can be shared repo )
 			if ( provider.check_shared ) {
 				_this.findFileInLocalWiki( resource.target_resource_title, function( imagePage ) {
-					if ( imagePage && imagePage['imagerepository'] == 'shared' ) {
+					if ( imagePage && imagePage['imagerepository'] == 'shared' || 
+									  imagePage['imagerepository'] == 'commons') {
 						myCallback( 'shared' );
 					} else {
 						_this.isFileAlreadyImported( resource, myCallback );
@@ -2346,8 +2346,10 @@ mw.RemoteSearchDriver.prototype = {
 				} );
 
 			// Get the preview wikitext
+			var embed_code = _this.getEmbedCode( resource );
+			$j( _this.target_textbox ).textSelection( 'encapsulateSelection', { 'post' : embed_code } );
 			_this.parse( 
-				_this.getPreviewText( resource ),
+				$j( _this.target_textbox ).val(),
 				_this.target_title,
 				function( phtml ) {
 					$j( '#rsd_preview_display' ).html( phtml );
@@ -2386,7 +2388,7 @@ mw.RemoteSearchDriver.prototype = {
 	* 
 	* @param {Object} resource Resource to get preview text for.
 	*/
-	getPreviewText: function( resource ) {
+	/*getPreviewText: function( resource ) {
 		var _this = this;
 		var text;
 
@@ -2408,7 +2410,7 @@ mw.RemoteSearchDriver.prototype = {
 			text = text + '<references/>';
 		}
 		return text;
-	},
+	},*/
 	
 	/**
 	* issues the wikitext parse call 
@@ -2439,9 +2441,9 @@ mw.RemoteSearchDriver.prototype = {
 	*/	
 	insertResource: function( resource ) {
 		mw.log( 'insertResource: ' + resource.title );
-		var _this = this;		
+		var _this = this;				
 		// Double check that the resource is present:
-		this.isFileLocallyAvailable( resource, function( status ) {			
+		this.isFileLocallyAvailable( resource, function( status ) {					
 			if ( status === 'missing' ) {
 				_this.showImportUI( resource, function() {
 					_this.insertResourceToOutput( resource );
@@ -2451,7 +2453,7 @@ mw.RemoteSearchDriver.prototype = {
 			if ( status === 'local' || status === 'shared' || status === 'imported' ) {
 				_this.insertResourceToOutput( resource );
 			}
-			//NOTE: should hannlde errors or other status states?			
+			//NOTE: should hanndle errors or other status states?			
 		} );
 	},
 	
@@ -2461,10 +2463,10 @@ mw.RemoteSearchDriver.prototype = {
 	* @param {Object} resource Resource to be inserted into the output targets
 	*/
 	insertResourceToOutput: function( resource ){
-		var _this = this;
-		$j( _this.target_textbox ).val( _this.getPreviewText( resource ) );
-		_this.clearTextboxCache();
-
+		var _this = this;		
+		var embed_code = _this.getEmbedCode( resource );
+		$j( _this.target_textbox ).textSelection( 'encapsulateSelection', { 'post' : embed_code } );
+		
 		// Update the render area for HTML output of video tag with mwEmbed "player"
 		var embedCode = _this.getEmbedCode( resource );
 		if ( _this.target_render_area && embedCode ) {
