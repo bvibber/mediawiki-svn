@@ -184,7 +184,6 @@ if ( !$j.wikiEditor.isSupported() ) {
 // The wikiEditor context is stored in the element's data, so when this function gets called again we can pick up right
 // where we left off
 var context = $(this).data( 'wikiEditor-context' );
-
 // On first call, we need to set things up, but on all following calls we can skip right to the API handling
 if ( typeof context == 'undefined' ) {
 	
@@ -374,26 +373,24 @@ if ( typeof context == 'undefined' ) {
 				.appendTo( context.$ui );
 		},
 		
-		/**
-		 * FIXME: This section is a bit of a "wonky" section given it's supposed to keep compatibility with the
-		 * textSelection plugin, which works on character-based manipulations as opposed to the node-based manipulations
-		 * we use for the iframe. It's debatable whether compatibility with this plugin is even being done well, or for
-		 * that matter should be done at all.
+		/*
+		 * FIXME: This section needs attention! It doesn't really make sense given it's supposed to keep compatibility
+		 * with the textSelection plugin, which works on character-based manipulations as opposed to the node-based
+		 * manipulations we use for the iframe. It's debatable whether compatibility with this plugin is even being done
+		 * well, or for that matter should be done at all.
 		 */
 		
 		/**
 		 * Gets the complete contents of the iframe (in plain text, not HTML)
 		 */
 		'getContents': function() {
+			console.log( 'getContents' );
 			// FIXME: Evil ua-sniffing action!
 			if ( $.browser.name == 'msie' ) {
 				return context.$content.text();
 			}
-			// We use .html() instead of .text() so HTML entities are handled right
-			// Setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
-			
-			
-			//get rid of the noincludes when getting text
+			// Get rid of the noincludes when getting text - we use .html() instead of .text() so HTML entities are
+			// handled right - setting the HTML of the textarea doesn't work on all browsers, use a dummy <div> instead
 			var $dummyDiv = $( '<div />' ).html( context.$content.html().replace( /\<br\>/g, "\n" ) );
 			$dummyDiv.find( ".wikiEditor-noinclude" ).each( function() { $( this ).remove(); } );
 			return $dummyDiv.text();
@@ -464,9 +461,8 @@ if ( typeof context == 'undefined' ) {
 				var insertText = pre + selText + post;
 				var insertLines = insertText.split( "\n" );
 				range.extractContents();
-				// Insert the contents one line at a time
-				// insertNode() inserts at the beginning, so this has
-				// to happen in reverse order
+				// Insert the contents one line at a time - insertNode() inserts at the beginning, so this has to happen
+				// in reverse order
 				var lastNode;
 				for ( var i = insertLines.length - 1; i >= 0; i-- ) {
 					range.insertNode( document.createTextNode( insertLines[i] ) );
@@ -478,8 +474,7 @@ if ( typeof context == 'undefined' ) {
 					context.fn.scrollToTop( lastNode );
 				}
 			} else if ( context.$iframe[0].contentWindow.document.selection ) {
-				// IE
-				// TODO
+				// TODO: IE
 			}
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
 			context.$content.trigger(
@@ -492,9 +487,7 @@ if ( typeof context == 'undefined' ) {
 		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'getCaretPosition': function( options ) {
-			// FIXME: Character-based functions aren't useful for the magic iframe
-			// ...
-			//reurn character position
+			// FIXME: Character-based functions aren't useful for the magic iframe - return character position?
 		},
 		/**
 		 * Sets the selection of the content
@@ -518,7 +511,6 @@ if ( typeof context == 'undefined' ) {
 				while ( ec.firstChild && ec.nodeName != '#text' ) {
 					ec = ec.firstChild;
 				}
-				
 				var range = document.createRange();
 				range.setStart( sc, options.start );
 				range.setEnd( ec, options.end );
@@ -526,8 +518,7 @@ if ( typeof context == 'undefined' ) {
 				sel.addRange( range );
 				context.$iframe[0].contentWindow.focus();
 			} else if ( context.$iframe[0].contentWindow.document.selection ) {
-				// IE
-				// FIXME still broken for when sc or ec is the <body>, needs more tweaking
+				// FIXME: IE is still broken for when sc or ec is the <body>, needs more tweaking
 				var range = document.selection.createRange();
 				range.moveToElementText( sc );
 				range.moveStart( 'character', options.start );
@@ -543,8 +534,7 @@ if ( typeof context == 'undefined' ) {
 		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'scrollToCaretPosition': function( options ) {
-			// ...
-			//context.$textarea.trigger( 'scrollToPosition' );
+			// FIXME: context.$textarea.trigger( 'scrollToPosition' ) ?
 		},
 		/**
 		 * Scroll an element to the top of the iframe
@@ -571,8 +561,9 @@ if ( typeof context == 'undefined' ) {
 		 * @return jQuery object
 		 */
 		'beforeSelection': function( selector, strict ) {
-			if ( typeof selector == 'undefined' )
+			if ( typeof selector == 'undefined' ) {
 				selector = '*';
+			}
 			var e;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
@@ -612,10 +603,9 @@ if ( typeof context == 'undefined' ) {
 			return $( [] );
 		}
 		
-		/**
-		 * End of "wonky" textSelection "compatible" section that needs attention.
+		/*
+		 * End of wonky textSelection "compatible" section that needs attention.
 		 */
-		
 	};
 	
 	/*
@@ -661,7 +651,8 @@ if ( typeof context == 'undefined' ) {
 	// Create an iframe in place of the text area
 	context.$iframe = $( '<iframe></iframe>' )
 		.attr( {
-			'frameborder': 0,
+			'frameBorder': 0,
+			'border': 0,
 			'src': wgScriptPath + '/extensions/UsabilityInitiative/js/plugins/jquery.wikiEditor.html?' +
 				'instance=' + context.instance + '&ts=' + ( new Date() ).getTime(),
 			'id': 'wikiEditor-iframe-' + context.instance
@@ -675,23 +666,24 @@ if ( typeof context == 'undefined' ) {
 			'overflow-x': 'hidden'
 		} )
 		.insertAfter( context.$textarea )
-		.load( function() {	
-			//IE8 runs this twice, the second time is valid
-			if( $.browser.msie && $.browser.version >= 8 ) {
-				if(!this.isSecondRun){
+		.load( function() {
+			// Internet Explorer will reload the iframe once we turn on design mode, so we need to only turn it on
+			// durring the first run, and then bail
+			if ( !this.isSecondRun ) {
+				// Turn the document's design mode on
+				context.$iframe[0].contentWindow.document.designMode = 'on';
+				// Let the rest of this function happen next time around
+				if ( $.browser.msie ) {
 					this.isSecondRun = true;
 					return;
 				}
 			}
-		
-			// Turn the document's design mode on
-			context.$iframe[0].contentWindow.document.designMode = 'on';
 			// Get a reference to the content area of the iframe
 			context.$content = $( context.$iframe[0].contentWindow.document.body );
-			// We need to properly escape any HTML entities like &amp;, &lt; and &gt; so they end up as visible
-			// characters rather than actual HTML tags in the code editor container.
+			// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip out the
+			// whitespace charcters, specifically "\n" - so we must manually encode the text and append it 
 			context.$content.append(
-				context.$textarea.val().replace( /</g, '&lt;' ).replace( />/g, '&gt;' )
+				context.$textarea.val().replace( /\</g, '&lt;' ).replace( /\>/g, '&gt;' ).replace( /\n/g, '<br />' )
 			);
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
