@@ -251,7 +251,7 @@ fn: {
 					.addClass( 'section-' + structure[i].index )
 					.data( 'wrapper', wrapper )
 					.click( function( event ) {
-						context.fn.scrollToTop( $( this ).data( 'wrapper' ) );
+						context.fn.scrollToTop( $( this ).data( 'wrapper' ), true );
 						context.$textarea.textSelection( 'setSelection', {
 							'start': 0,
 							'startContainer': $(this).data( 'wrapper' )

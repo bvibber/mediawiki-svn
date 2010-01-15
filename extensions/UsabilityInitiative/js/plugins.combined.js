@@ -8262,6 +8262,20 @@ fn: {
 			sanatizedStr =
 				sanatizedStr.substring( 0, startIndex ) + sanatizedSegment + sanatizedStr.substring( endIndex );
 		}
+		//links, images, etc, which also can nest
+		while ( sanatizedStr.indexOf( '[[' ) != -1 ) {
+			startIndex = sanatizedStr.indexOf( '[[' ) + 1;
+			openBraces = 2;
+			endIndex = startIndex;
+			while ( (openBraces > 0)  && (endIndex < sanatizedStr.length) ) {
+				var brace = sanatizedStr[++endIndex];
+				openBraces += brace == ']' ? -1 : brace == '[' ? 1 : 0;
+			}
+			sanatizedSegment = sanatizedStr.substring( startIndex,endIndex ).replace( /[\[\]|=]/g , 'X' );
+			sanatizedStr =
+				sanatizedStr.substring( 0, startIndex ) + sanatizedSegment + sanatizedStr.substring( endIndex );
+		}
+		
 		/*
 		 * Parse 1 param at a time
 		 */
@@ -8275,7 +8289,7 @@ fn: {
 			divider = sanatizedStr.length;
 			doneParsing = true;
 		}
-		nameMatch = wikitext.substring( 0, divider ).match( /[^{\s]+/ );
+		nameMatch = sanatizedStr.substring( 0, divider ).match( /[^\s]/ );
 		if ( nameMatch != undefined ) {
 			ranges.push( new Range( 0 ,nameMatch.index ) ); //whitespace and squiggles upto the name
 			nameEndMatch = sanatizedStr.substring( 0 , divider ).match( /[^\s]\s*$/ ); //last nonwhitespace character
@@ -8290,7 +8304,7 @@ fn: {
 		 * Start looping over params
 		 */
 		var currentParamNumber = 0;
-		var valueEndIndex;
+		var valueEndIndex = ranges[templateNameIndex].end;
 		var paramsByName = [];
 		while ( !doneParsing ) {
 			currentParamNumber++;
@@ -8641,7 +8655,7 @@ fn: {
 					.addClass( 'section-' + structure[i].index )
 					.data( 'wrapper', wrapper )
 					.click( function( event ) {
-						context.fn.scrollToTop( $( this ).data( 'wrapper' ) );
+						context.fn.scrollToTop( $( this ).data( 'wrapper' ), true );
 						context.$textarea.textSelection( 'setSelection', {
 							'start': 0,
 							'startContainer': $(this).data( 'wrapper' )
