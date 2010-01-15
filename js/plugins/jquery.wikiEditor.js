@@ -384,7 +384,6 @@ if ( typeof context == 'undefined' ) {
 		 * Gets the complete contents of the iframe (in plain text, not HTML)
 		 */
 		'getContents': function() {
-			console.log( 'getContents' );
 			// FIXME: Evil ua-sniffing action!
 			if ( $.browser.name == 'msie' ) {
 				return context.$content.text();
