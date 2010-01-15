@@ -384,26 +384,13 @@ if ( typeof context == 'undefined' ) {
 		 * Gets the complete contents of the iframe (in plain text, not HTML)
 		 */
 		'getContents': function() {
-			// FIXME: Evil ua-sniffing action!
-			if ( $.browser.name == 'msie' ) {
-				return context.$content.text();
-			}
 			// We use .html() instead of .text() so HTML entities are handled right - setting the HTML of the textarea
 			// doesn't work on all browsers, use a dummy <div> instead
-			var $dummyDiv = $( '<div />' ).html( context.$content.html().replace( /\<br[^\>]*\>/g, "\n" ) );
 			// Get rid of the noincludes when getting text
-			$dummyDiv.find( ".wikiEditor-noinclude" ).each( function() { $( this ).remove(); } );
-			return $dummyDiv.text();
 			
-		},
-		/**
-		 * Sets the complete contents of the iframe (in plain text, not HTML; HTML passed will be converted to entities)
-		 * FIXME: Passing in options like this is sort of akward - it appears to be a way to make this compatible with
-		 * the textSelection plugin - is this needed?
-		 */
-		'setContents': function( options ) {
-			context.$content.text( options.contents );
-			return context.$textarea;
+			var $pre = $( '<pre>' + context.$content.html().replace( /\<br[^\>]*\>/gi, "\n" ) + '</pre>' );
+			$pre.find( ".wikiEditor-noinclude" ).each( function() { $( this ).remove(); } );
+			return $pre.text();
 		},
 		/**
 		 * Gets the currently selected text in the content
