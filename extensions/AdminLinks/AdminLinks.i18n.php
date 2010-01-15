@@ -102,6 +102,19 @@ $messages['arc'] = array(
 	'adminlinks_importexport' => 'ܡܥܠܢܘܬܐ ܘܡܦܩܢܘܬܐ',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'adminlinks' => 'وصلات الاداريين',
+	'adminlinks-desc' => 'يضيف [[Special:AdminLinks|صفحة خاصة]] وصلات الاداريين',
+	'adminlinks_documentation' => 'توثيق $1',
+	'adminlinks_general' => 'عام',
+	'adminlinks_editcss' => 'عدل ملف CSS',
+	'adminlinks_users' => 'يوزرز',
+	'adminlinks_createuser' => 'ابتدى يوزر',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

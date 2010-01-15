@@ -315,7 +315,7 @@ $messages['ar'] = array(
 	'openidchooseurl' => 'اسم مختار من هويتك المفتوحة ($1)',
 	'openidchooseauto' => 'اسم مولد تلقائيا ($1)',
 	'openidchoosemanual' => 'اسم من اختيارك:',
-	'openidchooseexisting' => 'حساب موجود في هذه الويكي:',
+	'openidchooseexisting' => 'حساب موجود في هذا الويكي',
 	'openidchoosepassword' => 'كلمة السر:',
 	'openidconvertinstructions' => 'هذه الاستمارة تتيح لك تغيير حساب المستخدم الخاص بك لكي تستخدم OpenID URL او لاضافة المزيد من OpenID URLs .',
 	'openidconvertoraddmoreids' => 'حوّل إلى OpenID أو أضف عنوان OpenID آخر',
@@ -340,7 +340,7 @@ $messages['ar'] = array(
 لاستخدام الهوية المفتوحة في المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك إلى الهوية المفتوحة]] بعد تسجيل دخولك بشكل عادي.
 
 يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفري الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.',
-	'openidupdateuserinfo' => 'تحديث معلوماتي الشخصية',
+	'openidupdateuserinfo' => 'تحديث معلوماتي الشخصية:',
 	'openiddelete' => 'احذف OpenID',
 	'openiddelete-text' => 'بالضغط على زر "{{int:openiddelete-button}}"، ستزيل الهوية المفتوحة OpenID $1 من حسابك.
 لن تتمكن بعد الآن من الدخول بهذه الهوية المفتوحة.',
@@ -413,7 +413,7 @@ $messages['arz'] = array(
 	'openidchooseurl' => 'اسم مختار من هويتك المفتوحة ($1)',
 	'openidchooseauto' => 'اسم مولد تلقائيا ($1)',
 	'openidchoosemanual' => 'اسم من اختيارك:',
-	'openidchooseexisting' => 'حساب موجود فى هذه الويكي:',
+	'openidchooseexisting' => 'حساب موجود فى هذا الويكي',
 	'openidchoosepassword' => 'كلمة السر:',
 	'openidconvertinstructions' => 'هذه الاستمارة تتيح لك تغيير حساب المستخدم الخاص بك لكى تستخدم OpenID URL او لاضافة المزيد من OpenID URLs .',
 	'openidconvertsuccess' => 'تم التحول بنجاح إلى الهوية المفتوحة',
@@ -4785,6 +4785,8 @@ Det finns många [http://openid.net/get/ leverantörer av OpenID], och du kan re
 	'openiddelete' => 'Ta bort OpenID',
 	'openiddelete-text' => 'Genom att klicka på knappen "{{int:openiddelete-button}}" kommer du att ta bort OpenID $1 från ditt konto. Du kommer inte att kunna använda detta OpenID för att logga in.',
 	'openiddelete-button' => 'Bekräfta',
+	'openiddeleteerrornopassword' => 'Du kan inte radera alla dina OpenId eftersom ditt konto saknar lösenord.
+Du skulle inte kunna logga in utan ett OpenID.',
 	'openiddeleteerroropenidonly' => 'Du kan inte radera alla dina OpenID eftersom du endast får logga in med OpenID.
 Du skulle inte kunna logga in utan ett OpenID.',
 	'openiddelete-sucess' => 'OpenID-kopplingen har tagits bort från ditt konto.',

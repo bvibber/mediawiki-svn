@@ -1779,19 +1779,49 @@ Oleme tänulikud, kui avaldad arvamust uue kasutajaliidese kohta ja täidad allj
 	'optin-survey-question-whyoptout' => 'Miks sa lahkud beetaversioonist? (Palun vali kõik sobivad põhjused.)',
 	'optin-survey-answer-whyoptout-hard' => 'See oli kasutamiseks liialt keeruline.',
 	'optin-survey-answer-whyoptout-didntwork' => 'See ei toiminud korralikult.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'See ei toiminud alati sama moodi.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Mulle ei meeldinud selle välimus.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Mulle ei meeldinud uued sakid ega paigutus.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Mulle ei meeldinud uus tööriistariba.',
 	'optin-survey-answer-whyoptout-other' => 'Muu põhjus:',
+	'optin-survey-question-explain' => 'Palun põhjenda või täpsusta eelnevat vastust:',
+	'optin-survey-question-techfail' => 'Kas beeta kasutamises on esinenud tehnilisi tõrkeid?',
+	'optin-survey-question-techfail-ifyes' => 'Kui jah, täpsusta või selgita:',
+	'optin-survey-question-usedtoolbar' => 'Kas oled lehekülje redigeerimiseks uut lahtilükatavat tööriistariba kasutanud?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Kui jah, siis mis sulle selle juures meeldis? Mis ei meeldinud?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Kui ei, siis miks? Kas edaspidi on plaanis? Palun selgita.',
 	'optin-survey-question-different' => 'Mida oleksime võinud teha teisiti, et oleksid beetat kasutama jäänud?',
+	'optin-survey-question-feedback' => 'Palun jaga meiega muid kommentaare, mureküsimusi või mõtteid – igasugune tagasiside on vajalik:',
 	'optin-survey-question-browser' => 'Millist internetilehitsejat kasutad?',
 	'optin-survey-answer-browser-other' => 'Muu internetilehitseja:',
 	'optin-survey-question-os' => 'Millist operatsioonisüsteemi sa kasutad?',
 	'optin-survey-answer-os-other' => 'Muu operatsioonisüsteem:',
 	'optin-survey-question-res' => 'Milline on su kuvari eraldusvõime?',
 	'optin-survey-question-changes' => 'Milliseid muudatusi soovid näha beetaversioonis tulevikus (vali kõik sobivad)?',
-	'optin-survey-answer-changes-custom' => 'Luba enam isikupärastamist.',
+	'optin-survey-answer-changes-nav' => 'Võrgukoha lehitsetavuse üldine lihtsustamine.',
+	'optin-survey-answer-changes-edittools' => 'Redigeerimisriistade lisamine ja täiustamine.',
+	'optin-survey-answer-changes-upload' => 'Sisu ja failide üleslaadimse täiustamine.',
+	'optin-survey-answer-changes-richtext' => 'Rikasteksti redaktoritega sarnaste redigeerimisriistade väljatöötamine.',
+	'optin-survey-answer-changes-lookfeel' => 'Võrgukoha väljanägemise uuendamine.',
+	'optin-survey-answer-changes-predictability' => 'Funktsioneerimise etteaimatavamaks muutmine.',
+	'optin-survey-answer-changes-custom' => 'Enama isikupärastamise lubamine.',
 	'optin-survey-answer-changes-other' => 'Muu:',
+	'optin-improvements' => '== Mida on täiustatud? ==
+[[File:UsabilityNavigation.png|left|link=|Kuvatõmmis uutest navigeerimissakkidest]]
+;Parem navigeerimine
+Uue navigeerimissüsteemi abil on kergem aru saada, kus oled ja mida teed. Paremini on näha ka see, kuhu minna saad ja kuidas sinna saada. Üleval paremas nugas asuv otsimiskast on kergemini leitav ja kiiremini kasutatav.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|link=|Kuvatõmmis laiendatud redigeerimisribast]]
+;Redigeerimisriba täiustused
+Uute ja viimistletud ikoonide abil on selgem, mida iga riist teeb. Lahtilükatavad ribaosad hoiavad harva kasutavad riistad peidus ja samas vaid klõpsuga kättesaadavad.
+Abiosa annab kiire ülevaate viki vormistuskeele tarvitatavamatest kasutusviisidest.
+<div style="clear:both;"></div>
+
+== Kuidas kaasa teha ==
+Lisateave projekti ja kaasategemise kohta on [http://usability.wikimedia.org kasutushõlpsuse algatuse vikis]. Sealt leiad teavet meie rahalise toetamise, uurimustöö, kujunduse, arendustöö ja väljalasete kohta. Küsimuste esitamiseks ja üldise tagasiside andmiseks kasuta palun meie [http://usability.wikimedia.org/wiki/Talk:Prototype katsetuste arutelulehekülge]. Isevärki teemade jaoks kasuta vastavaid arutelulehekülgi. Kui leiad vigu, jäta oma tähelepanekud [http://usability.wikimedia.org/wiki/Talk:Releases/Acai väljalaske aruteluleheküljele] või kasuta [https://bugzilla.wikimedia.org Bugzillat].
+
+Aitäh, jääme su ettepanekuid ja tagasisidet ootama!',
 );
 
 /** Basque (Euskara)

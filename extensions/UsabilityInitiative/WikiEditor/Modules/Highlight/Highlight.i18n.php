@@ -106,6 +106,13 @@ $messages['es'] = array(
 	'wikieditor-highlight-preference' => 'Habilitar resalte de sintaxis al editar',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'wikieditor-highlight-preference' => 'Tõsta süntaks redigeerimise ajal esile',
+);
+
 /** Finnish (Suomi)
  * @author ZeiP
  */
