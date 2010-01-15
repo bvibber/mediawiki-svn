@@ -14,7 +14,7 @@ mw.addClassFilePaths( {
 	"mw.Firefogg"			: "modules/AddMedia/mw.Firefogg.js",
 	"mw.FirefoggGUI"		: "modules/AddMedia/mw.FirefoggGUI.js",
 	"mw.FirefoggRender"		: "modules/libSequencer/mw.FirefoggRender.js",
-	"mw.RemoteSearchDriver"	: "modules/AddMedia/mw.RemoteSearchDriver.js",	
+	"mw.RemoteSearchDriver"	: "modules/AddMedia/mw.RemoteSearchDriver.js",		
 	
 	"baseRemoteSearch"		: "modules/AddMedia/searchLibs/baseRemoteSearch.js",
 	"mediaWikiSearch"		: "modules/AddMedia/searchLibs/mediaWikiSearch.js",
@@ -33,10 +33,11 @@ mw.addClassFilePaths( {
 //Setup the addMediaWizard module
 mw.addModuleLoader( 'AddMedia.addMediaWizard', function( callback ){
 	// Load all the required libs:
-	mw.load( [
+	var libReq = [
 		[	'mw.RemoteSearchDriver',
 			'$j.cookie',
 			'$j.fn.textSelection',
+			'$j.browserTest',
 			'$j.ui'
 		], [
 			'$j.ui.resizable',
@@ -45,7 +46,8 @@ mw.addModuleLoader( 'AddMedia.addMediaWizard', function( callback ){
 			'$j.ui.tabs',
 			'$j.ui.sortable'
 		]
-	], function() {
+	];
+	mw.load( libReq , function() {
 		callback( 'AddMedia.addMediaWizard' );
 	} );
 });

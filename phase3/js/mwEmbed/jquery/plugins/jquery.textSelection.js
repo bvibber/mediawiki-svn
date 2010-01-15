@@ -1,15 +1,28 @@
 /**
  * These plugins provide extra functionality for interaction with textareas.
  */
-( function( $ ) { $.fn.extend( {
+( function( $ ) {
+$.fn.textSelection = function( command, options ) {
+var fn = {
+/**
+ * Get the contents of the textarea
+ */
+getContents: function() {
+	return this.val();
+},
+
+setContents: function( options ) {
+	return this.val( options.contents );
+},
+
 /**
  * Get the currently selected text in this textarea. Will focus the textarea
  * in some browsers (IE/Opera)
  */
-textSelection: function() {
-	var e = this.jquery ? this[0] : this;
+getSelection: function() {
+	var e = this.get( 0 );
 	var retval = '';
-	if ( e.style.display == 'none' ) {
+	if ( $(e).is( ':hidden' ) ) {
 		// Do nothing
 	} else if ( document.selection && document.selection.createRange ) {
 		e.focus();
@@ -23,34 +36,28 @@ textSelection: function() {
 /**
  * Ported from skins/common/edit.js by Trevor Parscal
  * (c) 2009 Wikimedia Foundation (GPLv2) - http://www.wikimedia.org
- * 
+ *
  * Inserts text at the begining and end of a text selection, optionally
  * inserting text at the caret when selection is empty.
- * 
- * @param pre Text to insert before selection
- * @param peri Text to insert at caret if selection is empty
- * @param post Text to insert after selection
- * @param ownline If true, put the inserted text is on its own line
- * @param replace If true, replaces any selected text with peri; if false, peri is ignored and selected text is left alone
  */
-encapsulateSelection: function( pre, peri, post, ownline, replace ) {
+encapsulateSelection: function( options ) {
 	return this.each( function() {
 		/**
 		 * Check if the selected text is the same as the insert text
-		 */ 
+		 */
 		function checkSelectedText() {
 			if ( !selText ) {
-				selText = peri;
+				selText = options.peri;
 				isSample = true;
-			} else if ( replace ) {
-				selText = peri;
+			} else if ( options.replace ) {
+				selText = options.peri;
 			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
 				// Exclude ending space char
 				selText = selText.substring(0, selText.length - 1);
-				post += ' ';
+				options.post += ' ';
 			}
 		}
-		var selText = $(this).getSelection();
+		var selText = $(this).textSelection( 'getSelection' );
 		var isSample = false;
 		if ( this.style.display == 'none' ) {
 			// Do nothing
@@ -60,57 +67,60 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			var startPos = this.selectionStart;
 			var endPos = this.selectionEnd;
 			checkSelectedText();
-			if ( ownline ) {
+			if ( options.ownline ) {
 				if ( startPos != 0 && this.value.charAt( startPos - 1 ) != "\n" ) {
-					pre = "\n" + pre;
+					options.pre = "\n" + options.pre;
 				}
 				if ( this.value.charAt( endPos ) != "\n" ) {
-					post += "\n";
+					options.post += "\n";
 				}
 			}
-			this.value = this.value.substring( 0, startPos ) + pre + selText + post + this.value.substring( endPos, this.value.length );
+			this.value = this.value.substring( 0, startPos ) + options.pre + selText + options.post +
+				this.value.substring( endPos, this.value.length );
 			if ( window.opera ) {
-				pre = pre.replace( /\r?\n/g, "\r\n" );
+				options.pre = options.pre.replace( /\r?\n/g, "\r\n" );
 				selText = selText.replace( /\r?\n/g, "\r\n" );
-				post = post.replace( /\r?\n/g, "\r\n" );
+				options.post = options.post.replace( /\r?\n/g, "\r\n" );
 			}
 			if ( isSample ) {
-				this.selectionStart = startPos + pre.length;
-				this.selectionEnd = startPos + pre.length + selText.length;
+				this.selectionStart = startPos + options.pre.length;
+				this.selectionEnd = startPos + options.pre.length + selText.length;
 			} else {
-				this.selectionStart = startPos + pre.length + selText.length + post.length;
+				this.selectionStart = startPos + options.pre.length + selText.length +
+					options.post.length;
 				this.selectionEnd = this.selectionStart;
 			}
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
 			$(this).focus();
 			var range = document.selection.createRange();
-			if ( ownline && range.moveStart ) {
+			if ( options.ownline && range.moveStart ) {
 				var range2 = document.selection.createRange();
 				range2.collapse();
 				range2.moveStart( 'character', -1 );
 				// FIXME: Which check is correct?
 				if ( range2.text != "\r" && range2.text != "\n" && range2.text != "" ) {
-					pre = "\n" + pre;
+					options.pre = "\n" + options.pre;
 				}
 				var range3 = document.selection.createRange();
 				range3.collapse( false );
 				range3.moveEnd( 'character', 1 );
 				if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
-					post += "\n";
+					options.post += "\n";
 				}
 			}
 			checkSelectedText();
-			range.text = pre + selText + post;
+			range.text = options.pre + selText + options.post;
 			if ( isSample && range.moveStart ) {
-				range.moveStart( 'character', - post.length - selText.length );
-				range.moveEnd( 'character', - post.length );
+				range.moveStart( 'character', - options.post.length - selText.length );
+				range.moveEnd( 'character', - options.post.length );
 			}
 			range.select();
 		}
 		// Scroll the textarea to the inserted text
-		$(this).scrollToCaretPosition();
-		$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+		$(this).textSelection( 'scrollToCaretPosition' );
+		$(this).trigger( 'encapsulateSelection', [ options.pre, options.peri, options.post, options.ownline,
+			options.replace ] );
 	});
 },
 /**
@@ -120,9 +130,9 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
  * http://www.dedestruct.com/2008/03/22/howto-cross-browser-cursor-position-in-textareas/
  *
  * Get the position (in resolution of bytes not nessecarily characters)
- * in a textarea 
+ * in a textarea
  */
- getCaretPosition: function( startAndEnd ) {
+ getCaretPosition: function( options ) {
 	function getCaret( e ) {
 		var caretPos = 0, endPos = 0;
 		if ( $.browser.msie ) {
@@ -200,31 +210,31 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			caretPos = e.selectionStart;
 			endPos = e.selectionEnd;
 		}
-		return startAndEnd ? [ caretPos, endPos ] : caretPos;
+		return options.startAndEnd ? [ caretPos, endPos ] : caretPos;
 	}
 	return getCaret( this.get( 0 ) );
 },
-setSelection: function( start, end ) {
-	if ( typeof end == 'undefined' )
-		end = start;
+setSelection: function( options ) {
 	return this.each( function() {
-		if ( this.selectionStart || this.selectionStart == '0' ) {
+		if ( $(this).is( ':hidden' ) ) {
+			// Do nothing
+		} else if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Opera 9.0 doesn't allow setting selectionStart past
 			// selectionEnd; any attempts to do that will be ignored
 			// Make sure to set them in the right order
-			if ( start > this.selectionEnd ) {
-				this.selectionEnd = end;
-				this.selectionStart = start;
+			if ( options.start > this.selectionEnd ) {
+				this.selectionEnd = options.end;
+				this.selectionStart = options.start;
 			} else {
-				this.selectionStart = start;
-				this.selectionEnd = end;
+				this.selectionStart = options.start;
+				this.selectionEnd = options.end;
 			}
 		} else if ( document.body.createTextRange ) {
 			var selection = document.body.createTextRange();
 			selection.moveToElementText( this );
 			var length = selection.text.length;
-			selection.moveStart( 'character', start );
-			selection.moveEnd( 'character', -length + end );
+			selection.moveStart( 'character', options.start );
+			selection.moveEnd( 'character', -length + options.end );
 			selection.select();
 		}
 	});
@@ -232,13 +242,13 @@ setSelection: function( start, end ) {
 /**
  * Ported from Wikia's LinkSuggest extension
  * https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest
- * 
+ *
  * Scroll a textarea to the current cursor position. You can set the cursor
  * position with setSelection()
  * @param force boolean Whether to force a scroll even if the caret position
  *  is already visible. Defaults to false
  */
-scrollToCaretPosition: function( force ) {
+scrollToCaretPosition: function( options ) {
 	function getLineLength( e ) {
 		return Math.floor( e.scrollWidth / ( $.os.name == 'linux' ? 7 : 8 ) );
 	}
@@ -246,7 +256,7 @@ scrollToCaretPosition: function( force ) {
 		// FIXME: This functions sucks and is off by a few lines most
 		// of the time. It should be replaced by something decent.
 		var text = e.value.replace( /\r/g, "" );
-		var caret = $( e ).getCaretPosition();
+		var caret = $( e ).textSelection( 'getCaretPosition' );
 		var lineLength = getLineLength( e );
 		var row = 0;
 		var charInLine = 0;
@@ -286,10 +296,12 @@ scrollToCaretPosition: function( force ) {
 		return ( $.os.name == 'mac' ? 13 : ( $.os.name == 'linux' ? 15 : 16 ) ) * row;
 	}
 	return this.each(function() {
-		if ( this.selectionStart || this.selectionStart == '0' ) {
+		if ( $(this).is( ':hidden' ) ) {
+			// Do nothing
+		} else if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla
 			var scroll = getCaretScrollPosition( this );
-			if ( force || scroll < $(this).scrollTop() ||
+			if ( options.force || scroll < $(this).scrollTop() ||
 					scroll > $(this).scrollTop() + $(this).height() )
 				$(this).scrollTop( scroll );
 		} else if ( document.selection && document.selection.createRange ) {
@@ -303,7 +315,7 @@ scrollToCaretPosition: function( force ) {
 			 * character back and forth.
 			 */
 			var range = document.selection.createRange();
-			var pos = $(this).getCaretPosition();
+			var pos = $(this).textSelection( 'getCaretPosition' );
 			var oldScrollTop = this.scrollTop;
 			range.moveToElementText( this );
 			range.collapse();
@@ -311,7 +323,7 @@ scrollToCaretPosition: function( force ) {
 			range.select();
 			if ( this.scrollTop != oldScrollTop )
 				this.scrollTop += range.offsetTop;
-			else if ( force ) {
+			else if ( options.force ) {
 				range.move( 'character', -1 );
 				range.select();
 			}
@@ -319,5 +331,51 @@ scrollToCaretPosition: function( force ) {
 		$(this).trigger( 'scrollToPosition' );
 	} );
 }
+};
+	// Apply defaults
+	switch ( command ) {
+		//case 'getContents': // no params
+		//case 'setContents': // no params with defaults
+		//case 'getSelection': // no params
+		case 'encapsulateSelection':
+			options = $.extend( {
+				'pre': '', // Text to insert before the cursor/selection
+				'peri': '', // Text to insert between pre and post and select afterwards
+				'post': '', // Text to insert after the cursor/selection
+				'ownline': false, // Put the inserted text on a line of its own
+				'replace': false // If there is a selection, replace it with peri instead of leaving it alone
+			}, options );
+			break;
+		case 'getCaretPosition':
+			options = $.extend( {
+				'startAndEnd': false // Return [start, end] instead of just start
+			}, options );
+			// FIXME: We may not need character position-based functions if we insert markers in the right places
+			break;
+		case 'setSelection':
+			options = $.extend( {
+				'start': undefined, // Position to start selection at
+				'end': undefined, // Position to end selection at. Defaults to start
+				'startContainer': undefined, // Element to start selection in (iframe only)
+				'endContainer': undefined // Element to end selection in (iframe only). Defaults to startContainer
+			}, options );
+			if ( options.end === undefined )
+				options.end = options.start;
+			if ( options.endContainer == undefined )
+				options.endContainer = options.startContainer;
+			// FIXME: We may not need character position-based functions if we insert markers in the right places
+			break;
+		case 'scrollToCaretPosition':
+			options = $.extend( {
+				'force': false // Force a scroll even if the caret position is already visible
+			}, options );
+			break;
+	}
+	var context = $(this).data( 'wikiEditor-context' );
+	var hasIframe = context !== undefined && context.$iframe !== undefined;
+	// iframe functions have not been implemented yet, this is a temp hack
+	//var hasIframe = false;
+	return ( hasIframe ? context.fn : fn )[command].call( this, options );
+};
 
-} ); } )( jQuery );
+} )( jQuery );

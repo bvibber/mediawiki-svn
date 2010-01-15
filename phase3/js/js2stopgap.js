@@ -804,11 +804,13 @@ jQuery.extend( {
 				name = "float";
 
 			name = name.replace( / ( [A - Z] ) /g, "-$1" ).toLowerCase();
-
-			var computedStyle = defaultView.getComputedStyle( elem, null );
-
-			if ( computedStyle )
-				ret = computedStyle.getPropertyValue( name );
+			try{
+				var computedStyle = defaultView.getComputedStyle( elem, null );
+				if ( computedStyle )
+					ret = computedStyle.getPropertyValue( name );
+			}catch(e){
+				// failed to get computedStyle
+			}			
 
 			// We should always get a number back from opacity
 			if ( name == "opacity" && ret == "" )

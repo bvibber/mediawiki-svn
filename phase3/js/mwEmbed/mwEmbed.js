@@ -2383,7 +2383,8 @@ mw.addClassFilePaths( {
 	"$j.cookie"			: "jquery/plugins/jquery.cookie.js",
 	"$j.contextMenu"	: "jquery/plugins/jquery.contextMenu.js",
 	"$j.fn.suggestions"	: "jquery/plugins/jquery.suggestions.js",
-	"$j.fn.textSelection"	: "jquery/plugins/jquery.textSelection.js",
+	"$j.fn.textSelection" : "jquery/plugins/jquery.textSelection.js",
+	"$j.browserTest"	: "jquery/plugins/jquery.browserTest.js",
 
 	"$j.effects.blind"		: "jquery/jquery.ui/ui/effects.blind.js",
 	"$j.effects.drop"		: "jquery/jquery.ui/ui/effects.drop.js",
