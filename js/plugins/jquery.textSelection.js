@@ -10,11 +10,6 @@ var fn = {
 getContents: function() {
 	return this.val();
 },
-
-setContents: function( options ) {
-	return this.val( options.contents );
-},
-
 /**
  * Get the currently selected text in this textarea. Will focus the textarea
  * in some browsers (IE/Opera)
