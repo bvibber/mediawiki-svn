@@ -71,14 +71,7 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 		$text = $ret->getText();
 	}
 
-	global $wgVersion;
-	if( version_compare( $wgVersion, "1.7alpha" ) >= 0 ) {
-		// Pass HTML attributes through to the output.
-		$attribs = Sanitizer::validateTagAttributes( $param, 'div' );
-	} else {
-		// Can't guarantee safety on 1.6 or older.
-		$attribs = array();
-	}
+	$attribs = Sanitizer::validateTagAttributes( $param, 'div' );
 
 	// Wrap output in a <div> with "poem" class.
 	if( isset( $attribs['class'] ) ) {
