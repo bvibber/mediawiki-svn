@@ -110,5 +110,3 @@ function wfSuppressWarnings(){
 };
 function wfRestoreWarnings(){
 };
-
-}
