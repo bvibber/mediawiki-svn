@@ -138,7 +138,7 @@ class OutputPage {
 			return true;
 		}
 
-		//do checks for wiki-titles
+		// Do checks for wiki-titles
 		if( strpos( $path, $wgScript ) !== false ) {
 			$reqPath = str_replace( $wgScript . '?', '', $path );
 			$reqArgs = explode( '&', $reqPath );

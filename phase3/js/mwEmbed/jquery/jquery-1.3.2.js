@@ -654,9 +654,13 @@ jQuery.extend({
 			if ( name.match( /float/i ) )
 				name = "float";
 			name = name.replace( /([A-Z])/g, "-$1" ).toLowerCase();
-			var computedStyle = defaultView.getComputedStyle( elem, null );
-			if ( computedStyle )
-				ret = computedStyle.getPropertyValue( name );
+			try{
+				var computedStyle = defaultView.getComputedStyle( elem, null );
+				if ( computedStyle )
+					ret = computedStyle.getPropertyValue( name );
+			}catch(e){
+				// Put into try catch since compute style crashes firefox on some input 
+			}
 			// We should always get a number back from opacity
 			if ( name == "opacity" && ret == "" )
 				ret = "1";
