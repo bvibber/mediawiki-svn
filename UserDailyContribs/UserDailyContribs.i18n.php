@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 "user" is a plural here.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'userdailycontribs-desc' => 'Daaglikse gebruikersbydraes vir die uitbreiding om gebruikers se klieks mee te volg',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
