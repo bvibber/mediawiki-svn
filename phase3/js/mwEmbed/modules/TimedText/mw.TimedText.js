@@ -239,7 +239,7 @@ mw.addMessages( {
 			// Get the text per category
 			var textCategories = [ ];
 						
-			for( var i in this.enabledSources ) {
+			for( var i = 0; i <  this.enabledSources.length ; i++ ) {
 				var source =  this.enabledSources[ i ];
 				this.updateSourceDisplay( source, currentTime );			
 			}
@@ -256,7 +256,7 @@ mw.addMessages( {
 			// Get local reference to all timed text sources: ( text/xml, text/x-srt etc )			
 			var inlineSources = this.embedPlayer.mediaElement.getSources( 'text' );
 			//add all the sources to textSources
-			for( var i in inlineSources ){
+			for( var i = 0 ; i < inlineSources.length ; i++ ){
 				// make a new textSource:
 				var source = new TextSource( inlineSources[i] );
 				this.textSources.push( source );
@@ -1253,8 +1253,8 @@ mw.addMessages( {
 	 	},
 	 	
 	 	/**
-	 	 * get the sources from sourcePages data object
-	 	 * Put valid sources into the embedPlayer 
+	 	 * Get the sources from sourcePages data object ( api result )
+	 	 * @param {Object} sourcePages Source page result object
 	 	 */
 	 	getSources: function( sourcePages  ) {
 			var _this = this;
