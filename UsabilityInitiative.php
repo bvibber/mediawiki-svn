@@ -43,6 +43,9 @@ $wgAutoloadClasses['UsabilityInitiativeHooks'] =
 $wgExtensionMessagesFiles['UsabilityInitiative'] =
 	dirname( __FILE__ ) . "/UsabilityInitiative.i18n.php";
 
+// Adds the loader.js:
+$wgExtensionJavascriptLoader[] = "UsabilityInitiative/js/loader.js";
+
 // Registers Hooks
 $wgHooks['BeforePageDisplay'][] = 'UsabilityInitiativeHooks::addResources';
 $wgHooks['MakeGlobalVariablesScript'][] = 'UsabilityInitiativeHooks::addJSVars';
