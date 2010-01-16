@@ -56,8 +56,8 @@ class SpecialUpload extends SpecialPage {
 		$this->mRequest = $request;
 		$this->mSourceType        = $request->getVal( 'wpSourceType', 'file' );
 		$this->mUpload            = UploadBase::createFromRequest( $request );
-		$this->mUploadClicked     = $request->wasPosted() 
-			&& ( $request->getCheck( 'wpUpload' ) 
+		$this->mUploadClicked     = $request->wasPosted()
+			&& ( $request->getCheck( 'wpUpload' )
 				|| $request->getCheck( 'wpUploadIgnoreWarning' ) );
 
 		// Guess the desired name from the filename if not provided
@@ -187,11 +187,11 @@ class SpecialUpload extends SpecialPage {
 	 */
 	protected function getUploadForm( $message = '', $sessionKey = '', $hideIgnoreWarning = false ) {
 		global $wgOut;
-		
+
 		# Initialize form
 		$form = new UploadForm( array(
-			'watch' => $this->watchCheck(), 
-			'forreupload' => $this->mForReUpload, 
+			'watch' => $this->watchCheck(),
+			'forreupload' => $this->mForReUpload,
 			'sessionkey' => $sessionKey,
 			'hideignorewarning' => $hideIgnoreWarning,
 		) );
@@ -206,15 +206,15 @@ class SpecialUpload extends SpecialPage {
 		$form->addPreText( '<div id="uploadtext">' . wfMsgExt( 'uploadtext', 'parse' ) . '</div>');
 		# Add upload error message
 		$form->addPreText( $message );
-		
+
 		# Add footer to form
 		$uploadFooter = wfMsgNoTrans( 'uploadfooter' );
 		if ( $uploadFooter != '-' && !wfEmptyMsg( 'uploadfooter', $uploadFooter ) ) {
 			$form->addPostText( '<div id="mw-upload-footer-message">'
 				. $wgOut->parse( $uploadFooter ) . "</div>\n" );
 		}
-		
-		return $form;		
+
+		return $form;
 
 	}
 
@@ -259,7 +259,7 @@ class SpecialUpload extends SpecialPage {
 		$sessionKey = $this->mUpload->stashSession();
 		$message = '<h2>' . wfMsgHtml( 'uploadwarning' ) . "</h2>\n" .
 			'<div class="error">' . $message . "</div>\n";
-		
+
 		$form = $this->getUploadForm( $message, $sessionKey );
 		$form->setSubmitText( wfMsg( 'upload-tryagain' ) );
 		$this->showUploadForm( $form );
@@ -642,7 +642,7 @@ class UploadForm extends HTMLForm {
 	protected $mForReUpload;
 	protected $mSessionKey;
 	protected $mHideIgnoreWarning;
-	
+
 	protected $mSourceIds;
 
 	public function __construct( $options = array() ) {
@@ -650,7 +650,7 @@ class UploadForm extends HTMLForm {
 
 		$this->mWatch = !empty( $options['watch'] );
 		$this->mForReUpload = !empty( $options['forreupload'] );
-		$this->mSessionKey = isset( $options['sessionkey'] ) 
+		$this->mSessionKey = isset( $options['sessionkey'] )
 				? $options['sessionkey'] : '';
 		$this->mHideIgnoreWarning = !empty( $options['hideignorewarning'] );
 
@@ -678,9 +678,9 @@ class UploadForm extends HTMLForm {
 	}
 
 	/**
-	 * Get the descriptor of the fieldset that contains the file source 
+	 * Get the descriptor of the fieldset that contains the file source
 	 * selection. The section is 'source'
-	 * 
+	 *
 	 * @return array Descriptor array
 	 */
 	protected function getSourceSection() {
@@ -750,7 +750,7 @@ class UploadForm extends HTMLForm {
 
 	/**
 	 * Get the messages indicating which extensions are preferred and prohibitted.
-	 * 
+	 *
 	 * @return string HTML string containing the message
 	 */
 	protected function getExtensionsMessage() {
@@ -787,7 +787,7 @@ class UploadForm extends HTMLForm {
 	/**
 	 * Get the descriptor of the fieldset that contains the file description
 	 * input. The section is 'description'
-	 * 
+	 *
 	 * @return array Descriptor array
 	 */
 	protected function getDescriptionSection() {
@@ -851,9 +851,9 @@ class UploadForm extends HTMLForm {
 	}
 
 	/**
-	 * Get the descriptor of the fieldset that contains the upload options, 
+	 * Get the descriptor of the fieldset that contains the upload options,
 	 * such as "watch this file". The section is 'options'
-	 * 
+	 *
 	 * @return array Descriptor array
 	 */
 	protected function getOptionsSection() {
@@ -892,13 +892,13 @@ class UploadForm extends HTMLForm {
 
 	/**
 	 * Add upload JS to $wgOut
-	 * 
+	 *
 	 * @param bool $autofill Whether or not to autofill the destination
 	 * 	filename text box
 	 */
 	protected function addUploadJS( ) {
 		global $wgUseAjax, $wgAjaxUploadDestCheck, $wgAjaxLicensePreview;
-		global $wgEnableFirefogg, $wgEnableJS2system;
+		global $wgEnableFirefogg;
 		global $wgOut;
 
 		$useAjaxDestCheck = $wgUseAjax && $wgAjaxUploadDestCheck;
@@ -913,11 +913,11 @@ class UploadForm extends HTMLForm {
 		);
 
 		$wgOut->addScript( Skin::makeVariablesScript( $scriptVars ) );
-		
+
 		// For <charinsert> support; not provided by js2 yet
 		$wgOut->addScriptFile( 'edit.js' );
-		
-		if ( $wgEnableJS2system ) {
+
+		if ( $wgEnableFirefogg ) {
 			// JS2 upload scripts
 			$wgOut->addScriptClass( 'uploadPage' );
 		} else {
@@ -928,7 +928,7 @@ class UploadForm extends HTMLForm {
 
 	/**
 	 * Empty function; submission is handled elsewhere.
-	 * 
+	 *
 	 * @return bool false
 	 */
 	function trySubmit() {

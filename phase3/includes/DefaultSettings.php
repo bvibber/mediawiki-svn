@@ -33,7 +33,7 @@ if ( !defined( 'MW_PHP4' ) ) {
 }
 
 /** MediaWiki version number */
-$wgVersion = '1.16alpha';
+$wgVersion = '1.17alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -473,9 +473,14 @@ $wgMaxUploadSize = 1024*1024*100; # 100MB
  * Enable Firefogg support. Adds support for in-browser transcoding to Ogg
  * Theora, chunked uploads for large image files and client side hash checks.
  *
- * Ignored unless $wgEnableJS2system is true.
  */
 $wgEnableFirefogg = true;
+
+/**
+ * Enable add-media-wizard. Adds support for add-media-wizard for the edit page
+ */
+$wgEnableAddMediaWizard = true;
+
 
 /**
  * Point the upload navigation link to an external URL
@@ -2864,16 +2869,14 @@ $wgJSAutoloadClasses = array();
 
 /**
  * For defining the location of loader.js files of
- * external mwEmbed modules. ( ie modules hosted inside of extensions )
+ * Extension mwEmbed modules. ( ie modules hosted inside of extensions )
  */
-$wgJSModuleLoaderPaths = array();
+$wgExtensionJavascriptLoader = array();
 
 /*
- * boolean; if the script loader should be used to group all javascript requests.
+ * $wgEnableScriptLoader; If the script loader should be used to group all javascript requests.
  * more about the script loader: http://www.mediawiki.org/wiki/ScriptLoader
  *
- * (its recommended you DO NOT enable the script loader without also enabling $wgUseFileCache
- * (or have mediaWiki behind a proxy) otherwise all new js requests will result in script server js processing.
  */
 $wgEnableScriptLoader = false;
 
@@ -2895,12 +2898,6 @@ $wgScriptModifiedFileCheck = true;
  *
  */
 $wgScriptModifiedMsgCheck = false;
-
-/*
- * enable js2 Script System
- * if enabled we include jquery, mwEmbed and js2 versions of editPage.js
- */
-$wgEnableJS2system = false;
 
 /*
  * enable api iframe proxy

@@ -368,7 +368,7 @@ class EditPage {
 	 * the newly-edited page.
 	 */
 	function edit() {
-		global $wgOut, $wgRequest, $wgEnableJS2system;
+		global $wgOut, $wgRequest, $wgEnableAddMediaWizard;
 		// Allow extensions to modify/prevent this form or submission
 		if ( !wfRunHooks( 'AlternateEdit', array( $this ) ) ) {
 			return;
@@ -397,8 +397,10 @@ class EditPage {
 
 		$wgOut->addScriptFile( 'edit.js' );
 
-		if( $wgEnableJS2system )
+		// Add the "edit" mwEmbed page for add media wizard support
+		if( $wgEnableAddMediaWizard ){
 		    $wgOut->addScriptClass( 'editPage' );
+		}
 
 		$permErrors = $this->getEditPermissionErrors();
 		if ( $permErrors ) {

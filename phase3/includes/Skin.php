@@ -363,7 +363,7 @@ class Skin extends Linker {
 		global $wgVersion, $wgEnableAPI, $wgEnableWriteAPI;
 		global $wgRestrictionTypes, $wgLivePreview;
 		global $wgMWSuggestTemplate, $wgDBname, $wgEnableMWSuggest;
-		global $wgSitename, $wgEnableIframeApiProxy, $wgEnableJS2system;
+		global $wgSitename, $wgEnableIframeApiProxy;
 
 		$ns = $wgTitle->getNamespace();
 		$nsname = MWNamespace::exists( $ns ) ? MWNamespace::getCanonicalName( $ns ) : $wgTitle->getNsText();
@@ -446,15 +446,13 @@ class Skin extends Linker {
 			$vars['wgLivepreviewMessageError']   = wfMsg( 'livepreview-error' );
 		}
 
-		//add api proxy var and script link if on the special proxy page:
-		if( $wgEnableJS2system &&
+		// Add api proxy var and script link if on the special proxy page:
+		if(	$wgEnableIframeApiProxy &&
 			$wgTitle->getNamespace() == NS_MEDIAWIKI &&
 			$wgTitle->getDBKey() == 'ApiProxy' )
 		{
-			$vars['wgEnableIframeApiProxy'] = $wgEnableIframeApiProxy;			
-			//also add the apiProxy Page script if we are on that page
-			if( $wgEnableIframeApiProxy )
-				$wgOut->addScriptClass( 'apiProxyPage' );
+			$vars['wgEnableIframeApiProxy'] = $wgEnableIframeApiProxy;
+			$wgOut->addScriptClass( 'apiProxyPage' );
 		}
 
 		if ( $wgOut->isArticleRelated() && $wgUseAjax && $wgAjaxWatch && $wgUser->isLoggedIn() ) {
@@ -2055,7 +2053,7 @@ END;
 	/**
 	 * Add content from a sidebar system message
 	 * Currently only used for MediaWiki:Sidebar (but may be used by Extensions)
-	 * 
+	 *
 	 * @param &$bar array
 	 * @param $message String
 	 */

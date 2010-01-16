@@ -609,8 +609,7 @@ $wgAutoloadLocalClasses = array(
 
 );
 
-// Autoloader for JavaScript files (path is from the MediaWiki folder)
-global $wgJSAutoloadLocalClasses;
+// Autoloader for core mediaWiki JavaScript files (path is from the MediaWiki folder)
 $wgJSAutoloadLocalClasses = array(
 	'ajax' => 'skins/common/ajax.js',
 	'ajaxwatch' => 'skins/common/ajaxwatch.js',

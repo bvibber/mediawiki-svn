@@ -133,9 +133,9 @@ class OutputPage {
 
 		// If script-loader enabled check if we can add the script via script-loader
 		if( $wgEnableScriptLoader ) {
-			$js_class = $this->getJsClassFromPath( $path );
-			if( $js_class ) {
-				$this->addScriptClass( $js_class );
+			$jsClass = $this->getJsClassFromPath( $path );
+			if( $jsClass ) {
+				$this->addScriptClass( $jsClass );
 				return true;
 			}
 		}
@@ -178,15 +178,12 @@ class OutputPage {
 	 * this includes the conditional sitejs
 	 */
 	function addCoreScripts2Top(){
-		global $wgEnableScriptLoader, $wgJSAutoloadLocalClasses, $wgScriptPath, $wgEnableJS2system;
-		global $wgUser, $wgJsMimeType;
-		// @todo We should deprecate wikibits in favor of some mwEmbed pieces and jQuery
+		global $wgEnableScriptLoader, $wgJSAutoloadClasses, $wgScriptPath;
+		global $wgUser, $wgJsMimeType, $wgExtensionJavascriptLoader;
 
-		if( $wgEnableJS2system ){
-			$core_classes = array( 'window.jQuery', 'mwEmbed', 'wikibits' );
-		} else {
-			$core_classes = array( 'wikibits' );
-		}
+		// @todo We should deprecate wikibits in favor of some mwEmbed pieces and jQuery
+		$coreClasses = array( 'window.jQuery', 'mwEmbed', 'wikibits' );
+
 
 		//make sure scripts are on top:
 		$postScripts = $this->mScripts;
@@ -194,11 +191,17 @@ class OutputPage {
 
 		if( $wgEnableScriptLoader ){
 			//directly add script_loader call for addCoreScripts2Top
-			$this->mScripts = $this->getScriptLoaderJs( $core_classes );
+			$this->mScripts = $this->getScriptLoaderJs( $coreClasses );
 		} else {
 			$so = '';
-			foreach( $core_classes as $js_class ){
-				$this->addScriptClass( $js_class );
+			foreach( $coreClasses as $jsClass ){
+				$this->addScriptClass( $jsClass );
+			}
+			// Also add the "loader" classes ( script-loader won't run them )
+			foreach( $wgExtensionJavascriptLoader as $loaderPath){
+				$this->addScriptFile(
+					"$wgScriptPath/extensions/$loaderPath"
+				);
 			}
 		}
 		//Now re-append any scripts that got added prior to the addCoreScripts2Top call
@@ -206,19 +209,20 @@ class OutputPage {
 	}
 
 	/**
-	 * @param string $js_class Name of the JavaScript class
+	 * @param string $jsClass Name of the JavaScript class
 	 * @return boolean False if the class wasn't found, true on success
 	 */
-	function addScriptClass( $js_class ){
-		global $wgDebugJavaScript, $wgJSAutoloadLocalClasses, $wgJSAutoloadClasses, $IP,
-				$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath, $wgStylePath, $wgEnableJS2system;
+	function addScriptClass( $jsClass ){
+		global $wgDebugJavaScript, $wgJSAutoloadClasses, $IP,
+				$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath, $wgStylePath;
 
-		$path = jsScriptLoader::getJsPathFromClass( $js_class );
+		$path = jsScriptLoader::getJsPathFromClass( $jsClass );
+
 		if( $path !== false ){
 			if( $wgEnableScriptLoader ) {
 				// Register it with the script loader
-				if( !in_array( $js_class, $this->mScriptLoaderClassList ) ) {
-					$this->mScriptLoaderClassList[] = $js_class;
+				if( !in_array( $jsClass, $this->mScriptLoaderClassList ) ) {
+					$this->mScriptLoaderClassList[] = $jsClass;
 				}
 			} else {
 				// Source the script directly
@@ -231,22 +235,21 @@ class OutputPage {
 				} else {
 					$path = $wgScriptPath . '/' . $path;
 				}
-				$this->addScript( Html::linkedScript( $path . "?" . $this->getURIDparam( $js_class ) ) );
+				$this->addScript( Html::linkedScript( $path . "?" . $this->getURIDparam( $jsClass ) ) );
 
-				// Merge in language text (if js2 is on and we have mw.addMessages function &  scriptLoader is "off")
-				if( $wgEnableJS2system ){
-					if( !$this->mScriptLoader )
-						$this->mScriptLoader = new jsScriptLoader();
-
-					$inlineMsg = $this->mScriptLoader->getInlineMsgFromClass( $js_class );
-					if( $inlineMsg != '' )
-						$this->addScript( Html::inlineScript( $inlineMsg ));
+				// Merge in language text for non-script loader scripts
+				if( !$this->mScriptLoader ){
+					$this->mScriptLoader = new jsScriptLoader();
+				}
+				$inlineMsg = $this->mScriptLoader->getInlineMsgFromClass( $jsClass );
+				if( $inlineMsg != '' ){
+					$this->addScript( Html::inlineScript( $inlineMsg ));
 				}
 			}
 			return true;
 		}
-		//print "could not find: $js_class\n";
-		wfDebug( __METHOD__ . ' could not find js_class: ' . $js_class );
+		//print "could not find: $jsClass\n";
+		wfDebug( __METHOD__ . ' could not find js_class: ' . $jsClass );
 		return false; // could not find the class
 	}
 
@@ -301,9 +304,9 @@ class OutputPage {
 				}else{
 					//check for file modified time:
 					if( $wgScriptModifiedFileCheck ) {
-						$js_path =  jsScriptLoader::getJsPathFromClass( $class );
-						if( $js_path ) {
-							$cur_ftime = filemtime ( $IP ."/". $js_path );
+						$jsPath =  jsScriptLoader::getJsPathFromClass( $class );
+						if( $jsPath ) {
+							$cur_ftime = filemtime ( $IP ."/". $jsPath );
 							if( $cur_ftime > $ftime )
 								$ftime = $cur_ftime;
 						}
@@ -349,15 +352,14 @@ class OutputPage {
 	 * @param $path string
 	 */
 	function getJsClassFromPath( $path ) {
-		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgScriptPath;
+		global $wgJSAutoloadClasses, $wgScriptPath;
 		//Make sure we have the scriptClasses loaded:
 		$this->loadJsClassPaths();
 
-		$scriptLoaderPaths = array_merge( $wgJSAutoloadClasses,  $wgJSAutoloadLocalClasses );
-		foreach( $scriptLoaderPaths as $js_class => $js_path ) {
-			$js_path = "{$wgScriptPath}/{$js_path}";
-			if( $path == $js_path )
-				return $js_class;
+		foreach( $wgJSAutoloadClasses as $jsClass => $jsPath ) {
+			$jsPath = "{$wgScriptPath}/{$jsPath}";
+			if( $path == $jsPath )
+				return $jsClass;
 		}
 		return false;
 	}
@@ -1244,8 +1246,8 @@ class OutputPage {
 			$this->addScriptFile( 'rightclickedit.js' );
 		}
 
-		global $wgUseAJAXCategories, $wgEnableJS2system;
-		if ($wgUseAJAXCategories && $wgEnableJS2system) {
+		global $wgUseAJAXCategories;
+		if ( $wgUseAJAXCategories ) {
 			global $wgAJAXCategoriesNamespaces;
 
 			$title = $this->getTitle();
