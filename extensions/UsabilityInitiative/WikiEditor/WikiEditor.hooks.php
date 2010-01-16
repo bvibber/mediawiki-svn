@@ -7,17 +7,41 @@
  */
 
 class WikiEditorHooks {
-	
+
 	/* Static Members */
-	
+
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 3 ),
-			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 4 ),
-			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 3 ),
-			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 5 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 18 ),
-			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 2 ),
+			array(
+				'src' => 'Modules/Highlight/Highlight.js',
+				'class' => 'wikiEditor.config.highlight',
+				'version' => 3
+			),
+			array(
+				'src' => 'Modules/Preview/Preview.js',
+				'class' => 'wikiEditor.config.preview',
+				'version' => 4
+			),
+			array(
+				'src' => 'Modules/Publish/Publish.js',
+				'class' => 'wikiEditor.config.publish',
+				'version' => 3
+			),
+			array(
+				'src' => 'Modules/Toc/Toc.js',
+				'class' => 'wikiEditor.config.toc',
+				'version' => 5
+			),
+			array(
+				'src' => 'Modules/Toolbar/Toolbar.js',
+				'class' => 'wikiEditor.config.toolbar',
+				'version' => 18
+			),
+			array(
+				'src' => 'Modules/TemplateEditor/TemplateEditor.js',
+				'class' => 'wikiEditor.config.templateEditor',
+				'version' => 2
+			),
 		),
 		'combined' => array(
 			array( 'src' => 'WikiEditor.combined.js', 'version' => 19 ),
@@ -333,22 +357,22 @@ class WikiEditorHooks {
 			),
 		),
 	);
-	
+
 	/* Static Functions */
-	
+
 	/**
 	 * From here down, with very little modification is a copy of what's found in Vector/Vector.hooks.php.
 	 * Perhaps we could find a clean way of eliminating this redundancy.
 	 */
-	
+
 	/**
 	 * EditPage::showEditForm:initial hook
 	 * Adds the modules to the edit form
 	 */
 	 public static function addModules( &$toolbar ) {
-		global $wgOut, $wgUser, $wgJsMimeType;
+		global $wgOut, $wgUser, $wgJsMimeType, $wgVersion;
 		global $wgWikiEditorModules, $wgUsabilityInitiativeResourceMode;
-		
+
 		// Modules
 		$preferences = array();
 		$enabledModules = array();
@@ -396,9 +420,15 @@ class WikiEditorHooks {
 		UsabilityInitiativeHooks::addMessages( self::$messages );
 		// Add all scripts
 		foreach ( self::$scripts[$wgUsabilityInitiativeResourceMode] as $script ) {
-			UsabilityInitiativeHooks::addScript(
-				basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']
-			);
+			if ( !version_compare( floatval( $wgVersion ), '1.17', '>=') ) {
+				UsabilityInitiativeHooks::addScript(
+					basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']
+				);
+				continue;
+			}
+			if( isset( $script['class'] ) ){
+				$wgOut->addScriptClass( $script['class'] );
+			}
 		}
 		// Preferences (maybe the UsabilityInitiative class could do most of this for us?)
 		$wgOut->addScript(
@@ -411,14 +441,14 @@ class WikiEditorHooks {
 		);
 		return true;
 	}
-	
+
 	/**
 	 * GetPreferences hook
 	 * Add module-releated items to the preferences
 	 */
 	public static function addPreferences( $user, &$defaultPreferences ) {
 		global $wgWikiEditorModules;
-		
+
 		foreach ( $wgWikiEditorModules as $module => $enable ) {
 			if ( ( $enable['global'] || $enable['user'] ) &&
 						    isset( self::$modules[$module]['i18n'] ) &&
@@ -428,7 +458,7 @@ class WikiEditorHooks {
 					if ( $key == 'enable' && !$enable['user'] ) {
 						continue;
 					}
-					
+
 					// The preference with the key 'enable' determines if the rest are even relevant, so in the future
 					// setting up some dependencies on that might make sense
 					$defaultPreferences[$preference['key']] = $preference['ui'];
