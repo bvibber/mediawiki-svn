@@ -134,10 +134,12 @@ class FindSettings extends Maintenance {
 				$allSettings = array_keys( $coreSettings->getAllSettings() );
 				$ignoreList = array(
 					'wgAuth', 'wgCommandLineMode', 'wgCheckSerialized', 'wgConf','wgDBconnection',
-					'wgEnableNewpagesUserFilter', 'wgEnableSerializedMessages', 'wgEnforceHtmlIds',
-					'wgLegacySchemaConversion', 'wgMaintenanceScripts', 'wgMemCachedDebug',
-					'wgOldChangeTagsIndex', 'wgProxyKey', 'wgValidSkinNames', 'wgVectorExtraStyles',
-					'wgVersion'
+					'wgEnableNewpagesUserFilter', 'wgEnableSerializedMessages', 'wgEnableSorbs',
+					'wgEnforceHtmlIds', 'wgLegacySchemaConversion', 'wgMaintenanceScripts',
+					'wgMemCachedDebug', 'wgOldChangeTagsIndex', 'wgProxyKey', 'wgSorbsUrl',
+					'wgValidSkinNames', 'wgVectorExtraStyles', 'wgVersion',
+					// For now
+					'wgDummyLanguageCodes', 'wgAsyncHTTPTimeout',
 				);
 			}
 
