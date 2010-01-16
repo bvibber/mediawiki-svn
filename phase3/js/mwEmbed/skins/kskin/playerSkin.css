@@ -97,7 +97,9 @@
 	cursor: pointer;
 	-moz-border-radius:5px 5px 5px 5px;
 }
-
+.k-player .ui-corner-all {
+	-moz-border-radius:5px 5px 5px 5px;
+}
 .k-player .time-disp {
 	border: medium none;
 	display: inline;

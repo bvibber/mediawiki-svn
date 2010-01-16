@@ -2862,6 +2862,12 @@ $wgAutoloadClasses = array();
  */
 $wgJSAutoloadClasses = array();
 
+/**
+ * For defining the location of loader.js files of
+ * external mwEmbed modules. ( ie modules hosted inside of extensions )
+ */
+$wgJSModuleLoaderPaths = array();
+
 /*
  * boolean; if the script loader should be used to group all javascript requests.
  * more about the script loader: http://www.mediawiki.org/wiki/ScriptLoader
@@ -3146,9 +3152,9 @@ $wgBrowserBlackList = array(
 /**
  * Fake out the timezone that the server thinks it's in. This will be used for
  * date display and not for what's stored in the DB. Leave to null to retain
- * your server's OS-based timezone value. 
+ * your server's OS-based timezone value.
  *
- * This variable is currently used only for signature formatting and for local 
+ * This variable is currently used only for signature formatting and for local
  * time/date parser variables ({{LOCALTIME}} etc.)
  *
  * Timezones can be translated by editing MediaWiki messages of type

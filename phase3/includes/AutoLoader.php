@@ -134,6 +134,7 @@ $wgAutoloadLocalClasses = array(
 	'JSMin' => 'js/mwEmbed/includes/library/JSMin.php',
 	'JSMinException' => 'js/mwEmbed/includes/minify/JSMin.php',
 	'jsScriptLoader' => 'js/mwEmbed/jsScriptLoader.php',
+	'jsClassLoader' => 'js/mwEmbed/includes/jsClassLoader.php',
 	'Job' => 'includes/JobQueue.php',
 	'LCStore_DB' => 'includes/LocalisationCache.php',
 	'LCStore_CDB' => 'includes/LocalisationCache.php',

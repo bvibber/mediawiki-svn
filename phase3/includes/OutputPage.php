@@ -131,11 +131,13 @@ class OutputPage {
 			$path = "{$wgStylePath}/common/{$file}";
 		}
 
-		// If the class can be determined, use the addScriptClass method
-		$js_class = $this->getJsClassFromPath( $path );
-		if( $js_class ) {
-			$this->addScriptClass( $js_class );
-			return true;
+		// If script-loader enabled check if we can add the script via script-loader
+		if( $wgEnableScriptLoader ) {
+			$js_class = $this->getJsClassFromPath( $path );
+			if( $js_class ) {
+				$this->addScriptClass( $js_class );
+				return true;
+			}
 		}
 
 		// Do checks for wiki-titles
@@ -199,7 +201,7 @@ class OutputPage {
 				$this->addScriptClass( $js_class );
 			}
 		}
-		//now re-append any scripts that got added prior to the addCoreScripts2Top call
+		//Now re-append any scripts that got added prior to the addCoreScripts2Top call
 		$this->mScripts = $this->mScripts . $postScripts;
 	}
 
@@ -210,15 +212,6 @@ class OutputPage {
 	function addScriptClass( $js_class ){
 		global $wgDebugJavaScript, $wgJSAutoloadLocalClasses, $wgJSAutoloadClasses, $IP,
 				$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath, $wgStylePath, $wgEnableJS2system;
-
-		// Load the javascript script class paths
-		if( ! $this->mLoadedJavascriptClasses ){
-			require_once("$IP/js/mwEmbed/includes/jsAutoloadLocalClasses.php");
-			// Issue the load request:
-			wfLoadMwEmbedClassPaths();
-			// Set the flag to true
-			$this->mLoadedJavascriptClasses = true;
-		}
 
 		$path = jsScriptLoader::getJsPathFromClass( $js_class );
 		if( $path !== false ){
@@ -357,6 +350,8 @@ class OutputPage {
 	 */
 	function getJsClassFromPath( $path ) {
 		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgScriptPath;
+		//Make sure we have the scriptClasses loaded:
+		$this->loadJsClassPaths();
 
 		$scriptLoaderPaths = array_merge( $wgJSAutoloadClasses,  $wgJSAutoloadLocalClasses );
 		foreach( $scriptLoaderPaths as $js_class => $js_path ) {
@@ -365,6 +360,18 @@ class OutputPage {
 				return $js_class;
 		}
 		return false;
+	}
+	/**
+	 * Loads the javascript class paths into the AutoLoad class var
+	 */
+	function loadJsClassPaths(){
+		// Load the javascript script class paths
+		if( ! $this->mLoadedJavascriptClasses ){
+			// Issue the load request:
+			jsClassLoader::loadClassPaths();
+			// Set the flag to true
+			$this->mLoadedJavascriptClasses = true;
+		}
 	}
 
 	/**

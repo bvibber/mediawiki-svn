@@ -24,6 +24,8 @@ $wgUseFileCache = true;
 $wgJSAutoloadClasses = array();
 $wgJSAutoloadLocalClasses = array();
 
+$wgJSModuleLoaderPaths = array();
+
 /*Localization:*/
 $wgEnableScriptLocalization = true;
 
@@ -46,9 +48,9 @@ $wgDirectoryMode = 0777;
 $wgJsMimeType = 'text/javascript';
 
 // Get the autoload classes
-require_once( realpath( dirname( __FILE__ ) ) . '/jsAutoloadLocalClasses.php' );
+require_once( realpath( dirname( __FILE__ ) ) . '/jsClassLoader.php' );
 // Load the javascript Classes
-wfLoadMwEmbedClassPaths();
+jsClassLoader::loadClassPaths();
 
 // Get the JSmin class:
 require_once( realpath( dirname( __FILE__ ) ) . '/library/JSMin.php' );
@@ -103,4 +105,7 @@ class FormatJson{
 	public static function decode( $value, $assoc=false ){
 		return json_decode( $value, $assoc );
 	}
+}
+// MWException extends Exception (for noWiki we don't do anything fancy )
+class MWException extends Exception {
 }
