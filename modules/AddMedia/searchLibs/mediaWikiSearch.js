@@ -47,7 +47,7 @@ mediaWikiSearch.prototype = {
 			'iiurlwidth': parseInt( this.rsd.thumb_width ),
 			'rvprop':'content'
 		}
-		mw.getJSON(this.provider.api_url, request, function( data ) {
+		mw.getJSON(this.provider.api_url, request, function( data ) {				
 				// check for redirect
 				for ( var i in data.query.pages ) {
 					var page = data.query.pages[i];

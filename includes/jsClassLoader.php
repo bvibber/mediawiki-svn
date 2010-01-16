@@ -2,26 +2,29 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die( 1 );
 
-global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
-// NOTE this is growing in complexity and globals sloppiness
-
-
 class jsClassLoader {
 	private static $moduleList = array();
 	private static $combinedLoadersJs = '';
 	private static $classReplaceExp = '/mw\.addClassFilePaths\s*\(\s*{(.*)}\s*\)\s*\;/siU';
 
 	private static $loadClassFlag = false;
+	private static $directoryContext = '';
 	/**
-	 * Get the javascript class paths
+	 * Get the javascript class paths from javascript files
+	 *
+	 * Note:: if it is ~too costly~ to parse js we could cache in DB per file modified time
 	 */
 	public static function loadClassPaths(){
-		global $wgMwEmbedDirectory, $wgJSModuleLoaderPaths;
+		global $wgMwEmbedDirectory, $wgExtensionJavascriptLoader,
+			$wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $IP;
 
 		// Only run "once"
 		if( self::$loadClassFlag )
 			return false;
 		self::$loadClassFlag = true;
+
+		// Load classes from mediaWiki $wgJSAutoloadLocalClasses var:
+		$wgJSAutoloadClasses = array_merge( $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses );
 
 		// Load classes from  mwEmbed.js
 		if ( !is_file( $wgMwEmbedDirectory . 'mwEmbed.js' ) ) {
@@ -29,39 +32,56 @@ class jsClassLoader {
 			throw new MWException( "mwEmbed.js missing check \$wgMwEmbedDirectory path\n" );
 			return false;
 		}
+
 		// Read the file:
-		$file_content = file_get_contents( $wgMwEmbedDirectory . 'mwEmbed.js' );
+		$fileContent = file_get_contents( $wgMwEmbedDirectory . 'mwEmbed.js' );
 		// Get class paths from mwEmbed.js
-		$replace_test = preg_replace_callback(
+		self::$directoryContext = $wgMwEmbedDirectory;
+		preg_replace_callback(
 			self::$classReplaceExp,
 			'jsClassLoader::preg_classPathLoader',
-			$file_content
+			$fileContent
 		);
 
 		// Get the list of enabled modules into $wgJSModuleList
-		$replace_test = preg_replace_callback(
+		preg_replace_callback(
 			'/mwEnabledModuleList\s*\=\s*\[(.*)\]/siU',
 			'jsClassLoader::preg_buildModuleList',
-			$file_content
+			$fileContent
 		);
 
 		// Get all the classes from the loader files:
 		foreach( self::$moduleList as  $na => $moduleName){
-			$file_content = file_get_contents(
-				$wgMwEmbedDirectory . 'modules/' . $moduleName . '/loader.js'
-			);
-			// Add the mwEmbed loader js to its global collector:
-			self::$combinedLoadersJs .=  $file_content;
+			// Setup the directory context:
+			self::$directoryContext = $wgMwEmbedDirectory;
+			self::proccessLoaderPath( $wgMwEmbedDirectory .
+				'modules/' . $moduleName . '/loader.js' );
 
-			$replace_test.= preg_replace_callback(
-				self::$classReplaceExp,
-				'jsClassLoader::preg_classPathLoader',
-				$file_content
-			);
 		}
 
-		// Get all the classes from extensions registered mwEmbed modules
+		// Get all the extension loader paths registered mwEmbed modules
+		foreach( $wgExtensionJavascriptLoader as $na => $loaderPath){
+			// Setup the directory context:
+			self::$directoryContext = 'extensions/' .str_replace('loader.js', '' , $loaderPath);
+			self::proccessLoaderPath( $IP . '/extensions/' .  $loaderPath );
+		}
+	}
+	/**
+	 * Process a loader path
+	 *
+	 * @param String $path
+	 */
+	private static function proccessLoaderPath( $path ){
+		$fileContent = file_get_contents( $path );
 
+		// Add the mwEmbed loader js to its global collector:
+		self::$combinedLoadersJs .=  $fileContent;
+
+		preg_replace_callback(
+			self::$classReplaceExp,
+			'jsClassLoader::preg_classPathLoader',
+			$fileContent
+		);
 	}
 	/**
 	 * Get the combined loader javascript
@@ -90,22 +110,20 @@ class jsClassLoader {
 	}
 	/**
 	 * Adds javascript autoloader class names and paths
-	 * to $wgJSAutoloadLocalClasses global
-	 *
-	 * Use $wgJSAutoloadLocalClasses to support manual adding of class name / paths
+	 * to $wgJSAutoloadClasses global
 	 *
 	 * @param string $jvar Json string with class name list
 	 */
 	private static function preg_classPathLoader( $jsvar ) {
-		global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
+		global $wgJSAutoloadClasses;
 		if ( !isset( $jsvar[1] ) )
 			return false;
 
 		$jClassSet = FormatJson::decode( '{' . $jsvar[1] . '}', true );
 		foreach ( $jClassSet as $jClass => $jPath ) {
-			// Strip $ from jClass (as they are stripped on URL request parameter input)
+			// Strip $ from class (as they are stripped on URL request parameter input)
 			$jClass = str_replace( '$', '', $jClass );
-			$wgJSAutoloadLocalClasses[ $jClass ] = $wgMwEmbedDirectory . $jPath;
+			$wgJSAutoloadClasses[ $jClass ] =  self::$directoryContext . $jPath;
 		}
 	}
 }

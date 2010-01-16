@@ -11,8 +11,6 @@ define( 'MWEMBED_STANDALONE', true );
 
 // Setup the globals: 	(for documentation see: DefaultSettings.php )
 
-$wgJSAutoloadLocalClasses = array();
-
 $IP = realpath( dirname( __FILE__ ) . '/../' );
 
 // $wgMwEmbedDirectory becomes the root $IP
@@ -21,8 +19,8 @@ $wgMwEmbedDirectory = '';
 $wgUseFileCache = true;
 
 // Init our wg Globals
-$wgJSAutoloadClasses = array();
 $wgJSAutoloadLocalClasses = array();
+$wgJSAutoloadClasses = array();
 
 $wgJSModuleLoaderPaths = array();
 
@@ -30,8 +28,7 @@ $wgJSModuleLoaderPaths = array();
 $wgEnableScriptLocalization = true;
 
 $mwLanguageCode = 'en';
-
-$wgContLanguageCode = '';
+$wgLang = false;
 
 $wgStyleVersion = '218';
 

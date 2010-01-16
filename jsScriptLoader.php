@@ -24,7 +24,7 @@ class jsScriptLoader {
 	var $jsFileList = array();
 	var $langCode = '';
 	var $jsout = '';
-	var $rKey = ''; // the request key
+	var $requestKey = ''; // the request key
 	var $error_msg = '';
 	var $debug = false;
 
@@ -63,19 +63,20 @@ class jsScriptLoader {
 	 *  outputs js
 	 */
 	function doScriptLoader() {
-		global 	$wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $IP,
+		global 	$wgJSAutoloadClasses, $IP,
 		$wgEnableScriptMinify, $wgUseFileCache, $wgExtensionMessagesFiles;
 
 		// Load the ExtensionMessagesFiles
-		$wgExtensionMessagesFiles[ 'mwEmbed' ] = realpath( dirname( __FILE__ ) ) . '/includes/languages/mwEmbed.i18n.php';
+		$wgExtensionMessagesFiles[ 'mwEmbed' ] = realpath( dirname( __FILE__ ) ) .
+			'/includes/languages/mwEmbed.i18n.php';
 
-		//Load the javascript class paths:
+		// Load the javascript class paths:
 		require_once( realpath( dirname( __FILE__ ) ) . "/includes/jsClassLoader.php");
 		jsClassLoader::loadClassPaths();
 
 		// Reset the requestKey:
 		$this->requestKey = '';
-		//do the post proc request with configuration vars:
+		// Do the post proc request with configuration vars:
 		$this->postProcRequestVars();
 		//update the filename (if gzip is on)
 		$this->sFileCache->getCacheFileName();
@@ -338,7 +339,7 @@ class jsScriptLoader {
 	 */
 	function postProcRequestVars(){
 		global $wgContLanguageCode, $wgEnableScriptMinify, $wgJSAutoloadClasses,
-		$wgJSAutoloadLocalClasses, $wgStyleVersion;
+		$wgStyleVersion;
 
 		// Set debug flag
 		if ( ( isset( $_GET['debug'] ) && $_GET['debug'] == 'true' ) || ( isset( $wgEnableScriptDebug ) && $wgEnableScriptDebug == true ) ) {
@@ -428,10 +429,10 @@ class jsScriptLoader {
 	 *  This is to quickly get a requestKey that we can check against the cache
 	 */
 	function preProcRequestVars() {
-		$rKey = '';
+		$requestKey = '';
 		// Check for debug (won't use the cache)
 		if ( ( isset( $_GET['debug'] ) && $_GET['debug'] == 'true' ) ) {
-			//we are going to have to run postProcRequest
+			// We are going to have to run postProcRequest
 			return false;
 		}
 
@@ -462,31 +463,31 @@ class jsScriptLoader {
 		}
 
 		// Check for the requested classes
-		if ( count( $reqClassList ) > 0 ) {
+		if ( $reqClassList && count( $reqClassList ) > 0 ) {
 			// Clean the class list and populate jsFileList
 			foreach (  $reqClassList as $reqClass ) {
 				//do some simple checks:
 				if ( trim( $reqClass ) != '' ){
 					if( substr( $reqClass, 0, 3 ) == 'WT:'  && strtolower( substr( $reqClass, -3) ) == '.js' ){
-						//wiki page requests (must end with .js):
-						$rKey .= $reqClass;
+						// Wiki page requests (must end with .js):
+						$requestKey .= $reqClass;
 					}else if( substr( $reqClass, 0, 3 ) != 'WT:' ){
-						//normal class requests:
+						// Normal class requests:
 						$reqClass = preg_replace( "/[^A-Za-z0-9_\-\.]/", '', $reqClass );
-						$rKey .= $reqClass;
+						$requestKey .= $reqClass;
 					}else{
-						//not a valid class don't add it
+						// Not a valid class
 					}
 				}
 			}
 		}
-		// Add the language code to the rKey:
-		$rKey .= '_' . $langCode;
+		// Add the language code to the requestKey:
+		$requestKey .= '_' . $langCode;
 
 		// Add the unique rid
-		$rKey .= $urid;
+		$requestKey .= $urid;
 
-		return $rKey;
+		return $requestKey;
 	}
 	/**
 	 * Check for the commons language hack.
@@ -517,10 +518,10 @@ class jsScriptLoader {
 	 * @return path of the class or "false"
 	 */
 	public static function getJsPathFromClass( $reqClass ){
-		global $wgJSAutoloadLocalClasses, $wgJSAutoloadClasses;
-		if ( isset( $wgJSAutoloadLocalClasses[$reqClass] ) ) {
-			return $wgJSAutoloadLocalClasses[$reqClass];
-		} else if ( isset( $wgJSAutoloadClasses[$reqClass] ) ) {
+		global $wgJSAutoloadClasses;
+		// Make sure the class is loaded:
+		jsClassLoader::loadClassPaths();
+		if ( isset( $wgJSAutoloadClasses[$reqClass] ) ) {
 			return $wgJSAutoloadClasses[$reqClass];
 		} else {
 			return false;
@@ -530,18 +531,20 @@ class jsScriptLoader {
 	/**
 	 * Retrieve the js file into a string, updates error_msg if not retrivable.
 	 *
-	 * @param {String} $file_path File to get
+	 * @param {String} $filePath File to get
 	 * @return {String} of the file contents
 	 */
-	function doGetJsFile( $file_path ) {
+	function doGetJsFile( $filePath ) {
 		global $IP;
 
 		// Load the file
-		$str = @file_get_contents( "{$IP}/{$file_path}" );
+		wfSuppressWarnings();
+		$str = file_get_contents( "{$IP}/{$filePath}" );
+		wfRestoreWarnings();
 
 		if ( $str === false ) {
 			// @@todo check PHP error level. Don't want to expose paths if errors are hidden.
-			$this->error_msg .= 'Requested File: ' . htmlspecialchars( $file_path ) . ' could not be read' . "\n";
+			$this->error_msg .= 'Requested File: ' . htmlspecialchars( $IP.'/'.$filePath ) . ' could not be read' . "\n";
 			return false;
 		}
 		return $str;
@@ -643,8 +646,8 @@ class jsScriptLoader {
 	 * @return {Array} decoded json array of message key value pairs
 	 */
 	function getMsgKeysFromClass( $class ){
-		$file_path = self::getJsPathFromClass( $class );
-		$str = $this->getScriptText($class,  $file_path);
+		$filePath = self::getJsPathFromClass( $class );
+		$str = $this->getScriptText($class,  $filePath);
 
 		$inx = self::getAddMessagesIndex( $str );
 		if(!$inx)
@@ -660,13 +663,13 @@ class jsScriptLoader {
 	 * @param {String} $langCode Language code override
 	 */
 	static public function updateMsgKeys(& $jmsg, $langCode = false){
-		global $wgContLanguageCode;
+		global $wgLang;
 		// Check the langCode
-		if(!$langCode)
-			$langCode = $wgContLanguageCode;
+		if(!$langCode && $wgLang)
+			$langCode = $wgLang->getCode();
 
 		// Get the msg keys for the a json array
-		foreach ( $jmsg as $msgKey => $default_en_value ) {
+		foreach ( $jmsg as $msgKey => $na ) {
 			$jmsg[ $msgKey ] = wfMsgGetKey( $msgKey, true, $langCode, false );
 		}
 	}

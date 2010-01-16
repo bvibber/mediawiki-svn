@@ -1024,7 +1024,7 @@ var mwDefaultConf = {
 							loadDone = false;			
 					}					
 					// Run the parent scope callback for "loadMany" 
-					if( loadDone ){						
+					if( loadDone && callback ){						
 						callback( loadName );
 					}
 				} );
@@ -1171,18 +1171,26 @@ var mwDefaultConf = {
 			// Include class defined check for older browsers
 			var classDone = false;
 				
+			//Add a class callback hook ( for script-loader onDone callback )			
+			mwLoadDoneCB[ className ] = function(){
+				mw.log('run callback for: ' + className );
+				if( callback ){
+					callback( className );
+				}
+				callback = null;
+				mwLoadDoneCB[ className ]  = 'done';
+			};		
 			
 			// Issue the request to load the class (include class name in result callback:					
 			mw.getScript( scriptRequest, function( scriptRequest ) {				
-				if(! mw.isset( className )){
+				if(! mw.isset( className ) && callback){
 					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.classPaths[ className ] );
-				}else{
-					if( callback )
-						callback( className );
-					callback = null;
 				}
+				if( callback )
+					callback( className );
+				callback = null;
 			} );	
-			//mw.log( 'done with running 	getScript request ' );
+			//mw.log( 'done with running getScript request ' );
 			
 			/*
 			* If scriptLoader is not enabled
@@ -1224,8 +1232,11 @@ var mwDefaultConf = {
 		*  php scriptLoader to parse the file paths.  
 	 	*/
 	 	addClassFilePaths: function( classSet ){
+	 		var prefix = ( mw.getConfig( 'loaderContext' ) )?
+	 			mw.getConfig( 'loaderContext' ): '';
+	 		
 	 		for( var i in classSet ){
-				this.classPaths[ i ] = classSet[ i ];
+				this.classPaths[ i ] = prefix + classSet[ i ];
 			}
 	 	},
 	 	
@@ -1569,7 +1580,7 @@ var mwDefaultConf = {
 			return ;
 		}
 		
-		if ( mw.isset( objectName ) ){			
+		if ( mw.isset( objectName ) || mwLoadDoneCB[ objectName ] == 'done' ){			
 			callback( objectName )
 		}else{
 			setTimeout( function( ){
@@ -1719,9 +1730,7 @@ var mwDefaultConf = {
 		// Check if its a relative path name, ( ie does not start with "/" and does not include :// 
 		var isRelativePath = ( scriptRequest.indexOf('://') == -1 && scriptRequest.indexOf('/') !== 0 )? true : false; 
 		if( slpath &&  isRelativePath ) {
-			url = slpath + '?class=' + scriptRequest;
-			//Add a class callback hook ( for script-loader onDone callback )			
-			mwLoadDoneCB[ scriptRequest ] = callback;			
+			url = slpath + '?class=' + scriptRequest;				
 		}else{
 			// Add the mwEmbed path if a relative path request
 			url = ( isRelativePath )? mw.getMwEmbedPath() : '';
@@ -1753,9 +1762,9 @@ var mwDefaultConf = {
 		var script = document.createElement("script");
 		script.setAttribute( 'src', url );		
 				
-		// Attach handlers ( if not using script loader that issues onDone callback ) 
+		// Attach handlers ( if not using script loader that issues onDone callback )	
 		if( !mw.getScriptLoaderPath() ){	 		
-			script.onload = script.onreadystatechange = function(){			
+			script.onload = script.onreadystatechange = function(){	
 				if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {	
 					if( callback )
 						callback( scriptRequest );	
@@ -2292,6 +2301,7 @@ var mwDefaultConf = {
 		$j.each( enabledModules, function( na, module_name ){
 			loaderRequest.push( 'modules/' + module_name + '/loader.js' );
 		}) 
+		mw.setConfig('loaderContext', '' );
 		mw.load( loaderRequest, function(){
 			callback();
 		} );
@@ -2390,7 +2400,8 @@ var loadRS = mw.lang.loadRS;
 * class paths
 * 
 */
- 
+mw.setConfig('loaderContext', '' );
+
 mw.addClassFilePaths( {
 	"mwEmbed"			: "mwEmbed.js",
 	"window.jQuery"		: "jquery/jquery-1.3.2.js",
