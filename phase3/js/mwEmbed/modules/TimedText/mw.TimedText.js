@@ -1241,7 +1241,7 @@ mw.addMessages( {
 				if (	sourcePages.error && sourcePages.error.code == 'apunknown_apnamespace' ) {
 					var request = { 
 						'list' : 'allpages', 
-						'apprefix' : _this.getCanonicalTimedTextNS() + ':' + _this.pe.apiTitleKey 
+						'apprefix' : _this.getCanonicalTimedTextNS() + ':' + _this.embedPlayer.apiTitleKey 
 					};
 					mw.getJSON( apiUrl, request, function( sourcePages ) {
 						callback( sourcePages )
