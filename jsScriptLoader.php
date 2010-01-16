@@ -32,6 +32,8 @@ class jsScriptLoader {
 	var $jsvarurl = false;
 	var $doProcReqFlag = true;
 
+	private static $rawClassList = '';
+
 	/**
 	 * Output the javascript from cache
 	 *
@@ -68,8 +70,8 @@ class jsScriptLoader {
 		$wgExtensionMessagesFiles[ 'mwEmbed' ] = realpath( dirname( __FILE__ ) ) . '/includes/languages/mwEmbed.i18n.php';
 
 		//Load the javascript class paths:
-		require_once( realpath( dirname( __FILE__ ) ) . "/includes/jsAutoloadLocalClasses.php");
-		wfLoadMwEmbedClassPaths();
+		require_once( realpath( dirname( __FILE__ ) ) . "/includes/jsClassLoader.php");
+		jsClassLoader::loadClassPaths();
 
 		// Reset the requestKey:
 		$this->requestKey = '';
@@ -82,8 +84,8 @@ class jsScriptLoader {
 		$this->jsout .= 'var mwScriptLoaderDate = "' . date( 'c' ) . '";'  . "\n";
 		$this->jsout .= 'var mwScriptLoaderRequestKey = "' . htmlspecialchars( $this->requestKey ) . '";'  . "\n";
 		$this->jsout .= 'var mwLang = "' . htmlspecialchars( $this->langCode ) . '";' . "\n";
-		// Build the output
 
+		// Build the output
 		// Swap in the appropriate language per js_file
 		foreach ( $this->jsFileList as $classKey => $file_name ) {
 			// Get the script content
@@ -91,13 +93,15 @@ class jsScriptLoader {
 			if( $jstxt ){
 				$this->jsout .= $this->doProcessJs( $jstxt );
 			}
-
-			// If the special mwEmbed class entry point (include loader js
+			// If the core mwEmbed class entry point include loader js
 			if( $classKey == 'mwEmbed' ){
-				global $wgMwEmbedLoaderJs;
-				$this->jsout .= $wgMwEmbedLoaderJs;
+				$this->jsout .= jsClassLoader::getCombinedLoaderJs();
 			}
 		}
+
+		// Add a mw.loadDone callback so webkit browsers don't have to check if variables are "ready"
+		$this->jsout .= self::getOnDoneCallback( );
+
 
 		// Check if we should minify the whole thing:
 		if ( !$this->debug ) {
@@ -120,52 +124,74 @@ class jsScriptLoader {
 			$this->outputJsWithHeaders();
 		}
 	}
-
+	/**
+	 * Get the onDone javascript callback for a given class list
+	 *
+	 * @return unknown
+	 */
+	static private function getOnDoneCallback( ){
+		return 'if(mw && mw.loadDone){mw.loadDone(\'' .
+							htmlspecialchars( self::$rawClassList ) . '\');};';
+	}
 	/**
 	 * Get Minified js
 	 *
 	 * Takes the $js_string input
 	 *  and
-	 * returns minified or "compiled" javascript value
+	 * @return  minified javascript value
 	 */
 	static function getMinifiedJs( & $js_string, $requestKey='' ){
 		global $wgJavaPath, $wgClosureCompilerPath, $wgClosureCompilerLevel;
-		// Check if we support the google closure compiler:
+
+
+		// Check if google closure compiler is enabled and we can get its output
 		if( $wgJavaPath && $wgClosureCompilerPath && wfShellExecEnabled() ){
-			if( is_file( $wgJavaPath ) && is_file( $wgClosureCompilerPath ) ){
-				// Update the requestKey with a random value if no provided:
-				if( $requestKey == '')
-					$requestKey = rand() + microtime();
-
-				// Write the grouped javascript to a temporary file:
-				// ( closure compiler does not support reading from standard in )
-				$td = wfTempDir();
-				$jsFileName = $td . '/' . $requestKey  . '.tmp.js';
-				file_put_contents( $jsFileName,  $js_string );
-				$retval = '';
-				$cmd = $wgJavaPath . ' -jar ' . $wgClosureCompilerPath;
-				$cmd.= ' --js ' . $jsFileName;
-
-				if( $wgClosureCompilerLevel )
-					$cmd.= ' --compilation_level ' .  wfEscapeShellArg( $wgClosureCompilerLevel );
-
-				// only output js ( no warnings )
-				$cmd.= ' --warning_level QUIET';
-				//print "run: $cmd";
-				// Run the command:
-				$jsMinVal = wfShellExec($cmd , $retval);
-
-				// Clean up ( remove temporary file )
-				//unlink( $jsFileName );
-
-				if( strlen( $jsMinVal ) != 0 && $retval === 0){
-					//die( "used closure" );
-					return $jsMinVal;
-				}
+			$jsMinVal = self::getClosureMinifiedJs( $js_string, $requestKey );
+			if( $jsMinVal ){
+				return $jsMinVal;
+			}else{
+				wfDebug( 'Closure compiler failed to produce code for:' . $requestKey);
 			}
 		}
-		// Do the minification and output
+		// Do the minification using php JSMin
 		return JSMin::minify( $js_string );
+	}
+	static function getClosureMinifiedJs( & $js_string, $requestKey=''){
+		if( !is_file( $wgJavaPath ) || ! is_file( $wgClosureCompilerPath ) ){
+			return false;
+		}
+		// Update the requestKey with a random value if no provided
+		// requestKey is used for the temporary file
+		// ( There are problems with using standard output and Closure compile )
+		if( $requestKey == '')
+			$requestKey = rand() + microtime();
+
+		// Write the grouped javascript to a temporary file:
+		// ( closure compiler does not support reading from standard in )
+		$td = wfTempDir();
+		$jsFileName = $td . '/' . $requestKey  . '.tmp.js';
+		file_put_contents( $jsFileName,  $js_string );
+		$retval = '';
+		$cmd = $wgJavaPath . ' -jar ' . $wgClosureCompilerPath;
+		$cmd.= ' --js ' . $jsFileName;
+
+		if( $wgClosureCompilerLevel )
+			$cmd.= ' --compilation_level ' .  wfEscapeShellArg( $wgClosureCompilerLevel );
+
+		// only output js ( no warnings )
+		$cmd.= ' --warning_level QUIET';
+		//print "run: $cmd";
+		// Run the command:
+		$jsMinVal = wfShellExec($cmd , $retval);
+
+		// Clean up ( remove temporary file )
+		unlink( $jsFileName );
+
+		if( strlen( $jsMinVal ) != 0 && $retval === 0){
+			//die( "used closure" );
+			return $jsMinVal;
+		}
+		return false;
 	}
 	/**
 	 * Gets Script Text
@@ -341,6 +367,7 @@ class jsScriptLoader {
 		$reqClassList = false;
 		if ( isset( $_GET['class'] ) && $_GET['class'] != '' ) {
 			$reqClassList = explode( ',', $_GET['class'] );
+			self::$rawClassList= $_GET['class'];
 		}
 
 		// Check for the requested classes

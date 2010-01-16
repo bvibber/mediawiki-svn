@@ -137,6 +137,9 @@ var mwDefaultConf = {
 	// Local scope configuration var:
 	var mwConfig = { };
 	
+	// Stores global callbacks
+	var mwLoadDoneCB = { };
+	
 	//Local scope mwUserConfig var. Stores user configuration 
 	var mwUserConfig = { };
 	
@@ -899,7 +902,7 @@ var mwDefaultConf = {
 		* 
 		* 	{String} Name of a module to be loaded
 		* 		Modules are added via addModuleLoader and can define custom
-		* 		code needed to load the module dependencies
+		* 		code needed to check config and load the module dependencies
 		*
 		*	{String} Name of a class to loaded. 
 		* 		Classes are added via addClassFilePaths function
@@ -957,11 +960,11 @@ var mwDefaultConf = {
 				return ;
 			}
 			
-			// Try loading as a "file"?
+			// Try loading as a "file" or via ScriptLoader
 			if( loadRequest ) { 				
 				if( loadRequest.indexOf( '.js' ) == -1 && !mw.getScriptLoaderPath() ){
 					mw.log( 'Error: are you sure ' + loadRequest + ' is a file ( is it missing a class path? ) ' );
-				}
+				}				
 				mw.getScript( loadRequest, callback );
 				return ;
 			}
@@ -969,8 +972,7 @@ var mwDefaultConf = {
 			//possible error? 
 			mw.log( "Error could not handle load request: " + loadRequest  );			
 		},
-		
-		
+			
 		/**
 		* Load a set of scripts.
 		* Will issue many load requests or package the request for the script-loader
@@ -990,7 +992,7 @@ var mwDefaultConf = {
 					mw.log( 'loadMany:all classes already loaded');
 					callback();
 					return ;
-				}				
+				}						
 			}else{									
 				// Check if its a dependency set ( nested objects ) 
 				if( typeof loadSet [ 0 ] == 'object' ){		
@@ -1043,12 +1045,13 @@ var mwDefaultConf = {
 		*/
 		getGroupLoadState: function( loadSet ){
 			var groupedLoadSet = [];			
-			var loadStates = { };			
+			var loadStates = { };
 			// Merge load set into new groupedLoadSet
 			if( typeof loadSet[0] == 'object' ){
 				for( var i = 0; i < loadSet.length ; i++ ){
 					for( var j = 0; j < loadSet[i].length ; j++ ){
-						groupedLoadSet.push( loadSet[i][j] ); 
+						// Make sure we have not already included it:						
+						groupedLoadSet.push( loadSet[i][j] );
 					}
 				}
 			}else{
@@ -1142,6 +1145,7 @@ var mwDefaultConf = {
 			
 			// If the scriptloader is enabled use the className as the scriptRequest: 
 			if( mw.getScriptLoaderPath() ){
+				// replace $j with j since php strips the $ from the request class			
 				scriptRequest =  className;
 			}else{
 				// Get the class url:
@@ -1180,16 +1184,23 @@ var mwDefaultConf = {
 			} );	
 			//mw.log( 'done with running 	getScript request ' );
 			
-			// Check if the class is ready: ( not all browsers support onLoad script attribute )
-			// In the case of a "class" we can pull the javascript state until its ready
-			setTimeout( function(){
-				mw.waitForObject( className, function( className ){								
-					if( callback ){						
-						callback( className );
-						callback = null;
-					}
-				} );
-			}, 25 ); 
+			/*
+			* If scriptLoader is not enabled
+			* 
+			* Check if the class is ready: 
+			* ( not all browsers support onLoad script attribute )
+			* In the case of a "class" we can pull the javascript state until its ready
+			*/
+			if( !mw.getScriptLoaderPath() ){
+				setTimeout( function(){
+					mw.waitForObject( className, function( className ){								
+						if( callback ){						
+							callback( className );
+							callback = null;
+						}
+					} );
+				}, 25 ); 
+			}
 		},				
 		
 		/**
@@ -1245,6 +1256,17 @@ var mwDefaultConf = {
 	mw.load = function( loadRequest, callback ){
 		return mw.loader.load( loadRequest, callback );
 	}
+	
+	/**
+	* Load done callback for script loader
+	*  this way webkit browsers don't have to check if variables are "ready"
+	*/	
+	mw.loadDone =  function( requestName ) {
+		mw.log( "LoadDone: " + requestName );
+		if( mwLoadDoneCB[ requestName ] ){
+			mwLoadDoneCB[ requestName ]( requestName );
+		}
+	},
 	
 	/**
 	* Add module entry point: Adds a module to the mwLoader object 
@@ -1698,6 +1720,8 @@ var mwDefaultConf = {
 		var isRelativePath = ( scriptRequest.indexOf('://') == -1 && scriptRequest.indexOf('/') !== 0 )? true : false; 
 		if( slpath &&  isRelativePath ) {
 			url = slpath + '?class=' + scriptRequest;
+			//Add a class callback hook ( for script-loader onDone callback )			
+			mwLoadDoneCB[ scriptRequest ] = callback;			
 		}else{
 			// Add the mwEmbed path if a relative path request
 			url = ( isRelativePath )? mw.getMwEmbedPath() : '';
@@ -1710,7 +1734,8 @@ var mwDefaultConf = {
 				
 				
 		mw.log( 'mw.getScript: ' + url );
-		// If jQuery is available and debug is off get the scirpt j 
+		// If jQuery is available and debug is off load the scirpt via jQuery 
+		//( will use XHR if on same domain ) 
 		if( mw.isset( 'window.jQuery' ) && mw.getConfig( 'debug' ) === false ) {
 			$j.getScript( url, function(){
 				if( callback )
@@ -1721,20 +1746,22 @@ var mwDefaultConf = {
 		/**
 		* No jQuery 
 		*  OR 
-		* In debug mode inject the script instead of doing an ajax request and eval
+		* In debug mode inject the script instead of doing an XHR eval
 		*/			
 		// Load and bind manually:  ( copied from jQuery ajax function )
 		var head = document.getElementsByTagName("head")[0];
 		var script = document.createElement("script");
 		script.setAttribute( 'src', url );		
 				
-		// Attach handlers for all browsers ( might not work in safari < version 2.0 ) 		
-		script.onload = script.onreadystatechange = function(){			
-			if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {				
-				if( callback )
-					callback( scriptRequest );				
-			}
-		};		
+		// Attach handlers ( if not using script loader that issues onDone callback ) 
+		if( !mw.getScriptLoaderPath() ){	 		
+			script.onload = script.onreadystatechange = function(){			
+				if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {	
+					if( callback )
+						callback( scriptRequest );	
+				}
+			};
+		}
 		// Append the script to the DOM:
 		head.appendChild( script );			
 	}
