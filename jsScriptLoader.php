@@ -736,7 +736,7 @@ class simpleFileCache {
 
 		$hash1 = substr( $hash, 0, 1 );
 		$hash2 = substr( $hash, 0, 2 );
-		$this->filename = "{$wgScriptCacheDirectory}/{$hash1}/{$hash2}/{$this->requestKey}.js";
+		$this->filename = "{$wgScriptCacheDirectory}/{$hash1}/{$hash2}/{$hash}.js";
 
 		// Check for defined files::
 		if( is_file( $this->filename ) )
