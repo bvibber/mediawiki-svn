@@ -28,8 +28,8 @@ ctrlBuilder.prototype = {
 	// Default volume layout is "vertical"
 	volume_layout : 'vertical',
 	
-	// Default control bar height is 29
-	height: 29,		
+	// Default control bar height is 33
+	height: 33,		
 	
 	// Default supported components is merged with embedPlayerect supported types
 	supportedComponets: {
@@ -71,9 +71,9 @@ ctrlBuilder.prototype = {
 		// Remove any old controls: 
 		embedPlayer.$interface.find('.control-bar').remove();
 			
-		// Add some space to control_wrap for the controls 
+		// Add some space to control_wrap for the control bar:
 		embedPlayer.$interface.css({
-			'height' : parseInt( embedPlayer.height + this.height)
+			'height' : parseInt( embedPlayer.height ) + parseInt( this.height)
 		});
 		embedPlayer.$interface.append(
 			$j('<div>')
@@ -81,6 +81,7 @@ ctrlBuilder.prototype = {
 			.html(
 				this.buildControls()
 			)
+			.css('display', 'block')
 		);
 		// Add hooks once Controls are in DOM
 		this.addControlHooks();

@@ -456,12 +456,7 @@ EmbedPlayerManager.prototype = {
 	swapEmbedPlayerElement: function( targetElement, playerInterface ) {	
 		mw.log( 'swapEmbedPlayerElement: ' + targetElement.id );
 		// Create a new element to swap the player interface into
-		var swapPlayerElement = document.createElement('div');
-		// set swapPlayerElement has height / width set:		
-		$j( swapPlayerElement ).css( {			
-			'width' : playerInterface.width,
-			'height' : playerInterface.height
-		} ).loadingSpinner();
+		var swapPlayerElement = document.createElement('div');				
 				
 		// get properties / methods from playerInterface
 		for ( var method in playerInterface ) {			
@@ -475,8 +470,15 @@ EmbedPlayerManager.prototype = {
 		// Put the swapPlayerElement after the targetElement
 		.after( swapPlayerElement )
 		// Remove the targetElement
-		.remove();		
-			  
+		.remove();
+		
+		
+		// Set swapPlayerElement has height / width set:		
+		$j( swapPlayerElement ).css( {			
+			'width' : playerInterface.width + 'px',
+			'height' : playerInterface.height + 'px'
+		} ).loadingSpinner();
+		
 		return true;
 	},
 	
@@ -1262,7 +1264,7 @@ mw.EmbedPlayer.prototype = {
 		$j.each(this.mediaElement.getSources( 'text/xml'), function( inx, source ){	
 			if( source.codecs ){		
 				var codec_set  = source.codecs.split(',');
-				for( var i in codec_set ){
+				for( var i = 0; i < codec_set.length; i++ ){
 					if( codec_set[i] == 'roe' ){
 						_this.roe = source.src;
 					}
@@ -1377,8 +1379,6 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Check if we should load the timedText interface or not.
-	* 
-	* Checks 
 	* 
 	* Note we check for text sources outside of
 	*/
@@ -1640,7 +1640,7 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Get Related Clips from a category list
-	*
+	* Configuration specific ( should be factored into a seperate module )
 	* @parma {Object} catlist List of categories
 	*/	
 	getRelatedFromCat:function( catlist ) {
@@ -1929,7 +1929,7 @@ mw.EmbedPlayer.prototype = {
 				}
 			}
 		}
-		// js_og("should set html:"+ html);
+		// mw.log("should set html:"+ html);
 		$j( '#liks_info_' + this.id )
 			.html( html )
 			//Do bindings:	
@@ -1993,7 +1993,7 @@ mw.EmbedPlayer.prototype = {
 					'position': 'relative'
 				})
 			)
-		}		
+		}				
 		//Set up local jQuery refrence to "interface_wrap" 
 		this.$interface = $j(this).parent('.interface_wrap');
 		

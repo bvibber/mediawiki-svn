@@ -1,4 +1,4 @@
-/*
+/**
 * skin js allows you to override contrlBuilder html/class output
 */
 
@@ -50,7 +50,7 @@ var kskinConfig = {
 		'play_head': {
 			'w':0, // special case (takes up remaining space)
 			'o':function( ctrlObj ) {
-				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 25 ) + 'px;"></div>';
+				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 35 ) + 'px;"></div>';
 			}
 		},
 		'options_menu': {
@@ -233,7 +233,7 @@ var kskinConfig = {
 
 		if( mw.getConfig( 'k_attribution' ) == true ){
 			$target.append( 
-				$j('<div/>').addClass( 'k-attribution' )
+				$j( '<div/>' ).addClass( 'k-attribution' )
 				.attr({
 					'title': gM('mwe-kaltura-platform-title')
 				})

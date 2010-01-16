@@ -59,7 +59,7 @@ var mwEnabledModuleList =  [
 /**
 * Default global config values. Configuration values are set via mw.setConfig
 * Configuration values should generally be set prior to dom-ready 
-*/  
+*/  	
 var mwDefaultConf = {
 
 	'enabledModules' : mwEnabledModuleList,
@@ -1001,7 +1001,7 @@ var mwDefaultConf = {
 				}
 				
 				// Set the initial load state for every item in the loadSet
-				for( var i in loadSet ){							
+				for( var i = 0; i < loadSet.length ; i++ ){							
 					var loadName = loadSet[ i ];				
 					loadStates[ loadName ] = 0;					
 				}		
@@ -1046,8 +1046,8 @@ var mwDefaultConf = {
 			var loadStates = { };			
 			// Merge load set into new groupedLoadSet
 			if( typeof loadSet[0] == 'object' ){
-				for( var i in loadSet ){
-					for( var j in loadSet[i] ){
+				for( var i = 0; i < loadSet.length ; i++ ){
+					for( var j = 0; j < loadSet[i].length ; j++ ){
 						groupedLoadSet.push( loadSet[i][j] ); 
 					}
 				}
@@ -2262,9 +2262,9 @@ var mwDefaultConf = {
 		// Load all the "loaders" of the enabled modules:
 		var loaderRequest = [];			
 		var enabledModules = mw.getConfig( 'enabledModules' );
-		for( var i in enabledModules ){
-			loaderRequest.push( 'modules/' + enabledModules[i] + '/loader.js' );
-		} 
+		$j.each( enabledModules, function( na, module_name ){
+			loaderRequest.push( 'modules/' + module_name + '/loader.js' );
+		}) 
 		mw.load( loaderRequest, function(){
 			callback();
 		} );
@@ -2350,7 +2350,7 @@ if ( typeof gMsg != 'undefined' ) {
 }
 
 // Set global gM shortcut:
-window['gM'] = mw.getMsg;
+window[ 'gM' ] = mw.getMsg;
 
 // Setup legacy global shortcuts:
 var loadRS = mw.lang.loadRS;
