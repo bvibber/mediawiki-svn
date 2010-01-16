@@ -743,10 +743,12 @@ $messages['sk'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Per
  */
 $messages['sv'] = array(
 	'externalpages' => 'Externa sidor',
+	'externalpages-desc' => 'Hämtar och visar sidor från externa WMF-sajter',
 	'externalpages-bad-year' => 'Ogiltigt år angivet',
 	'externalpages-bad-language' => 'Ogiltigt språk angivet',
 	'externalpages-bad-project' => 'Ogiltigt projekt angivet',
@@ -754,6 +756,8 @@ $messages['sv'] = array(
 	'externalpages-bad-page' => 'Ogiltig sida angiven',
 	'externalpages-no-page' => 'Ingen sida angiven',
 	'externalpages-error-generic' => 'Stött på fel',
+	'externalpages-bad-url' => 'Misslyckades med att hämta URL',
+	'externalpages-bad-url-data' => 'Misslyckades med att hämta sidinnehåll',
 );
 
 /** Telugu (తెలుగు)

@@ -448,12 +448,20 @@ Anonieme gebruikers krijgen een automatisch aangemaakte gebruikersnaam die later
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
+ * @author Harald Khan
  */
 $messages['nn'] = array(
+	'webchat' => 'Nettprat',
 	'webchat-desc' => 'Legg til ei [[Special:WebChat|spesialside]] for å samtala i realtid med andre wikibrukarar',
+	'webchat-header' => 'Denne spesialsida tillèt deg å samarbeida med andre brukarar på wikien i sanntid.
+For å kopla deg til, trykk på «Kopla til»-knappen.
+Om du er logga inn vil kallenamnet ditt alt vera fylt inn.
+Anonyme brukarar vert gjevne automatisk genererte kallenamn, men desse kan ein endra.',
+	'right-webchat' => 'Kan nytta [[Special:WebChat|nettprat]]',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -461,7 +469,7 @@ $messages['no'] = array(
 	'webchat-desc' => 'Legger til en [[Special:WebChat|spesialside]] for å prate i sanntid med andre wikibrukere',
 	'webchat-header' => 'Denne spesialsiden tillater deg å samarbeide med andre brukere av wikien i sanntid.
 For å koble på, bare trykk på «Koble til»-knappen.
-Dersom du logget på vil brukernavnet ditt allerede være fyllt inn.
+Dersom du logget på vil brukernavnet ditt allerede være fylt inn.
 Anonyme brukere blir automatisk gitt et generert navn, men dette kan endres.',
 	'right-webchat' => 'Tillatt å bruke [[Special:WebChat|nettpraten]]',
 );

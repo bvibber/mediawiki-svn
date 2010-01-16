@@ -294,6 +294,13 @@ $messages['sr-el'] = array(
 	'geolite-desc' => 'Redirekcije za Lightweight GeoIp',
 );
 
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'geolite-desc' => 'Lättvikts-GeoIP-omdirigering',
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */

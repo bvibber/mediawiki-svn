@@ -893,9 +893,11 @@ $messages['tt-cyrl'] = array(
 
 /** Ukrainian (Українська)
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'filelist' => 'Список файлів',
+	'filelist-image-desc' => 'опис',
 );
 
 /** Vèneto (Vèneto)

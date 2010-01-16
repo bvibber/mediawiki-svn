@@ -605,6 +605,7 @@ $messages['te'] = array(
 	'piwik-lastvisits' => 'చివరి సందర్శనలు',
 	'piwik-countries' => 'దేశాలు',
 	'piwik-browsers' => 'విహారిణులు',
+	'right-viewpiwik' => '[[Special:Piwik|పివిక్ గణాంకాల]]ను చూడగలగడం',
 );
 
 /** Tagalog (Tagalog)

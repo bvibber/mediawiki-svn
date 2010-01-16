@@ -164,6 +164,13 @@ $messages['nl'] = array(
 	'svgzoom-desc' => 'Voegt mogelijkheden toe om SVG-bestanden te roteren, vergroten en verkleinen',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'svgzoom-desc' => 'Legg til panorerings- og zoomfunksjonar i MediaWiki for SVG-filer',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */

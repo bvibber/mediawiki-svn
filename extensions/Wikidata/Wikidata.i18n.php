@@ -8423,6 +8423,7 @@ Vergeet niet om dit te controleren!',
  */
 $messages['nn'] = array(
 	'wikidata-desc' => 'Legg til ein wiki-liknande database for ulike typar innhald.',
+	'wikidata-handler-namespace-move-error' => 'Sider i namnerom kontrollerte av Wikidata-utvidinga kan ein ikkje flytta.',
 	'languages' => 'Wikidata: Språkhandsamar',
 	'langman-desc' => 'Legg til og endre språkinstillingar med [[Special:Languages]]',
 	'langman_title' => 'Språkhandsamar',
@@ -8449,7 +8450,7 @@ $messages['nn'] = array(
 	'datasearch_search_text' => 'Søketekst:',
 	'datasearch_within_words' => 'Innan orda:',
 	'datasearch_within_ext_ids' => 'Innan eksterne identifikatorar',
-	'datasearch_showing_only' => 'Syner berre eit maksimum av {{PLURAL:$1|eitt treff|$1 treff}}.',
+	'datasearch_showing_only' => 'Syner maksimalt {{PLURAL:$1|eitt treff|$1 treff}} (av $2 totalt).',
 	'datasearch_match_ext_ids' => 'Eksterne identifikatorar som svarar til <i>$1</i>',
 	'datasearch_match_words' => 'Ord som høver til <i>$1</i> og tilgrensande tydingar',
 	'datasearch_match_words_lang' => 'Ord i <i>$1</i> svarande til <i>$2</i> og tilknytte tydingar',
@@ -8603,6 +8604,7 @@ Vel ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparere
 	'ow_meaningsoftitle' => 'Tydingar av «$1»',
 	'ow_meaningsofsubtitle' => '<em>Wikilenkje:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>TILGANG FORBODE</h2>',
+	'copy' => 'Wikidata: Kopier',
 	'ow_copy_no_action_specified' => 'Ver venleg og oppgje ei handling',
 	'ow_copy_help' => 'Hjelp er ikkje implementert enno.',
 	'ow_please_proved_dmid' => 'Det ser ut som bidraget ditt manglar ein «?dmid=<ID>» (dmid=Defined Meaning ID, nummer på definert tyding)<br />Ver venleg og ta kontakt med ein administrator på tenaren.',
@@ -8638,13 +8640,14 @@ Vel ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparere
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  * @author Nghtwlkr
  * @author Simny
  */
 $messages['no'] = array(
 	'wikidata-desc' => 'Legger til en wiki-liknende database for ulike typer innhold.',
-	'wikidata-handler-namespace-move-error' => 'Sider i navnrom som kontrolleres av Wikipedia-tillegget kan ikke flyttes.',
+	'wikidata-handler-namespace-move-error' => 'Sider i navnerom som kontrolleres av Wikidata-tillegget kan ikke flyttes.',
 	'languages' => 'Wikidata: Språkbehandler',
 	'langman-desc' => 'Legg til og endre språkinstillinger med [[Special:Languages]]',
 	'langman_title' => 'Språkbehandler',

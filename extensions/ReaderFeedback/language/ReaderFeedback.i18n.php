@@ -2258,6 +2258,7 @@ $messages['tr'] = array(
 	'readerfeedback-tier-poor' => 'Zayıf',
 	'tooltip-ca-ratinghist' => 'Bu sayfanın ziyaretçi derecelendirmesi',
 	'specialpages-group-feedback' => 'İzleyici görüşü',
+	'readerfeedback-tt-review' => 'Gözden geçirmeyi gönder',
 );
 
 /** Ukrainian (Українська)

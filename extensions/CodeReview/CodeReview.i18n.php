@@ -8603,6 +8603,7 @@ $messages['tr'] = array(
 	'code-rev-inline-preview' => 'Önizleme:',
 	'code-rev-diff' => 'Fark',
 	'code-rev-diff-link' => 'fark',
+	'code-rev-diff-too-large' => 'Fark görüntülenemeyecek kadar büyük.',
 	'code-rev-purge-link' => 'temizle',
 	'code-status-new' => 'yeni',
 	'code-status-fixme' => 'benidüzelt',
