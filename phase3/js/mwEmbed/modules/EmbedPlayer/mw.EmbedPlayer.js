@@ -465,15 +465,16 @@ EmbedPlayerManager.prototype = {
 			}
 		}
 				  
-		// Now Swap out the video element for the embed_video obj:	  
-		$j( targetElement )
-		// Put the swapPlayerElement after the targetElement
-		.after( swapPlayerElement )
 		// Remove the targetElement
-		.remove();
+		$j( targetElement ).replaceWith( swapPlayerElement );
+			
+		// Now Swap out the video element for the embed_video obj:	  
+		//$j( targetElement )
+		// Put the swapPlayerElement after the targetElement
+		//.after( swapPlayerElement );
 		
 		
-		// Set swapPlayerElement has height / width set:		
+		// Set swapPlayerElement has height / width set and set to loading:		
 		$j( swapPlayerElement ).css( {			
 			'width' : playerInterface.width + 'px',
 			'height' : playerInterface.height + 'px'

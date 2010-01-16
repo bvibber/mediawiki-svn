@@ -942,6 +942,8 @@ var mwDefaultConf = {
 					loadRequest = loadRequest[0];
 				}				
 			}   
+			//Add a class callback hook ( for script-loader onDone callback )	
+			mwLoadDoneCB[ loadRequest ] = callback;		
 			
 			// Check for the module name loader function 
 			if( this.moduleLoaders[ loadRequest ] && 
@@ -1169,17 +1171,7 @@ var mwDefaultConf = {
 			}
 			
 			// Include class defined check for older browsers
-			var classDone = false;
-				
-			//Add a class callback hook ( for script-loader onDone callback )			
-			mwLoadDoneCB[ className ] = function(){
-				mw.log('run callback for: ' + className );
-				if( callback ){
-					callback( className );
-				}
-				callback = null;
-				mwLoadDoneCB[ className ]  = 'done';
-			};		
+			var classDone = false;				
 			
 			// Issue the request to load the class (include class name in result callback:					
 			mw.getScript( scriptRequest, function( scriptRequest ) {				
@@ -1762,15 +1754,15 @@ var mwDefaultConf = {
 		var script = document.createElement("script");
 		script.setAttribute( 'src', url );		
 				
-		// Attach handlers ( if not using script loader that issues onDone callback )	
-		if( !mw.getScriptLoaderPath() ){	 		
-			script.onload = script.onreadystatechange = function(){	
-				if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {	
-					if( callback )
-						callback( scriptRequest );	
-				}
-			};
-		}
+		// Attach handlers ( if using script loader it issues onDone callback as well )	 		
+		script.onload = script.onreadystatechange = function(){	
+			if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {	
+				if( callback ){
+					callback( scriptRequest );
+					callback = null;
+				}	
+			}
+		};
 		// Append the script to the DOM:
 		head.appendChild( script );			
 	}
