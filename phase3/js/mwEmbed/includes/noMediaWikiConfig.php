@@ -21,7 +21,7 @@ $wgUseFileCache = true;
 // Init our wg Globals
 $wgJSAutoloadLocalClasses = array();
 $wgJSAutoloadClasses = array();
-
+$wgExtensionJavascriptLoader = array();
 $wgJSModuleLoaderPaths = array();
 
 /*Localization:*/
