@@ -1026,8 +1026,9 @@ var mwDefaultConf = {
 							loadDone = false;			
 					}					
 					// Run the parent scope callback for "loadMany" 
-					if( loadDone && callback ){						
+					if( loadDone && callback && mwLoadDoneCB[ loadName ] != 'done' ){						
 						callback( loadName );
+						mwLoadDoneCB[ loadName ] = 'done';
 					}
 				} );
 			}
@@ -1178,8 +1179,11 @@ var mwDefaultConf = {
 				if(! mw.isset( className ) && callback){
 					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.classPaths[ className ] );
 				}
-				if( callback )
-					callback( className );
+				// make sure callback is avaliable and mwLoadDoneCB has not been called
+				if( callback && mwLoadDoneCB[className] != 'done'){
+					mwLoadDoneCB[className] = 'done';
+					callback( className );					
+				}
 				callback = null;
 			} );	
 			//mw.log( 'done with running getScript request ' );
@@ -1266,8 +1270,9 @@ var mwDefaultConf = {
 	*/	
 	mw.loadDone =  function( requestName ) {
 		mw.log( "LoadDone: " + requestName );
-		if( mwLoadDoneCB[ requestName ] ){
+		if( mwLoadDoneCB[ requestName ] && mwLoadDoneCB[ requestName ] != 'done'){
 			mwLoadDoneCB[ requestName ]( requestName );
+			mwLoadDoneCB[ requestName ] = 'done';
 		}
 	},
 	

@@ -97,6 +97,7 @@ mw.ClipEdit.prototype = {
 	* initialises a clipEdit object with provided options.  
 	*/
 	init:function( options ) {
+		mw.log(' mw.ClipEdit' );
 		// init object:
 		for ( var i in default_clipedit_values ) {
 			if ( options[i] ) {
@@ -777,10 +778,10 @@ mw.ClipEdit.prototype = {
 	showImageControls:function() {
 		var _this = this;
 		var $tool_target = $j( '#' + this.target_control_display );
-		
+		mw.log( 'tool target len: ' + $tool_target.length );
 		// By default apply Crop tool
 		if ( _this.enabled_tools == 'all' || _this.enabled_tools.length > 0 ) {
-			$tool_target.append( '<h3>' + gM( 'mwe-edit-tools' ) + '</h3>' );
+			$tool_target.html( '<h3>' + gM( 'mwe-edit-tools' ) + '</h3>' );
 			for ( var i in _this.toolset ) {
 				var toolid = _this.toolset[i];
 				if ( $j.inArray( toolid, _this.enabled_tools ) != -1 || _this.enabled_tools == 'all' )
