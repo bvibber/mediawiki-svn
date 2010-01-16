@@ -106,3 +106,9 @@ class FormatJson{
 // MWException extends Exception (for noWiki we don't do anything fancy )
 class MWException extends Exception {
 }
+function wfSuppressWarnings(){
+};
+function wfRestoreWarnings(){
+};
+
+}
