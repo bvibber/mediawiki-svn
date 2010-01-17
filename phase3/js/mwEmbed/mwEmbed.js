@@ -942,7 +942,7 @@ var mwDefaultConf = {
 					loadRequest = loadRequest[0];
 				}				
 			}   
-			//Add a class callback hook ( for script-loader onDone callback )	
+			//Add the string loadRequest callback ( for script-loader onDone callback )	
 			mwLoadDoneCB[ loadRequest ] = callback;		
 			
 			// Check for the module name loader function 
@@ -1179,9 +1179,8 @@ var mwDefaultConf = {
 				if(! mw.isset( className ) && callback){
 					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.classPaths[ className ] );
 				}
-				// make sure callback is avaliable and mwLoadDoneCB has not been called
-				if( callback && mwLoadDoneCB[className] != 'done'){
-					mwLoadDoneCB[className] = 'done';
+				// make sure callback is set and mwLoadDoneCB has not been called
+				if( callback ){
 					callback( className );					
 				}
 				callback = null;
@@ -1748,7 +1747,8 @@ var mwDefaultConf = {
 					callback( scriptRequest );
 			}); 
 			return ;
-		}			
+		}	
+				
 		/**
 		* No jQuery 
 		*  OR 
@@ -1758,16 +1758,16 @@ var mwDefaultConf = {
 		var head = document.getElementsByTagName("head")[0];
 		var script = document.createElement("script");
 		script.setAttribute( 'src', url );		
-				
+			
 		// Attach handlers ( if using script loader it issues onDone callback as well )	 		
-		script.onload = script.onreadystatechange = function(){	
-			if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {	
+		script.onload = script.onreadystatechange = function(){		
+			if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {
 				if( callback ){
 					callback( scriptRequest );
-					callback = null;
 				}	
 			}
 		};
+		mw.log(" append script: " + script.src );
 		// Append the script to the DOM:
 		head.appendChild( script );			
 	}
