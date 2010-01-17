@@ -264,7 +264,7 @@ class UsabilityInitiativeHooks {
 
 		// Transforms messages into javascript object members
 		// ( only not handled automatically )
-		if ( version_compare( $wgVersion, '1.17', '>') ) {
+		if ( version_compare( $wgVersion, '1.17', '<') ) {
 			foreach ( self::$messages as $i => $message ) {
 				$escapedMessageValue = Xml::escapeJsString( wfMsg( $message ) );
 				$escapedMessageKey = Xml::escapeJsString( $message );
