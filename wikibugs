@@ -1,157 +1,114 @@
-#!/usr/bin/perl -w
-
-# Script to pull bug info from SourceForce and MediaZilla mails and dump them
-# to a log to be used for IRC bot.
-
-# Original version by Brion Vibber, 2004-08-02, 2004-08-10 and 2004-08-15
-# Entirely rewritten by Timwi, 2004-09-06
-# Some cleanups and fixes by AzaToth, 2006-12-20
+#!/usr/bin/perl
 
 use strict;
-use utf8;
-
-$/ = undef;
-my $contents = <STDIN>;
-my $output;
-
-my $shash = { 
-	'enhancement' => "\00315enhancement\003",
-	'trivial' => 'trivial',
-	'minor' => "minor",
-	'normal' => "normal",
-	'major' => "major",
-	'critical' => "\00304CRIT\003",
-	'blocker' => "\00304\002BLOCKER\002\003"
-};
-
-my $rhash = {
-	'WORKSFORME' => "\00314(WFM)\003", 
-	'INVALID' => "\00314(INVALID)\003",
-	'DUPLICATE' => "\00314(DUP)\003",
-	'FIXED' => "\00303(FIXED)\003",
-	'WONTFIX' => "\00303(WONTFIX)\003", 
-	'LATER' => "\00306(LATER)\003",
-	'REMIND' => "\00306(REMIND)\003" 
-};
-
+use warnings;
 use Email::MIME;
 
-my $mail = Email::MIME->new( $contents );
+my $input;
+my $output;
+Slurp in E-Mail from STDIN
+{
+	local( $/ );
+	$input = <STDIN>;
+}
+
+##Setup basic settings
+my $severityMap = {
+	'enhancement' 	=> "\00315enhancement\003",
+	'trivial'		=> "trivial",
+	'minor'			=> "minor",
+	'normal'		=> "normal",
+	'major'			=> "major",
+	'critical'		=> "\00304CRIT\003",
+	'blocker'		=> "\00304\002BLOCKER\002\003"
+};
+
+my $resolutionMap = {
+	'WORKSFORME'	=> "\00314(WFM)\003",
+	'INVALID'		=> "\00314(INVALID)\003",
+	'DUPLICATE'		=> "\00314(DUP)\003",
+	'FIXED'			=> "\00303(FIXED)\003",
+	'WONTFIX'		=> "\00303(WONTFIX)\003",
+	'LATER'			=> "\00306(LATER)\003",
+	'REMIND'		=> "\00306(REMIND)\003"
+};
+
+my $mail = Email::MIME->new( $input );
 
 my $from = $mail->header( 'From' );
 my $body = $mail->body;
 my $subject = $mail->header( 'Subject' );
 
-if ($from =~ /^bugzilla-daemon/)
-{
-	# E-mail is from MediaZilla
+if( $from =~ /^bugzilla-daemon/ ) {{
+	#E-Mail is from WM Bugzilla
+	#Create status flags;
+	my ($haschanges,$user);
 
-	$/ = "";
-	# extract and remove the comment section
-	my ($haschanges, $user);
-	my $comment = $body =~ s/^--- Comment #\d+ from (?-s:.*?<)?(\S+)\@.*//ms;
+	my $comment = $body =~ s/^--- Comment #\d+ from (.*?)?<?(\S+)\@.*//ms;
 	if($comment) {
-		$user = $1;
+		#Set user to Real name if specified else use e-mail
+		$user = $1 ? $1 : $2;
+		$user =~ s/\s+$//g;
 	} else {
-		$user = 'N/A' # shouldn't be possible'
+		$body =~ m/(.*)\s+<(\S+\@\S+)>\s+changed/;
+		$user = $1 ? $1 : 'N/A';
 	}
-	
+
 	my @changed_fields = split /\s+/, $mail->header( 'X-Bugzilla-Changed-Fields' );
 
+	#Skip dependency notifications
+	last if $body =~ /^Bug \d+ depends on bug \d+, which changed state/m;
 
-	# Check if this is a dependency e-mail. If so, ignore it.
-	# We have removed the comment section to prevent people from using
-	# this by adding the right text to a comment.
-	if ($body !~ /^Bug \d+ depends on bug \d+, which changed state/m)
-	{
+	my($bug, $summary, $status);
 
-		my ($bug, $summary, $st);
-		if ($subject =~ /\[Bug (\d+)\]\s+New:\s+(.*)/s) {
-			($bug, $summary, $st) = ($1, $2, "\00303(NEW)\003");
-		} elsif ($subject =~ /\[Bug (\d+)\]\s(.*)/s) {
-			($bug, $summary, $st) = ($1, $2, "\00303(mod)\003");
-		}
-		
-		## Set the URL to the URL found in the message body if available, else construct our own URL
-		my $url =
-			$body =~ /^http.*show_bug\.cgi.*$/m
-			? $&
-			: "http://bugzilla.wikimedia.org/show_bug.cgi?id=$bug";
+	($bug, $summary) = $subject =~ /\[Bug (\d+)\]\s(.*)/s;
+	
+	$status = $mail->header( 'X-Bugzilla-Status' );
 
-		$summary =~ s/\s+/ /g; 
+	##Get the url from the message
+	my ($bugId) = $mail->header( 'In-Reply-To' ) =~ m/bug-(\d+)/;
+	my $url = 'https://bugzilla.wikimedia.org/show_bug.cgi?id=' . $bugId;
 
-		# We are going to append stuff to the beginning of $output later.
-		# This stuff is going to contain $st. But we want a chance of changing it first.
-		$output = "";
+	$summary =~ s/\s+/ /g;
 
-		if ($st eq "\00303(NEW)\003")
-		{
-			my $product = $mail->header( 'X-Bugzilla-Product' );
-			my $component = $mail->header( 'X-Bugzilla-Component' );
-			my $severity = $mail->header( 'X-Bugzilla-Severity' );
-			## Doesn't seem to be sent as a header.
-			my $reporter = $1 if $body =~ /ReportedBy: (.*)\@.*$/m;
+	if( $subject =~ /\[Bug (\d+)\]\s+New:(.*)/s ) {
+		my $product 	= $mail->header( 'X-Bugzilla-Product' );
+		my $component 	= $mail->header( 'X-Bugzilla-Component' );
+		my $severity	= $mail->header( 'X-Bugzilla-Severity' );
+		my $priority	= $mail->header( 'X-Bugzilla-Priority' );
+		my $reporter	= $mail->header( 'X-Bugzilla-Who' );
+#		my $reporter	= $1 if $body =~ /ReportedBy: (.*)\@.*$/m;
 
-			$output .= "$severity; \002$product\002\: $component; (\002$reporter\002)\n";
-		}
-		else
-		{
-			($haschanges, $user) = (1, $1) if $contents =~ /^(?:.*<)?(\S+)\@\S+>? changed:$/m;
-
-			if ($haschanges) {
-				my @outputs;
-				my $status = $mail->header( 'X-Bugzilla-Status' );
-				if ($status eq 'NEW') {
-					$st = "\00303(mod)\003";
-				} elsif ($status eq 'REOPENED' && grep {$_ eq 'Status'} @changed_fields) {
-					$st = "\00304(REOPENED)\003";
-				} elsif ( grep {$_ eq 'Status'} @changed_fields ) {
-					$st = "\00303($status)\003";
-				} else {
-					$st = "\00303(mod)\003";
-				}
-
-				if ($st eq "\00303(RESOLVED)\003" && $body =~ /Resolution\|\s+\|(\w+)/m) {
-					$st = $rhash->{$1};
-				}
-				if ($body =~ /Severity\|(\w+)\s+\|(\w+)/m) {
-					push @outputs, "$shash->{$1}\->$shash->{$2}";
-				}
-				if ($body =~ /Keywords\|.*$/s) {
-					my @lines = split (/\n/, $&);
-					my $added = '';
-					my $removed = '';
-					foreach my $a ( @lines )
-					{
-						last unless $a =~ /^(Keywords|\s+)\|(.*?)\s*\|(.*?)\s*$/;
-						$removed .= $2;
-						$added .= $3;
-					}
-					push @outputs, join ' ', (
-						($removed =~ /\S/ ? join (' ', map { "-$_" } split (/\s*,\s*/, $removed)) : ''),
-						($added   =~ /\S/ ? join (' ', map { "+$_" } split (/\s*,\s*/, $added  )) : '')
-					);
-				}
-
-				push @outputs, 'summary' if $body =~ /Summary\|.*?\|.*?/;
-
-				push @outputs, 'deps' if $body =~ /OtherBugs\w+\|.*?\|.*?$/m;
-
-				push @outputs, "+comment" if $comment;
-
-				$output .= " " . join ('; ', @outputs) if @outputs;
-
+		$output = "\00303(NEW)\003 $summary - \00310$url\003 " . $severityMap->{$severity} .
+			"; $priority; \002$product\002\: $component; (\002$reporter\002)\n";
+	} else {
+		if( $mail->header( 'X-Bugzilla-Type' ) eq 'newchanged' ) {
+			my @outputs;
+			my $status = "\00303(mod)\003";
+			if($body =~ /Severity\|(\w+)\s+\|(\w+)/m) {
+				push(@outputs, $severityMap->{$1} . '->' . $severityMap->{$2});
 			}
-			$output .= " (\002\00310$user\003\002)\n";
-		}
-		$output = "$st $summary - \00310$url\003 " . $output;
-	}
-}
+			if($body =~ /Resolution\|(\w+)?\s+\|(\w+)/m ) {
+				$status = $resolutionMap->{$2};
+			}
+			if($body =~ /Priority\|(\w+)\s+\|(\w+)/m ) {
+				push(@outputs, lc($1) . '->' . lc($2) );
+			}
+			if($body =~ /Keywords\|.*$/s) {
+			}
+			push @outputs, 'summary' if grep{$_ eq 'Summary'} @changed_fields;
+			push @outputs, 'deps' if grep{$_ eq 'OtherBugs'} @changed_fields;
+			push @outputs, '+comment' if $comment;
 
-if ($output)
-{
-	open (OUT, ">>/var/wikibugs/wikibugs.log");
-#	print $output;
+	        $output = "$status $summary - \00310$url\003 ";
+			$output .= join('; ', @outputs) if @outputs;
+		}
+		$output .= " (\002\00310$user\003\002)\n";
+	}
+}}
+
+if ($output) {
+	open( OUT, ">>/var/wikibugs/wikibugs.log");
 	print OUT $output;
 	close OUT;
 }
