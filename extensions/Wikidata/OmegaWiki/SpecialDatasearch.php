@@ -5,6 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionFunctions[] = 'wfSpecialDatasearch';
 
 require_once( "Wikidata.php" );
+require_once( "WikiDataGlobals.php" );
 
 function wfSpecialDatasearch() {
 	class SpecialDatasearch extends SpecialPage {
@@ -35,7 +36,8 @@ function wfSpecialDatasearch() {
 			initializeOmegaWikiAttributes( new ViewInformation() );
 
 			global
-				$definedMeaningReferenceType;
+				$definedMeaningReferenceType,
+				$wgDefinedMeaning;
 
 			require_once( "WikiDataGlobals.php" );
 			require_once( "forms.php" );
@@ -54,7 +56,7 @@ function wfSpecialDatasearch() {
 			$this->expressionStructure = new Structure( $this->spellingAttribute, $this->languageAttribute );
 			$this->expressionAttribute = new Attribute( "expression", wfMsg( 'ow_Expression' ), $this->expressionStructure );
 
-			$this->definedMeaningAttribute = new Attribute( "defined-meaning", wfMsg( 'ow_DefinedMeaning' ), $definedMeaningReferenceType );
+			$this->definedMeaningAttribute = new Attribute( $wgDefinedMeaning, wfMsg( 'ow_DefinedMeaning' ), $definedMeaningReferenceType );
 			$this->definitionAttribute = new Attribute( "definition", wfMsg( 'ow_Definition' ), "definition" );
 
 			$this->meaningStructure = new Structure( $this->definedMeaningAttribute, $this->definitionAttribute );

@@ -4,6 +4,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 $wgExtensionFunctions[] = 'wfSpecialSelect';
 require_once( "Wikidata.php" );
+require_once( "WikiDataGlobals.php" );
 
 
 function wfSpecialSelect() {
@@ -28,11 +29,11 @@ function wfSpecialSelect() {
 }
 
 function getSelectOptions() {
-	global
-		$wgUser;
+	global $wgUser;
+	global $wgOptionAttribute;
 
 	$dc = wdGetDataSetContext();
-	$optionAttribute = $_GET['option-attribute'];
+	$optionAttribute = $_GET[$wgOptionAttribute];
 	$attributeObject = $_GET['attribute-object'];
 	$lang_code = $wgUser->getOption( 'language' );
 

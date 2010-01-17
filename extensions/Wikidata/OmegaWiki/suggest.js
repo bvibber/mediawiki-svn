@@ -139,7 +139,7 @@ function suggestLinkClicked(event, suggestLink) {
 		suggestField.focus();
 		updateSuggestions(suggestPrefix);
 	}
-	
+
 	stopEventHandling(event);
 }
 
@@ -149,7 +149,7 @@ function updateSelectOptions(id, objectId, value) {
 	var location = "" + document.location;
 
 	if (location.indexOf('index.php/') > 0) URL = '../' + URL;
-	http.open('GET', URL + '/Special:Select?option-attribute=' + encodeURI(value) + '&attribute-object=' + encodeURI(objectId), true);
+	http.open('GET', URL + '/Special:Select?optnAtt=' + encodeURI(value) + '&attribute-object=' + encodeURI(objectId), true);
 	http.send(null);
 
 	http.onreadystatechange = function() {

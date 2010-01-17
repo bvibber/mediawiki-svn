@@ -7,6 +7,7 @@ require_once( 'Record.php' );
 require_once( 'Transaction.php' );
 require_once( 'WikiDataAPI.php' );
 require_once( 'Wikidata.php' );
+require_once( 'WikiDataGlobals.php' );
 
 function booleanAsText( $value ) {
 	if ( $value )
@@ -98,11 +99,12 @@ function collectionAsLink( $collectionId ) {
 }
 
 function convertToHTML( $value, $type ) {
+	global $wgDefinedMeaning;
 	switch( $type ) {
 		case "boolean": return booleanAsHTML( $value );
 		case "spelling": return spellingAsLink( $value );
 		case "collection": return collectionAsLink( $value );
-		case "defined-meaning": return definedMeaningAsLink( $value );
+		case "$wgDefinedMeaning": return definedMeaningAsLink( $value );
 		case "defining-expression": return definingExpressionAsLink( $value );
 		case "relation-type": return definedMeaningAsLink( $value );
 		case "attribute": return definedMeaningAsLink( $value );
@@ -114,13 +116,14 @@ function convertToHTML( $value, $type ) {
 }
 
 function getInputFieldForType( $name, $type, $value ) {
+	global $wgDefinedMeaning;
 	switch( $type ) {
 		case "language": return getLanguageSelect( $name );
 		case "spelling": return getTextBox( $name, $value );
 		case "boolean": return getCheckBox( $name, $value );
-		case "defined-meaning":
+		case "$wgDefinedMeaning":
 		case "defining-expression":
-			return getSuggest( $name, "defined-meaning" );
+			return getSuggest( $name, $wgDefinedMeaning );
 		case "relation-type": return getSuggest( $name, "relation-type" );
 		case "attribute": return getSuggest( $name, "attribute" );
 		case "collection": return getSuggest( $name, "collection" );
@@ -129,14 +132,13 @@ function getInputFieldForType( $name, $type, $value ) {
 	}
 }
 function getInputFieldValueForType( $name, $type ) {
-	global
-		$wgRequest;
-		
+	global $wgRequest;
+	global $wgDefinedMeaning;
 	switch( $type ) {
 		case "language": return $wgRequest->getInt( $name );
 		case "spelling": return trim( $wgRequest->getText( $name ) );
 		case "boolean": return $wgRequest->getCheck( $name );
-		case "defined-meaning":
+		case "$wgDefinedMeaning":
 		case "defining-expression":
 			return $wgRequest->getInt( $name );
 		case "relation-type": return $wgRequest->getInt( $name );

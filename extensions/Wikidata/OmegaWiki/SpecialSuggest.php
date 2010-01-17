@@ -28,10 +28,11 @@ function wfSpecialSuggest() {
 			require_once( "Utilities.php" );
 			require_once( "Wikidata.php" );
 			require_once( "WikiDataTables.php" );
+			require_once( "WikiDataGlobals.php" );
 			echo getSuggestions();
 		}
 	}
-	
+
 	SpecialPage::addPage( new SpecialSuggest() );
 }
 
@@ -42,6 +43,12 @@ function wfSpecialSuggest() {
 function getSuggestions() {
 	$o = OmegaWikiAttributes::getInstance();
 	global $wgUser;
+	global
+		$wgDefinedMeaning,
+		$wgDefinedMeaningAttributes,
+		$wgOptionAttribute,
+		$wgLinkAttribute;
+
 	$dc = wdGetDataSetContext();
 	@$search = ltrim( $_GET['search-text'] );
 	@$prefix = $_GET['prefix'];
@@ -66,7 +73,7 @@ function getSuggestions() {
 			// so : not using it. The English fall back has been included in the SQL query
 			$sql = getSQLForClasses( $wgUser->getOption( 'language' ) );
 			break;
-		case 'defined-meaning-attribute':
+		case "$wgDefinedMeaningAttributes":
 			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, 'DM' );
 			break;
 		case 'text-attribute':
@@ -75,10 +82,10 @@ function getSuggestions() {
 		case 'translated-text-attribute':
 			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, 'TRNS' );
 			break;
-		case 'link-attribute':
+		case "$wgLinkAttribute":
 			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, 'URL' );
 			break;
-		case 'option-attribute':
+		case "$wgOptionAttribute":
 			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, 'OPTN' );
 			break;
 		case 'language':
@@ -86,7 +93,7 @@ function getSuggestions() {
 			$sql = getSQLForLanguageNames( $wgUser->getOption( 'language' ) );
 			$rowText = 'language_name';
 			break;
-		case 'defined-meaning':
+		case "$wgDefinedMeaning":
 			$sql =
 				"SELECT {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling AS spelling, {$dc}_expression.language_id AS language_id " .
 				" FROM {$dc}_expression, {$dc}_syntrans " .
@@ -123,12 +130,12 @@ function getSuggestions() {
 		else if ( $query == 'language' )
 			$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes( "$search%" );
 		else if ( $query == 'relation-type' or
-			$query == 'option-attribute' or
+			$query == "$wgOptionAttribute" or
 			$query == 'translated-text-attribute' or
 			$query == 'text-attribute' or
-			$query == 'link-attribute' or
+			$query == "$wgLinkAttribute" or
 			$query == 'collection' or
-			$query == 'defined-meaning-attribute' )
+			$query == $wgDefinedMeaningAttributes )
 			$searchCondition = " WHERE $rowText LIKE " . $dbr->addQuotes( "$search%" );
 		else
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "$search%" );
@@ -163,7 +170,7 @@ function getSuggestions() {
 		case 'class':
 			list( $recordSet, $editor ) = getClassAsRecordSet( $queryResult );
 			break;
-		case 'defined-meaning-attribute':
+		case "$wgDefinedMeaningAttributes":
 			list( $recordSet, $editor ) = getDefinedMeaningAttributeAsRecordSet( $queryResult );
 			break;
 		case 'text-attribute':
@@ -172,13 +179,13 @@ function getSuggestions() {
 		case 'translated-text-attribute':
 			list( $recordSet, $editor ) = getTranslatedTextAttributeAsRecordSet( $queryResult );
 			break;
-		case 'link-attribute':
+		case "$wgLinkAttribute":
 			list( $recordSet, $editor ) = getLinkAttributeAsRecordSet( $queryResult );
 			break;
-		case 'option-attribute':
+		case "$wgOptionAttribute":
 			list( $recordSet, $editor ) = getOptionAttributeAsRecordSet( $queryResult );
 			break;
-		case 'defined-meaning':
+		case "$wgDefinedMeaning":
 			list( $recordSet, $editor ) = getDefinedMeaningAsRecordSet( $queryResult );
 			break;
 		case 'class-attributes-level':
@@ -472,14 +479,14 @@ function getSQLForLevels( $language = "<ANY>" ) {
 function getRelationTypeAsRecordSet( $queryResult ) {
 
 	$o = OmegaWikiAttributes::getInstance();
-	
+
 	$dbr =& wfGetDB( DB_SLAVE );
 	
 	$relationTypeAttribute = new Attribute( "relation-type", wfMsg( 'ow_RelationType' ), "short-text" );
 	$collectionAttribute = new Attribute( "collection", wfMsg( 'ow_Collection' ), "short-text" );
-	
+
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $relationTypeAttribute, $collectionAttribute ), new Structure( $o->id ) );
-	
+
 	while ( $row = $dbr->fetchObject( $queryResult ) )
 		$recordSet->addRecord( array( $row->member_mid, $row->spelling, definedMeaningExpression( $row->collection_mid ) ) );
 
@@ -520,10 +527,11 @@ function getClassAsRecordSet( $queryResult ) {
 
 function getDefinedMeaningAttributeAsRecordSet( $queryResult ) {
 	$o = OmegaWikiAttributes::getInstance();
-	
+	global $wgDefinedMeaningAttributes;
+
 	$dbr =& wfGetDB( DB_SLAVE );
 	
-	$definedMeaningAttributeAttribute = new Attribute( "defined-meaning-attribute", wfMsg( 'ow_RelationType' ), "short-text" );
+	$definedMeaningAttributeAttribute = new Attribute( $wgDefinedMeaningAttributes, wfMsg( 'ow_RelationType' ), "short-text" );
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $definedMeaningAttributeAttribute ), new Structure( $o->id ) );
 	
 	while ( $row = $dbr->fetchObject( $queryResult ) )
@@ -554,12 +562,12 @@ function getTextAttributeAsRecordSet( $queryResult ) {
 }
 
 function getLinkAttributeAsRecordSet( $queryResult ) {
-
 	$o = OmegaWikiAttributes::getInstance();
-	
+	global $wgLinkAttribute;
+
 	$dbr =& wfGetDB( DB_SLAVE );
 	
-	$linkAttributeAttribute = new Attribute( "link-attribute", wfMsg( 'ow_LinkAttributeHeader' ), "short-text" );
+	$linkAttributeAttribute = new Attribute( $wgLinkAttribute, wfMsg( 'ow_LinkAttributeHeader' ), "short-text" );
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $linkAttributeAttribute ), new Structure( $o->id ) );
 	
 	while ( $row = $dbr->fetchObject( $queryResult ) )
@@ -590,12 +598,12 @@ function getTranslatedTextAttributeAsRecordSet( $queryResult ) {
 }
 
 function getOptionAttributeAsRecordSet( $queryResult ) {
-
 	$o = OmegaWikiAttributes::getInstance();
-	
+	global $wgOptionAttribute;
+
 	$dbr =& wfGetDB( DB_SLAVE );
 	
-	$optionAttributeAttribute = new Attribute( "option-attribute", wfMsg( 'ow_OptionAttributeHeader' ), "short-text" );
+	$optionAttributeAttribute = new Attribute( $wgOptionAttribute, wfMsg( 'ow_OptionAttributeHeader' ), "short-text" );
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $optionAttributeAttribute ), new Structure( $o->id ) );
 	
 	while ( $row = $dbr->fetchObject( $queryResult ) )
@@ -610,12 +618,13 @@ function getOptionAttributeAsRecordSet( $queryResult ) {
 function getDefinedMeaningAsRecordSet( $queryResult ) {
 
 	$o = OmegaWikiAttributes::getInstance();
+	global $wgDefinedMeaning ;
 
 	$dbr =& wfGetDB( DB_SLAVE );
 	$spellingAttribute = new Attribute( "spelling", wfMsg( 'ow_Spelling' ), "short-text" );
 	$languageAttribute = new Attribute( "language", wfMsg( 'ow_Language' ), "language" );
 	
-	$expressionStructure = new Structure( "defined-meaning", $spellingAttribute, $languageAttribute );
+	$expressionStructure = new Structure( $wgDefinedMeaning, $spellingAttribute, $languageAttribute );
 	$definedMeaningAttribute = new Attribute( null, wfMsg( 'ow_DefinedMeaning' ), $expressionStructure );
 	$definitionAttribute = new Attribute( "definition", wfMsg( 'ow_Definition' ), "definition" );
 	
@@ -645,10 +654,10 @@ function getClassAttributeLevelAsRecordSet( $queryResult ) {
 	$o = OmegaWikiAttributes::getInstance();
 	
 	$dbr =& wfGetDB( DB_SLAVE );
-	
+
 	$classAttributeLevelAttribute = new Attribute( "class-attribute-level", wfMsg( 'ow_ClassAttributeLevel' ), "short-text" );
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $classAttributeLevelAttribute ), new Structure( $o->id ) );
-	
+
 	while ( $row = $dbr->fetchObject( $queryResult ) )
 		$recordSet->addRecord( array( $row->defined_meaning_id, $row->spelling ) );
 

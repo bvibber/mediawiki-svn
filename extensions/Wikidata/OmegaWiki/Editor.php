@@ -6,6 +6,7 @@ require_once( "type.php" );
 require_once( "GotoSourceTemplate.php" );
 require_once( "Wikidata.php" );
 require_once( "ContextFetcher.php" );
+require_once( "WikiDataGlobals.php" );
 
 function addCollapsablePrefixToClass( $class ) {
 	return "collapsable-$class";
@@ -379,6 +380,7 @@ abstract class RecordSetEditor extends DefaultEditor {
 		if ( count( $editors ) > 0 ) {
 			$updateRecord = $this->getUpdateRecord( $idPath, $structure, $editors );
 
+			// only update if it has been modified (for example an modified definition)
 			if ( !equalRecords( $structure, $record, $updateRecord ) )
 				$this->controller->update( $idPath->getKeyStack(), $updateRecord );
 		}
@@ -476,16 +478,18 @@ abstract class RecordSetEditor extends DefaultEditor {
 	}
 
 	public function save( IdStack $idPath, $value ) {
+		// save the new field (definition, translation, ...)
 		if ( $this->allowAddController->check( $idPath ) && $this->controller != null ) {
 			$addStructure = $this->getAddStructure();
 
 			if ( count( $addStructure->getAttributes() ) > 0 ) {
-				$addEditors = $this->getAddEditors();
-				$record = $this->getAddRecord( $idPath, $addStructure, $addEditors );
+				$addEditors = $this->getAddEditors(); // array of editors
+				$record = $this->getAddRecord( $idPath, $addStructure, $addEditors ); // array of records
 				$this->controller->add( $idPath, $record );
 			}
 		}
 
+		// update the existing and modified fields (definition, translation, ...)
 		$recordCount = $value->getRecordCount();
 		$key = $value->getKey();
 		$updateStructure = $this->getUpdateStructure();
@@ -774,8 +778,9 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$result = '<tr id="add-' . $idPath->getId() . '" class="' . $rowClass . '">';
 		
 		# + is add new Fo o(but grep this file for Add.png for more)
-		if ( $allowRemove )
+		if ( $allowRemove ) {
 			$result .= '<td class="add"><img src="' . $wgScriptPath . '/extensions/Wikidata/Images/Add.png" title="' . wfMsgSc( "AddHint" ) . '" alt="Add"/></td>' . EOL;
+		}
 
 		$result .= $this->getStructureAsAddCells( $idPath, $this );
 
@@ -1007,6 +1012,7 @@ class SpellingEditor extends ScalarEditor {
 			return "";
 	}
 
+	// retrieves the new added translation when saving, according to "name" property (not id)
 	public function getInputValue( $id ) {
 		global
 			$wgRequest;
@@ -1038,6 +1044,7 @@ class DefinedMeaningEditor extends ScalarEditor {
 		return trim( $wgRequest->getText( $id ) );
 	}
 }
+
 
 class DefinedMeaningHeaderEditor extends ScalarEditor {
 	protected $truncate;
@@ -1241,8 +1248,7 @@ abstract class SuggestEditor extends ScalarEditor {
 	}
 
 	public function getInputValue( $id ) {
-		global
-			$wgRequest;
+		global $wgRequest;
 
 		return trim( $wgRequest->getText( $id ) );
 	}
@@ -1250,7 +1256,8 @@ abstract class SuggestEditor extends ScalarEditor {
 
 class DefinedMeaningReferenceEditor extends SuggestEditor {
 	protected function suggestType() {
-		return "defined-meaning";
+		global $wgDefinedMeaning;
+		return $wgDefinedMeaning;
 	}
 
 	public function getViewHTML( IdStack $idPath, $value ) {
@@ -1385,7 +1392,8 @@ class AttributeEditor extends DefinedMeaningReferenceEditor {
 
 class DefinedMeaningAttributeEditor extends AttributeEditor {
 	protected function suggestType() {
-		return "defined-meaning-attribute";
+		global $wgDefinedMeaningAttributes;
+		return $wgDefinedMeaningAttributes;
 	}
 }
 
@@ -1403,25 +1411,28 @@ class TranslatedTextAttributeEditor extends AttributeEditor {
 
 class LinkAttributeEditor extends AttributeEditor {
 	protected function suggestType() {
-		return "link-attribute";
+		global $wgLinkAttribute;
+		return $wgLinkAttribute;
 	}
 }
 
 class OptionAttributeEditor extends AttributeEditor {
 	protected function suggestType() {
-		return "option-attribute";
+		global $wgOptionAttribute;
+		return $wgOptionAttribute;
 	}
 
 	public function add( IdStack $idPath ) {
+		global $wgOptionSuffix;
 		if ( $this->isAddField ) {
 			$syntransId = $idPath->getKeyStack()->peek( 0 )->syntransId;
 			if ( ! $syntransId ) $syntransId = 0 ; // in the case of a DM option attribute, there is no syntrans in the PathId
-
+			
 			$parameters = array(
 				"level" => $this->attributesLevelName,
 				"definedMeaningId" => $idPath->getDefinedMeaningId(),
 				"annotationAttributeId" => $idPath->getAnnotationAttribute()->getId(),
-				"onUpdate" => 'updateSelectOptions(\'' . $this->addId( $idPath->getId() ) . '-option\',' . $syntransId
+				"onUpdate" => 'updateSelectOptions(\'' . $this->addId( $idPath->getId() ) . $wgOptionSuffix . '\',' . $syntransId
 			);
 			return getSuggest( $this->addId( $idPath->getId() ), $this->suggestType(), $parameters );
 		}
@@ -1430,9 +1441,10 @@ class OptionAttributeEditor extends AttributeEditor {
 	}
 
 	public function getEditHTML( IdStack $idPath, $value ) {
+		global $wgOptionSuffix;
 		$parameters = array(
 			"level" => $this->attributesLevelName,
-			"onUpdate" => 'updateSelectOptions(\'' . $this->updateId( $idPath->getId() ) . '-option\''
+			"onUpdate" => 'updateSelectOptions(\'' . $this->updateId( $idPath->getId() ) . $wgOptionSuffix . '\''
 		);
 		
 		return getSuggest( $this->updateId( $idPath->getId() ), $this->suggestType(), $parameters );

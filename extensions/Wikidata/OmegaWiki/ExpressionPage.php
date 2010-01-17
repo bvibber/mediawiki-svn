@@ -147,6 +147,7 @@ HTML;
 	}
 	
 	protected function getIdStack() {
-		return new IdStack( "expression" );
+		global $wgExpression;
+		return new IdStack( $wgExpression );
 	}
 }

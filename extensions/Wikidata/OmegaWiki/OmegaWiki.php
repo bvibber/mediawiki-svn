@@ -20,8 +20,7 @@ require_once( 'WikiDataGlobals.php' );
  */
 class OmegaWiki extends DefaultWikidataApplication {
 	public function view() {
-		global
-			$wgOut, $wgTitle;
+		global $wgOut, $wgTitle;
 
 		parent::view();
 		$this->outputViewHeader();
@@ -103,7 +102,8 @@ class OmegaWiki extends DefaultWikidataApplication {
 	}
 
 	protected function getIdStack() {
-		return new IdStack( "expression" );
+		global $wgExpression ;
+		return new IdStack( $wgExpression );
 	}
 }
 
