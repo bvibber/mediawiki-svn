@@ -3,7 +3,6 @@
 */ 
 mw.ready(function(){
 	var htags = 'h6,h5,h4,h3,h2,h1';
-	//var htags = 'h1,h2,h3,h4,h5,h6';
 	$j('.editsection').click(function(){		
 		// Get section number: 
 		var href = $j( this ).children('a').attr( 'href');
@@ -115,11 +114,11 @@ function doInlineWikiEditor( wikiText,  sectionNumber ){
 		 })
 		 .val( wikiText )
 		 .hide()
-	);	
-	//Remove the loader ( callback on mw.load('WikiEditor') is having trouble atm ) 
-	$j('.loading_spinner').remove();
+	);		
 	//load the wikitext module:
-	mw.load('WikiEditor', function(){			
+	mw.load('WikiEditor', function(){
+		//Remove the loader ( callback on mw.load('WikiEditor') is having trouble atm ) 
+		$j('.loading_spinner').remove();			
 		// show the editor: 
 		$j('#wpTextbox1').show( 'fast' );
 		// add the add-media-wizard binding"
