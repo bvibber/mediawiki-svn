@@ -137,7 +137,7 @@ fn: {
 },
 // This stuff is just hanging here, perhaps we could come up with a better home for this stuff
 modules: {},
-quickDialog: function( body, settings ) {	
+quickDialog: function( body, settings ) {
 	$( '<div />' )
 		.text( body )
 		.appendTo( $( 'body' ) )
