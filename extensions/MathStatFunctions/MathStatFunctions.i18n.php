@@ -386,6 +386,7 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'msfunc_inf' => '경과값이 무한대입니다.',
 	'msfunc_div_zero' => '0으로 나눔',
 );
 

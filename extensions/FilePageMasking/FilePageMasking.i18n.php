@@ -188,6 +188,13 @@ $messages['nl'] = array(
 	'filepagemasking-desc' => 'Herschrijft ".xxx" naar "_xxx" in verwijzingen naar de bestandsbeschrijvingspagina\'s',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'filepagemasking-desc' => 'Skriv om «.xxx» til «_xxx» i lenkjer til filskildringssider',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */

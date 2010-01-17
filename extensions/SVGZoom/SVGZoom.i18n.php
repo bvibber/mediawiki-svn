@@ -220,6 +220,13 @@ $messages['ru'] = array(
 	'svgzoom-desc' => 'Добавляет возможности панорамирования и масштабирования в MediaWiki при просмотре SVG-файлов',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'svgzoom-desc' => 'Pridáva možnosti posúvania a približovania do prehliadača SVG súborov MediaWiki',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

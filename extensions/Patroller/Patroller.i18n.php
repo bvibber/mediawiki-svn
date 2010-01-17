@@ -792,7 +792,7 @@ $messages['hu'] = array(
 	'patrol-stopped' => 'Nem jelölted be, hogy szeretnél további szerkesztést járőrözni. $1',
 	'patrol-resume' => 'Kattints ide a folytatáshoz.',
 	'group-patroller' => 'járőrök',
-	'group-patroller-member' => 'FV-járőr',
+	'group-patroller-member' => 'járőr',
 	'grouppage-patroller' => '{{ns:project}}:FV-járőr',
 	'right-patroller' => 'lapok járőrözése',
 );

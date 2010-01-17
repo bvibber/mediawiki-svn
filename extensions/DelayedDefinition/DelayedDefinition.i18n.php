@@ -251,6 +251,16 @@ $messages['nl'] = array(
 	'delaydef-error-redef' => 'Fout: poging tot het herdefiniëren van $1.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'delaydef-desc' => 'Legg til &lt;define&gt; og &lt;display&gt; for å tillata at koden vert omplassert',
+	'delaydef-error-missing-def' => 'Feil: Fann ikkje den naudsynte definisjonen for &lt;display name="$1"&gt;.',
+	'delaydef-error-no-name' => 'Feil: Ingen namneparameter er oppgjeven.',
+	'delaydef-error-redef' => 'Feil: Freista på omdefinering av $1.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */

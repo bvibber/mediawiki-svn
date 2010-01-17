@@ -1412,6 +1412,7 @@ Dette gjer han ved å kalla dei relevante parsersetega frå MediaWiki sjølv.',
 	'expand_templates_xml_output' => 'XML-resultat',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Fjern kommentarar',
+	'expand_templates_remove_nowiki' => 'Ikkje vis <nowiki>-merke i resultatet',
 	'expand_templates_generate_xml' => 'Vis parsertre som XML',
 	'expand_templates_preview' => 'Førehandsvising',
 );

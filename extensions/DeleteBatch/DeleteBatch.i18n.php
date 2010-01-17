@@ -930,6 +930,7 @@ Ei opplasta fil må innehalda namnet på sida, og kan òg ha ei valfri sletteår
 	'deletebatch-as' => 'Køyr skriptet som:',
 	'deletebatch-both-modes' => 'Vel éi sida eller ei lista over sider.',
 	'deletebatch-or' => '<b>eller</b>',
+	'deletebatch-delete' => 'Slett',
 	'deletebatch-page' => 'Sider som skal bli sletta:',
 	'deletebatch-processing-from-file' => 'slettar sider frå lista over filer',
 	'deletebatch-processing-from-form' => 'slettar sider frå skjemaet',

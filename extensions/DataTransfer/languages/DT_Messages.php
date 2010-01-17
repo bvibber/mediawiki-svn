@@ -1312,6 +1312,7 @@ $messages['nn'] = array(
 	'dt_xml_freetext' => 'Fritekst',
 	'importxml' => 'Importer XML',
 	'dt_import_selectfile' => 'Ver venleg og vel $1-fila som skal verta importert:',
+	'dt_import_encodingtype' => 'Teiknkodingstype',
 	'dt_import_editsummary' => '$1-importering',
 	'dt_import_importing' => 'Importerer...',
 	'dt_import_success' => '$1 {{PLURAL:$1|Éi side vil verta importert|$1 sider vil verta importerte}} frå $2-fila.',

@@ -233,6 +233,13 @@ $messages['km'] = array(
 	'localisationupdate-desc' => 'រក្សា​សារ​ដែលបាន​ប្រែសម្រួល​ទាំងឡាយ អោយនៅ​ទាន់សម័យ​តាមដែលអាចធ្វើទៅបាន​',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'localisationupdate-desc' => '번역된 시스템 메시지를 가능한 한 최신으로 유지',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -2668,6 +2668,7 @@ $messages['sk'] = array(
 	'regexblock-form-submit-empty' => 'Zadajte používateľské meno alebo IP adresu, ktorá sa má zablokovať.',
 	'regexblock-form-submit-regex' => 'Neplatný regulárny výraz.',
 	'regexblock-form-submit-expiry' => 'Prosím zadajte, kedy má blokovanie skončiť.',
+	'regexblock-link' => 'zablokovať regulárnym výrazom',
 	'regexblock-match-stats-record' => '$1 zablokoval účet „$2“ na „$3“ $4, záznam z adresy „$5“',
 	'regexblock-nodata-found' => 'Neboli nájdené žiadne údaje',
 	'regexblock-stats-title' => 'Štatistiky regex blokovaní',

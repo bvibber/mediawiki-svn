@@ -1177,6 +1177,7 @@ $messages['ia'] = array(
 	'readerfeedback-tier-poor' => 'Mal',
 	'tooltip-ca-ratinghist' => 'Evalutationes de iste pagina per le lectores',
 	'specialpages-group-feedback' => 'Opinion del lector',
+	'readerfeedback-tt-review' => 'Submitter recension',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -2022,6 +2023,7 @@ $messages['sk'] = array(
 	'readerfeedback-tier-poor' => 'Nízke',
 	'tooltip-ca-ratinghist' => 'Hodnotenie tejto stránky čitateľmi',
 	'specialpages-group-feedback' => 'Názor čitateľa',
+	'readerfeedback-tt-review' => 'Odoslať kontrolu',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

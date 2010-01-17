@@ -750,6 +750,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'mostrevisors-namespace' => 'పేరుబరి:',
 	'mostrevisors-showing' => '{{PLURAL:$1|పేజీని|$1 పేజీలను}} చూపిస్తున్నాం:',
 	'mostrevisors-submit' => 'వెళ్ళు',
 	'mostrevisors-showredir' => 'దారిమార్పు పేజీలను చూపించు',

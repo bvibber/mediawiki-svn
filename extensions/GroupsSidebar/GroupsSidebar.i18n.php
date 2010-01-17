@@ -137,6 +137,13 @@ $messages['nl'] = array(
 	'groupssidebar-desc' => 'Maakt het mogelijk om gebruikersgroepspecifieke elementen in de menubalk weer te geven',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'groupssidebar-desc' => 'Denne utvidinga lèt sideadministratorar inkludera element i sidemenyen for einskilde brukargrupper',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
