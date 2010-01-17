@@ -290,7 +290,8 @@ div.floatleft, table.floatleft {
 }
 
 .rsd_control_container{	
-	margin:10px;
+	margin: 10px 0;
+	width: 100%;
 }
 
 .rsd_cp_tab img{
@@ -314,6 +315,10 @@ div.floatleft, table.floatleft {
 	left : 3px;
 	font-size: x-small;	
 }
+.rsd_import_button{
+	mergin-left: 5px;
+}
+
 .rsd_linkback{
 	position: absolute;
 	top: 0px;
@@ -337,11 +342,27 @@ div.floatleft, table.floatleft {
 	-moz-opacity:0.7;
 	opacity:0.7;
 }
+.rsd_search_button{
+	margin-left: 10px;
+}
+.rsd_upload_button{
+	margin-left: 25px;
+}
+.rsd_res_item{
+	cursor:pointer;
+	border: 1px solid black;
+}
+#rds_results_bar{
+	margin:4px;
+	background:#DEF;
+	height:22px;
+}
 .mv_clip_box_result{
 	padding:10px;
 	float:left;
-	border: thin solid #BBB;
+	border: thin solid #FFF;
 	overflow:hidden;
+	margin: 5px;
 }
 .mv_clip_box_result_over{
 	border: thin solid #F99;	
@@ -357,15 +378,7 @@ div.floatleft, table.floatleft {
 	border: thin solid #F99;
 	clear:both;
 }
-.rsd_res_item{
-	cursor:pointer;
-	display:block;
-}
-#rds_results_bar{
-	margin:4px;
-	background:#DEF;
-	height:22px;
-}
+
 
 /* edit buttons: */
 .mv_edit_button{	
@@ -444,6 +457,43 @@ div.floatleft, table.floatleft {
 ui-widget-overlay{
 	background: url("images/ui-bg_diagonals-thick_20_666666_40x40.png") repeat scroll 50% 50% #666666;
 	opacity:0.5;
+}
+
+.ui-widget-content input {
+	width: 450px;
+	padding: 5px;
+}
+
+ul.ui-provider-selection {
+	list-style-type: none;
+	margin: 0 0 0.6em 0;
+	overflow: hidden;
+	padding: 0;
+	text-align: center;
+}
+
+ul.ui-provider-selection li {
+	border-left: 1px solid black;
+	float: left;
+	line-height: 1.1em;
+	margin: 0 0.5em 0 -0.5em;
+	padding: 0 0.5em;
+	color: blue;
+}
+
+ul.ui-provider-selection li .ui-selected {
+	color: black;
+	font-weight: bold;
+}
+
+ul.ui-provider-selection li a.ui-active {
+	color: black;
+	font-weight: bold;
+}
+
+ul.ui-provider-selection li a {
+	color: blue;
+	text-decoration: none;
 }
 
 /* Vertical Tabs

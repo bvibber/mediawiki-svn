@@ -801,35 +801,17 @@ mw.RemoteSearchDriver.prototype = {
 		var _this = this;
 		mw.log( 'f::initDialog' );
 
-		var o = '<div class="rsd_control_container" style="width:100%">' +
-			'<form id="rsd_form" action="javascript:return false;" method="GET">' +
-			'<input ' + 
-				'class="ui-widget-content ui-corner-all" ' + 
-				'type="text" ' + 
-				'tabindex="1" ' + 
-				'value="' + this.getDefaultQuery() + '" ' + 
-				'maxlength="512" ' + 
-				'id="rsd_q" ' + 
-				'name="rsd_q" ' +
-				'size="20" ' + 
-				'autocomplete="off" />' +
-			$j.btnHtml( gM( 'mwe-media_search' ), 'rms_search_button', 'search' ) +
-			'</form>';
-			
-		// Close up the control container:
-		o += '</div>';
+		var mainContainer = $j(this.target_container);
 
-		// search provider tabs based on "checked" and "enabled" and "combined tab"
-		o += '<div ' + 
-				'id="rsd_results_container" ' + 
-				'style="top:0px;bottom:0px;left:0px;right:0px;">' + 
-			'</div>';
-		$j( this.target_container ).html( o );
-		// add simple styles:
-		$j( this.target_container + ' .rms_search_button' ).buttonHover().click( function() {
-			_this.showCurrentTab();
-		} );
+		var controlContainer = this.createControlContainer();
 
+		mainContainer.append(controlContainer);
+		
+		resultsContainer = $j('<div />').attr({
+			id: "rsd_results_container"
+		});
+		mainContainer.append(resultsContainer);
+		
 		// Draw the tabs:
 		this.createTabs();
 		// run the default search:
@@ -862,6 +844,88 @@ mw.RemoteSearchDriver.prototype = {
 				// Don't submit the form
 				return false;
 			} );
+	},
+
+	/**
+	 * Creates the search control (i.e. Search textbox, search button, provider filter).
+	 * @return A jQuery-generated HTML element ready to be injected in the main container.
+	 */
+	createControlContainer: function() {
+		var _this = this;
+		
+		var controlContainer = $j('<div />').addClass("rsd_control_container");
+		var searchForm = $j('<form />').attr({
+			id:"rsd_form", 
+			action:"javascript:return false"
+		});
+		var providerSelection = $j('<ul />').addClass("ui-provider-selection");
+		
+		// Add enabled search providers.
+		for (var providerName in this.content_providers) {
+			var content_providers = this.content_providers;
+			var provider = content_providers[ providerName ];
+			if (provider.enabled && provider.checked && provider.api_url) {
+				var anchor = $j('<div />')
+					.text(gM('rsd-' + providerName + '-title'))
+					.attr({
+						name: providerName
+					});
+				if (this.current_provider == providerName) {
+					anchor.addClass('ui-selected');
+				}
+				
+				anchor.click( function() {
+					$j(this).parent().parent().find('.ui-selected')
+						.removeClass('ui-selected')
+						.each(function(index, domElement) {
+							/*var selectedProvider = $j(domElement).attr("name")
+							if (selectedProvider)
+								content_providers[ selectedProvider ].checked = false;*/
+							//TODO: unset flag for provider selection
+						});
+					$j(this).addClass('ui-selected');
+					//TODO: set flag for provider selection
+				});
+				
+				var listItem = $j('<li />');
+				listItem.append(anchor);
+				providerSelection.append(listItem);
+			}
+		}
+		
+		var searchBox = $j('<input />').addClass('ui-widget-content ui-corner-all').attr({
+			type: "text",
+			tabindex: 1,
+			value: this.getDefaultQuery(),
+			maxlength: 512,
+			id: "rsd_q",
+			name: "rsd_q",
+			size: 20,
+			autocomplete: "off"
+		});
+		var searchButton = $j.button({icon_id: 'search', text: 'search'})
+			.addClass('rsd_search_button')
+			.buttonHover()
+			.click(function (){
+				//TODO: Add search provider call.
+				_this.showCurrentTab();
+			});
+		searchForm.append(providerSelection);
+		searchForm.append(searchBox);
+		searchForm.append(searchButton);
+		
+		// Add optional upload buttons.
+		if ( this.content_providers['upload'].enabled) {
+			uploadButton = $j.button({icon_id: 'upload', text: 'upload'})
+				.addClass("rsd_upload_button");
+			importButton = $j.button({icon_id: 'import', text: 'import'})
+				.addClass("rsd_import_button");
+			searchForm.append(uploadButton).append(importButton);
+		}
+		
+		controlContainer.append(searchForm);
+		
+		return controlContainer;
 	},
 	
 	/**
