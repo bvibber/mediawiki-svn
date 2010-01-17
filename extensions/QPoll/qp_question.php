@@ -55,7 +55,7 @@ abstract class qp_AbstractQuestion {
 
 	/**
 	 * Mutator of the question state
-	 * 
+	 *
 	 * @protected
 	 * @param  $pState - state of the question
 	 * @param  $error_message - optional main_header_parsing error message
@@ -72,7 +72,7 @@ abstract class qp_AbstractQuestion {
 
 	/**
 	 * Accessor of the question state.
-	 * 
+	 *
 	 * @protected
 	 */
 	function getState() {
@@ -99,8 +99,8 @@ abstract class qp_AbstractQuestion {
 	# @return  string : type of the question, empty when not defined
 	function parseAttributes( $attr_str ) {
 		global $qp_enable_showresults;
-		$paramkeys = array( 't[yi]p[eo]'=>null, 'layout'=>null, 'textwidth'=>null, 'showresults'=>null );
-		foreach( $paramkeys as $key=>&$val ) {
+		$paramkeys = array( 't[yi]p[eo]' => null, 'layout' => null, 'textwidth' => null, 'showresults' => null );
+		foreach ( $paramkeys as $key => &$val ) {
 			preg_match( '`' . $key . '?="(.*?)"`u', $attr_str, $val );
 		}
 		$type = $paramkeys[ 't[yi]p[eo]' ];
@@ -109,20 +109,20 @@ abstract class qp_AbstractQuestion {
 		$textwidth = $paramkeys[ 'textwidth' ];
 		$showresults = $paramkeys[ 'showresults' ];
 		if ( count( $layout ) > 0 ) {
-			$this->transposed = strpos( $layout[1], 'transpose' ) !== false; 
-			$this->proposalsFirst = strpos( $layout[1], 'proposals' ) !== false; 
+			$this->transposed = strpos( $layout[1], 'transpose' ) !== false;
+			$this->proposalsFirst = strpos( $layout[1], 'proposals' ) !== false;
 		}
 		# setup question layout parameters
 		if ( $this->transposed ) {
 			$this->spanType = 'rowspan';
 			$this->categoriesStyle = 'text-align:left; vertical-align:middle; ';
-			$this->signClass = array( 'first'=>'signt', 'middle'=>'signm', 'last'=>'signb' );
+			$this->signClass = array( 'first' => 'signt', 'middle' => 'signm', 'last' => 'signb' );
 			$this->proposalTextStyle = 'text-align:center; padding-left: 5px; padding-right: 5px; ';
 			$this->proposalTextStyle .= ( $this->proposalsFirst ) ? ' vertical-align: bottom;' : 'vertical-align:top;';
 		} else {
 			$this->spanType = 'colspan';
 			$this->categoriesStyle = '';
-			$this->signClass = array( 'first'=>'signl', 'middle'=>'signc', 'last'=>'signr' );
+			$this->signClass = array( 'first' => 'signl', 'middle' => 'signc', 'last' => 'signr' );
 			$this->proposalTextStyle = 'vertical-align:middle; ';
 			$this->proposalTextStyle .= ( $this->proposalsFirst ) ? 'padding-right: 10px;' : 'padding-left: 10px;';
 		}
@@ -137,7 +137,7 @@ abstract class qp_AbstractQuestion {
 			# use the value from the question
 			$this->showResults = qp_AbstractPoll::parse_ShowResults( $showresults[1] );
 			# apply undefined attributes from the poll's showresults definition
-			foreach( $this->pollShowResults as $attr => $val ) {
+			foreach ( $this->pollShowResults as $attr => $val ) {
 				if ( $attr != 'type' && !isset( $this->showResults[$attr] ) ) {
 					$this->showResults[$attr] = $val;
 				}
@@ -151,7 +151,7 @@ abstract class qp_AbstractQuestion {
 		# if needed to setup templates depending on question type
 		# right now, cell templates depends only on input type and showresults type
 		if ( $this->showResults['type'] != 0 ) {
-			$this->{'cellTemplate' . $this->showResults['type']}();
+			$this-> { 'cellTemplate' . $this->showResults['type'] } ();
 		}
 		return $type;
 	}
@@ -236,7 +236,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 			$this->Percents = $qdata->Percents;
 		} else {
 			# no percents - no stats
-			$this->showResults = Array( 'type'=>0 );
+			$this->showResults = Array( 'type' => 0 );
 		}
 	}
 
@@ -257,14 +257,14 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 		$row = Array();
 		if ( $this->proposalsFirst ) {
 			// add empty <th> at the begin of row to "compensate" proposal text
-			$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+			$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 		}
-		foreach( $this->mCategories as &$cat ) {
+		foreach ( $this->mCategories as &$cat ) {
 			$row[] = $this->parser->recursiveTagParse( $cat['name'] );
 		}
 		if ( !$this->proposalsFirst ) {
 			// add empty <th> at the end of row to "compensate" proposal text
-			$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+			$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 		}
 		return $row;
 	}
@@ -275,14 +275,14 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 			# real category spans have sense only for radiobuttons
 			if ( $this->proposalsFirst ) {
 				// add empty <th> at the begin of row to "compensate" proposal text
-				$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+				$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 			}
-			foreach( $this->mCategorySpans as &$span ) {
-				$row[] = array( "count"=>$span['count'], 0=>$this->parser->recursiveTagParse( $span['name'] ) );
+			foreach ( $this->mCategorySpans as &$span ) {
+				$row[] = array( "count" => $span['count'], 0 => $this->parser->recursiveTagParse( $span['name'] ) );
 			}
 			if ( !$this->proposalsFirst ) {
 				// add empty <th> at the end of row to "compensate" proposal text
-				$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+				$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 			}
 		}
 		return $row;
@@ -300,18 +300,18 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 				$this->categoriesStyle .= 'border:1px solid gray;';
 			}
 			if ( $this->categoriesStyle != '' ) {
-				qp_Renderer::applyAttrsToRow( $spansRow, array( 'style'=>$this->categoriesStyle ) );
+				qp_Renderer::applyAttrsToRow( $spansRow, array( 'style' => $this->categoriesStyle ) );
 			}
-			$this->addRow( $spansRow, array( 'class'=>'spans'), 'th', array( 'count'=>$this->spanType, 'name'=>0 ) );
+			$this->addRow( $spansRow, array( 'class' => 'spans' ), 'th', array( 'count' => $this->spanType, 'name' => 0 ) );
 		}
 		if ( $this->categoriesStyle != '' ) {
-			qp_Renderer::applyAttrsToRow( $catRow, array( 'style'=>$this->categoriesStyle ) );
+			qp_Renderer::applyAttrsToRow( $catRow, array( 'style' => $this->categoriesStyle ) );
 		}
-		$this->addRow( $catRow, array( 'class'=>'categories'), 'th', array( 'name'=>0 ) );
+		$this->addRow( $catRow, array( 'class' => 'categories' ), 'th', array( 'name' => 0 ) );
 		foreach ( $this->mProposalText as $proposalId => $text ) {
 			$row = Array();
 			$rawClass = 'proposal';
-			$spanState = (object) array( 'id'=>0, 'prevId'=>-1, 'wasChecked'=>true, 'isDrawing'=>false, 'cellsLeft'=>0, 'className'=>'sign' );
+			$spanState = (object) array( 'id' => 0, 'prevId' => -1, 'wasChecked' => true, 'isDrawing' => false, 'cellsLeft' => 0, 'className' => 'sign' );
 			foreach ( $this->mCategories as $catId => $catDesc ) {
 				$row[ $catId ] = Array();
 				$spanState->className = 'sign';
@@ -324,12 +324,12 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 				$row[ $catId ][ 'class' ] = $spanState->className;
 				if ( $this->showResults['type'] != 0 ) {
 					# there ars some stat in row (not necessarily all cells, because size of question table changes dynamically)
-					$row[ $catId ][ 0 ] = $this->{'addShowResults' . $this->showResults['type']}( $proposalId, $catId );
+					$row[ $catId ][ 0 ] = $this-> { 'addShowResults' . $this->showResults['type'] } ( $proposalId, $catId );
 				} else {
 					$row[ $catId ][ 0 ] = '';
 				}
 			}
-			$text = array( '__tag'=>'td', '__end'=>"\n", 'class'=>'proposaltext', 'style'=>$this->proposalTextStyle, 0=>$this->parser->recursiveTagParse( $text ) );
+			$text = array( '__tag' => 'td', '__end' => "\n", 'class' => 'proposaltext', 'style' => $this->proposalTextStyle, 0 => $this->parser->recursiveTagParse( $text ) );
 			if ( $this->proposalsFirst ) {
 				# first element is proposaltext
 				array_unshift( $row, $text );
@@ -337,7 +337,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 				# last element is proposaltext
 				$row[] = $text;
 			}
-			$this->addRow( $row, array( 'class'=>$rawClass ), 'td' );
+			$this->addRow( $row, array( 'class' => $rawClass ), 'td' );
 		}
 		return qp_Renderer::renderHTMLobject( $this->mRenderTable );
 	}
@@ -346,14 +346,14 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 
 	# cell templates for the selected showresults
 	var $cellTemplate = Array();
-	var $cellTemplateParam = Array( 'percents'=>'', 'bar1style'=>'', 'bar2style'=>'' );
+	var $cellTemplateParam = Array( 'percents' => '', 'bar1style' => '', 'bar2style' => '' );
 
 	# setup a template for showresults=1
 	# showresults=1 cellTemplate has only one variant
 	function cellTemplate1() {
 		$this->cellTemplate =
-			array( 
-				0=>array( '__tag'=>'div', 'class'=>'stats', 0=>&$this->cellTemplateParam['percents'] )
+			array(
+				0 => array( '__tag' => 'div', 'class' => 'stats', 0 => &$this->cellTemplateParam['percents'] )
 			);
 		if ( isset( $this->showResults['color'] ) ) {
 			$this->cellTemplate[0]['style'] = 'color:' . $this->showResults['color'] . ';';
@@ -390,14 +390,14 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 		}
 		# has one available template ('bar')
 		$this->cellTemplate = array(
-			'bar'=>array( '__tag'=>'div', 'class'=>'stats2',
-				0=>array( '__tag'=>'div', 'class'=>'bar1', 'style'=>&$this->cellTemplateParam['bar1style'], 0=>'&nbsp;' ),
-				1=>array( '__tag'=>'div', 'class'=>'bar2', 'style'=>&$this->cellTemplateParam['bar2style'], 0=>'&nbsp;' ),
-				2=>array( '__tag'=>'div', 'class'=>'bar3', 'style'=>$percentstyle, 0=>&$this->cellTemplateParam['percents'] )
+			'bar' => array( '__tag' => 'div', 'class' => 'stats2',
+				0 => array( '__tag' => 'div', 'class' => 'bar1', 'style' => &$this->cellTemplateParam['bar1style'], 0 => '&nbsp;' ),
+				1 => array( '__tag' => 'div', 'class' => 'bar2', 'style' => &$this->cellTemplateParam['bar2style'], 0 => '&nbsp;' ),
+				2 => array( '__tag' => 'div', 'class' => 'bar3', 'style' => $percentstyle, 0 => &$this->cellTemplateParam['percents'] )
 			),
 			# the following entries are not real templates, but pre-calculated values of css attributes taken from showresults parameter
-			'bar1showres'=>'',
-			'bar2showres'=>''
+			'bar1showres' => '',
+			'bar2showres' => ''
 		);
 		# dynamical styles, width: in percents will be added during rendering in addShowResults
 		if ( isset( $this->showResults['color'] ) ) {
@@ -416,7 +416,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 			# there is a stat in cell
 			$this->cellTemplateParam['percents'] = $percents . '%';
 			$this->cellTemplateParam['bar1style'] = 'width:' . $percents . 'px;' . $this->cellTemplate[ 'bar1showres' ];
-			$this->cellTemplateParam['bar2style'] = 'width:' . (100 - $percents) . 'px;' . $this->cellTemplate[ 'bar2showres' ];
+			$this->cellTemplateParam['bar2style'] = 'width:' . ( 100 - $percents ) . 'px;' . $this->cellTemplate[ 'bar2showres' ];
 			return qp_Renderer::renderHTMLobject( $this->cellTemplate['bar'] );
 		} else {
 			return '';
@@ -449,7 +449,7 @@ class qp_Question extends qp_AbstractQuestion {
 			$this->Percents = $qdata->Percents;
 		} else {
 			# no percents - no stats
-			$this->showResults = Array( 'type'=>0 );
+			$this->showResults = Array( 'type' => 0 );
 		}
 	}
 
@@ -500,14 +500,14 @@ class qp_Question extends qp_AbstractQuestion {
 	function store( qp_PollStore &$pollStore ) {
 		if ( $pollStore->pid !== null ) {
 			$pollStore->Questions[ $this->mQuestionId ] = new qp_QuestionData( array(
-				'from'=>'postdata',
-				'type'=>$this->mType,
-				'common_question'=>$this->mCommonQuestion,
-				'categories'=>$this->mCategories,
-				'category_spans'=>$this->mCategorySpans,
-				'proposal_text'=>$this->mProposalText,
-				'proposal_category_id'=>$this->mProposalCategoryId,
-				'proposal_category_text'=>$this->mProposalCategoryText ) );
+				'from' => 'postdata',
+				'type' => $this->mType,
+				'common_question' => $this->mCommonQuestion,
+				'categories' => $this->mCategories,
+				'category_spans' => $this->mCategorySpans,
+				'proposal_text' => $this->mProposalText,
+				'proposal_category_id' => $this->mProposalCategoryId,
+				'proposal_category_text' => $this->mProposalCategoryText ) );
 		}
 	}
 
@@ -556,10 +556,10 @@ class qp_Question extends qp_AbstractQuestion {
 	function parseBodyHeader( $input ) {
 		$this->raws = preg_split( '`\n`su', $input, -1, PREG_SPLIT_NO_EMPTY );
 		if ( array_key_exists( 1, $this->raws ) ) {
-			$categorySpans = preg_match( $this->mCategoryPattern, $this->raws[1]."\n", $matches );
+			$categorySpans = preg_match( $this->mCategoryPattern, $this->raws[1] . "\n", $matches );
 		}
 		if ( !$categorySpans && array_key_exists( 0, $this->raws ) ) {
-			preg_match( $this->mCategoryPattern, $this->raws[0]."\n", $matches );
+			preg_match( $this->mCategoryPattern, $this->raws[0] . "\n", $matches );
 		}
 		# parse the header - spans and categories
 		$catString = isset( $matches[1] ) ? $matches[1] : '';
@@ -571,14 +571,14 @@ class qp_Question extends qp_AbstractQuestion {
 				$this->categoriesStyle .= 'border:1px solid gray;';
 			}
 			if ( $this->categoriesStyle != '' ) {
-				qp_Renderer::applyAttrsToRow( $spansRow, array( 'style'=>$this->categoriesStyle ) );
+				qp_Renderer::applyAttrsToRow( $spansRow, array( 'style' => $this->categoriesStyle ) );
 			}
-			$this->addRow( $spansRow, array( 'class'=>'spans'), 'th', array( 'count'=>$this->spanType, 'name'=>0 ) );
+			$this->addRow( $spansRow, array( 'class' => 'spans' ), 'th', array( 'count' => $this->spanType, 'name' => 0 ) );
 		}
 		if ( $this->categoriesStyle != '' ) {
-			qp_Renderer::applyAttrsToRow( $catRow, array( 'style'=>$this->categoriesStyle ) );
+			qp_Renderer::applyAttrsToRow( $catRow, array( 'style' => $this->categoriesStyle ) );
 		}
-		$this->addRow( $catRow, array( 'class'=>'categories'), 'th', array( 'name'=>0 ) );
+		$this->addRow( $catRow, array( 'class' => 'categories' ), 'th', array( 'name' => 0 ) );
 	}
 
 	function singleChoiceParseBody() {
@@ -594,7 +594,7 @@ class qp_Question extends qp_AbstractQuestion {
 	function questionParseBody( $inputType ) {
 		# Parameters used in some special cases.
 		$proposalId = -1;
-		foreach( $this->raws as $raw ) {
+		foreach ( $this->raws as $raw ) {
 			if ( !preg_match( $this->mProposalPattern, $raw, $matches ) ) {
 				continue;
 			}
@@ -605,10 +605,10 @@ class qp_Question extends qp_AbstractQuestion {
 			$rawClass = 'proposal';
 			$text = array_pop( $matches );
 			$this->mProposalText[ $proposalId ] = trim( $text );
-			$spanState = (object) array( 'id'=>0, 'prevId'=>-1, 'wasChecked'=>true, 'isDrawing'=>false, 'cellsLeft'=>0, 'className'=>'sign' );
+			$spanState = (object) array( 'id' => 0, 'prevId' => -1, 'wasChecked' => true, 'isDrawing' => false, 'cellsLeft' => 0, 'className' => 'sign' );
 			foreach ( $this->mCategories as $catId => $catDesc ) {
 				$row[ $catId ] = Array();
-				$inp = Array( '__tag'=>'input' );
+				$inp = Array( '__tag' => 'input' );
 				$spanState->className = 'sign';
 				# Determine the input's name and value.
 				switch( $this->mType ) {
@@ -623,9 +623,9 @@ class qp_Question extends qp_AbstractQuestion {
 					$this->renderSpan( $name, $catDesc, $text, $rawClass, $spanState );
 					if ( $spanState->cellsLeft <= 1 ) {
 						# end of new span
-						if ( $this->mBeingCorrected && 
+						if ( $this->mBeingCorrected &&
 								!$spanState->wasChecked &&
-								$this->mRequest->getVal($name) != $value ) {
+								$this->mRequest->getVal( $name ) != $value ) {
 							# the span (a part of proposal) was submitted but unanswered
 							$text = $this->bodyErrorMessage( wfMsg( 'qp_error_unanswered_span' ), 'NA' ) . $text;
 							# highlight current span to indicate an error
@@ -669,7 +669,7 @@ class qp_Question extends qp_AbstractQuestion {
 					if ( count( $this->mProposalText ) > count( $this->mCategories ) ) {
 						# if there was no previous errors, hightlight the whole row
 						if ( $this->getState() == '' ) {
-							foreach( $row as &$cell ) {
+							foreach ( $row as &$cell ) {
 								$cell[ 'style' ] = QP_CSS_ERROR_STYLE;
 							}
 						}
@@ -683,15 +683,15 @@ class qp_Question extends qp_AbstractQuestion {
 				$inp[ 'value' ] = $value;
 				if ( $this->showResults['type'] != 0 ) {
 					# there ars some stat in row (not necessarily all cells, because size of question table changes dynamically)
-					$row[ $catId ][ 0 ] = $this->{'addShowResults' . $this->showResults['type']}( $inp, $proposalId, $catId );
+					$row[ $catId ][ 0 ] = $this-> { 'addShowResults' . $this->showResults['type'] } ( $inp, $proposalId, $catId );
 				} else {
 					$row[ $catId ][ 0 ] = $inp;
 				}
 			}
 			# If the proposal text is empty, the question has a syntax error.
-			if( trim( $text ) == '' ) {
+			if ( trim( $text ) == '' ) {
 				$text = $this->bodyErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
-				foreach( $row as &$cell ) {
+				foreach ( $row as &$cell ) {
 					$cell[ 'style' ] = QP_CSS_ERROR_STYLE;
 				}
 				$rawClass = 'proposalerror';
@@ -700,7 +700,7 @@ class qp_Question extends qp_AbstractQuestion {
 			if ( $this->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
 				# if there was no previous errors, hightlight the whole row
 				if ( $this->getState() == '' ) {
-					foreach( $row as &$cell ) {
+					foreach ( $row as &$cell ) {
 						$cell[ 'style' ] = QP_CSS_ERROR_STYLE;
 					}
 				}
@@ -708,7 +708,7 @@ class qp_Question extends qp_AbstractQuestion {
 				$rawClass = 'proposalerror';
 			}
 			if ( $text !== null ) {
-				$text = array( '__tag'=>'td', '__end'=>"\n", 'class'=>'proposaltext', 'style'=>$this->proposalTextStyle, 0=>$this->parser->recursiveTagParse( $text ) );
+				$text = array( '__tag' => 'td', '__end' => "\n", 'class' => 'proposaltext', 'style' => $this->proposalTextStyle, 0 => $this->parser->recursiveTagParse( $text ) );
 				if ( $this->proposalsFirst ) {
 					# first element is proposaltext
 					array_unshift( $row, $text );
@@ -716,7 +716,7 @@ class qp_Question extends qp_AbstractQuestion {
 					# last element is proposaltext
 					$row[] = $text;
 				}
-				$this->addRow( $row, array( 'class'=>$rawClass ), 'td' );
+				$this->addRow( $row, array( 'class' => $rawClass ), 'td' );
 			}
 		}
 	}
@@ -729,7 +729,7 @@ class qp_Question extends qp_AbstractQuestion {
 		}
 		$this->mProposalPattern .= '(.*)`u';
 		$proposalId = -1;
-		foreach( $this->raws as $raw ) {
+		foreach ( $this->raws as $raw ) {
 			# empty proposal text and row
 			$text = null;
 			$row = Array();
@@ -754,7 +754,7 @@ class qp_Question extends qp_AbstractQuestion {
 			foreach ( $this->mCategories as $catId => $catDesc ) {
 				$typeId  = $matches[ $catId ];
 				$row[ $catId ] = Array();
-				$inp = Array( '__tag'=>'input' );
+				$inp = Array( '__tag' => 'input' );
 				# Determine the input's name and value.
 				switch ( $typeId ) {
 					case '<>':
@@ -819,15 +819,15 @@ class qp_Question extends qp_AbstractQuestion {
 				}
 				if ( $this->showResults['type'] != 0 ) {
 					# there ars some stat in row (not necessarily all cells, because size of question table changes dynamically)
-					$row[ $catId ][ 0 ] = $this->{'addShowResults' . $this->showResults['type']}( $inp, $proposalId, $catId );
+					$row[ $catId ][ 0 ] = $this-> { 'addShowResults' . $this->showResults['type'] } ( $inp, $proposalId, $catId );
 				} else {
 					$row[ $catId ][ 0 ] = $inp;
 				}
 			}
 			# If the proposal text is empty, the question has a syntax error.
-			if( trim( $text ) == '' ) {
+			if ( trim( $text ) == '' ) {
 				$text = $this->bodyErrorMessage( wfMsg( "qp_error_proposal_text_empty" ), "error" );
-				foreach( $row as &$cell ) {
+				foreach ( $row as &$cell ) {
 					$cell[ 'style' ] = QP_CSS_ERROR_STYLE;
 				}
 				$rawClass = 'proposalerror';
@@ -836,14 +836,14 @@ class qp_Question extends qp_AbstractQuestion {
 			if ( $this->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
 				# if there was no previous errors, hightlight the whole row
 				if ( $this->getState() == '' ) {
-					foreach( $row as &$cell ) {
+					foreach ( $row as &$cell ) {
 						$cell[ 'style' ] = QP_CSS_ERROR_STYLE;
 					}
 				}
 				$text = $this->bodyErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' ) . $text;
 				$rawClass = 'proposalerror';
 			}
-			$text = array( '__tag'=>'td', '__end'=>"\n", 'class'=>'proposaltext', 'style'=>$this->proposalTextStyle, 0=>$this->parser->recursiveTagParse( $text ) );
+			$text = array( '__tag' => 'td', '__end' => "\n", 'class' => 'proposaltext', 'style' => $this->proposalTextStyle, 0 => $this->parser->recursiveTagParse( $text ) );
 			if ( $this->proposalsFirst ) {
 				# first element is proposaltext
 				array_unshift( $row, $text );
@@ -851,21 +851,21 @@ class qp_Question extends qp_AbstractQuestion {
 				# last element is proposaltext
 				$row[] = $text;
 			}
-			$this->addRow( $row, array( 'class'=>$rawClass ), 'td' );
+			$this->addRow( $row, array( 'class' => $rawClass ), 'td' );
 		}
 		return qp_Renderer::renderHTMLobject( $this->mRenderTable );
 	}
 
 	/**
 	 * build internal & visual representation of question categories
-	 * 
+	 *
 	 * @param  $input			the raw source of categories
 	 */
 	function parseCategories( $input ) {
 		$row = Array();
 		if ( $this->proposalsFirst ) {
 			// add empty <th> at the begin of row to "compensate" proposal text
-			$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+			$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 		}
 		# build "raw" categories array
 		# split tokens
@@ -873,8 +873,8 @@ class qp_Question extends qp_AbstractQuestion {
 		$matching_braces = Array();
 		$curr_elem = '';
 		$categories = Array();
-		foreach( $cat_split as $part ) {
-			switch ($part) {
+		foreach ( $cat_split as $part ) {
+			switch ( $part ) {
 				case '|' :
 					if ( count( $matching_braces ) == 0 ) {
 						# delimeters are working only when braces are completely closed
@@ -912,29 +912,29 @@ class qp_Question extends qp_AbstractQuestion {
 		if ( !array_key_exists( 1, $categories ) ) {
 			$categories[0] .= $this->bodyErrorMessage( wfMsg( "qp_error_too_few_categories" ), "error" );
 		}
-		foreach( $categories as $catkey => $category ) {
+		foreach ( $categories as $catkey => $category ) {
 			$category = trim( $category );
 			# If a category name is empty, the question has a syntax error.
-			if( $category == "") {
+			if ( $category == "" ) {
 				$category = $this->bodyErrorMessage( wfMsg( "qp_error_category_name_empty" ), "error" );
 			}
 			$this->mCategories[ $catkey ]["name"] = $category;
 			$row[] = $this->parser->recursiveTagParse( $category );
 		}
-		
+
 		# cut unused categories rows which are presented in DB but were removed from article
 		$this->mCategories = array_slice( $this->mCategories, 0, count( $categories ) );
 		if ( !$this->proposalsFirst ) {
 			// add empty <th> at the end of row to "compensate" proposal text
-			$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+			$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 		}
 		return $row;
 	}
-	
+
 	/**
 	 * build internal & visual representation of question category spans
 	 * ( also known as metacategories or "category groups" )
-	 * 
+	 *
 	 * @param  $input			the raw source of category spans
 	 */
 	# warning: parseCategorySpans() should be called after parseCategories()
@@ -952,7 +952,7 @@ class qp_Question extends qp_AbstractQuestion {
 				array_shift( $span_split );
 				if ( isset( $span_split[0] ) && in_array( $span_split[0], array( '!', '|' ) ) ) {
 					$delim = $span_split[0];
-					foreach( $span_split as $part ) {
+					foreach ( $span_split as $part ) {
 						if ( $part == $delim ) {
 							if ( count( $matching_braces ) == 0 ) {
 								# delimeters are working only when braces are completely closed
@@ -996,13 +996,13 @@ class qp_Question extends qp_AbstractQuestion {
 			}
 			# analyze previousely build "raw" spans array
 			# Less than one span is a syntax error.
-			if(!array_key_exists(0, $spans)) {
+			if ( !array_key_exists( 0, $spans ) ) {
 				return $this->bodyErrorMessage( wfMsg( "qp_error_too_few_spans" ), "error" );
 			}
 			# fill undefined spans with the last span value
 			$SpanCategDelta = count( $this->mCategories ) - count( $spans[0] );
 			$lastDefinedSpanKey = array_pop( array_diff( array_keys( $spans[1] ), array_keys( $spans[1], "", true ) ) );
-			if ($lastDefinedSpanKey !== null) {
+			if ( $lastDefinedSpanKey !== null ) {
 				if ( $SpanCategDelta > 0 ) {
 					# increase the length of last defined span value to match total lenth of categories
 					$lastSpanType = $spans[0][$lastDefinedSpanKey];
@@ -1014,32 +1014,32 @@ class qp_Question extends qp_AbstractQuestion {
 						array_slice( $spans[1], $lastDefinedSpanKey ) );
 				} elseif ( $SpanCategDelta < 0 ) {
 					# cut unused but defined extra spans
-					$spans[0] = array_slice( $spans[0], count( $this->mCategories ), -$SpanCategDelta );
-					$spans[1] = array_slice( $spans[1], count( $this->mCategories ), -$SpanCategDelta );
+					$spans[0] = array_slice( $spans[0], count( $this->mCategories ), - $SpanCategDelta );
+					$spans[1] = array_slice( $spans[1], count( $this->mCategories ), - $SpanCategDelta );
 				}
 			} else {
 				# no valid category spans are defined
-				return $this->bodyErrorMessage( wfMsg( 'qp_error_too_few_spans' ), 'error' ); 
+				return $this->bodyErrorMessage( wfMsg( 'qp_error_too_few_spans' ), 'error' );
 			}
 			# populate mCategorySpans and row
 			if ( $this->proposalsFirst ) {
 				// add empty <th> at the begin of row to "compensate" proposal text
-				$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+				$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 			}
 			$colspanBase = ( $lastDefinedSpanKey == 0 ) ? 1 : 0;
 			$colspan = 1;
 			$categorySpanId = 0;
-			foreach($spans[0] as $spanKey => $spanType) {
+			foreach ( $spans[0] as $spanKey => $spanType ) {
 				$spanCategory = trim( $spans[1][$spanKey] );
-				if ( $spanCategory=="" ) {
+				if ( $spanCategory == "" ) {
 					$colspan++;
 				} else {
-					$row[] = array( "count"=>$colspan + $colspanBase, 0=>$this->parser->recursiveTagParse( $spanCategory ) );
-					if ( $spanType == "|") { // "!" is a comment header, not a real category span
+					$row[] = array( "count" => $colspan + $colspanBase, 0 => $this->parser->recursiveTagParse( $spanCategory ) );
+					if ( $spanType == "|" ) { // "!" is a comment header, not a real category span
 						$this->mCategorySpans[ $categorySpanId ]['name'] = $spanCategory;
 						$this->mCategorySpans[ $categorySpanId ]['count'] = $colspan;
 						for ( $i = $spanKey;
-							$i >=0 && array_key_exists( $i, $this->mCategories ) && !array_key_exists( 'spanId', $this->mCategories[ $i ] );
+							$i >= 0 && array_key_exists( $i, $this->mCategories ) && !array_key_exists( 'spanId', $this->mCategories[ $i ] );
 							$i-- ) {
 							$this->mCategories[$i]['spanId'] = $categorySpanId;
 						}
@@ -1050,14 +1050,14 @@ class qp_Question extends qp_AbstractQuestion {
 			}
 			if ( !$this->proposalsFirst ) {
 				// add empty <th> at the end of row to "compensate" proposal text
-				$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+				$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 			}
 		}
 		return $row;
 	}
 
 	function isUniqueProposalCategoryId( $proposalId, $catId ) {
-		foreach( $this->mProposalCategoryId as $proposalCategoryId ) {
+		foreach ( $this->mProposalCategoryId as $proposalCategoryId ) {
 			if ( in_array( $catId, $proposalCategoryId ) ) {
 				return false;
 			}
@@ -1069,15 +1069,15 @@ class qp_Question extends qp_AbstractQuestion {
 
 	# cell templates for the selected showresults
 	var $cellTemplate = Array();
-	var $cellTemplateParam = Array( 'inp'=>'', 'percents'=>'', 'bar1style'=>'', 'bar2style'=>'' );
+	var $cellTemplateParam = Array( 'inp' => '', 'percents' => '', 'bar1style' => '', 'bar2style' => '' );
 
 	# setup a template for showresults=1
 	# showresults=1 cellTemplate has only one variant
 	function cellTemplate1() {
 		$this->cellTemplate =
-			array( 
-				0=>array( '__tag'=>'div', 0=>&$this->cellTemplateParam['inp'] ),
-				1=>array( '__tag'=>'div', 'class'=>'stats', 0=>&$this->cellTemplateParam['percents'] )
+			array(
+				0 => array( '__tag' => 'div', 0 => &$this->cellTemplateParam['inp'] ),
+				1 => array( '__tag' => 'div', 'class' => 'stats', 0 => &$this->cellTemplateParam['percents'] )
 			);
 		if ( isset( $this->showResults['color'] ) ) {
 			$this->cellTemplate[1]['style'] = 'color:' . $this->showResults['color'] . ';';
@@ -1114,34 +1114,34 @@ class qp_Question extends qp_AbstractQuestion {
 			$percentstyle .= 'background:' . $this->showResults['textbackground'] . ';';
 		}
 		# html arrays used in templates below
-		$bar = array( '__tag'=>'div', 'class'=>'stats1',
-			0=>array( '__tag'=>'div', 'class'=>'bar0', 0=>&$this->cellTemplateParam['inp'] ),
-			1=>array( '__tag'=>'div', 'class'=>'bar1', 'style'=>&$this->cellTemplateParam['bar1style'], 0=>'&nbsp;' ),
-			2=>array( '__tag'=>'div', 'class'=>'bar2', 'style'=>&$this->cellTemplateParam['bar2style'], 0=>'&nbsp;' ),
-			3=>array( '__tag'=>'div', 'class'=>'bar0', 'style'=>$percentstyle, 0=>&$this->cellTemplateParam['percents'] )
+		$bar = array( '__tag' => 'div', 'class' => 'stats1',
+			0 => array( '__tag' => 'div', 'class' => 'bar0', 0 => &$this->cellTemplateParam['inp'] ),
+			1 => array( '__tag' => 'div', 'class' => 'bar1', 'style' => &$this->cellTemplateParam['bar1style'], 0 => '&nbsp;' ),
+			2 => array( '__tag' => 'div', 'class' => 'bar2', 'style' => &$this->cellTemplateParam['bar2style'], 0 => '&nbsp;' ),
+			3 => array( '__tag' => 'div', 'class' => 'bar0', 'style' => $percentstyle, 0 => &$this->cellTemplateParam['percents'] )
 		);
-		$bar2 = array( '__tag'=>'div', 'class'=>'stats1',
-			0=>array( '__tag'=>'div', 'class'=>'bar0', 0=>'&nbsp;' ),
-			1=>&$bar[1],
-			2=>&$bar[2],
-			3=>&$bar[3]
+		$bar2 = array( '__tag' => 'div', 'class' => 'stats1',
+			0 => array( '__tag' => 'div', 'class' => 'bar0', 0 => '&nbsp;' ),
+			1 => &$bar[1],
+			2 => &$bar[2],
+			3 => &$bar[3]
 		);
 		# has two available templates ('bar','textinput')
 		$this->cellTemplate = array(
-			'bar'=>$bar,
-			'textinput'=>array( '__tag'=>'table', 'class'=>'stats',
-				0=>array( '__tag'=>'tr',
-					0=>array( '__tag'=>'td', 0=>&$this->cellTemplateParam['inp'] ),
+			'bar' => $bar,
+			'textinput' => array( '__tag' => 'table', 'class' => 'stats',
+				0 => array( '__tag' => 'tr',
+					0 => array( '__tag' => 'td', 0 => &$this->cellTemplateParam['inp'] ),
 				),
-				1=>array( '__tag'=>'tr',
-					0=>array( '__tag'=>'td',
-						0=>$bar2
+				1 => array( '__tag' => 'tr',
+					0 => array( '__tag' => 'td',
+						0 => $bar2
 					)
 				)
 			),
 			# the following entries are not real templates, but pre-calculated values of css attributes taken from showresults parameter
-			'bar1showres'=>'',
-			'bar2showres'=>''
+			'bar1showres' => '',
+			'bar2showres' => ''
 		);
 		# dynamical styles, width: in percents will be added during rendering in addShowResults
 		if ( isset( $this->showResults['color'] ) ) {
@@ -1161,7 +1161,7 @@ class qp_Question extends qp_AbstractQuestion {
 			# there is a stat in cell
 			$this->cellTemplateParam['percents'] = $percents . '%';
 			$this->cellTemplateParam['bar1style'] = 'width:' . $percents . 'px;' . $this->cellTemplate[ 'bar1showres' ];
-			$this->cellTemplateParam['bar2style'] = 'width:' . (100 - $percents) . 'px;' . $this->cellTemplate[ 'bar2showres' ];
+			$this->cellTemplateParam['bar2style'] = 'width:' . ( 100 - $percents ) . 'px;' . $this->cellTemplate[ 'bar2showres' ];
 			if ( $inp['type'] == 'text' ) {
 				return qp_Renderer::renderHTMLobject( $this->cellTemplate['textinput'] );
 			} else {
