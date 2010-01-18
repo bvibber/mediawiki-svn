@@ -353,7 +353,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					$ek = str_replace( '|', '\|', $k );
 					if ( !preg_match( "|\s*\|\s*$ek\s*=|", $text ) ) $text .= "\n|$k=\n|"; # Treat non-existent fields as existing but empty
 					$i = preg_match( "|^\s*\|\s*$ek\s*= *(.*?) *(?=^\s*[\|\}])|sm", $text, $m );
-					$r[$k] = isset( $m[1] ) ? $m[1] : '';
+					$r[$k] = trim( isset( $m[1] ) ? $m[1] : '' );
 					if ( $v && !( $i && $this->cmpCallback( $r[$k], $v, $operator[$k] ) ) ) $match = false;
 				}
 				if ( $invert ) $match = !$match;
@@ -392,19 +392,18 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Group the records according to the "groupby" parameter
 		if ( $groupby ) {
-			if ( !is_array( $groupby ) ) $groupby = split( '/\s*,\s*/', $groupby );
+			$groupby = preg_split( '/\s*,\s*/', $groupby );
 			$tmp = array();
 			foreach ( $records as $r ) {
 				$v0 = $r[$groupby[0]];
-				if ( $groupby[1] ) {
+				if ( isset( $groupby[1] ) ) {
 					$v1 = $r[$groupby[1]];
-					if ( !in_array( $tmp[$v0] ) ) $tmp[$v0] = array();
+					if ( !isset( $tmp[$v0] ) || !is_array( $tmp[$v0] ) ) $tmp[$v0] = array();
 					$tmp[$v0][$v1] = $r;
 				} else $tmp[$v0] = $r;
 			}
 			$records = $tmp;
 		}
-		$this->groupBy = $groupby;
 		$this->format  = $format;
 
 		return $records;
@@ -452,7 +451,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
-	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect', $export = true ) {
+	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect', $export = true, $groupby = false ) {
 		global $wgParser, $wgTitle, $wgRequest;
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 
@@ -474,59 +473,81 @@ class SpecialRecordAdmin extends SpecialPage {
 			$class = 'col' . preg_replace( '|\W|', '-', $col );
 			$th[$col] = "<th class='$class'>$col$br</th>";
 		}
+		$ncol = 0;
 		foreach ( $cols ? $cols : array_keys( $th ) as $col ) {
 			$html = isset( $th[$col] ) ? $th[$col] : "<th>$col</th>";
 			$table .= "$html\n";
+			$ncol++;
 		}
 		$table .= "</tr>\n";
+
+		# If using grouping, reconstruct the record tree as a list including headings
+		if ( $groupby ) {
+			$groupby = preg_split( '/\s*,\s*/', $groupby );
+			$td  = "<td colspan=\"$ncol\">";
+			$tmp = array();
+			foreach( $records as $k1 => $v1 ) {
+				if ( empty( $k1 ) ) $k1 = wfMsg( 'recordadmin-notset', $groupby[0] );
+				$tmp[] = "$td<h2>$k1</h2></td>\n";
+				foreach( $v1 as $k2 => $v2 ) {
+					if ( isset( $groupby[1] ) ) {
+						if ( empty( $k2 ) ) $k2 = wfMsg( 'recordadmin-notset', $groupby[1] );
+						$tmp[] = "$td<h3>$k2</h3></td>\n";
+						foreach( $v2 as $v3 ) $tmp[] = $v3;
+					} else $tmp[] = $v2;
+				}
+			}
+			$records = $tmp;
+		}
 
 		# Table rows
 		$stripe = '';
 		foreach ( $records as $r ) {
-			
-			# Create special values for this row
-			$tsc    = $this->formatDate( $r['created'] );
-			$tsm    = $this->formatDate( $r['modified'] );
-			$t      = $r[0];
-			$u      = $t->getLocalURL();
-			$col    = $r['title'];
-			$ecol   = urlencode( $col );
-			$sel    = "<input type='checkbox' name='{$name}[]' value='$col' checked />";
 			$stripe = $stripe ? '' : ' class="stripe"';
 			$table .= "<tr$stripe>";
-
-			# Render this row
-			if ( $template ) {
-				$text = '{'.'{'."$template|select=%SELECT%|title=$col|created=$tsc|modified=$tsm";
-				foreach ( array_keys( $this->types ) as $col ) {
-					$v = isset( $r[$col] ) ? $r[$col] : '';
-					$text .= "|$col=$v";
-				}
-				$text .= '}}';
-				$text = $wgParser->parse( $text, $wgTitle, $wgParser->mOptions, true, false )->getText();
-				$text = preg_replace( "|&lt;(/?td.*?)&gt;|", "<$1>", $text );
-				$text = str_replace( '%SELECT%', $sel, $text );
-				$table .= "$text\n";
-			}
+			if ( !is_array( $r ) ) $table .= $r; # Just add as HTML content if not a row
 			else {
-				$row = array(
-					'select'   => "<td class='col-select'>$sel</td>\n",
-					'title'    => "<td class='col0 col-title'><a href='$u'>$col</a></td>",
-					'actions'  => "<td class='col1 col-actions'><a href='" . $special->getLocalURL( "wpType=$type&wpRecord=$ecol" ) . "'>"
-								  . wfMsg( 'recordadmin-editlink' ) . "</a></td>",
-					'created'  => "<td class='col2 col-created'>$tsc</td>\n",
-					'modified' => "<td class='col3 col-modified'>$tsm</td>\n",
-				);
-				foreach ( $cols ? $cols : array_keys( $th ) as $col ) {
-					if ( !isset( $row[$col] ) ) {
-						$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $wgTitle, $wgParser->mOptions, true, false )->getText() : '&nbsp;';
-						$class = 'col' . preg_replace( '|\W|', '-', $col );
-						$row[$col] = "<td class='$class'>$v</td>";
+
+				# Create special values for this row
+				$tsc    = $this->formatDate( $r['created'] );
+				$tsm    = $this->formatDate( $r['modified'] );
+				$t      = $r[0];
+				$u      = $t->getLocalURL();
+				$col    = $r['title'];
+				$ecol   = urlencode( $col );
+				$sel    = "<input type='checkbox' name='{$name}[]' value='$col' checked />";
+
+				# Render this row
+				if ( $template ) {
+					$text = '{'.'{'."$template|select=%SELECT%|title=$col|created=$tsc|modified=$tsm";
+					foreach ( array_keys( $this->types ) as $col ) {
+						$v = isset( $r[$col] ) ? $r[$col] : '';
+						$text .= "|$col=$v";
 					}
-					$table .= "$row[$col]\n";
+					$text .= '}}';
+					$text = $wgParser->parse( $text, $wgTitle, $wgParser->mOptions, true, false )->getText();
+					$text = preg_replace( "|&lt;(/?td.*?)&gt;|", "<$1>", $text );
+					$text = str_replace( '%SELECT%', $sel, $text );
+					$table .= "$text\n";
+				} else {
+					$row = array(
+						'select'   => "<td class='col-select'>$sel</td>\n",
+						'title'    => "<td class='col0 col-title'><a href='$u'>$col</a></td>",
+						'actions'  => "<td class='col1 col-actions'><a href='" . $special->getLocalURL( "wpType=$type&wpRecord=$ecol" ) . "'>"
+									  . wfMsg( 'recordadmin-editlink' ) . "</a></td>",
+						'created'  => "<td class='col2 col-created'>$tsc</td>\n",
+						'modified' => "<td class='col3 col-modified'>$tsm</td>\n",
+					);
+					foreach ( $cols ? $cols : array_keys( $th ) as $col ) {
+						if ( !isset( $row[$col] ) ) {
+							$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $wgTitle, $wgParser->mOptions, true, false )->getText() : '&nbsp;';
+							$class = 'col' . preg_replace( '|\W|', '-', $col );
+							$row[$col] = "<td class='$class'>$v</td>";
+						}
+						$table .= "$row[$col]\n";
+					}
 				}
 			}
-
 			$table .= "</tr>\n";
 		}
 		$table .= "</table>\n";
@@ -578,10 +599,10 @@ class SpecialRecordAdmin extends SpecialPage {
 			foreach ( $this->filter as $k => $v ) $qs .= "&ra_$k=" . urlencode( $v );
 			$url = $wgTitle->getLocalURL( $qs );
 			if ( in_array( 'csv', $export ) ) {
-				$table .= "\n<a class=\"recordadmin-export-csv\" href=\"$url\">" . wfMsg( 'recrodadmin-export-csv' ) . "</a>";
+				$table .= "\n<a class=\"recordadmin-export-csv\" href=\"$url\">" . wfMsg( 'recordadmin-export-csv' ) . "</a>";
 			}
 			if ( in_array( 'pdf', $export ) ) {
-				$table .= "\n<a class=\"recordadmin-export-pdf\" href=\"$url&format=pdf\">" . wfMsg( 'recrodadmin-export-pdf' ) . "</a>";
+				$table .= "\n<a class=\"recordadmin-export-pdf\" href=\"$url&format=pdf\">" . wfMsg( 'recordadmin-export-pdf' ) . "</a>";
 			}
 		}
 
@@ -913,7 +934,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$this->examineForm();
 		$records = $this->getRecords( $type, $filter, $op, $title, $invert, $orderby, $groupby, $format );
 		if ( $count ) while ( count( $records ) > $count ) array_pop( $records );
-		$table = $this->renderRecords( $records, $cols, $sortable, $template, $name, $export );
+		$table = $this->renderRecords( $records, $cols, $sortable, $template, $name, $export, $groupby, $format );
 		$this->type = $tmp;
 
 		return array( $table, 'noparse' => true, 'isHTML' => true );

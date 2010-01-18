@@ -55,8 +55,9 @@ $messages['en'] = array(
 	'recordadmin-editwithform' => 'Edit with form',
 	'recordadmin-typeinfo' => '$1 record',
 	'right-recordadmin' => 'Find and edit record pages',
-	'recrodadmin-export-csv' => 'CSV',
-	'recrodadmin-export-pdf' => 'PDF',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'No $1',
 );
 
 /** Message documentation (Message documentation)
@@ -84,8 +85,8 @@ Do not translate or change tag names, or link anchors.',
 	'recordadmin-actions' => '{{Identical|Action}}',
 	'recordadmin-typeinfo' => '$1 is a record type. Could be read as "A record of type $1"',
 	'right-recordadmin' => '{{doc-right|recordadmin}}',
-	'recrodadmin-export-csv' => '{{Optional}}',
-	'recrodadmin-export-pdf' => '{{Optional}}',
+	'recordadmin-export-csv' => '{{Optional}}',
+	'recordadmin-export-pdf' => '{{Optional}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -153,8 +154,8 @@ $messages['ar'] = array(
 	'recordadmin-editwithform' => 'عدل مع الاستمارة',
 	'recordadmin-typeinfo' => '$1 تسجيل',
 	'right-recordadmin' => 'أبحث و عدل صفحات السجل',
-	'recrodadmin-export-csv' => 'سي في إس',
-	'recrodadmin-export-pdf' => 'بي دي إف',
+	'recordadmin-export-csv' => 'سي في إس',
+	'recordadmin-export-pdf' => 'بي دي إف',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
