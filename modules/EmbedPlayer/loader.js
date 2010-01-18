@@ -123,7 +123,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 			$j( '.videonojs' ).remove();
 			
 			// Detect supported players:  
-			embedTypes.init();		
+			mw.EmbedTypes.init();		
 			
 			//mw.log(" run callback: " + callback );
 						

@@ -66,16 +66,17 @@ kalturaSearch.prototype = {
 			//	this.more_results = true;
 			//}
 			for ( var resource_id in data ) {
-				var result = data[ resource_id ];
-				
-				// Update mapings: 					
+				var result = data[ resource_id ];					
+				// Update mappings: 					
 				result['poster'] = result['thumbnail'];		
 				result['pSobj'] = _this;
 				result['link'] = result[ 'item_details_page' ];
 				
-				if( !result['titleKey'] && result['src'] ){
-					result['titleKey'] = 'File:' + result['src'].split('/').pop();
-				}											
+				//@@todo this should be refactored per search library 
+				//or gennerated at request time for mediaWiki  
+				var ext = this.getMimeExtension( result['mime'] );				
+				result['titleKey'] = 'File:' + result['title'] + '.' + ext;				
+															
 				_this.resultsObj[ resource_id ] = result;
 				
 			}
@@ -96,7 +97,16 @@ kalturaSearch.prototype = {
 			searchLib.getImageObj( resource, size, callback );
 		});				
 	},
-	
+	/*
+	* Get extra resource info via a library specific callback 
+	* NOTE: this info should be included in the original kaltura search results
+	*/
+	addResourceInfoCallback: function( resource, callback ){
+		mw.log('Kaltura: addResourceInfoCallback');
+		this.getSerachLib( resource.content_provider_id, function( searchLib ){
+			searchLib.addResourceInfoCallback( resource, callback );
+		});				
+	},
 	/**
 	* Get and load provider via id 
 	* @param {String} provider_id The id of the content provider

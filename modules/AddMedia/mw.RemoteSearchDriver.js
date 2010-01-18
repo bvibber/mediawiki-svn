@@ -22,7 +22,6 @@ mw.addMessages( {
 	"rsd_resource_edit" : "Edit resource: $1",
 	"mwe-resource_description_page" : "Resource description page",
 	"mwe-link" : "link",
-	"rsd_local_resource_title" : "Local resource title",
 	"rsd_do_insert" : "Do insert",
 	"mwe-cc_title" : "Creative Commons",
 	"mwe-cc_by_title" : "Attribution",
@@ -283,6 +282,7 @@ mw.RemoteSearchDriver.prototype = {
 			'homepage': 'http://kaltura.com',
 			'api_url': 'http://kaldev.kaltura.com/michael/aggregator.php',
 			'lib': 'kaltura',
+			'resource_prefix' : '',
 			'tab_image':false
 		},
 		
@@ -853,47 +853,47 @@ mw.RemoteSearchDriver.prototype = {
 	createControlContainer: function() {
 		var _this = this;
 		
-		var controlContainer = $j('<div />').addClass("rsd_control_container");
-		var searchForm = $j('<form />').attr({
-			id:"rsd_form", 
-			action:"javascript:return false"
+		var $controlContainer = $j('<div />').addClass("rsd_control_container");
+		var $searchForm = $j('<form />').attr({
+			id : "rsd_form", 
+			action : "javascript:return false"
 		});
-		var providerSelection = $j('<ul />').addClass("ui-provider-selection");
+		var $providerSelection = $j('<ul />').addClass("ui-provider-selection");
 		
 		// Add enabled search providers.
-		for (var providerName in this.content_providers) {
+		for ( var providerName in this.content_providers ) {
 			var content_providers = this.content_providers;
 			var provider = content_providers[ providerName ];
-			if (provider.enabled && provider.checked && provider.api_url) {
-				var anchor = $j('<div />')
-					.text(gM('rsd-' + providerName + '-title'))
+			if (provider.enabled && provider.checked && provider.api_url ) {
+				var $anchor = $j('<div />')
+					.text( gM('rsd-' + providerName + '-title') )
 					.attr({
 						name: providerName
 					});
-				if (this.current_provider == providerName) {
-					anchor.addClass('ui-selected');
+				if ( this.current_provider == providerName) {
+					$anchor.addClass('ui-selected');
 				}
 				
-				anchor.click( function() {
-					$j(this).parent().parent().find('.ui-selected')
-						.removeClass('ui-selected')
-						.each(function(index, domElement) {
+				$anchor.click( function() {
+					$j( this ).parent().parent().find( '.ui-selected' )
+						.removeClass( 'ui-selected' )
+						.each( function( index, domElement ) {
 							/*var selectedProvider = $j(domElement).attr("name")
 							if (selectedProvider)
 								content_providers[ selectedProvider ].checked = false;*/
 							//TODO: unset flag for provider selection
 						});
-					$j(this).addClass('ui-selected');
+					$j( this ).addClass( 'ui-selected' );
 					//TODO: set flag for provider selection
 				});
 				
-				var listItem = $j('<li />');
-				listItem.append(anchor);
-				providerSelection.append(listItem);
+				var $listItem = $j( '<li />' );
+				$listItem.append( $anchor );
+				$providerSelection.append( $listItem );
 			}
 		}
 		
-		var searchBox = $j('<input />').addClass('ui-widget-content ui-corner-all').attr({
+		var $searchBox = $j('<input />').addClass('ui-widget-content ui-corner-all').attr({
 			type: "text",
 			tabindex: 1,
 			value: this.getDefaultQuery(),
@@ -903,29 +903,30 @@ mw.RemoteSearchDriver.prototype = {
 			size: 20,
 			autocomplete: "off"
 		});
-		var searchButton = $j.button({icon_id: 'search', text: 'search'})
-			.addClass('rsd_search_button')
+		var $searchButton = $j.button({icon_id: 'search', text: gM('mwe-media_search') })
+			.addClass( 'rsd_search_button' )
 			.buttonHover()
 			.click(function (){
 				//TODO: Add search provider call.
 				_this.showCurrentTab();
 			});
-		searchForm.append(providerSelection);
-		searchForm.append(searchBox);
-		searchForm.append(searchButton);
 		
+		//$searchForm.append( $providerSelection );
+		$searchForm.append( $searchBox );
+		$searchForm.append( $searchButton );
+		/*
 		// Add optional upload buttons.
 		if ( this.content_providers['upload'].enabled) {
-			uploadButton = $j.button({icon_id: 'upload', text: 'upload'})
+			$uploadButton = $j.button({icon_id: 'upload', text: 'upload'})
 				.addClass("rsd_upload_button");
-			importButton = $j.button({icon_id: 'import', text: 'import'})
+			$importButton = $j.button({icon_id: 'import', text: 'import'})
 				.addClass("rsd_import_button");
-			searchForm.append(uploadButton).append(importButton);
+			$searchForm.append( $uploadButton ).append( $importButton );
 		}
+		*/
+		$controlContainer.append( $searchForm );
 		
-		controlContainer.append(searchForm);
-		
-		return controlContainer;
+		return $controlContainer;
 	},
 	
 	/**

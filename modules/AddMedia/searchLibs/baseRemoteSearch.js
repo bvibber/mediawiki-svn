@@ -206,6 +206,7 @@ baseRemoteSearch.prototype = {
 	getEmbedHTML: function( resource , options ) {
 		if ( !options )
 			options = { };			
+		
 		// Set up the output var with the default values: 
 		if(! options.width )
 			options.width = resource.width;
@@ -219,22 +220,23 @@ baseRemoteSearch.prototype = {
 		}		
 		
 		options.style = '';
-		if( options.height )
+		if( options.height ){
 			options.style += 'height:' + options.height + 'px;';
-			
-		if( options.width )
+		}
+		if( options.width ){
 			options.style += 'width:' + options.width + 'px;';							
-		
+		}
 		if ( resource.mime.indexOf( 'image' ) != -1 )
 			outHtml = this.getImageEmbedHTML( resource, options );
 			
 		if ( resource.mime == 'application/ogg' || resource.mime == 'video/ogg' || resource.mime == 'audio/ogg' ) {
-			// Setup the attribute html:
+			// Setup the attribute html (can't use jQuery builder for video element in a cross browser friendly way.) 
 			var ahtml = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
 			ahtml+=	'src="' + resource.src + '" ' +
 					'style="' + options.style + '" ' +
-					'poster="' +  resource.poster + '" ';
-					
+					'poster="' +  resource.poster + '" '+
+					'type="' + resource.mime + '" ';
+			
 			if (  resource.mime == 'application/ogg' || resource.mime == 'video/ogg'  ) {
 				outHtml = '<video ' + ahtml + '></video>';
 			}
@@ -430,5 +432,21 @@ baseRemoteSearch.prototype = {
 			resource.target_resource_title = resource.titleKey.replace( /^(File:|Image:)/ , '' );
 			resource.target_resource_title = this.provider.resource_prefix + resource.target_resource_title;
 		}
+	},
+	
+	/**
+	* Utily to convert from mime type to extension 
+	*/
+	getMimeExtension: function( mime ){
+		if( mime == 'video/ogg' || mime == 'application/ogg' )
+			return 'ogv';
+		if( mime == 'audio/ogg' )
+			return 'oga';
+		if( mime == 'image/jpeg' )
+			return 'jpg';
+		if( mime == 'image/png' )
+			return 'png';
+		if( mime == 'image/svg+xml' )
+			return 'svg';
 	}
 }

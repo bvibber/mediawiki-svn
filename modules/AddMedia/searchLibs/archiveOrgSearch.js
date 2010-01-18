@@ -79,7 +79,7 @@ archiveOrgSearch.prototype = {
 				var resource = {
 					// @@todo we should add .ogv or oga if video or audio:
 					'titleKey'	 :  resource.identifier + '.ogv',
-					'resourceKey':  resource.identifier,
+					'id':  resource.identifier,
 					'link'		 : _this.detailsUrl + resource.identifier,
 					'title'		 : resource.title,
 					'poster'	 : _this.downloadUrl + resource.identifier + '/format=thumbnail',
@@ -104,11 +104,11 @@ archiveOrgSearch.prototype = {
 	* @param {Object} resource Resource to add metadata to.
 	* @param {Function} callbcak Function called once extra metadata is added.
 	*/ 
-	addResourceInfoCallback: function( resource, callback ) {
+	addResourceInfoCallback: function( resource, callback ) {	
 		var _this = this;
-		mw.log( 'addResourceInfoCallback' );
+		mw.log( 'archiveOrg: addResourceInfoCallback' );
 		mw.getJSON( 
-			_this.downloadUrl + resource.resourceKey + '/format=Ogg+video?callback=?',  
+			_this.downloadUrl + resource.id + '/format=Ogg+video?callback=?',  
 			{ 'avinfo' : 1 }, 
 			function( data ) {				
 				if ( data['length'] )
@@ -120,7 +120,7 @@ archiveOrgSearch.prototype = {
 				callback();
 		} );
 	},
-	
+		
 	/**
 	* Returns html to embed a given result Object ( resource ) 
 	* @param {Object} resource Resource to get embed HTML from.

@@ -76,7 +76,7 @@ var javaEmbed = {
 									
 			// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
 			// Doesn't work in MSIE or Safari/Mac or Opera 9.5
-			if ( embedTypes.mozilla ) {
+			if ( $j.browser.mozilla ) {
 				var iframe = document.createElement( 'iframe' );
 				iframe.setAttribute( 'width', params.width );
 				iframe.setAttribute( 'height', playerHeight );
@@ -182,7 +182,7 @@ var javaEmbed = {
 	* Update the playerElement instance with a pointer to the embed object 
 	*/
 	getPlayerElement:function() {
-		if ( embedTypes.mozilla ) {
+		if ( $j.browser.mozilla ) {
 			this.playerElement = window.frames['cframe_' + this.id ].document.getElementById( this.pid );
 		} else {
 			this.playerElement = $j( '#' + this.pid ).get( 0 );
