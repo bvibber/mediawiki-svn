@@ -94,7 +94,7 @@
 			}
 			var context = window.parent.jQuery.wikiEditor.instances[get( 'instance' )].data( 'wikiEditor-context' );
 			$j( document )
-				.bind( "keydown keypress keyup mousedown mouseup cut paste", function( event ) {
+				.bind( "keyup mouseup paste cut", function( event ) {
 					context.fn.trigger( "change", event );
 				} )
 				.delayedBind( 250, "keydown keypress keyup mousedown mouseup cut paste", function( event ) {
