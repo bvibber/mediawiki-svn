@@ -8,12 +8,13 @@ mw.ready( function() {
 	$j( '#editpage-copywarn' )
 		.add( '.editOptions' )
 		.wrapAll( '<div id="editpage-bottom"></div>' );
-	$j( '#wpSummary' ).data( 'hint',
-		$j( '#wpSummaryLabel span small' )
-			.remove()
-			.text()
-			// FIXME - Not a long-term solution. This change should be done in the message itself
-			.replace( /\)|\(/g, '' )
+	$j( '#wpSummary' )
+		.data( 'hint',
+			$j( '#wpSummaryLabel span small' )
+				.remove()
+				.text()
+				// FIXME - Not a long-term solution. This change should be done in the message itself
+				.replace( /\)|\(/g, '' )
 		)
 		.change( function() {
 			if ( $j( this ).val().length == 0 ) 
@@ -35,7 +36,7 @@ mw.ready( function() {
 		.trigger( 'change' );
 	$j( '#wpSummary' )
 		.add( '.editCheckboxes' )
-		.wrapAll( '<div id="editpage-summary-fields"></div>');
+		.wrapAll( '<div id="editpage-summary-fields"></div>' );
 		
 	$j( '#editpage-specialchars' ).remove();
 	
