@@ -394,9 +394,16 @@ if ( typeof context == 'undefined' ) {
 			// We use .html() instead of .text() so HTML entities are handled right - setting the HTML of the textarea
 			// doesn't work on all browsers, use a dummy <div> instead
 			// Get rid of the noincludes when getting text
-			
-			var $pre = $( '<pre>' + context.$content.html().replace( /\<br[^\>]*\>/gi, "\n" ) + '</pre>' );
+			var $pre = $( '<pre>' +
+				context.$content.html()
+					.replace( /\r?\n/g, "" )
+					.replace( /\<br[^\>]*\>/gi, "\n" )
+					.replace( /&nbsp;/g, " " )
+					.replace( /\<p[^\>]*\>/gi, "\n" )
+					.replace( /\<\/p[^\>]*\>/gi, "" )
+				+ '</pre>' );
 			$pre.find( ".wikiEditor-noinclude" ).each( function() { $( this ).remove(); } );
+			$pre.find( ".wikiEditor-tab" ).each( function() { $( this ).text( "\t" ) } );
 			return $pre.text();
 		},
 		/**
@@ -676,12 +683,33 @@ if ( typeof context == 'undefined' ) {
 			// Get a reference to the content area of the iframe
 			context.$content = $( context.$iframe[0].contentWindow.document.body );
 			// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip out the
-			// whitespace charcters, specifically "\n" - so we must manually encode the text and append it 
-			context.$content.append(
-				context.$textarea.val().replace( /\</g, '&lt;' ).replace( /\>/g, '&gt;' ).replace( /\n/g, '<br />' )
-			);
-			//context.$content[0].innerText = context.$textarea.val().replace( /\n/g, '\n\n' );
-			//context.$content.text( context.$textarea.val() );
+			// whitespace charcters, specifically "\n" - so we must manually encode the text and append it
+			var html = context.$textarea.val().replace( /\</g, '&lt;' ).replace( /\>/g, '&gt;' );
+			// We must do some extra processing on IE to avoid dirty diffs, specifically IE will collapse leading spaces
+			if ( $.browser.msie ) {
+				// Browser sniffing is not ideal, but executing this code on a non-broken browser doesn't cause harm
+				if ( $.browser.versionNumber <= 7 ) {
+					// Replace all spaces matching /(^|n) +/ with &nbsp; - IE <= 7 needs this because of its overzealous
+					// whitespace collapsing;
+					var prefix = '', suffix = html;
+					while ( suffix ) {
+						var match = suffix.match( /(^|\n) / );
+						if ( match ) {
+							prefix += suffix.substr( 0, match.index + match[0].length - 1 ) + '&nbsp;';
+							suffix = suffix.substr( match.index + match[0].length );
+						} else {
+							break;
+						}
+					}
+					html = prefix + suffix;
+				} else {
+					// IE8 is happy if we just convert the first leading space to &nbsp;
+					html = html.replace( /(^|\n) /g, "$1&nbsp;" );
+				}
+				html = html.replace( /\t/g, '<span class="wikiEditor-tab"></span>' );
+			}
+			// We must append, because IE will crash if we set html() - which is the same as empty() and append()
+			context.$content.append( html.replace( /\r?\n/g, '<br />' ) );
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
