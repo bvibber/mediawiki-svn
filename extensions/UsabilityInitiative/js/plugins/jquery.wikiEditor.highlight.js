@@ -12,6 +12,7 @@ cfg: {
  */
 evt: {
 	delayedChange: function( context, event ) {
+		console.log( event.data.scope );
 		/*
 		 * Triggered on any of the following events, with the intent on detecting if something was added, deleted or
 		 * replaced due to user action.
