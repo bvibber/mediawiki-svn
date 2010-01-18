@@ -804,6 +804,18 @@ $messages['sah'] = array(
 	'wikieditor-publish-dialog-goback' => 'Төнүн',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'wikieditor-publish-button-publish' => 'ප්‍රකාශයට පත්කරන්න',
+	'wikieditor-publish-button-cancel' => 'අත් හරින්න',
+	'wikieditor-publish-dialog-minor' => 'සුළු සංස්කරණය',
+	'wikieditor-publish-dialog-watch' => 'මෙම පිටුව මුර කරන්න',
+	'wikieditor-publish-dialog-publish' => 'ප්‍රකාශයට පත්කරන්න',
+	'wikieditor-publish-dialog-goback' => 'ආපසු යන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

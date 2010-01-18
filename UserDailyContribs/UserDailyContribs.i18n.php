@@ -284,6 +284,13 @@ $messages['pt'] = array(
 	'userdailycontribs-desc' => 'Contribuições diárias dos utilizadores para a extensão de monitorização de cliques',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'userdailycontribs-desc' => 'Contribuições diárias dos usuários para a extensão de monitoração de cliques',
+);
+
 /** Romanian (Română)
  * @author Stelistcristi
  */

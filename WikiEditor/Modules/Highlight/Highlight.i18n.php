@@ -267,6 +267,13 @@ $messages['pt'] = array(
 	'wikieditor-highlight-preference' => 'Possibilitar realce da sintaxe durante a edição',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'wikieditor-highlight-preference' => 'Ativa realce de sintaxe durante a edição',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  */

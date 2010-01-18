@@ -401,6 +401,15 @@ $messages['pt'] = array(
 	'wikieditor-wikitext-tab' => 'Texto Wiki',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'wikieditor' => 'Interface avançada de edição de textowiki',
+	'wikieditor-desc' => 'Fornece uma interface extensível de edição de textowiki e vários módulos funcionais',
+	'wikieditor-wikitext-tab' => 'textowiki',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  */
@@ -435,6 +444,14 @@ $messages['sah'] = array(
 	'wikieditor' => 'Биики тиэкиһи эрэдээксийэлиир кэҥэтиллибит интерфейс',
 	'wikieditor-desc' => 'Биики тиэкис кэҥэтиллэр интерфейсын уонна модуллар көмөлөрүнэн атын кыахтары хааччыйар',
 	'wikieditor-wikitext-tab' => 'Биики тиэкис',
+);
+
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'wikieditor' => 'දියුණු කළ විකි පෙළ සංස්කරණය කිරීමේ අතුරු මුහුණත',
+	'wikieditor-wikitext-tab' => 'විකි පෙළ',
 );
 
 /** Slovak (Slovenčina)

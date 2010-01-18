@@ -580,6 +580,14 @@ $messages['scn'] = array(
 	'vector-simplesearch-search' => 'Ricerca',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'vector-simplesearch-search' => 'ගවේශණය කරන්න',
+	'vector-simplesearch-containing' => 'ඇතුළත් වෙමින් පවතී...',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

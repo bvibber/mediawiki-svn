@@ -1899,9 +1899,12 @@ $messages['scn'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Calcey
  * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
+	'prefstats' => 'වරණීය සංඛ්‍යාන දත්ත',
+	'prefstats-xaxis' => 'කාල සීමාව (පැය)',
 	'prefstats-factors' => ' $1: කට නැරඹුම්',
 	'prefstats-factor-hour' => 'පැය',
 	'prefstats-factor-sixhours' => 'පැය හය',

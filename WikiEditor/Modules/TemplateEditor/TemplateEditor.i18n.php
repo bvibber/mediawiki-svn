@@ -254,6 +254,13 @@ $messages['pt'] = array(
 	'wikieditor-template-editor-preference' => 'Possibilitar edição de predefinições com base em formulários',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'wikieditor-template-editor-preference' => 'Possibilitar edição de predefinições com base em formulários',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  */

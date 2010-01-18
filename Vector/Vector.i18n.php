@@ -304,6 +304,14 @@ $messages['pt'] = array(
 	'vector-desc' => 'Melhora a interface do utilizador do tema Vector',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'vector' => 'Melhorias da IU do Vector',
+	'vector-desc' => 'Melhora a interface do usuário do tema Vector',
+);
+
 /** Romanian (Română)
  * @author Stelistcristi
  */

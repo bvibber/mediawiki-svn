@@ -555,6 +555,15 @@ $messages['sah'] = array(
 	'wikieditor-preview-loading' => 'Хачайдана турар...',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'wikieditor-preview-tab' => 'පෙර දසුන',
+	'wikieditor-preview-changes-tab' => 'වෙනස් කිරීම්',
+	'wikieditor-preview-loading' => 'ප්‍රවේශනය වෙමින් පවතී...',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
