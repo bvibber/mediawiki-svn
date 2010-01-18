@@ -316,7 +316,7 @@ EmbedPlayerManager.prototype = {
 	callbackFunctions : null,
 	
 	/**
-	* Constructor initialises callbackFunctions and playerList  
+	* Constructor initializes callbackFunctions and playerList  
 	*/
 	init: function( ) {	
 		this.callbackFunctions = new Array();
@@ -1612,7 +1612,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Make sure the player is		
 		mw.log( 'performing embed for ' + _this.id );
-		// mw.log('shopuld embed:' + embed_code);
+		// mw.log('should embed:' + embed_code);
 		$j( '#' + _this.id ).html( _this.getEmbedHTML() );
 	},
 	/**
@@ -1641,7 +1641,7 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Get Related Clips from a category list
-	* Configuration specific ( should be factored into a seperate module )
+	* Configuration specific ( should be factored into a separate module )
 	* @parma {Object} catlist List of categories
 	*/	
 	getRelatedFromCat:function( catlist ) {
@@ -1962,19 +1962,17 @@ mw.EmbedPlayer.prototype = {
 	*  Usefull for updating for when new playback system is selected
 	*/	
 	refreshControls:function() {
-		if ( $j( '#' + this.id + ' .control-bar' ).length == 0 ) {
-			mw.log( 'refreshControls::control-bar not present, no refresh' );
+		if ( this.$interface.find( '.control-bar' ).length == 0 ) {
+			mw.log( 'Error: refreshControls::control-bar not present, no refresh' );
 			return ;
 		}
 		// Do update controls: 
-		$j( '#' + this.id + ' .control-bar' ).html( this.getControls() );
-		this.ctrlBuilder.addControlHooks();
-				
+		this.$interface.find( '.control-bar' ).html( this.getControls() );
+		this.ctrlBuilder.addControlHooks();				
 	},
 	
 	/**
 	* Show the player
-	* 
 	*/
 	showPlayer : function () {		
 		// set-up the local ctrlBuilder instance: 
@@ -3031,6 +3029,9 @@ mediaPlayer.prototype = {
 * players and supported mime types 
 * In an ideal world we would query the  plugin to get what mime
 *  types it supports in practice not always reliable/avaliable
+* 
+* We can't cleanly store these values per library since player library is loaded post player detection
+* 
 */
 
 //Flash based players: 
@@ -3038,21 +3039,27 @@ mediaPlayer.prototype = {
 var kplayer = new mediaPlayer('kplayer', ['video/x-flv', 'video/h264'], 'kplayer');
 var omtkPlayer = new mediaPlayer( 'omtkplayer', ['audio/ogg'], 'omtk' );
 
-//Java based player
-var cortadoPlayer = new mediaPlayer( 'cortado', ['video/ogg', 'audio/ogg'], 'java' );
+// Java based player
+var cortadoPlayer = new mediaPlayer( 'cortado', ['video/ogg', 'audio/ogg', 'application/ogg'], 'java' );
 
-//Native html5 player
-var videoElementPlayer = new mediaPlayer( 'videoElement', ['video/ogg', 'audio/ogg'], 'native' );
+// Native html5 player
+var videoElementPlayer = new mediaPlayer( 'videoElement', ['video/ogg', 'audio/ogg', 'application/ogg'], 'native' );
 
-//VLC player
-var vlcMineList = ['video/ogg', 'audio/ogg', 'video/x-flv', 'video/mp4',  'video/h264'];
+// VLC player
+var vlcMineList = ['video/ogg', 'audio/ogg', 'application/ogg', 'video/x-flv', 'video/mp4',  'video/h264'];
 var vlcPlayer = new mediaPlayer( 'vlc-player', vlcMineList, 'vlc' );
 
-//Generic plugin
-var oggPluginPlayer = new mediaPlayer( 'oggPlugin', ['video/ogg'], 'generic' );
+// Generic plugin
+var oggPluginPlayer = new mediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'generic' );
 
-//HTML player for timed display of html contnet ( used in sequencer ) 
+// HTML player for timed display of html content 
 var htmlPlayer = new mediaPlayer( 'html', ['text/html', 'image/jpeg', 'image/png', 'image/svg'], 'html' );
+
+// SMIL player for ( mime types from: http://gonze.com/playlists/playlist-format-survey.html )
+// Only add if playlist module exists
+if( mw.getClassPath( 'playlistEmbed' ) ) {
+	var playlistPlayer = new mediaPlayer( 'playlist', ['application/smil', 'application/xspf+xml', 'audio/mpegurl'], 'playlist' );
+}
 
 
 /**
@@ -3127,14 +3134,12 @@ mediaPlayers.prototype =
 	getMIMETypePlayers: function( mime_type ) {
 		var mime_players = new Array();
 		var _this = this;
-		var inx = 0;
 		if ( this.default_players[mime_type] ) {
-			$j.each( this.default_players[mime_type], function( d, lib ) {
-				var library = _this.default_players[mime_type][d];
+			$j.each( this.default_players[ mime_type ], function( d, lib ) {
+				var library = _this.default_players[ mime_type ][ d ];
 				for ( var i = 0; i < _this.players.length; i++ ) {
 					if ( _this.players[i].library == library && _this.players[i].supportsMIMEType( mime_type ) ) {
-						mime_players[ inx ] = _this.players[i];
-						inx++;
+						mime_players.push( _this.players[i] );
 					}
 				}
 			} );
@@ -3150,7 +3155,7 @@ mediaPlayers.prototype =
 	*	Player for mime type
 	* 	null if no player found
 	*/
-	defaultPlayer : function( mime_type ) {
+	defaultPlayer : function( mime_type ) {	
 		//mw.log( "get defaultPlayer for " + mime_type );
 		var mime_players = this.getMIMETypePlayers( mime_type );
 		if ( mime_players.length > 0 )

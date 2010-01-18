@@ -1,4 +1,5 @@
-<smil xmlns="http://www.w3.org/2001/SMIL20/Language">
+<?xml version="1.0" encoding="UTF-8"?>
+<smil baseProfile="Language" version="3.0" xmlns="http://www.w3.org/ns/SMIL">
   <head>
     <meta name="title" content="Simple Crossfading Example"/>
     
@@ -30,8 +31,9 @@
 		type="video/ogg" 	
 		fill="transition"
 		durationHint="15"
-		dur="7s"
-		poster="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Okapia_johnstoni5.ogg/mid-Okapia_johnstoni5.ogg.jpg"/>	
+		dur="9s"
+		poster="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Okapia_johnstoni5.ogg/mid-Okapia_johnstoni5.ogg.jpg"
+		/>	
 	
     <video src="http://upload.wikimedia.org/wikipedia/commons/0/0d/B-36_bomber.ogg" 
 		region="video_region" 				
@@ -39,8 +41,10 @@
 		dur="10s"
 		durationHint="70"
 		type="video/ogg" 
-		poster="http://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/B-36_bomber.ogg/mid-B-36_bomber.ogg.jpg"/>     
+		poster="http://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/B-36_bomber.ogg/mid-B-36_bomber.ogg.jpg"
+		/>     
     </seq>
+    
   </body>
 </smil>
 

@@ -494,7 +494,6 @@ ui-widget-overlay{
 }
 
 .ui-widget-content input {
-	width: 450px;
 	padding: 5px;
 }
 
@@ -513,6 +512,8 @@ ul.ui-provider-selection li {
 	margin: 0 0.5em 0 -0.5em;
 	padding: 0 0.5em;
 	color: blue;
+	list-style-image:none;	
+	cursor:pointer;	
 }
 
 ul.ui-provider-selection li .ui-selected {
@@ -527,7 +528,7 @@ ul.ui-provider-selection li a.ui-active {
 
 ul.ui-provider-selection li a {
 	color: blue;
-	text-decoration: none;
+	text-decoration: none;	
 }
 
 /* Vertical Tabs
@@ -591,15 +592,13 @@ ul.ui-provider-selection li a {
 
 .related_vids ul {
 	margin:0;
-	padding:0;
-	
+	padding:0;	
 	list-style-image:none;
 	list-style-position:inside;
 	list-style-type:none;
 	margin:0;
 	padding:0;
 }
-
 
 .related_vids li{
 	-x-system-font:none;
