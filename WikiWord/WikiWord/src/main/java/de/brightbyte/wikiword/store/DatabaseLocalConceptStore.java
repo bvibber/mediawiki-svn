@@ -150,7 +150,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 			
 		String sql = referenceSelect("M.freq") + meaningWhere(term);
 		
-		return new QueryDataSet<LocalConceptReference>(database, new ReferenceFactory(), "listMeanings", sql, false);
+		return new QueryDataSet<LocalConceptReference>(database, getReferenceFactory(), "listMeanings", sql, false);
 	}
 
 	public LocalConcept getConceptByName(String name) throws PersistenceException {

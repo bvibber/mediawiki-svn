@@ -33,11 +33,13 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		implements WikiWordConceptStore<T, R>  {
 
 
-	protected class ReferenceFactory implements DatabaseDataSet.Factory<R> {
+	private class ReferenceFactory implements DatabaseDataSet.Factory<R> {
 		public R newInstance(ResultSet row) throws SQLException, PersistenceException {
 			return newReference(row);
 		}
 	}
+	
+	private ReferenceFactory referenceFactory = new ReferenceFactory();
 	
 	protected EntityTable conceptTable;
 	protected RelationTable broaderTable;
@@ -61,6 +63,10 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		conceptTable = (EntityTable)database.getTable("concept");
 		broaderTable = (RelationTable)database.getTable("broader");
 		langlinkTable = (RelationTable)database.getTable("langlink");
+	}
+	
+	protected DatabaseDataSet.Factory<R> getReferenceFactory() {
+		return referenceFactory;
 	}
 	
 	protected R newReference(ResultSet row) throws SQLException {
@@ -131,7 +137,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 	public DataSet<R> listAllConcepts() throws PersistenceException { 
 		try {
 			String sql = referenceSelect("-1");
-			return new ChunkedQueryDataSet<R>(database, new ReferenceFactory(), "listAllConcepts", "query",  sql, null, null, conceptTable, "id", queryChunkSize);
+			return new ChunkedQueryDataSet<R>(database, getReferenceFactory(), "listAllConcepts", "query",  sql, null, null, conceptTable, "id", queryChunkSize);
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}

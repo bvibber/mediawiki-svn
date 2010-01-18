@@ -126,7 +126,7 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		throws PersistenceException { 
 		
 		String sql = referenceSelect("M.freq") + meaningsSQL(lang, term);
-		return new QueryDataSet<GlobalConceptReference>(database, new ReferenceFactory(), "listMeanings", sql, false);
+		return new QueryDataSet<GlobalConceptReference>(database, getReferenceFactory(), "listMeanings", sql, false);
 	}
 	
 	protected void registerLocalStore(DatabaseLocalConceptStore store) throws PersistenceException {
