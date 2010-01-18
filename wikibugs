@@ -1,12 +1,20 @@
 #!/usr/bin/perl
 
+# Script to pull bug info from SourceForce and MediaZilla mails and dump them
+# to a log to be used for IRC bot.
+
+# Original version by Brion Vibber, 2004-08-02, 2004-08-10 and 2004-08-15
+# Entirely rewritten by Timwi, 2004-09-06
+# Some cleanups and fixes by AzaToth, 2006-12-20
+# And some other people (See SVN log)
+
 use strict;
 use warnings;
 use Email::MIME;
 
 my $input;
 my $output;
-Slurp in E-Mail from STDIN
+##Slurp in E-Mail from STDIN
 {
 	local( $/ );
 	$input = <STDIN>;
@@ -77,7 +85,6 @@ if( $from =~ /^bugzilla-daemon/ ) {{
 		my $severity	= $mail->header( 'X-Bugzilla-Severity' );
 		my $priority	= $mail->header( 'X-Bugzilla-Priority' );
 		my $reporter	= $mail->header( 'X-Bugzilla-Who' );
-#		my $reporter	= $1 if $body =~ /ReportedBy: (.*)\@.*$/m;
 
 		$output = "\00303(NEW)\003 $summary - \00310$url\003 " . $severityMap->{$severity} .
 			"; $priority; \002$product\002\: $component; (\002$reporter\002)\n";
