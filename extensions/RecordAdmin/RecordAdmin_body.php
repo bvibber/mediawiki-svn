@@ -321,7 +321,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Return an array of records given type and other criteria
 	 */
-	function getRecords( $type, $posted, $operator, $wpTitle = '', $invert = false, $orderby = 'created desc' ) {
+	function getRecords( $type, $posted, $operator, $wpTitle = '', $invert = false, $orderby = 'created desc', $groupby = false, $format = false ) {
 		global $wgRequest;
 
 		# If the page is already rendered, don't run this query
@@ -357,14 +357,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					if ( $v && !( $i && $this->cmpCallback( $r[$k], $v, $operator[$k] ) ) ) $match = false;
 				}
 				if ( $invert ) $match = !$match;
-				if ( $match ) {
-					if ( $group ) {
-						$records[] = $r;
-					}
-					else {
-						$records[] = $r;
-					}
-				}
+				if ( $match ) $records[] = $r;
 			}
 		}
 		$dbr->freeResult( $res );
@@ -396,6 +389,24 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( $this->desc = eregi( ' +desc *$', $orderby ) ) $orderby = eregi_replace( ' +desc *$', '', $orderby );
 		$this->orderBy = $orderby;
 		usort( $records, array( $this, 'sortCallback' ) );
+
+		# Group the records according to the "groupby" parameter
+		if ( $groupby ) {
+			if ( !is_array( $groupby ) ) $groupby = split( '/\s*,\s*/', $groupby );
+			$tmp = array();
+			foreach ( $records as $r ) {
+				$v0 = $r[$groupby[0]];
+				if ( $groupby[1] ) {
+					$v1 = $r[$groupby[1]];
+					if ( !in_array( $tmp[$v0] ) ) $tmp[$v0] = array();
+					$tmp[$v0][$v1] = $r;
+				} else $tmp[$v0] = $r;
+			}
+			$records = $tmp;
+		}
+		$this->groupBy = $groupby;
+		$this->format  = $format;
+
 		return $records;
 	}
 
@@ -883,6 +894,8 @@ class SpecialRecordAdmin extends SpecialPage {
 				elseif ( $k == 'name' )     $name     = $v;
 				elseif ( $k == 'invert' )   $invert   = $v;
 				elseif ( $k == 'orderby' )  $orderby  = $v;
+				elseif ( $k == 'groupby' )  $groupby  = $v;
+				elseif ( $k == 'format' )   $format   = $v;
 				elseif ( $k == 'cols' )     $cols     = preg_split( '/\s*,\s*/', $v );
 				elseif ( $k == 'sortable' ) $sortable = eregi( '1|yes|true|on', $v );
 				elseif ( $k == 'template' ) $template = $v;
@@ -898,7 +911,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$tmp = $this->type;
 		$this->preProcessForm( $type );
 		$this->examineForm();
-		$records = $this->getRecords( $type, $filter, $op, $title, $invert, $orderby );
+		$records = $this->getRecords( $type, $filter, $op, $title, $invert, $orderby, $groupby, $format );
 		if ( $count ) while ( count( $records ) > $count ) array_pop( $records );
 		$table = $this->renderRecords( $records, $cols, $sortable, $template, $name, $export );
 		$this->type = $tmp;
@@ -946,7 +959,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				"rev_id=page_latest AND old_id=rev_text_id AND tl_from=page_id AND tl_title='$type' $regexp",
 				__METHOD__
 			);
-			if ($row) return Title::newFromId( $row->page_id )->getPrefixedText();
+			if ( $row ) return Title::newFromId( $row->page_id )->getPrefixedText();
 		}
 
 		return '';
