@@ -293,7 +293,7 @@ mw.TimedTextEdit.prototype = {
 	 * Uploads the text content
 	 */
 	uploadTextFile: function(){
-		//put a dialog ontop
+		// Put a dialog ontop
 		mw.addLoaderDialog( gM( 'mwe-uploading-text') );
 		
 		// Get timed text target title

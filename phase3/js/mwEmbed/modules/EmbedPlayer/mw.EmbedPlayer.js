@@ -238,7 +238,7 @@ mw.setConfig( 'show_player_warning', true );
 	* @param {Function} callback Function to call once embeding is done
 	*/
 	$.embedPlayers = function( attributes, callback){
-		$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer( attributes, callbcak );
+		$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer( attributes, callback );
 	}
 	
 	/**		
@@ -431,7 +431,7 @@ EmbedPlayerManager.prototype = {
 					}
 									
 					if( waitForMeta ){
-						mw.log(" WaitForMeta ( video missing height width info and has src )");
+						mw.log(" WaitForMeta ( video missing height, width or duration )");
 						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
 						// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
@@ -940,7 +940,7 @@ mediaElement.prototype = {
 			if ( i == index ) {
 				this.selected_source = playable_sources[i];
 				// Update the user selected format: 
-				embedTypes.players.setFormatPreference( playable_sources[i].mime_type );
+				mw.EmbedTypes.players.setFormatPreference( playable_sources[i].mime_type );
 				break;
 			}
 		}
@@ -963,7 +963,7 @@ mediaElement.prototype = {
 				return true;
 			}
 			// Set via user-preference
-			if ( embedTypes.players.preference['format_preference'] == mime_type ) {
+			if ( mw.EmbedTypes.players.preference['format_preference'] == mime_type ) {
 				 mw.log( 'set via preference: ' + playable_sources[source].mime_type );
 				 this.selected_source = playable_sources[source];
 				 return true;
@@ -976,8 +976,8 @@ mediaElement.prototype = {
 			var mime_type = playable_sources[source].mime_type;
 			   // set source via player				 
 			if ( mime_type == 'video/ogg' || mime_type == 'ogg/video' || mime_type == 'video/annodex' || mime_type == 'application/ogg' ) {
-				for ( var i = 0; i < embedTypes.players.players.length; i++ ) { // for in loop on object oky
-					var player = embedTypes.players.players[i];
+				for ( var i = 0; i < mw.EmbedTypes.players.players.length; i++ ) { // for in loop on object oky
+					var player = mw.EmbedTypes.players.players[i];
 					if ( player.library == 'vlc' || player.library == 'native' ) {
 						mw.log( 'set via ogg via order' );
 						this.selected_source = playable_sources[source];
@@ -1042,7 +1042,7 @@ mediaElement.prototype = {
 	* Checks if media is a playable type
 	*/
 	isPlayableType:function( mime_type ){
-		if ( embedTypes.players.defaultPlayer( mime_type ) ) {
+		if ( mw.EmbedTypes.players.defaultPlayer( mime_type ) ) {
 			return true;
 		} else {
 			return false;
@@ -1431,12 +1431,12 @@ mw.EmbedPlayer.prototype = {
 				// debugger;			
 				// do load player if just displaying innerHTML: 
 				if ( this.pc.type == 'text/html' ) {
-					this.selected_player = embedTypes.players.defaultPlayer( 'text/html' );
+					this.selected_player = mw.EmbedTypes.players.defaultPlayer( 'text/html' );
 					mw.log( 'set selected player:' + this.selected_player.mime_type );
 				}
 			}
 		} else {
-			this.selected_player = embedTypes.players.defaultPlayer( this.mediaElement.selected_source.mime_type );
+			this.selected_player = mw.EmbedTypes.players.defaultPlayer( this.mediaElement.selected_source.mime_type );
 		}
 		if ( this.selected_player ) {
 			mw.log( "Playback system: " + this.selected_player.library );					
@@ -2446,7 +2446,7 @@ mw.EmbedPlayer.prototype = {
 		o += '<h2>' + gM( 'mwe-chose_player' ) + '</h2>';
 		var _this = this;
 		$j.each( this.mediaElement.getPlayableSources(), function( source_id, source ) {
-			var playable = embedTypes.players.defaultPlayer( source.getMIMEType() );
+			var playable = mw.EmbedTypes.players.defaultPlayer( source.getMIMEType() );
 
 			var is_selected = ( source == _this.mediaElement.selected_source );
 			var image_src =  mw.getConfig( 'skin_img_path' ) ;
@@ -2456,7 +2456,7 @@ mw.EmbedPlayer.prototype = {
 			if ( playable ) {
 				o += '<ul>';
 				// output the player select code:
-				var supporting_players = embedTypes.players.getMIMETypePlayers( source.getMIMEType() );
+				var supporting_players = mw.EmbedTypes.players.getMIMETypePlayers( source.getMIMEType() );
 
 				for ( var i = 0; i < supporting_players.length ; i++ ) {
 					if ( _this.selected_player.id == supporting_players[i].id && is_selected ) {
@@ -2491,7 +2491,7 @@ mw.EmbedPlayer.prototype = {
 				_this.closeDisplayedHTML();
 				_this.mediaElement.selectSource( source_id );
 
-				embedTypes.players.setPlayerPreference( default_player_id,
+				mw.EmbedTypes.players.setPlayerPreference( default_player_id,
 					 _this.mediaElement.sources[ source_id ].getMIMEType() );
 
 				// Issue a stop
@@ -3224,11 +3224,11 @@ mediaPlayers.prototype =
 };
 
 /**
- * embedTypes object handles setting and getting of supported embed types:
+ * mw.EmbedTypes object handles setting and getting of supported embed types:
  * closely mirrors OggHandler so that its easier to share efforts in this area:
  * http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/OggHandler/OggPlayer.js
  */
-var embedTypes = {
+mw.EmbedTypes = {
 
 	 // List of players supported
 	 players: null,

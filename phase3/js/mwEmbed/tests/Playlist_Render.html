@@ -25,17 +25,14 @@ mw.ready(function(){
 		});
 				
 		$j('#loading_text').hide();
+		$j('#info_control').show();
 		if( foggRender.enabled ){
-			$j('#info_control').show();
+			
 		}else{
+			var firefoggUrl = foggRender.myFogg.getFirefoggInstallUrl();
 			$j('#info_control').html( 
-				foggRender.myFogg.getTargetHtml('target_please_install')
-			);
-			if(!($j.browser.mozilla && $j.browser.version >= '1.9.1')) {
-				$j('#info_control').html(
-					foggRender.myFogg.getTargetHtml('target_use_latest_fox')
-				);					
-			}
+				gM( 'fogg-please_install', firefoggUrl )				
+			)
 		}
 	
 	});
@@ -44,16 +41,16 @@ mw.ready(function(){
   </script>
 </head>
 <body>
- <!--  <playlist id="render_player" src="media/sample_smil.xml" controls="false" width="320" height="240"></playlist>  -->  
+  <playlist id="render_player" src="media/sample_smil.xml" controls="false" width="320" height="240"></playlist> 
 
 
-<video id="render_player"
+ <!--<video id="render_player"
  durationHint="5" 
  src="http://upload.wikimedia.org/wikipedia/commons/4/41/Panthera_tigris8.ogg" 
  style="width:320px;height:240px;" 
  controls="false"
  poster="http://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Panthera_tigris8.ogg/mid-Panthera_tigris8.ogg.jpg">
-</video>
+</video> -->
 
 
 <span id="loading_text" style="position:absolute; top:320px;">

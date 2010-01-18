@@ -2341,7 +2341,7 @@ var mwDefaultConf = {
 		return false;	
 	}
 	// Flag to register the domReady has been called
-	var mwDomReadyFlag = false;
+	var mwDomReadyFlag = false;	
 	
 	/**
  	* This will get called when the DOM is ready 
@@ -2449,7 +2449,9 @@ mw.addClassFilePaths( {
 } );
 
 
-// Add the core mvEmbed Messages ( will be localized by script server ) 
+/**
+* Add the core mvEmbed Messages ( will be localized by script server )
+*/ 
 mw.addMessages( {
 	"mwe-loading_txt" : "Loading ...",
 	"mwe-size-gigabytes" : "$1 GB",
@@ -2522,10 +2524,9 @@ var mwCheckBody = function(){
 mwCheckBody();
 
 
-/*
+/**
  * Utility jQuery bindings
- * ( to be run after jQuery is available ). 
- *
+ *  Setup after jQuery is available ). 
  */
 function mwDojQueryBindings() {
 	mw.log( 'mv_jqueryBindings' );

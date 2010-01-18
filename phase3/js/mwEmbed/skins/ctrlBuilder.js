@@ -330,7 +330,7 @@ ctrlBuilder.prototype = {
 			return false;
 				
 		// See if we have native support for ogg: 
-		var supporting_players = embedTypes.players.getMIMETypePlayers( 'video/ogg' );
+		var supporting_players = mw.EmbedTypes.players.getMIMETypePlayers( 'video/ogg' );
 		for ( var i = 0; i < supporting_players.length; i++ ) {
 			if ( supporting_players[i].id == 'videoElement' ) {
 				return false;

@@ -1130,9 +1130,7 @@ mw.addMessages( {
 		} );
 		
 		return captions;
-	}
-	
-	
+	}		
 	
 	/**
 	 * Text Providers
