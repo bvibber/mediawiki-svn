@@ -17,12 +17,14 @@ import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptFeatures;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
+import de.brightbyte.wikiword.model.WikiWordReference;
 import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 
 public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> 
 				extends DatabaseWikiWordStore
 				implements FeatureTopologyStore<T, R> {
 	
+		protected WikiWordReference.Factory<R> referenceFactory;
 		protected DatabaseWikiWordConceptStore<T, R> conceptStore;
 		protected RelationTable featureTable;
 		protected EntityTable conceptTable;
@@ -50,7 +52,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 				
 				if (concept<0) return null;
 				
-				WikiWordConceptReference<WikiWordConcept> r = new WikiWordConceptReference<WikiWordConcept>(concept, name, 1, -1); //TODO: global vs. local
+				R r = newReference(concept, name, 1, -1); //TODO: global vs. local
 				return new WikiWordConceptFeatures(r, f);
 			}
 		
@@ -60,9 +62,14 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 			super(database, tweaks);
 			
 		    this.conceptStore = conceptStore;
+			this.referenceFactory = conceptStore.getReferenceFactory();
 
 		    this.conceptTable = (EntityTable)conceptStore.getDatabaseAccess().getTable("concept"); 
 			this.featureTable = (RelationTable)database.getTable("feature"); 
+		}
+
+		protected R newReference(int id, String name, int cardinality, double relevance) {
+			return referenceFactory.newInstance(id, name, cardinality, relevance);
 		}
 
 		public LabeledVector<Integer> getFeatureVector(int concept) throws PersistenceException {
@@ -120,7 +127,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 			sql += " JOIN "+featureTable.getSQLName()+" as F ON F.feature = N.concept ";
 			sql += " WHERE F.concept = "+concept+" ";
 			
-			return new QueryDataSet<R>(database, conceptStore.getReferenceFactory(), "getNeighbours", sql, false);
+			return new QueryDataSet<R>(database, conceptStore.getRowReferenceFactory(), "getNeighbours", sql, false);
 		}
 
 		public List<Integer> getNeighbourList(int concept) throws PersistenceException {

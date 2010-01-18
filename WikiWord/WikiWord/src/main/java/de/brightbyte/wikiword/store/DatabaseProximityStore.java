@@ -31,7 +31,7 @@ public class DatabaseProximityStore<T extends WikiWordConcept, R extends WikiWor
 			sql += " WHERE concept1 = "+concept;
 			if (minProximity>0) sql += " AND proximity >= "+minProximity;
 			
-			return new QueryDataSet<R>(database, conceptStore.getReferenceFactory(), "getEnvironment", sql, false);
+			return new QueryDataSet<R>(database, conceptStore.getRowReferenceFactory(), "getEnvironment", sql, false);
 		}
 
 		public LabeledVector<Integer> getEnvironmentVector(int concept, double minProximity) throws PersistenceException {

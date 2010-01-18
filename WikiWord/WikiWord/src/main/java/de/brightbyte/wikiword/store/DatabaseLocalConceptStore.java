@@ -137,6 +137,11 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		return new LocalConceptReference(id, name, card, relevance);
 	}
 	
+	@Override
+	protected LocalConceptReference[] newReferenceArray(int n) {
+		return new LocalConceptReference[n];
+	}
+	
 	public ConceptType getConceptType(int type) {
 		return corpus.getConceptTypes().getType(type);
 	}
@@ -150,7 +155,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 			
 		String sql = referenceSelect("M.freq") + meaningWhere(term);
 		
-		return new QueryDataSet<LocalConceptReference>(database, getReferenceFactory(), "listMeanings", sql, false);
+		return new QueryDataSet<LocalConceptReference>(database, getRowReferenceFactory(), "listMeanings", sql, false);
 	}
 
 	public LocalConcept getConceptByName(String name) throws PersistenceException {

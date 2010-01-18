@@ -24,6 +24,7 @@ import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
+import de.brightbyte.wikiword.model.WikiWordReference;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
 import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
@@ -33,12 +34,24 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		implements WikiWordConceptStore<T, R>  {
 
 
-	private class ReferenceFactory implements DatabaseDataSet.Factory<R> {
+	private class RowReferenceFactory implements DatabaseDataSet.Factory<R> {
 		public R newInstance(ResultSet row) throws SQLException, PersistenceException {
 			return newReference(row);
 		}
 	}
 	
+	private class ReferenceFactory implements WikiWordReference.Factory<R> {
+
+		public R[] newArray(int size) {
+			return newReferenceArray(size);
+		}
+
+		public R newInstance(int id, String name, int cardinality, double relevance) {
+			return newReference(id, name, cardinality, relevance);
+		}
+	}
+	
+	private RowReferenceFactory rowReferenceFactory = new RowReferenceFactory();
 	private ReferenceFactory referenceFactory = new ReferenceFactory();
 	
 	protected EntityTable conceptTable;
@@ -65,7 +78,11 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		langlinkTable = (RelationTable)database.getTable("langlink");
 	}
 	
-	protected DatabaseDataSet.Factory<R> getReferenceFactory() {
+	protected DatabaseDataSet.Factory<R> getRowReferenceFactory() {
+		return rowReferenceFactory;
+	}
+	
+	protected WikiWordReference.Factory<R> getReferenceFactory() {
 		return referenceFactory;
 	}
 	
@@ -88,6 +105,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 	}
 	
 	protected abstract R newReference(int id, String name, int card, double relevance);
+	protected abstract R[] newReferenceArray(int n);
 		
 	protected String referenceSelect(String card) {
 		if (areStatsComplete()) return referenceSelect(card, "DT.idf", true);
@@ -137,7 +155,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 	public DataSet<R> listAllConcepts() throws PersistenceException { 
 		try {
 			String sql = referenceSelect("-1");
-			return new ChunkedQueryDataSet<R>(database, getReferenceFactory(), "listAllConcepts", "query",  sql, null, null, conceptTable, "id", queryChunkSize);
+			return new ChunkedQueryDataSet<R>(database, getRowReferenceFactory(), "listAllConcepts", "query",  sql, null, null, conceptTable, "id", queryChunkSize);
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}

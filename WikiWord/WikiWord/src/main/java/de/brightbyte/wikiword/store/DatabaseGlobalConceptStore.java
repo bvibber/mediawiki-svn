@@ -28,6 +28,7 @@ import de.brightbyte.wikiword.model.ConceptRelations;
 import de.brightbyte.wikiword.model.GlobalConcept;
 import de.brightbyte.wikiword.model.GlobalConceptReference;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.model.TranslationReference;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.GlobalConceptStoreSchema;
@@ -111,6 +112,11 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		return new GlobalConceptReference(id, name, card, relevance);
 	}
 	
+	@Override
+	protected GlobalConceptReference[] newReferenceArray(int n) {
+		return new GlobalConceptReference[n];
+	}
+
 	protected String meaningsSQL(String lang, String term) throws PersistenceException {
 		DatabaseLocalConceptStore db = getLocalConceptStore(lang);
 		
@@ -126,7 +132,7 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		throws PersistenceException { 
 		
 		String sql = referenceSelect("M.freq") + meaningsSQL(lang, term);
-		return new QueryDataSet<GlobalConceptReference>(database, getReferenceFactory(), "listMeanings", sql, false);
+		return new QueryDataSet<GlobalConceptReference>(database, getRowReferenceFactory(), "listMeanings", sql, false);
 	}
 	
 	protected void registerLocalStore(DatabaseLocalConceptStore store) throws PersistenceException {
