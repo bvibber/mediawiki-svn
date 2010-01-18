@@ -35,9 +35,7 @@ mw.ready( function() {
 		$j( '#wpSummary' )
 			.add( '.editCheckboxes' )
 			.wrapAll( '<div id="editpage-summary-fields"></div>');
-			
-		$j( '#editpage-specialchars' ).remove();
-		
+					
 		// transclusions
 		// FIXME - bad CSS styling here with double class selectors. Should address here. 
 		var transclusionCount = ( $j( '.templatesUsed ul li' ).length );
@@ -59,13 +57,9 @@ mw.ready( function() {
 			return false;
 			})
 			.trigger( 'click' );
-		$j( '#wpPreview' )
-			.remove();
-		$j( '#wpDiff' )
+		$j( '#wpPreview, #wpDiff, .editHelp, #editpage-specialchars' )
 			.remove();
 		$j( '#mw-editform-cancel' )
 			.remove()
 			.appendTo('.editButtons');
-		$j( '.editHelp' )
-			.remove();
 } );
