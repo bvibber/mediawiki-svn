@@ -678,7 +678,7 @@ mw.PlayList.prototype = {
 		this.cur_clip.embed.stop();
 	},
 	updateCurrentClip : function( new_clip , into_perc) {
-		mw.log( 'f:updateCurrentClip:' + new_clip.id );
+		//mw.log( 'f:updateCurrentClip:' + new_clip.id );
 			
 		// keep the active play clip in sync (stop the other clip) 
 		if ( this.cur_clip ) {
@@ -862,7 +862,8 @@ mw.PlayList.prototype = {
 	// playlist stops playback for the current clip (and resets state for start clips)
 	stop:function() {
 		var _this = this;		
-		mw.log("mw.PlayList stop:"+ this.start_clip.id + ' c:'+this.cur_clip.id);
+		//mw.log("mw.PlayList stop:"+ this.start_clip.id + ' c:'+this.cur_clip.id);
+		this.updatePlayHead(0);
 		this.setupClipDisplay();
 	},
 	doSeek:function( v ) {
@@ -880,7 +881,7 @@ mw.PlayList.prototype = {
 		return '';
 	},
 	setCurrentTime: function( time, callback ) {
-		mw.log( 'pl:setCurrentTime:' + time );
+		//mw.log( 'pl:setCurrentTime:' + time );
 		var _this = this;
 		_this.currentTime = time;
 		
@@ -1599,7 +1600,7 @@ var mvTransLib = {
 	 * @param offSetTime default value 0 if we need to start rendering from a given time 
 	 */
 	doInitTransition:function( tObj ) {
-		mw.log( 'mvTransLib:f:doInitTransition' );		
+		//mw.log( 'mvTransLib:f:doInitTransition' );		
 		if ( !tObj.type ) {
 			mw.log( 'transition is missing type attribute' );
 			return false;
@@ -1705,7 +1706,7 @@ var mvTransLib = {
 			fadeFromColor: {
 				'attr' : ['fadeColor'],
 				'init' : function( tObj ) {
-					mw.log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
+					//mw.log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
 					if ( !tObj.fadeColor )
 						mw.log( 'missing fadeColor' );
 					if ( $j( '#' + tObj.overlay_selector_id ).length == 0 ) {
@@ -1730,7 +1731,7 @@ var mvTransLib = {
 			crossfade: {
 				"attr" : [],
 				"init" : function( tObj ) {
-					mw.log( 'f:crossfade: ' + tObj.overlay_selector_id );
+					//mw.log( 'f:crossfade: ' + tObj.overlay_selector_id );
 					if ( $j( '#' + tObj.overlay_selector_id ).length == 0 )
 						mw.log( "ERROR overlay selector not found: " + tObj.overlay_selector_id );
 					

@@ -8,7 +8,9 @@ mw.addClassFilePaths( {
 	"mw.TimedEffectsEdit"	: "modules/Sequencer/mvTimedEffectsEdit.js",
 	"mw.FirefoggRender"		: "modules/Sequencer/mw.FirefoggRender.js",
 	
-	"RemoteMwSequencer" :	"modules/Sequencer/remotes/RemoteMwSequencer.js"
+	"RemoteMwSequencer" :	"modules/Sequencer/remotes/RemoteMwSequencer.js",
+	
+	"playlistEmbed" : "modules/Sequencer/playlistEmbed.js"
 } );
 
 mw.addModuleLoader( 'FirefoggRender', function( callback) {

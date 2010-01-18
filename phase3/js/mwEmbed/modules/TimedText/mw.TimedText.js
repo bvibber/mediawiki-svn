@@ -1,4 +1,4 @@
-/*
+/**
  * The Core timed Text interface object
  * 
  * handles class mappings for: 

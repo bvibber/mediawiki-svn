@@ -53,7 +53,7 @@ mw.addMessages( {
 	"mwe-ftype-oga" : "Ogg audio file",
 	"mwe-ftype-ogg" : "Ogg video file",
 	"mwe-ftype-unk" : "Unknown file format",
-
+	
 	"rsd-wiki_commons-title": "Wikimedia Commons",
 	"rsd-wiki_commons": "Wikimedia Commons, an archive of freely-licensed educational media content (images, sound and video clips)",
 
@@ -202,9 +202,7 @@ mw.RemoteSearchDriver.prototype = {
 		/** 
 		*  Content_providers documentation
 		*
-		*	@enabled: whether the search provider can be selected
-		*
-		*	@checked: whether the search provider will show up as selectable tab
+		*	@enabled: whether the search provider can be selected		
 		*	
 		*	@default: default: if the current cp should be displayed (only one should be the default)
 		*	
@@ -240,8 +238,7 @@ mw.RemoteSearchDriver.prototype = {
 		* Local wiki search
 		*/
 		'this_wiki': {
-			'enabled': 1,
-			'checked': 1,
+			'enabled': 1,			
 			'api_url':  ( wgServer && wgScriptPath ) ? 
 				wgServer + wgScriptPath + '/api.php' : null,
 			'lib': 'mediaWiki',
@@ -254,7 +251,6 @@ mw.RemoteSearchDriver.prototype = {
 		*/ 
 		'kaltura': {
 			'enabled': 1,
-			'checked': 1,
 			'homepage': 'http://kaltura.com',
 			'api_url': 'http://kaldev.kaltura.com/michael/aggregator.php',
 			'lib': 'kaltura',
@@ -267,7 +263,6 @@ mw.RemoteSearchDriver.prototype = {
 		*/
 		'wiki_commons': {
 			'enabled': 1,
-			'checked': 1,
 			'homepage': 'http://commons.wikimedia.org/wiki/Main_Page',
 			'api_url': 'http://commons.wikimedia.org/w/api.php',
 			'lib': 'mediaWiki',
@@ -277,7 +272,7 @@ mw.RemoteSearchDriver.prototype = {
 			// Commons can be enabled as a remote repo do check shared 
 			'check_shared': true,
 
-			// List all the domains where commons is local:
+			// List all the domains where commons is local ( lets you avoid an api check for "shared" repo )			
 			'local_domains': [ 'wikimedia', 'wikipedia', 'wikibooks' ],					
 			
 			// Specific to wiki commons config:
@@ -290,7 +285,6 @@ mw.RemoteSearchDriver.prototype = {
 		*/
 		'archive_org': {
 			'enabled': 1,
-			'checked': 1,
 			'homepage': 'http://www.archive.org/about/about.php',
 
 			'api_url': 'http://www.archive.org/advancedsearch.php',
@@ -305,7 +299,6 @@ mw.RemoteSearchDriver.prototype = {
 		*/
 		'flickr': {
 			'enabled': 1,
-			'checked': 1,
 			'homepage': 'http://www.flickr.com/about/',
 
 			'api_url': 'http://www.flickr.com/services/rest/',
@@ -321,7 +314,6 @@ mw.RemoteSearchDriver.prototype = {
 		*/
 		'metavid': {
 			'enabled': 1,
-			'checked': 1,
 			'homepage': 'http://metavid.org/wiki/Metavid_Overview',
 			'api_url': 'http://metavid.org/w/index.php?title=Special:MvExportSearch',
 			'lib': 'metavid',			
@@ -349,8 +341,7 @@ mw.RemoteSearchDriver.prototype = {
 		* Special Upload tab provider 
 		*/ 
 		'upload': {
-			'enabled': 1,
-			'checked': 1,
+			'enabled': 1,			
 			'title': 'Upload'
 		}
 	},
@@ -485,7 +476,7 @@ mw.RemoteSearchDriver.prototype = {
 		// Set up the local API upload URL
 		if ( _this.upload_api_target == 'local' ) {
 			if ( ! _this.local_wiki_api_url ) {
-				$j( '#tab-upload' ).html( gM( 'rsd_config_error', 'missing_local_api_url' ) );
+				$j( '#rsd_results_container' ).html( gM( 'rsd_config_error', 'missing_local_api_url' ) );
 				return false;
 			} else {
 				_this.upload_api_target = _this.local_wiki_api_url;
@@ -862,7 +853,7 @@ mw.RemoteSearchDriver.prototype = {
 		for ( var providerName in this.content_providers ) {
 			var content_providers = this.content_providers;
 			var provider = content_providers[ providerName ];
-			if ( provider.enabled && provider.checked && provider.api_url ) {
+			if ( provider.enabled && provider.api_url ) {
 				var $anchor = $j( '<div />' )
 					.text( gM( 'rsd-' + providerName + '-title' ) )
 					.attr({
@@ -877,6 +868,8 @@ mw.RemoteSearchDriver.prototype = {
 						.removeClass( 'ui-selected' );
 					$j( this ).addClass( 'ui-selected' );
 					_this.current_provider = $j( this ).attr( "name" );
+					// Update the search results on provider selection
+					_this.showSearchTab( _this.current_provider, true );
 				});
 				
 				var $listItem = $j( '<li />' );
@@ -907,17 +900,24 @@ mw.RemoteSearchDriver.prototype = {
 		
 		$searchForm.append( $providerSelection );
 		$searchForm.append( $searchBox );
-		$searchForm.append( $searchButton );
-		/*
+		$searchForm.append( $searchButton );		
 		// Add optional upload buttons.
 		if ( this.content_providers['upload'].enabled) {
-			$uploadButton = $j.button({icon_id: 'upload', text: 'upload'})
-				.addClass("rsd_upload_button");
+			$uploadButton = $j.button( { icon_id: 'disk', text: gM( 'mwe-upload_tab' ) })
+				.addClass("rsd_upload_button")
+				.click(function(){
+					_this.current_provider = 'upload';
+					_this.showUploadTab( );
+				});
+			$searchForm.append( $uploadButton );
+			/* 
+			// Import functionality not yet supported
 			$importButton = $j.button({icon_id: 'import', text: 'import'})
 				.addClass("rsd_import_button");
-			$searchForm.append( $uploadButton ).append( $importButton );
+			.append( $importButton );
+			*/
 		}
-		*/
+		
 		$controlContainer.append( $searchForm );
 		
 		return $controlContainer;
@@ -930,42 +930,17 @@ mw.RemoteSearchDriver.prototype = {
 		mw.log( "showUploadTab::" );
 		var _this = this;
 		// set it to loading:
-		$j( '#tab-upload' ).loadingSpinner();
-		// Do things async to keep interface snappy
-		setTimeout(
-			function() {
-				// check if we need to setup the proxy::
-				if ( _this.upload_api_target == 'proxy' ) {
-					_this.setupProxy( function() {
-						_this.showUploadForm();
-					} );
-				} else {
-					_this.showUploadForm();
-				}
-			}, 
-			1 );
-	},
-	
-	/** 
-	* Shows the upload from
-	*/
-	showUploadForm: function() {
-		var _this = this;
+		$j( '#rsd_results_container' ).loadingSpinner();
+		//Show the upload form
 		mw.load( ['$j.fn.simpleUploadForm'], function() {			
 			var provider = _this.content_providers['this_wiki'];
 
-			// check for "this_wiki" enabled
-			/*if(!provider.enabled){
-				$j('#tab-upload')
-					.html('error this_wiki not enabled (can\'t get uploaded file info)');
-				return false;
-			}*/
-
 			// Load this_wiki search system to grab the resource
 			_this.loadSearchLib( provider, function() {
-				_this.showUploadForm_internal( provider );
+				_this.showUploadForm( provider );
 			} );
 		} );
+
 	},
 	
 	/**
@@ -973,39 +948,49 @@ mw.RemoteSearchDriver.prototype = {
 	* 
 	* @param {Object} provider Provider object for Upload From
 	*/
-	showUploadForm_internal: function( provider ) {
+	showUploadForm: function( provider ) {
 		var _this = this;
 		var uploadMsg = gM( 'mwe-upload_a_file', _this.upload_api_name );
 		var recentUploadsMsg = gM( 'mwe-your_recent_uploads', _this.upload_api_name );
 		
 		// Do basic layout form on left upload "bin" on right
-		$j( '#tab-upload' ).html( 
-			'<table>' +
-			'<tr>' +
-			'<td valign="top" style="width:350px; padding-right: 12px;">' +
-			'<h4>' + uploadMsg + '</h4>' +
-			'<div id="upload_form">' +
-				mw.loading_spinner() +
-			'</div>' +
-			'</td>' +
-			'<td valign="top" id="upload_bin_cnt">' +
-			'<h4>' + recentUploadsMsg + '</h4>' +
-			'<div id="upload_bin">' +
-				mw.loading_spinner() +
-			'</div>' +
-			'</td>' +
-			'</tr>' +
-			'</table>' 
+		$uploadTableRow = $j('<tr />').append(
+			$j('<td />').attr( {
+				'valign':'top'
+			} )
+			.css({
+				 'width' : '350px',
+				 'padding-right' : '12px'
+			})
+			.append(
+				$j('<h4 />').text( uploadMsg ),
+				$j('<div />').attr({
+					'id': 'upload_form'
+				})
+				.loadingSpinner()
+			),
+			
+			$j('<td />').attr( {
+				'valign' : 'top',
+				'id':'upload_bin'
+			} )
+			.loadingSpinner()
+		)
+		$j( '#rsd_results_container' ).html( 
+			$j('<table />').append(
+				$uploadTableRow
+			) 
 		);
 
 		// Fill in the user uploads:
 		if ( typeof wgUserName != 'undefined' && wgUserName ) {
 			// Load the upload bin with anything the current user has uploaded
-			provider.sObj.getUserRecentUploads( wgUserName, function( ) {				
+			provider.sObj.getUserRecentUploads( wgUserName, function( ) {	
+				$j('#upload_bin').empty().append( 
+					$j('<h4 />').text( recentUploadsMsg )
+				);	
 				_this.showResults();
 			} );
-		} else {
-			$j( '#upload_bin_cnt' ).empty();
 		}
 
 		// Deal with the api form upload form directly:
@@ -1334,24 +1319,27 @@ mw.RemoteSearchDriver.prototype = {
 		var o = '';
 		var tabSelector = '#rsd_results_container';
 		var provider = this.content_providers[ this.current_provider ];
+			
 		
-		// TODO: clean this up
-		/*
+		// The "upload" tab has special results output target rather than top level
+		// resutls container.
+		// @@todo Clean up by moving the rsd_results_container down in the DOM  for selected tab display. 
+		// ( will be need once we add left side filter controls 
+		// that are exclusive to some providers )
 		if ( this.current_provider == 'upload' ) {
-			tabSelector = '#upload_bin';
+			$resultsContainer = $j('#upload_bin');
 			var provider = _this.content_providers['this_wiki'];
 		} else {
 			var provider = this.content_providers[ this.current_provider ];
-			tabSelector = '#tab-' + this.current_provider;
-			// Output the results bar / controls
+			$resultsContainer = $j('#rsd_results_container');
+			 
+			// Add the results header:
+			$resultsContainer.empty().append( this.createResultsHeader() )
 		}
-		*/
 		
 		// Empty the existing results:
 		// $j( tabSelector ).empty();
-		this.$resultsContainer.empty();
-
-		this.$resultsContainer.append( _this.createResultsHeader() );
+		
 		var numResults = 0;
 
 		// Output all the results for the current current_provider
@@ -1361,20 +1349,22 @@ mw.RemoteSearchDriver.prototype = {
 				numResults++;
 			} );			
 			// Put in the tab output (plus clear the output)
-			this.$resultsContainer.append( o + '<div style="clear:both"/>' );
+			$resultsContainer.append( o + '<div style="clear:both"/>' );
 		}
-
-		this.$resultsContainer.append( _this.createResultsFooter() );
+		// @@TODO should abstract footer and header ~outside~ of search results 
+		// to have less leakgege with upload tab
+		if ( this.current_provider != 'upload' ) {
+			$resultsContainer.append( _this.createResultsFooter() );
+		}
 		
-		mw.log( 'did numResults :: ' + numResults + 
-			' append: ' + $j( '#rsd_q' ).val() );		
-		// Remove any old search res
+		mw.log( 'did numResults :: ' + numResults + ' append: ' + $j( '#rsd_q' ).val() );		
+		
+		// Add "no search results" text
 		$j( '#rsd_no_search_res' ).remove();
 		if ( numResults == 0 ) {
-			$j( '#tab-' + provider.id ).append( 
-				'<span style="padding:10px">' + 
-				gM( 'rsd_no_results', $j( '#rsd_q' ).val() ) + 
-				'</span>' );
+			$resultsContainer.append( 
+				gM( 'rsd_no_results', $j( '#rsd_q' ).val() )
+			) 
 		}
 		this.addResultBindings();
 	},

@@ -41,8 +41,12 @@ mw.ready(function(){
   </script>
 </head>
 <body>
-  <playlist id="render_player" src="media/sample_smil.xml" controls="false" width="320" height="240"></playlist> 
-
+  <playlist id="render_player" 
+  	src="media/sequence_transition_smil.xml" 
+  	controls="false" 
+  	width="320" 
+  	height="240">
+  </playlist> 
 
  <!--<video id="render_player"
  durationHint="5" 
@@ -62,6 +66,7 @@ loading render system <blink>...</blink>
    	<button id="buttonStop">Stop</button>
    	Current Time: <input type="text" id="time_status" value="0.0" />
    	<span id="status"></span><br>
+   	<button id="buttonSeek3">Seek to 3 seconds</button>
 </div>
 
 </body>

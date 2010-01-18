@@ -266,7 +266,7 @@ var nativeEmbed = {
 	play: function() {
 		this.getPlayerElement();
 		this.parent_play(); // update interface
-		if ( this.playerElement ) {
+		if ( this.playerElement && this.playerElement.play ) {
 			this.playerElement.play();
 			// re-start the monitor: 
 			this.monitor();

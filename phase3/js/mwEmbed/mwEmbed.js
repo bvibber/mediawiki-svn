@@ -956,7 +956,7 @@ var mwDefaultConf = {
 			}
 			
 			// Check for javascript class 
-			if( this.classPaths[ loadRequest ] ){		
+			if( this.getClassPath( loadRequest ) ){		
 				mw.log('mw.load: loadClass: ' + loadRequest );
 				this.loadClass( loadRequest, callback );																	
 				return ;
@@ -1067,7 +1067,7 @@ var mwDefaultConf = {
 			var coma = '';			
 			for( var i=0; i < groupedLoadSet.length; i++ ) {										
 				var loadName = groupedLoadSet[ i ];	
-				if( this.classPaths[ loadName ]  ) {
+				if( this.getClassPath( loadName )  ) {
 					// Only add to group request if not already set: 
 					if ( !mw.isset( loadName ) ){
 						groupClassKey += coma + loadName
@@ -1152,7 +1152,7 @@ var mwDefaultConf = {
 				scriptRequest =  className;
 			}else{
 				// Get the class url:
-				var baseClassPath = this.classPaths[ className ];													
+				var baseClassPath = this.getClassPath( className );													
 				// Add the mwEmbed path if not a root path or a full url
 				if( baseClassPath.indexOf( '/' ) !== 0 && 
 					baseClassPath.indexOf('://') === -1 ){
@@ -1177,7 +1177,7 @@ var mwDefaultConf = {
 			// Issue the request to load the class (include class name in result callback:					
 			mw.getScript( scriptRequest, function( scriptRequest ) {				
 				if(! mw.isset( className ) && callback){
-					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.classPaths[ className ] );
+					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.getClassPath( className ) );
 				}
 				// make sure callback is set and mwLoadDoneCB has not been called
 				if( callback ){
@@ -1235,6 +1235,16 @@ var mwDefaultConf = {
 			}
 	 	},
 	 	
+	 	/**
+	 	* get a class path forom a className 
+	 	* if no class found return false
+	 	*/
+	 	getClassPath: function( className ){
+	 		if( this.classPaths[ className ] )
+	 			return this.classPaths[ className ]
+	 		return false;
+	 	},
+	 	
 		/**
 	 	* Add a style sheet to be loaded the same time as the requested class
 	 	*
@@ -1288,7 +1298,12 @@ var mwDefaultConf = {
 	mw.addClassFilePaths = function ( classSet )	{	
 		return mw.loader.addClassFilePaths( classSet );
 	}
-			
+	/**
+	* Get Class File Path entry point: 
+	*/
+	mw.getClassPath = function( className ) {
+		return mw.loader.getClassPath( className );
+	}
 	/**
 	* Add Class Style Sheet entry point:  	 
 	*/
@@ -1767,7 +1782,7 @@ var mwDefaultConf = {
 				}	
 			}
 		};
-		mw.log(" append script: " + script.src );
+		//mw.log(" append script: " + script.src );
 		// Append the script to the DOM:
 		head.appendChild( script );			
 	}
