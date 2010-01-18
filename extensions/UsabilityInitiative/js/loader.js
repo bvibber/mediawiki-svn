@@ -9,7 +9,7 @@
 * loader.js files not in the core mwEmbed module folder must be defined in the global
 * $wgJsModuleLoaderPaths[] = ",
 */
-// For non-script loader javascript path debuging
+// For non-script loader javascript path debugging
 mw.setConfig('loaderContext', wgScriptPath + '/extensions/UsabilityInitiative/js/');
 
 mw.addClassFilePaths({

@@ -2,14 +2,13 @@
 * Simple inline section edit example  h3 ->h3 h2
 */ 
 mw.ready(function(){
-	var htags = 'h6,h5,h4,h3,h2,h1';
 	$j('.editsection').click(function(){		
 		// Get section number: 
 		var href = $j( this ).children('a').attr( 'href');
 		var sectionNumber = mw.parseUri( href ).queryKey['section'];
 		
 		// Get the H tag
-		var $htop = $j(this).parents( htags ).filter(':first');
+		var $htop = $j(this).parents( 'h1,h2,h3,h4,h5,h6' ).filter(':first');
 		var htagName = $htop.get(0).tagName;		
 		var hlevel = parseInt( htagName.replace(/h/i, '') );
 		

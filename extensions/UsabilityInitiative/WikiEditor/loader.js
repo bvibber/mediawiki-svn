@@ -16,6 +16,16 @@ mw.addClassFilePaths({
 mw.addModuleLoader( 'WikiEditor', function( callback ){
 	//@@todo we should check config and skip stuff we don't want need
 	var libReq = [
+		//Get the core library dependencies
+		"$j.ui",
+		"$j.fn.datePicker",
+		"$j.cookie",
+		"$j.ui.dialog",
+		"$j.ui.datepicker",
+		"$j.ui.draggable",
+		"$j.ui.resizable",
+		"$j.ui.tabs",
+		
 		"$j.whileAsync" ,
 		"$j.fn.autoEllipsis" ,
 		"$j.browserTest" ,
@@ -43,8 +53,15 @@ mw.addModuleLoader( 'WikiEditor', function( callback ){
 		"wikiEditor.config.toolbar" ,
 		"wikiEditor.config.templateEditor" 		
 	];
+	
+	//Load the combined css ( once we have a style sheet loader we could do
+	// module dependency mapping and get proper set of style sheets 
+	mw.getStyleSheet( wgScriptPath + '/extensions/UsabilityInitiative/css/combined.min.css' );
+	
+	
 	mw.load(libReq, function(){
 		callback( 'WikiEditor' );
 	});
+	
 	
 });
