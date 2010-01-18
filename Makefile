@@ -48,6 +48,7 @@ VECTOR_MODULES := \
 	Vector/Modules/CollapsibleNav/CollapsibleNav.js\
 	Vector/Modules/CollapsibleTabs/CollapsibleTabs.js\
 	Vector/Modules/EditWarning/EditWarning.js\
+	Vector/Modules/FooterCleanup/FooterCleanup.js\
 	Vector/Modules/SimpleSearch/SimpleSearch.js
 
 all: \

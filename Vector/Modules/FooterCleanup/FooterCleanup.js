@@ -17,7 +17,7 @@ mw.ready( function() {
 				.replace( /\)|\(/g, '' )
 		)
 		.change( function() {
-			if ( $j( this ).val().length == 0 ) 
+			if ( $j( this ).val().length == 0 ) {
 				$j( this )
 					.addClass( 'inline-hint' )
 					.val( $j( this ).data( 'hint' ) );

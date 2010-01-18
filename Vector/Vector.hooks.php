@@ -15,14 +15,14 @@ class VectorHooks {
 			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 6 ),
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 6 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 5 ),
-			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 2 ),
+			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 3 ),
 			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 5 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 15 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 16 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 15 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 16 ),
 		),
 	);
 	static $modules = array(
