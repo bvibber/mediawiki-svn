@@ -474,7 +474,35 @@ if ( typeof context == 'undefined' ) {
 					context.fn.scrollToTop( lastNode );
 				}
 			} else if ( context.$iframe[0].contentWindow.document.selection ) {
-				// TODO: IE
+				// IE
+				context.$iframe[0].contentWindow.focus();
+				var range = context.$iframe[0].contentWindow.document.selection.createRange();
+				if ( options.ownline && range.moveStart ) {
+					// Check if we're at the start of a line
+					// If not, prepend a newline
+					var range2 = document.selection.createRange();
+					range2.collapse();
+					range2.moveStart( 'character', -1 );
+					// FIXME: Which check is correct?
+					if ( range2.text != "\r" && range2.text != "\n" && range2.text != "" ) {
+						pre = "\n" + pre;
+					}
+					
+					// Check if we're at the end of a line
+					// If not, append a newline
+					var range3 = document.selection.createRange();
+					range3.collapse( false );
+					range3.moveEnd( 'character', 1 );
+					if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
+						post += "\n";
+					}
+				}
+				// TODO: Maybe find a more elegant way of doing this like the Firefox code above?
+				range.pasteHTML( ( pre + selText + post )
+						.replace( /\</g, '&lt;' )
+						.replace( />/g, '&gt;' )
+						.replace( /\r?\n/g, '<br />' )
+				);
 			}
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
 			context.$content.trigger(
