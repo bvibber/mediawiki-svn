@@ -35,15 +35,16 @@ kalturaSearch.prototype = {
 	*/
 	getSearchResults:function( search_query ) {
 		var _this = this;
-		mw.log( "Kaltura::getSearchResults" );
 		
 		// call parent for common initialisation:  
 		this.parent_getSearchResults();
 		
 		// setup the flickr request: 
 		var request = {
-			's': search_query
+			's': search_query,
+			'page': this.provider.offset/this.provider.limit + 1
 		}
+		mw.log( "Kaltura::getSearchResults query: " + request['s'] + " page: " + request['page']);
 		$j.getJSON( this.provider.api_url + '?callback=?', request, function( data ) {
 			_this.addResults( data );
 			_this.loading = false;
@@ -53,7 +54,7 @@ kalturaSearch.prototype = {
 	/**
 	* Adds results from kaltura api data response object 
 	*
-	* @param {Object} data Fliker response data
+	* @param {Object} response data
 	*/
 	addResults:function( data ) {	
 		var _this = this;
@@ -65,7 +66,12 @@ kalturaSearch.prototype = {
 			//if ( this.num_results > this.provider.offset + this.provider.limit ) {
 			//	this.more_results = true;
 			//}
+			
+			// Display option for more results as long as results are coming in
+			this.more_results = ( data.length == this.limit )
+			
 			for ( var resource_id in data ) {
+				
 				var result = data[ resource_id ];					
 				// Update mappings: 					
 				result['poster'] = result['thumbnail'];		
@@ -76,7 +82,8 @@ kalturaSearch.prototype = {
 				//or gennerated at request time for mediaWiki  
 				var ext = this.getMimeExtension( result['mime'] );				
 				result['titleKey'] = 'File:' + result['title'] + '.' + ext;				
-															
+				
+				this.num_results++;
 				_this.resultsObj[ resource_id ] = result;
 				
 			}

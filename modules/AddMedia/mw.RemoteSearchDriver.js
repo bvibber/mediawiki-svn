@@ -57,7 +57,7 @@ mw.addMessages( {
 	"rsd-wiki_commons-title": "Wikimedia Commons",
 	"rsd-wiki_commons": "Wikimedia Commons, an archive of freely-licensed educational media content (images, sound and video clips)",
 
-	"rsd-kaltura-title" : "Kaltura search",
+	"rsd-kaltura-title" : "All Sources",
 	"rsd-kaltura" : "Kaltura agragated search for free-licenced media across multiple search providers",
 
 	"rsd-this_wiki-title" : "This wiki",
@@ -250,6 +250,19 @@ mw.RemoteSearchDriver.prototype = {
 		},
 		
 		/**
+		* Kaltura aggregated search
+		*/ 
+		'kaltura': {
+			'enabled': 1,
+			'checked': 1,
+			'homepage': 'http://kaltura.com',
+			'api_url': 'http://kaldev.kaltura.com/michael/aggregator.php',
+			'lib': 'kaltura',
+			'resource_prefix' : '',
+			'tab_image':false
+		},
+		
+		/**
 		* Wikipedia Commons search provider configuration
 		*/
 		'wiki_commons': {
@@ -270,20 +283,6 @@ mw.RemoteSearchDriver.prototype = {
 			// Specific to wiki commons config:
 			// If we should search the title
 			'search_title': false 
-		
-		},
-		
-		/**
-		* Kaltura aggregated search
-		*/ 
-		'kaltura': {
-			'enabled': 1,
-			'checked': 1,
-			'homepage': 'http://kaltura.com',
-			'api_url': 'http://kaldev.kaltura.com/michael/aggregator.php',
-			'lib': 'kaltura',
-			'resource_prefix' : '',
-			'tab_image':false
 		},
 		
 		/**
@@ -801,19 +800,18 @@ mw.RemoteSearchDriver.prototype = {
 		var _this = this;
 		mw.log( 'f::initDialog' );
 
-		var mainContainer = $j(this.target_container);
+		var mainContainer = $j( this.target_container );
 
 		var controlContainer = this.createControlContainer();
 
-		mainContainer.append(controlContainer);
+		mainContainer.append( controlContainer );
 		
-		resultsContainer = $j('<div />').attr({
+		this.$resultsContainer = $j('<div />').attr({
 			id: "rsd_results_container"
 		});
-		mainContainer.append(resultsContainer);
 		
-		// Draw the tabs:
-		this.createTabs();
+		mainContainer.append( this.$resultsContainer );
+		
 		// run the default search:
 		if ( this.getDefaultQuery() )
 			this.showCurrentTab();
@@ -853,38 +851,32 @@ mw.RemoteSearchDriver.prototype = {
 	createControlContainer: function() {
 		var _this = this;
 		
-		var $controlContainer = $j('<div />').addClass("rsd_control_container");
-		var $searchForm = $j('<form />').attr({
+		var $controlContainer = $j( '<div />' ).addClass( "rsd_control_container" );
+		var $searchForm = $j( '<form />' ).attr({
 			id : "rsd_form", 
 			action : "javascript:return false"
 		});
-		var $providerSelection = $j('<ul />').addClass("ui-provider-selection");
+		var $providerSelection = $j( '<ul />' ).addClass( "ui-provider-selection" );
 		
 		// Add enabled search providers.
 		for ( var providerName in this.content_providers ) {
 			var content_providers = this.content_providers;
 			var provider = content_providers[ providerName ];
-			if (provider.enabled && provider.checked && provider.api_url ) {
-				var $anchor = $j('<div />')
-					.text( gM('rsd-' + providerName + '-title') )
+			if ( provider.enabled && provider.checked && provider.api_url ) {
+				var $anchor = $j( '<div />' )
+					.text( gM( 'rsd-' + providerName + '-title' ) )
 					.attr({
 						name: providerName
 					});
 				if ( this.current_provider == providerName) {
-					$anchor.addClass('ui-selected');
+					$anchor.addClass( 'ui-selected' );
 				}
 				
 				$anchor.click( function() {
 					$j( this ).parent().parent().find( '.ui-selected' )
-						.removeClass( 'ui-selected' )
-						.each( function( index, domElement ) {
-							/*var selectedProvider = $j(domElement).attr("name")
-							if (selectedProvider)
-								content_providers[ selectedProvider ].checked = false;*/
-							//TODO: unset flag for provider selection
-						});
+						.removeClass( 'ui-selected' );
 					$j( this ).addClass( 'ui-selected' );
-					//TODO: set flag for provider selection
+					_this.current_provider = $j( this ).attr( "name" );
 				});
 				
 				var $listItem = $j( '<li />' );
@@ -893,7 +885,7 @@ mw.RemoteSearchDriver.prototype = {
 			}
 		}
 		
-		var $searchBox = $j('<input />').addClass('ui-widget-content ui-corner-all').attr({
+		var $searchBox = $j( '<input />' ).addClass( 'ui-widget-content ui-corner-all' ).attr({
 			type: "text",
 			tabindex: 1,
 			value: this.getDefaultQuery(),
@@ -903,15 +895,17 @@ mw.RemoteSearchDriver.prototype = {
 			size: 20,
 			autocomplete: "off"
 		});
-		var $searchButton = $j.button({icon_id: 'search', text: gM('mwe-media_search') })
+		var $searchButton = $j.button({
+		                       icon_id: 'search', 
+		                       text: gM('mwe-media_search') })
 			.addClass( 'rsd_search_button' )
 			.buttonHover()
 			.click(function (){
 				//TODO: Add search provider call.
-				_this.showCurrentTab();
+				_this.showSearchTab( _this.current_provider, true );
 			});
 		
-		//$searchForm.append( $providerSelection );
+		$searchForm.append( $providerSelection );
 		$searchForm.append( $searchBox );
 		$searchForm.append( $searchButton );
 		/*
@@ -1078,11 +1072,14 @@ mw.RemoteSearchDriver.prototype = {
 		if ( !draw_direct_flag ) {
 			// See if we should reset the paging
 			if ( resetPaging ) {
-				provider.sObj.offset = provider.offset = 0;
+				provider.offset = 0;
+				if (provider.sObj && provider.sObj.offset) {
+					provider.sObj.offset = 0;
+				}
 			}
 
 			// Set the content to loading while we do the search:
-			$j( '#tab-' + providerName ).html( mw.loading_spinner() );
+			$j( '#rsd_results_container' ).html( mw.loading_spinner() );
 						
 			// Make sure the search library is loaded and issue the search request
 			this.getLibSearchResults( provider );
@@ -1205,7 +1202,7 @@ mw.RemoteSearchDriver.prototype = {
 				// combined results are harder to error handle just ignore that repo
 				provider.sObj.loading = false;
 			} else {
-				$j( '#tab-' + this.current_provider ).html( 
+				$j( '#rsd_results_container' ).html( 
 					'<div style="padding:10px">' + 
 					gM( 'mwe-no_import_by_url' ) + 
 					'</div>' );
@@ -1256,6 +1253,7 @@ mw.RemoteSearchDriver.prototype = {
 			// inherit defaults if not set:
 			provider.limit = provider.limit ? provider.limit : provider.sObj.limit;
 			provider.offset = provider.offset ? provider.offset : provider.sObj.offset;
+			
 			callback( provider );
 		} );
 	},
@@ -1304,72 +1302,6 @@ mw.RemoteSearchDriver.prototype = {
 	},
 	
 	/**
-	* Creates the tabs based on the remote search configuration
-	*/
-	createTabs: function() {
-		var _this = this;
-
-		// Add the tabs to the rsd_results container:
-		var s = '<div id="rsd_tabs_container" style="width:100%;">';
-		var selected_tab = 0;
-		var index = 0;
-		s += '<ul>';
-		var content = '';
-		for ( var providerName in this.content_providers ) {
-			var provider = this.content_providers[ providerName ];
-			var tabImage = mw.getMwEmbedPath() + '/skins/common/remote_cp/' + providerName + '_tab.png';
-			if ( provider.enabled && provider.checked && provider.api_url ) {
-				// Add selected default if set
-				if ( this.current_provider == providerName )
-					selected_tab = index;
-
-				s += '<li class="rsd_cp_tab">';
-				s += '<a id="rsd_tab_' + providerName + '" href="#tab-' + providerName + '">';
-				if ( provider.tab_img === true ) {
-					s += '<img alt="' + gM( 'rsd-' + providerName + '-title' ) + '" ' + 
-						'src="' + tabImage + '">';
-				} else {
-					s += gM( 'rsd-' + providerName + '-title' );
-				}
-				s += '</a>';
-				s += '</li>';
-				index++;
-			}
-			content += '<div id="tab-' + providerName + '" class="rsd_results"/>';
-		}
-		
-		// Do an upload tab if enabled:
-		if ( this.content_providers['upload'].enabled ) {
-			s += '<li class="rsd_cp_tab" >' + 
-				'<a id="rsd_tab_upload" href="#tab-upload">' + 
-				gM( 'mwe-upload_tab' ) + 
-				'</a></li>';
-			content += '<div id="tab-upload" />';
-			if ( this.current_provider == 'upload' )
-				selected_tab = index++;
-		}
-		s += '</ul>';
-		
-		// Output the tab content containers:
-		s += content;
-		s += '</div>'; // close tab container
-
-		// Output the respective results holders
-		$j( '#rsd_results_container' ).html( s );
-		// Setup bindings for tabs make them sortable: (@@todo remember order)
-		mw.log( 'selected tab is: ' + selected_tab );
-		$j( "#rsd_tabs_container" )
-			.tabs( {
-				selected: selected_tab,
-				select: function( event, ui ) {
-					_this.selectTab( $j( ui.tab ).attr( 'id' ).replace( 'rsd_tab_', '' ) );
-				}
-			})
-			// Add sorting support
-			.find( ".ui-tabs-nav" ).sortable( { axis: 'x' } );		
-	},	
-
-	/**
 	* Get a resource object from a resource id
 	*
 	* NOTE: We could bind resource objects to html elements to avoid this lookup
@@ -1400,8 +1332,11 @@ mw.RemoteSearchDriver.prototype = {
 		mw.log( 'f:showResults::' + this.current_provider );
 		var _this = this;
 		var o = '';
-		var tabSelector = '';
-
+		var tabSelector = '#rsd_results_container';
+		var provider = this.content_providers[ this.current_provider ];
+		
+		// TODO: clean this up
+		/*
 		if ( this.current_provider == 'upload' ) {
 			tabSelector = '#upload_bin';
 			var provider = _this.content_providers['this_wiki'];
@@ -1410,14 +1345,13 @@ mw.RemoteSearchDriver.prototype = {
 			tabSelector = '#tab-' + this.current_provider;
 			// Output the results bar / controls
 		}
+		*/
 		
 		// Empty the existing results:
-		$j( tabSelector ).empty();
-				
-		if ( this.current_provider != 'upload' ) {
-			_this.showResultsHeader();
-		}
+		// $j( tabSelector ).empty();
+		this.$resultsContainer.empty();
 
+		this.$resultsContainer.append( _this.createResultsHeader() );
 		var numResults = 0;
 
 		// Output all the results for the current current_provider
@@ -1427,9 +1361,11 @@ mw.RemoteSearchDriver.prototype = {
 				numResults++;
 			} );			
 			// Put in the tab output (plus clear the output)
-			$j( tabSelector ).append( o + '<div style="clear:both"/>' );
+			this.$resultsContainer.append( o + '<div style="clear:both"/>' );
 		}
 
+		this.$resultsContainer.append( _this.createResultsFooter() );
+		
 		mw.log( 'did numResults :: ' + numResults + 
 			' append: ' + $j( '#rsd_q' ).val() );		
 		// Remove any old search res
@@ -2574,23 +2510,20 @@ mw.RemoteSearchDriver.prototype = {
 			}, 25 
 		);
 	},
+	
 	/**
-	* Show Results Header includes controls like box vs list view and
-	* issues a call to showPagingHeader
-	*/ 
-	showResultsHeader: function() {
+	 * Create controls for selecting result display layout (e.g. box, list)
+	 * 
+	 * @return {jQuery element} The layout element to embed in the page.
+	 */
+	createLayoutSelector: function() {
+
 		var _this = this;
 		var darkBoxUrl = mw.getConfig( 'skin_img_path' ) + 'box_layout_icon_dark.png';
 		var lightBoxUrl = mw.getConfig( 'skin_img_path' ) + 'box_layout_icon.png';
 		var darkListUrl = mw.getConfig( 'skin_img_path' ) + 'list_layout_icon_dark.png';
 		var lightListUrl = mw.getConfig( 'skin_img_path' ) + 'list_layout_icon.png';
-
-		if ( !this.content_providers[ this.current_provider ] ) {
-			return;
-		}
-		var cp = this.content_providers[this.current_provider];
-		var resultsFromMsg = gM( 'mwe-results_from', 
-			[ cp.homepage, gM( 'rsd-' + this.current_provider + '-title' ) ] );
+		
 		var defaultBoxUrl, defaultListUrl;
 		if ( _this.displayMode == 'box' ) {
 			defaultBoxUrl = darkBoxUrl;
@@ -2599,31 +2532,13 @@ mw.RemoteSearchDriver.prototype = {
 			defaultBoxUrl = lightBoxUrl;
 			defaultListUrl = darkListUrl;
 		}
-
-		var about_desc = '<span style="position:relative;top:0px;font-style:italic;">' +
-			'<i>' + resultsFromMsg + '</i></span>';
-
-		$j( '#tab-' + this.current_provider ).append( '<div id="rds_results_bar">' +
-			'<span style="float:left;top:0px;font-style:italic;">' +
-			gM( 'rsd_layout' ) + ' ' +
-			'<img id="msc_box_layout" ' +
-				'title = "' + gM( 'rsd_box_layout' ) + '" ' +
-				'src = "' +  defaultBoxUrl + '" ' +
-				'style="width:20px;height:20px;cursor:pointer;"> ' +
-			'<img id="msc_list_layout" ' +
-				'title = "' + gM( 'rsd_list_layout' ) + '" ' +
-				'src = "' +  defaultListUrl + '" ' +
-				'style="width:20px;height:20px;cursor:pointer;">' +
-			about_desc +
-			'</span>' +
-			'<span id="rsd_paging_ctrl" style="float:right;"></span>' +
-			'</div>'
-		);
-
-		// Get paging with bindings:
-		this.showPagingHeader( '#rsd_paging_ctrl' );
-
-		$j( '#msc_box_layout' )
+		
+		$boxLayout = $j( '<img />' ).addClass( 'layout_selector' )
+			.attr({
+				id: 'msc_box_layout',
+				title: gM( 'rsd_box_layout' ),
+				src: defaultBoxUrl
+			})
 			.hover( 
 				function() {
 					$j( this ).attr( "src", darkBoxUrl );
@@ -2632,12 +2547,16 @@ mw.RemoteSearchDriver.prototype = {
 					$j( this ).attr( "src",  defaultBoxUrl );
 				} )
 			.click( function() {
-				$j( this ).attr( "src", darkBoxUrl );
-				$j( '#msc_list_layout' ).attr( "src", lightListUrl );
+				$boxLayout.attr( "src", darkBoxUrl );
+				$listLayout.attr( "src", lightListUrl );
 				_this.setDisplayMode( 'box' );
 			} );
-
-		$j( '#msc_list_layout' )
+		$listLayout = $j( '<img />' ).addClass( 'layout_selector' )
+			.attr({
+				id: 'msc_list_layout',
+				title: gM( 'rsd_list_layout' ),
+				src: defaultListUrl
+			})
 			.hover( 
 				function() {
 					$j( this ).attr( "src", darkListUrl );
@@ -2646,63 +2565,150 @@ mw.RemoteSearchDriver.prototype = {
 					$j( this ).attr( "src", defaultListUrl );
 				} )
 			.click( function() {
-				$j( this ).attr( "src", darkListUrl );
-				$j( '#msc_box_layout' ).attr( "src", lightBoxUrl );
+				$listLayout.attr( "src", darkListUrl );
+				$boxLayout.attr( "src", lightBoxUrl );
 				_this.setDisplayMode( 'list' );
 			} );
+			
+		$layoutSelector = $j( '<span />' )
+							.append( $boxLayout )
+							.append( $listLayout );
+							
+		return $layoutSelector;
+	},
+	/**
+	 * Create a string indicating the source of the results + link
+	 * 
+	 * @param The current content provider.
+	 * 
+	 * @return {jQuery element} A description element for embedding.
+	 */
+	createSearchDescription: function(cp) {
+		
+		var resultsFromMsg = gM( 'mwe-results_from', 
+			[ cp.homepage, gM( 'rsd-' + this.current_provider + '-title' ) ] );
+		
+		var $searchContent = $j( '<span />' ).html(resultsFromMsg);
+		var $searchDescription = $j( '<span />' ).addClass( 'rsd_search_description' )
+			.attr({
+				id: 'rsd_search_description'
+			})
+			.append( $searchContent );
+		
+		return $searchDescription;
+	},
+	/**
+	* Results Header controls like box vs list view
+	* & search description
+	* 
+	* @return {jQuery element} The header for embedding in the result set.
+	*/ 
+	createResultsHeader: function() {
+		var _this = this;
+		
+		if ( !this.content_providers[ this.current_provider ] ) {
+			return;
+		}
+		var cp = this.content_providers[ this.current_provider ];
+		
+		var $header = $j( '<div />' )
+			.attr({
+				id: 'rsd_results_header'
+			});
+
+		$header.append( this.createLayoutSelector() )
+		       .append( this.createSearchDescription( cp ) );
+		
+		return $header;
 	},
 	
 	/**
-	* Shows pagging for a given target for a given current_provider
-	*
-	* @param {String} target jQuery Selector for pagging Header output  
-	*/
-	showPagingHeader: function( target ) {
+	 * Creates the footer of the search results (paging).
+	 * 
+	 * @return {jQuery element} The footer for embedding in the result set.
+	 */
+	createResultsFooter: function() {
 		var _this = this;
-		if ( _this.current_provider == 'upload' ) {
-			var provider = _this.content_providers['this_wiki'];
-		} else {
-			var provider = _this.content_providers[ _this.current_provider ];
-		}
+		
+		var $footer = $j( '<div />' )
+		.attr({
+			id: 'rsd_results_footer'
+		})
+		.append( this.createPagingControl() );
+		
+		return $footer;
+	},
+	
+	/**
+	* Generates an HTML control for paging between search results.
+	*
+	* @return {jQuery element} paging control for current results  
+	*/
+	createPagingControl: function( target ) {
+		var _this = this;
+		var provider = _this.content_providers[ _this.current_provider ];
 		var search = provider.sObj;
-		mw.log( 'showPagingHeader:' + _this.current_provider + ' len: ' + search.num_results );
+		
+		mw.log( 'Paging Control for ' + _this.current_provider + ' num of results: ' + search.num_results );
 		var to_num = ( provider.limit > search.num_results ) ?
 			( parseInt( provider.offset ) + parseInt( search.num_results ) ) :
 			( parseInt( provider.offset ) + parseInt( provider.limit ) );
-		var out = '';
-
+		
+		var $pagingControl = $j('<span />').attr({
+			id: 'rsd_paging_control'
+		});
+		
+		// This puts enumeration text e.g. Results 1 to 30.
+		var resultEnumeration = '';
 		// @@todo we should instead support the wiki number format template system instead of inline calls
 		if ( search.num_results != 0 ) {
 			if ( search.num_results  >  provider.limit ) {
-				out += gM( 'rsd_results_desc_total', [( provider.offset + 1 ), to_num, 
+				resultEnumeration = gM( 'rsd_results_desc_total', [( provider.offset + 1 ), to_num, 
 					mw.lang.formatNumber( search.num_results )] );
 			} else {
-				out += gM( 'rsd_results_desc', [( provider.offset + 1 ), to_num] );
+				resultEnumeration = gM( 'rsd_results_desc', [( provider.offset + 1 ), to_num] );
 			}
 		}
-		// check if we have more results (next prev link)
+		
+		var $resultEnumeration = $j( '<span />' ).text( resultEnumeration )
+												 .addClass( 'rsd_result_enumeration' );
+		$pagingControl.append( $resultEnumeration );
+		
+		// Place the previous results link
 		if ( provider.offset >= provider.limit ) {
-			out += ' <a href="#" id="rsd_pprev">' + gM( 'rsd_results_prev' ) + ' ' + provider.limit + '</a>';
+			var prevLinkText = gM( 'rsd_results_prev' ) + ' ' + provider.limit;
+			var $prevLink = $j( '<a />' )
+				.attr({
+					href: '#',
+					id: 'rsd_pprev'
+				} )
+				.text( prevLinkText )
+				.click( function() {
+					provider.offset -= provider.limit;
+					if ( provider.offset < 0 )
+						provider.offset = 0;
+					_this.showCurrentTab();
+				} );
+			$pagingControl.prepend( $prevLink );
 		}
 
+		// Place the next results link
 		if ( search.more_results ) {
-			out += ' <a href="#" id="rsd_pnext">' + gM( 'rsd_results_next' ) + ' ' + provider.limit + '</a>';
+			var nextLinkText = gM( 'rsd_results_next' ) + ' ' + provider.limit;
+			var $nextLink = $j( '<a />' )
+				.attr({
+					href: '#',
+					id: 'rsd_pnext'
+				} )
+				.text( nextLinkText )
+				.click( function() {
+					provider.offset += provider.limit;
+					_this.showCurrentTab();
+				} );
+			$pagingControl.append( $nextLink );
 		}
 
-		$j( target ).html( out );
-
-		// set bindings
-		$j( '#rsd_pnext' ).click( function() {
-			provider.offset += provider.limit;
-			_this.showCurrentTab();
-		} );
-
-		$j( '#rsd_pprev' ).click( function() {
-			provider.offset -= provider.limit;
-			if ( provider.offset < 0 )
-				provider.offset = 0;
-			_this.showCurrentTab();
-		} );
+		return $pagingControl;
 	},
 	
 	/**
