@@ -269,23 +269,22 @@ if ( typeof context == 'undefined' ) {
 		'change': function( event ) {
 			// Event filtering
 			switch ( event.type ) {
-				case 'keypress':
-					if ( /* TODO: test if something interesting was deleted */ true ) {
-						event.data.scope = 'keydown';
-					} else {
-						event.data.scope = 'character';
-					}
-					break;
-				case 'mousedown': // FIXME: mouseup?
-					if ( /* TODO: test if text was dragged and dropped */ true ) {
-						event.data.scope = 'division';
-					} else {
-						return false;
-					}
-					break;
-				default:
+				// We are looking for characters being inserted and deleted one at a time here, and keyp happens after a
+				// key has already been pressed and proceesed - it also works the same on all browsers
+				case 'keyup':
+					// TODO: Test if something was deleted, because if nothing was deleted, we can go with a less
+					// resource intensive character level event scope - like: "event.data.scope = 'character'"
 					event.data.scope = 'division';
 					break;
+				// Here we are looking for the user dragging and dropping content around or cutting and pasting
+				case 'mouseup':
+				case 'paste':
+				case 'cut':
+					// TODO: Verify our suspicion that something really did change
+					event.data.scope = 'division';
+					break;
+				// When nothing of interest happened, we can go ahead and move on - nothing to see here
+				default: break;
 			}
 			return true;
 		}
