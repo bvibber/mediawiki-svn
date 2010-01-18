@@ -429,6 +429,16 @@ fn: {
 			sanatizedStr = sanatizedStr.substring( 0, endBraces.index ) + "  " +
 				sanatizedStr.substring( endBraces.index + 2 );
 		}
+		
+		//treat HTML comments like whitespace
+		while ( sanatizedStr.indexOf( '<!' ) != -1 ) {
+			startIndex = sanatizedStr.indexOf( '<!' );
+			endIndex = sanatizedStr.indexOf('-->') + 3;
+			sanatizedSegment = sanatizedStr.substring( startIndex,endIndex ).replace( /\S/g , ' ' );
+			sanatizedStr =
+				sanatizedStr.substring( 0, startIndex ) + sanatizedSegment + sanatizedStr.substring( endIndex );
+		}
+		
 		// Match the open braces we just found with equivalent closing braces note, works for any level of braces
 		while ( sanatizedStr.indexOf( '{{' ) != -1 ) {
 			startIndex = sanatizedStr.indexOf( '{{' ) + 1;
