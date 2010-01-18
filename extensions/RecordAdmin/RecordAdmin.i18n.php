@@ -829,6 +829,9 @@ $messages['gsw'] = array(
 	'recordadmin-editwithform' => 'Mit eme Formular bearbeite',
 	'recordadmin-typeinfo' => '$1 Ufzeichnig',
 	'right-recordadmin' => 'Find Ufzeichnigssyte un bearbeit si',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Kei $1',
 );
 
 /** Hawaiian (Hawai`i)
@@ -1376,6 +1379,9 @@ Categoriseer de gegevenssjablonen [[:$1|$1]].',
 	'recordadmin-editwithform' => 'Via formulier bewerken',
 	'recordadmin-typeinfo' => 'Gegeven van het type $1',
 	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Geen $1',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

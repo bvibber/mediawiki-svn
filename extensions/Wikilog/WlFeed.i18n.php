@@ -212,6 +212,13 @@ $messages['pt'] = array(
 	'wlfeed-desc' => "Classes melhoradas de geração de ''feeds''",
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'wlfeed-desc' => 'Classes melhoradas de geração de alimentadores',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

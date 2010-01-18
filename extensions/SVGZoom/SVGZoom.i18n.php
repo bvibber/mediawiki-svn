@@ -206,6 +206,13 @@ $messages['pt'] = array(
 	'svgzoom-desc' => "Adiciona ao MediaWiki as capacidades de selecção ''(pan)'' e zoom ao visionar ficheiros SVG",
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'svgzoom-desc' => 'Adiciona capacidades de seleção e aproximação para a MediaWiki ao exibir arquivos SVG',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

@@ -236,6 +236,14 @@ $messages['pt'] = array(
 	'templateinfo-header' => 'A definição XML para esta predefinição é:',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'templateinfo-desc' => 'Suporta predefinições definindo suas estruturas de dados via marcação XML',
+	'templateinfo-header' => 'A definição XML para esta predefinição é:',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

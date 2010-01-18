@@ -179,6 +179,13 @@ $messages['pt'] = array(
 	'groupssidebar-desc' => 'Esta extensão permite que os administradores disponibilizem certos elementos da barra lateral a grupos específicos de utilizadores',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'groupssidebar-desc' => 'Esta extensão permite a administradores incluir elementos de barra lateral para grupos específicos de usuário',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

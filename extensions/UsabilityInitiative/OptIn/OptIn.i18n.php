@@ -1050,6 +1050,7 @@ Gallwch arbrofi eto gyda Beta trwy wasgu\'r cyswllt "{{int:optin-try}}" ar frig 
 	'optin-survey-answer-changes-nav' => "Gwneud yr offer llywio ar y wefan yn haws i'w defnyddio.",
 	'optin-survey-answer-changes-edittools' => "Cynyddu a gwella'r offer golygu.",
 	'optin-survey-answer-changes-upload' => 'Gwella uwchlwytho ffeiliau lluniau ag ati.',
+	'optin-survey-answer-changes-custom' => "Ehangu'r nifer o ddewisiadau y gall defnyddiwr eu gosod fel ag a myn.",
 	'optin-improvements' => "== Beth sydd wedi ei wella? ==
 [[File:UsabilityNavigation.png|left|link=|Llun o'r tabiau llywio newydd]]
 ;Gwella'r llywio

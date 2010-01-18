@@ -252,6 +252,13 @@ $messages['pt'] = array(
 	'geolite-desc' => 'Reencaminhamento GeoIP Versão Ligeira',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'geolite-desc' => 'Redirecionamento Leve GeoIp',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

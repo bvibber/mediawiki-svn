@@ -4219,6 +4219,7 @@ $wgGoogleMapsMessages['ps'] = array(
 	'gm-fill-color' => 'رنګ ډکول',
 	'gm-make-map' => 'يوه نخشه جوړول',
 	'gm-hide-map' => 'نخشه پټول',
+	'gm-kml-include-link' => 'نحشې ته ورګډول',
 	'gm-kml-loading' => 'د برسېرېدلو په حال کې...',
 	'gm-earth' => 'زمکه',
 	'gm-moon' => 'سپوږمۍ',

@@ -225,6 +225,13 @@ $messages['pt'] = array(
 	'conditionalshowsection-desc' => 'Adicionando a marcação cshow para mostrar/ocultar condicionalmente uma seção de wikitexto',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'conditionalshowsection-desc' => 'Adicione a etiqueta cshow para mostrar/ocultar condicionalmente uma seção de texowiki.',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

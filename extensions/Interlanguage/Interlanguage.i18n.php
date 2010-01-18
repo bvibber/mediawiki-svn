@@ -217,6 +217,13 @@ $messages['nl'] = array(
 	'interlanguage-desc' => 'Haalt intertaalverwijzingen uit een andere wiki',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'interlanguage-desc' => 'Hentar språklenkjer frå ein annan wiki',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */

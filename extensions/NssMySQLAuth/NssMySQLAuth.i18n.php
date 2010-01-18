@@ -1048,6 +1048,8 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'am-email' => 'електронна пошта',
+	'nss-create-account-header' => 'Створити новий обліковий запис',
+	'nss-create-account' => 'Створити обліковий запис',
 );
 
 /** Veps (Vepsan kel')

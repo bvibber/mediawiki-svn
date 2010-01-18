@@ -4101,6 +4101,7 @@ $messages['ia'] = array(
 	'code-rev-inline-preview' => 'Previsualisation:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-diff-too-large' => 'Le diff es troppo grande pro esser monstrate.',
 	'code-rev-purge-link' => 'purgar',
 	'code-status-new' => 'nove',
 	'code-status-fixme' => 'a reparar',

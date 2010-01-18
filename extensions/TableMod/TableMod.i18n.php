@@ -404,11 +404,19 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'Manipulação de tabelas wiki',
 	'tablemod-msg-remove' => 'Remover',
+	'tablemod-error-format' => 'Esta etiqueta suporta apenas uma tabela simples por etiqueta, sem qualquer texto antes ou após ela.',
+	'tablemod-error-colcount' => 'Esta etiqueta suporta  apenas a eliminação de tabelas com número igual de colunas por linha.',
+	'tablemod-error-headcount' => 'Esta etiqueta suporta a classificação apenas de tabelas com cabeçalhos únicos.',
+	'tablemod-error-invalidsort' => 'Parâmetros de ordenação inválidos.',
 	'tablemod-error-invalidaction' => 'Operação inválida.',
+	'tablemod-error-missingid' => 'Atributo de identificação necessário na etiqueta.',
 );
 
 /** Romanian (Română)

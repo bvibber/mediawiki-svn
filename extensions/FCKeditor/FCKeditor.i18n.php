@@ -1037,6 +1037,37 @@ $messages['pt'] = array(
 	'tog-riched_toggle_remember_state' => 'Memorizar último estado do selector',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
+ */
+$messages['pt-br'] = array(
+	'fckeditor-desc' => 'Permitir edição usando o editor FCKeditor WYSIWYG',
+	'textrichditor' => 'Editor Rico',
+	'prefs-fckeditor' => 'Editor Rico',
+	'tog-riched_disable' => 'Desativar editor rico',
+	'tog-riched_disable_ns_main' => 'Desativar o editor rico no espaço nominal principal',
+	'tog-riched_disable_ns_talk' => 'Desativar o editor rico no espaço nominal "{{ns:talk}}"',
+	'tog-riched_disable_ns_user' => 'Desativar o editor rico no espaço nominal "{{ns:user}}"',
+	'tog-riched_disable_ns_user_talk' => 'Desativar o editor rico no espaço nominal "{{ns:user_talk}}"',
+	'tog-riched_disable_ns_project' => 'Desativar o editor rico no espaço nominal "{{ns:projetct}}"',
+	'tog-riched_disable_ns_project_talk' => 'Desativar o editor rico no espaço nominal "{{ns:project_talk}}"',
+	'tog-riched_disable_ns_image' => 'Desativar o editor rico no espaço nominal "{{ns:file}}"',
+	'tog-riched_disable_ns_image_talk' => 'Desativar o editor rico no espaço nominal "{{ns:file_talk}}"',
+	'tog-riched_disable_ns_mediawiki' => 'Desativar o editor rico no espaço nominal "{{ns:mediawiki}}"',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Desativar o editor rico no espaço nominal "{{ns:mediawiki_talk}}"',
+	'tog-riched_disable_ns_template' => 'Desativar o editor rico no espaço nominal "{{ns:template}}"',
+	'tog-riched_disable_ns_template_talk' => 'Desativar o editor rico no espaço nominal "{{ns:template_talk}}"',
+	'tog-riched_disable_ns_help' => 'Desativar o editor rico no espaço nominal "{{ns:help}}"',
+	'tog-riched_disable_ns_help_talk' => 'Desativar o editor rico no espaço nominal "{{ns:help_talk}}"',
+	'tog-riched_disable_ns_category' => 'Desativar o editor rico no espaço nominal "{{ns:category}}"',
+	'tog-riched_disable_ns_category_talk' => 'Desativar o editor rico no espaço nominal "{{ns:category_talk}}"',
+	'rich_editor_new_window' => 'Abrir o editor rico em uma nova janela',
+	'tog-riched_start_disabled' => 'Iniciar com o editor rico desativado',
+	'tog-riched_use_popup' => 'Abrir editor rico em uma janela flutuante',
+	'tog-riched_use_toggle' => 'Use alterar para alternar entre textowiki e um editor rico (substitui a área de texto com um editor rico)',
+	'tog-riched_toggle_remember_state' => 'Lembrar último estado alterado',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

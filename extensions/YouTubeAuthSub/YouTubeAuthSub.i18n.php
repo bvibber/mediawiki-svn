@@ -2619,7 +2619,7 @@ $messages['si'] = array(
 	'youtubeauthsub_success' => "සුබ පැතුම්!
 ඔබේ වීඩියෝව උ‍‍ඩුගතවී ඇත.
 ඔබේ වීඩියෝව නැරඹීම‍ට <a href='http://www.youtube.com/watch?v=$1'> මෙතැන </a>.ක්ලික් කරන්න.
-YouTube may require some time to process your video, so it might not be ready just yet.
+ඔබේ වීඩියෝව සැකසීමට YouTube සඳහා යම් කාලයක් අවශ්‍ය විය හැකි බැවින්,එය තවමත් සුදානම් නොමඅති විය හැක. 
 
 වීඩියෝව ඔබගේ විකි පිටුවකට යෙදීමක‍ට නම් පහත දැක්වෙන කේත පි‍ටුව‍ට ඇතුල් කරන්න:
 <code>{{&#35;ev:youtube|$1}}</code>",
@@ -2627,7 +2627,7 @@ YouTube may require some time to process your video, so it might not be ready ju
 	'youtubeauthsub_uploadhere' => 'ඔබේ වීඩීයෝව මෙතැනින් උඩුගතකරන්න:',
 	'youtubeauthsub_uploadbutton' => 'උඩුගතකරන්න',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
-මෙම වීඩියෝව ‍[http://www.youtube.com/watch?v=$1 මෙතැනින්] නැරඹීය හැකිය.',
+‍[මෙම වීඩියෝව http://www.youtube.com/watch?v=$1 ] මෙතැනින් නැරඹීය හැකිය.',
 	'youtubeauthsub_summary' => 'YouTube වීඩියෝව උඩුගත වෙමින් පවතී',
 	'youtubeauthsub_uploading' => 'ඔබගේ වීඩියෝව උඩුගත වෙමින් පවතී,මඳක් ඉවසන්න.',
 	'youtubeauthsub_viewpage' => 'නො එසේ නම් ඔබගේ වීඩියෝව ඔබට [[$1|මෙතැනින්]] නැරඹිය හැක',

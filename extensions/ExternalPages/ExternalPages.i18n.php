@@ -669,10 +669,21 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Daemorris
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'externalpages' => 'Páginas Externas',
+	'externalpages-desc' => 'Importar e apresentar páginas de sítios WMF remotos',
+	'externalpages-bad-year' => 'Ano incorreto',
+	'externalpages-bad-language' => 'Língua incorreta',
+	'externalpages-bad-project' => 'Projeto incorrecto',
+	'externalpages-no-project' => 'Projeto não especificado',
+	'externalpages-bad-page' => 'Página incorrecta',
+	'externalpages-no-page' => 'Página não especificada',
 	'externalpages-error-generic' => 'Erro detectado',
+	'externalpages-bad-url' => 'Importação da URL falhou',
+	'externalpages-bad-url-data' => 'Importação do conteúdo da página falhou',
 );
 
 /** Romanian (Română)
