@@ -21,7 +21,6 @@ $settings = array(
 			'wgBreakFrames' => 'bool',
 			'wgSiteSupportPage' => 'text',
 			'wgStyleVersion' => 'int',
-			'wgWikiId' => 'text',
 		),
 	),
 	'features' => array(
@@ -31,6 +30,7 @@ $settings = array(
 			'wgPageShowWatchingUsers' => 'bool',
 			'wgEdititis' => 'bool',
 			'wgShowHostnames' => 'bool',
+			'wgFixArchaicUnicode' => 'bool',
 			'wgFixDoubleRedirects' => 'bool',
 			'wgEnableAPI' => 'bool',
 			'wgEnableWriteAPI' => 'bool',
@@ -672,6 +672,7 @@ $settings = array(
 	'feed' => array(
 		'feed' => array(
 			'wgFeed' => 'bool',
+			'wgAdvertisedFeedTypes' => 'array',
 			'wgFeedCacheTimeout' => 'int',
 			'wgFeedDiffCutoff' => 'int',
 			'wgFeedLimit' => 'int',
@@ -705,14 +706,13 @@ $settings = array(
 			'wgSearchForwardUrl' => 'text',
 			'wgSearchEverythingOnlyLoggedIn' => 'bool',
 			'wgSearchHighlightBoundaries' => 'text',
-			'wgSearchMySQLTotalHits' => 'bool',
+			'wgCountTotalSearchHits' => 'bool',
 			'wgUseTwoButtonsSearchForm' => 'bool',
 		),
 	),
 	'proxy' => array(
 		'proxy' => array(
 			'wgBlockOpenProxies' => 'bool',
-			'wgEnableSorbs' => 'bool',
 #			'wgProxyKey' => 'text', # Deprecated
 			'wgProxyList' => 'array',
 			'wgProxyMemcExpiry' => 'int',
@@ -720,7 +720,8 @@ $settings = array(
 			'wgProxyScriptPath' => 'text',
 			'wgProxyWhitelist' => 'array',
 			'wgSecretKey' => 'text',
-			'wgSorbsUrl' => 'text',
+			'wgEnableDnsBlacklist' => 'bool',
+			'wgDnsBlacklistUrls' => 'text',
 		),
 	),
 	'squid' => array(
@@ -759,6 +760,7 @@ $settings = array(
 			'wgAvailableRights' => 'array',
 			'wgExceptionHooks' => 'array',
 			'wgExtensionAliasesFiles' => 'array',
+			'wgExtensionAssetsPath' => 'text',
 			'wgExtensionCredits' => 'array',
 			'wgExtensionFunctions' => 'array',
 			'wgExtensionMessagesFiles' => 'array',
@@ -913,6 +915,8 @@ $arrayDefs = array(
 # Cookie
 	'wgCacheVaryCookies' => 'simple',
 	'wgHttpOnlyBlacklist' => 'simple',
+# Feed
+	'wgAdvertisedFeedTypes' => 'simple',
 # Job
 	'wgJobClasses' => 'assoc',
 # Extensions
@@ -935,7 +939,6 @@ $arrayDefs = array(
  * Value to be used when setting matches empty()
  */
 $emptyValues = array(
-	'wgWikiId' => false,
 	'wgAppleTouchIcon' => false,
 	'wgVariantArticlePath' => false,
 	'wgDBerrorLog' => null,
