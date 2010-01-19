@@ -21,6 +21,7 @@ function wfSpecialConceptMapping() {
 	require_once( "WikiDataAPI.php" );
 	require_once( "Utilities.php" );
 	require_once( "DefinedMeaningModel.php" );
+	require_once( "WikiDataGlobals.php" );
 	class SpecialConceptMapping extends SpecialPage {
 
 		function SpecialConceptMapping() {
@@ -56,7 +57,7 @@ function wfSpecialConceptMapping() {
 
 		protected function ui() {
 
-			global $wgOut, $wgRequest, $wgUser;
+			global $wgOut, $wgRequest, $wgUser, $wgDefinedMeaning;
 			$lang = $wgUser->getOption( "language" );
 			require_once( "forms.php" );
 			$wgOut->addHTML( wfMsgSc( "conceptmapping_uitext" ) );
@@ -74,9 +75,9 @@ function wfSpecialConceptMapping() {
 				if ( $rq[$set] ) {
 					$dmModel = new DefinedMeaningModel( $rq[$set], null, $setObject );
 					$defaultSel = $dmModel->getSyntransByLanguageCode( $lang );
-					$options[$setObject->fetchName()] = getSuggest( "set_$set", 'defined-meaning', array(), $rq[$set], $defaultSel, array( 0 ), $setObject );
+					$options[$setObject->fetchName()] = getSuggest( "set_$set", $wgDefinedMeaning, array(), $rq[$set], $defaultSel, array( 0 ), $setObject );
 				} else {
-					$options[$setObject->fetchName()] = getSuggest( "set_$set", 'defined-meaning', array(), null, null, array( 0 ), $setObject );
+					$options[$setObject->fetchName()] = getSuggest( "set_$set", $wgDefinedMeaning, array(), null, null, array( 0 ), $setObject );
 				}
 
 			}

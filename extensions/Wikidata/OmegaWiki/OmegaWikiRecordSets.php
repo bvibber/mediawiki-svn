@@ -9,6 +9,7 @@ require_once( 'WikiDataTables.php' );
 require_once( 'RecordSetQueries.php' );
 require_once( 'DefinedMeaningModel.php' );
 require_once( 'ViewInformation.php' );
+require_once( 'WikiDataGlobals.php' );
 
 
 function getSynonymSQLForLanguage( $languageId, array &$definedMeaningIds ) {
@@ -81,7 +82,9 @@ function getDefiningSQLForLanguage( $languageId, array &$definedMeaningIds ) {
 }
 
 
-function fetchDefinedMeaningReferenceRecords( $sql, array &$definedMeaningIds, array &$definedMeaningReferenceRecords, $usedAs = 'defined-meaning' ) {
+function fetchDefinedMeaningReferenceRecords( $sql, array &$definedMeaningIds, array &$definedMeaningReferenceRecords, $usedAs = '' ) {
+	global $wgDefinedMeaning ;
+	if ( $usedAs == '' ) $usedAs = $wgDefinedMeaning ;
 	$dc = wdGetDataSetContext();
 	$o = OmegaWikiAttributes::getInstance();
 
