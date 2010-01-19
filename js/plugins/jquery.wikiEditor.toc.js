@@ -294,6 +294,7 @@ fn: {
 				.css( { 'marginTop': '0', 'width': '1px' } );
 				context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).fadeIn( 'fast' );
 				// Let the UI know things have moved around
+				context.fn.trigger( 'tocCollapse' );
 				context.fn.trigger( 'resize' );
 			 } );
 			
@@ -331,6 +332,7 @@ fn: {
 					'right' : 'auto',
 					'left' : 'auto',
 					'top': 'auto' } );
+					context.fn.trigger( 'tocExpand' );
 					context.fn.trigger( 'resize' );
 			 } );
 		$.cookie( 'wikiEditor-' + context.instance + '-toc-width',
