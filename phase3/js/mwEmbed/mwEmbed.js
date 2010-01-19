@@ -40,7 +40,7 @@ var mwDefaultConf = {
 	'skinName' : 'mvpcf',
 	
 	// Default jquery ui skin name
-	'jui_skin' : 'redmond',	
+	'jQueryUISkin' : 'redmond',	
 	
 	/**
 	* If jQuery / mwEmbed should be loaded.
@@ -2233,7 +2233,7 @@ var mwDefaultConf = {
 				if ( !window['$j'] ) {
 					window['$j'] = jQuery.noConflict();
 				}										
-				mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
+				mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jQueryUISkin' ) + '/' );
 				
 				// Only load jquery ui theme sheet if ui-widget does not exist. 
 				if( ! mw.styleRuleExists( 'ui-widget' ) ){				
