@@ -396,9 +396,11 @@ class SpecialRecordAdmin extends SpecialPage {
 			$tmp = array();
 			foreach ( $records as $r ) {
 				$v0 = $r[$groupby[0]];
+				unset( $r[$groupby[0]] );
 				if ( !isset( $tmp[$v0] ) || !is_array( $tmp[$v0] ) ) $tmp[$v0] = array();
 				if ( isset( $groupby[1] ) ) {
 					$v1 = $r[$groupby[1]];
+					unset( $r[$groupby[1]] );
 					if ( !isset( $tmp[$v0][$v1] ) || !is_array( $tmp[$v0][$v1] ) ) $tmp[$v0][$v1] = array();
 					$tmp[$v0][$v1][] = $r;
 				} else $tmp[$v0][] = $r;
@@ -455,6 +457,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect', $export = true, $groupby = false ) {
 		global $wgParser, $wgTitle, $wgRequest;
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
+		if ( $groupby ) $groupby = preg_split( '/\s*,\s*/', $groupby );
 
 		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
 		$type     = $this->type;
@@ -474,17 +477,21 @@ class SpecialRecordAdmin extends SpecialPage {
 			$class = 'col' . preg_replace( '|\W|', '-', $col );
 			$th[$col] = "<th class='$class'>$col$br</th>";
 		}
-		$ncol = 0;
-		foreach ( $cols ? $cols : array_keys( $th ) as $col ) {
-			$html = isset( $th[$col] ) ? $th[$col] : "<th>$col</th>";
-			$table .= "$html\n";
-			$ncol++;
+		$tmp = array();
+		$cols = $cols ? $cols : array_keys( $th );
+		foreach ( $cols as $col ) {
+			if ( $groupby === false || !in_array( $col, $groupby ) ) {
+				$html = isset( $th[$col] ) ? $th[$col] : "<th>$col</th>";
+				$table .= "$html\n";
+				$tmp[] = $col;
+			}
 		}
+		$cols = $tmp;
+		$ncol = count( $cols );
 		$table .= "</tr>\n";
 
 		# If using grouping, reconstruct the record tree as a list including headings
 		if ( $groupby ) {
-			$groupby = preg_split( '/\s*,\s*/', $groupby );
 			$td  = "<td colspan=\"$ncol\">";
 			$tmp = array();
 			foreach( $records as $k1 => $v1 ) {
@@ -539,7 +546,7 @@ class SpecialRecordAdmin extends SpecialPage {
 						'created'  => "<td class='col2 col-created'>$tsc</td>\n",
 						'modified' => "<td class='col3 col-modified'>$tsm</td>\n",
 					);
-					foreach ( $cols ? $cols : array_keys( $th ) as $col ) {
+					foreach ( $cols as $col ) {
 						if ( !isset( $row[$col] ) ) {
 							$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $wgTitle, $wgParser->mOptions, true, false )->getText() : '&nbsp;';
 							$class = 'col' . preg_replace( '|\W|', '-', $col );
