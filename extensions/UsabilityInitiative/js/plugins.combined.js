@@ -7203,7 +7203,7 @@ if ( typeof context == 'undefined' ) {
 				html = html.replace( /\t/g, '<span class="wikiEditor-tab"></span>' );
 			}
 			// We must append, because IE will crash if we set html() - which is the same as empty() and append()
-			context.$content.append( html.replace( /\r?\n/g, '<br />' ) );
+			context.$content.html( html.replace( /\r?\n/g, '<br />' ) );
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
