@@ -1568,7 +1568,7 @@ $messages['id'] = array(
 	'grouppermissions-dosearch' => 'Tuju ke',
 	'grouppermissions-searchlabel' => 'Cari kelompok',
 	'grouppermissions-deletelabel' => 'Hapus kelompok',
-	'grouppermissions-error' => 'Telah terjadi kesalahan yang tidak dikenal, silahkan tekan tombol back pada penjelajah Anda dan coba lagi',
+	'grouppermissions-error' => 'Telah terjadi kesalahan yang tidak dikenal, silakan tekan tombol kembali pada penjelajah Anda dan coba lagi.',
 	'grouppermissions-change' => 'Ubah akses group',
 	'grouppermissions-add' => 'Tambahkan kelompok',
 	'grouppermissions-delete' => 'Hapus kelompok',
@@ -2041,6 +2041,13 @@ $messages['mk'] = array(
 	'right-edittalk' => 'Уредување на страници за разговор',
 	'right-edit-new' => 'Уредување на страници (кои не се страници за разговор)',
 	'right-readold' => 'Преглед на содржините на стари ревизии и разлики',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'grouppermissions-dologin' => 'Нэвтрэх',
 );
 
 /** Maltese (Malti)

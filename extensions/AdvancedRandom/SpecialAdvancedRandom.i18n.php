@@ -25,6 +25,8 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'advancedrandom' => 'Willekeurige bladsy (gevorderd)',
+	'advancedrandom-desc' => "Kry 'n lukrake besprekingsblad of bladsy uit die hoofnaamruimte wat skakel na 'n opgegewe bladsy.
+Kan gebruik word as [[{{#special:advancedrandom}}/{{ns:template}}:Uitgelig/{{ns:talk}}]] om 'n lukrake geselshoekie-artikel weer te gee of as [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] om 'n lukrake GFDL-gelisensieerde lêer weer te gee",
 );
 
 /** Gheg Albanian (Gegë)

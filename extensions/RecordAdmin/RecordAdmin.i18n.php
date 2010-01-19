@@ -258,6 +258,9 @@ $messages['be-tarask'] = array(
 	'recordadmin-editwithform' => 'Рэдагаваць праз форму',
 	'recordadmin-typeinfo' => '$1 запіс',
 	'right-recordadmin' => 'пошук і рэдагаваньне старонак запісаў',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Няма $1',
 );
 
 /** Bulgarian (Български)
@@ -706,6 +709,9 @@ $messages['fr'] = array(
 	'recordadmin-editwithform' => 'Modifier avec un formulaire',
 	'recordadmin-typeinfo' => 'enregistrement $1',
 	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Aucun $1',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1030,7 +1036,7 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'recordadmin' => 'Catatan Administrasi',
 	'recordadmin-desc' => 'Sebuah [[Special:RecordAdmin|halaman istimewa]] untuk menemukan dan menyunting catatan halaman menggunakan formulir',
-	'recordadmin-categoryempty' => 'Tidak ada catatan. Silahkan catat kategori templat pada [[:$1|$1]].',
+	'recordadmin-categoryempty' => 'Tidak ada catatan. Silakan catat kategori templat pada [[:$1|$1]].',
 	'recordadmin-select' => 'Pilih',
 	'recordadmin-createtype' => 'Masukkan nama tipe rekaman baru yang akan dibuat',
 	'recordadmin-recordtype' => 'tipe rekaman',
@@ -1295,6 +1301,9 @@ $messages['mk'] = array(
 	'recordadmin-editwithform' => 'Уреди со образец',
 	'recordadmin-typeinfo' => 'Запис од типот $1',
 	'right-recordadmin' => 'Пронаоѓање и уредување на записни страници',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Нема $1',
 );
 
 /** Mongolian (Монгол)
@@ -1685,6 +1694,9 @@ $messages['pt'] = array(
 	'recordadmin-editwithform' => 'Editar com formulário',
 	'recordadmin-typeinfo' => 'Registo de $1',
 	'right-recordadmin' => 'Encontrar e editar páginas de registos',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => '$1 não existe',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

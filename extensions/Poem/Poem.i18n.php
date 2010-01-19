@@ -447,6 +447,13 @@ $messages['pt-br'] = array(
 	'poem-desc' => 'Adiciona a marca <tt>&lt;poem&gt;</tt> para formatação de poemas',
 );
 
+/** Tarifit (Tarifit)
+ * @author Aryaz
+ */
+$messages['rif'] = array(
+	'poem-desc' => 'Issadaf <tt>&lt;poem&gt;</tt> i usmal d tira n tmdyazt',
+);
+
 /** Romanian (Română)
  * @author Mihai
  */

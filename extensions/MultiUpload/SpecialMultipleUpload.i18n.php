@@ -1765,27 +1765,27 @@ $messages['vo'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Liangent
+ * @author PhiLiP
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
-	'multipleupload' => '上载多个档案',
-	'multipleupload-desc' => '允许用户在[[Special:MultipleUpload|同一时间上载多个档案]]',
-	'multipleupload-ignoreallwarnings' => "忽略'''所有警告'''并继续储存档案。",
+	'multipleupload' => '上传多个文件',
+	'multipleupload-desc' => '允许用户[[Special:MultipleUpload|一次性上传多个文件]]',
+	'multipleupload-ignoreallwarnings' => "忽略'''所有警告'''并继续保存文件。",
 	'multipleupload-saveallfiles' => '保存所有文件',
-	'multipleupload-addresswarnings' => '在从新上载档案前，请先回应所有警告。',
+	'multipleupload-addresswarnings' => '在重新上传文件前，请先处理所有警告。',
 	'multipleupload-page' => '{{ns:project}}:文件刪除方针',
-	'multipleupload-text' => "你可以在这里上载多个档案。
+	'multipleupload-text' => "您可在此处上传多个文件。
 
-点选「浏览…」并选择你要上载的档案。
-你可以选择在同一时间上载一个到 $1 个档案。
+选择“浏览”，然后选择您要上传的文件。您可以一次性上传1到$1个文件。
 
-你亦可为要上载的档案重定一个 '''目标档名''' ，并为每个档案提供 '''总结''' ，用以描述各档。
+作为可选项，您可以指定“目标文件名”，并为您的文件提供'''摘要'''描述。
 
-所有不合适的档案都会被立即删除，详见[[{{MediaWiki:Multipleupload-page}}|档案删除政策]]。",
-	'multiupload-fileuploaded' => '文件经已上载。',
-	'multiupload-toolbox' => '上载多个文件',
-	'multiupload-no-files' => '请选择最少一个文件进行上载',
-	'multiupload-blank' => '没有选择档案',
+不合适的文件会被立即删除，参见[[{{MediaWiki:Multipleupload-page}}|文件删除方针]]。",
+	'multiupload-fileuploaded' => '文件已上传。',
+	'multiupload-toolbox' => '上传多个文件',
+	'multiupload-no-files' => '请至少上传一个文件',
+	'multiupload-blank' => '未选择文件',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

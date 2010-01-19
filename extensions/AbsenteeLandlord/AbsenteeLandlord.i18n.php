@@ -539,6 +539,14 @@ $messages['pt-br'] = array(
 	'absenteelandlord-desc' => 'Bloqueia a base dados do wiki automaticamente se todos os sysops estiverem inativos por algum tempo',
 );
 
+/** Tarifit (Tarifit)
+ * @author Aryaz
+ */
+$messages['rif'] = array(
+	'absenteelandlord-reason' => 'Taffa n isfka ttwaqqn s twurmanit minzi indbaln ur qqimn d urmidn.',
+	'absenteelandlord-desc' => 'Itqqn taffa n isfka n wiki s twurmanit malla marra "sysops" ur llin d urmidn di ca n wakud',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

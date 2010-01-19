@@ -5632,7 +5632,7 @@ $4',
  * @author Chinneeb
  */
 $messages['mn'] = array(
-	'code-status-reverted' => 'буцаагдав',
+	'code-status-reverted' => 'хуучин төлөвт шилжүүлэв',
 );
 
 /** Malay (Bahasa Melayu)

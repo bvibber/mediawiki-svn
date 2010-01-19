@@ -889,6 +889,7 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author IvanLanin
  * @author Kandar
@@ -906,7 +907,7 @@ Memungkinkan mendistribusikan pekerjaan video transcoding untuk klien yang mengg
 	'wah-long-multiplexed' => '(Berkas multiplexed audio/video, $1, lama $2, $4x$5 piksel, $3 keseluruhan)',
 	'wah-long-general' => '(berkas media, panjang $2, $3)',
 	'wah-long-error' => '(ffmpeg tak bisa membaca berkas ini: $1)',
-	'wah-transcode-working' => 'Video ini sedang diolah, silahkan coba lagi nanti',
+	'wah-transcode-working' => 'Video ini sedang diolah, silakan coba lagi nanti',
 	'wah-transcode-helpout' => 'Anda dapat membantu video transcode ini dengan mengunjungi [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Berkas ini gagal untuk di transcode.',
 	'wah-javascript-off' => 'Anda harus mengaktifkan JavaScript agar dapat berpartisipasi di Wiki@Home',

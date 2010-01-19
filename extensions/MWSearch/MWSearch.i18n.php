@@ -582,10 +582,11 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'mwsearch-desc' => 'MWSearch 加载项',
+	'mwsearch-desc' => 'MWSearch插件',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -680,6 +680,13 @@ $messages['ml'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|lകണ്ണി|കണ്ണികള്‍}} $3-ലേക്ക്',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'crossnamespacelinkstext' => '$1: $3 рүүх $2 холбоос',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

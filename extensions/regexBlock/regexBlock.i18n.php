@@ -1461,9 +1461,9 @@ Jika tidak ada alasan yang diberikan, suatu alasan generik baku akan digunakan.\
 	'regexblock-reason-ip' => 'Alamat IP ini dicekal untuk menyunting karena vandalisme atau gangguan yang dilakukan oleh Anda atau orang lain yang berbagi IP dengan Anda.
 Jika menurut Anda ini adalah suatu kesalahan, silakan [[$1|hubungi kami]]',
 	'regexblock-reason-name' => 'Pengguna ini dicegah dari penyuntingan karena vandalisme atau kekacauan lain.
-Jika anda percaya ini adalah kesalahan, silahkan [[$1|hubungi kami]]',
+Jika anda percaya ini adalah kesalahan, silakan [[$1|hubungi kami]]',
 	'regexblock-reason-regex' => 'Pengguna ini dicegah dari penyuntingan karena vandalisme atau kekacauan lain oleh pengguna dengan nama yang mirip.
-Silahkan buat nama pengguna lain atau [[$1|hubungi kami]] tentang permasalahan ini',
+Silakan buat nama pengguna lain atau [[$1|hubungi kami]] tentang permasalahan ini',
 	'regexblock-form-username' => 'Alamat IP atau nama pengguna:',
 	'regexblock-form-reason' => 'Alasan:',
 	'regexblock-form-expiry' => 'Kadaluwarsa:',

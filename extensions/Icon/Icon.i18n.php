@@ -698,12 +698,13 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author PhiLiP
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'icon-badimage' => '损坏的图像',
 	'icon-badwidth' => '宽度错误',
-	'icon-desc' => '增加icon参数以产生于图片上的连结',
+	'icon-desc' => '允许将图像用作图标或图标链接',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

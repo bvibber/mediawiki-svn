@@ -1215,7 +1215,7 @@ Silakan periksa jika Anda diperbolehkan untuk bertindak pada wiki ini dan tindak
 	'crosswikiblock-noemail' => 'Cegah pengguna mengirimkan surel',
 	'crosswikiunblock' => 'Hilangkan blokir pengguna di wiki lain',
 	'crosswikiunblock-header' => 'Halaman ini membolehkan untuk blokir pengguna di wiki lain.
-Silahkan periksa jika anda di bolehkan untuk bertindak di wiki ini dan aksi anda sesuai dengan semua kebijakan.',
+Silakan periksa jika Anda diperbolehkan untuk bertindak di wiki ini dan aksi Anda sesuai dengan semua kebijakan.',
 	'crosswikiunblock-user' => 'Nama pengguna, alamat IP atau blok ID dan wiki tujuan:',
 	'crosswikiunblock-reason' => 'Alasan:',
 	'crosswikiunblock-submit' => 'Hilangkan blokir pengguna ini',

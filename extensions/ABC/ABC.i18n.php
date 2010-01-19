@@ -635,6 +635,14 @@ $messages['pt-br'] = array(
 	'abcdownload' => 'Descarregar:',
 );
 
+/** Tarifit (Tarifit)
+ * @author Aryaz
+ */
+$messages['rif'] = array(
+	'abcdesc' => 'Irnni tira <tt>&lt;abc&gt;</tt> afad ad isggm ABC music',
+	'abcdownload' => 'Zdm/Download',
+);
+
 /** Rhaeto-Romance (Rumantsch)
  * @author Gion
  */

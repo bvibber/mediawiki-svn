@@ -719,7 +719,7 @@ $messages['id'] = array(
 	'gep-genericmode' => 'Mode generik',
 	'gep-nosectioninstructions' => 'Tidak ada bagian pada halaman ini.
 Tambahkan, menggunakan alat pada menu bar.',
-	'gep-nocategories' => 'Silahkan pilih setidaknya satu kategori sebelum menyimpan',
+	'gep-nocategories' => 'Silakan pilih setidaknya satu kategori sebelum menyimpan',
 );
 
 /** Italian (Italiano)

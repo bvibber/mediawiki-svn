@@ -437,6 +437,13 @@ $messages['pt-br'] = array(
 	'breadcrumbs-desc' => 'Mostra o caminho dos utilizadores através do wiki.',
 );
 
+/** Tarifit (Tarifit)
+ * @author Aryaz
+ */
+$messages['rif'] = array(
+	'breadcrumbs-desc' => 'Isskan-d tabridt n usqdac di wiki.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

@@ -688,7 +688,7 @@ Halaman istimewa ini menyediakan sarana untuk secara manual memperbaharui halama
 Ketika Anda memilih semua halaman yang ingin Anda perbaharui, klik pada tombol \"Refresh dipilih\" di bawah ini untuk memperbaharui  halaman istimewa yang dipilih. 
 '''Peringatan:''' Pembaharuan mungkin memerlukan waktu di wiki yang besar.",
 	'refreshspecial-button' => 'Pembaharuan terpilih',
-	'refreshspecial-fail' => 'Silahkan periksa setidaknya satu halaman istimewa untuk di perbaharui.',
+	'refreshspecial-fail' => 'Silakan periksa setidaknya satu halaman istimewa untuk diperbarui.',
 	'refreshspecial-refreshing' => 'memutakhirkan halaman istimewa',
 	'refreshspecial-skipped' => 'murah, melewatkan',
 	'refreshspecial-choice' => 'memutakhirkan halaman istimewa',

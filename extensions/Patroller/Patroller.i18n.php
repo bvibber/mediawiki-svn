@@ -1123,9 +1123,10 @@ $messages['ml'] = array(
  * @author Chinneeb
  */
 $messages['mn'] = array(
-	'patrol-reverting' => 'Буцааж байна: $1',
-	'patrol-reverted-ok' => 'Засвар буцаагдав.',
-	'patrol-reverted-failed' => 'Засварыг буцааж чадсангүй.',
+	'patrol-revert' => 'Хуучин төлөвт шилжүүлэх',
+	'patrol-reverting' => 'Хуучин төлөвт шилжүүлж байна: $1',
+	'patrol-reverted-ok' => 'Засварыг хуучин төлөвт шилжүүллээ.',
+	'patrol-reverted-failed' => 'Засварыг хуучин төлөвт шилжүүлэх боломжгүй байв',
 );
 
 /** Marathi (मराठी)
