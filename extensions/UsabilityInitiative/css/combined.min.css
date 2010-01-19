@@ -439,21 +439,9 @@ resize:none;
 .wikiEditor-ui-text textarea:focus{
 outline:none;
 }
-.wikiEditor-ui-view-wikiText:after{
-content:".";
-display:block;
-height:0;
-clear:both;
-visibility:hidden;
-}
 .wikiEditor-ui-view-wikiText{
-display:inline-block;
-}
-* html .wikiEditor-ui-view-wikiText{
-height:1%;
-}
-.wikiEditor-ui-view-wikiText{
-display:block;
+overflow:auto;
+width:100%;
 }
 .wikiEditor-ui-toolbar{
 position:relative;
