@@ -2,7 +2,7 @@
 * Simple inline section edit example  h3 ->h3 h2
 */ 
 mw.ready(function(){
-	$j('.editsection').click(function(){		
+	$j( '.editsection' ).click(function(){		
 		// Get section number: 
 		var href = $j( this ).children('a').attr( 'href');
 		var sectionNumber = mw.parseUri( href ).queryKey['section'];
@@ -100,27 +100,27 @@ mw.ready(function(){
 function doInlineWikiEditor( wikiText,  sectionNumber ){
 	// Here we have to plop in a hidden wikitext box identical to edit page
 	// We don't want to build out custom config 
-	// ( too much config is sotred in wikiEditor/Toolbar/Toolbar.js )
+	// ( too much config is stored in wikiEditor/Toolbar/Toolbar.js )
 	$j('#edit_section_' + sectionNumber).append( 
 		$j('<textarea>')
-		.attr({
+		.attr( {
 		 	'name' : "wpTextbox1",
 		 	'id' : "wpTextbox1", 
 		 	'cols' : "80",
 		 	'rows' : "20",
 		 	'tabindex' : "1",
 		 	'accesskey' : ","
-		 })
+		 } )
 		 .val( wikiText )
 		 .hide()
 	);		
-	//load the wikitext module:
-	mw.load('WikiEditor', function(){
+	// Load the wikitext module:
+	mw.load( 'WikiEditor' , function(){	
 		//Remove the loader ( callback on mw.load('WikiEditor') is having trouble atm ) 
 		$j('.loading_spinner').remove();			
 		// show the editor: 
 		$j('#wpTextbox1').show( 'fast' );
-		// add the add-media-wizard binding"
+		// add the add-media-wizard binding" via editPage js
 		mw.load( 'editPage', function(){
 			mw.log("editPage loaded");
 		});

@@ -5,7 +5,7 @@
 mw.setConfig('loaderContext', wgScriptPath + '/extensions/UsabilityInitiative/WikiEditor/');
 
 mw.addClassFilePaths({
-	"wikiEditorHighlight" : "Modules/Highlight/Highlight.js",
+	"wikiEditor.config.highlight" : "Modules/Highlight/Highlight.js",
 	"wikiEditor.config.preview" : "Modules/Preview/Preview.js",
 	"wikiEditor.config.publish" : "Modules/Publish/Publish.js",
 	"wikiEditor.config.toc" : "Modules/Toc/Toc.js",
@@ -60,6 +60,7 @@ mw.addModuleLoader( 'WikiEditor', function( callback ){
 	
 	
 	mw.load(libReq, function(){
+		mw.log('wikiEditor done ' );
 		callback( 'WikiEditor' );
 	});
 	
