@@ -480,7 +480,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$tmp = array();
 		$cols = $cols ? $cols : array_keys( $th );
 		foreach ( $cols as $col ) {
-			if ( $groupby === false || !in_array( $col, $groupby ) ) {
+			if ( $groupby == false || !in_array( $col, $groupby ) ) {
 				$html = isset( $th[$col] ) ? $th[$col] : "<th>$col</th>";
 				$table .= "$html\n";
 				$tmp[] = $col;
