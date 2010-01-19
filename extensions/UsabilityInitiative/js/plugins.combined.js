@@ -6887,7 +6887,7 @@ if ( typeof context == 'undefined' ) {
 				while ( ec.firstChild && ec.nodeName != '#text' ) {
 					ec = ec.firstChild;
 				}
-				var range = document.createRange();
+				var range = context.$iframe[0].contentWindow.document.createRange();
 				range.setStart( sc, options.start );
 				range.setEnd( ec, options.end );
 				sel.removeAllRanges();
