@@ -396,11 +396,12 @@ class SpecialRecordAdmin extends SpecialPage {
 			$tmp = array();
 			foreach ( $records as $r ) {
 				$v0 = $r[$groupby[0]];
+				if ( !isset( $tmp[$v0] ) || !is_array( $tmp[$v0] ) ) $tmp[$v0] = array();
 				if ( isset( $groupby[1] ) ) {
 					$v1 = $r[$groupby[1]];
-					if ( !isset( $tmp[$v0] ) || !is_array( $tmp[$v0] ) ) $tmp[$v0] = array();
-					$tmp[$v0][$v1] = $r;
-				} else $tmp[$v0] = $r;
+					if ( !isset( $tmp[$v0][$v1] ) || !is_array( $tmp[$v0][$v1] ) ) $tmp[$v0][$v1] = array();
+					$tmp[$v0][$v1][] = $r;
+				} else $tmp[$v0][] = $r;
 			}
 			$records = $tmp;
 		}
@@ -489,7 +490,9 @@ class SpecialRecordAdmin extends SpecialPage {
 			foreach( $records as $k1 => $v1 ) {
 				if ( empty( $k1 ) ) $k1 = wfMsg( 'recordadmin-notset', $groupby[0] );
 				$tmp[] = "$td<h2>$k1</h2></td>\n";
+				print "---->$k1<br>";
 				foreach( $v1 as $k2 => $v2 ) {
+				print "-------->$k2:$v2<br>";
 					if ( isset( $groupby[1] ) ) {
 						if ( empty( $k2 ) ) $k2 = wfMsg( 'recordadmin-notset', $groupby[1] );
 						$tmp[] = "$td<h3>$k2</h3></td>\n";
