@@ -847,6 +847,34 @@ mw.RemoteSearchDriver.prototype = {
 		});
 		var $providerSelection = $j( '<ul />' ).addClass( "ui-provider-selection" );
 		
+		var $searchButton = $j.button({
+            	icon_id: 'search', 
+            	text: gM( 'mwe-media_search' ) })
+            .addClass( 'rsd_search_button' )
+			.buttonHover()
+			.click(function (){
+				_this.showSearchTab( _this.current_provider, true );
+			});
+		var $searchBox = $j( '<input />' ).addClass( 'ui-widget-content ui-corner-all' ).attr({
+			type: "text",
+			tabindex: 1,
+			value: this.getDefaultQuery(),
+			maxlength: 512,
+			id: "rsd_q",
+			name: "rsd_q",
+			size: 20,
+			autocomplete: "off"
+		})
+		// Prevent searching for empty input.
+		.keyup(function () {
+			if ( $searchBox.val().length == 0 ) {
+				$searchButton.addClass('ui-button-disabled');
+			}
+			else {
+				$searchButton.removeClass("ui-button-disabled");
+			}
+		});
+		
 		// Add enabled search providers.
 		for ( var providerName in this.content_providers ) {
 			var content_providers = this.content_providers;
@@ -875,26 +903,6 @@ mw.RemoteSearchDriver.prototype = {
 				$providerSelection.append( $listItem );
 			}
 		}
-		
-		var $searchBox = $j( '<input />' ).addClass( 'ui-widget-content ui-corner-all' ).attr({
-			type: "text",
-			tabindex: 1,
-			value: this.getDefaultQuery(),
-			maxlength: 512,
-			id: "rsd_q",
-			name: "rsd_q",
-			size: 20,
-			autocomplete: "off"
-		});
-		var $searchButton = $j.button({
-		                       icon_id: 'search', 
-		                       text: gM('mwe-media_search') })
-			.addClass( 'rsd_search_button' )
-			.buttonHover()
-			.click(function (){
-				//TODO: Add search provider call.
-				_this.showSearchTab( _this.current_provider, true );
-			});
 		
 		$searchForm.append( $providerSelection );
 		$searchForm.append( $searchBox );
@@ -1057,6 +1065,12 @@ mw.RemoteSearchDriver.prototype = {
 			}
 		}
 
+		if ( $j ( '#rsd_q' ).val().length == 0 ) {
+			$j( '#rsd_results_container' ).empty()
+			$j( '#rsd_results_container' ).text( 'Please insert a search string above.' );
+			return;
+		}
+		
 		// Set the content to loading while we do the search:
 		$j( '#rsd_results_container' ).html( mw.loading_spinner() );
 					
@@ -1190,14 +1204,14 @@ mw.RemoteSearchDriver.prototype = {
 		_this.loadSearchLib( provider, function( provider ) {
 			var d = new Date();
 			var searchTime = d.getMilliseconds();
-			// Do the search:												
-			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() , function( resultStatus ){				
+			// Do the search:	
+				provider.sObj.getSearchResults( $j( '#rsd_q' ).val() , function( resultStatus ){				
 				//if( resultStatus == 'ok' ){
 					_this.showResults();
 				//}else{
 				//	_this.showFailure( resultStatus )
-				//}			
-			});			
+				//}
+				});		
 			
 			// Set a timeout of 20 seconds
 			setTimeout(function(){
@@ -1577,44 +1591,36 @@ mw.RemoteSearchDriver.prototype = {
 			gM( 'rsd_resource_edit', resource.title );
 		$j( _this.target_container ).dialog( 'option', 'title', dialogTitle );
 		mw.log( 'did append to: ' + _this.target_container );
-
-		// Left side holds the image right size the controls
-		$j( rsdElement )
-			.clone()
-			.attr( 'id', 'rsd_edit_img' )
-			.appendTo( '#clip_edit_disp' )
-			.css( {
-				'position':'absolute',
-				'top':'40%',
-				'left':'20%',
-				'cursor':'default',
-				'opacity':0
-			} );
 			
 		// Try and keep aspect ratio for the thumbnail that we clicked:			
 		var imageRatio = null;
 		try {			
 			imageRatio = $j( rsdElement ).get(0).height / $j( rsdElement ).get(0).width;
 		} catch( e ) {
-			mw.log( 'Errro: browser could not read height or width attribute' ) ;
+			mw.log( 'Error: browser could not read height or width attribute' ) ;
 		}
 		if ( !imageRatio ) {
 			var imageRatio = 1; // set ratio to 1 if tRatio did not work.
 		}
 		
+		$j( rsdElement )
+		.clone()
+		.attr( { id : 'rsd_edit_img' } )
+		.appendTo( '#clip_edit_disp' )
+		.css( {
+			'position':'absolute',
+			'top': '5px',
+			'left': '5px',
+			'cursor': 'default',
+			'opacity': 1,
+			'width': maxWidth + 'px',
+			'height': parseInt( imageRatio * maxWidth )  + 'px'
+		} );
+	
+		
 		mw.log( 'Set from ' +  imageRatio + ' to init thumbimage to ' + 
 			maxWidth + ' x ' + parseInt( imageRatio * maxWidth ) );
-		// Scale up image and to swap with high res version
-		$j( '#rsd_edit_img' ).animate( 
-			{
-				'opacity': 1,
-				'top': '5px',
-				'left': '5px',
-				'width': maxWidth + 'px',
-				'height': parseInt( imageRatio * maxWidth )  + 'px'
-			}, 
-			"slow" ); // Do it slow to give it a chance to finish loading the high quality version
-
+		
 		if ( mediaType == 'image' ) {
 			_this.loadHighQualityImage( 
 				resource, 
