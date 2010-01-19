@@ -2846,7 +2846,7 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 	'optin-survey-answer-whyoptout-other' => 'Alasan lain:',
 	'optin-survey-question-explain' => 'Harap menjelaskan atau menguraikan jawaban Anda di atas:',
 	'optin-survey-question-techfail' => 'Pernahkah anda mengalami kesalahan teknis ketika menggunakan Beta?',
-	'optin-survey-question-techfail-ifyes' => 'Jika iya, silahkan uraikan atau jabarkan:',
+	'optin-survey-question-techfail-ifyes' => 'Jika iya, silakan uraikan atau jabarkan:',
 	'optin-survey-question-usedtoolbar' => 'Apakah anda menggunakan kotak peralatan baru yang dapat diperluas untuk menyunting halaman?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Jika iya, apa yang kamu sukai? Apa yang Anda tidak sukai?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Jika tidak, mengapa tidak? Apakah akan anda lakukan kemudian? Tolong jelaskan.',
