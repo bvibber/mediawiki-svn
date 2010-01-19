@@ -6526,7 +6526,7 @@ $.wikiEditor = {
 		'ltr': {
 			// The toolbar layout is broken in IE6
 			'msie': [['>=', 7]],
-		    // jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
+			// jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
 			'firefox': [
 				['>=', 2], ['!=', '2.0'], ['!=', '2.0.0.1'], ['!=', '2.0.0.2'], ['!=', '2.0.0.3'], ['!=', '2.0.0.4']
 			],
@@ -6539,7 +6539,7 @@ $.wikiEditor = {
 		'rtl': {
 			// The toolbar layout is broken in IE 7 in RTL mode, and IE6 in any mode
 			'msie': [['>=', 8]],
-		    // jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
+			// jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
 			'firefox': [
 				['>=', 2], ['!=', '2.0'], ['!=', '2.0.0.1'], ['!=', '2.0.0.2'], ['!=', '2.0.0.3'], ['!=', '2.0.0.4']
 			],
