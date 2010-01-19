@@ -15,6 +15,7 @@ public interface WikiWordConceptStore<T extends WikiWordConcept, R extends WikiW
 	
 	public StatisticsStore getStatisticsStore() throws PersistenceException;
 	public ConceptInfoStore<T> getConceptInfoStore() throws PersistenceException;
+	public ProximityStore<T, R> getProximityStore() throws PersistenceException;
 
 	public T getConcept(int id) throws PersistenceException;
 	

@@ -73,10 +73,10 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 		}
 
 		public LabeledVector<Integer> getFeatureVector(int concept) throws PersistenceException {
-			String sql = "SELECT feature, normal_value FROM " +featureTable.getSQLName()+" as F ";
+			String sql = "SELECT feature, normal_weight FROM " +featureTable.getSQLName()+" as F ";
 			sql += " WHERE concept = "+concept;
 
-			return readVector("getFeatireVector", sql, "feature", "normal_value");
+			return readVector("getFeatireVector", sql, "feature", "normal_weight");
 		}
 
 		protected  <K> LabeledVector<K> readVector(String name, String sql, String keyField, String valueField) throws PersistenceException {
@@ -106,7 +106,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 		}
 
 		public DataSet<WikiWordConceptFeatures> getNeighbourhoodFeatures(int concept) throws PersistenceException {
-			String sql = "SELECT X.concept as concept, X.feature as feature, X.value as value ";
+			String sql = "SELECT X.concept as concept, X.feature as feature, X.normal_value as value ";
 			sql += " FROM " + featureTable.getSQLName() + " as X ";
 			sql += " JOIN "+featureTable.getSQLName()+" as N ON N.feature = C.id ";
 			sql += " JOIN "+featureTable.getSQLName()+" as F ON F.feature = N.concept ";

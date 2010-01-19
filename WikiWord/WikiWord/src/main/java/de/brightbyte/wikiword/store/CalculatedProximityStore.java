@@ -10,6 +10,11 @@ import de.brightbyte.data.MapLabeledVector;
 import de.brightbyte.data.cursor.CursorIterator;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.DataSet;
+import de.brightbyte.data.measure.CosineVectorSimilarity;
+import de.brightbyte.data.measure.Distance;
+import de.brightbyte.data.measure.DistanceMeasure;
+import de.brightbyte.data.measure.ScalarVectorSimilarity;
+import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.UncheckedPersistenceException;
 import de.brightbyte.wikiword.model.WikiWordConcept;
@@ -81,13 +86,12 @@ public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiW
 
 	protected WikiWordReference.Factory<R> referenceFactory;
 	protected FeatureTopologyStore<T, R> featureStore;
-	protected Functor2<Double, LabeledVector<Integer>, LabeledVector<Integer>>  proximityMeasure;
+	protected Similarity<LabeledVector<Integer>>  proximityMeasure;
 	
 	public CalculatedProximityStore(FeatureTopologyStore<T, R> featureStore, 
-						Functor2<Double, LabeledVector<Integer>, LabeledVector<Integer>> proximityMeasure, 
 						WikiWordReference.Factory<R> referenceFactory) {
 		this.featureStore = featureStore;
-		this.proximityMeasure = proximityMeasure;
+		this.proximityMeasure = ScalarVectorSimilarity.<Integer>getInstance();
 		this.referenceFactory = referenceFactory;
 	}
 
@@ -128,7 +132,7 @@ public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiW
 	}
 
 	protected double getProximity(LabeledVector<Integer> v, LabeledVector<Integer> w) {
-		return proximityMeasure.apply(v, w);
+		return proximityMeasure.similarity(v, w);
 	}
 	
 	public double getProximity(int concept1, int concept2)

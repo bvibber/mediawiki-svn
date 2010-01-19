@@ -10,10 +10,15 @@ import de.brightbyte.rdf.RdfPlatforms;
 import de.brightbyte.rdf.RdfProperties;
 import de.brightbyte.rdf.Rdfalizer;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.model.AbstractConceptOutput;
 import de.brightbyte.wikiword.model.GlobalConcept;
+import de.brightbyte.wikiword.model.GlobalConceptReference;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.LocalConceptReference;
+import de.brightbyte.wikiword.model.WikiWordConcept;
+import de.brightbyte.wikiword.model.WikiWordConceptReference;
 
 public class RdfOutput<V, R extends V, A, W> extends AbstractConceptOutput {
 	protected RdfPlatform<V, R, A, W> platform;
@@ -21,8 +26,12 @@ public class RdfOutput<V, R extends V, A, W> extends AbstractConceptOutput {
 	
 	protected Rdfalizer<V, R, A, LocalConcept> localConceptRdfalizer;
 	protected Rdfalizer<V, R, A, GlobalConcept> globalConceptRdfalizer;
+
+	protected Rdfalizer<V, R, A, LocalConceptReference> localConceptReferenceRdfalizer;
+	protected Rdfalizer<V, R, A, GlobalConceptReference> globalConceptReferenceRdfalizer;
 	
 	protected WikiWordIdentifiers identifiers;
+	protected DatasetIdentifier dataset;
 	
 	@SuppressWarnings("unchecked")
 	public RdfOutput(WikiWordIdentifiers identifiers, String platform, Writer writer, String format, DatasetIdentifier ds) throws RdfException, PersistenceException {
@@ -37,12 +46,17 @@ public class RdfOutput<V, R extends V, A, W> extends AbstractConceptOutput {
 	
 	private void init(W writer, DatasetIdentifier ds) throws RdfException {
 		this.writer = writer;
+		this.dataset = ds;
 		
 		localConceptRdfalizer = new GenericRdfalizer<V, R, A, LocalConcept>(platform);
 		globalConceptRdfalizer = new GenericRdfalizer<V, R, A, GlobalConcept>(platform);
+		localConceptReferenceRdfalizer = new GenericRdfalizer<V, R, A, LocalConceptReference>(platform);
+		globalConceptReferenceRdfalizer = new GenericRdfalizer<V, R, A, GlobalConceptReference>(platform);
 
 		localConceptRdfalizer.addProperties(new LocalConceptSkosProperties<V, R, A>(identifiers, platform));
 		globalConceptRdfalizer.addProperties(new GlobalConceptSkosProperties<V, R, A>(identifiers, platform));
+		localConceptReferenceRdfalizer.addProperties(new LocalConceptReferenceSkosProperties<V, R, A>(identifiers, platform));
+		globalConceptReferenceRdfalizer.addProperties(new GlobalConceptReferenceSkosProperties<V, R, A>(identifiers, platform));
 	}
 	
 	private RdfOutput(WikiWordIdentifiers identifiers, RdfPlatform<V, R, A, W> platform) {
@@ -64,6 +78,20 @@ public class RdfOutput<V, R extends V, A, W> extends AbstractConceptOutput {
 	
 	public void writeStatement(R subject, R predicate, V object) throws RdfException, PersistenceException {
 		platform.writeStatement(writer, subject, predicate, object);
+	}
+	
+	public void writeConceptReference(WikiWordConceptReference<? extends WikiWordConcept> ref) throws PersistenceException {
+		try {
+			A about;
+
+			if (ref instanceof LocalConceptReference) about = localConceptReferenceRdfalizer.getRdf(identifiers.localConceptBaseURI((Corpus)dataset), WikiWordIdentifiers.localConceptID(ref.getName()), (LocalConceptReference)ref);
+			else if (ref instanceof GlobalConceptReference) about = globalConceptReferenceRdfalizer.getRdf(identifiers.globalConceptBaseURI(dataset), WikiWordIdentifiers.globalConceptID(ref.getId()), (GlobalConceptReference)ref);
+			else throw new IllegalArgumentException("unknown type of references: "+ref.getClass());
+			
+			platform.writeResource(writer, about);
+		} catch (RdfException e) {
+			throw new PersistenceException(e);
+		}
 	}
 	
 	public void writeLocalConcept(LocalConcept concept) throws PersistenceException {

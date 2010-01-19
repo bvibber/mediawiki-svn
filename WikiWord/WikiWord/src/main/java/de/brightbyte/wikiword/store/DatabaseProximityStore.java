@@ -25,7 +25,7 @@ public class DatabaseProximityStore<T extends WikiWordConcept, R extends WikiWor
 		}
 		
 		public DataSet<? extends R> getEnvironment(int concept, double minProximity) throws PersistenceException {
-			String sql = "SELECT C.id as cId, C.name as cName, proximity as qRelev ";
+			String sql = "SELECT C.id as cId, C.name as cName, null as qCard, proximity as qRelev ";
 			sql += " FROM " + conceptTable.getSQLName() + " as C ";
 			sql += " JOIN "+proximityTable.getSQLName()+" as P ON P.concept2 = C.id ";
 			sql += " WHERE concept1 = "+concept;

@@ -2,9 +2,7 @@ package de.brightbyte.wikiword.model;
 
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.DataSet;
-import de.brightbyte.rdf.RdfException;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.rdf.RdfOutput.Relation;
 
 public abstract class AbstractConceptOutput implements ConceptOutput {
 
@@ -22,6 +20,14 @@ public abstract class AbstractConceptOutput implements ConceptOutput {
 		WikiWordConcept concept;
 		while ((concept = cursor.next()) != null) {
 			writeConcept(concept);
+		}
+	}
+
+	public void writeConceptReferences(DataSet<? extends WikiWordConceptReference<? extends WikiWordConcept>> references) throws PersistenceException {
+		DataCursor<? extends WikiWordConceptReference<? extends WikiWordConcept>> cursor = references.cursor();
+		WikiWordConceptReference<? extends WikiWordConcept> r;
+		while ((r = cursor.next()) != null) {
+			writeConceptReference(r);
 		}
 	}
 	

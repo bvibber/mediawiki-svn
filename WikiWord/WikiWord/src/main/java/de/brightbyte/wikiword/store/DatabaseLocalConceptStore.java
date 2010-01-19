@@ -16,7 +16,6 @@ import de.brightbyte.db.ChunkedQueryDataSet;
 import de.brightbyte.db.DatabaseDataSet;
 import de.brightbyte.db.DatabaseSchema;
 import de.brightbyte.db.EntityTable;
-import de.brightbyte.db.Inserter;
 import de.brightbyte.db.QueryDataSet;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
@@ -49,6 +48,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 	protected Corpus corpus;
 
 	protected EntityTable resourceTable;
+	protected RelationTable aboutTable;
 	
 	protected EntityTable definitionTable;
 	protected EntityTable sectionTable;
@@ -59,14 +59,6 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 	
 	//protected EntityTable conceptDescriptionTable;
 
-	protected Inserter resourceInserter;
-	
-	protected Inserter definitionInserter;
-	protected Inserter sectionInserter;
-	
-	protected Inserter linkInserter;
-	protected Inserter aliasInserter;
-	
 	//protected TweakSet tweaks;
 	
 	/**
@@ -112,6 +104,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		this.tweaks = tweaks;
 		
 		resourceTable = (EntityTable)database.getTable("resource"); 
+		aboutTable = (RelationTable)database.getTable("about"); 
 		
 		definitionTable = (EntityTable)database.getTable("definition");
 		sectionTable = (EntityTable)database.getTable("section");
@@ -278,7 +271,8 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 					" D.terms as dTerms" +
 					" FROM "+conceptTable.getSQLName()+" as C "+
 					distribJoin+
-					" LEFT JOIN "+resourceTable.getSQLName()+" as R ON R.id = C.resource "+
+					" LEFT JOIN "+aboutTable.getSQLName()+" as A ON A.concept = C.id "+
+					" LEFT JOIN "+resourceTable.getSQLName()+" as R ON R.id = A.resource "+
 					" LEFT JOIN "+definitionTable.getSQLName()+" as F ON F.concept = C.id "+
 					" LEFT JOIN "+conceptInfoTable.getSQLName()+" as I ON I.concept = C.id "+
 					" LEFT JOIN "+conceptDescriptionTable.getSQLName()+" as D ON D.concept = C.id ";

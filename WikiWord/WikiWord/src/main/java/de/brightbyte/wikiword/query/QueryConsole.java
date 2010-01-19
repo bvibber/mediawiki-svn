@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.rdf.RdfException;
 import de.brightbyte.util.PersistenceException;
@@ -22,10 +23,12 @@ import de.brightbyte.wikiword.model.GlobalConcept;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
+import de.brightbyte.wikiword.model.WikiWordReference;
 import de.brightbyte.wikiword.rdf.RdfOutput;
 import de.brightbyte.wikiword.store.DatabaseConceptStores;
 import de.brightbyte.wikiword.store.GlobalConceptStore;
 import de.brightbyte.wikiword.store.LocalConceptStore;
+import de.brightbyte.wikiword.store.ProximityStore;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
 
 public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
@@ -92,6 +95,10 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 			output.writeConcept(concept);
 		}
 
+		public void writeConceptReference(WikiWordConceptReference concept) throws PersistenceException {
+			output.writeConceptReference(concept);
+		}
+
 		public void writeConcepts(DataSet<? extends WikiWordConcept> meanings) throws PersistenceException {
 			output.writeConcepts(meanings);
 		}
@@ -102,6 +109,17 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 
 		public void writeLocalConcept(LocalConcept concept) throws PersistenceException {
 			output.writeLocalConcept(concept);
+		}
+
+		public void writeFeatureVector(LabeledVector featureVector) throws PersistenceException  {
+			//XXX: hack!
+			try {
+				writer.write(featureVector.toString());
+				writer.write("\n");
+				writer.flush();
+			} catch (IOException e) {
+				throw new PersistenceException(e);
+			}
 		}
 		
 	}
@@ -129,6 +147,11 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 			} catch (IOException e) {
 				throw new PersistenceException(e);
 			}
+		}
+
+
+		public void writeConceptReference(WikiWordConceptReference concept) throws PersistenceException {
+			println("> (", concept.getRelevance(), ":", concept.getCardinality(), ") #", concept.getId(), ": ", concept.getName());
 		}
 
 		public void writeGlobalConcept(GlobalConcept concept) throws PersistenceException {
@@ -305,6 +328,21 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 					showConcept(Integer.parseInt(id), out);
 				}
 			}
+			else if (cmd.equals("e") || cmd.equals("env") || cmd.equals("environment")) {
+				if (params.size()>2 ) {
+					String id = params.get(1);
+					String min = params.get(2);
+					showEnvironment(Integer.parseInt(id), Double.parseDouble(min), out);
+				}
+				else {
+					String id = params.get(1);
+					showEnvironment(Integer.parseInt(id), 0, out);
+				}
+			}
+			else if (cmd.equals("f") || cmd.equals("feat") || cmd.equals("features")) {
+					String id = params.get(1);
+					showFeatureVector(Integer.parseInt(id), out);
+			}
 			else if (cmd.equals("ls") || cmd.equals("list")) {
 				listConcepts(out);
 			}
@@ -324,6 +362,10 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 
 	protected LocalConceptStore getLocalConceptStore() {
 		return (LocalConceptStore)(Object)conceptStore; //XXX: FUGLY! generic my ass.
+	}
+
+	protected ProximityStore getProximityStore() throws PersistenceException {
+		return conceptStore.getProximityStore();
 	}
 
 	public void dumpStats() throws PersistenceException {
@@ -382,6 +424,21 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		}
 			
 		out.writeConcept(lc);
+	}		
+
+	public void showEnvironment(int id, double min, ConsoleOutput out) throws PersistenceException {
+		DataSet<WikiWordConceptReference> environment = getProximityStore().getEnvironment(id, min);
+		List<WikiWordConceptReference> env = environment.load();
+		Collections.sort(env, WikiWordReference.byRelevance);
+		
+		for (WikiWordConceptReference r: env) {
+			out.writeConceptReference(r);
+		}
+	}		
+
+	public void showFeatureVector(int id, ConsoleOutput out) throws PersistenceException {
+		LabeledVector featureVector = getProximityStore().getFeatureVector(id);
+		out.writeFeatureVector(featureVector);
 	}		
 
 	public static void main(String[] argv) throws Exception {

@@ -21,11 +21,13 @@ import de.brightbyte.db.RelationTable;
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
+import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.model.WikiWordReference;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
+import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
 import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
 
@@ -90,7 +92,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		int id = row.getInt("cId");
 		String name = asString(row.getObject("cName"));
 		int card = row.getInt("qCard");
-		double relev = row.getInt("qRelev");
+		double relev = row.getDouble("qRelev");
 	
 		return newReference(id, name, card, relev);
 	}
@@ -178,6 +180,10 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		return numberOfConcepts;
 	}
 	
+	public boolean isGlobal() {
+		return !(getDatasetIdentifier() instanceof Corpus);
+	}
+	
 	/*
 	public static class ConceptQuerySpec {
 		public final String lang;
@@ -234,12 +240,29 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 
 	protected abstract DatabaseStatisticsStore newStatisticsStore() throws SQLException, PersistenceException;
 	protected abstract DatabaseConceptInfoStore<T> newConceptInfoStore() throws SQLException, PersistenceException;
+
+	protected ProximityStore<T, R> newProximityStore() throws SQLException, PersistenceException {
+		ProximityStoreSchema schema = new ProximityStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), null, isGlobal(), tweaks, false); 
+		
+		if (tweaks.getTweak("proximity.usedStoredProximity", true) && schema.tableExists("proximity")) {
+			int c = schema.getTableSize("proximity");
+			if (c>0) { //proximity values are pre-calculated in the database
+				return new DatabaseProximityStore<T, R>(this, schema, tweaks);
+			}
+		} 
+
+		//proximity values are not in the database, calculate on the fly
+		DatabaseFeatureStore<T, R> store = new DatabaseFeatureStore<T, R>(this, schema, tweaks);
+		return new CalculatedProximityStore<T, R>(store, getReferenceFactory());
+	}
 	
 	private DatabaseStatisticsStore statsStore;
 	private DatabaseConceptInfoStore<T> infoStore;
+
+	private ProximityStore<T, R> proximityStore;
 	
 	public DatabaseConceptInfoStore<T> getConceptInfoStore() throws PersistenceException {
-		try { //FIXME: read-only!
+		try { 
 			if (infoStore==null) infoStore = newConceptInfoStore();
 			return infoStore;
 		} catch (SQLException e) {
@@ -248,9 +271,18 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 	}
 
 	public StatisticsStore<T, R> getStatisticsStore() throws PersistenceException {
-		try { //FIXME: read-only!
+		try {
 			if (statsStore==null) statsStore = newStatisticsStore();
 			return statsStore;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		} 
+	}	
+
+	public ProximityStore<T, R> getProximityStore() throws PersistenceException {
+		try { 
+			if (proximityStore==null) proximityStore = newProximityStore();
+			return proximityStore;
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		} 
@@ -263,8 +295,6 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		protected EntityTable statsTable;
 		protected EntityTable degreeTable;
 		
-		protected boolean readOnly = false; //FIXME: read-only mode?!
-
 		protected DatabaseStatisticsStore(StatisticsStoreSchema database, TweakSet tweaks) throws SQLException {
 			super(database, tweaks);
 			

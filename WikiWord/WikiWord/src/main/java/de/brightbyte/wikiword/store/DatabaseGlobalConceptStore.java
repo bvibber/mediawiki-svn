@@ -15,7 +15,6 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import de.brightbyte.data.cursor.DataSet;
-import de.brightbyte.db.Inserter;
 import de.brightbyte.db.QueryDataSet;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
@@ -28,7 +27,6 @@ import de.brightbyte.wikiword.model.ConceptRelations;
 import de.brightbyte.wikiword.model.GlobalConcept;
 import de.brightbyte.wikiword.model.GlobalConceptReference;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.model.TranslationReference;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.GlobalConceptStoreSchema;
@@ -47,8 +45,6 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 	public static final String DEFAULT_DATASET = "thesaurus";
 	
 	protected Map<String, DatabaseLocalConceptStore> localStores = new HashMap<String, DatabaseLocalConceptStore>();
-	
-	protected Inserter mergeInserter;
 	
 	protected RelationTable originTable;
 	protected RelationTable relationTable;	 
