@@ -169,10 +169,10 @@ evt: {
 		context.$ui.find( '.sections' ).height( context.$ui.find( '.sections .section:visible' ).outerHeight() );
 	},
 	tocCollapse: function( context, event ) {
-		$.wikiEditor.modules.toolbar( context, event );
+		$.wikiEditor.modules.toolbar.evt.resize( context, event );
 	},
 	tocExpand: function( context, event ) {
-		$.wikiEditor.modules.toolbar( context, event );
+		$.wikiEditor.modules.toolbar.evt.resize( context, event );
 	}
 },
 /**
