@@ -7042,11 +7042,16 @@ if ( typeof context == 'undefined' ) {
 		'scrollToTop': function( $element, force ) {
 			var html = context.$content.closest( 'html' ),
 				body = context.$content.closest( 'body' ),
-				parent = $( 'html' );
-			var y = $element.offset().top - context.$content.offset().top;
-			y = parent.scrollTop() > 0 ? y + html.scrollTop() - parent.scrollTop() : y;
+				parentHtml = $( 'html' ),
+				parentBody = $( 'body' );
+			var y = $element.offset().top;
+			if ( !$.browser.msie ) {
+				y = parentHtml.scrollTop() > 0 ? y + html.scrollTop() - parentHtml.scrollTop() : y;
+				y = parentBody.scrollTop() > 0 ? y + body.scrollTop() - parentBody.scrollTop() : y;
+			}
 			if ( force || y < html.scrollTop() || y > html.scrollTop() + context.$iframe.height() ) {
 					html.scrollTop( y );
+					body.scrollTop( y );
 				}
 			$element.trigger( 'scrollToTop' );
 		},
@@ -9301,10 +9306,10 @@ evt: {
 		context.$ui.find( '.sections' ).height( context.$ui.find( '.sections .section:visible' ).outerHeight() );
 	},
 	tocCollapse: function( context, event ) {
-		$.wikiEditor.modules.toolbar( context, event );
+		$.wikiEditor.modules.toolbar.evt.resize( context, event );
 	},
 	tocExpand: function( context, event ) {
-		$.wikiEditor.modules.toolbar( context, event );
+		$.wikiEditor.modules.toolbar.evt.resize( context, event );
 	}
 },
 /**
