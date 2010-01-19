@@ -24,6 +24,7 @@ PLUGINS := \
 	js/plugins/jquery.collapsibleTabs.js\
 	js/js2stopgap/jquery.cookie.js\
 	js/plugins/jquery.delayedBind.js\
+	js/plugins/jquery.inherit.js\
 	js/plugins/jquery.namespaceSelect.js\
 	js/plugins/jquery.suggestions.js\
 	js/js2stopgap/jquery.textSelection.js\
