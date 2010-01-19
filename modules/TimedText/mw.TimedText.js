@@ -255,7 +255,7 @@ mw.addMessages( {
 			this.textSources = [ ];
 			// Get local reference to all timed text sources: ( text/xml, text/x-srt etc )			
 			var inlineSources = this.embedPlayer.mediaElement.getSources( 'text' );
-			//add all the sources to textSources
+			// Add all the sources to textSources
 			for( var i = 0 ; i < inlineSources.length ; i++ ){
 				// make a new textSource:
 				var source = new TextSource( inlineSources[i] );

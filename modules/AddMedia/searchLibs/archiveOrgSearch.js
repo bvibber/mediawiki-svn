@@ -35,13 +35,10 @@ archiveOrgSearch.prototype = {
 	*
 	* @param {String} search_query Text search string
 	*/
-	getSearchResults: function( search_query ) {
-	
-		// call parent for common initialization:  
-		this.parent_getSearchResults();
+	getProviderResults: function( search_query, callback ) {
 		
 		var _this = this;
-		mw.log( 'archive_org:getSearchResults for:' + search_query + ' from: ' + this.provider.api_url );
+		mw.log( 'archive_org:getProviderResults for:' + search_query + ' from: ' + this.provider.api_url );
 		
 		
 		// For now force (Ogg video) & url based license
@@ -60,7 +57,7 @@ archiveOrgSearch.prototype = {
 		}
 		mw.getJSON( this.provider.api_url + '?json.wrf=?', request, function( data ) {
 			_this.addResults( data );
-			_this.loading = false;
+			callback( 'ok' );
 		} );
 	},
 	/**

@@ -72,7 +72,7 @@ baseRemoteSearch.prototype = {
 	* Does some common initialisation for search results  	
 	* @param {String} search_query Text search string 
 	*/
-	getSearchResults: function( search_query ) {
+	getSearchResults: function( search_query , callback ) {		
 		// Empty out the current results before issuing a request
 		this.resultsObj = { };
 		
@@ -80,8 +80,16 @@ baseRemoteSearch.prototype = {
 		this.last_query = search_query;
 		this.last_offset = this.provider.offset;
 		
-		// Set the loading flag:		
-		this.loading = true;
+		// Get the provider specifc results 
+		this.getProviderResults( search_query , callback);
+	},
+	
+	/**
+	* getProviderResults abstract method
+	*/
+	getProviderResults: function( searchQuery , calback){
+		mw.log( 'Error: getProviderResults not set by provider' );
+		callback( 'error-provider' );  
 	},
 	
 	/**
@@ -429,7 +437,7 @@ baseRemoteSearch.prototype = {
 	*/
 	updateTargetResourceTitle:function( resource ) {
 		if( resource.titleKey ){
-			resource.target_resource_title = resource.titleKey.replace( /^(File:|Image:)/ , '' );
+			resource.target_resource_title = resource.titleKey.replace( /^(File:|Image:)/ , '' ).replace(':', '');
 			resource.target_resource_title = this.provider.resource_prefix + resource.target_resource_title;
 		}
 	},

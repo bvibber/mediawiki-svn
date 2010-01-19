@@ -51,12 +51,10 @@ flickrSearch.prototype = {
 	* Runs an api call then calls addResults with the resulting data
 	* @param {String} search_query Text search string 
 	*/
-	getSearchResults:function( search_query ) {
+	getProviderResults: function( search_query, callback ) {
 		var _this = this;
-		mw.log( "flickr::getSearchResults" );
-		
-		// call parent for common initialisation:  
-		this.parent_getSearchResults();
+		mw.log( "flickr::getProviderResults" );
+
 		
 		// setup the flickr request: 
 		var request = {
@@ -71,7 +69,7 @@ flickrSearch.prototype = {
 		}
 		$j.getJSON( this.provider.api_url + '?jsoncallback=?', request, function( data ) {
 			_this.addResults( data );
-			_this.loading = false;
+			callback( 'ok' );
 		} );
 	},
 	/**

@@ -641,7 +641,7 @@ mw.ClipEdit.prototype = {
 						.buttonHover()
 						.click( function() {
 							_this.applyEdit();
-							_this.controlActionsCallback['insert_seq'](  _this.resource );
+							_this.controlActionsCallback[ 'insert_seq' ](  _this.resource );
 						} );
 				break;				
 				case 'insert':
@@ -659,7 +659,7 @@ mw.ClipEdit.prototype = {
 						.buttonHover()
 						.click( function() {
 							_this.applyEdit();
-							_this.controlActionsCallback['preview'](  _this.resource );
+							_this.controlActionsCallback[ 'preview' ](  _this.resource );
 						} ).show( 'slow' );
 				break;					
 				case 'cancel':
