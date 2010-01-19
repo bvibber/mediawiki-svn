@@ -451,9 +451,9 @@ if ( typeof context == 'undefined' ) {
 				// in reverse order
 				var lastNode;
 				for ( var i = insertLines.length - 1; i >= 0; i-- ) {
-					range.insertNode( document.createTextNode( insertLines[i] ) );
+					range.insertNode( context.$iframe[0].contentWindow.document.createTextNode( insertLines[i] ) );
 					if ( i > 0 ) {
-						lastNode = range.insertNode( document.createElement( 'br' ) );
+						lastNode = range.insertNode( context.$iframe[0].contentWindow.document.createElement( 'br' ) );
 					}
 				}
 				if ( lastNode ) {
@@ -466,7 +466,7 @@ if ( typeof context == 'undefined' ) {
 				if ( options.ownline && range.moveStart ) {
 					// Check if we're at the start of a line
 					// If not, prepend a newline
-					var range2 = document.selection.createRange();
+					var range2 = context.$iframe[0].contentWindow.document.selection.createRange();
 					range2.collapse();
 					range2.moveStart( 'character', -1 );
 					// FIXME: Which check is correct?
@@ -476,7 +476,7 @@ if ( typeof context == 'undefined' ) {
 					
 					// Check if we're at the end of a line
 					// If not, append a newline
-					var range3 = document.selection.createRange();
+					var range3 = context.$iframe[0].contentWindow.document.selection.createRange();
 					range3.collapse( false );
 					range3.moveEnd( 'character', 1 );
 					if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
@@ -526,6 +526,7 @@ if ( typeof context == 'undefined' ) {
 					ec = ec.firstChild;
 				}
 				var range = context.$iframe[0].contentWindow.document.createRange();
+				console.dir( [ range, sc, options.start ] );
 				range.setStart( sc, options.start );
 				range.setEnd( ec, options.end );
 				sel.removeAllRanges();
