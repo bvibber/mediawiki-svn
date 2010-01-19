@@ -7007,7 +7007,6 @@ if ( typeof context == 'undefined' ) {
 					ec = ec.firstChild;
 				}
 				var range = context.$iframe[0].contentWindow.document.createRange();
-				console.dir( [ range, sc, options.start ] );
 				range.setStart( sc, options.start );
 				range.setEnd( ec, options.end );
 				sel.removeAllRanges();
