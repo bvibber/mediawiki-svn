@@ -184,7 +184,6 @@ class OutputPage {
 		// @todo We should deprecate wikibits in favor of some mwEmbed pieces and jQuery
 		$coreClasses = array( 'window.jQuery', 'mwEmbed', 'wikibits' );
 
-
 		//make sure scripts are on top:
 		$postScripts = $this->mScripts;
 		$this->mScripts = '';

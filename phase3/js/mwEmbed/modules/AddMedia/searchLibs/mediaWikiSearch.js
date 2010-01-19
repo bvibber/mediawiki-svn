@@ -122,13 +122,11 @@ mediaWikiSearch.prototype = {
 	*  
 	* @param {String} search_query Text search string 
 	*/
-	getSearchResults: function( search_query ) {		
-		// call parent for common initialisation:  
-		this.parent_getSearchResults();
+	getProviderResults: function( search_query, callback ) {				
 		// Set local ref:
 		var _this = this;
 				
-		mw.log( 'f:getSearchResults for:' + search_query );
+		mw.log( 'metavid: getProviderResults for:' + search_query );
 
 		// Build the image request 
 		var request = {
@@ -149,7 +147,7 @@ mediaWikiSearch.prototype = {
 		mw.getJSON( this.provider.api_url, request, function( data ) {				
 				// Add result data:
 				_this.addResults( data );				
-				_this.loading = false;
+				callback();
 		} );
 	},
 	

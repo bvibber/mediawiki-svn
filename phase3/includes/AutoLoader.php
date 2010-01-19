@@ -632,7 +632,7 @@ $wgJSAutoloadLocalClasses = array(
 	'upload' => 'skins/common/upload.js',
 	'wikibits' => 'skins/common/wikibits.js',
 
-	// phase 2 javascript:
+	// phase 2 javascript @@todo could be loaded from "loader.js" in $IP/js/loader.js
 	'uploadPage' => 'js/uploadPage.js',
 	'editPage' => 'js/editPage.js',
 	'ajaxCategories' => 'js/ajaxcategories.js',

@@ -33,21 +33,18 @@ kalturaSearch.prototype = {
 	* Runs an api call then calls addResults with the resulting data
 	* @param {String} search_query Text search string 
 	*/
-	getSearchResults:function( search_query ) {
+	getProviderResults: function( search_query, callback ) {
 		var _this = this;
-		
-		// call parent for common initialisation:  
-		this.parent_getSearchResults();
 		
 		// setup the flickr request: 
 		var request = {
 			's': search_query,
 			'page': this.provider.offset/this.provider.limit + 1
 		}
-		mw.log( "Kaltura::getSearchResults query: " + request['s'] + " page: " + request['page']);
+		mw.log( "Kaltura::getProviderResults query: " + request['s'] + " page: " + request['page']);
 		$j.getJSON( this.provider.api_url + '?callback=?', request, function( data ) {
 			_this.addResults( data );
-			_this.loading = false;
+			callback( 'ok' );
 		} );
 	},
 	

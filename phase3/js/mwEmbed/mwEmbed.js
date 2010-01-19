@@ -31,38 +31,10 @@ if ( !window['mw'] ) {
 var MW_EMBED_VERSION = '1.0';
 
 /**
-* The set of modules that you want enable. 
-* 
-* Each enabledModules array value should be a name
-* of a folder in mwEmbed/modules 
-*
-* Modules must define a loader.js file in the root
-*  of the module folder. 
-* 
-* The loader file should be short and only include:
-*  Class paths of the module classes
-*  Sytle sheets of the module
-*  Loader function(s) that load module classes 
-*
-* When using the scriptLoader the enabledModules loader code
-*  is transcluded into base mwEmbed class include.  
-*/
-var mwEnabledModuleList =  [
-	'AddMedia',
-	'ClipEdit',
-	'EmbedPlayer',
-	'ApiProxy',
-	'Sequencer',
-	'TimedText'	
-];
-
-/**
 * Default global config values. Configuration values are set via mw.setConfig
 * Configuration values should generally be set prior to dom-ready 
 */  	
 var mwDefaultConf = {
-
-	'enabledModules' : mwEnabledModuleList,
 
 	// Default skin name
 	'skinName' : 'mvpcf',
@@ -930,7 +902,7 @@ var mwDefaultConf = {
 				mw.log( 'Empty load request: ' + loadRequest );
 				callback( loadRequest );
 				return ;
-			}
+			}									
 			
 			// Check if its a multi-part request: 
 			if( typeof loadRequest == 'object' ){
@@ -941,9 +913,7 @@ var mwDefaultConf = {
 					// If an array of length 1 set as first element 
 					loadRequest = loadRequest[0];
 				}				
-			}   
-			//Add the string loadRequest callback ( for script-loader onDone callback )	
-			mwLoadDoneCB[ loadRequest ] = callback;		
+			}   					
 			
 			// Check for the module name loader function 
 			if( this.moduleLoaders[ loadRequest ] && 
@@ -1026,9 +996,8 @@ var mwDefaultConf = {
 							loadDone = false;			
 					}					
 					// Run the parent scope callback for "loadMany" 
-					if( loadDone && callback && mwLoadDoneCB[ loadName ] != 'done' ){						
-						callback( loadName );
-						mwLoadDoneCB[ loadName ] = 'done';
+					if( loadDone ){						
+						callback( loadName );						
 					}
 				} );
 			}
@@ -1172,23 +1141,25 @@ var mwDefaultConf = {
 			}
 			
 			// Include class defined check for older browsers
-			var classDone = false;				
+			var classDone = false;
+			
+			// Set the top level load done to the callback				
+			mw.setLoadDoneCB( className, callback );
 			
 			// Issue the request to load the class (include class name in result callback:					
-			mw.getScript( scriptRequest, function( scriptRequest ) {				
-				if(! mw.isset( className ) && callback){
+			mw.getScript( scriptRequest, function( scriptRequest ) {
+				// Debug output				
+				if(! mw.isset( className )  
+					&& mwLoadDoneCB[ className ] != 'done' ){
 					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.getClassPath( className ) );
 				}
-				// make sure callback is set and mwLoadDoneCB has not been called
-				if( callback ){
-					callback( className );					
-				}
-				callback = null;
+				// Call load done (incase the script did not include a loadDone callback ) 
+				mw.loadDone( className );
 			} );	
 			//mw.log( 'done with running getScript request ' );
 			
 			/*
-			* If scriptLoader is not enabled
+			* ( If scriptLoader is not enabled )
 			* 
 			* Check if the class is ready: 
 			* ( not all browsers support onLoad script attribute )
@@ -1196,11 +1167,9 @@ var mwDefaultConf = {
 			*/
 			if( !mw.getScriptLoaderPath() ){
 				setTimeout( function(){
-					mw.waitForObject( className, function( className ){								
-						if( callback ){						
-							callback( className );
-							callback = null;
-						}
+					mw.waitForObject( className, function( className ){														
+						// Once object is ready run loadDone 
+						mw.loadDone( className );
 					} );
 				}, 25 ); 
 			}
@@ -1277,13 +1246,21 @@ var mwDefaultConf = {
 	* Load done callback for script loader
 	*  this way webkit browsers don't have to check if variables are "ready"
 	*/	
-	mw.loadDone =  function( requestName ) {
-		mw.log( "LoadDone: " + requestName );
+	mw.loadDone =  function( requestName ) {		
 		if( mwLoadDoneCB[ requestName ] && mwLoadDoneCB[ requestName ] != 'done'){
+			mw.log( "LoadDone: " + requestName + ' run callback ');
 			mwLoadDoneCB[ requestName ]( requestName );
 			mwLoadDoneCB[ requestName ] = 'done';
 		}
 	},
+	/**
+	* Set a load done callback 
+	* @param {String} requestName Name of class or request set
+	* @param {Function} callback Function called once requestName is ready
+	*/
+	mw.setLoadDoneCB = function( requestName, callback ){
+		mwLoadDoneCB[ requestName ] = callback;
+	}
 	
 	/**
 	* Add module entry point: Adds a module to the mwLoader object 
@@ -1371,7 +1348,7 @@ var mwDefaultConf = {
 		if( !data['format'] ) 
 			data['format'] = 'json';
 		
-		mw.log("run getJSON: " + url + ' data: ' +  data['action'] );
+		mw.log("run getJSON: " + mw.replaceUrlParams(url, data ) );
 		
 		// Check if we need to setup proxy or do the request as a "post"
 		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ){
@@ -1490,6 +1467,13 @@ var mwDefaultConf = {
 		mw.addDialog( msg_txt, msg_txt + '<br>' + mw.loading_spinner() );
 	}
 		
+	/*mw.status = function( status )
+	
+	
+	var Status = function(){
+		
+	}*/
+	
 	/**
 	* Add a dialog window:
 	* @param {String} title Title string for the dialog
@@ -1590,7 +1574,7 @@ var mwDefaultConf = {
 			callback( false ); 
 			return ;
 		}
-		
+		// If the object is defined ( or we are done loading from a callback )
 		if ( mw.isset( objectName ) || mwLoadDoneCB[ objectName ] == 'done' ){			
 			callback( objectName )
 		}else{
@@ -2242,42 +2226,37 @@ var mwDefaultConf = {
 		
 		mw.log( 'mw:setupMwEmbed :: ' + mw.getMwEmbedSrc() );			
 		
-		// Make sure jQuery is loaded 
-		mw.load( 'window.jQuery', function(){				
-						
-			if ( !window['$j'] ) {
-				window['$j'] = jQuery.noConflict();
-			}
-			
-			mw.log(" loadded all ~loaders~ " );
-			
-			mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
-			
-			// Only load jquery ui theme sheet if ui-widget does not exist. 
-			if( ! mw.styleRuleExists( 'ui-widget' ) ){				
-				mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-			}
-			
-			mw.setConfig( 'skin_img_path', mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/images/' ); 
-			mw.setConfig( 'default_video_thumb', mw.getConfig( 'skin_img_path' ) + 'vid_default_thumb.jpg' );
-
-			// Make Core skin/style sheets are always available:			
-			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/styles.css' );
-
-			// Set up AJAX to not send dynamic URLs for loading scripts
-			$j.ajaxSetup( {
-				cache: true
-			} );
-			
-			//Update the magic keywords 		
-			mw.lang.magicSetup();
-			
-			// Set up mvEmbed utility jQuery bindings
-			mwDojQueryBindings();
-			
-			//Make sure we have all the module loaders
-			mw.moduleLoaderCheck( function(){
-			
+		// Make sure we have all the module loaders
+		mw.moduleLoaderCheck( function(){			
+			// Make sure we have jQuery: 
+			mw.load( 'window.jQuery', function(){							
+				if ( !window['$j'] ) {
+					window['$j'] = jQuery.noConflict();
+				}										
+				mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jui_skin' ) + '/' );
+				
+				// Only load jquery ui theme sheet if ui-widget does not exist. 
+				if( ! mw.styleRuleExists( 'ui-widget' ) ){				
+					mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
+				}
+				
+				mw.setConfig( 'skin_img_path', mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/images/' ); 
+				mw.setConfig( 'default_video_thumb', mw.getConfig( 'skin_img_path' ) + 'vid_default_thumb.jpg' );
+	
+				// Make Core skin/style sheets are always available:			
+				mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/styles.css' );
+	
+				// Set up AJAX to not send dynamic URLs for loading scripts
+				$j.ajaxSetup( {
+					cache: true
+				} );
+				
+				//Update the magic keywords 		
+				mw.lang.magicSetup();
+				
+				// Set up mvEmbed utility jQuery bindings
+				mwDojQueryBindings();						
+				
 				// Check DOM for tag-rewrites  
 				if( mw.documentHasPlayerTags() ){
 					// Load the embedPlayer module ( then run queued hooks )
@@ -2297,7 +2276,9 @@ var mwDefaultConf = {
 	
 	/**
 	* Check for module loaders
-	*  loads module loaders if we are not using a scriptLoader entry point
+	*  loads module loaders.
+	* 
+	* Note if using a scriptLoader all the loaders are included automatically. 
 	*/
 	mw.moduleLoaderCheck = function( callback ){
 		mw.log( 'doLoaderCheck::' );
@@ -2306,17 +2287,19 @@ var mwDefaultConf = {
 			callback();	
 			return ;
 		}
-		
-		// Load all the "loaders" of the enabled modules:
-		var loaderRequest = [];			
-		var enabledModules = mw.getConfig( 'enabledModules' );
-		$j.each( enabledModules, function( na, module_name ){
-			loaderRequest.push( 'modules/' + module_name + '/loader.js' );
-		}) 
-		mw.setConfig('loaderContext', '' );
-		mw.load( loaderRequest, function(){
-			callback();
-		} );
+		// Add the Core loader to the request
+		mw.load( 'loader.js', function(){			
+			// Load all the "loaders" of the enabled modules:
+			var loaderRequest = [];			
+			var enabledModules = mw.getConfig( 'enabledModules' );		
+			for(var i=0; i < enabledModules.length; i++ ){
+				loaderRequest.push( 'modules/' + enabledModules[ i ] + '/loader.js' );
+			};			 
+			mw.setConfig('loaderContext', '' );
+			mw.load( loaderRequest, function(){
+				callback();
+			} );
+		} );				
 	}
 	
 	/**
@@ -2403,65 +2386,6 @@ window[ 'gM' ] = mw.getMsg;
 
 // Setup legacy global shortcuts:
 var loadRS = mw.lang.loadRS;
-
-/**
-* --  Load Class Paths --
-* 
-* PHP AutoLoader reads this mwEmbed.js file along with 
-* all the "loader.js" files to determin script-loader 
-* class paths
-* 
-*/
-mw.setConfig('loaderContext', '' );
-
-mw.addClassFilePaths( {
-	"mwEmbed"			: "mwEmbed.js",
-	"window.jQuery"		: "jquery/jquery-1.3.2.js",
-	
-	"ctrlBuilder"	: "skins/ctrlBuilder.js",
-	"kskinConfig"	: "skins/kskin/kskinConfig.js",
-	"mvpcfConfig"	: "skins/mvpcf/mvpcfConfig.js",
-	
-	"$j.fn.pngFix"		: "jquery/plugins/jquery.pngFix.js",
-	"$j.fn.autocomplete": "jquery/plugins/jquery.autocomplete.js",
-	"$j.fn.hoverIntent"	: "jquery/plugins/jquery.hoverIntent.js",
-	"$j.fn.datePicker"	: "jquery/plugins/jquery.datePicker.js",
-	"$j.ui"				: "jquery/jquery.ui/ui/ui.core.js",	
-	
-	"mw.testLang"	:  "tests/testLang.js",		
-
-	"$j.cookie"			: "jquery/plugins/jquery.cookie.js",
-	"$j.contextMenu"	: "jquery/plugins/jquery.contextMenu.js",
-	"$j.fn.suggestions"	: "jquery/plugins/jquery.suggestions.js",
-	"$j.fn.textSelection" : "jquery/plugins/jquery.textSelection.js",
-	"$j.browserTest"	: "jquery/plugins/jquery.browserTest.js",
-
-	"$j.effects.blind"		: "jquery/jquery.ui/ui/effects.blind.js",
-	"$j.effects.drop"		: "jquery/jquery.ui/ui/effects.drop.js",
-	"$j.effects.pulsate"	: "jquery/jquery.ui/ui/effects.pulsate.js",
-	"$j.effects.transfer"	: "jquery/jquery.ui/ui/effects.transfer.js",
-	"$j.ui.droppable"		: "jquery/jquery.ui/ui/ui.droppable.js",
-	"$j.ui.slider"			: "jquery/jquery.ui/ui/ui.slider.js",
-	"$j.effects.bounce"		: "jquery/jquery.ui/ui/effects.bounce.js",
-	"$j.effects.explode"	: "jquery/jquery.ui/ui/effects.explode.js",
-	"$j.effects.scale"		: "jquery/jquery.ui/ui/effects.scale.js",
-	"$j.ui.datepicker"		: "jquery/jquery.ui/ui/ui.datepicker.js",
-	"$j.ui.progressbar"		: "jquery/jquery.ui/ui/ui.progressbar.js",
-	"$j.ui.sortable"		: "jquery/jquery.ui/ui/ui.sortable.js",
-	"$j.effects.clip"		: "jquery/jquery.ui/ui/effects.clip.js",
-	"$j.effects.fold"		: "jquery/jquery.ui/ui/effects.fold.js",
-	"$j.effects.shake"		: "jquery/jquery.ui/ui/effects.shake.js",
-	"$j.ui.dialog"			: "jquery/jquery.ui/ui/ui.dialog.js",
-	"$j.ui.resizable"		: "jquery/jquery.ui/ui/ui.resizable.js",
-	"$j.ui.tabs"			: "jquery/jquery.ui/ui/ui.tabs.js",
-	"$j.effects.core"		: "jquery/jquery.ui/ui/effects.core.js",
-	"$j.effects.highlight"	: "jquery/jquery.ui/ui/effects.highlight.js",
-	"$j.effects.slide"		: "jquery/jquery.ui/ui/effects.slide.js",
-	"$j.ui.accordion"		: "jquery/jquery.ui/ui/ui.accordion.js",
-	"$j.ui.draggable"		: "jquery/jquery.ui/ui/ui.draggable.js",
-	"$j.ui.selectable"		: "jquery/jquery.ui/ui/ui.selectable.js"	
-
-} );
 
 
 /**

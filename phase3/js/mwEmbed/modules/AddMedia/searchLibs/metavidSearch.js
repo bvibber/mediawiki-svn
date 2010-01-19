@@ -30,15 +30,11 @@ metavidSearch.prototype = {
 	*
 	* @param {String} search_query Text search string
 	*/
-	getSearchResults: function( search_query ) {
-	
-		// Call parent for common initialisation:  
-		this.parent_getSearchResults();
-		
+	getProviderResults: function( search_query, callback ) {			
 		// Set local ref:
 		var _this = this;
 		
-		mw.log( 'metavidSearch::getSearchResults()' );
+		mw.log( 'metavidSearch::getProviderResults()' );
 		
 		// Process all options
 		var url = this.provider.api_url;
@@ -90,7 +86,7 @@ metavidSearch.prototype = {
 				resource['license_template_tag'] = 'PD-USGov';
 			}
 			// done loading:
-			_this.loading = 0;
+			callback( 'ok' );
 		} );
 	},
 	

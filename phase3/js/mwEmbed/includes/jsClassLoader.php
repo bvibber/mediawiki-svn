@@ -32,16 +32,13 @@ class jsClassLoader {
 			throw new MWException( "mwEmbed.js missing check \$wgMwEmbedDirectory path\n" );
 			return false;
 		}
+		// Read the mwEmbed loader file:
 
-		// Read the file:
-		$fileContent = file_get_contents( $wgMwEmbedDirectory . 'mwEmbed.js' );
+		$fileContent = file_get_contents( $wgMwEmbedDirectory . 'loader.js' );
+
 		// Get class paths from mwEmbed.js
 		self::$directoryContext = $wgMwEmbedDirectory;
-		preg_replace_callback(
-			self::$classReplaceExp,
-			'jsClassLoader::preg_classPathLoader',
-			$fileContent
-		);
+		self::proccessLoaderContent( $fileContent );
 
 		// Get the list of enabled modules into $wgJSModuleList
 		preg_replace_callback(
@@ -52,28 +49,38 @@ class jsClassLoader {
 
 		// Get all the classes from the loader files:
 		foreach( self::$moduleList as  $na => $moduleName){
-			// Setup the directory context:
+			// Setup the directory context for mwEmbed modules:
 			self::$directoryContext = $wgMwEmbedDirectory;
+
 			self::proccessLoaderPath( $wgMwEmbedDirectory .
 				'modules/' . $moduleName . '/loader.js' );
-
 		}
 
 		// Get all the extension loader paths registered mwEmbed modules
 		foreach( $wgExtensionJavascriptLoader as $na => $loaderPath){
-			// Setup the directory context:
+			// Setup the directory context for extensions
 			self::$directoryContext = 'extensions/' .str_replace('loader.js', '' , $loaderPath);
 			self::proccessLoaderPath( $IP . '/extensions/' .  $loaderPath );
 		}
 	}
 	/**
-	 * Process a loader path
+	 * Process a loader path, passes off to proccessLoaderContent
 	 *
 	 * @param String $path
 	 */
 	private static function proccessLoaderPath( $path ){
+		// Get the loader content
 		$fileContent = file_get_contents( $path );
-
+		self::proccessLoaderContent( $fileContent );
+	}
+	/**
+	 * Process loader content
+	 *
+	 * parses the loader files and adds
+	 *
+	 * @param String $fileContent content of loader.js file
+	 */
+	private static function proccessLoaderContent( & $fileContent ){
 		// Add the mwEmbed loader js to its global collector:
 		self::$combinedLoadersJs .=  $fileContent;
 

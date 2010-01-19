@@ -161,8 +161,6 @@ var default_remote_search_options = {
 	}
 	
 } )( jQuery );
-
-
 /**
 * Set the mediaWiki globals if unset
 */
@@ -1037,38 +1035,33 @@ mw.RemoteSearchDriver.prototype = {
 
 		// Else do showSearchTab
 		var provider = this.content_providers[ providerName ];
-
+		
 		// Check if we need to update:
 		if ( typeof provider.sObj != 'undefined' ) {
 			if ( provider.sObj.last_query == $j( '#rsd_q' ).val() 
-				&& provider.sObj.last_offset == provider.offset ) 
-			{
+				&& provider.sObj.last_offset == provider.offset ) {
+				
 				mw.log( 'last query is: ' + provider.sObj.last_query + 
-					' matches: ' +  $j( '#rsd_q' ).val() );
-			} else {
-				mw.log( 'last query is: ' + provider.sObj.last_query + 
-					' not match: ' +  $j( '#rsd_q' ).val() );
-				draw_direct_flag = false;
+					' matches: ' +  $j( '#rsd_q' ).val() + ' no search needed');
+				
+				// Show search results directly
+				this.showResults();					
 			}
-		} else {
-			draw_direct_flag = false;
 		}
-		
-		if ( !draw_direct_flag ) {
-			// See if we should reset the paging
-			if ( resetPaging ) {
-				provider.offset = 0;
-				if (provider.sObj && provider.sObj.offset) {
-					provider.sObj.offset = 0;
-				}
+			
+		// See if we should reset the paging
+		if ( resetPaging ) {
+			provider.offset = 0;
+			if (provider.sObj && provider.sObj.offset) {
+				provider.sObj.offset = 0;
 			}
+		}
 
-			// Set the content to loading while we do the search:
-			$j( '#rsd_results_container' ).html( mw.loading_spinner() );
-						
-			// Make sure the search library is loaded and issue the search request
-			this.getLibSearchResults( provider );
-		}
+		// Set the content to loading while we do the search:
+		$j( '#rsd_results_container' ).html( mw.loading_spinner() );
+					
+		// Make sure the search library is loaded and issue the search request
+		this.getProviderResults( provider );	
 	},
 
 	/*
@@ -1171,15 +1164,15 @@ mw.RemoteSearchDriver.prototype = {
 	* 
 	* @param {Object} provider the provider to be searched. 
 	*/
-	getLibSearchResults: function( provider ) {
+	getProviderResults: function( provider ) {
 		var _this = this;
-		mw.log('f: getLibSearchResults ' );
+		mw.log('f: getProviderResults ' );
 		// First check if we should even run the search at all (can we import / insert 
 		// into the page? )
 		if ( !this.isProviderLocal( provider ) && this.import_url_mode == 'autodetect' ) {
 			// provider is not local check if we can support the import mode:
 			this.checkForCopyURLSupport( function() {
-				_this.getLibSearchResults( provider );
+				_this.getProviderResults( provider );
 			} );
 			return false;
 		} else if ( !this.isProviderLocal( provider ) && this.import_url_mode == 'none' ) {
@@ -1188,23 +1181,29 @@ mw.RemoteSearchDriver.prototype = {
 				provider.sObj.loading = false;
 			} else {
 				$j( '#rsd_results_container' ).html( 
-					'<div style="padding:10px">' + 
-					gM( 'mwe-no_import_by_url' ) + 
-					'</div>' );
+					gM( 'mwe-no_import_by_url' ) 
+				)
 			}
 			return false;
 		}							
+		
 		_this.loadSearchLib( provider, function( provider ) {
-			// Do the search:									
-			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() );
-			
-			_this.waitForResults( function( resultStatus ) {
-				if( resultStatus == 'ok' ){
+			var d = new Date();
+			var searchTime = d.getMilliseconds();
+			// Do the search:												
+			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() , function( resultStatus ){				
+				//if( resultStatus == 'ok' ){
 					_this.showResults();
-				}else{
-					_this.showFailure( resultStatus )
-				}
-			} );
+				//}else{
+				//	_this.showFailure( resultStatus )
+				//}			
+			});			
+			
+			// Set a timeout of 20 seconds
+			setTimeout(function(){
+			
+			}, 20 * 1000 );
+			
 		} );
 	},
 	
@@ -1241,49 +1240,6 @@ mw.RemoteSearchDriver.prototype = {
 			
 			callback( provider );
 		} );
-	},
-
-	/**
-	* Waits for all results to be finished then calls the callback
-	* 
-	* @param {Function} callback called once loading is done. calls callback with:
-	* 	'ok' search results retrived
-	* 	'error_key' search results not retrived 
-	* @param {Null} _callNumber Used internally to keep track of wait time 
-	*/
-	waitForResults: function( callback, _callNumber ) {
-		// mw.log('rsd:waitForResults');		
-		var _this = this;
-		var loading_done = true;
-		
-		if( !_callNumber )
-			_callNumber = 1;
-
-		for ( var cp_id in this.content_providers ) {
-			var cp = this.content_providers[ cp_id ];
-			if ( typeof cp['sObj'] != 'undefined' ) {
-				if ( cp.sObj.loading )
-					loading_done = false;
-			}		
-		}		
-		if( this.search_provider_timeout &&
-			 (50/1000 * _callNumber) >  this.search_provider_timeout ){
-			callback( 'timeout' )
-			return ;
-		}
-		
-		if ( loading_done ) {
-			callback( 'ok' );
-			return ;
-		}
-		
-		setTimeout( 
-			function() {
-				_callNumber++;
-				_this.waitForResults( callback, _callNumber );
-			}, 
-			50 
-		);
 	},
 	
 	/**
@@ -1502,10 +1458,9 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	* Add Resource edit layout and display a loader.
 	*/
-	addResourceEditLoader: function( maxWidth, overflowStyle ) {
+	addResourceEditLoader: function( maxWidth ) {
 		var _this = this;
 		if ( !maxWidth ) maxWidth = 400;
-		if ( !overflowStyle ) overflowStyle = 'overflow:auto;';
 		// Remove any old instance:
 		$j( _this.target_container ).find( '#rsd_resource_edit' ).remove();
 
@@ -1513,24 +1468,53 @@ mw.RemoteSearchDriver.prototype = {
 		$j( '#rsd_results_container' ).hide();
 
 		var pt = $j( _this.target_container ).html();
+		
+		// Set up the interface compoents:
+		var $clipEditControl =	$j('<div />')
+			.attr( 'id', 'clip_edit_ctrl' )		
+			.addClass('ui-widget ui-widget-content ui-corner-all')
+			.css( {
+				'position' : 'absolute',
+				'left' : '2px',
+				'top' : '5px',
+				'bottom' : '10px', 
+				'width' : ( maxWidth + 5 ) + 'px',
+				'overflow' : 'auto',
+				'padding' : '5px'
+			} )
+			.loadingSpinner();
+			
+		var $clipEditDisplay = $j('<div />')
+			.attr( 'id', 'clip_edit_disp' )
+			.addClass( 'ui-widget ui-widget-content ui-corner-all' )
+			.css({
+				'position' : 'absolute',
+				'overflow' : 'auto;',
+				'left' : ( maxWidth + 25 ) + 'px',
+				'right' :'0px', 
+				'top' : '5px',
+				'bottom' : '10px',
+				'padding' : '5px'			
+			})
+			.loadingSpinner();
+				
+		
 		// Add the edit layout window with loading place holders
 		$j( _this.target_container ).append( 
-			'<div id="rsd_resource_edit" ' +
-				'style="position:absolute;top:0px;left:0px;' + 
-					'bottom:0px;right:4px;background-color:#FFF;"> ' +
-			'<div id="clip_edit_ctrl" ' + 
-				'class="ui-widget ui-widget-content ui-corner-all" ' + 
-				'style="position:absolute;left:2px;top:5px;bottom:10px;' + 
-				'width:' + ( maxWidth + 5 ) + 'px;overflow:auto;padding:5px;" >' +
-			'</div>' +
-			'<div id="clip_edit_disp" ' +
-				'class="ui-widget ui-widget-content ui-corner-all"' +
-				'style="position:absolute;' + overflowStyle + ';' + 
-				'left:' + ( maxWidth + 20 ) + 'px;right:0px;top:5px;bottom:10px;' + 
-				'padding:5px;" >' +
-					mw.loading_spinner( 'position:absolute;top:30px;left:30px' ) +
-			'</div>' +
-			'</div>' );
+			$j('<div />')
+			.attr( 'id', 'rsd_resource_edit' )
+			.css( {
+				'position' : 'absolute',
+				'top' : '0px',
+				'left' : '0px', 
+				'bottom' : '0px',
+				'right' : '4px',
+				'background-color' : '#FFF'
+			} ).append( 
+				$clipEditControl,
+				$clipEditDisplay
+			)
+		);
 	},
 	
 	/**
@@ -1586,10 +1570,8 @@ mw.RemoteSearchDriver.prototype = {
 		var mediaType = _this.getMediaType( resource );
 		var maxWidth = _this.getMaxEditWidth( resource );
 
-		// So that transcripts show on top
-		var overflow_style = ( mediaType == 'video' ) ? '' : 'overflow:auto;';
 		// Append to the top level of model window:
-		_this.addResourceEditLoader( maxWidth, overflow_style );
+		_this.addResourceEditLoader( maxWidth  );
 		// update add media wizard title:
 		var dialogTitle = gM( 'mwe-add_media_wizard' ) + ': ' + 
 			gM( 'rsd_resource_edit', resource.title );
@@ -2047,10 +2029,10 @@ mw.RemoteSearchDriver.prototype = {
 				'left:50%;bottom:0px;top:30px;right:0px;overflow:auto;">' +
 			'<strong>' + gM( 'mwe-local_resource_title' ) + '</strong>' + 
 			'<br/>' +
-			'<input type="text" size="30" value="' + resource.target_resource_title + '" />' + 
+			'<input id="rsd_filename" type="text" size="30" value="' + resource.target_resource_title + '" />' + 
 			'<br/>' +
 			'<strong>' + gM( 'mwe-edit_resource_desc' ) + '</strong>' +
-			'<textarea id="rsd_import_ta" ' + 
+			'<textarea id="rsd_import_text" ' + 
 				'style="width:90%;" rows="8" cols="50">' +
 			desc +
 			'</textarea>' + 
@@ -2095,7 +2077,7 @@ mw.RemoteSearchDriver.prototype = {
 				$j( '#rsd_import_desc' ).html( mw.loading_spinner() );
 				// load the preview text:
 				_this.parse( 
-					$j( '#rsd_import_ta' ).val(), 
+					$j( '#rsd_import_text' ).val(), 
 					_this.canonicalFileNS + ':' + resource.target_resource_title, 
 					function( o ) {
 						mw.log( 'got updated preview: ' );
@@ -2110,13 +2092,7 @@ mw.RemoteSearchDriver.prototype = {
 				mw.log( "do import asset:" + _this.import_url_mode );
 				// check import mode:
 				if ( _this.import_url_mode == 'api' ) {
-					if ( _this.upload_api_target == 'proxy' ) {
-						_this.setupProxy( function() {
-							_this.doApiImport( resource, callback );
-						} );
-					} else {
-						_this.doApiImport( resource, callback );
-					}
+					_this.doApiImport( resource, callback );
 				} else {
 					mw.log( "Error: import mode is not form or API (can not copy asset)" );
 				}
@@ -2243,9 +2219,9 @@ mw.RemoteSearchDriver.prototype = {
 					// Close the loader now that we are ready to present the progress dialog::
 					mw.closeLoaderDialog();
 					uploader.doHttpUpload( {
-						'url': resource.src,
-						'filename': resource.target_resource_title,
-						'comment': $j( '#rsd_import_ta' ).val()
+						'url' : resource.src,
+						'filename' : $j( '#rsd_filename' ).val(),
+						'comment' : $j( '#rsd_import_text' ).val()
 					} );
 				} );
 			}
@@ -2305,7 +2281,7 @@ mw.RemoteSearchDriver.prototype = {
 					'right' : '0px',
 					'left' : '0px',
 					'background-color' : '#FFF'
-				})				
+				}).loadingSpinner()				
 			)
 
 			var buttonPaneSelector = _this.target_container + '~ .ui-dialog-buttonpane';
@@ -2338,9 +2314,12 @@ mw.RemoteSearchDriver.prototype = {
 
 			// Get the preview wikitext
 			var embed_code = _this.getEmbedCode( resource );
-			$j( _this.target_textbox ).textSelection( 'encapsulateSelection', { 'post' : embed_code } );
+			//var pos = $j( _this.target_textbox ).getCaretPosition();
+			var pos = 0;
+			var editWikiText = $j( _this.target_textbox ).val();
+			var parseText = editWikiText.substr(0, pos) + embed_code + editWikiText.substr( pos );
 			_this.parse( 
-				$j( _this.target_textbox ).val(),
+				parseText,
 				_this.target_title,
 				function( phtml ) {
 					$j( '#rsd_preview_display' ).html( phtml );
