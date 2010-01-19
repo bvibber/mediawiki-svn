@@ -512,9 +512,11 @@ class SpecialRecordAdmin extends SpecialPage {
 		$stripe = '';
 		foreach ( $records as $r ) {
 			$stripe = $stripe ? '' : ' class="stripe"';
-			$table .= "<tr$stripe>";
-			if ( !is_array( $r ) ) $table .= $r; # Just add as HTML content if not a row
-			else {
+			if ( !is_array( $r ) ) {
+				$stripe = '';
+				$table .= "<tr>$r</tr>"; # Just add as HTML content if not a row
+			} else {
+				$table .= "<tr$stripe>";
 
 				# Create special values for this row
 				$tsc    = $this->formatDate( $r['created'] );
@@ -555,8 +557,8 @@ class SpecialRecordAdmin extends SpecialPage {
 						$table .= "$row[$col]\n";
 					}
 				}
+				$table .= "</tr>\n";
 			}
-			$table .= "</tr>\n";
 		}
 		$table .= "</table>\n";
 
