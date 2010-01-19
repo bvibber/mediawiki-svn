@@ -1971,87 +1971,17 @@ mw.RemoteSearchDriver.prototype = {
 		var _this = this;
 		mw.log( "showImportUI:: update:" + _this.canonicalFileNS + ':' + 
 			resource.target_resource_title );
-
-		// setup the resource description from resource description:
-		// FIXME: i18n, namespace
-		var desc = '{{Information ' + "\n";
-
-		if ( resource.desc ) {
-			desc += '|Description= ' + resource.desc + "\n";
-		} else {
-			desc += '|Description= ' + gM( 'mwe-missing_desc_see_source', resource.link ) + "\n";
-		}
-
-		// Output search specific info
-		desc += '|Source=' + resource.pSobj.getImportResourceDescWiki( resource ) + "\n";
-
-		if ( resource.author )
-			desc += '|Author=' + resource.author + "\n";
-
-		if ( resource.date )
-			desc += '|Date=' + resource.date + "\n";
-
-		// Add the Permission info:
-		desc += '|Permission=' + resource.pSobj.getPermissionWikiTag( resource ) + "\n";
-
-		if ( resource.other_versions )
-			desc += '|other_versions=' + resource.other_versions + "\n";
-
-		desc += '}}';
-
-		// Get any extra categories or helpful links
-		desc += resource.pSobj.getExtraResourceDescWiki( resource );
-
-
-		$j( '#rsd_resource_import' ).remove();// remove any old resource imports
-
-		// Show user dialog to import the resource
+		
+		var description = _this.getTemplateDescription( resource );		
+		
+		
+		// Remove any old resource imports
+		$j( '#rsd_resource_import' ).remove();
+		
+		// Update the interface
 		$j( _this.target_container ).append( 
-			'<div id="rsd_resource_import" ' +
-				'class="ui-widget-content" ' +
-				'style="position:absolute;top:0px;left:0px;right:0px;bottom:0px;z-index:5">' +
-			'<h3 style="color:red;padding:5px;">' + 
-			gM( 'mwe-resource-needs-import', [resource.title, _this.upload_api_name] ) + 
-			'</h3>' +
-			'<div id="rsd_preview_import_container" ' + 
-				'style="position:absolute;width:49%;bottom:0px;left:5px;' + 
-					'overflow:auto;top:30px;">' +
-			
-			// Get embedHTML with small thumb:
-			resource.pSobj.getEmbedHTML( resource, {
-				'id': _this.target_container + '_rsd_pv_vid',
-				'max_height': '220',
-				'only_poster': true
-			} ) + 
-			
-			'<br style="clear both"/>' +
-			'<strong>' + gM( 'mwe-resource_page_desc' ) + '</strong>' +
-			'<div id="rsd_import_desc" style="display:inline;">' +
-				mw.loading_spinner( 'position:absolute;top:5px;left:5px' ) +
-			'</div>' +
-			'</div>' +
-			'<div id="rds_edit_import_container" ' + 
-				'style="position:absolute; ' + 
-				'left:50%;bottom:0px;top:30px;right:0px;overflow:auto;">' +
-			'<strong>' + gM( 'mwe-local_resource_title' ) + '</strong>' + 
-			'<br/>' +
-			'<input id="rsd_filename" type="text" size="30" value="' + resource.target_resource_title + '" />' + 
-			'<br/>' +
-			'<strong>' + gM( 'mwe-edit_resource_desc' ) + '</strong>' +
-			'<textarea id="rsd_import_text" ' + 
-				'style="width:90%;" rows="8" cols="50">' +
-			desc +
-			'</textarea>' + 
-			'<br/>' +
-			'<input type="checkbox" value="true" id="wpWatchthis" ' + 
-				'name="wpWatchthis" tabindex="7" />' +
-			'<label for="wpWatchthis">' + gM( 'mwe-watch_this_page' ) + '</label> ' + 
-			'<br/><br/><br/>' +
-			$j.btnHtml( gM( 'mwe-update_preview' ), 'rsd_import_apreview', 'refresh' ) + 
-			' ' +
-			'</div>' +			
-			// Output the rendered and non-rendered version of description for easy switching:
-			'</div>' );
+			_this.getResourceImportInterface( resource , description ) 
+		);												
 			
 		var buttonPaneSelector = _this.target_container + '~ .ui-dialog-buttonpane';
 		$j( buttonPaneSelector ).html (
@@ -2069,7 +1999,7 @@ mw.RemoteSearchDriver.prototype = {
 
 		// Load the preview text:
 		_this.parse(
-			desc, _this.canonicalFileNS + ':' + resource.target_resource_title, 
+			description, _this.canonicalFileNS + ':' + resource.target_resource_title, 
 			function( descHtml ) {
 				$j( '#rsd_import_desc' ).html( descHtml );
 			} 
@@ -2083,7 +2013,7 @@ mw.RemoteSearchDriver.prototype = {
 				$j( '#rsd_import_desc' ).html( mw.loading_spinner() );
 				// load the preview text:
 				_this.parse( 
-					$j( '#rsd_import_text' ).val(), 
+					$j( '#wpUploadDescription' ).val(), 
 					_this.canonicalFileNS + ':' + resource.target_resource_title, 
 					function( o ) {
 						mw.log( 'got updated preview: ' );
@@ -2114,7 +2044,180 @@ mw.RemoteSearchDriver.prototype = {
 				} );
 			} );
 	},
+	
+	/**
+	* Get the resource Import interface 
+	*/
+	getResourceImportInterface: function( resource, description ){
+		var _this = this;
+		var $rsdResourceImport = $j('<div />')
+			.attr( 'id', 'rsd_resource_import' )
+			.addClass( 'ui-widget-content' )
+			.css( {
+				'position' : 'absolute',
+				'top' : '0px',
+				'left' : '0px',
+				'right' : '0px',
+				'bottom' : '0px',
+				'z-index' : '5'
+			} );
+		
+		var $rsdPreviewContainer = $j( '<div />')
+			.attr( 'id', 'rsd_preview_import_container' )
+			.css( {
+				'position' : 'absolute',
+				'width' : '49%',
+				'bottom' : '0px',
+				'left' : '5px',
+				'overflow' : 'auto',
+				'top' : '30px'
+			} )
+			.append(						
+			// Get embedHTML with small thumb:
+			resource.pSobj.getEmbedHTML( resource, {
+				'id': _this.target_container + '_rsd_pv_vid',
+				'max_height': '220',
+				'only_poster': true
+			} ) 
+		)
+		.append( 
+			$j('<br />')
+				.css( 'clear', 'both' ),
+			$j( '<span />' )
+				.css( { 'font-weight' : 'bold' } )
+				.text( gM( 'mwe-resource_page_desc' ) ),
+			$j( '<div />' )
+				.attr( 'id', 'rsd_import_desc' )
+				.css( 'display', 'inline' )
+				.loadingSpinner()
+		)
+		
+		var $importResourceTitle = $j( '<h3 />' )
+			.css( {
+				'color' : 'red',
+				'padding' : '5px'
+			} )
+			.text(
+				gM( 'mwe-resource-needs-import', [resource.title, _this.upload_api_name] ) 
+			);
+		
+		var $importTitle = $j( '<span />' )
+			.css( { 'font-weight' : 'bold' } )
+			.text( gM( 'mwe-local_resource_title' ) );			
+				
+		var $importDestFile = $j( '<input />' )
+			.attr( {
+				'id' : 'wpDestFile',
+				'type' : 'text',
+				'size' : '30', 
+			} )
+			.val ( resource.target_resource_title );
+				
+		var $importUploadDescription = $j('<div />')
+			.append( 
+				$j( '<span />' )
+					.css( { 'font-weight' : 'bold'  } )
+					.text( gM( 'mwe-edit_resource_desc' ) ),
+				$j( '<textarea />' )
+					.attr( {
+						'id' : 'wpUploadDescription',
+						'rows' : 8,
+						'cols' : 50 
+					})
+					.css( {
+						'width': '90%',						 
+					} ) 
+					.text( description ),
+				$j( '<input />' )
+					.attr( {
+						'type' : 'checkbox',
+						'id' : 'wpWatchthis',
+						'name' : 'wpWatchthis',
+						'tabindex' : '7'
+					} )
+			);
+						
+		var $editImportContainer = $j( '<div />' )
+			.css( { 
+				'position' : 'absolute', 	
+				'left' : '50%',
+				'bottom' : '0px',
+				'top' : '30px',
+				'right' : '0px',
+				'overflow' : 'auto'
+			})
+			.append(
+				$importTitle,				 
+				$j( '<br />' ),
+				
+				$importDestFile,
+				$j( '<br />' ),
+				
+				$importUploadDescription,
+				$j( '<br />' ),
+				
+				// Add the watchlist button
+				$j( '<label />' )
+					.attr( {
+						'for' : 'wpWatchthis'
+					} )
+					.text( 
+						gM( 'mwe-watch_this_page' )  
+					),
+				$j( '<br />' ),
+				
+				// Add the update preview button: 
+				$j( '<br />' ),
+				$j('<span />').append(
+					$j.btnHtml( gM( 'mwe-update_preview' ), 'rsd_import_apreview', 'refresh' )
+				)
+			); 
+								
+		$rsdResourceImport.append(
+			$importResourceTitle, 
+			$rsdPreviewContainer,
+			$editImportContainer
+		)
+		return $rsdResourceImport;
+	},
+	
+	/**
+	* Get Template Description wikitext
+	* @pram {Object} resource Resource source for description
+	*/
+	getTemplateDescription: function( resource ){
+		// setup the resource description from resource description:
+		// FIXME: i18n, namespace
+		var description = '{{Information ' + "\n";
 
+		if ( resource.desc ) {
+			description += '|Description= ' + resource.desc + "\n";
+		} else {
+			description += '|Description= ' + gM( 'mwe-missing_desc_see_source', resource.link ) + "\n";
+		}
+
+		// Output search specific info
+		description += '|Source=' + resource.pSobj.getImportResourceDescWiki( resource ) + "\n";
+
+		if ( resource.author )
+			description += '|Author=' + resource.author + "\n";
+
+		if ( resource.date )
+			description += '|Date=' + resource.date + "\n";
+
+		// Add the Permission info:
+		description += '|Permission=' + resource.pSobj.getPermissionWikiTag( resource ) + "\n";
+
+		if ( resource.other_versions )
+			description += '|other_versions=' + resource.other_versions + "\n";
+
+		description += '}}';
+
+		// Get any extra categories or helpful links
+		description += resource.pSobj.getExtraResourceDescWiki( resource );
+		return description;
+	},
+	
 	/**
 	* Sets up the proxy for the remote inserts
 	* 
@@ -2226,8 +2329,8 @@ mw.RemoteSearchDriver.prototype = {
 					mw.closeLoaderDialog();
 					uploader.doHttpUpload( {
 						'url' : resource.src,
-						'filename' : $j( '#rsd_filename' ).val(),
-						'comment' : $j( '#rsd_import_text' ).val()
+						'filename' : $j( '#wpDestFile' ).val(),
+						'comment' : $j( '#wpUploadDescription' ).val()
 					} );
 				} );
 			}
@@ -2312,16 +2415,15 @@ mw.RemoteSearchDriver.prototype = {
 				.children( '.preview_close' )
 				.click( function() {
 					$j( '#rsd_preview_display' ).remove();
-					// restore title:
+					// Restore title:
 					$j( _this.target_container ).dialog( 'option', 'title', origTitle );
-					// restore buttons (from the clipEdit object::)
+					// Restore buttons (from the clipEdit object::)
 					_this.clipEdit.updateInsertControlActions();
 				} );
 
 			// Get the preview wikitext
 			var embed_code = _this.getEmbedCode( resource );
-			//var pos = $j( _this.target_textbox ).getCaretPosition();
-			var pos = 0;
+			var pos = $j( _this.target_textbox ).textSelection( 'getCaretPosition' );			
 			var editWikiText = $j( _this.target_textbox ).val();
 			var parseText = editWikiText.substr(0, pos) + embed_code + editWikiText.substr( pos );
 			_this.parse( 
@@ -2350,7 +2452,7 @@ mw.RemoteSearchDriver.prototype = {
 	*/	
 	getEmbedCode: function( resource ) {
 		if ( this.import_url_mode == 'remote_link' ) {
-			return resource.pSobj.getEmbedHTML( resource, {'insert_description': true } );
+			return resource.pSobj.getEmbedHTML( resource, { 'insert_description': true } );
 		} else {
 			return resource.pSobj.getEmbedWikiCode( resource );
 		}

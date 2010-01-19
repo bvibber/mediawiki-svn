@@ -8,7 +8,7 @@
  * 	timed text search & seek interface ( version 2 ) 
  *
  * @author: Michael Dale
- * 
+ * 	
  * Some code borrowed from: http://www.annodex.net/~silvia/itext/elephant_no_skin_v2.html
  * ( Licensed under: MPL 1.1/GPL 2.0/LGPL 2.1 )
  * Contributor(s):
