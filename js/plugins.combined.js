@@ -8577,6 +8577,8 @@ cfg: {
 	defaultWidth: '166px',
 	// Minimum width to allow resizing to before collapsing the table of contents - used when resizing and collapsing
 	minimumWidth: '70px',
+	// Minimum width of the wikiText area
+	textMinimumWidth: '450px',
 	// Boolean var indicating text direction
 	rtl: false
 },
@@ -8601,12 +8603,39 @@ evt: {
 				var context = event.data.context;
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
+		$.wikiEditor.modules.toc.evt.resize( context );
 	},
 	resize: function( context, event ) {
+		var availableWidth = context.$wikitext.width() - parseFloat( $.wikiEditor.modules.toc.cfg.textMinimumWidth ),
+			totalMinWidth = parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) + 
+				parseFloat( $.wikiEditor.modules.toc.cfg.textMinimumWidth );
+		context.$ui.find( '.wikiEditor-ui-right' )
+			.resizable( 'option', 'maxWidth', availableWidth );
+		if ( context.modules.toc.$toc.data( 'positionMode' ) != 'disabled' && 
+			context.$wikitext.width() < totalMinWidth ) {
+				$.wikiEditor.modules.toc.fn.disable( context );
+		} else if ( context.modules.toc.$toc.data( 'positionMode' ) == 'disabled'  &&
+			context.$wikitext.width() >  totalMinWidth ) {
+				$.wikiEditor.modules.toc.fn.enable( context );
+		} else if ( context.modules.toc.$toc.data( 'positionMode' ) == 'regular'  &&
+			context.$ui.find( '.wikiEditor-ui-right' ).width() > availableWidth ) {
+			//switch mode
+			$.wikiEditor.modules.toc.fn.switchLayout( context );
+		} else if ( context.modules.toc.$toc.data( 'positionMode' ) == 'goofy'  &&
+			context.modules.toc.$toc.data( 'previousWidth' ) < context.$wikitext.width() ) {
+			//switch mode
+			$.wikiEditor.modules.toc.fn.switchLayout( context );
+		}
+		if ( context.modules.toc.$toc.data( 'positionMode' ) == 'goofy' ) {
+			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
+		}
+		// reset the height of the TOC
 		context.modules.toc.$toc.height(
 			context.$ui.find( '.wikiEditor-ui-left' ).height() - 
 			context.$ui.find( '.tab-toc' ).outerHeight()
 		);
+		// store the width of the view for comparison on next resize
+		context.modules.toc.$toc.data( 'previousWidth', context.$wikitext.width() );
 	},
 	mark: function( context, event ) {
 		var markers = context.modules.highlight.markers;
@@ -8666,19 +8695,109 @@ fn: {
 		var height = context.$ui.find( '.wikiEditor-ui-left' ).height();
 		context.modules.toc.$toc = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toc' )
-			.data( 'context', context );
-		context.$ui.find( '.wikiEditor-ui-right' )
-			.css( 'width', $.wikiEditor.modules.toc.cfg.defaultWidth )
-			.append( context.modules.toc.$toc );
-		context.modules.toc.$toc.height(
-			context.$ui.find( '.wikiEditor-ui-left' ).height()
-		);
-		context.$ui.find( '.wikiEditor-ui-left' )
-			.css( 'marginRight', "-" + $.wikiEditor.modules.toc.cfg.defaultWidth )
-			.children()
-			.css( 'marginRight', $.wikiEditor.modules.toc.cfg.defaultWidth );
-	},
+			.data( 'context', context )
+			.data( 'positionMode', 'regular' )
+			.data( 'collapsed', false );
+			/* context.$ui.find( '.wikiEditor-ui-right' )
+				.css( 'width', $.wikiEditor.modules.toc.cfg.defaultWidth )
+				.append( context.modules.toc.$toc );
+			context.modules.toc.$toc.height(
+				context.$ui.find( '.wikiEditor-ui-left' ).height()
+			);
+			context.$ui.find( '.wikiEditor-ui-left' )
+				.css( 'marginRight', "-" + $.wikiEditor.modules.toc.cfg.defaultWidth )
+				.children()
+				.css( 'marginRight', $.wikiEditor.modules.toc.cfg.defaultWidth );
+			*/
+			context.$ui.find( '.wikiEditor-ui-right' )
+				.append( context.modules.toc.$toc );
+			context.modules.toc.$toc.height(
+				context.$ui.find( '.wikiEditor-ui-left' ).height()
+			);
+			$.wikiEditor.modules.toc.fn.redraw( context, $.wikiEditor.modules.toc.cfg.defaultWidth );
+		},
+		
 	
+	redraw: function( context, fixedWidth ) {
+		var fixedWidth = parseFloat( fixedWidth );
+		if( context.modules.toc.$toc.data( 'positionMode' ) == 'regular' ) {
+			context.$ui.find( '.wikiEditor-ui-right' )
+			.css( 'width', fixedWidth + 'px' );
+			context.$ui.find( '.wikiEditor-ui-left' )
+				.css( 'marginRight', ( -1 * fixedWidth ) + 'px' )
+				.children()
+				.css( 'marginRight', fixedWidth + 'px' );
+		} else if( context.modules.toc.$toc.data( 'positionMode' ) == 'goofy' ) {
+			context.$ui.find( '.wikiEditor-ui-left' )
+				.css( 'width', fixedWidth );
+			context.$ui.find( '.wikiEditor-ui-right' )
+				.css( 'left', fixedWidth );
+			context.$wikitext.css( 'height', context.$ui.find( '.wikiEditor-ui-right' ).height() );
+		}
+	},
+	switchLayout: function( context ) {
+		var width,
+			height = context.$ui.find( '.wikiEditor-ui-right' ).height();
+		if( context.modules.toc.$toc.data( 'positionMode' ) == 'regular'
+		 	&& !context.modules.toc.$toc.data( 'collapsed' ) ) {
+			// store position mode
+			context.modules.toc.$toc.data( 'positionMode', 'goofy' );
+			// store the width of the TOC, to ensure we dont allow it to be larger than this when switching back
+			context.modules.toc.$toc.data( 'positionModeChangeAt', 
+				context.$ui.find( '.wikiEditor-ui-right' ).width() );
+			width = $.wikiEditor.modules.toc.cfg.textMinimumWidth;
+			// set our styles for goofy mode
+			context.$ui.find( '.wikiEditor-ui-left' )
+				.css( { 'marginRight': '', 'position': 'absolute', 'left': '0px', 'right': 'auto', 'float': 'none' } )
+				.children()
+				.css( 'marginRight', '' );
+			context.$ui.find( '.wikiEditor-ui-right' )
+				.css( { 'width': '100%', 'position': 'absolute', 'right': '0px', 'width': 'auto', 'float': 'none' } );
+			context.$wikitext
+				.css( 'position', 'relative' );
+		} else if ( context.modules.toc.$toc.data( 'positionMode' ) == 'goofy' ) {
+			// store position mode
+			context.modules.toc.$toc.data( 'positionMode', 'regular' );
+			// set width
+			width = context.$wikitext.width() - context.$ui.find( '.wikiEditor-ui-left' ).width();
+			if ( width > context.modules.toc.$toc.data( 'positionModeChangeAt' ) ) {
+				width = context.modules.toc.$toc.data( 'positionModeChangeAt' );
+			}
+			// set our styles for regular mode
+			context.$wikitext
+				.css( { 'position': '', 'height': '' } );
+			context.$ui.find( '.wikiEditor-ui-right' )
+				.css( { 'marginRight': '', 'position': '', 'left': '', 'right': '', 'float': '', 'top': '', 'height': '' } );
+			context.$ui.find( '.wikiEditor-ui-left' )
+				.css( { 'width': '', 'position': '', 'left': '', 'float': '', 'right': '' } );
+		}
+		$.wikiEditor.modules.toc.fn.redraw( context, width );
+	},
+	disable: function( context ) {
+		if ( context.modules.toc.$toc.data( 'collapsed' ) ) {
+			context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).hide();
+		} else {
+			if( context.modules.toc.$toc.data( 'positionMode' ) == 'goofy' ) {
+				$.wikiEditor.modules.toc.fn.switchLayout( context );
+			}
+			context.$ui.find( '.wikiEditor-ui-right' ).hide();
+			context.$ui.find( '.wikiEditor-ui-left' )
+				.css( 'marginRight', '' )
+				.children()
+				.css( 'marginRight', '' );
+		}
+		context.modules.toc.$toc.data( 'positionMode', 'disabled' );
+	},
+	enable: function( context ) {
+		context.modules.toc.$toc.data( 'positionMode', 'regular' );
+		if ( context.modules.toc.$toc.data( 'collapsed' ) ) {
+			context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).show();
+		} else {
+			context.$ui.find( '.wikiEditor-ui-right' ).show();
+			$.wikiEditor.modules.toc.fn.redraw( context, $.wikiEditor.modules.toc.cfg.minimumWidth );
+			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
+		}
+	},
 	unhighlight: function( context ) {
 		context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
 	},
@@ -8717,9 +8836,21 @@ fn: {
 	 */
 	collapse: function( event ) {
 		var $this = $( this ), 
-			context = $this.data( 'context' ),
-			pT = $this.parent().position().top - 1;
-		$this.parent()
+			context = $this.data( 'context' );
+		if( context.modules.toc.$toc.data( 'positionMode' ) == 'goofy' ) {
+			$.wikiEditor.modules.toc.fn.switchLayout( context );
+		}
+		var pT = $this.parent().position().top - 1;
+		context.modules.toc.$toc.data( 'collapsed', true );
+		context.$ui.find( '.wikiEditor-ui-left' )
+			.animate( { 'marginRight': '-1px' }, 'fast', function() {
+				$( this ).css( 'marginRight', 0 );
+			} )
+			.children()
+			.animate( { 'marginRight': '1px' }, 'fast',  function() { 
+				$( this ).css( 'marginRight', 0 ); 
+			} );
+		context.$ui.find( '.wikiEditor-ui-right' )
 			.css( { 
 				'marginTop' : '1px', 
 				'position' : 'absolute', 
@@ -8730,15 +8861,10 @@ fn: {
 				$( this ).hide()
 				.css( { 'marginTop': '0', 'width': '1px' } );
 				context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).fadeIn( 'fast' );
-			 } )
-			.prev()
-			.animate( { 'marginRight': '-1px' }, 'fast', function() {
-				$( this ).css( 'marginRight', 0 );
 				// Let the UI know things have moved around
 				context.fn.trigger( 'resize' );
-			} )
-			.children()
-			.animate( { 'marginRight': '1px' }, 'fast',  function() { $( this ).css( 'marginRight', 0 ); } );
+			 } );
+			
 		$.cookie( 'wikiEditor-' + context.instance + '-toc-width', 0 );
 		return false;
 	},
@@ -8751,9 +8877,18 @@ fn: {
 	expand: function( event ) {
 		var $this = $( this ),
 			context = $this.data( 'context' ),
-			openWidth = context.modules.toc.$toc.data( 'openWidth' );
+			openWidth = parseFloat( context.modules.toc.$toc.data( 'openWidth' ) ),
+			availableSpace = context.$wikitext.width() - parseFloat( $.wikiEditor.modules.toc.cfg.textMinimumWidth );
+		if ( availableSpace < $.wikiEditor.modules.toc.cfg.textMinmumWidth ) return false;
+		context.modules.toc.$toc.data( 'collapsed', false );
+		// check if we've got enough room to open to our stored width
+		if ( availableSpace < openWidth ) openWidth = availableSpace;
 		context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).hide();
-		$this.parent()
+		context.$ui.find( '.wikiEditor-ui-left' )
+			.animate( { 'marginRight': ( parseFloat( openWidth ) * -1 ) }, 'fast' )
+			.children()
+			.animate( { 'marginRight': openWidth }, 'fast' );
+		context.$ui.find( '.wikiEditor-ui-right' )
 			.show()
 			.css( 'marginTop', '1px' )
 			.animate( { 'width' : openWidth }, 'fast', function() {
@@ -8764,14 +8899,8 @@ fn: {
 					'right' : 'auto',
 					'left' : 'auto',
 					'top': 'auto' } );
-			 } )
-			.prev()
-			.animate( { 'marginRight': ( parseFloat( openWidth ) * -1 ) }, 'fast' )
-			.children()
-			.animate( { 'marginRight': openWidth }, 'fast', function() {
-				// Let the UI know things have moved around
-				context.fn.trigger( 'resize' );
-			} );
+					context.fn.trigger( 'resize' );
+			 } );
 		$.cookie( 'wikiEditor-' + context.instance + '-toc-width',
 			context.modules.toc.$toc.data( 'openWidth' ) );
 		return false;
@@ -8870,7 +8999,6 @@ fn: {
 				.text( gM( 'wikieditor-toc-show' ) );
 			$collapseControl.insertBefore( context.modules.toc.$toc );
 			context.$ui.find( '.wikiEditor-ui-left .wikiEditor-ui-top' ).append( $expandControl );
-			context.fn.trigger( 'resize' );
 		}
 		/**
 		 * Initializes resizing controls on the TOC and sets the width of
@@ -8882,7 +9010,8 @@ fn: {
 				.data( 'resizableDone', true )
 				.find( '.wikiEditor-ui-right' )
 				.data( 'wikiEditor-ui-left', context.$ui.find( '.wikiEditor-ui-left' ) )
-				.resizable( { handles: 'w,e', preventPositionLeftChange: true, minWidth: 50,
+				.resizable( { handles: 'w,e', preventPositionLeftChange: true, 
+					minWidth: parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ),
 					start: function( e, ui ) {
 						var $this = $( this );
 						// Toss a transparent cover over our iframe
@@ -8897,7 +9026,11 @@ fn: {
 								'right': 0
 							} )
 							.appendTo( context.$ui.find( '.wikiEditor-ui-left' ) );
-						$this.resizable( 'option', 'maxWidth', $this.parent().width() - 450 );
+						$this.resizable( 'option', 'maxWidth', $this.parent().width() - 
+							parseFloat( $.wikiEditor.modules.toc.cfg.textMinimumWidth ) );
+						if(context.modules.toc.$toc.data( 'positionMode' ) == 'goofy' ) {
+							$.wikiEditor.modules.toc.fn.switchLayout( context );
+						}
 					},
 					resize: function( e, ui ) {
 						// for some odd reason, ui.size.width seems a step ahead of what the *actual* width of
@@ -8912,7 +9045,7 @@ fn: {
 						context.$ui.find( '.wikiEditor-ui-resize-mask' ).remove();
 						context.$content.trigger( 'mouseup' );
 						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) ) {
-							context.modules.toc.$toc.trigger( 'collapse' );
+							context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' );
 						} else {
 							context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
 							context.modules.toc.$toc.data( 'openWidth', ui.size.width );
@@ -8941,12 +9074,7 @@ fn: {
 				if( initialWidth < parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) )
 					initialWidth = parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) + 1;
 				context.modules.toc.$toc.data( 'openWidth', initialWidth + 'px' );
-				context.$ui.find( '.wikiEditor-ui-right' )
-					.css( 'width', initialWidth + 'px' );
-				context.$ui.find( '.wikiEditor-ui-left' )
-					.css( 'marginRight', ( parseFloat( initialWidth ) * -1 ) + 'px' )
-					.children()
-					.css( 'marginRight', initialWidth + 'px' );
+				$.wikiEditor.modules.toc.fn.redraw( context, initialWidth );
 			}
 		}
 		
@@ -8975,7 +9103,7 @@ fn: {
 			// section 0, if needed
 			var structure = buildStructure( outline );
 			if ( $( 'input[name=wpSection]' ).val() == '' ) {
-				structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0 } );
+				structure.unshift( { 'text': wgPageName.replace( /_/g, ' ' ), 'level': 1, 'index': 0 } );
 			}
 			context.modules.toc.$toc.html( buildList( structure ) );
 			
