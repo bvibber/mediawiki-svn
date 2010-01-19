@@ -490,9 +490,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			foreach( $records as $k1 => $v1 ) {
 				if ( empty( $k1 ) ) $k1 = wfMsg( 'recordadmin-notset', $groupby[0] );
 				$tmp[] = "$td<h2>$k1</h2></td>\n";
-				print "---->$k1<br>";
 				foreach( $v1 as $k2 => $v2 ) {
-				print "-------->$k2:$v2<br>";
 					if ( isset( $groupby[1] ) ) {
 						if ( empty( $k2 ) ) $k2 = wfMsg( 'recordadmin-notset', $groupby[1] );
 						$tmp[] = "$td<h3>$k2</h3></td>\n";
