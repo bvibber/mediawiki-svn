@@ -39,8 +39,7 @@ mw.addClassStyleSheets( {
 
 // Add the module loader function:
 mw.addModuleLoader( 'EmbedPlayer', function( callback ){
-	var _this = this;
-	mw.log( 'loadModule: EmbedPlayer :' );	
+	var _this = this;	
 	
 	// Set module specific class videonojs to loading:
 	$j( '.videonojs' ).html( gM( 'mwe-loading_txt' ) );

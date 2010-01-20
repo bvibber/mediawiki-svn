@@ -45,7 +45,7 @@ var kskinConfig = {
 			'w':40
 		},		
 		'time_display': {
-			'w':70
+			'w':45
 		},		
 		/*
 		* The playhead html

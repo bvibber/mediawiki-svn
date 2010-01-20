@@ -122,7 +122,7 @@ ctrlBuilder.prototype = {
 			if ( this.supportedComponets[ i ] ) {
 				if ( this.available_width > this.components[i].w ) {
 					// Special case with playhead don't add unless we have 50px
-					if ( i == 'play_head' && this.available_width < 50 )
+					if ( i == 'play_head' && this.available_width < 30 )
 						continue;
 					s += this.components[i].o( this  );
 					this.available_width -= this.components[i].w;
@@ -504,7 +504,7 @@ ctrlBuilder.prototype = {
 		* The options button, invokes display of the options menu
 		*/
 		'options': {
-			'w':26,
+			'w':28,
 			'o':function( ctrlObj ) {
 				return '<div title="' + gM( 'mwe-player_options' ) + '" class="ui-state-default ui-corner-all ui-icon_link rButton options-btn">' +
 							'<span class="ui-icon ui-icon-wrench"></span>' +
@@ -516,7 +516,7 @@ ctrlBuilder.prototype = {
 		* The fullscreen button for displaying the video fullscreen
 		*/
 		'fullscreen': {
-			'w':26,
+			'w':28,
 			'o':function( ctrlObj ) {
 				return '<div title="' + gM( 'mwe-player_fullscreen' ) + '" class="ui-state-default ui-corner-all ui-icon_link rButton fullscreen-btn">' +
 							'<span class="ui-icon ui-icon-arrow-4-diag"></span>' +
@@ -529,7 +529,7 @@ ctrlBuilder.prototype = {
 		* The pause button
 		*/
 		'pause': {
-			'w':24,
+			'w':28,
 			'o':function( ctrlObj ) {
 				return '<div title="' + gM( 'mwe-play_clip' ) + '" class="ui-state-default ui-corner-all ui-icon_link lButton play-btn">' +
 							'<span class="ui-icon ui-icon-play"/>' +
@@ -541,7 +541,7 @@ ctrlBuilder.prototype = {
 		* The closed captions button
 		*/
 		'timed_text': {
-			'w':23,
+			'w':28,
 			'o':function( ctrlObj ) {
 				return '<div title="' + gM( 'mwe-timed_text' ) + '" class="ui-state-default ui-corner-all ui-icon_link rButton timed-text">' +
 							'<span class="ui-icon ui-icon-comment"></span>' +
@@ -553,7 +553,7 @@ ctrlBuilder.prototype = {
 		* The volume control interface html
 		*/
 		'volume_control': {
-			'w':23,
+			'w':28,
 			'o':function( ctrlObj ) {
 				var o = '';
 				if ( ctrlObj.volume_layout == 'horizontal' )
@@ -587,7 +587,7 @@ ctrlBuilder.prototype = {
 		'play_head': {
 			'w':0, // special case (takes up remaining space)
 			'o':function( ctrlObj ) {
-				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 42 ) + 'px;"></div>';
+				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 20 ) + 'px;"></div>';
 			}
 		}
 	}

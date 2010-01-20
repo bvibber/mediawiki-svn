@@ -1968,8 +1968,7 @@ mw.EmbedPlayer.prototype = {
 			return ;
 		}
 		// Do update controls: 
-		this.$interface.find( '.control-bar' ).html( this.getControls() );
-		this.ctrlBuilder.addControlHooks();				
+		this.ctrlBuilder.addControls();
 	},
 	
 	/**
