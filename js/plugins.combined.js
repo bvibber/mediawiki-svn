@@ -7068,6 +7068,8 @@ if ( typeof context == 'undefined' ) {
 			var e;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
+				// This needs to be here for webkit, or the selection is invalid
+				context.$iframe[0].contentWindow.focus();
 				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
 				// Start at the selection's start and traverse the DOM backwards
 				// This is done by traversing an element's children first, then the
