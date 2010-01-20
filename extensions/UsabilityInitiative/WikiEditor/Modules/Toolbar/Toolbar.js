@@ -18,9 +18,9 @@ mw.addMessages({
 	"wikieditor-toolbar-tool-link-title" : "Insert link",
 	"wikieditor-toolbar-tool-link-int" : "To a wiki page",
 	"wikieditor-toolbar-tool-link-int-target" : "Target page or URL:",
-	"wikieditor-toolbar-tool-link-int-target-tooltip" : "Enter the page title",
-	"wikieditor-toolbar-tool-link-int-text" : "Displayed text:",
-	"wikieditor-toolbar-tool-link-int-text-tooltip" : "Enter the text that should be displayed",
+	"wikieditor-toolbar-tool-link-int-target-tooltip" : "Page Title or URL",
+	"wikieditor-toolbar-tool-link-int-text" : "Text to display:",
+	"wikieditor-toolbar-tool-link-int-text-tooltip" : "Text to be displayed",
 	"wikieditor-toolbar-tool-link-ext" : "To an external web page",
 	"wikieditor-toolbar-tool-link-ext-target" : "Link URL:",
 	"wikieditor-toolbar-tool-link-ext-text" : "Link text:",
@@ -1021,21 +1021,19 @@ mw.ready( function() {
 		titleMsg: 'wikieditor-toolbar-tool-link-title',
 		id: 'wikieditor-toolbar-link-dialog',
 		html: '\
-			<fieldset><table style="width: 100%;"><tr>\
-				<td>\
+			<fieldset>\
+				<div class="wikieditor-toolbar-field-wrapper">\
 					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target"></label>\
 					<div id="wikieditor-toolbar-link-int-target-status" style="display: inline; float:right;"></div><br />\
-					<div style="position: relative;"><label rel="wikieditor-toolbar-tool-link-int-target-tooltip"></label>\
-						<input type="text" id="wikieditor-toolbar-link-int-target" style="width: 100%;" /></div>\
-				</td>\
-			</tr><tr>\
-				<td>\
+					<label rel="wikieditor-toolbar-tool-link-int-target-tooltip" class="wikieditor-toolbar-tool-tooltip"></label>\
+					<input type="text" id="wikieditor-toolbar-link-int-target" style="width: 100%;" />\
+				</div>\
+				<div class="wikieditor-toolbar-field-wrapper">\
 					<label for="wikieditor-toolbar-link-int-text" rel="wikieditor-toolbar-tool-link-int-text"></label><br />\
-					<div style="position: relative;"><label rel="wikieditor-toolbar-tool-link-int-text-tooltip"></label>\
-						<input type="text" id="wikieditor-toolbar-link-int-text" style="width: 100%;" /></div>\
-				</td>\
-			</tr><tr>\
-				<td>\
+					<label rel="wikieditor-toolbar-tool-link-int-text-tooltip" class="wikieditor-toolbar-tool-tooltip"></label>\
+					<input type="text" id="wikieditor-toolbar-link-int-text" style="width: 100%;" />\
+				</div>\
+				<div class="wikieditor-toolbar-field-wrapper">\
 					<div style="float: left; margin-right: 2em;">\
 						<input type="radio" id="wikieditor-toolbar-link-type-int" name="wikieditor-toolbar-link-type" selected />\
 						<label for="wikieditor-toolbar-link-type-int" rel="wikieditor-toolbar-tool-link-int"></label>\
@@ -1043,9 +1041,8 @@ mw.ready( function() {
 						<input type="radio" id="wikieditor-toolbar-link-type-ext" name="wikieditor-toolbar-link-type" />\
 						<label for="wikieditor-toolbar-link-type-ext" rel="wikieditor-toolbar-tool-link-ext"></label>\
 					</div>\
-				</td>\
-			</tr>\
-			</table></fieldset>',
+				</div>\
+			</fieldset>',
 		init: function() {
 			function isExternalLink( s ) {
 				// The following things are considered to be external links:
@@ -1149,27 +1146,19 @@ mw.ready( function() {
 			// Setup the tooltips in the textboxes
 			$j( '#wikieditor-toolbar-link-int-target, #wikieditor-toolbar-link-int-text' )
 				.focus( function() {
-					$j(this).parent().find( 'label' ).hide();
+					if( $j( this ).val() == $j( this ).prev( 'label' ).text() )
+						$j( this ).val( '' )
+							.removeClass( 'wikieditor-toolbar-dialog-hint' );
 				})
 				.bind( 'blur change', function() {
-					if ( $j(this).val() == '' )
-						$j(this).parent().find( 'label' ).show();
-					else
-						$j(this).parent().find( 'label' ).hide();
+					if ( $j( this ).val() == '' )
+						$j( this )
+							.val( $j( this ).prev( 'label' ).text() )
+							.addClass( 'wikieditor-toolbar-dialog-hint' );
 				})
-				.parent().find( 'label')
-				.css({
-					'display': 'none',
-					'position' : 'absolute',
-					'bottom': 0,
-					'padding': '0.25em',
-					'color': '#999999',
-					'cursor': 'text'
-				})
-				.css( ( $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' ), 0 )
-				.click( function() {
-					$j(this).parent().find( 'input' ).focus();
-				});
+				.trigger( 'focus' )
+				.prev( 'label' )
+				.css( 'display', 'none' );
 			
 			// Automatically copy the value of the internal link page title field to the link text field unless the user
 			// has changed the link text field - this is a convenience thing since most link texts are going to be the
