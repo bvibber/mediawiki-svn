@@ -38,14 +38,18 @@ evt: {
 					markers.push( {
 						start: tokenArray[beginIndex].offset,
 						end: tokenArray[endIndex].offset,
+						anchor: 'wrap',
 						afterWrap: $.wikiEditor.modules.templateEditor.fn.stylize,
 						beforeUnwrap: function( node ) {
 							$( node ).data( 'display' ).remove();
 						},
-      						getWrapper: function( ca1, ca2 ) {
-							return $( ca1.parentNode ).is( 'div.wikiEditor-template' ) &&
-									ca1.previousSibling == null &&
-									ca1.nextSibling == null ?
+						onSkip: function() { },
+      						getAnchor: function( ca1, ca2 ) {
+							// FIXME: Relies on the current <span> structure that is likely to die
+							return $( ca1.parentNode ).is( 'div.wikiEditor-template-text' ) &&
+									$( ca1.parentNode.previousSibling )
+										.is( 'ul.wikiEditor-template-modes' ) &&
+									ca1.parentNode.nextSibling == null ?
 								ca1.parentNode : null;
 						}
 					} );
