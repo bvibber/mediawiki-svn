@@ -25,16 +25,16 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 13 ),
 				array( 'src' => 'css/wikiEditor.preview.css', 'version' => 1 ),
 				array( 'src' => 'css/wikiEditor.templateEditor.css', 'version' => 1 ),
-				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 27 ),
+				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 28 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 10 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 53 ),
+				array( 'src' => 'css/combined.css', 'version' => 54 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 53 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 54 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)
@@ -173,7 +173,7 @@ class UsabilityInitiativeHooks {
 				array(
 					'src' => 'js/plugins/jquery.wikiEditor.toc.js',
 					'class' => 'j.wikiEditor.modules.toc',
-					'version' => 67
+					'version' => 68
 				),
 				array(
 					'src' => 'js/plugins/jquery.wikiEditor.preview.js',
@@ -191,10 +191,10 @@ class UsabilityInitiativeHooks {
 					'version' => 1 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 162 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 163 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 162 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 163 ),
 			),
 		),
 	);
