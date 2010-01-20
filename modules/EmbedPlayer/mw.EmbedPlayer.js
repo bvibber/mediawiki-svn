@@ -757,7 +757,7 @@ mediaSource.prototype = {
 	*	@type String
 	*/
 	detectType: function( uri ) {
-		// @@todo if media is on the same server as the javascript
+		// NOTE: if media is on the same server as the javascript
 		// we can issue a HEAD request and read the mime type of the media...
 		// ( this will detect media mime type independently of the url name)
 		// http://www.jibbering.com/2002/4/httprequest.html
@@ -1251,7 +1251,7 @@ mw.EmbedPlayer.prototype = {
 		this.pid = 'pid_' + this.id;
 
 		// Grab any innerHTML and set it to missing_plugin_html
-		// @@todo we should strip "source" tags instead of checking and skipping
+		// NOTE: we should strip "source" tags instead of checking and skipping
 		if ( element.innerHTML != '' && element.getElementsByTagName( 'source' ).length == 0 ) {
 			//mw.log( 'innerHTML: ' + element.innerHTML );
 			this.user_missing_plugin_html = element.innerHTML;
@@ -1810,7 +1810,7 @@ mw.EmbedPlayer.prototype = {
 		
 		mw.log( 'we have annotative track:' + anno_track_url );
 		// Zero out seconds (should improve cache hit rate and generally expands metadata search)
-		// @@todo this could be replaced with a regExp
+		// NOTE: this could be replaced with a regExp
 		var annoURL = mw.parseUri( anno_track_url );
 		var times = annoURL.queryKey['t'].split( '/' );
 		var stime_parts = times[0].split( ':' );
@@ -1829,7 +1829,7 @@ mw.EmbedPlayer.prototype = {
 		} );
 		var request_key = new_start + '/' + new_end;
 		// check the anno_data cache: 
-		// @@todo search cache see if current is in range.  
+		// NOTE: search cache see if current is in range.  
 		if ( this.cmmlData ) {
 			mw.log( 'anno data found in cache: ' + request_key );
 			this.showNextPrevLinks();
@@ -2250,7 +2250,7 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Display the options div
-	* @@TODO should move to skins "showShare" , "showTextInterface" etc.
+	* NOTE: should move to skins "showShare" , "showTextInterface" etc.
 	*/
 	doOptionsHTML:function() {
 		var pos = this.$interface.find( '.options-btn' ).offset();
@@ -3335,7 +3335,7 @@ mw.EmbedTypes = {
 						   but xiph qt registers mimetype via quicktime plugin */
 						this.players.addPlayer( videoElementPlayer );
 					} else {
-						// @@todo add some user nagging to install the xiph qt 
+						// NOTE: add some user nagging to install the xiph qt 
 					}
 				} catch ( e ) {
 					mw.log( 'could not run canPlayType in safari' );

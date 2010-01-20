@@ -30,7 +30,7 @@
 * if the browser supports it we can pass msgs with the postMessage  API
 * http://ejohn.org/blog/cross-window-messaging/
 *
-* @@todo it would be nice if this supported multiple proxy targets (ie to a bright widgets future) 
+* NOTE: it would be nice if this supported multiple proxy targets (ie to a bright widgets future) 
 *
 */
 
@@ -122,7 +122,7 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 		mw.log( "Do frame proxy request on src: \n" + $.proxy.server_frame + "\n" + JSON.stringify(  requestQuery ) );
 					
 		// We can't update src's so we have to remove and add all the time :(
-		// @@todo we should support frame msg system 
+		// NOTE: we should support frame msg system 
 		$j( '#frame_proxy' ).remove();
 		$j( 'body' ).append( '<iframe style="display:none" id="frame_proxy" name="frame_proxy" ' +
 				'src="' + $.proxy.server_frame +

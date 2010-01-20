@@ -5,10 +5,11 @@
 var kalturaSearch = function ( options ) {
 	return this.init( options );
 }
+
 kalturaSearch.prototype = {
 
 	// Stores search library pointers
-	searchLibs:{ },	
+	searchLibs: { },	
 	
 	/**
 	* Initialize the flickr Search with provided options
@@ -57,28 +58,21 @@ kalturaSearch.prototype = {
 		var _this = this;
 		this.provider_libs = { };		
 		
-		if ( data ) {
-			// set result info: 
-			//this.num_results = data.photos.total;
-			//if ( this.num_results > this.provider.offset + this.provider.limit ) {
-			//	this.more_results = true;
-			//}
+		if ( data ) {			
 			
 			// Display option for more results as long as results are coming in
 			this.more_results = ( data.length == this.limit )
 			
-			for ( var resource_id in data ) {
-				
+			for ( var resource_id in data ) {				
 				var result = data[ resource_id ];					
-				// Update mappings: 					
-				result['poster'] = result['thumbnail'];		
-				result['pSobj'] = _this;
-				result['link'] = result[ 'item_details_page' ];
 				
-				//@@todo this should be refactored per search library 
-				//or gennerated at request time for mediaWiki  
-				var ext = this.getMimeExtension( result['mime'] );				
-				result['titleKey'] = 'File:' + result['title'] + '.' + ext;				
+				// Update mappings: 					
+				result[ 'poster' ] = result[ 'thumbnail' ];		
+				result[ 'pSobj' ] = _this;
+				result[ 'link' ] = result[ 'item_details_page' ];
+				
+				var fileExtension = _this.getMimeExtension( result[ 'mime' ] );				
+				result[ 'titleKey' ] = 'File:' + result[ 'title' ] + '.' + fileExtension;				
 				
 				this.num_results++;
 				_this.resultsObj[ resource_id ] = result;
@@ -137,7 +131,4 @@ kalturaSearch.prototype = {
 			callback ( _this.searchLibs[ provider_id ] );
 		} );
 	}
-	
-
-	
-}
+};

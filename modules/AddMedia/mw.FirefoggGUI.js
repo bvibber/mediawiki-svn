@@ -127,7 +127,7 @@ mw.FirefoggGUI.prototype = {
 					'maxSize'      : 400,
 					'videoBitrate' : 544,
 					'audioBitrate' : 96,
-					'noUpscaling'  : true,
+					'noUpscaling'  : true
 				}
 			},
 			'savebandwidth': {
@@ -629,7 +629,7 @@ mw.FirefoggGUI.prototype = {
 				case 'string':
 				case 'int':
 				case 'float':
-					//@@check if we have a validate function on the string
+					// Check if we have a validate function on the string
 					$j( this.selector + ' ._' + configKey ).change( function() {
 						$j( this ).val( _this.updateLocalValue(
 							_this.getClassId( this ),
