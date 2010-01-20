@@ -140,6 +140,7 @@ ctrlBuilder.prototype = {
 	getOverlayWidth: function(){
 		return ( this.embedPlayer.getPlayerWidth() < 300 )? 300 : this.embedPlayer.getPlayerWidth();
 	},	
+	
 	/**
 	* Get minimal height for interface overlay
 	*/
@@ -515,7 +516,7 @@ ctrlBuilder.prototype = {
 		* The fullscreen button for displaying the video fullscreen
 		*/
 		'fullscreen': {
-			'w':20,
+			'w':26,
 			'o':function( ctrlObj ) {
 				return '<div title="' + gM( 'mwe-player_fullscreen' ) + '" class="ui-state-default ui-corner-all ui-icon_link rButton fullscreen-btn">' +
 							'<span class="ui-icon ui-icon-arrow-4-diag"></span>' +

@@ -95,8 +95,7 @@ mw.addMessages( {
 		/**
 		* Text Source(s) Setup Flag
 		*/
-		textSourceSetupFlag: null,
-		
+		textSourceSetupFlag: null,		
 		
 		/*
 		 * Hard coded to "commons" right now .. but we will want to support per-asset provider id's

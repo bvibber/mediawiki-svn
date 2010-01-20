@@ -1245,21 +1245,34 @@ var mwDefaultConf = {
 	/**
 	* Load done callback for script loader
 	*  this way webkit browsers don't have to check if variables are "ready"
+	* @param {String} requestName Name of the load request
 	*/	
 	mw.loadDone =  function( requestName ) {		
-		if( mwLoadDoneCB[ requestName ] && mwLoadDoneCB[ requestName ] != 'done'){
-			mw.log( "LoadDone: " + requestName + ' run callback ');
-			mwLoadDoneCB[ requestName ]( requestName );
-			mwLoadDoneCB[ requestName ] = 'done';
+		//mw.log( "LoadDone: " + requestName + ' run callback ');
+		while( mwLoadDoneCB[ requestName ].length ){
+			if( typeof mwLoadDoneCB[ requestName ] != 'object' )
+				break;			
+			mwLoadDoneCB[ requestName ].pop()( requestName );
 		}
+		// Set the load request name to done
+		mwLoadDoneCB[ requestName ] = 'done';
 	},
+	
 	/**
 	* Set a load done callback 
 	* @param {String} requestName Name of class or request set
 	* @param {Function} callback Function called once requestName is ready
 	*/
 	mw.setLoadDoneCB = function( requestName, callback ){
-		mwLoadDoneCB[ requestName ] = callback;
+		// If the requestName is already done loading just callback
+		if( mwLoadDoneCB[ requestName ] == 'done' ){
+			callback( requestName )
+		}
+		// Add it to the function queue
+		if( ! mwLoadDoneCB[ requestName ] ){
+			mwLoadDoneCB[ requestName ] = [];
+		}
+		mwLoadDoneCB[ requestName ].push( callback );
 	}
 	
 	/**
