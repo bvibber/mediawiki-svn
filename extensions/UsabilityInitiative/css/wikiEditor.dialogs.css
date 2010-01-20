@@ -55,3 +55,7 @@ body.rtl .ui-dialog .ui-dialog-titlebar-close {
 body.rtl .ui-dialog .ui-dialog-title {
 	float:right;
 }
+
+.ui-widget-header {
+	border-bottom:1px solid #6bc8f3 !important;
+}

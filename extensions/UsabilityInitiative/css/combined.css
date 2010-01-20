@@ -264,7 +264,10 @@ body.rtl .ui-dialog .ui-dialog-titlebar-close {
 body.rtl .ui-dialog .ui-dialog-title {
 	float:right;
 }
-/* wikiEditor toc module */
+
+.ui-widget-header {
+	border-bottom:1px solid #6bc8f3 !important;
+}/* wikiEditor toc module */
 .wikiEditor-ui-toc {
 	/* height and width are set dynamically */
 	/*float: right;*/
@@ -828,7 +831,6 @@ body.rtl .wikiEditor-ui-toolbar .page-characters > div > a,
 	width: 340px;
 	background: #fff;
 	padding: 10px;
-	border: 1px solid #cdcdcd;
 	overflow: hidden;
 	display: block;
 	position: relative;
