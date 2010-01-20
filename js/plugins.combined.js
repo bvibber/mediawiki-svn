@@ -7049,7 +7049,9 @@ if ( typeof context == 'undefined' ) {
 				y = parentHtml.scrollTop() > 0 ? y + html.scrollTop() - parentHtml.scrollTop() : y;
 				y = parentBody.scrollTop() > 0 ? y + body.scrollTop() - parentBody.scrollTop() : y;
 			}
-			if ( force || y < html.scrollTop() || y > html.scrollTop() + context.$iframe.height() ) {
+			var topBound = html.scrollTop() > body.scrollTop() ? html.scrollTop() : body.scrollTop(),
+				bottomBound = topBound + context.$iframe.height();
+			if ( force || y < topBound || y > bottomBound ) {
 					html.scrollTop( y );
 					body.scrollTop( y );
 				}
