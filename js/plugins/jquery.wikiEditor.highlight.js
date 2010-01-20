@@ -178,13 +178,16 @@ fn: {
 			}
 			// Filter nodes with the wikiEditor-noinclude class
 			p = p ? p.nextSibling : null;
-			while ( p && $( p ).hasClass( 'wikiEditor-noinclude' ) ) {
-				p = p.nextSibling;
-			}
-			while ( p && p.firstChild ) {
-				p = p.firstChild;
-				nextDepth++;
-			}
+			do {
+				while ( p && $( p ).hasClass( 'wikiEditor-noinclude' ) ) {
+					p = p.nextSibling;
+				}
+				if ( p && p.firstChild ) {
+					p = p.firstChild;
+					nextDepth++;
+				}
+			} while ( p && ( $( p ).hasClass( 'wikiEditor-noinclude' ) || p.firstChild ) );
+			
 			next = p;
 			if ( node.nodeName != '#text' && node.nodeName != 'BR' ) {
 				// Skip this node
@@ -264,26 +267,36 @@ fn: {
 					ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
 				}
 				if ( ca1 && ca2 ) {
-					var wrapper = markers[i].getWrapper( ca1, ca2 );
-					if ( !wrapper ) {
+					var anchor = markers[i].getAnchor( ca1, ca2 );
+					if ( !anchor ) {
 						// We have to store things like .parentNode and .nextSibling because appendChild() changes these
 						// properties
 						var newNode = ca1.ownerDocument.createElement( 'div' );
 						var commonAncestor = ca1.parentNode;
 						var nextNode = ca2.nextSibling;
-						// Append all nodes between ca1 and ca2 (inclusive) to newNode
-						var n = ca1;
-						while ( n != nextNode ) {
-							var ns = n.nextSibling;
-							newNode.appendChild( n );
-							n = ns;
-						}
-						
-						// Insert newNode in the right place
-						if ( nextNode ) {
-							commonAncestor.insertBefore( newNode, nextNode );
-						} else {
-							commonAncestor.appendChild( newNode );
+						if ( markers[i].anchor == 'wrap' ) {
+							// Append all nodes between ca1 and ca2 (inclusive) to newNode
+							var n = ca1;
+							while ( n != nextNode ) {
+								var ns = n.nextSibling;
+								newNode.appendChild( n );
+								n = ns;
+							}
+							
+							// Insert newNode in the right place
+							if ( nextNode ) {
+								commonAncestor.insertBefore( newNode, nextNode );
+							} else {
+								commonAncestor.appendChild( newNode );
+							}
+						} else if ( markers[i].anchor == 'before' ) {
+							commonAncestor.insertBefore( newNode, ca1 );
+						} else if ( markers[i].anchor == 'after' ) {
+							if ( nextNode ) {
+								commonAncestor.insertBefore( newNode, nextNode );
+							} else {
+								commonAncestor.appendChild( newNode );
+							}
 						}
 						
 						$( newNode ).data( 'marker', markers[i] )
@@ -293,7 +306,10 @@ fn: {
 						markers[i].afterWrap( newNode, markers[i] );
 					} else {
 						// Temporarily add a class for bookkeeping purposes
-						$( wrapper ).addClass( 'wikiEditor-highlight-tmp' );
+						$( anchor )
+							.addClass( 'wikiEditor-highlight-tmp' )
+							.data( 'marker', markers[i] );
+						markers[i].onSkip( anchor );
 					}
 				}
 				// Clear for next iteration

@@ -83,16 +83,23 @@ evt: {
 				index: h,
 				start: tokenArray[i].tokenStart,
 				end: tokenArray[i].offset,
+				anchor: 'before',
 				afterWrap: function( node ) {
 					var marker = $( node ).data( 'marker' );
 					$( node ).addClass( 'wikiEditor-toc-header' )
 						.addClass( 'wikiEditor-toc-section-' + marker.index )
 						.data( 'section', marker.index );
 				},
-				getWrapper: function( ca1, ca2 ) {
-					return $( ca1.parentNode ).is( 'div.wikiEditor-toc-header' ) &&
-							ca1.previousSibling == null && ca1.nextSibling == null ?
-						ca1.parentNode : null;
+				onSkip: function( node ) {
+					var marker = $( node ).data( 'marker' );
+					$( node )
+						.removeClass( 'wikiEditor-toc-section-' + $( node ).data( 'section' ) )
+						.addClass( 'wikiEditor-toc-section-' + marker.index )
+						.data( 'section', marker.index );
+				},
+				getAnchor: function( ca1, ca2 ) {
+					return $( ca1.previousSibling ).is( 'div.wikiEditor-toc-header' ) ?
+						ca1.previousSibling : null;
 				}
 			} );
 			outline.push ( {
