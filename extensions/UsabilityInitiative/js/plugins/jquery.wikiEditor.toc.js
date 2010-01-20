@@ -489,7 +489,7 @@ fn: {
 					stop: function ( e, ui ) {
 						context.$ui.find( '.wikiEditor-ui-resize-mask' ).remove();
 						context.$content.trigger( 'mouseup' );
-						if( ui.size.width < parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) ) {
+						if( ui.size.width <= parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) ) {
 							context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' );
 						} else {
 							context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );

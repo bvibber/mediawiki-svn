@@ -173,7 +173,7 @@ class UsabilityInitiativeHooks {
 				array(
 					'src' => 'js/plugins/jquery.wikiEditor.toc.js',
 					'class' => 'j.wikiEditor.modules.toc',
-					'version' => 68
+					'version' => 69
 				),
 				array(
 					'src' => 'js/plugins/jquery.wikiEditor.preview.js',
@@ -191,10 +191,10 @@ class UsabilityInitiativeHooks {
 					'version' => 1 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 163 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 164 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 163 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 164 ),
 			),
 		),
 	);
