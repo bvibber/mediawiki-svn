@@ -586,7 +586,7 @@ ctrlBuilder.prototype = {
 		'play_head': {
 			'w':0, // special case (takes up remaining space)
 			'o':function( ctrlObj ) {
-				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 37 ) + 'px;"></div>';
+				return '<div class="play_head" style="width: ' + ( ctrlObj.available_width - 42 ) + 'px;"></div>';
 			}
 		}
 	}

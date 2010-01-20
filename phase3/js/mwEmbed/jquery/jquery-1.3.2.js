@@ -852,8 +852,12 @@ jQuery.extend({
 		name = name.replace(/-([a-z])/ig, function(all, letter){
 			return letter.toUpperCase();
 		});
-		if ( set )
-			elem[ name ] = value;
+		try{
+			if ( set )
+				elem[ name ] = value;
+		}catch(e){
+			//IE crashes with the above elem[ name ] 
+		}
 		return elem[ name ];
 	},
 	trim: function( text ) {

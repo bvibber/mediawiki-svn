@@ -293,7 +293,7 @@ mw.BaseUploadInterface.prototype = {
 		// Get the token from the page
 		_this.editToken = $j( "#wpEditToken" ).val();
 
-		//@@TODO check for sendAsBinary to support Firefox/HTML5 progress on upload
+		// TODO check for sendAsBinary to support Firefox/HTML5 progress on upload
 		
 		//Update the progress dialog (no bar without XHR request)
 		$j( '#upProgressDialog' ).html(		
@@ -470,7 +470,7 @@ mw.BaseUploadInterface.prototype = {
 	 */
 	onAjaxUploadStatusResponse: function( data ) {
 		var _this = this;
-		//@@check if we are done
+		// Check if we are done
 		if ( data.upload['apiUploadResult'] ) {
 			//update status to 100%
 			_this.updateProgress( 1 );
@@ -490,7 +490,7 @@ mw.BaseUploadInterface.prototype = {
 			return ;
 		}
 
-		//@@ else update status:
+		// else update status:
 		if ( data.upload['content_length'] && data.upload['loaded'] ) {
 			//we have content length we can show percentage done:
 			var fraction = data.upload['loaded'] / data.upload['content_length'];
@@ -563,7 +563,7 @@ mw.BaseUploadInterface.prototype = {
 				$j( this ).dialog( 'close' );
 			};
 
-			//@@TODO should be refactored to more specialUpload page type error handling
+			// NOTE should be refactored to more specialUpload page type error handling
 
 			// Check a few places for the error code
 			var error_code = 0;
@@ -601,7 +601,7 @@ mw.BaseUploadInterface.prototype = {
 				'5' : 'illegalfilename'
 			};
 
-			//@@todo: handle these error types
+			// NOTE:: handle these error types
 			var error_onlykey = {
 				'1': 'BEFORE_PROCESSING',
 				'6': 'PROTECTED_PAGE',
@@ -948,7 +948,7 @@ mw.BaseUploadInterface.prototype = {
 	onCancel: function( dlElm ) {
 		//confirm:
 		if ( confirm( gM( 'mwe-cancel-confim' ) ) ) {
-			//@@todo (cancel the encode / upload)
+			// NOTE: (cancel the encode / upload)
 			$j( dlElm ).dialog( 'close' );
 		}
 	}

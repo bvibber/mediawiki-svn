@@ -409,7 +409,7 @@ mw.ClipEdit.prototype = {
 	showEditTypesMenu:function() {
 		var _this = this;
 		
-		// Add in relevent subMenus
+		// Add in relevant subMenus
 		var o = '';
 		var tabc = '';
 		o += '<div id="mv_submenu_clipedit">';

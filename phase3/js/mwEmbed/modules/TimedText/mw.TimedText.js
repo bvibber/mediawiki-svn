@@ -804,7 +804,7 @@ mw.addMessages( {
 							'width': '100%',
 							'display': 'block',
     						'opacity': .8,
-							'text-align':'center',											
+							'text-align':'center'								
 						}).append(
 							$j('<span>').css({
 								'color':'white',
@@ -1354,8 +1354,6 @@ mw.addMessages( {
 		} );		
 	}
 } )( jQuery );
-
-
 
 /**
  * List of all languages mediaWiki supports ( Avoid an api call to get this same info )

@@ -1565,7 +1565,6 @@ mw.RemoteSearchDriver.prototype = {
 	*/
 	removeResourceEditor: function() {
 		$j( '#rsd_resource_edit' ).remove();
-		$j( '#rsd_resource_edit' ).css( 'opacity', 0 );
 		$j( '#rsd_edit_img' ).remove();
 	},
 
@@ -1590,6 +1589,7 @@ mw.RemoteSearchDriver.prototype = {
 		var dialogTitle = gM( 'mwe-add_media_wizard' ) + ': ' + 
 			gM( 'rsd_resource_edit', resource.title );
 		$j( _this.target_container ).dialog( 'option', 'title', dialogTitle );
+		
 		mw.log( 'did append to: ' + _this.target_container );
 			
 		// Try and keep aspect ratio for the thumbnail that we clicked:			
@@ -2109,7 +2109,7 @@ mw.RemoteSearchDriver.prototype = {
 			.attr( {
 				'id' : 'wpDestFile',
 				'type' : 'text',
-				'size' : '30', 
+				'size' : '30'
 			} )
 			.val ( resource.target_resource_title );
 				
@@ -2125,7 +2125,7 @@ mw.RemoteSearchDriver.prototype = {
 						'cols' : 50 
 					})
 					.css( {
-						'width': '90%',						 
+						'width': '90%'				 
 					} ) 
 					.text( description ),
 				$j( '<input />' )

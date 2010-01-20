@@ -351,7 +351,7 @@ class jsScriptLoader {
 			$this->urid = htmlspecialchars( $_GET['urid'] );
 		} else {
 			// Just give it the current style sheet ID:
-			// @@todo read the svn version number
+			// NOTE: read the svn version number
 			$this->urid = $wgStyleVersion;
 		}
 
@@ -543,7 +543,7 @@ class jsScriptLoader {
 		wfRestoreWarnings();
 
 		if ( $str === false ) {
-			// @@todo check PHP error level. Don't want to expose paths if errors are hidden.
+			// NOTE: check PHP error level. Don't want to expose paths if errors are hidden.
 			$this->error_msg .= 'Requested File: ' . htmlspecialchars( $IP.'/'.$filePath ) . ' could not be read' . "\n";
 			return false;
 		}

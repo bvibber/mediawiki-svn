@@ -117,7 +117,7 @@ mw.Firefogg = function( options ) {
 };
 mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 	min_firefogg_version: '0.9.9.5',
-	default_encoder_settings: { // @@todo allow the server to set these
+	default_encoder_settings: { // NOTE: allow the server to set these
 		'maxSize'        : '400',
         'videoBitrate'   : '544',
         'audioBitrate'   : '96',
@@ -989,7 +989,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 				progressCallback( 1 );
 				doneCallback();
 			} else if ( _this.fogg.state == 'encoding fail' ) {
-				//@@todo error handling:
+				// TODO error handling:
 				mw.log( 'encoding failed' );
 			}
 		}
