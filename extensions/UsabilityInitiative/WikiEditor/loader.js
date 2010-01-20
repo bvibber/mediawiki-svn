@@ -14,7 +14,7 @@ mw.addClassFilePaths({
 });
 
 mw.addModuleLoader( 'WikiEditor', function( callback ){
-	//@@todo we should check config and skip stuff we don't want need
+	// NOTE: we should check config and skip stuff we don't want need
 	var libReq = [
 		//Get the core library dependencies
 		"$j.ui",
@@ -36,7 +36,7 @@ mw.addModuleLoader( 'WikiEditor', function( callback ){
 		"$j.suggestions" ,
 		"$j.wikiEditor",
 		
-		//@@NOTE we should only include the modules we need
+		// NOTE we should only include the modules we need
 		"$j.wikiEditor.modules.highlight" ,	
 		"$j.wikiEditor.modules.toolbar",
 		"$j.wikiEditor.modules.dialogs",
@@ -59,10 +59,10 @@ mw.addModuleLoader( 'WikiEditor', function( callback ){
 	mw.getStyleSheet( wgScriptPath + '/extensions/UsabilityInitiative/css/combined.min.css' );
 	
 	
-	mw.load(libReq, function(){
+	mw.load( libReq, function(){
 		mw.log('wikiEditor done ' );
 		callback( 'WikiEditor' );
-	});
+	} );
 	
 	
 });
