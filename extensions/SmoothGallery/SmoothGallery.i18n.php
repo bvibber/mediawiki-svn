@@ -139,6 +139,8 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => 'Aotren an implijerien da grouiñ palieroù gant skeudennoù karget.
+Aotren an darn vrasañ eus dibarzhioù SmoothGallery',
 	'smoothgallery-title' => 'SmoothGallery',
 	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
 	'smoothgallery-error' => '<b>Fazi gant ar SmoothGallery :</b>',

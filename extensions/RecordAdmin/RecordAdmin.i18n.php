@@ -294,6 +294,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'recordadmin' => 'Mererezh an enrolladennoù',
 	'recordadmin-select' => 'Diuzañ',
 	'recordadmin-createtype' => 'Ebarzhiñ anv ur seurt enrolladennoù nevez evit e grouiñ',
 	'recordadmin-recordtype' => 'seurt enrolladenn',
@@ -303,6 +304,7 @@ $messages['br'] = array(
 	'recordadmin-create' => 'Klask pe krouiñ "$1" enrolladenn',
 	'recordadmin-alreadyexist' => 'Digarez, « $1 » zo anezhañ dija !',
 	'recordadmin-createsuccess' => '$1 zo bet krouet',
+	'recordadmin-createerror' => "C'hoarvezet ez eus ur fazi pa oad o klask krouiñ an $1 !",
 	'recordadmin-badtitle' => 'Titl fall !',
 	'recordadmin-invert' => 'Eilpennañ an diuzadenn',
 	'recordadmin-buttonsearch' => 'Klask',
@@ -312,6 +314,7 @@ $messages['br'] = array(
 	'recordadmin-edit' => 'Ho kemmañ $2 enrolladenn "$1"',
 	'recordadmin-typeupdated' => 'hizivaet eo perzhioù $1',
 	'recordadmin-updatesuccess' => 'Hizivaet eo $1',
+	'recordadmin-updateerror' => "C'hoarvezet ez eus ur fazi e-pad an hizivadenn",
 	'recordadmin-buttonsave' => 'Enrollañ',
 	'recordadmin-noform' => 'N\'eus furmskrid ebet stag ouzh an enrolladennoù "$1" !',
 	'recordadmin-createlink' => 'krouiñ unan',
@@ -326,6 +329,9 @@ $messages['br'] = array(
 	'recordadmin-editwithform' => 'Aozañ gant ur furmskrid',
 	'recordadmin-typeinfo' => 'enrolladenn $1',
 	'right-recordadmin' => 'Kavout hag aozañ ar pajennoù enrollañ',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => '$1 ebet',
 );
 
 /** Bosnian (Bosanski)
@@ -775,6 +781,9 @@ $messages['gl'] = array(
 	'recordadmin-editwithform' => 'Editar con formulario',
 	'recordadmin-typeinfo' => 'Rexistro de tipo $1',
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Non existe ningún $1',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1635,6 +1644,9 @@ $messages['pms'] = array(
 	'recordadmin-editwithform' => 'Modifiché con un formolari',
 	'recordadmin-typeinfo' => '$1 anotassion',
 	'right-recordadmin' => "Treuva e modifica pàgine d'anotassion",
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Pa gnun $1',
 );
 
 /** Pashto (پښتو)
@@ -1819,6 +1831,9 @@ $messages['ru'] = array(
 	'recordadmin-editwithform' => 'Редактировать с формой',
 	'recordadmin-typeinfo' => '$1 запись',
 	'right-recordadmin' => 'поиск и редактирование страниц записей',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Нет $1',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

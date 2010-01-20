@@ -688,6 +688,8 @@ Ma fell deoc'h implijout OpenID da gevreañ diwezhatoc'h, e c'hallit [[Special:O
 	'openidupdateuserinfo' => 'Hizivaat ma zitouroù personel :',
 	'openiddelete' => 'Dilemel an OpenID',
 	'openiddelete-button' => 'Kadarnaat',
+	'openiddeleteerrornopassword' => "Ne c'hallit ket dilemel hoc'h holl OpenID abalamour ma n'eus ger-tremen ebet gant ho kont.
+Ne c'hallfec'h ket kevreañ hep OpenID.",
 	'openiddelete-sucess' => 'Tennet eo bet an OpenID eus ho kont.',
 	'openiddelete-error' => "Ur fazi a zo bet pa oac'h o klask tennañ an OpenID eus ho kont.",
 	'openid-prefstext' => 'Penndibaboù an [http://openid.net/ OpenID]',
