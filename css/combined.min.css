@@ -248,6 +248,9 @@ right:auto;
 body.rtl .ui-dialog .ui-dialog-title{
 float:right;
 }
+.ui-widget-header{
+border-bottom:1px solid #6bc8f3 !important;
+}
 .wikiEditor-ui-toc{
 padding:0;
 overflow:auto;
@@ -779,7 +782,6 @@ display:block;
 width:340px;
 background:#fff;
 padding:10px;
-border:1px solid #cdcdcd;
 overflow:hidden;
 display:block;
 position:relative;

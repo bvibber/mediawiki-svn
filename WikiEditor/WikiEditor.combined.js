@@ -1384,7 +1384,6 @@ mw.ready( function() {
 			});
 		},
 		dialog: {
-			resizable: false,
 			width: 500,
 			buttons: {
 				'wikieditor-toolbar-tool-link-insert': function() {
@@ -1857,7 +1856,6 @@ mw.ready( function() {
 			});
 		},
 		dialog: {
-			resizable: false,
 			width: 500,
 			buttons: {
 				'wikieditor-toolbar-tool-replace-button-findnext': function( e ) {
