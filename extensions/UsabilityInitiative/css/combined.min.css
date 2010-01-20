@@ -378,36 +378,42 @@ padding-left:1em;
 }
 body.rtl .wikiEditor-ui-toc ul li div{
 padding-right:1em;
+padding-left:0;
 }
 .wikiEditor-ui-toc ul ul li div{
 padding-left:2em;
 }
 body.rtl .wikiEditor-ui-toc ul ul li div{
 padding-right:2em;
+padding-left:0;
 }
 .wikiEditor-ui-toc ul ul ul li div{
 padding-left:3em;
 }
 body.rtl .wikiEditor-ui-toc ul ul ul li div{
 padding-right:3em;
+padding-left:0;
 }
 .wikiEditor-ui-toc ul ul ul ul li div{
 padding-left:4em;
 }
 body.rtl .wikiEditor-ui-toc ul ul ul ul li div{
 padding-right:4em;
+padding-left:0;
 }
 .wikiEditor-ui-toc ul ul ul ul ul li div{
 padding-left:5em;
 }
 body.rtl .wikiEditor-ui-toc ul ul ul ul ul li div{
 padding-right:5em;
+padding-left:0;
 }
 .wikiEditor-ui-toc ul ul ul ul ul ul li div{
 padding-left:6em;
 }
 body.rtl wikiEditor-ui-toc ul ul ul ul ul ul li div{
 padding-right:6em;
+padding-left:0;
 }
 .wikiEditor-ui-toc ul li div.current{
 background-color:#FAFAFA;

@@ -8769,7 +8769,7 @@ fn: {
 			context.$ui.find( '.wikiEditor-ui-left' )
 				.css( 'width', fixedWidth );
 			context.$ui.find( '.wikiEditor-ui-right' )
-				.css( 'left', fixedWidth );
+				.css( $.wikiEditor.modules.toc.cfg.rtl ? 'right': 'left', fixedWidth );
 			context.$wikitext.css( 'height', context.$ui.find( '.wikiEditor-ui-right' ).height() );
 		}
 	},
@@ -8786,11 +8786,15 @@ fn: {
 			width = $.wikiEditor.modules.toc.cfg.textMinimumWidth;
 			// set our styles for goofy mode
 			context.$ui.find( '.wikiEditor-ui-left' )
-				.css( { 'marginRight': '', 'position': 'absolute', 'left': '0px', 'right': 'auto', 'float': 'none' } )
+				.css( { 'marginRight': '', 'position': 'absolute', 'float': 'none',
+					'left': $.wikiEditor.modules.toc.cfg.rtl ? 'auto': 0, 
+					'right' : $.wikiEditor.modules.toc.cfg.rtl ? 0 : 'auto' } )
 				.children()
 				.css( 'marginRight', '' );
 			context.$ui.find( '.wikiEditor-ui-right' )
-				.css( { 'width': '100%', 'position': 'absolute', 'right': '0px', 'width': 'auto', 'float': 'none' } );
+				.css( { 'width': 'auto', 'position': 'absolute', 'float': 'none',
+				'right': $.wikiEditor.modules.toc.cfg.rtl ? 'auto': 0, 
+				'left' : $.wikiEditor.modules.toc.cfg.rtl ? 0 : 'auto' } );
 			context.$wikitext
 				.css( 'position', 'relative' );
 		} else if ( context.modules.toc.$toc.data( 'positionMode' ) == 'goofy' ) {
