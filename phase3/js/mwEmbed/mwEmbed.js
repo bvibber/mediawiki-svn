@@ -28,7 +28,7 @@ if ( !window['mw'] ) {
 /*
 * Set the mwEmbedVersion ( not set by stopgap )
 */
-var MW_EMBED_VERSION = '1.0';
+var MW_EMBED_VERSION = '1.1';
 
 /**
 * Default global config values. Configuration values are set via mw.setConfig
@@ -1228,27 +1228,16 @@ var mwDefaultConf = {
 	 		}
 	 	}
 	}
-	
-	/**
-	* Shortcut entry points / convenience functions: 
-	*
-	* Lets you write mw.load() instead of mw.loader.load()
-	*/
-	
-	/**
-	* Load Object entry point: Loads a requested set of javascript 
-	*/	
-	mw.load = function( loadRequest, callback ){
-		return mw.loader.load( loadRequest, callback );
-	}
-	
 	/**
 	* Load done callback for script loader
-	*  this way webkit browsers don't have to check if variables are "ready"
+	*  this enables webkit browsers don't have to check if variables are "ready"
 	* @param {String} requestName Name of the load request
 	*/	
 	mw.loadDone =  function( requestName ) {		
 		//mw.log( "LoadDone: " + requestName + ' run callback ');
+		if( !mwLoadDoneCB[ requestName ] ){			
+			return true;
+		}
 		while( mwLoadDoneCB[ requestName ].length ){
 			if( typeof mwLoadDoneCB[ requestName ] != 'object' )
 				break;			
@@ -1256,7 +1245,7 @@ var mwDefaultConf = {
 		}
 		// Set the load request name to done
 		mwLoadDoneCB[ requestName ] = 'done';
-	},
+	};
 	
 	/**
 	* Set a load done callback 
@@ -1273,7 +1262,20 @@ var mwDefaultConf = {
 			mwLoadDoneCB[ requestName ] = [];
 		}
 		mwLoadDoneCB[ requestName ].push( callback );
+	};
+	
+	/**
+	* Shortcut entry points / convenience functions: 
+	* Lets you write mw.load() instead of mw.loader.load()
+	*/
+	
+	/**
+	* Load Object entry point: Loads a requested set of javascript 
+	*/	
+	mw.load = function( loadRequest, callback ){
+		return mw.loader.load( loadRequest, callback );
 	}
+	
 	
 	/**
 	* Add module entry point: Adds a module to the mwLoader object 
