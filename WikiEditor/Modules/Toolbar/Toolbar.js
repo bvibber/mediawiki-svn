@@ -1464,17 +1464,37 @@ mw.ready( function() {
 	'insert-table': {
 		titleMsg: 'wikieditor-toolbar-tool-table-title',
 		id: 'wikieditor-toolbar-table-dialog',
-		// FIXME: All kinds of uglinesses and styling issues
-		// FIXME: Rows are identical so sorting has no effect
 		// FIXME: Localize 'x'?
 		html: '\
-			<fieldset><table><tr><td colspan="3">\
-				<input type="checkbox" id="wikieditor-toolbar-table-dimensions-header" checked />\
-				<label for="wikieditor-toolbar-table-dimensions-header"\
-					rel="wikieditor-toolbar-tool-table-dimensions-header"></label>\
-			</td><td rowspan="4" class="wikieditor-toolbar-table-preview-wrapper" >\
+			<fieldset><div class="wikieditor-toolbar-table-form">\
+				<div class="wikieditor-toolbar-field-wrapper">\
+					<input type="checkbox" id="wikieditor-toolbar-table-dimensions-header" checked />\
+					<label for="wikieditor-toolbar-table-dimensions-header"\
+						rel="wikieditor-toolbar-tool-table-dimensions-header"></label>\
+				</div>\
+				<div class="wikieditor-toolbar-field-wrapper">\
+					<input type="checkbox" id="wikieditor-toolbar-table-wikitable" checked />\
+					<label for="wikieditor-toolbar-table-wikitable" rel="wikieditor-toolbar-tool-table-wikitable"></label>\
+				</div>\
+				<div class="wikieditor-toolbar-field-wrapper">\
+					<input type="checkbox" id="wikieditor-toolbar-table-sortable" />\
+					<label for="wikieditor-toolbar-table-sortable" rel="wikieditor-toolbar-tool-table-sortable"></label>\
+				</div>\
+				<div class="wikieditor-toolbar-table-dimension-fields">\
+					<div class="wikieditor-toolbar-field-wrapper">\
+						<label for="wikieditor-toolbar-table-dimensions-rows"\
+							rel="wikieditor-toolbar-tool-table-dimensions-rows"></label><br />\
+						<input type="text" id="wikieditor-toolbar-table-dimensions-rows" size="4" />\
+					</div>\
+					<div class="wikieditor-toolbar-field-wrapper">\
+						<label for="wikieditor-toolbar-table-dimensions-columns"\
+							rel="wikieditor-toolbar-tool-table-dimensions-columns"></label><br />\
+						<input type="text" id="wikieditor-toolbar-table-dimensions-columns" size="4" />\
+					</div>\
+				</div>\
+			</div></fieldset>\
+			<div class="wikieditor-toolbar-table-preview-wrapper" >\
 				<span rel="wikieditor-toolbar-tool-table-example"></span>\
-				<div class="wikieditor-toolbar-table-preview-frame">\
 				<div class="wikieditor-toolbar-table-preview-content">\
 					<table id="wikieditor-toolbar-table-preview" class="wikieditor-toolbar-table-preview wikitable">\
 						<tr class="wikieditor-toolbar-table-preview-header">\
@@ -1500,24 +1520,7 @@ mw.ready( function() {
 						</tr>\
 					</table>\
 				</div>\
-				</div>\
-			</td></tr><tr><td colspan="3">\
-				<input type="checkbox" id="wikieditor-toolbar-table-wikitable" checked />\
-				<label for="wikieditor-toolbar-table-wikitable" rel="wikieditor-toolbar-tool-table-wikitable"></label>\
-			</td></tr><tr><td colspan="3">\
-				<input type="checkbox" id="wikieditor-toolbar-table-sortable" />\
-				<label for="wikieditor-toolbar-table-sortable" rel="wikieditor-toolbar-tool-table-sortable"></label>\
-			</td></tr><tr><td>\
-				<label for="wikieditor-toolbar-table-dimensions-rows"\
-					rel="wikieditor-toolbar-tool-table-dimensions-rows"></label><br />\
-				<input type="text" id="wikieditor-toolbar-table-dimensions-rows" size="4" />\
-			</td><td>\
-				<br />x\
-			</td><td>\
-				<label for="wikieditor-toolbar-table-dimensions-columns"\
-					rel="wikieditor-toolbar-tool-table-dimensions-columns"></label><br />\
-				<input type="text" id="wikieditor-toolbar-table-dimensions-columns" size="4" />\
-			</td></tr></table></fieldset>',
+			</div>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
@@ -1569,6 +1572,7 @@ mw.ready( function() {
 		},
 		dialog: {
 			resizable: false,
+			width: 500,
 			buttons: {
 				'wikieditor-toolbar-tool-table-insert': function() {
 					var rowsVal = $j( '#wikieditor-toolbar-table-dimensions-rows' ).val();
