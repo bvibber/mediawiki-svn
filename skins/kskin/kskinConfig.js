@@ -40,6 +40,9 @@ var kskinConfig = {
 							'<span>' + gM( 'mwe-menu_btn' ) + '</span>' +
 						'</div>'
 			}
+		},
+		'volume_control':{
+			'w':40
 		},		
 		'time_display': {
 			'w':70

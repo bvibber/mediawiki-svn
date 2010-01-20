@@ -418,16 +418,17 @@ EmbedPlayerManager.prototype = {
 				// By default treat the rewrite request as "video"
 				default:		
 					var ranPlayerSwapFlag = false;
+					
 					// Local callback to runPlayer swap once element has metadata
-					function runPlayerSwap(){									
+					function runPlayerSwap(){						
 						if( ranPlayerSwapFlag )
 							return ;	
 						mw.log("runPlayerSwap::" + $j( element ).attr('id') );
 						ranPlayerSwapFlag = true;	
 						var playerInterface = new mw.EmbedPlayer( element , attributes);
 						_this.swapEmbedPlayerElement( element, playerInterface );	
-						// Issue the checkPlayerSources call to the new player interface: 
-						$j( '#' + $j( element ).attr('id') ).get(0).checkPlayerSources();
+						// Issue the checkPlayerSources call to the new player interface:					
+						$j( '#' + $j( element ).attr('id') ).get(0).checkPlayerSources();						
 					}
 									
 					if( waitForMeta ){
@@ -472,7 +473,7 @@ EmbedPlayerManager.prototype = {
 		//$j( targetElement )
 		// Put the swapPlayerElement after the targetElement
 		//.after( swapPlayerElement );
-		
+		//$j( targetElement ).remove();
 		
 		// Set swapPlayerElement has height / width set and set to loading:		
 		$j( swapPlayerElement ).css( {			
@@ -1354,7 +1355,7 @@ mw.EmbedPlayer.prototype = {
 	* 	that request is issued here 
 	*/
 	checkPlayerSources: function() {
-		mw.log( 'f:checkPlayerSources' );
+		mw.log( 'f:checkPlayerSources' + this.id );
 		var _this = this;		
 		// Process the provided ROE file. If we don't yet have sources
 		// ( the ROE file provides xml list of sources ) 
@@ -1974,7 +1975,8 @@ mw.EmbedPlayer.prototype = {
 	/**
 	* Show the player
 	*/
-	showPlayer : function () {		
+	showPlayer : function () {	
+		mw.log( 'Show player: ' + this.id );	
 		// set-up the local ctrlBuilder instance: 
 		this.ctrlBuilder = new ctrlBuilder( this );
 						
