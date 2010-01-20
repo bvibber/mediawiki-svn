@@ -8808,7 +8808,10 @@ fn: {
 		}
 	},
 	unhighlight: function( context ) {
-		context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
+		// FIXME: I don't know why this is undefined sometimes in Webkit, but it is, and this helps
+		if ( context ) {
+			context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
+		}
 	},
 	/**
 	 * Highlight the section the cursor is currently within
