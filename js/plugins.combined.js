@@ -7070,13 +7070,15 @@ if ( typeof context == 'undefined' ) {
 			var e;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
-				// This needs to be here for webkit, or the selection is invalid
-				context.$iframe[0].contentWindow.focus();
-				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
-				// Start at the selection's start and traverse the DOM backwards
-				// This is done by traversing an element's children first, then the
-				// element itself, then its parent
-				e = range.startContainer;
+				var selection = context.$iframe[0].contentWindow.getSelection();
+				// On load, webkit seems to not have a valid selection
+				if ( selection.baseNode !== null ) {
+					// Start at the selection's start and traverse the DOM backwards
+					// This is done by traversing an element's children first, then the element itself, then its parent
+					e = selection.getRangeAt( 0 ).startContainer;
+				} else {
+					return $( [] );
+				}
 			} else if ( context.$iframe[0].contentWindow.document.selection ) {
 				// IE
 				// TODO
@@ -8808,10 +8810,7 @@ fn: {
 		}
 	},
 	unhighlight: function( context ) {
-		// FIXME: I don't know why this is undefined sometimes in Webkit, but it is, and this helps
-		if ( context ) {
-			context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
-		}
+		context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
 	},
 	/**
 	 * Highlight the section the cursor is currently within
