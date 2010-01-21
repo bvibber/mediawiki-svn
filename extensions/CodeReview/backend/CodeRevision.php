@@ -555,11 +555,13 @@ class CodeRevision {
 	protected function tagData( $tags ) {
 		$data = array();
 		foreach ( $tags as $tag ) {
+			if( $tag == '' ) continue;
 			$data[] = array(
 				'ct_repo_id' => $this->mRepoId,
 				'ct_rev_id'  => $this->mId,
 				'ct_tag'     => $this->normalizeTag( $tag ) );
 		}
+		var_dump( $tags ); moo();
 		return $data;
 	}
 
