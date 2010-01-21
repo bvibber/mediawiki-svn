@@ -8,11 +8,17 @@ EOT;
 	exit( 1 );
 }
 
-// the following are the parameters that can be set in LocalSettings.php
-global $wgSacredChapterAlias;
-global $wgSacredUseBibleTag;
-$wgSacredUseBibleTag = true;
+$wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
+	'name' => 'SacredText',
+	'author' => 'Jonathan Williford',
+	'description' => 'Makes it easy to quote religious scriptures.',
+	'descriptionmsg' => 'This extension helps to quote religious scriptures.',
+	'version' => '0.0.1',
+);
 
+// the following are the parameters that can be set in LocalSettings.php
+$wgSacredUseBibleTag = true;
 $wgSacredChapterAlias = array();
 $wgSacredChapterAlias["Christian Bible"] = array();
 $wgSacredChapterAlias["Christian Bible"]["1Chronicles"]="1 Chronicles";
@@ -102,26 +108,19 @@ $wgSacredChapterAlias["Christian Bible"]["Tit"]="Titus";
 $wgSacredChapterAlias["Christian Bible"]["Zec"]="Zechariah";
 $wgSacredChapterAlias["Christian Bible"]["Zep"]="Zephaniah";
 
-
-// based on http://www.mediawiki.org/wiki/Manual:Tag_extensions
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'efSacredTextParserInit';
-} else { // Otherwise do things the old fashioned way
-	$wgExtensionFunctions[] = 'efSacredTextParserInit';
-}
+$wgHooks['ParserFirstCallInit'][] = 'efSacredTextParserInit';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'updateSacredTextDB';
  
-function efSacredTextParserInit() {
-	global $wgParser;
+function efSacredTextParserInit( &$parser ) {
 	global $wgSacredUseBibleTag;
-	$wgParser->setHook( 'sacredtext', 'efSacredTextRenderHook' );
+	$parser->setHook( 'sacredtext', 'efSacredTextRenderHook' );
 	if( $wgSacredUseBibleTag ) {
-		$wgParser->setHook( 'bible', 'efSacredTextRenderHook_Bible' );
+		$parser->setHook( 'bible', 'efSacredTextRenderHook_Bible' );
 	}
 	return true;
 }
 
-function efSacredTextRender( $religtext, $book, $chapternum, $versenums, $lang, $ver )
-{
+function efSacredTextRender( $religtext, $book, $chapternum, $versenums, $lang, $ver ) {
 	global $wgSacredChapterAlias;
 	$dbr = wfGetDB( DB_SLAVE );
 
@@ -138,59 +137,49 @@ function efSacredTextRender( $religtext, $book, $chapternum, $versenums, $lang, 
 	}
 
 	$obj = $dbr->selectRow( "sacredtext_verses", array("st_text"),
-		array( "st_religious_text"=>$religtext,
-				"st_book"=>$book,
-				"st_chapter_num"=>$chapternum,
-				"st_verse_num"=>$versenums[0],
-				"st_translation"=>$ver,
-		"st_language"=>$lang));
-	if( $obj )
-	{
+		array( 
+			"st_religious_text" => $religtext,
+			"st_book"           => $book,
+			"st_chapter_num"    =>$chapternum,
+			"st_verse_num"      =>$versenums[0],
+			"st_translation"    =>$ver,
+			"st_language"       =>$lang
+		) );
+	if( $obj ) {
 		return htmlspecialchars( $obj->st_text );
-	}
-	else
-	{
+	} else {
 		return htmlspecialchars( "Could not find: ". $book ." ".$chapternum.":".$versenums[0]." in the ". $religtext );
 	}
 }
-function efSacredTextParseInput( $input, &$book, &$chapternum, &$versenums )
-{
-	if( preg_match( "/^\s*([\s\w]*\w+)\s*(\d+):(\d+)/", $input, $matches) )
-	{
+
+function efSacredTextParseInput( $input, &$book, &$chapternum, &$versenums ) {
+	if( preg_match( "/^\s*([\s\w]*\w+)\s*(\d+):(\d+)/", $input, $matches) ) {
 		$book = $matches[1];
 		$chapternum = $matches[2];
-
-	$versenums = array();
+		$versenums = array();
 		$versenums[] = $matches[3];
-	return true;
-	}
-	else
-	{
+		return true;
+	} else {
 		return false;
 	}
 }
-function efSacredTextRenderHook_Bible( $input, $args, &$parser, $frame )
-{
-	$parser->disableCache();
-	if( efSacredTextParseInput( $input, $book, $chapternum, $versenums ) ) 
-	{
-	$lang = "en";
-	$ver = "kjv";
-	if( array_key_exists("lang", $args) ) $lang = $args["lang"];
-	if( array_key_exists("ver", $args) ) $ver = $args["ver"];
 
+function efSacredTextRenderHook_Bible( $input, $args, &$parser, $frame ) {
+	$parser->disableCache();
+	if( efSacredTextParseInput( $input, $book, $chapternum, $versenums ) ) {
+		$lang = "en";
+		$ver = "kjv";
+		if( array_key_exists("lang", $args) ) $lang = $args["lang"];
+		if( array_key_exists("ver", $args) ) $ver = $args["ver"];
 		return htmlspecialchars( $input ) ." ". efSacredTextRender( "Christian Bible", $book, $chapternum, $versenums, $lang, $ver );
-	}
-	else
-	{
+	} else {
 		return htmlspecialchars( $input . " Could not parse reference.  Please use the format 'Gen 1:10'." );
 	}
 } 
  
 function efSacredTextRenderHook( $input, $args, &$parser, $frame ) {
 	$parser->disableCache();
-	if( efSacredTextParseInput( $input, $book, $chapternum, $versenums ) )
-	{
+	if( efSacredTextParseInput( $input, $book, $chapternum, $versenums ) ) {
 		$lang = "en";
 		$ver = "kjv";
 		$religtext = "Christian Bible";
@@ -199,16 +188,10 @@ function efSacredTextRenderHook( $input, $args, &$parser, $frame ) {
 		if( array_key_exists("text", $args) ) $religtext = $args["text"];
 
 		return htmlspecialchars( $input ) ." ". efSacredTextRender( $religtext, $book, $chapternum, $versenums, $lang, $ver );
-	}
-	else
-	{
+	} else {
 		return htmlspecialchars( $input . " Could not parse reference.  Please use the format 'Gen 1:10'." );
 	}
 }
-
-
-# Schema updates for update.php
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'updateSacredTextDB';
 
 function updateSacredTextDB() {
 	global $wgExtNewTables;
@@ -220,13 +203,3 @@ function updateSacredTextDB() {
 		dirname( __FILE__ ) . '/data/bible_kjv_entire.sql' );
 	return true;
 }
-
-$wgExtensionCredits['parserhook'][] = array(
-	'name' => 'SacredText',
-	'author' => 'Jonathan Williford',
-	'description' => 'Makes it easy to quote religious scriptures.',
-	'descriptionmsg' => 'This extension helps to quote religious scriptures.',
-	'version' => '0.0.1',
-);
-
-?>
