@@ -13,7 +13,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'SacredText',
 	'author' => 'Jonathan Williford',
 	'description' => 'Makes it easy to quote religious scriptures.',
-	'descriptionmsg' => 'This extension helps to quote religious scriptures.',
+	'descriptionmsg' => 'sacredtext-desc',
 	'version' => '0.0.1',
 );
 
@@ -165,7 +165,6 @@ function efSacredTextParseInput( $input, &$book, &$chapternum, &$versenums ) {
 }
 
 function efSacredTextRenderHook_Bible( $input, $args, &$parser, $frame ) {
-	$parser->disableCache();
 	if( efSacredTextParseInput( $input, $book, $chapternum, $versenums ) ) {
 		$lang = "en";
 		$ver = "kjv";
@@ -178,7 +177,6 @@ function efSacredTextRenderHook_Bible( $input, $args, &$parser, $frame ) {
 } 
  
 function efSacredTextRenderHook( $input, $args, &$parser, $frame ) {
-	$parser->disableCache();
 	if( efSacredTextParseInput( $input, $book, $chapternum, $versenums ) ) {
 		$lang = "en";
 		$ver = "kjv";
