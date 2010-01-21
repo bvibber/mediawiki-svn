@@ -146,7 +146,7 @@ class CodeRepository {
 		while ( $row = $dbr->fetchObject( $res ) ) {
 			$tags[] = $row->ct_tag;
 		}
-		$wgMemc->set( $key, $tags, 3600 * 24 * 3 );
+		$wgMemc->set( $key, $tags, 3600 * 3 );
 		return $tags;
 	}
 
