@@ -7089,7 +7089,8 @@ if ( typeof context == 'undefined' ) {
 				// (usually inside the <body> between two <br>s). Go to the rightmost
 				// child of the node just before the selection
 				var newE = e.firstChild;
-				for ( var i = 0; i < range.startOffset - 1 && newE; i++ ) {
+				for ( var i = 0; i < selection.startOffset - 1 && newE; i++ ) {
+					console.log( i );
 					newE = newE.nextSibling;
 				}
 				while ( newE && newE.lastChild ) {
