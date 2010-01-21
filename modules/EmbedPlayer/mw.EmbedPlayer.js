@@ -1473,8 +1473,8 @@ mw.EmbedPlayer.prototype = {
 		if ( this.instanceOf ) {
 			eval( 'var tmpObj = ' + this.instanceOf );
 			for ( var i in tmpObj ) { // for in loop oky for object  
-				if ( this['parent_' + i] ) {
-					this[i] = this['parent_' + i];
+				if ( this[ 'parent_' + i ] ) {
+					this[i] = this[ 'parent_' + i];
 				} else {
 					this[i] = null;
 				}
@@ -1491,7 +1491,7 @@ mw.EmbedPlayer.prototype = {
 			eval( ' var playerInterface =' +  _this.selected_player.library + 'Embed;' );
 			
 			for ( var method in playerInterface ) {  
-				if ( _this[method] ){
+				if ( _this[method] && !_this['parent_' + method] ){
 					_this['parent_' + method] = _this[method];
 				}
 				_this[ method ] = playerInterface[method];

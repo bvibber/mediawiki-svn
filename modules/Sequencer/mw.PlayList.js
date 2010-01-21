@@ -196,7 +196,9 @@ mw.PlayList.prototype = {
 		// import methods from the plObj to this
 		for ( var method in plObj ) {
 			// js parent preservation for local overwritten methods
-			if ( this[method] )this['parent_' + method] = this[method];
+			if ( this[method] && !this[ 'parent_' + method ] ){
+				this[ 'parent_' + method ] = this[ method ];
+			}
 			this[method] = plObj[method];			
 		}
 			
@@ -748,7 +750,7 @@ mw.PlayList.prototype = {
 		var _this = this;
 		mw.log( 'pl play' );
 		// hide the playlist play button: 
-		this.$interface.find('.play-btn-large' ).hide();				
+		this.$interface.find( '.play-btn-large' ).hide();				
 		
 		// un-pause if paused:
 		if ( this.paused )
@@ -1846,7 +1848,7 @@ transitionObj.prototype = {
 		mvTransLib.doUpdate( this, percentage );
 		
 		if ( percentage >= 1 ) {
-			mw.log( "transition done update with percentage " + percentage );
+			//mw.log( "transition done update with percentage " + percentage );
 			this.animation_state = 2;
 			mvTransLib.doCloseTransition( this )
 			return true;
