@@ -62,7 +62,8 @@ var nativeEmbed = {
 					'id="' + this.pid + '" ' +
 					'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
 					'width="' + this.width + '" height="' + this.height + '" ' +
-					'src="' + this.getSrc() + '" ' +				
+					'autobuffer="true" ' +
+					'src="' + this.getSrc() + '" >' +				
 				 '</video>';
 		return eb;
 	},	

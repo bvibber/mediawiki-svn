@@ -41,7 +41,8 @@ var htmlEmbed = {
 	/**
 	*  Play function starts the v
 	*/
-	play:function() {
+	play: function() {
+		mw.log(" parent: " + this.parent_play);		
 		// call the parent
 		this.parent_play();
 
