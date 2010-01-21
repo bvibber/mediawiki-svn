@@ -2298,6 +2298,7 @@ $messages['uk'] = array(
 	'readerfeedback-tier-poor' => 'Низька',
 	'tooltip-ca-ratinghist' => 'Читацька оцінка цієї сторінки',
 	'specialpages-group-feedback' => 'Читацька думка',
+	'readerfeedback-tt-review' => 'Надіслати відгук',
 );
 
 /** Vèneto (Vèneto)

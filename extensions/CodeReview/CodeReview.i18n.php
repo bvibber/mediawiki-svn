@@ -9229,6 +9229,7 @@ $messages['yi'] = array(
 	'code-rev-comment-preview' => 'פֿאראויסשטעלונג',
 	'code-rev-inline-preview' => 'פֿאראויסשטעלונג:',
 	'code-status-new' => 'נײַ',
+	'code-status-reverted' => 'צוריקגעשטעלט',
 	'code-status-ok' => 'אויספֿירן',
 	'codereview-subtitle' => 'פֿאַר $1',
 );

@@ -1924,9 +1924,12 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'patrol' => 'פאטראלירן רעדאקטירונגען',
+	'patrol-revert' => 'צוריקשטעלן',
 	'patrol-revert-reason' => 'אורזאַך:',
 	'patrol-skip' => 'איבערהיפן',
 	'patrol-reverting' => 'צוריקשטעלן: $1',
+	'patrol-reverted-ok' => 'די באַאַרבעטעונג איז געווארן צוריקגעשטעלט',
+	'patrol-reverted-failed' => 'די באַאַרבעטונג האט נישט געקענט ווערן צוריקגעשטעלט.',
 	'group-patroller' => 'פאטראלירער',
 	'group-patroller-member' => 'פאטראלירער',
 	'grouppage-patroller' => '{{ns:project}}:פאטראלירער',

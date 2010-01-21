@@ -566,6 +566,13 @@ $messages['mk'] = array(
 	'layouts_tagline' => "Оваа страница е создадена со '''$1''' распоред.",
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'layouts_unknown' => 'Үл мэдэгдэх',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

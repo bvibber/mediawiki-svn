@@ -1267,6 +1267,13 @@ $messages['ml'] = array(
 	'expand_templates_preview' => 'എങ്ങനെയുണ്ടെന്നു കാണുക',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'expand_templates_input' => 'Оруулах бичиг:',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

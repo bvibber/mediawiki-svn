@@ -9820,6 +9820,7 @@ $messages['yi'] = array(
 	'configure-section-search' => 'זוכן',
 	'configure-section-copyright' => 'קאפירעכט',
 	'configure-view' => 'זען',
+	'configure-throttle-action-rollback' => 'צוריקדרייען',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

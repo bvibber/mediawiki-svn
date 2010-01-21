@@ -3757,8 +3757,18 @@ $messages['ml'] = array(
  * @author Yosri
  */
 $messages['ms'] = array(
+	'wikilog-auto' => 'Auto Wikilog',
 	'right-wl-postcomment' => 'Letakkan ulasan pada rencana wikilog',
 	'right-wl-moderation' => 'Moderasi ulasan rencana wikilog',
+	'wikilog-specialwikilog-title' => 'Wikilog',
+	'wikilog-specialwikilog' => 'Wikilog',
+	'wikilog-log-pagename' => 'Log tindakan Wikilog',
+	'wikilog-log-pagetext' => 'Di bawah adalah senarai tindakan wikilog.',
+	'wikilog-log-cmt-approve' => 'Ulasan diluluskan "[[$1]]"',
+	'wikilog-log-cmt-reject' => 'Ulasan ditolak "[[$1]]"',
+	'wikilog-log-cmt-rejdel' => 'Ulasan wikilog oleh [[Special:Contributions/$1|$1]] ditolak',
+	'wikilog-tab' => 'Wikilog',
+	'wikilog-tab-title' => 'Tindakan Wikilog',
 );
 
 /** Dutch (Nederlands)

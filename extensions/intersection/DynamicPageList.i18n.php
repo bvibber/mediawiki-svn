@@ -386,7 +386,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'intersection-desc' => 'Face un lista a punctos del elementos le plus recente in un categoria, o un union de plure categorias',
 	'intersection_toomanycats' => 'Error: Troppo de categorias!',
-	'intersection_noresults' => 'Error: Nulle resultatos!',
+	'intersection_noresults' => 'Error: Nulle resultato!',
 	'intersection_noincludecats' => 'Error: Tu debe includer al minus un categoria, o specificar un spatio de nomines!',
 );
 

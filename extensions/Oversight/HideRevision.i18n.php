@@ -4205,6 +4205,8 @@ Büo sädunolös votükami at.',
  */
 $messages['yi'] = array(
 	'hiderevision-status' => 'רעוויזיע $1: $2',
+	'hiderevision-error-current' => "מ'קען נישט אויסמעקן די לעצטע באַאַרבעטונג צו א בלאַט.
+פֿריער שטעלט צוריק די ענדערונג.",
 );
 
 /** Yue (粵語)

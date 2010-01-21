@@ -1037,6 +1037,9 @@ $messages['ia'] = array(
 	'recordadmin-editwithform' => 'Modificar con formulario',
 	'recordadmin-typeinfo' => 'Registro de typo $1',
 	'right-recordadmin' => 'Cercar e modificar paginas de datos',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Nulle $1',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1401,7 +1404,7 @@ Categoriseer de gegevenssjablonen [[:$1|$1]].',
 	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => 'Geen $1',
+	'recordadmin-notset' => 'Geen "$1"',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

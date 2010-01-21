@@ -86,10 +86,12 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author Spiritia
  * @author Turin
  */
 $messages['bg'] = array(
 	'fundraiserportal' => 'Портал за набиране на средства',
+	'fundraiserportal-desc' => 'Добавяне на портал за дарения в горната част на страничната лента.',
 	'fundraiserportal-plain-button' => 'Подкрепете Уикипедия!',
 	'fundraiserportal-ruby-button' => 'Дарете сега',
 	'fundraiserportal-rubytext-button' => 'Дарете сега',
