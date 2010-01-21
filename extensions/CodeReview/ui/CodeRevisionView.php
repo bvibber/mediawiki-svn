@@ -653,11 +653,18 @@ class CodeRevisionView extends CodeView {
 
 	protected function addActionButtons() {
 		return '<div>' .
-			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ), 'accesskey' => wfMsg( 'code-rev-submit-accesskey' ) ) .
-			' ' .
-			Xml::submitButton( wfMsg( 'code-rev-submit-next' ), array( 'name' => 'wpSaveAndNext' ), 'accesskey' => wfMsg( 'code-rev-submit-next-accesskey' ) ) .
-			' ' .
-			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview', 'accesskey' => wfMsg( 'code-rev-comment-preview-accesskey' ) ) ) .
+			Xml::submitButton( wfMsg( 'code-rev-submit' ),
+				array( 'name' => 'wpSave',
+					'accesskey' => wfMsg( 'code-rev-submit-accesskey' ) )
+			) . ' ' .
+			Xml::submitButton( wfMsg( 'code-rev-submit-next' ),
+				array( 'name' => 'wpSaveAndNext',
+					'accesskey' => wfMsg( 'code-rev-submit-next-accesskey' ) )
+			) . ' ' .
+			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ),
+				array( 'name' => 'wpPreview',
+					'accesskey' => wfMsg( 'code-rev-comment-preview-accesskey' ) )
+			) .
 			'</div>';
 	}
 }
