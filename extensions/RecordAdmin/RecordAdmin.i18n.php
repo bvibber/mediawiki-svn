@@ -57,7 +57,7 @@ $messages['en'] = array(
 	'right-recordadmin' => 'Find and edit record pages',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => 'No $1',
+	'recordadmin-notset' => 'No "$1"',
 );
 
 /** Message documentation (Message documentation)
@@ -87,6 +87,8 @@ Do not translate or change tag names, or link anchors.',
 	'right-recordadmin' => '{{doc-right|recordadmin}}',
 	'recordadmin-export-csv' => '{{Optional}}',
 	'recordadmin-export-pdf' => '{{Optional}}',
+	'recordadmin-notset' => 'Parameters:
+* $1 is string of one or more comma separated field names.',
 );
 
 /** Afrikaans (Afrikaans)
