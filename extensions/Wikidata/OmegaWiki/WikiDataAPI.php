@@ -28,7 +28,7 @@ class Expression {
 	}
 	
 	function createPage() {
-		$expressionNameSpaceId = Namespace::getCanonicalIndex('expression');
+		$expressionNameSpaceId = MWNamespace::getCanonicalIndex('expression');
 		wfDebug( "NS ID: $expressionNameSpaceId \n" );
 		return createPage( $expressionNameSpaceId, getPageTitle( $this->spelling ) );
 	}
@@ -187,7 +187,7 @@ function findExpression( $spelling, $languageId ) {
 
 function createExpression( $spelling, $languageId ) {
 	$expression = new Expression( createExpressionId( $spelling, $languageId ), $spelling, $languageId );
-	$expressionTitle = Title::makeTitle( Namespace::getCanonicalIndex('expression') , $spelling );
+	$expressionTitle = Title::makeTitle( MWNamespace::getCanonicalIndex('expression') , $spelling );
 	if( !$expressionTitle->exists() ) {
 		$expression->createNewInDatabase();
 	}
