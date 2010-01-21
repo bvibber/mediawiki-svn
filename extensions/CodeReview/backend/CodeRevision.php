@@ -561,7 +561,6 @@ class CodeRevision {
 				'ct_rev_id'  => $this->mId,
 				'ct_tag'     => $this->normalizeTag( $tag ) );
 		}
-		var_dump( $tags ); moo();
 		return $data;
 	}
 
