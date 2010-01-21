@@ -1237,7 +1237,8 @@ mw.ready( function() {
 							.val( $j( this ).prev( 'label' ).text() )
 							.addClass( 'wikieditor-toolbar-dialog-hint' );
 				})
-				.trigger( 'focus' )
+				// FIXME: this is causing scroll to bottom on load
+				//.trigger( 'focus' )
 				.prev( 'label' )
 				.css( 'display', 'none' );
 			
