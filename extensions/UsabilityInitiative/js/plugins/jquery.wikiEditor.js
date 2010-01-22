@@ -586,29 +586,23 @@ if ( typeof context == 'undefined' ) {
 			if ( typeof selector == 'undefined' ) {
 				selector = '*';
 			}
-			
-			// Start at the selection's start and traverse the DOM backwards
-			// This is done by traversing an element's children first, then the element itself, then its parent
 			var e;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var selection = context.$iframe[0].contentWindow.getSelection();
 				// On load, webkit seems to not have a valid selection
 				if ( selection.baseNode !== null ) {
+					// Start at the selection's start and traverse the DOM backwards
+					// This is done by traversing an element's children first, then the element itself, then its parent
 					e = selection.getRangeAt( 0 ).startContainer;
 				} else {
 					return $( [] );
 				}
 			} else if ( context.$iframe[0].contentWindow.document.selection ) {
 				// IE
-				// range.startContainer or similar functionality is not available in IE, so we have to
-				// traverse the DOM to find out which element the selection starts in
-				var range = context.$iframe[0].contentWindow.document.selection.createRange(),
-					preRange = context.$iframe[0].contentWindow.document.body.createTextRange();
-				preRange.setEndPoint( "EndToStart", range );
-				// TODO finish
+				// TODO
+				return $( [] );
 			}
-			
 			if ( e.nodeName != '#text' ) {
 				// The selection is not in a textnode, but between two non-text nodes
 				// (usually inside the <body> between two <br>s). Go to the rightmost
