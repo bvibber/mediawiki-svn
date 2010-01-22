@@ -1396,7 +1396,7 @@ $messages['bg'] = array(
 	'datasearch_language' => 'Език:',
 	'datasearch_ext_identifier' => 'Външен идентификатор',
 	'datasearch_within_ext_ids' => 'Във външни идентификатори:',
-	'datasearch_showing_only' => 'Показване на максимум $1 {{PLURAL:$1|съвпадение|съвпадения}}.',
+	'datasearch_showing_only' => 'Показване на максимум $1 {{PLURAL:$1|съвпадение|съвпадения}} (от общо $2).',
 	'ow_importtsv_title1' => 'Внасяне на TSV',
 	'ow_importtsv_title2' => 'Внасяне на дефиниции и преводи',
 	'ow_importtsv_importing' => 'Внасяне на TSV данни',
@@ -5131,7 +5131,7 @@ $messages['hil'] = array(
 /** Croatian (Hrvatski)
  * @author CERminator
  * @author Dalibor Bosits
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'langman_langname' => 'Naziv jezika:',
@@ -6705,7 +6705,7 @@ $messages['kk-tr'] = array(
 );
 
 /** Kalaallisut (Kalaallisut)
- * @author Piivaat
+ * @author Qaqqalik
  */
 $messages['kl'] = array(
 	'ow_Language' => 'Oqaatsit',
@@ -7942,6 +7942,7 @@ $messages['ml'] = array(
 $messages['mn'] = array(
 	'ow_transaction_rollback_button' => 'Буцаах',
 	'ow_transaction_rollback_header' => 'Буцаах',
+	'ow_transaction_summary' => 'Товч агуулга',
 	'ow_Source' => 'Эх үүсвэр',
 );
 
@@ -13456,10 +13457,15 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'langman_langname' => 'שפראַך נאָמען:',
+	'langman_wikimedia' => 'וויקימעדיע קאד',
 	'langman_addlang' => 'צולייגן שפראַך',
 	'ow_save' => 'אויפֿהיטן',
 	'ow_history' => 'היסטאריע',
 	'ow_transaction_user' => 'באַניצער נאָמען:',
+	'ow_transaction_rollback_button' => 'צוריקדרייען',
+	'ow_transaction_rollback_header' => 'צוריקדרייען',
+	'ow_transaction_previous_version' => 'פֿריערדיגע ווערסיע',
+	'ow_transaction_restore' => 'אויפֿריכטן',
 	'ow_User' => 'באַניצער',
 	'ow_suggest_previous' => 'פֿריערדיקער',
 );

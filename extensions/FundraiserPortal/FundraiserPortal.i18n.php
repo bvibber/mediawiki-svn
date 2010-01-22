@@ -493,7 +493,7 @@ $messages['hil'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'fundraiserportal' => 'Portal donacija',

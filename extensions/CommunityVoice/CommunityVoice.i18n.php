@@ -256,6 +256,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'communityvoice' => 'Voz de la comunidad',
@@ -264,6 +265,9 @@ $messages['es'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Enviando...',
 	'communityvoice-ratings-scale-status-error' => 'Error enviando!',
 	'communityvoice-ratings-scale-status-thanks' => 'Gracias por votar!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|voto|votos}} realizados)',
+	'communityvoice-ratings-error-no-category' => 'Atributo de categoría faltante en etiqueta de puntuación.',
+	'communityvoice-ratings-error-no-title' => 'Atributo de título faltante en etiqueta de puntuación.',
 );
 
 /** Estonian (Eesti)
@@ -385,7 +389,7 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'communityvoice' => 'Glas zajednice',

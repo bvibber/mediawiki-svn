@@ -1038,8 +1038,6 @@ $messages['de-formal'] = array(
 Bitte benachrichtigen Sie einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidserverlogininstructions' => 'Geben Sie Ihr Passwort unten ein, um sich als Benutzer $2 an $3 anzumelden (Benutzerseite $1).',
 	'openidtrustinstructions' => 'Prüfen Sie, ob Sie Daten mit $1 teilen möchten.',
-	'openidnotavailable' => 'Ihr bevorzugter Benutzername ($1) wird bereits von einem anderen Benutzer verwendet.',
-	'openidnotprovided' => 'Ihr OpenID-Server unterstützt keine Nicknamen (entweder, weil er es nicht kann, oder weil Sie es ihm nicht erlaubt haben).',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
 Sie können einen aus der untenstehenden Liste auswählen.',
 	'openidchoosefull' => 'Ihr vollständiger Name ($1)',
@@ -1490,7 +1488,6 @@ $messages['eu'] = array(
 	'openidfullname' => 'Izen osoa',
 	'openidemail' => 'E-posta helbidea',
 	'openidlanguage' => 'Hizkuntza',
-	'openidnotavailable' => 'Nahi duzun ezizena ($1) beste lankide batek erabiltzen du jada.',
 	'openidchoosepassword' => 'pasahitza:',
 );
 
@@ -2075,7 +2072,7 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'openid-desc' => 'Prijava na wiki s [http://openid.net/ OpenID] i prijava na druge stranice koje podržavaju OpenID s wiki suradničkim računom',
@@ -2759,7 +2756,7 @@ $messages['kiu'] = array(
 );
 
 /** Kalaallisut (Kalaallisut)
- * @author Piivaat
+ * @author Qaqqalik
  */
 $messages['kl'] = array(
 	'openidlanguage' => 'Oqaatsit',
@@ -4594,6 +4591,7 @@ $messages['sr-ec'] = array(
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
+ * @author Ex13
  * @author Michaello
  * @author Suradnik13
  */

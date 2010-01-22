@@ -336,7 +336,7 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'searchbox-search' => 'Traži',
@@ -418,11 +418,12 @@ $messages['ka'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'searchbox-search' => 'ស្វែងរក',
 	'searchbox-go' => 'ទៅ',
-	'searchbox-namespaces' => 'លំហឈ្មោះ៖',
+	'searchbox-namespaces' => 'ប្រភេទ៖',
 );
 
 /** Kannada (ಕನ್ನಡ)

@@ -197,9 +197,11 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'ratedpages' => 'Páginas valorizadas por lector',
+	'ratedpages-leg' => 'Encuentra páginas evaluadas con una puntuación mesurable.',
 	'ratedpages-list' => 'Lo de abajo es una lista de páginas ordenadas por su valoración de retroalimentación de lector.',
 	'ratedpages-none' => 'No hay páginas en esta lista',
 	'ratedpages-graphs' => 'Datos de rating',

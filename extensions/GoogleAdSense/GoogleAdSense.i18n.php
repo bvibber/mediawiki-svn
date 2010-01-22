@@ -186,7 +186,7 @@ $messages['hil'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'googleadsense-desc' => 'Dodaje [http://www.google.com/adsense Google AdSense] u izbornik',

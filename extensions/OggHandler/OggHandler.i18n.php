@@ -1289,8 +1289,8 @@ QuickTime बिना इस घटक के Ogg files चलने में 
 /** Croatian (Hrvatski)
  * @author CERminator
  * @author Dalibor Bosits
+ * @author Ex13
  * @author SpeedyGonsales
- * @author Suradnik13
  */
 $messages['hr'] = array(
 	'ogg-desc' => 'Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom',

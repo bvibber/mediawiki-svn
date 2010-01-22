@@ -485,7 +485,7 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'onlinestatus-desc' => 'Omogućuje postavku prikazivanja suradnikove prisutnosti na wiki',

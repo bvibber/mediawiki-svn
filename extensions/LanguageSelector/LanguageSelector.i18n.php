@@ -379,7 +379,7 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'languageselector' => 'Jezik',
@@ -494,7 +494,7 @@ $messages['kk-latn'] = array(
 );
 
 /** Kalaallisut (Kalaallisut)
- * @author Piivaat
+ * @author Qaqqalik
  */
 $messages['kl'] = array(
 	'languageselector' => 'Oqaatsit',

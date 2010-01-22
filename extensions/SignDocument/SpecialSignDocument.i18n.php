@@ -2783,6 +2783,14 @@ $messages['ml'] = array(
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1],  [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2]ല്‍ ഒപ്പിട്ടു.',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'sign-viewfield-reviewcomment' => 'Тайлбар',
+	'sign-review-comment' => 'Тайлбар',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

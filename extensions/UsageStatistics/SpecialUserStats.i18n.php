@@ -995,7 +995,7 @@ $messages['hi'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Dnik
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'specialuserstats' => 'Statistika upotrebe',
@@ -1290,6 +1290,7 @@ $messages['km'] = array(
 	'usagestatisticsfor' => '<h2>ស្ថិតិ​នៃ​ការប្រើប្រាស់​របស់ [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>ស្ថិតិប្រើប្រាស់សម្រាប់គ្រប់អ្នកប្រើប្រាស់ទាំងអស់</h2>',
 	'usagestatisticsinterval' => 'ចន្លោះ',
+	'usagestatisticsnamespace' => 'ប្រភេទ៖',
 	'usagestatisticstype' => 'ប្រភេទ',
 	'usagestatisticsstart' => 'កាលបរិច្ឆេទចាប់ផ្តើម',
 	'usagestatisticsend' => 'កាលបរិច្ឆេទបញ្ចប់',

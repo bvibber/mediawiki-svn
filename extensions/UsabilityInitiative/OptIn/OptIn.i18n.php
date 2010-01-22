@@ -115,6 +115,7 @@ Thanks and we look forward to hearing from you!",
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Lloffiwr
  * @author Mormegil
  * @author Purodha
  */
@@ -124,14 +125,24 @@ $messages['qqq'] = array(
 	'optin-title-optedin' => 'Title of Special:UsabilityOptIn when the user is opted in',
 	'optin-title-justoptedin' => 'Title of Special:UsabilityOptIn when the user has just opted in',
 	'optin-title-justoptedout' => 'Title of Special:UsabilityOptIn when the user has just opted out',
+	'optin-feedback-back' => "Part of the introduction to the special page 'Beta feedback'. 
+
+$1 is the name of the page the user was on when the link to the 'Beta feedback' page was clicked.",
+	'optin-leave-cancel' => "Message in the introduction to the Beta feedback form, which appears after a user has clicked the 'Leave Beta' link at the top of the page.
+
+$1 is the name of the page which the user was on when he/she clicked the 'Leave Beta' link at the top of the page.",
 	'optin-accept-short' => 'Upper half of caption for Yes button on opt-in form',
 	'optin-accept-long' => 'Bottom half of caption for Yes button on opt-in form',
 	'optin-deny-short' => 'Upper half of caption for No button on opt-in form',
 	'optin-deny-long' => 'Bottom half of caption for No button on opt-in form for logged-in users',
 	'optin-submit-out' => 'Caption for submit button on opt-out/survey form',
 	'optin-submit-feedback' => 'Caption of the submit button on the Usability Initiative Beta feedback form.',
-	'optin-survey-yes' => '{{Identical|Yes}}',
-	'optin-survey-no' => '{{Identical|No}}',
+	'optin-survey-yes' => '{{Identical|Yes}}
+
+Possible answer to Usability feedback questions {{msg|Optin-survey-question-usedtoolbar}} or {{msg|Optin-survey-question-techfail}}.',
+	'optin-survey-no' => '{{Identical|No}}
+
+Possible answer to Usability feedback questions {{msg|Optin-survey-question-usedtoolbar}} or {{msg|Optin-survey-question-techfail}}.',
 	'optin-survey-intro' => 'Do not translate #leave',
 	'optin-survey-answer-whyoptout-notpredictable' => '"not predictably" means somehing like "randomly". Results of clicks are not alway the same.',
 	'optin-survey-answer-whyoptout-other' => '{{Identical|Other reason}}',
@@ -2461,7 +2472,7 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'optin' => 'Izbor Inicijative za uporabljivost',
@@ -3157,7 +3168,7 @@ $messages['ka'] = array(
 );
 
 /** Kalaallisut (Kalaallisut)
- * @author Piivaat
+ * @author Qaqqalik
  */
 $messages['kl'] = array(
 	'optin-title-optedout' => 'Beta misiliguk',

@@ -21,13 +21,6 @@ $messages['qqq'] = array(
 	'categorytests-desc' => '{{desc}}',
 );
 
-/** Capiceño (Capiceño)
- * @author Oxyzen
- */
-$messages['cps'] = array(
-	'categorytests-desc' => 'Gamit para sa pagtesting sang kategorya',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -82,6 +75,13 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'categorytests-desc' => 'Funcions per a proves de categories',
+);
+
+/** Capiznon (Capiceño)
+ * @author Oxyzen
+ */
+$messages['cps'] = array(
+	'categorytests-desc' => 'Gamit para sa pagtesting sang kategorya',
 );
 
 /** Czech (Česky)

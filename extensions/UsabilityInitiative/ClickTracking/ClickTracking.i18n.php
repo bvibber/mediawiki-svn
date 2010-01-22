@@ -731,8 +731,8 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Ex13
  * @author Mvrban
- * @author Suradnik13
  */
 $messages['hr'] = array(
 	'clicktracking' => 'Praćenje klikova u Inicijativi za uporabljivosti',

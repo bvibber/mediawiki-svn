@@ -100,13 +100,14 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author DaSch
  * @author Revolus
  */
 $messages['de'] = array(
 	'stalkerlog-desc' => 'Fügt ein [[Special:Log/stalkerlog|Logbuch]] der An- und Abmeldungen hinzu',
 	'stalkerlog-log-login' => 'angemeldet.',
 	'stalkerlog-log-logout' => 'abgemeldet.',
-	'stalkerlog-log-type' => 'Authentifizierungslogbuch',
+	'stalkerlog-log-type' => 'Authentifizierungs-Logbuch',
 	'stalkerlog-log-text' => 'Dies ist das Logbuch der An- und Abmeldungen.',
 );
 

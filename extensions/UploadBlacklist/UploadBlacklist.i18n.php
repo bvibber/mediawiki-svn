@@ -179,7 +179,7 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'uploadblacklist-desc' => 'Dodaje funkcionalnost crne liste postavljanja',

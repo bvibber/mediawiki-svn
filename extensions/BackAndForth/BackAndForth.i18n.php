@@ -468,7 +468,7 @@ $messages['kaa'] = array(
 );
 
 /** Kalaallisut (Kalaallisut)
- * @author Piivaat
+ * @author Qaqqalik
  */
 $messages['kl'] = array(
 	'backforth-next' => 'Tullii ($1)',

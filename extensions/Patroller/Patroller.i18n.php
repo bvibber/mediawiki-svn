@@ -727,7 +727,7 @@ $messages['hil'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'patrol' => 'Patrolirane promjene',

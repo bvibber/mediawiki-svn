@@ -514,7 +514,7 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'edituser-desc' => 'Omogućava suradnicima s pripadajućim pravom uređivanje postavki drugih suradnika',

@@ -560,7 +560,7 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'deletebatch' => 'Izbriši skupinu stranica',
@@ -837,6 +837,13 @@ $messages['lb'] = array(
 	'deletebatch-file-missing' => 'De Fichier deen ukoum konnt net geliest ginn',
 	'deletebatch-select-script' => 'de Script vun der Säit läschen',
 	'deletebatch-select-yourself' => 'Dir',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'right-deletebatch' => "Mamafa pejy maro anatin'ny tao iray",
 );
 
 /** Macedonian (Македонски)

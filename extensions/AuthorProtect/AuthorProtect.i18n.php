@@ -607,7 +607,7 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'authorprotect' => 'Zaštiti stranicu od ne-autora',

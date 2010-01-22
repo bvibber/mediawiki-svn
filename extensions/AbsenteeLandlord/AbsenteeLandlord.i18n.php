@@ -263,7 +263,7 @@ $messages['hif-latn'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'absenteelandlord-reason' => 'Baza je automatski zaključana uslijed neaktivnosti administratora.',

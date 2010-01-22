@@ -955,7 +955,7 @@ $messages['kk-latn'] = array(
 );
 
 /** Kalaallisut (Kalaallisut)
- * @author Piivaat
+ * @author Qaqqalik
  */
 $messages['kl'] = array(
 	'sitematrix-language' => 'Oqaatsit',

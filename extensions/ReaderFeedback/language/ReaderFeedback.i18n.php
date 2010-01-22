@@ -58,6 +58,7 @@ $messages['en'] = array(
  * @author Huji
  * @author Jon Harald Søby
  * @author Meno25
+ * @author Mormegil
  * @author Purodha
  * @author Raymond
  * @author Rex
@@ -87,8 +88,7 @@ $messages['qqq'] = array(
 	'readerfeedback-submitting' => '{{flaggedrevs}}
 {{identical|submitting}}',
 	'readerfeedback-tagfilter' => '{{Identical|Tag}}',
-	'readerfeedback-ak-review' => 'Accesskey for submit button on readerfeedback form. Does not need to be translated', 
-	'readerfeedback-tt-review' => 'Title of submit button on review form',
+	'readerfeedback-tt-review' => 'Pop-up text for the submit button (captioned with {{msg-mw|readerfeedback-submit}}) on review form',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1055,7 +1055,7 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'readerfeedback-finished' => 'Hvala!',
@@ -1660,6 +1660,7 @@ $messages['no'] = array(
 	'readerfeedback-tier-poor' => 'Dårlig',
 	'tooltip-ca-ratinghist' => 'Leservurderinger av denne siden',
 	'specialpages-group-feedback' => 'Mening fra leser',
+	'readerfeedback-tt-review' => 'Send vurdering',
 );
 
 /** Occitan (Occitan)

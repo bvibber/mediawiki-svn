@@ -255,7 +255,7 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'icon-badimage' => 'Loša slika',

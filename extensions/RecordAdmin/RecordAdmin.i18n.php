@@ -719,7 +719,7 @@ $messages['fr'] = array(
 	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => 'Aucun $1',
+	'recordadmin-notset' => 'Aucun « $1 »',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1039,7 +1039,7 @@ $messages['ia'] = array(
 	'right-recordadmin' => 'Cercar e modificar paginas de datos',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => 'Nulle $1',
+	'recordadmin-notset' => 'Non existe "$1"',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1317,7 +1317,7 @@ $messages['mk'] = array(
 	'right-recordadmin' => 'Пронаоѓање и уредување на записни страници',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => 'Нема $1',
+	'recordadmin-notset' => 'Нема „$1“',
 );
 
 /** Mongolian (Монгол)
@@ -1651,7 +1651,7 @@ $messages['pms'] = array(
 	'right-recordadmin' => "Treuva e modifica pàgine d'anotassion",
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => 'Pa gnun $1',
+	'recordadmin-notset' => 'Pa gnun "$1"',
 );
 
 /** Pashto (پښتو)
@@ -1838,7 +1838,7 @@ $messages['ru'] = array(
 	'right-recordadmin' => 'поиск и редактирование страниц записей',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => 'Нет $1',
+	'recordadmin-notset' => 'Нет «$1»',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

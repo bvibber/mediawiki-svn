@@ -185,7 +185,7 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'microid-desc' => 'Dodaje [http://www.microid.org/ MicroID] na suradničke stranica za potvrdu računa putem vanjskih usluga',

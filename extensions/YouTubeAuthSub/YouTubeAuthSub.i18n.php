@@ -480,7 +480,7 @@ $messages['ckb-arab'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'تکایە پێناسەیەک بۆ بۆ ڤیدیۆکە بنووسە.',
 );
 
-/** Capiceño (Capiceño)
+/** Capiznon (Capiceño)
  * @author Oxyzen
  */
 $messages['cps'] = array(

@@ -554,6 +554,13 @@ $messages['ja'] = array(
 	'security-restricttogroup' => '「$1」の構成員に限定されているコンテンツにアクセスする',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'security-type-namespace' => 'ប្រភេទ',
+);
+
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
  */

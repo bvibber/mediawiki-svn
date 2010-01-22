@@ -528,6 +528,14 @@ $messages['mk'] = array(
 	'commentbox-error-empty-comment' => 'Не се дозволени празни коментари!',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'commentbox-first-comment-heading' => '== Сэтгэгдлүүд ==',
+	'commentbox-regex' => '/\\n==\\s*Сэтгэгдлүүдs*==\\s*\\n/i',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

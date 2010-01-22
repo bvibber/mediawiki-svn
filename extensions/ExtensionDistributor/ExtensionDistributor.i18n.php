@@ -1126,8 +1126,8 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 );
 
 /** Croatian (Hrvatski)
+ * @author Ex13
  * @author SpeedyGonsales
- * @author Suradnik13
  */
 $messages['hr'] = array(
 	'extensiondistributor' => 'Snimi MediaWiki ekstenziju',

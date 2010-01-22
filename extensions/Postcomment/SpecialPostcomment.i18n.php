@@ -41,6 +41,8 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'postcomment_notloggedin' => 'U is nie aangeteken nie.',
+	'postcomment_youareloggedinas' => 'U is aangeteken as $1',
 	'postcomment_post' => 'Pos',
 	'postcomment_on' => 'Op',
 	'postcomment_said' => 'het gesê',

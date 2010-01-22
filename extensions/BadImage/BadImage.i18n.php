@@ -927,8 +927,8 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
+ * @author Ex13
  * @author SpeedyGonsales
- * @author Suradnik13
  */
 $messages['hr'] = array(
 	'badimages' => 'Popis loših slika',

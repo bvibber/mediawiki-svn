@@ -181,7 +181,7 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'honeypot-desc' => 'Omogućuje intergraciju s [http://projecthoneypot.org/ projektom Honey Pot] za MediaWiki stranice',

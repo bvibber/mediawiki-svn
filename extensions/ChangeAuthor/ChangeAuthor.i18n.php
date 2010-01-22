@@ -918,8 +918,8 @@ $messages['hil'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Dnik
+ * @author Ex13
  * @author SpeedyGonsales
- * @author Suradnik13
  */
 $messages['hr'] = array(
 	'changeauthor' => 'Promijenite autora inačice',
@@ -1405,6 +1405,13 @@ $messages['ml'] = array(
 	'changeauthor-success' => 'താങ്കളുടെ അഭ്യര്‍ത്ഥനയുടെ നടപടിക്രമങ്ങള്‍ വിജയകരമായി പൂര്‍ത്തിയാക്കിയിരിക്കുന്നു.',
 	'changeauthor-logentry' => '$1എന്ന താളിന്റെ $2പതിപ്പിന്റെ ലേഖകനെ $3ല്‍ നിന്നു $4ലേക്കു മാറ്റിയിരിക്കുന്നു',
 	'changeauthor-logpagename' => 'ലേഖകരെ മാറ്റിയതിന്റെ പ്രവര്‍ത്തനരേഖ',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'changeauthor-comment' => 'Тайлбар:',
 );
 
 /** Marathi (मराठी)

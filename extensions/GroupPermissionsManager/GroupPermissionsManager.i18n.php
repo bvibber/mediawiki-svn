@@ -2048,6 +2048,7 @@ $messages['mk'] = array(
  */
 $messages['mn'] = array(
 	'grouppermissions-dologin' => 'Нэвтрэх',
+	'grouppermissions-comment' => 'Тайлбар:',
 );
 
 /** Maltese (Malti)

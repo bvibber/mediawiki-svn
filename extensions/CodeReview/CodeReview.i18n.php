@@ -193,16 +193,13 @@ $messages['qqq'] = array(
 	'code-rev-status' => '{{Identical|Status}}',
 	'code-rev-tags' => '{{Identical|Tag}}',
 	'code-rev-comment-preview' => '{{Identical|Preview}} Caption of the button used to preview a comment.',
-	'code-rev-comment-preview-accesskey' => '{{Identical|accesskey-preview}} Accesskey of the button used to preview a comment. Should be the same as [[MediaWiki:accesskey-preview]]',
 	'code-rev-inline-preview' => '{{Identical|Preview}} Text "Preview" shown before the comment which is currently being previewed.',
 	'code-status-new' => '{{Identical|New}}',
 	'code-status-reverted' => '{{Identical|Revert}}',
 	'code-status-ok' => '{{Identical|OK}}',
-	'code-rev-submit' => 'Caption of the button used to Save changes when viewing a revision.',
-	'code-rev-submit-accesskey' => 'Accesskey of the button used to Save changes when viewing a revision.',
-	'code-rev-submit-next' => 'Caption of the button used when viewing a revision to Save changes moving to next unresolved revision.',
-	'code-rev-submit-next-accesskey' => 'Accesskey of the button used when viewing a revision to Save changes moving to the next unresolved revision.',
 	'code-pathsearch-path' => '{{Identical|Path}}',
+	'code-rev-submit' => 'Caption of the button used to Save changes when viewing a revision.',
+	'code-rev-submit-next' => 'Caption of the button used when viewing a revision to Save changes moving to next unresolved revision.',
 	'codereview-batch-submit' => '{{Identical|Submit}}',
 	'codereview-subtitle' => '{{Identical|For $1}}
 ----
@@ -801,10 +798,13 @@ $3',
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  * @author Turin
  */
 $messages['bg'] = array(
 	'code-comments' => 'Коментари',
+	'code-change-status' => "промени '''състоянието''' на r$1",
+	'code-change-tags' => "промени '''етикетите''' за r$1",
 	'code-change-removed' => 'премахнато:',
 	'code-change-added' => 'добавено:',
 	'code-old-status' => 'Старо състояние',
@@ -817,7 +817,17 @@ $messages['bg'] = array(
 	'code-authors' => 'автори',
 	'code-status' => 'статут',
 	'code-tags' => 'етикети',
+	'code-author-haslink' => 'Този автор е свързан с уики потребителя $1',
+	'code-author-orphan' => 'Този автор не е свързан с името на уики потребител',
+	'code-author-dolink' => 'Свържете този автор с уики потребител:',
+	'code-author-alterlink' => 'Променете името на уики потребителя, свързан с този автор:',
+	'code-author-orunlink' => 'Или премахнете връзката към този уики потребител:',
 	'code-author-name' => 'Въведете потребителско име:',
+	'code-author-success' => 'Авторът $1 е бил свързан с уики потребителя $2',
+	'code-author-link' => 'да се сложи ли връзка?',
+	'code-author-unlink' => 'да се премахне ли връзката?',
+	'code-author-unlinksuccess' => 'Премахната връзката към автора $1',
+	'code-browsing-path' => "Преглед на редакциите на '''$1'''",
 	'code-field-id' => 'Версия',
 	'code-field-author' => 'Автор',
 	'code-field-user' => 'Коментатор',
@@ -858,10 +868,19 @@ $messages['bg'] = array(
 	'code-pathsearch-legend' => 'Търсене на версии в това хранилище по път',
 	'code-pathsearch-path' => 'Път:',
 	'code-rev-submit' => 'Съхраняване на промените',
+	'code-batch-status' => 'Промяна на статуса:',
+	'code-batch-tags' => 'Промяна на етикетите:',
+	'codereview-batch-title' => 'Промяна на всички маркирани редакции',
 	'codereview-batch-submit' => 'Изпращане',
+	'code-release-startrev' => 'Първа редакция:',
+	'code-release-endrev' => 'Последна редакция:',
 	'code-release-badrange' => 'Обхватът е твърде голям!',
 	'codereview-subtitle' => 'За $1',
 	'codereview-reply-link' => 'отговаряне',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|успешен тест|успешни теста}}',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успешен тест|успешни теста}}, $3 {{PLURAL:$4|неуспешен|неуспешни}}:',
+	'codereview-tests-running' => 'Тестовете са стартирани...',
+	'codereview-tests-aborted' => 'Стартираният тест беше прекъснат.',
 	'codereview-email-subj' => '[$1] [r$2]: Беше добавен нов коментар',
 	'codereview-email-body' => 'Потребител „$1“ публикува коментар за r$3.
 
@@ -885,6 +904,7 @@ $4',
 	'right-codereview-remove-tag' => 'Премахване на етикети от версиите',
 	'right-codereview-post-comment' => 'Добавяне на коментари към версиите',
 	'right-codereview-set-status' => 'Променяне на статута на версиите',
+	'right-codereview-link-user' => 'Свързване на имената на авторите с имена на уики потребители',
 	'specialpages-group-developer' => 'Инструменти за разработчици',
 );
 
@@ -3641,8 +3661,8 @@ $messages['hif-latn'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Ex13
  * @author SpeedyGonsales
- * @author Suradnik13
  */
 $messages['hr'] = array(
 	'code' => 'Pregled koda',
@@ -4697,12 +4717,15 @@ $4',
  */
 $messages['ka'] = array(
 	'code' => 'კოდის შემოწმება',
+	'code-comments' => 'კომენტარები:',
 	'code-old-status' => 'ძველი სტატუსი',
 	'code-new-status' => 'ახალი სტატუსი',
 	'code-notes' => 'ბოლო კომენტარები',
 	'code-statuschanges' => 'სტატუსის შეცვლა',
 	'code-authors' => 'ავტორები',
+	'code-author-name' => 'მომხმარებლის სახელის შეტანა:',
 	'code-author-link' => 'კავშირის დამყარება?',
+	'code-author-unlink' => 'კავშირის მოხსნა?',
 	'code-field-author' => 'ავტორი',
 	'code-field-status' => 'სტატუსი',
 	'code-field-timestamp' => 'თარიღი',
@@ -5632,6 +5655,8 @@ $4',
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'code-comments' => 'Тайлбар',
+	'code-rev-message' => 'Тайлбар:',
 	'code-status-reverted' => 'хуучин төлөвт шилжүүлэв',
 );
 

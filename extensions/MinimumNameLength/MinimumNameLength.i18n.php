@@ -224,7 +224,7 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'minnamelength-error' => 'Vaše suradničko ime je prekratko. Duljina mora biti bar $1.',

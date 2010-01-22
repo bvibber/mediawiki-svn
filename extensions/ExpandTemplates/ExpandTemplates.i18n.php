@@ -1272,6 +1272,8 @@ $messages['ml'] = array(
  */
 $messages['mn'] = array(
 	'expand_templates_input' => 'Оруулах бичиг:',
+	'expand_templates_output' => 'Үр дүн',
+	'expand_templates_remove_comments' => 'Товч агуулгыг авч хаях',
 );
 
 /** Marathi (मराठी)

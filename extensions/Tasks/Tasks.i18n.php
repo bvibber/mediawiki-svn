@@ -2352,6 +2352,7 @@ $messages['mk'] = array(
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'tasks_form_comment' => 'Тайлбар',
 	'tasks_search_form_title' => 'Хайлт',
 );
 

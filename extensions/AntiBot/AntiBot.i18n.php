@@ -21,13 +21,6 @@ $messages['qqq'] = array(
 	'antibot-desc' => 'Description of the [[mw:Extension:AntiBot|AntiBot]] MediaWiki extension (to be displayed at [[Special:Version]])',
 );
 
-/** Capiceño (Capiceño)
- * @author Oxyzen
- */
-$messages['cps'] = array(
-	'antibot-desc' => 'Simple nga framework para sa pag-usisa sang spambots kag kag naga-trigger payloads',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -89,6 +82,13 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'antibot-desc' => 'Jednostavni radni okvir za provjeru spam botova',
+);
+
+/** Capiznon (Capiceño)
+ * @author Oxyzen
+ */
+$messages['cps'] = array(
+	'antibot-desc' => 'Simple nga framework para sa pag-usisa sang spambots kag kag naga-trigger payloads',
 );
 
 /** Czech (Česky)

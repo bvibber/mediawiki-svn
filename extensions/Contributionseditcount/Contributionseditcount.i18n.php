@@ -249,7 +249,7 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'contributionseditcount' => 'Ovaj suradnik ima $1 izmjena.',

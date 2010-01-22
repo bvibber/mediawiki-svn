@@ -96,6 +96,13 @@ $messages['eo'] = array(
 	'geolite-desc' => 'Malpeza Alidirektilo GeoIP',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'geolite-desc' => 'Redirección ligera de GeoIp',
+);
+
 /** Finnish (Suomi)
  * @author ZeiP
  */

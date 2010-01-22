@@ -279,7 +279,7 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'webchat' => 'Web chat',
@@ -404,6 +404,13 @@ Fir Iech ze verbanne klickt de Knäppchen "Verbannen".
 Wann Dir ageloggt sidd gëtt Äre Spëtznumm virausgefëllt.
 Anonym Benotzer kréien en automatesch genereéierten Numm, deen awer geännert ka ginn.',
 	'right-webchat' => 'Däerf de [[Special:WebChat|Web Chat]] benotzen',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'right-webchat' => 'Afaka mampiasa ny [[Special:WebChat|webchat]]',
 );
 
 /** Macedonian (Македонски)

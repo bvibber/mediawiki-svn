@@ -2333,7 +2333,7 @@ $wgGoogleMapsMessages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
- * @author Suradnik13
+ * @author Ex13
  */
 $wgGoogleMapsMessages['hr'] = array(
 	'gm-remove' => 'ukloni',

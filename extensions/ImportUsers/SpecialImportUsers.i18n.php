@@ -470,6 +470,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'importusers' => 'Importar usuarios',
+	'importusers-desc' => '[[Special:ImportUsers|Imports users]] en conjunto desde archivo CSV; codificación: UTF-8',
 	'importusers-uploadfile' => 'Subir archivo',
 	'importusers-form-caption' => 'Introducir archivo CSV (UTF-8)',
 	'importusers-form-file' => 'Formato de archivo de usuario (CSV):',
@@ -762,7 +763,7 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'importusers' => 'Uvezi suradnike',
@@ -1174,6 +1175,13 @@ $messages['ml'] = array(
 	'importusers-password' => 'രഹസ്യവാക്ക്',
 	'importusers-email' => 'ഇമെയില്‍',
 	'importusers-realname' => 'യഥാര്‍ത്ഥ പേര്‌',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'importusers-log-summary' => 'Товч агуулга',
 );
 
 /** Marathi (मराठी)

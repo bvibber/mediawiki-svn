@@ -1016,15 +1016,16 @@ $messages['jv'] = array(
  * @author Chhorran
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'viewxml' => 'មើល XML',
 	'dt_viewxml_docu' => 'ជ្រើសយកក្នុងចំណោមចំណាត់ថ្នាក់ក្រុមនិងលំហឈ្មោះដើម្បីមើលជាទម្រង់ XML ។',
 	'dt_viewxml_categories' => 'ចំណាត់ថ្នាក់ក្រុម',
-	'dt_viewxml_namespaces' => 'លំហឈ្មោះ',
+	'dt_viewxml_namespaces' => 'ប្រភេទ',
 	'dt_viewxml_simplifiedformat' => 'ទម្រង់សាមញ្ញ',
-	'dt_xml_namespace' => 'វាលឈ្មោះ',
+	'dt_xml_namespace' => 'ប្រភេទ',
 	'dt_xml_pages' => 'ទំព័រ',
 	'dt_xml_page' => 'ទំព័រ',
 	'dt_xml_template' => 'ទំព័រគំរូ',

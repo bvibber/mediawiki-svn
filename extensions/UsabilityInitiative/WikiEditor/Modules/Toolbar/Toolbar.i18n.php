@@ -240,6 +240,7 @@ $messages['qqq'] = array(
 	'wikieditor-toolbar-tool-italic-example' => '{{Identical|Italic text}}',
 	'wikieditor-toolbar-tool-ilink' => '{{Identical|Internal link}}',
 	'wikieditor-toolbar-tool-xlink' => '{{Identical|External link (remember http:// prefix)}}',
+	'wikieditor-toolbar-tool-xlink-example' => "www.example.com is not a real website, but it has been reserved to use in software documentation, and will never be sold or used for advertising. If you translate the word example and try to go to that web address then you might get a message that it doesn't exist. But somebody may have created a commercial web page for that address, such as www.Beispiel.org, using the German word for example. It is therefore recommended that you do not translate http://www.example.com at all. If you do wish to translate it you should first check where the translated link takes you, and bear in mind that anybody could purchase that name in the future.",
 	'wikieditor-toolbar-tool-link' => '{{Identical|Link}}',
 	'wikieditor-toolbar-tool-link-cancel' => '{{Identical|Cancel}}',
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'Text shown when the title the user entered exists',
@@ -310,7 +311,8 @@ This message does not support PLURAL on $1.',
 	'wikieditor-toolbar-help-content-bold-result' => '{{Identical|Bold text}}',
 	'wikieditor-toolbar-help-content-ilink-description' => '{{Identical|Internal link}}',
 	'wikieditor-toolbar-help-content-xlink-description' => '{{Identical|External link}}',
-	'wikieditor-toolbar-help-content-xlink-syntax' => "www.example.org is not a real website. If you go to this page on the web it says that it cannot be registered as a real domain. If you translate the word example and try to go to that web address then you might get a message that it doesn't exist. But somebody may have created a web page for that address, such as www.Beispiel.org, using the German word for example. So it is worth checking where the translated link takes you when translating this.",
+	'wikieditor-toolbar-help-content-xlink-syntax' => "www.example.org is not a real website, but it has been reserved to use in software documentation. If you translate the word example and try to go to that web address then you might get a message that it doesn't exist. But somebody may have created a commercial web page for that address, such as www.Beispiel.org, using the German word for example. It is therefore recommended that you do not translate http://www.example.org at all. If you do wish to translate it you should first check where the translated link takes you.",
+	'wikieditor-toolbar-help-content-xlink-result' => "www.example.org is not a real website, but it has been reserved to use in software documentation. If you translate the word example and try to go to that web address then you might get a message that it doesn't exist. But somebody may have created a commercial web page for that address, such as www.Beispiel.org, using the German word for example. It is therefore recommended that you do not translate http://www.example.org at all. If you do wish to translate it you should first check where the translated link takes you.",
 	'wikieditor-toolbar-help-content-heading1-syntax' => '{{Identical|Heading text}}',
 	'wikieditor-toolbar-help-content-heading1-result' => '{{Identical|Heading text}}',
 	'wikieditor-toolbar-help-content-heading2-syntax' => '{{Identical|Heading text}}',
@@ -325,12 +327,16 @@ This message does not support PLURAL on $1.',
 	'wikieditor-toolbar-help-content-olist-description' => '{{Identical|Numbered list}}',
 	'wikieditor-toolbar-help-content-file-description' => '{{Identical|Embedded file}}',
 	'wikieditor-toolbar-help-content-file-syntax' => "{{doc-important|''thumb'' is a magic word. Leave it untranslated!}}",
-	'wikieditor-toolbar-help-content-file-result' => 'Do not translate anything except "Caption text" (twice) and "Enlarge" (to "{{int:thumbnail-more}}").',
+	'wikieditor-toolbar-help-content-file-result' => '{{doc-important|Do not translate anything except "Caption text" (twice) and "Enlarge" (to "{{int:thumbnail-more}}").}}',
 	'wikieditor-toolbar-help-content-reference-description' => '{{Identical|Reference}}',
-	'wikieditor-toolbar-help-content-reference-syntax' => 'I suggest leaving the <code>name="test"</code> string in English',
+	'wikieditor-toolbar-help-content-reference-syntax' => 'I suggest leaving the <code>name="test"</code> string in English
+
+www.example.org is not a real website, but it has been reserved to use in software documentation. If you translate the word example and try to go to that web address then you might get a message that it doesn\'t exist. But somebody may have created a commercial web page for that address, such as www.Beispiel.org, using the German word for example. It is therefore recommended that you do not translate http://www.example.org at all. If you do wish to translate it you should first check where the translated link takes you.',
 	'wikieditor-toolbar-help-content-rereference-syntax' => '{{Optional}}',
 	'wikieditor-toolbar-help-content-showreferences-syntax' => '{{Optional}}',
-	'wikieditor-toolbar-help-content-showreferences-result' => 'For the <code><nowiki><li></nowiki></code> tag’s <code>id</code> attribute, non-ASCII characters are URL-encoded as follows: a period (<code>.</code>) followed by a capital hexadecimal code. For example, <code><nowiki><ref name="thử"></nowiki></code> produces <code><nowiki><li id="cite_note-th.E1.BB.AD-0"></nowiki></code>.',
+	'wikieditor-toolbar-help-content-showreferences-result' => 'For the <code><nowiki><li></nowiki></code> tag’s <code>id</code> attribute, non-ASCII characters are URL-encoded as follows: a period (<code>.</code>) followed by a capital hexadecimal code. For example, <code><nowiki><ref name="thử"></nowiki></code> produces <code><nowiki><li id="cite_note-th.E1.BB.AD-0"></nowiki></code>.
+
+www.example.org is not a real website, but it has been reserved to use in software documentation. If you translate the word example and try to go to that web address then you might get a message that it doesn\'t exist. But somebody may have created a commercial web page for that address, such as www.Beispiel.org, using the German word for example. It is therefore recommended that you do not translate http://www.example.org at all. If you do wish to translate it you should first check where the translated link takes you.',
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => '{{Identical|Signature with timestamp}}',
 	'wikieditor-toolbar-help-content-signature-description' => '{{Identical|Signature}}',
 );
@@ -988,7 +994,7 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Уставіць спасылку',
 	'wikieditor-toolbar-tool-link-int' => 'На вікі-старонку',
 	'wikieditor-toolbar-tool-link-int-target' => 'Назва старонкі:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Увядзіце назву старонкі',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Назву старонкі альбо URL-адрас',
 	'wikieditor-toolbar-tool-link-int-text' => 'Тэкст спасылкі:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Увядзіце тэкст, які павінен быць паказаны',
 	'wikieditor-toolbar-tool-link-ext' => 'На вонкавую ўэб-старонку',
@@ -3779,7 +3785,7 @@ $messages['es'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Insertar enlace',
 	'wikieditor-toolbar-tool-link-int' => 'A una página wiki',
 	'wikieditor-toolbar-tool-link-int-target' => 'Título de página:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Introduzca el título de la página',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Título de la página o URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'Título del enlace',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Introducir el texto para mostrar',
 	'wikieditor-toolbar-tool-link-ext' => 'A una página web externa',
@@ -4603,7 +4609,7 @@ $messages['fr'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Insérer un lien',
 	'wikieditor-toolbar-tool-link-int' => 'Vers un article / une page wiki',
 	'wikieditor-toolbar-tool-link-int-target' => 'Titre de la page :',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Entrez le titre de la page',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Titre de la page ou URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'Texte du lien :',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Entrez le texte qui devrait être affiché',
 	'wikieditor-toolbar-tool-link-ext' => 'Vers une page web externe',
@@ -5290,7 +5296,7 @@ $messages['gsw'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Gleich yysetze',
 	'wikieditor-toolbar-tool-link-int' => 'Zuen eme Wikiartikel/ere Wikisyte',
 	'wikieditor-toolbar-tool-link-int-target' => 'Artikeltitel:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Sytename yygee',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Sytename oder URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'Gleichtext:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Text yygee, wu soll aazeigt wäre',
 	'wikieditor-toolbar-tool-link-ext' => 'Zuen ere extärne Netzsyte',
@@ -5738,8 +5744,8 @@ $messages['hif-latn'] = array(
 
 /** Croatian (Hrvatski)
  * @author CERminator
+ * @author Ex13
  * @author Mvrban
- * @author Suradnik13
  */
 $messages['hr'] = array(
 	'wikieditor-toolbar' => 'Alatna traka',
@@ -9829,7 +9835,7 @@ $messages['no'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Sett inn lenke',
 	'wikieditor-toolbar-tool-link-int' => 'Til en wikiartikkel/-side',
 	'wikieditor-toolbar-tool-link-int-target' => 'Sidetittel/artikkeltittel:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Legg inn sidens tittel',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Sidetittel eller internettadresse',
 	'wikieditor-toolbar-tool-link-int-text' => 'Lenketekst:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Legg inn teksten som skal vises',
 	'wikieditor-toolbar-tool-link-ext' => 'Til en ekstern webside',
@@ -10451,7 +10457,7 @@ $messages['pms'] = array(
 	'wikieditor-toolbar-tool-link-title' => "Anseriss n'anliura",
 	'wikieditor-toolbar-tool-link-int' => 'A na pàgina wiki',
 	'wikieditor-toolbar-tool-link-int-target' => 'Tìtol dla pàgina',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Tìtol dla pàgina o URL',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => "Tìtol dla pàgina o adrëssa dl'aragnà",
 	'wikieditor-toolbar-tool-link-int-text' => "Test ëd l'anliura:",
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => "Ch'a buta ël test ch'a dovrìa esse mostrà",
 	'wikieditor-toolbar-tool-link-ext' => "A na pàgina an sl'aragnà esterna",

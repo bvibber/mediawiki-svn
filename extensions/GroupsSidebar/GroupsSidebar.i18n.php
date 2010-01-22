@@ -53,6 +53,13 @@ $messages['dsb'] = array(
 	'groupssidebar-desc' => 'Toś to rozšyrjenje zmóžnja sedłowym administratoram elementy bocnice za wěste wužywarske kupki zapśěgnuś',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'groupssidebar-desc' => 'Esta extensión posibilita a los administradores del sitio a incluir elementos en la barra lateral para grupos de usuarios específicos',
+);
+
 /** French (Français)
  * @author IAlex
  */

@@ -754,6 +754,7 @@ $messages['es'] = array(
 	'regexblock-block-log' => "Nombre de usuario o dirección IP '''$1''' ha sido bloqueada.",
 	'regexblock-block-success' => 'Bloqueo fue un éxito',
 	'regexblock-currently-blocked' => 'Direcciones actualmente bloqueadas:',
+	'regexblock-desc' => 'Extensión usada para bloquear nombres de usuario y direcciones de IP con expresiones regulares. Contiene el mecanismo de bloqueo y una [[Special:Regexblock|special page]] para añadir/administrar bloqueos',
 	'regexblock-expire-duration' => '1 hora,2 horas,4 horas,6 horas,1 día,3 días,1 semana,2 semanas,1 mes,3 meses,6 meses,1 año,infinito',
 	'regexblock-page-title' => 'Bloque de nombre de expresiones regulares',
 	'regexblockstats' => 'Estadísticas del bloque de expresiones regulares',
@@ -1213,8 +1214,8 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
+ * @author Ex13
  * @author SpeedyGonsales
- * @author Suradnik13
  */
 $messages['hr'] = array(
 	'regexblock' => 'Blokiranje pomoću regularnih izraza',
@@ -1610,7 +1611,7 @@ $messages['ka'] = array(
 );
 
 /** Kalaallisut (Kalaallisut)
- * @author Piivaat
+ * @author Qaqqalik
  */
 $messages['kl'] = array(
 	'regexblock-expire-duration' => '1 tiimi,2 tiimit,4 tiimit,6 tiimit,ulloq 1,ullut 3,sap akunn 1,sap akunn 2,1 qaammat,qaammatit 3,qaammatit 6,ukioq 1,killeqanngitsoq',

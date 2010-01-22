@@ -1076,6 +1076,13 @@ $messages['ml'] = array(
 	'spamregex-summary-log' => '(ചുരുക്കം)',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'spamregex-summary-log' => '(Товч агуулга)',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

@@ -633,7 +633,7 @@ $messages['mk'] = array(
 	'createpage' => 'Создај страница',
 	'createpage-desc' => 'Додава [[Special:CreatePage|специјална страница]] за создавање на нови страници',
 	'createpage_submitbutton' => 'Потврди',
-	'createpage_instructions' => 'Внесете наслов на страницата која сакате да ја креирате:',
+	'createpage_instructions' => 'Внесете наслов на страницата која сакате да ја создадете:',
 	'createpage_entertitle' => 'Внесете наслов на вашата страница.',
 	'createpage_titleexists' => 'Страница со наслов [[$1]] веќе постои.
 Дали сакате да ја уредувате постоечката страница?',

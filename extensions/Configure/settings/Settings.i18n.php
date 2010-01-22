@@ -624,7 +624,6 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'configure-setting-desc' => '{{Optional}}',
 	'configure-setting-wgSitename' => '{{config-wg|Sitename}}',
-	'configure-setting-wgWikiId' => '{{config-wg|WikiId}}',
 	'configure-setting-wgActionPaths' => '{{config-wg|ActionPaths}}',
 	'configure-setting-wgActionPaths-key' => '{{Identical|Action}}',
 	'configure-setting-wgAllDBsAreLocalhost' => '{{config-wg|AllDBsAreLocalhost}}',
@@ -917,7 +916,7 @@ do not translate <code>From:</code>, they are e-mail headers.',
 	'configure-setting-wgSearchForwardUrl' => '{{config-wg|SearchForwardUrl}}',
 	'configure-setting-wgSearchEverythingOnlyLoggedIn' => '{{config-wg|SearchEverythingOnlyLoggedIn}}',
 	'configure-setting-wgSearchHighlightBoundaries' => '{{config-wg|SearchHighlightBoundaries}}',
-	'configure-setting-wgSearchMySQLTotalHits' => '{{config-wg|SearchMySQLTotalHits}}',
+	'configure-setting-wgCountTotalSearchHits' => '{{config-wg|CountTotalSearchHits}}',
 	'configure-setting-wgUseTwoButtonsSearchForm' => '{{config-wg|UseTwoButtonsSearchForm}}',
 	'configure-setting-wgCountCategorizedImagesAsUsed' => '{{config-wg|CountCategorizedImagesAsUsed}}',
 	'configure-setting-wgDisableCounters' => '{{config-wg|DisableCounters}}',
@@ -1009,14 +1008,14 @@ This setting is an array of new namespaces, but can also be used to change the n
 	'configure-setting-wgLocalInterwiki' => '{{config-wg|LocalInterwiki}}',
 	'configure-setting-wgRedirectSources' => 'Be consistent with {{msg-mw|Redirectedfrom}} message.',
 	'configure-setting-wgBlockOpenProxies' => '{{config-wg|BlockOpenProxies}}',
-	'configure-setting-wgEnableSorbs' => '{{config-wg|EnableSorbs}}',
+	'configure-setting-wgEnableDnsBlacklist' => '{{config-wg|EnableDnsBlacklist}}',
 	'configure-setting-wgProxyList' => '{{config-wg|ProxyList}}',
 	'configure-setting-wgProxyMemcExpiry' => '{{config-wg|ProxyMemcExpiry}}',
 	'configure-setting-wgProxyPorts' => '{{config-wg|ProxyPorts}}',
 	'configure-setting-wgProxyScriptPath' => '{{config-wg|ProxyScriptPath}}',
 	'configure-setting-wgProxyWhitelist' => '{{config-wg|ProxyWhitelist}}',
 	'configure-setting-wgSecretKey' => '{{config-wg|SecretKey}}',
-	'configure-setting-wgSorbsUrl' => '{{config-wg|SorbsUrl}}',
+	'configure-setting-wgDnsBlacklistUrls' => '{{config-wg|DnsBlacklistUrls}}',
 	'configure-setting-wgUsePrivateIPs' => '{{config-wg|UsePrivateIPs}}',
 	'configure-setting-wgSQLiteDataDir' => '{{config-wg|SQLiteDataDir}}',
 	'configure-setting-wgDBmwschema' => '{{config-wg|DBmwschema}}',
@@ -3192,6 +3191,7 @@ $messages['br'] = array(
 	'configure-setting-wgMediaHandlers-value' => 'Klas ar merour',
 	'configure-setting-wgShowEXIF' => 'Diskouez ar roadennoù EXIF war ar pajennoù da zeskrivañ ar restroù',
 	'configure-setting-wgThumbLimits' => 'Mentoù aotreet evit ar skeudennoùigoù',
+	'configure-setting-wgUseImageResize' => 'Gweredekaat adventadur dinamek ar skeudennoù eus tu ar servijer',
 	'configure-setting-wgMainCacheType' => 'Seurt ar grubuilh bennañ',
 	'configure-setting-wgDBAhandler' => 'Merour DBA da implijout',
 	'configure-setting-wgFileCacheDirectory' => "Kavlec'h krubuilh ar restroù",
@@ -4591,7 +4591,6 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'configure-setting-wgSitename' => 'Nombre de sitio',
-	'configure-setting-wgWikiId' => 'Único identificador para este wiki (si está vacío, automáticamente generado con configuraciones de base de datos)',
 	'configure-setting-wgActionPaths-key' => 'Acción',
 	'configure-setting-wgActionPaths-value' => 'Modelo de URL',
 	'configure-setting-wgAllDBsAreLocalhost' => 'Reescribir silenciosamente todas las conecciones de la base de datos al servidor local',
@@ -7458,7 +7457,7 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'configure-setting-wgSitename' => 'Naziv projekta',
@@ -10124,6 +10123,7 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
+ * @author គីមស៊្រុន
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
@@ -10182,7 +10182,7 @@ $messages['km'] = array(
 	'configure-setting-wgMemCachedServers' => 'ម៉ាស៊ីន​បម្រើ​ Memcached',
 	'configure-setting-wgUseMemCached' => 'ប្រើប្រាស់​ memcached',
 	'configure-setting-wgXMLMimeTypes-key' => 'ប្រភេទ MIME',
-	'configure-setting-wgXhtmlNamespaces-key' => 'លំហឈ្មោះ',
+	'configure-setting-wgXhtmlNamespaces-key' => 'ប្រភេទ',
 	'configure-setting-wgLocaltimezone' => 'ល្វែង​ម៉ោងក្នុងស្រុក​',
 	'configure-setting-wgMimeInfoFile' => 'ឯកសារ​ព័ត៌មាន​​ប្រភេទ​ MIME',
 	'configure-setting-wgMimeTypeFile' => 'ឯកសារ​និយមន័យ​ប្រភេទ​ MIME',
@@ -17718,7 +17718,6 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'configure-setting-wgSitename' => 'Tên website',
-	'configure-setting-wgWikiId' => 'Định danh độc nhất cho wiki này (nếu để trống, sẽ được tạo tự động từ các thiết lập cơ sở dữ liệu)',
 	'configure-setting-wgActionPaths' => 'URL theo tác vụ',
 	'configure-setting-wgActionPaths-key' => 'Tác vụ',
 	'configure-setting-wgActionPaths-value' => 'Mẫu URL',

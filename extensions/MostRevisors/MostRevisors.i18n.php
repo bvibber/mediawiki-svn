@@ -471,6 +471,13 @@ $messages['ja'] = array(
 	'mostrevisors-viewcontributors' => '主執筆者を見る',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'mostrevisors-namespace' => 'ប្រភេទ៖',
+);
+
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
  */

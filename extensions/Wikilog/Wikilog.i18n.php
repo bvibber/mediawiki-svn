@@ -3753,6 +3753,17 @@ $messages['ml'] = array(
 	'wikilog-pager-prev' => '← മുമ്പ്',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'wikilog-comments' => 'Сэтгэгдлүүд',
+	'wikilog-view-summary' => 'Товч агуулга',
+	'wikilog-has-comments' => '{{PLURAL:$1|нэг сэтгэгдэл|$1 сэтгэгдэл}}',
+	'wikilog-title-comments' => 'Сэтгэгдлүүд - $1',
+	'wikilog-form-comment' => 'Сэтгэгдэл:',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Yosri
  */

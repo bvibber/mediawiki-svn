@@ -925,7 +925,7 @@ $messages['kk-latn'] = array(
 );
 
 /** Kalaallisut (Kalaallisut)
- * @author Piivaat
+ * @author Qaqqalik
  */
 $messages['kl'] = array(
 	'bookinfo-result-year' => 'Ukioq:',

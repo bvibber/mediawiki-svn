@@ -3890,7 +3890,7 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'configure' => 'Konfiguracija wikija',
@@ -5229,7 +5229,7 @@ $messages['kaa'] = array(
 );
 
 /** Kalaallisut (Kalaallisut)
- * @author Piivaat
+ * @author Qaqqalik
  */
 $messages['kl'] = array(
 	'configure-section-recentchanges' => 'Allannguutit nutaanerusut',
@@ -5245,7 +5245,7 @@ $messages['km'] = array(
 	'configure' => 'កំណត់រចនាសម្ព័ន្ធ​វិគី',
 	'configure-desc-group' => 'ក្រុម',
 	'configure-desc-key' => 'កូនសោ',
-	'configure-desc-ns' => 'លំហឈ្មោះ',
+	'configure-desc-ns' => 'ប្រភេទ',
 	'configure-desc-val' => 'តម្លៃ',
 	'configure-edit-core' => 'មេឌាវិគី',
 	'configure-edit-ext' => 'ផ្នែកបន្ថែម',
@@ -5290,7 +5290,7 @@ $messages['km'] = array(
 	'configure-section-enotif' => 'ការជូនដំណឹង​តាម​អ៊ីមែល',
 	'configure-section-timezone' => 'ល្វែងម៉ោង',
 	'configure-section-css-js' => 'CSS និង JavaScript',
-	'configure-section-namespaces' => 'លំហឈ្មោះ',
+	'configure-section-namespaces' => 'ប្រភេទ',
 	'configure-section-stats' => 'ស្ថិតិវិបសាយ',
 	'configure-section-skin' => 'សំបក',
 	'configure-section-category' => 'ចំណាត់ថ្នាក់ក្រុម',

@@ -390,7 +390,7 @@ Basi madula ang mga ginpang obra mo sa diri nga pahina kung mahalin ka subong sa
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'ajaxlogin-desc' => 'Dinamički okvir koji omogućava suradnicima prijavu i pamćenje lozinke',

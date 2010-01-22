@@ -782,7 +782,6 @@ $messages['tg-cyrl'] = array(
 $messages['tg-latn'] = array(
 	'intersection-desc' => 'Fehristi gululae az sahifahoe ba namoiş dar meojad, ki ba tozagī dar jak jo cand gurūh vorid şudaand',
 	'intersection_toomanycats' => "Error: Te'dodi gurūhho zijod ast!",
-	'intersection_toofewcats' => "Error: Te'dodi gurūhho kam ast!",
 	'intersection_noresults' => 'Error: Natiçae vuçud nadorad!',
 	'intersection_noincludecats' => 'Error: Şumo haddi aqal bojad jak gurūhro vorid kuned, jo jak fazoi nomro muşaxxas kuned!',
 );
@@ -793,7 +792,6 @@ $messages['tg-latn'] = array(
 $messages['tk'] = array(
 	'intersection-desc' => 'Bir kategoriýada bar bolan iň soňky elemntleriň markirlenen sanawyny ýa-da birnäçe kategoriýanyň birleşmesini öndürýär',
 	'intersection_toomanycats' => 'Säwlik: Aşa köp kategoriýa!',
-	'intersection_toofewcats' => 'Säwlik: Örän az kategoriýa!',
 	'intersection_noresults' => 'Säwlik: Netije ýok!',
 	'intersection_noincludecats' => 'Säwlik: Iň bolmanda bir kategoriýa goşmaly ýa-da at giňişligi görkezmeli!',
 );
