@@ -60,7 +60,8 @@ class ClickTrackingHooks {
 	public static function addJS() {
 		global $wgClickTrackingStyleVersion;
 		
-		UsabilityInitiativeHooks::initialize();
+		// HACK: Only add scripts when they're really needed by not initializing UIH here
+		//UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js', $wgClickTrackingStyleVersion );
 		UsabilityInitiativeHooks::addVariables(
 			array(
