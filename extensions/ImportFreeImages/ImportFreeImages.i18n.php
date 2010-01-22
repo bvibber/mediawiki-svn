@@ -912,6 +912,7 @@ U kunt een API-sleutel [http://www.flickr.com/services/api/misc.api_keys.html hi
 	'importfreeimages_returntoform' => "Of, klik <a href='$1'>hier</a> om terug te keren naar uw zoekresultaten",
 	'importfreeimages_nophpflickr' => 'U hebt phpFlickr niet geïnstalleerd.
 Stel $wgIFphpFlickr in in uw LocalSettings.php.',
+	'importfreeimages_comment' => 'De afbeelding wordt van Flickr geïmporteerd',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
