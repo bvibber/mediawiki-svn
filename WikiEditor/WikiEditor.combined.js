@@ -49,7 +49,7 @@ mw.addMessages({
 });
 mw.ready( function() {
 	// Check preferences for publish
-	if ( !wgWikiEditorEnabledModules.preview ) {
+	if ( !wgWikiEditorEnabledModules.publish ) {
 		return true;
 	}
 	// Add the publish module
