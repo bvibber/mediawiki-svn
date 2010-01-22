@@ -177,13 +177,18 @@ class ImportFreeImages extends SpecialPage {
 
 	/**
 	 * Shows a custom upload warning
-	 * @param $u UploadForm object
+	 * @param $u UploadFromFile object
 	 * @param $warning Mixed: warning message (MediaWiki:Fileexists plus some other stuff)
 	 */
 	function wfIFI_uploadWarning( $u, $warning ) {
 		global $wgOut, $wgUseCopyrightUpload;
 
 		wfLoadExtensionMessages( 'ImportFreeImages' );
+
+		$form = new UploadForm();
+		$form->mUpload = $u; 	
+		$form->uploadWarning();
+		return;
 
 		$u->mSessionKey = $u->stashSession();
 		if( !$u->mSessionKey ) {
@@ -304,20 +309,6 @@ class ImportFreeImages extends SpecialPage {
 			$caption = trim($caption);
 		}
 
-		// UploadForm class should be autoloaded by now on MediaWiki 1.13+
-		// But on older versions, we need to require_once() it manually
-		if( !class_exists( 'UploadForm' ) ){
-			require_once('includes/SpecialUpload.php');
-		}
-		$u = new UploadForm($wgRequest);
-		// TODO: we should use FauxRequest here instead of accessing member variables.
-		// But FauxRequest doesn't yet allow us to pass files around
-		$u->mTempPath = $tempname;
-		$u->mFileSize = $size;
-		$u->mComment = $caption;
-		$u->mRemoveTempFile = true;
-		$u->mIgnoreWarning = true;
-
 		$filename = $ititle . ($wgIFI_AppendRandomNumber ? "-" . rand(0, 9999) : "") . $fileext;
 		$filename = preg_replace('/ +/', ' ', $filename);
 		/**
@@ -331,7 +322,8 @@ class ImportFreeImages extends SpecialPage {
 			$wgOut->showErrorPage( 'error', 'illegalfilename', array( wfEscapeWikiText( $filename ) ) );
 			return false;
 		}
-		$u->mSrcName = $filename;
+		$u = new UploadFromFile();
+		$u->initialize($filename, $tempname, $size, true);
 
 		if( $nt->getArticleID() > 0 ) {
 			$sk = $wgUser->getSkin();
@@ -345,8 +337,16 @@ class ImportFreeImages extends SpecialPage {
 			$wgOut->showPermissionsErrorPage( $nt->getUserPermissionsErrors( 'create', $wgUser ) );
 			return false;
 		} else {
-			$u->execute();
-			return true;
+			$status = $u->performUpload(wfMsg('importfreeimages_comment'), $caption, false, $wgUser);
+			if ( !$status->isGood() ) {
+				$form = new UploadForm();
+				$form->mUppload = $u;
+            	$form->uploadError( $wgOut->parse( $status->getWikiText() ) );
+			}
+        	// Success, redirect to description page
+        	wfRunHooks( 'SpecialUploadComplete', array( &$this ) );
+			$local = $u->getLocalFile();
+			$wgOut->redirect( $local->getTitle()->getFullURL() );
 		}
 	}
 

@@ -26,6 +26,7 @@ To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc
 	'importfreeimages_promptuserforfilename' => 'Please enter a destination filename:',
 	'importfreeimages_returntoform'   => 'Or, click <a href=\'$1\'>here</a> to return to your search results',
 	'importfreeimages_nophpflickr' => 'You have not installed phpFlickr, please set $wgIFphpFlickr in your LocalSettings.php.',
+	'importfreeimages_comment'	=> "Importing image from Flickr",
 );
 
 /** Message documentation (Message documentation)
