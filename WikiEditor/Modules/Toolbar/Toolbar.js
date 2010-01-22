@@ -1445,11 +1445,16 @@ mw.ready( function() {
 					// when the user presses Enter
 					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
 						if ( ( e.keyCode || e.which ) == 13 ) {
-							$j(this)
-								.find( 'button:first' )
-								.click();
+							var button = $j(this).data( 'dialogaction' ) || $j(this).find( 'button:first' );
+							button.click();
 							e.preventDefault();
 						}
+					});
+					
+					// Make tabbing to a button and pressing
+					// Enter do what people expect
+					$j(this).closest( '.ui-dialog' ).find( 'button' ).focus( function() {
+						$j(this).closest( '.ui-dialog' ).data( 'dialogaction', this );
 					});
 				}
 			}
@@ -1649,11 +1654,16 @@ mw.ready( function() {
 					// when the user presses Enter
 					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
 						if ( ( e.keyCode || e.which ) == 13 ) {
-							$j(this)
-								.find( 'button:first' )
-								.click();
+							var button = $j(this).data( 'dialogaction' ) || $j(this).find( 'button:first' );
+							button.click();
 							e.preventDefault();
 						}
+					});
+					
+					// Make tabbing to a button and pressing
+					// Enter do what people expect
+					$j(this).closest( '.ui-dialog' ).find( 'button' ).focus( function() {
+						$j(this).closest( '.ui-dialog' ).data( 'dialogaction', this );
 					});
 				}
 			}
