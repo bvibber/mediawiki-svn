@@ -1024,12 +1024,12 @@ mw.ready( function() {
 			<fieldset>\
 				<div class="wikieditor-toolbar-field-wrapper">\
 					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target"></label>\
-					<div id="wikieditor-toolbar-link-int-target-status" style="display: inline; float:right;"></div><br />\
+					<div id="wikieditor-toolbar-link-int-target-status" style="display: inline; float:right;"></div>\
 					<label rel="wikieditor-toolbar-tool-link-int-target-tooltip" class="wikieditor-toolbar-tool-tooltip"></label>\
 					<input type="text" id="wikieditor-toolbar-link-int-target" style="width: 100%;" />\
 				</div>\
 				<div class="wikieditor-toolbar-field-wrapper">\
-					<label for="wikieditor-toolbar-link-int-text" rel="wikieditor-toolbar-tool-link-int-text"></label><br />\
+					<label for="wikieditor-toolbar-link-int-text" rel="wikieditor-toolbar-tool-link-int-text"></label>\
 					<label rel="wikieditor-toolbar-tool-link-int-text-tooltip" class="wikieditor-toolbar-tool-tooltip"></label>\
 					<input type="text" id="wikieditor-toolbar-link-int-text" style="width: 100%;" />\
 				</div>\
@@ -1145,6 +1145,14 @@ mw.ready( function() {
 			});
 			// Setup the tooltips in the textboxes
 			$j( '#wikieditor-toolbar-link-int-target, #wikieditor-toolbar-link-int-text' )
+				.each( function() {
+					if ( $j( this ).val() == '' )
+						$j( this )
+							.val( $j( this ).prev( 'label' ).text() )
+							.addClass( 'wikieditor-toolbar-dialog-hint' )
+							.prev( 'label' )
+							.css( 'display', 'none' );
+				} )
 				.focus( function() {
 					if( $j( this ).val() == $j( this ).prev( 'label' ).text() )
 						$j( this ).val( '' )
@@ -1155,11 +1163,7 @@ mw.ready( function() {
 						$j( this )
 							.val( $j( this ).prev( 'label' ).text() )
 							.addClass( 'wikieditor-toolbar-dialog-hint' );
-				})
-				// FIXME: this is causing scroll to bottom on load
-				//.trigger( 'focus' )
-				.prev( 'label' )
-				.css( 'display', 'none' );
+				});
 			
 			// Automatically copy the value of the internal link page title field to the link text field unless the user
 			// has changed the link text field - this is a convenience thing since most link texts are going to be the
