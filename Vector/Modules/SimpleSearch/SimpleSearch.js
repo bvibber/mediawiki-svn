@@ -1,7 +1,8 @@
 /* JavaScript for SimpleSearch extension */
 
 // Disable mwsuggest.js on searchInput 
-if ( typeof os_autoload_inputs !== 'undefined' && os_autoload_forms !== 'undefined' ) {
+if ( wgVectorEnabledModules.simplesearch && skin == 'vector' && typeof os_autoload_inputs !== 'undefined' &&
+		os_autoload_forms !== 'undefined' ) {
 	os_autoload_inputs = [];
 	os_autoload_forms = [];
 }
