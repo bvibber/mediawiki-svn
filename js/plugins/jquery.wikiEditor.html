@@ -94,10 +94,10 @@
 			}
 			var context = window.parent.jQuery.wikiEditor.instances[get( 'instance' )].data( 'wikiEditor-context' );
 			$j( document )
-				.bind( 'keyup mouseup paste cut', function( event ) {
+				.bind( 'keyup mouseup paste cut encapsulateSelection', function( event ) {
 					context.fn.trigger( 'change', event );
 				} )
-				.delayedBind( 250, 'keyup mouseup paste cut', function( event ) {
+				.delayedBind( 250, 'keyup mouseup paste cut encapsulateSelection', function( event ) {
 					context.fn.trigger( 'delayedChange', event );
 				} );
 		} );
