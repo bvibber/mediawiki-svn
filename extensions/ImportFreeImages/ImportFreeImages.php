@@ -17,7 +17,7 @@ $wgIFI_FlickrAPIKey = ''; // the flickr API key. This is required for the extens
 $wgIFI_CreditsTemplate = 'flickr'; // use this to format the image content with some key parameters
 $wgIFI_GetOriginal = true; // import the original version of the photo
 $wgIFI_PromptForFilename = true;  // prompt the user through javascript for the destination filename
-$wgIFphpFlickr = 'phpFlickr-2.2.0/phpFlickr.php'; // Path to your phpFlickr file
+$wgIFI_phpFlickr = 'phpFlickr-2.2.0/phpFlickr.php'; // Path to your phpFlickr file
 
 $wgIFI_ResultsPerPage = 20;
 $wgIFI_ResultsPerRow = 4;
@@ -34,8 +34,8 @@ $wgIFI_ThumbType = 't'; // s for square t for thumbnail
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'ImportFreeImages',
-	'author' => 'Travis Derouin',
-	'version' => '1.1',
+	'author' => array( 'Travis Derouin', 'Bryan Tong Minh' ),
+	'version' => '2.0',
 	'description' => 'Provides a way of importing properly licensed photos from flickr.',
 	'descriptionmsg' => 'importfreeimages-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ImportFreeImages',
@@ -44,8 +44,15 @@ $wgExtensionCredits['specialpage'][] = array(
 // Set up the new special page
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['ImportFreeImages'] = $dir . 'ImportFreeImages.body.php';
+$wgAutoloadClasses['SpecialImportFreeImages'] = $dir . 'SpecialImportFreeImages.php';
+$wgAutoloadClasses['UploadFreeImage'] = $dir . 'UploadFreeImage.php';
 $wgExtensionMessagesFiles['ImportFreeImages'] = $dir . 'ImportFreeImages.i18n.php';
 $wgExtensionAliasesFiles['ImportFreeImages'] = $dir . 'ImportFreeImages.alias.php';
-$wgSpecialPages['ImportFreeImages'] = 'ImportFreeImages';
+
+$wgSpecialPages['ImportFreeImages'] = 'SpecialImportFreeImages';
 // Special page group for MW 1.13+
 $wgSpecialPageGroups['ImportFreeImages'] = 'media';
+
+
+$wgHooks['UploadCreateFromRequest'][] = 'UploadFreeImage::onUploadCreateFromRequest';
+$wgHooks['UploadFormSourceDescriptors'][] = 'UploadFreeImage::onUploadFormSourceDescriptors';

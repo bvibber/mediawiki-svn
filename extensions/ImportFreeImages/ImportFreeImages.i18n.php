@@ -27,6 +27,13 @@ To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc
 	'importfreeimages_returntoform'   => 'Or, click <a href=\'$1\'>here</a> to return to your search results',
 	'importfreeimages_nophpflickr' => 'You have not installed phpFlickr, please set $wgIFphpFlickr in your LocalSettings.php.',
 	'importfreeimages_comment'	=> "Importing image from Flickr",
+	
+	'importfreeimages_size_square' => 'Square',
+	'importfreeimages_size_thumbnail' => 'Thumbnail',
+	'importfreeimages_size_small' => 'Small',
+	'importfreeimages_size_medium' => 'Medium',
+	'importfreeimages_size_large' => 'Large',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** Message documentation (Message documentation)
