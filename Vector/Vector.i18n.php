@@ -127,6 +127,14 @@ $messages['eo'] = array(
 	'vector-desc' => 'Plibonigas la elementojn de la uzula interfaco de la Vector-etoso.',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'vector' => 'Mejoras de interfaz de usuario para Vector',
+	'vector-desc' => 'Mejora los elementos de la interfaz de usuario del aspecto Vector.',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
