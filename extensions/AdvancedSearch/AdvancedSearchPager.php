@@ -387,6 +387,7 @@ class AdvancedSearchPager
 	protected function getMatchString($arr)
 	{
 		$conds = array();
+		$searchEngine = SearchEngine::create();
 		foreach($arr as $a)
 		{
 			$subconds = array();
@@ -402,6 +403,7 @@ class AdvancedSearchPager
 				{
 					global $wgContLang;
 					$s = $wgContLang->stripForSearch($b);
+					$s = $searchEngine->normalizeText($s);
 					$s = $this->mDb->strencode($s);
 					# If $s contains spaces or ( ) :, quote it
 					if(strpos($s, ' ') !== false

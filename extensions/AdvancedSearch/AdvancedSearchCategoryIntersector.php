@@ -28,6 +28,8 @@ EOT;
  */
 class AdvancedSearchCategoryIntersector
 {
+	private static $searchEngine;
+
 	/**
 	 * Update the categorysearch table
 	 * @param $pageid int Page ID
@@ -37,6 +39,7 @@ class AdvancedSearchCategoryIntersector
 	{
 		global $wgContLang;
 		$ctext = $wgContLang->stripForSearch(implode(' ', $categories));
+		$ctext = self::getSearchEngine()->normalizeText($ctext);
 		$dbw = wfGetDb(DB_MASTER);
 		$dbw->replace('categorysearch', 'cs_page',
 			array('cs_page' => $pageid, 'cs_categories' => $ctext),
@@ -67,5 +70,12 @@ class AdvancedSearchCategoryIntersector
 	{
 		self::remove($article->getID());
 		return true;
+	}
+
+	static function getSearchEngine() {
+		if (!self::$searchEngine) {
+			self::$searchEngine = SearchEngine::create();
+		}
+		return self::$searchEngine;
 	}
 }
