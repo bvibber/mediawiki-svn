@@ -14,7 +14,11 @@ class CollapsibleTabsHooks {
 	 * intialize hook
 	 */
 	public static function initialize( $out ) {
-		global $wgCollapsibleTabsStyleVersion;
+		global $wgCollapsibleTabsStyleVersion, $wgUser;
+		// HACK: Don't include this JS on non-Vector skins, won't work anyway
+		if ( !$wgUser->getSkin() instanceof SkinVector ) {
+			return true;
+		}
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript(
 			'CollapsibleTabs/CollapsibleTabs.js', $wgCollapsibleTabsStyleVersion
