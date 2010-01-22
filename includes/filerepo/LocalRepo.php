@@ -198,5 +198,15 @@ class LocalRepo extends FSRepo {
 			$wgMemc->delete( $memcKey );
 		}
 	}
+	
+	/**
+	 * Return a place to temporary store files
+	 * 
+	 * @return UploadStash
+	 */
+	public function getStash() {
+		return new UploadStash( $this );
+	}
+	
 }
 

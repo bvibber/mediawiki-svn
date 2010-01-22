@@ -169,6 +169,7 @@ $wgUpdates = array(
 		// A field changed name mid-release cycle, so fix it for anyone using
 		// trunk
 		array( 'rename_eu_wiki_id' ),
+		array( 'add_table', 'upload_stash',                      'patch-upload_stash.sql' ),
 	),
 
 	'sqlite' => array(
@@ -197,6 +198,8 @@ $wgUpdates = array(
 
 		// version-independent searchindex setup, added in 1.16
 		array( 'sqlite_setup_searchindex' ),
+		
+		array( 'add_table', 'upload_stash',                      'patch-upload_stash.sql' ),
 	),
 );
 

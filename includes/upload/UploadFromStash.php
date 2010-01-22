@@ -9,40 +9,25 @@
  */
 
 class UploadFromStash extends UploadBase {
-	public static function isValidSessionKey( $key, $sessionData ) {
-		return !empty( $key ) &&
-			is_array( $sessionData ) &&
-			isset( $sessionData[$key] ) &&
-			isset( $sessionData[$key]['version'] ) &&
-			$sessionData[$key]['version'] == self::SESSION_VERSION;
-	}
-
 	public static function isValidRequest( $request ) {
-		$sessionData = $request->getSessionData( 'wsUploadData' );
-		return self::isValidSessionKey(
-			$request->getInt( 'wpSessionKey' ),
-			$sessionData
-		);
+		$stash = RepoGroup::singleton()->getLocalRepo()->getStash();
+		return (bool)$stash->getUpload( $request->getInt( 'wpSessionKey' ) );
 	}
-	/*
+	/**
 	 * some $na vars for uploadBase method compatibility.
 	 */
-	public function initialize( $name, $sessionData, $na=false, $na2=false ) {
-			/**
-			 * Confirming a temporarily stashed upload.
-			 * We don't want path names to be forged, so we keep
-			 * them in the session on the server and just give
-			 * an opaque key to the user agent.
-			 */
+	public function initialize( $name, $id, $na=false, $na2=false ) {
+		$this->mStash = RepoGroup::singleton()->getLocalRepo()->getStash();
+		$this->mTemporaryUpload = $this->mStash->getUpload( $id );
+		$data = $this->mTemporaryUpload->getData();
 
-			parent::initialize( $name,
-				$this->getRealPath ( $sessionData['mTempPath'] ),
-				$sessionData['mFileSize'],
-				false
-			);
+		parent::initialize( $name,
+			$this->mTemporaryUpload->getRealPath(),
+			$data['size'],
+			/* $removeTempFile */ false
+		);
 
-			$this->mVirtualTempPath = $sessionData['mTempPath'];
-			$this->mFileProps = $sessionData['mFileProps'];
+		$this->mFileProps = $data['props'];
 	}
 
 	public function initializeFromRequest( &$request ) {
@@ -52,7 +37,7 @@ class UploadFromStash extends UploadBase {
 		$desiredDestName = $request->getText( 'wpDestFile' );
 		if( !$desiredDestName )
 			$desiredDestName = $request->getText( 'wpUploadFile' );
-		return $this->initialize( $desiredDestName, $sessionData[$this->mSessionKey], false );
+		return $this->initialize( $desiredDestName, $this->mSessionKey, false );
 	}
 
 	/**
@@ -77,8 +62,7 @@ class UploadFromStash extends UploadBase {
 	 * @return success
 	 */
 	public function unsaveUploadedFile() {
-		$repo = RepoGroup::singleton()->getLocalRepo();
-		$success = $repo->freeTemp( $this->mVirtualTempPath );
+		$success = $this->mStash->freeUpload( $this->mTemporaryUpload );
 		return $success;
 	}
 

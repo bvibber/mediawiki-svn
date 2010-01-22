@@ -414,7 +414,9 @@ $wgAutoloadLocalClasses = array(
 	'LocalRepo' => 'includes/filerepo/LocalRepo.php',
 	'OldLocalFile' => 'includes/filerepo/OldLocalFile.php',
 	'RepoGroup' => 'includes/filerepo/RepoGroup.php',
+	'TemporaryUpload' => 'includes/filerepo/TemporaryUpload.php',
 	'UnregisteredLocalFile' => 'includes/filerepo/UnregisteredLocalFile.php',
+	'UploadStash' => 'includes/filerepo/UploadStash.php',
 
 	# includes/media
 	'BitmapHandler' => 'includes/media/Bitmap.php',

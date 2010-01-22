@@ -1350,4 +1350,19 @@ CREATE TABLE /*_*/l10n_cache (
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/lc_lang_key ON /*_*/l10n_cache (lc_lang, lc_key);
 
+CREATE TABLE /*_*/upload_stash (
+	-- Numeric id
+	us_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	-- User this upload belongs to
+	us_user int NOT NULL,
+	-- Timestamp this was uploaded
+	us_timestamp binary(14) NOT NULL default '19700101000000',
+	-- Timestamp of expiry
+	us_expiry binary(14) NOT NULL default '19700101000000',
+	-- Virtual path of the file
+	us_path varbinary(255) NOT NULL,
+	-- Other data stored as serialized PHP blob
+	us_data mediumblob NOT NULL
+) /*$wgDBTableOptions*/;
+
 -- vim: sw=2 sts=2 et

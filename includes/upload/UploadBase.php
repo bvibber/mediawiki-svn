@@ -452,24 +452,6 @@ abstract class UploadBase {
 	}
 
 	/**
-	 * Stash a file in a temporary directory for later processing
-	 * after the user has confirmed it.
-	 *
-	 * If the user doesn't explicitly cancel or accept, these files
-	 * can accumulate in the temp directory.
-	 *
-	 * @param string $saveName - the destination filename
-	 * @param string $tempSrc - the source temporary file to save
-	 * @return string - full path the stashed file, or false on failure
-	 * @access private
-	 */
-	protected function saveTempUploadedFile( $saveName, $tempSrc ) {
-		$repo = RepoGroup::singleton()->getLocalRepo();
-		$status = $repo->storeTemp( $saveName, $tempSrc );
-		return $status;
-	}
-
-	/**
 	 * Stash a file in a temporary directory for later processing,
 	 * and save the necessary descriptive info into the session.
 	 * Returns a key value which will be passed through a form
@@ -478,30 +460,20 @@ abstract class UploadBase {
 	 * @return int Session key
 	 */
 	public function stashSession() {
-		$status = $this->saveTempUploadedFile( $this->mDestName, $this->mTempPath );
-		if( !$status->isOK() ) {
-			# Couldn't save the file.
+		$stash = RepoGroup::singleton()->getLocalRepo()->getStash();
+		
+		global $wgUser, $wgTemporaryUploadExpiry;
+		
+		$upload = $stash->saveFile( $wgUser, time() + $wgTemporaryUploadExpiry,
+			$this->mDestName, $this->mTempPath, array(
+				'size' => $this->mFileSize,
+				'props' => $this->mFileProps,
+			) );
+		
+		if ( !$upload )
 			return false;
-		}
-		if(!isset($_SESSION))
-			session_start(); // start up the session (might have been previously closed to prevent php session locking)
-		$key = $this->getSessionKey();
-		$_SESSION['wsUploadData'][$key] = array(
-			'mTempPath'       => $status->value,
-			'mFileSize'       => $this->mFileSize,
-			'mFileProps'      => $this->mFileProps,
-			'version'         => self::SESSION_VERSION,
-		);
-		return $key;
-	}
-
-	/**
-	 * Generate a random session key from stash in cases where we want to start an upload without much information
-	 */
-	protected function getSessionKey(){
-		$key = mt_rand( 0, 0x7fffffff );
-		$_SESSION['wsUploadData'][$key] = array();
-		return $key;
+		
+		return $upload->getId();
 	}
 
 
