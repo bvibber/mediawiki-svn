@@ -485,6 +485,13 @@ $messages['oc'] = array(
 	'vector-simplesearch-containing' => 'que conten...',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'vector-simplesearch-search' => 'Uffgucke',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Sp5uhe

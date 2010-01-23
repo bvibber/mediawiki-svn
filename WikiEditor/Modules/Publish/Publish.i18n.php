@@ -560,6 +560,7 @@ $messages['ka'] = array(
 $messages['ko'] = array(
 	'wikieditor-publish-button-cancel' => '취소',
 	'wikieditor-publish-dialog-minor' => '사소한 편집',
+	'wikieditor-publish-dialog-watch' => '이 문서 주시하기',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -672,6 +673,13 @@ $messages['oc'] = array(
 	'wikieditor-publish-dialog-watch' => 'Seguir aquesta pagina',
 	'wikieditor-publish-dialog-publish' => 'Publicar',
 	'wikieditor-publish-dialog-goback' => 'Retorn',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'wikieditor-publish-dialog-minor' => 'Nur Gleenigkeete sinn gennert',
 );
 
 /** Polish (Polski)
