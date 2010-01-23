@@ -917,6 +917,8 @@ class SpecialRecordAdmin extends SpecialPage {
 		$name     = 'wpSelect';
 		$invert   = false;
 		$orderby  = 'created desc';
+		$groupby  = false;
+		$format   = false;
 		$cols     = false;
 		$sortable = true;
 		$template = false;
