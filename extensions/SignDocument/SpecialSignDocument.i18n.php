@@ -3317,6 +3317,7 @@ $messages['os'] = array(
 $messages['pdc'] = array(
 	'sign-realname' => 'Naame:',
 	'sign-viewfield-realname' => 'Naame',
+	'sign-viewfield-address' => 'Adress',
 	'sign-viewfield-reviewcomment' => 'Anmaerricking',
 	'sign-review-comment' => 'Anmaerricking',
 );

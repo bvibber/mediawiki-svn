@@ -2252,6 +2252,7 @@ $messages['pa'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'regexblock-form-username' => 'IP-Adress odder Yuusernaame:',
 	'regexblock-form-reason' => 'Grund:',
 );
 

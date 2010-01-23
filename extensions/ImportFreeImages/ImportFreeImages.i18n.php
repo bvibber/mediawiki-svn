@@ -669,21 +669,19 @@ Per farlo richiedi una chiave API [http://www.flickr.com/services/api/misc.api_k
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'importfreeimages' => 'フリーの画像をインポート',
 	'importfreeimages-desc' => '[http://www.flickr.com Flickr] から[[Special:ImportFreeImages|適切にライセンスされた写真をインポートする]]手段を提供する',
 	'importfreeimages_description' => 'このページを使うと、Flickr で適切にライセンスされた画像を検索し、あなたのウィキにインポートすることができます。',
-	'importfreeimages_noapikey' => 'あなたの Flickr APIキーが設定されていません。[http://www.flickr.com/services/api/misc.api_keys.html こちら]でAPIキーを取得して、ImportFreeImages.php 内で $wgFlickrAPIKey  に設定してください。',
 	'importfreeimages_nophotosfound' => '検索条件「$1」に適う写真は見つかりませんでした。もう一度試してください。',
-	'importfreeimages_invalidurl' => 'URL "$1" は有効な Flickr 画像ではありません。',
 	'importfreeimages_owner' => '著者',
 	'importfreeimages_importthis' => 'これをインポート',
 	'importfreeimages_next' => '次の$1件',
-	'importfreeimages_filefromflickr' => 'Flickr の利用者 <b>[$2]</b> による $1。元のURL',
-	'importfreeimages_promptuserforfilename' => '変更先ファイル名を入力してください:',
-	'importfreeimages_returntoform' => "もしくは、<a href='$1'>ここ</a>をクリックして検索結果に戻ります",
-	'importfreeimages_nophpflickr' => 'phpFlickrがインストールされていません。LocalSettings.php 内の $wgIFphpFlickr を設定してください。',
+	'importfreeimages_size_square' => '四角',
+	'importfreeimages_size_small' => '小さい',
+	'importfreeimages_size_original' => 'オリジナル',
 );
 
 /** Javanese (Basa Jawa)

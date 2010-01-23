@@ -785,7 +785,7 @@ $messages['gl'] = array(
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => 'Non existe ningún $1',
+	'recordadmin-notset' => 'Non existe ningún "$1"',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

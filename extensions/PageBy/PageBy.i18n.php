@@ -675,6 +675,15 @@ $messages['ug-arab'] = array(
 	'pageby-anon' => '<i>ئاتسىز</i>',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'pageby-first' => 'Сторінка створена $1 $2',
+	'pageby-last' => 'Востаннє <a href="$3">змінювалась</a> $1 $2',
+	'pageby-contributors' => 'Автори:',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

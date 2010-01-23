@@ -472,6 +472,13 @@ $messages['oc'] = array(
 	'multiboilerplate-special-define-in-interface' => 'Los modèls son definits dins [[MediaWiki:Multiboilerplate]].',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'multiboilerplate-submit' => 'Laade',
+);
+
 /** Polish (Polski)
  * @author Maikking
  */

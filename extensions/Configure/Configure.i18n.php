@@ -7244,6 +7244,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'configure-form-reason' => 'Grund:',
 	'configure-js-remove' => 'Lösche',
 	'configure-section-category' => 'Abdeelinge',
 	'configure-section-upload' => 'Ufflaade',

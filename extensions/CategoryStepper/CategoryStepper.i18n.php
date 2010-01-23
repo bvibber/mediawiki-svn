@@ -456,6 +456,14 @@ $messages['oc'] = array(
 	'categorystepper-start' => '(Començament de categoria)',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'categorystepper-end' => '(End vun de Abdeeling)',
+	'categorystepper-start' => '(Aafang vun de Abdeeling)',
+);
+
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe

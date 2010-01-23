@@ -1312,6 +1312,13 @@ $messages['oc'] = array(
 	'right-closewikis' => 'Wikis clauses',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'closewikis-page-reopen-reason' => 'Grund:',
+);
+
 /** Polish (Polski)
  * @author Jwitos
  * @author Maikking

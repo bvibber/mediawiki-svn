@@ -442,9 +442,11 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'protectsection_desc' => 'Lèt godkjende brukarar verna delar av ei sida ved å bruka merket <tt>&lt;protect&gt;</tt>',
-	'protectsection_add_remove' => 'Du prøvde å leggja til eller fjerna eit verna avsnitt',
+	'protectsection_add_remove' => 'Du prøvde å leggja til eller fjerna ein verna bolk',
 	'protectsection_modify' => 'Du prøvde å endra verna tekst',
+	'protectsection_add_above' => 'Du prøvde å setja inn tekst føre ein verna bolk',
 	'protectsection_forbidden' => 'Forbode',
+	'right-protectsection' => 'Verna bolkar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

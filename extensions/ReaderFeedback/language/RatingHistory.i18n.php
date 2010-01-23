@@ -1544,6 +1544,7 @@ Las notacions son las seguentas :
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'ratinghistory-month' => 'letscht Munet',
 	'ratinghistory-3months' => 'letscht 3 Munede',
 	'ratinghistory-year' => 'letscht Yaahr',
 	'ratinghistory-3years' => 'letscht 3 Yaahre',

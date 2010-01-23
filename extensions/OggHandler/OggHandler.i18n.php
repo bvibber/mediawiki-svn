@@ -1655,6 +1655,7 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 $messages['ka'] = array(
 	'ogg-short-video' => 'Ogg $1 ვიდეო ფაილი, $2',
 	'ogg-player-soundthumb' => 'No player',
+	'ogg-player-selected' => '(არჩეულია)',
 	'ogg-more' => 'მეტი...',
 	'ogg-dismiss' => 'დახურვა',
 	'ogg-download' => 'ფაილის ჩამოტვირთვა',

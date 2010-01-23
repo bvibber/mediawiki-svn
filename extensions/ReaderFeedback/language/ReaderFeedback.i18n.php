@@ -1349,6 +1349,9 @@ $messages['ko'] = array(
 	'readerfeedback-submitting' => '제출하는 중...',
 	'readerfeedback-finished' => '감사합니다!',
 	'readerfeedback-tagfilter' => '태그:',
+	'readerfeedback-tier-high' => '높음',
+	'readerfeedback-tier-medium' => '보통',
+	'readerfeedback-tier-poor' => '낮음',
 	'tooltip-ca-ratinghist' => '이 문서에 대한 평가',
 	'specialpages-group-feedback' => '독자 의견',
 );
@@ -2397,6 +2400,7 @@ $messages['vi'] = array(
 	'readerfeedback-tier-poor' => 'Kém',
 	'tooltip-ca-ratinghist' => 'Các đánh giá của độc giả về trang này',
 	'specialpages-group-feedback' => 'Ý kiến của người xem',
+	'readerfeedback-tt-review' => 'Đăng bản duyệt',
 );
 
 /** Volapük (Volapük)
