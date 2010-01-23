@@ -51,13 +51,13 @@ class UsabilityInitiativeHooks {
 		// Code to include when js2 is not present
 		'no_js2' => array(
 			'raw' => array(
-				array( 'src' => '../../js2/js2stopgap.js' )
+				array( 'src' => '/js2/js2stopgap.js' )
 			),
 			'combined' => array(
-				array( 'src' => '../../js2/js2stopgap.js' )
+				array( 'src' => '/js2/js2stopgap.js' )
 			),
 			'minified' => array(
-				array( 	'src' => '../../js2/js2stopgap.min.js' )
+				array( 	'src' => '/js2/js2stopgap.min.js' )
 			),
 		),
 		// Core functionality of extension
@@ -250,7 +250,14 @@ class UsabilityInitiativeHooks {
 		foreach ( self::$scripts as $script ) {
 			if ( !version_compare( floatval( $wgVersion ), '1.17', '>=') ) {
 				// Add javascript to document
-				$src = "$wgExtensionAssetsPath/UsabilityInitiative/{$script['src']}";
+				if ( $script['src']{0} == '/' ) {
+					// Path is relative to $wgScriptPath
+					global $wgScriptPath;
+					$src = "$wgScriptPath{$script['src']}";
+				} else {
+					// Path is relative to $wgExtensionAssetsPath
+					$src = "$wgExtensionAssetsPath/UsabilityInitiative/{$script['src']}";
+				}
 				$version = isset( $script['version'] ) ? $script['version'] : $wgStyleVersion;
 				$out->addScriptFile( $src, $version );
 				continue ;
@@ -263,7 +270,7 @@ class UsabilityInitiativeHooks {
 
 		// Transforms messages into javascript object members
 		// ( only not handled automatically )
-		if ( version_compare( $wgVersion, '1.17', '<') ) {
+		if ( version_compare( $wgVersion, '1.17', '<' ) ) {
 			foreach ( self::$messages as $i => $message ) {
 				$escapedMessageValue = Xml::escapeJsString( wfMsg( $message ) );
 				$escapedMessageKey = Xml::escapeJsString( $message );
