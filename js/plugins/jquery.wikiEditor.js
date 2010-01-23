@@ -491,7 +491,7 @@ if ( typeof context == 'undefined' ) {
 				);
 			}
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
-			context.$content.trigger(
+			$( context.$iframe[0].contentWindow.document ).trigger(
 				'encapsulateSelection', [ pre, options.peri, post, options.ownline, options.replace ]
 			);
 			return context.$textarea;
@@ -586,7 +586,7 @@ if ( typeof context == 'undefined' ) {
 			if ( typeof selector == 'undefined' ) {
 				selector = '*';
 			}
-			var e;
+			var e, offset;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var selection = context.$iframe[0].contentWindow.getSelection();
@@ -595,21 +595,52 @@ if ( typeof context == 'undefined' ) {
 					// Start at the selection's start and traverse the DOM backwards
 					// This is done by traversing an element's children first, then the element itself, then its parent
 					e = selection.getRangeAt( 0 ).startContainer;
+					offset = selection.startOffset;
 				} else {
 					return $( [] );
 				}
 			} else if ( context.$iframe[0].contentWindow.document.selection ) {
 				// IE
-				// TODO
-				return $( [] );
+				// Because there's nothing like range.startContainer in IE, we need to do a DOM traversal
+				// to find the element the start of the selection is in
+				var range = context.$iframe[0].contentWindow.document.selection.createRange();
+				// Set range2 to the text before the selection
+				var range2 = context.$iframe[0].contentWindow.document.body.createTextRange();
+				// For some reason this call throws errors in certain cases, e.g. when the selection is
+				// not in the iframe
+				try {
+					range2.setEndPoint( 'EndToStart', range );
+				} catch ( e ) {
+					return $( [] );
+				}
+				var seekPos = range2.text.length;
+				
+				var t = context.fn.traverser( context.$content );
+				var pos = 0;
+				while ( t.node ) {
+					if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
+						t.goNext();
+						continue;
+					}
+					var newPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
+					if ( pos <= seekPos && seekPos < newPos ) {
+						break;
+					} else {
+						pos = newPos;
+						t.goNext();
+					}
+				}
+				e = t.node;
+				offset = seekPos - pos;
+				if ( !e )
+					return $( [] );
 			}
 			if ( e.nodeName != '#text' ) {
 				// The selection is not in a textnode, but between two non-text nodes
 				// (usually inside the <body> between two <br>s). Go to the rightmost
 				// child of the node just before the selection
 				var newE = e.firstChild;
-				for ( var i = 0; i < selection.startOffset - 1 && newE; i++ ) {
-					console.log( i );
+				for ( var i = 0; i < offset - 1 && newE; i++ ) {
 					newE = newE.nextSibling;
 				}
 				while ( newE && newE.lastChild ) {
@@ -628,6 +659,60 @@ if ( typeof context == 'undefined' ) {
 				strict = false;
 			}
 			return $( [] );
+		},
+		/**
+		 * Get an object used to traverse the leaf nodes in the iframe DOM. This traversal skips leaf nodes
+		 * inside an element with the wikiEditor-noinclude class.
+		 *
+		 * Usage:
+		 * var t = context.fn.traverser( context.$content );
+		 * // t.node is the first textnode, t.depth is its depth
+		 * t.goNext();
+		 * // t.node is the second textnode, t.depth is its depth
+		 * // Trying to advance past the end will set t.node to null
+		 */
+		'traverser': function( start ) {
+			function Traverser( start ) {
+				this.goNext = function() {
+					var p = this.node;
+					nextDepth = this.depth;
+					while ( p && !p.nextSibling ) {
+						p = p.parentNode;
+						nextDepth--;
+						if ( this.depth == 0 ) {
+							// We're back at the start node
+							p = null;
+						}
+					}
+					p = p ? p.nextSibling : null;
+					do {
+						// Filter nodes with the wikiEditor-noinclude class
+						while ( p && $( p ).hasClass( 'wikiEditor-noinclude' ) ) {
+							p = p.nextSibling;
+						}
+						if ( p && p.firstChild ) {
+							p = p.firstChild;
+							nextDepth++;
+						}
+					} while ( p && p.firstChild );
+					this.node = p;
+					this.depth = nextDepth;
+				}
+				// Find the leftmost leaf node in the tree
+				this.node = start.jquery ? start.get( 0 ) : start;
+				this.depth = 0;
+				do {
+					// Filter nodes with the wikiEditor-noinclude class
+					while ( this.node && $( this.node ).hasClass( 'wikiEditor-noinclude' ) ) {
+						this.node = this.node.nextSibling;
+					}
+					if ( this.node && this.node.firstChild ) {
+						this.node = this.node.firstChild;
+						this.depth++;
+					}
+				} while ( this.node && this.node.firstChild );
+			}
+			return new Traverser( start );
 		}
 		
 		/*

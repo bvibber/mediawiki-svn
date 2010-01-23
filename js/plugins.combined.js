@@ -6972,7 +6972,7 @@ if ( typeof context == 'undefined' ) {
 				);
 			}
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
-			context.$content.trigger(
+			$( context.$iframe[0].contentWindow.document ).trigger(
 				'encapsulateSelection', [ pre, options.peri, post, options.ownline, options.replace ]
 			);
 			return context.$textarea;
@@ -7067,7 +7067,7 @@ if ( typeof context == 'undefined' ) {
 			if ( typeof selector == 'undefined' ) {
 				selector = '*';
 			}
-			var e;
+			var e, offset;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var selection = context.$iframe[0].contentWindow.getSelection();
@@ -7076,21 +7076,52 @@ if ( typeof context == 'undefined' ) {
 					// Start at the selection's start and traverse the DOM backwards
 					// This is done by traversing an element's children first, then the element itself, then its parent
 					e = selection.getRangeAt( 0 ).startContainer;
+					offset = selection.startOffset;
 				} else {
 					return $( [] );
 				}
 			} else if ( context.$iframe[0].contentWindow.document.selection ) {
 				// IE
-				// TODO
-				return $( [] );
+				// Because there's nothing like range.startContainer in IE, we need to do a DOM traversal
+				// to find the element the start of the selection is in
+				var range = context.$iframe[0].contentWindow.document.selection.createRange();
+				// Set range2 to the text before the selection
+				var range2 = context.$iframe[0].contentWindow.document.body.createTextRange();
+				// For some reason this call throws errors in certain cases, e.g. when the selection is
+				// not in the iframe
+				try {
+					range2.setEndPoint( 'EndToStart', range );
+				} catch ( e ) {
+					return $( [] );
+				}
+				var seekPos = range2.text.length;
+				
+				var t = context.fn.traverser( context.$content );
+				var pos = 0;
+				while ( t.node ) {
+					if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
+						t.goNext();
+						continue;
+					}
+					var newPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
+					if ( pos <= seekPos && seekPos < newPos ) {
+						break;
+					} else {
+						pos = newPos;
+						t.goNext();
+					}
+				}
+				e = t.node;
+				offset = seekPos - pos;
+				if ( !e )
+					return $( [] );
 			}
 			if ( e.nodeName != '#text' ) {
 				// The selection is not in a textnode, but between two non-text nodes
 				// (usually inside the <body> between two <br>s). Go to the rightmost
 				// child of the node just before the selection
 				var newE = e.firstChild;
-				for ( var i = 0; i < selection.startOffset - 1 && newE; i++ ) {
-					console.log( i );
+				for ( var i = 0; i < offset - 1 && newE; i++ ) {
 					newE = newE.nextSibling;
 				}
 				while ( newE && newE.lastChild ) {
@@ -7109,6 +7140,60 @@ if ( typeof context == 'undefined' ) {
 				strict = false;
 			}
 			return $( [] );
+		},
+		/**
+		 * Get an object used to traverse the leaf nodes in the iframe DOM. This traversal skips leaf nodes
+		 * inside an element with the wikiEditor-noinclude class.
+		 *
+		 * Usage:
+		 * var t = context.fn.traverser( context.$content );
+		 * // t.node is the first textnode, t.depth is its depth
+		 * t.goNext();
+		 * // t.node is the second textnode, t.depth is its depth
+		 * // Trying to advance past the end will set t.node to null
+		 */
+		'traverser': function( start ) {
+			function Traverser( start ) {
+				this.goNext = function() {
+					var p = this.node;
+					nextDepth = this.depth;
+					while ( p && !p.nextSibling ) {
+						p = p.parentNode;
+						nextDepth--;
+						if ( this.depth == 0 ) {
+							// We're back at the start node
+							p = null;
+						}
+					}
+					p = p ? p.nextSibling : null;
+					do {
+						// Filter nodes with the wikiEditor-noinclude class
+						while ( p && $( p ).hasClass( 'wikiEditor-noinclude' ) ) {
+							p = p.nextSibling;
+						}
+						if ( p && p.firstChild ) {
+							p = p.firstChild;
+							nextDepth++;
+						}
+					} while ( p && p.firstChild );
+					this.node = p;
+					this.depth = nextDepth;
+				}
+				// Find the leftmost leaf node in the tree
+				this.node = start.jquery ? start.get( 0 ) : start;
+				this.depth = 0;
+				do {
+					// Filter nodes with the wikiEditor-noinclude class
+					while ( this.node && $( this.node ).hasClass( 'wikiEditor-noinclude' ) ) {
+						this.node = this.node.nextSibling;
+					}
+					if ( this.node && this.node.firstChild ) {
+						this.node = this.node.firstChild;
+						this.depth++;
+					}
+				} while ( this.node && this.node.firstChild );
+			}
+			return new Traverser( start );
 		}
 		
 		/*
@@ -7554,94 +7639,62 @@ fn: {
 		context.fn.trigger( 'mark' );
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
 		
-		// Traverse the iframe DOM, inserting markers where they're needed. The loop traverses all leaf nodes in the
-		// DOM, and uses DOM methods rather than jQuery because it has to work with text nodes and for performance.
+		// Traverse the iframe DOM, inserting markers where they're needed.
 		var pos = 0;
-		var node = context.$content.get( 0 );
-		var next = null;
+		var t = context.fn.traverser( context.$content );
 		var i = 0; // index for markers[]
 		var startNode = null;
-		var depth = 0, nextDepth = 0, startDepth = null;
+		var nextDepth = 0, startDepth = null;
 		var lastTextNode = null, lastTextNodeDepth = null;
-		// Find the leftmost leaf node in the tree
-		while ( node.firstChild ) {
-			node = node.firstChild;
-			depth++;
-			// Filter nodes with the wikiEditor-noinclude class
-			while ( node && $( node ).hasClass( 'wikiEditor-noinclude' ) ) {
-				node = node.nextSibling;
-			}
-		}
-		while ( i < markers.length && node ) {
-			// Find the next leaf node
-			var p = node;
-			nextDepth = depth;
-			while ( p && !p.nextSibling ) {
-				p = p.parentNode;
-				nextDepth--;
-			}
-			// Filter nodes with the wikiEditor-noinclude class
-			p = p ? p.nextSibling : null;
-			do {
-				while ( p && $( p ).hasClass( 'wikiEditor-noinclude' ) ) {
-					p = p.nextSibling;
-				}
-				if ( p && p.firstChild ) {
-					p = p.firstChild;
-					nextDepth++;
-				}
-			} while ( p && ( $( p ).hasClass( 'wikiEditor-noinclude' ) || p.firstChild ) );
-			
-			next = p;
-			if ( node.nodeName != '#text' && node.nodeName != 'BR' ) {
+		while ( i < markers.length && t.node ) {
+			if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
 				// Skip this node
-				node = next;
-				depth = nextDepth;
+				t.goNext();
 				continue;
 			}
-			var newPos = node.nodeName == '#text' ? pos + node.nodeValue.length : pos + 1;
-			if ( node.nodeName == '#text' ) {
-				lastTextNode = node;
-				lastTextNodeDepth = depth;
+			var newPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
+			if ( t.node.nodeName == '#text' ) {
+				lastTextNode = t.node;
+				lastTextNodeDepth = t.depth;
 			}
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or end halfway one.
 			if ( !startNode && markers[i].start >= pos && markers[i].start < newPos ) {
 				// The next marker starts somewhere in this textNode or at this BR
 				if ( markers[i].start > pos ) {
-					// node must be a textnode at this point because
+					// t.node must be a textnode at this point because
 					// start > pos and start < pos+1 can't both be true
 					
 					// Split off the prefix
 					// This leaves the prefix in the current node and puts
 					// the rest in a new node, which we immediately advance to
-					node = node.splitText( markers[i].start - pos );
+					t.node = t.node.splitText( markers[i].start - pos );
 					pos = markers[i].start;
 				}
-				startNode = node;
-				startDepth = depth;
+				startNode = t.node;
+				startDepth = t.depth;
 			}
 			// Don't wrap BRs, produces undesirable results
 			if ( startNode && startNode.nodeName == 'BR' ) {
-				startNode = node;
-				startDepth = depth;
+				startNode = t.node;
+				startDepth = t.depth;
 			}
 			// TODO: What happens when wrapping a zero-length string?
 			if ( startNode && markers[i].end > pos && markers[i].end <= newPos ) {
 				// The marker ends somewhere in this textNode or at this BR
 				if ( markers[i].end < newPos ) {
-					// node must be a textnode at this point because
+					// t.node must be a textnode at this point because
 					// end > pos and end < pos+1 can't both be true
 					
 					// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
-					// node. We have to make sure the split-off node will be visited correctly
-					// node.nodeValue.length - ( newPos - markers[i].end )
-					next = node.splitText( node.nodeValue.length - newPos + markers[i].end );
+					// node.
+					// t.node.nodeValue.length - ( newPos - markers[i].end )
+					t.node.splitText( t.node.nodeValue.length - newPos + markers[i].end );
 					newPos = markers[i].end;
 				}
 				
 				// Don't wrap leading or trailing BRs, doing that causes weird issues
-				var endNode = node, endDepth = depth;
+				var endNode = t.node, endDepth = t.depth;
 				if ( endNode.nodeName == 'BR' ) {
 					endNode = lastTextNode;
 					endDepth = lastTextNodeDepth;
@@ -7653,7 +7706,7 @@ fn: {
 				// rightmost leaves in the subtrees rooted at ca1 and ca2 respectively; if this is not the case, we
 				// can't cleanly wrap things without misnesting and we silently fail.
 				var ca1 = startNode, ca2 = endNode;
-				// Correct for startNode and node possibly not having the same depth
+				// Correct for startNode and endNode possibly not having the same depth
 				if ( startDepth > endDepth ) {
 					for ( var j = 0; j < startDepth - endDepth && ca1; j++ ) {
 						ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
@@ -7722,8 +7775,7 @@ fn: {
 				i++;
 			}
 			pos = newPos;
-			node = next;
-			depth = nextDepth;
+			t.goNext();
 		}
 		
 		// Remove markers that were previously inserted but weren't passed to this function
