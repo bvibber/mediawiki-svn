@@ -1106,12 +1106,10 @@ mw.ready( function() {
 				<div class="wikieditor-toolbar-field-wrapper">\
 					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target"></label>\
 					<div id="wikieditor-toolbar-link-int-target-status" style="display: inline; float:right;"></div>\
-					<label rel="wikieditor-toolbar-tool-link-int-target-tooltip" class="wikieditor-toolbar-tool-tooltip"></label>\
 					<input type="text" id="wikieditor-toolbar-link-int-target" style="width: 100%;" />\
 				</div>\
 				<div class="wikieditor-toolbar-field-wrapper">\
 					<label for="wikieditor-toolbar-link-int-text" rel="wikieditor-toolbar-tool-link-int-text"></label>\
-					<label rel="wikieditor-toolbar-tool-link-int-text-tooltip" class="wikieditor-toolbar-tool-tooltip"></label>\
 					<input type="text" id="wikieditor-toolbar-link-int-text" style="width: 100%;" />\
 				</div>\
 				<div class="wikieditor-toolbar-field-wrapper">\
@@ -1225,24 +1223,27 @@ mw.ready( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
 			// Setup the tooltips in the textboxes
+			$j( '#wikieditor-toolbar-link-int-target' )
+				.data( 'tooltip', gM( 'wikieditor-toolbar-tool-link-int-target-tooltip' ) );
+			$j( '#wikieditor-toolbar-link-int-text' )
+				.data( 'tooltip', gM( 'wikieditor-toolbar-tool-link-int-text-tooltip' ) );
 			$j( '#wikieditor-toolbar-link-int-target, #wikieditor-toolbar-link-int-text' )
 				.each( function() {
+					var tooltip = gM( $j( this ).attr( 'id' ) + '-tooltip' );
 					if ( $j( this ).val() == '' )
 						$j( this )
-							.val( $j( this ).prev( 'label' ).text() )
-							.addClass( 'wikieditor-toolbar-dialog-hint' )
-							.prev( 'label' )
-							.css( 'display', 'none' );
+							.val( $j( this ).data( 'tooltip' ) )
+							.addClass( 'wikieditor-toolbar-dialog-hint' );
 				} )
 				.focus( function() {
 					$j( this ).removeClass( 'wikieditor-toolbar-dialog-hint' );
-					if( $j( this ).val() == $j( this ).prev( 'label' ).text() )
+					if( $j( this ).val() == $j( this ).data( 'tooltip' ) )
 						$j( this ).val( '' );
 				})
 				.bind( 'blur change', function() {
 					if ( $j( this ).val() == '' )
 						$j( this )
-							.val( $j( this ).prev( 'label' ).text() )
+							.val( $j( this ).data( 'tooltip' ) )
 							.addClass( 'wikieditor-toolbar-dialog-hint' );
 					else
 						$j( this ).removeClass( 'wikieditor-toolbar-dialog-hint' );
