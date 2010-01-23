@@ -57,9 +57,9 @@ function getSuggestions() {
 	@$offset = $_GET['offset'];
 	@$attributesLevel = $_GET['attributesLevel'];
 	@$annotationAttributeId = $_GET['annotationAttributeId'];
-		 
+
 	$sql = '';
-	
+
 	$dbr =& wfGetDB( DB_SLAVE );
 	$rowText = 'spelling';
 	switch ( $query ) {
@@ -127,15 +127,15 @@ function getSuggestions() {
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "%$search%" );
 		else if ( $query == 'class' )
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "$search%" );
-		else if ( $query == 'language' )
-			$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes( "$search%" );
-		else if ( $query == 'relation-type' or
+		else if ( $query == 'language' or
+			$query == "$wgDefinedMeaningAttributes" or // should be 'relation-type' in html, there is a bug I cannot find
+			$query == "$wgLinkAttribute" or
 			$query == "$wgOptionAttribute" or
 			$query == 'translated-text-attribute' or
-			$query == 'text-attribute' or
-			$query == "$wgLinkAttribute" or
-			$query == 'collection' or
-			$query == $wgDefinedMeaningAttributes )
+			$query == 'text-attribute' )
+			$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes( "$search%" );
+		else if ( $query == 'relation-type' or // not sure in which case 'relation-type' happens...
+			$query == 'collection' )
 			$searchCondition = " WHERE $rowText LIKE " . $dbr->addQuotes( "$search%" );
 		else
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "$search%" );
@@ -254,8 +254,8 @@ function constructSQLWithFallback( $actual_query, $fallback_query, $fields ) {
 
 function getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, $attributesType ) {
 
-	global $wgDefaultClassMids;
-	global $wgUser;
+	global $wgDefaultClassMids, $wgUser;
+
 	$dc = wdGetDataSetContext();
 	$dbr =& wfGetDB( DB_SLAVE );
 
@@ -531,7 +531,7 @@ function getDefinedMeaningAttributeAsRecordSet( $queryResult ) {
 
 	$dbr =& wfGetDB( DB_SLAVE );
 	
-	$definedMeaningAttributeAttribute = new Attribute( $wgDefinedMeaningAttributes, wfMsg( 'ow_RelationType' ), "short-text" );
+	$definedMeaningAttributeAttribute = new Attribute( $wgDefinedMeaningAttributes, wfMsgSc( "DefinedMeaningAttributes" ), "short-text" );
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $definedMeaningAttributeAttribute ), new Structure( $o->id ) );
 	
 	while ( $row = $dbr->fetchObject( $queryResult ) )
