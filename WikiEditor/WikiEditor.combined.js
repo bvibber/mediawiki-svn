@@ -1235,15 +1235,17 @@ mw.ready( function() {
 							.css( 'display', 'none' );
 				} )
 				.focus( function() {
+					$j( this ).removeClass( 'wikieditor-toolbar-dialog-hint' );
 					if( $j( this ).val() == $j( this ).prev( 'label' ).text() )
-						$j( this ).val( '' )
-							.removeClass( 'wikieditor-toolbar-dialog-hint' );
+						$j( this ).val( '' );
 				})
 				.bind( 'blur change', function() {
 					if ( $j( this ).val() == '' )
 						$j( this )
 							.val( $j( this ).prev( 'label' ).text() )
 							.addClass( 'wikieditor-toolbar-dialog-hint' );
+					else
+						$j( this ).removeClass( 'wikieditor-toolbar-dialog-hint' );
 				});
 			
 			// Automatically copy the value of the internal link page title field to the link text field unless the user
@@ -1510,7 +1512,9 @@ mw.ready( function() {
 						$j( '#wikieditor-toolbar-link-' + type ).attr( 'checked', 'checked' );
 				}
 				$j( '#wikieditor-toolbar-link-int-text' ).data( 'untouched',
-					$j( '#wikieditor-toolbar-link-int-text' ).val() == $j( '#wikieditor-toolbar-link-int-target' ).val()
+					$j( '#wikieditor-toolbar-link-int-text' ).val() ==
+							$j( '#wikieditor-toolbar-link-int-target' ).val() ||
+						$j( '#wikieditor-toolbar-link-int-text' ).hasClass( 'wikieditor-toolbar-dialog-hint' )
 				);
 				$j( '#wikieditor-toolbar-link-int-target' ).suggestions();
 				
