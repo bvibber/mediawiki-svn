@@ -4,7 +4,8 @@
  *
  * @file
  * @ingroup Extensions
- * @version 1.0
+ * @version 2.0
+ * @author Bryan Tong Minh <bryan.tongminh@gmail.com>
  * @author Travis Derouin <travis@wikihow.com>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  * @link http://www.mediawiki.org/wiki/Extension:ImportFreeImages Documentation
@@ -12,7 +13,7 @@
 if ( ! defined( 'MEDIAWIKI' ) )
 	die();
 
-# Configuration settings
+// Configuration settings
 $wgIFI_FlickrAPIKey = ''; // the flickr API key. This is required for the extension to work.
 $wgIFI_CreditsTemplate = 'flickr'; // use this to format the image content with some key parameters
 $wgIFI_GetOriginal = true; // import the original version of the photo
@@ -53,6 +54,6 @@ $wgSpecialPages['ImportFreeImages'] = 'SpecialImportFreeImages';
 // Special page group for MW 1.13+
 $wgSpecialPageGroups['ImportFreeImages'] = 'media';
 
-
+// Upload hooks
 $wgHooks['UploadCreateFromRequest'][] = 'UploadFreeImage::onUploadCreateFromRequest';
 $wgHooks['UploadFormSourceDescriptors'][] = 'UploadFreeImage::onUploadFormSourceDescriptors';

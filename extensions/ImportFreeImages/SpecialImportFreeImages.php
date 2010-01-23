@@ -53,11 +53,16 @@ class SpecialImportFreeImages extends SpecialPage {
 			return;
 		}
 		
+		# Do all magic
 		$this->showForm();
 		$this->showResult();
 
 
 	}
+	
+	/**
+	 * Show the search form
+	 */
 	protected function showForm() {
 		global $wgOut, $wgScript, $wgRequest;
 
@@ -84,6 +89,9 @@ class SpecialImportFreeImages extends SpecialPage {
 		) );
 	}
 	
+	/**
+	 * Show the search result if available
+	 */
 	protected function showResult() {
 		global $wgRequest, $wgUser, $wgOut;
 

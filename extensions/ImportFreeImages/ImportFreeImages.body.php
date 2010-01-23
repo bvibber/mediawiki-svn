@@ -1,4 +1,8 @@
 <?php
+/**
+ * Class ImportFreeImages to communicate with Flickr and read configuration
+ * settings.
+ */
 
 class ImportFreeImages {
 	public $resultsPerPage;
@@ -30,16 +34,25 @@ class ImportFreeImages {
 		$this->load();
 	}
 	
+	/**
+	 * Save the old error level and disable E_STRICT warnings. phpFlickr is 
+	 * written for PHP4 and causes a lot of E_STRICT warnings.
+	 */
 	protected function suppressStrictWarnings() {
-		// Hack around with E_STRICT because phpFlickr is written for PHP4 ...
 		$this->oldLevel = error_reporting();
 		error_reporting( $this->oldLevel ^ E_STRICT );		
 	}
+	/**
+	 * Restore the error levels disabled with suppressStrictWarnings()
+	 */
 	protected function restoreStrictWarnings() {
 		error_reporting( $this->oldLevel );			
 	}
 	
-	
+	/**
+	 * Try to initiate a phpFlickr object. Will throw MWException if not 
+	 * properly configured.
+	 */
 	protected function load() {
 		if ( !file_exists( $this->phpFlickrFile ) )
 			throw new MWException( 'phpFlickr can not be found at ' . $this->phpFlickrFile );
@@ -54,6 +67,13 @@ class ImportFreeImages {
 		$this->restoreStrictWarnings();
 	}
 	
+	/**
+	 * Search for Flickr photos
+	 * 
+	 * @param $query string Search query
+	 * @param $page int Page number
+	 * @return array TODO
+	 */
 	public function searchPhotos( $query, $page ) {
 		$this->suppressStrictWarnings();
 		$result = $this->flickr->photos_search(
@@ -73,6 +93,12 @@ class ImportFreeImages {
 		return $result;
 	}
 	
+	/**
+	 * Get author information for an nsid
+	 * 
+	 * @param $owner string NSID
+	 * @return array TODO
+	 */
 	public function getOwnerInfo( $owner ) {
 		$this->suppressStrictWarnings();
 		$result = $this->flickr->people_getInfo( $owner );
@@ -80,8 +106,13 @@ class ImportFreeImages {
 		return $result;
 	}
 	
+	/**
+	 * Get sizes and urls for a certain photo
+	 * 
+	 * @param $id int Flickr photo id
+	 * @return array [{'label': 'Large/Original', 'source': 'url', ...}, ...]
+	 */
 	public function getSizes( $id ) {
-		// [{'label': 'Large/Original', 'source': 'url', ...}, ...]
 		$this->suppressStrictWarnings();
 		$result = $this->flickr->photos_getSizes( $id );
 		$this->restoreStrictWarnings();

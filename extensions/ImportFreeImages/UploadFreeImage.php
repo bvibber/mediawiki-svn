@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Upload handler for ImportFreeImages. Uses UploadFromUrl magic.
+ */
 class UploadFreeImage extends UploadFromUrl {
 	/**
 	 * Hook to UploadCreateOnRequest.
@@ -15,6 +17,9 @@ class UploadFreeImage extends UploadFromUrl {
 		return true;
 	}
 	
+	/**
+	 * By installing this extension it is unconditionally enabled
+	 */
 	public static function isEnabled() { return true; }
 	
 	/**
@@ -24,6 +29,10 @@ class UploadFreeImage extends UploadFromUrl {
 		return (bool)$request->getVal( 'wpFlickrId' );
 	}
 	
+	/**
+	 * Extract wpDestFile and construct the url from wpFlickrId and wpSize and
+	 * pass it to the parent.
+	 */
 	public function initializeFromRequest( &$request ) {
 		return $this->initialize(
 			$request->getText( 'wpDestFile' ),
@@ -31,6 +40,13 @@ class UploadFreeImage extends UploadFromUrl {
 			false
 		);
 	}
+	/**
+	 * Get the source url for an image
+	 * 
+	 * @param $flickrId int Flickr photo id
+	 * @param $requestedSize string Label of the requested size
+	 * @return mixed Url or false
+	 */
 	public static function getUrl( $flickrId, $requestedSize ) {
 		if ( !$requestedSize )
 			return false;
@@ -48,7 +64,8 @@ class UploadFreeImage extends UploadFromUrl {
 	}
 	
 	/**
-	 * UI hook to add an extra text box to the upload form
+	 * UI hook to remove all source input selections and replace them by a set
+	 * of radio buttons allowing the user to select the requested size
 	 */
 	public static function onUploadFormSourceDescriptors( &$descriptor, &$radio, $selectedSourceType ) {
 		global $wgRequest;
@@ -63,7 +80,8 @@ class UploadFreeImage extends UploadFromUrl {
 		
 		$ifi = new ImportFreeImages();
 		$sizes = $ifi->getSizes( $wgRequest->getText( 'wpFlickrId' ) );
-				
+		
+		// Create radio buttons. TODO: Show resolution; Make largest size default
 		$options = array();	
 		foreach ( $sizes as $size ) {
 			$label = wfMsgExt( 'importfreeimages_size_' . strtolower( $size['label'] ), 'parseinline' );
@@ -91,7 +109,4 @@ class UploadFreeImage extends UploadFromUrl {
 		return false;
 	}
 	
-	public static function onUploadFormInitDescriptor( &$descriptor ) {
-		return true;
-	}
 }
