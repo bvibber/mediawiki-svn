@@ -370,7 +370,7 @@ scrollToCaretPosition: function( options ) {
 	var hasIframe = context !== undefined && context.$iframe !== undefined;
 	// iframe functions have not been implemented yet, this is a temp hack
 	//var hasIframe = false;
-	return ( hasIframe ? context.fn : fn )[command].call( this, options ) || $(this);
+	return ( hasIframe ? context.fn : fn )[command].call( this, options );
 };
 
 } )( jQuery );

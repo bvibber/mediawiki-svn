@@ -407,7 +407,7 @@ if ( typeof context == 'undefined' ) {
 				// IE
 				retval = context.$iframe[0].contentWindow.document.selection.createRange();
 			}
-			if ( retval.text ) {
+			if ( typeof retval.text != 'undefined' ) {
 				retval = retval.text;
 			} else if ( retval.toString ) {
 				retval = retval.toString();
@@ -534,7 +534,7 @@ if ( typeof context == 'undefined' ) {
 				if ( !sc || !ec ) {
 					// The requested offset isn't in the offsets array
 					// Give up
-					return;
+					return context.$textarea;
 				}
 				
 				var sel = context.$iframe[0].contentWindow.getSelection();
@@ -566,6 +566,7 @@ if ( typeof context == 'undefined' ) {
 				range.setEndPoint( 'EndToEnd', range2 );
 				range.select();
 			}
+			return context.$textarea;
 		},
 		/**
 		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()

@@ -363,7 +363,8 @@ mw.ready( function() {
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
 										post: '==',
 										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
-										regexReplace: "\$1==\$3==\$4"
+										regexReplace: "\$1==\$3==\$4",
+										ownline: true
 									}
 								}
 							},
@@ -376,7 +377,8 @@ mw.ready( function() {
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
 										post: '===',
 										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
-										regexReplace: "\$1===\$3===\$4"
+										regexReplace: "\$1===\$3===\$4",
+										ownline: true
 									}
 								}
 							},
@@ -389,7 +391,8 @@ mw.ready( function() {
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
 										post: '====',
 										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
-										regexReplace: "\$1====\$3====\$4"
+										regexReplace: "\$1====\$3====\$4",
+										ownline: true
 									}
 								}
 							},
@@ -402,7 +405,8 @@ mw.ready( function() {
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
 										post: '=====',
 										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
-										regexReplace: "\$1=====\$3=====\$4"
+										regexReplace: "\$1=====\$3=====\$4",
+										ownline: true
 									}
 								}
 							}
