@@ -1082,7 +1082,7 @@ $messages['mg'] = array(
 	'bookinfo-error-invalidisbn' => 'Tsy izy ny ISBN nampidirinao',
 	'bookinfo-error-nosuchitem' => 'Tsy hita tao io zavatra io na tsy misy',
 	'bookinfo-error-nodriver' => "Tsy afaka mandefa ny rindrankajy momba ny antsipirihan'ny boky",
-	'bookinfo-error-noresponse' => 'Tsy nisy valiny na ela laotra no niandry',
+	'bookinfo-error-noresponse' => 'Tsy nisy valiny na ela loatra niandry.',
 	'bookinfo-purchase' => "Vidio any amin'ny $1 io boky",
 	'bookinfo-provider' => 'mpanome data : $1',
 );

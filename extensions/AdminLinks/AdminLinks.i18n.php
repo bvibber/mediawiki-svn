@@ -48,6 +48,14 @@ $messages['lzz'] = array(
 	'adminlinks_users' => "K'oçepe",
 );
 
+/** Latgaļu (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'adminlinks_users' => 'Lītuotuoji',
+	'adminlinks_createuser' => 'Sataiseit jaunu lītuotuoju',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

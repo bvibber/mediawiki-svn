@@ -596,10 +596,15 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'signaturelogpage' => 'İmza kaydı',
+	'signature-desc' => 'Belge [[Special:SignDocument|imzalamaya]] izin verir',
+	'signaturelogpagetext' => 'Bu, [[Special:SignDocument|belgelere eklenen tüm imzaların]] bir günlüğüdür.',
+	'signaturelogentry' => '$1 belgesini imzaladı',
+	'right-sigadmin' => 'Belge imzalamasını yönet',
 	'right-createsigndocument' => 'İmzalanabilen belgeleri oluşturur',
 );
 

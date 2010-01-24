@@ -1118,6 +1118,13 @@ $messages['lb'] = array(
 	'right-import_users' => 'Benotzer a grousser Zuel importéieren',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'importusers-log' => "Tantaran'asan'ny fampidirana mpikambana",
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

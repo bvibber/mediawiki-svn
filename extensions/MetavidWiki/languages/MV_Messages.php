@@ -1440,6 +1440,7 @@ $messages['br'] = array(
 	'mv_sequence_page_desc' => 'Enrollañ ar sekañs red',
 	'mv_sequence_add' => 'Ouzhpennañ klipoù',
 	'mv_sequence_add_manual' => 'Ouzhpennañ dre anv',
+	'mv_sequence_add_search' => 'Ouzhpennañ dre klask',
 	'mv_seq_add_end' => 'Ouzhpennañ e dibenn ar sekañs',
 	'mv_other_options' => 'Dibarzhioù all',
 	'mv_contextmenu_opt' => 'Gweredekaat al lañserioù kendestenn',

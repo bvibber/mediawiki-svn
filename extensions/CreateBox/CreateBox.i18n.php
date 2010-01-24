@@ -461,7 +461,7 @@ $messages['lb'] = array(
 	'createbox-create' => 'Maachen',
 	'createbox-exists' => "Pardon, \"'''{{FULLPAGENAME}}'''\" gëtt et schonn.
 
-Dir kënnt dës Sàit net uleeën, awer Dir kënnt [{{fullurl:{{FULLPAGENAME}}|action=edit}} s'änneren], [{{fullurl:{{FULLPAGENAME}}}} liest] oder wielt fir eng aner Säit unzeleeë mat Hellëf vun der Kescht ënnendrënner.",
+Dir kënnt dës Säit net uleeën, awer Dir kënnt [{{fullurl:{{FULLPAGENAME}}|action=edit}} s'änneren], [{{fullurl:{{FULLPAGENAME}}}} liest] oder wielt fir eng aner Säit unzeleeë mat Hellëf vun der Kescht ënnendrënner.",
 );
 
 /** Macedonian (Македонски)

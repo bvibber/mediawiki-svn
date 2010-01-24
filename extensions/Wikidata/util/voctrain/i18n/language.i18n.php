@@ -2912,7 +2912,9 @@ $messages['os'] = array(
 $messages['pdc'] = array(
 	'voctrain_continue' => 'weiter',
 	'voctrain_User_name' => 'Yuuser-Naame',
+	'voctrain_Login' => 'Kumm nei',
 	'voctrain_Language' => 'Schprooch',
+	'voctrain_Log_in' => 'Kumm nei',
 	'voctrain_other' => 'annere',
 );
 

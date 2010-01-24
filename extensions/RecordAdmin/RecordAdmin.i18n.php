@@ -333,7 +333,7 @@ $messages['br'] = array(
 	'right-recordadmin' => 'Kavout hag aozañ ar pajennoù enrollañ',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => '$1 ebet',
+	'recordadmin-notset' => '"$1" ebet',
 );
 
 /** Bosnian (Bosanski)

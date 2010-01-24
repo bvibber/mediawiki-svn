@@ -842,7 +842,7 @@ $messages['lb'] = array(
 	'invitations-desc' => "Erméiglecht d'[[Special:Invitations|Gestioun vun neie Fonctionnalitéiten]] déi op déi Benotzer limitéiert sinn, déi dofir invitéiert ginn",
 	'invitations-invitedlist-description' => 'Dir hutt Zougang zu dëse Software-Fonctiounen déi nëmme fir invitéiert Benotzer zougänglech sinn.
 Fir Invitatioune fir eng bestëmmte fonctioun ze kréien, klickt w.e.g. op de jeweilegen Numm.',
-	'invitations-invitedlist-none' => 'Dir gouft net invitéiert fir eng Softwarefonctioun ze benotzen fir déi een invitéiert gëtt.',
+	'invitations-invitedlist-none' => 'Dir gouft net invitéiert fir eng Softwarefonctioun ze benotze fir déi een invitéiert gëtt.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Eng Invitatioun|$1 Invitatioune}} disponibel)',
 	'invitations-pagetitle' => 'Fonctionnalitéiten op Invitatiouns-Basis',
 	'invitations-uninvitedlist-description' => 'Dir hutt keen Zougang zu den aneren op Invtatioun baséiert Software-Fonctiounen.',

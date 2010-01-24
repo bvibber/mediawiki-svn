@@ -147,7 +147,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'svgzoom-desc' => "Setzt d'Méiglechkeet derbäi d'pan- (Panorama) a zoom-Fonctiounen ze benotzen fir SVG-Fichieren ze kucken",
+	'svgzoom-desc' => "Setzt d'Méiglechkeet derbäi d'Pan- (Panorama) a Zoom-Fonctiounen ze benotze fir SVG-Fichieren ze kucken",
 );
 
 /** Macedonian (Македонски)

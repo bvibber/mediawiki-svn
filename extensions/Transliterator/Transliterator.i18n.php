@@ -319,6 +319,7 @@ $messages['lb'] = array(
 	'transliterator-error-syntax' => 'Falsch Syntax <code>$1</code> a [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Méi wéi $1 {{PLURAL:$1|Regel|Regelen}} a [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => "D'Regel <code>$1</code> huet méi wéi $3 {{PLURAL:$3|Zeeche|Zeeche}} lenks a [[MediaWiki:$2]]",
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] muss mindestens $1 {{PLURAL:$1|Zeeche|Zeeche}} laang sinn.',
 );
 
 /** Macedonian (Македонски)

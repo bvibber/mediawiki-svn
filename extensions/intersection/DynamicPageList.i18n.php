@@ -523,7 +523,7 @@ $messages['lv'] = array(
  * @author Jagwar
  */
 $messages['mg'] = array(
-	'intersection_toomanycats' => 'DynamicPageList : Be laotra ny sokajy',
+	'intersection_toomanycats' => 'DynamicPageList : Be loatra ny sokajy',
 );
 
 /** Macedonian (Македонски)

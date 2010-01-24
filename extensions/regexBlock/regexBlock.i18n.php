@@ -2254,6 +2254,7 @@ $messages['pa'] = array(
 $messages['pdc'] = array(
 	'regexblock-form-username' => 'IP-Adress odder Yuusernaame:',
 	'regexblock-form-reason' => 'Grund:',
+	'regexblock-view-all' => 'All',
 );
 
 /** Polish (Polski)

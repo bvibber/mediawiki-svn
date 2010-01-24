@@ -66,6 +66,13 @@ $messages['lzz'] = array(
 	'youtubeauthsub_category' => "K'at'egori",
 );
 
+/** Latgaļu (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'youtubeauthsub_category' => 'Kategoreja',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Arnobarnard
