@@ -1703,6 +1703,8 @@ mw.ready( function() {
 			});
 			
 			// TODO: Find a cleaner way to share this function
+			// FIXME: This implementation runs in quadratic time on Firefox; setSelection() and other
+			// functions should cache their index->node mapping
 			$j(this).data( 'replaceCallback', function( mode ) {
 				$j( '#wikieditor-toolbar-replace-nomatch, #wikieditor-toolbar-replace-success, #wikieditor-toolbar-replace-emptysearch, #wikieditor-toolbar-replace-invalidregex' ).hide();
 				var searchStr = $j( '#wikieditor-toolbar-replace-search' ).val();
@@ -1733,45 +1735,57 @@ mw.ready( function() {
 					return;
 				}
 				var $textarea = $j(this).data( 'context' ).$textarea;
-				var text = $j.wikiEditor.fixOperaBrokenness( $textarea.val() );
-				var matches = false;
-				if ( mode != 'replaceAll' )
-					matches = text.substr( $j(this).data( 'offset' ) ).match( regex );
-				if ( !matches )
+				var text = $textarea.textSelection( 'getContents' );
+				var match = false;
+				var offset, s;
+				if ( mode != 'replaceAll' ) {
+					offset = $j(this).data( 'offset' );
+					s = text.substr( offset );
+					match = s.match( regex );
+				}
+				if ( !match ) {
 					// Search hit BOTTOM, continuing at TOP
-					matches = text.match( regex );
+					offset = 0;
+					s = text;
+					match = s.match( regex );
+				}
 				
-				if ( !matches )
+				if ( !match ) {
 					$j( '#wikieditor-toolbar-replace-nomatch' ).show();
-				else if ( mode == 'replaceAll' ) {
-					// Prepare to select the last match
-					var start = text.lastIndexOf( matches[matches.length - 1] );
-					var end = start + replaceStr.length;
-					
-					// Calculate how much the last match will move
-					var replaced = text.replace( regex, replaceStr );
-					var corr = replaced.length - text.length - replaceStr.length + matches[matches.length - 1].length;
-					$textarea
-						.val( replaced )
-						.change()
-						.focus()
-						.textSelection( 'setSelection', { 'start': start + corr,
-							'end': end + corr } )
-						.textSelection( 'scrollToCaretPosition' );
-					
+				} else if ( mode == 'replaceAll' ) {
+					// Instead of using repetitive .match() calls, we use one .match() call with /g
+					// and indexOf() followed by substr() to find the offsets. This is actually
+					// faster because our indexOf+substr loop is faster than a match loop, and the
+					// /g match is so ridiculously fast that it's negligible.
+					var index;
+					for ( var i = 0; i < match.length; i++ ) {
+						index = s.indexOf( match[i] );
+						if ( index == -1 ) {
+							// This shouldn't happen
+							break;
+						}
+						s = s.substr( index + match[i].length );
+						
+						var start = index + offset;
+						var end = start + match[i].length;
+						var newEnd = start + replaceStr.length;
+						$textarea
+							.textSelection( 'setSelection', { 'start': start, 'end': end } )
+							.textSelection( 'encapsulateSelection', {
+									'peri': replaceStr,
+									'replace': true } )
+							.textSelection( 'setSelection', { 'start': start, 'end': newEnd } );
+						offset = newEnd;
+					}
 					$j( '#wikieditor-toolbar-replace-success' )
-						.text( gM( 'wikieditor-toolbar-tool-replace-success', matches.length ) )
+						.text( gM( 'wikieditor-toolbar-tool-replace-success', match.length ) )
 						.show();
 					$j(this).data( 'offset', 0 );
 				} else {
-					var start = text.indexOf( matches[0],
-						$j(this).data( 'offset' ) );
-					if ( start == -1 )
-						// Search hit BOTTOM, continuing at TOP
-						start = text.indexOf( matches[0] );
-					var end = start + matches[0].length;
+					var start = match.index + offset;
+					var end = start + match[0].length;
 					var newEnd = start + replaceStr.length;
-					$textarea.focus().textSelection( 'setSelection', { 'start': start,
+					$textarea.textSelection( 'setSelection', { 'start': start,
 						'end': end } );
 					if ( mode == 'replace' ) {
 						$textarea
