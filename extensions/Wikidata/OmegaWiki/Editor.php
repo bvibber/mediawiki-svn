@@ -1303,8 +1303,7 @@ abstract class SelectEditor extends ScalarEditor {
 	}
 
 	public function getInputValue( $id ) {
-		global
-			$wgRequest;
+		global $wgRequest;
 
 		return trim( $wgRequest->getText( $id ) );
 	}
@@ -1368,12 +1367,16 @@ class AttributeEditor extends DefinedMeaningReferenceEditor {
 
 	public function add( IdStack $idPath ) {
 		if ( $this->isAddField ) {
+			$syntransId = $idPath->getKeyStack()->peek( 0 )->syntransId;
+			if ( $syntransId == "" ) $syntransId = 0 ; // in the case of a DM option attribute, there is no syntrans in the PathId
+
 			$parameters = array(
 				"level" => $this->attributesLevelName,
 				"definedMeaningId" => $idPath->getDefinedMeaningId(),
+				"syntransId" => $syntransId,
 				"annotationAttributeId" => $idPath->getAnnotationAttribute()->getId()
 			);
-								
+
 			return getSuggest( $this->addId( $idPath->getId() ), $this->suggestType(), $parameters );
 		}
 		else
@@ -1427,7 +1430,7 @@ class OptionAttributeEditor extends AttributeEditor {
 		if ( $this->isAddField ) {
 			$syntransId = $idPath->getKeyStack()->peek( 0 )->syntransId;
 			if ( ! $syntransId ) $syntransId = 0 ; // in the case of a DM option attribute, there is no syntrans in the PathId
-			
+
 			$parameters = array(
 				"level" => $this->attributesLevelName,
 				"definedMeaningId" => $idPath->getDefinedMeaningId(),

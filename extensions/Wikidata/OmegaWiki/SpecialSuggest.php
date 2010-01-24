@@ -10,7 +10,7 @@ function wfSpecialSuggest() {
 			SpecialPage::SpecialPage( 'Suggest', 'UnlistedSpecialPage' );
 	
 		}
-		
+
 		function execute( $par ) {
 			global
 				$wgOut,	$IP;
@@ -57,6 +57,7 @@ function getSuggestions() {
 	@$offset = $_GET['offset'];
 	@$attributesLevel = $_GET['attributesLevel'];
 	@$annotationAttributeId = $_GET['annotationAttributeId'];
+	$syntransId = $_GET["syntransId"];
 
 	$sql = '';
 
@@ -74,19 +75,19 @@ function getSuggestions() {
 			$sql = getSQLForClasses( $wgUser->getOption( 'language' ) );
 			break;
 		case "$wgDefinedMeaningAttributes":
-			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, 'DM' );
+			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $syntransId, $annotationAttributeId, 'DM' );
 			break;
 		case 'text-attribute':
-			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, 'TEXT' );
+			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $syntransId, $annotationAttributeId, 'TEXT' );
 			break;
 		case 'translated-text-attribute':
-			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, 'TRNS' );
+			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $syntransId, $annotationAttributeId, 'TRNS' );
 			break;
 		case "$wgLinkAttribute":
-			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, 'URL' );
+			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $syntransId, $annotationAttributeId, 'URL' );
 			break;
 		case "$wgOptionAttribute":
-			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, 'OPTN' );
+			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $syntransId, $annotationAttributeId, 'OPTN' );
 			break;
 		case 'language':
 			require_once( 'languages.php' );
@@ -121,7 +122,7 @@ function getSuggestions() {
 	    			" SUBSTRING(timestamp, 9, 2), ':', SUBSTRING(timestamp, 11, 2), ':', SUBSTRING(timestamp, 13, 2))";
 	    	break;
 	}
-	                          
+
 	if ( $search != '' ) {
 		if ( $query == 'transaction' )
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "%$search%" );
@@ -252,7 +253,7 @@ function constructSQLWithFallback( $actual_query, $fallback_query, $fields ) {
  * @param $language the 2 letter wikimedia code
  */
 
-function getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, $attributesType ) {
+function getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $syntransId, $annotationAttributeId, $attributesType ) {
 
 	global $wgDefaultClassMids, $wgUser;
 
@@ -262,11 +263,38 @@ function getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, 
 	$language = $wgUser->getOption( 'language' ) ;
 	$lng = ' ( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' ) ';
 
-	if ( count( $wgDefaultClassMids ) > 0 )
-		$defaultClassRestriction = " OR {$dc}_class_attributes.class_mid IN (" . join( $wgDefaultClassMids, ", " ) . ")";
+	$classMids = $wgDefaultClassMids ;
+
+	if ( $syntransId != 0 ) {
+		// find the language of the syntrans and add attributes of that language by adding the language DM to the list of default classes
+		// this first query returns the language_id
+		$sql = 'SELECT language_id' .
+				" FROM {$dc}_syntrans" .
+				" JOIN {$dc}_expression ON {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .
+				" WHERE {$dc}_syntrans.syntrans_sid = " . $syntransId .
+				' AND ' . getLatestTransactionRestriction( "{$dc}_syntrans" ) .
+				' AND ' . getLatestTransactionRestriction( "{$dc}_expression" );
+		$lang_res = $dbr->query( $sql );
+		$language_id = $dbr->fetchObject( $lang_res )->language_id;
+
+		// this second query finds the DM number for a given language_id
+		// 145264 is the collection_id of the "ISO 639-3 codes" collection
+		$sql = "SELECT member_mid FROM {$dc}_collection_contents, language" .
+				" WHERE language.language_id = $language_id" .
+				" AND {$dc}_collection_contents.collection_id = 145264" .
+				" AND language.iso639_3 = {$dc}_collection_contents.internal_member_id" .
+				' AND ' . getLatestTransactionRestriction( "{$dc}_collection_contents" );
+		$lang_res = $dbr->query( $sql );
+		$language_dm_id = $dbr->fetchObject( $lang_res )->member_mid;
+
+		$classMids = array_merge ( $wgDefaultClassMids , array($language_dm_id) ) ;
+	}
+
+	if ( count( $classMids ) > 0 )
+		$defaultClassRestriction = " OR {$dc}_class_attributes.class_mid IN (" . join( $classMids, ", " ) . ")";
 	else
 		$defaultClassRestriction = "";
-		
+
 	$filteredAttributesRestriction = getFilteredAttributesRestriction( $annotationAttributeId );
 
 	$sql =

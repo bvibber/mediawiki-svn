@@ -52,6 +52,7 @@ function updateSuggestions(suggestPrefix) {
 
 	var suggestAttributesLevel = document.getElementById(suggestPrefix + "parameter-level");
 	var suggestDefinedMeaningId = document.getElementById(suggestPrefix + "parameter-definedMeaningId");
+	var suggestSyntransId = document.getElementById(suggestPrefix + "parameter-syntransId");
 	var suggestAnnotationAttributeId = document.getElementById(suggestPrefix + "parameter-annotationAttributeId");
 	
 	var URL = 'index.php';
@@ -72,6 +73,9 @@ function updateSuggestions(suggestPrefix) {
 	
 	if (suggestDefinedMeaningId != null) 
 		URL = URL + '&definedMeaningId=' + encodeURI(suggestDefinedMeaningId.value);
+		
+	if (suggestSyntransId != null) 
+		URL = URL + '&syntransId=' + encodeURI(suggestSyntransId.value);
 		
 	if (suggestAnnotationAttributeId != null)
 		URL = URL + '&annotationAttributeId=' + encodeURI(suggestAnnotationAttributeId.value);
