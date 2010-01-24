@@ -509,15 +509,51 @@ if ( typeof context == 'undefined' ) {
 		 *
 		 * @param start Character offset of selection start
 		 * @param end Character offset of selection end
-		 * @param startContainer Element in iframe to start selection in
-		 * @param endContainer Element in iframe to end selection in
+		 * @param startContainer Element in iframe to start selection in. If not set, start is a character offset
+		 * @param endContainer Element in iframe to end selection in. If not set, end is a character offset
 		 */
 		'setSelection': function( options ) {
 			var sc = options.startContainer, ec = options.endContainer;
-			sc = sc.jquery ? sc[0] : sc;
-			ec = ec.jquery ? ec[0] : ec;
+			sc = sc && sc.jquery ? sc[0] : sc;
+			ec = ec && ec.jquery ? ec[0] : ec;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
+				var start = options.start, end = options.end;
+				if ( !sc || !ec ) {
+					// Firefox doesn't support character offsets very well, so use a DOM traversal
+					var t = context.fn.traverser( context.$content );
+					var startContainer = sc, startOffset = options.start;
+					var endContainer = ec, endOffset = options.end;
+					var pos = 0;
+					while ( t.node ) {
+						if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
+							t.goNext();
+							continue;
+						}
+						var newPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
+						if ( !startContainer && pos <= options.start && options.start < newPos ) {
+							startContainer = t.node;
+							startOffset = options.start - pos;
+						}
+						if ( startContainer && pos <= options.end && options.end < newPos ) {
+							endContainer = t.node;
+							endOffset = options.end - pos;
+							break;
+						}
+						pos = newPos;
+						t.goNext();
+					}
+					sc = startContainer;
+					ec = endContainer;
+					start = startOffset;
+					end = endOffset;
+				}
+				if ( !sc || !ec ) {
+					// The DOM traversal didn't find the requested offset
+					// Give up
+					return;
+				}
+				
 				var sel = context.$iframe[0].contentWindow.getSelection();
 				while ( sc.firstChild && sc.nodeName != '#text' ) {
 					sc = sc.firstChild;
@@ -526,18 +562,22 @@ if ( typeof context == 'undefined' ) {
 					ec = ec.firstChild;
 				}
 				var range = context.$iframe[0].contentWindow.document.createRange();
-				range.setStart( sc, options.start );
-				range.setEnd( ec, options.end );
+				range.setStart( sc, start );
+				range.setEnd( ec, end );
 				sel.removeAllRanges();
 				sel.addRange( range );
 				context.$iframe[0].contentWindow.focus();
 			} else if ( context.$iframe[0].contentWindow.document.body.createTextRange ) {
 				// IE
 				var range = context.$iframe[0].contentWindow.document.body.createTextRange();
-				range.moveToElementText( sc );
+				if ( sc ) {
+					range.moveToElementText( sc );
+				}
 				range.moveStart( 'character', options.start );
 				var range2 = context.$iframe[0].contentWindow.document.body.createTextRange();
-				range2.moveToElementText( ec );
+				if ( ec ) {
+					range2.moveToElementText( ec );
+				}
 				range2.collapse();
 				range2.moveEnd( 'character', options.end );
 				range.setEndPoint( 'EndToEnd', range2 );
@@ -576,6 +616,10 @@ if ( typeof context == 'undefined' ) {
 				}
 			$element.trigger( 'scrollToTop' );
 		},
+		/*
+		 * End of wonky textSelection "compatible" section that needs attention.
+		 */
+		
 		/**
 		 * Get the first element before the selection matching a certain selector.
 		 * @param selector Selector to match. Defaults to '*'
@@ -714,10 +758,6 @@ if ( typeof context == 'undefined' ) {
 			}
 			return new Traverser( start );
 		}
-		
-		/*
-		 * End of wonky textSelection "compatible" section that needs attention.
-		 */
 	};
 	
 	/*
