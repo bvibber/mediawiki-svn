@@ -93,7 +93,7 @@ class UsabilityInitiativeHooks {
 				array(
 					'src' => 'js/js2stopgap/jquery.textSelection.js',
 					'class' => 'j.fn.textSelection',
-					'version' => 24
+					'version' => 25
 				),
 
 				// Core functionality of extension scripts
@@ -140,7 +140,7 @@ class UsabilityInitiativeHooks {
 				array(
 					'src' => 'js/plugins/jquery.wikiEditor.js',
 					'class' => 'j.wikiEditor',
-					'version' => 61
+					'version' => 62
 				),
 				array(
 					'src' => 'js/plugins/jquery.wikiEditor.highlight.js',
@@ -178,10 +178,10 @@ class UsabilityInitiativeHooks {
 					'version' => 1 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 168 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 169 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 168 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 169 ),
 			),
 		),
 	);
