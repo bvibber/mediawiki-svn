@@ -253,7 +253,13 @@ mw.RemoteSearchDriver.prototype = {
 			'api_url': 'http://kaldev.kaltura.com/michael/aggregator.php',
 			'lib': 'kaltura',
 			'resource_prefix' : '',
-			'tab_image':false
+			'tab_image':false,
+			show_filters: true,
+			aggregated_providers:
+				{ 'Wikipedia Commons': 'wiki_commons',
+				  'The Internet Archive': 'archive_org',
+				  'Metavid': 'metavid',
+				  'Flickr': 'flickr' }
 		},
 		
 		/**
@@ -474,7 +480,7 @@ mw.RemoteSearchDriver.prototype = {
 		// Set up the local API upload URL
 		if ( _this.upload_api_target == 'local' ) {
 			if ( ! _this.local_wiki_api_url ) {
-				$j( '#rsd_results_container' ).html( gM( 'rsd_config_error', 'missing_local_api_url' ) );
+				this.$resultsContainer.html( gM( 'rsd_config_error', 'missing_local_api_url' ) );
 				return false;
 			} else {
 				_this.upload_api_target = _this.local_wiki_api_url;
@@ -655,7 +661,7 @@ mw.RemoteSearchDriver.prototype = {
 		var query = _this.getDefaultQuery();
 		if ( query !=  $j( '#rsd_q' ).val() ) {
 			$j( '#rsd_q' ).val( query );
-			_this.showCurrentTab();
+			_this.UpdateResults();
 		}
 		// $j(_this.target_container).dialog("open");
 		$j( _this.target_container ).parents( '.ui-dialog' ).fadeIn( 'slow' );
@@ -776,9 +782,6 @@ mw.RemoteSearchDriver.prototype = {
 		$j( window ).resize( function() {
 			$j( _this.target_container ).dialogFitWindow();
 		} );
-
-		// Add cancel callback and updated button with icon
-		_this.onCancelClipEdit();
 	},
 
 	/*
@@ -795,15 +798,21 @@ mw.RemoteSearchDriver.prototype = {
 
 		mainContainer.append( controlContainer );
 		
+		this.$filtersContainer = $j('<form />').hide()
+			.attr({
+				id: "rsd_filters_container"
+			});
+			
 		this.$resultsContainer = $j('<div />').attr({
-			id: "rsd_results_container"
-		});
+				id: "rsd_results_container"
+			});
 		
+		mainContainer.append( this.$filtersContainer );
 		mainContainer.append( this.$resultsContainer );
 		
 		// run the default search:
 		if ( this.getDefaultQuery() )
-			this.showCurrentTab();
+			this.UpdateResults();
 
 		// Add bindings
 		$j( '#mso_selprovider,#mso_selprovider_close' )
@@ -827,7 +836,7 @@ mw.RemoteSearchDriver.prototype = {
 		$j( '#rsd_form' )
 			.unbind()
 			.submit( function() {
-				_this.showCurrentTab();
+				_this.UpdateResults();
 				// Don't submit the form
 				return false;
 			} );
@@ -853,7 +862,7 @@ mw.RemoteSearchDriver.prototype = {
             .addClass( 'rsd_search_button' )
 			.buttonHover()
 			.click(function (){
-				_this.showSearchTab( _this.current_provider, true );
+				_this.UpdateResults( _this.current_provider, true );
 			});
 		var $searchBox = $j( '<input />' ).addClass( 'ui-widget-content ui-corner-all' ).attr({
 			type: "text",
@@ -895,7 +904,7 @@ mw.RemoteSearchDriver.prototype = {
 					$j( this ).addClass( 'ui-selected' );
 					_this.current_provider = $j( this ).attr( "name" );
 					// Update the search results on provider selection
-					_this.showSearchTab( _this.current_provider, true );
+					_this.UpdateResults( _this.current_provider, true );
 				});
 				
 				var $listItem = $j( '<li />' );
@@ -913,7 +922,7 @@ mw.RemoteSearchDriver.prototype = {
 				.addClass("rsd_upload_button")
 				.click(function(){
 					_this.current_provider = 'upload';
-					_this.showUploadTab( );
+					_this.UpdateUploadResults( );
 				});
 			$searchForm.append( $uploadButton );
 			/* 
@@ -932,11 +941,11 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	* Shows the upload tab loader and issues a call to showUploadForm
 	*/
-	showUploadTab: function() {
-		mw.log( "showUploadTab::" );
+	UpdateUploadResults: function() {
+		mw.log( "UpdateUploadResults::" );
 		var _this = this;
 		// set it to loading:
-		$j( '#rsd_results_container' ).loadingSpinner();
+		this.$resultsContainer.loadingSpinner();
 		//Show the upload form
 		mw.load( ['$j.fn.simpleUploadForm'], function() {			
 			var provider = _this.content_providers['this_wiki'];
@@ -982,7 +991,7 @@ mw.RemoteSearchDriver.prototype = {
 			} )
 			.loadingSpinner()
 		)
-		$j( '#rsd_results_container' ).html( 
+		this.$resultsContainer.html( 
 			$j('<table />').append(
 				$uploadTableRow
 			) 
@@ -1020,28 +1029,27 @@ mw.RemoteSearchDriver.prototype = {
 	},
 	
 	/**
-	* Show the current tab ( based on current_provider var ) 
+	* Refresh the results container ( based on current_provider var ) 
 	*/
-	showCurrentTab: function() {
+	UpdateResults: function() {
+		this.$filtersContainer.hide();
 		if ( this.current_provider == 'upload' ) {
-			this.showUploadTab();
+			this.UpdateUploadResults();
 		} else {
-			this.showSearchTab( this.current_provider, false );
+			this.UpdateSearchResults( this.current_provider, false );
 		}
 	},
 	
 	/**
-	* Show the search tab for a given providerName
+	* Show updated search results for a given providerName
 	*
 	* @param {String} providerName name of the content provider
 	* @param {Bollean} resetPaging if the pagging should be reset
 	*/
-	showSearchTab: function( providerName, resetPaging ) {
-		mw.log( "f:showSearchTab::" + providerName );
+	UpdateSearchResults: function( providerName, resetPaging ) {
+		mw.log( "f:UpdateSearchResults::" + providerName );
 
 		var draw_direct_flag = true;
-
-		// Else do showSearchTab
 		var provider = this.content_providers[ providerName ];
 		
 		// Check if we need to update:
@@ -1066,16 +1074,16 @@ mw.RemoteSearchDriver.prototype = {
 		}
 
 		if ( $j ( '#rsd_q' ).val().length == 0 ) {
-			$j( '#rsd_results_container' ).empty()
-			$j( '#rsd_results_container' ).text( 'Please insert a search string above.' );
+			this.$resultsContainer.empty();
+			this.$resultsContainer.text( 'Please insert a search string above.' );
 			return;
 		}
 		
 		// Set the content to loading while we do the search:
-		$j( '#rsd_results_container' ).html( mw.loading_spinner() );
-					
+		this.$resultsContainer.html( mw.loading_spinner() );
+		
 		// Make sure the search library is loaded and issue the search request
-		this.getProviderResults( provider );	
+		this.PerformProviderSearch( provider );	
 	},
 
 	/*
@@ -1171,22 +1179,74 @@ mw.RemoteSearchDriver.prototype = {
 		} );
 	},
 	
+	
+	createSearchFilters: function( current_provider ) {
+		var _this = this;
+		mw.log( 'f: CreateSearchFilters ' );
+		
+		this.CreateFilterBox( 'rsd_media_type_filter', 
+							  'Media', 
+							  { Video: 'video', 
+			                    Image: 'image', 
+			                    Audio: 'audio' } );
+		
+		this.CreateFilterBox( 'rsd_provider_filter',
+							  'Provider',
+							  current_provider.aggregated_providers );
+		
+	},
+	
 	/**
-	* Get the search results for a given content provider
+	 * Creates a single filter box with given options and appends it to the filter container.
+	 * 
+	 * @id {string} unique id for this filter box an residing elements
+	 * @title {string} title of the filter box
+	 * @options {array} array of strings describing the options in the filter box
+	 * 
+	 */
+	
+	CreateFilterBox: function( id, title, options ) {
+		$box = $j( '<div />' ).addClass( 'ui-filter-box' ).attr({
+			'id': id
+		});
+		
+		$title = $j( '<div />' ).addClass( 'ui-filter-title' ).text( title );
+		$box.append( $title );
+		
+		for (option in options) {
+			$option = $j( '<div />' ).addClass( 'ui-filter-option' ).text( option );
+			
+			$checkbox = $j( '<input />' )
+				.attr( {
+					type: 'checkbox',
+					name: id + '_' + title + '_' + options.option,
+					value: options.option,
+					checked: true
+				} );
+				
+			$option.prepend( $checkbox );	
+			$box.append( $option );
+		}
+		
+		this.$filtersContainer.append($box);
+	},
+	
+	/**
+	* Performs the search for a given content provider
 	* 
-	* Sets up binding to showResults once search providers results are ready
+	* Calls showResults once search results are ready
 	* 
 	* @param {Object} provider the provider to be searched. 
 	*/
-	getProviderResults: function( provider ) {
+	PerformProviderSearch: function( provider ) {
 		var _this = this;
-		mw.log('f: getProviderResults ' );
+		mw.log( 'f: PerformProviderSearch ' );
 		// First check if we should even run the search at all (can we import / insert 
 		// into the page? )
 		if ( !this.isProviderLocal( provider ) && this.import_url_mode == 'autodetect' ) {
 			// provider is not local check if we can support the import mode:
 			this.checkForCopyURLSupport( function() {
-				_this.getProviderResults( provider );
+				_this.PerformProviderSearch( provider );
 			} );
 			return false;
 		} else if ( !this.isProviderLocal( provider ) && this.import_url_mode == 'none' ) {
@@ -1194,7 +1254,7 @@ mw.RemoteSearchDriver.prototype = {
 				// combined results are harder to error handle just ignore that repo
 				provider.sObj.loading = false;
 			} else {
-				$j( '#rsd_results_container' ).html( 
+				this.$resultsContainer.html( 
 					gM( 'mwe-no_import_by_url' ) 
 				)
 			}
@@ -1287,24 +1347,26 @@ mw.RemoteSearchDriver.prototype = {
 		mw.log( 'f:showResults::' + this.current_provider );
 		var _this = this;
 		var o = '';
-		var tabSelector = '#rsd_results_container';
 		var provider = this.content_providers[ this.current_provider ];
 			
 		
 		// The "upload" tab has special results output target rather than top level
 		// resutls container.
-		// @@todo Clean up by moving the rsd_results_container down in the DOM  for selected tab display. 
-		// ( will be need once we add left side filter controls 
-		// that are exclusive to some providers )
 		if ( this.current_provider == 'upload' ) {
 			$resultsContainer = $j('#upload_bin');
 			var provider = _this.content_providers['this_wiki'];
 		} else {
 			var provider = this.content_providers[ this.current_provider ];
-			$resultsContainer = $j('#rsd_results_container');
+			$resultsContainer = this.$resultsContainer;
 			 
 			// Add the results header:
 			$resultsContainer.empty().append( this.createResultsHeader() )
+			
+			// Enable search filters, if the provider supports them.
+			if ( provider.show_filters ) {
+				// this.$filtersContainer.show();
+				this.createSearchFilters( provider );
+			}
 		}
 		
 		// Empty the existing results:
@@ -1479,7 +1541,7 @@ mw.RemoteSearchDriver.prototype = {
 		$j( _this.target_container ).find( '#rsd_resource_edit' ).remove();
 
 		// Hide the results container
-		$j( '#rsd_results_container' ).hide();
+		this.$resultsContainer.hide();
 
 		var pt = $j( _this.target_container ).html();
 		
@@ -1705,7 +1767,7 @@ mw.RemoteSearchDriver.prototype = {
 		$j( '#rsd_preview_display' ).remove();
 		
 		// Restore the resource container:
-		$j( '#rsd_results_container' ).show();
+		this.$resultsContainer.show();
 
 		// Restore the title:
 		$j( _this.target_container ).dialog( 'option', 'title', gM( 'mwe-add_media_wizard' ) );
@@ -2766,7 +2828,7 @@ mw.RemoteSearchDriver.prototype = {
 					provider.offset -= provider.limit;
 					if ( provider.offset < 0 )
 						provider.offset = 0;
-					_this.showCurrentTab();
+					_this.UpdateResults();
 				} );
 			$pagingControl.prepend( $prevLink );
 		}
@@ -2782,7 +2844,7 @@ mw.RemoteSearchDriver.prototype = {
 				.text( nextLinkText )
 				.click( function() {
 					provider.offset += provider.limit;
-					_this.showCurrentTab();
+					_this.UpdateResults();
 				} );
 			$pagingControl.append( $nextLink );
 		}
@@ -2798,10 +2860,10 @@ mw.RemoteSearchDriver.prototype = {
 		mw.log( 'select tab: ' + provider_id );
 		this.current_provider = provider_id;
 		if ( this.current_provider == 'upload' ) {
-			this.showUploadTab();
+			this.UpdateUploadResults();
 		} else {
 			// update the search results:
-			this.showCurrentTab();
+			this.UpdateResults();
 		}
 	},
 	
