@@ -1,8 +1,6 @@
-/*** AJAX LOGIN ***/
-/* styles copied from monaco/css/header.css */
-#userloginRound_c { z-index: 2000 !important; }
-#userloginRound_mask { z-index: 1000 !important; }
+/* CSS for AjaxLogin extension */
 
+/* styles copied from monaco/css/header.css */
 #userloginRound .r_boxContent {
 	background-color: #fff;
 	color: #000000;
@@ -11,13 +9,12 @@
 
 #userloginRound .boxHeader {
 	padding: 3px 5px;
-	font-size: 12px; /* Jack: added this */
+	font-size: 12px;
 }
 
 #userloginRound form {
 	padding: 3px;
 	font-size: 12px;
-/*	font-size: 0.9em; original -- doesn't look too good on monobook*/
 }
 
 /* copied from monaco/css/root.css */
@@ -25,8 +22,48 @@
 	background-color: #36C;
 	color: white;
 }
+
 .color2 {
 	background-color: #F5F5F5;
+}
+
+#userajaxloginform {
+	margin: 5px;
+}
+
+#wpClose {
+	float: right;
+	cursor: pointer;
+}
+
+#wpClose span {
+	font-size: 2em;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+#wpLoginattempt {
+	margin: 0;
+	padding: 0 .25em;
+	width: auto;
+	overflow: visible;
+}
+
+#wpError {
+	width: 250px;
+	line-height: 1.4em;
+}
+
+#ajaxLoginRememberMe {
+	padding-bottom: 3px;
+}
+
+#wpMailmypassword {
+	margin: 3px 0;
+	padding: 0 .25em;
+	width: auto;
+	overflow: visible;
+	font-size: 0.9em;
 }
 
 .jqmWindow {
@@ -40,7 +77,9 @@
 	border: 1px solid black;
 }
 
-.jqmOverlay { background-color: #000; }
+.jqmOverlay {
+	background-color: #000;
+}
 
 /* Fixed posistioning emulation for IE6
  * Star selector used to hide definition from browsers other than IE6

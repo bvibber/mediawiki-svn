@@ -13,27 +13,27 @@ mediawiki.AjaxLogin = function() {
 };
 
 mediawiki.AjaxLogin.prototype.initialize = function() {
-	this._loginPanel = $("#userloginRound");
-	this._loginForm = $("#userajaxloginform");
+	this._loginPanel = $('#userloginRound');
+	this._loginForm = $('#userajaxloginform');
 	if( this._loginPanel.length > 0 ) {
 		this._loginPanel.jqm({modal : true, toTop : true});
 		var that = this;
-		$("#pt-anonlogin, #pt-login").click( function( event ) {
+		$('#pt-anonlogin, #pt-login').click( function( event ) {
 			event.preventDefault();
 			that.showLoginPanel();
 		});
-		$("#wpLoginattempt").click(function( event ) {
+		$('#wpLoginattempt').click(function( event ) {
 			event.preventDefault();
 			that.postAjax( 'wpLoginattempt' );
 		});
-		$("#wpMailmypassword").click(function( event ) {
+		$('#wpMailmypassword').click(function( event ) {
 			event.preventDefault();
 			that.postAjax( 'wpMailmypassword' );
 		});
-		$("#wpAjaxRegister").click(function( event ) {
+		$('#wpAjaxRegister').click(function( event ) {
 			that.doRegister( event );
 		});
-		$("#wpClose").click(function( event ) {
+		$('#wpClose').click(function( event ) {
 			that.doClose( event );
 		});
 	}
@@ -58,9 +58,9 @@ mediawiki.AjaxLogin.prototype.postAjax = function( action ) {
 		success : function( data ) {
 			that.requestSuccess( data );
 		},
-		error : function( XMLHttpRequest, textStatus, errorThrown ){
-			//TODO : add error handling here
-			if( typeof console != 'undefined' ){
+		error : function( XMLHttpRequest, textStatus, errorThrown ) {
+			// TODO : add error handling here
+			if( typeof console != 'undefined' ) {
 				console.log( 'Error in AjaxLogin.js!' );
 			}
 		}
@@ -68,31 +68,31 @@ mediawiki.AjaxLogin.prototype.postAjax = function( action ) {
 };
 
 mediawiki.AjaxLogin.prototype.enableForm = function() {
-	$("#wpName1").removeAttr('disabled');
-	$("#wpPassword1").removeAttr('disabled');
-	$("#wpLoginattempt").removeAttr('disabled');
-	$("#wpRemember").removeAttr('disabled');
-	$("#wpMailmypassword").removeAttr('disabled');
-	$("#wpPassword1").removeAttr('disabled');
-	$("#wpClose").removeAttr('disabled');
+	$('#wpName1').removeAttr('disabled');
+	$('#wpPassword1').removeAttr('disabled');
+	$('#wpLoginattempt').removeAttr('disabled');
+	$('#wpRemember').removeAttr('disabled');
+	$('#wpMailmypassword').removeAttr('disabled');
+	$('#wpPassword1').removeAttr('disabled');
+	$('#wpClose').removeAttr('disabled');
 };
 
 mediawiki.AjaxLogin.prototype.disableForm = function() {
-	$("#wpName1").attr('disabled', 'disabled');
-	$("#wpPassword1").attr('disabled', 'disabled');
-	$("#wpLoginattempt").attr('disabled', 'disabled');
-	$("#wpRemember").attr('disabled', 'disabled');
-	$("#wpMailmypassword").attr('disabled', 'disabled');
-	$("#wpPassword1").attr('disabled', 'disabled');
-	$("#wpClose").attr('disabled', 'disabled');
+	$('#wpName1').attr('disabled', 'disabled');
+	$('#wpPassword1').attr('disabled', 'disabled');
+	$('#wpLoginattempt').attr('disabled', 'disabled');
+	$('#wpRemember').attr('disabled', 'disabled');
+	$('#wpMailmypassword').attr('disabled', 'disabled');
+	$('#wpPassword1').attr('disabled', 'disabled');
+	$('#wpClose').attr('disabled', 'disabled');
 };
 
 mediawiki.AjaxLogin.prototype.displayReason = function( reason ) {
-	$("#wpError").html(reason + '<br /><br />').show();
+	$('#wpError').html(reason + '<br /><br />').show();
 };
 
-mediawiki.AjaxLogin.prototype.doRegister = function( event ){
-	if( $("#wpPreview").length > 0 && $("#wpLogin").length > 0 ) {
+mediawiki.AjaxLogin.prototype.doRegister = function( event ) {
+	if( $('#wpPreview').length > 0 && $('#wpLogin').length > 0 ) {
 		if( typeof( ajaxLogin2 ) != 'undefined' && !confirm( ajaxLogin2 ) ) {
 			event.preventDefault();
 		}
@@ -100,13 +100,13 @@ mediawiki.AjaxLogin.prototype.doRegister = function( event ){
 };
 
 mediawiki.AjaxLogin.prototype.refreshForm = function() {
-	$("#wpName1").val('');
-	$("#wpPassword1").val('');
-	$("#wpError").html('');
+	$('#wpName1').val('');
+	$('#wpPassword1').val('');
+	$('#wpError').html('');
 	this.enableForm();
 };
 
-mediawiki.AjaxLogin.prototype.doClose = function( event ){
+mediawiki.AjaxLogin.prototype.doClose = function( event ) {
 	this._loginPanel.jqmHide();
 };
 
@@ -114,7 +114,7 @@ mediawiki.AjaxLogin.prototype.requestSuccess = function( data ) {
 	var responseResult = data.ajaxlogin.result;
 	switch( responseResult ) {
 		case 'Reset':
-			if( $("#wpPreview").length > 0 && $("#wpLogin").length > 0 ) {
+			if( $('#wpPreview').length > 0 && $('#wpLogin').length > 0 ) {
 				if( typeof( ajaxLogin1 ) != 'undefined' && !confirm( ajaxLogin1 ) ) {
 					break;
 				}
@@ -126,14 +126,14 @@ mediawiki.AjaxLogin.prototype.requestSuccess = function( data ) {
 			this.enableForm();
 			break;
 		case 'Success':
-			if( $("#wpPreview").length > 0 && $("#wpLogin").length > 0 ) {
-				if( $("#wikiDiff").length > 0 && ( $("#wikiDiff").children.length > 0 ) ) {
-					$("#wpDiff").click();
+			if( $('#wpPreview').length > 0 && $('#wpLogin').length > 0 ) {
+				if( $('#wikiDiff').length > 0 && ( $('#wikiDiff').children.length > 0 ) ) {
+					$('#wpDiff').click();
 				} else {
-					if( $("#wikiPreview") && $("#wikiPreview").children.length == 0 ) {
-						$("#wpLogin").val( 1 );
+					if( $('#wikiPreview') && $('#wikiPreview').children.length == 0 ) {
+						$('#wpLogin').val( 1 );
 					}
-					$("#wpPreview").click();
+					$('#wpPreview').click();
 				}
 			} else {
 				if( wgCanonicalSpecialPageName == 'Userlogout' ) {
@@ -145,13 +145,13 @@ mediawiki.AjaxLogin.prototype.requestSuccess = function( data ) {
 			break;
 		case 'NotExists':
 			this.enableForm();
-			$("#wpName1").value = '';
-			$("#wpPassword1").value = '';
-			$("#wpName1").focus();
+			$('#wpName1').value = '';
+			$('#wpPassword1').value = '';
+			$('#wpName1').focus();
 		case 'WrongPass':
 			this.enableForm();
-			$("#wpPassword1").val('');
-			$("#wpPassword1").focus();
+			$('#wpPassword1').val('');
+			$('#wpPassword1').focus();
 		default:
 			this.enableForm();
 			this.displayReason( data.ajaxlogin.text );
