@@ -21,17 +21,26 @@ if ( !defined( 'MEDIAWIKI' ) && !defined( 'MW_CACHE_SCRIPT_CHECK' ) ){
 }
 
 class jsScriptLoader {
+
+	// The list of javascript files
 	var $jsFileList = array();
+
+	// The language code for the script-loader request
 	var $langCode = '';
+
+	// The javascript output string
 	var $jsout = '';
-	var $requestKey = ''; // the request key
-	var $error_msg = '';
+
+	// The request Key for the js
+	var $requestKey = '';
+
+	// Error msg
+	var $errorMsg = '';
+
+	// Debug flag
 	var $debug = false;
 
-	// Whether we should include generated JS (special class '-')
-	var $jsvarurl = false;
-	var $doProcReqFlag = true;
-
+	// The raw requested class
 	private static $rawClassList = '';
 
 	/**
@@ -89,31 +98,38 @@ class jsScriptLoader {
 		// Build the output
 		// Swap in the appropriate language per js_file
 		foreach ( $this->jsFileList as $classKey => $file_name ) {
+
 			// Get the script content
 			$jstxt = $this->getScriptText( $classKey, $file_name );
 			if( $jstxt ){
 				$this->jsout .= $this->doProcessJs( $jstxt );
 			}
-			// If the core mwEmbed class entry point include loader js
+
+			// If the core mwEmbed class entry point include all the loader js
 			if( $classKey == 'mwEmbed' ){
 				$this->jsout .= jsClassLoader::getCombinedLoaderJs();
 			}
 		}
 
-		// Add a mw.loadDone callback so webkit browsers don't have to check if variables are "ready"
-		$this->jsout .= self::getOnDoneCallback( );
-
+		/*
+		 * Add a mw.loadDone class callback if there was no "error" in getting any of the classes
+		 */
+		if ( $this->error_msg == '' ){
+			$this->jsout .= self::getOnDoneCallback( );
+		}
 
 		// Check if we should minify the whole thing:
 		if ( !$this->debug ) {
 			$this->jsout = self::getMinifiedJs( $this->jsout , $this->requestKey );
 		}
+
 		// Save to the file cache
 		if ( $wgUseFileCache && !$this->debug ) {
 			$status = $this->sFileCache->saveToFileCache( $this->jsout );
 			if ( $status !== true )
 			$this->error_msg .= $status;
 		}
+
 		// Check for an error msg
 		if ( $this->error_msg != '' ) {
 			//just set the content type (don't send cache header)
@@ -128,7 +144,10 @@ class jsScriptLoader {
 	/**
 	 * Get the onDone javascript callback for a given class list
 	 *
-	 * @return unknown
+	 * Enables a done loading callback for browsers like safari
+	 * that don't consistently support the <script>.onload call
+	 *
+	 * @return String
 	 */
 	static private function getOnDoneCallback( ){
 		return 'if(mw && mw.loadDone){mw.loadDone(\'' .
