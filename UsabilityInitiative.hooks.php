@@ -48,18 +48,6 @@ class UsabilityInitiativeHooks {
 			'combined' => array(),
 			'minified' => array()
 		),
-		// Code to include when js2 is not present
-		'no_js2' => array(
-			'raw' => array(
-				array( 'src' => '/js2/js2stopgap.js' )
-			),
-			'combined' => array(
-				array( 'src' => '/js2/js2stopgap.js' )
-			),
-			'minified' => array(
-				array( 	'src' => '/js2/js2stopgap.min.js' )
-			),
-		),
 		// Core functionality of extension
 		'base_sets' => array(
 			'raw' => array(
@@ -232,9 +220,7 @@ class UsabilityInitiativeHooks {
 		// Provide backward support for mediaWiki less than 1.17
 		// by including "no_js2" js.
 		if ( !version_compare( floatval( $wgVersion ), '1.17', '>=') ) {
-			self::$scripts = array_merge(
-				self::$scriptFiles['no_js2'][$mode], self::$scripts
-			);
+			$out->includeJQuery();
 		}
 		// Include base-set of styles
 		self::$styles = array_merge(
