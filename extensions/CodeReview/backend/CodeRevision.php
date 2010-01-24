@@ -325,12 +325,18 @@ class CodeRevision {
 		$dbw->commit();
 
 		// Give email notices to committer and commenters
-		global $wgCodeReviewENotif, $wgEnableEmail;
+		global $wgCodeReviewENotif, $wgEnableEmail, $wgCodeReviewCommentWatcher;
 		if ( $wgCodeReviewENotif && $wgEnableEmail ) {
 			// Make list of users to send emails to
 			$users = $this->getCommentingUsers();
 			if ( $user = $this->getWikiUser() ) {
 				$users[$user->getId()] = $user;
+			}
+			// If we've got a spam list, send e-mails to it too
+			if( $wgCodeReviewCommentWatcher ) {
+				$watcher = new User();
+				$watcher->setEmail( $wgCodeReviewCommentWatcher );
+				$users[0] = $watcher; // We don't have any anons, so using 0 is safe
 			}
 			// Get repo and build comment title (for url)
 			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
