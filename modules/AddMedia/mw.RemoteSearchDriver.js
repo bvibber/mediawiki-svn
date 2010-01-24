@@ -1904,7 +1904,8 @@ mw.RemoteSearchDriver.prototype = {
 		} else {
 			// Check if the file is local ( can be shared repo )
 			if ( provider.check_shared ) {
-				_this.findFileInLocalWiki( resource.target_resource_title, function( imagePage ) {
+				var fileTitle =_this.canonicalFileNS + ':' + resource.target_resource_title;
+				_this.findFileInLocalWiki( fileTitle, function( imagePage ) {
 					if ( imagePage && imagePage['imagerepository'] == 'shared' || 
 									  imagePage['imagerepository'] == 'commons') {
 						myCallback( 'shared' );
@@ -2262,7 +2263,7 @@ mw.RemoteSearchDriver.prototype = {
 		var _this = this;
 		var request = {
 			'action': 'query',
-			'titles': _this.canonicalFileNS + ':' + fileName,
+			'titles': fileName,
 			'prop': 'imageinfo',
 			'iiprop': 'url',
 			'iiurlwidth': '400'
@@ -2273,7 +2274,8 @@ mw.RemoteSearchDriver.prototype = {
 				for ( var i in data.query.pages ) {
 					for ( var j in data.query.pages[i] ) {
 						if ( j == 'missing' 
-							&& data.query.pages[i].imagerepository != 'shared' ) 
+							&& data.query.pages[i].imagerepository != 'shared'
+							&& data.query.pages[i].imagerepository != 'commons' ) 
 						{
 							mw.log( fileName + " not found" );
 							callback( false );

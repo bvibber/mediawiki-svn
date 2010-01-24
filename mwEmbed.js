@@ -1309,6 +1309,49 @@ var mwDefaultConf = {
 	*/
 	
 	/**
+	* 
+	* Shortcut to latest revision text of a given title
+	* 
+	* Assumes "follow redirects" 
+	* 
+	* $j.getTitleText( [url], title, callback )
+	*  
+	* @param {String} url or title key
+	* @parma {Mixed} title or callback function
+	* @param {Function} callback Function or NULL
+	* 
+	* @return callback is called with:
+	* 	{Boolean} false if no page found 
+	* 	{String} text of wiki page	 
+	*/
+	mw.getTitleText = function( apiUrl, title, callback ){
+		// Check if optional apiURL was not included
+		if( !callback ){
+			title = apiUrl;
+			callback = title;
+			apiUrl = mw.getLocalApiUrl();
+		}
+		var request = {
+			// Normalize the File NS (ie sometimes its present in apiTitleKey other times not
+			'titles' : title,
+		    'prop' : 'revisions',
+		    'rvprop' : 'content'
+		};	
+		mw.getJSON( apiUrl , request, function( data ) {			
+			if( !data || !data.query || !data.query.pages ){
+				callback( false );	
+			}
+			var pages = data.query.pages;			
+			for(var i in pages){
+				page = pages[ i ];
+				if( page[ 'revisions' ] && page[ 'revisions' ][0]['*'] ){
+					callback( page[ 'revisions' ][0]['*'] );
+				}
+			}
+		});
+	}		
+	
+	/**
 	* mediaWiki JSON a wrapper for jQuery getJSON:
 	* $j.getJSON( url, [data], [callback] )
 	* 

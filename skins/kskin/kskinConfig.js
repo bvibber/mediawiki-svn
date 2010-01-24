@@ -223,20 +223,23 @@ var kskinConfig = {
 	* Show the credit screen (presently specific to kaltura skin )
 	*/  
 	showCredits: function() {
-		//set up the shortcuts:	
-		embedPlayer = this.embedPlayer;
+		// Set up the shortcuts:	
+		var embedPlayer = this.embedPlayer;
 		var _this = this;	
-		$target = embedPlayer.$interface.find( '.menu-credits' );
+		var $target = embedPlayer.$interface.find( '.menu-credits' );
 
-		$target.html( '<h2>' + gM( 'mwe-credits' ) + '</h2>'  +
-			'<div class="credits_box ui-corner-all">' +
-				mw.loading_spinner() + 
-			'</div>'								
+		$target.empty().append( 
+			$j('<h2 />')
+			.text( gM( 'mwe-credits' ) ),
+			$j('<div />')
+			.addClass( "credits_box ui-corner-all" )
+			.loadingSpinner()										
 		);
 
 		if( mw.getConfig( 'k_attribution' ) == true ){
 			$target.append( 
-				$j( '<div/>' ).addClass( 'k-attribution' )
+				$j( '<div />' )
+				.addClass( 'k-attribution' )
 				.attr({
 					'title': gM('mwe-kaltura-platform-title')
 				})
@@ -252,37 +255,48 @@ var kskinConfig = {
 			);
 			return ;
 		}
-				
-		// Do the api request to populate the credits via the apiTitleKey 
-		var request = {
-			// Normalize the File NS (ie sometimes its present in apiTitleKey other times not
-			'titles' : 'File:' + embedPlayer.apiTitleKey.replace(/File:|Image:/, '' ),
-		    'prop' : 'revisions',
-		    'rvprop' : 'content'
-		};		
-		var req_categories = new Array();
+		
+		_this.getCredits();					
+	},
+	
+	/**
+	 * Issues a request to populate the credits box
+	 */
+	getCredits: function(){
+		// Setup shortcuts:
+		var embedPlayer = this.embedPlayer;
+		var _this = this;	
+		var $target = embedPlayer.$interface.find( '.menu-credits' );
+		
 		var api_url = mw.getApiProviderURL( embedPlayer.apiProvider );
-		if( ! api_url ){
-			mw.log("Error: can't get credit screen without title key");
-			return ;
-		}
-	    mw.getJSON( api_url , request, function( data ) {
-			if( !data || !data.query || !data.query.pages ){
-				$target.find('.credits_box').text(
-					'Error: title key: ' + embedPlayer.apiTitleKey + ' not found' 
-				);
-				return false;
-			}
-			var pages = data.query.pages;			
-			for(var i in pages){
-				page = pages[ i ];
-				if( page[ 'revisions' ] && page[ 'revisions' ][0]['*'] ){
-					$target.find('.credits_box').html(
-						_this.doCreditLineFromWikiText( page[ 'revisions' ][0]['*'] )
-					);
+		var fileTitle = 'File:' + embedPlayer.apiTitleKey.replace(/File:|Image:/, '');
+		
+		// Get the image info
+		var request = { 
+			'prop' : 'imageinfo',
+			'titles': fileTitle,
+			'iiprop' : 'url'		
+		};
+		var articleUrl = '';
+		mw.getJSON( api_url, request, function( data ){			
+			if ( data.query.pages ) {
+				for ( var i in data.query.pages ) {
+					var imageProps = data.query.pages[i];
+					// Check properites for "missing" 
+					if( imageProps.imageinfo && imageProps.imageinfo[0] && imageProps.imageinfo[0].descriptionurl ){					
+						// Found page 
+						$target.find('.credits_box').html(
+							_this.doCreditLine( imageProps.imageinfo[0].descriptionurl )
+						);				
+					}else{
+						// missing page  descriptionurl
+						$target.find('.credits_box').text(
+							'Error: title key: ' + embedPlayer.apiTitleKey + ' not found' 
+						);						
+					}
 				}
 			}
-	    } );
+		} );				
 	},
 	
 	/**
@@ -292,12 +306,11 @@ var kskinConfig = {
 	* 
 	* @parm {String} wikiText Resource wiki text page contents
 	*/
-	doCreditLineFromWikiText: function ( wikiText ){
+	doCreditLine: function ( articleUrl ){
 		var embedPlayer = this.embedPlayer;
 		
 		// Get the title str 
-		var titleStr = embedPlayer.apiTitleKey.replace(/_/g, ' ');
-		var titleLink = 'http://commons.wikimedia.org/wiki/File:' + embedPlayer.apiTitleKey;
+		var titleStr = embedPlayer.apiTitleKey.replace(/_/g, ' ');		
 		
 		var imgWidth = ( this.getOverlayWidth() < 250 )? 45 : 90;
 		
@@ -305,7 +318,7 @@ var kskinConfig = {
 		return $j( '<div/>' ).addClass( 'creditline' )
 			.append(
 				$j('<a/>').attr({
-					'href' : titleLink,
+					'href' : articleUrl,
 					'title' :  titleStr
 				}).html( 
 					$j('<img/>').attr( {
@@ -323,7 +336,7 @@ var kskinConfig = {
 						// We use a div container to easialy get at the built out link
 						$j('<div>').html( 
 							$j('<a/>').attr({
-								'href' : titleLink,
+								'href' : articleUrl,
 								'title' :  titleStr
 							}).text( titleStr )
 						).html()
