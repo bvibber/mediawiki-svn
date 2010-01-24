@@ -17,6 +17,9 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '0.0.1',
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['SacredTextLookup'] = $dir . 'SacredText.lookup.php';
+
 // the following are the parameters that can be set in LocalSettings.php
 $wgSacredUseBibleTag = true;
 $wgSacredChapterAlias = array();
@@ -113,82 +116,11 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'updateSacredTextDB';
  
 function efSacredTextParserInit( &$parser ) {
 	global $wgSacredUseBibleTag;
-	$parser->setHook( 'sacredtext', 'efSacredTextRenderHook' );
+	$parser->setHook( 'sacredtext', array('SacredTextLookup','hookSacredText') );
 	if( $wgSacredUseBibleTag ) {
-		$parser->setHook( 'bible', 'efSacredTextRenderHook_Bible' );
+		$parser->setHook( 'bible', array('SacredTextLookup','hookBible') );
 	}
 	return true;
-}
-
-function efSacredTextRender( $religtext, $book, $chapternum, $versenums, $lang, $ver ) {
-	global $wgSacredChapterAlias;
-	$dbr = wfGetDB( DB_SLAVE );
-
-	if( array_key_exists($religtext, $wgSacredChapterAlias) &&
-		array_key_exists($book, $wgSacredChapterAlias[$religtext] ) ) 
-	{
-		$book = $wgSacredChapterAlias[$religtext][$book];
-	}
-
-	if( strcasecmp($religtext,"Christian Bible")==0 ) {
-		if( strcasecmp($ver,"AV")==0 ) {
-			$ver = "KJV";
-		}
-	}
-
-	$obj = $dbr->selectRow( "sacredtext_verses", array("st_text"),
-		array( 
-			"st_religious_text" => $religtext,
-			"st_book"           => $book,
-			"st_chapter_num"    =>$chapternum,
-			"st_verse_num"      =>$versenums[0],
-			"st_translation"    =>$ver,
-			"st_language"       =>$lang
-		) );
-	if( $obj ) {
-		return htmlspecialchars( $obj->st_text );
-	} else {
-		return htmlspecialchars( "Could not find: ". $book ." ".$chapternum.":".$versenums[0]." in the ". $religtext );
-	}
-}
-
-function efSacredTextParseInput( $input, &$book, &$chapternum, &$versenums ) {
-	if( preg_match( "/^\s*([\s\w]*\w+)\s*(\d+):(\d+)/", $input, $matches) ) {
-		$book = $matches[1];
-		$chapternum = $matches[2];
-		$versenums = array();
-		$versenums[] = $matches[3];
-		return true;
-	} else {
-		return false;
-	}
-}
-
-function efSacredTextRenderHook_Bible( $input, $args, &$parser, $frame ) {
-	if( efSacredTextParseInput( $input, $book, $chapternum, $versenums ) ) {
-		$lang = "en";
-		$ver = "kjv";
-		if( array_key_exists("lang", $args) ) $lang = $args["lang"];
-		if( array_key_exists("ver", $args) ) $ver = $args["ver"];
-		return htmlspecialchars( $input ) ." ". efSacredTextRender( "Christian Bible", $book, $chapternum, $versenums, $lang, $ver );
-	} else {
-		return htmlspecialchars( $input . " Could not parse reference.  Please use the format 'Gen 1:10'." );
-	}
-} 
- 
-function efSacredTextRenderHook( $input, $args, &$parser, $frame ) {
-	if( efSacredTextParseInput( $input, $book, $chapternum, $versenums ) ) {
-		$lang = "en";
-		$ver = "kjv";
-		$religtext = "Christian Bible";
-		if( array_key_exists("lang", $args) ) $lang = $args["lang"];
-		if( array_key_exists("ver", $args) ) $ver = $args["ver"];
-		if( array_key_exists("text", $args) ) $religtext = $args["text"];
-
-		return htmlspecialchars( $input ) ." ". efSacredTextRender( $religtext, $book, $chapternum, $versenums, $lang, $ver );
-	} else {
-		return htmlspecialchars( $input . " Could not parse reference.  Please use the format 'Gen 1:10'." );
-	}
 }
 
 function updateSacredTextDB() {
