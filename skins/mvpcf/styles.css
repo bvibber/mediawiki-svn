@@ -315,6 +315,12 @@ div.floatleft, table.floatleft {
 	left: 3px;
 	font-size: x-small;	
 }
+#rsd_filters_container {
+	float:left;
+	padding-top:12px;
+	width:150px;
+	height: 100%;
+}
 .rsd_import_button {
 	mergin-left: 5px;
 }
@@ -483,6 +489,13 @@ img.layout_selector {
 	margin-top: -3px;
 	zoom: 1;
 }
+
+.ui-filter-title {
+	font-weight: bold;
+	margin-top: 15px;
+	padding-left: 10px;
+}
+
 
 .ui-progressbar-value{
 	background-image: url('images/pbar-ani.gif');
