@@ -1840,18 +1840,24 @@ mw.ready( function() {
 					});
 				}
 				var dialog = $j(this).closest( '.ui-dialog' );
-				$j(this).data( 'context' ).$textarea.bind( 'keypress.srdialog', function( e ) {
-					if ( ( e.keyCode || e.which ) == 13 ) {
-						var button = dialog.data( 'dialogaction' ) || dialog.find( 'button:first' );
-						button.click();
-						e.preventDefault();
-					}
-				});
+				var that = this;
+				$j( $j(this).data( 'context' ).$iframe[0].contentWindow.document )
+					.bind( 'keypress.srdialog', function( e ) {
+						if ( ( e.keyCode || e.which ) == 13 ) {
+							// Enter
+							var button = dialog.data( 'dialogaction' ) || dialog.find( 'button:first' );
+							button.click();
+							e.preventDefault();
+						} else if ( ( e.keyCode || e.which ) == 27 ) {
+							// Escape
+							$j(that).dialog( 'close' );
+						}
+					});
 			},
 			close: function() {
-				$j(this).data( 'context' ).$textarea
-						.unbind( 'keypress.srdialog' )
-						.focus();
+				$j( $j(this).data( 'context' ).$iframe[0].contentWindow.document )
+						.unbind( 'keypress.srdialog' );
+				$j(this).data( 'context' ).$iframe[0].contentWindow.focus();
 				$j(this).closest( '.ui-dialog' ).data( 'dialogaction', false );
 			}
 		}
