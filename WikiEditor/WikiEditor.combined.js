@@ -1784,8 +1784,6 @@ mw.ready( function() {
 			});
 			
 			// TODO: Find a cleaner way to share this function
-			// FIXME: This implementation runs in quadratic time on Firefox; setSelection() and other
-			// functions should cache their index->node mapping
 			$j(this).data( 'replaceCallback', function( mode ) {
 				$j( '#wikieditor-toolbar-replace-nomatch, #wikieditor-toolbar-replace-success, #wikieditor-toolbar-replace-emptysearch, #wikieditor-toolbar-replace-invalidregex' ).hide();
 				var searchStr = $j( '#wikieditor-toolbar-replace-search' ).val();
