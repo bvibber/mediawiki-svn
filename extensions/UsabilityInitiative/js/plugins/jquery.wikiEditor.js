@@ -205,7 +205,9 @@ if ( typeof context == 'undefined' ) {
 		// General place to shouve bits of data into
 		'data': {},
 		// Unique numeric ID of this instance used both for looking up and differentiating instances of wikiEditor
-		'instance': $.wikiEditor.instances.push( $(this) ) - 1
+		'instance': $.wikiEditor.instances.push( $(this) ) - 1,
+		// Array mapping elements in the textarea to character offsets
+		'offsets': null
 	};
 	
 	/*
@@ -268,6 +270,7 @@ if ( typeof context == 'undefined' ) {
 		 */
 		'change': function( event ) {
 			event.data.scope = 'division';
+			context.fn.purgeOffsets();
 			return true;
 		},
 		'delayedChange': function( event ) {
@@ -520,36 +523,16 @@ if ( typeof context == 'undefined' ) {
 				// Firefox and Opera
 				var start = options.start, end = options.end;
 				if ( !sc || !ec ) {
-					// Firefox doesn't support character offsets very well, so use a DOM traversal
-					var t = context.fn.traverser( context.$content );
-					var startContainer = sc, startOffset = options.start;
-					var endContainer = ec, endOffset = options.end;
-					var pos = 0;
-					while ( t.node ) {
-						if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
-							t.goNext();
-							continue;
-						}
-						var newPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
-						if ( !startContainer && pos <= options.start && options.start < newPos ) {
-							startContainer = t.node;
-							startOffset = options.start - pos;
-						}
-						if ( startContainer && pos <= options.end && options.end < newPos ) {
-							endContainer = t.node;
-							endOffset = options.end - pos;
-							break;
-						}
-						pos = newPos;
-						t.goNext();
-					}
-					sc = startContainer;
-					ec = endContainer;
-					start = startOffset;
-					end = endOffset;
+					var offsets = context.fn.getOffsets();
+					var startContainer = offsets[start].node, startOffset = offsets[start].offset;
+					var endContainer = offsets[end].node, endOffset = offsets[end].offset;
+					sc = offsets[start].node;
+					ec = offsets[end].node;
+					start = offsets[start].offset;
+					end = offsets[end].offset;
 				}
 				if ( !sc || !ec ) {
-					// The DOM traversal didn't find the requested offset
+					// The requested offset isn't in the offsets array
 					// Give up
 					return;
 				}
@@ -658,24 +641,9 @@ if ( typeof context == 'undefined' ) {
 					return $( [] );
 				}
 				var seekPos = range2.text.length;
-				
-				var t = context.fn.traverser( context.$content );
-				var pos = 0;
-				while ( t.node ) {
-					if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
-						t.goNext();
-						continue;
-					}
-					var newPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
-					if ( pos <= seekPos && seekPos < newPos ) {
-						break;
-					} else {
-						pos = newPos;
-						t.goNext();
-					}
-				}
-				e = t.node;
-				offset = seekPos - pos;
+				var offsets = context.fn.getOffsets();
+				e = offsets[seekPos].node;
+				offset = offsets[seekPos].offset;
 				if ( !e )
 					return $( [] );
 			}
@@ -757,6 +725,43 @@ if ( typeof context == 'undefined' ) {
 				} while ( this.node && this.node.firstChild );
 			}
 			return new Traverser( start );
+		},
+		'getOffsets': function() {
+			if ( !context.offsets ) {
+				context.fn.refreshOffsets();
+			}
+			return context.offsets;
+		},
+		'purgeOffsets': function() {
+			context.offsets = null;
+		},
+		'refreshOffsets': function() {
+			context.offsets = [ ];
+			var t = context.fn.traverser( context.$content );
+			var pos = 0, lastTextNode = null, lastTextNodeDepth = null;
+			while ( t.node ) {
+				if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
+					t.goNext();
+					continue;
+				}
+				var nextPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
+				for ( var p = pos; p < nextPos; p++ ) {
+					context.offsets[p] = {
+						'node': t.node,
+						'offset': p - pos,
+						'length': nextPos - pos,
+						'depth': t.depth,
+						'lastTextNode': lastTextNode,
+						'lastTextNodeDepth': lastTextNodeDepth
+					};
+				}
+				pos = nextPos;
+				if ( t.node.nodeName == '#text' ) {
+					lastTextNode = t.node;
+					lastTextNodeDepth = t.depth;
+				}
+				t.goNext();
+			}
 		}
 	};
 	

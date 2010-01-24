@@ -6686,7 +6686,9 @@ if ( typeof context == 'undefined' ) {
 		// General place to shouve bits of data into
 		'data': {},
 		// Unique numeric ID of this instance used both for looking up and differentiating instances of wikiEditor
-		'instance': $.wikiEditor.instances.push( $(this) ) - 1
+		'instance': $.wikiEditor.instances.push( $(this) ) - 1,
+		// Array mapping elements in the textarea to character offsets
+		'offsets': null
 	};
 	
 	/*
@@ -6749,6 +6751,7 @@ if ( typeof context == 'undefined' ) {
 		 */
 		'change': function( event ) {
 			event.data.scope = 'division';
+			context.fn.purgeOffsets();
 			return true;
 		},
 		'delayedChange': function( event ) {
@@ -7001,36 +7004,16 @@ if ( typeof context == 'undefined' ) {
 				// Firefox and Opera
 				var start = options.start, end = options.end;
 				if ( !sc || !ec ) {
-					// Firefox doesn't support character offsets very well, so use a DOM traversal
-					var t = context.fn.traverser( context.$content );
-					var startContainer = sc, startOffset = options.start;
-					var endContainer = ec, endOffset = options.end;
-					var pos = 0;
-					while ( t.node ) {
-						if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
-							t.goNext();
-							continue;
-						}
-						var newPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
-						if ( !startContainer && pos <= options.start && options.start < newPos ) {
-							startContainer = t.node;
-							startOffset = options.start - pos;
-						}
-						if ( startContainer && pos <= options.end && options.end < newPos ) {
-							endContainer = t.node;
-							endOffset = options.end - pos;
-							break;
-						}
-						pos = newPos;
-						t.goNext();
-					}
-					sc = startContainer;
-					ec = endContainer;
-					start = startOffset;
-					end = endOffset;
+					var offsets = context.fn.getOffsets();
+					var startContainer = offsets[start].node, startOffset = offsets[start].offset;
+					var endContainer = offsets[end].node, endOffset = offsets[end].offset;
+					sc = offsets[start].node;
+					ec = offsets[end].node;
+					start = offsets[start].offset;
+					end = offsets[end].offset;
 				}
 				if ( !sc || !ec ) {
-					// The DOM traversal didn't find the requested offset
+					// The requested offset isn't in the offsets array
 					// Give up
 					return;
 				}
@@ -7139,24 +7122,9 @@ if ( typeof context == 'undefined' ) {
 					return $( [] );
 				}
 				var seekPos = range2.text.length;
-				
-				var t = context.fn.traverser( context.$content );
-				var pos = 0;
-				while ( t.node ) {
-					if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
-						t.goNext();
-						continue;
-					}
-					var newPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
-					if ( pos <= seekPos && seekPos < newPos ) {
-						break;
-					} else {
-						pos = newPos;
-						t.goNext();
-					}
-				}
-				e = t.node;
-				offset = seekPos - pos;
+				var offsets = context.fn.getOffsets();
+				e = offsets[seekPos].node;
+				offset = offsets[seekPos].offset;
 				if ( !e )
 					return $( [] );
 			}
@@ -7238,6 +7206,43 @@ if ( typeof context == 'undefined' ) {
 				} while ( this.node && this.node.firstChild );
 			}
 			return new Traverser( start );
+		},
+		'getOffsets': function() {
+			if ( !context.offsets ) {
+				context.fn.refreshOffsets();
+			}
+			return context.offsets;
+		},
+		'purgeOffsets': function() {
+			context.offsets = null;
+		},
+		'refreshOffsets': function() {
+			context.offsets = [ ];
+			var t = context.fn.traverser( context.$content );
+			var pos = 0, lastTextNode = null, lastTextNodeDepth = null;
+			while ( t.node ) {
+				if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
+					t.goNext();
+					continue;
+				}
+				var nextPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
+				for ( var p = pos; p < nextPos; p++ ) {
+					context.offsets[p] = {
+						'node': t.node,
+						'offset': p - pos,
+						'length': nextPos - pos,
+						'depth': t.depth,
+						'lastTextNode': lastTextNode,
+						'lastTextNodeDepth': lastTextNodeDepth
+					};
+				}
+				pos = nextPos;
+				if ( t.node.nodeName == '#text' ) {
+					lastTextNode = t.node;
+					lastTextNodeDepth = t.depth;
+				}
+				t.goNext();
+			}
 		}
 	};
 	
@@ -7680,142 +7685,126 @@ fn: {
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
 		
 		// Traverse the iframe DOM, inserting markers where they're needed.
-		var pos = 0;
-		var t = context.fn.traverser( context.$content );
-		var i = 0; // index for markers[]
-		var startNode = null;
-		var nextDepth = 0, startDepth = null;
-		var lastTextNode = null, lastTextNodeDepth = null;
-		while ( i < markers.length && t.node ) {
-			if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
-				// Skip this node
-				t.goNext();
+		var offsets = context.fn.getOffsets();
+		for ( var i = 0; i < markers.length; i++ ) {
+			// We want to isolate each marker, so we may need to split textNodes
+			// if a marker starts or ends halfway one.
+			var start = markers[i].start;
+			if ( !( start in offsets ) ) {
+				// This shouldn't happen
 				continue;
 			}
-			var newPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
-			if ( t.node.nodeName == '#text' ) {
-				lastTextNode = t.node;
-				lastTextNodeDepth = t.depth;
-			}
-			// We want to isolate each marker, so we may need to split textNodes
-			// if a marker starts or end halfway one.
-			if ( !startNode && markers[i].start >= pos && markers[i].start < newPos ) {
-				// The next marker starts somewhere in this textNode or at this BR
-				if ( markers[i].start > pos ) {
-					// t.node must be a textnode at this point because
-					// start > pos and start < pos+1 can't both be true
-					
-					// Split off the prefix
-					// This leaves the prefix in the current node and puts
-					// the rest in a new node, which we immediately advance to
-					t.node = t.node.splitText( markers[i].start - pos );
-					pos = markers[i].start;
-				}
-				startNode = t.node;
-				startDepth = t.depth;
-			}
-			// Don't wrap BRs, produces undesirable results
-			if ( startNode && startNode.nodeName == 'BR' ) {
-				startNode = t.node;
-				startDepth = t.depth;
-			}
-			// TODO: What happens when wrapping a zero-length string?
-			if ( startNode && markers[i].end > pos && markers[i].end <= newPos ) {
-				// The marker ends somewhere in this textNode or at this BR
-				if ( markers[i].end < newPos ) {
-					// t.node must be a textnode at this point because
-					// end > pos and end < pos+1 can't both be true
-					
-					// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
-					// node.
-					// t.node.nodeValue.length - ( newPos - markers[i].end )
-					t.node.splitText( t.node.nodeValue.length - newPos + markers[i].end );
-					newPos = markers[i].end;
-				}
+			var startNode = offsets[start].node;
+			var startDepth = offsets[start].depth;
+			// The next marker starts somewhere in this textNode or at this BR
+			if ( offsets[start].offset > 0 ) {
+				// t.node must be a textnode at this point because
+				// only textnodes can have offset > 0
 				
-				// Don't wrap leading or trailing BRs, doing that causes weird issues
-				var endNode = t.node, endDepth = t.depth;
-				if ( endNode.nodeName == 'BR' ) {
-					endNode = lastTextNode;
-					endDepth = lastTextNodeDepth;
-				}
+				// Split off the prefix
+				// This leaves the prefix in the current node and puts
+				// the rest in a new node which is our start node
+				startNode = startNode.splitText( offset );
+			}
+			// Don't wrap leading BRs, produces undesirable results
+			while ( startNode.nodeName == 'BR' && start + 1 in offsets ) {
+				start++;
+				startNode = offsets[start].node;
+				startDepth = offsets[start].depth;
+			}
+			
+			var end = markers[i].end;
+			if ( !( end in offsets ) ) {
+				// This shouldn't happen
+				continue;
+			}
+			var endNode = offsets[end].node;
+			var endDepth = offsets[end].depth;
+			if ( offsets[end].offset < offsets[end].length - 1 ) {
+				// t.node must be a textnode at this point because
+				// .length is 1 for BRs and offset can't be < 0
 				
-				// Now wrap everything between startNode and endNode (may be equal). First find the common ancestor of
-				// startNode and endNode. ca1 and ca2 will be children of this common ancestor, such that ca1 is an
-				// ancestor of startNode and ca2 of endNode. We also check that startNode and endNode are the leftmost and
-				// rightmost leaves in the subtrees rooted at ca1 and ca2 respectively; if this is not the case, we
-				// can't cleanly wrap things without misnesting and we silently fail.
-				var ca1 = startNode, ca2 = endNode;
-				// Correct for startNode and endNode possibly not having the same depth
-				if ( startDepth > endDepth ) {
-					for ( var j = 0; j < startDepth - endDepth && ca1; j++ ) {
-						ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
-					}
-				}
-				else if ( startDepth < endDepth ) {
-					for ( var j = 0; j < endDepth - startDepth && ca2; j++ ) {
-						ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
-					}
-				}
-				// Now that ca1 and ca2 have the same depth, have them walk up the tree simultaneously
-				// to find the common ancestor
-				while ( ca1 && ca2 && ca1.parentNode != ca2.parentNode ) {
+				// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
+				// node.
+				// endNode.nodeValue.length - ( newPos - markers[i].end )
+				endNode.splitText( offsets[end].offset + 1 );
+			}
+			
+			// Don't wrap trailing BRs, doing that causes weird issues
+			if ( endNode.nodeName == 'BR' ) {
+				endNode = offsets[end].lastTextNode;
+				endDepth = offsets[end].lastTextNodeDepth;
+			}
+			
+			// Now wrap everything between startNode and endNode (may be equal). First find the common ancestor of
+			// startNode and endNode. ca1 and ca2 will be children of this common ancestor, such that ca1 is an
+			// ancestor of startNode and ca2 of endNode. We also check that startNode and endNode are the leftmost and
+			// rightmost leaves in the subtrees rooted at ca1 and ca2 respectively; if this is not the case, we
+			// can't cleanly wrap things without misnesting and we silently fail.
+			var ca1 = startNode, ca2 = endNode;
+			// Correct for startNode and endNode possibly not having the same depth
+			if ( startDepth > endDepth ) {
+				for ( var j = 0; j < startDepth - endDepth && ca1; j++ ) {
 					ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
+				}
+			}
+			else if ( startDepth < endDepth ) {
+				for ( var j = 0; j < endDepth - startDepth && ca2; j++ ) {
 					ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
 				}
-				if ( ca1 && ca2 ) {
-					var anchor = markers[i].getAnchor( ca1, ca2 );
-					if ( !anchor ) {
-						// We have to store things like .parentNode and .nextSibling because appendChild() changes these
-						// properties
-						var newNode = ca1.ownerDocument.createElement( 'div' );
-						var commonAncestor = ca1.parentNode;
-						var nextNode = ca2.nextSibling;
-						if ( markers[i].anchor == 'wrap' ) {
-							// Append all nodes between ca1 and ca2 (inclusive) to newNode
-							var n = ca1;
-							while ( n != nextNode ) {
-								var ns = n.nextSibling;
-								newNode.appendChild( n );
-								n = ns;
-							}
-							
-							// Insert newNode in the right place
-							if ( nextNode ) {
-								commonAncestor.insertBefore( newNode, nextNode );
-							} else {
-								commonAncestor.appendChild( newNode );
-							}
-						} else if ( markers[i].anchor == 'before' ) {
-							commonAncestor.insertBefore( newNode, ca1 );
-						} else if ( markers[i].anchor == 'after' ) {
-							if ( nextNode ) {
-								commonAncestor.insertBefore( newNode, nextNode );
-							} else {
-								commonAncestor.appendChild( newNode );
-							}
+			}
+			// Now that ca1 and ca2 have the same depth, have them walk up the tree simultaneously
+			// to find the common ancestor
+			while ( ca1 && ca2 && ca1.parentNode != ca2.parentNode ) {
+				ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
+				ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
+			}
+			if ( ca1 && ca2 ) {
+				var anchor = markers[i].getAnchor( ca1, ca2 );
+				if ( !anchor ) {
+					// We have to store things like .parentNode and .nextSibling because appendChild() changes these
+					// properties
+					var newNode = ca1.ownerDocument.createElement( 'div' );
+					var commonAncestor = ca1.parentNode;
+					var nextNode = ca2.nextSibling;
+					if ( markers[i].anchor == 'wrap' ) {
+						// Append all nodes between ca1 and ca2 (inclusive) to newNode
+						var n = ca1;
+						while ( n != nextNode ) {
+							var ns = n.nextSibling;
+							newNode.appendChild( n );
+							n = ns;
 						}
 						
-						$( newNode ).data( 'marker', markers[i] )
-							.addClass( 'wikiEditor-highlight wikiEditor-highlight-tmp' );
-						
-						// Allow the module adding this marker to manipulate it
-						markers[i].afterWrap( newNode, markers[i] );
-					} else {
-						// Temporarily add a class for bookkeeping purposes
-						$( anchor )
-							.addClass( 'wikiEditor-highlight-tmp' )
-							.data( 'marker', markers[i] );
-						markers[i].onSkip( anchor );
+						// Insert newNode in the right place
+						if ( nextNode ) {
+							commonAncestor.insertBefore( newNode, nextNode );
+						} else {
+							commonAncestor.appendChild( newNode );
+						}
+					} else if ( markers[i].anchor == 'before' ) {
+						commonAncestor.insertBefore( newNode, ca1 );
+					} else if ( markers[i].anchor == 'after' ) {
+						if ( nextNode ) {
+							commonAncestor.insertBefore( newNode, nextNode );
+						} else {
+							commonAncestor.appendChild( newNode );
+						}
 					}
+					
+					$( newNode ).data( 'marker', markers[i] )
+						.addClass( 'wikiEditor-highlight wikiEditor-highlight-tmp' );
+					
+					// Allow the module adding this marker to manipulate it
+					markers[i].afterWrap( newNode, markers[i] );
+				} else {
+					// Temporarily add a class for bookkeeping purposes
+					$( anchor )
+						.addClass( 'wikiEditor-highlight-tmp' )
+						.data( 'marker', markers[i] );
+					markers[i].onSkip( anchor );
 				}
-				// Clear for next iteration
-				startNode = null;
-				startDepth = null;
-				i++;
 			}
-			pos = newPos;
-			t.goNext();
 		}
 		
 		// Remove markers that were previously inserted but weren't passed to this function
