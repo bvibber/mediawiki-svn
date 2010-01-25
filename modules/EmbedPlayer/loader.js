@@ -33,8 +33,8 @@ mw.addClassFilePaths( {
 
 // Add style sheet dependencies ( From ROOT )
 mw.addClassStyleSheets( {
-	"kskinConfig" : "skins/kskin/playerSkin.css",
-	"mvpcfConfig" : "skins/mvpcf/playerSkin.css"	
+	"kskinConfig" : "skins/kskin/EmbedPlayer.css",
+	"mvpcfConfig" : "skins/mvpcf/EmbedPlayer.css"	
 } );
 
 // Add the module loader function:

@@ -1749,7 +1749,7 @@ var mwDefaultConf = {
 			
 			return ;
 		}
-		// If mwReadyFlag is already "ready" call the callback directly:
+		// If mwReadyFlag is already "true" issue the callback directly:
 		callback();		
 	}	
 	
@@ -2293,23 +2293,23 @@ var mwDefaultConf = {
 				}										
 				mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jQueryUISkin' ) + '/' );
 				
-				// Only load jquery ui theme sheet if ui-widget does not exist. 
+				// Only load jquery ui theme sheet if ui-widget does not exist.
+				// NOTE: this rule test sucks cuz it does not work cross domain 
 				if( ! mw.styleRuleExists( 'ui-widget' ) ){				
 					mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
 				}
 				
-				mw.setConfig( 'skin_img_path', mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/images/' ); 
-				mw.setConfig( 'default_video_thumb', mw.getConfig( 'skin_img_path' ) + 'vid_default_thumb.jpg' );
+				mw.setConfig( 'images_path', mw.getMwEmbedPath() + 'skins/common/images/' ); 
 	
-				// Make Core skin/style sheets are always available:			
-				mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/styles.css' );
+				// Get Core skin/style sheets are always available:			
+				mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/common/common.css' );
 	
 				// Set up AJAX to not send dynamic URLs for loading scripts
 				$j.ajaxSetup( {
 					cache: true
 				} );
 				
-				//Update the magic keywords 		
+				// Update the magic keywords 		
 				mw.lang.magicSetup();
 				
 				// Set up mvEmbed utility jQuery bindings
@@ -2367,7 +2367,7 @@ var mwDefaultConf = {
 	* so avoid calling this function where possible and 
 	* cache its result
 	*
-	* Note this only works for style sheets on the same domain :(
+	* NOTE: this only works for style sheets on the same domain :(
 	* 
 	* @param {String} styleRule Style rule name to check
 	* @return 
@@ -2396,6 +2396,7 @@ var mwDefaultConf = {
 		}
 		return false;	
 	}
+	
 	// Flag to register the domReady has been called
 	var mwDomReadyFlag = false;	
 	

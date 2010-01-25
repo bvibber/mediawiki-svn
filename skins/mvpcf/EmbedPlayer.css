@@ -259,4 +259,114 @@
 }
 
 
+/*Video options*/
+.videoOptions {
+	display: none;
+	width: 183px;
+	overflow: hidden;
+	position: absolute;
+	z-index: 9999;
+/*	margin: 0 0 0 230px;*/
+}
+*:first-child+html .videoOptions {margin-top: -20px;}
+.videoOptionsTop {
+	width: 183px;
+	height: 32px;
+	position: relative;
+	z-index: 3;
+	background: url(images/player_options_top.png) 0 0 no-repeat;
+}
+.videoOptionsBox {
+	width: 170px;
+	padding: 0px 11px 0 4px;
+	position: relative;
+	overflow: hidden;
+	color:#6C6C6C;
+	z-index: 3;
+	background: url(images/player_options_bg.png) 0 0 repeat-y;
+}
+.videoOptionsBot {
+	width: 183px;
+	height: 18px;
+	position: relative;
+	z-index: 3;
+	background: url(images/player_options_bottom.png) 0 0 no-repeat;
+}
+
+.videoOptionsBox div.block {
+	border-top: 1px solid #dadada;
+}
+.videoOptionsBox div.block h6 {
+	padding: 0;
+	margin: 5px 0;
+	text-align: center;
+}
+.videoOptionsBox div.wide_block {
+	padding: 15px 0;
+}
+.videoOptionsBox div.first_block {
+	border: 0;
+}
+.videoOptionsBox div.block p {padding: 10px 20px;margin: 0;}
+.videoOptionsBox div.block p.short_match, .videoOptionsBox div.block p.normal_match {padding: 0; margin: 0;}
+.videoOptionsBox div.block p a {text-decoration: none;}
+.videoOptionsBox div.block p.short_match a {
+	padding: 0;
+	display: block;
+	width: 100%;
+	border-bottom: 1px solid #dadada;
+}
+.videoOptionsBox div.block p.short_match a span {display: block; padding: 5px 20px;}
+.videoOptionsBox div.block p.short_match a:hover {background: #0b68c9 url(images/selector.png) 0 0 repeat-x; color: white;}
+.videoOptionsBox div.block p.short_match a.last_match {border: 0;}
+
+.videoOptionsBox div.block p.normal_match a {
+	padding: 0;
+	margin: 0;
+	display: block;
+	width: 100%;
+	border: 0;
+}
+.videoOptionsBox div.block p.normal_match a span {display: block; padding: 3px 20px;}
+.videoOptionsBox div.block p.normal_match a:hover {background: #0b68c9 url(images/selector.png) 0 0 repeat-x; color: white;}
+.videoOptionsBox div.block p.normal_match a.last_match {border: 0;}
+
+.videoOptionsBox div.block p.bill_match {border-bottom: 1px solid #dadada;}
+
+.videoOptionsBox div.block p.last_match {border-bottom: 0;}
+
+.videoOptionsBox div.block ul {
+	list-style: none;
+	margin: 10px 0;
+	padding: 0 20px;
+}
+.videoOptionsBox div.block ul a { text-decoration: none;}
+.videoOptionsBox div.block ul li { margin: 7px 0;}
+.videoOptionsBox div.block ul li ul {margin: 0;}
+.videoOptionsBox div.block ul li ul li a {color: #df5c01;}
+.videoOptionsBox div.block ul li ul li a:hover {color: #ffa02f;}
+
+.videoOptionsBox div.block ul li span.clips {display: block; text-align: right; margin: 6px 0 18px 0;}
+
+.videoOptionsBox div.advanced a.advanced_options {color: #aaa; text-align: center; display: block; margin: 3px 0; text-decoration: none;}
+
+.videoOptionsBox div.embed_code {text-align: center; border-bottom: 1px solid #dadada; }
+.videoOptionsBox div.embed_code textarea {
+	margin: 10px 0 10px 0;
+	padding: 3px;
+	width: 142px;
+	height: 54px;
+	border: 1px solid #dadada;
+	font-family: Arial;
+	color: #777;
+	font-size: 11px;
+}
+.videoOptionsBox div.embed_code button.copy_to_clipboard {
+	background: #dddddd url(images/button_to_clipboard.png) 0 0 repeat-x;
+	border: 1px solid #a1badf;
+	text-align: center;
+	padding: 2px 4px;
+	margin: 0 0 6px 0;
+}
+
 

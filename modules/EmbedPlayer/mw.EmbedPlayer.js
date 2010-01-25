@@ -60,7 +60,7 @@ mw.addMessages( {
 	"mwe-ogg-player-selected" : "(selected)",
 	"mwe-ogg-player-omtkplayer" : "OMTK Flash Vorbis",
 	"mwe-generic_missing_plugin" : "You browser does not appear to support the following playback type: <b>$1<\/b><br \/>Visit the <a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Media_help\">Playback Methods<\/a> page to download a player.<br \/>",
-	"mwe-for_best_experience" : "For a better video playback experience we recommend:<br \/><b><a href=\"http:\/\/www.mozilla.com\/en-US\/firefox\/upgrade.html?from=mwEmbed\">Firefox 3.5<\/a>.<\/b>",
+	"mwe-for_best_experience" : "For a better video playback experience we recommend:<br \/><b><a href=\"http:\/\/www.mozilla.com\/en-US\/firefox\/upgrade.html?from=mwEmbed\">Firefox<\/a>.<\/b>",
 	"mwe-do_not_warn_again" : "Dismiss for now.",
 	"mwe-playerSelect" : "Players",
 	"mwe-read_before_embed" : "<a href=\"http:\/\/mediawiki.org\/wiki\/Security_Notes_on_Remote_Embedding\" target=\"_new\">Read this<\/a> before embedding.",
@@ -854,7 +854,7 @@ mediaElement.prototype = {
 		
 		// Set by default thumb value if not found
 		if( ! this.thumbnail  )
-			this.thumbnail = mw.getConfig( 'default_video_thumb' );
+			this.thumbnail = mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg' ;
 		
 		// Process the video_element as a source element:
 		if ( $j( video_element ).attr( "src" ) ){
@@ -1275,7 +1275,7 @@ mw.EmbedPlayer.prototype = {
 		} );
 				
 		// Make sure we have the player skin css:
-		mw.getStyleSheet(  mw.getMwEmbedPath() +  'skins/' + this.skinName + '/playerSkin.css' );
+		mw.getStyleSheet(  mw.getMwEmbedPath() +  'skins/' + this.skinName + '/EmbedPlayer.css' );
 	},
 		
 	
@@ -1355,7 +1355,7 @@ mw.EmbedPlayer.prototype = {
 	* 	that request is issued here 
 	*/
 	checkPlayerSources: function() {
-		mw.log( 'f:checkPlayerSources' + this.id );
+		mw.log( 'f:checkPlayerSources: ' + this.id );
 		var _this = this;		
 		// Process the provided ROE file. If we don't yet have sources
 		// ( the ROE file provides xml list of sources ) 
@@ -2447,8 +2447,7 @@ mw.EmbedPlayer.prototype = {
 		$j.each( this.mediaElement.getPlayableSources(), function( source_id, source ) {
 			var playable = mw.EmbedTypes.players.defaultPlayer( source.getMIMEType() );
 
-			var is_selected = ( source == _this.mediaElement.selected_source );
-			var image_src =  mw.getConfig( 'skin_img_path' ) ;
+			var is_selected = ( source == _this.mediaElement.selected_source );			
 			
 			o += '<h2>' + source.getTitle() + '</h2>';
 			

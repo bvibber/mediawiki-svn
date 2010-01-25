@@ -374,10 +374,10 @@ class jsScriptLoader {
 			$this->urid = $wgStyleVersion;
 		}
 
-		//get the language code (if not provided use the "default" language
+		// Get the language code (if not provided use the "default" language
 		if ( isset( $_GET['uselang'] ) && $_GET['uselang'] != '' ) {
-			//make sure its a valid lang code:
-			$this->langCode = preg_replace( "/[^A-Za-z]/", '', $_GET['uselang']);
+			// Strip any non alphaNumeric or dash characters from the language code:
+			$this->langCode = preg_replace( "/[^A-Za-z\-]/", '', $_GET['uselang']);
 		}else{
 			//set English as default
 			$this->langCode = 'en';

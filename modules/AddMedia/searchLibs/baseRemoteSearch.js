@@ -238,9 +238,11 @@ baseRemoteSearch.prototype = {
 			outHtml = this.getImageEmbedHTML( resource, options );
 			
 		if ( resource.mime == 'application/ogg' || resource.mime == 'video/ogg' || resource.mime == 'audio/ogg' ) {
-			// Setup the attribute html (can't use jQuery builder for video element in a cross browser friendly way.) 
+			// Setup the attribute html 
+			// NOTE: Can't use jQuery builder for video element, ( non html5 don't work consistently ) 
 			var ahtml = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
 			ahtml+=	'src="' + resource.src + '" ' +
+					'class="' + mw.getConfig( 'skinName' ) + '" ' + 
 					'style="' + options.style + '" ' +
 					'poster="' +  resource.poster + '" '+
 					'type="' + resource.mime + '" ';
