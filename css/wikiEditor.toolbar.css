@@ -198,6 +198,7 @@ body.rtl .wikiEditor-ui-toolbar .group > .tool-select {
 	padding-right: 22px;
 	margin-right: 4px;
 	cursor: pointer;
+	text-decoration: none;
 	color: #333333;
 }
 body.rtl .wikiEditor-ui-toolbar .group .tool-select .label {

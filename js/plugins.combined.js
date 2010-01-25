@@ -6919,12 +6919,16 @@ if ( typeof context == 'undefined' ) {
 				// Firefox and Opera
 				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
 				if ( options.ownline ) {
+					var body = context.$content.get( 0 );
 					// TODO: This'll probably break with syntax highlighting
-					if ( range.startOffset != 0 ) {
+					// When the selection starts at the beginning of a line, it'll have either
+					// startOffset == 0 or startContainer == body
+					if ( range.startOffset != 0 && range.startContainer != body ) {
 						pre  = "\n" + options.pre;
 					}
 					// TODO: Will this still work with syntax highlighting?
-					if ( range.endContainer == range.commonAncestorContainer ) {
+					// When the selection ends at the end of a line, it'll have endContainer == body
+					if ( range.endContainer != body ) {
 						post += "\n";
 					}
 				}
@@ -9569,11 +9573,7 @@ fn: {
 				return $button;
 			case 'select':
 				var $select = $( '<div />' )
-					.attr( { 'rel' : id, 'class' : 'tool tool-select' } )
-					.click( function() {
-						var $options = $(this).find( '.options' );
-						$options.animate( { 'opacity': 'toggle' }, 'fast' );
-					} );
+					.attr( { 'rel' : id, 'class' : 'tool tool-select' } );
 				$options = $( '<div />' ).addClass( 'options' );
 				if ( 'list' in tool ) {
 					for ( option in tool.list ) {
@@ -9586,15 +9586,31 @@ fn: {
 									$.wikiEditor.modules.toolbar.fn.doAction(
 										$(this).data( 'context' ), $(this).data( 'action' ), $(this)
 									);
+									// Hide the dropdown
+									// Sanity check: if this somehow gets called while the dropdown
+									// is hidden, don't show it
+									if ( $(this).parent().is( ':visible' ) ) {
+										$(this).parent().animate( { 'opacity': 'toggle' }, 'fast' );
+									}
+									return false;
 								} )
 								.text( optionLabel )
 								.addClass( 'option' )
-								.attr( 'rel', option )
+								.attr( { 'rel': option, 'href': '#' } )
 						);
 					}
 				}
 				$select.append( $( '<div />' ).addClass( 'menu' ).append( $options ) );
-				$select.append( $( '<div />' ).addClass( 'label' ).text( label ) );
+				$select.append( $( '<a />' )
+							.addClass( 'label' )
+							.text( label )
+							.data( 'options', $options )
+							.attr( 'href', '#' )
+							.click( function() {
+								$(this).data( 'options' ).animate( { 'opacity': 'toggle' }, 'fast' );
+								return false;
+							} )
+				);
 				return $select;
 			default:
 				return null;
