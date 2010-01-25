@@ -35,7 +35,7 @@ class WikiEditorHooks {
 			array(
 				'src' => 'Modules/Toolbar/Toolbar.js',
 				'class' => 'wikiEditor.config.toolbar',
-				'version' => 29
+				'version' => 30
 			),
 			array(
 				'src' => 'Modules/TemplateEditor/TemplateEditor.js',
@@ -44,10 +44,10 @@ class WikiEditorHooks {
 			),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 31 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 32 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 31 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 32 ),
 		),
 	);
 	static $messages = array(
