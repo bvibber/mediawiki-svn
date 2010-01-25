@@ -6902,11 +6902,14 @@ if ( typeof context == 'undefined' ) {
 		 */
 		'encapsulateSelection': function( options ) {
 			var selText = $(this).textSelection( 'getSelection' );
+			var selTextArr;
 			var selectAfter = false;
 			var pre = options.pre, post = options.post;
 			if ( !selText ) {
 				selText = options.peri;
 				selectAfter = true;
+			} else if ( options.splitlines ) {
+				selTextArr = selText.split( /\n/ );
 			} else if ( options.replace ) {
 				selText = options.peri;
 			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
@@ -6932,7 +6935,15 @@ if ( typeof context == 'undefined' ) {
 						post += "\n";
 					}
 				}
-				var insertText = pre + selText + post;
+				var insertText = "";
+				if ( options.splitlines ) {
+					for( var i = 0; i < selTextArr.length; i++ ) {
+						insertText = insertText + pre + selTextArr[i] + post;
+						if( i != selTextArr.length - 1 ) insertText += "\n"; 
+					}
+				} else {
+					insertText = pre + selText + post;
+				}
 				var insertLines = insertText.split( "\n" );
 				range.extractContents();
 				// Insert the contents one line at a time - insertNode() inserts at the beginning, so this has to happen
@@ -6971,8 +6982,18 @@ if ( typeof context == 'undefined' ) {
 						post += "\n";
 					}
 				}
+				// TODO: Clean this up. Duplicate code due to the pre-existing browser specific structure of this function
+				var insertText = "";
+				if ( options.splitlines ) {
+					for( var i = 0; i < selTextArr.length; i++ ) {
+						insertText = insertText + pre + selTextArr[i] + post;
+						if( i != selTextArr.length - 1 ) insertText += "\n"; 
+					}
+				} else {
+					insertText = pre + selText + post;
+				}
 				// TODO: Maybe find a more elegant way of doing this like the Firefox code above?
-				range.pasteHTML( ( pre + selText + post )
+				range.pasteHTML( insertText
 						.replace( /\</g, '&lt;' )
 						.replace( />/g, '&gt;' )
 						.replace( /\r?\n/g, '<br />' )

@@ -455,7 +455,8 @@ mw.ready( function() {
 								pre: ":",
 								periMsg: 'wikieditor-toolbar-tool-indent-example',
 								post: "",
-								ownline: true
+								ownline: true,
+								splitlines: true
 							}
 						}
 					}
