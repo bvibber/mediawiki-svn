@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r80';
+var mwRemoteVersion = 'r81';
 var mwUseScriptLoader = true;
 
 //Log the mwRemote version ( will determin what version of js we get )
@@ -185,8 +185,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 		// Don't process empty vids
 		if ( !vidId )		
 			return ;
-			
-		mw.log( 'vidIdList on: ' + vidId + ' id:' +  $j('#' + vidId ).length + ' length: ' + vidIdList.length + ' left in the set: ' + vidIdList );
+					
 		
 		tag_type = 'video';	
 				
@@ -255,7 +254,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 			$j( '#' + vidId ).after( html_out ).remove();				
 
 			// Do the actual rewrite 			
-			mw.log("rewrite: "+ vidId );	
+			//mw.log("rewrite: "+ vidId );	
 			$j( '#mwe_' + vidId ).embedPlayer();
 			//issue an async request to rewrite the next clip
 			if ( vidIdList.length != 0 ) {					
@@ -365,7 +364,7 @@ function waitMwEmbedReady( callback ) {
 	if( ! mwCheckObjectPath( 'mw.version' ) ){
 		setTimeout( function() {
 			waitMwEmbedReady( callback );
-		}, 25 );
+		}, 10 );
 	} else {				
 		// Make sure mwEmbed is "setup" by using the addOnLoadHook: 
 		mw.ready( function(){			
@@ -382,6 +381,7 @@ function waitMwEmbedReady( callback ) {
  * run after mwEmbed setup so $j and mw interface is available: 
  */
 function mwCheckForGadget(){	
+	mw.log('mwCheckForGadget');
 	scripts = document.getElementsByTagName( 'script' );
 	for( var i = 0 ; i < scripts.length ; i ++){
 		if ( scripts[i].src && 
