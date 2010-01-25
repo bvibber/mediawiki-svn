@@ -660,12 +660,20 @@ mw.RemoteSearchDriver.prototype = {
 		
 		_this.clearTextboxCache();
 		var query = _this.getDefaultQuery();
-		if ( query !=  $j( '#rsd_q' ).val() ) {
+		
+		// Refresh the container if "upload" or "changed query"  
+		if ( query !=  $j( '#rsd_q' ).val() 
+			|| 
+			this.current_provider == 'upload' )  
+		{
 			$j( '#rsd_q' ).val( query );
 			_this.UpdateResults();
 		}
 		// $j(_this.target_container).dialog("open");
 		$j( _this.target_container ).parents( '.ui-dialog' ).fadeIn( 'slow' );
+		
+	
+		
 		// re-center the dialog:
 		$j( _this.target_container ).dialog( 'option', 'position', 'center' );
 	},
