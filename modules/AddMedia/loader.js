@@ -33,7 +33,7 @@ mw.addClassFilePaths( {
 //Setup the addMediaWizard module
 mw.addModuleLoader( 'AddMedia.addMediaWizard', function( callback ){
 	// Load all the required libs:
-	var libReq = [
+	var request = [
 		[	'mw.RemoteSearchDriver',
 			'$j.cookie',
 			'$j.fn.textSelection',
@@ -47,7 +47,7 @@ mw.addModuleLoader( 'AddMedia.addMediaWizard', function( callback ){
 			'$j.ui.sortable'
 		]
 	];
-	mw.load( libReq , function() {
+	mw.load( request , function() {
 		callback( 'AddMedia.addMediaWizard' );
 	} );
 });

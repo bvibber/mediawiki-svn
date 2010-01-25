@@ -1887,22 +1887,23 @@ mw.RemoteSearchDriver.prototype = {
 					} 
 				);				
 				mw.log( 'append html: ' + embedHtml );
-				$j( '#clip_edit_disp' ).html( embedHtml );
-				
-				// Add extra space at the top if the resource is 'audio' bug 22189				
-				if( _this.getMediaType( resource ) == 'audio' ){
-					$j( '#clip_edit_disp' ).prepend( 
-						$j( '<span />' )
-						.css({
-							'height': '90px',
-							'display': 'block'
-						}) 
-					);
-				}
+				$j( '#clip_edit_disp' ).html( embedHtml );								
 				
 				mw.log( "about to call $j.embedPlayer::embed_vid" );							
 				// Rewrite by id	
 				$j( '#embed_vid').embedPlayer ( function() {
+					
+					// Add extra space at the top if the embed player is less than 90px high
+					// bug 22189				
+					if( $j('#embed_vid').get(0).getPlayerHeight() < 90 ){
+						$j( '#clip_edit_disp' ).prepend( 
+							$j( '<span />' )
+							.css({
+								'height': '90px',
+								'display': 'block'
+							}) 
+						);
+					}
 				
 					// Grab information available from the embed instance
 					resource.pSobj.addEmbedInfo( resource, 'embed_vid' );
