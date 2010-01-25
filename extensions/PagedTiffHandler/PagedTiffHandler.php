@@ -40,10 +40,9 @@ $wgMaxUploadSize = 1073741824;
 
  */
 
-$wgExtensionCredits['other'][] = array(
-	'name' => 'Paged Tiff Handler',
-	'svn-date' => '$LastChangedDate: 2008-12-25 00:29:44 +0000 (Thu, 25 Dec 2008) $',
-	'svn-revision' => '$LastChangedRevision: 45011 $',
+$wgExtensionCredits['media'][] = array(
+	'path' => __FILE__,
+	'name' => 'PagedTiffHandler',
 	'author' => '[http://www.hallowelt.biz HalloWelt! Medienwerkstatt GmbH], Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser for Wikimedia Deutschland',
 	'description' => 'Handler for viewing paged TIFF files in image mode',
 	'descriptionmsg' => 'tiff-desc',
@@ -51,21 +50,21 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgTiffIdentifyRejectMessages = array(
-    '/TIFFErrors?/',
-    '/^identify: Compression algorithm does not support random access/',
-    '/^identify: Old-style LZW codes, convert file/',
-    '/^identify: Sorry, requested compression method is not configured/',
-    '/^identify: ThunderDecode: Not enough data at scanline/',
-    '/^identify: .+?: Read error on strip/',
-    '/^identify: .+?: Can not read TIFF directory/',
-    '/^identify: Not a TIFF/',
+	'/TIFFErrors?/',
+	'/^identify: Compression algorithm does not support random access/',
+	'/^identify: Old-style LZW codes, convert file/',
+	'/^identify: Sorry, requested compression method is not configured/',
+	'/^identify: ThunderDecode: Not enough data at scanline/',
+	'/^identify: .+?: Read error on strip/',
+	'/^identify: .+?: Can not read TIFF directory/',
+	'/^identify: Not a TIFF/',
 );
 
 $wgTiffIdentifyBypassMessages = array(
-    //'/TIFFWarnings/',
-    //'/TIFFWarning/',
-    '/^identify: .*TIFFReadDirectory/',
-    '/^identify: .+?: unknown field with tag .+? encountered/'
+	//'/TIFFWarnings/',
+	//'/TIFFWarning/',
+	'/^identify: .*TIFFReadDirectory/',
+	'/^identify: .+?: unknown field with tag .+? encountered/'
 );
 
 // Use PHP-TiffReader
