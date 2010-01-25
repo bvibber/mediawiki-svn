@@ -312,11 +312,7 @@ fn: {
 				return $button;
 			case 'select':
 				var $select = $( '<div />' )
-					.attr( { 'rel' : id, 'class' : 'tool tool-select' } )
-					.click( function() {
-						var $options = $(this).find( '.options' );
-						$options.animate( { 'opacity': 'toggle' }, 'fast' );
-					} );
+					.attr( { 'rel' : id, 'class' : 'tool tool-select' } );
 				$options = $( '<div />' ).addClass( 'options' );
 				if ( 'list' in tool ) {
 					for ( option in tool.list ) {
@@ -329,15 +325,31 @@ fn: {
 									$.wikiEditor.modules.toolbar.fn.doAction(
 										$(this).data( 'context' ), $(this).data( 'action' ), $(this)
 									);
+									// Hide the dropdown
+									// Sanity check: if this somehow gets called while the dropdown
+									// is hidden, don't show it
+									if ( $(this).parent().is( ':visible' ) ) {
+										$(this).parent().animate( { 'opacity': 'toggle' }, 'fast' );
+									}
+									return false;
 								} )
 								.text( optionLabel )
 								.addClass( 'option' )
-								.attr( 'rel', option )
+								.attr( { 'rel': option, 'href': '#' } )
 						);
 					}
 				}
 				$select.append( $( '<div />' ).addClass( 'menu' ).append( $options ) );
-				$select.append( $( '<div />' ).addClass( 'label' ).text( label ) );
+				$select.append( $( '<a />' )
+							.addClass( 'label' )
+							.text( label )
+							.data( 'options', $options )
+							.attr( 'href', '#' )
+							.click( function() {
+								$(this).data( 'options' ).animate( { 'opacity': 'toggle' }, 'fast' );
+								return false;
+							} )
+				);
 				return $select;
 			default:
 				return null;

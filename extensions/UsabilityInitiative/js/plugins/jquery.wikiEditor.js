@@ -438,12 +438,16 @@ if ( typeof context == 'undefined' ) {
 				// Firefox and Opera
 				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
 				if ( options.ownline ) {
+					var body = context.$content.get( 0 );
 					// TODO: This'll probably break with syntax highlighting
-					if ( range.startOffset != 0 ) {
+					// When the selection starts at the beginning of a line, it'll have either
+					// startOffset == 0 or startContainer == body
+					if ( range.startOffset != 0 && range.startContainer != body ) {
 						pre  = "\n" + options.pre;
 					}
 					// TODO: Will this still work with syntax highlighting?
-					if ( range.endContainer == range.commonAncestorContainer ) {
+					// When the selection ends at the end of a line, it'll have endContainer == body
+					if ( range.endContainer != body ) {
 						post += "\n";
 					}
 				}
