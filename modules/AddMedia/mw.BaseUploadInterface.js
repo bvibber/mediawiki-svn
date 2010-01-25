@@ -723,7 +723,7 @@ mw.BaseUploadInterface.prototype = {
 						'ignorewarnings': 1,
 						'filename': $j( '#wpDestFile' ).val(),
 						'token' :  _this.editToken,
-						'comment' :  $j( '#wpUploadDescription' ).val(),
+						'comment' :  $j( '#wpUploadDescription' ).val()
 					};
 					//run the upload from stash request
 					mw.getJSON(_this.api_url, request, function( data ) {
