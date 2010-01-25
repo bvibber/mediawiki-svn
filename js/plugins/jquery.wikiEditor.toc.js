@@ -113,7 +113,7 @@ evt: {
 	}
 },
 exp: [
-	{ 'regex': /^(={1,6})(.+?)\1\s*$/m, 'label': 'TOC_HEADER', 'markAfter': true }
+	{ 'regex': /^(={1,6})([^\r\n]+?)\1\s*$/m, 'label': 'TOC_HEADER', 'markAfter': true }
 ],
 /**
  * Internally used functions

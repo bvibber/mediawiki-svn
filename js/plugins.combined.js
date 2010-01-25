@@ -6729,6 +6729,22 @@ if ( typeof context == 'undefined' ) {
 				.hide()
 				.appendTo( context.$ui );
 		},
+		'htmlToText': function( html ) {
+			// We use .html() instead of .text() so HTML entities are handled right - setting the HTML of the textarea
+			// doesn't work on all browsers, use a dummy <div> instead
+			// Get rid of the noincludes when getting text
+			var $pre = $( '<pre>' +
+				html
+					.replace( /\r?\n/g, "" )
+					.replace( /\<br[^\>]*\>/gi, "\n" )
+					.replace( /&nbsp;/g, " " )
+					.replace( /\<p[^\>]*\>/gi, "\n" )
+					.replace( /\<\/p[^\>]*\>/gi, "" )
+				+ '</pre>' );
+			$pre.find( '.wikiEditor-noinclude' ).each( function() { $( this ).remove(); } );
+			$pre.find( '.wikiEditor-tab' ).each( function() { $( this ).text( "\t" ) } );
+			return $pre.text();
+		},
 		
 		/*
 		 * FIXME: This section needs attention! It doesn't really make sense given it's supposed to keep compatibility
@@ -6741,20 +6757,7 @@ if ( typeof context == 'undefined' ) {
 		 * Gets the complete contents of the iframe (in plain text, not HTML)
 		 */
 		'getContents': function() {
-			// We use .html() instead of .text() so HTML entities are handled right - setting the HTML of the textarea
-			// doesn't work on all browsers, use a dummy <div> instead
-			// Get rid of the noincludes when getting text
-			var $pre = $( '<pre>' +
-				context.$content.html()
-					.replace( /\r?\n/g, "" )
-					.replace( /\<br[^\>]*\>/gi, "\n" )
-					.replace( /&nbsp;/g, " " )
-					.replace( /\<p[^\>]*\>/gi, "\n" )
-					.replace( /\<\/p[^\>]*\>/gi, "" )
-				+ '</pre>' );
-			$pre.find( ".wikiEditor-noinclude" ).each( function() { $( this ).remove(); } );
-			$pre.find( ".wikiEditor-tab" ).each( function() { $( this ).text( "\t" ) } );
-			return $pre.text();
+			return context.fn.htmlToText( context.$content.html() );
 		},
 		/**
 		 * Gets the currently selected text in the content
@@ -6770,7 +6773,10 @@ if ( typeof context == 'undefined' ) {
 				retval = context.$iframe[0].contentWindow.document.selection.createRange();
 			}
 			if ( typeof retval.text != 'undefined' ) {
-				retval = retval.text;
+				// In IE8, retval.text is stripped of newlines, so we need to process retval.htmlText
+				// to get a reliable answer. IE7 does get this right though
+				// Run this fix for all IE versions anyway, it doesn't hurt
+				retval = context.fn.htmlToText( retval.htmlText );
 			} else if ( retval.toString ) {
 				retval = retval.toString();
 			}
@@ -7028,7 +7034,7 @@ if ( typeof context == 'undefined' ) {
 				} catch ( e ) {
 					return $( [] );
 				}
-				var seekPos = range2.text.length;
+				var seekPos = context.fn.htmlToText( range2.htmlText ).length;
 				var offsets = context.fn.getOffsets();
 				e = offsets[seekPos].node;
 				offset = offsets[seekPos].offset;
@@ -7046,7 +7052,7 @@ if ( typeof context == 'undefined' ) {
 				while ( newE && newE.lastChild ) {
 					newE = newE.lastChild;
 				}
-				e = newE;
+				e = newE || e;
 			}
 			while ( e ) {
 				if ( $( e ).is( selector ) && !strict )
@@ -7072,14 +7078,21 @@ if ( typeof context == 'undefined' ) {
 		 * // Trying to advance past the end will set t.node to null
 		 */
 		'traverser': function( start ) {
-			function Traverser( start ) {
-				this.goNext = function() {
+			function Traverser( node, depth, inP ) {
+				this.node = node;
+				this.depth = depth;
+				this.inP = inP;
+				this.next = function() {
 					var p = this.node;
-					nextDepth = this.depth;
+					var nextDepth = this.depth;
+					var nextInP = this.inP;
 					while ( p && !p.nextSibling ) {
+						if ( p.nodeName == "P" ) {
+							nextInP = false;
+						}
 						p = p.parentNode;
 						nextDepth--;
-						if ( this.depth == 0 ) {
+						if ( nextDepth == 0 ) {
 							// We're back at the start node
 							p = null;
 						}
@@ -7093,26 +7106,32 @@ if ( typeof context == 'undefined' ) {
 						if ( p && p.firstChild ) {
 							p = p.firstChild;
 							nextDepth++;
+							if ( p.nodeName == "P" ) {
+								nextInP = true;
+							}
 						}
 					} while ( p && p.firstChild );
-					this.node = p;
-					this.depth = nextDepth;
-				}
-				// Find the leftmost leaf node in the tree
-				this.node = start.jquery ? start.get( 0 ) : start;
-				this.depth = 0;
-				do {
-					// Filter nodes with the wikiEditor-noinclude class
-					while ( this.node && $( this.node ).hasClass( 'wikiEditor-noinclude' ) ) {
-						this.node = this.node.nextSibling;
-					}
-					if ( this.node && this.node.firstChild ) {
-						this.node = this.node.firstChild;
-						this.depth++;
-					}
-				} while ( this.node && this.node.firstChild );
+					return p ? new Traverser( p, nextDepth, nextInP ) : null;
+				};
 			}
-			return new Traverser( start );
+			// Find the leftmost leaf node in the tree
+			var node = start.jquery ? start.get( 0 ) : start;
+			var depth = 0;
+			var inP = node.nodeName == "P";
+			do {
+				// Filter nodes with the wikiEditor-noinclude class
+				while ( node && $( node ).hasClass( 'wikiEditor-noinclude' ) ) {
+					node = node.nextSibling;
+				}
+				if ( node && node.firstChild ) {
+					node = node.firstChild;
+					depth++;
+					if ( node.nodeName == "P" ) {
+						inP = true;
+					}
+				}
+			} while ( node && node.firstChild );
+			return new Traverser( node, depth, inP );
 		},
 		'getOffsets': function() {
 			if ( !context.offsets ) {
@@ -7127,28 +7146,42 @@ if ( typeof context == 'undefined' ) {
 			context.offsets = [ ];
 			var t = context.fn.traverser( context.$content );
 			var pos = 0, lastTextNode = null, lastTextNodeDepth = null;
-			while ( t.node ) {
+			while ( t ) {
 				if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
-					t.goNext();
+					t = t.next();
 					continue;
 				}
 				var nextPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
+				var nextT = t.next();
+				var leavingP = t.inP && nextT && !nextT.inP;
 				for ( var p = pos; p < nextPos; p++ ) {
 					context.offsets[p] = {
 						'node': t.node,
 						'offset': p - pos,
-						'length': nextPos - pos,
+						'length': nextPos - pos + ( leavingP ? 1 : 0 ),
 						'depth': t.depth,
 						'lastTextNode': lastTextNode,
 						'lastTextNodeDepth': lastTextNodeDepth
 					};
 				}
-				pos = nextPos;
+				if ( leavingP ) {
+					// <p>Foo</p> looks like "Foo\n", make it quack like it too
+					// Basically we're faking the \n character much like we're treating <br>s
+					context.offsets[nextPos] = {
+						'node': t.node,
+						'offset': nextPos - pos,
+						'length': nextPos - pos + 1,
+						'depth': t.depth,
+						'lastTextNode': lastTextNode,
+						'lastTextNodeDepth': lastTextNodeDepth
+					};
+				}
+				pos = nextPos + ( leavingP ? 1 : 0 );
 				if ( t.node.nodeName == '#text' ) {
 					lastTextNode = t.node;
 					lastTextNodeDepth = t.depth;
 				}
-				t.goNext();
+				t = nextT;
 			}
 		}
 	};
@@ -7264,7 +7297,7 @@ if ( typeof context == 'undefined' ) {
 			// Let modules know we're ready to start working with the content
 			context.fn.trigger( 'ready' );
 			// Setup event handling on the iframe
-			context.$content
+			$( context.$iframe[0].contentWindow.document )
 				.bind( 'keyup mouseup paste cut encapsulateSelection', function( event ) {
 					context.fn.trigger( 'change', event );
 				} )
@@ -7619,7 +7652,7 @@ fn: {
 				// Split off the prefix
 				// This leaves the prefix in the current node and puts
 				// the rest in a new node which is our start node
-				startNode = startNode.splitText( offset );
+				startNode = startNode.splitText( offsets[start].offset );
 			}
 			// Don't wrap leading BRs, produces undesirable results
 			while ( startNode.nodeName == 'BR' && start + 1 in offsets ) {
@@ -8709,7 +8742,7 @@ evt: {
 	}
 },
 exp: [
-	{ 'regex': /^(={1,6})(.+?)\1\s*$/m, 'label': 'TOC_HEADER', 'markAfter': true }
+	{ 'regex': /^(={1,6})([^\r\n]+?)\1\s*$/m, 'label': 'TOC_HEADER', 'markAfter': true }
 ],
 /**
  * Internally used functions

@@ -170,7 +170,7 @@ fn: {
 				// Split off the prefix
 				// This leaves the prefix in the current node and puts
 				// the rest in a new node which is our start node
-				startNode = startNode.splitText( offset );
+				startNode = startNode.splitText( offsets[start].offset );
 			}
 			// Don't wrap leading BRs, produces undesirable results
 			while ( startNode.nodeName == 'BR' && start + 1 in offsets ) {
