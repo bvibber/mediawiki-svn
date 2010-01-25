@@ -8134,6 +8134,7 @@ fn: {
 					$( this ).html()
 						.replace( /\{\{/, '<span class="wikiEditor-template-start">{{</span><span class="wikiEditor-template-inner-text">' )
 						.replace( /\}\}$/, '</span><span class="wikiEditor-template-end">}}</span>' ) ) //grab the *last* {{
+				.css('visibility', 'hidden')
 				.parent()
 				.addClass( 'wikiEditor-template-collapsed' )
 				.data( 'model', model );
@@ -8157,8 +8158,7 @@ fn: {
 					.append( $( '<span>F</span>' ) )
 					.mousedown( function(){createDialog($template); return false;}   ));
 			
-			
-			
+		
 			// Expand
 			function expandTemplate( $displayDiv ) {
 				// Housekeeping
@@ -8515,7 +8515,7 @@ fn: {
 			doneParsing = true;
 		}
 		nameMatch = sanatizedStr.substring( 0, divider ).match( /[^\s]/ );
-		if ( nameMatch != undefined ) {
+		if ( nameMatch != null ) {
 			ranges.push( new Range( 0 ,nameMatch.index ) ); //whitespace and squiggles upto the name
 			nameEndMatch = sanatizedStr.substring( 0 , divider ).match( /[^\s]\s*$/ ); //last nonwhitespace character
 			templateNameIndex = ranges.push( new Range( nameMatch.index,
@@ -8523,6 +8523,10 @@ fn: {
 			templateNameIndex--; //push returns 1 less than the array
 			ranges[templateNameIndex].old = wikitext.substring( ranges[templateNameIndex].begin,
 				ranges[templateNameIndex].end );
+		}
+		else{
+			ranges.push(new Range(0,0));
+			ranges[templateNameIndex].old = "";
 		}
 		params.push( ranges[templateNameIndex].old ); //put something in params (0)
 		/*
@@ -8871,7 +8875,11 @@ fn: {
 		}
 	},
 	unhighlight: function( context ) {
-		context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
+		// FIXME: In IE, sometimes the context is undefined here - investigate this when you have time please! In the
+		// mean time, the user interaction is working just fine
+		if ( context ) {
+			context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
+		}
 	},
 	/**
 	 * Highlight the section the cursor is currently within
@@ -9027,7 +9035,6 @@ fn: {
 							'start': 0,
 							'startContainer': $(this).data( 'wrapper' )
 						} );
-						
 						// Highlight the clicked link
 						$.wikiEditor.modules.toc.fn.unhighlight( context );
 						$( this ).addClass( 'current' );

@@ -242,7 +242,11 @@ fn: {
 		}
 	},
 	unhighlight: function( context ) {
-		context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
+		// FIXME: In IE, sometimes the context is undefined here - investigate this when you have time please! In the
+		// mean time, the user interaction is working just fine
+		if ( context ) {
+			context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
+		}
 	},
 	/**
 	 * Highlight the section the cursor is currently within
@@ -398,7 +402,6 @@ fn: {
 							'start': 0,
 							'startContainer': $(this).data( 'wrapper' )
 						} );
-						
 						// Highlight the clicked link
 						$.wikiEditor.modules.toc.fn.unhighlight( context );
 						$( this ).addClass( 'current' );
