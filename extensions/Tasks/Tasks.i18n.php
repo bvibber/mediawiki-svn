@@ -460,6 +460,7 @@ $messages['br'] = array(
 	'tasks_discussion_page_for' => 'Evit ar bajenn "$1" eo an trevell-mañ. $2 eo roll an holl gefridioù evit ar bajenn-mañ.',
 	'tasks_sidebar_title' => 'Trevelloù digor',
 	'tasks_here' => 'amañ',
+	'tasks_returnto' => "Adkaset e viot bremañ. Ma n'oc'h ket bet adkaset a-benn un nebeut eilennoù, klikit war $1.",
 	'tasks_see_page_tasks' => '(trevelloù ar bajenn)',
 	'tasks_task_is_assigned' => '(deverket)',
 	'tasks_plain_text_only' => '(testenn blaen, 256 arouezenn hepken)',

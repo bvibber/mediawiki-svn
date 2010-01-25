@@ -594,6 +594,7 @@ $messages['br'] = array(
 	'sign-email' => "Chomlec'h postel :",
 	'sign-list-anonymous' => 'Listennañ en un doare dianv',
 	'sign-list-hideaddress' => "Chom hep menegiñ ar chomlec'h",
+	'sign-list-hideextaddress' => "Arabat menegiñ ar gêr, ar stad (departamant), ar c'hod post pe ar vro",
 	'sign-list-hidephone' => 'chom hep menegiñ an niverenn bellgomz',
 	'sign-list-hidebday' => 'Chom hep menegiñ an oad',
 	'sign-list-hideemail' => "Chom hep menegiñ ar chomlec'h postel",

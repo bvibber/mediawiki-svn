@@ -153,14 +153,16 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'importfreeimages' => 'Enporzhiañ skeudennoù frank a wirioù',
-	'importfreeimages_invalidurl' => 'N\'eo ket ar chomlec\'h "$1" ur skeudenn Flickr reizh.',
+	'importfreeimages_nophotosfound' => "N'eo bet kavet poltred ebet adal ho dezverkoù klask '$1', mar plij klaskit adarre",
 	'importfreeimages_owner' => 'Aozer',
 	'importfreeimages_importthis' => 'enporzhiañ an dra-se',
 	'importfreeimages_next' => "$1 war-lerc'h",
-	'importfreeimages_filefromflickr' => '$1 gant an implijer <b>[$2]</b> eus flickr. URL orin',
-	'importfreeimages_promptuserforfilename' => 'Mar plij lakait anv ar restr tal :',
-	'importfreeimages_returntoform' => "pe, klikit <a href='$1'>amañ</a> evit distreiñ d'ho roll disoc'hoù.",
-	'importfreeimages_nophpflickr' => 'N\'ho peus ket staliet phpFlickr, keflunit $wgIFphpFlickr en ho LocalSettings.php.',
+	'importfreeimages_size_square' => 'Karaez',
+	'importfreeimages_size_thumbnail' => 'Munud',
+	'importfreeimages_size_small' => 'Bihan',
+	'importfreeimages_size_medium' => 'Etre',
+	'importfreeimages_size_large' => 'Bras',
+	'importfreeimages_size_original' => 'Orin',
 );
 
 /** Bosnian (Bosanski)
@@ -247,8 +249,11 @@ $messages['de'] = array(
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importieren',
 	'importfreeimages_next' => 'Nächste $1',
+	'importfreeimages_size_square' => 'Quadrat',
+	'importfreeimages_size_thumbnail' => 'Vorschaubild',
 	'importfreeimages_size_small' => 'Klein',
 	'importfreeimages_size_medium' => 'Mittel',
+	'importfreeimages_size_large' => 'Groß',
 	'importfreeimages_size_original' => 'Original',
 );
 
@@ -788,17 +793,16 @@ $messages['mk'] = array(
 	'importfreeimages' => 'Увоз на слободни слики',
 	'importfreeimages-desc' => 'Овозможува начин на [[Special:ImportFreeImages|увезување на соодветно лиценцирани слики]] од [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Оваа страница ви овозможува да пребарувате соодветно лиценцирани слики од Flickr и да ги увезувате во вашето вики.',
-	'importfreeimages_noapikey' => 'Немате конфигурирано ваш Flickr API-клуч.
-За таа цел ќе ви треба API-клуч, кој [http://www.flickr.com/services/api/misc.api_keys.html ќе го добиете овде], а потоа наместете го $wgFlickrAPIKey во ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => 'Нема пронајдено слики по вашиот критериум на пребарување „$1“. Обидете се повторно.',
-	'importfreeimages_invalidurl' => 'Адресата „$1“ не е важечка слика во Flickr.',
 	'importfreeimages_owner' => 'Автор',
 	'importfreeimages_importthis' => 'увези го ова',
 	'importfreeimages_next' => 'Следен $1',
-	'importfreeimages_filefromflickr' => '$1 од корисникот <b>[$2]</b> од Flickr. Изворна адреса',
-	'importfreeimages_promptuserforfilename' => 'Внесете целно име на податотеката:',
-	'importfreeimages_returntoform' => "Или кликнете <a href='$1'>тука</a> за да се вратите на резултатите од пребарувањето",
-	'importfreeimages_nophpflickr' => 'Немате инсталирано phpFlickr, наместете го $wgIFphpFlickr во вашиот LocalSettings.php.',
+	'importfreeimages_size_square' => 'Квадрат',
+	'importfreeimages_size_thumbnail' => 'Минијатура',
+	'importfreeimages_size_small' => 'Мала',
+	'importfreeimages_size_medium' => 'Средна',
+	'importfreeimages_size_large' => 'Голема',
+	'importfreeimages_size_original' => 'Изворна',
 );
 
 /** Malayalam (മലയാളം)
@@ -929,21 +933,20 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'importfreeimages' => 'Imperter frie bilder',
 	'importfreeimages-desc' => 'Gir muligheten til å [[Special:ImportFreeImages|importere fri bilder]] fra [http://flickr.com flickr]',
 	'importfreeimages_description' => 'Denne siden lar deg søke i bilder med riktig lisens på Flickr og importere dem til wikien din.',
-	'importfreeimages_noapikey' => 'Du har ikke konfigurert API-nøkkelen din for Flickr. For å gjøre det må du skaffe en API-nøkkel [http://www.flickr.com/services/api/misc.api_keys.html herfra] og sette $wgFlickrAPIKey  i ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => 'Ingen bilder ble funnet for søket «$1». Prøv igjen.',
-	'importfreeimages_invalidurl' => 'URL-en «$1» er ikke et gyldig Flickr-bilde',
 	'importfreeimages_owner' => 'Skaper',
 	'importfreeimages_importthis' => 'importer',
 	'importfreeimages_next' => 'Neste $1',
-	'importfreeimages_filefromflickr' => '$1 av brukeren <b>[$2]</b> fra Flickr. Original URL',
-	'importfreeimages_promptuserforfilename' => 'Skriv inn et målnavn for filen:',
-	'importfreeimages_returntoform' => 'Elle rklikk <a href="$1">her</a> for å gå tilbake til søkeresultatene',
-	'importfreeimages_nophpflickr' => 'Du har ikke installert phpFlickr, sett $wgIFphpFlickr i LocalSettings.php',
+	'importfreeimages_size_small' => 'Liten',
+	'importfreeimages_size_medium' => 'Medium',
+	'importfreeimages_size_large' => 'Stor',
+	'importfreeimages_size_original' => 'Opprinnelig',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -1049,16 +1052,16 @@ $messages['pt'] = array(
 	'importfreeimages' => 'Importar Imagens Livres',
 	'importfreeimages-desc' => 'Fornece uma forma de [[Special:ImportFreeImages|importar fotografias devidamente licenciadas]] do [http://www.flickr.com flickr].',
 	'importfreeimages_description' => 'Esta página permite-lhe procurar fotografias devidamente licenciadas no flickr e importá-las para a sua wiki.',
-	'importfreeimages_noapikey' => 'Você não configurou a sua chave de API Flickr. Para o fazer, por favor obtenha uma chave de API [http://www.flickr.com/services/api/misc.api_keys.html aqui] e atribua-a a $wgFlickrAPIKey  em ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Nenhuma fotografia foi encontrada segundo o seu critério de busca '$1'; por favor, tente de novo.",
-	'importfreeimages_invalidurl' => 'A URL "$1" não é uma imagem Flickr válida.',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importar isto',
 	'importfreeimages_next' => 'Próximas $1',
-	'importfreeimages_filefromflickr' => '$1 pelo utilizador <b>[$2]</b> do flickr. URL original',
-	'importfreeimages_promptuserforfilename' => 'Por favor, introduza um nome de ficheiro destino:',
-	'importfreeimages_returntoform' => "Ou clique <a href='$1'>aqui</a> para voltar aos resultados da sua pesquisa",
-	'importfreeimages_nophpflickr' => 'Você não possui phpFlickr instalado, por favor configure $wgIFphpFlickr em seu LocalSettings.php.',
+	'importfreeimages_size_square' => 'Quadrado',
+	'importfreeimages_size_thumbnail' => 'Miniatura',
+	'importfreeimages_size_small' => 'Pequeno',
+	'importfreeimages_size_medium' => 'Médio',
+	'importfreeimages_size_large' => 'Grande',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1115,6 +1118,7 @@ $messages['ru'] = array(
 	'importfreeimages_owner' => 'Автор',
 	'importfreeimages_importthis' => 'Импортировать это',
 	'importfreeimages_next' => 'Следующие $1',
+	'importfreeimages_size_square' => 'Квадрат',
 	'importfreeimages_size_thumbnail' => 'Миниатюра',
 	'importfreeimages_size_small' => 'Маленький',
 	'importfreeimages_size_medium' => 'Средний',

@@ -730,6 +730,7 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-answer-changes-nav' => "Lakaat e vefe aesoc'h ar merdeiñ hollek eus al lec'hienn.",
 	'optin-survey-answer-changes-edittools' => 'Gwelaat ha kreskiñ an ostilhoù embann.',
 	'optin-survey-answer-changes-upload' => 'Gwelaat an emporzhiann danvez ha media.',
+	'optin-survey-answer-changes-richtext' => "Diorren binvioù aozañ par d'an aozerioù testenn-pinvidikaet",
 	'optin-survey-answer-changes-lookfeel' => "Hizivaat arvez al lec'hienn.",
 	'optin-survey-answer-changes-custom' => "Aotreañ ur personeladur brasoc'h eus an etrefas.",
 	'optin-survey-answer-changes-other' => 'Traoù all :',
@@ -1065,12 +1066,12 @@ Gallwch arbrofi eto gyda Beta trwy wasgu\'r cyswllt "{{int:optin-try}}" ar frig 
 	'optin-improvements' => "== Beth sydd wedi ei wella? ==
 [[File:UsabilityNavigation.png|left|link=|Llun o'r tabiau llywio newydd]]
 ;Gwella'r llywio
-Mae'r system llywio newydd yn ei gwneud yn haws deall lle ydych chi a'r hyn ydych yn gwneud, a'r mannau y gallech fynd iddynt a sut i gyrraedd yno. With the search box located in the top right corner, the search feature is easier to find and quicker to use.
+Mae'r system llywio newydd yn ei gwneud yn haws deall pa le ydych chi a'r hyn ydych yn gwneud, a'r mannau y gallech fynd iddynt a sut i gyrraedd yno. Mae'r blwch chwilio wedi cael ei roi yn y gornel dde ar frig y dudalen, mewn man haws cael gafael arno, ac ar ffurf cyflymach i'w ddefnyddio.
 <div style=\"clear:both;\"></div>
 
-[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
-;Edit toolbar improvements
-New-and-improved icons make it clearer what action each tool performs. Expandable sections reduce clutter while keeping infrequently used tools just a click away.
+[[File:UsabilityToolbar.png|left|link=|Llun y bar offer golygu estynedig]]
+;Gwelliannau i'r bar offer golygu
+Gosodwyd eiconauNew-and-improved icons make it clearer what action each tool performs. Expandable sections reduce clutter while keeping infrequently used tools just a click away.
 The help section provides quick access to a reference for common uses of wiki-markup.
 <div style=\"clear:both;\"></div>
 == How to get involved ==

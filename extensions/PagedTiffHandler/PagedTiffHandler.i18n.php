@@ -52,7 +52,7 @@ $messages['de'] = array(
 	'tiff-desc' => 'Schnittstelle für die Ansicht von TIFF-Dateien im Bilder-Modus',
 	'tiff_no_metadata' => 'Keine Metadaten im TIFF vorhanden.',
 	'tiff_page_error' => 'Seitenzahl außerhalb des Dokumentes.',
-	'tiff_too_much_embed_files' => 'Die Datei enthält zu viele eingebettete Dateien.',
+	'tiff_too_many_embed_files' => 'Die Datei enthält zu viele eingebettete Dateien.',
 	'tiff_sourcefile_too_large' => 'Die Quelldatei hat eine zu hohe Auflösung. Es wird kein Thumbnail generiert.',
 	'tiff_file_too_large' => 'Die hochgeladene Datei ist zu groß und wurde abgewiesen.',
 	'tiff_out_of_service' => 'Die hochgeladene Datei konnte nicht verarbeitet werden. ImageMagick ist nicht verfügbar.',
@@ -63,3 +63,4 @@ $messages['de'] = array(
 	'tiff_bad_file' => 'Die hochgeladene Datei ist fehlerhaft.',
 	'tiff-file-info-size' => '(Seite $5, $1 × $2 Pixel, Dateigröße: $3, MIME-Typ: $4)',
 );
+

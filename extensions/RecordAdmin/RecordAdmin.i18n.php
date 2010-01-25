@@ -1494,6 +1494,9 @@ $messages['no'] = array(
 	'recordadmin-editwithform' => 'Endre med skjema',
 	'recordadmin-typeinfo' => 'Oppføringstype $1',
 	'right-recordadmin' => 'Finn og endre oppføringssider',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Ingen «$1»',
 );
 
 /** Occitan (Occitan)
@@ -1713,7 +1716,7 @@ $messages['pt'] = array(
 	'right-recordadmin' => 'Encontrar e editar páginas de registos',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => '$1 não existe',
+	'recordadmin-notset' => '"$1" não {{PLURAL:$1|existe|existem}}',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

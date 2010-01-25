@@ -1228,8 +1228,13 @@ $messages['uk'] = array(
 	'adminlinks-desc' => 'Додає [[Special:AdminLinks|спеціальну сторінку]], яка містить корисні посилання для адміністраторів',
 	'adminlinks_documentation' => 'документація $1',
 	'adminlinks_general' => 'Загальні',
+	'adminlinks_editsidebar' => 'Редагувати бічну панелель',
+	'adminlinks_editcss' => 'Редагувати CSS файл',
+	'adminlinks_editmainpagename' => 'Змінити назву головної сторінки',
 	'adminlinks_users' => 'Користувачі',
 	'adminlinks_createuser' => 'Створити обліковий запис',
+	'adminlinks_browsesearch' => 'Перегляд і пошук',
+	'adminlinks_importexport' => 'Імпорт та експорт',
 	'right-adminlinks' => 'Бачити [[Special:AdminLinks|посилання для адміністраторів]]',
 );
 
