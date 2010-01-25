@@ -35,6 +35,7 @@ mw.addMessages( {
 	"mwe-missing_desc_see_source" : "This asset is missing a description. Please see the [$1 original source] and help describe it.",
 	"rsd_config_error" : "Add media wizard configuration error: $1",
 	"mwe-your_recent_uploads" : "Your recent uploads to $1",
+	"mwe-no_recent_uploads" : "No recent uploads",
 	"mwe-upload_a_file" : "Upload a new file to $1",
 	"mwe-resource_page_desc" : "Resource page description:",
 	"mwe-edit_resource_desc" : "Edit wiki text resource description:",
@@ -849,6 +850,9 @@ mw.RemoteSearchDriver.prototype = {
 				// Don't submit the form
 				return false;
 			} );
+			
+		// Setup base cancel button binding
+		this.onCancelClipEdit();
 	},
 
 	/**
@@ -1015,6 +1019,8 @@ mw.RemoteSearchDriver.prototype = {
 				);	
 				_this.showResults();
 			} );
+		}else{
+			$j('#upload_bin').empty().text( gM( 'mwe-no_recent_uploads' ) );
 		}
 
 		// Deal with the api form upload form directly:
@@ -1776,6 +1782,8 @@ mw.RemoteSearchDriver.prototype = {
 		// Remove preview if its 'on'
 		$j( '#rsd_preview_display' ).remove();
 		
+		// Remove resource import if present
+		$j( '#rsd_resource_import' ).remove();
 		// Restore the resource container:
 		this.$resultsContainer.show();
 
