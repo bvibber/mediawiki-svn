@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r81';
+var mwRemoteVersion = 'r82';
 var mwUseScriptLoader = true;
 
 //Log the mwRemote version ( will determin what version of js we get )
@@ -383,10 +383,16 @@ function waitMwEmbedReady( callback ) {
 function mwCheckForGadget(){	
 	mw.log('mwCheckForGadget');
 	scripts = document.getElementsByTagName( 'script' );
+	// Check for document paramater withJS and ignore found gadget
+	var withJS = getParamValue("withJS"); 	
+	
 	for( var i = 0 ; i < scripts.length ; i ++){
-		if ( scripts[i].src && 
-		scripts[i].src.indexOf( 'MediaWiki:Gadget-mwEmbed.js' ) !== -1){
-			mw.log('gadget already installed');
+		if (
+			scripts[i].src 
+			&& scripts[i].src.indexOf( 'MediaWiki:Gadget-mwEmbed.js' ) !== -1
+			&& !withJS 
+		){
+			mw.log('gadget already installed: ' + scripts[i].src);
 			//gadget found / enabled
 			return true;
 		}		
@@ -428,7 +434,7 @@ function mwCheckForGadget(){
 	$j('#firstHeading').before(
 		$j('<div />')
 		.css({
-			'margin': '5px'
+			'margin': '10px'
 		}).html(	
 			$gadgetBtn
 		)
