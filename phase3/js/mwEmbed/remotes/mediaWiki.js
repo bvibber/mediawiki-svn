@@ -4,8 +4,13 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r77';
+var mwRemoteVersion = 'r80';
 var mwUseScriptLoader = true;
+
+//Log the mwRemote version ( will determin what version of js we get )
+if( window.console ){
+	window.console.log( 'mwEmbed:remote:' + mwRemoteVersion );
+}
 
 // Setup up request Params: 
 var reqParts = urlparts[1].substring( 1 ).split( '&' );
@@ -31,10 +36,11 @@ addOnloadHook( function() {
 if( !ranRewrites){
 	var ranRewrites = 'none';
 }
-function doPageSpecificRewrite() {
+function doPageSpecificRewrite() {	
 	if( ranRewrites != 'none')
 		return ;	
-	ranRewrites = 'done';
+	ranRewrites = 'done';	
+	
 	// Add media wizard
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {				
 		loadMwEmbed( [ 
@@ -321,12 +327,16 @@ function loadMwEmbed( classSet, callback ) {
 	// Inject mwEmbed if needed
 	if ( typeof MW_EMBED_VERSION == 'undefined' ) {
 		if ( ( mwReqParam['uselang'] || mwReqParam[ 'useloader' ] ) && mwUseScriptLoader ) {
-			var rurl = mwEmbedHostPath + '/mwEmbed/jsScriptLoader.php?class=mwEmbed';
+			var rurl = mwEmbedHostPath + '/mwEmbed/jsScriptLoader.php?class=';
 			
+			var coma = '';
 			// Add jQuery too if we need it: 
 			if ( typeof window.jQuery == 'undefined' ) {
-				rurl += ',window.jQuery';
+				rurl += 'window.jQuery';
+				coma = ',';
 			}	
+			// Add Core mwEmbed lib: 
+			rurl += coma + 'mwEmbed';
 								
 			// Add scriptLoader requested classSet
 			for( var i=0; i < classSet.length; i++ ){
@@ -360,9 +370,128 @@ function waitMwEmbedReady( callback ) {
 		// Make sure mwEmbed is "setup" by using the addOnLoadHook: 
 		mw.ready( function(){			
 			callback();
+			
+			// All enabled pages should check if we have the gadget already installed 
+			// if not offer a convenient drop down 
+			mwCheckForGadget();
 		})
 	}
 }
+/**
+ * checks if the gadget is installed 
+ * run after mwEmbed setup so $j and mw interface is available: 
+ */
+function mwCheckForGadget(){	
+	scripts = document.getElementsByTagName( 'script' );
+	for( var i = 0 ; i < scripts.length ; i ++){
+		if ( scripts[i].src && 
+		scripts[i].src.indexOf( 'MediaWiki:Gadget-mwEmbed.js' ) !== -1){
+			mw.log('gadget already installed');
+			//gadget found / enabled
+			return true;
+		}		
+	}
+	// No gadget found load jQuery if we don't have it
+	mw.log('gadget not installed, show install menu');	
+	var $gadgetBtn = $j.button({
+			'text' : gM( 'mwe-enable-gadget' ),
+			'icon_id': 'check'
+		})
+		.css({	
+			'font-size': '90%'
+		})
+		.buttonHover()
+		.click(function (){
+			if( !wgUserName ){
+				$j( this )
+				.after( gM('mwe-must-login-gadget', 
+					wgArticlePath.replace(
+						'$1', 'Special:UserLogin?returnto=' + wgPageName ) )
+					)
+				.remove();
+				return ;
+			}
+			
+			// Else Add loader
+			$j( this )
+			.after( 
+				$j('<div />')
+				.attr( 'id', 'gadget-form-loader' )
+				.loadingSpinner() 
+			)
+			.remove();							
+			// Load gadgets form:
+			mwSubmitgadgetPref( 'mwEmbed' );
+		} );
+	
+	// Add the $gadgetBtn before the first heading: 
+	$j('#firstHeading').before(
+		$j('<div />')
+		.css({
+			'margin': '5px'
+		}).html(	
+			$gadgetBtn
+		)
+	);
+}
+function mwSubmitgadgetPref( gadget_id ){
+	$j.get( wgArticlePath.replace('$1', 'Special:Preferences'), function( pageHTML ){
+		// get the form	
+		var form = mwGetFormFromPage ( pageHTML );
+		if(!form){
+			return false;
+		}
+		if( mwCheckFormDatagadget( form.data, gadget_id ) ){
+			mw.log( gaget_id + ' is already enabled' );
+			return false;
+		}
+								
+		// add mwEmbed to the formData 			
+		form.data.push( {
+			'name' : 'wpgadgets[]',
+			'value' : gadget_id
+		} );
+				
+		// Submit the prefrences
+		$j.post( form.url, form.data, function( pageHTML ){								
+			var form = mwGetFormFromPage ( pageHTML );
+			if(!form){
+				return false;
+			}
+			if( mwCheckFormDatagadget(form.data, gadget_id ) ){
+				//update the loader
+				$j('#gadget-form-loader')
+				.text( gM( 'mwe-enable-gadget-done' ) );
+			}
+		} )
+	})
+}
+function mwGetFormFromPage( pageHTML ){
+	var form = {};
+	$j( pageHTML ).find('form').each( function( ){		
+		form.url = $j( this ).attr('action');				
+		if( form.url.indexOf( 'Special:Preferences') !== -1 ){
+			form.data =  $j( this ).serializeArray();		
+			// break out of loop	
+			return false;
+		}
+	});
+	if( form.data )
+		return form;
+	mw.log("Error: could not get form data");
+	return false;
+}
+function mwCheckFormDatagadget( formData, gadget_id ){
+	for(var i =0; i < formData.length ; i ++ ){								
+		if( formData[i].name == 'wpgadgets[]' ){
+			if( formData[i].value == gadget_id ){
+				return true;
+			}
+		}	
+	}	
+	return false;
+}
+
 /**
 * Checks an object path to see if its defined
 * @param {String} libVar The objectPath to be checked

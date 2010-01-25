@@ -92,7 +92,7 @@ $msgSet = "";
 
 $objects = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $path ), RecursiveIteratorIterator::SELF_FIRST );
 foreach ( $objects as $fname => $object ) {
-	if ( substr( $fname, - 3 ) == '.js' ) {
+	if ( substr( $fname, - 3 ) == '.js' && strpos( $fname, '/cache/' ) === false ) {
 		$jsFileText = file_get_contents( $fname );
 		$mwPos = strpos( $fname, 'mwEmbed' ) + 7;
 		$curFileName = substr( $fname, $mwPos );
