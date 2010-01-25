@@ -1139,7 +1139,7 @@ mw.ready( function() {
 				if ( typeof arguments.callee.regex == 'undefined' ) {
 					// Cache the regex
 					arguments.callee.regex =
-						new RegExp( "(^(" + urlprotocols + "))|(^www\\.)|([^.]\\.[a-z]{2,}($|\\/))", 'i');
+						new RegExp( "(^(" + wgUrlProtocols + "))|(^www\\.)|([^.]\\.[a-z]{2,}($|\\/))", 'i');
 				}
 				return s.match( arguments.callee.regex );
 			}
