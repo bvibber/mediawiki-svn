@@ -2460,7 +2460,10 @@ mw.addMessages( {
 	"mwe-apiproxy-setup" : "Setting up API proxy",
 	"mwe-load-drag-item" : "Loading dragged item",
 	"mwe-ok" : "OK",
-	"mwe-cancel" : "Cancel"
+	"mwe-cancel" : "Cancel",
+	"mwe-enable-gadget" : "Enable mwEmbed gadgate for all pages",
+	"mwe-enable-gadget-done" : "mwEmbed gadgate has been enabled",
+	"mwe-must-login-gadget" : "To enable gadget you must <a href=\"$1\">login</a>"
 } );
 
 

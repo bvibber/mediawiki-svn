@@ -23,7 +23,7 @@ mw.addClassFilePaths( {
 	"flickrSearch"			: "modules/AddMedia/searchLibs/flickrSearch.js",
 	"baseRemoteSearch"		: "modules/AddMedia/searchLibs/baseRemoteSearch.js",
 	"kalturaSearch"			: "modules/AddMedia/searchLibs/kalturaSearch.js"
-});
+});	
 
 /**
 * Note: We should move relevant parts of these style sheets to the addMedia/css folder 

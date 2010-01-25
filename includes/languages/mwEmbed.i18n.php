@@ -12,21 +12,62 @@ $messages = array();
 
 $messages['en'] = array(
 	/*
-	 * js file: /skins/kskin/kskinConfig.js
+	 * js file: /modules/EmbedPlayer/mw.EmbedPlayer.js
 	 */
-	'mwe-credit-title' => 'Title: $1',
-	'mwe-kaltura-platform-title' => 'Kaltura open source video platform',
-
-	/*
-	 * js file: /modules/Sequencer/mw.TimedEffectsEdit.js
-	 */
-	'mwe-transition_in' => 'Transition in',
-	'mwe-transition_out' => 'Transition out',
-	'mwe-effects' => 'Effects stack',
-	'mwe-remove_transition' => 'Remove transition',
-	'mwe-edit_transin' => 'Edit transition into clip',
-	'mwe-edit_transout' => 'Edit transition out of clip',
-	'mwe-add-transition' => 'Add a transition',
+	'mwe-loading_plugin' => 'loading plugin ...',
+	'mwe-select_playback' => 'Set playback preference',
+	'mwe-link_back' => 'Link back',
+	'mwe-error_swap_vid' => 'Error: mwEmbed was unable to swap the video tag for the mwEmbed interface',
+	'mwe-add_to_end_of_sequence' => 'Add to end of sequence',
+	'mwe-missing_video_stream' => 'The video file for this stream is missing',
+	'mwe-play_clip' => 'Play clip',
+	'mwe-pause_clip' => 'Pause clip',
+	'mwe-volume_control' => 'Volume control',
+	'mwe-player_options' => 'Player options',
+	'mwe-timed_text' => 'Timed text',
+	'mwe-player_fullscreen' => 'Fullscreen',
+	'mwe-next_clip_msg' => 'Play next clip',
+	'mwe-prev_clip_msg' => 'Play previous clip',
+	'mwe-current_clip_msg' => 'Continue playing this clip',
+	'mwe-seek_to' => 'Seek $1',
+	'mwe-paused' => 'paused',
+	'mwe-download_segment' => 'Download selection:',
+	'mwe-download_full' => 'Download full video file:',
+	'mwe-download_right_click' => 'To download, right click and select <i>Save link as...</i>',
+	'mwe-download_clip' => 'Download video',
+	'mwe-download_text' => 'Download text (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> xml):',
+	'mwe-download' => 'Download',
+	'mwe-share' => 'Share',
+	'mwe-credits' => 'Credits',
+	'mwe-clip_linkback' => 'Clip source page',
+	'mwe-chose_player' => 'Choose video player',
+	'mwe-share_this_video' => 'Share this video',
+	'mwe-video_credits' => 'Video credits',
+	'mwe-menu_btn' => 'Menu',
+	'mwe-close_btn' => 'Close',
+	'mwe-ogg-player-vlc-player' => 'VLC player',
+	'mwe-ogg-player-videoElement' => 'Native Ogg video',
+	'mwe-ogg-player-oggPlugin' => 'Generic Ogg plugin',
+	'mwe-ogg-player-quicktime-mozilla' => 'QuickTime plugin',
+	'mwe-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-ogg-player-cortado' => 'Java Cortado',
+	'mwe-ogg-player-flowplayer' => 'Flowplayer',
+	'mwe-ogg-player-kplayer' => 'Kaltura player',
+	'mwe-ogg-player-selected' => '(selected)',
+	'mwe-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
+	'mwe-generic_missing_plugin' => 'You browser does not appear to support the following playback type: <b>$1</b><br />Visit the <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Playback Methods</a> page to download a player.<br />',
+	'mwe-for_best_experience' => 'For a better video playback experience we recommend:<br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox</a>.</b>',
+	'mwe-do_not_warn_again' => 'Dismiss for now.',
+	'mwe-playerSelect' => 'Players',
+	'mwe-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Read this</a> before embedding.',
+	'mwe-embed_site_or_blog' => 'Embed on a page',
+	'mwe-related_videos' => 'Related videos',
+	'mwe-seeking' => 'seeking',
+	'mwe-copy-code' => 'Copy code',
+	'mwe-video-h264' => 'H.264 video',
+	'mwe-video-flv' => 'Flash video',
+	'mwe-video-ogg' => 'Ogg video',
+	'mwe-video-audio' => 'Ogg audio',
 
 	/*
 	 * js file: /modules/Sequencer/mw.Sequencer.js
@@ -67,20 +108,61 @@ $messages['en'] = array(
 	'mwe-sequencer_credit_line' => 'Developed by <a href="http://kaltura.com">Kaltura, Inc.</a> in partnership with the <a href="http://wikimediafoundation.org/wiki/Home">Wikimedia Foundation</a> (<a href="#">more information</a>).',
 
 	/*
+	 * js file: /modules/Sequencer/mw.TimedEffectsEdit.js
+	 */
+	'mwe-transition_in' => 'Transition in',
+	'mwe-transition_out' => 'Transition out',
+	'mwe-effects' => 'Effects stack',
+	'mwe-remove_transition' => 'Remove transition',
+	'mwe-edit_transin' => 'Edit transition into clip',
+	'mwe-edit_transout' => 'Edit transition out of clip',
+	'mwe-add-transition' => 'Add a transition',
+
+	/*
 	 * js file: /modules/Sequencer/remotes/RemoteMwSequencer.js
 	 */
 	'mwe-no-sequence-create' => 'No sequence exists named $1, You can $2',
 	'mwe-sequence-create-one' => 'start a sequence',
 
 	/*
-	 * js file: /modules/TimedText/old_mvTimeTextEdit.js
+	 * js file: /modules/ClipEdit/mw.ClipEdit.js
 	 */
-	'mwe-upload-subs-file' => 'Upload subtitle',
-	'mwe-add-subs-file-title' => 'Select subtitle to upload',
-	'mwe-error-only-srt' => 'You can only upload srt files.',
-	'mwe-watch-video' => 'Watch video',
-	'mwe-select-other-language' => 'Select another language',
-	'mwe-saving' => 'saving...',
+	'mwe-crop' => 'Crop image',
+	'mwe-apply_crop' => 'Apply crop to image',
+	'mwe-reset_crop' => 'Reset crop',
+	'mwe-insert_image_page' => 'Insert into page',
+	'mwe-insert_into_sequence' => 'Insert into sequence',
+	'mwe-preview_insert' => 'Preview insert',
+	'mwe-cancel_image_insert' => 'Cancel insert',
+	'mwe-sc_attributes' => 'Clip detail edit',
+	'mwe-sc_inoutpoints' => 'Set in-out points',
+	'mwe-sc_overlays' => 'Overlays',
+	'mwe-sc_audio' => 'Audio control',
+	'mwe-sc_duration' => 'Duration',
+	'mwe-template_properties' => 'Template properties',
+	'mwe-custom_title' => 'Custom title',
+	'mwe-edit_properties' => 'Edit properties',
+	'mwe-other_properties' => 'Other properties',
+	'mwe-resource_page' => 'Resource page:',
+	'mwe-set_in_out_points' => 'Set in-out points',
+	'mwe-start_time' => 'Start time',
+	'mwe-end_time' => 'End time',
+	'mwe-preview_inout' => 'Preview in-out points',
+	'mwe-edit-tools' => 'Edit tools',
+	'mwe-inline-description' => 'Caption',
+	'mwe-edit-video-tools' => 'Edit video tools:',
+	'mwe-duration' => 'Duration:',
+	'mwe-layout' => 'Layout',
+
+	/*
+	 * js file: /modules/ApiProxy/mw.proxy.js
+	 */
+	'mwe-setting-up-proxy' => 'Setting up proxy...',
+	'mwe-re-try' => 'Retry API request',
+	'mwe-re-trying' => 'Retrying API request...',
+	'mwe-proxy-not-ready' => 'Proxy is not configured',
+	'mwe-please-login' => 'You are not <a target="_new" href="$1">logged in</a> on $2 or mwEmbed has not been enabled. Resolve the issue, and then retry the request.',
+	'mwe-remember-loging' => 'General security reminder: Only login to web sites when your address bar displays that site\'s address.',
 
 	/*
 	 * js file: /modules/TimedText/mw.TimedTextEdit.js
@@ -135,73 +217,83 @@ $messages['en'] = array(
 	'mwe-textcat-cue' => 'Cue points',
 
 	/*
+	 * js file: /modules/TimedText/old_mvTimeTextEdit.js
+	 */
+	'mwe-upload-subs-file' => 'Upload subtitle',
+	'mwe-add-subs-file-title' => 'Select subtitle to upload',
+	'mwe-error-only-srt' => 'You can only upload srt files.',
+	'mwe-watch-video' => 'Watch video',
+	'mwe-select-other-language' => 'Select another language',
+	'mwe-saving' => 'saving...',
+
+	/*
 	 * js file: /modules/TimedText/remotes/RemoteMwTimedText.js
 	 */
 	'mwe-language-subtitles-for-clip' => '$1 subtitles for clip: $2',
 	'mwe-language-no-subtitles-for-clip' => 'No $1 subtitles where found for clip: $2',
 
 	/*
-	 * js file: /modules/EmbedPlayer/mw.EmbedPlayer.js
+	 * js file: /modules/AddMedia/mw.RemoteSearchDriver.js
 	 */
-	'mwe-loading_plugin' => 'loading plugin ...',
-	'mwe-select_playback' => 'Set playback preference',
-	'mwe-link_back' => 'Link back',
-	'mwe-error_swap_vid' => 'Error: mwEmbed was unable to swap the video tag for the mwEmbed interface',
-	'mwe-add_to_end_of_sequence' => 'Add to end of sequence',
-	'mwe-missing_video_stream' => 'The video file for this stream is missing',
-	'mwe-play_clip' => 'Play clip',
-	'mwe-pause_clip' => 'Pause clip',
-	'mwe-volume_control' => 'Volume control',
-	'mwe-player_options' => 'Player options',
-	'mwe-timed_text' => 'Timed text',
-	'mwe-player_fullscreen' => 'Fullscreen',
-	'mwe-next_clip_msg' => 'Play next clip',
-	'mwe-prev_clip_msg' => 'Play previous clip',
-	'mwe-current_clip_msg' => 'Continue playing this clip',
-	'mwe-seek_to' => 'Seek $1',
-	'mwe-paused' => 'paused',
-	'mwe-download_segment' => 'Download selection:',
-	'mwe-download_full' => 'Download full video file:',
-	'mwe-download_right_click' => 'To download, right click and select <i>Save link as...</i>',
-	'mwe-download_clip' => 'Download video',
-	'mwe-download_text' => 'Download text (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> xml):',
-	'mwe-download' => 'Download',
-	'mwe-share' => 'Share',
-	'mwe-credits' => 'Credits',
-	'mwe-clip_linkback' => 'Clip source page',
-	'mwe-chose_player' => 'Choose video player',
-	'mwe-share_this_video' => 'Share this video',
-	'mwe-video_credits' => 'Video credits',
-	'mwe-menu_btn' => 'Menu',
-	'mwe-close_btn' => 'Close',
-	'mwe-ogg-player-vlc-player' => 'VLC player',
-	'mwe-ogg-player-videoElement' => 'Native Ogg video',
-	'mwe-ogg-player-oggPlugin' => 'Generic Ogg plugin',
-	'mwe-ogg-player-quicktime-mozilla' => 'QuickTime plugin',
-	'mwe-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
-	'mwe-ogg-player-cortado' => 'Java Cortado',
-	'mwe-ogg-player-flowplayer' => 'Flowplayer',
-	'mwe-ogg-player-kplayer' => 'Kaltura player',
-	'mwe-ogg-player-selected' => '(selected)',
-	'mwe-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-generic_missing_plugin' => 'You browser does not appear to support the following playback type: <b>$1</b><br />Visit the <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Playback Methods</a> page to download a player.<br />',
-	'mwe-for_best_experience' => 'For a better video playback experience we recommend:<br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
-	'mwe-do_not_warn_again' => 'Dismiss for now.',
-	'mwe-playerSelect' => 'Players',
-	'mwe-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Read this</a> before embedding.',
-	'mwe-embed_site_or_blog' => 'Embed on a page',
-	'mwe-related_videos' => 'Related videos',
-	'mwe-seeking' => 'seeking',
-	'mwe-copy-code' => 'Copy code',
-	'mwe-video-h264' => 'H.264 video',
-	'mwe-video-flv' => 'Flash video',
-	'mwe-video-ogg' => 'Ogg video',
-	'mwe-video-audio' => 'Ogg audio',
-
-	/*
-	 * js file: /modules/AddMedia/loader.js
-	 */
-	'mwe-loading-add-media-wiz' => 'Loading add media wizard',
+	'mwe-add_media_wizard' => 'Add media wizard',
+	'mwe-media_search' => 'Media search',
+	'rsd_box_layout' => 'Box layout',
+	'rsd_list_layout' => 'List layout',
+	'rsd_results_desc' => 'Results $1 to $2',
+	'rsd_results_desc_total' => 'Results $1 to $2 of $3',
+	'rsd_results_next' => 'next',
+	'rsd_results_prev' => 'previous',
+	'rsd_no_results' => 'No search results for <b>$1</b>',
+	'mwe-upload_tab' => 'Upload',
+	'rsd_layout' => 'Layout:',
+	'rsd_resource_edit' => 'Edit resource: $1',
+	'mwe-resource_description_page' => 'Resource description page',
+	'mwe-link' => 'link',
+	'rsd_do_insert' => 'Do insert',
+	'mwe-cc_title' => 'Creative Commons',
+	'mwe-cc_by_title' => 'Attribution',
+	'mwe-cc_nc_title' => 'Noncommercial',
+	'mwe-cc_nd_title' => 'No Derivative Works',
+	'mwe-cc_sa_title' => 'Share Alike',
+	'mwe-cc_pd_title' => 'Public Domain',
+	'mwe-unknown_license' => 'Unknown license',
+	'mwe-no_import_by_url' => 'This user or wiki <b>cannot</b> import assets from remote URLs.<p>Do you need to login?</p><p>Is upload_by_url permission set for you?<br />Does the wiki have <a href="http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads">$wgAllowCopyUploads</a> enabled?</p>',
+	'mwe-results_from' => 'Results from <a href="$1" target="_new" >$2</a>',
+	'mwe-missing_desc_see_source' => 'This asset is missing a description. Please see the [$1 original source] and help describe it.',
+	'rsd_config_error' => 'Add media wizard configuration error: $1',
+	'mwe-your_recent_uploads' => 'Your recent uploads to $1',
+	'mwe-no_recent_uploads' => 'No recent uploads',
+	'mwe-upload_a_file' => 'Upload a new file to $1',
+	'mwe-resource_page_desc' => 'Resource page description:',
+	'mwe-edit_resource_desc' => 'Edit wiki text resource description:',
+	'mwe-local_resource_title' => 'Local resource title:',
+	'mwe-watch_this_page' => 'Watch this page',
+	'mwe-do_import_resource' => 'Import resource',
+	'mwe-update_preview' => 'Update resource page preview',
+	'mwe-cancel_import' => 'Cancel import',
+	'mwe-importing_asset' => 'Importing asset',
+	'mwe-preview_insert_resource' => 'Preview insert of resource: $1',
+	'mwe-checking-resource' => 'Checking for resource',
+	'mwe-resource-needs-import' => 'Resource $1 needs to be imported to $2',
+	'mwe-ftype-svg' => 'SVG vector file',
+	'mwe-ftype-jpg' => 'JPEG image file',
+	'mwe-ftype-png' => 'PNG image file',
+	'mwe-ftype-oga' => 'Ogg audio file',
+	'mwe-ftype-ogg' => 'Ogg video file',
+	'mwe-ftype-unk' => 'Unknown file format',
+	'rsd-wiki_commons-title' => 'Wikimedia Commons',
+	'rsd-wiki_commons' => 'Wikimedia Commons, an archive of freely-licensed educational media content (images, sound and video clips)',
+	'rsd-kaltura-title' => 'All Sources',
+	'rsd-kaltura' => 'Kaltura agragated search for free-licenced media across multiple search providers',
+	'rsd-this_wiki-title' => 'This wiki',
+	'rsd-this_wiki-desc' => 'The local wiki install',
+	'rsd-archive_org-title' => 'Archive.org',
+	'rsd-archive_org-desc' => 'The Internet Archive, a digital library of cultural artifacts',
+	'rsd-flickr-title' => 'Flickr.com',
+	'rsd-flickr-desc' => 'Flickr.com, a online photo sharing site',
+	'rsd-metavid-title' => 'Metavid.org',
+	'rsd-metavid-desc' => 'Metavid.org, a community archive of US House and Senate floor proceedings',
+	'rsd-search-timeout' => 'The search request did not complete. The server may be down experiencing heavy load. You can try again later',
 
 	/*
 	 * js file: /modules/AddMedia/mw.BaseUploadInterface.js
@@ -228,6 +320,56 @@ $messages['en'] = array(
 	'mwe-go-to-resource' => 'Go to resource page',
 	'mwe-upload-misc-error' => 'Unknown upload error',
 	'mwe-wgfogg_warning_bad_extension' => 'You have selected a file with an unsuported extension (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">more information</a>).',
+
+	/*
+	 * js file: /modules/AddMedia/jquery.simpleUploadForm.js
+	 */
+	'mwe-select_file' => 'Select file',
+	'mwe-more_license_options' => 'For more license options, view the <a href="$1">normal upload page</a>',
+	'mwe-select_ownwork' => 'I am uploading entirely my own work, and licencing it under:',
+	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
+	'mwe-upload' => 'Upload file',
+	'mwe-destfilename' => 'Destination filename:',
+	'mwe-summary' => 'Summary',
+	'mwe-error_not_loggedin' => 'You do not appear to be logged in or do not have upload privileges.',
+	'mwe-watch-this-file' => 'Watch this file',
+	'mwe-ignore-any-warnings' => 'Ignore any warnings',
+
+	/*
+	 * js file: /modules/AddMedia/mw.Firefogg.js
+	 */
+	'fogg-select_file' => 'Select file',
+	'fogg-select_new_file' => 'Select new file',
+	'fogg-select_url' => 'Select URL',
+	'fogg-save_local_file' => 'Save Ogg',
+	'fogg-check_for_firefogg' => 'Checking for Firefogg...',
+	'fogg-installed' => 'Firefogg is installed',
+	'fogg-for_improved_uploads' => 'For improved uploads:',
+	'fogg-please_install' => '<a href="$1">Install Firefogg</a>. More <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">about Firefogg</a>.',
+	'fogg-use_latest_firefox' => 'Please first install <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (or later). <i>Then revisit this page to install the <b>Firefogg</b> extension.</i>',
+	'fogg-passthrough_mode' => 'Your selected file is already Ogg or not a video file',
+	'fogg-transcoding' => 'Encoding video to Ogg...',
+	'fogg-encoding-done' => 'Encoding complete',
+	'fogg-badtoken' => 'Token is not valid',
+	'fogg-preview' => 'Preview video',
+	'fogg-hidepreview' => 'Hide preview',
+
+	/*
+	 * js file: /modules/AddMedia/searchLibs/metavidSearch.js
+	 */
+	'mwe-stream_title' => '$1 $2 to $3',
+
+	/*
+	 * js file: /modules/AddMedia/searchLibs/baseRemoteSearch.js
+	 */
+	'mwe-imported_from' => '$1 imported from [$2 $3]. See the original [$4 resource page] for more information.',
+	'mwe-import-description' => '$1, imported from $2',
+
+	/*
+	 * js file: /modules/AddMedia/jquery.dragDropFile.js
+	 */
+	'mwe-upload-multi' => 'Upload {{PLURAL:$1|file|files}}',
+	'mwe-review-upload' => 'Review file {{PLURAL:$1|upload|uploads}}',
 
 	/*
 	 * js file: /modules/AddMedia/mw.FirefoggGUI.js
@@ -296,157 +438,9 @@ $messages['en'] = array(
 	'fogg-contact-help' => 'Contact link',
 
 	/*
-	 * js file: /modules/AddMedia/searchLibs/metavidSearch.js
+	 * js file: /modules/AddMedia/loader.js
 	 */
-	'mwe-stream_title' => '$1 $2 to $3',
-
-	/*
-	 * js file: /modules/AddMedia/searchLibs/baseRemoteSearch.js
-	 */
-	'mwe-imported_from' => '$1 imported from [$2 $3]. See the original [$4 resource page] for more information.',
-	'mwe-import-description' => '$1, imported from $2',
-
-	/*
-	 * js file: /modules/AddMedia/jquery.simpleUploadForm.js
-	 */
-	'mwe-select_file' => 'Select file',
-	'mwe-more_license_options' => 'For more license options, view the <a href="$1">normal upload page</a>',
-	'mwe-select_ownwork' => 'I am uploading entirely my own work, and licencing it under:',
-	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
-	'mwe-upload' => 'Upload file',
-	'mwe-destfilename' => 'Destination filename:',
-	'mwe-summary' => 'Summary',
-	'mwe-error_not_loggedin' => 'You do not appear to be logged in or do not have upload privileges.',
-	'mwe-watch-this-file' => 'Watch this file',
-	'mwe-ignore-any-warnings' => 'Ignore any warnings',
-
-	/*
-	 * js file: /modules/AddMedia/mw.RemoteSearchDriver.js
-	 */
-	'mwe-add_media_wizard' => 'Add media wizard',
-	'mwe-media_search' => 'Media search',
-	'rsd_box_layout' => 'Box layout',
-	'rsd_list_layout' => 'List layout',
-	'rsd_results_desc' => 'Results $1 to $2',
-	'rsd_results_desc_total' => 'Results $1 to $2 of $3',
-	'rsd_results_next' => 'next',
-	'rsd_results_prev' => 'previous',
-	'rsd_no_results' => 'No search results for <b>$1</b>',
-	'mwe-upload_tab' => 'Upload',
-	'rsd_layout' => 'Layout:',
-	'rsd_resource_edit' => 'Edit resource: $1',
-	'mwe-resource_description_page' => 'Resource description page',
-	'mwe-link' => 'link',
-	'rsd_local_resource_title' => 'Local resource title',
-	'rsd_do_insert' => 'Do insert',
-	'mwe-cc_title' => 'Creative Commons',
-	'mwe-cc_by_title' => 'Attribution',
-	'mwe-cc_nc_title' => 'Noncommercial',
-	'mwe-cc_nd_title' => 'No Derivative Works',
-	'mwe-cc_sa_title' => 'Share Alike',
-	'mwe-cc_pd_title' => 'Public Domain',
-	'mwe-unknown_license' => 'Unknown license',
-	'mwe-no_import_by_url' => 'This user or wiki <b>cannot</b> import assets from remote URLs.<p>Do you need to login?</p><p>Is upload_by_url permission set for you?<br />Does the wiki have <a href="http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads">$wgAllowCopyUploads</a> enabled?</p>',
-	'mwe-results_from' => 'Results from <a href="$1" target="_new" >$2</a>',
-	'mwe-missing_desc_see_source' => 'This asset is missing a description. Please see the [$1 original source] and help describe it.',
-	'rsd_config_error' => 'Add media wizard configuration error: $1',
-	'mwe-your_recent_uploads' => 'Your recent uploads to $1',
-	'mwe-upload_a_file' => 'Upload a new file to $1',
-	'mwe-resource_page_desc' => 'Resource page description:',
-	'mwe-edit_resource_desc' => 'Edit wiki text resource description:',
-	'mwe-local_resource_title' => 'Local resource title:',
-	'mwe-watch_this_page' => 'Watch this page',
-	'mwe-do_import_resource' => 'Import resource',
-	'mwe-update_preview' => 'Update resource page preview',
-	'mwe-cancel_import' => 'Cancel import',
-	'mwe-importing_asset' => 'Importing asset',
-	'mwe-preview_insert_resource' => 'Preview insert of resource: $1',
-	'mwe-checking-resource' => 'Checking for resource',
-	'mwe-resource-needs-import' => 'Resource $1 needs to be imported to $2',
-	'mwe-ftype-svg' => 'SVG vector file',
-	'mwe-ftype-jpg' => 'JPEG image file',
-	'mwe-ftype-png' => 'PNG image file',
-	'mwe-ftype-oga' => 'Ogg audio file',
-	'mwe-ftype-ogg' => 'Ogg video file',
-	'mwe-ftype-unk' => 'Unknown file format',
-	'rsd-wiki_commons-title' => 'Wikimedia Commons',
-	'rsd-wiki_commons' => 'Wikimedia Commons, an archive of freely-licensed educational media content (images, sound and video clips)',
-	'rsd-kaltura-title' => 'All Sources',
-	'rsd-kaltura' => 'Kaltura agragated search for free-licenced media across multiple search providers',
-	'rsd-this_wiki-title' => 'This wiki',
-	'rsd-this_wiki-desc' => 'The local wiki install',
-	'rsd-archive_org-title' => 'Archive.org',
-	'rsd-archive_org-desc' => 'The Internet Archive, a digital library of cultural artifacts',
-	'rsd-flickr-title' => 'Flickr.com',
-	'rsd-flickr-desc' => 'Flickr.com, a online photo sharing site',
-	'rsd-metavid-title' => 'Metavid.org',
-	'rsd-metavid-desc' => 'Metavid.org, a community archive of US House and Senate floor proceedings',
-	'rsd-search-timeout' => 'The search request did not complete. The server may be down experiencing heavy load. You can try again later',
-
-	/*
-	 * js file: /modules/AddMedia/mw.Firefogg.js
-	 */
-	'fogg-select_file' => 'Select file',
-	'fogg-select_new_file' => 'Select new file',
-	'fogg-select_url' => 'Select URL',
-	'fogg-save_local_file' => 'Save Ogg',
-	'fogg-check_for_firefogg' => 'Checking for Firefogg...',
-	'fogg-installed' => 'Firefogg is installed',
-	'fogg-for_improved_uploads' => 'For improved uploads:',
-	'fogg-please_install' => '<a href="$1">Install Firefogg</a>. More <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">about Firefogg</a>.',
-	'fogg-use_latest_firefox' => 'Please first install <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (or later). <i>Then revisit this page to install the <b>Firefogg</b> extension.</i>',
-	'fogg-passthrough_mode' => 'Your selected file is already Ogg or not a video file',
-	'fogg-transcoding' => 'Encoding video to Ogg...',
-	'fogg-encoding-done' => 'Encoding complete',
-	'fogg-badtoken' => 'Token is not valid',
-	'fogg-preview' => 'Preview video',
-	'fogg-hidepreview' => 'Hide preview',
-
-	/*
-	 * js file: /modules/AddMedia/jquery.dragDropFile.js
-	 */
-	'mwe-upload-multi' => 'Upload {{PLURAL:$1|file|files}}',
-	'mwe-review-upload' => 'Review file {{PLURAL:$1|upload|uploads}}',
-
-	/*
-	 * js file: /modules/ClipEdit/mw.ClipEdit.js
-	 */
-	'mwe-crop' => 'Crop image',
-	'mwe-apply_crop' => 'Apply crop to image',
-	'mwe-reset_crop' => 'Reset crop',
-	'mwe-insert_image_page' => 'Insert into page',
-	'mwe-insert_into_sequence' => 'Insert into sequence',
-	'mwe-preview_insert' => 'Preview insert',
-	'mwe-cancel_image_insert' => 'Cancel insert',
-	'mwe-sc_attributes' => 'Clip detail edit',
-	'mwe-sc_inoutpoints' => 'Set in-out points',
-	'mwe-sc_overlays' => 'Overlays',
-	'mwe-sc_audio' => 'Audio control',
-	'mwe-sc_duration' => 'Duration',
-	'mwe-template_properties' => 'Template properties',
-	'mwe-custom_title' => 'Custom title',
-	'mwe-edit_properties' => 'Edit properties',
-	'mwe-other_properties' => 'Other properties',
-	'mwe-resource_page' => 'Resource page:',
-	'mwe-set_in_out_points' => 'Set in-out points',
-	'mwe-start_time' => 'Start time',
-	'mwe-end_time' => 'End time',
-	'mwe-preview_inout' => 'Preview in-out points',
-	'mwe-edit-tools' => 'Edit tools',
-	'mwe-inline-description' => 'Caption',
-	'mwe-edit-video-tools' => 'Edit video tools:',
-	'mwe-duration' => 'Duration:',
-	'mwe-layout' => 'Layout',
-
-	/*
-	 * js file: /modules/ApiProxy/mw.proxy.js
-	 */
-	'mwe-setting-up-proxy' => 'Setting up proxy...',
-	'mwe-re-try' => 'Retry API request',
-	'mwe-re-trying' => 'Retrying API request...',
-	'mwe-proxy-not-ready' => 'Proxy is not configured',
-	'mwe-please-login' => 'You are not <a target="_new" href="$1">logged in</a> on $2 or mwEmbed has not been enabled. Resolve the issue, and then retry the request.',
-	'mwe-remember-loging' => 'General security reminder: Only login to web sites when your address bar displays that site\'s address.',
+	'mwe-loading-add-media-wiz' => 'Loading add media wizard',
 
 	/*
 	 * js file: /mwEmbed.js
@@ -461,6 +455,15 @@ $messages['en'] = array(
 	'mwe-load-drag-item' => 'Loading dragged item',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Cancel',
+	'mwe-enable-gadget' => 'Enable mwEmbed gadgate for all pages',
+	'mwe-enable-gadget-done' => 'mwEmbed gadgate has been enabled',
+	'mwe-must-login-gadget' => 'To enable gadget you must <a href="$1">login</a>',
+
+	/*
+	 * js file: /skins/kskin/kskinConfig.js
+	 */
+	'mwe-credit-title' => 'Title: $1',
+	'mwe-kaltura-platform-title' => 'Kaltura open source video platform',
 
 	/*
 	 * js file: /tests/testLang.js
