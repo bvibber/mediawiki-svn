@@ -901,6 +901,14 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe.show();
 			// Let modules know we're ready to start working with the content
 			context.fn.trigger( 'ready' );
+			// Setup event handling on the iframe
+			context.$content
+				.bind( 'keyup mouseup paste cut encapsulateSelection', function( event ) {
+					context.fn.trigger( 'change', event );
+				} )
+				.delayedBind( 250, 'keyup mouseup paste cut encapsulateSelection', function( event ) {
+					context.fn.trigger( 'delayedChange', event );
+				} );
 		} );
 	// Attach a submit handler to the form so that when the form is submitted the content of the iframe gets decoded and
 	// copied over to the textarea

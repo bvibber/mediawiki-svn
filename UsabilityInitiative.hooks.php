@@ -123,11 +123,6 @@ class UsabilityInitiativeHooks {
 					'version' => 1
 				),
 				array(
-					'src' => 'js/plugins/jquery.inherit.js',
-					'class' => 'inherit',
-					'version' => 3
-				),
-				array(
 					'src' => 'js/plugins/jquery.namespaceSelect.js',
 					'class' => 'j.fn.namespaceSelector',
 					'version' => 1
@@ -140,7 +135,7 @@ class UsabilityInitiativeHooks {
 				array(
 					'src' => 'js/plugins/jquery.wikiEditor.js',
 					'class' => 'j.wikiEditor',
-					'version' => 64
+					'version' => 65
 				),
 				array(
 					'src' => 'js/plugins/jquery.wikiEditor.highlight.js',
@@ -178,10 +173,10 @@ class UsabilityInitiativeHooks {
 					'version' => 1 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 171 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 172 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 171 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 172 ),
 			),
 		),
 	);
