@@ -255,11 +255,12 @@ mw.RemoteSearchDriver.prototype = {
 			'resource_prefix' : '',
 			'tab_image':false,
 			show_filters: true,
-			aggregated_providers:
-				{ 'Wikipedia Commons': 'wiki_commons',
-				  'The Internet Archive': 'archive_org',
-				  'Metavid': 'metavid',
-				  'Flickr': 'flickr' }
+			aggregated_providers:{ 
+				'Wikipedia Commons': 'wiki_commons',
+				'The Internet Archive': 'archive_org',
+				'Metavid': 'metavid',
+				'Flickr': 'flickr' 
+			}
 		},
 		
 		/**
@@ -810,7 +811,7 @@ mw.RemoteSearchDriver.prototype = {
 		mainContainer.append( this.$filtersContainer );
 		mainContainer.append( this.$resultsContainer );
 		
-		// run the default search:
+		// Run the default search:
 		if ( this.getDefaultQuery() )
 			this.UpdateResults();
 
@@ -1441,7 +1442,7 @@ mw.RemoteSearchDriver.prototype = {
 		
 		// Check for missing poster types for audio
 		if ( resource.mime == 'audio/ogg' && !resource.poster ) {
-			resource.poster = mw.getConfig( 'skin_img_path' ) + 'sound_music_icon-80.png';
+			resource.poster = mw.getConfig( 'images_path' ) + 'sound_music_icon-80.png';
 		}
 		
 		// Get a thumb with proper resolution transform if possible:
@@ -1612,14 +1613,15 @@ mw.RemoteSearchDriver.prototype = {
 	*
 	* @param {Object} resource get media type of resource
 	*/
-	getMediaType: function( resource ) {
-		if ( resource.mime.indexOf( 'image' ) != -1 ) {
-			return 'image';
-		} else if ( resource.mime.indexOf( 'audio' ) != -1 ) {
-			return 'audio';
-		} else {
-			return 'video';
+	getMediaType: function( resource ) {		
+		var types = [ 'image', 'audio', 'video'];
+		for( var i=0; i < types.length ; i++ ){
+			if ( resource.mime.indexOf( types[i] ) !== -1){
+				return types[i];
+			}
 		}
+		// Media type not found:
+		return false;
 	},
 	
 	/**
@@ -1864,12 +1866,26 @@ mw.RemoteSearchDriver.prototype = {
 					return false;
 				}
 				var embedHtml = resource.pSobj.getEmbedHTML( resource, 
-					{ id : 'embed_vid' } );
+					{ 
+						'id' : 'embed_vid' 
+					} 
+				);				
 				mw.log( 'append html: ' + embedHtml );
 				$j( '#clip_edit_disp' ).html( embedHtml );
 				
+				// Add extra space at the top if the resource is 'audio' bug 22189				
+				if( _this.getMediaType( resource ) == 'audio' ){
+					$j( '#clip_edit_disp' ).prepend( 
+						$j( '<span />' )
+						.css({
+							'height': '90px',
+							'display': 'block'
+						}) 
+					);
+				}
+				
 				mw.log( "about to call $j.embedPlayer::embed_vid" );							
-				// Rewrite by id
+				// Rewrite by id	
 				$j( '#embed_vid').embedPlayer ( function() {
 				
 					// Grab information available from the embed instance
@@ -1881,7 +1897,7 @@ mw.RemoteSearchDriver.prototype = {
 						'$j.ui.resizable',
 						'$j.fn.hoverIntent'
 					] 
-					mw.load( librarySet, function() {
+					mw.load( librarySet, function() {						
 						// Make sure the rsd_edit_img is removed:
 						$j( '#rsd_edit_img' ).remove();
 						// Run the image clip tools
@@ -2660,10 +2676,10 @@ mw.RemoteSearchDriver.prototype = {
 	createLayoutSelector: function() {
 
 		var _this = this;
-		var darkBoxUrl = mw.getConfig( 'skin_img_path' ) + 'box_layout_icon_dark.png';
-		var lightBoxUrl = mw.getConfig( 'skin_img_path' ) + 'box_layout_icon.png';
-		var darkListUrl = mw.getConfig( 'skin_img_path' ) + 'list_layout_icon_dark.png';
-		var lightListUrl = mw.getConfig( 'skin_img_path' ) + 'list_layout_icon.png';
+		var darkBoxUrl = mw.getConfig( 'images_path' ) + 'box_layout_icon_dark.png';
+		var lightBoxUrl = mw.getConfig( 'images_path' ) + 'box_layout_icon.png';
+		var darkListUrl = mw.getConfig( 'images_path' ) + 'list_layout_icon_dark.png';
+		var lightListUrl = mw.getConfig( 'images_path' ) + 'list_layout_icon.png';
 		
 		var defaultBoxUrl, defaultListUrl;
 		if ( _this.displayMode == 'box' ) {

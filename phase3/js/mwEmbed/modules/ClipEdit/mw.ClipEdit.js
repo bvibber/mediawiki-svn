@@ -97,7 +97,7 @@ mw.ClipEdit.prototype = {
 	* initialises a clipEdit object with provided options.  
 	*/
 	init:function( options ) {
-		mw.log(' mw.ClipEdit' );
+		mw.log('init: mw.ClipEdit' );
 		// init object:
 		for ( var i in default_clipedit_values ) {
 			if ( options[i] ) {
@@ -114,6 +114,7 @@ mw.ClipEdit.prototype = {
 	* Clip edit profile is either "sequence" or "clip" 
 	*/
 	showControlEdit:function(){
+		mw.log( 'showControlEdit' );
 		if ( this.profile == 'sequence' ) {
 			this.showEditTypesMenu();
 			this.showEditUI();
@@ -123,7 +124,11 @@ mw.ClipEdit.prototype = {
 			// could separate out into media Types objects for now just call method
 			if ( this.getMediaType() == 'image' ) {
 				this.showImageControls();
-			} else if ( this.getMediaType() == 'video' ) {
+			} else if ( 
+				this.getMediaType() == 'video'
+				||
+				this.getMediaType() == 'audio'  
+			) {
 				this.showVideoControls();
 			}
 		}
@@ -177,14 +182,21 @@ mw.ClipEdit.prototype = {
 					_this.parentSequence.do_refresh_timeline( true );
 				}
 							
-				$j( target ).html(
-						'<label for="ce_dur">' + gM( 'mwe-duration' ) + '</label>' +
-						'<input name="ce_dur" '+
-						'tabindex="1" '+
-						'maxlength="11" '+
-						'value="' +	mw.seconds2npt( _this.resource.getDuration() ) +'" '+
-						'size="10"/>' +
-					'</div>'
+				$j( target ).empty().html(
+				
+					$j('<label />')
+					.attr('for','ce_dur')
+					.text( gM( 'mwe-duration' ) ),
+					
+					$j('<input />')
+					.attr({
+						'name' : "ce_dur",
+						'tabindex' : "1",
+						'maxlength' : "11",
+						'size' : "10"
+					})
+					.val( mw.seconds2npt( _this.resource.getDuration() ) )
+					
 				).children( "input[name='ce_dur']" ).change( function() {
 					 doUpdateDur( this );
 				} );
@@ -468,7 +480,7 @@ mw.ClipEdit.prototype = {
 	/**
 	* Show Video Controls for the resource edit
 	*/
-	showVideoControls:function() {
+	showVideoControls: function() {
 		mw.log( 'showVideoControls:f' );
 		var _this = this;
 		var eb = $j( '#embed_vid' ).get( 0 );

@@ -145,7 +145,7 @@ function mwSetPageToLoading(){
 function mwLoadPlayer( callback ){
 	//Load the video style sheets:
 	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/styles.css?' + mwGetReqArgs() );
-	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/kskin/playerSkin.css?' + mwGetReqArgs() );
+	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/kskin/EmbedPlayer.css?' + mwGetReqArgs() );
 			
 	var jsSetVideo = [ 		
 		'mw.EmbedPlayer', 
