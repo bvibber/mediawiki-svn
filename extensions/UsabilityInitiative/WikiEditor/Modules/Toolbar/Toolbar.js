@@ -1692,19 +1692,24 @@ mw.ready( function() {
 				<div id="wikieditor-toolbar-replace-emptysearch" rel="wikieditor-toolbar-tool-replace-emptysearch"></div>\
 				<div id="wikieditor-toolbar-replace-invalidregex"></div>\
 			</div>\
-			<fieldset><table width="100%"><tr>\
-				<td width="25%"><label for="wikieditor-toolbar-replace-search" rel="wikieditor-toolbar-tool-replace-search"></label></td>\
-				<td width="75%"><input type="text" id="wikieditor-toolbar-replace-search" style="width: 90%;" /></td>\
-			</tr><tr>\
-				<td><label for="wikieditor-toolbar-replace-replace" rel="wikieditor-toolbar-tool-replace-replace"></label></td>\
-				<td><input type="text" id="wikieditor-toolbar-replace-replace" style="width: 90%;" /></td>\
-			</tr></table><table><tr>\
-				<td><input type="checkbox" id="wikieditor-toolbar-replace-case" /></td>\
-				<td><label for="wikieditor-toolbar-replace-case" rel="wikieditor-toolbar-tool-replace-case"></label></td>\
-			</tr><tr>\
-				<td><input type="checkbox" id="wikieditor-toolbar-replace-regex" /></td>\
-				<td><label for="wikieditor-toolbar-replace-regex" rel="wikieditor-toolbar-tool-replace-regex"></label></td>\
-			</tr></table></fieldset>',
+			<fieldset>\
+				<div class="wikieditor-toolbar-field-wrapper">\
+					<label for="wikieditor-toolbar-replace-search" rel="wikieditor-toolbar-tool-replace-search"></label>\
+					<input type="text" id="wikieditor-toolbar-replace-search" style="width: 100%;" />\
+				</div>\
+				<div class="wikieditor-toolbar-field-wrapper">\
+					<label for="wikieditor-toolbar-replace-replace" rel="wikieditor-toolbar-tool-replace-replace"></label>\
+					<input type="text" id="wikieditor-toolbar-replace-replace" style="width: 100%;" />\
+				</div>\
+				<div class="wikieditor-toolbar-field-wrapper">\
+					<input type="checkbox" id="wikieditor-toolbar-replace-case" />\
+					<label for="wikieditor-toolbar-replace-case" rel="wikieditor-toolbar-tool-replace-case"></label>\
+				</div>\
+				<div class="wikieditor-toolbar-field-wrapper">\
+					<input type="checkbox" id="wikieditor-toolbar-replace-regex" />\
+					<label for="wikieditor-toolbar-replace-regex" rel="wikieditor-toolbar-tool-replace-regex"></label>\
+				</div>\
+			</fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );

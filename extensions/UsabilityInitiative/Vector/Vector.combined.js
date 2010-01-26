@@ -212,7 +212,7 @@ mw.ready( function() {
 		// FIXME: i18n, remove link from message and let community add link to transclusion page if it exists
 		.prepend( '<label>This page contains <a href="http://en.wikipedia.org/wiki/transclusion">transclusions</a> of <strong>'
 			+ transclusionCount 
-			+ '</strong> other pages.</label>');
+			+ '</strong> other pages.</label>' );
 	$j( '.mw-templatesUsedExplanation' ).remove();
 	
 	$j( '.collapsible-list label' )
@@ -230,7 +230,7 @@ mw.ready( function() {
 		.remove();
 	$j( '#mw-editform-cancel' )
 		.remove()
-		.appendTo('.editButtons');
+		.appendTo( '.editButtons' );
 } );
 /* JavaScript for SimpleSearch extension */
 
