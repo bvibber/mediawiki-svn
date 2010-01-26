@@ -493,6 +493,7 @@ mw.RemoteSearchDriver.prototype = {
 					.attr( 'title', gM( 'mwe-add_media_wizard' ) )
 					.click( function() {
 						_this.createUI();
+						return false;
 					} );
 			}
 		}
@@ -634,6 +635,7 @@ mw.RemoteSearchDriver.prototype = {
 				.click( function() {
 					mw.log( "createUI:target_invoke_button: click showDialog" );
 					 _this.showDialog();
+					 return false;
 				 } );
 		}
 	},
@@ -829,6 +831,7 @@ mw.RemoteSearchDriver.prototype = {
 						$j( this ).hide();
 					} );
 				}
+				return false;
 			} );
 		// Set form bindings
 		$j( '#rsd_form' )
@@ -858,12 +861,13 @@ mw.RemoteSearchDriver.prototype = {
 		var $providerSelection = $j( '<ul />' ).addClass( "ui-provider-selection" );
 		
 		var $searchButton = $j.button({
-            	icon_id: 'search', 
-            	text: gM( 'mwe-media_search' ) })
-            .addClass( 'rsd_search_button' )
+			icon_id: 'search', 
+				text: gM( 'mwe-media_search' ) })
+			.addClass( 'rsd_search_button' )
 			.buttonHover()
 			.click(function (){
 				_this.updateResults( _this.current_provider, true );
+				return false;
 			});
 		var $searchBox = $j( '<input />' ).addClass( 'ui-widget-content ui-corner-all' ).attr({
 			type: "text",
@@ -906,11 +910,13 @@ mw.RemoteSearchDriver.prototype = {
 					_this.current_provider = $j( this ).attr( "name" );
 					// Update the search results on provider selection
 					_this.updateResults( _this.current_provider, true );
+					return false;
 				});
 				
 				var $listItem = $j( '<li />' );
 				$listItem.append( $anchor );
 				$providerSelection.append( $listItem );
+				return false;
 			}
 		}
 		
@@ -924,6 +930,7 @@ mw.RemoteSearchDriver.prototype = {
 				.click(function(){
 					_this.current_provider = 'upload';
 					_this.updateUploadResults( );
+					return false;
 				});
 			$searchForm.append( $uploadButton );
 			/* 
@@ -1499,6 +1506,7 @@ mw.RemoteSearchDriver.prototype = {
 		$j( '.rsd_res_item' ).unbind().click( function() {		
 			var resource = _this.getResourceFromId( $j( this ).attr( "id" ) );
 			_this.showResourceEditor( resource, this );
+			return false;
 		} );
 	},
 	
@@ -1755,6 +1763,7 @@ mw.RemoteSearchDriver.prototype = {
 			.buttonHover()
 			.click( function() {
 				$j( _this.target_container ).dialog( 'close' );
+				return false;
 			} );
 	},
 
@@ -2074,6 +2083,7 @@ mw.RemoteSearchDriver.prototype = {
 						$j( '#rsd_import_desc' ).html( o );
 					} 
 				);
+				return false;
 			} );
 		
 		$j( buttonPaneSelector + ' .rsd_import_doimport' )
@@ -2086,6 +2096,7 @@ mw.RemoteSearchDriver.prototype = {
 				} else {
 					mw.log( "Error: import mode is not form or API (can not copy asset)" );
 				}
+				return false;
 			} );
 		$j( buttonPaneSelector + ' .rsd_import_acancel' )
 			.buttonHover()
@@ -2096,6 +2107,7 @@ mw.RemoteSearchDriver.prototype = {
 					_this.clipEdit.updateInsertControlActions();
 					$j( buttonPaneSelector ).removeClass( 'ui-state-error' );
 				} );
+				return false;
 			} );
 	},
 	
@@ -2462,6 +2474,7 @@ mw.RemoteSearchDriver.prototype = {
 				.children( '.preview_do_insert' )
 				.click( function() {
 					_this.insertResource( resource );
+					return false;
 				} );
 				
 			// Update cancel button
@@ -2474,6 +2487,7 @@ mw.RemoteSearchDriver.prototype = {
 					$j( _this.target_container ).dialog( 'option', 'title', origTitle );
 					// Restore buttons (from the clipEdit object::)
 					_this.clipEdit.updateInsertControlActions();
+					return false;
 				} );
 
 			// Get the preview wikitext
@@ -2682,6 +2696,7 @@ mw.RemoteSearchDriver.prototype = {
 				$boxLayout.attr( "src", darkBoxUrl );
 				$listLayout.attr( "src", lightListUrl );
 				_this.setDisplayMode( 'box' );
+				return false;
 			} );
 		$listLayout = $j( '<img />' ).addClass( 'layout_selector' )
 			.attr({
@@ -2700,6 +2715,7 @@ mw.RemoteSearchDriver.prototype = {
 				$listLayout.attr( "src", darkListUrl );
 				$boxLayout.attr( "src", lightBoxUrl );
 				_this.setDisplayMode( 'list' );
+				return false;
 			} );
 			
 		$layoutSelector = $j( '<span />' )
@@ -2820,6 +2836,7 @@ mw.RemoteSearchDriver.prototype = {
 					if ( provider.offset < 0 )
 						provider.offset = 0;
 					_this.updateResults();
+					return false;
 				} );
 			$pagingControl.prepend( $prevLink );
 		}
@@ -2836,6 +2853,7 @@ mw.RemoteSearchDriver.prototype = {
 				.click( function() {
 					provider.offset += provider.limit;
 					_this.updateResults();
+					return false;
 				} );
 			$pagingControl.append( $nextLink );
 		}
