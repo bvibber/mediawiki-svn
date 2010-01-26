@@ -2,6 +2,95 @@
  * Kaltura aggregated search:  
  */
 
+var kalturaFilters = function ( options ) {
+	return this.init( options );
+}
+
+kalturaFilters.prototype = {
+		
+		init: function( options ) {
+			var mediaTypes = {
+					video: 'Videos',
+					image: 'Images'
+			};
+
+			var providers = {
+					wiki_commons: 'Wikipedia Commons',
+					archive_org: 'The Internet Archive',
+					metavid: 'Metavid',
+					flickr: 'Flickr'
+			};
+			
+			this.filterList = {
+					media: { title: 'Media', options: mediaTypes },
+					providers: { title: 'Providers', options: providers }
+			};
+			
+			return this;
+		},
+		
+
+		/**
+		 * Create an HTML representation of the available search filters and append 
+		 * them to the given element.
+		 * 
+		 *  @param {jQuery element} The base element to which HTML items should be
+		 *  appended.
+		 */
+		
+		getHTML: function() {
+			var _this = this;
+			mw.log( 'f: populateFilterContainer ' );
+			
+			$filtersContainer = $j( '<div />' );
+			
+			for (filter in this.filterList) {
+				$filtersContainer.append(
+					this.getFilterBox( 'rsd_' + filter + '_filter', 
+						  this.filterList[ filter ].title, 
+						  this.filterList[ filter ].options ));
+			}
+			
+			return $filtersContainer;
+		},
+		
+		/**
+		 * Creates a single filter box with given selection options
+		 * 
+		 * @id {string} unique id for this filter box an residing elements
+		 * @title {string} title of the filter box
+		 * @options {array} array of strings describing the options in the filter box
+		 * 
+		 */
+		
+		getFilterBox: function( id, title, filterOptions ) {
+			$box = $j( '<div />' ).addClass( 'ui-filter-box' ).attr({
+				'id': id
+			});
+			
+			$title = $j( '<div />' ).addClass( 'ui-filter-title' ).text( title );
+			$box.append( $title );
+			
+			for (filterID in filterOptions) {
+				$option = $j( '<div />' ).addClass( 'ui-filter-option' ).text( filterOptions[ filterID ] );
+				
+				$checkbox = $j( '<input />' )
+					.attr( {
+						type: 'checkbox',
+						name: id + '_' + title + '_' + filterID,
+						value: filterID,
+						checked: true
+					} );
+				
+				$option.prepend( $checkbox );	
+				$box.append( $option );
+			}
+			
+			return $box;
+		},
+		
+};
+
 var kalturaSearch = function ( options ) {
 	return this.init( options );
 }
@@ -12,12 +101,13 @@ kalturaSearch.prototype = {
 	searchLibs: { },	
 	
 	/**
-	* Initialize the flickr Search with provided options
+	* Initialize the Search with provided options
 	*
 	* @param {Object} options Initial options for the kalturaSearch class
 	*/
 	init:function( options ) {		
 		this.options = options;
+		this.filters = new kalturaFilters( options );
 		var baseSearch = new baseRemoteSearch( options );
 		for ( var i in baseSearch ) {
 			if ( typeof this[i] == 'undefined' ) {
@@ -26,6 +116,8 @@ kalturaSearch.prototype = {
 				this['parent_' + i] =  baseSearch[i];
 			}
 		}
+		
+		return this;
 	},
 	
 	/**

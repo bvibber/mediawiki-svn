@@ -96,9 +96,7 @@ div.floatleft, table.floatleft {
 }
 #rsd_filters_container {
 	float:left;
-	padding-top:12px;
 	width:150px;
-	height: 100%;
 }
 
 .ui-filter-title {
