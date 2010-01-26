@@ -224,6 +224,8 @@ fn: {
 			while (
 				ca1 &&
 				ca2 &&
+				ca1.parentNode &&
+				ca2.parentNode &&
 				ca1.parentNode != ca2.parentNode &&
 				ca1.parentNode.firstChild &&
 				ca2.parentNode.lastChild
@@ -231,7 +233,7 @@ fn: {
 				ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
 				ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
 			}
-			if ( ca1 && ca2 ) {
+			if ( ca1 && ca2 && ca1.parentNode && ca2.nextSibling ) {
 				var anchor = markers[i].getAnchor( ca1, ca2 );
 				if ( !anchor ) {
 					// We have to store things like .parentNode and .nextSibling because appendChild() changes these
@@ -247,7 +249,6 @@ fn: {
 							newNode.appendChild( n );
 							n = ns;
 						}
-						
 						// Insert newNode in the right place
 						if ( nextNode ) {
 							commonAncestor.insertBefore( newNode, nextNode );
