@@ -202,23 +202,23 @@ mw.RemoteSearchDriver.prototype = {
 		*  Content_providers documentation
 		*
 		*	@enabled: whether the search provider can be selected		
-		*	
+		*
 		*	@default: default: if the current cp should be displayed (only one should be the default)
-		*	
+		*
 		*	@title: the title of the search provider
-		*	
+		*
 		*	@desc: can use html
-		*	
+		*
 		* 	@homepage: the homepage url for the search provider
 		*
 		*	@api_url: the url to query against given the library type:
 		*	
 		*	@lib: the search library to use corresponding to the
-		*	    search object ie: 'mediaWiki' = new mediaWikiSearchSearch()
-		*	    
+		*		search object ie: 'mediaWiki' = new mediaWikiSearchSearch()
+		*
 		*	@tab_img: the tab image (if set to false use title text)
-		*	    if === "true" use standard location skin/images/{cp_id}_tab.png
-		*	    if === string use as url for image
+		*		if === "true" use standard location skin/images/{cp_id}_tab.png
+		*		if === string use as url for image
 		*
 		*	@linkback_icon default is: /wiki/skins/common/images/magnify-clip.png
 		*
@@ -237,7 +237,7 @@ mw.RemoteSearchDriver.prototype = {
 		* Local wiki search
 		*/
 		'this_wiki': {
-			'enabled': 1,			
+			'enabled': 1,
 			'api_url':  ( wgServer && wgScriptPath ) ? 
 				wgServer + wgScriptPath + '/api.php' : null,
 			'lib': 'mediaWiki',
@@ -340,7 +340,7 @@ mw.RemoteSearchDriver.prototype = {
 		* Special Upload tab provider 
 		*/ 
 		'upload': {
-			'enabled': 1,			
+			'enabled': 1,
 			'title': 'Upload'
 		}
 	},
@@ -480,18 +480,18 @@ mw.RemoteSearchDriver.prototype = {
 			} else {
 				_this.upload_api_target = _this.local_wiki_api_url;
 			}
-		}		
+		}
 		
 		// Set up the "add media wizard" button, which invokes this object
 		if ( !this.target_invoke_button || $j( this.target_invoke_button ).length == 0 ) {
 			mw.log( "RemoteSearchDriver:: no target invocation provided " + 
-				"(will have to run your own createUI() )" );				
+				"(will have to run your own createUI() )" );
 		} else {
-			if ( this.target_invoke_button ) {				
+			if ( this.target_invoke_button ) {
 				$j( this.target_invoke_button )
 					.css( 'cursor', 'pointer' )
 					.attr( 'title', gM( 'mwe-add_media_wizard' ) )
-					.click( function() {						
+					.click( function() {
 						_this.createUI();
 					} );
 			}
@@ -510,7 +510,7 @@ mw.RemoteSearchDriver.prototype = {
 			'title="' + licenseObj.title + '">' +
 			licenseObj.img_html +
 			'</a>' +
-	  		'</div>';
+			'</div>';
 	},
 
 	/**
@@ -1085,7 +1085,7 @@ mw.RemoteSearchDriver.prototype = {
 		this.$resultsContainer.html( mw.loading_spinner() );
 		
 		// Make sure the search library is loaded and issue the search request
-		this.performProviderSearch( provider );	
+		this.performProviderSearch( provider );
 	},
 
 	/*
@@ -1209,7 +1209,7 @@ mw.RemoteSearchDriver.prototype = {
 				)
 			}
 			return false;
-		}							
+		}
 		
 		if (!provider.sObj) {
 			this.loadSearchLib( provider, this.getProviderCallback() );
@@ -1228,9 +1228,9 @@ mw.RemoteSearchDriver.prototype = {
 			var searchTime = d.getMilliseconds();
 	
 			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() , 
-					function( resultStatus ) {				
+					function( resultStatus ) {
 						_this.showResults();
-					});		
+					});
 			
 			// Set a timeout of 20 seconds
 			setTimeout( function() {
@@ -1348,9 +1348,9 @@ mw.RemoteSearchDriver.prototype = {
 		// Output all the results for the current current_provider
 		if ( typeof provider['sObj'] != 'undefined' ) {
 			$j.each( provider.sObj.resultsObj, function( resIndex, resource ) {
-				o += _this.getResultHtml( provider, resIndex, resource );				
+				o += _this.getResultHtml( provider, resIndex, resource );
 				numResults++;
-			} );			
+			} );
 			// Put in the tab output (plus clear the output)
 			$resultsContainer.append( o + '<div style="clear:both"/>' );
 		}
@@ -1395,7 +1395,7 @@ mw.RemoteSearchDriver.prototype = {
 			return this.getResultHtmlBox( provider, resIndex, resource );
 		}else{
 			return this.getResultHtmlList(  provider, resIndex, resource );
-		}		
+		}
 	},
 	
 	/**
@@ -1518,7 +1518,7 @@ mw.RemoteSearchDriver.prototype = {
 		
 		// Set up the interface compoents:
 		var $clipEditControl =	$j('<div />')
-			.attr( 'id', 'clip_edit_ctrl' )		
+			.attr( 'id', 'clip_edit_ctrl' )
 			.addClass('ui-widget ui-widget-content ui-corner-all')
 			.css( {
 				'position' : 'absolute',
@@ -2576,7 +2576,7 @@ mw.RemoteSearchDriver.prototype = {
 		mw.log( 'insertResource: ' + resource.title );
 		var _this = this;				
 		// Double check that the resource is present:
-		this.isFileLocallyAvailable( resource, function( status ) {					
+		this.isFileLocallyAvailable( resource, function( status ) {
 			if ( status === 'missing' ) {
 				_this.showImportUI( resource, function() {
 					_this.insertResourceToOutput( resource );
@@ -2586,7 +2586,7 @@ mw.RemoteSearchDriver.prototype = {
 			if ( status === 'local' || status === 'shared' || status === 'imported' ) {
 				_this.insertResourceToOutput( resource );
 			}
-			//NOTE: should hanndle errors or other status states?			
+			//NOTE: should hanndle errors or other status states?
 		} );
 	},
 	
@@ -2630,11 +2630,11 @@ mw.RemoteSearchDriver.prototype = {
 		mw.log( "close all:: "  + _this.target_container );
 		_this.onCancelClipEdit();
 		
-		$j( _this.target_container ).dialog( 'close' );		
+		$j( _this.target_container ).dialog( 'close' );
 		// Give a chance for the events to complete
 		// (somehow at least in firefox a rare condition occurs where
 		// the modal of the edit-box stick around even after the
-		// close request has been issued. )		
+		// close request has been issued. )
 		setTimeout( 
 			function() {
 				$j( _this.target_container ).dialog( 'close' );
