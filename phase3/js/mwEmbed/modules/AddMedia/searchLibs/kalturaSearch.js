@@ -227,7 +227,7 @@ kalturaSearch.prototype = {
 		}
 		
 		mw.log( "Kaltura::getProviderResults query: " + request['s'] + " page: " + request['page']);
-		$j.getJSON( this.provider.api_url + '?callback=?', request, function( data ) {
+		mw.getJSON( this.provider.api_url + '?callback=?', request, function( data ) {
 			_this.addResults( data );
 			callback( 'ok' );
 		} );
@@ -250,16 +250,16 @@ kalturaSearch.prototype = {
 			_this.resultsObj = {};
 			this.num_results = 0;
 			
-			for ( var resource_id in data ) {				
-				var result = data[ resource_id ];					
+			for ( var resource_id in data ) {
+				var result = data[ resource_id ];
 				
 				// Update mappings: 					
 				result[ 'poster' ] = result[ 'thumbnail' ];		
 				result[ 'pSobj' ] = _this;
 				result[ 'link' ] = result[ 'item_details_page' ];
 				
-				var fileExtension = _this.getMimeExtension( result[ 'mime' ] );				
-				result[ 'titleKey' ] = 'File:' + result[ 'title' ] + '.' + fileExtension;				
+				var fileExtension = _this.getMimeExtension( result[ 'mime' ] );
+				result[ 'titleKey' ] =  result[ 'title' ] + '.' + fileExtension;
 				
 				this.num_results++;
 				_this.resultsObj[ resource_id ] = result;
