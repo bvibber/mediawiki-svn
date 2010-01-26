@@ -7703,7 +7703,13 @@ fn: {
 			}
 			// Now that ca1 and ca2 have the same depth, have them walk up the tree simultaneously
 			// to find the common ancestor
-			while ( ca1 && ca2 && ca1.parentNode != ca2.parentNode ) {
+			while (
+				ca1 &&
+				ca2 &&
+				ca1.parentNode != ca2.parentNode &&
+				ca1.parentNode.firstChild &&
+				ca2.parentNode.lastChild
+			) {
 				ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
 				ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
 			}
