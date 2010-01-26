@@ -1047,10 +1047,14 @@ $messages['lb'] = array(
 	'wah-menu-stats' => 'Statistiken',
 	'wah-menu-pref' => 'Astellungen',
 	'wah-lookingforjob' => 'No enger Aarbecht sichen ...',
+	'wah-start-on-visit' => 'Wiki@Home all Kéiers beim Opmaache vun dëser Säit demarréieren.',
+	'wah-jobs-while-away' => "Aufgaben nëmmen ausféieren, wann ech op d'mannst 20 Minutte keng Browseraktivitéit hat.",
 	'wah-downloading' => "D'Erofluede vum Fichier <i>$1%</i> ass fäerdeg",
+	'wah-encoding-fail' => 'Encodage huet net geklappt. Luet dës Säit frësch oder probéiert méi spéit nach eng Kéier.',
 	'wah-uploading' => 'De Fichier <i>$1</i> gouf komplett eropgelueden',
 	'wah-uploadfail' => 'Eroplueden hue tnet fonctionnéiert',
 	'wah-doneuploading' => 'Eroplueden ofgeschloss. Merci fir Äre Beitrag.',
+	'wah-api-error' => 'Et gouf e Feeler mat dem API. Probéiert w.e.g. méi spéit nach eng Kéier.',
 );
 
 /** Macedonian (Македонски)

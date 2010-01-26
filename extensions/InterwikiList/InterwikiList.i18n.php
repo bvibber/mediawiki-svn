@@ -29,6 +29,15 @@ $messages['qqq'] = array(
 	'interwikilist-filter' => 'Legend for the interwiki search fieldset',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'interwikilist' => 'Interwiki-lys',
+	'interwikilist-target' => 'Doel-URL',
+	'interwikilist-prefix' => 'Interwikivoorvoegsel:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

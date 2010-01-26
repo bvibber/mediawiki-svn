@@ -88,14 +88,43 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'crosswikiblock-desc' => "Laat toe om gebruikers op ander wiki's te blokkeer via 'n [[Special:Crosswikiblock|spesiale bladsy]]",
+	'crosswikiblock' => "Blokkeer gebruiker op 'n ander wiki",
+	'crosswikiblock-target' => 'IP-adres of gebruikersnaam en bestemmingswiki:',
 	'crosswikiblock-expiry' => 'Duur:',
 	'crosswikiblock-reason' => 'Rede:',
 	'crosswikiblock-submit' => 'Versper die gebruiker',
 	'crosswikiblock-anononly' => 'Blokkeer slegs anonieme gebruikers',
 	'crosswikiblock-nocreate' => 'Blokkeer registrasie van gebruikers',
 	'crosswikiblock-noemail' => 'Verbied gebruiker om e-pos te stuur',
+	'crosswikiunblock' => "Deblokkeer gebruiker op 'n ander wiki",
+	'crosswikiunblock-user' => 'Gebruiker, IP-adres of blokkadenommer en bestemmingswiki:',
 	'crosswikiunblock-reason' => 'Rede:',
+	'crosswikiunblock-submit' => 'Deblokkeer die gebruiker',
+	'crosswikiunblock-success' => "Gebruiker '''$1''' is suksesvol gedeblokkeer.
+
+Gaan terug na:
+* Die [[Special:CrosswikiBlock|blokkadevorm]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Geen gebruikersnaam is verskaf nie',
+	'crosswikiblock-local' => 'Plaaslike blokkades word nie deur hierdie vorm ondersteun nie.
+Gebruik [[Special:BlockIP|{{int:blockip}}]].',
+	'crosswikiblock-dbnotfound' => 'Databasis $1 bestaan nie',
+	'crosswikiblock-noname' => '"$1" is nie \'n geldige gebruikersnaam nie.',
+	'crosswikiblock-nouser' => 'Gebruiker "$3" is nie gevind nie.',
+	'crosswikiblock-noexpiry' => 'Ongeldige vervaldatum: $1.',
+	'crosswikiblock-noreason' => 'Geen rede verskaf nie.',
+	'crosswikiblock-notoken' => 'Ongeldige wysigingsteken ("edit token")',
 	'crosswikiblock-alreadyblocked' => 'Gebruiker $3 is reeds geblok.',
+	'crosswikiblock-noblock' => 'Hierdie gebruiker is nie geblokkeer nie.',
+	'crosswikiblock-success' => "Gebruiker '''$3''' is suksesvol geblokkeer.
+
+Terug na:
+* Die [[Special:CrosswikiBlock|blokkeervorm]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Lokale deblokkerings word nie via hierdie koppelvlak ondersteun nie.
+Gebruik die [[Special:IPBlockList|{{int:ipblocklist}}]].',
+	'right-crosswikiblock' => "Blokkeer en deblokkeer gebruikers op ander wiki's",
 );
 
 /** Amharic (አማርኛ)

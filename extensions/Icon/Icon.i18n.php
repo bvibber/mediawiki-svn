@@ -27,7 +27,9 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'icon-badimage' => 'Slegte beeld',
 	'icon-badwidth' => 'Onjuiste breedte',
+	'icon-desc' => 'Maak dit moontlik om beelde as ikone en ikoon-skakels te gebruik',
 );
 
 /** Arabic (العربية)

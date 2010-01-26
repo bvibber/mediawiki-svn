@@ -68,14 +68,22 @@ $messages['rap'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  * @author SPQRobin
  */
 $messages['af'] = array(
 	'badimages-add-btn' => 'Voeg by',
+	'badimages-added' => '$1 is by die lys bygevoeg.',
 	'badimages-name' => 'Naam:',
+	'badimages-not-added' => 'Die beeld kon nie bygevoeg word nie.',
+	'badimages-not-removed' => 'Die beeld kon nie verwyder word nie.',
 	'badimages-reason' => 'Rede:',
 	'badimages-remove' => '(skrap)',
 	'badimages-remove-btn' => 'Skrap',
+	'badimages-remove-confirm' => 'Bevestig asseblief dat u $1 uit die lys wil verwyder:',
+	'badimages-removed' => '$1 is van die lys verwyder.',
+	'badimages-subheading' => 'Huidige inhoud',
+	'badimages-unprivileged' => '(U het nie voldoende regte om die lys te kan verander nie)',
 );
 
 /** Amharic (አማርኛ)

@@ -5610,6 +5610,7 @@ $messages['yi'] = array(
 	'wikilog-tab' => 'וויקילאג',
 	'wikilog-new-item-go' => 'שאַפֿן',
 	'wikilog-item-name' => 'ארטיקל נאָמען:',
+	'wikilog-draft' => 'אָנוואַרף',
 	'wikilog-title' => 'טיטל',
 	'wikilog-summary-uncategorized' => 'אומקאטעגאריזירט',
 	'wikilog-form-category' => 'קאטעגאריע:',

@@ -37,6 +37,11 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'createbox-desc' => 'Gespesialiseerde invoerveld vir die skep van nuwe bladsye',
 	'createbox-create' => 'Skep',
+	'createbox-exists' => "Jammer, \"'''{{FULLPAGENAME}}'''\" bestaan al reeds.
+
+U kan nie hierdie bladsy skep nie, maar u kan dit wel [{{fullurl:{{FULLPAGENAME}}|action=edit}} wysig], [{{fullurl:{{FULLPAGENAME}}}} wys], of 'n ander bladsy via die onderstaande vorm skep.
+
+<createbox>break=no</createbox>",
 );
 
 /** Arabic (العربية)

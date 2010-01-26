@@ -26,6 +26,17 @@ $messages['qqq'] = array(
 	'right-getfamily' => '{{doc-right|getfamily}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'getfamily-desc' => "Genereer 'n familie-lêer vir pywikipediabot",
+	'getfamily' => 'Kry pywikipediabot-familie',
+	'getfamily-interwikierror' => 'Fout: verkeerde interwiki-instellings.
+Kontak u plaaslike administrateur.',
+	'right-getfamily' => "Skep 'n familie-lêer vir pywikipediabot",
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

@@ -16,6 +16,13 @@ $messages['qqq'] = array(
 	'breadcrumbs-desc' => 'Short description of the Breadcrumbs extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'breadcrumbs-desc' => 'Wys die pad wat gebruikers deur die wiki volg.',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Bresta
  */

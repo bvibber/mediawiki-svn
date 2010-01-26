@@ -1975,6 +1975,7 @@ Betygsskalan är enligt följande:
  */
 $messages['te'] = array(
 	'ratinghistory' => 'పేజీ రేటింగు చరిత్ర',
+	'ratinghistory-link' => 'పేజీ మూల్యాంకన',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">ఈ పేజీని సమీక్షించడానికి సమయం వెచ్చించినందుకు ధన్యవాదాలు!</font>''",
 	'ratinghistory-period' => 'కాల వ్యవధి:',
 	'ratinghistory-month' => 'గత నెల',

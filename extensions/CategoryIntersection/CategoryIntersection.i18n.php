@@ -26,6 +26,13 @@ $messages['qqq'] = array(
 	'categoryintersection-desc' => 'Shown in [[Special:Version]]. Do not translate links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'categoryintersection-results' => 'Die soektog het $1 {{PLURAL:$1|resultaat|resultate}} opgelewer.',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

@@ -111,11 +111,14 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'plotters-desc' => 'Lezel a ra an implijerien da implijout JavaScript personelaet er balizennoù jsplot',
 	'plotters' => 'Treserioù grafek',
 	'plotters-title' => 'Treserioù grafek',
 	'plotters-uses' => 'Implij',
 	'plotters-missing-script' => "N'eo bet termenet skript ebet.",
 	'plotters-missing-arguments' => "Arguzenn ebet n'eo bet spisaet.",
+	'plotters-excessively-long-scriptname' => "Re hir eo anv ar skript.
+Termenit ur skript gant un anv 255 arouezenn hir d'ar muiañ.",
 	'plotters-no-data' => "N'eus bet pourchaset roadenn ebet.",
 	'plotters-errors' => '{{PLURAL:$1|fazi|fazioù}}: treselloù',
 );

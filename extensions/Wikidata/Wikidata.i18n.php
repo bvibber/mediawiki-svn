@@ -7468,6 +7468,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_Synonyms' => 'Synonymen',
 	'ow_SynonymsAndTranslations' => 'Synonymer an Iwwersetzungen',
 	'ow_Source' => 'Quell',
+	'ow_SourceIdentifier' => 'Identificateur vun der Quell',
 	'ow_Text' => 'Text',
 	'ow_TextAttribute' => 'Eegeschaft',
 	'ow_TextAttributeHeader' => 'Text-Attribut',

@@ -74,9 +74,21 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'amazonplus-desc' => "'h Hoogs aanpasbare uitbreiding om inligting vanaf Amazon te vertoon",
 	'amazonplus-nores' => 'Fout: geen resultate gevind!',
+	'amazonplus-noidres' => "Fout: Kon nie 'n produk-ID vind nie!",
+	'amazonplus-fgcerr' => 'Fout: kon nie data van Amazon onttrek nie!',
+	'amazonplus-slserr' => 'Fout: die data van Amazon kon nie verwerk word nie!',
+	'amazonplus-used' => 'gebruik',
+	'amazonplus-german' => 'Duits',
+	'amazonplus-french' => 'Frans',
+	'amazonplus-japanese' => 'Japannees',
+	'amazonplus-amazon' => 'Amazon-prys',
 	'amazonplus-new' => 'nuut',
+	'amazonplus-none' => 'Geen kopieë van hierdie item word te koop aangebied nie.',
 	'amazonplus-cp-none' => 'Geen',
+	'amazonplus-more' => 'meer',
+	'amazonplus-less' => 'minder',
 );
 
 /** Arabic (العربية)

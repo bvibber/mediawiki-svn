@@ -66,15 +66,28 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'closewikis-desc' => "Maak die sluit en heropenig van wiki's in 'n wiki-plaas moontlik",
 	'closewikis-page' => 'Sluit wiki',
 	'closewikis-page-close' => 'Sluit wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Rede (wys op wiki):',
 	'closewikis-page-close-reason' => 'Rede (vir logboek):',
 	'closewikis-page-close-submit' => 'Sluit',
 	'closewikis-page-close-success' => 'Die wiki is nou gesluit',
+	'closewikis-page-reopen' => 'Heropen wiki',
 	'closewikis-page-reopen-wiki' => 'Wiki:',
 	'closewikis-page-reopen-reason' => 'Rede:',
 	'closewikis-page-reopen-submit' => 'Heropen',
+	'closewikis-page-reopen-success' => 'Die wiki is suksesvol heropen',
+	'closewikis-page-err-nowiki' => 'Ongeldige wiki gespesifiseer',
+	'closewikis-page-err-closed' => 'Hierdie wiki is reeds gesluit',
+	'closewikis-page-err-opened' => 'Hierdie wiki is nie gesluit nie',
+	'closewikis-list' => "Geslote wiki's",
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Gesluit deur',
+	'closewikis-list-header-timestamp' => 'Gesluit op',
+	'closewikis-log-close' => 'het $2 gesluit',
+	'closewikis-log-reopen' => 'het $2 heropen',
 );
 
 /** Arabic (العربية)

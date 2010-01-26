@@ -108,9 +108,10 @@ $messages['niu'] = array(
  */
 $messages['af'] = array(
 	'changeauthor-search-box' => 'Soek hersienings',
+	'changeauthor-pagename-or-revid' => 'Bladsynaam of weergawenommer:',
 	'changeauthor-pagenameform-go' => 'Laat waai',
 	'changeauthor-comment' => 'Opmerking:',
-	'changeauthor-changeauthors-multi' => 'Wysig ((PLURAL:$1|outeur|outeurs))',
+	'changeauthor-changeauthors-multi' => 'Wysig {{PLURAL:$1|outeur|outeurs}}',
 	'changeauthor-changeauthors-single' => 'Wysig outeur',
 	'changeauthor-invalid-username' => 'Ongeldige gebruikersnaam "$1".',
 	'changeauthor-nosuchuser' => 'Geen gebruiker "$1".',

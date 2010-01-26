@@ -60,8 +60,18 @@ $messages['ltg'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'adminlinks' => 'Skakels vir administrateurs',
+	'adminlinks-desc' => "Voeg 'n [[Special:AdminLinks|spesiale bladsy]] met nuttige skakels vir administrateurs by",
 	'adminlinks_documentation' => 'Dokumentasie vir $1',
+	'adminlinks_general' => 'Algemeen',
+	'adminlinks_editsidebar' => 'Wysig kantbalk',
+	'adminlinks_editcss' => 'Wysig CSS-lêer',
+	'adminlinks_editmainpagename' => 'Wysig naam van die hoofblad',
 	'adminlinks_users' => 'Gebruikers',
+	'adminlinks_createuser' => "Skep 'n gebruiker",
+	'adminlinks_browsesearch' => 'Blaai en deursoek',
+	'adminlinks_importexport' => 'Invoer en uitvoer',
+	'right-adminlinks' => 'Sien die skakel na die [[Special:AdminLinks|skakels vir administrateurs]]',
 );
 
 /** Gheg Albanian (Gegë)

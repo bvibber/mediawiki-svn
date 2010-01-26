@@ -254,6 +254,8 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'povwatch' => 'PovWatch',
+	'povwatch_no_session' => "Fazi : Ne c'haller ket kas ar furmskrid abalamour m'eo bet kollet roadennoù an dalc'h.",
+	'povwatch_not_allowed_push' => "N'oc'h ket ur merour eus PovWatch, ne c'hallit ket ouzhpennañ pajennoù d'ar rolloù evezhiañ.",
 	'povwatch_already_subscribed' => "Koumanantet oc'h da bPovWatch dija",
 	'povwatch_subscribed' => "Koumanantet oc'h da PovWatch bremañ",
 	'povwatch_not_subscribed' => "N'och ket koumanantet da bPovWatch, setu ne c'hallit ket digoumanantiñ.",

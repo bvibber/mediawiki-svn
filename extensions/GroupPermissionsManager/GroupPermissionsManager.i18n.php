@@ -460,6 +460,7 @@ $messages['br'] = array(
 	'grouppermissions-sp-success' => 'Urzhiet eo bet an aotreoù',
 	'grouppermissions-sp-addperm' => 'Ouzhpennañ an aotre',
 	'grouppermissions-sp-remove' => 'lemel',
+	'grouppermissions-rug-confirm' => 'Lemel an implijerien eus ar strolladoù dizimplij',
 	'right-raw' => 'Gwelet ar pajennoù diaoz',
 	'right-info' => 'GWelet titouroù ar bajenn',
 	'right-history' => 'Gwelet istor ar bajenn',
