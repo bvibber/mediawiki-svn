@@ -8133,6 +8133,9 @@ fn: {
 			// Build a model for this
 			
 			var model = new $.wikiEditor.modules.templateEditor.fn.model( $( this ).text() );
+			if ( !model.isCollapsible() ) {
+				return;
+			}
 			var $template = $( this )
 				.wrap( '<div class="wikiEditor-template"></div>' )
 				.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
@@ -8141,7 +8144,7 @@ fn: {
 					$( this ).html()
 						.replace( /\{\{/, '<span class="wikiEditor-template-start">{{</span><span class="wikiEditor-template-inner-text">' )
 						.replace( /\}\}$/, '</span><span class="wikiEditor-template-end">}}</span>' ) ) //grab the *last* {{
-				.css('visibility', 'hidden')
+				.css( 'visibility', 'hidden' )
 				.parent()
 				.addClass( 'wikiEditor-template-collapsed' )
 				.data( 'model', model );
@@ -8289,6 +8292,10 @@ fn: {
 	 * @param wikitext String of wikitext content
 	 */
 	model: function( wikitext ) {
+		
+		/* Private members */
+		
+		var collapsible = true;
 		
 		/* Private Functions */
 		
@@ -8438,12 +8445,18 @@ fn: {
 			return newText;
 		};
 		
+		this.isCollapsible = function() {
+			return collapsible;
+		}
+		
 		/**
-		 *  Update ranges if there's been a change
+		 *  Update ranges if there's been a change in one or more 'segments' of the template.
+		 *  Removes adjustment function so adjustment is only made once ever.
 		 */
+
 		this.updateRanges = function() {
 			var adjustment = 0;
-			for ( i = 0 ; i < ranges.length; i++ ) {
+			for (var i = 0 ; i < ranges.length; i++ ) {
 				ranges[i].begin += adjustment;
 				if( typeof ranges[i].adjust != 'undefined' ) {
 					adjustment += ranges[i].adjust();
@@ -8457,7 +8470,7 @@ fn: {
 		
 		// Whitespace* {{ whitespace* nonwhitespace:
 		if ( wikitext.match( /\s*{{\s*\S*:/ ) ) {
-			// We have a parser function!
+			collapsible = false; // is a parser function
 		}
 		/*
 		 * Take all template-specific characters that are not particular to the template we're looking at, namely {|=},
@@ -8520,6 +8533,7 @@ fn: {
 		if ( divider == -1 ) {
 			divider = sanatizedStr.length;
 			doneParsing = true;
+			collapsible = false; //zero params
 		}
 		nameMatch = sanatizedStr.substring( 0, divider ).match( /[^\s]/ );
 		if ( nameMatch != null ) {
@@ -8530,8 +8544,7 @@ fn: {
 			templateNameIndex--; //push returns 1 less than the array
 			ranges[templateNameIndex].old = wikitext.substring( ranges[templateNameIndex].begin,
 				ranges[templateNameIndex].end );
-		}
-		else{
+		} else {
 			ranges.push(new Range(0,0));
 			ranges[templateNameIndex].old = "";
 		}
@@ -8882,8 +8895,9 @@ fn: {
 		}
 	},
 	unhighlight: function( context ) {
-		// FIXME: In IE, sometimes the context is undefined here - investigate this when you have time please! In the
-		// mean time, the user interaction is working just fine
+		// FIXME: For some reason, IE calls this function twice, the first time with context undefined
+		// Investigate this when you have time please! In the meantime, the user interaction is working just
+		// fine because the second call is valid
 		if ( context ) {
 			context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
 		}
