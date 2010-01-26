@@ -53,10 +53,13 @@ $wgOggAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
 //if wgPlayerStats collection is enabled or not
 $wgPlayerStatsCollection=false;
 
-//if $wgEnableJS2system = true  and the below variable is set to true
-// then we can output the <video> tag and its re-written by mv_embed
+// Output Video tag support
 $wgVideoTagOut = false;
 
+// Defautl skin for mwEmbed player
+// Skins presently available:
+// 	"kskin" kaltura skin 
+// 	"mvpcf" a jquery ui like skin
 $wgVideoPlayerSkin = 'kskin';
 
 // Support striped player iframe output for remote embedding

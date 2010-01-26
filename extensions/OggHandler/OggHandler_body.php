@@ -77,7 +77,7 @@ class OggHandler extends MediaHandler {
 
 	function normaliseParams( $image, &$params ) {
 		$timeParam = array('thumbtime', 'start', 'end');
-		//parse time values if endtime or thumbtime can't be more than length -1
+		// Parse time values if endtime or thumbtime can't be more than length -1
 		foreach($timeParam as $pn){
 			if ( isset( $params[$pn] ) ) {
 				$length = $this->getLength( $image );
@@ -91,7 +91,7 @@ class OggHandler extends MediaHandler {
 				}
 			}
 		}
-		//make sure start time is not > than end time
+		// Make sure start time is not > than end time
 		if(isset($params['start']) && isset($params['end']) ){
 			if($params['start'] > $params['end'])
 				return false;
@@ -147,7 +147,7 @@ class OggHandler extends MediaHandler {
 			}
 			$metadata['streams'] = $streams;
 			$metadata['length'] = $f->getLength();
-			//get the offset of the file (in cases where the file is a segment copy)
+			// Get the offset of the file (in cases where the file is a segment copy)
 			$metadata['offset'] = $f->getStartOffset();
 		} catch ( PEAR_Exception $e ) {
 			// File not found, invalid stream, etc.
@@ -192,19 +192,19 @@ class OggHandler extends MediaHandler {
 		$noPlayer = isset( $params['noplayer'] );
 		$noIcon = isset( $params['noicon'] );
 
-		//set up the default targetUrl:
+		// Set up the default targetUrl:
 		$targetFileUrl = $file->getURL();
 
 
-		//add temporal request parameter if $wgEnableTemporalOggUrls is on:
-		if($wgEnableTemporalOggUrls && isset( $params['start'] ) ){
+		// Add temporal request parameter if $wgEnableTemporalOggUrls is on:
+		if( $wgEnableTemporalOggUrls && isset( $params['start'] ) ){
 			$targetFileUrl .= '?t=' . seconds2npt( $this->parseTimeString( $params['start'], $length ) );
 			if(isset( $params[ 'end' ] ) && $params['end'] )
 				$targetFileUrl.='/'. seconds2npt( $this->parseTimeString( $params['end'], $length) );
 		}
 
-		//check if $wgEnabledDerivatives is "set" and we have a target derivative set:
-		//(presently set by the wikiAtHome extension)
+		// Check if $wgEnabledDerivatives is "set" and we have a target derivative set:
+		// (presently set by the wikiAtHome extension)
 		if (isset( $wgEnabledDerivatives ) && is_array( $wgEnabledDerivatives ) &&  count( $wgEnabledDerivatives ) != 0){
 			//get the encode key:
 			$encodeKey = WikiAtHome::getTargetDerivative( $width, $file );
@@ -217,11 +217,11 @@ class OggHandler extends MediaHandler {
 				$derivativeUrl = $file->getThumbUrl( $wjm->getEncodeKey() . '.ogg');
 				$derivativePath = $file->getThumbPath( $wjm->getEncodeKey() );
 
-				//check that we have the requested theora derivative
+				// Check that we have the requested theora derivative
 				if( is_file ( "{$derivativePath}.ogg" )){
 					$targetFileUrl = $derivativeUrl;
 				}else{
-					//output in queue text (send the dstUrl if available )
+					// Output in queue text (send the dstUrl if available )
 					return new MediaQueueTransformOutput($file, $dstUrl, $width, $height, $wjm->getDonePerc() );
 				}
 			}
@@ -281,7 +281,7 @@ class OggHandler extends MediaHandler {
 			$thumbtime = $this->parseTimeString( $params['thumbtime'], $length );
 		}
 		if ( $thumbtime === false ) {
-			//if start time param isset use that for the thumb:
+			// If start time param isset use that for the thumb:
 			if( isset( $params['start'] ) ){
 				$thumbtime = $this->parseTimeString( $params['start'], $length );
 			}else{
@@ -293,7 +293,7 @@ class OggHandler extends MediaHandler {
 
 		wfDebug( "Creating video thumbnail at $dstPath\n" );
 
-		//first check for oggThumb
+		// First check for oggThumb
 		if( $wgOggThumbLocation && is_file( $wgOggThumbLocation ) ){
 			$cmd = wfEscapeShellArg( $wgOggThumbLocation ) .
 				' -t '. intval( $thumbtime ) . ' ' .
@@ -327,7 +327,7 @@ class OggHandler extends MediaHandler {
 			wfEscapeShellArg( $dstPath ) . ' 2>&1';
 			$retval = 0;
 			$returnText = wfShellExec( $cmd, $retval );
-        }
+		}
 
 		if ( $this->removeBadFile( $dstPath, $retval ) || $retval ) {
 			#No mapping, time zero. A last ditch attempt.
@@ -339,7 +339,7 @@ class OggHandler extends MediaHandler {
 
 			$retval = 0;
 			$returnText = wfShellExec( $cmd, $retval );
-			//if still bad return error:
+			// If still bad return error:
 			if ( $this->removeBadFile( $dstPath, $retval ) || $retval ) {
 				// Filter nonsense
 				$lines = explode( "\n", str_replace( "\r\n", "\n", $returnText ) );
@@ -470,7 +470,7 @@ class OggHandler extends MediaHandler {
 				$wgPlayerStatsCollection, $wgVideoTagOut;
 
 		if( $wgVideoTagOut ){
-			// We could add "video" tag module stuff here if want. specifically:
+			// We could add "video" tag javascript here if want. specifically:
 
 			// <script type="text/javascript" src="js/mwEmbed/jsScriptLoader.php?class=window.jQuery,mwEmbed,$j.ui,mw.EmbedPlayer,nativeEmbed,ctrlBuilder,mvpcfConfig,kskinConfig,$j.fn.menu,$j.cookie,$j.ui.slider,mw.TimedText&debug=true"></script>
 			//<link rel="stylesheet" href="js/mwEmbed/skins/styles.css" type="text/css" media="screen" />
@@ -479,6 +479,7 @@ class OggHandler extends MediaHandler {
 			// The above is loaded on-dom-ready for faster dom readyness.
 			// but that has the disadvantage of video player interfaces not being "instantly" ready
 			// on page load. So its a trade off.
+
 			// Loading dynamically also lets us avoid unnecessary code
 			// ie firefox does not need "JSON.js" and IE ~maybe~ needs cortado embed etc.
 		}else{
@@ -493,7 +494,7 @@ class OggHandler extends MediaHandler {
 				'ogg-player-vlc-activex', 'ogg-player-quicktime-mozilla', 'ogg-player-quicktime-activex',
 				'ogg-player-totem', 'ogg-player-kaffeine', 'ogg-player-kmplayer', 'ogg-player-mplayerplug-in',
 				'ogg-player-thumbnail', 'ogg-player-selected', 'ogg-use-player', 'ogg-more', 'ogg-download',
-		   		'ogg-desc-link', 'ogg-dismiss', 'ogg-player-soundthumb', 'ogg-no-xiphqt' );
+				'ogg-desc-link', 'ogg-dismiss', 'ogg-player-soundthumb', 'ogg-no-xiphqt' );
 			$msgValues = array_map( 'wfMsg', $msgNames );
 			$jsMsgs = Xml::encodeJsVar( (object)array_combine( $msgNames, $msgValues ) );
 			$cortadoUrl = $wgCortadoJarFile;
@@ -524,23 +525,6 @@ EOT
 );
 		}
 
-		// If collecting stats add relevant code:
-		if( $wgPlayerStatsCollection ){
-			//the player stats js file  MUST be on the same server as OggHandler
-			$playerStats_js = htmlspecialchars ( $wgScriptPath ). '/extensions/PlayerStatsGrabber/playerStats.js';
-
-			$jsUserHash = sha1( $wgUser->getName() . $wgProxyKey );
-			$enUserHash = Xml::encodeJsVar( $jsUserHash );
-
-			$out->addHeadItem( 'playerStatsCollection',  <<<EOT
-<script type="text/javascript">
-wgOggPlayer.userHash = $enUserHash;
-</script>
-<script type="text/javascript" src="$playerStats_js"></script>
-EOT
-);
-		}
-
 	}
 
 	function parserTransformHook( $parser, $file ) {
@@ -557,13 +541,13 @@ EOT
 			$instance->setHeaders( $outputPage );
 		}
 	}
-	//checks if we have an iframe requested (outputs a iframe version of the player for remote embedding)
+	// Output an iframe version of the player for remote embedding)
 	static function iframeOutputHook( &$title, &$article, $doOutput = true ) {
 		global $wgTitle, $wgRequest, $wgOut, $wgEnableIframeEmbed;
 		if( !$wgEnableIframeEmbed )
 			return true; //continue normal if iframes are "off" (maybe throw a warning in the future)
 
-		//make sure we are in the right namespace and iframe=true was called:
+		// Make sure we are in the right namespace and iframe=true was called:
 		if(	is_object( $wgTitle ) && $wgTitle->getNamespace() == NS_FILE  &&
 			$wgRequest->getVal('iframe') == 'true' &&
 			$wgEnableIframeEmbed &&
@@ -622,7 +606,7 @@ class OggTransformOutput extends MediaTransformOutput {
 		$thumbDivAttribs = array();
 		$showDescIcon = false;
 
-		// Check if outputting to video tag or oggHandler
+		// Check for video tag output
 		if( $wgVideoTagOut ){
 			return $this->outputVideoTag($url, $width, $height, $length, $offset, $alt);
 		}else{
@@ -647,7 +631,7 @@ class OggTransformOutput extends MediaTransformOutput {
 						'alt' => $alt,
 					);
 				} else {
-					 // make an icon later if necessary
+					 // Make an icon later if necessary
 					$imgAttribs = false;
 					$showDescIcon = !$this->noIcon;
 					//$thumbDivAttribs = array( 'style' => 'text-align: right;' );
@@ -759,26 +743,26 @@ class OggTransformOutput extends MediaTransformOutput {
 			'startOffset' => $offset,
 			'linkback' => $linkAttribs['href'],
 			'apiTitleKey' => $this->file->getTitle()->getDBKey()
-	    );
+		);
 
-	    /*
-	     * Output inline metadata for video tag
-	     * this will eventually be phased out in favor of "ROE" type xml
-	     * representation of all media asset info.
-	     */
+		/*
+		* Output inline metadata for video tag
+		* this will eventually be phased out in favor of "ROE" type xml
+		* representation of all media asset info.
+		*/
 
 		// Init $timedTextSources string
 		$timedTextSources = '';
-	    if( $this->file->getRepoName() != 'local' ){
+		if( $this->file->getRepoName() != 'local' ){
 
-	    	//Set the api provider name to "commons" for shared
-	    	// ( provider names should have identified the provider
-	    	// instead of the provider type "shared" )
-	    	$apiProviderName = ( $this->file->getRepoName() == 'shared' ) ? 'commons':  $this->file->getRepoName();
+			//Set the api provider name to "commons" for shared
+			// ( provider names should have identified the provider
+			// instead of the provider type "shared" )
+			$apiProviderName = ( $this->file->getRepoName() == 'shared' ) ? 'commons':  $this->file->getRepoName();
 
 			$videoAttr[ 'apiProvider' ] = 'commons';
-	    } else if( $wgEnableTimedText ){
-	   		// Get the list of subtitles available
+		} else if( $wgEnableTimedText ){
+				// Get the list of subtitles available
 			$params = new FauxRequest( array (
 				'action' => 'query',
 				'list' => 'allpages',
@@ -802,7 +786,7 @@ class OggTransformOutput extends MediaTransformOutput {
 						$subtitle_extension = array_pop( $tileParts );
 						$languageKey = array_pop( $tileParts );
 					}
-					//If there is no valid language continue:
+					// If there is no valid language continue:
 					if( !isset( $langNames[ $languageKey ] ) ){
 						continue;
 					}
@@ -815,16 +799,16 @@ class OggTransformOutput extends MediaTransformOutput {
 					$timedTextSources.= Xml::tags( 'itext', $textAttr, '' );
 				}
 			}
-	    }
+		}
 
-	    if( $wgEnableTemporalOggUrls ){
-	        $videoAttr['URLTimeEncoding'] = 'true';
-	    }
+		if( $wgEnableTemporalOggUrls ){
+			$videoAttr['URLTimeEncoding'] = 'true';
+		}
 
-	    // Set player skin:
-	    if( $wgVideoPlayerSkin ){
-	    	$videoAttr['class'] = htmlspecialchars ( $wgVideoPlayerSkin );
-	    }
+		// Set player skin:
+		if( $wgVideoPlayerSkin ){
+			$videoAttr['class'] = htmlspecialchars ( $wgVideoPlayerSkin );
+		}
 
 		$s = Xml::tags( 'video', $videoAttr,
 				Xml::tags('div', array(
@@ -853,12 +837,12 @@ class OggAudioDisplay extends OggTransformOutput {
 		parent::__construct( $file, $videoUrl, false, $width, $height, $length, false, $path, $noIcon, $offset );
 	}
 }
-/*utility functions*/
+/* Utility functions*/
 
 
 /*
- * outputs a minimal iframe for remote embedding (with mv_embed loaded via the script-loader if enabled)
- */
+* Output a minimal iframe for remote embedding (with mv_embed loaded via the script-loader if enabled)
+*/
 function output_iframe_page( $title ) {
 	global $wgEnableIframeEmbed, $wgEnableTemporalOggUrls, $wgOut, $wgUser,
 		$wgEnableScriptLoader;
@@ -868,8 +852,7 @@ function output_iframe_page( $title ) {
 		return false;
 	}
 
-	//safe grab the input vars is set:
-	//check for start end if temporal urls are enabled:
+	// Check for start end if temporal urls are enabled:
 	if( $wgEnableTemporalOggUrls ){
 		$videoParam[ 'start' ] 	= ( isset( $_GET['starttime'] ) ) ? $_GET['starttime']: '';
 		$videoParam[ 'end' ]	= ( isset( $_GET['endtime'] ) ) ? $_GET['endtime']: '';
@@ -878,7 +861,7 @@ function output_iframe_page( $title ) {
 	$videoParam['width'] 	=  ( isset( $_GET['width'] )  ) ? intval( $_GET['width'] ) 	: '400';
 	$videoParam['height'] 	=  ( isset( $_GET['height'] ) ) ? intval( $_GET['height'] ) : '300';
 
-	//build the html output:
+	// Build the html output:
 	$file = wfFindFile( $title );
 	$thumb = $file->transform( $videoParam );
 	$out = new OutputPage();
@@ -900,7 +883,7 @@ function output_iframe_page( $title ) {
 		}
 	</style>
 		<?php
-			//similar to $out->headElement (but without css)
+			// Similar to $out->headElement (but without css)
 			echo $out->getHeadScripts();
 			echo $out->getHeadLinks();
 			echo $out->getHeadItems();
@@ -913,14 +896,15 @@ function output_iframe_page( $title ) {
 <?php
 }
 /*
- * takes seconds duration and return hh:mm:ss time
- */
+* Converts seconds duration to npt format:
+* hh:mm:ss.ms
+*/
 if(!function_exists('seconds2npt')){
 	function seconds2npt( $seconds, $short = false ) {
 		$dur = time_duration_2array( $seconds );
 		if( ! $dur )
 			return null;
-		// be sure to output leading zeros (for min,sec):
+		// Output leading zeros (for min,sec):
 		if ( $dur['hours'] == 0 && $short == true ) {
 			return sprintf( "%2d:%02d", $dur['minutes'], $dur['seconds'] );
 		} else {
@@ -929,7 +913,7 @@ if(!function_exists('seconds2npt')){
 	}
 }
 /*
- * converts seconds to time unit array
+ * Convert seconds to time unit array
  */
 if(!function_exists('time_duration_2array')){
 	function time_duration_2array ( $seconds, $periods = null ) {
@@ -951,7 +935,7 @@ if(!function_exists('time_duration_2array')){
 		foreach ( $periods as $period => $value ) {
 			$count = floor( $seconds / $value );
 			if ( $count == 0 ) {
-				// must include hours minutes and seconds even if they are 0
+				// Must include hours minutes and seconds even if they are 0
 				if ( $period == 'hours' || $period == 'minutes' || $period == 'seconds' ) {
 					$values[$period] = 0;
 				}
