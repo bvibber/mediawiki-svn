@@ -140,17 +140,6 @@ fn: {
 			.data( 'context', context )
 			.data( 'positionMode', 'regular' )
 			.data( 'collapsed', false );
-			/* context.$ui.find( '.wikiEditor-ui-right' )
-				.css( 'width', $.wikiEditor.modules.toc.cfg.defaultWidth )
-				.append( context.modules.toc.$toc );
-			context.modules.toc.$toc.height(
-				context.$ui.find( '.wikiEditor-ui-left' ).height()
-			);
-			context.$ui.find( '.wikiEditor-ui-left' )
-				.css( 'marginRight', "-" + $.wikiEditor.modules.toc.cfg.defaultWidth )
-				.children()
-				.css( 'marginRight', $.wikiEditor.modules.toc.cfg.defaultWidth );
-			*/
 			context.$ui.find( '.wikiEditor-ui-right' )
 				.append( context.modules.toc.$toc );
 			context.modules.toc.$toc.height(

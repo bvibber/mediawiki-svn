@@ -619,7 +619,7 @@ if ( typeof context == 'undefined' ) {
 				parentHtml = $( 'html' ),
 				parentBody = $( 'body' );
 			var y = $element.offset().top;
-			if ( !$.browser.msie ) {
+			if ( !$.browser.msie && ! $element.is( 'body' ) ) {
 				y = parentHtml.scrollTop() > 0 ? y + html.scrollTop() - parentHtml.scrollTop() : y;
 				y = parentBody.scrollTop() > 0 ? y + body.scrollTop() - parentBody.scrollTop() : y;
 			}
