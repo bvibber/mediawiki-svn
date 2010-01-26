@@ -254,8 +254,7 @@ mw.RemoteSearchDriver.prototype = {
 			'api_url': 'http://kaldev.kaltura.com/michael/aggregator.php',
 			'lib': 'kaltura',
 			'resource_prefix' : '',
-			'tab_image':false,
-			disable_filters: true
+			'tab_image':false
 		},
 		
 		/**
@@ -1212,24 +1211,31 @@ mw.RemoteSearchDriver.prototype = {
 			return false;
 		}							
 		
-		_this.loadSearchLib( provider, function( provider ) {
+		if (!provider.sObj) {
+			this.loadSearchLib( provider, this.getProviderCallback() );
+		}
+		else {
+			this.getProviderCallback()( provider );
+		}
+	},
+	
+	getProviderCallback: function() {
+		
+		var _this = this;
+		return function ( provider ) {
+			
 			var d = new Date();
 			var searchTime = d.getMilliseconds();
-			// Do the search:	
-				provider.sObj.getSearchResults( $j( '#rsd_q' ).val() , function( resultStatus ){				
-				//if( resultStatus == 'ok' ){
-					_this.showResults();
-				//}else{
-				//	_this.showFailure( resultStatus )
-				//}
-				});		
+	
+			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() , 
+					function( resultStatus ) {				
+						_this.showResults();
+					});		
 			
 			// Set a timeout of 20 seconds
-			setTimeout(function(){
-			
+			setTimeout( function() {
 			}, 20 * 1000 );
-			
-		} );
+		};
 	},
 	
 	/**
@@ -1291,6 +1297,17 @@ mw.RemoteSearchDriver.prototype = {
 		return false;
 	},
 
+	// TODO: turn this into a global helper function.
+	curry: function ( fn ) {
+	    var args = [];
+	    for (var i = 1, len = arguments.length; i <len; ++i) {
+	        args.push( arguments[i] );
+	    };
+	    return function() {
+	            fn.apply( window, args );
+	    };
+	},
+	
 	/**
 	* Show Results for the current_provider
 	*/
@@ -1315,6 +1332,8 @@ mw.RemoteSearchDriver.prototype = {
 			
 			// Enable search filters, if the provider supports them.
 			if ( provider.sObj.filters && !(provider.disable_filters) ) {
+				provider.sObj.filters.filterChangeCallBack = 
+					this.curry( this.getProviderCallback(), provider );
 				$resultsContainer.append( provider.sObj.filters.getHTML().attr ({
 					id: 'rsd_filters_container'
 				}));
