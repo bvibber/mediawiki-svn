@@ -95,7 +95,9 @@ fn: {
 			// Build a model for this
 			
 			var model = new $.wikiEditor.modules.templateEditor.fn.model( $( this ).text() );
-			if(!model.isCollapsible()){ return;}
+			if ( !model.isCollapsible() ) {
+				return;
+			}
 			var $template = $( this )
 				.wrap( '<div class="wikiEditor-template"></div>' )
 				.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
@@ -104,7 +106,7 @@ fn: {
 					$( this ).html()
 						.replace( /\{\{/, '<span class="wikiEditor-template-start">{{</span><span class="wikiEditor-template-inner-text">' )
 						.replace( /\}\}$/, '</span><span class="wikiEditor-template-end">}}</span>' ) ) //grab the *last* {{
-				.css('visibility', 'hidden')
+				.css( 'visibility', 'hidden' )
 				.parent()
 				.addClass( 'wikiEditor-template-collapsed' )
 				.data( 'model', model );
@@ -405,7 +407,7 @@ fn: {
 			return newText;
 		};
 		
-		this.isCollapsible = function(){
+		this.isCollapsible = function() {
 			return collapsible;
 		}
 		
@@ -504,8 +506,7 @@ fn: {
 			templateNameIndex--; //push returns 1 less than the array
 			ranges[templateNameIndex].old = wikitext.substring( ranges[templateNameIndex].begin,
 				ranges[templateNameIndex].end );
-		}
-		else{
+		} else {
 			ranges.push(new Range(0,0));
 			ranges[templateNameIndex].old = "";
 		}
@@ -608,7 +609,7 @@ fn: {
 		this.params = params;
 		this.paramsByName = paramsByName;
 		this.templateNameIndex = templateNameIndex;
-	} // model	
+	} // model
 }
 
 }; } )( jQuery );
