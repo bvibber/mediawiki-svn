@@ -114,7 +114,7 @@ class jsScriptLoader {
 		/*
 		 * Add a mw.loadDone class callback if there was no "error" in getting any of the classes
 		 */
-		if ( $this->error_msg == '' ){
+		if ( $this->errorMsg == '' ){
 			$this->jsout .= self::getOnDoneCallback( );
 		}
 
@@ -127,14 +127,14 @@ class jsScriptLoader {
 		if ( $wgUseFileCache && !$this->debug ) {
 			$status = $this->sFileCache->saveToFileCache( $this->jsout );
 			if ( $status !== true )
-			$this->error_msg .= $status;
+			$this->errorMsg .= $status;
 		}
 
 		// Check for an error msg
-		if ( $this->error_msg != '' ) {
+		if ( $this->errorMsg != '' ) {
 			//just set the content type (don't send cache header)
 			header( 'Content-Type: text/javascript' );
-			echo 'alert(\'Error With ScriptLoader ::' . str_replace( "\n", '\'+"\n"+' . "\n'", $this->error_msg ) . '\');';
+			echo 'alert(\'Error With ScriptLoader ::' . str_replace( "\n", '\'+"\n"+' . "\n'", $this->errorMsg ) . '\');';
 			echo trim( $this->jsout );
 		} else {
 			// All good, let's output "cache" headers
@@ -250,7 +250,7 @@ class jsScriptLoader {
 			} else {
 				// Make sure the wiki title ends with .js
 				if ( substr( $title_block, -3 ) != '.js' ) {
-					$this->error_msg .= 'WikiTitle includes should end with .js';
+					$this->errorMsg .= 'WikiTitle includes should end with .js';
 					return false;
 				}
 				// It's a wiki title, append the output of the wikitext:
@@ -270,11 +270,11 @@ class jsScriptLoader {
 
 			// Check that the filename ends with .js and does not include ../ traversing
 			if ( substr( $file_name, -3 ) != '.js' ) {
-				$this->error_msg .= "\nError file name must end with .js: " . htmlspecialchars( $file_name ) . " \n ";
+				$this->errorMsg .= "\nError file name must end with .js: " . htmlspecialchars( $file_name ) . " \n ";
 				return false;
 			}
 			if ( strpos( $file_name, '../' ) !== false ) {
-				$this->error_msg .= "\nError file name must not traverse paths: " . htmlspecialchars( $file_name ) . " \n ";
+				$this->errorMsg .= "\nError file name must not traverse paths: " . htmlspecialchars( $file_name ) . " \n ";
 				return false;
 			}
 
@@ -286,13 +286,13 @@ class jsScriptLoader {
 				if( $jsFileStr ){
 					return $jsout . $jsFileStr;
 				}else{
-					$this->error_msg .= "\nError could not read file: ". htmlspecialchars( $file_name )  ."\n";
+					$this->errorMsg .= "\nError could not read file: ". htmlspecialchars( $file_name )  ."\n";
 					return false;
 				}
 			}
 		}
 		// If we did not return some js
-		$this->error_msg .= "\nUnknown error\n";
+		$this->errorMsg .= "\nUnknown error\n";
 		return false;
 	}
 	/**
@@ -423,7 +423,7 @@ class jsScriptLoader {
 
 					$jsFilePath = self::getJsPathFromClass( $reqClass );
 					if(!$jsFilePath){
-						$this->error_msg .= 'Requested class: ' . htmlspecialchars( $reqClass ) . ' not found' . "\n";
+						$this->errorMsg .= 'Requested class: ' . htmlspecialchars( $reqClass ) . ' not found' . "\n";
 					}else{
 						$this->jsFileList[ $reqClass ] = $jsFilePath;
 						$this->requestKey .= $reqClass;
@@ -548,7 +548,7 @@ class jsScriptLoader {
 	}
 
 	/**
-	 * Retrieve the js file into a string, updates error_msg if not retrivable.
+	 * Retrieve the js file into a string, updates errorMsg if not retrivable.
 	 *
 	 * @param {String} $filePath File to get
 	 * @return {String} of the file contents
@@ -563,7 +563,7 @@ class jsScriptLoader {
 
 		if ( $str === false ) {
 			// NOTE: check PHP error level. Don't want to expose paths if errors are hidden.
-			$this->error_msg .= 'Requested File: ' . htmlspecialchars( $IP.'/'.$filePath ) . ' could not be read' . "\n";
+			$this->errorMsg .= 'Requested File: ' . htmlspecialchars( $IP.'/'.$filePath ) . ' could not be read' . "\n";
 			return false;
 		}
 		return $str;

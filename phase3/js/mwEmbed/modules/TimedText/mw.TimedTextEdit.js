@@ -1,4 +1,4 @@
-/** 
+/**
 * Timed text edit interface based off of participatory culture foundation timed text mockups. 
 */
 mw.addMessages( {
@@ -83,7 +83,9 @@ mw.TimedTextEdit.prototype = {
 	 */
 	createTabs: function(){
 		var _this = this;
-		$tabContainer = $j('<div id="TimedTextEdit-tabs"><ul></ul></div>');
+		$tabContainer = $j( '<div />' )
+			.attr( 'id', "TimedTextEdit-tabs" )
+			.append( '<ul />' );
 		for(var edit_stage_id in this.textEditStages){
 			var editStage = this.textEditStages[ edit_stage_id ];
 			// Append the menu item: 

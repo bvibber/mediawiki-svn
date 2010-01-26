@@ -60,7 +60,7 @@ mw.addMessages( {
 	"mwe-ogg-player-selected" : "(selected)",
 	"mwe-ogg-player-omtkplayer" : "OMTK Flash Vorbis",
 	"mwe-generic_missing_plugin" : "You browser does not appear to support the following playback type: <b>$1<\/b><br \/>Visit the <a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Media_help\">Playback Methods<\/a> page to download a player.<br \/>",
-	"mwe-for_best_experience" : "For a better video playback experience we recommend:<br \/><b><a href=\"http:\/\/www.mozilla.com\/en-US\/firefox\/upgrade.html?from=mwEmbed\">Firefox<\/a>.<\/b>",
+	"mwe-for_best_experience" : "For a better video playback experience we recommend the <b><a href=\"http:\/\/www.mozilla.com\/en-US\/firefox\/upgrade.html?from=mwEmbed\">latest firefox<\/a>.<\/b>",
 	"mwe-do_not_warn_again" : "Dismiss for now.",
 	"mwe-playerSelect" : "Players",
 	"mwe-read_before_embed" : "<a href=\"http:\/\/mediawiki.org\/wiki\/Security_Notes_on_Remote_Embedding\" target=\"_new\">Read this<\/a> before embedding.",
@@ -560,7 +560,7 @@ mediaSource.prototype = {
 	
 	// A provider "id" to idenfiy api request type 
 	provider_type : null,
-													
+
 	// The api url for the provider
 	provider_url : null,  	
 	
@@ -568,7 +568,7 @@ mediaSource.prototype = {
 	* MediaSource constructor:
 	*/
 	init : function( element ) {		
-		// mw.log('adding mediaSource: ' + element);				
+		// mw.log('adding mediaSource: ' + element);
 		this.src = $j( element ).attr( 'src' );
 		this.marked_default = false;
 		
@@ -590,8 +590,7 @@ mediaSource.prototype = {
 				this[ attr ] =  attr_value;
 			}
 		}
-					
-			
+
 		if ( $j( element ).attr( 'type' ) ){
 			this.mime_type = $j( element ).attr( 'type' );
 		}else if ( $j( element ).attr( 'content-type' ) ){
@@ -599,6 +598,7 @@ mediaSource.prototype = {
 		}else{
 			this.mime_type = this.detectType( this.src );
 		}
+		
 			
 		// Check for parent elements ( supplies categories in "itext" )
 		if( $j( element ).parent().attr('category') ){			
@@ -910,7 +910,8 @@ mediaElement.prototype = {
 		// apply mime filter: 
 		var source_set = new Array();
 		for ( var i = 0; i < this.sources.length ; i++ ) {
-			if ( this.sources[i].mime_type.indexOf( mime_filter ) != -1 )
+			if ( this.sources[i].mime_type &&
+			this.sources[i].mime_type.indexOf( mime_filter ) != -1 )
 				source_set.push( this.sources[i] );
 		}
 		return source_set;

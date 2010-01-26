@@ -63,6 +63,7 @@ var nativeEmbed = {
 					'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
 					'width="' + this.width + '" height="' + this.height + '" ' +
 					'autobuffer="true" ' +
+					'autoplay="true" ' + 
 					'src="' + this.getSrc() + '" >' +				
 				 '</video>';
 		return eb;
