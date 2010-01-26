@@ -1590,6 +1590,8 @@ mw.RemoteSearchDriver.prototype = {
 				return types[i];
 			}
 		}
+		if( resource.mime == 'application/ogg' )
+			return 'video'
 		// Media type not found:
 		return false;
 	},
@@ -1620,13 +1622,13 @@ mw.RemoteSearchDriver.prototype = {
 		// Append to the top level of model window:
 		_this.addResourceEditLoader( maxWidth  );
 		// update add media wizard title:
-		var dialogTitle = gM( 'mwe-add_media_wizard' ) + ': ' + 
+		var dialogTitle = gM( 'mwe-add_media_wizard' ) + ': ' +
 			gM( 'rsd_resource_edit', resource.title );
 		$j( _this.target_container ).dialog( 'option', 'title', dialogTitle );
 		
 		mw.log( 'did append to: ' + _this.target_container );
 			
-		// Try and keep aspect ratio for the thumbnail that we clicked:			
+		// Try and keep aspect ratio for the thumbnail that we clicked:
 		var imageRatio = null;
 		try {			
 			imageRatio = $j( rsdElement ).get(0).height / $j( rsdElement ).get(0).width;

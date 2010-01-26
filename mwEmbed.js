@@ -2461,9 +2461,9 @@ mw.addMessages( {
 	"mwe-load-drag-item" : "Loading dragged item",
 	"mwe-ok" : "OK",
 	"mwe-cancel" : "Cancel",
-	"mwe-enable-gadget" : "Enable mwEmbed gadgate for all pages",
-	"mwe-enable-gadget-done" : "mwEmbed gadgate has been enabled",
-	"mwe-must-login-gadget" : "To enable gadget you must <a href=\"$1\">login</a>"
+	"mwe-enable-gadget" : "Enable mwEmbed gadget for all pages",
+	"mwe-enable-gadget-done" : "mwEmbed gadget has been enabled",
+	"mwe-must-login-gadget" : "To enable gadget you must <a target=\"_new\" href=\"$1\">login</a>"
 } );
 
 

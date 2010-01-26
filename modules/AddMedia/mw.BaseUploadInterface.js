@@ -1,5 +1,8 @@
 /**
- * The base upload interface.
+ * The base upload interface. 
+ * 
+ * Progress bars for http-copy-by-url uploading.
+ * Ifame upload target 
  *
  * This base upload class is optionally extended by Firefogg
  *
@@ -152,6 +155,8 @@ mw.BaseUploadInterface.prototype = {
 	 *
 	 * When done detecting, or if detecting is unnecessary, it calls the callback 
 	 * with the upload mode as the first parameter.
+	 *
+	 * @param {Function} callback Function called once upload mode is detected
 	 */
 	detectUploadMode: function( callback ) {
 		var _this = this;
@@ -210,7 +215,7 @@ mw.BaseUploadInterface.prototype = {
 	},
 
 	/**
-	 * Do an upload, with the mode given by this.upload_mode
+	 * Do an upload, with the mode given by this.upload_mode	 
 	 */
 	doUpload: function() {		
 		// Note "api" should be called "http_copy_upload" and /post/ should be "form_upload"
@@ -809,6 +814,7 @@ mw.BaseUploadInterface.prototype = {
 	/**
 	 * Update the progress window to display a given message, with a given
 	 * list of buttons below it.
+	 *
 	 * @param title_txt Plain text
 	 * @param msg HTML
 	 * @param buttons See http://docs.jquery.com/UI/Dialog#option-buttons
