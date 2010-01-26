@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r82';
+var mwRemoteVersion = 'r83';
 var mwUseScriptLoader = true;
 
 //Log the mwRemote version ( will determin what version of js we get )
@@ -83,7 +83,16 @@ function doPageSpecificRewrite() {
 		// Loading with loadMwEmbed not so big a deal since "sequencer is huge
 		loadMwEmbed( function(){
 			mw.load( 'Sequencer', function(){
-				mw.load( 'RemoteMwSequencer' );
+				mw.load( 'RemoteMwSequencer', function(){
+					mw.log('RemoteMwSequencer loaded' ); 
+						var myRemote = new RemoteMwSequencer( {
+							'action': wgAction,
+							'title' : wgTitle,
+							'target': '#bodyContent'
+						});	
+						// Update the UI
+						myRemote.updateUI();	
+				} );
 			} );
 		} );	
 	}

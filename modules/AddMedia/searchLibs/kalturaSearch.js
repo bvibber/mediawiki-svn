@@ -171,14 +171,14 @@ var kalturaSearch = function ( options ) {
 kalturaSearch.prototype = {
 
 	// Stores search library pointers
-	searchLibs: { },	
+	searchLibs: { },
 	
 	/**
 	* Initialize the Search with provided options
 	*
 	* @param {Object} options Initial options for the kalturaSearch class
 	*/
-	init:function( options ) {		
+	init:function( options ) {
 		this.options = options;
 		this.filters = new kalturaFilters( options );
 		var baseSearch = new baseRemoteSearch( options );
@@ -254,7 +254,7 @@ kalturaSearch.prototype = {
 				var result = data[ resource_id ];
 				
 				// Update mappings: 					
-				result[ 'poster' ] = result[ 'thumbnail' ];		
+				result[ 'poster' ] = result[ 'thumbnail' ];
 				result[ 'pSobj' ] = _this;
 				result[ 'link' ] = result[ 'item_details_page' ];
 				
@@ -276,7 +276,7 @@ kalturaSearch.prototype = {
 	* @param {Number} size Requested size
 	* @param {Function} callback Callback function for image resource
 	*/ 
-	getImageObj: function( resource, size, callback ) {		
+	getImageObj: function( resource, size, callback ) {
 		var _this = this;		
 		this.getSerachLib( resource.content_provider_id, function( searchLib ){
 			searchLib.getImageObj( resource, size, callback );
@@ -296,19 +296,19 @@ kalturaSearch.prototype = {
 	* Get and load provider via id 
 	* @param {String} provider_id The id of the content provider
 	* @param {Function} callback Function to call once provider search lib is loaded 
-	*	callback is passed the search object 						 
+	*	callback is passed the search object
 	*/ 
 	getSerachLib: function( provider_id, callback ){
 		var _this = this;
 		// Check if we already have the library loaded: 
 		if( this.searchLibs[ provider_id ] ){
-			callback (  this.searchLibs[ provider_id ] );				
+			callback (  this.searchLibs[ provider_id ] );
 			return ;
 		}	
 		// Else load the provider lib:
 		var provider = this.rsd.content_providers [ provider_id ];
 		mw.load( provider.lib + 'Search', function(){
-			//Set up the search lib options			
+			//Set up the search lib options
 			var options = {			
 				'provider': provider,
 				// Same remote search driver as KalturaSearch

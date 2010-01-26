@@ -1240,8 +1240,15 @@ var mwDefaultConf = {
 		}
 		while( mwLoadDoneCB[ requestName ].length ){
 			if( typeof mwLoadDoneCB[ requestName ] != 'object' )
-				break;			
-			mwLoadDoneCB[ requestName ].pop()( requestName );
+			{
+				break;
+			}
+			var func = mwLoadDoneCB[ requestName ].pop();
+			if( typeof func == 'function' ){
+				func( requestName );
+			}else{
+				mw.log('mwLoadDoneCB: error not a callback function');
+			}
 		}
 		// Set the load request name to done
 		mwLoadDoneCB[ requestName ] = 'done';

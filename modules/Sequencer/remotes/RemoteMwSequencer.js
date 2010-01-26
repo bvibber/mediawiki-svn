@@ -44,8 +44,22 @@ RemoteMwSequencer.prototype = {
 				gM("mwe-no-sequence-create", [this.title, $startLink.html() ])
 			);
 			$j('#mwe-sequence-create').click(function(){
-				alert(' new sequence here' );
+				$j('body').append( '<div id="seqcontainer" style="position:absolute;top:5px;bottom:10px;left:10px;right:10px;" />' );
+				mw.load( 'Sequencer', function(){
+	 				$j('#seqcontainer').sequencer({
+		 				'amw_conf':{
+						 'enabled_providers':['wiki_commons']
+					}
+				})
+	 			});
+				
 			});
+		}else{
+			$j( this.target ).html(
+				'<playlist id="playlist" src="' +wgArticlePath.replace('$1', this.title) + '?action=raw&.xml" wikiTitleKey="' + this.title + '" ></playlist>'
+			);
+			$j('#playlist').embedPlayer();
+			
 		}
 	}
 	
@@ -63,17 +77,5 @@ RemoteMwSequencer.prototype = {
 	// grab textbox text, 
 	// set page to loading
 	// display sequence editor in "body" with -> full-screen link
-};
-
-
-mw.ready( function(){
-	//Setup the remote configuration
-	var myRemote = new RemoteMwSequencer( {
-		'action': wgAction,
-		'title' : wgTitle,
-		'target': '#bodyContent'
-	});	
-	// Update the UI
-	myRemote.updateUI();		
+};	//Setup the remote configuration
 	
-});

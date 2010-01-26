@@ -25,7 +25,7 @@ mw.addModuleLoader( 'FirefoggRender', function( callback) {
 
 mw.addModuleLoader( 'Sequencer', function( callback ){
 	//Get sequencer style sheet	
-	mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/' + mw.getConfig( 'skinName' ) + '/mv_sequence.css' );
+	mw.getStyleSheet( mw.getMwEmbedPath() + 'modules/Sequencer/css/mv_sequence.css' );
 	// Make sure we have the required mwEmbed libs:			
 	mw.load( [
 		[	// Load the EmbedPlayer Module ( includes lots of dependent classes )   

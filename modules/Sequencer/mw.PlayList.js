@@ -321,8 +321,10 @@ mw.PlayList.prototype = {
 		this.srcType = null;
 		// if not external use different detection matrix
 		if ( this.loading_external_data ) {
+			//var domParser = new DOMParser();
+			//this.data = domParser.parseFromString(this.data);
 			if ( typeof this.data == 'object' ) {
-				mw.log( 'object' );
+				mw.log( 'object' );				
 				// object assume xml (either xspf or rss) 
 				plElm = this.data.getElementsByTagName( 'playlist' )[0];
 				if ( plElm ) {
