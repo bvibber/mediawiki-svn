@@ -9455,8 +9455,10 @@ fn: {
 						parts.pre = parts.post = '';
 					}
 				}
-				context.$textarea.textSelection( 'encapsulateSelection', $.extend( action.options,
-					parts, { 'replace': action.type == 'replace' } ) );
+				context.$textarea.textSelection(
+					'encapsulateSelection',
+					$.extend( {}, action.options, parts, { 'replace': action.type == 'replace' } )
+				);
 				break;
 			case 'callback':
 				if ( typeof action.execute == 'function' ) {
