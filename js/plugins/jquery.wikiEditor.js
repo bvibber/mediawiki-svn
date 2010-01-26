@@ -368,17 +368,17 @@ if ( typeof context == 'undefined' ) {
 				.appendTo( context.$ui );
 		},
 		'htmlToText': function( html ) {
-			// We use .html() instead of .text() so HTML entities are handled right - setting the HTML of the textarea
-			// doesn't work on all browsers, use a dummy <div> instead
-			// Get rid of the noincludes when getting text
+			// We use this elaborate trickery for cross-browser compatibility
+			// IE does overzealous whitespace collapsing for $( '<pre />' ).html( html );
 			var $pre = $( '<pre>' +
 				html
-					.replace( /\r?\n/g, "" )
+					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
 					.replace( /\<br[^\>]*\>/gi, "\n" )
-					.replace( /&nbsp;/g, " " )
-					.replace( /\<p[^\>]*\>/gi, "\n" )
+					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
+					.replace( /\<p[^\>]*\>/gi, "\n" ) // IE uses </p><p> for user-inserted line breaks
 					.replace( /\<\/p[^\>]*\>/gi, "" )
 				+ '</pre>' );
+			// Get rid of the noincludes when getting text
 			$pre.find( '.wikiEditor-noinclude' ).each( function() { $( this ).remove(); } );
 			$pre.find( '.wikiEditor-tab' ).each( function() { $( this ).text( "\t" ) } );
 			return $pre.text();
@@ -674,8 +674,8 @@ if ( typeof context == 'undefined' ) {
 				}
 				var seekPos = context.fn.htmlToText( range2.htmlText ).length;
 				var offsets = context.fn.getOffsets();
-				e = offsets[seekPos].node;
-				offset = offsets[seekPos].offset;
+				e = offsets[seekPos] ? offsets[seekPos].node : null;
+				offset = offsets[seekPos] ? offsets[seekPos].offset : null;
 				if ( !e )
 					return $( [] );
 			}
@@ -903,26 +903,15 @@ if ( typeof context == 'undefined' ) {
 			if ( $.browser.msie ) {
 				// Browser sniffing is not ideal, but executing this code on a non-broken browser doesn't cause harm
 				if ( $.browser.versionNumber <= 7 ) {
-					// Replace all spaces matching /(^|n) +/ with &nbsp; - IE <= 7 needs this because of its overzealous
+					// Replace all spaces matching &nbsp; - IE <= 7 needs this because of its overzealous
 					// whitespace collapsing;
-					var prefix = '', suffix = html;
-					while ( suffix ) {
-						var match = suffix.match( /(^|\n) / );
-						if ( match ) {
-							prefix += suffix.substr( 0, match.index + match[0].length - 1 ) + '&nbsp;';
-							suffix = suffix.substr( match.index + match[0].length );
-						} else {
-							break;
-						}
-					}
-					html = prefix + suffix;
+					html = html.replace( / /g, "&nbsp;" );
 				} else {
 					// IE8 is happy if we just convert the first leading space to &nbsp;
 					html = html.replace( /(^|\n) /g, "$1&nbsp;" );
 				}
 				html = html.replace( /\t/g, '<span class="wikiEditor-tab"></span>' );
 			}
-			// We must append, because IE will crash if we set html() - which is the same as empty() and append()
 			context.$content.html( html.replace( /\r?\n/g, '<br />' ) );
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
