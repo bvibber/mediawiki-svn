@@ -95,6 +95,7 @@ fn: {
 			// Build a model for this
 			
 			var model = new $.wikiEditor.modules.templateEditor.fn.model( $( this ).text() );
+			if(!model.isCollapsible()){ return;}
 			var $template = $( this )
 				.wrap( '<div class="wikiEditor-template"></div>' )
 				.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
@@ -252,6 +253,10 @@ fn: {
 	 */
 	model: function( wikitext ) {
 		
+		/* Private members */
+		
+		var collapsible = true;
+		
 		/* Private Functions */
 		
 		/**
@@ -400,12 +405,18 @@ fn: {
 			return newText;
 		};
 		
+		this.isCollapsible = function(){
+			return collapsible;
+		}
+		
 		/**
-		 *  Update ranges if there's been a change
+		 *  Update ranges if there's been a change in one or more 'segments' of the template.
+		 *  Removes adjustment function so adjustment is only made once ever.
 		 */
+
 		this.updateRanges = function() {
 			var adjustment = 0;
-			for ( i = 0 ; i < ranges.length; i++ ) {
+			for (var i = 0 ; i < ranges.length; i++ ) {
 				ranges[i].begin += adjustment;
 				if( typeof ranges[i].adjust != 'undefined' ) {
 					adjustment += ranges[i].adjust();
@@ -419,7 +430,7 @@ fn: {
 		
 		// Whitespace* {{ whitespace* nonwhitespace:
 		if ( wikitext.match( /\s*{{\s*\S*:/ ) ) {
-			// We have a parser function!
+			collapsible = false; // is a parser function
 		}
 		/*
 		 * Take all template-specific characters that are not particular to the template we're looking at, namely {|=},
@@ -482,6 +493,7 @@ fn: {
 		if ( divider == -1 ) {
 			divider = sanatizedStr.length;
 			doneParsing = true;
+			collapsible = false; //zero params
 		}
 		nameMatch = sanatizedStr.substring( 0, divider ).match( /[^\s]/ );
 		if ( nameMatch != null ) {
@@ -596,7 +608,7 @@ fn: {
 		this.params = params;
 		this.paramsByName = paramsByName;
 		this.templateNameIndex = templateNameIndex;
-	} // model
+	} // model	
 }
 
 }; } )( jQuery );
