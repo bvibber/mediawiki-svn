@@ -6981,7 +6981,7 @@ if ( typeof context == 'undefined' ) {
 				parentHtml = $( 'html' ),
 				parentBody = $( 'body' );
 			var y = $element.offset().top;
-			if ( !$.browser.msie ) {
+			if ( !$.browser.msie && ! $element.is( 'body' ) ) {
 				y = parentHtml.scrollTop() > 0 ? y + html.scrollTop() - parentHtml.scrollTop() : y;
 				y = parentBody.scrollTop() > 0 ? y + body.scrollTop() - parentBody.scrollTop() : y;
 			}
@@ -8782,17 +8782,6 @@ fn: {
 			.data( 'context', context )
 			.data( 'positionMode', 'regular' )
 			.data( 'collapsed', false );
-			/* context.$ui.find( '.wikiEditor-ui-right' )
-				.css( 'width', $.wikiEditor.modules.toc.cfg.defaultWidth )
-				.append( context.modules.toc.$toc );
-			context.modules.toc.$toc.height(
-				context.$ui.find( '.wikiEditor-ui-left' ).height()
-			);
-			context.$ui.find( '.wikiEditor-ui-left' )
-				.css( 'marginRight', "-" + $.wikiEditor.modules.toc.cfg.defaultWidth )
-				.children()
-				.css( 'marginRight', $.wikiEditor.modules.toc.cfg.defaultWidth );
-			*/
 			context.$ui.find( '.wikiEditor-ui-right' )
 				.append( context.modules.toc.$toc );
 			context.modules.toc.$toc.height(

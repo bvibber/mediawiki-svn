@@ -81,6 +81,8 @@
 		/* == Header == */
 		.wikiEditor-toc-header { /* TODO: move parsing to highlight module and rename this */
 			display: inline;
+			/* Fix for Webkit Browsers resistence to give these elements an offsetTop value */
+			display: -webkit-box;
 			/*font-weight: bold; -- not sure about this styling just yet */
 		}
 	</style>
