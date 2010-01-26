@@ -393,6 +393,9 @@ function mwCheckForGadget(){
 	mw.log('mwCheckForGadget');
 	scripts = document.getElementsByTagName( 'script' );
 	// Check for document paramater withJS and ignore found gadget
+	if( typeof getParamValue == 'undefined' ){
+		return false;
+	}
 	var withJS = getParamValue("withJS"); 	
 	
 	for( var i = 0 ; i < scripts.length ; i ++){
