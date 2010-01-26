@@ -282,7 +282,7 @@ fn: {
 		
 		// Remove markers that were previously inserted but weren't passed to this function
 		context.$content.find( 'div.wikiEditor-highlight:not(.wikiEditor-highlight-tmp)' ).each( function() {
-			if ( typeof $(this).data( 'marker' ).unwrap == 'function' )
+			if ( $(this).data( 'marker' ) && typeof $(this).data( 'marker' ).unwrap == 'function' )
 				$(this).data( 'marker' ).unwrap( this );
 			if ( $(this).children().size() > 0 ) {
 				$(this).replaceWith( $(this).children() );
